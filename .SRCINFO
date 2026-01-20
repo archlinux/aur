@@ -1,6 +1,6 @@
 pkgbase = jellyfin-tui
 	pkgdesc = Music streaming TUI client for Jellyfin
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/dhonus/jellyfin-tui
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = jellyfin-tui
 	depends = glibc
 	depends = sqlite
 	options = !lto
-	source = jellyfin-tui-1.3.0.tar.gz::https://github.com/dhonus/jellyfin-tui/archive/v1.3.0.tar.gz
-	sha256sums = 9587bf0b4c05e5923002feb80c41985f38b20f1a7afd892ed027e9db9731f9f5
+	source = jellyfin-tui-1.3.1.tar.gz::https://github.com/dhonus/jellyfin-tui/archive/v1.3.1.tar.gz
+	sha256sums = 9d4dd9e9beb48fb26299932415ba77a9cc8824e334bf2cdc7214cb225b790bed
 
 pkgname = jellyfin-tui

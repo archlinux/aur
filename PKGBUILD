@@ -2,14 +2,14 @@
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=jellyfin-tui
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Music streaming TUI client for Jellyfin'
 arch=('x86_64')
 url="https://github.com/dhonus/$pkgname"
 license=('GPL-3.0-only')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9587bf0b4c05e5923002feb80c41985f38b20f1a7afd892ed027e9db9731f9f5')
+sha256sums=('9d4dd9e9beb48fb26299932415ba77a9cc8824e334bf2cdc7214cb225b790bed')
 depends=('openssl' 'mpv' 'gcc-libs' 'glibc' 'sqlite')
 makedepends=('cargo' 'pkgconf' 'sqlite')
 options=('!lto')
