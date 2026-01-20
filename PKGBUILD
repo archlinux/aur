@@ -155,7 +155,7 @@ build() {
 
   ## Silence some warnings
   local _NOWARNINGS _warning _CFLAGSADDITIONS
-  _NOWARNINGS=("unused-result")
+  _NOWARNINGS=("unused-result" "deprecated-declarations" "maybe-uninitialized")
   _CFLAGSADDITIONS=""
   for _warning in "${_NOWARNINGS[@]}"; do
     _CFLAGSADDITIONS+=" -Wno-${_warning} -Wno-error=${_warning}"
