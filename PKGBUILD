@@ -1,7 +1,7 @@
 # Maintainer: voldardard <voldardard@example.com>
 pkgname=mkv2cast
 pkgver=1.2.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Smart MKV to Chromecast-compatible converter with hardware acceleration"
 arch=('any')
 url="https://github.com/voldardard/mkv2cast"
@@ -16,16 +16,16 @@ optdepends=(
     'libnotify: Desktop notifications via notify-send'
 )
 makedepends=('python-build' 'python-installer' 'python-hatchling')
-source=("$pkgname-1.2.9-1.tar.gz::https://github.com/voldardard/$pkgname/archive/v1.2.9-1.tar.gz")
+source=("$pkgname-1.2.9-2.tar.gz::https://github.com/voldardard/$pkgname/archive/v1.2.9-2.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-    cd "$pkgname-1.2.9-1"
+    cd "$pkgname-1.2.9-2"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$pkgname-1.2.9-1"
+    cd "$pkgname-1.2.9-2"
     python -m installer --destdir="$pkgdir" dist/*.whl
     
     # Man page
