@@ -2,8 +2,8 @@
 
 _pkgname="qtengine"
 pkgname="$_pkgname-git"
-pkgver=r20.g53747cb
-pkgrel=3
+pkgver=r21.g59b83cd
+pkgrel=1
 pkgdesc="QT Platform Theme made easy"
 url="https://github.com/kossLAN/qtengine"
 license=('BSD-2-Clause')
