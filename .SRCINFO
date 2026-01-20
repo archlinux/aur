@@ -10,6 +10,7 @@ pkgbase = lidm-bin
 	arch = riscv64
 	license = GPL-3.0-only
 	depends = libpam.so
+	depends = lidm-service
 	provides = lidm
 	conflicts = lidm
 	source = lidm-default-theme-1.2.3.ini::https://raw.githubusercontent.com/javalsai/lidm/v1.2.3/themes/default.ini
