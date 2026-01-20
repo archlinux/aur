@@ -8,7 +8,7 @@
 # Which in turn is based on extra/electron* by
 # Bruno Pagani <archange@archlinux.org>
 # Caleb Maclennan <caleb@alerque.com>
-_pkgname=electron41
+_pkgname=electron42
 pkgname=electron-nightly-bin
 _pkgver=42.0.0-nightly.20260120
 pkgver="${_pkgver/-}"
@@ -49,7 +49,7 @@ noextract=("electron-${_pkgver}-${CARCH}.zip")
 source_x86_64=("electron-${_pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/electron-v${_pkgver//_/-}-linux-x64.zip"
 'electron')
 sha256sums_x86_64=('d50dcca61928e4fb07613d47abb526cdc347909d7e63f74235aea21fc1a92887'
-                   '52d37554d0e729262652afd52c8430eda02ca7a89a6f6ad5610d5fe71144aa6a')
+                   '8140c9dbc76f387b16c0bedc6e5d05462b3f0c3aa241ab9f0d88db021564600e')
 prepare() {
     install -Dm755 -d "${srcdir}/${_pkgname}"
     bsdtar -xf "${srcdir}/electron-${_pkgver}-${CARCH}.zip" -C "${srcdir}/${_pkgname}"

@@ -19,11 +19,11 @@ pkgbase = electron-nightly-bin
 	provides = electron
 	provides = electron=42.0.0nightly.20260120
 	conflicts = electron
-	conflicts = electron41
+	conflicts = electron42
 	noextract = electron-42.0.0-nightly.20260120-x86_64.zip
 	source_x86_64 = electron-42.0.0-nightly.20260120-x86_64.zip::https://github.com/electron/nightlies/releases/download/v42.0.0-nightly.20260120/electron-v42.0.0-nightly.20260120-linux-x64.zip
 	source_x86_64 = electron
 	sha256sums_x86_64 = d50dcca61928e4fb07613d47abb526cdc347909d7e63f74235aea21fc1a92887
-	sha256sums_x86_64 = 52d37554d0e729262652afd52c8430eda02ca7a89a6f6ad5610d5fe71144aa6a
+	sha256sums_x86_64 = 8140c9dbc76f387b16c0bedc6e5d05462b3f0c3aa241ab9f0d88db021564600e
 
 pkgname = electron-nightly-bin
