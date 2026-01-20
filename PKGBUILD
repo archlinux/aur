@@ -1,7 +1,7 @@
-# Maintainer: Máté Szabó <mszabo-oss at protonmail dot com>
+# Maintainer: o0d4 <o0d4 at protonmail dot com>
 pkgname=todds
 pkgver=0.4.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A CPU-based DDS encoder optimized for fast batch conversions with high encoding quality."
 arch=('x86_64')
 url="https://github.com/todds-encoder/todds"
