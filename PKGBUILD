@@ -1,7 +1,7 @@
 # Maintainer: this.ven <https://this.ven.uber.space>
 pkgname=bielebridge
 pkgver=v0.0.7+20250305
-pkgrel=2
+pkgrel=3
 pkgdesc="Challenging 2D bridge construction game"
 arch=(x86_64)
 url="https://bielebridge.net"
@@ -16,7 +16,6 @@ sha256sums=('6bc61186e88974570b0c55abbca0b86c24b686b231c425e18f375bdad87f83b6'
             '004977840d2074ab0d32d58807afcedf9fefbc526aba76fa923773b3f12d0b40')
 
 prepare() {
-  tar -xzf "$pkgname-$pkgver.tar.gz"
   cd "$pkgname-$pkgver"
   patch -p1 < "${srcdir}/bielebridge-install.patch"
 }
