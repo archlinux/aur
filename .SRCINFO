@@ -1,7 +1,7 @@
 pkgbase = python-deutsche-bahn-api
 	pkgdesc = Python client for the Deutsche Bahn Timetables API
 	pkgver = 1.1.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://pypi.org/project/deutsche-bahn-api/
 	arch = any
 	license = MIT

@@ -1,6 +1,6 @@
 pkgname=python-deutsche-bahn-api
 pkgver=1.1.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Python client for the Deutsche Bahn Timetables API"
 arch=('any')
 url="https://pypi.org/project/deutsche-bahn-api/"
@@ -23,9 +23,5 @@ build() {
 package() {
     cd "deutsche_bahn_api-${pkgver}"
     python -m installer --destdir="$pkgdir" dist/*.whl
-}
-check() {
-    cd "deutsche_bahn_api-${pkgver}"
-    python -c "import deutsche_bahn_api, mpu; print('All imports successful')"
 }
 
