@@ -1,33 +1,51 @@
 post_install() {
-  CLUSTER_FILE="/etc/foundationdb/fdb.cluster"
-  NEWDB=0
+    CLUSTER_FILE="/etc/foundationdb/fdb.cluster"
+    FDB_USER="foundationdb"
+    FDB_GROUP="foundationdb"
 
-  # 1. Create default cluster file if it doesn't exist
-  if [ ! -f "$CLUSTER_FILE" ]; then
-    echo "Creating new cluster file: $CLUSTER_FILE"
-    description=$(LC_CTYPE=C tr -dc A-Za-z0-9 </dev/urandom | head -c 8)
-    random_str=$(LC_CTYPE=C tr -dc A-Za-z0-9 </dev/urandom | head -c 8)
-    echo "$description:$random_str@127.0.0.1:4500" >"$CLUSTER_FILE"
-    chown foundationdb:foundationdb "$CLUSTER_FILE"
-    chmod 0664 "$CLUSTER_FILE"
-    NEWDB=1
-  fi
+    # 1. Create the configuration directory if missing
+    if [ ! -d "/etc/foundationdb" ]; then
+        echo "Creating configuration directory: /etc/foundationdb"
+        mkdir -p "/etc/foundationdb"
+    fi
 
-  # 2. Reload systemd daemon to recognize new service
-  systemctl daemon-reload
+    # 2. Ensure the foundationdb user/group exists
+    # (Note: In Arch, it is better to use systemd-sysusers, but this is a fallback)
+    if ! getent group "$FDB_GROUP" >/dev/null; then
+        groupadd -r "$FDB_GROUP"
+    fi
+    if ! getent passwd "$FDB_USER" >/dev/null; then
+        useradd -r -g "$FDB_GROUP" -d /var/lib/foundationdb -s /usr/bin/nologin "$FDB_USER"
+    fi
 
-  # 3. If we created a new DB, initialize it
-  if [ "$NEWDB" -eq 1 ]; then
-    echo "Configuring new single-node database..."
-    /usr/bin/fdbcli -C "$CLUSTER_FILE" --exec "configure new single memory; status" --timeout 20 || echo "WARNING: Initial database configuration failed."
-  fi
+    # 3. Create the cluster file if it doesn't exist
+    if [ ! -f "$CLUSTER_FILE" ]; then
+        echo "Creating new cluster file: $CLUSTER_FILE"
+        description=$(LC_CTYPE=C tr -dc A-Za-z0-9 </dev/urandom | head -c 8)
+        random_str=$(LC_CTYPE=C tr -dc A-Za-z0-9 </dev/urandom | head -c 8)
 
-  # 4. Print instructions (Arch does not auto-start services)
-  echo "---"
-  echo "FoundationDB server has been installed."
-  echo "To enable and start the service, run:"
-  echo "  sudo systemctl enable --now foundationdb.service"
-  echo "---"
+        echo "$description:$random_str@127.0.0.1:4500" >"$CLUSTER_FILE"
+
+        # Now safe to chown because we ensured user and file exist
+        chown "$FDB_USER:$FDB_GROUP" "$CLUSTER_FILE"
+        chmod 0664 "$CLUSTER_FILE"
+        NEWDB=1
+    fi
+
+    # 4. Correct directory permissions for the folder itself
+    chown -R "$FDB_USER:$FDB_GROUP" /etc/foundationdb
+
+    # 5. Initialize the DB only if we created a new one AND the binary exists
+    if [ "$NEWDB" == "1" ]; then
+        if [ -x /usr/bin/fdbcli ]; then
+            echo "Configuring new single-node database..."
+            # Wait a moment for the service to potentially start if this is running live
+            sleep 2
+            /usr/bin/fdbcli --exec "configure new single memory" || echo "WARNING: Automatic configuration failed."
+        else
+            echo "WARNING: /usr/bin/fdbcli not found. Skipping database initialization."
+        fi
+    fi
 }
 
 post_upgrade() {
