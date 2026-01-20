@@ -52,6 +52,9 @@ makedepends=(
   pandoc
   unzip
   zip
+  llibxkbcommon
+  wayland
+  wayland-protocols
 )
 optdepends=(
   'gvfs: open links e.g. hyperlinks'

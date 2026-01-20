@@ -29,6 +29,9 @@ pkgbase = java25-openjdk-wakefield
 	makedepends = pandoc
 	makedepends = unzip
 	makedepends = zip
+	makedepends = llibxkbcommon
+	makedepends = wayland
+	makedepends = wayland-protocols
 	optdepends = gvfs: open links e.g. hyperlinks
 	source = git+https://github.com/openjdk/wakefield.git#branch=jdk25-wayland
 	source = freedesktop-java.desktop
