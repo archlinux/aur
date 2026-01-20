@@ -4,7 +4,7 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-libwebp
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 arch=('any')
 pkgdesc="WebP library and conversion tools (Android ${_android_arch})"
@@ -18,7 +18,7 @@ depends=("android-${_android_arch}-libjpeg-turbo"
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/webmproject/libwebp/archive/v${pkgver}.tar.gz")
-md5sums=('4d1324c93788a4333aacc6238e0ef251')
+md5sums=('d498caf9323a24ce3ed40b84c22a32cd')
 
 prepare() {
     cd "$srcdir/libwebp-${pkgver}"
@@ -48,4 +48,6 @@ package() {
     rm -r "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
