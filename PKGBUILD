@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-another-window-session-manager-git
-pkgver=50.r0.gc7cec79
+pkgver=50.r7.gfa5b91b
 pkgrel=1
 pkgdesc="A GNOME shell extension to close open windows gracefully and save them as a session."
 arch=('any')
@@ -71,5 +71,5 @@ package() {
   rm -rfv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas/"
 
   # https://github.com/nlpsuge/gnome-shell-extension-another-window-session-manager#how-to-make-close-by-rules-work
-  install -Dvm644 "$srcdir/60-awsm-ydotool-uinput.rules" -t "$pkgdir/etc/udev/rules.d/"
+  install -Dvm644 "$srcdir/60-awsm-ydotool-uinput.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
 }
