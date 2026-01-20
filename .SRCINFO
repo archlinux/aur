@@ -10,11 +10,11 @@ pkgbase = winboat
 	makedepends = go
 	makedepends = zip
 	depends = alsa-lib
-	depends = docker
-	depends = docker-compose
 	depends = freerdp
 	depends = gtk3
 	depends = nss
+	optdepends = docker: To use docker as a container runtime
+	optdepends = podman-compose: To use podman as a container runtime
 	options = !strip
 	source = git+https://github.com/TibixDev/winboat.git#tag=v0.9.0
 	source = winboat.install

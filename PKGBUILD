@@ -8,8 +8,6 @@ url="https://www.winboat.app"
 license=('MIT')
 depends=(
   'alsa-lib'
-  'docker'
-  'docker-compose'
   'freerdp'
   'gtk3'
   'nss'
@@ -20,6 +18,7 @@ makedepends=(
   'go'
   'zip'
 )
+optdepends=('docker: To use docker as a container runtime' 'podman-compose: To use podman as a container runtime')
 options=('!strip')
 source=("git+https://github.com/TibixDev/winboat.git#tag=v$pkgver" "winboat.install")
 sha256sums=('ce08f785b68df3e77607ee3390abb1a0a585dc55ba4ac5501f236ceb710ad6ca'
