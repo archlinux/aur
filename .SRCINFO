@@ -1,0 +1,22 @@
+pkgbase = hygg
+	pkgdesc = Minimalistic Vim-like TUI document reader.
+	pkgver = 0.1.19
+	pkgrel = 1
+	url = https://github.com/kruseio/hygg
+	arch = x86_64
+	license = AGPL-3.0
+	makedepends = cargo
+	provides = hygg
+	provides = cli-epub-to-text
+	provides = cli-justify
+	provides = cli-pdf-to-text
+	provides = cli-text-reader
+	conflicts = hygg-git
+	conflicts = hygg-bin
+	options = !lto
+	source = hygg-0.1.19.tar.gz::https://github.com/kruseio/hygg/archive/refs/tags/0.1.19.tar.gz
+	source = hygg-0.1.19.tar.gz.asc
+	sha256sums = 36491747e9d47cf7d24ae0666fd2908535eac437e8223a6bd88465a90e1cf35a
+	sha256sums = SKIP
+
+pkgname = hygg
