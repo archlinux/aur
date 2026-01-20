@@ -1,6 +1,6 @@
 # Maintainer: Hydepwns <hydepwns@proton.me>
 pkgname=phos
-pkgver=0.4.10
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Universal log colorizer with 99+ program support'
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT' 'Apache-2.0')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Hydepwns/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('061d9815c3f2dca8131151fd0d057cb4c676aa6aa3831ee5a791a3cb3d5e2696')
+sha256sums=('1f04fa4a51cfb4eae39d8644eca2bbbec34b9181c04d8d35ba2ee0bf3b6bb0bf')
 
 prepare() {
     cd "$pkgname-$pkgver"
