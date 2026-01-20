@@ -8,8 +8,9 @@ pkgbase = asklink-bin
 	license = commercial
 	depends = pulse-native-provider
 	depends = libxtst
-	optdepends = libdrm
-	optdepends = alsa-lib
+	depends = libdrm
+	depends = alsa-lib
+	depends = jack
 	source = https://dl.asklink.com/linux/4.0.33.0/AskLink-4.0.33.0-x86_64.deb
 	sha256sums = SKIP
 

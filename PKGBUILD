@@ -10,9 +10,9 @@ url="https://www.asklink.com"
 license=('commercial')
 depends=('pulse-native-provider'
     'libxtst'
-)
-optdepends=('libdrm'
+    'libdrm'
     'alsa-lib'
+    'jack'
 )
 source=("https://dl.asklink.com/linux/${pkgver}/AskLink-${pkgver}-${CARCH}.deb"
 )
