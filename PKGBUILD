@@ -2,7 +2,7 @@
 # Contributor: Varakh <varakh@varakh.de>
 
 pkgname=altair-ai-studio
-pkgver=2026.0.1
+pkgver=2026.0.2
 pkgrel=1
 pkgdesc="Altair AI Studio (RapidMiner Studio rebranded). Data science tool anyone can use to design and prototype highly explainable AI and machine learning models that help build trust throughout your organization"
 DLAGENTS=('https::/usr/bin/aria2c %u -o %o --continue --max-connection-per-server=16 --min-split-size=1M --split=16 --console-log-level=warn --summary-interval=0')
@@ -12,7 +12,7 @@ depends=('java-runtime')
 makedepends=('unzip' 'gendesk')
 source=('https://releases.rapidminer.com/latest/rapidminer-studio/rapidminer-studio.zip'
         'altair-ai-studio.sh')
-sha256sums=('b18adf29344a0e5ca42f15381f4956f836e7a02494cc82b4bf4a15690a0f5862'
+sha256sums=('fb7381fd4d0f5d8d67bffa649de0520dcf3c6556183a7015a93d5aef366d6b12'
             'e69a78eacd0e1a8e66fe0c44150efcb299a3133ef5cce81a5a092c6f43345cfc')
 
 prepare() {
