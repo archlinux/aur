@@ -1,8 +1,8 @@
 pkgbase = deadbeef-plugin-vu-meter-git
-	pkgdesc = Retro VU Meter Plugin for the DeaDBeeF audio player
-	pkgver = r8.77930b4
-	pkgrel = 3
-	url = https://github.com/cboxdoerfer/ddb_vu_meter
+	pkgdesc = VU Meter Plugin for the DeaDBeeF audio player
+	pkgver = r22.8bca8ad
+	pkgrel = 1
+	url = https://github.com/jwty/ddb_vu_meter
 	arch = i686
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -11,9 +11,9 @@ pkgbase = deadbeef-plugin-vu-meter-git
 	makedepends = gtk2
 	makedepends = gtk3
 	depends = deadbeef
-	source = git+https://github.com/cboxdoerfer/ddb_vu_meter
-	source = https://raw.githubusercontent.com/houzhenggang/arch_vu_meter_patch/master/arch_vu_meter_patch
+	source = git+https://github.com/jwty/ddb_vu_meter
+	source = arch.patch
 	md5sums = SKIP
-	md5sums = 3085ee0f1afd07c414827f11b62f0b6b
+	md5sums = e59958177871b9c4868df0b3e4ab8dbc
 
 pkgname = deadbeef-plugin-vu-meter-git

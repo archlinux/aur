@@ -1,0 +1,17 @@
+--- vumeter.c	2026-01-20 17:25:33.936760802 +0100
++++ vumeter.c.arch	2026-01-20 18:32:27.117923720 +0100
+@@ -951,12 +951,8 @@
+ {
+     if (!w->surf_png) {
+         char path[PATH_MAX];
+-        const char *home_dir = getenv ("HOME");
+-        if (home_dir && strcmp(home_dir, "") == 0) {
+-            home_dir = NULL;
+-        }
+-        const int sz = snprintf (path, PATH_MAX, "%s/.local/lib/deadbeef/vumeter.png", home_dir);
+-        if (!home_dir || !path) {
++        const int sz = snprintf (path, PATH_MAX, "/usr/lib/deadbeef/vumeter.png");
++        if(!path) {
+             return;
+         }
+         w->surf_png = cairo_image_surface_create_from_png (path);
