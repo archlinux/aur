@@ -1,6 +1,6 @@
 # Maintainer: mnUX7APWYTJ4 <x4mP9QeT7uA2bR0cV1n@proton.me>
 pkgname=yandexmusicmodpatcher
-pkgver=0.7.6
+pkgver=0.7.7
 pkgrel=1
 pkgdesc="Patcher for YandexMusicModClient (repackage from official .deb)"
 arch=('x86_64')

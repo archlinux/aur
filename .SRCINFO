@@ -1,6 +1,6 @@
 pkgbase = yandexmusicmodpatcher
 	pkgdesc = Patcher for YandexMusicModClient (repackage from official .deb)
-	pkgver = 0.7.6
+	pkgver = 0.7.7
 	pkgrel = 1
 	url = https://github.com/TheKing-OfTime/YandexMusicModPatcher
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = yandexmusicmodpatcher
 	optdepends = apparmor: AppArmor support
 	optdepends = libgnome-keyring: GNOME keyring integration
 	optdepends = pulseaudio: Audio support
-	source = yandexmusicmodpatcher_0.7.6_amd64.deb::https://github.com/TheKing-OfTime/YandexMusicModPatcher/releases/download/v0.7.6/yandexmusicmodpatcher_0.7.6_amd64.deb
+	source = yandexmusicmodpatcher_0.7.7_amd64.deb::https://github.com/TheKing-OfTime/YandexMusicModPatcher/releases/download/v0.7.7/yandexmusicmodpatcher_0.7.7_amd64.deb
 	sha256sums = SKIP
 
 pkgname = yandexmusicmodpatcher
