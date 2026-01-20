@@ -15,8 +15,8 @@ optdepends=(
 )
 source_x86_64=("${pkgname}-${pkgver}.tar.gz::https://github.com/frankdierolf/whis/releases/download/v${pkgver}/whis-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}.tar.gz::https://github.com/frankdierolf/whis/releases/download/v${pkgver}/whis-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('434c6f6d4487d7adc978e7c66b0c4c44aee861e4469b10682b56bb51734e0aef')
-sha256sums_aarch64=('7a4e01ea3f0abf24f1dc8fe1733df2539def98e388132991d11f1518007249ce')
+sha256sums_x86_64=('fdc3484ae77a2fcff0ca64af3ee31f03e3630a4b4ae5a75c9ae6616ac75902cc')
+sha256sums_aarch64=('78a1e4e0d59e84bb19d8607fd162fcfbce6a1ce663c7e635de8d1d7328de85c1')
 
 package() {
   install -Dm755 whis "${pkgdir}/usr/bin/whis"
