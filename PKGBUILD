@@ -1,13 +1,13 @@
 # Maintainer: DeepChirp <DeepChirp@outlook.com>
 pkgname=easyeffects-jtrv-presets-git
 _origin=EasyEffects-Presets
-pkgver=r6.c0a71a6
+pkgver=r11.e4a1ff4
 pkgrel=1
 pkgdesc="Community Presets for Easyeffects: NPR-like tuning for masculine voices + noise reduction"
 arch=('any')
 url="https://gist.github.com/jtrv/47542c8be6345951802eebcf9dc7da31"
 license=('custom')
-depends=('easyeffects>=7.0.0' 'lsp-plugins-lv2>=1.2.17' 'rnnoise')
+depends=('easyeffects>=7.0.0' 'lsp-plugins-lv2>=1.2.17' 'rnnoise' 'libdeep_filter_ladspa')
 makedepends=('git')
 source=("${_origin}::git+https://gist.github.com/47542c8be6345951802eebcf9dc7da31.git")
 sha256sums=('SKIP')
