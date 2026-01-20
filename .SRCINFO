@@ -1,7 +1,7 @@
 pkgbase = kibana
 	pkgdesc = Browser based analytics and search dashboard for Elasticsearch
 	pkgver = 9.2.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.elastic.co/products/kibana
 	arch = any
 	license = Apache
