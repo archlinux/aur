@@ -2,7 +2,7 @@
 # Contributor: Michel Zou <xantares09@hotmail.com>
 _base=dill
 pkgname=pypy3-${_base}
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="serialize all of python"
 arch=(any)
@@ -12,7 +12,7 @@ optdepends=('python-objgraph: graph support')
 depends=(pypy3)
 makedepends=(pypy3-setuptools)
 source=(${url}/archive/${pkgver}/${_base}-${pkgver}.tar.gz)
-sha512sums=('c7c2230146a8ffdad89883db47fe59363459533f2d73dbf8528cb773f0ade33567b9852e45789b4c2c84afee0d381cc6039c545135f6a55a515884357d40a3f0')
+sha512sums=('288a1dd6b72db0d45a00373851ab819366576d970876aac1cc0c79966b182420368c05e8e38316a60938fea1cc714800aa2a491a30dd454e0ddad8e1134217e4')
 
 build() {
   cd ${_base}-${pkgver}
