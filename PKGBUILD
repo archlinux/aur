@@ -3,8 +3,8 @@
 pkgname=openscenegraph-openmw-git
 epoch=1
 _pkgver=3.6.5
-pkgver=3.6.5.r16186.43faf6fa8
-pkgrel=4
+pkgver=3.6.5.r16215.61a4c88d5
+pkgrel=1
 pkgdesc="Fork of OpenSceneGraph , with openmw-specific changes"
 arch=('x86_64' 'aarch64')
 url="http://www.openscenegraph.org/"
@@ -16,7 +16,7 @@ provides=('openscenegraph')
 conflicts=('openscenegraph')
 source=('git+https://github.com/OpenMW/osg.git')
 md5sums=('SKIP')
-options=(!debug)
+options=(debug strip)
 
 pkgver() {
     cd osg
@@ -25,7 +25,10 @@ pkgver() {
 }
 
 build() {
-
+    # Build only minimal debug info to reduce size
+    CFLAGS=${CFLAGS/-g /-g1 }
+    CXXFLAGS=${CXXFLAGS/-g /-g1 }
+    
     cmake \
         -B _build \
         -S "$srcdir"/osg \
@@ -51,9 +54,7 @@ build() {
         -D BUILD_SHARED_LIBS=ON \
         -D DYNAMIC_OPENTHREADS=ON \
         -D DYNAMIC_OPENSCENEGRAPH=ON \
-        -D CMAKE_POLICY_VERSION_MINIMUM=3.5 \
-       -Wno-dev
-
+        -Wno-dev
     VERBOSE=1 make -C _build
 }
 
