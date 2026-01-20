@@ -3,7 +3,7 @@
 # Upstream: https://git.metalpunks.info/arch-ports
 
 pkgname=lbreakouthd
-pkgver=1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Scalable 16:9 remake of LBreakout2"
 arch=('i686' 'x86_64' 'aarch64')
@@ -12,7 +12,7 @@ license=('GPL3')
 makedepends=('automake')
 depends=('sdl2' 'sdl2_ttf' 'sdl2_image' 'sdl2_mixer')
 source=("https://downloads.sourceforge.net/project/lgames/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('644cbf6f6656019bc335b02efc59e9b0fa3c5acbd21800db75a49753f8297419')
+sha256sums=('73f4d955e393fb0d4c2f44798d385567cfda9afc8c6245ac484eaf4ab4458ef3')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
