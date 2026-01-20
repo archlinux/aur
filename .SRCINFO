@@ -1,0 +1,16 @@
+pkgbase = see-cli-bin
+	pkgdesc = Command-line client for the S.EE content sharing platform (prebuilt binary)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/sdotee/cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = see-cli
+	conflicts = see-cli
+	source_x86_64 = see-cli-bin-1.0.0-x86_64.tar.gz::https://github.com/sdotee/cli/releases/download/v1.0.0/see_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 3d7f2fdb51c8c9fee0067a9b0001a6064c8b2887ff2063b34972f321cd19b7c9
+	source_aarch64 = see-cli-bin-1.0.0-aarch64.tar.gz::https://github.com/sdotee/cli/releases/download/v1.0.0/see_Linux_arm64.tar.gz
+	sha256sums_aarch64 = b0b94e9fd7d5fb964ee70844d88314a02d8a1ec6bd59896ef3b33102ef0f6c98
+
+pkgname = see-cli-bin
