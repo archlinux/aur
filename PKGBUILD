@@ -7,7 +7,7 @@
 pkgname=kibana-xpack
 _relpkgname=kibana
 pkgver=9.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Browser based analytics and search dashboard for Elasticsearch'
 url='https://www.elastic.co/products/kibana'
 arch=('x86_64')
