@@ -1,0 +1,30 @@
+--- a/ext/safestringlib/safeclib/abort_handler_s.c
++++ b/ext/safestringlib/safeclib/abort_handler_s.c
+@@ -30,6 +30,7 @@
+  */
+ 
+ #include "safeclib_private.h"
++#include <stdlib.h>
+ 
+ /**
+  * NAME
+--- a/ext/safestringlib/safeclib/strcasecmp_s.c
++++ b/ext/safestringlib/safeclib/strcasecmp_s.c
+@@ -32,6 +32,7 @@
+ #include "safeclib_private.h"
+ #include "safe_str_constraint.h"
+ #include "safe_str_lib.h"
++#include <ctype.h>
+ 
+ 
+ /**
+--- a/ext/safestringlib/safeclib/strcasestr_s.c
++++ b/ext/safestringlib/safeclib/strcasestr_s.c
+@@ -32,6 +32,7 @@
+ #include "safeclib_private.h"
+ #include "safe_str_constraint.h"
+ #include "safe_str_lib.h"
++#include <ctype.h>
+ 
+ 
+ /**
