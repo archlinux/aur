@@ -2,7 +2,7 @@
 
 pkgname='python-optuna-integration'
 _module='optuna-integration'
-pkgver=4.6.0
+pkgver=4.7.0
 pkgrel=1
 pkgdesc="Optuna integration modules with third-party libraries."
 url="https://optuna-integration.readthedocs.io/"
@@ -11,7 +11,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel')
 license=('custom:MIT License')
 arch=('any')
 source=("https://github.com/optuna/${_module}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('36305e6765831596e30254362518c77a6a0b7b37ae4c55cca31e499210d4d02a')
+sha256sums=('b30345a458d7f14e181cd2801a2429f266bba47c0083a194673bd8478fbdc604')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
