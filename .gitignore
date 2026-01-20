@@ -1,0 +1,10 @@
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
+!whisparr-eros.service
+!whisparr-eros.sysusers
+!whisparr-eros.tmpfiles
+!whisparr-eros.install
+!package_info

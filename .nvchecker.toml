@@ -1,0 +1,7 @@
+[whisparr-eros-develop]
+source = "git"
+git = "https://github.com/Whisparr/Whisparr-Eros.git"
+prefix = "v"
+include_regex = "v(\\d+\\.\\d+\\.\\d+)-develop(\\.\\d+)"
+from_pattern = "(\\d+\\.\\d+\\.\\d+)-develop(\\.\\d+)"
+to_pattern = "\\1\\2"

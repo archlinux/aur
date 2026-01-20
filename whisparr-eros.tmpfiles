@@ -1,0 +1,6 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /var/lib/whisparr-eros/logs     0755 whisparr-eros media
+Z /var/lib/whisparr-eros          - whisparr-eros media
+L /var/log/whisparr-eros          - - - - /var/lib/whisparr-eros/logs/
+L /run/whisparr-eros/whisparr.pid - - - - /var/lib/whisparr-eros/whisparr.pid
+L /etc/whisparr-eros/config.xml   - - - - /var/lib/whisparr-eros/config.xml
