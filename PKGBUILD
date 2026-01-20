@@ -4,10 +4,10 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 _pkgname=rJava
-_pkgver=1.0-11
+_pkgver=1.0-14
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="Low-Level R to Java Interface"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -21,8 +21,8 @@ makedepends=(
   patchelf
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4d8eff03a23cb797f01e710ea7528dd2')
-b2sums=('13ecb4a3c545505f047474027d586e0bf7ca02676bbe0bcd142bba786b3380714937f71efa2ca324fcf6efa0c20112f9ef8bc01d8093d3eea17e63176048d6b4')
+md5sums=('388a04055f74b07dac76aabc8b433cff')
+b2sums=('83c315cc0779b90a4cfb46b861137111bffac86c1451fee85590691c7cb2e041cb2927eef1af99f042d1a1b54d4e831d27fe8038973d384d3959fc1684aa7007')
 
 
 build() {
