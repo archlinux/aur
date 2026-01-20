@@ -1,13 +1,13 @@
 # Maintainer: univrsal <uni@vrsal.xyz>
 
 pkgname=waechter-git
-pkgver=r508.dcb8f85
+pkgver=r508.fe4afd1
 pkgrel=1
 pkgdesc="Traffic shaping and monitoring for GNU/Linux"
 arch=('x86_64')
 url="https://github.com/univrsal/waechter"
 license=('BSD-3-Clause' 'GPL-3.0-or-later')
-depends=('systemd' 'bpf' 'libbpf' 'libxkbcommon' 'libgl' 'libx11' 'libxrandr' 'libxinerama' 'libxcursor' 'libxi')
+depends=('systemd' 'bpf' 'libbpf' 'libxkbcommon' 'libgl' 'libx11' 'libxrandr' 'libxinerama' 'libxcursor' 'libxi' 'libcurl-compat' 'libwebsockets')
 makedepends=('git' 'cmake' 'clang' 'gcc')
 
 provides=('waechter')
