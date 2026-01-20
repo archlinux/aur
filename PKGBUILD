@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=azahar
-pkgver=2124
+pkgver=2124.1
 pkgrel=1
 epoch=1
 pkgdesc="An open-source 3DS emulator project based on Citra."
@@ -14,7 +14,7 @@ makedepends=('cmake' 'ninja' 'vulkan-headers' 'rapidjson' 'doxygen' 'graphviz' '
 options=(!lto)
 source=("$url/releases/download/${pkgver}/$pkgname-unified-source-$pkgver.tar.xz")
 install=${pkgname}.install
-sha256sums=('e397183d0522006fe6dcbfdcb072c424fa58d4bddc309d46e2c8572782d26486')
+sha256sums=('215845ec9854ccc0e2ac39c414508bd1de9fecefdd71346b743e824c5fc2389c')
 
 prepare() {
 	cd "$srcdir/$pkgname-unified-source-$pkgver"
