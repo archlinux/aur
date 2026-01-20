@@ -13,6 +13,7 @@ options=(!strip)
 depends=(
   'glibc'
   'libx11'
+  'gtk2'
   'libxext'
   'libxrender'
   'libxrandr'
