@@ -1,0 +1,13 @@
+pkgbase = posd
+	pkgdesc = pOSD aka project OSD is a GTK4 based OSD for Volume, Brightness, and Lock-keys
+	pkgver = 1.0
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	depends = wireplumber
+	depends = gtk4
+	source = https://codeberg.org/fyiimysf/pOSD/src/branch/main/posd-1.0-1-x86_64.pkg.tar
+
+pkgname = posd
