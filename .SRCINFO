@@ -19,6 +19,6 @@ pkgbase = whis-desktop-bin
 	conflicts = whis-desktop
 	options = !strip
 	source = whis-desktop-bin-0.7.2.AppImage::https://github.com/frankdierolf/whis/releases/download/v0.7.2/Whis_0.7.2_amd64.AppImage
-	sha256sums = b86ea4d4c3757c77c66eeaad1c71b3c3c0df63fff86392adb5d56f9ab8b2bf81
+	sha256sums = 226efb73ec5b0c13db63fe85a1820ab0efb281c115988783867678c8a4a396ab
 
 pkgname = whis-desktop-bin
