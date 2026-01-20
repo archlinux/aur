@@ -3,7 +3,7 @@
 _pkgname="qtengine"
 pkgname="$_pkgname"
 pkgver=0.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="QT Platform Theme made easy"
 url="https://github.com/kossLAN/qtengine"
 license=('BSD-2-Clause')
@@ -58,8 +58,6 @@ build() {
 
 package() {
   cd "$srcdir"
-  install -Dm0644 ./BreezeDark.colors -t "$pkgdir/usr/share/color-schemes/"
-  install -Dm0644 ./BreezeLight.colors -t "$pkgdir/usr/share/color-schemes/"
   install -Dm0644 ./config.example.json -t "$pkgdir/etc/$_pkgname/"
 
   cd "$_pkgname-$pkgver"
