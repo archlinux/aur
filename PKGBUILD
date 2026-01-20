@@ -25,6 +25,12 @@ pkgver() {
 
 build() {
   cd "$srcdir/Impactor"
+  export CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER="gcc"
+  export CC="gcc"
+  export CXX="g++"
+  export AR="gcc-ar"
+  export NM="gcc-nm"
+  export RANLIB="gcc-ranlib"
   cargo build --release --locked --bin plumeimpactor
 }
 
