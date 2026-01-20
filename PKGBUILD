@@ -3,7 +3,7 @@
 _pkgname="libbbf"
 pkgname="$_pkgname"
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bound Book Format: A high-performance, DirectStorage-native container format for comics and manga"
 url="https://github.com/ef1500/libbbf"
 license=('MIT')
@@ -16,7 +16,7 @@ makedepends=(
   ninja
   extra-cmake-modules
 )
-provides=("$_pkgname")
+provides=("$_pkgname=$pkgver")
 conflicts=(
     # "$_pkgname"
     "$_pkgname-bin"
