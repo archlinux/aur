@@ -1,6 +1,6 @@
 pkgbase = keymaker
 	pkgdesc = A central hub for managing all your SSH keys.
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/tobagin/keymaker
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = keymaker
 	depends = vte4
 	depends = webkitgtk-6.0
 	depends = zbar
-	source = keymaker-1.1.1.tar.gz::https://github.com/tobagin/keymaker/archive/refs/tags/v1.1.1.tar.gz
-	sha256sums = 990793cf64c2353bad810b2674f22ba4f63228b5a711ca75d968a2e0bda8851c
+	source = keymaker-1.2.0.tar.gz::https://github.com/tobagin/keymaker/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = 0d9e93c8f9223dbb539e0a802dc2e157f963e3eeb2ac00eb92977229d3affba7
 
 pkgname = keymaker
