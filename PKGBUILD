@@ -2,7 +2,7 @@
 
 pkgname=dcli-arch-git
 pkgver=0.1.0.r105.06057ec
-pkgrel=5
+pkgrel=6
 pkgdesc="A declarative package management CLI tool for Arch Linux, inspired by NixOS"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/theblackdon/dcli"
