@@ -45,7 +45,7 @@ package() {
   
   # Wrapper script for working directory
   cat > "$pkgdir/usr/bin/bielebridge" << 'EOF'
-#!/bin/bash
+#!/bin/sh
 # bielebridge Launcher - setting working directory
 cd /usr/share/bielebridge
 exec ./bielebridge.bin "$@"
