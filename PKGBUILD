@@ -5,8 +5,8 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-libxfixes
-pkgver=6.0.1
-pkgrel=2
+pkgver=6.0.2
+pkgrel=1
 arch=('any')
 pkgdesc="X11 miscellaneous 'fixes' extension library (Android ${_android_arch})"
 url="https://xorg.freedesktop.org/"
@@ -16,10 +16,8 @@ makedepends=('android-configure'
              "android-${_android_arch}-xorg-util-macros"
              "android-${_android_arch}-xorgproto")
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("${url}/releases/individual/lib/libXfixes-${pkgver}.tar.xz"{,.sig})
-md5sums=('65b9ba1e9ff3d16c4fa72915d4bb585a'
-         'SKIP')
-validpgpkeys=('4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E') # "Alan Coopersmith <alan.coopersmith@oracle.com>"
+source=("${url}/releases/individual/lib/libXfixes-${pkgver}.tar.xz")
+md5sums=('baa39ada682dd524491a165bb0dfc708')
 
 build() {
     cd "${srcdir}/libXfixes-${pkgver}"
@@ -38,4 +36,6 @@ package() {
     rm -rf "$pkgdir/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
     ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
