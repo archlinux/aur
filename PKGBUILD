@@ -1,7 +1,7 @@
 # Maintainer: f0ruD <fzero@rubi.gd>
 pkgname=witr
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to determine why a process is running."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pranshuparmar/witr"
@@ -15,7 +15,7 @@ build() {
   cd "$pkgname"
   export CGO_ENABLED=0
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -trimpath -ldflags "-s -w -X main.version=v$pkgver" ./cmd/witr
+  go build -trimpath -ldflags "-X main.version=v$pkgver" ./cmd/witr
 }
 
 # check() {
@@ -30,6 +30,5 @@ package() {
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 docs/cli/witr.1 "$pkgdir/usr/share/man/man1/witr.1"
 }
-
 
 sha256sums=('75bd1004cc19b921da13d06b84e7f70760ee6f0ac0f7d28ebedb5f9e849f6e85')

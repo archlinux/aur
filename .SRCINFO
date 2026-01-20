@@ -1,7 +1,7 @@
 pkgbase = witr
 	pkgdesc = A tool to determine why a process is running.
 	pkgver = 0.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pranshuparmar/witr
 	arch = x86_64
 	arch = aarch64
