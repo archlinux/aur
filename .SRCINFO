@@ -1,0 +1,19 @@
+pkgbase = opentubex-bin
+	pkgdesc = A fork of the open source desktop YouTube player FreeTube with additional features
+	pkgver = 0.24.0
+	pkgrel = 1
+	url = https://github.com/D3SOX/OpenTubeX
+	arch = x86_64
+	arch = aarch64
+	license = AGPL3
+	depends = ttf-liberation
+	provides = opentubex
+	conflicts = opentubex
+	options = !strip
+	options = staticlibs
+	source_x86_64 = opentubex-bin-0.24.0-amd64.deb::https://github.com/D3SOX/OpenTubeX/releases/download/v0.24.0-beta/opentubex_0.24.0_beta_amd64.deb
+	sha256sums_x86_64 = 04b8603f36f7aa43e801a7671cae23105bdf7018883b702efb4ad2cac89efe91
+	source_aarch64 = opentubex-bin-0.24.0-arm64.deb::https://github.com/D3SOX/OpenTubeX/releases/download/v0.24.0-beta/opentubex_0.24.0_beta_arm64.deb
+	sha256sums_aarch64 = 47761af7798ab170ae9f277cf5f37e3ef9865a161509b376f21914ac0e1efc72
+
+pkgname = opentubex-bin
