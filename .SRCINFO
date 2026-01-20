@@ -1,6 +1,6 @@
 pkgbase = sdl3-git
 	pkgdesc = Simple Directmedia Layer (Version 3)
-	pkgver = 3.3.2.r251.g6d60cc65cf
+	pkgver = 3.4.0.r96.g5c15d74394
 	pkgrel = 1
 	url = https://www.libsdl.org
 	arch = x86_64
@@ -39,7 +39,7 @@ pkgbase = sdl3-git
 	optdepends = pipewire: PipeWire audio driver
 	optdepends = sndio: MIDI audio driver
 	optdepends = libdecor: Wayland client decorations
-	provides = sdl3
+	provides = sdl3=3.4.0
 	conflicts = sdl3
 	source = git+https://github.com/libsdl-org/SDL.git
 	sha512sums = SKIP

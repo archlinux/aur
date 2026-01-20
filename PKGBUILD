@@ -3,7 +3,7 @@
 # Contributor: Christer Solskogen <christer.solskogen@gmail.com>
 
 pkgname=sdl3-git
-pkgver=3.3.2.r251.g6d60cc65cf
+pkgver=3.4.0.r96.g5c15d74394
 pkgrel=1
 pkgdesc="Simple Directmedia Layer (Version 3)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -20,7 +20,7 @@ optdepends=('alsa-lib: ALSA audio driver'
             'sndio: MIDI audio driver'
             'libdecor: Wayland client decorations')
 source=("git+https://github.com/libsdl-org/SDL.git")
-provides=("sdl3")
+provides=("sdl3=${pkgver%.r*}")
 conflicts=("sdl3")
 sha512sums=('SKIP')
 
