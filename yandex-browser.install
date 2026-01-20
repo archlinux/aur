@@ -127,7 +127,7 @@ post_install() {
   # Create nss symlinks
   manage_symlinks create
   # Install icons
-  local icons=(16 24 32 48 64 128 256 512)
+  local icons=(16 24 32 48 64 128 256)
   for size in "${icons[@]}"; do
     xdg-icon-resource install --size "$size" "/opt/yandex/browser/product_logo_${size}.png" "yandex-browser"
   done
@@ -144,7 +144,7 @@ post_remove() {
   # Remove nss symlinks
   manage_symlinks remove
   # Remove icons
-  local icons=(16 24 32 48 64 128 256 512)
+  local icons=(16 24 32 48 64 128 256)
   for size in "${icons[@]}"; do
     xdg-icon-resource uninstall --size "$size" "yandex-browser"
   done
