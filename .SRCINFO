@@ -1,0 +1,22 @@
+pkgbase = hytale-f2p-git
+	pkgdesc = Hytale F2P Launcher (git version) – unofficial cross-platform launcher
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/amiayweb/Hytale-F2P
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = electron-builder
+	makedepends = jq
+	depends = nodejs
+	depends = npm
+	depends = electron
+	provides = hytale-f2p
+	conflicts = hytale-f2p
+	options = !strip
+	source = git+https://github.com/amiayweb/Hytale-F2P.git
+	sha256sums = SKIP
+
+pkgname = hytale-f2p-git
