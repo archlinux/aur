@@ -1,8 +1,8 @@
 # Maintainer: Flammkuchen <aur at bbirkner dot de>
 _pkgname=HarfBuzz-Shaper
 pkgname=perl-harfbuzz-shaper
-pkgver=0.032
-pkgrel=3
+pkgver=0.033
+pkgrel=1
 pkgdesc="Use HarfBuzz for text shaping"
 arch=('x86_64')
 license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
@@ -10,7 +10,7 @@ options=('!emptydirs')
 depends=('perl-text-layout' 'harfbuzz')
 url='https://metacpan.org/pod/HarfBuzz::Shaper'
 source=("https://cpan.metacpan.org/authors/id/J/JV/JV/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('4e7be5855da2cd3f86a3a5969015e572df238994ee07cc5fcde3edfaa44a71e852019d0fe3c7a83058038c864435af42047897d8f0a003b8614eef6479da43b1')
+sha512sums=('d08719fd0069f67a48908ebf7608e19fabe527fd95f3afea8f1954722ada960c489a5445b9d596cc4b61ed4ee26dad0371297ec6d8a965097445f4ce07cd4b5d')
 _distdir="${_pkgname}-${pkgver}"
 
 build() {
