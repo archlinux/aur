@@ -1,7 +1,7 @@
 # Maintainer: Torben <git at letorbi dot com>
 
 pkgname=processing-git
-pkgver=4.4.7.r37.g72db9b7db
+pkgver=4.5.1.r0.gdf585defc
 pkgrel=1
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
@@ -45,7 +45,7 @@ prepare() {
   patch "$pkgname/app/build.gradle.kts" < no_jdk_download.patch
 
   # Disable update check in default preferences
-  patch $pkgname/build/shared/lib/defaults.txt < disable_update_check.patch
+  patch $pkgname/app/src/main/resources/defaults.txt < disable_update_check.patch
 }
 
 build() {
