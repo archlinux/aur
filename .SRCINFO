@@ -1,26 +1,26 @@
 pkgbase = distccd-alarm
 	pkgdesc = Official toolchain for Arch ARM builds via distcc on x86_64 volunteers
-	pkgver = 15.2.1.20251116
+	pkgver = 15.2.1.20260119
 	pkgrel = 1
 	url = https://github.com/graysky2/distccd-alarm
 	arch = x86_64
 	license = GPL
 	depends = distcc
-	noextract = x-tools7h-20251116.tar.xz
-	noextract = x-tools8-20251116.tar.xz
+	noextract = x-tools7h-20260119.tar.xz
+	noextract = x-tools8-20260119.tar.xz
 	options = libtool
 	options = emptydirs
 	options = !strip
-	source = x-tools7h-20251116.tar.xz::https://archlinuxarm.org/builder/xtools/x-tools7h.tar.xz
-	source = x-tools8-20251116.tar.xz::https://archlinuxarm.org/builder/xtools/x-tools8.tar.xz
+	source = x-tools7h-20260119.tar.xz::https://archlinuxarm.org/builder/xtools/x-tools7h.tar.xz
+	source = x-tools8-20260119.tar.xz::https://archlinuxarm.org/builder/xtools/x-tools8.tar.xz
 	source = config.in
 	source = service.in
 	source = readme.in
-	md5sums = 6d0cf506c38dd41d55116f2800fd6715
-	md5sums = 8c1dcca091569ffe4487e4e5249cc2da
-	md5sums = 6bd0313f391b8c21d9ba1eae88026bf7
-	md5sums = 26741c886597e3fd8d8fc0a61aa8a49a
-	md5sums = 9219b50ec9dce99aed3cca88a584c835
+	sha256sums = 0570d1e7a88e211971c54c2347fedfcf060557d4f6a2ee6bd40bcebe32b6581a
+	sha256sums = ecb69c45c627ea69016bd73d06c38a10863550a687b956fb7170550bf47e3fe4
+	sha256sums = 9267e582cec2c8fad5d3e2945ddd0438a74c3d81f2915c21e6dff854f09d6bd0
+	sha256sums = 0826429ae7faae43fac60202f717da44c05a1246eb50593a19b4b9574a8aab1c
+	sha256sums = f00bfbd7c767c1a2f4089b08f90880005f76f26c1026869213d3ee4a2b764c52
 
 pkgname = distccd-alarm-armv7h
 
