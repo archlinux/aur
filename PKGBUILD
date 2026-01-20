@@ -153,6 +153,18 @@ build() {
   #       |   ^~~~~
   # ```
 
+  ## Silence some warnings
+  local _NOWARNINGS _warning _CFLAGSADDITIONS
+  _NOWARNINGS=("unused-result")
+  _CFLAGSADDITIONS=""
+  for _warning in "${_NOWARNINGS[@]}"; do
+    _CFLAGSADDITIONS+=" -Wno-${_warning} -Wno-error=${_warning}"
+  done
+  CFLAGS+="${_CFLAGSADDITIONS}"
+  CXXFLAGS+="${_CFLAGSADDITIONS}"
+  export CFLAGS
+  export CXXFLAGS
+
   cmake -B build -S "${_pkgname}-${pkgver}" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
