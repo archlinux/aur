@@ -1,0 +1,20 @@
+pkgbase = powerctl
+	pkgdesc = CPU/GPU power profile manager for Linux with Tauri GUI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/TheToxicSideOfMe/Powerctl
+	install = powerctl.install
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = pnpm
+	depends = power-profiles-daemon
+	depends = webkit2gtk
+	depends = gtk3
+	optdepends = supergfxctl: For GPU power management on supported systems
+	source = powerctl-0.1.0.tar.gz::https://github.com/TheToxicSideOfMe/Powerctl/archive/refs/tags/0.1.0.tar.gz
+	sha256sums = 6a8a8896f0fcc1fe3fc3963aaf9d9c3783c26216b1c054dd014af4d61c7b6484
+
+pkgname = powerctl

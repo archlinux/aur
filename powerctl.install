@@ -1,0 +1,14 @@
+post_install() {
+    echo "========================================"
+    echo "PowerCTL installed successfully!"
+    echo ""
+    echo "Next steps (run as root):"
+    echo "  sudo /usr/local/bin/install-powerctl.sh"
+    echo ""
+    echo "This will:"
+    echo "  • Create configuration files in /etc/powerctl"
+    echo "  • Install helper scripts to /usr/local/bin"
+    echo "  • Set up systemd service to restore power profile at boot"
+    echo "  • Set up polkit rules for passwordless execution from GUI"
+    echo "========================================"
+}
