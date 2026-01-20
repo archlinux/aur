@@ -1,0 +1,31 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    ".gitignore",
+    "README.md",
+    "godot",
+    "keys/**",
+    ".SRCINFO",
+    ".nvchecker.toml",
+    "*.install",
+    "*.sysusers",
+    "*.tmpfiles",
+    "*.logrotate",
+    "*.pam",
+    "*.service",
+    "*.socket",
+    "*.timer",
+    "*.desktop",
+    "*.hook",
+]
+SPDX-FileCopyrightText = "2026 HurricanePootis <hurricanepootis@protonmail.com>"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "godot3-mono.patch",
+]
+SPDX-FileCopyrightText = "godot3-mono contributors"
+SPDX-License-Identifier = "MIT"
