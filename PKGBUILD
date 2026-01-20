@@ -3,7 +3,7 @@
 _pkgname="qtengine"
 pkgname="$_pkgname-git"
 pkgver=r20.g53747cb
-pkgrel=2
+pkgrel=3
 pkgdesc="QT Platform Theme made easy"
 url="https://github.com/kossLAN/qtengine"
 license=('BSD-2-Clause')
@@ -32,13 +32,9 @@ conflicts=(
 )
 source=(
     "git+${url}.git"
-    "https://raw.githubusercontent.com/KDE/breeze/refs/heads/master/colors/BreezeDark.colors"
-    "https://raw.githubusercontent.com/KDE/breeze/refs/heads/master/colors/BreezeLight.colors"
     "config.example.json"
 )
 sha256sums=('SKIP'
-            '09d0382680e23e736c862e35a1b9742f511ff0e34bd28c967f896a9fb986d14b'
-            'ccae3193b07605f9ab123c57539692da2e8c4b4f9a70bbac0be5525ccabe855d'
             'e6816d7a46a0c16c5916d0624bfb722c0d0eb16b9830bd54db242975ff5c95c9')
 install="$_pkgname.install"
 
@@ -64,8 +60,6 @@ build() {
 
 package() {
   cd "$srcdir"
-  install -Dm0644 ./BreezeDark.colors -t "$pkgdir/usr/share/color-schemes/"
-  install -Dm0644 ./BreezeLight.colors -t "$pkgdir/usr/share/color-schemes/"
   install -Dm0644 ./config.example.json -t "$pkgdir/etc/$_pkgname/"
 
   cd "$_pkgname"

@@ -1,7 +1,7 @@
 pkgbase = qtengine-git
 	pkgdesc = QT Platform Theme made easy
 	pkgver = r20.g53747cb
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kossLAN/qtengine
 	install = qtengine.install
 	arch = x86_64
@@ -22,12 +22,8 @@ pkgbase = qtengine-git
 	conflicts = qtengine
 	conflicts = qtengine-bin
 	source = git+https://github.com/kossLAN/qtengine.git
-	source = https://raw.githubusercontent.com/KDE/breeze/refs/heads/master/colors/BreezeDark.colors
-	source = https://raw.githubusercontent.com/KDE/breeze/refs/heads/master/colors/BreezeLight.colors
 	source = config.example.json
 	sha256sums = SKIP
-	sha256sums = 09d0382680e23e736c862e35a1b9742f511ff0e34bd28c967f896a9fb986d14b
-	sha256sums = ccae3193b07605f9ab123c57539692da2e8c4b4f9a70bbac0be5525ccabe855d
 	sha256sums = e6816d7a46a0c16c5916d0624bfb722c0d0eb16b9830bd54db242975ff5c95c9
 
 pkgname = qtengine-git
