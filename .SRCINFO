@@ -1,6 +1,6 @@
 pkgbase = python-pathos
 	pkgdesc = parallel graph management and execution in heterogeneous computing
-	pkgver = 0.3.4
+	pkgver = 0.3.5
 	pkgrel = 1
 	url = https://github.com/uqfoundation/pathos
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-pathos
 	depends = python-ppft
 	depends = python-pox
 	depends = python-multiprocess
-	source = pathos-0.3.4.tar.gz::https://github.com/uqfoundation/pathos/archive/0.3.4.tar.gz
-	sha512sums = c82ed602840a005620a811016e42dba96414d5af985efcb8a36b7977e8881f86ac5cc3003d90ea08aeacc16fbbf5513f17445b3202d81e0bdebfe299a3a93217
+	source = pathos-0.3.5.tar.gz::https://github.com/uqfoundation/pathos/archive/0.3.5.tar.gz
+	sha512sums = 6dd7a4ad8f9969c2a37d3eed73e2549edc79f0f6a39bef3f1186ed2f4af6bd65f8f8d91b70aa5f2ff600c217a34712bd3ab09b338d8682a7929560d7aa29f863
 
 pkgname = python-pathos
