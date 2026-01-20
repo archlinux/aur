@@ -1,0 +1,17 @@
+pkgbase = nirinit-git
+	pkgdesc = A session manager for Niri
+	pkgver = 0.1.4.r2.g9b6db3e
+	pkgrel = 1
+	url = https://github.com/amaanq/nirinit
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	optdepends = niri: Wayland compositor required at runtime
+	provides = nirinit
+	conflicts = nirinit
+	source = nirinit::git+https://github.com/amaanq/nirinit.git
+	sha256sums = SKIP
+
+pkgname = nirinit-git
