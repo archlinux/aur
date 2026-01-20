@@ -1,6 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='6.11.2'
+_upstreamver='6.11.3'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='dolphie'
@@ -26,7 +26,7 @@ depends=('python' 'python-sqlparse' 'python-pygments' 'python-pymysql' 'python-p
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
 source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('5d6255cf2d83f93eec173f4f129df3b8915ca1205745a64a138bbf222d978039')
+sha256sums=('e1d2676d9c878ffe90baf1aca82f2a94729180dd5a58731143f13ff52a7ad3c7')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${pkgver}/"
