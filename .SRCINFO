@@ -1,13 +1,15 @@
 pkgbase = flent
 	pkgdesc = The FLExible Network Tester.
 	pkgver = 2.2.0
-	pkgrel = 2
+	pkgrel = 4
 	url = https://flent.org
 	arch = any
 	license = GPL
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = netperf
-	depends = python-setuptools
 	optdepends = python-matplotlib: for outputting graphs
 	optdepends = python-qtpy: for the GUI
 	conflicts = netperf-wrapper
