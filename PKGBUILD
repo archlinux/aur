@@ -25,7 +25,7 @@ depends=(
 )
 
 source=(
-    "https://github.com/yyyumeniku/HyPrism/releases/download/v${pkgver}/HyPrism-linux-x86_64.tar.gz"
+    "${url}/releases/download/v${pkgver}/HyPrism-linux-x86_64.tar.gz"
     "${_pkgname}.desktop"
     "${_pkgname}.png"
     "LICENSE"
