@@ -7,13 +7,13 @@ pkgname=haskell-hscurses
 pkgver=1.5.0.0
 pkgrel=1
 pkgdesc="NCurses bindings for Haskell"
-url="http://hackage.haskell.org/package/${_hkgname}"
+url="https://hackage.haskell.org/package/${_hkgname}"
 license=('LGPL')
 arch=('i686' 'x86_64')
 makedepends=('ghc')
 depends=('ghc-libs' 'ncurses')
 options=('strip')
-source=(http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz)
+source=(https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz)
 build() {
 	cd "${srcdir}/${_hkgname}-${pkgver}"
 	LDFLAGS="${LDFLAGS/-Wl,-z,pack-relative-relocs/}" \
