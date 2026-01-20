@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=prospect-mail
 _pkgname='Prospect Mail'
-pkgver=1.1.0
+pkgver=1.1.1
 _electronversion=39
 _nodeversion=22
 pkgrel=1
@@ -34,7 +34,7 @@ source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('86c2b371138b7524f2bb7f87db19ad74d98d68ca4331c5320aeea0c8ef569607'
+sha256sums=('6c508d522695727bf3b260c79c687f362765adcea378ba9d6ca994c9372144dc'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname}.git/package.json" | tr -d '^')
