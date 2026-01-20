@@ -1,12 +1,11 @@
-# Generator  : CPANPLUS::Dist::Arch 1.32
-# Maintainer: András Wacha < awacha at gmail >
 # Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: András Wacha < awacha at gmail >
 pkgname='perl-chemistry-elements'
 pkgver='1.081'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Perl extension for working with Chemical Elements"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl')
 checkdepends=('perl-test-pod')
