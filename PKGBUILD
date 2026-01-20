@@ -1,6 +1,6 @@
 # Maintainer: Abu <abu@matterize.io>
 pkgname=ulog
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="USB serial port logger with automatic session management"
 arch=('any')
