@@ -6,38 +6,37 @@ pkgdesc="Challenging 2D bridge construction game"
 arch=(x86_64)
 url="https://bielebridge.net"
 license=(GPL-3.0-or-later)
-makedepends=(git cmake)
+makedepends=(cmake)
 depends=(glu lua sdl2_gfx sdl2_image sdl2_ttf)
 source=(
-  "git+https://gitlab.digitalcourage.de/georg/$pkgname.git#tag=$pkgver"
+  "https://gitlab.digitalcourage.de/georg/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
   "bielebridge-install.patch"
 )
-sha256sums=(
-  '944816485e93afdb4cceb8446bfe82ed59748f06184141d26b421bdb587c8903'
-  '004977840d2074ab0d32d58807afcedf9fefbc526aba76fa923773b3f12d0b40'
-)
+sha256sums=('6bc61186e88974570b0c55abbca0b86c24b686b231c425e18f375bdad87f83b6'
+            '004977840d2074ab0d32d58807afcedf9fefbc526aba76fa923773b3f12d0b40')
 
 prepare() {
-  cd "${pkgname}"
+  tar -xzf "$pkgname-$pkgver.tar.gz"
+  cd "$pkgname-$pkgver"
   patch -p1 < "${srcdir}/bielebridge-install.patch"
 }
 
 
 build() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
 
   cmake -B build -S . -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build build -- -j"$(nproc)"
 }
 
 check() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
 
   ctest -VV
 }
 
 package() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
   DESTDIR="$pkgdir" cmake --install build
   
   mv "$pkgdir/usr/share/bielebridge/resources" "$pkgdir/usr/share/bielebridge/data"
