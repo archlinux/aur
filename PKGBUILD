@@ -4,7 +4,7 @@ pkgbase=python-astropy-healpix
 _pyname=astropy_healpix
 _pname=${pkgbase#python-}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="BSD-licensed HEALPix for Astropy"
 arch=('i686' 'x86_64')
@@ -12,13 +12,13 @@ url="http://astropy-healpix.readthedocs.io"
 license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm'
              'python-extension-helpers'
-             'python-wheel'
              'python-build'
              'python-installer'
-             'python-numpy'
+             'python-numpy>=2.0.0'
              'python-sphinx-astropy'
              'python-matplotlib'
-             'python-astropy')
+             'python-astropy')  # wheel required by new setuptools
+# _pyname/conftest.py
 checkdepends=('python-pytest-astropy-header'
               'python-pytest-doctestplus'
 #             'python-pytest-xdist'
@@ -28,7 +28,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
         "https://lambda.gsfc.nasa.gov/data/map/dr3/skymaps/5yr//wmap_band_imap_r9_5yr_K_v3.fits"
         'fix_deprecation_warning.patch'
         'use_local_doc_fits.patch')
-md5sums=('3eec06645429549d80ee12fa2e9bd5c8'
+md5sums=('074b41db345730ea5a3d01ead06684f7'
          'f183da2392e37b9b424e9866d7bca559'
          '71e532a1fed7a57d4ccf0d3e41035dd8'
          '6fc85696c0103b265309db0fa3339b33')
