@@ -1,6 +1,6 @@
 # Maintainer: Diaz <muhammaddiaznurfarizki@gmail.com>
 pkgname=m3wal
-pkgver=1.1.6 
+pkgver=1.1.8 
 pkgrel=1
 pkgdesc="Material 3 Color Scheme Generator from Wallpaper"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL-2.0')
 depends=('python' 'python-pillow' 'python-numpy' 'feh')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('9e3a33b4ee4cdbb875a227dbcfe7e9decbcc50bf08f44070eeae610fa1bc6bf8')  
+sha256sums=('53cf54c55b0537e69ddba3fd6e8ce5bff0da6edfea69167faad111ba8ec3050e')  
 
 build() {
     cd "$pkgname-$pkgver"
