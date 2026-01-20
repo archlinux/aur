@@ -61,6 +61,10 @@ prepare() {
 	git config submodule.lib/ipatool-go.url "${srcdir}/libipatool-go"
 	git config submodule.lib/zupdater.url "${srcdir}/ZUpdater"
 	git -c protocol.file.allow=always submodule update
+
+	cd lib/ipatool-go
+	export GOPATH="${srcdir}"
+	go mod download -modcacherw -x
 }
 
 build() {
