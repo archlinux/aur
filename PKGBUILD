@@ -1,16 +1,17 @@
-# Maintainer: autinerd <autinerd-arch at kuyateh dot eu>
+# Maintainer: Kaiserdragon2
+# Contributor: autinerd <autinerd-arch at kuyateh dot eu>
 
 pkgname=arcticons-icon-theme-git
 pkgver=9.2.4.0.r0.g7a1c1519
 pkgrel=1
 pkgdesc='A monotone line-based icon pack for android - freedesktop version (git version)'
 arch=('any')
-url='https://github.com/Arcticons-Team/Arcticons-Linux'
+url='https://codeberg.org/Arcticons/Arcticons-Linux'
 license=('GPL3')
 options=(!strip)
 provides=('arcticons-icon-theme')
 conflicts=('arcticons-icon-theme')
-source=('git+https://github.com/Arcticons-Team/Arcticons-Linux.git')
+source=('git+https://codeberg.org/Arcticons/Arcticons-Linux.git')
 sha512sums=('SKIP')
 
 pkgver() {
