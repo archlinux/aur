@@ -1,7 +1,7 @@
 # Maintainer: Michał Piasecki <mpiasecki720@protonmail.com>
 pkgname=rimworld-workshop-downloader
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to manage Rimworld mod updates from Steam Workshop"
 arch=('x86_64')
 url="https://github.com/xtul9/rimworld-workshop-downloader"
@@ -21,18 +21,37 @@ depends=(
     'libayatana-appindicator'
     'steamcmd'
 )
-makedepends=('curl' 'pacman-contrib')
+makedepends=('dpkg' 'binutils' 'pacman-contrib' 'curl')
 
-# Download pre-built Arch package from GitHub releases
+_debfile="Rimworld Workshop Downloader_${pkgver}_amd64.deb"
+_debfile_nospace="rimworld-workshop-downloader_${pkgver}_amd64.deb"
 _pkgfile="$pkgname-$pkgver-$pkgrel-x86_64.pkg.tar.zst"
-source=("$_pkgfile::https://github.com/xtul9/rimworld-workshop-downloader/releases/download/v$pkgver/$_pkgfile")
+
+# Check for local DEB and create a symlink without spaces if found
+if [ -f "$_debfile" ]; then
+    ln -sf "$_debfile" "$_debfile_nospace"
+    source=("$_debfile_nospace")
+elif [ -f "backend/target/release/bundle/deb/$_debfile" ]; then
+    ln -sf "backend/target/release/bundle/deb/$_debfile" "$_debfile_nospace"
+    source=("$_debfile_nospace")
+else
+    source=("$_pkgfile::https://github.com/xtul9/rimworld-workshop-downloader/releases/download/v$pkgver/$_pkgfile")
+fi
+
 sha256sums=('SKIP')
-noextract=("$_pkgfile")
+noextract=("${source[0]%%::*}")
 
 prepare() {
-    # Extract the Arch package
-    # Use bsdtar (from pacman-contrib) which natively supports .pkg.tar.zst
-    bsdtar -xf "$_pkgfile"
+    if [ -f "$srcdir/$_debfile_nospace" ]; then
+        ar x "$srcdir/$_debfile_nospace"
+        tar -xf data.tar.gz
+        rm -f debian-binary control.tar.*
+    elif [ -f "$srcdir/$_pkgfile" ]; then
+        bsdtar -xf "$srcdir/$_pkgfile"
+    else
+        error "No source file found"
+        return 1
+    fi
 }
 
 package() {
