@@ -2,7 +2,7 @@
 pkgname=weeb-cli
 pkgver=${GITHUB_REF_NAME#v}
 
-pkgver=2.1.6 
+pkgver=2.2.0 
 
 pkgrel=1
 pkgdesc="Tarayıcı yok, reklam yok, dikkat dağıtıcı unsur yok. Sadece siz ve eşsiz bir anime izleme deneyimi."
