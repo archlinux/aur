@@ -1,6 +1,6 @@
 pkgbase = eisl
 	pkgdesc = Easy-ISLisp is an interpreter and compiler compatible with ISLisp standard.
-	pkgver = 5.60
+	pkgver = 5.62
 	pkgrel = 1
 	url = https://github.com/sasagawa888/eisl
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = eisl
 	depends = sh
 	depends = gcc
 	depends = make
-	source = https://github.com/sasagawa888/eisl/archive/ｖ5.60.tar.gz
-	sha256sums = deeb2d1342f56f9ddae76de7727ead7de16db774c9342655c21d673c5384ce8e
+	source = https://github.com/sasagawa888/eisl/archive/v5.62.tar.gz
+	sha256sums = e4e3772e5aa627f64656826259ff9ce8bc15e91379b10905d32f075eabbb961b
 
 pkgname = eisl
