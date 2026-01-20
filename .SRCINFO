@@ -1,6 +1,6 @@
 pkgbase = fastrace
 	pkgdesc = A fast, dependency-free traceroute implementation in pure C
-	pkgver = 0.4.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/davidesantangelo/fastrace
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = fastrace
 	depends = glibc
 	depends = gcc-libs
 	provides = fastrace
-	source = fastrace-0.4.1.tgz::https://github.com/davidesantangelo/fastrace/archive/refs/tags/v0.4.1.tar.gz
-	sha256sums = fdc178b1061573030a35ee3658fdb2bb21429e2cdab61e7bf64de827706bfeee
+	source = fastrace-1.0.0.tgz::https://github.com/davidesantangelo/fastrace/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 2306b081389a98486167707733ace0e5811bd154eaf0beffd9f144e081c94ad9
 
 pkgname = fastrace
