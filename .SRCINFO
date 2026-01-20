@@ -1,6 +1,6 @@
 pkgbase = wallpicker
-	pkgdesc = Modern GTK4/Libadwaita wallpaper picker with Wallhaven integration and AI upscaling
-	pkgver = 2.4.0
+	pkgdesc = Modern GTK4/Libadwaita wallpaper picker with Wallhaven integration, AI upscaling, and AI tagging
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/gotar/WallPicker
 	arch = any
@@ -20,7 +20,8 @@ pkgbase = wallpicker
 	depends = python-rapidfuzz
 	optdepends = awww: Animated wallpaper transitions
 	optdepends = waifu2x-ncnn-vulkan: AI upscaling for local wallpapers
-	source = wallpicker::git+https://github.com/gotar/WallPicker.git#tag=v2.4.0
+	optdepends = clip-anytorch: AI image tagging for local wallpapers
+	source = wallpicker::git+https://github.com/gotar/WallPicker.git#tag=v2.5.0
 	sha256sums = SKIP
 
 pkgname = wallpicker
