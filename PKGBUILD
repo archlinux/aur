@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=spatstat.geom
-_pkgver=3.6-1
+_pkgver=3.7-0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -25,8 +25,8 @@ optdepends=(
   r-spatstat.random
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a8d62658c894b764338d6157c7284553')
-b2sums=('d9dfb65c8f129d9d795553a5722893728cebcac33194d68a8b7e537cc78987d1eca371b513dcf87125948b2b72ac50ee2db594dfd2c0e0d5c92e87db1010eb3f')
+md5sums=('76ef7b84d30ce910dd43fee6b059e45e')
+b2sums=('f9eece93c3ef250926a462d40503f04c3ac5fcf8adc81885c018ccb382423b38546a33f96d32d0c2ad6c1a005be81d0dcf36b10197e7be36aaae7e1c5021f707')
 
 build() {
   mkdir build
