@@ -1,21 +1,21 @@
 # Maintainer: Diramix <39developer@diram1x.ru>
 pkgname=next-music
-pkgver=2.0.0
-pkgrel=5
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Web client for Yandex Music with support for themes and addons"
 arch=('x86_64')
 url="https://github.com/Web-Next-Music/Next-Music-Client"
 license=('MIT')
 depends=('glibc' 'gtk3' 'alsa-lib')
 
-source=("https://github.com/Web-Next-Music/Next-Music-Client/releases/download/Next-Music-${pkgver}/next-music-client_${pkgver}_amd64.deb")
+source=("https://github.com/Web-Next-Music/Next-Music-Client/releases/download/Next-Music-${pkgver}/next-music_${pkgver}_amd64.deb")
 sha256sums=('SKIP')
 
 package() {
   cd "${srcdir}"
 
   # Распаковка deb
-  ar x "next-music-client_${pkgver}_amd64.deb"
+  ar x "next-music_${pkgver}_amd64.deb"
   tar -xf data.tar.*
 
   # Установка файлов
@@ -34,5 +34,5 @@ package() {
 
   # Симлинк как в deb
   mkdir -p "${pkgdir}/usr/bin"
-  ln -s "${BIN#/pkgdir}" "${pkgdir}/usr/bin/next-music-client"
+  ln -s "${BIN#/pkgdir}" "${pkgdir}/usr/bin/next-music"
 }
