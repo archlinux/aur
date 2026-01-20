@@ -1,6 +1,6 @@
 pkgbase = plumeimpactor-git
 	pkgdesc = Feature rich iOS/tvOS sideloading app written in Rust (git)
-	pkgver = 0.r0.g0000000
+	pkgver = 2.0.0.r1.g464429d
 	pkgrel = 1
 	url = https://github.com/khcrysalis/Impactor
 	arch = x86_64

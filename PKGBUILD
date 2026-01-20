@@ -1,12 +1,12 @@
 # Maintainer: se2crid
 pkgname=plumeimpactor-git
-pkgver=0.r0.g0000000
+pkgver=2.0.0.r1.g464429d
 pkgrel=1
 pkgdesc="Feature rich iOS/tvOS sideloading app written in Rust (git)"
 arch=('x86_64')
 url="https://github.com/khcrysalis/Impactor"
 license=('MIT')
-depends=('gtk3' 'libpng' 'libjpeg-turbo' 'mesa' 'glu' 'libxkbcommon' 'expat' 'libtiff' 'usbmuxd' 'libimobiledevice')
+depends=('usbmuxd' 'libayatana-appindicator')
 makedepends=('git' 'cargo' 'clang' 'cmake' 'pkgconf')
 provides=('plumeimpactor')
 conflicts=('plumeimpactor')
@@ -25,13 +25,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/Impactor"
-  export CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER="gcc"
-  export CC="gcc"
-  export CXX="g++"
-  export AR="gcc-ar"
-  export NM="gcc-nm"
-  export RANLIB="gcc-ranlib"
-  cargo build --release --locked --bin plumeimpactor
+  env CARGO_INCREMENTAL=0 cargo build --release --locked --bin plumeimpactor
 }
 
 package() {
