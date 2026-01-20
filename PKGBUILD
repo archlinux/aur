@@ -3,7 +3,7 @@
 pkgname=lidm-bin
 pkgver=1.2.3
 pkgrel=4
-depends=('libpam.so')
+depends=('libpam.so' 'lidm-service')
 pkgdesc="A fully colorful customizable TUI display manager made in C. (release binary)"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'riscv64')
 url="https://github.com/javalsai/lidm"
