@@ -1,2 +1,2 @@
 #!/usr/bin/sh
-exec "/opt/Kingdom Hearts Melon Mix/MelonMix.AppImage" "$@"
+env QT_QPA_PLATFORM=xcb "/opt/Kingdom Hearts Melon Mix/MelonMix.AppImage" "$@"
