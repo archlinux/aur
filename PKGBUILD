@@ -3,7 +3,7 @@
 
 pkgname=lsfg-vk-bin
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Lossless Scaling Frame Generation on Linux"
 arch=("x86_64")
 url="https://github.com/PancakeTAS/lsfg-vk"
