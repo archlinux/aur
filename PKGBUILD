@@ -1,9 +1,9 @@
 # shellcheck disable=SC2034,SC2154,SC2164
 # Maintainer: javalsai <javalsai@proton.me>
 pkgname=lidm-git
-pkgver=1.2.3.r3.g363deea
-pkgrel=4
-depends=('pam')
+pkgver=1.2.3.r12.g7e7a297
+pkgrel=1
+depends=('pam' 'lidm-service')
 makedepends=('git')
 pkgdesc="A fully colorful customizable TUI display manager made in C. (last git commit)"
 arch=('any')
