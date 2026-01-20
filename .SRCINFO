@@ -1,0 +1,15 @@
+pkgbase = pitchfork
+	pkgdesc = Daemons with DX
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://pitchfork.jdx.dev
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	options = !lto
+	source = pitchfork-1.1.0.tar.gz::https://github.com/jdx/pitchfork/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 9ea38ffa9f3eed7a41f333c65b978fff8511197578018864d7fa061a67f81cad
+	b2sums = 1b61d8dcb73d3f7eab507291fcc171e52e809c3e58c7ebdb795896676b6fc411ba788f41e5523f61f931d1e645898c22fbaa4d90af9f0cfbe80bd24366e2f18b
+
+pkgname = pitchfork
