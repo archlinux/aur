@@ -6,7 +6,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libxkbcommon
-pkgver=1.10.0
+pkgver=1.13.1
 pkgrel=1
 arch=('any')
 pkgdesc="Keymap handling library for toolkits and window systems (Android ${_android_arch})"
@@ -22,7 +22,7 @@ makedepends=('android-meson'
              "android-${_android_arch}-libxml2")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/xkbcommon/libxkbcommon/archive/refs/tags/xkbcommon-${pkgver}.tar.gz")
-md5sums=('fff567d6841b9127477c303f1e8deb22')
+md5sums=('80f106737263eb7e19d6b4f7e0d82287')
 
 build() {
     cd "${srcdir}/libxkbcommon-xkbcommon-${pkgver}"
@@ -49,4 +49,6 @@ package() {
     DESTDIR="${pkgdir}" ninja -C build install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
+
+    install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
