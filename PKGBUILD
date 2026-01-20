@@ -2,7 +2,7 @@
 pkgbase='foundationdb'
 pkgname='foundationdb'
 pkgver='7.3.67'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='FoundationDB scalable, fault-tolerant, ordered key-value store'
 arch=('x86_64')
 url='https://www.foundationdb.org'
