@@ -1,19 +1,61 @@
-cat > gw2taco << 'EOF'
 #!/usr/bin/env bash
 set -euo pipefail
 
-APPDIR="/opt/gw2taco"
-EXE="${APPDIR}/GW2TacO.exe"
+PKGNAME="gw2taco-bin"
+SYSTEM_APPDIR="/opt/gw2taco"
+SYSTEM_EXE="${SYSTEM_APPDIR}/GW2TacO.exe"
+REDIST_DIR="/usr/share/${PKGNAME}/redist"
 
-if [[ ! -f "${EXE}" ]]; then
-  echo "GW2TacO.exe not found at: ${EXE}" >&2
+if [[ ! -f "${SYSTEM_EXE}" ]]; then
+  echo "GW2TacO.exe not found at: ${SYSTEM_EXE}" >&2
   exit 1
 fi
 
-export WINEPREFIX="${XDG_DATA_HOME:-$HOME/.local/share}/gw2taco/wineprefix"
-mkdir -p "$(dirname "$WINEPREFIX")"
+# User data locations
+USER_BASE="${XDG_DATA_HOME:-$HOME/.local/share}/gw2taco"
+export WINEPREFIX="${USER_BASE}/wineprefix"
+USER_APPDIR="${USER_BASE}/app"
+USER_EXE="${USER_APPDIR}/GW2TacO.exe"
+MARKER="${WINEPREFIX}/.gw2taco_bootstrap_done"
 
-exec wine "${EXE}" "$@"
-EOF
+mkdir -p "${USER_BASE}"
 
-chmod +x gw2taco
+# Copy app to writable location (many apps write next to the EXE)
+# Refresh copy if upstream files changed by comparing a stamp file we install under /opt.
+STAMP_SRC="${SYSTEM_APPDIR}/.gw2taco-package-stamp"
+STAMP_DST="${USER_APPDIR}/.gw2taco-package-stamp"
+
+need_copy=0
+if [[ ! -f "${USER_EXE}" ]]; then
+  need_copy=1
+elif [[ -f "${STAMP_SRC}" ]]; then
+  if [[ ! -f "${STAMP_DST}" ]] || ! cmp -s "${STAMP_SRC}" "${STAMP_DST}"; then
+    need_copy=1
+  fi
+fi
+
+if [[ "${need_copy}" -eq 1 ]]; then
+  rm -rf "${USER_APPDIR}"
+  mkdir -p "${USER_APPDIR}"
+  cp -a "${SYSTEM_APPDIR}/." "${USER_APPDIR}/"
+fi
+
+# First-run bootstrap: initialize prefix and install VC++ runtimes silently
+if [[ ! -f "${MARKER}" ]]; then
+  mkdir -p "${WINEPREFIX}"
+  # Ensure prefix is initialized
+  wineboot -u >/dev/null 2>&1 || true
+
+  # Install redistributables if present (do not hard-fail if installer returns non-zero)
+  if [[ -f "${REDIST_DIR}/vcredist_x64.exe" ]]; then
+    wine "${REDIST_DIR}/vcredist_x64.exe" /install /quiet /norestart >/dev/null 2>&1 || true
+  fi
+  if [[ -f "${REDIST_DIR}/vcredist_x86.exe" ]]; then
+    wine "${REDIST_DIR}/vcredist_x86.exe" /install /quiet /norestart >/dev/null 2>&1 || true
+  fi
+
+  touch "${MARKER}"
+fi
+
+cd "${USER_APPDIR}"
+exec wine "${USER_EXE}" "$@"
