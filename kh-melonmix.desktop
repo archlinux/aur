@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Kingdom Hearts: Melon Mix
 GenericName=KH Melon Mix (DS Emulator)
-Exec=env QT_QPA_PLATFORM=xcb '/opt/Kingdom Hearts Melon Mix/MelonMix'
+Exec=kh-melonmix
 Terminal=false
 Path=/opt/Kingdom Hearts Melon Mix/
 Type=Application

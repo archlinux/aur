@@ -7,30 +7,8 @@ echo ">> https://github.com/vitor251093/KHMelonMix/blob/master/HOW_TO_PLAY.md"
 
 CURRENT_USER=$(logname 2>/dev/null || echo "$SUDO_USER" || echo "$USER")
 chown -R $CURRENT_USER /opt/Kingdom\ Hearts\ Melon\ Mix
-
-if [ -f /usr/bin/kh-melonmix ]; then
-:
-else
-ln -s "/opt/Kingdom Hearts Melon Mix/MelonMix" /usr/bin/kh-melonmix
-fi
-
-if [ -f /usr/lib/liblua5.4.so.0 ]; then
-:
-else
-  ln -s "/usr/lib/liblua.so" /usr/lib/liblua5.4.so.0
-fi
 }
 
-## arg 1:  the old package version
-post_remove() {
-	su -c "rm /usr/bin/kh-melonmix"
-}
-
-
-pre_upgrade() {
-su -c  "rm '/opt/Kingdom Hearts Melon Mix/MelonMix'"
-
-}
 post_upgrade() {
   post_install
 }

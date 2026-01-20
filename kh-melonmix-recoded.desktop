@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Kingdom Hearts: Re:coded Melon Mix
 GenericName=KH Melon Mix (DS Emulator)
-Exec=env QT_QPA_PLATFORM=xcb '/opt/Kingdom Hearts Melon Mix/MelonMix' -f '/opt/Kingdom Hearts Melon Mix/roms/recoded.nds'
+Exec=kh-melonmix -f '/opt/Kingdom Hearts Melon Mix/roms/recoded.nds'
 Terminal=false
 Path=/opt/Kingdom Hearts Melon Mix/
 Type=Application
