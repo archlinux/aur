@@ -1,7 +1,7 @@
 pkgbase = android-x86-64-libxfixes
 	pkgdesc = X11 miscellaneous 'fixes' extension library (Android x86-64)
-	pkgver = 6.0.1
-	pkgrel = 2
+	pkgver = 6.0.2
+	pkgrel = 1
 	url = https://xorg.freedesktop.org/
 	arch = any
 	license = custom
@@ -13,10 +13,7 @@ pkgbase = android-x86-64-libxfixes
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://xorg.freedesktop.org//releases/individual/lib/libXfixes-6.0.1.tar.xz
-	source = https://xorg.freedesktop.org//releases/individual/lib/libXfixes-6.0.1.tar.xz.sig
-	validpgpkeys = 4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E
-	md5sums = 65b9ba1e9ff3d16c4fa72915d4bb585a
-	md5sums = SKIP
+	source = https://xorg.freedesktop.org//releases/individual/lib/libXfixes-6.0.2.tar.xz
+	md5sums = baa39ada682dd524491a165bb0dfc708
 
 pkgname = android-x86-64-libxfixes
