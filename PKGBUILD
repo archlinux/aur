@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-dist-build'
-pkgver='0.023'
+pkgver='0.024'
 pkgrel='1'
 pkgdesc="A modern module builder, author tools not included!"
 arch=('any')
@@ -12,8 +12,8 @@ depends=('perl-cpan-requirements-dynamic' 'perl-extutils-builder>=0' 'perl-extut
 makedepends=()
 url='https://metacpan.org/release/Dist-Build'
 source=("http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/Dist-Build-$pkgver.tar.gz")
-md5sums=('d395734a3dba03cf90296cc88bf1cc52')
-sha512sums=('b307e474ceaa9fcedb53a7da808e18850bbb2bd678b8c59fb391295f4f02d92762a0a7cac138ad06b9c600a3d95ff2750b054579ed513a7da2935e1f5437cc78')
+md5sums=('2bfdffba20a09e939b30d96d1fdba635')
+sha512sums=('425809725d753ab8fa3e03a2a70f887693c79c16b82ac3fe8f4f7a3059a459c655bb621e12702bfec9effbf12412e8294d23f00f63c9b92753a472bdeaa7515a')
 _distdir="Dist-Build-$pkgver"
 
 build() {
