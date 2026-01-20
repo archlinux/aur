@@ -38,16 +38,18 @@ package_foundationdb-clients() {
   # Extract the clients .deb
   ar p "$srcdir/foundationdb-clients_${pkgver}-${pkgrel}_amd64.deb" data.tar.gz | tar -zx -C "$pkgdir/"
 
-  # Install its helper files
+  # Install helper files
   install -Dm644 "$srcdir/foundationdb-clients.sysusers" \
     "$pkgdir/usr/lib/sysusers.d/foundationdb-clients.conf"
 
   install -Dm644 "$srcdir/foundationdb-clients.tmpfiles" \
     "$pkgdir/usr/lib/tmpfiles.d/foundationdb-clients.conf"
+
+  # --- FIX PERMISSIONS (Silences warnings on /usr, /usr/lib, etc) ---
+  find "$pkgdir" -type d -exec chmod 755 {} +
 }
 
 # --- PACKAGE: foundationdb (The Server) ---
-# Renamed from 'package_foundationdb-server' to match pkgname
 package_foundationdb() {
   pkgdesc='FoundationDB server daemon and utilities'
   depends=('foundationdb-clients' 'systemd')
@@ -81,4 +83,13 @@ package_foundationdb() {
   # This matches what our install script expects (foundationdb.service)
   install -Dm644 "$srcdir/foundationdb-server.service" \
     "$pkgdir/usr/lib/systemd/system/foundationdb.service"
+
+  # --- FIX ALL PERMISSIONS ---
+  # 1. First, force EVERYTHING to 755 (Standard Arch permissions)
+  find "$pkgdir" -type d -exec chmod 755 {} +
+
+  # 2. Now, specifically tighten the data directories to 700
+  find "$pkgdir/var/lib/foundationdb" -type d -exec chmod 700 {} +
+  find "$pkgdir/var/log/foundationdb" -type d -exec chmod 700 {} +
+
 }
