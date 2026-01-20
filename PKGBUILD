@@ -2,7 +2,7 @@
 
 pkgname=3x-ui
 pkgver=2.8.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Xray panel supporting multi-protocol multi-user expire day & traffic & IP limit"
 arch=(aarch64 armv7h i686 x86_64)
 url="https://github.com/MHSanaei/$pkgname"
@@ -28,7 +28,7 @@ source=(
 )
 b2sums=('1ad561ba64bd5988364ad7c87e85be64ef381f1cdb0ab1ca8a8ad48763c31222f5deed43f8d367e8ba7d8b52297c1e9c1fb67c2cd972a0df8be85785243550a2'
         'a6f4eba028beba4f94d78ce40080e531939f98c9fa265c7a27d6ea17777cb549cd65be0193e390850fc418457e204f478c36f87b66844cb0abc69c893192e970'
-        '4d810eceb97b57c2b1cfecb2edf394e758510b36e8d9b32015ba3920db14bf24d1a33a25ce3544149cc35eaa71abca75ed4473a04089bc16266ac5db22bd2a2f')
+        'da9c55306c37438f79adfb550d1d0003f14c4d597b170e4424428fc07040391fd904d63f738c46ac92ba13d8c8577b3e4a74bfe119d0f7b914d3e7839c4a0336')
 
 prepare() {
   cd $pkgname-$pkgver

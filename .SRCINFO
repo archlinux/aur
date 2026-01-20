@@ -1,7 +1,7 @@
 pkgbase = 3x-ui
 	pkgdesc = Xray panel supporting multi-protocol multi-user expire day & traffic & IP limit
 	pkgver = 2.8.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MHSanaei/3x-ui
 	arch = aarch64
 	arch = armv7h
@@ -23,7 +23,7 @@ pkgbase = 3x-ui
 	source = x-ui-updategeo.service
 	source = x-ui-updategeo.timer
 	b2sums = 1ad561ba64bd5988364ad7c87e85be64ef381f1cdb0ab1ca8a8ad48763c31222f5deed43f8d367e8ba7d8b52297c1e9c1fb67c2cd972a0df8be85785243550a2
-	b2sums = cb0b31dd3dab8d6d1fb4b336a409622452337171e5031c19751d20e00402df0f0682202c38d16b54368cc32801ee0f6f03054f803b1a8e612e14c466f6f7fb9c
-	b2sums = d80d90bb7576de649d649c7802321469438b8dddf9bdf7c218700f934844e3e42b90dad5e31d27f2e120662f269650f70751af53d7edf34bf86dc3c810504cac
+	b2sums = a6f4eba028beba4f94d78ce40080e531939f98c9fa265c7a27d6ea17777cb549cd65be0193e390850fc418457e204f478c36f87b66844cb0abc69c893192e970
+	b2sums = da9c55306c37438f79adfb550d1d0003f14c4d597b170e4424428fc07040391fd904d63f738c46ac92ba13d8c8577b3e4a74bfe119d0f7b914d3e7839c4a0336
 
 pkgname = 3x-ui
