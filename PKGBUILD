@@ -10,9 +10,9 @@ options=('!emptydirs')
 depends=('perl-log-any')
 makedepends=()
 url='https://metacpan.org/release/Log-Any-Adapter-Callback'
-source=('https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/Log-Any-Adapter-Callback-0.102.tar.gz')
+source=("https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/Log-Any-Adapter-Callback-$pkgver.tar.gz")
 md5sums=('e9fd168edaadd76e89fd80c59570d472')
-_distdir="Log-Any-Adapter-Callback-0.102"
+_distdir="Log-Any-Adapter-Callback-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
