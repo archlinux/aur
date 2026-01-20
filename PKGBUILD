@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=via-desktop-bin
 _pkgname='VIA Desktop'
-pkgver=2026.1.11
+pkgver=2026.1.19
 _electronversion=33
 pkgrel=1
 pkgdesc="An Electron application designed to provide an offline experience for VIA.(Prebuilt version.Use system-wide electron)"
@@ -23,7 +23,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('87d32914507f8c895b1a68dd8048ef56e0e38ff56f391a51d3437e0bbf655022'
+sha256sums=('549ce8583c235779659b7379096650ceba523b5cfb7bafc9cdb1417f6dc0cedb'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/usr/lib/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
