@@ -1,7 +1,7 @@
 # Maintainer: Yoan Blanc <yoan@dosimple.ch>
 pkgname=getax
-pkgver=2024
-_update=3
+pkgver=2025
+_update=1
 pkgrel=1
 pkgdesc="Application for the tax reporting of physical people in the canton of Geneva, Switzerland."
 url="http://www.getax.ch/support/"
@@ -35,5 +35,5 @@ package() {
 	install -m755 "${srcdir}"/${pkgname} "${pkgdir}"${_app_home}/bin/${pkgname}
 	ln -s ${_app_home}/bin/${pkgname} "${pkgdir}"/usr/bin/${pkgname}
 }
-sha256sums=('a57cfb4637eb42fb982f455341a604570e5ba6635f14d5c739b2db4f0cf7665d'
+sha256sums=('b1212d00284766aede124dd3002f266c9ccca08c07d8d523bbf9c05b65a904ca'
             '3181ec6cbeee183de2279e75265c464e7b17f9f7e447cdbebbfbdd9af1ad2599')
