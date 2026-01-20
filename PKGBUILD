@@ -1,6 +1,6 @@
 # Maintainer: Syreese <syreeseofficial@gmail.com>
 pkgname=dailydash
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Terminal-based Head-Up Display for focus-driven developers"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'python-rich' 'python-psutil' 'python-requests' 'python-pygame' 'python-plyer')
 optdepends=('libnotify: Desktop notifications on Linux')
 source=("https://github.com/SyreeseOfficial/DailyDash/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0840c4340d122edc34ba75a3b45aaba3b44eba3b19ba9e3b3e3e882627f5c85d')
+sha256sums=('0bd70c808faf46dd3caf188d534534c2e816b9de26d96c3abd3620a24dddd893')
 
 package() {
     cd "DailyDash-${pkgver}"
