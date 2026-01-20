@@ -1,0 +1,18 @@
+pkgbase = python-deutsche-bahn-api
+	pkgdesc = Python client for the Deutsche Bahn Timetables API
+	pkgver = 1.1.0
+	pkgrel = 6
+	url = https://pypi.org/project/deutsche-bahn-api/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/d/deutsche-bahn-api/deutsche_bahn_api-1.1.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/m/mpu/mpu-0.23.1.tar.gz
+	sha256sums = 34372193d2b105dcc97ba13384031ea2aacd27728a9c006170a6d5a6d136aa99
+	sha256sums = 93d6409d3556178e6fd24b90b151d60f2ddeea5b17844e0c615d802f5510395b
+
+pkgname = python-deutsche-bahn-api
