@@ -7,7 +7,6 @@ arch=('x86_64')
 url="https://github.com/alacritty-use-theme/alacritty-use-theme"
 license=('GPL-1.0-or-later')
 depends=('alacritty>=0.13.0' 'go-yq')
-makedepends=('git')
 provides=('alacritty-use-theme')
 conflicts=('alacritty-use-theme-git')
 source=("$pkgname-$pkgver::http://github.com/alacritty-use-theme/alacritty-use-theme/archive/refs/tags/v$pkgver.tar.gz")
