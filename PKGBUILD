@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: revelation60 <benruyl@gmail.com>
 pkgname=gnome-shell-extension-gtile-git
-pkgver=64.r2.g09d81a1
+pkgver=66.r0.g22d1838
 pkgrel=1
-_nodeversion=22
+_nodeversion=24
 pkgdesc="A window tiling extension for GNOME"
 arch=('any')
 url="https://github.com/gTile/gTile"
