@@ -1,6 +1,6 @@
 pkgbase = mousam
 	pkgdesc = Weather at a Glance
-	pkgver = 1.4.0
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/amit9838/mousam
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = mousam
 	depends = libadwaita
 	depends = python-cairo
 	depends = python-requests
-	source = https://github.com/amit9838/mousam/archive/refs/tags/v1.4.0.tar.gz
-	sha256sums = 6f89f395e0b0a8658ecf6cd79212de44739e3ada0224c1728640e6c88b4270bb
+	source = https://github.com/amit9838/mousam/archive/refs/tags/v1.4.2.tar.gz
+	sha256sums = 5ad5884d7ff85f6d79d7e518607cfdd5e56b1851c6c33f0d93b38f372f3cbb3f
 
 pkgname = mousam
