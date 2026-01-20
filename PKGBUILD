@@ -4,7 +4,7 @@
 _pkgname=lovelive-music-player
 
 pkgname="${_pkgname}"-appimage
-pkgver=1.5.0
+pkgver=1.6.4
 pkgrel=1
 pkgdesc="A LoveLiver Music Player"
 arch=('x86_64')
@@ -12,10 +12,12 @@ url="https://github.com/LoveLiveMusicPlayer/LoveLiveMusicPlayer"
 license=('MIT')
 depends=('zlib' 'hicolor-icon-theme' 'fuse2')
 options=(!strip)
-_appimage="${pkgname}-${pkgver}.AppImage"
-source_x86_64=("${_appimage}::https://picbed-cdn.zhushenwudi.top/llmp-oss/LLMP/version/${pkgver}/LoveLive%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8-${pkgver}.AppImage")
+_appimage="LLMP-${pkgver}-x86-linux.AppImage"
+source_x86_64=("${_appimage}::https://github.com/LoveLiveMusicPlayer/LoveLiveMusicPlayer/releases/download/${pkgver}/LLMP-${pkgver}-x86-linux.AppImage"
+"https://raw.githubusercontent.com/LoveLiveMusicPlayer/LoveLiveMusicPlayer/${pkgver}/LICENSE")
 noextract=("${_appimage}")
-sha256sums_x86_64=('1262189eb9e47c6263ac7150f45a1368ec075f25d9b7c6d9601b2fbb42173c10')
+sha256sums_x86_64=("6ecaf9a16ded726c6da099a5a55018e9bfbbfd4e0427a4d1375a36ab06f93925"
+                   "5e98c15fe806a18f79422d2cd0c4587129f4e03081b5ab4c030627d6f6840d68")
 
 prepare() {
     chmod +x "${_appimage}"
@@ -45,4 +47,8 @@ package() {
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
+
+    # Symlink license
+    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
+    ln -s "/opt/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
