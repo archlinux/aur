@@ -1,7 +1,7 @@
 # Maintainer: Henry-ZHR <henry-zhr@qq.com>
 pkgname=mosdns
-pkgver=5.3.3
-pkgrel=2
+pkgver=5.3.4
+pkgrel=1
 pkgdesc="A DNS forwarder"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/IrineSistiana/mosdns"
@@ -12,7 +12,7 @@ backup=('etc/mosdns/config.yaml')
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "mosdns-sysusers.conf"
         "mosdns.service")
-sha512sums=('c2787e25c171a15dd045888246e8c52eb40f2438710b0053a89f742170fba375bc88f5f385082398be1d57197c4712d1089ccb0f1974a6a6abb7a90d3ffa06c9'
+sha512sums=('9ac94fd90a688498051dc4e57f1d1eee8060ec176973e127258e1dc9f2ec1e5f6d606e706ad845bfd1ca63b3ce7df2b697678407c3d8e0b23ed1faca632aa852'
             '6388385b26b0a37d519482537c976c559ff050c8cf0135be0a7bfc75538bd0c13e0e6487b165e7e06b7b3f0e9ecb802eaf105e62a315c77eed2e3161f690d184'
             '9322e4ee53f192e59622a34488920c162f9ce6a921e45eebd3780b18efbe4461fa1de4a3fe4706b3bfc7682cdaca3c37c84083b3942146c9a6e405ef0b712f88')
 
