@@ -3,15 +3,18 @@
 # Contributor: Zbyszek Tokarczyk <ztokarczyk (at) Gmail.com>
 
 pkgname=xfce4-notifyd-git
-pkgver=0.9.6.r20.gc3c3fac
+pkgver=0.9.7.r357.g5508033
 pkgrel=1
 pkgdesc='notification daemon for the xfce desktop - git checkout'
 arch=('i686' 'x86_64')
-license=('GPL')
+license=('GPL-1.0-or-later')
 url='http://goodies.xfce.org/projects/applications/xfce4-notifyd'
 groups=('xfce4-goodies')
-depends=('libxfce4ui' 'hicolor-icon-theme')
-makedepends=('xfce4-dev-tools' 'exo' 'intltool' 'git')
+depends=(
+	'libxfce4ui>=4.19.0' 'xfce4-panel>=4.19.0' 'libcanberra' 'libnotify'
+	'gtk-layer-shell' 'hicolor-icon-theme'
+)
+makedepends=('xfce4-dev-tools-git' 'intltool' 'git' 'meson')
 conflicts=('xfce4-notifyd')
 provides=('notification-daemon' 'xfce4-notifyd')
 options=('!libtool')
@@ -32,17 +35,18 @@ pkgver() {
 build() {
 	cd xfce4-notifyd/
 
-	./autogen.sh \
+	meson setup build \
+		--buildtype=release \
 		--prefix=/usr \
 		--sysconfdir=/etc \
 		--libexecdir=/usr/lib/xfce4 \
 		--localstatedir=/var \
-		--disable-static
-	make
+		-Dtests=false
+	meson compile -C build
 }
 
 package() {
 	cd xfce4-notifyd/
 
-	make DESTDIR=${pkgdir} install
+	meson install -C build --destdir "${pkgdir}"
 }

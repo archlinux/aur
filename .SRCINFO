@@ -1,18 +1,22 @@
 pkgbase = xfce4-notifyd-git
 	pkgdesc = notification daemon for the xfce desktop - git checkout
-	pkgver = 0.9.6.r20.gc3c3fac
+	pkgver = 0.9.7.r357.g5508033
 	pkgrel = 1
 	url = http://goodies.xfce.org/projects/applications/xfce4-notifyd
 	install = xfce4-notifyd-git.install
 	arch = i686
 	arch = x86_64
 	groups = xfce4-goodies
-	license = GPL
-	makedepends = xfce4-dev-tools
-	makedepends = exo
+	license = GPL-1.0-or-later
+	makedepends = xfce4-dev-tools-git
 	makedepends = intltool
 	makedepends = git
-	depends = libxfce4ui
+	makedepends = meson
+	depends = libxfce4ui>=4.19.0
+	depends = xfce4-panel>=4.19.0
+	depends = libcanberra
+	depends = libnotify
+	depends = gtk-layer-shell
 	depends = hicolor-icon-theme
 	provides = notification-daemon
 	provides = xfce4-notifyd
