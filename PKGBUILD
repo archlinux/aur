@@ -1,18 +1,18 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 _pkgname=GeekbenchAI
 pkgname=geekbench-ai
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Geekbench AI is a cross-platform AI benchmark that uses real-world machine learning tasks to evaluate AI workload performance"
 arch=('x86_64')
 url="https://www.geekbench.com/ai/"
-license=('LicenseRef-Geekbench-AI-v1')
+license=('LicenseRef-Geekbench-AI-V1')
 depends=('gcc-libs' 'bash' 'ocl-icd' 'onetbb' 'glibc')
 makedepends=('patchelf')
 source=("https://cdn.geekbench.com/GeekbenchAI-${pkgver}-Linux.tar.gz"
-	eula-ai-v1.txt)
+	LicenseRef-EULA-AI-V1.txt)
 install=$pkgname.install
-sha256sums=('06436fdb41aa203141e5469572dac01faca020e9145a4fa7d8ed4030bddb3fda'
+sha256sums=('6ba6a080bc8806f3c9f2082e5ca4b3a82c3f07028ff47ded5129b004e181c1f9'
             '825511a88bcb55bf7554e00378c416d4df2de28d70f912a9dfc262f2bbc49050')
 
 package() {
@@ -39,5 +39,5 @@ EOF
 		patchelf --remove-rpath $binary
 	done
 	popd
-	install -Dm644 "$srcdir/eula-ai-v1.txt" "$pkgdir/usr/share/licenses/$pkgname/eula-ai-v1.txt"
+	install -Dm644 "$srcdir/LicenseRef-EULA-AI-V1.txt" "$pkgdir/usr/share/licenses/$pkgname/eula-ai-v1.txt"
 }
