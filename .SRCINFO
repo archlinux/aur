@@ -1,0 +1,18 @@
+pkgbase = goguma-git
+	pkgdesc = An IRC client for mobile devices
+	pkgver = r1361.cdf1c19
+	pkgrel = 1
+	url = https://codeberg.org/emersion/goguma
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = git
+	makedepends = flutter
+	makedepends = cmake
+	makedepends = ninja
+	depends = gtk3
+	depends = libnotify
+	options = !strip
+	source = git+https://codeberg.org/emersion/goguma.git
+	sha256sums = SKIP
+
+pkgname = goguma-git
