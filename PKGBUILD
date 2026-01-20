@@ -8,7 +8,7 @@ provides=(konform-browser)
 conflicts=()
 __pkgname=konform
 _ffsrcver=140.7.0
-_lwrelver=101
+_lwrelver=102
 pkgver="${_ffsrcver}.${_lwrelver}"
 pkgrel=1
 pkgdesc="Librewolf fork with increased customizability and security"
@@ -125,7 +125,7 @@ source=(
   "${__pkgname}.desktop"
   "default192x192.png"
 )
-sha256sums=('18d2e1deab91a2dc5fa22db82141f60e8f9b3089271f5bdaf8256e647e7d2507'
+sha256sums=('eb7477a05159835be3d132716df1b32c61900390ab071d926e58a4dc590949a7'
             '68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4'
             'b86ddfc0cec482f7900f296857cdd0f1b736ff5037e0a86712b258ae0092924b')
 
