@@ -4,7 +4,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-libvpl
-pkgver=2.15.0
+pkgver=2.16.0
 pkgrel=1
 arch=('any')
 pkgdesc="Intel Video Processing Library (Android ${_android_arch})"
@@ -18,7 +18,7 @@ makedepends=('android-cmake'
              "android-${_android_arch}-libpciaccess")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/intel/libvpl/archive/v${pkgver}/libvpl-${pkgver}.tar.gz")
-md5sums=('33da503f11d6f0aa795f8fe9c249dab8')
+md5sums=('1cff23c778a647522bcc669d93e1d8b5')
 
 build() {
     cd "${srcdir}/libvpl-${pkgver}"
@@ -63,4 +63,6 @@ package() {
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
