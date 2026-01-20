@@ -75,6 +75,7 @@ build() {
 		-D CMAKE_INSTALL_PREFIX=/usr
 		-D PACKAGE_MANAGER_MANAGED=ON
 		-D ENABLE_RECOVERY_DEVICE_SUPPORT=OFF
+		-D NO_MARCH_NATIVE=ON
 	)
 
 	cmake "${cmake_options[@]}"
