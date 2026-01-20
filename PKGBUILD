@@ -3,7 +3,7 @@
 
 pkgname=lsfg-vk-bin
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Lossless Scaling Frame Generation on Linux"
 arch=("x86_64")
 url="https://github.com/PancakeTAS/lsfg-vk"
@@ -21,7 +21,7 @@ conflicts=("${pkgname%-bin}")
 source=("https://github.com/PancakeTAS/lsfg-vk/releases/download/v${pkgver}/lsfg-vk-${pkgver}.$CARCH.tar.zst"
         "LICENSE")
 sha256sums=('7e31d6f39da271fbc50ae8a1b092cb874bc6664765d5b7359d38970057f5fcff'
-            '81fd6d483875f1d1520fa327f2139eda0bae28106863953ec57171d60a356b2f')
+            'cc5470feed66192387f06ae93aed0bd4fefae5a5fd7c1e54a4acf4ea64f1028b')
 install=lsfg-vk.install
 noextract=("lsfg-vk-${pkgver}.$CARCH.tar.zst")
 options=(!strip)
