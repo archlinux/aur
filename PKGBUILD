@@ -24,7 +24,7 @@ optdepends=(
 )
 options=('!strip')
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/frankdierolf/whis/releases/download/v${pkgver}/Whis_${pkgver}_amd64.AppImage")
-sha256sums=('b86ea4d4c3757c77c66eeaad1c71b3c3c0df63fff86392adb5d56f9ab8b2bf81')
+sha256sums=('226efb73ec5b0c13db63fe85a1820ab0efb281c115988783867678c8a4a396ab')
 
 prepare() {
   chmod +x "${pkgname}-${pkgver}.AppImage"
