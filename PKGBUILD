@@ -15,7 +15,7 @@ source=("${url}/archive/${pkgver}.tar.gz")
 sha512sums=('ffcccbcb8fbfb96415f754b59688fc43bc3c2389b4afad2ae2efde51680919657321ecc757ae7a186ecee81d9cbb5f3daf3f02d6086fc684de1beea261831a4a')
 
 package() {
-	cd "$srcdir/Arcticons-Linux-$pkgver"
+	cd "$srcdir/arcticons-linux"
 	install -d "$pkgdir/usr/share/icons"
 	cp -r arcticons-light arcticons-dark "$pkgdir/usr/share/icons"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
