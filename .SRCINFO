@@ -1,6 +1,6 @@
 pkgbase = mustang
 	pkgdesc = New full-featured desktop email, chat and video conference client.(Use system-wide electron)
-	pkgver = 0.9.13
+	pkgver = 0.9.14
 	pkgrel = 1
 	url = https://mustang.im/
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = mustang
 	makedepends = yarn
 	makedepends = jq
 	depends = electron32
-	source = mustang-0.9.13::git+https://github.com/mustang-im/mustang#tag=v0.9.13
+	source = mustang-0.9.14::git+https://github.com/mustang-im/mustang#tag=v0.9.14
 	source = mustang.sh
-	sha256sums = 3e5c1bd031282f9deef5375bf166fd86ca20c0b576dc2f89977ce26bdac507cd
+	sha256sums = aa14347379fae4af584ddb64ff0407eb1294643fee730a4653554ff1657dee44
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = mustang
