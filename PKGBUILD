@@ -1,18 +1,18 @@
 # Maintainer: icepie <icepie@nicecode.ai>
 
 pkgname=nicecode-tool
-pkgver=1.3.5
+pkgver=1.3.7
 pkgrel=1
 pkgdesc="NiceCode API configuration tool for Claude, CodeX, and Gemini CLI tools"
 arch=('any')
 url="https://github.com/icepie/nicecode-tools"
-provides=('nicecode-tool' 'nicecode')
 license=('MIT')
+provides=('nicecode')
 depends=('nodejs>=18.12.0')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('83158a9f52dec15914b190e8784df21e36362baba593bac98420f96a65630935')
+sha256sums=('8402e51df5d09c21c04d3850967e6194858fca5426a6d843740e82b67bf7eaac')
 
 package() {
   npm install -g --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
