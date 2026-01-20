@@ -1,0 +1,37 @@
+pkgbase = redmond97se-themes
+	pkgdesc = Redmond97-SE themes
+	pkgver = 2.05
+	pkgrel = 1
+	url = https://codeberg.org/Sliver_X/Redmond97-SE
+	arch = any
+	license = GPL3
+	makedepends = 7zip
+	makedepends = grep
+	makedepends = sed
+	makedepends = tar
+	source = https://codeberg.org/Sliver_X/Redmond97-SE/releases/download/v2.05/Redmond97-SE_v2.05.7z
+	sha256sums = 18551c4835a7daa346a29ffe0b28f44d85b7ea003713819f1340abaf453b303a
+
+pkgname = obsidian-pure-icon-theme
+	url = https://github.com/madmaxms/iconpack-obsidian
+	conflicts = obsidian-icon-theme
+
+pkgname = redmond97se-gtk-theme
+	pkgdesc = Redmond97-SE GTK and GNOME themes
+	optdepends = obsidian-pure-icon-theme
+
+pkgname = redmond97se-metacity-theme
+	pkgdesc = Redmond97-SE Metacity themes
+	optdepends = redmond97se-gtk-theme
+	optdepends = metacity
+
+pkgname = redmond97se-wine-theme
+	pkgdesc = Redmond97-SE WINE themes
+	optdepends = redmond97se-gtk-theme
+	optdepends = wine
+
+pkgname = redmond97se-xfwm4-theme
+	pkgdesc = Redmond97-SE XFWM4 themes
+	optdepends = obsidian-pure-icon-theme
+	optdepends = redmond97se-gtk-theme
+	optdepends = xfwm4
