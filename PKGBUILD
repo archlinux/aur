@@ -4,7 +4,7 @@
 
 pkgname=zotero-git
 _pkgname="${pkgname%-git}"
-pkgver=7.0.11.r913.g47e6a0f
+pkgver=7.0.11.r951.g2c0bebd
 pkgrel=1
 pkgdesc="A free, easy-to-use tool to help you collect, organize, cite, and share your research sources, git version"
 arch=('x86_64' 'i686')
@@ -12,8 +12,26 @@ url="https://www.zotero.org"
 license=('AGPL-3.0-or-later')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-depends=('dbus-glib' 'gtk3' 'nss' 'libxt')
-makedepends=('npm' 'git' 'zip' 'unzip' 'perl' 'python>=3' 'curl' 'wget' 'rsync' 'nodejs' 'patch')
+depends=(
+  'dbus-glib'
+  'gtk3'
+  'nss'
+  'libxt'
+)
+makedepends=(
+  'npm'
+  'git'
+  'zip'
+  'unzip'
+  'perl'
+  'python>=3'
+  'curl'
+  'wget'
+  'rsync'
+  'nodejs'
+  'patch'
+  'tar'
+)
 source=("zotero.desktop"
         "zotero-client::git+https://github.com/zotero/zotero.git"
         "zotero-translators::git+https://github.com/zotero/translators.git"
@@ -119,3 +137,4 @@ package() {
   # Close shell when launching
   sed -i -r 's:^("\$CALLDIR/zotero-bin" -app "\$CALLDIR/application.ini" "\$@"):exec \1:' "$pkgdir/usr/lib/zotero/zotero"
 }
+# vim: ts=2 sw=2 et:
