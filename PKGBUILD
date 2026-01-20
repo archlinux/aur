@@ -1,7 +1,7 @@
 # Maintainer: Gotar <gotar@users.noreply.github.com>
 pkgname=wallpicker
 pkgver=2.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Modern GTK4/Libadwaita wallpaper picker with Wallhaven integration, AI upscaling, and AI tagging"
 arch=('any')
 url="https://github.com/gotar/WallPicker"
@@ -56,8 +56,11 @@ post_install() {
   echo ""
   echo "==> To enable AI image tagging:"
   echo "    1. Install: pip install --user clip-anytorch"
-  echo "    2. Enable in config: ~/.config/wallpicker/config.json"
-  echo "       Set 'tagger_enabled': true"
+  echo "    2. Edit config: ~/.config/wallpicker/config.json"
+  echo "       Add: \"tagger_enabled\": true"
+  echo ""
+  echo "    Or run: wallpicker (generates default config on first launch)"
+  echo "    Then manually edit the config file to enable tagging."
   echo ""
 }
 
