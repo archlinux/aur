@@ -1,0 +1,33 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    ".gitignore",
+    "README.md",
+    "keys/**",
+    ".SRCINFO",
+    ".nvchecker.toml",
+    "*.install",
+    "*.sysusers",
+    "*.tmpfiles",
+    "*.logrotate",
+    "*.pam",
+    "*.service",
+    "*.socket",
+    "*.timer",
+    "*.desktop",
+    "*.hook",
+]
+SPDX-FileCopyrightText = "2026 HurricanePootis <hurricanepootis@protonmail.com>"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "0001-cmake-Use-external-jansson-if-possible.patch",
+    "0002-cmake-Install-into-standard-directories.patch",
+    "0003-cmake-Install-a-pkgconfig-file.patch",
+    "0004-refactor-remove-ftl_app-completely.patch",
+]
+SPDX-FileCopyrightText = "ftl-sdk contributors"
+SPDX-License-Identifier = "MIT"
