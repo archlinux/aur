@@ -1,59 +1,31 @@
-# Maintainer: 00ein00
-pkgname=hytale-f2p-git
-pkgver=2.0.1
-pkgver() {
-  cd "$srcdir/Hytale-F2P"
-  jq -r '.version' package.json
-}
+# Maintainer: Terromur <terromuroz@proton.me>
+pkgname=Hytale-F2P-git
+_pkgname=Hytale-F2P
+pkgver=2.0.2.r104.g5e3506a
 pkgrel=1
-pkgdesc="Hytale F2P Launcher (git version) – unofficial cross-platform launcher"
+pkgdesc="HyLauncher - unofficial Hytale Launcher for free to play gamers"
 arch=('x86_64')
 url="https://github.com/amiayweb/Hytale-F2P"
-license=('custom') # No license is listed in the original repo...
-depends=('nodejs' 'npm' 'electron')
-makedepends=('git' 'nodejs' 'npm' 'electron-builder' 'jq')
-provides=('hytale-f2p')
-conflicts=('hytale-f2p')
-source=("git+https://github.com/amiayweb/Hytale-F2P.git")
-sha256sums=('SKIP')
-options=('!strip')
+license=('custom')
+makedepends=('npm')
+source=("git+$url.git" "Hytale-F2P.desktop")
+sha256sums=('SKIP'
+            '8c78a6931fade2b0501122980dc238e042b9f6f0292b5ca74c391d7b3c1543c0')
+
+pkgver() {
+  cd "$_pkgname"
+  printf "2.0.2.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-  cd "$srcdir/Hytale-F2P"
-  # install Node.js deps
+  cd "$_pkgname"
   npm install
-  # build desktop app (adjust if needed)
-  npm run build
+  npm run build:linux
 }
 
 package() {
-  cd "$srcdir/Hytale-F2P"
-
-  # Install AppImage
-  install -Dm755 \
-    "$(ls dist/*.AppImage | grep -v blockmap)" \
-    "$pkgdir/opt/hytale-f2p/hytale-f2p.AppImage"
-
-  # Wrapper script
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/hytale-f2p" <<'EOF'
-#!/bin/sh
-exec /opt/hytale-f2p/hytale-f2p.AppImage "$@"
-EOF
-
-  # Desktop entry
-  install -Dm644 /dev/stdin \
-    "$pkgdir/usr/share/applications/hytale-f2p.desktop" <<'EOF'
-[Desktop Entry]
-Name=Hytale F2P
-Comment=Unofficial Hytale F2P Launcher
-Exec=hytale-f2p
-Icon=hytale-f2p
-Terminal=false
-Type=Application
-Categories=Game;
-EOF
-
-  # Icon
-  install -Dm644 icon.png \
-    "$pkgdir/usr/share/pixmaps/hytale-f2p.png"
+  mkdir -p "$pkgdir/opt/$_pkgname"
+  cp -r "$_pkgname/dist/linux-unpacked/"* "$pkgdir/opt/$_pkgname"
+  install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  install -Dm644 "$_pkgname/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
 }
