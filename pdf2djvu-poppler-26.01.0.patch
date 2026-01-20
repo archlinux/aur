@@ -1,0 +1,60 @@
+--- src/pdf2djvu-0.9.19/pdf-backend.hh
++++ src/pdf2djvu-0.9.19/pdf-backend.hh
+@@ -26,7 +26,6 @@
+ #include <utility>
+ #include <vector>
+ 
+-#include "autoconf.hh"
+ 
+ // Poppler:
+ #include <PDFDoc.h>
+@@ -49,6 +48,7 @@
+ #include <splash/SplashPath.h>
+ #include <splash/SplashTypes.h>
+ 
++#include "autoconf.hh"
+ #include "i18n.hh"
+ 
+ namespace pdf
+--- src/pdf2djvu-0.9.19/pdf-backend.cc
++++ src/pdf2djvu-0.9.19/pdf-backend.cc
+@@ -181,7 +181,7 @@ static bool annotations_callback(pdf::ant::Annotation *annotation, void *user_da
+     border_colors.push_back("");
+     return true;
+   }
+-  const double *values = color->getValues();
++  const double *values = color->getValues().data();
+   switch (color->getSpace())
+   {
+   case pdf::ant::Color::colorTransparent:
+@@ -499,7 +499,7 @@ bool pdf::get_glyph(splash::Splash *splash, splash::Font *font,
+   if (font == nullptr)
+     return false;
+   splash::ClipResult clip_result;
+-  if (!font->getGlyph(code, 0, 0, bitmap, static_cast<int>(x), static_cast<int>(y), splash->getClip(), &clip_result))
++  if (!font->getGlyph(code, 0, 0, bitmap, static_cast<int>(x), static_cast<int>(y), const_cast<SplashClip*>(&splash->getClip()), &clip_result))
+     return false;
+   return (clip_result != splashClipAllOutside);
+ }
+--- src/pdf2djvu-0.9.19/system.hh
++++ src/pdf2djvu-0.9.19/system.hh
+@@ -223,7 +223,7 @@ namespace encoding
+   protected:
+     const std::string &string;
+   public:
+-    explicit proxy<from, to>(const std::string &string)
++    explicit proxy(const std::string &string)
+     : string(string)
+     { }
+     friend std::ostream &operator << <>(std::ostream &, const proxy<from, to> &);
+--- src/pdf2djvu-0.9.19/pdf-unicode.cc
++++ src/pdf2djvu-0.9.19/pdf-unicode.cc
+@@ -49,7 +49,7 @@ std::string pdf::string_as_utf8(const pdf::String *string)
+      */
+     const static uint32_t replacement_character = 0xFFFD;
+     const char *cstring = pdf::get_c_string(string);
+-    size_t clength = string->getLength();
++    size_t clength = string->size();
+     std::ostringstream stream;
+     if (clength >= 2 && (cstring[0] & 0xFF) == 0xFE && (cstring[1] & 0xFF) == 0xFF) {
+         /* UTF-16-BE Byte Order Mark */
