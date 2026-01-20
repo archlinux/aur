@@ -1,6 +1,6 @@
 pkgbase = android-riscv64-libvpl
 	pkgdesc = Intel Video Processing Library (Android riscv64)
-	pkgver = 2.15.0
+	pkgver = 2.16.0
 	pkgrel = 1
 	url = https://intel.github.io/libvpl/
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = android-riscv64-libvpl
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/intel/libvpl/archive/v2.15.0/libvpl-2.15.0.tar.gz
-	md5sums = 33da503f11d6f0aa795f8fe9c249dab8
+	source = https://github.com/intel/libvpl/archive/v2.16.0/libvpl-2.16.0.tar.gz
+	md5sums = 1cff23c778a647522bcc669d93e1d8b5
 
 pkgname = android-riscv64-libvpl
