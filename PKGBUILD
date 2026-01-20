@@ -1,9 +1,7 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla .xyz>
-# Maintainer: ArjixWasTaken <me@arjix.dev>
-
 pkgname=winboat
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Run Windows apps on Linux with seamless integration"
 arch=('x86_64')
 url="https://www.winboat.app"
@@ -21,21 +19,17 @@ makedepends=(
   'npm'
   'go'
   'zip'
-  'imagemagick'
 )
 options=('!strip')
-source=("git+https://github.com/TibixDev/winboat.git#tag=v$pkgver")
-sha256sums=('11051ae91c399ccc75ef69910d4e8a526f6cc50210f9c70525829d5017715cce')
-
+source=("git+https://github.com/TibixDev/winboat.git#tag=v$pkgver" "winboat.install")
+sha256sums=('ce08f785b68df3e77607ee3390abb1a0a585dc55ba4ac5501f236ceb710ad6ca'
+            '28a16c9651a8283793d4ed0f8a8358ada22a467cd1a1a4ed091eb6a9674da41d')
 prepare(){
-  cd "$pkgname"
-
-  sed -i 's/electron-builder --linux/electron-builder --linux dir/' package.json
+cd "$pkgname"
+sed -i 's/"rpm",//g' electron-builder.json
 }
-
 build() {
   cd "$pkgname"
-
   export npm_config_cache="$srcdir/npm_cache"
   export GOPATH="$srcdir/gopath"
   export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -43,17 +37,11 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-
-  npm install
+  npm ci
   npm run build:linux-gs
 
   # Clean module cache for makepkg -C
   go clean -modcache
-
-  mkdir dist/.icon-set
-  for i in 16 32 48 64 128 256 512; do
-    magick -background none icons/winboat_logo.svg -resize "${i}x${i}" "dist/.icon-set/icon_${i}x${i}.png"
-  done
 }
 
 package() {
@@ -62,12 +50,13 @@ package() {
   cp -a dist/linux-unpacked/* "$pkgdir/opt/$pkgname/"
 
   install -d "$pkgdir/usr/bin"
-  ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
-
+  ln -s "opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  mkdir dist/.icon-set
   for i in 16 32 48 64 128 256 512; do
+    magick -background none icons/winboat_logo.svg -resize "${i}x${i}""dist/.icon-set/icon_${i}x${i}.png"
+    done
     install -Dm644 dist/.icon-set/icon_${i}x${i}.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
-  done
 
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop" <<EOF
@@ -76,6 +65,7 @@ Name=WinBoat
 Exec=/opt/$pkgname/$pkgname
 Icon=$pkgname
 Terminal=false
+Categories=System
 Type=Application
 Comment=Run Windows apps on Linux with seamless integration
 EOF
