@@ -1,6 +1,6 @@
 pkgbase = xr-video-player-git
 	pkgdesc = A virtual reality video player for Linux. Fork of vr-video-player by dec05eba
-	pkgver = r88.2e7d96d
+	pkgver = r110.d3fb486
 	pkgrel = 1
 	url = https://codeberg.org/yoshino/xr-video-player
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = xr-video-player-git
 	makedepends = git
 	makedepends = cmake
 	depends = glm
-	depends = glew
+	depends = libepoxy
 	depends = glib2
 	depends = sdl2
 	depends = openxr
