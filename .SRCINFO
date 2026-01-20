@@ -1,7 +1,7 @@
 pkgbase = asklink-bin
 	pkgdesc = Asklink Remote
 	pkgver = 4.0.33.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.asklink.com
 	arch = x86_64
 	arch = aarch64
@@ -11,7 +11,9 @@ pkgbase = asklink-bin
 	depends = libdrm
 	depends = alsa-lib
 	depends = jack
-	source = https://dl.asklink.com/linux/4.0.33.0/AskLink-4.0.33.0-x86_64.deb
-	sha256sums = SKIP
+	source_x86_64 = https://dl.asklink.com/linux/4.0.33.0/AskLink-4.0.33.0-x86_64.deb
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://dl.asklink.com/linux/4.0.33.0/AskLink-4.0.33.0-aarch64.deb
+	sha256sums_aarch64 = SKIP
 
 pkgname = asklink-bin

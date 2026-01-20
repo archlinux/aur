@@ -2,7 +2,7 @@
 
 pkgname=asklink-bin
 pkgver=4.0.33.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Asklink Remote'
 arch=('x86_64' 'aarch64')
 
@@ -14,13 +14,14 @@ depends=('pulse-native-provider'
     'alsa-lib'
     'jack'
 )
-source=("https://dl.asklink.com/linux/${pkgver}/AskLink-${pkgver}-${CARCH}.deb"
+source_x86_64=("https://dl.asklink.com/linux/${pkgver}/AskLink-${pkgver}-x86_64.deb")
+source_aarch64=("https://dl.asklink.com/linux/${pkgver}/AskLink-${pkgver}-aarch64.deb")
+sha256sums_x86_64=('SKIP'
 )
-sha256sums=('SKIP'
+sha256sums_aarch64=('SKIP'
 )
 
 prepare() {
-    ar -x AskLink-${pkgver}-${CARCH}.deb
     tar xzf data.tar.gz
 }
 
