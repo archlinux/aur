@@ -1,0 +1,20 @@
+pkgbase = python-scopefoundry
+	pkgdesc = A Python platform for controlling custom laboratory experiments and visualizing scientific data
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://scopefoundry.org/
+	changelog = python-scopefoundry.changelog
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-setuptools
+	depends = python>=3.8
+	depends = python-qtpy
+	depends = python-numpy>=1.24
+	depends = python-pyqtgraph
+	depends = python-h5py
+	optdepends = python-qtconsole
+	optdepends = python-pyqtdarktheme
+	source = https://github.com/ScopeFoundry/ScopeFoundry/archive/refs/tags/v2.2.1.tar.gz
+	sha256sums = d06534ec95e73bb56f14d5d32ad2bc6d237b6f3e6c3fad5f69268485313f3ad1
+
+pkgname = python-scopefoundry
