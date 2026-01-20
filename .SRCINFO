@@ -1,0 +1,18 @@
+pkgbase = formatusb
+	pkgdesc = USB Device Formatting Utility
+	pkgver = 26.01arch
+	pkgrel = 1
+	url = https://github.com/MX-Linux/formatusb
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = qt6-tools
+	makedepends = cmake
+	depends = qt6-base
+	depends = parted
+	depends = coreutils
+	depends = util-linux
+	source = https://github.com/MX-Linux/formatusb/archive/refs/tags/26.01arch.tar.gz
+	sha256sums = 6e2b930e5a17ae404fb29a971e83a185fbbbdb1f3f12378f6b68a78537298a1c
+
+pkgname = formatusb
