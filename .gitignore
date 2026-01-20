@@ -1,0 +1,12 @@
+# Build artifacts
+src/
+pkg/
+*.pkg.tar.*
+*.log
+
+# Downloaded sources
+goplaying_*
+LICENSE
+
+# makepkg
+*.src.tar.gz
