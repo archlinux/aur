@@ -2,13 +2,13 @@
 
 pkgname=dcli-arch-git
 pkgver=0.1.0.r105.06057ec
-pkgrel=4
+pkgrel=5
 pkgdesc="A declarative package management CLI tool for Arch Linux, inspired by NixOS"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/theblackdon/dcli"
 license=('0BSD')
 makedepends=('cargo' 'git')
-depends=()
+depends=('gcc-libs' 'glibc' 'lua54')
 optdepends=(
     'fzf: for interactive TUI features'
     'paru: AUR helper support'

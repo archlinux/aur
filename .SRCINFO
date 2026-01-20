@@ -1,13 +1,16 @@
 pkgbase = dcli-arch-git
 	pkgdesc = A declarative package management CLI tool for Arch Linux, inspired by NixOS
 	pkgver = 0.1.0.r105.06057ec
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gitlab.com/theblackdon/dcli
 	arch = x86_64
 	arch = aarch64
 	license = 0BSD
 	makedepends = cargo
 	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = lua54
 	optdepends = fzf: for interactive TUI features
 	optdepends = paru: AUR helper support
 	optdepends = yay: AUR helper support (alternative to paru)
