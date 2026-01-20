@@ -2,7 +2,7 @@
 # Maintainer: Chmouel Boudjnah <chmouel@chmouel.com>
 
 pkgname='lazyworktree-bin'
-pkgver=1.25.1
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='lazyworktree - A TUI tool to manage git worktrees'
 url='https://github.com/chmouel/lazyworktree'
@@ -13,10 +13,10 @@ conflicts=('lazyworktree')
 depends=('git' 'git-delta' 'lazygit' 'less' 'tmux')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/chmouel/lazyworktree/releases/download/v${pkgver}/lazyworktree_Linux_arm64.tar.gz")
-sha256sums_aarch64=('caa6481d9de28da930e6f41e0baef381a0fe9948e38de12b506df8b006382336')
+sha256sums_aarch64=('7680a4898cc6adecedf1e15425d3c1e6c8bcaac14303d49ee665ecfd80e03996')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chmouel/lazyworktree/releases/download/v${pkgver}/lazyworktree_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('740c9318a3eabb8685aa80a5eec75744c72749a79d5d338beea448d8e67f5b99')
+sha256sums_x86_64=('f3e4895ce18a8461fdbf406761db6c7582b401dcf68ea92b08e7719c7a815112')
 
 package() {
   # bin
@@ -38,4 +38,5 @@ package() {
   install -Dm644 "./completions/lazyworktree.bash" "${pkgdir}/usr/share/bash-completion/completions/lazyworktree"
   install -Dm644 "./completions/lazyworktree.zsh" "${pkgdir}/usr/share/zsh/site-functions/_lazyworktree"
   install -Dm644 "./completions/lazyworktree.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/lazyworktree.fish"
+  install -Dm644 "./completions/lazyworktree.ps1" "${pkgdir}/usr/share/powershell/Modules/lazyworktree/lazyworktree.ps1"
 }
