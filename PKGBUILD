@@ -5,7 +5,7 @@ _pkgname=cloudflare-speed-cli
 pkgname=${_pkgname}-bin
 pkgdesc="CLI for internet speed test via cloudflare"
 
-pkgver=0.4.11
+pkgver=0.5.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -22,8 +22,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tar.xz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}.tar.xz")
-sha256sums_x86_64=('7033718d6db5f7f80b7e8205ffc205822ddcab3d2e48512fd1b0e9cabf217c6d')
-sha256sums_aarch64=('1a1df43eb65971158ee27f958f501e940b0aa98a24d1d90e50befb2cba22613b')
+sha256sums_x86_64=('fd399a44af2737325a35cc42dee90afc1fc8733ca5b4a338268671e32fb79fac')
+sha256sums_aarch64=('4dfac758526d228133b4893b17f49180b154f4b972e61326d3d18f85b346d552')
 
 case ${CARCH} in
   ${arch[0]})
