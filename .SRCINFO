@@ -1,6 +1,6 @@
 pkgbase = whis-desktop-bin
 	pkgdesc = Voice-to-text desktop application
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/frankdierolf/whis
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = whis-desktop-bin
 	provides = whis-desktop
 	conflicts = whis-desktop
 	options = !strip
-	source = whis-desktop-bin-0.7.1.AppImage::https://github.com/frankdierolf/whis/releases/download/v0.7.1/whis-desktop_0.7.1_amd64.AppImage
-	sha256sums = SKIP
+	source = whis-desktop-bin-0.7.2.AppImage::https://github.com/frankdierolf/whis/releases/download/v0.7.2/Whis_0.7.2_amd64.AppImage
+	sha256sums = b86ea4d4c3757c77c66eeaad1c71b3c3c0df63fff86392adb5d56f9ab8b2bf81
 
 pkgname = whis-desktop-bin

@@ -1,6 +1,6 @@
 # Maintainer: Frank Dierolf <frank_dierolf@web.de>
 pkgname=whis-desktop-bin
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Voice-to-text desktop application"
 arch=('x86_64')
@@ -23,8 +23,8 @@ optdepends=(
   'libappindicator-gtk3: System tray support'
 )
 options=('!strip')
-source=("${pkgname}-${pkgver}.AppImage::https://github.com/frankdierolf/whis/releases/download/v${pkgver}/whis-desktop_${pkgver}_amd64.AppImage")
-sha256sums=('SKIP') # Replace with actual checksum
+source=("${pkgname}-${pkgver}.AppImage::https://github.com/frankdierolf/whis/releases/download/v${pkgver}/Whis_${pkgver}_amd64.AppImage")
+sha256sums=('b86ea4d4c3757c77c66eeaad1c71b3c3c0df63fff86392adb5d56f9ab8b2bf81')
 
 prepare() {
   chmod +x "${pkgname}-${pkgver}.AppImage"
