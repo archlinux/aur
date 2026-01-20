@@ -4,7 +4,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libxml2
-pkgver=2.14.4
+pkgver=2.15.1
 pkgrel=1
 arch=('any')
 pkgdesc="XML parsing library, version 2 (Android ${_android_arch})"
@@ -18,7 +18,7 @@ depends=('android-ndk'
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://gitlab.gnome.org/GNOME/libxml2/-/archive/v${pkgver}/libxml2-v${pkgver}.tar.gz")
-md5sums=('c7a6d96d03b5907722c6a651f2e7c840')
+md5sums=('d500a7dd8045bc23f552256188ba9ed3')
 
 prepare () {
     cd "${srcdir}/libxml2-v${pkgver}"
@@ -29,8 +29,7 @@ prepare () {
     autoreconf -vfi
 }
 
-build()
-{
+build() {
     cd "${srcdir}/libxml2-v${pkgver}"
     source android-env ${_android_arch}
 
@@ -46,8 +45,7 @@ build()
     ${ANDROID_RANLIB} .libs/libxml2.a
 }
 
-package()
-{
+package() {
     cd "${srcdir}/libxml2-v${pkgver}"
     source android-env ${_android_arch}
 
@@ -56,5 +54,6 @@ package()
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
-}
 
+    install -vDm 644 Copyright -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+}
