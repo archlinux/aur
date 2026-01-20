@@ -2,13 +2,15 @@
 
 pkgname=opentubex-git
 _pkgname=OpenTubeX
-pkgver=r9693.1f80aa18
+pkgver=r9801.9fb4936c
 pkgrel=2
 pkgdesc='A fork of the open source desktop YouTube player FreeTube with additional features'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/D3SOX/OpenTubeX"
 license=('AGPL-3.0-or-later')
 depends=('electron39')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 makedepends=('git' 'npm' 'yarn')
 source=("git+$url"
         opentubex.desktop
