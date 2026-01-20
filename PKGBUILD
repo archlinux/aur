@@ -2,7 +2,7 @@
 pkgname=luffy-bin
 _pkgname=luffy
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Watch movies and series from your commandline"
 arch=('x86_64')
 url="https://github.com/DemonKingSwarn/luffy"
@@ -13,7 +13,7 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-source=("${url}/releases/download/${pkgver}/${_pkgname}")
+source=("${url}/releases/download/v${pkgver}/${_pkgname}")
 noextract=()
 sha256sums=('SKIP')
 
