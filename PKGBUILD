@@ -1,6 +1,6 @@
 # Maintainer: Lauri Gustafsson <lauri at gustafla dot space>
 pkgname=glsl_analyzer-bin
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc='A language server for the GLSL shading language'
 url='https://github.com/nolanderc/glsl_analyzer'
@@ -11,8 +11,8 @@ license=('GPL3')
 depends=()
 conflicts=('glsl_analyzer')
 provides=('glsl_analyzer')
-sha256sums_x86_64=('51d61469104e03e8e0a18da4bd383c0f52fdfc6388c6675c2aaaee9e9adffa68')
-sha256sums_aarch64=('41fcf2af9d89bd4ad632a8ebea2bb2568f40c7c93180915a76ba0052e02601aa')
+sha256sums_x86_64=('7c929b304e0d34abf4305d07895c409861f054613c3ae4070baa7ca15c916e7a')
+sha256sums_aarch64=('dda05d727979c34333b86562bb706122ab95d17cd7298665e8afbaba79f76ea6')
 
 package() {
   install -Dm755 "${srcdir}/bin/glsl_analyzer" "${pkgdir}/usr/bin/glsl_analyzer"
