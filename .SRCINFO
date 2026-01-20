@@ -1,0 +1,13 @@
+pkgbase = pathsearch
+	pkgdesc = Search PATH for executables
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/andybug/pathsearch
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	source = https://github.com/andybug/pathsearch/archive/refs/tags/v0.2.tar.gz
+	b2sums = bf4c1dc023b64f13b32b799244c92bb02cc2d67bb63f35aaa8d4217aad17861d5a6760d2ed21f59b8a054344339cb60317f24624acce694dc6d6b4e5ebabc9eb
+
+pkgname = pathsearch
