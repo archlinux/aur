@@ -1,6 +1,6 @@
 # Maintainer: Reyzer <reyzervt@gmail.com>
 pkgname=nfx
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="NFX archive tool written in C using Zstandard"
 arch=('x86_64')
