@@ -1,7 +1,7 @@
 # Maintainer: univrsal <uni@vrsal.xyz>
 
 pkgname=waechter-git
-pkgver=r508.fe4afd1
+pkgver=r620.fe4afd1
 pkgrel=1
 pkgdesc="Traffic shaping and monitoring for GNU/Linux"
 arch=('x86_64')
