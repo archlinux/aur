@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://github.com/justinmdickey/goplaying"
 license=('MIT')
 depends=('playerctl')
+options=(!debug)
 provides=('goplaying')
 conflicts=('goplaying' 'goplaying-git')
 source=("https://github.com/justinmdickey/goplaying/releases/download/v${pkgver}/goplaying_${pkgver}_Linux_x86_64.tar.gz"
