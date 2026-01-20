@@ -1,6 +1,6 @@
 pkgbase = pixelterm-c
-	pkgdesc = A high-performance terminal image browser written in C, based on the Chafa library
-	pkgver = 1.5.12
+	pkgdesc = A high-performance terminal image/video/book browser written in C, based on the Chafa library
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/zouyonghe/PixelTerm-C
 	arch = x86_64
@@ -11,10 +11,11 @@ pkgbase = pixelterm-c
 	depends = glib2
 	depends = gdk-pixbuf2
 	depends = ffmpeg
+	optdepends = mupdf: PDF/EPUB/CBZ book support
 	provides = pixelterm-c
 	options = !debug
 	options = !strip
-	source = pixelterm-c-1.5.12.tar.gz::https://github.com/zouyonghe/PixelTerm-C/archive/refs/tags/v1.5.12.tar.gz
-	sha256sums = be6ca26fd6996bc4c6f54bafb92dde091b913b028ebe70f4f0fdb327d6e487d4
+	source = pixelterm-c-1.6.0.tar.gz::https://github.com/zouyonghe/PixelTerm-C/archive/refs/tags/v1.6.0.tar.gz
+	sha256sums = 070474a354f210a043abf3724a6b3421520b315becab8b20e1c2495f6bd58267
 
 pkgname = pixelterm-c
