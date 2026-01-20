@@ -1,6 +1,6 @@
 pkgbase = r-tfmpvalue
 	pkgdesc = Efficient and Accurate P-Value Computation for Position Weight Matrices
-	pkgver = 0.0.9
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=TFMPvalue
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = r-tfmpvalue
 	depends = r
 	depends = r-rcpp
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/TFMPvalue_0.0.9.tar.gz
-	sha256sums = b9db56e75e2cee840d8b7861686dec07ee2c40cbc7d55361e5d04f1bf0c65de7
+	source = https://cran.r-project.org/src/contrib/TFMPvalue_1.0.0.tar.gz
+	sha256sums = 8f870a7088830c62b425275360fd0ee0c36daeaa466e5664e7f18a812549ce87
 
 pkgname = r-tfmpvalue

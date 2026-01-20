@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TFMPvalue
-_pkgver=0.0.9
+_pkgver=1.0.0
 pkgname=r-${_pkgname,,}
-pkgver=0.0.9
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Efficient and Accurate P-Value Computation for Position Weight Matrices'
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b9db56e75e2cee840d8b7861686dec07ee2c40cbc7d55361e5d04f1bf0c65de7')
+sha256sums=('8f870a7088830c62b425275360fd0ee0c36daeaa466e5664e7f18a812549ce87')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
