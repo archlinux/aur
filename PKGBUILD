@@ -1,6 +1,6 @@
 pkgname=aocl-blis
 pkgver=5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="BLAS-like Library Instantiation Software Framework, AOCL branding"
 arch=('x86_64')
 url="https://github.com/amd/blis"
@@ -19,16 +19,16 @@ sha256sums=('c553bd543eedc87920df9b82634ae4c02662145ed737f51fdf4c9bca5e588028')
 export CFLAGS="${CFLAGS/-march=x86-64/}"
 export CXXFLAGS="${CXXFLAGS/-march=x86-64/}"
 
-
 prepare() {
     cd $srcdir/blis-$_tag_str
 
     cmake . -G Ninja \
 	    -DCMAKE_INSTALL_PREFIX=/usr \
-	    -DBLIS_CONFIG_FAMILY=auto \
 	    -DENABLE_BLAS=ON \
 	    -DENABLE_CBLAS=ON \
-	    -DENABLE_THREADING=openmp
+	    -DENABLE_THREADING=openmp \
+	    -DBLIS_CONFIG_FAMILY=amdzen
+	    # this enables dynamic dispatch, required for also building aocl-libflame
 }
 
 build() {

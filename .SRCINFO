@@ -1,7 +1,7 @@
 pkgbase = aocl-blis
 	pkgdesc = BLAS-like Library Instantiation Software Framework, AOCL branding
 	pkgver = 5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/amd/blis
 	arch = x86_64
 	license = custom
