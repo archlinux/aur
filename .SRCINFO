@@ -1,4 +1,4 @@
-pkgbase = Hytale-F2P-git
+pkgbase = hytale-f2p-git
 	pkgdesc = HyLauncher - unofficial Hytale Launcher for free to play gamers
 	pkgver = 2.0.2.r104.g5e3506a
 	pkgrel = 1
@@ -11,4 +11,4 @@ pkgbase = Hytale-F2P-git
 	sha256sums = SKIP
 	sha256sums = 8c78a6931fade2b0501122980dc238e042b9f6f0292b5ca74c391d7b3c1543c0
 
-pkgname = Hytale-F2P-git
+pkgname = hytale-f2p-git
