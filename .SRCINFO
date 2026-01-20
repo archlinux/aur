@@ -1,6 +1,6 @@
 pkgbase = wendy
 	pkgdesc = Wendy CLI - Remote device debugging and deployment for Raspberry Pi, NVIDIA Jetson, and other Linux devices
-	pkgver = 2026.01.17_223618
+	pkgver = 2026.01.20_192943
 	pkgrel = 1
 	url = https://wendy.sh
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = wendy
 	license = custom:proprietary
 	provides = wendy
 	conflicts = wendy-git
-	source_x86_64 = wendy-2026.01.17-223618-x86_64.tar.gz::https://github.com/wendylabsinc/wendy-agent/releases/download/2026.01.17-223618/wendy-cli-linux-static-musl-x86_64-2026.01.17-223618.tar.gz
-	sha256sums_x86_64 = 3db11dd270d992041a3cc03a427c16afa5c44498c326705b401f4225758e30dd
-	source_aarch64 = wendy-2026.01.17-223618-aarch64.tar.gz::https://github.com/wendylabsinc/wendy-agent/releases/download/2026.01.17-223618/wendy-cli-linux-static-musl-aarch64-2026.01.17-223618.tar.gz
-	sha256sums_aarch64 = 687b4d290e8a3833efa22452aa3f2f55f4d20f994e4ac358844f307ed976d4d7
+	source_x86_64 = wendy-2026.01.20-192943-x86_64.tar.gz::https://github.com/wendylabsinc/wendy-agent/releases/download/2026.01.20-192943/wendy-cli-linux-static-musl-x86_64-2026.01.20-192943.tar.gz
+	sha256sums_x86_64 = 62137886ad7dc4d6ce4b7c3f0ca5bd12066f9173b2066596f914d9f9586badba
+	source_aarch64 = wendy-2026.01.20-192943-aarch64.tar.gz::https://github.com/wendylabsinc/wendy-agent/releases/download/2026.01.20-192943/wendy-cli-linux-static-musl-aarch64-2026.01.20-192943.tar.gz
+	sha256sums_aarch64 = b2d79b5de2a24618d84a9cc5b230ef9faf4df3d69de31a111d031adb4835d7ae
 
 pkgname = wendy
