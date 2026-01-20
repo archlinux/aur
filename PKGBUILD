@@ -1,23 +1,23 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-gitsigns
-pkgver=1.0.2
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Git signs written in pure Lua"
 arch=('any')
 url="https://github.com/lewis6991/gitsigns.nvim"
 license=('MIT')
 groups=('neovim-plugins')
-depends=('git' 'neovim')
 install=gitsigns.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4e34c2ab2079a84e99db2925c5562c60d9ee7c4c350dcad8813276f71c878a45')
+sha256sums=('2e9895feab29a9e18bea486b68da0c3f0a76157a19610ec085671f8d85fe70dc')
 
 package() {
-	cd "gitsigns.nvim-$pkgver"
-	find doc lua \
-		-type f \
-		-exec install -Dm644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+    depends=('git' 'neovim')
+    cd "gitsigns.nvim-$pkgver"
+    find doc lua plugin \
+        -type f \
+        -exec install -Dm644 '{}' "$pkgdir/usr/share/nvim/site/pack/dist/start/$pkgname/{}" \;
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
