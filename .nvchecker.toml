@@ -1,0 +1,5 @@
+[gohome-bin]
+source = "github"
+github = "anIcedAntFA/gohome"
+use_latest_release = true
+prefix = "v"
