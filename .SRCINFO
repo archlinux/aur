@@ -1,6 +1,6 @@
 pkgbase = lobehub-desktop-next-bin
 	pkgdesc = Desktop version of lobe-chat (v2.0.0-Next).
-	pkgver = 2.0.0_next.320
+	pkgver = 2.0.0_next.321
 	pkgrel = 1
 	url = https://github.com/lobehub/lobe-chat
 	arch = x86_64
@@ -18,10 +18,10 @@ pkgbase = lobehub-desktop-next-bin
 	conflicts = lobehub-desktop
 	conflicts = lobehub-desktop-beta-bin
 	conflicts = lobe-chat-appimage
-	source = lobehub-desktop-next-bin-2.0.0_next.320.rpm::https://github.com/lobehub/lobe-chat/releases/download/v2.0.0-next.320/lobehub-desktop-beta-2.0.0-next.320.x86_64.rpm
+	source = lobehub-desktop-next-bin-2.0.0_next.321.rpm::https://github.com/lobehub/lobe-chat/releases/download/v2.0.0-next.321/lobehub-desktop-beta-2.0.0-next.321.x86_64.rpm
 	source = LICENSE::https://raw.githubusercontent.com/lobehub/lobe-chat/main/LICENSE
 	source = lobehub-desktop-beta.png::https://raw.githubusercontent.com/lobehub/lobe-chat/main/apps/desktop/resources/tray.png
-	sha256sums = 8e577248d871185f02b69f2cb2cef5d528a36d91340284cb98f34f0687e4835c
+	sha256sums = 2765c32401e4c32db32c47667a13cf7403c0f7be3cdc101e304c1b55bd80b44b
 	sha256sums = 790a8c42f10beb4f5e9122e05a8e65d5522de49f89ac69cd31063c0f2be93ea4
 	sha256sums = 38e5a907edee6a2188c7f49d6c56688c8c7e110a0dc2ccd6172129372f21efaf
 
