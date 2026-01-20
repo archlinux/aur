@@ -1,8 +1,8 @@
 pkgbase = python-mmcif
 	pkgdesc = mmCIF Core Access Library
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
-	url = http://mmcif.wwpdb.org
+	url = https://mmcif.wwpdb.org
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
@@ -12,7 +12,7 @@ pkgbase = python-mmcif
 	depends = python
 	depends = python-requests
 	depends = python-msgpack
-	source = https://files.pythonhosted.org/packages/source/m/mmcif/mmcif-1.0.0.tar.gz
-	sha256sums = 6d2949c9fb6b93daa2b7ae1c8cca5d433aece1355e010de7c46785d8ec21adba
+	source = https://files.pythonhosted.org/packages/source/m/mmcif/mmcif-1.1.0.tar.gz
+	sha256sums = ad33f85b581218c3df0e231b2b034244e9f2380d2c8d05244a262a24d30b2f91
 
 pkgname = python-mmcif
