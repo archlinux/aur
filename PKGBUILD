@@ -6,7 +6,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-libxss
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 arch=('any')
 pkgdesc="X11 Screen Saver extension library (Android ${_android_arch})"
@@ -17,10 +17,8 @@ depends=("android-${_android_arch}-libxext"
 makedepends=("android-${_android_arch}-xorg-util-macros"
              "android-${_android_arch}-xorgproto")
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://xorg.freedesktop.org/releases/individual/lib/libXScrnSaver-${pkgver}.tar.xz"{,.sig})
-md5sums=('e613751d38e13aa0d0fd8e0149cec057'
-         'SKIP')
-validpgpkeys=('4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E') # "Alan Coopersmith <alan.coopersmith@oracle.com>"
+source=("https://xorg.freedesktop.org/releases/individual/lib/libXScrnSaver-${pkgver}.tar.xz")
+md5sums=('ec09c90a1cfd2c0630321d366a5e7203')
 
 build() {
     cd "${srcdir}/libXScrnSaver-$pkgver"
@@ -40,4 +38,6 @@ package() {
     rm -rf "$pkgdir/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
     ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
