@@ -32,46 +32,50 @@ makedepends=(
   'patch'
   'tar'
 )
-source=("zotero.desktop"
-        "zotero-client::git+https://github.com/zotero/zotero.git"
-        "zotero-translators::git+https://github.com/zotero/translators.git"
-        "zotero-styles::git+https://github.com/zotero/bundled-styles.git"
-        "zotero-pdf-worker::git+https://github.com/zotero/pdf-worker.git"
-        "zotero-note-editor::git+https://github.com/zotero/note-editor.git"
-        "zotero-reader::git+https://github.com/zotero/reader.git"
-        "zotero-schema::git+https://github.com/zotero/zotero-schema.git"
-        "zotero-SingleFile::git+https://github.com/gildas-lormeau/SingleFile.git"
-        "zotero-utilities::git+https://github.com/zotero/utilities.git"
-        "zotero-translate::git+https://github.com/zotero/translate.git"
-        "zotero-csl::git+https://github.com/citation-style-language/locales.git"
-        "zotero-libreoffice-integration::git+https://github.com/zotero/zotero-libreoffice-integration.git"
-        "zotero-pdf-js::git+https://github.com/zotero/pdf.js.git"
-        "zotero-epub-js::git+https://github.com/zotero/epub.js.git"
-        "disable-updater.patch")
-sha256sums=('eab76db7a56a4d9aaa17baaf240b82fcf57944a4ddf8ef1b58cc64182426cedc'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'dc1894ac2e1520c3dae8e9cd5e09608f4bb3298bdede2891a77118187edffa9d')
+source=(
+  "zotero.desktop"
+  "zotero-client::git+https://github.com/zotero/zotero.git"
+  "zotero-translators::git+https://github.com/zotero/translators.git"
+  "zotero-styles::git+https://github.com/zotero/bundled-styles.git"
+  "zotero-pdf-worker::git+https://github.com/zotero/pdf-worker.git"
+  "zotero-note-editor::git+https://github.com/zotero/note-editor.git"
+  "zotero-reader::git+https://github.com/zotero/reader.git"
+  "zotero-schema::git+https://github.com/zotero/zotero-schema.git"
+  "zotero-SingleFile::git+https://github.com/gildas-lormeau/SingleFile.git"
+  "zotero-utilities::git+https://github.com/zotero/utilities.git"
+  "zotero-translate::git+https://github.com/zotero/translate.git"
+  "zotero-csl::git+https://github.com/citation-style-language/locales.git"
+  "zotero-libreoffice-integration::git+https://github.com/zotero/zotero-libreoffice-integration.git"
+  "zotero-pdf-js::git+https://github.com/zotero/pdf.js.git"
+  "zotero-epub-js::git+https://github.com/zotero/epub.js.git"
+  "disable-updater.patch"
+)
+sha256sums=(
+  'eab76db7a56a4d9aaa17baaf240b82fcf57944a4ddf8ef1b58cc64182426cedc'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'dc1894ac2e1520c3dae8e9cd5e09608f4bb3298bdede2891a77118187edffa9d'
+)
 
 pkgver() {
-  cd "$srcdir/zotero-client"
+  cd zotero-client
   git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/zotero-client"
+  cd zotero-client
 
   patch -N -p1 < "$srcdir/disable-updater.patch"
 
@@ -113,7 +117,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/zotero-client"
+  cd zotero-client
   _NODE_OPTIONS="--openssl-legacy-provider"
   if (( $(vercmp "$(node --version)" "25.2.0") >= 0 )); then
     _NODE_OPTIONS="$_NODE_OPTIONS --no-experimental-webstorage"
