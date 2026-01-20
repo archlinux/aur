@@ -1,0 +1,10 @@
+cat > gw2taco.desktop << 'EOF'
+[Desktop Entry]
+Type=Application
+Name=GW2TacO
+Comment=Guild Wars 2 Tactical Overlay (via Wine)
+Exec=gw2taco
+Icon=applications-games
+Categories=Game;
+Terminal=false
+EOF

@@ -1,0 +1,19 @@
+cat > gw2taco << 'EOF'
+#!/usr/bin/env bash
+set -euo pipefail
+
+APPDIR="/opt/gw2taco"
+EXE="${APPDIR}/GW2TacO.exe"
+
+if [[ ! -f "${EXE}" ]]; then
+  echo "GW2TacO.exe not found at: ${EXE}" >&2
+  exit 1
+fi
+
+export WINEPREFIX="${XDG_DATA_HOME:-$HOME/.local/share}/gw2taco/wineprefix"
+mkdir -p "$(dirname "$WINEPREFIX")"
+
+exec wine "${EXE}" "$@"
+EOF
+
+chmod +x gw2taco
