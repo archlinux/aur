@@ -2,7 +2,7 @@
 # Contributor: Thorben Günther <echo YWRtaW5AeGVucm94Lm5ldAo= | base64 -d>
 
 pkgname=python-publicsuffixlist
-pkgver=1.0.2.20251128
+pkgver=1.0.2.20260117
 pkgrel=1
 pkgdesc='publicsuffixlist for python'
 arch=('any')
@@ -11,7 +11,7 @@ license=('MPL-2.0')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://pypi.io/packages/source/p/publicsuffixlist/publicsuffixlist-$pkgver.tar.gz")
-sha256sums=('2573b29c1fe3cdaf842d8d6ad971282dac1983212ddfad0617df06454327dc3a')
+sha256sums=('24e11230db4fe4d7e68bb43203f80bf527f614c0625a7dc2749d7b0444d858e5')
 
 build() {
     cd "$srcdir/publicsuffixlist-$pkgver"
