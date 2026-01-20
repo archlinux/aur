@@ -1,7 +1,7 @@
 pkgbase = python-abx-pkg
 	pkgdesc = System package manager interfaces with Python type hints.
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/abx-pkg/
 	arch = any
 	license = MIT

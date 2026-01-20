@@ -2,7 +2,7 @@
 
 pkgname=python-abx-pkg
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="System package manager interfaces with Python type hints."
 arch=('any')
 url="https://pypi.org/project/abx-pkg/"
@@ -20,6 +20,8 @@ build() {
 package() {
   cd "$srcdir/abx_pkg-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
+  install -D -m644 LICENSE \
+    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
