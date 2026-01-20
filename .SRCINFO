@@ -1,6 +1,6 @@
 pkgbase = sonami-bin
 	pkgdesc = A tauri music player (Binary)
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/RayZ3R0/sonami
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = sonami-bin
 	depends = libappindicator-gtk3
 	provides = sonami
 	conflicts = sonami
-	source = sonami-bin-0.1.6.deb::https://github.com/RayZ3R0/sonami/releases/download/v0.1.6/Sonami_0.1.6_amd64.deb
-	sha256sums = a281df6ea8df1ab84a66e38b9ffe8fcac0c26fb6432ab2225c2705cef4977c87
+	source = sonami-bin-0.1.7.deb::https://github.com/RayZ3R0/sonami/releases/download/v0.1.7/Sonami_0.1.7_amd64.deb
+	sha256sums = 11ad6ff00da57682f6784d64225a587b7e9bb8304ec01fe67afcafd8b3c23d54
 
 pkgname = sonami-bin
