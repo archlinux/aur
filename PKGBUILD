@@ -2,7 +2,7 @@
 
 pkgname=oldfashiond
 pkgver=0.1.4
-pkgrel=3
+pkgrel=4
 pkgdesc=" Create gifs using two-pass encoding with ffmpeg "
 url='https://github.com/rsekman/oldfashiond'
 arch=('any')
