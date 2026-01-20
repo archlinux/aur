@@ -2,7 +2,7 @@
 
 pkgname=python-sdbus-notifications
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Freedesktop Notifications binds for python-sdbus"
 url="https://github.com/python-sdbus/python-sdbus-notifications"
 arch=('any')

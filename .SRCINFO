@@ -1,7 +1,7 @@
 pkgbase = python-sdbus-notifications
 	pkgdesc = Freedesktop Notifications binds for python-sdbus
 	pkgver = 1.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/python-sdbus/python-sdbus-notifications
 	arch = any
 	license = LGPL-2.1-or-later
