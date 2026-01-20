@@ -1,16 +1,66 @@
 post_install() {
+    # Create ulog user if not exists
+    if ! getent passwd ulog &>/dev/null; then
+        useradd -r -s /sbin/nologin -d /nonexistent -c "ulog service account" ulog
+    fi
+
+    # Add to serial port groups (Arch: uucp, Debian: dialout)
+    for group in uucp dialout tty; do
+        getent group "$group" &>/dev/null && usermod -aG "$group" ulog
+    done
+
+    # Set config file permissions (root:ulog 0640)
+    chown root:ulog /etc/ulog.conf
+    chmod 0640 /etc/ulog.conf
+
+    # Set config directory permissions
+    chown root:ulog /etc/ulog.d
+    chmod 0750 /etc/ulog.d
+
+    # Generate initial config
     /usr/bin/ulog-genconfig
+
+    udevadm control --reload-rules
     systemctl daemon-reload
+
     echo ""
     echo "ulog installed."
     echo "Enable with: systemctl enable --now ulog.service ulog-rollover.timer ulog-genconfig.path"
-    echo "Config: /etc/ulog.conf (changes auto-applied)"
+    echo "Config: /etc/ulog.conf or /etc/ulog.d/*.conf (root:ulog 0640)"
     echo ""
 }
 
 post_upgrade() {
+    # Ensure user exists and has correct groups
+    if ! getent passwd ulog &>/dev/null; then
+        useradd -r -s /sbin/nologin -d /nonexistent -c "ulog service account" ulog
+    fi
+
+    # Add to serial port groups (Arch: uucp, Debian: dialout)
+    for group in uucp dialout tty; do
+        getent group "$group" &>/dev/null && usermod -aG "$group" ulog
+    done
+
+    # Ensure config permissions
+    chown root:ulog /etc/ulog.conf
+    chmod 0640 /etc/ulog.conf
+
+    # Ensure config directory permissions
+    if [[ -d /etc/ulog.d ]]; then
+        chown root:ulog /etc/ulog.d
+        chmod 0750 /etc/ulog.d
+    fi
+
+    # Regenerate config
     /usr/bin/ulog-genconfig
+
+    udevadm control --reload-rules
     systemctl daemon-reload
+}
+
+pre_remove() {
+    systemctl stop ulog.service ulog-rollover.timer ulog-genconfig.path 2>/dev/null || true
+    systemctl disable ulog.service ulog-rollover.timer ulog-genconfig.path 2>/dev/null || true
 }
 
 post_remove() {
@@ -18,4 +68,6 @@ post_remove() {
     rm -f /usr/lib/systemd/system/ulog.service
     udevadm control --reload-rules
     systemctl daemon-reload
+
+    echo "ulog removed. Log files preserved in /var/log/ulog/. User 'ulog' not removed."
 }

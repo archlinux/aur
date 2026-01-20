@@ -1,6 +1,6 @@
 pkgbase = ulog
 	pkgdesc = USB serial port logger with automatic session management
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/matterizelabs/ulog
 	install = ulog.install
@@ -8,8 +8,9 @@ pkgbase = ulog
 	license = MIT
 	depends = socat
 	depends = moreutils
+	depends = coreutils
 	backup = etc/ulog.conf
-	source = ulog-1.0.0.tar.gz::https://github.com/matterizelabs/ulog/archive/refs/tags/v1.0.0.tar.gz
+	source = ulog-1.1.0.tar.gz::https://github.com/matterizelabs/ulog/archive/refs/tags/v1.1.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = ulog
