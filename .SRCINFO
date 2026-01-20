@@ -1,0 +1,20 @@
+pkgbase = libbbf
+	pkgdesc = Bound Book Format: A high-performance, DirectStorage-native container format for comics and manga
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/ef1500/libbbf
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = extra-cmake-modules
+	depends = xxhash
+	provides = libbbf
+	conflicts = libbbf-bin
+	conflicts = libbbf-git
+	source = https://github.com/ef1500/libbbf/archive/refs/tags/v1.1.0.tar.gz
+	source = CMakeLists.txt
+	sha256sums = f730a2e8950f850a661ce94b577f787572614bc91306d6360431938775a85af2
+	sha256sums = 58b6aa1fdd80844b34e589c00f4de3768ab3c64f4e588a77396681e099749d3e
+
+pkgname = libbbf
