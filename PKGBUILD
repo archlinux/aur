@@ -2,7 +2,7 @@
 # Contributor: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=crmsh
-pkgver=4.6.2
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="Command-line interface for high-availability cluster management on GNU/Linux systems"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('python'
          'python-dateutil'
          'python-yaml')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ClusterLabs/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('02e7b145f3860490690aa95fdab535afa5f0c1e12d58743b32ea47df53e1dc3b51bfbf14f8e6f4a6ba5608c1f3240656d2bacda6b43bbc198e98c760081b6324')
+sha512sums=('464629a5316df849511b1b660d2bbff17f5a76418886ad6dc3578833c4bc2655cc6adc72c6e734ed65f0f38e5c4e86565fd029358cdc48710ffe310e6e69ea96')
 
 prepare() {
   cd ${pkgname}-${pkgver}
@@ -24,11 +24,11 @@ prepare() {
 build() {
   cd ${pkgname}-${pkgver}
   ./configure PYTHON=python \
-              --prefix=/usr \
-              --libdir=/usr/lib \
-              --sbindir=/usr/bin \
-              --sysconfdir=/etc \
-              --localstatedir=/var
+              --prefix=${pkgdir}/usr \
+              --libdir=${pkgdir}/usr/lib \
+              --sbindir=${pkgdir}/usr/bin \
+              --sysconfdir=${pkgdir}/etc \
+              --localstatedir=${pkgdir}/var
   make V=0
 }
 
