@@ -1,0 +1,16 @@
+pkgbase = pass-cli-bin
+	pkgdesc = CLI password and API key manager for folks who live in the command line
+	pkgver = 0.16.1
+	pkgrel = 1
+	url = https://github.com/arimxyer/pass-cli
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = pass-cli
+	conflicts = pass-cli
+	source_x86_64 = pass-cli-x86_64-0.16.1.tgz::https://github.com/arimxyer/pass-cli/releases/download/v0.16.1/pass-cli_0.16.1_linux_x86_64.tar.gz
+	sha256sums_x86_64 = b9c8f9a558dbd94e888381e953f04518e9a9d9bdcdb4bfcb74871d739bdefa32
+	source_aarch64 = pass-cli-aarch64-0.16.1.tgz::https://github.com/arimxyer/pass-cli/releases/download/v0.16.1/pass-cli_0.16.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = a2691d2225c86ed47cf224f44e508b0d4f9efb1f05174ea2adacf6619521518c
+
+pkgname = pass-cli-bin
