@@ -2,7 +2,7 @@
 # Maintainer: adam
 
 pkgname='opencode-bin'
-pkgver=1.1.28
+pkgver=1.1.29
 _subver=
 options=('!debug' '!strip')
 pkgrel=1
@@ -15,9 +15,9 @@ conflicts=('opencode')
 depends=('ripgrep')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/anomalyco/opencode/releases/download/v${pkgver}${_subver}/opencode-linux-arm64.tar.gz")
-sha256sums_aarch64=('de7d70bcf54dd542664e1b965303d2915b0db22db5810a40fc4a08496fca31fb')
+sha256sums_aarch64=('bb006b32b45f8f7771688392048e418028dd52de0f84d3c2f3e11f82d6d13892')
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/anomalyco/opencode/releases/download/v${pkgver}${_subver}/opencode-linux-x64.tar.gz")
-sha256sums_x86_64=('8c707150eb656384ac331f722f8f9fc7de9317db28c72b5a4de0c1243fb0356c')
+sha256sums_x86_64=('f891708873702ccd33ad2cdfaf50f6d5d81f6db0e9e298e767f63f26d9310671')
 
 package() {
   install -Dm755 ./opencode "${pkgdir}/usr/bin/opencode"
