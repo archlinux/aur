@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=runa
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 pkgdesc="A fast and lightweight console file browser written in Rust"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('MIT' 'Apache-2.0')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4b45603cd4924d3556a0fda3e2bfc793511bb55d98a5c0276b9a2379308422f8')
+sha256sums=('3f649dba3366839b3643773a75aed6faa68c89f7e5dfa183bc3378146105a81d')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
