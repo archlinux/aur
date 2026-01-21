@@ -1,10 +1,12 @@
 # Maintainer: dragoneki <dragoneki at proton dot me>
+
+# maintainers of 'luanti' package in extra (from which I took most things in this pkgbuild):
 # Contributor: Laurent Carlier <lordheavym@gmail.com>
 # Contributor: Konsta Kokkinen <kray@tsundere.fi>
 
 pkgbase=luanti-git
 pkgname=('luanti-git' 'luanti-server-git' 'luanti-common-git')
-pkgver=5.14.0.r113.gd4c3529af
+pkgver=5.15.0.r1.g1fe24af28
 pkgrel=1
 arch=('x86_64')
 url='https://www.luanti.org/'
@@ -23,7 +25,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd luanti
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/-rc/rc/;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -33,7 +35,7 @@ prepare() {
 build() {
   local _cmake_options=(
     -DCMAKE_INSTALL_PREFIX=/usr
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo
     -DENABLE_GETTEXT=1
     -DBUILD_UNITTESTS=0
     -DENABLE_UPDATE_CHECKER=0

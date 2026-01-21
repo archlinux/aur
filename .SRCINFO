@@ -1,5 +1,5 @@
 pkgbase = luanti-git
-	pkgver = 5.14.0.r113.gd4c3529af
+	pkgver = 5.15.0.r1.g1fe24af28
 	pkgrel = 1
 	url = https://www.luanti.org/
 	arch = x86_64
