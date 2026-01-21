@@ -2,15 +2,15 @@
 pkgname=hys-git
 _pkgname="${pkgname%-git}"
 pkgver=0.1.2.r6.gbe76aec
-pkgrel=1
-pkgdesc='Terminal RSS Reader for Digital Minimalists in Zig — Tool for Escaping the Doomscroll'
+pkgrel=2
+pkgdesc='Terminal RSS Reader for Digital Minimalists in Zig. — Build from the main bransh'
 url='https://github.com/superstarryeyes/hys'
 arch=('i686' 'x86_64')
 license=('MIT')
 depends=('curl')
 makedepends=('zig')
 provides=('hys')
-conflicts=("${pkgname%-*}")
+conflicts=('hys')
 source=("$_pkgname::git+$url.git#branch=main")
 sha256sums=(SKIP)
 
