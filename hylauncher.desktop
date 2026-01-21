@@ -1,10 +1,11 @@
 [Desktop Entry]
-Type=Application
-Name=HyLauncher
+Categories=Game;Utility;
 Comment=Unofficial Hytale Launcher for free to play gamers
 Exec=hylauncher
 Icon=hylauncher
-Categories=Game;Utility;
 Keywords=hytale;launcher;gaming;mods;
-Terminal=false
+Name=HyLauncher
 StartupNotify=true
+StartupWMClass=hylauncher
+Terminal=false
+Type=Application
