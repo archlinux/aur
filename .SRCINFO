@@ -1,6 +1,6 @@
 pkgbase = surge-bin
 	pkgdesc = An open-source terminal (TUI) download manager
-	pkgver = 0.1.9
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/junaid2005p/surge
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = surge-bin
 	depends = glibc
 	provides = surge
 	conflicts = surge
-	source_x86_64 = surge-x86_64-0.1.9.tgz::https://github.com/junaid2005p/surge/releases/download/v0.1.9/surge_0.1.9_linux_amd64.tar.gz
-	sha256sums_x86_64 = ba7a00aac6d50c8b41e5f14bb9ec9c0dbc48eeafe46aba6c0b0b9f888b4343bf
-	source_i686 = surge-i686-0.1.9.tgz::https://github.com/junaid2005p/surge/releases/download/v0.1.9/surge_0.1.9_linux_386.tar.gz
-	sha256sums_i686 = 9639ab1b53c3248a8be0f76f8a787ee5c626acb31a3054f1dff308c865c8262e
-	source_aarch64 = surge-aarch64-0.1.9.tgz::https://github.com/junaid2005p/surge/releases/download/v0.1.9/surge_0.1.9_linux_arm64.tar.gz
-	sha256sums_aarch64 = 7931e352e919ddb4980c180c9fefed2b5491426bd2a4cb0fbafbc514874ff39b
+	source_x86_64 = surge-x86_64-0.2.0.tgz::https://github.com/junaid2005p/surge/releases/download/v0.2.0/surge_0.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5affbe7e51cf3229cca344b6b000726439d0b931172be541b2a7633de33065fd
+	source_i686 = surge-i686-0.2.0.tgz::https://github.com/junaid2005p/surge/releases/download/v0.2.0/surge_0.2.0_linux_386.tar.gz
+	sha256sums_i686 = 4bafeedadcf809c9177d298728496c3a7bb5d69513d4117956e6f360548d9b99
+	source_aarch64 = surge-aarch64-0.2.0.tgz::https://github.com/junaid2005p/surge/releases/download/v0.2.0/surge_0.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = f10c14bbd2e100162bd016ccc4a8029c0509b3d5ae245e90450529d510a61f89
 
 pkgname = surge-bin
