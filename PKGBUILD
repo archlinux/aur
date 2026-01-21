@@ -2,7 +2,7 @@
 
 pkgname=phub-cli
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal-based video browser inspired by ani-cli, streaming directly from pornhub.com"
 arch=('x86_64')
 url="https://github.com/curtosis-org/phub-cli"
@@ -23,7 +23,8 @@ package() {
     cp -r modules "$pkgdir/usr/share/phub-cli/"
 
     # Patch DIR path inside phub-cli to system location
-    sed -i '0,/DIR=/{s|DIR=.*|DIR="/usr/share/phub-cli"|}' "$pkgdir/usr/bin/phub-cli"
+    sed -i '0,/^DIR=/{s|^DIR=.*|DIR="/usr/share/phub-cli"|}' "$pkgdir/usr/bin/phub-cli"
+
 
     # Permissions
     chmod +x "$pkgdir/usr/share/phub-cli/modules/"*.sh

@@ -1,7 +1,7 @@
 pkgbase = phub-cli
 	pkgdesc = Terminal-based video browser inspired by ani-cli, streaming directly from pornhub.com
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/curtosis-org/phub-cli
 	arch = x86_64
 	license = MIT
