@@ -1,7 +1,7 @@
 # Maintainer: Chris Zhang <develop [at] zcy [dot] moe>
 
 pkgname=shader-slang-git
-pkgver=2025.23.2
+pkgver=2026.1
 pkgrel=1
 pkgdesc='Shading language that makes it easier to build and maintain large shader codebases in a modular and extensible fashion.'
 url='https://github.com/shader-slang/slang'
@@ -37,7 +37,7 @@ package() {
     install -Dm755 "bin/$bin" "$pkgdir/opt/shader-slang/bin/$bin"
   done
 
-  for lib in libslang{,-glslang,-glsl-module,-llvm,-rt,}.so libgfx.so
+  for lib in libslang{,-glslang,-glsl-module,-llvm,-rt,}.so* libgfx.so*
   do
     install -Dm755 "lib/$lib" "$pkgdir/opt/shader-slang/lib/$lib"
   done
