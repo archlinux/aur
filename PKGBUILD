@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=airi-bin
 _pkgname=AIRI
-pkgver=0.8.1_beta.13
+pkgver=0.8.1
 _electronversion=39
 pkgrel=1
 pkgdesc="💖🧸 Self hosted, you owned Grok Companion, a container of souls of waifu, cyber livings to bring them into our worlds, wishing to achieve Neuro-sama's altitude.(Prebuilt version.Use system-wide electron)"
@@ -23,15 +23,15 @@ options=(
     '!strip'
 )
 source=(
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/moeru-ai/airi/v${pkgver//_/-}/LICENSE"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/moeru-ai/airi/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver//_/-}-linux-aarch64.rpm")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver//_/-}-linux-x86_64.rpm")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-aarch64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.rpm")
 sha256sums=('f334260edf0508041280b534ca9d0abd5a02a9626c1d2e20a556ac4eb72b07f9'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('24bc139ab4df5b54b90f59ea2d2cdb4244c51f6c1747d48c4448c6f3026130ee')
-sha256sums_x86_64=('c9e51b6c811c5d94ed7d575f16d0bf19bf8a84409f10e6f9fd8a2a9e8b210db5')
+sha256sums_aarch64=('bebb3331bac5c5ff191271d1bbeb88ccc041bab564a0e831fd3fa9a045a529e3')
+sha256sums_x86_64=('750d8485f8fcfbdfbce3b0b02bf2ee6bf04adbe1f24756a529682d5109164ee8')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
