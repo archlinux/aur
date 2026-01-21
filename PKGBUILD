@@ -2,7 +2,7 @@
 # Contributor: Batuhan Baserdem <lastn.firstn[at]gmail>
 pkgname=material-cursors-git
 pkgver=20220817.r43.2a5f302
-pkgrel=1
+pkgrel=2
 pkgdesc="Material cursors with 3 color variants"
 arch=('any')
 url="https://github.com/varlesh/material-cursors"
@@ -12,6 +12,7 @@ makedepends=(
   'inkscape'
   'libcanberra'
   'xorg-xcursorgen'
+  'xorg-server-xvfb'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -32,7 +33,7 @@ prepare() {
 build() {
   cd "${pkgname%-git}"
   export NO_AT_BRIDGE=1
-  make build
+  xvfb-run make build
 }
 
 package() {

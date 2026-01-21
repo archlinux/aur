@@ -1,7 +1,7 @@
 pkgbase = material-cursors-git
 	pkgdesc = Material cursors with 3 color variants
 	pkgver = 20220817.r43.2a5f302
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/varlesh/material-cursors
 	arch = any
 	license = GPL-2.0-or-later
@@ -9,6 +9,7 @@ pkgbase = material-cursors-git
 	makedepends = inkscape
 	makedepends = libcanberra
 	makedepends = xorg-xcursorgen
+	makedepends = xorg-server-xvfb
 	provides = material-cursors
 	conflicts = material-cursors
 	source = git+https://github.com/varlesh/material-cursors.git
