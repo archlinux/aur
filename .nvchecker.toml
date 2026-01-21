@@ -1,0 +1,5 @@
+[tock-bin]
+source = "github"
+github = "kriuchkov/tock"
+use_latest_release = true
+prefix = "v"
