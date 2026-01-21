@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=azahar
 pkgname=$_pkgname-git
-pkgver=2123.rc2.r100.g5c863db
+pkgver=2124.1.r8.g3fdcd6b
 pkgrel=1
 pkgdesc="Nintendo 3DS emulator based on Citra"
 arch=('x86_64')
@@ -27,7 +27,7 @@ makedepends=(
 	'ffmpeg4.4'
 	'fmt'
 	'git'
-	'libbacktrace'
+	# 'libbacktrace'
 	'libinih'
 	'libusb'
 	'nlohmann-json'
@@ -132,7 +132,7 @@ check() {
 
 package() {
 	depends+=(
-		'libbacktrace.so'
+		# 'libbacktrace.so'
 		'libboost_iostreams.so'
 		'libboost_serialization.so'
 		'libcrypto.so'
