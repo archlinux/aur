@@ -6,7 +6,7 @@ pkgbase=libcd
 pkgname=('libcd' 'lua-cd' 'lua51-cd' 'lua52-cd' 'lua53-cd')
 pkgdesc="Canvas Draw - 2D vector graphics library"
 pkgver=5.14
-pkgrel=4
+pkgrel=5
 arch=('i686' 'x86_64')
 url="https://www.tecgraf.puc-rio.br/cd/"
 makedepends=('glu' 'pdflib-lite' 'lsb-release' 'lua' 'lua51' 'lua52' 'lua53' 'lua-im' 'lua51-im' 'lua52-im' 'lua53-im')
@@ -39,6 +39,10 @@ prepare() {
   # patch for building with gcc 14
   # temporary - remove when it is fixed in upstream
   patch -p0 < "$srcdir"/fix-build-gcc-14.patch
+
+  # ensure building with GCC 15
+  # FTVectoriser.cpp:169:25: error: invalid conversion from ‘unsigned char*’ to ‘char*’ [-fpermissive]
+  sed -i 's/char\* tagList = &outline.tags/char* tagList = (char *) \&outline.tags/' "$srcdir"/ftgl/src/FTVectoriser.cpp
 
   # ensure proper building in parallel (specifying targets' dependencies)
   sed -i 's/^cd[^\(:\|lua\)].*/\0 cd/g;s/^cdlua[^5].*/\0 cdlua5/g' "$srcdir"/cd/src/Makefile
