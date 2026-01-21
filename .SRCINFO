@@ -1,7 +1,7 @@
 pkgbase = modiva-launcher-bin
 	pkgdesc = The official Modiva launcher
 	pkgver = 1.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://modiva-launcher.xyz
 	arch = x86_64
 	license = proprietary
