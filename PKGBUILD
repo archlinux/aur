@@ -33,7 +33,7 @@ sha256sums=(
 
 pkgver() {
   cd "$srcdir/$_reponame"
-  git describe --long --tags | cut -c2- | cut -d "-" -f 1-2 | sed 's/-/.r'
+  git describe --long --tags | cut -c2- | cut -d "-" -f 1-2 | sed 's/-/.r/'
 }
 
 package() {
