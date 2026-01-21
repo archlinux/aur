@@ -6,7 +6,7 @@ _pkgname=yggoverlay-cni-plugin
 pkgname=yggoverlay
 pkgver=0.1
 
-pkgrel=1
+pkgrel=2
 pkgdesc='CNI plugin for containerd to manage yggdrasil overlay network for VPN connection between containers'
 
 arch=('any')
@@ -38,5 +38,5 @@ package() {
     install -vDm644 "30-man8br0-ygg.conflist" -t "$pkgdir/etc/cni/net.d/"
     install -vDm644 "40-man8br1.conflist" -t "$pkgdir/etc/cni/net.d/"
 
-    install -vDm755 "$srcdir/$_pkgname-$pkgver/build/$_pkgname" -t "$pkgdir/opt/cni/bin/"
+    install -vDm755 "$srcdir/$_pkgname-$pkgver/build/$_pkgname" "$pkgdir/opt/cni/bin/yggoverlay"
 }
