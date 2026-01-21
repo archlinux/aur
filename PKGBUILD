@@ -4,7 +4,7 @@ _pkgname=termora
 _u_pkgname=Termora
 pkgname=${_pkgname}-appimage
 pkgver=1.0.17
-pkgrel=2
+pkgrel=3
 pkgdesc="Termora is a cross-platform terminal emulator and SSH client, available on Windows, macOS, and Linux."
 arch=('x86_64' 'aarch64')
 url="https://github.com/TermoraDev/termora"
@@ -12,7 +12,7 @@ url="https://github.com/TermoraDev/termora"
 license=("AGPL-3.0-only" "LicenseRef-Proprietary")
 
 
-source=("LICENSE.md::https://raw.githubusercontent.com/TermoraDev/termora/${pkgver}/README.md")
+source=("LICENSE::https://raw.githubusercontent.com/TermoraDev/termora/${pkgver}/README.md")
 
 source_x86_64=("${pkgname}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-x86-64.AppImage")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-aarch64.AppImage")
@@ -33,7 +33,8 @@ options+=("!strip" "!debug")
 
 prepare() {
     chmod +x "${_appimage}"
-    ./"${_appimage}" --appimage-extract
+    ./"${_appimage}" --appimage-extract ${_u_pkgname}.desktop
+    ./"${_appimage}" --appimage-extract lib/${_u_pkgname}.png
 }
 
 build() {
@@ -46,6 +47,7 @@ build() {
 package() {
     # AppImage
     install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
+    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/opt/${pkgname}/LICENSE"
 
     # Desktop file
     install -Dm644 "${srcdir}/squashfs-root/${_u_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
@@ -56,11 +58,13 @@ package() {
 
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
-    install -Dm755 "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
+    # install -Dm755 "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
+    ln -rs "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
 
     # Symlink license
     install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
-    install -Dm755 "${srcdir}/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname"
+    # install -Dm755 "${srcdir}/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname"
+    ln -rs "${pkgdir}/opt/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
     
 }
 
