@@ -1,4 +1,4 @@
-[cpx]
+[cpx-bin]
 source = "git"
 git = "https://github.com/ozacod/cpx.git"
 prefix = "v"
