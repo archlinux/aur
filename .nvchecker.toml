@@ -1,0 +1,4 @@
+[icdiff]
+source = "git"
+git = "https://github.com/jeffkaufman/icdiff.git"
+prefix = "release-"
