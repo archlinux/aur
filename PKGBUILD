@@ -1,28 +1,24 @@
-# Maintainer: darkfm salvadorp2001@gmail.com
-pkgname=('gnomekiss')
-pkgver='2.0'
-pkgrel='2'
-pkgdesc="KiSS Doll viewer for GNOME"
-arch=('i686' 'x86_64')
-url="http://devel.tlrmx.org/kiss/"
-license=('GPL')
-depends=('gtk2' 'atk' 'pango' 'freetype2' 'glib2' 'libgnomeui')
-source=("http://devel.tlrmx.org/kiss/source/$pkgname-$pkgver.tar.gz" "gnomekiss-2.0.patch")
-sha1sums=('1c0c2082c5331387f420329ada66e0c31202fcbb'
-          'd16a8612c8cb97ca9af0c184d5f882434f97259a')
-
-prepare() {
-	cd "$srcdir/$pkgname-$pkgver"
-	patch -p1 -i "${srcdir}/gnomekiss-2.0.patch"
-}
-
-build() {
-	cd "$srcdir/$pkgname-$pkgver"
-	./configure
-	make
-}
+# Maintainer: Lotte V
+# Contributor: Lotte V
+pkgname=gnomekiss
+pkgver=2.0
+pkgrel=8
+pkgdesc="KiSS paper doll viewer for GNOME"
+arch=('x86_64')
+url="https://devel.tlrmx.org/kiss/"
+license=('GPL-2.0')
+groups=('gnomekiss')
+depends=('dconf' 'at-spi2-core' 'glibc' 'cairo' 'libcanberra' 'gdk-pixbuf2' 'glib2' 'gtk3' 'lha')
+source=("${pkgname}-${pkgver}.deb::https://cloud.debian.org/images/snapshot/pool/main/g/${pkgname}/${pkgname}_${pkgver}-${pkgrel}_amd64.deb")
+md5sums=('1b7dd5ab558d6c6b183eabb9045da150')
+sha256sums=('9dff68ec175b52a517f574d1662fbbf19613ba378a1b7d4d202c868a6ae6159e')
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
-	make DESTDIR="$pkgdir" install
+	cd "$srcdir"
+
+	local_deb_file="$pkgname-$pkgver.deb"
+
+	ar x "$local_deb_file" data.tar.xz
+
+	bsdtar -xf data.tar.xz -C "$pkgdir"
 }

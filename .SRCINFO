@@ -1,21 +1,22 @@
 pkgbase = gnomekiss
-	pkgdesc = KiSS Doll viewer for GNOME
+	pkgdesc = KiSS paper doll viewer for GNOME
 	pkgver = 2.0
-	pkgrel = 2
-	url = http://devel.tlrmx.org/kiss/
-	arch = i686
+	pkgrel = 8
+	url = https://devel.tlrmx.org/kiss/
 	arch = x86_64
-	license = GPL
-	depends = gtk2
-	depends = atk
-	depends = pango
-	depends = freetype2
+	groups = gnomekiss
+	license = GPL-2.0
+	depends = dconf
+	depends = at-spi2-core
+	depends = glibc
+	depends = cairo
+	depends = libcanberra
+	depends = gdk-pixbuf2
 	depends = glib2
-	depends = libgnomeui
-	source = http://devel.tlrmx.org/kiss/source/gnomekiss-2.0.tar.gz
-	source = gnomekiss-2.0.patch
-	sha1sums = 1c0c2082c5331387f420329ada66e0c31202fcbb
-	sha1sums = d16a8612c8cb97ca9af0c184d5f882434f97259a
+	depends = gtk3
+	depends = lha
+	source = gnomekiss-2.0.deb::https://cloud.debian.org/images/snapshot/pool/main/g/gnomekiss/gnomekiss_2.0-8_amd64.deb
+	md5sums = 1b7dd5ab558d6c6b183eabb9045da150
+	sha256sums = 9dff68ec175b52a517f574d1662fbbf19613ba378a1b7d4d202c868a6ae6159e
 
 pkgname = gnomekiss
-
