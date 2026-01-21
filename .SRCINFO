@@ -1,0 +1,19 @@
+pkgbase = python-trayer-git
+	pkgdesc = System Tray Icons for GTK4
+	pkgver = 0.1.1.r0
+	pkgrel = 1
+	url = https://github.com/enne2/trayer
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = glibc
+	depends = python
+	provides = python-trayer
+	source = git+https://github.com/Enne2/trayer
+	b2sums = SKIP
+
+pkgname = python-trayer-git
