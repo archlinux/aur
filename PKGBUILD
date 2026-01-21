@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=ensoai
 pkgver=0.2.25
-pkgrel=1
+pkgrel=2
 pkgdesc="Multiple AI Agents, Parallel Workflow - Git worktree manager with AI integration"
 arch=('x86_64')
 url="https://github.com/J3n5en/EnsoAI"
@@ -66,6 +66,7 @@ Type=Application
 Categories=Development;Utility;IDE;
 Terminal=false
 StartupWMClass=EnsoAI
+StartupWMClass=enso-ai
 EOF
 
     # Install icon (adjust path if needed)

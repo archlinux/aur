@@ -1,7 +1,7 @@
 pkgbase = ensoai
 	pkgdesc = Multiple AI Agents, Parallel Workflow - Git worktree manager with AI integration
 	pkgver = 0.2.25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/J3n5en/EnsoAI
 	arch = x86_64
 	license = MIT
