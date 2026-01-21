@@ -7,7 +7,7 @@
 # Contributor: Anders Bostrom <anders.bostrom@home.se>
 
 pkgname=thunderbird-globalmenu
-pkgver=145.0
+pkgver=147.0
 pkgrel=1
 pkgdesc='Standalone mail and news reader from mozilla.org'
 url='https://www.thunderbird.net/'
@@ -59,8 +59,10 @@ makedepends=(
   gawk perl findutils libotr wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi
 )
 options=(!emptydirs !makeflags !lto)
-commit=https://gitlab.archlinux.org/archlinux/packaging/packages/thunderbird/-/raw/9864f8ea27dfa952f76a3997baa14f37fc44b49f
+commit=https://gitlab.archlinux.org/archlinux/packaging/packages/thunderbird/-/raw/b87aecad669f0db4fa39379b2b028985e7a756d2
 source=(https://archive.mozilla.org/pub/thunderbird/releases/${pkgver}/source/thunderbird-${pkgver}.source.tar.xz{,.asc}
+        # https://bugzilla.mozilla.org/show_bug.cgi?id=2006630
+        $commit/fix-cargo-.gitmodules.patch
         $commit/vendor-prefs.js
         $commit/distribution.ini
         $commit/mozconfig.cfg
@@ -172,8 +174,9 @@ END
     "$pkgdir/usr/lib/thunderbird/thunderbird-bin"
 }
 
-sha512sums=('f33835e4d740b32d072ac915124d988ef9d4cbe55d7c972c817991d19b64e8bc95b75b503ad3cb9abf4fd1d220fc7cb61720ea84dc49482faa13da1690d7d80e'
+sha512sums=('d04a135f23572123d5cca41c2611704aa06cb81e0226c89c267dc527f59fb0d9d5d8b8a49cd126626c2fd934624c9d2420ae71dd10a912b3011f3342fbaf7511'
             'SKIP'
+            'c438a6fde1ceeac1400cc242f25c6957e059291601129fcdeb119c5486e99fec51ae1558dd03abf476527a923be70295702b54d57c1228a3ad5a7c1227494c59'
             '6918c0de63deeddc6f53b9ba331390556c12e0d649cf54587dfaabb98b32d6a597b63cf02809c7c58b15501720455a724d527375a8fb9d757ccca57460320734'
             '5cd3ac4c94ef6dcce72fba02bc18b771a2f67906ff795e0e3d71ce7db6d8a41165bd5443908470915bdbdb98dddd9cf3f837c4ba3a36413f55ec570e6efdbb9f'
             '8c315b8744f91ad762ad4887dc757e1b282fa3bc084c60422de93695a98804a0a7bb8e091e94ca6aa057b65587dc5c91db309fa87295b47dee43becf06e126fb'
@@ -184,5 +187,5 @@ sha512sums=('f33835e4d740b32d072ac915124d988ef9d4cbe55d7c972c817991d19b64e8bc95b
 provides=(thunderbird)
 conflicts=(thunderbird)
 
-source+=(https://github.com/Lexi-Ewald/unity-menubar/raw/a728a7e/unity-menubar.patch)
-sha512sums+=(ac8034498589faa66470e223ee40e73f5d52794b1bf0a8678c54a0ce8a49053149c3da5524f6d80e1985991b89ef40718e1c97a3a54f9d44f0692d53d578ffbe)
+source+=(https://github.com/Lexi-Ewald/unity-menubar/raw/e455977a6200e1b21afbc63f42f5ff21159c28bb/unity-menubar.patch)
+sha512sums+=(ce7a8d19bbdd5f471d8e63d90554d67ae717fedf7a936a2913ed46a7714b571d20875b76e52ee880be12e728e35667de1579871090353aaae49d1a8bc8a86226)
