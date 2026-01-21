@@ -1,6 +1,6 @@
 # Maintainer: Diramix <39developer@diram1x.ru>
 pkgname=next-music
-pkgver=2.2.4
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="Web client for Yandex Music with support for themes, addons and Discord Rich Presence (RPC)"
 arch=('x86_64')
