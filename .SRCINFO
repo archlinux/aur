@@ -1,14 +1,14 @@
 pkgbase = liketaskmanager-git
 	pkgdesc = Tool that mimics the permformance monitoring of Windows Task Manager
-	pkgver = 2.4.r0.g1d31b4e
+	pkgver = 2.4.r4.gf491ab2
 	pkgrel = 1
 	url = https://github.com/rejuce/LikeTaskManager
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
 	depends = nethogs
-	depends = qt5-base
-	depends = qwt
+	depends = qt6-base
+	depends = qwt-qt6
 	provides = liketaskmanager
 	conflicts = liketaskmanager
 	source = git+https://github.com/rejuce/LikeTaskManager.git
@@ -16,6 +16,6 @@ pkgbase = liketaskmanager-git
 	source = includepath.patch
 	sha256sums = SKIP
 	sha256sums = c1655277c90a158ceed2fe461297ccd148f7746c4f19320de4c375a4e49ada0b
-	sha256sums = ddf181e60d9f79079d824b0d1ed92b95d70f708223aa05e3f5e641fe0c06ab91
+	sha256sums = 60d39abcb40047801cabcbde144964fb0d28a0b1635b6cd41409af159656367f
 
 pkgname = liketaskmanager-git

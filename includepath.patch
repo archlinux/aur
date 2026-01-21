@@ -10,8 +10,8 @@ diff --unified --recursive --text a/LikeTaskManager.pro b/LikeTaskManager.pro
 -
 -INCLUDEPATH += /home/jk/libs/qwt/install-6.3.0/include
 -LIBS += -L/home/jk/libs/qwt/install-6.3.0/lib/ -lqwt
-+INCLUDEPATH += /usr/include/qwt
-+LIBS += -lqwt
++INCLUDEPATH += /usr/include/qwt-qt6
++LIBS += -lqwt-qt6
  
  
  
