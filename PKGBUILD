@@ -1,6 +1,6 @@
 # Maintainer: t4t5 <t4t5@hey.com>
 pkgname=hypruler-bin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Measure anything on your screen."
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('hypruler')
 options=('!debug')
 source=("hypruler-$pkgver::https://github.com/t4t5/hypruler/releases/download/v$pkgver/hypruler"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/t4t5/hypruler/v$pkgver/LICENSE")
-sha256sums=('716fba71c1ab0172a49544cbe7f98de7e4e0373f53a9b5975ebbd4a586ca841b'
+sha256sums=('6b5f771ec218470e1c42b424efe44a7975f00debeabbb704c83352272867621c'
             '52839f7b0ceef1ae4b6a95d7f96c51658744d2fb18e5a2b9e65ebffe88b33b16')
 
 package() {
