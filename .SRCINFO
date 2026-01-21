@@ -1,7 +1,7 @@
 pkgbase = termora-appimage
 	pkgdesc = Termora is a cross-platform terminal emulator and SSH client, available on Windows, macOS, and Linux.
 	pkgver = 1.0.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TermoraDev/termora
 	arch = x86_64
 	arch = aarch64
@@ -16,7 +16,7 @@ pkgbase = termora-appimage
 	sha256sums = 195f85095c638be287eb653ff9bbb80d3dc1507528f72402e38dbaf31c57ce05
 	source_x86_64 = termora-appimage-1.0.17-x86_64.AppImage::https://github.com/TermoraDev/termora/releases/download/1.0.17/termora-1.0.17-linux-x86-64.AppImage
 	sha256sums_x86_64 = 87eb74468455c69bb2411c592e2c09d90f10af859ff8fa29ff1cc6141940e4a4
-	source_aarch64 = termora-appimage-1.0.17-x86_64.AppImage::https://github.com/TermoraDev/termora/releases/download/1.0.17/termora-1.0.17-linux-x86_64.AppImage
-	sha256sums_aarch64 = 87eb74468455c69bb2411c592e2c09d90f10af859ff8fa29ff1cc6141940e4a4
+	source_aarch64 = termora-appimage-1.0.17-aarch64.AppImage::https://github.com/TermoraDev/termora/releases/download/1.0.17/termora-1.0.17-linux-aarch64.AppImage
+	sha256sums_aarch64 = 0827e39143dd616320d7c49c9c98b3352cfe48a4183952420fc75ecd0d581ea0
 
 pkgname = termora-appimage

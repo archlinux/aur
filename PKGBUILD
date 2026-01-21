@@ -4,7 +4,7 @@ _pkgname=termora
 _u_pkgname=Termora
 pkgname=${_pkgname}-appimage
 pkgver=1.0.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Termora is a cross-platform terminal emulator and SSH client, available on Windows, macOS, and Linux."
 arch=('x86_64' 'aarch64')
 url="https://github.com/TermoraDev/termora"
@@ -14,11 +14,11 @@ license=("AGPL-3.0-only" "LicenseRef-Proprietary")
 
 source=("LICENSE.md::https://raw.githubusercontent.com/TermoraDev/termora/${pkgver}/README.md")
 
-source_x86_64=("${pkgname}-${pkgver}-${CARCH}.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-x86-64.AppImage")
-source_aarch64=("${pkgname}-${pkgver}-${CARCH}.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-${CARCH}.AppImage")
+source_x86_64=("${pkgname}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-x86-64.AppImage")
+source_aarch64=("${pkgname}-${pkgver}-aarch64.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-aarch64.AppImage")
 sha256sums=('195f85095c638be287eb653ff9bbb80d3dc1507528f72402e38dbaf31c57ce05')
 sha256sums_x86_64=('87eb74468455c69bb2411c592e2c09d90f10af859ff8fa29ff1cc6141940e4a4')
-sha256sums_aarch64=('87eb74468455c69bb2411c592e2c09d90f10af859ff8fa29ff1cc6141940e4a4')
+sha256sums_aarch64=('0827e39143dd616320d7c49c9c98b3352cfe48a4183952420fc75ecd0d581ea0')
 
 _appimage="${pkgname}-${pkgver}-${CARCH}.AppImage"
 noextract=("${_appimage}")
