@@ -1,0 +1,18 @@
+post_install() {
+	echo ":: Vane has been installed."
+	echo ":: Configuration directory: /etc/vane"
+	echo ":: Default environment file: /etc/vane/.env"
+	echo "::"
+	echo ":: To start the service:"
+	echo "::   systemctl start vane"
+	echo "::"
+	echo ":: To enable on boot:"
+	echo "::   systemctl enable vane"
+}
+
+post_upgrade() {
+	echo ":: Vane has been upgraded."
+	echo ":: Please check /etc/vane for .pacnew configuration files if any changes occurred."
+	echo ":: Restart the service to apply changes:"
+	echo "::   systemctl restart vane"
+}

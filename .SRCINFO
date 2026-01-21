@@ -1,0 +1,23 @@
+pkgbase = vane
+	pkgdesc = A flow-based reverse proxy with multi-layer routing and programmable pipelines
+	pkgver = 0.8.14
+	pkgrel = 1
+	url = https://vaneproxy.com
+	install = vane.install
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = riscv64
+	arch = loongarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = cmake
+	makedepends = clang
+	depends = glibc
+	depends = gcc-libs
+	backup = etc/vane/.env
+	source = git+https://github.com/canmi21/vane.git#tag=v0.8.14
+	sha256sums = SKIP
+
+pkgname = vane
