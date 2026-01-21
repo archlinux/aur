@@ -15,7 +15,7 @@ pkgbase = python-llama-index-workflows
 	depends = python
 	depends = python-llama-index-instrumentation
 	depends = python-pydantic
-	source = python-llama-index-workflows-2.12.2.tar.gz::https://github.com/run-llama/workflows-py/archive/refs/tags/llama-index-workflows@v2.12.2.tar.gz
-	sha256sums = 756163cd4febf196bebd61d86cc0bb3ad9c3510be0dbfc9b14a133f012aa238e
+	source = python-llama-index-workflows-2.12.2.tar.gz::https://files.pythonhosted.org/packages/d1/ee/8c58554942933f33752ccb86451ea0a15493808eb934f4899e4d2c43a408/llama_index_workflows-2.12.2.tar.gz
+	sha256sums = 37e05cd3483c64f410176fe614db8c84b6f42fc32cdadb3cc8ac8de18f01a97b
 
 pkgname = python-llama-index-workflows
