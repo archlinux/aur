@@ -3,8 +3,8 @@
 
 _pkgname=cro-mag-rally
 pkgname="${_pkgname}-net"
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.0.2
+pkgrel=3
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 pkgdesc='The wildest racing game since man invented the wheel! Experimental LAN build.'
@@ -13,10 +13,10 @@ url='https://github.com/jm2/CroMagRally'
 license=('custom:CC-BY-NC-SA-4.0')
 depends=('sdl2' 'glu' 'hicolor-icon-theme')
 makedepends=('cmake' 'git')
-_commit='ea3b84dec0153dbcc25982f25055cd04f6ecefbb'
+_commit='b9cf68c00330071e71ee6f5a2395ad40a76ba0a1'
 source=(
   "$_pkgname::git+$url.git#commit=$_commit"
-  'git+https://github.com/jorio/Pomme.git'
+  'git+https://github.com/jm2/Pomme.git'
   "$_pkgname.desktop"
   "$_pkgname.sh"
 )
@@ -51,14 +51,14 @@ package() {
   # move binary & assets
   install -vd "$pkgdir/usr/lib/$_pkgname"
   install -vDm755 -t "$pkgdir/usr/lib/$_pkgname" build/CroMagRally
-  mv -v build/Data "$pkgdir/usr/lib/$_pkgname"
+  cp -vr Data "$pkgdir/usr/lib/$_pkgname"
 
   # wrapper script for $PATH execution
   install -vDm755 "$srcdir/$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
 
   # desktop file & icon
   install -vDm644 -t "$pkgdir/usr/share/applications" "$srcdir/$_pkgname.desktop"
-  install -vDm644 packaging/cromagrally-desktopicon.png \
+  install -vDm644 packaging/io.jor.cromagrally-alternateicon.png \
     "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
 
   # documentation
