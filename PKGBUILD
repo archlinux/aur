@@ -2,7 +2,7 @@
 # Contributor: matthias.lisin
 
 pkgname="mockery"
-pkgver=3.6.1
+pkgver=3.6.3
 pkgrel=1
 pkgdesc="A mock code autogenerator for Go"
 arch=(
@@ -21,7 +21,7 @@ makedepends=(
   'go'
 )
 provides=(
-  'golang-mockery'
+  "golang-mockery=${pkgver}"
 )
 conflicts=(
   'golang-mockery'
@@ -33,7 +33,7 @@ _pkgsrc="${_url##*/}-${pkgver}"
 source=(
   "${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('7a6f1a99626cd4471353d6726e48980911763dfce67a04131235ca586e75b579')
+sha256sums=('8baf148df075575372a583afc6af17926c2bcf8cf5dbe8022aaeeeb6490ecda4')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
