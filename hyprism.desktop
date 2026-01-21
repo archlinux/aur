@@ -1,11 +1,11 @@
 [Desktop Entry]
-Type=Application
-Name=HyPrism
+Categories=Game;Utility;
 Comment=A multiplatform Hytale launcher with mod manager
 Exec=hyprism
 Icon=hyprism
-Categories=Game;Utility;
 Keywords=hytale;launcher;gaming;mods;
-Terminal=false
+Name=HyPrism
 StartupNotify=true
 StartupWMClass=hyprism
+Terminal=false
+Type=Application
