@@ -4,11 +4,11 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-mariadb
-pkgdesc="Fast SQL database server, derived from MySQL (Android ${_android_arch})"
+pkgdesc="MariaDB client library (Android ${_android_arch})"
 pkgver=12.1.2
-pkgrel=1
+pkgrel=2
 arch=('any')
-license=('GPL')
+license=('LGPL2.1')
 url='https://mariadb.org/'
 groups=('android-mariadb')
 depends=("android-${_android_arch}-curl"
