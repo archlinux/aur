@@ -1,10 +1,5 @@
 # Maintainer: Torge Matthies <openglfreak at googlemail dot com>
 
-_omit_dlls=false
-_dotnet_ver=8.0
-_runtime_ver=22
-_sdk_ver=122
-
 pkgname='vrcft-avalonia-bin'
 pkgdesc='Cross-platform VRCFaceTracking made with Avalonia (extracted AppImage version)'
 pkgver='1.1.1.0'
@@ -112,24 +107,6 @@ build() {
     rm -f appimage/.DirIcon
     rm -f appimage/VRCFaceTracking.Avalonia.desktop
     rmdir appimage/usr/bin/Languages
-
-    if [ "$_omit_dlls" = true ]; then
-        stat "/usr/share/dotnet/shared/Microsoft.NETCore.App/$_dotnet_ver.$_runtime_ver" >/dev/null
-        stat "/usr/share/dotnet/sdk/$_dotnet_ver.$_sdk_ver/Roslyn/bincore" >/dev/null
-        (
-            CDPATH='' cd appimage/usr/bin
-            for dll in *.dll; do
-                if [ -e "/usr/share/dotnet/shared/Microsoft.NETCore.App/$_dotnet_ver.$_runtime_ver/$dll" ]; then
-                    ln -sf "../../usr/share/dotnet/shared/Microsoft.NETCore.App/$_dotnet_ver.$_runtime_ver/$dll" "$dll"
-                elif [ -e "/usr/share/dotnet/sdk/$_dotnet_ver.$_sdk_ver/$dll" ]; then
-                    ln -sf "../../usr/share/dotnet/sdk/$_dotnet_ver.$_sdk_ver/$dll" "$dll"
-                elif [ -e "/usr/share/dotnet/sdk/$_dotnet_ver.$_sdk_ver/Roslyn/bincore/$dll" ]; then
-                    ln -sf "../../usr/share/dotnet/sdk/$_dotnet_ver.$_sdk_ver/Roslyn/bincore/$dll" "$dll"
-                fi
-            done
-        )
-    fi
-
     mv appimage/VRCFaceTracking.Avalonia.png ./
     mv appimage/usr/bin ./
     rmdir appimage/usr
