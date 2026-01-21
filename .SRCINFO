@@ -1,6 +1,6 @@
 pkgbase = r-sctransform
 	pkgdesc = Variance Stabilizing Transformations for Single Cell UMI Data
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=sctransform
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = r-sctransform
 	optdepends = r-irlba
 	optdepends = r-knitr
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/sctransform_0.4.2.tar.gz
-	sha256sums = 56180aebc7f91345e63210df76541681d3673a59d1a388523dc7ba69886ba0d0
+	source = https://cran.r-project.org/src/contrib/sctransform_0.4.3.tar.gz
+	sha256sums = f07fdf1875eea9b89a2d7bedc4bd542bf7da836b1defc1aaf687018053377a50
 
 pkgname = r-sctransform

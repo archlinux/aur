@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sctransform
-_pkgver=0.4.2
+_pkgver=0.4.3
 pkgname=r-${_pkgname,,}
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='Variance Stabilizing Transformations for Single Cell UMI Data'
 arch=('x86_64')
@@ -32,7 +32,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('56180aebc7f91345e63210df76541681d3673a59d1a388523dc7ba69886ba0d0')
+sha256sums=('f07fdf1875eea9b89a2d7bedc4bd542bf7da836b1defc1aaf687018053377a50')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
