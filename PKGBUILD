@@ -25,8 +25,8 @@ source=(
     "SFML-${pkgver}.tar.gz::https://github.com/SFML/SFML/archive/refs/tags/${pkgver}.tar.gz"
     "CSFML-${pkgver}.tar.gz::https://github.com/SFML/CSFML/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha256sums=('82535db9e57105d4f3a8aedabd138f77571ab9a903e508a99a8baebe7f5c192d'
-            '699e38c50e67d1d4ea6e43b6c33fd99c01ba38fc194ad651c121059dd48dcde5')
+sha256sums=('82535db9e57105d4f3a8aedabd138631defaedc593cab589c924b7d7a11ffb9d'
+            'f3f3980f6b5cad85b40e3130c10a2ffaaa9e36de5f756afd4aacaed98a7a9b7b')
 
 build() {
     cmake -S "SFML-${pkgver}" -B build-sfml \
