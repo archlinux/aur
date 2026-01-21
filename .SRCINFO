@@ -1,0 +1,18 @@
+pkgbase = easy-switcher-git
+	pkgdesc = Keyboard layout switcher for Linux (git version)
+	pkgver = 0.4.r32.gb1af840
+	pkgrel = 1
+	url = https://github.com/freemind001/preview
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = cmake
+	makedepends = git
+	depends = glibc
+	depends = libevdev
+	provides = easy-switcher
+	conflicts = easy-switcher
+	options = !debug
+	source = git+https://github.com/freemind001/preview.git
+	sha256sums = SKIP
+
+pkgname = easy-switcher-git
