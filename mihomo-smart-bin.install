@@ -1,0 +1,12 @@
+post_install(){
+    post_upgrade
+}
+post_upgrade(){
+    cat << EOF
+    这是由 MetaCubeX 开发的 Mihomo 内核的修改版，添加了Smart策略组。
+    你可以在 https://wiki.metacubex.one/ 找到其使用手册。
+    mihomo.service 的主目录位于 /etc/mihomo
+    用户主目录默认位于 ~/.config/mihomo
+EOF
+
+}
