@@ -1,11 +1,11 @@
 # Maintainer: Oliver Weissbarth <mail@oweissbarth.de>
 # Maintainer: SFN
 pkgname=feather-tk
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A lightweight toolkit for building cross-platform applications"
 arch=("x86_64")
-url="https://github.com/darbyjohnston/feather-tk"
+url="https://github.com/grizzlypeak3d/feather-tk"
 license=('BSD-3-Clause')
 groups=()
 depends=('lunasvg' 'nlohmann-json' 'libpng' 'freetype2' 'libglvnd' 'sdl2')
@@ -13,9 +13,9 @@ makedepends=('cmake' 'make')
 replaces=()
 backup=()
 options=()
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/darbyjohnston/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/grizzlypeak3d/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
 noextract=()
-sha256sums=('fa39b10b0c66bc8d9bf84360048f79249c50428e2a7f70f2859210de904b9880')
+sha256sums=('8ca5b50e0a297d562304904e1d256ba27dfd9e21870fa2b9c277e1dda469def4')
 
 CFLAGS+=" -ffat-lto-objects" #lto problems with static libs
 CXXFLAGS+=" -ffat-lto-objects" #lto problems with static libs
