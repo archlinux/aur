@@ -1,0 +1,16 @@
+pkgbase = cuda-api-wrappers-git
+	pkgdesc = Thin, unified, C++-flavored wrappers for the CUDA APIs
+	pkgver = v0.8.1.r1.g68a22e2
+	pkgrel = 1
+	url = https://github.com/eyalroz/cuda-api-wrappers
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	depends = cuda
+	provides = cuda-api-wrappers
+	conflicts = cuda-api-wrappers
+	source = git+https://github.com/eyalroz/cuda-api-wrappers.git
+	md5sums = SKIP
+
+pkgname = cuda-api-wrappers-git
