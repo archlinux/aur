@@ -2,7 +2,7 @@
 pkgname=git-guitar-bin
 _pkgname=guitar
 pkgver=0.1.44
-pkgrel=2
+pkgrel=3
 pkgdesc='A terminal based git client with fast topological & chronological graph rendering - Pre-Build binary'
 arch=('x86_64')
 url='https://github.com/asinglebit/guitar'
@@ -26,8 +26,8 @@ sha256sums=('0793b4219c195d8edf4eab87f1510cd1b37b5e3a65b2cb4aaaf80a7b33bbe434'
 validpgpkeys=('EF4B4CB5DFB8822216A473B1597AB12E66262898')
 
 package() {
-    install -Dm0755 -t "$pkgdir/usr/bin/$_pkgname" "$_pkgname-$pkgver"
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE" LICENSE
-    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/README.md" README.md
+    install -Dm0755 "$_pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
 }
 

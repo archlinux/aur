@@ -1,7 +1,7 @@
 pkgbase = git-guitar-bin
 	pkgdesc = A terminal based git client with fast topological & chronological graph rendering - Pre-Build binary
 	pkgver = 0.1.44
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/asinglebit/guitar
 	arch = x86_64
 	license = GPL-3.0
