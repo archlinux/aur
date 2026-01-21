@@ -1,17 +1,20 @@
 # Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: PandaDEV <contact@pandadev.net>
 pkgname=wireguard-gui-bin
 pkgver=0.1.8
-pkgrel=2
+pkgrel=3
 pkgdesc="A wireguard client GUI for Linux made with nextauri."
 arch=('x86_64' 'aarch64')
 url="https://github.com/0xle0ne/wireguard-gui"
 license=('Apache-2.0 AND MIT')
 depends=(
   'gtk3'
-  'libappindicator'
+  'libayatana-appindicator'
   'libsoup3'
+  'resolvconf'
   'webkit2gtk-4.1'
+  'wireguard-tools'
 )
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
