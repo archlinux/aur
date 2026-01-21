@@ -2,8 +2,8 @@
 # Contributor: dummyx <dummyxa at gmail dot com>
 
 pkgname=vvenc
-pkgver=1.13.1
-pkgrel=2
+pkgver=1.14.0
+pkgrel=1
 pkgdesc='A H.266/VVC (Versatile Video Coding) encoder'
 arch=('x86_64')
 url='https://github.com/fraunhoferhhi/vvenc/'
@@ -14,7 +14,7 @@ depends=(
 makedepends=(
     'cmake')
 source=("https://github.com/fraunhoferhhi/vvenc/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('9d0d88319b9c200ebf428471a3f042ea7dcd868e8be096c66e19120a671a0bc8')
+sha256sums=('dd43d061d59dbc0d9b9ae5b99cb40672877dd811646228938f065798939ee174')
 
 build() {
     cmake -B build -S "${pkgname}-${pkgver}" \
