@@ -7,6 +7,7 @@ pkgbase = ani2xcursor
 	license = MIT
 	makedepends = xmake
 	makedepends = gcc
+	makedepends = pkgconf
 	depends = glibc
 	source = ani2xcursor-1.3.0.tar.gz::https://github.com/yuzujr/ani2xcursor/archive/refs/tags/v1.3.0.tar.gz
 	sha256sums = 047990ee14dedcd251f88e19f2a247ed6b06c28ddc16491e495c1fd953e897f1
