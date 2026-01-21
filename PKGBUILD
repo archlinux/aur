@@ -2,7 +2,7 @@
 
 pkgname=python-pyseq
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Python sequence string module"
 arch=(any)
 url="https://pyseq.rsgalloway.com/#"
@@ -20,7 +20,7 @@ build() {
 
 package() {
 	cd "${srcdir}/${pkgname}"
-	ls dist/
-	python -m installer --destdir="$pkgdir/usr/lib/python3.13/site-packages/$_name" dist/*.whl
+	local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+	python -m installer --destdir="$pkgdir/usr/lib/python${python_version}/site-packages/$_name" dist/*.whl
 	install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }

@@ -1,7 +1,7 @@
 pkgbase = python-pyseq
 	pkgdesc = Python sequence string module
 	pkgver = 0.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pyseq.rsgalloway.com/#
 	arch = any
 	license = BSD-3-Clause
