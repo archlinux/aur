@@ -1,6 +1,6 @@
 # Maintainer: Time ON <timeon.haas@gmail.com>
 pkgname=hypr-bucket
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Lightweight and customizable application launcher for Hyprland"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ optdepends=(
   'wezterm: Alternative terminal'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Time-0N/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('20d8dd524631be53fa05fe5ab03eb0175a510042bf4bc29502e7c91a0c68f27d')
+sha256sums=('1fec44f7b514c089022351d4ae36c2c3167c677fe08d797932377f7b7f9f1986')
 
 build() {
   cd "$pkgname-$pkgver"
