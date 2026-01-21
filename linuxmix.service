@@ -1,0 +1,10 @@
+[Unit]
+Description=Service to split SteelSeries headphone audio tracks programmatically
+ConditionUser=!root
+
+[Service]
+ExecStart=/usr/bin/linuxmix
+Restart=always
+
+[Install]
+WantedBy=default.target
