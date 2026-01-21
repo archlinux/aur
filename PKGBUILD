@@ -1,20 +1,26 @@
-# Maintainer: jmcb <joelsgp@protonmail.com>
+# Maintainer: imcb <irismessage@protonmail.com>
 
 pkgname='sdcardformatter'
-pkgver='1.0.3'
+pkgver=1.0.3
 pkgrel=1
-pkgdesc="SD Memory Card Formatter for Linux"
+pkgdesc='SD Memory Card Formatter for Linux'
 arch=('x86_64' 'aarch64')
-url="https://www.sdcard.org/downloads/sd-memory-card-formatter-for-linux/"
-license=('custom')
+url='https://www.sdcard.org/downloads/sd-memory-card-formatter-for-linux/'
+license=('LicenseRef-sdcardformatter')
 depends=()
 makedepends=()
 checkdepends=()
 optdepends=()
-provides=()
+provides=(
+    'format_sd'
+)
 conflicts=()
-source_x86_64=("https://sdcard.org/downloads/formatter/eula_linux/SDCardFormatterv${pkgver}_Linux_x86_64.tgz")
-source_aarch64=("https://sdcard.org/downloads/formatter/eula_linux/SDCardFormatterv${pkgver}_Linux_ARM64.tgz")
+source_x86_64=(
+    "https://sdcard.org/downloads/formatter/eula_linux/SDCardFormatterv${pkgver}_Linux_x86_64.tgz"
+)
+source_aarch64=(
+    "https://sdcard.org/downloads/formatter/eula_linux/SDCardFormatterv${pkgver}_Linux_ARM64.tgz"
+)
 sha256sums_x86_64=('4deb49e3e4fed03839628bbdb40169ffed76fe677c380ca6f4262e0f1ce5d6b0')
 sha256sums_aarch64=('7c3375d79ef572afdf9dd2e4c7cc1762f040abb389154a03f8187d1edad5a4d7')
 

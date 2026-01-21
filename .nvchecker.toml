@@ -1,0 +1,6 @@
+[sdcardformatter]
+source = "htmlparser"
+url = "https://www.sdcard.org/downloads/sd-memory-card-formatter-for-linux/"
+xpath = '/html/body/div[1]/div/div[2]/main/article/section/h2[1][starts-with(text(),"SD Memory Card Formatter for Linux ver.")]'
+from_pattern = '^SD Memory Card Formatter for Linux ver\.(\d+\.\d+\.\d+) for SD/SDHC/SDXC/SDUC$'
+to_pattern = '\1'
