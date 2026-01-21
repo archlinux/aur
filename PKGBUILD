@@ -1,13 +1,13 @@
 # Maintainer: bkacjios < blackops7799 at gmail dot com >
 
 pkgname=inav-configurator
-pkgver=8.0.1
+pkgver=9.0.0
 pkgrel=1
 pkgdesc="Crossplatform configuration tool for the INAV flight control system"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/iNavFlight/inav-configurator"
-source=(https://github.com/iNavFlight/inav-configurator/archive/8.0.1.zip)
-sha256sums=('2f3ca880d4128a0b4608642b661360a9edbd80fecf8bb3fcbd79842f2b862fca')
+source=(https://github.com/iNavFlight/inav-configurator/archive/9.0.0.zip)
+sha256sums=('ae21d6ebb7262f909297c2641db7f7ac4339c8e5f79e1239db004bb7976874b7')
 provides=('inav-configurator')
 conflicts=('inav-configurator')
 options=(!strip)
@@ -18,7 +18,6 @@ makedepends=('npm' 'yarn')
 build() {
 	cd $pkgname-$pkgver
 	yarn install
-	npm clean-install
 
 	# Package for our architecture
 	case "$CARCH" in
