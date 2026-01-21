@@ -2,7 +2,7 @@
 
 _pkgname="hylauncher"
 pkgname="hylauncher-bin"
-pkgver="0.6.5"
+pkgver="0.6.6"
 pkgrel="1"
 pkgdesc="HyLauncher - unofficial Hytale Launcher for free to play gamers (binary version)"
 arch=("x86_64")
@@ -15,10 +15,8 @@ conflicts=(
     "hylauncher-git"
 )
 depends=(
-    "gstreamer"
     "gtk3"
-    "hicolor-icon-theme"
-    "webkit2gtk"
+    "webkit2gtk-4.1"
 )
 
 source=(
@@ -28,8 +26,8 @@ source=(
     "LICENSE"
 )
 sha256sums=(
-    "bf4714e1795c34021e60219f243d929d6c6debaba7fdf0c5456d83eb547efbd8"
-    "d9f52aab09686940a5db773149cdf547f57ddbae63b8efa82522fb02e49287a6"
+    "8570ca31ff14007dc7bc265b99f7f87c62f33c2c0aec383a0196cbea743efba1"
+    "bab73a4484c86e49d7a265c1536f3aef106834149c406d6952e045e6117f58e5"
     "065e5283a7e30fd654e6d18706dd1ae586f193e4698f310614a0593f62285a3f"
     "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
 )
