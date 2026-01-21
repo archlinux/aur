@@ -1,6 +1,6 @@
 pkgbase = argonaut-bin
 	pkgdesc = A GitOps CLI tool for managing ArgoCD applications
-	pkgver = 2.11.0
+	pkgver = 2.12.0
 	pkgrel = 1
 	url = https://github.com/darksworm/argonaut
 	license = GPL-3.0-or-later
@@ -8,9 +8,9 @@ pkgbase = argonaut-bin
 	provides = argonaut
 	arch = aarch64
 	source_aarch64 = https://github.com/darksworm/argonaut/releases/download/v${pkgver}/argonaut-${pkgver}-linux-arm64.tar.gz
-	sha256sums_aarch64 = 141ae54933cd9256767639571c97ad7c8741eae5c67c74db7ba6a48e95063677
+	sha256sums_aarch64 = 32b3e4b948a9ac1c9046f2a298348d94a3f3562a6aca3baed57117264ca2c068
 	arch = x86_64
 	source_x86_64 = https://github.com/darksworm/argonaut/releases/download/v${pkgver}/argonaut-${pkgver}-linux-amd64.tar.gz
-	sha256sums_x86_64 = 68f0525a209d11c047382bda5e1cebe7f8b29f113328de29026e04152a3aa63b
+	sha256sums_x86_64 = f0099b6c20c8786a4513936863adf1137b5ed5edc34182eb61acb8e10fb41674
 	
 pkgname = argonaut-bin
