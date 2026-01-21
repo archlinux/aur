@@ -1,6 +1,6 @@
 # Maintainer: Jasmin <theblazehen@gmail.com>
 pkgname=promptfoo
-pkgver=0.120.14
+pkgver=0.120.16
 pkgrel=1
 pkgdesc="Test and evaluate LLM outputs - AI red teaming, pentesting, and vulnerability scanning"
 arch=('any')
@@ -15,10 +15,10 @@ optdepends=(
 )
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=('74a29cd27ec9345b99a24544c5f73978a9dfcc74c039f4bb7cd7310e99504402')
+sha256sums=('b17b228d0c82d5cf3f834aff9b3b25490d46f9ec58517d0d6ee18f6629c366dd')
 
 package() {
-    npm install -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" \
+    npm install -g --ignore-scripts --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" \
         "${srcdir}/${pkgname}-${pkgver}.tgz"
 
     # Non-deterministic race in npm gives 777 permissions to random directories.
