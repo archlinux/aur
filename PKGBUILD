@@ -7,8 +7,8 @@ pkgdesc="A declarative package management CLI tool for Arch Linux, inspired by N
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/theblackdon/dcli"
 license=('0BSD')
-makedepends=('cargo' 'git')
-depends=('gcc-libs' 'glibc' 'lua')
+makedepends=('cargo' 'git' 'clang')
+depends=('gcc-libs' 'glibc')
 optdepends=(
     'fzf: for interactive TUI features'
     'paru: AUR helper support'
