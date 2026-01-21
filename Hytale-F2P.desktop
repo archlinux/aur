@@ -2,7 +2,7 @@
 Type=Application
 Name=Hytale-F2P
 Comment=A modern, cross-platform launcher for Hytale with automatic updates and multi-client support
-Exec=/opt/Hytale-F2P/hytale-f2p-launcherv2
+Exec=/opt/Hytale-F2P/hytale-f2p-launcher
 Categories=Game;
 Icon=Hytale-F2P
 Terminal=false
