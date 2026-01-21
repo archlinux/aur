@@ -12,14 +12,11 @@ url="https://github.com/LofisMusk/c2-patch-aur"
 license=('proprietary')
 depends=('jdk17-temurin' 'pipewire-alsa')
 makedepends=('git')
-source=("git+https://github.com/LofisMusk/c2-patch-aur.git")
+source=("git+https://github.com/LofisMusk/c2-patch-aur.git#commit=${_commit}")
 sha256sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/c2-patch-aur"
-  git describe --tags | sed 's/^v//;s/-/./g'
-}
  
+# pkgver() not needed as github is managing versioning via commit hash
+
 package() {
     cd "$srcdir/c2-patch-aur"
 
