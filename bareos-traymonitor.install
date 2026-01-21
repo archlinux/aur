@@ -1,9 +1,6 @@
 post_install() {
   /usr/lib/bareos/scripts/bareos-config initialize_local_hostname
   /usr/lib/bareos/scripts/bareos-config initialize_passwords
-  CONFIGDIR="/etc/bareos/tray-monitor.d/"
-  chown -R root:bareos ${CONFIGDIR}
-  chmod -R u=rwX,go=rX ${CONFIGDIR}
 }
 
 post_upgrade() {

@@ -1,0 +1,8 @@
+d /etc/bareos 0750 bareos bareos -
+d /var/lib/bareos 0750 bareos bareos -
+d /var/log/bareos 0750 bareos bareos -
+d /var/lib/bareos/storage 0750 bareos bareos -
+z /usr/share/bareos/config/bareos-dir.d - bareos bareos -
+z /usr/share/bareos/config/bareos-sd.d - bareos bareos -
+z /etc/bareos/bconsole.conf 0640 root bareos -
+z /etc/bareos/tray-monitor.d 0750 root bareos -

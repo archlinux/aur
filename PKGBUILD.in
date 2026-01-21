@@ -73,9 +73,13 @@ source=(
     '0003-version.patch'
     '0004-sqlspam.patch'
     '0005-httpd.patch'
+    'bareos.sysusers'
+    'bareos.tmpfiles'
 )
 
 b2sums=(
+    'x'
+    'x'
     'x'
     'x'
     'x'
@@ -224,6 +228,8 @@ package_bareos-common() {
   _install_files "${_files[@]}"
   install -Dm644 ${srcdir}/bareos/{AGPL-3.0.txt,core/LICENSE} "${pkgdir}/usr/share/licenses/${pkgname}/"
   install -Dm644 ${srcdir}/bareos/core/README.* "${pkgdir}/usr/share/doc/${pkgname}/"
+  install -Dm644 "${srcdir}/bareos.sysusers" "${pkgdir}/usr/lib/sysusers.d/bareos.conf"
+  install -Dm644 "${srcdir}/bareos.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/bareos.conf"
 }
 
 package_bareos-contrib-director-python-plugins() {
