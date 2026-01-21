@@ -2,7 +2,7 @@
 # Contributor: brent s. <bts[at]square-r00t[dot]net>
 
 pkgname=chkrootkit
-pkgver=0.58b
+pkgver=0.59
 pkgrel=1
 pkgdesc="Locally checks for signs of a rootkit"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="http://www.chkrootkit.org/"
 license=('CUSTOM')
 optdepends=('tiger: a wrapper for chkrootkit')
 source=("ftp://ftp.chkrootkit.org/pub/seg/pac/$pkgname-$pkgver.tar.gz")
-sha512sums=('50829446aa5a320ef3aa678c7bbc03ba2ebc14dca3b4c1f312fb46d3d8206345628d2e94b99cfea33e0d3971afbc025dbd387fb32c4e1135a7466c20eb3afab2')
+sha512sums=('b67b726e60e58d1486bae171f6de0ba6422f71822aa62cb14bc9fcc30edbb6e00d84673a58a9cb8cf21da18d41355d0ee14135b848eafb69045315f519ac33e4')
 
 build() {
   make -C "$srcdir/$pkgname-$pkgver"
