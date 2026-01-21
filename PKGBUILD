@@ -1,6 +1,6 @@
 pkgname=songrec-git
 _pkgname=songrec
-pkgver=r354.0849509
+pkgver=r359.9b0c295
 pkgrel=1
 provides=('songrec')
 conflicts=('songrec')
@@ -26,11 +26,11 @@ build() {
 package() {
   cd "$_pkgname"
   install -Dm755 "${CARGO_TARGET_DIR:-target}/release/songrec" "$pkgdir/usr/bin/songrec"
-  install -Dm755 "packaging/rootfs/usr/share/applications/com.github.marinm.songrec.desktop" "$pkgdir/usr/share/applications/com.github.marinm.songrec.desktop"
-  install -Dm755 "packaging/rootfs/usr/share/icons/hicolor/scalable/apps/com.github.marinm.songrec.svg" \
-                    "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.github.marinm.songrec.svg"
-  install -Dm755 "packaging/rootfs/usr/share/metainfo/com.github.marinm.songrec.metainfo.xml" \
-                    "$pkgdir/usr/share/metainfo/com.github.marinm.songrec.metainfo.xml"
+  install -Dm755 "packaging/rootfs/usr/share/applications/re.fossplant.songrec.desktop" "$pkgdir/usr/share/applications/re.fossplant.songrec.desktop"
+  install -Dm755 "packaging/rootfs/usr/share/icons/hicolor/scalable/apps/re.fossplant.songrec.svg" \
+                    "$pkgdir/usr/share/icons/hicolor/scalable/apps/re.fossplant.songrec.svg"
+  install -Dm755 "packaging/rootfs/usr/share/metainfo/re.fossplant.songrec.metainfo.xml" \
+                    "$pkgdir/usr/share/metainfo/re.fossplant.songrec.metainfo.xml"
   cp -ra "locale" "$pkgdir/usr/share/"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }

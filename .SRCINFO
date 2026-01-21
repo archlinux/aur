@@ -1,6 +1,6 @@
 pkgbase = songrec-git
 	pkgdesc = An open-source, unofficial Shazam client for Linux, written in Rust.
-	pkgver = r354.0849509
+	pkgver = r359.9b0c295
 	pkgrel = 1
 	url = https://songrec.fossplant.re/
 	arch = x86_64
