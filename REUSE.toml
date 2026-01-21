@@ -16,6 +16,8 @@ path = [
     "*.timer",
     "*.desktop",
     "*.hook",
+    "postgres-path.patch",
+    "sharp.patch",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
@@ -31,7 +33,7 @@ SPDX-License-Identifier = "AGPL-3.0-only"
 [[annotations]]
 path = [
     "immich.conf",
-    ".gitignore"
+    ".gitignore",
 ]
 SPDX-FileCopyrightText = "Public domain"
 SPDX-License-Identifier = "PDDL-1.0"
