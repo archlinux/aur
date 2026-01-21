@@ -1,8 +1,8 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 # Maintainer: Chinmay Dalal <exu9qiu7p AT relay DOT firefox DOT com>
 pkgname=wleave
-pkgver=0.6.2
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="A Wayland-native logout script written in GTK4 "
 arch=('x86_64')
 url="https://github.com/AMNatty/wleave"
