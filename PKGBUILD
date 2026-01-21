@@ -1,8 +1,8 @@
 # Maintainer: Sayan Pal <sayan12428 at gmail dot com>
 
 pkgname=phub-cli
-pkgver=0.1.1
-pkgrel=3
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="Terminal-based video browser inspired by ani-cli, streaming directly from pornhub.com"
 arch=('x86_64')
 url="https://github.com/curtosis-org/phub-cli"
