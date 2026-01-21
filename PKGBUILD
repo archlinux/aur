@@ -9,12 +9,12 @@
 pkgname=jellyfin-desktop-cef-libmpv-git
 _gitname=mpv
 pkgver=beb34bf90c
-pkgrel=1
+pkgrel=2
 pkgdesc='libmpv for jellyfin-desktop-cef'
 arch=('x86_64')
 license=('GPL-2.0-or-later')
 url='https://mpv.io'
-depends=('ffmpeg' 'libplacebo' 'libass' 'wayland' 'libxkbcommon')
+depends=('ffmpeg' 'libplacebo' 'libass' 'libxkbcommon' 'libxpresent' 'libxss' 'wayland')
 makedepends=('git'
              'meson'
              'python-docutils' # for rst2man, to generate manpage
@@ -56,7 +56,7 @@ build() {
         -Drubberband=disabled \
         -Duchardet=disabled \
         -Dvapoursynth=disabled \
-        -Dx11=disabled \
+        -Dx11=enabled \
         -Dwayland=enabled \
         "${_opt_extra_flags[@]}"
 
