@@ -3,7 +3,7 @@
 _pkgname="qtengine"
 pkgname="$_pkgname"
 pkgver=0.2.0
-pkgrel=5
+pkgrel=6
 pkgdesc="QT Platform Theme made easy"
 url="https://github.com/kossLAN/qtengine"
 license=('BSD-2-Clause')
@@ -34,7 +34,7 @@ source=(
     "config.example.json"
 )
 sha256sums=('87d93bfa7eefc8fe3b652bc4dd7c82358e4f5d6e7f9bc123e76f4f63c02fbfcc'
-            'e6816d7a46a0c16c5916d0624bfb722c0d0eb16b9830bd54db242975ff5c95c9')
+            '5dfcc6479a03140e492eff69936c708d1bffba3edf9d5312b27b5efff61fa06e')
 install="$_pkgname.install"
 
 build() {
