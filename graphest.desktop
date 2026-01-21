@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=graphest
+Exec=graphest --no-sandbox %U
+Terminal=false
+Type=Application
+Icon=graphest
+StartupWMClass=graphest
+X-AppImage-Version=1.8.2
+Comment=A faithful graphing calculator
+Categories=Science;Math;
