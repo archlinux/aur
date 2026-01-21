@@ -1,3 +1,4 @@
+# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: M Novick <mnovick1988@gmail.com>
 # 
 # Note: Copied and updated from old AUR3.
@@ -5,10 +6,10 @@
 
 pkgname=d0_blind_id-git
 pkgver=r139.64983f4
-pkgrel=1
+pkgrel=2
 pkgdesc="Cryptographic library for identification with Schnorr ID scheme and Blind RSA Signatures"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="http://github.com/xonotic/d0_blind_id"
+url="https://github.com/xonotic/d0_blind_id"
 license=('BSD')
 depends=('gmp')
 makedepends=('git')

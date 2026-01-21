@@ -1,8 +1,8 @@
 pkgbase = d0_blind_id-git
 	pkgdesc = Cryptographic library for identification with Schnorr ID scheme and Blind RSA Signatures
 	pkgver = r139.64983f4
-	pkgrel = 1
-	url = http://github.com/xonotic/d0_blind_id
+	pkgrel = 2
+	url = https://github.com/xonotic/d0_blind_id
 	arch = i686
 	arch = x86_64
 	arch = armv6h
