@@ -1,0 +1,22 @@
+pkgbase = desktop-waifu
+	pkgdesc = Animated 3D VRM characters with AI-powered conversational chat - Wayland overlay
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/yv-was-taken/desktop-waifu
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = bun
+	makedepends = git
+	makedepends = nodejs
+	depends = gtk4
+	depends = webkit2gtk-4.1
+	depends = cairo
+	depends = glib2
+	depends = pango
+	depends = wayland
+	depends = dbus
+	source = desktop-waifu-0.1.0.tar.gz::https://github.com/yv-was-taken/desktop-waifu/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = desktop-waifu
