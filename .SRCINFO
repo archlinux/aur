@@ -1,14 +1,14 @@
 pkgbase = thunderbird-extension-import-export-tools-ng
 	pkgdesc = Thunderbird extension that adds import and export functions for messages, folders and profiles.
-	pkgver = 14.1.15
+	pkgver = 14.1.16
 	pkgrel = 1
 	url = https://addons.thunderbird.net/addon/importexporttools-ng/
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = p7zip
 	makedepends = jq
-	source = import-export-tools-ng-14.1.15::https://github.com/thunderbird/import-export-tools-ng/archive/refs/tags/v14.1.15.tar.gz
-	sha256sums = 83163e747a456a1d39e23a875ddb31eed0646fc89f7cbdaba44b7749dea307e5
+	source = import-export-tools-ng-14.1.16::https://github.com/thunderbird/import-export-tools-ng/archive/refs/tags/v14.1.16.tar.gz
+	sha256sums = eeb02c621e2706bbb716080051e1fd0e9cb14ae58cd1cea8b424e655eb5d7b7f
 
 pkgname = thunderbird-extension-import-export-tools-ng
 	depends = thunderbird>=140
