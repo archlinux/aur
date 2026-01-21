@@ -1,7 +1,7 @@
 pkgbase = aarty-git
 	pkgdesc = Simple CLI tool to convert the images to ASCII art - Build from the aurora branch
 	pkgver = 0.7.1.r8.g276d1c3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/0x61nas/aarty
 	arch = x86_64
 	arch = aarch64
@@ -10,7 +10,7 @@ pkgbase = aarty-git
 	license = MIT
 	makedepends = cargo
 	provides = aarty
-	conflicts = aarty-git
+	conflicts = aarty
 	source = aarty::git+https://github.com/0x61nas/aarty.git#branch=aurora
 	sha256sums = SKIP
 
