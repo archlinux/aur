@@ -13,6 +13,7 @@ pkgbase = datcord-bin
 	depends = nss
 	depends = ttf-font
 	depends = libpulse
+	depends = libappindicator-gtk3
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = libnotify: Notification integration
 	optdepends = pulseaudio: Audio support
