@@ -28,7 +28,7 @@ sha256sums=('b4b011a4b5670b09cc7d21a73cbaf47e038ff3f504deb16afab460555572f3a4'
 
 package() {
     cd "${srcdir}"
-    install -Dm755 "mihomo.gz" "${pkgdir}/usr/bin/mihomo"
+    install -Dm755 "mihomo" "${pkgdir}/usr/bin/mihomo"
     install -Dm644 "config.yaml" "${pkgdir}/etc/mihomo/config.yaml"
     install -Dm644 "Model.bin" "${pkgdir}/etc/mihomo/Model.bin"
     install -Dm644 "mihomo.service" "${pkgdir}/usr/lib/systemd/system/mihomo.service"
