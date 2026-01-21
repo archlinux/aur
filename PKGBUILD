@@ -1,8 +1,8 @@
-# Maintainer: tippfehlr <tippfehlr@tippfehlr.eu>
+# Maintainer: tippfehlr <tippfehlr@tippfehlr.dev>
 # Contributor: Jonathan Hudson <jh+mwptools@daria.co.uk>
 
 pkgname=blackbox-tools-inav
-pkgver=8.0.2
+pkgver=9.0.0
 pkgrel=1
 pkgdesc='tools for examining INAV blackbox logs'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -13,7 +13,7 @@ depends=('cairo' 'freetype2')
 provides=('blackbox-tools')
 conflicts=('blackbox-tools' 'blackbox-tools-git')
 source=("$pkgname::git+$url#tag=v$pkgver")
-sha512sums=('833ef082b71f800dfefd29ba506c26657fefd671fa358307488157a745bed0a8bf3035c627de47f75a9d811407bded21b03e2a171b7d3807bf2bb443699de536')
+sha512sums=('c06fc3598a1c630fbb699e3f68b8325237bd7ff09eae8ee5cb4803fb6ff73dad89ca2808e6411b7e08e4203b00947ea9e704364706b42b1c987f21bbf6059574')
 
 build() {
 	cd $pkgname
