@@ -52,7 +52,6 @@ build_with_clang_options=" \
             -DLLVM_ENABLE_LTO=Thin \
             -DCMAKE_C_COMPILER=clang \
             -DCMAKE_CXX_COMPILER=clang++ \
-            -DCMAKE_CXX_STANDARD=20 \
 	"
 
 _prepare_install_script() {
@@ -87,7 +86,7 @@ build() {
             ${build_with_clang_options} \
             ${shared_library_build_options} \
             -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;lld;lldb;mlir;polly;bolt" \
-            -DLLVM_ENABLE_RUNTIMES="compiler-rt;libc;libclc;libcxx;libcxxabi;libunwind;openmp" \
+            -DLLVM_ENABLE_RUNTIMES="compiler-rt;libc;libcxx;libcxxabi;libunwind;openmp" \
             ${srcdir}/llvm-project-llvmorg-${_pkgver_dash_suffix}/llvm | tee ${pkgname}-configure.log
 	  time ninja -C _build | tee ${pkgname}-build.log
 	)
