@@ -1,10 +1,11 @@
 pkgname=sheet-git
-pkgver=r6.4b5d1a3
+pkgver=r11.a4ffa4b
 pkgrel=1
 pkgdesc="sheet is a minimal(ish) tui frontend for feh/swaybg"
 arch=(x86_64)
 url="https://codeberg.org/unixextremist/sheet"
 license=('WTFPL')
+makedepends=(git)
 depends=(ncurses)
 optdepends=(
    'viu: for image preview'
