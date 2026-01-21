@@ -1,0 +1,10 @@
+post_install() {
+    echo "--- PERMISSIONS SETUP ---"
+    echo "To use this tool without sudo, add your user to the i2c group:"
+    echo "  sudo usermod -aG i2c \$USER"
+    echo ""
+    echo "Then load the i2c-dev module:"
+    echo "  sudo modprobe i2c-dev"
+    echo ""
+    echo "You must log out and back in for group changes to apply."
+}
