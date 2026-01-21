@@ -1,6 +1,6 @@
 pkgbase = python-ocp_gordon
 	pkgdesc = A Python library for Gordon Surface interpolation using B-splines
-	pkgver = v0.2.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/gongfan99/ocp_gordon
 	arch = x86_64

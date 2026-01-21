@@ -1,6 +1,6 @@
 pkgname=python-ocp_gordon
 _build_hash=81a573ea8950bab0e11a416dc5426ebfcbe64cea
-pkgver=v0.2.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A Python library for Gordon Surface interpolation using B-splines"
 arch=(x86_64)
@@ -28,7 +28,7 @@ sha256sums=('30c2615d1f7d9d36a00a3daaffce14490c835495b5b274b9a13dee9bfc1d170f')
 
 pkgver() {
   cd ocp_gordon
-  git describe --tags | rev | cut -d- -f2- | rev | sed 's/-/.r/'
+  git describe --tags | rev | cut -d- -f2- | rev | sed 's/-/.r/' | sed 's/^v//'
 }
 
 prepare() {
