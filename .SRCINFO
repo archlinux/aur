@@ -8,7 +8,6 @@ pkgbase = noon-utils
 	depends = axel
 	depends = bc
 	depends = brightnessctl
-	depends = cliphist
 	depends = coreutils
 	depends = curl
 	depends = ddcutil

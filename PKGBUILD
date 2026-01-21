@@ -7,30 +7,29 @@ arch=('any')
 url="https://github.com/PharmaRacist/Noon"
 license=('MIT')
 depends=(
-    'axel'
-    'bc'
-    'brightnessctl'
-    'cliphist'
-    'coreutils'
-    'curl'
-    'ddcutil'
-    'figlet'
-    'fish'
-    'jq'
-    'ripgrep'
-    'rsync'
-    'tesseract'
-    'tesseract-data-eng'
-    'translate-shell'
-    'wget'
-    'wl-clipboard'
-    'xdg-user-dirs'
-    'ydotool'
-    'ntfs-3g'
-    'uv'
+  'axel'
+  'bc'
+  'brightnessctl'
+  'coreutils'
+  'curl'
+  'ddcutil'
+  'figlet'
+  'fish'
+  'jq'
+  'ripgrep'
+  'rsync'
+  'tesseract'
+  'tesseract-data-eng'
+  'translate-shell'
+  'wget'
+  'wl-clipboard'
+  'xdg-user-dirs'
+  'ydotool'
+  'ntfs-3g'
+  'uv'
 )
 
 package() {
-    install -dm755 "$pkgdir/usr/share/doc/$pkgname"
-    echo "Utility tools for Noon" > "$pkgdir/usr/share/doc/$pkgname/README"
+  install -dm755 "$pkgdir/usr/share/doc/$pkgname"
+  echo "Utility tools for Noon" >"$pkgdir/usr/share/doc/$pkgname/README"
 }
