@@ -1,0 +1,35 @@
+# Arch Linux install script for unified-hifi-control
+
+post_install() {
+    echo ":: Unified Hi-Fi Control installed"
+    echo ":: To enable and start the service:"
+    echo "   systemctl enable --now unified-hifi-control"
+    echo ":: Web UI available at http://localhost:8088"
+    echo ":: Configuration: /etc/unified-hifi-control/"
+}
+
+post_upgrade() {
+    echo ":: Unified Hi-Fi Control upgraded"
+    if systemctl is-active --quiet unified-hifi-control; then
+        echo ":: Restarting service..."
+        systemctl restart unified-hifi-control
+    fi
+}
+
+pre_remove() {
+    if systemctl is-active --quiet unified-hifi-control; then
+        echo ":: Stopping unified-hifi-control service..."
+        systemctl stop unified-hifi-control
+    fi
+    if systemctl is-enabled --quiet unified-hifi-control 2>/dev/null; then
+        echo ":: Disabling unified-hifi-control service..."
+        systemctl disable unified-hifi-control
+    fi
+}
+
+post_remove() {
+    echo ":: Unified Hi-Fi Control removed"
+    echo ":: Configuration files in /etc/unified-hifi-control/ were preserved"
+    echo ":: State data in /var/lib/unified-hifi-control/ was preserved"
+    echo ":: Remove manually if no longer needed"
+}
