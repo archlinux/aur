@@ -1,7 +1,7 @@
 pkgbase = vrcft-avalonia-bin
 	pkgdesc = Cross-platform VRCFaceTracking made with Avalonia (extracted AppImage version)
 	pkgver = 1.1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dfgHiatus/VRCFaceTracking.Avalonia
 	arch = x86_64
 	license = Apache-2.0
@@ -11,8 +11,6 @@ pkgbase = vrcft-avalonia-bin
 	depends = libnotify
 	depends = libxss
 	depends = libxtst
-	depends = dotnet-runtime-8.0=8.0.22.sdk122
-	depends = dotnet-sdk-8.0=8.0.22.sdk122
 	provides = vrcft
 	provides = vrcft-avalonia
 	conflicts = vrcft
