@@ -87,7 +87,6 @@ package() {
     ln -sf gvupdates gvup
     
     # gvsudoauth aliases
-    ln -sf gvsudoauth sudo
     ln -sf gvsudoauth gvsudo
     
     # gvlogtriage aliases
