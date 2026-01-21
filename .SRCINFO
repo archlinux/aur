@@ -1,7 +1,7 @@
 pkgbase = vrcft-avalonia-bin
 	pkgdesc = Cross-platform VRCFaceTracking made with Avalonia (extracted AppImage version)
 	pkgver = 1.1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dfgHiatus/VRCFaceTracking.Avalonia
 	arch = x86_64
 	license = Apache-2.0

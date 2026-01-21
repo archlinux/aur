@@ -3,7 +3,7 @@
 pkgname='vrcft-avalonia-bin'
 pkgdesc='Cross-platform VRCFaceTracking made with Avalonia (extracted AppImage version)'
 pkgver='1.1.1.0'
-pkgrel='2'
+pkgrel='3'
 arch=('x86_64')
 url='https://github.com/dfgHiatus/VRCFaceTracking.Avalonia'
 license=('Apache-2.0')
@@ -123,9 +123,9 @@ package() {
     install -Dm644 VRCFaceTracking.Avalonia.desktop -t "$pkgdir/usr/share/applications"
     install -d -Dm755 "$pkgdir/usr/share/icons"
     install -d -Dm755 "$pkgdir/usr/share/icons/hicolor"
-    install -d -Dm755 "$pkgdir/usr/share/icons/hicolor/512x512"
-    install -d -Dm755 "$pkgdir/usr/share/icons/hicolor/512x512/apps"
-    install -Dm644 VRCFaceTracking.Avalonia.png -t "$pkgdir/usr/share/icons/hicolor/512x512/apps"
+    install -d -Dm755 "$pkgdir/usr/share/icons/hicolor/128x128"
+    install -d -Dm755 "$pkgdir/usr/share/icons/hicolor/128x128/apps"
+    install -Dm644 VRCFaceTracking.Avalonia.png -t "$pkgdir/usr/share/icons/hicolor/128x128/apps"
 
     find "$pkgdir/opt/vrcft-avalonia" -type d -print0 | while IFS='' read -r -d '' dir; do
         chmod 0755 -- "$dir"
