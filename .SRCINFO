@@ -8,7 +8,6 @@ pkgbase = mingw-w64-vtk-git
 	makedepends = git
 	makedepends = mingw-w64-cmake
 	makedepends = mingw-w64-wine
-	makedepends = mingw-w64-lld
 	depends = mingw-w64-crt
 	depends = mingw-w64-qt5-base
 	depends = mingw-w64-jsoncpp
