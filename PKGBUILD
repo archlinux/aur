@@ -1,7 +1,7 @@
 # Maintainer: TheBill2001 <tuantran1632001 at gmail dot com>
 
 pkgname=qtcreator-qodeassist-plugin
-pkgver=0.9.7
+pkgver=0.9.8
 pkgrel=1
 pkgdesc="QodeAssist is an AI-powered coding assistant plugin for Qt Creator"
 groups=('qt')
@@ -13,7 +13,7 @@ conflicts=('qodeassist' 'QodeAssist')
 depends=("qtcreator-devel")
 makedepends=('cmake' "qtcreator-devel")
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/v$pkgver.tar.gz")
-sha256sums=('4020988c11235b419b310eaf7237764043eab31627f37519b2381be5a76235aa')
+sha256sums=('f003e37ca92e454c6a87028b76071c41c295d944c1b51bc09d14da96226a0e38')
 
 build() {
     cmake -S QodeAssist-$pkgver -B build \
