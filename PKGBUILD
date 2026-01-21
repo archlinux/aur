@@ -387,7 +387,7 @@ package_bareos-director() {
   install -Dm644 ${srcdir}/bareos/build/debian/bareos-director.service "${pkgdir}/usr/lib/systemd/system/bareos-director.service"
 
   # Currently upstream systemd file does not automatically create run directory
-  sed -i '/\[Service\]/a RuntimeDirectory=bareos' ${pkgdir}/usr/lib/systemd/system/bareos-director.service
+  sed -i '/[Service]/a RuntimeDirectory=bareos' ${pkgdir}/usr/lib/systemd/system/bareos-director.service
 }
 
 package_bareos-director-python-plugins-common() {
@@ -404,7 +404,7 @@ package_bareos-director-python-plugins-common() {
 }
 
 package_bareos-director-python3-plugin() {
-  conflicts=('bareos-director-python-plugin')
+  conflicts=("bareos-director-python-plugin")
   pkgdesc="${pkgdesc} - Python plugin for director daemon"
   depends=(
       "bareos-director-python-plugins-common=${pkgver}"
@@ -447,7 +447,7 @@ package_bareos-filedaemon() {
   install -Dm644 ${srcdir}/bareos/build/debian/bareos-filedaemon.service "${pkgdir}/usr/lib/systemd/system/bareos-filedaemon.service"
 
   # Currently upstream systemd file does not automatically create run directory
-  sed -i '/\[Service\]/a RuntimeDirectory=bareos' "${pkgdir}/usr/lib/systemd/system/bareos-filedaemon.service"
+  sed -i '/[Service]/a RuntimeDirectory=bareos' "${pkgdir}/usr/lib/systemd/system/bareos-filedaemon.service"
 }
 
 package_bareos-filedaemon-glusterfs-plugin() {
@@ -555,7 +555,7 @@ package_bareos-filedaemon-python-plugins-common() {
 }
 
 package_bareos-filedaemon-python3-plugin() {
-  conflicts=('bareos-filedaemon-python-plugin')
+  conflicts=("bareos-filedaemon-python-plugin")
   pkgdesc="${pkgdesc} - Python plugin for file daemon"
   depends=(
       "bareos-filedaemon-python-plugins-common=${pkgver}"
@@ -602,7 +602,7 @@ package_bareos-storage() {
   install -Dm644 ${srcdir}/bareos/build/debian/bareos-storage.service "${pkgdir}/usr/lib/systemd/system/bareos-storage.service"
 
   # Currently upstream systemd file does not automatically create run directory
-  sed -i '/\[Service\]/a RuntimeDirectory=bareos' "${pkgdir}/usr/lib/systemd/system/bareos-storage.service"
+  sed -i '/[Service]/a RuntimeDirectory=bareos' "${pkgdir}/usr/lib/systemd/system/bareos-storage.service"
 }
 
 package_bareos-storage-droplet() {
@@ -664,7 +664,7 @@ package_bareos-storage-python-plugins-common() {
 }
 
 package_bareos-storage-python3-plugin() {
-  conflicts=('bareos-storage-python-plugin')
+  conflicts=("bareos-storage-python-plugin")
   pkgdesc="${pkgdesc} - Python plugin for storage daemon"
   depends=(
       "bareos-storage-python-plugins-common=${pkgver}"
@@ -799,7 +799,7 @@ package_bareos-webui() {
   arch=('any')
   pkgdesc="${pkgdesc} - Webui (Bareos web administration)"
   depends=('jansson')
-  optdepend=(
+  optdepends=(
       'bareos-webui-apache'
       'bareos-webui-nginx'
   )
