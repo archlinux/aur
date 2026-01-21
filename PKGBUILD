@@ -1,15 +1,16 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=hys
 pkgver=0.1.2
-pkgrel=2
-pkgdesc="Terminal RSS Reader for Digital Minimalists in Zig — Tool for Escaping the Doomscroll"
-url="https://github.com/superstarryeyes/hys"
+pkgrel=3
+pkgdesc='Terminal RSS Reader for Digital Minimalists in Zig.'
+url='https://github.com/superstarryeyes/hys'
 arch=('i686' 'x86_64')
 license=('MIT')
 depends=('curl')
-makedepends=(zig)
-provides=(hys)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/superstarryeyes/$pkgname/archive/refs/tags/v$pkgname_$pkgver.tar.gz"
+makedepends=('zig')
+provides=('hys')
+conflicts=('hys-git')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgname_$pkgver.tar.gz"
     "$pkgname-$pkgver.tar.gz.asc")
 sha256sums=('38340bf3bd5392b0944b23114719f7d5bf1420a0dcdab05e41c190aaa8a62bf4'
             'SKIP')
