@@ -1,6 +1,6 @@
 pkgbase = git-commit-helper
 	pkgdesc = 一个帮助规范 git commit message 的工具
-	pkgver = 0.9.1
+	pkgver = 0.9.1.r1.0589593
 	pkgrel = 1
 	url = https://github.com/zccrs/git-commit-helper
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = git-commit-helper
 	makedepends = rust
 	makedepends = cargo
 	depends = git
-	source = git-commit-helper-0.9.1.tar.gz::https://github.com/zccrs/git-commit-helper/archive/e12781c5fdc39c9bcb0ec49f3522786d41d6c2f7.tar.gz
-	sha256sums = cba3d5b6cc425617a65f04b3813dc5b0eb10d0463378ca9e185b811be6eceadd
+	source = git-commit-helper-0.9.1.r1.0589593.tar.gz::https://github.com/zccrs/git-commit-helper/archive/05895932ff12ae4cb6425f5820c02b5ea6718a7c.tar.gz
+	sha256sums = e5a7b3bb78609af9d2799dec7603f3f7f9e207ba0c2da54c2d5690210f63fd5c
 
 pkgname = git-commit-helper
