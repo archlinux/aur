@@ -1,58 +1,78 @@
 pkgbase='bareos'
 
 pkgname=(
-    "bareos-bconsole"
-    "bareos-common"
-    "bareos-contrib-director-python-plugins"
-    "bareos-contrib-filedaemon-python-plugins"
-    "bareos-contrib-tools"
-    "bareos-database-common"
-    "bareos-database-postgresql"
-    "bareos-database-tools"
-    "bareos-devel"
-    "bareos-director"
-    "bareos-director-python-plugins-common"
-    "bareos-director-python3-plugin"
-    "bareos-filedaemon"
-    "bareos-filedaemon-glusterfs-plugin"
-    "bareos-filedaemon-ldap-python-plugin"
-    "bareos-filedaemon-libcloud-python-plugin"
-    "bareos-filedaemon-mariabackup-python-plugin"
-    "bareos-filedaemon-percona-xtrabackup-python-plugin"
-    "bareos-filedaemon-postgresql-python-plugin"
-    "bareos-filedaemon-python-plugins-common"
-    "bareos-filedaemon-python3-plugin"
-    "bareos-storage"
-    "bareos-storage-droplet"
-    "bareos-storage-fifo"
-    "bareos-storage-glusterfs"
-    "bareos-storage-python-plugins-common"
-    "bareos-storage-python3-plugin"
-    "bareos-storage-tape"
-    "bareos-tools"
-    "bareos-traymonitor"
-    "bareos-vmware-plugin"
-    "bareos-webui"
-    "bareos-webui-apache"
-    "bareos-webui-nginx"
-    "python-bareos"
+    'bareos-bconsole'
+    'bareos-common'
+    'bareos-contrib-director-python-plugins'
+    'bareos-contrib-filedaemon-python-plugins'
+    'bareos-contrib-tools'
+    'bareos-database-common'
+    'bareos-database-postgresql'
+    'bareos-database-tools'
+    'bareos-devel'
+    'bareos-director'
+    'bareos-director-python-plugins-common'
+    'bareos-director-python3-plugin'
+    'bareos-filedaemon'
+    'bareos-filedaemon-glusterfs-plugin'
+    'bareos-filedaemon-ldap-python-plugin'
+    'bareos-filedaemon-libcloud-python-plugin'
+    'bareos-filedaemon-mariabackup-python-plugin'
+    'bareos-filedaemon-percona-xtrabackup-python-plugin'
+    'bareos-filedaemon-postgresql-python-plugin'
+    'bareos-filedaemon-python-plugins-common'
+    'bareos-filedaemon-python3-plugin'
+    'bareos-storage'
+    'bareos-storage-droplet'
+    'bareos-storage-fifo'
+    'bareos-storage-glusterfs'
+    'bareos-storage-python-plugins-common'
+    'bareos-storage-python3-plugin'
+    'bareos-storage-tape'
+    'bareos-tools'
+    'bareos-traymonitor'
+    'bareos-vmware-plugin'
+    'bareos-webui'
+    'bareos-webui-apache'
+    'bareos-webui-nginx'
+    'python-bareos'
 )
 
 pkgver="25.0.1"
 pkgmajor=${pkgver%%.*}
 pkgrel=1
-arch=(i686 x86_64 armv7h aarch64)
+arch=(
+    'aarch64'
+    'armv7h'
+    'i686'
+    'x86_64'
+)
 groups=('bareos')
-pkgdesc="Bareos - Backup Archiving Recovery Open Sourced"
-url="http://www.bareos.org"
+pkgdesc='Bareos - Backup Archiving Recovery Open Sourced'
+url='http://www.bareos.org'
 license=('AGPL3')
-makedepends=('cmake' 'gcc' 'libmariadbclient' 'postgresql' 'python' 'python-setuptools' 'python-build' 'python-installer' 'rpcsvc-proto' 'lsb-release' 'qt5-base' 'glusterfs' 'jansson' 'pam_wrapper')
+makedepends=(
+    'cmake'
+    'gcc'
+    'glusterfs'
+    'jansson'
+    'libmariadbclient'
+    'lsb-release'
+    'pam_wrapper'
+    'postgresql'
+    'python'
+    'python-build'
+    'python-installer'
+    'python-setuptools'
+    'qt5-base'
+    'rpcsvc-proto'
+)
 source=(
     "bareos-${pkgver}.tar.gz::https://github.com/bareos/bareos/archive/refs/tags/Release/${pkgver}.tar.gz"
-    "0001-distver.patch"
-    "0003-version.patch"
-    "0004-sqlspam.patch"
-    "0005-httpd.patch"
+    '0001-distver.patch'
+    '0003-version.patch'
+    '0004-sqlspam.patch'
+    '0005-httpd.patch'
 )
 
 b2sums=('e2926ca032e3d0c688e75af7cc5ed379072197481fff7b493fd2bc9eba7d53600ccbfc4cb3069295e0dcdf7ad64f8a102a92a5e766a8a77d452620eba02a3b6f'
@@ -146,10 +166,14 @@ _install_files() {
 
 package_bareos-bconsole() {
   pkgdesc="${pkgdesc} - Admin Tool (CLI)"
-  depends=("bareos-common=${pkgver}" 'readline' 'jansson')
+  depends=(
+      "bareos-common=${pkgver}"
+      'jansson'
+      'readline'
+  )
   groups+=("bareos-client")
   install=bareos-bconsole.install
-  backup=("etc/bareos/bconsole.conf")
+  backup=('etc/bareos/bconsole.conf')
 
   install -d "$pkgdir/etc/bareos"
   local _files=(
@@ -164,7 +188,15 @@ package_bareos-bconsole() {
 
 package_bareos-common() {
   pkgdesc="${pkgdesc} - Common files"
-  depends=('libcap' 'openssl' 'acl' 'bash' 'lzo' 'jansson' 'zlib')
+  depends=(
+      'acl'
+      'bash'
+      'jansson'
+      'libcap'
+      'lzo'
+      'openssl'
+      'zlib'
+  )
   install=bareos-common.install
   install -d "$pkgdir/etc/bareos"
   install -d "$pkgdir/var/log/bareos"
@@ -194,7 +226,10 @@ package_bareos-common() {
 
 package_bareos-contrib-director-python-plugins() {
   pkgdesc="${pkgdesc} - Backup Archiving Recovery Open Sourced - contributed Director plugins"
-  depends=("bareos-common=${pkgver}" "bareos-director-python-plugin=${pkgver}")
+  depends=(
+      "bareos-common=${pkgver}"
+      "bareos-director-python-plugin=${pkgver}"
+  )
 
   local _files=(
     usr/lib/bareos/plugins/BareosDirPluginNscaSender.py
@@ -205,7 +240,10 @@ package_bareos-contrib-director-python-plugins() {
 
 package_bareos-contrib-filedaemon-python-plugins() {
   pkgdesc="${pkgdesc} - Backup Archiving Recovery Open Sourced - contributed File Daemon plugins"
-  depends=("bareos-common=${pkgver}" "bareos-filedaemon-python-plugin=${pkgver}")
+  depends=(
+      "bareos-common=${pkgver}"
+      "bareos-filedaemon-python-plugin=${pkgver}"
+  )
 
   local _files=(
     usr/lib/bareos/plugins/bareos_mysql_dump/*
@@ -216,9 +254,12 @@ package_bareos-contrib-filedaemon-python-plugins() {
 }
 
 package_bareos-contrib-tools() {
-  arch=(any)
+  arch=('any')
   pkgdesc="${pkgdesc} - Backup Archiving Recovery Open Sourced - contributed tools"
-  depends=("python-bareos=${pkgver}" "bareos-filedaemon=${pkgver}")
+  depends=(
+      "bareos-filedaemon=${pkgver}"
+      "python-bareos=${pkgver}"
+  )
 
   local _files=(
     usr/bin/bareos-triggerjob.py
@@ -230,7 +271,16 @@ package_bareos-contrib-tools() {
 
 package_bareos-database-common() {
   pkgdesc="${pkgdesc} - Backup Archiving Recovery Open Sourced - common catalog files"
-  depends=("bareos-common=${pkgver}" "bareos-database-postgresql=${pkgver}" 'libcap' 'lzo' 'zlib' 'openssl' 'bash' 'jansson')
+  depends=(
+      "bareos-common=${pkgver}"
+      "bareos-database-postgresql=${pkgver}"
+      'bash'
+      'jansson'
+      'libcap'
+      'lzo'
+      'openssl'
+      'zlib'
+  )
   local _files=(
     usr/lib/bareos/libbareossql.so*
     usr/lib/bareos/scripts/create_bareos_database
@@ -247,7 +297,10 @@ package_bareos-database-common() {
 package_bareos-database-postgresql() {
   pkgdesc="${pkgdesc} - Libs and tools for postgresql catalog"
   provides=("bareos-database=${pkgver}")
-  depends=("bareos-database-common=${pkgver}" "postgresql-libs")
+  depends=(
+      "bareos-database-common=${pkgver}"
+      'postgresql-libs'
+  )
   install=bareos-database-postgresql.install
 
   local _files=(
@@ -258,7 +311,11 @@ package_bareos-database-postgresql() {
 
 package_bareos-database-tools() {
   pkgdesc="${pkgdesc} - CLI tools with database dpendencies (dbcheck, bscan)"
-  depends=("bareos-database-common=${pkgver}" 'openssl' 'jansson')
+  depends=(
+      "bareos-database-common=${pkgver}"
+      'jansson'
+      'openssl'
+  )
 
   local _files=(
     usr/bin/bareos-dbcheck
@@ -271,7 +328,7 @@ package_bareos-database-tools() {
 
 package_bareos-devel() {
   pkgdesc="${pkgdesc} - Devel headers"
-  arch=(any)
+  arch=('any')
   # TODO
   install -d ${pkgdir}/usr/include/bareos
   install -m640 ${srcdir}/bareos/core/src/lib/*.h ${pkgdir}/usr/include/bareos
@@ -279,7 +336,12 @@ package_bareos-devel() {
 
 package_bareos-director() {
   pkgdesc="${pkgdesc} - Director daemon"
-  depends=("bareos-common=${pkgver}" 'openssl' 'bash' 'jansson')
+  depends=(
+      "bareos-common=${pkgver}"
+      'bash'
+      'jansson'
+      'openssl'
+  )
   install=bareos-director.install
   local _files=(
     etc/logrotate.d/bareos-dir
@@ -323,7 +385,7 @@ package_bareos-director() {
 }
 
 package_bareos-director-python-plugins-common() {
-  arch=(any)
+  arch=('any')
   pkgdesc="${pkgdesc} - This package contains the common files for the python 2 and python 3 director plugins"
   depends=("bareos-director=${pkgver}")
 
@@ -336,11 +398,16 @@ package_bareos-director-python-plugins-common() {
 }
 
 package_bareos-director-python3-plugin() {
-  conflicts=("bareos-director-python-plugin")
+  conflicts=('bareos-director-python-plugin')
   pkgdesc="${pkgdesc} - Python plugin for director daemon"
-  depends=("bareos-director=${pkgver}"
-           "bareos-director-python-plugins-common=${pkgver}"
-           'python' 'libcap' 'jansson' 'lzo')
+  depends=(
+      "bareos-director-python-plugins-common=${pkgver}"
+      "bareos-director=${pkgver}"
+      'jansson'
+      'libcap'
+      'lzo'
+      'python'
+  )
   local _files=(
     usr/lib/bareos/plugins/python3-dir.so
     usr/lib/python${python3_ver}/site-packages/bareosdir.cpython*.so
@@ -350,7 +417,13 @@ package_bareos-director-python3-plugin() {
 
 package_bareos-filedaemon() {
   pkgdesc="${pkgdesc} - File daemon"
-  depends=("bareos-common=${pkgver}" 'jansson' 'zlib' 'gcc-libs' 'xxhash')
+  depends=(
+      "bareos-common=${pkgver}"
+      'gcc-libs'
+      'jansson'
+      'xxhash'
+      'zlib'
+  )
   groups+=('bareos-client')
   install=bareos-filedaemon.install
   local _files=(
@@ -373,8 +446,10 @@ package_bareos-filedaemon() {
 
 package_bareos-filedaemon-glusterfs-plugin() {
   pkgdesc="${pkgdesc} - GlusterFS plugin for Bareos File daemon"
-  depends=("bareos-filedaemon=${pkgver}"
-           "glusterfs")
+  depends=(
+      "bareos-filedaemon=${pkgver}"
+      'glusterfs'
+  )
   local _files=(
     usr/lib/bareos/plugins/gfapi-fd.so
     usr/share/bareos/config/bareos-dir.d/fileset/plugin-gfapi.conf.example
@@ -385,11 +460,13 @@ package_bareos-filedaemon-glusterfs-plugin() {
 }
 
 package_bareos-filedaemon-ldap-python-plugin() {
-  arch=(any)
+  arch=('any')
   pkgdesc="${pkgdesc} - LDAP Python plugin for Bareos File daemon"
-  depends=("bareos-filedaemon=${pkgver}"
-           "bareos-filedaemon-python3-plugin=${pkgver}"
-           'python-ldap')
+  depends=(
+      "bareos-filedaemon-python3-plugin=${pkgver}"
+      "bareos-filedaemon=${pkgver}"
+      'python-ldap'
+  )
   #backup=("etc/bareos/bareos-dir.d/plugin-python-ldap.conf")
 
   local _files=(
@@ -402,10 +479,12 @@ package_bareos-filedaemon-ldap-python-plugin() {
 }
 
 package_bareos-filedaemon-libcloud-python-plugin() {
-  arch=(any)
+  arch=('any')
   pkgdesc="${pkgdesc} - Libcloud Python plugin for Bareos File daemon"
-  depends=("bareos-filedaemon=${pkgver}"
-           "python-apache-libcloud")
+  depends=(
+      "bareos-filedaemon=${pkgver}"
+      'python-apache-libcloud'
+  )
   local _files=(
     usr/lib/bareos/plugins/bareos-fd-libcloud.py*
     usr/lib/bareos/plugins/BareosFdPluginLibcloud.py*
@@ -417,10 +496,12 @@ package_bareos-filedaemon-libcloud-python-plugin() {
 }
 
 package_bareos-filedaemon-mariabackup-python-plugin() {
-  arch=(any)
+  arch=('any')
   pkgdesc="${pkgdesc} - MariaBackup plugin for Bareos File daemon"
-  depends=("bareos-filedaemon=${pkgver}"
-           "mariadb")
+  depends=(
+      "bareos-filedaemon=${pkgver}"
+      'mariadb'
+  )
   local _files=(
     usr/lib/bareos/plugins/bareos-fd-mariabackup.py*
   )
@@ -428,10 +509,12 @@ package_bareos-filedaemon-mariabackup-python-plugin() {
 }
 
 package_bareos-filedaemon-percona-xtrabackup-python-plugin() {
-  arch=(any)
+  arch=('any')
   pkgdesc="${pkgdesc} - XtraBackup plugin for Bareos File daemon"
-  depends=("bareos-filedaemon=${pkgver}"
-           "xtrabackup")
+  depends=(
+      "bareos-filedaemon=${pkgver}"
+      'xtrabackup'
+  )
   local _files=(
     usr/lib/bareos/plugins/bareos-fd-percona-xtrabackup.py*
   )
@@ -439,10 +522,12 @@ package_bareos-filedaemon-percona-xtrabackup-python-plugin() {
 }
 
 package_bareos-filedaemon-postgresql-python-plugin() {
-  arch=(any)
+  arch=('any')
   pkgdesc="${pkgdesc} - PostgreSQL plugin for Bareos File daemon"
-  depends=("bareos-filedaemon=${pkgver}"
-           "postgresql")
+  depends=(
+      "bareos-filedaemon=${pkgver}"
+      'postgresql'
+  )
   local _files=(
     usr/lib/bareos/plugins/bareos-fd-postgresql.py*
   )
@@ -450,7 +535,7 @@ package_bareos-filedaemon-postgresql-python-plugin() {
 }
 
 package_bareos-filedaemon-python-plugins-common() {
-  arch=(any)
+  arch=('any')
   pkgdesc="${pkgdesc} - This package contains the common files for the python 2 and python 3 filedaemon plugins"
   depends=("bareos-filedaemon=${pkgver}")
   local _files=(
@@ -464,11 +549,16 @@ package_bareos-filedaemon-python-plugins-common() {
 }
 
 package_bareos-filedaemon-python3-plugin() {
-  conflicts=("bareos-filedaemon-python-plugin")
+  conflicts=('bareos-filedaemon-python-plugin')
   pkgdesc="${pkgdesc} - Python plugin for file daemon"
-  depends=("bareos-filedaemon=${pkgver}"
-           "bareos-filedaemon-python-plugins-common=${pkgver}"
-           'python' 'libcap' 'lzo' 'jansson')
+  depends=(
+      "bareos-filedaemon-python-plugins-common=${pkgver}"
+      "bareos-filedaemon=${pkgver}"
+      'jansson'
+      'libcap'
+      'lzo'
+      'python'
+  )
   local _files=(
     usr/lib/bareos/plugins/python3-fd.so
     usr/lib/python${python3_ver}/site-packages/bareosfd.cpython*.so
@@ -478,7 +568,14 @@ package_bareos-filedaemon-python3-plugin() {
 
 package_bareos-storage() {
   pkgdesc="${pkgdesc} - Storage daemon"
-  depends=("bareos-common=${pkgver}" 'zlib' 'lzo' 'jansson' 'openssl' 'libcap')
+  depends=(
+      "bareos-common=${pkgver}"
+      'jansson'
+      'libcap'
+      'lzo'
+      'openssl'
+      'zlib'
+  )
   install=bareos-storage.install
   install -d "$pkgdir/var/lib/bareos/storage"
   local _files=(
@@ -518,7 +615,14 @@ package_bareos-storage-droplet() {
 
 package_bareos-storage-fifo() {
   pkgdesc="${pkgdesc} - FIFO support for storage daemon"
-  depends=("bareos-storage=${pkgver}" 'zlib' 'libcap' 'openssl' 'jansson' 'lzo')
+  depends=(
+      "bareos-storage=${pkgver}"
+      'jansson'
+      'libcap'
+      'lzo'
+      'openssl'
+      'zlib'
+  )
   local _files=(
     usr/lib/bareos/backends/libbareossd-fifo.so*
     usr/share/bareos/config/bareos-dir.d/storage/NULL.conf.example
@@ -529,8 +633,10 @@ package_bareos-storage-fifo() {
 
 package_bareos-storage-glusterfs() {
   pkgdesc="${pkgdesc} - GlusterFS support for storage daemon"
-  depends=("bareos-storage=${pkgver}"
-           "glusterfs")
+  depends=(
+      "bareos-storage=${pkgver}"
+      'glusterfs'
+  )
   local _files=(
     usr/lib/bareos/backends/libbareossd-gfapi.so*
     usr/share/bareos/config/bareos-dir.d/storage/Gluster.conf.example
@@ -540,7 +646,7 @@ package_bareos-storage-glusterfs() {
 }
 
 package_bareos-storage-python-plugins-common() {
-  arch=(any)
+  arch=('any')
   pkgdesc="${pkgdesc} - This package contains the common files for the python 2 and python 3 storage plugins"
   depends=("bareos-storage=${pkgver}")
   local _files=(
@@ -552,11 +658,16 @@ package_bareos-storage-python-plugins-common() {
 }
 
 package_bareos-storage-python3-plugin() {
-  conflicts=("bareos-storage-python-plugin")
+  conflicts=('bareos-storage-python-plugin')
   pkgdesc="${pkgdesc} - Python plugin for storage daemon"
-  depends=("bareos-storage=${pkgver}"
-           "bareos-storage-python-plugins-common=${pkgver}"
-           'python' 'lzo' 'libcap' 'jansson')
+  depends=(
+      "bareos-storage-python-plugins-common=${pkgver}"
+      "bareos-storage=${pkgver}"
+      'jansson'
+      'libcap'
+      'lzo'
+      'python'
+  )
   local _files=(
     usr/lib/bareos/plugins/python3-sd.so
     usr/lib/python${python3_ver}/site-packages/bareossd.cpython*.so
@@ -566,8 +677,17 @@ package_bareos-storage-python3-plugin() {
 
 package_bareos-storage-tape() {
   pkgdesc="${pkgdesc} - Tape support for storage daemon"
-  depends=("bareos-storage=${pkgver}" 'zlib' 'libcap' 'bash' 'openssl' 'jansson' 'lzo' "mtx")
-  backup=(etc/bareos/mtx-changer.conf)
+  depends=(
+      "bareos-storage=${pkgver}"
+      'bash'
+      'jansson'
+      'libcap'
+      'lzo'
+      'mtx'
+      'openssl'
+      'zlib'
+  )
+  backup=('etc/bareos/mtx-changer.conf')
   local _files=(
     etc/bareos/mtx-changer.conf
     usr/share/bareos/config/bareos-dir.d/storage/Tape.conf.example
@@ -587,7 +707,10 @@ package_bareos-storage-tape() {
 
 package_bareos-tools() {
   pkgdesc="${pkgdesc} - CLI tools (bcopy, bextract, bls, bregeq, bwild, bregex)"
-  depends=("bareos-common=${pkgver}" 'glibc')
+  depends=(
+      "bareos-common=${pkgver}"
+      'glibc'
+  )
   local _files=(
     usr/bin/bregex
     usr/bin/bwild
@@ -613,7 +736,7 @@ package_bareos-traymonitor() {
   groups+=("bareos-client")
   pkgdesc="${pkgdesc} - This package contains the tray monitor (QT based)"
   depends=("bareos-common=${pkgver}")
-  backup=("etc/bareos/tray-monitor.d/monitor/bareos-mon.conf")
+  backup=('etc/bareos/tray-monitor.d/monitor/bareos-mon.conf')
   install=bareos-traymonitor.install
 
   install -d "$pkgdir/etc/bareos/tray-monitor.d/monitor"
@@ -651,9 +774,12 @@ package_bareos-vmware-vix-disklib() {
 }
 
 package_bareos-vmware-plugin() {
-  arch=(any)
+  arch=('any')
   pkgdesc="${pkgdesc} - Bareos VMware plugin"
-  depends=("bareos-vadp-dumper=${pkgver}" "bareos-common=${pkgver}" )
+  depends=(
+      "bareos-vadp-dumper=${pkgver}"
+      "bareos-common=${pkgver}"
+  )
   optdepends=("bareos-filedaemon-python3-plugin=${pkgver}")
   install -d "$pkgdir/usr/bin"
   local _files=(
@@ -664,14 +790,19 @@ package_bareos-vmware-plugin() {
 }
 
 package_bareos-webui() {
-  arch=(any)
+  arch=('any')
   pkgdesc="${pkgdesc} - Webui (Bareos web administration)"
   depends=('jansson')
-  optdepend=( 'bareos-webui-apache' 'bareos-webui-nginx' )
-  backup=('etc/bareos-webui/directors.ini'
-          'etc/bareos-webui/configuration.ini'
-          'etc/bareos/bareos-dir.d/console/admin.conf.example'
-          'etc/bareos/bareos-dir.d/profile/webui-admin.conf')
+  optdepend=(
+      'bareos-webui-apache'
+      'bareos-webui-nginx'
+  )
+  backup=(
+      'etc/bareos-webui/directors.ini'
+      'etc/bareos-webui/configuration.ini'
+      'etc/bareos/bareos-dir.d/console/admin.conf.example'
+      'etc/bareos/bareos-dir.d/profile/webui-admin.conf'
+  )
 
   install -d "$pkgdir/usr/share/licenses/${pkgname}"
   install -d "$pkgdir/usr/share/doc/${pkgname}"
@@ -690,9 +821,15 @@ package_bareos-webui() {
 }
 
 package_bareos-webui-apache() {
-  arch=(any)
+  arch=('any')
   pkgdesc="${pkgdesc} - Webui Apache"
-  depends=('apache' 'php-apache' 'php' 'php-fpm' 'php-pgsql')
+  depends=(
+      'apache'
+      'php'
+      'php-apache'
+      'php-fpm'
+      'php-pgsql'
+  )
   backup=('etc/httpd/conf/extra/bareos-webui.conf')
 
   local _files=(
@@ -702,9 +839,14 @@ package_bareos-webui-apache() {
 }
 
 package_bareos-webui-nginx() {
-  arch=(any)
+  arch=('any')
   pkgdesc="${pkgdesc} - Webui nginx"
-  depends=('nginx' 'php' 'php-fpm' 'php-pgsql')
+  depends=(
+      'nginx'
+      'php'
+      'php-fpm'
+      'php-pgsql'
+  )
   backup=('etc/nginx/bareos-webui.conf')
 
   install -Dm644 ${srcdir}/bareos/webui/install/nginx/bareos-webui.conf ${pkgdir}/etc/nginx/bareos-webui.conf
@@ -712,7 +854,11 @@ package_bareos-webui-nginx() {
 
 package_python-bareos() {
   pkgdesc="${pkgdesc} - python-bareos is a Python module to access a backup system."
-  depends=('python' 'python-sslpsk' 'jansson')
+  depends=(
+      'jansson'
+      'python'
+      'python-sslpsk'
+  )
 
   cd "${srcdir}/${pkgbase}/python-bareos"
   python -m installer --destdir="$pkgdir" dist/*.whl
