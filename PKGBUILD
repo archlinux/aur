@@ -1,33 +1,26 @@
-# Maintainer: soymadip
+# Maintainer: soymadip 
 pkgname=autotitle
-pkgver=0.2.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Automated anime episode renaming tool with MAL integration"
 arch=('x86_64')
-url="https://github.com/soymadip/autotitle"
+url="https://github.com/mydehq/autotitle"
 license=('GPL3')
 depends=('glibc')
-makedepends=('go' 'git')
-source=("git+$url.git#tag=v$pkgver")
-sha256sums=('SKIP')
+source=("${pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/${pkgname}-linux-amd64"
+        "${url}/raw/v${pkgver}/src/config.yml"
+        "${url}/raw/v${pkgver}/LICENSE"
+        "${url}/raw/v${pkgver}/README.md")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 backup=('etc/autotitle/config.yml')
 
-build() {
-  cd "$pkgname"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-
-  make release
-}
-
 package() {
-  cd "$pkgname"
-  install -Dm755 "bin/autotitle" "$pkgdir/usr/bin/autotitle"
-  install -Dm644 "src/config.yml" "$pkgdir/etc/autotitle/config.yml"
-
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm755 "${pkgname}-${pkgver}" "$pkgdir/usr/bin/autotitle"
+    install -Dm644 "config.yml" "$pkgdir/etc/autotitle/config.yml"
+    
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
