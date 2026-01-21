@@ -1,8 +1,8 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=aarty-git
 _pkgname=aarty
-pkgver=0.7.1.r8.g276d1c3
-pkgrel=2
+pkgver=0.8.0.r0.ga7b8249
+pkgrel=1
 pkgdesc='Simple CLI tool to convert the images to ASCII art - Build from the aurora branch'
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')
 url='https://github.com/0x61nas/aarty'
@@ -27,6 +27,7 @@ build() {
     cd "$_pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export AARTY_BUILD_OVERWRITE_VERSION="$pkgver"
     cargo build --frozen --release --all-features
 }
 
