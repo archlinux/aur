@@ -1,0 +1,15 @@
+# CrystalNetwork Studio
+# makepkg - easy to use
+
+build:
+  deps: false
+  clean: false
+  ccache: true
+  sign: false
+
+
+artifacts:
+  enabled: true
+  output_dir: "artifacts"
+  version_file: true
+  preserve_sources: true
