@@ -4,7 +4,7 @@
 
 pkgname='alice-vision'
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 options=('!debug') # debug package is kinda big -- needs investigation!
 pkgdesc="Photogrammetric Computer Vision Framework which provides 3D Reconstruction and Camera Tracking algorithms"
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('MPL-2.0' 'MIT')
 depends=('boost-libs' 'geogram' 'coin-or-clp' 'coin-or-coinutils' 'ceres-solver' 'openmesh' 'jemalloc' 'zlib'
          'alembic' 'popsift' 'assimp' 'onnxruntime' 'cuda' 'openimageio' 'usd')
 makedepends=('boost' 'eigen' 'freetype2' 'flann' 'cctag' 'onnx' 'swig' 'expat'
-             'git' 'cmake' 'doxygen' 'python-sphinx' 'nanoflann')
+             'git' 'cmake' 'doxygen' 'python-sphinx' 'nanoflann' 'metis' 'libe57format')
 optdepends=('apriltag: Recognition of Apriltags'
 			'libe57format: e57 3d imaging format I/O')
 source=("git+https://github.com/alicevision/AliceVision.git#tag=v${pkgver}"
