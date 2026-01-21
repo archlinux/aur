@@ -3,8 +3,8 @@
 # Tracks the experimental/multi-source-swarm branch with multi-source downloads & DHT mesh
 pkgname=slskdn-dev
 _pkgname=slskd
-pkgver=0.24.1.dev.91769014133
-_commit=91d3cd85
+pkgver=0.24.1.dev.91769017780
+_commit=969e57a6
 pkgrel=1
 pkgdesc="🔋 DEV: The batteries included, ***EXPERIMENTAL*** fork of slskd. Feature-rich, including multi-source downloads, DHT mesh sync, swarm mode & more"
 arch=('x86_64')
