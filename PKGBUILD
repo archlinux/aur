@@ -3,7 +3,7 @@
 
 # should be renamed to arduino-core-avr to match upstream and Debian.
 pkgname=arduino-avr-core
-pkgver=1.8.6
+pkgver=1.8.7
 pkgrel=1
 pkgdesc="Arduino AVR core with upstream avr-gcc and avrdude"
 arch=('any')
@@ -20,7 +20,7 @@ depends=('avrdude' 'avr-gcc' 'avr-libc')
 options=(!strip !emptydirs !debug)
 source=("https://github.com/arduino/ArduinoCore-avr/archive/$pkgver/$pkgname-$pkgver.tar.gz"
         "platform.patch")
-sha512sums=('910fbf8103571d377e0094393fd249e4c5d637b81b1996521e5812372d55bc1a3dc1b87f668510e705a88072ac0514294fb27d2d5499f64a84e2e5b0c3a78ac3'
+sha512sums=('d7a84d702c41909762a1815eb42b68fe8324a5f5e7124c5c49113babeb1ee67c958c355b31a7ff79102d4dbe91fc14d61c05b8ca50e074056554187a9043536d'
             '916d76a1313fa9372e141eb132eb3d5d4db32e27f695d3b6b0e2894111bfdacd54feec2ba6ea89b10918b9ef904f9b3d4c105c37d5a6851ac92c5c1758679f00')
 validpgpkeys=('326567C1C6B288DF32CB061A95FA6F43E21188C4') # Arduino Packages <support@arduino.cc>
 
