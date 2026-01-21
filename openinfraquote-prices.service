@@ -1,0 +1,11 @@
+[Unit]
+Description=Updates openinfraquote pricing data
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/opt/openinfraquote/update-prices.sh
+
+[Install]
+WantedBy=multi-user.target

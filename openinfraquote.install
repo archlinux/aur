@@ -1,0 +1,3 @@
+post_install() {
+    echo "You should add the /opt/openinfraquote directory to your PATH."
+}

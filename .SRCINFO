@@ -1,0 +1,21 @@
+pkgbase = openinfraquote-bin
+	pkgdesc = Fast, open-source tool for estimating infrastructure costs from Terraform plans and state files
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://github.com/terrateamio/openinfraquote
+	install = openinfraquote.install
+	arch = x86_64
+	license = MPL-2.0
+	optdepends = gzip
+	provides = openinfraquote
+	conflicts = openinfraquote
+	source = https://github.com/terrateamio/openinfraquote/releases/download/v1.10.0/oiq-linux-amd64-v1.10.0.tar.gz
+	source = openinfraquote-prices.service
+	source = openinfraquote-prices.timer
+	source = update-prices.sh
+	sha256sums = dbb09e8a76bf701e3e58cc106dac26496ab98b708bdbaec8a70424374a27270d
+	sha256sums = dca19c613b44184f24f0c70d7499385bab54ad1570e005c515a38da88886c626
+	sha256sums = 65ecb78fab3bd8d26d06724e6ea3dc6e3628363ccf842d365720b0aed41904cf
+	sha256sums = a9e222d6ca049fdaeb690eb68df363b2cf0632147dea486bc04b1012702f42be
+
+pkgname = openinfraquote-bin
