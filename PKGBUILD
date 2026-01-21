@@ -1,14 +1,16 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=meteo
 pkgver=0.9.9.3
-pkgrel=4
+pkgrel=5
 pkgdesc="A forecast application using OpenWeatherMap API"
 arch=('x86_64')
 url="https://gitlab.com/bitseater/meteo"
 license=('GPL-3.0-or-later')
 depends=(
   'gtk3'
+  'json-glib'
   'libayatana-appindicator'
+  'libsoup'
   'webkit2gtk'
 )
 makedepends=(
@@ -42,5 +44,5 @@ check() {
 package() {
   meson install -C build --no-rebuild --destdir "$pkgdir"
 
-  ln -s /usr/bin/com.gitlab.bitseater.meteo "$pkgdir/usr/bin/$pkgname"
+  ln -s "/usr/bin/com.gitlab.bitseater.$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
