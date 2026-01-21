@@ -1,16 +1,22 @@
 pkgname=python-ezdxf
-_commit=8240df5793daf2fd7db95d118a78e17ec92043ec
-pkgver=1.4.2
+_commit=df5ef277fcc674d77580143212ec63dd981cc2b3
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="Python interface to DXF"
 arch=('x86_64')
-url=https://ezdxf.mozman.at/
+url=https://github.com/mozman/ezdxf
 license=('MIT')
 depends=(
 python-typing_extensions
 python-pyparsing
 python-numpy
 python-fonttools
+python-matplotlib
+python-black
+python-pillow
+pyside6
+python-pymupdf
+python-pyqt5
 )
 makedepends=(
 python-setuptools
@@ -22,10 +28,9 @@ git
 )
 checkdepends=(
 python-pytest
-python-pillow
 )
 source=("git+https://github.com/mozman/ezdxf.git#commit=${_commit}")
-sha256sums=('0c13114b34418fc5b50a182d9b8ec7cc1c7249c62e6e119989bb9a9077d77a55')
+sha256sums=('eae2bc3ebd6ec3a168ec84032705831cc20d76db9fa660aaea5bec486cafaa78')
 
 pkgver() {
   cd ezdxf
@@ -55,6 +60,6 @@ package() {
   mkdir -p "${pkgdir}/usr/share/${pkgname}"
   cp -a examples "${pkgdir}/usr/share/${pkgname}"
   cp -a examples_dxf "${pkgdir}/usr/share/${pkgname}"
-}
 
-# vim:ts=2:sw=2:et:
+  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+}
