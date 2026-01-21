@@ -1,4 +1,4 @@
 [geekbench-ai]
 source = "repology"
 repology = "geekbench-ai"
-repo = "homebrew_casks"
+repo = "chocolatey"
