@@ -10,7 +10,7 @@ license=('custom')
 depends=()
 conflicts=()
 source=("https://filedn.com/lHGef0SOQKnBTotcJeEfshJ/Fonts/Monterey.tar.zst")
-md5sums=('b3ae9a1235048c2d67506a583108450c')
+md5sums=('d5c5704a4bcfd52ce47894a4383dc819')
 
 package() {
     cd "${srcdir}"
