@@ -1,6 +1,10 @@
-# arg 1:  the old package version
-post_remove() {
-   # userdel is usually not done on upgrade, and often left on remove to preserve file ownership.
-   # Arch guidelines say: do not remove users/groups.
-   rm -f /etc/bareos/.rndpwd
+post_install() {
+  echo "To initialize the Bareos configuration, please run:"
+  echo "  /usr/lib/bareos/scripts/bareos-config deploy_config --init <component>"
+  echo "where <component> is one of: bareos-dir, bareos-sd, bareos-fd, bconsole, tray-monitor"
+}
+
+post_upgrade() {
+  echo "If you have missing configuration files, you can install them by running:"
+  echo "  /usr/lib/bareos/scripts/bareos-config deploy_config --add-missing <component>"
 }

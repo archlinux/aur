@@ -40,7 +40,6 @@ pkgbase = bareos
 
 pkgname = bareos-bconsole
 	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Admin Tool (CLI)
-	install = bareos-bconsole.install
 	groups = bareos
 	groups = bareos-client
 	depends = bareos-common=25.0.1
@@ -88,7 +87,6 @@ pkgname = bareos-database-common
 
 pkgname = bareos-database-postgresql
 	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Libs and tools for postgresql catalog
-	install = bareos-database-postgresql.install
 	depends = bareos-database-common=25.0.1
 	depends = postgresql-libs
 	provides = bareos-database=25.0.1
@@ -105,7 +103,6 @@ pkgname = bareos-devel
 
 pkgname = bareos-director
 	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Director daemon
-	install = bareos-director.install
 	depends = bareos-common=25.0.1
 	depends = bash
 	depends = jansson
@@ -128,7 +125,6 @@ pkgname = bareos-director-python3-plugin
 
 pkgname = bareos-filedaemon
 	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - File daemon
-	install = bareos-filedaemon.install
 	groups = bareos
 	groups = bareos-client
 	depends = bareos-common=25.0.1
@@ -190,7 +186,6 @@ pkgname = bareos-filedaemon-python3-plugin
 
 pkgname = bareos-storage
 	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Storage daemon
-	install = bareos-storage.install
 	depends = bareos-common=25.0.1
 	depends = jansson
 	depends = libcap
@@ -250,7 +245,6 @@ pkgname = bareos-tools
 
 pkgname = bareos-traymonitor
 	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - This package contains the tray monitor (QT based)
-	install = bareos-traymonitor.install
 	groups = bareos
 	groups = bareos-client
 	depends = bareos-common=25.0.1

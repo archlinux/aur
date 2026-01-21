@@ -176,7 +176,6 @@ package_bareos-bconsole() {
       'readline'
   )
   groups+=("bareos-client")
-  install=bareos-bconsole.install
   backup=('etc/bareos/bconsole.conf')
 
   install -d "$pkgdir/etc/bareos"
@@ -307,7 +306,6 @@ package_bareos-database-postgresql() {
       "bareos-database-common=${pkgver}"
       'postgresql-libs'
   )
-  install=bareos-database-postgresql.install
 
   local _files=(
     usr/lib/bareos/scripts/ddl/*/postgresql*.sql
@@ -348,7 +346,6 @@ package_bareos-director() {
       'jansson'
       'openssl'
   )
-  install=bareos-director.install
   local _files=(
     etc/logrotate.d/bareos-dir
     usr/lib/bareos/scripts/delete_catalog_backup
@@ -431,7 +428,6 @@ package_bareos-filedaemon() {
       'zlib'
   )
   groups+=('bareos-client')
-  install=bareos-filedaemon.install
   local _files=(
     usr/share/bareos/config/bareos-fd.d/client/myself.conf
     usr/share/bareos/config/bareos-fd.d/director/bareos-dir.conf
@@ -582,7 +578,6 @@ package_bareos-storage() {
       'openssl'
       'zlib'
   )
-  install=bareos-storage.install
   install -d "$pkgdir/var/lib/bareos/storage"
   local _files=(
     usr/lib/bareos/plugins/autoxflate-sd.so
@@ -743,7 +738,6 @@ package_bareos-traymonitor() {
   pkgdesc="${pkgdesc} - This package contains the tray monitor (QT based)"
   depends=("bareos-common=${pkgver}")
   backup=('etc/bareos/tray-monitor.d/monitor/bareos-mon.conf')
-  install=bareos-traymonitor.install
 
   local _files=(
     etc/xdg/autostart/bareos-tray-monitor.desktop
