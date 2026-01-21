@@ -15,12 +15,12 @@ post_upgrade() {
 
 	set -- "${1}" "${2}" "$(("${3}" - "${4}" - 1))"
 	if [ "${3}" -gt 0 ]; then
-		warning 'Upgraded from %s to %s, skipping %s major versions.' "${2}" "${1}" "${3}"
+		warning 'Upgraded from %s to %s, skipping %s major version(s).' "${2}" "${1}" "${3}"
 		plainerr 'This may result in error loss. You have been warned.'
 	fi
 }
 
 post_remove() {
-	msg 'Mods will remain in the user-specific data directory (XDG_DATA_HOME), and must be manually removed'
+	msg 'Mods will remain in the user-specific data directory (XDG_DATA_HOME)'
 	msg 'Settings will remain in the user-specific configuration directory (XDG_CONFIG_HOME)'
 }
