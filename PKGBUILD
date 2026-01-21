@@ -3,7 +3,7 @@
 pkgname=python-playsound3
 _reponame=playsound3
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Pure Python library for playing sounds"
 arch=('any')
 url="https://github.com/sjmikler/playsound3"
