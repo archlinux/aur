@@ -1,8 +1,8 @@
 # Maintainer: Matthew Tran <0e4ef622 at gmail.com>
 # Contributor: piratecarrot <39475419+piratecarrot@users.noreply.github.com>
 pkgname=libdogleg-git
-pkgver=v0.16.r1.g1f88d01
-pkgrel=2
+pkgver=v0.18.r0.gb17d917
+pkgrel=1
 pkgdesc="Large-scale nonlinear least-squares optimization library for both sparse and dense problems"
 arch=('i686' 'x86_64')
 url="https://github.com/dkogan/libdogleg"
@@ -26,7 +26,7 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	suffix=$(git describe --long --tags | sed 's/^v//g')
+	suffix=$(git describe --long --tags | sed 's/^v//g;s/-[0-9]\+-g[0-9a-f]\+$//g')
 	install -m 755 "libdogleg.so.2.$suffix" -D --target-directory="$pkgdir/usr/lib/"
 	pushd $pkgdir/usr/lib/
 	ln -s "libdogleg.so.2.$suffix" libdogleg.so.2
