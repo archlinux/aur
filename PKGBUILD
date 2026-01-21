@@ -1,12 +1,12 @@
 # Maintainer: Lncvrt <lncvrtreal@gmail.com>
 pkgname=lncvrt-games-launcher
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The official Lncvrt Games Launcher AUR Package!"
 arch=('x86_64')
 url="https://games.lncvrt.xyz"
 source=(
-    "https://archive.org/download/lncvrt-games-launcher/Lncvrt-Games-Launcher-${pkgver}-linux.AppImage"
+    "https://games-r2.lncvrt.xyz/lncvrt-games-launcher/Lncvrt-Games-Launcher-${pkgver}-linux.AppImage"
     'lncvrt-games-launcher.desktop'
     '32x32.png'
     '128x128.png'
