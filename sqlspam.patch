@@ -1,6 +1,8 @@
---- core/src/dird/ua_prune.cc.orig	2021-12-23 12:29:52.844307700 +0100
-+++ core/src/dird/ua_prune.cc	2021-12-23 14:58:31.874042423 +0100
-@@ -585,7 +585,9 @@ bail_out:
+Index: src/bareos/core/src/dird/ua_prune.cc
+===================================================================
+--- src.orig/bareos/core/src/dird/ua_prune.cc
++++ src/bareos/core/src/dird/ua_prune.cc
+@@ -560,7 +560,9 @@ bool PruneFiles(UaContext* ua, ClientRes
  
  static void DropTempTables(UaContext* ua)
  {

@@ -40,7 +40,7 @@ pkgname=(
 
 pkgver="25.0.1"
 pkgmajor=${pkgver%%.*}
-pkgrel=1
+pkgrel=2
 arch=(
     'aarch64'
     'armv7h'
@@ -65,43 +65,43 @@ makedepends=(
     'python-installer'
     'python-setuptools'
     'qt5-base'
+    'quilt'
     'rpcsvc-proto'
 )
 source=(
     "bareos-${pkgver}.tar.gz::https://github.com/bareos/bareos/archive/refs/tags/Release/${pkgver}.tar.gz"
-    '0001-distver.patch'
-    '0003-version.patch'
-    '0004-sqlspam.patch'
-    '0005-httpd.patch'
-    'bareos.sysusers'
-    'bareos.tmpfiles'
+    "bareos.sysusers"
+    "bareos.tmpfiles"
+    "distver.patch"
+    "logspam.patch"
+    "version.patch"
+    "sqlspam.patch"
+    "systemd-runtime-dir.patch"
+    "httpd.patch"
+    "series"
 )
 
 b2sums=('e2926ca032e3d0c688e75af7cc5ed379072197481fff7b493fd2bc9eba7d53600ccbfc4cb3069295e0dcdf7ad64f8a102a92a5e766a8a77d452620eba02a3b6f'
-        'f6c1b565ab42a7c1f826565f643926eeaac487b10c33444db8b4cbc71fdcd37d95399cc43116b4ab6ac1bb8db5216f17c07fad5e7649cb3676cf4735e734ac82'
-        'a01b0e2d9c426fa8cadf2afad4135b14ded7fb9c7e5e030de0347b6f60fa1516955feb334bd900d569f038e4febdda9d55397f1555b31dfdc1ba466a6dd08455'
-        '4959909c9771adb7e72c0d6760e91b62e139fd83a67ef6c48ebf1c37caafe539c31a9ae79ab1e38efd7d3b11d60ad4a363b4992601cb04ab3a2e51e90745a67d'
-        'a1e0355ee7f2c276fd26eef57fe16dc95e39c4fb26968d0bc7dbca96479c35736b1042ea2d74b3ee20d5da2243e26fea7f4593670943bd9378f6a52753f4fb4f'
         'f95c952248fff9eb1f0a9455c950e20c56ed59e9cb8751a211c939f5c19017a815902b6c099fe9692b581ed4b7a9f7947eacfa1f2e4560b6f82eaab1eb05d062'
-        '393bf780c1501e658576368d58472ac15d150e4c91c9d143896fdc01e61aeeba1710acf5321b206dcacfe84cb7734f5885ab285856c66db677d5b9dbce2eecf2')
+        '393bf780c1501e658576368d58472ac15d150e4c91c9d143896fdc01e61aeeba1710acf5321b206dcacfe84cb7734f5885ab285856c66db677d5b9dbce2eecf2'
+        'eeefd311a0a8325f3f6a5bc6bcae44f13ae1beedf290ff623bb7e984f80cc2c918cdb622124f1b3cce83abe9ff6b26efaf3ddc05e127e3cd7e332d8bbe6055fa'
+        'c470dc721f7111480b0028dfad9bee271c5f14ced02c13b6a08bb1f0cd3359f1ee4d63c6b8768232d6b3e591f04cc63108f247ca193082ffc9743c9b8bfdf6c0'
+        '4ed99ef3fd98a4765a40e80728544ac2c10d8233772b0ce18f83f78c9d75557bd82a0d97fc07e2628203f8ed58bf90191072434a5d16c7b4d395cb0262d8ce18'
+        '765533b931b1c31f16bca9978987a00a92aaab19f1b6821d841b32e2150901b83345819eb5b7218ca28d18f46b26c59d14460514294c7e56f4ee0a417a4da2f1'
+        '17cc783cfe2c1b9d1f038234cf3b027031d20955920b72cad836ae33c9a11895d90043ca3df640c92afc954a787971c749847e21ee503f655b4ce293971f5949'
+        '79c4a33a747344126a0b932717111c94a7758a0fa54d216c3970d41101d408f1b1466ab0536a47bcedec232dc5869c155340c352db15ac83a1b381bec46a275b'
+        'ec131503be4862c0c3803046013baf294070d8138a3cb1ee6205f286e08950929a45fa7cdd45ebb5afdb0db631457e3369725ef93441959dbc2ec2cce2e46cba')
 
 python3_ver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))");#"
 
 prepare() {
-    # Link source directory to expected name
-    ln -sfn "${pkgbase}-Release-${pkgver}" "${srcdir}/${pkgbase}"
+  # Link source directory to expected name
+  ln -sfn "${pkgbase}-Release-${pkgver}" "${srcdir}/${pkgbase}"
 
-    # Apply maintainer patches
-    cd "${srcdir}/${pkgbase}"
-    local _src
-    local _patch="patch -N -t -p0 -l --no-backup-if-mismatch -i"
-    for _src in "${source[@]}"; do
-        _src="${_src%%::*}"
-        _src="${_src##*/}"
-        [[ $_src = *.patch ]] || continue
-        echo "Applying patch $_src..."
-        $_patch "../$_src"
-    done
+  # Apply maintainer patches
+  cd "${srcdir}"
+  ln -fsn . patches
+  quilt push -a
 }
 
 build() {
@@ -157,14 +157,16 @@ build() {
 
 
 _install_files() {
-  local f
+  local pattern f
   cd "$srcdir/install"
-  for f in "$@"; do
-    if [ -e "$f" ]; then
-      cp -r --parents --preserve=mode "$f" "$pkgdir/"
-    else
-      echo "Warning: $f not found"
-    fi
+  for pattern in "$@"; do
+    for f in $pattern; do
+      if [ -e "$f" ]; then
+        cp -r --parents --preserve=mode "$f" "$pkgdir/"
+      else
+        echo "Warning: $f not found"
+      fi
+    done
   done
 }
 
@@ -384,7 +386,6 @@ package_bareos-director() {
   install -Dm644 ${srcdir}/bareos/build/debian/bareos-director.service "${pkgdir}/usr/lib/systemd/system/bareos-director.service"
 
   # Currently upstream systemd file does not automatically create run directory
-  sed -i '/[Service]/a RuntimeDirectory=bareos' ${pkgdir}/usr/lib/systemd/system/bareos-director.service
 }
 
 package_bareos-director-python-plugins-common() {
@@ -443,7 +444,6 @@ package_bareos-filedaemon() {
   install -Dm644 ${srcdir}/bareos/build/debian/bareos-filedaemon.service "${pkgdir}/usr/lib/systemd/system/bareos-filedaemon.service"
 
   # Currently upstream systemd file does not automatically create run directory
-  sed -i '/[Service]/a RuntimeDirectory=bareos' "${pkgdir}/usr/lib/systemd/system/bareos-filedaemon.service"
 }
 
 package_bareos-filedaemon-glusterfs-plugin() {
@@ -597,7 +597,6 @@ package_bareos-storage() {
   install -Dm644 ${srcdir}/bareos/build/debian/bareos-storage.service "${pkgdir}/usr/lib/systemd/system/bareos-storage.service"
 
   # Currently upstream systemd file does not automatically create run directory
-  sed -i '/[Service]/a RuntimeDirectory=bareos' "${pkgdir}/usr/lib/systemd/system/bareos-storage.service"
 }
 
 package_bareos-storage-droplet() {
@@ -750,6 +749,8 @@ package_bareos-traymonitor() {
   _install_files "${_files[@]}"
 
   # tray-monitor needs configuration files to run
+  install -d "${pkgdir}/etc/bareos/tray-monitor.d/monitor"
+  cp "${pkgdir}/usr/share/bareos/config/tray-monitor.d/monitor/bareos-mon.conf" "${pkgdir}/etc/bareos/tray-monitor.d/monitor/bareos-mon.conf"
   chmod 640 "${pkgdir}/etc/bareos/tray-monitor.d/monitor/bareos-mon.conf"
 }
 

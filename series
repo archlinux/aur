@@ -1,0 +1,6 @@
+distver.patch
+logspam.patch
+version.patch
+sqlspam.patch
+systemd-runtime-dir.patch
+httpd.patch

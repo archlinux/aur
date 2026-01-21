@@ -1,0 +1,36 @@
+Index: src/bareos/debian/bareos-director.service.in
+===================================================================
+--- src.orig/bareos/debian/bareos-director.service.in
++++ src/bareos/debian/bareos-director.service.in
+@@ -16,6 +16,7 @@ ConditionPathExists=@working_dir@
+ StartLimitIntervalSec=1d
+ 
+ [Service]
++RuntimeDirectory=bareos
+ Type=simple
+ User=@dir_user@
+ Group=@dir_group@
+Index: src/bareos/debian/bareos-filedaemon.service.in
+===================================================================
+--- src.orig/bareos/debian/bareos-filedaemon.service.in
++++ src/bareos/debian/bareos-filedaemon.service.in
+@@ -13,6 +13,7 @@ ConditionPathExists=@working_dir@
+ StartLimitIntervalSec=1d
+ 
+ [Service]
++RuntimeDirectory=bareos
+ Type=simple
+ User=@fd_user@
+ Group=@fd_group@
+Index: src/bareos/debian/bareos-storage.service.in
+===================================================================
+--- src.orig/bareos/debian/bareos-storage.service.in
++++ src/bareos/debian/bareos-storage.service.in
+@@ -13,6 +13,7 @@ ConditionPathExists=@working_dir@
+ StartLimitIntervalSec=1d
+ 
+ [Service]
++RuntimeDirectory=bareos
+ Type=simple
+ User=@sd_user@
+ Group=@sd_group@

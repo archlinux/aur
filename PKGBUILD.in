@@ -65,45 +65,36 @@ makedepends=(
     'python-installer'
     'python-setuptools'
     'qt5-base'
+    'quilt'
     'rpcsvc-proto'
 )
 source=(
     "bareos-${pkgver}.tar.gz::https://github.com/bareos/bareos/archive/refs/tags/Release/${pkgver}.tar.gz"
-    '0001-distver.patch'
-    '0003-version.patch'
-    '0004-sqlspam.patch'
-    '0005-httpd.patch'
-    'bareos.sysusers'
-    'bareos.tmpfiles'
+    "bareos.sysusers"
+    "bareos.tmpfiles"
+    "distver.patch"
+    "logspam.patch"
+    "version.patch"
+    "sqlspam.patch"
+    "systemd-runtime-dir.patch"
+    "httpd.patch"
+    "series"
 )
 
 b2sums=(
-    'x'
-    'x'
-    'x'
-    'x'
-    'x'
-    'x'
     'x'
 )
 
 python3_ver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))");#"
 
 prepare() {
-    # Link source directory to expected name
-    ln -sfn "${pkgbase}-Release-${pkgver}" "${srcdir}/${pkgbase}"
+  # Link source directory to expected name
+  ln -sfn "${pkgbase}-Release-${pkgver}" "${srcdir}/${pkgbase}"
 
-    # Apply maintainer patches
-    cd "${srcdir}/${pkgbase}"
-    local _src
-    local _patch="patch -N -t -p0 -l --no-backup-if-mismatch -i"
-    for _src in "${source[@]}"; do
-        _src="${_src%%::*}"
-        _src="${_src##*/}"
-        [[ $_src = *.patch ]] || continue
-        echo "Applying patch $_src..."
-        $_patch "../$_src"
-    done
+  # Apply maintainer patches
+  cd "${srcdir}"
+  ln -fsn . patches
+  quilt push -a
 }
 
 build() {
@@ -159,14 +150,16 @@ build() {
 
 
 _install_files() {
-  local f
+  local pattern f
   cd "$srcdir/install"
-  for f in "$@"; do
-    if [ -e "$f" ]; then
-      cp -r --parents --preserve=mode "$f" "$pkgdir/"
-    else
-      echo "Warning: $f not found"
-    fi
+  for pattern in "$@"; do
+    for f in $pattern; do
+      if [ -e "$f" ]; then
+        cp -r --parents --preserve=mode "$f" "$pkgdir/"
+      else
+        echo "Warning: $f not found"
+      fi
+    done
   done
 }
 
@@ -386,7 +379,6 @@ package_bareos-director() {
   install -Dm644 ${srcdir}/bareos/build/debian/bareos-director.service "${pkgdir}/usr/lib/systemd/system/bareos-director.service"
 
   # Currently upstream systemd file does not automatically create run directory
-  sed -i '/[Service]/a RuntimeDirectory=bareos' ${pkgdir}/usr/lib/systemd/system/bareos-director.service
 }
 
 package_bareos-director-python-plugins-common() {
@@ -445,7 +437,6 @@ package_bareos-filedaemon() {
   install -Dm644 ${srcdir}/bareos/build/debian/bareos-filedaemon.service "${pkgdir}/usr/lib/systemd/system/bareos-filedaemon.service"
 
   # Currently upstream systemd file does not automatically create run directory
-  sed -i '/[Service]/a RuntimeDirectory=bareos' "${pkgdir}/usr/lib/systemd/system/bareos-filedaemon.service"
 }
 
 package_bareos-filedaemon-glusterfs-plugin() {
@@ -599,7 +590,6 @@ package_bareos-storage() {
   install -Dm644 ${srcdir}/bareos/build/debian/bareos-storage.service "${pkgdir}/usr/lib/systemd/system/bareos-storage.service"
 
   # Currently upstream systemd file does not automatically create run directory
-  sed -i '/[Service]/a RuntimeDirectory=bareos' "${pkgdir}/usr/lib/systemd/system/bareos-storage.service"
 }
 
 package_bareos-storage-droplet() {
@@ -752,6 +742,8 @@ package_bareos-traymonitor() {
   _install_files "${_files[@]}"
 
   # tray-monitor needs configuration files to run
+  install -d "${pkgdir}/etc/bareos/tray-monitor.d/monitor"
+  cp "${pkgdir}/usr/share/bareos/config/tray-monitor.d/monitor/bareos-mon.conf" "${pkgdir}/etc/bareos/tray-monitor.d/monitor/bareos-mon.conf"
   chmod 640 "${pkgdir}/etc/bareos/tray-monitor.d/monitor/bareos-mon.conf"
 }
 

@@ -1,6 +1,8 @@
---- webui/CMakeLists.txt.orig	2023-03-03 21:55:18.000000000 +0200
-+++ webui/CMakeLists.txt	2023-03-03 22:01:47.835425931 +0200
-@@ -66,7 +66,9 @@
+Index: src/bareos/webui/CMakeLists.txt
+===================================================================
+--- src.orig/bareos/webui/CMakeLists.txt
++++ src/bareos/webui/CMakeLists.txt
+@@ -64,7 +64,9 @@ message("   VERSION_STRING:
  message("   BAREOS_FULL_VERSION:           ${BAREOS_FULL_VERSION} ")
  message("   LocalBuildDefinitionsFile:     ${BareosLocalBuildDefinitionsFile}")
  

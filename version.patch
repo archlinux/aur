@@ -1,6 +1,8 @@
---- core/src/lib/CMakeLists.txt.orig	2021-12-23 11:28:53.968803800 +0100
-+++ core/src/lib/CMakeLists.txt	2021-12-23 11:42:18.538613886 +0100
-@@ -147,6 +147,9 @@
+Index: src/bareos/core/src/lib/CMakeLists.txt
+===================================================================
+--- src.orig/bareos/core/src/lib/CMakeLists.txt
++++ src/bareos/core/src/lib/CMakeLists.txt
+@@ -140,6 +140,9 @@ target_compile_definitions(
            -DBAREOS_SHORT_DATE="${BAREOS_SHORT_DATE}"
            -DBAREOS_PROG_DATE_TIME="${BAREOS_PROG_DATE_TIME}"
            -DBAREOS_YEAR="${BAREOS_YEAR}"
@@ -8,5 +10,5 @@
 +          -DBAREOS_SERVICES_MESSAGE="${BAREOS_SERVICES_MESSAGE}"
 +          -DBAREOS_JOBLOG_MESSAGE="${BAREOS_JOBLOG_MESSAGE}"
  )
- set_target_properties(version-obj PROPERTIES POSITION_INDEPENDENT_CODE ON)
  
+ target_link_libraries(
