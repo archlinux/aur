@@ -8,13 +8,9 @@ pkgbase = python-runtype
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-poetry-core
-	makedepends = python-recommonmark
-	makedepends = python-sphinx-markdown-tables
 	makedepends = python-wheel
-	depends = python
 	depends = python-typing_extensions
 	source = python-runtype-0.5.3.tar.gz::https://github.com/erezsh/runtype/archive/refs/tags/0.5.3.tar.gz
 	sha256sums = 94fdf42008ce74737f0a4d990fa33c4fd19eed8ba9e57084c8add92b48b7faf4
-	b2sums = 703acabea994f959b5d05901debd6fc646314a059799e0da7582aa8700b11d691ddb24837c6df824b56d7fdbfe8cbbcc6f3a55383e35e3ca367dfb660ca1d5f3
 
 pkgname = python-runtype
