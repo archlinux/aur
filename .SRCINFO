@@ -1,7 +1,7 @@
 pkgbase = aarty
 	pkgdesc = Simple CLI tool to convert the images to ASCII art
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/0x61nas/aarty
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,7 @@ pkgbase = aarty
 	license = MIT
 	makedepends = cargo
 	provides = aarty
+	conflicts = aarty-git
 	source = aarty-0.7.1.tar.gz::https://static.crates.io/crates/aarty/aarty-0.7.1.crate
 	source = LICENSE::https://raw.githubusercontent.com/0x61nas/aarty/refs/tags/v0.7.1/LICENSE.txt
 	source = aarty-0.7.1.tar.gz.asc

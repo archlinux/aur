@@ -1,13 +1,14 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=aarty
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple CLI tool to convert the images to ASCII art'
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')
 url="https://github.com/0x61nas/aarty"
 license=('MIT')
 makedepends=('cargo')
 provides=('aarty')
+conflicts=('aarty-git')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate"
     "LICENSE::https://raw.githubusercontent.com/0x61nas/aarty/refs/tags/v$pkgver/LICENSE.txt"
     "$pkgname-$pkgver.tar.gz.asc"
@@ -32,8 +33,8 @@ build() {
 
 package() {
     cd "$pkgname-$pkgver"
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE" ../LICENSE
-    # install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/README.md" README.md
+    install -Dm0755 "target/release/$pkgname" "$pkgdir/usr/bin/aarty"
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" ../LICENSE
+    # install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
 }
 
