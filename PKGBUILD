@@ -2,7 +2,7 @@
 pkgname=hygg-git
 _pkgname=${pkgname%-git}
 pkgver=0.1.19.r6.g0523a2b
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimalistic Vim-like TUI document reader - From the main branch'
 arch=('x86_64')
 url='https://github.com/kruseio/hygg'
@@ -28,9 +28,6 @@ build() {
     cd "$_pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    # fix the naitive linking errors
-    # export RUSTFLAGS="-Clinker-plugin-lto"
-    #RUSTFLAGS="-Clinker-plugin-lto -Clinker=clang -Clink-arg=-fuse-ld=lld"
     cargo build --release --frozen
 }
 
@@ -41,8 +38,7 @@ package() {
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${provides[2]}"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${provides[3]}"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${provides[4]}"
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE" LICENSE
-    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/README.md" README.md
-
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
 }
 
