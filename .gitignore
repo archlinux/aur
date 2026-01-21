@@ -1,0 +1,5 @@
+src/
+pkg/
+termora-appimage-*
+
+.idea
