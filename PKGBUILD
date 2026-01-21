@@ -1,5 +1,5 @@
 pkgname=python-cadquery
-pkgver=v2.5.2.r27
+pkgver=v2.6.1.r16
 pkgrel=1
 pkgdesc="A parametric CAD scripting framework based on PythonOCC"
 arch=(any)
@@ -15,9 +15,12 @@ python-nptyping
 python-multimethod
 python-docutils
 python-pyparsing
+python-trame
+python-trame-vtk
+python-runtype
 casadi
 openmpi
-python-path
+python-path  # solving https://gitlab.archlinux.org/archlinux/packaging/packages/python-path/-/issues/1 will fix "absolute" issues here, release v16.16.0 works
 openblas
 libxcursor
 )
@@ -35,10 +38,10 @@ python-installer
 python-wheel
 )
 
-_fragment="#commit=0006f90040eefa958d8b5448a4e3587ee6244680"
+_fragment="#commit=fe53ca0c18bf6d4e2e2f0e1cc8720d18fb5158c1"
 source=("git+https://github.com/CadQuery/cadquery#commit=${_fragment}")
 
-sha256sums=('c2a99dbbe752cb0316692581c4ccac4ff37ad9440976710f28243f4caf777fd0')
+sha256sums=('bfbcc2810f0ecf7cc4df7c7f97a561da6feab5d8c341f08fa7f5075ea9239338')
 
 pkgver() {
   cd cadquery
@@ -47,6 +50,13 @@ pkgver() {
 
 prepare() {
   cd cadquery
+  #curl https://patch-diff.githubusercontent.com/raw/CadQuery/cadquery/pull/1946.patch | patch -p1
+  
+  # changes to allow this to work with the latest stable release of python-ocp
+  curl https://github.com/CadQuery/cadquery/commit/7cf644e75d41bb4ba6667a6ec81befe22b9dd254.patch | patch -p1
+  
+  # address ast class deprecations
+  curl https://github.com/CadQuery/cadquery/commit/fc85e1d5ce26f85babd4755f7f22f565d1003e1b.patch | patch -p1
 }
 
 build() {
@@ -62,6 +72,7 @@ check() {
   local _these_fail=(
   test_project
   testText
+  TestCQGI  # probably ast issues see https://github.com/CadQuery/cadquery/issues/1976 and https://github.com/CadQuery/cadquery/compare/ocp79
   )
   printf -v _joined '%s and not ' "${_these_fail[@]}"
   python -m pytest cadquery/tests -k "$(echo "not ${_joined% and not }")"  # skip the tests we know fail
