@@ -1,4 +1,4 @@
-# Maintainer: LinuxLover471 <LinuxLover471 at proton dot me>
+# Maintainer: LinuxLover471 <linuxlover471 at proton dot me>
 
 _pkgname=fastcompmgr
 pkgname=${_pkgname}-dev
