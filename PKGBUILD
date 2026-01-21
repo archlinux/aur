@@ -1,6 +1,6 @@
 pkgbase=amp-locker
 pkgname=(${pkgbase}-{data,standalone,lv2,vst3}-bin)
-pkgver=1.3.5
+pkgver=1.4.5
 pkgrel=1
 arch=('x86_64')
 url="https://audioassault.mx/amplocker"
@@ -15,7 +15,7 @@ source=('Amp Locker.desktop'
 sha256sums=('bbeb596d62ed9943294ee5025ba690def02e263b5c9b3b88304ee84607c52f53'
 	'7784d4c4cf7bd953b52c34268cfd92dae1e23028e15c77b8e9e3ebd4970d0e80'
 	'2ccb54d693ba09c2f86750891f2d1ea090f74fe282c3268617d1519b58f79ad5'
-	'612ab1167dea2537136301b962303378b9a24ce871b29c80555d6d333341876e')
+	'80f717c60e10b275a5bf7c9b6951c3816990c4fedac1c9e9d2b8830be7c784ec')
 
 package_amp-locker-data-bin() {
 	## Install Asset Data
