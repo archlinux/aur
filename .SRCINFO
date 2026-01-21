@@ -4,7 +4,7 @@ pkgbase = rofi-wifi
 	pkgrel = 1
 	url = https://github.com/bjn7/rofi-wifi
 	arch = x86_64
-	license = MIT
+	license = GPLv3
 	makedepends = git
 	makedepends = rust
 	makedepends = cargo
@@ -13,6 +13,6 @@ pkgbase = rofi-wifi
 	depends = rofi
 	depends = glib2
 	source = rofi-wifi-1.0.0.tar.gz::https://github.com/bjn7/rofi-wifi/archive/v1.0.0.tar.gz
-	sha256sums = 7071fa68b461bee8463b2ae6ae400d0f132c5aaea675c4c6c6e52c55ddeab0c1
+	sha256sums = b1986af0d0a7e801f75a69b4038e5271b1165bcb4e2d89325b09e7b41bfbcf5a
 
 pkgname = rofi-wifi
