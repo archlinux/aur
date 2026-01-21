@@ -4,7 +4,7 @@ pkgbase=python-sphinx-asdf
 _pname=${pkgbase#python-}
 _pyname=${_pname//-/_}
 pkgname=("python-${_pname}")
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Sphinx plugin for generating documentation from ASDF schemas"
 arch=('any')
@@ -19,7 +19,7 @@ checkdepends=('python-pytest'
               'python-asdf'
               'python-mistune>=3')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('087f445c4e7cced5075b11e1e2cbde022fe796702930a5711cdbb26f22d3eb37')
+sha256sums=('7f3472b9e70a8a5d41e8b1de39447967fbceae728f7fc897f7379c3dcfa39ecf')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -37,16 +37,20 @@ check() {
 #   ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
 #       build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver .).egg-info
 #   PYTHONPATH="build/lib" pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 # || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
-    PYTHONPATH="${PWD}" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
+#   PYTHONPATH="${PWD}" pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 # || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
+    PYTHONPATH="." pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
 }
 
 package() {
     depends=('python-asdf'
-             'python-astropy>=5.0.4'
+#            'python-astropy>=5.0.4'
              'python-mistune>=3'
              'python-packaging'
-             'python-sphinx-astropy'
-             'python-sphinx_rtd_theme'
+             'python-numpydoc'
+#            'python-sphinx-astropy'
+             'python-sphinx-automodapi'
+#            'python-sphinx_rtd_theme'
+             'python-sphinxcontrib-jquery'
              'python-toml')
     cd ${srcdir}/${_pyname}-${pkgver}
 
