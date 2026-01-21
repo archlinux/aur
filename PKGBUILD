@@ -1,11 +1,11 @@
 # Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
-pkgver=7.1.40
+pkgver=7.1.50
 pkgrel=1
 _mpris_ver=2.1.5
 # Commit hash for aunetx/deezer-linux for patches
-_patch_commit=c2335d6b97557d218fdbc3f883d3467ad40faf1e
+_patch_commit=d28343fd4c7b9ed8464b3c05e46b07bfd8a51f19
 pkgdesc="A proprietary music streaming service"
 arch=('any')
 url="https://www.deezer.com/"
@@ -31,10 +31,12 @@ source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/art
     "09-disable-animations.patch::https://raw.githubusercontent.com/aunetx/deezer-linux/${_patch_commit}/patches/09-disable-animations.patch"
     "10-disable-notifications.patch::https://raw.githubusercontent.com/aunetx/deezer-linux/${_patch_commit}/patches/10-disable-notifications.patch"
     "11-fix-thumbar-actions.patch::https://raw.githubusercontent.com/aunetx/deezer-linux/${_patch_commit}/patches/11-fix-thumbar-actions.patch"
+    "12-adjust-volume-on-wheel.patch::https://raw.githubusercontent.com/aunetx/deezer-linux/${_patch_commit}/patches/12-adjust-volume-on-wheel.patch"
+    "13-disable-hardware-acceleration.patch::https://raw.githubusercontent.com/aunetx/deezer-linux/${_patch_commit}/patches/13-disable-hardware-acceleration.patch"
     # Local patches
     "99-systray-icon.patch"
 )
-sha256sums=('9ca46d235791199be859de6443530743cb68eab1ff69a62f509fb8bef3772fc6'
+sha256sums=('85843367f2f5878820193952d7efce197f37303a29aaace11bddbfcd33839ac6'
             '41a32f7e595a52c260aa872e8273430d83e4c5fcc8e529e21afa4dab3d6b1d9c'
             '3da0c64c3d9216286601e0a28714e37a4bfaf9f56f35856da75986dfa2eba8fb'
             '951c80c9dc4848b31a5fcc9655b005f3a218b1ff735396168c13922ac658c83b'
@@ -51,6 +53,8 @@ sha256sums=('9ca46d235791199be859de6443530743cb68eab1ff69a62f509fb8bef3772fc6'
             '70daf38a2c14b13e7e1f374ff4ab9220f4e356148eeaf5d9b08b104aaaed0e91'
             'ab25994396bc15cd375ee243c3adffee62202381f45808ceee8a67c149f82fb1'
             '6681e628769fe2267a976d25f07036fe8e6dbc4f59b301d9d7533848fc53dc7b'
+            '3ffd80a16d5c30875a12093faec92881f2c004b0bf49e9ba79f70b0f199c7bbd'
+            'b061e0eae99322c15e55839c45d86783e64c9851f1ec4608810ade4280503ee5'
             '2362c52147cf67759388ba6685e2add32c5bcfcdbdbca8e0990f58cafa0392de')
 
 prepare() {
