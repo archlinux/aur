@@ -2,7 +2,7 @@
 # https://github.com/Gvolexe/GvolTools
 
 pkgname=gvoltools
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc="A collection of SSH management and system administration tools"
 arch=('any')
@@ -77,9 +77,8 @@ package() {
     ln -sf gvsecretsync secrets
     ln -sf gvsecretsync gvs
     
-    # gvcertctl aliases: cert, cc, gvcert
+    # gvcertctl aliases: cert, gvcert (cc conflicts with gcc)
     ln -sf gvcertctl cert
-    ln -sf gvcertctl cc
     ln -sf gvcertctl gvcert
     
     # gvfirewallctl aliases: fw, gvfw
