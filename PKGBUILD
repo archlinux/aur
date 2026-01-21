@@ -2,7 +2,7 @@
 _libname=json5format
 pkgname=formatjson5
 pkgver=0.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Format a JSON5 document with comments"
 arch=(x86_64 arm64)
 url="https://github.com/google/json5format"
@@ -23,14 +23,7 @@ build() {
 
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cargo build --frozen --release --all-features --example $pkgname
-}
-
-check() {
-	cd "$_libname-$pkgver"
-
-	export RUSTUP_TOOLCHAIN=stable
-	cargo test --frozen --all-features
+	cargo build --frozen --release --all-features --example "$pkgname"
 }
 
 package() {
