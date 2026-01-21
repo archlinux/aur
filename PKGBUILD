@@ -21,16 +21,9 @@ optdepends=(
   'xdg-desktop-portal: portal screenshot backend'
 )
 makedepends=(
-  'git'
   'xmake'
+  'gcc'
   'pkgconf'
-  'cmake'
-  'ninja'
-  'python'
-  'openssl'
-  'libffi'
-  'zlib'
-  'ca-certificates'
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
