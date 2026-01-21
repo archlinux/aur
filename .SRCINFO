@@ -1,4 +1,4 @@
-pkgbase = python-librelane-git
+pkgbase = python-librelane
 	pkgdesc = An infrastructure for implementing chip design flows (successor to OpenLane) - DEVELOPMENT VERSION (git dev branch).
 	pkgver = 3.0.0.dev47.r4.g96c9d02
 	pkgrel = 3
@@ -27,9 +27,9 @@ pkgbase = python-librelane-git
 	depends = klayout
 	depends = yosys
 	depends = abc
-	provides = python-librelane
-	conflicts = python-librelane
+	provides = python-librelane-git
+	conflicts = python-librelane-git
 	source = librelane::git+https://github.com/librelane/librelane.git#branch=dev
 	sha256sums = SKIP
 
-pkgname = python-librelane-git
+pkgname = python-librelane
