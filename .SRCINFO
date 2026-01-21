@@ -1,15 +1,11 @@
 pkgbase = dcli-arch-git
 	pkgdesc = A declarative package management CLI tool for Arch Linux, inspired by NixOS
-	pkgver = 0.1.0.r105.06057ec
-	pkgrel = 10
+	pkgver = 0.2.0.r140.5257e7d2
+	pkgrel = 1
 	url = https://gitlab.com/theblackdon/dcli
 	arch = x86_64
 	arch = aarch64
 	license = 0BSD
-	makedepends = cargo
-	makedepends = git
-	makedepends = clang
-	makedepends = binutils
 	depends = gcc-libs
 	depends = glibc
 	optdepends = fzf: for interactive TUI features
@@ -20,7 +16,13 @@ pkgbase = dcli-arch-git
 	provides = dcli
 	conflicts = dcli
 	conflicts = dcli-bin
-	source = dcli-arch::git+https://gitlab.com/theblackdon/dcli.git
-	sha256sums = SKIP
+	noextract = dcli-linux-x86_64
+	noextract = dcli-linux-aarch64
+	source = LICENSE::https://gitlab.com/theblackdon/dcli/-/raw/main/LICENSE
+	sha256sums = 0be6431936212ee8097709d38f0aef725c57c8f6f12563e8950aa8630cea74c9
+	source_x86_64 = dcli-linux-x86_64::https://gitlab.com/theblackdon/dcli/-/jobs/artifacts/main/raw/dcli-linux-x86_64?job=build-linux-x86_64
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = dcli-linux-aarch64::https://gitlab.com/theblackdon/dcli/-/jobs/artifacts/main/raw/dcli-linux-aarch64?job=build-linux-aarch64
+	sha256sums_aarch64 = SKIP
 
 pkgname = dcli-arch-git

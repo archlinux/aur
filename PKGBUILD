@@ -1,13 +1,13 @@
 # Maintainer: Don <theblackdonatello@gmail.com>
 
 pkgname=dcli-arch-git
-pkgver=0.1.0.r105.06057ec
-pkgrel=10
+_pkgver_base=0.2.0
+pkgver=0.2.0.r140.5257e7d2
+pkgrel=1
 pkgdesc="A declarative package management CLI tool for Arch Linux, inspired by NixOS"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/theblackdon/dcli"
 license=('0BSD')
-makedepends=('cargo' 'git' 'clang' 'binutils')
 depends=('gcc-libs' 'glibc')
 optdepends=(
     'fzf: for interactive TUI features'
@@ -18,37 +18,60 @@ optdepends=(
 )
 provides=('dcli')
 conflicts=('dcli' 'dcli-bin')
-source=("${pkgname%-git}::git+https://gitlab.com/theblackdon/dcli.git")
-sha256sums=('SKIP')
+
+_gitlab_project="theblackdon%2Fdcli"  # URL-encoded project path for GitLab API
+source=(
+    "LICENSE::https://gitlab.com/theblackdon/dcli/-/raw/main/LICENSE"
+)
+source_x86_64=(
+    "dcli-linux-x86_64::https://gitlab.com/theblackdon/dcli/-/jobs/artifacts/main/raw/dcli-linux-x86_64?job=build-linux-x86_64"
+)
+source_aarch64=(
+    "dcli-linux-aarch64::https://gitlab.com/theblackdon/dcli/-/jobs/artifacts/main/raw/dcli-linux-aarch64?job=build-linux-aarch64"
+)
+noextract=('dcli-linux-x86_64' 'dcli-linux-aarch64')
+sha256sums=('0be6431936212ee8097709d38f0aef725c57c8f6f12563e8950aa8630cea74c9')
+sha256sums_x86_64=('SKIP')
+sha256sums_aarch64=('SKIP')
 
 pkgver() {
-    cd "$srcdir/${pkgname%-git}"
-    ( set -o pipefail
-      git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-      printf "0.1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
-}
+    local api="https://gitlab.com/api/v4/projects/${_gitlab_project}/repository/commits"
+    local per_page=100
+    local page=1
+    local commit_count=0
+    local short_sha=
 
-build() {
-    cd "$srcdir/${pkgname%-git}"
-    export RUSTUP_TOOLCHAIN=stable
-    # Use GNU ld instead of rust-lld to fix linking with vendored Lua
-    export RUSTFLAGS="-C link-arg=-fuse-ld=bfd"
-    cargo build --release --locked
-}
+    while :; do
+        local json batch_count
+        json=$(curl -fs "${api}?ref_name=main&per_page=${per_page}&page=${page}") || break
+        [[ -z $json || $json == "[]" ]] && break
 
-check() {
-    cd "$srcdir/${pkgname%-git}"
-    export RUSTFLAGS="-C link-arg=-fuse-ld=bfd"
-    cargo test --release --locked
+        batch_count=$(printf '%s' "$json" | grep -o '"id"' | wc -l)
+        ((commit_count += batch_count))
+
+        if [[ -z $short_sha ]]; then
+            short_sha=$(printf '%s' "$json" | sed -n 's/.*"short_id":"\([0-9a-f]\{7,9\}\)".*/\1/p' | head -n1)
+        fi
+
+        [[ $batch_count -lt $per_page ]] && break
+        ((page++))
+    done
+
+    printf "%s.r%s.%s" "${_pkgver_base}" "${commit_count:-0}" "${short_sha:-unknown}"
 }
 
 package() {
-    cd "$srcdir/${pkgname%-git}"
+    local bin_path
 
-    # Install binary
-    install -Dm755 "target/release/dcli" "$pkgdir/usr/bin/dcli"
+    case "$CARCH" in
+        x86_64) bin_path="$srcdir/dcli-linux-x86_64" ;;
+        aarch64) bin_path="$srcdir/dcli-linux-aarch64" ;;
+        *)
+            echo "Unsupported architecture: $CARCH" >&2
+            return 1
+            ;;
+    esac
 
-    # Install license
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm755 "$bin_path" "$pkgdir/usr/bin/dcli"
+    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
