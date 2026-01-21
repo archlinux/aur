@@ -2,7 +2,7 @@
 # Contributor: eduardosm
 
 pkgname=subtitleedit-avalonia
-pkgver=5.0.0.preview93
+pkgver=5.0.0.preview94
 pkgrel=1
 pkgdesc='An advanced subtitle editor and converter (early preview build with Avalonia UI)'
 arch=('any')
@@ -17,7 +17,7 @@ source=("SubtitleEdit-Linux-x64-${pkgver//.p/-p}.tar.gz::https://github.com/niks
         'subtitleedit'
         'subtitleedit.desktop'
         'subtitleedit.png')
-b2sums=('650d807f03ab2e353896c0e80ab76a491c01723c4a46bff3567431603815e6dd9e2ccfa073f4aa1374ac9f244311cfcce9a7ad7028cc16483c85e2579a52a021'
+b2sums=('ce714e133ec456310e9ee637a98ea28aca92df7a15b53e6b78905093bdfb65197072e2645551b84abc3bd80ce997f576d0e8eeeff9ecf92ca7c27e11db01711c'
         '0e2d96c9611ba8428db13eefb624bbfc4f9e055ce9d56eeac37e275597b073f1222d06760634aef979e3667f1f70e5b0c9400316682ebec8842b02cd3a7df639'
         'bbeafd804a2d0ad6de03886771ecafbf3ebaa6ad86f449f2609c413114f898370102d1303135db0e21d04ca2612d40055c8f4de2458fc4a907f709e84940133b'
         'a3a50848054537f84137a05c721491dd6f7b19a4f115758e127c124d14b3a1d8623f5eee7424fbc9f94ca5a948dd1e2728e01e3dd1ab8d413e0f71dfa46b8f6c')
