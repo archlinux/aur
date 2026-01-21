@@ -2,7 +2,7 @@
 # Maintainer: wheaney <wayne at xronlinux dot com>
 _pkgbase=XRLinuxDriver
 pkgname="xr-driver-git"
-pkgver=2.4.2
+pkgver=2.6.8
 pkgrel=1
 pkgdesc="XR Linux Driver"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('GPL-3.0')
 install=hooks.install
 makedepends=('cmake' 'make')
 depends=('openssl' 'libevdev' 'libusb' 'json-c' 'curl' 'hidapi' 'wayland' 'systemd-libs' 'python-yaml')
-source=("git+${url}#commit=3b05cab0c58bc306fdc7f7019a1764bfcde545d1")
+source=("git+${url}#commit=4267946ef0d0d24a7563455c70b8cee6bcd1f2da")
 md5sums=(SKIP)
 
 prepare() {
@@ -47,8 +47,14 @@ package() {
     install -Dm644 ${_pkgbase}/systemd/xr-driver.service "${pkgdir}"/usr/lib/systemd/user/xr-driver.service
     install -Dm755 ${_pkgbase}/bin/xr_driver_cli "${pkgdir}"/usr/bin/xr_driver_cli
 
+    # Install architecture-specific libraries
     if compgen -G "${_pkgbase}/lib/${CARCH}/*.so" > /dev/null; then
-        install -Dm755 ${_pkgbase}/lib/${CARCH}/*.so -t "${pkgdir}"/usr/lib/
+        install -Dm755 ${_pkgbase}/lib/${CARCH}/*.so -t "${pkgdir}"/usr/lib/xr-driver/
+    fi
+    
+    # Install viture-specific libraries
+    if compgen -G "${_pkgbase}/lib/${CARCH}/viture/*.so" > /dev/null; then
+        install -Dm755 ${_pkgbase}/lib/${CARCH}/viture/*.so -t "${pkgdir}"/usr/lib/xr-driver/
     fi
 
     # udev rules
@@ -61,4 +67,8 @@ package() {
     # make sure uinput module is loaded
     install -Dm644 /dev/null "$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
     echo "uinput" > "$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
+
+    # Add library directory to ld.so.conf.d
+    install -Dm644 /dev/null "$pkgdir/etc/ld.so.conf.d/$pkgname.conf"
+    echo "/usr/lib/xr-driver" > "$pkgdir/etc/ld.so.conf.d/$pkgname.conf"
 }
