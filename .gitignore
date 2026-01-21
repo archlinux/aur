@@ -1,0 +1,4 @@
+src/
+pkg/
+ocp-tessellate/
+*.log
