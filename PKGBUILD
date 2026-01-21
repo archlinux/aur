@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
 
 pkgname=gnome-shell-extension-nasa-apod
-pkgver=44
+pkgver=47
 pkgrel=1
 pkgdesc="Change your wallpaper daily to the NASA astronomy picture of the day"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL-3.0-only')
 depends=('gnome-shell')
 makedepends=('glib2' 'intltool')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/${pkgver}.tar.gz")
-sha512sums=('a7915ef5f182ad3b2bf975a1d4c452c31c7491fd4e4e4b802e9e15df7efd47392d6aaa7c9301bced7561fe4bf14b78b35d47f711ff9cd2a0688a0773e57bbb80')
+sha512sums=('190e1d6e48aa026eb5c1870138003503dbe76008d28765be6352a6013115db6bf3715fc79ba4bd5273c178a0cd08e529500f66b2df8d33a404c49aef0f6b4d6e')
 
 build() {
     cd "$pkgname-$pkgver"
