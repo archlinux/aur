@@ -1,0 +1,27 @@
+pkgbase = apple-sf-fonts
+	pkgdesc = Apple San Francisco, SF Compact, SF Mono, NY, and regional fonts
+	pkgver = 2026.01.20
+	pkgrel = 1
+	url = https://developer.apple.com/fonts/
+	arch = any
+	license = custom
+	depends = p7zip
+	depends = cpio
+	source = SF-Pro.dmg::https://devimages-cdn.apple.com/design/resources/download/SF-Pro.dmg
+	source = SF-Compact.dmg::https://devimages-cdn.apple.com/design/resources/download/SF-Compact.dmg
+	source = SF-Mono.dmg::https://devimages-cdn.apple.com/design/resources/download/SF-Mono.dmg
+	source = NY.dmg::https://devimages-cdn.apple.com/design/resources/download/NY.dmg
+	source = SF-Arabic.dmg::https://devimages-cdn.apple.com/design/resources/download/SF-Arabic.dmg
+	source = SF-Armenian.dmg::https://devimages-cdn.apple.com/design/resources/download/SF-Armenian.dmg
+	source = SF-Georgian.dmg::https://devimages-cdn.apple.com/design/resources/download/SF-Georgian.dmg
+	source = SF-Hebrew.dmg::https://devimages-cdn.apple.com/design/resources/download/SF-Hebrew.dmg
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = apple-sf-fonts
