@@ -10,7 +10,7 @@ url="https://launchpad.net/rumor"
 license=('GPL')
 depends=('alsa-lib')
 optdepends=('alsa-oss:  for OSS compatibility')
-source=(http://launchpad.net/$pkgname/trunk/$pkgver/+download/$pkgname-$pkgver.tar.bz2 gcc7.diff)
+source=(https://launchpad.net/$pkgname/trunk/$pkgver/+download/$pkgname-$pkgver.tar.bz2 gcc7.diff)
 md5sums=('b4b531829e6901c958dad805cf1ab8ae'
          'd941d71954b7ae2cf01197a2ade5bff2')
 options=("!makeflags")
