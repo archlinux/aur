@@ -2,7 +2,7 @@
 # https://github.com/Gvolexe/GvolTools
 
 pkgname=gvoltools
-pkgver=1.2.87
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A collection of SSH management and system administration tools"
 arch=('any')
@@ -130,6 +130,49 @@ package() {
     ln -sf gvpermcheck pc
     ln -sf gvpermcheck perm
     ln -sf gvpermcheck gvpc
+    
+    # NEW TOOLS (2.0.0)
+    
+    # gvhealth aliases: health, hl
+    ln -sf gvhealth health
+    ln -sf gvhealth hl
+    
+    # gvmetrics aliases: metrics, mx
+    ln -sf gvmetrics metrics
+    ln -sf gvmetrics mx
+    
+    # gvtcptest aliases: tcp (tc conflicts with traffic control)
+    ln -sf gvtcptest tcp
+    
+    # gvjournal aliases: jrnl (j is too short/conflicts)
+    ln -sf gvjournal jrnl
+    
+    # gvdeploy aliases: dep (run conflicts with coreutils)
+    ln -sf gvdeploy dep
+    
+    # gvsync aliases: sx (sync conflicts with coreutils)
+    ln -sf gvsync sx
+    
+    # gvsystemdctl aliases: svc (sd conflicts with systemd)
+    ln -sf gvsystemdctl svc
+    
+    # gvrebootctl aliases: rb (reboot conflicts with systemd)
+    ln -sf gvrebootctl rb
+    
+    # gvpolicy aliases: pol (pl too short)
+    ln -sf gvpolicy pol
+    
+    # gvdnsprovider aliases: dnsprov, dp
+    ln -sf gvdnsprovider dnsprov
+    ln -sf gvdnsprovider dp
+    
+    # gvconfigrender aliases: render, rr
+    ln -sf gvconfigrender render
+    ln -sf gvconfigrender rr
+    
+    # gvnginxctl aliases: ngx, nx
+    ln -sf gvnginxctl ngx
+    ln -sf gvnginxctl nx
     
     # Install license
     cd "${srcdir}/GvolTools-${pkgver}"
