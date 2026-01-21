@@ -1,0 +1,49 @@
+{
+  "cniVersion": "1.0.0",
+  "name": "man8yggbr",
+  "plugins": [
+    {
+      "type": "bridge",
+      "bridge": "man8br0",
+      "isGateway": true,
+      "ipMasq": true,
+      "ipMasqBackend": "nftables",
+      "ipam": {
+        "type": "host-local",
+        "routes": [
+          {
+            "dst": "0.0.0.0/0"
+          },
+          {
+            "dst": "2000::/3"
+          }
+        ],
+        "ranges": [
+          [
+            {
+              "subnet": "10.10.2.0/24"
+            }
+          ],
+          [
+            {
+              "subnet": "3ffe:ffff:0:01ff::/64",
+              "rangeStart": "3ffe:ffff:0:01ff::0010",
+              "rangeEnd": "3ffe:ffff:0:01ff::0275"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "type": "portmap",
+      "capabilities": {
+        "portMappings": true
+      },
+      "backend": "nftables",
+      "conditionsV6": ["ip6", "daddr", "!=", "200::/7"]
+    },
+    {
+       "type": "yggoverlay"
+    }
+  ]
+}

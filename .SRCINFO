@@ -1,0 +1,20 @@
+pkgbase = yggoverlay
+	pkgdesc = CNI plugin for containerd to manage yggdrasil overlay network for VPN connection between containers
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Neboer/yggoverlay-cni-plugin
+	arch = any
+	license = MIT
+	makedepends = go
+	depends = glibc
+	provides = yggoverlay
+	backup = etc/cni/net.d/30-man8br0-ygg.conflist
+	backup = etc/cni/net.d/40-man8br1.conflist
+	source = https://github.com/Neboer/yggoverlay-cni-plugin/archive/v0.1/yggoverlay-cni-plugin-v0.1.tar.gz
+	source = 30-man8br0-ygg.conflist
+	source = 40-man8br1.conflist
+	sha256sums = 02674e225f9e6d36112711c66091766fccdf1dd167a926814f5fe8ec965b3857
+	sha256sums = ac9dd814ef5e6753fd11efbe0e3ad5569f8778a7605e2c09806d66d0f8aa51eb
+	sha256sums = c89d902c56b7bf2b4b44b843781e1205811783ee8842e765b1ca708e0a7ddc38
+
+pkgname = yggoverlay
