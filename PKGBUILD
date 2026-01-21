@@ -93,7 +93,7 @@ OPTS=(
   "--no-sandbox"
 )
 
-# Auto-detect Wayland: enable ozone hint and IME support
+# Auto-detect Wayland: enable IME support
 if [[ "\$XDG_SESSION_TYPE" == "wayland" ]]; then
     OPTS+=("--enable-wayland-ime")
 fi
