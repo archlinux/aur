@@ -1,7 +1,7 @@
 pkgbase = cosmic-osd-git
 	pkgdesc = COSMIC On-Screen Display
-	pkgver = 1.0.0.beta.8.r12.g47f715a
-	pkgrel = 2
+	pkgver = 1.0.3.r0.gadb6227
+	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-osd
 	arch = x86_64
 	arch = aarch64
@@ -22,6 +22,8 @@ pkgbase = cosmic-osd-git
 	provides = cosmic-osd
 	conflicts = cosmic-osd
 	source = git+https://github.com/pop-os/cosmic-osd.git
+	source = suid-polkit-agent-helper.rs
 	sha256sums = SKIP
+	sha256sums = 21af701c7ca77ebb79d7d5c89632c88e276827d658b2ed3b37b9ea7b5a084c72
 
 pkgname = cosmic-osd-git

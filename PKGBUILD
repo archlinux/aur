@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-osd-git
-pkgver=1.0.0.beta.8.r12.g47f715a
-pkgrel=2
+pkgver=1.0.3.r0.gadb6227
+pkgrel=1
 pkgdesc="COSMIC On-Screen Display"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-osd"
@@ -25,8 +25,10 @@ makedepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/pop-os/cosmic-osd.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/pop-os/cosmic-osd.git'
+        'suid-polkit-agent-helper.rs')
+sha256sums=('SKIP'
+            '21af701c7ca77ebb79d7d5c89632c88e276827d658b2ed3b37b9ea7b5a084c72')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -42,12 +44,13 @@ prepare() {
 build() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
+  rustc $RUSTFLAGS -O --edition 2024 suid-polkit-agent-helper.rs
 
   # use mold instead of lld to speed up build
   RUSTFLAGS+=" -C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
-  nice just polkit-agent-helper-1="/usr/lib/polkit-1/polkit-agent-helper-1" build-release --frozen
+  nice just polkit-agent-helper-1="/usr/lib/${pkgname%-git}/suid-polkit-agent-helper" build-release --frozen
 }
 
 package() {
