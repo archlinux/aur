@@ -1,6 +1,6 @@
 pkgbase = halo-git
 	pkgdesc = A radial 'run or raise' menu and utility for Hyprland
-	pkgver = r4.9a02f71
+	pkgver = r4.012cb1c
 	pkgrel = 1
 	url = https://github.com/snewman-aa/halo
 	arch = x86_64
