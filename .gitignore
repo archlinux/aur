@@ -1,7 +1,5 @@
-_gt
+*.tar.xz
 
-gittorrent/
 *.pkg.tar.zst
 pkg/
-rpl.sed
 src/

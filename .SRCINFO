@@ -6,12 +6,9 @@ pkgbase = gittorrent
 	install = advice.install
 	arch = x86_64
 	license = 0BSD
-	makedepends = git
 	makedepends = cargo
 	optdepends = bash-completion: for command line completions when pressing the <tab> key
-	source = git+https://git.projectgrid.net/gittorrent.git
-	source = LICENSE
-	sha256sums = SKIP
-	sha256sums = 7056c04df17a4e0f0bac9f787f347c9cd892cee6323d1c89528090afd0b934a3
+	source = gittorrent-3.1.7.tar.xz::https://projectgrid.net/archive/gittorrent-3.1.7.tar.xz
+	sha256sums = 90c18b34ff687edf86db7805d41694251ddab8fbfa70a845c54710664828bae3
 
 pkgname = gittorrent
