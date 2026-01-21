@@ -3,7 +3,7 @@
 
 _pkgname=pikaur
 pkgname="${_pkgname}-git"
-pkgver=1.33.1
+pkgver=1.33.2
 pkgrel=1
 pkgdesc="AUR helper which asks all questions before installing/building. Inspired by pacaur, yaourt and yay."
 arch=('any')
@@ -62,5 +62,6 @@ package() {
 	done
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 pikaur.1 "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
-	cp -r ./packaging/usr/{lib,share} "${pkgdir}"/usr/
+	cp -r ./packaging/* "${pkgdir}"
+	cp -r ./dist/* "${pkgdir}"
 }
