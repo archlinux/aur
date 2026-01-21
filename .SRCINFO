@@ -1,21 +1,22 @@
 pkgbase = miniflux-git
-	pkgdesc = Minimalist web RSS reader (Git version)
-	pkgver = r1088.6e8d175
+	pkgdesc = Minimalist and opinionated feed reader (Git version)
+	pkgver = 2.2.16.r28.g2fa8995
 	pkgrel = 1
-	url = https://miniflux.net/
-	install = miniflux.install
-	arch = any
-	license = AGPL3
+	url = https://miniflux.app
+	arch = x86_64
+	license = Apache-2.0
 	makedepends = git
-	depends = php
-	depends = php-sqlite
-	optdepends = postgresql: for non-sqlite db
-	optdepends = php-pgsql: for non-sqlite db
+	makedepends = go
+	depends = glibc
+	optdepends = postgresql: for local PostgreSQL instance
 	provides = miniflux
 	conflicts = miniflux
-	options = !strip
-	source = git+https://github.com/miniflux/miniflux.git
-	sha256sums = SKIP
+	backup = etc/miniflux.conf
+	source = miniflux::git+https://github.com/miniflux/v2.git
+	source = sysusers.conf
+	sha512sums = SKIP
+	sha512sums = 4a51cccf15f37da66c56e4721171ab858b894f4f74f3210fb275b437fc7fa99cce21a8a98703462e07163ce3f9ea35d8e2a9f8b5ad147cb819092a037c42c17e
+	b2sums = SKIP
+	b2sums = 6c1bbc5bebb319d921c9f511a156c4e578811319423e99cead87f2044e6269abf38654733376b83f8dbb7432c816f795918935bae741529d7395f249027b2932
 
 pkgname = miniflux-git
-
