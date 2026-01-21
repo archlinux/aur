@@ -1,13 +1,15 @@
 pkgbase = cryptofetch
 	pkgdesc = A neofetch-style terminal application for displaying cryptocurrency prices and stats
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/julianYaman/cryptofetch
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	provides = cryptofetch
 	conflicts = cryptofetch
+	source = cryptofetch-1.0.1-LICENSE::https://github.com/julianYaman/cryptofetch/raw/v1.0.1/LICENSE
+	sha256sums = f2e0e168562c0bac57ebe78219e094d369714eda0aeb0949bc123d981072ea04
 	source_x86_64 = cryptofetch-1.0.1-x86_64::https://github.com/julianYaman/cryptofetch/releases/download/v1.0.1/cryptofetch-linux-amd64
 	sha256sums_x86_64 = 98d2976f158a2736afd67c4ecc265f278e0afc3110e74207a9c653fd48e7cee0
 	source_aarch64 = cryptofetch-1.0.1-aarch64::https://github.com/julianYaman/cryptofetch/releases/download/v1.0.1/cryptofetch-linux-arm64
