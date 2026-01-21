@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=apiflow-bin
 _pkgname=Apiflow
-pkgver=0.9.5
+pkgver=0.9.7
 _electronversion=32
 pkgrel=1
 pkgdesc="A modern API workspace that works both online and offline — combining API documentation, testing, mock, and AI-powered automation in one lightweight tool.(Prebuilt version.Use system-wide electron)"
@@ -16,7 +16,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    '7zip'
 )
 source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/trueleaf/apiflow/v${pkgver}/LICENSE"
@@ -26,8 +25,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.AppImage")
 sha256sums=('1c8f6daf492f059c2837ab0c8b505b81e9d9220013c094a2e9fac893399d08f5'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('d6737563fc4b734be1a1702d8d8ef2dd3d59aaca14fede2b768154ccc020e736')
-sha256sums_x86_64=('10de091be06396aaf4a200aa7454a4e85ec9db6014e8431f9946e0c67089dfe0')
+sha256sums_aarch64=('90e07a4e5132f4133428075039551d831c66af6068653657d6b3fa59cbd9eb27')
+sha256sums_x86_64=('7ae60ec975eb3efdab66981024a05521cfbfc4479e70adafb5ce578748edb71c')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
@@ -50,23 +49,6 @@ prepare() {
     _get_electron_version
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -perm 700 -exec chmod 755 {} +
-    rm -rf \
-        "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/7zip-bin/"{mac,linux/{arm,ia32}} \
-        "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/app-builder-bin/"{mac,linux/{arm,ia32,loong64,riscv64}}}
-    case "${CARCH}" in
-        aarch64)
-            rm -rf \
-                "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/7zip-bin/linux/x64" \
-                "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/app-builder-bin/linux/"{arm,ia32,loong64,riscv64,x64}
-            ln -sf "/usr/bin/7za" "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/7zip-bin/linux/arm64/7za"
-            ;;
-        x86_64)
-            rm -rf \
-                "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/7zip-bin/linux/arm64" \
-                "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/app-builder-bin/linux/"{arm,arm64,ia32,loong64,riscv64}
-            ln -sf "/usr/bin/7za" "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/7zip-bin/linux/x64/7za"
-            ;;
-    esac
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
