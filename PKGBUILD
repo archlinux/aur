@@ -1,5 +1,6 @@
 # Contributor: Dominik Schwaiger <mail@dominik-schwaiger.ch>
-# Maintainer: tee < teeaur at duck dot com >
+# Contributor: tee < teeaur at duck dot com >
+# Maintainer: tblFlip <root@tblflip.de>
 _pkgname=surrealdb
 pkgname="${_pkgname}-bin"
 pkgver=2.4.1
