@@ -285,10 +285,16 @@ package() {
     chmod +x "$pkgdir/opt/superhuman/chrome_crashpad_handler"
     chmod 4755 "$pkgdir/opt/superhuman/chrome-sandbox" 2>/dev/null || true
 
-    # Install icon
+    # Install icon (check both locations: assets/ for GitHub, root for AUR)
+    local icon_src=""
     if [ -f "$startdir/assets/superhuman.png" ]; then
-        install -Dm644 "$startdir/assets/superhuman.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/superhuman.png"
-        cp "$startdir/assets/superhuman.png" "$pkgdir/opt/superhuman/"
+        icon_src="$startdir/assets/superhuman.png"
+    elif [ -f "$startdir/superhuman.png" ]; then
+        icon_src="$startdir/superhuman.png"
+    fi
+    if [ -n "$icon_src" ]; then
+        install -Dm644 "$icon_src" "$pkgdir/usr/share/icons/hicolor/256x256/apps/superhuman.png"
+        cp "$icon_src" "$pkgdir/opt/superhuman/"
     fi
 
     # Create bin symlinks
