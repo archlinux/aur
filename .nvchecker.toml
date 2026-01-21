@@ -1,0 +1,4 @@
+[python-faster-whisper]
+source = "git"
+git = "https://github.com/SYSTRAN/faster-whisper.git"
+prefix = "v"

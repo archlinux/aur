@@ -1,9 +1,10 @@
-# Maintainer: hrdl <aur@hrdl.eu>
+# Maintainer: Aseem Athale <athaleaseem@gmail.com>
+# Contributor: hrdl <aur@hrdl.eu>
 
 pkgname=python-faster-whisper
 _pkgname=faster-whisper
 pkgdesc="Faster Whisper transcription with CTranslate2"
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 arch=(any)
 url="https://github.com/SYSTRAN/faster-whisper"
@@ -11,7 +12,7 @@ license=('MIT')
 depends=(python python-ctranslate2 python-huggingface-hub python-tokenizers python-onnxruntime python-av python-tqdm)
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("https://github.com/SYSTRAN/faster-whisper/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('e1b2c867607b2f2b9266ccd50b6943b0f460e27add7601d7cd6ef84d91e059ead7276391fe7632f5bb2af59557ec380d7007b8260ff0ffc508c79d47d67a7325')
+b2sums=('771e25eb86e8c64c319245d07070ed0ccc8378a44a93ffb064712985322a5fd187cbba89d4bc03dcf4beb04fe691da07590c7f0620da14c894e0dccdcff4fdb9')
 
 build() {
   cd $_pkgname-$pkgver
