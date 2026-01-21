@@ -1,6 +1,6 @@
 pkgbase = stacer
 	pkgdesc = Linux System Optimizer and Monitoring
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://stacer.quentium.fr/
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = stacer
 	depends = qt6-charts
 	depends = qt6-svg
 	depends = hicolor-icon-theme
-	source = stacer-1.6.0.tar.gz::https://github.com/QuentiumYT/Stacer/archive/v1.6.0.tar.gz
-	sha256sums = 5aea4fe7b27a1f5d2531f9fdfc001c452b76fd80f586d7b0fd95f7b197dd0547
+	source = stacer-1.6.1.tar.gz::https://github.com/QuentiumYT/Stacer/archive/v1.6.1.tar.gz
+	sha256sums = b534d343d5d47ac0195575fc6b1e1a266e5698419a3be4aa1d9ec685ef43b9b2
 
 pkgname = stacer
