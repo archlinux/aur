@@ -1,6 +1,6 @@
 pkgbase = ahoviewer-git
-	pkgdesc = A GTK2 image viewer, manga reader, and booru browser.
-	pkgver = 1.6.5.237.g42e16f9
+	pkgdesc = A GTK3 image viewer, manga reader, and booru browser.
+	pkgver = 1.6.5.276.g821576a
 	pkgrel = 1
 	url = http://github.com/ahodesuka/ahoviewer
 	arch = i686

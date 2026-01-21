@@ -1,10 +1,10 @@
-# Maintainer: Jan Keith Darunday <jkcdarunday@gmail.com>
+# Maintainer: FichteFoll <fichtefoll2@googlemail.com>
 
 pkgname=ahoviewer-git
 _pkgname=ahoviewer
-pkgver=1.6.5.237.g42e16f9
+pkgver=1.6.5.276.g821576a
 pkgrel=1
-pkgdesc='A GTK2 image viewer, manga reader, and booru browser.'
+pkgdesc='A GTK3 image viewer, manga reader, and booru browser.'
 arch=('i686' 'x86_64')
 url='http://github.com/ahodesuka/ahoviewer'
 license=('MIT')
@@ -17,7 +17,6 @@ md5sums=('SKIP')
 
 prepare() {
     cd $srcdir/ahoviewer
-    sh version.sh
 }
 
 pkgver() {
