@@ -1,0 +1,4 @@
+[pwnat]
+source = "git"
+git = "https://github.com/samyk/pwnat.git"
+prefix = "v"

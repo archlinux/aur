@@ -7,13 +7,22 @@ pkgname="pwnat"
 pkgver=0.3.0
 pkgrel=2
 pkgdesc="A tool that allows clients behind NAT to communicate without any port forwarding"
-arch=('x86_64' 'i686')
-url="https://samy.pl/pwnat"
+arch=(
+  'i686'
+  'x86_64'
+)
+url="https://sa.my/pwnat/"
 _url="https://github.com/samyk/${pkgname}"
-license=('GPL-3.0-or-later')
-depends=('glibc')
+license=(
+  'GPL-3.0-or-later'
+)
+depends=(
+  'glibc'
+)
 _pkgsrc="${pkgname}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=(
+  "${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz"
+)
 b2sums=('96f91039a6244eb0c9028722f72440c3437cdc38b4c463eaa5d07534650b39ef263683be2f20d10383e7d9795cf137476985033a7f6c827fdedb9ce87a43d4e7')
 
 build() {
