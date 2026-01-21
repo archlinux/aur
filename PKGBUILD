@@ -2,7 +2,7 @@
 # https://github.com/Gvolexe/GvolTools
 
 pkgname=gvoltools
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="A collection of SSH management and system administration tools"
 arch=('any')
@@ -71,7 +71,6 @@ package() {
     ln -sf gvknownhostsctl gvkh
     
     # gvsecretsync aliases
-    ln -sf gvsecretsync ss
     ln -sf gvsecretsync gvss
     
     # gvcertctl aliases
@@ -94,7 +93,6 @@ package() {
     ln -sf gvlogtriage gvlogs
     
     # gvbackupctl aliases
-    ln -sf gvbackupctl backup
     ln -sf gvbackupctl gvbak
     
     # gvdnscheck aliases
@@ -102,7 +100,6 @@ package() {
     ln -sf gvdnscheck gvdns
     
     # gvnetdiag aliases
-    ln -sf gvnetdiag net
     ln -sf gvnetdiag gvnet
     
     # gvportsentry aliases
