@@ -5,7 +5,7 @@
 
 pkgname=trackma
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight and simple program for updating and using lists on several media tracking websites."
 url="https://z411.github.io/trackma/"
 arch=('any')
@@ -22,7 +22,7 @@ makedepends=('git'
 			 
 optdepends=('python-gobject:     GTK frontend'
             'python-cairo:       GTK frontend'
-            'python-pyqt5:       Qt frontend'
+            'python-pyqt6:       Qt frontend'
             'python-urwid:       ncurses frontend'
             'python-pillow:      thumbnail images for GUI frontends (required for Qt)'
             'python-pyinotify:   instant media recognition tracker'
