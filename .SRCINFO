@@ -1,0 +1,13 @@
+pkgbase = openwork
+	pkgdesc = OpenWork desktop app for OpenCode
+	pkgver = 0.2.9
+	pkgrel = 1
+	url = https://github.com/different-ai/openwork
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	source = openwork-0.2.9.deb::https://github.com/different-ai/openwork/releases/download/v0.2.9/OpenWork_0.2.9_amd64.deb
+	sha256sums = a36e6db9b70b42e0b11d0a390979a7f4a1d0b91900ed049aa4521d1e9fe14ab5
+
+pkgname = openwork
