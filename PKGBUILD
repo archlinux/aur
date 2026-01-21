@@ -1,7 +1,7 @@
 # Maintainer: Sam Newman <snewman.aa@gmail.com>
 _pkgname=halo
 pkgname=halo-git
-pkgver=r4.012cb1c
+pkgver=r11.5b05df7
 pkgrel=1
 pkgdesc="A radial 'run or raise' menu and utility for Hyprland"
 arch=('x86_64')
