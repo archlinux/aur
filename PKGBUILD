@@ -4,7 +4,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-globalmenu
-pkgver=145.0
+pkgver=147.0.1
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser"
 url="https://www.mozilla.org/firefox/"
@@ -16,7 +16,7 @@ depends=(
   bash
   cairo
   dbus
-  ffmpeg4.4
+  ffmpeg
   fontconfig
   freetype2
   gcc-libs
@@ -77,7 +77,7 @@ options=(
   !lto
   !makeflags
 )
-commit=https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/452ee63a86a441703e9c1659a65e7456a70986e0
+commit=https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/60e276e37d6c01170968472304c6c36b83581e83
 source=(
   https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
   $commit/firefox-symbolic.svg
@@ -90,16 +90,16 @@ validpgpkeys=(
   # https://blog.mozilla.org/security/2025/04/01/updated-gpg-key-for-signing-firefox-releases-2/
   14F26682D0916CDD81E37B6D61B7B526D98F0353
 )
-sha256sums=('eb0828db0e942ad345c725e2cbf2ed3b90d23771b054b6db0ded57cfa10b8c9c'
+sha256sums=('09e8274ac3772fd492c4f4995cdf33cca1d8856423cbb6640aca593202067dcb'
             'SKIP'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
-            '71fe797430198ac8c00b538dce537284cf526e48be0496698cf5a980d70c16da'
+            '2a51d57d98fbda86f094bc991e1ad4dd6e8a9d32fd0836b1183bf70ec4b68915'
             '23f557fa7989adcae03cc9458d94716981dbcf0e9d6d52a289a2426e50b4b785'
             'ef63a12975f108f30b00bb3290d9ca76f311d8af9c1d5dfc0d8335ad57e8f77c')
-b2sums=('a8007d06dce77197dfb40ab9a759287b6bcff4e56d1b2c7acfed9475aaa2f936948534d6e726a158550c70a28bad8ec8c7f1b99ca8165198c1952a484869b6c9'
+b2sums=('5683731ebac32f61a312e56eeae82b064dd714e75ba8d028fd084371f0baaf4228109dae5ef87eb14d6665dc3bbba8277f925e2e831ed6a9dbf2fa73d68d156e'
         'SKIP'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
-        '2c7936949ef922307fb593bd0480a13bde2eab8ae24fc89071d809d6659384705f9b7838b1ae8bc46b98a152ba01fcffad606d4c84796ad9bfaaf20166f0a0fd'
+        '63c62c85ee70e22b02e9ea34e69f04f50403b7634b99fb0e996a83c963916dc4224041a0b265e54f6c224bd1777ddfdeb255037e3e30fec288695f3050278b05'
         '1a7fc030b1051df00df1b2f5b247b8c658de6cdfba0788041c830da3aaaa6ac974ab684e05feb80672aa2d2c22294cacfa93a71dc664b3e60becdd65e879fcee'
         'ff0ba11844e99ab1b1fed91d70c6f45837198ba43e77313c8b9c48a621e40c459953fc35283b6b6eafb5641510a5ce1e18ebda4d7d076f8212810391c0a9234b')
 
@@ -188,9 +188,9 @@ END
 package() {
   cd firefox-$pkgver
   DESTDIR="$pkgdir" ./mach install
+  local appdir="$pkgdir/usr/lib/firefox"
 
-  local vendorjs="$pkgdir/usr/lib/firefox/browser/defaults/preferences/vendor.js"
-  install -Dvm644 /dev/stdin "$vendorjs" <<END
+  install -Dvm644 /dev/stdin "$appdir/browser/defaults/preferences/vendor.js" <<END
 // Use LANG environment variable to choose locale
 pref("intl.locale.requested", "");
 
@@ -207,8 +207,7 @@ pref("extensions.autoDisableScopes", 11);
 pref("browser.gnome-search-provider.enabled", true);
 END
 
-  local distini="$pkgdir/usr/lib/firefox/distribution/distribution.ini"
-  install -Dvm644 /dev/stdin "$distini" <<END
+  install -Dvm644 /dev/stdin "$appdir/distribution/distribution.ini" <<END
 [Global]
 id=archlinux
 version=1.0
@@ -221,7 +220,7 @@ app.partner.archlinux=archlinux
 END
 
   # Link up system ONNX runtime
-  ln -srv "$pkgdir/usr/lib/libonnxruntime.so" -t "$pkgdir/usr/lib/firefox"
+  ln -srv "$pkgdir/usr/lib/libonnxruntime.so" -t "$appdir"
 
   # Install desktop icons and metadata
   local i theme=official
@@ -250,8 +249,13 @@ END
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
   ln -srfv "$pkgdir/usr/bin/firefox" "$pkgdir/usr/lib/firefox/firefox-bin"
 
-  local sprovider="$pkgdir/usr/share/gnome-shell/search-providers/firefox.search-provider.ini"
-  install -Dvm644 /dev/stdin "$sprovider" <<END
+  # Use system certificates
+  if [[ -e $appdir/libnss3.so ]]; then
+    ln -sfv ../libnssckbi.so -t "$appdir"
+  fi
+
+  # Register GNOME search provider
+  install -Dvm644 /dev/stdin "$pkgdir/usr/share/gnome-shell/search-providers/firefox.search-provider.ini" <<END
 [Shell Search Provider]
 DesktopId=firefox.desktop
 BusName=org.mozilla.firefox.SearchProvider
@@ -260,8 +264,8 @@ Version=2
 END
 }
 
-source+=('https://github.com/Lexi-Ewald/unity-menubar/raw/a728a7e/unity-menubar.patch')
-sha256sums+=('a2ba18071a8fd199e2ef6b8cb432d8d34c127e8876220e06c809e6895c2acece')
-b2sums+=('dca97208ec3ab34dfc8b78e9cbe5a810e1d24827d1e0572eb8a261030ca7d0833b7dbfdd56214f6c668e63882ef3c2ec0151021c64fd138e5be2114fbb9ab07f')
+source+=('https://github.com/Lexi-Ewald/unity-menubar/raw/e455977a6200e1b21afbc63f42f5ff21159c28bb/unity-menubar.patch')
+sha256sums+=('d9c9afc49693cfde86a82496e921204cde8224b444189f12ce78ab90bdbb3eec')
+b2sums+=('0dd9aa5b0390fc79e01076cce050574d53774f7748255cf162d3f3191946bd66b24d49b85ec919d9b61e1433d7b10dcc4e155dcd95fef9e83e194cbf058ccac2')
 provides=(firefox)
 conflicts=(firefox)
