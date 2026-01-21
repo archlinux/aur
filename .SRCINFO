@@ -7,6 +7,7 @@ pkgbase = python-ssh2
 	license = LGPL-2.1-only
 	checkdepends = openssh
 	checkdepends = python-pytest
+	checkdepends = python-pytest-rerunfailures
 	makedepends = cython
 	makedepends = python-build
 	makedepends = python-installer
