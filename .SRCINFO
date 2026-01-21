@@ -1,7 +1,7 @@
 pkgbase = r-hdrcde
 	pkgdesc = Highest Density Regions and Conditional Density Estimation
-	pkgver = 3.4
-	pkgrel = 4
+	pkgver = 3.5.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=hdrcde
 	arch = x86_64
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = r-hdrcde
 	depends = r-ks
 	depends = r-locfit
 	depends = r-rcolorbrewer
-	source = https://cran.r-project.org/src/contrib/hdrcde_3.4.tar.gz
-	sha256sums = 4341c6a021da46dcae3b1ef6d580e84dcf625c2b2139f537d0c26ec90899149b
+	source = https://cran.r-project.org/src/contrib/hdrcde_3.5.0.tar.gz
+	sha256sums = 3affe9cafe987fd0973b54ed50a423de60ec6412aa1416733543448cddc5b32a
 
 pkgname = r-hdrcde

@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=hdrcde
-_pkgver=3.4
+_pkgver=3.5.0
 pkgname=r-${_pkgname,,}
-pkgver=3.4
-pkgrel=4
+pkgver=3.5.0
+pkgrel=1
 pkgdesc='Highest Density Regions and Conditional Density Estimation'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -21,7 +21,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4341c6a021da46dcae3b1ef6d580e84dcf625c2b2139f537d0c26ec90899149b')
+sha256sums=('3affe9cafe987fd0973b54ed50a423de60ec6412aa1416733543448cddc5b32a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
