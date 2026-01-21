@@ -2,7 +2,7 @@
 # https://github.com/Gvolexe/GvolTools
 
 pkgname=gvoltools
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="A collection of SSH management and system administration tools"
 arch=('any')
@@ -46,78 +46,91 @@ package() {
     # gv aliases
     ln -sf gv gvtools
     
-    # gvfleet aliases
+    # gvfleet aliases: fleet, f, gvf
     ln -sf gvfleet fleet
-    ln -sf gvfleet gvf
     ln -sf gvfleet f
+    ln -sf gvfleet gvf
     
-    # gvsshprofile aliases
+    # gvsshprofile aliases: sp, gvsp
     ln -sf gvsshprofile sp
     ln -sf gvsshprofile gvsp
     
-    # gvolkeymanager aliases
+    # gvolkeymanager aliases: km, gvkm
     ln -sf gvolkeymanager km
     ln -sf gvolkeymanager gvkm
     
-    # gvhostbootstrap aliases
+    # gvhostbootstrap aliases: hb, gvhb
     ln -sf gvhostbootstrap hb
     ln -sf gvhostbootstrap gvhb
     
-    # gvsshaudit aliases
+    # gvsshaudit aliases: sa, sshaudit, gvsa
+    ln -sf gvsshaudit sa
     ln -sf gvsshaudit sshaudit
     ln -sf gvsshaudit gvsa
     
-    # gvknownhostsctl aliases
+    # gvknownhostsctl aliases: kh, gvkh
     ln -sf gvknownhostsctl kh
     ln -sf gvknownhostsctl gvkh
     
-    # gvsecretsync aliases
-    ln -sf gvsecretsync gvss
+    # gvsecretsync aliases: sec, secrets, gvs (ss conflicts with iproute2)
+    ln -sf gvsecretsync sec
+    ln -sf gvsecretsync secrets
+    ln -sf gvsecretsync gvs
     
-    # gvcertctl aliases
+    # gvcertctl aliases: cert, cc, gvcert
     ln -sf gvcertctl cert
+    ln -sf gvcertctl cc
     ln -sf gvcertctl gvcert
     
-    # gvfirewallctl aliases
+    # gvfirewallctl aliases: fw, gvfw
     ln -sf gvfirewallctl fw
     ln -sf gvfirewallctl gvfw
     
-    # gvupdates aliases
-    ln -sf gvupdates updates
-    ln -sf gvupdates gvup
+    # gvupdates aliases: upd, gvu
+    ln -sf gvupdates upd
+    ln -sf gvupdates gvu
     
-    # gvsudoauth aliases
-    ln -sf gvsudoauth gvsudo
+    # gvsudoauth aliases: su, sudoauth, gvsu (su might conflict, but rare)
+    ln -sf gvsudoauth sudoauth
+    ln -sf gvsudoauth gvsu
     
-    # gvlogtriage aliases
-    ln -sf gvlogtriage logs
-    ln -sf gvlogtriage gvlogs
+    # gvlogtriage aliases: lt, logtriage, gvlt
+    ln -sf gvlogtriage lt
+    ln -sf gvlogtriage logtriage
+    ln -sf gvlogtriage gvlt
     
-    # gvbackupctl aliases
-    ln -sf gvbackupctl gvbak
+    # gvbackupctl aliases: bk, gvbk (backup conflicts with tar)
+    ln -sf gvbackupctl bk
+    ln -sf gvbackupctl gvbk
     
-    # gvdnscheck aliases
+    # gvdnscheck aliases: dns, dc, gvdns
     ln -sf gvdnscheck dns
+    ln -sf gvdnscheck dc
     ln -sf gvdnscheck gvdns
     
-    # gvnetdiag aliases
-    ln -sf gvnetdiag gvnet
+    # gvnetdiag aliases: nd, netdiag, gvnd (net conflicts with smbclient)
+    ln -sf gvnetdiag nd
+    ln -sf gvnetdiag netdiag
+    ln -sf gvnetdiag gvnd
     
-    # gvportsentry aliases
+    # gvportsentry aliases: ports, gvps
     ln -sf gvportsentry ports
-    ln -sf gvportsentry gvports
+    ln -sf gvportsentry gvps
     
-    # gvdotctl aliases
-    ln -sf gvdotctl dots
-    ln -sf gvdotctl gvdots
+    # gvdotctl aliases: dt, dot, gvdt
+    ln -sf gvdotctl dt
+    ln -sf gvdotctl dot
+    ln -sf gvdotctl gvdt
     
-    # gvgitopsinit aliases
+    # gvgitopsinit aliases: gi, gitops, gvgi
+    ln -sf gvgitopsinit gi
     ln -sf gvgitopsinit gitops
-    ln -sf gvgitopsinit gvgit
+    ln -sf gvgitopsinit gvgi
     
-    # gvpermcheck aliases
-    ln -sf gvpermcheck perms
-    ln -sf gvpermcheck gvperms
+    # gvpermcheck aliases: pc, perm, gvpc
+    ln -sf gvpermcheck pc
+    ln -sf gvpermcheck perm
+    ln -sf gvpermcheck gvpc
     
     # Install license
     cd "${srcdir}/GvolTools-${pkgver}"
