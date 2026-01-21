@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 pkgname=linux-steam-integration
 pkgver=0.7.3
