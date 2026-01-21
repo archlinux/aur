@@ -5,7 +5,7 @@
 
 pkgname=unified-hifi-control-bin
 _pkgname=unified-hifi-control
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="Source-agnostic hi-fi control bridge for Roon, LMS, HQPlayer, and hardware surfaces"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -26,7 +26,7 @@ source_armv7h=("binary::${url}/releases/download/v${pkgver}/unified-hifi-linux-a
 source=("web-assets-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/web-assets.tar.gz"
         "${_pkgname}.service"
         "${_pkgname}.install"
-        "LICENSE::https://polyformproject.org/wp-content/uploads/2019/06/PolyForm-Noncommercial-1.0.0.txt")
+        "LICENSE::https://raw.githubusercontent.com/open-horizon-labs/unified-hifi-control/v3/LICENSE")
 
 # Checksums - update these for each release
 # Run: updpkgsums
