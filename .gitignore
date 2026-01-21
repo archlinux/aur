@@ -3,3 +3,5 @@ gdlauncher-*.pkg.tar.zst
 v*.tar.gz
 pkg
 src
+*.AppImage
+*.png
