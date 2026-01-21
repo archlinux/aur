@@ -1,6 +1,6 @@
 pkgbase = gomu
 	pkgdesc = Terminal User Interface (TUI) Music Player
-	pkgver = 2.1.3
+	pkgver = 2.1.4
 	pkgrel = 1
 	url = https://github.com/issadarkthing/gomu
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = gomu
 	optdepends = fzf
 	conflicts = gomu-git
 	conflicts = gomu-bin
-	source = gomu-2.1.3.tar.gz::https://github.com/issadarkthing/gomu/archive/v2.1.3.tar.gz
-	sha256sums = ada00c9381baf65f792e8d1558b16bd9b102c55f80c1e4775624cea7499875ba
+	source = gomu-2.1.4.tar.gz::https://github.com/issadarkthing/gomu/archive/v2.1.4.tar.gz
+	sha256sums = 39d5792cc2ecb34900e12814d8859ccbefe1a7e124c827315c0445ddf45c2ea0
 
 pkgname = gomu
