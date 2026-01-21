@@ -1,6 +1,6 @@
 pkgbase = konform-browser
-	pkgdesc = Librewolf fork with increased customizability and security
-	pkgver = 140.7.0.102
+	pkgdesc = Firefox fork (LibreWolf-base) with increased customizability and security
+	pkgver = 140.7.0.103
 	pkgrel = 1
 	epoch = 1
 	url = https://codeberg.org/konform-browser/source
@@ -88,10 +88,10 @@ pkgbase = konform-browser
 	options = !makeflags
 	backup = usr/lib/konform/librewolf.cfg
 	backup = usr/lib/konform/distribution/policies.json
-	source = src::git+https://codeberg.org/konform-browser/source.git#tag=140.7.0.102
+	source = src::git+https://codeberg.org/konform-browser/source.git#tag=140.7.0.103
 	source = konform.desktop
 	source = default192x192.png
-	sha256sums = eb7477a05159835be3d132716df1b32c61900390ab071d926e58a4dc590949a7
+	sha256sums = 2704ef235ec2f7b316d4ac38984da2d9b5d75da2ba5c490c379eee6a118ac697
 	sha256sums = 68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4
 	sha256sums = b86ddfc0cec482f7900f296857cdd0f1b736ff5037e0a86712b258ae0092924b
 
