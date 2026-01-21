@@ -6,7 +6,7 @@ pkgdesc="::Rolling release:: Changes alacritty theme based on the current time a
 arch=('x86_64')
 url="https://github.com/alacritty-use-theme/alacritty-use-theme-with-redshift"
 license=('GPL-1.0-or-later')
-depends=('bash' 'alacritty-use-theme')
+depends=('bash' 'redshift' 'alacritty-use-theme')
 makedepends=('git')
 provides=('alaritty-use-theme-with-redshift.service' 'alaritty-use-theme-with-redshift.timer' 'alaritty-use-theme-with-redshift.target')
 conflicts=('alacritty-use-theme-with-redshift')
@@ -25,7 +25,7 @@ package() {
   install -Dm755 $srcdir/$pkgname/app/home/config/systemd/user/alacritty-use-theme.timer "$pkgdir/usr/lib/systemd/user/alacritty-use-theme.timer"
   install -Dm755 $srcdir/$pkgname/app/home/config/systemd/user/alacritty-use-theme.target "$pkgdir/usr/lib/systemd/user/alacritty-use-theme.target"
   install -Dm755 $srcdir/$pkgname/app/home/config/systemd/user/alacritty-use-theme.service "$pkgdir/usr/lib/systemd/user/alacritty-use-theme.service"
-  install -Dm755 $srcdir/$pkgname/app/home/config/systemd/user/update-gtk-theme.service "$pkgdir/usr/lib/systemd/user/update-gtk-theme.service.service"
+  install -Dm755 $srcdir/$pkgname/app/home/config/systemd/user/update-gtk-theme.service "$pkgdir/usr/lib/systemd/user/update-gtk-theme.service"
 
   #config
   install -Dm755 $srcdir/$pkgname/app/home/config/theme-switcher/environment.env "$pkgdir/usr/lib/alacritty-use-theme/environment.env"

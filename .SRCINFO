@@ -7,6 +7,7 @@ pkgbase = alacritty-use-theme-with-redshift-git
 	license = GPL-1.0-or-later
 	makedepends = git
 	depends = bash
+	depends = redshift
 	depends = alacritty-use-theme
 	provides = alaritty-use-theme-with-redshift.service
 	provides = alaritty-use-theme-with-redshift.timer
