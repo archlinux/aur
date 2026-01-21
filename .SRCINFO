@@ -1,5 +1,5 @@
 pkgbase = hytale-f2p-git
-	pkgdesc = HyLauncher - unofficial Hytale Launcher for free to play with multiplayer support
+	pkgdesc = Hytale-F2P - unofficial Hytale Launcher for free to play with multiplayer support
 	pkgver = 2.0.2a.r120.gb05aeef
 	pkgrel = 1
 	url = https://github.com/amiayweb/Hytale-F2P
