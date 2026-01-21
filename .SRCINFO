@@ -1,11 +1,12 @@
 pkgbase = jp2-pixbuf-loader
 	pkgdesc = JPEG2000 GDK Pixbuf Loader library
 	pkgver = 0.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/necklace/jp2-pixbuf-loader
 	arch = x86_64
 	arch = i686
 	license = LGPL
+	makedepends = git
 	makedepends = meson
 	depends = gdk-pixbuf2
 	depends = openjpeg2

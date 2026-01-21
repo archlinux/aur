@@ -3,13 +3,13 @@
 
 pkgname=jp2-pixbuf-loader
 pkgver=0.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='JPEG2000 GDK Pixbuf Loader library'
 arch=('x86_64' 'i686')
 url='https://codeberg.org/necklace/jp2-pixbuf-loader'
 license=('LGPL')
 depends=('gdk-pixbuf2' 'openjpeg2')
-makedepends=('meson')
+makedepends=('git' 'meson')
 source=('git+https://codeberg.org/necklace/jp2-pixbuf-loader.git#tag='$pkgver)
 sha256sums=('SKIP')
 
