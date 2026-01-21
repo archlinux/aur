@@ -1,7 +1,7 @@
 pkgbase = albert
 	pkgdesc = A sophisticated standalone keyboard launcher
 	pkgver = 34.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/albertlauncher
 	arch = x86_64
 	license = custom
@@ -12,6 +12,7 @@ pkgbase = albert
 	makedepends = python
 	makedepends = qt6-tools
 	depends = hicolor-icon-theme
+	depends = qcoro
 	depends = qt6-5compat
 	depends = qt6-declarative
 	depends = qt6-scxml
