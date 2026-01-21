@@ -1,6 +1,6 @@
 pkgbase = pomoru
 	pkgdesc = Minimal TUI Pomodoro timer with task list
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/RanXom/pomoru
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = pomoru
 	makedepends = rust
 	makedepends = cargo
 	depends = gcc-libs
-	source = pomoru-0.1.0.tar.gz::https://github.com/RanXom/pomoru/archive/v0.1.0.tar.gz
-	sha256sums = d860778b9b9227da0723dece5ff0278969864039d748f43682b5044bf16c09e7
+	source = pomoru-0.1.1.tar.gz::https://github.com/RanXom/pomoru/archive/v0.1.1.tar.gz
+	sha256sums = e4ce914f2b67ec8be73febd2448f5618a317bff714afe11ea70eed4da646a227
 
 pkgname = pomoru
