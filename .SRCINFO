@@ -1,7 +1,7 @@
 pkgbase = lemonade-server
 	pkgdesc = Lemonade: Local LLM Serving with GPU and NPU acceleration (Server)
 	pkgver = 9.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lemonade-sdk/lemonade/
 	arch = x86_64
 	license = Apache-2.0
@@ -11,6 +11,6 @@ pkgbase = lemonade-server
 	depends = openssl
 	provides = lemonade-server
 	source = lemonade-server-9.1.4.tar.gz::https://github.com/lemonade-sdk/lemonade/archive/refs/tags/v9.1.4.tar.gz
-	sha256sums = ca1a439e4e184aaea1cbfb13ed470905a905758f4d63cdeffe7e56ac00e2b89d
+	sha256sums = 39693579ff993d7ed9dcb8fbc41d74556822452b73aeba57d27f350014951022
 
 pkgname = lemonade-server

@@ -4,7 +4,7 @@
 pkgname=lemonade-server
 pkgdesc="Lemonade: Local LLM Serving with GPU and NPU acceleration (Server)"
 pkgver=9.1.4
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/lemonade-sdk/lemonade/'
 license=('Apache-2.0')
@@ -17,7 +17,7 @@ source=(
 )
 
 sha256sums=(
-'ca1a439e4e184aaea1cbfb13ed470905a905758f4d63cdeffe7e56ac00e2b89d'
+'39693579ff993d7ed9dcb8fbc41d74556822452b73aeba57d27f350014951022'
 )
 
 build() {
