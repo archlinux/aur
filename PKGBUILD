@@ -1,7 +1,7 @@
 # Maintainer: Berrit Birkner <aur at bbirkner dot de>
 
 pkgname=thunderbird-extension-cardbook-git
-pkgver=102.6.r4739.d26ed34
+pkgver=103.4.r4768.c4e0abb
 pkgrel=1
 pkgdesc="A new Thunderbird address book based on the CardDAV and vCard standards"
 arch=('any')
@@ -22,7 +22,7 @@ pkgver() {
 build() {
     cd "${srcdir}/CardBook"
     export _archivefilename=$(jq -r '.applications.gecko.id' manifest.json)
-    bsdtar -caf ${srcdir}/$_archivefilename.zip chrome _locales background.js manifest.json background.html LICENSE.txt policy.md
+    bsdtar -caf ${srcdir}/$_archivefilename.zip chrome _locales background.js manifest.json background.html LICENSE policy.md
 }
 
 package() {

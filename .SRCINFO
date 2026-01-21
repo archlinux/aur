@@ -1,6 +1,6 @@
 pkgbase = thunderbird-extension-cardbook-git
 	pkgdesc = A new Thunderbird address book based on the CardDAV and vCard standards
-	pkgver = 102.6.r4739.d26ed34
+	pkgver = 103.4.r4768.c4e0abb
 	pkgrel = 1
 	url = https://gitlab.com/CardBook/CardBook
 	arch = any
