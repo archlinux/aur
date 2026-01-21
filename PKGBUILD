@@ -1,11 +1,11 @@
 # Maintainer: Oliver Weissbarth <mail@oweissbarth.de>
 # Maintainer: SFN
 pkgname=tl-render
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="tlRender is an open source library for building playback and review applications for visual effects, film, and animation."
 arch=("x86_64")
-url="https://github.com/darbyjohnston/tlRender"
+url="https://github.com/grizzlypeak3d/tlRender"
 license=('BSD-3-Clause')
 groups=()
 depends=('feather-tk' 'minizip-ng' 'opentimelineio' 'opencolorio' 'openimageio' 'openexr' 'ffmpeg' 'libpng' 'libtiff' 'libjpeg-turbo' 'sdl2')
@@ -13,9 +13,9 @@ makedepends=('cmake' 'make')
 replaces=()
 backup=()
 options=()
-source=("tlRender-${pkgver}.tar.gz::https://github.com/darbyjohnston/tlRender/archive/refs/tags/${pkgver}.tar.gz" "zlibng-config.cmake")
+source=("tlRender-${pkgver}.tar.gz::https://github.com/grizzlypeak3d/tlRender/archive/refs/tags/${pkgver}.tar.gz" "zlibng-config.cmake")
 noextract=()
-sha256sums=('c137c6f5ddc0a108d3922501fdbc20cfb00e4a2291e666e6d41b89f5d51606d4'
+sha256sums=('29e548fbc6cdc09fe4ee79d295b352f69078d91cbc1b5362a1324c665fe52d5e'
             '72d993ec6dceff21552f22c25aff2bc8ceea4cb7315029e0ab6bf7878af9ec21')
 
 CFLAGS+=" -ffat-lto-objects" # lto problems with static libs
