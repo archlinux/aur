@@ -5,8 +5,8 @@
 # Contributor: Manolis Tzanidakis
 
 pkgname=makepasswd
-pkgver=1.10_15
-_pkgver=1.10-15
+pkgver=1.10_16
+_pkgver=1.10-16
 pkgrel=1
 pkgdesc='Generates true random passwords with the emphasis on security over pronounceability (Debian version)'
 arch=('any')
@@ -19,7 +19,7 @@ depends=('perl-passwd-md5'
 source=("http://ftp.debian.org/debian/pool/main/m/${pkgname}/${pkgname}_${pkgver%_*}.orig.tar.gz"
         "http://ftp.debian.org/debian/pool/main/m/makepasswd/makepasswd_${_pkgver}.debian.tar.xz")
 sha256sums=('41491f361d810f9bb3e08b40df3c3034faec306d434dab15534e19023f91a75c'
-            'de6f6e9b7e679f4d2774eed30c0c79083786f8e4ca9e4da35cf29c27217f22a0')
+            '056b9401b9a8aa2f1457d3b14aea2c5dea5932ce42d77cd8b3e516a825cba6f0')
 
 prepare() {
   ln -s "../debian/patches" "${pkgname}-${pkgver%_*}/patches"
