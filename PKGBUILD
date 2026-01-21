@@ -2,16 +2,16 @@
 # Contributor:  GasparVardanyan <gaspar_pm@proton.me>
 pkgname='awcc-git'
 pkgrel=1
-pkgver=r221.41a7166
+pkgver=r339.ed899a2
 pkgdesc="An unofficial alternative to Alienware Command Centre of Windows for the Dell G series"
 arch=('x86_64')
 url="https://github.com/tr1xem/AWCC"
 license=('GPL3')
-depends=('acpi_call-dkms' 'libusb' 'libx11' 'systemd-libs' 'glibc' 'glfw' 'glu' 'libglvnd' 'libevdev' 'ttf-roboto')
-makedepends=('git' 'make' 'cmake' 'nlohmann-json')
+depends=('acpi_call-dkms'  'libx11' 'systemd-libs' 'glibc'  'glu' 'libglvnd')
+makedepends=('git' 'ninja' 'cmake' 'meson')
 provides=("awcc")
 conflicts=('awcc-bin')
-install='awcc.install'
+# install='awcc.install'
 source=('awcc::git+https://github.com/tr1xem/AWCC.git#branch=main')
 sha256sums=('SKIP')
 
@@ -25,8 +25,8 @@ build() {
     cd "$srcdir/${pkgname%-git}"
     mkdir -p build
     cd build/
-    cmake ..
-    make
+    cmake .. -G Ninja
+    ninja
 }
 
 package() {
