@@ -1,0 +1,18 @@
+pkgbase = code-notify
+	pkgdesc = Desktop notifications for AI coding tools (Claude Code, Codex, Gemini CLI)
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/mylee04/code-notify
+	arch = any
+	license = MIT
+	depends = bash
+	depends = libnotify
+	optdepends = jq: for JSON parsing in config files
+	optdepends = espeak-ng: for voice announcements
+	provides = claude-notify
+	conflicts = claude-notify
+	replaces = claude-notify
+	source = code-notify-1.3.0.tar.gz::https://github.com/mylee04/code-notify/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = 2f96994e1fa4183726208bddb9952eac2c6156a8948763de97f1792279191a33
+
+pkgname = code-notify
