@@ -1,11 +1,11 @@
 pkgbase = android-armv7a-eabi-mariadb
-	pkgdesc = Fast SQL database server, derived from MySQL (Android armv7a-eabi)
+	pkgdesc = MariaDB client library (Android armv7a-eabi)
 	pkgver = 12.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mariadb.org/
 	arch = any
 	groups = android-mariadb
-	license = GPL
+	license = LGPL2.1
 	makedepends = android-cmake
 	depends = android-armv7a-eabi-curl
 	depends = android-armv7a-eabi-openssl
