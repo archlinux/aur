@@ -39,7 +39,7 @@ package() {
   tar -xf "$srcdir/data.tar.gz" -C "${pkgdir}"
 }
 
-source_x86_64=("NeoDLP_${pkgver}_amd64_linux.deb::${url}/releases/download/v$pkgver/NeoDLP_${pkgver}_amd64.deb")
+source_x86_64=("NeoDLP_${pkgver}_amd64.deb::${url}/releases/download/v$pkgver/NeoDLP_${pkgver}_amd64.deb")
 sha256sums_x86_64=('SKIP')
-source_aarch64=("NeoDLP_${pkgver}_arm64_linux.deb::${url}/releases/download/v$pkgver/NeoDLP_${pkgver}_arm64.deb")
+source_aarch64=("NeoDLP_${pkgver}_arm64.deb::${url}/releases/download/v$pkgver/NeoDLP_${pkgver}_arm64.deb")
 sha256sums_aarch64=('SKIP')
