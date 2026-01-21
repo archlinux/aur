@@ -1,6 +1,6 @@
 #Maintainer: Maxb0tbeep <max@polygonal.place)
 pkgname=bestfetch
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="a customizable, beautiful, and blazing fast system fetch, powered by nim"
 arch=(x86_64)
