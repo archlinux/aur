@@ -1,5 +1,5 @@
 pkgname=rofi-wifi
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Rofi plugin for managing Wi-Fi networks."
 arch=('x86_64')
