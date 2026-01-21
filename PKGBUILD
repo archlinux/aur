@@ -3,7 +3,7 @@
 _pkgname=tonearm
 pkgname="${_pkgname}-git"
 
-pkgver=r373.5c63b23
+pkgver=r396.8f84a11
 pkgver() {
     cd "${_pkgname}"
     ( set -o pipefail
@@ -11,14 +11,14 @@ pkgver() {
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
-pkgrel=2
+pkgrel=1
 
 pkgdesc="Unofficial native GTK4 / Adwaita music streaming client for TIDAL"
 arch=("x86_64")
 url="https://codeberg.org/dergs/Tonearm"
 license=("GPL-3.0-or-later")
 
-depends=(gtk4 gstreamer gst-plugins-base gst-plugins-good gst-plugins-bad libadwaita)
+depends=(gtk4 gstreamer gst-plugins-base gst-plugins-good gst-plugins-bad libadwaita libsecret)
 makedepends=(git go)
 conflicts=("${_pkgname}")
 provides=("${_pkgname}=${pkgver}")
