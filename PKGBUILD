@@ -2,7 +2,7 @@
 # https://github.com/Gvolexe/GvolTools
 
 pkgname=gvoltools
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="A collection of SSH management and system administration tools"
 arch=('any')
@@ -23,8 +23,9 @@ sha256sums=('SKIP')
 package() {
     cd "${srcdir}/GvolTools-${pkgver}"
     
-    # Install shared library
-    install -Dm644 tools/gvcore/files/gvcore.py "${pkgdir}/usr/lib/gvtools/gvcore.py"
+    # Install shared library to Python site-packages
+    local python_version=$(python3 -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')
+    install -Dm644 tools/gvcore/files/gvcore.py "${pkgdir}/usr/lib/python${python_version}/site-packages/gvcore.py"
     
     # Install main binaries
     for tool_dir in tools/*/; do
