@@ -1,6 +1,6 @@
 pkgbase = gvoltools
 	pkgdesc = A collection of SSH management and system administration tools
-	pkgver = 1.2.4
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://github.com/Gvolexe/GvolTools
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = gvoltools
 	depends = python-paramiko
 	depends = python-cryptography
 	optdepends = openssh: for SSH key management
-	source = gvoltools-1.2.4.tar.gz::https://github.com/Gvolexe/GvolTools/archive/refs/tags/v1.2.4.tar.gz
+	source = gvoltools-1.2.5.tar.gz::https://github.com/Gvolexe/GvolTools/archive/refs/tags/v1.2.5.tar.gz
 	sha256sums = SKIP
 
 pkgname = gvoltools
