@@ -1,6 +1,6 @@
 # Maintainer: David Williams <davewil1973@gmail.com>
 pkgname=tidewave-bin
-pkgver=0.2.7
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Coding agent for full-stack web app development"
 arch=('x86_64')
