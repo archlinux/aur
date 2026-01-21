@@ -1,6 +1,6 @@
 # Maintainer: Matthew Tran <0e4ef622 at gmail.com>
 pkgname=mrbuild
-pkgver=1.13
+pkgver=1.16
 pkgrel=1
 pkgdesc="Simple build system"
 arch=('any')
@@ -12,8 +12,8 @@ conflicts=('mrbuild')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dkogan/mrbuild/archive/refs/tags/v${pkgver}.tar.gz"
         "libdirs.patch"
         "LICENSE")
-sha256sums=('ac9c9c4f725a7ea2dcb12c786ef548d1003c8cf745e452806d38689e3ad13f1e'
-            '5c3f15d19710498a45f5cea4d2ca2f8a42be57b04446f801c7c5abf33292965f'
+sha256sums=('f2ae97ce0b6a2d5bfab132a27757c269cb378c22bc4b5e1e0e36380abc954433'
+            '8c9ebaad041693803d798003256fce4a3d231a7622c14836e32167617aa331ad'
             '9ef5ec6f58aaa29dab6415cd56b48c22907fc6c850a17976d765602c6ceb9cd6')
 
 prepare() {
