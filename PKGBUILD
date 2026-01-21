@@ -1,5 +1,5 @@
 pkgname=git-commit-helper
-pkgver=0.9.1.r1.0589593
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="一个帮助规范 git commit message 的工具"
 arch=('x86_64')
