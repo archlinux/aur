@@ -18,7 +18,7 @@ steps:
         from_secret: codeberg_token
     commands:
       # Install all required tools
-      - pacman -Syu --noconfirm --needed git base-devel devtools nvchecker pacman-contrib namcap sudo gnupg wget ttf-dejavu
+      - pacman -Syu --noconfirm --needed git base-devel devtools nvchecker pacman-contrib namcap sudo gnupg wget ttf-dejavu unzip
       # Allow broken git ownerships
       - git config --global --add safe.directory "$(pwd)"
       # Create build user
@@ -87,8 +87,9 @@ steps:
       - sudo -u builduser makepkg -si --noconfirm
       - echo "Testing package..."
       - sudo -u builduser subtitles_contact_sheet --version
-      - sudo -u builduser wget -q https://mirror.clarkson.edu/blender/demo/movies/BBB/bbb_sunflower_1080p_60fps_normal.mp4
-      - sudo -u builduser subtitles_contact_sheet bbb_sunflower_1080p_60fps_normal.mp4
+      - sudo -u builduser wget -q https://download.blender.org/demo/movies/BBB/bbb_sunflower_1080p_30fps_normal.mp4.zip
+      - sudo -u builduser unzip -q bbb_sunflower_1080p_30fps_normal.mp4.zip
+      - sudo -u builduser subtitles_contact_sheet bbb_sunflower_1080p_30fps_normal.mp4
       # Conditional commit and push (only for cron and manual, and only if changes exist)
       - |
         if [ "$CI_PIPELINE_EVENT" = "cron" ] || [ "$CI_PIPELINE_EVENT" = "manual" ]; then
