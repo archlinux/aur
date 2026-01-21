@@ -1,4 +1,4 @@
-# Maintainer: LinuxLover471 <LinuxLover471 at proton dot me>
+# Maintainer: LinuxLover471 <linuxlover471 at proton dot me>
 # Contributor: melchips <truphemus dot francois at gmail dot com>
 # Contributor: Lex Black <autumn-wind at web dot de>
 # Contributor: Olivier Duclos <olivier dot duclos at gmail dot com>
