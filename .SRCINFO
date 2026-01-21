@@ -1,7 +1,7 @@
 pkgbase = koala-clash-bin
 	pkgdesc = Fork of Clash Verge Rev | A Clash Meta GUI based on Tauri
 	pkgver = 0.2.9
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/coolcoala/koala-clash
 	install = koala-clash-bin.install
 	arch = x86_64
