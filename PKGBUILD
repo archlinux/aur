@@ -5,13 +5,13 @@
 
 pkgname='ibus-mozc'
 pkgver=3.33.6079.102
-pkgrel=1
+pkgrel=2
 pkgdesc='Mozc module for IBus'
 arch=('x86_64')
 url='https://github.com/google/mozc'
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary')
 depends=('ibus>=1.4.1' 'mozc>=3.33.6079.102')
-makedepends=('bazel' 'git' 'python' 'qt6-base')
+makedepends=('bazelisk' 'git' 'python' 'qt6-base')
 options=(!distcc !ccache)
 source=('git+https://github.com/google/mozc.git#commit=3052f08b2bc0d60c84f640eecb74fcf77d05addc'
         'git+https://github.com/abseil/abseil-cpp.git#commit=4447c7562e3bc702ade25105912dce503f0c4010'
@@ -51,7 +51,7 @@ build() {
     unset ANDROID_HOME
     export JAVA_HOME='/usr/lib/jvm/java-21-openjdk/'
 
-    bazel build renderer/qt:mozc_renderer unix/ibus:ibus_mozc unix/icons --config oss_linux --compilation_mode opt
+    bazelisk build renderer/qt:mozc_renderer unix/ibus:ibus_mozc unix/icons --config oss_linux --config release_build
 }
 
 package() {

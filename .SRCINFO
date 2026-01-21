@@ -1,11 +1,11 @@
 pkgbase = ibus-mozc
 	pkgdesc = Mozc module for IBus
 	pkgver = 3.33.6079.102
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/mozc
 	arch = x86_64
 	license = Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary
-	makedepends = bazel
+	makedepends = bazelisk
 	makedepends = git
 	makedepends = python
 	makedepends = qt6-base
