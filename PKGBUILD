@@ -3,7 +3,7 @@ _reponame=boxflat
 pkgname=$_reponame-git
 provides=($_reponame)
 pkgver=1.0.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Adjust your Moza Racing gear settings"
 arch=('x86_64')
 url="https://github.com/Lawstorant/$_reponame"
@@ -16,6 +16,7 @@ depends=(
 	python-cairo
 	python-evdev
 	python-psutil
+	python-trayer
 	gtk4
 	libadwaita
 	udev
@@ -37,7 +38,6 @@ pkgver() {
 
 package() {
   cd "$srcdir/$_reponame" || exit 1
-  sed -i 's/python/python3.13/' boxflat.sh # workaround before boxflat is fixed for python 3.14
   ./install.sh add-prefix "${pkgdir}" no-udev
 }
 
