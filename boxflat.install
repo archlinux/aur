@@ -1,0 +1,9 @@
+post_install() {
+	udevadm control --reload
+	udevadm trigger --attr-match=subsystem=tty
+}
+
+post_upgrade() {
+	udevadm control --reload
+	udevadm trigger --attr-match=subsystem=tty
+}
