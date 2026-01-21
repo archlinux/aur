@@ -2,8 +2,8 @@
 # Contributor: Anty0 <anty150 at gmail dot com>
 
 pkgname='python-zulip-api'
-pkgver="0.9.0"
-pkgrel=2
+pkgver="0.9.1"
+pkgrel=1
 pkgdesc="Pyhton bindings for Zulip API."
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/zulip/python-zulip-api"
@@ -18,7 +18,7 @@ depends=(
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('f2404728d1729eb2289166670c8c2d8369a29e59832729a1d4b9466687beb006')
+sha256sums=('81ba386f9f621f2783d7c65fe13e5de2aa6c9ebfe1e54a366f913107388820e7')
 
 check(){
     cd ${pkgname}-${pkgver}/zulip/

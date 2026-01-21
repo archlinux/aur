@@ -1,7 +1,7 @@
 pkgbase = python-zulip-api
 	pkgdesc = Pyhton bindings for Zulip API.
-	pkgver = 0.9.0
-	pkgrel = 2
+	pkgver = 0.9.1
+	pkgrel = 1
 	url = https://github.com/zulip/python-zulip-api
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = python-zulip-api
 	depends = python-distro
 	depends = python-click
 	depends = python-typing_extensions
-	source = python-zulip-api-0.9.0.tar.gz::https://github.com/zulip/python-zulip-api/archive/refs/tags/0.9.0.tar.gz
-	sha256sums = f2404728d1729eb2289166670c8c2d8369a29e59832729a1d4b9466687beb006
+	source = python-zulip-api-0.9.1.tar.gz::https://github.com/zulip/python-zulip-api/archive/refs/tags/0.9.1.tar.gz
+	sha256sums = 81ba386f9f621f2783d7c65fe13e5de2aa6c9ebfe1e54a366f913107388820e7
 
 pkgname = python-zulip-api
