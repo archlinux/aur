@@ -1,23 +1,19 @@
 pkgbase = docfetcher
 	pkgdesc = A java open source desktop search application
-	pkgver = 1.1.25
+	pkgver = 1.1.27
 	pkgrel = 1
 	url = http://docfetcher.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = EPL
 	makedepends = unzip
-	depends = java-runtime>=8
-	optdepends = gtk2: GTK2-based interface
+	depends = java-runtime>17
 	optdepends = gtk3: GTK3-based interface
-	source = https://downloads.sourceforge.net/project/docfetcher/docfetcher/1.1.25/docfetcher-1.1.25-portable.zip
+	source = https://downloads.sourceforge.net/project/docfetcher/docfetcher/1.1.27/DocFetcher-1.1.27-Linux-64bit-NonPortable.zip
 	source = docfetcher
-	source = swt.patch
 	source = docfetcher.desktop
-	sha256sums = 805abba35f2078a6b882d5116dc068fdafcfc0c5922d12ca5c42b68341d6b8a8
+	sha256sums = 10a5831b384330a45849ddcf1e2e22d8c9e0669d23da45a74c423fc673bab267
 	sha256sums = d49d1c1327b72345040c76ae510a3eaa520c82dd5c43f2a6e597f1c984b55c50
-	sha256sums = edc2d63e3644eafe69229df44986c310a17eeecb06ce62818c24f55c9409ab54
 	sha256sums = 878ea6e2188733f13a7580606fef290ae5b547b814b33efcd61f8cef79b76b61
 
 pkgname = docfetcher
-

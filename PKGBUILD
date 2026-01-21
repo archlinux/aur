@@ -1,49 +1,46 @@
 # Maintainer: Thiago Perrotta <echo dGhpYWdvcGVycm90dGE5NUBnbWFpbC5jb20K | base64 -d >
+# Maintainer: Macxcool <macx cool at tuta nota dot com>
 
 pkgname=docfetcher
 _name=DocFetcher
-pkgver=1.1.25
+pkgver=1.1.27
 pkgrel=1
-_gtkver=gtk3 # variable that controls whether GTK2 or 3(default) is to be used.
 pkgdesc="A java open source desktop search application"
 arch=('i686' 'x86_64')
 url="http://${pkgname}.sourceforge.net/"
 license=('EPL')
-depends=('java-runtime>=8')
+depends=('java-runtime>17')
 makedepends=('unzip')
-optdepends=('gtk2: GTK2-based interface' 'gtk3: GTK3-based interface')
-source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/docfetcher-${pkgver}-portable.zip"
+optdepends=('gtk3: GTK3-based interface')
+_downloadfile="${_name}-${pkgver}-Linux-64bit-NonPortable"
+source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${_downloadfile}.zip"
   'docfetcher'
-  'swt.patch'
   'docfetcher.desktop')
-sha256sums=('805abba35f2078a6b882d5116dc068fdafcfc0c5922d12ca5c42b68341d6b8a8'
-         'd49d1c1327b72345040c76ae510a3eaa520c82dd5c43f2a6e597f1c984b55c50'
-         'edc2d63e3644eafe69229df44986c310a17eeecb06ce62818c24f55c9409ab54'
-         '878ea6e2188733f13a7580606fef290ae5b547b814b33efcd61f8cef79b76b61')
+sha256sums=('10a5831b384330a45849ddcf1e2e22d8c9e0669d23da45a74c423fc673bab267'
+            'd49d1c1327b72345040c76ae510a3eaa520c82dd5c43f2a6e597f1c984b55c50'
+            '878ea6e2188733f13a7580606fef290ae5b547b814b33efcd61f8cef79b76b61')
 
 prepare() {
-  cd "${srcdir}"
-
-  # Patch to add where SWT libraries will be unpacked. See the following link:
+  # Change path for config, cache, and where SWT libraries will be unpacked. See the following link:
   # http://docfetcher.sourceforge.net/wiki/doku.php?id=faq  
-  cd "${srcdir}/${_name}-${pkgver}/"
-  patch -Np0 -i ../swt.patch
+  cd "${srcdir}/${_downloadfile}/misc/"
+  sed -i 's_#settings=C:/path/to/settings/folder_settings=${user.home}/.config/docfetcher_' paths.txt
+  sed -i 's_#indexes=C:/path/to/indexes/folder_indexes=${user.home}/.cache/docfetcher_' paths.txt
+  sed -i 's_#swt=C:/path/to/swt/folder_swt=${user.home}/.local/share/docfetcher_' paths.txt
+
+  # Now make sure that the java path is correct
+  cd "${srcdir}/${_downloadfile}"
+  sed -i 's_./jre/bin/java_/usr/bin/java_' DocFetcher.sh
 }
 
 package() {
-  cd "${srcdir}/${_name}-${pkgver}/"
+  cd "${srcdir}/${_downloadfile}/"
 
   # Executable
   install -Dm755 "../${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   
   # .desktop file
   install -Dm755 "../${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"  
-
-  # Remove files from other platforms and other unnecessary ones
-  # find . -name '*.app' -exec rm -r '{}' \;
-  find . -name '*.exe' -exec rm -r '{}' \;
-  find . -name '*.bat' -exec rm -r '{}' \;
-  rm "Readme.txt"
 
   # Copy files to destination
   prefix="${pkgdir}/usr/share/${pkgname}"
@@ -54,13 +51,6 @@ package() {
   find "${prefix}" -type d -exec chmod 0755 {} \;
   find "${prefix}" -type f -exec chmod 0644 {} \;
   
-  # make start scripts executable
-  chmod +x ${prefix}/DocFetcher-GTK*.sh
-  
-  # symlink one or other of the startup scripts for GTK2 or GTK3(default)
-  if [ $_gtkver == 'gtk3' ]; then
-    ln -s "/usr/share/${pkgname}/DocFetcher-GTK3.sh" "${prefix}/DocFetcher.sh"
-  elif [ $_gtkver == 'gtk2' ]; then
-    ln -s "/usr/share/${pkgname}/DocFetcher-GTK2.sh" "${prefix}/DocFetcher.sh"
-  fi
+  # make start script executable
+  chmod +x "${prefix}/${_name}.sh"
 }
