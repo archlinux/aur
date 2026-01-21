@@ -6,7 +6,6 @@ pkgbase = python-ocp_vscode
 	arch = x86_64
 	license = Apache-2.0
 	checkdepends = python-pytest
-	checkdepends = python-cadquery
 	checkdepends = python-build123d
 	makedepends = git
 	makedepends = python-setuptools-scm

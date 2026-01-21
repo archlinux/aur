@@ -18,7 +18,6 @@ python-questionary
 )
 checkdepends=(
 python-pytest
-python-cadquery
 python-build123d
 )
 makedepends=(
