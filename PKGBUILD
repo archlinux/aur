@@ -52,14 +52,15 @@ groups=('bareos')
 pkgdesc="Bareos - Backup Archiving Recovery Open Sourced"
 url="http://www.bareos.org"
 license=('AGPL3')
-makedepends=('cmake' 'gcc' 'libmariadbclient' 'postgresql' 'python' 'python-setuptools' 'python-build' 'python-installer' 'rpcsvc-proto' 'git' 'lsb-release' 'qt5-base' 'glusterfs' 'jansson' 'pam_wrapper')
-source=("git+https://github.com/bareos/bareos.git#tag=Release/${pkgver}"
+makedepends=('cmake' 'gcc' 'libmariadbclient' 'postgresql' 'python' 'python-setuptools' 'python-build' 'python-installer' 'rpcsvc-proto' 'lsb-release' 'qt5-base' 'glusterfs' 'jansson' 'pam_wrapper')
+source=(
+        "bareos-${pkgver}.tar.gz::https://github.com/bareos/bareos/archive/refs/tags/Release/${pkgver}.tar.gz"
         "0001-distver.patch"
         "0003-version.patch"
         "0004-sqlspam.patch"
         "0005-httpd.patch")
 
-md5sums=('bf54c39b4f323ff0408790489bb5f5f7'
+md5sums=('2fbe17cfde27aa5f8a877c37dfbcdf79'
          '419b0c64af750aa3e8ea668edf464d3e'
          '5bf1233d94dfecc9060746bfb39b9d2b'
          'ca4c929a2462cafaead8d0b49e3cebed'
@@ -67,8 +68,10 @@ md5sums=('bf54c39b4f323ff0408790489bb5f5f7'
 
 python3_ver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))");#"
 
-#=========================================
 prepare() {
+    # Link source directory to expected name
+    ln -sfn "${pkgbase}-Release-${pkgver}" "${srcdir}/${pkgbase}"
+
     # Apply maintainer patches
     cd "${srcdir}/${pkgbase}"
     local _src
