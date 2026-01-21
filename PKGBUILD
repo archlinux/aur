@@ -1,8 +1,8 @@
 # Maintainer: Thomas J Faughnan Jr <thomas@faughnan.net>
 
 pkgname=imessage-exporter
-pkgver=3.2.1
-pkgrel=2
+pkgver=3.3.1
+pkgrel=1
 pkgdesc='Export iMessage data and run diagnostics'
 arch=(x86_64)
 url='https://github.com/ReagentX/imessage-exporter'
@@ -13,7 +13,7 @@ optdepends=('imagemagick: image conversion support'
             'ffmpeg: audio and video conversion support')
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('3f7eb3adf5486f62c4ecd79eb3391b9ad4abfaf526c1ca58910cd817c95c5f8f58124f6d71a30d0194c6be8d2fee7927df95a58c2ec87beeee9755cd1d15e60d')
+sha512sums=('dec866858987ee55393955ca77c533b404f84b8326baae8ec8a28f9d4de32a791e57658f325971a488f8d84133d0faaf44bd90192502356630380b2189ad8ea8')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -24,7 +24,7 @@ prepare() {
         imessage-exporter/Cargo.toml
     export RUSTUP_TOOLCHAIN=stable
     cargo update imessage-database imessage-exporter
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
