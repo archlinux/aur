@@ -1,19 +1,19 @@
 # Maintainer: Remilia Litjens
 pkgname=ember
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ember — a minimal AUR helper written in Ruby"
 arch=('x86_64' 'aarch64')
 url="https://github.com/0xraincandy/ember"
 license=('GPL')
 depends=('ruby' 'curl' 'git')
 makedepends=('base-devel')
-source=("https://github.com/0xraincandy/ember/archive/refs/tags/v${pkgver}-1.tar.gz")
+source=("https://github.com/0xraincandy/ember/archive/refs/tags/v1.0-2.tar.gz")
 sha256sums=('SKIP')  # Replace with actual sha256
 
 package() {
     # Enter the folder created when tarball is extracted
-    cd "$srcdir/ember-${pkgver}-1" || exit 1
+    cd "$srcdir/ember-${pkgver}-2" || exit 1
 
     # Install the executable
     install -Dm755 bin/emb "$pkgdir/usr/bin/emb"
