@@ -1,43 +1,29 @@
-# Maintainer: PandaDEV <contact@pandadev.net>
+# Maintainer: 
+# Contributor: PandaDEV <contact@pandadev.net>
 pkgname=wireguard-gui-bin
 pkgver=0.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A wireguard client GUI for Linux made with nextauri."
-arch=(x86_64)
+arch=('x86_64' 'aarch64')
 url="https://github.com/0xle0ne/wireguard-gui"
-license=('MIT')
-options=('!strip')
-depends=()
-provides=(wireguard-gui-bin)
-conflicts=(wireguard-gui)
-source_x86_64=("wireguard-gui-${pkgver}.AppImage::https://github.com/0xle0ne/wireguard-gui/releases/download/${pkgver}-stable/wireguard-gui_${pkgver}_amd64.AppImage")
-sha256sums_x86_64=('6db3f1712eb3d35945da6a9a00da5aa23851dd7471d8d1b8b655a3bd20118eed')
+license=('Apache-2.0 AND MIT')
+depends=(
+  'gtk3'
+  'libappindicator'
+  'libsoup3'
+  'webkit2gtk-4.1'
+)
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
+source=("LICENSE-MIT-$pkgver::https://raw.githubusercontent.com/0xle0ne/wireguard-gui/refs/tags/$pkgver-stable/LICENSE-MIT")
+source_x86_64=("$url/releases/download/$pkgver-stable/${pkgname%-bin}_${pkgver}_amd64.deb")
+source_aarch64=("$url/releases/download/$pkgver-stable/${pkgname%-bin}_${pkgver}_arm64.deb")
+sha256sums=('e532a576385a259c2baac5188fcdd4026d004876ad55d3274f88c53fe942556a')
+sha256sums_x86_64=('d2497f671b9c86f530b8f11ae4ab436c46c6bfc04db199aa5a2af308e8a7aefc')
+sha256sums_aarch64=('493c0e06036f2bf0067f28ae63929c37b30768ac68b48ccb157a43f9a7899b3f')
 
 package() {
-	install -Dm755 *.AppImage "$pkgdir/opt/wireguard-gui/wireguard-gui.appimage"
-	install -dm755 "$pkgdir/usr/bin"
+	bsdtar -xvf data.tar.gz -C "$pkgdir/"
 
-	cat >"$pkgdir/usr/bin/wireguard-gui" <<'EOF'
-#!/bin/bash
-export APPIMAGE_EXTRACT_AND_RUN=1
-exec /opt/wireguard-gui/wireguard-gui.appimage "$@"
-EOF
-
-	chmod +x "$pkgdir/usr/bin/wireguard-gui"
-	chmod +x *.AppImage
-
-	./*.AppImage --appimage-extract >/dev/null 2>&1
-
-	if [ -f squashfs-root/*.desktop ]; then
-		install -dm755 "$pkgdir/usr/share/applications"
-		desktop_file=$(find squashfs-root -name "*.desktop" -type f | head -1)
-		sed 's|Exec=.*|Exec=wireguard-gui %U|g' "$desktop_file" >"$pkgdir/usr/share/applications/wireguard-gui.desktop"
-	fi
-
-	png_file=$(find squashfs-root -name "*.png" -type f | head -1)
-	if [ -n "$png_file" ]; then
-		install -Dm644 "$png_file" "$pkgdir/usr/share/pixmaps/wireguard-gui.png"
-	fi
-
-	rm -rf squashfs-root
+  install -Dm644 "LICENSE-MIT-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
 }
