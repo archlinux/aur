@@ -1,13 +1,13 @@
 pkgbase = boxflat-git
 	pkgdesc = Adjust your Moza Racing gear settings
-	pkgver = 1.0.0.0
+	pkgver = 1.0.0.r0
 	pkgrel = 3
 	url = https://github.com/Lawstorant/boxflat
 	install = boxflat.install
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	depends = python313
+	depends = python
 	depends = python-yaml
 	depends = python-pyserial
 	depends = python-gobject

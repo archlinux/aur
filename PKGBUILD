@@ -2,14 +2,14 @@
 _reponame=boxflat
 pkgname=$_reponame-git
 provides=($_reponame)
-pkgver=1.0.0.0
+pkgver=1.0.0.r0
 pkgrel=3
 pkgdesc="Adjust your Moza Racing gear settings"
 arch=('x86_64')
 url="https://github.com/Lawstorant/$_reponame"
 license=('GPL3')
 depends=(
-	python313
+	python
 	python-yaml
 	python-pyserial
 	python-gobject
@@ -33,7 +33,7 @@ sha256sums=(
 
 pkgver() {
   cd "$srcdir/$_reponame"
-  git describe --long --tags | cut -c2- | cut -d "-" -f 1-2 | tr "-" "."
+  git describe --long --tags | cut -c2- | cut -d "-" -f 1-2 | sed 's/-/.r'
 }
 
 package() {
