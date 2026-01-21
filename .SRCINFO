@@ -1,0 +1,15 @@
+pkgbase = autotitle
+	pkgdesc = Automated anime episode renaming tool with MAL integration
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/soymadip/autotitle
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	backup = etc/autotitle/config.yml
+	source = git+https://github.com/soymadip/autotitle.git#tag=v0.2.0
+	sha256sums = SKIP
+
+pkgname = autotitle
