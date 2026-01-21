@@ -7,7 +7,6 @@ pkgbase = immich
 	license = AGPL-3.0-only
 	makedepends = git
 	makedepends = pnpm
-	makedepends = jq
 	makedepends = ts-node
 	makedepends = mise
 	depends = valkey

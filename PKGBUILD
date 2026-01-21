@@ -13,7 +13,7 @@ url='https://github.com/immich-app/immich'
 license=('AGPL-3.0-only')
 arch=(x86_64)
 # ts-node required for CLI
-makedepends=('git' 'pnpm' 'jq' 'ts-node' 'mise')
+makedepends=('git' 'pnpm' 'ts-node' 'mise')
 
 # combination of server/CLI deps, see split package functions
 # for individual deps and commentary
@@ -103,7 +103,7 @@ prepare() {
 	cd web
 	pnpm add 'three@^0.179.0'  # otherwise vite rollup fails to resolve this transitive dependency for photo-sphere-viewer
 
-	cd server
+	cd ../server
 	rm ../mise.toml  # otherwise asks to trust in mise build steps, interrupting unattended builds
 }
 
