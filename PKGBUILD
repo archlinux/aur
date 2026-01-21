@@ -5,18 +5,19 @@
 
 pkgname='mozc'
 pkgver=3.33.6079.102
-pkgrel=1
+pkgrel=2
 pkgdesc='The Open Source edition of Google Japanese Input'
 arch=('x86_64')
 url='https://github.com/google/mozc'
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary')
 depends=('qt6-base')
-makedepends=('bazel' 'git' 'python' 'qt6-base')
+makedepends=('bazelisk' 'git' 'python' 'qt6-base')
 optdepends=('fcitx5-mozc-ut: Fcitx5 integration'
             'ibus-mozc: IBus integration'
             'emacs-mozc: Emacs integration')
 conflicts=('mozc-ut')
 options=(!distcc !ccache)
+install="${pkgname}".install
 source=('git+https://github.com/google/mozc.git#commit=3052f08b2bc0d60c84f640eecb74fcf77d05addc'
         'git+https://github.com/abseil/abseil-cpp.git#commit=4447c7562e3bc702ade25105912dce503f0c4010'
         'git+https://github.com/google/breakpad.git#commit=216cea7bca53fa441a3ee0d0f5fd339a3a894224'
@@ -35,7 +36,7 @@ b2sums=('6e870edc1fc387dd08c5649a6431ee81f928397e84c7182e4bf5001c1b1509c97ffae9a
         '8d105ce08ca103db180ec99c7845eee08d15abcc3e7cfce51d1b565a4ed5942be40aaefbc78e80e09e84c5583640d6a33feed7d3d9ec572c4a9ebf505ea6a7f5')
 
 prepare() {
-    cd mozc/src
+    cd "${pkgname}"/src
 
     git submodule init
     git config submodule.src/third_party/abseil-cpp.url "$srcdir/abseil-cpp"
@@ -49,17 +50,17 @@ prepare() {
 }
 
 build() {
-    cd mozc/src
+    cd "${pkgname}"/src
 
     unset ANDROID_NDK_HOME
     unset ANDROID_HOME
     export JAVA_HOME='/usr/lib/jvm/java-21-openjdk/'
 
-    bazel build server:mozc_server gui/tool:mozc_tool --config oss_linux --compilation_mode opt
+    bazelisk build server:mozc_server gui/tool:mozc_tool --config oss_linux --config release_build
 }
 
 package() {
-    cd mozc/src
+    cd "${pkgname}"/src
 
     # BSD-3-Clause
     sed -n 67,94p data/installer/credits_en.html > Mozc

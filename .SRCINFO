@@ -1,11 +1,12 @@
 pkgbase = mozc
 	pkgdesc = The Open Source edition of Google Japanese Input
 	pkgver = 3.33.6079.102
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/mozc
+	install = mozc.install
 	arch = x86_64
 	license = Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary
-	makedepends = bazel
+	makedepends = bazelisk
 	makedepends = git
 	makedepends = python
 	makedepends = qt6-base

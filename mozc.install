@@ -1,0 +1,24 @@
+post_install() {
+    echo
+    echo "  You have just installed Mozc in its original (vanilla) version."
+    echo
+    echo "  Mozc is the Open Source edition of the Google Japanese Input IME."
+    echo
+    echo "  On its own, it severely lacks in quality compared to its proprietary counterpart."
+    echo
+    echo "  For a much better experience there exists the UT Dictionary project, which is"
+    echo "  an open source patching process that greatly enhances Mozc and brings the word"
+    echo "  conversion quality much closer to that of Google Japanese Input."
+    echo
+    echo "  If you wish to use the UT Dictionary, you simply need to replace"
+    echo "  the vanilla 'mozc' package with the enhanced 'mozc-ut' package."
+    echo
+    echo "  More information about the UT Dictionary project:"
+    echo
+    echo "  https://utuhiro78.github.io/linuxplayers/mozc-ut.html"
+    echo
+}
+
+post_upgrade() {
+    post_install
+}
