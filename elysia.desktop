@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Elysia
+Comment=Universal anime game launcher
+Exec=/usr/bin/elysia
+Icon=/usr/share/pixmaps/elysia.png
+Terminal=false
+Type=Application
+Categories=Game;Utility;
+Keywords=game;launcher;hoyo;genshin;honkai;endfield;
+StartupNotify=true
+StartupWMClass=elysia
