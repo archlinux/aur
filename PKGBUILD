@@ -13,7 +13,7 @@ depends=('qt5-base'
          'libde265')
 provides=("$pkgname")
 conflicts=("$pkgname" "$_pkgname")
-source=("git+${url}.git#commit=a72b395f55f01fe162d549f4ab50222395e6cb3e"
+source=("git+${url}.git#commit=22c1e305bef25b23850a2068dcef3fb165c3fd60"
         'archlinux.patch')
 noextract=()
 md5sums=('SKIP'
