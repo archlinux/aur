@@ -1,0 +1,8 @@
+diff --color -Naur src/mi-create/src/main.py src.new/mi-create/src/main.py
+--- src/mi-create/src/main.py	2026-01-21 06:40:24.397237462 -0500
++++ src.new/mi-create/src/main.py	2026-01-21 06:39:34.439531928 -0500
+@@ -1,3 +1,4 @@
++#!/usr/bin/env python
+ # Mi Create
+ # ooflet <ooflet@proton.me>
+ 
