@@ -1,7 +1,7 @@
 # Maintainer: Wellinton Vieira <wellintonvieira.office@gmail.com>
 
 pkgname="aurup"
-pkgver="1.76"
+pkgver="1.77"
 pkgrel=1
 pkgdesc="The simplify finding and installing packages AUR helper"
 arch=("x86_64")
