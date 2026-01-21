@@ -46,8 +46,8 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
 
-    # Install binary (built in desktop-waifu-overlay subdirectory)
-    install -Dm755 "desktop-waifu-overlay/target/release/desktop-waifu-overlay" "$pkgdir/usr/bin/desktop-waifu"
+    # Install binary
+    install -Dm755 "target/release/desktop-waifu-overlay" "$pkgdir/usr/bin/desktop-waifu"
 
     # Install frontend assets
     install -dm755 "$pkgdir/usr/share/desktop-waifu"
