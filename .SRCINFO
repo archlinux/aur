@@ -11,6 +11,8 @@ pkgbase = git-guitar-git
 	depends = git
 	provides = guitar=0.1.44.r0.g19df65a
 	conflicts = git-guitar
+	conflicts = git-guitar-bin
+	options = !lto
 	source = guitar::git+https://github.com/asinglebit/guitar.git#branch=main
 	sha256sums = SKIP
 
