@@ -2,7 +2,7 @@
 # Maintainer: 00ein00
 pkgname=hytale-f2p-git
 _pkgname=Hytale-F2P
-pkgver=2.0.2a.r120.gb05aeef
+pkgver=2.0.2a.r121.ga355133
 pkgrel=1
 pkgdesc="Hytale-F2P - unofficial Hytale Launcher for free to play with multiplayer support"
 arch=('x86_64')
