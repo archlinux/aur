@@ -1,4 +1,5 @@
-[zine]
-source = "git"
-git = "https://github.com/kristoff-it/zine.git"
+[zine-bin]
+source = "github"
+github = "kristoff-it/zine"
+use_latest_release = true
 prefix = "v"
