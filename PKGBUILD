@@ -50,8 +50,8 @@ package() {
     install -Dm755 "target/release/desktop-waifu-overlay" "$pkgdir/usr/bin/desktop-waifu"
 
     # Install frontend assets
-    install -dm755 "$pkgdir/usr/share/desktop-waifu"
-    cp -r dist/* "$pkgdir/usr/share/desktop-waifu/"
+    install -dm755 "$pkgdir/usr/share/desktop-waifu/dist"
+    cp -r dist/* "$pkgdir/usr/share/desktop-waifu/dist/"
 
     # Install desktop entry
     install -Dm644 "packaging/desktop-waifu.desktop" "$pkgdir/usr/share/applications/desktop-waifu.desktop"
