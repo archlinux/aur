@@ -1,7 +1,5 @@
-*.bpo
+*.tar.xz
 
-blindpaste/
 *.pkg.tar.zst
 pkg/
-rpl.sed
 src/

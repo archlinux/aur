@@ -6,11 +6,8 @@ pkgbase = blindpaste
 	install = advice.install
 	arch = x86_64
 	license = 0BSD
-	makedepends = git
 	optdepends = bash-completion: for command line completions when pressing the <tab> key
-	source = git+https://git.projectgrid.net/blindpaste.git
-	source = LICENSE
-	sha256sums = SKIP
-	sha256sums = 7056c04df17a4e0f0bac9f787f347c9cd892cee6323d1c89528090afd0b934a3
+	source = blindpaste-1.2.1.tar.xz::https://projectgrid.net/archive/blindpaste-1.2.1.tar.xz
+	sha256sums = 0221efde14c73c6abf5786396dafca9baa6cb6ae67a49b36c18b363b89114098
 
 pkgname = blindpaste
