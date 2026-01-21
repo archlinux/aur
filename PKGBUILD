@@ -2,8 +2,8 @@
 pkgname=hys-git
 _pkgname="${pkgname%-git}"
 pkgver=0.1.2.r6.gbe76aec
-pkgrel=2
-pkgdesc='Terminal RSS Reader for Digital Minimalists in Zig. — Build from the main bransh'
+pkgrel=3
+pkgdesc='Terminal RSS Reader for Digital Minimalists in Zig. — Build from the main branch'
 url='https://github.com/superstarryeyes/hys'
 arch=('i686' 'x86_64')
 license=('MIT')
