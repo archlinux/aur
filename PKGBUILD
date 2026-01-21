@@ -18,10 +18,6 @@ sha256sums=('a16f2db2b25f0bcc282f6ac257222d164e2847c3354a543f634bc0d4468e8464'
             '19c91b186937680da1ffc7cb75f03202722d69e01a0b4a454a743a44fbff6f09'
             '393092bf0c037c5c89a3a24555cf1281a36523648f97bfa4e6066f24004ee999')
 
-if [ "$_omit_dlls" = true ]; then
-    depends+=("dotnet-runtime-$_dotnet_ver=$_dotnet_ver.$_runtime_ver.sdk$_sdk_ver" "dotnet-sdk-$_dotnet_ver=$_dotnet_ver.$_runtime_ver.sdk$_sdk_ver")
-fi
-
 # AppImage related functions copied from https://gist.github.com/openglfreak/585b6f1ba965d183c6d0e2ee8778c204
 
 # description:
