@@ -180,14 +180,13 @@ package_bareos-bconsole() {
   backup=('etc/bareos/bconsole.conf')
 
   install -d "$pkgdir/etc/bareos"
+
   local _files=(
-    usr/share/bareos/config/bconsole.conf
     usr/bin/bconsole
+    usr/share/bareos/config/bconsole.conf
     usr/share/man/man1/bconsole.1*
   )
   _install_files "${_files[@]}"
-  install -m640 "${srcdir}/install/usr/share/bareos/config/bconsole.conf" \
-          "${pkgdir}/etc/bareos/bconsole.conf"
 }
 
 package_bareos-common() {
@@ -225,6 +224,7 @@ package_bareos-common() {
   )
   _install_files "${_files[@]}"
   install -Dm644 ${srcdir}/bareos/{AGPL-3.0.txt,core/LICENSE} "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm644 ${srcdir}/bareos/webui/{README.md,doc/README-TRANSLATION.md} "${pkgdir}/usr/share/doc/${pkgname}/"
   install -Dm644 ${srcdir}/bareos/core/README.* "${pkgdir}/usr/share/doc/${pkgname}/"
   install -Dm644 "${srcdir}/bareos.sysusers" "${pkgdir}/usr/lib/sysusers.d/bareos.conf"
   install -Dm644 "${srcdir}/bareos.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/bareos.conf"
@@ -745,7 +745,6 @@ package_bareos-traymonitor() {
   backup=('etc/bareos/tray-monitor.d/monitor/bareos-mon.conf')
   install=bareos-traymonitor.install
 
-  install -d "$pkgdir/etc/bareos/tray-monitor.d/monitor"
   local _files=(
     etc/xdg/autostart/bareos-tray-monitor.desktop
     usr/share/bareos/config/tray-monitor.d/monitor/bareos-mon.conf
@@ -757,7 +756,7 @@ package_bareos-traymonitor() {
   _install_files "${_files[@]}"
 
   # tray-monitor needs configuration files to run
-  install -m640 "${pkgdir}/usr/share/bareos/config/tray-monitor.d/monitor/bareos-mon.conf" "${pkgdir}/etc/bareos/tray-monitor.d/monitor/bareos-mon.conf"
+  chmod 640 "${pkgdir}/etc/bareos/tray-monitor.d/monitor/bareos-mon.conf"
 }
 
 package_bareos-vadp-dumper() {
@@ -813,15 +812,16 @@ package_bareos-webui() {
   install -d "$pkgdir/usr/share/licenses/${pkgname}"
   install -d "$pkgdir/usr/share/doc/${pkgname}"
   local _files=(
-    etc/bareos/bareos-dir.d/console/admin.conf.example
-    etc/bareos/bareos-dir.d/profile/webui-admin.conf
-    etc/bareos/bareos-dir.d/profile/webui-limited.conf.example
-    etc/bareos/bareos-dir.d/profile/webui-readonly.conf
     etc/bareos-webui/directors.ini
     etc/bareos-webui/configuration.ini
     usr/share/bareos-webui
+    usr/share/bareos/config/bareos-dir.d/console/admin.conf.example
+    usr/share/bareos/config/bareos-dir.d/profile/webui-admin.conf
+    usr/share/bareos/config/bareos-dir.d/profile/webui-limited.conf.example
+    usr/share/bareos/config/bareos-dir.d/profile/webui-readonly.conf
   )
   _install_files "${_files[@]}"
+
   install -Dm644 ${srcdir}/bareos/webui/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"
   install -Dm644 ${srcdir}/bareos/webui/{README.md,doc/README-TRANSLATION.md} "${pkgdir}/usr/share/doc/${pkgname}/"
 }
