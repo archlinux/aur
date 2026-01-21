@@ -1,0 +1,16 @@
+pkgbase = yasp
+	pkgdesc = Cross-platform TUI CS2 server picker written in Go
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/dom1torii/yet-another-server-picker
+	arch = x86_64
+	license = MIT
+	depends = iptables
+	source = yet-another-server-picker_Linux_x86_64.tar.gz::https://github.com/dom1torii/yet-another-server-picker/releases/download/0.1.0/yet-another-server-picker_Linux_x86_64.tar.gz
+	source = yasp.desktop
+	source = icon-256.png
+	sha256sums = eb7381240c4b161bdae03ff03a84e43675000258750471926b997f6552835904
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = yasp
