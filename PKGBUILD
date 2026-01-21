@@ -4,7 +4,7 @@ _name=trayer
 pkgname=python-${_name}-git
 provides=(python-trayer)
 pkgver=0.1.1.r0
-pkgrel=1
+pkgrel=2
 pkgdesc="System Tray Icons for GTK4"
 url="https://github.com/enne2/trayer"
 arch=(x86_64)
@@ -12,6 +12,7 @@ license=(MIT)
 depends=(
   glibc
   python
+  python-dbus
 )
 makedepends=(
   git

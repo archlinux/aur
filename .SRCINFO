@@ -12,6 +12,7 @@ pkgbase = python-trayer-git
 	makedepends = python-wheel
 	depends = glibc
 	depends = python
+	depends = python-dbus
 	provides = python-trayer
 	source = git+https://github.com/Enne2/trayer
 	b2sums = SKIP
