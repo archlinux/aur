@@ -5,13 +5,13 @@
 
 pkgname='fcitx5-mozc-ut'
 pkgver=3.33.6079.102
-pkgrel=1
+pkgrel=2
 pkgdesc='Mozc module for Fcitx5'
 arch=('x86_64')
 url='https://github.com/fcitx/mozc'
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-or-later AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary')
 depends=('fcitx5' 'mozc>=3.33.6079.102')
-makedepends=('bazel' 'git' 'python' 'qt6-base')
+makedepends=('bazelisk' 'git' 'python' 'qt6-base')
 optdepends=('fcitx5-configtool')
 provides=('fcitx5-mozc=3.33.6079.102')
 conflicts=('fcitx5-mozc')
@@ -54,7 +54,7 @@ build() {
     unset ANDROID_HOME
     export JAVA_HOME='/usr/lib/jvm/java-21-openjdk/'
 
-    bazel build unix/fcitx5:fcitx5-mozc.so unix/icons --config oss_linux --compilation_mode opt
+    bazelisk build unix/fcitx5:fcitx5-mozc.so unix/icons --config oss_linux --config release_build
 }
 
 package() {
