@@ -4,7 +4,7 @@ pkgname="${_appname}-electron-bin"
 _pkgname=IPTVnator
 pkgver=0.18.0
 _electronversion=39
-pkgrel=1
+pkgrel=2
 pkgdesc="IPTVnator Electron 0.16 with DRM & H.265 playback support. This build version also adds Shaka player and Artplayer components.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -28,11 +28,11 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${url}/releases/download/v
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux-amd64.deb")
 sha256sums=('475a6c9a7c4fd3157f78c0afa1daab94fb81ff23dd94dad81e0f657ba5259f74'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('5ce575cb548ac85a3e8cc6c89eb8f8f5764c8bc64c75fcca731008c868717ce3')
-sha256sums_armv7h=('fc56c2ba3a25b33d6db1611d425ab016cf1d404e29be0d22ecc1919a42a1c2e0')
-sha256sums_x86_64=('c2b4fc04551af77848ce47760e2129e66c8407883db9488e24d33171f670c918')
+sha256sums_aarch64=('68f37f5d6bd0f2fe111c5fac926e38411c53885b67bef968a08645e523378c5b')
+sha256sums_armv7h=('9ed18ddd5d058a4f162145a8c5f77445f06572b62b7881d7a3508431b20f3593')
+sha256sums_x86_64=('5b5e93d4523cb217e5b1bbf93eafa3e078b5ede92b5fe4cb58e9c480ac8a6536')
 _get_electron_version() {
-    _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${_appname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${_appname}.bin" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
