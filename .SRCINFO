@@ -1,6 +1,6 @@
 pkgbase = r-latex2exp
 	pkgdesc = Use LaTeX Expressions in Plots
-	pkgver = 0.9.6
+	pkgver = 0.9.8
 	pkgrel = 1
 	url = https://cran.r-project.org/package=latex2exp
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-latex2exp
 	optdepends = r-testthat
 	optdepends = r-tibble
 	optdepends = r-waldo
-	source = https://cran.r-project.org/src/contrib/latex2exp_0.9.6.tar.gz
-	sha256sums = 669826a433a1d815c9164ffcb69d7d634857be905e3c8c04f464cf1221a0e0ca
+	source = https://cran.r-project.org/src/contrib/latex2exp_0.9.8.tar.gz
+	sha256sums = 8dd641f263989515d0c327550934e4954dc582230ca2bb9f280b6b28a46510a5
 
 pkgname = r-latex2exp
