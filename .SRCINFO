@@ -1,0 +1,20 @@
+pkgbase = python-ocp_gordon
+	pkgdesc = A Python library for Gordon Surface interpolation using B-splines
+	pkgver = v0.2.0
+	pkgrel = 1
+	url = https://github.com/gongfan99/ocp_gordon
+	arch = x86_64
+	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-setuptools-scm
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-ocp
+	depends = python-numpy
+	depends = python-scipy
+	source = git+https://github.com/gongfan99/ocp_gordon#commit=81a573ea8950bab0e11a416dc5426ebfcbe64cea
+	sha256sums = 30c2615d1f7d9d36a00a3daaffce14490c835495b5b274b9a13dee9bfc1d170f
+
+pkgname = python-ocp_gordon
