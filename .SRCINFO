@@ -1,6 +1,6 @@
 pkgbase = qtcreator-qodeassist-plugin-bin
 	pkgdesc = QodeAssist is an AI-powered coding assistant plugin for Qt Creator v18.0.1
-	pkgver = 0.9.7
+	pkgver = 0.9.8
 	pkgrel = 1
 	url = https://github.com/Palm1r/QodeAssist
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = qtcreator-qodeassist-plugin-bin
 	conflicts = qtcreator-qodeassist-plugin
 	conflicts = qodeassist
 	conflicts = QodeAssist
-	source = qtcreator-qodeassist-plugin-0.9.7.7z::https://github.com/Palm1r/QodeAssist/releases/download/v0.9.7/QodeAssist-v0.9.7-QtC18.0.1-Linux-x64.7z
-	sha256sums = 54fd2e70f3a80eb320ebe90ec2a549cb3a619302add7516a827b3abfa24b5ba3
+	source = qtcreator-qodeassist-plugin-0.9.8.7z::https://github.com/Palm1r/QodeAssist/releases/download/v0.9.8/QodeAssist-v0.9.8-QtC18.0.1-Linux-x64.7z
+	sha256sums = fd09f22a1b9357b2316d9ca133aecf228554fbbb02faa4b57922c79265681ac3
 
 pkgname = qtcreator-qodeassist-plugin-bin
