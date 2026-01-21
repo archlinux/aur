@@ -1,18 +1,18 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=oreo-cursors-git
 pkgver=20250419.r68.7483f2d
-pkgrel=1
+pkgrel=2
 pkgdesc="Color material cursors with cute animations."
 arch=('any')
 url="https://github.com/varlesh/oreo-cursors"
 license=('GPL-2.0-or-later')
 makedepends=(
   'git'
-  'gtk-engine-murrine'
   'inkscape'
   'libcanberra'
   'ruby'
   'xorg-xcursorgen'
+  'xorg-server-xvfb'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -35,7 +35,7 @@ build() {
   cd "${pkgname%-git}"
   export NO_AT_BRIDGE=1
   ruby generator/convert.rb
-  make build
+  xvfb-run make build
 }
 
 package() {
