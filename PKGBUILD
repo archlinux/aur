@@ -12,8 +12,8 @@ provides=('termide')
 conflicts=('termide')
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::https://github.com/termide/termide/releases/download/$pkgver/termide-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::https://github.com/termide/termide/releases/download/$pkgver/termide-$pkgver-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('8ddbd2834e27d9751bbb58d2420197386b57a77dd858133deb7f3c5b668ba52f')
-sha256sums_aarch64=('37eb031a256aad066da0bf94a2863bb6bd24d6751a78a3d1e0faa43e57e0c976')
+sha256sums_x86_64=('0442c70ef204d87c0951c4af3a6de1051d7591e1d56da1be0df85f731f530d8d')
+sha256sums_aarch64=('f3c687735d975df923bf49c93a0305082200726178973fb6660150fc06d345d2')
 
 package() {
     # Install binary
