@@ -2,7 +2,7 @@
 # Maintainer: wheaney <wayne at xronlinux dot com>
 _pkgbase=breezy-desktop
 pkgname="${_pkgbase}"-gnome-git
-pkgver=2.4.1
+pkgver=2.6.4
 pkgrel=1
 pkgdesc="Breezy GNOME - XR desktop"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ url="https://github.com/wheaney/breezy-desktop"
 license=('GPL-3.0')
 makedepends=('ninja' 'meson' 'librsvg')
 depends=('gtk4' 'python' 'python-pydbus' 'python-yaml' 'python-gobject' 'gnome-shell>=45.0' 'xr-driver-git>=2.0.0' 'libadwaita' 'gst-python' 'gst-plugin-pipewire')
-source=("git+${url}#commit=394934bd22c46c36d15fdf8969c029fe23866bc5")
+source=("git+${url}#commit=bd973a404f7793adf2e955ae5182897cadff5c41")
 md5sums=(SKIP)
 
 _uuid="breezydesktop@xronlinux.com"
