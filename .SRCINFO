@@ -1,7 +1,7 @@
 pkgbase = python-wekan
 	pkgdesc = Client for interacting with the WeKan® REST-API
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bastianwenske/python-wekan
 	arch = any
 	license = BSD-3-Clause

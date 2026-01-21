@@ -2,7 +2,7 @@
 
 pkgname=python-wekan
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Client for interacting with the WeKan® REST-API"
 url="https://github.com/bastianwenske/python-wekan"
 arch=(any)
