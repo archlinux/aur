@@ -1,6 +1,6 @@
 # Maintainer: Laurent Le Houerou <laurent@lehouerou.net>
 pkgname=waves-bin
-pkgver=0.1.30
+pkgver=0.1.31
 pkgrel=1
 pkgdesc="Terminal music player with library browsing and queue management"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('alsa-lib')
 provides=('waves')
 conflicts=('waves')
 source=("https://github.com/llehouerou/waves/releases/download/v$pkgver/waves_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('3fe30df8c00517cd30937ea4f94ab18ac1a15deda754e2565948e36b0735243e')
+sha256sums=('676d038f34588ff0a769ce7fd44194c15ae94e6fdea46c3c95b85050485fb0e3')
 
 package() {
     install -Dm755 waves "$pkgdir/usr/bin/waves"
