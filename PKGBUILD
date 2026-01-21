@@ -1,6 +1,6 @@
 # Maintainer: Oleg "KawaiDesu" Vasilev <mail@zeym.org>
 pkgname=victoriametrics-bin
-pkgver=1.133.0
+pkgver=1.134.0
 pkgrel=1
 pkgdesc="Fast, cost-effective and scalable time series database"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ source=("victoriametrics.service"
         "victoriametrics.default")
 sha256sums=('6622e315f00bb78e21b5d9c3d6fe5bc447c7cedb1ab2de7a3a1d4c7e951270a7'
             '02ab7aa9ffca4962d35db5f02d93ebad318328e3ebca11a48e1ededfd59772b0')
-sha256sums_x86_64=('d02db219e914a8fd69c82739dab05ceba404413dc9f5f46ae0a7d1bc07d6fb60')
-sha256sums_aarch64=('7d0fc46d717bcfdd6763feb7efed83211d951f53ffeddd6d1d40f4a907438ce8')
+sha256sums_x86_64=('cd6e109bae85ff7c138d838b32be9a7fe2a6d7a9b3a387a7cf9234f22991da10')
+sha256sums_aarch64=('c1d10e05805c7dd789bf1af749bc3f8c5fef195e40a2e928e4708bfb5000dcfd')
 
 package(){
   install -Dm755 "${srcdir}/victoria-metrics-prod" "${pkgdir}/usr/bin/victoria-metrics"
