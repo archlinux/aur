@@ -1,0 +1,13 @@
+pkgbase = waydroid-dinit
+	pkgdesc = Waydroid Container Manager as an Dinit service
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://waydro.id
+	arch = any
+	license = GPL3
+	depends = dinit
+	depends = waydroid
+	source = waydroid-container
+	sha256sums = 638cb5c7e428ea008beb28ca11bbf0318cbee61c7ad5d269806d062d1b6cd263
+
+pkgname = waydroid-dinit

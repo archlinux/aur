@@ -1,0 +1,6 @@
+type = process
+command = /usr/bin/waydroid container start
+stop-command = /usr/bin/waydroid container stop
+logfile = /var/log/waydroid-container.log
+depends-on: network.target
+depends-on: local.target
