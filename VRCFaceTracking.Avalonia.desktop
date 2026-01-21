@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=VRCFaceTracking.Avalonia
+Version=@PACKAGE_VERSION@
+Exec=vrcft %U
+Terminal=false
+Icon=VRCFaceTracking.Avalonia
+StartupWMClass=VRCFaceTracking.Avalonia
+Comment=Cross-platform VRCFaceTracking made with Avalonia
+Categories=Network;Utility;Game;

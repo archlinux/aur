@@ -1,0 +1,2 @@
+#!/bin/sh
+exec /opt/vrcft-avalonia/VRCFaceTracking.Avalonia.Desktop "$@"
