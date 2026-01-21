@@ -1,0 +1,5 @@
+[envdiff-bin]
+source = "github"
+github = "GBerghoff/envdiff"
+use_latest_release = true
+prefix = "v"
