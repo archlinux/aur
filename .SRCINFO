@@ -1,0 +1,26 @@
+pkgbase = mtpdk
+	pkgdesc = The MT Power Drum Kit is a free drum sampler offering the powerful, high-quality sounds of an acoustic, realistic drum kit
+	pkgver = 2.1.4
+	pkgrel = 1
+	url = https://www.powerdrumkit.com
+	arch = x86_64
+	groups = pro-audio
+	groups = vst3-plugins
+	license = custom
+	depends = libxkbcommon
+	depends = xcb-util-cursor
+	depends = glib2
+	depends = xcb-util
+	depends = gcc-libs
+	depends = fontconfig
+	depends = libx11
+	depends = libxkbcommon-x11
+	depends = libxcb
+	depends = cairo
+	depends = glibc
+	depends = pango
+	options = !debug
+	source = https://cdn1.resources.manda-audio.com/DOWNLOADS/products/mtpdk2_free/2.1.4/MTPDK-2.1.4.0-VST3-64bit-Linux-FULL.zip
+	sha256sums = eefb87a8776bd8436abb15559005c46011f1a273575ad0650570677cc6538dfa
+
+pkgname = mtpdk
