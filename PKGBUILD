@@ -15,9 +15,9 @@ conflicts=("$_pkgname" "$_pkgname-alpha" "$_pkgname-alpha-bin" "$_pkgname-git" "
 options=('!strip')
 install=${pkgname}.install
 
-source_x86_64=("${_pkgname}-${pkgver}-${CARCH}.deb::${url}/releases/download/v${pkgver}/${_gitpkgname}_amd64.deb")
-source_aarch64=("${_pkgname}-${pkgver}-${CARCH}.deb::${url}/releases/download/v${pkgver}/${_gitpkgname}_arm64.deb")
-source_armv7h=("${_pkgname}-${pkgver}-${CARCH}.deb::${url}/releases/download/v${pkgver}/${_gitpkgname}_armhf.deb")
+source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_gitpkgname}_amd64.deb")
+source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_gitpkgname}_arm64.deb")
+source_armv7h=("${_pkgname}-${pkgver}-armv7h.deb::${url}/releases/download/v${pkgver}/${_gitpkgname}_armhf.deb")
 
 sha256sums_x86_64=('0729a9cd1a28375d99f1aa82863ff1e4a0c479e0d79c569f41b2429107215fea')
 sha256sums_aarch64=('da2564efdb0646ae1bffe5b13359e52cfcc70205b5911400f3780e98fd6900bb')
