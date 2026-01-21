@@ -8,7 +8,17 @@ pkgbase = posd
 	license = LGPL
 	license = FDL
 	depends = wireplumber
+	depends = meson
+	depends = pkgconf
 	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = glib2
+	depends = pango
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = libadwaita
+	depends = gtkmm-4.0
+	depends = libevdev
 	source = https://codeberg.org/fyiimysf/pOSD.git
 	sha256sums = SKIP
 

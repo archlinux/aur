@@ -7,7 +7,7 @@ url='https://codeberg.org/fyiimysf/pOSD.git'
 pkgdesc="pOSD aka project OSD is a GTK4 based OSD for Volume, Brightness, and Lock-keys"
 license=(GPL LGPL FDL)
 groups=()
-depends=(wireplumber gtk4)
+depends=(wireplumber meson pkgconf gtk4 gtk4-layer-shell glib2 pango cairo gdk-pixbuf2 libadwaita gtkmm-4.0 libevdev)
 source=("https://codeberg.org/fyiimysf/pOSD.git")
 sha256sums=(SKIP)
 
