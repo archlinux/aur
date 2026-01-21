@@ -3,15 +3,15 @@
 # Contributor: Felix Yan <felixonmars@gmail.com>
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
-pkgname='ibus-mozc'
+pkgname=ibus-mozc
 pkgver=3.33.6079.102
-pkgrel=2
+pkgrel=3
 pkgdesc='Mozc module for IBus'
 arch=('x86_64')
 url='https://github.com/google/mozc'
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary')
 depends=('ibus>=1.4.1' 'mozc>=3.33.6079.102')
-makedepends=('bazelisk' 'git' 'python' 'qt6-base')
+makedepends=('bazelisk' 'git' 'python' 'qt6-base' 'unzip')
 options=(!distcc !ccache)
 source=('git+https://github.com/google/mozc.git#commit=3052f08b2bc0d60c84f640eecb74fcf77d05addc'
         'git+https://github.com/abseil/abseil-cpp.git#commit=4447c7562e3bc702ade25105912dce503f0c4010'
@@ -34,13 +34,15 @@ prepare() {
     cd mozc/src
 
     git submodule init
-    git config submodule.src/third_party/abseil-cpp.url "$srcdir/abseil-cpp"
-    git config submodule.src/third_party/breakpad.url "$srcdir/breakpad"
-    git config submodule.src/third_party/gtest.url "$srcdir/googletest"
-    git config submodule.src/third_party/gyp.url "$srcdir/gyp"
-    git config submodule.src/third_party/japanese_usage_dictionary.url "$srcdir/japanese-usage-dictionary"
-    git config submodule.src/third_party/protobuf.url "$srcdir/protobuf"
-    git config submodule.src/third_party/wil.url "$srcdir/wil"
+
+    git config submodule.src/third_party/abseil-cpp.url                 "${srcdir}"/abseil-cpp
+    git config submodule.src/third_party/breakpad.url                   "${srcdir}"/breakpad
+    git config submodule.src/third_party/gtest.url                      "${srcdir}"/googletest
+    git config submodule.src/third_party/gyp.url                        "${srcdir}"/gyp
+    git config submodule.src/third_party/japanese_usage_dictionary.url  "${srcdir}"/japanese-usage-dictionary
+    git config submodule.src/third_party/protobuf.url                   "${srcdir}"/protobuf
+    git config submodule.src/third_party/wil.url                        "${srcdir}"/wil
+
     git -c protocol.file.allow=always submodule update
 }
 
@@ -59,47 +61,47 @@ package() {
 
     # BSD-3-Clause
     sed -n 67,94p data/installer/credits_en.html > Mozc
-    install -Dm644 Mozc "${pkgdir}"/usr/share/licenses/${pkgname}/Mozc
+    install -Dm644 Mozc "${pkgdir}"/usr/share/licenses/"${pkgname}"/Mozc
     # BSD-3-Clause
     sed -n 317,344p data/installer/credits_en.html > Breakpad
-    install -Dm644 Breakpad "${pkgdir}"/usr/share/licenses/${pkgname}/Breakpad
+    install -Dm644 Breakpad "${pkgdir}"/usr/share/licenses/"${pkgname}"/Breakpad
     # NAIST-2003
     sed -n 355,424p data/installer/credits_en.html > IPAdic
-    install -Dm644 IPAdic "${pkgdir}"/usr/share/licenses/${pkgname}/IPAdic
+    install -Dm644 IPAdic "${pkgdir}"/usr/share/licenses/"${pkgname}"/IPAdic
     # BSD-2-Clause
     sed -n 435,457p data/installer/credits_en.html > Japanese-Usage-Dictionary
-    install -Dm644 Japanese-Usage-Dictionary "${pkgdir}"/usr/share/licenses/${pkgname}/Japanese-Usage-Dictionary
+    install -Dm644 Japanese-Usage-Dictionary "${pkgdir}"/usr/share/licenses/"${pkgname}"/Japanese-Usage-Dictionary
     # Public Domain Data
     sed -n 468,470p data/installer/credits_en.html > Okinawa-Dictionary
-    install -Dm644 Okinawa-Dictionary "${pkgdir}"/usr/share/licenses/${pkgname}/Okinawa-Dictionary
+    install -Dm644 Okinawa-Dictionary "${pkgdir}"/usr/share/licenses/"${pkgname}"/Okinawa-Dictionary
     # BSD-3-Clause
     sed -n 481,513p data/installer/credits_en.html > Protocol-Buffers
-    install -Dm644 Protocol-Buffers "${pkgdir}"/usr/share/licenses/${pkgname}/Protocol-Buffers
+    install -Dm644 Protocol-Buffers "${pkgdir}"/usr/share/licenses/"${pkgname}"/Protocol-Buffers
     # MIT
     sed -n 698,704p data/installer/credits_en.html > Tamachi-Phonetic-Kanji-Alphabet
-    install -Dm644 Tamachi-Phonetic-Kanji-Alphabet "${pkgdir}"/usr/share/licenses/${pkgname}/Tamachi-Phonetic-Kanji-Alphabet
+    install -Dm644 Tamachi-Phonetic-Kanji-Alphabet "${pkgdir}"/usr/share/licenses/"${pkgname}"/Tamachi-Phonetic-Kanji-Alphabet
     # MIT
     sed -n 715,735p data/installer/credits_en.html > Windows-Implementation-Library
     sed -i -e 's|^[ \t]*||g' Windows-Implementation-Library
-    install -Dm644 Windows-Implementation-Library "${pkgdir}"/usr/share/licenses/${pkgname}/Windows-Implementation-Library
+    install -Dm644 Windows-Implementation-Library "${pkgdir}"/usr/share/licenses/"${pkgname}"/Windows-Implementation-Library
 
     install -Dm755 bazel-bin/renderer/qt/mozc_renderer "${pkgdir}"/usr/lib/mozc/mozc_renderer
 
-    install -Dm755 bazel-bin/unix/ibus/ibus_mozc "${pkgdir}"/usr/lib/${pkgname}/ibus-engine-mozc
+    install -Dm755 bazel-bin/unix/ibus/ibus_mozc "${pkgdir}"/usr/lib/"${pkgname}"/ibus-engine-mozc
     install -Dm644 bazel-bin/unix/ibus/mozc.xml "${pkgdir}"/usr/share/ibus/component/mozc.xml
 
     cd bazel-bin/unix
 
     unzip -o icons.zip
 
-    install -Dm644 mozc.png                         "${pkgdir}"/usr/share/${pkgname}/product_icon.png
-    install -Dm644 alpha_full.svg                   "${pkgdir}"/usr/share/${pkgname}/alpha_full.svg
-    install -Dm644 alpha_half.svg                   "${pkgdir}"/usr/share/${pkgname}/alpha_half.svg
-    install -Dm644 direct.svg                       "${pkgdir}"/usr/share/${pkgname}/direct.svg
-    install -Dm644 hiragana.svg                     "${pkgdir}"/usr/share/${pkgname}/hiragana.svg
-    install -Dm644 katakana_full.svg                "${pkgdir}"/usr/share/${pkgname}/katakana_full.svg
-    install -Dm644 katakana_half.svg                "${pkgdir}"/usr/share/${pkgname}/katakana_half.svg
-    install -Dm644 outlined/dictionary.svg          "${pkgdir}"/usr/share/${pkgname}/dictionary.svg
-    install -Dm644 outlined/properties.svg          "${pkgdir}"/usr/share/${pkgname}/properties.svg
-    install -Dm644 outlined/tool.svg                "${pkgdir}"/usr/share/${pkgname}/tool.svg
+    install -Dm644 mozc.png                 "${pkgdir}"/usr/share/"${pkgname}"/product_icon.png
+    install -Dm644 alpha_full.svg           "${pkgdir}"/usr/share/"${pkgname}"/alpha_full.svg
+    install -Dm644 alpha_half.svg           "${pkgdir}"/usr/share/"${pkgname}"/alpha_half.svg
+    install -Dm644 direct.svg               "${pkgdir}"/usr/share/"${pkgname}"/direct.svg
+    install -Dm644 hiragana.svg             "${pkgdir}"/usr/share/"${pkgname}"/hiragana.svg
+    install -Dm644 katakana_full.svg        "${pkgdir}"/usr/share/"${pkgname}"/katakana_full.svg
+    install -Dm644 katakana_half.svg        "${pkgdir}"/usr/share/"${pkgname}"/katakana_half.svg
+    install -Dm644 outlined/dictionary.svg  "${pkgdir}"/usr/share/"${pkgname}"/dictionary.svg
+    install -Dm644 outlined/properties.svg  "${pkgdir}"/usr/share/"${pkgname}"/properties.svg
+    install -Dm644 outlined/tool.svg        "${pkgdir}"/usr/share/"${pkgname}"/tool.svg
 }
