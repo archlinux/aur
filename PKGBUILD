@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=benchmarkmeData
-_pkgver=1.0.4
+_pkgver=2.0.0
 pkgname=r-${_pkgname,,}
-pkgver=1.0.4
-pkgrel=4
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Data Set for the 'benchmarkme' Package"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -21,7 +21,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6e0768db1c783d2fa84d5214f3d8024dc9c69c7cc4d108059fa652fcd4949bd8')
+sha256sums=('a8dacf85a1c548d011299dca78ec376a7fbea68d0b6482e763dca7685bad1417')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
