@@ -1,0 +1,61 @@
+# Pacman install hooks for Superhuman Linux
+
+post_install() {
+    echo ""
+    echo "╔══════════════════════════════════════════════════════════════════╗"
+    echo "║                    Superhuman Linux Installed                     ║"
+    echo "╚══════════════════════════════════════════════════════════════════╝"
+    echo ""
+    echo "  To enable auto-start on login:"
+    echo "    cp /etc/xdg/autostart/superhuman.desktop ~/.config/autostart/"
+    echo "    sed -i 's/Hidden=true/Hidden=false/' ~/.config/autostart/superhuman.desktop"
+    echo ""
+
+    # Update icon cache
+    if [ -x /usr/bin/gtk-update-icon-cache ]; then
+        gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
+    fi
+
+    # Update desktop database
+    if [ -x /usr/bin/update-desktop-database ]; then
+        update-desktop-database -q /usr/share/applications 2>/dev/null || true
+    fi
+
+    # Register protocol handlers
+    if [ -x /usr/bin/xdg-mime ]; then
+        xdg-mime default superhuman.desktop x-scheme-handler/superhuman 2>/dev/null || true
+        xdg-mime default superhuman.desktop x-scheme-handler/mailto 2>/dev/null || true
+    fi
+}
+
+post_upgrade() {
+    post_install
+
+    # Check if patches might have failed
+    if [ -f /opt/superhuman/VERSION ]; then
+        local version=$(cat /opt/superhuman/VERSION)
+        echo "  Upgraded to version: $version"
+        echo ""
+    fi
+}
+
+pre_remove() {
+    # Remove autostart file if it exists
+    rm -f "$HOME/.config/autostart/superhuman.desktop" 2>/dev/null || true
+}
+
+post_remove() {
+    echo ""
+    echo "Superhuman has been removed."
+    echo ""
+
+    # Update icon cache
+    if [ -x /usr/bin/gtk-update-icon-cache ]; then
+        gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
+    fi
+
+    # Update desktop database
+    if [ -x /usr/bin/update-desktop-database ]; then
+        update-desktop-database -q /usr/share/applications 2>/dev/null || true
+    fi
+}
