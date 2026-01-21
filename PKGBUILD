@@ -15,6 +15,7 @@ python-websockets
 python-flask
 python-pyperclip
 python-questionary
+python-flask-sock
 )
 checkdepends=(
 python-pytest
