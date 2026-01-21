@@ -1,6 +1,6 @@
 pkgname=songrec-git
 _pkgname=songrec
-pkgver=r359.9b0c295
+pkgver=r366.b5ad1e8
 pkgrel=1
 provides=('songrec')
 conflicts=('songrec')
@@ -31,6 +31,6 @@ package() {
                     "$pkgdir/usr/share/icons/hicolor/scalable/apps/re.fossplant.songrec.svg"
   install -Dm755 "packaging/rootfs/usr/share/metainfo/re.fossplant.songrec.metainfo.xml" \
                     "$pkgdir/usr/share/metainfo/re.fossplant.songrec.metainfo.xml"
-  cp -ra "locale" "$pkgdir/usr/share/"
+  cp -ra "translations/locale" "$pkgdir/usr/share/"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
