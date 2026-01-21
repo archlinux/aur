@@ -1,5 +1,5 @@
 pkgname=just-talk-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Speech recognition app with global hotkey support"
 arch=('x86_64')
@@ -10,7 +10,7 @@ provides=('just-talk')
 conflicts=('just-talk' 'just-talk-git')
 _pkgfile="just-talk-linux-x86_64-v${pkgver}.tar.zst"
 source=("${_pkgfile}::https://github.com/whoamihappyhacking/just-talk/releases/download/v${pkgver}/${_pkgfile}")
-sha256sums=('4f4bb5a965d006d1e65563680fff6c0784aa272cb7fe75a24c281f1f1a1fe440')
+sha256sums=('ef4ea13019bbe3b6a239b5aa566454194a74debc3c577e04a1e67643189369af')
 
 package() {
   install -Dm755 "$srcdir/just-talk" "$pkgdir/usr/bin/just-talk"
