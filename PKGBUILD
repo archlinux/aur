@@ -2,7 +2,7 @@
 # Contributor: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=simdutf
-pkgver=7.7.0
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="Unicode validation and transcoding at billions of characters per second"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('git' 'cmake' 'ninja')
 provides=("simdutf=$pkgver")
 conflicts=('simdutf')
 source=("https://github.com/simdutf/simdutf/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0180de81a1dd48a87b8c0442ffa81734f3db91a7350914107a449935124e3c6f')
+sha256sums=('a21c34c52d91a229591e4ebc8822a876604cf2fffeac9ec065bfda7cbfb9d680')
 
 build() {
   cd "${pkgname}-${pkgver}"
