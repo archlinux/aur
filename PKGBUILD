@@ -6,10 +6,6 @@ arch=('x86_64')
 url="https://github.com/whoamihappyhacking/just-talk"
 license=('GPL-3.0-or-later')
 options=('!debug')
-optdepends=(
-  'xdotool: X11 auto-submit typing'
-  'wtype: Wayland auto-submit typing'
-)
 provides=('just-talk')
 conflicts=('just-talk' 'just-talk-git')
 _pkgfile="just-talk-linux-x86_64-v${pkgver}.tar.zst"
