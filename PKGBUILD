@@ -4,7 +4,7 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=144.0.7559.59
+pkgver=144.0.7559.96
 pkgrel=1
 _manual_clone=0
 # The following error occures on Abseil 20250512.0:
@@ -31,7 +31,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         fix-trust-store-segfault.patch
         fix-undeclared-isnan.patch
 )
-sha256sums=('8d6de5bbf447b9d0f3c99843230ffebe5954cbcb38d9f8c2ddbbeb5fbcfa9179'
+sha256sums=('6f7fbeaa5ef0b1b4c0ede631edb7365ae48602f587c3c3b65af874922d21a064'
             'ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             SKIP
@@ -203,8 +203,6 @@ prepare() {
 
   # Increase _FORTIFY_SOURCE level to match Arch's default flags
   patch -Np1 -i ../increase-fortify-level.patch
-
-  # Fixes for building with libstdc++ instead of libc++
 
   # Fixes the build crashing with the following error:
   # ../../components/cronet/native/engine.cc:155:8: error: use of undeclared identifier 'isnan'
