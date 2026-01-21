@@ -15,7 +15,7 @@ url="https://github.com/archisman-panigrahi/typhoon"
 conflicts=("${_basename}")
 provides=("${_basename}")
 
-depends=('gtk3' 'webkit2gtk' 'python' 'python-dbus' 'python-gobject' 'python-cairosvg' 'bash' 'gdk-pixbuf2' 'webkit2gtk' 'imagemagick' 'libportal')
+depends=('gtk3' 'webkit2gtk' 'python' 'python-dbus' 'python-gobject' 'python-cairosvg' 'gdk-pixbuf2' 'webkit2gtk' 'imagemagick' 'libportal')
 makedepends=('tar')
 
 source=("https://github.com/archisman-panigrahi/typhoon/releases/download/v${pkgver}/${_basename}_${pkgver}_all.deb")

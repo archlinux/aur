@@ -12,7 +12,6 @@ pkgbase = typhoon-bin
 	depends = python-dbus
 	depends = python-gobject
 	depends = python-cairosvg
-	depends = bash
 	depends = gdk-pixbuf2
 	depends = webkit2gtk
 	depends = imagemagick
