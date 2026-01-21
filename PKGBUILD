@@ -22,7 +22,6 @@ pkgver () {
 
 prepare() {
   cd "${srcdir}/vtk"
-  sed -i "s|TARGETS SQLite3::SQLite3|TARGETS SQLite::SQLite3|g" ThirdParty/sqlite/CMakeLists.txt
 }
 
 build() {
