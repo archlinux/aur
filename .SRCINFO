@@ -1,0 +1,21 @@
+pkgbase = coomer-bin
+	pkgdesc = Zoomer application for everyone on Linux (prebuilt binary)
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/yuzujr/coomer
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libglvnd
+	depends = libx11
+	depends = libxrandr
+	depends = wayland
+	depends = libxkbcommon
+	depends = dbus
+	optdepends = xdg-desktop-portal: portal screenshot backend
+	provides = coomer
+	conflicts = coomer
+	source = coomer-v1.1.0-linux-x86_64.tar.gz::https://github.com/yuzujr/coomer/releases/download/v1.1.0/coomer-v1.1.0-linux-x86_64.tar.gz
+	sha256sums = d5b72a20313aae73ff5dc81e1e9c209b5f4b8c9e259b9febafa87ddd328ca3b1
+
+pkgname = coomer-bin
