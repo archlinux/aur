@@ -1,5 +1,5 @@
 pkgname=myrient
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Bulk downloader and extractor for ROM archive directories"
 arch=('x86_64')
