@@ -2,7 +2,7 @@
 
 pkgname=dcli-arch-git
 pkgver=0.1.0.r105.06057ec
-pkgrel=9
+pkgrel=10
 pkgdesc="A declarative package management CLI tool for Arch Linux, inspired by NixOS"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/theblackdon/dcli"
@@ -32,20 +32,23 @@ pkgver() {
 build() {
     cd "$srcdir/${pkgname%-git}"
     export RUSTUP_TOOLCHAIN=stable
+    # Use GNU ld instead of rust-lld to fix linking with vendored Lua
+    export RUSTFLAGS="-C link-arg=-fuse-ld=bfd"
     cargo build --release --locked
 }
 
 check() {
     cd "$srcdir/${pkgname%-git}"
+    export RUSTFLAGS="-C link-arg=-fuse-ld=bfd"
     cargo test --release --locked
 }
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    
+
     # Install binary
     install -Dm755 "target/release/dcli" "$pkgdir/usr/bin/dcli"
-    
+
     # Install license
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }

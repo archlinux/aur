@@ -1,7 +1,7 @@
 pkgbase = dcli-arch-git
 	pkgdesc = A declarative package management CLI tool for Arch Linux, inspired by NixOS
 	pkgver = 0.1.0.r105.06057ec
-	pkgrel = 9
+	pkgrel = 10
 	url = https://gitlab.com/theblackdon/dcli
 	arch = x86_64
 	arch = aarch64
