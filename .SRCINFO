@@ -1,11 +1,11 @@
 pkgbase = tropy-bin
 	pkgdesc = Explore your research photos
-	pkgver = 1.17.2
+	pkgver = 1.17.3
 	pkgrel = 1
 	url = https://tropy.org
 	arch = x86_64
 	license = AGPL-3.0-or-later
-	depends = electron38
+	depends = electron39
 	depends = gcc-libs
 	depends = glib2
 	depends = glibc
@@ -17,9 +17,10 @@ pkgbase = tropy-bin
 	conflicts = tropy
 	conflicts = tropy-appimage
 	options = !strip
+	options = !debug
 	source = tropy.sh
-	source = https://github.com/tropy/tropy/releases/download/v1.17.2/tropy-1.17.2-x64-shared.tar.bz2
-	sha256sums = 034914456ca6e70ebd929ffd96cce2d7b84744d5eae2ce0467fa42ade71f7f92
-	sha256sums = 1e378083d4d743e7f8f8c007cea3cd19e39231ef3ed294fd064c850550a08207
+	source = https://github.com/tropy/tropy/releases/download/v1.17.3/tropy-1.17.3-x64-shared.tar.bz2
+	sha256sums = 0dc0be3865d11e7f9afa95fb36cf9c18b4947ab83a360a29f55873c291404451
+	sha256sums = 83e131b850c8501e22dff87f5aaddc19b7c93059dd892a96e593702051bf2bff
 
 pkgname = tropy-bin

@@ -1,14 +1,14 @@
 # Maintainer: Sylvester Keil <sylvester@keil.or.at>
 
 pkgname='tropy-bin'
-pkgver='1.17.2'
+pkgver='1.17.3'
 pkgrel=1
 pkgdesc='Explore your research photos'
 arch=('x86_64')
 url='https://tropy.org'
 license=('AGPL-3.0-or-later')
 depends=(
-  'electron38'
+  'electron39'
   'gcc-libs'
   'glib2'
   'glibc'
@@ -23,14 +23,14 @@ optdepends=()
 makedepends=()
 provides=('tropy')
 conflicts=('tropy' 'tropy-appimage')
-options=(!strip)
+options=(!strip !debug)
 
 source=(
   'tropy.sh'
   "https://github.com/tropy/tropy/releases/download/v${pkgver}/tropy-${pkgver}-x64-shared.tar.bz2")
 
-sha256sums=('034914456ca6e70ebd929ffd96cce2d7b84744d5eae2ce0467fa42ade71f7f92'
-            '1e378083d4d743e7f8f8c007cea3cd19e39231ef3ed294fd064c850550a08207')
+sha256sums=('0dc0be3865d11e7f9afa95fb36cf9c18b4947ab83a360a29f55873c291404451'
+            '83e131b850c8501e22dff87f5aaddc19b7c93059dd892a96e593702051bf2bff')
 
 package() {
   install -dm755 "${pkgdir}/usr/lib/tropy"
