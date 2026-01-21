@@ -2,7 +2,7 @@
 # https://github.com/Gvolexe/GvolTools
 
 pkgname=gvoltools
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="A collection of SSH management and system administration tools"
 arch=('any')
