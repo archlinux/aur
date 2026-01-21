@@ -1,0 +1,5 @@
+[dawn-bin]
+source = "github"
+github = "andrewmd5/dawn"
+use_latest_release = true
+prefix = "v"
