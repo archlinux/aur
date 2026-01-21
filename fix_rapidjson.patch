@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 12fef27a..0e196d15 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -116,7 +116,7 @@ add_custom_command(
+         -l ${LIBCLANG_PATH}
+         -i ${VTK_INCLUDE_DIR}/
+         -i ${OPENGL_INCLUDE_DIRS}
+-        -i ${RapidJSON_INCLUDE_DIRS}
++        -i ${RAPIDJSON_INCLUDE_DIRS}
+         -i ${CLANG_INSTALL_PREFIX}/lib/clang/${LLVM_VERSION_MAJOR}/include/
+         -p ${CMAKE_SOURCE_DIR}
+         ${CXX_INCLUDES}

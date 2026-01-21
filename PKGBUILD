@@ -1,5 +1,5 @@
 pkgname=python-ocp
-pkgver=7.8.1.2+r81.g2dd2ce8a
+pkgver=7.9.3.0
 pkgrel=1
 pkgdesc="Python wrapper for OCCT generated using pywrap"
 arch=(x86_64)
@@ -62,28 +62,30 @@ glew
 
 conflicts=(python-ocp-git)
 
-_ocp_fragment="#commit=2dd2ce8a63f1eaffebe27b1fdcb94c6bba6dc61b"
+_ocp_fragment="#commit=5b151ff40aec7ee9460fc47138b21da5877262f4"
 #_forced_pywrap_commit="5e134c526b3bbd1758d8f63e518bc16c3d7ff352"  # comment this to use the expected commit
 source=(
   git+https://github.com/CadQuery/OCP.git${_ocp_fragment}
   git+https://github.com/CadQuery/pywrap.git
   no_progress_bars.patch
   mpi_cmake.patch
+  fix_rapidjson.patch
   pyproject.toml
 )
 
 options=(!lto)  # comment this line out if you've got better than 32 GB of ram to spare for the linking step
 
-sha256sums=('3ff25c0603d310a68d7ac7f4207e7bb2f7006b038ad312322d141b77c9164d83'
+sha256sums=('4f9a8bd0f814fd01195183832b2a83513f967b21b09f64938e07d06f1afbff3d'
             'SKIP'
             'b4c2585efd9c21c6351b6278098b4bcf7395e23b9721c391b3bcb72983b6ebf8'
             '73c64a8323df9a2b96955d0104f761ec3d9078813716164b9dd7b647d65bb2f0'
+            'c4e4a9c7991cd2dc657ddf8a38d7455c711d6929c238141b9544fefaf4db021c'
             'd364dbb165848e0327a941390c1be0fdc6691e6f4952d8233368a563e2594843')
 
 # needed to prevent memory exhaustion, 10 seems to consume about 14.5 GiB in the build step
 _n_parallel_build_jobs=1
 #_n_parallel_build_jobs=10  # consumes ~14.5 GiB of ram
-#_n_parallel_build_jobs=30  # consumes ~30 GiB of ram
+#_n_parallel_build_jobs=25  # consumes ~30 GiB of ram
 #_n_parallel_build_jobs=60  # consumes ~34 GiB of ram
 #_n_parallel_build_jobs=$(nproc --ignore 2)
 
@@ -115,6 +117,8 @@ prepare(){
   # use system's opencascade headers, not whatever is shipped here
   rm -r opencascade
   ln -s "${_opencascade_install_prefix}"/include/opencascade .
+
+  cat ../../fix_rapidjson.patch | patch -p1
 
   cd pywrap
   cat ../../no_progress_bars.patch | patch -p1  # disable progress bars
