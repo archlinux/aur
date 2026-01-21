@@ -1,11 +1,11 @@
 pkgname=songrec-git
 _pkgname=songrec
-pkgver=r318.59c08f1
+pkgver=r354.0849509
 pkgrel=1
 provides=('songrec')
 conflicts=('songrec')
 pkgdesc='An open-source, unofficial Shazam client for Linux, written in Rust.'
-url='https://github.com/marin-m/SongRec'
+url='https://songrec.fossplant.re/'
 arch=('x86_64')
 license=('GPL3')
 makedepends=('cargo' 'rust' 'pkgconf' 'git')
@@ -31,7 +31,6 @@ package() {
                     "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.github.marinm.songrec.svg"
   install -Dm755 "packaging/rootfs/usr/share/metainfo/com.github.marinm.songrec.metainfo.xml" \
                     "$pkgdir/usr/share/metainfo/com.github.marinm.songrec.metainfo.xml"
-  mkdir -p "$pkgdir/usr/share/songrec"
-  cp -ra "translations" "$pkgdir/usr/share/songrec/translations"
+  cp -ra "locale" "$pkgdir/usr/share/"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
