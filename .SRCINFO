@@ -1,7 +1,7 @@
 pkgbase = multi-account-containers-lite
 	pkgdesc = Lets you keep parts of your online life separated into color-coded tabs that preserve your privacy
-	pkgver = 8.2.1001
-	pkgrel = 2
+	pkgver = 8.3.5000
+	pkgrel = 1
 	url = https://codeberg.org/Konsortium/multi-account-containers-lite
 	arch = any
 	groups = firefox-addons
@@ -12,8 +12,8 @@ pkgbase = multi-account-containers-lite
 	makedepends = pnpm
 	makedepends = strip-nondeterminism
 	makedepends = zip
-	source = mac::git+https://codeberg.org/Konsortium/multi-account-containers-lite#commit=e516217bb2e6e19774ab9784f701fae08af73e0c
-	sha512sums = SKIP
+	source = mac::git+https://codeberg.org/Konsortium/multi-account-containers-lite#commit=c5dfe3dd174c5492c977387c45e932442fca9a65
+	sha512sums = 336aeabe3567cc4b2cc769299e5bae52e74fae4ead2fbbe627ca0de5df3891e0924f93f8c548aeda6e31862a596500931c85866ed395c125815e0d79f4e2393a
 
 pkgname = multi-account-containers-lite
 
