@@ -1,11 +1,10 @@
 _pkgname=polybar-dwm
-_pkgver=3.7.1
 pkgname="${_pkgname}-git"
-pkgver=3.7.1.r0.g09eac084
+pkgver=3.7.2
 pkgrel=1
 pkgdesc="polybar fork with a dwm module"
 arch=("i686" "x86_64")
-url="https://github.com/pgrondek/${_pkgname}"
+url="https://github.com/sipragtel/${_pkgname}"
 license=("MIT")
 depends=("cairo" "xcb-util-image" "xcb-util-wm" "xcb-util-xrm" "xcb-util-cursor"
          "alsa-lib" "libpulse" "libmpdclient" "libnl" "jsoncpp" "curl")
@@ -19,10 +18,6 @@ conflicts=("polybar")
 install="${_pkgname}.install"
 source=("${_pkgname}::git+${url}.git")
 sha256sums=("SKIP")
-
-pkgver() {
-  git -C "${_pkgname}" describe --long --all | sed "s/-/.r/;s/-/./g" | sed "s/heads\/master/${_pkgver}/g"
-}
 
 prepare() {
   git -C "${_pkgname}" submodule update --init --recursive

@@ -1,8 +1,8 @@
 pkgbase = polybar-dwm-git
 	pkgdesc = polybar fork with a dwm module
-	pkgver = 3.7.1.r0.g09eac084
+	pkgver = 3.7.2
 	pkgrel = 1
-	url = https://github.com/pgrondek/polybar-dwm
+	url = https://github.com/sipragtel/polybar-dwm
 	install = polybar-dwm.install
 	arch = i686
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = polybar-dwm-git
 	optdepends = xorg-fonts-misc: Font used in example config
 	provides = polybar
 	conflicts = polybar
-	source = polybar-dwm::git+https://github.com/pgrondek/polybar-dwm.git
+	source = polybar-dwm::git+https://github.com/sipragtel/polybar-dwm.git
 	sha256sums = SKIP
 
 pkgname = polybar-dwm-git
