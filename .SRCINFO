@@ -1,0 +1,15 @@
+pkgbase = river-tag-overlay
+	pkgdesc = Tool for the river Wayland compositor showing tag status
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://git.sr.ht/~leon_plickat/river-tag-overlay
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = glibc
+	depends = pixman
+	depends = river
+	depends = wayland
+	source = river-tag-overlay-v1.0.0.tar.gz::https://git.sr.ht/~leon_plickat/river-tag-overlay/archive/v1.0.0.tar.gz
+	b2sums = ed7b003a46698da3fc857e7d1ad6204f2c7627bc63145b7b71e736e623b07c763c862598c7039a0bfe4937bf43ba86e2cbdef8dd4c66c2be147c502c17d71386
+
+pkgname = river-tag-overlay

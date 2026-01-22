@@ -1,0 +1,4 @@
+[river-tag-overlay]
+source = "git"
+git = "https://git.sr.ht/~leon_plickat/river-tag-overlay"
+prefix = "v"
