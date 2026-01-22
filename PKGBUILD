@@ -1,7 +1,7 @@
 # Maintainer: Jia Yin<yenfeng.shetiko at gmail dot com>
 
 pkgname=sddm-minesddm-theme-git
-pkgver=v2.1.0.r1.gcdc13ec
+pkgver=v2.1.0.r3.g8d77136
 pkgrel=1
 pkgdesc='A Minecraft themed SDDM.'
 arch=('any')
