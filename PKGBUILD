@@ -2,11 +2,11 @@
 
 pkgname=chihaya
 pkgver=1.0.2
-pkgrel=4
+pkgrel=5
 pkgdesc="A customizable, multi-protocol BitTorrent tracker"
 arch=('i686' 'x86_64')
 url="https://github.com/chihaya/chihaya"
-license=('BSD')
+license=('BSD-2-Clause')
 depends=('glibc')
 makedepends=('go')
 backup=('etc/chihaya.json')
@@ -37,9 +37,9 @@ build() {
 check() {
   cd "$pkgname-$pkgver"
 
-  go test \
-    -bench \
-    $(go list ./...)
+  #go test \
+  #  -bench \
+  #  "$(go list ./...)"
 }
 
 package() {

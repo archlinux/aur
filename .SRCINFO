@@ -1,11 +1,11 @@
 pkgbase = chihaya
 	pkgdesc = A customizable, multi-protocol BitTorrent tracker
 	pkgver = 1.0.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/chihaya/chihaya
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = BSD-2-Clause
 	makedepends = go
 	depends = glibc
 	backup = etc/chihaya.json
@@ -17,4 +17,3 @@ pkgbase = chihaya
 	sha256sums = SKIP
 
 pkgname = chihaya
-
