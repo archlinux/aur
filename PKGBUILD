@@ -20,11 +20,11 @@ optdepends=(
 options=('!strip')
 install=superhuman.install
 source=(
-    "Superhuman.exe::https://assets.mail.superhuman.com/webapp/download/Superhuman.exe"
+    "Superhuman-${pkgver}.exe::https://assets.mail.superhuman.com/webapp/download/Superhuman.exe"
     "linux_tray.js"
 )
 sha256sums=('SKIP' 'SKIP')
-noextract=('Superhuman.exe')
+noextract=("Superhuman-${pkgver}.exe")
 
 _electron_version="38.7.1"
 _patch_failures=0
@@ -47,7 +47,7 @@ prepare() {
     # Extract Windows installer
     msg2 "Extracting Windows installer..."
     mkdir -p extract
-    7z x -y Superhuman.exe -o"extract" > /dev/null
+    7z x -y "Superhuman-${pkgver}.exe" -o"extract" > /dev/null
 
     # Extract the app from app-64.7z
     mkdir -p app-win
