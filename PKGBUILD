@@ -3,7 +3,7 @@
 
 pkgname=kumacub
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Run local Nagios-compatible checks; push results to Uptime Kuma."
 arch=('any')
 url="https://github.com/toadstule/kumacub"

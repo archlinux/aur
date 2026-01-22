@@ -1,7 +1,7 @@
 pkgbase = kumacub
 	pkgdesc = Run local Nagios-compatible checks; push results to Uptime Kuma.
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/toadstule/kumacub
 	arch = any
 	license = GPL-3.0-only
