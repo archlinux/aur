@@ -1,5 +1,5 @@
 # Maintainer: NinjaTech404 <ninjatech404@gmail.com>
-pkgname=drawy-git
+pkgname=drawy
 _pkgname=drawy
 pkgver=0.1.r161.4c42a59
 pkgrel=1
@@ -15,7 +15,7 @@ optdepends=(
   'hicolor-icon-theme: For icon theme integration'
 )
 provides=("$_pkgname")
-conflicts=("$_pkgname")
+conflicts=("drawy-git")
 source=("$_pkgname::git+https://github.com/NinjaTech404/drawy.git")
 sha256sums=('SKIP')
 
