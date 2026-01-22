@@ -7,7 +7,7 @@
 pkgname=simulide-git
 pkgver=r260122
 #_realver=${pkgver//.r*/}
-pkgrel=1
+pkgrel=2
 pkgdesc="Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers). Development version."
 arch=("x86_64")
 url="https://github.com/eeTools/SimulIDE-dev"
@@ -16,10 +16,12 @@ conflicts=('simulide')
 license=("AGPL-3.0-or-later")
 source=(
   "${pkgname}::git+https://github.com/eeTools/SimulIDE-dev.git"
-  "simulide.desktop")
+  "simulide.desktop"
+  "simulide-mime.xml")
 sha256sums=(
   SKIP
-  '7e9d4a7a40c45a1aaea2b96dc01af628df3356b0e2b2ced1425cf3ecea22ff19')
+  '7e9d4a7a40c45a1aaea2b96dc01af628df3356b0e2b2ced1425cf3ecea22ff19'
+  '2eef8de822c14ca8377458bb2f268db756ec620bedde363740bb556f2948a7f3')
 
 depends=(
   "qt6-base"
@@ -33,11 +35,13 @@ makedepends=('git' 'qt6-tools')
 build() {
   cd "${srcdir}/${pkgname}/build_XX"
   qmake6
-  make
+  PATH="/usr/lib/qt6/bin:$PATH" make
 }
 
 package() {
-  install -D -m644 simulide.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -D -m644 "${srcdir}/simulide.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  # mime-type
+  install -D -m644 "${srcdir}/simulide-mime.xml" "${pkgdir}/usr/share/mime/packages/simulide.xml"
 
   cd "${srcdir}/${pkgname}/build_XX/executables/"
   # don't care about release prefix, move to single folder SimulIDE_${version}
@@ -52,9 +56,6 @@ package() {
   rm ${pkgdir}/usr/share/simulide/simulide
   # icon
   install -D -m644 "${srcdir}/${pkgname}/resources/icons/simulide.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/simulide.png"
-  # mime-type
-  install -D -m644 "${srcdir}/${pkgname}/resources/simulide-mime.xml" "${pkgdir}/usr/share/mime/packages/simulide.xml"
-
 }
 
 pkgver() {
