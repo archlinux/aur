@@ -1,12 +1,12 @@
 pkgbase = falcond-profiles
 	pkgdesc = Default falcond profiles
-	pkgver = r20.0f87c74
+	pkgver = r21.f52c344
 	pkgrel = 1
 	url = https://github.com/PikaOS-Linux/falcond-profiles
 	arch = any
 	license = MIT
 	makedepends = git
-	source = git+https://github.com/PikaOS-Linux/falcond-profiles.git#commit=0f87c748cf34a9bcbc4351ad051bcef8cce79158
-	sha256sums = a658aef941b00630e6c4d39b8130fea9e7a43b0236260c753db44d73a2772fc5
+	source = git+https://github.com/PikaOS-Linux/falcond-profiles.git#commit=f52c3445a9b9aa18401b7c8e9bf532c37758e585
+	sha256sums = c0e8d277df3b8e2306a2564d73a952196bf2bbc6ef9162379b671d2e9b0c8524
 
 pkgname = falcond-profiles
