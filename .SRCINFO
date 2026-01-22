@@ -18,6 +18,5 @@ pkgbase = noon-hyprland
 	depends = xdg-desktop-portal-gtk
 	depends = hyprland-protocols
 	depends = hyprland-qt-support
-	depends = hyprshot
 
 pkgname = noon-hyprland

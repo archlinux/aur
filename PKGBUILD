@@ -20,7 +20,6 @@ depends=(
   'xdg-desktop-portal-gtk'
   'hyprland-protocols'
   'hyprland-qt-support'
-  'hyprshot'
 )
 
 package() {
