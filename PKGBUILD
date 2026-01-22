@@ -1,7 +1,7 @@
 # Maintainer: yuzujr <15568103056@163.com>
 
 pkgname=coomer
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Zoomer application for everyone on Linux"
 arch=('x86_64')
@@ -27,7 +27,7 @@ makedepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5e40bd5e00a87edfded2f198a8f235ee9a4d5346f92e9d616b3194d06b483772')
+sha256sums=('405a66b9d159d72cf57c38b70584577eeb2059e4513a5f99b38e2c9c670fec47')
 
 _xmake_env() {
   export XMAKE_GLOBALDIR="$srcdir/.xmake-global"
@@ -54,9 +54,21 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  local binpath="build/linux/x86_64/release/coomer"
+  install -Dm755 "build/linux/x86_64/release/coomer" \
+    "$pkgdir/usr/bin/coomer"
 
-  install -Dm755 "$binpath" "$pkgdir/usr/bin/coomer"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 LICENSE \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  install -Dm644 README.md \
+    "$pkgdir/usr/share/doc/$pkgname/README.md"
+
+  install -Dm644 completions/fish/coomer.fish \
+    "$pkgdir/usr/share/fish/vendor_completions.d/coomer.fish"
+
+  install -Dm644 completions/bash/coomer \
+    "$pkgdir/usr/share/bash-completion/completions/coomer"
+
+  install -Dm644 completions/zsh/_coomer \
+    "$pkgdir/usr/share/zsh/site-functions/_coomer"
 }
