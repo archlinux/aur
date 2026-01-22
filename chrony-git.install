@@ -1,0 +1,12 @@
+post_install() {
+    echo ":: chronyd is not enabled by default."
+    echo "   To start and enable the service:"
+    echo "     systemctl enable --now chronyd"
+    echo ""
+    echo ":: If using systemd-timesyncd, disable it first:"
+    echo "     systemctl disable --now systemd-timesyncd"
+}
+
+post_upgrade() {
+    post_install
+}

@@ -1,0 +1,4 @@
+chrony/
+pkg/
+src/
+*.pkg.tar*
