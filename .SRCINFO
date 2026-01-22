@@ -1,0 +1,23 @@
+pkgbase = blink1control2-bin
+	pkgdesc = Blink1Control GUI to control blink(1) USB RGB LED devices
+	pkgver = 2.2.9
+	pkgrel = 1
+	url = https://github.com/todbot/Blink1Control2
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux
+	depends = libsecret
+	optdepends = libappindicator-gtk3: system tray icon support
+	provides = blink1control2
+	conflicts = blink1control2
+	source_x86_64 = https://github.com/todbot/Blink1Control2/releases/download/v2.2.9/Blink1Control2-2.2.9-linux-amd64.deb
+	sha256sums_x86_64 = 382d2a6a67a02c9d464b09fcdc46c0668ad930f262b94007783d58cde78a1bba
+
+pkgname = blink1control2-bin
