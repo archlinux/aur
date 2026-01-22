@@ -1,0 +1,23 @@
+pkgbase = e-imzo-manager
+	pkgdesc = E-IMZO key management application for Linux
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/xinux-org/e-imzo-manager
+	install = e-imzo-manager.install
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = rust
+	makedepends = cargo
+	makedepends = desktop-file-utils
+	makedepends = appstream-glib
+	makedepends = gettext
+	depends = gtk4
+	depends = libadwaita
+	depends = e-imzo
+	depends = polkit
+	depends = openssl
+	depends = glib2
+	source = e-imzo-manager-1.1.0.tar.gz::https://github.com/xinux-org/e-imzo-manager/archive/refs/tags/1.1.0.tar.gz
+	sha256sums = 5aee2585d86ae2c2e5b6c066e578271d46d3dd4fcc426e804d0187810ecdc1ff
+
+pkgname = e-imzo-manager
