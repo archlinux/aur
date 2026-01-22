@@ -23,7 +23,6 @@ makedepends=(
   clang
   cmake
 )
-checkdepends=(protobuf)
 options=('!lto' '!debug')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
