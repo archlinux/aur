@@ -3,7 +3,7 @@
 _name=qcustomplot
 pkgname=qcustomplot-qt6
 pkgver=2.1.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Qt C++ widget for plotting and data visualization (built with Qt6)"
 arch=('x86_64')
 url="https://www.qcustomplot.com/"
@@ -32,5 +32,5 @@ build() {
 }
 
 package() {
-  cmake --install build --prefix="${pkgdir}"
+  DESTDIR="${pkgdir}" cmake --install build
 }
