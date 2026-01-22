@@ -1,12 +1,12 @@
 pkgbase = talosctl-bin
 	pkgdesc = talosctl - utility for controling Talos
-	pkgver = 1.12.1
+	pkgver = 1.12.2
 	pkgrel = 1
 	url = https://github.com/siderolabs/talos
 	arch = x86_64
 	license = MPL-2.0
 	options = !strip
-	source = talosctl-linux-amd64-v1.12.1::https://github.com/siderolabs/talos/releases/download/v1.12.1/talosctl-linux-amd64
-	sha256sums = ce7bf36b91e889f040649ab961da76c8de824f5fb3999417e88f32524d048aa0
+	source = talosctl-linux-amd64-v1.12.2::https://github.com/siderolabs/talos/releases/download/v1.12.2/talosctl-linux-amd64
+	sha256sums = afdd8f7cacbcb0950f3884b4fb90475cc7ee8233331159d7b4d5935be90b5ceb
 
 pkgname = talosctl-bin
