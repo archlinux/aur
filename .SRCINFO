@@ -1,0 +1,26 @@
+pkgbase = music-ratatui
+	pkgdesc = A terminal musicplayer build with Ratatui.
+	pkgver = 0.3.7
+	pkgrel = 1
+	url = https://gitlab.com/figr/music-ratatui
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = rust
+	makedepends = cargo
+	makedepends = pkgconf
+	makedepends = git
+	makedepends = gst-plugins-base
+	makedepends = gst-plugins-good
+	makedepends = gst-plugins-bad
+	makedepends = gst-plugins-ugly
+	makedepends = gst-libav
+	depends = gcc
+	depends = sqlite
+	conflicts = music-ratatui
+	options = !lto
+	source = https://gitlab.com/api/v4/projects/76572256/packages/generic/x86_64-linux/v0.3.7/music-ratatui-bin_0.3.7_linux
+	source = https://gitlab.com/figr/music-ratatui/-/raw/main/LICENSE
+	sha256sums = 746dbd8672803efa805a53f28cc3e8a0b75ded462cb7a9bd009ab75546c0e60b
+	sha256sums = 7056c04df17a4e0f0bac9f787f347c9cd892cee6323d1c89528090afd0b934a3
+
+pkgname = music-ratatui-bin
