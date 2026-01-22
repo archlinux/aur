@@ -1,0 +1,13 @@
+pkgbase = wat
+	pkgdesc = Get Wayland xdg-activation tokens
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://git.sr.ht/~leon_plickat/wat
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = glibc
+	depends = wayland
+	source = wat-v1.0.0.tar.gz::https://git.sr.ht/~leon_plickat/wat/archive/v1.0.0.tar.gz
+	b2sums = efa37ffed947c8e5f3a1fb0e4fc1749f31851b98ab8d7e2b88761512b9f435782f8c260433cc3c2d6a84b389bd3c3ff4d2948db71ea347bfa7eb04d3b81d2803
+
+pkgname = wat
