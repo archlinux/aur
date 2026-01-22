@@ -3,7 +3,7 @@
 
 _pkgname=wordcloud
 pkgname=python-wordcloud
-pkgver=1.9.5
+pkgver=1.9.6
 pkgrel=1
 pkgdesc="A little word cloud generator in Python"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 makedepends=('python-setuptools' 'python-setuptools-scm' 'python-build' 'python-installer' 'python-wheel' 'cython')
 depends=('python' 'python-matplotlib' 'python-pillow' 'python-numpy')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('6ac7c1378f2886d7e849600a306febd41d0d46b15ce876d665a3e549f5403b0b')
+sha256sums=('df17c468ff903bd0aba4f87c6540745d13a4931220dd4937cb363ad85a4771b9')
 
 build() {
     cd "$_pkgname-$pkgver"

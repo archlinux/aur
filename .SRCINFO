@@ -1,6 +1,6 @@
 pkgbase = python-wordcloud
 	pkgdesc = A little word cloud generator in Python
-	pkgver = 1.9.5
+	pkgver = 1.9.6
 	pkgrel = 1
 	url = https://github.com/amueller/word_cloud
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = python-wordcloud
 	depends = python-matplotlib
 	depends = python-pillow
 	depends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/w/wordcloud/wordcloud-1.9.5.tar.gz
-	sha256sums = 6ac7c1378f2886d7e849600a306febd41d0d46b15ce876d665a3e549f5403b0b
+	source = https://files.pythonhosted.org/packages/source/w/wordcloud/wordcloud-1.9.6.tar.gz
+	sha256sums = df17c468ff903bd0aba4f87c6540745d13a4931220dd4937cb363ad85a4771b9
 
 pkgname = python-wordcloud
