@@ -1,6 +1,6 @@
 pkgbase = ungoogled-chromium-xdg
 	pkgdesc = A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory
-	pkgver = 144.0.7559.59
+	pkgver = 144.0.7559.96
 	pkgrel = 1
 	url = https://github.com/ungoogled-software/ungoogled-chromium
 	arch = x86_64
@@ -53,31 +53,29 @@ pkgbase = ungoogled-chromium-xdg
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
 	optdepends = upower: Battery Status API support
 	optdepends = chromium-extension-web-store: Web Store Functionality
-	provides = chromium=144.0.7559.59
-	provides = chromedriver=144.0.7559.59
+	provides = chromium=144.0.7559.96
+	provides = chromedriver=144.0.7559.96
 	conflicts = chromium
 	conflicts = chromedriver
 	options = !lto
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-144.0.7559.59-lite.tar.xz
-	source = ungoogled-chromium-144.0.7559.59-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/144.0.7559.59-1.tar.gz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-144.0.7559.96-lite.tar.xz
+	source = ungoogled-chromium-144.0.7559.96-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/144.0.7559.96-1.tar.gz
 	source = https://github.com/foutrelis/chromium-launcher/archive/v8/chromium-launcher-8.tar.gz
 	source = chromium-138-nodejs-version-check.patch
-	source = chromium-138-rust-1.86-mismatched_lifetime_syntaxes.patch
 	source = compiler-rt-adjust-paths.patch
 	source = increase-fortify-level.patch
 	source = use-oauth2-client-switches-as-default.patch
-	source = chromium-141-cssstylesheet-iwyu.patch
+	source = chromium-144-fix-hdr-issue.patch
 	source = xdg-basedir.patch
 	source = no-omnibox-suggestion-autocomplete.patch
-	sha256sums = 8d6de5bbf447b9d0f3c99843230ffebe5954cbcb38d9f8c2ddbbeb5fbcfa9179
-	sha256sums = 083adc19e6cb0e835f251e8dba06d3187fe56875e79358c738d872acb20cbfa3
+	sha256sums = 6f7fbeaa5ef0b1b4c0ede631edb7365ae48602f587c3c3b65af874922d21a064
+	sha256sums = 769dff6846ee57058cb6a7c7c0a303d2d2c5e037e0b9f136d7367c7b396bb555
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
 	sha256sums = 11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e
-	sha256sums = 5abc8611463b3097fc5ce58017ef918af8b70d616ad093b8b486d017d021bbdf
 	sha256sums = ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863
 	sha256sums = d634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342
 	sha256sums = e6da901e4d0860058dc2f90c6bbcdc38a0cf4b0a69122000f62204f24fa7e374
-	sha256sums = de5c873564b09713b65dd9e6a0b9049d7b3cf8f881436f36e1c091824b63e876
+	sha256sums = 789ee9bfe39772eae0df42c187b7a54550921b909bfae8051df81a1b4621f307
 	sha256sums = 2848ccca54ec4a118471b833d20cf3a32fff7775d5b0fc881f9e1660dcd6ca23
 	sha256sums = ff1591fa38e0ede7e883dc7494b813641b7a1a7cb1ded00d9baaee987c1dbea8
 
