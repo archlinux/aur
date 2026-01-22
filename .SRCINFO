@@ -1,6 +1,6 @@
 pkgbase = muxly-bin
 	pkgdesc = A lightweight CLI for handling TMUX sessions with ease
-	pkgver = 0.18.0
+	pkgver = 0.18.2
 	pkgrel = 1
 	url = https://github.com/Pairadux/muxly
 	license = MIT
@@ -8,12 +8,12 @@ pkgbase = muxly-bin
 	provides = Muxly
 	arch = aarch64
 	source_aarch64 = https://github.com/Pairadux/Muxly/releases/download/v${pkgver}/Muxly_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 4ecfbf19c26b0c744a348f0eb1f22bfc0b38e7c36455ab322f5216cce1df1e57
+	sha256sums_aarch64 = 991e449d23618c7c0e020c40596ca7b727f427df9e9d53c4be6151c0d5f9082f
 	arch = i686
 	source_i686 = https://github.com/Pairadux/Muxly/releases/download/v${pkgver}/Muxly_Linux_i386.tar.gz
-	sha256sums_i686 = e47d06e0c7736ad16309fcca5316902dd3787cfd2cc7391a9c57aa019d98cc17
+	sha256sums_i686 = 7cd449a55ff9d3972503b54282722e111bc610d49be04fbd91f3cb2818d7c95c
 	arch = x86_64
 	source_x86_64 = https://github.com/Pairadux/Muxly/releases/download/v${pkgver}/Muxly_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = fc428897efa3c91498888cde183720d52cfc1de5d9657a8284711ef35fbf91d7
+	sha256sums_x86_64 = 5782480093b33d85c007032651a5c1f6f95cd9f50b0e525b738e1d0f84bb6ec5
 	
 pkgname = muxly-bin
