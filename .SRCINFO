@@ -1,6 +1,6 @@
 pkgbase = azahar-git
 	pkgdesc = Nintendo 3DS emulator based on Citra
-	pkgver = 2124.1.r8.g3fdcd6b
+	pkgver = 2124.1.r14.gb0fea11
 	pkgrel = 1
 	url = https://azahar-emu.org/
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = azahar-git
 	makedepends = ffmpeg4.4
 	makedepends = fmt
 	makedepends = git
+	makedepends = libbacktrace
 	makedepends = libinih
 	makedepends = libusb
 	makedepends = nlohmann-json
@@ -34,7 +35,7 @@ pkgbase = azahar-git
 	depends = qt6-base
 	depends = qt6-multimedia
 	depends = sdl2
-	provides = azahar=2124.1.r8.g3fdcd6b
+	provides = azahar=2124.1.r14.gb0fea11
 	conflicts = azahar
 	source = azahar::git+https://github.com/azahar-emu/azahar.git
 	source = azahar-compatibility-list::git+https://github.com/azahar-emu/compatibility-list.git
@@ -77,6 +78,7 @@ pkgname = azahar-git
 	depends = qt6-base
 	depends = qt6-multimedia
 	depends = sdl2
+	depends = libbacktrace.so
 	depends = libboost_iostreams.so
 	depends = libboost_serialization.so
 	depends = libcrypto.so
