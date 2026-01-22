@@ -2,8 +2,8 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=parui
-pkgver=1.0.18
-pkgrel=2
+pkgver=1.0.19
+pkgrel=1
 pkgdesc="Simple TUI frontend for paru or yay"
 arch=('x86_64')
 url="https://github.com/Vonr/parui"
@@ -13,7 +13,7 @@ makedepends=('cargo')
 optdepends=('paru: default AUR interface'
   'yay: alternative AUR interface')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('6652313edbfef499c6d7810ecf14c85e88c7647137958d0b9350a50e34b79a0cc4c161fec0f671fc6cea259f8cd78d8030c2021229125aea121f120d1cbc2318')
+sha512sums=('d2e15bb7d26d7aa3ea0764c8020bebb16d9ef2da41fef576ce40fa74f5f4ff917cbdcd7d8fabb38c4817dfb16f173d593a265740846c8c3bb381db810dc86347')
 
 prepare() {
   cd "$pkgname-$pkgver"
