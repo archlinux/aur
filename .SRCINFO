@@ -1,19 +1,22 @@
 pkgbase = rats-search-bin
 	pkgdesc = BitTorrent P2P multi-platform search engine for Desktop and Web servers with integrated torrent client.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.11.0
-	pkgrel = 9
-	url = https://github.com/DEgITx/rats-search
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/librats/rats-search
 	arch = x86_64
 	license = MIT
-	makedepends = asar
-	depends = electron24
-	provides = rats-search=1.11.0
+	makedepends = gendesk
+	depends = qt6-base
+	depends = qt6-websockets
+	provides = rats-search=2.0.0
 	conflicts = rats-search
-	source = rats-search-1.11.0.rpm::https://github.com/DEgITx/rats-search/releases/download/v1.11.0/rats-search-1.11.0-x86_64.rpm
-	source = LICENSE-1.11.0::https://raw.githubusercontent.com/DEgITx/rats-search/v1.11.0/LICENSE
+	source = rats-search-2.0.0.tar.gz::https://github.com/librats/rats-search/releases/download/v2.0.0/RatsSearch-Linux-x64.tar.gz
+	source = rats-search-2.0.0.png::https://raw.githubusercontent.com/librats/rats-search/v2.0.0/resources/icons/512x512.png
+	source = LICENSE-2.0.0::https://raw.githubusercontent.com/librats/rats-search/v2.0.0/LICENSE
 	source = rats-search.sh
-	sha256sums = ed0b2f2a13335a851c2fa728a4b218b5f28dd59881c4934b56c5124f2860058e
+	sha256sums = 7cf7f86c3a938beff79a0b135e7066d1b41ee32f0988bcfb0db5148d85e8c630
+	sha256sums = 7b3059f3e7c9bfe79a9c6e0c562a4c7ecea82e9a8f79c29ec1c5b03c49b23ac5
 	sha256sums = fa6a25af037d88ee811669579da9674e5694611599600b11e691115054f6fe2f
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = db1db4c15024a45337e7e7190046e6414184603321be058797422a54ed5fc85d
 
 pkgname = rats-search-bin
