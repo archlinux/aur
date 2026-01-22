@@ -3,7 +3,7 @@
 pkgname="cutefetch-git"
 pkgdesc="A little fetch utility made with bare c and nice performance"
 pkgver=29ad20b
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/alphatechnolog/cutefetch"
 source=("git+$url.git")
@@ -12,6 +12,7 @@ license=("GPL3")
 sha256sums=(SKIP)
 depends=()
 provides=("cutefetch")
+conflicts=("cutefetch")
 
 pkgver() {
     cd cutefetch
