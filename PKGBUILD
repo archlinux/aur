@@ -4,38 +4,31 @@
 # Contributor: William Di Luigi <williamdiluigi@gmail.com>
 
 pkgname=evince-git
-pkgver=46.1+278+g7b8dbf09
+pkgver=48.alpha+185+g5c540656
 pkgrel=1
 pkgdesc="Document viewer (PDF, PostScript, XPS, djvu, dvi, tiff, cbr, cbz, cb7, cbt)"
 url="http://projects.gnome.org/evince/"
 arch=(x86_64)
 license=(GPL-2.0-or-later)
 depends=(
-  at-spi2-core
   cairo
   dconf
   djvulibre
+  exempi
   gcc-libs
   gdk-pixbuf2
   glib2
   glibc
-  gnome-desktop
-  gsettings-desktop-schemas
-  gsfonts
-  gspell
-  gst-plugins-base-libs
-  gstreamer
-  gtk3
-  gvfs
+  gnome-desktop-4
+  gtk4
   hicolor-icon-theme
+  libadwaita
   libarchive
   libgxps
-  libhandy
   libsecret
   libspectre
   libsynctex
   libtiff
-  libxml2
   pango
   poppler-glib
 )
@@ -50,7 +43,7 @@ makedepends=(
   yelp-tools
 )
 optdepends=('texlive-bin: DVI support')
-provides=(evince libev{document,view}3.so)
+provides=(evince libev{document,view}4.so)
 conflicts=(evince)
 options=('!emptydirs')
 source=($pkgname::"git+https://gitlab.gnome.org/GNOME/evince.git")
@@ -65,8 +58,16 @@ build() {
   local meson_options=(
     -D ps=enabled
   )
-  arch-meson "$pkgname" build
+
+  # Work around kpathsea build failure with GCC 15
+  CFLAGS+=" -DHAVE_STRING_H -DHAVE_STDLIB_H"
+
+  arch-meson "$pkgname" build "${meson_options[@]}"
   meson compile -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
