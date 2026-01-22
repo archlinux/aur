@@ -1,5 +1,5 @@
 pkgbase = music-ratatui
-	pkgdesc = A terminal musicplayer build with ratatui.rs.
+	pkgdesc = A terminal musicplayer build with Ratatui.
 	pkgver = 0.3.5
 	pkgrel = 1
 	url = https://gitlab.com/figr/music-ratatui
@@ -17,7 +17,7 @@ pkgbase = music-ratatui
 	depends = gcc
 	depends = sqlite
 	options = !lto
-	source = git+https://gitlab.com/figr/music-ratatui
+	source = git+https://gitlab.com/figr/music-ratatui.git#tag=v0.3.5
 	sha256sums = SKIP
 
 pkgname = music-ratatui
