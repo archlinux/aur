@@ -1,0 +1,5 @@
+[lazyactions-bin]
+source = "github"
+github = "nnnkkk7/lazyactions"
+use_latest_release = true
+prefix = "v"

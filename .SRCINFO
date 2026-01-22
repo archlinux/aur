@@ -1,0 +1,16 @@
+pkgbase = lazyactions-bin
+	pkgdesc = Lazygit-style TUI for GitHub Actions — monitor, trigger, and manage workflows from your terminal
+	pkgver = 0.0.11
+	pkgrel = 1
+	url = https://github.com/nnnkkk7/lazyactions
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = lazyactions
+	conflicts = lazyactions
+	source_x86_64 = lazyactions-x86_64-0.0.11.tgz::https://github.com/nnnkkk7/lazyactions/releases/download/v0.0.11/lazyactions_0.0.11_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 19130a4f87ba5fb112a4d7df91968078868629d9b5a543c580e5558190b09a54
+	source_aarch64 = lazyactions-aarch64-0.0.11.tgz::https://github.com/nnnkkk7/lazyactions/releases/download/v0.0.11/lazyactions_0.0.11_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 5a4585a08b027a2026a8f94b86e590cd9c01c013a362fe2fca4e20a1bc396375
+
+pkgname = lazyactions-bin
