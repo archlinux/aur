@@ -17,6 +17,7 @@ pkgbase = music-ratatui-bin
 	depends = gcc
 	depends = sqlite
 	conflicts = music-ratatui
+	conflicts = music-ratatui-debug
 	options = !lto
 	source = https://gitlab.com/api/v4/projects/76572256/packages/generic/x86_64-linux/v0.3.8/music-ratatui-bin_0.3.8_linux
 	source = https://gitlab.com/figr/music-ratatui/-/raw/main/LICENSE
