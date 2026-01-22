@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=openbsd-netcat-git
-pkgver=1.234.r338.g523d5a8
+pkgver=1.234.r342.g37b4f2c
 pkgrel=1
 pkgdesc="TCP/IP swiss army knife. OpenBSD variant."
 arch=('i686' 'x86_64')
@@ -18,9 +18,9 @@ sha256sums=('SKIP')
 prepare() {
   cd "netcat-openbsd"
 
-  for i in $(cat debian/patches/series); do
-    echo "** patch $i" 1>&2
-    patch -Np1 -i "debian/patches/$i"
+  grep -v '^ *#' debian/patches/series | while IFS= read -r line; do
+    echo "** patch $line" 1>&2
+    patch -Np1 -i "debian/patches/$line"
   done
 
   head -n28 netcat.c | tail -n+2 > "$srcdir/LICENSE"
@@ -30,7 +30,7 @@ pkgver() {
   cd "netcat-openbsd"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^upstream/[0-9\.]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's|^upstream/||'
 }
