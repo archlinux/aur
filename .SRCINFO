@@ -22,8 +22,13 @@ pkgbase = gcompris-qt
 	replaces = gcompris-data
 	source = https://download.kde.org/stable/gcompris/qt/src/gcompris-qt-25.1.1.tar.xz
 	source = https://download.kde.org/stable/gcompris/qt/src/gcompris-qt-25.1.1.tar.xz.sig
+	source = qt6-private-modules.patch
 	validpgpkeys = D2FAAB621F618D42685B427B63D7264C05687D7E
 	sha256sums = 636de9168bf5fd628faf061845f188f2c385d2da7f92c4b0449139ce6c6da12a
 	sha256sums = SKIP
+	sha256sums = a16d93e0228dec8e4c15316656aa92df5a0f49ff2d198e8b3275cd90b947e1d8
+	sha512sums = b03025151978103030a6d456e5ed195879528902c45fc6b2904f8858c7e8516aab79130ad1e4e9591c59707b7a1c1385a39fd0a0003a775cb2cd86866d8054c1
+	sha512sums = SKIP
+	sha512sums = 3e35795407c567ca72c5371e44bf73a696376209171cb22e57e4590d8b8295fa66fdcafa40a0fcf816bc9244b25c427987b50e2aad6a21052650b1cfaa58b3c9
 
 pkgname = gcompris-qt
