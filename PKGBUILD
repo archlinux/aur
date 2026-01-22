@@ -8,11 +8,11 @@
 pkgname=dolfin
 pkgdesc="C++ interface of FEniCS"
 pkgver=2019.1.0.post0
-pkgrel=8
+pkgrel=9
 arch=('x86_64')
 url="https://bitbucket.org/fenics-project/${pkgname}"
 license=(LGPL-3.0-or-later)
-depends=('boost' 'cppunit' 'eigen' 'gl2ps' 'petsc' 'python-ffc' 'scotch' 'suitesparse')
+depends=(boost cppunit eigen3 gl2ps petsc python-ffc scotch suitesparse)
 optdepends=('slepc: eigenvalue problem solvers'
   'hdf5-openmpi: for reading/writing hdf5 files')
 makedepends=('cmake')
