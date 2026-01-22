@@ -19,7 +19,7 @@ conflicts=('slskd' 'slskd-bin' 'slskdn' 'slskdn-bin')
 backup=('etc/slskd/slskd.yml')
 install=slskd.install
 source=(
-    "slskdn-dev-${pkgver}-linux-x64.zip::https://github.com/snapetech/slskdn/releases/download/experimental/whatAmIThinking/slskdn-dev-linux-x64.zip"
+    "slskdn-dev-linux-x64.zip::https://github.com/snapetech/slskdn/releases/download/experimental/whatAmIThinking/slskdn-dev-linux-x64.zip"
     "slskd.service::https://raw.githubusercontent.com/snapetech/slskdn/experimental/multi-source-swarm/packaging/aur/slskd.service"
     "slskd.yml::https://raw.githubusercontent.com/snapetech/slskdn/experimental/multi-source-swarm/packaging/aur/slskd.yml"
     "slskd.sysusers::https://raw.githubusercontent.com/snapetech/slskdn/experimental/multi-source-swarm/packaging/aur/slskd.sysusers"
