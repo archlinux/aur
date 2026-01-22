@@ -1,6 +1,6 @@
 pkgbase = everytime
 	pkgdesc = Time zones are hard. Everytime makes them easy!(Use system-wide electron)
-	pkgver = 1.1.7
+	pkgver = 1.1.8
 	pkgrel = 1
 	url = https://github.com/kiprobinson/everytime
 	arch = any
@@ -11,15 +11,15 @@ pkgbase = everytime
 	makedepends = nvm
 	makedepends = git
 	makedepends = jq
-	depends = electron34
+	depends = electron40
 	depends = nodejs
 	provides = everytime
 	conflicts = everytime
 	options = !strip
 	options = !emptydirs
-	source = everytime-1.1.7::git+https://github.com/kiprobinson/everytime#tag=v1.1.7
+	source = everytime-1.1.8::git+https://github.com/kiprobinson/everytime#tag=v1.1.8
 	source = everytime.sh
-	sha256sums = 2cf57ff280c60e30601ce1609e1251aa50c13104815a4c2b52adb2a70f402538
+	sha256sums = 0e9388fb1850a916e620bed76ac5b69e427c1dc9a8d0d15449e630ec9a699962
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = everytime

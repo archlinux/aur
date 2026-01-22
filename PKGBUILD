@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=everytime
 _pkgname=Everytime
-pkgver=1.1.7
-_electronversion=34
-_nodeversion=22
+pkgver=1.1.8
+_electronversion=40
+_nodeversion=24
 pkgrel=1
 pkgdesc="Time zones are hard. Everytime makes them easy!(Use system-wide electron)"
 arch=('any')
@@ -31,7 +31,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('2cf57ff280c60e30601ce1609e1251aa50c13104815a4c2b52adb2a70f402538'
+sha256sums=('0e9388fb1850a916e620bed76ac5b69e427c1dc9a8d0d15449e630ec9a699962'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -66,16 +66,22 @@ prepare() {
     {
         echo -e '\n'
         #echo 'build_from_source=true'
-        echo "cache=${srcdir}/.npm_cache"
-        echo "maxsockets=32"
+        echo 'link-workspace-packages=true'
+        echo 'fetch-retry-maxtimeout=10000'
+        echo "cache-dir=${srcdir}/.pnpm_cache"
+        echo "store-dir=${srcdir}/.pnpm_store"
+        echo "virtual-store-dir=${srcdir}/.pnpm_store"
+        echo "shamefully-hoist=true"
+        echo "virtual-store-dir-max-length=80"
+        echo "node-linker=hoisted"
+        echo "network-concurrency=32"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-            echo 'registry=https://registry.npmmirror.com'
-            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
-            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
+        echo 'registry=https://registry.npmmirror.com'
+        echo 'electron_mirror=https://cdn.npmmirror.com/binaries/electron/'
+        echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
         } >> .npmrc
-        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
     _ensure_local_nvm
     sed -i -e "
