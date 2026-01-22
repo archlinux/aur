@@ -1,14 +1,16 @@
 pkgbase = python-numpysane
 	pkgdesc = More reasonable core functionality for numpy
-	pkgver = 0.40
+	pkgver = 0.42
 	pkgrel = 1
 	url = https://github.com/dkogan/numpysane
 	arch = i686
 	arch = x86_64
 	license = LGPL3
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/n/numpysane/numpysane-0.40.tar.gz
-	sha256sums = 4053b2cbdb964e5a5a0e5d4a07e1d89967534ce929ca158ddf76b6b8a71932c1
+	source = https://files.pythonhosted.org/packages/source/n/numpysane/numpysane-0.42.tar.gz
+	sha256sums = 47f240cab2fd05a26776b91c0e07e03b1ebaf943005bcea0fc1585ded079b0bd
 
 pkgname = python-numpysane
