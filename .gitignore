@@ -1,0 +1,4 @@
+libresplit/
+pkg/
+src/
+*pkg.tar.zst
