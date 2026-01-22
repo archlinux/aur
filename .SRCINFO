@@ -1,15 +1,15 @@
 pkgbase = stacktile
 	pkgdesc = Layout generator for the river Wayland compositor
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sr.ht/~leon_plickat/stacktile/
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = wayland
-	conflicts = stacktile-git
-	options = !buildflags
 	source = git+https://git.sr.ht/~leon_plickat/stacktile#tag=v1.0.0
+	source = fix-compilation.patch
 	sha256sums = SKIP
+	sha256sums = ef72cde58d1b416df4acf5829b31188a8b2750c80463a6771f8555c106ac6059
 
 pkgname = stacktile
