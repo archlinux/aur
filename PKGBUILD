@@ -6,11 +6,7 @@ pkgdesc="Video chat in your terminal - runtime binary (development version)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/zfogg/ascii-chat"
 license=('MIT')
-depends=(
-  'yt-dlp'
-  'openssh'
-  'gnupg'
-)
+depends=()
 makedepends=(
   'git'
   'pkg-config'
@@ -33,8 +29,11 @@ makedepends=(
   'opus'
 )
 optdepends=(
+  'gnupg: GPG key support for authentication'
   'libasciichat-git: development headers and libraries'
+  'openssh: SSH key agent support for authentication'
   'v4l-utils: webcam device utilities'
+  'yt-dlp: YouTube video source support'
 )
 provides=('ascii-chat')
 conflicts=('ascii-chat')
