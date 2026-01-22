@@ -1,6 +1,6 @@
 pkgbase = cursor-appimage
 	pkgdesc = AI-first coding environment (AppImage version)
-	pkgver = 2.4.20
+	pkgver = 2.4.21
 	pkgrel = 1
 	url = https://www.cursor.com
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = cursor-appimage
 	depends = hicolor-icon-theme
 	conflicts = cursor-bin
 	options = !strip
-	source = cursor-2.4.20.AppImage::https://downloads.cursor.com/production/20b56586b0785b8843487045393c57c6d89b7103/linux/x64/Cursor-2.4.20-x86_64.AppImage
-	sha512sums = 296763b2eac0f9e89ab5de84931fd611683dc2baff89e0cd3e007598a5453398dc5b3e528f294033d49741a4c18d9e01155f52cfbefeb6c5a617a7c232f2e6ff
+	source = cursor-2.4.21.AppImage::https://downloads.cursor.com/production/dc8361355d709f306d5159635a677a571b277bcc/linux/x64/Cursor-2.4.21-x86_64.AppImage
+	sha512sums = 24530407a7e2bd96a6d68eb2c43f4247c454c4d54e969ef1a76771d92497a5aff9d8b097a924def0cb319956b83bb195a7f12bbaaa9a1a35b5ea635ae06ac316
 
 pkgname = cursor-appimage
