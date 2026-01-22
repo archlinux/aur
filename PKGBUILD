@@ -2,7 +2,7 @@
 
 pkgbase=protobuf-git
 pkgname=('protobuf-git' 'python-protobuf-git')
-pkgver=27.1.r305.g54d8f0397
+pkgver=33.4.r708.ged4f0ce13c
 pkgrel=1
 pkgdesc="Google's data interchange format"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ pkgver() {
   cd "protobuf"
 
   _tag=$(git tag -l --sort -v:refname | sed '/rc[0-9]*/d' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
@@ -46,7 +46,7 @@ build() {
   make -C "_build"
 
   cd "python"
-  ln -sf "dist/setup.py"
+  ln -sf "dist/setup.py" .
   python \
     -m build \
     --wheel \
