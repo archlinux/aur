@@ -1,14 +1,14 @@
 # Maintainer: Torge Matthies <openglfreak at googlemail dot com>
 
 _omit_dlls=false
-_dotnet_ver=9.0
-_runtime_ver=9
-_sdk_ver=110
+_dotnet_ver=10.0
+_runtime_ver=0
+_sdk_ver=100
 
 pkgname='openshock-desktop-bin'
 pkgdesc='An OpenShock application with module support (pre-built version)'
-pkgver='1.1.1'
-pkgrel='2'
+pkgver='1.1.2'
+pkgrel='1'
 arch=('x86_64')
 url='https://github.com/OpenShock/Desktop'
 license=('AGPL-3.0-only')
@@ -19,7 +19,7 @@ source=("OpenShock.Desktop.Photino.Linux.$pkgver.zip::https://github.com/OpenSho
         'openshock-desktop'
         'OpenShock-Desktop.desktop')
 noextract=("OpenShock.Desktop.Photino.Linux.$pkgver.zip")
-sha256sums=('5c50bbba4898bacd5e4db510e0182aa4a56a1eaae25f3713f765f6ac6c802d17'
+sha256sums=('8434c5b2ddbf2d3290b0229a7edc32acdfc9f1fbbc2cf828db247a8870a89c83'
             '4fe84f7aa610d36698d4386e57f4c5a141700032ec94df14e0e03eb48ef9e1ca'
             'f56461a0d3dba950a927e225ceb34b885b256907098d1bbcd35c972d6a867c6e')
 
