@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Codex Monitor
+Comment=Orchestrate Codex agents across local workspaces
+Exec=codex-monitor
+Icon=codex-monitor
+Categories=Development;Utility;
+Terminal=false
+StartupWMClass=CodexMonitor
