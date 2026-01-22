@@ -1,0 +1,15 @@
+pkgbase = enc
+	pkgdesc = A simple and straight forward c++ Encode/Decode CLI toolkit for everyday use
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/NinjaTech404/enc
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	depends = gcc-libs
+	source = enc-2.0.0.tar.gz::https://github.com/NinjaTech404/enc/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = enc
