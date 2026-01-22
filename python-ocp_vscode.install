@@ -1,0 +1,16 @@
+_tell_the_user() {
+  echo "Install the vs-code extension like:"
+  echo '$ code --install-extenstion /usr/share/python-ocp_vscode/*.vsix'
+  echo "Uninstall it like:"
+  echo '$ code --uninstall-extension bernhard-42.ocp-cad-viewer'
+  echo "You should uninstall, then install it after this package is updated"
+}
+
+post_install() {
+  _tell_the_user
+}
+
+post_upgrade() {
+ _tell_the_user
+}
+

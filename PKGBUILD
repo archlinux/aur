@@ -25,11 +25,14 @@ makedepends=(
 git
 make
 npm
+vsce
 python-setuptools-scm
 python-build
 python-installer
 python-wheel
 )
+
+install=python-ocp_vscode.install
 
 source=("git+https://github.com/bernhard-42/vscode-ocp-cad-viewer#commit=${_build_hash}")
 
@@ -42,7 +45,7 @@ pkgver() {
 
 prepare() {
   cd vscode-ocp-cad-viewer
-  sed '/^[ \t]*vsce package/s/^/#/' -i Makefile
+  #sed '/^[ \t]*vsce package/s/^/#/' -i Makefile
   sed '/^[ \t]*@python -m build/s/^/#/' -i Makefile
   sed '/^[ \t]*@ls -l dist/s/^/#/' -i Makefile
   mkdir -p ocp_vscode/static/css
@@ -71,4 +74,5 @@ check() {
 package() {
   cd vscode-ocp-cad-viewer
   python -m installer --destdir="$pkgdir" dist/*.whl
+  install -D -m644 -t "${pkgdir}/usr/share/${pkgname}" *.vsix
 }
