@@ -1,18 +1,18 @@
 pkgbase = zig-waybar-contrib-beta-bin
 	pkgdesc = High-performance Waybar modules written in Zig for efficient system monitoring (Beta binary version)
 	pkgver = 2.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://codeberg.org/erffy/zig-waybar-contrib
 	arch = x86_64
 	license = GPL3
 	depends = fakeroot
 	provides = zig-waybar-contrib=2.0.0
 	conflicts = zig-waybar-contrib
-	source = zig-waybar-contrib.zip::https://codeberg.org/erffy/zig-waybar-contrib/actions/runs/2278625/artifacts/zig-waybar-contrib-ReleaseFast-x86_64-linux-gnu
-	source = config.waybar.jsonc::https://codeberg.org/erffy/zig-waybar-contrib/raw/branch/0.16-dev/config.waybar.jsonc
-	source = LICENSE::https://codeberg.org/erffy/zig-waybar-contrib/raw/branch/0.16-dev/LICENSE
-	md5sums = 85a354c28f6bfdc9d7f0a9e5df1a4cc7
-	md5sums = 282a9591456c5cdeeb3a966756d27acd
-	md5sums = e82d9f97e08dad7b968fbbd80c7e67ee
+	source = zig-waybar-contrib.zip::https://codeberg.org/erffy/zig-waybar-contrib/actions/runs/2405346/artifacts/zig-waybar-contrib-x86_64-linux-gnu
+	source = config.waybar.jsonc::https://codeberg.org/erffy/zig-waybar-contrib/raw/branch/0.16.x-staging/config.waybar.jsonc
+	source = LICENSE::https://codeberg.org/erffy/zig-waybar-contrib/raw/branch/0.16.x-staging/LICENSE
+	md5sums = 3ee87c9e66d76aa37e0e83c569252aba
+	md5sums = 68adcbe6d340c78643634d1ef4087b5e
+	md5sums = f1c10f726262b56101b2112a4ec181d2
 
 pkgname = zig-waybar-contrib-beta-bin

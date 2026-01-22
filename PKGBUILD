@@ -3,7 +3,7 @@
 _pkgbase="zig-waybar-contrib"
 pkgname="${_pkgbase}-beta-bin"
 pkgver=2.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='High-performance Waybar modules written in Zig for efficient system monitoring (Beta binary version)'
 arch=('x86_64')
 url="https://codeberg.org/erffy/$_pkgbase"
@@ -12,14 +12,14 @@ provides=("zig-waybar-contrib=$pkgver")
 conflicts=('zig-waybar-contrib')
 depends=('fakeroot')
 source=(
-  "zig-waybar-contrib.zip::${url}/actions/runs/2278625/artifacts/zig-waybar-contrib-ReleaseFast-x86_64-linux-gnu"
-  "config.waybar.jsonc::${url}/raw/branch/0.16-dev/config.waybar.jsonc"
-  "LICENSE::${url}/raw/branch/0.16-dev/LICENSE"
+  "zig-waybar-contrib.zip::${url}/actions/runs/2405346/artifacts/zig-waybar-contrib-x86_64-linux-gnu"
+  "config.waybar.jsonc::${url}/raw/branch/0.16.x-staging/config.waybar.jsonc"
+  "LICENSE::${url}/raw/branch/0.16.x-staging/LICENSE"
 )
 md5sums=(
-  '85a354c28f6bfdc9d7f0a9e5df1a4cc7' 
-  '282a9591456c5cdeeb3a966756d27acd'
-  'e82d9f97e08dad7b968fbbd80c7e67ee'
+  '3ee87c9e66d76aa37e0e83c569252aba' 
+  '68adcbe6d340c78643634d1ef4087b5e'
+  'f1c10f726262b56101b2112a4ec181d2'
 )
 
 package() {
@@ -35,6 +35,9 @@ package() {
   for bin in binaries/*; do
     install -Dm755 $bin "$pkgdir/usr/bin/waybar-module-$(basename "$bin")"
   done
+
+  # Replace executable path
+  sed -i 's|{{EXECUTABLE_PATH}}|/usr/bin|g' config.waybar.jsonc
 
   # Install config
   install -Dm644 config.waybar.jsonc "$pkgdir/usr/share/$_pkgbase/config.jsonc"
