@@ -1,13 +1,18 @@
 pkgbase = terminal-fireworks
 	pkgdesc = Fireworks for the terminal
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chloem3ow/terminal-fireworks
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = python-pip
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python
 	source = git+https://github.com/chloem3ow/terminal-fireworks.git#tag=v0.1.0
-	sha256sums = SKIP
+	sha256sums = 62600d9b40cc43803d48086a1cad09348f6236fd8a94424734f01d96f3e33d02
 
 pkgname = terminal-fireworks
