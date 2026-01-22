@@ -1,5 +1,4 @@
 /var/log/ejabberd/ejabberd.log {
-     su jabber jabber
      weekly
      missingok
      rotate 10

@@ -1,0 +1,15 @@
+diff -wbBur ejabberd-24.12/mix.exs ejabberd-24.12.my/mix.exs
+--- ejabberd-24.12/mix.exs	2024-12-19 13:50:21.000000000 +0300
++++ ejabberd-24.12.my/mix.exs	2025-02-17 00:17:30.165528427 +0300
+@@ -183,10 +183,7 @@
+ 
+   defp cond_apps do
+     for {:true, app} <- [{config(:stun), :stun},
+-                         {if_version_below(~c"27", true), :jiffy},
+-                         {config(:tools), :debugger},
+-                         {config(:tools), :observer},
+-                         {config(:tools), :wx}], do:
++                         {if_version_below(~c"27", true), :jiffy}], do:
+       app
+   end
+ 
