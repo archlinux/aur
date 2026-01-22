@@ -3,7 +3,7 @@
 
 pkgname=mayland-git
 _pkgname=mayland
-pkgver=r431.f25660c
+pkgver=r472.1632ab4
 pkgrel=1
 pkgdesc="a bad wayland compositor"
 arch=('x86_64')
@@ -38,15 +38,16 @@ prepare() {
 	cd "${_pkgname}"
 
 	export RUSTUP_TOOLCHAIN=stable
-	cargo fetch --locked
+	cargo fetch --locked --target host-tuple
 }
 
 build() {
 	cd "${_pkgname}"
 
 	export RUSTUP_TOOLCHAIN=stable
-	cargo build --release --frozen
-	cargo build -p mayctl --release --frozen
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release
+	cargo build --package mayctl --frozen --release
 }
 
 package() {
