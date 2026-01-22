@@ -1,6 +1,6 @@
-pkgbase = drawy-git
+pkgbase = drawy
 	pkgdesc = A Qt6-based drawing application with OpenGL support
-	pkgver = 0.1.r0.HEAD
+	pkgver = 0.1.r161.4c42a59
 	pkgrel = 1
 	url = https://github.com/NinjaTech404/drawy
 	arch = x86_64
@@ -19,8 +19,9 @@ pkgbase = drawy-git
 	optdepends = qt6-svg: SVG support
 	optdepends = hicolor-icon-theme: For icon theme integration
 	provides = drawy
+	conflicts = drawy-git
 	conflicts = drawy
 	source = drawy::git+https://github.com/NinjaTech404/drawy.git
 	sha256sums = SKIP
 
-pkgname = drawy-git
+pkgname = drawy
