@@ -1,0 +1,79 @@
+# shellcheck disable=SC2034,SC2154,SC2164
+# Maintainer: pml68 <contact at pml68 dot dev>
+
+_pkgname=onetalker
+pkgname=$_pkgname-git
+pkgver=v2026.1.r0.g21648fb
+pkgrel=1
+pkgdesc='An Augmentative and Alternative Communication (AAC) Aid'
+arch=(x86_64)
+url='https://onetalker.org'
+license=('GPL-3.0-only')
+depends=(
+  hicolor-icon-theme
+  onnxruntime
+  alsa-lib
+  gcc-libs
+  glibc
+  bash
+)
+makedepends=(
+  git
+  cargo
+  clang
+  cmake
+)
+checkdepends=(protobuf)
+options=('!lto' '!debug')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=(
+  "$_pkgname::git+https://codeberg.org/OneTalker/OneTalker"
+  "onetalker.sh"
+)
+sha256sums=(
+  'SKIP'
+  'd568614f8a667d67e59dddab079d24ca988632f739c5e98c2f539e4a1c540a24'
+)
+
+prepare() {
+  cd "${_pkgname}"
+
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+pkgver() {
+  cd "${_pkgname}"
+
+  git describe --long --tags --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd "${_pkgname}"
+
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix $srcdir=src"
+  cargo build --frozen --release
+}
+
+package() {
+  cd "${_pkgname}"
+
+  install -Dm755 "target/release/${_pkgname}" "${pkgdir}/opt/${_pkgname}/${_pkgname}"
+  install -Dm755 ../onetalker.sh "${pkgdir}/usr/bin/${_pkgname}"
+
+  install -Dm644 LICENSE.GPL-3.0-only "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "assets/linux/org.onetalker.${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+  install -Dm644 "assets/linux/org.onetalker.${_pkgname}.appdata.xml" -t "${pkgdir}/usr/share/metainfo"
+
+  mkdir -p "${pkgdir}/usr/share/onetalker/assets"
+  cp -dr assets/audio "${pkgdir}/usr/share/onetalker/assets"
+  cp -dr assets/config "${pkgdir}/usr/share/onetalker/assets"
+  cp -dr assets/images "${pkgdir}/usr/share/onetalker/assets"
+  cp -dr assets/symbols "${pkgdir}/usr/share/onetalker/assets"
+  cp -dr assets/tts "${pkgdir}/usr/share/onetalker/assets"
+
+  cp -dr assets/linux/icons "${pkgdir}/usr/share"
+}
