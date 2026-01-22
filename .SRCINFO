@@ -1,7 +1,7 @@
 pkgbase = python-yfinance
 	pkgdesc = Yahoo! Finance market data downloader (+faster Pandas Datareader)
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ranaroussi/yfinance
 	arch = any
 	license = Apache-2.0
@@ -11,7 +11,7 @@ pkgbase = python-yfinance
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-beautifulsoup4
-	depends = python-curl-cffi
+	depends = python-curl_cffi
 	depends = python-frozendict
 	depends = python-multitasking
 	depends = python-numpy
