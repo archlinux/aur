@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=fotema
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Photo gallery for Linux"
 arch=('x86_64')
@@ -36,7 +36,7 @@ makedepends=(
   'mold'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f548be7a6cd7a48a761a684ae03eaf55026fe802b84c6b4980da63dcb7a8856c')
+sha256sums=('cfe7a3a66e21c32c82b9da42f38c4652745a3d9166d439b06ca04a9f158e2631')
 
 prepare() {
   cd "$pkgname-$pkgver"
