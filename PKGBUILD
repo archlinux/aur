@@ -3,7 +3,7 @@
 pkgbase=python-rad
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.29.0
+pkgver=0.29.1
 pkgrel=1
 pkgdesc="Nancy Grace Roman Space Telescope shared attributes for processing and archive"
 arch=('any')
@@ -12,17 +12,19 @@ license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm>=3.4'
              'python-build'
              'python-installer'
-             'python-sphinx-asdf')  # wheel required by new setuptools; importlib-metadata <- asdf
+             'python-sphinx-astropy'
+             'python-sphinx-asdf'
+             'python-sphinx_rtd_theme')  # wheel required by new setuptools; importlib-metadata <- asdf
 # circular deps
 checkdepends=('python-pytest-doctestplus'
 #             'python-pytest-xdist'
               'python-pytest-asdf-plugin'
               'python-deepdiff'
               'python-crds'
-#             'python-roman-datamodels>=0.22.0'
+##            'python-roman-datamodels>=0.22.0'
               'python-gitpython')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('94acd3be8d7ff3ab0b08264e944f173f')
+md5sums=('133d4effaa8b2d5cc63eb904735db298')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -44,12 +46,12 @@ check() {
 
 #   PYTHONPATH="build/lib" pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4
     PYTHONPATH="src" pytest \
-        --ignore=tests/test_latest.py \
         --ignore=tests/test_versioning.py || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4
+#       --ignore=tests/test_latest.py \
 }
 
 package_python-rad() {
-    depends=('python>=3.11' 'python-asdf-astropy>=0.5.0')
+    depends=('python>=3.11' 'python-asdf-astropy>=0.8.0')
     optdepends=('python-rad-doc: Documentation for RAD')
     cd ${srcdir}/${_pyname}-${pkgver}
 
