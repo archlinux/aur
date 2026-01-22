@@ -1,20 +1,18 @@
 pkgbase = flamethrower
 	pkgdesc = DNS performance and functional testing utility
-	pkgver = 0.11.0
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/DNS-OARC/flamethrower
 	arch = i686
 	arch = x86_64
 	arch = aarch64
-	license = Apache
-	makedepends = cmake
+	license = Apache-2.0
+	makedepends = meson
 	depends = ldns
 	depends = libuv
 	depends = gnutls
 	depends = libnghttp2
-	source = flamethrower-0.11.0.tar.gz::https://github.com/DNS-OARC/flamethrower/archive/refs/tags/v0.11.0.tar.gz
-	source = gcc12.patch
-	sha256sums = 427f39d7e21e18e68b323a0b9b28260e7d0dedbb9d117b309bf550672fb3fb36
-	sha256sums = a4f6d3969d0a6fc1ab27982100d6da87c051164f0ca24380bd34f97a58497f7e
+	source = flamethrower-0.12.0.tar.gz::https://github.com/DNS-OARC/flamethrower/archive/refs/tags/v0.12.0.tar.gz
+	sha256sums = 3f7d792b4464ddc55ab7c3acfe250bc56751923790301798c3b3ce9516dd342d
 
 pkgname = flamethrower
