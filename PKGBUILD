@@ -1,7 +1,7 @@
 # Maintainer: Joshua Alexander <j-alexander3375@users.noreply.github.com>
 
 pkgname=lotus-lang
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="A systems programming language with Rust-inspired imports, type-first bindings, and x86-64 assembly output"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc' 'llvm' 'clang')
 makedepends=('go>=1.20')
 source=("lotus-lang-${pkgver}.tar.gz::https://github.com/j-alexander3375/Lotus/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('2347a53d27b422f215213d3d6f1f6b4a69c1e5bfe66e9de40184f5229bf21290')
+sha256sums=('dea4b0bd5d58a5328c2be77d9e28086dd31a14f68ac20ebf8208fe73fb1577e6')
 
 build() {
     cd "${srcdir}/Lotus-${pkgver}"
@@ -28,7 +28,8 @@ build() {
 check() {
     cd "${srcdir}/Lotus-${pkgver}"
     
-    # Run basic compilation test on examples
+    # Run basic compilation test on examples using GCC backend
+    # (LLVM is default, but GCC backend is more portable for build checks)
     ./lotus -gcc examples/control_flow_if.lts -o test_if || true
     ./lotus -gcc examples/control_flow_for.lts -o test_for || true
 }
