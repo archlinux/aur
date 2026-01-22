@@ -1,0 +1,141 @@
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![License](https://img.shields.io/badge/License-0BSD-blue.svg)](/LICENSE)
+[![Language](https://img.shields.io/badge/Language-C-blue.svg)](https://en.wikipedia.org/wiki/C_(programming_language))
+
+<h2>Summary</h2>
+
+Blindtaste is a lightweight, low-latency terminal "blackboard" designed for capturing quick thoughts and fleeting information without the overhead of a traditional text editor.
+
+It operates by taking over the terminal interface to provide a distraction-free writing environment that is significantly faster than commercial alternatives.
+
+> **Note:** This project is still being developed. As the software grows larger and more powerful, more information will be added.
+
+<h2>Features</h2>
+
+<h3>High Performance</h3>
+
+Starts in milliseconds-measured at **10x faster** than Microsoft Word or LibreOffice.
+
+<h3>Zero Disk I/O</h3>
+
+Text remains in the terminal scrollback **in memory** after exit without cluttering your filesystem.
+
+<h3>Low Latency</h3>
+
+Optimized for non-canonical read operations, ensuring **zero lag** between keystrokes and display.
+
+<h3>Memory Efficient</h3>
+
+Uses a **dynamic input buffer** that scales with your thoughts.
+
+<h3>Cross-Platform</h3>
+
+Robust handling of line endings (\r\n) for consistent behavior across different terminal emulators.
+
+<h2>Technical Implementation</h2>
+
+Blindtaste achieves its speed and "blackboard" feel by manipulating low-level terminal flags to bypass standard processing:
+
+<h3>Raw Mode</h3>
+
+It disables canonical mode (ICANON), echo (ECHO), and signal processing (ISIG). This prevents the shell from interpreting your notes as commands.
+
+<h3>Optimized I/O</h3>
+
+Uses the write() system call instead of printf() for reduced overhead and sets a 1-byte minimum for read operations to ensure immediate character processing.
+
+<h3>State Recovery</h3>
+
+The software captures your environment's original terminal configurations and restores them upon exit, ensuring your terminal remains functional.
+
+<h2>Installation</h2>
+
+<h3>Arch Linux</h3>
+
+Download the compilation script
+```bash
+git clone https://aur.archlinux.org/blindpaste.git
+```
+
+Enter directory
+```bash
+cd blindpaste
+```
+
+Make the package
+```bash
+makepkg -sfi
+```
+
+<h3>Gentoo Linux</h3>
+
+Enable the Guru repository
+```bash
+sudo emerge -av app-eselect/eselect-repository
+
+sudo eselect repository enable guru
+
+sudo emaint sync -r guru
+```
+
+Download and compile the package
+```bash
+sudo emerge -av app-text/blindpaste
+```
+
+<h3>Source</h3>
+
+Download the source code
+```bash
+git clone https://git.projectgrid.net/blindpaste.git
+```
+
+Enter directory
+```bash
+cd blindpaste
+```
+
+Make and Install
+```bash
+sudo make install
+```
+
+<h2>Usage</h2>
+
+<h3>Quick note-taking</h3>
+
+```bash
+bp
+```
+
+<h3>Stream editing</h3>
+
+```bash
+env | bp
+```
+
+<h3>"Copy-on-writing"</h3>
+
+```bash
+sudo blindpaste /etc/fstab
+```
+
+<h3>Bonus: non-existing inputs files</h3>
+
+```bash
+bp HelloWorld!
+```
+
+<h2>Bug Reports & Contributing</h2>
+
+Please report any issues or hardware edge cases via the issue tracker on my [git portal](https://projectgrid.net/museum/blindpaste)!
+
+<h2>Author</h2>
+
+|Maintainer|Gabrel Oliveira da Silva
+|------------|-------------------------
+|Status|Maintained/Active
+|Web-Page|https://projectgrid.net
+|Patch Work|https://projectgrid.net/museum/blindpaste
+|SCM|git://git.projectgrid.net/blindpaste.git
+|Files|*
