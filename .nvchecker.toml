@@ -1,0 +1,4 @@
+[zelbar]
+source = "git"
+git = "https://git.sr.ht/~novakane/zelbar"
+prefix = "v"
