@@ -1,6 +1,6 @@
 pkgbase = geminicommit-bin
 	pkgdesc = CLI that writes git commit messages for you with Google Gemini AI
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/tfkhdyt/geminicommit
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = geminicommit-bin
 	depends = glibc
 	provides = gmc
 	conflicts = geminicommit
-	source = LICENSE-0.6.1::https://raw.githubusercontent.com/tfkhdyt/geminicommit/v0.6.1/LICENSE
-	source = README-0.6.1.md::https://raw.githubusercontent.com/tfkhdyt/geminicommit/v0.6.1/README.md
+	source = LICENSE-0.7.0::https://raw.githubusercontent.com/tfkhdyt/geminicommit/v0.7.0/LICENSE
+	source = README-0.7.0.md::https://raw.githubusercontent.com/tfkhdyt/geminicommit/v0.7.0/README.md
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 	sha256sums = d0d2d1f4a5e7e1a3864c76d83acff1a0f84c0f84544276a48fa11eb8d457ca13
-	source_x86_64 = geminicommit-x86_64-0.6.1.tar.gz::https://github.com/tfkhdyt/geminicommit/releases/download/v0.6.1/gmc-v0.6.1-linux-amd64.tar.gz
-	sha256sums_x86_64 = 0756f79e6643d1b037c35c9d23b1497c6c76b775af47fe9047b8620fb5e2d964
-	source_aarch64 = geminicommit-aarch64-0.6.1.tar.gz::https://github.com/tfkhdyt/geminicommit/releases/download/v0.6.1/gmc-v0.6.1-linux-arm64.tar.gz
-	sha256sums_aarch64 = d55ccb14edc575bbd9ccbe3a8236169374753af193426d2efb7362ce99ff7b13
+	source_x86_64 = geminicommit-x86_64-0.7.0.tar.gz::https://github.com/tfkhdyt/geminicommit/releases/download/v0.7.0/gmc-v0.7.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 67b9d41282b938b306dadb0a8188dc245a9cd9d909d72e3bbc27ba9ca977b5d0
+	source_aarch64 = geminicommit-aarch64-0.7.0.tar.gz::https://github.com/tfkhdyt/geminicommit/releases/download/v0.7.0/gmc-v0.7.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 64d1a1d2f262d9e8d4a813655637d30ce455ab9e1730cf787c4d57638fdacfcf
 
 pkgname = geminicommit-bin
