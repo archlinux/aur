@@ -1,6 +1,6 @@
 pkgbase = python-dgutils-git
 	pkgdesc = GTK apps development easement
-	pkgver = r3.6abcb84
+	pkgver = 0.1.r0.g91df019
 	pkgrel = 1
 	url = https://github.com/dzheremi2/dgutils
 	arch = any

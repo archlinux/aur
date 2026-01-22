@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-dgutils-git
 _name=dgutils
-pkgver=r3.6abcb84
+pkgver=0.1.r0.g91df019
 pkgrel=1
 pkgdesc="GTK apps development easement"
 arch=('any')
@@ -26,7 +26,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_name"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
