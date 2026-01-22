@@ -1,0 +1,3 @@
+[python-pandas-flavor]
+source = "pypi"
+pypi = "pandas-flavor"

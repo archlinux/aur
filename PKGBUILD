@@ -3,16 +3,16 @@
 pkgname=python-pandas-flavor
 _pname=${pkgname#python-}
 _name=${_pname//-/_}
-pkgver=0.7.0
-pkgrel=0
+pkgver=0.8.1
+pkgrel=1
 pkgdesc='The easy way to write your own Pandas flavor.'
 arch=(any)
 url=https://github.com/Zsailer/pandas_flavor
 license=(MIT)
 depends=(python python-pandas python-xarray)
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python-build python-installer python-wheel python-setuptools python-setuptools-scm)
 source=(https://files.pythonhosted.org/packages/source/${_pname::1}/$_pname/$_name-$pkgver.tar.gz)
-sha256sums=('617bf9f96902017afc9bd284f611592bce91806d3c7ae34ad64f6edab3edaf7e')
+sha256sums=('255fa5851833ee0132c4fdd6c1565ec1e938a8c2671c37e408006da6b2bdc366')
 
 
 build() {
