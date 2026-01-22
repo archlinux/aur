@@ -1,0 +1,252 @@
+diff --git a/lib/http2/cache_digests.c b/lib/http2/cache_digests.c
+index 57a90e78..d26090f2 100644
+--- a/lib/http2/cache_digests.c
++++ b/lib/http2/cache_digests.c
+@@ -20,6 +20,8 @@
+  * IN THE SOFTWARE.
+  */
+ #include <limits.h>
++#include <openssl/crypto.h>
++#include <openssl/evp.h>
+ #include <stdlib.h>
+ #ifndef H2O_NO_OPENSSL_SUPPRESS_DEPRECATED
+ #define OPENSSL_SUPPRESS_DEPRECATED /* cache-digests is legacy and we do not want to pay the cost of switchng away from SHA256_*   \
+@@ -145,16 +147,32 @@ void h2o_cache_digests_load_header(h2o_cache_digests_t **digests, const char *va
+ 
+ static uint64_t calc_hash(const char *url, size_t url_len, const char *etag, size_t etag_len)
+ {
+-    SHA256_CTX ctx;
+     union {
+         unsigned char bytes[SHA256_DIGEST_LENGTH];
+         uint64_t u64;
+     } md;
+-
++#if !defined(LIBRESSL_VERSION_NUMBER) && OPENSSL_VERSION_NUMBER >= 0x30000000L
++    EVP_MD_CTX *ctx;
++    OSSL_LIB_CTX *octx;
++    EVP_MD *digest = NULL;
++    octx = OSSL_LIB_CTX_new();
++    digest = EVP_MD_fetch(octx, "sha256", NULL);
++
++    ctx = EVP_MD_CTX_new();
++    EVP_DigestInit_ex(ctx, digest, NULL);
++    EVP_DigestUpdate(ctx, url, url_len);
++    EVP_DigestUpdate(ctx, etag, etag_len);
++    EVP_DigestFinal_ex(ctx, md.bytes, NULL);
++    EVP_MD_CTX_free(ctx);
++    EVP_MD_free(digest);
++    OSSL_LIB_CTX_free(octx);
++#else
++    SHA256_CTX ctx;
+     SHA256_Init(&ctx);
+     SHA256_Update(&ctx, url, url_len);
+     SHA256_Update(&ctx, etag, etag_len);
+     SHA256_Final(md.bytes, &ctx);
++#endif
+ 
+     if (*(uint16_t *)"\xde\xad" == 0xdead)
+         return md.u64;
+diff --git a/lib/http2/casper.c b/lib/http2/casper.c
+index 5a9e2718..778a0616 100644
+--- a/lib/http2/casper.c
++++ b/lib/http2/casper.c
+@@ -22,6 +22,8 @@
+ #ifndef H2O_NO_OPENSSL_SUPPRESS_DEPRECATED
+ #define OPENSSL_SUPPRESS_DEPRECATED /* casper is legacy and we do not want to pay the cost of switchng away from SHA1_* */
+ #endif
++#include <openssl/crypto.h>
++#include <openssl/evp.h>
+ #include <openssl/sha.h>
+ #include "golombset.h"
+ #include "h2o/string_.h"
+@@ -39,16 +41,31 @@ struct st_h2o_http2_casper_t {
+ 
+ static unsigned calc_key(h2o_http2_casper_t *casper, const char *path, size_t path_len)
+ {
+-    SHA_CTX ctx;
+-    SHA1_Init(&ctx);
+-    SHA1_Update(&ctx, path, path_len);
+-
+     union {
+         unsigned key;
+         unsigned char bytes[SHA_DIGEST_LENGTH];
+     } md;
+-    SHA1_Final(md.bytes, &ctx);
++#if !defined(LIBRESSL_VERSION_NUMBER) && OPENSSL_VERSION_NUMBER >= 0x30000000L
++    EVP_MD_CTX *ctx;
++    OSSL_LIB_CTX *octx;
++    EVP_MD *digest = NULL;
++    octx = OSSL_LIB_CTX_new();
++    digest = EVP_MD_fetch(octx, "sha1", NULL);
++
++    ctx = EVP_MD_CTX_new();
++    EVP_DigestInit_ex(ctx, digest, NULL);
++    EVP_DigestUpdate(ctx, path, path_len);
++    EVP_DigestFinal_ex(ctx, md.bytes, NULL);
++    EVP_MD_CTX_free(ctx);
++    EVP_MD_free(digest);
++    OSSL_LIB_CTX_free(octx);
++#else
++    SHA_CTX ctx;
++    SHA1_Init(&ctx);
++    SHA1_Update(&ctx, path, path_len);
+ 
++    SHA1_Final(md.bytes, &ctx);
++#endif
+     return md.key & ((1 << casper->capacity_bits) - 1);
+ }
+ 
+diff --git a/src/main.c b/src/main.c
+index dfab338d..8664bd9b 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -64,7 +64,12 @@
+ #include <sys/prctl.h>
+ #endif
+ #include <openssl/crypto.h>
++#if !defined(LIBRESSL_VERSION_NUMBER) && OPENSSL_VERSION_NUMBER >= 0x30000000L
++#include <openssl/decoder.h>
++#include <openssl/evp.h>
++#else
+ #include <openssl/dh.h>
++#endif
+ #include <openssl/err.h>
+ #include <openssl/ssl.h>
+ #ifdef LIBC_HAS_BACKTRACE
+@@ -2460,6 +2465,24 @@ static int listener_setup_ssl(h2o_configurator_command_t *cmd, h2o_configurator_
+                 ERR_print_errors_cb(on_openssl_print_errors, stderr);
+                 goto Error;
+             }
++#if !defined(LIBRESSL_VERSION_NUMBER) && OPENSSL_VERSION_NUMBER >= 0x30000000L
++            OSSL_DECODER_CTX *dctx;
++            EVP_PKEY *pkey = NULL;
++            dctx = OSSL_DECODER_CTX_new_for_pkey(&pkey, "PEM", NULL, "DH", OSSL_KEYMGMT_SELECT_KEYPAIR, NULL, NULL);
++            if (!OSSL_DECODER_from_bio(dctx, bio)) {
++                BIO_free(bio);
++                EVP_PKEY_free(pkey);
++                OSSL_DECODER_CTX_free(dctx);
++                h2o_configurator_errprintf(cmd, *dh_file, "failed to load dhparam file:%s\n", (*dh_file)->data.scalar);
++                ERR_print_errors_cb(on_openssl_print_errors, stderr);
++                goto Error;
++            }
++            BIO_free(bio);
++            SSL_CTX_set0_tmp_dh_pkey(identity->ossl, pkey);
++            SSL_CTX_set_options(identity->ossl, SSL_OP_SINGLE_DH_USE);
++            EVP_PKEY_free(pkey);
++            OSSL_DECODER_CTX_free(dctx);
++#else
+             DH *dh = PEM_read_bio_DHparams(bio, NULL, NULL, NULL);
+             BIO_free(bio);
+             if (dh == NULL) {
+@@ -2470,6 +2493,7 @@ static int listener_setup_ssl(h2o_configurator_command_t *cmd, h2o_configurator_
+             SSL_CTX_set_tmp_dh(identity->ossl, dh);
+             SSL_CTX_set_options(identity->ossl, SSL_OP_SINGLE_DH_USE);
+             DH_free(dh);
++#endif
+         }
+ #if H2O_USE_NPN
+         h2o_ssl_register_npn_protocols(identity->ossl, h2o_npn_protocols);
+diff --git a/src/ssl.c b/src/ssl.c
+index 2499a94c..3d42d834 100644
+--- a/src/ssl.c
++++ b/src/ssl.c
+@@ -271,7 +271,11 @@ static struct st_session_ticket_t *find_ticket_for_encryption(session_ticket_vec
+     return NULL;
+ }
+ 
++#if !defined(LIBRESSL_VERSION_NUMBER) && OPENSSL_VERSION_NUMBER >= 0x30000000L
++static int ticket_key_callback(unsigned char *key_name, unsigned char *iv, EVP_CIPHER_CTX *ctx, EVP_MAC_CTX *hctx, int enc)
++#else
+ static int ticket_key_callback(unsigned char *key_name, unsigned char *iv, EVP_CIPHER_CTX *ctx, HMAC_CTX *hctx, int enc)
++#endif
+ {
+     int ret;
+     pthread_rwlock_rdlock(&session_tickets.rwlock);
+@@ -288,7 +292,15 @@ static int ticket_key_callback(unsigned char *key_name, unsigned char *iv, EVP_C
+         memcpy(key_name, ticket->name, sizeof(ticket->name));
+         ret = EVP_EncryptInit_ex(ctx, ticket->cipher, NULL, session_ticket_get_cipher_key(ticket), iv);
+         assert(ret);
++#if !defined(LIBRESSL_VERSION_NUMBER) && OPENSSL_VERSION_NUMBER >= 0x30000000L
++        OSSL_PARAM params[3], *p = params;
++        *p++ = OSSL_PARAM_construct_octet_string("key", session_ticket_get_hmac_key(ticket), 32);
++        *p++ = OSSL_PARAM_construct_utf8_string("digest", (char *)EVP_MD_get0_name((const EVP_MD *)ticket->hmac), 0);
++        *p = OSSL_PARAM_construct_end();
++        ret = EVP_MAC_CTX_set_params(hctx, params);
++#else
+         ret = HMAC_Init_ex(hctx, session_ticket_get_hmac_key(ticket), EVP_MD_block_size(ticket->hmac), ticket->hmac, NULL);
++#endif
+         assert(ret);
+         if (temp_ticket != NULL)
+             free_ticket(ticket);
+@@ -307,7 +319,15 @@ static int ticket_key_callback(unsigned char *key_name, unsigned char *iv, EVP_C
+     Found:
+         ret = EVP_DecryptInit_ex(ctx, ticket->cipher, NULL, session_ticket_get_cipher_key(ticket), iv);
+         assert(ret);
++#if !defined(LIBRESSL_VERSION_NUMBER) && OPENSSL_VERSION_NUMBER >= 0x30000000L
++        OSSL_PARAM params[3], *p = params;
++        *p++ = OSSL_PARAM_construct_octet_string("key", session_ticket_get_hmac_key(ticket), 32);
++        *p++ = OSSL_PARAM_construct_utf8_string("digest", (char *)EVP_MD_get0_name((const EVP_MD *)ticket->hmac), 0);
++        *p = OSSL_PARAM_construct_end();
++        ret = EVP_MAC_CTX_set_params(hctx, params);
++#else
+         ret = HMAC_Init_ex(hctx, session_ticket_get_hmac_key(ticket), EVP_MD_block_size(ticket->hmac), ticket->hmac, NULL);
++#endif
+         assert(ret);
+         /* Request renewal if the youngest key is active */
+         if (i != 0 && session_tickets.tickets.entries[i - 1]->not_before <= time(NULL))
+@@ -321,8 +341,13 @@ Exit:
+     return ret;
+ }
+ 
++#if !defined(LIBRESSL_VERSION_NUMBER) && OPENSSL_VERSION_NUMBER >= 0x30000000L
++static int ticket_key_callback_ossl(SSL *ssl, unsigned char *key_name, unsigned char *iv, EVP_CIPHER_CTX *ctx, EVP_MAC_CTX *hctx,
++                                    int enc)
++#else
+ static int ticket_key_callback_ossl(SSL *ssl, unsigned char *key_name, unsigned char *iv, EVP_CIPHER_CTX *ctx, HMAC_CTX *hctx,
+                                     int enc)
++#endif
+ {
+     return ticket_key_callback(key_name, iv, ctx, hctx, enc);
+ }
+@@ -363,11 +388,19 @@ static int encrypt_ticket_ptls(ptls_encrypt_ticket_t *_self, ptls_t *tls, int is
+             src.base = srcbuf;
+             src.len += sizeof(self->quic_tag);
+         }
++#if !defined(LIBRESSL_VERSION_NUMBER) && OPENSSL_VERSION_NUMBER >= 0x30000000L
++        return ptls_openssl_encrypt_ticket_evp(dst, src, ticket_key_callback);
++#else
+         return ptls_openssl_encrypt_ticket(dst, src, ticket_key_callback);
++#endif
+     } else {
+         /* decrypt given data, then if necessary, check and remove the QUIC tag */
+         size_t dst_start_off = dst->off;
++#if !defined(LIBRESSL_VERSION_NUMBER) && OPENSSL_VERSION_NUMBER >= 0x30000000L
++        if ((ret = ptls_openssl_decrypt_ticket_evp(dst, src, ticket_key_callback)) != 0)
++#else
+         if ((ret = ptls_openssl_decrypt_ticket(dst, src, ticket_key_callback)) != 0)
++#endif
+             return ret;
+         if (self->is_quic) {
+             if (dst->off - dst_start_off < sizeof(self->quic_tag))
+@@ -1121,7 +1154,11 @@ void ssl_setup_session_resumption(SSL_CTX **contexts, size_t num_contexts, struc
+         size_t i;
+         for (i = 0; i != num_contexts; ++i) {
+             SSL_CTX *ctx = contexts[i];
++#if !defined(LIBRESSL_VERSION_NUMBER) && OPENSSL_VERSION_NUMBER >= 0x30000000L
++            SSL_CTX_set_tlsext_ticket_key_evp_cb(ctx, ticket_key_callback_ossl);
++#else
+             SSL_CTX_set_tlsext_ticket_key_cb(ctx, ticket_key_callback_ossl);
++#endif
+             /* accompanying ptls context is initialized in ssl_setup_session_resumption_ptls */
+         }
+     } else {
+@@ -1184,7 +1221,9 @@ void init_openssl(void)
+     SSL_library_init();
+     OpenSSL_add_all_algorithms();
+ #if H2O_CAN_OSSL_ASYNC
++#if defined(LIBRESSL_VERSION_NUMBER) || OPENSSL_VERSION_NUMBER < 0x30000000L
+     ERR_load_ASYNC_strings();
++#endif
+ #endif
+ 
+     cache_init_defaults();

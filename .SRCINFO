@@ -35,10 +35,16 @@ pkgbase = h2o-git
 	source = git+https://github.com/h2o/h2o.git#commit=a9ba592b904684b8d12e9a825e4a579c31999c2b?signed/
 	source = https://github.com/h2o/h2o/pull/3550.patch
 	source = https://github.com/h2o/h2o/pull/3552.patch
+	source = fix-openssl-deprecated-warn.patch
+	source = https://github.com/h2o/h2o/pull/3553.patch
+	source = https://github.com/h2o/h2o/pull/3551.patch
 	source = h2o.service
 	sha256sums = 2ae8e680e419164d3097dc1c11b0e31160782887f75c141ed32b30335b8b333f
 	sha256sums = dbe8c77cfa41cacb95c07ac4b6e53fe2adbbbdd694d5fc2098dafe466d50a65d
-	sha256sums = e2fe6ff238fb3db89d5d74ab01a43a816605c54eb7ebfbfd8d0c33e094a27abb
+	sha256sums = 03ee41894f4ab8c1ff77fb13eb5054d544e7a2d1c8c5588d3d8947c98821c2d7
+	sha256sums = 632f219cc21128810bba4de869de4961ebff9083af31231f721f451d2e58f7e1
+	sha256sums = 930bed0a8b6d75973e21cacb4cfda6bcacf08bc6d1b504b5cc36f56f9d6bfaf8
+	sha256sums = 99b8ae5a7e06af7a4308c60a204b903171bb357d61bf4ea8abb04b1bcc148174
 	sha256sums = 7fccdeb1a89134b48674764dc243f8967eb1234679e401af93e210fbf0934b62
 
 pkgname = h2o-git
