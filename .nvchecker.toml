@@ -1,0 +1,4 @@
+[river-bedload]
+source = "git"
+git = "https://git.sr.ht/~novakane/river-bedload"
+prefix = "v"

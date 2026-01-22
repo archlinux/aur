@@ -1,0 +1,18 @@
+pkgbase = river-bedload
+	pkgdesc = Print river compositor info in STDOUT
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://git.sr.ht/~novakane/river-bedload
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = zig>=0.15
+	makedepends = wayland-protocols
+	depends = glibc
+	depends = wayland
+	noextract = zig-wayland-v0.4.0.tar.gz
+	source = river-bedload-v0.2.0.tar.gz::https://git.sr.ht/~novakane/river-bedload/archive/v0.2.0.tar.gz
+	source = zig-wayland-v0.4.0.tar.gz::https://codeberg.org/ifreund/zig-wayland/archive/v0.4.0.tar.gz
+	b2sums = bdcdd60b11287c7a7b8a95b2d0cd39672351343c75ad344c2747035c7f7a2256c0a033890611e267491f0dd9b7f85312dc7aca7e3a7a11cb20ccd36281fcd75c
+	b2sums = 1c33b878c3efdf20eef58ddd6f8a6cab99a24e7481f9a3b8f31b19b58d13372d8dea84dfb26b4097123ca25b1d38939e9b987d70eb3a23fe0fecf9f21fe6f8a2
+
+pkgname = river-bedload
