@@ -1,0 +1,5 @@
+[sweep-bin]
+source = "github"
+github = "Erokez0/sweep"
+use_latest_release = true
+prefix = "v"
