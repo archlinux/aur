@@ -1,0 +1,26 @@
+From 1ac01728177f4bc97d796669ad3a81d786094a2e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Thu, 22 Jan 2026 19:19:54 +0000
+Subject: [PATCH] Set window icon
+
+This is commonly used by desktop environments on Xorg.
+---
+ main.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/main.cpp b/main.cpp
+index 59dd011..49efc80 100644
+--- a/main.cpp
++++ b/main.cpp
+@@ -69,6 +69,8 @@ int main(int argc, char *argv[])
+     aboutData.setTranslator(i18nc("NAME OF TRANSLATORS", "Your names"), i18nc("EMAIL OF TRANSLATORS", "Your emails"));
+     KAboutData::setApplicationData(aboutData);
+ 
++    QApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral("kfloppy")));
++
+     KCrash::initialize();
+ 
+     QCommandLineParser parser;
+-- 
+GitLab
+

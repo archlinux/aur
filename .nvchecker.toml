@@ -1,0 +1,4 @@
+[kfloppy]
+source = "git"
+git = "https://invent.kde.org/utilities/kfloppy.git"
+prefix = "v"

@@ -1,0 +1,36 @@
+pkgbase = kfloppy
+	pkgdesc = Utility that provides a straightforward graphical means to format 3.5" and 5.25" floppy disks
+	pkgver = 23.04.3
+	pkgrel = 1
+	url = https://apps.kde.org/kfloppy/
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kdoctools
+	makedepends = ninja
+	depends = dosfstools
+	depends = e2fsprogs
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = kcompletion
+	depends = kconfig
+	depends = kconfigwidgets
+	depends = kcoreaddons
+	depends = kcrash
+	depends = ki18n
+	depends = kwidgetsaddons
+	depends = kxmlgui
+	depends = qt6-5compat
+	depends = qt6-base
+	source = git+https://invent.kde.org/utilities/kfloppy.git?signed#tag=v23.04.3
+	source = kfloppy-window-icon.patch
+	source = kfloppy-fix-crash.patch
+	validpgpkeys = D81C0CB38EB725EF6691C385BB463350D6EF31EF
+	b2sums = 677dfc433bc2281ab5ee765a966ce655ef11ca15396a406fee19033f8d2eac222ee5aaa720f0c19a54aef6fcb96076f8464c42c7055412ec404336798b3b40ff
+	b2sums = 52362f7e7e5e4feb7bf227eadd5497d1fa80f9eccf5d946285e6914e5348117fad7b5256644fe74b54df54d6ef583bb074f863bc02b2a44cabcc1203b47b3856
+	b2sums = 1f4f38e8fa8aab9b8f72eff4b3fb2d651eba376f6953f49ffdd486dc7481097e7cb022d2ebf927839fcde7a5e9baf1fdf91813de290facd4d602ced29088e8b3
+
+pkgname = kfloppy
