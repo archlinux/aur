@@ -7,7 +7,7 @@ _appname=pixelterm
 pkgname=${_appname}-bin
 pkgdesc="A high-performance terminal image browser written in C, based on the Chafa library"
 
-pkgver=1.3.5
+pkgver=1.6.4
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -20,17 +20,17 @@ _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgverna
 license=('LGPL-3.0-or-later')
 
 provides=("${_appname}")
-conflicts=("${_appname}"{,-git})
-depends=('glibc' 'glib2' 'gdk-pixbuf2' 'chafa')
+conflicts=("${_appname}"{-c,-git})
+depends=('glibc' 'glib2' 'gdk-pixbuf2' 'chafa' 'ffmpeg' 'libmupdf')
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[0]}-linux.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[1]}-linux.tar.gz")
 sha256sums=('a30b218bb0c27aa7264ea96b9bdbff18fb52702ad35d44212bcf019c391f83e5'
-            'a9e6474a2bb79ec292182f9795c010af9a0fb8427c09acde9e74a45adb748dde')
-sha256sums_x86_64=('7373b936587095dd5e5055ee513cdf328e0cbaf8bb4a4338a63ebb118d388b26')
-sha256sums_aarch64=('2ad53f457ec867e8da1d6975be7c99b923dd37b2a78415d374c44447f9b19523')
+            '59248df46182dc64db6ca40a494e5ba5dc61d8a336c940300f1ab838ccd13aa7')
+sha256sums_x86_64=('cc31c27fc0459729bf921dbc4ba1fd8f7e349a33341c1d5d98402db27855e2c1')
+sha256sums_aarch64=('d25c860287413ac0c2a9d304f8b1a87da609508b1df52879584d6097ed62fc5f')
 
 case ${CARCH} in
   ${arch[0]})
