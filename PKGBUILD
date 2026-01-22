@@ -2,7 +2,7 @@
 # Contributor: Erik Wallström <erik.wallstrom@live.com>
 pkgname=pop-icon-theme-git
 pkgver=3.5.1.r0.g1a575a8
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="System76 Pop icon theme"
 arch=('any')
@@ -31,7 +31,4 @@ build() {
 
 package() {
   meson install -C build --no-rebuild --destdir "$pkgdir"
-
-  cd icon-theme
-  install -Dm644 COPYING LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
