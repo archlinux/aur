@@ -1,0 +1,16 @@
+pkgbase = e-imzo
+	pkgdesc = Uzbek state web identity proving & key signing (E-IMZO)
+	pkgver = 5.00
+	pkgrel = 1
+	url = https://e-imzo.soliq.uz
+	arch = x86_64
+	license = Proprietary
+	depends = jre8-openjdk
+	depends = pcsclite
+	depends = ccid
+	source = https://cdn.xinux.uz/e-imzo/E-IMZO-v5.00.tar.gz
+	source = e-imzo.service
+	sha256sums = 8cf019bbdf29ae40b835095f03cfe426ec3da9d0ab4924b2cf249258f9485e96
+	sha256sums = 8e3596d57ef7a185d850bd15d28876bb3395c5964e9002a1ed86f76f9696aff0
+
+pkgname = e-imzo

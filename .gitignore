@@ -1,0 +1,11 @@
+# Ignore built package files
+*.tar.gz
+*.tar.xz
+*.tar.zst
+
+# Ignore build directory artifacts
+pkg/
+src/
+
+# Other common ignores
+.DS_Store

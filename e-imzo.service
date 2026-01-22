@@ -1,0 +1,18 @@
+[Unit]
+Description=E-IMZO, uzbek state web signing service
+Documentation=https://github.com/xinux-org/e-imzo
+After=network-online.target graphical.target
+Wants=network-online.target graphical.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/e-imzo
+
+Restart=always
+RestartSec=1
+
+NoNewPrivileges=true
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=default.target
