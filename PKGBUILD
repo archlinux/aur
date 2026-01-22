@@ -1,7 +1,7 @@
 # Maintainer: David Birks <david@birks.dev>
 
 pkgname=gastown
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Multi-agent orchestration system for Claude Code with persistent work tracking'
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=(
 )
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/steveyegge/gastown/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('3a3ffe9171d77566a7acd30f08127f4e9fb2bfb29cbad9421df6eeecf91cdb3c30c1df8ecd3344feac04e9895f663e7a90bc421cdc024c46cd662e04f98a9615')
+b2sums=('09e96ed400eb8e6b336583fe02213c9a7e8eb77177af8f77ccda66656fdd9b0d334f469540e2a63ab352accf61b576ee87d289eb6537752a3e4e4af543d35ec6')
 
 build() {
   cd "$pkgname-$pkgver"
