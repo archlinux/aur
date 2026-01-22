@@ -1,6 +1,6 @@
 # Maintainer: muttleyxd <muttdini[ at ]gmail.com>
 pkgname=arma3-linux-launcher-git
-pkgver=353.323627c
+pkgver=420.5b3bf5e
 pkgrel=1
 pkgdesc="Advanced launcher for ArmA 3 on Linux"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ pkgver()
 build() 
 {
   cd "$srcdir/$pkgname"
-  mkdir build
+  mkdir -p build
   cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr ..
   make
