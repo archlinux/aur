@@ -115,13 +115,11 @@ b2sums=(
 
 pkgver() {
     cd ejabberd
-    #sed -i "s|git describe --tags 2>/dev/null|echo $pkgver|" configure.ac
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
     cd ejabberd
-    # apply
     patch -p1 <../ejabberd.patch
 
     mkdir -p $srcdir/deps
@@ -158,23 +156,19 @@ package() {
     cd ejabberd
     find "$pkgdir" -name "*.lock" -type f -delete
     make DESTDIR="$pkgdir" install
-    install -dm750 $pkgdir"/var/lib/ejabberd"
-    install -dm750 $pkgdir"/var/log/ejabberd"
-    install -Dm0644 ejabberd.service $pkgdir"/usr/lib/systemd/system/ejabberd.service"
+    install -Dm0644 "$srcdir/ejabberd.service" "$pkgdir/usr/lib/systemd/system/ejabberd.service"
+    install -Dm0644 "$srcdir/ejabberd.sysusers" "$pkgdir/usr/lib/sysusers.d/ejabberd.conf"
+    install -Dm0644 "$srcdir/ejabberd.logrotate" "$pkgdir/etc/logrotate.d/ejabberd"
     install -Dm0644 tools/ejabberdctl.bc $pkgdir"/usr/share/bash-completion/completions/ejabberdctl"
-    install -Dm0644 $srcdir"/ejabberd.logrotate" $pkgdir"/etc/logrotate.d/ejabberd"
-    install -Dm0644 $srcdir"/ejabberd.sysusers" $pkgdir"/usr/lib/sysusers.d/ejabberd.conf"
+    install -dm0750 "$pkgdir/var/lib/ejabberd"
+    install -dm0750 "$pkgdir/var/log/ejabberd"
     #install -Dm04750 epam/priv/bin/epam $pkgdir"/usr/lib/ejabberd-$pkgver/priv/bin/epam"
 
-    cat <<EOF >>"$pkgdir"/etc/ejabberd/ejabberdctl.cfg
+    cat <<EOF >>"$pkgdir/etc/ejabberd/ejabberdctl.cfg"
 # home dir workaround
 HOME=/var/lib/ejabberd
 EOF
 
-# /usr/lib/ejabberd symlink follows to ejabberd version
-  (cd "$pkgdir"/usr/lib/ && ln -s ejabberd-* ejabberd)
-
-# permissions
     chmod 440 $pkgdir"/etc/ejabberd/"*
     chmod 555 $pkgdir"/usr/bin/ejabberdctl"
     find "$pkgdir/usr/lib" -name "captcha.sh" -path "*/priv/bin/*" -exec chmod +x {} +
