@@ -1,0 +1,23 @@
+pkgbase = wayvy-git
+	pkgdesc = Wayvy is a wallpaper switcher and theming manager for wayland written in rust.
+	pkgver = r0.0000000
+	pkgrel = 1
+	url = https://codeberg.org/J_S_Barkely-Griggs/Wayvy
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = rust
+	makedepends = cargo
+	makedepends = make
+	makedepends = git
+	depends = mpvpaper
+	optdepends = python-pywal16: re-theming support
+	optdepends = walrs-extended: re-theming support with remote files
+	optdepends = walrs: re-theming support
+	optdepends = wallust: re-theming support
+	provides = wayvy
+	conflicts = wayvy
+	replaces = wayvy
+	source = wayvy::git+https://codeberg.org/J_S_Barkely-Griggs/Wayvy.git
+	sha256sums = SKIP
+
+pkgname = wayvy-git
