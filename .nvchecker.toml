@@ -1,0 +1,5 @@
+[iv-cli-bin]
+source = "github"
+github = "kenshaw/iv"
+use_latest_release = true
+prefix = "v"
