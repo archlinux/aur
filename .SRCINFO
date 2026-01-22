@@ -1,0 +1,18 @@
+pkgbase = onionspray-git
+	pkgdesc = A tool to setup Onion Services for existing websites. Requires sudo to run. (git version)
+	pkgver = 1.7.0.r1376.gd73e1c3
+	pkgrel = 1
+	url = https://gitlab.torproject.org/tpo/onion-services/onionspray
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = perl
+	depends = bash
+	depends = tor
+	optdepends = onionbalance: for load balancing onion services
+	provides = onionspray
+	conflicts = onionspray
+	source = git+https://gitlab.torproject.org/tpo/onion-services/onionspray.git#branch=main
+	sha256sums = SKIP
+
+pkgname = onionspray-git
