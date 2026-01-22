@@ -1,0 +1,4 @@
+#Type   Path                          			 Mode    User           Group         Age     Argument
+d       /var/packages/pan-xunlei-com             0755    thunder-nas   thunder-nas   -       -
+d       /usr/syno/synoman/webman/modules         0755    thunder-nas   thunder-nas   -       -
+d       /xunlei                   				 0755    thunder-nas   thunder-nas   -       -

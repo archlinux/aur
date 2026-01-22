@@ -1,36 +1,42 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=thunder-nas-bin
-pkgver=1.0.3
-pkgrel=0
-pkgdesc="Synology NAS thunder run on Linux"
-arch=(aarch64
-    x86_64)
-url="https://github.com/gngpp/thunder"
+_tagname=3.20.2
+pkgver=${_tagname//-/_}
+pkgrel=1
+pkgdesc="Thunder (Xunlei) remote download service program extracted from thunder Synology suite for other devices"
+arch=(x86_64)
+url="https://github.com/cnk3x/xunlei"
 license=('MIT')
-provides=(${pkgname%-nas-bin} ${pkgname%-bin})
-conflicts=(${pkgname%-nas-bin} ${pkgname%-bin})
-replaces=()
+provides=(${pkgname%-bin})
+conflicts=(${pkgname%-bin})
+#replaces=(${pkgname})
 depends=()
 makedepends=()
+optdepends=()
 backup=()
-options=('!strip' '!debug' '!lto')
-install=$pkgname.install
+options=('!strip' '!debug')
+install=${pkgname}.install
 source=(
-    "$pkgname.install"
-    "thunder-${pkgver}-aarch64-unknown-linux-musl.tar.gz::${url}/releases/download/v${pkgver}/thunder-${pkgver}-aarch64-unknown-linux-musl.tar.gz"
-    "thunder-${pkgver}-x86_64-unknown-linux-musl.tar.gz::${url}/releases/download/v${pkgver}/thunder-${pkgver}-x86_64-unknown-linux-musl.tar.gz")
-sha256sums=('b1578a3a34e201c77fe8a43b36b5fa4a97d25e8821d4b47d4f4eb70ae7357a39'
-            '401bbfad610f587d8b70dd647985dcc4397052a857246de128ee114a72c10fd4'
-            '2c10dd081bdb5707498575bc8273d80028467b0359d1bba93430d8ffeaa06f77')
-noextract=(thunder-${pkgver}-aarch64-unknown-linux-musl.tar.gz
-    thunder-${pkgver}-x86_64-unknown-linux-musl.tar.gz)
+    "xlp-amd64-${pkgver}.tar.gz::${url}/releases/download/v${_tagname}/xlp-amd64.tar.gz"
+    "https://github.com/cnk3x/xunlei/raw/refs/heads/main/LICENSE"
+    thunder-nas.{sysusers,tmpfiles,service}
+)
+sha256sums=('5ed2af4bfea6a98e655bc80cf58d2617b64c9a0086e0ddf898b826580848ac1f'
+            'eabe4ae8a7885a2d00da4bbfb18e9a55b8fba68bb8d0d06d3701a6bf6726faef'
+            '86ef730efbb7ab007c0b65e3c54bf641241e8a85fdc70a274b80d40c239e76f3'
+            '0ccb638b7dddf17112bc533ab8e8d38f53efe64db3c78a54259481d823501c50'
+            '90656d7ea9795d84858ba2bf4cbedc8e546f7fde4cecd851637181d54d64a93a')
 
 package() {
-    install -dm755 "${pkgdir}/usr/bin"
-    if [ $CARCH = x86_64 ]; then
-        bsdtar -xf ${srcdir}/thunder-${pkgver}-x86_64-unknown-linux-musl.tar.gz -C "${pkgdir}/usr/bin"
-    elif [ $CARCH = aarch64 ]; then
-        bsdtar -xf ${srcdir}/thunder-${pkgver}-aarch64-unknown-linux-musl.tar.gz -C "${pkgdir}/usr/bin"
-    fi
+    install -Dm755 "${srcdir}/xlp" ${pkgdir}/usr/bin/${pkgname%-bin}
+    install -Dm0644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+
+    install -dm755 "${pkgdir}/usr/syno/synoman/webman/modules" \
+        "${pkgdir}/xunlei" \
+        "${pkgdir}/var/packages/pan-xunlei-com/"
+
+    install -Dvm644 "${srcdir}/thunder-nas.sysusers" "${pkgdir}/usr/lib/sysusers.d/thunder-nas.conf"
+    install -Dvm644 "${srcdir}/thunder-nas.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/thunder-nas.conf"
+    install -vDm644 "${srcdir}/thunder-nas.service" -t "${pkgdir}/usr/lib/systemd/system/"
 }

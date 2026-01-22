@@ -1,0 +1,27 @@
+[Unit]
+Description=Thunder (Xunlei) remote download service
+Documentation=https://github.com/cnk3x/xunlei
+Wants=network-online.target
+After=network-online.target
+StartLimitIntervalSec=500
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=thunder-nas
+Group=thunder-nas
+
+PrivateTmp=yes
+ProtectSystem=no
+ProtectHome=yes
+
+ExecStart=/usr/bin/thunder-nas
+Restart=always
+RestartSec=10
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=thunder-nas
+
+[Install]
+WantedBy=multi-user.target
