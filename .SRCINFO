@@ -1,6 +1,6 @@
 pkgbase = hqplayer-network-audio-daemon
 	pkgdesc = Signalyst Network Audio Daemon
-	pkgver = 6.1.0
+	pkgver = 6.1.1
 	pkgrel = 1
 	url = http://www.signalyst.com/consumer.html
 	arch = x86_64
