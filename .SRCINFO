@@ -1,22 +1,22 @@
 pkgbase = runelite-git
 	pkgdesc = Open source Old School RuneScape client. (Git Version)
-	pkgver = 1.5.18+13+gf8fd91bb1c
+	pkgver = 1.12.13.r4.g02e33cb
 	pkgrel = 1
-	url = https://github.com/runelite/runelite
+	url = https://runelite.net/
 	arch = any
 	license = BSD
-	makedepends = maven
+	makedepends = git
 	depends = java-runtime>=11
 	depends = ttf-font
 	optdepends = gvfs: enable links
-	provides = runelite
+	optdepends = libnotify: native tray notifications
+	provides = runelite=1.12.13.r4.g02e33cb
 	conflicts = runelite
 	source = git+https://github.com/runelite/runelite.git
 	source = runelite.desktop
 	source = runelite.png
 	sha512sums = SKIP
-	sha512sums = 532ec6105bbd13a6a977dfa0b2c79edc78d76994296b9044f9447eba2b1c118d249c4b103a94f30f22bdba2c9f214ca586fc8fde83d52e807d79a79c9ef1670d
-	sha512sums = 73e0c42f4eaf2e0adc249e471bd241e8328da7f867177535f1da206acce14801b60e69fffdbb2a10bc105f1de37b6eaaad23d5e67147b53a108b6e5bf55c586b
+	sha512sums = SKIP
+	sha512sums = SKIP
 
 pkgname = runelite-git
-
