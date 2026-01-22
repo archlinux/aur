@@ -1,0 +1,4 @@
+[ansiscape]
+source = "git"
+git = "https://git.sr.ht/~leon_plickat/ansiscape"
+prefix = "v"

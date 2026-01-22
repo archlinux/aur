@@ -1,0 +1,12 @@
+pkgbase = ansiscape
+	pkgdesc = Procedurally generated landscapes in your terminal
+	pkgver = 1.0.0+r1+g47c4cab
+	pkgrel = 1
+	url = https://git.sr.ht/~leon_plickat/ansiscape
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = zig0.11
+	source = ansiscape-47c4caba6a8fdde43472e8bc11de55255d7ad86a.tar.gz::https://git.sr.ht/~leon_plickat/ansiscape/archive/47c4caba6a8fdde43472e8bc11de55255d7ad86a.tar.gz
+	b2sums = b04d0f140c6f5371d72e0425da2db416ce35edefefe06fe37f76c6ed4f9aaaf83dae4c74505eb11dc3e9c3270bda41386a0072bbb264743332924854a7b4b1ca
+
+pkgname = ansiscape
