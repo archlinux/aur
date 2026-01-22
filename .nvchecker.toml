@@ -1,6 +1,6 @@
 [superproductivity]
 source = "github"
-github = "johannesjo/super-productivity"
+github = "super-productivity/super-productivity"
 use_max_tag = true
 prefix = "v"
-exclude_regex = ".*(rc).*"
+exclude_regex = ".*(rc|RC).*"
