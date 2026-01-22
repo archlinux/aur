@@ -5,6 +5,7 @@ pkgdesc="Tauri desktop app for orchestrating Codex agents across local workspace
 arch=('x86_64')
 url="https://github.com/tomdavenport/CodexMonitor"
 license=('MIT')
+options=(!lto)
 depends=(
   'gtk3'
   'libgit2'

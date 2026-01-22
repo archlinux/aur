@@ -26,6 +26,7 @@ pkgbase = codex-monitor-git
 	provides = codex-monitor
 	conflicts = codex-monitor
 	conflicts = codex-monitor-bin
+	options = !lto
 	source = git+https://github.com/tomdavenport/CodexMonitor.git
 	sha256sums = SKIP
 
