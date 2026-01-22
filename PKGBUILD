@@ -17,13 +17,14 @@ source=("wayvy::git+$url.git")
 sha256sums=('SKIP')
 
 build() {
-	cd "$srcdir/$pkgname"
+	cd "${srcdir}/${pkgname}"
 	make FEATURES="dbus theming"
 }
 
 package() {
-	cd "$srcdir/$pkgname"
+	cd "${srcdir}/${pkgname}"
 	make DESTDIR="$pkgdir/" install install-config
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/wayvy"
-	install -Dm644 wayvy.service -t "$pkgdir/usr/lib/systemd/user/wayvy.service"
+
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 "packaging/wayvy.service" -t "$pkgdir/usr/lib/systemd/user/wayvy.service"
 }
