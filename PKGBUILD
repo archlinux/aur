@@ -1,5 +1,5 @@
 pkgname=myrient
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Bulk downloader and extractor for ROM archive directories"
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('qt6-base' 'aria2' 'wget' 'unzip' 'p7zip')
 optdepends=('unrar: RAR archive extraction support')
 makedepends=('git' 'qt6-tools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('f4a71df7f54042901223b1c7758119e9503a02f44d35e022d2206c37251813ee')
 
 build() {
   cd "$pkgname-$pkgver"

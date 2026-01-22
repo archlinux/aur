@@ -13,7 +13,7 @@ pkgbase = myrient
 	depends = unzip
 	depends = p7zip
 	optdepends = unrar: RAR archive extraction support
-	source = myrient-1.1.3.tar.gz::https://github.com/cruzisonfire/myrient/archive/refs/tags/v1.1.3.tar.gz
-	sha256sums = SKIP
+	source = myrient-1.1.4.tar.gz::https://github.com/cruzisonfire/myrient/archive/refs/tags/v1.1.4.tar.gz
+	sha256sums = f4a71df7f54042901223b1c7758119e9503a02f44d35e022d2206c37251813ee
 
 pkgname = myrient
