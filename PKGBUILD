@@ -24,21 +24,21 @@ options=('lto')
 source=("git+https://github.com/h2o/h2o.git#commit=${_commit}?signed/"
         # zlib-ng
         https://github.com/h2o/h2o/pull/3550.patch
-		# libaegis
-		https://github.com/h2o/h2o/pull/3552.patch
-		
-		# openssl
-		fix-openssl-deprecated-warn.patch
-		#openssl-no-engine.patch
-		#https://github.com/h2o/h2o/pull/3285.patch
-		#openssl-no-engine-1.patch::https://github.com/openbsd/ports/raw/c1521c4eb969ddf29306117ea125802a2644e734/www/h2o/patches/patch-deps_neverbleed_neverbleed_c
+        # libaegis
+        https://github.com/h2o/h2o/pull/3552.patch
+        
+        # openssl
+        fix-openssl-deprecated-warn.patch
+        #openssl-no-engine.patch
+        #https://github.com/h2o/h2o/pull/3285.patch
+        #openssl-no-engine-1.patch::https://github.com/openbsd/ports/raw/c1521c4eb969ddf29306117ea125802a2644e734/www/h2o/patches/patch-deps_neverbleed_neverbleed_c
         #openssl-no-engine-2.patch::https://github.com/openbsd/ports/raw/c1521c4eb969ddf29306117ea125802a2644e734/www/h2o/patches/patch-deps_neverbleed_neverbleed_h
-		https://github.com/h2o/h2o/pull/3553.patch
-		
-		# 404 error message
-		https://github.com/h2o/h2o/pull/3551.patch
+        https://github.com/h2o/h2o/pull/3553.patch
+        
+        # 404 error message
+        https://github.com/h2o/h2o/pull/3551.patch
 
-		'h2o.service')
+        'h2o.service')
 sha256sums=('2ae8e680e419164d3097dc1c11b0e31160782887f75c141ed32b30335b8b333f'
             'dbe8c77cfa41cacb95c07ac4b6e53fe2adbbbdd694d5fc2098dafe466d50a65d'
             '03ee41894f4ab8c1ff77fb13eb5054d544e7a2d1c8c5588d3d8947c98821c2d7'
@@ -63,20 +63,20 @@ prepare() {
     git config core.autocrlf false
     git submodule update --init --recursive
 
-	# Fix deprecated warn openssl 3.0 
-	#patch -p1 -i ${srcdir}/3285.patch
-	patch -p1 -i ${srcdir}/fix-openssl-deprecated-warn.patch
+    # Fix deprecated warn openssl 3.0 
+    #patch -p1 -i ${srcdir}/3285.patch
+    patch -p1 -i ${srcdir}/fix-openssl-deprecated-warn.patch
 
-	# neverbleed OPENSSL_NO_ENGINE
-	# https://github.com/openbsd/ports/tree/c1521c4eb969ddf29306117ea125802a2644e734/www/h2o/patches
-	#patch -p1 -i ${srcdir}/openssl-no-engine.patch
-	patch -p1 -i ${srcdir}/3553.patch
+    # neverbleed OPENSSL_NO_ENGINE
+    # https://github.com/openbsd/ports/tree/c1521c4eb969ddf29306117ea125802a2644e734/www/h2o/patches
+    #patch -p1 -i ${srcdir}/openssl-no-engine.patch
+    patch -p1 -i ${srcdir}/3553.patch
 
-	# libaegis 0.9.1
-	patch -p1 -i ${srcdir}/3552.patch
+    # libaegis 0.9.1
+    patch -p1 -i ${srcdir}/3552.patch
 
-	# 404 error message
-	patch -p1 -i ${srcdir}/3551.patch
+    # 404 error message
+    patch -p1 -i ${srcdir}/3551.patch
 
     # zlib-ng support
     if [[ $_enable_zlib_ng -eq 1 ]]; then
@@ -107,8 +107,8 @@ prepare() {
     export LDFLAGS="$LDFLAGS $LTOFLAGS"
     #export LDFLAGS="$LDFLAGS $LTOFLAGS -Wl,-rpath,/usr/lib/libressl"
     
-	# OPENSSL_NO_ENGINE
-	export CFLAGS="$CFLAGS -DOPENSSL_NO_ENGINE"
+    # OPENSSL_NO_ENGINE
+    export CFLAGS="$CFLAGS -DOPENSSL_NO_ENGINE"
     export CXXFLAGS="$CXXFLAGS -DOPENSSL_NO_ENGING"
 
     local cmake_args=(
