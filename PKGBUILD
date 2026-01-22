@@ -2,12 +2,12 @@
 pkgname=foxicons-theme
 pkgver=1.0
 pkgrel=1
-pkgdesc="A collection of multi-sized icons organized as a Linux desktop icon theme"
+pkgdesc="A collection of ugly icons from 2h foxcomm"
 arch=('any')
 url="https://github.com/SzponerZoli/foxicons-theme"
 license=('Unlicense')
 install=${pkgname}.install  # <--- Ez mondja meg a pacmannak, hogy keresse az .install fájlt
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/heads/master.tar.gz")
 sha256sums=('SKIP') # Futtass 'updpkgsums'-t a GitHub release után!
 
 package() {
