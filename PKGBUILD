@@ -10,6 +10,8 @@ depends=(
   'axel'
   'bc'
   'brightnessctl'
+  'wl-clipboard'
+  'grimblast-git'
   'coreutils'
   'curl'
   'ddcutil'
