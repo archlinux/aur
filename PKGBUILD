@@ -1,7 +1,7 @@
 # Maintainer: Josh Ellithorpe <quest@mac.com>
 
 pkgname=cashonize-appimage
-pkgver=0.5.8
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A Bitcoin Cash (BCH) Wallet which supports CashTokens, WalletConnect and CashConnect."
 provides=('cashonize')
@@ -15,7 +15,7 @@ _filename=Cashonize-${pkgver}.AppImage
 source=(
   https://github.com/cashonize/cashonize-wallet/releases/download/v${pkgver}/${_filename}
 )
-sha512sums=('3b21a761a54f7d323ae5a2785b01e83cd88230cfaa93c54dba7f9f83a93a505af6faa6642d3ecc44f8c62009ef8808d2210e5feddbff6011b09bad2f11b67e4c')
+sha512sums=('9791a57d869be3c50f99f28ee04ecd842d1105ce13dced1fa22438f76d7beb55efb34d9a12fddaebe9cae324dd024d951e7bd1d5cda3cc89f18a48fe9f1bb29b')
 
 prepare() {
   cd "${srcdir}"
