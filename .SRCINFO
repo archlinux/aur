@@ -1,0 +1,26 @@
+pkgbase = high-voltage-ring-fixes-git
+	pkgdesc = A level editor for Dr. Robotniks Ring Racers
+	pkgver = v3.1.r5.g9f4db75
+	pkgrel = 1
+	url = https://git.do.srb2.org/KartKrew/high-voltage-ring/
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = make
+	depends = mono
+	depends = mono-msbuild
+	depends = libx11
+	depends = mesa
+	depends = wine
+	provides = high-voltage-ring
+	conflicts = high-voltage-ring
+	source = git+https://github.com/hayaunderscore/high-voltage-ring.git#branch=fixes
+	source = unofficial.kartkrew.HighVoltageRing.desktop
+	source = unofficial.kartkrew.HighVoltageRing.png
+	source = high-voltage-ring.sh
+	sha256sums = SKIP
+	sha256sums = ecd06cbeac1d1c9e23691ccaad8d9959f2efcd6286268352d1ad1e28f7ca77c3
+	sha256sums = f2f671b6cf419ef37225df93e316a4b122d789809c7a04782b08f7e663155f2c
+	sha256sums = f4159ebbf50047ad8729a06b9ddac3e1408fc6249be95000fabfa46ca2488f85
+
+pkgname = high-voltage-ring-fixes-git
