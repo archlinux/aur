@@ -1,0 +1,63 @@
+From 9789a51c45c4ee5f341bc63aee5cdce18f3f6466 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michael=20La=C3=9F?= <bevan@bi-co.net>
+Date: Thu, 22 Jan 2026 20:23:33 +0100
+Subject: [PATCH 5/5] Fix build with Qt 6.10
+
+Changes provided by mozurin in the Arch User Repository (AUR).
+---
+ src/commands.cpp            | 4 ++--
+ src/items/itembase.cpp      | 2 +-
+ src/sketch/sketchwidget.cpp | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/commands.cpp b/src/commands.cpp
+index fb808bff..6beaf4b8 100644
+--- a/src/commands.cpp
++++ b/src/commands.cpp
+@@ -509,7 +509,7 @@ QString FlipItemCommand::getParamString() const {
+ 	       + BaseCommand::getParamString() +
+ 	       QString(" id:%1 by:%2")
+ 	       .arg(m_itemID)
+-	       .arg(m_orientation);
++	       .arg(static_cast<int>(m_orientation));
+ }
+ 
+ /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+@@ -1830,7 +1830,7 @@ QString RotateFlipLabelCommand::getParamString() const {
+ 	}
+ 	
+ 	result += QString(" id:%1 degrees:%2 orientation:%3")
+-	          .arg(m_itemID).arg(m_degrees).arg(m_orientation);
++	          .arg(m_itemID).arg(m_degrees).arg(static_cast<int>(m_orientation));
+ 	
+ 	return result;
+ }
+diff --git a/src/items/itembase.cpp b/src/items/itembase.cpp
+index 431bab55..80b37cb1 100644
+--- a/src/items/itembase.cpp
++++ b/src/items/itembase.cpp
+@@ -2006,7 +2006,7 @@ void ItemBase::debugInfo2(const QString & msg) const
+ 	                   .arg(this->instanceTitle())
+ 	                   .arg(this->viewLayerID())
+ 	                   .arg(this->viewLayerPlacement())
+-	                   .arg(this->wireFlags())
++	                   .arg(static_cast<int>(this->wireFlags()))
+ 			   .arg((long) dynamic_cast<const QGraphicsItem *>(this), 0, 16)
+ 	                   .arg(m_viewID)
+ 	                   .arg(this->zValue())
+diff --git a/src/sketch/sketchwidget.cpp b/src/sketch/sketchwidget.cpp
+index f10e56b6..e2c0bd10 100644
+--- a/src/sketch/sketchwidget.cpp
++++ b/src/sketch/sketchwidget.cpp
+@@ -1384,7 +1384,7 @@ long SketchWidget::createWire(ConnectorItem * from, ConnectorItem * to,
+ 	                   .arg(newID)
+ 	                   .arg(fromPos.x()).arg(fromPos.y())
+ 	                   .arg(toPos.x()).arg(toPos.y())
+-	                   .arg(wireFlags)
++	                   .arg(static_cast<int>(wireFlags))
+ 	                   .arg(from->attachedToTitle()).arg(from->connectorSharedID())
+ 	                   .arg(to->attachedToTitle()).arg(to->connectorSharedID())
+ 	                   .arg(m_viewID)
+-- 
+2.52.0
+

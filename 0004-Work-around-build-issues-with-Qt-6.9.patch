@@ -1,7 +1,7 @@
-From 4f9e461e62073467b0df14235c3861f40adbb4c7 Mon Sep 17 00:00:00 2001
+From e26ccb29155c6830d96d36bb15bd312daf5550d9 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Michael=20La=C3=9F?= <bevan@bi-co.net>
 Date: Fri, 25 Apr 2025 19:37:05 +0200
-Subject: [PATCH 4/4] Work around build issues with Qt 6.9
+Subject: [PATCH 4/5] Work around build issues with Qt 6.9
 
 ---
  src/items/paletteitembase.cpp | 4 ++--
@@ -10,10 +10,10 @@ Subject: [PATCH 4/4] Work around build issues with Qt 6.9
  3 files changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/src/items/paletteitembase.cpp b/src/items/paletteitembase.cpp
-index 49db343e..4866a984 100644
+index 98676ccd..c1366d61 100644
 --- a/src/items/paletteitembase.cpp
 +++ b/src/items/paletteitembase.cpp
-@@ -626,7 +626,7 @@ QString PaletteItemBase::retrieveSvg(ViewLayer::ViewLayerID viewLayerID, QHash<Q
+@@ -653,7 +653,7 @@ QString PaletteItemBase::retrieveSvg(ViewLayer::ViewLayerID viewLayerID, QHash<Q
  
  	//DebugDialog::debug(QString("path: %1").arg(path));
  
@@ -22,7 +22,7 @@ index 49db343e..4866a984 100644
  	if (!svg.isEmpty()) return svg;
  
  	SvgFileSplitter splitter;
-@@ -657,7 +657,7 @@ QString PaletteItemBase::retrieveSvg(ViewLayer::ViewLayerID viewLayerID, QHash<Q
+@@ -684,7 +684,7 @@ QString PaletteItemBase::retrieveSvg(ViewLayer::ViewLayerID viewLayerID, QHash<Q
  		return "";
  	}
  	svg = splitter.elementString(xmlName);
@@ -45,10 +45,10 @@ index e2a23fd8..0eac98fa 100644
  		connect(focusOutComboBox->validator(), SIGNAL(sendState(QValidator::State)), this, SLOT(textModified(QValidator::State)));
  		connect(focusOutComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(resistanceEntry(int)));
 diff --git a/src/utils/textutils.cpp b/src/utils/textutils.cpp
-index febf56fb..17afcb27 100644
+index 9c6b3dee..9943464c 100644
 --- a/src/utils/textutils.cpp
 +++ b/src/utils/textutils.cpp
-@@ -77,7 +77,7 @@ const QString TextUtils::AdobeIllustratorIdentifier = "Generator: Adobe Illustra
+@@ -80,7 +80,7 @@ const QString TextUtils::AdobeIllustratorIdentifier = "Generator: Adobe Illustra
  
  QList<QString> PowerPrefixes;
  QList<double> PowerPrefixValues;
@@ -57,7 +57,7 @@ index febf56fb..17afcb27 100644
  
  typedef QHash<QString /*brokenFont*/, QString /*replacementFont*/> FixedFontsHash;
  
-@@ -761,7 +761,7 @@ QString TextUtils::convertExtendedChars(const QString & str)
+@@ -763,7 +763,7 @@ QString TextUtils::convertExtendedChars(const QString & str)
  			result.append(c);
  		}
  		else {
@@ -67,5 +67,5 @@ index febf56fb..17afcb27 100644
  	}
  
 -- 
-2.49.0
+2.52.0
 

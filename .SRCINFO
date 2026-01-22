@@ -1,7 +1,7 @@
 pkgbase = fritzing
 	pkgdesc = PCB layout prototyping application
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fritzing.org
 	install = fritzing.install
 	arch = aarch64
@@ -29,12 +29,14 @@ pkgbase = fritzing
 	source = 0002-Quick-Dirty-patch-to-allow-finding-ngspice-on-Arch-L.patch
 	source = 0003-Quick-Dirty-patch-to-allow-finding-Clipper1-on-Arch-.patch
 	source = 0004-Work-around-build-issues-with-Qt-6.9.patch
+	source = 0005-Fix-build-with-Qt-6.10.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = be8a89df72d01cf062cc9815dd64c9576b4d20910d6d7aee7f0ea26484dc5e76
-	sha256sums = df4cf47c0888e3a718de511080db3844a4664fd316f44bbc6e3f96b2550047c5
-	sha256sums = b01fe8785cc59545626ec87279fab8b248e0faae8ce2ce0d0b67892cc63f9639
-	sha256sums = 889b90766bcf293b3e351157eecb79ceb57bfb749499140a78b10250eccf21b1
-	sha256sums = f74de1096e0bc8ed9841e98c83767a811cef29d7ea5215cc8b7209d6ee562230
+	sha256sums = 33c03dbd45a0eee8788d9a71bfa7a849e638f5410e885f82e9adcefd53ab63ac
+	sha256sums = d7f1bcf32b7f105382e311a2d4e8a94c1ca61ffff6f0d32180b654f8bf978d73
+	sha256sums = 9769e21b2333c08dea4923a964c25e1febb4175a89c15b9abef34f1de54b69c7
+	sha256sums = 67930df5c1e2296d2b0b26676b6e4fda62c1e5fcf7fac2151b35b039c884d2b4
+	sha256sums = 205bbcd1a70a2264b31a0e3d41f9f1068a11c57eb23cf43d2b32f744f8b3e550
 
 pkgname = fritzing

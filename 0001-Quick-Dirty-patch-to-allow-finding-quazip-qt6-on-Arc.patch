@@ -1,7 +1,7 @@
-From 69458713de372d1e988ac1f9d095c5d6f50510bd Mon Sep 17 00:00:00 2001
+From 382ce3e8519e96d6989ef27ba5f89bd041d35d39 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Michael=20La=C3=9F?= <bevan@bi-co.net>
 Date: Thu, 26 Jan 2023 19:18:56 +0100
-Subject: [PATCH 1/4] Quick & Dirty patch to allow finding quazip-qt6 on Arch
+Subject: [PATCH 1/5] Quick & Dirty patch to allow finding quazip-qt6 on Arch
  Linux
 
 ---
@@ -53,5 +53,5 @@ index f8d6c525..f13c5dff 100644
 +INCLUDEPATH += /usr/include/QuaZip-Qt6-1.5/
 +LIBS += -lquazip1-qt6
 -- 
-2.49.0
+2.52.0
 

@@ -1,7 +1,7 @@
-From be0e6f07a827dd1686d8ae9da2f6d1930f501929 Mon Sep 17 00:00:00 2001
+From e97b482a48e23db480170bb928d1997a3065c588 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Michael=20La=C3=9F?= <bevan@bi-co.net>
 Date: Sat, 4 Nov 2023 12:30:04 +0100
-Subject: [PATCH 2/4] Quick & Dirty patch to allow finding ngspice on Arch
+Subject: [PATCH 2/5] Quick & Dirty patch to allow finding ngspice on Arch
  Linux
 
 ---
@@ -31,5 +31,5 @@ index 76795bd8..707abdbf 100644
      error("ngspice not found in $${NGSPICEPATH}")
  }
 -- 
-2.49.0
+2.52.0
 

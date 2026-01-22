@@ -1,7 +1,7 @@
-From f7d60272bb048191f3680e1b4cf49d5bdc0976c5 Mon Sep 17 00:00:00 2001
+From 6c67c442a0032a4e5f2247ef5550c9b2c8ff9621 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Michael=20La=C3=9F?= <bevan@bi-co.net>
 Date: Wed, 17 Jan 2024 21:05:57 +0100
-Subject: [PATCH 3/4] Quick & Dirty patch to allow finding Clipper1 on Arch
+Subject: [PATCH 3/5] Quick & Dirty patch to allow finding Clipper1 on Arch
  Linux
 
 ---
@@ -46,5 +46,5 @@ index 5c6505d2..d9450bbf 100644
 +INCLUDEPATH += $$absolute_path($${CLIPPER1})
 +LIBS += -lpolyclipping
 -- 
-2.49.0
+2.52.0
 
