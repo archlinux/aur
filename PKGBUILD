@@ -4,15 +4,17 @@
 pkgname=varia
 pkgver=2026.1.5.2
 _pkgver=2026.1.5-2
-pkgrel=1
+pkgrel=2
 pkgdesc="Download manager based on aria2"
 arch=('any')
 url="https://giantpinkrobots.github.io/varia/"
 license=('MPL-2.0')
-depends=('aria2'
+depends=('7zip'
+         'aria2'
          'aria2p'
          'bash'
          'dconf'
+         'deno'
          'ffmpeg'
          'glib2'
          'gtk4'
