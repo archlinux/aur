@@ -1,8 +1,8 @@
 # Maintainer: Sukanka <su975853527 [AT] gmail.com>
 pkgbase=yade
 pkgname=(yade yade-cuda yade-doc)
-pkgver=2025.2.0
-pkgrel=4
+pkgver=2026.1.0
+pkgrel=1
 pkgdesc="Yet Another Dynamic Engine, free software for discrete element modeling."
 arch=("x86_64")
 url='https://yade-dem.org/doc/index.html'
@@ -32,11 +32,8 @@ makedepends=(
     'ninja'
     'nlohmann-json'
     'python-sphinx'
-
     ## needed to make doc
-
     'python-bibtexparser'
-    'python-ipython-genutils'
     'python-pickleshare'
     'texlive-bin'
     'texlive-core'
@@ -53,30 +50,32 @@ makedepends=(
 )
 source=(
     "trunk-${pkgver}.tar.gz::https://gitlab.com/yade-dev/trunk/-/archive/${pkgver}/trunk-${pkgver}.tar.gz"
-    0001-fix-for-boost-1.88.patch
-    0002-fix-hidding.patch
-    "fix-eigen.patch::https://gitlab.com/sukanka/trunk/-/commit/a3619aa.patch"
-    "fix-shadow.patch::https://gitlab.com/sukanka/trunk/-/commit/38e47f02.patch"
-    "fix-for-python.patch::https://gitlab.com/yade-dev/trunk/-/merge_requests/1086.patch"
-)
-sha512sums=('99d7e9ed1847a2b0a84e748761aeaf01f7118a161618cec61545fa8bc51832e4cb9abf45f4116ffc5b8930605dee7e0abb80628aec26f53d45d6986f9b45dbe7'
-    '4b3abf78bd44af9d704fbbeb5c6413e454479226d7a15db840a922e171f521ae8ee9ed3a0141633dc1d36e3fc99bd661b0938fe4a00b751808c160fda9964507'
-    'b7247b92909f710b477fc067f082636b9473e2dd5490ee7a73d8cfcf44cb5eaffa35e7aef4b4280887ebc04a7f0d47686b6eb57c4e5c479db75c8d68c314cd3a'
-    '8ca199cb4bc9a5208a279b63b5042a99a83336473df413da8549cbdbad6b3208da78ed02ccde93897399ecbe23a21d6fe32a9134e7e165d3da6cfb17791631b0'
-    '33992d94e725dfa3e0e26920ddf8393811dee38ce18036013e04c627e7974a55042951c7e37a051280b394c5323950c9d4b21d4b4d6bdc36d85f8d21a6e715a9'
-    'a00d77b1ca4d780f978ba199127fec7196075f2b199f157509348d928006b485053000fa928296f3a7d5227d64fdc8f4516a774e3cdcc206f0964a71212ef162')
 
+    0001-Fix-Werror-maybe-uninitialized.patch::https://gitlab.com/sukanka/trunk/-/commit/ee3d8c0b900842b5d5d45bbbd77a92b3d657d570.patch
+    0002-fix-import-error.patch::https://gitlab.com/sukanka/trunk/-/commit/aefcf9ae7cb46f9f7432b32af424618fc23ecd4c.patch
+    0003-fix-syntaxWarning.patch::https://gitlab.com/sukanka/trunk/-/commit/e755dfd9fc7e7e225ba78259f63dc8422ebaf992.patch
+    0004-fix-amd64-detection.patch::https://gitlab.com/sukanka/trunk/-/commit/bd7c8151336d71a503fddd5b9c5ae5bfbdb74a12.patch
+
+)
+sha512sums=('334f160f6369526fb681157af0b56999dd0e81296f827f5f30f3d6912720ca11c13769dba8da7fe7fb85664ea44ec272a9eef85920a3a72517637e5bd679676e'
+    '664f0a5888827576999078afcc1644594a0ef45397ad0ba93809444ad7493e39be53aec015ab004084f07be452764ab462c9e5ec363ed8540f5fbfcbf5d292dc'
+    '4871e4b3952116c30b40ce2ab8ba22810ad25a64e5c03a3c0d8affb07d680d3236e413a169828b1b57ca7c3216b3149d44d301a484bbd464151a49d666edb08e'
+    '1a41091037292f3bc33b3b2fe481aeadebeeb2e861875d2fd1ce5b62c525cfafc7c762eb399e7685b4b99605e476ad43fe07b7f514e2dc7cd4467a817325d819'
+    'fe90adcb45fc7d75cb74b5f36b02e11800ef7309d5bab9fecf511cfb1df5580d912a8e63d2c35ed0db68ddbef13aeaa8ea4b8e0dcd5d5f5867484b645543829a')
+
+_apply_patch() {
+    cd "${srcdir}/trunk"
+    for p in $srcdir/*.patch; do
+        patch -p1 -l <$p
+    done
+
+}
 prepare() {
     # Follow https://yade-dem.org/doc/installation.html#compilation
     test -d trunk && rm -rf trunk
     mv trunk-${pkgver} trunk
     install -d tmproot build build-doc build-cuda
-    cd trunk
-    patch -Np1 <../0001-fix-for-boost-1.88.patch
-    patch -Np1 <../0002-fix-hidding.patch
-    patch -Np1 <../fix-eigen.patch
-    patch -Np1 <../fix-shadow.patch
-    patch -Np1 <../fix-for-python.patch
+    _apply_patch
 }
 _build_doc() {
     cd $srcdir
