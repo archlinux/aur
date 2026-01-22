@@ -1,22 +1,24 @@
-# Maintainer: Auteiy <dmitry@auteiy.me>
-
+# Maintainer: camtisocial <thompsonca99@gmail.com>
 pkgname=pacfetch
-pkgver=1.1.0
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="Simple fetch script for pacman based distros. Written in Rust."
-url="https://git.auteiy.me/dmitry/pacFetch"
-license=('GPL3')
-depends=(
-    gcc-libs
-)
-
-source=("pacfetch-v$pkgver::https://github.com/auteiy/pacfetch/releases/download/v$pkgver/pacfetch-v$pkgver-linux-x64")
-
-# Checksums automatically set in CI, see: /.gitlab-ci.yml
-sha512sums=('d87a07211e19046f5acebbd935a14acaafc4f6a7fb78b8fb24eeeda477cdce67a668ddd251b11f390416de1fd13b1b5b42005a71813e16aa8c7c5b0ed971da84')
-
+pkgdesc="A neofetch-style pacman stats display and -Syu wrapper"
 arch=('x86_64')
+url="https://github.com/camtisocial/pacfetch"
+license=('GPL-3.0-or-later')
+depends=('pacman')
+makedepends=('cargo')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/camtisocial/pacfetch/archive/v$pkgver.tar.gz")
+sha256sums=('b741259941687d00d01ef494493fb5e1a6fb474f3bd2daaa4f138d396abd9fb9')
+
+build() {
+    cd "$pkgname-$pkgver"
+    cargo build --release --locked
+}
 
 package() {
-    install -D "$srcdir/pacfetch-v$pkgver" "$pkgdir/usr/bin/pacfetch"
+    cd "$pkgname-$pkgver"
+    install -Dm755 "target/release/pacfetch" "$pkgdir/usr/bin/pacfetch"
 }
+
+

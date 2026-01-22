@@ -1,13 +1,13 @@
 pkgbase = pacfetch
-	pkgdesc = Simple fetch script for pacman based distros. Written in Rust.
-	pkgver = 1.1.0
+	pkgdesc = A neofetch-style pacman stats display and -Syu wrapper
+	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://git.auteiy.me/dmitry/pacFetch
+	url = https://github.com/camtisocial/pacfetch
 	arch = x86_64
-	license = GPL3
-	depends = gcc-libs
-	source = pacfetch-v1.1.0::https://github.com/auteiy/pacfetch/releases/download/v1.1.0/pacfetch-v1.1.0-linux-x64
-	sha512sums = d87a07211e19046f5acebbd935a14acaafc4f6a7fb78b8fb24eeeda477cdce67a668ddd251b11f390416de1fd13b1b5b42005a71813e16aa8c7c5b0ed971da84
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = pacman
+	source = pacfetch-1.0.0.tar.gz::https://github.com/camtisocial/pacfetch/archive/v1.0.0.tar.gz
+	sha256sums = b741259941687d00d01ef494493fb5e1a6fb474f3bd2daaa4f138d396abd9fb9
 
 pkgname = pacfetch
-
