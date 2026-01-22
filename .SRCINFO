@@ -1,16 +1,16 @@
 pkgbase = icu-git
 	pkgdesc = International Components for Unicode library
-	pkgver = 72.1.r149.g981c182a7f
-	pkgrel = 2
+	pkgver = 78.2.r81.g4ebbe0c8280
+	pkgrel = 1
 	url = https://icu.unicode.org/
 	arch = i686
 	arch = x86_64
-	license = custom:icu
+	license = LicenseRef-icu
 	makedepends = git
-	makedepends = git-lfs
+	depends = gcc-libs
 	depends = glibc
 	depends = sh
-	provides = icu=72.1.r149.g981c182a7f
+	provides = icu=78.2.r81.g4ebbe0c8280
 	provides = libicudata.so
 	provides = libicui18n.so
 	provides = libicuio.so
@@ -18,5 +18,7 @@ pkgbase = icu-git
 	provides = libicutu.so
 	provides = libicuuc.so
 	conflicts = icu
+	source = git+https://github.com/unicode-org/icu.git
+	sha256sums = SKIP
 
 pkgname = icu-git
