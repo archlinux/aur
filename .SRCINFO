@@ -1,0 +1,20 @@
+pkgbase = waybar-awg-toggle-git
+	pkgdesc = A lightweight Waybar plugin for managing AmneziaWG connections (Rust)
+	pkgver = r12.443de88
+	pkgrel = 1
+	url = https://github.com/Mat1RX/waybar-awg-toggle
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = git
+	depends = amneziawg-tools
+	depends = polkit
+	provides = waybar-awg-toggle
+	conflicts = waybar-awg-toggle
+	source = git+https://github.com/Mat1RX/waybar-awg-toggle.git
+	source = 10-awg-toggle.rules
+	sha256sums = SKIP
+	sha256sums = 64f00d73bd99069a999224c56e604f6a91fcd01542b063125e15008c41ec64d2
+
+pkgname = waybar-awg-toggle-git
