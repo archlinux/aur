@@ -1,4 +1,0 @@
-[nixd]
-source = "github"
-github = "nix-community/nixd"
-use_latest_release = true
