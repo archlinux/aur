@@ -3,7 +3,7 @@
 _pkgname=tonearm
 pkgname="${_pkgname}-git"
 
-pkgver=r396.8f84a11
+pkgver=v1.0.0.r0.gbda304f
 pkgver() {
     cd "${_pkgname}"
     ( set -o pipefail
@@ -28,7 +28,7 @@ sha256sums=('SKIP')
 
 build() {
     cd "$srcdir/${_pkgname}"
-    go build -ldflags="-X codeberg.org/derg/tonearm/internal/ui.Commit=$(git describe --tags --long --abbrev=7 2>/dev/null || git rev-parse HEAD 2>/dev/null)" ./cmd/tonearm
+    go build -ldflags="-X codeberg.org/dergs/tonearm/internal/ui.Commit=$(git describe --tags --long --abbrev=7 2>/dev/null || git rev-parse HEAD 2>/dev/null)" ./cmd/tonearm
 }
 
 package() {
