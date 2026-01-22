@@ -12,6 +12,7 @@ pkgbase = morgen-bin
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
 	provides = morgen
+	conflicts = morgen3-bin
 	source = morgen-bin_3.6.19-1.xz::https://dl.todesktop.com/210203cqcj00tw1/versions/3.6.19/linux/deb/x64
 	source = morgen
 	b2sums = 19363b829bf45a4bc84e813fffd745fefcc98db4cb4da2aef6b3f4890c8ba96a06131ebc9c88c75e5e3b757c0cfa7e8c107471b2ce18f78ea4a23cb23647423f
