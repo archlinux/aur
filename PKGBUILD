@@ -7,10 +7,10 @@
 # Contributor: Omar Pakker <omar.pakker@oracle.com>
 pkgname=retro-gtk-git
 pkgver=1.0.2.r61.g9033b2a
-pkgrel=1
+pkgrel=2
 pkgdesc="Toolkit to write GTK based Libretro frontends"
 arch=('x86_64' 'aarch64')
-url="https://gnome.pages.gitlab.gnome.org/retro-gtk/"
+url="https://gitlab.gnome.org/Archive/retro-gtk"
 license=('GPL-3.0-or-later')
 depends=(
   'libepoxy'
@@ -28,7 +28,7 @@ makedepends=(
 )
 provides=("${pkgname%-git}" 'libretro-gtk-2.so')
 conflicts=("${pkgname%-git}")
-source=('git+https://gitlab.gnome.org/GNOME/retro-gtk.git')
+source=('git+https://gitlab.gnome.org/Archive/retro-gtk.git')
 sha256sums=('SKIP')
 
 pkgver() {
