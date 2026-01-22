@@ -22,8 +22,6 @@ options=('lto')
 
 #source=("git+https://github.com/h2o/h2o.git"
 source=("git+https://github.com/h2o/h2o.git#commit=${_commit}?signed/"
-        # zlib-ng
-        https://github.com/h2o/h2o/pull/3550.patch
         # libaegis
         https://github.com/h2o/h2o/pull/3552.patch
         
@@ -40,7 +38,6 @@ source=("git+https://github.com/h2o/h2o.git#commit=${_commit}?signed/"
 
         'h2o.service')
 sha256sums=('2ae8e680e419164d3097dc1c11b0e31160782887f75c141ed32b30335b8b333f'
-            'dbe8c77cfa41cacb95c07ac4b6e53fe2adbbbdd694d5fc2098dafe466d50a65d'
             '03ee41894f4ab8c1ff77fb13eb5054d544e7a2d1c8c5588d3d8947c98821c2d7'
             '632f219cc21128810bba4de869de4961ebff9083af31231f721f451d2e58f7e1'
             '930bed0a8b6d75973e21cacb4cfda6bcacf08bc6d1b504b5cc36f56f9d6bfaf8'
@@ -78,22 +75,6 @@ prepare() {
     # 404 error message
     patch -p1 -i ${srcdir}/3551.patch
 
-    # zlib-ng support
-    if [[ $_enable_zlib_ng -eq 1 ]]; then
-        if ! pacman -Qq zlib-ng &>/dev/null; then
-            error "zlib-ng is not installed."
-            error "Please install it first:  sudo pacman -S zlib-ng"
-            error "Then rebuild with:       _enable_zlib_ng=1 makepkg -si"
-            return 1
-        fi
-        msg2 "Building with zlib-ng support"
-        # zlib-ng support patch
-        patch -p1 -i ${srcdir}/3550.patch
-    elif pacman -Qq zlib-ng &>/dev/null; then
-        msg2 "zlib-ng is installed but not enabled."
-        msg2 "To use it, rebuild with: _enable_zlib_ng=1 makepkg -si"
-    fi
-
     # libressl-3.8(OPENSSL_NO_ENGINE)
     #git apply ${srcdir}/neverbleed-fix-when-lacking-engines.patch
 
@@ -126,13 +107,6 @@ prepare() {
         -DWITHOUT_LIBS=off
         -DBUILD_SHARED_LIBS=on
     )
-
-    # zlib-ng
-    if [[ $_enable_zlib_ng -eq 1 ]]; then
-        cmake_args+=(-DWITH_ZLIB_NG=ON)
-    #else
-    #    cmake_args+=(-DWITH_ZLIB_NG=OFF)
-    fi
 
     cmake "${cmake_args[@]}" .
 
