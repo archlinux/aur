@@ -2,11 +2,12 @@
 # Contributor: jdigi78 <jdigiovanni78 at gmail dot com>
 
 pkgname=varia
-pkgver=2025.10.14
+pkgver=2026.1.5.2
+_pkgver=2026.1.5-2
 pkgrel=1
 pkgdesc="Download manager based on aria2"
 arch=('any')
-url="https://github.com/giantpinkrobots/varia"
+url="https://giantpinkrobots.github.io/varia/"
 license=('MPL-2.0')
 depends=('aria2'
          'aria2p'
@@ -17,19 +18,22 @@ depends=('aria2'
          'gtk4'
          'hicolor-icon-theme'
          'libadwaita'
+         'libayatana-appindicator'
          'pango'
          'python'
          'python-dbus-next'
+         'python-emoji-country-flag'
          'python-gobject'
+         'python-pillow'
          'python-pystray'
          'python-requests'
          'yt-dlp')
 makedepends=('meson')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('52ac6610635f89e483b71d39e93cce9c45be8c77a321d3115122679c54ff7467')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/giantpinkrobots/varia/archive/v${_pkgver}.tar.gz")
+sha256sums=('a3ee96cdc0d12fa562b07497de31e9d8780a200c34b4d37c07f5bc511d39bd30')
 
 build() {
-    arch-meson "${pkgname}-${pkgver}" build
+    arch-meson "${pkgname}-${_pkgver}" build
     meson compile -C build
 }
 
