@@ -1,6 +1,6 @@
 pkgbase = slskdn-bin
 	pkgdesc = 🔋 The batteries included fork of slskd with 24+ new features: decentralized pods, content validation, swarm downloads, DHT mesh networking, auto-replace, wishlist, security hardening.
-	pkgver = 0.24.1.slskdn.38
+	pkgver = 0.24.1.slskdn.39
 	pkgrel = 1
 	url = https://github.com/snapetech/slskdn
 	install = slskd.install
@@ -18,7 +18,7 @@ pkgbase = slskdn-bin
 	replaces = slskdN
 	options = !strip
 	backup = etc/slskd/slskd.yml
-	source = https://github.com/snapetech/slskdn/releases/download/0.24.1-slskdn.38/slskdn-main-linux-x64.zip
+	source = https://github.com/snapetech/slskdn/releases/download/0.24.1-slskdn.39/slskdn-main-linux-x64.zip
 	source = slskd.service
 	source = slskd.yml
 	source = slskd.sysusers
