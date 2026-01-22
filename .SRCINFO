@@ -1,0 +1,16 @@
+pkgbase = pycheese
+	pkgdesc = A PyQt6 Photo Booth with AI Background replacement (venv isolated)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/tux-peng/PyCheese
+	arch = x86_64
+	license = MIT
+	makedepends = python
+	makedepends = git
+	depends = python
+	options = !strip
+	options = !debug
+	source = git+https://github.com/tux-peng/PyCheese.git#tag=v1.0
+	sha256sums = SKIP
+
+pkgname = pycheese
