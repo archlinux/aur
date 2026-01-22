@@ -6,7 +6,7 @@
 # Contributor: Aaron Griffin <aaron@archlinux.org>
 
 pkgname=bash-devel-git
-pkgver=5.2.r1171.ge44e3d50
+pkgver=5.3.r1353.ga6421d84
 pkgrel=1
 pkgdesc="The GNU Bourne Again shell (development version)"
 arch=('i686' 'x86_64')
@@ -36,7 +36,7 @@ pkgver() {
   cd "bash"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^bash-[0-9\.]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^bash-//'
 }
@@ -49,7 +49,7 @@ build() {
                -DSYS_BASHRC=\'\"/etc/bash.bashrc\"\'
                -DSYS_BASH_LOGOUT=\'\"/etc/bash.bash_logout\"\'
                -DNON_INTERACTIVE_LOGIN_SHELLS)
-  export CFLAGS="$CFLAGS ${_bashconfig[@]}"
+  export CFLAGS="$CFLAGS ${_bashconfig[*]}"
 
   # Note: This package does not use the system readline, as it depends on
   # a development version which is usually not ABI-compatible.
