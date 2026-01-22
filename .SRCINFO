@@ -1,0 +1,24 @@
+pkgbase = agertu
+	pkgdesc = Popup information for river Wayland compositor
+	pkgver = 1.0.1+r6+g9538804
+	pkgrel = 1
+	url = https://git.sr.ht/~novakane/agertu
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = wayland-protocols
+	makedepends = zig0.10
+	depends = fcft>=3.0
+	depends = glibc
+	depends = pixman
+	depends = river
+	depends = wayland
+	source = agertu-9538804e405e99cab6fca3342aca0d08da214941.tar.gz::https://git.sr.ht/~novakane/agertu/archive/9538804e405e99cab6fca3342aca0d08da214941.tar.gz
+	source = zig-fcft-cf6d6057faa8ec7b149c53005ba6bd247c8b6dff.tar.gz::https://git.sr.ht/~novakane/zig-fcft/archive/cf6d6057faa8ec7b149c53005ba6bd247c8b6dff.tar.gz
+	source = zig-pixman-4a49ba13eb9ebb0c0f991de924328e3d615bf283.tar.gz::https://codeberg.org/ifreund/zig-pixman/archive/4a49ba13eb9ebb0c0f991de924328e3d615bf283.tar.gz
+	source = zig-wayland-ace6aeebcf95930ce52bb277e1899f7c050378d4.tar.gz::https://codeberg.org/ifreund/zig-wayland/archive/ace6aeebcf95930ce52bb277e1899f7c050378d4.tar.gz
+	b2sums = c2902262739715ad7d47c4bafaad508aa8712d1bfda7dfbea51cddd25452abc5b0e8134ad76b69475f9ec83361fdca55df70d4a7d8cf1d9835110b1fa5e46fc5
+	b2sums = 9ea3e90c6317cacf7ad90c39791ac9bae9b71d60a584abff44cc0c6644426b463c571889ab1c342718da7542c264ce8007291104e4f1028c8c003b68aecb123c
+	b2sums = 4813a1ff7e5bb1c4d5a918ddd7ab27a6e7b337d6418714a9be03a85a73eab06da5c9870dde60d5313e5a147e9a3de6a66d80ac5802405e0971f4ba599e86b4c0
+	b2sums = f1277199d2e8e24a7d2bed4444c7cdfb88e467c70c8a0e9e98d67e3a11bac42d1f5d7174e2c3e266b7cab2cd8244c0ae906a467403396ea75c439a795957b469
+
+pkgname = agertu

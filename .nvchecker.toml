@@ -1,0 +1,4 @@
+[agertu]
+source = "git"
+git = "https://git.sr.ht/~novakane/agertu"
+prefix = "v"
