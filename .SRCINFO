@@ -1,6 +1,6 @@
 pkgbase = zeptofetch-git
 	pkgdesc = Blazingly fast, ultra-minimal system information tool for Linux (git version)
-	pkgver = r146.1291eeb
+	pkgver = r160.3e692c3
 	pkgrel = 1
 	url = https://gitlab.archlinux.org/gurov/zeptofetch
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = zeptofetch-git
 	provides = zeptofetch
 	conflicts = zeptofetch
 	conflicts = zeptofetch-bin
+	options = !strip
 	source = git+https://gitlab.archlinux.org/gurov/zeptofetch.git
 	sha256sums = SKIP
 

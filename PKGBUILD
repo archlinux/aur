@@ -1,6 +1,6 @@
-# Maintainer: Gurov
+# Maintainer: Gur0v
 pkgname=zeptofetch-git
-pkgver=r146.1291eeb
+pkgver=r160.3e692c3
 pkgrel=1
 pkgdesc="Blazingly fast, ultra-minimal system information tool for Linux (git version)"
 arch=('x86_64')
@@ -12,6 +12,7 @@ provides=('zeptofetch')
 conflicts=('zeptofetch' 'zeptofetch-bin')
 source=("git+https://gitlab.archlinux.org/gurov/zeptofetch.git")
 sha256sums=('SKIP')
+options=('!strip')
 
 pkgver() {
   cd "$srcdir/zeptofetch"
@@ -20,9 +21,9 @@ pkgver() {
 
 build() {
   cd "$srcdir/zeptofetch"
-  export TZ=UTC
-  make CFLAGS="-std=c99 -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -D_FORTIFY_SOURCE=2 -fstack-protector-strong -fno-strict-overflow -fno-strict-aliasing -fno-delete-null-pointer-checks -Wall -Wextra -Wpedantic -Werror=format=2 -Werror=implicit-fallthrough -Werror=shift-overflow=2 -Werror=cast-function-type -Werror=stringop-overflow=4 -Werror=vla -Werror=pointer-arith -march=native -O3 -flto -pipe" \
-       LDFLAGS="-Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack -Wl,--gc-sections -Wl,--hash-style=gnu"
+  unset CFLAGS
+  unset LDFLAGS
+  make
 }
 
 package() {
