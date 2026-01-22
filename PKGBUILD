@@ -4,7 +4,7 @@
 
 pkgname=fresh-editor
 pkgver=0.1.87
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight, fast terminal-based text editor with LSP support and TypeScript plugins"
 url="https://sinelaw.github.io/fresh/"
 license=("GPL-2.0-only")
@@ -26,7 +26,7 @@ build() {
     cd "fresh-$pkgver"
     export CARGO_TARGET_DIR=target
     export CC=clang
-    cargo build --frozen --release
+    cargo build --locked --release
 }
 
 package() {
