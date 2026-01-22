@@ -5,7 +5,7 @@ _pkgauthor=zouyonghe
 _pkgname=PixelTerm-C
 _appname=pixelterm
 pkgname=${_appname}-bin
-pkgdesc="A high-performance terminal image browser written in C, based on the Chafa library"
+pkgdesc="A high-performance terminal image/video/book browser written in C, based on the Chafa library"
 
 pkgver=1.6.4
 pkgrel=1
