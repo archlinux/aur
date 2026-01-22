@@ -1,7 +1,7 @@
 pkgbase = radiochat-tui-git
 	pkgdesc = E2EE Terminal Chat Client (radiochat)
 	pkgver = r26.4dd6cd8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sricharanandra/radiochat-tui
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,7 @@ pkgbase = radiochat-tui-git
 	makedepends = git
 	depends = gcc-libs
 	depends = libxcb
+	depends = dbus
 	provides = radiochat
 	conflicts = radiochat
 	options = !lto

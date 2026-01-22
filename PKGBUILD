@@ -2,12 +2,12 @@
 pkgname=radiochat-tui-git
 _pkgname=radiochat
 pkgver=r26.4dd6cd8  # This is a placeholder; makepkg updates it automatically
-pkgrel=1
+pkgrel=2
 pkgdesc="E2EE Terminal Chat Client (radiochat)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/sricharanandra/radiochat-tui"
 license=('MIT')
-depends=('gcc-libs' 'libxcb') # libxcb is needed for clipboard support
+depends=('gcc-libs' 'libxcb' 'dbus') # libxcb for clipboard, dbus for notifications
 options=('!lto')
 makedepends=('cargo' 'git')
 provides=("$_pkgname")
