@@ -1,6 +1,3 @@
-/*
-!/.gitignore
-!/PKGBUILD
-!/.SRCINFO
-!/*.install
-!/nvchecker.toml
+pkg
+src
+*.zst
