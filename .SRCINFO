@@ -32,7 +32,7 @@ pkgbase = nyarchassistant-git
 	optdepends = ollama: Ollama auto serve
 	optdepends = python-google-generativeai: Google Gemini support
 	source = git+https://github.com/NyarchLinux/NyarchAssistant
-	source = dataset.csv::https://github.com/NyarchLinux/Smart-Prompts/releases/download/latest/dataset.csv
+	source = dataset.csv::https://github.com/NyarchLinux/Smart-Prompts/releases/latest/download/dataset.csv
 	sha256sums = SKIP
 	sha256sums = SKIP
 

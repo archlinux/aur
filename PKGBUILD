@@ -38,7 +38,7 @@ optdepends=(
 )
 
 makedepends=("git" "meson")
-dataset_url="https://github.com/NyarchLinux/Smart-Prompts/releases/download/latest/dataset.csv"
+dataset_url="https://github.com/NyarchLinux/Smart-Prompts/releases/latest/download/dataset.csv"
 source=(
 	"git+$url"
 	"dataset.csv::${dataset_url}"
