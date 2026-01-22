@@ -8,18 +8,18 @@ _sdk_ver=110
 pkgname='openshock-desktop-bin'
 pkgdesc='An OpenShock application with module support (pre-built version)'
 pkgver='1.1.1'
-pkgrel='1'
+pkgrel='2'
 arch=('x86_64')
 url='https://github.com/OpenShock/Desktop'
 license=('AGPL-3.0-only')
 depends=('nss' 'alsa-lib' 'nspr' 'hicolor-icon-theme' "dotnet-runtime-$_dotnet_ver" 'gtk3' 'libappindicator-gtk3' 'libindicator-gtk2' 'libnotify' 'libxss' 'libxtst')
 conflicts=('openshock-desktop')
 provides=('openshock-desktop')
-source=("https://github.com/OpenShock/Desktop/releases/download/$pkgver/OpenShock.Desktop.Photino.Linux.zip"
+source=("OpenShock.Desktop.Photino.Linux.$pkgver.zip::https://github.com/OpenShock/Desktop/releases/download/$pkgver/OpenShock.Desktop.Photino.Linux.zip"
         'openshock-desktop'
         'OpenShock-Desktop.desktop')
-noextract=('OpenShock.Desktop.Photino.Linux.zip')
-sha256sums=('c30374721fab5a203c56eba06a80833ea0aa27f5f2c7b39ccf8db69eb3487990'
+noextract=("OpenShock.Desktop.Photino.Linux.$pkgver.zip")
+sha256sums=('5c50bbba4898bacd5e4db510e0182aa4a56a1eaae25f3713f765f6ac6c802d17'
             '4fe84f7aa610d36698d4386e57f4c5a141700032ec94df14e0e03eb48ef9e1ca'
             'f56461a0d3dba950a927e225ceb34b885b256907098d1bbcd35c972d6a867c6e')
 
@@ -32,10 +32,10 @@ prepare() {
         . /usr/share/makepkg/source/file.sh
         mkdir OpenShock.Desktop.Photino.Linux
         cd OpenShock.Desktop.Photino.Linux
-        ln -s ../OpenShock.Desktop.Photino.Linux.zip OpenShock.Desktop.Photino.Linux.zip
+        ln -s ../"OpenShock.Desktop.Photino.Linux.$pkgver.zip" "OpenShock.Desktop.Photino.Linux.$pkgver.zip"
         noextract=()
-        extract_file "${source[0]}"
-        rm OpenShock.Desktop.Photino.Linux.zip
+        extract_file "OpenShock.Desktop.Photino.Linux.$pkgver.zip"
+        rm "OpenShock.Desktop.Photino.Linux.$pkgver.zip"
     )
 }
 
