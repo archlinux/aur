@@ -15,7 +15,7 @@ optdepends=(
   'hicolor-icon-theme: For icon theme integration'
 )
 provides=("$_pkgname")
-conflicts=("drawy-git")
+conflicts=("drawy-git" "$_pkgname")
 source=("$_pkgname::git+https://github.com/NinjaTech404/drawy.git")
 sha256sums=('SKIP')
 
