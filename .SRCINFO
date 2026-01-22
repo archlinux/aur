@@ -1,0 +1,24 @@
+pkgbase = spotify-player-feats-git
+	pkgdesc = A TUI spotify player (All features enabled while keeping defaults).
+	pkgver = 0.21.3.r1.g9ccb5bf
+	pkgrel = 1
+	url = https://github.com/aome510/spotify-player
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = libpulse
+	depends = openssl
+	depends = dbus
+	depends = libsixel
+	depends = libnotify
+	depends = fzf
+	provides = spotify-player
+	conflicts = spotify-player
+	options = !lto
+	source = spotify-player-feats-git::git+https://github.com/aome510/spotify-player#branch=master
+	sha256sums = SKIP
+
+pkgname = spotify-player-feats-git
