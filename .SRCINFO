@@ -1,8 +1,8 @@
 pkgbase = bradtunes-git
 	pkgdesc = An app that combines a full-featured music player with the power of yt-dlp downloads.(Use system-wide electron)
-	pkgver = 1.0.8.r2.g886ddf5
+	pkgver = 1.0.9.r1.ga4fc797
 	pkgrel = 1
-	url = https://github.com/BradMoyetones/BradTunes
+	url = https://itsbrad.dev/
 	arch = any
 	license = MIT
 	makedepends = npm
@@ -10,14 +10,15 @@ pkgbase = bradtunes-git
 	makedepends = git
 	makedepends = curl
 	makedepends = gendesk
-	depends = electron31
+	makedepends = jq
+	depends = electron40
 	depends = ffmpeg
 	depends = yt-dlp
-	provides = bradtunes=1.0.8
+	provides = bradtunes=1.0.9
 	conflicts = bradtunes
 	source = bradtunes.git::git+https://github.com/BradMoyetones/BradTunes.git
 	source = bradtunes.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = bradtunes-git
