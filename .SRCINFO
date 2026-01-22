@@ -1,0 +1,26 @@
+pkgbase = snappy-switcher
+	pkgdesc = A fast, animated Alt+Tab window switcher for Hyprland with MRU sorting and context grouping
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/OpalAayan/snappy-switcher
+	arch = x86_64
+	license = GPL3
+	makedepends = wayland-protocols
+	makedepends = pkgconf
+	makedepends = gcc
+	makedepends = make
+	depends = wayland
+	depends = cairo
+	depends = pango
+	depends = json-c
+	depends = libxkbcommon
+	depends = glib2
+	depends = librsvg
+	optdepends = hyprland: Required window manager
+	optdepends = tela-icon-theme: Recommended icon theme
+	provides = snappy-switcher
+	conflicts = snappy-switcher-git
+	source = https://github.com/OpalAayan/snappy-switcher/archive/v1.0.0.tar.gz
+	sha256sums = a3e9d527f1598c0ad59b22a9a7f52bc4f8c0ed690a3a22d0fc75d5afc6df24f1
+
+pkgname = snappy-switcher
