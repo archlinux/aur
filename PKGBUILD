@@ -6,9 +6,14 @@ pkgdesc="Development libraries and documentation for ascii-chat"
 arch=('x86_64' 'aarch64')
 url="https://ascii-chat.com"
 license=('MIT')
-depends=('zstd' 'libsodium' 'opus' 'mimalloc' 'portaudio' 'sqlite3' 'liburcu')
+depends=('libsodium' 'mimalloc' 'opus' 'portaudio' 'sqlite3' 'zstd')
 makedepends=('tar')
-optdepends=('ascii-chat')
+optdepends=(
+  'ascii-chat: ascii-chat runtime'
+  'gnupg: GPG key support for authentication'
+  'openssh: SSH key agent support for authentication'
+  'yt-dlp: YouTube video source support'
+)
 provides=('libasciichat')
 conflicts=('libasciichat')
 options=('staticlibs' 'docs')
