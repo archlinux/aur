@@ -1,27 +1,30 @@
-#!/usr/bin/env -S sh -c 'nvchecker -cnvchecker.toml --logger=json | jq -r '\''.version | sub("^v"; "") | split("-") | .[-1]'\'' | xargs -i{} sed -i "s/^\\(pkgver=\\).*/\\1{}/" $0'
-# shellcheck shell=bash disable=SC2034,SC2154
-# ex: nowrap
+# Maintainer: kharec <sandro@cazzaniga.fr>
 pkgname=nixd
-pkgver=2.4.0
+pkgver=2.8.2
 pkgrel=1
-pkgdesc="Nix language server, based on nix libraries"
-arch=(i686 x86_64 arm aarch64)
-url=https://github.com/nix-community/$pkgname
-license=(LGPL3)
-depends=(nix boost-libs llvm)
-makedepends=(meson pkg-config boost)
-source=("$url/archive/$pkgver.tar.gz")
-sha256sums=(SKIP)
+pkgdesc='Nix language server'
+arch=('x86_64')
+url='https://github.com/nix-community/nixd'
+license=('LGPL3')
+depends=('nix' 'llvm' 'boost' 'nlohmann-json')
+makedepends=('meson' 'ninja' 'pkgconf' 'gtest')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/nix-community/nixd/archive/refs/tags/$pkgver.tar.gz"
+        "nixd-compat.patch")
+sha256sums=('846adb7d7cd6395bbb47d55b4862710ead2de09820224e0093688a096cb7146f'
+            'c82887fa1e3630cbea77b64a9c2803c3e8fe6fa0b91126b74052aedd6e02fd27')
 
 build() {
-  arch-meson "$pkgname-$pkgver" build
+  cd "$pkgname-$pkgver"
+  meson setup build --prefix=/usr --buildtype=release
   meson compile -C build
 }
 
-check() {
-  meson test -C build --print-errorlogs
+prepare() {
+  cd "$pkgname-$pkgver"
+  patch -Np1 -i "$srcdir/nixd-compat.patch"
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  cd "$pkgname-$pkgver"
+  meson install -C build --destdir="$pkgdir"
 }
