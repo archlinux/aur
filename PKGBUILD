@@ -6,11 +6,14 @@ pkgdesc="Video chat in your terminal"
 arch=('x86_64' 'aarch64')
 url="https://ascii-chat.com"
 license=('MIT')
-depends=()
+depends=(
+  'yt-dlp'
+  'openssh'
+  'gnupg'
+)
 makedepends=()
 optdepends=(
   'v4l-utils: webcam device utilities'
-  'openssh: ssh-agent support for key authentication'
 )
 provides=('ascii-chat')
 conflicts=('ascii-chat')
