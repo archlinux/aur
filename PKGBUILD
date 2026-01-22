@@ -1,11 +1,10 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-dgutils-git
-_name=dgutils
 pkgver=0.1.r0.g91df019
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK apps development easement"
 arch=('any')
-url="https://github.com/dzheremi2/dgutils"
+url="https://github.com/Dzheremi2/DGutils"
 license=('GPL-3.0-or-later')
 depends=(
   'gtk4'
@@ -21,11 +20,11 @@ makedepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/dzheremi2/dgutils.git')
+source=('git+https://github.com/Dzheremi2/DGutils.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_name"
+  cd DGutils
   git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -34,11 +33,11 @@ prepare() {
 }
 
 build() {
-  cd "$_name"
+  cd DGutils
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$_name"
+  cd DGutils
   python -m installer --destdir="$pkgdir" dist/*.whl
 }

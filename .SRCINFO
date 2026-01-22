@@ -1,8 +1,8 @@
 pkgbase = python-dgutils-git
 	pkgdesc = GTK apps development easement
 	pkgver = 0.1.r0.g91df019
-	pkgrel = 1
-	url = https://github.com/dzheremi2/dgutils
+	pkgrel = 2
+	url = https://github.com/Dzheremi2/DGutils
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
@@ -15,7 +15,7 @@ pkgbase = python-dgutils-git
 	depends = python-yaml
 	provides = python-dgutils
 	conflicts = python-dgutils
-	source = git+https://github.com/dzheremi2/dgutils.git
+	source = git+https://github.com/Dzheremi2/DGutils.git
 	sha256sums = SKIP
 
 pkgname = python-dgutils-git
