@@ -1,0 +1,24 @@
+pkgbase = hyprlax-bin
+	pkgdesc = Smooth parallax wallpaper animation for Hyprland and other Wayland compositors
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://hyprlax.com
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libegl
+	depends = libgles
+	depends = wayland
+	depends = wayland-compositor
+	provides = hyprlax
+	conflicts = hyprlax
+	source = hyprlax-2.2.0-CHANGELOG.md::https://github.com/sandwichfarm/hyprlax/raw/refs/tags/v2.2.0/CHANGELOG.md
+	source = hyprlax-2.2.0-README.md::https://github.com/sandwichfarm/hyprlax/raw/refs/tags/v2.2.0/README.md
+	source = hyprlax-2.2.0-LICENSE::https://github.com/sandwichfarm/hyprlax/raw/refs/tags/v2.2.0/LICENSE
+	sha256sums = 6e6ed94b2d854d1f427f5a9500ea181d6c6fe7096ee2ce9eabc73587598bef86
+	sha256sums = b45971f37ad8e41383c9a19a5fa4fd0d9b38df1d127b5f837fc6cb4a67089f16
+	sha256sums = b16d69c52429a8d8e94aae4b365d7b9618977a18eae187a4142c97f0170731e6
+	source_x86_64 = hyprlax-2.2.0-x86_64::https://github.com/sandwichfarm/hyprlax/releases/download/v2.2.0/hyprlax-x86_64
+	sha256sums_x86_64 = 4c1af3cd74ad7ae1d53ff8c3ca3ea3d4cbf19ebd5fdb887fff12e32ca8b5c1c9
+
+pkgname = hyprlax-bin
