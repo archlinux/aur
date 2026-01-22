@@ -2,7 +2,7 @@
 
 pkgname=uutils-findutils
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Rust implementation of findutils"
 arch=('i686' 'x86_64')
 url="https://github.com/uutils/findutils"
@@ -44,8 +44,8 @@ package() {
   rm "$pkgdir/usr/bin/testing-commandline"
 
   for path in "$pkgdir/usr/bin"/*; do
-    dir=$(dirname $path)
-    basename=$(basename $path)
+    dir=$(dirname "$path")
+    basename=$(basename "$path")
     mv "$dir/$basename" "$dir/uu-$basename"
   done
 }
