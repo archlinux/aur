@@ -3,9 +3,9 @@
 
 pkgname="pokemmo"
 pkgver=1.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="MMO based on the Pokémon Universe"
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'aarch64')
 url="https://pokemmo.eu"
 license=('custom')
 depends=('java-runtime' 'wget' 'openssl')

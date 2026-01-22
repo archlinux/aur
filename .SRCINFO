@@ -1,11 +1,12 @@
 pkgbase = pokemmo
 	pkgdesc = MMO based on the Pokémon Universe
 	pkgver = 1.4.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pokemmo.eu
 	install = pokemmo.install
 	arch = x86_64
 	arch = i686
+	arch = aarch64
 	license = custom
 	depends = java-runtime
 	depends = wget
