@@ -1,32 +1,39 @@
-# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
-# Contributor: Lex Black <autumn-wind@web.de>
-# Contributor: Mikkel Oscar Lyderik <mikkeloscar at gmail dot com>
+# Maintainer: Brett Cornwall <ainola@archlinux.org>
+# Contributor: Michał Wojdyła
+# Contributor: Lex Black
+# Contributor: Mikkel Oscar Lyderik
 
-_gituser=pycontribs
-_pkgname=jenkinsapi
-
-pkgbase=python-${_pkgname}
-pkgname=("python-${_pkgname}")
-pkgver=0.3.13
-pkgrel=5
+pkgname="python-jenkinsapi"
+pkgver=0.3.17
+pkgrel=1
 pkgdesc="Python API for accessing resources on a Jenkins continuous-integration server"
 arch=('any')
-url="https://github.com/${_gituser}/${_pkgname}"
+url="https://github.com/pycontribs/jenkinsapi"
 license=('MIT')
-makedepends=("python-build" "python-flit-core" "python-installer")
-source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
-sha256sums=('246a98a63e61f54a15d16105cb15488c5670734df41e86c7af0d5d9c0af240b9')
+makedepends=(
+    "git"
+    "python-build"
+    "python-hatch"
+    "python-installer"
+)
+depends=(
+    "python"
+    "python-urllib3"
+    "python-requests"
+    "python-pytz"
+)
+optdepends=("python-requests-kerberos: for Kerberos support")
+source=("git+https://github.com/pycontribs/jenkinsapi.git#tag=$pkgver")
+sha256sums=('0cd25b85b4a4db38162561970cbff4454bbd2ef205b4077adaa61c69abfe2ef7')
+validpgpkeys=('968479A1AFF927E37D1A566BB5690EEEBB952194')  # Github
 
 build() {
-  cd "${_pkgname}-${pkgver}"
-  python -m build --no-isolation --wheel
+    cd jenkinsapi
+    python -m build --no-isolation --wheel
 }
 
-package_python-jenkinsapi() {
-  depends=("python" "python-urllib3" "python-setuptools" "python-requests" "python-pytz" "python-six")
-  optdepends=("python-requests-kerberos: for Kerberos support")
-
-  cd "${_pkgname}-${pkgver}"
-  python -m installer --destdir="$pkgdir" dist/*.whl
-  install -D -m644 license.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+package() {
+    cd jenkinsapi
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
