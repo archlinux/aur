@@ -22,7 +22,6 @@ depends=(
   'tesseract-data-eng'
   'translate-shell'
   'wget'
-  'wl-clipboard'
   'xdg-user-dirs'
   'ydotool'
   'ntfs-3g'

@@ -20,7 +20,6 @@ pkgbase = noon-utils
 	depends = tesseract-data-eng
 	depends = translate-shell
 	depends = wget
-	depends = wl-clipboard
 	depends = xdg-user-dirs
 	depends = ydotool
 	depends = ntfs-3g
