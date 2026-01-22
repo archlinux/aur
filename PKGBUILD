@@ -5,7 +5,7 @@ _binname=junie
 provides=('junie')
 conflicts=('junie')
 
-pkgver=106.1
+pkgver=624.1
 pkgrel=1
 pkgdesc="Junie command‑line client"
 arch=('x86_64' 'aarch64')
@@ -42,8 +42,8 @@ source_x86_64=("https://github.com/jetbrains-junie/junie/releases/download/${pkg
 source_aarch64=("https://github.com/jetbrains-junie/junie/releases/download/${pkgver}/junie-eap-${pkgver}-linux-aarch64.zip")
 
 sha512sums=('cb1277b44d0cf8fe650685013b5d4fa4ac01f4f7c42cc90c94990c9dfde71b7ff19210d0f9c766990d56058c0516ddd5b4ba9710da30ceed27cd11dbb1288c52')
-sha512sums_x86_64=('ea800c665f4e399beee6e204fddfc1ed700ed70d55377f33eb6caf07fb0201d5023e788e04eb73c126f27d61127930badab0e909815ff1740a2735837918fc7b')
-sha512sums_aarch64=('0f05b8dbb47a98f68a343cd8aa6543e9968b02fea4b1e13200587720f9c0ab58ebe16a41e274ba588785a6ee6d123b3768f6ba3df65a511536bc3e0907459f98')
+sha512sums_x86_64=('af1ac2b8f1ba5721db7a4fc354b2872fb048923cd052e98aefe0d46f142b14ce258bf67d452af8b4bc0d0bc06e8dd80cf42ab3ca4cc7ffa8e0dacd54395a137b')
+sha512sums_aarch64=('155a066d4310056a5b4a20200072b4fc1bb7aa78b4fe53788a3992843fbc0db00e60394ae16bd990482856070c654be1e7fe6fb4ddead7c77dfeeb896be248ce')
 
 package() {
     cd "${srcdir}"
