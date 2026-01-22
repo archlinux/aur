@@ -1,5 +1,5 @@
 pkgname=text-editor
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Simple terminal based text editor"
 arch=(x86_64)
