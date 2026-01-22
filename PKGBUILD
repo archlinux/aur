@@ -12,7 +12,7 @@
 # binary version of this package (-bin): github.com/noahvogt/ungoogled-chromium-xdg-bin-aur
 
 pkgname=ungoogled-chromium-xdg
-pkgver=144.0.7559.59
+pkgver=144.0.7559.96
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -48,8 +48,8 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         # ungoogled-chromium-xdg patches
         xdg-basedir.patch
         no-omnibox-suggestion-autocomplete.patch)
-sha256sums=('8d6de5bbf447b9d0f3c99843230ffebe5954cbcb38d9f8c2ddbbeb5fbcfa9179'
-            '083adc19e6cb0e835f251e8dba06d3187fe56875e79358c738d872acb20cbfa3'
+sha256sums=('6f7fbeaa5ef0b1b4c0ede631edb7365ae48602f587c3c3b65af874922d21a064'
+            '769dff6846ee57058cb6a7c7c0a303d2d2c5e037e0b9f136d7367c7b396bb555'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e'
             'ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863'
