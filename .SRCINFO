@@ -1,0 +1,21 @@
+pkgbase = intel-xpu-smi-bin
+	pkgdesc = Intel XPU SMI - CLI tool for Intel XPU Manager (Binary, Daemon-less)
+	pkgver = 1.3.5
+	pkgrel = 1
+	url = https://github.com/intel/xpumanager
+	arch = x86_64
+	license = MIT
+	depends = intel-compute-runtime
+	depends = level-zero-loader
+	depends = igsc
+	depends = intel-media-driver
+	depends = onevpl-intel-gpu
+	provides = intel-xpu-smi
+	provides = libxpum.so
+	conflicts = intel-xpumanager
+	conflicts = intel-xpumanager-bin
+	conflicts = intel-xpu-smi
+	source = https://github.com/intel/xpumanager/releases/download/v1.3.5/xpu-smi_1.3.5_20251216.170635.605ff78d.u24.04_amd64.deb
+	sha256sums = 21c82a890f5712a659d3c31eaa42bc6c2c6c0d08a677d57fbc67eda0a54c8934
+
+pkgname = intel-xpu-smi-bin
