@@ -6,14 +6,13 @@ pkgdesc="Video chat in your terminal"
 arch=('x86_64' 'aarch64')
 url="https://ascii-chat.com"
 license=('MIT')
-depends=(
-  'yt-dlp'
-  'openssh'
-  'gnupg'
-)
+depends=()
 makedepends=()
 optdepends=(
+  'gnupg: GPG key support for authentication'
+  'openssh: SSH key agent support for authentication'
   'v4l-utils: webcam device utilities'
+  'yt-dlp: YouTube video source support'
 )
 provides=('ascii-chat')
 conflicts=('ascii-chat')
