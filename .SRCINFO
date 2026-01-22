@@ -1,6 +1,6 @@
 pkgbase = universal-sierra-compiler-bin
 	pkgdesc = Compiler for any ever-existing Sierra version to CASM
-	pkgver = 2.6.0
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://github.com/software-mansion/universal-sierra-compiler
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = universal-sierra-compiler-bin
 	conflicts = universal-sierra-compiler
 	source = https://github.com/software-mansion/universal-sierra-compiler/raw/master/LICENSE
 	sha256sums = 1807f58ed3955e8fc9867b5eb6d20209d1eb22b8d366c54a6283e569697e3f77
-	source_x86_64 = https://github.com/software-mansion/universal-sierra-compiler/releases/download/v2.6.0/universal-sierra-compiler-v2.6.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 926b8625222ac1b5c291c1863dfb70d48e651e5933c3f8b76f1114489e18d523
-	source_aarch64 = https://github.com/software-mansion/universal-sierra-compiler/releases/download/v2.6.0/universal-sierra-compiler-v2.6.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 50b77ed48313a8230dfa8acd72e7a749ed5cbc30ff19932730f693d3e753d85d
+	source_x86_64 = https://github.com/software-mansion/universal-sierra-compiler/releases/download/v2.7.0/universal-sierra-compiler-v2.7.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 88f140fc79d5a473ec1550e236a3fe51deefb7788f0712be88076a14fe4de29e
+	source_aarch64 = https://github.com/software-mansion/universal-sierra-compiler/releases/download/v2.7.0/universal-sierra-compiler-v2.7.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = b5830218a3bb9eeb0f34d714a4d5efa41316b625498f29cceb385434862ee071
 
 pkgname = universal-sierra-compiler-bin
