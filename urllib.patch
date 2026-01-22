@@ -21,13 +21,6 @@ Fixes: #66898
  2 files changed, 3 insertions(+), 3 deletions(-)
  create mode 100644 changelog/66898.fixed.md
 
-diff --git a/changelog/66898.fixed.md b/changelog/66898.fixed.md
-new file mode 100644
-index 000000000000..2549d5e00ed1
---- /dev/null
-+++ b/changelog/66898.fixed.md
-@@ -0,0 +1 @@
-+Fixed Python 3.13 compatibility regarding urllib.parse module
 diff --git a/salt/utils/url.py b/salt/utils/url.py
 index 478d8e911c2b..839db611c972 100644
 --- a/salt/utils/url.py

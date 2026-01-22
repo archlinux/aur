@@ -1,0 +1,11 @@
+--- a/salt/template.py	2025-11-20 09:20:49.000000000 +0100
++++ b/salt/template.py	2026-01-20 14:29:31.924847225 +0100
+@@ -71,7 +71,7 @@
+             log.debug("Template is an empty file: %s", template)
+             return ret
+
+-        with codecs.open(template, encoding=SLS_ENCODING) as ifile:
++        with open(template, mode="r", encoding=SLS_ENCODING) as ifile:
+             # data input to the first render function in the pipe
+             input_data = ifile.read()
+             if not input_data.strip():
