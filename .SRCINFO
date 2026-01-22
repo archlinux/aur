@@ -1,16 +1,16 @@
 pkgbase = distcc-git
 	pkgdesc = Distributed compilation service for C, C++ and Objective-C
-	pkgver = v3.4.r40.g2d33649
+	pkgver = v3.4.r150.gf4a7147
 	pkgrel = 1
 	url = https://github.com/distcc/distcc
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-only
 	makedepends = git
 	makedepends = gtk3
+	makedepends = python-setuptools
 	depends = avahi
 	depends = popt
 	depends = python
-	optdepends = gcc=13.1.1
 	optdepends = gtk3: for distccmon
 	provides = distcc
 	conflicts = distcc
@@ -23,6 +23,6 @@ pkgbase = distcc-git
 	b2sums = SKIP
 	b2sums = c48a6daea2cae5e5865c488e612c819e6f9bf4a1b205e2cd264b795de3450d40b0fe05264fbd8a3fe861f03e38d91e7e791ad67e22da5b5d0b43bcb380b8b4c9
 	b2sums = 9b6ffc02e9360fd92f7595e96ef2d69b5f6d72acf343009375fa081f86b26f51960b139c4f6e0e3c8befa37eba4894d61351bbfab6386389c262db0cc01a8b8e
-	b2sums = d1b057ce49994ac61e9d5a861c1c770452102300d47a9c396b3272d7f5afbd3fe3e865e6db11c046e73ae3b6886bc8970a10624650731d55132362436904f989
+	b2sums = 777cc755c6699aa6d3e1c78ec37f8922c5088309e5e7cba14f75311460bc6c6728bde76b889c5503b29c0418a539f1182ca0de3062d6bf16b61ed3e698cb4c28
 
 pkgname = distcc-git
