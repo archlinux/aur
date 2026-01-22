@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## 0.8.15 (22. Jan, 2026)
+
+- **Added:** Implemented comprehensive CI/CD pipelines for automated publishing to Docker Hub, GitHub Container Registry (GHCR), AUR, and Crates.io using Trusted Publishing.
+- **Changed:** Upgraded `reqwest` to v0.13 and refactored TLS feature flags. Explicitly decoupled `aws-lc-rs` and `ring` backends to ensure correct dependency resolution across all platforms.
+- **Fixed:** Resolved a critical linking error on NetBSD by preventing `aws-lc-sys` from being pulled into `ring`-based builds.
+- **Fixed:** Optimized `Dockerfile` with dependency layer caching and conditional proxy support, significantly speeding up incremental builds.
+- **Fixed:** Resolved `no method named danger_accept_invalid_certs` compilation error when building with the `ring` feature.
+
 ## 0.8.14 (21. Jan, 2026)
 
 - **Added:** Introduced comprehensive test coverage for QUIC protocol handling, including multi-frame and cross-packet scenarios, ensuring robust stream reassembly.
