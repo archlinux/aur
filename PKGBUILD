@@ -1,8 +1,8 @@
 # Maintainer: Adam Honse <calcprogrammer10@gmail.com>
 pkgname=openrgb-plugin-effects-next-git
-pkgver=0.9.r33.gc8c6293
+pkgver=0.9.110.g3acdb21
 pkgrel=1
-pkgdesc="Effects plugin for OpenRGB"
+pkgdesc="Effects plugin for OpenRGB (next branch)"
 arch=('any')
 url="https://gitlab.com/OpenRGBDevelopers/OpenRGBEffectsPlugin"
 license=('GPL-2.0-only')
