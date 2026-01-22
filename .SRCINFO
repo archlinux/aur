@@ -1,6 +1,6 @@
 pkgbase = hunspell-hr
 	pkgdesc = Croatian dictionary for Hunspell
-	pkgver = 2.1-20251229
+	pkgver = 2.1.20251229
 	pkgrel = 1
 	url = https://github.com/krunose/hunspell-hr
 	arch = any
