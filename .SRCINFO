@@ -1,7 +1,7 @@
 pkgbase = luffy-bin
 	pkgdesc = Watch movies and series from your commandline
 	pkgver = 1.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DemonKingSwarn/luffy
 	arch = x86_64
 	license = GPL3
@@ -14,6 +14,6 @@ pkgbase = luffy-bin
 	optdepends = ghostty
 	provides = luffy
 	source = https://github.com/DemonKingSwarn/luffy/releases/download/v1.0.7/luffy
-	sha256sums = SKIP
+	sha256sums = 739f6ffd2925ef7393057690e69de9011d75fade7651853b9daa081c65e77911
 
 pkgname = luffy-bin
