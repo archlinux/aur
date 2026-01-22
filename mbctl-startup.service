@@ -1,0 +1,13 @@
+[Unit]
+Description=man8s-ctr auto start all container at startup
+After=containerd.service
+Requires=containerd.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/mbctl autostart
+User=root
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
