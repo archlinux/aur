@@ -1,6 +1,6 @@
 # Maintainer: Christopher McAdams <mca.christopher@gmail.com>
 pkgname="alacritty-use-theme-with-redshift-git"
-pkgver=r51.93dc29b
+pkgver=r52.c30eb9f
 pkgrel=1
 pkgdesc="::Rolling release:: Changes alacritty theme based on the current time and locale"
 arch=('x86_64')
