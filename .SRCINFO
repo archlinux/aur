@@ -5,7 +5,6 @@ pkgbase = onetalker-git
 	url = https://onetalker.org
 	arch = x86_64
 	license = GPL-3.0-only
-	checkdepends = protobuf
 	makedepends = git
 	makedepends = cargo
 	makedepends = clang
