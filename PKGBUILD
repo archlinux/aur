@@ -11,11 +11,9 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/heads/master.tar.gz")
 sha256sums=('SKIP') # Futtass 'updpkgsums'-t a GitHub release után!
 
 package() {
-    cd "${srcdir}/foxicons-theme-${pkgver}"
-    
+    cd "${srcdir}/${pkgname%-*}"*-${pkgver} 2>/dev/null || cd "${srcdir}/foxicons-theme"
+
     install -dm 755 "${pkgdir}/usr/share/icons/fox-icons"
-    
-    # Csak a létező ikonmappák és az index.theme másolása
     cp -dr --no-preserve=ownership 16x16 32x32 48x48 64x64 96x96 128x128 256x256 index.theme "${pkgdir}/usr/share/icons/fox-icons/"
     
     install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
