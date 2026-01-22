@@ -1,40 +1,60 @@
-# Maintainer: Sardelli Tommaso <lacappannadelloziotom at gmail dot com>
+# Maintainer: Matthew Rathbone <matthew.rathbone at gmail dot com>
+# Maintainer: Day Matchullis <notnightbut at duck dot com>
+# Contributor: Sardelli Tommaso <lacappannadelloziotom at gmail dot com>
+
+_pkgname=beekeeper-studio
 
 pkgname=beekeeper-studio-appimage
-pkgver=5.4.0
+pkgver=5.5.5
 pkgrel=1
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more'
 arch=('x86_64')
 url='https://beekeeperstudio.io/'
-license=('MIT')
+license=('LicenseRef-BeekeeperStudioApplicationEULA')
 provides=("beekeeper-studio=${pkgver}")
-conflicts=('beekeeper-studio' 'beekeeper-studio-bin')
-source=("https://github.com/beekeeper-studio/beekeeper-studio/releases/download/v${pkgver}/Beekeeper-Studio-${pkgver}.AppImage"
-        beekeeper-studio.desktop.patch
-        beekeeper-studio.sh)
-sha256sums=('44358460c86c6c2e15af4fc39eb3c69246bca8c8f2a4d71b5ba47a006316b68f'
-            'd268ce58d0c5d17345608be8c2582397eb3e069b81bd1aa02559326730d7e17f'
-            '6ec287cbcfb138b5249ba9c539c67cd1dfe5343d334595872de0dfc82115df2a')
+conflicts=('beekeeper-studio' 'beekeeper-studio-bin' 'beekeeper-studio-git')
+source=(
+  "https://github.com/beekeeper-studio/beekeeper-studio/releases/download/v${pkgver}/Beekeeper-Studio-${pkgver}.AppImage"
+  'LICENSE.md'
+)
+sha256sums=(
+  'dbdcac8e02721fce68ad011b2e02fb52a435447dedc917384d78161b20f0487d'
+  '05559651711dc746837dadcbdc5f3176e1cdde3b1de5a8c3ac95e4709a297d1d'
+)
 options=(!strip)
+_appimage=./Beekeeper-Studio-${pkgver}.AppImage
+noextract=("${_appimage}")
 
-_filename=./Beekeeper-Studio-${pkgver}.AppImage
 
 prepare() {
-  cd "${srcdir}"
-  chmod +x ${_filename}
-  ${_filename} --appimage-extract
-  patch -Np0 < ./beekeeper-studio.desktop.patch
+  chmod +x "${_appimage}"
+  ./"${_appimage}" --appimage-extract
+}
+
+build() {
+  sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|"\
+    "squashfs-root/${_pkgname}.desktop"
+  chmod -R a-x+rX squashfs-root/usr
 }
 
 
 package() {
-  install -Dm755 "${srcdir}/${_filename}" "${pkgdir}/opt/appimages/beekeeper-studio.AppImage"
-  install -Dm755 "${srcdir}/beekeeper-studio.sh" "${pkgdir}/usr/bin/beekeeper-studio"
+  # AppImage
+  install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
+  install -Dm644 "${srcdir}/LICENSE.md" "${pkgdir}/opt/${pkgname}/LICENSE.md"
 
+  # Desktop File
+  install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop"\
+          "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+
+  # Icons
   install -dm755 "${pkgdir}/usr/share/"
-  cp -r --no-preserve=mode,ownership "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
+  cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
 
-  install -Dm644 "${srcdir}/squashfs-root/beekeeper-studio.desktop" "${pkgdir}/usr/share/applications/beekeeper-studio.desktop"
+  # Symlink executable
+  install -dm755 "${pkgdir}/usr/bin"
+  ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
+
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -s "/opt/${pkgname}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/BeekeeperStudioApplicationEULA"
 }
-
-# vim:set ts=2 sw=2 et:
