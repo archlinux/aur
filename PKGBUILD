@@ -3,7 +3,7 @@
 pkgname='beanprice'
 pkgdesc='Price quotes fetcher for Beancount'
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://github.com/beancount/beanprice"
 license=('GPL')
@@ -14,7 +14,7 @@ depends=(
     'python-diskcache'
 )
 optdepends=(
-    'python-curl-cffi: for Yahoo source'
+    'python-curl_cffi: for Yahoo source'
 )
 provides=('beanprice')
 conflicts=('beanprice-git')
