@@ -1,12 +1,12 @@
 pkgbase = pdpmake
 	pkgdesc = Publix Domain POSIX Make
-	pkgver = 2.0.3
-	pkgrel = 5
+	pkgver = 2.0.4
+	pkgrel = 1
 	url = https://frippery.org/make
 	arch = x86_64
 	license = custom
 	depends = glibc
-	source = https://frippery.org/make/pdpmake-2.0.3.tgz
-	b2sums = e0828bc721d2825efb1c507d9f128d6968417a1e5279540ae7cde7ed13026c805227ca0fcb665d04a8f27a73a610b8cf6822a0eb74d38c245b7fe73f3082069d
+	source = https://frippery.org/make/pdpmake-2.0.4.tgz
+	b2sums = 776b83a31946ee1a689444a7d0439b7506cfac293c0ff9bb2b57f8c981c9895cada7ece279459996c14050b8ff602c23ca1d7489280d2542aeb57ac2cc6db3da
 
 pkgname = pdpmake
