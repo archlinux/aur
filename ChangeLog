@@ -1297,3 +1297,6 @@ Improvements:
 === Morgen 3.6.19
 Fixes:
 - This release fixes an issue preventing the parsing of custom recurrence rules with natural language.
+
+=== Morgen 4.0.0 -- unlisted updates
+
