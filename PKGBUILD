@@ -2,7 +2,7 @@
 pkgname=radiochat-tui-git
 _pkgname=radiochat
 pkgver=r26.4dd6cd8  # This is a placeholder; makepkg updates it automatically
-pkgrel=4
+pkgrel=5
 pkgdesc="E2EE Terminal Chat Client (radiochat)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/sricharanandra/radiochat-tui"
