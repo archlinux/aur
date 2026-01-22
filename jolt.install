@@ -1,0 +1,16 @@
+
+post_install() {
+    cat <<'EOF'
+==> This package provides a systemd *user* service.
+
+To enable it:
+  systemctl --user enable --now jolt.service
+
+To start it manually:
+  systemctl --user start jol.service
+EOF
+}
+
+post_upgrade() {
+    post_install
+}

@@ -1,0 +1,366 @@
+From 97f468b5166555fff07b3b60a9bc8e213dab3dfb Mon Sep 17 00:00:00 2001
+From: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
+Date: Thu, 22 Jan 2026 22:42:05 +0200
+Subject: [PATCH 1/2] fixup! clean(linux): remove the daemon control command
+ when compiling for linux
+
+---
+ cli/src/cli/daemon.rs      |   3 +
+ cli/src/commands/daemon.rs |   3 +
+ cli/src/daemon/service.rs  | 227 +------------------------------------
+ 3 files changed, 9 insertions(+), 224 deletions(-)
+
+diff --git a/cli/src/cli/daemon.rs b/cli/src/cli/daemon.rs
+index 31a0e77..f5e459d 100644
+--- a/cli/src/cli/daemon.rs
++++ b/cli/src/cli/daemon.rs
+@@ -9,12 +9,15 @@ pub enum DaemonCommands {
+ 
+     Stop,
+ 
++    #[cfg(target_os = "macos")]
+     Status,
+ 
++    #[cfg(target_os = "macos")]
+     Install {
+         #[arg(short, long)]
+         force: bool,
+     },
+ 
++    #[cfg(target_os = "macos")]
+     Uninstall,
+ }
+diff --git a/cli/src/commands/daemon.rs b/cli/src/commands/daemon.rs
+index 5e8f1bf..0858731 100644
+--- a/cli/src/commands/daemon.rs
++++ b/cli/src/commands/daemon.rs
+@@ -68,6 +68,7 @@ pub fn run(
+                 }
+             }
+         }
++        #[cfg(target_os = "macos")]
+         DaemonCommands::Status => {
+             println!("Daemon Status");
+             println!("{}", "-".repeat(40));
+@@ -107,9 +108,11 @@ pub fn run(
+                 println!("Running:      no");
+             }
+         }
++        #[cfg(target_os = "macos")]
+         DaemonCommands::Install { force } => {
+             crate::daemon::service::install_service(force)?;
+         }
++        #[cfg(target_os = "macos")]
+         DaemonCommands::Uninstall => {
+             crate::daemon::service::uninstall_service()?;
+         }
+diff --git a/cli/src/daemon/service.rs b/cli/src/daemon/service.rs
+index b7e3d90..985606b 100644
+--- a/cli/src/daemon/service.rs
++++ b/cli/src/daemon/service.rs
+@@ -62,30 +62,24 @@ fn warn_if_dev_binary(exe_path: &std::path::Path) {
+     }
+ }
+ 
++#[cfg(target_os = "macos")]
+ pub fn install_service(force: bool) -> Result<()> {
+     #[cfg(target_os = "macos")]
+     {
+         install_macos_service(force)
+     }
+-    #[cfg(target_os = "linux")]
+-    {
+-        install_linux_service(force)
+-    }
+     #[cfg(not(any(target_os = "macos", target_os = "linux")))]
+     {
+         Err(eyre!("Service installation not supported on this platform"))
+     }
+ }
+ 
++#[cfg(target_os = "macos")]
+ pub fn uninstall_service() -> Result<()> {
+     #[cfg(target_os = "macos")]
+     {
+         uninstall_macos_service()
+     }
+-    #[cfg(target_os = "linux")]
+-    {
+-        uninstall_linux_service()
+-    }
+     #[cfg(not(any(target_os = "macos", target_os = "linux")))]
+     {
+         Err(eyre!(
+@@ -94,15 +88,12 @@ pub fn uninstall_service() -> Result<()> {
+     }
+ }
+ 
++#[cfg(target_os = "macos")]
+ pub fn get_service_status() -> ServiceStatus {
+     #[cfg(target_os = "macos")]
+     {
+         get_macos_service_status()
+     }
+-    #[cfg(target_os = "linux")]
+-    {
+-        get_linux_service_status()
+-    }
+     #[cfg(not(any(target_os = "macos", target_os = "linux")))]
+     {
+         ServiceStatus {
+@@ -360,201 +351,6 @@ fn get_uid() -> u32 {
+ #[cfg(target_os = "linux")]
+ const SYSTEMD_SERVICE_NAME: &str = "jolt-daemon.service";
+ 
+-#[cfg(target_os = "linux")]
+-fn linux_service_path() -> PathBuf {
+-    let config_dir = dirs::config_dir().unwrap_or_else(|| {
+-        let home = std::env::var("HOME").unwrap_or_default();
+-        PathBuf::from(home).join(".config")
+-    });
+-
+-    config_dir.join("systemd/user").join(SYSTEMD_SERVICE_NAME)
+-}
+-
+-#[cfg(target_os = "linux")]
+-fn generate_linux_service(exe_path: &std::path::Path) -> String {
+-    format!(
+-        r#"[Unit]
+-Description=Jolt Battery Monitor Daemon
+-Documentation=https://github.com/jordond/jolt
+-After=graphical-session.target
+-
+-[Service]
+-Type=simple
+-ExecStart={exe} daemon start --foreground
+-Restart=on-failure
+-RestartSec=5
+-Environment=RUST_LOG=info
+-
+-[Install]
+-WantedBy=default.target
+-"#,
+-        exe = exe_path.display()
+-    )
+-}
+-
+-#[cfg(target_os = "linux")]
+-fn install_linux_service(force: bool) -> Result<()> {
+-    if !is_systemd_available() {
+-        return Err(eyre!(
+-            "systemd not available. Service installation requires systemd.\n\
+-             For other init systems, please configure auto-start manually."
+-        ));
+-    }
+-
+-    let service_path = linux_service_path();
+-    let exe_path = std::env::current_exe()?;
+-
+-    if service_path.exists() && !force {
+-        return Err(eyre!(
+-            "Service already installed at: {}\nUse --force to overwrite",
+-            service_path.display()
+-        ));
+-    }
+-
+-    warn_if_dev_binary(&exe_path);
+-
+-    if is_linux_service_enabled() {
+-        let _ = disable_linux_service();
+-    }
+-
+-    if let Some(parent) = service_path.parent() {
+-        std::fs::create_dir_all(parent)?;
+-    }
+-
+-    let service_content = generate_linux_service(&exe_path);
+-    std::fs::write(&service_path, service_content)?;
+-
+-    let reload = std::process::Command::new("systemctl")
+-        .args(["--user", "daemon-reload"])
+-        .status()?;
+-
+-    if !reload.success() {
+-        return Err(eyre!("Failed to reload systemd daemon"));
+-    }
+-
+-    let enable = std::process::Command::new("systemctl")
+-        .args(["--user", "enable", "--now", SYSTEMD_SERVICE_NAME])
+-        .status()?;
+-
+-    if !enable.success() {
+-        return Err(eyre!("Failed to enable and start service"));
+-    }
+-
+-    println!("Daemon installed and started.");
+-    println!("Service file: {}", service_path.display());
+-    println!("\nThe daemon will now start automatically on login.");
+-    println!("To uninstall: jolt daemon uninstall");
+-
+-    Ok(())
+-}
+-
+-#[cfg(target_os = "linux")]
+-fn uninstall_linux_service() -> Result<()> {
+-    let service_path = linux_service_path();
+-
+-    if !service_path.exists() {
+-        println!("Service is not installed.");
+-        return Ok(());
+-    }
+-
+-    if is_linux_service_enabled() {
+-        disable_linux_service()?;
+-    }
+-
+-    std::fs::remove_file(&service_path)?;
+-
+-    let _ = std::process::Command::new("systemctl")
+-        .args(["--user", "daemon-reload"])
+-        .status();
+-
+-    println!("Daemon uninstalled.");
+-    println!("The daemon will no longer start automatically on login.");
+-
+-    Ok(())
+-}
+-
+-#[cfg(target_os = "linux")]
+-fn disable_linux_service() -> Result<()> {
+-    let status = std::process::Command::new("systemctl")
+-        .args(["--user", "disable", "--now", SYSTEMD_SERVICE_NAME])
+-        .status()?;
+-
+-    if !status.success() {
+-        return Err(eyre!("Failed to disable service"));
+-    }
+-
+-    Ok(())
+-}
+-
+-#[cfg(target_os = "linux")]
+-fn is_systemd_available() -> bool {
+-    std::process::Command::new("systemctl")
+-        .args(["--user", "status"])
+-        .output()
+-        .map(|o| o.status.code() != Some(127))
+-        .unwrap_or(false)
+-}
+-
+-#[cfg(target_os = "linux")]
+-fn is_linux_service_enabled() -> bool {
+-    let output = std::process::Command::new("systemctl")
+-        .args(["--user", "is-enabled", SYSTEMD_SERVICE_NAME])
+-        .output();
+-
+-    matches!(output, Ok(o) if o.status.success())
+-}
+-
+-#[cfg(target_os = "linux")]
+-fn is_linux_service_active() -> bool {
+-    let output = std::process::Command::new("systemctl")
+-        .args(["--user", "is-active", SYSTEMD_SERVICE_NAME])
+-        .output();
+-
+-    matches!(output, Ok(o) if o.status.success())
+-}
+-
+-#[cfg(target_os = "linux")]
+-fn get_linux_service_status() -> ServiceStatus {
+-    let service_path = linux_service_path();
+-    let installed = service_path.exists();
+-
+-    let (enabled, running) = if is_systemd_available() {
+-        (is_linux_service_enabled(), is_linux_service_active())
+-    } else {
+-        (false, crate::daemon::is_daemon_running())
+-    };
+-
+-    let mut warnings = Vec::new();
+-    let mut configured_exe = None;
+-
+-    if installed {
+-        if let Ok(content) = std::fs::read_to_string(&service_path) {
+-            configured_exe = extract_exe_from_systemd_service(&content);
+-            if let Some(ref exe) = configured_exe {
+-                if !exe.exists() {
+-                    warnings.push(format!(
+-                        "Configured executable not found: {}",
+-                        exe.display()
+-                    ));
+-                }
+-            }
+-        }
+-    }
+-
+-    if !is_systemd_available() {
+-        warnings.push("systemd not available on this system".to_string());
+-    }
+-
+-    ServiceStatus {
+-        installed,
+-        enabled,
+-        running,
+-        config_path: service_path,
+-        configured_exe,
+-        warnings,
+-    }
+-}
+-
+ #[cfg(target_os = "linux")]
+ fn extract_exe_from_systemd_service(content: &str) -> Option<PathBuf> {
+     for line in content.lines() {
+@@ -627,22 +423,5 @@ mod tests {
+         assert!(path.to_string_lossy().contains("jolt-daemon.service"));
+     }
+ 
+-    #[cfg(target_os = "linux")]
+-    #[test]
+-    fn test_generate_linux_service() {
+-        let exe = PathBuf::from("/usr/local/bin/jolt");
+-        let service = generate_linux_service(&exe);
+-        assert!(service.contains("Jolt Battery Monitor Daemon"));
+-        assert!(service.contains("/usr/local/bin/jolt"));
+-        assert!(service.contains("Restart=on-failure"));
+-        assert!(service.contains("WantedBy=default.target"));
+-    }
+ 
+-    #[cfg(target_os = "linux")]
+-    #[test]
+-    fn test_extract_exe_from_systemd_service() {
+-        let service = "ExecStart=/usr/local/bin/jolt daemon start --foreground";
+-        let exe = extract_exe_from_systemd_service(service);
+-        assert_eq!(exe, Some(PathBuf::from("/usr/local/bin/jolt")));
+-    }
+ }
+
+From e1524f179d8706fda8cec325e66281bab0f8d791 Mon Sep 17 00:00:00 2001
+From: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
+Date: Thu, 22 Jan 2026 23:23:50 +0200
+Subject: [PATCH 2/2] chore(service): provide a service file
+
+---
+ jolt.service | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+ create mode 100644 jolt.service
+
+diff --git a/jolt.service b/jolt.service
+new file mode 100644
+index 0000000..0b6b690
+--- /dev/null
++++ b/jolt.service
+@@ -0,0 +1,14 @@
++[Unit]
++Description=Jolt Battery Monitor Daemon
++Documentation=https://github.com/jordond/jolt
++After=graphical-session.target
++
++[Service]
++Type=simple
++ExecStart=jolt daemon start --foreground
++Restart=on-failure
++RestartSec=5
++Environment=RUST_LOG=info
++
++[Install]
++WantedBy=default.target

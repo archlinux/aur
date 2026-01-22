@@ -1,0 +1,21 @@
+From ae53c7a83dbad1a6d7549e51170ba0231e9f19a4 Mon Sep 17 00:00:00 2001
+From: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
+Date: Thu, 22 Jan 2026 16:43:37 +0200
+Subject: [PATCH] fix(cargo): only compile mac os deps when compiling on macos
+
+---
+ crates/platform/Cargo.toml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/crates/platform/Cargo.toml b/crates/platform/Cargo.toml
+index 9785a8f..e6dd980 100644
+--- a/crates/platform/Cargo.toml
++++ b/crates/platform/Cargo.toml
+@@ -22,6 +22,7 @@ color-eyre = { workspace = true }
+ sysinfo = { workspace = true }
+ 
+ # macOS-specific (optional)
++[target.'cfg(target_os = "macos")'.dependencies]
+ core-foundation = { workspace = true, optional = true }
+ core-foundation-sys = { workspace = true, optional = true }
+ mach2 = { workspace = true, optional = true }
