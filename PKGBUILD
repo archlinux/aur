@@ -4,7 +4,7 @@
 pkgname=docfetcher
 _name=DocFetcher
 pkgver=1.1.27
-pkgrel=1
+pkgrel=2
 pkgdesc="A java open source desktop search application"
 arch=('i686' 'x86_64')
 url="http://${pkgname}.sourceforge.net/"
@@ -37,20 +37,26 @@ package() {
   cd "${srcdir}/${_downloadfile}/"
 
   # Executable
-  install -Dm755 "../${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm 755 "../${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   
   # .desktop file
-  install -Dm755 "../${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"  
+  install -Dm 755 "../${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"  
 
   # Copy files to destination
   prefix="${pkgdir}/usr/share/${pkgname}"
-  install -d "${prefix}"
-  for file in *; do
-    cp -a "${file}" "${prefix}/${file}"
+  for folder in help img lang misc lib py4j; do
+  	install -d "${prefix}/$folder"
+	cp -a "./${folder}" "${prefix}"
   done
-  find "${prefix}" -type d -exec chmod 0755 {} \;
-  find "${prefix}" -type f -exec chmod 0644 {} \;
-  
-  # make start script executable
-  chmod +x "${prefix}/${_name}.sh"
+  # Make sure dir and file permissions are sane
+  find "${prefix}" -type d -exec chmod 755 {} +
+  find "${prefix}" -type f -exec chmod 644 {} +
+  # Put the executables in place
+  install -m 755 DocFetcher.sh "${prefix}"
+  install -m 755 docfetcher-daemon-linux "${prefix}"
+  install -m 755 search.py "${prefix}"
+  # Copy the icons
+  for res in 16 24 32 48 64 128; do
+	install -Dm 644 "img/docfetcher${res}.png" "${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/docfetcher.png"
+  done
 }
