@@ -1,6 +1,6 @@
 # Maintainer: Jonah Barkley-Griggs <jbarkleygriggs@gmail.com>
 pkgname=wayvy
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Wayvy is a wallpaper switcher and theming manager for wayland written in rust."
 arch=('x86_64')
@@ -9,9 +9,10 @@ license=('MPL-2.0')
 groups=()
 depends=('mpvpaper')
 makedepends=('rust' 'cargo' 'make' 'git')
-optdepends=('pywall: re-theming support'
+optdepends=('python-pywal16: re-theming support'
             'walrs-extended: re-theming support with remote files'
-            'walrs: re-theming support')
+            'walrs: re-theming support'
+            'wallust: re-theming support')
 source=("wayvy::git+$url.git")
 sha256sums=('SKIP')
 
@@ -23,4 +24,6 @@ build() {
 package() {
 	cd "$srcdir/$pkgname"
 	make DESTDIR="$pkgdir/" install install-config
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/wayvy"
+	install -Dm644 wayvy.service -t "$pkgdir/usr/lib/systemd/user/wayvy.service"
 }
