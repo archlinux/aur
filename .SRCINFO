@@ -1,0 +1,22 @@
+pkgbase = zhixin
+	pkgdesc = 致信 (ZhiXin) - Enterprise instant messaging client
+	pkgver = 3.3.6.0
+	pkgrel = 1
+	url = https://www.zhixin.com
+	arch = x86_64
+	license = LicenseRef-Proprietary
+	depends = gtk2
+	depends = gconf
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = cups
+	depends = alsa-lib
+	depends = libxcomposite
+	depends = libxrandr
+	depends = libxdamage
+	options = !strip
+	source = local://UOS_Hygon.zip
+	sha256sums = SKIP
+
+pkgname = zhixin

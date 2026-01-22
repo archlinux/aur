@@ -1,0 +1,24 @@
+# zhixin
+
+AUR package for 致信 (ZhiXin), an enterprise instant messaging client.
+
+## Installation
+
+### 1. Download the source
+
+Download `UOS_Hygon.zip` from https://zhixin.seeyon.com (select "UOS+海光 V8.0")
+and place it in this directory.
+
+### 2. Install gconf (AUR dependency)
+
+```bash
+yay -S --asdeps gconf
+```
+
+> **Note:** AUR packages cannot be auto-installed as dependencies by makepkg.
+
+### 3. Build and install
+
+```bash
+makepkg -si
+```
