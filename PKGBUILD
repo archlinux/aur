@@ -3,7 +3,7 @@
 
 pkgname=email-client
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI email client for Arch Linux"
 arch=('x86_64')
 url="https://github.com/Student-Team-Projects/email-client"
@@ -51,7 +51,8 @@ build() {
   cmake -DCMAKE_BUILD_TYPE=Release \
     -DEXTERNAL_SQLITE=ON \
     -DEXTERNAL_LIBXML2=ON \
-    -DEXTERNAL_VMIME=ON ..
+    -DEXTERNAL_VMIME=ON \
+    ../Email-Client-${pkgver}
   make
 }
 

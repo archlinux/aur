@@ -1,7 +1,7 @@
 pkgbase = email-client
 	pkgdesc = A CLI email client for Arch Linux
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Student-Team-Projects/email-client
 	arch = x86_64
 	license = GPL3
