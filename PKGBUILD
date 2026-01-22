@@ -4,7 +4,7 @@
 # Contributor: Tom Richards <tom@tomrichards.net>
 pkgname=highscore
 pkgver=40.0
-pkgrel=7
+pkgrel=8
 pkgdesc="A retro gaming application for the GNOME desktop"
 arch=('x86_64' 'aarch64')
 url="https://wiki.gnome.org/Apps/Games"
@@ -88,11 +88,7 @@ provides=('gnome-games')
 conflicts=('gnome-games')
 _commit=b6389d3d279d5904f62249dd5b771523b6eef930  # branch/pre-rewrite
 source=("git+https://gitlab.gnome.org/World/highscore.git#commit=${_commit}")
-sha512sums=('338c375e41d0f8067f4072f11493e3b4235607a4a8db4242fe315987a59a8aec9a0cbf90d5e9c602e5f715449eaf3e1cf03cf1aa9cb6b2dbe9f476beb6c3a04c'
-            'f49f71bf53d206275d0533d57c264952fa65c763e02edde355d9ec5c7379ac27c9e6a7e09f35e9a786c56125585af736799f5767730f8713557d8923232a0645'
-            '0a9d66b764d91d6f4fa4741c1b6024b55d3c12d6461738d486bfa6c916856e2dd647b76a4d52f9fe0fa44239c24789fe4ec6d6b7a73f7275e0b91487b2e37a1c'
-            '26f0e6914d6c5d23cb87e59a91a8532e74575664b7eef36f6146e326bd9d940792f51a474b3359d54f3eebc4a8a89bd934a9d26550195549ffa73f99c482f2ba'
-            '119aec090231c1760f0daf98f76936877f9ee22ff1b7c9a3915810d9882daf22bdc5b69fccd7a37ee76b06450234e76d496a6aed536c9c5c1bb7cf4e869e3260')
+sha512sums=('338c375e41d0f8067f4072f11493e3b4235607a4a8db4242fe315987a59a8aec9a0cbf90d5e9c602e5f715449eaf3e1cf03cf1aa9cb6b2dbe9f476beb6c3a04c')
 
 prepare() {
   cd "$pkgname"
