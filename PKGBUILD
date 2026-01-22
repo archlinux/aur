@@ -2,7 +2,7 @@
 
 _pkgname='ia-get'
 pkgname="${_pkgname}-bin"
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='File downloader for archive.org'
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source_x86_64=("https://github.com/wimpysworld/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("https://github.com/wimpysworld/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('ea01bd16c1b760ae33ccac3f4c045b9c7791b6bd7bf9aea431dd200c28f8f38d')
-sha256sums_aarch64=('ed913f6aec7b8b67f949b00d8ed2dfdd32e3e3e4b8c6e5666df7dbac4775ea6c')
+sha256sums_x86_64=('f142d7daf0393cdfc0f26521d25c8f63b5d73310837e2b9174ffc5fe7f652d6a')
+sha256sums_aarch64=('9bba5a9932fead55e9e295875d4f15d836e8758c08b6039f6574eabc1777c2d2')
 options=("!strip")
 
 package() {

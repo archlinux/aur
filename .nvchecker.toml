@@ -1,0 +1,5 @@
+[ia-get-bin]
+source = "github"
+github = "wimpysworld/ia-get"
+use_latest_release = true
+
