@@ -1,6 +1,6 @@
 pkgbase = openrgb-next-git
 	pkgdesc = Open source RGB lighting control that doesn't depend on manufacturer software (next branch)
-	pkgver = 0.9.1824.g28eeb1a
+	pkgver = 0.9.1839.gd9e034a
 	pkgrel = 1
 	url = https://gitlab.com/CalcProgrammer1/OpenRGB
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = openrgb-next-git
 	depends = gcc-libs
 	depends = qt6-base
 	depends = libusb
-	depends = hidapi
+	depends = hidapi-hotplug
 	depends = mbedtls
 	depends = hicolor-icon-theme
 	optdepends = i2c-nct6793-dkms: Nuvoton SMBus driver, needed for onboard RGB on certain ASUS Z270 and Z370 boards
