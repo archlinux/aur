@@ -2,12 +2,12 @@
 
 pkgname=buildcache-bin
 pkgver=0.31.6
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced compiler accelerator"
 arch=('aarch64' 'x86_64')
 url="https://gitlab.com/bits-n-bites/buildcache"
 license=('Zlib')
-depends=('gcc-libs' 'openssl')
+depends=('gcc-libs' 'glibc' 'openssl')
 optdepends=('lua')
 provides=("buildcache=$pkgver")
 conflicts=('buildcache')
@@ -23,6 +23,6 @@ package() {
   cd "buildcache"
 
   install -dm755 "$pkgdir/usr"
-  cp -rf * "$pkgdir/usr"
+  cp -rf ./* "$pkgdir/usr"
   install -Dm644 "$srcdir/LICENSE" -t "$pkgdir/usr/share/licenses/buildcache"
 }
