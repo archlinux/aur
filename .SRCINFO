@@ -1,6 +1,6 @@
 pkgbase = superhuman
 	pkgdesc = The fastest email experience ever made (unofficial)
-	pkgver = 1038.0.9
+	pkgver = 1038.0.16
 	pkgrel = 1
 	url = https://superhuman.com
 	install = superhuman.install
