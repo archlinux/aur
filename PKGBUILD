@@ -2,12 +2,12 @@
 pkgname=python-yahooquery
 _name=${pkgname#python-}
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python wrapper for an unofficial Yahoo Finance API "
 arch=('any')
 url="https://github.com/dpguthrie/yahooquery/"
 license=('MIT')
-depends=('python' 'python-lxml' 'python-pandas' 'python-requests' 'python-requests-futures' 'python-tqdm' 'python-curl-cffi' 'python-hatchling')
+depends=('python' 'python-lxml' 'python-pandas' 'python-requests' 'python-requests-futures' 'python-tqdm' 'python-curl_cffi' 'python-hatchling')
 optdepends=('python-selenium')
 makedepends=('python-build' 'python-flit' 'python-installer' 'python-setuptools' 'python-wheel' 'python-poetry')
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
