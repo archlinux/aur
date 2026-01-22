@@ -1,6 +1,6 @@
 # Maintainer: sinomor
 pkgname=delta-shell-git
-pkgver=r254.3916da8
+pkgver=r309.6a7d3c2
 pkgrel=1
 pkgdesc="A Desktop Shell for Niri and Hyprland"
 arch=('x86_64')
@@ -26,13 +26,14 @@ makedepends=(
     'npm'
 )
 optdepends=(
-    'cliphist: for clipboard history'
-    'gpu-screen-recorder: for recording screen'
-    'geoclue: for autoload the location for weather'
-    'brightnessctl: for control brightness of monitors'
-    'power-profiles-daemon: switch power profiles'
-    'bluez: for connect to bluetooth devices'
-    'libgtop: for cpu usage'
+    'cliphist: for clipboard management'
+    'gpu-screen-recorder: for recording screen from control center'
+    'geoclue: for autoloading the location for weather'
+    'brightnessctl: for controlling screen brightness'
+    'ddcutil: for controlling external monitors brightness'
+    'power-profiles-daemon: for switching between power profiles'
+    'bluez: for connecting to bluetooth devices'
+    'libgtop: for monitoring cpu usage'
 )
 source=("git+${url}.git")
 sha256sums=('SKIP')
