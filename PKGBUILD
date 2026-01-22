@@ -1,10 +1,10 @@
 # Maintainer: Guoyi <kuoi@bioarchlinux.org>
 
 _pkgname=BoutrosLab.plotting.general
-_pkgver=7.1.2
+_pkgver=7.1.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//[:-]/.}
-pkgrel=2
+pkgrel=1
 pkgdesc='Functions to Create Publication-Quality Plots'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -22,8 +22,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d83e0248ecc68fd34661900af9d9365d')
-b2sums=('93713db61f52d7d54965938e981446db6dbcf629b2bf7eab8a2d6c2ee21346f6f080f0337dc19ab9cbf122419fd73d9ea6971f73c8f801d4a8aa50bef868fd40')
+md5sums=('e3dce909fdd5246aff39a18d7ab21c07')
+b2sums=('08e23942a41ce7229e8e7e453825130ed8ff252b1db54800c4fda93bfdb7781c4f21ca597ab6b30886715a5b64bb0f3c246c1d676b98d3174c426e24c3d33609')
 
 build() {
   mkdir build
