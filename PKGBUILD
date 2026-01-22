@@ -5,7 +5,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-mpg123
-pkgver=1.33.0
+pkgver=1.33.4
 pkgrel=1
 arch=('any')
 pkgdesc="Console based real time MPEG Audio Player for Layer 1, 2 and 3 (Android ${_android_arch})"
@@ -18,7 +18,7 @@ makedepends=('android-configure'
 optdepends=("android-${_android_arch}-sdl2: for sdl audio support")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://downloads.sourceforge.net/sourceforge/mpg123/mpg123-${pkgver}.tar.bz2"{,.sig})
-md5sums=('7a1373ffe9efa86e899d415b37f3acaf'
+md5sums=('1dcce56af481df25cb3a26db6fcaec75'
          'SKIP')
 validpgpkeys=('D021FF8ECF4BE09719D61A27231C4CBC60D5CAFE')
 
@@ -46,4 +46,6 @@ package() {
     make DESTDIR="${pkgdir}" install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
