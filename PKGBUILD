@@ -1,5 +1,5 @@
 pkgname=zensh
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A minimal Unix shell written in C"
 arch=('x86_64')
@@ -8,8 +8,7 @@ license=('MIT')
 depends=('readline')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ChethanJS07/zensh/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('550a272baf476b8291a5a7968c41ecf0c5af10741b7639a50509ccae847affbd')
-
+sha256sums=('ad7aa320aa5088064d0e5529573a2d58770e54709bd4c15ec014521f7d0dd3b0')
 prepare() {
   # Create build directory
   mkdir -p build
