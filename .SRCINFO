@@ -1,5 +1,5 @@
 pkgbase = openrgb-plugin-effects-next-git
-	pkgdesc = Effects plugin for OpenRGB
+	pkgdesc = Effects plugin for OpenRGB (next branch)
 	pkgver = 0.9.110.g3acdb21
 	pkgrel = 1
 	url = https://gitlab.com/OpenRGBDevelopers/OpenRGBEffectsPlugin
