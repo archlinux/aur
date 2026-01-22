@@ -3,7 +3,7 @@
 # Contributor: tioguda <guda.flavio@gmail.com>
 pkgname=slimbookbattery
 pkgver=4.0.9beta
-pkgrel=1
+pkgrel=2
 pkgdesc="Battery optimization application for portable devices."
 arch=('x86_64')
 url="https://github.com/slimbook/slimbookbattery"
@@ -25,7 +25,6 @@ depends=(
   'xorg-xdpyinfo'
 )
 optdepends=(
-  'nvidia-prime: for hybrid graphics switching'
   'slimbookamdcontroller: Synchronize battery mode with CPU TDP mode'
   'slimbookintelcontroller: Synchronize battery mode with CPU TDP mode'
 )
