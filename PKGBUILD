@@ -5,12 +5,21 @@ _pkgname=cherry-studio
 pkgver=1.7.13
 pkgrel=1
 pkgdesc="🍒 Cherry Studio is a desktop client that supports for multiple LLM providers "
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/cherryHQ/cherry-studio"
 license=('AGPL-3.0')
 options=('!strip' '!debug')
 depends=('fuse2')
-source=("${_pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Cherry-Studio-${pkgver}-${arch}.AppImage"
+case "$CARCH" in
+  x86_64)
+    _appimage_arch='x86_64'
+    ;;
+  aarch64)
+    _appimage_arch='arm64'
+    ;;
+esac
+
+source=("${_pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Cherry-Studio-${pkgver}-${_appimage_arch}.AppImage"
   "${_pkgname}.desktop"
   "${_pkgname}.png"
   "${pkgname}.sh")
@@ -34,7 +43,16 @@ package() {
   # Install cherry-studio-bin.sh
   install -m755 "${pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
 }
-sha256sums=('f41dda369021b51296b3ab11db795bcf9dd24841aed039eef4fc8dd37eafe88d'
+case "$CARCH" in
+  x86_64)
+    _sha256sum='f41dda369021b51296b3ab11db795bcf9dd24841aed039eef4fc8dd37eafe88d'
+    ;;
+  aarch64)
+    _sha256sum='e141a788319330f15c8660e0a7ed56980487777f2f361c3fe93ed9fd846da0'
+    ;;
+esac
+
+sha256sums=("$_sha256sum"
             'fd0b11ca782c9c0de6dbf34143b7f14560b4a7020e316c58e9a5e1115551c7ee'
             '597463003798254ab97505e2374485e55262152483f717f3169da3444de60f94'
             '6aed5e7ca95679b2545540241dc9e6b055da1dfde696006a1712f90cfbfaec92')
