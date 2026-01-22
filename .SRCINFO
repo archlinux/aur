@@ -1,12 +1,11 @@
 pkgbase = alacritty-use-theme-with-redshift-git
 	pkgdesc = ::Rolling release:: Changes alacritty theme based on the current time and locale
-	pkgver = r50.6cbd02a
+	pkgver = r51.93dc29b
 	pkgrel = 1
 	url = https://github.com/alacritty-use-theme/alacritty-use-theme-with-redshift
 	arch = x86_64
 	license = GPL-1.0-or-later
 	makedepends = git
-	depends = bash
 	depends = redshift
 	depends = alacritty-use-theme
 	provides = alaritty-use-theme-with-redshift.service

@@ -1,12 +1,12 @@
 # Maintainer: Christopher McAdams <mca.christopher@gmail.com>
 pkgname="alacritty-use-theme-with-redshift-git"
-pkgver=r50.6cbd02a
+pkgver=r51.93dc29b
 pkgrel=1
 pkgdesc="::Rolling release:: Changes alacritty theme based on the current time and locale"
 arch=('x86_64')
 url="https://github.com/alacritty-use-theme/alacritty-use-theme-with-redshift"
 license=('GPL-1.0-or-later')
-depends=('bash' 'redshift' 'alacritty-use-theme')
+depends=('redshift' 'alacritty-use-theme')
 makedepends=('git')
 provides=('alaritty-use-theme-with-redshift.service' 'alaritty-use-theme-with-redshift.timer' 'alaritty-use-theme-with-redshift.target')
 conflicts=('alacritty-use-theme-with-redshift')
@@ -40,8 +40,9 @@ package() {
 
   install -Dm755 $srcdir/$pkgname/app/home/local/theme-switcher/src/utils/debug.sh "$pkgdir/usr/lib/alacritty-use-theme/utils/debug.sh"
   install -Dm755 $srcdir/$pkgname/app/home/local/theme-switcher/src/utils/is_theme_locked.sh "$pkgdir/usr/lib/alacritty-use-theme/utils/is_theme_locked.sh"
-  install -Dm755 $srcdir/$pkgname/app/home/local/theme-switcher/src/shared-variables.sh "$pkgdir/usr/share/alacritty-use-theme/theme-switcher/shared-variables.sh"
-  install -Dm777 $srcdir/$pkgname/app/home/config/theme-switcher/mode "$pkgdir/usr/share/alacritty-use-theme/theme-switcher/mode"
+
+  install -Dm644 $srcdir/$pkgname/app/home/local/theme-switcher/src/shared-variables.sh "$pkgdir/usr/share/alacritty-use-theme/theme-switcher/shared-variables.sh"
+  install -Dm664 $srcdir/$pkgname/app/home/config/theme-switcher/mode "$pkgdir/usr/share/alacritty-use-theme/theme-switcher/mode"
 
 
 }
