@@ -7,6 +7,8 @@ url="https://github.com/tomdavenport/CodexMonitor"
 license=('MIT')
 depends=(
   'gtk3'
+  'libgit2'
+  'libssh2'
   'libxkbcommon'
   'librsvg'
   'libsoup3'
@@ -16,6 +18,8 @@ makedepends=(
   'clang'
   'cmake'
   'git'
+  'libgit2'
+  'libssh2'
   'nodejs'
   'npm'
   'pkgconf'
@@ -37,6 +41,8 @@ pkgver() {
 
 build() {
   cd "$srcdir/CodexMonitor"
+  export LIBGIT2_SYS_USE_PKG_CONFIG=1
+  export LIBSSH2_SYS_USE_PKG_CONFIG=1
   npm ci --no-audit --no-fund
   npm run build
 
