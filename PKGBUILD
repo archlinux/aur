@@ -8,7 +8,7 @@ _sdk_ver=100
 pkgname='openshock-desktop-bin'
 pkgdesc='An OpenShock application with module support (pre-built version)'
 pkgver='1.1.2'
-pkgrel='1'
+pkgrel='2'
 arch=('x86_64')
 url='https://github.com/OpenShock/Desktop'
 license=('AGPL-3.0-only')
@@ -40,29 +40,29 @@ prepare() {
 }
 
 build() {
-    rm -f OpenShock.Desktop.Photino.Linux/sasscompiler.json
-    rm -f OpenShock.Desktop.Photino.Linux/wwwroot/OpenShock.min.css.br
-    rm -f OpenShock.Desktop.Photino.Linux/wwwroot/OpenShock.min.css.gz
-    rm -f OpenShock.Desktop.Photino.Linux/wwwroot/app.css.br
-    rm -f OpenShock.Desktop.Photino.Linux/wwwroot/app.css.gz
-    rm -f OpenShock.Desktop.Photino.Linux/wwwroot/index.html.br
-    rm -f OpenShock.Desktop.Photino.Linux/wwwroot/index.html.gz
-    rm -f OpenShock.Desktop.Photino.Linux/wwwroot/photino.html.br
-    rm -f OpenShock.Desktop.Photino.Linux/wwwroot/photino.html.gz
-    rm -f OpenShock.Desktop.Photino.Linux/wwwroot/_content/MudBlazor/MudBlazor.min.css.br
-    rm -f OpenShock.Desktop.Photino.Linux/wwwroot/_content/MudBlazor/MudBlazor.min.css.gz
-    rm -f OpenShock.Desktop.Photino.Linux/wwwroot/_content/MudBlazor/MudBlazor.min.js.br
-    rm -f OpenShock.Desktop.Photino.Linux/wwwroot/_content/MudBlazor/MudBlazor.min.js.gz
-    rm -f OpenShock.Desktop.Photino.Linux/wwwroot/images/Icon.svg.br
-    rm -f OpenShock.Desktop.Photino.Linux/wwwroot/images/Icon.svg.gz
-    rm -f OpenShock.Desktop.Photino.Linux/wwwroot/images/IconLoadingSpin.svg.br
-    rm -f OpenShock.Desktop.Photino.Linux/wwwroot/images/IconLoadingSpin.svg.gz
-    rm -f OpenShock.Desktop.Photino.Linux/wwwroot/images/IconSlowSpin.svg.br
-    rm -f OpenShock.Desktop.Photino.Linux/wwwroot/images/IconSlowSpin.svg.gz
-    rm -f OpenShock.Desktop.Photino.Linux/wwwroot/images/NavbarLogoSpin.svg.br
-    rm -f OpenShock.Desktop.Photino.Linux/wwwroot/images/NavbarLogoSpin.svg.gz
-    rm -f OpenShock.Desktop.Photino.Linux/wwwroot/images/openshock-icon.ico.br
-    rm -f OpenShock.Desktop.Photino.Linux/wwwroot/images/openshock-icon.ico.gz
+    rm OpenShock.Desktop.Photino.Linux/sasscompiler.json
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/OpenShock.min.css.br
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/OpenShock.min.css.gz
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/app.css.br
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/app.css.gz
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/index.html.br
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/index.html.gz
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/photino.html.br
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/photino.html.gz
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/_content/MudBlazor/MudBlazor.min.css.br
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/_content/MudBlazor/MudBlazor.min.css.gz
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/_content/MudBlazor/MudBlazor.min.js.br
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/_content/MudBlazor/MudBlazor.min.js.gz
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/images/Icon.svg.br
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/images/Icon.svg.gz
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/images/IconLoadingSpin.svg.br
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/images/IconLoadingSpin.svg.gz
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/images/IconSlowSpin.svg.br
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/images/IconSlowSpin.svg.gz
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/images/NavbarLogoSpin.svg.br
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/images/NavbarLogoSpin.svg.gz
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/images/openshock-icon.ico.br
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/images/openshock-icon.ico.gz
 
     if [ "$_omit_dlls" = true ]; then
         stat "/usr/share/dotnet/shared/Microsoft.NETCore.App/$_dotnet_ver.$_runtime_ver" >/dev/null
@@ -71,15 +71,15 @@ build() {
             CDPATH='' cd OpenShock.Desktop.Photino.Linux
             for dll in *; do
                 if [ -e "/usr/share/dotnet/host/fxr/$_dotnet_ver.$_runtime_ver/$dll" ]; then
-                    ln -sf "../../../../../../usr/share/dotnet/host/fxr/$_dotnet_ver.$_runtime_ver/$dll" "$dll"
+                    ln -sf "../../usr/share/dotnet/host/fxr/$_dotnet_ver.$_runtime_ver/$dll" "$dll"
                 elif [ -e "/usr/share/dotnet/shared/Microsoft.NETCore.App/$_dotnet_ver.$_runtime_ver/$dll" ]; then
-                    ln -sf "../../../../../../usr/share/dotnet/shared/Microsoft.NETCore.App/$_dotnet_ver.$_runtime_ver/$dll" "$dll"
+                    ln -sf "../../usr/share/dotnet/shared/Microsoft.NETCore.App/$_dotnet_ver.$_runtime_ver/$dll" "$dll"
                 elif [ -e "/usr/share/dotnet/shared/Microsoft.AspNetCore.App/$_dotnet_ver.$_runtime_ver/$dll" ]; then
-                    ln -sf "../../../../../../usr/share/dotnet/shared/Microsoft.AspNetCore.App/$_dotnet_ver.$_runtime_ver/$dll" "$dll"
+                    ln -sf "../../usr/share/dotnet/shared/Microsoft.AspNetCore.App/$_dotnet_ver.$_runtime_ver/$dll" "$dll"
                 elif [ -e "/usr/share/dotnet/sdk/$_dotnet_ver.$_sdk_ver/$dll" ]; then
-                    ln -sf "../../../../../../usr/share/dotnet/sdk/$_dotnet_ver.$_sdk_ver/$dll" "$dll"
+                    ln -sf "../../usr/share/dotnet/sdk/$_dotnet_ver.$_sdk_ver/$dll" "$dll"
                 elif [ -e "/usr/share/dotnet/sdk/$_dotnet_ver.$_sdk_ver/Roslyn/bincore/$dll" ]; then
-                    ln -sf "../../../../../../usr/share/dotnet/sdk/$_dotnet_ver.$_sdk_ver/Roslyn/bincore/$dll" "$dll"
+                    ln -sf "../../usr/share/dotnet/sdk/$_dotnet_ver.$_sdk_ver/Roslyn/bincore/$dll" "$dll"
                 fi
             done
         )

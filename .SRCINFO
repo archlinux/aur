@@ -1,7 +1,7 @@
 pkgbase = openshock-desktop-bin
 	pkgdesc = An OpenShock application with module support (pre-built version)
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OpenShock/Desktop
 	arch = x86_64
 	license = AGPL-3.0-only
