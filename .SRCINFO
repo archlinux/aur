@@ -1,0 +1,22 @@
+pkgbase = longbridge-bin
+	pkgdesc = Longbridge Desktop trading platform
+	pkgver = 0.11.0
+	pkgrel = 2
+	url = https://longbridge.com/desktop/
+	arch = x86_64
+	license = custom
+	depends = glibc
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = libxcrypt-compat
+	provides = longbridge
+	conflicts = longbridge
+	options = !strip
+	source = longbridge-bin-0.11.0.deb::https://assets.lbctrl.com/github/release/longbridge-desktop/stable/longbridge-v0.11.0-linux-x86_64.deb
+	sha256sums = 5b2c477867f7c0b4bdcfee64a10cdf4c918f8e367308694e279f728145ca501b
+
+pkgname = longbridge-bin
