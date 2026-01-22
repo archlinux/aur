@@ -1,0 +1,158 @@
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![License](https://img.shields.io/badge/License-0BSD-blue.svg)](/LICENSE)
+[![Language](https://img.shields.io/badge/Language-Rust-orange.svg)](https://en.wikipedia.org/wiki/Rust_(programming_language))
+
+<h2>Summary</h2>
+
+GitTorrent is a next-generation version control system (VCS) engineered for extreme performance, decentralized collaboration, and secure automation. It addresses the architectural bottlenecks of legacy systems by combining Content-Defined Chunking (CDC), parallelized hashing, and a Peer-to-Peer (P2P) synchronization model.
+
+By leveraging modern cryptographic primitives and compression algorithms, it provides a significantly more space-efficient and faster alternative for managing large-scale workspaces and remote code execution.
+
+> **Note:** This project is still being developed. As the software grows larger and more powerful, more information will be added.
+
+<h2>Features</h2>
+
+<h3>Content-Defined Chunking</h3>
+
+Utilizes **FastCDC** to optimize workspace snapshots. This method intelligently handles data insertions, deletions, and reordering, reducing space complexity by approximately 10% compared to traditional archiving.
+
+<h3>High-Speed Parallel Hashing</h3>
+
+Powered by **Blake3**, the system handles version identification and file enumeration with native parallel tasking, resulting in calculation speeds ~50x faster than standard SHA-256 implementations.
+
+<h3>Secure Remote Execution</h3>
+
+Features built-in, encrypted remote code execution for CI/CD tasks using **SSH** and **ChaCha20-Poly1305**, ensuring that secrets and automation commands remain protected via password-backed safety.
+
+<h3>P2P Synchronization</h3>
+
+A decentralized Peer-To-Peer network allows users to participate in and stay up-to-date with projects worldwide without relying on a centralized server.
+
+<h2>Technical Implementation</h2>
+
+GitTorrent represents a fundamental redesign of VCS internals to eliminate legacy inefficiencies:
+
+<h3>Merkle Tree Indexing</h3>
+
+Unlike Git’s space-complex indexing, GitTorrent transitions to **Blake3’s native Merkle Tree support**. This creates more efficient enumerations and reduces the space complexity of index files by orders of magnitude.
+
+<h3>Optimized Compression Stack</h3>
+
+The system replaces the aging Zlib "deflate" method with **Zstandard (Zstd)**. This modern algorithm offers faster calculation speeds and better compression ratios for object blobs.
+
+<h3>Data Homogeneity</h3>
+
+To prevent logic desynchronization across the tool, all core data structures and helper functions are encapsulated within a unified **Helper Crate**, ensuring code homogeneity and architectural stability.
+
+<h2>Installation</h2>
+
+<h3>Arch Linux</h3>
+
+Download the compilation script
+
+```bash
+git clone https://aur.archlinux.org/gittorrent.git
+```
+
+Enter directory
+```bash
+cd gittorrent
+```
+
+Make the package
+```bash
+makepkg -sfi
+```
+
+<h3>Gentoo Linux</h3>
+
+Enable the Guru repository
+```bash
+sudo emerge -av app-eselect/eselect-repository
+
+sudo eselect repository enable guru
+
+sudo emaint sync -r guru
+```
+
+Download and compile the package
+```bash
+sudo emerge -av dev-vcs/gittorrent
+```
+
+<h3>Source</h3>
+
+Download the source code
+```bash
+git clone https://git.projectgrid.net/gittorrent.git
+```
+
+Enter directory
+```bash
+cd gittorrent
+```
+
+Prepare Cargo
+```bash
+export RUSTUP_TOOLCHAIN=stable
+```
+
+Build
+```bash
+export CARGO_TARGET_DIR=target
+cargo build --frozen -r --all-features
+```
+
+Install
+```bash
+install -Dm0755 target/release/gittorrent /usr/bin/
+install -Dm644 LICENSE /usr/share/licenses/gittorrent/LICENSE
+install -Dm644 README.md /usr/share/doc/gittorrent/README.md
+```
+
+<h2>Usage</h2>
+
+<h3>Generate and automatically install shell completion scripts</h3>
+
+```bash
+gt cpl -a
+```
+
+<h3>Initialize a project</h3>
+
+```bash
+gt g ~/example
+```
+
+<h3>Track workspace state</h3>
+
+```bash
+gt a -u
+```
+
+<h3>Duplicate an existing workspace</h3>
+
+```bash
+gt d /usr/local/games/example
+```
+
+<h3>Save workspace state</h3>
+
+```bash
+gt s -m "initial commit"
+
+```
+
+<h2>Bug Reports & Contributing</h2>
+
+Please report any issues or hardware edge cases via the issue tracker on my [git portal](https://projectgrid.net/museum/gittorrent)!
+
+<h2>Author</h2>
+
+|Maintainer|Gabrel Oliveira da Silva
+|------------|-------------------------
+|Status|Maintained/Active
+|Web-Page|https://projectgrid.net
+|Patch Work|https://projectgrid.net/museum/gittorrent
+|SCM|git://git.projectgrid.net/gittorrent.git
+|Files|*
