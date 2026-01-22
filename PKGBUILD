@@ -8,7 +8,7 @@ provides=(konform-browser)
 conflicts=()
 __pkgname=konform
 _ffsrcver=140.7.0
-_lwrelver=103
+_lwrelver=104
 pkgver="${_ffsrcver}.${_lwrelver}"
 pkgrel=1
 pkgdesc="Firefox fork (LibreWolf-base) with increased customizability and security"
@@ -125,7 +125,7 @@ source=(
   "${__pkgname}.desktop"
   "default192x192.png"
 )
-sha256sums=('2704ef235ec2f7b316d4ac38984da2d9b5d75da2ba5c490c379eee6a118ac697'
+sha256sums=('e6ccb39a2d2e2beb8785c69f576a706547ee29862b4599a4d7940fba0c4251c4'
             '68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4'
             'b86ddfc0cec482f7900f296857cdd0f1b736ff5037e0a86712b258ae0092924b')
 
