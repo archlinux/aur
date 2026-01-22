@@ -16,6 +16,6 @@ pkgbase = tonearm
 	depends = libsecret
 	provides = tonearm=1.0.0
 	source = tonearm::https://codeberg.org/dergs/Tonearm/archive/v1.0.0.tar.gz
-	sha256sums = cb8eebe3633c29529bea5da10c01cc23aa821bbfda2efc28146cf2db98ab3185
+	sha256sums = 261ddc1131e9a755bdb6982d7df29834c764da39a12b4a46e0b76085a74088e6
 
 pkgname = tonearm
