@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=iptables-git
-pkgver=1.8.11.r14.g192c3a6b
+pkgver=1.8.11.r22.g78d7a5f8
 pkgrel=1
 pkgdesc="Userspace command line program used to configure the packet filtering ruleset"
 arch=('i686' 'x86_64')
@@ -81,7 +81,7 @@ package() {
   install -Dm644 "empty.rules" "$pkgdir/etc/iptables/iptables.rules"
   install -Dm644 "empty.rules" "$pkgdir/etc/iptables/ip6tables.rules"
   install -Dm644 "simple_firewall.rules" -t "$pkgdir/etc/iptables"
-  install -Dm644 *.rules -t "$pkgdir/usr/share/iptables"
+  install -Dm644 ./*.rules -t "$pkgdir/usr/share/iptables"
 
   install -Dm644 {arp,eb,ip,ip6}tables.service -t "$pkgdir/usr/lib/systemd/system"
   install -Dm755 iptables-{legacy,nft}-flush -t "$pkgdir/usr/lib/systemd/scripts/iptables-flush"
