@@ -3,7 +3,7 @@
 pkgbase=ollama-bin
 pkgname=(ollama-bin ollama-cuda12-bin ollama-cuda13-bin)
 pkgver=0.14.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Create, run and share large language models (LLMs)"
 arch=('x86_64' 'aarch64')
 _barch=('amd64' 'arm64')
@@ -41,16 +41,9 @@ package_ollama-bin() {
 
     install -Dm755 "./bin/ollama" "${pkgdir}/usr/bin/ollama"
 
-    for lib in 'libggml-base.so' \
-        'libggml-cpu-alderlake.so' \
-        'libggml-cpu-haswell.so' \
-        'libggml-cpu-icelake.so' \
-        'libggml-cpu-sandybridge.so' \
-        'libggml-cpu-skylakex.so' \
-        'libggml-cpu-sse42.so' \
-        'libggml-cpu-x64.so'
-    do
-        install -Dm755 "./lib/ollama/${lib}" "${pkgdir}/usr/lib/ollama/${lib}"
+    install -dm755 "${pkgdir}/usr/lib/ollama/"
+    for lib in "./lib/ollama/lib"*; do
+        cp -P "${lib}" "${pkgdir}/usr/lib/ollama/"
     done
 
     install -Dm644 "./ollama.conf" "${pkgdir}/etc/ollama.conf"
@@ -77,12 +70,9 @@ package_ollama-cuda12-bin() {
 
     cd "${srcdir}/" || exit
 
-    for lib in 'libggml-cuda.so' ; do
-        install -Dm755 "./lib/ollama/cuda_v12/${lib}" "${pkgdir}/usr/lib/ollama/${lib}"
-    done
-
-    for cudalib in 'libcublasLt' 'libcublas' 'libcudart' ; do
-        cp --preserve=links --no-dereference "./lib/ollama/cuda_v12/${cudalib}"* "${pkgdir}/usr/lib/ollama/"
+    install -dm755 "${pkgdir}/usr/lib/ollama/"
+    for lib in "./lib/ollama/cuda_v12/lib"*; do
+        cp -P "${lib}" "${pkgdir}/usr/lib/ollama/"
     done
 }
 
@@ -95,11 +85,8 @@ package_ollama-cuda13-bin() {
 
     cd "${srcdir}/" || exit
 
-    for lib in 'libggml-cuda.so' ; do
-        install -Dm755 "./lib/ollama/cuda_v13/${lib}" "${pkgdir}/usr/lib/ollama/${lib}"
-    done
-
-    for cudalib in 'libcublasLt' 'libcublas' 'libcudart' ; do
-        cp --preserve=links --no-dereference "./lib/ollama/cuda_v13/${cudalib}"* "${pkgdir}/usr/lib/ollama/"
+    install -dm755 "${pkgdir}/usr/lib/ollama/"
+    for lib in "./lib/ollama/cuda_v13/lib"*; do
+        cp -P "${lib}" "${pkgdir}/usr/lib/ollama/"
     done
 }
