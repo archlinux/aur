@@ -1,0 +1,18 @@
+pkgbase = apache-arrow-glib
+	pkgdesc = GLib bindings for Apache Arrow
+	pkgver = 22.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = Apache License 2.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = meson
+	depends = arrow
+	depends = glib2
+	depends = gobject-introspection
+	provides = arrow-c-glib
+	conflicts = arrow-c-glib
+	source = https://github.com/apache/arrow/archive/refs/tags/apache-arrow-22.0.0.zip
+	md5sums = 87eed446b710f8dc1a70fdc4d76b7ac2
+
+pkgname = apache-arrow-glib
