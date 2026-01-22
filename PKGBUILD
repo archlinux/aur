@@ -2,15 +2,15 @@
 
 _omit_libs=true
 _omit_dlls=false
-_electron_ver=38
+_electron_ver=39
 _dotnet_ver=9.0
-_runtime_ver=9
-_sdk_ver=110
+_runtime_ver=11
+_sdk_ver=112
 
 pkgname='vrcx-bin'
 pkgdesc='Friendship management tool for VRChat (extracted AppImage version)'
-pkgver='2025.12.06'
-pkgrel='2'
+pkgver='2026.01.04'
+pkgrel='1'
 arch=('x86_64')
 url='https://vrcx.app/'
 license=('MIT')
@@ -22,7 +22,7 @@ source=("https://github.com/vrcx-team/VRCX/releases/download/v$pkgver/VRCX_${pkg
         "LICENSE-v$pkgver::https://raw.githubusercontent.com/vrcx-team/VRCX/refs/tags/v$pkgver/LICENSE"
         'vrcx'
         'VRCX.desktop')
-sha256sums=('7b53f04f8eed61fceed41362fef209934f13a568ccee6cf5e283bd041d381197'
+sha256sums=('4d1cd282807ff0e0fa9607b3bfba760bab1e7b16d845c0acfa7ab1f61e4eb672'
             '1927804117a7ac55e00646df36f77edd09d2cfee850588fc453a81d01bad90d1'
             '464858e86b74bc4c49c8ec4b59aded48bcd8f0f57ab5366b1bbe77db1d868033'
             'bdf079d1d72c5a207ae8322303a8c0c7b61fbcbc0eff6bd4a42b461f50137ff3')
