@@ -3,7 +3,7 @@
 
 pkgname=itext-rups-bin
 _pkgname=itext-rups
-pkgver=25.03
+pkgver=26.01
 pkgrel=1
 pkgdesc='iText RUPS is a tool to view PDF structure in a Swing GUI.'
 provides=("$_pkgname")
@@ -14,7 +14,7 @@ depends=(bash java-runtime hicolor-icon-theme)
 makedepends=('imagemagick>=7')
 sha256sums=('c9b4e4c2b77b89c1e01354d059ea6abf0ea34fff0b33ad50d349ad875cb93d6a'
             'c213befd1132bebcbc588a7ef52c0089682767618317bd09128668d3550218b3'
-            '6c3da33137ec3a0e76df60c6c3fa7e0ea66218fa0c3c61a6d92b8d3c3f182840'
+            '2d9df10b5274a2195a41f54c84855c57eb4dcc0c2a2c88602bbef767f7c9007d'
             '226be57182f49ed2667a606d04251b47d0427850f71dd469d92a864173d5745d')
 source=(
     "itext-rups.sh"
