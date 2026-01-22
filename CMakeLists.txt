@@ -48,5 +48,5 @@ install(FILES
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/QCustomPlotQt6)
 
 install(FILES
-        ${CMAKE_CURRENT_BINARY_DIR}/changelog.txt
+        ${CMAKE_CURRENT_SOURCE_DIR}/changelog.txt
         DESTINATION ${CMAKE_INSTALL_DATADIR}/doc/qcustomplot-qt6)
