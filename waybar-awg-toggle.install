@@ -1,0 +1,14 @@
+post_install() {
+    echo ":: waybar-awg-toggle setup instructions:"
+    echo "   To manage AmneziaWG without password prompts, ensure that:"
+    echo "   1. The 'polkit' package is installed."
+    echo "   2. Your user is a member of the 'wheel' group."
+    echo "      (Command: sudo usermod -aG wheel \$USER)"
+    echo ""
+    echo "   For more configuration details and Waybar integration, visit:"
+    echo "   https://github.com/Mat1RX/waybar-awg-toggle#security-configuration"
+}
+
+post_upgrade() {
+    post_install
+}
