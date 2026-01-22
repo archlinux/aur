@@ -1,81 +1,61 @@
-# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Maintainer: Joshua Su <i@joshua.su>
 pkgname=gemini-desktop-git
-_pkgname="Google Gemini Desktop"
-pkgver=1.0.6.r3.g61bc3c9
-_electronversion=32
-_nodeversion=20
+_pkgname=gemini-desktop
+pkgver=r38.4f0a586
 pkgrel=1
-pkgdesc="A simple Gemini client using the Electron framework(Unofficial).Use system-wide electron."
-arch=('any')
-url="https://github.com/nekupaw/gemini-desktop"
-license=('ISC')
-conflicts=("${pkgname%-git}")
-provides=("${pkgname%-git}=${pkgver%.r*}")
-depends=(
-    "electron${_electronversion}"
-)
-makedepends=(
-    'gendesk'
-    'npm'
-    'nvm'
-    'curl'
-    'git'
-)
-source=(
-    "${pkgname%-git}.git::git+${url}.git"
-    "${pkgname%-git}.sh"
-)
+pkgdesc="Unofficial Web app for Google Gemini providing the desktop user experience (Git version)"
+arch=('x86_64')
+url="https://github.com/kenvandine/gemini-desktop"
+license=('GPL3')
+depends=('electron')
+makedepends=('git')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+$url.git"
+        "$_pkgname.sh")
 sha256sums=('SKIP'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            '0c2b2f56473490b2b110f6ea84301232faf43c505fab6e9804fbe555c9029382')
+
 pkgver() {
-    cd "${srcdir}/${pkgname%-git}.git"
-    set -o pipefail
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  cd "$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-_ensure_local_nvm() {
-    local NVM_DIR="${srcdir}/.nvm"
-    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-    nvm install "${_nodeversion}"
-    nvm use "${_nodeversion}"
-}
-build() {
-    sed -e "
-        s/@electronversion@/${_electronversion}/g
-        s/@appname@/${pkgname%-git}/g
-        s/@runname@/app.asar/g
-        s/@cfgdirname@/${pkgname%-git}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-git}.sh"
-    _ensure_local_nvm
-    gendesk -f -n -q --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
-    cd "${srcdir}/${pkgname%-git}.git"
-    electronDist="/usr/lib/electron${_electronversion}"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    HOME="${srcdir}/.electron-gyp"
-    {
-        echo -e '\n'	
-        #echo 'build_from_source=true'
-        echo "cache=${srcdir}/.npm_cache"
-    } >> .npmrc
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
-            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
-            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
-        } >> .npmrc
-        sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" package-lock.json
-    fi
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    npm install --force
-    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
-}
+
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/build/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
-    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/package.json" "${pkgdir}/usr/share/licenses/${pkgname}"
+  # Install application source files to /usr/lib/gemini-desktop
+  install -d "$pkgdir/usr/lib/$_pkgname"
+  
+  local _files=(
+    "index.js"
+    "preload.js"
+    "renderer.js"
+    "index.html"
+    "about.html"
+    "offline.html"
+    "package.json"
+    "icon.png"
+    "icon512.png"
+  )
+
+  for _file in "${_files[@]}"; do
+    install -m644 "$_pkgname/$_file" "$pkgdir/usr/lib/$_pkgname/$_file"
+  done
+
+  # Install the launcher script
+  install -Dm755 "$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
+
+  cd "$_pkgname"
+
+  # Install and fix the desktop file
+  install -d "$pkgdir/usr/share/applications"
+  sed -e "s|Icon=.*|Icon=$_pkgname|" \
+      -e "s|Exec=.*|Exec=/usr/bin/$_pkgname|" \
+      com.github.kenvandine.gemini-desktop.desktop > "$pkgdir/usr/share/applications/$_pkgname.desktop"
+
+  # Install the icon
+  install -d "$pkgdir/usr/share/pixmaps"
+  install -m644 icon.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+
+  # Install the license
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }

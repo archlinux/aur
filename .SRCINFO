@@ -1,21 +1,17 @@
 pkgbase = gemini-desktop-git
-	pkgdesc = A simple Gemini client using the Electron framework(Unofficial).Use system-wide electron.
-	pkgver = 1.0.6.r3.g61bc3c9
+	pkgdesc = Unofficial Web app for Google Gemini providing the desktop user experience (Git version)
+	pkgver = r38.4f0a586
 	pkgrel = 1
-	url = https://github.com/nekupaw/gemini-desktop
-	arch = any
-	license = ISC
-	makedepends = gendesk
-	makedepends = npm
-	makedepends = nvm
-	makedepends = curl
+	url = https://github.com/kenvandine/gemini-desktop
+	arch = x86_64
+	license = GPL3
 	makedepends = git
-	depends = electron32
-	provides = gemini-desktop=1.0.6
+	depends = electron
+	provides = gemini-desktop
 	conflicts = gemini-desktop
-	source = gemini-desktop.git::git+https://github.com/nekupaw/gemini-desktop.git
+	source = gemini-desktop::git+https://github.com/kenvandine/gemini-desktop.git
 	source = gemini-desktop.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 0c2b2f56473490b2b110f6ea84301232faf43c505fab6e9804fbe555c9029382
 
 pkgname = gemini-desktop-git
