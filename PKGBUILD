@@ -3,7 +3,7 @@
 _zig=0.15
 pkgname="river-bedload"
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Print river compositor info in STDOUT"
 arch=(
   'x86_64'
@@ -14,6 +14,7 @@ license=(
 )
 depends=(
   'glibc'
+  'river'
   'wayland'
 )
 makedepends=(
