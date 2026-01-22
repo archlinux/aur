@@ -3,7 +3,7 @@
 _zig=0.15
 pkgname="zelbar"
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Wayland statusbar reading input from STDIN"
 arch=(
   'x86_64'
@@ -59,11 +59,11 @@ build() {
     -Dtarget=native-linux.6.15-gnu.2.42
     -Dcpu=baseline
     -Doptimize=ReleaseSafe
+    -Dpie=true
   )
 
   cd "${srcdir}/${_pkgsrc}"
   DESTDIR="build" zig build "${zig_options[@]}"
-  find "build" -type f -name '*.wasm' -delete
 }
 
 check() {
@@ -77,6 +77,7 @@ check() {
     -Dtarget=native-linux.6.15-gnu.2.42
     -Dcpu=baseline
     -Doptimize=ReleaseSafe
+    -Dpie=true
   )
 
   cd "${srcdir}/${_pkgsrc}"
