@@ -82,7 +82,8 @@ pkgbase = litellm
 	optdepends = python-diskcache: caching
 	optdepends = python-semantic-router: semantic-router
 	optdepends = python-mlflow: mlflow
-	provides = python-litellm
+	provides = litellm
+	provides = litellm-proxy
 	source = https://files.pythonhosted.org/packages/source/l/litellm/litellm-1.81.1.tar.gz
 	sha256sums = 9c758db8abff04a2f1f43582d042080e36f245fe34cfbafe2f8b7ca8f1de29b6
 

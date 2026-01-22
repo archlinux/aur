@@ -68,7 +68,7 @@ optdepends=('python-anyio: proxy'
             'python-diskcache: caching'
             'python-semantic-router: semantic-router'
             'python-mlflow: mlflow')
-provides=("python-$pkgname")
+provides=("${pkgname}" "${pkgname}-proxy")
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=('9c758db8abff04a2f1f43582d042080e36f245fe34cfbafe2f8b7ca8f1de29b6')
 
