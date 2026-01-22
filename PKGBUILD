@@ -2,10 +2,10 @@
 pkgname="elysia-git"
 _pkgname="${pkgname%-git}"
 pkgver=v0.1.r1.gb1bed5c
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal anime game launcher, supporting Wine and Proton"
 arch=("x86_64")
-url="url"
+url="https://dawn.wine/elysia/elysia"
 license=(GPL-3.0-only)
 provides=("elysia")
 conflicts=("elysia")

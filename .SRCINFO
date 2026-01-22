@@ -1,8 +1,8 @@
 pkgbase = elysia-git
 	pkgdesc = Universal anime game launcher, supporting Wine and Proton
 	pkgver = v0.1.r1.gb1bed5c
-	pkgrel = 1
-	url = url
+	pkgrel = 2
+	url = https://dawn.wine/elysia/elysia
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = rust
