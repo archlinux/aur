@@ -1,0 +1,12 @@
+pkgbase = foxicons-theme
+	pkgdesc = A collection of multi-sized icons organized as a Linux desktop icon theme
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/SzponerZoli/foxicons-theme
+	install = foxicons-theme.install
+	arch = any
+	license = Unlicense
+	source = foxicons-theme-1.0.tar.gz::https://github.com/SzponerZoli/foxicons-theme/archive/refs/tags/v1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = foxicons-theme

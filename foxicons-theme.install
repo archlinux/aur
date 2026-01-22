@@ -1,0 +1,13 @@
+post_install() {
+    echo "==> Updating icon cache..."
+    gtk-update-icon-cache -f -t /usr/share/icons/fox-icons
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo "==> Cleaning up icon cache..."
+    gtk-update-icon-cache -f -t /usr/share/icons/fox-icons
+}
