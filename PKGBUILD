@@ -23,6 +23,8 @@ python-build123d
 )
 makedepends=(
 git
+make
+npm
 python-setuptools-scm
 python-build
 python-installer
@@ -40,10 +42,16 @@ pkgver() {
 
 prepare() {
   cd vscode-ocp-cad-viewer
+  sed '/^[ \t]*vsce package/s/^/#/' -i Makefile
+  sed '/^[ \t]*@python -m build/s/^/#/' -i Makefile
+  sed '/^[ \t]*@ls -l dist/s/^/#/' -i Makefile
+  mkdir -p ocp_vscode/static/css
 }
 
 build() {
   cd vscode-ocp-cad-viewer
+  npm install --cache "${srcdir}/npm-cache"
+  make dist
   python -m build --wheel --no-isolation
 }
 
