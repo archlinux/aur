@@ -1,8 +1,8 @@
 # Maintainer: Hans-Nikolai Viessmann <hans AT viess DOT mn>
 pkgname="bsdsed"
-_freebsd_ver="14.1.0"
+_freebsd_ver="15.0.0"
 pkgver="$_freebsd_ver"
-pkgrel=4
+pkgrel=1
 pkgdesc="BSD variant of sed"
 arch=('x86_64')
 url="https://github.com/freebsd/freebsd-src/tree/main/usr.bin/sed"
