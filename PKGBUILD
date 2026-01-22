@@ -2,6 +2,7 @@
 _basename=time-desktop
 _baseurl=https://downloads.time-messenger.ru
 pkgname=${_basename}-bin
+epoch=1
 pkgver=5.23.0
 pkgrel=1
 pkgdesc="TiMe (Tinkoff Messenger) is a corporate messenger based on Mattermost. This package provides the Linux desktop application."
