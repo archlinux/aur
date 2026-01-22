@@ -6,8 +6,8 @@ _zig=0.13
 _basename="levee"
 pkgname="river-${_basename}"
 pkgver=0.1.4
-pkgrel=1
-pkgdesc="Statusbar for the river wayland compositor"
+pkgrel=2
+pkgdesc="Statusbar for the river Wayland compositor"
 arch=(
   'x86_64'
 )
@@ -20,6 +20,7 @@ depends=(
   'glibc'
   'libpulse'
   'pixman'
+  'river'
   'systemd-libs'
   'wayland'
 )
@@ -28,8 +29,8 @@ makedepends=(
   "zig${_zig}"
 )
 _zigdepends=(
-  "zig-wayland-0.2.0.tar.gz::https://codeberg.org/ifreund/zig-wayland/archive/v0.2.0.tar.gz"
-  "zig-pixman-0.2.0.tar.gz::https://codeberg.org/ifreund/zig-pixman/archive/v0.2.0.tar.gz"
+  "zig-wayland-v0.2.0.tar.gz::https://codeberg.org/ifreund/zig-wayland/archive/v0.2.0.tar.gz"
+  "zig-pixman-v0.2.0.tar.gz::https://codeberg.org/ifreund/zig-pixman/archive/v0.2.0.tar.gz"
   "zig-fcft-40691ff2df73ff09724d19791c8da8f966a95c6a.tar.gz::https://git.sr.ht/~novakane/zig-fcft/archive/40691ff2df73ff09724d19791c8da8f966a95c6a.tar.gz"
   "zig-udev-442a1c2b6c9f1f672c234b9ee977e4d3c2408f9a.tar.gz::https://git.sr.ht/~andreafeletto/zig-udev/archive/442a1c2b6c9f1f672c234b9ee977e4d3c2408f9a.tar.gz"
 )
@@ -49,8 +50,8 @@ b2sums=('f484d1614b8bcd7d858384426080ad26df5eeddedd962acdd9fb78d1c5eb3a8529fa78a
 
 prepare() {
   cd "${srcdir}"
-  for dep in "${_zigdepends[@]}"; do
-    "zig${_zig}" fetch --global-cache-dir "zig-global-cache" "${dep%%::*}"
+  for _zigdepend in "${_zigdepends[@]}"; do
+    "zig${_zig}" fetch --global-cache-dir "zig-global-cache" "${_zigdepend%%::*}"
   done
 }
 
