@@ -1,7 +1,7 @@
 pkgbase = stratis-cli
 	pkgdesc = A CLI for the Stratis Project.
-	pkgver = 3.6.0
-	pkgrel = 3
+	pkgver = 3.8.3
+	pkgrel = 1
 	url = https://stratis-storage.github.io/
 	arch = any
 	license = Apache
@@ -21,7 +21,7 @@ pkgbase = stratis-cli
 	depends = python-packaging
 	depends = python-psutil
 	depends = python-wcwidth
-	source = stratis-cli-3.6.0.tar.gz::https://github.com/stratis-storage/stratis-cli/archive/v3.6.0.tar.gz
-	sha256sums = 685339d50f6c0d9ead0ed2eb32f70e1c69d18321c7d5354f735452962bf2987f
+	source = stratis-cli-3.8.3.tar.gz::https://github.com/stratis-storage/stratis-cli/archive/v3.8.3.tar.gz
+	sha256sums = 1c7255e871504d3df00ebb73ffbd78455b085b4707c84a3fbdabdfd9f9d1daa6
 
 pkgname = stratis-cli
