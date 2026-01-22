@@ -2,7 +2,7 @@
 # Contributor: Miro Bezjak <bezjak.miro at gmail dot com>
 
 pkgname=hunspell-hr
-pkgver=2.1-20251229
+pkgver=2.1.20251229
 pkgrel=1
 pkgdesc="Croatian dictionary for Hunspell"
 arch=("any")
