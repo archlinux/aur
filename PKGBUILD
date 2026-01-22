@@ -48,9 +48,9 @@ prepare() {
 
 package() {
   cd "${pkgname%-git}"
-  while read _in _out ; do
-    mkdir -p "$pkgdir/$_out/"
-    install -m644 ${_in} "$pkgdir/$_out/"
+  while read -r _in _out ; do
+    mkdir -p "$pkgdir/${_out}/"
+    install -m644 "${_in}" "$pkgdir/${_out}/"
   done < debian/install
   chmod 755 "$pkgdir/usr/bin/${pkgname%-git}"
   chmod -R 755 \
