@@ -3,8 +3,8 @@
 # Contributor: Manuel Schneider  <manuelschneid3r at googles mail>
 
 pkgname=albert
-pkgver=34.0.1
-pkgrel=2
+pkgver=34.0.2
+pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher"
 arch=('x86_64')
 url="https://github.com/albertlauncher"
@@ -21,39 +21,15 @@ build() {
   mkdir -p build
   cd build
 
-  cmake ../$pkgname \
+  cmake \
     -DCMAKE_BUILD_TYPE=MinSizeRel \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_FIND_PACKAGE_RESOLVE_SYMLINKS=ON \
     -DQHOTKEY_INSTALL=OFF \
-    -DBUILD_PLUGIN_APPLICATIONS=ON \
-    -DBUILD_PLUGIN_CAFFEINE=ON \
-    -DBUILD_PLUGIN_CALCULATOR-QALCULATE=ON \
-    -DBUILD_PLUGIN_CHROMIUM=ON \
-    -DBUILD_PLUGIN_CLIPBOARD=ON \
-    -DBUILD_PLUGIN_DATETIME=ON \
     -DBUILD_PLUGIN_DEBUG=OFF \
-    -DBUILD_PLUGIN_DICTIONARY=ON \
     -DBUILD_PLUGIN_DOCS=OFF \
-    -DBUILD_PLUGIN_FILES=ON \
-    -DBUILD_PLUGIN_GITHUB=ON \
-    -DBUILD_PLUGIN_HASH=ON \
-    -DBUILD_PLUGIN_MEDIAREMOTE=ON \
-    -DBUILD_PLUGIN_OBSIDIAN=ON \
-    -DBUILD_PLUGIN_PATH=ON \
-    -DBUILD_PLUGIN_PYTHON=ON \
-    -DBUILD_PLUGIN_SNIPPETS=ON \
-    -DBUILD_PLUGIN_SPOTIFY=ON \
-    -DBUILD_PLUGIN_SSH=ON \
-    -DBUILD_PLUGIN_SYSTEM=ON \
-    -DBUILD_PLUGIN_TIMER=ON \
-    -DBUILD_PLUGIN_TIMEZONES=ON \
-    -DBUILD_PLUGIN_URLHANDLER=ON \
-    -DBUILD_PLUGIN_VPN=ON \
-    -DBUILD_PLUGIN_WEBSEARCH=ON \
-    -DBUILD_PLUGIN_WIDGETSBOXMODEL=ON \
-    -DBUILD_PLUGIN_WIDGETSBOXMODEL-QSS=ON
+    ../$pkgname
 
   make
 }
@@ -66,4 +42,4 @@ package() {
   install -Dm644 "$srcdir/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha512sums=('50804ce4e7a99f382a188ec43654cc93dbb25b35600793ac617842cf8e8af3b54689928d69fb1d43d4952f264e2ae6a45522c935f76f548aaafb25f3e620d6c1')
+sha512sums=('2e0993f634e75f84f46bd27bc9f70a138454c4763e7667e49d90b3a1c2c7425e0917017315be00ae0efea92823088bc948682e18ab91a5daddbad00db84640ee')
