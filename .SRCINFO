@@ -1,6 +1,6 @@
 pkgbase = myrient
 	pkgdesc = Bulk downloader and extractor for ROM archive directories
-	pkgver = 1.1.4
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://github.com/cruzisonfire/myrient
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = myrient
 	depends = unzip
 	depends = p7zip
 	optdepends = unrar: RAR archive extraction support
-	source = myrient-1.1.4.tar.gz::https://github.com/cruzisonfire/myrient/archive/refs/tags/v1.1.4.tar.gz
-	sha256sums = f4a71df7f54042901223b1c7758119e9503a02f44d35e022d2206c37251813ee
+	source = myrient-1.1.5.tar.gz::https://github.com/cruzisonfire/myrient/archive/refs/tags/v1.1.5.tar.gz
+	sha256sums = f901d61e15de8052525598c128154f6e2168d7d4d17eff9cd3d64516da571783
 
 pkgname = myrient
