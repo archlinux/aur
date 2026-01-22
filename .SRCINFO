@@ -1,6 +1,6 @@
 pkgbase = xremap-gnome-bin
 	pkgdesc = Dynamic key remapper for X11 and Wayland (Gnome Wayland Version)
-	pkgver = 0.14.9
+	pkgver = 0.14.10
 	pkgrel = 1
 	url = https://github.com/k0kubun/xremap
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = xremap-gnome-bin
 	provides = xremap
 	source = LICENSE
 	sha256sums = 60365594c733128ba50f05de00c4a6f07fed0a6e8bbd93817f39ded3980f7343
-	source_x86_64 = xremap-gnome-bin-0.14.9-x86_64.zip::https://github.com/k0kubun/xremap/releases/download/v0.14.9/xremap-linux-x86_64-gnome.zip
-	sha256sums_x86_64 = 50e4748fbd93d66b0c5b4eaf3f696759be0b67e9a6960538af76e00008402d40
-	source_aarch64 = xremap-gnome-bin-0.14.9-aarch64.zip::https://github.com/k0kubun/xremap/releases/download/v0.14.9/xremap-linux-aarch64-gnome.zip
-	sha256sums_aarch64 = 253f3ec04fd6d6665693415c9c419f57dc5614a029ecbf701e6c758c43493827
+	source_x86_64 = xremap-gnome-bin-0.14.10-x86_64.zip::https://github.com/k0kubun/xremap/releases/download/v0.14.10/xremap-linux-x86_64-gnome.zip
+	sha256sums_x86_64 = 97d8466d0aeb2ad80fa291454903a9c594aa3b76df0c50204703d8e01f39a9d3
+	source_aarch64 = xremap-gnome-bin-0.14.10-aarch64.zip::https://github.com/k0kubun/xremap/releases/download/v0.14.10/xremap-linux-aarch64-gnome.zip
+	sha256sums_aarch64 = 6754ae317e853d28d76f18276ad444042c16082aed25ca9495e8827ec09daa83
 
 pkgname = xremap-gnome-bin
