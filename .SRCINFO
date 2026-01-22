@@ -1,0 +1,26 @@
+pkgbase = onionmine-git
+	pkgdesc = Onion Services keys and TLS certificates generator for vanity addresses
+	pkgver = 1.1.0.r353.gc02238c
+	pkgrel = 1
+	url = https://gitlab.torproject.org/tpo/onion-services/onionmine
+	install = onionmine-git.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	makedepends = autoconf
+	makedepends = libsodium
+	makedepends = pcre2
+	makedepends = ruby
+	depends = tor
+	depends = curl
+	depends = rsync
+	optdepends = wipe: secure file deletion
+	optdepends = openbsd-netcat: for netcat support
+	provides = onionmine
+	conflicts = onionmine
+	source = git+https://gitlab.torproject.org/tpo/onion-services/onionmine.git#branch=main
+	sha256sums = SKIP
+
+pkgname = onionmine-git

@@ -1,0 +1,39 @@
+post_install() {
+  cat << EOTXT
+
+==> Onionmine Setup Instructions
+
+1. Configuration file: /etc/onionmine/onionmine.conf
+   Copy and modify sample configuration:
+     sudo cp /usr/share/doc/onionmine/onionmine.conf.sample /etc/onionmine/onionmine.conf
+
+2. Pool directory: /var/lib/onionmine/pools/
+   Create a pool for your onion services:
+     sudo mkdir -p /var/lib/onionmine/pools/myonion
+     sudo cp -r /usr/share/doc/onionmine/pools/example.org/* /var/lib/onionmine/pools/myonion/
+
+3. Run onionmine:
+     onionmine mine myonion
+
+4. For more information:
+     onionmine (shows all available commands)
+     man onionmine
+
+5. Check dependencies:
+     onionmine check-dependencies
+
+Note: Onionmine requires Tor to be running to test generated keys.
+EOTXT
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  echo ""
+  echo "==> Onionmine will be removed."
+  echo "The configuration and data in /var/lib/onionmine/pools/ will be preserved."
+  echo "To remove it manually: sudo rm -rf /var/lib/onionmine/pools/"
+  echo ""
+}
