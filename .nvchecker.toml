@@ -1,0 +1,3 @@
+[river-shifttags]
+source = "git"
+git = "https://gitlab.com/akumar-xyz/river-shifttags.git"
