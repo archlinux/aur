@@ -1,10 +1,10 @@
-# Maintainer: snapetech <slskdN@proton.me>
-# 🔋 slskdN - The batteries-included Soulseek web client (build from source)
+# Maintainer: snapetech <slskdn@proton.me>
+# 🔋 slskdn - The batteries-included Soulseek web client (build from source)
 pkgname=slskdn
 _pkgname=slskd
-pkgver=0.24.1.slskdn.24
+pkgver=0.24.1.slskdn.37
 pkgrel=1
-pkgdesc="🔋 The batteries-included fork of slskd. Feature-rich, including wishlist, smart ranking, tabbed browsing, notifications & more"
+pkgdesc="🔋 The batteries included fork of slskd with 24+ new features: decentralized pods, content validation, swarm downloads, DHT mesh networking, auto-replace, wishlist, security hardening."
 arch=('x86_64' 'aarch64')
 url="https://github.com/snapetech/slskdn"
 license=('AGPL-3.0-or-later')
@@ -14,8 +14,8 @@ optdepends=(
     'docker: for containerized deployment'
 )
 provides=('slskd' 'slskd-bin')
-conflicts=('slskd' 'slskd-bin' 'slskdn-bin')
-replaces=('slskd' 'slskd-bin' 'slskdn-bin')
+conflicts=('slskd' 'slskd-bin' 'slskdN-bin')
+replaces=('slskd' 'slskd-bin' 'slskdN-bin')
 backup=('etc/slskd/slskd.yml')
 install=slskd.install
 source=(
@@ -24,7 +24,8 @@ source=(
     "slskd.yml"
     "slskd.sysusers"
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+# Note: First hash is SKIP (tarball changes each release), others are static file hashes
+sha256sums=('SKIP' '9e2f4b0496fd32b7f3264fe47db54bfa516d99ef0307a4aaa5aad98350f588e9' 'a170afada9ec8673ab696506756e1b5d971ee4f67560af795f359c9bd53645df' '28b6c2c8d969a91bc8b5ae3e7289562928fff39ed07b92973e5b93fa45033056')
 
 build() {
     cd "${srcdir}/slskdn-${pkgver//.slskdn/-slskdn}"
