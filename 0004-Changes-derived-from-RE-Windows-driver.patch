@@ -1,0 +1,849 @@
+From d21cf9360f9eb684bfc317dafae5aaaede7b59e9 Mon Sep 17 00:00:00 2001
+From: DeftDawg <deftdawg@gmail.com>
+Date: Mon, 19 Jan 2026 17:57:33 -0500
+Subject: [PATCH] Changes derived from RE Windows driver: - Increased default
+ Timeout between retries - Updated default packet size to 8024 - Send SLEEP
+ instead of RESET after each read
+
+Documentation from reversing the Windows driver and USB Packet capture analysis in HARDWARE_SPECS.md
+
+Information on RE work in REVERSE_ENGINEERING_NOTES.md
+---
+ HARDWARE_SPECS.md                 | 414 ++++++++++++++++++++++++++++++
+ REVERSE_ENGINEERING_NOTES.md      | 271 +++++++++++++++++++
+ devbox.json                       |  15 +-
+ libfprint/drivers/cs9711/cs9711.c |  51 +++-
+ 4 files changed, 732 insertions(+), 19 deletions(-)
+ create mode 100644 HARDWARE_SPECS.md
+ create mode 100644 REVERSE_ENGINEERING_NOTES.md
+
+diff --git a/HARDWARE_SPECS.md b/HARDWARE_SPECS.md
+new file mode 100644
+index 00000000..7f3a30e8
+--- /dev/null
++++ b/HARDWARE_SPECS.md
+@@ -0,0 +1,414 @@
++# FP100-LK Fingerprint Sensor Hardware Specifications
++
++Reverse-engineered from the ChipSailing Windows driver.
++
++**✓ VERIFIED**: Chip ID 0x62A0 confirmed via USB query on actual hardware.
++
++## Device Identification
++
++| Property | Value |
++|----------|-------|
++| **Manufacturer** | ChipSailing Electronics (ShenZhen) Co., Ltd |
++| **Chip Model** | CS9711 (USB product string) / CS62A0 (Chip ID) |
++| **Chip ID** | **0x62A0** (verified) |
++| **Algorithm Version** | CSAlg_C_V04.07.1 |
++| **USB Vendor ID** | 0x2541 |
++| **USB Product ID** | 0x0236 |
++| **Interface** | USB (WBDI - Windows Biometric Driver Interface) |
++
++## Sensor Resolution
++
++| Property | Value |
++|----------|-------|
++| **Resolution** | **500 DPI** (verified from driver disassembly) |
++| **Type** | Capacitive fingerprint sensor |
++
++### DPI Determination
++
++The DPI value was confirmed by reverse engineering CSAlgDll.dll:
++- The algorithm library uses a sensor type parameter passed to `ChipSailing_Init()`
++- Different sensor types have different DPI values configured
++- The FP100-LK (Chip ID 0x62A0/0x62A1) maps to sensor type 5, which sets DPI = 0x1f4 (500)
++- Note: 508 DPI (0x1fc) does NOT appear in the driver - this was a false lead
++
++| Sensor Type | DPI | Notes |
++|-------------|-----|-------|
++| 1 | 500 | |
++| 2 | 500 | CS3106/CS4102 |
++| 3 | 407 | CS4101 (118×68) |
++| 4 | 259 | |
++| 5 | 500 | CS62A0/CS62A1 (288×208) **← FP100-LK** |
++| 6 | 340 | |
++
++## Sensor Detection Mechanism
++
++**The driver determines the sensor configuration by reading the Chip ID from the device during initialization**, NOT by the size of image data returned. The USB driver:
++
++1. Sends a read command to the device during `VendorDeviceChipConfigure()`
++2. Reads an 8-byte response containing the Chip ID at bytes 2-3
++3. Uses a switch statement based on Chip ID to set width, height, and buffer size
++
++## Chip ID to Configuration Mapping
++
++| Chip ID | Width | Height | Image Size (bytes) | Notes |
++|---------|-------|--------|-------------------|-------|
++| **0x62A0, 0x62A1** | **288** (0x120) | **208** (0xD0) | **59904** (0xEA00) | FP100-LK (primary) |
++| 0x3106 | 56 (0x38) | 180 (0xB4) | 20160 (0x4EC0) | Alternative sensor |
++| 0x4101 | 118 (0x76) | 68 (0x44) | 8024 (0x1F58) | Small sensor |
++| 0x4102 (0x4101+1) | 56 (0x38) | 180 (0xB4) | 20160 (0x4EC0) | Similar to 0x3106 |
++| (default/0x3106 case) | 96 (0x60) | 96 (0x60) | 18432 (0x4800) | Square sensor |
++
++**FP100-LK Sensor (Chip ID 0x62A0/0x62A1):**
++- **Width: 288 pixels**
++- **Height: 208 pixels** 
++- **Resolution: 500 DPI**
++- **Raw image size: 59,904 bytes (8-bit grayscale)**
++
++Note: The width/height in the driver are stored as (height, width) internally at offsets 0x68 and 0x6C.
++
++## USB Communication
++
++- Uses WinUSB as the lower filter driver
++- Bulk transfer mode for image data
++- Full Speed USB (12 Mbps)
++- Max packet size: 64 bytes
++
++### Endpoints
++
++| Endpoint | Direction | Type | Description |
++|----------|-----------|------|-------------|
++| 0x01 | OUT | Bulk | Command/data output |
++| 0x81 | IN | Bulk | Response/image input |
++
++## USB Protocol
++
++### Command Packet Format
++
++All commands use an 8-byte packet structure:
++
++```
++Offset  Size  Description
++------  ----  -----------
++0       1     Start marker: 0xEA
++1       1     Command code
++2-5     4     Command parameters (usually 0x00)
++6       1     Checksum: XOR of bytes 1-5
++7       1     End marker: 0xEA
++```
++
++Example command to read chip info (cmd=0x01):
++```
++[0xEA, 0x01, 0x00, 0x00, 0x00, 0x00, 0x01, 0xEA]
++```
++
++### Response Packet Format
++
++Responses also use 8-byte packets:
++
++```
++Offset  Size  Description
++------  ----  -----------
++0       1     Echo: 0xEA
++1       1     Command code echo
++2-3     2     Response data (big-endian)
++4-5     2     Additional data
++6       1     Checksum
++7       1     End marker: 0xEA
++```
++
++### Command Codes
++
++| Code | Name | Description |
++|------|------|-------------|
++| 0x01 | READ_CHIP_ID | Read chip identification. Response bytes 2-3 contain Chip ID |
++| 0x02 | SLEEP/WAKE | Power state control (used in D0Exit) |
++| 0x03 | CAPTURE_START | Start fingerprint capture (when byte[0xD2]=4) |
++| 0x04 | CAPTURE_START_ALT | Alternative capture start command |
++| 0x07 | RESET | Device reset (used in D0Entry with WdfPowerDeviceD3Final) |
++
++### Initialization Sequence
++
++1. **Device Attach**
++   - Enumerate USB endpoints (EP 0x01 OUT, EP 0x81 IN)
++   - Configure bulk continuous reader
++
++2. **Read Chip ID** (VendorDeviceChipConfigure)
++   ```
++   WRITE: [0xEA, 0x01, 0x00, 0x00, 0x00, 0x00, 0x01, 0xEA]
++   READ:  [0xEA, 0x01, ChipID_Hi, ChipID_Lo, 0x00, 0x00, checksum, 0xEA]
++   ```
++   - May require 2-3 retries (device needs wake-up time)
++   - Chip ID determines image dimensions (see table above)
++
++3. **Allocate Image Buffers**
++   - Based on Chip ID, allocate `width × height` byte buffer
++   - For CS62A0: 288 × 208 = 59,904 bytes
++
++4. **Configure Power Management**
++   - Enable idle detection
++   - Set 3000ms idle timeout
++
++### Image Capture Sequence
++
++1. **Wait for Finger**
++   - Device uses continuous reader on bulk IN endpoint
++   - Interrupt/notification when finger detected
++
++2. **Capture Image**
++   ```
++   WRITE: [0xEA, 0x03, 0x00, 0x00, 0x00, 0x00, 0x03, 0xEA]  (or 0x04)
++   READ:  <image data, 59904 bytes for CS62A0>
++   ```
++   - Image data arrives in 64-byte bulk transfers
++   - Total transfers: 59904 / 64 = 936 packets (+ remainder)
++
++3. **Background Image Acquisition** (calibration)
++   - IOCTL code: 0x44001C (0x1fe8 offset from base)
++   - Used for sensor calibration/baseline
++
++### Power State Commands
++
++| State Transition | Command |
++|-----------------|---------|
++| Enter D0 (active) | cmd=0x07 (if from D3Final), else cmd=0x02 |
++| Exit D0 (sleep) | cmd=0x02 (retry up to 3 times) |
++
++### Error Handling
++
++- Commands may timeout if device is in sleep state
++- Retry up to 3 times with short delays
++- Status 0xC0000120 indicates device needs re-initialization
++
++## Driver Architecture
++
++```
++┌─────────────────────────────────────────────────────┐
++│                    WinBio Service                   │
++├─────────────────────────────────────────────────────┤
++│  WinBioSensorAdapter.DLL   (Windows built-in)       │
++├─────────────────────────────────────────────────────┤
++│  EngineAdapter.dll (ChipEngine) - Template matching │
++├─────────────────────────────────────────────────────┤
++│  CSAlgDll.dll - ChipSailing algorithm library       │
++│    - ChipSailing_Init()                             │
++│    - ChipSailing_CreateTemplate()                   │
++│    - ChipSailing_MatchScore()                       │
++│    - ChipSailing_AutoGain()                         │
++│    - ChipSailing_Enhance16to8()                     │
++├─────────────────────────────────────────────────────┤
++│  WudfBioUsb.dll - UMDF USB driver                   │
++├─────────────────────────────────────────────────────┤
++│  WinUSB.sys (Kernel)                                │
++└─────────────────────────────────────────────────────┘
++```
++
++## Key Constants for Linux Driver Development
++
++```c
++#define FP100_VENDOR_ID     0x2541
++#define FP100_PRODUCT_ID    0x0236
++
++#define FP100_RESOLUTION_DPI 500
++
++/* Chip IDs - read from device during initialization */
++#define CHIPID_CS62A0       0x62A0  /* FP100-LK primary */
++#define CHIPID_CS62A1       0x62A1  /* FP100-LK variant */
++#define CHIPID_CS3106       0x3106
++#define CHIPID_CS4101       0x4101
++#define CHIPID_CS4102       0x4102
++
++/* FP100-LK sensor dimensions (Chip ID 0x62A0/0x62A1) */
++#define FP100_IMAGE_WIDTH   288
++#define FP100_IMAGE_HEIGHT  208
++#define FP100_IMAGE_SIZE    (288 * 208)  /* 59904 bytes */
++
++/* Other sensor configurations by Chip ID */
++/* CS3106: 56x180 = 10080 raw, 20160 with padding? */
++/* CS4101: 118x68 = 8024 */
++/* Default: 96x96 = 9216 raw, 18432 bytes */
++```
++
++## Algorithm Functions (from CSAlgDll.dll exports)
++
++| Function | Purpose |
++|----------|---------|
++| `ChipSailing_Init` | Initialize algorithm engine |
++| `ChipSailing_AutoGain` | Auto-calibrate sensor gain (8-bit) |
++| `ChipSailing_AutoGain16` | Auto-calibrate sensor gain (16-bit) |
++| `ChipSailing_CreateTemplate` | Create fingerprint template |
++| `ChipSailing_CreateTemplate16` | Create template from 16-bit image |
++| `ChipSailing_MatchScore` | Compare fingerprint templates |
++| `ChipSailing_MergeFeature` | Merge multiple captures |
++| `ChipSailing_RenewFeature` | Update existing template |
++| `ChipSailing_DetectFinger` | Detect finger presence |
++| `ChipSailing_SignalStrength` | Get signal quality |
++| `ChipSailing_Enhance16to8` | Convert 16-bit to 8-bit image |
++| `ChipSailing_CutBlankImage` | Crop blank regions |
++| `ChipSailing_GetImage` | Retrieve processed image |
++| `ChipSailing_IsBlankImage` | Check for blank/empty scan |
++| `ChipSailing_GetAlgVersion` | Get algorithm version |
++
++## Resolution Mismatch Investigation
++
++### Problem Statement
++
++Some devices with Chip ID 0x62A0 report the correct chip ID but output only 8024 bytes (68×118) instead of the expected 59904 bytes (288×208). This section documents the investigation into whether the Windows driver sends a resolution configuration command.
++
++### Analysis Results
++
++**Finding: The Windows driver does NOT send any resolution configuration command.**
++
++The driver determines resolution purely from the Chip ID via a switch statement:
++
++```
++ChipID 0x62A0/0x62A1 → 288×208 (59904 bytes)
++ChipID 0x4101        → 68×118  (8024 bytes)
++ChipID 0x3106        → 56×180  (20160 bytes)
++ChipID 0x4102        → 56×180  (20160 bytes)
++Default              → 96×96   (18432 bytes)
++```
++
++### Command Analysis
++
++All discovered commands use the 8-byte packet format with **zero data bytes**:
++
++| Code | Function | Data Bytes | Purpose |
++|------|----------|------------|---------|
++| 0x01 | Read Chip ID | 0,0,0,0 | Returns chip ID in response |
++| 0x02 | Sleep/Wake | 0,0,0,0 | Power state control |
++| 0x03 | Capture | 0,0,0,0 | Start capture (mode=4) |
++| 0x04 | Capture Alt | 0,0,0,0 | Alternative capture |
++| 0x07 | Reset | 0,0,0,0 | Device reset |
++
++**No register write or configuration commands were found** that could change resolution.
++
++### Possible Explanations
++
++1. **Firmware Variant**: The device has different firmware that outputs smaller images regardless of chip ID
++2. **Hardware Limitation**: The specific sensor module is physically smaller
++3. **Missing Initialization**: There may be undiscovered vendor-specific USB control transfers (not bulk commands)
++4. **EEPROM Configuration**: Resolution may be burned into device EEPROM at manufacturing
++
++### Recommended Next Steps
++
++To definitively determine if a configuration command exists:
++
++1. **Capture USB Traffic on Windows**:
++   ```
++   - Install USBPcap or Wireshark with USBPcap
++   - Capture all USB traffic during Windows driver initialization
++   - Look for any control transfers or additional bulk commands
++   - Compare command sequence between working 288×208 device and 68×118 device
++   ```
++
++2. **Check for Control Transfers**:
++   The analyzed bulk commands may not be the complete picture. USB control transfers (bmRequestType vendor-specific) could configure the sensor.
++
++3. **Compare Device Descriptors**:
++   Check if the 68×118 variant has different USB descriptors or firmware version strings.
++
++---
++
++## USB Traffic Capture Analysis (January 2026)
++
++Captured live USB traffic from device initialization and fingerprint capture.
++
++### Initialization Sequence Observed
++
++| Frame | Direction | Data | Description |
++|-------|-----------|------|-------------|
++| 489-500 | Control | - | Standard USB enumeration (GET DESCRIPTOR, SET CONFIGURATION) |
++| 501 | Host→Device | `EA 01 00 00 00 00 01 EA` | **Read Chip ID command** |
++| 504 | Device→Host | `EA 01 62 A0 00 00 C3 EA` | **Chip ID response: 0x62A0** ✓ |
++
++### Fingerprint Capture Sequence
++
++| Frame | Direction | Data | Description |
++|-------|-----------|------|-------------|
++| 1582 | Host→Device | `EA 04 00 00 00 00 04 EA` | **Capture command (0x04)** |
++| 1584 | Device→Host | 8000 bytes | Image data (first chunk) |
++| 1586 | Device→Host | 24 bytes | Image data (final chunk) |
++| **Total** | | **8024 bytes** | **118×68 pixels** (not 288×208!) |
++
++### Key Finding: Resolution Mismatch Confirmed
++
++**The device reports Chip ID 0x62A0 but outputs only 8024 bytes (118×68) instead of 59904 bytes (288×208).**
++
++This confirms the "Resolution Mismatch" section above - this specific device variant has different firmware or hardware that outputs a smaller image despite having the same Chip ID.
++
++### Commands Observed
++
++| Code | Hex Packet | Purpose |
++|------|------------|---------|
++| 0x01 | `EA 01 00 00 00 00 01 EA` | Read Chip ID |
++| 0x02 | `EA 02 00 00 00 00 02 EA` | Sleep/Wake (sent after capture) |
++| 0x04 | `EA 04 00 00 00 00 04 EA` | Capture image |
++
++**No configuration commands were observed** - the driver does not send any resolution configuration to the device.
++
++### Conclusions
++
++1. ✅ Chip ID 0x62A0 confirmed via live capture
++2. ✅ Command protocol matches reverse-engineered specs
++3. ⚠️ **This device outputs 8024 bytes (118×68) not 59904 (288×208)**
++4. ❌ No resolution configuration command exists - this is a hardware/firmware variant
++
++For Linux driver: Must detect actual image size from response, not just rely on Chip ID.
++
++---
++
++## Notes for Linux Driver
++
++1. The sensor outputs raw 8-bit grayscale images
++2. The 500 DPI resolution is standard for fingerprint sensors
++3. Image processing and template creation can use libfprint's algorithms
++4. USB bulk transfers are used for image capture
++5. **The Chip ID must be read during device initialization** to determine the correct image dimensions
++6. The FP100-LK uses Chip ID 0x62A0 or 0x62A1 with 288x208 resolution
++7. The EngineAdapter validates received image size against expected size based on Chip ID
++8. **Device needs 2-3 command cycles to "wake up"** from idle state - implement retry logic
++9. All commands use the `[0xEA, cmd, params..., checksum, 0xEA]` packet format
++
++## Sample Code
++
++### Building a Command Packet (Python)
++
++```python
++def build_command(cmd, params=None):
++    """Build an 8-byte command packet for the CS9711 sensor."""
++    if params is None:
++        params = [0x00, 0x00, 0x00, 0x00]
++    
++    # Checksum is XOR of bytes 1-5 (cmd + 4 param bytes)
++    checksum = cmd
++    for p in params:
++        checksum ^= p
++    
++    return bytes([0xEA, cmd] + params + [checksum, 0xEA])
++
++# Examples
++CMD_READ_CHIP_ID = build_command(0x01)  # [0xEA, 0x01, 0, 0, 0, 0, 0x01, 0xEA]
++CMD_SLEEP_WAKE   = build_command(0x02)  # [0xEA, 0x02, 0, 0, 0, 0, 0x02, 0xEA]
++CMD_CAPTURE      = build_command(0x03)  # [0xEA, 0x03, 0, 0, 0, 0, 0x03, 0xEA]
++CMD_RESET        = build_command(0x07)  # [0xEA, 0x07, 0, 0, 0, 0, 0x07, 0xEA]
++```
++
++### Parsing a Response Packet (Python)
++
++```python
++def parse_response(data):
++    """Parse an 8-byte response packet."""
++    if len(data) != 8 or data[0] != 0xEA or data[7] != 0xEA:
++        return None
++    
++    return {
++        'cmd': data[1],
++        'data': (data[2] << 8) | data[3],  # Big-endian 16-bit
++        'extra': (data[4] << 8) | data[5],
++        'checksum': data[6],
++    }
++
++# Example: Parse chip ID response
++# Response: [0xEA, 0x01, 0x62, 0xA0, 0x00, 0x00, 0xC3, 0xEA]
++# Result: {'cmd': 1, 'data': 0x62A0, 'extra': 0, 'checksum': 0xC3}
++```
+diff --git a/REVERSE_ENGINEERING_NOTES.md b/REVERSE_ENGINEERING_NOTES.md
+new file mode 100644
+index 00000000..f7e4a9dc
+--- /dev/null
++++ b/REVERSE_ENGINEERING_NOTES.md
+@@ -0,0 +1,271 @@
++# Reverse Engineering Windows Drivers: Techniques and Lessons Learned
++
++This document describes the techniques used to reverse engineer the ChipSailing CS9711 Windows fingerprint driver to extract hardware specifications and USB protocol details for Linux driver development.
++
++## Overview
++
++**Goal:** Extract hardware specifications (resolution, image dimensions) and USB protocol from Windows driver DLLs without source code.
++
++**Files Analyzed:**
++- `WudfBioUsb.dll` - UMDF USB driver (main driver)
++- `EngineAdapter.dll` - Biometric engine adapter
++- `CSAlgDll.dll` - ChipSailing algorithm library
++- `WudfBioUsb.inf` - Driver installation file
++
++**Tools Used:**
++- `radare2` (r2) - Primary disassembly and analysis tool
++- `objdump` - Secondary disassembly for specific searches
++- `strings` - Extract readable strings from binaries
++- `file` - Identify file types
++- `iconv` - Convert text encodings (INF file was UTF-16)
++- `xxd` - Hex dump for binary pattern searching
++- Python + pyusb - Verify findings on actual hardware
++
++## What Worked Well
++
++### 1. Start with the INF File
++
++The `.inf` file is plain text (though may be UTF-16 encoded) and contains valuable metadata:
++
++```bash
++iconv -f UTF-16LE -t UTF-8 WudfBioUsb.inf
++```
++
++**Found:**
++- USB VID/PID: `USB\VID_2541&PID_0236`
++- Manufacturer: ChipSailing Electronics
++- DLL relationships and dependencies
++- Registry keys and configuration
++
++**Lesson:** Always start here - it's the easiest source of structured information.
++
++### 2. String Extraction and Searching
++
++Debug strings in the DLLs were extremely valuable:
++
++```bash
++strings -n 6 WudfBioUsb.dll | grep -iE 'width|height|size|image|chip'
++```
++
++**Key strings found:**
++- `"ChipBioUsb | pDevice->ChipID = %x"` - Revealed chip ID mechanism
++- `"ChipBioUsb |DeviceContext->ImageBufferSize is %d"` - Led to buffer size code
++- `"ChipEngine | Incorrect raw image size: %d"` - Revealed size validation logic
++
++**Lesson:** Debug/logging strings are goldmines. They often name variables and describe what code is doing.
++
++### 3. Cross-Reference Analysis with radare2
++
++Once you find an interesting string, trace back to the code that uses it:
++
++```bash
++# Find string address
++r2 -q -c 'iz~ChipID' WudfBioUsb.dll
++
++# Find code that references it
++r2 -q -c 'aaa; axt 0x18001d7c0' WudfBioUsb.dll
++
++# Disassemble the function
++r2 -q -c 'aaa; s fcn.1800033c0; pdf' WudfBioUsb.dll
++```
++
++**Lesson:** The `axt` (cross-references to) command is essential for tracing data flow.
++
++### 4. Pattern Matching for Constants
++
++Search for known constant patterns in disassembly:
++
++```bash
++# Search for specific hex values (e.g., 500 DPI = 0x1f4)
++r2 -q -c '/x f4010000' WudfBioUsb.dll
++
++# Search for mov instructions with specific values
++objdump -D -M intel WudfBioUsb.dll | grep -E 'mov.*(0x1f4|0xea00)'
++```
++
++**Found:** Image buffer sizes (0xea00 = 59904) and resolution (0x1f4 = 500) as immediate values.
++
++### 5. Function List and Export Analysis
++
++```bash
++# List all exports
++r2 -q -c 'rabin2 -E CSAlgDll.dll'
++
++# List all functions
++r2 -q -c 'aaa; afl' WudfBioUsb.dll
++```
++
++**Found:** Algorithm function names like `ChipSailing_CreateTemplate`, `ChipSailing_MatchScore` which revealed the library's purpose.
++
++### 6. Data Section Analysis
++
++For finding embedded constants and lookup tables:
++
++```bash
++# Dump specific memory regions
++r2 -q -c 's 0x1800589d0; px 128' CSAlgDll.dll
++```
++
++**Found:** Version string `CSAlg_C_V04.07.1` and chip identifiers.
++
++### 7. Hardware Verification
++
++After forming hypotheses, verify on actual hardware:
++
++```python
++# Send command, read response
++ep_out.write(bytes([0xEA, 0x01, 0x00, 0x00, 0x00, 0x00, 0x01, 0xEA]))
++data = ep_in.read(8)
++chip_id = (data[2] << 8) | data[3]  # Confirmed 0x62A0
++```
++
++**Lesson:** Always verify findings on real hardware when possible.
++
++## What Didn't Work Well
++
++### 1. Automated Analysis Often Incomplete
++
++radare2's `aaa` (analyze all) sometimes misses functions or misidentifies code:
++
++```bash
++r2 -q -c 'aaa; afl~init'  # Often returns empty or incomplete
++```
++
++**Workaround:** Manually navigate to addresses found via string cross-references.
++
++### 2. Complex Call Graphs Are Hard to Follow
++
++The `agC` (call graph) command produced unreadable ASCII art for complex drivers.
++
++**Workaround:** Focus on specific functions rather than trying to understand entire call graph.
++
++### 3. Indirect Calls Through vtables
++
++Windows drivers use COM-like interfaces with function pointer tables:
++
++```asm
++mov rax, qword [rax + 0x6e8]  ; Load function pointer from vtable
++call qword [0x1800142b0]       ; Call through dispatcher
++```
++
++**Challenge:** Can't easily determine which function is being called.
++
++**Workaround:** Focus on the data being passed (arguments) rather than trying to resolve every call.
++
++### 4. pyusb Backend Issues on NixOS
++
++The nix-installed pyusb didn't automatically find libusb:
++
++```
++usb.core.NoBackendError: No backend available
++```
++
++**Workaround:** Explicitly set `LD_LIBRARY_PATH`:
++```bash
++sudo LD_LIBRARY_PATH=/nix/store/.../libusb-1.0.28/lib python3 script.py
++```
++
++### 5. Initial Protocol Guesses Were Wrong
++
++First attempts at USB communication timed out - the device needed a specific command format.
++
++**What helped:** Finding the command-building function in disassembly and reverse engineering the packet structure.
++
++## Step-by-Step Methodology
++
++### Phase 1: Reconnaissance
++1. Identify all files (DLLs, INF, CAT)
++2. Check file types with `file` command
++3. Parse INF file for metadata (VID/PID, manufacturer, dependencies)
++4. Extract all strings from each DLL
++
++### Phase 2: String-Guided Analysis
++1. Search strings for keywords: `width`, `height`, `size`, `resolution`, `dpi`, `image`, `chip`, `init`
++2. For each interesting string, find its address
++3. Find cross-references to that address
++4. Disassemble the referencing function
++
++### Phase 3: Code Analysis
++1. Identify key functions (initialization, configuration, capture)
++2. Look for constants being assigned to structures
++3. Trace switch statements - they often map chip IDs to configurations
++4. Look for debug print statements that reveal variable names
++
++### Phase 4: Protocol Extraction
++1. Find USB read/write functions
++2. Identify command buffer construction
++3. Note packet sizes and formats
++4. Map command codes to operations
++
++### Phase 5: Verification
++1. Write test script to communicate with device
++2. Send discovered commands
++3. Verify responses match expected format
++4. Iterate if needed
++
++## Key Insights
++
++### Switch Statements Reveal Configuration Tables
++
++The driver used switch statements on Chip ID to set dimensions:
++
++```asm
++cmp edi, 0x1f58    ; 8024 bytes
++je  set_small_config
++cmp edi, 0x4800    ; 18432 bytes
++je  set_medium_config
++cmp edi, 0xea00    ; 59904 bytes
++je  set_large_config
++```
++
++**Lesson:** Switch statements are often configuration lookups - analyze all branches.
++
++### Debug Builds Are Your Friend
++
++The driver had extensive debug logging which made analysis much easier. Production drivers with stripped symbols are significantly harder.
++
++### Protocol Framing Is Common
++
++The `[0xEA, cmd, data..., checksum, 0xEA]` format with start/end markers is common in embedded protocols. Look for repeated byte values at fixed offsets.
++
++### Retry Logic Reveals Reliability Issues
++
++The Windows driver retried commands up to 3 times. This told us the device might need multiple attempts to respond (which we confirmed).
++
++## Tools Cheat Sheet
++
++```bash
++# Basic info
++file *.dll
++strings -n 8 driver.dll | grep -i keyword
++
++# INF file (often UTF-16)
++iconv -f UTF-16LE -t UTF-8 driver.inf
++
++# radare2 essentials
++r2 -q -c 'iz' driver.dll                    # List strings
++r2 -q -c 'izz~pattern' driver.dll           # Search all strings
++r2 -q -c 'aaa; afl' driver.dll              # List functions
++r2 -q -c 'aaa; axt 0xADDRESS' driver.dll    # Cross-references
++r2 -q -c 'aaa; s FUNC; pdf' driver.dll      # Disassemble function
++r2 -q -c 's ADDR; px 64' driver.dll         # Hex dump
++r2 -q -c '/x HEXPATTERN' driver.dll         # Search hex bytes
++
++# objdump for grep-friendly output
++objdump -D -M intel driver.dll | grep -E 'pattern'
++
++# Exports
++rabin2 -E driver.dll
++```
++
++## Conclusion
++
++The most effective approach was **string-guided reverse engineering**: find debug strings, trace them to code, analyze the surrounding logic. This is much more efficient than trying to understand the entire binary.
++
++For USB device drivers specifically, focus on:
++1. Device initialization (VID/PID handling, configuration)
++2. Endpoint setup (bulk, interrupt, control)
++3. Command/response packet formats
++4. Image buffer allocation (reveals dimensions)
++
++Always verify findings on real hardware when possible - it catches misinterpretations quickly.
+diff --git a/devbox.json b/devbox.json
+index 9de807d0..74b1d3f3 100644
+--- a/devbox.json
++++ b/devbox.json
+@@ -15,18 +15,19 @@
+     "gcc",
+     "opencv4",
+     "cmake",
+-    "doctest@latest"
++    "doctest@latest",
++    "zip@latest"
+   ],
+   "shell": {
+     "init_hook": "cat << 'EOF'\n\n╔════════════════════════════════════════════════════════════════╗\n║           libfprint-CS9711 Development Environment             ║\n╚════════════════════════════════════════════════════════════════╝\n\n📦 Build Commands:\n   devbox run build:setup   - Initialize meson build directory\n   devbox run build         - Compile the project\n   devbox run build:clean   - Remove build directory\n   devbox run build:rebuild - Clean and rebuild from scratch\n\n🧪 Test Commands:\n   devbox run test          - Run all tests (4 pass, 28 skipped)\n   devbox run test:hwdb     - Run only udev hwdb test\n\n🔧 Maintenance Commands:\n   devbox run sync-hwdb     - Regenerate udev hardware database\n\n📚 Quick Start:\n   devbox run build:setup   # First time setup\n   devbox run build         # Build the project\n   devbox run test          # Run tests\n\nEOF\n",
+     "scripts": {
+-      "build:setup": "meson setup build -Ddoc=false -Dgtk-examples=false",
+-      "build": "meson compile -C build",
+-      "build:clean": "rm -rf build",
++      "build:setup":   "meson setup build -Ddoc=false -Dgtk-examples=false",
++      "build":         "meson compile -C build",
++      "build:clean":   "rm -rf build",
+       "build:rebuild": "devbox run build:clean && devbox run build:setup && devbox run build",
+-      "test": "meson test -C build",
+-      "test:hwdb": "meson test -C build --suite data",
+-      "sync-hwdb": "ninja -C build sync-udev-hwdb"
++      "test":          "meson test -C build",
++      "test:hwdb":     "meson test -C build --suite data",
++      "sync-hwdb":     "ninja -C build sync-udev-hwdb"
+     }
+   }
+ }
+diff --git a/libfprint/drivers/cs9711/cs9711.c b/libfprint/drivers/cs9711/cs9711.c
+index 49e02850..19fae007 100644
+--- a/libfprint/drivers/cs9711/cs9711.c
++++ b/libfprint/drivers/cs9711/cs9711.c
+@@ -30,20 +30,41 @@ G_DEFINE_TYPE (FpDeviceCs9711, fpi_device_cs9711, FP_TYPE_IMAGE_DEVICE)
+ #define CS9711_SENSOR_WIDTH 34
+ #define CS9711_SENSOR_HEIGHT 236
+ 
+-#define CS9711_DEFAULT_WAIT_TIMEOUT 300
++#define CS9711_DEFAULT_WAIT_TIMEOUT 500
+ #define CS9711_DEFAULT_RESET_SLEEP  250
+ 
+ #define CS9711_SEND_ENDPOINT    0x01
+ #define CS9711_RECEIVE_ENDPOINT 0x81
+ 
+ #define CS9711_FP_CMD_LEN_1    8
+-#define CS9711_FP_RECV_LEN_1   8000
+-#define CS9711_FP_RECV_LEN_2   24
+-#define CS9711_FP_RECV_LEN_MAX CS9711_FP_RECV_LEN_1
++/* 
++ * Image data size: 8024 bytes total
++ * With cmd 0x04: arrives as 8000 + 24 bytes
++ * With cmd 0x03: arrives as 8024 bytes in one transfer
++ */
++#define CS9711_FP_RECV_LEN_1   8024
++#define CS9711_FP_RECV_LEN_2   0
++/* Max buffer size to handle high-res CS62A0 (288x208=59904) if ever enabled */
++#define CS9711_FP_RECV_LEN_MAX 65536
+ 
+-#define CS9711_FP_CMD_TYPE_INIT  1
+-#define CS9711_FP_CMD_TYPE_RESET 2
+-#define CS9711_FP_CMD_TYPE_SCAN  4
++/*
++ * Command codes (from HARDWARE_SPECS.md USB traffic capture):
++ * 0x01 = READ_CHIP_ID - read chip identification
++ * 0x02 = SLEEP_WAKE   - power state control
++ * 0x03 = CAPTURE      - start capture (alternative)
++ * 0x04 = CAPTURE_ALT  - start capture (Windows driver uses this)
++ * 0x07 = RESET        - device reset
++ */
++#define CS9711_CMD_READ_CHIP_ID  0x01
++#define CS9711_CMD_SLEEP_WAKE    0x02
++#define CS9711_CMD_CAPTURE       0x04  /* Windows driver uses 0x04 for capture */
++#define CS9711_CMD_RESET         0x07
++
++/* Legacy aliases for compatibility */
++#define CS9711_FP_CMD_TYPE_INIT  CS9711_CMD_READ_CHIP_ID
++#define CS9711_FP_CMD_TYPE_SLEEP CS9711_CMD_SLEEP_WAKE
++#define CS9711_FP_CMD_TYPE_SCAN  CS9711_CMD_CAPTURE
++#define CS9711_FP_CMD_TYPE_RESET CS9711_CMD_RESET
+ 
+ #define CS9711_FP_CMD_STATE_RESULT_EXPECTED { 0xea, 0x01, 0x62, 0xa0, 0x00, 0x00, 0xc3, 0xea }
+ 
+@@ -143,14 +164,18 @@ m_init_read_cb_check_expected (FpiUsbTransfer *transfer,
+           fpi_ssm_mark_failed (transfer->ssm, error);
+         }
+       else if (memcmp (transfer->buffer, expected, CS9711_FP_CMD_LEN_1)) {
++        /* Log the ChipID from the response for debugging */
++        guint16 chip_id = ((guint16)transfer->buffer[2] << 8) | transfer->buffer[3];
++        fp_info ("Detected ChipID: 0x%04X (expected 0x62A0)", chip_id);
++        
+         if (!user_data_is_ignore_mismatch_if_non_null) {
+-          fp_warn ("Error; got different state response than expected, but don't understand it anyway, continuing");
++          fp_warn ("Got different state response than expected, continuing anyway");
+         }
+         fpi_ssm_next_state(transfer->ssm);
+       }
+       else
+         {
+-          fp_dbg ("Init response valid");
++          fp_info ("Init response valid, ChipID: 0x62A0");
+           fpi_ssm_next_state(transfer->ssm);
+         }
+     }
+@@ -346,11 +371,13 @@ m_scan_state (FpiSsm *ssm, FpDevice *_dev)
+       break;
+ 
+     case M_SCAN_GET_IMAGE_TAIL:
+-      usb_read_in (_dev, ssm, CS9711_FP_RECV_LEN_2, TRUE, CS9711_DEFAULT_WAIT_TIMEOUT, m_scan_read_cb_bulk, M_SCAN_READ_CB_BULK_UD_SECOND_BLOCK);
++      /* With cmd 0x04, all 8024 bytes come in first transfer - skip to next state */
++      fpi_ssm_next_state (ssm);
+       break;
+ 
+     case M_SCAN_SEND_POST_SCAN:
+-      usb_send_out_sync (_dev, CS9711_FP_CMD_TYPE_RESET, &error);
++      /* Windows driver sends SLEEP_WAKE (0x02) after capture, not RESET (0x07) */
++      usb_send_out_sync (_dev, CS9711_FP_CMD_TYPE_SLEEP, &error);
+       m_util_fail_if_error_or_next (ssm, error);
+       break;
+ 
+@@ -445,7 +472,7 @@ fpi_device_cs9711_class_init (FpDeviceCs9711Class *klass)
+   FpDeviceClass *dev_class = FP_DEVICE_CLASS (klass);
+   FpImageDeviceClass *img_class = FP_IMAGE_DEVICE_CLASS (klass);
+ 
+-  g_assert ((CS9711_FRAME_SIZE) == (CS9711_FP_RECV_LEN_1 + CS9711_FP_RECV_LEN_2));
++  g_assert ((CS9711_FRAME_SIZE) == CS9711_FP_RECV_LEN_1);
+ 
+   dev_class->id = "cs9711";
+   dev_class->full_name = "Chipsailing CS9711Fingprint";
+-- 
+2.52.0
+

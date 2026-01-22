@@ -1,0 +1,32 @@
+From bcad88cbdcf2e55bbb03504fe9624c76221229c4 Mon Sep 17 00:00:00 2001
+From: deftdawg <deftdawg@gmail.com>
+Date: Tue, 20 Jan 2026 19:26:22 -0500
+Subject: [PATCH] Update libfprint/drivers/cs9711/cs9711.c
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Apply Chip ID logging suggestion
+
+Co-authored-by: Adam Słaboń <asaillen@protonmail.com>
+---
+ libfprint/drivers/cs9711/cs9711.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/libfprint/drivers/cs9711/cs9711.c b/libfprint/drivers/cs9711/cs9711.c
+index 19fae007..d276b3cc 100644
+--- a/libfprint/drivers/cs9711/cs9711.c
++++ b/libfprint/drivers/cs9711/cs9711.c
+@@ -165,8 +165,7 @@ m_init_read_cb_check_expected (FpiUsbTransfer *transfer,
+         }
+       else if (memcmp (transfer->buffer, expected, CS9711_FP_CMD_LEN_1)) {
+         /* Log the ChipID from the response for debugging */
+-        guint16 chip_id = ((guint16)transfer->buffer[2] << 8) | transfer->buffer[3];
+-        fp_info ("Detected ChipID: 0x%04X (expected 0x62A0)", chip_id);
++        fp_info ("Detected ChipID: 0x%04X (expected 0x62A0)", (guint16)((transfer->buffer[2] << 8) | transfer->buffer[3]));
+         
+         if (!user_data_is_ignore_mismatch_if_non_null) {
+           fp_warn ("Got different state response than expected, continuing anyway");
+-- 
+2.52.0
+

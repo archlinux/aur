@@ -1,0 +1,40 @@
+From acb3b66e3fb2bbd0c6f10390f1999f707096247d Mon Sep 17 00:00:00 2001
+From: DeftDawg <deftdawg@gmail.com>
+Date: Tue, 16 Dec 2025 12:29:50 -0500
+Subject: [PATCH] Remove CS9711 from unsupported hardware list, since this fork
+ adds support
+
+---
+ data/autosuspend.hwdb             | 2 --
+ libfprint/fprint-list-udev-hwdb.c | 2 --
+ 2 files changed, 4 deletions(-)
+
+diff --git a/data/autosuspend.hwdb b/data/autosuspend.hwdb
+index 341bfd88..ca7ef4a6 100644
+--- a/data/autosuspend.hwdb
++++ b/data/autosuspend.hwdb
+@@ -447,8 +447,6 @@ usb:v1C7Ap0575*
+ usb:v1C7Ap0576*
+ usb:v1C7Ap0577*
+ usb:v1C7Ap057E*
+-usb:v2541p0236*
+-usb:v2541p9711*
+ usb:v27C6p5042*
+ usb:v27C6p5110*
+ usb:v27C6p5117*
+diff --git a/libfprint/fprint-list-udev-hwdb.c b/libfprint/fprint-list-udev-hwdb.c
+index 65854f36..595b09f6 100644
+--- a/libfprint/fprint-list-udev-hwdb.c
++++ b/libfprint/fprint-list-udev-hwdb.c
+@@ -122,8 +122,6 @@ static const FpIdEntry allowlist_id_table[] = {
+   { .vid = 0x1c7a, .pid = 0x0576 },
+   { .vid = 0x1c7a, .pid = 0x0577 },
+   { .vid = 0x1c7a, .pid = 0x057e },
+-  { .vid = 0x2541, .pid = 0x0236 },
+-  { .vid = 0x2541, .pid = 0x9711 },
+   { .vid = 0x27c6, .pid = 0x5042 },
+   { .vid = 0x27c6, .pid = 0x5110 },
+   { .vid = 0x27c6, .pid = 0x5117 },
+-- 
+2.52.0
+

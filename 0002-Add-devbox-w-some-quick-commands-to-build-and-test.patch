@@ -1,0 +1,68 @@
+From 5d15194077fe54f31e149bcb5b70d065b61c6c33 Mon Sep 17 00:00:00 2001
+From: DeftDawg <deftdawg@gmail.com>
+Date: Tue, 16 Dec 2025 12:30:36 -0500
+Subject: [PATCH] Add devbox w/ some quick commands to build and test
+
+---
+ .envrc      |  9 +++++++++
+ devbox.json | 32 ++++++++++++++++++++++++++++++++
+ 2 files changed, 41 insertions(+)
+ create mode 100644 .envrc
+ create mode 100644 devbox.json
+
+diff --git a/.envrc b/.envrc
+new file mode 100644
+index 00000000..eff60eb1
+--- /dev/null
++++ b/.envrc
+@@ -0,0 +1,9 @@
++#!/bin/bash
++
++# Automatically sets up your devbox environment whenever you cd into this
++# directory via our direnv integration:
++
++eval "$(devbox generate direnv --print-envrc)"
++
++# check out https://www.jetify.com/docs/devbox/ide_configuration/direnv/
++# for more details
+diff --git a/devbox.json b/devbox.json
+new file mode 100644
+index 00000000..9de807d0
+--- /dev/null
++++ b/devbox.json
+@@ -0,0 +1,32 @@
++{
++  "packages": [
++    "meson",
++    "ninja",
++    "pkg-config",
++    "glib",
++    "gusb",
++    "libusb1",
++    "pixman",
++    "openssl",
++    "libgudev",
++    "gobject-introspection",
++    "gtk3",
++    "cairo",
++    "gcc",
++    "opencv4",
++    "cmake",
++    "doctest@latest"
++  ],
++  "shell": {
++    "init_hook": "cat << 'EOF'\n\n╔════════════════════════════════════════════════════════════════╗\n║           libfprint-CS9711 Development Environment             ║\n╚════════════════════════════════════════════════════════════════╝\n\n📦 Build Commands:\n   devbox run build:setup   - Initialize meson build directory\n   devbox run build         - Compile the project\n   devbox run build:clean   - Remove build directory\n   devbox run build:rebuild - Clean and rebuild from scratch\n\n🧪 Test Commands:\n   devbox run test          - Run all tests (4 pass, 28 skipped)\n   devbox run test:hwdb     - Run only udev hwdb test\n\n🔧 Maintenance Commands:\n   devbox run sync-hwdb     - Regenerate udev hardware database\n\n📚 Quick Start:\n   devbox run build:setup   # First time setup\n   devbox run build         # Build the project\n   devbox run test          # Run tests\n\nEOF\n",
++    "scripts": {
++      "build:setup": "meson setup build -Ddoc=false -Dgtk-examples=false",
++      "build": "meson compile -C build",
++      "build:clean": "rm -rf build",
++      "build:rebuild": "devbox run build:clean && devbox run build:setup && devbox run build",
++      "test": "meson test -C build",
++      "test:hwdb": "meson test -C build --suite data",
++      "sync-hwdb": "ninja -C build sync-udev-hwdb"
++    }
++  }
++}
+-- 
+2.52.0
+
