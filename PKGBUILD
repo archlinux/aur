@@ -1,4 +1,5 @@
-# Maintainer: Evangelos Foutras <foutrelis@archlinux.org>
+# Maintainer: Max Harmathy <harmathy@alumni.tum.de>
+# Contributor: Evangelos Foutras <foutrelis@archlinux.org>
 # Contributor: Jose Riha <jose1711 gmail com>
 
 pkgname=gcompris-qt
