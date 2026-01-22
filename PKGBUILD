@@ -16,7 +16,15 @@ url="https://github.com/PapirusDevelopmentTeam/papirus-icon-theme"
 license=('GPL-3.0-or-later')
 depends=('gtk-update-icon-cache')
 makedepends=('git')
+optdepends=(
+  'hardcode-fixer-git: To deal with hardcoded application icons'
+  'hardcode-tray-git: To fix hardcoded tray icons'
+  'sif-git: To fix icons of running Steam games'
+)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 options=('!strip')
+install='alt-icons.install'
 source=('git+https://github.com/PapirusDevelopmentTeam/papirus-icon-theme.git')
 sha256sums=('SKIP')
 
@@ -26,13 +34,6 @@ pkgver() {
 }
 
 package() {
-  optdepends=('hardcode-fixer-git: To deal with hardcoded application icons'
-              'hardcode-tray-git: To fix hardcoded tray icons'
-              'sif-git: To fix icons of running Steam games')
-  provides=("${pkgname%-git}")
-  conflicts=("${pkgname%-git}")
-  install='alt-icons.install'
-
   cd "${pkgname%-git}"
   make DESTDIR="$pkgdir" install
 }
