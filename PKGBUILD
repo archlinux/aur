@@ -5,7 +5,7 @@
 # Based on: https://aur.archlinux.org/packages/simulide
 
 pkgname=simulide-git
-pkgver=r250218
+pkgver=r260122
 #_realver=${pkgver//.r*/}
 pkgrel=1
 pkgdesc="Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers). Development version."
@@ -22,19 +22,17 @@ sha256sums=(
   '7e9d4a7a40c45a1aaea2b96dc01af628df3356b0e2b2ced1425cf3ecea22ff19')
 
 depends=(
-  "qt5-base>=5.15.1"
-  "qt5-multimedia"
-  "qt5-serialport"
-  "qt5-svg"
-  "qt5-script"
-  "qt5-tools"
+  "qt6-base"
+  "qt6-multimedia"
+  "qt6-serialport"
+  "qt6-svg"
 )
 
-makedepends=('git')
+makedepends=('git' 'qt6-tools')
 
 build() {
   cd "${srcdir}/${pkgname}/build_XX"
-  qmake
+  qmake6
   make
 }
 
