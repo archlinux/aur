@@ -1,6 +1,6 @@
 pkgbase = minigalaxy
 	pkgdesc = A simple GOG client for Linux
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://sharkwouter.github.io/minigalaxy
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = minigalaxy
 	optdepends = innoextract: Extract Windows installers
 	optdepends = scummvm: Use the system ScummVM installation
 	optdepends = wine: Install Windows games
-	source = minigalaxy-1.4.0.tar.gz::https://github.com/sharkwouter/minigalaxy/archive/1.4.0.tar.gz
-	sha256sums = 6e9db14edcb073ebaaa0f3ac3b76454e34f329caac94fda6ae3070ad542e9af6
+	source = minigalaxy-1.4.1.tar.gz::https://github.com/sharkwouter/minigalaxy/archive/1.4.1.tar.gz
+	sha256sums = 05018f96f77cb1a78287abb9ad00fe19b2b70f42c31a5ceca7177bb9cef31c3b
 
 pkgname = minigalaxy
