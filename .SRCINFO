@@ -1,4 +1,4 @@
-pkgbase = music-ratatui
+pkgbase = music-ratatui-bin
 	pkgdesc = A terminal musicplayer build with Ratatui.
 	pkgver = 0.3.7
 	pkgrel = 1
