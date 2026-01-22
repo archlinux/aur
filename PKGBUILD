@@ -1,6 +1,6 @@
 # Maintainer: prankstr <https://github.com/prankstr>
 pkgname=vibepanel-bin
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A GTK4 panel for Wayland with notifications, OSD, and quick settings"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('vibepanel' 'vibepanel-git')
 options=(!debug)
 source=("vibepanel-${pkgver}::https://github.com/prankstr/vibepanel/releases/download/v${pkgver}/vibepanel-x86_64-unknown-linux-gnu"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/prankstr/vibepanel/v${pkgver}/LICENSE")
-sha256sums=('4fb254f2bf27e542b6c01ae5fd4df4d6d68d46a1e3fc2c381631f01377b67f17'
+sha256sums=('6a8a3424c746176bd5d44bf393b2db66f8e58a06599b8811ba04a06b80c7c5de'
             'bd1e1e78cb74074a2d09d2a4e87675991cdfb45c90dd4746728d8daeb480f9ac')
 
 package() {
