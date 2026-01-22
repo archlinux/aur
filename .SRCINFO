@@ -17,6 +17,7 @@ pkgbase = music-ratatui
 	depends = gcc
 	depends = sqlite
 	conflicts = music-ratatui-bin
+	conflicts = music-ratatui-bin-debug
 	options = !lto
 	source = git+https://gitlab.com/figr/music-ratatui.git#tag=v0.3.8
 	sha256sums = eebf211ffd754250b8f0bf441a470c172ec781d0eaaec1312142e857118e3a42

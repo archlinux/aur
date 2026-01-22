@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://gitlab.com/figr/music-ratatui"
 license=('GPL-3.0')
 depends=('gcc' 'sqlite')
-conflicts=('music-ratatui-bin')
+conflicts=('music-ratatui-bin' 'music-ratatui-bin-debug')
 makedepends=('rust' 'cargo' 'pkgconf' 'git' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'gst-libav')
 source=("git+https://gitlab.com/figr/music-ratatui.git#tag=v$pkgver")
 options=('!lto')
