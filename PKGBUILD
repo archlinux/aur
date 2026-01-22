@@ -1,7 +1,7 @@
 # Maintainer: Adrià Arrufat A <swiftscythe@gmail.com>
 
 pkgname=geminicommit
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='A CLI that writes your git commit messages for you with Google Gemini AI'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('git')
 makedepends=('go')
 source=("https://github.com/tfkhdyt/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e26033eadc48a74f97104e7b3bbc730b32dfb93e33c2e7d13723291035cc4567')
+sha256sums=('0106cd5665ab5a0d8d62ad095163f1cc1d7f69604b745c387d8bc07aec9e7b60')
 
 
 build() {
