@@ -1,0 +1,4 @@
+[python-dgutils]
+source = "git"
+git = "https://github.com/Dzheremi2/DGutils.git"
+prefix = "v"
