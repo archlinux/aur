@@ -36,8 +36,8 @@ package() {
   find "$pkgdir/opt/onionspray/vendors" -type f -exec chmod 755 {} \;
 
   # Create necessary directories with proper permissions
-  install -dm755 "$pkgdir/opt/onionspray/secrets"
-  install -dm755 "$pkgdir/opt/onionspray/projects"
+  install -dm700 "$pkgdir/opt/onionspray/secrets"
+  install -dm700 "$pkgdir/opt/onionspray/projects"
   install -dm755 "$pkgdir/opt/onionspray/onionbalance"
 
   # Create wrapper script in /usr/bin
