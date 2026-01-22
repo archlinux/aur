@@ -1,0 +1,11 @@
+pkgbase = tegaki-zinnia-simplified-chinese
+	pkgdesc = Zinnia handwriting model for Simplified Chinese (from Tegaki project)
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/tegaki/tegaki
+	arch = any
+	license = GPL
+	source = https://github.com/tegaki/tegaki/releases/download/v0.3/tegaki-zinnia-simplified-chinese-0.3.zip
+	sha256sums = 45bb61a9a5e1ff571de9ac0711c316f29a064260feea6f5db6979ecd980498a3
+
+pkgname = tegaki-zinnia-simplified-chinese
