@@ -24,9 +24,11 @@ options=('lto')
 source=("git+https://github.com/h2o/h2o.git#commit=${_commit}?signed/"
 #        "neverbleed-fix-when-lacking-engines.patch"
         https://github.com/h2o/h2o/pull/3550.patch
+		libaegis-0.9.1.patch
         'h2o.service')
 sha256sums=('2ae8e680e419164d3097dc1c11b0e31160782887f75c141ed32b30335b8b333f'
             'dbe8c77cfa41cacb95c07ac4b6e53fe2adbbbdd694d5fc2098dafe466d50a65d'
+            '17f93fc58159d844307c4e6bdacfc8387823da6414058065ce8f402f8876f0d7'
             '7fccdeb1a89134b48674764dc243f8967eb1234679e401af93e210fbf0934b62')
 backup=('etc/h2o.conf')
 provides=('h2o' 'libh2o')
@@ -45,6 +47,7 @@ prepare() {
     git config core.autocrlf false
     git submodule update --init --recursive
 
+	patch -p1 -i ${srcdir}/libaegis-0.9.1.patch
     # zlib-ng support
     if [[ $_enable_zlib_ng -eq 1 ]]; then
         if ! pacman -Qq zlib-ng &>/dev/null; then
