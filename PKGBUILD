@@ -3,11 +3,12 @@
 pkgname=tldr++
 _pkgver=1.0.0-alpha
 pkgver=${_pkgver//-/.}
-pkgrel=5
+pkgrel=6
 pkgdesc="Community driven man pages improved with smart user interaction"
-arch=('i686' 'x86_64' 'arm' 'aarch64')
+arch=('x86_64' 'aarch64')
 url="https://isacikgoz.me/tldr"
 license=('MIT')
+depends=('glibc')
 makedepends=('go')
 provides=("${pkgname%++}")
 conflicts=("${pkgname%++}")
@@ -16,10 +17,6 @@ sha256sums=('d40e1c602d84acc67cdee3b9bed001fb8ec198c7049c1d05eb071ab05af66c19')
 
 prepare() {
   cd "${pkgname%++}-${_pkgver}"
-  export GOPATH="$srcdir/gopath"
-
-  # download dependencies
-  go mod download -x
 
   # create directory for build output
   mkdir -p build
