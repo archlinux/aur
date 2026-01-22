@@ -1,0 +1,20 @@
+pkgbase = python-bd_warehouse
+	pkgdesc = A build123d parametric part collection
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/gumyr/bd_warehouse
+	arch = x86_64
+	license = Apache-2.0
+	checkdepends = python-pytest
+	checkdepends = python-build123d
+	makedepends = git
+	makedepends = python-setuptools-scm
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-build123d
+	depends = python-typing_extensions
+	source = git+https://github.com/gumyr/bd_warehouse#commit=354bcb3bc5a07cfb1981f2821a18da51832a51de
+	sha256sums = 110028391649b28a3b4db27e60db1d75b378340477749ad0856b406ec03df99f
+
+pkgname = python-bd_warehouse
