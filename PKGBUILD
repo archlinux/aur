@@ -1,6 +1,6 @@
 # Maintainer: Pierre Mavro <pmavro@qovery.com>
 pkgname=qovery-cli
-pkgver=1.57.0
+pkgver=1.57.1
 pkgrel=1
 pkgdesc="Qovery Command Line Interface"
 arch=(x86_64)
@@ -16,7 +16,7 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
     export CGO_ENABLED=0
-    go build -o $pkgname main.go
+    go build -ldflags "-X github.com/qovery/qovery-cli/utils.Version=$pkgver" -o $pkgname main.go
 }
 
 package() {
@@ -24,4 +24,4 @@ package() {
     install -Dm755 "$pkgname" "$pkgdir/usr/bin/qovery"
     install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-md5sums=('b8e9d3d93a2985eae8ff280ea554638a')
+md5sums=('870d2178fa0bf61bc310d1c0028acc79')
