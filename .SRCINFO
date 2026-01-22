@@ -1,6 +1,6 @@
 pkgbase = nzportable-bin
 	pkgdesc = Nazi Zombies: Portable, a Call of Duty: Zombies "de-make" powered by various enhanced forks of the Quake engine
-	pkgver = 2.0.0indev20260106073311
+	pkgver = 2.0.0indev20260118072644
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/nzp
 	arch = x86_64
@@ -17,13 +17,13 @@ pkgbase = nzportable-bin
 	noextract = nzportable-$pkgver-linuxarmhf.zip
 	source = https://gitlab.com/linuxbombay/nzp/nzp-packaging/-/archive/1.0.6.1/nzp-packaging-1.0.6.1.tar.bz2
 	sha256sums = 1e12a4017f50ef12c7bf7b5e9603c7608b83fd3690ede4b88bf62d4ef85bd1c2
-	source_x86_64 = nzportable-2.0.0indev20260106073311-linux64.zip::https://gitlab.com/linuxbombay/nzp/binaries/2.0.0indev20260106073311/-/raw/main/nzportable-linux64.zip
+	source_x86_64 = nzportable-2.0.0indev20260118072644-linux64.zip::https://gitlab.com/linuxbombay/nzp/binaries/2.0.0indev20260118072644/-/raw/main/nzportable-linux64.zip
 	sha256sums_x86_64 = 6bad80fc6536c013f413010b8909d5c2c8e196b00dd10aa04883b03ffd1c5482
-	source_i686 = nzportable-2.0.0indev20260106073311-linux32.zip::https://gitlab.com/linuxbombay/nzp/binaries/2.0.0indev20260106073311/-/raw/main/nzportable-linux32.zip
+	source_i686 = nzportable-2.0.0indev20260118072644-linux32.zip::https://gitlab.com/linuxbombay/nzp/binaries/2.0.0indev20260118072644/-/raw/main/nzportable-linux32.zip
 	sha256sums_i686 = 5a6a45a857d1a3220d7923b59bf65705f99ad291fdd1c06fe79beff8807aacd9
-	source_aarch64 = nzportable-2.0.0indev20260106073311-linuxarm64.zip::https://gitlab.com/linuxbombay/nzp/binaries/2.0.0indev20260106073311/-/raw/main/nzportable-linuxarm64.zip
+	source_aarch64 = nzportable-2.0.0indev20260118072644-linuxarm64.zip::https://gitlab.com/linuxbombay/nzp/binaries/2.0.0indev20260118072644/-/raw/main/nzportable-linuxarm64.zip
 	sha256sums_aarch64 = 8d5ef639e15b333cb6f6d93397acafb73d3c3d0ba59ec18529fcc057a60c5e23
-	source_armv7l = nzportable-2.0.0indev20260106073311-linuxarmhf.zip::https://gitlab.com/linuxbombay/nzp/binaries/2.0.0indev20260106073311/-/raw/main/nzportable-linuxarmhf.zip
+	source_armv7l = nzportable-2.0.0indev20260118072644-linuxarmhf.zip::https://gitlab.com/linuxbombay/nzp/binaries/2.0.0indev20260118072644/-/raw/main/nzportable-linuxarmhf.zip
 	sha256sums_armv7l = c1dca9c9756c18766ad181f0cad09240e43d626a1a72acadb3f1bcccf4869900
 
 pkgname = nzportable-bin
