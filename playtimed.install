@@ -1,0 +1,37 @@
+post_install() {
+    echo "==> playtimed installed successfully!"
+    echo ""
+    echo "==> Enabling and starting playtimed service..."
+    systemctl daemon-reload
+    systemctl enable playtimed.service
+    systemctl start playtimed.service
+    echo ""
+    echo "==> Next steps:"
+    echo "    1. Add a user: sudo playtimed user add <username> --gaming-limit 120"
+    echo "    2. Check status: playtimed status"
+    echo ""
+    echo "==> Service status:"
+    systemctl status playtimed.service --no-pager || true
+}
+
+post_upgrade() {
+    echo "==> Restarting playtimed service..."
+    systemctl daemon-reload
+    systemctl restart playtimed.service
+    echo ""
+    echo "==> Service status:"
+    systemctl status playtimed.service --no-pager || true
+}
+
+pre_remove() {
+    echo "==> Stopping playtimed service..."
+    systemctl stop playtimed.service || true
+    systemctl disable playtimed.service || true
+}
+
+post_remove() {
+    systemctl daemon-reload
+    echo "==> playtimed removed."
+    echo "==> Note: Database at /var/lib/playtimed/ was preserved."
+    echo "    Remove manually if no longer needed."
+}
