@@ -1,7 +1,7 @@
 # Maintainer: Adam Wood <woodadam272 at gmail dot com>
 pkgname=yume-2kki-launcher-git
 _pkgname=${pkgname%-*}
-pkgver=2.0.0r318.f238d41
+pkgver=2.1.0r323.6a91ac7
 pkgrel=1
 pkgdesc="Launcher, installer, and updater for Yume 2kki"
 arch=('x86_64')
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  printf "2.0.0r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "2.1.0r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 
