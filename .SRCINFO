@@ -1,0 +1,13 @@
+pkgbase = kak-crosshairs-git
+	pkgdesc = Highlight Current Line/Column in Kakoune
+	pkgver = r19.7edba13
+	pkgrel = 1
+	url = https://github.com/insipx/kak-crosshairs
+	arch = any
+	license = Unlicense
+	makedepends = git
+	depends = kakoune
+	source = kak-crosshairs-git::git+https://github.com/insipx/kak-crosshairs
+	sha256sums = SKIP
+
+pkgname = kak-crosshairs-git
