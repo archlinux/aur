@@ -20,6 +20,7 @@ pkgbase = drawy
 	optdepends = hicolor-icon-theme: For icon theme integration
 	provides = drawy
 	conflicts = drawy-git
+	conflicts = drawy-git-debug
 	conflicts = drawy
 	source = drawy::git+https://github.com/NinjaTech404/drawy.git
 	sha256sums = SKIP
