@@ -1,0 +1,8 @@
+post_install() {
+  echo "Bootstrapping pbwrap..."
+  /opt/pbwrap/install.sh || true
+}
+
+post_upgrade() {
+  post_install
+}
