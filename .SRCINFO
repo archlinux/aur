@@ -36,10 +36,29 @@ pkgname = ollama-cuda12-bin
 	depends = glibc
 	depends = gcc-libs
 	depends = ollama-bin
+	depends = nvidia-libgl
 	provides = ollama-cuda
 	conflicts = ollama-cuda
 
 pkgname = ollama-cuda13-bin
+	pkgdesc = Create, run and share large language models (LLMs) with CUDA 13
+	depends = glibc
+	depends = gcc-libs
+	depends = ollama-bin
+	depends = nvidia-libgl
+	provides = ollama-cuda
+	conflicts = ollama-cuda
+
+pkgname = ollama-mlx-cuda13-bin
+	pkgdesc = Create, run and share large language models (LLMs) with CUDA 13
+	depends = glibc
+	depends = gcc-libs
+	depends = ollama-bin
+	depends = nvidia-libgl
+	provides = ollama-cuda
+	conflicts = ollama-cuda
+
+pkgname = ollama-vulkan-bin
 	pkgdesc = Create, run and share large language models (LLMs) with CUDA 13
 	depends = glibc
 	depends = gcc-libs

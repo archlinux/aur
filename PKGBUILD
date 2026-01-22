@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgbase=ollama-bin
-pkgname=(ollama-bin ollama-cuda12-bin ollama-cuda13-bin)
+pkgname=(ollama-bin ollama-cuda12-bin ollama-cuda13-bin ollama-mlx-cuda13-bin ollama-vulkan-bin)
 pkgver=0.14.3
 pkgrel=2
 pkgdesc="Create, run and share large language models (LLMs)"
@@ -66,7 +66,7 @@ package_ollama-cuda12-bin() {
 
     conflicts=("ollama-cuda")
     provides=("ollama-cuda")
-    depends+=("ollama-bin")
+    depends+=("ollama-bin" "nvidia-libgl")
 
     cd "${srcdir}/" || exit
 
@@ -81,12 +81,42 @@ package_ollama-cuda13-bin() {
 
     conflicts=("ollama-cuda")
     provides=("ollama-cuda")
-    depends+=("ollama-bin")
+    depends+=("ollama-bin" "nvidia-libgl")
 
     cd "${srcdir}/" || exit
 
     install -dm755 "${pkgdir}/usr/lib/ollama/"
     for lib in "./lib/ollama/cuda_v13/lib"*; do
+        cp -P "${lib}" "${pkgdir}/usr/lib/ollama/"
+    done
+}
+
+package_ollama-mlx-cuda13-bin() {
+    pkgdesc='Create, run and share large language models (LLMs) with CUDA 13'
+
+    conflicts=("ollama-cuda")
+    provides=("ollama-cuda")
+    depends+=("ollama-bin" "nvidia-libgl")
+
+    cd "${srcdir}/" || exit
+
+    install -dm755 "${pkgdir}/usr/lib/ollama/"
+    for lib in "./lib/ollama/mlx_cuda_v13/lib"*; do
+        cp -P "${lib}" "${pkgdir}/usr/lib/ollama/"
+    done
+}
+
+package_ollama-vulkan-bin() {
+    pkgdesc='Create, run and share large language models (LLMs) with CUDA 13'
+
+    conflicts=("ollama-cuda")
+    provides=("ollama-cuda")
+    depends+=("ollama-bin")
+
+    cd "${srcdir}/" || exit
+
+    install -dm755 "${pkgdir}/usr/lib/ollama/"
+    for lib in "./lib/ollama/vulkan/lib"*; do
         cp -P "${lib}" "${pkgdir}/usr/lib/ollama/"
     done
 }
