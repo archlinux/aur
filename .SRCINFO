@@ -1,0 +1,13 @@
+pkgbase = zensh
+	pkgdesc = A minimal Unix shell written in C
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ChethanJS07/zensh
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = readline
+	source = zensh-0.1.0.tar.gz::https://github.com/ChethanJS07/zensh/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 550a272baf476b8291a5a7968c41ecf0c5af10741b7639a50509ccae847affbd
+
+pkgname = zensh
