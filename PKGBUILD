@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=samtools-git
-pkgver=1.17.r8.gc75edb00
+pkgver=1.23.r5.g0d94f517
 pkgrel=1
 pkgdesc="Tools for manipulating next-generation sequencing data"
 arch=('i686' 'x86_64')
@@ -43,7 +43,7 @@ package() {
   make DESTDIR="$pkgdir" install
   install -Dm755 "misc"/*.lua -t "$pkgdir/usr/bin"
 
-  install -Dm644 *.h -t "$pkgdir/usr/include/bam"
+  install -Dm644 ./*.h -t "$pkgdir/usr/include/bam"
 
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/samtools"
 }
