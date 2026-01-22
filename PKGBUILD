@@ -1,11 +1,12 @@
 # Thanks: Forest Crossman <cyrozap at gmail dot com>
-# Maintainer: ResRipper <resripper@connective.link>
+# Maintainer: Annoyedmilk <hello@annoyedmilk.ch>
+# Contributor: ResRipper <resripper@connective.link>
 # Contributor: Stephanie Wilde-Hobbs <gpg@stephanie.is>
 
 # shellcheck disable=SC2034,SC2154,SC2148
 
 pkgname=go-configure-sw-hub
-_pkgver_major=6.48
+_pkgver_major=6.52
 _pkgver_minor=001
 pkgver=$_pkgver_major.$_pkgver_minor
 
@@ -58,7 +59,7 @@ replaces=('greenpak-designer-dev' 'greenpak-designer')
 options=('!strip' '!debug')
 
 source=("https://renesasweb-greenpak.s3.us-west-2.amazonaws.com/v${_pkgver_major}/go-configure-sw-hub-v${pkgver}-debian-12-amd64.deb")
-b2sums=('3815c20105abb796c78daf99b5dbb9e15fecfcef490248db60f2193857782f53cc5ba09f1faaa1f081d6797e2773835855402392041aff52b70d3c26ba54215b')
+b2sums=('87a29b130e1a963cf9ce1517d96b34eef566de7d4f91cd28e309bae6823e547dfa8a2935e2edf753f838fe3309c9656648ade8e1f5421a672c3b83d3ff0e70fe')
 
 package() {
     # Extract the package data
