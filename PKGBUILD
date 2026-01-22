@@ -2,7 +2,7 @@
 # Contributor: Francois Menning <f.menning@pm.me>
 pkgname=volantes-cursors-git
 pkgver=r7.b13a4bb
-pkgrel=1
+pkgrel=2
 pkgdesc="Classic cursor with a flying style."
 arch=('any')
 url="https://github.com/varlesh/volantes-cursors"
@@ -12,6 +12,7 @@ makedepends=(
   'inkscape'
   'libcanberra'
   'xorg-xcursorgen'
+  'xorg-server-xvfb'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -28,7 +29,7 @@ build() {
   cd "${pkgname%-git}"
   export NO_AT_BRIDGE=1
   export DBUS_SESSION_BUS_ADDRESS=disabled
-  make build
+  xvfb-run make build
 }
 
 package() {
