@@ -5,7 +5,7 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-ocl-icd
-pkgver=2.3.3
+pkgver=2.3.4
 pkgrel=1
 arch=('any')
 pkgdesc="OpenCL ICD Bindings (Android ${_android_arch})"
@@ -23,7 +23,7 @@ replaces=("android-${_android_arch}-libcl")
 optdepends=("android-${_android_arch}-opencl-driver: packaged opencl driver")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/OCL-dev/ocl-icd/archive/v${pkgver}.tar.gz")
-md5sums=('8f00257866d84b8b9631c4df6c47ec95')
+md5sums=('e488fdbd1a5058a763e03b0e885ffca6')
 
 prepare() {
     cd "${srcdir}/ocl-icd-${pkgver}"
@@ -54,4 +54,6 @@ package() {
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
