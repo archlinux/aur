@@ -1,0 +1,37 @@
+From cbba7cd29e6f031a2b8f82f3d0e5862b15423a9d Mon Sep 17 00:00:00 2001
+From: AltoXorg <56553686+Alto1772@users.noreply.github.com>
+Date: Thu, 22 Jan 2026 15:07:22 +0800
+Subject: [PATCH] Fix mtxf_mul from returning incorrect values upon
+ optimization
+
+---
+ src/engine/math_util.c | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/src/engine/math_util.c b/src/engine/math_util.c
+index 86782b7e..9c5fb36b 100644
+--- a/src/engine/math_util.c
++++ b/src/engine/math_util.c
+@@ -156,12 +156,13 @@ void *vec3f_normalize(Vec3f dest) {
+ 
+ /// Copy matrix 'src' to 'dest'
+ void mtxf_copy(Mat4 dest, Mat4 src) {
+-    register s32 i;
+-    register u32 *d = (u32 *) dest;
+-    register u32 *s = (u32 *) src;
+-
+-    for (i = 0; i < 16; i++) {
+-        *d++ = *s++;
++    // Original decomp implementation breaks on GCC upon optimization
++    // (which in the case of mtxf_mul, renders incorrect values).
++    // Replaced with a much simpler and clearer approach to satisfy compiler
++    for (s32 i = 0; i < 4; i++) {
++        for (s32 j = 0; j < 4; j++) {
++            dest[i][j] = src[i][j];
++        }
+     }
+ }
+ 
+-- 
+2.52.0
+

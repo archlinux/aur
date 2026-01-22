@@ -1,0 +1,20 @@
+_install_info() {
+    cat <<'EOF'
+*** This is an unofficial packaged version of Ghostship,
+*** and is not supported by the Harbour Masters team.
+*** Your save file is located at ~/.local/share/sm64
+***
+*** Any issues for this package regarding compile errors must be
+*** discussed in the AUR comments, and other ones such as game bugs
+*** must go to their official Discord server, or reach me out
+*** through Discord at @AltoXorg.
+EOF
+}
+
+post_install() {
+    _install_info
+}
+
+post_upgrade() {
+    _install_info
+}
