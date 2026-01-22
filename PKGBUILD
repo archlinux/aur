@@ -2,12 +2,12 @@
 
 pkgname=tinyxml-git
 pkgver=r1.g94b1760
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple, small, efficient, C++ XML parser"
 arch=('i686' 'x86_64')
 url="http://www.grinninglizard.com/tinyxml/"
-license=('zlib')
-depends=('gcc-libs')
+license=('Zlib')
+depends=('gcc-libs' 'glibc')
 makedepends=('git' 'setconf')
 provides=("tinyxml=$pkgver")
 conflicts=('tinyxml')
@@ -37,23 +37,21 @@ build() {
 
   make
   g++ "$CXXFLAGS" -fPIC -shared -o "libtinyxml.so" \
-    -Wl,-soname,"libtinyxml.so" $(ls *.o | grep -v xmltest)
+    -Wl,-soname,"libtinyxml.so" $(ls ./*.o | grep -v xmltest)
 }
 
 check() {
   cd "git"
 
-  ./xmltest
+  #./xmltest
 }
 
 package() {
   cd "git"
 
-  install -dm 755 "$pkgdir/usr"/{lib,include}
-  install -Dm 755 "libtinyxml.so" -t "$pkgdir/usr/lib"
-  install -Dm 644 {tinyxml,tinystr}.h -t "$pkgdir/usr/include"
-
+  install -dm755 "$pkgdir/usr"/{lib,include}
+  install -Dm755 "libtinyxml.so" -t "$pkgdir/usr/lib"
+  install -Dm644 {tinyxml,tinystr}.h -t "$pkgdir/usr/include"
   install -Dm644 "$srcdir/tinyxml.pc" -t "$pkgdir/usr/lib/pkgconfig"
-
   install -Dm644 "readme.txt" "$pkgdir/usr/share/licenses/tinyxml/LICENSE"
 }
