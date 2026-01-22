@@ -1,0 +1,19 @@
+pkgbase = android-armv7a-eabi-openjph
+	pkgdesc = Open-source implementation of JPEG2000 Part-15 (Android armv7a-eabi)
+	pkgver = 0.26.0
+	pkgrel = 1
+	url = https://github.com/aous72/OpenJPH/
+	arch = any
+	groups = android-openjph
+	license = BSD-2-Clause
+	makedepends = android-cmake
+	makedepends = android-armv7a-eabi-libtiff
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/aous72/OpenJPH/archive/0.26.0/openjph-0.26.0.tar.gz
+	md5sums = 469e12ba5e953ce7002d02f9486c8721
+
+pkgname = android-armv7a-eabi-openjph
