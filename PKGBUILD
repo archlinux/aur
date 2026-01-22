@@ -1,6 +1,6 @@
 # Maintainer: soymadip 
 pkgname=autotitle
-pkgver=0.4.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Automated anime episode renaming tool with MAL integration"
 arch=('x86_64')
