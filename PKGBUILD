@@ -1,7 +1,7 @@
 # Maintainer: Jonah Barkley-Griggs <jbarkleygriggs@gmail.com>
 pkgname=wayvy
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Wayvy is a wallpaper switcher and theming manager for wayland written in rust."
 arch=('x86_64')
 url="https://codeberg.org/J_S_Barkely-Griggs/Wayvy"
@@ -26,5 +26,5 @@ package() {
 	make DESTDIR="$pkgdir/" install install-config
 
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm644 "packaging/wayvy.service" -t "$pkgdir/usr/lib/systemd/user/wayvy.service"
+	install -Dm644 "packaging/wayvy.service" -t "$pkgdir/usr/lib/systemd/user/"
 }
