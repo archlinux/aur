@@ -1,7 +1,7 @@
 pkgbase = getdns-git
 	pkgdesc = A modern asynchronous DNS API
 	pkgver = 1.7.3.r3.gf8c95b4f
-	pkgrel = 2
+	pkgrel = 3
 	url = https://getdnsapi.net/
 	arch = i686
 	arch = x86_64

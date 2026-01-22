@@ -2,7 +2,7 @@
 
 pkgname=getdns-git
 pkgver=1.7.3.r3.gf8c95b4f
-pkgrel=2
+pkgrel=3
 pkgdesc="A modern asynchronous DNS API"
 arch=('i686' 'x86_64')
 url="https://getdnsapi.net/"
@@ -39,8 +39,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
     -DBUILD_TESTING=OFF \
-    -DCURRENT_DATE=$(date -u --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" "+%Y-%m-%dT%H:%M:%SZ") \
-    -DPATH_TRUST_ANCHOR_FILE=/etc/trusted-key.key \
+    -DCURRENT_DATE="$(date -u --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" "+%Y-%m-%dT%H:%M:%SZ")" \
+    -DPATH_TRUST_ANCHOR_FILE="/etc/trusted-key.key" \
     ./
   cmake --build "_build"
 }
