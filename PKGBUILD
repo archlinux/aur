@@ -6,7 +6,7 @@ pkgdesc="Development libraries and documentation for ascii-chat"
 arch=('x86_64' 'aarch64')
 url="https://github.com/zfogg/ascii-chat"
 license=('MIT')
-depends=('zstd' 'libsodium' 'opus' 'mimalloc' 'portaudio' 'sqlite3' 'liburcu')
+depends=('libsodium' 'mimalloc' 'opus' 'portaudio' 'sqlite3' 'zstd')
 makedepends=(
   'git'
   'pkg-config'
@@ -24,7 +24,12 @@ makedepends=(
   'zlib'
   'doxygen'
 )
-optdepends=('ascii-chat-git')
+optdepends=(
+  'ascii-chat-git: ascii-chat runtime'
+  'gnupg: GPG key support for authentication'
+  'openssh: SSH key agent support for authentication'
+  'yt-dlp: YouTube video source support'
+)
 provides=('libasciichat')
 conflicts=('libasciichat')
 options=('staticlibs' 'lto' 'docs' 'ccache')
