@@ -1,0 +1,19 @@
+pkgbase = visigrid-bin
+	pkgdesc = Fast, native spreadsheet with GPU-accelerated rendering
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://visigrid.app
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = wayland
+	provides = visigrid
+	conflicts = visigrid
+	conflicts = visigrid-git
+	source = https://github.com/VisiGrid/VisiGrid/releases/download/v0.1.8/VisiGrid-linux-x86_64.tar.gz
+	sha256sums = SKIP
+
+pkgname = visigrid-bin
