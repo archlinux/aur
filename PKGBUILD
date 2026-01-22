@@ -8,7 +8,7 @@ arch=("any")
 url="https://github.com/NyarchLinux/NyarchAssistant"
 license=('GPL')
 depends=(
-	"python-curl-cffi"
+	"python-curl_cffi"
 	"python-edge-tts"
 	"python-expandvars"
 	"python-gpt4all"
