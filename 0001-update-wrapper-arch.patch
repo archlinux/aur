@@ -6,17 +6,17 @@
 #  *
 #  * SPDX-License-Identifier: 0BSD
 #  */
-From 82226d2f6811c588a61895cd70cffce742664c0e Mon Sep 17 00:00:00 2001
+From 3d4c102ba25545f8195e0d1c788a4ede6d569f9d Mon Sep 17 00:00:00 2001
 From: Sam Sinclair <sam@playleft.com>
-Date: Mon, 5 Jan 2026 12:30:11 +1100
+Date: Tue, 20 Jan 2026 11:19:30 +1100
 Subject: [PATCH] update wrapper for arch
 
 ---
- helium-wrapper | 58 +++++++++++++++++++++++++++++++++++++--
+ helium-wrapper | 58 +++++++++++++++++++++++++++++++++++++++++++++++---
  1 file changed, 55 insertions(+), 3 deletions(-)
 
 diff --git a/helium-wrapper b/helium-wrapper
-index 191711c..67d9504 100755
+index d8c6150..c1ad5be 100755
 --- a/helium-wrapper
 +++ b/helium-wrapper
 @@ -1,17 +1,69 @@
@@ -84,14 +84,14 @@ index 191711c..67d9504 100755
  export CHROME_WRAPPER
  export LD_LIBRARY_PATH="$HERE:$HERE/lib:$HERE/lib.target${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}"
  
--exec "$HERE/chrome" "$@"
+-exec "$HERE/helium" "$@"
 +# Sanitize std{in,out,err} because they'll be shared with untrusted child
 +# processes (http://crbug.com/376567).
 +exec < /dev/null
 +exec > >(exec cat)
 +exec 2> >(exec cat >&2)
 +
-+exec "$HERE/chrome" "${FLAGS[@]}" "$@"
++exec "$HERE/helium" "${FLAGS[@]}" "$@"
 -- 
 2.52.0
 

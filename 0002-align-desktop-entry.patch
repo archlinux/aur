@@ -6,9 +6,9 @@
 #  *
 #  * SPDX-License-Identifier: 0BSD
 #  */
-From 86af2b79fac8a7a47936cb1a010acfc06087aa11 Mon Sep 17 00:00:00 2001
+From fdfe0739e3b136d9fd3048934edd030a1b88e41d Mon Sep 17 00:00:00 2001
 From: Sam Sinclair <sam@playleft.com>
-Date: Thu, 1 Jan 2026 13:59:00 +1100
+Date: Tue, 20 Jan 2026 11:14:31 +1100
 Subject: [PATCH] align .desktop with wrapper
 
 ---
@@ -16,16 +16,21 @@ Subject: [PATCH] align .desktop with wrapper
  1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/helium.desktop b/helium.desktop
-index 8cce3b1..16cd94c 100644
+index 5c242d4..f602605 100644
 --- a/helium.desktop
 +++ b/helium.desktop
-@@ -1,13 +1,13 @@
+@@ -1,6 +1,6 @@
  [Desktop Entry]
  Version=1.0
 -Name=Helium
 +Name=Helium Browser
- GenericName=Web Browser
- Comment=Access the Internet
+ 
+ # For future reference, these translations are available in the Chromium
+ # tree at chrome/installer/linux/common/desktop.template.
+@@ -111,11 +111,11 @@ Comment[zh_CN]=访问互联网
+ Comment[zh_HK]=連線到網際網路
+ Comment[zh_TW]=連線到網際網路
+ 
 -Exec=helium %U
 +Exec=helium-browser %U
  StartupNotify=true
@@ -36,15 +41,19 @@ index 8cce3b1..16cd94c 100644
  Type=Application
  Categories=Network;WebBrowser;
  MimeType=application/pdf;application/rdf+xml;application/rss+xml;application/xhtml+xml;application/xhtml_xml;application/xml;image/gif;image/jpeg;image/png;image/webp;text/html;text/xml;x-scheme-handler/http;x-scheme-handler/https;
-@@ -15,8 +15,8 @@ Actions=new-window;new-private-window;
- 
- [Desktop Action new-window]
- Name=New Window
+@@ -173,7 +173,7 @@ Name[uk]=Нове вікно
+ Name[vi]=Cửa sổ Mới
+ Name[zh_CN]=新建窗口
+ Name[zh_TW]=開新視窗
 -Exec=helium
 +Exec=helium-browser
  
  [Desktop Action new-private-window]
  Name=New Incognito Window
+@@ -225,4 +225,4 @@ Name[uk]=Нове вікно в режимі анонімного перегля
+ Name[vi]=Cửa sổ ẩn danh mới
+ Name[zh_CN]=新建隐身窗口
+ Name[zh_TW]=新增無痕式視窗
 -Exec=helium --incognito
 +Exec=helium-browser --incognito
 -- 
