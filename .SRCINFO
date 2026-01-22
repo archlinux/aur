@@ -1,7 +1,7 @@
 pkgbase = cutefetch-git
 	pkgdesc = A little fetch utility made with bare c and nice performance
 	pkgver = 29ad20b
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/alphatechnolog/cutefetch
 	arch = any
 	license = GPL3
