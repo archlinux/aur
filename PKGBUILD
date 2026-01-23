@@ -1,5 +1,5 @@
 pkgname=moonbit-bin
-pkgver=0.1.20260110
+pkgver=0.1.20260119
 pkgrel=1
 pkgdesc="Intelligent developer platform for Cloud and Edge using WASM"
 arch=('x86_64')
@@ -68,6 +68,6 @@ package() {
     cp -a "${srcdir}/bin/internal" "${pkgdir}/usr/share/moonbit/internal/"
   fi
 }
-sha256sums=('401d0c5408819a0ed6197d2db54c10e17fe16c6e5654df1bf8b2de71a9bbc1e5'
-            'bf12dce0a92d84911e0d30cb74ac73f80d03a89f0933a4bda87e2f6647a00887'
+sha256sums=('0d9df3c561ce0a145ff3d457b0bedee6134c214c1533ed316ee548c958d67046'
+            'd07b3819cec1fdd3a4b0bb18df8aa1b60e6dc2337456ab2d55ae2557210ec439'
             'a7ba404eb6995d8573e81fbe6c302fa5de96081585dc0420d29e4b419056c6a3')
