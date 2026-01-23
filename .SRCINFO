@@ -1,7 +1,7 @@
 pkgbase = remote-local-storage-git
 	pkgdesc = Simple wrapper to save and restore localStorage of webapps in server
-	pkgver = r8.ea930dc
-	pkgrel = 1
+	pkgver = r9.1b315c5
+	pkgrel = 2
 	url = https://gitea.balki.me/balki/remote-local-storage
 	arch = x86_64
 	license = MPL-2.0
