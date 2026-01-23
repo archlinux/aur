@@ -1,6 +1,6 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=mystmd
-pkgver=1.7.1
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Command line tools for working with MyST Markdown"
 url="https://github.com/jupyter-book/${pkgname}"
@@ -9,7 +9,7 @@ license=(MIT)
 depends=(nodejs npm)
 options=('!emptydirs')
 source=(https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz)
-b2sums=('c1907ffb7db8ebb3519a899d015ca47e545dfa2888657acb5eff9e70668d8c9621f4560eb09d72c57bf9d4eec4d0e2e7d532222b17469ab511e81b761573de45')
+b2sums=('664577ec1bb83db39c5f5729786c41917ac90929b06ad557362ece651be0edcf8441e462761a34505926bdc9da8a4ab9bdf9602d127510e362024b2eb7e6275a')
 
 package() {
   npm install -g --cache "$srcdir/npm-cache" --prefix "$pkgdir/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
