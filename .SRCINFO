@@ -1,0 +1,17 @@
+pkgbase = rustfetch-git
+	pkgdesc = A fast system information fetch tool written in Rust
+	pkgver = r1.abcdef0
+	pkgrel = 1
+	url = https://codeberg.org/akirathelinuxguy/rustfetch
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = git
+	provides = rustfetch
+	conflicts = rustfetch
+	source = git+https://codeberg.org/akirathelinuxguy/rustfetch.git
+	sha256sums = SKIP
+
+pkgname = rustfetch-git
