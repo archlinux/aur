@@ -1,9 +1,8 @@
 pkgbase = silverbullet
 	pkgdesc = Clean Markdown-based writing/note taking application
 	pkgver = 2.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/silverbulletmd/silverbullet
-	install = silverbullet.install
 	arch = i686
 	arch = x86_64
 	arch = aarch64

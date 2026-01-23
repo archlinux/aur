@@ -1,9 +1,10 @@
 # Maintainer: tarball <bootctl@gmail.com>
 # Contributor: Matt Harrison <matt@harrison.us.com>
+# Contributor: Dwayne Bent <dbb@dbb.io>
 
 pkgname=silverbullet
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Clean Markdown-based writing/note taking application'
 arch=('i686' 'x86_64' 'aarch64' 'riscv64')
 url='https://github.com/silverbulletmd/silverbullet'
@@ -11,7 +12,6 @@ license=('MIT')
 depends=('bash')
 makedepends=('go' 'deno' 'git')
 backup=("etc/default/$pkgname")
-install=$pkgname.install
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
   "$pkgname-system.service"
@@ -24,16 +24,17 @@ sha256sums=('2a72555af0bdbecb6cf9f069ed5f658b7f199f42b37bb9907b02aec3555e4510'
             'c208d9388a720462991bcd4842d33e8fdf43daa3c17751f2801233af9ddd5b33')
 
 build() {
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
   cd "$pkgname-$pkgver"
 
-  deno task build
+  deno task build --production
   deno task build-plug-compile
-
-  go build \
-    -buildmode=pie \
-    -trimpath \
-    -mod=readonly \
-    -modcacherw
+  go build
 
   for sh in bash zsh fish; do
     ./$pkgname completion $sh >$pkgname.$sh
@@ -47,7 +48,7 @@ check() {
 }
 
 package() {
-  install -Dm755 /dev/stdin "$pkgdir/etc/default/$pkgname" <<EOF
+  install -Dm640 /dev/stdin "$pkgdir/etc/default/$pkgname" <<EOF
 HOST=localhost
 PORT=3000
 EOF
