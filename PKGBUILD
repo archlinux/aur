@@ -32,16 +32,14 @@ build() {
   lazbuild --lazarusdir=/usr/lib/lazarus "${metadarkstyle_dir}/Metadarkstyle/metadarkstyle.lpk"
   lazbuild --lazarusdir=/usr/lib/lazarus "${metadarkstyle_dir}/Metadarkstyle/metadarkstyledsgn.lpk"
 
-  mkdir -p ./out/qt6
   lazbuild --lazarusdir=/usr/lib/lazarus -B --bm=Release --ws=qt6 heidisql.lpi
-  mv -v ./out/heidisql ./out/qt6/heidisql
 }
 
 package() {
   cd "${srcdir}/${pkgname}"
   
   mkdir -p "${pkgdir}/usr/share/heidisql"
-  install -Dm755 "out/qt6/heidisql" "${pkgdir}/usr/share/heidisql/heidisql-qt6"
+  install -Dm755 "out/heidisql" "${pkgdir}/usr/share/heidisql/heidisql-qt6"
   
   install -Dm644 "package-skeleton/usr/share/applications/heidisql.desktop" \
     "${pkgdir}/usr/share/applications/heidisql-qt6.desktop"
