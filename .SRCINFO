@@ -1,7 +1,7 @@
 pkgbase = git-wt
 	pkgdesc = A Git subcommand that makes `git worktree` simple
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/k1LoW/git-wt
 	arch = aarch64
 	arch = x86_64

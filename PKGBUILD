@@ -2,7 +2,7 @@
 
 pkgname='git-wt'
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Git subcommand that makes `git worktree` simple'
 url='https://github.com/k1LoW/git-wt'
 
@@ -15,23 +15,13 @@ source_x86_64=("${url}/releases/download/v${pkgver}/${pkgname}_v${pkgver}_linux_
 sha256sums_aarch64=('269e6ff231c84ad139b1350a8838dd6bf32d5262b48c04b6751e5c306597e2ba')
 sha256sums_x86_64=('c13442fef2ba65e43b57374311709ccd50ee20c9c15b5f76fc02c406ae553f88')
 
-build() {
-  cd "$srcdir"
-  ${pkgname} --init zsh > ${pkgname}.zsh
-  ${pkgname} --init bash > ${pkgname}.bash
-  ${pkgname} --init fish > ${pkgname}.fish
-}
-
 package() {
   install -Dm644 ${srcdir}/README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
   install -Dm644 ${srcdir}/LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 
   install -Dm755 ${srcdir}/${pkgname} "$pkgdir/usr/bin/${pkgname}"
-  install -Dm644 ${srcdir}/${pkgname}.zsh "$pkgdir/usr/share/zsh/site-functions/_${pkgname}"
-  install -Dm644 ${srcdir}/${pkgname}.bash "$pkgdir/usr/share/bash-completion/completions/${pkgname}"
-  install -Dm644 ${srcdir}/${pkgname}.fish "$pkgdir/usr/share/fish/completions/${pkgname}.fish"
 }
 
 check() {
-  ${srcdir}/${pkgname} version
+  ${srcdir}/${pkgname} --version
 }
