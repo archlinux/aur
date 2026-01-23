@@ -1,7 +1,7 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla .xyz>
 pkgname='winboat-git'
 _pkgname='winboat'
-pkgver=r125.221847b
+pkgver=r297.c317316
 pkgrel=1
 pkgdesc='Run Windows apps on Linux with seamless integration'
 arch=(x86_64)
@@ -9,12 +9,13 @@ url='https://www.winboat.app'
 license=('MIT')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-depends=('docker' 'electron' 'docker-compose' 'freerdp' 'gtk3' 'alsa-lib' 'nss')
+depends=('docker' 'libxcrypt-compat' 'electron' 'docker-compose' 'freerdp' 'gtk3' 'alsa-lib' 'nss')
 makedepends=('zip' 'npm' 'go' 'git')
 options=("!strip" "!debug")
-source=("git+https://github.com/tibixdev/winboat.git")
+source=("git+https://github.com/tibixdev/winboat.git" "winboat.install")
 
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            '28a16c9651a8283793d4ed0f8a8358ada22a467cd1a1a4ed091eb6a9674da41d')
 
 pkgver() {
   cd "winboat"
@@ -49,10 +50,12 @@ package() {
   install -d "$pkgdir/usr/bin"
   ln -s "opt/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 
+  mkdir dist/.icon-set
   for i in 16 32 48 64 128 256 512; do
+    magick -background none icons/winboat_logo.svg -resize "${i}x${i}""dist/.icon-set/icon_${i}x${i}.png"
+    done
     install -Dm644 dist/.icon-set/icon_${i}x${i}.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
-  done
 
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" <<EOF
@@ -61,6 +64,7 @@ Name=WinBoat
 Exec=/opt/$_pkgname/$_pkgname
 Icon=$_pkgname
 Terminal=false
+Categories=System
 Type=Application
 Comment=Run Windows apps on Linux with seamless integration
 EOF
