@@ -2,12 +2,13 @@
 
 pkgname=kbd-audio
 pkgver=2022.05.03
-pkgrel=1
+pkgrel=2
 pkgdesc='Acoustic keyboard eavesdropping'
 arch=(i686 x86_64 aarch64)
 url='https://github.com/ggerganov/kbd-audio'
 license=(MIT)
 depends=(sdl2 fftw libglvnd)
+provides=(keytap{,2,3})
 makedepends=(cmake)
 source=("$pkgname-$pkgver::git+$url.git#tag=keytap3")
 sha256sums=('SKIP')
@@ -19,6 +20,7 @@ prepare() {
 
 build() {
   cmake -B build -S "$srcdir/$pkgname-$pkgver" \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_BUILD_TYPE='None' \
     -DCMAKE_INSTALL_PREFIX=/usr
 
