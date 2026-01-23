@@ -2,14 +2,14 @@
 # Maintainer: Refreeze5911
 
 pkgname=snyk
-pkgver=1.1302.0
+pkgver=1.1302.1
 pkgrel=1
 pkgdesc='CLI and build-time tool to find & fix known vulnerabilities in open-source dependencies'
 arch=('i686' 'x86_64')
 url='https://github.com/snyk/snyk'
 license=('apache')
 source=("${pkgname}-${pkgver}"::"https://github.com/snyk/snyk/releases/download/v${pkgver}/snyk-linux")
-sha256sums=('38dd8f651ee5b9d022a710154d9e56a325fcbe9824894e3c836a5b78fbf82b49')
+sha256sums=('23a12b02bbe5724406b9db0ac9da632aa78fda6d6146173f14b87a99cecf401f')
 noextract=("${pkgname}-${pkgver}")
 options=("!strip")
 
