@@ -1,6 +1,6 @@
 pkgbase = gnome-network-displays
 	pkgdesc = Screencasting for GNOME. Supports the Miracast and Chromecast protocols.
-	pkgver = 0.98.0
+	pkgver = 0.99.0
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-network-displays
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = gnome-network-displays
 	depends = protobuf-c
 	depends = xdg-desktop-portal
 	optdepends = gstreamer-vaapi
-	source = https://gitlab.gnome.org/GNOME/gnome-network-displays/-/archive/0.98.0/gnome-network-displays-0.98.0.tar.gz
-	sha256sums = dc9d48b16404869f7208401c44dadbe273736e7fd79dc2788d11ed0ac9440bd1
+	source = https://gitlab.gnome.org/GNOME/gnome-network-displays/-/archive/0.99.0/gnome-network-displays-0.99.0.tar.gz
+	sha256sums = b6314d25be7589c621b106c1712b00277c9b4d01d4796a78e987f10c0c1d1400
 
 pkgname = gnome-network-displays
