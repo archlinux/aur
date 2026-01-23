@@ -9,7 +9,7 @@ arch=('x86_64')
 url='https://github.com/schneidermanuel/TwitchLeecher-Dx'
 license=("MIT")
 depends=("icu" "ffmpeg")
-makedepends=("dotnet-sdk")
+makedepends=("dotnet-sdk-bin")
 options=("staticlibs")
 source=("$url/archive/refs/tags/v$_pkgver.tar.gz")
 sha256sums=('ebec6235f2cfcb7483c563c0c45f7d8edc2368f0365307014cc08b0279f82c16')
@@ -20,7 +20,7 @@ build() {
     --configuration Release \
     --self-contained true \
     --runtime linux-x64 \
-    -p:PublishTrimmed=true \
+    -p:PublishTrimmed=false \
     --output ../../$pkgname \
     ./TwitchLeecher.csproj
 }
