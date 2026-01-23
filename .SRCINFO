@@ -1,6 +1,6 @@
 pkgbase = ik-llama.cpp
 	pkgdesc = llama.cpp fork with additional SOTA quants and improved performance (OpenBLAS Backend)
-	pkgver = r4135.987651e5
+	pkgver = r4142.2a7cc091
 	pkgrel = 1
 	url = https://github.com/ikawrakow/ik_llama.cpp
 	arch = x86_64
