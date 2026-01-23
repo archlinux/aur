@@ -1,10 +1,10 @@
-# Maintainer: ResRipper <resripper@connective.link>
+# Maintainer: ResRipper <resripper at connective dot link>
 
 # shellcheck disable=SC2034,SC2148,SC2154
 
 _name=marimo
 pkgname=marimo
-pkgver=0.19.4
+pkgver=0.19.5
 pkgrel=1
 pkgdesc="A reactive Python notebook that's reproducible, git-friendly, and deployable as scripts or apps"
 arch=(any)
@@ -13,7 +13,7 @@ license=('Apache-2.0')
 options=(!debug)
 
 depends=(
-    'python<3.14' # for python-msgspec package compatibility
+    'python<3.14' # For python-msgspec package compatibility
     'python-click>=8.0' 'python-click<9'
     'python-jedi>=0.18.0'
     'python-markdown>=3.6' 'python-markdown<4'
@@ -24,13 +24,17 @@ depends=(
     'uvicorn>=0.22.0'
     'python-starlette>=0.37.2'
     'python-websockets>=14.2.0'
+
+    # For Python 3.11~3.13
+    # All RTC tests were disabled for other versions, not sure it is unsupported or not required
     'python-loro>=1.5.0'
+
     'python-docutils>=0.16.0'
     'python-psutil>=5.0'
     'python-itsdangerous>=2.0.0'
     'python-narwhals>=2.0.0'
     'python-packaging'
-    'python-msgspec>=0.19.0' # TODO: change once the package is updated
+    'python-msgspec>=0.19.0' # TODO: change to 0.20 once the package is updated
 )
 
 optdepends=(
@@ -63,7 +67,7 @@ makedepends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('eec3b765c3fd98d63e2017c56a024e779a6923cb56e7682e78876d4fe49409b7')
+sha256sums=('fa976dac73c641fd815146ded3e0af08b76180c7fb4577d58c41a5e6623f4e6b')
 
 build() {
     cd $_name-$pkgver || exit
