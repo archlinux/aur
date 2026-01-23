@@ -1,17 +1,23 @@
 pkgbase = ahformatter
 	pkgdesc = Proprietary publishing engine. Generate PDF from XML or HTML. Format with XSL-FO or CSS.
-	pkgver = 7.4.11.66458
-	pkgrel = 3
+	pkgver = 7.5.1.69020
+	pkgrel = 1
 	url = https://www.antennahouse.com/formatter-v7
-	install = ahformatter.install
 	arch = x86_64
 	license = custom:Antenna House EULA
+	source = ahformatter.sh
+	sha256sums = aa96daa7313fecdf5188978fd5e1b7611250975165b91aa1f25d640e37ed569d
+	source_x86_64 = local://AHFormatterV75-7.5E-R1.x86_64.rpm.gz
+	sha256sums_x86_64 = SKIP
+
+pkgname = ahformatter
+	install = ahformatter.install
 	depends = gcc-libs
 	depends = glibc
-	depends = icu74
+	depends = icu76
 	depends = sh
 	depends = util-linux-libs
-	optdepends = java-runtime>=8: Java bindings
+	optdepends = java-ahformatter: Java bindings
 	provides = libAHCGM.so
 	provides = libAHCommon.so
 	provides = libAHFontService.so
@@ -40,9 +46,11 @@ pkgbase = ahformatter
 	provides = libXPSCreator.so
 	backup = etc/ahformatter/font-config.xml
 	backup = etc/ahformatter/html.css
-	source = ahformatter.sh
-	sha256sums = 394440f3bc32e579398c2a8989125ac9412ecbe4454a6bccf5dd3d96cb28496e
-	source_x86_64 = local://AHFormatterV74-7.4E-MR10.x86_64.rpm.gz
-	sha256sums_x86_64 = 27e6fc937fd49b656122b2712eaf7c6a503989efcf644528cde0a14ec4ff6662
 
-pkgname = ahformatter
+pkgname = java-ahformatter
+	pkgdesc = Proprietary publishing engine. Generate PDF from XML or HTML. Format with XSL-FO or CSS. (Java bindings)
+	depends = ahformatter>=7.5.1.69020-1
+	depends = gcc-libs
+	depends = glibc
+	depends = java-runtime>=8
+	provides = libXfoJavaCtl75.so

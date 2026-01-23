@@ -1,8 +1,6 @@
 post_install() {
   echo "==> To activate Antenna House Formatter, place your license key at:"
-  echo "    \$XDG_CONFIG_HOME/ahformatter/AHFormatter.lic"
-  echo "    or"
-  echo "    ~/.config/ahformatter/AHFormatter.lic"
+  echo "    \${XDG_CONFIG_HOME:-\${HOME}/.config}/ahformatter/AHFormatter.lic"
 }
 
 post_upgrade() {
