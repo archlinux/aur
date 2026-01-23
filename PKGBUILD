@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=trezor-suite-bin
 _pkgname=Trezor-Suite
-pkgver=26.1.1
+pkgver=26.1.2
 _electronversion=39
 pkgrel=1
 pkgdesc="Desktop app for Trezor hardware wallets.(Prebuilt version.Use system-wide electron)"
@@ -29,8 +29,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.AppImage")
 sha256sums=('0bb9e6855d6aa4f013a87ed9ceb2ef47b6eddc44858cc85ed3faf5d53677f67a'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('fcc4c2732b7cdb93c8ccee4de48f9f8ddfe289ff7c5806b3b250bd41db30b10f')
-sha256sums_x86_64=('beb40518a5ab2e8947ac5b3b47e8de5b562aa9e2f30104963bea9ce784dffb39')
+sha256sums_aarch64=('5be8a8f2834d87c631a091eca65411a4afa6405b26e82c12e0c63c1a76135dfc')
+sha256sums_x86_64=('e4465f9a9dd19b9ee2bfd9296f7a878f0974175aebd050972a428f73ae73637d')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
