@@ -8,7 +8,7 @@ arch=(any)
 url="https://github.com/${_base/-pack/}/${_base}"
 license=(BSD-3-Clause)
 depends=(python conda)
-makedepends=(python-build python-installer python-setuptools python-wheel)
+makedepends=(python-build python-installer python-setuptools-scm python-wheel)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
 sha512sums=('db80587fd3c5325cad025da8bbc959ce2e2db25ae9b8e91b8268a2f57931bfc11ee4ef4dfb2189e44bf657f3e0f0603cb45231fbbc7449b61b0af2e2a56e3142')
 
@@ -25,6 +25,7 @@ prepare() {
 
 build() {
   cd ${_base}-${pkgver}
+  export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
