@@ -5,7 +5,7 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-p11-kit
-pkgver=0.25.5
+pkgver=0.25.10
 pkgrel=1
 arch=('any')
 pkgdesc="Loads and enumerates PKCS#11 modules (Android ${_android_arch})"
@@ -17,7 +17,7 @@ depends=("android-${_android_arch}-libffi"
 makedepends=('android-meson')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/p11-glue/p11-kit/releases/download/${pkgver}/p11-kit-${pkgver}.tar.xz"{,.sig})
-md5sums=('e9c5675508fcd8be54aa4c8cb8e794fc'
+md5sums=('46fb4aa4faf0e18c036715f103e6c429'
          'SKIP')
 validpgpkeys=(
     'C0F67099B808FB063E2C81117BFB1108D92765AF'  # Stef Walter <stef@thewalter.net>
@@ -46,4 +46,6 @@ package() {
     rm -rf "$pkgdir/${ANDROID_PREFIX_ETC}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
