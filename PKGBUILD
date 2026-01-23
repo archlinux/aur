@@ -1,4 +1,5 @@
-# Maintainer: Dvd-Znf <email@dvdznf.xyz>
+# Maintainer: Jasmin <theblazehen@gmail.com>
+# Contributor: Dvd-Znf <email@dvdznf.xyz>
 # Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 # Contributor: Truocolo <truocolo@aol.com>
 # Contributor: Julian Mac Kenzie <jukiangm@gmail.com>
@@ -18,7 +19,7 @@ arch=(
   'pentium4'
   'i686'
   'arm')
-license=('GPL')
+license=('GPL-2.0-or-later')
 url="https://github.com/storaged-project/${pkgname}"
 depends=(
   "${_py}"
@@ -33,8 +34,7 @@ makedepends=(
   "${_py}-setuptools")
 source=(
   "${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=(
-  '9594d3faebcd02d9142a180e25651411690faa71e53a4d961d14d8e7d6f7a7916d084ebbf7117d48c85274eea8c16fe99f09232ec526263ae72a0798aae591bf')
+sha256sums=('32c7c83b35d09d993b306e974cbb56b4334854ce3361eb660c09b66b4a51df95')
 
 build() {
   cd \
