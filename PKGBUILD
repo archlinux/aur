@@ -1,9 +1,9 @@
 # Maintainer: nixval <nicovaliantoku@gmail.com>
 
 pkgname=declarch
-pkgver=0.4.0
+pkgver=0.4.2
 pkgrel=1
-pkgdesc="A declarative package manager for Linux (supports AUR, Flatpak, Soar)"
+pkgdesc="A declarative package manager for Linux with user-defined backend support"
 arch=('x86_64')
 url="https://github.com/nixval/declarch"
 license=('MIT')
@@ -15,7 +15,7 @@ optdepends=(
 )
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a9bfc9c3d8e8184a11b1e61ee6fee3d6a5e631a783206db021c13993ccf19882')
+sha256sums=('b68691dd64b1d85078cdd0e4bd876cccf75abf0904638de9a4fb2b8dda89be88')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -26,7 +26,8 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo build --release --frozen
+  # Enable LTO for better optimization (configured in Cargo.toml)
+  CARGO_PROFILE_RELEASE_LTO=thin cargo build --release --frozen
 }
 
 check() {
@@ -49,6 +50,3 @@ package() {
   install -Dm644 <(target/release/$pkgname completions zsh) \
     "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 }
-sha256sums=('a9bfc9c3d8e8184a11b1e61ee6fee3d6a5e631a783206db021c13993ccf19882')
-sha256sums=('a9bfc9c3d8e8184a11b1e61ee6fee3d6a5e631a783206db021c13993ccf19882')
-sha256sums=('361e77cc94c126af05916a452ca2d17a38adc755f820e591ea2fc8a658770293')
