@@ -1,6 +1,6 @@
 pkgbase = slack-desktop-wayland
 	pkgdesc = Slack Desktop (Beta) for Linux with Wayland Support
-	pkgver = 4.46.96
+	pkgver = 4.47.69
 	pkgrel = 1
 	url = https://slack.com/downloads
 	arch = x86_64
@@ -22,10 +22,10 @@ pkgbase = slack-desktop-wayland
 	provides = slack-desktop
 	conflicts = slack-desktop
 	conflicts = slack-electron
-	noextract = slack-desktop-4.46.96-amd64.deb
-	source = https://downloads.slack-edge.com/desktop-releases/linux/x64/4.46.96/slack-desktop-4.46.96-amd64.deb
+	noextract = slack-desktop-4.47.69-amd64.deb
+	source = https://downloads.slack-edge.com/desktop-releases/linux/x64/4.47.69/slack-desktop-4.47.69-amd64.deb
 	source = slack-desktop.patch
-	b2sums = 43cc1d6b5f59f25592dfe3fe92da537adcbf5695043063b817d6d7db0dff73ee64f1c87d4e3aacf7f2e9aeef8cc8ba5557882b4adcc19fb6c3e2067caf9a0f1e
+	b2sums = 60931f4565a65f09c0661e40f14d1645a5d76707bccd4c6c350a1e76a98c3d2507e1662ea1f9544b7a91d63b35e834433ac2e9b75799357798fe935ae3a2b4e5
 	b2sums = 0e5318977aeb8033ec90495008f4d03b003f02fdd4bf764e8963e5b886169b87b65fac6b1b504100c27a30be1d4b923ef2b0212f6e73760737fb9d554f3df6ed
 
 pkgname = slack-desktop-wayland
