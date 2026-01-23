@@ -32,16 +32,14 @@ build() {
   lazbuild --lazarusdir=/usr/lib/lazarus "${metadarkstyle_dir}/Metadarkstyle/metadarkstyle.lpk"
   lazbuild --lazarusdir=/usr/lib/lazarus "${metadarkstyle_dir}/Metadarkstyle/metadarkstyledsgn.lpk"
 
-  mkdir -p ./out/gtk2
   lazbuild --lazarusdir=/usr/lib/lazarus -B --bm=Release --ws=gtk2 heidisql.lpi
-  mv -v ./out/heidisql ./out/gtk2/heidisql
 }
 
 package() {
   cd "${srcdir}/${pkgname}"
   
   mkdir -p "${pkgdir}/usr/share/heidisql"
-  install -Dm755 "out/gtk2/heidisql" "${pkgdir}/usr/share/heidisql/heidisql-gtk2"
+  install -Dm755 "out/heidisql" "${pkgdir}/usr/share/heidisql/heidisql-gtk2"
   
   install -Dm644 "package-skeleton/usr/share/applications/heidisql.desktop" \
     "${pkgdir}/usr/share/applications/heidisql-gtk2.desktop"
