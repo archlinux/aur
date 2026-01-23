@@ -3,7 +3,7 @@
 _appname=code
 _pkgname="visual-studio-${_appname}"
 pkgname="${_pkgname}-electron-bin"
-pkgver=1.108.1
+pkgver=1.108.2
 _electronversion=39
 pkgrel=1
 pkgdesc="Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications.(Prebuilt and System-wide Electron edition)"
@@ -45,14 +45,14 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_dlurl}/${_appname}-${pkgver}-1768404334.el8.aarch64.rpm")
-source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${_dlurl}/${_appname}-${pkgver}-1768404303.el8.armv7hl.rpm")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_dlurl}/${_appname}-${pkgver}-1768404278.el8.x86_64.rpm")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_dlurl}/${_appname}-${pkgver}-1769004935.el8.aarch64.rpm")
+source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${_dlurl}/${_appname}-${pkgver}-1769004864.el8.armv7hl.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_dlurl}/${_appname}-${pkgver}-1769004860.el8.x86_64.rpm")
 sha256sums=('dc5406ddd35ed5e3be39fe0a5a460f061aff3d296dc70124fd3eface8444c947'
             'c418b7c5c17b3771f53541b46ed1eff461de5871e2c7c177546e2577d480594f')
-sha256sums_aarch64=('e5071fcab710cc2a28126424d22fd5b948a58af626672657d1306afb6d555a1c')
-sha256sums_armv7h=('3387c7d506f390bb5fa8343113edf00cd6a07139481782a86820d1a19a80efd6')
-sha256sums_x86_64=('66f19ebf42ce9af4315b3d68d9f46cb7c7ad016b4a01bdf6f0c1871abf409365')
+sha256sums_aarch64=('3244cfab2ccf0d9bad8ecc5cf21d66dea452a8fcfdc4e5030661f766a61ebecf')
+sha256sums_armv7h=('f3b74a2710983f75a1965d51d0951882cdf8fa6c557e3b25a3c72766ae50859c')
+sha256sums_x86_64=('f4f2c8ed1c5698b62ee5afee2f4f79c138333fb31a5f8a488325465c16a77587')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/usr/share/${_appname}/${_appname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
