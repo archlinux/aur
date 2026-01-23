@@ -1,47 +1,62 @@
-# Maintainer: yubimusubi
-pkgname=('3dstool-git')
-provides=('3dstool')
-conflicts=('3dstool')
-pkgver=r90.4b22fbf
+# Maintainer: LinuxLover471 <linuxlover471 at proton dot me>
+# Contributor: yubimusubi <possum plus aur at possum dot cc>
+
+_pkgname=3dstool
+pkgname=${_pkgname}-git
+pkgver=1.2.6.r14.g9c4336bc
 pkgrel=1
-pkgdesc="An all-in-one tool for extracting/creating 3ds roms."
-arch=('i686' 'x86_64')
-url="https://github.com/dnasdw/3dstool"
-license=('unknown') # FIXME
-makedepends=('git' 'cmake')
-options=('!strip')
-
+epoch=1
+pkgdesc="An all-in-one tool for extracting/creating 3ds roms"
+arch=('x86_64')
+url="https://github.com/dnasdw/${_pkgname}"
+license=('MIT')
+depends=('glibc' 'curl' 'openssl')
+makedepends=('cmake' 'git')
 source=(
-    "$pkgname::git+https://github.com/dnasdw/3dstool.git"
+  "git+${url}.git"
+  "${_pkgname}-paths.patch"
 )
-
 sha256sums=(
-    'SKIP'
+  'SKIP'
+  '5ac00e5b56182ffde04c7b9ab2a5151e6cf575400705f0b061ff832116757582'
 )
+conflicts=(${_pkgname})
+provides=(${_pkgname})
 
 pkgver() {
-    cd "$pkgname"
-    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  cd ${_pkgname}
+  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//g'
+}
+
+prepare() {
+  cd ${_pkgname}
+
+  sed -i 's/^cmake_minimum_required.*/cmake_minimum_required(VERSION 3.5)/' CMakeLists.txt # Bump cmake_minimum_required so that the package can be built.
+  patch -Np1 -i ../${_pkgname}-paths.patch
 }
 
 build() {
-    cd "$pkgname"
+  cd ${_pkgname}
 
-    # This is straight from the README
-    mkdir -p project
-    cd project
-    cmake ..
-    cmake ..
-    make
+  cmake -B build \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DUSE_DEP=OFF \
+    -DCMAKE_SKIP_RPATH=ON \
+    -DCMAKE_BUILD_WITH_INSTALL_RPATH=OFF
+  cmake --build build
 }
 
 package() {
-    cd "$pkgname/project"
-    make install # Actually installs to "../bin"
-    install -d "$pkgdir/usr/bin/"
-    install "../bin/3dstool" "$pkgdir/usr/bin/"
+  cd ${_pkgname}
 
-    # Move ignore file into /usr/share
-    install -d "$pkgdir/usr/share/3dstool"
-    install "../bin/ignore_3dstool.txt" "$pkgdir/usr/share/3dstool"
+  install -Dm755 bin/Release/${_pkgname} -t \
+    "${pkgdir}/usr/bin/"
+
+  install -Dm644 bin/ignore_${_pkgname}.txt -t \
+    "${pkgdir}/usr/share/${_pkgname}/"
+
+  install -Dm644 LICENSE -t \
+    "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
+
+# vim: ts=2 sw=2 et:

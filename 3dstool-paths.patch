@@ -1,0 +1,12 @@
+diff -rupN 3dstool-1.0.25.orig/src/romfs.cpp 3dstool-1.0.25/src/romfs.cpp
+--- 3dstool-1.0.25.orig/src/romfs.cpp	2017-06-19 23:30:45.261905149 +0200
++++ 3dstool-1.0.25/src/romfs.cpp	2017-06-19 23:32:12.444834329 +0200
+@@ -266,7 +266,7 @@ void CRomFs::buildIgnoreList()
+ {
+ 	m_vIgnoreList.clear();
+ 	m_vRemapIgnoreList.clear();
+-	UString sIgnorePath = UGetModuleDirName() + USTR("/ignore_3dstool.txt");
++	UString sIgnorePath = USTR("/usr/share/3dstool/ignore_3dstool.txt");
+ 	FILE* fp = UFopen(sIgnorePath.c_str(), USTR("rb"));
+ 	if (fp != nullptr)
+ 	{
