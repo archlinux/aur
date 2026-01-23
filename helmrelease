@@ -107,9 +107,10 @@ function helmrelease() {
   shift
   local commands=()
   local clusterConnected=false
-  local namespace
   local releaseName
   local helmReleaseYaml
+  local helmReleaseNamespace
+  local namespace
   local numberOfHelmReleases
   local numberOfValuesFromItems
   local values
@@ -117,7 +118,6 @@ function helmrelease() {
   local sourceParameter
   local yaml
   local remoteKubeconfig
-  local remoteKubeconfigNamespace
   local REMOTE_KUBECONFIG
   if kubectl version &> /dev/null; then
     clusterConnected=true
@@ -193,13 +193,13 @@ function helmrelease() {
   fi
 
   helmReleaseYaml=$(_hr_getYaml "$yaml" "$index" HelmRelease)
+  helmReleaseNamespace="$(<<< "$helmReleaseYaml" | yq -r '.metadata.namespace')"
   namespace=$(_hr_getNamespace "$helmReleaseYaml")
   remoteKubeconfig="$(<<< "$helmReleaseYaml" | yq -r '.spec.kubeConfig.secretRef.name // empty')"
   if [[ ! -z "$remoteKubeconfig" ]] && ( [[ "$subCommand" != template ]] || [[ "$clusterConnected" == true ]] ); then
     REMOTE_KUBECONFIG="$(mktemp)"
-    remoteKubeconfigNamespace="$(<<< "$helmReleaseYaml" | yq -r '.metadata.namespace')"
     trap "rm -f \"$REMOTE_KUBECONFIG\"" EXIT
-    kubectl ${remoteKubeconfigNamespace:+--namespace=$remoteKubeconfigNamespace} get secret $remoteKubeconfig -o jsonpath='{.data.value}' | base64 -d > "$REMOTE_KUBECONFIG"
+    kubectl ${helmReleaseNamespace:+--namespace=$helmReleaseNamespace} get secret $remoteKubeconfig -o jsonpath='{.data.value}' | base64 -d > "$REMOTE_KUBECONFIG"
   fi
   releaseName=$(_hr_getReleaseName "$helmReleaseYaml")
   case "$subCommand" in
@@ -223,13 +223,13 @@ function helmrelease() {
           valuesFromItemName="$(<<< "$valuesFromItem" | yq -er .name)"
           valuesFromItemValuesKey="$(<<< "$valuesFromItem" | yq -er '.valuesKey // "values.yaml"')"
           valuesFromItemTargetPath="$(<<< "$valuesFromItem" | yq -er '.targetPath // ""')"
-          if valuesFromYaml=$(_hr_getYaml "$yaml" "" "$valuesFromItemKind") || ! valuesFromItemResource=$(<<< "$valuesFromYaml" | yq -erys "map(select( (.metadata.namespace == \"$namespace\") and (.metadata.name == \"$valuesFromItemName\") ))[0] // empty"); then
+          if valuesFromYaml=$(_hr_getYaml "$yaml" "" "$valuesFromItemKind") || ! valuesFromItemResource=$(<<< "$valuesFromYaml" | yq -erys "map(select( (.metadata.namespace == \"$helmReleaseNamespace\") and (.metadata.name == \"$valuesFromItemName\") ))[0] // empty"); then
             if [[ "$clusterConnected" == true ]]; then
-              if ! valuesFromItemResource=$(kubectl --namespace=$namespace get $valuesFromItemKind $valuesFromItemName -o yaml | yq -er --arg valuesFromItemValuesKey "$valuesFromItemValuesKey" '.data[$valuesFromItemValuesKey]'); then
-                info "ValuesFrom resource '$namespace/$valuesFromItemKind/$valuesFromItemName' not found in cluster nor in input or doesn't contain '$valuesFromItemValuesKey', template result might not be accurate"
+              if ! valuesFromItemResource=$(kubectl --namespace=$helmReleaseNamespace get $valuesFromItemKind $valuesFromItemName -o yaml | yq -er --arg valuesFromItemValuesKey "$valuesFromItemValuesKey" '.data[$valuesFromItemValuesKey]'); then
+                info "ValuesFrom resource '$helmReleaseNamespace/$valuesFromItemKind/$valuesFromItemName' not found in cluster nor in input or doesn't contain '$valuesFromItemValuesKey', template result might not be accurate"
               fi
             else
-              info "Cannot get source resource '$namespace/$valuesFromItemKind/$valuesFromItemName' from cluster when not connected"
+              info "Cannot get source resource '$helmReleaseNamespace/$valuesFromItemKind/$valuesFromItemName' from cluster when not connected"
             fi
           fi
           if [[ ! -z "$valuesFromItemResource" ]]; then
