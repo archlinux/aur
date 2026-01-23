@@ -1,5 +1,5 @@
-# Maintainer: Elio <ancibrothers@gmail.com>
-# Maintainer: peippo <christoph+aur@christophfink.com>
+# Contributor: Elio <ancibrothers@gmail.com>
+# Contributor: peippo <christoph+aur@christophfink.com>
 
 _cranname=s2
 _cranver=1.1.9
@@ -11,6 +11,7 @@ pkgver=${_cranver//[:-]/.}
 pkgrel=1
 
 arch=("i686" "x86_64")
+makedepends=(cmake)
 depends=(
     "openssl>=1.0.1"
     "r>=3.0.0"

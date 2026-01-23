@@ -6,6 +6,7 @@ pkgbase = r-s2
 	arch = i686
 	arch = x86_64
 	license = Apache
+	makedepends = cmake
 	depends = openssl>=1.0.1
 	depends = r>=3.0.0
 	depends = r-rcpp
