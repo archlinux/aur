@@ -1,13 +1,14 @@
 pkgbase = mow-git
 	pkgdesc = Cross platform CLI tool for Glorious Model O Wireless
-	pkgver = v0.2
-	pkgrel = 1
+	pkgver = r30.4452efd
+	pkgrel = 2
 	url = https://github.com/korkje/mow
 	arch = any
 	makedepends = cargo
 	makedepends = git
 	makedepends = libusb
 	provides = mow
+	options = !lto
 	source = git+https://github.com/korkje/mow.git
 	md5sums = SKIP
 
