@@ -3,8 +3,8 @@
 # Contributor: Crowdsec Team <debian@crowdsec.net>
 
 pkgname=crowdsec-bin
-pkgver=1.7.3
-pkgrel=3
+pkgver=1.7.5
+pkgrel=1
 pkgdesc="An open-source, lightweight agent to detect and respond to bad behaviors. It also automatically benefits from our global community-wide IP reputation database"
 arch=('any')
 url="https://github.com/crowdsecurity/crowdsec"
@@ -40,7 +40,7 @@ source=(
   crowdsec-hubupdate.timer
   hubupdate.sh
 )
-sha256sums=('f2261585329556cf19049c43dd15e05edf304deec485f319826cb378ff8db9b3'
+sha256sums=('85f09b295b23778bee1d8b16ab6466d0cecf51e52816810a5dbda30da0a58408'
             'a97e2c4bc07470dad890fca27b6da7c4a9ac9762551a0888dd812d2da63200ad'
             '7267338c60bdbd11d61aa7cdefedccb610756e4dedc038ee5cc13303e2241a90'
             '135420c67f937574f45610b0dbeaf1ca7537055b473f80401b78a41165fd40f1'
