@@ -1,10 +1,12 @@
 pkgbase = python-twisterl
 	pkgdesc = PoC of a Reinforcement Learning framework
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AI4quantum/twisteRL
 	arch = x86_64
 	license = Apache-2.0
+	checkdepends = python-pytest
+	checkdepends = python-pytest-mock
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
