@@ -14,10 +14,10 @@ depends=(
   'brightnessctl'
   'ffmpeg'
   'qt6-multimedia'
+  'python'
 )
 optdepends=(
   'cliphist: For clipboard history support'
-  'matugen: Material You color scheme generation'
   'cava: Audio visualizer component'
   'wlsunset: For supporting NightLight'
   'power-profiles-daemon: For power profile management'
