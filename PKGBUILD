@@ -1,4 +1,4 @@
-# Maintainer: Mahid Sheikh <mahid@standingpad.org>
+# Maintainer: Maryam Sheikh (Mahid Sheikh) <mahid@standingpad.org>
 pkgname=nom-bin
 pkgver=3.1.1
 pkgrel=1
