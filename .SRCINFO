@@ -1,0 +1,16 @@
+pkgbase = memtui-bin
+	pkgdesc = A modern TUI client for Memcached with tree-structured key navigation, smart JSON/binary formatting, and Vim keybindings
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/nnnkkk7/memtui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = memtui
+	conflicts = memtui
+	source_x86_64 = memtui-x86_64-0.0.6.tgz::https://github.com/nnnkkk7/memtui/releases/download/v0.0.6/memtui_0.0.6_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 925a692394e046314937a2968e84c3ff62ed9b3700b66ac275df616a28f7b461
+	source_aarch64 = memtui-aarch64-0.0.6.tgz::https://github.com/nnnkkk7/memtui/releases/download/v0.0.6/memtui_0.0.6_Linux_arm64.tar.gz
+	sha256sums_aarch64 = e6af68a0035ed1458755686a86b4e5e79978215bff524a1e8029b293f7f6c6f3
+
+pkgname = memtui-bin

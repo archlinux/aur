@@ -1,0 +1,5 @@
+[memtui-bin]
+source = "github"
+github = "nnnkkk7/memtui"
+use_latest_release = true
+prefix = "v"
