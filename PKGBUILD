@@ -1,5 +1,6 @@
-# adapted from AUR package `organicmaps` by nesk_aur
-# Maintainer: hoverth
+# Maintainer: Jasmin <theblazehen@gmail.com>
+# Contributor: hoverth
+# Adapted from AUR package `organicmaps` by nesk_aur
 pkgname=comaps
 pkgver=v2025.10.16_1
 tag="${pkgver%%_*}-${pkgver##*_}"
@@ -10,7 +11,7 @@ makedepends=(cmake git jq gcc ninja)
 depends=(mesa libglvnd freetype2 sqlite icu qt6-svg qt6-base zlib libpng glibc
   qt6-positioning gcc-libs harfbuzz libxrandr libxi libxcursor)
 optdepends=("ccache: faster re-compilation" "qt6-wayland: for Wayland users")
-license=("Apache")
+license=('Apache-2.0')
 url="https://comaps.app"
 source_url="https://codeberg.org/comaps/comaps/"
 source=(comaps.desktop
