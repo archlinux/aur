@@ -7,6 +7,8 @@ path = [
     "keys/**",
     ".SRCINFO",
     ".nvchecker.toml",
+    "disable-self-upgrades.patch",
+    "disable-telemetry.patch",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"

@@ -1,0 +1,35 @@
+--- a/platformio/commands/upgrade.py
++++ b/platformio/commands/upgrade.py
+@@ -33,15 +33,14 @@ DEVELOP_INIT_SCRIPT_URL = (
+ 
+ 
+ @click.command("upgrade", short_help="Upgrade PlatformIO Core to the latest version")
+-@click.option("--dev", is_flag=True, help="Use development branch")
+-@click.option("--only-dependencies", is_flag=True)
+ @click.option("--verbose", "-v", is_flag=True)
+-def cli(dev, only_dependencies, verbose):
+-    if only_dependencies:
+-        return upgrade_pip_dependencies(verbose)
+-
++def cli(verbose):
+     update_core_packages()
+ 
++    # Short-circuit upgrade logic, PlatformIO is managed by pacman in Arch Linux
++    click.echo("PlatformIO Core is managed by pacman in Arch Linux")
++    return
++
+     if not dev and __version__ == get_latest_version():
+         return click.secho(
+             "You're up-to-date!\nPlatformIO %s is currently the "
+--- a/platformio/maintenance.py
++++ b/platformio/maintenance.py
+@@ -221,6 +221,9 @@ def check_platformio_upgrade():
+     # Update PlatformIO Core packages
+     update_core_packages()
+ 
++    # Short-circuit upgrade logic, PlatformIO is managed by pacman in Arch Linux
++    return
++
+     latest_version = get_latest_version()
+     if pepver_to_semver(latest_version) <= pepver_to_semver(__version__):
+         return

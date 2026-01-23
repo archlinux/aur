@@ -1,0 +1,11 @@
+--- a/platformio/app.py
++++ b/platformio/app.py
+@@ -48,7 +48,7 @@ DEFAULT_SETTINGS = {
+     },
+     "enable_telemetry": {
+         "description": ("Telemetry service <https://bit.ly/pio-telemetry> (Yes/No)"),
+-        "value": True,
++        "value": False,
+     },
+     "force_verbose": {
+         "description": "Force verbose output when processing environments",
