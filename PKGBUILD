@@ -20,8 +20,8 @@ sha256sums=(
   'SKIP'
   '5ac00e5b56182ffde04c7b9ab2a5151e6cf575400705f0b061ff832116757582'
 )
-conflicts=(${_pkgname})
 provides=(${_pkgname})
+conflicts=(${_pkgname})
 
 pkgver() {
   cd ${_pkgname}
@@ -43,6 +43,7 @@ build() {
     -DUSE_DEP=OFF \
     -DCMAKE_SKIP_RPATH=ON \
     -DCMAKE_BUILD_WITH_INSTALL_RPATH=OFF
+
   cmake --build build
 }
 
