@@ -1,5 +1,5 @@
 pkgbase = dwmblocks-fast-git
-	pkgdesc = dwmblocks-fast is a modular status bar for window managers (fork of dwmblocks)
+	pkgdesc = A modular status bar for window managers (fork of dwmblocks)
 	pkgver = 0.1
 	pkgrel = 1
 	url = https://github.com/iakobvs/dwmblocks-fast
