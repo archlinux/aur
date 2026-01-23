@@ -1,17 +1,17 @@
 # Maintainer: Martin Kröner <aur@kroner.dev>
 
 pkgname=unfrl-dug-bin
-pkgver=0.0.94
+pkgver=0.0.100
 pkgrel=1
 pkgdesc='A powerful global DNS progagation checker that can output in a variety of formats.'
 arch=('x86_64')
-url='https://github.com/unfrl/dug'
+url='https://git.unfrl.com/Unfrl/dug'
 license=('MIT')
 options=(!debug !strip)
 provides=('dug')
 conflicts=('dug')
 source=("$url"/releases/download/"$pkgver"/dug-linux-x64)
-sha256sums=('c098d2fe6616e890d154b8a30bda5fcd3514778f3df2828c0662dde9f6b447fa')
+sha256sums=('67cb6bf86f93f1731e1a68571afc05129853ce6eb87a48872a15a6c5878c26d2')
 
 package() {
   install -Dm755 dug-linux-x64 "$pkgdir"/usr/bin/dug

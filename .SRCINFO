@@ -1,15 +1,15 @@
 pkgbase = unfrl-dug-bin
 	pkgdesc = A powerful global DNS progagation checker that can output in a variety of formats.
-	pkgver = 0.0.94
+	pkgver = 0.0.100
 	pkgrel = 1
-	url = https://github.com/unfrl/dug
+	url = https://git.unfrl.com/Unfrl/dug
 	arch = x86_64
 	license = MIT
 	provides = dug
 	conflicts = dug
 	options = !debug
 	options = !strip
-	source = https://github.com/unfrl/dug/releases/download/0.0.94/dug-linux-x64
-	sha256sums = c098d2fe6616e890d154b8a30bda5fcd3514778f3df2828c0662dde9f6b447fa
+	source = https://git.unfrl.com/Unfrl/dug/releases/download/0.0.100/dug-linux-x64
+	sha256sums = 67cb6bf86f93f1731e1a68571afc05129853ce6eb87a48872a15a6c5878c26d2
 
 pkgname = unfrl-dug-bin
