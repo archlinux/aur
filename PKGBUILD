@@ -1,7 +1,7 @@
 # Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
 
 pkgname=touplite
-pkgver=2.1.27501.20250112
+pkgver=2.1.30405.20251228
 pkgrel=1
 pkgdesc="A port of the ToupTek Photonics's PC software ToupLite for Linux"
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ depends=(fontconfig dbus libglvnd libxrender freetype2)
 license=('custom')
 source_x86_64=("ToupTekToupLite.x64-${pkgver}.tar.bz2"::"https://www.touptekphotonics.com/downloads/software/ToupTekToupLite.x64.tar.bz2")
 source_i686=("ToupTekToupLite.x86-${pkgver}.tar.bz2"::"https://www.touptekphotonics.com/downloads/software/ToupTekToupLite.x86.tar.bz2")
-sha256sums_i686=('76485b2e6a6b1846373524728c9e1e2b86caf85973222e89af55193e7fb6a431')
-sha256sums_x86_64=('1de12526998b8f760d7b5040cc94fbe1c2bb0a02d0eacb6b39d5d0e413f881ad')
+sha256sums_i686=('81dba159ebd95bcd9dcc7fba6c3544cacb2d6c4aa127bbe04d4e085ab4661b74')
+sha256sums_x86_64=('903a4faaf89d70ddf91bc902ff968921361247119df341d6a39e5dc79d24363e')
 options=('!strip')
 
 prepare() {
@@ -22,13 +22,12 @@ prepare() {
 
 package() {
   install -Dm755 ToupLite -t "${pkgdir}/usr/local/ToupLite/"
-  install -Dm644 libtoupcam.so libtoupnam.so -t "${pkgdir}/usr/local/ToupLite"
+  install -Dm644 *.so ToupLite.png -t "${pkgdir}/usr/local/ToupLite"
 
   install -dm755 "${pkgdir}/usr/bin/"
   ln -s "/usr/local/ToupLite/ToupLite" "${pkgdir}/usr/bin/ToupLite"
 
   install -Dm644 i18n/*.xml -t "${pkgdir}/usr/local/ToupLite/i18n/"
-  install -Dm644 ToupLite.png -t "${pkgdir}/usr/local/ToupLite/"
   install -Dm644 99-toupcam.rules -t "${pkgdir}/usr/lib/udev/rules.d/"
 
   install -Dm755 ToupLite.desktop -t "${pkgdir}/usr/share/applications/"
