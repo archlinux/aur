@@ -1,0 +1,4 @@
+[rayforge]
+source = "git"
+git = "https://github.com/barebaric/rayforge.git"
+prefix = "v"
