@@ -1,0 +1,33 @@
+pkgbase = yeetfile
+	pkgdesc = A self-hosted service for encrypted file sharing and storage
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://yeetfile.com
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = git
+	makedepends = go>=1.20
+	makedepends = npm>=22.2
+	source = yeetfile::git+https://github.com/benbusby/yeetfile.git#tag=v0.2.0
+	source = benbusby-StreamSaver.js::git+https://github.com/benbusby/StreamSaver.js.git
+	source = yeetfile-js::git+https://git.sr.ht/~benbusby/yeetfile-js
+	sha256sums = bbc0f9b364f35b5f4d0f538a467a8fa84d9cd13be85ac99e8d2dc997e3163f76
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = yeetfile-common
+	pkgdesc = A self-hosted service for encrypted file sharing and storage (common files)
+	arch = any
+
+pkgname = yeetfile
+	pkgdesc = A self-hosted service for encrypted file sharing and storage (CLI)
+	depends = yeetfile-common>=0.2.0
+	depends = glibc
+
+pkgname = yeetfile-server
+	pkgdesc = A self-hosted service for encrypted file sharing and storage (server)
+	depends = yeetfile-common>=0.2.0
+	depends = glibc

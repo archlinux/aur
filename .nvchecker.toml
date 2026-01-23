@@ -1,0 +1,4 @@
+[yeetfile]
+source = "git"
+git = "https://github.com/benbusby/yeetfile.git"
+prefix = "v"
