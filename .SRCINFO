@@ -1,18 +1,18 @@
 pkgbase = ircii
 	pkgdesc = IRC and ICB client that runs under most UNIX platforms.
-	pkgver = 20240918
+	pkgver = 20260115
 	pkgrel = 1
-	url = http://www.eterna.com.au/ircii/
+	url = http://www.eterna23.net/ircii/
 	arch = i686
 	arch = x86_64
 	license = BSD-Source-Code
 	depends = lftp
 	depends = ncurses
 	conflicts = ircii-current
-	source = http://ircii.warped.com/ircii-20240918.tar.gz
-	md5sums = 416e272af0413c5a10aceb251c9f2561
-	sha1sums = d2fbce73147d15e76aac1c248a1c6f7082173816
-	sha256sums = 765e23edb58d6ccef0a0828424d75382d0dcab9feef06cca04d977c161e59f0c
-	sha512sums = 6d43dee02bab655b8163d86349eb730e519c41beb5b85a14019e87b150ff6c8416bb2d71ad76f1169c190fa01c81c055a442437d31c0461459b119e7f798c0f3
+	source = http://ircii.warped.com/ircii-20260115.tar.gz
+	md5sums = 32c97374c4c1fc282aa0a19a2b03427c
+	sha1sums = 91c04f8b57e9e69e1a8f1cba01868def18e2acd2
+	sha256sums = 380aabd8aa42743b51489f6b7dfeb2355bf45e36800c369e8a566c8f2fc9376e
+	sha512sums = 318ea2eabc6c8aac331842eed450813788e9d5bb7f6789f0d145c8ec2b88b3a04d1cecb1f86b5997d768f40665ccc34b3e34995dd42e786a795141ea37796979
 
 pkgname = ircii
