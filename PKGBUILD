@@ -3,7 +3,7 @@
 
 pkgname=fluffychat-localflutter
 _pkgname=fluffychat
-pkgver=2.2.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Chat with your friends, be careful about your flutter environment"
 arch=('x86_64' 'aarch64')
@@ -15,23 +15,22 @@ makedepends=('clang'
              'cmake'
              'git'
              'unzip'
-             #'flutter'
-             'webkit2gtk')
+             )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
   "fluffychat-v${pkgver}.tar.gz::https://github.com/krille-chan/fluffychat/archive/refs/tags/v${pkgver}.zip"
-  'notification.patch'
+  'linux.patch'
 )
 options+=(!lto)
 sha256sums=(
-  '5fb969531a17905623c7d0d69be66e791d86e112a1097427576abab2a3b21538'
-  'ec299c4ba1ea8cc254f22307fb9267ac456b47e3275d2eb6cfec4aada0d6b390'
+  'c47148b8a538ed138d6522ef6b8b41abbdef211735949b4c1b7ca2b4070e476a'
+  '3bca33b0d2952f4de1de48e59509178375e3c18b6c4b17d90a2f6fae88940868'
 )
 
 prepare() {
   cd ${_pkgname}-$pkgver
-  patch -Np1 -i "$srcdir/notification.patch"
+  patch -Np1 -i "$srcdir/linux.patch"
 }
 
 # Check the fluffer environment yourself
