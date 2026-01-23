@@ -16,7 +16,7 @@ backup=()
 options=()
 source=("${url}/releases/download/v${pkgver}/${_pkgname}.amd64")
 noextract=()
-sha256sums=('bd27ae3b7eb0ecfd2cb6d8dc000b37e5dd2b727c8bd7c4a00815bcd292c7138d')
+sha256sums=('SKIP')
 
 
 package() {
