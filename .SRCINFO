@@ -1,0 +1,18 @@
+pkgbase = remote-local-storage-git
+	pkgdesc = Simple wrapper to save and restore localStorage of webapps in server
+	pkgver = r8.ea930dc
+	pkgrel = 1
+	url = https://gitea.balki.me/balki/remote-local-storage
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = git
+	makedepends = go
+	conflicts = remote-local-storage
+	source = git+https://gitea.balki.me/balki/remote-local-storage.git#branch=main
+	source = remote-local-storage.service
+	source = remote-local-storage.socket
+	sha256sums = SKIP
+	sha256sums = 6bdfbf02c5caef218507087d32cfdedcade0e74f97e099574f3dd8b0d66dfeb6
+	sha256sums = 4c0a9bc570346857c0132e14eb277dd25ea97cd6d35b560e69f8c60b4bd252c1
+
+pkgname = remote-local-storage-git

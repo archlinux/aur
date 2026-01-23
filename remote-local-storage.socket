@@ -1,0 +1,10 @@
+[Unit]
+Description=Socket activation for remote-local-storage
+
+[Socket]
+ListenStream=/run/rls.sock
+SocketGroup=caddy
+SocketMode=0660
+
+[Install]
+WantedBy=sockets.target

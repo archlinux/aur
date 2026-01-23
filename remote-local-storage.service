@@ -1,0 +1,21 @@
+[Unit]
+Description=localStorage persistence service for web applications
+
+[Service]
+
+Type=simple
+DynamicUser=yes
+
+StateDirectory=remote-local-storage
+StateDirectoryMode=0700
+WorkingDirectory=/var/lib/remote-local-storage
+
+ExecStart=/usr/bin/remote-local-storage -address "sysd?name=remote-local-storage.socket&idle_timeout=1h"
+
+NoNewPrivileges=yes
+CapabilityBoundingSet=
+RestrictNamespaces=true
+SystemCallFilter=@system-service
+ProtectProc=invisible
+ProtectHome=true
+PrivateNetwork=yes
