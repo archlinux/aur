@@ -1,7 +1,7 @@
 # Maintainer: Michal Sotolar <michal at sotolar dot com>
 
 pkgname=firefox-extension-floccus
-pkgver=5.8.5
+pkgver=5.8.6
 pkgrel=1
 
 pkgdesc='Sync your bookmarks privately across browsers and devices'
@@ -20,4 +20,4 @@ package() {
   install -Dm644 floccus-build-v$pkgver.xpi "$pkgdir/usr/lib/firefox/browser/extensions/floccus@handmadeideas.org.xpi"
 }
 
-b2sums=('a5998d2fab794c4fb6336dc4e061c69b61585f8ea85b77c8dc460796dd089fc2249d50604105249edf775dcd74e17af75a67feac796ec50505732929cae9ee21')
+b2sums=('49c8a6a7f51ccc71467aa22b1d83d9f909cb5b61d5227c5fe2064b48ba92af9bcfbc430cbb93526478b82f51dc8a01de1a7c0a8b812b654f03cec98b5aeda889')
