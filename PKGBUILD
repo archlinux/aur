@@ -1,6 +1,6 @@
 pkgname=collapseloader-bin
-pkgver=0.2.6
-pkgrel=5
+pkgver=0.2.7
+pkgrel=6
 pkgdesc="GUI utility for launching Minecraft clients (binary)"
 arch=('x86_64')
 url="https://github.com/dest4590/CollapseLoader"
@@ -8,8 +8,8 @@ license=('GPL-3.0-only')
 depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'pipewire' 'pipewire-jack' 'pipewire-pulse' 'pipewire-alsa' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'gst-libav')
 provides=('collapseloader')
 conflicts=('collapseloader-git')
-source=("collapseloader-${pkgver}_amd64.AppImage::https://github.com/dest4590/CollapseLoader/releases/download/${pkgver}/collapseloader_${pkgver}_amd64.AppImage")
-sha256sums=('4118e1941347b0049378229bc4b7fea022638112d7483fbe81902c0958d6876a')
+source=("collapseloader-${pkgver}_amd64.AppImage::https://github.com/dest4590/CollapseLoader/releases/download/prerelease-v0.2.7-2fa1e99/collapseloader_0.2.7_amd64.AppImage")
+sha256sums=('50568acc6faa481e1365a9b50b22885a370d10f987269c98f9a9f0d1fa260fe7')
 noextract=("collapseloader-${pkgver}_amd64.AppImage")
 
 prepare() {
