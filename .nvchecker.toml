@@ -1,0 +1,4 @@
+[onetalker-bin]
+source = "git"
+git = "https://codeberg.org/OneTalker/OneTalker.git"
+prefix = "v"
