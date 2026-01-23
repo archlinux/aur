@@ -5,7 +5,7 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-pango
-pkgver=1.56.4
+pkgver=1.57.0
 pkgrel=1
 arch=('any')
 pkgdesc="A library for layout and rendering of text (Android ${_android_arch})"
@@ -21,7 +21,7 @@ makedepends=('android-meson'
              'gobject-introspection')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://gitlab.gnome.org/GNOME/pango/-/archive/${pkgver}/pango-${pkgver}.tar.bz2")
-md5sums=('235135d7f48304ee5f95af1a249bc3ff')
+md5sums=('be3c3681792916667bb71ff3479d2a2d')
 
 build() {
     cd "${srcdir}/pango-${pkgver}"
@@ -39,4 +39,6 @@ package() {
     rm -rf "${pkgdir}/${ANDROID_PREFIX_BIN}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
