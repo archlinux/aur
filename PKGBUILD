@@ -3,7 +3,7 @@
 
 pkgname=otaripper-bin
 pkgver=2.1.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Ultra-fast partition extractor for Android OTA files (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/syedinsaf/otaripper"
@@ -13,9 +13,12 @@ provides=('otaripper')
 conflicts=('otaripper' 'otaripper-git')
 
 source=(
-  "$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/otaripper-linux-x86_64.tar.gz"
+  "$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/otaripper-$pkgver-linux-x86_64.tar.gz"
 )
-sha256sums=('b106839ff1079e150a918401159a87ce260e20a49d42ab384a1073e813dc1a19')
+
+sha256sums=(
+  'bdb507327a48d1a7575305b202f33a0ceca1fd029f7c309f8f9c39574d7c865e'
+)
 
 install=otaripper-bin.install
 
