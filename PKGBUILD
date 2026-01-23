@@ -2,7 +2,7 @@
 _base=conda-pack
 pkgname=python-${_base}
 pkgdesc="Package conda environments for redistribution"
-pkgver=0.8.1
+pkgver=0.9.1
 pkgrel=1
 arch=(any)
 url="https://github.com/${_base/-pack/}/${_base}"
@@ -10,7 +10,7 @@ license=(BSD-3-Clause)
 depends=(python conda)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('091620b80537342105983ced518a7b1de84207be486f23186bd05aad27aceb0e9ffe342ce7a17985b9aa5b920880e34bbad3db5e91147e3fc19bc3dc30fcb3c7')
+sha512sums=('db80587fd3c5325cad025da8bbc959ce2e2db25ae9b8e91b8268a2f57931bfc11ee4ef4dfb2189e44bf657f3e0f0603cb45231fbbc7449b61b0af2e2a56e3142')
 
 prepare() {
   if hash conda 2>/dev/null; then
