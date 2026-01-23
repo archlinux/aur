@@ -1,0 +1,19 @@
+post_install() {
+  cat << 'EOF'
+==> otaripper-bin (glibc build)
+
+This package ships the prebuilt glibc-based binary.
+
+If otaripper fails to run due to libc or runtime issues,
+you can use the fully static musl build instead:
+
+  https://github.com/syedinsaf/otaripper/releases
+
+Look for:
+  otaripper-linux-static-x86_64.tar.gz
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
