@@ -2,7 +2,7 @@
 pkgname='winboat-git'
 _pkgname='winboat'
 pkgver=r297.c317316
-pkgrel=1
+pkgrel=2
 pkgdesc='Run Windows apps on Linux with seamless integration'
 arch=(x86_64)
 url='https://www.winboat.app'
@@ -53,7 +53,7 @@ package() {
 
   mkdir dist/.icon-set
   for i in 16 32 48 64 128 256 512; do
-    magick -background none icons/winboat_logo.svg -resize "${i}x${i}""dist/.icon-set/icon_${i}x${i}.png"
+    magick -background none icons/winboat_logo.svg -resize "${i}x${i}" "dist/.icon-set/icon_${i}x${i}.png"
     done
     install -Dm644 dist/.icon-set/icon_${i}x${i}.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
