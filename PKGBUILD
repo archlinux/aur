@@ -1,6 +1,6 @@
 # Maintainer: ReubenPercy/reubenpercival14@gmail.com
 pkgname=rustfetch-git
-pkgver=r1.abcdef0
+pkgver=r3.9ad682c
 pkgrel=1
 pkgdesc="A fast system information fetch tool written in Rust"
 arch=('x86_64' 'i686' 'aarch64')
@@ -10,7 +10,7 @@ depends=()
 makedepends=('rust' 'git')
 provides=('rustfetch')
 conflicts=('rustfetch')
-source=("git+https://codeberg.org/akirathelinuxguy/rustfetch.git")
+source=("git+https://github.com/akirathelinuxguy/rustfetch.git")
 sha256sums=('SKIP')
 
 pkgver() {
