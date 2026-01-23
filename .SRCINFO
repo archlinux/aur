@@ -1,0 +1,16 @@
+pkgbase = ttf-xenia
+	pkgdesc = Monospaced font designed to not to be fugly
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Loretta1982/xenia
+	arch = any
+	license = LicenseRef-XeniaMonofont
+	provides = ttf-font
+	source = xenia_family-1.0.0.zip::https://github.com/Loretta1982/xenia/releases/download/v1.0.0/xenia_family.zip
+	source = https://raw.githubusercontent.com/Loretta1982/xenia/refs/heads/main/LICENSE
+	source = https://raw.githubusercontent.com/Loretta1982/xenia/refs/heads/main/README.md
+	sha256sums = 6d63a6cfba4cc06a9831b790f8b61911a41d9d06cf5a7a910177951b41938d75
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ttf-xenia
