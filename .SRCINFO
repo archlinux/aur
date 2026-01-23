@@ -1,1 +1,18 @@
+pkgbase = bsh-git
+	pkgdesc = A bad shell written in C++
+	pkgver = r49.96a8047
+	pkgrel = 1
+	url = https://github.com/simon0302010/bsh
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cmake
+	depends = readline
+	provides = bsh
+	conflicts = bsh
+	source = git+https://github.com/simon0302010/bsh.git
+	sha256sums = SKIP
 
+pkgname = bsh-git
