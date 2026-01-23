@@ -12,7 +12,7 @@ depends=('zlib')
 options=(!strip)
 provides=('xenia' 'xenia-edge')
 source=("xenia-edge-${pkgver}.AppImage::https://github.com/has207/xenia-edge/releases/download/${_srcver}/xenia_edge_linux.AppImage"
-        "https://raw.githubusercontent.com/has207/xenia-edge/${pkgver}/LICENSE")
+        "https://raw.githubusercontent.com/has207/xenia-edge/${_srcver}/LICENSE")
 sha256sums=('bd167ae49fad17d3c96fd99bf19c320b67dabdcd5e8c71db2e6eabd888711a27'
             'SKIP')
 
