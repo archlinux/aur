@@ -1,0 +1,23 @@
+pkgbase = colorstorm-bin
+	pkgdesc = An interactive TUI for creating color themes for Vim, VSCode, and Sublime
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/benbusby/colorstorm
+	arch = aarch64
+	arch = armv7h
+	arch = x86_64
+	license = MIT
+	provides = colorstorm
+	conflicts = colorstorm
+	source = colorstorm-3.0.0-README.md::https://github.com/benbusby/colorstorm/raw/refs/tags/v3.0.0/README.md
+	source = colorstorm-3.0.0-LICENSE::https://github.com/benbusby/colorstorm/raw/refs/tags/v3.0.0/LICENSE
+	sha256sums = 79e61f42d6362e2766a5e3304a67e4db0711fd5b9a62fa6dae8a6b75a55304af
+	sha256sums = 124b398c80c0badef18e46b44f0b9cf77ca6e8d5368a26d7d3e89d63799056b8
+	source_aarch64 = colorstorm-3.0.0-aarch64.tar.gz::https://github.com/benbusby/colorstorm/releases/download/v3.0.0/colorstorm_linux_arm64.tar.gz
+	sha256sums_aarch64 = 7119f99a51d13d5cc6333163d0848bac63e4952d63ae9ebbbbde20b1464f2a06
+	source_armv7h = colorstorm-3.0.0-armv7h.tar.gz::https://github.com/benbusby/colorstorm/releases/download/v3.0.0/colorstorm_linux_arm32.tar.gz
+	sha256sums_armv7h = c64c76591edde0f4d99dadea5947b509c36994cdff0304cae8265b00724fbc26
+	source_x86_64 = colorstorm-3.0.0-x86_64.tar.gz::https://github.com/benbusby/colorstorm/releases/download/v3.0.0/colorstorm_linux_x86_64.tar.gz
+	sha256sums_x86_64 = eb19a73a978b121441caa2ea8977eb66e953b23037c276a5c9f709fbc56de227
+
+pkgname = colorstorm-bin

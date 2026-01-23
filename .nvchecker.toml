@@ -1,0 +1,5 @@
+[colorstorm-bin]
+source = "github"
+github = "benbusby/colorstorm"
+use_latest_release = true
+prefix = "v"
