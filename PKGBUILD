@@ -6,7 +6,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 
 pkgname=freefilesync
-pkgver=14.6
+pkgver=14.7
 pkgrel=1
 pkgdesc="Folder comparison and synchronization software"
 arch=(x86_64)
@@ -20,7 +20,7 @@ source=(
 )
 noextract=("FreeFileSync_${pkgver}_Source.zip.1")
 sha256sums=('SKIP'
-            '3924f640884f84a97d421e271c89e8e5700998b3cd922d1b539035657714553c'
+            '58c49a280dce03add5e958acf37bd76becb4651134631817881f180324d24dcf'
             '590d87707240529ca893199f852143f5d7c7266cb050e37e615900b013ac3d51'
             '82439b4b81b0a72652befad9b9db52ffbc0180f307c92205aa5ab344f9f82830'
             'f63ae8deba10a8f7ed8f907e355d0cfecf458263fea8ebc2612cb29b41124187')
