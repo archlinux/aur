@@ -1,6 +1,6 @@
 pkgbase = rpi-imager-latest
 	pkgdesc = Raspberry Pi Imager – flash images to SD cards and USB drives
-	pkgver = 2.0.5
+	pkgver = 2.0.6
 	pkgrel = 1
 	url = https://www.raspberrypi.com/software/
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = rpi-imager-latest
 	depends = hicolor-icon-theme
 	provides = rpi-imager
 	conflicts = rpi-imager-git
-	source = rpi-imager-latest-2.0.5.tar.gz::https://github.com/raspberrypi/rpi-imager/archive/refs/tags/v2.0.5.tar.gz
-	sha256sums = 7d7e7fbe45de82e8cb113920741b87382162651e0c92d6e3580fdbade9667571
+	source = rpi-imager-latest-2.0.6.tar.gz::https://github.com/raspberrypi/rpi-imager/archive/refs/tags/v2.0.6.tar.gz
+	sha256sums = 3a7e0b8124e5625591c0a3e3eb0bd14da42da8c618c1131af2bf050b1722700b
 
 pkgname = rpi-imager-latest
