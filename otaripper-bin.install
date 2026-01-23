@@ -1,18 +1,27 @@
 post_install() {
-  cat << 'EOF'
+  if command -v tput >/dev/null && [ -t 1 ]; then
+    CYAN=$(tput setaf 6)
+    YELLOW=$(tput setaf 3)
+    GREEN=$(tput setaf 2)
+    BLUE=$(tput setaf 4)
+    BOLD=$(tput bold)
+    RESET=$(tput sgr0)
+  else
+    CYAN= YELLOW= GREEN= BLUE= BOLD= RESET=
+  fi
 
-\e[1;36m==> otaripper-bin (glibc build)\e[0m
+  cat << EOF
+${CYAN}${BOLD}==> otaripper-bin (glibc build)${RESET}
 
-This package ships the \e[1mprebuilt glibc-based binary\e[0m.
+This package ships the ${BOLD}prebuilt glibc-based binary${RESET}.
 
-\e[1;33mIf otaripper fails to run due to libc or runtime issues:\e[0m
-You can use the \e[1;32mfully static musl build\e[0m instead:
+${YELLOW}If otaripper fails to run due to libc or runtime issues:${RESET}
+You can use the ${GREEN}${BOLD}fully static musl build${RESET} instead:
 
-  \e[4;34mhttps://github.com/syedinsaf/otaripper/releases\e[0m
+  ${BLUE}https://github.com/syedinsaf/otaripper/releases${RESET}
 
 Look for:
-  \e[1motaripper-linux-static-x86_64.tar.gz\e[0m
-
+  ${BOLD}otaripper-linux-static-x86_64.tar.gz${RESET}
 EOF
 }
 
