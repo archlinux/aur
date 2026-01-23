@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=witsy
 _pkgname=Witsy
-pkgver=3.4.0
+pkgver=3.4.2
 _electronversion=38
 _nodeversion=22
 pkgrel=1
@@ -12,6 +12,8 @@ license=('Apache-2.0')
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
+    'libevdev'
+    'java-runtime'
 )
 makedepends=(
     'gendesk'
@@ -25,7 +27,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('d97c5ca874c260783311d952aac8915c734e21c38c429f42496a37020dde7336'
+sha256sums=('b72089c8efb42f6c436f364c41f483f5cecdcab055e9bd7bab077f064af43548'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
