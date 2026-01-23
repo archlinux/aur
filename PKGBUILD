@@ -1,15 +1,15 @@
 # Maintainer: Dawood <Nurysso at proton.me>
 pkgname=vanish
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc="Modern safe file deletion tool with recovery - Never lose files again! Beautiful TUI, pattern restore, themes."
 arch=('x86_64' 'aarch64')
 url="https://github.com/nurysso/vanish"
-license=('MIT')
+license=('GPL3')
 depends=()
-makedepends=('go' 'make')
+makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nurysso/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('ff095020bbaf560e7bb01db25d60b7a64a7a0d79857faa4be9ef935b578327de')
+sha256sums=('37099ffb3fa07f893b261af4c84a7f2c562a02a4775ad9a24a78845faf9d6166')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -35,7 +35,7 @@ package() {
     # Note: We don't use 'make install' because it installs to /usr/local/bin
     # and PKGBUILD needs to install to $pkgdir for package manager tracking
     # The binary will be in build/bin/
-        install -Dm755 vx "$pkgdir/usr/bin/vx"
+    install -Dm755 vx "$pkgdir/usr/bin/vx"
 
     # Install license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
