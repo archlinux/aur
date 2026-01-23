@@ -1,8 +1,9 @@
-# Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
+# Maintainer: taotieren <admin@taotieren.com>
+
 pkgname=python-pypemicro
 _pkgname=${pkgname#python-}
 pkgver=0.1.11
-pkgrel=1
+pkgrel=7
 pkgdesc="Python interface for PEMicro debug probes precompiled libraries"
 arch=('any')
 url="https://github.com/nxpmicro/pypemicro"
