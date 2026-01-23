@@ -1,7 +1,7 @@
 pkgbase = zlint
 	pkgdesc = A linter for the Zig programming language
 	pkgver = 0.7.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DonIsaac/zlint
 	arch = x86_64
 	license = MIT

@@ -2,7 +2,7 @@
 
 pkgname=zlint
 pkgver=0.7.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A linter for the Zig programming language'
 arch=(x86_64)
 url=https://github.com/DonIsaac/zlint
