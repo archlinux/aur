@@ -1,13 +1,16 @@
+# Maintainer: Parker Rowen <gitporker@gmail.com>
+# Upstream Maintainer: Different AI <team@different.ai>
 pkgname=openwork
-pkgver=0.2.9
+pkgver=0.3.2
 pkgrel=1
-pkgdesc="OpenWork desktop app for OpenCode"
+pkgdesc="An Open source alternative to Claude Cowork"
 arch=('x86_64')
 url="https://github.com/different-ai/openwork"
 license=('MIT')
 depends=('gtk3' 'webkit2gtk-4.1')
-source=("${pkgname}-${pkgver}.deb::https://github.com/different-ai/openwork/releases/download/v${pkgver}/OpenWork_${pkgver}_amd64.deb")
-sha256sums=('a36e6db9b70b42e0b11d0a390979a7f4a1d0b91900ed049aa4521d1e9fe14ab5')
+options=(!debug)
+source=("${pkgname}-${pkgver}.deb::https://github.com/different-ai/openwork/releases/download/v${pkgver}/openWork-desktop-linux-amd64.deb")
+sha256sums=('d651aae9587d8efaac066e4eb77d822e2000a36892d2243bbfe535633942c169')
 
 package() {
   cd "${srcdir}"
