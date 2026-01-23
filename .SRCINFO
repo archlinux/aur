@@ -1,0 +1,11 @@
+pkgbase = github-mcp-server
+	pkgdesc = GitHub's official MCP Server
+	pkgver = 0.29.0
+	pkgrel = 1
+	url = https://github.com/github/github-mcp-server/
+	arch = x86_64
+	license = MIT
+	source = https://github.com/github/github-mcp-server/releases/download/v0.29.0/github-mcp-server_Linux_x86_64.tar.gz
+	sha256sums = 9baaacbb408feb83961cabd0fb644231713c6e286deda881d121e7804daa6bb4
+
+pkgname = github-mcp-server
