@@ -5,10 +5,10 @@
 pkgname=3dstool
 pkgver=1.2.6
 pkgrel=2
-pkgdesc='An all-in-one tool for extracting/creating 3ds roms'
-arch=(x86_64)
-url=https://github.com/dnasdw/${pkgname}
-license=(MIT)
+pkgdesc="An all-in-one tool for extracting/creating 3ds roms"
+arch=('x86_64')
+url="https://github.com/dnasdw/${pkgname}"
+license=('MIT')
 depends=('glibc' 'libcurl.so' 'openssl')
 makedepends=('cmake' 'git')
 source=(
@@ -16,7 +16,7 @@ source=(
   "${pkgname}-paths.patch"
 )
 sha256sums=('7f6118bfe7b8e1ba87aa547a8cb892c29c9cc45ad817ee822121fa2142044859'
-            '5ac00e5b56182ffde04c7b9ab2a5151e6cf575400705f0b061ff832116757582')
+  '5ac00e5b56182ffde04c7b9ab2a5151e6cf575400705f0b061ff832116757582')
 
 prepare() {
   cd ${pkgname}-${pkgver}
@@ -28,7 +28,7 @@ prepare() {
 build() {
   cd ${pkgname}-${pkgver}
 
-  cmake -B build -S . \
+  cmake -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DUSE_DEP=OFF \
     -DCMAKE_SKIP_RPATH=ON \
