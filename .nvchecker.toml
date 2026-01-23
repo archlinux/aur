@@ -2,4 +2,4 @@
 source = "github"
 github = "connorferster/handcalcs"
 use_max_tag = "true"
-prefix = "v."
+prefix = "v"
