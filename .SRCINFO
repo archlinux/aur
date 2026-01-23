@@ -1,6 +1,6 @@
 pkgbase = mitogen
 	pkgdesc = Distributed self-replicating programs in Python
-	pkgver = 0.3.37
+	pkgver = 0.3.38
 	pkgrel = 1
 	url = https://mitogen.networkgenomics.com/
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = mitogen
 	makedepends = python-setuptools
 	depends = python
 	optdepends = ansible: for using the ansible strategy plugin
-	source = mitogen-0.3.37.tar.gz::https://github.com/mitogen-hq/mitogen/archive/v0.3.37.tar.gz
-	sha1sums = d229a84cad3f0ee5f03ee8fb436a05801ea5a3d7
-	sha256sums = fce9b47a8eb155d389aa0e4bc820d1fdd8f512563b831933896b3eb0ec8e573f
-	sha384sums = 1a9849965b51a8c9029e32dcc86e3658442cecf653e487271a21823dcd36a91aaf7b00c0fcaf57cd30ee6e940cc91750
-	sha512sums = c0f99c119e8b48c6b928155c0f6ac20a604a06d3587280bbcfeac91bde480ba77053c67e5cf842493e4c6179096af369d85c31b01d1b08df8f40fc79b997e019
+	source = mitogen-0.3.38.tar.gz::https://github.com/mitogen-hq/mitogen/archive/v0.3.38.tar.gz
+	sha1sums = e874ad4080c0746aee34d41552221de127e103ee
+	sha256sums = bb11268a8b0b576c304f1b5985a0403148a3cc399c35324ac726648fd38c60dd
+	sha384sums = 16c37a2597245e698ba7fee862f807bc9cbdde6b1fbcdbbd0f9f1004fd9efe0d8c5db7e0bb2e5906ad15d354195b7bf9
+	sha512sums = d1f86b7a5691cd6493d220398c6771a0a23baf24c32ad978e935750496d4cfc2dc2e1657f9c65f9111894c37c6658581fc4a07b1b9e37bfa5aaeac7829f388b1
 
 pkgname = mitogen
