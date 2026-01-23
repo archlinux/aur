@@ -1,0 +1,5 @@
+[yeetfile-bin]
+source = "github"
+github = "benbusby/yeetfile"
+use_latest_release = true
+prefix = "v"
