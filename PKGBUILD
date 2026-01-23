@@ -2,8 +2,8 @@
 
 pkgname=sdkman-bin
 pkgver=5.20.0
-_nativepkgver=0.7.15
-pkgrel=4
+_nativepkgver=0.7.16
+pkgrel=5
 pkgdesc="The Software Development Kit Manager Command Line Interface"
 arch=('x86_64' 'aarch64')
 url="https://sdkman.io/"
@@ -67,6 +67,6 @@ package() {
 }
 
 sha256sums_x86_64=('09c57ad7b6de2fff2b2153d62ee44fbf4ac189257291ba12a173422717adc22a'
-                   '96df91b5eeb06f67d36631626ed7124cc08e760aefe95828f878fe463fe67f24')
+                   '93dab1773bcf7460106e4535e2ec605e40245d7a3dd5ce74d5b03c7b21785588')
 sha256sums_aarch64=('09c57ad7b6de2fff2b2153d62ee44fbf4ac189257291ba12a173422717adc22a'
-                    'ea6daa7ca16a88f1e64ea25dab3e0d69f700b773219fd656751bf4a75e112eee')
+                    'cf04341e02f1cd4bd51a8b51bd6a1a6c97af07bd9c822a9c3d202cc860ad5b9c')
