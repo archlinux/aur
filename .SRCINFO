@@ -1,0 +1,24 @@
+pkgbase = cboard-chess-git
+	pkgdesc = Interfaz de ajedrez cboard (Versión Portátil Auto-detectable)
+	pkgver = 0.7.5
+	pkgrel = 1
+	url = https://gitlab.com/ntlatempa/cboard-chess
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = pkgconf
+	makedepends = autoconf-archive
+	makedepends = git
+	depends = ncurses
+	depends = perl
+	depends = glibc
+	depends = util-linux
+	depends = gpm
+	provides = cboard-chess-tui
+	conflicts = cboard
+	source = git+https://gitlab.com/ntlatempa/cboard-chess.git
+	sha256sums = SKIP
+
+pkgname = cboard-chess-git
