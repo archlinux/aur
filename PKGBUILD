@@ -3,7 +3,7 @@
 
 pkgname=otaripper
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ultra-fast partition extractor for Android OTA .zip and payload.bin files"
 arch=('x86_64' 'aarch64')
 url="https://github.com/syedinsaf/otaripper"
