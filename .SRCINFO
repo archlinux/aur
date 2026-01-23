@@ -1,4 +1,4 @@
-pkgbase = betafpv-configurator-bin
+pkgbase = betafpv-configurator
 	pkgdesc = BETAFPV Configurator — software for configuring BETAFPV drones
 	pkgver = 2.0
 	pkgrel = 1
@@ -11,4 +11,4 @@ pkgbase = betafpv-configurator-bin
 	source = https://github.com/BETAFPV/BETAFPV_Configurator/releases/download/V2.0.1/BETAFPV_Configurator_Linux_x64_v2.0.1_20250804_0e5d03c.deb
 	sha256sums = f695ede6992280f2024f47a09fcad5796607068ad7c44993c878fbcad930475d
 
-pkgname = betafpv-configurator-bin
+pkgname = betafpv-configurator

@@ -1,6 +1,6 @@
 # Maintainer: Artemiy <kolobov-artem@bk.ru>
 # Contributor: Lee
-pkgname='betafpv-configurator-bin'
+pkgname='betafpv-configurator'
 pkgver='2.0'
 pkgrel=1
 epoch=1
