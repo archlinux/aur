@@ -1,13 +1,14 @@
 pkgbase = carbon-cli
-	pkgdesc = Carbon is a lightweight indexing framework on Solana. It provides a modular pipeline for sourcing data, decoding updates and processing them in order to build end-to-end indexers.
-	pkgver = 0.10.0
+	pkgdesc = Generate decoders and scaffold indexers for Solana programs from Anchor or Codama IDL files
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/sevenlabs-hq/carbon
-	arch = x86_64
+	arch = any
 	license = MIT
+	depends = nodejs
 	provides = carbon-cli
-	options = !strip
-	source = https://github.com/sevenlabs-hq/carbon/releases/download/v0.10.0/carbon-cli-linux-amd64
-	sha256sums = 0426db77418f0ca1020c9b759edca727f6dde0d7d65e5cc3e0e80f9bb7627a0a
+	noextract = carbon-cli-0.12.0.tgz
+	source = https://registry.npmjs.org/@sevenlabs-hq/carbon-cli/-/carbon-cli-0.12.0.tgz
+	sha256sums = f24248f44811f7cbafbd8d709ac451b12b93c6133dcd0539edd34692e8375a99
 
 pkgname = carbon-cli

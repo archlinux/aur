@@ -1,20 +1,25 @@
 # Maintainer: dougefresh <dchimento@gmail.com>
 pkgname=carbon-cli
-pkgver=0.10.0
+pkgver=0.12.0
 pkgrel=1
-pkgdesc="Carbon is a lightweight indexing framework on Solana. It provides a modular pipeline for sourcing data, decoding updates and processing them in order to build end-to-end indexers."
-arch=('x86_64')
+pkgdesc="Generate decoders and scaffold indexers for Solana programs from Anchor or Codama IDL files"
+arch=('any')
 url="https://github.com/sevenlabs-hq/carbon"
 license=('MIT')
-depends=()
-makedepends=()
-optdepends=()
+depends=('nodejs')
 provides=('carbon-cli')
-conflicts=()
-options=('!strip')
-source=("https://github.com/sevenlabs-hq/carbon/releases/download/v${pkgver}/carbon-cli-linux-amd64")
-sha256sums=('0426db77418f0ca1020c9b759edca727f6dde0d7d65e5cc3e0e80f9bb7627a0a')
+source=("https://registry.npmjs.org/@sevenlabs-hq/${pkgname}/-/${pkgname}-${pkgver}.tgz")
+sha256sums=('f24248f44811f7cbafbd8d709ac451b12b93c6133dcd0539edd34692e8375a99')
+noextract=("${pkgname}-${pkgver}.tgz")
 
 package() {
-  install -Dm755 carbon-cli-linux-amd64 "$pkgdir/usr/bin/carbon-cli"
+  npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
+  
+  # Remove npm cache and other unnecessary files
+  find "${pkgdir}/usr" -type d -name .cache -exec rm -rf {} +
+  rm -rf "${pkgdir}/usr/etc"
+  
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -s "../../../lib/node_modules/@sevenlabs-hq/${pkgname}/LICENSE" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
