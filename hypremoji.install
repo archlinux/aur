@@ -12,9 +12,10 @@ post_install() {
     }
 
     USER_HOME=$(get_user_home)
+    HYPRLAND_CONF="$USER_HOME/.config/hypr/hyprland.conf"
     HYPREMOJI_CONFIG_DIR="$USER_HOME/.config/hypremoji"
     HYPREMOJI_CONF="$HYPREMOJI_CONFIG_DIR/hypremoji.conf"
-    HYPRLAND_CONF="$USER_HOME/.config/hypr/hyprland.conf"
+    PASTE_CONFIG="$HYPREMOJI_CONFIG_DIR/paste_config.json"
 
     mkdir -p "$HYPREMOJI_CONFIG_DIR"
     if [[ -n "$SUDO_USER" ]]; then
@@ -115,6 +116,100 @@ post_install() {
     echo "==> Installation complete"
     echo "    Run 'hypremoji' to open the emoji picker"
 }
+# Function to convert old cursor syntax to new syntax
+convert_cursor_syntax() {
+    local line="$1"
+    
+    # Pattern: cursor -X% -Y% -> (cursor_x-(window_w*0.X)) (cursor_y-(window_h*0.Y))
+    if echo "$line" | grep -q "cursor -[0-9]\+% -[0-9]\+%"; then
+        
+        # Extract percentages
+        local x_percent=$(echo "$line" | sed -n 's/.*cursor -\([0-9]\+\)% -[0-9]\+%.*/\1/p')
+        local y_percent=$(echo "$line" | sed -n 's/.*cursor -[0-9]\+% -\([0-9]\+\)%.*/\1/p')
+        
+        # Convert to decimal (50 -> 0.50, 5 -> 0.05, 95 -> 0.95)
+        local x_decimal="0.$(printf "%02d" $x_percent)"
+        local y_decimal="0.$(printf "%02d" $y_percent)"
+        
+        # Replace the old syntax with new syntax
+        local result=$(echo "$line" | sed "s|cursor -${x_percent}% -${y_percent}%|(cursor_x-(window_w*${x_decimal})) (cursor_y-(window_h*${y_decimal}))|")
+        echo "$result"
+    else
+        echo "$line"
+    fi
+}
+
+# Function to update hypremoji.conf to new Hyprland syntax
+update_hypremoji_syntax() {
+    local conf_file="$1"
+    
+    if [[ ! -f "$conf_file" ]]; then
+        return 0
+    fi
+    
+    # Check if already updated (verifica que NO tenga la sintaxis vieja)
+    if ! grep -q "windowrulev2" "$conf_file" && ! grep -q "title:\^(HyprEmoji)" "$conf_file"; then
+        echo "    -> Config already using new syntax"
+        return 0
+    fi
+    
+    echo "    -> Migrating to new Hyprland syntax..."
+    
+    local temp_file=$(mktemp)
+    local updated=false
+    local line_num=0
+    
+    # FIX: Usar un process substitution con cat para asegurar que se lean todas las líneas
+    while IFS= read -r line || [[ -n "$line" ]]; do  # <- ¡ESTE ES EL FIX!
+        line_num=$((line_num + 1))
+        
+        local new_line="$line"
+        
+        # Convert windowrulev2 -> windowrule
+        if echo "$new_line" | grep -q "windowrulev2"; then
+            new_line=$(echo "$new_line" | sed 's/windowrulev2 =/windowrule =/g')
+        fi
+        
+        # Fix float rule: windowrule = float, -> windowrule = float true,
+        if echo "$new_line" | grep -q "windowrule = float,"; then
+            new_line=$(echo "$new_line" | sed 's/windowrule = float,/windowrule = float true,/g')
+        fi
+        
+        # Convert title:^(HyprEmoji)$ -> match:title ^(HyprEmoji)$
+        if echo "$new_line" | grep -q "title:\^(HyprEmoji)"; then
+            new_line=$(echo "$new_line" | sed 's/title:\^(HyprEmoji)\$/match:title ^(HyprEmoji)$/g')
+        fi
+        
+        # Convert cursor syntax if present
+        if echo "$new_line" | grep -q "cursor -[0-9]\+% -[0-9]\+%"; then
+            new_line=$(convert_cursor_syntax "$new_line")
+            updated=true
+        fi
+        
+        # Check if line was modified
+        if [[ "$line" != "$new_line" ]]; then
+            updated=true
+        fi
+        
+        echo "$new_line" >> "$temp_file"
+    done < "$conf_file"
+    
+    cat "$temp_file" >&2
+    
+    if [[ "$updated" == true ]]; then
+        mv "$temp_file" "$conf_file"
+        echo "    -> Syntax migration completed"
+        
+        if [[ -n "$SUDO_USER" ]]; then
+            chown "$SUDO_USER:$SUDO_USER" "$conf_file"
+        fi
+    else
+        rm "$temp_file"
+        echo "    -> No syntax changes needed"
+    fi
+    
+    cat "$conf_file" >&2
+}
 
 post_upgrade() {
     echo "==> Upgrading hypremoji configuration..."
@@ -150,7 +245,8 @@ post_upgrade() {
     fi
 
     if [[ -f "$HYPREMOJI_CONF" ]]; then
-        echo "    -> Already using new configuration structure (v1.0.3 or later)"
+        echo "    -> Found existing hypremoji.conf"
+        update_hypremoji_syntax "$HYPREMOJI_CONF"
         
         if [[ -f "$HYPRLAND_CONF" ]] && ! grep -q "source.*hypremoji/hypremoji.conf" "$HYPRLAND_CONF"; then
             echo "    -> Warning: hypremoji.conf exists but not sourced in hyprland.conf"
