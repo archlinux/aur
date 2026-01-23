@@ -1,0 +1,9 @@
+[Unit]
+Description=File Centipede service
+
+[Service]
+Type=simple
+ExecStart=/opt/filecentipede/lib/filec __elevating__
+
+[Install]
+WantedBy=multi-user.target

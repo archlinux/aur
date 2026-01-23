@@ -1,0 +1,4 @@
+post_remove() {
+  rm -f /opt/filecentipede/data_linux.db*
+  echo "FileCentipede database files have been removed."
+}
