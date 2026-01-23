@@ -4,7 +4,7 @@
 pkgbase=memoria
 pkgname=(memoria-daemon memoria-ui)
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Clipboard manager with daemon and Qt UI"
 arch=('x86_64')
 url="https://github.com/Bumblebee-3/memoria"
@@ -14,6 +14,7 @@ makedepends=(
   cargo
   cmake
   ninja
+  wl-clipboard
 )
 
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
@@ -59,6 +60,7 @@ package_memoria-ui() {
     gcc-libs
     qt6-base
     qt6-declarative
+    wl-clipboard
     memoria-daemon
   )
 
