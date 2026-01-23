@@ -10,7 +10,7 @@ _deps_gui=('cosmic-icon-theme')
 
 pkgbase=openscq30
 pkgname=("$pkgbase"-{cli,gui})
-pkgver=2.3.1
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Cross platform application for controlling settings of Soundcore headphones"
 arch=(x86_64 aarch64 armv7l)
@@ -20,9 +20,9 @@ groups=("$pkgbase")
 makedepends=('cargo')
 depends=("${_deps_common[@]}" "${_deps_gui[@]}")
 source=("$_pname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('d0954af3845c775248932fa967c957d2')
-sha512sums=('4f2424789485ae607cb82d106cfff2c5e89709ab98f273f2769f6cd2c7648d9e26fc9883771aa4ecf8ddd20ecb09680a44f4c1fe59039f89817b644e9176e9e8')
-b2sums=('c5c7607fa0752427780a925c3dec3352662751857b89fcaa38216518a602726ee613e72a0295610035233e7d4ecfc7f03222a144696866ec681a6b21d1da6c4a')
+md5sums=('b31408c19a2e0838e8dbb22ba7e18015')
+sha512sums=('7c528c7ca055788eee7d980538399e90ffad0ea232f5d4592675236e09951df45259de8ea88adf94b24ce35bb6b7cbc5cd130dca7b62a2a5331b354d4e22b20c')
+b2sums=('33f8a27996ccff2625b9959b569f7c9f1c35aef4e3095da23ac681681c264e0c4f15ec21f77de3b8a7fbd63131163134574161ea5ca988354faf36c90e2fdf67')
 
 prepare() {
 	cd "$srcdir/$_pname-$pkgver"
