@@ -16,7 +16,7 @@ source=(
   "lazarus-packages.py"
 )
 sha256sums=('SKIP'
-            '5b3368f525657ad6dd084addfb1a768941c2f66ce33d139bc73faf2d9a34dfa4')
+            '05aa04046bfb5fefd1824e6efd89b1ae9dbf27e09d29c10960c43e2671963fd3')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
