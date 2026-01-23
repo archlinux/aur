@@ -1,7 +1,7 @@
 # Maintainer: ZXY <3303057136@qq.com>
 
 pkgname=verylup
-pkgver=0.1.11
+pkgver=0.1.12
 pkgrel=1
 pkgdesc="The Veryl toolchain installer"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ makedepends=('cargo')
 options=(!lto)
 
 source=("$pkgname-${pkgver}.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('342e8bb86410bc8d92c265b75e1fc6df067246d7834930db6efb87aac44161e0')
+sha256sums=('5ff5d55e42a888e7d873a482933310ebac9db3e1cdf6b167facc078b04a5d37b')
 
 prepare() {
   cd "$pkgname-${pkgver}"

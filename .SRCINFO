@@ -1,6 +1,6 @@
 pkgbase = verylup
 	pkgdesc = The Veryl toolchain installer
-	pkgver = 0.1.11
+	pkgver = 0.1.12
 	pkgrel = 1
 	url = https://github.com/veryl-lang/verylup
 	install = post.install
@@ -12,7 +12,7 @@ pkgbase = verylup
 	provides = verylup
 	conflicts = verylup
 	options = !lto
-	source = verylup-0.1.11.tar.gz::https://github.com/veryl-lang/verylup/archive/refs/tags/v0.1.11.tar.gz
-	sha256sums = 394acd4e7599893469ccae9767817ac987aca8642998cbdf8a947c5f06d20db1
+	source = verylup-0.1.12.tar.gz::https://github.com/veryl-lang/verylup/archive/refs/tags/v0.1.12.tar.gz
+	sha256sums = 5ff5d55e42a888e7d873a482933310ebac9db3e1cdf6b167facc078b04a5d37b
 
 pkgname = verylup
