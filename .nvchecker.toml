@@ -1,0 +1,4 @@
+[cine]
+source = "git"
+git = "https://github.com/diegopvlk/Cine.git"
+prefix = "v"
