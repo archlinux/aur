@@ -1,0 +1,4 @@
+[python-fiat]
+source = "github"
+github = "FEniCS/fiat"
+use_max_tag = "true"

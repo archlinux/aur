@@ -1,17 +1,15 @@
 pkgbase = python-fiat
-	pkgdesc = Supports generation of arbitrary order instances of the Lagrange elements on lines, triangles, and tetrahedra (stable).
+	pkgdesc = FInite element Automatic Tabulator
 	pkgver = 2019.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FEniCS/fiat
 	arch = any
-	groups = fenics
-	license = LGPL3
+	license = LGPL-3.0-or-later
 	makedepends = python-setuptools
 	depends = python-numpy
 	depends = python-sympy
-	conflicts = python-fiat-git
 	options = !emptydirs
-	source = python-fiat-2019.1.0.tar.gz::https://bitbucket.org/fenics-project/fiat/downloads/fiat-2019.1.0.tar.gz
-	sha256sums = 341a1046cbe0f5f2eb26630c2f71f378b0dca51daf9892a54a2ff193970371e9
+	source = fiat-2019.1.0.tar.gz::https://github.com/FEniCS/fiat/archive/2019.1.0.tar.gz
+	sha512sums = 15de17b2a28ba5071c0dd9ecc05ec36eeae76de3aa9f068577d43b7526778116e2ded412fa8c26189e7c505881dd2b68b2c45704c8446d9ef9d9d3797c3592e6
 
 pkgname = python-fiat

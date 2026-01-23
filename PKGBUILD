@@ -2,31 +2,27 @@
 # Contributor: Sigvald Marholm <marholm@marebakken.com>
 # Contributor: Georg S. Voelker <voelker@maibox.org>
 # Based on python-fiat-git, maintained by Lucas H. Gabrielli <heitzmann@gmail.com>
-
 _base=fiat
 pkgname=python-${_base}
-pkgdesc="Supports generation of arbitrary order instances of the Lagrange elements on lines, triangles, and tetrahedra (stable)."
+pkgdesc="FInite element Automatic Tabulator"
 pkgver=2019.1.0
-pkgrel=1
-arch=('any')
+pkgrel=2
+arch=(any)
 url="https://github.com/FEniCS/${_base}"
-license=('LGPL3')
-groups=('fenics')
-conflicts=('python-fiat-git')
-depends=('python-numpy' 'python-sympy')
-makedepends=("python-setuptools")
+license=(LGPL-3.0-or-later)
+depends=(python-numpy python-sympy)
+makedepends=(python-setuptools)
 options=(!emptydirs)
-source=(${pkgname}-${pkgver}.tar.gz::https://bitbucket.org/fenics-project/${_base}/downloads/${_base}-${pkgver}.tar.gz)
-sha256sums=('341a1046cbe0f5f2eb26630c2f71f378b0dca51daf9892a54a2ff193970371e9')
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
+sha512sums=('15de17b2a28ba5071c0dd9ecc05ec36eeae76de3aa9f068577d43b7526778116e2ded412fa8c26189e7c505881dd2b68b2c45704c8446d9ef9d9d3797c3592e6')
 
 build() {
-	cd ${srcdir}/${_base}-${pkgver}
- 	python setup.py build
+	cd ${_base}-${pkgver}
+	python setup.py build
 }
 
 package() {
 	cd ${srcdir}/${_base}-${pkgver}
- 	python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+	PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+	install -Dm 644 COPYING* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
-# vim: shiftwidth=2 softtabstop=2 tabstop=2 noexpandtab
