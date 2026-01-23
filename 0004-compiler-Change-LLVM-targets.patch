@@ -17,49 +17,51 @@ targets, as things break when this is done:
    `rustc --version --verbose`) is different from the target triple
    (from `rustc --print target-list`) that best matches autoconf.
 ---
- compiler/rustc_session/src/config.rs                          | 4 ++++
- .../rustc_target/src/spec/targets/i686_unknown_linux_gnu.rs   | 2 +-
- .../rustc_target/src/spec/targets/x86_64_unknown_linux_gnu.rs | 2 +-
- 3 files changed, 6 insertions(+), 2 deletions(-)
+ compiler/rustc_session/src/config.rs                        | 6 ++++++
+ .../rustc_target/src/spec/targets/i686_unknown_linux_gnu.rs | 2 +-
+ .../src/spec/targets/x86_64_unknown_linux_gnu.rs            | 2 +-
+ 3 files changed, 8 insertions(+), 2 deletions(-)
 
 diff --git a/compiler/rustc_session/src/config.rs b/compiler/rustc_session/src/config.rs
-index a622f1b577df..849e9ceee01c 100644
+index 8ff6d567422b..df92dc3cdcf2 100644
 --- a/compiler/rustc_session/src/config.rs
 +++ b/compiler/rustc_session/src/config.rs
-@@ -1974,6 +1974,10 @@ pub fn parse_target_triple(early_dcx: &EarlyDiagCtxt, matches: &getopts::Matches
+@@ -2393,6 +2393,12 @@ pub fn parse_target_triple(early_dcx: &EarlyDiagCtxt, matches: &getopts::Matches
                  early_dcx.early_fatal(format!("target file {path:?} does not exist"))
              })
          }
-+        Some(s) if &s == "x86_64-pc-linux-gnu" => {
-+            TargetTriple::from_triple("x86_64-unknown-linux-gnu")
++        Some(target) if &target == "x86_64-pc-linux-gnu" => {
++            TargetTuple::from_tuple("x86_64-unknown-linux-gnu")
 +        }
-+        Some(s) if &s == "i686-pc-linux-gnu" => TargetTriple::from_triple("i686-unknown-linux-gnu"),
-         Some(target) => TargetTriple::TargetTriple(target),
-         _ => TargetTriple::from_triple(host_triple()),
++        Some(target) if &target == "i686-pc-linux-gnu" => {
++            TargetTuple::from_tuple("i686-unknown-linux-gnu")
++        }
+         Some(target) => TargetTuple::TargetTuple(target),
+         _ => TargetTuple::from_tuple(host_tuple()),
      }
 diff --git a/compiler/rustc_target/src/spec/targets/i686_unknown_linux_gnu.rs b/compiler/rustc_target/src/spec/targets/i686_unknown_linux_gnu.rs
-index 1d4916cabfdf..4caab818efdb 100644
+index c70c026f9f71..5ffa2eb8eddb 100644
 --- a/compiler/rustc_target/src/spec/targets/i686_unknown_linux_gnu.rs
 +++ b/compiler/rustc_target/src/spec/targets/i686_unknown_linux_gnu.rs
-@@ -9,7 +9,7 @@ pub fn target() -> Target {
+@@ -23,7 +23,7 @@ pub(crate) fn target() -> Target {
      base.stack_probes = StackProbeType::Inline;
  
      Target {
 -        llvm_target: "i686-unknown-linux-gnu".into(),
 +        llvm_target: "i686-pc-linux-gnu".into(),
-         metadata: crate::spec::TargetMetadata {
-             description: None,
-             tier: None,
+         metadata: TargetMetadata {
+             description: Some("32-bit Linux (kernel 3.2, glibc 2.17+)".into()),
+             tier: Some(1),
 diff --git a/compiler/rustc_target/src/spec/targets/x86_64_unknown_linux_gnu.rs b/compiler/rustc_target/src/spec/targets/x86_64_unknown_linux_gnu.rs
-index bd12d4d8af0e..67ee03d56da4 100644
+index 59bb7f596210..a03baa699d28 100644
 --- a/compiler/rustc_target/src/spec/targets/x86_64_unknown_linux_gnu.rs
 +++ b/compiler/rustc_target/src/spec/targets/x86_64_unknown_linux_gnu.rs
-@@ -26,7 +26,7 @@ pub fn target() -> Target {
-     }
+@@ -21,7 +21,7 @@ pub(crate) fn target() -> Target {
+     base.supports_xray = true;
  
      Target {
 -        llvm_target: "x86_64-unknown-linux-gnu".into(),
 +        llvm_target: "x86_64-pc-linux-gnu".into(),
-         metadata: crate::spec::TargetMetadata {
-             description: None,
-             tier: None,
+         metadata: TargetMetadata {
+             description: Some("64-bit Linux (kernel 3.2+, glibc 2.17+)".into()),
+             tier: Some(1),

@@ -9,28 +9,28 @@ Subject: [PATCH] bootstrap: Change libexec dir
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/src/bootstrap/src/core/build_steps/dist.rs b/src/bootstrap/src/core/build_steps/dist.rs
-index 91039d0c8dcc..b01827f85ca1 100644
+index 411d42962644..018c6f5654c9 100644
 --- a/src/bootstrap/src/core/build_steps/dist.rs
 +++ b/src/bootstrap/src/core/build_steps/dist.rs
-@@ -426,7 +426,7 @@ fn prepare_image(builder: &Builder<'_>, compiler: Compiler, image: &Path) {
-                 },
+@@ -490,7 +490,7 @@ fn prepare_image(builder: &Builder<'_>, target_compiler: Compiler, image: &Path)
+                 tool::RustAnalyzerProcMacroSrv::from_compilers(compilers),
                  builder.kind,
              ) {
--                builder.install(&ra_proc_macro_srv, &image.join("libexec"), 0o755);
-+                builder.install(&ra_proc_macro_srv, &image.join("lib"), 0o755);
+-                let dst = image.join("libexec");
++                let dst = image.join("lib");
+                 builder.install(&ra_proc_macro_srv.tool_path, &dst, FileType::Executable);
              }
  
-             let libdir_relative = builder.libdir_relative(compiler);
 diff --git a/src/bootstrap/src/core/build_steps/tool.rs b/src/bootstrap/src/core/build_steps/tool.rs
-index 9df4698f21f3..ad0514be5f1d 100644
+index 79df9d3a49da..4d83227b7520 100644
 --- a/src/bootstrap/src/core/build_steps/tool.rs
 +++ b/src/bootstrap/src/core/build_steps/tool.rs
-@@ -724,7 +724,7 @@ fn run(self, builder: &Builder<'_>) -> Option<PathBuf> {
+@@ -1115,7 +1115,7 @@ fn run(self, builder: &Builder<'_>) -> Self::Output {
  
          // Copy `rust-analyzer-proc-macro-srv` to `<sysroot>/libexec/`
          // so that r-a can use it.
--        let libexec_path = builder.sysroot(self.compiler).join("libexec");
-+        let libexec_path = builder.sysroot(self.compiler).join("lib");
+-        let libexec_path = builder.sysroot(self.compilers.target_compiler).join("libexec");
++        let libexec_path = builder.sysroot(self.compilers.target_compiler).join("lib");
          t!(fs::create_dir_all(&libexec_path));
-         builder.copy_link(&path, &libexec_path.join("rust-analyzer-proc-macro-srv"));
- 
+         builder.copy_link(
+             &tool_result.tool_path,
