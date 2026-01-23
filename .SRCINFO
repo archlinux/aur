@@ -1,5 +1,5 @@
 pkgbase = minesweeper
-	pkgdesc = A simple Minesweeper game
+	pkgdesc = A simple command-line Minesweeper game written in C
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/yu34567890/minesweeper-c
