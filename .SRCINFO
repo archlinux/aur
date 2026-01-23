@@ -10,7 +10,7 @@ pkgbase = yeetfile
 	license = AGPL-3.0-only
 	makedepends = git
 	makedepends = go>=1.20
-	makedepends = npm>=22.2
+	makedepends = npm
 	source = yeetfile::git+https://github.com/benbusby/yeetfile.git#tag=v0.2.0
 	source = benbusby-StreamSaver.js::git+https://github.com/benbusby/StreamSaver.js.git
 	source = yeetfile-js::git+https://git.sr.ht/~benbusby/yeetfile-js

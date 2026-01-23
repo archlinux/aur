@@ -24,7 +24,7 @@ makedepends=(
   'git'
   'go>=1.20'
   # 'typescript'
-  'npm>=22.2'
+  'npm'
 )
 _pkgsrc="${_url##*/}"
 source=(
