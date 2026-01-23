@@ -17,7 +17,7 @@ sha256sums=('bd167ae49fad17d3c96fd99bf19c320b67dabdcd5e8c71db2e6eabd888711a27'
             'SKIP')
 
 prepare() {
-    chmod +x xenia-edge-${pkgver}.AppImage
+    chmod +x "$srcdir/xenia-edge-${pkgver}.AppImage"
     ./xenia-edge-${pkgver}.AppImage --appimage-extract
 }
 
