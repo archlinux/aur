@@ -1,9 +1,9 @@
 # Maintainer: nixval <nicovaliantoku@gmail.com>
 
 pkgname=declarch
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
-pkgdesc="A declarative package manager for Linux with user-defined backend support"
+pkgdesc="Universal declarative package manager - unify AUR, flatpak, npm, cargo, pip, and custom backends"
 arch=('x86_64')
 url="https://github.com/nixval/declarch"
 license=('MIT')
@@ -15,7 +15,7 @@ optdepends=(
 )
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b68691dd64b1d85078cdd0e4bd876cccf75abf0904638de9a4fb2b8dda89be88')
+sha256sums=('e75173710aa1db6e497874a731cec26bbe3524529c5a174d4f2ed80266bd2ee0')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -38,7 +38,14 @@ check() {
 
 package() {
   cd "$pkgname-$pkgver"
+
+  # Strip binaries to remove debug symbols and build paths
+  strip --strip-all "target/release/$pkgname"
+  strip --strip-all "target/release/dcl"
+
+  # Install main binary
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "target/release/dcl" "$pkgdir/usr/bin/dcl"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
