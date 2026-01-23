@@ -4,7 +4,7 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-opentimelineio
-pkgver=0.17.0
+pkgver=0.18.1
 pkgrel=1
 arch=('any')
 pkgdesc="Open Source API and interchange format for editorial timeline information (Android ${_android_arch})"
@@ -17,7 +17,7 @@ makedepends=('android-cmake'
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/AcademySoftwareFoundation/OpenTimelineIO/archive/refs/tags/v${pkgver}.tar.gz"
         'rapidjson-master.tar.gz::https://github.com/Tencent/rapidjson/archive/refs/heads/master.tar.gz')
-md5sums=('efc3dff4adb57164e83afb68908018eb'
+md5sums=('7b13298f151ad5bd2d4a74c0c66bfa41'
          'SKIP')
 
 prepare() {
@@ -71,4 +71,6 @@ package() {
     make -C build-static DESTDIR="${pkgdir}" install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
