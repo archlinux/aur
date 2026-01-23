@@ -1,7 +1,7 @@
 pkgbase = python-bilibili-api
 	pkgdesc = 哔哩哔哩常用API调用。支持视频、番剧、用户、频道、音频等功能。
 	pkgver = 17.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nemo2011.github.io/bilibili-api/
 	arch = any
 	license = GPL-3.0-or-later
@@ -21,7 +21,7 @@ pkgbase = python-bilibili-api
 	depends = python-pycryptodomex
 	depends = python-qrcode_terminal
 	depends = python-pyjwt
-	optdepends = python-curl-cffi: At least one is required to send http request.
+	optdepends = python-curl_cffi: At least one is required to send http request.
 	optdepends = python-aiohttp: At least one is required to send http request.
 	optdepends = python-httpx: At least one is required to send http request.
 	optdepends = python-pyqt6: Run ivitools.

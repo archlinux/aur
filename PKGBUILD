@@ -2,7 +2,7 @@
 
 pkgname=python-bilibili-api
 pkgver=17.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="哔哩哔哩常用API调用。支持视频、番剧、用户、频道、音频等功能。"
 arch=('any')
 url="https://nemo2011.github.io/bilibili-api/"
@@ -11,7 +11,7 @@ depends=('python' 'python-beautifulsoup4' 'python-yaml' 'python-brotli' 'python-
          'python-qrcode' 'python-apscheduler' 'python-pillow' 'python-pycryptodomex' 'python-qrcode_terminal'
          'python-pyjwt')
 makedepends=('python-build' 'python-wheel' 'python-installer' 'python-setuptools-scm')
-optdepends=('python-curl-cffi: At least one is required to send http request.'
+optdepends=('python-curl_cffi: At least one is required to send http request.'
             'python-aiohttp: At least one is required to send http request.'
             'python-httpx: At least one is required to send http request.'
             'python-pyqt6: Run ivitools.'
