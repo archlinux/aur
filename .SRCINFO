@@ -5,8 +5,7 @@ pkgbase = river-creek
 	url = https://github.com/nmeum/creek
 	arch = x86_64
 	license = MIT
-	makedepends = zig>=0.14.0
-	makedepends = zig<0.15.0
+	makedepends = zig0.14
 	makedepends = git
 	makedepends = wayland-protocols
 	makedepends = pixman

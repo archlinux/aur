@@ -9,7 +9,7 @@ arch=('x86_64')
 url='https://github.com/nmeum/creek'
 license=('MIT')
 depends=('wayland' 'river')
-makedepends=('zig>=0.14.0' 'zig<0.15.0' 'git' 'wayland-protocols' 'pixman' 'fcft')
+makedepends=('zig0.14' 'git' 'wayland-protocols' 'pixman' 'fcft')
 provides=('creek')
 conflicts=('river-creek-git')
 source=("https://github.com/nmeum/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
