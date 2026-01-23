@@ -1,7 +1,7 @@
-# Maintainer: Parker Rowen <gitporker@gmail.com>
-# Upstream Maintainer: Different AI <team@different.ai>
+# Maintainer: Different AI <team@different.ai>
+# AUR Maintainer: Parker Rowen <gitporker@gmail.com>
 pkgname=openwork
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="An Open source alternative to Claude Cowork"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gtk3' 'webkit2gtk-4.1')
 options=(!debug)
 source=("${pkgname}-${pkgver}.deb::https://github.com/different-ai/openwork/releases/download/v${pkgver}/openWork-desktop-linux-amd64.deb")
-sha256sums=('dc647c743d8948b5d72c00869dd85d4ed109f4fe34c0dd37db9bafbc3c26956d')
+sha256sums=('16d1d02d508beacd0582be61a14b94cfdb6c0dca3c26ed83b0b2ffa2c619a07a')
 
 package() {
   cd "${srcdir}"
