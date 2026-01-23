@@ -1,4 +1,5 @@
-# Maintainer: Dvd-Znf <email@dvdznf.xyz>
+# Maintainer: Jasmin <theblazehen@gmail.com>
+# Contributor: Dvd-Znf <email@dvdznf.xyz>
 
 pkgname=komac
 pkgver=2.14.0
