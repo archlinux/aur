@@ -1,7 +1,7 @@
 # Maintainer: Swarnaditya Singh <demonkingswarn@protonmail.com>
 pkgname=luffy-bin
 _pkgname=luffy
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="Watch movies and series from your commandline"
 arch=('x86_64')
@@ -16,7 +16,7 @@ backup=()
 options=()
 source=("${url}/releases/download/v${pkgver}/${_pkgname}.amd64")
 noextract=()
-sha256sums=('64638c4a749773a6d51514b829170c96d65a63ce6904abb354cf15a612cb12ef')
+sha256sums=('bd27ae3b7eb0ecfd2cb6d8dc000b37e5dd2b727c8bd7c4a00815bcd292c7138d')
 
 
 package() {
