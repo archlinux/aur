@@ -1,0 +1,5 @@
+[git-brunch-bin]
+source = "github"
+github = "andys8/git-brunch"
+use_latest_release = true
+prefix = "v"

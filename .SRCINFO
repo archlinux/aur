@@ -1,0 +1,17 @@
+pkgbase = git-brunch-bin
+	pkgdesc = A git command-line tool to work with branches
+	pkgver = 1.7.2
+	pkgrel = 1
+	url = https://github.com/andys8/git-brunch
+	arch = x86_64
+	license = BSD-3-Clause
+	provides = git-brunch
+	conflicts = git-brunch
+	source = LICENSE-1.7.2::https://raw.githubusercontent.com/andys8/git-brunch/v1.7.2/LICENSE
+	source = README-1.7.2.md::https://raw.githubusercontent.com/andys8/git-brunch/v1.7.2/README.md
+	sha256sums = f3007a3b5edc3b8652a67f0a0a2cd1b0cd67c8a527795173b442fef2beb3b2cb
+	sha256sums = 4f946e55072260651c86f76d134e5536dd25a5929bad8214a41bd378a369df23
+	source_x86_64 = git-brunch-x86_64-1.7.2::https://github.com/andys8/git-brunch/releases/download/v1.7.2/git-brunch-Linux
+	sha256sums_x86_64 = 0d577ef14b40a95943f39d9bc14d143d2aafdfd309376aa810e08f9098696640
+
+pkgname = git-brunch-bin
