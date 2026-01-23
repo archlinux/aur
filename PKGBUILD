@@ -1,4 +1,4 @@
-# Maintainer: 
+# Maintainer: gesh <gesh@gesh.uni.cx>
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-types-docutils
 _name=types_docutils
