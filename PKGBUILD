@@ -2,7 +2,7 @@
 # Contributor: aulonsal <seraur at aulonsal dot com>
 pkgname=dbgate-bin
 _pkgname=DbGate
-pkgver=6.8.2
+pkgver=7.0.0
 _electronversion=38
 pkgrel=1
 pkgdesc="Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others.(Prebuilt version.Use system-wide electron)"
@@ -14,13 +14,14 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
+    'python'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/dbgate/dbgate/v${pkgver}/LICENSE"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('95cabead3781af010b34d8fe18804742552c197e5b712db475b16771b8d9e536'
+sha256sums=('527f7a86ef495a85002d4a506218496a41c4216d0735cc75ccfb338b38d418b6'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
@@ -41,6 +42,7 @@ prepare() {
     find "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked" -type f \
         \( -name "*darwin*" -o -name "*win32*" -o -name "*arm64*" \) -exec rm -rf {} +
     find "${srcdir}/opt/${_pkgname}/resources" -type d -exec chmod 755 {} +
+    ln -sf "/usr/bin/python" "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/better-sqlite3/build/node_gyp_bins/python3"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
