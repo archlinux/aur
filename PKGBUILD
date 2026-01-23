@@ -1,6 +1,6 @@
 # Maintainer: Luke Featherston <lukefeatherston1223 at gmail dot com>
 pkgname=gearlever
-pkgver=4.2.2
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="Manage AppImages with ease"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ checkdepends=('appstream' 'desktop-file-utils')
 optdepends=('libxml2-legacy: required for LibreOffice appimage')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/mijorus/gearlever/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('bb9e8f14c424b6abf3ac01815d0779f216b76776cb98f946df49de2612bd1076')
+sha256sums=('97c380cb39a6f08d98c5f18eebf89b3cfbb4afe8ed45d7eac9aa8c93e5cfae41')
 
 prepare() {
    cd "${srcdir}/${pkgname}-${pkgver}"
