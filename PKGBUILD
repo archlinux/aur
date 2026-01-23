@@ -2,8 +2,8 @@
 
 # shellcheck disable=SC2034
 pkgname=waybar-lyric
-pkgver=0.14.3
-pkgrel=2
+pkgver=0.15.0
+pkgrel=1
 pkgdesc="A waybar module for song lyric"
 arch=('x86_64')
 url="https://github.com/Nadim147c/waybar-lyric"
@@ -13,7 +13,7 @@ provides=("$pkgname")
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 depends=("glibc")
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7638812e4e1306d8ee7b0499d4d68ffeb2c1e09189899b2b57583d537d0be250')
+sha256sums=('e6615815b7e362868c831c93372db63828834a2b00e1264691ae5979fed6ab5c')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}" || exit
