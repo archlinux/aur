@@ -1,0 +1,9 @@
+--- scripts/minimal_init.vim	2026-01-23 12:02:41.459604819 +0300
++++ scripts/minimal_init.vim.new	2026-01-23 12:02:37.119827897 +0300
+@@ -4,5 +4,6 @@
+ 
+ runtime! plugin/plenary.vim
+ runtime! plugin/telescope.lua
++let &runtimepath=expand('.') . ',' . &runtimepath
+ 
+ let g:telescope_test_delay = 100
