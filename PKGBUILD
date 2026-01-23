@@ -2,7 +2,7 @@
 # Maintainer (old): Janne Heß <jannehess@gmail.com>
 
 pkgname=mkinitcpio-sd-zfs
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='Compatibility between systemd and ZFS roots'
 license=('MIT')
@@ -11,7 +11,7 @@ conflicts=('mkinitcpio-sd-zfs-git')
 depends=('mkinitcpio' 'systemd')
 
 source=("https://github.com/jkolo/sd-zfs/archive/v${pkgver}.tar.gz")
-sha512sums=('831bb0351085ae55dcbd36265dd1b5d3272cf108e491ec7f3e3872e6341ab056a255094a0ad2ed0012d6f5c26b75d89157aaa334357aea6649fdf84147358807')
+sha512sums=('75727ecd6e649b11b0cd5e664941330206ae1fa65c077a85c3cae9b8c8f3fb9a2c37df02170b85d7d1e1486f4b50f54dcb1ca8a7cd3c5219c56a36110706ad39')
 
 #_git_commit="1a36d4fd85377c0b323d8f2ca2039770e5a0fee4"
 #source=("https://github.com/dasJ/sd-zfs/archive/${_git_commit}.tar.gz")
@@ -43,5 +43,5 @@ package() {
 	done
 
 	# systemd unit
-	install -Dm644 units/mkinitcpio-override.conf "${pkgdir}/usr/lib/systemd/system/mkinitcpio-generate-shutdown-ramfs.service.d/sd-zfs.conf"
+	install -Dm644 units/50-sd-zfs.conf "${pkgdir}/usr/lib/tmpfiles.d/50-sd-zfs.conf"
 }
