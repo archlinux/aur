@@ -5,7 +5,7 @@ _pkgname=lazymake
 pkgname=${_pkgname}-bin
 pkgdesc="Modern TUI for Makefiles with interactive target selection, dependency visualization, and command safety analysis"
 
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -22,8 +22,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_Linux_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_Linux_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('09ef7cc9668c2a53e7caf0b581085f929c7380577b6b0febe1d4eb8f7735d72c')
-sha256sums_aarch64=('89440263b8591c1392a3ab117836069490590a960bda08f07b35dddde5420e1f')
+sha256sums_x86_64=('73c737bab372ce2dd93a3bcc0e69bef177033e473c2145d887b187c437f23264')
+sha256sums_aarch64=('0a65bf7ebc388a02c7e0ee76d8356e7bae81e46a2a6177f5a1ec23b59031466c')
 
 
 package() {
