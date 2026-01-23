@@ -1,12 +1,12 @@
 pkgbase = riscv64-gnu-toolchain-musl-bin
 	pkgdesc = GNU toolchain for riscv64 MUSL, including GCC.
-	pkgver = 2026.01.09
+	pkgver = 2026.01.23
 	pkgrel = 1
 	url = https://github.com/riscv-collab/riscv-gnu-toolchain
 	arch = x86_64
 	license = GPL2
 	options = !strip
-	source = riscv64-gnu-toolchain-musl-bin-2026.01.09-riscv64-musl-ubuntu-24.04-gcc.tar.xz::https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/2026.01.09/riscv64-musl-ubuntu-24.04-gcc.tar.xz
-	sha512sums = fd15c64cab0ce9d745329c0cafabbe6c9e5d892740318cb0b6d4e4243b2d7324da1adfe5f2c52f8791697a835d5cf51b85096c5b7e4de1ea6bc2318b786f1ca5
+	source = riscv64-gnu-toolchain-musl-bin-2026.01.23-riscv64-musl-ubuntu-24.04-gcc.tar.xz::https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/2026.01.23/riscv64-musl-ubuntu-24.04-gcc.tar.xz
+	sha512sums = f9c66bbb1ed67672a28acb58f91f0271015be3864c639dafb819cbdb61820882f191efe2116ea48e382892aca00e7828ed9df9b0e7344354936ec84c3ada16b6
 
 pkgname = riscv64-gnu-toolchain-musl-bin
