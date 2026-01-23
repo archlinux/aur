@@ -1,6 +1,6 @@
 pkgbase = kimaki
 	pkgdesc = Discord bot - Iron Man's Jarvis for coding agents with OpenCode integration
-	pkgver = 0.4.39
+	pkgver = 0.4.42
 	pkgrel = 1
 	url = https://github.com/remorses/kimaki
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = kimaki
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
-	noextract = kimaki-0.4.39.tgz
-	source = https://registry.npmjs.org/kimaki/-/kimaki-0.4.39.tgz
-	sha256sums = 87c837273c022812b69e90f7652799af032b8b77191ae39eb82cc22ebf29f52c
+	noextract = kimaki-0.4.42.tgz
+	source = https://registry.npmjs.org/kimaki/-/kimaki-0.4.42.tgz
+	sha256sums = f4045be58b7c4774bb8107d422c3baf2a47492b489e24142fd46859317c92054
 
 pkgname = kimaki
