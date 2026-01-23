@@ -1,5 +1,5 @@
 pkgbase = netbird
-	pkgver = 0.64.0
+	pkgver = 0.64.1
 	pkgrel = 1
 	url = https://netbird.io
 	arch = i686
@@ -18,8 +18,8 @@ pkgbase = netbird
 	makedepends = libxinerama
 	makedepends = libxrandr
 	makedepends = libxxf86vm
-	source = netbird-0.64.0.tar.gz::https://github.com/netbirdio/netbird/archive/refs/tags/v0.64.0.tar.gz
-	sha256sums = 9435249c570dbdb0b5a90ff9147549ab027fc66290ba57a54b4d961392a7aad6
+	source = netbird-0.64.1.tar.gz::https://github.com/netbirdio/netbird/archive/refs/tags/v0.64.1.tar.gz
+	sha256sums = 5ec98ba7bfce4017eb33e616743bd8135d52a56692325595d18aca8df8cc9c23
 
 pkgname = netbird
 	pkgdesc = WireGuard-based overlay network: client
