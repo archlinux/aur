@@ -2,7 +2,7 @@
 _appname=anythingllm
 pkgname="${_appname}-desktop-bin"
 _pkgname=Anything-LLM-Desktop
-pkgver=1.9.1
+pkgver=1.10.0
 _electronversion=31
 pkgrel=1
 pkgdesc="The all-in-one AI application, tool suite, and API for RAG & Agents for Docker & Desktop.(Prebuilt version.Use system-wide electron)"
@@ -21,8 +21,8 @@ conflicts=(
 depends=(
     "electron${_electronversion}"
     'ollama'
-    'ollama-cuda'
-    'ollama-rocm'
+    #'ollama-cuda'
+    #'ollama-rocm'
 )
 makedepends=(
     'asar'
@@ -34,8 +34,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::https://cdn.anythingllm.com/latest/${_pkgname//-/}-Arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::https://cdn.anythingllm.com/latest/${_pkgname//-/}.AppImage")
 sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('725733f388c95b8f27b4649684cbc5c9ce612e08a956896049a8e71cbb7bba1d')
-sha256sums_x86_64=('0e4d8d27a1879e8b419d9936fb9238cbecb375285c7492ddae0c763da441d64b')
+sha256sums_aarch64=('c72f563d28e8974cb9b1cf01cfafd44f13f68329acc5828b9244b69e06e782ed')
+sha256sums_x86_64=('d0d381c9832669caf19b942f0490dcea6c39ddf552b64d20b295e29b3d72f7c2')
 pkgver() {
     cd "${srcdir}/squashfs-root"
     set -o pipefail
