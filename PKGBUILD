@@ -1,7 +1,8 @@
 # Maintainer: A43 <arirera43 [at] gmail [dot] com>
 
-pkgname="mxw-git"
-pkgver=v0.1
+_pkgname="mxw"
+pkgname="$_pkgname-git"
+pkgver=v0.2.2.r0.g865836d
 pkgrel=1
 pkgdesc="Cross platform CLI tool for Glorious Core v1 compatible wireless mice, based on mow"
 arch=('any')
@@ -13,8 +14,13 @@ source=('git+https://github.com/dkbednarczyk/mxw.git')
 md5sums=('SKIP')
 options=(!lto)
 
+pkgver() {
+  cd "$_pkgname"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
-  cd $srcdir/mxw/;
+  cd $srcdir/$_pkgname/;
   cargo build --release
 }
 
