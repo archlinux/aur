@@ -12,12 +12,11 @@ pkgrel=1
 pkgdesc="Convert PNG to SVG"
 arch=(x86_64)
 url="https://github.com/visioncortex/vtracer"
-license=('MIT')
-options=('!lto')
 makedepends=(
 	'rust'
 	'python-build'
 	'python-installer'
+	'python-maturin'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/visioncortex/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('a2e927a3cc4e8e3440862aeaef3d6d2c867c6557b270a55291fe1e6ae9706444')
@@ -40,10 +39,11 @@ build() {
 
 	# Build Python bindings
 	cd cmdapp
-	python -m build
+	python -m build --wheel --no-isolation
 }
 
 package_vtracer() {
+	license=('MIT')
 	depends=('gcc-libs')
 
 	cd "${pkgbase}-${pkgver}"
@@ -59,16 +59,19 @@ package_vtracer() {
 
 package_python-vtracer() {
 	pkgdesc="Python bindings for vtracer"
+	license=('Apache-2.0 OR MIT')
 	depends=('python')
 
-	cd "${pkgbase}-${pkgver}"
+	cd "${pkgbase}-${pkgver}/cmdapp"
 
 	python -m installer \
 		--destdir="${pkgdir}" \
-		cmdapp/dist/*.whl
+		dist/*.whl
 
-	# TODO(Martin): Also appears to be dual-licensed with Apache?
 	install -Dm644 \
-		LICENSE \
-		"${pkgdir}/usr/share/licenses/python-vtracer/LICENSE"
+		LICENSE-APACHE \
+		"${pkgdir}/usr/share/licenses/python-vtracer/LICENSE-APACHE"
+	install -Dm644 \
+		LICENSE-MIT \
+		"${pkgdir}/usr/share/licenses/python-vtracer/LICENSE-MIT"
 }
