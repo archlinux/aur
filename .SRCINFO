@@ -1,13 +1,12 @@
 pkgbase = karton
 	pkgdesc = A libvirt-based Virtual Machine Manager for KDE
-	pkgver = git20250905
+	pkgver = git20260123
 	pkgrel = 1
 	url = https://invent.kde.org/sitter/karton
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = extra-cmake-modules
 	makedepends = git
-	makedepends = vulkan-headers
 	depends = gcc-libs
 	depends = glib2
 	depends = glibc
@@ -23,7 +22,7 @@ pkgbase = karton
 	depends = qt6-declarative
 	depends = qt6-multimedia
 	depends = spice-gtk
-	source = git+https://invent.kde.org/sitter/karton#commit=9c8cbfb0461e48e77d3ca46bd9311a02f333cb4d
-	sha256sums = 1cc7eda6d66dd1055311b23a7ff2ea0032b14da6adbf5695f733329ce23c67b8
+	source = git+https://invent.kde.org/sitter/karton#commit=07520e06f5a66e9cfe33a298a11e5482a2395aa0
+	sha256sums = d87b76c5df03a6f57f24c0fae79ce89d19da65549a616648929674fdbae6e020
 
 pkgname = karton

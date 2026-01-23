@@ -1,0 +1,6 @@
+[karton]
+source = 'gitlab'
+gitlab = 'sitter/karton'
+host = 'invent.kde.org'
+use_max_tag = true
+prefix = 'v'
