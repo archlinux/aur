@@ -1,0 +1,21 @@
+pkgbase = python-vsjetengine-git
+	pkgdesc = An engine for vapoursynth previewers, renderers and script analyis tools. (GIT version)
+	pkgver = 1.0.0.0.g8a05a8e
+	pkgrel = 1
+	url = https://github.com/Jaded-Encoding-Thaumaturgy/vs-jet-engine
+	arch = x86_64
+	license = EUPL-1.2
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-hatchling
+	depends = vapoursynth
+	provides = python-vsjetengine
+	conflicts = python-vsjetengine
+	conflicts = vapoursynth-plugin-vsengine-git
+	source = vsjetengine::git+https://github.com/Jaded-Encoding-Thaumaturgy/vs-jet-engine.git
+	sha256sums = SKIP
+
+pkgname = python-vsjetengine-git
