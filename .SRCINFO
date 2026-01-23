@@ -1,6 +1,6 @@
 pkgbase = android-x86-openexr
 	pkgdesc = A high dynamic-range image file format library (Android x86)
-	pkgver = 3.3.4
+	pkgver = 3.4.4
 	pkgrel = 1
 	url = https://www.openexr.com/
 	arch = any
@@ -9,11 +9,12 @@ pkgbase = android-x86-openexr
 	makedepends = android-cmake
 	depends = android-x86-imath
 	depends = android-x86-libdeflate
+	depends = android-x86-openjph
 	options = !strip
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/openexr/openexr/archive/v3.3.4/openexr-3.3.4.tar.gz
-	md5sums = 50c69abdabe667a0a821f28d1fa34f0f
+	source = https://github.com/openexr/openexr/archive/v3.4.4/openexr-3.4.4.tar.gz
+	md5sums = ad8587c4a64bf423c387734e85d17432
 
 pkgname = android-x86-openexr
