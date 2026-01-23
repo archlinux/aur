@@ -1,7 +1,7 @@
 pkgbase = nodejs-fast-cli
 	pkgdesc = Test your download and upload speed using fast.com from Netflix
-	pkgver = 4.0.0
-	pkgrel = 4
+	pkgver = 5.1.0
+	pkgrel = 1
 	url = https://github.com/sindresorhus/fast-cli#readme
 	arch = any
 	license = MIT
@@ -44,8 +44,8 @@ pkgbase = nodejs-fast-cli
 	depends = ttf-liberation
 	depends = woff2
 	depends = xdg-utils
-	noextract = fast-cli-4.0.0.tgz
-	source = https://registry.npmjs.org/fast-cli/-/fast-cli-4.0.0.tgz
-	sha256sums = a3132015439a57d18d782f11c3c5c4d27f8be867643eb8526111514966715524
+	noextract = fast-cli-5.1.0.tgz
+	source = https://registry.npmjs.org/fast-cli/-/fast-cli-5.1.0.tgz
+	sha256sums = 5bb4b946dd387089be225a31156a2a8cea968b6a91d14cf59f0e63057705d95a
 
 pkgname = nodejs-fast-cli
