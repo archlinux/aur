@@ -1,13 +1,13 @@
 # Maintainer: Mahid Sheikh <mahid@standingpad.org>
 pkgname=nom-bin
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="RSS reader for the terminal"
 arch=(x86_64)
 url="https://github.com/guyfedwards/nom"
 license=('GPL')
 source=("https://github.com/guyfedwards/nom/releases/download/v${pkgver}/nom_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('de87b242dc2cf7814f394f501fafbfb8bcdcaf6621a56bbeb09472d27dbf8034')
+sha256sums=('0274795e80863d9397bda4f95d3785ae70f8827288d096a21683f91c88074139')
 
 package() {
 	cd "$srcdir/"
