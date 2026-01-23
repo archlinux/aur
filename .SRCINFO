@@ -1,7 +1,7 @@
 pkgbase = python-vsjetengine
 	pkgdesc = An engine for vapoursynth previewers, renderers and script analyis tools.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/vsjetengine/
 	arch = x86_64
 	license = EUPL-1.2
@@ -11,6 +11,7 @@ pkgbase = python-vsjetengine
 	makedepends = python-setuptools
 	makedepends = python-hatchling
 	depends = vapoursynth
+	conflicts = vapoursynth-plugin-vsengine-git
 	source = https://files.pythonhosted.org/packages/e9/bb/6d2ed33b67c1821359f35e358e309042231b5918e3fea9522127a31a38c1/vsjetengine-1.0.0.tar.gz
 	sha256sums = bd5c003ce33ec37904c1f1b604d8a55db493223a71118b288572f0283babb713
 
