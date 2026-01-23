@@ -2,9 +2,9 @@
 # Contributor: yjun <jerrysteve1101 at gmail dot com>
 pkgname=mqttx-bin
 _pkgname=MQTTX
-pkgver=1.12.1
-_electronversion=33
-pkgrel=2
+pkgver=1.13.0
+_electronversion=39
+pkgrel=1
 pkgdesc="A cross-platform MQTT 5.0 client tool open sourced by EMQ.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -22,8 +22,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.x86_64.rpm")
 sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('a8e227241af7b0bcb26ccabe7bbab43df6153935560be94b59a9f88a9cbfca96')
-sha256sums_x86_64=('19bc2427699650b684afeef6841177ff92cf82eb490884848de32d0d96677d1d')
+sha256sums_aarch64=('6ca38553eb628cdf85858393f381e7200f48dc803737206a9af8f845022d358b')
+sha256sums_x86_64=('951aafa93c030ebe64f6208551fc24a6f8fd86f9b14f5fb28dcb96eb016ce42d')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
