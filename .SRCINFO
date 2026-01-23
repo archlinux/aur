@@ -1,0 +1,23 @@
+pkgbase = next-ai-draw-io-bin
+	pkgdesc = Next AI Powered Draw.io (Desktop version). Built for system-wide electron.
+	pkgver = 0.4.12_beta.3
+	pkgrel = 1
+	url = https://github.com/DayuanJiang/next-ai-draw-io
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = asar
+	depends = electron39
+	depends = hicolor-icon-theme
+	provides = next-ai-draw-io
+	conflicts = next-ai-draw-io
+	options = !strip
+	options = !emptydirs
+	source = next-ai-draw-io.sh
+	sha256sums = 6dec33b7b4169f695f1ff02a9e55a6ce93b421b20177f051b29223911b8d0a8a
+	source_x86_64 = https://github.com/DayuanJiang/next-ai-draw-io/releases/download/v0.4.12-beta.3/next-ai-draw-io_0.4.12-beta.3_amd64.deb
+	sha256sums_x86_64 = 826be5c8a0d0f28cb9ddfcd4ba5473bf20a9dc0fc93571923c6d775fb747f16e
+	source_aarch64 = https://github.com/DayuanJiang/next-ai-draw-io/releases/download/v0.4.12-beta.3/next-ai-draw-io_0.4.12-beta.3_arm64.deb
+	sha256sums_aarch64 = 9d3f17f24c2a0e5119049283524214627d6ca8c586b0416ec68ecef90fadc98c
+
+pkgname = next-ai-draw-io-bin
