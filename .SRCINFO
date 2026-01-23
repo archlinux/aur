@@ -1,18 +1,19 @@
 pkgbase = declarch-bin
-	pkgdesc = A declarative package manager for Arch Linux (Binary Release)
-	pkgver = 0.3.0
+	pkgdesc = Universal declarative package manager - unify AUR, flatpak, npm, cargo, pip, and custom backends (pre-built binary)
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/nixval/declarch
 	arch = x86_64
 	license = MIT
 	depends = pacman
 	depends = git
-	optdepends = paru: Recommended AUR helper
+	optdepends = paru: AUR backend for syncing
 	optdepends = yay: Alternative AUR helper
 	optdepends = flatpak: For managing Flatpak applications
 	provides = declarch
 	conflicts = declarch
-	source = declarch-v0.3.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/nixval/declarch/releases/download/v0.3.0/declarch-v0.3.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 3e3ad7e48a35ee4f99e4622117e3d0f4424782ffd9880b189191a94d3e1e6319
+	conflicts = declarch-git
+	source = declarch-0.4.3-x86_64-unknown-linux-gnu.tar.gz::https://github.com/nixval/declarch/releases/download/v0.4.3/declarch-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = SKIP
 
 pkgname = declarch-bin

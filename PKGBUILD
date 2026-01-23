@@ -1,28 +1,38 @@
 # Maintainer: nixval <nicovaliantoku@gmail.com>
 
 pkgname=declarch-bin
-pkgver=0.3.0
+pkgver=0.4.3
 pkgrel=1
-pkgdesc="A declarative package manager for Arch Linux (Binary Release)"
+pkgdesc="Universal declarative package manager - unify AUR, flatpak, npm, cargo, pip, and custom backends (pre-built binary)"
 arch=('x86_64')
 url="https://github.com/nixval/declarch"
 license=('MIT')
-
 depends=('pacman' 'git')
 optdepends=(
-  'paru: Recommended AUR helper'
+  'paru: AUR backend for syncing'
   'yay: Alternative AUR helper'
   'flatpak: For managing Flatpak applications'
 )
-
 provides=('declarch')
-conflicts=('declarch')
+conflicts=('declarch' 'declarch-git')
 
-source=("declarch-v${pkgver}-${CARCH}-unknown-linux-gnu.tar.gz::${url}/releases/download/v${pkgver}/declarch-v${pkgver}-${CARCH}-unknown-linux-gnu.tar.gz")
-sha256sums=('3e3ad7e48a35ee4f99e4622117e3d0f4424782ffd9880b189191a94d3e1e6319')
+source=("declarch-$pkgver-x86_64-unknown-linux-gnu.tar.gz::$url/releases/download/v$pkgver/declarch-x86_64-unknown-linux-gnu.tar.gz")
+sha256sums=('SKIP')  # Update after creating release
 
 package() {
+  # Install binaries
   install -Dm755 "declarch" "$pkgdir/usr/bin/declarch"
-  install -Dm644 "README.md" "$pkgdir/usr/share/doc/declarch/README.md"
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 "dcl" "$pkgdir/usr/bin/dcl"
+
+  # Install documentation
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # Install shell completions
+  install -Dm644 <(declarch completions bash) \
+    "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+  install -Dm644 <(declarch completions fish) \
+    "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname".fish
+  install -Dm644 <(declarch completions zsh) \
+    "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 }
