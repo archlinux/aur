@@ -1,0 +1,4 @@
+[python-asyncudp]
+source = "git"
+git = "https://github.com/eerimoq/asyncudp.git"
+prefix = "v"
