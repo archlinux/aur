@@ -2,9 +2,9 @@
 pkgname=steamachievementnotifier-bin
 _pkgname="Steam Achievement Notifier"
 _mainver=1.9
-_subver=34
+_subver=35
 pkgver="${_mainver}.${_subver}"
-_electronversion=35
+_electronversion=37
 pkgrel=1
 pkgdesc="Shows fully customisable notifications when you unlock any achievement on Steam!(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${_pkgname// /}_V${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('0403e262ba0ed73b5790f0bec98ea313ff1ee452cc8dc99b3ed4824738e9a2e7'
+sha256sums=('881c3c8581aaf2ca647f64636074201ffe07ab92ba4213703b1c3aa2167ac4a3'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}v${_mainver}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
