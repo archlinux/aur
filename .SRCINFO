@@ -1,6 +1,6 @@
 pkgbase = fotocx
 	pkgdesc = Image editing and collection management program
-	pkgver = 26.1
+	pkgver = 26.2
 	pkgrel = 1
 	url = https://www.kornelix.net/fotocx/fotocx.html
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = fotocx
 	optdepends = rawtherapee: for raw image processing
 	optdepends = vlc: for viewing video
 	replaces = fotoxx
-	source = https://www.kornelix.net/downloads/downloads/fotocx-26.1-source.tar.gz
-	sha256sums = 7b26d9d4d4f11840e1abc1b2b134c370929bb9f4b27553d83ff792585fc46adb
+	source = https://www.kornelix.net/downloads/downloads/fotocx-26.2-source.tar.gz
+	sha256sums = de20fc4300dcf283766f324a84934dc7fde5a769c442e5a37995eae4c3114806
 
 pkgname = fotocx
