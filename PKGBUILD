@@ -22,7 +22,7 @@ depends=(
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/releases/v${pkgver}/${_pkgname}-${CARCH}-linux-gnu.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${CARCH}-linux-gnu.tar.gz")
 sha256sums=('131d99bca0739864098792385c17d789002bc0190325c390fa01d6297f5004a8')
 
 prepare() {
