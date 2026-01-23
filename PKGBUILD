@@ -19,8 +19,8 @@ depends=(
 )
 source=("git+${url}.git#branch=dev")
 sha512sums=('SKIP')
-conflicts=(${_pkgname})
 provides=(${_pkgname})
+conflicts=(${_pkgname})
 
 pkgver() {
   cd ${_pkgname}
