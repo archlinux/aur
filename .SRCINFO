@@ -1,16 +1,16 @@
 pkgbase = gyosu-git
 	pkgdesc = Simple C documentation generator
-	pkgver = r28.aa9b8e1
-	pkgrel = 2
-	url = https://git.sr.ht/~emersion/gyosu
+	pkgver = r105.0f3a93c
+	pkgrel = 1
+	url = https://codeberg.org/emersion/gyosu
 	arch = x86_64
-	license = AGPL3
+	license = AGPL-3.0-only
 	makedepends = git
 	makedepends = go
 	depends = glibc
 	provides = gyosu
 	conflicts = gyosu
-	source = gyosu-git::git+https://git.sr.ht/~emersion/gyosu
-	sha256sums = SKIP
+	source = git+https://codeberg.org/emersion/gyosu.git
+	sha512sums = SKIP
 
 pkgname = gyosu-git
