@@ -2,7 +2,7 @@
 pkgname=smartsub-bin
 _pkgname=SmartSub
 _zhsname='妙幕'
-pkgver=2.10.2
+pkgver=2.11.0
 _electronversion=30
 pkgrel=1
 pkgdesc="A cross-platform client side tool that can generate subtitle files for video or audio in batches, and supports subtitle translation. It supports Baidu, Volcano, OpenAI, Olama, DeepSeek and other translators.(Prebuilt version,use system-wide electron)"
