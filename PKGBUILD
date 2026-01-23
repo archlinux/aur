@@ -2,7 +2,7 @@
 # Contributor: Frederic Van Assche <frederic@fredericva.com>
 _name=influxdb-client
 pkgname=python-$_name
-pkgver=1.49.0
+pkgver=1.50.0
 pkgrel=1
 pkgdesc="InfluxDB 2.0 Python client"
 arch=(any)
@@ -25,7 +25,7 @@ optdepends=(
     "python-pandas: Support query_data_frame"
 )
 source=($_name::git+https://github.com/influxdata/$_name-python.git#tag=v$pkgver)
-b2sums=('fb060acff04f6b7fc010278b1bad7f7152cf21845da59d0741d4fcf3ed1269db172e6e2657cde4638904ac9fa4bf0be45d8e832c38ab76e932ba90bd427f141d')
+b2sums=('988275088c9a8b35ae9b4f80a8131c6a80bdfee7817413cef0cea11626e0b61994cc22ec26f39f599097f0334475445336838158329b94169758ef5e8fd54671')
 
 build() {
     cd $_name

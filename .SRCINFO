@@ -1,6 +1,6 @@
 pkgbase = python-influxdb-client
 	pkgdesc = InfluxDB 2.0 Python client
-	pkgver = 1.49.0
+	pkgver = 1.50.0
 	pkgrel = 1
 	url = https://github.com/influxdata/influxdb-client-python/
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-influxdb-client
 	depends = python-urllib3
 	optdepends = python-numpy: Support data_frame
 	optdepends = python-pandas: Support query_data_frame
-	source = influxdb-client::git+https://github.com/influxdata/influxdb-client-python.git#tag=v1.49.0
-	b2sums = fb060acff04f6b7fc010278b1bad7f7152cf21845da59d0741d4fcf3ed1269db172e6e2657cde4638904ac9fa4bf0be45d8e832c38ab76e932ba90bd427f141d
+	source = influxdb-client::git+https://github.com/influxdata/influxdb-client-python.git#tag=v1.50.0
+	b2sums = 988275088c9a8b35ae9b4f80a8131c6a80bdfee7817413cef0cea11626e0b61994cc22ec26f39f599097f0334475445336838158329b94169758ef5e8fd54671
 
 pkgname = python-influxdb-client
