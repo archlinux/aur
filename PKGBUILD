@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs' 'libxcb' 'dbus')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "eurus-tui-git")
-source=("$url/releases/download/v$pkgver/$_pkgname")
+source=("$_pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname")
 sha256sums=('c8e28e8c62a3d80d99d4d45a510b6ed21473f43cfa708df2ed5300363cc06bb0')
 
 package() {
