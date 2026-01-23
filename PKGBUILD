@@ -3,7 +3,7 @@ pkgname=pdf4qt-bin
 _pkgname=PDF4QT
 _appname=Pdf4qt
 _runname=Pdf4Qt
-pkgver=1.5.2.0
+pkgver=1.5.3.1
 pkgrel=1
 pkgdesc="Open source PDF editor(Prebuilt version)"
 arch=('x86_64')
@@ -30,15 +30,16 @@ optdepends=(
 	'flite: Text-To-Speech using flite synthesizer',
 	'libspeechd: Text-To-Speech using speechd synthesizer'
 )
-source=(
-	"${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${CARCH}.AppImage"
-)
-sha256sums=('23e230ba8b089d6882c62cc77df6ded14b2a9e441697b55e3fdda65ed7cc2173')
+source=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${CARCH}.AppImage")
+sha256sums=('88af2eacf4f663b2eba872fd8efe2332e2797261d1bd2c2dab42e0201b10aaa5')
 prepare() {
-	if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
-        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+	if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     fi
-    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    if [ -d "${srcdir}/squashfs-root" ];then
+        rm -rf "${srcdir}/squashfs-root"
+    fi
+    "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
 }
 package() {
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
