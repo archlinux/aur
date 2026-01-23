@@ -1,14 +1,14 @@
 pkgbase = python-tf-keras
 	pkgdesc = TensorFlow-specific implementation of the Keras API, which was the default Keras from 2019 to 2023.
 	pkgver = 2.20.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/keras-team/tf-keras
 	arch = any
 	license = Apache-2.0
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = absl-py
+	depends = python-absl
 	depends = python
 	depends = python-h5py
 	depends = python-optree

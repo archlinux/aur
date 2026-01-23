@@ -3,13 +3,13 @@
 _pkgname=tf-keras
 pkgname=python-${_pkgname}
 pkgver=2.20.1
-pkgrel=1
+pkgrel=2
 pkgdesc='TensorFlow-specific implementation of the Keras API, which was the default Keras from 2019 to 2023.'
 arch=('any')
 url='https://github.com/keras-team/tf-keras'
 license=('Apache-2.0')
 makedepends=('python-build' 'python-installer' 'python-wheel')
-depends=('absl-py' 'python' 'python-h5py' 'python-optree' 'python-rich'
+depends=('python-absl' 'python' 'python-h5py' 'python-optree' 'python-rich'
          'python-ml-dtypes' 'python-packaging' 'python-numpy' 'python-pandas'
          'python-pillow' 'python-pydot' 'python-scipy' 'python-tensorflow' 'python-yaml'
          'tensorboard')
