@@ -33,7 +33,7 @@ build() {
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    install -Dm755 "target/release/hyprKCS" "$pkgdir/usr/bin/hyprkcs"
+    install -Dm755 "target/release/hyprkcs" "$pkgdir/usr/bin/hyprkcs"
     install -Dm644 "hyprkcs.desktop" "$pkgdir/usr/share/applications/hyprkcs.desktop"
     install -Dm644 "assets/hyprkcs.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/hyprkcs.svg"
 }
