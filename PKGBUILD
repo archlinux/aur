@@ -3,7 +3,7 @@
 
 pkgbase=memoria
 pkgname=(memoria-daemon memoria-ui)
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Clipboard manager with daemon and Qt UI"
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=(
 )
 
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a3720364bb32e9829539c3c11dfbed78bf10d01ce1e7661c5aa483cbe07f01a0')
+sha256sums=('406a6c51902358880e5f215da72d92b2b701dc4a27cc53fcbb0d2ad52847e4bb')
 
 build() {
   cd "$srcdir/$pkgbase-$pkgver"

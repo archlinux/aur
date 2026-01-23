@@ -1,6 +1,6 @@
 pkgbase = memoria
 	pkgdesc = Clipboard manager with daemon and Qt UI
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/Bumblebee-3/memoria
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = memoria
 	makedepends = cargo
 	makedepends = cmake
 	makedepends = ninja
-	source = memoria-1.0.0.tar.gz::https://github.com/Bumblebee-3/memoria/archive/v1.0.0.tar.gz
-	sha256sums = a3720364bb32e9829539c3c11dfbed78bf10d01ce1e7661c5aa483cbe07f01a0
+	source = memoria-1.1.0.tar.gz::https://github.com/Bumblebee-3/memoria/archive/v1.1.0.tar.gz
+	sha256sums = 406a6c51902358880e5f215da72d92b2b701dc4a27cc53fcbb0d2ad52847e4bb
 
 pkgname = memoria-daemon
 	pkgdesc = Memoria clipboard daemon (systemd user service)
