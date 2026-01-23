@@ -19,13 +19,13 @@ pkgver() {
 build() {
         cd "FractalArt"
         cabal update
-        cabal install
+        cabal build
 }
 
 package() {
         cd "FractalArt"
         install -d -m 755 ${pkgdir}/usr/bin
-        cp dist/build/FractalArt/FractalArt ${pkgdir}/usr/bin/FractalArt
+        install -m 755 "$(find dist-newstyle -name FractalArt -type f -executable)" ${pkgdir}/usr/bin/FractalArt
         cd ..
         install -d ${pkgdir}/etc/xdg/autostart
         cp fractalart.desktop ${pkgdir}/etc/xdg/autostart/
