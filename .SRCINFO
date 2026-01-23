@@ -1,7 +1,7 @@
 pkgbase = pdf4qt
 	pkgdesc = Open source PDF editor
-	pkgver = 1.5.1.0
-	pkgrel = 2
+	pkgver = 1.5.3.1
+	pkgrel = 1
 	url = https://jakubmelka.github.io/
 	arch = x86_64
 	license = LGPL-3.0-only
@@ -23,9 +23,8 @@ pkgbase = pdf4qt
 	optdepends = libspeechd: Text-To-Speech using speechd synthesizer
 	conflicts = pdf4qt
 	options = !strip
-	source = pdf4qt.git::git+https://github.com/JakubMelka/PDF4QT.git#tag=v1.5.1.0
-	source = FindLCMS2.cmake
-	sha256sums = b3e84d6ddf2bb6899dada595013fc0cfe6bcc93499d07f1419e1f40ee7c51524
+	source = pdf4qt.git::git+https://github.com/JakubMelka/PDF4QT.git#tag=v1.5.3.1
+	sha256sums = 45cdef2479370572dfc54ec2cb8f714d353c0bb03dfbeeb11e5434eb2c4343f7
 	sha256sums = 5f64f0b7a3e265cc02cbe0e968482337ed8d197a043d926d7714e938d1da9f34
 
 pkgname = pdf4qt
