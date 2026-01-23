@@ -1,4 +1,5 @@
-# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer: Jasmin <theblazehen@gmail.com>
+# Contributor: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 _pkgname="slackdump"
 pkgname="${_pkgname}-bin"
