@@ -1,7 +1,7 @@
 # Maintainer: FirstAirBender <noblechuk5[at]web[dot]de>
 pkgname=(red-{view,cli,toolchain})
 pkgbase=red-meta
-_pkgver='31dec23-f61506be0'
+_pkgver='23jan26-23418b4cb'
 _pkgcommit="${_pkgver##*-}"
 pkgver="$(date --date="${_pkgver%%-*}" "+%Y.%m.%d.${_pkgver##*-}")"
 pkgrel=1
@@ -16,9 +16,9 @@ source=(
 	"red-cli-$_pkgver::https://static.red-lang.org/dl/auto/linux/red-$_pkgver"
 	"red-toolchain-$_pkgver::https://static.red-lang.org/dl/auto/linux/red-toolchain-$_pkgver"
 )
-sha256sums=('905a3346995c4b2402d382c3919631ff9059e3aaba286207df4d50c91fc2192e'
-	'3c66857c912473a53b720f0f2bc7cb17000ed828010344b3e180c586302c425b'
-	'007788d933e90f7ae221d0801e6f908787ec7b7c7bb18ebcd0daf480c72a3aa8')
+sha256sums=('35abcc3a02534c5e538fa0829caac15bef61878b3b228c32135b34a469dad1d7'
+            '3fe435e602f822e224b526c3760e448d2a28399a915d2b09cd0bde030a0b7246'
+            '810a42b64a085e30b464659a96c19cb334e44d9f5a35da416519254f758984cd')
 
 package_red-view() {
 	pkgdesc="$pkgdesc (GUI)"

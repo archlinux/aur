@@ -1,6 +1,6 @@
 pkgbase = red-meta
 	pkgdesc = Red is a next-generation programming language strongly inspired by REBOL
-	pkgver = 2023.12.31.f61506be0
+	pkgver = 2026.01.23.23418b4cb
 	pkgrel = 1
 	url = https://www.red-lang.org
 	arch = i686
@@ -10,12 +10,12 @@ pkgbase = red-meta
 	makedepends = gendesk
 	makedepends = curl
 	depends = lib32-curl
-	source = red-view-31dec23-f61506be0::https://static.red-lang.org/dl/auto/linux/red-view-31dec23-f61506be0
-	source = red-cli-31dec23-f61506be0::https://static.red-lang.org/dl/auto/linux/red-31dec23-f61506be0
-	source = red-toolchain-31dec23-f61506be0::https://static.red-lang.org/dl/auto/linux/red-toolchain-31dec23-f61506be0
-	sha256sums = 905a3346995c4b2402d382c3919631ff9059e3aaba286207df4d50c91fc2192e
-	sha256sums = 3c66857c912473a53b720f0f2bc7cb17000ed828010344b3e180c586302c425b
-	sha256sums = 007788d933e90f7ae221d0801e6f908787ec7b7c7bb18ebcd0daf480c72a3aa8
+	source = red-view-23jan26-23418b4cb::https://static.red-lang.org/dl/auto/linux/red-view-23jan26-23418b4cb
+	source = red-cli-23jan26-23418b4cb::https://static.red-lang.org/dl/auto/linux/red-23jan26-23418b4cb
+	source = red-toolchain-23jan26-23418b4cb::https://static.red-lang.org/dl/auto/linux/red-toolchain-23jan26-23418b4cb
+	sha256sums = 35abcc3a02534c5e538fa0829caac15bef61878b3b228c32135b34a469dad1d7
+	sha256sums = 3fe435e602f822e224b526c3760e448d2a28399a915d2b09cd0bde030a0b7246
+	sha256sums = 810a42b64a085e30b464659a96c19cb334e44d9f5a35da416519254f758984cd
 
 pkgname = red-view
 	pkgdesc = Red is a next-generation programming language strongly inspired by REBOL (GUI)
