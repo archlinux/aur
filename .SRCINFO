@@ -1,13 +1,13 @@
 pkgbase = hunspell-eo
 	pkgdesc = Esperanto hunspell dictionary
 	pkgver = 20100216
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.esperantilo.org/
 	arch = any
 	license = GPL2
+	makedepends = qt6-webengine
 	optdepends = hunspell: the spell checking libraries and apps
 	source = http://www.esperantilo.org/literumilo-fontoj.tar.gz
 	md5sums = a190ad0995cb13b307ba968e7662ee9c
 
 pkgname = hunspell-eo
-
