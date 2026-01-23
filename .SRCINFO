@@ -1,8 +1,8 @@
-pkgbase = radiochat-tui-git
-	pkgdesc = E2EE Terminal Chat Client (radiochat)
+pkgbase = eurus-tui-git
+	pkgdesc = E2EE Terminal Chat Client (eurus)
 	pkgver = r26.4dd6cd8
-	pkgrel = 6
-	url = https://github.com/sricharanandra/radiochat-tui
+	pkgrel = 1
+	url = https://github.com/sricharanandra/eurus-tui
 	arch = x86_64
 	arch = aarch64
 	license = MIT
@@ -11,10 +11,10 @@ pkgbase = radiochat-tui-git
 	depends = gcc-libs
 	depends = libxcb
 	depends = dbus
-	provides = radiochat
-	conflicts = radiochat
+	provides = eurus
+	conflicts = eurus
 	options = !lto
-	source = git+https://github.com/sricharanandra/radiochat-tui.git
+	source = git+https://github.com/sricharanandra/eurus-tui.git
 	sha256sums = SKIP
 
-pkgname = radiochat-tui-git
+pkgname = eurus-tui-git
