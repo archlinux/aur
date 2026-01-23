@@ -21,8 +21,8 @@ conflicts=(
 depends=(
     "electron${_electronversion}"
     'ollama'
-    #'ollama-cuda'
-    #'ollama-rocm'
+    'ollama-cuda'
+    'ollama-rocm'
 )
 makedepends=(
     'asar'

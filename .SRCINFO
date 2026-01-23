@@ -9,6 +9,8 @@ pkgbase = anythingllm-desktop-bin
 	makedepends = asar
 	depends = electron31
 	depends = ollama
+	depends = ollama-cuda
+	depends = ollama-rocm
 	provides = anythingllm-desktop=1.10.0
 	conflicts = anythingllm-desktop
 	conflicts = anythingllm
