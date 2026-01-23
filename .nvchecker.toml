@@ -1,0 +1,6 @@
+[keepsecret-git]
+source = 'gitlab'
+gitlab = 'utilities/keepsecret'
+host = 'invent.kde.org'
+use_max_tag = true
+prefix = 'v'
