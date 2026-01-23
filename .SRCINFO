@@ -1,5 +1,5 @@
 pkgbase = nvspeed-git
-	pkgdesc = nvspeed is a minimal Nvidia GPU fan speed controller written in C
+	pkgdesc = A minimal Nvidia GPU fan speed controller written in C
 	pkgver = 0.1
 	pkgrel = 1
 	url = https://github.com/iakobvs/nvspeed
