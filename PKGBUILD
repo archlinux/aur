@@ -1,3 +1,6 @@
+# Maintainer: ilovemikael <itsmeguys2247 at gmail dot com>
+
+# PKGBUILD forked from https://aur.archlinux.org/packages/sdbus-cpp-nosystemd-git by 
 # Maintainer: dreieck
 # Contributor: Cirk2
 
@@ -57,9 +60,7 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/build"
-
-  cmake -S "${srcdir}/${_pkgname}" -B . -GNinja \
+  cmake -S "${_pkgname}" -B build -GNinja \
     -DCMAKE_INSTALL_PREFIX=/ \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS=ON \
@@ -68,14 +69,11 @@ build() {
     -DSDBUSCPP_BUILD_DOCS=ON \
     -DSDBUSCPP_BUILD_DOXYGEN_DOCS=ON
 
-  cmake --build .
-  cmake --build . --target doc
+  cmake --build build
+  cmake --build build --target doc
 }
 
 package() {
-  cd "${srcdir}/build"
-  DESTDIR="${pkgdir}" cmake --install .
-  install -Dm644 "${srcdir}/${_pkgname}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
-  install -Dm644 "${srcdir}/${_pkgname}/COPYING-LGPL-Exception" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING-LGPL-Exception"
+  DESTDIR="${pkgdir}" cmake --install build
+  install -Dvm644 -t $pkgdir/usr/share/licenses/$pkgname $_pkgname/{COPYING,COPYING-LGPL-Exception}
 }
-
