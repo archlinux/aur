@@ -1,7 +1,7 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=ggrain
-_pkgver=0.1.1
+_pkgver=0.1.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -21,8 +21,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e70ffb005d77a75b926d56200d93ca6e')
-b2sums=('f827fe1a817f09e7d5282294972a141c42113925610ecdcc8f9bd1cbd347e0a5357aa74f5b5f3c9259f2c059841788e9c94f270703f18c14d1b48f38d6b11fa8')
+md5sums=('29f622541c4ac66c9ebfa1617f960dc8')
+b2sums=('3f963413caa74405dd39b935030c3f6391520f79eecebffffba03627063e56b4c11c8da037ab46ffc8dcd8e47538e0928ec6b78cae85f871107ce9cc467342d1')
 
 build() {
   mkdir build
