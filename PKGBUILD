@@ -22,10 +22,21 @@ makedepends=(
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/visioncortex/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('a2e927a3cc4e8e3440862aeaef3d6d2c867c6557b270a55291fe1e6ae9706444')
 
+prepare() {
+	cd "${pkgname}-${pkgver}"
+
+	export RUSTUP_TOOLCHAIN=stable
+	# Upstream does not provide a lock file at the time of writing
+	cargo fetch --target host-tuple # --locked
+}
+
 build() {
 	cd "${pkgname}-${pkgver}"
 
-	cargo build --release
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	# Upstream does not provide a lock file at the time of writing
+	cargo build --release --all-features # --frozen
 
 	# Build Python bindings
 	cd cmdapp
