@@ -10,9 +10,30 @@ options=('!debug' '!strip')
 provides=('just-talk')
 conflicts=('just-talk' 'just-talk-git')
 _pkgfile="just-talk-${pkgver}-x86_64.AppImage"
-source=("${_pkgfile}::https://github.com/whoamihappyhacking/just-talk/releases/download/v${pkgver}/${_pkgfile}")
-sha256sums=('5b29658bec8e17dffe9791547754c7e3baea045c1a35b8ae05c530aa515fd118')
+source=(
+  "${_pkgfile}::https://github.com/whoamihappyhacking/just-talk/releases/download/v${pkgver}/${_pkgfile}"
+  "icon.png::https://raw.githubusercontent.com/whoamihappyhacking/just-talk/v${pkgver}/icon.png"
+  "just-talk.desktop::https://raw.githubusercontent.com/whoamihappyhacking/just-talk/v${pkgver}/just-talk.desktop"
+)
+sha256sums=(
+  '54e3ae4720a195064cde1d5667ef7adc83f533c6f8fc562610661412de92a1cc'
+  'SKIP'
+  'SKIP'
+)
 
 package() {
-  install -Dm755 "$srcdir/${_pkgfile}" "$pkgdir/usr/bin/just-talk"
+  # Install AppImage as the main binary
+  install -Dm755 "$srcdir/${_pkgfile}" "$pkgdir/usr/bin/just-talk.appimage"
+
+  # Create wrapper script
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/just-talk" <<'EOF'
+#!/bin/bash
+exec /usr/bin/just-talk.appimage "$@"
+EOF
+
+  # Install icon
+  install -Dm644 "$srcdir/icon.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/just-talk.png"
+
+  # Install desktop file
+  install -Dm644 "$srcdir/just-talk.desktop" "$pkgdir/usr/share/applications/just-talk.desktop"
 }

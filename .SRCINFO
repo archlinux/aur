@@ -12,6 +12,10 @@ pkgbase = just-talk-bin
 	options = !debug
 	options = !strip
 	source = just-talk-0.1.4-x86_64.AppImage::https://github.com/whoamihappyhacking/just-talk/releases/download/v0.1.4/just-talk-0.1.4-x86_64.AppImage
-	sha256sums = 5b29658bec8e17dffe9791547754c7e3baea045c1a35b8ae05c530aa515fd118
+	source = icon.png::https://raw.githubusercontent.com/whoamihappyhacking/just-talk/v0.1.4/icon.png
+	source = just-talk.desktop::https://raw.githubusercontent.com/whoamihappyhacking/just-talk/v0.1.4/just-talk.desktop
+	sha256sums = 54e3ae4720a195064cde1d5667ef7adc83f533c6f8fc562610661412de92a1cc
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = just-talk-bin
