@@ -34,7 +34,6 @@ makedepends=(
 )
 optdepends=(
   'platformio-core-udev: Udev rules for PlatformIO supported boards/devices'
-  'python-shellingham: for shell completions'
 )
 source=(
   "$pkgbase::git+https://github.com/platformio/platformio-core#tag=v$pkgver"
