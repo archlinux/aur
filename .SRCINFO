@@ -1,7 +1,7 @@
 pkgbase = dwproton-bin
 	pkgdesc = Proton builds with the latest Dawn Winery fixes for gacha games, based on Proton-CachyOS
 	pkgver = 10.0_14
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://dawn.wine/dawn-winery/dwproton
 	install = dwproton-bin.install
@@ -41,7 +41,7 @@ pkgbase = dwproton-bin
 	depends = zenity
 	optdepends = steam
 	optdepends = lutris
-	optdepends = heroic
+	optdepends = heroic-games-launcher
 	optdepends = umu-launcher
 	provides = proton
 	provides = dwproton

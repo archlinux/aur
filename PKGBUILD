@@ -4,7 +4,7 @@ _pkgname=dwproton
 pkgname=${_pkgname}-bin
 _srcver=10.0-14
 pkgver=${_srcver//-/_}
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Proton builds with the latest Dawn Winery fixes for gacha games, based on Proton-CachyOS"
 arch=('x86_64')
@@ -66,7 +66,7 @@ makedepends=(rsync)
 optdepends=(
   steam
   lutris
-  heroic
+  heroic-games-launcher
   umu-launcher
 )
 install=${pkgname}.install
