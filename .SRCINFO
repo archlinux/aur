@@ -1,0 +1,20 @@
+pkgbase = easypostman
+	pkgdesc = An open-source API debugging and stress testing tool inspired by Postman and JMeter
+	pkgver = 4.3.12
+	pkgrel = 1
+	url = https://github.com/lakernote/EasyPostman
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = maven
+	makedepends = java-environment>=17
+	depends = java-runtime>=17
+	depends = hicolor-icon-theme
+	optdepends = git: for Git workspace functionality
+	source = easypostman-4.3.12.tar.gz::https://github.com/lakernote/EasyPostman/archive/refs/tags/v4.3.12.tar.gz
+	source = easypostman.desktop
+	source = easypostman.sh
+	sha256sums = d5a6f78c1a05577e60c5f0dcf8d5e7197d792144099104ea549e41cdaa796486
+	sha256sums = d643a4a9f8582150fe12404f97858327571b148935872295a226230d23dcac5d
+	sha256sums = af25291994612c8b386069fea0499890a7b387a1004aa6586392f8e6a1e30054
+
+pkgname = easypostman

@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=EasyPostman
+GenericName=API Testing Tool
+Comment=An open-source API debugging and stress testing tool
+Exec=easypostman %U
+Icon=easypostman
+Terminal=false
+Categories=Development;WebDevelopment;Network;Java;
+Keywords=api;http;rest;postman;testing;debug;
+StartupWMClass=com-laker-postman-App
+StartupNotify=true
+MimeType=application/json;
