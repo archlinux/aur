@@ -9,8 +9,9 @@ url='https://www.winboat.app'
 license=('MIT')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-depends=('docker' 'libxcrypt-compat' 'electron' 'docker-compose' 'freerdp' 'gtk3' 'alsa-lib' 'nss')
+depends=('libxcrypt-compat' 'electron' 'freerdp' 'gtk3' 'alsa-lib' 'nss')
 makedepends=('zip' 'npm' 'go' 'git')
+optdepends=('docker: To use docker as a container runtime' 'podman-compose: To use podman as a container runtime')
 options=("!strip" "!debug")
 source=("git+https://github.com/tibixdev/winboat.git" "winboat.install")
 
