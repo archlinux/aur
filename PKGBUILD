@@ -1,20 +1,33 @@
+# Maintainer: Jasmin <theblazehen@gmail.com>
+# Contributor: amodi444 <amodiii444@gmail.com>
 pkgname=scrapfetch-git
-pkgver=1.0
+pkgver=r6.238880f
 pkgrel=1
 pkgdesc="A tool for fetching system information. Written in C for Linux."
 arch=('x86_64')
 url="https://github.com/amodi444/scrapfetch"
-license=('GPLv3')
-depends=("glibc")
-source=("git+https://github.com/amodi444/scrapfetch.git")
-md5sums=('SKIP')
+license=('GPL-3.0-or-later')
+depends=('glibc')
+makedepends=('git')
+provides=('scrapfetch')
+conflicts=('scrapfetch')
+source=("${pkgname}::git+https://github.com/amodi444/scrapfetch.git")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
 
 build() {
-  cd "$srcdir/$pkgname"
-  make
+    cd "$pkgname"
+    make
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  make DESTDIR="$pkgdir" install
+    cd "$pkgname"
+    make DESTDIR="$pkgdir" install
+
+    # Install license
+    install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
