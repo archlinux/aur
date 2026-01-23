@@ -1,0 +1,16 @@
+pkgbase = basu
+	pkgdesc = The sd-bus library, extracted from systemd. PKGBUILD taken from Artix's repo.
+	pkgver = 0.2.1
+	pkgrel = 1.1
+	url = https://git.sr.ht/~emersion/basu
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = meson
+	makedepends = gperf
+	depends = glibc
+	depends = gcc-libs
+	depends = libcap
+	source = https://git.sr.ht/~emersion/basu/refs/download/v0.2.1/basu-0.2.1.tar.gz
+	sha256sums = d9b373a9fcb5d5eb5f6c1c56355f76edb7f2f52bc744570e80604e83455a19bd
+
+pkgname = basu
