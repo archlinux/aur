@@ -1,27 +1,16 @@
 post_install() {
-  if command -v tput >/dev/null && [ -t 1 ]; then
-    CYAN=$(tput setaf 6)
-    YELLOW=$(tput setaf 3)
-    GREEN=$(tput setaf 2)
-    BLUE=$(tput setaf 4)
-    BOLD=$(tput bold)
-    RESET=$(tput sgr0)
-  else
-    CYAN= YELLOW= GREEN= BLUE= BOLD= RESET=
-  fi
+  cat << 'EOF'
+==> otaripper-bin (glibc build)
 
-  cat << EOF
-${CYAN}${BOLD}==> otaripper-bin (glibc build)${RESET}
+IMPORTANT:
+────────────────────────────────────
+If otaripper fails to run due to libc
+or runtime issues, use the musl build.
 
-This package ships the ${BOLD}prebuilt glibc-based binary${RESET}.
+goto https://github.com/syedinsaf/otaripper/releases
 
-${YELLOW}If otaripper fails to run due to libc or runtime issues:${RESET}
-You can use the ${GREEN}${BOLD}fully static musl build${RESET} instead:
-
-  ${BLUE}https://github.com/syedinsaf/otaripper/releases${RESET}
-
-Look for:
-  ${BOLD}otaripper-linux-static-x86_64.tar.gz${RESET}
+Look for: otaripper-linux-static-x86_64.tar.gz
+────────────────────────────────────
 EOF
 }
 
