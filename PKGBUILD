@@ -8,7 +8,8 @@ pkgdesc="Asyncio high level UDP sockets"
 arch=(
   'any'
 )
-url="https://github.com/eerimoq/${_pypiname}"
+url="https://asyncudp.readthedocs.org"
+_url="https://github.com/eerimoq/${_pypiname}"
 license=(
   'MIT'
 )
@@ -23,9 +24,9 @@ makedepends=(
   'python-installer'
   'python-setuptools'
 )
-_pkgsrc="${url##*/}-${pkgver}"
+_pkgsrc="${_url##*/}-${pkgver}"
 source=(
-  "${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
+  "${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/${pkgver}.tar.gz"
 )
 sha256sums=('5e9b7d4d41ba726f8cffb3086e2ab25c397c612da70539d9d91afe7b917eabfc')
 
