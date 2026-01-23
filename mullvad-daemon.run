@@ -1,3 +1,2 @@
 #!/bin/sh
-exec 2>&1
-exec /usr/bin/mullvad-daemon --disable-stdout-timestamps
+exec /usr/bin/mullvad-daemon --disable-stdout-timestamps 2>&1 >/dev/null
