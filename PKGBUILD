@@ -1,7 +1,7 @@
 # Maintainer: James Liu <contact at no-bull dot sh>
 
 pkgname=reflector-rs-git
-pkgver=1.0.r144.g4d67057
+pkgver=1.1.0.1.g4744f3f
 pkgrel=1
 pkgdesc='Retrieve and filter the latest Arch Linux mirror list (Rust implementation)'
 arch=('x86_64')
@@ -20,7 +20,7 @@ pkgver() {
   if git describe --tags --long >/dev/null 2>&1; then
     git describe --tags --long | sed 's/^v//;s/-/./g'
   else
-    printf "1.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "1.1.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   fi
 }
 
