@@ -1,8 +1,8 @@
 # Maintainer: Swarnaditya Singh <demonkingswarn@protonmail.com>
 pkgname=luffy-bin
 _pkgname=luffy
-pkgver=1.0.7
-pkgrel=2
+pkgver=1.0.8
+pkgrel=1
 pkgdesc="Watch movies and series from your commandline"
 arch=('x86_64')
 url="https://github.com/DemonKingSwarn/luffy"
@@ -14,13 +14,13 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-source=("${url}/releases/download/v${pkgver}/${_pkgname}")
+source=("${url}/releases/download/v${pkgver}/${_pkgname}.amd64")
 noextract=()
-sha256sums=('739f6ffd2925ef7393057690e69de9011d75fade7651853b9daa081c65e77911')
+sha256sums=('64638c4a749773a6d51514b829170c96d65a63ce6904abb354cf15a612cb12ef')
 
 
 package() {
 	mkdir -p "$pkgdir"/usr/bin
-  chmod +x "$_pkgname"
-  cp -r "$_pkgname" "$pkgdir"/usr/bin/"$_pkgname"
+  chmod +x "$_pkgname.amd64"
+  cp -r "$_pkgname.amd64" "$pkgdir"/usr/bin/"$_pkgname"
 }
