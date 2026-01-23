@@ -1,6 +1,6 @@
 # Maintainer: Canmi <t@canmi.icu>
 pkgname=vane
-pkgver=0.8.15
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A flow-based reverse proxy with multi-layer routing and programmable pipelines"
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64' 'loongarch64')

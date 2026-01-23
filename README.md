@@ -12,7 +12,7 @@
   <a href="https://github.com/canmi21/vane/blob/main/LICENSE"><img align="center" src="https://img.shields.io/github/license/canmi21/vane?style=flat&color=FF6B6B&labelColor=2D333B&logo=github" alt="License"/></a>
   <a href="https://deepwiki.com/canmi21/vane"><img align="center" src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki"/></a>
   <a href="https://github.com/canmi21/vane/graphs/contributors"><img align="center" src="https://img.shields.io/github/contributors/canmi21/vane?style=flat&color=6FCF97&labelColor=2D333B&logo=github" alt="Contributors"/></a>
-  <a href="https://github.com/canmi21/vane/actions"><img align="center" src="https://img.shields.io/github/actions/workflow/status/canmi21/vane/ci.yml?style=flat&color=3399FF&labelColor=2D333B&logo=githubactions" alt="Build Status"/></a>
+  <a href="https://github.com/canmi21/vane/actions/workflows/release.yml"><img align="center" src="https://github.com/canmi21/vane/actions/workflows/release.yml/badge.svg" alt="Build Status"/></a>
   <a href="https://crates.io/crates/vane"><img align="center" src="https://img.shields.io/crates/d/vane?style=flat&color=9B5DE5&labelColor=2D333B&logo=rust" alt="Downloads"/></a>
   <a href="https://github.com/canmi21/vane/stargazers"><img align="center" src="https://img.shields.io/github/stars/canmi21/vane?style=flat&color=FFD43B&labelColor=2D333B&logo=github" alt="GitHub stars"/></a>
 </p>

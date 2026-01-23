@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## 0.9.0 (23. Jan, 2026)
+
+- **Breaking:** Re-architected the internal API structure. Legacy endpoints have been migrated to domain-specific handlers (`system`, `ports`, `config`, `plugins`), changing the internal routing layout.
+- **Breaking:** Changed the default configuration directory on Unix-like systems from `~/vane/` to `/etc/vane/` to align with production standards. Windows now defaults to `C:\ProgramData\Vane\`.
+- **Added:** Integrated `utoipa` to provide full OpenAPI (Swagger) documentation, accessible via `/swagger-ui`.
+- **Added:** Implemented strict Request/Response Schemas in `src/api/schemas/` to ensure robust API contracts.
+- **Added:** New Configuration Management APIs: implemented `reload`, `export`, and a safe `import` (restore mode) that recursively cleans existing configs before restoration.
+- **Added:** Implemented initial support for the Windows platform, including adaptive memory management via `wmic`.
+- **Changed:** Migrated legacy `ingress` API logic to the new `api/handlers/ports` module.
+- **Changed:** Refactored global path handling to use platform-specific separators and standard system directories.
+- **Fixed:** Resolved `axum` 0.8 compatibility issues by replacing root nesting with router merging.
+- **Fixed:** Resolved a stack overflow issue during OpenAPI schema generation caused by recursive plugin instance structures.
+- **Fixed:** Resolved cross-platform compatibility issues by gating Unix-specific paths and socket IPC logic.
+
 ## 0.8.15 (22. Jan, 2026)
 
 - **Added:** Implemented comprehensive CI/CD pipelines for automated publishing to Docker Hub, GitHub Container Registry (GHCR), AUR, and Crates.io using Trusted Publishing.
