@@ -1,15 +1,15 @@
 pkgbase = angelscript
 	pkgdesc = An extremely flexible cross-platform scripting library.
-	pkgver = 2.36.1
+	pkgver = 2.38.0
 	pkgrel = 1
-	url = http://angelcode.com/angelscript/
+	url = http://angelcode.com/angelscript
 	arch = i686
 	arch = x86_64
 	license = custom:ZLIB
 	depends = gcc-libs
-	source = http://angelcode.com/angelscript/sdk/files/angelscript_2.36.1.zip
-	source = LICENSE
-	sha512sums = d6d213ce72135c89e47e67521f654611ff67673f3decd9db3da4b7bf317a04a3f91c5c6ae36658ec3f2b20498facd069af02a91255a24ec79c96d8c90d6b554e
-	sha512sums = 523a6ded94dab26ebc1fc5ed39346b950afea1dae1a51c5f262242de1ad86ce921d462b430825bd7a0ca7bb2d501b85e60f39732c3e1d948e1f0182cc9c691a1
+	source = http://angelcode.com/angelscript/sdk/files/angelscript_2.38.0.zip
+	source = https://github.com/anjo76/angelscript/raw/refs/heads/master/LICENSE.md
+	b2sums = 40600c1828641960007143a9ef5a730189dcc7c2c9121ed674889028e6ce733fd3ed5adaadae4bb8dd31785c056850cec885c17e4b5a7dfac259b8f4157bf8c7
+	b2sums = ee624592047acaa56745943bd1d2e55ffd3e155e0ae8822b60ba0edb746da5c87c57a953d4045969d15d8d8284eafa64b04b1933c5ed6f8c33f9939cd166af16
 
 pkgname = angelscript
