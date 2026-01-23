@@ -1,7 +1,7 @@
 # Maintainer: FrancoStino <info@davideladisa.it>
 pkgname=antigravity-manager-git
 pkgver=r0.0000000
-pkgrel=1
+pkgrel=2
 pkgdesc="Professional multi-account manager for Google Gemini & Claude AI (git version)"
 arch=('x86_64')
 url="https://github.com/Draculabo/AntigravityManager"
