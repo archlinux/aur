@@ -1,0 +1,15 @@
+diff --git a/units_cur b/units_cur
+index 80a6666..89dec76 100755
+--- a/units_cur
++++ b/units_cur
+@@ -556,8 +556,8 @@ ratestr = '\n'.join(
+ # Get precious metals data and bitcoin
+ #
+ 
+-metals = getjson('https://services.packetizer.com/spotprices',{'f':'json'})
+-bitcoin = getjson('https://services.packetizer.com/btc',{'f':'json'})
++metals = getjson('https://services.packetizer.com/spotprices/',{'f':'json'})
++bitcoin = getjson('https://services.packetizer.com/btc/',{'f':'json'})
+ 
+ metallist = ['']*len(validmetals)
+ for metal, price in metals.items():
