@@ -8,6 +8,7 @@ url='https://github.com/pfeifferj/cockpit-pacman'
 license=('GPL-3.0-or-later')
 depends=('cockpit' 'pacman')
 makedepends=('npm' 'rust' 'cargo')
+options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pfeifferj/cockpit-pacman/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
