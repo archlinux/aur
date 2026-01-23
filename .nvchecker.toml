@@ -1,0 +1,5 @@
+[python-recursivenodes]
+source = "gitlab"
+gitlab = "tisaac/recursivenodes"
+use_max_tag = "true"
+prefix = "v"

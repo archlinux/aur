@@ -1,0 +1,16 @@
+pkgbase = python-recursivenodes
+	pkgdesc = Recursively defined interpolation nodes for the simplex
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://gitlab.com/tisaac/recursivenodes
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python-numpy
+	source = https://gitlab.com/tisaac/recursivenodes/-/archive/v0.3.0/recursivenodes-v0.3.0.tar.gz
+	sha512sums = 589d1feff957b44990563fef877e346d55b8fffef7433cddbeead4159f54d50a414324db7f60f6e6ef9a5cafcb17175e603500503c605257ec70c42a9111eeec
+
+pkgname = python-recursivenodes
