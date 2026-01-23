@@ -1,0 +1,4 @@
+[r8127-dkms]
+source = "github"
+github = "openwrt/rtl8127"
+use_max_tag = true

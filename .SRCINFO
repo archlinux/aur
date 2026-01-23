@@ -1,16 +1,16 @@
 pkgbase = r8127-dkms
 	pkgdesc = Kernel module for Realtek 10GB Ethernet NICs
 	pkgver = 11.015.00
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.realtek.com/Download/List?cate_id=584
 	arch = any
 	license = GPL-2.0-only
 	makedepends = linux-headers
 	depends = dkms
 	depends = linux-firmware-realtek
-	source = https://github.com/hurricanepootis/r8127/archive/refs/tags/11.015.00.tar.gz
+	source = https://github.com/openwrt/rtl8127/releases/download/11.015.00/r8127-11.015.00.tar.bz2
 	source = dkms.conf
-	sha256sums = 7b55b39b8b22d6daac408b9df312b70a8206636aca68eb92b5c69da74170f0c8
+	sha256sums = ab21bf69368fb9de7f591b2e81cf1a815988bbf086ecbf41af7de9787b10594b
 	sha256sums = 179393f5341a4740f94683cd8d9c220f80020c6df14436f2d68cd1c3eabcfd55
 
 pkgname = r8127-dkms
