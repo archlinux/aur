@@ -10,9 +10,9 @@ pkgbase = inav-configurator-bin
 	provides = inav-configurator
 	conflicts = inav-configurator
 	options = !strip
-	source_x86_64 = https://github.com/iNavFlight/inav-configurator/releases/download/9.0.0/INAV-Configurator_linux_x64_9.0.0.zip
-	sha256sums_x86_64 = 9f9e90134649dac94bd1665b9c1976a448005280ccba1e3aee05adf9e4706bd7
-	source_aarch64 = https://github.com/iNavFlight/inav-configurator/releases/download/9.0.0/INAV-Configurator_linux_arm64_9.0.0.zip
-	sha256sums_aarch64 = 5bea0169b8d79bfd1df1d31f87bb1ed9768a2fc51ffbae9725173a1be10f9924
+	source_x86_64 = https://github.com/iNavFlight/inav-configurator/releases/download/9.0.0/INAV-Configurator_linux_x64_9.0.0.deb
+	sha256sums_x86_64 = debd2bedfdcf0f79d0a30d13cb286e84b3f68f50ccdad11067fec98d3b42288e
+	source_aarch64 = https://github.com/iNavFlight/inav-configurator/releases/download/9.0.0/INAV-Configurator_linux_arm64_9.0.0.deb
+	sha256sums_aarch64 = 6e03a5dab2ecb5e31cd52a848725f9c8d6defecc3d3a5bee7a73d5196cf6405f
 
 pkgname = inav-configurator-bin
