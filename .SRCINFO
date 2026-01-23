@@ -9,6 +9,7 @@ pkgbase = winboat-git
 	makedepends = npm
 	makedepends = go
 	makedepends = git
+	makedepends = imagemagick
 	depends = libxcrypt-compat
 	depends = electron
 	depends = freerdp

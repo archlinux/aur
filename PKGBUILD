@@ -10,7 +10,7 @@ license=('MIT')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 depends=('libxcrypt-compat' 'electron' 'freerdp' 'gtk3' 'alsa-lib' 'nss')
-makedepends=('zip' 'npm' 'go' 'git')
+makedepends=('zip' 'npm' 'go' 'git' 'imagemagick')
 optdepends=('docker: To use docker as a container runtime' 'podman-compose: To use podman as a container runtime')
 options=("!strip" "!debug")
 source=("git+https://github.com/tibixdev/winboat.git" "winboat.install")
@@ -36,7 +36,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  npm ci
+  npm i
   npm run build:linux-gs
 
   # Clean module cache for makepkg -C
