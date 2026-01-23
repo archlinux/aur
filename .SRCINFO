@@ -1,0 +1,31 @@
+pkgbase = sdbus-cpp-basu-git
+	pkgdesc = sdbus-c++ is a high-level C++ D-Bus library for Linux designed to provide expressive, easy-to-use API in modern C++. This package is without systemd dependencies, it uses an extracted version of the sd-bus library (akin to elogind).
+	pkgver = 2.2.1+5.r463.d20260115.c2bb343
+	pkgrel = 1
+	url = https://github.com/Kistler-Group/sdbus-cpp
+	arch = i686
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	license = LicenseRef-sdbus-c++_LGPL_Exception_1.0
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = git
+	makedepends = gperf
+	makedepends = meson
+	makedepends = ninja
+	makedepends = rsync
+	depends = basu
+	depends = expat
+	depends = gcc-libs
+	depends = glibc
+	depends = libcap
+	provides = sdbus-cpp=2.2.1+5.r463.d20260115.c2bb343
+	provides = sdbus-cpp-git=2.2.1+5.r463.d20260115.c2bb343
+	provides = sdbus-cpp-basu=2.2.1+5.r463.d20260115.c2bb343
+	conflicts = sdbus-cpp
+	conflicts = sdbus-cpp-git
+	conflicts = sdbus-cpp-basu
+	source = sdbus-cpp::git+https://github.com/Kistler-Group/sdbus-cpp.git
+	sha256sums = SKIP
+
+pkgname = sdbus-cpp-basu-git
