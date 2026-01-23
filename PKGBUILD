@@ -10,14 +10,14 @@ url="https://github.com/tycho-kirchner/${_pkgname}"
 license=('MIT')
 makedepends=('git')
 depends=(
-  glibc
-  libx11
-  libxcomposite
-  libxdamage
-  libxfixes
-  libxrender
+  'glibc'
+  'libx11'
+  'libxcomposite'
+  'libxdamage'
+  'libxfixes'
+  'libxrender'
 )
-source=("git+${url}#branch=dev")
+source=("git+${url}.git#branch=dev")
 sha512sums=('SKIP')
 conflicts=(${_pkgname})
 provides=(${_pkgname})

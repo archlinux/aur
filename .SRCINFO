@@ -14,7 +14,7 @@ pkgbase = fastcompmgr-dev
 	depends = libxrender
 	provides = fastcompmgr
 	conflicts = fastcompmgr
-	source = git+https://github.com/tycho-kirchner/fastcompmgr#branch=dev
+	source = git+https://github.com/tycho-kirchner/fastcompmgr.git#branch=dev
 	sha512sums = SKIP
 
 pkgname = fastcompmgr-dev
