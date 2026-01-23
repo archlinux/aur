@@ -1,4 +1,4 @@
-# Maintainer: Damian Höster <damian dot hoester at posteo dot de>
+# Maintainer: Damian Höster <damian.hoester@posteo.de>
 
 pkgname=zlint
 pkgver=0.7.9
@@ -7,7 +7,7 @@ pkgdesc='A linter for the Zig programming language'
 arch=(x86_64)
 url=https://github.com/DonIsaac/zlint
 license=(MIT)
-makedepends=(zig)
+makedepends=('zig>=0.14.0' 'zig<0.15.0')
 source=(https://github.com/DonIsaac/zlint/archive/refs/tags/v$pkgver.tar.gz)
 sha256sums=(be81fd5d9dd7cafc65c1214946c05b629d1ceb3ada31add96bfd260efea2e2fc)
 

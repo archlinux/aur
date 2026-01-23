@@ -5,7 +5,8 @@ pkgbase = zlint
 	url = https://github.com/DonIsaac/zlint
 	arch = x86_64
 	license = MIT
-	makedepends = zig
+	makedepends = zig>=0.14.0
+	makedepends = zig<0.15.0
 	source = https://github.com/DonIsaac/zlint/archive/refs/tags/v0.7.9.tar.gz
 	sha256sums = be81fd5d9dd7cafc65c1214946c05b629d1ceb3ada31add96bfd260efea2e2fc
 
