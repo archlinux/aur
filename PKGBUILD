@@ -3,7 +3,7 @@
 
 pkgname='stratisd'
 pkgver=3.8.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Easy to use local storage management for Linux.'
 arch=('x86_64')
 url='https://stratis-storage.github.io/'
@@ -26,10 +26,16 @@ build() {
   # Release
   export LIBEXECDIR=/usr/lib
   cargo build --release --bin=stratisd
-  cargo build --release --bin=stratis-min --bin=stratisd-min --bin=stratis-utils --no-default-features --features engine,min,systemd_compat
+  #cargo build --release --bin=stratis-min --bin=stratisd-min --bin=stratis-utils --no-default-features --features engine,min,systemd_compat
+  cargo build --release --bin=stratis-utils --no-default-features --features engine,systemd_compat
+  cargo build --release --bin=stratis-str-cmp --no-default-features --features udev_scripts
   cargo build --release --bin=stratis-str-cmp --no-default-features --features udev_scripts
   cargo build --release --bin=stratis-base32-decode --no-default-features --features udev_scripts
-  cargo build --release --bin=stratis-dumpmetadata --no-default-features --features engine,extras,min
+  #cargo build --release --bin=stratis-dumpmetadata --no-default-features --features engine,extras,min
+  cargo build --release --bin=stratisd-tools --no-default-features --features engine,extras
+  cargo build --release --bin=stratis-str-cmp --no-default-features --features udev_scripts
+
+
 
   a2x -f manpage docs/stratisd.txt
   a2x -f manpage docs/stratis-dumpmetadata.txt
