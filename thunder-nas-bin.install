@@ -7,7 +7,7 @@ Thunder NAS 是一个基于迅雷技术的 NAS 服务，提供远程下载和文
 
 服务配置:
 - 运行用户: thunder-nas
-- 下载目录: /xunlei
+- 下载目录: /var/lib/thunder-nas
 - 监听地址: 127.0.0.1:2345
 - 管理界面: http://127.0.0.1:2345/webman/3rdparty/pan-xunlei-com/index.cgi/#
 
@@ -21,34 +21,33 @@ Thunder NAS 是一个基于迅雷技术的 NAS 服务，提供远程下载和文
 7. 禁用自启:    sudo systemctl disable thunder-nas.service
 
 文件管理:
-- 下载目录: /xunlei (已创建，所有者: thunder-nas)
-- 查看下载文件: ls -la /xunlei
-- 清理下载文件: sudo rm -rf /xunlei/* (谨慎操作)
+- 下载目录: /var/lib/thunder-nas (已创建，所有者: thunder-nas)
+- 查看下载文件: ls -la /var/lib/thunder-nas
+- 清理下载文件: sudo rm -rf /var/lib/thunder-nas/* (谨慎操作)
 
 权限说明:
 - 服务以 thunder-nas 用户身份运行
-- /xunlei 目录已设置为 thunder-nas 用户可读写
+- /var/lib/thunder-nas 目录已设置为 thunder-nas 用户可读写
 - 如需手动管理文件，可临时切换用户: sudo -u thunder-nas bash
 
 重要说明:
 - 服务监听本地地址 (127.0.0.1)，仅限本机访问
 - 如需远程访问，请配置反向代理或修改服务绑定地址
 - 首次访问可能需要登录迅雷账号
-- 确保 /xunlei 目录有足够的磁盘空间
+- 确保 /var/lib/thunder-nas 目录有足够的磁盘空间
 
 故障排除:
 1. 检查服务状态: sudo systemctl status thunder-nas.service
 2. 查看详细日志: sudo journalctl -u thunder-nas.service -xe
-3. 检查目录权限: ls -ld /xunlei
-4. 检查磁盘空间: df -h /xunlei
+3. 检查目录权限: ls -ld /var/lib/thunder-nas
+4. 检查磁盘空间: df -h /var/lib/thunder-nas
 5. 检查端口占用: sudo lsof -i :2345
 
 卸载服务:
 1. 停止服务: sudo systemctl stop thunder-nas.service
 2. 禁用自启: sudo systemctl disable thunder-nas.service
-3. 删除服务文件: sudo rm /etc/systemd/system/thunder-nas.service
-4. 重新加载配置: sudo systemctl daemon-reload
-5. (可选) 保留下载目录: /xunlei
+3. 重新加载配置: sudo systemctl daemon-reload
+4. (可选) 保留下载目录: /var/lib/thunder-nas
 
 =====================================
 EOF
@@ -64,7 +63,7 @@ post_install() {
     echo "2. 设置开机自启: sudo systemctl enable thunder-nas.service"
     echo "3. 查看服务状态: sudo systemctl status thunder-nas.service"
     echo "4. 访问管理界面: http://127.0.0.1:2345/webman/3rdparty/pan-xunlei-com/index.cgi/#"
-    echo "5. 下载文件保存位置: /xunlei"
+    echo "5. 下载文件保存位置: /var/lib/thunder-nas"
     echo ""
     echo -e "==== Thunder NAS 已安装 ===="
 }

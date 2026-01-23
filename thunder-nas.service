@@ -10,14 +10,19 @@ StartLimitBurst=5
 Type=simple
 User=thunder-nas
 Group=thunder-nas
+WorkingDirectory=/var/lib/thunder-nas
 
-PrivateTmp=yes
-ProtectSystem=no
-ProtectHome=yes
+ExecStart=/usr/bin/thunder-nas \
+  --dashboard_port 2345 \
+  --dashboard_ip 127.0.0.1 \
+  --dir_download "/var/lib/thunder-nas/downloads" \
+  --dir_data "/var/lib/thunder-nas/data" \
+  --chroot "/var/lib/thunder-nas" \
+  --prevent_update
 
-ExecStart=/usr/bin/thunder-nas
 Restart=always
 RestartSec=10
+TimeoutStopSec=30
 
 StandardOutput=journal
 StandardError=journal
