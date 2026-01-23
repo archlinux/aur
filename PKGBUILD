@@ -1,4 +1,4 @@
-# Maintainer: Jasmin <jasmin@example.com>
+# Maintainer: Jasmin <theblazehen@gmail.com>
 pkgname=claude-code-ui
 _npmname=@siteboon/claude-code-ui
 pkgver=1.13.6
@@ -8,7 +8,8 @@ arch=('any')
 url="https://github.com/siteboon/claudecodeui"
 license=('GPL-3.0-only')
 depends=('nodejs')
-makedepends=('npm' 'jq')
+makedepends=('npm' 'jq' 'python-setuptools')
+options=('!strip')
 source=("https://registry.npmjs.org/@siteboon/claude-code-ui/-/claude-code-ui-${pkgver}.tgz")
 noextract=("claude-code-ui-${pkgver}.tgz")
 sha256sums=('d8f0e55c68bab26d3cb3fdb83d750515cc29b4587fb5ed330805f67c9116d594')
