@@ -8,7 +8,7 @@ pkgname=(
 # [2025-07-23]: The version is actually 0.6.11 but the GitHub releases vs tags vs actual file version(==PyPI version) is all over the place
 #               Sent an email off to the maintainer about it
 pkgver=0.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert PNG to SVG"
 arch=(x86_64)
 url="https://github.com/visioncortex/vtracer"
@@ -34,8 +34,7 @@ build() {
 
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	# Upstream does not provide a lock file at the time of writing
-	cargo build --release --all-features # --frozen
+	cargo build --frozen --release --all-features
 
 	# Build Python bindings
 	cd cmdapp
