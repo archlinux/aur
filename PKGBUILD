@@ -1,7 +1,7 @@
 # Maintainer: TheFeelTrain <thefeeltrain@thefeeltrain.com>
 pkgname=python-typed-ffmpeg-compatible
 _origpkgname=typed_ffmpeg_compatible
-pkgver=3.10
+pkgver=3.11
 pkgrel=1
 pkgdesc="Modern Python FFmpeg wrappers offer comprehensive support for complex filters, complete with detailed typing and documentation."
 arch=("x86_64")
@@ -18,8 +18,8 @@ makedepends=(
 	"python-setuptools-scm"
 	"python-hatchling"
 )
-source=("https://files.pythonhosted.org/packages/1e/99/d1d2f25c64fee5948c99930eae8758eac7b5b4cbc9655099cc643a763c89/typed_ffmpeg_compatible-3.10.tar.gz")
-sha256sums=("f66b330edb04be83aef6fbdd3d28075fab01088b7bbb1326ba0ce29d255bcd45")
+source=("https://files.pythonhosted.org/packages/08/09/e7cb846c4e83129f7f313df4e7ac5a3ec421353d4fbbf770ed31977741bc/typed_ffmpeg_compatible-3.11.tar.gz")
+sha256sums=("c7c9b82f35e1c2c6808161da6d4a922ca06a2c2ac01b0449b1f2727989ed109e")
 package() {
 	cd "${_origpkgname}-${pkgver}" || exit
 	python -m build --wheel --no-isolation
