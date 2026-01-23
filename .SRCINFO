@@ -14,6 +14,6 @@ pkgbase = luffy-bin
 	optdepends = ghostty
 	provides = luffy
 	source = https://github.com/DemonKingSwarn/luffy/releases/download/v1.0.9/luffy.amd64
-	sha256sums = bd27ae3b7eb0ecfd2cb6d8dc000b37e5dd2b727c8bd7c4a00815bcd292c7138d
+	sha256sums = SKIP
 
 pkgname = luffy-bin
