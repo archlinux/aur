@@ -1,31 +1,27 @@
 # Maintainer: Jakub Smulski <hgonomeg@gmail.com>
 # Maintainer: Alexander Minges <alexander.minges@gmail.com>
 pkgname=coot
-pkgver=1.1.17
+pkgver=1.1.20
 pkgrel=1
 pkgdesc="Crystallographic Object-Oriented Toolkit for model building, completion and validation"
 arch=('i686' 'x86_64')
 url="https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/coot/"
 license=('GPL')
 replaces=('coot-data')
-#depends=('guile' 'gtkglext' 'libccp4>=6.5.1-2' 'libclipper>=2.1.20170202-3' 'gsl' 'imlib' 'swig'
-#         'freeglut' 'libgl' 'gtk4' 'cairo' 'libssm>=1.4.0-2' 'zlib' 'curl' 'python' 'gtkglarea' 'which' 'bc' 'sqlite' 'rdkit' 'mmdb2>=2.0.12-4')
 makedepends=('boost' 'bc' 'which')
-depends=('boost-libs' 'guile' 'libccp4>=6.5.1-2' 'libclipper>=2.1.20170202-3' 'fftw2-float' 'gsl' 'swig'
+depends=('openal' 'boost-libs' 'guile' 'libccp4>=6.5.1-2' 'libclipper>=2.1.20170202-3' 'libvorbis' 'fftw2-float' 'gsl' 'swig'
          'libgl' 'gtk4' 'glib2' 'glm' 'cairo' 'libssm>=1.4' 'zlib' 'curl' 'python' 'python-gobject' 'sqlite' 'rdkit' 'mmdb2>=2.0.12-4')
 source=($pkgname-$pkgver.tar.gz::https://github.com/pemsley/$pkgname/archive/refs/tags/Release-$pkgver.tar.gz
         https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/$pkgname/dependencies/refmac-monomer-library.tar.gz
         https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/$pkgname/dependencies/reference-structures.tar.gz
         )
 
-sha256sums=('127480271faafd0543b6a12708608e6f449901bf04d1e955dfdc252cc3d02e85'
+sha256sums=('3bac75e3aaa7991ff2c24539cc594f1e1c205fe1bd7aa256e4f4d13120fdd04f'
             '03562eec612103a48bd114cfe0d171943e88f94b84610d16d542cda138e5f36b'
             '44db38506f0f90c097d4855ad81a82a36b49cd1e3ffe7d6ee4728b15109e281a'
             )
 prepare() {	
   cd "$srcdir/$pkgname-Release-$pkgver"
-  echo Patching configure.ac so that we can have C++20 \(as required now by RDKit\)
-  sed -i 's/c++17/c++20/g' configure.ac
   #patch -Np1 -i "$srcdir/glm_nopkgconfig.patch"
 }
 
@@ -43,7 +39,8 @@ build() {
 
   ./configure --prefix=/usr \
               --disable-static \
-              --with-enhanced-ligand-tools
+              --with-enhanced-ligand-tools \
+              --with-sound
   make
 }
 
