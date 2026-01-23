@@ -1,8 +1,9 @@
 pkgbase = e-imzo
 	pkgdesc = Uzbek state web identity proving & key signing (E-IMZO)
 	pkgver = 5.00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://e-imzo.soliq.uz
+	install = e-imzo.install
 	arch = x86_64
 	license = Proprietary
 	depends = jre8-openjdk

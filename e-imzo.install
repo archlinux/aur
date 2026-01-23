@@ -1,0 +1,8 @@
+post_install() {
+   echo ":: To start e-imzo now, run: systemctl --user start e-imzo"
+   echo ":: To enable e-imzo on login, run: systemctl --user enable e-imzo"
+}
+
+post_upgrade() {
+   post_install
+}
