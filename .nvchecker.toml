@@ -1,0 +1,4 @@
+[colorstorm]
+source = "git"
+git = "https://github.com/benbusby/colorstorm.git"
+prefix = "v"
