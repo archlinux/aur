@@ -2,7 +2,7 @@
 # Contributor: Zhanibek Adilbekov <zhnaibek.adilbekov@proton.me>
 # shellcheck disable=2034,2154
 pkgname=audio-share
-pkgver=0.3.2
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Audio Share can share computer's audio to Android phone over network, so your phone becomes the speaker of computer"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('libpipewire')
 makedepends=('vcpkg' 'cmake' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mkckr0/audio-share/archive/refs/tags/v${pkgver}.tar.gz"
         "git+https://github.com/microsoft/vcpkg")
-b2sums=('19ad07d221b8726be03692aa027b8092d34dc2f699898197b650354713f46459832f05f5058938e79e0a529ea3429772bf6de5990901ea3f4be9b79c663e3cf6'
+b2sums=('07a59c00f23c135e2cc660c89193a338bdc842a4aef91894ce6f5581e49947c3308db374a10f094e4ad60de572ff193ad664f814bcaa185dc23f8fe64b01eb0a'
         'SKIP')
 
 build() {
