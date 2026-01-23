@@ -1,4 +1,5 @@
-# Maintainer: XSilverTH <XSilverTH@proton.me>
+# Maintainer: Jasmin <theblazehen@gmail.com>
+# Contributor: XSilverTH <XSilverTH@proton.me>
 
 pkgname=adb-gui-kit-bin
 pkgver=1.1
