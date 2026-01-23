@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=Antigravity Manager
+GenericName=AI Account Manager
+Comment=Professional multi-account manager for Google Gemini & Claude AI
+Exec=antigravity-manager %U
+Icon=antigravity-manager
+Terminal=false
+Categories=Development;Utility;
+Keywords=AI;Gemini;Claude;Account;Manager;
+StartupWMClass=Antigravity Manager
+StartupNotify=true
+MimeType=x-scheme-handler/antigravity;
