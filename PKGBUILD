@@ -8,8 +8,8 @@ pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm")
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
-pkgver=2.9.1
-pkgrel=7
+pkgver=2.10.0
+pkgrel=1
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -114,13 +114,12 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         use-system-libuv.patch
         87773.patch
         glog-0.7.patch
-        pytorch-rocm-jit.patch
         fix_cmake_prefix_path.patch
         add_gpu_targets_rocm.patch
         aotriton_disable_install.patch
         pyproject.patch
         )
-b2sums=('b11ed3fe133f4d75de45b26db565a431236c73005e68d8ba47a48b6657553df88d0a97686c4c24a6b810a9b2d4ce1aad9105cd4dce18a484b9d41150df00de3e'
+b2sums=('d292c6f62caf0076be25eda28311fe7a7f93fe3e7e2a2ea5f0f794818d2012fd0fba45fa4094e03d1640797ecc1c1a5487349f788db0f74e50e7561754ba8988'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -162,11 +161,10 @@ b2sums=('b11ed3fe133f4d75de45b26db565a431236c73005e68d8ba47a48b6657553df88d0a976
         'af8c724ed80898ae3875a295ad6bd4d18d90f8a9124f6cff6d1b2f525bf7806fe61306e739c1f7362fbd8d0e4f8ba57d0e3bf925ea3f7a78a0a98f26722db147'
         '0a8fc110a306e81beeb9ddfb3a1ddfd26aeda5e3f7adfb0f7c9bc3fd999c2dde62e0b407d3eca573097a53fd97329214e30e8767fb38d770197c7ec2b53daf18'
         '20d044c5c80354af5ed63847fa4332e96cbfc32a351788f6458fb92b322de7f64b10c188ff26e4f34e422cfe30e082c3ca23ee3e9094616c142aa53588dd451e'
-        'e19fbb32da5a3bdd9d1505b2ba79ff0d765b241da819c96a380a5c871be4f5a78dcad000e01a315d936cfebb7860150f8111e60aed17cbb9337896a0831df0fe'
         'eb1a4305c9e753774ce27256f8e7f35ae52986c8dfefddb71062f7abc71eec04eaae80cd03b9cb362150465000728390b7bfd0e539f772761c0a8d5dd8dbe980'
         '007fc33064c55b1a080f8c3dcb0c03acc21629d7034426d0622b56ace3936ae07e0f4bca578327542fa3333cc127ef2e2379ebc8e1f97b561ee54de58ce84d3c'
         'ec9aea1481c6ae85288d7ab7c709af80ab919face22c17710cfadd80f07111fe53c3241f278fc76c43f28813581a4be0280a5590f8a8fd6dd6b46bc8d2ea25e0'
-        'a9b0c8897a898344b0d41c1a3fb1df21a5acd3fee27fe2be3aafd250cf7004d8bb34f4d700262cae3ce66137172772d63758202d5991a2d5ac39202c49baf1e0')
+        '32ae3f8b7602bad8b76e418857e843e700134b93832d6166dfead944cf8c3225a8d254cdf8ba9cc2807b08c53c27d6d72f738ef285f280ab87e0f246bf45e8f5')
 options=('!lto' '!debug')
 
 get_pyver () {
@@ -382,7 +380,6 @@ build() {
   echo "add_definitions(-march=x86-64)" >> cmake/MiscCheck.cmake
   # Conversion of CUDA to ROCm source files
   python tools/amd_build/build_amd.py
-  patch -Np1 -i "$srcdir/pytorch-rocm-jit.patch"
   python -m build --wheel --no-isolation
 
   cd "${srcdir}/${_pkgname}-opt-rocm"
@@ -395,7 +392,6 @@ build() {
   echo "add_definitions(-march=x86-64-v3)" >> cmake/MiscCheck.cmake
   # Conversion of CUDA to ROCm source files
   python tools/amd_build/build_amd.py
-  patch -Np1 -i "$srcdir/pytorch-rocm-jit.patch"
   python -m build --wheel --no-isolation
 }
 
