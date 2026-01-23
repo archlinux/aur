@@ -61,7 +61,9 @@ path = [
 	"0003-platform-x86-asus-armoury-add-support-for-GU605CR.patch",
 	"0003-0-3-asus-armoury-add-support-for-GV302XV-FA401UV-FA617XT.patch",
     "0010-platform-x86-asus-wmi-move-keyboard-control-firmware.patch",
-    "asus-patch-series.patch"
+    "asus-patch-series.patch",
+    "0003-0-4-platform-x86-asus-armoury-ppt-fixes-and-new-models.patch",
+    "PATCH-v11-00-11-HID-asus-Fix-ASUS-ROG-Laptop-s-Keyboard-backlight-handling.patch"
 ]
 SPDX-FileCopyrightText = "upstream linux kernel contributors"
 SPDX-License-Identifier = "GPL-2.0-only"

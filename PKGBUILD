@@ -4,7 +4,7 @@
 
 pkgbase=linux-g14
 pkgver=6.18.6.arch1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux-g14'
 url="https://gitlab.com/asus-linux/linux-g14"
 _url='https://github.com/archlinux/linux'
@@ -64,6 +64,10 @@ source=(
   0001-platform-x86-asus-armoury-fix-only-DC-tunables-being.patch
   0010-platform-x86-asus-wmi-move-keyboard-control-firmware.patch
 
+  0003-0-4-platform-x86-asus-armoury-ppt-fixes-and-new-models.patch
+	
+	PATCH-v11-00-11-HID-asus-Fix-ASUS-ROG-Laptop-s-Keyboard-backlight-handling.patch
+
   # PATCH-v10-00-11-HID-asus-Fix-ASUS-ROG-Laptop-s-Keyboard-backlight-handling.patch
   # PATCH-v10-00-11-HID-asus-Fix-ASUS-ROG-Laptop-s-Keyboard-backlight-handling-id1-id2-pr_err.patch
 
@@ -121,6 +125,8 @@ sha256sums=('472497197b2f68d4dbf1bc32cc6dc669ca220ff4c0eb0dc39a9cff9a88f9a31b'
             '3caa20406c8436a8429f70341c8c0410ffa77dd13a0a051718e70204ddbe0589'
             'e1d4954d0ca79d1857683bd87bab44f8088a08e16a0754ed46f1c462f6e5a34b'
             '5e4c3877608a79142078e35301d6c97f91219705bd91ecd3dfa01fef9a324651'
+            'ba540fb3f4df7e8df9aba4bc4caec3d3214a2581ecae290a853e7780d5d2a557'
+            '610f5d1bc0a47ded90f8143bd3ac6b0908800b80bd3c0eae04023ec9548ddffc'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
             '83d40f889a96c492e15fcaf16914c864e8d0ac7fb85148690badef61e89d7afa'
             '590752012b37a21c92b59ab98189f56f405a4722572dd87b39c925bb89bb17c4'

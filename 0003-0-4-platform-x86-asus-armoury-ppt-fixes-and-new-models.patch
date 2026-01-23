@@ -1,0 +1,463 @@
+From mboxrd@z Thu Jan  1 00:00:00 1970
+Received: from out-185.mta0.migadu.com (out-185.mta0.migadu.com [91.218.175.185])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 943252D0C99
+	for <linux-kernel@vger.kernel.org>; Fri, 16 Jan 2026 18:06:48 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=91.218.175.185
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1768586810; cv=none; b=m4FvJDA6OZgn7wT6vT+GMFyMylArH3hJjCgl7jIyY5rp5kdjlk6kGn1JLvqb4vu/xUVrWPL8tmh9vce/usB/1RLsRrTLPCDGcjxLE4/6OeAxWX3iA0IZ3gC1FtDFSaNn9Bvrffln2sroYcZyX0QLizHvq9/2nr0ktyWOofP9Hmw=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1768586810; c=relaxed/simple;
+	bh=Q1a99s43dlrKlYws5CRxUbb9R3p3bB7fqFwE9/krFfw=;
+	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version; b=cOWk82/6O5/fiN0PxWcml5UQuHqjlh3oHQDCCfaxKe65hHar8I3fxPZl3dLrl11CFgja9m20ikMLyjqHB/FQ78BkFBF5TA6vgUNIGafTuHcSTEixBX5nfLQIqUZ232nIiDuC/OgF7RzQhUhfJQsV2kXdDS/R86JxsRS+5pn97XM=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.dev; spf=pass smtp.mailfrom=linux.dev; dkim=pass (1024-bit key) header.d=linux.dev header.i=@linux.dev header.b=bD6jWU6+; arc=none smtp.client-ip=91.218.175.185
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.dev
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linux.dev
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=linux.dev header.i=@linux.dev header.b="bD6jWU6+"
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+	t=1768586806;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=tt7Yt17IyvNpXmysqoMiuBVnN6C80QLKqa+lC4xdK20=;
+	b=bD6jWU6+NAh4+nRgqtAL3FEFDgAuSfkUTtsyldrrpHRybHSw2OVFtqhxURZSCqwTDheaQE
+	FXPHedkxRxrwVhoMhPiL6YCQWTTqsOyw0UuWTni1OgqrpvTuuVTZ01OM+gPpOML4+2s985
+	3PcojHR2e40Ix2Nq/u26G+cTw7NZnJk=
+From: Denis Benato <denis.benato@linux.dev>
+To: linux-kernel@vger.kernel.org
+Cc: platform-driver-x86@vger.kernel.org,
+	"Hans de Goede" <hansg@kernel.org>,
+	=?UTF-8?q?Ilpo=20J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>,
+	"Luke D . Jones" <luke@ljones.dev>,
+	"Mateusz Schyboll" <dragonn@op.pl>,
+	"Denis Benato" <benato.denis96@gmail.com>,
+	Denis Benato <denis.benato@linux.dev>
+Subject: [PATCH 0/4] platform/x86: asus-armoury: ppt fixes and new models
+Date: Fri, 16 Jan 2026 19:06:33 +0100
+Message-ID: <20260116180637.859803-1-denis.benato@linux.dev>
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-Migadu-Flow: FLOW_OUT
+
+Hi,
+
+this patch series includes some fixes to the PPT data table and adds
+support for two new models: G835L and GA403WW.
+
+Cheers,
+Denis
+
+Denis Benato (4):
+  platform/x86: asus-armoury: fix ppt data for FA608UM
+  platform/x86: asus-armoury: add support for G835L
+  platform/x86: asus-armoury: keep the list ordered alphabetically
+  platform/x86: asus-armoury: add support for GA403WW
+
+ drivers/platform/x86/asus-armoury.h | 73 ++++++++++++++++++++++++++---
+ 1 file changed, 67 insertions(+), 6 deletions(-)
+
+-- 
+2.52.0
+
+
+From mboxrd@z Thu Jan  1 00:00:00 1970
+Received: from out-186.mta0.migadu.com (out-186.mta0.migadu.com [91.218.175.186])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7267832FA2A
+	for <linux-kernel@vger.kernel.org>; Fri, 16 Jan 2026 18:06:51 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=91.218.175.186
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1768586813; cv=none; b=p6gYuEM7cKD3Lx0vwXS6lWxyeUApkfWOsX3bUAqUNpVmJabj9ePYtXA4MRKyu0frSsupqWkmZ1nb+mELTSHJgmDWR7UZXDWWV77AgO1XKpzt6OPAG5dpistuvQf5evTEh8q4udvrSLs7yuCOoGGCOIjJA9wN6OSiCo1vCHkubok=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1768586813; c=relaxed/simple;
+	bh=A6IfrlnavJEP6XcTlXdFsdwsx3ngNeZ42OVPcFkPLek=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 MIME-Version; b=Ybmj4mPbewXbiAuHitTfkI3o4un6mflZcLwjITObXi3nbERRu+0K/OPQBntWZRODnK67IpBY2n3zUTJFFie4UhU7uL2lcSwk0EYct7BCrCwfg8/Hy9VK0dN2bZBRh0fwOwLkMNlHg6ck/ZvDBXuCDfVWS/oaGUiDEjVq7/WSECw=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.dev; spf=pass smtp.mailfrom=linux.dev; dkim=pass (1024-bit key) header.d=linux.dev header.i=@linux.dev header.b=uy/0Y6/S; arc=none smtp.client-ip=91.218.175.186
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.dev
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linux.dev
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=linux.dev header.i=@linux.dev header.b="uy/0Y6/S"
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+	t=1768586809;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=0dQ99A/e0k4CWiLy0Eb8HzBcf28vluYoDz6iKGNg0jo=;
+	b=uy/0Y6/SwJFTuhd0DcGv86IxMbkZT5PgGR1idTpRFLbMvw2BuAjtiPjYirljJnrv4Y86PE
+	TwGzbdNMLsCSmfk7ylThkg91N2Ac+vNeJ8fVEcehR/2kqxOxU1An/UPrO0aDVzAeBqrB9b
+	/jzAfM5pRz+at4Eki87o+zqvoYwRqfA=
+From: Denis Benato <denis.benato@linux.dev>
+To: linux-kernel@vger.kernel.org
+Cc: platform-driver-x86@vger.kernel.org,
+	"Hans de Goede" <hansg@kernel.org>,
+	=?UTF-8?q?Ilpo=20J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>,
+	"Luke D . Jones" <luke@ljones.dev>,
+	"Mateusz Schyboll" <dragonn@op.pl>,
+	"Denis Benato" <benato.denis96@gmail.com>,
+	Denis Benato <denis.benato@linux.dev>
+Subject: [PATCH 2/4] platform/x86: asus-armoury: add support for G835L
+Date: Fri, 16 Jan 2026 19:06:35 +0100
+Message-ID: <20260116180637.859803-3-denis.benato@linux.dev>
+In-Reply-To: <20260116180637.859803-1-denis.benato@linux.dev>
+References: <20260116180637.859803-1-denis.benato@linux.dev>
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-Migadu-Flow: FLOW_OUT
+
+Add TDP data for laptop model G835L.
+
+Signed-off-by: Denis Benato <denis.benato@linux.dev>
+---
+ drivers/platform/x86/asus-armoury.h | 29 +++++++++++++++++++++++++++++
+ 1 file changed, 29 insertions(+)
+
+diff --git a/drivers/platform/x86/asus-armoury.h b/drivers/platform/x86/asus-armoury.h
+index 710eef74cdb7..3efb4b4d0d22 100644
+--- a/drivers/platform/x86/asus-armoury.h
++++ b/drivers/platform/x86/asus-armoury.h
+@@ -1724,6 +1724,35 @@ static const struct dmi_system_id power_limits[] = {
+ 			.requires_fan_curve = true,
+ 		},
+ 	},
++	{
++		.matches = {
++			DMI_MATCH(DMI_BOARD_NAME, "G835LR"),
++		},
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
++				.ppt_pl1_spl_min = 28,
++				.ppt_pl1_spl_def = 140,
++				.ppt_pl1_spl_max = 175,
++				.ppt_pl2_sppt_min = 28,
++				.ppt_pl2_sppt_max = 175,
++				.nv_dynamic_boost_min = 5,
++				.nv_dynamic_boost_max = 25,
++				.nv_temp_target_min = 75,
++				.nv_temp_target_max = 87,
++				.nv_tgp_min = 65,
++				.nv_tgp_max = 115,
++			},
++			.dc_data = &(struct power_limits) {
++				.ppt_pl1_spl_min = 25,
++				.ppt_pl1_spl_max = 55,
++				.ppt_pl2_sppt_min = 25,
++				.ppt_pl2_sppt_max = 70,
++				.nv_temp_target_min = 75,
++				.nv_temp_target_max = 87,
++			},
++			.requires_fan_curve = true,
++		},
++	},
+ 	{
+ 		.matches = {
+ 			DMI_MATCH(DMI_BOARD_NAME, "G835LW"),
+-- 
+2.52.0
+
+
+From mboxrd@z Thu Jan  1 00:00:00 1970
+Received: from out-182.mta0.migadu.com (out-182.mta0.migadu.com [91.218.175.182])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7BFAF30214B
+	for <linux-kernel@vger.kernel.org>; Fri, 16 Jan 2026 18:06:50 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=91.218.175.182
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1768586813; cv=none; b=oian+yh4ipteYuNyEAHPR1VYxAVU7mQXsbcd9UtVX7UgRpzIagHVhwk7dOezUDC8zjnEat3mMCBgcCh8uxdpJrcJQbzD92F2LE5ZTABEhLuVPuezc0SvvQzs7uMHTt3qNcH/nBRMsZXrPJx8pGD/blF8aaF6cz05zxj1FRztWis=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1768586813; c=relaxed/simple;
+	bh=936WuKCVuzUC/NCojUpi97EP/QU52zA1LikBBm9O6O0=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 MIME-Version; b=teqLIYdWRIvWrZEreMvJ/KbQsuS1oeFMznH+2rqECT76r6945oO9FTcC/kVdLSuc9FSeSEuY6sw7x124HqbZXGse5gXONTQyv4lEr3VYWpnI4nbKJX3IgvKxzTcbuVF147FVkcumMWP1ToFADCZjNYcY9v9aFPvd15d3pI7lIfM=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.dev; spf=pass smtp.mailfrom=linux.dev; dkim=pass (1024-bit key) header.d=linux.dev header.i=@linux.dev header.b=NVy+SQop; arc=none smtp.client-ip=91.218.175.182
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.dev
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linux.dev
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=linux.dev header.i=@linux.dev header.b="NVy+SQop"
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+	t=1768586808;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Tfi6ciixpcfoJFQG+W0Ph/lL7+MTU1iHJ25+3NZRZRU=;
+	b=NVy+SQopP5KkuF4//mRQAlmoUd+dOaAOdyvYJkR11J7Skl/18H7hA+Nwd8d3ME58FwTQPL
+	3wMsCj5CRSFIuXjACSGcXD3hFmPjaITKnxgNcvVVpJahuC4o+UYerCI/+BJjGZfTAy7dr0
+	C13Nua36lgwxRtqQSzhcnwJYo+u3Y+M=
+From: Denis Benato <denis.benato@linux.dev>
+To: linux-kernel@vger.kernel.org
+Cc: platform-driver-x86@vger.kernel.org,
+	"Hans de Goede" <hansg@kernel.org>,
+	=?UTF-8?q?Ilpo=20J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>,
+	"Luke D . Jones" <luke@ljones.dev>,
+	"Mateusz Schyboll" <dragonn@op.pl>,
+	"Denis Benato" <benato.denis96@gmail.com>,
+	Denis Benato <denis.benato@linux.dev>
+Subject: [PATCH 1/4] platform/x86: asus-armoury: fix ppt data for FA608UM
+Date: Fri, 16 Jan 2026 19:06:34 +0100
+Message-ID: <20260116180637.859803-2-denis.benato@linux.dev>
+In-Reply-To: <20260116180637.859803-1-denis.benato@linux.dev>
+References: <20260116180637.859803-1-denis.benato@linux.dev>
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-Migadu-Flow: FLOW_OUT
+
+ppt_pl3_fppt_def and ppt_pl3_fppt_max are wrong: correct it.
+
+Fixes: a22d893f490d ("platform/x86: asus-armoury: add support for FA608UM")
+Signed-off-by: Denis Benato <denis.benato@linux.dev>
+---
+ drivers/platform/x86/asus-armoury.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/platform/x86/asus-armoury.h b/drivers/platform/x86/asus-armoury.h
+index 0063c64a7860..710eef74cdb7 100644
+--- a/drivers/platform/x86/asus-armoury.h
++++ b/drivers/platform/x86/asus-armoury.h
+@@ -611,8 +611,8 @@ static const struct dmi_system_id power_limits[] = {
+ 				.ppt_pl2_sppt_def = 54,
+ 				.ppt_pl2_sppt_max = 90,
+ 				.ppt_pl3_fppt_min = 35,
+-				.ppt_pl3_fppt_def = 90,
+-				.ppt_pl3_fppt_max = 65,
++				.ppt_pl3_fppt_def = 65,
++				.ppt_pl3_fppt_max = 90,
+ 				.nv_dynamic_boost_min = 10,
+ 				.nv_dynamic_boost_max = 15,
+ 				.nv_temp_target_min = 75,
+-- 
+2.52.0
+
+From mboxrd@z Thu Jan  1 00:00:00 1970
+Received: from out-174.mta0.migadu.com (out-174.mta0.migadu.com [91.218.175.174])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 513323644C8
+	for <linux-kernel@vger.kernel.org>; Fri, 16 Jan 2026 18:06:53 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=91.218.175.174
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1768586814; cv=none; b=Tp2GkaWTPn56aZWYHAetgomhwiifTs9zCvtAli2Jo/Hmmfnz+zzP7t2upTgrDqKDV2leuIz+FxfyPvZ1pDnGzcLhnb6/0zVFrqPm34I9tbNEihz9irWnuFPTBLn00scjoqUBQRbXyjQqdiXXd6eQa4EM6m2E4UJWek7wnv2WF9I=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1768586814; c=relaxed/simple;
+	bh=RoWPFKLzE+SDliHaiIiA4oX6rSgKKCGeU3gzteaor8M=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 MIME-Version; b=gJqTneEhqhOXIWbIfnby1NYBk4pv2Xrhpj3/85k2SEt3BV2DFPfnj1O4ZhsqEL0xF+TmaU8VHM2YswLThWcSSJL0XIjfalIOKyYUi/BcRYBUbVjLPpljJ8jd/8hYb4wdZVCFpidmkT31q3lubQWliPe6sd35MwfTdujPf7hUkU0=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.dev; spf=pass smtp.mailfrom=linux.dev; dkim=pass (1024-bit key) header.d=linux.dev header.i=@linux.dev header.b=NnV+tPe6; arc=none smtp.client-ip=91.218.175.174
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.dev
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linux.dev
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=linux.dev header.i=@linux.dev header.b="NnV+tPe6"
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+	t=1768586811;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=9lglLgCVPJGmPNZbfk2HTQ4V2oX7/t68TyAOS/l/K7E=;
+	b=NnV+tPe6on8bt8SBa7bFDWKyh7CqVcNH61tIFGe4kT6NoL8TXnnuPpVpyMnab9jkYYv5mq
+	1wmlLHHV5Pl7vVvcKR+vWMSj6ue6I2SS4EAO7k0aHgrqIjA/V/NGhZiKWbbYxuU7Sj7gUJ
+	dzS8HyXRiyMOOgDkJK52N8HIltLTr2w=
+From: Denis Benato <denis.benato@linux.dev>
+To: linux-kernel@vger.kernel.org
+Cc: platform-driver-x86@vger.kernel.org,
+	"Hans de Goede" <hansg@kernel.org>,
+	=?UTF-8?q?Ilpo=20J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>,
+	"Luke D . Jones" <luke@ljones.dev>,
+	"Mateusz Schyboll" <dragonn@op.pl>,
+	"Denis Benato" <benato.denis96@gmail.com>,
+	Denis Benato <denis.benato@linux.dev>
+Subject: [PATCH 4/4] platform/x86: asus-armoury: add support for GA403WW
+Date: Fri, 16 Jan 2026 19:06:37 +0100
+Message-ID: <20260116180637.859803-5-denis.benato@linux.dev>
+In-Reply-To: <20260116180637.859803-1-denis.benato@linux.dev>
+References: <20260116180637.859803-1-denis.benato@linux.dev>
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-Migadu-Flow: FLOW_OUT
+
+Add TDP data for laptop model GA403WW.
+
+Signed-off-by: Denis Benato <denis.benato@linux.dev>
+---
+ drivers/platform/x86/asus-armoury.h | 32 +++++++++++++++++++++++++++++
+ 1 file changed, 32 insertions(+)
+
+diff --git a/drivers/platform/x86/asus-armoury.h b/drivers/platform/x86/asus-armoury.h
+index c67942010869..6e9703bd5017 100644
+--- a/drivers/platform/x86/asus-armoury.h
++++ b/drivers/platform/x86/asus-armoury.h
+@@ -1019,6 +1019,38 @@ static const struct dmi_system_id power_limits[] = {
+ 			.requires_fan_curve = true,
+ 		},
+ 	},
++	{
++		.matches = {
++			DMI_MATCH(DMI_BOARD_NAME, "GA403WW"),
++		},
++		.driver_data = &(struct power_data) {
++			.ac_data = &(struct power_limits) {
++				.ppt_pl1_spl_min = 15,
++				.ppt_pl1_spl_max = 80,
++				.ppt_pl2_sppt_min = 25,
++				.ppt_pl2_sppt_max = 80,
++				.ppt_pl3_fppt_min = 35,
++				.ppt_pl3_fppt_max = 80,
++				.nv_dynamic_boost_min = 0,
++				.nv_dynamic_boost_max = 25,
++				.nv_temp_target_min = 75,
++				.nv_temp_target_max = 87,
++				.nv_tgp_min = 80,
++				.nv_tgp_max = 95,
++			},
++			.dc_data = &(struct power_limits) {
++				.ppt_pl1_spl_min = 15,
++				.ppt_pl1_spl_max = 35,
++				.ppt_pl2_sppt_min = 25,
++				.ppt_pl2_sppt_max = 35,
++				.ppt_pl3_fppt_min = 35,
++				.ppt_pl3_fppt_max = 65,
++				.nv_temp_target_min = 75,
++				.nv_temp_target_max = 87,
++			},
++			.requires_fan_curve = true,
++		},
++	},
+ 	{
+ 		.matches = {
+ 			DMI_MATCH(DMI_BOARD_NAME, "GA503QR"),
+-- 
+2.52.0
+
+
+From mboxrd@z Thu Jan  1 00:00:00 1970
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9995932E696;
+	Mon, 19 Jan 2026 17:45:42 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=198.175.65.16
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1768844744; cv=none; b=OEwGrnBgRbY5BCcS8a3z7D/O962MMdbBQ6H54W/mWk2m5Ib55gIgKv+gSkZkB7p8M6zutDFXqil5AOEYUvHXIJYz+oXI82QfCUB89xe8tHc6HC16gqojPWYqoWXIygHmSPfFC9Ep16pYEs7kP6i/UmafgHL9rJO7Ga4Z3WIRArk=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1768844744; c=relaxed/simple;
+	bh=7kBtTZUveJUoz2sXEx04XehLYnMRSs0aoi0VcwAJs3E=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Message-Id:Date:
+	 MIME-Version:Content-Type; b=TF0Ngmr5Ww4KHNtRcq3McVU+Paer7t+7KGZ6CIbo5E3M3D9a7KH//Wno7Jzw/XUPohmbb4Ebp4Wo1X1OEj6Dxv1lhYquKVaMjOgpNRsmjhTU9bvcIxIvTJcMT93gXqqeyvxD51zhGwjrG0KiUwUyrXc5QQnEbO7YERGM/gK51jA=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.intel.com; spf=pass smtp.mailfrom=linux.intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=AZmjAOcu; arc=none smtp.client-ip=198.175.65.16
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.intel.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linux.intel.com
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="AZmjAOcu"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1768844743; x=1800380743;
+  h=from:to:cc:in-reply-to:references:subject:message-id:
+   date:mime-version:content-transfer-encoding;
+  bh=7kBtTZUveJUoz2sXEx04XehLYnMRSs0aoi0VcwAJs3E=;
+  b=AZmjAOcufcrC3/PDovT1/j2tqUNr7++oKTBQIk92thVukI8Ps0vcfViu
+   gjXvBeyYx87JhAmb119LKSSbLtcB8EeUFp5AscDfyFNTFeImC2GEbToD1
+   64Dul5QAd/OMIp8mHrtIxO9x0yLdqAS9FxaFmC8RuBumLE8Chx1fQRi+l
+   xourn19pdyVIu0BhrU/v5eUangdROl70n/YkAosW0FUFCkfoUYKTz26qG
+   zpTH47OKxdkkQuR/ogwoG9+EeCKYW3qQxWQ4mut2rn1flc9QeBc2bj0Kz
+   o6vRzKeqSnfhE5NvcRFVUCmiuV/AtjoKvMNs9QrL7kYHhO0Y+TuXNOw6/
+   w==;
+X-CSE-ConnectionGUID: dMh9fcq/QB2FKoO9zRSX8Q==
+X-CSE-MsgGUID: yWPBz2MWRwKYmJCwssWy3g==
+X-IronPort-AV: E=McAfee;i="6800,10657,11676"; a="70220967"
+X-IronPort-AV: E=Sophos;i="6.21,238,1763452800"; 
+   d="scan'208";a="70220967"
+Received: from orviesa004.jf.intel.com ([10.64.159.144])
+  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Jan 2026 09:45:42 -0800
+X-CSE-ConnectionGUID: b5OK/LUwR9e6nUyBXv5mFA==
+X-CSE-MsgGUID: qVFqscwlQuy7bLPxS440sg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.21,238,1763452800"; 
+   d="scan'208";a="210421335"
+Received: from ijarvine-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.244.93])
+  by orviesa004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Jan 2026 09:45:38 -0800
+From: =?UTF-8?q?Ilpo=20J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>
+To: linux-kernel@vger.kernel.org, Denis Benato <denis.benato@linux.dev>
+Cc: platform-driver-x86@vger.kernel.org, Hans de Goede <hansg@kernel.org>, 
+ "Luke D . Jones" <luke@ljones.dev>, Mateusz Schyboll <dragonn@op.pl>, 
+ Denis Benato <benato.denis96@gmail.com>
+In-Reply-To: <20260116180637.859803-1-denis.benato@linux.dev>
+References: <20260116180637.859803-1-denis.benato@linux.dev>
+Subject: Re: [PATCH 0/4] platform/x86: asus-armoury: ppt fixes and new
+ models
+Message-Id: <176884473407.11570.10302080754836334650.b4-ty@linux.intel.com>
+Date: Mon, 19 Jan 2026 19:45:34 +0200
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.13.0
+
+On Fri, 16 Jan 2026 19:06:33 +0100, Denis Benato wrote:
+
+> this patch series includes some fixes to the PPT data table and adds
+> support for two new models: G835L and GA403WW.
+> 
+> Cheers,
+> Denis
+> 
+> Denis Benato (4):
+>   platform/x86: asus-armoury: fix ppt data for FA608UM
+>   platform/x86: asus-armoury: add support for G835L
+>   platform/x86: asus-armoury: keep the list ordered alphabetically
+>   platform/x86: asus-armoury: add support for GA403WW
+> 
+> [...]
+
+
+Thank you for your contribution, it has been applied to my local
+review-ilpo-fixes branch. Note it will show up in the public
+platform-drivers-x86/review-ilpo-fixes branch only once I've pushed my
+local branch there, which might take a while.
+
+The list of commits applied:
+[1/4] platform/x86: asus-armoury: fix ppt data for FA608UM
+      commit: 66f26bcc8aba2f3e6ae4af2f3c7eb72b5e3918b8
+[2/4] platform/x86: asus-armoury: add support for G835L
+      commit: 1dfc441140ede4f19b7c135664452465fb6a95d4
+[3/4] platform/x86: asus-armoury: keep the list ordered alphabetically
+      commit: 3072c1c919aeca8a09cada4465c32f1e933c6c5e
+[4/4] platform/x86: asus-armoury: add support for GA403WW
+      commit: 9b8e78f78056080ef91802ab44b0145262f34599
+
+--
+ i.
+
+
