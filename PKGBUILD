@@ -2,7 +2,7 @@
 
 pkgname=gitbutler
 pkgver=0.18.7
-pkgrel=1
+pkgrel=2
 url="https://github.com/${pkgname}app/$pkgname"
 pkgdesc='Version control client, backed by Git, powered by Tauri/Rust/Svelte'
 arch=(x86_64)
@@ -67,6 +67,7 @@ build() {
 	done
 	# tauri does not have "bare files" bundler, piggyback on the deb one
 	cargo tauri build \
+		--features packaged-but-distribution,disable-auto-updates \
 		--bundles deb \
 		--config tauri.conf.arch.json
 }
