@@ -1,6 +1,6 @@
 pkgbase = bulk-rename-py
-	pkgdesc = Batch rename files with a PySide6 GUI and live preview
-	pkgver = 1.0.2
+	pkgdesc = Graphical Python application for bulk file renaming
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/codemorra/bulk-rename-py
 	arch = any
@@ -9,7 +9,11 @@ pkgbase = bulk-rename-py
 	depends = pyside6
 	depends = shiboken6
 	depends = python-requests
-	source = bulk-rename-py-1.0.2.tar.gz::https://github.com/codemorra/bulk-rename-py/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = 442a4ec0ca360f55325c0d7fdd81f2d04e374e825670e08f84092b906ffa8991
+	source = https://github.com/codemorra/bulk-rename-py/archive/refs/tags/v1.0.1.tar.gz
+	source = LICENSE
+	source = THIRD_PARTY_LICENSES.txt
+	sha256sums = f0112950e7675689208c2cef08e38d371ea0628994ba3461acd9f5d0fd6842a5
+	sha256sums = 93b90151b604712de4bc0526b8193debaea462a9aac99303b8cd973aced3c969
+	sha256sums = 5cfea4b932e8e753e3f664cadb7adc7924a1606d5160fc3c0c606b5325bac7be
 
 pkgname = bulk-rename-py

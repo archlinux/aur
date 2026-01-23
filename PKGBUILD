@@ -1,49 +1,55 @@
-# Maintainer: Codemorra <codemorra@posteo.eu>
+# Maintainer: Codemorra <238960954+codemorra@users.noreply.github.com>
 
 pkgname=bulk-rename-py
-pkgver=1.0.2
+pkgver=1.0.1
 pkgrel=1
-pkgdesc="Batch rename files with a PySide6 GUI and live preview"
+pkgdesc="Graphical Python application for bulk file renaming"
 arch=('any')
 url="https://github.com/codemorra/bulk-rename-py"
 license=('MIT')
-depends=('python' 'pyside6' 'shiboken6' 'python-requests')
-makedepends=()
-_srcurl="https://github.com/codemorra/bulk-rename-py/archive/refs/tags/v${pkgver}.tar.gz"
-source=("${pkgname}-${pkgver}.tar.gz::${_srcurl}")
-sha256sums=('442a4ec0ca360f55325c0d7fdd81f2d04e374e825670e08f84092b906ffa8991')
+
+depends=(
+  'python'
+  'pyside6'
+  'shiboken6'
+  'python-requests'
+)
+
+source=(
+  "https://github.com/codemorra/bulk-rename-py/archive/refs/tags/v${pkgver}.tar.gz"
+  "LICENSE"
+  "THIRD_PARTY_LICENSES.txt"
+)
+
+sha256sums=('f0112950e7675689208c2cef08e38d371ea0628994ba3461acd9f5d0fd6842a5'
+            '93b90151b604712de4bc0526b8193debaea462a9aac99303b8cd973aced3c969'
+            '5cfea4b932e8e753e3f664cadb7adc7924a1606d5160fc3c0c606b5325bac7be')
 
 package() {
-  cd "$srcdir/${pkgname}-${pkgver}"
+    cd "$srcdir/bulk-rename-py-$pkgver"
 
-  # Code to /usr/share/<app>
-  install -d "$pkgdir/usr/share/${pkgname}"
-  cp -a src assets LICENSE README.md "$pkgdir/usr/share/${pkgname}/"
+    # program files
+    install -d "$pkgdir/usr/lib/bulk-rename-py"
+    cp -r src/* "$pkgdir/usr/lib/bulk-rename-py/"
 
-  # startup script
-  install -d "$pkgdir/usr/bin"
-  cat > "$pkgdir/usr/bin/${pkgname}" <<'EOF'
-#!/bin/sh
-export BULK_RENAME_PY_UPDATE_MODE=none
-exec /usr/bin/python /usr/share/bulk-rename-py/src/bulk_rename_py.py "$@"
-EOF
-  chmod 755 "$pkgdir/usr/bin/${pkgname}"
+    # Launcher
+    install -Dm755 packaging/linux/bulk-rename-py \
+        "$pkgdir/usr/bin/bulk-rename-py"
 
-  # desktop file
-  if [[ -f packaging/linux/bulk-rename-py.desktop ]]; then
+    # Desktop entry
     install -Dm644 packaging/linux/bulk-rename-py.desktop \
-      "$pkgdir/usr/share/applications/bulk-rename-py.desktop"
-  fi
+        "$pkgdir/usr/share/applications/bulk-rename-py.desktop"
 
-  # Icons
-  for sz in 16 32 64 128 256 512; do
-    icon="assets/icons/png/bulk-rename-py_${sz}.png"
-    if [[ -f "$icon" ]]; then
-      install -Dm644 "$icon" \
-        "$pkgdir/usr/share/icons/hicolor/${sz}x${sz}/apps/bulk-rename-py.png"
-    fi
-  done
+    # Icons
+    for size in 16 32 64 128 256 512; do
+        install -Dm644 "assets/icons/png/bulk-rename-py_${size}.png" \
+            "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/bulk-rename-py.png"
+    done
 
-  # License
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+    # Licenses
+    install -d "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm644 LICENSE \
+      "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 THIRD_PARTY_LICENSES.txt \
+      "$pkgdir/usr/share/licenses/$pkgname/THIRD_PARTY_LICENSES.txt"
 }
