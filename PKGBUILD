@@ -3,7 +3,7 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-opus
-pkgver=1.5.2
+pkgver=1.6
 pkgrel=1
 arch=('any')
 pkgdesc="Codec designed for interactive speech and audio transmission over the Internet (Android ${_android_arch})"
@@ -13,7 +13,7 @@ depends=('android-ndk')
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("http://downloads.us.xiph.org/releases/opus/opus-${pkgver}.tar.gz")
-md5sums=('c40b3a1fbdbb9a7aa178600b88200c76')
+md5sums=('6ddaa5851e354621b735806007fa4651')
 
 prepare() {
     cd "${srcdir}/opus-${pkgver}"
@@ -40,4 +40,6 @@ package() {
     rm -r "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
