@@ -1,7 +1,7 @@
 # Maintainer: Leandro Guedes <leanguedes at icloud dot com>
 
 pkgname=keepsecret-git
-pkgver=v1.0.0.r22.0bd9867
+pkgver=1.0.0.r22.0bd9867
 pkgrel=1
 pkgdesc='Password manager'
 arch=(x86_64)
@@ -31,7 +31,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {

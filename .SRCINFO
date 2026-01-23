@@ -1,6 +1,6 @@
 pkgbase = keepsecret-git
 	pkgdesc = Password manager
-	pkgver = v1.0.0.r22.0bd9867
+	pkgver = 1.0.0.r22.0bd9867
 	pkgrel = 1
 	url = https://apps.kde.org/keepsecret/
 	arch = x86_64
