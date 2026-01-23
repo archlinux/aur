@@ -4,7 +4,7 @@ _pkgname=dwproton
 pkgname=${_pkgname}-bin
 _srcver=10.0-14
 pkgver=${_srcver//-/_}
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Proton builds with the latest Dawn Winery fixes for gacha games, based on Proton-CachyOS"
 arch=('x86_64')
@@ -62,7 +62,6 @@ depends_x86_64=(
   lib32-vulkan-driver
   lib32-vulkan-icd-loader
 )
-makedepends=(rsync)
 optdepends=(
   steam
   lutris
