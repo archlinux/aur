@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=kmer
-_pkgver=1.1.2
+_pkgver=1.1.3
 pkgname=r-${_pkgname,,}
-pkgver=1.1.2
-pkgrel=4
+pkgver=1.1.3
+pkgrel=1
 pkgdesc='Fast K-Mer Counting and Clustering for Biological Sequence Analysis'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -23,7 +23,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9c5b0e905fa9dfe5f0977d36afa09195a5a43a051fff405be7f42d0572b2354a')
+sha256sums=('46ab9eca9ea2f58bfbae6e230279a191a67322494932a8477af822208ea0ac79')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
