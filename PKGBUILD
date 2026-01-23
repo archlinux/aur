@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=grist-desktop
 _pkgname='Grist Desktop'
-pkgver=0.3.8
+pkgver=0.3.9
 _electronversion=30
 _nodeversion=20
 pkgrel=1
@@ -11,7 +11,7 @@ url="https://github.com/gristlabs/grist-desktop"
 license=('Apache-2.0')
 depends=(
     "electron${_electronversion}"
-    #'python-colorama'
+    'python-colorama'
     'python-lxml'
     'python-gobject'
     'python-typing_extensions'
@@ -32,7 +32,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('9db49a9cc98fe2c5fba95afba64f39ce87d21c58f47d4fc6dd839a9f131cf97f'
+sha256sums=('de95409e10bbfdea2be0d77234be1fa5a4591e605a20c3762e59ed3ae6d090a6'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -101,6 +101,6 @@ package() {
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
     cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-${pkgver}/dist/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/core/static/icons/grist.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
