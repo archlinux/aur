@@ -9,8 +9,8 @@ pkgbase = zenity-rs-bin
 	provides = zenity
 	conflicts = zenity
 	source_aarch64 = https://github.com/QaidVoid/zenity-rs/releases/download/v0.1.6/zenity-rs-aarch64-linux
-	sha256sums_aarch64 = a5d3e36f1351bec0df266a97c5aa48bad688945f9277d914e784f36e2ceeb198
+	sha256sums_aarch64 = fc1a14d61bd160617bab6cb94192b2a6d0e3d7a40ed1aea54aa38fdddd3eabc0
 	source_x86_64 = https://github.com/QaidVoid/zenity-rs/releases/download/v0.1.6/zenity-rs-x86_64-linux
-	sha256sums_x86_64 = 22ba449aabec61ebb1cb66aaffd5ad9410a6591946dbad1df9177e6b9cd0dcea
+	sha256sums_x86_64 = 645b3779f6e705fe39074c25062875141ca396f669475c7518f45f6eb5d6f0aa
 
 pkgname = zenity-rs-bin
