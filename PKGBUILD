@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cine
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Video Player for Linux"
 arch=('any')
 url="https://github.com/diegopvlk/Cine"
@@ -9,12 +9,9 @@ license=('GPL-3.0-or-later')
 depends=(
   'gtk4'
   'libadwaita'
-  'libass'
-  'libplacebo'
   'mpv'
   'python-gobject'
   'python-mpv'
-  'uchardet'
 )
 makedepends=(
   'blueprint-compiler'
