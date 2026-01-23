@@ -2,22 +2,19 @@
 
 pkgname=goful-bin
 pkgdesc='Goful is a CUI file manager written in Go'
-pkgver=0.2.1
+pkgver=1.0.0
 pkgrel=2
-url='https://github.com/anmitsu/goful'
-arch=('i686' 'x86_64' 'aarch64')
+url='https://github.com/fareedst/goful'
+arch=('x86_64' 'aarch64')
 license=('MIT')
 makedepends=()
 depends=()
-_source_prefix="https://github.com/anmitsu/goful/releases/download/v$pkgver/goful_linux_"
-source_x86_64=("${_source_prefix}x86_64.tar.gz")
-source_aarch64=("${_source_prefix}arm64.tar.gz")
-source_i686=("${_source_prefix}i386.tar.gz")
-b2sums_i686=('abfdf15e32d57c57b2a23ae13a2b671724ca03d63f844e459ee7c55cfbb1127a92ccf176d8755b7ca07572b80b0f1ad1b012a58f5a88fa89f8da280160f9990a')
-b2sums_x86_64=('ec89e220b3fbd43042e86fc36b9e3a154290d35e09d48d7817bdc1034e2bb397184dbe5433470fe4133a9907cc2e142ae00959c66c65b6c8100614fbfb25aade')
-b2sums_aarch64=('6028369d9f97520babba5bdc81574908d4c2da4bdb2403dea8b56efd7d7284442252a472c004fdcfd77303955694802097dcf760d33e82c8b9e156ab5f98ce8c')
+_source_prefix="https://github.com/fareedst/goful/releases/download/v$pkgver/goful_linux_"
+source_x86_64=("goful_$pkgver::${_source_prefix}amd64")
+source_aarch64=("goful_$pkgver::${_source_prefix}arm64")
+b2sums_x86_64=('61fd73d4bfa5bf0e0bd4e7a569bf832b0dbeea996be0539130e1be91c2fcbc69c8db5d04d8594c5a8974a0fcd9d9c6a1342a4d70f704e3f5073aa5fc33ba8d8a')
+sha256sums_aarch64=('7a838d285ad97db2068c0b4858d9936e9ad3f074cf86cc6c9919fa3890f3243d')
 
-package(){
-    install -Dm755 "$srcdir/goful" "$pkgdir/usr/bin/goful"
-    install -Dm644 "$srcdir"/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+package() {
+    install -Dm755 "$srcdir/goful_$pkgver" "$pkgdir/usr/bin/goful"
 }
