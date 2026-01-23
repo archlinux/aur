@@ -1,0 +1,4 @@
+[python-firedrake-fiat]
+source = "github"
+github = "firedrakeproject/fiat"
+use_latest_release = "true"
