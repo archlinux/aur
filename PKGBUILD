@@ -1,18 +1,22 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=heidisql-gtk2-git
 pkgver=r451.3f9e867d
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight GUI for managing MySQL, PostgreSQL, Microsoft SQL and SQLite databases (GTK2)"
 arch=(x86_64)
 url="http://www.heidisql.com/"
 license=('GPL-2.0')
-makedepends=(lazarus make fpc gettext binutils gtk2 git curl unzip)
+makedepends=(lazarus make fpc gettext binutils gtk2 git python)
 depends=(gtk2 heidisql mariadb-libs postgresql-libs libperconaserverclient sqlite freetds)
 provides=("${pkgname%-git}" heidisql-client)
 conflicts=("${pkgname%-git}")
 
-source=("${pkgname}::git+https://github.com/HeidiSQL/HeidiSQL.git#branch=lazarus")
-sha256sums=('SKIP')
+source=(
+  "${pkgname}::git+https://github.com/HeidiSQL/HeidiSQL.git#branch=lazarus"
+  "lazarus-packages.py"
+)
+sha256sums=('SKIP'
+            '05aa04046bfb5fefd1824e6efd89b1ae9dbf27e09d29c10960c43e2671963fd3')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -22,15 +26,10 @@ pkgver() {
 build() {
   cd "${srcdir}/${pkgname}"
   
-  local metadarkstyle_zip="${srcdir}/Metadarkstyle.zip"
-  curl -fsSL "https://packages.lazarus-ide.org/Metadarkstyle.zip" -o "${metadarkstyle_zip}"
-
-  local metadarkstyle_dir="${srcdir}/metadarkstyle_pkg"
-  mkdir -p "${metadarkstyle_dir}"
-  unzip -o -q "${metadarkstyle_zip}" -d "${metadarkstyle_dir}"
-
-  lazbuild --lazarusdir=/usr/lib/lazarus "${metadarkstyle_dir}/Metadarkstyle/metadarkstyle.lpk"
-  lazbuild --lazarusdir=/usr/lib/lazarus "${metadarkstyle_dir}/Metadarkstyle/metadarkstyledsgn.lpk"
+  LAZARUS_PKG_REPO="https://packages.lazarus-ide.org" \
+  LAZARUS_PKG_TMP="${srcdir}/lazarus-packages" \
+  LAZARUSDIR="/usr/lib/lazarus" \
+  python "${srcdir}/lazarus-packages.py"
 
   lazbuild --lazarusdir=/usr/lib/lazarus -B --bm=Release --ws=gtk2 heidisql.lpi
 }
