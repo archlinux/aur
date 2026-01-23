@@ -1,6 +1,6 @@
 pkgbase = openwork
 	pkgdesc = An Open source alternative to Claude Cowork
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/different-ai/openwork
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = openwork
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	options = !debug
-	source = openwork-0.3.2.deb::https://github.com/different-ai/openwork/releases/download/v0.3.2/openWork-desktop-linux-amd64.deb
-	sha256sums = d651aae9587d8efaac066e4eb77d822e2000a36892d2243bbfe535633942c169
+	source = openwork-0.3.3.deb::https://github.com/different-ai/openwork/releases/download/v0.3.3/openWork-desktop-linux-amd64.deb
+	sha256sums = dc647c743d8948b5d72c00869dd85d4ed109f4fe34c0dd37db9bafbc3c26956d
 
 pkgname = openwork
