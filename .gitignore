@@ -1,6 +1,5 @@
 *
-!.gitignore
 !PKGBUILD
 !.SRCINFO
-!LICENSE
 !factorio.desktop
+!LICENSE
