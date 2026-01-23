@@ -1,6 +1,6 @@
 pkgbase = dotbot
 	pkgdesc = A tool that bootstraps your dotfiles
-	pkgver = 1.21.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://github.com/anishathalye/dotbot
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = dotbot
 	makedepends = python-wheel
 	depends = python
 	depends = python-yaml
-	source = git+https://github.com/anishathalye/dotbot.git#tag=v1.21.0
-	sha256sums = 57a6a11098f2303e0142d3acf7bb344d1efedee61c20cf229f34ddf05a9b1265
+	source = git+https://github.com/anishathalye/dotbot.git#tag=v1.24.0
+	sha256sums = bb7d56b2a66f407d017274506ea1b920fb5279a4fd45aaa1bcbc28b400c4df87
 
 pkgname = dotbot
