@@ -1,6 +1,6 @@
 pkgbase = r2modman
 	pkgdesc = A simple and easy to use mod manager for several games using Thunderstore.
-	pkgver = 3.2.11
+	pkgver = 3.2.13
 	pkgrel = 1
 	url = https://github.com/ebkr/r2modmanPlus
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = r2modman
 	makedepends = node-gyp
 	makedepends = python
 	depends = electron38
-	source = r2modmanPlus-3.2.11.tar.gz::https://github.com/ebkr/r2modmanPlus/archive/refs/tags/v3.2.11.tar.gz
+	source = r2modmanPlus-3.2.13.tar.gz::https://github.com/ebkr/r2modmanPlus/archive/refs/tags/v3.2.13.tar.gz
 	source = r2modman.desktop
-	sha256sums = 592e1a71766dbc84966d466814042db8734a5a27ead6b8d167f4bf1b6807ca03
+	sha256sums = 16b984fb23599022e91d2b549cddf0125d4197876141a837da9fd841209ee5dc
 	sha256sums = 6cd96385f1ad7bf6fec0f9a70b429305e6f20153528e415d3c943ff19a45fd0f
 
 pkgname = r2modman
