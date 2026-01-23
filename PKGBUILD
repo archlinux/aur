@@ -24,6 +24,12 @@ package() {
     # Install as a Python package
     python -m pip install --root="$pkgdir" --prefix=/usr --no-deps --ignore-installed .
 
+    # Remove files with embedded build paths (common pip issue)
+    find "$pkgdir" -name 'direct_url.json' -delete
+    python -O -m compileall -q -f -d "" "$pkgdir/usr/lib/" 2>/dev/null || true
+    find "$pkgdir" -name '*.pyc' -delete
+    find "$pkgdir" -type d -name '__pycache__' -empty -delete
+
     # Install Blender addon
     install -Dm644 addon.py "$pkgdir/usr/share/blender-mcp/addon.py"
 
