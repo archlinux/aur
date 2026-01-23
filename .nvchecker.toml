@@ -1,0 +1,5 @@
+[flow-bin]
+source = "github"
+github = "facebook/flow"
+use_latest_release = true
+prefix = "v"
