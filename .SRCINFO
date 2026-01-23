@@ -26,6 +26,6 @@ pkgbase = filecentipede-bin
 	sha256sums = cda3faf2dd8f15d42d6006620bfc108fb15323b5b80d45ec6eb6bc1ebc4729ef
 	sha256sums = d874c3921adda7ffdc222fe549775ff96c63906cf99d4f5b6483edbc34d56117
 	sha256sums = 897e71e30e21493e15cd0f3cc4d2b7a3d48aa6d1ae02fa1d23d512c051d7e68e
-	sha256sums = 5d08b0c437bfc9574b8daa8e0e83aade87e83049b3fb93c2550352d130a5087f
+	sha256sums = 1ac2e7785ff0fb97039ef0df0251ae667be87ea591438b80dbfe17b30e67c3d0
 
 pkgname = filecentipede-bin
