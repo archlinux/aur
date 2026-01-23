@@ -2,7 +2,7 @@
 
 _basename=guff
 pkgname=${_basename}-bin
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="A simple SASS/SCSS compiler and CSS parser/minifier"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('tar')
 depends=('glibc' 'gcc-libs')
 
 source_x86_64=("${url}/releases/download/v${pkgver}/${_basename}_${pkgver}-${pkgrel}_amd64.deb")
-sha256sums_x86_64=('19e938ef3d7a2b0de23a97b56e794ec361e1cb76fb6231c4f86d2ad315007efc')
+sha256sums_x86_64=('8193f4fcf25eab4abf328d6aac9b0afece6cd95e06f0b81257bab11270492e40')
 
 package() {
     cd "${pkgdir}"
