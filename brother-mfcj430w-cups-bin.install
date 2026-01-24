@@ -1,0 +1,3 @@
+post_install() {
+	/opt/brother/Printers/mfcj430w/cupswrapper/cupswrappermfcj430w -i
+}
