@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 makedepends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base' 'qt6-declarative' 'thrift' 'boost')
 makedepends+=('cmake' 'gendesk' 'go' 'qt6-tools' 'vulkan-headers' 'cpio' 'upx' 'boost-libs')
 source=("https://github.com/qr243vbi/nekobox/releases/download/${pkgver}/nekobox-unified-source-${pkgver}.tar.xz")
-sha256sums=("f9cf4c04ff0e3f7e3fc0d8e2a5ccf46f447017b71b9f3a91ccd2be7f4d66f5c9")
+sha256sums=("f4e6da0013af0e1ec2c63f90a090861ff1cd08238e7fe30328de2203b765a52d")
 
 
 prepare() {
@@ -74,7 +74,6 @@ package_nekobox() {
 
     cd "nekobox-unified-source-${pkgver}"
     install -Dm644 srslist.json -t "${pkgdir}/usr/lib/NekoBox"
-    install -Dm644 global.ini -t "${pkgdir}/usr/lib/NekoBox"
     cp *.js "${pkgdir}/usr/lib/NekoBox"
     cp -RfvT "res/public" "${pkgdir}/usr/lib/NekoBox/public"
     install -Dm644 res/public/icon.png "${pkgdir}/usr/share/pixmaps/nekobox.png"
