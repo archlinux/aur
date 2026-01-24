@@ -1,6 +1,6 @@
 pkgbase = dxvk-nvapi-vkreflex-layer
 	pkgdesc = Alternative NVAPI implementation on top of DXVK, Vulkan Reflex layer
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/jp7677/dxvk-nvapi
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = dxvk-nvapi-vkreflex-layer
 	makedepends = meson>=0.43
 	makedepends = glslang
 	makedepends = git
-	source = git+https://github.com/jp7677/dxvk-nvapi.git#tag=v0.9.0
-	sha256sums = 47a45365a288eedbe27ce4033f6fdc07e8386225dc7670f939a2b919f82962bb
+	source = git+https://github.com/jp7677/dxvk-nvapi.git#tag=v0.9.1
+	sha256sums = 17c6f6446930a805299335dc89b6c787ac81ee946c43a67f76acb89eec2942be
 
 pkgname = dxvk-nvapi-vkreflex-layer
 	depends = vulkan-icd-loader
