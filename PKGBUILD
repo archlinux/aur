@@ -4,7 +4,7 @@
 _pkgname=3dstool
 pkgname=${_pkgname}-git
 pkgver=1.2.6.r14.g9c4336bc
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="An all-in-one tool for extracting/creating 3ds roms"
 arch=('x86_64')
@@ -30,8 +30,6 @@ pkgver() {
 
 prepare() {
   cd ${_pkgname}
-
-  sed -i 's/^cmake_minimum_required.*/cmake_minimum_required(VERSION 3.5)/' CMakeLists.txt # Bump cmake_minimum_required so that the package can be built.
   patch -Np1 -i ../${_pkgname}-paths.patch
 }
 
