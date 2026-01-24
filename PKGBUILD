@@ -10,9 +10,11 @@ depends=('gtk3' 'nss' 'libxslt' 'libxtst')
 provides=('aniship-night')
 conflicts=('aniship-night-git')
 
-source=("AniShip-${pkgver}.AppImage::https://github.com/Veniamin668/AniShip-fork/releases/download/v${pkgver}/AniShip-${pkgver}.AppImage")
+# Скачиваем готовый pacman пакет
+source=("aniship-night-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst::https://github.com/Veniamin668/AniShip-fork/releases/download/v${pkgver}/aniship-night-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 sha256sums=('SKIP')
 
 package() {
-  install -Dm755 "${srcdir}/AniShip-${pkgver}.AppImage" "${pkgdir}/usr/bin/aniship-night"
+  # Просто распаковываем готовый пакет
+  tar -xvf "${srcdir}/aniship-night-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" -C "${pkgdir}"
 }

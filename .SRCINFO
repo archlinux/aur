@@ -11,7 +11,7 @@ pkgbase = aniship-night-bin
 	depends = libxtst
 	provides = aniship-night
 	conflicts = aniship-night-git
-	source = AniShip-1.0.0.AppImage::https://github.com/Veniamin668/AniShip-fork/releases/download/v1.0.0/AniShip-1.0.0.AppImage
+	source = aniship-night-1.0.0-1-x86_64.pkg.tar.zst::https://github.com/Veniamin668/AniShip-fork/releases/download/v1.0.0/aniship-night-1.0.0-1-x86_64.pkg.tar.zst
 	sha256sums = SKIP
 
 pkgname = aniship-night-bin
