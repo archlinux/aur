@@ -4,6 +4,7 @@
 CONFIG_DIR="$HOME/.config/ctotp"
 VAULT_FILE="$CONFIG_DIR/vault.json"
 SILENT=false
+VERBOSE=false
 
 # Ensure config directory exists
 mkdir -p "$CONFIG_DIR"
@@ -19,6 +20,7 @@ usage() {
   echo "Options:"
   echo "  --sync, -y     Run 'ente export' before fetching codes"
   echo "  --silent, -s   Suppress desktop notifications"
+  echo "  --verbose, -v  Print logs to console"
   exit 1
 }
 
@@ -50,10 +52,17 @@ while [[ "$#" -gt 0 ]]; do
   case $1 in
   --sync | -y) SYNC=true ;;
   --silent | -s) SILENT=true ;;
+  --verbose | -v) VERBOSE=true ;;
   *) NAME=$1 ;; # Assume any non-flag is the Account Name
   esac
   shift
 done
+
+if [[ "$VERBOSE" == true ]]; then
+  set -x
+  # Optional: Customize the prompt for verbose output (makes it stand out)
+  export PS4='+ [$(date +"%H:%M:%S")] '
+fi
 
 case "$COMMAND" in
 import)
