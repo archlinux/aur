@@ -9,7 +9,7 @@
 pkgname=librepcb
 pkgver=2.0.0_rc1
 _pkgver=${pkgver/_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc="A free EDA software to develop printed circuit boards"
 arch=('x86_64' 'i686')
 url="https://librepcb.org/"
@@ -21,7 +21,6 @@ depends=(
   'opencascade'
   'polyclipping'
   'qt6-base'
-  'qt6-declarative'
   'qt6-svg'
 )
 makedepends=(
@@ -51,10 +50,6 @@ prepare() {
   rm -rf libs/muparser/
   rm -rf libs/polyclipping/
   rm -rf libs/googletest/
-
-  # Remove bundled hoedown, it is not needed on Qt >=5.14
-  rm -rf libs/hoedown/
-
 }
 
 build() {
@@ -66,12 +61,10 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DLIBREPCB_SHARE=/usr/share/librepcb \
-    -DQT_MAJOR_VERSION=6 \
     -DUNBUNDLE_FONTOBENE_QT=1 \
     -DUNBUNDLE_MUPARSER=1 \
     -DUNBUNDLE_POLYCLIPPING=1 \
     -DUNBUNDLE_GTEST=1 \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -Wno-dev
   cmake --build build
 }
