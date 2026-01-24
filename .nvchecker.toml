@@ -1,0 +1,5 @@
+[github-mcp-server-bin]
+source = "github"
+github = "github/github-mcp-server"
+use_latest_release = true
+prefix = "v"
