@@ -3,7 +3,7 @@
 _pkgauthor=dd86k
 _pkgname=ddhx
 pkgname=${_pkgname}-bin
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="Console hexadecimal file viewer"
@@ -16,10 +16,10 @@ license=('MIT')
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README")
-source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-linux-musl+static.tar.gz")
+source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-${arch[0]}-linux-musl-static.tar.gz")
 sha256sums=('38368893e6b716941036d2175add984a5501dd183ba9f26aaa5cc86e2bdddf73'
-            'e901ecc7becdb08fa315e6255af6e72b89f0595bf59ace0947232066b68f56dd')
-sha256sums_x86_64=('7448011a5eb8cccd142ec55079440b126395baeb05c41d02197c6d49c0859181')
+            'dd550ae67d7d0cb971fd7fa8f1da703e04f8296853b41edd0f033957ac50d5e0')
+sha256sums_x86_64=('2b944139f847adff1553b7cbd9cc4c617a0f02e54e7e495f98c5857e68aee8a1')
 
 
 package() {
