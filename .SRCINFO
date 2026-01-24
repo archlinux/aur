@@ -1,0 +1,23 @@
+pkgbase = aelkey
+	pkgdesc = Lua-based input remapping framework
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/xiota/aelkey
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cli11
+	makedepends = git
+	makedepends = go-md2man
+	makedepends = linux-api-headers
+	makedepends = meson
+	depends = dbus
+	depends = libevdev.so
+	depends = libudev.so
+	depends = libusb-1.0.so
+	depends = lua
+	source = aelkey::git+https://github.com/xiota/aelkey.git#tag=0.0.1
+	source = nerixyz.sol2::git+https://github.com/Nerixyz/sol2.git
+	sha256sums = 56ebab4d190c3c772315cedab89feaf6d8b650690ac32c5082d2e18837a7c3b0
+	sha256sums = SKIP
+
+pkgname = aelkey
