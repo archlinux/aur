@@ -31,9 +31,12 @@ sha256sums=("$_sha256sum1"
             '4f58524e1948b2cb470b856546b87656b2fbce0b98b0d43d345fcedb101f1295'
             'fe5245a7b34253a67105ee5e6bb868bbb69ebf318af32dc81e1cdd7d7277b639'
             'bbf75a4d30aa4f8c4eb46d3c6193c011c43683352266fa56314f16212e409965')
-# NB: I should've made my checksum variable lambdas such that they will find all sums,
-# even if AMD change their website, but if they remove the </td> tag from the end,
-# this may fail. In which case, we can possible YOLO remove the lookahead.
+# NB: I should've made my checksum variable lambdas such that they will find all
+# sums, even if AMD change their website, but if they remove the `</td>` tag from
+# the table (perhaps on some other browser environments this may happen) this may
+# fail. In which case, we can possibly replace the lookahead. Alternatively, if
+# all methods fail, use `updpkgsums`, or manual `sha256sum` and compare to
+# upstream manually for safety.
 
 package_aocl-aocc() {
 	install=${pkgname}.install
