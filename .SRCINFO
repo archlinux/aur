@@ -1,7 +1,7 @@
 pkgbase = python-adafruit-nrfutil-git
 	pkgdesc = Modified version of Nordic's nrfutil 0.5.x for use with the Adafruit Feather nRF52
 	pkgver = 0.5.3.post17+10.r82.20260123.735f540
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/adafruit/Adafruit_nRF52_nrfutil
 	arch = any
@@ -18,8 +18,10 @@ pkgbase = python-adafruit-nrfutil-git
 	depends = python>=3
 	provides = adafruit-nrfutil=0.5.3.post17+10.r82.20260123.735f540
 	provides = python-adafruit-nrfutil=0.5.3.post17+10.r82.20260123.735f540
+	provides = python-nordicsemi=0.5.3.post17+10.r82.20260123.735f540
 	conflicts = adafruit-nrfutil
 	conflicts = python-adafruit-nrfutil
+	conflicts = python-nordicsemi
 	source = python-adafruit-nrfutil::git+https://github.com/adafruit/Adafruit_nRF52_nrfutil.git
 	sha256sums = SKIP
 
