@@ -1,0 +1,6 @@
+[php-geoip]
+source = 'git'
+git = 'https://github.com/php/pecl-networking-geoip'
+prefix = 'RELEASE_'
+from_pattern = '_'
+to_pattern = '.'
