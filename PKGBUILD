@@ -2,8 +2,8 @@
 
 pkgname=python-underthesea-core
 _name=${pkgname#python-}
-pkgver=1.0.4
-pkgrel=2
+pkgver=1.0.7
+pkgrel=1
 epoch=
 pkgdesc="Underthesea Core"
 arch=($CARCH)
@@ -30,13 +30,13 @@ optdepends=()
 # options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('fea9ddfe7445f6bb5c018407ba37aabd46043fb754f2d36088aab8a2c542f5ae')
+sha256sums=('0826a8f93a8a4bd90df3e58a049593a6ad4137f68f60cf8e8249d0f149caf5a6')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
-    sed -i 's|0.15.0|0.25.1|g' Cargo.toml
-    sed -i -e 's|PyModule)|Bound<PyModule>)|' \
-        -e '/use pyo3\s*::.*;/a use pyo3::types::PyModule;' src/lib.rs
+    #     sed -i 's|0.15.0|0.25.1|g' Cargo.toml
+    #     sed -i -e 's|PyModule)|Bound<PyModule>)|' \
+    #         -e '/use pyo3\s*::.*;/a use pyo3::types::PyModule;' src/lib.rs
     python -m build --wheel --no-isolation
 }
 
