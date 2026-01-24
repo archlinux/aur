@@ -2,7 +2,7 @@
 pkgname=kitsas-appimage
 _basename=kitsas
 _reponame=kitupiikki
-pkgver=5.11
+pkgver=5.11.1
 _repover="${pkgver//_/-}"
 _appimagefile="Kitsas-${_repover}-x86_64.AppImage"
 pkgrel=1
@@ -24,12 +24,12 @@ options=(!strip)
 install=
 changelog=
 source=(
-	"https://github.com/artoh/${_reponame}/releases/download/v.${pkgver}/${_appimagefile}"
-	"https://github.com/artoh/${_reponame}/raw/v.${pkgver}/${_basename}.desktop"
-	"https://github.com/artoh/${_reponame}/raw/v.${pkgver}/${_basename}.png"
+	"https://github.com/artoh/${_reponame}/releases/download/v${pkgver}/${_appimagefile}"
+	"https://github.com/artoh/${_reponame}/raw/v${pkgver}/${_basename}.desktop"
+	"https://github.com/artoh/${_reponame}/raw/v${pkgver}/${_basename}.png"
 )
 noextract=()
-sha256sums=('24deafb13056e64db677a4ac3e973ed02368c0f35e3b0374c54b4bb0f7b5c98a'
+sha256sums=('d8c484566aaea7566b57c9ad0ee935e12ee5fbc4266d77b1d74568bb48ca1f39'
             'f015743e6b0f79b2f14d6af2a747a3839256288e006175c35ba6a449b4b1687c'
             'ec145dcce45fc98b9e50e0eb4b3ace45dbb5f62c8d678a300076d951ba80336e')
 
