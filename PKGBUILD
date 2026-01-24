@@ -7,8 +7,9 @@
 # See https://wiki.archlinux.org/index.php/Makepkg#Signature_checking
 # for more details # on package signing.
 pkgname=librepcb
-pkgver=1.3.0
-pkgrel=2
+pkgver=2.0.0_rc1
+_pkgver=${pkgver/_/-}
+pkgrel=1
 pkgdesc="A free EDA software to develop printed circuit boards"
 arch=('x86_64' 'i686')
 url="https://librepcb.org/"
@@ -33,17 +34,17 @@ makedepends=(
   'cargo'
 )
 source=(
-  "https://download.librepcb.org/releases/$pkgver/librepcb-$pkgver-source.zip"
-  "https://download.librepcb.org/releases/$pkgver/librepcb-$pkgver-source.zip.asc"
+  "https://download.librepcb.org/releases/$_pkgver/librepcb-$_pkgver-source.zip"
+  "https://download.librepcb.org/releases/$_pkgver/librepcb-$_pkgver-source.zip.asc"
 )
 sha256sums=(
-  '0c5313142ab3d689fc998ea432eb86a41d7c010e6dd5a70a633eaba0bcf75845'
+  'a43180284ee4c411c5c6d940143c163a701b694a345d46a422bd37d6f5255fdd'
   'SKIP'
 )
 validpgpkeys=('D6F9AF572228C5BCD6B538407EF3061F5C8D5E25')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver/"
+  cd "$srcdir/$pkgname-$_pkgver/"
 
   # Remove unbundled libs from source to ensure they're not used
   rm -rf libs/fontobene-qt/
@@ -61,7 +62,7 @@ build() {
   rm -rf "$srcdir/build"
 
   # Build
-  cmake -B build -S "$pkgname-$pkgver" \
+  cmake -B build -S "$pkgname-$_pkgver" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DLIBREPCB_SHARE=/usr/share/librepcb \
