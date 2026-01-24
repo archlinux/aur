@@ -1,7 +1,7 @@
 # Maintainer: nizne <nizne@outlook.com>
 pkgname=pwdsafety-bin
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Command line tool that checks how much a password is safe'
 arch=('x86_64' 'aarch64' 'i686') # I'm not sure if the 'arm' in the repository refers to 'armv7h.'
 url='https://github.com/edoardottt/pwdsafety'
@@ -17,4 +17,5 @@ sha256sums_i686=('3f4c6bf50d0cfb5105a2570909c4e02a7da64db32fe37d60b16f9d6e6b02be
 
 package() {
   install -Dm755 "${srcdir}/pwdsafety" "${pkgdir}/usr/bin/pwdsafety"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

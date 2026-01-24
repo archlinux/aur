@@ -1,7 +1,7 @@
 pkgbase = pwdsafety-bin
 	pkgdesc = Command line tool that checks how much a password is safe
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/edoardottt/pwdsafety
 	arch = x86_64
 	arch = aarch64
