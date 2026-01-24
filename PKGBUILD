@@ -1,11 +1,11 @@
-# Maintainer: GI Jack <GI_Jack@hackermail.com>
+# Maintainer: Network_Jack <Network_Jack@null.net>
 # Contributor: Kamil Śliwak <cameel2@gmail.com>
 # Contributor: Plaunarome <plaunarome@protonmail.com>
 
 _name="multi-account-containers"
-_l10n_version=417e6294ed767914b617a5e56ccbe67482df181c
+_l10n_version=bdaa01291b7367a5e815470fd263ea36c862fe32
 pkgname=librewolf-extension-multi-account-containers
-pkgver=8.1.3
+pkgver=8.3.5
 pkgrel=1
 pkgdesc="Keep parts of your online life separated into color-coded tabs"
 arch=("any")
@@ -17,10 +17,8 @@ source=(
 	"${url}/archive/${pkgver}/${_name}-${pkgver}.tar.gz"
 	"https://github.com/mozilla-l10n/${_name}-l10n/archive/${_l10n_version}.tar.gz"
 )
-sha512sums=(
-	'e8649d3e7e3d6e4d2b94aaa45a212d579ec532779f4d2cfcf4db758740bbe99596dd4d876557070aeaca9092fcdb984582b6798bde72c21ffc6d3d484873091e'
-	'a41d5e8cf691271587dbe224d78b4b97db2f86c76094c6449eb36a72f7b42e9703a990a9ea2429f37d271f03146106270b67b0f5dfa1d1315a414bcb89ae0872'
-)
+sha512sums=('7a0d9896566dd6929cdd750df333705af163f8ef3689278d69bb5f5d0c8b3bc685176a32381846a0e1afc3e09de3bffe2deb5544ecf23bc874b4ba421b30fed4'
+            'f6b9e7af7e1cd2cc48f530890576f03daaaf4d39137673be10eff3a3cfad68943be767727a0f224c986428b620c3362c835812db845f1fc76f17cd0a3647b303')
 
 build() {
 	cd "${_name}-${pkgver}"
