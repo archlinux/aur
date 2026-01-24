@@ -1,12 +1,15 @@
 pkgbase = wallypub
 	pkgdesc = A terminal tool for intentional reading and helping clear out your Wallabag backlog.
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/fausty/wallypub
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = python-uv
 	makedepends = python-hatch
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	source = wallypub-1.0.1.tar.gz::https://codeberg.org/fausty/wallypub/archive/1.0.1.tar.gz
 	sha256sums = 67314a96bebee7242c92dfe00deedde388ed55e508127d8c9bc661d5dafd9755
