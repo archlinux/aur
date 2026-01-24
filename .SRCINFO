@@ -1,0 +1,18 @@
+pkgbase = ccgraphitep11
+	pkgdesc = PKCS#11 CryptoCard Graphite library
+	pkgver = 1.5.4
+	pkgrel = 1
+	url = https://www.cryptotech.com.pl/en/technical-support/smart-card-software/
+	arch = x86_64
+	license = LicenseRef-CryptoTech
+	makedepends = curl
+	depends = gcc-libs
+	depends = glibc
+	depends = pcsclite
+	provides = libCCGraphiteP11.so
+	source = CCGraphiteP11.module
+	sha256sums = 5fbe54e8f660906803ef89052ec3e438cb00f495d8219a422e51a9da496a3e47
+	source_x86_64 = CCGraphiteP11-x86_64.tar.gz::https://download.cryptotech.com.pl/?key=graphitep11x64linux&mode=2
+	sha256sums_x86_64 = SKIP
+
+pkgname = ccgraphitep11

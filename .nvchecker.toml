@@ -1,0 +1,4 @@
+[ccgraphitep11]
+source = "regex"
+url = "https://www.cryptotech.com.pl/en/technical-support/smart-card-software/"
+regex = "CCGraphiteP11-x64-linux-(.*).tar.gz"
