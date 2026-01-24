@@ -1,8 +1,8 @@
 # Maintainer: Florian Hülsmann <fh@cbix.de>
 
 pkgname=tantrix
-pkgver=20240926.1609
-pkgrel=5
+pkgver=20260115.1501
+pkgrel=1
 pkgdesc='Abstract strategy board game'
 arch=(any)
 url='https://www.tantrix.com/'
@@ -25,14 +25,14 @@ source=("Launcher.$pkgver.jar::$_base/jws/Launcher.jar"
         'tantrix-reviewer.desktop'
         'tantrix.xml'
         'GetVersion.java')
-sha256sums=('231e8c7055cb4ac7d8ae8725b96eb67168aee8fb1d8a2815d39cdc5efac65a2a'
-            'f4376ad456935cb48156dff8e338cbf7770a46c5946425b47294999623827b84'
-            '0b63a116e33903807c46dbf74d10c5aebf3206b9c40b6472aff3001aa1ed7b1b'
-            'bc173f32360111e5faf87c843506db5ca2c7229bfe008331432d776bdcc8623a'
-            '9cf237e51be585fad0c7fdb7ea0a9fd6f76f9c666957a05b0375d257ab38f883'
-            'c4ab12c2eb9c302a17d3321677e4c398a15eb0216fcc9a64f7dafd32e2c1717d'
-            '40a8072fda037ef65cbbe350927189cc266416358ef104ab31dabfa946cc08aa'
-            '0ff352cd8e7661ac9d6120622206a98a8272e81f2758032d8f1d2827d99b30b0'
+sha256sums=('8cc8d3581008460c3025494038b9361514246894c0bc2e94c932fc2729898245'
+            '7202f7ea762786800793a2fe8d2952457c1f40451ddeef63ad1dffbe01bc2239'
+            'cb933a9d79884e0d94f6f414ef24d8bc76e47ef289c4e7144ba29d90d6a647a5'
+            '7df897e8ea2c73f9e94a43d0d84f0fe61098c94400a3500789d7f6f85aa8221f'
+            'bdbac0a7b065dc36f4d7712effab9c1becff4f67f8733a1ba4496c719dc8b065'
+            '0e7ec46a7129851f32e4f4d08b45d33e09fd65e26aab1cd9f6c6774eb591912a'
+            '442c2279a1286375457b48b7988d53ba31bddd0e5d01e0f724ebea139e0a3b29'
+            '658fb765a0e41a1b4cc4fbf7899f6e468206964d4a89ac188ca4c2116df1ca25'
             'a244a49a541adef4840c8a4e7941c79deeb02213588e7d472ed7f0fbdade01aa'
             '7aa41d4cb87bfc19f4c3f04370c7343fbb0f1e3dae6c063b66398715b77aadaf'
             'f492efa1e032bc4bd7c701e5c06c66619d23098cf1f2acafaed441ba4d8f30e0'
