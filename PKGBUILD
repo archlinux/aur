@@ -32,7 +32,7 @@ pkgrel=3
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary')
-makedepends=('qt6-base' 'fcitx5' 'fcitx5-qt' 'bazel' 'git' 'python' 'mold' 'pkg-config' 'libibus' 'rustup')
+makedepends=('qt6-base' 'fcitx5' 'fcitx5-qt' 'bazelisk' 'git' 'python' 'mold' 'pkg-config' 'libibus' 'rustup')
 options=(!lto)
 source=("git+$url.git#commit=${_mozc_commit}"
         "bcr::git+https://github.com/bazelbuild/bazel-central-registry.git#commit=${_bcr_commit}"
@@ -87,8 +87,7 @@ pkgver() {
   # https://github.com/google/mozc/discussions/1429
   # REVISION in mozc_version_template.bzl is no longer used by Bazel builds.
   # REVISION will be probably removed once GYP builds are completely removed.
-  bazel build --config oss_linux --config stable_channel base:mozc_version_txt >/dev/null 2>&1
-  #bazel build --config oss_linux base:mozc_version_txt >/dev/null 2>&1
+  bazelisk build --config oss_linux --config stable_channel base:mozc_version_txt >/dev/null 2>&1
   source <(grep -E '^(MAJOR|MINOR|BUILD_OSS|REVISION)\s*=' bazel-bin/base/mozc_version.txt)
    _bzr_ver="$MAJOR.$MINOR.$BUILD_OSS.$REVISION"
   printf "%s" "${_bzr_ver}"
@@ -113,6 +112,12 @@ prepare() {
 
   cd "$srcdir/mozc/src" || exit
   patch -p2 -i ${srcdir}/fcitx5-mozc-conf.patch
+
+  # bazelisk
+  # As it is not supported in Bazel 9.0.0, we have switched to building with Bazelisk.
+  sed -i -e "s/bazel /bazelisk /" ../scripts/build_fcitx5_bazel
+  sed -i -e "s/bazel /bazelisk /" ../scripts/get_mozc_version
+  #sed -i -e "s/bazel /bazelisk /" ../scripts/build_fcitx_bazel
 
   # use libstdc++ instead of libc++
   sed '/stdlib=libc++/d;/-lc++/d' -i gyp/common.gypi
@@ -194,7 +199,7 @@ build() {
       package \
       #--nostart_end_lib \
 
-  bazel shutdown
+  bazelisk shutdown
 }
 
 install_mozc-with-jp-dict-common() {
