@@ -3,8 +3,8 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-verdict
-pkgver=1.4.2
-pkgrel=2
+pkgver=1.4.4
+pkgrel=1
 arch=('any')
 pkgdesc="Compute quality functions of 2 and 3-dimensional regions (Android ${_android_arch})"
 url='https://github.com/sandialabs/verdict'
@@ -13,7 +13,7 @@ depends=('android-ndk')
 makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/sandialabs/verdict/archive/${pkgver}/verdict-${pkgver}.tar.gz")
-sha256sums=('225c8c5318f4b02e7215cefa61b5dc3f99e05147ad3fefe6ee5a3ee5b828964b')
+md5sums=('87deb1a5e7069de6462a19fa9c67f349')
 
 build() {
     cd "${srcdir}/verdict-${pkgver}"
@@ -43,4 +43,6 @@ package () {
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
