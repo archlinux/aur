@@ -6,7 +6,7 @@ pkgdesc="AniShip Night - anime streaming client"
 arch=('x86_64')
 url="https://github.com/Veniamin668/AniShip-fork"
 license=('MIT')
-depends=('gtk3' 'nss' 'libxss' 'libxtst')
+depends=('gtk3' 'nss' 'libxslt' 'libxtst')
 provides=('aniship-night')
 conflicts=('aniship-night-git')
 
@@ -14,5 +14,5 @@ source=("AniShip-${pkgver}.AppImage::https://github.com/Veniamin668/AniShip-fork
 sha256sums=('SKIP')
 
 package() {
-    install -Dm755 "${srcdir}/AniShip-${pkgver}.AppImage" "${pkgdir}/usr/bin/aniship-night"
+  install -Dm755 "${srcdir}/AniShip-${pkgver}.AppImage" "${pkgdir}/usr/bin/aniship-night"
 }
