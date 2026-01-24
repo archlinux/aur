@@ -1,0 +1,4 @@
+[slim-themes]
+source = 'regex'
+url = 'https://sourceforge.net/projects/slim.berlios/files/'
+regex = 'slim-([\d.]+)-themepack'
