@@ -1,17 +1,22 @@
 pkgbase = cryptoplugin
 	pkgdesc = PrivatBank Crypto Plugin
-	pkgver = 1.2.2
-	pkgrel = 2
-	install = cryptoplugin.install
-	arch = any
+	pkgver = 1.2.3
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
 	license = custom
+	depends = at-spi2-core
+	depends = cairo
+	depends = fontconfig
+	depends = freetype2
+	depends = gcc-libs
+	depends = gdk-pixbuf2
+	depends = glib2
 	depends = glibc
 	depends = gtk2
+	depends = pango
 	depends = pcsclite
-	source = https://cb.privatbank.ua/p24-cryptoplugin/1.2.2/cryptoplugin-1.2.2-all.deb
-	source = cryptoplugin.install
-	md5sums = 0d8173b4f5c0c23616d6f4b90ca5b589
-	md5sums = dbd0b80e618c8bee39b65c444eb05240
+	source = https://biprocessing.org.ua/IdentDigitalSignature/resources/plugin/cryptoplugin-1.2.3.run
+	b2sums = cbb4a6582c0d0e8a659b27983d5b96be5540e752bcb4e4d8b8e5257fec36f3348516f20810f07a05270daff95d78a3dd4bec07f904ff887732cf6ac5cf0fcaed
 
 pkgname = cryptoplugin
-

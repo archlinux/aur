@@ -1,26 +1,79 @@
-# Author PrivatBank <acsk@privatbank.ua>
-# Maintainer Carey Minaieva <jedi2light@jedi2light.moe>
+# Contributor: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Carey Minaieva <jedi2light@jedi2light.moe>
 
-pkgname=cryptoplugin
-pkgver=1.2.2
-pkgrel=2
+declare -Ag _arch=(
+  ['i686']='linux_32'
+  ['x86_64']='linux_64'
+)
+
+pkgname="cryptoplugin"
+pkgver=1.2.3
+pkgrel=1
 pkgdesc="PrivatBank Crypto Plugin"
-license=('custom')
+arch=(
+  "${!_arch[@]}"
+)
+license=(
+  'custom'
+)
+depends=(
+  'at-spi2-core'
+  'cairo'
+  'fontconfig'
+  'freetype2'
+  'gcc-libs'
+  'gdk-pixbuf2'
+  'glib2'
+  'glibc'
+  'gtk2'
+  'pango'
+  'pcsclite'
+)
+# provides=(
+#   "libnp${pkgname}.so"
+# )
+_pkgsrc="${pkgname}-${pkgver}"
 source=(
-    "https://cb.privatbank.ua/p24-cryptoplugin/$pkgver/$pkgname-$pkgver-all.deb"
-    "cryptoplugin.install"
+  "https://biprocessing.org.ua/IdentDigitalSignature/resources/plugin/${_pkgsrc}.run"
 )
-arch=('any')
-md5sums=(
-    '0d8173b4f5c0c23616d6f4b90ca5b589'
-    'dbd0b80e618c8bee39b65c444eb05240'
-)
-depends=(glibc gtk2 pcsclite)
-install=cryptoplugin.install
+b2sums=('cbb4a6582c0d0e8a659b27983d5b96be5540e752bcb4e4d8b8e5257fec36f3348516f20810f07a05270daff95d78a3dd4bec07f904ff887732cf6ac5cf0fcaed')
 
-package() {
-    cd $srcdir
-    tar xf data.tar.gz -C $pkgdir/
+prepare() {
+  cd "${srcdir}"
+  # chmod +x ./"${_pkgsrc}.run"
+  # ./"${_pkgsrc}.run"
+
+  mkdir -p "${_pkgsrc}"
+  sed '1,/EOFEOFEOFEOFEOFEOF/d' "${_pkgsrc}.run" | bsdtar xvzf - -C "${_pkgsrc}"
+
+  cd "${_pkgsrc}"
+  sed -i 's|PLUGIN_PATH|/usr/bin/nmcryptoplugin|' 'com.privatbank.cryptoplugin.json'
+
+  cd "mozilla"
+  sed -i 's|PLUGIN_PATH|/usr/bin/nmcryptoplugin|' 'com.privatbank.cryptoplugin.json'
 }
 
-#vim: syntax=sh
+package() {
+  cd "${srcdir}/${_pkgsrc}"
+  # https://chromium.googlesource.com/chromium/src.git/+/62.0.3178.1/chrome/common/extensions/docs/examples/api/nativeMessaging/host/install_host.sh
+  install -vDm644 "com.privatbank.cryptoplugin.json" \
+    "${pkgdir}/usr/lib/chromium/native-messaging-hosts/com.privatbank.cryptoplugin.json"
+
+  cd "${srcdir}/${_pkgsrc}/mozilla"
+  # https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Native_manifests#linux
+  # ???
+  install -vDm644 "com.privatbank.cryptoplugin.json" \
+    "${pkgdir}/usr/lib/mozilla/native-messaging-hosts/com.privatbank.cryptoplugin.json"
+  install -vDm644 "cryptoplugin_ext_id@privatbank.ua.xpi" \
+    "${pkgdir}/usr/lib/firefox/browser/extensions/cryptoplugin_ext_id@privatbank.ua.xpi"
+
+  cd "${srcdir}/${_pkgsrc}/${_arch[$CARCH]}"
+  install -vDm755 "nm${pkgname}" "${pkgdir}/usr/bin/nm${pkgname}"
+  install -vDm644 "libnp${pkgname}.so" "${pkgdir}/usr/lib/libnp${pkgname}.so.${pkgver}"
+
+  cd "${pkgdir}/usr/lib"
+  for lib in *.so.*; do
+    ln -vsf "${lib}" "${lib%.[0-9]*.[0-9]*.[0-9]*}"
+    ln -vsf "${lib}" "${lib%.[0-9]*.[0-9]*}"
+  done
+}
