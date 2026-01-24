@@ -1,0 +1,19 @@
+pkgbase = gtkdialog-git
+	pkgdesc = A small utility for fast and easy GUI building
+	pkgver = r404.e1577ad
+	pkgrel = 1
+	url = https://github.com/01micko/gtkdialog
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = GPL
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk3
+	provides = gtkdialog
+	conflicts = gtkdialog
+	source = git+https://github.com/01micko/gtkdialog
+	sha256sums = SKIP
+
+pkgname = gtkdialog-git
