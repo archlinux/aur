@@ -1,0 +1,23 @@
+pkgbase = emmylua-analyzer-rust-git
+	pkgdesc = EmmyLua Analyzer (Rust Version) - Language Server, Static Analysis, and Doc Generator
+	pkgver = 0.19.0.r30.g4459d275
+	pkgrel = 1
+	url = https://github.com/EmmyLuaLs/emmylua-analyzer-rust
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = clang
+	depends = gcc-libs
+	provides = emmylua-analyzer-rust
+	provides = emmylua_ls
+	provides = emmylua_check
+	provides = emmylua_doc_cli
+	conflicts = emmylua-analyzer-rust
+	conflicts = emmylua_ls-git
+	source = git+https://github.com/EmmyLuaLs/emmylua-analyzer-rust.git
+	sha256sums = SKIP
+
+pkgname = emmylua-analyzer-rust-git
