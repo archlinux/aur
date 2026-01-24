@@ -5,7 +5,7 @@ _pkgname=pass-cli
 pkgname=${_pkgname}-bin
 pkgdesc="CLI password and API key manager for folks who live in the command line"
 
-pkgver=0.16.1
+pkgver=0.16.2
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -22,8 +22,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('b9c8f9a558dbd94e888381e953f04518e9a9d9bdcdb4bfcb74871d739bdefa32')
-sha256sums_aarch64=('a2691d2225c86ed47cf224f44e508b0d4f9efb1f05174ea2adacf6619521518c')
+sha256sums_x86_64=('21d9602bca90234172eec87c46d89d5279d34e8a3e155ec22c2a5a9c02595482')
+sha256sums_aarch64=('486795b3dd1f4814995bf54f06a28b94af064d17f120b5f2d997c1f46f529c35')
 
 
 package() {
