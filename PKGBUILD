@@ -1,4 +1,5 @@
-# Maintainer: envolution
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
+# Contributor: envolution
 # Contributor: FirstAirBender <noblechuk5 [at] web [dot] de>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
@@ -8,59 +9,56 @@
 # Contributor: Christian Neukirchen <chneukirchen@gmail.com>
 # shellcheck shell=bash disable=SC2034,SC2154
 
-_pkgname=autotrace
-pkgname="${_pkgname}-git"
-pkgver=0.31.10+r709+g938616658
+pkgname=autotrace-git
+pkgver=0.31.10.r157.g84f93a9
 pkgrel=1
-epoch=1
-pkgdesc='AutoTrace is a utility for converting bitmap into vector graphics.'
-arch=('i686' 'x86_64')
-url='https://github.com/autotrace/autotrace.git'
-license=('GPL' 'LGPL')
-depends=('libpng' 'pstoedit' 'graphicsmagick' 'glib2')
-makedepends=('intltool' 'git' 'autoconf' 'automake')
-provides=(autotrace)
-conflicts=('autotrace' 'autotrace-nomagick')
-checkdepends=('procps-ng')
-options=('!libtool')
-source=("${_pkgname}::git+https://github.com/autotrace/autotrace.git#branch=master"
-  '010-autotrace-fix-swf-output.patch'
-)
-sha256sums=('SKIP'
-            'c0698678cb37b4a82d732f113ad4829d1b453d9db18001ffbe3044697b4852bc')
+pkgdesc='A program for converting bitmap to vector graphics (git version)'
+arch=('x86_64')
+url='https://github.com/autotrace/autotrace/'
+license=('GPL-2.0-or-later' 'LGPL-2.1-or-later')
+depends=(
+    'gcc-libs'
+    'glib2'
+    'glibc'
+    'imagemagick'
+    'libpng'
+    'pstoedit')
+makedepends=(
+    'git'
+    'intltool')
+checkdepends=(
+    'ffmpeg'
+    'procps-ng')
+provides=('autotrace')
+conflicts=('autotrace')
+source=('git+https://github.com/autotrace/autotrace.git')
+sha256sums=('SKIP')
 
 prepare() {
-  cd "$_pkgname"
-  #since we're rolling with git, don't break the package when updstream fixes this
-  patch -Np1 -i "${srcdir}/010-autotrace-fix-swf-output.patch" || msg2 "*** Patch failed - mark package out of date please https://aur.archlinux.org/packages/autotrace-git ***"
-  ./autogen.sh
+    cd autotrace
+    ./autogen.sh
 }
 
 pkgver() {
-  cd "$_pkgname"
-  _version=$(git tag --sort=-v:refname --list | grep '^[0-9.]*$' | head -n1)
-  _commits=$(git rev-list --count HEAD)
-  _short_commit_hash=$(git rev-parse --short=9 HEAD)
-  echo "${_version}+r${_commits}+g${_short_commit_hash}"
+    git -C autotrace describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
+
 build() {
-  cd "$_pkgname"
-  export CFLAGS+=' -Wno-incompatible-pointer-types'
-  ./configure \
-    --prefix=/usr \
-    --with-pstoedit \
-    --disable-static \
-    --with-magick \
-    --with-png
-  make
-  sed -i "s|@MAGICK_LIBS@|$(pkg-config --libs ImageMagick)|" autotrace.pc
-  sed -i "s|@MAGICK_CFLAGS@|$(pkg-config --cflags ImageMagick)|" autotrace.pc
+    cd autotrace
+    ./configure \
+        --prefix='/usr' \
+        --disable-static \
+        --with-magick \
+        --with-png \
+        --with-pstoedit
+    make
+    sed -i "s|@MAGICK_LIBS@|$(pkg-config --libs ImageMagick)|" autotrace.pc
 }
+
 check() {
-  make -C "${_pkgname}" check
+    make -C autotrace check
 }
+
 package() {
-  cd "$_pkgname"
-  DESTDIR="${pkgdir}" make install
+    make -C autotrace DESTDIR="$pkgdir" install
 }
-# vim:set ts=2 sw=2 et:
