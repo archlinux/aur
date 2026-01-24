@@ -1,7 +1,7 @@
 # Maintainer: rutra8002
 
 pkgname=butter-launcher-bin
-pkgver=1.0.6
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Butter Launcher (Electron-based launcher, prebuilt binary)"
 arch=('x86_64')
