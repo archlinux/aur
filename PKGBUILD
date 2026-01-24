@@ -3,41 +3,55 @@
 _name="sysrescueusbwriter"
 _pkgname="systemrescue-usbwriter"
 pkgname="${_pkgname}-appimage"
-pkgver=1.0.2
-pkgrel=4
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Tool to write SystemRescue to a USB memory stick"
-arch=('x86_64')
+arch=(
+  'x86_64'
+)
 url="https://gitlab.com/systemrescue/${_pkgname}"
-license=('GPL-3.0-or-later')
-depends=('fuse2' 'glibc' 'zlib')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-_pkgsrc="${_name}-${pkgver}"
-source=("README-${pkgver}.md::${url}/-/raw/${pkgver}/README.md?ref_type=tags&inline=false")
-source_x86_64=("${_pkgsrc}-x86_64.AppImage::https://fastly-cdn.system-rescue.org/download/usbwriter/${pkgver}/${_name}-x86_64.AppImage"
-               "${_pkgsrc}-x86_64.AppImage.asc::https://fastly-cdn.system-rescue.org/download/usbwriter/${pkgver}/${_name}-x86_64.AppImage.asc")
-sha512sums=('8cb01264048d83973be047fd36dea3519f63c7d91c9ca600b100a82746adae046afcfd61acd9986915d0111697e11cb5c5c95dbbf06d38206e8c6f800b0aaff2')
-sha512sums_x86_64=('833e08858feaf6b874f2642421843b3996878f34141f4606d911e6f9fec9e6a5ab7afc943a45799d907efdb50a114d1e8dffdcf4a38f1e7c2b9da58fd7268f1f'
+license=(
+  'GPL-3.0-or-later'
+)
+depends=(
+  'glibc'
+)
+provides=(
+  "${_pkgname}"
+)
+conflicts=(
+  "${_pkgname}"
+)
+options=(
+  '!strip'
+)
+_pkgsrc="${_pkgname}-${pkgver}"
+source=(
+  "${_pkgsrc}-README.md::${url}/-/raw/${pkgver}/README.md?ref_type=tags&inline=false"
+)
+source_x86_64=(
+  "${_pkgsrc}-x86_64.AppImage::https://fastly-cdn.system-rescue.org/download/usbwriter/${pkgver}/${_name}-x86_64.AppImage"
+  "${_pkgsrc}-x86_64.AppImage.asc::https://fastly-cdn.system-rescue.org/download/usbwriter/${pkgver}/${_name}-x86_64.AppImage.asc"
+)
+sha512sums=('dae313e88882d43bee05ace02faafe763dccd47f1ae711187609b60454ef7792ef171464f0c9df2142807a0dee66631d8badd3bcea95c6a7366dd95838ba5dae')
+sha512sums_x86_64=('d8b705266d1a20e0752aa0ac61d111a15198ba75379d1bcc1bf386603b28358c6d0e37a3105cb04144e585fefdc80d87c6f3797952b502406a71e7becfec9a7c'
                    'SKIP')
-validpgpkeys=('0FF11AF081E98345594812037091115F8320B897') # Francois Dupoux 20210704 (Generated on 20210704)
-options=('!strip')
+validpgpkeys=(
+  '0FF11AF081E98345594812037091115F8320B897' # Francois Dupoux 20210704 (Generated on 20210704)
+)
 
 prepare() {
   cd "${srcdir}"
-  rm -rf "${_pkgsrc}-${CARCH}"
-  mkdir -p "${_pkgsrc}-${CARCH}"
-
   chmod +x "${_pkgsrc}-${CARCH}.AppImage"
   ./"${_pkgsrc}-${CARCH}.AppImage" --appimage-extract > /dev/null
-
-  mv -f "squashfs-root"/* "${_pkgsrc}-${CARCH}"
-  rm -rf "squashfs-root"
+  rm -rf "${_pkgsrc}-${CARCH}"
+  mv -f "squashfs-root" "${_pkgsrc}-${CARCH}"
 }
 
-pkgver() {
-  cd "${srcdir}/${_pkgsrc}-${CARCH}/usr/share/versions"
-  cat "${_name}"
-}
+# pkgver() {
+#   cd "${srcdir}/${_pkgsrc}-${CARCH}/usr/share/versions"
+#   cat "${_name}"
+# }
 
 build() {
   cd "${srcdir}"
@@ -48,7 +62,7 @@ build() {
 package() {
   cd "${srcdir}"
   install -vDm755 "${_pkgsrc}-${CARCH}.AppImage" "${pkgdir}/opt/${_name}/${_name}.AppImage"
-  install -vDm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -vDm644 "${_pkgsrc}-README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 
   cd "${srcdir}/${_pkgsrc}-${CARCH}"
   install -vDm644 "${_name}.desktop" "${pkgdir}/usr/share/applications/${_name}.desktop"
