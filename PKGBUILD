@@ -1,6 +1,6 @@
 # Maintainer: lazytatsv <lazytatzv@users.noreply.github.com>
 pkgname=udever-git
-pkgver=r1.1234abc
+pkgver=r11.b50e194
 pkgrel=1
 pkgdesc="Interactive udev rule generator for Arch Linux"
 arch=('x86_64' 'aarch64')
