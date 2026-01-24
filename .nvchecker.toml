@@ -1,0 +1,4 @@
+[purple-plugin-pack]
+source = 'regex'
+url = 'https://sourceforge.net/projects/pidgin/files/purple%20plugin%20pack/'
+regex = 'pack/([\d.]+)/'
