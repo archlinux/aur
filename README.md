@@ -34,7 +34,7 @@ yay -S ctotp-git
 
 2. Ensure you have the dependencies installed:
    ~~~bash
-   sudo pacman -S ente-cli oath-toolkit fzf wl-clipboard libnotify
+   yay -S ente-cli-bin oath-toolkit fzf wl-clipboard libnotify
    ~~~
 
 ---
