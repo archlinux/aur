@@ -7,7 +7,7 @@ tag="${pkgver%%_*}-${pkgver##*_}"
 pkgrel=2
 pkgdesc="CoMaps: Offline Hike, Bike, Trails and Navigation"
 arch=(x86_64)
-makedepends=(cmake git jq gcc ninja python-protobuf libxinerama)
+makedepends=(cmake git jq gcc ninja python-protobuf libxinerama wget)
 depends=(mesa libglvnd freetype2 sqlite icu qt6-svg qt6-base zlib libpng glibc
   qt6-positioning gcc-libs harfbuzz libxrandr libxi libxcursor)
 optdepends=("ccache: faster re-compilation" "qt6-wayland: for Wayland users")
@@ -49,6 +49,8 @@ prepare() {
   # Apply patch to relax protobuf version check
   patch -p1 < "$srcdir/relax-protobuf-version.patch"
 
+  # Use pure-Python protobuf implementation for compatibility with protobuf >= 4.x
+  export PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python
   bash ./configure.sh
 }
 build() {

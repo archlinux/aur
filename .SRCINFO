@@ -12,6 +12,7 @@ pkgbase = comaps
 	makedepends = ninja
 	makedepends = python-protobuf
 	makedepends = libxinerama
+	makedepends = wget
 	depends = mesa
 	depends = libglvnd
 	depends = freetype2
