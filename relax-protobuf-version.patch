@@ -1,0 +1,20 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -211,16 +211,12 @@ execute_process(
+ )
+ 
+ if(PROTOBUF_CHECK EQUAL 0)
+-    if(PROTOBUF_VERSION VERSION_LESS "4.0.0")
+-        message(STATUS "Python protobuf ${PROTOBUF_VERSION} found (< 4.0)")
+-    else()
+-        message(FATAL_ERROR "Python protobuf ${PROTOBUF_VERSION} found, but version < 4.0 required")
+-    endif()
++    message(STATUS "Python protobuf ${PROTOBUF_VERSION} found")
+ else()
+-    message(FATAL_ERROR "Python protobuf not found. Install version <4.0")
++    message(FATAL_ERROR "Python protobuf not found")
+ endif()
+ 
+ 
+ add_subdirectory(libs)
+ 

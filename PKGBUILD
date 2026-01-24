@@ -7,7 +7,7 @@ tag="${pkgver%%_*}-${pkgver##*_}"
 pkgrel=1
 pkgdesc="CoMaps: Offline Hike, Bike, Trails and Navigation"
 arch=(x86_64)
-makedepends=(cmake git jq gcc ninja)
+makedepends=(cmake git jq gcc ninja wget python-protobuf libxinerama)
 depends=(mesa libglvnd freetype2 sqlite icu qt6-svg qt6-base zlib libpng glibc
   qt6-positioning gcc-libs harfbuzz libxrandr libxi libxcursor)
 optdepends=("ccache: faster re-compilation" "qt6-wayland: for Wayland users")
@@ -16,6 +16,7 @@ url="https://comaps.app"
 source_url="https://codeberg.org/comaps/comaps/"
 source=(comaps.desktop
   icon.svg
+  relax-protobuf-version.patch
   "git+https://github.com/organicmaps/osmctools.git"
   "git+https://codeberg.org/comaps/kothic.git"
   "git+https://codeberg.org/comaps/protobuf.git"
@@ -40,6 +41,7 @@ source=(comaps.desktop
 )
 sha256sums=('21f70d6c3282fcec0165c9b9f8082e081ecb50b423ae286ffd4ccde4cc794563'
   '85210e30cd1b6e8b30407cf97a57cbf3eb98f16526fc6ffaae63f1441691e6e1'
+  '60144c52729711de741679290f41b7000d8de4d4aed86b10c6aa59a1cdb1545e'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -109,6 +111,10 @@ prepare() {
   cd $pkgname
   git -c protocol.file.allow=always submodule update --init --recursive --depth=1
   rm -f 3party/boost/b2
+  
+  # Apply patch to relax protobuf version check
+  patch -p1 < "$srcdir/relax-protobuf-version.patch"
+  
   bash ./configure.sh
 }
 build() {
