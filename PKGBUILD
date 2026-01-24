@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/printfn/fend"
 license=('MIT')
 groups=()
-depends=('gcc-libs' 'glibc')
+depends=('gcc-libs' 'glibc' 'openssl')
 makedepends=('cargo' 'pandoc')
 checkdepends=()
 optdepends=()
@@ -35,14 +35,14 @@ build() {
 	cd "$pkgname-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cargo build --frozen --release --package fend
+	cargo build --no-default-features --features native-tls --frozen --release --package fend
 	./documentation/build.sh
 }
 
 check() {
 	cd "$pkgname-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo test --frozen --package fend --package fend-core -- -q
+	cargo test --no-default-features --features native-tls --frozen --package fend --package fend-core -- -q
 }
 
 package() {
