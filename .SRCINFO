@@ -1,0 +1,16 @@
+pkgbase = ctotp-git
+	pkgdesc = A minimal CLI wrapper for Ente Auth to copy 2FA codes directly from terminal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/GibreelAbdullah/ctotp
+	arch = any
+	license = MIT
+	depends = ente-cli
+	depends = oath-toolkit
+	depends = fzf
+	depends = wl-clipboard
+	depends = libnotify
+	source = git+https://github.com/GibreelAbdullah/ctotp.git
+	md5sums = SKIP
+
+pkgname = ctotp-git
