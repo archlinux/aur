@@ -1,5 +1,5 @@
 pkgname=kumono
-pkgver=0.65.1
+pkgver=0.65.2
 pkgrel=1
 pkgdesc='Media ripper for coomer and kemono'
 url='https://github.com/APT37/kumono'
@@ -7,7 +7,7 @@ arch=('any')
 makedepends=('git' 'cargo')
 license=('MIT-0')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('fa9e686b62b45ef3b617bb094da534d494265d7967c5fac18f66ef8650bd86ed')
+sha256sums=('6dd0c9b38896d3cc296cdb8fc42666f10f3ccf71f67b9fe200034f7607a8c578')
 options=('!lto')
 provides=('kumono')
 conflicts=('kumono-bin' 'kumono-git')
