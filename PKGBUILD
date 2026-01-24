@@ -1,14 +1,14 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
 pkgver="10.8.2.407"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
 arch=('x86_64')
 depends=('wine' 'hicolor-icon-theme')
 makedepends=('p7zip' 'icoutils' 'gendesk')
 url="https://www.tracker-software.com/product/pdf-xchange-editor"
-_downloadsource="https://www.tracker-software.com/downloads"
+_downloadsource="https://downloads.pdf-xchange.com/${pkgver}"
 _x64file="EditorV10.x64.msi"
 _installdir="/usr/lib"
 _programname="PDF Editor"
