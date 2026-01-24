@@ -1,7 +1,7 @@
 pkgbase = terminal-rain-lightning
 	pkgdesc = A terminal rain and lightning animation using Python and curses
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rmaake1/terminal-rain-lightning
 	arch = any
 	license = MIT
