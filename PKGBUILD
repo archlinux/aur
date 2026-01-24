@@ -10,7 +10,7 @@ fi
 
 _pkgname="ryujinx"
 pkgname="$_pkgname-canary"
-pkgver=1.3.238
+pkgver=1.3.244
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 url="https://git.ryujinx.app/ryubing/ryujinx"
@@ -47,10 +47,8 @@ pkgver() {
 }
 
 build() (
-  export HOME="$SRCDEST/nuget-home"
+  export DOTNET_CLI_HOME="$SRCDEST/nuget-home"
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
-
-  mkdir -p "$HOME" # must exist
 
   local _runtime="linux-x64"
   local _args=(
