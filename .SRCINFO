@@ -1,7 +1,7 @@
 pkgbase = mbctl-git
 	pkgdesc = Another container orchestration system. Man8S use yggdrasil as VPN networking, use containerd to maintain containers and images, and use a new kind of config manage various types of dirs of containers.
-	pkgver = 0.6
-	pkgrel = 2
+	pkgver = 0.6.1
+	pkgrel = 1
 	url = https://github.com/Neboer/Man8S-CTR.git
 	arch = any
 	license = Apache-2.0

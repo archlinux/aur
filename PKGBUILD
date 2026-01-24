@@ -2,7 +2,7 @@
 # Contributor: Neboer <rubinposter@gmail.com>
 
 pkgname=mbctl-git
-pkgver=0.6
+pkgver=0.6.1
 pkgver() {
     cd "$srcdir/Man8S-CTR"
     local v
@@ -11,7 +11,7 @@ pkgver() {
     printf %s "${v//-/+}"
 }
 
-pkgrel=2
+pkgrel=1
 pkgdesc='Another container orchestration system. Man8S use yggdrasil as VPN networking, use containerd to maintain containers and images, and use a new kind of config manage various types of dirs of containers.'
 
 arch=('any')
@@ -40,5 +40,5 @@ package() {
     install -vDm644 mbctl-startup.service -t "$pkgdir/usr/lib/systemd/system/"
 
     cd "$srcdir/Man8S-CTR"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    python -m installer "--destdir=$pkgdir" dist/*.whl
 }
