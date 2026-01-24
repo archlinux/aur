@@ -1,7 +1,7 @@
 # Maintainer: Daniel Korbelainen <officialpand@gmail.com>
 pkgname=sniptext
 pkgver=0.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Screen capture OCR tool with adaptive ensemble recognition"
 arch=('any')
 url="https://github.com/dkorbelainen/sniptext"
@@ -11,13 +11,13 @@ depends=(
     'python-numpy'
     'python-pillow'
     'python-pynput'
-    'python-pyperclip'
     'python-pyyaml'
     'python-loguru'
     'python-scikit-learn'
     'python-pytesseract'
     'tesseract'
     'tesseract-data-eng'
+    'libnotify'
 )
 optdepends=(
     'tesseract-data-rus: Russian language support'
@@ -28,13 +28,16 @@ optdepends=(
     'tesseract-data-chi_sim: Chinese Simplified language support'
     'slurp: Wayland screen selection'
     'grim: Wayland screenshot tool'
+    'grimshot: Wayland screenshot tool'
     'wl-clipboard: Wayland clipboard support'
     'maim: X11 screenshot tool'
+    'scrot: X11 screenshot tool'
     'xclip: X11 clipboard support'
+    'imagemagick: X11 screenshot tool (import command)'
 )
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('16f0727c7715ad10fd4678af65849ccb7729d87f1d3a756627b1c88329c865ee')
+sha256sums=('f1fab596e2c95f10ada2bf79733316f1001b2fa3876b432c25a133f777d2d427')
 
 build() {
     cd "$pkgname-$pkgver"
