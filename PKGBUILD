@@ -2,8 +2,8 @@
 # Contributor: Reese Wang <thuwrx10 at gmail dot com>
 
 pkgname='hikvision-mvs'
-pkgver=4.6.0
-_pkgdate=250808
+pkgver=4.6.1
+_pkgdate=251217
 pkgrel=1
 pkgdesc="Machine Vision Software by Hikvision, for their industrial cameras."
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ source=("https://www.hikrobotics.com/cn2/source/support/software/MVS_Linux_STD_V
 	'logo.svg'
 	'hikvision-mvs.desktop')
 noextract=("${source[0]##*/}")
-sha256sums=('250436fbd192074eeea0a77affb34e1fc47b0c85cba5b433cc9309937f9348c6'
+sha256sums=('3d43b56f48371c44318327c836f1ffb47e7873fcb2324e45fe06bbc5cceeea3c'
             '6be7b478c87b26e562ee385c91039b8b5d4927eb3d34a27089201edb2b2182fb'
             '8e71020b983d2b49f012af025dce81d83301f280acf73f8062adf6dbe2b71a2c')
 

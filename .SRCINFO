@@ -1,6 +1,6 @@
 pkgbase = hikvision-mvs
 	pkgdesc = Machine Vision Software by Hikvision, for their industrial cameras.
-	pkgver = 4.6.0
+	pkgver = 4.6.1
 	pkgrel = 1
 	url = https://www.hikrobotics.com/
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = hikvision-mvs
 	makedepends = curl
 	makedepends = unzip
 	makedepends = tar
-	noextract = MVS_Linux_STD_V4.6.0_250808.zip
-	source = https://www.hikrobotics.com/cn2/source/support/software/MVS_Linux_STD_V4.6.0_250808.zip
+	noextract = MVS_Linux_STD_V4.6.1_251217.zip
+	source = https://www.hikrobotics.com/cn2/source/support/software/MVS_Linux_STD_V4.6.1_251217.zip
 	source = logo.svg
 	source = hikvision-mvs.desktop
-	sha256sums = 250436fbd192074eeea0a77affb34e1fc47b0c85cba5b433cc9309937f9348c6
+	sha256sums = 3d43b56f48371c44318327c836f1ffb47e7873fcb2324e45fe06bbc5cceeea3c
 	sha256sums = 6be7b478c87b26e562ee385c91039b8b5d4927eb3d34a27089201edb2b2182fb
 	sha256sums = 8e71020b983d2b49f012af025dce81d83301f280acf73f8062adf6dbe2b71a2c
 
