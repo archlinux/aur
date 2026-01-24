@@ -1,6 +1,6 @@
 # Maintainer: MopigamesYT <mopigames@proton.me>
 pkgname=hytale-rpc-rs-bin
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Discord Rich Presence for Hytale - written in Rust (prebuilt binary)"
 arch=('x86_64')
