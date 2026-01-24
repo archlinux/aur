@@ -1,0 +1,19 @@
+pkgbase = pwdsafety-git
+	pkgdesc = Command line tool that checks how much a password is safe (Git version)
+	pkgver = 0.4.1.r8.g63b0fac
+	pkgrel = 1
+	url = https://github.com/edoardottt/pwdsafety
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	license = GPL-3.0-or-later
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = pwdsafety
+	conflicts = pwdsafety
+	conflicts = pwdsafety-bin
+	source = git+https://github.com/edoardottt/pwdsafety.git
+	sha256sums = SKIP
+
+pkgname = pwdsafety-git
