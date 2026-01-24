@@ -1,14 +1,21 @@
 pkgbase = python-backports.shutil_get_terminal_size
 	pkgdesc = A backport of the get_terminal_size function from Python 3.3's shutil.
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/chrippa/backports.shutil_get_terminal_size
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-mock
+	checkdepends = python-virtualenv
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/b/backports.shutil_get_terminal_size/backports.shutil_get_terminal_size-1.0.0.tar.gz
-	sha256sums = 713e7a8228ae80341c70586d1cc0a8caa5207346927e23d09dcbcaf18eadec80
+	depends = python-backports
+	source = https://github.com/chrippa/backports.shutil_get_terminal_size/archive/refs/tags/v1.0.0.tar.gz
+	sha512sums = c076f20ed474aecc36f386c69152c778f1522c54b7e1746211ff67f57a634802bb9c904bce56a62b3af968327d4a932da7cafc8a8058128de14f8ad6da92c181
 
 pkgname = python-backports.shutil_get_terminal_size
-	depends = python
