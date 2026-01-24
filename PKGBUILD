@@ -6,7 +6,7 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-sord
-pkgver=0.16.18
+pkgver=0.16.20
 pkgrel=1
 arch=('any')
 pkgdesc="A lightweight C library for storing RDF data in memory (Android ${_android_arch})"
@@ -22,7 +22,7 @@ makedepends=('android-meson'
              "android-${_android_arch}-zix")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://download.drobilla.net/sord-${pkgver}.tar.xz")
-md5sums=('8c7bf82dfa5bd7d6906ded54032f8a64')
+md5sums=('82e63c626e645ab6ce571bd4f462e13e')
 
 build() {
     cd "${srcdir}/sord-${pkgver}"
@@ -43,4 +43,6 @@ package() {
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_RANLIB} "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
