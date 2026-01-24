@@ -1,6 +1,6 @@
 pkgbase = onetalker-git
 	pkgdesc = An Augmentative and Alternative Communication (AAC) Aid
-	pkgver = 2026.1.r2.ge921b4c
+	pkgver = 2026.1.r5.g81c3ec6
 	pkgrel = 1
 	url = https://onetalker.org
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = onetalker-git
 	makedepends = cmake
 	depends = hicolor-icon-theme
 	depends = onnxruntime
+	depends = protobuf
 	depends = alsa-lib
 	depends = gcc-libs
 	depends = glibc

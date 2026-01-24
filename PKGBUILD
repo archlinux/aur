@@ -3,7 +3,7 @@
 
 _pkgname=onetalker
 pkgname=$_pkgname-git
-pkgver=2026.1.r2.ge921b4c
+pkgver=2026.1.r5.g81c3ec6
 pkgrel=1
 pkgdesc='An Augmentative and Alternative Communication (AAC) Aid'
 arch=(x86_64)
@@ -12,6 +12,7 @@ license=('GPL-3.0-only')
 depends=(
   hicolor-icon-theme
   onnxruntime
+  protobuf
   alsa-lib
   gcc-libs
   glibc
