@@ -1,16 +1,16 @@
 pkgbase = pyfunceble-process-manager
 	pkgdesc = The process manager library for and from the PyFunceble project.
-	pkgver = 1.0.10
+	pkgver = 1.0.11
 	pkgrel = 1
 	url = https://github.com/pyfunceble/process-manager
 	arch = any
 	license = Apache 2.0
 	depends = python-setuptools
 	depends = python3
-	provides = pyfunceble-process-manager=1.0.10
-	source = https://files.pythonhosted.org/packages/source/p/pyfunceble_process_manager/pyfunceble_process_manager-1.0.10.tar.gz
+	provides = pyfunceble-process-manager=1.0.11
+	source = https://files.pythonhosted.org/packages/source/p/pyfunceble_process_manager/pyfunceble_process_manager-1.0.11.tar.gz
 	source = https://raw.githubusercontent.com/pyfunceble/process-manager/refs/heads/master/LICENSE
-	sha256sums = 7b657b8e3dfa927f35e9d032225b9014dd462bd70f82b11f9eeefd0aa327a65e
-	sha256sums = ac4f1fa7ee565806d41b26bc9a0d9f313224730ddf3c0d4f346f3a511c47dd4e
+	sha256sums = 4a2c7fda68d14a2ed27a26bae61b7c003bcbabb21830ee8a69a083e27115ae54
+	sha256sums = df623b0fb69f459822d76363f34e08c2d2e1c953d0eddc7e456745c563b4b3e1
 
 pkgname = pyfunceble-process-manager
