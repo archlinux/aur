@@ -1,4 +1,4 @@
-pkgbase = auriscribe-git
+pkgbase = auriscribe
 	pkgdesc = Auriscribe - offline speech-to-text tray app (git)
 	pkgver = c536ffe
 	pkgrel = 1
@@ -23,4 +23,4 @@ pkgbase = auriscribe-git
 	source = git+https://github.com/rabfulton/Auriscribe.git
 	sha256sums = SKIP
 
-pkgname = auriscribe-git
+pkgname = auriscribe

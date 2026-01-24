@@ -1,4 +1,4 @@
-pkgname=auriscribe-git
+pkgname=auriscribe
 pkgver=c536ffe
 pkgrel=1
 pkgdesc="Auriscribe - offline speech-to-text tray app (git)"
