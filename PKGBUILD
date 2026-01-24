@@ -8,7 +8,7 @@ url="https://github.com/omarSemgey/ForgeFoundary"
 license=('MIT')
 depends=('php>=8.2' 'composer' 'git')
 source=("https://github.com/omarSemgey/ForgeFoundary/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b4c430c74780a5ca8537c3ee57713747ebef3d2d7f6775b9f7d2e69383292c58') 
+sha256sums=('4482d5ce5f5b7a346b1fd4f88e5bed00ef1286d53e8843a0ff66d05577cc6f08') 
 
 package() {
     mkdir -p "$pkgdir/opt/$pkgname"
