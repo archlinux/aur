@@ -1,17 +1,15 @@
 pkgbase = perfetto
-	pkgdesc = System profiling, app tracing and trace analysis
-	pkgver = 48.1
+	pkgdesc = Python APIs and bindings for Perfetto
+	pkgver = 53.0
 	pkgrel = 1
-	url = https://perfetto.dev/
+	url = https://github.com/google/perfetto
 	arch = x86_64
-	license = apache
+	license = Apache-2.0
 	makedepends = git
 	makedepends = python
 	makedepends = clang
 	depends = gcc-libs
-	provides = perfetto
-	conflicts = perfetto
-	source = https://github.com/google/perfetto/archive/refs/tags/v48.1.tar.gz
-	b2sums = d3738557cb56bfaea7c00a6609c94566e346185612237143ea76e9c1f1d9dee12006537c84e87ab93e6f3af7b9793d819ca4fb582fc7309841c026031271860a
+	source = perfetto-53.0.tar.gz::https://github.com/google/perfetto/archive/v53.0.tar.gz
+	sha512sums = 2e8b3c2b5db7336732c288793f9d1be72df3f69152b3d13a62e130fe5d29640c8abcf6e93604a67af38d65d6bee5a40da364d2166ea8f3984e9d390aa422fe61
 
 pkgname = perfetto
