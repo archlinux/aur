@@ -1,6 +1,6 @@
 pkgbase = jubby-bin
 	pkgdesc = Hub de mini-apps pessoais para Linux
-	pkgver = 0.3.6
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/juicerq/jubby
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = jubby-bin
 	conflicts = jubby
 	options = !strip
 	options = !debug
-	source = jubby-bin-0.3.6.deb::https://github.com/juicerq/jubby/releases/download/v0.3.6/jubby_0.3.6_amd64.deb
-	sha256sums = f00b1610065a0a89ce0bde1f70c1c9b034e482eaba990f7f74cc3483b203b05d
+	source = jubby-bin-0.4.2.deb::https://github.com/juicerq/jubby/releases/download/v0.4.2/jubby_0.4.2_amd64.deb
+	sha256sums = a3c59a51a2655c1dd7eab4735058f85b100db00afce5c91e152a1211335a15c2
 
 pkgname = jubby-bin
