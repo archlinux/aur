@@ -1,6 +1,6 @@
 # Maintainer: aydiler <aydiler@users.noreply.github.com>
 pkgname=kb-layout-daemon-git
-pkgver=0.1.0.r0.gba28b4b
+pkgver=0.2.2.r0.g3530206
 pkgrel=1
 pkgdesc="Auto-switch keyboard layout based on which physical keyboard is used (KDE/Linux)"
 arch=('x86_64')
