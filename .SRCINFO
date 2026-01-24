@@ -1,7 +1,7 @@
 pkgbase = filecentipede-bin
 	pkgdesc = Cross-platform internet upload/download manager for HTTP(S), FTP(S), SSH, magnet-link, BitTorrent, m3u8, ed2k, and online videos. WebDAV client, FTP client, SSH client.(Prebuilt version)
 	pkgver = 2.82
-	pkgrel = 12
+	pkgrel = 13
 	url = http://www.filecxx.com/
 	install = filecentipede.install
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = filecentipede-bin
 	sha256sums = 3d681f308f0c2eee560aa31e2687b5285ecd78c79eef5b3aa5f0e4bf0009e6db
 	sha256sums = cda3faf2dd8f15d42d6006620bfc108fb15323b5b80d45ec6eb6bc1ebc4729ef
 	sha256sums = d874c3921adda7ffdc222fe549775ff96c63906cf99d4f5b6483edbc34d56117
-	sha256sums = 897e71e30e21493e15cd0f3cc4d2b7a3d48aa6d1ae02fa1d23d512c051d7e68e
+	sha256sums = 791e8e5a033418e66fbc2e43da648636d4887fca34e580dddc5b59ad470d8605
 	sha256sums = 1ac2e7785ff0fb97039ef0df0251ae667be87ea591438b80dbfe17b30e67c3d0
 
 pkgname = filecentipede-bin

@@ -37,7 +37,7 @@ sha256sums=('41932ebba913ed1de840ac32653d69fac67e44cf366b0fe7c58a4b50c1d9804d'
             '3d681f308f0c2eee560aa31e2687b5285ecd78c79eef5b3aa5f0e4bf0009e6db'
             'cda3faf2dd8f15d42d6006620bfc108fb15323b5b80d45ec6eb6bc1ebc4729ef'
             'd874c3921adda7ffdc222fe549775ff96c63906cf99d4f5b6483edbc34d56117'
-            '897e71e30e21493e15cd0f3cc4d2b7a3d48aa6d1ae02fa1d23d512c051d7e68e'
+            '791e8e5a033418e66fbc2e43da648636d4887fca34e580dddc5b59ad470d8605'
             '1ac2e7785ff0fb97039ef0df0251ae667be87ea591438b80dbfe17b30e67c3d0')
 prepare() {
     sed -i -e "

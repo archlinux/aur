@@ -3,7 +3,7 @@ Description=File Centipede service
 
 [Service]
 Type=simple
-ExecStart=/opt/filecentipede/lib/filec __elevating__
+ExecStart=/opt/filecentipede/lib/filec __service__
 
 [Install]
 WantedBy=multi-user.target
