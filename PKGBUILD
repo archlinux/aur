@@ -16,7 +16,7 @@ source=(
   "just-talk.desktop::https://raw.githubusercontent.com/whoamihappyhacking/just-talk/v${pkgver}/just-talk.desktop"
 )
 sha256sums=(
-  '54e3ae4720a195064cde1d5667ef7adc83f533c6f8fc562610661412de92a1cc'
+  'b8ec7ace662578d20b9061ff1c3b00eee2a1351bb5a64198756346282f9f06a1'
   'SKIP'
   'SKIP'
 )
