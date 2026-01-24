@@ -1,6 +1,6 @@
 pkgbase = cadet-python
 	pkgdesc = Modeling and simulation framework for biotech processes – low-level python frontend
-	pkgver = 1.1.0
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://cadet.github.io/master/developer_guide/cadet_python.html
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = cadet-python
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = git+https://github.com/cadet/cadet-python#tag=v1.1.0
-	sha256sums = 3ef3ad4e7eb2d1123c706546f432e3b77a564dd5bcbf5e0b8327e9b27cb5feab
+	source = git+https://github.com/cadet/cadet-python#tag=v1.1.2
+	sha256sums = 788e90f1397dc0610793f3066da4d5bb91e7f82f6aab7dc8d12ac7fc1a793fc8
 
 pkgname = cadet-python
 	depends = python
