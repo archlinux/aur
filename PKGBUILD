@@ -6,8 +6,8 @@ _android_arch=riscv64
 # When releasing a xorgproto version with updated keysyms, rebuild libx11
 
 pkgname=android-${_android_arch}-xorgproto
-pkgver=2024.1
-pkgrel=2
+pkgver=2025.1
+pkgrel=1
 arch=('any')
 pkgdesc="combined X.Org X11 Protocol headers (Android ${_android_arch}"
 url="https://xorg.freedesktop.org/"
@@ -18,7 +18,7 @@ makedepends=('android-meson'
              "android-${_android_arch}-xorg-util-macros")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://xorg.freedesktop.org/archive/individual/proto/xorgproto-${pkgver}.tar.xz"{,.sig})
-md5sums=('12374d29fb5ae642cfa872035e401640'
+md5sums=('15534fa6fb13a6a70afe7561c1424f3c'
          'SKIP')
 validpgpkeys=('67DC86F2623FC5FD4BB5225D14706DBE1E4B4540') # "Olivier Fourdan <fourdan@xfce.org>"
 
@@ -39,4 +39,6 @@ package() {
     # cleanup
     rm -f "${pkgdir}/${ANDROID_PREFIX_INCLUDE}/X11/extensions"/apple*
     rm -f "${pkgdir}/${ANDROID_PREFIX_SHARE}/pkgconfig/applewmproto.pc"
+
+    install -vDm 644 COPYING* -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
