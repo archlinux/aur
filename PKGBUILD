@@ -1,8 +1,8 @@
 # Maintainer: raindropqwq <raindropqwq@outlook.com>
 
 pkgname=lobehub-desktop-next-bin
-_pkgver=2.0.0-next.361
-pkgver=2.0.0_next.361
+_pkgver=2.0.0-next.362
+pkgver=2.0.0_next.362
 pkgrel=1
 pkgdesc="Desktop version of lobe-chat (v2.0.0-Next)."
 arch=('x86_64')
@@ -12,10 +12,10 @@ depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 
 conflicts=('lobehub-desktop' 'lobehub-desktop-beta-bin' 'lobe-chat-appimage')
 provides=('lobehub-desktop')
 
-source=("lobehub-desktop-next-bin-${pkgver}.rpm::https://github.com/lobehub/lobe-chat/releases/download/v${_pkgver}/lobehub-desktop-beta-2.0.0-next.361.x86_64.rpm"
+source=("lobehub-desktop-next-bin-${pkgver}.rpm::https://github.com/lobehub/lobe-chat/releases/download/v${_pkgver}/lobehub-desktop-beta-2.0.0-next.362.x86_64.rpm"
   "LICENSE::https://raw.githubusercontent.com/lobehub/lobe-chat/main/LICENSE"
   "lobehub-desktop-beta.png::https://raw.githubusercontent.com/lobehub/lobe-chat/main/apps/desktop/resources/tray.png")
-sha256sums=('634e93b92254100309d4cbf6f042ac583147f3830a38e014fed0316af2d6b952'
+sha256sums=('55435e21d02c8dce847850cacf1f461f15a19e91d91dd566a856cbaad96aac43'
   '790a8c42f10beb4f5e9122e05a8e65d5522de49f89ac69cd31063c0f2be93ea4'
   '38e5a907edee6a2188c7f49d6c56688c8c7e110a0dc2ccd6172129372f21efaf')
 
