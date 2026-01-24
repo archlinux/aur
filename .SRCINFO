@@ -1,15 +1,15 @@
 pkgbase = sentinelhub-bin
 	pkgdesc = The official Sentinel blockchain Hub
-	pkgver = 12.0.1
+	pkgver = 12.0.2
 	pkgrel = 1
 	url = https://github.com/sentinel-official/hub
 	arch = x86_64
 	license = Apache
 	provides = sentinelhub
 	conflicts = sentinelhub
-	source = https://raw.githubusercontent.com/sentinel-official/hub/v12.0.1/LICENSE
+	source = https://raw.githubusercontent.com/sentinel-official/hub/v12.0.2/LICENSE
 	sha256sums = c55026df88ea80edee48ffd049972b4508a1ccd4efde124df603462cb9898f73
-	source_x86_64 = sentinelhub-12.0.1-linux-amd64::https://github.com/sentinel-official/hub/releases/download/v12.0.1/sentinelhub
-	sha256sums_x86_64 = fd164e9fa24fe84e18a129b29363c6c7e617aa242590aa3508274b998aa985d3
+	source_x86_64 = sentinelhub-12.0.2-linux-amd64::https://github.com/sentinel-official/hub/releases/download/v12.0.2/sentinelhub
+	sha256sums_x86_64 = eb54731ab4802173b5e889d91e68d9df87e0b5e36c94fb59ead288ce20bca10e
 
 pkgname = sentinelhub-bin
