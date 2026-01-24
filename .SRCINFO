@@ -1,17 +1,17 @@
 pkgbase = csvi-bin
 	pkgdesc = Terminal CSV Editor
-	pkgver = 1.19.4
+	pkgver = 1.20.1
 	pkgrel = 1
 	url = https://github.com/hymkor/csvi
 	arch = x86_64
 	license = MIT
 	provides = csvi
 	conflicts = csvi
-	source = LICENSE-1.19.4::https://raw.githubusercontent.com/hymkor/csvi/v1.19.4/LICENSE
-	source = README-1.19.4.md::https://raw.githubusercontent.com/hymkor/csvi/v1.19.4/README.md
+	source = LICENSE-1.20.1::https://raw.githubusercontent.com/hymkor/csvi/v1.20.1/LICENSE
+	source = README-1.20.1.md::https://raw.githubusercontent.com/hymkor/csvi/v1.20.1/README.md
 	sha256sums = 3aae49b6287bf4a3177320ca7a67b00ffa13562db7e8d6ba9f2ac4984819eab0
-	sha256sums = 45361ae56cfae9fa1fadb8a7460d0ee002d8a792ff0bf6e2ddef79cec8c6b843
-	source_x86_64 = csvi-x86_64-1.19.4.zip::https://github.com/hymkor/csvi/releases/download/v1.19.4/csvi-v1.19.4-linux-amd64.zip
-	sha256sums_x86_64 = 6e7d7b30df9b7e9f595df176ffb0af266222692af82174d13f6c22bf45b1dd16
+	sha256sums = fc537a8275e2c4bc631e9775f844288dd25d24b6264021b977d5fc3f6ac67c1c
+	source_x86_64 = csvi-x86_64-1.20.1.zip::https://github.com/hymkor/csvi/releases/download/v1.20.1/csvi-v1.20.1-linux-amd64.zip
+	sha256sums_x86_64 = 3f441ac81564d9341d1b56d684e133a85772eda270dcc7cfec611102147ee794
 
 pkgname = csvi-bin
