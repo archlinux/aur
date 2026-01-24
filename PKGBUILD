@@ -2,14 +2,16 @@
 
 _pkgname=nomacs
 pkgname=$_pkgname-git
-pkgver=3.2.0.r1446.g9eedbb1c
+pkgver=3.22.0.r2.g88d9c67e
 pkgrel=1
 pkgdesc='Free, open source image viewer, which supports multiple platforms.'
 arch=('i686' 'x86_64')
 url='https://nomacs.org'
-license=('GPL3')
-depends=('qt5-svg' 'exiv2' 'libraw' 'opencv' 'quazip' 'desktop-file-utils')
-makedepends=('git' 'cmake' 'qt5-tools')
+license=('GPL-3.0-only')
+depends=('quazip-qt6' 'qt6-5compat' 'qt6-svg' 'opencv' 'libraw' 'exiv2' 'desktop-file-utils')
+optdepends=('qt6-imageformats: read ICNS, MNG, TGA, TIFF, WBMP, WEBP'
+            'kimageformats: read formats supported by this plugin, among other AVIF, HEIF/HEIC, JXL, EXR and EPS')
+makedepends=('git' 'cmake' 'qt6-tools')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://github.com/$_pkgname/$_pkgname.git")
@@ -19,7 +21,7 @@ export GIT_LFS_SKIP_SMUDGE=1
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --always | sed 's/-/.r/;s/-/./'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -28,7 +30,7 @@ build() {
   cmake "$srcdir/$_pkgname/ImageLounge" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_TRANSLATIONS=ON \
-    -DUSE_SYSTEM_QUAZIP=ON
+    -DENABLE_QUAZIP=ON
   make
 }
 
