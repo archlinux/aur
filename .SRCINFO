@@ -1,6 +1,6 @@
 pkgbase = python-stable-baselines3
 	pkgdesc = A set of reliable implementations of reinforcement learning algorithms in PyTorch
-	pkgver = 2.4.0
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://github.com/DLR-RM/stable-baselines3
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = python-stable-baselines3
 	optdepends = python-psutil: Checking memory taken by replay buffer
 	optdepends = python-tqdm: For progress bar callback
 	optdepends = python-rich: For progress bar callback
-	source = python-stable-baselines3-2.4.0.tar.gz::https://github.com/DLR-RM/stable-baselines3/archive/v2.4.0.tar.gz
-	sha256sums = b14838f41375a8b5ccaff3f8f1155368943eb1a92cd07aee6253765f65d3426a
+	source = python-stable-baselines3-2.7.1.tar.gz::https://github.com/DLR-RM/stable-baselines3/archive/v2.7.1.tar.gz
+	sha256sums = 57b3b92785428d8dc3551041c8b02527941f2cee7848c22cf641c2f8fca771f5
 
 pkgname = python-stable-baselines3
