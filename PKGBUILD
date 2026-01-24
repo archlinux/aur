@@ -10,8 +10,8 @@ _plugins_split=(${_plugins//:/ })
 
 _pkgbase="geany-plugins-split"
 pkgbase="$_pkgbase-git"
-pkgver=2.1.0.r33.g691ff5a
-pkgrel=2
+pkgver=2.1.0.r35.g742ec58
+pkgrel=1
 pkgdesc="Plugins for Geany (split)"
 url="https://github.com/geany/geany-plugins"
 license=('GPL-2.0-or-later')
@@ -23,6 +23,7 @@ depends=(
 makedepends=(
   'git'
   'intltool'
+  'lua'
   'python-docutils'
   'vte3'
 )
@@ -50,6 +51,17 @@ prepare() {
       patch -d "$_pkgsrc" -Np1 -F100 -i "${srcdir:?}/$src"
     fi
   done
+
+  printf '\nRegenerating geanylua headers...\n'
+  pushd /usr/include/geany/scintilla > /dev/null
+  local _plugin_path="$srcdir/$_pkgsrc/geanylua"
+  lua "$_plugin_path/util/mkiface.lua" > "$_plugin_path/glspi_sci.h"
+
+  sed -E \
+    -e '/keydummy\.h/c "cpp -P `pkgconf --cflags geany` keybindings.h"' \
+    -i "$_plugin_path/util/mk-keytab.lua"
+  lua "$_plugin_path/util/mk-keytab.lua" > "$_plugin_path/glspi_keycmd.h"
+  popd > /dev/null
 }
 
 pkgver() {

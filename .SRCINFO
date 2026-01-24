@@ -1,12 +1,13 @@
 pkgbase = geany-plugins-split-git
 	pkgdesc = Plugins for Geany (split)
-	pkgver = 2.1.0.r33.g691ff5a
-	pkgrel = 2
+	pkgver = 2.1.0.r35.g742ec58
+	pkgrel = 1
 	url = https://github.com/geany/geany-plugins
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = intltool
+	makedepends = lua
 	makedepends = python-docutils
 	makedepends = vte3
 	makedepends = lua
