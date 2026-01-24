@@ -1,7 +1,7 @@
 # Maintainer: skyline69 <67526259+skyline69@users.noreply.github.com>
 pkgname=balatro-mod-manager-bin
 _pkgname=balatro-mod-manager
-pkgver=0.3.9
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='A mod manager for Balatro - easily install and manage mods for the popular roguelike deckbuilding game'
 arch=('x86_64')
@@ -19,7 +19,7 @@ provides=("${_pkgname}" 'bmm')
 conflicts=("${_pkgname}" 'bmm')
 options=('!strip' '!debug')
 source=("${_pkgname}-${pkgver}.deb::https://github.com/skyline69/${_pkgname}/releases/download/v${pkgver}/Balatro.Mod.Manager_${pkgver}_amd64.deb")
-sha256sums=('a184f3e56ad26990102d702080e8c2d60f1b66ff96b94e6b0709e58d92e57985')
+sha256sums=('c8190e687e876e0c0bdb06ef48fec60f34e81feff217e45dc91153a89d6edbe5')
 
 package() {
     # Extract the data archive from the deb
