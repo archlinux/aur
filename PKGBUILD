@@ -1,4 +1,4 @@
-# Maintainer: lazytatsv <lazytatzv@users.noreply.github.com>
+# Maintainery lazytatsv <lazytatzv@users.noreply.github.com>
 pkgname=udever-git
 pkgver=r11.b50e194
 pkgrel=1
