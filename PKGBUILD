@@ -2,7 +2,7 @@
 
 export GIT_LFS_SKIP_SMUDGE=1
 pkgname=veloren-git
-pkgver=0.16.0.r410.g5ec99290f2
+pkgver=0.18.0.r0.g1d12f35edd
 pkgrel=1
 pkgdesc="The development version of an open-world, open-source multiplayer voxel RPG"
 arch=('x86_64' 'i686')
@@ -31,7 +31,7 @@ prepare() {
     unset GIT_LFS_SKIP_SMUDGE
     cd "$srcdir/$pkgname"
     git remote set-url origin "$_repo"
-    git lfs install
+    git lfs install --local
     git lfs fetch
     git lfs checkout
 }
