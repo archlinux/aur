@@ -7,7 +7,7 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-pcsclite
-pkgver=2.3.3
+pkgver=2.4.1
 pkgrel=1
 arch=('any')
 pkgdesc="PC/SC Architecture smartcard middleware library (Android ${_android_arch})"
@@ -20,7 +20,7 @@ options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://pcsclite.apdu.fr/files/pcsc-lite-${pkgver}.tar.xz"{,.asc}
         '0002-Disable-issetugid.patch'
         '0003-Fix-missing-pthread_cancel.patch')
-md5sums=('b364c6495b1658218785be2e00f5052d'
+md5sums=('fd6349f53039308027413e6e8a1a8a1f'
          'SKIP'
          '17cc08c1b9ed2c5912be2fd2b368c669'
          '3050ecacb997c4c6f901ddd18d4c87fc')
@@ -59,5 +59,6 @@ package() {
     rm -rf "$pkgdir/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
-}
 
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+}
