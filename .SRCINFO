@@ -1,5 +1,5 @@
 pkgbase = mounriver-studio-toolchain-bin
-	pkgver = 210
+	pkgver = 230
 	pkgrel = 1
 	url = http://www.mounriver.com/
 	arch = x86_64
@@ -7,17 +7,17 @@ pkgbase = mounriver-studio-toolchain-bin
 	makedepends = tar
 	optdepends = ch34x-dkms-git: CH341SER driver with fixed bug
 	optdepends = i2c-ch341-dkms: CH341 USB-I2C adapter driver
-	optdepends = spi-ch341-usb-dkms: SPI/GPIO driver for CH341
+	optdepends = spi-ch341-usb-dkms-git: SPI/GPIO driver for CH341
 	optdepends = ch341eepromtool: An i2c serial EEPROM programming tool for the WCH CH341A
 	optdepends = ch341prog-git: A simple command line tool (programmer) interfacing with ch341a
 	optdepends = ch341eeprom-git: A libusb based programming tool for 24xx I²C EEPROMs using the WCH CH341A
 	optdepends = ch343ser-dkms: USB serial driver for ch342/ch343/ch344/ch347/ch347f/ch9101/ch9102/ch9103/ch9104, etc (dkms).
 	optdepends = wchisp: WCH ISP Tool in Rust
 	provides = MRS-Toolchain
-	noextract = mounriver-studio-toolchain-bin-210.tar.xz
+	noextract = MRS_Toolchain_Linux_x64_V230.tar.xz
 	options = !strip
-	source = mounriver-studio-toolchain-bin-210.tar.xz::http://file-oss.mounriver.com/tools/MRS_Toolchain_Linux_x64_V210.tar.xz
-	sha256sums = 5431c040cb67cf619fd18d003ed9497a1995f59329b7f51d985dcc8013eff236
+	source = local://MRS_Toolchain_Linux_x64_V230.tar.xz
+	sha256sums = 6232a52866e9ed425ced6838f99b46126f821d9a896c766579b790d8e1eede54
 
 pkgname = mounriver-studio-toolchain-bin
 	pkgdesc = This MRS Toolchain includes the tool chain for RISC-V kernel chip under Linux x64 and the debug download tool OpenOCD.
@@ -33,7 +33,6 @@ pkgname = mounriver-studio-toolchain-openocd-bin
 	depends = libusb
 	depends = hidapi
 	depends = libusb-compat
-	depends = libudev.so
 	depends = libjaylink.so
 
 pkgname = mounriver-studio-toolchain-riscv-gcc-bin

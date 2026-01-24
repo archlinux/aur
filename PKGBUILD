@@ -1,8 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
+# Maintainer: yjun <jerrysteve1101 at gmail dot com>
 
 pkgbase=mounriver-studio-toolchain-bin
 pkgname=($pkgbase mounriver-studio-toolchain-openocd-bin mounriver-studio-toolchain-riscv-gcc-bin mounriver-studio-toolchain-riscv-gcc12-bin)
-pkgver=210
+pkgver=230
 pkgrel=1
 arch=('x86_64')
 url='http://www.mounriver.com/'
@@ -11,16 +12,27 @@ provides=('MRS-Toolchain')
 makedepends=('tar')
 optdepends=('ch34x-dkms-git: CH341SER driver with fixed bug'
     'i2c-ch341-dkms: CH341 USB-I2C adapter driver'
-    'spi-ch341-usb-dkms: SPI/GPIO driver for CH341'
+    'spi-ch341-usb-dkms-git: SPI/GPIO driver for CH341'
     'ch341eepromtool: An i2c serial EEPROM programming tool for the WCH CH341A'
     'ch341prog-git: A simple command line tool (programmer) interfacing with ch341a'
     'ch341eeprom-git: A libusb based programming tool for 24xx I²C EEPROMs using the WCH CH341A'
     'ch343ser-dkms: USB serial driver for ch342/ch343/ch344/ch347/ch347f/ch9101/ch9102/ch9103/ch9104, etc (dkms).'
     'wchisp: WCH ISP Tool in Rust')
-source=("${pkgbase}-${pkgver}.tar.xz::http://file-oss.mounriver.com/tools/MRS_Toolchain_Linux_x64_V${pkgver}.tar.xz")
-sha256sums=('5431c040cb67cf619fd18d003ed9497a1995f59329b7f51d985dcc8013eff236')
+
+_pkg_file_name="MRS_Toolchain_Linux_x64_V${pkgver}.tar.xz"
+source=("local://${_pkg_file_name}")
+sha256sums=('6232a52866e9ed425ced6838f99b46126f821d9a896c766579b790d8e1eede54')
 options=('!strip')
-noextract=(${pkgbase}-${pkgver}.tar.xz)
+noextract=("${_pkg_file_name}")
+
+_download_page=https://www.mounriver.com/download
+if [ ! -f "${_pkg_file_name}" ]; then
+	echo ""
+	echo "Package not found!"
+	echo "Download from: ${_download_page}"
+	echo "Put a downloaded package ${_pkg_file_name} into the build directory (${PWD}) before build."
+	echo ""
+fi
 
 _install() {
     find ${@:2} -type f -exec install -Dm$1 {} ${pkgdir}/opt/wch/${pkgname%-bin}/{} \;
@@ -28,7 +40,7 @@ _install() {
 
 prepare() {
     mkdir -pv ${srcdir}/${pkgbase}-${pkgver}
-    tar -xf "${srcdir}/${pkgbase}-${pkgver}.tar.xz" -C "${srcdir}/${pkgbase}-${pkgver}"
+    tar -xf "${srcdir}/${_pkg_file_name}" -C "${srcdir}/${pkgbase}-${pkgver}"
     #     --strip-components=1
 }
 
@@ -44,7 +56,6 @@ package_mounriver-studio-toolchain-openocd-bin() {
         'libusb'
         'hidapi'
         'libusb-compat'
-        'libudev.so'
         'libjaylink.so')
 
     pkgdesc="MRS Toolchain OpenOCD supports erasure, programming, verification and debugging of the chip."
@@ -73,7 +84,7 @@ package_mounriver-studio-toolchain-riscv-gcc-bin() {
         'glibc'
         'python')
     install -dm0755 "${pkgdir}/opt/wch/${pkgname%-bin}"
-    cd "${srcdir}/${pkgbase}-${pkgver}/RISC-V Embedded GCC/"
+    cd "${srcdir}/${pkgbase}-${pkgver}/Toolchain/RISC-V Embedded GCC/"
     cp -a * "${pkgdir}/opt/wch/${pkgname%-bin}"
 
     install -Dm0644 /dev/stdin "${pkgdir}/etc/profile.d/${pkgname%-bin}.sh" <<EOF
@@ -90,7 +101,7 @@ package_mounriver-studio-toolchain-riscv-gcc12-bin() {
         'glibc'
         'python')
     install -dm0755 "${pkgdir}/opt/wch/${pkgname%-bin}"
-    cd "${srcdir}/${pkgbase}-${pkgver}/RISC-V Embedded GCC12/"
+    cd "${srcdir}/${pkgbase}-${pkgver}/Toolchain/RISC-V Embedded GCC12/"
     cp -a * "${pkgdir}/opt/wch/${pkgname%-bin}"
 
     install -Dm0644 /dev/stdin "${pkgdir}/etc/profile.d/${pkgname%-bin}.sh" <<EOF
