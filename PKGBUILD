@@ -42,5 +42,5 @@ build() {
 
 package() {
     cd "$srcdir/${pkgname%-git}" || return
-    DEST_DIR=$pkgdir PREFIX=/usr ./scripts/install
+    DESTDIR=$pkgdir PREFIX=/usr ./scripts/install
 }
