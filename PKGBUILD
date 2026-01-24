@@ -6,8 +6,8 @@ pkgname=${_pkgname}-bin
 pkgdesc="A flexible minesweeping experience in your terminal emulator"
 
 pkgver=0.2.7
-pkgrel=1
-_pkgvername=v${pkgver}
+pkgrel=2
+_pkgvername=v${pkgver}a
 
 arch=('x86_64' 'aarch64')
 _barch=('amd64' 'arm64')
