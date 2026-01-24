@@ -1,8 +1,13 @@
 # Maintainer:
 
 pkgbase="zenmap-git"
-pkgver=7.98.r8.g751d5fd
-pkgrel=2
+pkgname=(
+  'nmap-git'
+  'ndiff-git'
+  'zenmap-git'
+)
+pkgver=7.98.r50.gf5c06c9
+pkgrel=1
 url="https://github.com/nmap/nmap"
 license=('LicenseRef-Nmap-Public-Source-License-Version-0.95')
 arch=('x86_64')
@@ -50,25 +55,22 @@ pkgver() {
 }
 
 prepare() {
-  local _devendor i src
-  _devendor=(
-    liblua
-    libpcap
-    libpcre
-    libssh2
-    libz
-    macosx
-  )
+  cd "$_pkgsrc"
 
-  for i in ${_devendor[@]}; do
-    rm -r "$_pkgsrc/$i"
-  done
+  # devendor
+  rm -r liblua libpcap libpcre libssh2 libz macosx mswin32
 
   # use pkexec for root
   sed -E \
     -e 's@^(\s*)(if which gksu.*)$@\1if which pkexec >/dev/null 2>\&1; then\n\1  SU_TO_ROOT_X=pkexec\n\1el\2@' \
     -e '/gksu\)/i \      pkexec) pkexec "\$COMMAND";;' \
-    -i "$_pkgsrc/zenmap/install_scripts/unix/su-to-zenmap.sh"
+    -i "zenmap/install_scripts/unix/su-to-zenmap.sh"
+
+  # fix ndiff test for python 3.14
+  sed -e 's/^import imp$/import ndiff/' \
+    -e '/^ndiff = imp.load_source/d' \
+    -e '/^unittest.main/d' \
+    -i "ndiff/ndifftest.py"
 }
 
 build() {
@@ -101,9 +103,15 @@ build() {
 check() {
   cd "$_pkgsrc"
   make check
+
+  cd zenmap
+  python -m unittest discover -p '*.py'
+
+  cd ../ndiff
+  python -m unittest discover -p '*.py'
 }
 
-_package_nmap() {
+package_nmap-git() {
   pkgdesc="Utility for network discovery and security auditing"
   depends=(
     'libpcap'
@@ -114,7 +122,7 @@ _package_nmap() {
     'zlib'
   )
 
-  provides=("nmap=${pkgver%%.r*}")
+  provides=("nmap=${pkgver%%.g*}")
   conflicts=("nmap")
 
   cd "$_pkgsrc"
@@ -123,7 +131,24 @@ _package_nmap() {
   install -Dm644 LICENSE docs/3rd-party-licenses.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
-_package_zenmap() {
+package_ndiff-git() {
+  pkgdesc="Compare two Nmap XML files and display a list of their differences"
+  arch=('any')
+
+  depends=('python')
+
+  provides=("ndiff=${pkgver%%.r*}")
+  conflicts=("ndiff")
+
+  cd "$_pkgsrc"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+
+  cd "ndiff"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 docs/ndiff.1 -t "$pkgdir/usr/share/man/man1/"
+}
+
+package_zenmap-git() {
   pkgdesc="Graphical Nmap frontend and results viewer"
   arch=('any')
 
@@ -138,14 +163,12 @@ _package_zenmap() {
     'polkit: start zenmap as root'
   )
 
-  provides=("zenmap=${pkgver%%.r*}")
+  provides=("zenmap=${pkgver%%.g*}")
   conflicts=("zenmap")
 
   cd "$_pkgsrc"
   install -Dm644 "docs/zenmap.1" -t "$pkgdir/usr/share/man/man1/"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
-
-  python -m installer --destdir="$pkgdir" ndiff/dist/*.whl
 
   cd "zenmap"
   python -m installer --destdir="$pkgdir" dist/*.whl
@@ -182,15 +205,3 @@ _package_zenmap() {
 </policyconfig>
 END
 }
-
-pkgname=(
-  'nmap-git'
-  'zenmap-git'
-)
-
-for _p in "${pkgname[@]}"; do
-  eval "package_$_p() {
-    $(declare -f "_package_${_p%-git}")
-    _package_${_p%-git}
-  }"
-done

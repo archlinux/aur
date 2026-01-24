@@ -1,6 +1,6 @@
 pkgbase = zenmap-git
-	pkgver = 7.98.r8.g751d5fd
-	pkgrel = 2
+	pkgver = 7.98.r50.gf5c06c9
+	pkgrel = 1
 	url = https://github.com/nmap/nmap
 	arch = x86_64
 	license = LicenseRef-Nmap-Public-Source-License-Version-0.95
@@ -31,8 +31,15 @@ pkgname = nmap-git
 	depends = openssl
 	depends = pcre2
 	depends = zlib
-	provides = nmap=7.98
+	provides = nmap=7.98.r50
 	conflicts = nmap
+
+pkgname = ndiff-git
+	pkgdesc = Compare two Nmap XML files and display a list of their differences
+	arch = any
+	depends = python
+	provides = ndiff=7.98
+	conflicts = ndiff
 
 pkgname = zenmap-git
 	pkgdesc = Graphical Nmap frontend and results viewer
@@ -43,5 +50,5 @@ pkgname = zenmap-git
 	depends = python-cairo
 	depends = python-gobject
 	optdepends = polkit: start zenmap as root
-	provides = zenmap=7.98
+	provides = zenmap=7.98.r50
 	conflicts = zenmap
