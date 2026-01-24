@@ -14,18 +14,17 @@ package() {
     mkdir -p "$pkgdir/opt/$pkgname"
     cp -r "$srcdir/ForgeFoundary-$pkgver/"* "$pkgdir/opt/$pkgname/"
 
-    # Run composer in the staging folder
     cd "$pkgdir/opt/$pkgname"
     export COMPOSER_ALLOW_SUPERUSER=1
     composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
 
-    # Install wrapper script
-    install -Dm644 "$pkgdir/opt/$pkgname/README.MD" "$pkgdir/usr/share/doc/$pkgname/README.MD"
+    # Copy documentation
+    install -Dm644 README.MD "$pkgdir/usr/share/doc/$pkgname/README.MD"
 
-    # Make the CLI wrapper
-    cat > "$pkgdir/usr/bin/ForgeFoundary" <<EOF
+    # Create the CLI wrapper script directly
+    cat > "$pkgdir/usr/bin/ForgeFoundary" <<'EOF'
 #!/bin/sh
-php /opt/$pkgname/ForgeFoundary "\$@"
+php /opt/forgefoundary/ForgeFoundary "$@"
 EOF
     chmod +x "$pkgdir/usr/bin/ForgeFoundary"
 }
