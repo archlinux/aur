@@ -2,7 +2,7 @@
 pkgname=skylight-wallet-bin
 _pkgname=skylight-wallet
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A light Monero wallet."
 arch=('x86_64')
 url="https://github.com/magicgrants/skylight-wallet"
