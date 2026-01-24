@@ -1,9 +1,9 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=git-guitar-git
 _pkgname=guitar
-pkgver=0.1.44.r0.g19df65a
+pkgver=0.1.45.r7.g676c3d9
 pkgrel=1
-pkgdesc='A terminal based git client with fast topological & chronological graph rendering - Built form the main bransh'
+pkgdesc='A terminal based git client with fast topological & chronological graph rendering - Built form the main branch'
 arch=(x86_64 aarch64)
 url='https://github.com/asinglebit/guitar'
 license=('GPL-3.0')
@@ -29,6 +29,7 @@ build() {
     cd "$_pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export GUITAR_BUILD_OVERWRITE_VERSION="$pkgver"
     cargo build --frozen --release --all-features
 }
 
