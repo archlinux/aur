@@ -4,11 +4,10 @@ pkgname=heidisql
 epoch=1
 pkgver=12.14.1.1
 pkgrel=5
-pkgdesc="HeidiSQL Shared files: wrapper script, locale files, ini files, documentation (install a provider of your choice for heidisql-client to use it)"
+pkgdesc="HeidiSQL Shared files: wrapper script, locale/ini files, documentation (install a provider of your choice for heidisql-client to use it)"
 arch=(x86_64)
 url="http://www.heidisql.com/"
-license=('GPL-2.0')
-conflicts=(heidisql-common)
+license=('GPL-2.0-or-later')
 optdepends=('heidisql-qt6: Qt6 variant'
             'heidisql-qt5: Qt5 variant'
             'heidisql-gtk2: GTK2 variant')
@@ -25,8 +24,7 @@ sha256sums=('0e240b55be181bf4b8321a45b47242fe62b211ba9ca77d433d5bb700a201fb01'
 prepare() {
   cd "${srcdir}/HeidiSQL-${pkgver}"
   
-  # Fetch compiled translations directly from the daily Transifex snapshots
-  # served by heidisql.com instead of extracting them from the .deb package.
+  # Fetch compiled translations from the daily Transifex snapshots served by heidisql.com
   echo "Downloading translation files from heidisql.com"
   local locale_dir="${srcdir}/HeidiSQL-${pkgver}/extra/locale"
   mkdir -p "${locale_dir}"
@@ -83,6 +81,6 @@ package() {
   install -Dm644 LICENSE "${pkgdir}/usr/share/doc/heidisql/"
   install -Dm644 package-skeleton/usr/share/doc/heidisql/copyright "${pkgdir}/usr/share/doc/heidisql/"
 
-  # Install wrapper script that selects the appropriate variant (gtk2/qt5/qt6)
+  # Install wrapper script that selects the appropriate variant
   install -Dm755 "${srcdir}/heidisql" "${pkgdir}/usr/bin/heidisql"
 }
