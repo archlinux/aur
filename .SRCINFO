@@ -1,6 +1,6 @@
 pkgbase = dxvk-nvapi-mingw
 	pkgdesc = Alternative NVAPI implementation on top of DXVK
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/jp7677/dxvk-nvapi
 	arch = x86_64
@@ -11,15 +11,15 @@ pkgbase = dxvk-nvapi-mingw
 	makedepends = git
 	makedepends = mingw-w64-gcc
 	provides = dxvk-nvapi
-	provides = dxvk-nvapi=0.9.0
+	provides = dxvk-nvapi=0.9.1
 	conflicts = dxvk-nvapi
 	options = !lto
 	options = !staticlibs
-	source = git+https://github.com/jp7677/dxvk-nvapi.git#tag=v0.9.0
+	source = git+https://github.com/jp7677/dxvk-nvapi.git#tag=v0.9.1
 	source = dxvk-nvapi-extraopts.patch
 	source = setup_dxvk_nvapi.sh
 	source = setup_dxvk_nvapi
-	sha256sums = 47a45365a288eedbe27ce4033f6fdc07e8386225dc7670f939a2b919f82962bb
+	sha256sums = 17c6f6446930a805299335dc89b6c787ac81ee946c43a67f76acb89eec2942be
 	sha256sums = dff5ecd1a35a94a4dc1fa5fd08c10b5c88703797520d6b315207124ff1adeef8
 	sha256sums = b0f15bd2fa0f8891e230a7a6432aaa9c0fc4b15899f02737ccd1d5771223e27f
 	sha256sums = 1f4934c5bfcf208e288a0eda2f385f82acc9e78a4b0ac2a77b5af14c64c8e21e
