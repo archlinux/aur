@@ -21,8 +21,11 @@ package() {
     mkdir -p "$pkgdir/opt/$pkgname"
     cd "$srcdir/ForgeFoundary-$pkgver"
     cp -r . "$pkgdir/opt/$pkgname/"
+
+    cd "$pkgdir/opt/$pkgname"
+    composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
+
     chmod +x "$pkgdir/opt/$pkgname/ForgeFoundary"
     install -Dm755 "$pkgdir/opt/$pkgname/ForgeFoundary" "$pkgdir/usr/bin/ForgeFoundary"
     install -Dm644 "README.MD" "$pkgdir/usr/share/doc/$pkgname/README.MD"
-    composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
 }
