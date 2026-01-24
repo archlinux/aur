@@ -3,7 +3,7 @@
 # Maintainer: Jonathan Neidel <aur at jneidel dot com>
 
 pkgname='obsidian-cli-bin'
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Interact with Obsidian in the terminal. Open, search, create, update and move notes!'
 url='https://github.com/Yakitrak/obsidian-cli'
@@ -13,10 +13,10 @@ provides=('obsidian-cli')
 conflicts=('obsidian-cli')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Yakitrak/obsidian-cli/releases/download/v${pkgver}/obsidian-cli_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('821d27d2164678de6357dcb89d9ab7a09ae39e2027265480f0b7135f86eebe77')
+sha256sums_aarch64=('a62d179701531266e174e3aa3ced4a7a6ca906a8a46a5d9c623dd6c34bb477af')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Yakitrak/obsidian-cli/releases/download/v${pkgver}/obsidian-cli_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('b1f34b513dffd200add242a698448f66ca6b778f22e580df0a0c5ad96794523f')
+sha256sums_x86_64=('0b96d76caa8cf1741db83ed8a9157700e67ad264702437981e6cefffd43d888d')
 
 package() {
   install -Dm755 "./obsidian-cli" "${pkgdir}/usr/bin/obsidian-cli"
