@@ -13,18 +13,8 @@ sha256sums=('90d61569a6e123682986d0a964350d4e202e7270bee80f7c3157fef222a6fabf')
 package() {
     mkdir -p "$pkgdir/opt/$pkgname"
     cp -r "$srcdir/ForgeFoundary-$pkgver/"* "$pkgdir/opt/$pkgname/"
-
     cd "$pkgdir/opt/$pkgname"
     export COMPOSER_ALLOW_SUPERUSER=1
     composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
-
-    # Copy documentation
     install -Dm644 README.MD "$pkgdir/usr/share/doc/$pkgname/README.MD"
-
-    # Create the CLI wrapper script directly
-    cat > "$pkgdir/usr/bin/ForgeFoundary" <<'EOF'
-#!/bin/sh
-php /opt/forgefoundary/ForgeFoundary "$@"
-EOF
-    chmod +x "$pkgdir/usr/bin/ForgeFoundary"
 }
