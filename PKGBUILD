@@ -39,7 +39,6 @@ depends=(
     "python-audioop-lts"
     "python-av"
     "python-cloup"
-    "python-backports.cached_property"
     "python-glcontext"
     "python-isosurfaces"
     "python-manimpango"
