@@ -85,7 +85,7 @@ copy)
 
   if [[ -n "$NAME" ]]; then
     # Extract secret from JSON
-    SECRET=$(grep -A 1 "\"name\": \"$NAME\"" "$VAULT_FILE" | grep '"secret":' | cut -d '"' -f 4 | head -n 1)
+    SECRET=$(grep "\"name\": \"$NAME\"" "$VAULT_FILE" | sed -e 's/.*"secret": "\([^"]*\)".*/\1/')
 
     if [[ -n "$SECRET" ]]; then
       oathtool --totp -b "$SECRET" | wl-copy
