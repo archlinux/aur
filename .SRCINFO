@@ -11,7 +11,7 @@ pkgbase = msigd-gui
 	makedepends = nodejs
 	depends = webkit2gtk-4.1
 	depends = gtk3
-	depends = msigd
+	optdepends = msigd-git: CLI backend for monitor control
 	source = msigd-gui-1.1.0.tar.gz::https://github.com/aydiler/msigd-gui/archive/v1.1.0.tar.gz
 	sha256sums = SKIP
 
