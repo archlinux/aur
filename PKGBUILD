@@ -6,8 +6,8 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-unixodbc
-pkgver=2.3.12
-pkgrel=3
+pkgver=2.3.14
+pkgrel=1
 arch=('any')
 pkgdesc="ODBC is an open specification for providing application developers with a predictable API with which to access Data Sources (Android, ${_android_arch})"
 license=('GPL2' 'LGPL2.1')
@@ -17,7 +17,7 @@ depends=("android-${_android_arch}-readline"
          "android-${_android_arch}-libltdl")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("ftp://ftp.unixodbc.org/pub/unixODBC/unixODBC-${pkgver}.tar.gz")
-md5sums=('d62167d85bcb459c200c0e4b5a63ee48')
+md5sums=('316cede4896eb768fe4572d71dc04537')
 
 build() {
     cd "${srcdir}/unixODBC-${pkgver}"
@@ -43,4 +43,6 @@ package() {
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
