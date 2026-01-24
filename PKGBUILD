@@ -4,11 +4,11 @@ _base=profiling
 pkgname=precice-${_base}
 pkgdesc="A tool for post-processing and analyzing preCICE profiling data"
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/precice/${_base}"
 license=(MIT)
-depends=(python-typing_extensions python-orjson python-polars python-matplotlib)
+depends=(python-typing_extensions python-orjson python-polars python-matplotlib perfetto)
 makedepends=(python-build python-installer python-setuptools-git-versioning git)
 checkdepends=(python-pytest)
 source=(git+${url}.git#tag=v${pkgver})

@@ -1,7 +1,7 @@
 pkgbase = precice-profiling
 	pkgdesc = A tool for post-processing and analyzing preCICE profiling data
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/precice/profiling
 	arch = any
 	license = MIT
@@ -14,6 +14,7 @@ pkgbase = precice-profiling
 	depends = python-orjson
 	depends = python-polars
 	depends = python-matplotlib
+	depends = perfetto
 	source = git+https://github.com/precice/profiling.git#tag=v2.1.0
 	sha512sums = 2485f62fa9f2fa9c1c4c5c06b2df0fdd79f713f71ab9cdab7a7b09b96967da01cb5d3f2de92126fe81ff3e0c65bb8e5073266187161c0cbb2ba42843899442b9
 
