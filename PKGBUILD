@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname="limine-snapper-sync"
-pkgver=1.20.0
+pkgver=1.21.0
 pkgrel=1
 pkgdesc="The tool syncs Limine snapshot entries with Snapper snapshots."
 arch=("any")
@@ -15,12 +15,11 @@ depends=(
 	'limine'
 	'snapper'
 	'btrfs-progs'
-	'inotify-tools'
 	'libnotify')
 optdepends=(
-	'limine-dracut-support: It automates kernel installation/removal and Limine boot entry management.'
-	'limine-mkinitcpio-hook: It automates kernel installation/removal and Limine boot entry management.'
-	'snap-pac: triggers Snapper to create snapshots during system updates.'
+	'limine-dracut-support: Automates kernel installation/removal and Limine boot entry management.'
+	'limine-mkinitcpio-hook: Automates kernel installation/removal and Limine boot entry management.'
+	'inotify-tools: Monitors when snapshots are created or deleted.'
 	'rsync: Alternative method for restoring snapshots.'
 	'b3sum: Fast Blake3 hash function to prevent duplication.'
 	'xxhash: Fast hashing utility for deduplication with shorter hashes.'
@@ -28,7 +27,7 @@ optdepends=(
 makedepends=('git' 'jdk21-openjdk' 'maven')
 backup=(etc/limine-snapper-sync.conf)
 conflicts=('limine-snapper-sync-git')
-sha256sums=('462c667bf71538158c3fac79a87ffae6477f8ac00fe89e32cc6e5e9f7b96b621')
+sha256sums=('b114a368405121be236c1f5c97c6fd6f765a637611256586c9996415bcf41cad')
 
 prepare() {
 	unset JAVA_OPTS JDK_JAVA_OPTIONS JAVA_TOOL_OPTIONS
