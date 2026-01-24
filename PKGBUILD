@@ -1,6 +1,6 @@
 # Maintainer: Pedro <pedroantoniobonaldo@gmail.com>
 pkgname=workopilot-bin
-pkgver=0.6.1
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Your AI-powered work copilot for development - task management with AI assistance"
 arch=('x86_64')
@@ -27,7 +27,7 @@ conflicts=('workopilot')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/workopilot-linux-x86_64.tar.gz")
-sha256sums=('36bdde12054e74b2721bb6ea89c7785b695497a5710863a2d2a04775f71c30ea')
+sha256sums=('ad7bb58463faee77d6b5af91961fa6ea967f37ec5fa2fbcb1d974000dadbcf78')
 
 package() {
     cd "$srcdir/workopilot-linux-x86_64"
