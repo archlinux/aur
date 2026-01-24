@@ -1,9 +1,19 @@
 -------------------------------------------------------
  Changelog    : dns_tools
- Tags         : 4.9.0 ➙ 5.1.1
-              : 2025-06-22 ➙ 2026-01-04
+ Tags         : 4.10.0 ➙ 5.2.0
+              : 2025-06-26 ➙ 2026-01-24
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-01-24   : 5.2.0
+              - Version 5.2.0
+                Bug fix:
+                  dns-tool --serial-bump --sign -> works file.
+                  dns-tool --serial-bump        -> did not bump the serial.
+                pyconcurrent is new dependency (was optional):
+                  Reduce maintenance and no loner having duplicate code copied from pyconcurrent module.
+ 2026-01-04   ⋯
+              - update Docs/Changelog
 
  2026-01-04   : 5.1.1
               - fix type
@@ -27,9 +37,4 @@
               - Use run_prog from pyconcurrent if available otherwise use local copy.
                 Sync local copy of run_prog from pyconcurrent
  2025-06-22   ⋯
-              - update Docs/Changelog Docs/${my_name}.pdf
-
- 2025-06-22   : 4.9.0
-              - run_prog: Sync local copy with latest from pycocurrent
- 2025-06-20   ⋯
               - update Docs/Changelog Docs/${my_name}.pdf
