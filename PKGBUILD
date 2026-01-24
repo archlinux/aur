@@ -1,6 +1,6 @@
 # Maintainer: vadik likholetov <vadikas@gmail.com>
 pkgname=litra-autotoggle
-pkgver=1.0.0.0.g92d1e45
+pkgver=1.2.0.0.g83f9222
 pkgrel=1
 pkgdesc="Automatically turn your Logitech Litra device on when your webcam turns on, and off when your webcam turns off"
 arch=('x86_64' 'aarch64')
@@ -8,10 +8,10 @@ url="https://github.com/timrogers/litra-autotoggle"
 license=('MIT')
 depends=('hidapi')
 makedepends=('cargo' 'rust' 'libusb' 'hidapi' 'pkg-config' 'git')
-_commit=92d1e45300ec46bdc9455dee1cfea3adf7ef12ab
+_commit=83f9222bad5d6b207e51baf88e47e59e603e2a9f
 source=("$pkgname::git+https://github.com/timrogers/litra-autotoggle.git#commit=$_commit"
         "litra-autotoggle.service::https://raw.githubusercontent.com/timrogers/litra-autotoggle/$_commit/litra-autotoggle.service")
-sha256sums=('6545c28e6c76baf35edf1b177584940d578ae4760a4f6cd974d214c10ab6d291'
+sha256sums=('943d1afbbb0958be50a838e0711f5c5c4e7dccede0fc78c53ec7ebb25ab6eae5'
             '4a0ed4c8ccbd3449ba47a63c26da7c4e2964872aa674fa162c32f4127037a299')
 
 pkgver() {
