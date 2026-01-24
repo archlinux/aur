@@ -12,7 +12,7 @@ provides=('go-idle')
 conflicts=('go-idle')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://go-idle.com/releases/v${pkgver}/go-idle-linux-amd64.tar.gz")
-sha256sums_x86_64=('3eea6c207663a245adfccf53efe5cb7eaf36dddf592a00174c99836676bc54b5')
+sha256sums_x86_64=('efad5778b214771209b4843ea8622d01269b4fe33eec46b2b6e7907e0c5d0b40')
 
 package() {
   install -Dm755 "./go-idle" "${pkgdir}/usr/bin/go-idle"
