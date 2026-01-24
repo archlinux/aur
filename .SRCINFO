@@ -6,7 +6,7 @@ pkgbase = xivlauncher-rb
 	url = https://github.com/rankynbass/XIVLauncher.Core/tree/RB-patched
 	arch = x86_64
 	license = GPL
-	makedepends = dotnet-sdk>=8
+	makedepends = dotnet-sdk>=9
 	makedepends = git
 	depends = aria2
 	depends = sdl3

@@ -27,7 +27,7 @@ depends=(
     'libpcap'
     'desktop-file-utils'
 )
-makedepends=('dotnet-sdk>=8' 'git')
+makedepends=('dotnet-sdk>=9' 'git')
 optdepends=(
     'steam'
     'lib32-sdl2'
