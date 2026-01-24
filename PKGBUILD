@@ -1,7 +1,7 @@
 # Maintainer:
 
 ## options
-#: ${_dotnet_type=-bin}
+: ${_dotnet_type=-9.0}
 : ${_install_path:=usr/lib}
 
 : ${_commit=e2143d43bcb6762340d8a01f20e7b5fdf104f02f}
@@ -36,7 +36,7 @@ source=("$_pkgname-$pkgver-${_commit::7}.$_pkgext"::"$url/-/archive/$_commit/$_p
 sha256sums=('SKIP')
 
 build() (
-  export HOME="$SRCDEST/nuget-home"
+  export DOTNET_CLI_HOME="$SRCDEST/nuget-home"
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
   local _runtime="linux-x64"
