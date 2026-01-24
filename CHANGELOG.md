@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## 0.9.1 (24. Jan, 2026)
+
+- **Added:** Introduced an optional `swagger-ui` feature flag (enabled by default). Users can now disable it (`--no-default-features`) to exclude web assets and reduce binary size for lightweight deployments.
+- **Changed:** Refactored the internal API routing structure. The root path `/` now redirects to `/swagger-ui` (when enabled), while the system information endpoint has been moved to `/system`.
+- **Changed:** Optimized the Docker CI pipeline to use pre-built artifacts from the Linux build job, reducing multi-architecture build times from ~60m to ~1m.
+- **Changed:** OpenAPI documentation now automatically synchronizes its version with the `Cargo.toml` package version.
+- **Fixed:** Resolved `unused import` warnings and parsing errors in the API router when compiling with minimal feature sets.
+- **Fixed:** Corrected integration test failures related to environment variable leakage and API status code changes (`201 Created`).
+
 ## 0.9.0 (23. Jan, 2026)
 
 - **Breaking:** Re-architected the internal API structure. Legacy endpoints have been migrated to domain-specific handlers (`system`, `ports`, `config`, `plugins`), changing the internal routing layout.
