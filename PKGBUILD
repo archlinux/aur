@@ -3,7 +3,7 @@
 
 pkgname=libarchive-static
 _pkgname=libarchive
-pkgver=3.8.3
+pkgver=3.8.5
 pkgrel=2
 _attrver=2.5.2
 _aclver=2.3.2
@@ -23,7 +23,7 @@ validpgpkeys=('DB2C7CF1B4C265FAEF56E3FC5848A18B8F14184B'  # Martin Matuska <mart
 source=("git+https://github.com/${_pkgname}/${_pkgname}.git?signed#tag=v${pkgver}"
        "libarchive-3.8.3-all-static.patch")
 
-sha512sums=('4e6d6c58a7012db2c950e617aa9df100de1ee3ed3b13b6ea2ebeda188af49150d1c0cde2cf64125b656b358143e12011af75a1b7dc02c1c0b00cbbad6d444432'
+sha512sums=('9173d0710bbc1b62e41e1823ae674371df644ada5c009e34b722d14f8f9a40f6d5cbb5db1ae81c79a4e212bcd07f08d52edd0def415c6d625039313900854690'
             '8478795f3d980073128c31ddd388a113c55d7d2ecc60ccb0488edf5b34d5156f5e773d62a61083dedd5333ef71613d5af619e1dcf2d9acea372c76746b16f879'
             'f587ea544effb7cfed63b3027bf14baba2c2dbe3a9b6c0c45fc559f7e8cb477b3e9a4a826eae30f929409468c50d11f3e7dc6d2500f41e1af8662a7e96a30ef3'
             'SKIP'
