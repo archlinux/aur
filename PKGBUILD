@@ -1,12 +1,12 @@
 # Maintainer: Benoît Allard <benoit.allard@gmx.de>
 pkgname=python-grpclib
-pkgver=0.4.7
+pkgver=0.4.9
 pkgrel=1
 pkgdesc="Pure-Python gRPC implementation for asyncio"
 arch=('any')
 url="http://grpclib.readthedocs.io/"
 license=('BSD')
-makedepends=("python-pytest" "python-pytest-asyncio" "python-async-timeout" "python-faker")
+makedepends=("python-build" "python-installer" "python-pytest" "python-pytest-asyncio" "python-async-timeout" "python-faker")
 depends=("python" "python-h2" "python-multidict" "python-certifi"
          "python-importlib-metadata" "python-setuptools" "python-googleapis-common-protos" "python-certifi")
 optdepends=(
@@ -14,13 +14,12 @@ optdepends=(
 )
 _name=${pkgname#python-}
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vmagamedov/$_name/archive/v$pkgver.tar.gz")
-sha256sums=('ae9de92b72c2dfed6a22aeb57a3f3b6701331d5e451c727253e4453c95862553')
+sha256sums=('c2397d3af8a2016bc2c743f376c6058b717ed75ba700c98a4def405143a12987')
 
 
 build() {
     cd $_name-$pkgver
-    export PYTHONSEED=1
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 check() {
@@ -30,5 +29,5 @@ check() {
 
 package() {
     cd $_name-$pkgver
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    python -m installer --destdir "$pkgdir" dist/*.whl
 }
