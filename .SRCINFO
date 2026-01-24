@@ -1,6 +1,6 @@
 pkgbase = soul-player
 	pkgdesc = Modern, privacy-first music player for local audio files
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/soulaudio/soul-player
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = soul-player
 	depends = gtk3
 	depends = webkit2gtk
 	depends = libayatana-appindicator
-	source = soul-player-0.1.8.deb::https://github.com/soulaudio/soul-player/releases/download/v0.1.8/Soul.Player_0.1.8_amd64.deb
-	sha256sums = 215b44526c6b25d9cd7442ee8dea0dc4d871e1ad90442e49052a78b69853a183
+	source = soul-player-0.1.9.deb::https://github.com/soulaudio/soul-player/releases/download/v0.1.9/Soul.Player_0.1.9_amd64.deb
+	sha256sums = 9a87be1a5fa584fa6a535dba9ed1f21c3660e59330f21dfb9195cdf65ad926eb
 
 pkgname = soul-player
