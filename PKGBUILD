@@ -4,7 +4,7 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-zix
-pkgver=0.6.2
+pkgver=0.8.0
 pkgrel=1
 arch=('any')
 pkgdesc="A lightweight C99 portability and data structure library (Android ${_android_arch})"
@@ -15,7 +15,7 @@ depends=('android-ndk')
 makedepends=('android-meson')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://download.drobilla.net/zix-${pkgver}.tar.xz"{,.sig})
-md5sums=('a21f979f98d9185f5e72ba91df4a776a'
+md5sums=('d81fd986f727f4e4108e1b00e47cfcb6'
          'SKIP')
 validpgpkeys=('907D226E7E13FA337F014A083672782A9BF368F3') # David Robillard <d@drobilla.net>
 
@@ -43,4 +43,6 @@ package() {
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_RANLIB} "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
