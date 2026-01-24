@@ -1,9 +1,9 @@
 # Maintainer: Shira Nguyen <sn3446409@gmail.com>
 
 pkgname=xenia-edge-bin
-pkgver=20260123021914.cd2f4cd
-_srcver=cd2f4cd
-pkgrel=3
+pkgver=20260124173912.717eb2c
+_srcver=717eb2c
+pkgrel=1
 pkgdesc="Fork of the Xenia emulator based on Xenia Canary, with aims for quicker iterations and improvements on Vulkan and Linux support."
 arch=('x86_64')
 url="https://github.com/has207/xenia-edge/"
@@ -11,15 +11,15 @@ license=('BSD-3-Clause')
 depends=('zlib')
 options=(!strip)
 provides=('xenia' 'xenia-edge')
-source=("xenia-edge-${_srcver}.AppImage::https://github.com/has207/xenia-edge/releases/download/${_srcver}/xenia_edge_linux.AppImage"
+source=("xenia-edge-${pkgver}.AppImage::https://github.com/has207/xenia-edge/releases/download/${_srcver}/xenia_edge_linux.AppImage"
         "https://raw.githubusercontent.com/has207/xenia-edge/${_srcver}/LICENSE")
-sha256sums=('bd167ae49fad17d3c96fd99bf19c320b67dabdcd5e8c71db2e6eabd888711a27'
+sha256sums=('1c48ee4ebd7f99140021995a5b6972c40b8f6203342b8a1090af377f49987a40'
             'SKIP')
 
 prepare() {
     cd "$srcdir"
-    chmod +x xenia-edge-${_srcver}.AppImage
-    ./xenia-edge-${_srcver}.AppImage --appimage-extract
+    chmod +x xenia-edge-${pkgver}.AppImage
+    ./xenia-edge-${pkgver}.AppImage --appimage-extract
 }
 
 build() {
@@ -43,7 +43,7 @@ package() {
     mkdir -p "${pkgdir}/opt/xenia-edge"
 
     # Install AppImage
-    install -Dm755 "${srcdir}/xenia-edge-${_srcver}.AppImage" "${pkgdir}/opt/xenia-edge/xenia-edge.AppImage"
+    install -Dm755 "${srcdir}/xenia-edge-${pkgver}.AppImage" "${pkgdir}/opt/xenia-edge/xenia-edge.AppImage"
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/xenia-edge/xenia-edge.AppImage" "${pkgdir}/usr/bin/xenia_edge"
 
