@@ -2,7 +2,7 @@
 # Maintainer: Fuad Daoud <aur@fuad-daoud.com>
 
 pkgname='go-idle-bin'
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc='Automated idle time simulator for development environments'
 url='https://go-idle.com'
@@ -12,7 +12,7 @@ provides=('go-idle')
 conflicts=('go-idle')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://go-idle.com/releases/v${pkgver}/go-idle-linux-amd64.tar.gz")
-sha256sums_x86_64=('efad5778b214771209b4843ea8622d01269b4fe33eec46b2b6e7907e0c5d0b40')
+sha256sums_x86_64=('0edd7201599fcceafda2eb71a81596d79989c525d4e4ebc85e20b47f0112e7bd')
 
 package() {
   install -Dm755 "./go-idle" "${pkgdir}/usr/bin/go-idle"
