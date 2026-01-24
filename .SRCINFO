@@ -31,7 +31,6 @@ pkgbase = manimce
 	depends = python-audioop-lts
 	depends = python-av
 	depends = python-cloup
-	depends = python-backports.cached_property
 	depends = python-glcontext
 	depends = python-isosurfaces
 	depends = python-manimpango
