@@ -1,12 +1,12 @@
 # Maintainer: AltoXorg <machinademoniko@gmail.com>
 
 _reponame=Ghostship
-_torch_commit=aaed953d180356f933bc0011d250f7de1366c42e
+_torch_commit=963a1f6830f1080a33f581c8b935c49060899214
 _lus_commit=8c55f607f2249f3ac696fc0f7277553fe3ce75a6
 _sdl_gcdb_commit=07a5c6b80262a208200573186eb5d5ac2518e89d  # This needs to be updated on every package release
 
 pkgname=ghostship
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A yet another definitive port of Super Mario 64 coming out of Harbour Masters"
 license=("MIT")
@@ -21,8 +21,8 @@ source=("${_reponame}-${pkgver}.tar.gz::https://github.com/HarbourMasters/${_rep
         "https://github.com/mdqinc/SDL_GameControllerDB/raw/${_sdl_gcdb_commit}/gamecontrollerdb.txt"
         "ghostship-fix-mtxf_copy-incorrect-values.patch"
         "ghostship.desktop")
-sha256sums=('dbccfbfc9bfb60924078b7f1035698150e5c6409822faa8dc922b4dac72a2852'
-            '9cb17f0a5babc1a1e9a79cc7debc4fb43096ace4b7a9cccd99e9fb59facbff66'
+sha256sums=('9e44f10eb9bb3c7865b7a237e8ef506852c180490690640d51b23c4fa8fa2ea1'
+            'c9a7ab62ddac02afd455c77fb46a4e74321f00ee31248ca3f567afcfed731c34'
             '0828b92327156da8683615bb2490c93f1acb141fcf6934b55140b4d801ca66f4'
             'f7309161d315a520392b5e4cf7bb409ad18b613807a9b3266a33664e4de02d3c'
             '938879042af21330e36476fb88cd383e85c1b7e19d95cb74957fd1266ef83854'
