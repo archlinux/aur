@@ -3,7 +3,7 @@
 _pkgname=libheif
 pkgname=mingw-w64-${_pkgname}
 pkgver=1.21.2
-pkgrel=1
+pkgrel=2
 pkgdesc='HEIF file format decoder and encoder (mingw-w64)'
 url='https://github.com/strukturag/libheif'
 license=('LGPL-3.0-or-later')
@@ -64,13 +64,12 @@ message(STATUS \${RAV1E_LDFLAGS})
 EOF
 	) > 'cmake/modules/FindRAV1E.cmake'
 
-  sed -i 's/${${varName}_INCLUDE_DIR}/${${varName}_INCLUDE_DIRS}/' 'libheif/plugins/CMakeLists.txt'
   sed -i 's|./${TEST_NAME}|${TEST_NAME}|g' 'tests/CMakeLists.txt'
   sed -i \
 		-e 's/__declspec(dllexport)/__attribute__((__dllexport__))/' \
 		-e 's/__declspec(dllimport)/__attribute__((__dllimport__))/' \
 		'libheif/api/libheif/heif.h'
-	sed -i '/#include <err.h>/d' 'libheif/plugins/decoder_openjpeg.cc'
+	sed -i 's/SvtAv1PredStructure::SVT_AV1_PRED_RANDOM_ACCESS/2/' 'libheif/plugins/encoder_svt.cc'
 }
 
 build() {
