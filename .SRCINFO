@@ -1,0 +1,29 @@
+pkgbase = sniptext
+	pkgdesc = Screen capture OCR tool with adaptive ensemble recognition
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/dkorbelainen/sniptext
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.8
+	depends = python-pip
+	depends = tesseract
+	depends = tesseract-data-eng
+	optdepends = tesseract-data-rus: Russian language support
+	optdepends = tesseract-data-fra: French language support
+	optdepends = tesseract-data-deu: German language support
+	optdepends = tesseract-data-spa: Spanish language support
+	optdepends = tesseract-data-jpn: Japanese language support
+	optdepends = tesseract-data-chi_sim: Chinese Simplified language support
+	optdepends = slurp: Wayland screen selection
+	optdepends = grim: Wayland screenshot tool
+	optdepends = wl-clipboard: Wayland clipboard support
+	optdepends = maim: X11 screenshot tool
+	optdepends = xclip: X11 clipboard support
+	source = sniptext-0.1.0.tar.gz::https://github.com/dkorbelainen/sniptext/archive/v0.1.0.tar.gz
+	sha256sums = f1fab596e2c95f10ada2bf79733316f1001b2fa3876b432c25a133f777d2d427
+
+pkgname = sniptext
