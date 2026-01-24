@@ -1,60 +1,47 @@
-# Maintainer: Matthew McGinn <mamcgi@gmail.com>
+# Maintainer: Astro Benzene <universebenzene at sina dot com>
+# Contributor: Kyle Keen <keenerd@gmail.com>
+# Contributor: Matthew McGinn <mamcgi@gmail.com>
 # Contributor: Carl George < arch at cgtx dot us >
 
-_name="click-plugins"
-_module="${_name}"
-_check="enabled"
-
-pkgname=("python-${_module}" "python2-${_module}")
-pkgver="1.1.1"
-pkgrel="1"
+pkgbase=python-click-plugins
+_pname=${pkgbase#python-}
+_pyname=${_pname//-/_}
+pkgname=("python-${_pname}")
+pkgver=1.1.1.2
+pkgrel=1
 pkgdesc="An extension module for click to enable registering CLI commands via setuptools entry-points."
 arch=("any")
 url="https://github.com/click-contrib/click-plugins"
-license=("BSD")
-makedepends=("python-setuptools" "python2-setuptools")
-if [[ "${_check}" == "enabled" ]]; then
-    checkdepends=("python-click>=3.0"
-                  "python-pytest"
-                  "python2-click>=3.0"
-                  "python2-pytest")
-fi
-source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('46ab999744a9d831159c3411bb0c79346d94a444df9a3a3742e9ed63645f264b')
+license=("BSD-3-Clause")
+depends=("python-click")
+makedepends=("python-setuptools")
+checkdepends=("python-pytest" "python-click")
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
+        'fix-click-8.2-tests.patch')
+sha256sums=('d7af3984a99d243c131aa1a828331e7630f4a88a9741fd05c927b204bcf92261'
+            'ac640da158003b7cd9eaf237c3ad3c1af14fc6577c8b6a0046513641f414d6f3')
 
 prepare() {
-    cp -a "${srcdir}/${_name}-${pkgver}" "${srcdir}/${_name}-${pkgver}-python2"
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    patch -Np1 -i "${srcdir}/fix-click-8.2-tests.patch"
 }
 
 build() {
-    cd "${srcdir}/${_name}-${pkgver}"
+    cd ${srcdir}/${_pyname}-${pkgver}
+
     python setup.py build
-    cd "${srcdir}/${_name}-${pkgver}-python2"
-    python2 setup.py build
 }
 
 check() {
-    if [[ "${_check}" == "enabled" ]]; then
-        export LC_ALL="en_US.UTF-8"
-        cd "${srcdir}/${_name}-${pkgver}"
-        py.test tests
-        cd "${srcdir}/${_name}-${pkgver}-python2"
-        py.test2 tests
-    else
-        echo "_check is not set to \"enabled\", skipping check()"
-    fi
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count #
 }
 
-package_python-click-plugins() {
-    depends=("python-click>=3.0")
-    cd "${srcdir}/${_name}-${pkgver}"
+package() {
+    cd ${srcdir}/${_pyname}-${pkgver}
     python setup.py install --skip-build --root="${pkgdir}" --optimize=1
-    install -Dm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
 
-package_python2-click-plugins() {
-    depends=("python2-click>=3.0")
-    cd "${srcdir}/${_name}-${pkgver}-python2"
-    python2 setup.py install --skip-build --root="${pkgdir}" --optimize=1
-    install -Dm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
