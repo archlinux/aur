@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: aydiler <aydiler@users.noreply.github.com>
 pkgname=msigd-gui-bin
 pkgver=1.0.0
 pkgrel=1
@@ -10,7 +10,7 @@ depends=('webkit2gtk-4.1' 'gtk3' 'msigd')
 provides=('msigd-gui')
 conflicts=('msigd-gui')
 source=("msigd-gui-$pkgver::https://github.com/aydiler/msigd-gui/releases/download/v$pkgver/msigd-gui"
-        "msigd-gui.desktop::https://raw.githubusercontent.com/aydiler/msigd-gui/v$pkgver/msigd-gui.desktop"
+        "msigd-gui.desktop::https://raw.githubusercontent.com/aydiler/msigd-gui/v$pkgver/io.github.aydiler.msigd-gui.desktop"
         "icon-32.png::https://raw.githubusercontent.com/aydiler/msigd-gui/v$pkgver/src-tauri/icons/32x32.png"
         "icon-128.png::https://raw.githubusercontent.com/aydiler/msigd-gui/v$pkgver/src-tauri/icons/128x128.png")
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
