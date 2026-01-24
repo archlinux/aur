@@ -2,13 +2,13 @@
 
 pkgname=opentubex-git
 _pkgname=OpenTubeX
-pkgver=r9801.9fb4936c
+pkgver=r9828.0c81d987
 pkgrel=2
 pkgdesc='A fork of the open source desktop YouTube player FreeTube with additional features'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/D3SOX/OpenTubeX"
 license=('AGPL-3.0-or-later')
-depends=('electron39')
+depends=('electron40-bin')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 makedepends=('git' 'npm' 'yarn')
@@ -25,7 +25,7 @@ pkgver() {
 }
 
 prepare() {
-  sed -i "5i electronDist: '/usr/lib/electron39'," "$srcdir/$_pkgname/_scripts/ebuilder.config.mjs"
+  sed -i "5i electronDist: '/usr/lib/electron40'," "$srcdir/$_pkgname/_scripts/ebuilder.config.mjs"
   sed -i "s/targets = Platform.LINUX.*/targets = Platform.LINUX.createTarget(['dir'], arch)/" "$srcdir/$_pkgname/_scripts/build.mjs"
 }
 

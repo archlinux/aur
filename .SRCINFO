@@ -1,6 +1,6 @@
 pkgbase = opentubex-git
 	pkgdesc = A fork of the open source desktop YouTube player FreeTube with additional features
-	pkgver = r9801.9fb4936c
+	pkgver = r9828.0c81d987
 	pkgrel = 2
 	url = https://github.com/D3SOX/OpenTubeX
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = opentubex-git
 	makedepends = git
 	makedepends = npm
 	makedepends = yarn
-	depends = electron39
+	depends = electron40-bin
 	provides = opentubex
 	conflicts = opentubex
 	source = git+https://github.com/D3SOX/OpenTubeX
