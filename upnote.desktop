@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=UpNote
+Comment=A modern note-taking app with Markdown support
+Exec=/opt/upnote/upnote.AppImage %U
+Icon=upnote
+Type=Application
+Categories=Office;TextEditor;Utility;
+Keywords=notes;markdown;writing;
+StartupWMClass=UpNote
