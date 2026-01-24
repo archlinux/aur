@@ -1,6 +1,6 @@
 # Maintainer: Gabriel Oliveira da Silva <glcbofs@proton.me>
 pkgname=blindpaste
-pkgver=1.2.1
+pkgver=1.5.5
 pkgrel=1
 pkgdesc="a TUI blackboard for quick note taking"
 arch=("x86_64")
@@ -10,7 +10,7 @@ optdepends=("bash-completion: for command line completions when pressing the <ta
 install="advice.install"
 source=("${pkgname}-${pkgver}.tar.xz::https://projectgrid.net/archive/${pkgname}-${pkgver}.tar.xz")
 
-sha256sums=('0221efde14c73c6abf5786396dafca9baa6cb6ae67a49b36c18b363b89114098')
+sha256sums=('cc0fa25c9c486fe2ecb85b7a448a97e832c4a4bc28d5f22186ca184235c00b67')
 
 build()
 {

@@ -120,10 +120,15 @@ env | bp
 sudo blindpaste /etc/fstab
 ```
 
-<h3>Bonus: non-existing inputs files</h3>
+<h3>Bonus: Print message</h3>
 
 ```bash
 bp HelloWorld!
+```
+
+<h3>Bonus 2: Use as Git pager</h3>
+```bash
+git config --global core.pager "blindpaste"
 ```
 
 <h2>Bug Reports & Contributing</h2>
