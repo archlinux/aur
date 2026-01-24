@@ -3,17 +3,17 @@
 pkgbase=libkysdk-base
 pkgname=libkysdk-base
 pkgver=3.0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="kylin system develpoer kit - base kit"
 arch=('x86_64')
 license=('GPL-3.0-only')
-url="https://gitee.com/openkylin/libkysdk-base"
+url="https://gitee.com/rechie1995/libkysdk-base"
 depends=(
 	'dbus'
 	'glib2'
 	'glibc'
 	'yaml-cpp'
-	'qt5-base'
+	'qt6-base'
 	'openssl'
 	'sqlite'
 	'systemd-libs'
@@ -28,12 +28,13 @@ makedepends=(
 	'git'
 	'cmake'
 	'gcc'
+  'nlohmann-json'
         )
 groups=('ukui')
-_commit=033cb735231122779a007bbd75b2cf40cbcc55cd
+_commit=bfd651078a74302d99171f1afa60f53ad8235cc0
 source=(
-	"git+https://gitee.com/openkylin/libkysdk-base.git?#commit=$_commit")
-sha512sums=('64469f60f197be0799c480e617022c4fd26de619c7d4247f7db2b66c13a6c3e937751795a9698e10d523fe69d872cd7331819f78090dd39276cf37a393dfff00')
+	"git+https://gitee.com/rechie1995/libkysdk-base.git?#commit=$_commit")
+
 
 build() {
   cd "$srcdir/${pkgbase}"
@@ -56,6 +57,7 @@ package() {
   install -Dm755 -t $pkgdir/usr/bin/ src/conf2/tools/*2yaml
   install -Dm755 -t $pkgdir/usr/bin/ src/conf2/tools/health-check
   install -Dm755 -t $pkgdir/etc/bash_completion.d/ src/conf2/tools/kconf2-completion.sh
+  install -Dm755 -t $pkgdir/usr/share/kysdk/kysdk-base src/conf2/tools/kconf2-editor
   install -Dm755 -t $pkgdir/usr/bin/ bin/kconf2
   # libkysdk-conf2
   ## system bus
@@ -101,3 +103,4 @@ package() {
   install -D -m644 -t $pkgdir/usr/include/kysdk/kysdk-base/ src/utils/data-structure/linklist/listdata.h
 
 }
+sha256sums=('b38115774333443d850ff88ad88343e49d5412e7ec9bdcf9480b375ddf100518')
