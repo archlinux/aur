@@ -1,0 +1,26 @@
+pkgbase = auriscribe-git
+	pkgdesc = Auriscribe - offline speech-to-text tray app (git)
+	pkgver = c536ffe
+	pkgrel = 1
+	url = https://github.com/rabfulton/Auriscribe
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = base-devel
+	makedepends = pkgconf
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = libpulse
+	depends = json-c
+	depends = curl
+	depends = libx11
+	optdepends = xdotool: X11 typing/paste
+	optdepends = wtype: Wayland typing/paste
+	optdepends = wl-clipboard: Wayland clipboard paste
+	optdepends = xclip: X11 clipboard paste
+	provides = auriscribe
+	conflicts = auriscribe
+	source = git+https://github.com/rabfulton/Auriscribe.git
+	sha256sums = SKIP
+
+pkgname = auriscribe-git
