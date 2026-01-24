@@ -1,0 +1,23 @@
+pkgbase = md-viewer-git
+	pkgdesc = Fast, lightweight markdown viewer for Linux with tabs, file explorer, and syntax highlighting
+	pkgver = 0.1.0.r95.gbe6347e
+	pkgrel = 1
+	url = https://github.com/aydiler/md-viewer
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	makedepends = clang
+	makedepends = pkg-config
+	makedepends = cmake
+	depends = gcc-libs
+	depends = gtk3
+	depends = libxcb
+	depends = libxkbcommon
+	provides = md-viewer
+	conflicts = md-viewer
+	source = git+https://github.com/aydiler/md-viewer.git
+	sha256sums = SKIP
+
+pkgname = md-viewer-git
