@@ -1,7 +1,7 @@
 # Maintainer: tychy
 
 pkgname=upnote-bin
-pkgver=9.16.0
+pkgver=9.16.2
 pkgrel=1
 pkgdesc="A modern note-taking app with Markdown support"
 arch=('x86_64')
