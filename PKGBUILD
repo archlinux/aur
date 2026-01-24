@@ -11,8 +11,8 @@
 # shellcheck disable=SC2034
 _py="python"
 pkgname="blivet-gui"
-pkgver=2.4.1
-pkgrel=3
+pkgver=2.6.0
+pkgrel=1
 pkgdesc='GUI tool for storage configuration'
 arch=(
   'x86_64'
@@ -34,7 +34,7 @@ makedepends=(
   "${_py}-setuptools")
 source=(
   "${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('32c7c83b35d09d993b306e974cbb56b4334854ce3361eb660c09b66b4a51df95')
+sha256sums=('5fba88e535012357b10f8a62bb5dd3379a981f0e9ad1c9292ae226f6d4ff0112')
 
 build() {
   cd \
