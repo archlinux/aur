@@ -1,13 +1,13 @@
 pkgbase = vesktop-wayafknext-bin
 	pkgdesc = Vesktop with WayAFKNext plugin for Wayland idle detection (Hyprland, Sway, etc)
 	pkgver = 1.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Vencord/Vesktop
 	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = asar
-	depends = electron39
+	depends = electron40
 	depends = debugedit
 	optdepends = speech-dispatcher: High-level device independent layer for speech synthesis interface
 	provides = vesktop=1.6.4

@@ -7,8 +7,8 @@ pkgname=vesktop-wayafknext-bin
 _pkgname=Vesktop
 _appname=vencord-desktop
 pkgver=1.6.4
-_electronversion=39
-pkgrel=1
+_electronversion=40
+pkgrel=2
 pkgdesc="Vesktop with WayAFKNext plugin for Wayland idle detection (Hyprland, Sway, etc)"
 arch=(
     'aarch64'
