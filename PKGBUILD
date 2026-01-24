@@ -1,15 +1,17 @@
 pkgname=twintaillauncher-bin
 _pkgname="${pkgname%-bin}"
-pkgver=1.1.13
+pkgver=1.1.14
 pkgrel=1
 pkgdesc="A multi-platform launcher for your anime games"
 arch=('x86_64')
 url="https://github.com/TwintailTeam/TwintailLauncher"
 license=('GPL-3.0-only')
-depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'pango' 'webkit2gtk-4.1' 'libappindicator-gtk3' 'libayatana-appindicator')
+depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'pango' 'webkit2gtk-4.1' 'libappindicator-gtk3' 'libayatana-appindicator' 'mangohud' 'gamemode')
 options=('!debug')
+provides=("twintaillauncher-bin")
+conflicts=("twintaillauncher-git" "twintaillauncher")
 source=("${_pkgname}-${pkgver}.deb::${url}/releases/download/ttl-v${pkgver}/twintaillauncher_${pkgver}_amd64.deb")
-sha256sums=('13d767a5e3cab8bab76f2cb26f15535f2e792abb412867d4e65e6b557da9377e')
+sha256sums=('e60f13212a830f88d57e08825da60909f0a07bb5f49023fee642552f85d15b3d')
 
 build() {
   bsdtar -x -f data.tar.gz
@@ -17,7 +19,6 @@ build() {
 
 package() {
   install -Dm755 usr/bin/twintaillauncher -t "$pkgdir/usr/bin"
-  install -Dm755 usr/lib/twintaillauncher/resources/7zr -t "$pkgdir/usr/lib/twintaillauncher/resources"
   install -Dm755 usr/lib/twintaillauncher/resources/hpatchz -t "$pkgdir/usr/lib/twintaillauncher/resources"
   install -Dm755 usr/lib/twintaillauncher/resources/reaper -t "$pkgdir/usr/lib/twintaillauncher/resources"
   install -Dm644 usr/lib/twintaillauncher/resources/hkrpg_patch.dll -t "$pkgdir/usr/lib/twintaillauncher/resources"
