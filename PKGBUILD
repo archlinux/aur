@@ -1,7 +1,7 @@
 # Maintainer: printfn <printfn@users.noreply.github.com>
 
 pkgname=fend
-pkgver=1.5.7
+pkgver=1.5.8
 pkgrel=1
 epoch=
 pkgdesc="Arbitrary-precision unit-aware calculator"
@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/printfn/fend"
 license=('MIT')
 groups=()
-depends=('gcc-libs' 'glibc' 'openssl')
+depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'pandoc')
 checkdepends=()
 optdepends=()
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/printfn/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-sha256sums=("864059155044a94d4b9d2e37c763f8c58b19afa5db3f8f9ed1064bdcc4732f4e")
+sha256sums=("2c53922b83b693c852581942ddcf8e02e1bcd691f30c00e8066cdd6ab2070b86")
 validpgpkeys=()
 
 prepare() {
@@ -35,14 +35,14 @@ build() {
 	cd "$pkgname-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cargo build --frozen --release --no-default-features --features native-tls --package fend
+	cargo build --frozen --release --package fend
 	./documentation/build.sh
 }
 
 check() {
 	cd "$pkgname-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo test --frozen --no-default-features --features native-tls --package fend --package fend-core -- -q
+	cargo test --frozen --package fend --package fend-core -- -q
 }
 
 package() {
