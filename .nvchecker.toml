@@ -1,0 +1,3 @@
+[php-memcache]
+source = 'git'
+git = 'https://github.com/websupport-sk/pecl-memcache'
