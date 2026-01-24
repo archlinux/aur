@@ -1,8 +1,8 @@
 # Maintainer: Your Name <your@email.com>
 pkgname=mycelica
-pkgver=0.8.3
+pkgver=0.9.0
 pkgrel=1
-_tag=0.8.3-1
+_tag=0.9.0
 pkgdesc="Visual knowledge graph for connected thinking"
 arch=('x86_64')
 url="https://github.com/Ekats/Mycelica"
@@ -10,7 +10,7 @@ license=('AGPL-3.0-or-later')
 depends=('webkit2gtk-4.1' 'gtk3' 'openssl' 'sqlite' 'zstd')
 makedepends=('rust' 'cargo' 'npm' 'nodejs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Ekats/Mycelica/archive/refs/tags/v$_tag.tar.gz")
-sha256sums=('SKIP')  # Update after tagging v0.8.3 on GitHub
+sha256sums=('SKIP')  # Update after tagging v0.9.0 on GitHub
 
 build() {
     cd "Mycelica-$_tag"
