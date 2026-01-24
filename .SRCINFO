@@ -1,6 +1,6 @@
 pkgbase = udever-git
 	pkgdesc = Interactive udev rule generator for Arch Linux
-	pkgver = r11.b50e194
+	pkgver = r17.bc99bdb
 	pkgrel = 1
 	url = https://github.com/lazytatzv/udever
 	arch = x86_64
