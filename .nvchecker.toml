@@ -1,0 +1,4 @@
+[libgnt]
+source = 'regex'
+url = 'https://sourceforge.net/projects/pidgin/files/libgnt/'
+regex = 'libgnt/([\d.]+)/'
