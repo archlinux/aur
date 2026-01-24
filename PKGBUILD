@@ -1,16 +1,32 @@
-# Maintainer: Carson Rueter <swurl at swurl dot x y z>
+# Maintainer: manganeese <mangoiscute95@gmail.com>
+# Contributor: Carson Rueter <swurl at swurl dot x y z>
 # Contributor: Isaac Ruben <isaac at rubenfamily dot com>
 pkgname='pathplanner-bin'
 _pkgver="2026.1.2"
+# git commit of version for license file
+_git_commit=e02bbf3176588166e8fe5192ab8dea85f6d62f7a
 pkgver="v$_pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple yet powerful motion profile generator for FRC robots"
 arch=("x86_64")
 url="https://github.com/mjansen4857/pathplanner"
 license=('MIT')
 provides=("pathplanner")
-source=("$pkgname-$pkgver.zip::https://github.com/mjansen4857/pathplanner/releases/download/$pkgver/PathPlanner-Linux-$pkgver.zip")
-sha256sums=('9f41e49d9ba2a3c445c1a32dbc13c49489e3013c74eefced1bd963eb50ad8b55')
+depends=(
+	util-linux-libs
+	glib2
+	glibc
+	gcc-libs
+	xz
+)
+source=(
+	"$pkgname-$pkgver.zip::https://github.com/mjansen4857/pathplanner/releases/download/$pkgver/PathPlanner-Linux-$pkgver.zip"
+	"https://raw.githubusercontent.com/mjansen4857/pathplanner/$_git_commit/LICENSE"
+)
+sha256sums=(
+	'9f41e49d9ba2a3c445c1a32dbc13c49489e3013c74eefced1bd963eb50ad8b55'
+	'dcf88615ff3ae092f867a6dc975d9dfb61faf71a29f51bf11d01cdfa718d4c92'
+)
 
 prepare() {
 	{
@@ -36,6 +52,9 @@ package() {
 	cp -r "$srcdir/data" "$pkgdir/opt/$pkgname"
 	cp -r "$srcdir/lib" "$pkgdir/opt/$pkgname"
 	cp "$srcdir/pathplanner" "$pkgdir/opt/$pkgname"
+
+	# copy over license
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 	# make file executable
 	chmod +x "$pkgdir/opt/$pkgname/pathplanner"

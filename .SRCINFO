@@ -1,12 +1,19 @@
 pkgbase = pathplanner-bin
 	pkgdesc = A simple yet powerful motion profile generator for FRC robots
 	pkgver = v2026.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mjansen4857/pathplanner
 	arch = x86_64
 	license = MIT
+	depends = util-linux-libs
+	depends = glib2
+	depends = glibc
+	depends = gcc-libs
+	depends = xz
 	provides = pathplanner
 	source = pathplanner-bin-v2026.1.2.zip::https://github.com/mjansen4857/pathplanner/releases/download/v2026.1.2/PathPlanner-Linux-v2026.1.2.zip
+	source = https://raw.githubusercontent.com/mjansen4857/pathplanner/e02bbf3176588166e8fe5192ab8dea85f6d62f7a/LICENSE
 	sha256sums = 9f41e49d9ba2a3c445c1a32dbc13c49489e3013c74eefced1bd963eb50ad8b55
+	sha256sums = dcf88615ff3ae092f867a6dc975d9dfb61faf71a29f51bf11d01cdfa718d4c92
 
 pkgname = pathplanner-bin
