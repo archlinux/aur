@@ -6,9 +6,9 @@
 pkgname=vesktop-wayafknext-bin
 _pkgname=Vesktop
 _appname=vencord-desktop
-pkgver=1.6.3
+pkgver=1.6.4
 _electronversion=39
-pkgrel=2
+pkgrel=1
 pkgdesc="Vesktop with WayAFKNext plugin for Wayland idle detection (Hyprland, Sway, etc)"
 arch=(
     'aarch64'
@@ -39,8 +39,8 @@ source_aarch64=("vesktop-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgv
 source_x86_64=("vesktop-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/vesktop-${pkgver}.x86_64.rpm")
 source=('vesktop.sh')
 sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('a4535e1d2d6c56f353e1bd06690c33b40284fba5970269e4a7ac1171a15862ff')
-sha256sums_x86_64=('0ad58d3c62b1bcb83ac7676998b2c6c38dc30522eae3e53d3cae230082d14f4e')
+sha256sums_aarch64=('53ff5b99d5d814f4d58473c1ed7c2d714b0dfabac2bed2d07b827e1c86dbd0f3')
+sha256sums_x86_64=('244ce3f54c6059c0c97cbfa81aa28759c13c054146cac3c8b3d1b7914f25b4dc')
 
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/vesktop" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
