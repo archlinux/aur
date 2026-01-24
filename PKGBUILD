@@ -11,7 +11,7 @@ conflicts=('starfield-mod-loader-bin')
 url="https://github.com/lVlyke/stellar-mod-loader"
 license=('GPL3')
 depends=('nodejs' 'p7zip')
-source=("https://github.com/lVlyke/stellar-mod-loader/releases/download/v${pkgver}/stellar-mod-loader-linux-x64_0.13.3.7z"
+source=("https://github.com/lVlyke/stellar-mod-loader/releases/download/v${pkgver}/stellar-mod-loader-linux-x64_0.13.4.7z"
 				'stellar-mod-loader.sh')
 sha256sums=('176b4b5f93d62ed9fab6c46fc18b35c159d3cee0716f9d31ac57eb7b3dfd1eac'
 				'7762cd7b97ada391230d5081568edbf4d194e0a304d36ac81e83b5c46d8fed42')
