@@ -1,8 +1,8 @@
 # Maintainer: devlinman <dev.linman.tech@gmail.com>
 
 pkgname=procreate-thumbnailer-git
-pkgver=1.0.2.r0.g891e2bf
-pkgrel=1
+pkgver=1.0.2
+pkgrel=3
 pkgdesc="Thumbnailer for Procreate (.procreate) files."
 arch=('x86_64')
 url='https://github.com/devlinman/Procreate-thumbnailer'
@@ -16,7 +16,7 @@ pkgver() {
     cd "$srcdir/Procreate-thumbnailer"
 
     # If there are git tags, use them; otherwise fallback to commit hash
-    if git describe --tags --long >/dev/null 2>&1; then
+    if git describe --tags >/dev/null 2>&1; then
         git describe --tags --long | sed 's/^v//;s/-/.r/;s/-/./'
     else
         echo "1.0.2.r0.g$(git rev-parse --short HEAD)"
