@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-engine'
-license=('MIT')
+license=('EUPL-1.2')
 depends=('vapoursynth'
 )
 makedepends=('git'
