@@ -1,6 +1,6 @@
 pkgbase = dolphin-memory-engine
 	pkgdesc = Dolphin emulator memory searcher
-	pkgver = 2026.01.10
+	pkgver = 2026.01.19
 	pkgrel = 1
 	url = https://github.com/aldelaro5/dolphin-memory-engine
 	install = dolphin-memory-engine.install
@@ -14,9 +14,9 @@ pkgbase = dolphin-memory-engine
 	depends = hicolor-icon-theme
 	depends = qt6-base
 	depends = qt6-svg
-	source = git+https://github.com/aldelaro5/dolphin-memory-engine.git#tag=2026.01.10
+	source = git+https://github.com/aldelaro5/dolphin-memory-engine.git#tag=2026.01.19
 	source = 0001-desktop-exec.patch
-	sha256sums = 65e548882a532bcb13baf942a39c6ceac45281b68299b378a8e07ec9f8aaa5cd
+	sha256sums = db0bc3616af00da30d7aac48473fe8ff062e7276488e38fec6dfd530055fb5c1
 	sha256sums = f90dbab8b97ed03249be5ab31cdf871424550ee73e5972ebe9afa0a5ca41f9b4
 
 pkgname = dolphin-memory-engine
