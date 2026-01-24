@@ -1,6 +1,6 @@
 pkgbase = android-armv7a-eabi-x265
 	pkgdesc = Open Source H265/HEVC video encoder (Android armv7a-eabi)
-	pkgver = 4.0
+	pkgver = 4.1
 	pkgrel = 1
 	url = https://bitbucket.org/multicoreware/x265_git
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = android-armv7a-eabi-x265
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://bitbucket.org/multicoreware/x265_git/downloads/x265_4.0.tar.gz
-	md5sums = 44e0082a7635eab2488bebd18875a09a
+	source = https://bitbucket.org/multicoreware/x265_git/downloads/x265_4.1.tar.gz
+	md5sums = f1c3c80248d8574378a4aac8f374f6de
 
 pkgname = android-armv7a-eabi-x265

@@ -4,7 +4,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-x265
-pkgver=4.0
+pkgver=4.1
 pkgrel=1
 arch=('any')
 pkgdesc="Open Source H265/HEVC video encoder (Android ${_android_arch})"
@@ -16,7 +16,14 @@ makedepends=('android-cmake'
              'nasm')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://bitbucket.org/multicoreware/x265_git/downloads/x265_${pkgver}.tar.gz")
-md5sums=('44e0082a7635eab2488bebd18875a09a')
+md5sums=('f1c3c80248d8574378a4aac8f374f6de')
+
+prepare() {
+    cd "${srcdir}/x265_${pkgver}"
+
+    sed -i '/cmake_policy(SET CMP0025 OLD)/d' source/CMakeLists.txt
+    sed -i '/cmake_policy(SET CMP0054 OLD)/d' source/CMakeLists.txt
+}
 
 build() {
     cd "${srcdir}/x265_${pkgver}"
@@ -31,6 +38,7 @@ build() {
     android-${_android_arch}-cmake \
         -S source \
         -B build-12 \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -DCMAKE_CXX_STANDARD=11 \
         -DLIB_INSTALL_DIR=lib \
         -DENABLE_SHARED=FALSE \
@@ -46,6 +54,7 @@ build() {
     android-${_android_arch}-cmake \
         -S source \
         -B build-10 \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -DCMAKE_CXX_STANDARD=11 \
         -DLIB_INSTALL_DIR=lib \
         -DENABLE_SHARED=FALSE \
@@ -64,6 +73,7 @@ build() {
     android-${_android_arch}-cmake \
         -S source \
         -B build-8 \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -DCMAKE_CXX_STANDARD=11 \
         -DLIB_INSTALL_DIR=lib \
         -DENABLE_SHARED=TRUE \
@@ -89,4 +99,6 @@ package() {
     make -C build-8 DESTDIR="${pkgdir}" install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
