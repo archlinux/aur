@@ -1,6 +1,6 @@
 pkgbase = limine-snapper-sync-git
 	pkgdesc = The tool syncs Limine snapshot entries with Snapper snapshots.
-	pkgver = r542.bfd4785
+	pkgver = r549.6b5bc6d
 	pkgrel = 1
 	url = https://gitlab.com/Zesko/limine-snapper-sync
 	arch = any
@@ -17,7 +17,6 @@ pkgbase = limine-snapper-sync-git
 	depends = libnotify
 	optdepends = limine-dracut-support: It automates kernel installation/removal and Limine boot entry management.
 	optdepends = limine-mkinitcpio-hook: It automates kernel installation/removal and Limine boot entry management.
-	optdepends = snap-pac: triggers Snapper to create snapshots during system updates.
 	optdepends = rsync: Alternative method for restoring snapshots.
 	optdepends = b3sum: Fast Blake3 hash function to prevent duplication.
 	optdepends = xxhash: Fast hashing utility for deduplication with shorter hashes.
