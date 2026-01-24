@@ -1,6 +1,6 @@
 pkgbase = forgefoundary
 	pkgdesc = Flexible, framework-agnostic scaffolding tool
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/omarSemgey/ForgeFoundary
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = forgefoundary
 	depends = php>=8.2
 	depends = composer
 	depends = git
-	source = https://github.com/omarSemgey/ForgeFoundary/archive/refs/tags/v1.0.0.tar.gz
+	source = https://github.com/omarSemgey/ForgeFoundary/archive/refs/tags/v1.0.1.tar.gz
 	sha256sums = ad3e5447209df27fbb4778b4e5255b327a309f325834acbe1d011562794d4dba
 
 pkgname = forgefoundary

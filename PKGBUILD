@@ -1,6 +1,6 @@
 # Maintainer: Omar Semgey <omar.semgey@gmail.com>
 pkgname=forgefoundary
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Flexible, framework-agnostic scaffolding tool"
 arch=('any')
