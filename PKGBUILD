@@ -1,8 +1,8 @@
 # Maintainer: Your Name <your@email.com>
 pkgname=mycelica-bin
-pkgver=0.8.3
+pkgver=0.9.0
 pkgrel=1
-_tag=0.8.3-1
+_tag=0.9.0
 pkgdesc="Visual knowledge graph for connected thinking (prebuilt binaries)"
 arch=('x86_64')
 url="https://github.com/Ekats/Mycelica"
