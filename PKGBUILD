@@ -1,6 +1,6 @@
 # Maintainer: juicerq <julio.cerqueiira@gmail.com>
 pkgname=jubby-bin
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Hub de mini-apps pessoais para Linux"
 arch=('x86_64')
@@ -21,7 +21,7 @@ provides=('jubby')
 conflicts=('jubby')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/jubby_${pkgver}_amd64.deb")
-sha256sums=('a3c59a51a2655c1dd7eab4735058f85b100db00afce5c91e152a1211335a15c2')
+sha256sums=('a20ab61614f53b641e14abf5c6ddbc721d6c5498b828a073b0895d4d43851167')
 
 package() {
     bsdtar -xf data.tar.* -C "${pkgdir}/"
