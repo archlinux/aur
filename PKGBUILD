@@ -1,8 +1,6 @@
 # Maintainer: Toria <ninetailedtori@uwu.gal>
 # Maintainer: Darjan Krijan [https://disc-kuraudo.eu]
 # Contributor: Jesse R Codling <codling@umich.edu>
-# Manual download of 'aocl-linux-aocc-${pkgver}.tar.gz' required from upstream
-# Manual download of 'aocl-linux-gcc-${pkgver}.tar.gz'  required from upstream
 
 pkgbase=aocl
 pkgname=(aocl-aocc aocl-gcc)
