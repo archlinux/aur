@@ -1,13 +1,13 @@
 pkgbase = ralph
 	pkgdesc = Autonomous AI agent loop for Claude Code CLI
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/martinstark/ralph-rs
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = ralph-0.1.1.tar.gz::https://github.com/martinstark/ralph-rs/archive/v0.1.1.tar.gz
-	sha256sums = 2a0c51bc37f45190c2653b2bbd1c3013eb1ec48fabd3336201fc90ef005c1247
+	source = ralph-0.2.0.tar.gz::https://github.com/martinstark/ralph-rs/archive/v0.2.0.tar.gz
+	sha256sums = 842746a1f3a3a77fa0633045fea748ace74abe618c7696035ab3913f4e56d686
 
 pkgname = ralph

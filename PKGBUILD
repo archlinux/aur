@@ -1,6 +1,6 @@
 # Maintainer: Martin Stark <martinstark@protonmail.com>
 pkgname=ralph
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Autonomous AI agent loop for Claude Code CLI"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('2a0c51bc37f45190c2653b2bbd1c3013eb1ec48fabd3336201fc90ef005c1247')
+sha256sums=('842746a1f3a3a77fa0633045fea748ace74abe618c7696035ab3913f4e56d686')
 
 prepare() {
     cd "ralph-rs-$pkgver"
