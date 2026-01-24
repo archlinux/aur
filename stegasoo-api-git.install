@@ -1,0 +1,63 @@
+post_install() {
+    # Create stegasoo system user if it doesn't exist
+    if ! getent passwd stegasoo >/dev/null; then
+        useradd -r -s /usr/bin/nologin -d /opt/stegasoo-api stegasoo
+        echo "Created system user 'stegasoo'"
+    fi
+
+    # Set ownership of directories
+    chown -R stegasoo:stegasoo /opt/stegasoo-api/config 2>/dev/null || true
+    chown -R stegasoo:stegasoo /opt/stegasoo-api/certs 2>/dev/null || true
+
+    echo ""
+    echo "==============================================="
+    echo "  Stegasoo API installed successfully!"
+    echo "==============================================="
+    echo ""
+    echo "-----------------------------------------------"
+    echo "  Quick Start"
+    echo "-----------------------------------------------"
+    echo "  1. Create an API key:"
+    echo "     sudo -u stegasoo stegasoo api keys create mykey"
+    echo ""
+    echo "  2. Start the API server:"
+    echo "     sudo systemctl start stegasoo-api"
+    echo "     sudo systemctl enable stegasoo-api  # auto-start"
+    echo ""
+    echo "  3. Access the API:"
+    echo "     curl -k -H 'X-API-Key: YOUR_KEY' https://localhost:8000/"
+    echo ""
+    echo "-----------------------------------------------"
+    echo "  Service Details"
+    echo "-----------------------------------------------"
+    echo "  Port: 8000 (HTTPS by default)"
+    echo "  Docs: https://localhost:8000/docs"
+    echo "  Status: sudo systemctl status stegasoo-api"
+    echo ""
+    echo "-----------------------------------------------"
+    echo "  Management Commands"
+    echo "-----------------------------------------------"
+    echo "  stegasoo api keys list       # List API keys"
+    echo "  stegasoo api keys create X   # Create new key"
+    echo "  stegasoo api tls generate    # Generate TLS certs"
+    echo "  stegasoo api tls info        # Show certificate info"
+    echo "  stegasoo api serve --help    # Server options"
+    echo ""
+    echo "==============================================="
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    # Stop service if running
+    systemctl stop stegasoo-api 2>/dev/null || true
+}
+
+post_remove() {
+    echo "Stegasoo API removed."
+    echo "User 'stegasoo' and config in /opt/stegasoo-api were not removed."
+    echo "To remove: userdel stegasoo && rm -rf /opt/stegasoo-api"
+}

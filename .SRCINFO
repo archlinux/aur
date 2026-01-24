@@ -1,0 +1,23 @@
+pkgbase = stegasoo-api-git
+	pkgdesc = Stegasoo REST API with TLS and API key authentication
+	pkgver = 4.2.1
+	pkgrel = 1
+	url = https://github.com/adlee-was-taken/stegasoo
+	install = stegasoo-api-git.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python
+	makedepends = python-build
+	makedepends = python-hatchling
+	depends = python>=3.11
+	depends = zbar
+	optdepends = libjpeg-turbo: jpegtran for lossless JPEG rotation (DCT-safe)
+	provides = stegasoo-api
+	conflicts = stegasoo-api
+	conflicts = stegasoo
+	conflicts = stegasoo-git
+	source = stegasoo-api-git::git+https://github.com/adlee-was-taken/stegasoo.git#branch=main
+	sha256sums = SKIP
+
+pkgname = stegasoo-api-git
