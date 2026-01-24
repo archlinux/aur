@@ -26,7 +26,7 @@ package() {
     install -Dm755 "src-tauri/target/release/msigd-gui" "$pkgdir/usr/bin/msigd-gui"
 
     # Install desktop file
-    install -Dm644 "io.github.aydiler.msigd-gui.desktop" "$pkgdir/usr/share/applications/msigd-gui.desktop"
+    install -Dm644 "msigd-gui.desktop" "$pkgdir/usr/share/applications/msigd-gui.desktop"
 
     # Install icons
     install -Dm644 "src-tauri/icons/32x32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/msigd-gui.png"
