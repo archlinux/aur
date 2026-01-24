@@ -5,7 +5,7 @@
 
 pkgname=pxsum-bin
 _pkgname=pxsum
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc='CLI utility to calculate/verify checksum of decoded pixel image data, written in Rust'
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('WTFPL')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-git")
 source=("$pkgname-$pkgver.deb::$url/releases/download/v$pkgver/${_pkgname}_$pkgver-1_amd64.deb")
-sha256sums=('550b507ec244499b1b728f6decc244cb2ef30a213fa8e49e4ceb6e3bc3ce418e')
+sha256sums=('8adc77c416020b88f77284d98647d4b0c8358feea1b4e875678ad5ff8d01cfb7')
 
 package() {
   # extract package data
