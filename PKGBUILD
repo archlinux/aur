@@ -3,13 +3,13 @@
 # Adapted from AUR package `organicmaps` by nesk_aur
 pkgname=comaps
 pkgver=v2026.01.08_11
-tag="${pkgver%%_*}-${pkgver##*_}"
+_tag="${pkgver%%_*}-${pkgver##*_}"
 pkgrel=1
 pkgdesc="CoMaps: Offline Hike, Bike, Trails and Navigation"
 arch=(x86_64)
 makedepends=(cmake git jq gcc ninja python-protobuf libxinerama wget)
-depends=(mesa libglvnd freetype2 sqlite icu qt6-svg qt6-base zlib libpng glibc
-  qt6-positioning gcc-libs harfbuzz libxrandr libxi libxcursor)
+depends=(libglvnd freetype2 icu qt6-base zlib glibc
+  qt6-positioning gcc-libs harfbuzz hicolor-icon-theme)
 optdepends=("ccache: faster re-compilation" "qt6-wayland: for Wayland users")
 license=('Apache-2.0')
 url="https://comaps.app"
@@ -33,12 +33,12 @@ prepare() {
     src_url=$($SOURCE_URL_REWRITER $_source_url)
     case $src_url in
     file://*)
-      git -C ${src_url#file://} fetch --depth=1 origin "$tag"
+      git -C ${src_url#file://} fetch --depth=1 origin "$_tag"
       ;;
     esac
   fi
   if [ ! -d $pkgname ]; then
-    git clone --depth=1 --single-branch -b "$tag" --filter=blob:limit=128k \
+    git clone --depth=1 --single-branch -b "$_tag" --filter=blob:limit=128k \
       $src_url $pkgname
   fi
 
@@ -60,7 +60,14 @@ build() {
 package() {
   install -dm755 "$pkgdir/usr/share/${pkgname}"
   cp -Lr "${pkgname}/data" "$pkgdir/usr/share/${pkgname}/"
-  install -dm777 "$pkgdir/usr/share/${pkgname}/data/$(jq '.v' $pkgname/data/countries.txt)"
+
+  # Remove test data and python scripts (not needed at runtime)
+  rm -rf "$pkgdir/usr/share/${pkgname}/data/test_data"
+  rm -rf "$pkgdir/usr/share/${pkgname}/data/conf"
+
+  # Create map data directory with correct permissions (755, not 777)
+  install -dm755 "$pkgdir/usr/share/${pkgname}/data/$(jq '.v' $pkgname/data/countries.txt)"
+
   install -Dm644 "icon.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
   install -Dm755 "omim-build-release/CoMaps" "$pkgdir/usr/bin/comaps"
   install -Dm644 "comaps.desktop" -t "$pkgdir/usr/share/applications"
