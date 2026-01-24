@@ -1,6 +1,6 @@
 # Maintainer: Alynx Zhou <alynx.zhou@gmail.com>
 pkgname=reframe
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="DRM/KMS based remote desktop for Linux that supports Wayland/NVIDIA/headless/login…"
 arch=("x86_64" "i686" "aarch64" "armv7h" "armv6h")
