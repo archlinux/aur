@@ -1,0 +1,16 @@
+pkgbase = epuppy-git
+	pkgdesc = Terminal-based EPUB reader (git version)
+	pkgver = 0.0.8.1.g2b6eacd
+	pkgrel = 1
+	url = https://codeberg.org/scip/epuppy
+	arch = x86_64
+	license = GPLv3
+	makedepends = go
+	makedepends = git
+	provides = epuppy
+	conflicts = epuppy
+	options = !debug
+	source = epuppy-git::git+https://codeberg.org/scip/epuppy.git
+	sha256sums = SKIP
+
+pkgname = epuppy-git
