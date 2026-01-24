@@ -1,5 +1,5 @@
 pkgname=yufi
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Lightweight GTK4 Wi-Fi manager"
 arch=("x86_64")
@@ -8,7 +8,7 @@ license=("MIT")
 depends=("gtk4" "networkmanager")
 makedepends=("cargo" "rust" "pkgconf")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AtefR/YuFi/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('23dcf63a5f16e17a85e1fd3ae9abf1a09008bfa95c815cf3b327b5cd632a2798')
+sha256sums=('cf6ac2588c594a902d8c0a7eac514c978d04951ecacddca4c0183d44ab6dc346')
 
 build() {
   cd "$srcdir/YuFi-$pkgver"
