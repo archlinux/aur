@@ -1,6 +1,6 @@
 pkgbase = qrcode2pdf
 	pkgdesc = Render barcodes (QR Codes, Aztec, Data Matrix, etc) using rxing into a krilla...
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://crates.io/crates/qrcode2pdf
 	arch = aarch64
@@ -10,7 +10,7 @@ pkgbase = qrcode2pdf
 	makedepends = cargo
 	makedepends = cargo-auditable
 	depends = gcc-libs
-	source = qrcode2pdf-0.1.0.tar.gz::https://static.crates.io/crates/qrcode2pdf/0.1.0/download
-	sha512sums = 5c4fb7db2795c86eb914d4a06b42e443d087e344c81264ff7e557afa7467c9eaf66018c9bda40bc3f0755a5afcf6fbf460594f58b0c72afb564647534aeabedd
+	source = qrcode2pdf-0.1.1.tar.gz::https://static.crates.io/crates/qrcode2pdf/0.1.1/download
+	sha512sums = 0030ae379f9569364e2e5c5579855ccb989168c209f14cfa8e0f0012601fda9c66ba3921a8bde8f79f929d1803cca4b741da62d0ebffe1182c05b24ef5295d5c
 
 pkgname = qrcode2pdf

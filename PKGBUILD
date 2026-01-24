@@ -2,9 +2,9 @@
 # Maintainer: Dominic Meiser [git at msrd0 dot de]
 
 _crate="qrcode2pdf"
-_cratever="0.1.0"
+_cratever="0.1.1"
 pkgname="qrcode2pdf"
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Render barcodes (QR Codes, Aztec, Data Matrix, etc) using rxing into a krilla...'
 url='https://crates.io/crates/qrcode2pdf'
@@ -13,8 +13,8 @@ license=('EUPL-1.2')
 depends=('gcc-libs')
 makedepends=('cargo' 'cargo-auditable')
 
-source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/qrcode2pdf/0.1.0/download")
-sha512sums=('5c4fb7db2795c86eb914d4a06b42e443d087e344c81264ff7e557afa7467c9eaf66018c9bda40bc3f0755a5afcf6fbf460594f58b0c72afb564647534aeabedd')
+source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/qrcode2pdf/0.1.1/download")
+sha512sums=('0030ae379f9569364e2e5c5579855ccb989168c209f14cfa8e0f0012601fda9c66ba3921a8bde8f79f929d1803cca4b741da62d0ebffe1182c05b24ef5295d5c')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
