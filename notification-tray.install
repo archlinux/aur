@@ -1,0 +1,25 @@
+post_install() {
+    echo "notification-tray has been installed!"
+    echo ""
+    echo "To run notification-tray as a systemd user service:"
+    echo "  systemctl --user enable --now notification-tray.service"
+    echo ""
+    echo "To check the service status:"
+    echo "  systemctl --user status notification-tray"
+    echo ""
+    echo "The service will store notifications in ~/.local/share/notification-tray"
+}
+
+post_upgrade() {
+    echo "notification-tray has been upgraded!"
+    echo ""
+    echo "If you're using the systemd service, restart it with:"
+    echo "  systemctl --user restart notification-tray"
+}
+
+pre_remove() {
+    if systemctl --user is-enabled notification-tray.service &>/dev/null; then
+        echo "Stopping and disabling notification-tray service..."
+        systemctl --user disable --now notification-tray.service
+    fi
+}
