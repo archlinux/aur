@@ -1,0 +1,12 @@
+pkgbase = python-backports
+	pkgdesc = Common namespace dependency for all python-backports.* packages
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/brandon-rhodes/backports
+	arch = any
+	license = MIT
+	depends = python
+	source = https://github.com/brandon-rhodes/backports/archive/refs/tags/v1.1.tar.gz
+	sha512sums = 8a2215a67bb9ead44ccd803a8fbf642ce5a114b7c2c83fb2aead493d3722fe424935cf498c415db94f0646b8a50bad30ab79009f54abb498a2278795f82037e8
+
+pkgname = python-backports
