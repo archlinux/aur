@@ -11,7 +11,7 @@ url="https://github.com/petersulyok/smfc"
 license=('GPL3')
 depends=('python' 'ipmitool' 'pacman-hook-reload-modules' 'bash' 'systemd')
 optdepends=('smartmontools: For SAS/SCSI disks and standby guard feature'
- 'nvidia-smi: For GPU fan controller')
+ 'nvidia-utils: For GPU fan controller')
 checkdepends=('flake8' 'python-coverage' 'python-pylint' 'python-pytest' 'python-pytest-cov')
 source=(
   "${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
