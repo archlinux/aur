@@ -3,7 +3,7 @@
 _pkgauthor=sinclairtarget
 _pkgname=git-who
 pkgname=${_pkgname}-bin
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="Git blame for file trees"
@@ -21,9 +21,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname//-/}_${_pkgvername}_linux_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname//-/}_${_pkgvername}_linux_${_barch[1]}.tar.gz")
 sha256sums=('2707728d99e450c5df3dda7900d7061e17175b62603b237d65eb316468a36317'
-            '8a17bbe4334a87e4c92fcb9adb54c5277c2253b1160a5afcdfc990eb70c36171')
-sha256sums_x86_64=('ec7ed247b52867e5d303948511a52aede8754a53d1dd9a39cc1dc66f181beee6')
-sha256sums_aarch64=('195e254a1f77591950031463024923ab09abbdd306b1701ef07d4ccbc10d0fdb')
+            'cfd46ccda7e114bf6c843e995b4704615792e165de3772ec5470edf3817315c3')
+sha256sums_x86_64=('f031ea951f837d1a67c906e3a672c6afe09c4314fa5bf7e63a00b86749f86b72')
+sha256sums_aarch64=('86b9a856da39dc8d7f2dafb1ff1ce812227d5d45f9593a9553306e97da07c14d')
 
 case "${CARCH}" in
 	"${arch[0]}")
