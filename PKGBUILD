@@ -2,8 +2,8 @@
 
 pkgbase=ollama-bin
 pkgname=(ollama-bin ollama-cuda12-bin ollama-cuda13-bin ollama-mlx-cuda13-bin ollama-vulkan-bin)
-pkgver=0.14.3
-pkgrel=2
+pkgver=0.15.0
+pkgrel=1
 pkgdesc="Create, run and share large language models (LLMs)"
 arch=('x86_64' 'aarch64')
 _barch=('amd64' 'arm64')
@@ -14,9 +14,9 @@ license=('MIT')
 provides=("ollama")
 conflicts=("ollama")
 depends=("glibc" "gcc-libs")
-optdepends=("ollama-cuda: NVIDIA GPU Support")
-
-backup=('etc/ollama.conf')
+optdepends=("ollama-cuda12: NVIDIA GPU Support"
+            "ollama-cuda13: NVIDIA GPU Support"
+            "ollama-vulkan: GPU Support")
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md"
@@ -32,11 +32,13 @@ sha256sums=('5934ed2ce0d15154bcdb9c85203210abac0da4314af34081e36df4599f90b226'
             '24871ffd940212e04e9bd3c334cfd4e3c4e845b374c5d0ed369fd32496b05fdb'
             '14e2e267be85b6943f66dfe60e73f5e0a611eaf40ee69a4cc0d497d071392cf4'
             '137e1d50a5f3058c30a73b7bb3c323888d225e6a7ae47564be869827db0659a3')
-sha256sums_x86_64=('d1f843d112f4580fc1e11104fbd35146166ab8fc0a46035f397cf93ae0a64c02')
-sha256sums_aarch64=('8a2ced367783754978395c0147972165c396c2a47e05e71b6ab78d05c5dc6a44')
+sha256sums_x86_64=('af9ac4e6c30b83501bb3fbbb4cf0dc2feac61c5cc51592060ddaa4066bfdc4c8')
+sha256sums_aarch64=('40f782693b235cc5031c0d72773a72fbae21b9523cff102c55831a3341095c6f')
 
 
 package_ollama-bin() {
+    backup=('etc/ollama.conf')
+
     cd "${srcdir}/" || exit
 
     install -Dm755 "./bin/ollama" "${pkgdir}/usr/bin/ollama"
@@ -64,9 +66,9 @@ package_ollama-bin() {
 package_ollama-cuda12-bin() {
     pkgdesc='Create, run and share large language models (LLMs) with CUDA 12'
 
-    conflicts=("ollama-cuda")
-    provides=("ollama-cuda")
-    depends+=("ollama-bin" "nvidia-libgl")
+    provides=("ollama-cuda12")
+    depends=("ollama-bin" "nvidia-libgl")
+    conflicts=("ollama-cuda" "ollama-cuda13" "ollama-vulkan")
 
     cd "${srcdir}/" || exit
 
@@ -79,9 +81,10 @@ package_ollama-cuda12-bin() {
 package_ollama-cuda13-bin() {
     pkgdesc='Create, run and share large language models (LLMs) with CUDA 13'
 
-    conflicts=("ollama-cuda")
-    provides=("ollama-cuda")
-    depends+=("ollama-bin" "nvidia-libgl")
+    provides=("ollama-cuda13")
+    depends=("ollama-bin" "nvidia-libgl")
+    optdepends=("ollama-mlx-cuda13-bin: Image Generation")
+    conflicts=("ollama-cuda" "ollama-cuda12" "ollama-vulkan")
 
     cd "${srcdir}/" || exit
 
@@ -92,11 +95,11 @@ package_ollama-cuda13-bin() {
 }
 
 package_ollama-mlx-cuda13-bin() {
-    pkgdesc='Create, run and share large language models (LLMs) with CUDA 13'
+    pkgdesc='Create, run and share large language models (LLMs) with MLX CUDA 13 (Image Generation)'
 
-    conflicts=("ollama-cuda")
-    provides=("ollama-cuda")
-    depends+=("ollama-bin" "nvidia-libgl")
+    provides=("ollama-mlx")
+    depends+=("ollama-cuda13")
+    conflicts=("ollama-cuda" "ollama-cuda12" "ollama-vulkan")
 
     cd "${srcdir}/" || exit
 
@@ -104,14 +107,16 @@ package_ollama-mlx-cuda13-bin() {
     for lib in "./lib/ollama/mlx_cuda_v13/lib"*; do
         cp -P "${lib}" "${pkgdir}/usr/lib/ollama/"
     done
+
+    find "${pkgdir}/usr/lib/ollama/" -xtype l -delete
 }
 
 package_ollama-vulkan-bin() {
-    pkgdesc='Create, run and share large language models (LLMs) with CUDA 13'
+    pkgdesc='Create, run and share large language models (LLMs) with Vulkan'
 
-    conflicts=("ollama-cuda")
-    provides=("ollama-cuda")
-    depends+=("ollama-bin")
+    provides=("ollama-vulkan")
+    depends+=("ollama-bin" "vulkan-driver")
+    conflicts=("ollama-cuda" "ollama-cuda12" "ollama-cuda13")
 
     cd "${srcdir}/" || exit
 
