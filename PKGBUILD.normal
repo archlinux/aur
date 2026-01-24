@@ -29,7 +29,7 @@ pkgrel=3
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary')
-makedepends=('bazelisk' 'git' 'python' 'mold' 'libibus' 'fcitx5-qt' 'fcitx5')
+makedepends=('bazelisk' 'git' 'python' 'mold' 'libibus' 'fcitx5-qt' 'fcitx5' 'unzip')
 options=(!lto !distcc !ccache)
 source=("git+$url.git#commit=${_mozc_commit}"
         "bcr::git+https://github.com/bazelbuild/bazel-central-registry.git#commit=${_bcr_commit}"
