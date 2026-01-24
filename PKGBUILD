@@ -3,24 +3,28 @@
 
 pkgname=libtiff4
 pkgver=3.9.7
-pkgrel=7
-pkgdesc='Library for manipulation of TIFF images'
+pkgrel=8
+pkgdesc='Library for manipulation of TIFF images - Interface version (SONAME) 4'
 arch=(x86_64)
 url=http://www.simplesystems.org/libtiff/
 license=(custom)
 depends=(
   gcc-libs
+  jbigkit
   libjpeg-turbo
   zlib
 )
-makedepends=(git)
+makedepends=(
+  git
+)
+
 source=(
-  git+https://gitlab.com/libtiff/libtiff.git#commit=0ec9ef43aab899d8b7f69e2fe9fb89f58fb4b335
-  libtiff4-soname.patch
+  "git+https://gitlab.com/libtiff/libtiff.git#tag=v${pkgver}"
+  "libtiff4-soname.patch"
 )
 sha256sums=(
-  SKIP
-  e6246631f6d943715b612b4ddd2279c946ff90c9e8d755fa639e8051a6eb3488
+  "SKIP"
+  "4704379227c530cd76f007fe67638f2d998a074a0af6ca50f063ef720f95b9ba"
 )
 
 prepare() {
