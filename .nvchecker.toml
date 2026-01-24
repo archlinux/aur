@@ -1,0 +1,4 @@
+[xfwm4-themes]
+source = 'regex'
+url = 'https://archive.xfce.org/src/art/xfwm4-themes/'
+regex = '"([\d.]+)/"'
