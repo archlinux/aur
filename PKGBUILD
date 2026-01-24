@@ -3,7 +3,7 @@
 
 export GIT_LFS_SKIP_SMUDGE=1 # This is to prevent Git LFS errors
 pkgname=airshipper-git
-pkgver=0.16.0.r57.b16e3c6
+pkgver=0.17.0.r4.7e43bae
 pkgrel=1
 pkgdesc="The official launcher for Veloren - an open-world, open-source multiplayer voxel RPG"
 arch=('x86_64' 'i686')
@@ -42,7 +42,7 @@ prepare() {
     unset GIT_LFS_SKIP_SMUDGE
     cd "$srcdir/$pkgname"
     git remote set-url origin "$_repo"
-    git lfs install
+    git lfs install --local
     git lfs fetch
     git lfs checkout
 }

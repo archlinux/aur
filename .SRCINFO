@@ -1,6 +1,6 @@
 pkgbase = airshipper-git
 	pkgdesc = The official launcher for Veloren - an open-world, open-source multiplayer voxel RPG
-	pkgver = 0.16.0.r57.b16e3c6
+	pkgver = 0.17.0.r4.7e43bae
 	pkgrel = 1
 	url = https://gitlab.com/veloren/airshipper
 	install = airshipper.install
