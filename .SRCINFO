@@ -4,7 +4,7 @@ pkgbase = heidisql-qt5
 	pkgrel = 5
 	url = http://www.heidisql.com/
 	arch = x86_64
-	license = GPL-2.0
+	license = GPL-2.0-or-later
 	makedepends = lazarus
 	makedepends = make
 	makedepends = fpc
@@ -19,7 +19,6 @@ pkgbase = heidisql-qt5
 	depends = sqlite
 	depends = freetds
 	provides = heidisql-client
-	conflicts = heidisql-common
 	source = https://github.com/HeidiSQL/HeidiSQL/archive/v12.14.1.1.tar.gz
 	sha256sums = 0e240b55be181bf4b8321a45b47242fe62b211ba9ca77d433d5bb700a201fb01
 
