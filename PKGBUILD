@@ -12,11 +12,14 @@ sha256sums=('ad3e5447209df27fbb4778b4e5255b327a309f325834acbe1d011562794d4dba')
 
 package() {
     mkdir -p "$pkgdir/opt/$pkgname"
+
     cp -r "$srcdir/ForgeFoundary-$pkgver/"* "$pkgdir/opt/$pkgname/"
+
     cd "$pkgdir/opt/$pkgname"
     composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
-    install -Dm755 "$pkgdir/opt/$pkgname/ForgeFoundary" "$pkgdir/usr/bin/ForgeFoundary"
+
     echo -e "#!/bin/sh\nphp /opt/$pkgname/ForgeFoundary \"\$@\"" > "$pkgdir/usr/bin/ForgeFoundary"
     chmod +x "$pkgdir/usr/bin/ForgeFoundary"
+
     install -Dm644 "$pkgdir/opt/$pkgname/README.MD" "$pkgdir/usr/share/doc/$pkgname/README.MD"
 }
