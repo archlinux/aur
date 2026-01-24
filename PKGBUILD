@@ -1,6 +1,6 @@
 # Maintainer: aydiler <aydiler@users.noreply.github.com>
 pkgname=msigd-gui
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Desktop GUI for controlling MSI gaming monitors"
 arch=('x86_64')
@@ -14,7 +14,8 @@ sha256sums=('SKIP')
 build() {
     cd "$pkgname-$pkgver"
     npm ci
-    npm run tauri build -- --bundles none
+    npm run build
+    cargo build --release --manifest-path src-tauri/Cargo.toml
 }
 
 package() {
