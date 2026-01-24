@@ -1,6 +1,6 @@
 # Maintainer: Pedro <pedroantoniobonaldo@gmail.com>
 pkgname=workopilot-bin
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Your AI-powered work copilot for development - task management with AI assistance"
 arch=('x86_64')
@@ -27,12 +27,13 @@ conflicts=('workopilot')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/workopilot-linux-x86_64.tar.gz")
-sha256sums=('b636321a4820464a1eff8ab3d7dd51fc0637de3783e2f207a4e52bf3566f6ebb')
+sha256sums=('ce56d3c1a826f4c098c482863269f06627b3eb9d827b82248bc6593612d4cb08')
 
 package() {
     cd "$srcdir/workopilot-linux-x86_64"
     
     install -Dm755 "workopilot" "$pkgdir/usr/bin/workopilot"
+    install -Dm755 "workopilot-sidecar" "$pkgdir/usr/bin/workopilot-sidecar"
     install -Dm644 "workopilot.desktop" "$pkgdir/usr/share/applications/workopilot.desktop"
     install -Dm644 "icons/32x32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/workopilot.png"
     install -Dm644 "icons/128x128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/workopilot.png"
