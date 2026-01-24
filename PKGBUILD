@@ -1,6 +1,6 @@
 # Maintainer: cleboost
 pkgname=kibo-appimage
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Kibo Anime AppImage - Application for watching anime"
 arch=('x86_64')
