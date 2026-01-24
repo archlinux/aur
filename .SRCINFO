@@ -1,0 +1,17 @@
+pkgbase = logiops-rs
+	pkgdesc = Logitech device configuration daemon (Rust rewrite)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/aydiler/logiops-rs
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = rust
+	makedepends = cargo
+	depends = systemd-libs
+	provides = logiops
+	conflicts = logiops
+	backup = etc/logiops/config.toml
+	source = logiops-rs-0.1.0.tar.gz::https://github.com/aydiler/logiops-rs/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = logiops-rs
