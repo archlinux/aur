@@ -15,7 +15,10 @@ url="https://github.com/penguinolog/backports.cached_property"
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
 sha512sums=('393272e93f97783d575268e19005d3295570dfc562afe179b6d4ac56960b57b71454639f3588a1dcd531e0871fc7b6fa91bbd854ad4f1c16875f1d6d75cb0aa2')
 
-depends=("python")
+depends=(
+    "python"
+    "python-backports"
+)
 makedepends=(
     "python-build"
     "python-installer"
@@ -29,13 +32,18 @@ checkdepends=(
     "python-virtualenv"
 )
 
-build () {
-    cd "$srcdir/$_name-$pkgver" || exit
+prepare() {
+    cd "$srcdir/$_name-$pkgver"
+    rm backports/__init__.py # Provided by python-backports
+}
+
+build() {
+    cd "$srcdir/$_name-$pkgver"
     SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver} \
         python -m build --wheel --no-isolation
 }
 
-check () {
+check() {
     cd "$srcdir/$_name-$pkgver"
 
     python -m venv --system-site-packages venv
@@ -45,8 +53,8 @@ check () {
     rm -rf venv
 }
 
-package () {
-    cd "$srcdir/$_name-$pkgver" || exit
+package() {
+    cd "$srcdir/$_name-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

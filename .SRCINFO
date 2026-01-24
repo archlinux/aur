@@ -13,7 +13,9 @@ pkgbase = python-backports.cached_property
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
+	makedepends = tree
 	depends = python
+	depends = python-backports
 	source = https://github.com/penguinolog/backports.cached_property/archive/refs/tags/1.0.2.tar.gz
 	sha512sums = 393272e93f97783d575268e19005d3295570dfc562afe179b6d4ac56960b57b71454639f3588a1dcd531e0871fc7b6fa91bbd854ad4f1c16875f1d6d75cb0aa2
 
