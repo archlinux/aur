@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=ctags-lsp
 pkgver=0.10.2
-pkgrel=2
+pkgrel=3
 pkgdesc='LSP implementation using universal-ctags as backend'
 url='https://github.com/netmute/ctags-lsp'
 arch=('x86_64' 'pentium4' 'aarch64' 'armv7h' 'riscv64')
@@ -36,7 +36,7 @@ build() {
 
 package() {
     cd "${pkgname}-${pkgver}"
-    install -Dm0755 -t "$pkgdir/usr/bin/ctags-lsp" build/ctags-lsp
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE" LICENSE
-    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/README.md" README.md
+    install -Dm0755  build/ctags-lsp "$pkgdir/usr/bin/ctags-lsp"
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
 }
