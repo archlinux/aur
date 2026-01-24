@@ -29,7 +29,7 @@ prepare() {
     unset GIT_LFS_SKIP_SMUDGE
     cd "$srcdir/$pkgname"
     git remote set-url origin "$_repo"
-    git lfs install
+    git lfs install --local
     git lfs fetch
     git lfs checkout
 }
