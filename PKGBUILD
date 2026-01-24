@@ -3,7 +3,7 @@
 _pkgname="slune"
 pkgname="$_pkgname"
 pkgver=1.0.16
-pkgrel=2
+pkgrel=3
 pkgdesc='A racing game'
 arch=(x86_64)
 url='http://www.lesfleursdunormal.fr/static/informatique/old/slune/index_en.html'
@@ -32,6 +32,8 @@ build() {
   # Create a relocatable conda env
 
   . /opt/miniconda3/etc/profile.d/conda.sh &&
+    conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main &&
+    conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r &&
     conda create -p "$_condaenv" -y && \
     conda activate "$_condaenv/" && \
     conda install 'python=2.7.18' -y && \
