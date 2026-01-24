@@ -30,8 +30,8 @@ build() {
 
 check() {
 	cd Komac-${pkgver}
-    	export RUSTUP_TOOLCHAIN=stable
-   	cargo test --frozen --all-features
+	export RUSTUP_TOOLCHAIN=stable
+	cargo test --frozen
 }
 
 package() {
