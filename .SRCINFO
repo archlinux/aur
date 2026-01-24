@@ -1,7 +1,7 @@
 pkgbase = 3dstool
 	pkgdesc = An all-in-one tool for extracting/creating 3ds roms
 	pkgver = 1.2.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dnasdw/3dstool
 	arch = x86_64
 	license = MIT

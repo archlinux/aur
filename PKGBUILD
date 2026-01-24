@@ -4,7 +4,7 @@
 
 pkgname=3dstool
 pkgver=1.2.6
-pkgrel=2
+pkgrel=3
 pkgdesc="An all-in-one tool for extracting/creating 3ds roms"
 arch=('x86_64')
 url="https://github.com/dnasdw/${pkgname}"
@@ -22,8 +22,6 @@ sha256sums=(
 
 prepare() {
   cd ${pkgname}-${pkgver}
-
-  sed -i 's/^cmake_minimum_required.*/cmake_minimum_required(VERSION 3.5)/' CMakeLists.txt # Bump cmake_minimum_required so that the package can be built.
   patch -Np1 -i ../${pkgname}-paths.patch
 }
 
