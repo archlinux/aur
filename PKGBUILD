@@ -1,6 +1,6 @@
 # Maintainer: Oliver Tzeng（曾嘉禾）<olivertzeg at proton dot me>
 
-pkgname=nyarchassistant
+pkgname=nyarchassistant-git
 pkgver=1.2.0.r1.ge6a4854
 pkgrel=1
 pkgdesc="Nyarch Assistant (Newelle Fork)"

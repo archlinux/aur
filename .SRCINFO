@@ -1,4 +1,4 @@
-pkgbase = nyarchassistant
+pkgbase = nyarchassistant-git
 	pkgdesc = Nyarch Assistant (Newelle Fork)
 	pkgver = 1.2.0.r1.ge6a4854
 	pkgrel = 1
@@ -37,4 +37,4 @@ pkgbase = nyarchassistant
 	source = git+https://github.com/NyarchLinux/NyarchAssistant
 	sha256sums = SKIP
 
-pkgname = nyarchassistant
+pkgname = nyarchassistant-git
