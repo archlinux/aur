@@ -8,7 +8,7 @@ declare -Ag _arch=(
 
 pkgname="cryptoplugin"
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="PrivatBank Crypto Plugin"
 arch=(
   "${!_arch[@]}"
@@ -59,16 +59,18 @@ prepare() {
 package() {
   cd "${srcdir}/${_pkgsrc}"
   # https://chromium.googlesource.com/chromium/src.git/+/62.0.3178.1/chrome/common/extensions/docs/examples/api/nativeMessaging/host/install_host.sh
-  # ???
-  install -vDm644 "com.privatbank.cryptoplugin.json" \
-    "${pkgdir}/usr/lib/chromium/native-messaging-hosts/com.privatbank.cryptoplugin.json"
+  install -vDm644 "com.privatbank.cryptoplugin.json" -t "${pkgdir}/etc/chromium/native-messaging-hosts"
+  install -vDm644 "com.privatbank.cryptoplugin.json" -t "${pkgdir}/etc/opt/chrome/native-messaging-hosts"
+  install -vDm644 "com.privatbank.cryptoplugin.json" -t "${pkgdir}/etc/opt/edge/native-messaging-hosts"
 
   cd "${srcdir}/${_pkgsrc}/mozilla"
   # https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Native_manifests#linux
-  install -vDm644 "com.privatbank.cryptoplugin.json" \
-    "${pkgdir}/usr/lib/mozilla/native-messaging-hosts/com.privatbank.cryptoplugin.json"
-  install -vDm644 "cryptoplugin_ext_id@privatbank.ua.xpi" \
-    "${pkgdir}/usr/lib/firefox/browser/extensions/cryptoplugin_ext_id@privatbank.ua.xpi"
+  install -vDm644 "com.privatbank.cryptoplugin.json" -t "${pkgdir}/usr/lib/mozilla/native-messaging-hosts"
+  # ?
+  install -vDm644 "com.privatbank.cryptoplugin.json" -t "${pkgdir}/usr/lib/librewolf/native-messaging-hosts"
+
+  install -vDm644 "cryptoplugin_ext_id@privatbank.ua.xpi" -t "${pkgdir}/usr/lib/firefox/browser/extensions"
+  install -vDm644 "cryptoplugin_ext_id@privatbank.ua.xpi" -t "${pkgdir}/usr/lib/librewolf/browser/extensions"
 
   cd "${srcdir}/${_pkgsrc}/${_arch[$CARCH]}"
   install -vDm755 "nm${pkgname}" "${pkgdir}/usr/bin/nm${pkgname}"

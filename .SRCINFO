@@ -1,7 +1,7 @@
 pkgbase = cryptoplugin
 	pkgdesc = PrivatBank Crypto Plugin
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://privatbank.ua
 	arch = i686
 	arch = x86_64
