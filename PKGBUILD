@@ -20,7 +20,7 @@ if [[ `expr $_minor % 2` -eq 1 ]]; then
 	_dirname='development'
 fi
 
-source=("https://download.libguestfs.org/virt-v2v/${pkgver:0:3}-${_dirname}/virt-v2v-${pkgver}.tar.gz" "virt-v2v.install")
+source=("https://download.libguestfs.org/virt-v2v/${pkgver%.*}-${_dirname}/virt-v2v-${pkgver}.tar.gz" "virt-v2v.install")
 install=virt-v2v.install
 
 sha256sums=('5808990149330fc8d1a94312978be77a7a6b18b11d7676c522e99b283486edc8'
