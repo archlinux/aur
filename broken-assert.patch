@@ -1,0 +1,14 @@
+diff -ur netcoredbg.old/src/metadata/modules_sources.h netcoredbg.new/src/metadata/modules_sources.h
+--- netcoredbg.old/src/metadata/modules_sources.h	2026-01-24 13:27:36.563826632 +0000
++++ netcoredbg.new/src/metadata/modules_sources.h	2026-01-24 13:28:27.241169958 +0000
+@@ -65,8 +65,8 @@
+ 
+     bool NestedInto(const method_data_t &other) const
+     {
+-        assert(startLine != other.startLine || startColumn != other.startColumn);
+-        assert(endLine != other.endLine || endColumn != other.endColumn);
++        // assert(startLine != other.startLine || startColumn != other.startColumn);
++        // assert(endLine != other.endLine || endColumn != other.endColumn);
+ 
+         return (startLine > other.startLine || (startLine == other.startLine && startColumn > other.startColumn)) &&
+             (endLine < other.endLine || (endLine == other.endLine && endColumn < other.endColumn));

@@ -1,7 +1,7 @@
 pkgbase = netcoredbg
 	pkgdesc = Debugger for .NET Core runtime
 	pkgver = 3.1.3_1062
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Samsung/netcoredbg
 	arch = x86_64
 	license = MIT
@@ -13,7 +13,9 @@ pkgbase = netcoredbg
 	depends = gcc-libs
 	source = netcoredbg-3.1.3-1062.tar.gz::https://github.com/Samsung/netcoredbg/archive/refs/tags/3.1.3-1062.tar.gz
 	source = dotnet_runtime_0ada13f.tar.gz::https://github.com/dotnet/runtime/archive/0ada13fb1c2aefeef56450edb3e6ff4bc1e889bf.tar.gz
+	source = broken-assert.patch
 	sha256sums = 4138f6f99432822b7f56053b91abb550607e1015d91275b82c3cddeaa02d903e
 	sha256sums = 44818b3e6c42afe303c5277bc3fc0383dc8ffdb8c59a3a3ee8310c213f6027dd
+	sha256sums = 3f468b84a0b018aec679339e7516ce8f365cb65dc77c97d891e8283756ced8ca
 
 pkgname = netcoredbg
