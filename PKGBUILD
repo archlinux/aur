@@ -1,14 +1,21 @@
 # Maintainer: Daniel Korbelainen <officialpand@gmail.com>
 pkgname=sniptext
 pkgver=0.1.0
-pkgrel=1
+pkgrel=4
 pkgdesc="Screen capture OCR tool with adaptive ensemble recognition"
 arch=('any')
 url="https://github.com/dkorbelainen/sniptext"
 license=('MIT')
 depends=(
-    'python>=3.8'
-    'python-pip'
+    'python'
+    'python-numpy'
+    'python-pillow'
+    'python-pynput'
+    'python-pyperclip'
+    'python-pyyaml'
+    'python-loguru'
+    'python-scikit-learn'
+    'python-pytesseract'
     'tesseract'
     'tesseract-data-eng'
 )
@@ -27,7 +34,7 @@ optdepends=(
 )
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f1fab596e2c95f10ada2bf79733316f1001b2fa3876b432c25a133f777d2d427')
+sha256sums=('16f0727c7715ad10fd4678af65849ccb7729d87f1d3a756627b1c88329c865ee')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -37,12 +44,8 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
 
-    # Install using pip
-    PIP_CONFIG_FILE=/dev/null pip install --isolated \
-        --root="$pkgdir" \
-        --ignore-installed \
-        --no-deps \
-        dist/*.whl
+    # Install only our wheel; rely on system/python deps from depends()
+    python -m installer --destdir="$pkgdir" dist/*.whl
 
     # Install license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
