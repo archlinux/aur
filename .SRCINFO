@@ -1,7 +1,7 @@
 pkgbase = servo
 	pkgdesc = Parallel Browser Project: web browser written in Rust
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/servo/servo
 	install = servo.install
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = servo
 	makedepends = python
 	makedepends = python-distlib
 	makedepends = python-virtualenv
-	makedepends = rustup
+	makedepends = rust
 	makedepends = uv
 	depends = bzip2
 	depends = fontconfig
