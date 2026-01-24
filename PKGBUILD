@@ -10,8 +10,7 @@ license=('GPL-3.0-or-later')
 makedepends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base' 'qt6-declarative' 'thrift' 'boost')
 makedepends+=('cmake' 'gendesk' 'go' 'qt6-tools' 'vulkan-headers' 'cpio' 'upx' 'boost-libs')
 source=("https://github.com/qr243vbi/nekobox/releases/download/${pkgver}/nekobox-unified-source-${pkgver}.tar.xz")
-sha256sums=("f4e6da0013af0e1ec2c63f90a090861ff1cd08238e7fe30328de2203b765a52d")
-
+sha256sums=("daf4596891254482a0518dac0b98894c451d74af784fafff97b19081bfaabed4")
 
 prepare() {
     gendesk -f -n \
@@ -56,8 +55,8 @@ package_nekobox-core() {
 
 package_nekobox() {
     depends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base' 'qt6-declarative' 'nekobox-core' 'thrift' 'boost-libs')
-    provides=('nekoray' 'rahubox' 'helbox')
-    conflicts=('nekoray' 'rahubox' 'helbox')
+    provides=('nekoray')
+    conflicts=('nekoray')
 
     install -Dm755 "$DEST"/nekobox -t "${pkgdir}/usr/lib/NekoBox"
     upx "${pkgdir}/usr/lib/NekoBox/nekobox"
