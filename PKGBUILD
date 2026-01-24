@@ -13,12 +13,11 @@ depends=(libx11
 	cuda)
 makedepends=(git
 	make)
-optdepends=('dwm: print to the dwm status bar'
-	'gst-plugins-base-libs: play notification sound with gst-play'
+optdepends=('dwm: window manager'
+	'gst-plugins-base-libs: sound notifications'
 	'dunst: popup notifications'
 	'pamixer: audio control and monitoring'
-	'procps: sending signals with pkill'
-	)
+	'procps: send signals with pkill')
 source=("git+$url")
 sha256sums=('SKIP')
 

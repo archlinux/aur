@@ -10,11 +10,11 @@ pkgbase = dwmblocks-fast-git
 	depends = libx11
 	depends = alsa-lib
 	depends = cuda
-	optdepends = dwm: print to the dwm status bar
-	optdepends = gst-plugins-base-libs: play notification sound with gst-play
+	optdepends = dwm: window manager
+	optdepends = gst-plugins-base-libs: sound notifications
 	optdepends = dunst: popup notifications
 	optdepends = pamixer: audio control and monitoring
-	optdepends = procps: sending signals with pkill
+	optdepends = procps: send signals with pkill
 	source = git+https://github.com/iakobvs/dwmblocks-fast
 	sha256sums = SKIP
 
