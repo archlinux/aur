@@ -4,7 +4,7 @@
 pkgbase=memoria
 pkgname=(memoria-daemon memoria-ui)
 pkgver=1.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Clipboard manager with daemon and Qt UI"
 arch=('x86_64')
 url="https://github.com/Bumblebee-3/memoria"
@@ -18,7 +18,7 @@ makedepends=(
 )
 
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('2a33db77ae952cb95d623c2f8b698393e16bc60ef46b9bd344a70d80ee93a667')
+sha256sums=('bf2aabe3e9390551321be3ddf19552407caab185dcf61cff99af8d7ad81c1bc3')
 
 build() {
   cd "$srcdir/$pkgbase-$pkgver"
