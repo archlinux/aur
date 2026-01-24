@@ -1,6 +1,6 @@
 pkgbase = clipse-git
 	pkgdesc = Configurable TUI clipboard manager for Unix
-	pkgver = r335.73c6642
+	pkgver = r345.a1f5cbc
 	pkgrel = 1
 	url = https://github.com/savedra1/clipse
 	arch = any
