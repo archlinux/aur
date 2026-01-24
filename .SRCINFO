@@ -1,6 +1,6 @@
 pkgbase = ctags-lsp-git
-	pkgdesc = LSP implementation using universal-ctags as backend - Built from the main bransh
-	pkgver = 0.10.2.r10.gcddb8c7
+	pkgdesc = LSP implementation using universal-ctags as backend - Build from the main branch
+	pkgver = 0.10.2.r23.gec2bed6
 	pkgrel = 1
 	url = https://github.com/netmute/ctags-lsp
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ctags-lsp-git
 	arch = riscv64
 	license = MIT
 	makedepends = go
-	provides = ctags-lsp=0.10.2.r10.gcddb8c7
+	provides = ctags-lsp=0.10.2.r23.gec2bed6
 	conflicts = ctags-lsp
 	source = ctags-lsp::git+https://github.com/netmute/ctags-lsp.git#branch=main
 	sha256sums = SKIP
