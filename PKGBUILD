@@ -14,8 +14,8 @@ pkgname=(
   networkmanager-docs-clat
 )
 pkgver=1.57.1
-pkgrel=3
-commit=67c1c335af63760bf245d20f96d0a0a896fdb980
+pkgrel=4
+commit=e311df0c7502497cbaed7485068d1c0e3f1e5f0f
 pkgdesc="Network connection manager and user applications, with CLAT support (PR !2107)"
 url="https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/merge_requests/2107"
 arch=(x86_64)
@@ -68,9 +68,9 @@ checkdepends=(
   python-dbus
 )
 source=(
-  "git+https://gitlab.freedesktop.org/Mstrodl/NetworkManager.git#commit=${commit}"
+  "git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=${commit}"
 )
-b2sums=('150d28b932afc7b165b1a7c8454f5d2905d9f5dfe7637ba3096e576b34a02082a3ef0b5e47887a0cc577541eeb453a633128dd59967494c9b5cc9b81f749ab4c')
+b2sums=('c41b7c0269821f581f6c070e0f28d5b56b2260a02c5ed2be3b780302edfb9481df6b1702ef16e310e999460387ee6344785205274f44c7db61caa0c7e34c9cb3')
 validpgpkeys=(
   3D10AD045AB4AAFF8E8F36AF9B980AC2FB874FEB # Ana Cabral <acabral@redhat.com>
   F07F7C1EABD382F81CBFBA3B998D4828CD7E1656 # Beniamino Galvani <bgalvani@redhat.com>
