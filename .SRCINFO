@@ -9,6 +9,6 @@ pkgbase = forgefoundary
 	depends = composer
 	depends = git
 	source = https://github.com/omarSemgey/ForgeFoundary/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = ad3e5447209df27fbb4778b4e5255b327a309f325834acbe1d011562794d4dba
+	sha256sums = c032f81208f0f6226c1b5a68360dda9a95c1ef4604a1893ea46693fceb031fde
 
 pkgname = forgefoundary
