@@ -1,47 +1,53 @@
-
-# Maintainer: rzhli <tayuebuliuhen@gmail.com>
-# Contributor: rzhli <tayuebuliuhen@gmail.com>
-
 pkgname='ftnn-desktop'
-pkgver='16.1.14618'
-pkgrel=1
+pkgver='16.2.14708'
+pkgrel=3
 pkgdesc="Futu，富途，股票软件"
 arch=('x86_64')
 url="https://www.futunn.com/"
-license=('unknown')
-depends=('glibc' 'qt5-base' 'hicolor-icon-theme')
-sha256sums=('SKIP')
+license=('custom')
+
+depends=(
+    'qt5-base'
+    'qt5-x11extras'
+    'nss'
+    'libxss'
+    'libxcrypt-compat'
+    'xdg-utils'
+)
+
 source=("https://softwaredownload.futunn.com/FTNN_desktop_${pkgver}_amd64.deb")
-# 如果 .deb 文件在本地
-# source=("local://FTNN_desktop_${pkgver}_amd64.deb")
+sha256sums=('SKIP')
 
 package() {
-  # 解压 .deb
-  bsdtar -xf "${srcdir}/FTNN_desktop_${pkgver}_amd64.deb"
-  bsdtar -xf data.tar.* -C "${pkgdir}"
+    # 进入 src 目录解压
+    bsdtar -xf "FTNN_desktop_${pkgver}_amd64.deb"
+    bsdtar -xf data.tar.* -C "${pkgdir}"
 
-  # 设置权限
-  chmod +x "${pkgdir}/opt/FTNN/FTNN"
+    # 修复权限
+    chmod +x "${pkgdir}/opt/FTNN/FTNN"
 
-  # 创建可执行链接
-  install -d "${pkgdir}/usr/bin"
-  ln -sf /opt/FTNN/FTNN "${pkgdir}/usr/bin/ftnn"
+    # 建立软链接
+    install -d "${pkgdir}/usr/bin"
+    ln -sf /opt/FTNN/FTNN "${pkgdir}/usr/bin/ftnn"
 
-  # 安装图标（app.png）
-  install -d "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
-  install -m644 "${pkgdir}/opt/FTNN/app.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/ftnn.png"
+    # 图标安装
+    install -d "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
+    if [ -f "${pkgdir}/opt/FTNN/app.png" ]; then
+        install -m644 "${pkgdir}/opt/FTNN/app.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/ftnn.png"
+    fi
 
-   # 添加 .desktop
-  install -d "${pkgdir}/usr/share/applications"
-  cat <<EOF > "${pkgdir}/usr/share/applications/ftnn.desktop"
+    # 桌面文件
+    install -d "${pkgdir}/usr/share/applications"
+    cat <<EOF > "${pkgdir}/usr/share/applications/ftnn.desktop"
 [Desktop Entry]
 Name=FTNN 富途牛牛
-Comment=Trade Hong Kong, US, and China A-shares
-Exec=env QT_SCALE_FACTOR=2 QT_FONT_DPI=144 ftnn
+Comment=Trade stocks
+Exec=ftnn %U
 Icon=ftnn
 Terminal=false
 Type=Application
-Categories=Finance;Network;
+Categories=Finance;
 StartupWMClass=FTNN
+MimeType=x-scheme-handler/futu;
 EOF
 }
