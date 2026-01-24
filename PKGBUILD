@@ -2,7 +2,7 @@
 # Contributor: Dvd-Znf <email@dvdznf.xyz>
 
 pkgname=komac
-pkgver=2.14.0
+pkgver=2.15.0
 pkgrel=1
 pkgdesc="The Community Manifest Creator for WinGet"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('bzip2' 'gcc-libs')
 makedepends=('cargo')
 optdepends=()
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("00e2dbc44bbc25bdfa9c8b425b641736b6677bc8b388d288e2c9bc37531d4ddd")
+sha256sums=('c22ef89c9018a35b10de14c953616721864a86f2a6c4c83f4ceb95785cb8635d')
 
 prepare() {
 	cd Komac-${pkgver}
