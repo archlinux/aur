@@ -1,7 +1,7 @@
 pkgbase = comaps
 	pkgdesc = CoMaps: Offline Hike, Bike, Trails and Navigation
-	pkgver = v2025.10.16_1
-	pkgrel = 2
+	pkgver = v2026.01.08_11
+	pkgrel = 1
 	url = https://comaps.app
 	arch = x86_64
 	license = Apache-2.0
