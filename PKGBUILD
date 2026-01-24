@@ -1,6 +1,6 @@
 # Maintainer: aydiler <aydiler@users.noreply.github.com>
 pkgname=msigd-gui-bin
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Desktop GUI for controlling MSI gaming monitors (prebuilt binary)"
 arch=('x86_64')
