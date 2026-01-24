@@ -67,9 +67,9 @@ function pkgver() {
   # REVISION in mozc_version_template.bzl is no longer used by Bazel builds.
   # REVISION will be probably removed once GYP builds are completely removed.
   # future: stable_channel 
-  # bazel build --config oss_linux --config stable_channel base:mozc_version_txt >/dev/null 2>&1
-  bazel build --config oss_linux --config stable_channel base:mozc_version_txt >/dev/null 2>&1
-  #bazel build --config oss_linux base:mozc_version_txt >/dev/null 2>&1
+  # bazelisk build --config oss_linux --config stable_channel base:mozc_version_txt >/dev/null 2>&1
+  bazelisk build --config oss_linux --config stable_channel base:mozc_version_txt >/dev/null 2>&1
+  #bazelisk build --config oss_linux base:mozc_version_txt >/dev/null 2>&1
   source <(grep -E '^(MAJOR|MINOR|BUILD_OSS|REVISION)\s*=' bazel-bin/base/mozc_version.txt)
    _bzr_ver="$MAJOR.$MINOR.$BUILD_OSS.$REVISION"
   printf "%s" "${_bzr_ver}"
