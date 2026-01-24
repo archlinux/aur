@@ -1,0 +1,4 @@
+[xfce4-datetime-plugin]
+source = 'git'
+git = 'https://gitlab.xfce.org/panel-plugins/xfce4-datetime-plugin'
+prefix = 'xfce4-datetime-plugin-'
