@@ -1,7 +1,7 @@
 # Maintainer: Matt Cuneo <m@cuneo.au>
 
 pkgname=huntarr
-pkgver=8.2.23
+pkgver=8.2.25
 pkgrel=1
 _repoorg=plexguide
 _reponame=Huntarr.io
@@ -11,7 +11,7 @@ url="https://github.com/$_repoorg/$_reponame"
 license=('GPL3')
 depends=('python' 'python-flask' 'python-requests' 'python-waitress' 'python-bcrypt' 'python-qrcode' 'python-pyotp' 'apprise' 'python-pytz' 'python-markdown' 'python-pyyaml')
 source=("${url}/archive/refs/tags/$pkgver.tar.gz" 'huntarr.service' 'huntarr.sysusers' 'huntarr.tmpfiles')
-sha256sums=('ca42ba964790ed56cc1d95fa14937285c0e8ce9b561c5f27509b1bf65580cdd1'
+sha256sums=('eedb0e836c59ff0e05b789cbd4dc2df8d0c13e62aa889bc3aa5458e699ececd1'
             '660e4f9dc6d38b06feeda7e7e8748191887a63a4a4087d6a23d36a4a4394bbd4'
             '42a4c3451509f4ee82aa555f83f80fa638fbef162a33e937127a82723e2ab19e'
             '57d8031a1a03293bc422cfd20cd8238219c4823557d17f5ad0874e633e864db5')
