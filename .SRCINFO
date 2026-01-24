@@ -1,7 +1,7 @@
 pkgbase = jellyfin-git
 	pkgdesc = The Free Software Media System
 	pkgver = 10.12.0.r28174.738d475
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jellyfin.org
 	arch = any
 	license = GPL2
@@ -36,7 +36,7 @@ pkgname = jellyfin-web-git
 
 pkgname = jellyfin-server-git
 	pkgdesc = Jellyfin server backend
-	depends = aspnet-runtime-9.0
+	depends = aspnet-runtime
 	depends = ffmpeg
 	depends = sqlite
 	provides = jellyfin-server
