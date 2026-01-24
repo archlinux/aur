@@ -1,14 +1,14 @@
 # Maintainer: Swarnaditya Singh <demonkingswarn@protonmail.com>
 pkgname=luffy-bin
 _pkgname=luffy
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="Watch movies and series from your commandline"
 arch=('x86_64')
 url="https://github.com/DemonKingSwarn/luffy"
 license=('GPL3')
-depends=(mpv fzf yt-dlp chafa libsixel)
-optdepends=(kitty ghostty)
+depends=(fzf yt-dlp chafa libsixel)
+optdepends=(kitty ghostty mpv vlc)
 provides=(luffy)
 conflicts=()
 replaces=()
