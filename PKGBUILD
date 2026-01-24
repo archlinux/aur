@@ -1,5 +1,5 @@
 pkgname=ctotp-git
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A minimal CLI wrapper for Ente Auth to copy 2FA codes directly from terminal."
 arch=('any')
