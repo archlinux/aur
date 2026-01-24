@@ -1,7 +1,7 @@
 pkgbase = sheet-git
 	pkgdesc = sheet is a minimal(ish) tui frontend for feh/swaybg
 	pkgver = r11.a4ffa4b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/unixextremist/sheet
 	arch = x86_64
 	license = WTFPL

@@ -1,6 +1,6 @@
 pkgname=sheet-git
 pkgver=r11.a4ffa4b
-pkgrel=1
+pkgrel=2
 pkgdesc="sheet is a minimal(ish) tui frontend for feh/swaybg"
 arch=(x86_64)
 url="https://codeberg.org/unixextremist/sheet"
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
 	cd "$pkgname"
-	cc sheet.c -o sheet -lncurses
+	cc $CFLAGS $CPPFLAGS sheet.c -o sheet $LDFLAGS -lncurses
 }
 
 
