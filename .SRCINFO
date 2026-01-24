@@ -1,0 +1,22 @@
+pkgbase = lektra-git
+	pkgdesc = High-performance PDF reader that prioritizes screen space and control
+	pkgver = 0.6.0.r28.gbda6a05
+	pkgrel = 1
+	url = https://codeberg.org/lektra/lektra
+	arch = x86_64
+	license = AGPL-3.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = qt6-base
+	depends = curl
+	depends = libsynctex
+	provides = lektra
+	conflicts = lektra
+	source = lektra::git+https://codeberg.org/lektra/lektra.git
+	source = mupdf-1.27.0-source.tar.gz::https://mupdf.com/downloads/archive/mupdf-1.27.0-source.tar.gz
+	sha256sums = SKIP
+	sha256sums = ae2442416de499182d37a526c6fa2bacc7a3bed5a888d113ca04844484dfe7c6
+
+pkgname = lektra-git
