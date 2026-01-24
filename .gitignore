@@ -1,0 +1,6 @@
+pkg/
+src/
+*.tar.xz
+./update.sh
+mitama-cpp-result*
+*.log

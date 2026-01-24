@@ -1,0 +1,21 @@
+pkgbase = mitama-cpp-result
+	pkgdesc = A Library that provides 'result<T, E>' and 'maybe<T>' and monadic functions for them.
+	pkgver = 11.0.0
+	pkgrel = 1
+	url = https://loligothick.github.io/mitama-cpp-result/
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = cmake
+	makedepends = pkg-config
+	depends = fmt
+	source = mitama-cpp-result-11.0.0.tar.gz::https://github.com/loliGothicK/mitama-cpp-result/archive/v11.0.0.tar.gz
+	sha256sums = fdfe81098660e7365e79760616231eefdd42dd7760970c0e7ea4c6bacce46440
+
+pkgname = mitama-cpp-result
