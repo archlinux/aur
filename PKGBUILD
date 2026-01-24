@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: aydiler <aydiler@users.noreply.github.com>
 pkgname=msigd-gui
 pkgver=1.0.0
 pkgrel=1
@@ -24,7 +24,7 @@ package() {
     install -Dm755 "src-tauri/target/release/msigd-gui" "$pkgdir/usr/bin/msigd-gui"
 
     # Install desktop file
-    install -Dm644 "msigd-gui.desktop" "$pkgdir/usr/share/applications/msigd-gui.desktop"
+    install -Dm644 "io.github.aydiler.msigd-gui.desktop" "$pkgdir/usr/share/applications/msigd-gui.desktop"
 
     # Install icons
     install -Dm644 "src-tauri/icons/32x32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/msigd-gui.png"
@@ -32,5 +32,5 @@ package() {
     install -Dm644 "src-tauri/icons/128x128@2x.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/msigd-gui.png"
 
     # Install license
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE" 2>/dev/null || true
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
