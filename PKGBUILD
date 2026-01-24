@@ -1,6 +1,6 @@
 # Maintainer: Lordseriouspig <lordseriouspig@gmail.com>
 pkgname=flavorcli
-pkgver=0.3.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="FlavorCLI is a fully-featured implementation of the Flavortown API, allowing for easier and streamlined interaction with HackClub's Flavortown."
 arch=('x86_64' 'aarch64')
