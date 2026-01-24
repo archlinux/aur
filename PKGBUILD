@@ -123,7 +123,13 @@ check() {
   export PYTHONPATH="$PWD/tmp_install/${_site_packages}"
 
   python -m ruff check
-  python -m mypy
+  # Override papis python version selection which is too old for us,
+  # see https://github.com/papis/papis/pull/1137
+  python -m mypy \
+    --python-version \
+      "$(python -c 'import platform; print(
+        ".".join(platform.python_version_tuple()[:2])
+        )')"
   export PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
   python -m pytest -p pytest_cov -p papis_testing
 }
