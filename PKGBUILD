@@ -16,5 +16,10 @@ package() {
     cd "$pkgdir/opt/$pkgname"
     export COMPOSER_ALLOW_SUPERUSER=1
     composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
+        install -Dm755 /dev/stdin "$pkgdir/usr/bin/ForgeFoundary" << 'EOF'
+#!/bin/sh
+exec php /opt/forgefoundary/ForgeFoundary "$@"
+EOF
+
     install -Dm644 README.MD "$pkgdir/usr/share/doc/$pkgname/README.MD"
 }
