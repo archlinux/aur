@@ -1,0 +1,15 @@
+pkgbase = n-m3u8dl-re
+	pkgdesc = Cross-Platform, modern and powerful stream downloader for MPD/M3U8/ISM
+	pkgver = 0.5.1beta
+	pkgrel = 1
+	url = https://github.com/nilaoda/N_m3u8DL-RE
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk
+	makedepends = git
+	depends = glibc
+	options = !debug
+	source = n-m3u8dl-re-0.5.1beta::git+https://github.com/nilaoda/N_m3u8DL-RE.git#tag=v0.5.1-beta
+	sha256sums = c25e34bf5ba2cd518b8274316656757651a77f7b53a75dacbb59f0782a34dc72
+
+pkgname = n-m3u8dl-re
