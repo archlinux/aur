@@ -1,0 +1,8 @@
+
+post_install() {
+
+    echo '>'
+    echo '> Note : you need to reinstall or update your nvidia dkms package !!!'
+    echo '>'
+
+}

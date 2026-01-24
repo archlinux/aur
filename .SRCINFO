@@ -1,0 +1,15 @@
+pkgbase = nvidia-patch-hook
+	pkgdesc = a patch inspired by dartraiden/NVIDIA-patcher to patching NVIDIA DKMS driver
+	pkgver = 1.0
+	pkgrel = 1
+	install = nvidia-patch-hook.install
+	arch = any
+	license = custom
+	depends = bash
+	depends = python
+	source = 00-nvidia-patch.hook
+	source = nvp.py
+	sha256sums = 4649612cdc8b6abdf276077bea1ef46c3ff384f854f039e7667529d4aec88d29
+	sha256sums = e1d9972083702c7299eff44670e08d3c137d2a7ae28cc3aa6845b4a9364ddc52
+
+pkgname = nvidia-patch-hook

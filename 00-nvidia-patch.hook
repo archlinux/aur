@@ -1,0 +1,19 @@
+
+[Trigger]
+
+Operation = Install
+Operation = Upgrade
+
+Type = Path
+
+Target = usr/src/nvidia-[45]*/nvidia/nv-kernel.o_binary
+
+[Action]
+
+Description = Patching NVIDIA flags
+
+When = PostTransaction
+
+Exec = /bin/sh -c 'while read nb ; do echo y | python -B /etc/pacman.d/hooks/nvp.py "$nb" ; done'
+
+NeedsTargets
