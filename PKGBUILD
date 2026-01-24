@@ -38,7 +38,7 @@ build() {
     
     cd "$srcdir/VMK"
     
-    g++ fcitx5-vmk-server.cpp -o fcitx5-vmk-server ${LDFLAGS} -lpthread -linput -ludev
+    g++ fcitx5-vmk-server.cpp -o fcitx5-vmk-server ${LDFLAGS} -linput -ludev
 }
 
 package() {
