@@ -13,8 +13,9 @@ pkgdesc="PrivatBank Crypto Plugin"
 arch=(
   "${!_arch[@]}"
 )
+url="https://privatbank.ua"
 license=(
-  'custom'
+  'custom:Limited Use Software License Agreement'
 )
 depends=(
   'at-spi2-core'
@@ -34,6 +35,8 @@ depends=(
 # )
 _pkgsrc="${pkgname}-${pkgver}"
 source=(
+  # https://biprocessing.org.ua/IdentDigitalSignature/resources/plugin/${_pkgsrc}.deb
+  # https://biprocessing.org.ua/IdentDigitalSignature/resources/plugin/${_pkgsrc}.rpm
   "https://biprocessing.org.ua/IdentDigitalSignature/resources/plugin/${_pkgsrc}.run"
 )
 b2sums=('cbb4a6582c0d0e8a659b27983d5b96be5540e752bcb4e4d8b8e5257fec36f3348516f20810f07a05270daff95d78a3dd4bec07f904ff887732cf6ac5cf0fcaed')
@@ -56,12 +59,12 @@ prepare() {
 package() {
   cd "${srcdir}/${_pkgsrc}"
   # https://chromium.googlesource.com/chromium/src.git/+/62.0.3178.1/chrome/common/extensions/docs/examples/api/nativeMessaging/host/install_host.sh
+  # ???
   install -vDm644 "com.privatbank.cryptoplugin.json" \
     "${pkgdir}/usr/lib/chromium/native-messaging-hosts/com.privatbank.cryptoplugin.json"
 
   cd "${srcdir}/${_pkgsrc}/mozilla"
   # https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Native_manifests#linux
-  # ???
   install -vDm644 "com.privatbank.cryptoplugin.json" \
     "${pkgdir}/usr/lib/mozilla/native-messaging-hosts/com.privatbank.cryptoplugin.json"
   install -vDm644 "cryptoplugin_ext_id@privatbank.ua.xpi" \
