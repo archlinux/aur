@@ -1,5 +1,5 @@
 pkgbase = ctotp-git
-	pkgdesc = A minimal CLI wrapper for Ente Auth to copy 2FA codes directly from terminal
+	pkgdesc = A minimal CLI wrapper for Ente Auth to copy 2FA codes directly from terminal.
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/GibreelAbdullah/ctotp
