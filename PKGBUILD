@@ -4,65 +4,22 @@
 pkgname=comaps
 pkgver=v2025.10.16_1
 tag="${pkgver%%_*}-${pkgver##*_}"
-pkgrel=1
+pkgrel=2
 pkgdesc="CoMaps: Offline Hike, Bike, Trails and Navigation"
 arch=(x86_64)
-makedepends=(cmake git jq gcc ninja wget python-protobuf libxinerama)
+makedepends=(cmake git jq gcc ninja python-protobuf libxinerama)
 depends=(mesa libglvnd freetype2 sqlite icu qt6-svg qt6-base zlib libpng glibc
   qt6-positioning gcc-libs harfbuzz libxrandr libxi libxcursor)
 optdepends=("ccache: faster re-compilation" "qt6-wayland: for Wayland users")
 license=('Apache-2.0')
 url="https://comaps.app"
-source_url="https://codeberg.org/comaps/comaps/"
+_source_url="https://codeberg.org/comaps/comaps.git"
 source=(comaps.desktop
   icon.svg
-  relax-protobuf-version.patch
-  "git+https://github.com/organicmaps/osmctools.git"
-  "git+https://codeberg.org/comaps/kothic.git"
-  "git+https://codeberg.org/comaps/protobuf.git"
-  "git+https://github.com/KhronosGroup/Vulkan-Headers.git"
-  "git+https://github.com/boostorg/boost.git#tag=boost-1.85.0"
-  "git+https://github.com/organicmaps/just_gtfs.git#branch=for-usage-as-submodule"
-  "git+https://github.com/libexpat/libexpat.git#tag=R_2_2_9"
-  "git+https://github.com/g-truc/glm.git"
-  "git+https://github.com/unicode-org/icu.git"
-  "git+https://gitlab.freedesktop.org/freetype/freetype.git"
-  "git+https://github.com/google/googletest.git"
-  "git+https://github.com/lemire/fast_double_parser.git"
-  "git+https://github.com/zeux/pugixml.git"
-  "git+https://github.com/akheron/jansson.git"
-  "git+https://github.com/gflags/gflags.git"
-  "git+https://github.com/thisistherk/fast_obj"
-  "git+https://github.com/harfbuzz/harfbuzz.git"
-  "git+https://github.com/nemtrif/utfcpp.git"
-  "git+https://github.com/glfw/glfw.git"
-  "git+https://github.com/dpogue/CMake-MetalShaderSupport.git"
-  "git+https://github.com/ocornut/imgui"
-)
+  relax-protobuf-version.patch)
 sha256sums=('21f70d6c3282fcec0165c9b9f8082e081ecb50b423ae286ffd4ccde4cc794563'
   '85210e30cd1b6e8b30407cf97a57cbf3eb98f16526fc6ffaae63f1441691e6e1'
-  '60144c52729711de741679290f41b7000d8de4d4aed86b10c6aa59a1cdb1545e'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP')
+  '60144c52729711de741679290f41b7000d8de4d4aed86b10c6aa59a1cdb1545e')
 conflicts=("${pkgname}-bin" "${pkgname}-git")
 prepare() {
   avail=$(df -P -B 1048576 $srcdir | awk 'NR>1 {print $4}')
@@ -71,9 +28,9 @@ prepare() {
     exit 1
   fi
 
-  src_url=$source_url
+  src_url=$_source_url
   if [ -n "$SOURCE_URL_REWRITER" ]; then
-    src_url=$($SOURCE_URL_REWRITER $source_url)
+    src_url=$($SOURCE_URL_REWRITER $_source_url)
     case $src_url in
     file://*)
       git -C ${src_url#file://} fetch --depth=1 origin "$tag"
@@ -86,35 +43,12 @@ prepare() {
   fi
 
   cd $pkgname
-  git submodule init
-
-  git config submodule.tools/osmctools.url "$srcdir/osmctools"
-  git config submodule.tools/kothic.url "$srcdir/kothic"
-  git config submodule.3party/protobuf/protobuf.url "$srcdir/protobuf"
-  git config submodule.3party/Vulkan-Headers.url "$srcdir/Vulkan-Headers"
-  git config submodule.3party/boost.url "$srcdir/boost"
-  git config submodule.3party/just_gtfs.url "$srcdir/just_gtfs"
-  git config submodule.3party/expat.url "$srcdir/libexpat"
-  git config submodule.3party/glm.url "$srcdir/glm"
-  git config submodule.3party/icu/icu.url "$srcdir/icu"
-  git config submodule.3party/freetype/freetype.url "$srcdir/freetype"
-  git config submodule.3party/googletest.url "$srcdir/googletest"
-  git config submodule.3party/fast_double_parser.url "$srcdir/fast_double_parser"
-  git config submodule.3party/pugixml/pugixml.url "$srcdir/pugixml"
-  git config submodule.3party/jansson/jansson.url "$srcdir/jansson"
-  git config submodule.3party/gflags.url "$srcdir/gflags"
-  git config submodule.3party/fast_obj.url "$srcdir/fast_obj"
-  git config submodule.3party/harfbuzz/harfbuzz.url "$srcdir/harfbuzz"
-  git config submodule.3party/utfcpp.url "$srcdir/utfcpp"
-  git config submodule.3party/glfw.url "$srcdir/glfw"
-  git config submodule.3party/CMake-MetalShaderSupport.url "$srcdir/CMake-MetalShaderSupport"
-  git config submodule.3party/imgui/imgui.url "$srcdir/imgui"
   git -c protocol.file.allow=always submodule update --init --recursive --depth=1
   rm -f 3party/boost/b2
-  
+
   # Apply patch to relax protobuf version check
   patch -p1 < "$srcdir/relax-protobuf-version.patch"
-  
+
   bash ./configure.sh
 }
 build() {
