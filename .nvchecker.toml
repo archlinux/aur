@@ -1,0 +1,5 @@
+[git-switcher-bin]
+source = "github"
+github = "TheYkk/git-switcher"
+use_latest_release = true
+prefix = "v"
