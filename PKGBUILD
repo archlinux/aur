@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d37a2c0bbde296288614c680141eb9cf0e34558dfbe5be308e69b5333e63171b')
+sha256sums=('2a0c51bc37f45190c2653b2bbd1c3013eb1ec48fabd3336201fc90ef005c1247')
 
 prepare() {
     cd "ralph-rs-$pkgver"
