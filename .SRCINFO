@@ -1,6 +1,6 @@
 pkgbase = android-armv7a-eabi-sord
 	pkgdesc = A lightweight C library for storing RDF data in memory (Android armv7a-eabi)
-	pkgver = 0.16.18
+	pkgver = 0.16.20
 	pkgrel = 1
 	url = https://drobilla.net/software/sord.html
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = android-armv7a-eabi-sord
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.drobilla.net/sord-0.16.18.tar.xz
-	md5sums = 8c7bf82dfa5bd7d6906ded54032f8a64
+	source = https://download.drobilla.net/sord-0.16.20.tar.xz
+	md5sums = 82e63c626e645ab6ce571bd4f462e13e
 
 pkgname = android-armv7a-eabi-sord
