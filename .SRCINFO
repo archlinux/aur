@@ -1,0 +1,17 @@
+pkgbase = aniship-night-bin
+	pkgdesc = AniShip Night - anime streaming client
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Veniamin668/AniShip-fork
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	provides = aniship-night
+	conflicts = aniship-night-git
+	source = AniShip-1.0.0.AppImage::https://github.com/Veniamin668/AniShip-fork/releases/download/v1.0.0/AniShip-1.0.0.AppImage
+	sha256sums = SKIP
+
+pkgname = aniship-night-bin
