@@ -2,7 +2,7 @@
 pkgname=python-you-live
 pkgdesc="A live recorder focus on China mainland livestream sites."
 pkgver=1.1.5
-pkgrel=2
+pkgrel=3
 arch=('any')
 url='https://github.com/nICEnnnnnnnLee/LiveRecorder'
 depends=('python' 'python-requests' 'python-pyexecjs')
@@ -20,4 +20,6 @@ build() {
 package() {
     cd "$_name-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    install -D -m644 LICENSE.txt \
+    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
 }

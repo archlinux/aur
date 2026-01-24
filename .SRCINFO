@@ -1,7 +1,7 @@
 pkgbase = python-you-live
 	pkgdesc = A live recorder focus on China mainland livestream sites.
 	pkgver = 1.1.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nICEnnnnnnnLee/LiveRecorder
 	arch = any
 	license = MIT
