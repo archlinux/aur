@@ -3,7 +3,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-xz
-pkgver=5.8.1
+pkgver=5.8.2
 pkgrel=1
 arch=('any')
 pkgdesc="Library and command line tools for XZ and LZMA compressed files (Android ${_android_arch})"
@@ -13,11 +13,10 @@ groups=('android-xz')
 depends=('android-ndk')
 makedepends=('android-configure'
              'android-sdk-build-tools'
-             'po4a'
-             'doxygen')
+             'po4a')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/tukaani-project/xz/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('1be5d8137d7b5e91fa9ff8a6fdc4895b')
+md5sums=('8dfa4ca6a7bce36aa3391ccdcfd20c14')
 
 prepare() {
     cd "${srcdir}/xz-${pkgver}"
@@ -49,4 +48,6 @@ package() {
     make DESTDIR="${pkgdir}" install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 COPYING* -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
