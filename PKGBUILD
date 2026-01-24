@@ -5,7 +5,7 @@
 pkgname=spotify-player-feats-git
 _pkgname=spotify-player
 pkgver=0.21.3.r1.g9ccb5bf
-pkgrel=1
+pkgrel=2
 pkgdesc="A TUI spotify player (All features enabled while keeping defaults)."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/aome510/spotify-player"
@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
   cd "${pkgname}"
-  cargo build --frozen --release \
+  cargo build --locked --release \
 		 --features notify,daemon,image,pixelate,sixel,fzf
 }
 
