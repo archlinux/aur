@@ -3,38 +3,62 @@
 # Maintainer: bannert <aur@bannert.dev>
 
 pkgname=karere
-pkgver=1.1.0
+pkgver=2.3.2
 pkgrel=1
-pkgdesc="A modern, native GTK4/LibAdwaita wrapper for WhatsApp Web"
+pkgdesc="A fast, native WhatsApp client for Linux with GTK4/LibAdwaita"
 arch=('x86_64')
 url="https://github.com/tobagin/karere"
-license=('GPL3')
-depends=('gtk4>=4.10.0' 'libadwaita>=1.8.0' 'webkitgtk-6.0>=2.40.0' 'glib2>=2.70.0' 'hicolor-icon-theme')
-makedepends=('meson' 'ninja' 'vala' 'blueprint-compiler' 'desktop-file-utils' 'appstream-glib' 'appstream' 'python')
-optdepends=('hunspell: spell checking support')
-provides=('karere')
+license=('GPL-3.0-or-later')
+depends=(
+	'gtk4'
+	'libadwaita'
+	'webkitgtk-6.0'
+	'glib2'
+	'hicolor-icon-theme'
+	'dbus'
+)
+makedepends=(
+	'meson'
+	'ninja'
+	'rust'
+	'desktop-file-utils'
+	'appstream-glib'
+	'appstream'
+)
+optdepends=(
+	'hunspell: spell checking support'
+	'libappindicator-gtk3: system tray support'
+)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('19e27654bc571c3b14e54a99d0bba958d814f0355618ea42d4baec680d0c1773')
+sha256sums=('08e1f59d767ec82867a52491685d66737a1ae4d86d12dc760ab61d97ef1b8646')
 
 build() {
-	set -euo pipefail
 	cd "$srcdir/$pkgname-$pkgver"
 
-	# Configure the build
-	meson setup build --prefix=/usr
+	export CARGO_HOME="$srcdir/cargo-home"
+	mkdir -p "$CARGO_HOME"
 
-	# Compile the project
+	# Patch meson.build to remove --offline flag for default profile
+	# (upstream uses offline for Flatpak builds with vendored deps)
+	sed -i "s/cargo_options += \[ '--release', '--offline' \]/cargo_options += [ '--release' ]/" meson.build
+
+	# Strip source paths from binary to avoid $srcdir references in panic messages
+	export RUSTFLAGS="--remap-path-prefix=$srcdir=/build"
+
+	meson setup build \
+		--prefix=/usr \
+		--buildtype=release \
+		-Dprofile=default
+
 	meson compile -C build
 }
 
 package() {
-	set -euo pipefail
 	cd "$srcdir/$pkgname-$pkgver"
 
-	# Install the compiled files
 	meson install -C build --destdir="$pkgdir"
 
-	# Validate desktop files
+	# Validate desktop file
 	desktop-file-validate "$pkgdir/usr/share/applications/"*.desktop
 
 	# Validate appstream metadata
