@@ -4,7 +4,7 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-pcre2
-pkgver=10.45
+pkgver=10.47
 pkgrel=1
 arch=('any')
 pkgdesc="A library that implements Perl 5-style regular expressions (Android ${_android_arch})"
@@ -18,7 +18,7 @@ makedepends=('android-configure'
              "android-${_android_arch}-readline"
              "android-${_android_arch}-zlib")
 source=("https://github.com/PhilipHazel/pcre2/releases/download/pcre2-${pkgver}/pcre2-${pkgver}.tar.bz2")
-md5sums=('f71abbe1b5adf25cd9af5d26ef223b66')
+md5sums=('aded5840ab5a7d772dd4e16fc294b665')
 
 build() {
     cd "${srcdir}/pcre2-${pkgver}"
@@ -30,7 +30,8 @@ build() {
         --enable-pcre2-32 \
         --enable-pcre2grep-libz \
         --enable-pcre2grep-libbz2 \
-        --enable-pcre2test-libreadline
+        --enable-pcre2test-libreadline \
+        --enable-symvers=no
     make $MAKEFLAGS
 }
 
@@ -43,4 +44,6 @@ package() {
     rm -r "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
