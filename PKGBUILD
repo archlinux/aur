@@ -5,7 +5,7 @@ _name=backports.shutil_get_terminal_size
 
 pkgname=python-backports.shutil_get_terminal_size
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A backport of the get_terminal_size function from Python 3.3's shutil."
 
 arch=("any")
