@@ -2,7 +2,7 @@
 pkgbase=damask
 pkgname=('damask' 'damask-grid' 'damask-mesh' 'python-damask')
 pkgver=3.0.2
-pkgrel=4
+pkgrel=5
 pkgdesc='DAMASK - The Duesseldorf Advanced Material Simulation Kit'
 arch=('x86_64')
 url='https://damask-multiphysics.org'
@@ -23,7 +23,7 @@ sha512sums=('b1e5970560e95f23766f8bfe660da5da401eb3f57123c53687153cf5e56d3c41be6
             'a361a5c2edeb9186ca1073c93feae5fa34d1a7b4106745be8568be658f86de466b1974ead6a67a88c84e8752421662116e20ea8e4ca89e36fdcb304f8cfb619c')
 
 prepare() {
-  sed -i 's/FYECF_MODE_FLOW_ONELINE/FYECF_MODE_FLOW_ONELINE | FYECF_WIDTH_INF/g' ${pkgname}-${pkgver}/src/C_routines.c
+  sed -i 's/FYECF_MODE_FLOW_ONELINE/FYECF_MODE_FLOW_ONELINE | FYECF_WIDTH_INF | FYECF_DOC_START_MARK_OFF/g' ${pkgname}-${pkgver}/src/C_routines.c
   sed -i '24s/23/24/g' ${pkgname}-${pkgver}/src/CLI.f90
   sed -i '14s/24/25/g' ${pkgname}-${pkgver}/CMakeLists.txt
 }
