@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-verdict
 	pkgdesc = Compute quality functions of 2 and 3-dimensional regions (Android aarch64)
-	pkgver = 1.4.2
-	pkgrel = 2
+	pkgver = 1.4.4
+	pkgrel = 1
 	url = https://github.com/sandialabs/verdict
 	arch = any
 	license = BSD
@@ -11,7 +11,7 @@ pkgbase = android-aarch64-verdict
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/sandialabs/verdict/archive/1.4.2/verdict-1.4.2.tar.gz
-	sha256sums = 225c8c5318f4b02e7215cefa61b5dc3f99e05147ad3fefe6ee5a3ee5b828964b
+	source = https://github.com/sandialabs/verdict/archive/1.4.4/verdict-1.4.4.tar.gz
+	md5sums = 87deb1a5e7069de6462a19fa9c67f349
 
 pkgname = android-aarch64-verdict
