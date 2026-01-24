@@ -1,0 +1,21 @@
+pkgbase = dolphin-memory-engine-bin
+	pkgdesc = A RAM search made specifically to search, monitor, and edit the Dolphin emulator's emulated memory
+	pkgver = 2026.01.24
+	pkgrel = 1
+	url = https://github.com/aldelaro5/dolphin-memory-engine
+	arch = x86_64
+	license = MIT
+	depends = dolphin-emu
+	depends = gcc-libs
+	depends = glibc
+	depends = qt6-base
+	provides = dolphin-memory-engine
+	conflicts = dolphin-memory-engine
+	source = dolphin-memory-engine-2026.01.24.svg::https://github.com/aldelaro5/dolphin-memory-engine/raw/refs/tags/2026.01.24/Source/Resources/logo.svg
+	source = dolphin-memory-engine-2026.01.24.desktop::https://github.com/aldelaro5/dolphin-memory-engine/raw/refs/tags/2026.01.24/.github/assets/dolphin-memory-engine.desktop
+	sha256sums = 24cef39d9bd752569dd3853c0726c71a098ef1299be63a21394cac74f27d66b8
+	sha256sums = fbd3f331ea8f7218eda808c7c9ace7c63522ac1482a9f52f3191ab94cb524775
+	source_x86_64 = https://github.com/aldelaro5/dolphin-memory-engine/releases/download/2026.01.24/dolphin-memory-engine-2026.01.24-linux-x86_64-binary.tar.gz
+	sha256sums_x86_64 = 2694e583de5ca8312c9d9923edaeb33e169b3a8bd6b85b0c1cdfa913311c1bc3
+
+pkgname = dolphin-memory-engine-bin

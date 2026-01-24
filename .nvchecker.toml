@@ -1,0 +1,5 @@
+[dolphin-memory-engine-bin]
+source = "github"
+github = "aldelaro5/dolphin-memory-engine"
+use_latest_release = true
+prefix = "v"
