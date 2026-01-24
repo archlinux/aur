@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=RDT
 pkgname=python-${_base,,}
-pkgver=1.19.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc="Reversible Data Transforms"
 arch=(x86_64)
@@ -12,7 +12,7 @@ makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest-subtests python-copulas python-invoke)
 optdepends=('python-copulas')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('d4711fa2d9814d4de75333de242b9ae490e80acdd8f24fa415c0a3ad9a3524688ae7a6118c374a23235a98f9e4aaeb297254979c2ccb86691145e78d74390ccc')
+sha512sums=('3ba5a9a458ce2e5bb2228c31cce6aeae8aa58d802e3f1cd3a1e9181fdabcf79ada421fb7291ccec6c52ef4b02c8809496891899edb70ef7475769eb7bbdc7aa0')
 
 build() {
   cd ${_base}-${pkgver}
