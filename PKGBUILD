@@ -1,6 +1,6 @@
 # Maintainer: Conrad Hoffmann <ch@bitfehler.net>
 pkgname=dmos
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Djot HTML renderer with advanced features"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'glibc' 'oniguruma')
 makedepends=('rust' 'make' 'pkgconf' 'scdoc')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~bitfehler/dmos/archive/$pkgver.tar.gz")
-sha512sums=('fde23c8448759a5a5c09aedbb41c249ca988590c812ac9e5903740f0a2189665356d0a5e0b9c3aca34e5b8b36806a4a21b7bb4489a2985dc7c7f3294dab11915')
+sha512sums=('24a920950f92c92d991edf59daecbe1e687533ad20ee2e19b5ad23b95236fe5d82c10903eac3f0b5b15e3f4b0b4ed4682f7fa5e9bde942ffa8595a677b24ce2e')
 # build process with syntect (or inkjet) crate is a little... sensitive
 options=('!buildflags')
 
