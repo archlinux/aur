@@ -1,18 +1,18 @@
 pkgbase = less-git
 	pkgdesc = A free, open-source file pager
-	pkgver = 608.r0.g22e4af5
+	pkgver = 691.r11.g7f99df7
 	pkgrel = 1
 	url = https://greenwoodsoftware.com/less/
 	arch = i686
 	arch = x86_64
-	license = custom
-	license = GPL3
+	license = GPL-3.0-or-later
+	license = LicenseRef-less
 	makedepends = git
 	makedepends = perl
 	depends = glibc
 	depends = ncurses
 	depends = pcre2
-	provides = less=608.r0.g22e4af5
+	provides = less=691.r11.g7f99df7
 	conflicts = less
 	source = git+https://github.com/gwsw/less.git
 	sha256sums = SKIP
