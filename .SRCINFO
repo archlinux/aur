@@ -1,0 +1,17 @@
+pkgbase = drawy
+	pkgdesc = A lightweight and user-friendly drawing application
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://invent.kde.org/prayag/drawy
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = qt6-tools
+	makedepends = git
+	depends = kf6
+	depends = qt6-base
+	source = git+https://invent.kde.org/prayag/drawy.git
+	sha256sums = SKIP
+
+pkgname = drawy
