@@ -1,10 +1,10 @@
 # Maintainer: Théo Rozier <contact@theorozier.fr>
 
 pkgname=portablemc
-pkgver=5.0.1
+pkgver=5.0.2
 pkgrel=1
 pkgdesc='Cross platform command line utility for launching Minecraft quickly and reliably with included support for Mojang versions and popular mod loaders.'
-arch=(x86_64 aarch64)
+arch=(x86_64 aarch64 i686)
 url='https://github.com/mindstorm38/portablemc'
 license=('Apache-2.0')
 depends=(
@@ -20,20 +20,22 @@ makedepends=(
 options=('!lto' '!buildflags')
 
 source=("portablemc-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('859a9e870443c1b3f709b0257149073169e9651937e14ead2ada51d18778c33d')
+sha256sums=('ca1405c734fb9a35dce89707826e3d17b6c44832964907385d6e5c96fe9654bb')
+
+_pmc_version_long="pkgbuild: ${pkgver}-${pkgrel}"
 
 build() {
   cd "portablemc-${pkgver}"
-  cargo xtask dist
+  PMC_VERSION_LONG="${_pmc_version_long}" PMC_NO_ARCHIVE=y cargo xtask dist
 }
 
 check() {
   cd "portablemc-${pkgver}"
-  cargo test --release --locked
+  PMC_VERSION_LONG="${_pmc_version_long}" cargo test --release --locked
 }
 
 package() {
-  cd "portablemc-${pkgver}/dist/portablemc-${pkgver}-linux-${CARCH}"
+  cd "portablemc-${pkgver}/dist/portablemc-${pkgver}"
   
   install -vDm755 -t "${pkgdir}/usr/bin/" portablemc
   install -vDm644 -t "${pkgdir}/usr/share/doc/portablemc/" README
