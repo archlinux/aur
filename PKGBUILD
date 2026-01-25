@@ -3,8 +3,8 @@
 pkgname=next-ai-draw-io-bin
 _pkgname=next-ai-draw-io
 _dist_name="Next AI Draw.io"
-pkgver=0.4.12_beta.3
-_pkgver=0.4.12-beta.3
+pkgver=0.4.12
+_pkgver=0.4.12
 _electronversion=39
 pkgrel=1
 pkgdesc="Next AI Powered Draw.io (Desktop version). Built for system-wide electron."
@@ -12,8 +12,8 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/DayuanJiang/next-ai-draw-io"
 license=('Apache-2.0')
 depends=("electron${_electronversion}" 'hicolor-icon-theme')
-provides=('next-ai-draw-io')
-conflicts=('next-ai-draw-io')
+provides=('next-ai-draw-io' 'next-ai-draw-io-bin')
+conflicts=('next-ai-draw-io' 'next-ai-draw-io-bin-autoupdate')
 makedepends=('asar')
 options=('!strip' '!emptydirs')
 
@@ -21,8 +21,8 @@ source_x86_64=("${url}/releases/download/v${_pkgver}/${_pkgname}_${_pkgver}_amd6
 source_aarch64=("${url}/releases/download/v${_pkgver}/${_pkgname}_${_pkgver}_arm64.deb")
 source=("${_pkgname}.sh")
 
-sha256sums_x86_64=('826be5c8a0d0f28cb9ddfcd4ba5473bf20a9dc0fc93571923c6d775fb747f16e')
-sha256sums_aarch64=('9d3f17f24c2a0e5119049283524214627d6ca8c586b0416ec68ecef90fadc98c')
+sha256sums_x86_64=('7d25dcc3c01daced0e3f10eac04a5321e6632c410143925c1a375c08f6eef8b7')
+sha256sums_aarch64=('600a4c77ef9974687a1bad4276ac8958c1ba80864063559b60caf7270f9f6f48')
 sha256sums=('6dec33b7b4169f695f1ff02a9e55a6ce93b421b20177f051b29223911b8d0a8a')
 
 prepare() {
