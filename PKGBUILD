@@ -1,7 +1,7 @@
 # Maintainer: Trevor Facer <trevordf@protonmail.com>
 
 pkgname=docker-mcp
-pkgver=0.35.0
+pkgver=0.37.0
 pkgrel=1
 pkgdesc='Docker CLI plugin for MCP Gateway - manage and run MCP servers in containers'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('go>=2:1.24')
 optdepends=('docker: for Docker Engine container operations')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/docker/mcp-gateway/archive/v${pkgver}.tar.gz")
-sha256sums=('df10766ac1e8acb1be89a960f656723ffd519fb4af24503577172775fd47c7db')
+sha256sums=('0f34b8548f310ba2b4121df74ce392a7d66e26304c7a5b78cdbbc91527423f5a')
 
 prepare() {
   cd "mcp-gateway-${pkgver}"
