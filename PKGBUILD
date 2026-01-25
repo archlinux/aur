@@ -11,7 +11,7 @@ depends=('gcc-libs' 'libxcb' 'dbus' 'alsa-lib' 'openssl')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "eurus-tui-git")
 source=("$_pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname")
-sha256sums=('4f1d3f2bff45103e35d4de59ec1a340a0eaccc7df2b0c48055d8427fd71827f7')
+sha256sums=('a8a0e8ba9734d17d034d59d4aa01a137e97a373c21bf19f40cca0968e41a5a76')
 
 package() {
     install -Dm755 "$_pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
