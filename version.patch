@@ -1,0 +1,16 @@
+diff --git a/kt-sft/ktransformers/__init__.py b/kt-sft/ktransformers/__init__.py
+index ab915fa..d52d5b3 100644
+--- a/kt-sft/ktransformers/__init__.py
++++ b/kt-sft/ktransformers/__init__.py
+@@ -14,7 +14,7 @@ import os
+ # Import version from shared version.py at project root
+ _root_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+ sys.path.insert(0, _root_dir)
+-try:
+-    from version import __version__
+-finally:
+-    sys.path.pop(0)
++
++__version__ = '0.5.1'
++sys.path.pop(0)
++

@@ -1,33 +1,43 @@
 pkgbase = python-ktransformers
-	pkgdesc = A Flexible Framework for Experiencing Cutting-edge LLM Inference Optimizations
-	pkgver = 0.2.4post1
+	pkgver = 0.5.1
 	pkgrel = 1
-	url = https://github.com/kvcache-ai/ktransformers
+	url = https://kvcache.ai
 	arch = x86_64
+	arch = aarch64
 	license = Apache-2.0
 	makedepends = git
 	makedepends = ninja
 	makedepends = python-build
+	makedepends = python-cmake
 	makedepends = python-cpufeature
-	makedepends = cmake
 	makedepends = python-installer
+	makedepends = python-packaging
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	depends = python-accelerate
+	makedepends = pybind11
+	depends = python-pytorch
+	optdepends = python-flash-attn
+	optdepends = python-pytest
+	optdepends = python-psutil
+	source = ktransformers::git+https://github.com/kvcache-ai/ktransformers.git#tag=v0.5.1
+	source = setup-with-glog.patch
+	source = version.patch
+	sha256sums = SKIP
+	sha256sums = 8d0494366469848673dcd76eb3987b5fca909b731f5b80a7d8540e695b744c2b
+	sha256sums = SKIP
+
+pkgname = python-ktransformers
+	pkgdesc = enhance your Transformers experience with advanced kernel optimizations and placement/parallelism strategies.
 	depends = python-blessed
 	depends = python-colorlog
-	depends = python-fastapi
 	depends = python-fire
-	depends = python-flash-attention
+	depends = python-fastapi
 	depends = python-langchain
-	depends = python-protobuf
-	depends = python-pytorch-opt-cuda
 	depends = python-sentencepiece
 	depends = python-transformers
 	depends = uvicorn
-	source = ktransformers::git+https://github.com/kvcache-ai/ktransformers.git#tag=v0.2.4post1
-	source = 0001-fix-building-torch-extension-with-glog.patch
-	sha256sums = cff5fe39a8c0306e4bfcd1aa46847a0d8a30d44ab5f7ddac749fe651f21ad888
-	sha256sums = 464ec579cf2f824b2b279147efd5ad958f9dbfbb7898c0ab509cc385de1fecd6
+	optdepends = python-flashinfer
+	optdepends = python-torchviz
 
-pkgname = python-ktransformers
+pkgname = python-kt-kernel
+	pkgdesc = High-performance kernel operations for KTransformers (AMX/AVX/KML optimizations)

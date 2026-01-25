@@ -1,66 +1,107 @@
 # Maintainer: Hu Butui <hot123tea123@gmail.com>
 
-# update _CUDA_ARCH_LIST for your nvidia cards
 # note: ktransformers works for compute capability >= 8.0
 _CUDA_ARCH_LIST="8.0;8.6;8.9;9.0;10.0;10.0+PTX"
-pkgname=python-ktransformers
+pkgbase=python-ktransformers
+pkgname=('python-ktransformers' 'python-kt-kernel')
 _pkgname=ktransformers
-pkgver=0.2.4post1
+pkgver=0.5.1
 pkgrel=1
-pkgdesc="A Flexible Framework for Experiencing Cutting-edge LLM Inference Optimizations"
-arch=('x86_64')
-url="https://github.com/kvcache-ai/ktransformers"
+arch=('x86_64' 'aarch64')
+url="https://kvcache.ai"
 license=('Apache-2.0')
 depends=(
-	python-accelerate
-	python-blessed
-	python-colorlog
-	python-fastapi
-	python-fire
-	python-flash-attention
-	python-langchain
-	python-protobuf
-	python-pytorch-opt-cuda
-	python-sentencepiece
-	python-transformers
-	uvicorn
+	python-pytorch
 )
+
 makedepends=(
 	git
 	ninja
 	python-build
+	python-cmake
 	python-cpufeature
-	cmake
 	python-installer
+	python-packaging
 	python-setuptools
 	python-wheel
+	pybind11
 )
+optdepends=(
+	python-flash-attn
+	python-pytest
+	python-psutil
+)
+
 source=("${_pkgname}::git+https://github.com/kvcache-ai/ktransformers.git#tag=v${pkgver}"
-        "0001-fix-building-torch-extension-with-glog.patch"
+        "setup-with-glog.patch"
+	"version.patch"
 )
-sha256sums=('cff5fe39a8c0306e4bfcd1aa46847a0d8a30d44ab5f7ddac749fe651f21ad888'
-            '464ec579cf2f824b2b279147efd5ad958f9dbfbb7898c0ab509cc385de1fecd6')
+sha256sums=('SKIP'
+            '8d0494366469848673dcd76eb3987b5fca909b731f5b80a7d8540e695b744c2b'
+	    'SKIP'
+)
 
 prepare() {
-	cd "${srcdir}/${_pkgname}"
-	git submodule update --init --recursive
-	patch -p1 -i "${srcdir}/0001-fix-building-torch-extension-with-glog.patch"
+	cd ${_pkgname}
+	git submodule update --init --recursive -- third_party/llama.cpp
+	patch -p1 -i "${srcdir}/setup-with-glog.patch"
+	patch -p1 -i "${srcdir}/version.patch"
+	cd kt-kernel
+	sed -i 's|add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../third_party/pybind11 ${CMAKE_CURRENT_BINARY_DIR}/third_party/pybind11)|find_package(pybind11)|' CMakeLists.txt
+	sed -i 's|pip install .|build --wheel --no-isolation|g' install.sh
+
+	cd ../kt-sft
+	sed -i 's|add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../../../third_party/pybind11 ${CMAKE_CURRENT_BINARY_DIR}/third_party/pybind11)|find_package(pybind11)|' csrc/ktransformers_ext/CMakeLists.txt
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}"
-	CUDA_HOME=/opt/cuda \
-	TORCH_CUDA_ARCH_LIST=${_CUDA_ARCH_LIST} \
-	KTRANSFORMERS_FORCE_BUILD=TRUE \
+	export PIP_NO_BUILD_ISOLATION=1
+	cd ${_pkgname}/kt-kernel
+	if [[ "$CUDA_HOME" ]]; then
+		export CPUINFER_USE_CUDA=1
+	elif [[ "$ROCM_PATH" ]]; then
+		export CPUINFER_USE_ROCM=1
+	fi
+	./install.sh build
+
+	cd ../kt-sft
 	python -m build --wheel --no-isolation -x
+	
 }
 
-package() {
-	cd "${srcdir}/${_pkgname}"
+package_python-ktransformers() {
+	pkgdesc="enhance your Transformers experience with advanced kernel optimizations and placement/parallelism strategies."
+	depends=(
+		python-blessed
+		python-colorlog
+		python-fire
+		python-fastapi
+		python-langchain
+		python-sentencepiece
+		python-transformers
+		uvicorn
+	)
+	optdepends=(
+		python-flashinfer
+		python-torchviz
+	)
+	cd "${srcdir}/${_pkgname}/kt-sft"
 	python -m installer --destdir="$pkgdir" dist/*.whl
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/python-ktransformers/LICENSE"
 
 	# remove unused dirs and files
-	local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-	rm -rfv "${pkgdir}${_site_packages}/${_pkgname}/tests"
+	#local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+	#rm -rfv "${pkgdir}${_site_packages}/${_pkgname}/tests"
+}
+
+package_python-kt-kernel() {
+	pkgdesc="High-performance kernel operations for KTransformers (AMX/AVX/KML optimizations)"
+	denpends=(
+		python-safetensors
+		python-compressed-tensors
+		python-triton
+		python-gguf
+	)
+        cd "${srcdir}/${_pkgname}/kt-kernel"
+        python -m installer --destdir="$pkgdir" dist/*.whl
 }

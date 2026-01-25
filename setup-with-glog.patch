@@ -1,0 +1,20 @@
+diff --git a/kt-sft/setup.py b/kt-sft/setup.py
+index 632a718..4d21b09 100644
+--- a/kt-sft/setup.py
++++ b/kt-sft/setup.py
+@@ -633,6 +633,7 @@ if CUDA_HOME is not None or ROCM_HOME is not None:
+         'csrc/ktransformers_ext/cuda/binding.cpp',
+         'csrc/ktransformers_ext/cuda/gptq_marlin/gptq_marlin.cu'
+     ],
++    define_macros=[("GLOG_USE_GLOG_EXPORT", None)],
+     extra_compile_args={
+             'cxx': ['-O3', '-DKTRANSFORMERS_USE_CUDA'],
+             'nvcc': [
+@@ -681,6 +682,7 @@ if not torch.xpu.is_available():
+                 'csrc/custom_marlin/gptq_marlin/gptq_marlin.cu',
+                 'csrc/custom_marlin/gptq_marlin/gptq_marlin_repack.cu',
+             ],
++            define_macros=[("GLOG_USE_GLOG_EXPORT", None)],
+             extra_compile_args={
+                 'cxx': ['-O3'],
+                 'nvcc': ['-O3', '-Xcompiler', '-fPIC'],
