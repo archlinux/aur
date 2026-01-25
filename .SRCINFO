@@ -1,0 +1,16 @@
+pkgbase = gsca-bin
+	pkgdesc = Global Steam Command Args - CLI tool to manage Steam game launch options
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/zerkz/gsca
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = gsca
+	conflicts = gsca
+	source_x86_64 = https://github.com/zerkz/gsca/releases/download/v1.0.3/gsca_1.0.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/zerkz/gsca/releases/download/v1.0.3/gsca_1.0.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = SKIP
+
+pkgname = gsca-bin
