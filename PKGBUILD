@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Shane Donohoe <shane@donohoe.cc>
 
-_upstreamver='1.8.0.62.0'
+_upstreamver='1.9.0.67.0'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='iterfzf'
@@ -17,7 +17,7 @@ license=('GPL-3.0')
 depends=('python' 'fzf')
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
-sha256sums=('17f8b787da3561493608ce995f192421ccd5cc6be818fd12db5d3fc54b5aa5eb')
+sha256sums=('9e9ddeba324a6bf7786f6033d1ed5030c2b36bce86ef63f9e76ecb84529e45ac')
 
 
 build() {

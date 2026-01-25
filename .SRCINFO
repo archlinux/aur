@@ -1,6 +1,6 @@
 pkgbase = python-iterfzf
 	pkgdesc = Pythonic interface to fzf
-	pkgver = 1.8.0.62.0
+	pkgver = 1.9.0.67.0
 	pkgrel = 1
 	url = https://github.com/dahlia/iterfzf
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-iterfzf
 	makedepends = python-installer
 	depends = python
 	depends = fzf
-	source = https://files.pythonhosted.org/packages/source/i/iterfzf/iterfzf-1.8.0.62.0.tar.gz
-	sha256sums = 17f8b787da3561493608ce995f192421ccd5cc6be818fd12db5d3fc54b5aa5eb
+	source = https://files.pythonhosted.org/packages/source/i/iterfzf/iterfzf-1.9.0.67.0.tar.gz
+	sha256sums = 9e9ddeba324a6bf7786f6033d1ed5030c2b36bce86ef63f9e76ecb84529e45ac
 
 pkgname = python-iterfzf
