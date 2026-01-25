@@ -6,10 +6,10 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-serd
-pkgver=0.32.4
+pkgver=0.32.6
 pkgrel=1
 arch=('any')
-pkgdesc="Lightweight C library for RDF syntax supporting reading/ writing Turtle and NTriples (Android ${_android_arch})"
+pkgdesc="Lightweight C library for RDF syntax supporting reading/writing Turtle and NTriples (Android ${_android_arch})"
 url="https://drobilla.net/software/serd.html"
 license=('0BSD OR ISC'
          'BSD-3-Clause'
@@ -19,7 +19,7 @@ depends=('android-ndk')
 makedepends=('android-meson')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://download.drobilla.net/serd-${pkgver}.tar.xz"{,.sig})
-md5sums=('553a9b50caa23a7c57732f83e6f80658'
+md5sums=('4c58bd3bf97d33957a9ce41ac3f85472'
          'SKIP')
 validpgpkeys=('907D226E7E13FA337F014A083672782A9BF368F3') # David Robillard <d@drobilla.net>
 
@@ -48,4 +48,6 @@ package() {
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_RANLIB} "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }

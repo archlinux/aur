@@ -1,6 +1,6 @@
 pkgbase = android-riscv64-serd
-	pkgdesc = Lightweight C library for RDF syntax supporting reading/ writing Turtle and NTriples (Android riscv64)
-	pkgver = 0.32.4
+	pkgdesc = Lightweight C library for RDF syntax supporting reading/writing Turtle and NTriples (Android riscv64)
+	pkgver = 0.32.6
 	pkgrel = 1
 	url = https://drobilla.net/software/serd.html
 	arch = any
@@ -14,10 +14,10 @@ pkgbase = android-riscv64-serd
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.drobilla.net/serd-0.32.4.tar.xz
-	source = https://download.drobilla.net/serd-0.32.4.tar.xz.sig
+	source = https://download.drobilla.net/serd-0.32.6.tar.xz
+	source = https://download.drobilla.net/serd-0.32.6.tar.xz.sig
 	validpgpkeys = 907D226E7E13FA337F014A083672782A9BF368F3
-	md5sums = 553a9b50caa23a7c57732f83e6f80658
+	md5sums = 4c58bd3bf97d33957a9ce41ac3f85472
 	md5sums = SKIP
 
 pkgname = android-riscv64-serd
