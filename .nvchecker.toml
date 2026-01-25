@@ -1,0 +1,5 @@
+[code-minimap-bin]
+source = "github"
+github = "wfxr/code-minimap"
+use_latest_release = true
+prefix = "v"
