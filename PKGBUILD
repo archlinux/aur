@@ -18,10 +18,10 @@ optdepends=("$_target-newlib: Standard C library optimized for embedded systems"
 options=(!emptydirs !strip)
 source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
         #ftp://gcc.gnu.org/pub/gcc/snapshots/$_snapshot/gcc-$_snapshot.tar.xz
-        http://isl.gforge.inria.fr/isl-$_islver.tar.bz2)
+        https://libisl.sourceforge.io/isl-${_islver}.tar.xz)
 sha512sums=('4b9e3639eef6e623747a22c37a904b4750c93b6da77cf3958d5047e9b5ebddb7eebe091cc16ca0a227c0ecbd2bf3b984b221130f269a97ee4cc18f9cf6c444de'
             'SKIP'
-            'fc2c9796979610dd51143dcefe4f5c989c4354571cc5a1fcc6b932fd41f42a54f6b43adfd289af61be7bd06f3a523fa6a7d7ee56680e32d8036beb4c188fa668')
+            '7c3c9502ea07e4d47a823841837c3aa0b9d7ba0fe58deaf180734e44c18e53735ec783645da0bdc56b617c9e639b226cc03b40a947f852e1e787166a64f59424')
 validpgpkeys=(33C235A34C46AA3FFB293709A328C3A2C3C45C06) # Jakub Jelinek <jakub@redhat.com>
 
 if [ -n "$_snapshot" ]; then
@@ -49,6 +49,8 @@ build() {
 
   export CFLAGS_FOR_TARGET='-g -Os -ffunction-sections -fdata-sections'
   export CXXFLAGS_FOR_TARGET='-g -Os -ffunction-sections -fdata-sections'
+  CFLAGS=${CFLAGS/-Werror=format-security/}
+  CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
   "$srcdir"/$_basedir/configure \
     --target=$_target \
