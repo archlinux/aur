@@ -5,7 +5,7 @@ repos:
       - id: shfmt
         args: ["--write"]
   - repo: https://github.com/google/yamlfmt
-    rev: v0.20.0
+    rev: v0.21.0
     hooks:
       - id: yamlfmt
   - repo: https://github.com/shellcheck-py/shellcheck-py
