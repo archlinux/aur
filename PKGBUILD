@@ -8,7 +8,7 @@
 pkgname=rubyripperremix
 pkgver=0.8.0rc4_0.2.0
 pkgrel=1
-pkgdesc="Secure audiodisc ripper with verification (Fork of rubyripper)"
+pkgdesc="Secure audiodisc ripper with AccurateRip and CTDB verification (Fork of rubyripper)"
 arch=('any')
 url="https://github.com/Masterisk-F/RubyRipperRemix"
 license=(GPL-3.0-only)

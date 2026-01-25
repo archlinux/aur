@@ -1,5 +1,5 @@
 pkgbase = rubyripperremix
-	pkgdesc = Secure audiodisc ripper with verification (Fork of rubyripper)
+	pkgdesc = Secure audiodisc ripper with AccurateRip and CTDB verification (Fork of rubyripper)
 	pkgver = 0.8.0rc4_0.2.0
 	pkgrel = 1
 	url = https://github.com/Masterisk-F/RubyRipperRemix
