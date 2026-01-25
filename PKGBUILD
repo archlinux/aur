@@ -3,7 +3,7 @@
 
 pkgname=animeko-appimage-alpha
 _pkgname=animeko
-pkgver="5.3.0alpha01"
+pkgver="5.3.0alpha02"
 _pkgver=$(sed -E 's/(alpha|beta)/-\1/' <<<"$pkgver")
 pkgrel=1
 pkgdesc='集找番、追番、看番的一站式弹幕追番平台'
@@ -11,7 +11,7 @@ arch=('x86_64')
 url='https://github.com/open-ani/animeko/'
 license=('AGPL-3.0-or-later')
 source_x86_64=("https://d.myani.org/v${_pkgver}/ani-${_pkgver}-linux-${CARCH}.appimage")
-sha512sums_x86_64=('1393a3e15254784ab4ab50bac64515df4a0d36313ac4959860d33b545acc07d0c0cf623418f299f17c9f38be0ae5dfa5e62c99384e723d89806567fd0567aeba')
+sha512sums_x86_64=('9f49699917077ce703f8b4dafbc88a12d15e74fe8f34759a5deb52138b70a99fceda0a14dd4edd735119a7ad84a9f1447cca4e829e60901b99088d2d6571f076')
 depends=('vlc-plugin-ffmpeg' 'vlc-plugin-dvb' 'vlc-plugin-pulse' 'gvfs')
 conflicts=('animeko')
 provides=('animeko')
