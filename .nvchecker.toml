@@ -1,0 +1,5 @@
+[nvidia_oc-bin]
+source = "github"
+github = "Dreaming-Codes/nvidia_oc"
+use_latest_release = true
+prefix = "v"

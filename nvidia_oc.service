@@ -1,0 +1,12 @@
+[Unit]
+Description=NVIDIA Overclocking
+Documentation=https://github.com/Dreaming-Codes/nvidia_oc
+After=network.target
+
+[Service]
+Restart=on-failure
+EnvironmentFile=-/etc/conf.d/nvidia_oc
+ExecStart=/usr/bin/nvidia_oc ${NVIDIA_OC_ARGS}
+
+[Install]
+WantedBy=multi-user.target
