@@ -1,0 +1,17 @@
+pkgbase = hexus
+	pkgdesc = A modern, cross-platform process manager
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/Fleny113/Hexus
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = dotnet-sdk-10.0
+	makedepends = aspnet-targeting-pack-10.0
+	depends = dotnet-runtime-10.0
+	depends = aspnet-runtime-10.0
+	conflicts = hexus
+	source = git+https://github.com/Fleny113/Hexus.git#tag=0.5.0
+	sha512sums = 2d07246d111cd6d9a6da2309596887f4ca52f78c4cb0a412c2f9c9ee146cfa53b297b22384657c2ffbeb276a232000e9ccfb801663daf8fd84d2c9759aa9ed5f
+
+pkgname = hexus
