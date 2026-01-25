@@ -1,6 +1,6 @@
 pkgbase = update-notifier-qt
 	pkgdesc = Qt-based update notifier tray for Arch Linux
-	pkgver = 26.01.7
+	pkgver = 26.01.8
 	pkgrel = 1
 	url = https://github.com/AdrianTM/update-notifier-qt
 	install = update-notifier-qt.install
@@ -14,7 +14,7 @@ pkgbase = update-notifier-qt
 	depends = dbus
 	depends = polkit
 	depends = pacman
-	source = https://github.com/AdrianTM/update-notifier-qt/archive/refs/tags/26.01.7.tar.gz
-	sha256sums = 804fad9063593dbbf9d71652cc1137f556386ceea9ae50a1a901c93bc079b798
+	source = https://github.com/AdrianTM/update-notifier-qt/archive/refs/tags/26.01.8.tar.gz
+	sha256sums = 40e5bc72f620aea48092e6f016d4244540e17010168346f7d608ca34bb05b346
 
 pkgname = update-notifier-qt
