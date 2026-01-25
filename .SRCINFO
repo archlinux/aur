@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-gnutls
 	pkgdesc = A library which provides a secure layer over a reliable transport layer (Android aarch64)
 	pkgver = 3.8.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnutls.org/
 	arch = any
 	groups = android-gnutls
@@ -9,7 +9,6 @@ pkgbase = android-aarch64-gnutls
 	makedepends = android-configure
 	makedepends = autogen
 	depends = android-aarch64-libtasn1
-	depends = android-aarch64-readline
 	depends = android-aarch64-zlib
 	depends = android-aarch64-nettle
 	depends = android-aarch64-p11-kit
