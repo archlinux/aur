@@ -1,0 +1,26 @@
+pkgbase = linnote
+	pkgdesc = A fast, keyboard-driven scratchpad for Linux with smart calculator, OCR, timers, and 14+ themes
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://linnote.app
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = qt6-svg
+	depends = kwindowsystem
+	depends = kglobalaccel
+	depends = layer-shell-qt
+	depends = tesseract
+	depends = tesseract-data-eng
+	depends = hicolor-icon-theme
+	optdepends = tesseract-data-tur: Turkish OCR support
+	optdepends = tesseract-data-deu: German OCR support
+	optdepends = tesseract-data-fra: French OCR support
+	optdepends = tesseract-data-rus: Russian OCR support
+	source = linnote-1.0.0.tar.gz::https://github.com/sfnemis/linnote/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = linnote
