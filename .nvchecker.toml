@@ -1,0 +1,3 @@
+[python-importmonkey]
+source = "pypi"
+pypi = "importmonkey"

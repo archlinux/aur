@@ -1,0 +1,22 @@
+pkgbase = python-importmonkey
+	pkgdesc = Utility for adding new import paths.
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/hirsimaki-markus/importmonkey
+	arch = any
+	license = Unlicense
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	noextract = importmonkey-2.1.1-py3-none-any.whl
+	options = !strip
+	source = https://files.pythonhosted.org/packages/67/9f/d7276acf732bcb1e691c3615df532d084253fed1d4283b276cac6e5bd403/importmonkey-2.1.1-py3-none-any.whl
+	source = README-2.1.1.md::https://raw.githubusercontent.com/hirsimaki-markus/importmonkey/main/readme.md
+	source = LICENSE-2.1.1::https://raw.githubusercontent.com/hirsimaki-markus/importmonkey/main/license.txt
+	sha256sums = a601cd985be7c5cbfba9d9bed5ce370c675904f240312a7934619f049de9f72a
+	sha256sums = 53517bd55559d4bf7b2c885e506fd827c27c1335094500f10ffaf22bdc0fd390
+	sha256sums = 82058ba64ea12a831178ec239f9bf9b4a5868ed05c28ec32c023a8eb9bf9b907
+
+pkgname = python-importmonkey
