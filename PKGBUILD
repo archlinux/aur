@@ -1,7 +1,7 @@
 pkgname=twintaillauncher
 pkgver=1.1.14
 pkgrel=1
-_dirname="TwintailLauncher-ttl-v"
+_dirname="TwintailLauncher-ttl-v${pkgver}"
 pkgdesc='A multi-platform launcher for your anime games'
 arch=('x86_64')
 license=('GPL-3.0-only')
@@ -25,13 +25,13 @@ build() {
 }
 
 package() {
-  install -Dm644 /LICENSE -t "$pkgdir/usr/share/licenses/"
-  install -Dm755 /src-tauri/target/release/resources/hpatchz -t "$pkgdir/usr/lib/twintaillauncher/resources/"
-  install -Dm755 /src-tauri/target/release/resources/reaper -t "$pkgdir/usr/lib/twintaillauncher/resources/"
-  install -Dm644 /src-tauri/target/release/resources/hkrpg_patch.dll -t "$pkgdir/usr/lib/twintaillauncher/resources/"
-  install -Dm755 /src-tauri/target/release/twintaillauncher -t "$pkgdir/usr/bin"
-  install -Dm644 /twintaillauncher.desktop -t "$pkgdir/usr/share/applications"
-  install -Dm644 /src-tauri/icons/32x32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/$pkgname.png"
-  install -Dm644 /src-tauri/icons/128x128.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname.png"
-  install -Dm644 /src-tauri/icons/128x128@2x.png "$pkgdir/usr/share/icons/hicolor/266x256@2/apps/$pkgname.png"
+  install -Dm644 "$_dirname/LICENSE" -t "$pkgdir/usr/share/licenses/"
+  install -Dm755 "$_dirname/src-tauri/target/release/resources/hpatchz" -t "$pkgdir/usr/lib/twintaillauncher/resources/"
+  install -Dm755 "$_dirname/src-tauri/target/release/resources/reaper" -t "$pkgdir/usr/lib/twintaillauncher/resources/"
+  install -Dm644 "$_dirname/src-tauri/target/release/resources/hkrpg_patch.dll" -t "$pkgdir/usr/lib/twintaillauncher/resources/"
+  install -Dm755 "$_dirname/src-tauri/target/release/twintaillauncher" -t "$pkgdir/usr/bin"
+  install -Dm644 "$_dirname/twintaillauncher.desktop" -t "$pkgdir/usr/share/applications"
+  install -Dm644 "$_dirname/src-tauri/icons/32x32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/$pkgname.png"
+  install -Dm644 "$_dirname/src-tauri/icons/128x128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname.png"
+  install -Dm644 "$_dirname/src-tauri/icons/128x128@2x.png" "$pkgdir/usr/share/icons/hicolor/266x256@2/apps/$pkgname.png"
 }
