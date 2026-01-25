@@ -5,7 +5,7 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-pcre2
 pkgver=10.47
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="A library that implements Perl 5-style regular expressions (Android ${_android_arch})"
 url="http://www.pcre.org/"
@@ -15,7 +15,6 @@ depends=('android-ndk')
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-configure'
              "android-${_android_arch}-bzip2"
-             "android-${_android_arch}-readline"
              "android-${_android_arch}-zlib")
 source=("https://github.com/PhilipHazel/pcre2/releases/download/pcre2-${pkgver}/pcre2-${pkgver}.tar.bz2")
 md5sums=('aded5840ab5a7d772dd4e16fc294b665')
@@ -30,7 +29,6 @@ build() {
         --enable-pcre2-32 \
         --enable-pcre2grep-libz \
         --enable-pcre2grep-libbz2 \
-        --enable-pcre2test-libreadline \
         --enable-symvers=no
     make $MAKEFLAGS
 }
