@@ -11,18 +11,22 @@ license=('GPL-3.0-only')
 arch=('any')
 
 depends=(
-  pyside6
-  python-capstone
-  python-colorama
-  python-fusepy # AUR
-  python-keystone
-  python-pycryptodomex
-  python-pyserial
-  python-pyusb
+  'pyside6'
+  'python-capstone'
+  'python-colorama'
+  'python-fusepy' # AUR
+  'python-keystone'
+  'python-pycryptodomex'
+  'python-pyserial'
+  'python-pyusb'
 )
 makedepends=(
-  git
-  python
+  'git'
+  'python'
+  'python-build'
+  'python-hatchling'
+  'python-installer'
+  'python-wheel'
 )
 
 provides=("$_pkgname")
@@ -43,25 +47,14 @@ pkgver() {
     | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
+build() {
+  cd "$_pkgsrc"
+  python -m build --wheel --no-isolation
+}
+
 package() {
-  # specify python version to prevent untracked pyc files
-  local _pyver_major _pyver_minor
-  _pyver_major=$(python -c 'import sys; print(sys.version_info.major)')
-  _pyver_minor=$(python -c 'import sys; print(sys.version_info.minor)')
-
-  eval "depends+=(
-    'python>=${_pyver_major}.${_pyver_minor}'
-    'python<${_pyver_major}.$((_pyver_minor + 1))'
-  )"
-
-  # main files
-  install -dm755 "$pkgdir/opt/$_pkgname"
-  for i in mtk.py mtk_gui.py stage2.py examples mtkclient; do
-    cp -a "$_pkgsrc/$i" "$pkgdir/opt/$_pkgname/"
-  done
-
-  # unwanted
-  rm -rf "$pkgdir/opt/$_pkgname/mtkclient"/{Setup.Windows,build,src}
+  cd "$_pkgsrc"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   # udev rules
   install -Dm644 /dev/stdin "$pkgdir"/usr/lib/udev/rules.d/52-mtk-edl.rules << END
@@ -80,36 +73,4 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="1004", ATTRS{idProduct}=="61a1", MODE="0660
 # Sierra Wireless
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="1199", ATTRS{idProduct}=="9071", MODE="0660", GROUP="adbusers", TAG+="uaccess"
 END
-
-  # scripts
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/mtk" << END
-#!/usr/bin/env sh
-exec python /opt/$_pkgname/mtk.py "\$@"
-END
-
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/mtk_gui" << END
-#!/usr/bin/env sh
-exec python /opt/$_pkgname/mtk_gui.py "\$@"
-END
-
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/stage2" << END
-#!/usr/bin/env sh
-exec python /opt/$_pkgname/stage2.py "\$@"
-END
-
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/brom_to_offs" << END
-#!/usr/bin/env sh
-exec python /opt/$_pkgname/mtkclient/Tools/brom_to_offs.py "\$@"
-END
-
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/da_parser" << END
-#!/usr/bin/env sh
-exec python /opt/$_pkgname/mtkclient/Tools/da_parser.py "\$@"
-END
-
-  # generate pyc files
-  python -m compileall -o0 -o1 -f -p / -s "$pkgdir" "$pkgdir/"
-
-  # permissions
-  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
