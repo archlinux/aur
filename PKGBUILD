@@ -1,6 +1,6 @@
 pkgname=gti-cli
-pkgver=1.0.0
-pkgrel=1
+pkgver=1.1.0
+pkgrel=2
 pkgdesc="A fast, lightweight and terminal based typing speed and practice application."
 arch=('any')
 url="https://github.com/developic/gti-cli"
