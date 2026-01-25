@@ -33,7 +33,7 @@ prepare() {
   done
   
   pod2man "${srcdir}/debian/banner.pod" banner.1
-  rm banner.1.gz
+  rm -f banner.1.gz
   gzip banner.1
 
   # apply patch from the source array (should be a pacman feature)
