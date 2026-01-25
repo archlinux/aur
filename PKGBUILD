@@ -1,7 +1,7 @@
 # Maintainer: Daniël Nazarkin <aur.danicatgames@pm.me>
 
 pkgname=zune
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc='A Luau runtime, similar to Lune, Node, or Bun.'
 url='https://github.com/Scythe-Technology/zune'
@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=('zig')
 arch=('x86_64' 'aarch64')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a137b3892108b1a403ba3cd9776216632a45cdb554541a986f91715d63f88aa6')
+sha256sums=('4fa4293d4f81106956954483a8ba8072b72b879f038a5ad10c516b59a1aad807')
 
 prepare() {
   cd "$pkgname-$pkgver"
