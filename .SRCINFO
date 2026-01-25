@@ -1,6 +1,6 @@
 pkgbase = git-credential-pass
 	pkgdesc = A simple git credentials helper for pass
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 2
 	url = https://github.com/Xgames123/git-credential-pass
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = git-credential-pass
 	makedepends = cargo
 	depends = pass
 	conflicts = git-credential-pass-git
-	source = git-credential-pass-1.2.0.tar.gz::https://github.com/Xgames123/git-credential-pass/archive/1.2.0.tar.gz
-	sha256sums = b324dc377a463ba59082dbc71aabcbd99060aca54d8dde9582aa48b56bf70f07
+	source = git-credential-pass-1.3.0.tar.gz::https://github.com/Xgames123/git-credential-pass/archive/1.3.0.tar.gz
+	sha256sums = d10bfdf8794baaa81418ad46ebcebbe2bd19336f61aa6b8a47468cc6379530ca
 
 pkgname = git-credential-pass
