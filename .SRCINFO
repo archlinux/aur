@@ -8,6 +8,6 @@ pkgbase = cutieascii
 	makedepends = go
 	depends = glibc
 	source = cutieascii-0.1.0.tar.gz::https://github.com/Josehpequeno/cutieascii/archive/v0.1.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 14077e430a2bf414bb9e63c924bf97105997f3d088646f3f2f91ca73e9dd240a
 
 pkgname = cutieascii
