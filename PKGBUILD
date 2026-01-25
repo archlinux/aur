@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=ck-bin
-pkgver=0.7.2
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="Local first semantic and hybrid BM25 grep/search tool for use by AI and humans"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('Apache-2.0' 'MIT')
 provides=('ck')
 conflicts=('ck')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/BeaconBay/ck/releases/download/${pkgver}/ck-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('1615e389570f307d35ea613b4475473be1cabbd9079f52f3827433cc247d18d2')
+sha256sums=('d27b604544e9e187caa3e556c8b0dd496cfdea093f1b82661224b37d50c0287e')
 
 latestver() {
     curl -fsSL "https://api.github.com/repos/BeaconBay/ck/releases/latest" |
