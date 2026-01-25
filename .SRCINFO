@@ -1,7 +1,7 @@
 pkgbase = android-x86-gnutls
 	pkgdesc = A library which provides a secure layer over a reliable transport layer (Android x86)
 	pkgver = 3.8.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnutls.org/
 	arch = any
 	groups = android-gnutls
@@ -9,7 +9,6 @@ pkgbase = android-x86-gnutls
 	makedepends = android-configure
 	makedepends = autogen
 	depends = android-x86-libtasn1
-	depends = android-x86-readline
 	depends = android-x86-zlib
 	depends = android-x86-nettle
 	depends = android-x86-p11-kit
