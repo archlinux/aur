@@ -1,5 +1,5 @@
 pkgname=python-denonavr
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Automation Library for Denon (and Marantz) AVR receivers."
 arch=(any)
@@ -14,9 +14,9 @@ depends=('python-asyncstdlib>=3.10.2'
          'python-async-timeout>=4.0.2')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("https://github.com/ol-iver/denonavr/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('085efb91bbe823381c2b3043a200f0da56b578c33c190be263bac76f73463ff8')
-sha512sums=('1e6161165d71fb915e5b1129dab9aba1da100836dde67ead316b13b209c4a2f5158daac58af8bbc604f9782fd9a3c36849b4475e86777aa636fb727bf37aa674')
-b2sums=('3890c611fcac581b33f82724a1ab0ac2e37e8f5582096085a1a93e468ebca766b4445110d003fc764d3a323dafac6f79ca3e8e3ca77f6cffdbe1261819b971ea')
+sha256sums=('e221e1c67682cda115be8a907d4277aa508b007322f181e425d7c1c7cbe1865d')
+sha512sums=('3497d039e6fee52dd24c559f2ed822b9392d9d833da0ff25141ea0326accdc8f8eec79c78c91c4b3abafe32a4f598cffd6724f03d37803df2effd35f8d65c6bf')
+b2sums=('1fdea0c39da76cc00ea28f19f305ea2a0ca2ede97239d993f6674089c0346e36912af432cfa1cdcb1d9f7c304e0779bbaec2dbae572868eeecc28397f62bffed')
 
 build() {
   cd ${srcdir}/denonavr-${pkgver}
