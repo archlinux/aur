@@ -1,0 +1,16 @@
+pkgbase = trix-player
+	pkgdesc = A beautiful, keyboard-driven terminal music player for Linux.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/RIZAmohammadkhan/TerminalMusicPlayer
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = alsa-lib
+	depends = gcc-libs
+	depends = glibc
+	options = !lto
+	source = trix-player-0.1.0.tar.gz::https://github.com/RIZAmohammadkhan/TerminalMusicPlayer/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = b0241987cf761da3745143b5a133ebc78ee3c1c241ca7c402ac46d67ae723038
+
+pkgname = trix-player
