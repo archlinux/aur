@@ -3,12 +3,12 @@
 _pkgname=backintime-git
 _pkgname_cli=backintime-cli-git
 pkgname=($_pkgname $_pkgname_cli)
-pkgver=1.5.4.r145.g9b8291cf
+pkgver=1.6.0.rc1.r3.g6faa8bf4
 pkgrel=1
 url=https://github.com/bit-team/backintime
 license=(GPL-2.0-or-later)
 arch=(any)
-makedepends=(asciidoctor git librsvg man-db optipng python) # mkdocs mkdocs-material
+makedepends=(asciidoctor codespell git librsvg man-db python-flake8 reuse ruff) # mkdocs mkdocs-material python
 #checkdepends=(openssh python-dbus python-pyfakefs python-pylint rsync systemd)
 install=$_pkgname.install
 source=($_pkgname::git+$url.git)
@@ -48,7 +48,7 @@ build() {
 
 package_backintime-cli-git() {
   pkgdesc='Simple backup/snapshot system inspired by Flyback and TimeVault. CLI version'
-  depends=(cron fuse2 openssh python-dbus python-keyring python-packaging rsync)
+  depends=(cron fuse2 gocryptfs openssh python-dbus python-keyring python-packaging rsync)
   #'ecryptfs-utils: verify home encryption'
   optdepends=(
     'encfs: encrypted filesystems'
