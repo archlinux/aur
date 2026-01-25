@@ -6,7 +6,7 @@ _pkgname=eden
 pkgname=$_pkgname-git
 epoch=1
 pkgver=0.1.0.rc1.r78.gddbb6f2
-pkgrel=1
+pkgrel=2
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=('x86_64' 'aarch64')
 url=https://eden-emulator.github.io/
@@ -34,7 +34,7 @@ build() {
 		-DYUZU_USE_BUNDLED_SDL2=OFF \
 		-DDiscordRPC_FORCE_BUNDLED=ON \
 		-DYUZU_USE_EXTERNAL_SDL2=OFF \
-		-DYUZU_USE_BUNDLED_QT=ON \
+		-DYUZU_USE_BUNDLED_QT=OFF \
 		-DENABLE_QT=ON \
 		-DENABLE_QT_TRANSLATION=ON \
 		-DYUZU_USE_QT_MULTIMEDIA=ON \
