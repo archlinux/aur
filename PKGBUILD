@@ -1,8 +1,11 @@
+# Maintainer: iamzhz <iamzhz at foxmail dot com>
+# Contributor: wuziqian211 <wuziqian211 at 126 dot com>
+
 pkgname=tchmaterial-parser
-pkgver=3.2
+pkgver=3.3.2
 pkgrel=1
 maintainer=('iamzhz' 'wuziqian211')
-pkgdesc="国家中小学智慧教育平台 电子课本下载工具，帮助您从智慧教育平台中获取电子课本的 PDF 文件网址并进行下载，让您更方便地获取课本内容。 "
+pkgdesc="国家中小学智慧教育平台 资源下载工具，帮助您从国家中小学智慧教育平台中获取电子课本的 PDF 文件网址并进行下载，让您更方便地获取课本内容。 "
 arch=('x86_64')
 url="https://github.com/happycola233/tchMaterial-parser"
 license=('MIT')
@@ -14,7 +17,7 @@ source=(
         "setup.py"
 )
 sha256sums=(
-        '7276e898ab194007d005026d0cdba466489cb26c5cbb1e67298bdbc424047f58'
+        '120a5550d68e6abb2651aa18a8a254e0a9dc30e88fbfa02d1c5d0384e0068e52'
         'SKIP'
         'SKIP'
 )
