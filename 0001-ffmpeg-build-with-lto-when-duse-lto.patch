@@ -1,0 +1,48 @@
+From e76f5a41d56182c804d95fc41cb9c8c4b2749950 Mon Sep 17 00:00:00 2001
+From: graysky <graysky@archlinux.us>
+Date: Fri, 7 Jan 2022 10:22:22 -0500
+Subject: [PATCH] ffmpeg: build with lto when -DUSE_LTO=ON
+
+I do not believe the internal ffmpeg build uses LTO if the user calls for it
+via -DUSE_LTO=ON.  This commit passes --enable-lto to ffmpeg's configure script
+if CMAKE has CMAKE_INTERPROCEDURAL_OPTIMIZATION set which -DUSE_LTO=ON does.
+
+The original author of this, loqs, points this out here[1].
+
+1. https://bugs.archlinux.org/task/69333#comment196255
+---
+ cmake/modules/FindFFMPEG.cmake             | 5 +++++
+ tools/depends/target/ffmpeg/CMakeLists.txt | 4 ++++
+ 2 files changed, 9 insertions(+)
+
+diff --git a/cmake/modules/FindFFMPEG.cmake b/cmake/modules/FindFFMPEG.cmake
+index 341eb4a89cab7..43cc472cde5fe 100644
+--- a/cmake/modules/FindFFMPEG.cmake
++++ b/cmake/modules/FindFFMPEG.cmake
+@@ -72,6 +72,11 @@ macro(buildFFMPEG)
+                    -DOS=${OS}
+                    -DCMAKE_AR=${CMAKE_AR})
+   endif()
++
++  if(USE_LTO)
++    list(APPEND FFMPEG_OPTIONS -DUSE_LTO=ON)
++  endif()
++
+   set(LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS})
+   list(APPEND LINKER_FLAGS ${SYSTEM_LDFLAGS})
+ 
+diff --git a/tools/depends/target/ffmpeg/CMakeLists.txt b/tools/depends/target/ffmpeg/CMakeLists.txt
+index 94689abb88540..e56ae7512562a 100644
+--- a/tools/depends/target/ffmpeg/CMakeLists.txt
++++ b/tools/depends/target/ffmpeg/CMakeLists.txt
+@@ -115,6 +115,10 @@ if(CPU MATCHES x86 OR CPU MATCHES x86_64)
+   list(APPEND ffmpeg_conf --x86asmexe=${NASM_EXECUTABLE})
+ endif()
+ 
++if(USE_LTO)
++   list(APPEND ffmpeg_conf --enable-lto)
++endif()
++
+ if(ENABLE_DAV1D)
+   list(APPEND ffmpeg_conf --enable-libdav1d)
+   set(pkgconf_path "PKG_CONFIG_PATH=${PKG_CONFIG_PATH}")

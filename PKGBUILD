@@ -1,0 +1,285 @@
+# Contributor graysky <therealgraysky AT proton DOT me>
+# Contributor: BlackIkeEagle < ike DOT devolder AT gmail DOT com>
+
+pkgbase=kodi-rpi
+pkgname=(
+  'kodi-rpi'
+  'kodi-rpi-eventclients' 'kodi-rpi-tools-texturepacker' 'kodi-rpi-dev'
+)
+
+_commitnumber=66020
+_commit=701f9cdf9170e1c14b5b753fed15e36604b25a44
+
+# set this to anything to build with clang
+# recommend manually setting -DUSE_LTO=OFF to -DUSE_LTO=$(nproc) in build()
+_clangbuild=
+
+pkgver=21.3
+pkgrel=1
+arch=(aarch64)
+url="https://github.com/graysky2/xbmc/tree/gs-gbm_omega"
+license=('GPL-2.0-or-later')
+makedepends=(
+  'bluez-libs' 'cmake' 'curl' 'dav1d' 'doxygen' 'git' 'glew'
+  'gperf' 'hicolor-icon-theme' 'java-runtime<21' 'fmt' 'libass'
+  'libbluray' 'libcdio' 'libcec' 'libgl' 'mariadb-libs' 'libmicrohttpd'
+  'libmodplug' 'libmpeg2' 'libnfs' 'libpulse'
+  'libxrandr' 'libxslt' 'lirc' 'lzo' 'mesa' 'nasm'
+  'pipewire' 'python-pycryptodomex' 'python-pillow' 'python-pybluez'
+  'python-simplejson' 'smbclient' 'sndio' 'spdlog' 'taglib'
+  'tinyxml' 'swig' 'upower' 'giflib' 'rapidjson' 'ghostscript' 'meson' 'gtest'
+  'graphviz' 'pcre' 'tinyxml2' 'libdisplay-info'
+  # cmake/scripts/linux/Install.cmake calls distutils
+  # python 3.12 does no longer come with distutils on board
+  'python-setuptools'
+  # gbm
+  'libinput'
+  'libxkbcommon' 'libdisplay-info'
+)
+
+[[ -n "$_clangbuild" ]] && makedepends+=('clang' 'lld' 'llvm')
+
+_codename=Omega
+_init_version=1.150
+_libdvdcss_version="1.4.3-Next-Nexus-Alpha2-2"
+_libdvdnav_version="6.1.1-Next-Nexus-Alpha2-2"
+_libdvdread_version="6.1.3-Next-Nexus-Alpha2-2"
+_ffmpeg_version="6.1.3"
+_crossguid_version="ca1bf4b810e2d188d04cb6286f957008ee1b7681"
+_fstrcmp_version="0.7.D001"
+_flatbuffers_version="23.3.3"
+_libudfread_version="1.1.2"
+source=(
+  "xbmc-$pkgver.${_commit:0:10}.tar.gz::https://github.com/graysky2/xbmc/archive/$_commit.tar.gz"
+  "libdvdcss-$_libdvdcss_version.tar.gz::https://github.com/xbmc/libdvdcss/archive/$_libdvdcss_version.tar.gz"
+  "libdvdnav-$_libdvdnav_version.tar.gz::https://github.com/xbmc/libdvdnav/archive/$_libdvdnav_version.tar.gz"
+  "libdvdread-$_libdvdread_version.tar.gz::https://github.com/xbmc/libdvdread/archive/$_libdvdread_version.tar.gz"
+  "https://ffmpeg.org/releases/ffmpeg-$_ffmpeg_version.tar.gz"
+  "https://mirrors.kodi.tv/build-deps/sources/crossguid-$_crossguid_version.tar.gz"
+  "https://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
+  "https://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
+  "https://mirrors.kodi.tv/build-deps/sources/libudfread-$_libudfread_version.tar.gz"
+  "ArchARM-kodi-init-v$_init_version.tar.gz::https://github.com/graysky2/kodi-standalone-service/archive/v$_init_version.tar.gz"
+  kodi.config.txt
+  0001-ffmpeg-build-with-lto-when-duse-lto.patch::https://github.com/xbmc/xbmc/commit/2cc6f1728ccb67ef575fe57680dd42836e3d6a1f.patch
+)
+backup=(boot/kodi.config.txt etc/conf.d/kodi-standalone)
+noextract=(
+  "libdvdcss-$_libdvdcss_version.tar.gz"
+  "libdvdnav-$_libdvdnav_version.tar.gz"
+  "libdvdread-$_libdvdread_version.tar.gz"
+  "ffmpeg-$_ffmpeg_version.tar.gz"
+  "crossguid-$_crossguid_version.tar.gz"
+  "fstrcmp-$_fstrcmp_version.tar.gz"
+  "flatbuffers-$_flatbuffers_version.tar.gz"
+  "libudfread-$_libudfread_version.tar.gz"
+)
+sha256sums=('ecbb49ab80f096951f2dfd128763634341ef07382cf37a8265031500eeb5d487'
+            'f38c4a4e7a4f4da6d8e83b8852489aa3bb6588a915dc41f5ee89d9aad305a06e'
+            '584f62a3896794408d46368e2ecf2c6217ab9c676ce85921b2d68b8961f49dfc'
+            '719130091e3adc9725ba72df808f24a14737a009dca5a4c38c601c0c76449b62'
+            '3be466dfd1a312d752c20ece5b413248a5808fba3c967da0624bac48a4380857'
+            '6be27e0b3a4907f0cd3cfadec255ee1b925569e1bd06e67a4d2f4267299b69c4'
+            'e4018e850f80700acee8da296e56e15b1eef711ab15157e542e7d7e1237c3476'
+            '8aff985da30aaab37edf8e5b02fda33ed4cbdd962699a8e2af98fdef306f4e4d'
+            '2bf16726ac98d093156195bb049a663e07d3323e079c26912546f4e05c77bac5'
+            '38392cea74ba011dde8d03c9526dd02731e991462e843513646880789673574b'
+            '5ac76e6ff16d8f0f60a414647bddb13b46402563dd02d69a05e90c0ddbb085f0'
+            '5a2f1c5fa9189d56eaf7e05024071c57e11f92b4eeb68b4bb0555c1fdd66c890')
+
+prepare() {
+  [[ -d "$srcdir/kodi-build" ]] && rm -rf "$srcdir/kodi-build"
+  mkdir "$srcdir/kodi-build"
+  cd "xbmc-$_commit"
+
+  rm -rf system/certs # remove not needed cacert
+
+  # honor LTO settings when building ffmpeg
+  patch -p1 -i ../0001-ffmpeg-build-with-lto-when-duse-lto.patch
+}
+
+build() {
+  # disable https://rfc.archlinux.page/0023-pack-relative-relocs/
+  export LDFLAGS=${LDFLAGS/-Wl,-z,pack-relative-relocs}
+
+  cd kodi-build
+
+  _args=(
+    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib
+    -DVERBOSE=ON
+    -DUSE_LTO=ON
+    -DENABLE_LDGOLD=OFF
+    -DENABLE_AIRTUNES=OFF
+    -DENABLE_PLIST=OFF
+    -DENABLE_AVAHI=ON
+    -DENABLE_BLURAY=ON
+    -DENABLE_CEC=ON
+    -DENABLE_DBUS=ON
+    -DENABLE_DVDCSS=ON
+    -DENABLE_EGL=ON
+    -DENABLE_EVENTCLIENTS=ON
+    -DENABLE_MICROHTTPD=ON
+    -DENABLE_MYSQLCLIENT=ON
+    -DENABLE_NFS=ON
+    -DENABLE_OPTICAL=ON
+    -DENABLE_SMBCLIENT=ON
+    -DENABLE_UDEV=ON
+    -DENABLE_UPNP=ON
+    -DENABLE_VAAPI=OFF
+    -DENABLE_VDPAU=OFF
+    -DENABLE_XSLT=ON
+    -DENABLE_LIRCCLIENT=ON
+    -DENABLE_INTERNAL_RapidJSON=OFF
+    -DENABLE_INTERNAL_FFMPEG=ON
+    -DENABLE_INTERNAL_CROSSGUID=ON
+    -DENABLE_INTERNAL_FSTRCMP=ON
+    -DENABLE_INTERNAL_FLATBUFFERS=ON
+    -DENABLE_INTERNAL_UDFREAD=ON
+    -Dlibdvdcss_URL="$srcdir/libdvdcss-$_libdvdcss_version.tar.gz"
+    -Dlibdvdnav_URL="$srcdir/libdvdnav-$_libdvdnav_version.tar.gz"
+    -Dlibdvdread_URL="$srcdir/libdvdread-$_libdvdread_version.tar.gz"
+    -DFFMPEG_URL="$srcdir/ffmpeg-$_ffmpeg_version.tar.gz"
+    -DCROSSGUID_URL="$srcdir/crossguid-$_crossguid_version.tar.gz"
+    -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz"
+    -DFLATBUFFERS_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz"
+    -DUDFREAD_URL="$srcdir/libudfread-$_libudfread_version.tar.gz"
+    -DAPP_RENDER_SYSTEM=gles
+    -DCORE_PLATFORM_NAME="x11 gbm"
+  )
+
+  echo "building kodi"
+  cmake "${_args[@]}" ../"xbmc-$_commit"
+  make
+}
+
+package_kodi-rpi() {
+  pkgdesc="Media player and entertainment hub with hw accel for RPi 3 and above, gbm_omega fork"
+  depends=(
+    'bluez-libs' 'curl' 'dav1d' 'desktop-file-utils' 'hicolor-icon-theme' 'fmt'
+    'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec' 'libmicrohttpd' 'libnfs'
+    'libpulse' 'libxslt' 'lirc' 'mariadb-libs' 'taglib'
+    'mesa' 'libpipewire' 'python-pillow' 'python-pycryptodomex'
+    'python-simplejson' 'smbclient' 'sndio' 'spdlog' 'sqlite'
+    'tinyxml' 'libxkbcommon' 'polkit' 'lzo' 'libinput'
+    'pcre' 'libdisplay-info' 'tinyxml2'
+  )
+  [[ -n "$_clangbuild" ]] && depends+=('glu')
+
+  optdepends=(
+    'bluez: Blutooth support'
+    'linux-rpi: HW accelerated decoding'
+    'python-pybluez: Bluetooth support'
+    'pulseaudio: PulseAudio support'
+    'pipewire: PipeWire support'
+  )
+  install='kodi.install'
+  provides=("kodi=${pkgver}" "kodi-common=${pkgver}")
+  conflicts=('kodi' 'kodi-rpi-legacy')
+
+  _components=(
+    'kodi'
+    'kodi-bin'
+  )
+
+  cd kodi-build
+  for _cmp in ${_components[@]}; do
+  DESTDIR="$pkgdir" /usr/bin/cmake \
+    -DCMAKE_INSTALL_COMPONENT="$_cmp" \
+     -P cmake_install.cmake
+  done
+
+  # setup video drivers for kodi-gbm
+  install -Dm0644 "$srcdir/kodi.config.txt" "$pkgdir/boot/kodi.config.txt"
+
+  # rpi4 wants 512 MB of memory ... might be a problem or rpi3?
+  sed -i 's/@@@/512/' "$pkgdir/boot/kodi.config.txt"
+
+  _initshit="$srcdir/kodi-standalone-service-$_init_version/arm"
+
+  # fix permissions necessary for accelerated video playback
+  install -Dm0644 "$_initshit/udev/99-kodi.rules" "$pkgdir/usr/lib/udev/rules.d/99-kodi.rules"
+
+  # environment vars
+  install -Dm644 "${_initshit/\/arm}"/common/kodi-standalone "$pkgdir/etc/conf.d/kodi-standalone"
+
+  # systemd manages kodi user
+  install -Dm644 "$_initshit"/init/sysusers.conf "$pkgdir/usr/lib/sysusers.d/kodi.conf"
+  install -Dm644 "$_initshit"/init/tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/kodi.conf"
+
+  # systemd service and polkit rules
+  install -Dm0644 "$_initshit/init/kodi.service" "$pkgdir/usr/lib/systemd/system/kodi.service"
+  install -Dm0644 "$_initshit/polkit/polkit.rules" "$pkgdir/usr/share/polkit-1/rules.d/10-kodi.rules"
+  chmod 0755 "$pkgdir/usr/share/polkit-1/rules.d/"
+
+  # man page
+  install -Dm0644 "$_initshit/doc/kodi.service.1" "$pkgdir/usr/share/man/man1/kodi.service.1"
+
+  # avoid error <general>: GetDirectory - Error getting /usr/lib/kodi/addons
+  # https://bugs.archlinux.org/task/77366
+  mkdir -p "$pkgdir"/usr/lib/kodi/addons
+
+  # https://archlinux.org/todo/use-system-ca-store/
+  mkdir -p "$pkgdir"/usr/share/kodi/system/certs
+  ln -s /etc/ssl/cert.pem "$pkgdir"/usr/share/kodi/system/certs/cacert.pem
+}
+
+package_kodi-rpi-eventclients() {
+  pkgdesc="Kodi Event Clients"
+  provides=("kodi-eventclients=${pkgver}")
+  conflicts=('kodi-rpi-legacy-eventclients')
+  optdepends=(
+    'kodi: local machine eventclient use'
+    'python: most eventclients are implemented in python'
+  )
+
+  _components=(
+    'kodi-eventclients-common'
+    'kodi-eventclients-ps3'
+    'kodi-eventclients-kodi-send'
+  )
+
+  cd kodi-build
+  for _cmp in ${_components[@]}; do
+    DESTDIR="$pkgdir" /usr/bin/cmake \
+      -DCMAKE_INSTALL_COMPONENT="$_cmp" \
+      -P cmake_install.cmake
+  done
+}
+
+package_kodi-rpi-tools-texturepacker() {
+  pkgdesc="Kodi Texturepacker Tool"
+  depends=('libpng' 'giflib' 'libjpeg-turbo' 'lzo')
+  conflicts=('kodi-rpi-legacy-tools-texturepacker')
+
+  _components=(
+    'kodi-tools-texturepacker'
+  )
+
+  cd kodi-build
+  for _cmp in ${_components[@]}; do
+    DESTDIR="$pkgdir" /usr/bin/cmake \
+      -DCMAKE_INSTALL_COMPONENT="$_cmp" \
+      -P cmake_install.cmake
+  done
+}
+
+package_kodi-rpi-dev() {
+  pkgdesc="Kodi dev files"
+  depends=('kodi')
+  conflicts=('kodi-rpi-legacy-dev')
+  provides=("kodi-dev=${pkgver}")
+
+  _components=(
+    'kodi-addon-dev'
+    'kodi-eventclients-dev'
+  )
+
+  cd kodi-build
+  for _cmp in ${_components[@]}; do
+    DESTDIR="$pkgdir" /usr/bin/cmake \
+      -DCMAKE_INSTALL_COMPONENT="$_cmp" \
+      -P cmake_install.cmake
+  done
+}
