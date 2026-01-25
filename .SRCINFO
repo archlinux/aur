@@ -1,6 +1,6 @@
 pkgbase = stank-bin
 	pkgdesc = Analyzers for determining whether files smell like rotten POSIX shell scripts, or faintly rosy like Ruby and Python scripts
-	pkgver = 0.0.39
+	pkgver = 0.0.41
 	pkgrel = 1
 	url = https://github.com/mcandre/stank
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = stank-bin
 	provides = funk
 	conflicts = stank
 	conflicts = stank-git
-	source = stank-0.0.39.tgz::https://github.com/mcandre/stank/releases/download/v0.0.39/stank-0.0.39.tgz
-	source = README-0.0.39.md::https://raw.githubusercontent.com/mcandre/stank/v0.0.39/README.md
-	source = LICENSE-0.0.39::https://raw.githubusercontent.com/mcandre/stank/v0.0.39/LICENSE.md
-	sha256sums = a82020b5691df009428e585a4f6d5c4a3a282a40080416db610f4bd607b0da6c
-	sha256sums = 64921940db9b2f5887a3eee8e6702ab1d277599ae1488e184702f3745ce7d59f
+	source = stank-0.0.41.tgz::https://github.com/mcandre/stank/releases/download/v0.0.41/stank-0.0.41.tgz
+	source = README-0.0.41.md::https://raw.githubusercontent.com/mcandre/stank/v0.0.41/README.md
+	source = LICENSE-0.0.41::https://raw.githubusercontent.com/mcandre/stank/v0.0.41/LICENSE.md
+	sha256sums = 96b737221c85efc79affc86fbaef9f1d2e8c8607070772ba92817bf36453f469
+	sha256sums = 839ec5b664010b53de065e9cadee4dc50a1519897b585016433973927ea0704f
 	sha256sums = 209f2bba163b033a6911ed879497d720a64095962f5b38dac2c476674d328269
 
 pkgname = stank-bin

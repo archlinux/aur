@@ -4,7 +4,7 @@ _pkgauthor=mcandre
 _pkgname=stank
 _pkgexecs=(stank stink funk)
 pkgname=${_pkgname}-bin
-pkgver=0.0.39
+pkgver=0.0.41
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="Analyzers for determining whether files smell like rotten POSIX shell scripts, or faintly rosy like Ruby and Python scripts"
@@ -20,8 +20,8 @@ provides=("${_pkgexecs[@]}")
 source=("${_pkgname}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}.tgz"
         "README-${pkgver}.md::${_urlraw}/README.md"
         "LICENSE-${pkgver}::${_urlraw}/LICENSE.md")
-sha256sums=('a82020b5691df009428e585a4f6d5c4a3a282a40080416db610f4bd607b0da6c'
-            '64921940db9b2f5887a3eee8e6702ab1d277599ae1488e184702f3745ce7d59f'
+sha256sums=('96b737221c85efc79affc86fbaef9f1d2e8c8607070772ba92817bf36453f469'
+            '839ec5b664010b53de065e9cadee4dc50a1519897b585016433973927ea0704f'
             '209f2bba163b033a6911ed879497d720a64095962f5b38dac2c476674d328269')
 
 case ${CARCH} in
