@@ -1,0 +1,17 @@
+diff --color -ura fmd-server.orig/config.example.yml fmd-server.changed/config.example.yml
+--- fmd-server.orig/config.example.yml	2026-01-25 00:25:07.553212072 +0000
++++ fmd-server.changed/config.example.yml	2026-01-25 00:35:41.350059337 +0000
+@@ -5,11 +5,11 @@
+ 
+ # Listening precedence: socket > HTTPS > HTTP
+ 
+-DatabaseDir: "" # /var/lib/fmd-server/db/
++DatabaseDir: "/var/lib/fmdserver/db"
+ WebDir: "" # /usr/share/fmd-server/web/
+ 
+ # Path to listening UNIX socket. If empty, no unix sockets will be used.
+-UnixSocketPath: "" # /tmp/fmd.sock
++UnixSocketPath: "/run/findmydeviceserver/findmydeviceserver.sock"
+ # Permissions to set on the socket after it is created. If < 0, no
+ # modifications are made. This considered insecure practice, if you
+ # do it, consider setting a umask for the daemon user before starting it.

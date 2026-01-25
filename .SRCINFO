@@ -1,7 +1,7 @@
 pkgbase = findmydeviceserver
 	pkgdesc = Official server for the android app FindMyDevice (FMD) written in Go
 	pkgver = 0.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/fmd-foss/fmd-server
 	arch = x86_64
 	arch = armv7h
@@ -17,9 +17,11 @@ pkgbase = findmydeviceserver
 	source = findmydeviceserver.service
 	source = findmydeviceserver.sysusers
 	source = findmydeviceserver.tmpfiles
+	source = modify-defaults-db-and-unix-socket-path.patch
 	sha256sums = 55c62295d73983a5d486c98d99bb8eb3da6f1427e5ae3c6a2100bd92e4d7563d
-	sha256sums = fff7ce0ed640e91e2dc38649727bac59bc79382316f534da89603d2dac857db4
+	sha256sums = f3d973cee143e7ba182ad3f228f2d5f15f5847dd6eeb48ea0122aa7c298a3cd6
 	sha256sums = d3f754171a12f8559de28b9c08699dd96f741abeb0f0e44dff9a912e9b381387
-	sha256sums = 73859307a7577701e3c711ce13da4b391179e2b43acff880e23ac01abc4bb8cb
+	sha256sums = cb1daf2913c9c76125b79a037bb0d1a7bd8f0224cf98abfd0af0886ff729073d
+	sha256sums = da443f6b578c67729922a282123422d0c9d75e9f9aa49cc057f6f3b212de1ff4
 
 pkgname = findmydeviceserver

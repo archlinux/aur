@@ -1,2 +1,4 @@
+# Type Path Mode User Group Age Argument
 Z /etc/fmdserver/ 0700 findmydevice findmydevice
 d %S/fmdserver 0700 findmydevice findmydevice
+d /run/findmydeviceserver 0750 findmydevice findmydevice

@@ -6,7 +6,7 @@ After=network.target
 User=findmydevice
 Group=findmydevice
 Type=simple
-ExecStart=/usr/bin/fmdserver serve -c /etc/fmdserver/config.yml -d /var/lib/fmdserver/db
+ExecStart=/usr/bin/fmdserver serve -c /etc/fmdserver/config.yml
 Restart=on-abort
 
 # Hardening
