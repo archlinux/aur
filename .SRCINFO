@@ -1,0 +1,24 @@
+pkgbase = libei-basu-git
+	pkgdesc = library for Emulated Input - tweaked to use basu instead of systemd.
+	pkgver = 1.5.0.r25.ge8994df
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/libinput/libei/
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = libxkbcommon
+	makedepends = meson
+	makedepends = python-attrs
+	makedepends = python-dbusmock
+	makedepends = python-jinja
+	makedepends = python-pytest
+	makedepends = python-structlog
+	makedepends = python-yaml
+	depends = basu
+	depends = libevdev
+	provides = libei
+	conflicts = libei
+	source = libei::git+https://gitlab.freedesktop.org/libinput/libei.git/
+	md5sums = SKIP
+
+pkgname = libei-basu-git
