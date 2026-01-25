@@ -1,0 +1,13 @@
+pkgbase = snick-bin
+	pkgdesc = Simple snake game powered by SDL3!
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/NickAllbritton/snake
+	arch = x86_64
+	license = GPL-3.0-or-later
+	provides = snick
+	conflicts = snick
+	source = https://github.com/NickAllbritton/snake/releases/download/v0.3.0/snick-0.3.0-x86_64.tar.gz
+	sha256sums = d3478076c8a1878a35e647aea7b38429ac0cec72f6ddabbdcc76bf33bb78604b
+
+pkgname = snick-bin
