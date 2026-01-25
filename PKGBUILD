@@ -3,7 +3,7 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="A fast, lightweight and terminal based typing speed and practice application."
 arch=('any')
-url="https://github.com/developic/gti"
+url="https://github.com/developic/gti-cli"
 license=('MIT')
 depends=()
 makedepends=('go>=1.19')
