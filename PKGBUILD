@@ -3,8 +3,8 @@
 
 pkgname='rustpython'
 _pkgname='RustPython'
-pkgver=0.4.0+51
-_pkgver='2025-10-13-main-51'
+pkgver=0.4.0+55
+_pkgver='2025-11-10-main-55'
 pkgrel=1
 pkgdesc='A Python Interpreter written in Rust'
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('gcc-libs' 'glibc' 'libffi' 'openssl' 'xz')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz")
-sha256sums=('e14d1607bab224286b87d9fc709d5950079726d928075399050334e448d0d423')
+sha256sums=('d72fa8ebbd668de7e08cfb35098dcfc58af57584b51f0c4dedf0d48cffa11c66')
 
 _rustpythonpath="/usr/lib/${pkgname}-${_pkgver}"
 
