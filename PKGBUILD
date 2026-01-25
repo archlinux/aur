@@ -8,7 +8,7 @@ license=('MIT')
 depends=('poppler' 'wv' 'unrtf' 'tidy' 'tesseract' 'leptonica')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Josehpequeno/lumus/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('86fb3da3033ec42f5de3a874420d1fb12d0fc5a05807f382331c3f627d445a99')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
