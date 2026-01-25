@@ -1,7 +1,7 @@
 # Maintainer: Diramix <39developer@diram1x.ru>
 pkgname=next-music
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Web client for Yandex Music with support for themes, addons and Discord Rich Presence (RPC)"
 arch=('x86_64')
 url="https://github.com/Web-Next-Music/Next-Music-Client"
@@ -22,17 +22,22 @@ package() {
   [[ -d usr ]] && cp -r usr "${pkgdir}/"
   [[ -d opt ]] && cp -r opt "${pkgdir}/"
 
-  # 🔍 Ищем основной бинарь (Electron)
-  BIN=$(find "${pkgdir}/opt" -type f -executable | head -n 1)
+  # Указываем точный Linux-бинарь
+  BIN="${pkgdir}/opt/Next Music/next-music"
 
-  if [[ -z "$BIN" ]]; then
-    echo "❌ Executable binary not found in /opt"
+  if [[ ! -x "$BIN" ]]; then
+    echo "❌ Linux binary not found or not executable: $BIN"
     exit 1
   fi
 
-  echo "✅ Found binary: $BIN"
+  echo "✅ Found Linux binary: $BIN"
 
-  # Симлинк как в deb
+  # Создаём launcher-скрипт в /usr/bin
   mkdir -p "${pkgdir}/usr/bin"
-  ln -s "${BIN#/pkgdir}" "${pkgdir}/usr/bin/next-music"
+  cat > "${pkgdir}/usr/bin/next-music" <<EOF
+#!/bin/bash
+exec "$BIN" "\$@"
+EOF
+
+  chmod +x "${pkgdir}/usr/bin/next-music"
 }
