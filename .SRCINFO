@@ -9,6 +9,7 @@ pkgbase = psitop
 	arch = riscv64
 	license = MIT
 	makedepends = go
+	depends = glibc
 	source = psitop-1.1.3.tar.gz::https://github.com/jamespwilliams/psitop/archive/refs/tags/1.1.3.tar.gz
 	sha256sums = 15bddcdd6da148e8d89297778027d4bdb7c882e3d087a5500d1e3de015370ebe
 
