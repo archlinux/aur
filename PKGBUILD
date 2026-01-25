@@ -1,6 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='4.0.2.1'
+_upstreamver='4.0.3.0'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='ytconverter'
@@ -27,7 +27,7 @@ makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
 # source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('af4d67dbd43ef1a4c9127dd40db3aa1405061fe69b2657b34e6a8cd76d2e53fd')
+sha256sums=('9f1d4d1bbc7ee91d17b95592298560df0a774c33db43e8b9f874f72c3f42c5ef')
 
 build() {
     cd "${srcdir}/${_pypi_package//-/_}-${pkgver}/"
