@@ -5,3 +5,4 @@ pkg
 *.tar.zst
 *.log
 *tar.gz.sha256
+LICENSE_*
