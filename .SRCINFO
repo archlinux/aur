@@ -1,6 +1,6 @@
 pkgbase = listpick
 	pkgdesc = A powerful TUI data tool for creating TUI apps or viewing/comparing tabulated data
-	pkgver = 0.1.17.2
+	pkgver = 0.1.17.3
 	pkgrel = 1
 	url = https://github.com/grimandgreedy/listpick
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = listpick
 	provides = listpick
 	conflicts = python-listpick
 	replaces = python-listpick
-	source = https://files.pythonhosted.org/packages/source/l/listpick/listpick-0.1.17.2.tar.gz
-	sha256sums = 1bba60ff023dace728a0bb89df159846236fcc38dc2a556adb240e8aa42a30f4
+	source = https://files.pythonhosted.org/packages/source/l/listpick/listpick-0.1.17.3.tar.gz
+	sha256sums = 9e4aca889e4f741ddbda5e29cd40902a6918d1fd2ef2eb8840b3afb90212608e
 
 pkgname = listpick
