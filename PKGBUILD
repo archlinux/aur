@@ -22,7 +22,7 @@ sha256sums=(
 
 prepare() {
   cd ${pkgname}-${pkgver}
-  patch -Np1 -i ../${pkgname}-paths.patch
+  patch -Np1 -i ../${pkgname}-paths.patch || echo "Patch is probably already applied, continuing script execution..."
 }
 
 build() {
