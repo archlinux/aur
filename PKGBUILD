@@ -3,7 +3,7 @@
 
 _pkgname="mtkclient"
 pkgname="$_pkgname-git"
-pkgver=2.0.1.r29.ge34fc91
+pkgver=2.1.2.r9.gb54c0c2
 pkgrel=1
 pkgdesc="Unofficial MTK reverse engineering and flash tool"
 url="https://github.com/bkerler/mtkclient"
@@ -11,57 +11,48 @@ license=('GPL-3.0-only')
 arch=('any')
 
 depends=(
-  python
+  pyside6
+  python-capstone
+  python-colorama
+  python-fusepy # AUR
+  python-keystone
+  python-pycryptodomex
+  python-pyserial
+  python-pyusb
 )
 makedepends=(
   git
+  python
 )
 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
-options=('!debug')
-
 _pkgsrc="$_pkgname"
-source=(
-  "$_pkgsrc"::"git+https://github.com/bkerler/mtkclient.git"
-  "udev.patch"
-)
-sha256sums=(
-  'SKIP'
-  'd4b6d7967324e585f69c51257e4293f390291a9534e697eefc94568d169220bc'
-)
+source=("$_pkgsrc"::"git+https://github.com/bkerler/mtkclient.git")
+sha256sums=('SKIP')
+
+prepare() {
+  cd "$_pkgsrc"
+  git tag 2.1.2 65d8c4aa8912e5f5d152466362c78ab1fbbfcd47 2> /dev/null || true
+}
 
 pkgver() {
-  cd mtkclient
+  cd "$_pkgsrc"
   git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
     | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "$_pkgsrc/mtkclient"
-
-  # Replace plugdev with uaccess and adbusers like upstream android-udev
-  patch -Np1 -i "$srcdir/udev.patch"
-}
-
 package() {
-  depends+=(
-    libusb
-    pyside6
-    python-capstone
-    python-colorama
-    python-keystone
-    python-pycryptodome
-    python-pycryptodomex
-    python-pyserial
-    python-pyusb
-    python-unicorn
+  # specify python version to prevent untracked pyc files
+  local _pyver_major _pyver_minor
+  _pyver_major=$(python -c 'import sys; print(sys.version_info.major)')
+  _pyver_minor=$(python -c 'import sys; print(sys.version_info.minor)')
 
-    # AUR
-    python-fusepy
-    python-mock
-  )
+  eval "depends+=(
+    'python>=${_pyver_major}.${_pyver_minor}'
+    'python<${_pyver_major}.$((_pyver_minor + 1))'
+  )"
 
   # main files
   install -dm755 "$pkgdir/opt/$_pkgname"
@@ -70,12 +61,25 @@ package() {
   done
 
   # unwanted
-  for i in build Setup src Windows; do
-    rm -rf "$pkgdir/opt/$_pkgname/mtkclient/$i"
-  done
+  rm -rf "$pkgdir/opt/$_pkgname/mtkclient"/{Setup.Windows,build,src}
 
   # udev rules
-  install -Dm644 "$_pkgsrc"/mtkclient/Setup/Linux/51-edl.rules "$pkgdir"/usr/lib/udev/rules.d/52-mtk-edl.rules
+  install -Dm644 /dev/stdin "$pkgdir"/usr/lib/udev/rules.d/52-mtk-edl.rules << END
+# Qualcomm EDL
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="05c6", ATTRS{idProduct}=="9008", MODE="0660", GROUP="adbusers", TAG+="uaccess"
+
+# Qualcomm Memory Debug
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="05c6", ATTRS{idProduct}=="9006", MODE="0660", GROUP="adbusers", TAG+="uaccess"
+
+# Qualcomm Memory Debug
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="05c6", ATTRS{idProduct}=="900E", MODE="0660", GROUP="adbusers", TAG+="uaccess"
+
+# LG Memory Debug
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="1004", ATTRS{idProduct}=="61a1", MODE="0660", GROUP="adbusers", TAG+="uaccess"
+
+# Sierra Wireless
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="1199", ATTRS{idProduct}=="9071", MODE="0660", GROUP="adbusers", TAG+="uaccess"
+END
 
   # scripts
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/mtk" << END
@@ -103,7 +107,8 @@ END
 exec python /opt/$_pkgname/mtkclient/Tools/da_parser.py "\$@"
 END
 
-  python -m compileall "$pkgdir/opt/$_pkgname/"
+  # generate pyc files
+  python -m compileall -o0 -o1 -f -p / -s "$pkgdir" "$pkgdir/"
 
   # permissions
   chmod -R u+rwX,go+rX,go-w "$pkgdir/"
