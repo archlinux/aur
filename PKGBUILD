@@ -3,8 +3,8 @@
 
 _pkgname=3dstool
 pkgname=${_pkgname}-git
-pkgver=1.2.6.r14.g9c4336bc
-pkgrel=2
+pkgver=1.2.6.r15.g3771ae96
+pkgrel=1
 epoch=1
 pkgdesc="An all-in-one tool for extracting/creating 3ds roms"
 arch=('x86_64')
@@ -37,10 +37,11 @@ build() {
   cd ${_pkgname}
 
   cmake -B build \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DUSE_DEP=OFF \
-    -DCMAKE_SKIP_RPATH=ON \
-    -DCMAKE_BUILD_WITH_INSTALL_RPATH=OFF
+    -D CMAKE_BUILD_TYPE=Release \
+    -D BUILD64=ON \
+    -D USE_DEP=OFF \
+    -D CMAKE_SKIP_RPATH=ON \
+    -D CMAKE_BUILD_WITH_INSTALL_RPATH=OFF
 
   cmake --build build
 }
