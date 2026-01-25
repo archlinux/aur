@@ -1,0 +1,23 @@
+pkgbase = cupola-git
+	pkgdesc = An image viewer for the COSMIC desktop environment.
+	pkgver = r48.ae49078
+	pkgrel = 1
+	url = https://codeberg.org/bhh32/cupola
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	checkdepends = appstream
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = desktop-file-utils
+	makedepends = git
+	makedepends = nasm
+	depends = hicolor-icon-theme
+	depends = libxkbcommon
+	provides = cupola
+	conflicts = cupola
+	conflicts = cosmic-viewer-git
+	source = git+https://codeberg.org/bhh32/cupola.git
+	sha256sums = SKIP
+
+pkgname = cupola-git
