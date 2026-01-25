@@ -1,5 +1,5 @@
 diff --git a/Cargo.lock b/Cargo.lock
-index 2432a12..66c5033 100644
+index 171c6a3..37496d3 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
 @@ -26,6 +26,25 @@ dependencies = [
@@ -8,19 +8,19 @@ index 2432a12..66c5033 100644
  
 +[[package]]
 +name = "alpm"
-+version = "4.0.3"
++version = "5.0.2"
 +source = "registry+https://github.com/rust-lang/crates.io-index"
-+checksum = "e7af97d07874ead330d0d636e0953bfdb05973010bbf0ed996a600c283bcd05c"
++checksum = "4c7b56a77dc29bbe3c1d2b2a073200b7a09ed0a5d0b421315e915abdee4e1f2b"
 +dependencies = [
 + "alpm-sys",
-+ "bitflags 2.8.0",
++ "bitflags 2.10.0",
 +]
 +
 +[[package]]
 +name = "alpm-sys"
-+version = "4.0.3"
++version = "5.0.1"
 +source = "registry+https://github.com/rust-lang/crates.io-index"
-+checksum = "b380d61cb56db2db0fc88072b77e760a107691521ac83012379d97d6d6e6f7ac"
++checksum = "2802ef5d74e47cceda08d0d583c69be2595a5d25e2d6eef349b5e5b5ed4560e9"
 +dependencies = [
 + "pkg-config",
 +]
@@ -28,28 +28,115 @@ index 2432a12..66c5033 100644
  [[package]]
  name = "ambient-authority"
  version = "0.0.2"
-@@ -192,6 +211,7 @@ dependencies = [
+@@ -126,9 +145,9 @@ checksum = "bef38d45163c2f1dde094a7dfd33ccf595c92905c8f8f4fdc18d06fb1037718a"
+ 
+ [[package]]
+ name = "bitflags"
+-version = "2.8.0"
++version = "2.10.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "8f68f53c83ab957f72c32642f3868eec03eb974d1fb82e453128456482613d36"
++checksum = "812e12b5285cc515a9c72a5c1d3b6d46a19dac5acfef5265968c166106e31dd3"
+ 
+ [[package]]
+ name = "block-buffer"
+@@ -184,6 +203,7 @@ dependencies = [
  name = "bootupd"
- version = "0.2.29"
+ version = "0.2.32"
  dependencies = [
 + "alpm",
   "anyhow",
-  "bincode",
   "bootc-internal-blockdev",
+  "bootc-internal-utils",
+@@ -844,7 +864,7 @@ version = "0.29.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "71e2746dc3a24dd78b3cfcb7be93368c6de9963d30f43a6a73998a9cf4b17b46"
+ dependencies = [
+- "bitflags 2.8.0",
++ "bitflags 2.10.0",
+  "cfg-if",
+  "cfg_aliases",
+  "libc",
+@@ -1006,7 +1026,7 @@ version = "0.10.75"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "08838db121398ad17ab8531ce9de97b244589089e290a384c900cb9ff7434328"
+ dependencies = [
+- "bitflags 2.8.0",
++ "bitflags 2.10.0",
+  "cfg-if",
+  "foreign-types",
+  "libc",
+@@ -1067,9 +1087,9 @@ checksum = "3b3cff922bd51709b605d9ead9aa71031d81447142d828eb4a6eba76fe619f9b"
+ 
+ [[package]]
+ name = "pkg-config"
+-version = "0.3.31"
++version = "0.3.32"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "953ec861398dccce10c670dfeaf3ec4911ca479e9c02154b3a215178c5f566f2"
++checksum = "7edddbd0b52d732b21ad9a5fab5c704c14cd949e5e9a1ec5929a24fded1b904c"
+ 
+ [[package]]
+ name = "portable-atomic"
+@@ -1193,7 +1213,7 @@ version = "0.16.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "422ffe5b31ea4c7c76a361dc29b986e11fb6987313453088e1fd95f34ecc1ba6"
+ dependencies = [
+- "bitflags 2.8.0",
++ "bitflags 2.10.0",
+  "cpio",
+  "digest",
+  "enum-display-derive",
+@@ -1223,7 +1243,7 @@ version = "0.38.44"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "fdb5bc1ae2baa591800df16c9ca78619bf65c0488b41b96ccec5d11220d8c154"
+ dependencies = [
+- "bitflags 2.8.0",
++ "bitflags 2.10.0",
+  "errno",
+  "itoa",
+  "libc",
+@@ -1238,7 +1258,7 @@ version = "1.1.3"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "146c9e247ccc180c1f61615433868c99f3de3ae256a30a43b49f67c2d9171f34"
+ dependencies = [
+- "bitflags 2.8.0",
++ "bitflags 2.10.0",
+  "errno",
+  "libc",
+  "linux-raw-sys 0.11.0",
+@@ -1807,7 +1827,7 @@ version = "0.36.4"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "3f3fd376f71958b862e7afb20cfe5a22830e1963462f3a17f49d82a6c1d1f42d"
+ dependencies = [
+- "bitflags 2.8.0",
++ "bitflags 2.10.0",
+  "windows-sys 0.59.0",
+ ]
+ 
+@@ -1817,7 +1837,7 @@ version = "0.33.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "3268f3d866458b787f390cf61f4bbb563b922d091359f9608842999eaee3943c"
+ dependencies = [
+- "bitflags 2.8.0",
++ "bitflags 2.10.0",
+ ]
+ 
+ [[package]]
 diff --git a/Cargo.toml b/Cargo.toml
-index d06cb93..df1e845 100644
+index 0c86e18..080f2ed 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -20,6 +20,7 @@ name = "bootupd"
  path = "src/main.rs"
  
  [dependencies]
-+alpm = "4"
++alpm = "5.0.2"
  anyhow = "1.0"
- bincode = "1.3.2"
- bootc-internal-blockdev = "0.0.0"
+ bootc-internal-blockdev = "0.1.0"
+ bootc-internal-utils = "0.1.0"
 diff --git a/src/packagesystem.rs b/src/packagesystem.rs
-index cc74d96..3dbecff 100644
+index c123b4f..3e97f3c 100644
 --- a/src/packagesystem.rs
 +++ b/src/packagesystem.rs
 @@ -78,7 +78,101 @@ fn rpm_parse_metadata(stdout: &[u8]) -> Result<ContentMetadata> {
@@ -175,4 +262,4 @@ index cc74d96..3dbecff 100644
 +    archlinux::query_files_alpm(sysroot_path, paths)
  }
  
- fn parse_evr(pkg: &str) -> Module {
+ fn split_name_version(input: &str) -> Option<(String, String)> {

@@ -2,7 +2,7 @@
 
 pkgname=bootupd-git
 _pkgname=bootupd
-pkgver=0.2.29.r27.g40ab720
+pkgver=0.2.32.r21.gd7598fd
 pkgrel=1
 pkgdesc="Bootloader updater"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
@@ -21,7 +21,7 @@ source=("git+$url.git"
   "0002-arch-packagesystem.patch")
 sha256sums=('SKIP'
   '396a33a7c9fdbcfed76715223a5ef415fa540737596283bd263c6673cb4df767'
-  'acf820036083aed84c0306c9126fbcf40139b5dc326f8e52cc2eb60aabe367f0')
+  '0fcd4bf6da631329750787472c4ff84a2e3075cb7bee508cab05543f4c0ca248')
 
 prepare() {
   cd "$_pkgname"
