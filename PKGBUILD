@@ -1,4 +1,4 @@
-# Maintainer: mdmrk <mariodavo.20@gmail.com>
+# Maintainer: liranv <liranvaknin@gmail.com>
 
 pkgname=shadps4-qtlauncher-bin
 _pkgname=shadPS4QtLauncher
@@ -16,8 +16,8 @@ options=('!strip')
 provides=('shadps4-qtlauncher')
 conflicts=('shadps4-qtlauncher')
 _appimage=shadPS4QtLauncher-qt.AppImage
-source=("shadPS4QtLauncher-linux-qt-${_date}-${_shortcommit}.zip::https://github.com/mdmrk/shadps4-qtlauncher-bin/releases/download/shadPS4QtLauncher-2026-01-21-60e39def38262de5ef37743c7972077d02d5735e/shadPS4QtLauncher-linux-qt-2026-01-21-60e39de.zip")
-sha256sums=('SKIP')
+source=("shadPS4QtLauncher-linux-qt-${_date}-${_shortcommit}.zip::https://github.com/shadps4-emu/shadps4-qtlauncher/releases/download/shadPS4QtLauncher-2026-01-21-60e39def38262de5ef37743c7972077d02d5735e/shadPS4QtLauncher-linux-qt-2026-01-21-60e39de.zip")
+sha256sums=('ade5d14226c5ea0827241d6ae7ebef2a81144a88a32484dc38703b13cbfd89c6')
 
 prepare() {
     cd "${srcdir}"
