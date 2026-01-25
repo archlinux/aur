@@ -1,7 +1,7 @@
 # Maintainer: LunarEclipse <luna@lunareclipse.zone>
 
 pkgname=veloren-bin
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="The last stable release of an open-world, open-source multiplayer voxel RPG"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
     'server-cli-wrapper.sh'
 )
 noextract=('voxygen-wrapper.sh' 'server-cli-wrapper.sh')
-sha512sums=('ec7c1b71e7ebd55aa9bfb7b932f9aa963f3c068f71eecb5744ff4214550fb2a944a645b87b6101064573687ce7e90c7b924fb9d62248f18de669e51274ef0813'
+sha512sums=('0d3923495ac8f7aa52e0f6ebee44260f12b90c9528f78f4c28801c04f3e52357b409e622a36801920e883d5589ccc643783e04c2f167a6032ca3b70c9decda38'
             'e35c852bfa8d80a78a4df50c09246e69431efe9ebc208bd3c2a864e7674ee1078ab0d2eb2b2ffc1b67847ab7125a38dd260d8964054f55cdf0305248ece9a11c'
             'a1ec4d3590af0f07be59c22de3de9402e7ed20eff7fb2b086773f04e8019a607a843a9ba0cf59df48431a5d9a3eb1d0c79272dced9a812c11ae7ed52e41bb0d2')
 
