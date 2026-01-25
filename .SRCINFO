@@ -1,0 +1,22 @@
+pkgbase = pinpam-git
+	pkgdesc = TPM2 backed PAM module and utility for pin-based authentication
+	pkgver = r50.86a68c3
+	pkgrel = 1
+	url = https://github.com/RazeLighter777/pinpam
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	makedepends = coreutils
+	makedepends = gcc
+	depends = tpm2-tss
+	depends = pam
+	depends = openssl
+	depends = gcc-libs
+	depends = gcc
+	provides = pinpam-git
+	source = pinpam::git+https://github.com/RazeLighter777/pinpam.git
+	sha256sums = SKIP
+
+pkgname = pinpam-git
