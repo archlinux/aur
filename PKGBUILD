@@ -2,45 +2,60 @@
 # Contributor: Florian Hülsmann <fh@cbix.de>
 
 pkgname=rakarrack-plus
-pkgver=1.3.2
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc='Guitar Effects Processor'
 arch=(x86_64 aarch64)
 url='https://github.com/Stazed/rakarrack-plus'
 license=(GPL-2.0-only)
-depends=(alsa-utils glibc gcc-libs libx11 libxpm)
-makedepends=(cmake fftw fltk jack liblo lv2 libsndfile python)
+depends=(alsa-utils fltk glibc gcc-libs hicolor-icon-theme libxpm)
+makedepends=(alsa-lib cmake jack liblo lv2 libsndfile python zita-resampler)
 checkdepends=(lilv lv2lint)
 optdepends=('lv2-host: for running LV2 plugins'
             'new-session-manager: for NSM support')
 groups=(lv2-plugins pro-audio)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Stazed/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('c9e3bffe4617ea1c9d1bb2c5cd7fc7c53256fc3c63ef313b90dca059e08a45e2')
+sha256sums=('a1b017988609df420ae97a1c1f3682d7058cf8638058edeea09931b7f2514466')
 
 build() {
   cmake -B build-$pkgname-$pkgver -S $pkgname-$pkgver \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DEnableSysex=ON -DBuildCarlaPresets=OFF \
-    -DEnableNTK=OFF -DBuildRakarrackPlusLV2=OFF \
-    -DEnablePFFFT=OFF \
+    -DBuildCarlaPresets=OFF \
+    -DBuildRakarrackPlusLV2=OFF \
+    -DEnableNTK=OFF \
+    -DEnablePFFFT=ON \
+    -DEnableSysex=ON \
+    -DEnableZITA=ON \
     -Wno-dev
   cmake --build build-$pkgname-$pkgver
 }
 
 check() {
-  mkdir -p "$srcdir"/test
+  # run unit tests
+  local testdir="$srcdir"/test
+  mkdir -p "$testdir"
   DESTDIR="$srcdir"/test cmake --install build-$pkgname-$pkgver
-  local _lv2path="$srcdir"/test/usr/lib/lv2
-  local _plugins=($(LV2_PATH="$_lv2path" lv2ls))
-  LV2_PATH="$_lv2path":/usr/lib/lv2 lv2lint -Mpack -d -q \
-    -t "Plugin Symbols" \
-    ${_plugins[@]}
-  rm -rf "$srcdir"/test
+
+  # check LV2 plugins
+  local lv2path="$testdir"/usr/lib/lv2
+  local plugins=($(LV2_PATH="$lv2path" lv2ls))
+  local lv2specs=(
+    atom buf-size core data-access dynmanifest event instance-access log midi
+    morph options parameters patch port-groups port-props resize-port schemas
+    state time ui units uri-map urid worker kx-programs kx-properties)
+
+  for spec in ${lv2specs[@]}; do
+    ln -vsf /usr/lib/lv2/$spec.lv2 "$lv2path"
+  done
+
+  LV2_PATH="$lv2path" lv2lint -Mpack -d -q \
+    ${plugins[@]}
+  rm -rf "$testdir"
 }
 
 package() {
-  depends+=(libasound.so libfftw3.so libfftw3f.so libfltk.so libfltk_images.so libjack.so liblo.so
-    libsamplerate.so libsndfile.so)
+  depends+=(libasound.so libfltk.so libjack.so libjpeg.so liblo.so libpng16.so
+    libsndfile.so libz.so libzita-resampler.so)
   DESTDIR="$pkgdir" cmake --install build-$pkgname-$pkgver
 }
