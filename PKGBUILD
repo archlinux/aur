@@ -10,7 +10,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 makedepends=('git' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'cargo' 'pnpm' 'nodejs')
 provides=("twintaillauncher")
 conflicts=("twintaillauncher-git" "twintaillauncher-bin")
-source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/ttl-v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/ttl-v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 options=('!lto' '!debug')
 
