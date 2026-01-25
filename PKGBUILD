@@ -3,7 +3,7 @@
 pkgbase=python-jplephem
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=2.23
+pkgver=2.24
 pkgrel=1
 pkgdesc="Use a JPL ephemeris to predict planet positions"
 arch=('any')
@@ -18,7 +18,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
         "https://github.com/brandon-rhodes/python-jplephem/raw/master/ci/de421.bsp"
         "https://github.com/brandon-rhodes/python-jplephem/raw/master/ci/de442s.bsp"
         "https://github.com/brandon-rhodes/python-jplephem/raw/master/ci/moon_pa_de421_1900-2050.bpc")
-md5sums=('f74fd394c3e867e879f668838c7f98b0'
+md5sums=('0455ed3d6e67102fd9b3de70145fe674'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -33,6 +33,7 @@ prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     cp ${srcdir}/*de*b*p* .
+    sed -i "/jplephem 2.23/s:2.23:${pkgver}:" ${_pyname}/test.py
 }
 
 build() {
