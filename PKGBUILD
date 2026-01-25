@@ -1,7 +1,7 @@
 # Maintainer: Josehpequeno <hicarojbs21@gmail.com>
 pkgname=cutieascii
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="Display random cute ASCII art emojis"
 arch=('x86_64')
 url="https://github.com/Josehpequeno/cutieascii"
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('go')
 depends=('glibc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Josehpequeno/cutieascii/archive/v$pkgver.tar.gz")
-sha256sums=('14077e430a2bf414bb9e63c924bf97105997f3d088646f3f2f91ca73e9dd240a')
+sha256sums=('19b85d78297957460a2e8cd847bffe662b8962588cea7d0c457fadb32be4cc21')
 
 build() {
   # Detect automatically where the files are
