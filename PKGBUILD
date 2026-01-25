@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=neowall-git
-pkgver=0.4.4.r0.ga382c50
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="GPU shader wallpapers for Wayland and X11"
 arch=('x86_64' 'aarch64')
