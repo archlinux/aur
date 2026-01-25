@@ -1,6 +1,6 @@
 pkgbase = idphotomaker
 	pkgdesc = Create official French Passport/ID Photos (35x45mm) compliant with ANTS standards
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/Djkawada/IDPhotoMaker
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = idphotomaker
 	depends = python
 	depends = python-pillow
 	depends = tk
-	source = https://github.com/Djkawada/IDPhotoMaker/archive/refs/tags/v1.0.1.tar.gz
+	source = https://github.com/Djkawada/IDPhotoMaker/archive/refs/tags/v1.1.0.tar.gz
 	source = idphotomaker.desktop
-	sha256sums = 6a0c735a6dcd16abf0c91076c3b4ec2f5a53500a8c41a79ce722cc3200fce8cf
+	sha256sums = e8c93fe067aa7df78dfbbe3800c6ada42a583414fbb1dc6daa4752e3480b2715
 	sha256sums = SKIP
 
 pkgname = idphotomaker
