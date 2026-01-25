@@ -1,7 +1,7 @@
 # Maintainer: kobe-koto <k [at] koto [dot] cc>
 pkgname=fluent-lyrics-bin
 pkgver=0.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Fluent Lyrics, a lyrics viewer supports various sources, written in Flutter. (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/kobe-koto/FluentLyrics"
