@@ -1,0 +1,13 @@
+pkgbase = gruvvy-sound-theme-git
+	pkgdesc = Gruvvy Sound Theme, aiming to be a freedesktop alternative
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://winnerwind.in
+	arch = any
+	license = GPL-3.0-or-later
+	provides = gruvvy-sound-theme
+	conflicts = gruvvy-sound-theme
+	source = git+https://github.com/WinnerWind/gruvvy-sound-theme.git
+	sha256sums = SKIP
+
+pkgname = gruvvy-sound-theme-git
