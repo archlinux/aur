@@ -15,22 +15,22 @@
 # OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 pkgname=hnefatafl-copenhagen
-pkgver=4.5.0
-pkgrel=9
-pkgdesc="Copenhagen Hnefatafl client."
+pkgver=5.0.0
+pkgrel=2
+pkgdesc="Copenhagen Hnefatafl client. Discord: https://discord.gg/h56CAHEBXd"
 url="https://hnefatafl.org"
-license=("MIT OR Apache-2.0")
+license=("AGPL-3.0-or-later")
 arch=("x86_64")
 provides=("hnefatafl-copenhagen")
 conflicts=("hnefatafl-copenhagen")
 depends=("glibc" "gcc-libs" "hicolor-icon-theme" "alsa-lib" "openssl")
 makedepends=("base-devel" "clang" "llvm" "mold" "rustup")
 source=("https://github.com/dcampbell24/hnefatafl/archive/refs/tags/v$pkgver-09.tar.gz")
-sha256sums=("749199bbe5205c6a7bd73c04828eff9145678e760556f6098ac9dfe664354b62")
+sha256sums=("7535a7c2c74fb0d6173aa518e7f54cff603966daee8e324f018a32d574595441")
 
 build() {
-    tar -xvzf v$pkgver-09.tar.gz
-    cd "hnefatafl-$pkgver-09"
+    tar -xvzf v$pkgver-2.tar.gz
+    cd "hnefatafl-$pkgver-2"
 
     cargo build --release
 
@@ -45,10 +45,14 @@ build() {
     gzip --no-name --best hnefatafl-server-full.1
     gzip --no-name --best hnefatafl-text-protocol.1
     gzip --no-name --best hnefatafl-client.1
+
+    sed -i 's/games/bin/' packages/hnefatafl-ai-attacker.service
+    sed -i 's/games/bin/' packages/hnefatafl-ai-defender.service
+    sed -i 's/games/bin/' packages/hnefatafl.service
 }
 
 package() {
-    cd "hnefatafl-$pkgver-09"
+    cd "hnefatafl-$pkgver-2"
     install -Dm755 "target/release/hnefatafl-ai" -t "$pkgdir/usr/bin"
     install -Dm755 "target/release/hnefatafl-client" -t "$pkgdir/usr/bin"
     install -Dm755 "target/release/hnefatafl-server" -t "$pkgdir/usr/bin"
@@ -57,16 +61,8 @@ package() {
     install -Dm644 "packages/hnefatafl.service" -t "$pkgdir/usr/lib/systemd/system"
     install -Dm644 "packages/hnefatafl-ai-attacker.service" -t "$pkgdir/usr/lib/systemd/system"
     install -Dm644 "packages/hnefatafl-ai-defender.service" -t "$pkgdir/usr/lib/systemd/system"
-    install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
-    install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
-    install -Dm644 "icons/king_16x16.png" "$pkgdir/usr/share/icons/hicolor/16x16/apps/org.hnefatafl.hnefatafl_client.png"
-    install -Dm644 "icons/king_22x22.png" "$pkgdir/usr/share/icons/hicolor/22x22/apps/org.hnefatafl.hnefatafl_client.png"
-    install -Dm644 "icons/king_24x24.png" "$pkgdir/usr/share/icons/hicolor/24x24/apps/org.hnefatafl.hnefatafl_client.png"
-    install -Dm644 "icons/king_32x32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/org.hnefatafl.hnefatafl_client.png"
-    install -Dm644 "icons/king_42x42.png" "$pkgdir/usr/share/icons/hicolor/42x42/apps/org.hnefatafl.hnefatafl_client.png"
-    install -Dm644 "icons/king_64x64.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/org.hnefatafl.hnefatafl_client.png"
-    install -Dm644 "icons/king_128x128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/org.hnefatafl.hnefatafl_client.png"
-    install -Dm644 "icons/king_256x256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/org.hnefatafl.hnefatafl_client.png"
+    install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+    install -Dm644 "icons/helmet.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.hnefatafl.hnefatafl_client.svg"
     install -Dm644 "hnefatafl-ai.1.gz" "$pkgdir/usr/share/man/man1/hnefatafl-ai.1.gz"
     install -Dm644 "hnefatafl-client.1.gz" "$pkgdir/usr/share/man/man1/hnefatafl-client.1.gz"
     install -Dm644 "hnefatafl-server.1.gz" "$pkgdir/usr/share/man/man1/hnefatafl-server.1.gz"

@@ -1,10 +1,10 @@
 pkgbase = hnefatafl-copenhagen
-	pkgdesc = Copenhagen Hnefatafl client.
-	pkgver = 4.5.0
-	pkgrel = 9
+	pkgdesc = Copenhagen Hnefatafl client. Discord: https://discord.gg/h56CAHEBXd
+	pkgver = 5.0.0
+	pkgrel = 2
 	url = https://hnefatafl.org
 	arch = x86_64
-	license = MIT OR Apache-2.0
+	license = AGPL-3.0-or-later
 	makedepends = base-devel
 	makedepends = clang
 	makedepends = llvm
@@ -17,7 +17,7 @@ pkgbase = hnefatafl-copenhagen
 	depends = openssl
 	provides = hnefatafl-copenhagen
 	conflicts = hnefatafl-copenhagen
-	source = https://github.com/dcampbell24/hnefatafl/archive/refs/tags/v4.5.0-09.tar.gz
-	sha256sums = 749199bbe5205c6a7bd73c04828eff9145678e760556f6098ac9dfe664354b62
+	source = https://github.com/dcampbell24/hnefatafl/archive/refs/tags/v5.0.0-09.tar.gz
+	sha256sums = 7535a7c2c74fb0d6173aa518e7f54cff603966daee8e324f018a32d574595441
 
 pkgname = hnefatafl-copenhagen
