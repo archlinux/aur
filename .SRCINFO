@@ -1,6 +1,6 @@
 pkgbase = dataflare-bin
 	pkgdesc = Easily manage your Table, view Data, write SQL and run Query.
-	pkgver = 2.8.2
+	pkgver = 2.8.3
 	pkgrel = 1
 	url = https://dataflare.app/
 	arch = x86_64
@@ -19,8 +19,8 @@ pkgbase = dataflare-bin
 	provides = dataflare
 	conflicts = dataflare
 	source_x86_64 = Dataflare-x86_64.AppImage::https://assets.dataflare.app/release/linux/x86_64/Dataflare.AppImage
-	sha256sums_x86_64 = e7092f994c3221fbf3f259397a27327dac0a6b334b7cf80294bb0c03cc901504
+	sha256sums_x86_64 = 1d724d9c0c5dc3d09664712783d56aed480c4bd7c560649d3d2dd19e58d7608b
 	source_aarch64 = Dataflare-aarch64.AppImage::https://assets.dataflare.app/release/linux/aarch64/Dataflare.AppImage
-	sha256sums_aarch64 = 64461add294e533a3ffb4b9e4a9b6c77a1d4062dd1aa95b489d280bc51095deb
+	sha256sums_aarch64 = add9d03c42daf6184fea84a257c16edc167f54d5f919b00ec9a113438e3938d0
 
 pkgname = dataflare-bin
