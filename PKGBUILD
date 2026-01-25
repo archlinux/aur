@@ -5,17 +5,17 @@
 # Contributor: David Runge <dvzrv@archlinux.org
 
 pkgname=guitarix-git
-pkgver=0.46.0.r4.g3964866a
+pkgver=0.47.0.r40.gc2f32304
 pkgrel=1
 pkgdesc="virtual guitar amplifier for Jack/Linux"
 arch=('x86_64')
 url="https://guitarix.org"
 license=('GPL3')
 groups=('ladspa-plugins' 'lv2-plugins' 'pro-audio')
-depends=('jack' 'gtkmm3' 'liblo' 'liblrdf' 'libsndfile' 'lilv' 'bluez-libs' 'boost-libs' 
+depends=('jack' 'gtkmm3' 'liblo' 'liblrdf' 'libsndfile' 'lilv' 'bluez-libs' 
 'zita-convolver' 'zita-resampler' 'ttf-roboto')
 makedepends=('git' 'boost' 'eigen' 'gperf' 'intltool' 'ladspa' 'lv2' 'waf' 'sassc' 'pkgconfig')
-provides=('lv2-host' 'libgxw.so' 'libgxwmm.so')
+provides=('lv2-host' 'libgxw.so' 'libgxwmm.so' 'guitarix')
 conflicts=('guitarix')
 replaces=('guitarix2')
 source=("${pkgname%-*}::git+https://github.com/brummer10/guitarix")
@@ -26,18 +26,23 @@ pkgver() {
   git describe --long --tags | sed -r 's/^V//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "${pkgname%-*}"
+  git submodule update --init --recursive
+}
+
 build() {
   cd "${pkgname%-*}/trunk"
   ./waf configure --prefix=/usr \
-  				--optimization \
-				--includeresampler \
-				--includeconvolver \
-                --enable-nls \
-                --no-faust \
-                --shared-lib \
-                --lib-dev \
-                --cxxflags='-flto' \
-                --ldflags="${LDFLAGS}"
+    --optimization \
+    --includeresampler \
+    --includeconvolver \
+    --enable-nls \
+    --no-faust \
+    --shared-lib \
+    --lib-dev \
+    --cxxflags='-flto' \
+    --ldflags="${LDFLAGS}"
   ./waf build -vv
 }
 
