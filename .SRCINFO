@@ -1,7 +1,7 @@
 pkgbase = pyload-ng
 	pkgdesc = Free and Open Source download manager written in Python
 	pkgver = 0.5.0b3.dev94
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pyload.net/
 	arch = any
 	license = AGPL3
@@ -27,7 +27,6 @@ pkgbase = pyload-ng
 	depends = python-semver
 	depends = python-setuptools
 	depends = python-werkzeug
-	depends = python-msgspec
 	optdepends = apprise
 	optdepends = caffeine-ng
 	optdepends = python-beautifulsoup4
