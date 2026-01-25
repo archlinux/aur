@@ -12,6 +12,7 @@ arch=('any')
 
 depends=(
   'pyside6'
+  'python'
   'python-capstone'
   'python-colorama'
   'python-fusepy' # AUR
@@ -22,7 +23,6 @@ depends=(
 )
 makedepends=(
   'git'
-  'python'
   'python-build'
   'python-hatchling'
   'python-installer'
