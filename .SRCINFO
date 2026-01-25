@@ -1,15 +1,15 @@
 pkgbase = cadvisor-bin
 	pkgdesc = Analyzes resource usage and performance characteristics of running containers.
-	pkgver = 0.55.1
+	pkgver = 0.56.2
 	pkgrel = 1
 	url = https://github.com/google/cadvisor
 	arch = x86_64
 	license = Apache2
 	backup = etc/conf.d/cadvisor
-	source = cadvisor-bin-0.55.1::https://github.com/google/cadvisor/releases/download/v0.55.1/cadvisor-v0.55.1-linux-amd64
+	source = cadvisor-bin-0.56.2::https://github.com/google/cadvisor/releases/download/v0.56.2/cadvisor-v0.56.2-linux-amd64
 	source = cadvisor.conf
 	source = cadvisor.service
-	sha256sums = da411af43a207e713a68f50999fc34576f18f6b6d7f90a680bf103d3ebb4c4a4
+	sha256sums = ad92930f16a2f9da15190675e09eeaceb8fd38637d07a686bb0dd68695f692af
 	sha256sums = 785c5ad59f9cf5215afaba911a622dd09cc61749d17d8e46b449ccdece2a9787
 	sha256sums = e6d6e399d0909a7aeb86b4beab52b8895760b740cf26d55f8b87003cb06b5f9b
 
