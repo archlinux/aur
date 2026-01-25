@@ -1,0 +1,16 @@
+pkgbase = mogit
+	pkgdesc = A simple GitHub repo helper script
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/howtoedittv/mogit
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = yay
+	depends = git
+	depends = github-cli
+	depends = xdg-utils
+	source = git+https://github.com/howtoedittv/mogit.git
+	sha256sums = SKIP
+
+pkgname = mogit
