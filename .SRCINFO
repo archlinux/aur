@@ -1,7 +1,7 @@
 pkgbase = pentadactyl-git
 	pkgdesc = Vim-like five-fingered interface for Palemoon
 	pkgver = r7307.3f48ca72
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pentadactyl/pentadactyl
 	arch = any
 	license = MIT
