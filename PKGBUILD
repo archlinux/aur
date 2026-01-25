@@ -2,7 +2,7 @@
 pkgname=bit-font
 _pkgname=bit
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI/TUI Logo Designer + ANSI Font Library with Gradients, Shadows, and Multi-Format Export'
 url='https://github.com/superstarryeyes/bit'
 arch=('x86_64' 'pentium4' 'aarch64' 'armv7h' 'riscv64')
