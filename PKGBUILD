@@ -6,7 +6,7 @@
 # Contributor: Dave Reisner <dreisner AT archlinux DOT org>
 # Contributor: Alexander Fehr <pizzapunk AT gmail DOT com>
 pkgname=rubyripperremix
-pkgver=0.8.0rc4_0.1.0
+pkgver=0.8.0rc4_0.2.0
 pkgrel=1
 pkgdesc="Secure audiodisc ripper with verification (Fork of rubyripper)"
 arch=('any')
@@ -27,9 +27,10 @@ optdepends=('cd-discid: Gnudb support'
             'sox: Correct pre-emphasis with sox'
             'wavpack: WavPack encoding and ReplayGain support'
             'opus-tools: Opus encoding support'
-            'neroaacenc-bin: Nero AAC encoding support')
+            'neroaacenc-bin: Nero AAC encoding support'
+            'ctdb-cli: CUETools Database verification and submittion support')
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/Masterisk-F/RubyRipperRemix/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b8537187b7f9dd99651b09215f7a6f0441805a6ff9647967ed927529624983d4')
+sha256sums=('8427366cc83f891074c6f2a7f6a3214dccf79a837cdf8ac42a926d57f2df9398')
 
 build() {
   cd "RubyRipperRemix-$pkgver"
