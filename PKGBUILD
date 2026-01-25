@@ -32,29 +32,13 @@ pkgver() {
 prepare() {
 	cd radicle-explorer
 	pnpm import
-	git apply - <<EOF
-diff --git a/package.json b/package.json
-index 7f89a61a..f83791cd 100644
---- a/package.json
-+++ b/package.json
-@@ -76,2 +76,7 @@
--  }
-+  },
-+  "pnpm": {
-+    "onlyBuiltDependencies": [
-+      "esbuild"
-+    ]
-+  }
- }
+	cat >pnpm-workspace.yaml <<EOF
+onlyBuiltDependencies:
+  - esbuild
 EOF
-# 	cat >pnpm-workspace.yaml <<EOF
-# onlyBuiltDependencies:
-#   - esbuild
-# EOF
 	pnpm install --shamefully-hoist
 
 	cd radicle-httpd
-
 	cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
