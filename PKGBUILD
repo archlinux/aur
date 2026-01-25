@@ -40,6 +40,10 @@ package() {
 
   python -O -m compileall "${pkgdir}"
 
+  install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+  install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
   cd "${pkgdir}/" || return 1
   patch -p1 < "${srcdir}/fix.patch"
 }
