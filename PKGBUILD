@@ -4,7 +4,7 @@
 pkgname=pdf2htmlex
 _p2hname=pdf2htmlEX
 pkgver=0.18.8.rc1
-pkgrel=3
+pkgrel=4
 _popplerver=0.89.0
 _popplerurl="https://poppler.freedesktop.org/poppler"
 _popplerdataver=0.4.9
@@ -72,7 +72,14 @@ build() {
 	cd ../../
 
 	cd "pdf2htmlEX/build/"
-	cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ..
+	local glib_cflags
+	glib_cflags=$(pkg-config --cflags glib-2.0 gio-2.0)
+	cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_C_FLAGS="${CFLAGS} ${glib_cflags}" \
+		-DCMAKE_CXX_FLAGS="${CXXFLAGS} ${glib_cflags}" \
+		..
 	make
 }
 
