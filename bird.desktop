@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Bird
+Comment=Desktop redistributable isolated browser
+Exec=bird %U
+Icon=bird
+Terminal=false
+Type=Application
+Categories=Network;WebBrowser;
+MimeType=x-scheme-handler/http;x-scheme-handler/https;
+Keywords=browser;web;isolated;webapp;

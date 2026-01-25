@@ -1,0 +1,37 @@
+# Maintainer: Nicolas Szabo <nsz32@github>
+pkgname=bird-bin
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Desktop redistributable isolated browser - turns websites into standalone apps"
+arch=('x86_64')
+url="https://github.com/nsz32/bird"
+license=('MIT')
+depends=('electron39')
+install=bird-bin.install
+source=(
+    "https://github.com/nsz32/bird/releases/download/v${pkgver}/Bird-${pkgver}-asar-linux-x64.tar.zst"
+    "https://raw.githubusercontent.com/nsz32/bird/v${pkgver}/icon.svg"
+    "bird.desktop"
+    "bird.sh"
+)
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+noextract=("Bird-${pkgver}-asar-linux-x64.tar.zst")
+
+package() {
+    cd "$srcdir"
+
+    # Extract asar tarball
+    tar --zstd -xf "Bird-${pkgver}-asar-linux-x64.tar.zst"
+
+    # Install asar and unpacked native modules
+    install -dm755 "$pkgdir/usr/lib/bird"
+    install -Dm644 bird.asar "$pkgdir/usr/lib/bird/bird.asar"
+    cp -r bird.asar.unpacked "$pkgdir/usr/lib/bird/"
+
+    # Install launcher script
+    install -Dm755 bird.sh "$pkgdir/usr/bin/bird"
+
+    # Install desktop file and icon
+    install -Dm644 bird.desktop "$pkgdir/usr/share/applications/bird.desktop"
+    install -Dm644 icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/bird.svg"
+}
