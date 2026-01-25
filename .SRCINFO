@@ -7,7 +7,7 @@ pkgbase = execline-static
 	arch = i686
 	arch = x86_64
 	license = ISC
-	makedepends = skalibs-static>=2.14.4.0
+	makedepends = skalibs-static>=2.14.5.1
 	makedepends = musl
 	makedepends = gcc
 	makedepends = links

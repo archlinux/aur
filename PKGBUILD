@@ -8,7 +8,7 @@ pkgdesc='A (non-interactive) scripting language, like sh'
 arch=('aarch64' 'i686' 'x86_64')
 url="http://skarnet.org/software/${_pkgname}"
 license=('ISC')
-makedepends=('skalibs-static>=2.14.4.0' 'musl' 'gcc' 'links')
+makedepends=('skalibs-static>=2.14.5.1' 'musl' 'gcc' 'links')
 provides=('execline')
 conflicts=('execline')
 replaces=(execline-musl)
