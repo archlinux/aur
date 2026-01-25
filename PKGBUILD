@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('go')
 depends=('glibc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Josehpequeno/cutieascii/archive/v$pkgver.tar.gz")
-sha256sums=('19b85d78297957460a2e8cd847bffe662b8962588cea7d0c457fadb32be4cc21')
+sha256sums=('d3b27295ea33af06aa8fef15976d0d1af79df3917acf90b5a6b829d5c02606ac')
 
 build() {
   # Detect automatically where the files are
