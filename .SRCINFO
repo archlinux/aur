@@ -1,6 +1,6 @@
 pkgbase = yadaw-bin
 	pkgdesc = Yet Another mini-DAW - a lightweight sfx tool in pure Rust (binary)
-	pkgver = 0.5.7
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/mlm-games/yadaw
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = yadaw-bin
 	options = !strip
 	source = icon.png::https://raw.githubusercontent.com/mlm-games/yadaw/refs/heads/master/fastlane/metadata/android/en-US/images/icon.png
 	sha256sums = SKIP
-	source_x86_64 = yadaw-0.5.7-x86_64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/yadaw/releases/download/0.5.7/yadaw-0.5.7-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = b4668333650c73c4524a0b550b0c0e141b1e81c11f27f03f026c5811819d2b6f
-	source_aarch64 = yadaw-0.5.7-aarch64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/yadaw/releases/download/0.5.7/yadaw-0.5.7-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = aad6f575fe1f09a4e934329dbf835989019dc571f621eebdd5de51cf7702e5c3
+	source_x86_64 = yadaw-0.6.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/yadaw/releases/download/0.6.1/yadaw-0.6.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = d8e4e83b8513813f4ee02b46eabfa4df36bd0dd0d564dd68d6ff1821e4208972
+	source_aarch64 = yadaw-0.6.1-aarch64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/yadaw/releases/download/0.6.1/yadaw-0.6.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 4d7548bb40e88318b9ff6e4763b7064f374c1e0e97bd1b70205d33f65e2d4b49
 
 pkgname = yadaw-bin
