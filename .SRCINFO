@@ -1,0 +1,13 @@
+pkgbase = zigmir
+	pkgdesc = A blazing-fast Linux distro mirror speed tester written in Zig
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/rownix101/zigmir
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = zig>=0.15
+	source = zigmir-0.0.6.tar.gz::https://github.com/rownix101/zigmir/archive/refs/tags/v0.0.6.tar.gz
+	b2sums = b8c9fcf0130dc9ea82dd298f8d487fcd4a229307e7b21ea84ee625fc49fbac4f17e3fcf401b3f238f75abb0ec0282cd9210f13aa74f92af8ef8f7e020eac63e3
+
+pkgname = zigmir

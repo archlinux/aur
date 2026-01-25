@@ -1,0 +1,4 @@
+[zigmir]
+source = "git"
+git = "https://github.com/rownix101/zigmir.git"
+prefix = "v"
