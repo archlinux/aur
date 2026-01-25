@@ -4,7 +4,7 @@
 
 pkgname=3dstool
 pkgver=1.2.6
-pkgrel=3
+pkgrel=4
 pkgdesc="An all-in-one tool for extracting/creating 3ds roms"
 arch=('x86_64')
 url="https://github.com/dnasdw/${pkgname}"
@@ -22,17 +22,20 @@ sha256sums=(
 
 prepare() {
   cd ${pkgname}-${pkgver}
-  patch -Np1 -i ../${pkgname}-paths.patch || echo "Patch is probably already applied, continuing script execution..."
+  patch -Np1 -i ../${pkgname}-paths.patch ||
+    echo "Patch is probably already applied, continuing script execution..."
 }
 
 build() {
   cd ${pkgname}-${pkgver}
 
   cmake -B build \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DUSE_DEP=OFF \
-    -DCMAKE_SKIP_RPATH=ON \
-    -DCMAKE_BUILD_WITH_INSTALL_RPATH=OFF
+    -D CMAKE_BUILD_TYPE=Release \
+    -D BUILD64=ON \
+    -D USE_DEP=OFF \
+    -D CMAKE_SKIP_RPATH=ON \
+    -D CMAKE_BUILD_WITH_INSTALL_RPATH=OFF \
+    -D CMAKE_POLICY_VERSION_MINIMUM=3.5
 
   cmake --build build
 }
