@@ -1,6 +1,6 @@
 pkgbase = kodi-rpi
 	pkgver = 21.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/graysky2/xbmc/tree/gs-gbm_omega
 	arch = aarch64
 	license = GPL-2.0-or-later
@@ -93,7 +93,7 @@ pkgbase = kodi-rpi
 	sha256sums = 5a2f1c5fa9189d56eaf7e05024071c57e11f92b4eeb68b4bb0555c1fdd66c890
 
 pkgname = kodi-rpi
-	pkgdesc = Media player and entertainment hub with hw accel for RPi 3 and above, gbm_omega fork
+	pkgdesc = Media player and entertainment hub with hw accel for RPi5, gbm_omega fork
 	install = kodi.install
 	depends = bluez-libs
 	depends = curl
@@ -132,14 +132,12 @@ pkgname = kodi-rpi
 	depends = tinyxml2
 	depends = linux-rpi5
 	optdepends = bluez: Blutooth support
-	optdepends = linux-rpi: HW accelerated decoding
 	optdepends = python-pybluez: Bluetooth support
 	optdepends = pulseaudio: PulseAudio support
 	optdepends = pipewire: PipeWire support
 	provides = kodi=21.3
 	provides = kodi-common=21.3
 	conflicts = kodi
-	conflicts = kodi-rpi-legacy
 
 pkgname = kodi-rpi-eventclients
 	pkgdesc = Kodi Event Clients

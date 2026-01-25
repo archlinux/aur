@@ -15,7 +15,7 @@ _commit=701f9cdf9170e1c14b5b753fed15e36604b25a44
 _clangbuild=
 
 pkgver=21.3
-pkgrel=2
+pkgrel=3
 arch=(aarch64)
 url="https://github.com/graysky2/xbmc/tree/gs-gbm_omega"
 license=('GPL-2.0-or-later')
@@ -155,7 +155,7 @@ build() {
 }
 
 package_kodi-rpi() {
-  pkgdesc="Media player and entertainment hub with hw accel for RPi 3 and above, gbm_omega fork"
+  pkgdesc="Media player and entertainment hub with hw accel for RPi5, gbm_omega fork"
   depends=(
     'bluez-libs' 'curl' 'dav1d' 'desktop-file-utils' 'hicolor-icon-theme' 'fmt'
     'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec' 'libmicrohttpd' 'libnfs'
@@ -169,14 +169,13 @@ package_kodi-rpi() {
 
   optdepends=(
     'bluez: Blutooth support'
-    'linux-rpi: HW accelerated decoding'
     'python-pybluez: Bluetooth support'
     'pulseaudio: PulseAudio support'
     'pipewire: PipeWire support'
   )
   install='kodi.install'
   provides=("kodi=${pkgver}" "kodi-common=${pkgver}")
-  conflicts=('kodi' 'kodi-rpi-legacy')
+  conflicts=('kodi')
 
   _components=(
     'kodi'
@@ -193,7 +192,6 @@ package_kodi-rpi() {
   # setup video drivers for kodi-gbm
   install -Dm0644 "$srcdir/kodi.config.txt" "$pkgdir/boot/kodi.config.txt"
 
-  # rpi4 wants 512 MB of memory ... might be a problem or rpi3?
   sed -i 's/@@@/512/' "$pkgdir/boot/kodi.config.txt"
 
   _initshit="$srcdir/kodi-standalone-service-$_init_version/arm"
