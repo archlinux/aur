@@ -2,11 +2,12 @@
 
 pkgname=ferrite-bin
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
+_hotfix=hotfix.3
 pkgdesc='A fast, lightweight text editor for Markdown, JSON, YAML, and TOML files.'
 arch=('x86_64')
 url=https://github.com/OlaProeis/Ferrite
-_rawurl="${url/github.com/raw.githubusercontent.com}/refs/tags/v$pkgver/"
+_rawurl="${url/github.com/raw.githubusercontent.com}/refs/tags/v$pkgver-$_hotfix/"
 license=('MIT')
 depends=(glibc gcc-libs zlib hicolor-icon-theme fontconfig)
 provides=("${pkgname%-bin}")
@@ -28,13 +29,13 @@ source=(
 sha256sums=('f2371fddd25f3b97c0fe9265ab9fb208ade57bf441860ff196a8b893a567c2e3'
             'c94952dae4438b71667a129c1f7dd0e196e6d7dbf37db4525511c69536c27ac1'
             '79415739aa458c27bfb595d40ce73d81d81aae81fb53771d978209b6f193c7b2'
-            '05279abdddba55be75e38fd990f2a7fd475fbc189069183aabac79a9aa9818f5'
-            'efcdd9b5d8664ed8e03a67795b9bc7a9dddfdfee405a8060c2cad5c89935b6df'
-            'd1a548a61b5187142e30d16ee8ea8729edaebf6fd8df27da9f1bd077209c323d'
-            '896cd9a84df9a790889be5005a1dee6083d142b6aac3f4706fd5749461678161'
-            '7286286c024f1f8a529749bbc63fb4de75a48af04551e40fdd6ded9494e2ab41'
-            '74a3353eeed0352c572d1ff8b2209eedf32a8948d68c5d27661902d8de390caf'
-            '805054dd6cafed38a2346816ae65e5604561332754354fd0d5d599f0d2bda52c')
+            '2e6a7b55e4bf576c3ba6619b66175dcd82df94852056a1ab3512d80ddb1e1532'
+            '873575a20f30617cb3f390f928f7f5de33d6fceabdafc22a04696b3ee3213c35'
+            'bbca9cd1b71d27da12ac2ca781d7b4689d55447e19d901b719e40f69514e1fec'
+            '446158f806f055b44077104e329e25eab8f5127025ec281bd6ad90f77f34dd36'
+            'bf4c13e9620367fbcf3b2a752cfe3bb5a3865cc8fc8d18e68746b4319f42a7d8'
+            '67a0be457ccc23f03d75bf66c293237247e46bfc6b9bf5355fab3d89090b8397'
+            'c7eb21f49d55b8d9999dc56ea670b0e9e7a77af631e1afac0a22a519d154549a')
 
 package() {
   install -Dm0755 "${pkgname%-bin}" -t "$pkgdir/usr/bin/"
