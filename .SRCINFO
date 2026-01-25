@@ -1,7 +1,7 @@
 pkgbase = hexus-git
 	pkgdesc = A modern, cross-platform process manager
-	pkgver = 0.5.0.r0.2c02e62
-	pkgrel = 1
+	pkgver = 0.5.0.r2.e3ac116
+	pkgrel = 2
 	url = https://github.com/Fleny113/Hexus
 	arch = x86_64
 	license = MIT
@@ -10,6 +10,8 @@ pkgbase = hexus-git
 	makedepends = aspnet-targeting-pack-10.0
 	depends = dotnet-runtime-10.0
 	depends = aspnet-runtime-10.0
+	provides = hexus
+	conflicts = hexus
 	source = git+https://github.com/Fleny113/Hexus.git
 	sha512sums = SKIP
 

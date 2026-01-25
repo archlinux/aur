@@ -2,8 +2,8 @@
 # Contributor: Grifonice99 <grifonice99@gmail.com>
 
 pkgname=hexus-git
-pkgver=0.5.0.r0.2c02e62
-pkgrel=1
+pkgver=0.5.0.r2.e3ac116
+pkgrel=2
 pkgdesc="A modern, cross-platform process manager"
 arch=('x86_64')
 license=('MIT')
@@ -12,6 +12,8 @@ depends=('dotnet-runtime-10.0' 'aspnet-runtime-10.0')
 makedepends=('git' 'dotnet-sdk-10.0' 'aspnet-targeting-pack-10.0')
 source=("git+https://github.com/Fleny113/Hexus.git")
 sha512sums=('SKIP')
+provides=('hexus')
+conflicts=('hexus')
 
 _reponame=Hexus
 
@@ -22,11 +24,11 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_reponame"
-    dotnet publish Hexus -p:ContinuousIntegrationBuild=true -p:Deterministic=true
+    dotnet publish Hexus -p:ContinuousIntegrationBuild=true
 }
 
 package() {
-    install -Dm644 "$srcdir/$_reponame/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$srcdir/$_reponame/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 
     install -d "$pkgdir/usr/lib/${pkgname%-git}"
 
