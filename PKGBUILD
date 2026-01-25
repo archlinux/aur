@@ -3,7 +3,7 @@
 
 pkgname=superproductivity
 _name=super-productivity
-pkgver=17.0.0
+pkgver=17.0.1
 pkgrel=1
 pkgdesc="An advanced todo list app with timeboxing and time tracking capabilities"
 arch=('x86_64')
@@ -15,22 +15,30 @@ makedepends=('nvm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/super-productivity/super-productivity/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('7b482de4298c1be49eb6cda91a7bd6ddbd393ad12f67e9be86e92abcc32da956'
+sha256sums=('c492d0dfde7645953a13fd921f413742a90e5788b1d1e713e7aab615e7154348'
             'a8945d93cacbe189b538da601b3f6ace0588c3b126236e763e8f2010005513bb'
             'f9ca69e16223b3dcfa0d8ae9dbbff231255482d85f0d72ddcc5033dac890741e')
 
+_ensure_local_nvm() {
+    which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+}
+
 prepare() {
-    source /usr/share/nvm/init-nvm.sh
-    sed -i "s/@ELECTRON@/${_electron}/" "${pkgname}.sh"
+    _ensure_local_nvm
 
     cd "${_name}-${pkgver}"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    sed -i "s/@ELECTRON@/${_electron}/" "${srcdir}/${pkgname}.sh"
     nvm install
-    npm install
 }
 
 build() {
+    _ensure_local_nvm
+
     cd "${_name}-${pkgver}"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    npm install
     npm run build
     npx electron-builder --linux --dir \
         -c.electronDist="/usr/lib/${_electron}" \
