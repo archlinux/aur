@@ -1,14 +1,13 @@
 pkgbase = android-armv7a-eabi-pcre2
 	pkgdesc = A library that implements Perl 5-style regular expressions (Android armv7a-eabi)
 	pkgver = 10.47
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.pcre.org/
 	arch = any
 	groups = android-pcre2
 	license = BSD
 	makedepends = android-configure
 	makedepends = android-armv7a-eabi-bzip2
-	makedepends = android-armv7a-eabi-readline
 	makedepends = android-armv7a-eabi-zlib
 	depends = android-ndk
 	options = !strip
