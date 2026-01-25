@@ -1,6 +1,6 @@
 # Maintainer: Guru <anjanaya@gmail.com>
 pkgname=ralph-tui
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="AI Agent Loop Orchestrator - terminal UI for automating task completion with AI coding agents"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/subsy/ralph-tui"
 license=('MIT')
 depends=('bun')
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-sha256sums=('0a44a6fc31d590171cafb88fad0ec6501e4ea9241cad8ab4e3e57ad8b1eb36cd')
+sha256sums=('589a2e67beb16e599cce6829aaa43e576ebf0199a06ae3881cc07bab0214842c')
 noextract=("${pkgname}-${pkgver}.tgz")
 
 prepare() {
@@ -19,7 +19,8 @@ prepare() {
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    bun install --production
+    # Use system bun directly, bypassing asdf/mise shims
+    /usr/bin/bun install --production
 }
 
 package() {
