@@ -5,14 +5,13 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-gnutls
 pkgver=3.8.11
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="A library which provides a secure layer over a reliable transport layer (Android ${_android_arch})"
 url="https://www.gnutls.org/"
 license=('GPL-3.0-or-later AND LGPL-2.1-or-later')
 groups=('android-gnutls')
 depends=("android-${_android_arch}-libtasn1"
-         "android-${_android_arch}-readline"
          "android-${_android_arch}-zlib"
          "android-${_android_arch}-nettle"
          "android-${_android_arch}-p11-kit"

@@ -1,7 +1,7 @@
 pkgbase = android-armv7a-eabi-gnutls
 	pkgdesc = A library which provides a secure layer over a reliable transport layer (Android armv7a-eabi)
 	pkgver = 3.8.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnutls.org/
 	arch = any
 	groups = android-gnutls
@@ -9,7 +9,6 @@ pkgbase = android-armv7a-eabi-gnutls
 	makedepends = android-configure
 	makedepends = autogen
 	depends = android-armv7a-eabi-libtasn1
-	depends = android-armv7a-eabi-readline
 	depends = android-armv7a-eabi-zlib
 	depends = android-armv7a-eabi-nettle
 	depends = android-armv7a-eabi-p11-kit
