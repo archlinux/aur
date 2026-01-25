@@ -1,0 +1,5 @@
+[wgcf-cli-bin]
+source = "github"
+github = "ArchiveNetwork/wgcf-cli"
+use_latest_release = true
+prefix = "v"
