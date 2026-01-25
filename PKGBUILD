@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=tongo
-pkgver=0.15.2
+pkgver=0.15.5
 pkgrel=1
 pkgdesc="A TUI for MongoDB"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL-3.0-only')
 depends=('gcc-libs' 'oniguruma')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1659dec1cad385079ce30c57c8b74692595e8c372e3cc21b26a2ddd9cb05a169')
+sha256sums=('7cd622e334fbe21f27c2e2d326bea830326deb9ef7c9c000f5d1b59050057234')
 options=('!lto')
 
 prepare() {
