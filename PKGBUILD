@@ -21,7 +21,7 @@ prepare() {
 }
 
 build() {
-	CFLAGS+="${CFLAGS} -Wno-error"
+	CFLAGS+=' -Wno-error'
 	cd "${_srcdir}"
 	./configure --prefix=/usr
 	make
