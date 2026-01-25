@@ -1,14 +1,16 @@
 pkgbase = cherryctl
-	pkgdesc = Cherry Servers CLI.
-	pkgver = 0.6.0
+	pkgdesc = Cherry Servers CLI for managing cloud infrastructure
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/cherryservers/cherryctl
 	arch = x86_64
+	arch = aarch64
 	license = MPL-2.0
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = git+https://github.com/cherryservers/cherryctl#commit=d5340b7f57e070b72f23bc7d3fd911c2712323e9
-	sha256sums = SKIP
+	conflicts = cherryctl-bin
+	source = cherryctl-0.8.0.tar.gz::https://github.com/cherryservers/cherryctl/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = a1cf076858086a238e0a288ea9d7b82a1149d83af7379e153bc7e7648cd05839
 
 pkgname = cherryctl
