@@ -1,3 +1,16 @@
+2026.01.25, v19.1.11
+
+feature:
+- f849b842 client: listeners: migrate to ESM
+- 091f9017 client: listeners: simplify
+- 3c1a82e7 client: key: view: get rid of mock-require
+
+2026.01.25, v19.1.10
+
+feature:
+- dc5867b0 client: key: vim: get rid of mock-require
+- 77b70b21 cloudcmd: aleman v2.0.0
+
 2026.01.21, v19.1.9
 
 feature:
