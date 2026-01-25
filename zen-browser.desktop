@@ -1,0 +1,24 @@
+[Desktop Entry]
+Version=1.0
+Name=Zen Browser (Twilight)
+GenericName=Web Browser
+Comment=Experience tranquillity while browsing the web without people tracking you.
+Exec=/usr/lib/zen-browser-git/zen %u
+Icon=zen-browser-git
+Terminal=false
+Type=Application
+Categories=Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;
+StartupNotify=true
+StartupWMClass=zen-alpha
+StartupWMClass=zen
+StartupWMClass=Zen Browser
+Actions=new-window;new-private-window;
+
+[Desktop Action new-window]
+Name=New Window
+Exec=/usr/lib/zen-browser-git/zen --new-window %u
+
+[Desktop Action new-private-window]
+Name=New Private Window
+Exec=/usr/lib/zen-browser-git/zen --private-window %u
