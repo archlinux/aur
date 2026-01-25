@@ -4,12 +4,12 @@
 pkgname=libarchive-static
 _pkgname=libarchive
 pkgver=3.8.5
-pkgrel=2
+pkgrel=3
 _attrver=2.5.2
 _aclver=2.3.2
 _sslver=3.6.0
 _zlibver=1.3.1
-_xzver=5.8.1
+_xzver=5.8.2
 _bzipver=1.0.8
 _zstdver=1.5.7
 pkgdesc='Statically-compiled bsdtar (Multi-format archive and compression library, to fix badly broken systems)'
@@ -36,7 +36,7 @@ sha512sums=('9173d0710bbc1b62e41e1823ae674371df644ada5c009e34b722d14f8f9a40f6d5c
             'b5887ea77417fae49b6cb1e9fa782d3021f268d5219701d87a092235964f73fa72a31428b630445517f56f2bb69dcbbb24119ef9dbf8b4e40a753369a9f9a16f'
             '580677aad97093829090d4b605ac81c50327e74a6c2de0b85dd2e8525553f3ddde17556ea46f8f007f89e435493c9a20bc997d1ef1c1c2c23274528e3c46b94f'
             'SKIP'
-            'b9a0f746215cd93c04fecd390ca44fc281d892b989e740ec6abbaa6a1eb457bbef40a33596dfe6e2285a319f2b09ae1994d778f0cf61114cbee9454a0eaa754b'
+            '328fe243e5701ac8216d21168a9e17ea9475cc08b27659c18b68230d8ddd0fffa9f831c576b08c160774fe2c4795604f82b64113e7f84db417b4bd26a4dae2c1'
             '083f5e675d73f3233c7930ebe20425a533feedeaaa9d8cc86831312a6581cefbe6ed0d08d2fa89be81082f2a5abdabca8b3c080bf97218a1bd59dc118a30b9f3'
             'SKIP'
             '2af02be3df319556b65403450acc55964d971fe263fed87dea823fb264a862db807a2a3d89358564277a83e5b303302cc677f66b5e523e3d224120b884e5ef1b'
