@@ -50,7 +50,7 @@ build() {
 package() {
   #cd "${pkgname}-${_pkgver}.orig"
   #make DESTDIR="${pkgdir}" install
-  install -D -m444 "${pkgname}-${_pkgver}.orig/banner" "${pkgdir}/usr/bin/sysvbanner"
+  install -D -m755 "${pkgname}-${_pkgver}.orig/banner" "${pkgdir}/usr/bin/sysvbanner"
   install -D -m444 "debian/copyright" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
 
