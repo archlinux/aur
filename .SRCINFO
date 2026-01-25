@@ -1,0 +1,12 @@
+pkgbase = plymouth-theme-cachyos-bgrt
+	pkgdesc = A plymouth theme featuring CachyOS logo, similar to Fedora
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/gezerman/plymouth-theme-cachyos-bgrt
+	arch = any
+	license = MIT
+	depends = plymouth
+	source = plymouth-theme-cachyos-bgrt-1.0.0.tar.gz::https://github.com/gezerman/plymouth-theme-cachyos-bgrt/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 7ed961f0e5a5c06e1be8dc18c47a34fa17969f498cde101b42352d832e7a1358
+
+pkgname = plymouth-theme-cachyos-bgrt
