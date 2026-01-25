@@ -2,7 +2,7 @@
 # Contributor: Sam Stuewe <halosghost at archlinux dot info>
 
 pkgname=uacme
-pkgver=1.7.6
+pkgver=1.8.0
 _pkgsha=1b6b27892cddf9b6e19c94f333aa36f07c776150 # git show-ref upstream/$pkgver
 pkgrel=1
 pkgdesc='An ACMEv2 client written in plain C with minimal dependencies'
@@ -13,7 +13,7 @@ depends=('curl' 'gnutls')
 optdepends=('libev: for ualpn')
 license=('GPL3')
 source=("$pkgname-$pkgver::git+https://github.com/ndilieto/$pkgname.git#tag=$_pkgsha?signed")
-sha256sums=('SKIP')
+sha256sums=('7dbedda407af0852a02303341d7499f79acd57bbec364744eeb301b4748edf21')
 validpgpkeys=('243828049BB5F549446516E24142E3D6318A7874') # gpg --fetch-keys https://github.com/ndilieto.gpg
 
 build() {
