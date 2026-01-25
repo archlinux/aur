@@ -1,7 +1,7 @@
 pkgbase = logstalgia
 	pkgdesc = a website access log visualisation tool
 	pkgver = 1.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/acaudwell/Logstalgia
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,8 @@ pkgbase = logstalgia
 	depends = boost
 	depends = libpng
 	source = https://github.com/acaudwell/Logstalgia/releases/download/logstalgia-1.1.4/logstalgia-1.1.4.tar.gz
+	source = boost-1.89.patch
 	sha256sums = c049eff405e924035222edb26bcc6c7b5f00a08926abdb7b467e2449242790a9
+	sha256sums = ed3e81179cd6649b449e8f912b7e1d63da005bd5e577055874a8858d7f0c4018
 
 pkgname = logstalgia
