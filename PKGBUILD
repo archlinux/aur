@@ -4,7 +4,7 @@ pkgbase=python-cdshealpix
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.7.2
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A healpix manipulation library"
 arch=('i686' 'x86_64')
@@ -24,13 +24,13 @@ makedepends=('python-maturin'
 #            'python-astropy'
 #            'python-mocpy'
 #            'pandoc'
-#            )  # circular dep
+#           )  # circular dep
 checkdepends=('python-pytest-benchmark'
 #             'python-pytest-xdist'
               'python-matplotlib'
               'python-astropy-healpix')   # matplotlib
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('ac73cbda485e60477b72b5e076c8288a')
+md5sums=('644a43fa05f677af0e491aa02e31c116')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
