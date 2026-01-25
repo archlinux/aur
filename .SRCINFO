@@ -1,7 +1,7 @@
 pkgbase = python-modelscope
 	pkgdesc = ModelScope: bring the notion of Model-as-a-Service to life.
 	pkgver = 1.34.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.modelscope.cn/
 	arch = any
 	license = Apache
