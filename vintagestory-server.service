@@ -1,0 +1,12 @@
+[Unit]
+Description=Vintage Story Server
+Wants=network.target
+After=multi-user.target
+
+[Service]
+User=vintagestory
+Group=vintagestory
+WorkingDirectory=/opt/vintagestory-server/
+ExecStart=/opt/vintagestory-server/server.sh start
+ExecStop=/opt/vintagestory-server/server.sh stop
+Type=forking

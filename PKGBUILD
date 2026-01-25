@@ -1,38 +1,43 @@
-# Maintainer: Shae VanCleave
-# PKGBUILD somewhat copied from copygirl's vintagestory AUR package: https://aur.archlinux.org/packages/vintagestory
+# Maintainer: Theo Müller <theopaul2001 at gmx dot de>
 
-# Metadata
-#  Info
+
 pkgname=vintagestory-server
 pkgdesc="An in-development indie sandbox game about innovation and exploration--server package"
 license=('custom')
-#  Versioning
-_release=stable # the name of the version's release type ("stable", "unstable", "pre")
-_pkgver=1.18.15
-pkgver=${_pkgver//-/_} # allows usage of versions with hyphens in _pkgver
+pkgver=1.21.6
 pkgrel=1
-#  Requirements
-depends=('mono')
-optdepends=('vintagestory-servermgr: manage the server, provides systemd unit to run server')
-arch=('x86' 'x86_64')
-#  Source
+depends=('dotnet-runtime-8.0' 'screen' 'procps-ng')
+arch=('x86_64')
 url='https://www.vintagestory.at/'
-license=('custom')
-source=("https://cdn.vintagestory.at/gamefiles/$_release/vs_server_linux-x64_$_pkgver.tar.gz")
-#       "https://account.vintagestory.at/files/$_release/vs_server_linux-x64_$_pkgver.tar.gz" (alternative source)
-md5sums=('ad6be6ccd9a521f36fd39c447c31738d')
+source=("vintagestory-server-${pkgver}.tar.gz::https://cdn.vintagestory.at/gamefiles/stable/vs_server_linux-x64_${pkgver}.tar.gz"
+        "vintagestory-server.service"
+        "vintagestory-server.tmpfiles"
+        "vintagestory-server.sysusers"
+        "vsserverd.sh")
+noextract=("vintagestory-server-${pkgver}.tar.gz")
+sha256sums=('664d468f8e262c9541e89048ba45e884abb39ba2659b095dde1ef95712247eac'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
-# Installation
+_pkgname="vintagestory-server-${pkgver}"
+
+
 prepare() {
-    # Create symbolic links for any assets (excluding fonts) containing non-lowercase letters
-    find assets/ -not -path "*/fonts/*" -regex ".*/.*[A-Z].*" | while read -r file; do
-        local filename="$(basename -- "$file")"
-        ln -sf "$filename" "${file%/*}"/"${filename,,}"
-    done
+    mkdir -p ${_pkgname}
+    tar -xzf ${_pkgname}.tar.gz -C ${_pkgname}
+    cd ${_pkgname}
+    sed -i "s/\/home\/vintagestory\/server/\/opt\/vintagestory-server/" server.sh
+    sed -i "s/\/var\/vintagestory\/data/\/var\/vintagestory-server/" server.sh
 }
 
 package() {
-    mkdir -p "$pkgdir"/usr/share/"$pkgname"/
-    mv * "$pkgdir"/usr/share/"$pkgname"/
-    unlink "$pkgdir"/usr/share/"$pkgname"/vs_server_linux-x64_"$_pkgver".tar.gz
+    mkdir -p ${pkgdir}/opt/vintagestory-server
+    cp -aT ${_pkgname} ${pkgdir}/opt/vintagestory-server
+    install -dm755 ${pkgdir}/var/vintagestory-server
+    install -Dm644 vintagestory-server.tmpfiles ${pkgdir}/usr/lib/tmpfiles.d/vintagestory-server.conf
+    install -Dm644 vintagestory-server.service  ${pkgdir}/etc/systemd/system/vintagestory-server.service
+    install -Dm644 vintagestory-server.sysusers ${pkgdir}/usr/lib/sysusers.d/vintagestory-server.conf
+    install -Dm755 vsserverd.sh ${pkgdir}/usr/local/bin/vsserverd
 }
