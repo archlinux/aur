@@ -7,6 +7,7 @@ arch=('x86_64')
 url="https://github.com/nsz32/bird"
 license=('MIT')
 depends=('electron39')
+options=('!strip' '!debug')
 install=bird-bin.install
 source=(
     "https://github.com/nsz32/bird/releases/download/v${pkgver}/Bird-${pkgver}-asar-linux-x64.tar.zst"
