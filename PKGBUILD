@@ -1,4 +1,4 @@
-# Maintainer: nvlli <nvlli4096 at gmail dot com>
+# Maintainer: nvlli <nvllvs0 at gmail dot com>
 
 pkgname=dwmblocks-fast-git
 pkgver=0.1
@@ -21,8 +21,30 @@ optdepends=('dwm: window manager'
 source=("git+$url")
 sha256sums=('SKIP')
 
+prepare() {
+	cd dwmblocks-fast
+	make config
+	echo ''
+	echo '======================================================================================='
+	echo 'For AUR users:'
+	echo '======================================================================================='
+	echo 'Pass the desired flags as a variable as DWMBLOCKS_FAST_OPTIONS to makepkg. For example:'
+	echo 'DWMBLOCKS_FAST_OPTIONS="disable-nvidia disable-nvml" makepkg -si -f'
+	echo ''
+	echo 'Current dependencies (which you can disable with DWMBLOCKS_FAST_OPTIONS):'
+	echo "${depends[@]}"
+}
+
+check() {
+	cd dwmblocks-fast
+	make -k check
+}
+
 build() {
 	cd dwmblocks-fast
+	if [ -n "$DWMBLOCKS_FAST_OPTIONS" ]; then
+		make $DWMBLOCKS_FAST_OPTIONS
+	fi
 	make
 }
 
