@@ -1,7 +1,7 @@
 # Maintainer: Stipe Kotarac <stipe@kotarac.net>
 
 pkgname=paip
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='like cat but through llm'
 url='https://github.com/kotarac/paip'
@@ -10,7 +10,7 @@ license=(GPL-2.0-only)
 makedepends=(cargo)
 options=(!lto)
 source=("https://github.com/kotarac/paip/archive/v${pkgver}.tar.gz")
-sha256sums=('e5be2b0ddffc80c443cbe02ac2be7389cce1346515bc2a3f57d9323b05e7f99d')
+sha256sums=('29ea877d2f3d2861bafaa156bb350988f02df16bbe7f37cbe3fff4271db4524a')
 
 prepare() {
   cd $pkgname-$pkgver/
