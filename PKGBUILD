@@ -2,7 +2,7 @@
 # Maintainer: 00ein00
 pkgname=hytale-f2p-git
 _pkgname=Hytale-F2P
-pkgver=2.0.12.r152.g4086612
+pkgver=2.0.12.r153.gf438d6c
 pkgrel=1
 pkgdesc="Hytale-F2P - unofficial Hytale Launcher for free to play with multiplayer support"
 arch=('x86_64')
@@ -34,5 +34,5 @@ package() {
   mkdir -p "$pkgdir/opt/$_pkgname"
   cp -r "$_pkgname/dist/linux-unpacked/"* "$pkgdir/opt/$_pkgname"
   install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
-  install -Dm644 "$_pkgname/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
+  install -Dm644 "$_pkgname/GUI/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
 }
