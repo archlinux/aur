@@ -10,7 +10,7 @@ depends=('webkit2gtk-4.1' 'gtk3' 'libappindicator-gtk3')
 provides=('mindwtr')
 conflicts=('mindwtr')
 source_x86_64=("${url}/releases/download/v${pkgver}/mindwtr_${pkgver}_amd64.deb")
-sha256sums_x86_64=('67f52f370fb43e1ee589740d14c19b66c8ca379a16935e07ae222ceb1a9144d6')
+sha256sums_x86_64=('bee17331f611cbfaccf1e3b99662c820cbd6985c0c45797e3db40e670d679e4f')
 
 package() {
     tar -xf data.tar.zst -C "${pkgdir}" || tar -xf data.tar.gz -C "${pkgdir}"
