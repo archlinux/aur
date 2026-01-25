@@ -1,12 +1,12 @@
 pkgbase = goverlay-git
 	pkgdesc = A GUI to help manage Vulkan/OpenGL overlays
-	pkgver = 1.7.0.r0.g9426526
-	pkgrel = 2
+	pkgver = 1.7.1.r27.g6ca6b31
+	pkgrel = 1
 	url = https://github.com/benjamimgois/goverlay
 	arch = x86_64
 	license = GPL-3.0-or-later
 	checkdepends = appstream
-	checkdepends = desktop-file-utils
+	makedepends = desktop-file-utils
 	makedepends = git
 	makedepends = lazarus
 	depends = 7zip
