@@ -1,7 +1,7 @@
 # Maintainer: Daniël Nazarkin <aur.danicatgames@pm.me>
 
 pkgname=termframe
-pkgver=0.7.4
+pkgver=0.7.6
 pkgrel=1
 pkgdesc='Convert terminal output into an SVG file'
 url='https://github.com/pamburus/termframe'
@@ -11,12 +11,12 @@ makedepends=('cargo')
 options=('!lto')
 arch=('x86_64')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('411a64bc264720023887cac73f458b693c496b54840660585ad71dff94bd4ab1')
+sha256sums=('6fe00b99c59db5f1de3dcf4410572b238f01e596b6fd7ec84bc544b2ea6ca378')
 
 prepare() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
