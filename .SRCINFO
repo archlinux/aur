@@ -1,0 +1,22 @@
+pkgbase = everywhere-git
+	pkgdesc = Context-aware AI assistant for your desktop. Ready to respond intelligently, seamlessly integrating multiple LLMs and MCP tools.
+	pkgver = r1092.a94a1ad
+	pkgrel = 1
+	url = https://github.com/DearVa/Everywhere
+	arch = x86_64
+	license = BSL-1.1
+	makedepends = git
+	makedepends = git-lfs
+	makedepends = dotnet-sdk
+	depends = dotnet-runtime
+	depends = fontconfig
+	depends = libx11
+	depends = libice
+	depends = libsm
+	depends = hicolor-icon-theme
+	provides = everywhere
+	conflicts = everywhere
+	source = git+https://github.com/DearVa/Everywhere.git#branch=dev-linux
+	sha256sums = SKIP
+
+pkgname = everywhere-git
