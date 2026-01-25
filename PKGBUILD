@@ -66,7 +66,7 @@ package() {
 
   cd "completions"
   install -vDm644 "${_pkgname}.bash"       "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
-  install -vDm644 "${_pkgname}.elvish"     "${pkgdir}//usr/share/elvish/lib/${_pkgname}.elv"
+  install -vDm644 "${_pkgname}.elvish"     "${pkgdir}/usr/share/elvish/lib/${_pkgname}.elv"
   install -vDm644 "${_pkgname}.fish"       "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
   install -vDm644 "${_pkgname}.powershell" "${pkgdir}/usr/share/powershell/Completions/${_pkgname}.ps1"
   install -vDm644 "${_pkgname}.zsh"        "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
