@@ -1,0 +1,5 @@
+[python-sysv-ipc]
+source = "git"
+git = "https://github.com/osvenskan/sysv_ipc.git"
+prefix = "n"
+exclude_regex = ".*v.*"
