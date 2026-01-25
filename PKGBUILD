@@ -1,7 +1,7 @@
 # Maintainer: Sricharan <sricharanandra7@gmail.com>
 pkgname=eurus-tui-bin
 _pkgname=eurus
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="E2EE Terminal Chat Client (Binary Release)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'libxcb' 'dbus' 'alsa-lib' 'openssl')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "eurus-tui-git")
 source=("$_pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname")
-sha256sums=('6b88197df6a97bc55ed7dd392545f63540bd3ffbb9fa9acc5bc516f4e13adbab')
+sha256sums=('b7b435e0a71fc4020be8bee881bda4f2148354ff588f2da41b267fafaef931e5')
 
 package() {
     install -Dm755 "$_pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
