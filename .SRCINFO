@@ -1,0 +1,19 @@
+pkgbase = xdgctl-git
+	pkgdesc = TUI for managing XDG default applications
+	pkgver = r7.2a5d5ea
+	pkgrel = 1
+	url = https://github.com/mitjafelicijan/xdgctl
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = gcc
+	depends = glib2
+	provides = xdgctl
+	conflicts = xdgctl
+	source = xdgctl-git::git+https://github.com/mitjafelicijan/xdgctl.git
+	source = https://raw.githubusercontent.com/mitjafelicijan/xdgctl/refs/heads/master/LICENSE
+	validpgpkeys = 5AA3BC334FD7E3369E7C77B291C559DBE4C9123B
+	sha256sums = SKIP
+	sha256sums = 9e3828f9fe592193e8790c2a299b51c52b1c8a1aa076f9fc0d59563e7318b589
+
+pkgname = xdgctl-git
