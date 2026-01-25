@@ -1,0 +1,4 @@
+[vscodium-electron]
+source = "github"
+github = "VSCodium/vscodium"
+use_max_tag = true
