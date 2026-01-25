@@ -1,6 +1,6 @@
 pkgbase = kodi-rpi
 	pkgver = 21.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/graysky2/xbmc/tree/gs-gbm_omega
 	arch = aarch64
 	license = GPL-2.0-or-later
@@ -130,6 +130,7 @@ pkgname = kodi-rpi
 	depends = pcre
 	depends = libdisplay-info
 	depends = tinyxml2
+	depends = linux-rpi5
 	optdepends = bluez: Blutooth support
 	optdepends = linux-rpi: HW accelerated decoding
 	optdepends = python-pybluez: Bluetooth support

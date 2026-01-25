@@ -15,7 +15,7 @@ _commit=701f9cdf9170e1c14b5b753fed15e36604b25a44
 _clangbuild=
 
 pkgver=21.3
-pkgrel=1
+pkgrel=2
 arch=(aarch64)
 url="https://github.com/graysky2/xbmc/tree/gs-gbm_omega"
 license=('GPL-2.0-or-later')
@@ -163,7 +163,7 @@ package_kodi-rpi() {
     'mesa' 'libpipewire' 'python-pillow' 'python-pycryptodomex'
     'python-simplejson' 'smbclient' 'sndio' 'spdlog' 'sqlite'
     'tinyxml' 'libxkbcommon' 'polkit' 'lzo' 'libinput'
-    'pcre' 'libdisplay-info' 'tinyxml2'
+    'pcre' 'libdisplay-info' 'tinyxml2' 'linux-rpi5'
   )
   [[ -n "$_clangbuild" ]] && depends+=('glu')
 
