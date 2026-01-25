@@ -12,7 +12,9 @@ license=('BSD-2-Clause')
 makedepends=('git')
 depends=(
   'cuda'
-  'nvidia-utils'
+)
+optdepends+=(
+  'nvidia-utils: built-in monitoring for NVIDIA GPUs'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'gpu_burn-git')
