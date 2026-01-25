@@ -1,23 +1,36 @@
-# Maintainer: A. Husen <hi@husen.id>
-pkgname=plenti-bin
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: A. Husen <hi@husen.id>
+
+_pkgauthor=plentico
 _pkgname=plenti
-pkgver=0.5.13
-pkgrel=1
+pkgname=${_pkgname}-bin
 pkgdesc="Static Site Generator with Go backend and Svelte frontend"
+
+pkgver=0.7.25
+pkgrel=1
+_pkgvername=v${pkgver}
+
 arch=('x86_64')
-url="https://github.com/plentico/plenti"
-license=('APACHE')
-provides=('plenti')
-conflicts=('plenti')
-source=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/plenti_${pkgver}_Linux_64-bit.tar.gz")
-sha512sums=('d48e2b41bcd699a268e1bb38077e5b0dc8f4e6e3c5d3365dc015018b91421967b01fe47cbb1d0a0a4c71d7d3ecbc7441ef07304868b6800b9ccadd10015bd921')
+_barch=('Linux_64-bit')
+
+url="https://github.com/${_pkgauthor}/${_pkgname}"
+_urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
+
+license=('Apache-2.0')
+
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+
+source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[0]}.tar.gz")
+sha256sums_x86_64=('d101bab55e2f18cfd22e43dd0e138755749266625bfd503ced2c8e88d06c564a')
+
 
 package() {
-    cd "$srcdir"
+	cd "${srcdir}/" || exit
 
-    install -Dm755 $_pkgname		"${pkgdir}/usr/bin/${_pkgname}"
+	install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
-    install -Dm644 "README.md"		"$pkgdir/usr/share/doc/${_pkgname}/README.md"
+	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-    install -Dm644 "LICENSE"		"$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

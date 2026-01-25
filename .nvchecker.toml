@@ -1,0 +1,5 @@
+[plenti-bin]
+source = "github"
+github = "plentico/plenti"
+use_latest_release = true
+prefix = "v"
