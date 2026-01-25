@@ -12,7 +12,6 @@ pkgbase = fcitx5-vmk-git
 	makedepends = gcc
 	makedepends = git
 	depends = fcitx5
-	depends = fcitx5-bamboo
 	depends = libinput
 	depends = hicolor-icon-theme
 	depends = glibc

@@ -6,7 +6,7 @@ pkgdesc="VMK (Vietnamese Micro Key) for Fcitx5 - Bộ gõ tiếng Việt mô ph�
 arch=('x86_64')
 url="https://github.com/nhktmdzhg/VMK"
 license=('GPL-3.0-or-later')
-depends=('fcitx5' 'fcitx5-bamboo' 'libinput' 'hicolor-icon-theme' 'glibc' 'gcc-libs' 'systemd-libs')
+depends=('fcitx5' 'libinput' 'hicolor-icon-theme' 'glibc' 'gcc-libs' 'systemd-libs')
 makedepends=('cmake' 'go' 'extra-cmake-modules' 'gcc' 'git')
 provides=('fcitx5-vmk')
 conflicts=('fcitx5-vmk')
@@ -65,7 +65,7 @@ package() {
     
     install -Dm755 "$srcdir/VMK/fcitx5-vmk-server" \
     "$pkgdir/usr/bin/fcitx5-vmk-server"
-
+    
     install -Dm644 "$srcdir/VMK/docs/user-vmk.conf" \
     "$pkgdir/usr/lib/sysusers.d/vmk.conf"
     
@@ -74,6 +74,9 @@ package() {
     
     install -Dm644 "$srcdir/VMK/fcitx5-vmk/data/scalable/apps/org.fcitx.Fcitx5.fcitx-vmk.svg" \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.fcitx.Fcitx5.fcitx-vmk.svg"
+    
+    install -Dm644 "$srcdir/VMK/fcitx5-vmk/data/vietnamese.cm.dict" \
+    "$pkgdir/usr/share/fcitx5/vmk/vietnamese.cm.dict"
     
     install -Dm444 "$srcdir/VMK/LICENSE" \
     "$pkgdir/usr/share/licenses/fcitx5-vmk/LICENSE"
