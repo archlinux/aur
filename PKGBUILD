@@ -1,7 +1,7 @@
 # Maintainer: Josehpequeno <hicarojbs21@gmail.com>
 pkgname=cutieascii
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Display random cute ASCII art emojis"
 arch=('x86_64')
 url="https://github.com/Josehpequeno/cutieascii"
