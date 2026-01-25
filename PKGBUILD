@@ -2,7 +2,7 @@
 
 _pkgname='surface-control'
 pkgname="${_pkgname}-git"
-pkgver=0.4.12.1.r0.ga3852cd
+pkgver=0.5.0.1.r0.g33d5bee
 pkgrel=1
 pkgdesc='Control various aspects of Microsoft Surface devices from the Command-Line'
 url='https://github.com/linux-surface/surface-control'
