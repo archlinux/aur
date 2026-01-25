@@ -1,0 +1,5 @@
+[hjson-cli-bin]
+source = "github"
+github = "hjson/hjson-go"
+use_latest_release = true
+prefix = "v"
