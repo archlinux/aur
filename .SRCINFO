@@ -1,5 +1,5 @@
 pkgbase = snick
-	pkgdesc = Simple snake game powered by SDL3!
+	pkgdesc = Simple little snake game powered by SDL3!
 	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/NickAllbritton/snick
