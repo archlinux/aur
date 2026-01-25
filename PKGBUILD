@@ -1,8 +1,9 @@
+# PKGBUILD
 # Maintainer: devlinman <dev.linman.tech@gmail.com>
 
 pkgname=whatsit-git
-pkgver=3.0.1.r1.g0c8842a
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 pkgdesc="Lightweight (KDE) native Qt6 WhatsApp Web client"
 arch=('x86_64')
 url="https://github.com/devlinman/whatsit"
@@ -40,5 +41,11 @@ build() {
 
 package() {
   cd whatsit
+
+  # Install the application
   DESTDIR="$pkgdir" cmake --install build
+
+  # Install licenses
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  cp -r LICENSES/* "$pkgdir/usr/share/licenses/$pkgname/"
 }

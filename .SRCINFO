@@ -1,7 +1,7 @@
 pkgbase = whatsit-git
 	pkgdesc = Lightweight (KDE) native Qt6 WhatsApp Web client
-	pkgver = 3.0.1.r1.g0c8842a
-	pkgrel = 2
+	pkgver = 4.0.0
+	pkgrel = 1
 	url = https://github.com/devlinman/whatsit
 	arch = x86_64
 	license = MIT
