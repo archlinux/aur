@@ -2,7 +2,7 @@
 
 pkgname=opentubex-git
 _pkgname=OpenTubeX
-pkgver=r9828.0c81d987
+pkgver=r9857.a7495b0d
 pkgrel=2
 pkgdesc='A fork of the open source desktop YouTube player FreeTube with additional features'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -17,7 +17,7 @@ source=("git+$url"
         opentubex.sh)
 sha256sums=('SKIP'
             '63154cb6dd377c8d70714bb858405f95d88a849815d86bf7cf1b6b344cc54b5d'
-            '308ed89c0b0efb2c5cd8aa7751a7a7bbdfdd6061a8fa9313111905d332e2c772')
+            'a335db16c3ec6dd6ac5e529019b4fe55d9848ae9f450f3cfd4b66d06ec6d53f8')
 
 pkgver() {
   cd "$srcdir/$_pkgname"

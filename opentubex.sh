@@ -1,3 +1,3 @@
 #!/bin/sh
 
-electron39 /usr/lib/opentubex-git/app.asar "$@"
+electron40 /usr/lib/opentubex-git/app.asar "$@"
