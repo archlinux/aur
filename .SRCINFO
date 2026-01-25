@@ -1,13 +1,14 @@
 pkgbase = prmt
-	pkgdesc = A tool for prompt manipulation (Binary version)
-	pkgver = 0.2.2
+	pkgdesc = A tool for prompt manipulation
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/3axap4eHko/prmt
 	arch = x86_64
 	license = MIT
-	provides = prmt
-	conflicts = prmt
-	source = https://github.com/3axap4eHko/prmt/releases/download/v0.2.2/prmt-x86_64-unknown-linux-gnu-ubuntu-24.04.tar.gz
-	sha256sums = 1949dcb4edb222ea59298982e596031e53b1ebe572294203e25a8c07c1e9ad44
+	makedepends = cargo
+	depends = gcc-libs
+	options = !lto
+	source = prmt-0.2.4.tar.gz::https://github.com/3axap4eHko/prmt/archive/refs/tags/v0.2.4.tar.gz
+	sha256sums = ff5524b416d7e25e2cf6266609b7baaf70c4610b2ddc956a7119742c25bfef8c
 
 pkgname = prmt
