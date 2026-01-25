@@ -1,6 +1,6 @@
 pkgbase = r-plotly
 	pkgdesc = Create Interactive Web Graphics via 'plotly.js'
-	pkgver = 4.11.0
+	pkgver = 4.12.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=plotly
 	arch = any
@@ -55,7 +55,7 @@ pkgbase = r-plotly
 	optdepends = r-testthat
 	optdepends = r-webshot
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/plotly_4.11.0.tar.gz
-	sha256sums = ba9009cd7e913590872aa153b13be719e4dfcee8cd24f8631bd35c99044bceb3
+	source = https://cran.r-project.org/src/contrib/plotly_4.12.0.tar.gz
+	sha256sums = f9f6dbd6e45509c6de11d542d1c1bb654162811c2d24ac90f8deece032727acf
 
 pkgname = r-plotly
