@@ -3,7 +3,7 @@
 
 pkgname=wg-netns
 _pkgname="${pkgname}"
-pkgver=2.3.2
+pkgver=2.3.5
 _pkgver="${pkgver}"
 pkgrel=1
 
@@ -16,7 +16,7 @@ depends=('wireguard-tools' 'python' 'iproute2')
 optdepends=('python-yaml: yaml config support')
 
 source=("${_pkgname}-${_pkgver}.tar.gz::https://github.com/dadevel/${_pkgname}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('a0d02bc9a9409a1c3aa1ca345ea2f0fd3672b6850b81b6ac575076bea2d7f5bd')
+sha256sums=('109da7fcdd5cd8e79f2c24314f150be7b7f8fac904bd7169af5ebfae65080d2b')
 
 package() {
     cd "${srcdir}/${_pkgname}-${_pkgver}"
