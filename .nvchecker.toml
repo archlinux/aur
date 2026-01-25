@@ -1,0 +1,4 @@
+[cadvisor]
+source = "git"
+git = "https://github.com/google/cadvisor.git"
+prefix = "v"

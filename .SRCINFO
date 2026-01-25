@@ -1,0 +1,20 @@
+pkgbase = cadvisor
+	pkgdesc = Analyzes resource usage and performance characteristics of running containers
+	pkgver = 0.56.2
+	pkgrel = 1
+	url = https://github.com/google/cadvisor
+	arch = aarch64
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	backup = etc/conf.d/cadvisor
+	source = cadvisor::git+https://github.com/google/cadvisor.git#tag=v0.56.2
+	source = cadvisor.conf
+	source = cadvisor.service
+	sha256sums = d67b83db4af5e5c8d4b730f20dd507e2d859ddb8f9e831d0e4509cac9175389d
+	sha256sums = 785c5ad59f9cf5215afaba911a622dd09cc61749d17d8e46b449ccdece2a9787
+	sha256sums = e6d6e399d0909a7aeb86b4beab52b8895760b740cf26d55f8b87003cb06b5f9b
+
+pkgname = cadvisor
