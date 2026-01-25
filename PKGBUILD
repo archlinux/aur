@@ -2,7 +2,7 @@
 # Maintainer: Gaurav Gosain <itsgauravgosain@gmail.com>
 
 pkgname='tuios-web-bin'
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Web terminal server for TUIOS - Serves TUIOS through the browser'
 url='https://github.com/Gaurav-Gosain/tuios'
@@ -12,16 +12,16 @@ provides=('tuios-web')
 conflicts=('tuios-web')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v${pkgver}/tuios-web_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('2f91bc1b9641b0fffee8972e78bbc4a3c3c64d2a877b98177ef13abf5e1208e6')
+sha256sums_aarch64=('ec56241ad4cdc1a6785f6c29ac4df4cca9211676cc1e7b49159ed743aa30e1f2')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v${pkgver}/tuios-web_${pkgver}_Linux_armv7.tar.gz")
-sha256sums_armv7h=('0a8c0c66b66f78d362d7506d8f46362506764e1c062ccc1892590de7db2b9fd0')
+sha256sums_armv7h=('bab30129fea990be94beb2a702d1e062e5b583e0ec57985e272a7220c3cd4bcd')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v${pkgver}/tuios-web_${pkgver}_Linux_i386.tar.gz")
-sha256sums_i686=('45f219d19a4a01283455f43b9e235acba6321bb7209d35b5805c4584be51e04b')
+sha256sums_i686=('7f460efedf27a46a7de88cd0bca6eb9c88378161deb48393022089d0fe8555f2')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v${pkgver}/tuios-web_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('f967ef89b1c71a65352693da94215abd18c94c5a58afd57732b0b22b3b63a2ff')
+sha256sums_x86_64=('84299df5f78a7c77e1a0b0523d72a683e2441f0c00dab5ab084d487092816747')
 
 package() {
   # bin
