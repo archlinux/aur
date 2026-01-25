@@ -1,7 +1,7 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Julien Savard <juju@juju2143.ca>
 pkgname=x16-rom-git
-pkgver=r49.r2.gcae4a59a
+pkgver=r49.r6.g2ccbe4b0
 pkgrel=1
 pkgdesc="ROM files for The 8-Bit Guy's Commander X16"
 arch=('any')
