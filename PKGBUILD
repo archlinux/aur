@@ -17,7 +17,7 @@ makedepends=('meson>=0.63')
 source=(
   "https://github.com/pragtical/pragtical/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('504f71f24421021f0c995bea628f82fa51f78e930a94f1aaa6b2748edd28de8b')
+sha256sums=('e000bcd1cdc43d7b305096c9055026f6ddaa0d7fbbe2cfcb6792a427e079b51d')
 
 build() {
   cd "pragtical-$pkgver"
