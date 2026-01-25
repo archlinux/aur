@@ -3,7 +3,7 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 _distname=Dist-Zilla
 pkgname=perl-dist-zilla
-pkgver=6.036
+pkgver=6.037
 pkgrel=1
 pkgdesc="distribution builder; installer not included!"
 arch=('any')
@@ -59,8 +59,8 @@ optdepends=('perl-data-optlist: Parse and validate simple name/value option pair
             'perl-ppi-xs: Minor XS acceleration for PPI'
             'perl-term-readline-gnu: GNU Readline XS library wrapper')
 options=('!emptydirs')
-source=("http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/$_distname-$pkgver.tar.gz")
-md5sums=('e6e1640020761f527641f6fb5f1697b5')
+source=("https://cpan.metacpan.org/authors/id/R/RJ/RJBS/$_distname-$pkgver.tar.gz")
+md5sums=('55440366afdd28cdcef808c7a7ed1bbc')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
