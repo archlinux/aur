@@ -1,7 +1,16 @@
 diff --git a/kt-sft/setup.py b/kt-sft/setup.py
-index 632a718..4d21b09 100644
+index 632a718..6df384e 100644
 --- a/kt-sft/setup.py
 +++ b/kt-sft/setup.py
+@@ -249,7 +249,7 @@ class VersionInfo:
+ 
+     def get_flash_version(self,):
+         version_file = os.path.join(
+-            Path(VersionInfo.THIS_DIR), VersionInfo.PACKAGE_NAME, "__init__.py")
++            Path(VersionInfo.THIS_DIR).parent, "version.py")
+         with open(version_file, "r", encoding="utf-8") as f:
+             version_match = re.search(
+                 r"^__version__\s*=\s*(.*)$", f.read(), re.MULTILINE)
 @@ -633,6 +633,7 @@ if CUDA_HOME is not None or ROCM_HOME is not None:
          'csrc/ktransformers_ext/cuda/binding.cpp',
          'csrc/ktransformers_ext/cuda/gptq_marlin/gptq_marlin.cu'

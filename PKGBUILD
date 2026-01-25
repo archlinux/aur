@@ -6,7 +6,7 @@ pkgbase=python-ktransformers
 pkgname=('python-ktransformers' 'python-kt-kernel')
 _pkgname=ktransformers
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url="https://kvcache.ai"
 license=('Apache-2.0')
@@ -34,18 +34,15 @@ optdepends=(
 
 source=("${_pkgname}::git+https://github.com/kvcache-ai/ktransformers.git#tag=v${pkgver}"
         "setup-with-glog.patch"
-	"version.patch"
 )
 sha256sums=('SKIP'
-            '8d0494366469848673dcd76eb3987b5fca909b731f5b80a7d8540e695b744c2b'
-	    'SKIP'
+            '538620faa124510cf8fee9a5b4944cce0a80cfd73d8ff92bc8abe75e116cdad5'
 )
 
 prepare() {
 	cd ${_pkgname}
 	git submodule update --init --recursive -- third_party/llama.cpp
 	patch -p1 -i "${srcdir}/setup-with-glog.patch"
-	patch -p1 -i "${srcdir}/version.patch"
 	cd kt-kernel
 	sed -i 's|add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../third_party/pybind11 ${CMAKE_CURRENT_BINARY_DIR}/third_party/pybind11)|find_package(pybind11)|' CMakeLists.txt
 	sed -i 's|pip install .|build --wheel --no-isolation|g' install.sh
