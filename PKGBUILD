@@ -3,7 +3,7 @@
 _pkgauthor=thewizardshell
 _pkgname=froggit
 pkgname=${_pkgname}-bin
-pkgver=1.1.0
+pkgver=1.2.0
 _pkgver="${pkgver}-beta"
 pkgrel=1
 pkgdesc="Simplify your Git workflow with visual feedback, keyboard-driven controls, and a streamlined experience"
@@ -22,9 +22,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.zip::${url}/releases/download/v${_pkgver}/linux-${_barch[0]}.zip")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.zip::${url}/releases/download/v${_pkgver}/linux-${_barch[1]}.zip")
 sha256sums=('b871ca9318bdbb611164e4e2d53651960cda18d6579d785c97b2185508f8c338'
-            'ad080fb5066f71a5963920159b51334f95c7bf40d15ceef1c598361f73cd9233')
-sha256sums_x86_64=('515dbc2ae34fc024d85561869b39b77532bbad6613656656009d306604cf986d')
-sha256sums_aarch64=('70ab5f747d5a152899b6b8acb6ee30e56d34fff64cf56cf2fd902b1ddefeb6d4')
+            '1d8cd3f5a4d9207d0ce48eb3e7c0741402897106f63797f86135a22e9da66190')
+sha256sums_x86_64=('2745375a449fbc8263d4ef76262092d38c5600de88c9ceda571bcd5deadf9a61')
+sha256sums_aarch64=('921e488fb2bda4ed1224b34335ba6727a6511479d5474037d9a9fa31d4c3c2f9')
 
 prepare() {
 	cd "${srcdir}/" || exit
