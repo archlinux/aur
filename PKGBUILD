@@ -20,8 +20,9 @@ sha512sums=("3635b6aeafdf29917b031d97533d4fd951bba639fb3604a99a0101dd5789db3631b
             "14255d0a35be028728095921e3153861cd296612ab790e213413cc7f4da7690f60451ea76952f7877c17538c13cb44da71f353278c06f3700845656c9d98d609")
 
 prepare() {
-  #cd "debian/pathces"
   cd "${pkgname}-${_pkgver}.orig"
+  #cd "debian/pathces"
+
   echo
   echo "Debian patches:"
   echo
@@ -30,6 +31,10 @@ prepare() {
       patch -p1 -N -i "${aa}"
       echo
   done
+  
+  pod2man "${srcdir}/debian/banner.pod" banner.1
+  rm banner.1.gz
+  gzip banner.1
 
   # apply patch from the source array (should be a pacman feature)
   #local filename
@@ -50,7 +55,9 @@ build() {
 package() {
   #cd "${pkgname}-${_pkgver}.orig"
   #make DESTDIR="${pkgdir}" install
+
   install -D -m755 "${pkgname}-${_pkgver}.orig/banner" "${pkgdir}/usr/bin/sysvbanner"
+  install -D -m755 "${pkgname}-${_pkgver}.orig/banner.1.gz" "${pkgdir}/usr/share/man/man1/sysvbanner.1.gz"
   install -D -m444 "debian/copyright" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
 
