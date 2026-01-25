@@ -30,7 +30,7 @@ pkgbase = twintaillauncher
 	conflicts = twintaillauncher-bin
 	options = !lto
 	options = !debug
-	source = .tar.gz::https://github.com/TwintailTeam/TwintailLauncher/archive/refs/tags/ttl-v1.1.14.tar.gz
+	source = -1.1.14.tar.gz::https://github.com/TwintailTeam/TwintailLauncher/archive/refs/tags/ttl-v1.1.14.tar.gz
 	sha256sums = SKIP
 
 pkgname = twintaillauncher
