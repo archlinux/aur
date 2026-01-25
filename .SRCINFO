@@ -1,18 +1,18 @@
 pkgbase = daemontools-encore
 	pkgdesc = collection of tools for managing UNIX services - derived from the public-domain release of daemontools by D. J. Bernstein.
-	pkgver = 1.10
-	pkgrel = 3
+	pkgver = 1.11
+	pkgrel = 1
 	url = https://untroubled.org/daemontools-encore
 	arch = i686
 	arch = x86_64
 	license = MIT
+	depends = glibc
 	depends = sh
-	source = https://untroubled.org/daemontools-encore/daemontools-encore-1.10.tar.gz
+	source = daemontools-encore-1.11.tar.gz::https://github.com/bruceg/daemontools-encore/archive/1.11.tar.gz
 	source = ldflags.patch
 	source = cflags.patch
-	sha256sums = 9f48f3c6cdd3f2b0202532e87f9ff46ea86777ca31ebda3a96bed618104bbd31
+	sha256sums = 57fab05da8129b6d13c586662321d5795935d2ef16c30763e31a933afa74f362
 	sha256sums = 3842bbef9690295e77faab723205361667415f9788de6e09150f02e6a006c423
-	sha256sums = b61e21071c1f115d32dd36f58f826310981e17978f5542e15da071abaf6fe22a
+	sha256sums = 525b9392c517e31e844d72b1b478b72e6e410009eb2f521b53900a15aeead25e
 
 pkgname = daemontools-encore
-
