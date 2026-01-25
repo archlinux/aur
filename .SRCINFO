@@ -1,6 +1,6 @@
 pkgbase = fcitx5-vmk-git
 	pkgdesc = VMK (Vietnamese Micro Key) for Fcitx5 - Bộ gõ tiếng Việt mô phỏng UniKey
-	pkgver = 0.9.r10.g79ea9f8
+	pkgver = 0.9.r33.g8f2ddc8
 	pkgrel = 1
 	url = https://github.com/nhktmdzhg/VMK
 	install = fcitx5-vmk.install
@@ -11,6 +11,7 @@ pkgbase = fcitx5-vmk-git
 	makedepends = extra-cmake-modules
 	makedepends = gcc
 	makedepends = git
+	makedepends = libx11
 	depends = fcitx5
 	depends = libinput
 	depends = hicolor-icon-theme
