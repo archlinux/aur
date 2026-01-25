@@ -1,4 +1,4 @@
-pkgname=drawy
+pkgname=drawy-build
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="A lightweight and user-friendly drawing application"
