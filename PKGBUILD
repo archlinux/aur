@@ -2,7 +2,7 @@
 # Maintainer: 00ein00
 pkgname=hytale-f2p-git
 _pkgname=Hytale-F2P
-pkgver=2.0.2b.r150.gb62ffc1
+pkgver=2.0.12.r152.g4086612
 pkgrel=1
 pkgdesc="Hytale-F2P - unofficial Hytale Launcher for free to play with multiplayer support"
 arch=('x86_64')
@@ -18,12 +18,15 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$_pkgname"
-  printf "2.0.2b.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  version=$(git describe --abbrev=0 --tags --match "v[0-9]*")
+  commits=$(git rev-list --count HEAD)
+  hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "${version#v}" "$commits" "$hash"
 }
 
 build() {
   cd "$_pkgname"
-  npm install
+  npm ci
   npm run build:linux -- dir
 }
 
