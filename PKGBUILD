@@ -1,7 +1,7 @@
 # Maintainer: Daniël Nazarkin <aur.danicatgames@pm.me>
 
 pkgname=basalt
-pkgver=0.11.1
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='A TUI Application to manage Obsidian notes'
 url='https://github.com/erikjuhani/basalt'
@@ -10,13 +10,13 @@ depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 arch=('x86_64' 'aarch64' 'armv7h')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/basalt/v$pkgver.tar.gz")
-sha256sums=('2ba75865556a68b7f66048b4500132f4c15577402505c0a951eec51e90bb5b98')
+sha256sums=('a62e94b0765cf8b7895336fdd8278d60e6de6c0b7974c26a9aab86dff31731da')
 _srcdir="$pkgname-$pkgname-v$pkgver"
 
 prepare() {
   cd "$_srcdir"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
