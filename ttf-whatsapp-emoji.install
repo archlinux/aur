@@ -1,14 +1,21 @@
 post_install() {
     echo
-    printf "\033[1;33m::\033[0m \033[1mNote:\033[0m If some applications are not showing the emoji correctly, visit:\n"
+    printf '\033[1;33m::\033[0m \033[1mNote:\033[0m To force this font, symlink /usr/share/fontconfig/conf.avail/75-whatsapp-emoji.conf to /etc/fonts/conf.d/ and rebuild the system font cache with `fc-cache -f -v`.\n'
+    echo
+    echo "   If needed, use the \"Apple Color Emoji\" family in your font config. See \`man 5 fonts-conf\` for other options."
+    echo
+    echo "   If some applications are not showing the emoji correctly, visit:"
     echo
     echo "   https://github.com/dmlls/whatsapp-emoji-linux/blob/main/TROUBLESHOOTING.md#non-color-emojis-being-displayed-in-some-apps"
     echo
-    echo "   Furthermore, if some websites are displaying incorrect font kerning,"
-    echo "   make sure popular fonts such as 'Roboto' or 'Arial' are installed on"
-    echo "   your system. Find more info at:"
+    echo "   Furthermore, if some websites are displaying incorrect font kerning, make sure popular fonts such as 'Roboto' or 'Arial' are installed on your system. Find more info at:"
     echo
     echo "   https://wiki.archlinux.org/title/fonts#Font_packages"
     echo
 }
 
+post_remove() {
+    echo
+    printf "\033[1;33m::\033[0m \033[1mNote:\033[0m If exists, remove WhatsApp Emoji from your font configuration files, e.g., \`rm /etc/fonts/conf.d/75-whatsapp-emoji.conf\`.\n"
+    echo
+}
