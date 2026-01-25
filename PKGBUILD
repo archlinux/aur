@@ -1,34 +1,40 @@
-# Maintainer: LeSnake04 <dev.lesnake@posteo.de>
+# Maintainer: kmille <aur@androidloves.me>
 
 _pkgname=cryptocam-companion-cli
 pkgname="$_pkgname-git"
-_pkgver=0.1.0
-pkgver=0.1.0.f149dcb
+pkgver=r21.3056023
 pkgrel=1
 arch=('x86_64')
-pkgdesc="Companion for Cryptocam, the encrypted android camera app – CLI version"
+pkgdesc="CLI tool and to decrypt Cryptocam videos and manage keys"
 url="https://gitlab.com/cryptocam/cryptocam-companion-cli"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('ffmpeg')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-makedepends=('git' 'rust' 'cargo' 'gcc' 'clang')
+makedepends=('git' 'cargo' 'gcc' 'ffmpeg')
 source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
+
 pkgver() {
   cd ${pkgname}
-  printf "%s.%s" "$_pkgver" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare() {
+   cd "$srcdir/$pkgname"
+   export RUSTUP_TOOLCHAIN=stable
+   cargo fetch --locked --target host-tuple
 }
 
 build() {
-   _repodir=$srcdir/$pkgname
-   cd $_repodir
-   cargo build --release
+   cd "$srcdir/$pkgname"
+   export RUSTUP_TOOLCHAIN=stable
+   export CARGO_TARGET_DIR=target
+   export CFLAGS+=' -ffat-lto-objects'
+   cargo build --frozen --release --all-features
 }
 
 package() {
-   _repodir=$srcdir/$pkgname
-   _binsrc=$_repodir/target/release/cryptocam
-   _bintarget=$pkgdir/usr/bin/$_pkgname
-   install -Dm755 $_binsrc $_bintarget
+   cd "$srcdir/$pkgname"
+   install -Dm0755 "target/release/cryptocam" "$pkgdir/usr/bin/$_pkgname"
 }
