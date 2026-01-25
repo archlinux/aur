@@ -1,12 +1,13 @@
 pkgname=twintaillauncher
-pkgver=1.1.14
+pkgver=1.1.15
 pkgrel=1
 _dirname="TwintailLauncher-ttl-v${pkgver}"
 pkgdesc='A multi-platform launcher for your anime games'
 arch=('x86_64')
 license=('GPL-3.0-only')
 url=https://github.com/TwintailTeam/TwintailLauncher
-depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'pango' 'webkit2gtk-4.1' 'libappindicator-gtk3' 'libayatana-appindicator' 'mangohud' 'gamemode')
+depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'pango' 'webkit2gtk-4.1' 'libappindicator-gtk3' 'libayatana-appindicator' 'mangohud')
+optdepends=('gamemode: Feral Interactive gamemode utility')
 makedepends=('git' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'cargo' 'pnpm' 'nodejs')
 provides=("twintaillauncher")
 conflicts=("twintaillauncher-git" "twintaillauncher-bin")

@@ -1,6 +1,6 @@
 pkgbase = twintaillauncher
 	pkgdesc = A multi-platform launcher for your anime games
-	pkgver = 1.1.14
+	pkgver = 1.1.15
 	pkgrel = 1
 	url = https://github.com/TwintailTeam/TwintailLauncher
 	arch = x86_64
@@ -24,13 +24,13 @@ pkgbase = twintaillauncher
 	depends = libappindicator-gtk3
 	depends = libayatana-appindicator
 	depends = mangohud
-	depends = gamemode
+	optdepends = gamemode: Feral Interactive gamemode utility
 	provides = twintaillauncher
 	conflicts = twintaillauncher-git
 	conflicts = twintaillauncher-bin
 	options = !lto
 	options = !debug
-	source = twintaillauncher-1.1.14.tar.gz::https://github.com/TwintailTeam/TwintailLauncher/archive/refs/tags/ttl-v1.1.14.tar.gz
+	source = twintaillauncher-1.1.15.tar.gz::https://github.com/TwintailTeam/TwintailLauncher/archive/refs/tags/ttl-v1.1.15.tar.gz
 	sha256sums = SKIP
 
 pkgname = twintaillauncher
