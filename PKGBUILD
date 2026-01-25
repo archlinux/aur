@@ -87,7 +87,7 @@ pkgver() {
   # https://github.com/google/mozc/discussions/1429
   # REVISION in mozc_version_template.bzl is no longer used by Bazel builds.
   # REVISION will be probably removed once GYP builds are completely removed.
-  bazelisk build --config oss_linux --config stable_channel base:mozc_version_txt >/dev/null 2>&1
+  bazel build --config oss_linux --config stable_channel --config release_build base:mozc_version_txt >/dev/null 2>&1
   source <(grep -E '^(MAJOR|MINOR|BUILD_OSS|REVISION)\s*=' bazel-bin/base/mozc_version.txt)
    _bzr_ver="$MAJOR.$MINOR.$BUILD_OSS.$REVISION"
   printf "%s" "${_bzr_ver}"
@@ -112,12 +112,6 @@ prepare() {
 
   cd "$srcdir/mozc/src" || exit
   patch -p2 -i ${srcdir}/fcitx5-mozc-conf.patch
-
-  # bazelisk
-  # As it is not supported in Bazel 9.0.0, we have switched to building with Bazelisk.
-  sed -i -e "s/bazel /bazelisk /" ../scripts/build_fcitx5_bazel
-  sed -i -e "s/bazel /bazelisk /" ../scripts/get_mozc_version
-  #sed -i -e "s/bazel /bazelisk /" ../scripts/build_fcitx_bazel
 
   # use libstdc++ instead of libc++
   sed '/stdlib=libc++/d;/-lc++/d' -i gyp/common.gypi
@@ -181,7 +175,6 @@ build() {
 
   cd ${srcdir}/mozc/src || exit
 
-  #export USE_BAZEL_VERSION=8.3.1
   LDFLAGS="${LDFLAGS} -fuse-ld=mold"
 
   # The bazel rules have changed, so the cache will be deleted.
@@ -199,7 +192,7 @@ build() {
       package \
       #--nostart_end_lib \
 
-  bazelisk shutdown
+  bazel shutdown
 }
 
 install_mozc-with-jp-dict-common() {
