@@ -2,7 +2,7 @@
 
 pkgname=aweather-git
 provides=('aweather')
-pkgver=0.9.0.r20
+pkgver=0.9.0.r28
 pkgrel=1
 pkgdesc="Free real-time weather data viewer designed for weather enthusiasts."
 arch=('aarch64' 'x86_64')
