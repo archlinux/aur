@@ -2,7 +2,7 @@
 _pkgname="nmcurse"
 pkgname="$_pkgname-rs-git"
 epoch=1
-pkgver=latest
+pkgver=r25.b9f44e4
 pkgrel=1
 pkgdesc="Curses interface for NetworkManager, rewritten in Rust with additional features"
 arch=('any')
@@ -20,10 +20,14 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
+prepare() {
     cd "$srcdir/${_pkgname}"
     cargo fetch --locked
-    RUSTFLAGS="-C opt-level=3 -C target-cpu=native" cargo build --release
+}
+
+build() {
+    cd "$srcdir/${_pkgname}"
+    RUSTFLAGS="-C opt-level=3 -C target-cpu=native" cargo build --frozen --release
 }
 
 package() {
