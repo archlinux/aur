@@ -8,9 +8,9 @@ pkgname=${_name}-bin
 pkgver=1.149.0
 pkgrel=1
 pkgdesc="Lightweight static analysis for many languages. Find bug variants with patterns that look like source code."
-arch=(x86_64)
-url=https://github.com/returntocorp/semgrep
-license=(LGPL-2.1-only)
+arch=('x86_64')
+url="https://github.com/returntocorp/${_name}"
+license=('LGPL-2.1-only')
 
 makedepends=('python-pip' 'python-setuptools' 'python-wheel')
 depends=(
@@ -22,10 +22,10 @@ depends=(
   'python-opentelemetry-instrumentation-requests' 'python-starlette' 'python-mcp' 'python-fastmcp'
 )
 optdepends=('jsonnet: experimental jsonnet support')
-provides=('semgrep')
+provides=("${_name}")
 
 _b2sum="e925c0d1fa71ed66c200732d922f6607c44bed24b94ae636e7669a8f6d45d4d2"
-_whl="semgrep-${pkgver}-cp310.cp311.cp312.cp313.cp314.py310.py311.py312.py313.py314-none-musllinux_1_0_${CARCH}.manylinux2014_${CARCH}.whl"
+_whl="${_name}-${pkgver}-cp310.cp311.cp312.cp313.cp314.py310.py311.py312.py313.py314-none-musllinux_1_0_${CARCH}.manylinux2014_${CARCH}.whl"
 
 options=('!strip')
 noextract=("${_whl}")
