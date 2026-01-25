@@ -1,0 +1,33 @@
+# Maintainer: Illia Pukalov illia.pukalov@teleinformatika.eu
+pkgbase = saturn-launcher
+	pkgdesc = Fast and lightweight Minecraft launcher with shader, mod, and resource pack support
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://ilyap358.github.io/saturn-web
+	install = saturn-launcher.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-pip
+	makedepends = python-wheel
+	depends = python
+	depends = java-runtime
+	depends = python-requests
+	depends = python-pyyaml
+	source = git+https://github.com/IlyaP358/saturn_launcher.git
+	md5sums = SKIP
+
+pkgname = saturn-launcher
+	pkgdesc = Console-based Minecraft launcher with support for shaders, mods, and resource packs. Fast, lightweight, and easy to use
+	depends = python
+	depends = python-requests
+	depends = python-pyyaml
+	depends = java-runtime
+
+pkgname = saturn-launcher-gui
+	pkgdesc = User-friendly GUI Minecraft launcher featuring shader, mod, and resource pack management with intuitive interface
+	depends = python
+	depends = python-requests
+	depends = python-pyyaml
+	depends = python-pyqt5
+	depends = java-runtime

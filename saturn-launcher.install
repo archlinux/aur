@@ -1,0 +1,10 @@
+post_remove() {
+  echo ""
+  echo "==> Saturn Launcher has been removed."
+  echo "==> Your game data (worlds, mods, shaders) is still in:"
+  echo "    ~/.local/share/saturn-launcher/"
+  echo ""
+  echo "==> To remove all data, run:"
+  echo "    rm -rf ~/.local/share/saturn-launcher"
+  echo ""
+}
