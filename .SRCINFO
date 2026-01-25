@@ -1,0 +1,19 @@
+pkgbase = python-cram-git
+	pkgdesc = Functional tests for command line applications
+	pkgver = 0.7.r18.g790dc6d
+	pkgrel = 1
+	url = https://bitheap.org/cram/
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = python-cram
+	conflicts = python-cram
+	source = git+https://github.com/aiiie/cram#branch=develop
+	sha512sums = SKIP
+
+pkgname = python-cram-git
