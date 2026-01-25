@@ -3,7 +3,7 @@
 _pkgauthor=mcandre
 _pkgname=chandler
 pkgname=${_pkgname}-bin
-pkgver=0.0.3
+pkgver=0.0.9
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="TAR normalizer"
@@ -21,8 +21,8 @@ conflicts=("${_pkgname}"{,-git})
 source=("${_pkgname}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}.tgz"
         "README-${pkgver}.md::${_urlraw}/README.md"
         "LICENSE-${pkgver}::${_urlraw}/LICENSE.md")
-sha256sums=('2a0aa990192429d75a73f2f7083546fab392ca1be0a8a5ae53034a21d7b9b99c'
-            '1cc69d546a58a232825aca67c2338769669ac25c393d5e7a6da3f67a7f67bdd1'
+sha256sums=('556a1cde309dd3db7bfcb2cc36bc3b390543719162886ba97f7136d317cbf559'
+            '5a1f4bd14b40e7859a957182780892470c70ea40412da2751044a11f7946b803'
             '101d1171849ca84c68bc5a59bbd8e54f18a4f8ab7e9bdc3d3fdfb7c173ffbf7f')
 
 BIN_FOLDER="${_pkgname}-${pkgver}/${CARCH}-unknown-linux-${_clib}"
