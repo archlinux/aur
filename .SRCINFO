@@ -1,0 +1,17 @@
+pkgbase = unicon-git
+	pkgdesc = An extended dialect of Icon: a very high level, goal-directed, object-oriented, general purpose applications language.
+	pkgver = 13.2.r785.g94eada80
+	pkgrel = 1
+	url = http://www.unicon.org/
+	arch = i686
+	arch = x86_64
+	license = publicdomain
+	license = GPL-2.0
+	makedepends = git
+	provides = unicon
+	conflicts = unicon
+	conflicts = unicon-svn
+	source = unicon-git::git+https://github.com/uniconproject/unicon
+	md5sums = SKIP
+
+pkgname = unicon-git
