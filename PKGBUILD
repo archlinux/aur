@@ -11,7 +11,7 @@ license=("GPL-3.0-or-later")
 arch=("x86_64")
 provides=("snick")
 conflicts=("snick")
-source=("https://github.com/NickAllbritton/snick/releases/download/v$pkgver/snick-$pkgver-x86_64.tar.gz")
+source=("https://github.com/NickAllbritton/snick/releases/download/$pkgver/snick-$pkgver-x86_64.tar.gz")
 sha256sums=("7dc34ab34d9fd6dcab5473370dbfef49b60f7b2e65e0b7f5f2d0a3ecff404ece")
 
 package() {
