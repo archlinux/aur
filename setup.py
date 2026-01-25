@@ -12,7 +12,7 @@ setup(
     },
     entry_points={
         'gui_scripts': [
-            'tchMaterial-parser = src.main:main'  # 正确引用包内模块
+            'tchMaterial-parser = src.main:main'
         ]
     },
     data_files=[
