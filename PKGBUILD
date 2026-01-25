@@ -3,11 +3,11 @@
 # Contributor: Łukasz Mariański <lmarianski at protonmail dot com>
 
 _pkgname=vscodium
-_electron=electron35
-_nodejs="22.15.1"
+_electron=electron39
+_nodejs="22.18.0"
 
 pkgname=${_pkgname}-electron
-pkgver=1.102.24914
+pkgver=1.108.10359
 pkgrel=1
 pkgdesc="VS Code without MS branding/telemetry/licensing. - System-wide Electron edition"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -38,14 +38,12 @@ source=(
 	"${_pkgname}.desktop"
 	"${_pkgname}-uri-handler.desktop"
 )
-sha256sums=(
-	SKIP
-	'338d678e199b53f06d10ac9c82567c4baceb7ff3bd3c0017d4b2ef4a801ae99a'
-	'9abc6d2cfe7ae1a955accebd0836effbd6ddecdf984aea6f6102b53814d15deb'
-	'28a271ba5b2e50b11259abd794ad2ab083612c78bee2d617bb5a8702932c8f44'
-	'3a5bc109974fcf408855c13965f6d6be0997655c5b359de0bfd19a678c00844e'
-	'6eef345b65bf2679c928c763529540435ab9c6e1836917319810a7a2d484ae1b'
-)
+sha256sums=('9d29f353fcd04f9e2a447a4e59d3aa92617dc5e3014d3b696fee09f8defec9cc'
+            '263ab5c08072d3ff88dfc9eb5b1698a898e4550b1701d3283d1e18e811473cf4'
+            '9abc6d2cfe7ae1a955accebd0836effbd6ddecdf984aea6f6102b53814d15deb'
+            '28a271ba5b2e50b11259abd794ad2ab083612c78bee2d617bb5a8702932c8f44'
+            '3a5bc109974fcf408855c13965f6d6be0997655c5b359de0bfd19a678c00844e'
+            '6eef345b65bf2679c928c763529540435ab9c6e1836917319810a7a2d484ae1b')
 
 # Even though we don't officially support other archs, let's
 # allow the user to use this PKGBUILD to compile the package
