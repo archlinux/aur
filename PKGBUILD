@@ -1,7 +1,7 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Julien Savard <juju@juju2143.ca>
 pkgname=x16-emulator-git
-pkgver=r49.r1.ga1d2b30
+pkgver=r49.r7.gfdb34dd
 pkgrel=1
 pkgdesc="An emulator for The 8-Bit Guy's Commander X16"
 arch=('x86_64')
@@ -38,8 +38,8 @@ build() {
 }
 
 package() {
-	cd "${pkgname%-git}"
-	install -Dm755 x16emu "$pkgdir/usr/bin/x16emu"
+	cd "${pkgname%-git}/"
+	install -Dm755 $srcdir/x16-emulator/build/x16emu "$pkgdir/usr/bin/x16emu"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 github-pandoc.css "$pkgdir/usr/share/doc/${pkgname%-git}/github-pandoc.css"
 	install -Dm644 README.html "$pkgdir/usr/share/doc/${pkgname%-git}/README.html"
