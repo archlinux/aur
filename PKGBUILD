@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('python' 'ipmitool' 'pacman-hook-reload-modules' 'bash' 'systemd')
 optdepends=('smartmontools: For SAS/SCSI disks and standby guard feature'
  'nvidia-utils: For GPU fan controller')
-checkdepends=('flake8' 'python-coverage' 'python-pylint' 'python-pytest' 'python-pytest-cov')
+checkdepends=('flake8' 'python-coverage' 'python-pylint' 'python-pytest' 'python-pytest-cov' 'python-pyudev' 'python-mock')
 source=(
   "${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
   'modules-load.conf'
@@ -34,7 +34,7 @@ package() {
 
   cd src
   install -o root -g root -Dm755 smfc.conf "${pkgdir}/etc/smfc/smfc.conf"
-  install -o root -g root -Dm644 smfc.service"${pkgdir}/etc/systemd/system/smfc.service"
+  install -o root -g root -Dm644 smfc.service "${pkgdir}/etc/systemd/system/smfc.service"
   install -o root -g root -Dm644 smfc "${pkgdir}/etc/default/smfc"
   install -o root -g root -Dm644 smfc.1.gz "${pkgdir}/usr/local/share/man/man1/smfc.1.gz"
   install -o root -g root -Dm644 smfc "${pkgdir}/usr/bin/smfc"
