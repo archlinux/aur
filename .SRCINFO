@@ -1,0 +1,14 @@
+pkgbase = ctdb-cli
+	pkgdesc = A cli frontend for CUETools that verifies and repairs audio CDs using CTDB (CUETools Database)
+	pkgver = 2.2.6_0.3.2
+	pkgrel = 1
+	url = https://github.com/Masterisk-F/ctdb-cli
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = dotnet-sdk-8.0
+	makedepends = git
+	depends = dotnet-runtime-8.0
+	source = ctdb-cli-v2.2.6_0.3.2.tar.gz::https://github.com/Masterisk-F/ctdb-cli/archive/refs/tags/v2.2.6_0.3.2.tar.gz
+	sha256sums = 4ae9500825662174918c473697225b85837db81203a040d46b57e8f24f891633
+
+pkgname = ctdb-cli
