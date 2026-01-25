@@ -1,0 +1,59 @@
+# Maintainer: Yuzu <aur at vitayuzu dot day>
+pkgname=mateengine
+pkgver=2.2.5_8
+pkgrel=3
+pkgdesc="Unofficial Linux port of MateEngine - A free Desktop Mate alternative with custom VRM support"
+arch=('x86_64')
+url="https://github.com/Marksonthegamer/Mate-Engine-Linux-Port"
+license=('LicenseRef-MateEngine-Pro-License')
+replaces=('mate-engine-linux-port')
+depends=(
+    'gtk3'
+    'glib2' 
+    'libx11' 
+    'libxext' 
+    'libxrender'
+    'libxdamage' 
+    'libayatana-appindicator'
+    'libayatana-appindicator'
+    'libdecor'
+    'vulkan-icd-loader'
+    'libpulse'
+    'pango'
+    'cargo'
+    'wayland'
+    'bash'
+    'glibc'
+    'gcc-libs'
+    'zlib'
+    'dbus'
+)
+optdepends=('pipewire-pulse: for dancing feature with PipeWire')
+_archive="MateEngineX_${pkgver}"
+_srcdir="MateEngineX"
+source=("${_archive}.tar.gz::${url}/releases/download/Public-Release-${pkgver}/${_archive}.tar.gz"
+        "LICENSE::https://raw.githubusercontent.com/Marksonthegamer/Mate-Engine-Linux-Port/main/LICENSE"
+        "mateengine.desktop")
+sha256sums=('19c774ea0ea8af7dbad9633d917ed2d93639a598e84c606e4676b3ae4445fad9'
+            '305feaea992c5c1c4c666939e04fec751e04cf37bdfeb844358600900ea0acd8'
+            '063cf3a5c67b290ff7fcc99443a8b67f573331be0fad9f1ba4d80a053506d023')
+
+package() {
+    install -dm755 "${pkgdir}/opt/${pkgname}"
+    cp -r "${srcdir}/${_srcdir}"/* "${pkgdir}/opt/${pkgname}/"
+
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -s "/opt/${pkgname}/launch.sh" "${pkgdir}/usr/bin/${pkgname}"
+
+    chmod +x "${pkgdir}/opt/${pkgname}/launch.sh"
+    chmod +x "${pkgdir}/opt/${pkgname}/MateEngineX.x86_64"
+
+    install -Dm644 "${srcdir}/LICENSE" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    install -Dm644 "${srcdir}/${pkgname}.desktop" \
+        "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+
+    install -Dm644 "${pkgdir}/opt/${pkgname}/MateEngineX_Data/Resources/UnityPlayer.png" \
+        "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+}
