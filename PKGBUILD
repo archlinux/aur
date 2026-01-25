@@ -14,6 +14,7 @@ depends=(
   'python-curl-cffi-git'
   'libcurl-impersonate'
   'python-json-five'
+  'python-sly'
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 source=("waybar-ai-usage-${pkgver}.tar.gz::https://api.github.com/repos/NihilDigit/waybar-ai-usage/tarball/refs/tags/v${pkgver}")

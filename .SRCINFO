@@ -15,6 +15,7 @@ pkgbase = waybar-ai-usage
 	depends = python-curl-cffi-git
 	depends = libcurl-impersonate
 	depends = python-json-five
+	depends = python-sly
 	source = waybar-ai-usage-0.3.0.tar.gz::https://api.github.com/repos/NihilDigit/waybar-ai-usage/tarball/refs/tags/v0.3.0
 	sha256sums = 20b083e2d02d304289fcfec9c99ab1501f75579d985f6af69b16b21d43895df7
 
