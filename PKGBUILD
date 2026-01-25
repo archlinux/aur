@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=opencode-desktop-bin
-pkgver=1.1.34
+pkgver=1.1.35
 pkgrel=1
 pkgdesc="OpenCode desktop client"
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ source=("LICENSE::https://raw.githubusercontent.com/anomalyco/opencode/v${pkgver
 source_x86_64=("opencode-desktop-${pkgver}-linux-amd64.deb::https://github.com/anomalyco/opencode/releases/download/v${pkgver}/opencode-desktop-linux-amd64.deb")
 source_aarch64=("opencode-desktop-${pkgver}-linux-arm64.deb::https://github.com/anomalyco/opencode/releases/download/v${pkgver}/opencode-desktop-linux-arm64.deb")
 sha256sums=('625f0f619133f89bbbb2abe37369613dfa1885eba1e50d02170deb62bb42cb6b')
-sha256sums_x86_64=('e25db7c2d01e45acdc8eb4dba3a2cf2a60ea8a7241ce2f471eb50380133704a2')
-sha256sums_aarch64=('e8cd0a055d87b3aa4a8475bfb1b7da36b3be739190216f97be1a8cce17661be6')
+sha256sums_x86_64=('cc938c271ab5f77f30721f68d20bc2abad869cefedd0658b9956e0c914585099')
+sha256sums_aarch64=('cc3dd32e4fa743a552c652b80043ccfc490bcd011e40cc2ac8fbbd1c36787eea')
 
 package() {
   local debfile
