@@ -1,0 +1,15 @@
+pkgbase = silverr-bin
+	pkgdesc = Silverr application
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/Wookhq/silverr
+	arch = x86_64
+	license = LicenseRef-proprietary
+	depends = fuse2
+	depends = hicolor-icon-theme
+	noextract = silverr-bin-0.0.4.AppImage
+	options = !strip
+	source = silverr-bin-0.0.4.AppImage::https://github.com/Wookhq/silverr/releases/download/v0.0.4-alpha/Silverr-0.0.4.AppImage
+	sha256sums = f2f34a37b597d0686baf7d054de83f1f659889b0319df8469bb92effaf2b3e07
+
+pkgname = silverr-bin
