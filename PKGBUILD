@@ -1,6 +1,6 @@
 # Maintainer: yv-was-taken <yvmail@proton.me>
 pkgname=desktop-waifu
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Animated 3D VRM characters with AI-powered conversational chat - Wayland overlay"
 arch=('x86_64')
@@ -55,6 +55,9 @@ package() {
 
     # Install desktop entry
     install -Dm644 "packaging/desktop-waifu.desktop" "$pkgdir/usr/share/applications/desktop-waifu.desktop"
+
+    # Install scripts
+    install -Dm755 "scripts/setup-hotkey.sh" "$pkgdir/usr/share/desktop-waifu/scripts/setup-hotkey.sh"
 
     # Install license
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
