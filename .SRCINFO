@@ -1,6 +1,6 @@
 pkgbase = eaglemode-bin
 	pkgdesc = Visit almost everything in your PC simply by zooming in
-	pkgver = 0.96.3
+	pkgver = 0.96.4
 	pkgrel = 1
 	url = http://eaglemode.sourceforge.net/
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = eaglemode-bin
 	depends = hicolor-icon-theme
 	provides = eaglemode
 	conflicts = eaglemode
-	source_x86_64 = https://downloads.sourceforge.net/eaglemode/eaglemode_0.96.3-1_amd64.deb
-	sha256sums_x86_64 = b594d98d8966ddb678ce6355e85d565a8f37fff53689b6bd5dbe7eb9b8333869
+	source_x86_64 = https://downloads.sourceforge.net/eaglemode/eaglemode_0.96.4-1_amd64.deb
+	sha256sums_x86_64 = 2cfd779d93738f479bbba577a81238a0afab777bbfe94e9a7117d990f78b18de
 
 pkgname = eaglemode-bin
