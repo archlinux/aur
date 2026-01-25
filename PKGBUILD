@@ -1,7 +1,7 @@
 # Maintainer: sfnemis <sfnemis@linnote.app>
 pkgname=linnote
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, keyboard-driven scratchpad for Linux with smart calculator, OCR, timers, and 14+ themes"
 arch=('x86_64')
 url="https://linnote.app"
@@ -27,11 +27,12 @@ optdepends=(
     'tesseract-data-fra: French OCR support'
     'tesseract-data-rus: Russian OCR support'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/sfnemis/linnote/archive/refs/tags/v$pkgver.tar.gz")
+# Use main branch directly until next release tag
+source=("$pkgname-$pkgver.tar.gz::https://github.com/sfnemis/linnote/archive/refs/heads/main.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-main"
     cmake -B build \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
@@ -40,18 +41,9 @@ build() {
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-main"
     DESTDIR="$pkgdir" cmake --install build
     
     # Install license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    
-    # Install desktop file
-    install -Dm644 linnote.desktop "$pkgdir/usr/share/applications/linnote.desktop"
-    
-    # Install icons
-    for size in 16 32 48 64 128 256 512; do
-        install -Dm644 "resources/icons/app/linnote-${size}.png" \
-            "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/linnote.png"
-    done
 }
