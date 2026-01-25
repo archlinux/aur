@@ -1,6 +1,6 @@
 pkgbase = rubyripperremix-git
 	pkgdesc = Secure audiodisc ripper with verification (Fork of rubyripper)
-	pkgver = 0.8.0rc4.0.1.0rc1.r0.ge653a09
+	pkgver = 0.8.0rc4_0.2.0.r0.g519cb17
 	pkgrel = 1
 	url = https://github.com/Masterisk-F/RubyRipperRemix
 	arch = any
@@ -26,6 +26,9 @@ pkgbase = rubyripperremix-git
 	optdepends = wavpack: WavPack encoding and ReplayGain support
 	optdepends = opus-tools: Opus encoding support
 	optdepends = neroaacenc-bin: Nero AAC encoding support
+	optdepends = ctdb-cli: CUETools Database verification and sumittion support
+	provides = rubyripperremix
+	conflicts = rubyripperremix
 	source = git+https://github.com/Masterisk-F/RubyRipperRemix.git
 	sha256sums = SKIP
 

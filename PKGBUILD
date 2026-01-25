@@ -6,7 +6,7 @@
 # Contributor: Dave Reisner <dreisner AT archlinux DOT org>
 # Contributor: Alexander Fehr <pizzapunk AT gmail DOT com>
 pkgname=rubyripperremix-git
-pkgver=0.8.0rc4.0.1.0rc1.r0.ge653a09
+pkgver=0.8.0rc4_0.2.0.r0.g519cb17
 pkgrel=1
 pkgdesc="Secure audiodisc ripper with verification (Fork of rubyripper)"
 arch=('any')
@@ -14,6 +14,8 @@ url="https://github.com/Masterisk-F/RubyRipperRemix"
 license=(GPL-3.0-only)
 depends=('libcdio-paranoia' 'ruby' 'ruby-rexml' 'ruby-gtk3' 'ruby-gettext' 'ruby-parallel')
 makedepends=('git')
+conflicts=('rubyripperremix')
+provides=('rubyripperremix')
 optdepends=('cd-discid: Gnudb support'
             'lame: MP3 encoding support'
             'vorbis-tools: Ogg Vorbis encoding support'
@@ -27,7 +29,8 @@ optdepends=('cd-discid: Gnudb support'
             'sox: Correct pre-emphasis with sox'
             'wavpack: WavPack encoding and ReplayGain support'
             'opus-tools: Opus encoding support'
-            'neroaacenc-bin: Nero AAC encoding support')
+            'neroaacenc-bin: Nero AAC encoding support'
+            'ctdb-cli: CUETools Database verification and sumittion support')
 source=("git+https://github.com/Masterisk-F/RubyRipperRemix.git")
 sha256sums=('SKIP')
 
