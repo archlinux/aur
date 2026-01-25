@@ -33,7 +33,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
-source=("$_pkgsrc"::"git+https://github.com/bkerler/mtkclient.git")
+source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
 prepare() {
