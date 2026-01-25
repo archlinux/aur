@@ -9,7 +9,6 @@ arch=(x86_64)
 url="http://www.heidisql.com/"
 license=('GPL-2.0-or-later')
 optdepends=('heidisql-qt6: Qt6 variant'
-            'heidisql-qt5: Qt5 variant'
             'heidisql-gtk2: GTK2 variant')
 makedepends=(curl jq)
 install=heidisql.install
@@ -19,7 +18,7 @@ source=(
   heidisql
 )
 sha256sums=('0e240b55be181bf4b8321a45b47242fe62b211ba9ca77d433d5bb700a201fb01'
-            '2efee1d767a85bd1db4c8f54ea7f69195ded543ac185959e52e970ee031c6dbe')
+            'cb084209a5ce3270a2888bf93c8a5adb6f714eda487ad13a50512ac538b3fc87')
 
 prepare() {
   cd "${srcdir}/HeidiSQL-${pkgver}"
