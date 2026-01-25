@@ -6,7 +6,7 @@ pkgbase = plymouth-theme-cachyos-bgrt
 	arch = any
 	license = MIT
 	depends = plymouth
-	source = plymouth-theme-cachyos-bgrt-1.0.0.tar.gz::https://github.com/gezerman/plymouth-theme-cachyos-bgrt/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 7ed961f0e5a5c06e1be8dc18c47a34fa17969f498cde101b42352d832e7a1358
+	source = plymouth-theme-cachyos-bgrt-1.0.0.tar.gz::https://github.com/gezerman/plymouth-theme-cachyos-bgrt/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = f613db6d62ffddbf8601ba2acaae07b5260907462887bd06f61f4829df4441e6
 
 pkgname = plymouth-theme-cachyos-bgrt

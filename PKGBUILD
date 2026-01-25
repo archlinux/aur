@@ -7,8 +7,8 @@ arch=('any')
 url="https://github.com/gezerman/plymouth-theme-cachyos-bgrt"
 license=('MIT')
 depends=('plymouth')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7ed961f0e5a5c06e1be8dc18c47a34fa17969f498cde101b42352d832e7a1358')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('f613db6d62ffddbf8601ba2acaae07b5260907462887bd06f61f4829df4441e6')
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
