@@ -11,6 +11,7 @@ pkgbase = arf-git
 	depends = git
 	depends = jq
 	depends = pacman
+	depends = pyalpm
 	depends = python
 	depends = python-requests
 	optdepends = sudo: default privilege elevation

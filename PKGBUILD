@@ -2,13 +2,13 @@
 
 _pkgname=arf
 pkgname="${_pkgname}-git"
-pkgver=r80.2608469
+pkgver=r96.0f05bcc
 pkgrel=1
 pkgdesc="An experimental standalone fzf AUR helper"
 arch=('any')
 url="https://github.com/Samq64/arf"
 license=('MIT')
-depends=('bash' 'curl' 'fzf' 'git' 'jq' 'pacman' 'python' 'python-requests')
+depends=('bash' 'curl' 'fzf' 'git' 'jq' 'pacman' 'pyalpm' 'python' 'python-requests')
 optdepends=('sudo: default privilege elevation')
 provides=("$_pkgname")
 conflicts=("$_pkgname" 'fzur-git')
