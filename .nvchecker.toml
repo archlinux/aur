@@ -1,0 +1,5 @@
+[tod-bin]
+source = "github"
+github = "tod-org/tod"
+use_latest_release = true
+prefix = "v"
