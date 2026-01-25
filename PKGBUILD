@@ -1,6 +1,6 @@
 # Maintainer: Riza Mohammad <rizamohammad.work@gmail.com>
 pkgname=trix-player
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A beautiful, keyboard-driven terminal music player for Linux."
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cargo' 'pkgconf')
 options=('!lto')
 # Downloads the source tarball from your GitHub Release tags
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('832cb9402296abbca4e7beed5bd1e90dd18c399e68dab1f0802132db5d2c37ad')
+sha256sums=('75ecc1c09807bbb70d34c4aaeb43f892a6dc94165a296a0d6eaf6dc22332fae7')
 
 prepare() {
   # GitHub source archives extract to "RepoName-Version"
