@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RecordLinkage
-_pkgver=0.4-12.5
+_pkgver=0.4-12.6
 pkgname=r-${_pkgname,,}
-pkgver=0.4.12.5
+pkgver=0.4.12.6
 pkgrel=1
 pkgdesc='Record Linkage Functions for Linking and Deduplicating Data Sets'
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=(
   r-runit
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3db03e2fd8c6a34cc5390065dc1ea30f7b11b505b26f128e14facfeaa7e5b791')
+sha256sums=('d6570b3d4e4735ae9f89b38ce8d392e6805f28b43b3e36df8bb9dec1eb7fc478')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
