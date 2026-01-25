@@ -1,33 +1,64 @@
-# Maintainer: Ben Westover <kwestover.kw@gmail.com>
+# Maintainer:
+# Contributor: Ben Westover <kwestover.kw@gmail.com>
 
-pkgname=mtkclient
-pkgver=2.0.1.freeze
+: ${_commit:=b54c0c2a03f7913db5dc5ae3b783dd34458db84a} # 2.1.2.r9
+
+_pkgname="mtkclient"
+pkgname="$_pkgname"
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Unofficial MTK reverse engineering and flash tool"
-arch=('any')
 url="https://github.com/bkerler/mtkclient"
-license=('GPL3')
-depends=('libusb' 'fuse2' 'python' 'python-pyusb' 'python-pyserial' 'python-fusepy' 'python-pycryptodome' 'python-pycryptodomex' 'python-colorama' 'python-mock' 'shiboken6' 'pyside6')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
-source=("https://github.com/bkerler/mtkclient/archive/refs/tags/$pkgver.tar.gz"
-        "udev.patch")
-sha256sums=('1c8f1670ff269588f1e96e1039b7c8791260209de9ff2c758db2fdd007a317be'
-            '8776be623566f03707ae907123f9026485a05314720654b7fed0799cce37d6bb')
+license=('GPL-3.0-only')
+arch=('any')
 
-prepare() {
-	cd mtkclient-$pkgver
+depends=(
+  'pyside6'
+  'python'
+  'python-capstone'
+  'python-colorama'
+  'python-fusepy' # AUR
+  'python-keystone'
+  'python-pycryptodomex'
+  'python-pyserial'
+  'python-pyusb'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-hatchling'
+  'python-installer'
+  'python-wheel'
+)
 
-	# Replace plugdev with uaccess and adbusers like upstream android-udev
-	cat ../udev.patch | patch -p1
-}
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git#commit=$_commit")
+sha256sums=('SKIP')
 
 build() {
-	cd mtkclient-$pkgver
-	python -m build --wheel --no-isolation
+  cd "$_pkgsrc"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-	cd mtkclient-$pkgver
-	python -m installer --destdir="$pkgdir" dist/*.whl
-	install -Dm644 mtkclient/Setup/Linux/51-edl.rules "$pkgdir/usr/lib/udev/rules.d/52-mtk-edl.rules"
+  cd "$_pkgsrc"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  # udev rules
+  install -Dm644 /dev/stdin "$pkgdir"/usr/lib/udev/rules.d/52-mtk-edl.rules << END
+# Qualcomm EDL
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="05c6", ATTRS{idProduct}=="9008", MODE="0660", GROUP="adbusers", TAG+="uaccess"
+
+# Qualcomm Memory Debug
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="05c6", ATTRS{idProduct}=="9006", MODE="0660", GROUP="adbusers", TAG+="uaccess"
+
+# Qualcomm Memory Debug
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="05c6", ATTRS{idProduct}=="900E", MODE="0660", GROUP="adbusers", TAG+="uaccess"
+
+# LG Memory Debug
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="1004", ATTRS{idProduct}=="61a1", MODE="0660", GROUP="adbusers", TAG+="uaccess"
+
+# Sierra Wireless
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="1199", ATTRS{idProduct}=="9071", MODE="0660", GROUP="adbusers", TAG+="uaccess"
+END
 }
