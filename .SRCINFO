@@ -17,6 +17,6 @@ pkgbase = xcompmgr-git
 	provides = xcompmgr
 	conflicts = xcompmgr
 	source = git+https://gitlab.freedesktop.org/xorg/app/xcompmgr.git
-	sha512sums = SKIP
+	sha256sums = SKIP
 
 pkgname = xcompmgr-git

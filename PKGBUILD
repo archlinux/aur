@@ -16,7 +16,7 @@ makedepends=('git' 'xorg-util-macros')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("git+https://gitlab.freedesktop.org/xorg/app/${_pkgname}.git")
-sha512sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${_pkgname}
