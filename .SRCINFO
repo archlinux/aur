@@ -1,7 +1,7 @@
 pkgbase = anythingllm-desktop-bin
 	pkgdesc = The all-in-one AI application, tool suite, and API for RAG & Agents for Docker & Desktop.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://anythingllm.com/
 	arch = aarch64
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = anythingllm-desktop-bin
 	makedepends = asar
 	depends = electron31
 	depends = ollama
-	depends = ollama-cuda
-	depends = ollama-rocm
+	optdepends = ollama-cuda
+	optdepends = ollama-rocm
 	provides = anythingllm-desktop=1.10.0
 	conflicts = anythingllm-desktop
 	conflicts = anythingllm

@@ -4,7 +4,7 @@ pkgname="${_appname}-desktop-bin"
 _pkgname=Anything-LLM-Desktop
 pkgver=1.10.0
 _electronversion=31
-pkgrel=1
+pkgrel=2
 pkgdesc="The all-in-one AI application, tool suite, and API for RAG & Agents for Docker & Desktop.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -21,6 +21,8 @@ conflicts=(
 depends=(
     "electron${_electronversion}"
     'ollama'
+)
+optdepends=(
     'ollama-cuda'
     'ollama-rocm'
 )
