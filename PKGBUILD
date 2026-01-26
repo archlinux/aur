@@ -1,7 +1,7 @@
 # Maintainer: Raffaele Mancuso <raffaelemancuso532 at gmail dot com>
 pkgname=pdf4qt
 pkgver=1.5.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source PDF editor"
 arch=('x86_64')
 url="https://jakubmelka.github.io/"
@@ -32,8 +32,7 @@ optdepends=(
 )
 options=('!strip')
 source=("${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}")
-sha256sums=('45cdef2479370572dfc54ec2cb8f714d353c0bb03dfbeeb11e5434eb2c4343f7'
-            '5f64f0b7a3e265cc02cbe0e968482337ed8d197a043d926d7714e938d1da9f34')
+sha256sums=('SKIP')
 prepare() {
     cd "${srcdir}/${pkgname}.git"
     sed -i "s/OpenJPEG CONFIG REQUIRED/OpenJPEG REQUIRED/g" "${srcdir}/${pkgname}.git/CMakeLists.txt"
