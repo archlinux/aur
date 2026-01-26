@@ -24,6 +24,6 @@ pkgbase = mov-watch
 	provides = mov-watch
 	conflicts = mov-watch
 	source = https://github.com/leoallday/mov-watch/archive/refs/tags/v1.1.tar.gz
-	sha256sums = 89b88e71e3fafa16f3e080bb4241a4be7a23b6a5c642e2f1c898acd7ff16f84a
+	sha256sums = 874d23470a5034c5dc64aaf67f2832ef9a8017678d53e7e663681fd68cf0a673
 
 pkgname = mov-watch

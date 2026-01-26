@@ -11,7 +11,7 @@ conflicts=('mov-watch')
 depends=('python' 'python-rich' 'python-requests' 'python-pypresence' 'python-cryptography' 'python-beautifulsoup4' 'yt-dlp' 'python-pillow' 'python-numpy' 'mpv' 'ffmpeg' 'fzf')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("https://github.com/leoallday/mov-watch/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('89b88e71e3fafa16f3e080bb4241a4be7a23b6a5c642e2f1c898acd7ff16f84a')
+sha256sums=('874d23470a5034c5dc64aaf67f2832ef9a8017678d53e7e663681fd68cf0a673')
 
 build() {
     cd "${pkgname}-${pkgver}"
