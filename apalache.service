@@ -3,11 +3,18 @@ Description=Apalache Server
 After=network.target
 
 [Service]
+Type=simple
 ExecStart=/usr/bin/apalache-mc server
-ExecStop=/bin/kill -s SIGINT $MAINPID
-ExecReload=/bin/kill -s SIGINT $MAINPID ; /usr/bin/apalache-mc server
-Restart=always
+Restart=on-failure
+RestartSec=5
+
+# Resource limits
 LimitNOFILE=4096
+
+# Security hardening (conservative for JVM)
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=full
 
 [Install]
 WantedBy=multi-user.target
