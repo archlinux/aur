@@ -1,6 +1,6 @@
 # Maintainer: Christopher McAdams <mca.christopher@gmail.com>
 pkgname="alacritty-use-theme-with-gnome-darkmode-git"
-pkgver=r38.b78482c
+pkgver=r39.80fe5e2
 pkgrel=1
 pkgdesc="::Rolling release:: Changes alacritty theme when clicking the 'Dark Style' button in Gnome's System tray"
 arch=('x86_64')
