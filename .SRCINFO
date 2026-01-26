@@ -1,0 +1,12 @@
+pkgbase = linux-postmarketos-qcom-sm7125-bin
+	pkgdesc = Prebuilt PostmarketOS kernel for QCOM SM7125 (built as RPM on build.opensuse.org from github.com/linux-sm7125, original postmarketOS package uses .apk format)
+	pkgver = 6.14.7
+	pkgrel = 12.2
+	url = https://download.opensuse.org/repositories/home:kuznix:postmarketos-kernel-ports/openSUSE_Tumbleweed/
+	arch = aarch64
+	license = GPL
+	makedepends = rpmextract
+	source = https://download.opensuse.org/repositories/home:/kuznix:/postmarketos-kernel-ports/openSUSE_Tumbleweed/aarch64/kernel-postmarketos-qcom-sm7125-6.14.7-12.2.aarch64.rpm
+	sha256sums = SKIP
+
+pkgname = linux-postmarketos-qcom-sm7125-bin
