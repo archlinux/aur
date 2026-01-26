@@ -1,0 +1,6 @@
+*
+!/PKGBUILD
+!/keys/
+!/.SRCINFO
+!/.gitignore
+!/.nvchecker

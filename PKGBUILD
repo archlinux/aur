@@ -7,7 +7,7 @@ pkgname=(
   webkitgtk-6.0-devel
   webkitgtk-6.0-docs-devel
 )
-pkgver=2.49.4
+pkgver=2.51.90
 pkgrel=1
 pkgdesc="Web content engine for GTK (development release)"
 url="https://webkitgtk.org"
@@ -86,7 +86,6 @@ depends=(
   pango
   sqlite
   wayland
-  woff2
   xdg-dbus-proxy
   zlib
 )
@@ -110,9 +109,9 @@ makedepends=(
 source=(
   $url/releases/webkitgtk-$pkgver.tar.xz{,.asc}
 )
-sha256sums=('5b3e758f4cef804e227516a9bf1fe30ce88df6285d1a60d60926dec5bc5463e4'
+sha256sums=('62bdd73d2634e5f6f22a32623858df48d539daa48410a16ebe1d4b3d0f5186d3'
             'SKIP')
-b2sums=('376acbb34e42f1b76a43bc18354c98931cf4e8284774c8200139e795ec7ca7e031146cfc553cac09fab9c77df3973579afa81ab085f3ce1192fcbbf86d206d19'
+b2sums=('5e937431c31bece9e1c7c997cb77ef7ad39448815886620a0290ea88de4f5457220695f415e8dfe7d85f7725e9c4ff3f5af2b53a392933f9ed9ddbd13db68848'
         'SKIP')
 validpgpkeys=(
   # https://www.webkitgtk.org/verifying.html
@@ -130,7 +129,6 @@ build() {
     -DCMAKE_SKIP_RPATH=ON
     -DUSE_GTK4=ON
     -DUSE_LIBBACKTRACE=ON
-    -DUSE_SOUP2=OFF
     -DENABLE_DOCUMENTATION=ON
     -DENABLE_MINIBROWSER=ON
     -DENABLE_SPEECH_SYNTHESIS=OFF
