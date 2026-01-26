@@ -1,6 +1,6 @@
 pkgbase = mago
 	pkgdesc = An extremely fast PHP linter, formatter, and static analyzer, written in Rust.
-	pkgver = 1.1.0
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/carthage-software/mago
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = mago
 	makedepends = openssl
 	depends = gcc-libs
 	depends = glibc
-	source = git+https://github.com/carthage-software/mago.git#tag=1.1.0
-	b2sums = cd8cb2ef0a613517a8b19b3ed0f76bab8f32fea31081dc7a1dd913cff7caa0eb02eed3ddb04a141e01624d19d4287fc51d69f52f79d9fb6912479e94d78e9f7d
+	source = git+https://github.com/carthage-software/mago.git#tag=1.2.2
+	b2sums = e98791a41f46e9880f17a6ab3d8b6890b254425b4d29b4db668e6c5f1d31c591f18699be385b1994786f459d4298d69e4ff55520020b6b209f7630bfecdef298
 
 pkgname = mago
