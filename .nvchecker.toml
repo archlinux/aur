@@ -1,0 +1,4 @@
+[lib32-graphite]
+source = "archpkg"
+archpkg = "graphite"
+strip_release = true
