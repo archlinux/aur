@@ -1,14 +1,14 @@
 # Maintainer: ilyapashuk <ilusha.paschuk@gmail.com>
 pkgname=cloudvis
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="simple console client for visionbot service"
 arch=('x86_64')
 url="https://github.com/alekssamos/cloudvis"
 license=('GPL3')
 makedepends=(go)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/alekssamos/cloudvis/archive/v1.0.tar.gz")
-md5sums=('9d97749f4f69526d31d6eadb1fa5df22')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/alekssamos/cloudvis/archive/v1.1.tar.gz")
+md5sums=('09e0a342af46a23082190dd4793f5855')
 
 
 

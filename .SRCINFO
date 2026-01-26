@@ -1,13 +1,12 @@
 pkgbase = cloudvis
 	pkgdesc = simple console client for visionbot service
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/alekssamos/cloudvis
 	arch = x86_64
 	license = GPL3
 	makedepends = go
-	source = cloudvis-1.0.tar.gz::https://github.com/alekssamos/cloudvis/archive/v1.0.tar.gz
-	md5sums = 9d97749f4f69526d31d6eadb1fa5df22
+	source = cloudvis-1.1.tar.gz::https://github.com/alekssamos/cloudvis/archive/v1.1.tar.gz
+	md5sums = 09e0a342af46a23082190dd4793f5855
 
 pkgname = cloudvis
-
