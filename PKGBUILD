@@ -10,11 +10,11 @@ provides=('spm')
 conflicts=('spm')
 install=spm.install
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/spm-$pkgver.tar.gz")
-sha256sums=('9e2be457346627c35b312bb4276559d304fdf786ad276835ed7cabc566b9025b')
+sha256sums=('54ce0aacb84dbe480a0d7c6cbf34da4ec7032d9f61d41aec0ba0e297faf8c230')
 
 package() {
-    cd "$srcdir"
-    
+    cd "$srcdir/Simple_Package_Manager-$pkgver"
+
     install -Dm755 spm.sh "$pkgdir/usr/bin/spm"
     install -Dm755 spm_updates.sh "$pkgdir/usr/bin/spm_updates"
     install -Dm644 spm_updates.timer "$pkgdir/usr/lib/systemd/system/spm_updates.timer"
