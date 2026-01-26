@@ -4,7 +4,7 @@
 # Maintainer: Clarence <xjh.azzbcc@gmail.com>
 pkgname="ocenaudio-bin"
 _pkgname=ocenaudio
-pkgver=3.17.0
+pkgver=3.17.1
 pkgrel=1
 pkgdesc="Cross-platform, easy to use, fast and functional audio editor"
 arch=('x86_64')
