@@ -1,7 +1,7 @@
 pkgbase = gtkspell
 	pkgdesc = Provides word-processor-style highlighting and replacement of misspelled words in a GtkTextView widget
 	pkgver = 2.0.16
-	pkgrel = 9
+	pkgrel = 10
 	url = http://gtkspell.sourceforge.net/
 	arch = x86_64
 	license = GPL

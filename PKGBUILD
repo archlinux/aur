@@ -1,9 +1,10 @@
-# Maintainer: Roman Kyrylych <roman@archlinux.org>
+# Maintainer: oryx <0xnjxa@tutamail.com>
+# Contributer: Roman Kyrylych <roman@archlinux.org>
 # Contributer: Ben <ben@benmazer.net>
 
 pkgname=gtkspell
 pkgver=2.0.16
-pkgrel=9
+pkgrel=10
 url="http://gtkspell.sourceforge.net/"
 pkgdesc="Provides word-processor-style highlighting and replacement of misspelled words in a GtkTextView widget"
 arch=('x86_64')
