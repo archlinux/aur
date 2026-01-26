@@ -11,18 +11,22 @@ _baserom="baserom.us.rev0.z64"    # <-- Rename your rom file to this
 _rom_uncompressed="banjo.us.v10.decompressed.z64"
 _bin_name=BanjoRecompiled
 
+# Commit fixes ARM64 build and UI callbacks
+_commit_sha="045b738297053d45dfe8256c374163ef09c1b7c0"
+
 _recomp_dir="${_reponame}"
 _pkgname=${_reponame,,}
 pkgname=${_pkgname}
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 arch=("x86_64" "aarch64")
 depends=("sdl2" "freetype2" "gtk3" "vulkan-driver" "vulkan-icd-loader" "hicolor-icon-theme")
 makedepends=("git" "cmake" "ninja" "make" "clang20" "lld20" "mold" "rust")
 pkgdesc="A static recompiled port of N64 Banjo-Kazooie for PC"
 license=("GPL-3.0-only")
 url="https://github.com/${_reponame}/${_reponame}"
-source=("git+${url}.git#tag=v${pkgver}"
+source=(#"git+${url}.git#tag=v${pkgver}"
+        "git+${url}.git#commit=${_commit_sha}"
 
         # main dependencies
         "git+https://github.com/N64Recomp/N64ModernRuntime.git"
@@ -80,7 +84,7 @@ source=("git+${url}.git#tag=v${pkgver}"
         # Misc. patches and the rom requirement
         "${_pkgname}.desktop"
         "file://${_baserom}")
-sha256sums=('f51547b11e6c4a67bf879ae8aa60cf001df9412079652e97fa2960274b915db6'
+sha256sums=('c4895d99e7961883eaf03d71143d918d119725d4e323006b91d4e7e912bc6138'
             'SKIP'
             'SKIP'
             'SKIP'
