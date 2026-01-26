@@ -7,17 +7,15 @@ arch=('x86_64')
 url="https://github.com/Lallassu/gorss"
 license=('MIT')
 depends=('glibc')
-provides=("${pkgname}")
+makedepends=('go')
 conflicts=("${pkgname}=${pkgver}")
-source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}_linux.tar.gz"
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/Lallassu/gorss/v${pkgver}/LICENSE"
-)
-sha256sums=('a85b1d83c0598ffb73f4c21afcf68c0ab4a12b2e2f84aaa6c338927c96a9d41f'
-            'b259599c27ef3ad3ad88ca16614e05831c36d000d14cfa5ddc4cc9b7a7931d8d')
+source=("${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}")
+sha256sums=('03c34b96482b8a6cc8a80546c0dd3232cfdf6c25928c05253da21177b2f16abb')
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    make build
+}
 package() {
-    install -Dm755 -d "${pkgdir}/usr/"{lib/"${pkgname}",bin}
-    cp -r "${srcdir}/dist/"* "${pkgdir}/usr/lib/${pkgname}"
-    ln -sf "/usr/lib/${pkgname}/${pkgname}_linux" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/${pkgname}" -t "${pkgdir}/usr/bin"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
