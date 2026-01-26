@@ -2,7 +2,7 @@
 
 pkgname=python-lensfunpy
 _pkg="${pkgname#python-}"
-pkgver=1.17.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="Python wrapper for the lensfun library"
 arch=('x86_64')
@@ -23,7 +23,7 @@ optdepends=(
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=(
-    '82c71558aad1339e0e9a5152ae3943e53317dc723c5cca723717dc11d755385c8106c15b8432f5a2ea336efc47f7f2e5a2c49d3d31c1ff8e25d6829a78b0ee6d')
+    '5b2d7befc96fdd3e8267b3fbf9740ecc8b07712b491b3c7b5086b5510e039efdf5ab615f3880a6f6481fc355375fa5181a42e02c1941fa3ec0f20a708ece334c')
 
 build() {
     cd "$_pkg-$pkgver"
