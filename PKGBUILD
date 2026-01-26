@@ -1,13 +1,14 @@
 # Maintainer: asalde_le1 <asalde.le1@gmail.com>
 
-pkgname=mts-link
-pkgver=1.2.12
+pkgname=mts-link-meetings
+pkgver=1.2.13
 pkgrel=1
-pkgdesc='MTS Link desktop application based on Electron and React'
+pkgdesc='MTS Link Meetings desktop application based on Electron and React'
 arch=(x86_64)
 url='https://mts-link.ru'
 license=(custom:proprietary)
 changelog=${pkgname}.changelog
+replaces=('mts-link')
 depends=(
   alsa-lib
   at-spi2-core
@@ -24,11 +25,11 @@ optdepends=(
   'libappindicator-gtk3: Systray indicator support'
 )
 source=(
-  https://apps.webinar.ru/desktop/${pkgname}-${pkgver}.tar.gz
-  mts-link.desktop
+  https://apps.webinar.ru/desktop/mts-link-${pkgver}.tar.gz
+  mts-link-meetings.desktop
 )
-sha256sums=('a79d1b3af4c13ef1e0a2e8b1b56ba9ec04b35057a4d1b254e6caa2a11913ad8f'
-            '39ed5a6cd08c729bfd10140bb5a9c8e3e469553915c97b6de8f6078c4ea59cb0')
+sha256sums=('111161ab96822923e4352cd2523f57cc2bf7f5b76c9d5e654cc12b11cf567295'
+            'e1de286d013a8c0bba6fe44a8f4138a68d600835b5320b3ab2bbb29b0c5cbb2e')
 
 package() {
   install -dm755 "${pkgdir}/opt/${pkgname}"

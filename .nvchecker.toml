@@ -1,3 +1,3 @@
-[mts-link]
+[mts-link-meetings]
 source = "cmd"
-cmd = '''wget -qO- https://apps.webinar.ru/desktop/latest-linux.yml | tee >(echo $(yq -r .releaseNotes) > mts-link.changelog) | yq -r .version'''
+cmd = '''wget -qO- https://apps.webinar.ru/desktop/latest-linux.yml | tee >(echo $(yq -r .releaseNotes) > mts-link-meetings.changelog) | yq -r .version'''
