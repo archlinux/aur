@@ -2,7 +2,7 @@
 # Contributor: Cedric Girard <cgirard [dot] archlinux [at] valinor [dot] fr>
 
 pkgname=freshrss
-pkgver=1.28.0
+pkgver=1.28.1
 pkgrel=1
 pkgdesc='A free, self-hostable aggregator…'
 arch=('any')
@@ -16,12 +16,11 @@ optdepends=('apache: Web server to run FreshRSS'
             'sqlite: Database server to run FreshRSS')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FreshRSS/FreshRSS/archive/$pkgver.tar.gz")
-b2sums=('0ea2cc56754495ac3e4c8adebfbe93a3a7f3466a7596dd60f5ebfc1f8b80c0fbe7a8644f64c15ef2f26501f88fe8a485d1d219e67c7b4b48d2202c556dcb2a79')
+b2sums=('9bcc4d054d0e277138a1c502c4bcabafde5b592cc710c4c1fdf4a9b521ea215a8651c0e0a5ef7655af30527a9a2b6b414c2fb247c634d735f999d4154a9c11ae')
 
-prepare(){
+prepare() {
   cd "${srcdir}/FreshRSS-$pkgver"
   sed -i "s!FRESHRSS_PATH . '/data'!'/var/lib/webapps/freshrss/data'!" constants.php
-
 }
 
 package() {
@@ -33,7 +32,6 @@ package() {
   find "$pkgdir/usr/share/webapps/freshrss" -name '.git*' -exec rm -rf {} \; || true
   rm -rf "$pkgdir/usr/share/webapps/freshrss/Docker"
   rm -rf "$pkgdir/usr/share/webapps/freshrss/tests"
-
 
   #new location for datadir
   install -dm 750 "$pkgdir/var/lib/webapps/freshrss"
