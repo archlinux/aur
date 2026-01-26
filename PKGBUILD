@@ -8,8 +8,7 @@ arch=('any')
 url='https://github.com/catppuccin/lxqt'
 license=('MIT')
 makedepends=('git' 'unzip')
-depends=('lxqt-themes')
-optdepends=('lxqt-wayland-session')
+depends=('lxqt-config')
 source=(
   "git+$url"
   "$url/releases/download/v$pkgver/catppuccin-frappe.zip"

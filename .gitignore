@@ -1,6 +1,5 @@
 pkg/
 src/
-.SRCINFO
 *.pkg.tar.zst
 
 lxqt/

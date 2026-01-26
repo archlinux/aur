@@ -1,0 +1,22 @@
+pkgbase = catppuccin-lxqt-themes
+	pkgdesc = LXQT catppuccin themes
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/catppuccin/lxqt
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = unzip
+	depends = lxqt-config
+	source = git+https://github.com/catppuccin/lxqt
+	source = https://github.com/catppuccin/lxqt/releases/download/v2.0.0/catppuccin-frappe.zip
+	source = https://github.com/catppuccin/lxqt/releases/download/v2.0.0/catppuccin-latte.zip
+	source = https://github.com/catppuccin/lxqt/releases/download/v2.0.0/catppuccin-macchiato.zip
+	source = https://github.com/catppuccin/lxqt/releases/download/v2.0.0/catppuccin-mocha.zip
+	sha256sums = SKIP
+	sha256sums = 2a88cb56a68eaca2a54daa8585ba3a6d5a9c03f3df8e709792ddeb233a1453b4
+	sha256sums = d6e753d6cb0ad176c13b6821df32cf076fed794033c3d88f5e0360a6f35a7a65
+	sha256sums = d1fb35aaeafe0dfd09a9ad73b67451be498418b8ff6a7249ee415ffa090b02a3
+	sha256sums = ebc5e0b02fb47fb1cc340a649b10541b4d8a67641b5b65a76a0114ab74a79426
+
+pkgname = catppuccin-lxqt-themes
