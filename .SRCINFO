@@ -1,0 +1,23 @@
+pkgbase = pairux-bin
+	pkgdesc = Collaborative screen sharing with remote control
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://pairux.com
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	depends = fuse2
+	provides = pairux
+	conflicts = pairux
+	conflicts = pairux-git
+	options = !strip
+	source = PairUX-0.1.7.AppImage::https://github.com/profullstack/pairux.com/releases/download/v0.1.7/PairUX-0.1.7-x64.AppImage
+
+pkgname = pairux-bin

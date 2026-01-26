@@ -1,0 +1,51 @@
+# Maintainer: PairUX Team <hello@pairux.com>
+pkgname=pairux-bin
+pkgver=0.1.7
+pkgrel=1
+pkgdesc="Collaborative screen sharing with remote control"
+arch=('x86_64')
+url="https://pairux.com"
+license=('MIT')
+depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'fuse2')
+provides=('pairux')
+conflicts=('pairux' 'pairux-git')
+options=('!strip')
+source=("PairUX-${pkgver}.AppImage::https://github.com/profullstack/pairux.com/releases/download/v${pkgver}/PairUX-${pkgver}-x64.AppImage")
+sha256sums=('SKIP')
+
+package() {
+    cd "$srcdir"
+
+    # Install AppImage
+    install -Dm755 "PairUX-${pkgver}.AppImage" "$pkgdir/opt/pairux/pairux.AppImage"
+
+    # Create wrapper script
+    install -dm755 "$pkgdir/usr/bin"
+    cat > "$pkgdir/usr/bin/pairux" << 'WRAPPER'
+#!/bin/bash
+export ELECTRON_DISABLE_SANDBOX=1
+exec /opt/pairux/pairux.AppImage "$@"
+WRAPPER
+    chmod 755 "$pkgdir/usr/bin/pairux"
+
+    # Create and install desktop file
+    cat > "$srcdir/pairux.desktop" << 'DESKTOP'
+[Desktop Entry]
+Name=PairUX
+Comment=Collaborative screen sharing with remote control
+Exec=/opt/pairux/pairux.AppImage --no-sandbox %U
+Icon=pairux
+Type=Application
+Categories=Network;RemoteAccess;
+StartupWMClass=PairUX
+DESKTOP
+    install -Dm644 "$srcdir/pairux.desktop" "$pkgdir/usr/share/applications/pairux.desktop"
+
+    # Extract and install icon from AppImage
+    cd "$pkgdir/opt/pairux"
+    ./pairux.AppImage --appimage-extract usr/share/icons/hicolor/512x512/apps/*.png 2>/dev/null || true
+    if [ -f squashfs-root/usr/share/icons/hicolor/512x512/apps/*.png ]; then
+        install -Dm644 squashfs-root/usr/share/icons/hicolor/512x512/apps/*.png "$pkgdir/usr/share/pixmaps/pairux.png"
+    fi
+    rm -rf squashfs-root
+}
