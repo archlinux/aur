@@ -9,16 +9,18 @@ install=smfc.install
 backup=('etc/default/smfc' 'etc/smfc/smfc.conf')
 url="https://github.com/petersulyok/smfc"
 license=('GPL3')
-depends=('python' 'ipmitool' 'pacman-hook-reload-modules' 'bash' 'systemd')
+depends=('python' 'ipmitool'  'bash' 'systemd')
 optdepends=('smartmontools: For SAS/SCSI disks and standby guard feature'
  'nvidia-utils: For GPU fan controller')
-checkdepends=('flake8' 'python-coverage' 'python-pylint' 'python-pytest' 'python-pytest-cov' 'python-pyudev' 'python-mock')
+checkdepends=('flake8' 'python-coverage' 'python-pylint' 'python-pytest' 'python-pytest-cov' 'python-pyudev')
 source=(
   "${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
   'modules-load.conf'
+  'reload-modules.hook'
 )
 sha256sums=('0ab042f3bf1c43ebe7394afdb276c317d2399e39bb86245ea94ba4662e1a6949'
-            '695a1124cf2922feb6a7d2892e664a1b4fcb11329ff635734dc1b95df1f9dc51')
+            'cb5d4c408aa5adfdf5b476c6c203cdefda8e765bb4e306c95afdda13b905d1ba'
+            'e1c85e8b2ba25ff6384205fe4a4bb2492919861a56c0059f3b6f6feb6f580df8')
 
 check() {
   cd "${pkgname}-${pkgver}"
@@ -39,4 +41,6 @@ package() {
   install -o root -g root -Dm644 smfc.1.gz "${pkgdir}/usr/local/share/man/man1/smfc.1.gz"
   install -o root -g root -Dm644 smfc "${pkgdir}/usr/bin/smfc"
   install -o root -g root -Dm644 smfc.py "${pkgdir}/usr/lib/python3.14/smfc.py"
+  install -m755 -d "${pkgdir}/usr/share/libalpm/hooks"
+  install -m644 "${srcdir}/modules-reload.hook" "${pkgdir}/usr/share/libalpm/hooks/95-modules-reload.hook"
 }

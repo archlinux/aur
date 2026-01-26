@@ -3,9 +3,10 @@ post_install() {
   echo "https://github.com/petersulyok/smfc/tree/main?tab=readme-ov-file#6-ipmi-fan-control-and-sensor-thresholds"
   echo
   echo "Prior to enabling the service,"
-  echeo "Check if the cpu temp monitor module for your system is loaded"
+  echo "Check if the cpu temp monitor module for your system is loaded"
   echo "coretemp kernel module for Intel CPUs"
   echo "k10temp kernel module for AMD CPUs"
+  echo "Load module as needed"
   echo
   echo "Enable Super Micro Fan Control as systemd service"
   echo "by running:"
