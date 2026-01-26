@@ -1,23 +1,23 @@
 pkgbase = mq3t-bin
 	pkgdesc = The last MQTT development tool you'll ever need(Prebuilt version.Use system-wide electron).
-	pkgver = 1.10.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://mq3t.guillaumechx.dev/
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = GPL-3.0-only
-	depends = electron35
-	provides = mq3t=1.10.0
+	depends = electron39
+	provides = mq3t=2.0.0
 	conflicts = mq3t
 	options = !emptydirs
 	source = mq3t.sh
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = mq3t-1.10.0-aarch64.deb::https://github.com/ChxGuillaume/MQ3T/releases/download/v1.10.0/mq3t-1.10.0-arm64.deb
-	sha256sums_aarch64 = e76f92c5743fce9e26fbb76be36e8fd2acb7ee7fd6203698260afbefcaa2e72a
-	source_armv7h = mq3t-1.10.0-armv7h.deb::https://github.com/ChxGuillaume/MQ3T/releases/download/v1.10.0/mq3t-1.10.0-armv7l.deb
-	sha256sums_armv7h = e3d5ffc97c39fa8189a09dc24ec656717936ff2054939a89a2c987e1d471d642
-	source_x86_64 = mq3t-1.10.0-x86_64.deb::https://github.com/ChxGuillaume/MQ3T/releases/download/v1.10.0/mq3t-1.10.0-amd64.deb
-	sha256sums_x86_64 = 0980180d06b69469f86ae9c1cc2180eb54c4375138c59cf73f0e2a5ce9ea03d2
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	source_aarch64 = mq3t-2.0.0-aarch64.deb::https://github.com/ChxGuillaume/MQ3T/releases/download/v2.0.0/mq3t-2.0.0-arm64.deb
+	sha256sums_aarch64 = 3cd0903538d1438eea648fcb247fbc211699933b3a6363f9b17ecc8d1874b8db
+	source_armv7h = mq3t-2.0.0-armv7h.deb::https://github.com/ChxGuillaume/MQ3T/releases/download/v2.0.0/mq3t-2.0.0-armv7l.deb
+	sha256sums_armv7h = 2f42c478aea644760848168275527b97ecd351d42fb61ebbc177fdd07ebdfd79
+	source_x86_64 = mq3t-2.0.0-x86_64.deb::https://github.com/ChxGuillaume/MQ3T/releases/download/v2.0.0/mq3t-2.0.0-amd64.deb
+	sha256sums_x86_64 = df68a6cc5810bb32f73e3e2c7fbb1fda46e668029d3fef06fb00d4409633d882
 
 pkgname = mq3t-bin
