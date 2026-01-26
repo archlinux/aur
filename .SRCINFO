@@ -1,6 +1,6 @@
 pkgbase = aionui-bin
 	pkgdesc = Transform your command-line experience into a modern, efficient AI Chat interface.
-	pkgver = 1.7.6
+	pkgver = 1.7.7
 	pkgrel = 2
 	url = https://github.com/iOfficeAI/AionUi
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = aionui-bin
 	depends = alsa-lib
 	provides = aionui
 	conflicts = aionui
-	source_x86_64 = aionui_1.7.6_linux_amd64.deb::https://github.com/iOfficeAI/AionUi/releases/download/v1.7.6/AionUi-1.7.6-linux-amd64.deb
-	sha256sums_x86_64 = 79326ce6248ad6a2d556bcbfc02950515ca9e2ae46eed8351367307543fb116e
+	source_x86_64 = aionui_1.7.7_linux_amd64.deb::https://github.com/iOfficeAI/AionUi/releases/download/v1.7.7/AionUi-1.7.7-linux-amd64.deb
+	sha256sums_x86_64 = ab936abab98bdd242917e57458fc5fb2763cd148c913b41f202f1be17d73309a
 
 pkgname = aionui-bin
