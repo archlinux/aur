@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lynxhub-git
 _pkgname=LynxHub
-pkgver=3.2.0.r1.gf641093
-_electronversion=38
+pkgver=3.4.0.r0.g8b29723
+_electronversion=39
 _nodeversion=22
 pkgrel=1
 pkgdesc="Manage and launch all your AI from a single dashboard.(Use system-wide electron)"
@@ -23,6 +23,7 @@ makedepends=(
     'gendesk'
     'nvm'
     'curl'
+    'jq'
 )
 source=(
     "${pkgname//-/.}::git+${url}"
@@ -43,8 +44,9 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver="$(grep '^ *"electron": *"' "${srcdir}/${pkgname//-/.}/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname//-/.}/package.json" | tr -d '^')
+    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
+    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
     cd "${srcdir}/${pkgname//-/.}"
