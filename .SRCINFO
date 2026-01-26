@@ -1,6 +1,6 @@
 pkgbase = mt76-mt7925-dkms
 	pkgdesc = MediaTek MT7925/MT7921 WiFi driver with MLO fixes (DKMS)
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/zbowling/mt7925
 	install = mt76-mt7925-dkms.install
@@ -15,7 +15,7 @@ pkgbase = mt76-mt7925-dkms
 	provides = mt7925-dkms
 	conflicts = mt7925-dkms
 	options = !strip
-	source = https://github.com/zbowling/mt7925/releases/download/v1.4.0/mt76-mt7925-dkms-1.4.0.tar.gz
-	sha256sums = ba6d53d6c8643c82eafb09868ae9eb96b03052738b24d991d5070b870a8c2e6a
+	source = https://github.com/zbowling/mt7925/releases/download/v1.4.1/mt76-mt7925-dkms-1.4.1.tar.gz
+	sha256sums = f06983fdb1e2d7ee3bcaf0dae3ebd938e957821d67c1d4e72e4db69c85a3522b
 
 pkgname = mt76-mt7925-dkms

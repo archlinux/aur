@@ -1,5 +1,5 @@
 _dkms_pkg="mt76-mt7925"
-_dkms_ver="1.4.0"
+_dkms_ver="1.4.1"
 
 post_install() {
     dkms add "${_dkms_pkg}/${_dkms_ver}"
