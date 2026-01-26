@@ -1,7 +1,7 @@
 # Maintainer: Markus Näther <naether.markus@gmail.com>
 
 pkgname=python-simple_parsing
-pkgver=0.1.5
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Simple, Elegant, Typed Argument Parsing with argparse"
 arch=('any')
@@ -11,12 +11,22 @@ depends=(
 	'python'
 	'python-pyyaml'
 )
-makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/lebrice/SimpleParsing/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a230d1b31d16856b248f9a9eb77bf1441a6b9f7e93d06e088f4c35cfe3532e76')
+makedepends=(python-build python-poetry-core python-installer python-wheel python-setuptools)
+source=(
+	"$pkgname-$pkgver.tar.gz::https://github.com/lebrice/SimpleParsing/archive/refs/tags/v${pkgver}.tar.gz"
+	"pyproject.diff"
+)
+sha256sums=(
+	'8e23c5dc095e0f30fdb3947a8c1bdaf05c2ce394887b5aa2c460d12a9ffeb98e'
+	'f70f706f6d7300425cac456475495316dea33596bde914c4e354d0f560be5dcc'
+)
+
+prepare() {
+    patch -p1 < "${srcdir}/pyproject.diff"
+}
 
 package() {
     cd "SimpleParsing-${pkgver}"
-    python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
+    poetry install
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
