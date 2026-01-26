@@ -1,0 +1,14 @@
+pkgbase = why3-bin
+	pkgdesc = Software verification platform for deductive program verification
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://gitlab.inria.fr/why3/why3
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = binutils
+	makedepends = tar
+	depends = ocaml
+	source = why3_1.8.0-2+b1_amd64.deb::https://deb.debian.org/debian/pool/main/w/why3/why3_1.8.0-2+b1_amd64.deb
+	sha256sums = 71089b84b3fdc7f6b83b6f5f43498aa921900ba23374be46f0ffefd2617d30da
+
+pkgname = why3-bin
