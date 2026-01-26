@@ -1,0 +1,38 @@
+#!/bin/bash
+set -euo pipefail
+
+APPDIR="/usr/lib/openmemory-backend/openmemory-js"
+
+STATE_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/openmemory-backend"
+DATA_DIR="$STATE_DIR/data"
+
+USER_ENV="${XDG_CONFIG_HOME:-$HOME/.config}/openmemory/openmemory.env"
+SYSTEM_ENV="/etc/openmemory/openmemory.env"
+
+# Ensure writable directories exist
+mkdir -p "$DATA_DIR"
+
+# Load env (user overrides system)
+if [[ -f "$USER_ENV" ]]; then
+  set -a
+  source "$USER_ENV"
+  set +a
+elif [[ -f "$SYSTEM_ENV" ]]; then
+  set -a
+  source "$SYSTEM_ENV"
+  set +a
+fi
+
+# Find backend entrypoint
+if [[ -f "$APPDIR/dist/server.js" ]]; then
+  entry="$APPDIR/dist/server.js"
+elif [[ -f "$APPDIR/src/server/server.js" ]]; then
+  entry="$APPDIR/src/server/server.js"
+else
+  echo "openmemory-backend: no server entrypoint found" >&2
+  exit 1
+fi
+
+# Run with CWD in STATE_DIR so ./data works
+cd "$STATE_DIR"
+exec node "$entry"
