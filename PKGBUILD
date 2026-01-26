@@ -68,6 +68,7 @@ build() {
     export HIP_ROOT_DIR="$ROCM_HOME"
 
     # -fcf-protection is not supported by HIP/clang
+    # ref: https://gitlab.archlinux.org/archlinux/packaging/packages/python-pytorch/-/blob/main/PKGBUILD
     CXXFLAGS+=" -fcf-protection=none"
 
     USE_ROCM=1 python setup.py build
