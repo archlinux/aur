@@ -25,8 +25,8 @@ depends=(
     'libssh'
 )
 source=("${pkgname%-bin}.sh")
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::https://versaweb.dl.sourceforge.net/project/anytxt/${_pkgname}_${pkgver}_Linux_arm_64.rpm")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::https://versaweb.dl.sourceforge.net/project/anytxt/${_pkgname}_${pkgver}_Linux_X86_64.rpm")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_sfurl}/files/${_pkgname}_${pkgver}_Linux_arm_64.rpm/download")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_sfurl}/files/${_pkgname}_${pkgver}_Linux_X86_64.rpm/download")
 sha256sums=('db1db4c15024a45337e7e7190046e6414184603321be058797422a54ed5fc85d')
 sha256sums_aarch64=('d0c431d3e82e9df968c03945db61981c6a797d29db3f4cca0e7cf161f4b31469')
 sha256sums_x86_64=('1a608c42db8df72df1bf271f3dbadf14b1d07ac062aacc8c121c5b711cd7250f')
