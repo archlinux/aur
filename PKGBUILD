@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/geoffreybennett/$pkgname"
 license=('custom:Focusrite')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('cef79425c665bb90b5ba85f7f483e41c2fdc1d4390e4c11344df1d69034e9cd5')
 
 package() {
   cd "$pkgname-$pkgver"
