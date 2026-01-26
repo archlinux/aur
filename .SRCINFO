@@ -1,6 +1,6 @@
 pkgbase = python-phiml
 	pkgdesc = Unified API for machine learning
-	pkgver = 1.14.3
+	pkgver = 1.15.0
 	pkgrel = 1
 	url = https://github.com/tum-pbs/PhiML
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-phiml
 	makedepends = python-wheel
 	depends = python-scipy
 	depends = python-packaging
-	source = https://pypi.org/packages/source/P/PhiML/phiml-1.14.3.tar.gz
-	sha512sums = d633f5dee8bc0711be0e2fd744d9e465e69bb2debcf37a628511a269335ca7b6416171c621dfb07af8923cca944f3036a4b93a4cd4db82a34d6df64243d6b451
+	source = https://pypi.org/packages/source/P/PhiML/phiml-1.15.0.tar.gz
+	sha512sums = f1f75957d36f14f6c0a127505e1710bacf01b46b969185e30a2f278bd9074f424398f9277fc08bc1ac25ea93f150f4c73fda9bfcf28bd4bdd983a6be60a5236d
 
 pkgname = python-phiml
