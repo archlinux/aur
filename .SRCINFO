@@ -1,0 +1,22 @@
+pkgbase = python-fuzzy-theory
+	pkgdesc = The fuzzy-theory library provides a PyTorch interface to fuzzy set theory and fuzzy logic operations
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://github.com/johnHostetter/fuzzy-theory
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python-entmax
+	depends = python-optuna
+	depends = python-sympy
+	depends = python-torchquad
+	depends = python-scienceplots
+	depends = python-natsort
+	depends = python-rough-theory
+	source = fuzzy-theory-0.0.7.tar.gz::https://github.com/johnHostetter/fuzzy-theory/archive/v0.0.7.tar.gz
+	sha512sums = 238a1716289e3f16af72365f11daa6c0b468c057c956090eb1c6c9651fe3c938a66f321eb662735a8c0ff2658014fd31814dfc1ff733a867f7e38c9ed2a10138
+
+pkgname = python-fuzzy-theory
