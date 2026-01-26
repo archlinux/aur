@@ -1,7 +1,7 @@
 # Maintainer: silverhikari <kerrickethan@gmail.com>
 pkgname=stardrop-bin
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="an Open Source Cross-platform mod manager for Stardew Valley"
 arch=("x86_64")
 url="https://floogen.gitbook.io/stardrop"
@@ -28,6 +28,7 @@ package() {
 	cp -far Stardrop "${pkgdir}/opt/"
 	#removing Stardrop.sh as no longer needed
 	rm "${pkgdir}/opt/Stardrop/Stardrop.sh"
+	chmod +x "${pkgdir}/opt/Stardrop/Internal"
 
 	#nxm mimetype scheme for nexus mod support
 	if ! [ -f /usr/share/mime/packages ]; then
