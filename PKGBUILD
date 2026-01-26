@@ -2,7 +2,7 @@
 
 _pkgname="ymir-emu"
 pkgname="$_pkgname-git"
-pkgver=0.2.1.r11.gca7af59
+pkgver=0.2.1.r89.g673a1b8
 pkgrel=1
 pkgdesc="Sega Saturn emulator"
 url="https://github.com/StrikerX3/Ymir"
@@ -42,6 +42,7 @@ sha256sums=(
 
 prepare() {
   cd "$_pkgsrc"
+  git rm -r vendor/lz4/lz4
   git submodule update --init --recursive --depth=1
 
   # force xwayland to avoid scaling bug
@@ -68,28 +69,54 @@ prepare() {
     -i apps/ymir-sandbox/CMakeLists.txt \
     apps/ymir-sdl3/CMakeLists.txt
 
+  # don't force libzstd_static
+  sed -E -e 's&(zstd::libzstd)_static\b&\1&' \
+    -i vendor/libchdr/CMakeLists.txt
+
   # fix type mismatch
   sed -E -e '/m_m68kClockShift = std::min/s&4ull&uint64{4}&' -i libs/ymir-core/include/ymir/hw/scsp/scsp.hpp
+
+  # use system lz4
+  sed -E -e '/lz4/d' -i vendor/CMakeLists.txt
+  sed -e '1i find_package(LZ4)' -i apps/ymir-sdl3/CMakeLists.txt
+
+  # find module for lz4
+  cat > cmake/FindLZ4.cmake << 'END'
+find_path(LZ4_INCLUDE_DIR NAMES lz4.h)
+find_library(LZ4_LIBRARY NAMES lz4)
+
+include(FindPackageHandleStandardArgs)
+find_package_handle_standard_args(LZ4 DEFAULT_MSG
+  LZ4_LIBRARY LZ4_INCLUDE_DIR
+)
+
+if(LZ4_FOUND AND NOT TARGET lz4::lz4)
+  add_library(lz4::lz4 UNKNOWN IMPORTED)
+  set_target_properties(lz4::lz4 PROPERTIES
+    IMPORTED_LOCATION "${LZ4_LIBRARY}"
+    INTERFACE_INCLUDE_DIRECTORIES "${LZ4_INCLUDE_DIR}"
+  )
+endif()
+END
 
   # find module for rtmidi
   cat > cmake/Findrtmidi.cmake << 'END'
 find_path(RTMIDI_INCLUDE_DIR RtMidi.h
-    PATH_SUFFIXES rtmidi
+  PATH_SUFFIXES rtmidi
 )
-
 find_library(RTMIDI_LIBRARY NAMES rtmidi)
 
 include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(RtMidi DEFAULT_MSG
-    RTMIDI_INCLUDE_DIR RTMIDI_LIBRARY
+  RTMIDI_INCLUDE_DIR RTMIDI_LIBRARY
 )
 
 if(RTMIDI_FOUND)
-    add_library(RtMidi::rtmidi UNKNOWN IMPORTED)
-    set_target_properties(RtMidi::rtmidi PROPERTIES
-        IMPORTED_LOCATION "${RTMIDI_LIBRARY}"
-        INTERFACE_INCLUDE_DIRECTORIES "${RTMIDI_INCLUDE_DIR}"
-    )
+  add_library(RtMidi::rtmidi UNKNOWN IMPORTED)
+  set_target_properties(RtMidi::rtmidi PROPERTIES
+    IMPORTED_LOCATION "${RTMIDI_LIBRARY}"
+    INTERFACE_INCLUDE_DIRECTORIES "${RTMIDI_INCLUDE_DIR}"
+  )
 endif()
 END
 }
