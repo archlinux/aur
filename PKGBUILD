@@ -2,7 +2,7 @@
 
 pkgname=kibana-bin
 pkgver=9.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Browser based analytics and search dashboard for Elasticsearch"
 arch=("x86_64")
 url="https://github.com/elastic/kibana"
@@ -22,8 +22,8 @@ sha512sums=('8600b655bd9ad45b4c608b63a32dc6e217d352066e87d0017cf3a7179b3ba70bbf9
 
 prepare() {
   cd kibana-${pkgver}
-  sed "s@^var isVersionValid = .*@var isVersionValid = true;@" -i src/setup_node_env/node_version_validator.js
-  sed -r "s|#(logging.quiet:) false|\1 true|" -i config/kibana.yml
+  sed "s@^var isVersionValid = .*@var isVersionValid = true;@" -i node_modules/@kbn/setup-node-env/node_version_validator.js
+  sed -r 's|#(logging.quiet:) false|\1 true|' -i config/kibana.yml
 }
 
 package() {
