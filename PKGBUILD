@@ -48,7 +48,6 @@ check() {
 
   for d in "$pkgname" "$pkgname/cli"; do
     pushd "${d}"
-    echo "Testing "${d}"..."
     cargo test
     popd 
   done
