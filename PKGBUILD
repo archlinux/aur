@@ -2,7 +2,7 @@
 # Maintainer: Hajos Attila <linux[dot]alucard[at]gmail[dot]com>
 
 pkgname=tidal-hifi-appimage
-pkgver=6.0.1
+pkgver=6.1.0
 pkgrel=1
 pkgdesc="The web version of Tidal running in electron with hifi support thanks to widevine"
 arch=(x86_64)
@@ -15,7 +15,7 @@ _appimage="tidal-hifi-${pkgver}.AppImage"
 source=("${_appimage}::https://github.com/Mastermindzh/tidal-hifi/releases/download/${pkgver}/tidal-hifi-${pkgver}.AppImage"
         "tidal-hifi.desktop"
         "icon.png")
-sha256sums=('2a263192cbcad394c3194eb27adc32d404622fccda8b3240ab1ab1e2f783c155'
+sha256sums=('4a378484bac6270b20b091103200c633f943585e246f6895e71bb2344919f07b'
             '968b4218f6507746eb0c0a11e9ec4d53b2b4ac36a0c4bd8b89b505a27de8fa09'
             'f06db681e02d8a82f1fdccbb9393e1ff42e12b8528f5eef787fda88b848449f3')
 noextract=("${_appimage}")

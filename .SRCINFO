@@ -1,6 +1,6 @@
 pkgbase = tidal-hifi-appimage
 	pkgdesc = The web version of Tidal running in electron with hifi support thanks to widevine
-	pkgver = 6.0.1
+	pkgver = 6.1.0
 	pkgrel = 1
 	url = https://github.com/Mastermindzh/tidal-hifi
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = tidal-hifi-appimage
 	depends = libxss
 	depends = nss
 	depends = gtk3
-	noextract = tidal-hifi-6.0.1.AppImage
+	noextract = tidal-hifi-6.1.0.AppImage
 	options = !strip
-	source = tidal-hifi-6.0.1.AppImage::https://github.com/Mastermindzh/tidal-hifi/releases/download/6.0.1/tidal-hifi-6.0.1.AppImage
+	source = tidal-hifi-6.1.0.AppImage::https://github.com/Mastermindzh/tidal-hifi/releases/download/6.1.0/tidal-hifi-6.1.0.AppImage
 	source = tidal-hifi.desktop
 	source = icon.png
-	sha256sums = 2a263192cbcad394c3194eb27adc32d404622fccda8b3240ab1ab1e2f783c155
+	sha256sums = 4a378484bac6270b20b091103200c633f943585e246f6895e71bb2344919f07b
 	sha256sums = 968b4218f6507746eb0c0a11e9ec4d53b2b4ac36a0c4bd8b89b505a27de8fa09
 	sha256sums = f06db681e02d8a82f1fdccbb9393e1ff42e12b8528f5eef787fda88b848449f3
 
