@@ -2,7 +2,7 @@
 
 pkgname=flashmq
 pkgver=1.25.0
-pkgrel=1
+pkgrel=3
 pkgdesc="FlashMQ is a light-weight MQTT broker/server, designed to take good advantage of multi-CPU environments"
 arch=($CARCH)
 url="https://github.com/halfgaar/FlashMQ"
@@ -23,7 +23,7 @@ makedepends=(
     docbook2x
     libxslt
 )
-backup=()
+backup=('etc/flashmq/flashmq.conf')
 options=('!strip' '!emptydirs')
 #install=${pkgname}.install
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
