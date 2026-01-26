@@ -1,13 +1,12 @@
 pkgbase = android-x86-64-unixodbc
 	pkgdesc = ODBC is an open specification for providing application developers with a predictable API with which to access Data Sources (Android, x86-64)
 	pkgver = 2.3.14
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.unixodbc.org/
 	arch = any
 	groups = android-unixodbc
 	license = GPL2
 	license = LGPL2.1
-	depends = android-x86-64-readline
 	depends = android-x86-64-libltdl
 	options = !strip
 	options = !buildflags
