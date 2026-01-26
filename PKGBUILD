@@ -2,12 +2,12 @@
 _pkgname="letta-code"
 pkgname="$_pkgname-bin"
 pkgver=0.13.11
-pkgrel=1
+pkgrel=2
 pkgdesc="The memory-first coding agent"
 arch=('x86_64' 'aarch64')
 url="https://github.com/letta-ai/letta-code"
 license=('Apache-2.0')
-depends=('nodejs' 'org.freedesktop.secrets')
+depends=('nodejs' 'org.freedesktop.secrets' 'libvips')
 conflicts=(
     "$_pkgname"
     # "$_pkgname-bin"

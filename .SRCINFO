@@ -1,13 +1,14 @@
 pkgbase = letta-code-bin
 	pkgdesc = The memory-first coding agent
 	pkgver = 0.13.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/letta-ai/letta-code
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	depends = nodejs
 	depends = org.freedesktop.secrets
+	depends = libvips
 	conflicts = letta-code
 	conflicts = letta-code-git
 	options = !strip
