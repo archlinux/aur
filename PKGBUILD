@@ -1,6 +1,6 @@
 # Maintainer: Mojahid <mojahid8238@gmail.com>
 pkgname=rataplay
-pkgver=1.2.0
+pkgver=1.2
 pkgrel=1
 pkgdesc="A high-performance Rust TUI for YouTube playback and management (Binary Release)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('rataplay-git')
 source=("rataplay::${url}/releases/download/v${pkgver}/rataplay"
 	"LICENSE::${url}/raw/v${pkgver}/LICENSE")
 #checksums for binary 
-sha256sums=('0ffffe843be013cced6c76835ab087beb00af84c5368b9b5a9568b543f4e8b8d'
+sha256sums=('9f4f39831e970798161f01a8248c12a7333f8931d60fcd6f41b9159ea157878f'
             'e57f1c320b8cf8798a7d2ff83a6f9e06a33a03585f6e065fea97f1d86db84052')
 
 package() {
