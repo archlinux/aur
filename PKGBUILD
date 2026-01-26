@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fylepad-bin
-pkgver=2.3.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="a notepad with powerful rich-text editing, built with Vue & Tauri (Rust).(Prebuilt version)"
 arch=('x86_64')
@@ -12,14 +12,13 @@ conflicts=("${pkgname%-bin}")
 depends=(
     'gtk3'
     'gdk-pixbuf2'
-    'webkit2gtk'
-    'libsoup'
+    'webkit2gtk-4.1'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/app-v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/imrofayel/fylepad/app-v${pkgver}/LICENSE"
 )
-sha256sums=('b2384247f618d9f9cec38180cfb685586da9dde8a4a019fbf13f8db195e73728'
+sha256sums=('c4b4b07d7be3a1b7702153c261891a22e1ba44b96f76aa18c53a18b41cb89fe0'
             '9f744f8fc618bb8f55a2ba34dbcc67c2bc71d4485bcd1ae83703dc69ff9ea99d')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
