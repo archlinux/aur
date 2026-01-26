@@ -8,21 +8,54 @@
 _Name="oneTBB"
 _name="${_Name,,}"
 pkgname="lib32-${_name}"
-pkgver=2022.1.0
+pkgver=2022.3.0
 pkgrel=1
 pkgdesc="oneAPI Threading Building Blocks - a high level abstract threading library (32-bit)"
-arch=('x86_64')
+arch=(
+  'x86_64'
+)
 url="https://uxlfoundation.github.io/oneTBB/"
 _url="https://github.com/uxlfoundation/${_Name}"
-license=('Apache-2.0')
-depends=('lib32-gcc-libs' 'lib32-glibc' 'lib32-hwloc' "${_name}>=${pkgver}")
-makedepends=('cmake>=3.5')
-provides=("lib32-intel-tbb=${pkgver}" "lib32-tbb=${pkgver}" 'libtbb'{,bind_2_5,malloc{,_proxy}}'.so')
-conflicts=('lib32-intel-tbb' 'lib32-tbb')
-replaces=('lib32-intel-tbb' 'lib32-tbb')
-_pkgsrc="${_Name}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('7582748f7d0e0ab46ea6ee7771dfaf7fc08ca7ab7f274fb3373eae0e3411aaafbac192ece15008d9a3d9e8566f8737f96f3f4b5ccf11449ac089d5cd9ebb9eab')
+license=(
+  'Apache-2.0'
+)
+depends=(
+  "${_name}>=${pkgver}"
+  'lib32-gcc-libs'
+  'lib32-glibc'
+  'lib32-hwloc'
+)
+makedepends=(
+  'cmake>=3.5'
+)
+provides=(
+  "lib32-intel-tbb=${pkgver}"
+  "lib32-tbb=${pkgver}"
+  'libtbb'{,bind_2_5,malloc{,_proxy}}'.so'
+)
+conflicts=(
+  'lib32-intel-tbb'
+  'lib32-tbb'
+)
+replaces=(
+  'lib32-intel-tbb'
+  'lib32-tbb'
+)
+_pkgsrc="${_url##*/}-${pkgver}"
+source=(
+  "${_url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
+  '010-onetbb-fix-linkage-of-test-malloc-pure-c.patch'
+)
+sha512sums=('fdc50589785b1949ca1dd4429bbcedb180be4b8966da5243ddd1f8e9f97310dd603681e0bb83c1d6c2d3e27932f577ef6739e4e82f3c54af147f4d6d906b39f1'
+            '155dca8391571f8790e77de4f6b76491e07c982b87826fbca8ab084a3f8786e55bf1fb64331fa3e9704dbf8c9c6f94547533b47845bdb50bf7f33a0294a3cd2b')
+
+prepare() {
+  cd "${srcdir}/${_pkgsrc}"
+  # https://github.com/uxlfoundation/oneTBB/issues/1735
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/onetbb/-/merge_requests/2
+  patch -Np1 -i "${srcdir}/010-onetbb-fix-linkage-of-test-malloc-pure-c.patch"
+}
+
 
 build() {
   export CFLAGS+=" -m32"
@@ -31,27 +64,25 @@ build() {
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   local cmake_options=(
     -G 'Unix Makefiles'
-    -B "${_pkgsrc}/build"
-    -S "${_pkgsrc}"
-    -Wno-dev
-    -DCMAKE_BUILD_TYPE:STRING='None'
-    -DCMAKE_INSTALL_PREFIX:PATH='/usr'
-    -DCMAKE_INSTALL_LIBDIR='lib32'
-    -DTBB_STRICT:BOOL=OFF
-    -DTBB4PY_BUILD:BOOL=OFF
+    -W no-dev
+    -D CMAKE_BUILD_TYPE:STRING='None'
+    -D CMAKE_INSTALL_PREFIX:PATH='/usr'
+    -D CMAKE_INSTALL_LIBDIR:PATH='lib32'
+    -D TBB_STRICT:BOOL=OFF
+    -D TBB4PY_BUILD:BOOL=OFF
   )
   
   cd "${srcdir}"
-  cmake "${cmake_options[@]}"
+  cmake -B "${_pkgsrc}/build" -S "${_pkgsrc}" "${cmake_options[@]}"
   cmake --build "${_pkgsrc}/build"
 }
 
 check() {
-  local excluded_tests="test_partitioner"
+  local excluded_tests="test_partitioner" # hangs on build server
   local ctest_flags=(
     --test-dir "${_pkgsrc}/build"
     --output-on-failure
-    --parallel $(nproc)
+    --parallel "$(nproc)"
     --exclude-regex "${excluded_tests}"
   )
 
