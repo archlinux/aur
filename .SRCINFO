@@ -1,6 +1,6 @@
 pkgbase = ideamaker
 	pkgdesc = Fast and user friendly 3D slicer for FDM printers
-	pkgver = 5.2.4
+	pkgver = 5.3.2
 	pkgrel = 1
 	url = https://www.raise3d.com/pages/ideamaker
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = ideamaker
 	depends = mesa-libgl
 	depends = desktop-file-utils
 	depends = libxcrypt-compat
-	source_x86_64 = https://downcdn.raise3d.com/ideamaker/release/5.2.4/ideaMaker_5.2.4.8581-ubuntu_amd64.deb
-	sha256sums_x86_64 = cf10a476495d5ad00df7b98245b425ae8b81281409ea56c6f4b76f359e681604
+	source_x86_64 = https://downcdn.raise3d.com/ideamaker/release/5.3.2/ideaMaker_5.3.2.8640-ubuntu_amd64.deb
+	sha256sums_x86_64 = 59988618d849e61fe4c74c20bee479cbc07387bd30eaedfa96503d3883f851fe
 
 pkgname = ideamaker
