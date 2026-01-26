@@ -7,6 +7,6 @@ pkgbase = scarlett2-firmware
 	arch = any
 	license = custom:Focusrite
 	source = scarlett2-firmware-1.0.tar.gz::https://github.com/geoffreybennett/scarlett2-firmware/archive/refs/tags/1.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = c9c31dd97b5d615ea75d71e57662e927f2f8ab460238143637a462f89f80fa33
 
 pkgname = scarlett2-firmware
