@@ -1,8 +1,8 @@
 # Maintainer: Joerg Weislogel <mutoroglin at posteo dot de>
 
 pkgname=libcava
-pkgver=0.10.6
-pkgrel=2
+pkgver=0.10.7
+pkgrel=1
 pkgdesc='Fork to provide cava as a shared library, e.g. used by waybar. Cava is not provided as executable.'
 arch=('x86_64')
 url='https://github.com/LukashonakV/cava'
@@ -26,23 +26,14 @@ makedepends=(
     'autoconf-archive'
 )
 source=(
-    libcava-0.10.6-2.patch
-    "$pkgname-$pkgver.tar.gz::https://github.com/LukashonakV/cava/archive/$pkgver.tar.gz"
+    "$pkgname-$pkgver.tar.gz::https://github.com/LukashonakV/cava/archive/v$pkgver-beta.tar.gz"
 )
-sha256sums=('f23871d34e6ba080923903735860b99f9db705bdbabca089da06f7ebbf82482a'
-            'e715c4c6a625b8dc063e57e8e81c80e4d1015ec1b98db69a283b2c6770f839f4'
+sha256sums=('8915d7214f2046554c158fe6f2ae518881dfb573e421ea848727be11a5dfa8c4'
 )
 options=(!lto)
 
-prepare() {
-    echo $(pwd)
-    cd "cava-$pkgver"
-
-    patch -p1 -i ../libcava-0.10.6-2.patch
-}
-
 build() {
-    cd "cava-${pkgver}"
+    cd "cava-${pkgver}-beta"
 
     meson setup \
           -Dcava_font=false \
@@ -55,7 +46,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/cava-${pkgver}"
+    cd "${srcdir}/cava-${pkgver}-beta"
 
     DESTDIR="$pkgdir" meson install \
           -C \
