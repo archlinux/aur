@@ -3,7 +3,7 @@
 
 pkgname=zsh-antidote
 _pkgname=antidote
-pkgver=1.10.1
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="the cure to slow zsh plugin management"
 arch=(any)
@@ -14,7 +14,7 @@ install=zsh-antidote.install
 source=(
 	"$_pkgname-$pkgver.tar.gz::https://github.com/mattmc3/$_pkgname/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('b9d80127f78d594f7953cffac1beab73e0093aa00b2f5eaca527bb43d0b872f4')
+sha256sums=('0c095f74fefe67d4262c01661c34775c23a5303fac445f8591018af6e7b39862')
 
 package() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
