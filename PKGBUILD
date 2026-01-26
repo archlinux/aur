@@ -1,7 +1,7 @@
 # Maintainer: James Liu <contact at no-bull dot sh>
 
 pkgname=reflector-rs
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Retrieve and filter the latest Arch Linux mirror list (Rust implementation)'
 arch=('x86_64')
@@ -13,11 +13,11 @@ depends=('openssl')
 makedepends=('cargo' 'git' 'rust' 'gzip')
 backup=('etc/xdg/reflector/reflector.conf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('7071e7c2de7c7b441d919e738c6cd977f1b11c065fb497b99c4f480a0809fc7a')
+sha256sums=('ef1db14c3b52e7e9c68b9e10d8457a45762771d6a0f7cf837f5fcad9143ba29a')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  cargo fetch --offline --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
