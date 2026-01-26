@@ -1,0 +1,31 @@
+_dkms_pkg="mt76-mt7925"
+_dkms_ver="1.4.0"
+
+post_install() {
+    dkms add "${_dkms_pkg}/${_dkms_ver}"
+    dkms build "${_dkms_pkg}/${_dkms_ver}"
+    dkms install "${_dkms_pkg}/${_dkms_ver}"
+}
+
+pre_upgrade() {
+    # Remove all installed versions before upgrading
+    # Note: pacman .install scripts don't receive old version as argument,
+    # so we query dkms status to find installed versions
+    local installed_versions
+    installed_versions=$(dkms status "${_dkms_pkg}" 2>/dev/null | sed -n "s|^${_dkms_pkg}/\([^,]*\),.*|\1|p" | sort -u)
+    for ver in $installed_versions; do
+        dkms remove "${_dkms_pkg}/${ver}" --all 2>/dev/null || true
+    done
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    dkms remove "${_dkms_pkg}/${_dkms_ver}" --all 2>/dev/null || true
+}
+
+post_remove() {
+    depmod -a
+}
