@@ -27,7 +27,8 @@ prepare() {
 
   cd "$pkgname"
   git submodule init
-  git config submodule.datasets/modules/spdx-license-list-data.url "$srcdir/license-list-data"
+  git config submodule.datasets/modules/spdx-license-list-data.url \
+    "$srcdir/license-list-data"
   git -c protocol.file.allow=always submodule update
 }
 
