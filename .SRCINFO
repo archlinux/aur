@@ -1,7 +1,7 @@
 pkgbase = flatpost-bin
 	pkgdesc = Desktop Environment agnostic flatpak-only shop gui
-	pkgver = 1.1.1
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/GloriousEggroll/flatpost
 	arch = any
 	license = BSD-2-Clause AND GPL-3.0-or-later
@@ -18,7 +18,7 @@ pkgbase = flatpost-bin
 	depends = xorg-xhost
 	provides = flatpost
 	conflicts = flatpost
-	source = https://github.com/GloriousEggroll/flatpost/releases/download/1.1.1/flatpost-1.1.1.fc42.rpm
-	sha256sums = 28a583a9cf61def49d46eeea14c9d7223c710a59936445b20c4a10190576ed24
+	source = https://github.com/GloriousEggroll/flatpost/releases/download/1.2.0/flatpost-1.2.0.fc43.rpm
+	sha256sums = eac72c87dd9bfa15a1c1d084426a3b498e4e9338be2e8ee1d16014854f00a9ad
 
 pkgname = flatpost-bin
