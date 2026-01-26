@@ -2,8 +2,8 @@
 
 _pkgname=GX_ISPTool
 pkgname=gx-isptool-git
-pkgver=r20.dac5b44
-pkgrel=6
+pkgver=r22.97f37f9
+pkgrel=1
 pkgdesc="GX (感芯科技) 芯片下载工具，用于连接USB给GX芯片下载固件/调试固件，持续开发中，欢迎支持~"
 arch=($CARCH)
 url="https://gitee.com/gxchip/${_pkgname}"
@@ -14,6 +14,7 @@ replaces=()
 depends=(
     glibc
     gcc-libs
+    hicolor-icon-theme
     hidapi
     # fonts depends
     #     noto-fonts-cjk
@@ -41,6 +42,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${pkgname}"
+    git cherry-pick -n badf1cfbd4d1c06e8be656f84c1168eecfd49fe8
     qmake ${_pkgname}.pro
     make
 }
