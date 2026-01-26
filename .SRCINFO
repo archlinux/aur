@@ -1,7 +1,7 @@
 pkgbase = apache-arrow-glib
 	pkgdesc = GLib bindings for Apache Arrow
-	pkgver = 22.0.0
-	pkgrel = 2
+	pkgver = 23.0.0
+	pkgrel = 1
 	url = https://arrow.apache.org/
 	arch = x86_64
 	license = Apache-2.0
@@ -13,7 +13,7 @@ pkgbase = apache-arrow-glib
 	depends = gobject-introspection
 	provides = arrow-c-glib
 	conflicts = arrow-c-glib
-	source = https://github.com/apache/arrow/archive/refs/tags/apache-arrow-22.0.0.zip
-	sha256sums = 9c854fa75c473c8c45b291031a7d16f13d4befcf93580450bdd66d7a675a4a5c
+	source = https://github.com/apache/arrow/archive/refs/tags/apache-arrow-23.0.0.zip
+	sha256sums = ae0cb29bdb461fa39b77ef444ab7ba364cee208a6862cb2a7757614f3b9c8ee1
 
 pkgname = apache-arrow-glib

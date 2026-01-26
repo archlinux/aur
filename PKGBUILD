@@ -1,8 +1,8 @@
 # Maintainer: Anton Maminov <anton.maminov@gmail.com>
 
 pkgname=apache-arrow-glib
-pkgver=22.0.0
-pkgrel=2
+pkgver=23.0.0
+pkgrel=1
 pkgdesc="GLib bindings for Apache Arrow"
 arch=('x86_64')
 url="https://arrow.apache.org/"
@@ -15,7 +15,7 @@ provides=('arrow-c-glib')
 conflicts=('arrow-c-glib')
 
 source=("https://github.com/apache/arrow/archive/refs/tags/apache-arrow-${pkgver}.zip")
-sha256sums=('9c854fa75c473c8c45b291031a7d16f13d4befcf93580450bdd66d7a675a4a5c')
+sha256sums=('ae0cb29bdb461fa39b77ef444ab7ba364cee208a6862cb2a7757614f3b9c8ee1')
 
 prepare() {
   unzip -o "apache-arrow-${pkgver}.zip"
