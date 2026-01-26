@@ -1,6 +1,6 @@
 pkgbase = beancount-language-server
 	pkgdesc = A Language Server Protocol (LSP) for beancount files
-	pkgver = 1.7.0
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://github.com/polarmutex/beancount-language-server
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = beancount-language-server
 	depends = beancount
 	options = !debug
 	options = !lto
-	source = beancount-language-server-1.7.0.tar.gz::https://github.com/polarmutex/beancount-language-server/archive/refs/tags/1.7.0.tar.gz
-	sha512sums = 429303927dcf4b76d353d42bed3e613526b4dced8a301df2ea3617b1a6d88a5e2b994404217ca4345e430ac3cf50b1ad2bcbd68db88159c0a91e2c2e1fa5a65d
+	source = beancount-language-server-1.8.1.tar.gz::https://github.com/polarmutex/beancount-language-server/archive/refs/tags/1.8.1.tar.gz
+	sha512sums = ca9cbef4652fe1d2bff93bb367c8f5414a40d21ab8f05efc4db01879f31e441dd23cbeb1ace1bc2597ff09d471751aa657b2c21ab9caa89d75b7475b40f276f3
 
 pkgname = beancount-language-server
