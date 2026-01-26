@@ -1,7 +1,7 @@
 # Maintainer: Kotsasmin <kotsasmin@gmail.com>
 pkgname=modiva-launcher-bin
 pkgver=1.4.0
-pkgrel=4
+pkgrel=5
 pkgdesc="The official Modiva launcher"
 arch=('x86_64')
 url="https://modiva-launcher.xyz"
@@ -21,19 +21,11 @@ package() {
     
     install -m755 "modiva-launcher-${pkgver}.AppImage" "${pkgdir}/opt/${pkgname}/modiva-launcher.AppImage"
     
-    # --- CHANGED: Create a wrapper script instead of a symlink ---
-    # This sets LD_PRELOAD to force the app to use the system's wayland libraries
-    cat > "${pkgdir}/usr/bin/modiva-launcher" <<EOF
-#!/bin/sh
-export LD_PRELOAD="/usr/lib/libwayland-client.so /usr/lib/libwayland-egl.so"
-exec /opt/${pkgname}/modiva-launcher.AppImage "\$@"
-EOF
-    
-    # Make the wrapper executable
-    chmod 755 "${pkgdir}/usr/bin/modiva-launcher"
-    # -------------------------------------------------------------
+    # Symlink to /usr/bin
+    ln -s "/opt/${pkgname}/modiva-launcher.AppImage" "${pkgdir}/usr/bin/modiva-launcher"
 
     # Extract desktop file and icon
+    # Note: This is a common way to get resources from AppImage, but might fail if --appimage-extract fails. 
     install -dm755 "${pkgdir}/usr/share/applications"
     cat > "${pkgdir}/usr/share/applications/modiva-launcher.desktop" <<EOF
 [Desktop Entry]
