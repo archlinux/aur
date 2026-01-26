@@ -1,6 +1,6 @@
 # Maintainer: Nicolas Szabo <nsz32@github>
 pkgname=bird-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Desktop redistributable isolated browser - turns websites into standalone apps"
 arch=('x86_64')
