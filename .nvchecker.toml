@@ -1,0 +1,4 @@
+[lib32-jsoncpp]
+source = "archpkg"
+archpkg = "jsoncpp"
+strip_release = true
