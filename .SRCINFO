@@ -1,13 +1,13 @@
 pkgbase = ytdl-sub-bin
 	pkgdesc = Automate downloading and metadata generation with yt-dlp
-	pkgver = 2026.01.23.post1
+	pkgver = 2026.01.26
 	pkgrel = 1
 	url = https://github.com/jmbannon/ytdl-sub
 	arch = x86_64
 	license = GPL3
 	depends = libxcrypt-compat
 	depends = ffmpeg
-	source = ytdl-sub-2026.01.23.post1-1::https://github.com/jmbannon/ytdl-sub/releases/download/2026.01.23.post1/ytdl-sub
-	sha512sums = 2b3e400ff85585395882407520f72291a938d07a8ef91c02c382f17d8716ed4361a4a37b0dfd9496328401f6b509cee22413bc905572df0e5569161ec02bd80c
+	source = ytdl-sub-2026.01.26-1::https://github.com/jmbannon/ytdl-sub/releases/download/2026.01.26/ytdl-sub
+	sha512sums = d80e068b45c24a16a6afba7fa0506d0733fcc29af895265a7aa31cb428ba9a02e4a8dfa6445013a8ca5a798ec181a7e94a0f3c4f3386a7e1164f26ceb6171fd3
 
 pkgname = ytdl-sub-bin
