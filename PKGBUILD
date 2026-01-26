@@ -41,6 +41,7 @@ build() {
         -B build \
         -DCMAKE_POLICY_DEFAULT_CMP0057=NEW \
         -DGRAPHITE2_COMPARE_RENDERER=OFF \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -Wno-dev
     make -C build $MAKEFLAGS
 }
