@@ -1,0 +1,10 @@
+/src
+/pkg
+*.tar.gz
+*.tar.xz
+*.zip
+*.rar
+*.7z
+
+# Compile output
+*.pkg.tar.zst

@@ -1,0 +1,14 @@
+pkgbase = atomrootfsinit
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/NeroReflex/atomrootfsinit
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPLv2
+	makedepends = cargo
+	source = https://github.com/NeroReflex/AtomButter/archive/refs/tags/0.7.0.tar.gz
+	b2sums = 172be78a566e680205fb3acc38e03c7e4959053045c0db54d82eae65b863ebf5878682ec5b561e233dae7ea121eb4b388ddf64b4fd3f72ddc962b7267cc11c1a
+
+pkgname = atomrootfsinit
