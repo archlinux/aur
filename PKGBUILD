@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('alsa-lib' 'openssl')
 makedepends=('make' 'gcc')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('9f2c3329124b4cb8c49ddf838a6b4549f844172ba3d315a8b16ff5083fdd411c')
 
 build() {
   cd "$pkgname-$pkgver"
