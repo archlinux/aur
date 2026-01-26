@@ -30,17 +30,9 @@ optdepends=('apache: Web integration'
 _archive_name=tl-${pkgver}-server
 
 source=("${_archive_name}.zip::https://www.cendio.com/downloads/server/tl-${pkgver}-server.zip"
-        'LICENSE'
-        'tlwebaccess.service'
-        'tlwebadm.service'
-        'vsmagent.service'
-        'vsmserver.service')
+	'LICENSE')
 sha256sums=('767fc47c46857b37ad70faefd36342ae8ddd4d44d8a1c30002340c4d7d517c56'
-            '179583f1e2f61a9a75a99bbe8bb988e35a0216fc2ddcbd4c85ad8bdc70c3149e'
-            '3d59ff1c0db479fc4266d67916c9f64050e061b874ccca79a2ac3894f4ba6e25'
-            'ff22ea3833eedb4338eeab6d5ce10fa823b9c78ebab1d47152c073075a6ddeb1'
-            '43db698879addc8fc7d54d554a50cabcdc753fbb3d95cf890c0178b4c3db3254'
-            '26bcc6f900078c80f30f5092ef8d6b7215dd67c90dcae3cc274a5db463b9c5b9')
+	    '179583f1e2f61a9a75a99bbe8bb988e35a0216fc2ddcbd4c85ad8bdc70c3149e')
 
 _extract_dir="extract"
 
@@ -77,8 +69,4 @@ package()
     
     cd "$srcdir"
     install -Dm644 LICENSE             "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-    install -Dm644 tlwebaccess.service "$pkgdir"/usr/lib/systemd/system/tlwebaccess.service
-    install -Dm644 tlwebadm.service    "$pkgdir"/usr/lib/systemd/system/tlwebadm.service
-    install -Dm644 vsmagent.service    "$pkgdir"/usr/lib/systemd/system/vsmagent.service
-    install -Dm644 vsmserver.service   "$pkgdir"/usr/lib/systemd/system/vsmserver.service
 }
