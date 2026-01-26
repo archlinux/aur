@@ -1,4 +1,4 @@
-# Maintainer: LinuxLover471 <linuxlover471 at proton dot me>
+# Maintainer: asyync1024 <asyync1024 at proton dot me>
 # Contributor: Maxime Gauduin <alucryd at archlinux dot org>
 # Contributor: yubimusubi <possum plus aur at possum dot cc>
 
