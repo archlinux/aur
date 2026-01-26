@@ -1,0 +1,10 @@
+pkg/
+src/
+.SRCINFO
+*.pkg.tar.zst
+
+lxqt/
+catppuccin-frappe.zip
+catppuccin-latte.zip
+catppuccin-macchiato.zip
+catppuccin-mocha.zip
