@@ -1,6 +1,6 @@
 # Maintainer: Gabriel Oliveira da Silva <glcbofs@proton.me>
 pkgname=gittorrent
-pkgver=3.3.9
+pkgver=3.4.5
 pkgrel=1
 pkgdesc="a CLI version control system with a CI/CD pipeline"
 arch=("x86_64")
@@ -8,7 +8,7 @@ url="https://projectgrid.net/portfolio/gittorrent"
 license=("0BSD")
 install="advice.install"
 source=("${pkgname}-${pkgver}.tar.xz::https://projectgrid.net/archive/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('73cb085a678b5ee7fa57bbc823140b56372ed0ea4be3b840a9accd28a53e9159')
+sha256sums=('662d223b0052699438e1e0cddd53f22109402a4474ea2a790168f382e66e6bb1')
 
 depends=('libssh2' 'openssl' 'zlib' 'gcc-libs')
 makedepends=('cargo' 'pkgconf' 'cmake')
