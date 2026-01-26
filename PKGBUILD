@@ -15,20 +15,20 @@ depends=(
   glibc
   gtk3
   hicolor-icon-theme
-  libappindicator-gtk3
   libevdev
-  librsvg
   libsoup3
   openssl
   vulkan-icd-loader
   webkit2gtk-4.1
 )
 makedepends=(
+  appmenu-gtk-module
   bun
   cargo
   clang
   cmake
   git
+  nodejs
   pkgconf
   shaderc
   vulkan-headers
@@ -46,21 +46,14 @@ conflicts=("$pkgname-bin")
 sha256sums=('787ff1d22d99bbfbde88f481c06cea9c19c29a8136d776a8e496d80c70002d6a'
             'a0b1b93e21d18adcb6d5f58e3c818bd797cae57b865ae0d6769298876e7103dc')
 
-prepare() {
-  cd "${pkgname^}-$pkgver/src-tauri"
-  export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target $(rustc --print host-tuple)
-}
-
 build() {
   cd "${pkgname^}-$pkgver"
 
   bun install
-  bun run build
-  cd src-tauri
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
+  # Use the appimage bundle, but ignore error
+  # about building the appimage, we only want the
+  # target binary and ressources
+  bun tauri build --bundles appimage || true
 }
 
 package() {
