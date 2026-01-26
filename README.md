@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/Puchaczov/Musoq/graphs/code-frequency)
 [![Nuget](https://img.shields.io/badge/Nuget%3F-yes-green.svg)](https://www.nuget.org/packages?q=musoq)
-![Tests](https://raw.githubusercontent.com/puchaczov/musoq/master/badges/tests-badge.svg)
+![Tests](https://raw.githubusercontent.com/puchaczov/musoq/master/docs/assets/tests-badge.svg)
 
 **Stop writing throwaway scripts.** Use SQL instead.
 

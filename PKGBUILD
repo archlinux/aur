@@ -3,7 +3,7 @@
 pkgname=musoq
 _pkgname=Musoq
 _pkgauthor=Puchaczov
-pkgver=0.24.5
+pkgver=0.25.0
 pkgrel=1
 pkgdesc="SQL Swiss Army Knife - Engine for Diverse Data Sources"
 arch=('x86_64' 'aarch64')
@@ -19,10 +19,10 @@ source=("README.md"
         "musoq.service")
 source_x86_64=("${_pkgname}_${pkgver}_${arch[0]}.zip::${_urlcli}/${_pkgname}-linux-x64.zip")
 source_aarch64=("${_pkgname}_${pkgver}_${arch[1]}.zip::${_urlcli}/${_pkgname}-linux-arm64.zip")
-sha256sums=('aea3a93ba75d67512eddedbd76db41b0d3c8c49687ecae199d21fa775946660b'
+sha256sums=('ffb33a248576e3800b40952a2224833b0fcc5a714b967a5827c133815f53db34'
             'b3af2729a26bb0cfbdbeef32755e76b5b7f7d65a02d4b9b8fe708f4f096f3ccc')
-sha256sums_x86_64=('08f4fdb3d3ca76a2ed0d3151e29f6138f4531da6b4a37b368641a5f4f666ee19')
-sha256sums_aarch64=('9762f2c300717eaca63ae837175478cad0860a21caac41f7cbad06e58687808f')
+sha256sums_x86_64=('fb6a7d6fe812c8f9fbe2c6500e0f4821e82a92dd07aab911c71c273ffc95e7ea')
+sha256sums_aarch64=('3024af027b8bd350736e65da1a92d496de5786869a25c169170389295f370a66')
 
 
 package() {
