@@ -1,6 +1,6 @@
 # Maintainer: Vrn <eversonsilva2087@proton.me>
 pkgname=hytale-mod-manager
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Gerenciador de Mods CLI moderno, automático e estiloso para Hytale"
 arch=('any')
