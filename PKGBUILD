@@ -13,7 +13,7 @@ sha256sums=('SKIP')
 
 package() {
 
-    cd "$srcdir/ember-${pkgver}-2" || exit 1
+    cd "$srcdir/ember-${pkgver}-3" || exit 1
 
 
     install -Dm755 bin/emb "$pkgdir/usr/bin/emb"
