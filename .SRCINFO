@@ -1,6 +1,6 @@
 pkgbase = wordpress-studio-git
 	pkgdesc = A free desktop app that helps developers streamline their local WordPress development workflow.(Use system-wide electron)
-	pkgver = 1.6.0.r10.g3fd55cf
+	pkgver = 1.7.0.r2.g2afabd6
 	pkgrel = 1
 	url = https://developer.wordpress.com/studio/
 	arch = any
@@ -10,9 +10,10 @@ pkgbase = wordpress-studio-git
 	makedepends = nvm
 	makedepends = gendesk
 	makedepends = curl
-	depends = electron38
+	makedepends = jq
+	depends = electron39
 	depends = php
-	provides = wordpress-studio=1.6.0
+	provides = wordpress-studio=1.7.0
 	conflicts = wordpress-studio
 	options = !strip
 	options = !emptydirs

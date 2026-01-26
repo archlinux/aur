@@ -2,8 +2,8 @@
 pkgname=wordpress-studio-git
 _appname=Studio
 _pkgname="WordPress ${_appname}"
-pkgver=1.6.0.r10.g3fd55cf
-_electronversion=38
+pkgver=1.7.0.r2.g2afabd6
+_electronversion=39
 _nodeversion=22
 pkgrel=1
 pkgdesc="A free desktop app that helps developers streamline their local WordPress development workflow.(Use system-wide electron)"
@@ -23,6 +23,7 @@ makedepends=(
     'nvm'
     'gendesk'
     'curl'
+    'jq'
 )
 options=(
     '!strip'
@@ -47,8 +48,9 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver="$(grep -m 1 '"electron":' "${srcdir}/${pkgname%-git}.git/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname%-git}.git/package.json" | tr -d '^')
+    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
+    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
     cd "${srcdir}/${pkgname%-git}.git"
