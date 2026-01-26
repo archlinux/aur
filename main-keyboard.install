@@ -1,0 +1,16 @@
+post_install() {
+    echo ""
+    echo "==> MaiN_Keyboard installed!"
+    echo ""
+    echo "==> Um MaiN_Keyboard zu nutzen, füge deinen User zur 'input' Gruppe hinzu:"
+    echo "      sudo usermod -aG input \$USER"
+    echo ""
+    echo "==> Dann ausloggen und wieder einloggen."
+    echo ""
+    echo "==> Starte mit: main-keyboard"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
