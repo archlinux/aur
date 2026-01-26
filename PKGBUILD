@@ -22,9 +22,12 @@ makedepends=(
 )
 _pkgsrc="${url##*/}"
 source=(
-  "${_pkgsrc}::git+${url}.git#tag=v${pkgver}"
+  "${_pkgsrc}::git+${url}.git#tag=v${pkgver}?signed"
 )
 sha256sums=('333a5ac4964444cfe2a4012c92857fe9454a72926331add53a7d638d5b2deb2f')
+validpgpkeys=(
+  '337530DD887FB454C4FC6E7F23B9DBD7FAE54FCD' # Rustam Gilyazov <16064414+rusq@users.noreply.github.com>
+)
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"

@@ -10,7 +10,8 @@ pkgbase = wipemychat
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = wipemychat::git+https://github.com/rusq/wipemychat.git#tag=v1.2.3
+	source = wipemychat::git+https://github.com/rusq/wipemychat.git#tag=v1.2.3?signed
+	validpgpkeys = 337530DD887FB454C4FC6E7F23B9DBD7FAE54FCD
 	sha256sums = 333a5ac4964444cfe2a4012c92857fe9454a72926331add53a7d638d5b2deb2f
 
 pkgname = wipemychat
