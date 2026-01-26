@@ -1,5 +1,5 @@
 pkgname=bricscad-fr_fr
-pkgver=26.1.07
+pkgver=26.1.08
 pkgrel=1
 pkgdesc="Logiciel de CAO DWG"
 arch=("x86_64")
@@ -10,7 +10,7 @@ makedepends=(python-requests python-progressbar python-typing_extensions)
 provides=('bricscad')
 _lang=fr_FR
 _os=2
-_version=9770
+_version=9881
 
 ### Check rpm dependencies
 #sudo pacman -S rpm-tools
@@ -65,5 +65,6 @@ post_remove() {
 
     if [ -x "`which gtk-update-icon-cache 2>/dev/null`" ] && [ -x /usr/share/icons/gnome/index.theme ]; then gtk-update-icon-cache --force /usr/share/icons/gnome ; fi
 }
+
 md5sums=('aa876a280efbdb2f6fadd95452cf593f'
-         '2273efaee3c6aad236efafe7d7b7a10d')
+         '032de0e287aff0cc50fe02e0f4431417')
