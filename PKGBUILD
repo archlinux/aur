@@ -2,17 +2,17 @@
 
 _pkgbasename=libxvmc
 pkgname=lib32-$_pkgbasename
-pkgver=1.0.14
+pkgver=1.0.15
 pkgrel=1
 pkgdesc="X11 Video Motion Compensation extension library (32-bit)"
 arch=('x86_64')
 url="https://xorg.freedesktop.org/"
-license=('custom')
-depends=('lib32-libxv>=1.0.5' $_pkgbasename)
+license=('MIT')
+depends=('lib32-libxv>=1.0.5' $_pkgbasename 'lib32-libxext' 'lib32-libx11' 'lib32-glibc')
 source=(${url}/releases/individual/lib/libXvMC-${pkgver}.tar.xz{,.sig})
-sha256sums=('e4be9eb6b6bafdbbf81f47f7163047215376e45e2dc786d0ea6181c930725ed9'
+sha256sums=('4f518afde3d7fd435346af7b368d2f73517f3d5f82647c962caf3f7bb8ff7078'
             'SKIP')
-validpgpkeys=('4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E'  # Alan Coopersmith <alan.coopersmith@oracle.com>
+validpgpkeys=('3AB285232C46AE43D8E192F4DAB0F78EA6E7E2D2'  # Alan Coopersmith <alan.coopersmith@oracle.com>
               'C41C985FDCF1E5364576638B687393EE37D128F8'  # Matthieu Herrb <matthieu.herrb@laas.fr>
               '995ED5C8A6138EB0961F18474C09DD83CAAA50B2'  # Adam Jackson <ajax@nwnk.net>
               '3BB639E56F861FA2E86505690FDD682D974CA72A') # Matt Turner <mattst88@gmail.com>

@@ -1,19 +1,22 @@
 pkgbase = lib32-libxvmc
 	pkgdesc = X11 Video Motion Compensation extension library (32-bit)
-	pkgver = 1.0.14
+	pkgver = 1.0.15
 	pkgrel = 1
 	url = https://xorg.freedesktop.org/
 	arch = x86_64
-	license = custom
+	license = MIT
 	depends = lib32-libxv>=1.0.5
 	depends = libxvmc
-	source = https://xorg.freedesktop.org//releases/individual/lib/libXvMC-1.0.14.tar.xz
-	source = https://xorg.freedesktop.org//releases/individual/lib/libXvMC-1.0.14.tar.xz.sig
-	validpgpkeys = 4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E
+	depends = lib32-libxext
+	depends = lib32-libx11
+	depends = lib32-glibc
+	source = https://xorg.freedesktop.org//releases/individual/lib/libXvMC-1.0.15.tar.xz
+	source = https://xorg.freedesktop.org//releases/individual/lib/libXvMC-1.0.15.tar.xz.sig
+	validpgpkeys = 3AB285232C46AE43D8E192F4DAB0F78EA6E7E2D2
 	validpgpkeys = C41C985FDCF1E5364576638B687393EE37D128F8
 	validpgpkeys = 995ED5C8A6138EB0961F18474C09DD83CAAA50B2
 	validpgpkeys = 3BB639E56F861FA2E86505690FDD682D974CA72A
-	sha256sums = e4be9eb6b6bafdbbf81f47f7163047215376e45e2dc786d0ea6181c930725ed9
+	sha256sums = 4f518afde3d7fd435346af7b368d2f73517f3d5f82647c962caf3f7bb8ff7078
 	sha256sums = SKIP
 
 pkgname = lib32-libxvmc
