@@ -21,14 +21,14 @@ makedepends=(
 conflicts=('nvi' 'nvi-multibyte-upstream')
 provides=('nvi')
 
-_COMMIT="957906b0e3bcc0f795cf8c6b7313fcc4ec338784"
+_COMMIT="401bfbf750bb2da400dec870f62cc59c78b8e0fa"
 source=("http://repo.or.cz/nvi.git/snapshot/$_COMMIT.tar.gz")
-sha512sums=('f49ffca6a58669f08ebd11bc141509f190389f74cb1670f30550a40b4d5b7350e144e72daf425682b4d032bcb95a3ec78ce595a9a533eaabda5e5c8d5a780565')
+sha512sums=('d1fffb784d164eaa862326c0e1b0a7e2360350c631ece62bc9ec33e7928c47474ca7329e162556f4b32eb631e08dac09426df65280c45026ac0dac558e544f6b')
 
 # The last official release was 1.81.6, but there have been commits since then.
 # Append timestamp (yyyymmdd) of latest commit.
-pkgver=1.81.6_20241228
-pkgrel=3
+pkgver=1.81.6_20260124
+pkgrel=1
 _COMMIT_HASH="${_COMMIT:0:7}"
 
 build(){
