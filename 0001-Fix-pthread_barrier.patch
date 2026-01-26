@@ -1,0 +1,49 @@
+--- a/src/include/port/pg_pthread.h
++++ b/src/include/port/pg_pthread.h
+@@ -28,13 +28,13 @@
+ 	int			arrived;		/* number of threads that have arrived */
+ 	pthread_mutex_t mutex;
+ 	pthread_cond_t cond;
+-} pthread_barrier_t;
++} pg_pthread_barrier_t;
+ 
+-extern int	pthread_barrier_init(pthread_barrier_t *barrier,
++extern int	pthread_barrier_init(pg_pthread_barrier_t *barrier,
+ 								 const void *attr,
+ 								 int count);
+-extern int	pthread_barrier_wait(pthread_barrier_t *barrier);
+-extern int	pthread_barrier_destroy(pthread_barrier_t *barrier);
++extern int	pthread_barrier_wait(pg_pthread_barrier_t *barrier);
++extern int	pthread_barrier_destroy(pg_pthread_barrier_t *barrier);
+ 
+ #endif
+ 
+--- a/src/port/pthread_barrier_wait.c
++++ b/src/port/pthread_barrier_wait.c
+@@ -16,7 +16,7 @@
+ #include "port/pg_pthread.h"
+ 
+ int
+-pthread_barrier_init(pthread_barrier_t *barrier, const void *attr, int count)
++pthread_barrier_init(pg_pthread_barrier_t *barrier, const void *attr, int count)
+ {
+ 	int			error;
+ 
+@@ -35,7 +35,7 @@
+ }
+ 
+ int
+-pthread_barrier_wait(pthread_barrier_t *barrier)
++pthread_barrier_wait(pg_pthread_barrier_t *barrier)
+ {
+ 	bool		initial_sense;
+ 
+@@ -69,7 +69,7 @@
+ }
+ 
+ int
+-pthread_barrier_destroy(pthread_barrier_t *barrier)
++pthread_barrier_destroy(pg_pthread_barrier_t *barrier)
+ {
+ 	pthread_cond_destroy(&barrier->cond);
+ 	pthread_mutex_destroy(&barrier->mutex);
