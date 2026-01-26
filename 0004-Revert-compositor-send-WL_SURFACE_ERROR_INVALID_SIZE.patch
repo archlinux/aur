@@ -1,8 +1,8 @@
-From b56c6c14cc3fb2ade3890225b7e91e5cd5f29d74 Mon Sep 17 00:00:00 2001
+From 22952b8f4daed0a5e11be83c2d102b5815855344 Mon Sep 17 00:00:00 2001
 From: q234rty <q23456yuiop@gmail.com>
 Date: Sat, 27 Jan 2024 21:06:42 +0800
-Subject: [PATCH] Revert "compositor: send WL_SURFACE_ERROR_INVALID_SIZE for
- non-cursor surfaces"
+Subject: [PATCH 4/4] Revert "compositor: send WL_SURFACE_ERROR_INVALID_SIZE
+ for non-cursor surfaces"
 
 This reverts commit 18595000f3a21502fd60bf213122859cc348f9af.
 ---
@@ -41,5 +41,5 @@ index 6b31ab85..26d4d942 100644
  
  	if (pending->viewport.has_dst) {
 -- 
-2.51.1
+2.52.0
 
