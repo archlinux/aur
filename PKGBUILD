@@ -2,7 +2,7 @@
 # Contributor: Benjamin Schäfer <b-schaefer at posteo dot de>
 # Contributor: Lorenzo Giuliani <lorenzo at giuliani dot me>
 pkgname=pgmanage-bin
-pkgver=1.4
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A modern multi-platform Postgres-centric database client/administration tool.(Prebuilt version)"
 arch=('x86_64')
@@ -31,8 +31,8 @@ source=(
 	"LICENSE-${pkgver}::https://raw.githubusercontent.com/commandprompt/pgmanage/${pkgver}-release/LICENSE"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('fffd9215fb7dda18b8234a6e41187a55a61be430b41bfc9f313b7bb98904f9d4'
-            'a62f1391fdfdce658169890e40e04d788c1386aade44c5271e3cae73d63e8dff'
+sha256sums=('0eaebf40d9fc5504145d95dbe71996a0d39af56f1563e06e826fb5f62fd10b68'
+            '2d33c37fcdb0f809daa69b5b8e763776310cfaaef75c82ed7ab4a2084260bb1f'
             '7fc2b726adb41bfc30899035594c00ac4694e5cd37dd49e355d897b85f9fe355')
 prepare() {
     sed -i -e "

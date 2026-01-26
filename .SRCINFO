@@ -1,6 +1,6 @@
 pkgbase = pgmanage-bin
 	pkgdesc = A modern multi-platform Postgres-centric database client/administration tool.(Prebuilt version)
-	pkgver = 1.4
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://commandprompt.com/
 	arch = x86_64
@@ -20,11 +20,11 @@ pkgbase = pgmanage-bin
 	depends = mesa
 	depends = libdrm
 	depends = libcups
-	source = pgmanage-1.4-x86_64.AppImage::https://github.com/commandprompt/pgmanage/releases/download/1.4-release/pgmanage-1.4.AppImage
-	source = LICENSE-1.4::https://raw.githubusercontent.com/commandprompt/pgmanage/1.4-release/LICENSE
+	source = pgmanage-1.4.1-x86_64.AppImage::https://github.com/commandprompt/pgmanage/releases/download/1.4.1-release/pgmanage-1.4.1.AppImage
+	source = LICENSE-1.4.1::https://raw.githubusercontent.com/commandprompt/pgmanage/1.4.1-release/LICENSE
 	source = pgmanage.sh
-	sha256sums = fffd9215fb7dda18b8234a6e41187a55a61be430b41bfc9f313b7bb98904f9d4
-	sha256sums = a62f1391fdfdce658169890e40e04d788c1386aade44c5271e3cae73d63e8dff
+	sha256sums = 0eaebf40d9fc5504145d95dbe71996a0d39af56f1563e06e826fb5f62fd10b68
+	sha256sums = 2d33c37fcdb0f809daa69b5b8e763776310cfaaef75c82ed7ab4a2084260bb1f
 	sha256sums = 7fc2b726adb41bfc30899035594c00ac4694e5cd37dd49e355d897b85f9fe355
 
 pkgname = pgmanage-bin
