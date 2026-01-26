@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=heidisql-qt6-git
-pkgver=r451.3f9e867d
-pkgrel=3
+pkgver=r460.c8c3b23e
+pkgrel=2
 pkgdesc="A lightweight GUI for managing MySQL, PostgreSQL, Microsoft SQL and SQLite databases (Qt6)"
 arch=(x86_64)
 url="http://www.heidisql.com/"
@@ -16,7 +16,7 @@ source=(
   "lazarus-packages.py"
 )
 sha256sums=('SKIP'
-            '05aa04046bfb5fefd1824e6efd89b1ae9dbf27e09d29c10960c43e2671963fd3')
+            'ab24851adc733798ac05c22b9385e141bd5b654316426b92b3883384b2864a47')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
