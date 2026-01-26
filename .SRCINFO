@@ -1,0 +1,30 @@
+pkgbase = lib32-openxr
+	pkgdesc = An open standard for virtual reality and augmented reality platforms and devices (32-bit)
+	pkgver = 1.1.54
+	pkgrel = 1
+	url = https://www.khronos.org/openxr/
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = lib32-libglvnd
+	makedepends = lib32-mesa
+	makedepends = lib32-libx11
+	makedepends = lib32-libxrandr
+	makedepends = lib32-libxxf86vm
+	makedepends = lib32-vulkan-icd-loader
+	makedepends = lib32-wayland
+	makedepends = python
+	makedepends = vulkan-headers
+	depends = openxr>=1.1.54
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = lib32-jsoncpp
+	source = https://github.com/KhronosGroup/OpenXR-SDK-Source/releases/download/release-1.1.54/OpenXR-SDK-Source-release-1.1.54.tar.gz
+	source = https://github.com/KhronosGroup/OpenXR-SDK-Source/releases/download/release-1.1.54/OpenXR-SDK-Source-release-1.1.54.tar.gz.asc
+	validpgpkeys = 45207B2B1E53E1F2755FF63CC5A2D593A61DBC9D
+	sha256sums = 959be5d4ee500c2426555f335bf7fd5d7fb86754192a1d18fa2a7b3ef7f03005
+	sha256sums = SKIP
+	sha512sums = be99658ff3d27bd8674dceb8b5d50bfbbfaf2f3667a8c38d6afb0cdb2701881c945a4c423ce68e4591cc468a9a499803ffb05a9a610f52a1c47fca97d73e13d8
+	sha512sums = SKIP
+
+pkgname = lib32-openxr

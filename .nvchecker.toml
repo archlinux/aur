@@ -1,0 +1,4 @@
+[lib32-openxr]
+source = "archpkg"
+archpkg = "openxr"
+strip_release = true
