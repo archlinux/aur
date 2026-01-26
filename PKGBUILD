@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scrime
-_pkgver=1.3.5
+_pkgver=1.3.7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=10
+pkgrel=1
 pkgdesc="Analysis of High-Dimensional Categorical Data Such as SNP Data"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -18,8 +18,8 @@ optdepends=(
   r-rsqlite
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('af5e1df2574e2ce52b4a59aadf25eb49')
-b2sums=('5ad1c4b68eb69bc3058948a8cc788ace89583c62b0f0b7c309365655c7b8f64c993eeb1dac31e1abecdc1b99d7c0062be728c5730f3e42acf1683fb115bbdbe7')
+md5sums=('09432381612e8c11a55d66c073f4f980')
+b2sums=('45d9fd1aa4176b84e452cf6fb03ed905466017be9d930cc6ee82beaa175ad9e2ef4193964b35dd6276e0af7dfcde3bf76d3f31dd01991d7d2125f82da633a184')
 
 build() {
   mkdir build
