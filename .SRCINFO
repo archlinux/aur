@@ -1,7 +1,7 @@
 pkgbase = elysia-bin
 	pkgdesc = Universal anime game launcher, supporting Wine and Proton
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dawn.wine/elysia/elysia
 	arch = x86_64
 	license = GPL-3.0-only
@@ -28,7 +28,7 @@ pkgbase = elysia-bin
 	provides = elysia
 	conflicts = elysia
 	options = !strip
-	source = elysia::https://dawn.wine/elysia/elysia/releases/download/v0.2/elysia
+	source = elysia-0.2::https://dawn.wine/elysia/elysia/releases/download/v0.2/elysia
 	source = elysia.png::https://dawn.wine/elysia/elysia/raw/tag/v0.2/assets/elysia.png
 	source = elysia.desktop
 	sha256sums = ee39e8dc0b08ec21f7b34b1437a7c4fbb6e2107c56d9adfe05411d93e3911196

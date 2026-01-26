@@ -3,7 +3,7 @@
 pkgname=elysia-bin
 _pkgname=${pkgname%-bin}
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal anime game launcher, supporting Wine and Proton"
 arch=(x86_64)
 url="https://dawn.wine/elysia/elysia"
@@ -25,7 +25,7 @@ depends=(
 options=(!strip)
 
 source=(
-  "$_pkgname::https://dawn.wine/$_pkgname/$_pkgname/releases/download/v$pkgver/$_pkgname"
+  "$_pkgname-$pkgver::https://dawn.wine/$_pkgname/$_pkgname/releases/download/v$pkgver/$_pkgname"
   "$_pkgname.png::https://dawn.wine/$_pkgname/$_pkgname/raw/tag/v$pkgver/assets/elysia.png"
   "$_pkgname.desktop"
 )
@@ -36,8 +36,8 @@ sha256sums=('ee39e8dc0b08ec21f7b34b1437a7c4fbb6e2107c56d9adfe05411d93e3911196'
 package() {
     cd "$srcdir"
 
-    # Installing script
-    install -Dm755 "$srcdir/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+    # Installing binary
+    install -Dm755 "$srcdir/$_pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
 
     # Install pixmap and desktop files
     install -Dm644 "$_pkgname.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
