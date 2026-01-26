@@ -1,7 +1,7 @@
 pkgbase = python-spacy-curated-transformers
 	pkgdesc = Curated transformer models for spaCy pipelines
 	pkgver = 2.1.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://pypi.org/project/spacy-curated-transformers
 	arch = any
 	license = MIT
@@ -20,6 +20,7 @@ pkgbase = python-spacy-curated-transformers
 	depends = python-confection
 	depends = python-curated-tokenizers
 	depends = python-curated-transformers
+	depends = python-fugashi
 	depends = python-huggingface-hub
 	depends = python-spacy
 	depends = python-srsly

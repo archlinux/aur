@@ -3,7 +3,7 @@
 pkgname=python-spacy-curated-transformers
 _name=${pkgname#python-}
 pkgver=2.1.2
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="Curated transformer models for spaCy pipelines"
 arch=('any')
@@ -24,7 +24,7 @@ depends=(
     python-confection
     python-curated-tokenizers
     python-curated-transformers
-    #     python-fugashi
+    python-fugashi
     python-huggingface-hub
     python-spacy
     python-srsly
