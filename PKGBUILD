@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('python' 'ipmitool'  'bash' 'systemd')
 optdepends=('smartmontools: For SAS/SCSI disks and standby guard feature'
  'nvidia-utils: For GPU fan controller')
-checkdepends=('flake8' 'python-coverage' 'python-pylint' 'python-pytest' 'python-pytest-cov' 'python-pyudev')
+checkdepends=('flake8' 'python-coverage' 'python-pylint' 'python-pytest' 'python-mock' 'python-pytest-cov' 'python-pyudev')
 source=(
   "${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
   'modules-load.conf'

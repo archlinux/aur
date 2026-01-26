@@ -10,6 +10,7 @@ pkgbase = smfc
 	checkdepends = python-coverage
 	checkdepends = python-pylint
 	checkdepends = python-pytest
+	checkdepends = python-mock
 	checkdepends = python-pytest-cov
 	checkdepends = python-pyudev
 	depends = python
