@@ -1,7 +1,7 @@
 pkgbase = flatpost
 	pkgdesc = Desktop Environment agnostic flatpak-only shop gui
-	pkgver = 1.1.1
-	pkgrel = 3
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/GloriousEggroll/flatpost
 	arch = any
 	license = BSD-2-Clause AND GPL-3.0-or-later
@@ -17,7 +17,7 @@ pkgbase = flatpost
 	depends = glib2
 	depends = python-gobject
 	depends = xorg-xhost
-	source = https://github.com/GloriousEggroll/flatpost/archive/refs/tags/1.1.1.tar.gz
-	sha256sums = 32b15cd3d2995cdd0f3ede3db1f70cd30fae19b2da9d3a5aaa1ba986a5b64f90
+	source = https://github.com/GloriousEggroll/flatpost/archive/refs/tags/1.2.0.tar.gz
+	sha256sums = 07546fd1c41b3827f7f0b682b826ed8b5baba906f82fd0a9c65165ff046fb508
 
 pkgname = flatpost
