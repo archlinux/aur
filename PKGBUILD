@@ -1,6 +1,6 @@
 # Maintainer: Asa-DB <gibthecat3@gmail.com>
 pkgname=pkgwhy
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="To help you remember why you installed a package"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'pacman')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('91b2898f825ba52f5ea4abfdea8de1e0bb1ac23dd049b66a1aac724302fe2e12')
+sha256sums=('f835fe743e5a2a8af1362452b8641001a7fac1ba6d64f1f67e86009c428d35db')
 
 build() {
     cd "$pkgname-$pkgver"
