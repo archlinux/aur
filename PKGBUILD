@@ -1,7 +1,7 @@
-# Maintainer: graysky <therealgraysky AT proton DOT me>
+# Maintainer: Julien Virey <julien.virey@gmail.com>
 pkgname=handy
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source and extensible speech-to-text application that works completely offline"
 arch=(x86_64 aarch64)
 url="https://github.com/cjpais/Handy"
@@ -42,6 +42,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
   Handy.desktop
 )
+conflicts=("$pkgname-bin")
 sha256sums=('787ff1d22d99bbfbde88f481c06cea9c19c29a8136d776a8e496d80c70002d6a'
             'a0b1b93e21d18adcb6d5f58e3c818bd797cae57b865ae0d6769298876e7103dc')
 
