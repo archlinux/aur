@@ -1,14 +1,14 @@
 pkgbase = printnotes-git
 	pkgdesc = A better way to take notes inspired by Google Keep and Obsidian (git version)
-	pkgver = r232.5037f0c
-	pkgrel = 3
+	pkgver = r249.1bead67
+	pkgrel = 1
 	url = https://github.com/RoBoT095/printnotes
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = git
 	makedepends = flutter
 	depends = gtk3
-	provides = printnotes-git=r232.5037f0c
+	provides = printnotes-git=r249.1bead67
 	conflicts = printnotes-bin
 	options = !strip
 	source = git+https://github.com/RoBoT095/printnotes.git
