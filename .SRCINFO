@@ -1,6 +1,6 @@
 pkgbase = upowertray
 	pkgdesc = Lightweight battery tray indicator for KDE Plasma/Wayland
-	pkgver = 1.1.5
+	pkgver = 1.1.6
 	pkgrel = 1
 	url = https://github.com/BenGWeeks/upowertray
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = upowertray
 	makedepends = qt6-tools
 	depends = qt6-base
 	depends = upower
-	source = upowertray-1.1.5.tar.gz::https://github.com/BenGWeeks/upowertray/archive/v1.1.5.tar.gz
-	sha256sums = 2fa42766a400eb139c8202421a9ab693138e568be77524dd8f77ecf0184700a5
+	source = upowertray-1.1.6.tar.gz::https://github.com/BenGWeeks/upowertray/archive/v1.1.6.tar.gz
+	sha256sums = fbc8ace0133f74fa31496a29845718bc7f673dc11559e1de2a18b3fdb9fc021c
 
 pkgname = upowertray
