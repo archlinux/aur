@@ -1,33 +1,25 @@
 pkgbase = megasync-bin
 	pkgdesc = Easy automated syncing between your computers and your MEGA cloud drive
-	pkgver = 6.1.0
-	pkgrel = 2
+	pkgver = 6.1.1
+	pkgrel = 1
 	url = https://mega.nz/#sync
 	arch = x86_64
 	license = custom
 	depends = glibc>=2.33
 	depends = gcc-libs>=10.2.0
 	depends = qt5-base>=5.15
-	depends = qt5-tools>=5.15
-	depends = icu>=69.1
-	depends = sqlite
-	depends = openssl>=3.0.0
-	depends = zlib
-	depends = qt5-svg>=5.15
+	depends = qt5-svg
 	depends = qt5-x11extras
-	depends = bzip2
-	depends = xz
-	depends = libraw
-	depends = double-conversion>=3.1.5
-	depends = systemd
 	depends = qt5-graphicaleffects
+	depends = qt5-declarative
 	depends = qt5-quickcontrols2
 	depends = qt5-quickcontrols
-	optdepends = sni-qt: fix systray issue on KDE and LXQt
-	provides = megasync=6.1.0
+	optdepends = xdg-desktop-portal: follow the desktop color scheme (using dbus)
+	optdepends = glib2: follow the desktop color scheme (using gsettings)
+	provides = megasync=6.1.1
 	conflicts = megasync
 	conflicts = megatools
-	source = https://mega.nz/linux/repo/Arch_Extra/x86_64/megasync-6.1.0-2-x86_64.pkg.tar.zst
-	sha256sums = cfbc8f2135ab465b8944a2d94185fdb115b57101c1142f4d8b4cc2eb4f45cd89
+	source = https://mega.nz/linux/repo/Arch_Extra/x86_64/megasync-6.1.1-1-x86_64.pkg.tar.zst
+	sha256sums = ea6a579b292116f019ad6bf2c3552e078b7c4e95c47472a950403e9fc2c03f33
 
 pkgname = megasync-bin

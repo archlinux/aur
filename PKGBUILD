@@ -1,7 +1,7 @@
 # Maintainer: Rodolfo Panerai <rodolfo.panerai at gmail dot com>
 pkgname=megasync-bin
-pkgver=6.1.0
-pkgrel=2
+pkgver=6.1.1
+pkgrel=1
 pkgdesc="Easy automated syncing between your computers and your MEGA cloud drive"
 arch=('x86_64')
 url="https://mega.nz/#sync"
@@ -12,24 +12,16 @@ conflicts=('megasync'
 depends=('glibc>=2.33'
          'gcc-libs>=10.2.0'
          'qt5-base>=5.15'
-         'qt5-tools>=5.15'
-         'icu>=69.1'
-         'sqlite'
-         'openssl>=3.0.0'
-         'zlib'
-         'qt5-svg>=5.15'
+         'qt5-svg'
          'qt5-x11extras'
-         'bzip2'
-         'xz'
-         'libraw'
-         'double-conversion>=3.1.5'
-         'systemd'
          'qt5-graphicaleffects'
+         'qt5-declarative'
          'qt5-quickcontrols2'
          'qt5-quickcontrols')
-optdepends=('sni-qt: fix systray issue on KDE and LXQt')
+optdepends=('xdg-desktop-portal: follow the desktop color scheme (using dbus)'
+            'glib2: follow the desktop color scheme (using gsettings)')
 source=("https://mega.nz/linux/repo/Arch_Extra/x86_64/megasync-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-sha256sums=('cfbc8f2135ab465b8944a2d94185fdb115b57101c1142f4d8b4cc2eb4f45cd89')
+sha256sums=('ea6a579b292116f019ad6bf2c3552e078b7c4e95c47472a950403e9fc2c03f33')
 
 package() {
     cp -R "${srcdir}/usr" "${pkgdir}/"
