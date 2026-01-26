@@ -4,11 +4,12 @@
 pkgname=scarlett2-git
 _pkgname=scarlett2
 pkgver=1c26
-pkgrel=1
+pkgrel=2
 pkgdesc='Scarlett2 Firmware Management Utility for Scarlett 2nd/3rd/4th Gen, Clarett USB, and Clarett+ interfaces'
 arch=('i686' 'x86_64')
 url="https://github.com/geoffreybennett/$_pkgname"
 provides=("$_pkgname")
+conflicts=("$_pkgname")
 depends=('scarlett2-firmware')
 makedepends=('gcc' 'make' 'git' 'pkgconf' 'sed')
 license=('GPL-3.0-or-later')  # /usr/share/licenses/spdx/
