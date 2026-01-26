@@ -1,9 +1,9 @@
 --- a/apalache-mc
 +++ b/apalache-mc
-@@ -6,29 +6,22 @@
- # packaged produced.
+@@ -5,30 +5,23 @@
+ # @dev: This script is copied from `src/universal/bin/apalache-mc` during packaging.
  #
- # Igor Konnov, Shon Feder 2018-2022
+ # Igor Konnov, Shon Feder 2018-2025
 +#
 +# Patch for system install
 +# Ranadeep B
@@ -25,6 +25,7 @@
 -APALACHE_JAR=${APALACHE_JAR:-"$DIR/../lib/apalache.jar"}
 +APALACHE_JAR=${APALACHE_JAR:-"${DIR}/apalache.jar"}
  JVM_ARGS=${JVM_ARGS:-""}
+ JVM_GC_ARGS=${JVM_GC_ARGS:-""}
  
  if ! test -f "$APALACHE_JAR"
  then
@@ -36,8 +37,8 @@
 +    exit 1
  fi
  
- # Check of the heap size is already set
-@@ -48,9 +41,9 @@
+ # Check if the heap size is already set
+@@ -58,7 +51,7 @@
  # Check whether the CLI args contains the debug flag
  if [[ "$*" =~ '--debug' ]]
  then
@@ -45,5 +46,4 @@
 +    echo "# Tool home: system"
      echo "# Package:   $APALACHE_JAR"
      echo "# JVM args: $JVM_ARGS"
-     echo "# -Djava.io.tmpdir: $JAVA_IO_TMPDIR"
- 
+     echo "# JVM GC args: $JVM_GC_ARGS"
