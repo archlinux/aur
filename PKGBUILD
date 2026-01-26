@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=confirmo-bin
-pkgver=1.0.20
+pkgver=1.0.26
 pkgrel=1
 pkgdesc="Your AI coding companion that lives on your desktop"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libsecret')
 optdepends=('libappindicator-gtk3: for system tray icon support')
 source=("confirmo_${pkgver}_amd64.deb::https://updates.confirmo.love/confirmo_${pkgver}_amd64.deb")
-md5sums=('6ef770cbe475d5d3994f10c8e352b66b')
+md5sums=('aec8c2a4c36704f3ff1e882b99223959')
 
 package() {
     # Extract the deb package
