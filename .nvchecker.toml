@@ -1,0 +1,3 @@
+[nautilus-copy-path]
+source = "git"
+git = "https://github.com/xariann-pkg/nautilus-copy-path.git"

@@ -1,22 +1,25 @@
-# Maintainer: Łukasz Moroz <lukaszmoroz@gmail.com>
-
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Łukasz Moroz <lukaszmoroz@gmail.com>
 pkgname=nautilus-copy-path
-pkgver=1.10.2
-pkgrel=2
+pkgver=1.3
+pkgrel=1
 pkgdesc="Configurable extension for Nautilus to copy path, URI, or name"
 arch=('any')
-url="https://github.com/chr314/nautilus-copy-path"
+url="https://github.com/xariann-pkg/nautilus-copy-path"
 license=('MIT')
-depends=('python-nautilus' 'python-gobject')
-backup=("usr/share/nautilus-python/extensions/nautilus-copy-path/config.json")
-install=$pkgname.install
-source=("$pkgname-$pkgver.tar.gz::https://github.com/chr314/nautilus-copy-path/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('4004e82ff601604ae466aabcb1429e1c07ac9e181a99bc5173827480c46698a8b8df7579441ee5225d1d3d0a830d0667e45de4e03833bc7906cb893e24afb1df')
+depends=(
+  'python-gobject'
+  'python-nautilus'
+)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('1fc4fb5a3922fde76fa61ed154e342427a281ae6dbe399f5362725e317132e8f')
 
 package() {
-    cd "$pkgname-$pkgver"
-    install -Dm644 -t "$pkgdir/usr/share/licenses/nautilus-copy-path" LICENSE
-    install -Dm644 -t "$pkgdir/usr/share/nautilus-python/extensions" nautilus-copy-path.py
-    install -Dm644 -t "$pkgdir/usr/share/nautilus-python/extensions/nautilus-copy-path" nautilus_copy_path.py config.json translation.py
-    install -Dm644 -t "$pkgdir/usr/share/nautilus-python/extensions/nautilus-copy-path/translations" translations/*.json
+  cd "$pkgname-$pkgver"
+  install -Dm644 $pkgname.py -t "$pkgdir/usr/share/nautilus-python/extensions/"
+  install -Dm644 nautilus_copy_path.py config.json translation.py -t \
+    "$pkgdir/usr/share/nautilus-python/extensions/$pkgname/"
+  install -Dm644 translations/*.json -t \
+    "$pkgdir/usr/share/nautilus-python/extensions/$pkgname/translations/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
