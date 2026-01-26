@@ -1,7 +1,7 @@
 # Maintainer: James Liu <contact at no-bull dot sh>
 
 pkgname=reflector-rs-bin
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Retrieve and filter the latest Arch Linux mirror list (Rust implementation)'
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('reflector')
 depends=('openssl')
 backup=('etc/xdg/reflector/reflector.conf')
 source=("$pkgname-$pkgver.tar.xz::${url}/releases/download/v${pkgver}/reflector-rs-v${pkgver}-$CARCH-unknown-linux-gnu.tar.xz")
-sha256sums=('1931c91d584141388be447c71741bbf005f2df76918006c4ceb7cb8d3c45f15e')
+sha256sums=('3011cb52b88b47a921e1308342451f42c7b1a849e53e599f9049ce8c89155af7')
 
 package() {
   # Install binary
