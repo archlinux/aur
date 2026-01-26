@@ -211,3 +211,6 @@ Add permission for bump version (#34)
 Modify workflow trigger as pull_request_target to read secrets
 
 
+Fix issue with progress directory not found in progress sync (#37)
+
+
