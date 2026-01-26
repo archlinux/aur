@@ -1,0 +1,17 @@
+pkgbase = python-entmax
+	pkgdesc = The entmax mapping and its loss, a family of sparse alternatives to softmax
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/deep-spin/entmax
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-pytorch
+	source = entmax-1.3.tar.gz::https://github.com/deep-spin/entmax/archive/v1.3.tar.gz
+	sha512sums = 4c183e1f8677234332de8afcb31b41a16f513a01ba23c8f2912248434157d791297dd5a84eb6a654886a50f0ed6a01429b6f7d5fe30d293d0cf341aa9b062dc4
+
+pkgname = python-entmax
