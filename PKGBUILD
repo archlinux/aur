@@ -1,9 +1,9 @@
 #Maintainer: Larzid <juanitocampamocha@gmail.com>
 pkgname=sotw
-pkgver=1.8.4
-pkgrel=9
+pkgver=1.9.0
+pkgrel=1
 epoch=
-pkgdesc="Shadow Of The Wyrm, a traditional roguelike by Julian Day."
+pkgdesc="Shadow Of The Wyrm by Julian Day - Development branch."
 arch=('x86_64')
 url="http://www.shadowofthewyrm.org/"
 license=('MIT')
@@ -12,7 +12,7 @@ depends=('sdl2' 'sdl2_mixer' 'sdl2_image' 'xerces-c' 'zlib' 'ncurses' 'lua51' 'b
 makedepends=('premake' 'git')
 checkdepends=()
 provides=(sotw)
-conflicts=(sotw-dev)
+conflicts=(sotw)
 replaces=()
 backup=()
 options=()
