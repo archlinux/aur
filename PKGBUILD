@@ -18,7 +18,7 @@ depends=(
   'libxrender'
 )
 source=("git+${url}.git#branch=dev")
-sha512sums=('SKIP')
+sha256sums=('SKIP')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 
