@@ -3,7 +3,7 @@
 # Contributor: Adrian Perez de Castro <aperez@igalia.com>
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-hidpi-xprop-git
-pkgver=0.20.0.20260123.194114
+pkgver=0.20.0.20260124.224940
 pkgrel=1
 license=(MIT)
 pkgdesc='Modular Wayland compositor library (git version, with patches)'
