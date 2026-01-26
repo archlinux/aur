@@ -1,4 +1,4 @@
-# Maintainer: nvlli <nvlli4096 at gmail dot com>
+# Maintainer: nvlli <nvllvs0 at gmail dot com>
 
 pkgname=nvspeed-git
 pkgver=0.1
