@@ -2,14 +2,14 @@
 # Contributor: Łukasz Moroz <lukaszmoroz@gmail.com>
 pkgname=nautilus-copy-path
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Configurable extension for Nautilus to copy path, URI, or name"
 arch=('any')
 url="https://github.com/xariann-pkg/nautilus-copy-path"
 license=('MIT')
 depends=(
+  'nautilus-python'
   'python-gobject'
-  'python-nautilus'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('1fc4fb5a3922fde76fa61ed154e342427a281ae6dbe399f5362725e317132e8f')

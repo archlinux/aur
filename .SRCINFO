@@ -1,12 +1,12 @@
 pkgbase = nautilus-copy-path
 	pkgdesc = Configurable extension for Nautilus to copy path, URI, or name
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xariann-pkg/nautilus-copy-path
 	arch = any
 	license = MIT
+	depends = nautilus-python
 	depends = python-gobject
-	depends = python-nautilus
 	source = nautilus-copy-path-1.3.tar.gz::https://github.com/xariann-pkg/nautilus-copy-path/archive/refs/tags/1.3.tar.gz
 	sha256sums = 1fc4fb5a3922fde76fa61ed154e342427a281ae6dbe399f5362725e317132e8f
 
