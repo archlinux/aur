@@ -1,14 +1,16 @@
 pkgbase = wipemychat-git
 	pkgdesc = Delete all your messages in public and private Telegram chats
-	pkgver = 1.1.0.r0.9f7ee12
-	pkgrel = 3
+	pkgver = 1.2.3.r0.g597103d
+	pkgrel = 1
 	url = https://github.com/rusq/wipemychat
+	arch = aarch64
+	arch = i686
 	arch = x86_64
-	license = GPL-3.0-or-later
+	license = GPL-3.0-only
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	provides = wipemychat=1.1.0
+	provides = wipemychat=1.2.3
 	conflicts = wipemychat
 	source = wipemychat::git+https://github.com/rusq/wipemychat.git
 	sha256sums = SKIP
