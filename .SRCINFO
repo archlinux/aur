@@ -1,15 +1,17 @@
 pkgbase = python-discord-webhook
 	pkgdesc = Execute Discord webhooks.
-	pkgver = 0.14.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/lovvskillz/python-discord-webhook
 	arch = any
 	license = MIT
-	makedepends = python
-	makedepends = python-setuptools
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	depends = python
 	depends = python-requests
-	source = https://files.pythonhosted.org/packages/source/d/discord-webhook/discord-webhook-0.14.0.tar.gz
-	sha256sums = f3d660df572caaa9c2621edd7e8634a70d6d8295ce9256c365838312457069a1
+	source = https://github.com/lovvskillz/python-discord-webhook/archive/refs/tags/1.4.1.tar.gz
+	sha256sums = 4b062eee99d813fb3b2063905373f3b6b03f5d7bd5456ea92e7ae4561e225520
 
 pkgname = python-discord-webhook
-
