@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mater-bin
 _pkgname=Mater
-pkgver=2.0.0
+pkgver=2.0.1
 _electronversion=31
 pkgrel=1
 pkgdesc="A simple menubar Pomodoro app.(Prebuilt version.Use system-wide electron)"
@@ -11,7 +11,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 makedepends=(
     'gendesk'
@@ -24,7 +24,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_pkgname}-linux-x64-${pkgver}.zip"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('616de13837021ea7387c801bf3e0eb393ae05efd8964e29ec57117e1b1476b8a'
+sha256sums=('e6ed2b6ab804cf05813da1d17d2ec684f1912ed40e8580f59ff15b5f30db90da'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/${_pkgname}-linux-x64/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
