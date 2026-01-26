@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yank-note
 _pkgname='Yank Note'
-pkgver=3.86.1
+pkgver=3.87.1
 _electronversion=38
 _nodeversion=22
 pkgrel=1
@@ -24,12 +24,13 @@ makedepends=(
     'curl'
     'git'
     'python'
+    'jq'
 )
 source=(
     "${pkgname}.git::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('c762c9bc3cf0c42020f9be1f87dc592bb73ee4b1f779bc7284bd861972da9837'
+sha256sums=('5849e1546eeeaa6d1d4e45a8adb6b7e3b708a836b50a91870d29c92b812ab68e'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -38,8 +39,9 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver="$(grep '^ *"electron": *"' "${srcdir}/${pkgname}.git/package.json" | cut -d'"' -f4 | cut -d. -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname}.git/package.json" | tr -d '^')
+    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
+    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
     cd "${srcdir}/${pkgname}.git"
@@ -51,7 +53,6 @@ prepare() {
         s/@cfgdirname@/${pkgname//-/.}/
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
     " -i "${srcdir}/${pkgname}.sh"
-    _ensure_local_nvm
     gendesk -q -f -n \
         --pkgname="${pkgname}" \
         --pkgdesc="${pkgdesc}" \
@@ -81,6 +82,7 @@ prepare() {
         find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
         sed -i "s/github.com/ghproxy.net\/https:\/\/github.com/g" scripts/{download-pandoc.js,download-plantuml.js}
     fi
+    _ensure_local_nvm
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
     sed -i "s/icon\.icns/icon\.png/" electron-builder.json
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
@@ -88,6 +90,7 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname}.git"
+    _ensure_local_nvm
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=development    yarn run electron-rebuild
     NODE_ENV=development    yarn node scripts/download-pandoc.js
