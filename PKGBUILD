@@ -5,7 +5,7 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-jasper
-pkgver=4.2.5
+pkgver=4.2.8
 pkgrel=1
 arch=('any')
 pkgdesc="Software-based implementation of the codec specified in the emerging JPEG-2000 Part-1 standard (Android ${_android_arch})"
@@ -17,7 +17,7 @@ makedepends=('android-cmake'
              "android-${_android_arch}-libxmu")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/mdadams/jasper/archive/version-${pkgver}.tar.gz")
-md5sums=('24f32c5f5bd90eb58b1a552d63a29bde')
+md5sums=('2277a24310224952f49149615fa853eb')
 
 prepare() {
     cd "${srcdir}/jasper-version-${pkgver}"
@@ -74,4 +74,6 @@ package() {
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
