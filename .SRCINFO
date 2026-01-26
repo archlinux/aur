@@ -1,0 +1,16 @@
+pkgbase = tidytui-git
+	pkgdesc = A blazingly fast, terminal-based system cleaner written in Rust
+	pkgver = 0.1.0.r0.gGIT
+	pkgrel = 1
+	url = https://github.com/divyaprakash0426/TidyTUI
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = tidytui
+	conflicts = tidytui
+	source = git+https://github.com/divyaprakash0426/TidyTUI
+	sha256sums = SKIP
+
+pkgname = tidytui-git
