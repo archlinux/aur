@@ -2,14 +2,13 @@
 pkgname=xdgctl-git
 pkgdesc='TUI for managing XDG default applications'
 pkgver=r7.2a5d5ea
-pkgrel=1
+pkgrel=2
 url=https://github.com/mitjafelicijan/xdgctl
 _rawurl="${url/github.com/raw.githubusercontent.com}/refs/heads/master"
 license=(BSD-2-Clause)
 depends=(glib2)
 makedepends=(git gcc)
 arch=(x86_64)
-validpgpkeys=(5AA3BC334FD7E3369E7C77B291C559DBE4C9123B)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
