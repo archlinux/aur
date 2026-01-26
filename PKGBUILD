@@ -2,7 +2,7 @@
 # Contributor: Grifonice99 <grifonice99@gmail.com>
 
 pkgname=hexus
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A modern, cross-platform process manager"
 arch=('x86_64')
@@ -11,7 +11,7 @@ url='https://github.com/Fleny113/Hexus'
 depends=('dotnet-runtime-10.0' 'aspnet-runtime-10.0')
 makedepends=('git' 'dotnet-sdk-10.0' 'aspnet-targeting-pack-10.0')
 source=("git+https://github.com/Fleny113/Hexus.git#tag=$pkgver")
-sha512sums=('2d07246d111cd6d9a6da2309596887f4ca52f78c4cb0a412c2f9c9ee146cfa53b297b22384657c2ffbeb276a232000e9ccfb801663daf8fd84d2c9759aa9ed5f')
+sha512sums=('bddf93df662021caaf1eb96670c68f76d0b61062e1209f71154c042f65cb32c0f8c6f7358a743b809254526c5a0e37b33d5f1f0b8824a73f3407463268095d17')
 conflicts=('hexus')
 
 _reponame=Hexus
