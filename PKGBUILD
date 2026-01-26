@@ -4,11 +4,12 @@
 pkgname=scarlett2-firmware-git
 _pkgname=scarlett2-firmware
 pkgver=2128b.2.gf628
-pkgrel=1
+pkgrel=2
 pkgdesc='Scarlett2 Firmware for Scarlett 2nd/3rd/4th Gen, Clarett USB, and Clarett+ interfaces'
 arch=('any')
 url="https://github.com/geoffreybennett/$_pkgname"
 provides=($_pkgname)
+conflicts=($_pkgname)
 depends=()
 makedepends=('git' 'sed')
 license=('Proprietary')
