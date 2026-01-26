@@ -1,6 +1,6 @@
 # Maintainer: Christopher McAdams <mca.christopher@gmail.com>
 pkgname="alacritty-use-theme-with-redshift-git"
-pkgver=r52.c30eb9f
+pkgver=r54.1371535
 pkgrel=1
 pkgdesc="::Rolling release:: Changes alacritty theme based on the current time and locale"
 arch=('x86_64')
@@ -33,7 +33,7 @@ package() {
   # scripts
   install -Dm755 $srcdir/$pkgname/app/home/local/theme-switcher/theme-switcher.sh "$pkgdir/usr/lib/alacritty-use-theme/bin/theme-switcher/theme-switcher.sh"
 
-  install -Dm755 $srcdir/$pkgname/app/home/local/share/theme-switcher/toggle-theme-per-mode.sh "$pkgdir/usr/lib/alacritty-use-theme/bin/theme-switcher/toggle-theme-per-mode.sh"
+  install -Dm777 $srcdir/$pkgname/app/home/local/share/theme-switcher/toggle-theme-per-mode.sh "$pkgdir/usr/lib/alacritty-use-theme/bin/theme-switcher/toggle-theme-per-mode.sh"
 
   install -Dm755 $srcdir/$pkgname/app/home/local/theme-switcher/bin/get-sunrise-sunset.sh "$pkgdir/usr/lib/alacritty-use-theme/bin/theme-switcher/get-sunrise-sunset.sh"
   install -Dm755 $srcdir/$pkgname/app/home/local/theme-switcher/bin/update-gdm.sh "$pkgdir/usr/lib/alacritty-use-theme/bin/theme-switcher/update-gdm.sh"
@@ -41,8 +41,8 @@ package() {
   install -Dm755 $srcdir/$pkgname/app/home/local/theme-switcher/src/utils/debug.sh "$pkgdir/usr/lib/alacritty-use-theme/utils/debug.sh"
   install -Dm755 $srcdir/$pkgname/app/home/local/theme-switcher/src/utils/is_theme_locked.sh "$pkgdir/usr/lib/alacritty-use-theme/utils/is_theme_locked.sh"
 
-  install -Dm644 $srcdir/$pkgname/app/home/local/theme-switcher/src/shared-variables.sh "$pkgdir/usr/share/alacritty-use-theme/theme-switcher/shared-variables.sh"
-  install -Dm664 $srcdir/$pkgname/app/home/config/theme-switcher/mode "$pkgdir/usr/share/alacritty-use-theme/theme-switcher/mode"
+  install -Dm755 $srcdir/$pkgname/app/home/local/theme-switcher/src/shared-variables.sh "$pkgdir/usr/share/alacritty-use-theme/theme-switcher/shared-variables.sh"
+  install -Dm777 $srcdir/$pkgname/app/home/config/theme-switcher/mode "$pkgdir/usr/lib/alacritty-use-theme/theme-switcher/mode"
 
 
 }
