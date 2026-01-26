@@ -1,19 +1,19 @@
 pkgbase = mater-bin
 	pkgdesc = A simple menubar Pomodoro app.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.0.10
-	pkgrel = 11
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/jasonlong/mater
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
-	depends = electron11-bin
-	provides = mater=1.0.10
+	depends = electron31-bin
+	provides = mater=2.0.0
 	conflicts = mater
 	options = !strip
 	options = !emptydirs
-	source = mater-1.0.10.zip::https://github.com/jasonlong/mater/releases/download/1.0.10/Mater-linux-x64.zip
+	source = mater-2.0.0.zip::https://github.com/jasonlong/mater/releases/download/v2.0.0/Mater-linux-x64-2.0.0.zip
 	source = mater.sh
-	sha256sums = b26d8ef79fd92c95ac914e73af9504f06dcfaa204f62c47cc3d423a53fa32f8a
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 616de13837021ea7387c801bf3e0eb393ae05efd8964e29ec57117e1b1476b8a
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = mater-bin
