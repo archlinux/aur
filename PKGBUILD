@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=anydesk-bin
-pkgver=7.1.2
-pkgrel=2
+pkgver=7.1.3
+pkgrel=1
 pkgdesc="The Fast Remote Desktop Application"
 arch=('x86_64' 'aarch64')
 url="https://anydesk.com"
@@ -13,8 +13,8 @@ provides=('anydesk')
 options=('!strip')
 source_x86_64=("https://download.anydesk.com/linux/anydesk-${pkgver}-amd64.tar.gz")
 source_aarch64=("https://download.anydesk.com/rpi/anydesk-${pkgver}-arm64.tar.gz")
-sha256sums_x86_64=('e93b4247e7b1b45415c9ca01aa72e5b9f2f929e18156cdd4e8f3b10ab4bb1bcf')
-sha256sums_aarch64=('4da6eb20c0535d369d4dffd3b04b5ec6176a4250c4fad0b7786f1e5af3e514ff')
+sha256sums_x86_64=('6f559240c46515aaa11020812a83e3508c30e458f7c9f37cc31c000ae3bb451e')
+sha256sums_aarch64=('61be499e3c6cf0098c785bd663e558193a2fa4bc16d4f44f044259505eb7800d')
 
 package() {
     # install binary
