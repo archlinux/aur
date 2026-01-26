@@ -2,12 +2,14 @@
 
 pkgname=elysia-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Universal anime game launcher, supporting Wine and Proton"
 arch=(x86_64)
 url="https://dawn.wine/elysia/elysia"
 license=(GPL-3.0-only)
+provides=("elysia")
+conflicts=("elysia")
 depends=(
     'ffmpeg'        'openssl'
     'freetype2'     'fontconfig'
@@ -27,7 +29,7 @@ source=(
   "$_pkgname.png::https://dawn.wine/$_pkgname/$_pkgname/raw/tag/v$pkgver/assets/elysia.png"
   "$_pkgname.desktop"
 )
-sha256sums=('34a9d26a7a3753a8a985a4e5b13ec662eab7bc754a6a39b6c3ae209659b21fd3'
+sha256sums=('ee39e8dc0b08ec21f7b34b1437a7c4fbb6e2107c56d9adfe05411d93e3911196'
             'a5ad1cc5bdeeb146ad10a71f15b1f59f300200e56bc14276044d693afe80276e'
             'e595a40ad47039e75fbf0e05fd1c85cf7a7a59d57a05769c721b4795f69459f7')
 
