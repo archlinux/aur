@@ -1,0 +1,27 @@
+pkgbase = mov-watch
+	pkgdesc = Terminal-based movie and TV show streaming
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/leoallday/mov-watch
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-rich
+	depends = python-requests
+	depends = python-pypresence
+	depends = python-cryptography
+	depends = yt-dlp
+	depends = python-pillow
+	depends = python-numpy
+	depends = mpv
+	depends = fzf
+	provides = mov-watch
+	conflicts = mov-watch
+	source = https://github.com/leoallday/mov-watch/archive/refs/tags/v1.tar.gz
+	sha256sums = ${SHA256}
+
+pkgname = mov-watch
