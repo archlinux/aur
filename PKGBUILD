@@ -4,13 +4,13 @@
 
 pkgname="ntopng-bin"
 # to update visit https://packages.ntop.org/apt/trixie/x64/ and keep track of the latest pkgver, date and build
-_pkgverAmd64=6.5
-_dateAmd64=251012
-_buildAmd64=26736
+_pkgverAmd64=6.7
+_dateAmd64=260125
+_buildAmd64=27301
 # to update visit https://packages.ntop.org/apt/bookworm_pi/arm64/ and keep track of the latest pkgver, date and build
-_pkgverArm64=6.5
-_dateArm64=251012
-_buildArm64=26736
+_pkgverArm64=6.7
+_dateArm64=260125
+_buildArm64=27301
 # to update visit https://packages.ntop.org/apt/buster_pi/armhf/ and keep track of the latest pkgver, date and build
 _pkgverArm32=6.1
 _dateArm32=240707
@@ -41,9 +41,9 @@ source_armv7h=("https://packages.ntop.org/apt/buster_pi/armhf/ntopng_${_pkgverAr
 b2sums=('c0ba0afb3fdeedaf57f54ce405cd5ce688bb5ed19d05cc21fbefca7ecda98bc5df2cf603e7ac92108763dc26c1ef391afdf69116bb13c03f8e2d3e75fe6bbda5'
         'ca912cbe9e43a5be67e2b487183e43615b93497a62515cad7b1468fab5e3dc9a2dc3fd2e8d88c12d54c91cb3b8c61ebe682c1e7dc5f3ea49aaf0d87aa2a9bbd1'
         'e374ff823b8218faf86c56e0794622954b09b41f5c893db08d3ad38ea1d4fe47733095853d1bf11041b1e4b476d01c1a1a495af40221d6e4e30a0ac223684fac')
-b2sums_x86_64=('905beb1569a4b1100ec2f552afc88ca6c62c738fc2dac68047e9271e82a1d41c9995bbc7a12247fc520054bd0d5435bb6ad3d1de49b9bb84b7ece6e82f27bd53')
+b2sums_x86_64=('000339ce52d898253508388ef816a73654e88b8631e4e24917037e7a9f09a4d25aee736ccd647f501add4d540e7a74ad4a92b512f7d80863b5d6408c014a31f6')
+b2sums_aarch64=('f0cafded2bbfed93f2c2cff289fe3afd6c08a0dc71c54a7217bb326c716c4e722f2ef075b7228684041fe17dde037738333bc2729f3fc08756d9f166386bf5e3')
 b2sums_armv7h=('f2996f73459a37fe6cdf31d91d96f6bb7154133093c1202eee688aa58345b873db8ee00944955648a1994341b8619c6900f0b709d878517c9b92a466a961144a')
-b2sums_aarch64=('ece3bd5d4830170ab26249aae8fa02af644d6df104badd8aad2dbeb5b3b8591970d6195aeeca5e09425f7ec770109cb18a53213870af374dee14c3a5d907b27b')
 options=("!strip")
 
 prepare(){
