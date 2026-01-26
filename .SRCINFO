@@ -1,14 +1,13 @@
 pkgbase = otaripper
 	pkgdesc = Ultra-fast partition extractor for Android OTA .zip and payload.bin files
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/syedinsaf/otaripper
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	makedepends = cargo
 	makedepends = rust
-	makedepends = protobuf
 	makedepends = pkgconf
 	depends = glibc
 	depends = gcc-libs
