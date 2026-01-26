@@ -15,7 +15,7 @@ conflicts=('rataplay-git')
 source=("rataplay::${url}/releases/download/v${pkgver}/rataplay"
 	"LICENSE::${url}/raw/v${pkgver}/LICENSE")
 #checksums for binary 
-sha256sums=('a0bcd24f8edf801769b8aa0be0ad675e128e5fdaec938fa18a3b0cdb7083a9b0'
+sha256sums=('cdc5e79dceb1ae306f603a57144f48eea0502770f3c1ec20e8391f6b9aabdc63'
             'e57f1c320b8cf8798a7d2ff83a6f9e06a33a03585f6e065fea97f1d86db84052')
 
 package() {
