@@ -1,6 +1,6 @@
 pkgbase = lvce-bin
 	pkgdesc = VS Code inspired text editor that mostly runs in a webworker.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.70.27
+	pkgver = 0.71.0
 	pkgrel = 1
 	url = https://lvce-editor.github.io/lvce-editor
 	arch = aarch64
@@ -8,7 +8,7 @@ pkgbase = lvce-bin
 	arch = x86_64
 	license = MIT
 	depends = electron40
-	provides = lvce=0.70.27
+	provides = lvce=0.71.0
 	conflicts = lvce
 	options = !strip
 	options = !emptydirs
@@ -16,11 +16,11 @@ pkgbase = lvce-bin
 	source = lvce.sh
 	sha256sums = ada1a0303abece27be80372538645da5c5b4e9d60fcacc87b97da1c26b8931bc
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = lvce-0.70.27-aarch64.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.70.27/lvce-v0.70.27_arm64.deb
-	sha256sums_aarch64 = 9feb7de70f8b8ff27590341f1bda5145fb4e53496e3f521c78c4f6d7b36b518d
-	source_armv7h = lvce-0.70.27-armv7h.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.70.27/lvce-v0.70.27_armhf.deb
-	sha256sums_armv7h = a22171e1fea128f7e7ee416d5e88b1d9700a48a47868659ebc6b0a45bb8bdc3a
-	source_x86_64 = lvce-0.70.27-x86_64.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.70.27/lvce-v0.70.27_amd64.deb
-	sha256sums_x86_64 = 5900ee73b953d1082a9fcbc7675b2eb1da8ec38e0350654cd51679f205ff50e4
+	source_aarch64 = lvce-0.71.0-aarch64.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.71.0/lvce-v0.71.0_arm64.deb
+	sha256sums_aarch64 = b4148f88e85d7d2a38b4babff2237791ec1e295f5206bde5e22660838aafb574
+	source_armv7h = lvce-0.71.0-armv7h.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.71.0/lvce-v0.71.0_armhf.deb
+	sha256sums_armv7h = ca371ff0941085171195309968ba453dc76b86254f2eb9a170d253f55f3dcaed
+	source_x86_64 = lvce-0.71.0-x86_64.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.71.0/lvce-v0.71.0_amd64.deb
+	sha256sums_x86_64 = e537b1a80beb759bb162079a986e0bd1fad678d52cf1fe6cd554d6f0ac073578
 
 pkgname = lvce-bin
