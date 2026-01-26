@@ -4,15 +4,15 @@ pkgname=falsec-bin
 _pkgname=falsec
 provides=(falsec)
 conflicts=(falsec)
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Interpreter and compiler for the FALSE language'
 url='https://github.com/MixusMinimax/falsec'
 license=(MIT)
 depends=('gcc-libs' 'glibc' 'nasm' 'binutils')
 arch=('x86_64')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/MixusMinimax/$_pkgname/releases/download/v0.1.2/$pkgname-$pkgver-$CARCH.tar.gz")
-b2sums=('95c712ad50ff70fb8cce6b351cb5c2161c183151f60ca7cbb5bd25fe5c2fb047ac094be4fb985f4e67c14c3923937db9feb0e9ef38834e1630d261068c8558fd')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/MixusMinimax/$_pkgname/releases/download/v$pkgver/$pkgname-$pkgver-$CARCH.tar.gz")
+b2sums=('ff4d09dd56736cd5f7bffe9b1d51976dd6d795a8bc5542d65848d2e58cbf81b80b1955c899d4bc100f27ffe2010f22355a7fc621464df4410c6c0ee18c5a7f5d')
 options=(!strip !debug)
 
 package() {
