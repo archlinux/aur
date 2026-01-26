@@ -1,4 +1,4 @@
-# Maintainer: LinuxLover471 <LinuxLover471 at proton dot me>
+# Maintainer: asyync1024 <asyync1024 at proton dot me>
 
 _pkgname=godot
 pkgname=${_pkgname}32
