@@ -1,5 +1,5 @@
 pkgname=tts-helper
-pkgver=6.5.5
+pkgver=6.6.0
 pkgrel=1
 pkgdesc="An application to help streamers manage TTS events."
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("${url}/releases/download/tts-helper-v${pkgver}/TTS.Helper_${pkgver}_amd64.deb")
-sha256sums_x86_64=('e8afca168cabe20f5156dac05371359141e14ba15a599970b218a0dd4edf51dc')
+sha256sums_x86_64=('688571aab51f702ccecfde702f7b17b06757a9cee15067884fbc83d5039219b5')
 
 package() {
   mkdir -p temp_extraction

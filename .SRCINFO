@@ -1,6 +1,6 @@
 pkgbase = tts-helper
 	pkgdesc = An application to help streamers manage TTS events.
-	pkgver = 6.5.5
+	pkgver = 6.6.0
 	pkgrel = 1
 	url = https://github.com/uhuh/tts-helper
 	install = tts-helper.install
@@ -18,7 +18,7 @@ pkgbase = tts-helper
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/uhuh/tts-helper/releases/download/tts-helper-v6.5.5/TTS.Helper_6.5.5_amd64.deb
-	sha256sums_x86_64 = e8afca168cabe20f5156dac05371359141e14ba15a599970b218a0dd4edf51dc
+	source_x86_64 = https://github.com/uhuh/tts-helper/releases/download/tts-helper-v6.6.0/TTS.Helper_6.6.0_amd64.deb
+	sha256sums_x86_64 = 688571aab51f702ccecfde702f7b17b06757a9cee15067884fbc83d5039219b5
 
 pkgname = tts-helper
