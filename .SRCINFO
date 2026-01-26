@@ -1,6 +1,6 @@
 pkgbase = android-armv7a-eabi-jasper
 	pkgdesc = Software-based implementation of the codec specified in the emerging JPEG-2000 Part-1 standard (Android armv7a-eabi)
-	pkgver = 4.2.5
+	pkgver = 4.2.8
 	pkgrel = 1
 	url = https://www.ece.uvic.ca/~frodo/jasper/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = android-armv7a-eabi-jasper
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/mdadams/jasper/archive/version-4.2.5.tar.gz
-	md5sums = 24f32c5f5bd90eb58b1a552d63a29bde
+	source = https://github.com/mdadams/jasper/archive/version-4.2.8.tar.gz
+	md5sums = 2277a24310224952f49149615fa853eb
 
 pkgname = android-armv7a-eabi-jasper
