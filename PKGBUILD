@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lynxhub
 _pkgname=LynxHub
-pkgver=3.3.0
-_electronversion=38
+pkgver=3.4.0
+_electronversion=39
 _nodeversion=22
 pkgrel=1
 pkgdesc="Manage and launch all your AI from a single dashboard.(Use system-wide electron)"
@@ -22,12 +22,13 @@ makedepends=(
     'nvm'
     'curl'
     'git'
+    'jq'
 )
 source=(
     "${pkgname}-${pkgver}::git+${url}#tag=V${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('d199f128315d2e02236e386f6124c4dcc75750b7fd05018c2318491560aa2762'
+sha256sums=('930f7694915692c70944399bb20cf8ae45d1469ace0367c117850fa83df975f8'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -36,8 +37,9 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver="$(grep '^ *"electron": *"' "${srcdir}/${pkgname}-${pkgver}/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname}-${pkgver}/package.json" | tr -d '^')
+    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
+    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
