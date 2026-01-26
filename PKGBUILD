@@ -1,4 +1,4 @@
-# Maintainer: LinuxLover471 <linuxlover471 at proton dot me>
+# Maintainer: asyync1024 <asyync1024 at proton dot me>
 
 pkgname=fastcompmgr
 pkgver=0.5
