@@ -3,7 +3,7 @@
 _pkgname=starlette-compress
 _pipname="${_pkgname//-/_}"
 pkgname="python-${_pkgname}"
-pkgver=1.6.1
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Compression middleware for Starlette - supporting ZStd, Brotli and GZip."
 arch=('any')
@@ -12,7 +12,7 @@ license=('0BSD')
 depends=('python-brotli' 'python-brotlicffi' 'python-starlette' 'python-zstandard')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pipname}-${pkgver}.tar.gz")
-b2sums=('6a54034923158b2f7fd3fb97a2b8bbe66fbf5bb26b1c8dfd17a4145cdcbc8b337049ef324358019c28c983dddafe7552e6b5b419ff2a380a4524b2f314b20f21')
+b2sums=('ac47bf3c20f064a2500b03d4e507d1bc2bce75e69d711adc1df8a42117d2e8ad3e1f1c102d24fc1619c2675ffb110d20ee39ea3531fdf02882cd5f6cd4e3194b')
 
 build() {
     cd "${_pipname}-${pkgver}"
