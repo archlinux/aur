@@ -10,7 +10,7 @@ url="https://github.com/syedinsaf/otaripper"
 license=('Apache-2.0')
 
 depends=('glibc' 'gcc-libs')
-makedepends=('cargo' 'rust' 'protobuf' 'pkgconf')
+makedepends=('cargo' 'rust' 'pkgconf')
 
 provides=('otaripper')
 conflicts=('otaripper-bin')
@@ -21,19 +21,10 @@ sha256sums=('2aa99f8129f005a99466a799752ad658e13ea2a474c937c47141669698a17d49')
 build() {
   cd "$pkgname-$pkgver"
 
-  if command -v rustup >/dev/null; then
-    rustup toolchain install stable --no-self-update
-    _cargo="rustup run stable cargo"
-  else
-    _cargo="cargo"
-  fi
-
   export CARGO_TARGET_DIR=target
   unset LDFLAGS CFLAGS CPPFLAGS
 
-  export RUSTFLAGS="-C opt-level=3"
-
-  $_cargo build --frozen --release
+  cargo build --release --locked
 }
 
 check() {
