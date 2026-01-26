@@ -1,6 +1,6 @@
 pkgname=twintaillauncher
 pkgver=1.1.15
-pkgrel=1
+pkgrel=2
 _dirname="TwintailLauncher-ttl-v${pkgver}"
 pkgdesc='A multi-platform launcher for your anime games'
 arch=('x86_64')
@@ -16,12 +16,12 @@ sha256sums=('SKIP')
 options=('!lto' '!debug')
 
 prepare() {
-  cd 
+  cd "$srcdir/$_dirname"
   pnpm i
 }
 
 build() {
-  cd 
+  cd "$srcdir/$_dirname"
   pnpm build:native --no-bundle
 }
 
