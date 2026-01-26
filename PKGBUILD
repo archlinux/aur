@@ -2,7 +2,7 @@
 # Contributor: Sukanka <su975853527 [AT] gmail.com>
 pkgname=yank-note-bin
 _pkgname=Yank-Note
-pkgver=3.86.1
+pkgver=3.87.1
 _electronversion=38
 pkgrel=1
 pkgdesc='A Hackable Markdown Note Application for Programmers.(Prebuilt version.Use system-wide electron)'
@@ -27,8 +27,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-arm64-${pkgver}.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-amd64-${pkgver}.deb")
 sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('4801a185d74327076f809da998a6361eba34fdb9a61e136ceff136a48407fba6')
-sha256sums_x86_64=('b5e8d78139f252b9093043e5ca865b5039e3a33d939aa7fd61661bcf409c69fc')
+sha256sums_aarch64=('cdc771c0986521d5dc7622a9c8927185ebeccef07a52f9412e9be43da51ad66d')
+sha256sums_x86_64=('9e6a515f92894ec5b9252c8d4b802956022caabfca419418f5f147891556a209')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname//-/ }/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
