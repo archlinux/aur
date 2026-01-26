@@ -1,7 +1,7 @@
 pkgbase = python-pyqtdarktheme
 	pkgdesc = Flat dark theme for PySide and PyQt
 	pkgver = 2.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://pypi.org/project/pyqtdarktheme
 	arch = any
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = python-pyqtdarktheme
 	makedepends = poetry
 	makedepends = python-darkdetect
 	depends = python
+	depends = darkdetect
 	provides = pyqtdarktheme
 	source = https://files.pythonhosted.org/packages/source/p/pyqtdarktheme/pyqtdarktheme-2.1.0.tar.gz
 	sha256sums = 5f8274ddfa3a5481ed9743cdb0f9debfeb7ff695b3a0d202a8104361d17dadb8

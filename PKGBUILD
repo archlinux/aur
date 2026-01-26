@@ -3,12 +3,12 @@
 pkgname=python-pyqtdarktheme
 _name=${pkgname#python-}
 pkgver=2.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Flat dark theme for PySide and PyQt'
 arch=('any')
 url='https://pypi.org/project/pyqtdarktheme'
 license=('MIT')
-depends=('python')
+depends=('python' 'darkdetect')
 optdepends=()
 makedepends=('python-build' 'python-installer' 'python-wheel' 'poetry' 'python-darkdetect')
 provides=('pyqtdarktheme')
