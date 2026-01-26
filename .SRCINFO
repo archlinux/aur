@@ -1,6 +1,6 @@
 pkgbase = hytale-mod-manager
 	pkgdesc = Gerenciador de Mods CLI moderno, automático e estiloso para Hytale
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/jdkeditor/hytale-mod-manager
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = hytale-mod-manager
 	depends = inotify-tools
 	depends = unzip
 	depends = libnotify
-	source = https://github.com/jdkeditor/hytale-mod-manager/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = aff67b4de39df223d55f51c7c4c2b55f55c632058140ce334df127fc4302a807
+	source = https://github.com/jdkeditor/hytale-mod-manager/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 7d71dc19c28b1ace4e3b9f65950ee2e6088216e1ee8cbc1abd275159c6ba73a3
 
 pkgname = hytale-mod-manager

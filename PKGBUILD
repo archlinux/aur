@@ -1,6 +1,6 @@
 # Maintainer: Vrn <eversonsilva2087@proton.me>
 pkgname=hytale-mod-manager
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Gerenciador de Mods CLI moderno, automático e estiloso para Hytale"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/jdkeditor/hytale-mod-manager"
 license=('MIT')
 depends=('bash' 'gum' 'inotify-tools' 'unzip' 'libnotify')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('aff67b4de39df223d55f51c7c4c2b55f55c632058140ce334df127fc4302a807')
+sha256sums=('7d71dc19c28b1ace4e3b9f65950ee2e6088216e1ee8cbc1abd275159c6ba73a3')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -22,6 +22,6 @@ package() {
     install -Dm755 daemon.sh "${pkgdir}/opt/${pkgname}/daemon.sh"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     
-    # Cria o atalho
+    # Cria o link simbólico
     ln -s "/opt/${pkgname}/setup.sh" "${pkgdir}/usr/bin/hytalemm"
 }
