@@ -2,7 +2,7 @@
 
 _pkgname="gtk-nocsd"
 pkgname="${_pkgname}-git"
-pkgver=r141.38900f9
+pkgver=r142.28cf01f
 pkgrel=1
 pkgdesc="An LD_PRELOAD library to disable CSD in GTK3/4, LibHandy, and LibAdwaita apps."
 arch=("x86_64")
