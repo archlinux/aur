@@ -11,6 +11,7 @@ pkgbase = rofi-passx
 	depends = rofi
 	depends = xclip
 	depends = libnotify
+	depends = sed
 	optdepends = wl-clipboard: Wayland clipboard support
 	source = rofi-passx-1.0.0.tar.gz::https://github.com/saurify/rofi-passx/archive/refs/heads/main.tar.gz
 	sha256sums = SKIP
