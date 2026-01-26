@@ -1,6 +1,6 @@
-# Maintainer: ahm4dd
+# Maintainer: ahm4dd <ahmed.emad.edu@gmail.com>
 pkgname=manverse-bin
-pkgver=__VERSION__
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Local-first manga/manhwa reader with AniList sync"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
   "manverse.png"
   "LICENSE"
 )
-sha256sums=('__APPIMAGE_SHA256__' 'cd1cd151452fa5ebb0b26b3c751d5df605781db1de672a82f3e7cfbed3e1b2b9' '2f580ad89e1af08a185d3169d28627244868ca1c8fb8535840f381f4e4c48f87' '2b60e20c042419ada741e53048c452c1341398f45e29787ceb7035a5ea120a5a')
+sha256sums=('7ee4a53dc979926f027771bc80154423c3cf8d0521e7f361493bf367f67c9416' 'cd1cd151452fa5ebb0b26b3c751d5df605781db1de672a82f3e7cfbed3e1b2b9' '2f580ad89e1af08a185d3169d28627244868ca1c8fb8535840f381f4e4c48f87' '2b60e20c042419ada741e53048c452c1341398f45e29787ceb7035a5ea120a5a')
 
 package() {
   install -Dm755 "${srcdir}/ManVerse-${pkgver}.AppImage" "${pkgdir}/opt/manverse/ManVerse.AppImage"
@@ -26,4 +26,5 @@ exec /opt/manverse/ManVerse.AppImage "$@"
 SCRIPT
   install -Dm644 "${srcdir}/manverse.desktop" "${pkgdir}/usr/share/applications/manverse.desktop"
   install -Dm644 "${srcdir}/manverse.png" "${pkgdir}/usr/share/pixmaps/manverse.png"
+  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
