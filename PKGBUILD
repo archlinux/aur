@@ -1,7 +1,7 @@
 # Maintainer: James Liu <contact at no-bull dot sh>
 
 pkgname=reflector-rs-git
-pkgver=1.1.0.1.g4744f3f
+pkgver=1.1.1.0.g2aaa3d4
 pkgrel=1
 pkgdesc='Retrieve and filter the latest Arch Linux mirror list (Rust implementation)'
 arch=('x86_64')
