@@ -10,7 +10,7 @@ pkgbase = ember
 	depends = ruby
 	depends = curl
 	depends = git
-	source = https://github.com/0xraincandy/ember/archive/refs/tags/v1.0-2.tar.gz
+	source = https://github.com/0xraincandy/ember/archive/refs/tags/v1.0-3.tar.gz
 	sha256sums = SKIP
 
 pkgname = ember
