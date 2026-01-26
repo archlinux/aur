@@ -13,6 +13,7 @@ depends=(
   'ocaml'
   'gmp'
   'mpfr'
+  'why3-bin'
 )
 
 # Tools required to extract the Debian package

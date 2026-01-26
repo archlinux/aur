@@ -10,6 +10,7 @@ pkgbase = easycrypt-bin
 	depends = ocaml
 	depends = gmp
 	depends = mpfr
+	depends = why3-bin
 	source = easycrypt_2025.11-1_amd64.deb::https://repo.formosa-crypto.org/debian/pool/main/e/easycrypt/easycrypt_2025.11-1_amd64.deb
 	sha256sums = e2cd61fa526d60516d4242ccd74183ef31e9e296efb0d2264098bdb9510ab7b1
 
