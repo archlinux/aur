@@ -1,12 +1,14 @@
 ss_vendor_id=1038
 
 post_install() {
+    # Reload udev rules
     sudo udevadm control --reload-rules
     sudo udevadm trigger
 
     # Refresh Systemd
     echo Reloading systemd daemon for real users...
     for U in $(ls /home); do
+        sudo usermod -aG audio $U
 	    systemctl -M "$U@.host" --user daemon-reload
 	    systemctl -M "$U@.host" --user enable --now linuxmix
     done
