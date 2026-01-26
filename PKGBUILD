@@ -32,9 +32,6 @@ prepare() {
 
     cd cli
 
-    # # Disable postinstall hook that unpacks bundled tools (we use system ripgrep/difftastic)
-    # sed -i 's|"postinstall": "node scripts/unpack-tools.cjs"|"postinstall": "true"|' package.json
-
     # Patch difftastic module to use system binary
     sed -i "s|resolve(join(projectPath(), 'tools', 'unpacked', binaryName))|'/usr/bin/difft'|" \
         src/modules/difftastic/index.ts
