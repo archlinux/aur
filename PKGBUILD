@@ -2,7 +2,7 @@
 _pkgname=weylus
 pkgname="$_pkgname-community-git"
 pkgver=2025.11.04.r0.gfd1f1f1
-pkgrel=2
+pkgrel=3
 pkgdesc="Use your tablet as graphic tablet/touch screen on your computer."
 arch=("x86_64")
 url="https://github.com/electronstudio/WeylusCommunityEdition"
@@ -41,4 +41,5 @@ package() {
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"
   install -Dm0755 -t "$pkgdir/usr/share/applications/" "weylus.desktop"
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "LICENSE"
+  install -Dm644 -t "$pkgdir/usr/share/icons/" "io.github.electronstudio.WeylusCommunityEdition.svg"
 }

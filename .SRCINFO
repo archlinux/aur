@@ -1,7 +1,7 @@
 pkgbase = weylus-community-git
 	pkgdesc = Use your tablet as graphic tablet/touch screen on your computer.
 	pkgver = 2025.11.04.r0.gfd1f1f1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/electronstudio/WeylusCommunityEdition
 	arch = x86_64
 	license = AGPL-3.0-or-later
