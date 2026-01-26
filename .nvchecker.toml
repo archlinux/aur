@@ -1,0 +1,3 @@
+[python-bencoding]
+source = "pypi"
+pypi = "bencoding"

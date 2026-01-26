@@ -1,0 +1,17 @@
+pkgbase = python-bencoding
+	pkgdesc = BCODE for Python3
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://pypi.org/project/bencoding
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	options = !debug
+	source = https://files.pythonhosted.org/packages/source/b/bencoding/bencoding-0.2.6.tar.gz
+	sha256sums = 43cce31d4863e29d6bc611551d4e9f2652be2995e9d5e15b46d8383f180d4440
+
+pkgname = python-bencoding
