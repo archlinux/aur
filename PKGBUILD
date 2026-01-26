@@ -8,7 +8,7 @@ url="https://github.com/jdkeditor/hytale-mod-manager"
 license=('MIT')
 depends=('bash' 'gum' 'inotify-tools' 'unzip' 'libnotify')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7d71dc19c28b1ace4e3b9f65950ee2e6088216e1ee8cbc1abd275159c6ba73a3')
+sha256sums=('1953ea97fbc3f773d8a27f05b7a7f05d883e4dad5c4685b15165e109f35ba789')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
