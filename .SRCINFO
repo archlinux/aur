@@ -1,0 +1,20 @@
+pkgbase = probe-go-git
+	pkgdesc = A full-platform NAT type detection tool written in pure Go language
+	pkgver = r28.779d56b
+	pkgrel = 1
+	url = https://github.com/xiaoqidun/probe
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = probe-go
+	provides = probe
+	conflicts = probe-go
+	conflicts = probe
+	options = !strip
+	options = !debug
+	source = probe-go-git::git+https://github.com/xiaoqidun/probe.git
+	sha256sums = SKIP
+
+pkgname = probe-go-git
