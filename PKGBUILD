@@ -5,7 +5,7 @@ pkgver=2025.06.3
 pkgrel=1
 pkgdesc="Compiler for the Jasmin language for high-assurance and high-speed cryptography"
 arch=('x86_64')
-url="https://formosa-crypto.org"
+url="https://github.com/jasmin-lang/jasmin"
 license=('MIT')
 
 depends=(
