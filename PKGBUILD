@@ -3,7 +3,7 @@
 _name="graphite"
 pkgname="lib32-${_name}"
 pkgver=1.3.14
-pkgrel=1
+pkgrel=2
 pkgdesc='A "smart font" system to handle the complexities of lesser-known languages of the world (32-bit)'
 arch=(
   'x86_64'
@@ -38,7 +38,6 @@ prepare() {
   patch -Np1 -i "${srcdir}/${_name}_gcc15.patch"
 }
 
-
 build() {
   export CFLAGS+=" -m32"
   export CXXFLAGS+=" -m32"
@@ -49,6 +48,8 @@ build() {
     -W no-dev
     -D CMAKE_BUILD_TYPE:STRING='None'
     -D CMAKE_INSTALL_PREFIX:PATH='/usr'
+    # -D CMAKE_INSTALL_LIBDIR:PATH='lib32'
+    -D LIB_SUFFIX:STRING='32'
     -D CMAKE_POLICY_VERSION_MINIMUM=3.5
     -D CMAKE_SKIP_INSTALL_RPATH:BOOL=ON
     -D GRAPHITE2_COMPARE_RENDERER:BOOL=OFF
