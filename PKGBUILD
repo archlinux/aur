@@ -2,7 +2,7 @@
 # Maintainer: Hajos Attila <linux[dot]alucard[at]gmail[dot]com>
 
 pkgname=tidal-hifi-bin
-pkgver=6.0.1
+pkgver=6.1.0
 pkgrel=1
 pkgdesc="The web version of Tidal running in electron with hifi support thanks to widevine."
 arch=(x86_64)
@@ -14,7 +14,7 @@ provides=("tidal-hifi")
 source=("tidal-hifi-${pkgver}.tar.gz::https://github.com/Mastermindzh/tidal-hifi/releases/download/${pkgver}/tidal-hifi-${pkgver}.tar.gz"
         "tidal-hifi.desktop"
         "icon.png")
-sha256sums=('c86424a9a6c91f86bfe2fa56f5394f5c4c5e5f8b9d2a3ff238de5862eb1a7e3a'
+sha256sums=('66eef54ddd75cd4c8283f4a6e8bd4d807e447f894fcc968d36632097ac22ede7'
             '32a4b8c709b1a39b8f53ce5da8a592b8b67c98d6fee7de57ef6f3393d385c4f6'
             '6f6f94798ed49083fec99f54c9dd90cf95c86eeaf6f17dcee01b00bb194207b5')
 
