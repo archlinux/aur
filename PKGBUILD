@@ -2,14 +2,14 @@
 
 pkgname=nping
 _name=Nping
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="🏎 Nping mean NB Ping, A Ping Tool in Rust with Real-Time Data and Visualizations"
 arch=($CARCH)
 url="https://github.com/hanshuaikang/Nping"
 license=('MIT')
-provides=(${pkgname})
-conflicts=(${pkgname})
+provides=(${pkgname} nbping)
+conflicts=(${pkgname} nbping)
 # replaces=(${pkgname})
 depends=(
     gcc-libs
@@ -22,7 +22,7 @@ backup=()
 options=(!debug !strip !lto)
 #install=${pkgname}.install
 source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('07ca7ce514b9e9584c33fc6e75c4b4974845deb348833cf92814a34ef4cbaca3')
+sha256sums=('48d46e11cec3c69e6c28e91fefbba47f4773aab1c9d8c1f15e276311f79c43ec')
 
 prepare() {
     cd "${srcdir}/${_name}-${pkgver}/"
@@ -43,5 +43,6 @@ build() {
 package() {
     cd "${srcdir}/${_name}-${pkgver}/"
 
-    install -Dvm755 target/release/${pkgname} ${pkgdir}/usr/bin/${pkgname}-rs
+    install -vDm755 target/release/nbping -t ${pkgdir}/usr/bin/
+    install -vDm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
