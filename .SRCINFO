@@ -1,0 +1,21 @@
+pkgbase = everywhere-bin
+	pkgdesc = Context-aware AI assistant for your desktop. Ready to respond intelligently, seamlessly integrating multiple LLMs and MCP tools.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Pasical/Everywhere
+	arch = x86_64
+	license = BSL-1.1
+	depends = dotnet-runtime
+	depends = fontconfig
+	depends = libx11
+	depends = libice
+	depends = libsm
+	depends = hicolor-icon-theme
+	provides = everywhere
+	conflicts = everywhere
+	source = https://github.com/pasical/Everywhere/releases/download/v0.0.1/Everywhere-Linux-x64-v0.0.1.deb
+	source = LICENSE::https://raw.githubusercontent.com/DearVa/Everywhere/refs/heads/main/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = everywhere-bin
