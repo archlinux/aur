@@ -1,5 +1,5 @@
 pkgbase = linux-wallpaperengine-gui-git
-	pkgdesc = GUI for linux-wallpaperengine using Electron
+	pkgdesc = GUI for linux-wallpaperengine using Go(Backend) and Electron(Frontend)
 	pkgver = r1.0000000
 	pkgrel = 1
 	url = https://github.com/AzPepoze/linux-wallpaperengine-gui

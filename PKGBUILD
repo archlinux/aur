@@ -3,7 +3,7 @@ pkgname=linux-wallpaperengine-gui-git
 _pkgname=linux-wallpaperengine-gui
 pkgver=r1.0000000
 pkgrel=1
-pkgdesc="GUI for linux-wallpaperengine using Electron"
+pkgdesc="GUI for linux-wallpaperengine using Go(Backend) and Electron(Frontend)"
 arch=('x86_64')
 url="https://github.com/AzPepoze/linux-wallpaperengine-gui"
 license=('MIT')
@@ -53,6 +53,9 @@ build() {
     
     npm install --verbose
     npm run build
+
+    # Fix permissions for Go module cache to allow cleanup
+    chmod -R u+w "$srcdir/go"
 }
 
 package() {
