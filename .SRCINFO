@@ -1,6 +1,6 @@
 pkgbase = litellm
 	pkgdesc = Library to easily interface with LLM API providers.
-	pkgver = 1.81.1
+	pkgver = 1.81.3
 	pkgrel = 1
 	url = https://github.com/BerriAI/litellm
 	arch = any
@@ -84,7 +84,7 @@ pkgbase = litellm
 	optdepends = python-mlflow: mlflow
 	provides = litellm
 	provides = litellm-proxy
-	source = https://files.pythonhosted.org/packages/source/l/litellm/litellm-1.81.1.tar.gz
-	sha256sums = 9c758db8abff04a2f1f43582d042080e36f245fe34cfbafe2f8b7ca8f1de29b6
+	source = https://files.pythonhosted.org/packages/source/l/litellm/litellm-1.81.3.tar.gz
+	sha256sums = a7688b429a88abfdd02f2a8c3158ebb5385689cfb7f9d4ac1473d018b2047e1b
 
 pkgname = litellm
