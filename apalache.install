@@ -1,0 +1,11 @@
+post_install() {
+    echo "==> NOTE: Apalache requires Java 17 or later."
+    echo "==> Check your current Java version with:"
+    echo "      $ archlinux-java status"
+    echo "==> Set a compatible version with:"
+    echo "      $ sudo archlinux-java set java-17-openjdk"
+}
+
+post_upgrade() {
+    post_install
+}

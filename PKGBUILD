@@ -4,11 +4,11 @@ _pkgname=apalache
 _prjname=$_pkgname-mc
 pkgname=$_pkgname-bin
 pkgver=0.52.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A symbolic model checker for TLA+"
 arch=('any')
 url="https://${_prjname}.org"
-license=('Apache')
+license=('Apache-2.0')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 depends=('java-runtime>=17'
@@ -16,6 +16,7 @@ depends=('java-runtime>=17'
          'coreutils'
          'util-linux')
 makedepends=('patch')
+install=$_pkgname.install
 source=("https://github.com/${_prjname}/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tgz"
         'sys-install.patch'
         'apalache.service')
