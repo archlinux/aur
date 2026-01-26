@@ -1,7 +1,7 @@
 # Maintainer: ahm4dd <ahmed.emad.edu@gmail.com>
 pkgname=manverse-bin
-pkgver=2.0.0
-pkgrel=5
+pkgver=2.0.1
+pkgrel=2
 pkgdesc="Local-first manga/manhwa reader with AniList sync"
 arch=('x86_64')
 url="https://github.com/ahm4dd/ManVerse"
@@ -16,7 +16,7 @@ source=(
   "manverse.png"
   "LICENSE"
 )
-sha256sums=('21df5082da587a8af692d776e44688c085b942b70ce15998e246732b8da0ab86' 'cd1cd151452fa5ebb0b26b3c751d5df605781db1de672a82f3e7cfbed3e1b2b9' '2f580ad89e1af08a185d3169d28627244868ca1c8fb8535840f381f4e4c48f87' '2b60e20c042419ada741e53048c452c1341398f45e29787ceb7035a5ea120a5a')
+sha256sums=('16e146424176e8b4d0bfc92d6b2c25b1bfb6b7c6aa92207bbd6931658b6dfb33' 'cd1cd151452fa5ebb0b26b3c751d5df605781db1de672a82f3e7cfbed3e1b2b9' '2f580ad89e1af08a185d3169d28627244868ca1c8fb8535840f381f4e4c48f87' '2b60e20c042419ada741e53048c452c1341398f45e29787ceb7035a5ea120a5a')
 
 package() {
   install -Dm755 "${srcdir}/ManVerse-${pkgver}.AppImage" "${pkgdir}/opt/manverse/ManVerse.AppImage"
