@@ -18,7 +18,7 @@ source=(
 )
 noextract=()
 options=(!strip)
-sha256sums=('91de127a1b514179f386a57c99d9cda78485d5b9e8bea3a3776bb0cbec53394c')
+sha256sums=('3758031d5f10c76085e5232a490d96006b48647e8247cf4a8f47ffd579bab68b')
 
 prepare() {
     if ! command -v bun &> /dev/null; then
