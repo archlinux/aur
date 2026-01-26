@@ -1,6 +1,6 @@
-diff -ura Waybar-0.14.0/meson.build Waybar-0.14.0.new1/meson.build
+diff -ura Waybar-0.14.0/meson.build Waybar-0.14.0.new2/meson.build
 --- Waybar-0.14.0/meson.build	2025-08-08 09:15:22.000000000 +0200
-+++ Waybar-0.14.0.new1/meson.build	2025-10-15 09:19:41.386810273 +0200
++++ Waybar-0.14.0.new2/meson.build	2025-10-15 09:48:15.553529027 +0200
 @@ -69,7 +69,7 @@
  
  thread_dep = dependency('threads')
@@ -10,6 +10,17 @@ diff -ura Waybar-0.14.0/meson.build Waybar-0.14.0.new1/meson.build
  wayland_client = dependency('wayland-client')
  wayland_cursor = dependency('wayland-cursor')
  wayland_protos = dependency('wayland-protocols')
+@@ -498,7 +498,7 @@
+ endif
+ 
+-cava = dependency('cava',
+-                  version : '>=0.10.4',
++cava = dependency('libcava',
++                  version : '>=0.10.7',
+                   required: get_option('cava'),
+-                  fallback : ['cava', 'cava_dep'],
++                  fallback : ['libcava', 'cava_dep'],
+                   not_found_message: 'cava is not found. Building waybar without cava')
 @@ -505,7 +505,7 @@
  
  if cava.found()

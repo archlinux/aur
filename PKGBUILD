@@ -2,7 +2,7 @@
 
 pkgname=waybar-cava
 pkgver=0.14.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors, with module cava (Cross-platform Audio Visualizer)'
 arch=('x86_64')
 url='https://github.com/Alexays/Waybar/'
@@ -50,20 +50,20 @@ optdepends=(
     'otf-font-awesome: Icons in the default configuration'
 )
 source=(
-    waybar-cava-0.14.0-2.patch1
-    waybar-cava-0.14.0-2.patch2
+    waybar-cava-0.14.0-3.patch
     cava.hpp
     cava_backend.hpp
     cava.cpp
     cava_backend.cpp
+    libcava.wrap
     "$pkgname-$pkgver.tar.gz::https://github.com/Alexays/Waybar/archive/$pkgver.tar.gz"
 )
-sha256sums=('eaeb9a38a067f854f8f741832bd9b3fa2c853ddf79406272fc96e3535dada4f3'
-            '8af473867caf7ff0afe6fad84000989124d7b73028bbd953d036122c395f79ee'
-            'bce2d77ad22db7617c65aa74dc9c8fca4e2bdab5c1077b69042e265e000f15fc'
-            '3214fc3e05312bbf83c33a7bc7b216ea5299a24ed5674e5c519f93b8b9c13fc6'
-            '68cac73f262f0f9b9747b5b339a60215ed4cdb677469e7b9ae06cc1e4e74e88e'
-            '0d59e480839b297bba735922fcc72c1f7e4822b38d0032f207afa9b9298181b7'
+sha256sums=('fe9067643d4a0d1539910e288f059c66d5a9c4af8304a7d95102f2da99c54088'
+            '4e883e310119c20b2816d478634ecde4582e102142c08796f7bf39f1ceae61f4'
+            '1daf3766b87f42090cc04fa1c07aa129164df33bb123b39fcdfcf006e00c55af'
+            '347c547b73076c8ace8efeafabb6adf72527ae1b59ad80993c7774f77180fd71'
+            '3ec2e1d77a226bdab8a0c3d8efdbd90570392840bc9752dbb8a9650f6eeaeda3'
+            '2a2fee101c4cf06a6f9f328817923c20ceb99644d91a0a38c925891bd0bf283f'
             '7f3859779bb3a5028a7215b2000c2e476c03453a52289164ba60a4bf1bb3772f')
 
 prepare() {
@@ -79,9 +79,11 @@ prepare() {
     rm src/modules/cava.cpp
     cp ../cava.cpp src/modules/cava
     cp ../cava_backend.cpp src/modules/cava
+    rm subprojects/cava.wrap
+    cp ../libcava.wrap subprojects/libcava.wrap
 
-    patch -p1 -i ../waybar-cava-0.14.0-2.patch1
-    patch -p1 -i ../waybar-cava-0.14.0-2.patch2
+    # patch -p1 -i ../waybar-cava-0.14.0-2.patch1
+    patch -p1 -i ../waybar-cava-0.14.0-3.patch
 }
 
 build() {
