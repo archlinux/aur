@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=atlassify-bin
 _pkgname=Atlassify
-pkgver=2.14.0
-_electronversion=39
+pkgver=2.15.0
+_electronversion=40
 pkgrel=1
 pkgdesc="Atlassian notifications on your menu bar.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/setchy/atlassify/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('67f188148a1b2782f3bd82b896b3aa418e61f83aaec6bc7245547b783d5348a3'
+sha256sums=('8f68b6ac10c101cc79181389fc8ebb120cc693efe7a31e5761a6b300c9900b81'
             '2030af44675d6523de146944f48720295a82c2e89023ec6f579661e22ad8be2d'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
