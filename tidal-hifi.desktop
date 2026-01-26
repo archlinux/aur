@@ -2,7 +2,7 @@
 Name=TIDAL Hi-Fi
 GenericName=Music Streaming Service
 Icon=tidal-hifi
-Comment=The web version of Tidal running in electron with hifi support thanks to widevine.
+Comment=The web version of Tidal running in electron with hifi support thanks to widevine
 Exec=tidal-hifi %u
 StartupNotify=true
 Terminal=false
