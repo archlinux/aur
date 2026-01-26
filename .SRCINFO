@@ -1,8 +1,8 @@
 pkgbase = sqlitexx
 	pkgdesc = A C++ API for Sqlite.
 	pkgver = 0.0.4
-	pkgrel = 3
-	url = http://wiki.github.com/andreasbaumann/sqlitexx/
+	pkgrel = 4
+	url = https://git.andreasbaumann.cc/cgit/sqlitexx/
 	arch = i686
 	arch = x86_64
 	license = LGPL-3.0-or-later
@@ -10,7 +10,7 @@ pkgbase = sqlitexx
 	makedepends = doxygen
 	depends = sqlite3>=3.0
 	provides = sqlitexx
-	source = http://downloads.sourceforge.net/sourceforge/sqlitexx/0.0.4/sqlitexx-0.0.4.tar.gz
+	source = https://downloads.sourceforge.net/sourceforge/sqlitexx/0.0.4/sqlitexx-0.0.4.tar.gz
 	md5sums = 41ecee2d76247f432454bc48fc5f069e
 
 pkgname = sqlitexx
