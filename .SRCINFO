@@ -1,14 +1,21 @@
 pkgbase = gittorrent
 	pkgdesc = a CLI version control system with a CI/CD pipeline
-	pkgver = 3.1.7
+	pkgver = 3.3.9
 	pkgrel = 1
 	url = https://projectgrid.net/portfolio/gittorrent
 	install = advice.install
 	arch = x86_64
 	license = 0BSD
 	makedepends = cargo
+	makedepends = pkgconf
+	makedepends = cmake
+	depends = libssh2
+	depends = openssl
+	depends = zlib
+	depends = gcc-libs
 	optdepends = bash-completion: for command line completions when pressing the <tab> key
-	source = gittorrent-3.1.7.tar.xz::https://projectgrid.net/archive/gittorrent-3.1.7.tar.xz
-	sha256sums = 90c18b34ff687edf86db7805d41694251ddab8fbfa70a845c54710664828bae3
+	options = !lto
+	source = gittorrent-3.3.9.tar.xz::https://projectgrid.net/archive/gittorrent-3.3.9.tar.xz
+	sha256sums = 73cb085a678b5ee7fa57bbc823140b56372ed0ea4be3b840a9accd28a53e9159
 
 pkgname = gittorrent
