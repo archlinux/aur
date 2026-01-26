@@ -2,7 +2,7 @@
 # Maintainer: Rafael Senties Martinelli <contact@rsm92.fr>
 
 pkgname=phantom-player-git
-pkgver=v2.0.1.r112.gd16d0e6
+pkgver=v2.0.1.r115.g25c8006
 pkgrel=1
 epoch=
 pkgdesc="Smart video player and playlist manager"
@@ -37,9 +37,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://codeberg.org/rsm92/phantom-player/archive/d16d0e6c4b85163b97f5b702d1b81408f8efb340.zip")
+source=("https://codeberg.org/rsm92/phantom-player/archive/25c8006eb60e2e4880e2e098ca50e4798f944415.zip")
 noextract=()
-sha256sums=('f2ffbf65a765ce748c502661a395496e0e5873bb4091fce7bd01469e1c368056')
+sha256sums=('70920f9bc7384e277e15b917bed7fa73f413d7715f1593f6d30851b032e54255')
 validpgpkeys=()
 
 package() {
