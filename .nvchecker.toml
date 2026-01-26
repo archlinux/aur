@@ -1,0 +1,5 @@
+[lpd8editor]
+source = "github"
+github = "charlesfleche/lpd8editor"
+use_max_tag = true
+prefix = "v"

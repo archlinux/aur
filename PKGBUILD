@@ -3,17 +3,17 @@
 # Contributor: Florian Hülsmann <fh@cbix.de>
 
 pkgname=lpd8editor
-pkgver=0.0.16
-pkgrel=2
+pkgver=0.0.18
+pkgrel=1
 pkgdesc='A Linux editor for the Akai LPD8 pad controller'
 arch=(x86_64 aarch64)
 url='https://github.com/charlesfleche/lpd8editor'
 license=(MIT)
-depends=(graphite qt5-base)
-makedepends=(alsa-lib cmake qt5-svg qt5-tools)
+depends=(graphite qt6-base)
+makedepends=(alsa-lib cmake qt6-svg qt6-tools)
 groups=(pro-audio)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/charlesfleche/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2b9709e014102b65711825488d9f081edb40e18c1b316c0ebd5b0248f6728201')
+sha256sums=('f91687707bb0a975f13320829b22b886587c7a5f8a796519bca99ff43006bc93')
 
 prepare() {
   cd $pkgname-$pkgver
