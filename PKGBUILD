@@ -1,7 +1,7 @@
 # Maintainer: Lncvrt <lncvrtreal@gmail.com>
 pkgname=lncvrt-games-launcher
 pkgver=1.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="The official Lncvrt Games Launcher AUR Package!"
 arch=('x86_64')
 depends=('gtk3' 'libx11')
@@ -15,7 +15,7 @@ source=(
 )
 sha256sums=(
     'f1aa6a99a72739ca0153fd297a88d276708bc288b617553f2cda140f463c7b80'
-    '45724ec07cbb730f9c46deca0b40f93a1cf44a6576332a371586eb80f5cd4be5'
+    '459c15b6f69f7026963b2090a22a3de3729ae8f54ad23b3c72e8b8a15a937115'
     'c40be4e50bca8c58fa0114aec50e62dc85b8747cd0c61ed7b464e3b5d1ae1bd5'
     'd5272d77054a9a3f010760bf8ff78babf59eaecd31e5f695f5a7156d34252219'
     '6e812d3fcdce162d740fb7f4a0ad0a2c4b2485103b9569ed8062b952a9445c4f'
