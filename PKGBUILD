@@ -7,14 +7,13 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-unixodbc
 pkgver=2.3.14
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="ODBC is an open specification for providing application developers with a predictable API with which to access Data Sources (Android, ${_android_arch})"
 license=('GPL2' 'LGPL2.1')
 url="http://www.unixodbc.org/"
 groups=('android-unixodbc')
-depends=("android-${_android_arch}-readline"
-         "android-${_android_arch}-libltdl")
+depends=("android-${_android_arch}-libltdl")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("ftp://ftp.unixodbc.org/pub/unixODBC/unixODBC-${pkgver}.tar.gz")
 md5sums=('316cede4896eb768fe4572d71dc04537')
@@ -29,7 +28,9 @@ build() {
         fi
     fi
 
-    android-${_android_arch}-configure ${configopts}
+    android-${_android_arch}-configure \
+        --disable-readline \
+        ${configopts}
     make $MAKEFLAGS
 }
 
