@@ -1,6 +1,6 @@
 pkgbase = waybar-ai-usage
 	pkgdesc = Monitor Claude Code and OpenAI Codex CLI usage in Waybar
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/NihilDigit/waybar-ai-usage
 	install = waybar-ai-usage.install
@@ -16,7 +16,7 @@ pkgbase = waybar-ai-usage
 	depends = libcurl-impersonate
 	depends = python-json-five
 	depends = python-sly
-	source = waybar-ai-usage-0.3.0.tar.gz::https://api.github.com/repos/NihilDigit/waybar-ai-usage/tarball/refs/tags/v0.3.0
-	sha256sums = 20b083e2d02d304289fcfec9c99ab1501f75579d985f6af69b16b21d43895df7
+	source = waybar-ai-usage-0.4.0.tar.gz::https://api.github.com/repos/NihilDigit/waybar-ai-usage/tarball/refs/tags/v0.4.0
+	sha256sums = 63e18b8d539c44634b584538edd8539c85d10905675db04bf87ec09f66430b00
 
 pkgname = waybar-ai-usage
