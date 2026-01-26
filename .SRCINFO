@@ -1,0 +1,13 @@
+pkgbase = distroupdater
+	pkgdesc = Cross-distro system updater (Arch, Debian, Fedora, Termux)
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/digitalencryption/DistroUpdater
+	arch = any
+	license = MIT
+	depends = python
+	depends = unzip
+	source = https://github.com/digitalencryption/DistroUpdater/releases/download/2.1/DistroUpdaterv2.1.zip
+	sha256sums = SKIP
+
+pkgname = distroupdater
