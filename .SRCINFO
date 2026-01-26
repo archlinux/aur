@@ -1,6 +1,6 @@
 pkgbase = pkgwhy
-	pkgdesc = A tool for idiots to remember why they installed a package
-	pkgver = 0.1.0
+	pkgdesc = To help you remember why you installed a package
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/Asa-DB/pkgwhy
 	arch = any
@@ -10,7 +10,8 @@ pkgbase = pkgwhy
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = pkgwhy-0.1.0.tar.gz::https://github.com/Asa-DB/pkgwhy/archive/v0.1.0.tar.gz
-	sha256sums = 29125992749f1b1a2c0348386cbc226fbdfc66206500c08e3e87ffd1971b75b8
+	depends = pacman
+	source = pkgwhy-0.2.0.tar.gz::https://github.com/Asa-DB/pkgwhy/archive/v0.2.0.tar.gz
+	sha256sums = 879cec20ff05aca0a80788a4ebe62f5b7de63bd9d661415804cbad6f447e1aea
 
 pkgname = pkgwhy
