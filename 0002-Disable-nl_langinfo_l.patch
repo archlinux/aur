@@ -1,0 +1,19 @@
+--- a/src/port/chklocale.c
++++ b/src/port/chklocale.c
+@@ -319,15 +319,7 @@
+ 
+ 
+ #ifndef WIN32
+-	loc = newlocale(LC_CTYPE_MASK, ctype, (locale_t) 0);
+-	if (loc == (locale_t) 0)
+-		return -1;				/* bogus ctype passed in? */
+-
+-	sys = nl_langinfo_l(CODESET, loc);
+-	if (sys)
+-		sys = strdup(sys);
+-
+-	freelocale(loc);
++	sys = strdup("UTF-8");
+ #else
+ 	sys = win32_get_codeset(ctype);
+ #endif
