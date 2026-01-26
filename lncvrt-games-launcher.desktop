@@ -1,7 +1,7 @@
 #!/usr/bin/env xdg-open
 [Desktop Entry]
 Categories=
-Exec=lncvrt-games-launcher
+Exec=env GDK_BACKEND=x11 lncvrt-games-launcher-loader
 StartupWMClass=lncvrt-games-launcher-loader
 Icon=lncvrt-games-launcher-loader
 Name=Lncvrt Games Launcher

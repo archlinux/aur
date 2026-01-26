@@ -1,20 +1,21 @@
 # Maintainer: Lncvrt <lncvrtreal@gmail.com>
 pkgname=lncvrt-games-launcher
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="The official Lncvrt Games Launcher AUR Package!"
 arch=('x86_64')
+depends=('gtk3' 'libx11')
 url="https://games.lncvrt.xyz"
 source=(
-    "https://games-r2.lncvrt.xyz/lncvrt-games-launcher/Lncvrt-Games-Launcher-${pkgver}-linux.AppImage"
+    "https://games-r2.lncvrt.xyz/lncvrt-games-launcher/Lncvrt-Games-Launcher-${pkgver}-linux"
     'lncvrt-games-launcher.desktop'
     '32x32.png'
     '128x128.png'
     '256x256@2.png'
 )
 sha256sums=(
-    '55098be0ab774f81040e3ab5c3b37a2c24013e47458e8ab0a2bb41beef10cb60'    
-    '773748b6ee35da1c11e47024dc222a2b5c43e97626ec649adbb0d87729dbcf3d'
+    'f1aa6a99a72739ca0153fd297a88d276708bc288b617553f2cda140f463c7b80'
+    '45724ec07cbb730f9c46deca0b40f93a1cf44a6576332a371586eb80f5cd4be5'
     'c40be4e50bca8c58fa0114aec50e62dc85b8747cd0c61ed7b464e3b5d1ae1bd5'
     'd5272d77054a9a3f010760bf8ff78babf59eaecd31e5f695f5a7156d34252219'
     '6e812d3fcdce162d740fb7f4a0ad0a2c4b2485103b9569ed8062b952a9445c4f'
@@ -22,14 +23,12 @@ sha256sums=(
 options=('!strip')
 package() {
   install -Dm755 \
-    "$srcdir/Lncvrt-Games-Launcher-${pkgver}-linux.AppImage" \
-    "$pkgdir/usr/bin/lncvrt-games-launcher"
-
+    "$srcdir/Lncvrt-Games-Launcher-${pkgver}-linux" \
+    "$pkgdir/usr/bin/lncvrt-games-launcher-loader"
 
   install -Dm644 \
     "$srcdir/lncvrt-games-launcher.desktop" \
     "$pkgdir/usr/share/applications/lncvrt-games-launcher.desktop"
-
 
   install -Dm644 \
     "$srcdir/32x32.png" \
