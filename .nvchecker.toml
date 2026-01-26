@@ -1,0 +1,4 @@
+[kapowarr]
+source = "git"
+git = "https://github.com/Casvt/Kapowarr.git"
+prefix = "V"

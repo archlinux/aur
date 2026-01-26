@@ -1,0 +1,3 @@
+u kapowarr - "Kapowarr Daemon" /var/lib/kapowarr
+g media  -
+m kapowarr media

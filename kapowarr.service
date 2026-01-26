@@ -1,0 +1,17 @@
+[Unit]
+Description=Kapowarr Daemon
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=kapowarr
+Group=media
+UMask=002
+ExecStart=/usr/bin/python /opt/kapowarr/Kapowarr.py --DatabaseFolder /var/lib/kapowarr
+Restart=on-failure
+RestartSec=10
+SyslogIdentifier=kapowarr
+
+[Install]
+WantedBy=multi-user.target

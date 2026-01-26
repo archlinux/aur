@@ -1,0 +1,3 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /var/lib/kapowarr 0755 kapowarr media
+Z /opt/kapowarr     - kapowarr media
