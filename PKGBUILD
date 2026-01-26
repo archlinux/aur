@@ -2,8 +2,8 @@
 
 pkgname=moneymanagerex
 # HINT: ! ALSO UPDATE COMMIT HASHES IN source !
-pkgver=1.9.1
-pkgrel=9
+pkgver=1.9.2
+pkgrel=1
 pkgdesc="MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest tagged version."
 arch=('x86_64')
 url="http://www.moneymanagerex.org/"
@@ -23,9 +23,9 @@ source=("git+https://github.com/moneymanagerex/moneymanagerex.git#tag=v${pkgver}
               "git+https://github.com/lua/lua.git#commit=d71a548685eb3ac5ea598d6a9e7481389c558808"
               "git+https://github.com/Tencent/rapidjson.git#commit=8f4c021fa2f1e001d2376095928fc0532adf2ae6"
               "git+https://github.com/utelle/wxsqlite3.git#commit=7bbd8a15f9fc0fdb81e3421a0fab90a63a6f0461"
-              "git+https://github.com/moneymanagerex/database.git#commit=ff23b007c6e788b9cce10ce4e1c285053a1e51c7"
-              "git+https://github.com/moneymanagerex/general-reports.git#commit=2d87da4a4fdb9a539766ab07acc5ae24bda81729"
-              "git+https://github.com/moneymanagerex/themes.git#commit=9704a6a597bafebe0048d2f8aa8b08aaaf42c62f")
+              "git+https://github.com/moneymanagerex/database.git#commit=5a77461d932541cbcd10f2c776dd33398b335964"
+              "git+https://github.com/moneymanagerex/general-reports.git#commit=4229e9c8a9b073d7565195d38a651ccdaec838c9"
+              "git+https://github.com/moneymanagerex/themes.git#commit=beef440deef32fa4b4c57bb10ec715a679697eaf")
 sha512sums=('SKIP'
                         'SKIP'
                         'SKIP'
@@ -55,14 +55,6 @@ prepare() {
   git config submodule.general-reports.url "$srcdir/general-reports"
   git config submodule.themes.url "$srcdir/themes"
   git -c protocol.file.allow=always submodule update
-  
-  # Workaround for https://github.com/moneymanagerex/moneymanagerex/issues/5243 https://github.com/moneymanagerex/moneymanagerex/issues/7728
-  #  Until mmex >=v1.9.2
-
-  git config user.name "Your Name"
-  git config user.email "your.email@example.com"
-
-  git cherry-pick 3f8a07c2a9329c06650fa899735f1ccaacea001b
 }
 
 build() {
