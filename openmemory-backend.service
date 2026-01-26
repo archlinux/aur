@@ -1,0 +1,18 @@
+[Unit]
+Description=OpenMemory backend (HTTP API + MCP)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/openmemory-backend
+Restart=on-failure
+RestartSec=2
+
+# Environment configuration
+# 1) System-wide defaults shipped by the package
+EnvironmentFile=-/etc/openmemory/openmemory.env
+# 2) Optional per-user override (wins over /etc if present)
+EnvironmentFile=-%E/openmemory/openmemory.env
+
+[Install]
+WantedBy=default.target
