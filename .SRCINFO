@@ -1,6 +1,6 @@
 pkgbase = python-ledgered
 	pkgdesc = Python tools, utils, libraries, to be used with Ledger cryptodevices
-	pkgver = 0.12.1
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/LedgerHQ/ledgered
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-ledgered
 	depends = python-tomli
 	optdepends = python-pytest: Run tests
 	optdepends = python-pytest-cov: Code coverage
-	source = https://github.com/LedgerHQ/ledgered/releases/download/v0.12.1/ledgered-0.12.1.tar.gz
-	sha256sums = 34d0022b6373e5f478722bb2ebc044a5f8af3e3d77831b494f3da7e16471f9d1
+	source = https://github.com/LedgerHQ/ledgered/releases/download/v0.14.0/ledgered-0.14.0.tar.gz
+	sha256sums = 750fd369b36d75e3ecc1b0755450e5189d98e5636d6a8a851f7b5aca5c4d39da
 
 pkgname = python-ledgered

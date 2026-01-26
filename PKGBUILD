@@ -2,7 +2,7 @@
 
 pkgname='python-ledgered'
 _name=${pkgname#python-}
-pkgver=0.12.1
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='Python tools, utils, libraries, to be used with Ledger cryptodevices'
 arch=('any')
@@ -30,7 +30,7 @@ source=(
 	"${url}/releases/download/v${pkgver}/${_name}-${pkgver}.tar.gz"
 )
 sha256sums=(
-	'34d0022b6373e5f478722bb2ebc044a5f8af3e3d77831b494f3da7e16471f9d1'
+	'750fd369b36d75e3ecc1b0755450e5189d98e5636d6a8a851f7b5aca5c4d39da'
 )
 
 build() {
