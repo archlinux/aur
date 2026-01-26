@@ -1,6 +1,6 @@
 # Maintainer: FPTN Project <fptnvpn at gmail dot com>
 pkgname=fptn-client-bin
-pkgver=0.3.35
+pkgver=0.3.36
 pkgrel=1
 pkgdesc='Non-commercial VPN, a volunteer project for bypassing censorship (GUI client)'
 arch=('x86_64' 'aarch64')
@@ -8,8 +8,8 @@ url='https://github.com/batchar2/fptn'
 license=('MIT')
 source_x86_64=("${url}/releases/download/${pkgver}/fptn-client-${pkgver}-ubuntu22.04-amd64.deb")
 source_aarch64=("${url}/releases/download/${pkgver}/fptn-client-${pkgver}-ubuntu22.04-arm64.deb")
-sha256sums_x86_64=('d38af6a167ac8f08713e9f6b7a3ec7a38c7c9b7857685835be02d7f2f91c1b16')
-sha256sums_aarch64=('a7adb66dda32e36a244b3f925196ead963fa8a6921d84ca3898bb4ad3a48fa4e')
+sha256sums_x86_64=('74d271bf106cbec871a7e6d75ace99d495946ce03f9ee176a8c301da1e13d2d8')
+sha256sums_aarch64=('44088188752f83a2d99e83afbefaec035d6a3108eb37a841da44f482be43ea19')
 
 package() {
     cd "${srcdir}"
