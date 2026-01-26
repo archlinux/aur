@@ -4,7 +4,7 @@
 # Contributor: Klemen Košir <klemen913@gmail.com>
 
 pkgname=cataclysm-dda-git
-pkgver=experimental.2026.01.18
+pkgver=experimental.2026.01.26
 pkgrel=1
 pkgdesc="A post-apocalyptic roguelike."
 #url="http://cataclysmrl.blogspot.com/"
@@ -15,7 +15,7 @@ conflicts=('cataclysm-dda' 'cataclysm-dda-ncurses' 'cataclysm-dda-tiles')
 depends=('ncurses' 'gettext')
 makedepends=(
   'sdl2_image' 'sdl2_ttf' 'sdl2_mixer'
-  'freetype2' 'git' 'libbacktrace-git' 'qt5-base'
+  'freetype2' 'git' 'libbacktrace-git'
   'transifex-cli')
 optdepends=('sdl2_image: for tiles'
             'sdl2_ttf: for tiles'
@@ -61,7 +61,6 @@ build() {
 
   make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 LANGUAGES=all LTO=0 TESTS=0 RUNTESTS=0 LINTJSON=0 ASTYLE=0 PCH=0 BACKTRACE=1 LIBBACKTRACE=1
   make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 LANGUAGES=all LTO=0 TESTS=0 RUNTESTS=0 LINTJSON=0 ASTYLE=0 PCH=0 TILES=1 SOUND=1 BACKTRACE=1 LIBBACKTRACE=1
-  # make PREFIX=/usr LINTJSON=0 RELEASE=1 PCH=0 LIBBACKTRACE=1 object_creator
 }
 
 package() {
@@ -75,8 +74,6 @@ package() {
   make PREFIX="$pkgdir/usr" \
   RELEASE=1 ZLEVELS=1 USE_XDG_DIR=1 PCH=0 TILES=1 SOUND=1 \
   install
-
-  #install -Dm755 ./object_creator/object_creator "$pkgdir/usr/bin/object_creator"
 
   # Icons
   pushd build-data/osx/AppIcon.iconset
