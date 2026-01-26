@@ -1,13 +1,12 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgname=ferrite-bin
-pkgver=0.2.5
-pkgrel=2
-_hotfix=hotfix.3
+pkgver=0.2.6
+pkgrel=1
 pkgdesc='A fast, lightweight text editor for Markdown, JSON, YAML, and TOML files.'
 arch=('x86_64')
 url=https://github.com/OlaProeis/Ferrite
-_rawurl="${url/github.com/raw.githubusercontent.com}/refs/tags/v$pkgver-$_hotfix/"
+_rawurl="${url/github.com/raw.githubusercontent.com}/refs/tags/v$pkgver"
 license=('MIT')
 depends=(glibc gcc-libs zlib hicolor-icon-theme fontconfig)
 provides=("${pkgname%-bin}")
@@ -26,7 +25,7 @@ source=(
   "ferrite_512_$pkgver.png::$_rawurl/assets/icons/linux/512x512/ferrite.png"
 )
 
-sha256sums=('f2371fddd25f3b97c0fe9265ab9fb208ade57bf441860ff196a8b893a567c2e3'
+sha256sums=('4095a1e80ccd968d167699cbbcf6465e822d35a37887814df9fd17804887876c'
             'c94952dae4438b71667a129c1f7dd0e196e6d7dbf37db4525511c69536c27ac1'
             '79415739aa458c27bfb595d40ce73d81d81aae81fb53771d978209b6f193c7b2'
             '2e6a7b55e4bf576c3ba6619b66175dcd82df94852056a1ab3512d80ddb1e1532'
