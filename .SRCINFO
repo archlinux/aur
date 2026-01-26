@@ -1,0 +1,18 @@
+pkgbase = rofi-passx
+	pkgdesc = Rofi based password manager based on pass
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/saurify/rofi-passx
+	arch = any
+	license = MIT
+	depends = bash
+	depends = gnupg
+	depends = pass
+	depends = rofi
+	depends = xclip
+	depends = libnotify
+	optdepends = wl-clipboard: Wayland clipboard support
+	source = rofi-passx-1.0.0.tar.gz::https://github.com/saurify/rofi-passx/archive/refs/heads/main.tar.gz
+	sha256sums = SKIP
+
+pkgname = rofi-passx
