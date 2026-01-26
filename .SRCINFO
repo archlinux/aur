@@ -1,6 +1,6 @@
 pkgbase = vinegar
 	pkgdesc = Fast and robust bootstrapper for Roblox that has many ease-of-use features.
-	pkgver = 1.9.1
+	pkgver = 1.9.3
 	pkgrel = 1
 	url = https://vinegarhq.org
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = vinegar
 	conflicts = vinegar-git
 	conflicts = vinegar-git-debug
 	options = !debug
-	source = https://github.com/vinegarhq/vinegar/archive/refs/tags/v1.9.1.tar.gz
-	sha256sums = 2c146918abfa71085b14c2d020fa6c2d026152a4d5182e9afe7f1c8a886dd6e5
+	source = https://github.com/vinegarhq/vinegar/archive/refs/tags/v1.9.3.tar.gz
+	sha256sums = 3293474b3afd4c7b13c269340865f9c3ca38c1056c4302cee0bfa2cb6a9e05d2
 
 pkgname = vinegar
