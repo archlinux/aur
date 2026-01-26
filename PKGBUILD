@@ -12,7 +12,7 @@ pkgver=20251103
 _pkgver=dev-${pkgver}
 _vboxver='7.2.4'
 _vboxsubver=''
-pkgrel=1
+pkgrel=3
 conflicts=('virtualbox' 'virtualbox-ose')
 depends=('curl' 'gcc-libs' 'glibc' 'liblzf' 'libpng' 'libtpms' 'libvpx' 'libx11' 'libxcursor'
             'libxext' 'libxinerama' 'libxml2' 'libxmu' 'libxt' 'openssl' 'procps-ng' 'python'
@@ -103,7 +103,6 @@ build() {
     echo 'Build virtualbox-kvm'
     ./configure \
         --with-kvm \
-        --disable-hardening \
         --disable-docs \
         --disable-kmods \
         --disable-vmmraw \
@@ -129,14 +128,18 @@ package() {
     install -m0755 *.so -t "${pkgdir}/usr/lib/virtualbox"
     install -m0644 *.r0 VBoxEFI*.fd -t "${pkgdir}/usr/lib/virtualbox"
 
-    # binaries (in /usr/lib/virtualbox)
-    install -m0755 \
+    # binaries (in /usr/lib/virtualbox) with setuid
+    install -m4755 \
         VirtualBoxVM \
-        VBoxSDL \
         VBoxHeadless \
         VBoxNetAdpCtl \
         VBoxNetDHCP \
         VBoxNetNAT \
+        -t "${pkgdir}/usr/lib/virtualbox"
+
+    # binaries (in /usr/lib/virtualbox)
+    install -m0755 \
+        VBoxSDL \
         VirtualBox \
         VBoxManage \
         VBoxSVC \
