@@ -1,0 +1,13 @@
+pkgbase = libjasmin-easycrypt-bin
+	pkgdesc = EasyCrypt libraries used for verifying Jasmin implementations
+	pkgver = 2025.06.3
+	pkgrel = 1
+	url = https://github.com/jasmin-lang/jasmin
+	arch = x86_64
+	license = MIT
+	makedepends = binutils
+	makedepends = tar
+	source = libjasmin-easycrypt_2025.06.3-1+trixie_amd64.deb::https://repo.formosa-crypto.org/debian/pool/main/j/jasmin-compiler/libjasmin-easycrypt_2025.06.3-1+trixie_amd64.deb
+	sha256sums = cccbf27a7070c26e2dff230c10c6395743b40ef7b41cfa50770926ea38c4f22d
+
+pkgname = libjasmin-easycrypt-bin
