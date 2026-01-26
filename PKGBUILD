@@ -1,27 +1,22 @@
 # Maintainer: Ivo Maceira <ivomaceira at gmail dot com>
 pkgname=python-deepgram-sdk
-pkgver=3.11.0  # https://pypi.org/project/deepgram-sdk/
-pkgrel=2
+pkgver=5.3.1  # https://pypi.org/project/deepgram-sdk/
+pkgrel=3
 pkgdesc="Official Deepgram SDK for Python"
 arch=("any")
 url="https://github.com/deepgram/deepgram-python-sdk"
 license=("MIT")
 depends=(
   "python"
-  "python-aiofiles"
-  "python-aiohttp"
-  "python-deprecation"
   "python-httpx"
+  "python-pydantic"
   "python-typing_extensions"
   "python-websockets"
 )
-optdepends=(
-  "python-aenum: required for deepgram-sdk"
-  "python-dataclasses-json: required for deepgram-sdk"
-)
-makedepends=("python-setuptools" "python-build" "python-installer" "python-wheel")
-source=("https://files.pythonhosted.org/packages/45/e8/7eb68bfd1b18ec9141d13cf448c257d601a12139f4afe11e4e24553ade49/deepgram_sdk-$pkgver.tar.gz")
-sha256sums=("d929149ae7ded113e5736e87a5102523bae6e88203d5bfc308ebb01e78a2a032")
+optdepends=()
+makedepends=("python-build" "python-poetry")
+source=("https://files.pythonhosted.org/packages/b8/76/ba0f925f955e171ed789c7f3626251c78786cce09ddc122ac92fe1cc508d/deepgram_sdk-5.3.1.tar.gz")
+sha256sums=("87336787c3072d324a0fa412364668adec73175a9f6f0fdd4f91983f734c2842")
 
 build() {
 	cd "deepgram_sdk-$pkgver"
