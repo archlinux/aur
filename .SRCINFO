@@ -1,6 +1,6 @@
 pkgbase = gitify
 	pkgdesc = GitHub notifications on your menu bar.(Use system-wide electron)
-	pkgver = 6.15.0
+	pkgver = 6.16.0
 	pkgrel = 1
 	url = https://www.gitify.io/
 	arch = any
@@ -13,10 +13,10 @@ pkgbase = gitify
 	makedepends = curl
 	makedepends = git
 	makedepends = jq
-	depends = electron39
-	source = gitify-6.15.0::git+https://github.com/gitify-app/gitify#tag=v6.15.0
+	depends = electron40
+	source = gitify-6.16.0::git+https://github.com/gitify-app/gitify#tag=v6.16.0
 	source = gitify.sh
-	sha256sums = 47414402d44f3a3a19fc86603d9da5e78940d7ea34fd7af526d1900d274e97f9
+	sha256sums = 54d2459c81b69ddd6e3fb5ee4cd921cf4655542617b85d9ae65e5642226e1e0b
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = gitify
