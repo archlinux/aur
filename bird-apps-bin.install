@@ -1,4 +1,4 @@
 post_remove() {
     echo "Note: Run 'bird-apps --cleanall' before uninstall, or manually remove:"
-    echo "  rm -rf ~/.config/bird ~/.local/share/bird"
+    echo "  rm -rf ~/.config/bird ~/.local/share/bird ~/.local/share/applications/bird-*"
 }
