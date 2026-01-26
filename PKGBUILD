@@ -1,42 +1,50 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Trần Nam Tuấn <tuantran1632001@gmail.com>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Lucas Saliés Brum <lucas@archlinux.com.br>
 # Contributor: s3lph <aur-hsdquy@s3lph.me>
 
 _pkgname='headsetcontrol'
 pkgname="${_pkgname}-git"
-pkgver=2.7.0.r1.gbd8aed3
-pkgrel=2
-pkgdesc='Sidetone and Battery status for Logitech G930, G533, G633, G933 SteelSeries Arctis 7/PRO 2019 and Corsair VOID (Pro)'
+pkgver=3.1.0.r55.g6611933
+pkgrel=1
+pkgdesc='Sidetone and Battery status for Logitech G930, G533, G633, G933 SteelSeries Arctis 7/PRO 2019 and Corsair VOID (Pro) in Linux and MacOSX'
 arch=('x86_64')
 url='https://github.com/Sapd/HeadsetControl'
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('hidapi')
 makedepends=('cmake' 'git')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
+options=(staticlibs)
 
 pkgver() {
-  cd "${_pkgname}"
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${_pkgname}"
+    git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  export CFLAGS+=" ${CPPFLAGS}"
-  export CXXFLAGS+=" ${CPPFLAGS}"
-  cmake -B 'build' -S "${_pkgname}" \
-    -DCMAKE_BUILD_TYPE='None' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -Wno-dev
-  make -C 'build'
+    cd "${_pkgname}"
+
+    # Change version to match PKGBUILD
+    sed -i 's/COMMAND git describe --tags --dirty=-modified/COMMAND git describe --long --abbrev=7/' CMakeLists.txt
+
+    export CXXFLAGS+=" -ffat-lto-objects"
+
+    cmake -B build -S . \
+      -DCMAKE_BUILD_TYPE='None' \
+      -DCMAKE_INSTALL_PREFIX='/usr' \
+      -DBUILD_SHARED_LIBRARY=ON \
+      -Wno-dev
+
+    cmake --build build
 }
 
 package() {
-  make DESTDIR="${pkgdir}" PREFIX='/usr' -C 'build' install
-  install -Dvm644 "${_pkgname}/README.md" -t "${pkgdir}/usr/share/doc/${_pkgname}"
-  install -dvm755 "${pkgdir}/usr/lib/udev/rules.d/"
-  "${pkgdir}/usr/bin/headsetcontrol" -u > "${pkgdir}/usr/lib/udev/rules.d/70-headsets.rules"
-}
+    cd "${_pkgname}"
 
-# vim: ts=2 sw=2 et:
+    DESTDIR="$pkgdir" cmake --install build
+    install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}"
+    install -Dm644 license -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+}
