@@ -1,15 +1,15 @@
 # Maintainer: Pumenis <mindia dot e at aol dot com>
 pkgname=treadlate
 pkgdesc="translate adn read books. this is one of the ankor runners app"
-pkgver=v0.0.3
-pkgrel=1
+pkgver=v0.0.4
+pkgrel=0
 arch=('x86_64')
 url="https://github.com/pumenis/treadlate"
 license=('MIT')
 depends=()
 makedepends=('git')
-source=("git+https://github.com/pumenis/treadlate.git#tag=v0.0.3")
-sha256sums=('c14a27df0cf905b43d59a97f9d037d2af3d8eade0987f312231f54dc5c0a2e3a')
+source=("git+https://github.com/pumenis/treadlate.git#tag=v0.0.4")
+sha256sums=('e6869a92fbbe5f1e172f5e22ecd0c77b8fe9b3e536ca3592392debf18ca8d471')
 
 pkgver() {
     cd "$srcdir/$pkgname"
