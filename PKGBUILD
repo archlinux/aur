@@ -1,5 +1,6 @@
-# Maintainer: Phhere <p.rehs (at) gmx (dot) net>
-# Contributer: Cebtenzzre <cebtenzzre (at) gmail (dot) com>
+# Maintainer: aeneby <aaron (at) sowry (dot) nz>
+# Contributor: Phhere <p.rehs (at) gmx (dot) net>
+# Contributor: Cebtenzzre <cebtenzzre (at) gmail (dot) com>
 
 pkgname=thinlinc-server
 pkgver=4.18.0
