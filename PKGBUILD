@@ -4,7 +4,7 @@ pkgname='python-py-sr25519-bindings'
 _name=${pkgname#python-}
 _author='JAMdotTech'
 _repository=${_name%-bindings}
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='Bindings for the RUST implementation of the sr25519 cryptography library'
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
 makedepends=(
 	'python-build'
 	'python-installer'
-	'python-maturin>=1.7.0'
+	'python-maturin>=1.10.0'
 	'python-toml'
 	'python-wheel'
 	'rustup'
