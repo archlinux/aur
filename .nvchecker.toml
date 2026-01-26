@@ -1,0 +1,3 @@
+[askalono]
+source = "git"
+git = "https://github.com/jpeddicord/askalono.git"
