@@ -39,6 +39,6 @@ build() {
 package() {
   cd "$_pkgname" || return
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"
-  install -Dm0755 -t "$pkgdir/usr/share/applications/weylus.desktop" "weylus.desktop"
+  install -Dm0755 -t "$pkgdir/usr/share/applications/" "weylus.desktop"
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "LICENSE"
 }
