@@ -1,0 +1,17 @@
+pkgbase = dawn-writer-git
+	pkgdesc = A distraction-free writing environment with live markdown rendering.
+	pkgver = 0.1.3.r0.g33e15d8
+	pkgrel = 1
+	url = https://github.com/andrewmd5/dawn
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = curl
+	depends = zstd
+	depends = pcre2
+	provides = dawn
+	conflicts = dawn
+	source = dawn-writer-git-0.1.3.r0.g33e15d8::git+https://github.com/andrewmd5/dawn.git
+	sha256sums = SKIP
+
+pkgname = dawn-writer-git
