@@ -1,9 +1,8 @@
-post_install()
-{
-    /opt/thinlinc/sbin/tl-setup
+post_install() {
+    echo ":: To complete installation of the ThinLinc server, run:"
+    echo "     # /opt/thinlinc/sbin/tl-setup"
 }
 
-post_upgrade()
-{
-    /opt/thinlinc/sbin/tl-setup
+post_upgrade() {
+    post_install
 }
