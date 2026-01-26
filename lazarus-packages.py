@@ -55,11 +55,46 @@ def _get_dependencies(packages, pkg, seen):
                     deps.extend(_get_dependencies(packages, candidate, seen))
     return deps
 
+def _is_compatible(laz_compat, laz_version):
+    if not laz_compat:
+        return True
+    laz_compat = laz_compat.lower()
+    laz_version = laz_version.lower()
+    
+    if "trunk" in laz_compat:
+        return True
+    
+    if laz_version in laz_compat:
+        return True
+    
+    version_parts = laz_version.split(".")
+    if len(version_parts) >= 2:
+        major_minor = f"{version_parts[0]}.{version_parts[1]}"
+        if f"{major_minor}.x" in laz_compat or f"{major_minor}." in laz_compat:
+            return True
+    
+    return False
+
+def _get_lazarus_version(lazarusdir):
+    try:
+        result = subprocess.run(
+            ["lazbuild", f"--lazarusdir={lazarusdir}", "--version"],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        version = result.stdout.strip().split()[0]
+        return version
+    except (subprocess.CalledProcessError, IndexError):
+        return None
+
 def main():
     repo_base = os.environ["LAZARUS_PKG_REPO"]
     temp_dir = Path(os.environ["LAZARUS_PKG_TMP"])
     lazarusdir = os.environ["LAZARUSDIR"]
     project_file = Path("heidisql.lpi")
+    
+    laz_version = _get_lazarus_version(lazarusdir)
 
     if not project_file.exists():
         raise SystemExit("heidisql.lpi not found")
@@ -145,6 +180,13 @@ def main():
                 / pkg_file.get("RelativeFilePath", "")
                 / pkg_file.get("Name", "")
             )
+            
+            if laz_version:
+                laz_compat = pkg_file.get("LazCompatibility", "")
+                if not _is_compatible(laz_compat, laz_version):
+                    print(f"Skipping incompatible package: {pkg_path} (LazCompatibility: {laz_compat}, Lazarus: {laz_version})")
+                    continue
+            
             print(f"Building {pkg_path}")
             subprocess.run(
                 ["lazbuild", f"--lazarusdir={lazarusdir}", str(pkg_path)],
