@@ -1,7 +1,7 @@
 # Maintainer: qr243vbi
 
 pkgname=(nekobox nekobox-core)
-pkgver=5.10.4
+pkgver=5.10.5
 pkgrel=1
 pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box)"
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 makedepends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base' 'qt6-declarative' 'thrift' 'boost')
 makedepends+=('cmake' 'gendesk' 'go' 'qt6-tools' 'vulkan-headers' 'cpio' 'upx' 'boost-libs')
 source=("https://github.com/qr243vbi/nekobox/releases/download/${pkgver}/nekobox-unified-source-${pkgver}.tar.xz")
-sha256sums=("daf4596891254482a0518dac0b98894c451d74af784fafff97b19081bfaabed4")
+sha256sums=("b9e72868b66b3628345ac7a16a67eac840b06dbcab066205a75c712d2580b38b")
 
 prepare() {
     gendesk -f -n \
@@ -39,6 +39,7 @@ build() {
         -D CMAKE_BUILD_TYPE=Release \
         -D CMAKE_INSTALL_PREFIX=/usr \
         -D SKIP_UPDATE_BUTTON=ON \
+        -D "NKR_DEFAULT_VERSION=${pkgver}" \
         -W no-dev
     cmake --build "${DEST}"
     popd
