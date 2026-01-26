@@ -1,0 +1,22 @@
+pkgbase = peertube-gtk-git
+	pkgdesc = Native desktop PeerTube client
+	pkgver = r552.734a018
+	pkgrel = 1
+	url = https://codeberg.org/The-World-Machine/peertube-gtk
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = gtk3
+	depends = jansson
+	depends = curl
+	depends = md4c
+	depends = pcre2
+	depends = imagemagick
+	depends = sqlite
+	depends = hicolor-icon-theme
+	provides = peertube-gtk
+	conflicts = peertube-gtk
+	source = peertube-gtk-git::git+https://codeberg.org/The-World-Machine/peertube-gtk.git
+	sha512sums = SKIP
+
+pkgname = peertube-gtk-git
