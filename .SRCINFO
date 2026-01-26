@@ -1,7 +1,7 @@
 pkgbase = dawn-writer-git
-	pkgdesc = A distraction-free writing environment with live markdown rendering.
+	pkgdesc = draft anything, write now - a distraction-free writing environment with live markdown rendering
 	pkgver = 0.1.3.r0.g33e15d8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/andrewmd5/dawn
 	arch = x86_64
 	license = MIT

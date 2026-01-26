@@ -1,8 +1,8 @@
 # Maintainer: Ateles
 pkgname=dawn-writer-git
 pkgver=0.1.3.r0.g33e15d8
-pkgrel=1
-pkgdesc='A distraction-free writing environment with live markdown rendering.'
+pkgrel=2
+pkgdesc='draft anything, write now - a distraction-free writing environment with live markdown rendering'
 arch=('x86_64')
 url='https://github.com/andrewmd5/dawn'
 # omitting glibc and curl dependencies (e2fsprogs, keyutils, libunistring, zlib, libidn2, brotli, openssl, krb5, libnghttp2, libnghttp3, libpsl, libssh2)
