@@ -1,7 +1,7 @@
 # Maintainer: TheOddCell <rayfb.to.1@gmail.com>
 pkgname=oshd
-pkgver=2.1.1
-pkgrel=3
+pkgver=2.1.2
+pkgrel=1
 pkgdesc="Odd Static Hosts Daemon"
 arch=('any')
 url="https://github.com/TheOddCell/oshd"
