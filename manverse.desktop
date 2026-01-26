@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=ManVerse
+Comment=Local-first manga/manhwa reader with AniList sync
+Exec=manverse %U
+Terminal=false
+Type=Application
+Icon=manverse
+Categories=Utility;

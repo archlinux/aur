@@ -1,0 +1,20 @@
+pkgbase = manverse-bin
+	pkgdesc = Local-first manga/manhwa reader with AniList sync
+	pkgver = __VERSION__
+	pkgrel = 1
+	url = https://github.com/ahm4dd/ManVerse
+	arch = x86_64
+	license = Apache
+	depends = fuse2
+	provides = manverse
+	conflicts = manverse
+	source = ManVerse-__VERSION__.AppImage::https://github.com/ahm4dd/ManVerse/releases/download/v__VERSION__/ManVerse-__VERSION__.AppImage
+	source = manverse.desktop
+	source = manverse.png
+	source = LICENSE
+	sha256sums = __APPIMAGE_SHA256__
+	sha256sums = cd1cd151452fa5ebb0b26b3c751d5df605781db1de672a82f3e7cfbed3e1b2b9
+	sha256sums = 2f580ad89e1af08a185d3169d28627244868ca1c8fb8535840f381f4e4c48f87
+	sha256sums = 2b60e20c042419ada741e53048c452c1341398f45e29787ceb7035a5ea120a5a
+
+pkgname = manverse-bin
