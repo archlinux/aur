@@ -1,6 +1,6 @@
 # Maintainer: yv-was-taken <yvmail@proton.me>
 pkgname=desktop-waifu
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Animated 3D VRM characters with AI-powered conversational chat - Wayland overlay"
 arch=('x86_64')
