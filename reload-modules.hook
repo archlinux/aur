@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Path
+Target = usr/lib/modules-load.d/*
+Target = etc/modules-load.d/*
+
+[Action]
+Description = Reloading kernel modules...
+When = PostTransaction
+Exec = /usr/bin/systemctl restart systemd-modules-load.service 
