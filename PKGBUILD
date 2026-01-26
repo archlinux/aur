@@ -1,4 +1,5 @@
-# Maintainer: Lukas Fleischer <lfleischer@archlinux.org>
+# Maintainer: oryx <0xnjxa@tutamail.com>
+# Contributor: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: Angel 'angvp' Velasquez <angvp[at]archlinux.com.ve>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Bug <Bug2000@gmail.com>
