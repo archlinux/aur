@@ -1,11 +1,31 @@
-bin_name="vanta"
-
 post_install() {
-    sudo cp /tmp/$bin_name.conf /etc/
-    sudo chmod 640 /etc/$bin_name.conf
-    sudo chown root. /etc/$bin_name.conf
+  echo ">>>"
+  echo ">>> Vanta Agent installed."
+  echo ">>> To configure your agent interactively, run:"
+  echo ">>>     sudo vanta-setup"
+  echo ">>>"
+  echo ">>> After setup, enable the service with:"
+  echo ">>>     sudo systemctl enable --now vanta-agent"
+  echo ">>>"
+}
+
+post_upgrade() {
+  if systemctl is-active --quiet vanta-agent; then
+    echo ">>> Restarting Vanta Agent..."
+    systemctl restart vanta-agent
+  fi
+}
+
+pre_remove() {
+  # Ported from vanta-amd64.deb/control.tar.gz/prerm
+  echo ">>> Stopping Vanta Agent..."
+  systemctl stop vanta-agent.service
+  systemctl disable vanta-agent.service
 }
 
 post_remove() {
-    sudo rm -Rf /var/vanta
+  # Ported from vanta-amd64.deb/control.tar.gz/postrm
+  echo ">>> Removing Vanta data and logs..."
+  rm -rf /var/vanta
+  rm -f /etc/vanta.conf
 }
