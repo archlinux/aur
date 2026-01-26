@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=apiflow-bin
 _pkgname=Apiflow
-pkgver=0.9.7
+pkgver=0.9.6
 _electronversion=32
 pkgrel=1
 pkgdesc="A modern API workspace that works both online and offline — combining API documentation, testing, mock, and AI-powered automation in one lightweight tool.(Prebuilt version.Use system-wide electron)"
@@ -25,8 +25,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.AppImage")
 sha256sums=('1c8f6daf492f059c2837ab0c8b505b81e9d9220013c094a2e9fac893399d08f5'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('90e07a4e5132f4133428075039551d831c66af6068653657d6b3fa59cbd9eb27')
-sha256sums_x86_64=('7ae60ec975eb3efdab66981024a05521cfbfc4479e70adafb5ce578748edb71c')
+sha256sums_aarch64=('6ff93838dccf355dc19795e790b51ee5913fa86eff39dee06a2f85741327879c')
+sha256sums_x86_64=('184a4137b75177dbb44dc6588bd22be0f795d1dc8d385c4ed7f5690304e6a282')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
