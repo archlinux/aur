@@ -45,22 +45,6 @@ package() {
     tar -xf data.tar.zst -C "$pkgdir"
   fi
 
-  # Move libraries from multiarch to Arch standard lib directory
-  if [ -d "$pkgdir/usr/lib/x86_64-linux-gnu" ]; then
-    for lib in "$pkgdir/usr/lib/x86_64-linux-gnu/"*.so*; do
-      [ -e "$lib" ] || continue
-      install -Dm755 "$lib" "$pkgdir/usr/lib/$(basename "$lib")"
-    done
-    rmdir "$pkgdir/usr/lib/x86_64-linux-gnu" 2>/dev/null || true
-  fi
-
-  # Create standard library symlinks if needed
-  cd "$pkgdir/usr/lib"
-  for lib_file in *.so.*; do
-    base=$(echo "$lib_file" | sed 's/\(.so\).*/\1/')
-    ln -sf "$lib_file" "$base"
-  done
-
   # Remove Debian-specific changelog files
   if [ -d "$pkgdir/usr/share/doc/$_pkgname" ]; then
     rm -f "$pkgdir/usr/share/doc/$_pkgname/changelog.Debian"*
