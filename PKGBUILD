@@ -1,6 +1,6 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=thorium
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 _rustupver=nightly-2025-08-01
 pkgdesc="A highly scalable, distributed malware analysis and data generation framework"
@@ -19,7 +19,7 @@ makedepends=(
     git
 )
 source=($pkgname::git+https://github.com/cisagov/thorium.git#tag=$pkgver)
-b2sums=('dbccc9517af9827368c422b4776248dabc0690645c52a71fc967a85dca1537a053a172ec6b10deb3c4da15697d1d1f5b3eeeeb3f35af756b1e8d7c9881af1174')
+b2sums=('2a747c67dfe1b1c95771694ad3b622e69a74923649c4b69fd8cf74696ec705c33feeb15b0906bd5769add8362b25ca20bcb5c4a2b8413e7114bcdfc60d3e7890')
 options=(!lto)
 
 prepare() {
