@@ -12,8 +12,8 @@ install=bird-apps-bin.install
 source=(
     "https://github.com/nsz32/bird/releases/download/v${pkgver}/Bird-${pkgver}-asar-linux-x64.tar.zst"
     "https://raw.githubusercontent.com/nsz32/bird/v${pkgver}/icon.svg"
-    "bird.desktop"
-    "bird.sh"
+    "bird-apps.desktop"
+    "bird-apps.sh"
 )
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 noextract=("Bird-${pkgver}-asar-linux-x64.tar.zst")
@@ -30,9 +30,9 @@ package() {
     cp -r bird.asar.unpacked "$pkgdir/usr/lib/bird/"
 
     # Install launcher script
-    install -Dm755 bird.sh "$pkgdir/usr/bin/bird"
+    install -Dm755 bird-apps.sh "$pkgdir/usr/bin/bird-apps"
 
     # Install desktop file and icon
-    install -Dm644 bird.desktop "$pkgdir/usr/share/applications/bird.desktop"
-    install -Dm644 icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/bird.svg"
+    install -Dm644 bird-apps.desktop "$pkgdir/usr/share/applications/bird-apps.desktop"
+    install -Dm644 icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/bird-apps.svg"
 }
