@@ -1,8 +1,8 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="wipemychat"
-pkgver=1.2.3
-pkgrel=2
+pkgver=1.2.4
+pkgrel=1
 pkgdesc="Delete all your messages in public and private Telegram chats"
 arch=(
   'aarch64'
@@ -24,7 +24,7 @@ _pkgsrc="${url##*/}"
 source=(
   "${_pkgsrc}::git+${url}.git#tag=v${pkgver}?signed"
 )
-sha256sums=('333a5ac4964444cfe2a4012c92857fe9454a72926331add53a7d638d5b2deb2f')
+sha256sums=('33eeb990aba3a3e80bd3bfca77340a1d6ff622493a4ed5cef191705c1009daa4')
 validpgpkeys=(
   '337530DD887FB454C4FC6E7F23B9DBD7FAE54FCD' # Rustam Gilyazov <16064414+rusq@users.noreply.github.com>
 )
