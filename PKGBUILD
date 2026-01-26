@@ -1,7 +1,7 @@
 # Maintainer: fausty <fausty@tuta.com>
 pkgname=wallypub
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A terminal tool for intentional reading and helping clear out your Wallabag backlog."
 arch=('any')
 url="https://codeberg.org/fausty/$pkgname"
@@ -10,25 +10,21 @@ depends=('python')
 makedepends=(
     'python-uv'
     'python-hatch'
-    'python-build'
-    'python-installer'
-    'python-wheel'
+    'rustup'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('67314a96bebee7242c92dfe00deedde388ed55e508127d8c9bc661d5dafd9755')
-
+sha256sums=('67314a96bebee7242c92dfe00deedde388ed55e508127d8c9bc661d5dafd9755') #updpkgsums
 
 # build the the software
 build() {
-  cd $pkgname
-  python -m build --wheel --no-isolation
-
+  cd "$pkgname"
+  uvx --from box-packager box package -v
 }
 
 
 # install application into package directory
 package() {
    cd "$pkgname"
-   python -m installer --destdir="$pkgdir" dist/*.whl
+   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
 
