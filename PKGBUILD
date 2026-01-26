@@ -10,7 +10,7 @@ _pkgname=haveno-reto
 pkgname=retoswap
 pkgver=1.2.2
 _versuffix=-reto-app
-pkgrel=2
+pkgrel=3
 pkgdesc='Decentralised P2P exchange built on Monero and Tor - unofficial Reto network'
 arch=('any')
 url="https://github.com/retoaccess1/$_pkgname"
@@ -22,7 +22,7 @@ replaces=("$_pkgname")
 source=("$pkgname-v$pkgver.tar.gz::$url/archive/refs/tags/$pkgver$_versuffix.tar.gz"
 	"$pkgname.desktop")
 sha512sums=('dc61d29371fd686fa52c7397d41f58a96c167ae5af16791237b1b0f6d7b7d6015628d68aee942b068491882596d5f013463ba349573eb10c6d86a855cea6db2e'
-            '37148505c9801c21d5e410f6a54934e290c1e009f6eaf7ecc87447c599253b1865887243c88585ea3ebee2402a26abefe918945285ac2649166ea71f35fbb117')
+            'c6115853745acdb9c4bcf8dbf1e8479aa01131bc05641123cf45bf3fc6029e4edb0ce3930a3c372389e02a51874d686b6cc45166de1d9bba631e6e60c070ecd7')
 install="$pkgname.install"
 
 build() {

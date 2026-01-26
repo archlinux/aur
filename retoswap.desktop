@@ -7,20 +7,10 @@ NoDisplay=false
 Comment=Decentralised P2P exchange built on Monero and Tor
 Icon=retoswap
 Hidden=false
-#OnlyShowIn
-#NotShowIn
-DBusActivatable=false
 TryExec=haveno-desktop
-Exec=env JAVA_HOME=/usr/lib/jvm/java-21-openjdk/ haveno-desktop
-#Path
-Actions=
-MimeType=
+Exec=haveno-desktop
 Terminal=false
 Categories=Office;Finance
-Implements=
-Keywords=
-#StartupNotify
-#StartupWMClass
-#URL
+Keywords=haveno
 PrefersNonDefaultGPU=false
 SingleMainWindow=true
