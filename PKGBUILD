@@ -17,7 +17,7 @@ depends=(
   'libxrender'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('e067915c832540fdc63ea0ddccb0ca104e9566290925242a9ce3dc84935d10dfa20733aa666aff498319135e2ecf6d2ea1ea20ca40547c1a869d208e14cf0bde')
+sha256sums=('cfca9446ee92c06a294dbd710e73c2bd681eb3e26b84129827517f6ff09f0c64')
 
 build() {
   cd ${pkgname}-${pkgver}
