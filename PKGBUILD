@@ -46,15 +46,6 @@ package() {
     [ -f "$f" ] && tar -xf "$f" -C "$pkgdir"
   done
 
-  # Move libraries from Debian multiarch directory to Arch lib directory
-  if [ -d "$pkgdir/usr/lib/x86_64-linux-gnu" ]; then
-    for lib in "$pkgdir/usr/lib/x86_64-linux-gnu/"*.so*; do
-      [ -e "$lib" ] || continue
-      install -Dm755 "$lib" "$pkgdir/usr/lib/$(basename "$lib")"
-    done
-    rmdir "$pkgdir/usr/lib/x86_64-linux-gnu" 2>/dev/null || true
-  fi
-
   # Remove Debian-specific changelog files
   if [ -d "$pkgdir/usr/share/doc/$_pkgname" ]; then
     rm -f "$pkgdir/usr/share/doc/$_pkgname/changelog.Debian"*
