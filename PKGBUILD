@@ -7,7 +7,7 @@ pkgdesc="Lightweight status bar for sway/i3"
 arch=('x86_64')
 url="https://github.com/neoden/h2status"
 license=('MIT')
-depends=('glibc')
+depends=()
 makedepends=('git' 'go')
 optdepends=('bluez: bluetooth support')
 source=("git+https://github.com/neoden/${_pkgname}.git")
@@ -20,11 +20,8 @@ pkgver() {
 
 build() {
     cd "$_pkgname"
-    export CGO_CPPFLAGS="${CPPFLAGS}"
-    export CGO_CFLAGS="${CFLAGS}"
-    export CGO_CXXFLAGS="${CXXFLAGS}"
-    export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    export CGO_ENABLED=0
+    export GOFLAGS="-trimpath -mod=readonly -modcacherw"
     go build -o "$_pkgname" .
 }
 
