@@ -1,0 +1,17 @@
+pkgbase = python-rough-theory
+	pkgdesc = Various operations to analyze and leverage discernibility of knowledge
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/johnHostetter/rough-theory
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python-igraph
+	depends = python-graphviz
+	source = rough-theory-0.0.3.tar.gz::https://github.com/johnHostetter/rough-theory/archive/v0.0.3.tar.gz
+	sha512sums = 347d2a5cb064f8fc89cf6e3b4082140d7b44c429dd7870d25bc13d0ac8aba14c6d61c85ec61a71f501991735442dbfda5a05fd02206ddf55cca85a58f9e0f8e2
+
+pkgname = python-rough-theory

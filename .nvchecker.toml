@@ -1,0 +1,5 @@
+[python-fuzzy-theory]
+source = "github"
+github = "johnHostetter/fuzzy-theory"
+use_max_tag = "true"
+prefix = "v"
