@@ -1,15 +1,15 @@
 pkgbase = rpc-bridge-bin
 	pkgdesc = Enable Rich Presence between your Wine applications and the native Discord client on Linux (binary release)
 	pkgver = 1.4.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/EnderIce2/rpc-bridge
 	arch = x86_64
 	license = MIT
 	provides = rpc-bridge=1.4.0.1
 	conflicts = rpc-bridge
 	source = https://github.com/EnderIce2/rpc-bridge/releases/download/v1.4.0.1/bridge.zip
-	source = LICENSE::https://github.com/EnderIce2/rpc-bridge/blob/master/LICENSE
+	source = LICENSE::https://github.com/EnderIce2/rpc-bridge/raw/refs/tags/v1.4.0.1/LICENSE
 	sha256sums = a8211bb1fc03497e977b1f4d3a4c3303688ab0434d11dfdd940a3b1dd6ad11e0
-	sha256sums = 7b519b329d4028c42e3671490fd7cc8c42ef67dec762b0a6630b233f9498d847
+	sha256sums = 419928e52b5c005dcc09a6b56a5a205a2f0006e731abf7e323d78fead7b6ab72
 
 pkgname = rpc-bridge-bin
