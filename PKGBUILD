@@ -2,6 +2,7 @@
 # Mainteiner: Donald Webster <fryfrog@gmail.com>
 
 pkgname=runrestic
+# renovate: datasource=pypi depName=runrestic
 pkgver=0.5.28
 pkgrel=2
 pkgdesc='A wrapper script for Restic backup software that inits, creates, prunes and checks backups'
