@@ -1,0 +1,23 @@
+post_install() {
+  KEY_ID="3056513887B78AEB"
+  KEYSERVER="keyserver.ubuntu.com"
+
+  pacman-key --recv-key "$KEY_ID" --keyserver "$KEYSERVER"
+  pacman-key --lsign-key "$KEY_ID"
+
+  pacman -U --noconfirm \
+    https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst
+
+  pacman -U --noconfirm \
+    https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst
+
+  if ! grep -q "^\[chaotic-aur\]" /etc/pacman.conf; then
+    cat >>/etc/pacman.conf <<'EOF'
+
+[chaotic-aur]
+Include = /etc/pacman.d/chaotic-mirrorlist
+EOF
+  fi
+
+  pacman -Syy
+}

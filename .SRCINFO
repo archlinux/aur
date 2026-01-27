@@ -1,0 +1,13 @@
+pkgbase = chaotic-aur-setup
+	pkgdesc = Enable Chaotic-AUR repository on Arch Linux
+	pkgver = 1
+	pkgrel = 1
+	url = https://aur.chaotic.cx
+	install = chaotic-aur-setup.install
+	arch = any
+	license = custom
+	depends = pacman
+	depends = gnupg
+	depends = curl
+
+pkgname = chaotic-aur-setup
