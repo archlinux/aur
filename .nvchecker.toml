@@ -1,4 +1,5 @@
 [css-inline]
 source = "git"
 git = "https://github.com/Stranger6667/css-inline.git"
-prefix = "v"
+use_max_tag = true
+prefix = "rust-v"
