@@ -1,7 +1,7 @@
 # Maintainer: Roberto Alsina <ralsina@kde.org>
 pkgname=nicolino
-pkgver=0.13.0
-pkgrel=2
+pkgver=0.15.0
+pkgrel=1
 pkgdesc="A fast, modular static site generator written in Crystal"
 arch=("x86_64" "aarch64")
 url="https://github.com/ralsina/nicolino"
@@ -13,7 +13,7 @@ sha256sums=("SKIP")
 
 build() {
   cd "$pkgname-$pkgver"
-  shards build --release --error-trace
+  shards build --release --error-trace -Dpreview_mt
 }
 
 package() {
