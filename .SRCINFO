@@ -1,0 +1,14 @@
+pkgbase = wait4tailscale
+	pkgdesc = Monitor Tailscale connection status with systemd integration
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/josh/wait4tailscale
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = https://github.com/josh/wait4tailscale/archive/refs/tags/v1.1.4.tar.gz
+	sha512sums = 8956959ffdb4fa2a543ca2cd0e8c2e058bd237fe7435efdf40b6838c9cff7d04860b0c0c2e402731ede0fa2463cb5d7e058d9254c24399566551188dd8e0e958
+	b2sums = f981f6e89b9bb7d5c603d1bf9aaf6ff8e141b824176c0dbdb7fa112b89bb656765a590f5eb5c0933cb31f6f29bd3daac883b4565338673ae6e6d042ddab6af7a
+
+pkgname = wait4tailscale
