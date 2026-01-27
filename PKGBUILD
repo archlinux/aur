@@ -36,7 +36,6 @@ prepare() {
 
 package() {
     cd "${srcdir}/tl-${pkgver}-server/packages/extract"
-    rm -Rf "etc/init.d"
     cp -aR etc/ opt/ usr/ var/ "$pkgdir"
 
     install -dm755 "$pkgdir"/usr/lib
