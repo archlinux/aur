@@ -1,6 +1,6 @@
 pkgbase = workopilot-bin
 	pkgdesc = Your AI-powered work copilot for development - task management with AI assistance
-	pkgver = 0.6.4
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/pedrinhopagan/workopilot
 	install = workopilot-bin.install
@@ -22,7 +22,7 @@ pkgbase = workopilot-bin
 	conflicts = workopilot
 	options = !strip
 	options = !emptydirs
-	source = workopilot-bin-0.6.4.tar.gz::https://github.com/pedrinhopagan/workopilot/releases/download/v0.6.4/workopilot-linux-x86_64.tar.gz
-	sha256sums = 937bc4c78108cc1d8dd689a42b784232247f1281ab321938f8d6dd92be5301a4
+	source = workopilot-bin-0.7.1.tar.gz::https://github.com/pedrinhopagan/workopilot/releases/download/v0.7.1/workopilot-linux-x86_64.tar.gz
+	sha256sums = 2c6ebbf0d39ae80a65ca5e86741ccbf3813fdfe1d3c1030712a8a5fc44e29b54
 
 pkgname = workopilot-bin
