@@ -1,0 +1,18 @@
+[Unit]
+Description=Booklore Server
+After=network.target
+Requires=mariadb.service
+
+[Service]
+User=booklore
+Group=booklore
+Type=simple
+WorkingDirectory=/usr/share/webapps/booklore
+EnvironmentFile=/etc/booklore/booklore.conf
+ExecStart=java -jar /usr/share/webapps/booklore/booklore.jar
+TimeoutStopSec=20
+KillMode=control-group
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

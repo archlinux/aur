@@ -1,0 +1,3 @@
+Z /etc/booklore 0700 booklore booklore
+Z /usr/share/webapps/booklore/ 0755 booklore http
+Z /var/lib/booklore 0755 booklore booklore

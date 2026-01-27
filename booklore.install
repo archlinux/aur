@@ -1,0 +1,15 @@
+post_install() {
+    mkdir /var/lib/booklore
+    echo -e "\033[1;34mINFO\033[0m\033[1m: Final steps to have a working booklore instance:"
+    echo -e "\033[1;34mINFO\033[0m\033[1m:     * initialise mariadb and create a database called 'booklore' (https://wiki.archlinux.org/title/MariaDB)\033[0m"
+    echo -e "\033[1;34mINFO\033[0m\033[1m:     * Update secret key and db info in /etc/booklore\033[0m"
+    echo -e "\033[1;34mINFO\033[0m\033[1m:     * Booklore MUST have a reverse proxy to access the web interface. Please see the examples files in /usr/share/webapps/booklore for examples.\033[0m"
+
+    echo -e "\033[1;34mINFO\033[0m\033[1m:     * To run, systemctl start booklore\033[0m"
+}
+
+post_upgrade() {
+}
+post_remove() {
+    userdel booklore
+}

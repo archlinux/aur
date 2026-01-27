@@ -1,0 +1,15 @@
+server {
+    listen 8081;
+    server_name localhost;
+
+    root /full/path/to/dist;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    location /api/ {
+        proxy_pass http://localhost:8095/api/;
+    }
+}

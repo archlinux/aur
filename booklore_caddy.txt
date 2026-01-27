@@ -1,0 +1,5 @@
+http://localhost:8081 {
+  root * /tmp/booklore-1.18.5/booklore-ui/dist/booklore/browser/
+  file_server
+  reverse_proxy /api/* localhost:8095
+}
