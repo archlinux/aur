@@ -1,5 +1,5 @@
 pkgbase = piped-backend-git
-	pkgdesc = An advanced open-source privacy friendly alternative to YouTube
+	pkgdesc = An alternative privacy-friendly YouTube frontend which is efficient by design. Backend/API component, for fetching Metadata
 	pkgver = r1316.c5921f6
 	pkgrel = 1
 	url = https://github.com/TeamPiped/Piped-Backend
@@ -14,11 +14,13 @@ pkgbase = piped-backend-git
 	source = piped-backend.sh
 	source = sysusers.conf
 	source = tmpfiles.conf
+	source = nginx.conf
 	source = systemd.service
 	sha256sums = SKIP
 	sha256sums = 3f62b54ab1567ee6f7a5e419f74422419c499a05f19a90fe946b3396b7c29624
 	sha256sums = eb122e1cf5149be5e89a2ebfb158f29f305427cb8b2061d6728c53ad1d1b89d4
-	sha256sums = e15afae1486ac5839e0b114171409bc20c0ad8aa7a58d2846972b9c5a43b2d7a
+	sha256sums = d4e3d538e0f3c40bb22ebd2893672eeafeeaacadccf53e46055450f99c96e12d
+	sha256sums = 232a2353341b83060a5c3814e95553d9b476d65c7ae06147e7034b1c729814be
 	sha256sums = 0e00f0e054687cbc76356d7fb0e860075a27fcf8366ce2b46cb94e92f00a4645
 
 pkgname = piped-backend-git
