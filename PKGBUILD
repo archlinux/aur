@@ -4,7 +4,7 @@
 # Contributor: Filip Brcic < brcha at gna dot org >
 # Contributor: Martchus < martchus at gmx dot net >
 
-_pkgver=3.6.0
+_pkgver=3.6.1
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-openssl
@@ -19,14 +19,19 @@ makedepends=('mingw-w64-gcc'
              'mingw-w64-environment'
              'perl')
 options=('!strip' 'staticlibs' '!buildflags' '!lto')
-source=("https://github.com/openssl/openssl/releases/download/openssl-${pkgver}/openssl-${pkgver}.tar.gz"{,.asc})
-sha256sums=('b6a5f44b7eb69e3fa35dbf15524405b44837a481d43d81daddde3ff21fcbb8e9'
-            'SKIP')
+source=("https://github.com/openssl/openssl/releases/download/openssl-${pkgver}/openssl-${pkgver}.tar.gz"{,.asc}
+        'https://github.com/openssl/openssl/commit/4a7d9705f30842b402058324a6947938fe3486ec.patch')
+sha256sums=('b1bfedcd5b289ff22aee87c9d600f515767ebf45f77168cb6d64f231f518a82e'
+            'SKIP'
+            '77ae2f728779d04a523f8ac40c6d335a3b2c2726ac36b09719010ffebf1f9c15')
 validpgpkeys=('EFC0A467D613CB83C7ED6D30D894E2CE8B3D79F5'
               'BA5473A2B0587B07FB27CF2D216094DFD0CB81EF')
 
 prepare() {
   cd openssl-${_pkgver}
+
+  # revert commit using SIO_UDP_NETRESET as this is not defined by `mswsock.h` as provided by mingw-w64
+  patch --reverse -p1 -i ../4a7d9705f30842b402058324a6947938fe3486ec.patch
 }
 
 build() {
