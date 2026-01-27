@@ -1,6 +1,6 @@
 pkgbase = gpu-screen-recorder-ui
 	pkgdesc = A fullscreen overlay UI for GPU Screen Recorder in the style of ShadowPlay
-	pkgver = r523.bed241e
+	pkgver = r525.16ca12f
 	pkgrel = 1
 	url = https://git.dec05eba.com/gpu-screen-recorder-ui
 	install = gpu-screen-recorder-ui.install
@@ -25,7 +25,7 @@ pkgbase = gpu-screen-recorder-ui
 	depends = libpulse
 	depends = libdrm
 	depends = wayland
-	source = gpu-screen-recorder-ui-r523.bed241e.tar.gz::https://dec05eba.com/snapshot/gpu-screen-recorder-ui.git.r523.bed241e.tar.gz
-	sha512sums = 54d8309aeb4cd15baa68fb82344eed791544f934a6751988d1959714d17b9c635bb2a0267a045e2e61eee397e1f82f8d92672cfe17c179c249fdb35ba98b1adf
+	source = gpu-screen-recorder-ui-r525.16ca12f.tar.gz::https://dec05eba.com/snapshot/gpu-screen-recorder-ui.git.r525.16ca12f.tar.gz
+	sha512sums = d430db549569200691e732e27ed1712230e9ff77993d853abb20d302437293a757f4a76b258132e53cac22d3fb83fcc681d97b442287172bc5105c5235d51f18
 
 pkgname = gpu-screen-recorder-ui
