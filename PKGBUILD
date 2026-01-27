@@ -1,5 +1,5 @@
 pkgname=boha
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Crypto bounties, puzzles and challenges data library"
 arch=('x86_64')
