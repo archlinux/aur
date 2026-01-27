@@ -3,8 +3,8 @@
 pkgbase=dms-shell-git
 _pkgbase=${pkgbase%-git}
 _pkgname=DankMaterialShell
-pkgname=($_pkgbase-git $_pkgbase-hyprland-git $_pkgbase-niri-git)
-pkgver=1.0.0.r187.g93539d2
+pkgname=($_pkgbase-git)
+pkgver=1.2.0.r149.g122fb16
 pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=(x86_64 aarch64)
@@ -18,7 +18,9 @@ optdepends=('cava: Audio visualizer'
             'matugen: Dynamic wallpaper-based theming'
             'qt6-multimedia: Sound effect support'
             'power-profiles-daemon: Set power profile'
-            'qt6ct: Qt6 application theming')
+            'qt6ct: Qt6 application theming'
+            'wtype: Paste from clipboard history and plugins'
+ )
 makedepends=(git
              go)
 provides=("$_pkgbase=$pkgver")
@@ -63,8 +65,6 @@ build() {
 }
 
 package_dms-shell-git() {
-	optdepends+=('dms-shell-hyprland: Hyprland specific dependencies')
-	optdepends+=('dms-shell-niri: Niri specific dependencies')
         optdepends+=('greetd-dms-greeter: DMS Greeter')
 	install="$pkgname.install"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "$_pkgname/core/dms"
@@ -79,21 +79,4 @@ package_dms-shell-git() {
 	install -Dm0644 "completions.fish" "$pkgdir/usr/share/fish/vendor_completions.d/dms.fish"
 	install -Dm0644 "dms-open.desktop" "$pkgdir/usr/share/applications/dms-open.desktop"
 	install -Dm0644 "danklogo.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/danklogo.svg"
-}
-
-package_dms-shell-hyprland-git() {
-	pkgdesc+=" (for Hyprland)"
-	conflicts=("${pkgname%-git}")
-	depends=(dms-shell-git
-	         hyprland)
-	optdepends=()
-}
-
-package_dms-shell-niri-git() {
-	pkgdesc+=" (for Niri)"
-	conflicts=("${pkgname%-git}")
-	depends=(niri)
-	depends=(dms-shell-git
-	         niri)
-	optdepends=()
 }

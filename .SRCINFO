@@ -1,7 +1,7 @@
 pkgbase = dms-shell-git
 	pkgdesc = Desktop shell for wayland compositors built with Quickshell & GO
-	pkgver = 1.0.0.r186.g524d967
-	pkgrel = 3
+	pkgver = 1.2.0.r149.g122fb16
+	pkgrel = 1
 	url = https://github.com/AvengeMedia/DankMaterialShell
 	arch = x86_64
 	arch = aarch64
@@ -17,7 +17,8 @@ pkgbase = dms-shell-git
 	optdepends = qt6-multimedia: Sound effect support
 	optdepends = power-profiles-daemon: Set power profile
 	optdepends = qt6ct: Qt6 application theming
-	provides = dms-shell=1.0.0.r186.g524d967
+	optdepends = wtype: Paste from clipboard history and plugins
+	provides = dms-shell=1.2.0.r149.g122fb16
 	conflicts = dms-shell
 	source = git+https://github.com/AvengeMedia/DankMaterialShell.git
 	source = dms.service
@@ -42,20 +43,5 @@ pkgname = dms-shell-git
 	optdepends = qt6-multimedia: Sound effect support
 	optdepends = power-profiles-daemon: Set power profile
 	optdepends = qt6ct: Qt6 application theming
-	optdepends = dms-shell-hyprland: Hyprland specific dependencies
-	optdepends = dms-shell-niri: Niri specific dependencies
+	optdepends = wtype: Paste from clipboard history and plugins
 	optdepends = greetd-dms-greeter: DMS Greeter
-
-pkgname = dms-shell-hyprland-git
-	pkgdesc = Desktop shell for wayland compositors built with Quickshell & GO (for Hyprland)
-	depends = dms-shell-git
-	depends = hyprland
-	optdepends = 
-	conflicts = dms-shell-hyprland
-
-pkgname = dms-shell-niri-git
-	pkgdesc = Desktop shell for wayland compositors built with Quickshell & GO (for Niri)
-	depends = dms-shell-git
-	depends = niri
-	optdepends = 
-	conflicts = dms-shell-niri
