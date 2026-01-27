@@ -1,6 +1,6 @@
 pkgbase = grok-jpeg2000
 	pkgdesc = A high performance open source JPEG 2000 codec.
-	pkgver = 20.0.0
+	pkgver = 20.0.5
 	pkgrel = 1
 	url = https://github.com/GrokImageCompression/grok
 	arch = x86_64
@@ -13,7 +13,9 @@ pkgbase = grok-jpeg2000
 	depends = libjpeg
 	depends = jbigkit
 	depends = cli11
-	source = grok-jpeg2000-20.0.0.tar.gz::https://github.com/GrokImageCompression/grok/archive/v20.0.0.tar.gz
-	sha256sums = 28eb9c55805b18f4c1a927c97b47757ed9bdfbd9c214d5a081a8e518c7801b84
+	optdepends = python-sphinx
+	optdepends = doxygen
+	source = grok-jpeg2000-20.0.5.tar.gz::https://github.com/GrokImageCompression/grok/releases/download/v20.0.5/source-full.tar.gz
+	sha256sums = 7c34c4cd2b545d3bbd05b13c8e57db6a27dfd301613932f26aac3b4bd5397a8b
 
 pkgname = grok-jpeg2000
