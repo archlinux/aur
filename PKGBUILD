@@ -2,7 +2,7 @@
 pkgname=sniptext
 pkgver=0.1.2
 pkgrel=1
-pkgdesc="Screen capture OCR tool with adaptive ensemble recognition"
+pkgdesc="Screen text extractor with OCR and spell correction"
 arch=('any')
 url="https://github.com/dkorbelainen/sniptext"
 license=('MIT')

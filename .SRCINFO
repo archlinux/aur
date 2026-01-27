@@ -1,5 +1,5 @@
 pkgbase = sniptext
-	pkgdesc = Screen capture OCR tool with adaptive ensemble recognition
+	pkgdesc = Screen text extractor with OCR and spell correction
 	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/dkorbelainen/sniptext
