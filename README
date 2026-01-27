@@ -2,7 +2,7 @@
 [![License](https://img.shields.io/badge/License-0BSD-blue.svg)](/LICENSE)
 [![Language](https://img.shields.io/badge/Language-C-blue.svg)](https://en.wikipedia.org/wiki/C_(programming_language))
 
-<h2>Summary</h2>
+## Summary
 
 Blindtaste is a lightweight, low-latency terminal "blackboard" designed for capturing quick thoughts and fleeting information without the overhead of a traditional text editor.
 
@@ -10,66 +10,70 @@ It operates by taking over the terminal interface to provide a distraction-free 
 
 > **Note:** This project is still being developed. As the software grows larger and more powerful, more information will be added.
 
-<h2>Features</h2>
+## Features
 
-<h3>High Performance</h3>
+### High Performance
 
 Starts in milliseconds-measured at **10x faster** than Microsoft Word or LibreOffice.
 
-<h3>Zero Disk I/O</h3>
+### Zero Disk I/O
 
 Text remains in the terminal scrollback **in memory** after exit without cluttering your filesystem.
 
-<h3>Low Latency</h3>
+### Low Latency
 
 Optimized for non-canonical read operations, ensuring **zero lag** between keystrokes and display.
 
-<h3>Memory Efficient</h3>
+### Memory Efficient
 
 Uses a **dynamic input buffer** that scales with your thoughts.
 
-<h3>Cross-Platform</h3>
+### Cross-Platform
 
 Robust handling of line endings (\r\n) for consistent behavior across different terminal emulators.
 
-<h2>Technical Implementation</h2>
+## Technical Implementation
 
 Blindtaste achieves its speed and "blackboard" feel by manipulating low-level terminal flags to bypass standard processing:
 
-<h3>Raw Mode</h3>
+### Raw Mode
 
 It disables canonical mode (ICANON), echo (ECHO), and signal processing (ISIG). This prevents the shell from interpreting your notes as commands.
 
-<h3>Optimized I/O</h3>
+### Optimized I/O
 
 Uses the write() system call instead of printf() for reduced overhead and sets a 1-byte minimum for read operations to ensure immediate character processing.
 
-<h3>State Recovery</h3>
+### State Recovery
 
 The software captures your environment's original terminal configurations and restores them upon exit, ensuring your terminal remains functional.
 
-<h2>Installation</h2>
+## Installation
 
-<h3>Arch Linux</h3>
+### Arch Linux
 
-Download the compilation script
+#### Download the compilation script
+
 ```bash
 git clone https://aur.archlinux.org/blindpaste.git
 ```
 
-Enter directory
+#### Enter directory
+
 ```bash
 cd blindpaste
 ```
 
-Make the package
+#### Make the package
+
 ```bash
 makepkg -sfi
 ```
 
-<h3>Gentoo Linux</h3>
+### Gentoo Linux
 
-Enable the Guru repository
+#### Enable the Guru repository
+
 ```bash
 sudo emerge -av app-eselect/eselect-repository
 
@@ -78,64 +82,69 @@ sudo eselect repository enable guru
 sudo emaint sync -r guru
 ```
 
-Download and compile the package
+#### Download and compile the package
+
 ```bash
 sudo emerge -av app-text/blindpaste
 ```
 
-<h3>Source</h3>
+### Source
 
-Download the source code
+#### Download the source code
+
 ```bash
 git clone https://git.projectgrid.net/blindpaste.git
 ```
 
-Enter directory
+#### Enter directory
+
 ```bash
 cd blindpaste
 ```
 
-Make and Install
+#### Make and Install
+
 ```bash
 sudo make install
 ```
 
-<h2>Usage</h2>
+## Usage
 
-<h3>Quick note-taking</h3>
+### Quick note-taking
 
 ```bash
 bp
 ```
 
-<h3>Stream editing</h3>
+### Stream editing
 
 ```bash
 env | bp
 ```
 
-<h3>"Copy-on-writing"</h3>
+### "Copy-on-writing"
 
 ```bash
 sudo blindpaste /etc/fstab
 ```
 
-<h3>Bonus: Print message</h3>
+### Bonus: Print message
 
 ```bash
 bp HelloWorld!
 ```
 
-<h3>Bonus 2: Use as Git pager</h3>
+### Bonus 2: Use as Git pager
+
 ```bash
 git config --global core.pager "blindpaste"
 ```
 
-<h2>Bug Reports & Contributing</h2>
+## Bug Reports & Contributing
 
 Please report any issues or hardware edge cases via the issue tracker on my [git portal](https://projectgrid.net/museum/blindpaste)!
 
-<h2>Author</h2>
+## Author
 
 |Maintainer|Gabrel Oliveira da Silva
 |------------|-------------------------
