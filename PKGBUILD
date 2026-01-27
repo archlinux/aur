@@ -1,4 +1,5 @@
-# Maintainer: Jingbei Li <i@jingbei.li>
+# Maintainer: notfire <notfire@posteo.net>
+# Contributor: Jingbei Li <i@jingbei.li>
 # Contributor: Eric Cheng <ericcheng@hey.com>
 
 pkgname=jellyfin-server-bin
