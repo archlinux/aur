@@ -1,0 +1,13 @@
+pkgbase = pass-cli
+	pkgdesc = A secure, cross-platform, always-free, and open-source alternative to 1password, bitwarden, etc., Password and API key manager
+	pkgver = 0.16.2
+	pkgrel = 1
+	url = https://github.com/arimxyer/pass-cli
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	source = https://github.com/arimxyer/pass-cli/archive/v0.16.2/pass-cli-v0.16.2.tar.gz
+	b2sums = 97c86cdd02ce90f7e2bf985d26a3fad69a45e2c2286a6405663b53ab58aaaec61980cf51d4f69acec0e33975c459d28127eab40dbfe62fb5ec37261e03339835
+
+pkgname = pass-cli
