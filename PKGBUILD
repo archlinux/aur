@@ -1,4 +1,5 @@
 # Maintainer: solarfire <xatra169@gmail.com>
+# Contributor: Pierre Schmitz <pierre@archlinux.org>
 pkgname='openssl-1.1'
 pkgver='1.1.1w'
 pkgrel='2'
