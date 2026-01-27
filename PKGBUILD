@@ -4,6 +4,7 @@
 
 pkgbase="scrutiny"
 pkgname=("scrutiny" "scrutiny-collector")
+# renovate: datasource=github-releases depName=AnalogJ/scrutiny
 pkgver=0.8.1
 pkgrel=2
 pkgdesc="Hard Drive S.M.A.R.T Monitoring, Historical Trends & Real World Failure Thresholds"
