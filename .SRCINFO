@@ -1,7 +1,7 @@
 pkgbase = nrf-connect-sdk-installer
 	pkgdesc = Installer script for the Nordic Semiconuctor nRF Connect Software Developement Kit (SDK).
 	pkgver = 0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/hellesvik/nrf-connect-sdk-installer
 	arch = x86_64
 	license = BSD
@@ -21,6 +21,7 @@ pkgbase = nrf-connect-sdk-installer
 	depends = python-pyelftools
 	depends = zephyr-sdk
 	depends = python-west
+	depends = python-pykwalify
 	depends = python-nrf_regtool
 	depends = nrfutil
 	depends = nrf5x-command-line-tools
