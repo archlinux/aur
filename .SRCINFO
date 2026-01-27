@@ -1,0 +1,18 @@
+pkgbase = zombie
+	pkgdesc = A super fast, modern terminal-based process manager (TUI)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/NVSRahul/zombie
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	depends = glibc
+	depends = gcc-libs
+	provides = zombie
+	source = zombie-1.0.0.tgz::https://github.com/NVSRahul/zombie/archive/refs/tags/v1.0.0.tar.gz
+	source = LICENSE
+	sha256sums = 09c01801393358ae2991e42a33a60070fea02c4745ee4554dbdc34fad6deeebf
+	sha256sums = 9c443bf5135ab4eb2c208bfa74825614ecbf5fe257e4f1a2938d7ab0fcf3f6d9
+
+pkgname = zombie

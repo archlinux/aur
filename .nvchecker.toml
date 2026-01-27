@@ -1,0 +1,5 @@
+[zombie]
+source = "github"
+github = "NVSRahul/zombie"
+use_latest_release = true
+prefix = "v"
