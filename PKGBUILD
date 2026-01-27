@@ -1,5 +1,6 @@
 # Maintainer: Nogweii <packages@nogweii.net>
 pkgname=wait4tailscale
+# renovate: datasource=github-releases depName=josh/wait4tailscale
 pkgver=1.1.4
 pkgrel=1
 pkgdesc='Monitor Tailscale connection status with systemd integration'
