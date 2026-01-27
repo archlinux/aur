@@ -3,7 +3,7 @@
 _pkgname=godot
 pkgname=${_pkgname}32
 pkgver=4.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Advanced cross-platform 2D and 3D game engine (32-bit)'
 url='https://godotengine.org/'
 license=(MIT)
@@ -21,7 +21,7 @@ depends=(
   lib32-freetype2
   lib32-graphite # AUR
   lib32-libglvnd
-  lib32-libsquish # AUR
+  #lib32-libsquish # AUR
   lib32-libtheora
   lib32-libvorbis
   lib32-libwebp
@@ -97,7 +97,7 @@ build() {
     builtin_recastnavigation=yes
     builtin_rvo2_2d=yes
     builtin_rvo2_3d=yes
-    builtin_squish=no
+    builtin_squish=yes
     builtin_wslay=yes # lib32-libwslay isn't available.
     builtin_xatlas=yes
     builtin_zlib=no
