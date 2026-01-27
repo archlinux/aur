@@ -92,6 +92,7 @@ optdepends=(
   'speech-dispatcher: Text-to-Speech'
   'xdg-desktop-portal: Screensharing with Wayland'
   'firefox-ublock-origin: Content filter extension'
+  'firefox-noscript: Selectively enable javascript on pages'
   'firefox-decentraleyes: Local emulation of Content Delivery Networks'
   'konform-multi-account-containers-lite: First-class multi-account-containers integration'
 )
