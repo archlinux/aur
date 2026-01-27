@@ -1,6 +1,6 @@
 pkgbase = r-ankir
 	pkgdesc = Read Anki Flashcard Databases with FSRS-6 Support
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/chrislongros/ankiR
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-ankir
 	optdepends = r-testthat: testing
 	optdepends = r-knitr: vignettes
 	optdepends = r-rmarkdown: vignettes
-	source = ankiR-0.3.0.tar.gz::https://github.com/chrislongros/ankiR/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 06f0c400d01e602d62c7316b3db1ac0beca1932cc21c5a146f65cc2c2728b989
+	source = ankiR-0.4.0.tar.gz::https://github.com/chrislongros/ankiR/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = d781c9932945b299f23e9e0e47cbb3ac1216303d66aae538d3cfbe45a9bae583
 
 pkgname = r-ankir
