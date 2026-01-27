@@ -27,15 +27,15 @@ optdepends=(
     'tesseract-data-spa: Spanish language support'
     'tesseract-data-jpn: Japanese language support'
     'tesseract-data-chi_sim: Chinese Simplified language support'
-    'slurp: Wayland screen selection'
-    'grim: Wayland screenshot tool'
-    'grimshot: Wayland screenshot tool'
-    'wl-clipboard: Wayland clipboard support'
+    'slurp: Wayland screen selection (required for Wayland)'
+    'grim: Wayland screenshot tool (required for Wayland)'
+    'wl-clipboard: Wayland clipboard support (required for Wayland)'
     'maim: X11 screenshot tool'
     'scrot: X11 screenshot tool'
     'xclip: X11 clipboard support'
     'imagemagick: X11 screenshot tool (import command)'
 )
+# Note: For enhanced spell correction, install: pip install --user symspellpy
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('c40385dbc536be6d3b1921c76adca872c9ddcdf2212f2dba58e4728b27e72e48')
