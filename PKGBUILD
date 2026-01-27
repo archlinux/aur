@@ -1,7 +1,7 @@
 # Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=wafw00f
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="The Web Application Firewall Fingerprinting Tool"
 arch=("any")
@@ -11,7 +11,7 @@ depends=("python-pluginbase"
          "python-requests")
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('3e42bc7f8db72320e9db5a9ca417806210b72c9627ecb9397adb3fccb2cd2fec4a083e5cb254abde7f89ab4acf1e8ef489a9db14b67dc9ab827db984d31cf93a')
+b2sums=('cbcb271b7389190c5fac1b91b740872dc2a7549fafab33505ade13addea357830de9b0080a7294aae4882092fa9b6946d9b84ffa145ca87a50db2a47d1375110')
 
 build() {
   cd $pkgname-$pkgver
