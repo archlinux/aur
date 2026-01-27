@@ -1,0 +1,15 @@
+pkgbase = h2status
+	pkgdesc = Lightweight status bar for sway/i3
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/neoden/h2status
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	optdepends = bluez: bluetooth support
+	provides = h2status
+	conflicts = h2status-git
+	source = h2status-0.2.0.tar.gz::https://github.com/neoden/h2status/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 2f35368b7848263d5798e35cf9a582cf7c178ebc8cad16f1796332e80bb4f8bb
+
+pkgname = h2status
