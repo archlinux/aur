@@ -1,5 +1,5 @@
 # Maintainer: Zakhar Smokotov <zaharb840@gmail.com>
-pkgname=feb
+pkgname=feb-git
 pkgver=1.0
 pkgrel=1
 pkgdesc="easy to understand, simple to use suckless-style build system"
