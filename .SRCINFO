@@ -1,6 +1,6 @@
 pkgbase = meowrch-settings
 	pkgdesc = System optimization settings for Meowrch
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/meowrch/meowrch-settings
 	install = meowrch-settings.install
@@ -20,7 +20,7 @@ pkgbase = meowrch-settings
 	optdepends = hdparm: for HDD performance optimizations
 	provides = cachyos-settings
 	conflicts = cachyos-settings
-	source = https://github.com/meowrch/meowrch-settings/archive/refs/tags/v3.1.0.tar.gz
-	sha256sums = f165a173ef8cfdb55f2526468c2a3a9832a4095dd14996469dd55168a568cc47
+	source = https://github.com/meowrch/meowrch-settings/archive/refs/tags/v3.1.1.tar.gz
+	sha256sums = 96efc4992376a2497656b4b658123c518f0effc7659fec1f45cc3d4eb88374b9
 
 pkgname = meowrch-settings
