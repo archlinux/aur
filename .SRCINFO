@@ -8,6 +8,8 @@ pkgbase = h2status-git
 	makedepends = git
 	makedepends = go
 	optdepends = bluez: bluetooth support
+	provides = h2status
+	conflicts = h2status
 	source = git+https://github.com/neoden/h2status.git
 	sha256sums = SKIP
 
