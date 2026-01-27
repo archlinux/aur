@@ -4,14 +4,13 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-ffmpeg
 pkgver=8.0.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Complete solution to record, convert and stream audio and video (Android ${_android_arch})"
 url="http://ffmpeg.org/"
 license=('GPL3')
 groups=('android-ffmpeg')
-depends=("android-${_android_arch}-alsa-lib"
-         "android-${_android_arch}-aom"
+depends=("android-${_android_arch}-aom"
          "android-${_android_arch}-bzip2"
          "android-${_android_arch}-cairo"
          "android-${_android_arch}-dav1d"
@@ -187,6 +186,7 @@ build() {
         --disable-v4l2-m2m \
         --disable-indev=v4l2 \
         --disable-outdev=v4l2 \
+        --disable-alsa \
         --enable-lto \
         --enable-avisynth \
         --enable-fontconfig \
