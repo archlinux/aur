@@ -1,7 +1,7 @@
 pkgbase = konform-browser
 	pkgdesc = Firefox fork (LibreWolf-base) with increased customizability and security
 	pkgver = 140.7.0.105
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://codeberg.org/konform-browser/source
 	install = konform.install
@@ -79,6 +79,7 @@ pkgbase = konform-browser
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
 	optdepends = firefox-ublock-origin: Content filter extension
+	optdepends = firefox-noscript: Selectively enable javascript on pages
 	optdepends = firefox-decentraleyes: Local emulation of Content Delivery Networks
 	optdepends = konform-multi-account-containers-lite: First-class multi-account-containers integration
 	provides = konform-browser
