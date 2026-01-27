@@ -1,13 +1,13 @@
 # Maintainer: Aidan Williams <ppeb at ppeb dot me>
 # Contributor: William Brown <glowinthedarkcia@horsefucker.org>
 pkgname="lwjgl"
-pkgver="3.3.6"
+pkgver="3.4.0"
 pkgrel="1"
 arch=("any")
 pkgdesc="Java library that enables access to OpenGL, OpenAL, Vulkan, and more."
 url="https://github.com/LWJGL/lwjgl3"
 source=("https://github.com/LWJGL/lwjgl3/releases/download/$pkgver/$pkgname-$pkgver.zip")
-md5sums=("cbb3f04f2c99bb6e61ce37b829362139")
+md5sums=("6b0fe5bfdb41be715cf07fed9840e8ca")
 options=("!strip")
 license=("BSD")
 depends=("java-environment")
