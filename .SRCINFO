@@ -13,12 +13,12 @@ pkgbase = obggcc-bin
 	options = !strip
 	options = staticlibs
 	source_i686 = https://github.com/AmanoTeam/obggcc/releases/download/gcc-15/i386-unknown-linux-gnu.tar.xz
-	sha256sums_i686 = 1419df5d3e86a733ec0554b496bba9cadf5994eb9208f2576f7d81f04e507dd9
+	sha256sums_i686 = 7ba1af6e46d712c7b250cce66151cf7006be44f0d1cc50165f829baf3a7ec27a
 	source_x86_64 = https://github.com/AmanoTeam/obggcc/releases/download/gcc-15/x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 0a32064a0b7315316118e3e8c0f619e78cfeec025a498571f4bc03d4a69e46cc
+	sha256sums_x86_64 = 528a1a8107deaad835b389747888eb47f2b1bbba424716a9edefb91e9fb54c31
 	source_aarch64 = https://github.com/AmanoTeam/obggcc/releases/download/gcc-15/aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 4a3c6a1396e23cf7327c3155bf90c71d05de99de4e8a3681ce0ca79beb684a7d
+	sha256sums_aarch64 = c63134f39de912cf8dce21d62871f7bdc3a9b6129a56e583ce960dfc8c63bf40
 	source_armv7h = https://github.com/AmanoTeam/obggcc/releases/download/gcc-15/arm-unknown-linux-gnueabihf.tar.xz
-	sha256sums_armv7h = 9941deabb22b7252847206ea8f2834c596ed13de3b5f2d5831161a3795fc9665
+	sha256sums_armv7h = 0aeceb2d320753914997a678bfc0cb308a562085316027a3f5f7e71ceadef11f
 
 pkgname = obggcc-bin
