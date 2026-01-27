@@ -1,7 +1,7 @@
 # Maintainer: MLM-stuff <gfxoxinzh@mozmail.com>
 pkgname=floppy-warriors-bin
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A janky ragdoll archery battle game"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mlm-games/floppy-warriors"
@@ -37,7 +37,7 @@ package() {
 
     cat > "${pkgdir}/usr/share/applications/floppy-warriors.desktop" << DESKTOP_EOF
 [Desktop Entry]
-Name=Floppy Warriors #TODO: Edit when using
+Name=Floppy Warriors
 Exec=floppy-warriors
 Terminal=false
 Type=Application
