@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=exdex
-_pkgver=1.2.3
+_pkgver=1.2.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Estimation of the Extremal Index"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -29,8 +29,8 @@ optdepends=(
   r-zoo
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a30891a6c53ec03fa527562dedba2b2f')
-b2sums=('27e3826fbc428de426a8daa3d8b33faef9b21d2fcc59f7b41f6e7632294f973872b362bb061c307b89c25322e8e47d48a4dfc0a95fb8ad4591eda8780f1d2cf4')
+md5sums=('e46c9bf868db55d0b9729a029e9ebfe8')
+b2sums=('47c732eead48c18552cc21ef1616ecefe94e3aac834ef75873b352e95e27f5b3fcf6c8f40db9c7bca86a16b0d9803753cce25836e20cf6e03b2fc162854d8a17')
 
 build() {
   mkdir build
