@@ -1,7 +1,7 @@
 # Maintainer: desbma
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=shh
-pkgver=2025.11.3
+pkgver=2026.1.27
 pkgrel=1
 pkgdesc='Automatic systemd service hardening guided by strace profiling'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs'
          'strace')
 makedepends=('cargo' 'systemd')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/desbma/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('e69507c6dafd8ac3c04ee19f85204c8086d5322abae413b244e244f1581524b78ddf43c6412e9ccd19d6f228a1450c6a57e5f2d8717dc2fb2542d79a2a6728c8')
+sha512sums=('cf979174e8cba3f704adcbd411158d7d1c6b2f49b3a967f1034a6a9b56180cc272e0c4fcbda1cb32b4f8a7741703b4e935ddda37dd6c14cc12fa516cb97f19f4')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
