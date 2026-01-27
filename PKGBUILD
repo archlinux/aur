@@ -2,7 +2,7 @@
 # Maintainer: LvcasX1 <contact@lvcasx1.dev>
 
 pkgname='ithil-bin'
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc='A Terminal User Interface (TUI) Telegram client built with Go and Bubbletea (binary release)'
 url='https://github.com/lvcasx1/ithil'
@@ -12,10 +12,10 @@ provides=('ithil')
 conflicts=('ithil')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/lvcasx1/ithil/releases/download/v${pkgver}/ithil_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('23090f59be3a37245d2151320a36a23b8b0bcf689bc7c71ad86dbf4e394c3974')
+sha256sums_aarch64=('327e235144c51bcfa82f46ca4db95619a75480b58ff9affe18ce30652fd8f44b')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/lvcasx1/ithil/releases/download/v${pkgver}/ithil_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('c2397a74988b3f412bdb39517a2a86b472b400de7526edbf7e9163070f39254d')
+sha256sums_x86_64=('154326dc7ce00878c7f46ea7357573165b0945975156e25d8d241ba24c8ad75a')
 
 package() {
   # bin
