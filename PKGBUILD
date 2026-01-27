@@ -109,8 +109,8 @@ if [[ "${_build_profiled}" == "true" ]]; then
   fi
 fi
 
-backup=('usr/lib/konform/librewolf.cfg'
-        'usr/lib/konform/distribution/policies.json')
+backup=("usr/lib/${__pkgname}/librewolf.cfg"
+        "usr/lib/${__pkgname}/distribution/policies.json")
 options=(
   !debug
   !emptydirs
@@ -387,14 +387,14 @@ END
   install -Dvm644 /dev/stdin "$distini" <<END
 
 [Global]
-id=org.codeberg.konform
+id=org.codeberg.${_pkgname}
 version=1.0
-about=Konform
+about="Konform Browser"
 
 [Preferences]
-app.distributor="Konform Konsurtium"
-app.distributor.channel=$__pkgname
-app.partner.librewolf=$__pkgname
+app.distributor="Konform Konsortium"
+app.distributor.channel=${_pkgname}
+app.partner.konform=${_pkgname}
 END
 
   for i in 16 32 48 64 128; do
@@ -414,7 +414,7 @@ END
   # Install a wrapper to avoid confusion about binary path
   install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$__pkgname" <<END
 #!/bin/sh
-exec /usr/lib/$__pkgname/konform "\$@"
+exec /usr/lib/${__pkgname}/${__pkgname} "\$@"
 END
 
   # Replace duplicate binary with wrapper
