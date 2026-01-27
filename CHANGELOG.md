@@ -9,12 +9,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Fix Flatpak save file in home directory (make a warning)
-- Save unit file in run
-- Search (simple) the logs
+- Save unit file in runtime
 - Options on description menu
 - Show interface on properties list
-- Can create unit' Drop-Ins
+
+## [2.12.0] - 2026-01-27
+
+### Added
+
+- Fine tune the Proxy Method Calls and Actions through the Preferences
+- Lazy Start the Proxy
+- Refresh the Unit Status on selection
+
+### Fix
+
+- Fix Flatpak save file in home directory (make a warning)
+- Password dialog gets overlapped by Sysd Manager on every start [Issue 35](https://github.com/plrigaux/sysd-manager/issues/35)
 
 ## [2.11.5] - 2026-01-15
 
