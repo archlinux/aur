@@ -1,0 +1,5 @@
+[ftb]
+source = "github"
+github = "Cyxuan0311/FTB"
+use_max_tag = true
+prefix = "v"

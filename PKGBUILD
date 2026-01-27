@@ -1,44 +1,41 @@
-# Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-pkgname=ftb
-pkgver=latest
+_pkgauthor=Cyxuan0311
+_pkgname=FTB
+_appname=ftb
+
+pkgname=${_pkgname,,}
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="The Feed The Beast Minecraft mod pack manager and launcher."
-arch=('i686' 'x86_64')
-url="http://www.feed-the-beast.com/"
-license=('apache')
-depends=('java-runtime' 'xorg-server-utils' 'openal')
-provides=('ftb-launcher')
+pkgdesc="A file browser built with FTXUI"
 
-install='ftb.install'
+license=('MIT')
+arch=('x86_64' 'aarch64')
 
-source=("http://ftb.cursecdn.com/FTB2/launcher/FTB_Launcher.jar"
-        "ftb"
-        "ftb.desktop"
-        "ftb.png"
-        "LICENSE")
-noextract=('FTB_Launcher.jar')
+url="https://github.com/${_pkgauthor}/${pkgname}"
+_urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
 
-md5sums=(SKIP
-         '510cfebbd916203c15b5cb4187f8d133'
-         '108626111fbd1557dd7517d71a5e7bef'
-         '8b65032bcc390af97255244c0558c780'
-         'dbff5a2b542fa58854455bf1a0b94b83')
+depends=('glibc' 'gcc-libs' 'ftxui' 'mysql' 'libssh2' 'yaml-cpp' 'tbb' 'ffmpeg' 'libx11')
+makedepends=('gcc' 'cmake')
+provides=("${_appname}")
 
-package() {
-    cd "$srcdir"
-    # mkdir -p "${pkgdir}/usr/share/ftb/"
-    # chmod -R 777 "${pkgdir}/usr/share/ftb/"
+source=("${pkgname}-${pkgver}.tgz::https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('8eecdb29b0cafdcc9002a3d51d43ab30bebc094225e97d16215b8530e5d847fa')
 
-    install -D -m555 "${srcdir}/FTB_Launcher.jar"     "${pkgdir}/usr/share/java/ftb/FTB_Launcher.jar"
-    install -D -m555 "${srcdir}/ftb"         "${pkgdir}/usr/bin/ftb"
+build() {
+	cd "${srcdir}/${_pkgname}-${pkgver}/" || exit 1
 
-    # Desktop launcher with icon
-    install -D -m444 "${srcdir}/ftb.desktop" "${pkgdir}/usr/share/applications/ftb.desktop"
-    install -D -m444 "${srcdir}/ftb.png"     "${pkgdir}/usr/share/pixmaps/ftb.png"
+	mkdir -p build && cd build || exit 1
 
-    # License
-    install -D -m444 "${srcdir}/LICENSE"           "${pkgdir}/usr/share/licenses/ftb/LICENSE"
+	cmake .. &&	make -j$(nproc)
 }
 
-# vim:set ts=4 sw=4 et:
+package() {
+	cd "${srcdir}/${_pkgname}-${pkgver}/" || exit 1
+
+	install -Dm755 "build/${_pkgname}" "${pkgdir}/usr/bin/${_appname}"
+
+	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+	install -Dm644 "License" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
