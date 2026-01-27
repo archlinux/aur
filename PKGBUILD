@@ -312,7 +312,11 @@ _get_patches() {
     # Get the list of patches from the file, ignore the comments
     grep -Ev '^\s*#' ${srcdir}/tachyon/patch_list.txt
     # Experimental patches
-    [[ "${_additionalpatches,,}" == *"+experimental"* ]] && grep -Ev '^\s*#' ${srcdir}/tachyon/patch_list_exp.txt
+    if [[ "${_additionalpatches,,}" == *"+experimental"* ]]; then
+        grep -Ev '^\s*#' ${srcdir}/tachyon/patch_list_exp.txt
+        grep -Ev '^\s*#' ${srcdir}/tachyon/patch_list_exp_mm.txt
+        grep -Ev '^\s*#' ${srcdir}/tachyon/patch_list_exp_sched.txt
+    fi
 }
 
 
