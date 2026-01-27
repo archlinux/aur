@@ -1,7 +1,7 @@
 pkgbase = jool
 	pkgdesc = Open Source SIIT and NAT64 for Linux.
 	pkgver = 4.1.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jool.mx
 	arch = x86_64
 	license = GPL2
@@ -9,6 +9,7 @@ pkgbase = jool
 	makedepends = dkms
 	makedepends = iptables
 	optdepends = iptables
+	conflicts = jool-dkms-git
 	backup = etc/jool/jool_siit.conf
 	backup = etc/jool/jool.conf
 	source = https://github.com/NICMx/Jool/releases/download/v4.1.15/jool-4.1.15.tar.gz

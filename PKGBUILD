@@ -3,13 +3,14 @@
 pkgbase=jool
 pkgname=(jool-tools jool-dkms)
 pkgver=4.1.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source SIIT and NAT64 for Linux."
 arch=("x86_64")
 url="https://www.jool.mx"
 license=("GPL2")
 makedepends=("libnl" "dkms" "iptables")
 optdepends=("iptables")
+conflicts=("jool-dkms-git")
 backup=("etc/jool/jool_siit.conf"
   "etc/jool/jool.conf"
 )
