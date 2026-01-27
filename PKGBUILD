@@ -11,21 +11,15 @@ url="http://www.cendio.com/"
 license=('custom')
 install=${pkgname}.install
 
-depends=('dbus' 'ghostscript' 'glibc' 'glib2' 'hicolor-icon-theme' 'iproute2'
-         'libasyncns' 'libcap' 'libsndfile' 'libx11' 'libxcb' 'libxcrypt-compat'
-         'nspr' 'nss' 'pam' 'procps-ng' 'python' 'python-gobject' 'rtkit'
-         'smtp-forwarder' 'systemd' 'xdg-utils' 'xorg-xauth' 'zlib' 'python-gssapi'
-         'python-six' 'gtk3' 'gdk-pixbuf2' 'python-cairo' 'pango' 'python-numpy' 'xorg-xhost' 
-         'xdg-utils')
-optdepends=('apache: Web integration'
-            'mod_nss: Web integration'
-            'python-markdown: Web integration'
-            'python-pygments: Web integration'
-            'nfs-utils: Local drive redirection'
-            'python-ldap: LDAP integration tools',
-            'libpulse: Audio redirection',
-            'libcups: Printer redirection',
-            'krb5: Kerberos integration')
+depends=('gcc-libs' 'ghostscript' 'glibc' 'gtk3' 'iproute2' 'krb5' 'libx11'
+         'libxcrypt-compat' 'msmtp-mta' 'nss' 'nspr' 'pam' 'procps-ng'
+         'python-cairo' 'python-gobject' 'python-six' 'systemd' 'xorg-xauth'
+         'xorg-xhost' 'zlib')
+
+optdepends=('cups: printer redirection'
+            'nfs-utils: local drive redirection'
+            'openssh: native client support'
+            'python-ldap: LDAP integration')
 
 _archive_name=tl-${pkgver}-server
 
