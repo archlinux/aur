@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Solvee
+Comment=Minimal and smart calculator
+Exec=solvee
+Icon=accessories-calculator
+Terminal=false
+Categories=Utility;Calculator;
