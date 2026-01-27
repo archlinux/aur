@@ -1,0 +1,14 @@
+pkgbase = feb
+	pkgdesc = easy to understand, simple to use suckless-style build system
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/predefine/feb
+	arch = x86_64
+	license = CC0-1.0
+	makedepends = git
+	makedepends = base-devel
+	makedepends = bash
+	source = git+https://github.com/predefine/feb
+	md5sums = SKIP
+
+pkgname = feb
