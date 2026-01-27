@@ -10,6 +10,8 @@ license=('MIT')
 depends=()
 makedepends=('git' 'go')
 optdepends=('bluez: bluetooth support')
+provides=('h2status')
+conflicts=('h2status')
 source=("git+https://github.com/neoden/${_pkgname}.git")
 sha256sums=('SKIP')
 
