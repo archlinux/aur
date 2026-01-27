@@ -20,5 +20,4 @@ package() {
 	tar xpf data.tar.gz -C ${pkgdir}
 	rm ${pkgdir}/usr/bin/clash
 	rm ${pkgdir}/usr/bin/clash-meta
-	ln -s /usr/bin/mihomo $pkgdir/usr/bin/clash-meta
 }
