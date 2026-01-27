@@ -16,9 +16,9 @@ sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 package() {
     # Merge all components into package directory
-    bsdtar -exclude='.*' -xvf "${srcdir}/pgadmin4-server-${pkgver}-x86_64.pkg.tar.zst" -C "${pkgdir}"
-    bsdtar -exclude='.*' -xvf "${srcdir}/pgadmin4-desktop-${pkgver}-x86_64.pkg.tar.zst" -C "${pkgdir}"
-    bsdtar -exclude='.*' -xvf "${srcdir}/pgadmin4-web-${pkgver}-x86_64.pkg.tar.zst" -C "${pkgdir}"
+    bsdtar --exclude='.*' -xvf "${srcdir}/pgadmin4-server-${pkgver}-x86_64.pkg.tar.zst" -C "${pkgdir}"
+    bsdtar --exclude='.*' -xvf "${srcdir}/pgadmin4-desktop-${pkgver}-x86_64.pkg.tar.zst" -C "${pkgdir}"
+    bsdtar --exclude='.*' -xvf "${srcdir}/pgadmin4-web-${pkgver}-x86_64.pkg.tar.zst" -C "${pkgdir}"
 
     # Install license
     install -Dm644 "${pkgdir}/usr/pgadmin4/LICENSE" \
