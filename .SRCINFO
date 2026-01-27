@@ -1,0 +1,24 @@
+pkgbase = piped-backend-git
+	pkgdesc = An advanced open-source privacy friendly alternative to YouTube
+	pkgver = r1316.c5921f6
+	pkgrel = 1
+	url = https://github.com/TeamPiped/Piped-Backend
+	arch = x86_64
+	groups = piped-git
+	license = AGPL-3.0
+	makedepends = git
+	makedepends = jdk-openjdk
+	depends = java-runtime
+	backup = etc/webapps/piped/backend.properties
+	source = git+https://github.com/TeamPiped/Piped-Backend.git
+	source = piped-backend.sh
+	source = sysusers.conf
+	source = tmpfiles.conf
+	source = systemd.service
+	sha256sums = SKIP
+	sha256sums = 3f62b54ab1567ee6f7a5e419f74422419c499a05f19a90fe946b3396b7c29624
+	sha256sums = eb122e1cf5149be5e89a2ebfb158f29f305427cb8b2061d6728c53ad1d1b89d4
+	sha256sums = e15afae1486ac5839e0b114171409bc20c0ad8aa7a58d2846972b9c5a43b2d7a
+	sha256sums = 0e00f0e054687cbc76356d7fb0e860075a27fcf8366ce2b46cb94e92f00a4645
+
+pkgname = piped-backend-git
