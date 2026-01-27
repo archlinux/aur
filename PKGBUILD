@@ -1,7 +1,7 @@
 # Maintainer: Daniel Korbelainen <officialpand@gmail.com>
 pkgname=sniptext
 pkgver=0.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Screen capture OCR tool with adaptive ensemble recognition"
 arch=('any')
 url="https://github.com/dkorbelainen/sniptext"
@@ -13,13 +13,13 @@ depends=(
     'python-pynput'
     'python-pyyaml'
     'python-loguru'
-    'python-scikit-learn'
     'python-pytesseract'
     'tesseract'
     'tesseract-data-eng'
     'libnotify'
 )
 optdepends=(
+    'python-scikit-learn: Advanced confidence modeling for ensemble OCR'
     'tesseract-data-rus: Russian language support'
     'tesseract-data-fra: French language support'
     'tesseract-data-deu: German language support'
