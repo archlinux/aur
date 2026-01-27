@@ -1,6 +1,6 @@
 pkgbase = kpa
 	pkgdesc = KevinCrrl Python AUR Helper
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/KevinCrrl/kpa
 	arch = any
@@ -14,12 +14,12 @@ pkgbase = kpa
 	depends = python-colorama
 	depends = python-pkgbuild-parser
 	depends = python-requests
+	depends = python-typer
 	depends = git
 	depends = base-devel
 	optdepends = sudo
-	optdepends = proxychains-ng
 	conflicts = kpa-bin
-	source = https://github.com/KevinCrrl/kpa/archive/refs/tags/2.1.0/2.1.0.tar.gz
-	sha512sums = cada3bf22142169db759ea8f84a80e3d79693756f4d05fe87a88c8b5be1ad9fd1d83051b9f37077debf69147ceffec1b974082e92cba39a18176095552e8f656
+	source = https://github.com/KevinCrrl/kpa/archive/refs/tags/2.2.0/2.2.0.tar.gz
+	sha512sums = e880ff3e2ad47bdfc74f6fcddd9289540d968c4b2790bbbadf3a89671a36015e95ab31272a60f6f823b60fe21962daf93be816a134400412fd8d0fd7a53685bb
 
 pkgname = kpa

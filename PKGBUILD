@@ -1,12 +1,14 @@
+# Maintainer: KevinCrrl
+
 pkgname=kpa
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="KevinCrrl Python AUR Helper"
 arch=('any')
 url="https://github.com/KevinCrrl/kpa"
 license=('GPL3-or-later')
 source=("${url}/archive/refs/tags/${pkgver}/${pkgver}.tar.gz")
-sha512sums=("cada3bf22142169db759ea8f84a80e3d79693756f4d05fe87a88c8b5be1ad9fd1d83051b9f37077debf69147ceffec1b974082e92cba39a18176095552e8f656")
+sha512sums=("e880ff3e2ad47bdfc74f6fcddd9289540d968c4b2790bbbadf3a89671a36015e95ab31272a60f6f823b60fe21962daf93be816a134400412fd8d0fd7a53685bb")
 conflicts=('kpa-bin')
 depends=(
     'python'
@@ -15,6 +17,7 @@ depends=(
     'python-colorama'
     'python-pkgbuild-parser'
     'python-requests'
+    'python-typer'
     'git'
     'base-devel'
 )
@@ -25,7 +28,6 @@ makedepends=(
 )
 optdepends=(
     'sudo'
-    'proxychains-ng'
 )
 
 build() {
