@@ -1,4 +1,5 @@
-pkgname=pictopy-bin
+pkgbase=pictopy
+pkgname=(pictopy-bin)
 pkgver=1.1.0
 pkgrel=2
 pkgdesc="PictoPy - Desktop image gallery (Tauri/Python)"
@@ -13,11 +14,11 @@ sha256sums=('SKIP')
 
 prepare() {
   # Extract the debian control and data files
-  ar x "picto_py-${pkgver}.deb"
+  ar x "pictopy-bin-${pkgver}.deb"
   tar -xf data.tar.*
 }
 
-package() {
+package_pictopy-bin() {
   # Install the main files extracted from the deb
   # Using 'cp -a' preserves permissions and directory structure
   cp -a usr "$pkgdir/"

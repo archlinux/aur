@@ -1,4 +1,4 @@
-pkgbase = pictopy-bin
+pkgbase = pictopy
 	pkgdesc = PictoPy - Desktop image gallery (Tauri/Python)
 	pkgver = 1.1.0
 	pkgrel = 2
