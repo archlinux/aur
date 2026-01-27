@@ -10,8 +10,8 @@ depends=('pyside6' 'python-toml')
 makedepends=('git')
 provides=('solvee')
 conflicts=('solvee')
-source=('git+https://github.com/GiuseppeAngenica/Solvee.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/GiuseppeAngenica/Solvee.git' 'solvee.desktop')
+sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
   # Entriamo nella cartella con la S maiuscola come su GitHub
@@ -20,18 +20,17 @@ pkgver() {
 }
 
 package() {
-  # Anche qui, usiamo il nome esatto della cartella
   cd "$srcdir/Solvee"
   
-  # Crea le directory
   install -d "${pkgdir}/usr/share/solvee"
   install -d "${pkgdir}/usr/bin"
+  install -d "${pkgdir}/usr/share/applications"
 
-  # Installa i file
   install -m644 solvee.py "${pkgdir}/usr/share/solvee/solvee.py"
   install -m644 theme.toml "${pkgdir}/usr/share/solvee/theme.toml"
 
-  # Crea il launcher
+  install -m644 "${srcdir}/solvee.desktop" "${pkgdir}/usr/share/applications/solvee.desktop"
+  
   echo -e "#!/bin/sh\npython /usr/share/solvee/solvee.py \"\$@\"" > "${pkgdir}/usr/bin/solvee"
   chmod +x "${pkgdir}/usr/bin/solvee"
 }

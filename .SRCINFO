@@ -1,6 +1,6 @@
 pkgbase = solvee-git
 	pkgdesc = A minimal and smart calculator inspired by Numi (v1.1 with variables)
-	pkgver = 1.1
+	pkgver = r2.a70a905
 	pkgrel = 1
 	url = https://github.com/GiuseppeAngenica/Solvee
 	arch = any
@@ -11,6 +11,8 @@ pkgbase = solvee-git
 	provides = solvee
 	conflicts = solvee
 	source = git+https://github.com/GiuseppeAngenica/Solvee.git
+	source = solvee.desktop
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = solvee-git
