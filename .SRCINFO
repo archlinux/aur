@@ -1,6 +1,6 @@
 pkgbase = htmlbuilder
 	pkgver = 0.0.2
-	pkgrel = 6
+	pkgrel = 7
 	install = htmlbuilder.install
 	arch = x86_64
 	license = custom

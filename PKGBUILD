@@ -1,7 +1,7 @@
 # Maintainer: Artyom Nazarov <artnazarov@vk.com>
 pkgname=htmlbuilder
 pkgver=0.0.2
-pkgrel=6
+pkgrel=7
 arch=('x86_64')
 license=('custom')
 depends=('lazarus' 'qt5pas' 'gtk2' 'fpc' )  # Зависимости
@@ -164,6 +164,7 @@ install=htmlbuilder.install
 
 
 
+# Checksums will be updated by updpkgsums
 # Checksums will be updated by updpkgsums
 # Checksums will be updated by updpkgsums
 # Checksums will be updated by updpkgsums
