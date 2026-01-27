@@ -21,6 +21,7 @@ pkgbase = cake-wallet-bin
 	depends = pango
 	depends = util-linux-libs
 	depends = xz
+	provides = cake-wallet
 	source = cake-wallet-bin-v5.8.0-release.tar.xz::https://github.com/cake-tech/cake_wallet/releases/download/v5.8.0/Cake_Wallet_v5.8.0_Linux.tar.xz
 	source = cake-wallet-bin-v5.8.0.tar.gz::https://github.com/cake-tech/cake_wallet/archive/refs/tags/v5.8.0.tar.gz
 	source = cake-wallet-bin.desktop
