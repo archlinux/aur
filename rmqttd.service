@@ -1,0 +1,21 @@
+[Unit]
+Description=rmqttd
+After=network.target
+
+[Service]
+Type=simple
+User=rmqtt
+Group=rmqtt
+DynamicUser=yes
+ExecStart=/usr/bin/rmqttd -f /etc/rqmtt/rmqtt.toml
+Restart=on-failure
+RestartSec=10
+TimeoutStartSec=60
+RuntimeDirectory=rmqtt
+StateDirectory=rmqtt
+CacheDirectory=rmqtt
+LogsDirectory=rmqtt
+ConfigurationDirectory=rmqtt
+
+[Install]
+WantedBy=multi-user.target

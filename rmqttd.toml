@@ -1,0 +1,8 @@
+plugins.dir = "/etc/rmqtt/plugins"
+plugins.default_startups = [
+    #    "rmqtt-cluster-broadcast",
+    #    "rmqtt-cluster-raft"
+    #    "rmqtt-auth-http",
+    #    "rmqtt-web-hook"
+]
+listener.tls.external.addr = "0.0.0.0:1883"
