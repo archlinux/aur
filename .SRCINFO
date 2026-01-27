@@ -13,6 +13,6 @@ pkgbase = aionui-bin
 	provides = aionui
 	conflicts = aionui
 	source_x86_64 = aionui_1.7.7_linux_amd64.deb::https://github.com/iOfficeAI/AionUi/releases/download/v1.7.7/AionUi-1.7.7-linux-amd64.deb
-	sha256sums_x86_64 = ab936abab98bdd242917e57458fc5fb2763cd148c913b41f202f1be17d73309a
+	sha256sums_x86_64 = e598114896297b66d924e97429ce20b96478441f7058f37477e7497ed1550f75
 
 pkgname = aionui-bin

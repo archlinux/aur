@@ -23,7 +23,7 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}_${pkgver}_linux_amd64.deb::${url}/releases/download/v${pkgver}/AionUi-${pkgver}-linux-amd64.deb")
 
-sha256sums_x86_64=('ab936abab98bdd242917e57458fc5fb2763cd148c913b41f202f1be17d73309a')
+sha256sums_x86_64=('e598114896297b66d924e97429ce20b96478441f7058f37477e7497ed1550f75')
 
 package() {
   # .deb 包本质是一个 ar 归档文件，先用 ar 命令解开
