@@ -1,6 +1,7 @@
 # Maintainer: Nogweii <packages@nogweii.net>
 _libname=json5format
 pkgname=formatjson5
+# renovate: datasource=crate depName=json5format
 pkgver=0.2.6
 pkgrel=2
 pkgdesc="Format a JSON5 document with comments"
