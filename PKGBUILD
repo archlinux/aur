@@ -4,7 +4,7 @@
 
 _pkgname='ryelang'
 pkgname="${_pkgname}-git"
-pkgver=0.0.84.r0.g8c56efd
+pkgver=0.0.99.r10.g62b2e9e
 pkgrel=1
 pkgdesc='Rye — a programming language trying to be flexible about expression, but strict about state (development version)'
 arch=('aarch64' 'x86_64')
@@ -69,10 +69,15 @@ package() {
 
   # README and examples
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
-  cp -vfa examples "$pkgdir/usr/share/doc/$pkgname/"
+  cp -vfa examples    "$pkgdir/usr/share/doc/$pkgname/"
 
   # license
   install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+
+  # Symlinks for convenience
+  for _dir in doc licenses; do
+    cd "$pkgdir/usr/share/$_dir" && ln -vsr "$pkgname" "$_pkgname"
+  done
 }
 
 # eof
