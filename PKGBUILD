@@ -41,14 +41,14 @@ sha256sums=('c40385dbc536be6d3b1921c76adca872c9ddcdf2212f2dba58e4728b27e72e48')
 
 build() {
     cd "$pkgname-$pkgver"
-    python -m build --wheel --no-isolation
+    /usr/bin/python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$pkgname-$pkgver"
 
     # Install only our wheel; rely on system/python deps from depends()
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    /usr/bin/python -m installer --destdir="$pkgdir" dist/*.whl
 
     # Install license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
