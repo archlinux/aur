@@ -1,4 +1,4 @@
-pkgbase = feb
+pkgbase = feb-git
 	pkgdesc = easy to understand, simple to use suckless-style build system
 	pkgver = 1.0
 	pkgrel = 1
@@ -11,4 +11,4 @@ pkgbase = feb
 	source = git+https://github.com/predefine/feb
 	md5sums = SKIP
 
-pkgname = feb
+pkgname = feb-git
