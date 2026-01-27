@@ -1,7 +1,7 @@
 # Maintainer: Artyom Nazarov <artnazarov@vk.com>
 pkgname=htmlbuilder
 pkgver=0.0.2
-pkgrel=7
+pkgrel=8
 arch=('x86_64')
 license=('custom')
 depends=('lazarus' 'qt5pas' 'gtk2' 'fpc' )  # Зависимости
@@ -154,16 +154,14 @@ source=(
   "types_for_app.pas"
   "tzutil.pas"
   "uRepeatExpression.pas"
-  "update_pkg.py"
-  "update_ver.py"
   "url_constr.pas"
-  "workflow.sh"
 )  # Исходные файлы
 
 install=htmlbuilder.install
 
 
 
+# Checksums will be updated by updpkgsums
 # Checksums will be updated by updpkgsums
 # Checksums will be updated by updpkgsums
 # Checksums will be updated by updpkgsums

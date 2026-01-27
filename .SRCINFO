@@ -1,6 +1,6 @@
 pkgbase = htmlbuilder
 	pkgver = 0.0.2
-	pkgrel = 7
+	pkgrel = 8
 	install = htmlbuilder.install
 	arch = x86_64
 	license = custom
@@ -156,9 +156,6 @@ pkgbase = htmlbuilder
 	source = types_for_app.pas
 	source = tzutil.pas
 	source = uRepeatExpression.pas
-	source = update_pkg.py
-	source = update_ver.py
 	source = url_constr.pas
-	source = workflow.sh
 
 pkgname = htmlbuilder
