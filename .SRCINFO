@@ -1,0 +1,17 @@
+pkgbase = class-widgets-bin
+	pkgdesc = Class Widgets 1
+	pkgver = 1.2.0.4
+	pkgrel = 1
+	url = https://github.com/Class-Widgets/Class-Widgets
+	arch = x86_64
+	depends = fontconfig
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = zlib
+	depends = xdg-utils
+	options = !debug
+	source_x86_64 = class-widgets-bin::https://github.com/Class-Widgets/Class-Widgets/releases/download/1.2.0.4/ClassWidgets-Linux-x64_21334301646.deb
+	sha256sums_x86_64 = 51af29db382c7cb2518a5545d92d9d9c3e747b0dce0386c3a9f4211cabea9cce
+
+pkgname = class-widgets-bin
