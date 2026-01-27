@@ -1,0 +1,13 @@
+pkgbase = cfan-git
+	pkgdesc = A minimal fan speed controller written in C
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/iakobvs/cfan
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	source = git+https://github.com/iakobvs/cfan
+	sha256sums = SKIP
+
+pkgname = cfan-git
