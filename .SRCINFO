@@ -1,6 +1,6 @@
 pkgbase = python-hyperspy
 	pkgdesc = Hyperspectral data analysis
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = http://hyperspy.org
 	arch = any
@@ -17,36 +17,37 @@ pkgbase = python-hyperspy
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	depends = python<13
+	depends = python
 	depends = python-cloudpickle
-	depends = python-dask>=2022.9.2
+	depends = python-dask>=2023.2.1
 	depends = python-importlib-metadata>=3.6
 	depends = python-jinja
 	depends = python-matplotlib>=3.6
 	depends = python-natsort
-	depends = python-numpy>=1.20.0
+	depends = python-numpy>=1.22.0
 	depends = python-packaging
 	depends = python-pint>=0.10
 	depends = python-prettytable>=2.3
 	depends = python-yaml
 	depends = python-rosettasciio
-	depends = python-scipy>=1.6.0
+	depends = python-scipy>=1.8.0
 	depends = python-sympy>=1.10
 	depends = python-tqdm>=4.59.0
-	depends = python-traits>=4.5.0
-	depends = python-scikit-image>=0.18
-	optdepends = python-numba>=0.53: speed
+	depends = python-traits>=6.4.0
+	optdepends = python-numba>=0.56: speed
 	optdepends = python-numexpr>=2.8: speed
+	optdepends = python-dask-image: dask-image
 	optdepends = ipython: ipython>8.0
 	optdepends = python-ipyparallel: ipython
-	optdepends = python-scikit-learn>=1.0.1: machine learning features
+	optdepends = python-scikit-learn>=1.6.0: machine learning features
+	optdepends = python-scikit-image>=0.19: image processing features
 	optdepends = python-hyperspy-gui-ipywidgets>=2.1.0: GUI components for Jupyter
-	optdepends = python-ipympl: GUI components for Jupyter
 	optdepends = python-hyperspy-gui-traitsui>=2.1.0: GUI components for desktop
+	optdepends = python-ipympl: GUI components for Jupyter
 	provides = hyperspy
 	conflicts = hyperspy
 	replaces = hyperspy
-	source = https://github.com/hyperspy/hyperspy/archive/v2.3.0.tar.gz
-	md5sums = 4cbd6653b7a87333f470491637eb67e1
+	source = https://github.com/hyperspy/hyperspy/archive/v2.4.0.tar.gz
+	sha256sums = 966e91acf25f8294a9663398b4fd397591723ceb15c2420b9d7ef8b0ae86fb1b
 
 pkgname = python-hyperspy

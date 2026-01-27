@@ -3,41 +3,42 @@
 # Maintainer: Joshua Taillon <jat255 AT gmail DOT com>
 pkgname=python-hyperspy
 pkgshort=hyperspy
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Hyperspectral data analysis"
 arch=('any')
 url="http://hyperspy.org"
 license=('GPL-3.0-or-later')
 
-depends=('python<13'
+depends=('python'
          'python-cloudpickle'
-         'python-dask>=2022.9.2'
+         'python-dask>=2023.2.1'
          'python-importlib-metadata>=3.6'
          'python-jinja'
          'python-matplotlib>=3.6'
          'python-natsort'
-         'python-numpy>=1.20.0'
+         'python-numpy>=1.22.0'
          'python-packaging'
          'python-pint>=0.10'
          'python-prettytable>=2.3'
          'python-yaml'
          'python-rosettasciio'
-         'python-scipy>=1.6.0'
+         'python-scipy>=1.8.0'
          'python-sympy>=1.10'
          'python-tqdm>=4.59.0'
-         'python-traits>=4.5.0'
-         'python-scikit-image>=0.18'  # AUR
+         'python-traits>=6.4.0'
          )
 
-optdepends=('python-numba>=0.53: speed'  # AUR
+optdepends=('python-numba>=0.56: speed'
             'python-numexpr>=2.8: speed'
+            'python-dask-image: dask-image' # AUR
             'ipython: ipython>8.0'
-            'python-ipyparallel: ipython' # AUR, 
-            'python-scikit-learn>=1.0.1: machine learning features'
+            'python-ipyparallel: ipython'
+            'python-scikit-learn>=1.6.0: machine learning features'
+            'python-scikit-image>=0.19: image processing features'
             'python-hyperspy-gui-ipywidgets>=2.1.0: GUI components for Jupyter' # AUR
+            'python-hyperspy-gui-traitsui>=2.1.0: GUI components for desktop' # AUR     
             'python-ipympl: GUI components for Jupyter'
-            'python-hyperspy-gui-traitsui>=2.1.0: GUI components for desktop'  # AUR
              )
 
 makedepends=('python-setuptools>=64'
@@ -73,4 +74,4 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-md5sums=('4cbd6653b7a87333f470491637eb67e1')
+sha256sums=('966e91acf25f8294a9663398b4fd397591723ceb15c2420b9d7ef8b0ae86fb1b')
