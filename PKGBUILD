@@ -6,7 +6,7 @@ epoch=1
 pkgver=140.7.0_105
 _konformver="${pkgver%_*}"
 _konformrel="${pkgver#*_}"
-pkgrel=0
+pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
 license=(MPL-2.0)
@@ -82,12 +82,12 @@ source=(
 )
 source_aarch64=("${_uploadpath_aarch64}" "${_uploadpath_sig_aarch64}")
 source_x86_64=("${_uploadpath_x86_64}" "${_uploadpath_sig_x86_64}")
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP')
-sha256sums_x86_64=('SKIP'
+sha256sums=('7a3a38bf187599301a9fffa81a0f7050043295afcf00fad8cfb9f5754112a56a'
+            'b86ddfc0cec482f7900f296857cdd0f1b736ff5037e0a86712b258ae0092924b'
+            '68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4')
+sha256sums_x86_64=('1d740cbcd7e199636a830712cd6690695c5f095c7e2e325532c0a6a75f197560'
                    'SKIP')
-sha256sums_aarch64=('SKIP'
+sha256sums_aarch64=('522928848d17468b476f39677436a2b81ec52ffb93fdad27b83537e0f196a30e'
                     'SKIP')
 
 package() {
