@@ -1,6 +1,6 @@
 # Maintainer: Agnays <srivasa@rose-hulman.edu>
 pkgname=tsenta-desktop-bin
-pkgver=3.1.1
+pkgver=3.3.2
 pkgrel=1
 pkgdesc="Tsenta - Automated job application assistant"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('tsenta-desktop')
 options=('!strip')  # Skip stripping - already packaged binary
 
 source=("https://github.com/tsenta/tsenta-desktop-linux/releases/download/v${pkgver}/tsenta-desktop_${pkgver}_amd64.deb")
-sha256sums=('a4865f2e23372edcaaed1c85744a9e89530b1243cf9245b1cbd4d133c26c67eb')
+sha256sums=('c0409127b5c1abe8a24f0388fa95a04f307c04cf2c9d3df0161776baa2a8095c')
 
 package() {
   cd "${srcdir}"
