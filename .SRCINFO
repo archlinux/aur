@@ -1,6 +1,6 @@
 pkgbase = meshtastic-python
 	pkgdesc = Python CLI and API for talking to Meshtastic devices
-	pkgver = 2.7.6
+	pkgver = 2.7.7
 	pkgrel = 1
 	url = https://github.com/meshtastic/python/
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = meshtastic-python
 	optdepends = python-dotmap: Use of the meshtastic.test namespace
 	optdepends = python-print-color: Colored log output
 	optdepends = python-pyqrcode: Output of QR codes
-	source = meshtastic-python-2.7.6.tar.gz::https://github.com/meshtastic/python/archive/refs/tags/2.7.6.tar.gz
-	sha256sums = 19b97d46f3853a7166a9015f7e4c96d1f0dccd50fdebf4f3b8e6b1ce14dabf4d
+	source = meshtastic-python-2.7.7.tar.gz::https://github.com/meshtastic/python/archive/refs/tags/2.7.7.tar.gz
+	sha256sums = c3ee4f97032bba1b9011aa6568e3002193baa5126df0eb71d8a4a11adffcf61c
 
 pkgname = meshtastic-python
