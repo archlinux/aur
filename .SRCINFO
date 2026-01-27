@@ -14,6 +14,6 @@ pkgbase = r-ankir
 	optdepends = r-knitr: vignettes
 	optdepends = r-rmarkdown: vignettes
 	source = ankiR-0.3.0.tar.gz::https://github.com/chrislongros/ankiR/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 06f0c400d01e602d62c7316b3db1ac0beca1932cc21c5a146f65cc2c2728b989
 
 pkgname = r-ankir
