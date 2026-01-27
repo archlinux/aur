@@ -1,6 +1,6 @@
 pkgbase = vm-curator
 	pkgdesc = A TUI application to manage QEMU/KVM VMs
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/mroboff/vm-curator
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = vm-curator
 	optdepends = qemu-system-ppc: PowerPC VM support
 	optdepends = edk2-ovmf: UEFI boot support
 	optdepends = polkit: privilege escalation for KVM
-	source = vm-curator-0.1.2.tar.gz::https://github.com/mroboff/vm-curator/archive/v0.1.2.tar.gz
-	sha256sums = d55d59f1ea23d1bef2b0e1b572fa91e29697d62bd34036a00ee7cd89a70fdac8
+	source = vm-curator-0.1.3.tar.gz::https://github.com/mroboff/vm-curator/archive/v0.1.3.tar.gz
+	sha256sums = 6d996a674cf10dad451e613f76f42043e504db4458eed3301fbd522aca3c9c81
 
 pkgname = vm-curator
