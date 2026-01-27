@@ -1,7 +1,7 @@
 # Maintainer: solarfire <xatra169@gmail.com>
 pkgname='openssl-1.1'
 pkgver='1.1.1w'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='OpenSSL 1.1 legacy branch (deprecated)'
 
 arch=('x86_64')
@@ -23,7 +23,8 @@ sha512sums=(
 build() {
   cd "openssl-${pkgver}"
 
-  ./config --prefix=/usr
+  ./config --prefix=/usr \
+    --libdir=lib/openssl-1.1
   make -j$(nproc)
 }
 
@@ -34,6 +35,14 @@ check() {
 
 package() {
   cd "openssl-${pkgver}"
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" install_sw
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+
+  rm -r ${pkgdir}/usr/bin
+
+  mkdir ${pkgdir}/usr/include/openssl-1.1/
+  mv ${pkgdir}/usr/include/openssl/ ${pkgdir}/usr/include/openssl-1.1/
+
+  mv ${pkgdir}/usr/lib/openssl-1.1/libssl.so.1.1 ${pkgdir}/usr/lib
+  mv ${pkgdir}/usr/lib/openssl-1.1/libcrypto.so.1.1 ${pkgdir}/usr/lib
 }
