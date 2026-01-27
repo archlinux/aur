@@ -7,6 +7,7 @@ pkgdesc="Replace Emacs' undo system with an intuitive tree-based system."
 arch=('any')
 url="https://www.dr-qubit.org/undo-tree.html"
 depends=('emacs' 'emacs-queue')
+makedepends=('git')
 license=('GPL')
 provides=('emacs-undo-tree')
 conflicts=('emacs-undo-tree')

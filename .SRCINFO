@@ -6,6 +6,7 @@ pkgbase = emacs-undo-tree
 	install = emacs-undo-tree.install
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = emacs
 	depends = emacs-queue
 	provides = emacs-undo-tree
@@ -14,4 +15,3 @@ pkgbase = emacs-undo-tree
 	sha256sums = SKIP
 
 pkgname = emacs-undo-tree
-
