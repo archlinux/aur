@@ -1,13 +1,12 @@
 pkgbase = android-armv7a-eabi-libsamplerate
 	pkgdesc = An audio sample rate conversion library (Android armv7a-eabi)
 	pkgver = 0.2.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://libsndfile.github.io/libsamplerate/
 	arch = any
 	groups = android-libsamplerate
 	license = BSD
 	makedepends = android-cmake
-	makedepends = android-armv7a-eabi-alsa-lib
 	makedepends = android-armv7a-eabi-libsndfile
 	makedepends = android-armv7a-eabi-opus
 	depends = android-ndk
