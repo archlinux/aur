@@ -2,7 +2,7 @@
 
 _pkgname=lxcomm
 pkgname=$_pkgname-bin
-pkgver=0.4.0
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Mod browser, downloader and manager made for XCOM2(WOTC) on Linux"
 url="https://github.com/PhantomShift/lxcomm"
@@ -19,8 +19,8 @@ source_aarch64=("${url}/releases/download/v${pkgver}/lxcomm-v${pkgver}-Linux-GNU
 sha256sums=('756892d13a8ee98487c25b9b8c06780a40091b1062017d2cbf4da68ab3da1474'
             '53329bb76818eea16336345770e10cb8c088894d09885d2cd38c1837f9e63d70'
             '9448cfe1cee692c09177164b16ed32e54517be633130a79d8fae34b1fcd6d5c9')
-sha256sums_x86_64=('2b61d746e29a65948143bf1ec8b94691481c87bd33dce8822901f4386b751b19')
-sha256sums_aarch64=('94201de86cd60d317ad61a764f5fd33b33a17b379177385515c14ea01a1664a2')
+sha256sums_x86_64=('b2b1b3541e3cf081641ec650c5aadbe965ef555325cc2b7a4ce407d7becd8d7d')
+sha256sums_aarch64=('d53addb7e21fd803495612fb2d836b1c3513d1e5da8dfa50c6623d14067507b3')
 
 package() {
   install -Dm755 -t "$pkgdir/usr/bin/" $_pkgname
