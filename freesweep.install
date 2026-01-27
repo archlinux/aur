@@ -1,0 +1,6 @@
+post_install()
+{
+	echo -e "\nAny user that is able to run this game should be added" \
+	        "to the group 'games'.\nElse the program will fail due to" \
+	        "a segmentation fault.\nYou will have to re-login afterwards."
+}
