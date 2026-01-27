@@ -5,7 +5,7 @@ pkgbase=python-glymur
 _pyname=${pkgbase#python-}
 #_pyname=Glymur
 pkgname=('python-glymur' 'python-glymur-doc')
-pkgver=0.14.5
+pkgver=0.14.6
 #_pkgver=0.14.0post2
 #_commit="d0134123978678d33573d53a144ce1634e770e10"
 pkgrel=1
@@ -44,7 +44,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname}
 #       "https://raw.githubusercontent.com/quintusdias/glymur/master/docs/source/whatsnew/0.10.rst"
 #       "https://raw.githubusercontent.com/quintusdias/glymur/master/docs/source/whatsnew/0.11.rst"
 #       "https://raw.githubusercontent.com/quintusdias/glymur/master/docs/source/whatsnew/0.12.rst")
-md5sums=('85e0d73d0f74ab08a38ed83219c12c16')
+md5sums=('71da1b818f776f26dab7c5fa378b02b2')
 #        'SKIP'
 #        'SKIP'
 #        'SKIP'
