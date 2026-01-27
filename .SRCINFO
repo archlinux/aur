@@ -1,0 +1,20 @@
+pkgbase = untitled-video-player-git
+	pkgdesc = A video player desktop application (git version)
+	pkgver = r39.c52bc0a
+	pkgrel = 1
+	url = https://github.com/raflos10/video-player
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = pyside6
+	provides = video-player
+	conflicts = video-player
+	source = git+https://github.com/raflos10/video-player.git
+	sha256sums = SKIP
+
+pkgname = untitled-video-player-git
