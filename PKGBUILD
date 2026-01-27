@@ -9,7 +9,7 @@ pkgname=(
   $pkgbase-relay
   $pkgbase-ui
 )
-pkgver=0.64.1
+pkgver=0.64.2
 pkgrel=1
 url='https://netbird.io'
 arch=(i686 pentium4 x86_64 arm armv7h armv6h aarch64 riscv64)
@@ -24,7 +24,7 @@ _ui_depends=(
 )
 makedepends=('go' "${_ui_depends[@]}")
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/netbirdio/netbird/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5ec98ba7bfce4017eb33e616743bd8135d52a56692325595d18aca8df8cc9c23')
+sha256sums=('5f982e037998a96b3ac8a4de8e3bc33e3bddf991341b92f1edfd9bb790750d62')
 
 prepare() {
   cd "$srcdir/$pkgbase-$pkgver"
@@ -34,14 +34,21 @@ prepare() {
 
 build() {
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+
   cd "$srcdir/$pkgbase-$pkgver"
 
+  # TODO: pass '-tags wayland' to glfw?
   go build \
     -o build \
     -ldflags "-s -w -linkmode=external -X github.com/netbirdio/netbird/version.version=$pkgver -extldflags \"$LDFLAGS\"" \
     ./client ./signal ./management ./relay ./client/ui
 
   # relay does not support completions
+  local bin shell
   for bin in client signal management; do
     for shell in bash fish zsh; do
       ./build/$bin completion $shell >build/$bin.$shell
