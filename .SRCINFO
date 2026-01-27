@@ -1,0 +1,15 @@
+pkgbase = clawdbot
+	pkgdesc = Personal AI assistant supporting Claude, Ollama, and other LLMs - the lobster way 🦞
+	pkgver = 2026.1.24.3
+	pkgrel = 1
+	url = https://github.com/clawdbot/clawdbot
+	arch = any
+	license = MIT
+	depends = nodejs>=22
+	optdepends = ollama: Local LLM support
+	optdepends = chromium: Browser automation features
+	noextract = clawdbot-2026.1.24-3.tgz
+	source = https://registry.npmjs.org/clawdbot/-/clawdbot-2026.1.24-3.tgz
+	sha256sums = a00acd33ac20787fbd342db2bc36db15b2483f88e1f8b159cf1bc37a6eb1a828
+
+pkgname = clawdbot
