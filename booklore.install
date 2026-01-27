@@ -8,8 +8,6 @@ post_install() {
     echo -e "\033[1;34mINFO\033[0m\033[1m:     * To run, systemctl start booklore\033[0m"
 }
 
-post_upgrade() {
-}
 post_remove() {
     userdel booklore
 }

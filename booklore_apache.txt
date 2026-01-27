@@ -1,7 +1,7 @@
 <VirtualHost *:8081>
     ServerName localhost
 
-    DocumentRoot /var/www/booklore-ui/dist
+    DocumentRoot /usr/share/webapps/booklore/booklore-ui/
 
     # Serve index.html for all non-API routes (for SPA routing)
     <Directory /var/www/booklore-ui/dist>

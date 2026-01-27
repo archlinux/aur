@@ -2,7 +2,7 @@ server {
     listen 8081;
     server_name localhost;
 
-    root /full/path/to/dist;
+    root /usr/share/webapps/booklore/booklore-ui/;
     index index.html;
 
     location / {
