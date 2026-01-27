@@ -6,3 +6,6 @@ srcinfo:
 clean:
 	git clean -Xdf
 
+.PHONY: build
+build:
+	makepkg -si
