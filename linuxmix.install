@@ -14,6 +14,14 @@ post_install() {
     done
 }
 
+post_upgrade() {
+    echo Restarting service...
+    for U in $(ls /home); do
+        systemctl -M "$U@.host" --user daemon-reload
+        systemctl -M "$U@.host" --user restart linuxmix
+    done
+}
+
 post_remove() {
     # Refresh Systemd
     echo Reloading systemd daemon for real users...
