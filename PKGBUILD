@@ -3,7 +3,7 @@
 pkgname='python-pairinteraction'
 _name='pairinteraction'
 _py="py3"
-pkgver=2.3.0
+pkgver=2.3.1
 #commit="e0c50b6581926aa87f07a55876f4e6e56b07a4b3"
 pkgrel=1
 pkgdesc="A Rydberg Interaction Calculator"
@@ -18,12 +18,12 @@ source=("https://github.com/pairinteraction/pairinteraction/archive/refs/tags/v$
 # otherwise we just use the zip of whatever commit I updated this last
 # source=("https://github.com/pairinteraction/pairinteraction/archive/$commit.zip")
 
-sha256sums=("ee8d1541b0ab4a2cbb74e5690c52bd68468183d51ff14db19ee7374fa84211e4")
+sha256sums=("0ed9322294fdf037d2eb61a62d137185fe7c39aa1e9f0bcb810c44915f52508f")
 
 
 package() {
-#  cd "$srcdir/pairinteraction-$pkgver"
-  cd "$srcdir/pairinteraction-$commit"
+  cd "$srcdir/pairinteraction-$pkgver"
+#  cd "$srcdir/pairinteraction-$commit"
   PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps .
 }
 
