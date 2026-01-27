@@ -1,0 +1,5 @@
+[rjq-bin]
+source = "github"
+github = "mainak55512/rjq"
+use_latest_release = true
+prefix = "v"
