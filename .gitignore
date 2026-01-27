@@ -3,3 +3,5 @@
 *.pkg.tar.zst
 pkg/
 src/
+
+gtfile
