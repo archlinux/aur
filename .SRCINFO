@@ -1,7 +1,7 @@
 pkgbase = android-riscv64-ffmpeg
 	pkgdesc = Complete solution to record, convert and stream audio and video (Android riscv64)
 	pkgver = 8.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ffmpeg.org/
 	arch = any
 	groups = android-ffmpeg
@@ -11,7 +11,6 @@ pkgbase = android-riscv64-ffmpeg
 	makedepends = android-riscv64-ladspa
 	makedepends = android-riscv64-opencl-headers
 	makedepends = nasm
-	depends = android-riscv64-alsa-lib
 	depends = android-riscv64-aom
 	depends = android-riscv64-bzip2
 	depends = android-riscv64-cairo
