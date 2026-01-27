@@ -1,0 +1,19 @@
+pkgbase = tmmpr-bin
+	pkgdesc = Terminal mind mapper
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/tanciaku/tmmpr
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = tmmpr
+	conflicts = tmmpr
+	source = README-0.1.0.md::https://raw.githubusercontent.com/tanciaku/tmmpr/v0.1.0/README.md
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/tanciaku/tmmpr/v0.1.0/LICENSE
+	sha256sums = 76e2ec55f85c003295b0ed6c34b969dbf5c4d4cce5d2c08c2ba4856e5f9adfa1
+	sha256sums = bb44e66f655ab1e47cf0c847f6ba3ba542f8a21218c7c87b06bcb368516dabeb
+	source_x86_64 = tmmpr-x86_64-0.1.0.tgz::https://github.com/tanciaku/tmmpr/releases/download/v0.1.0/tmmpr-linux-x86_64.tar.gz
+	sha256sums_x86_64 = cd1b42be6e25038bcd4e7904add36b9488929e5f760079b4f395cf87fab95347
+
+pkgname = tmmpr-bin

@@ -1,0 +1,5 @@
+[tmmpr-bin]
+source = "github"
+github = "tanciaku/tmmpr"
+use_latest_release = true
+prefix = "v"
