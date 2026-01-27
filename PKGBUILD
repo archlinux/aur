@@ -2,7 +2,7 @@
 
 pkgname=python-openmemory-git
 _pkgname=OpenMemory
-pkgver=1.3.0.r8.gda7c027
+pkgver=1.3.0.r21.g30daf78
 pkgrel=1
 pkgdesc="OpenMemory Python SDK (git)"
 arch=('any')
@@ -61,10 +61,46 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_pkgname}/packages/openmemory-py"
+
+  # Ensure we never accidentally install a stale wheel from an earlier build.
+  rm -rf dist build *.egg-info
+
+  # Note: -git packages intentionally track HEAD; users can pin commits by editing source=.
   python -m build --wheel --no-isolation
 }
 
+#check() {
+#  cd "${srcdir}/${_pkgname}/packages/openmemory-py"
+#
+#  local whls
+#  mapfile -t whls < <(ls -1 dist/*.whl 2>/dev/null)
+#
+#  if (( ${#whls[@]} != 1 )); then
+#    echo "ERROR: Expected exactly one wheel in dist/, found ${#whls[@]}."
+#    ls -la dist || true
+#    return 1
+#  fi
+#
+#  # Validate the built artifact by compiling the extracted wheel contents.
+#  local tmpdir
+#  tmpdir="$(mktemp -d -t openmemory-wheel-check.XXXXXX)"
+#  trap 'rm -rf "${tmpdir}"' RETURN
+#
+#  python -m zipfile -e "${whls[0]}" "${tmpdir}"
+#  python -m compileall -q "${tmpdir}/openmemory"
+#}
+
 package() {
   cd "${srcdir}/${_pkgname}/packages/openmemory-py"
-  python -m installer --destdir="${pkgdir}" dist/*.whl
+
+  local whls
+  mapfile -t whls < <(ls -1 dist/*.whl 2>/dev/null)
+
+  if (( ${#whls[@]} != 1 )); then
+    echo "ERROR: Expected exactly one wheel in dist/, found ${#whls[@]}."
+    ls -la dist || true
+    return 1
+  fi
+
+  python -m installer --destdir="${pkgdir}" "${whls[0]}"
 }
