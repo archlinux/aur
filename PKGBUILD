@@ -1,8 +1,8 @@
 # Maintainer: Pika Kolendo <pikakolendo02[a]gmail.c0m>
 pkgname='multiwfn-bin'
 _pkgname='Multiwfn'
-pkgver=3.7
-pkgrel=4
+pkgver=3.8
+pkgrel=1
 pkgdesc="A program for realizing electronic wavefunction analysis, stable binary version"
 arch=('x86_64')
 url="http://sobereva.com/multiwfn"
@@ -13,7 +13,7 @@ provides=('multiwfn')
 install="${pkgname}.install"
 backup=('etc/Multiwfn/settings.ini')
 source=("${url}/misc/${_pkgname}_${pkgver}_bin_Linux.zip")
-sha256sums=('7a6573e6e340a5b24b755b676fb23dd51649924ab5b65643778591c1589c68f7')
+sha256sums=('cc1459b938e2fe294693c2f2fe6e22d43ce09809c191fe4cd5b0821213f0132b')
 
 package() {
     mkdir -p "${pkgdir}/opt/${pkgname}"
