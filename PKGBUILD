@@ -21,41 +21,31 @@ optdepends=('cups: printer redirection'
             'openssh: native client support'
             'python-ldap: LDAP integration')
 
-_archive_name=tl-${pkgver}-server
-
-source=("${_archive_name}.zip::https://www.cendio.com/downloads/server/tl-${pkgver}-server.zip")
+source=("tl-${pkgver}-server.zip::https://www.cendio.com/downloads/server/tl-${pkgver}-server.zip")
 
 sha256sums=('767fc47c46857b37ad70faefd36342ae8ddd4d44d8a1c30002340c4d7d517c56')
 
-_extract_dir="extract"
-
-prepare()
-{
-    cd "${srcdir}/${_archive_name}/packages"
-    mkdir -p "${_extract_dir}"
+prepare() {
+    cd "${srcdir}/tl-${pkgver}-server/packages"
+    mkdir -p extract
 
     for rpm in *${CARCH}*rpm; do
-        bsdtar -C "${_extract_dir}" -xf "${rpm}"
+        bsdtar -C extract -xf "${rpm}"
     done
-
 }
 
-
-
-package()
-{
-    cd "${srcdir}/${_archive_name}/packages/${_extract_dir}"
+package() {
+    cd "${srcdir}/tl-${pkgver}-server/packages/extract"
     rm -Rf "etc/init.d"
     cp -aR etc/ opt/ usr/ var/ "$pkgdir"
 
     install -dm755 "$pkgdir"/usr/lib
-    #cp -aR libs/* "$pkgdir"/usr/lib
 
-    cd "$srcdir/${_archive_name}"
+    cd "$srcdir/tl-${pkgver}-server"
     cp -aR libs/etc/* "$pkgdir"/etc
     cp -aR libs/libexec/tl-ssh* "$pkgdir"/opt/thinlinc/bin
-    cp -aR libs/modules/* "$pkgdir"/opt/thinlinc/modules/
-    cp -aR libs/share/* "$pkgdir"/usr/share/
+    cp -aR libs/modules/* "$pkgdir"/opt/thinlinc/modules
+    cp -aR libs/share/* "$pkgdir"/usr/share
     rm -rf "$pkgdir/usr/lib64/"
     rm -rf "$pkgdir/usr/lib/.build-id"
     ln -s "/opt/thinlinc/modules" "$pkgdir/usr/lib/$pkgname"
