@@ -2,10 +2,10 @@
 # Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=FSA
-_pkgver=0.10.0
+_pkgver=0.10.1
 pkgname=r-${_pkgname,,}
-pkgver=0.10.0
-pkgrel=2
+pkgver=0.10.1
+pkgrel=1
 pkgdesc='Simple Fisheries Stock Assessment Methods'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -38,7 +38,7 @@ optdepends=(
   r-tibble
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0790488b979e39b69edd9b0cba9525a35915d3e8019e6c9778b6e62c3979b541')
+sha256sums=('0c427b44dbb193cd27820850e3cd4624f4f3f2c5d54f9fcaa885335e2e444573')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
