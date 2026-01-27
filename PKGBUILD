@@ -2,19 +2,27 @@
 
 _pkgname=cboard-chess
 pkgname=cboard-chess-git
-pkgver=0.7.5
+pkgver=0.8.5.r0.gb639bfe
 pkgrel=1
-pkgdesc="Interfaz de ajedrez cboard (Versión Portátil Auto-detectable)"
+#pkgdesc="Interfaz de ajedrez cboard (Versión Portátil Auto-detectable)"
+pkgdesc="Interfaz TUI de ajedrez (Fork Avanzado): Plugins en C, Multimotor, Análisis Multivariación y Motor vs Motor. (Ruta a v1.0)"
 arch=('x86_64')
 url="https://gitlab.com/ntlatempa/cboard-chess"
 license=('GPL-2.0-or-later')
-depends=('ncurses' 'perl' 'glibc' 'util-linux' 'gpm') 
+depends=('ncurses' 'glibc' 'perl') 
 makedepends=('autoconf' 'automake' 'libtool' 'pkgconf' 'autoconf-archive' 'git')
 #source=("$_pkgname::git+https://gitlab.com") 
 source=("git+$url.git")
 sha256sums=('SKIP')
 provides=('cboard-chess-tui')
 conflicts=('cboard')
+
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  # Esto toma el último tag (v0.8.5), cuenta los commits desde ahí y añade el hash
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 
 prepare() {
   # Debes entrar en la carpeta donde se descargó el git
@@ -39,7 +47,7 @@ build() {
 
   # 2. Definir las banderas (Variables locales de Bash)
   local _cppflags="-I$(pwd)/.local_include -I/usr/include/ncursesw -I$_perl_core -D_GNU_SOURCE -DHAVE_OPENPTY -DHAVE_PTY_H -DUNIX98"
-  local _ldflags="-L$_perl_core -lperl -Wl,-rpath,$_perl_core -lformw -lmenuw -lpanelw -lncursesw -lutil -lgpm"
+  local _ldflags="$LDFLAGS -L$_perl_core -lperl -Wl,-rpath,$_perl_core -lformw -lmenuw -lpanelw -lncursesw -lutil"
   local _cflags="$CFLAGS -Wno-error=incompatible-pointer-types"
 
   # 3. Inyectar variables directamente al configure
@@ -54,4 +62,6 @@ build() {
 package() {
   cd "$srcdir/$_pkgname"
   make DESTDIR="$pkgdir/" install
+  install -d "$pkgdir/usr/lib/cboard-chess/plugins"
+  install -m 755 plugins_bin/*.so "$pkgdir/usr/lib/cboard-chess/plugins/"
 }
