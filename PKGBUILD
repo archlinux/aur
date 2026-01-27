@@ -1,11 +1,11 @@
 # Maintainer: Lennard Hofmann <lennard dot hofmann at web dot de>
 pkgname=radius2-git
-_reponame=radius
-pkgver=v1.0.16.r30.gbf92f44
+_reponame=radius2
+pkgver=r170.15e1b79
 pkgrel=1
 pkgdesc='fast binary emulation and symbolic execution framework using radare2'
 arch=('x86_64')
-url="https://github.com/aemmitt-ns/$_reponame"
+url="https://github.com/radareorg/$_reponame"
 license=('MIT')
 depends=('boolector' 'radare2' 'gcc-libs' 'glibc')
 makedepends=('cargo' 'git')
@@ -17,7 +17,7 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd "$srcdir/$_reponame"
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
