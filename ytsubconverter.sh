@@ -15,4 +15,4 @@ while true; do
     shift
 done
 
-exec /opt/ytsubconverter/ytsubconverter $@
+exec /opt/ytsubconverter/ytsubconverter "$@"
