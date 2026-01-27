@@ -15,7 +15,7 @@ optdepends=(
   'r-rmarkdown: vignettes'
 )
 source=("${_cranname}-${_cranver}.tar.gz::https://github.com/chrislongros/ankiR/archive/refs/tags/v${_cranver}.tar.gz")
-sha256sums=('79cf09b0277e7e62773a8cbb833568a2b33ef8340bc0e32ebf15ddeab2d41ed5')
+sha256sums=('8d6faff99567bf53d07de241b88443f803819aefaf61685217e5232e45b83362')
 
 build() {
   cd "${srcdir}/${_cranname}-${_cranver}"
