@@ -1,0 +1,23 @@
+pkgbase = wine-nvenc-git
+	pkgdesc = Standalone version of nvencodeapi and nvcuvid for Wine (git)
+	pkgver = r24.09ec9e1
+	pkgrel = 1
+	url = https://github.com/SveSop/nvenc
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = glibc
+	depends = wine>=10.0
+	provides = wine-nvenc
+	conflicts = wine-nvenc
+	options = !strip
+	source = git+https://github.com/SveSop/nvenc.git
+	b2sums = SKIP
+
+pkgname = wine-nvenc-git
+	depends = glibc
+	depends = wine>=10.0
+	depends = nvidia-utils
+	depends = wine-nvcuda
