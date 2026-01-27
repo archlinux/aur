@@ -2,7 +2,7 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.org>
 pkgname='openssl-1.1'
 pkgver='1.1.1w'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='OpenSSL 1.1 legacy branch (deprecated)'
 
 arch=('x86_64')
