@@ -3,7 +3,7 @@
 _pkgname=godot
 pkgname=${_pkgname}32
 pkgver=4.6
-pkgrel=3
+pkgrel=4
 pkgdesc='Advanced cross-platform 2D and 3D game engine (32-bit)'
 url='https://godotengine.org/'
 license=(MIT)
@@ -17,6 +17,7 @@ makedepends=(
   yasm
 )
 depends=(
+  ca-certificates
   lib32-brotli
   lib32-freetype2
   lib32-graphite # AUR
@@ -75,7 +76,7 @@ build() {
     bits=32     # Ensure 32-bit binary.
     linker=mold # Use mold for faster linking.
     builtin_brotli=no
-    builtin_certs=yes # lib32-ca-certificates isn't available.
+    builtin_certs=no
     builtin_clipper2=yes
     builtin_embree=yes # lib32-embree isn't available.
     builtin_enet=yes
