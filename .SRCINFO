@@ -18,6 +18,6 @@ pkgbase = rmqtt
 	source = rmqttd.service
 	sha256sums = 5ff05b98f0ea21c317b71c9a8ec822536db1e6babb47f2fc541ac4406eb6fc23
 	sha256sums = 68e467ee60b993eb6dfa70fdef9f70850b9bcf94e5f2cd3f0316dffdf25005b1
-	sha256sums = 85b5c80d10b0cc25f750e2a808b8e317ee5899b53a20b4ae48962c5b144c770f
+	sha256sums = 7f456a4fcbd4c5b4610ab849e22dfb1358e23a012289138be8897244848b07e3
 
 pkgname = rmqtt
