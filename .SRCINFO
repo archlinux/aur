@@ -1,0 +1,13 @@
+pkgbase = android-debug-tools
+	pkgdesc = Android SDK Platform Tools: adb and fastboot
+	pkgver = 34.0.0
+	pkgrel = 1
+	url = https://developer.android.com/studio/releases/platform-tools
+	arch = x86_64
+	license = Apache
+	depends = unzip
+	depends = wget
+	source = https://dl.google.com/android/repository/platform-tools-latest-linux.zip
+	sha256sums = SKIP
+
+pkgname = android-debug-tools
