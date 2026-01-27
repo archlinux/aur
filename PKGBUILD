@@ -5,8 +5,8 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-libheif
-pkgver=1.19.7
-pkgrel=2
+pkgver=1.21.2
+pkgrel=1
 arch=('any')
 pkgdesc="An HEIF and AVIF file format decoder and encoder (Android ${_android_arch})"
 url='https://github.com/strukturag/libheif'
@@ -18,8 +18,7 @@ makedepends=('android-cmake'
              "android-${_android_arch}-gdk-pixbuf2"
              "android-${_android_arch}-libjpeg"
              "android-${_android_arch}-libpng"
-             "android-${_android_arch}-svt-av1"
-             'doxygen')
+             "android-${_android_arch}-svt-av1")
 
 # riscv64 target is not properly supported by rust so disable the rav1e
 # dependency in that architecture for now
@@ -28,7 +27,6 @@ if [ "${_android_arch}" != riscv64 ]; then
 fi
 
 depends=("android-${_android_arch}-aom"
-         "android-${_android_arch}-libde265"
          "android-${_android_arch}-libwebp"
          "android-${_android_arch}-x265")
 optdepends=("android-${_android_arch}-libjpeg: for heif-convert and heif-enc"
@@ -44,7 +42,7 @@ fi
 conflicts=("android-${_android_arch}-libheif-boostrap")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/strukturag/libheif/releases/download/v${pkgver}/libheif-${pkgver}.tar.gz")
-md5sums=('cbb49df3d35360d228bac47f4287f2b8')
+md5sums=('bee744908edb9d5957cb37fb0b1c6e8f')
 
 build() {
     cd "${srcdir}/libheif-${pkgver}"
@@ -75,8 +73,7 @@ build() {
         -DWITH_JPEG_ENCODER=ON \
         -DWITH_OpenJPEG_DECODER=ON \
         -DWITH_OpenJPEG_ENCODER=ON \
-        -DLIBDE265_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
-        -DLIBDE265_LIBRARY="${ANDROID_PREFIX_LIB}/libde265.so" \
+        -DWITH_LIBDE265=OFF \
         -DX265_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
         -DX265_LIBRARY="${ANDROID_PREFIX_LIB}/libx265.so" \
         -DDAV1D_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
@@ -118,9 +115,8 @@ build() {
         -DWITH_JPEG_ENCODER=ON \
         -DWITH_OpenJPEG_DECODER=ON \
         -DWITH_OpenJPEG_ENCODER=ON \
+        -DWITH_LIBDE265=OFF \
         -DWITH_X265=OFF \
-        -DLIBDE265_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
-        -DLIBDE265_LIBRARY="${ANDROID_PREFIX_LIB}/libde265.a" \
         -DDAV1D_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
         -DDAV1D_LIBRARY="${ANDROID_PREFIX_LIB}/libdav1d.a" \
         -DAOM_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
@@ -155,4 +151,6 @@ package() {
     make -C build-static DESTDIR="${pkgdir}" install
     find "${pkgdir}/${ANDROID_PREFIX_LIB}" -type f -name '*.so' -exec ${ANDROID_STRIP} -g --strip-unneeded {} \;
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
