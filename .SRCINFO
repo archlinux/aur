@@ -1,13 +1,12 @@
 pkgbase = android-riscv64-libsamplerate
 	pkgdesc = An audio sample rate conversion library (Android riscv64)
 	pkgver = 0.2.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://libsndfile.github.io/libsamplerate/
 	arch = any
 	groups = android-libsamplerate
 	license = BSD
 	makedepends = android-cmake
-	makedepends = android-riscv64-alsa-lib
 	makedepends = android-riscv64-libsndfile
 	makedepends = android-riscv64-opus
 	depends = android-ndk
