@@ -3,7 +3,7 @@
 set -e
 set -o pipefail
 
-JAVA_HOME=${JAVA_HOME:-/usr/lib/jvm/java-17-openjdk}
+JAVA_HOME=${JAVA_HOME:-/usr/lib/jvm/java-21-openjdk}
 NEXUS_MEMORY=${NEXUS_MEMORY:-2703m}
 
 nexus_home=$(cd $(dirname $0)/..; pwd)

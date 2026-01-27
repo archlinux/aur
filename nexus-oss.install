@@ -63,6 +63,9 @@ pre_upgrade()
 
 post_upgrade()
 {
+	local new_version=$1
+	local old_version=$2
+
 	if [[ -f /usr/lib/nexus-oss/bin/nexus.vmoptions.pacsave ]]; then
 		mem=$(sed -n '/-Xmx/ { s:-Xmx::; p }' /usr/lib/nexus-oss/bin/nexus.vmoptions.pacsave|head -1)
 
@@ -74,10 +77,13 @@ post_upgrade()
 					sed -i /NEXUS_MEMORY/d /etc/conf.d/nexus-oss
 					echo NEXUS_MEMORY=$mem >>/etc/conf.d/nexus-oss
 
-					logger -p notice -s -t nexus-oss "[post-upgrade]: Mmemory configured as $mem in /etc/conf.d/nexus-oss"
+					logger -p notice -s -t nexus-oss "[post-upgrade]: Memory configured as $mem in /etc/conf.d/nexus-oss"
 				fi
 			)
 		fi
+	fi
+	if grep -q -E '^JAVA_HOME=' /etc/conf.d/nexus-oss && ver_lt $old_version 3.87.2.01.2; then
+		logger -p warn -s -t nexus-oss "[post-upgrade]: Make sure your custom JAVA distribution mentioned in /etc/conf.d/nexus-oss is upgraded to version 21"
 	fi
 
 	systemctl daemon-reload

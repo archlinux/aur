@@ -6,12 +6,12 @@ _patch=01
 
 pkgname=nexus-oss
 pkgver=${_version}.${_patch}
-pkgrel=1
+pkgrel=2
 pkgdesc='Nexus 3 Repository OSS'
 arch=('any')
 url='http://nexus.sonatype.org'
 license=("LicenseRef-$pkgname")
-depends=('java-runtime-headless=17')
+depends=('java-runtime-headless=21')
 provides=($pkgname)
 backup=("var/lib/$pkgname/etc/nexus.properties"
 		"etc/conf.d/$pkgname"
@@ -27,12 +27,12 @@ source=(
 		"$pkgname.properties"
 		)
 sha256sums=('a7e8bae739f538630892beeacc65ff6ab26e06f7a1c2a1e67537415671e1bf24'
-            '07bd3fa49504b4ae85c7affd502c3ec3564aad7a34852e825eaef2fe994cf142'
+            '992a4ddef21f131afc4a87fa1f795a6493c028e074d623a801170bc4202f7cfb'
             '424d0d8f2bf6376f09c22b4fe9425899b8521999e86a1201650f4a4f342154b7'
-            'b38c7ca66cfe1f9e9866056df43d26a0d94ff09e78600d29636bef64cf755b87'
+            '45ffaa325ada72947d82f5960957f6afabe343440d8654b9691232676a18395d'
             'efd66ac28e622cdf58f5733bdced6654b170558834c3e4304b3a2dfb7d964994'
             '77d699b5ccf6387fa2f69df2cd71cdb75b4ffbf46a10110dd6c0e2802783dbef'
-            'bff7354310f920d3062055cf04a695ec0eeb76e0ab275bd9ae27041c3a3c45ab'
+            'e4b8641846565cf642c6d4c2545a5639edb03fb76e71e42a9d60752e070484dd'
             'd4076f486fc6b2cc6bb457f874a2082c7ab018f407744b83f5edbd36573e00ac')
 
 install=$pkgname.install
