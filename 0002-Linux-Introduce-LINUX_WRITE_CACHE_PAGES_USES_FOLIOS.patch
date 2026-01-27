@@ -1,0 +1,79 @@
+From 65143ec461adda271751ad8ab0a1564358158434 Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Thu, 8 Jan 2026 16:43:19 -0700
+Subject: [PATCH 2/3] Linux: Introduce LINUX_WRITE_CACHE_PAGES_USES_FOLIOS
+
+To clarify what is actually being tested, rename the autoconf test and
+variable:
+    LINUX_WRITEPAGES_USES_FOLIOS => LINUX_WRITE_CACHE_PAGES_USES_FOLIOS
+
+Add a define in osi_vnodeops.c for LINUX_WRITEPAGES_USES_FOLIOS.  This
+allows future commits to add new cases that also define
+LINUX_WRITEPAGES_USES_FOLIOS.
+
+There are no functional changes in this commit.
+
+Change-Id: I915222bfd7d2db3735502df4ed64a76089a8aa2c
+---
+ src/afs/LINUX/osi_vnodeops.c    | 4 ++++
+ src/cf/linux-kernel-assorted.m4 | 2 +-
+ src/cf/linux-test4.m4           | 8 ++++----
+ 3 files changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/src/afs/LINUX/osi_vnodeops.c b/src/afs/LINUX/osi_vnodeops.c
+index b525126c2..e7456558e 100644
+--- a/src/afs/LINUX/osi_vnodeops.c
++++ b/src/afs/LINUX/osi_vnodeops.c
+@@ -3526,6 +3526,10 @@ afs_linux_end_writeback(struct vcache *vcp, cred_t **acredp, int written_size, u
+     return code;
+ }
+ 
++#if defined(LINUX_WRITE_CACHE_PAGES_USES_FOLIOS)
++# define LINUX_WRITEPAGES_USES_FOLIOS
++#endif
++
+ #if defined(LINUX_WRITEPAGES_USES_FOLIOS)
+ /*
+  * Callback function for write_cache_pages
+diff --git a/src/cf/linux-kernel-assorted.m4 b/src/cf/linux-kernel-assorted.m4
+index 85af7179c..83d56525c 100644
+--- a/src/cf/linux-kernel-assorted.m4
++++ b/src/cf/linux-kernel-assorted.m4
+@@ -61,7 +61,7 @@ LINUX_KERNEL_READ_OFFSET_IS_LAST
+ LINUX_KEYRING_SEARCH_TAKES_RECURSE
+ LINUX_GENERIC_FILLATTR_TAKES_REQUEST_MASK
+ LINUX_FILE_LOCK_CORE
+-LINUX_WRITEPAGES_USES_FOLIOS
++LINUX_WRITE_CACHE_PAGES_USES_FOLIOS
+ 
+ dnl If take_dentry_name_snapshot isn't present
+ dnl don't bother checking if name_snapshot uses qstr
+diff --git a/src/cf/linux-test4.m4 b/src/cf/linux-test4.m4
+index 9139f2435..df3c843a6 100644
+--- a/src/cf/linux-test4.m4
++++ b/src/cf/linux-test4.m4
+@@ -923,9 +923,9 @@ dnl of Linux's page to folio transistion. Convert from providing aop->writepage
+ dnl to providing aop->writepages and use Linux's write_cache_pages with a callback.
+ dnl Test to see whether write_cache_pages uses folios to determine if writepages
+ dnl should be implemented.
+-AC_DEFUN([LINUX_WRITEPAGES_USES_FOLIOS], [
+-  AC_CHECK_LINUX_BUILD([whether aop.writepages can use folios],
+-                       [ac_cv_linux_writepages_uses_folios],
++AC_DEFUN([LINUX_WRITE_CACHE_PAGES_USES_FOLIOS], [
++  AC_CHECK_LINUX_BUILD([whether write_cache_pages uses folios],
++                       [ac_cv_linux_write_cache_pages_uses_folios],
+                        [[#include <linux/writeback.h>
+                          #include <linux/mm_types.h>
+                          static int writepages_cb(struct folio *folio,
+@@ -933,7 +933,7 @@ AC_DEFUN([LINUX_WRITEPAGES_USES_FOLIOS], [
+                                                   void *priv) { return 0; }]],
+                        [[static int code;
+                          code = write_cache_pages(NULL, NULL, writepages_cb, NULL);]],
+-                       [[LINUX_WRITEPAGES_USES_FOLIOS]],
++                       [[LINUX_WRITE_CACHE_PAGES_USES_FOLIOS]],
+                        [[define if aop.writepages can use folios]],
+                        [[-Werror]])
+ ])
+-- 
+2.52.0
+

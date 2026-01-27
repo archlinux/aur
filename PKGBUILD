@@ -6,7 +6,7 @@
 
 pkgname=openafs-modules-dkms
 _srcname=openafs
-pkgver=1.8.14
+pkgver=1.8.15pre1
 pkgrel=1
 pkgdesc="Kernel module for OpenAFS (dkms)"
 arch=('i686' 'x86_64' 'armv7h')
@@ -16,17 +16,24 @@ depends=('dkms' 'libelf' 'openafs>=1.8.12.1-2')
 provides=("openafs-modules=$pkgver")
 conflicts=('openafs-features-libafs' 'openafs-modules' 'openafs<1.6.6-2')
 options=(!emptydirs)
-source=(http://openafs.org/dl/openafs/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2
-        0001-Linux-Use-struct-kiocb-for-aops-write_begin-end.patch
+source=(http://openafs.org/dl/openafs/candidate/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2
+        0001-Linux-Use-get_tree_nodev.patch
+        0002-Linux-Introduce-LINUX_WRITE_CACHE_PAGES_USES_FOLIOS.patch
+        0003-Linux-Avoid-write_cache_pages-for-writepages.patch
         dkms.conf)
-sha256sums=('ab53692b975edd8eeda880b4bc3bc00cddd34fd0f315a9b463f6797d20c63456'
-            '1c0e21470d7c6287aec9c45c9dcca6c01f3b660531bbcac753621cb12088ced1'
+sha256sums=('676c045772f64c85c5c770baef62481e26fe1bac9728ef53498523d6212527c0'
+            '1d6df3802747b07450c3700fd1df188625b88a2403164029913b39dbe2e0e61e'
+            'ba71df128e6491b3b56e5676d12d19fa1f06ee5884f1a758fdf32a290c4325e6'
+            '8f4c4fade260abb157325b80221aa276f217d9625142f9b6c93a87ea743ba6cf'
             '306408d644e8781f13e09021449cb1ccbba60f69d1d24eca5f8138e9b3e47d8e')
 
 prepare() {
   cd "${srcdir}/${_srcname}-${pkgver}"
 
-  patch -p1 < "${srcdir}"/0001-Linux-Use-struct-kiocb-for-aops-write_begin-end.patch
+  # patches for Linux 6.18
+  patch -p1 < "${srcdir}"/0001-Linux-Use-get_tree_nodev.patch
+  patch -p1 < "${srcdir}"/0002-Linux-Introduce-LINUX_WRITE_CACHE_PAGES_USES_FOLIOS.patch
+  patch -p1 < "${srcdir}"/0003-Linux-Avoid-write_cache_pages-for-writepages.patch
 
   # Only needed when changes to configure were made
   ./regen.sh -q

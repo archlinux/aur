@@ -1,0 +1,170 @@
+From 76895a708e2bc281197ee161b4b84488b5f4e912 Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Thu, 8 Jan 2026 09:38:31 -0700
+Subject: [PATCH 1/3] Linux: Use get_tree_nodev
+
+The Linux 6.18 commit:
+    'fs: Remove mount_nodev' (56ecfd9175b99)
+removed the mount_nodev() function that is used to handle the mount
+process.
+
+The OpenAFS Linux kernel module must use the newer mount APIs that were
+introduced with the Linux 5.0 commit:
+    'introduce fs_context methods' (f3a09c92018a9)
+And the helper that was added with the Linux 5.2 commit:
+    'convenience helper get_tree_nodev()' (2ac295d4f0c09)
+
+The newer mount API requires a filesystem to implement the methods
+defined within the fs_context_operations structure.  Of these methods,
+the only one needed for OpenAFS is the .get_tree() method which will
+simply return the result of a get_tree_nodev() call.
+
+Add an autoconf test for get_tree_nodev(), which is the replacement for
+mount_nodev() but using the newer mount APIs.
+
+Add a fs_context_operations structure that sets the get_tree method to
+point to afs_fc_get_tree(), which simply returns the value from
+get_tree_nodev().
+
+Add a function (afs_init_fs_context) to handle the file_system_type's
+init_fs_context method.  afs_init_fs_context() will update the
+fs_context to point to the afs_fs_context_ops.
+
+Update the afs_fs_type structure to initialize the init_fs_context and
+parameters members.
+
+Notes:
+The other methods within the fs_context_operations struct would only be
+applicable if OpenAFS was using private storage in the the fs_context,
+or needed to process command line parameters.
+
+The commit is retroactive back to Linux 5.2 since that is when the
+Linux kernel introduced get_tree_nodev().
+
+Change-Id: Ic237970f8bb5cba9329e30e1c1d5c976f3acd5a0
+---
+ src/afs/LINUX/osi_vfsops.c  | 42 ++++++++++++++++++++++++++++++++-----
+ src/cf/linux-kernel-func.m4 |  9 ++++++++
+ 2 files changed, 46 insertions(+), 5 deletions(-)
+
+diff --git a/src/afs/LINUX/osi_vfsops.c b/src/afs/LINUX/osi_vfsops.c
+index 18506474e..b74f056f1 100644
+--- a/src/afs/LINUX/osi_vfsops.c
++++ b/src/afs/LINUX/osi_vfsops.c
+@@ -21,6 +21,9 @@
+ #include "afs/sysincludes.h"
+ #include "afsincludes.h"
+ #include "afs/afs_stats.h"
++#if defined(HAVE_LINUX_GET_TREE_NODEV)
++# include "linux/fs_context.h"
++#endif
+ 
+ #include "osi_compat.h"
+ 
+@@ -40,6 +43,27 @@ extern struct dentry_operations afs_dentry_operations;
+ 
+ /* Forward declarations */
+ static int afs_root(struct super_block *afsp);
++
++#if defined(HAVE_LINUX_GET_TREE_NODEV)
++static int afs_fill_super(struct super_block *sb, struct fs_context *fc);
++
++static int
++afs_fc_get_tree(struct fs_context *fc)
++{
++    return get_tree_nodev(fc, afs_fill_super);
++}
++
++static struct fs_context_operations afs_fs_context_ops = {
++    .get_tree = afs_fc_get_tree,
++};
++
++static int afs_init_fs_context(struct fs_context *fc)
++{
++    fc->ops = &afs_fs_context_ops;
++    return 0;
++}
++
++#else
+ static int afs_fill_super(struct super_block *sb, void *data, int silent);
+ 
+ 
+@@ -49,33 +73,36 @@ static int afs_fill_super(struct super_block *sb, void *data, int silent);
+  * structure is setup in the afs_fill_super callback function.
+  */
+ 
+-#if defined(STRUCT_FILE_SYSTEM_TYPE_HAS_MOUNT)
++# if defined(STRUCT_FILE_SYSTEM_TYPE_HAS_MOUNT)
+ static struct dentry *
+ afs_mount(struct file_system_type *fs_type, int flags,
+ 	  const char *dev_name, void *data)
+ {
+     return mount_nodev(fs_type, flags, data, afs_fill_super);
+ }
+-#elif defined(GET_SB_HAS_STRUCT_VFSMOUNT)
++# elif defined(GET_SB_HAS_STRUCT_VFSMOUNT)
+ static int
+ afs_get_sb(struct file_system_type *fs_type, int flags,
+ 	   const char *dev_name, void *data, struct vfsmount *mnt)
+ {
+     return get_sb_nodev(fs_type, flags, data, afs_fill_super, mnt);
+ }
+-#else
++# else
+ static struct super_block *
+ afs_get_sb(struct file_system_type *fs_type, int flags,
+ 	   const char *dev_name, void *data)
+ {
+     return get_sb_nodev(fs_type, flags, data, afs_fill_super);
+ }
+-#endif
++# endif /* STRUCT_FILE_SYSTEM_TYPE_HAS_MOUNT */
++#endif /* HAVE_LINUX_GET_TREE_NODEV */
+ 
+ struct file_system_type afs_fs_type = {
+     .owner = THIS_MODULE,
+     .name = "afs",
+-#if defined(STRUCT_FILE_SYSTEM_TYPE_HAS_MOUNT)
++#if defined(HAVE_LINUX_GET_TREE_NODEV)
++    .init_fs_context = afs_init_fs_context,
++#elif defined(STRUCT_FILE_SYSTEM_TYPE_HAS_MOUNT)
+     .mount = afs_mount,
+ #else
+     .get_sb = afs_get_sb,
+@@ -86,8 +113,13 @@ struct file_system_type afs_fs_type = {
+ 
+ struct backing_dev_info *afs_backing_dev_info;
+ 
++#if defined(HAVE_LINUX_GET_TREE_NODEV)
++static int
++afs_fill_super(struct super_block *sb, struct fs_context *fc)
++#else
+ static int
+ afs_fill_super(struct super_block *sb, void *data, int silent)
++#endif
+ {
+     int code = 0;
+ #if defined(HAVE_LINUX_BDI_INIT)
+diff --git a/src/cf/linux-kernel-func.m4 b/src/cf/linux-kernel-func.m4
+index 0784262d7..de95204cd 100644
+--- a/src/cf/linux-kernel-func.m4
++++ b/src/cf/linux-kernel-func.m4
+@@ -379,6 +379,15 @@ AC_CHECK_LINUX_FUNC([write_begin_end_kiocb],
+ 		    [[aops->write_begin(kiocb, mapping, 0, 0, &foliop, fsdata);
+ 		      aops->write_end(kiocb, mapping, 0, 0, 0, foliop, fsdata);]])
+ 
++dnl Linux 6.18 removed mount_nodev().  The replacement is get_tree_nodev()
++dnl (introduced with Linux 5.2), which involves using the
++dnl struct file_system_type.init_fs_context() API.
++AC_CHECK_LINUX_FUNC([get_tree_nodev],
++		    [[#include <linux/fs_context.h>
++		      static int fill_super(struct super_block *sb, struct fs_context *fc) { return 0;}]],
++		    [[static int code;
++		      code = get_tree_nodev(NULL, fill_super);]])
++
+ dnl Consequences - things which get set as a result of the
+ dnl                above tests
+ AS_IF([test "x$ac_cv_linux_func_d_alloc_anon" = "xno"],
+-- 
+2.52.0
+
