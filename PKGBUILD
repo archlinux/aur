@@ -1,8 +1,8 @@
 #Maintainer: Stikkot
 
 pkgname=zsh-komander
-pkgver=1.3
-pkgrel=2
+pkgver=1.4
+pkgrel=1
 pkgdesc="Minimalistic zsh-theme..."
 arch=('any')
 url="https://github.com/stikundra-murtsi/zsh-komander"
@@ -14,9 +14,9 @@ source=(
 	"LICENSE"
 	"README.md"
 )
-sha256sums=('96082435cb8f5e8df4c3f503331f7e4382a32cdc9364b835b361c3ce0ae19fbd'
+sha256sums=('69eff0c71c6b50288a82c5d0f5a42ca84c012265fa7b2c020e9b1a85d3140f5c'
             '79fc81ec097911ac3e971bc2ed0a3dddbcbdc0699e4da2d4a1997df312b21d65'
-            '75d0d33f190772597e1e5775c0ae7ed6a456189a8bf7d93dc8dd6d361a750915'
+            '1eee93882484a32ee699f0c7a3f53353fc068db77b1e68acaa2e411d71d9ec3d'
             '3c17b0266b2cc00751e56bc9bdf1767e2d26eb951f2cf834e8e4e5547cf44d1c')
 
 package() {
