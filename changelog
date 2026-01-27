@@ -1,3 +1,12 @@
+2026-01-27 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 6.3.2.3-1:
+    Added all as recognized target to fbrm, fqrm, mabrm and tbrm commands (@JustArchi).
+    Small improvement to --system-required on Linux, it'll now block sleep instead of idle (@JustArchi #3526).
+    Fixed ASF reloading IPC interface on IPC.config modifications when --no-config-watch is specified (@JustArchi)
+    Fixed ASF crash upon loading invalid IPC.config, now IPC will simply refuse to start (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2026-01-06 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 6.3.1.6-1:
     Added Steam Winter Sale 2025 to built-in sales blacklist (@JustArchi).
