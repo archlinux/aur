@@ -1,37 +1,44 @@
-# Maintainer: Andy Kelk <andy@mopoke.co.uk>
+# Maintainer: Mark Roboff <mark.roboff@bluecircuit.ai>
 pkgname=vm-curator
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
-pkgdesc="A terminal user interface for QEMU/KVM virtual machine management"
+pkgdesc="A TUI application to manage QEMU/KVM VMs"
 arch=('x86_64')
 url="https://github.com/mroboff/vm-curator"
 license=('MIT')
-depends=('qemu-base' 'systemd-libs')
-makedepends=('cargo' 'git')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/mroboff/vm-curator/archive/refs/tags/initial-release.tar.gz")
-sha256sums=('6fff1469d04636fc13d9e9b494c2b07ba267f7746a52e6c514ac3891c9bb1436')
+depends=('gcc-libs' 'systemd-libs' 'qemu-base')
+makedepends=('cargo' 'systemd')
+optdepends=(
+    'qemu-system-x86: x86/x86_64 VM support'
+    'qemu-system-arm: ARM/AArch64 VM support'
+    'qemu-system-ppc: PowerPC VM support'
+    'edk2-ovmf: UEFI boot support'
+    'polkit: privilege escalation for KVM'
+)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mroboff/$pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('d55d59f1ea23d1bef2b0e1b572fa91e29697d62bd34036a00ee7cd89a70fdac8')
 
 prepare() {
-    cd "$srcdir/$pkgname-initial-release"
+    cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "$srcdir/$pkgname-initial-release"
+    cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
 }
 
 check() {
-    cd "$srcdir/$pkgname-initial-release"
+    cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen --all-features
 }
 
 package() {
-    cd "$srcdir/$pkgname-initial-release"
+    cd "$pkgname-$pkgver"
     install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
