@@ -16,7 +16,7 @@ url="https://github.com/posquit0/${_pkgname}"
 license=("LPPL-1.3c")
 depends=("adobe-source-sans-fonts" "texlive-bin" "ttf-roboto")
 makedepends=("git")
-provides=("${_pkgname}")
+provides=("texlive-awesome-cv")
 source=("${_pkgname}::git+${url}.git"
     "1.patch")
 sha512sums=("SKIP"
