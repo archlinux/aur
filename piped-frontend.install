@@ -1,0 +1,11 @@
+post_install() {
+	echo "Executing configure-piped-frontend, to replace default URL in frontend files."
+	echo "If you have BACKENDPKG configured and running, you will have API_URL set it its backend.properties. If not, set it up correctly, and rerun configure-piped-frontend."
+	echo "If you want to run FRONTENDPKG standalone, create /etc/webapps/piped/frontend.properties with 'API_URL:<api url>'."
+	echo "As, on updates, the source files will be overwritten, configure-piped-frontend will run after every update and inject the correct URL as read from said config files."
+	/usr/bin/configure-piped-frontend
+}
+
+post_upgrade() {
+	post_install
+}
