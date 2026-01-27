@@ -1,6 +1,7 @@
 # Maintainer: Nogweii <me@nogweii.net>
 
 pkgname=ktermlaunch
+# renovate: datasource=gitlab-tags depName=nogweii/ktermlaunch registryUrl=https://code.aether.earth
 pkgver=0.2.0
 pkgrel=3
 pkgdesc='Launch your preferred terminal emulator per your KDE settings'
