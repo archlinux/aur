@@ -1,5 +1,6 @@
 # Maintainer: Nogweii <me@aether.earth>
 pkgname=alpm-html
+# renovate: datasource=gitlab-tags depName=archlinux/alpm-html registryUrl=https://code.aether.earth
 pkgver=0.10.0
 pkgrel=1
 pkgdesc="Generate a static site for browsing an Arch repo, styled like the main website."

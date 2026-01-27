@@ -16,4 +16,3 @@ pkgbase = alpm-html
 	b2sums = b78656aa58b13d1ae2f8904b4313379e89e2dc1b8a26d5dc75835e920dd3dab37bb30caeead10b05e1815671e95b357285a3ad0c95f270afc33f71d9e200d806
 
 pkgname = alpm-html
-
