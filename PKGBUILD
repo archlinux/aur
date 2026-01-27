@@ -24,7 +24,7 @@ checkdepends=("cmake")
 optdepends=("libfbclient: Firebird"
     "mariadb: MariaDB"
     "postgresql: PostgreSQL")
-provides=("${_pkgname}")
+provides=("soci")
 conflicts=("soci")
 source=("${_pkgname}::git+${url}.git")
 sha512sums=("SKIP")
