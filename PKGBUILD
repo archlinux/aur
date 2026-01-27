@@ -2,8 +2,8 @@
 
 _pkgname="holyc-lang"
 pkgname="${_pkgname}-git"
-pkgver=beta_v0.0.10_git
-pkgrel=2
+pkgver=beta_v0.0.10
+pkgrel=3
 pkgdesc="A HolyC compiler built from scratch in C"
 arch=('x86_64')
 url="https://holyc-lang.com"
