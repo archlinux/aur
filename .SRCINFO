@@ -1,6 +1,6 @@
 pkgbase = eurus-tui-bin
 	pkgdesc = E2EE Terminal Chat Client (Binary Release)
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/sricharanandra/eurus-tui
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = eurus-tui-bin
 	provides = eurus
 	conflicts = eurus
 	conflicts = eurus-tui-git
-	source = eurus-0.3.0::https://github.com/sricharanandra/eurus-tui/releases/download/v0.3.0/eurus
-	sha256sums = 549d728a88d3297e9948d025c63171c78bceacbb2e84ee3819bec1e6fb8dda7f
+	source = eurus-0.3.1::https://github.com/sricharanandra/eurus-tui/releases/download/v0.3.1/eurus
+	sha256sums = 540471c883970a267b79cd650dda348f70c41d56c2951d2c5d0fec60b7290983
 
 pkgname = eurus-tui-bin
