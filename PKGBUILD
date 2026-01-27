@@ -2,7 +2,7 @@
 
 _pkgname=truelink-monitor
 pkgname=plasma6-applet-truelink-monitor
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Real WiFi physical layer monitor for KDE Plasma 6 - shows RSSI dBm, PHY Rate, MCS, MIMO"
 arch=('x86_64')
@@ -28,7 +28,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/truelink-monit
 
 # Replace this with the checksum from the GitHub Release artifact
 # `truelink-monitor-v$pkgver.tar.gz.sha256`.
-sha256sums=('60fb58bb33137a4cd42117fabc8882df71732ec5c15ee6aaca342de378256662')
+sha256sums=('7b1179a23262ff1c653d5a220d8d6fa6f9b2b59f71b81592d3d281ab8d54eb82')
 
 build() {
   local srcdir_name="${_pkgname}-v${pkgver}"
