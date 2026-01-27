@@ -1,7 +1,7 @@
 # Maintainer: Martin Chang <marty188586@gmail.com>
 
 pkgname=tt-smi
-pkgver=3.1.1
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Tenstorrent console based hardware information program"
 arch=('any')
@@ -9,10 +9,10 @@ url='https://github.com/tenstorrent/tt-smi'
 license=('Apache')
 makedepends=(python-build python-installer python-wheel)
 depends=(python-distro python-elasticsearch python-psutil python-pyyaml python-rich python-textual python-requests python-tqdm python-pydantic python-importlib_resources python-luwen python-linkify-it-py python-tt-tools-common python-tomli)
-provides=('tt-smi=3.1.0')
+provides=('tt-smi=3.1.1')
 conflicts=("tt-smi")
 source=("tt-smi::git+https://github.com/tenstorrent/tt-smi.git#tag=v${pkgver}")
-sha256sums=('9f91f63b5e216463b08d2780a02169968910c515b9283de528711954ed468079')
+sha256sums=('40350e3716a6cf7b850e42db1633c053eb8a43178d4876f98a5819a99bd797d1')
 
 build() {
     cd tt-smi
