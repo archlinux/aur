@@ -1,6 +1,6 @@
 # Maintainer: Christos Longros <chris.longros@gmail.com>
 _cranname=ankiR
-_cranver=0.4.0
+_cranver=0.5.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -15,7 +15,7 @@ optdepends=(
   'r-rmarkdown: vignettes'
 )
 source=("${_cranname}-${_cranver}.tar.gz::https://github.com/chrislongros/ankiR/archive/refs/tags/v${_cranver}.tar.gz")
-sha256sums=('d781c9932945b299f23e9e0e47cbb3ac1216303d66aae538d3cfbe45a9bae583')
+sha256sums=('79cf09b0277e7e62773a8cbb833568a2b33ef8340bc0e32ebf15ddeab2d41ed5')
 
 build() {
   cd "${srcdir}/${_cranname}-${_cranver}"
