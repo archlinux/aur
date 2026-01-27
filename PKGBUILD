@@ -4,12 +4,13 @@ pkgname=sunshine-beta-bin
 _pkgname=sunshine-beta-bin
 pkgver=2026.125.191446
 _gittag=v$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="A self-hosted game stream host for Moonlight"
 url="https://app.lizardbyte.dev"
 source=(
     "$_pkgname-$pkgver.pkg.tar.zst"::"https://github.com/LizardByte/Sunshine/releases/download/$_gittag/sunshine-$pkgver-1-x86_64.pkg.tar.zst"
     "$_pkgname-$pkgver.desktop"::"https://raw.githubusercontent.com/LizardByte/Sunshine/$_gittag/packaging/linux/dev.lizardbyte.app.Sunshine.desktop"
+    "sunshine-capabilities.hook"
 )
 arch=('x86_64')
 license=('GPL3')
@@ -47,6 +48,7 @@ provides=('sunshine-bin')
 sha256sums=(
     '322b78e4cfba75e819c91ee557636f661ddcdddb49eea75053c2f680e0d73328'
     '733594073f27c818f89ae1b065943384806811f02048376b76f64ce9c8768229'
+    'SKIP'
 )
 
 prepare() {
@@ -76,4 +78,8 @@ package() {
 
   cp -r "usr/lib" "$pkgdir/usr"
   cp -r "usr/share" "$pkgdir/usr" 2>/dev/null || true
+
+  # pacman hook to reapply file capabilities after install/upgrade
+  install -Dm644 sunshine-capabilities.hook \
+      "$pkgdir/usr/share/libalpm/hooks/sunshine-capabilities.hook"
 }
