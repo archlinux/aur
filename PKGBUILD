@@ -7,8 +7,9 @@ arch=('x86_64')
 url="https://booklore.org/"
 license=('AGPL-3.0')
 backup=("etc/booklore/booklore.conf")
-depends=(jdk21-openjdk mariadb)
-makedepends=(yarn)
+depends=('jdk21-openjdk' 'mariadb')
+makedepends=('yarn')
+optdepends=('apache' 'nginx' 'caddy')
 options=(!debug)
 source_x86_64=(
 https://github.com/booklore-app/booklore/archive/refs/tags/v$pkgver.tar.gz
