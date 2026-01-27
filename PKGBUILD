@@ -3,7 +3,7 @@
 pkgbase=python-parfive
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=2
 pkgdesc="A HTTP and FTP parallel file downloader"
 arch=('any')
@@ -27,7 +27,7 @@ checkdepends=('python-pytest-socket'
               'python-aiofiles')   #python-aiohttp tqdm
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #       'fix-downloader-py3.14.patch')
-md5sums=('06ee7e444329e2844f99f45871987fc9')
+md5sums=('9e20d421325bb9a827ca9405614f18df')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}

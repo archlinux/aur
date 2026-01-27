@@ -1,6 +1,6 @@
 pkgbase = python-parfive
 	pkgdesc = A HTTP and FTP parallel file downloader
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 2
 	url = https://parfive.readthedocs.io
 	arch = any
@@ -20,8 +20,8 @@ pkgbase = python-parfive
 	makedepends = python-aiohttp
 	makedepends = python-tqdm
 	makedepends = graphviz
-	source = https://files.pythonhosted.org/packages/source/p/parfive/parfive-2.3.0.tar.gz
-	md5sums = 06ee7e444329e2844f99f45871987fc9
+	source = https://files.pythonhosted.org/packages/source/p/parfive/parfive-2.3.1.tar.gz
+	md5sums = 9e20d421325bb9a827ca9405614f18df
 
 pkgname = python-parfive
 	depends = python>=3.10
