@@ -1,6 +1,6 @@
 # Maintainer: Daniel Korbelainen <officialpand@gmail.com>
 pkgname=sniptext
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Screen capture OCR tool with adaptive ensemble recognition"
 arch=('any')
@@ -38,7 +38,7 @@ optdepends=(
 # Note: For enhanced spell correction, install: pip install --user symspellpy
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c40385dbc536be6d3b1921c76adca872c9ddcdf2212f2dba58e4728b27e72e48')
+sha256sums=('5cd0fe35e186405e24aad46d9ba33c7783b222d4f83b1a6400f2a36e057d66d9')
 
 build() {
     cd "$pkgname-$pkgver"
