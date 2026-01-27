@@ -4,7 +4,7 @@
 # Contributor: Mikkel Oscar Lyderik
 
 pkgname="python-jenkinsapi"
-pkgver=0.3.17
+pkgver=0.3.19
 pkgrel=1
 pkgdesc="Python API for accessing resources on a Jenkins continuous-integration server"
 arch=('any')
@@ -24,7 +24,7 @@ depends=(
 )
 optdepends=("python-requests-kerberos: for Kerberos support")
 source=("git+https://github.com/pycontribs/jenkinsapi.git#tag=$pkgver")
-sha256sums=('0cd25b85b4a4db38162561970cbff4454bbd2ef205b4077adaa61c69abfe2ef7')
+sha256sums=('9ad09c72659c1cc511a8b20b227fd850699cee1b78b65700c652b1b6d9970a18')
 validpgpkeys=('968479A1AFF927E37D1A566BB5690EEEBB952194')  # Github
 
 build() {
