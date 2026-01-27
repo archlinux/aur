@@ -1,0 +1,23 @@
+pkgbase = betterwallpaper-git
+	pkgdesc = A modern, high-performance animated wallpaper manager for Linux (WIP)
+	pkgver = 1.0.0.r1.gHASH
+	pkgrel = 1
+	url = https://github.com/Misiix9/BetterWallpaper
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = base-devel
+	depends = gtk4
+	depends = libadwaita
+	depends = gtk4-layer-shell
+	depends = mpv
+	depends = curl
+	depends = glew
+	depends = nlohmann-json
+	depends = wayland
+	optdepends = linux-wallpaperengine: for Wallpaper Engine support
+	source = git+https://github.com/Misiix9/BetterWallpaper.git
+	md5sums = SKIP
+
+pkgname = betterwallpaper-git
