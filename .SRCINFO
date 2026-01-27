@@ -1,6 +1,6 @@
 pkgbase = dive-ai
 	pkgdesc = Dive is an open-source MCP Host Desktop Application that seamlessly integrates with any LLMs supporting function calling capabilities. ✨
-	pkgver = 0.12.4
+	pkgver = 0.13.1
 	pkgrel = 1
 	url = https://github.com/OpenAgentPlatform/Dive
 	install = dive-ai.install
@@ -17,7 +17,7 @@ pkgbase = dive-ai
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/OpenAgentPlatform/Dive/releases/download/v0.12.4/dive_0.12.4_amd64.deb
-	sha256sums_x86_64 = 8f553b0aa3bc2e3c7e328383f58dca9c8368f50b3ee2a9113a2df1d51417d4ce
+	source_x86_64 = https://github.com/OpenAgentPlatform/Dive/releases/download/v0.13.1/dive_0.13.1_amd64.deb
+	sha256sums_x86_64 = 74b73fb1fe551d7c28381af1324055fd1411bccea3531d4bdba2ef52f8f80e20
 
 pkgname = dive-ai
