@@ -1,6 +1,6 @@
 pkgbase = vmangos-git
 	pkgdesc = MMORPG server emulator
-	pkgver = r6872.8d9bca282
+	pkgver = r6933.82edaee41
 	pkgrel = 1
 	url = https://github.com/vmangos/
 	install = vmangos-git.install
@@ -14,7 +14,6 @@ pkgbase = vmangos-git
 	depends = libdwarf
 	depends = mariadb
 	depends = mariadb-libs
-	depends = onetbb
 	depends = openssl
 	depends = zlib
 	depends = zstd
@@ -23,7 +22,7 @@ pkgbase = vmangos-git
 	conflicts = vmangos
 	backup = etc/vmangos/mangosd.conf
 	backup = etc/vmangos/realmd.conf
-	source = vmangos-git::git+https://github.com/vmangos/core.git#branch=native
+	source = vmangos-git::git+https://github.com/vmangos/core.git
 	source = worlddb::git+https://github.com/brotalnia/database.git
 	source = user.conf
 	source = tmpfile.conf

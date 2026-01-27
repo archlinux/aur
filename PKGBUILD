@@ -1,7 +1,7 @@
 # Maintainer: Janne Veteläinen <janne.p.w.vetelainen@gmail.com>
 
 pkgname=vmangos-git
-pkgver=r6872.8d9bca282
+pkgver=r6933.82edaee41
 pkgrel=1
 pkgdesc="MMORPG server emulator"
 arch=('x86_64')
@@ -13,7 +13,6 @@ depends=(
     'libdwarf'
     'mariadb'
     'mariadb-libs'
-    'onetbb'
     'openssl'
     'zlib'
     'zstd'
@@ -32,7 +31,7 @@ install="$pkgname.install"
 provides=('vmangos')
 conflicts=('vmangos')
 source=(
-    "$pkgname::git+https://github.com/vmangos/core.git#branch=native"
+    "$pkgname::git+https://github.com/vmangos/core.git"
     "worlddb::git+https://github.com/brotalnia/database.git"
     "user.conf"
     "tmpfile.conf"
