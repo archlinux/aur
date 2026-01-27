@@ -15,6 +15,6 @@ pkgbase = ori
 	depends = gcc-libs
 	depends = glibc
 	source = ori-v1.1.4.tar.gz::https://github.com/piratheon/ori/archive/refs/tags/v1.1.4.tar.gz
-	sha256sums = e720a299d502b2a449e7014100c443761165350fd54229ebbcdae787681bad260
+	sha256sums = 720a299d502b2a449e7014100c443761165350fd54229ebbcdae787681bad260
 
 pkgname = ori

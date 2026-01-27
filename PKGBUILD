@@ -17,7 +17,7 @@ build() {
   cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
-sha256sums=('e720a299d502b2a449e7014100c443761165350fd54229ebbcdae787681bad260')
+sha256sums=('720a299d502b2a449e7014100c443761165350fd54229ebbcdae787681bad260')
 package() {
   cd "$srcdir/$pkgname-$pkgver/build"
   make DESTDIR="$pkgdir" install
