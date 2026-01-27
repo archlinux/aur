@@ -1,101 +1,63 @@
 post_install() {
-    local config_dir="$HOME/.config/hamr"
-    local state_dir="$HOME/.local/state/quickshell/hamr"
-    mkdir -p "$config_dir"
-    mkdir -p "$state_dir"
-
-    if [ ! -f "$config_dir/colors.json" ]; then
-        cp /etc/xdg/quickshell/hamr/defaults/colors.json "$config_dir/colors.json"
-    fi
-
     echo ""
-    echo "==> Hamr has been installed to /etc/xdg/quickshell/hamr"
+    echo "==> Hamr v1.0.0 installed successfully!"
     echo ""
-    echo "==> To start hamr, run:"
-    echo "      hamr"
+    echo "    Start the daemon:  hamr-daemon"
+    echo "    Launch the UI:     hamr-gtk"
     echo ""
-    echo "==> User config and plugins: ~/.config/hamr/"
-    echo "==> Persistent state: ~/.local/state/quickshell/hamr/"
-    echo ""
-    echo "==> Color theme:"
-    echo "      Edit ~/.config/hamr/colors.json directly, or"
-    echo "      configure matugen/wallust to output to this path, or"
-    echo "      symlink to your existing colors (e.g. for end-4/dots-hyprland):"
-    echo "        ln -sf ~/.local/state/quickshell/user/generated/colors.json ~/.config/hamr/colors.json"
-    echo ""
-    echo "==> For Hyprland, add to ~/.config/hypr/hyprland.conf:"
-    echo "      exec-once = hamr"
-    echo "      bind = Ctrl, Space, exec, hamr toggle"
-    echo ""
-    echo "==> For Niri, enable the systemd service and add keybind:"
-    echo "      systemctl --user enable hamr.service"
-    echo "      systemctl --user add-wants niri.service hamr.service"
-    echo "      systemctl --user start hamr.service"
-    echo ""
-    echo "      # Add to ~/.config/niri/config.kdl binds section:"
-    echo "      Ctrl+Space { spawn \"hamr\" \"toggle\"; }"
-    echo ""
-    echo "==> Troubleshooting:"
-    echo "      View logs: journalctl --user -u hamr -f"
-    echo "      Qt mismatch crash? Rebuild: paru -S quickshell --rebuild"
+    echo "    Plugins are installed to: /usr/share/hamr/plugins/"
+    echo "    User config location:     ~/.config/hamr/"
     echo ""
 }
 
 post_upgrade() {
-    local config_file="$HOME/.config/hamr/hamr.json"
-
-    # Migrate: remove old prefix config if it matches system defaults
-    if [ -f "$config_file" ]; then
-        local default_prefix='{"action":"/","app":">","clipboard":";","emojis":":","file":"~","math":"=","shellCommand":"$","shellHistory":"!","webSearch":"?"}'
-        local current_prefix
-        current_prefix=$(jq -c '.search.prefix // empty' "$config_file" 2>/dev/null)
-
-        if [ -n "$current_prefix" ]; then
-            # Normalize both for comparison (sort keys)
-            local current_sorted
-            local default_sorted
-            current_sorted=$(echo "$current_prefix" | jq -cS '.' 2>/dev/null)
-            default_sorted=$(echo "$default_prefix" | jq -cS '.' 2>/dev/null)
-
-            if [ "$current_sorted" = "$default_sorted" ]; then
-                # Remove the old prefix config since it's the default
-                jq 'del(.search.prefix)' "$config_file" >"$config_file.tmp" && mv "$config_file.tmp" "$config_file"
-                echo "==> Migrated: removed default prefix config (now using actionBarHints)"
-            fi
-        fi
+    if [[ "$(vercmp "$2" "1.0.0")" -lt 0 ]]; then
+        echo ""
+        echo "=========================================="
+        echo "  HAMR v1.0.0 - MAJOR VERSION UPGRADE"
+        echo "=========================================="
+        echo ""
+        echo "  Hamr has been completely rewritten in Rust!"
+        echo ""
+        echo "  BREAKING CHANGES:"
+        echo "  - License changed from GPL-3.0 to MIT"
+        echo "  - QML/Quickshell replaced with native GTK4"
+        echo "  - New plugin system with Python SDK"
+        echo "  - Different configuration format"
+        echo ""
+        echo "  CLEANUP (optional):"
+        echo "  Old QML files may remain at:"
+        echo "    /etc/xdg/quickshell/hamr/"
+        echo "    ~/.config/quickshell/"
+        echo ""
+        echo "  You can safely remove these if not using"
+        echo "  other Quickshell applications."
+        echo ""
+        echo "  NEW COMMANDS:"
+        echo "    hamr-daemon  - Background service"
+        echo "    hamr-gtk     - GTK4 launcher UI"
+        echo "    hamr-tui     - Terminal UI (optional)"
+        echo "    hamr         - CLI tools"
+        echo ""
+        echo "  For migration help, visit:"
+        echo "    https://github.com/Stewart86/hamr"
+        echo ""
+        echo "=========================================="
+        echo ""
+    else
+        echo ""
+        echo "==> Hamr upgraded to v$1"
+        echo ""
     fi
-
-    # Restart hamr after upgrade (was stopped in pre_remove)
-    # Install scripts run as root, so we need to find logged-in users
-    for user in $(loginctl list-users --no-legend 2>/dev/null | awk '{print $2}'); do
-        systemctl --machine="$user@.host" --user start hamr.service 2>/dev/null || true
-    done
-
-    echo ""
-    echo "==> Hamr has been upgraded and restarted."
-    echo ""
-    echo "==> If hamr crashes after a Qt update, rebuild quickshell:"
-    echo "      paru -S quickshell --rebuild"
-    echo ""
-}
-
-pre_upgrade() {
-    # Stop hamr before files are extracted to prevent crash from file watcher
-    # Install scripts run as root, so we need to find logged-in users
-    for user in $(loginctl list-users --no-legend 2>/dev/null | awk '{print $2}'); do
-        systemctl --machine="$user@.host" --user stop hamr.service 2>/dev/null || true
-    done
 }
 
 post_remove() {
-    # Disable systemd service if enabled
-    for user in $(loginctl list-users --no-legend 2>/dev/null | awk '{print $2}'); do
-        systemctl --machine="$user@.host" --user disable hamr.service 2>/dev/null || true
-    done
-
     echo ""
-    echo "==> User data has been preserved. Remove manually if no longer needed:"
-    echo "      rm -rf ~/.config/hamr"
-    echo "      rm -rf ~/.local/state/quickshell/hamr"
+    echo "==> Hamr has been removed."
+    echo ""
+    echo "    User data remains at: ~/.config/hamr/"
+    echo "    ~/.local/share/hamr/"
+    echo ""
+    echo "    Remove these manually if no longer needed."
     echo ""
 }
