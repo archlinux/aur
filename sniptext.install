@@ -1,50 +1,60 @@
 post_install() {
-    echo ""
-    echo "========================================================================"
-    echo "  SnipText OCR - Installation Complete"
-    echo "========================================================================"
-    echo ""
-    echo "  REQUIRED: Configure a keyboard shortcut to use SnipText!"
-    echo ""
-    echo "  Recommended keybind: Ctrl+Alt+T"
-    echo "  Command to run: sniptext --capture-now"
-    echo ""
-    echo "  Configuration examples:"
-    echo ""
-    echo "  Hyprland (~/.config/hypr/hyprland.conf):"
-    echo "    bind = CTRL ALT, T, exec, sniptext --capture-now"
-    echo ""
-    echo "  Sway/i3 (~/.config/sway/config or ~/.config/i3/config):"
-    echo "    bindsym Ctrl+Alt+t exec sniptext --capture-now"
-    echo ""
-    echo "  GNOME: Settings → Keyboard → Custom Shortcuts"
-    echo "  KDE: System Settings → Shortcuts → Custom Shortcuts"
-    echo ""
-    echo "========================================================================"
-    echo "  IMPORTANT: Install screenshot tools for your display server!"
-    echo "========================================================================"
-    echo ""
-    echo "  For Wayland (Hyprland, Sway, etc):"
-    echo "    sudo pacman -S slurp grim wl-clipboard"
-    echo ""
-    echo "  For X11 (i3, bspwm, etc):"
-    echo "    sudo pacman -S maim xclip"
-    echo ""
-    echo "========================================================================"
-    echo "  OPTIONAL: Enhanced text correction (recommended)"
-    echo "========================================================================"
-    echo ""
-    echo "  For better OCR error correction, install:"
-    echo "    pip install --user symspellpy"
-    echo ""
-    echo "  This enables dictionary-based spell checking for OCR output."
-    echo "  Basic correction works without it, but enhanced is better."
-    echo ""
-    echo "  Test from terminal: sniptext --capture-now"
-    echo "  Documentation: /usr/share/doc/sniptext/README.md"
-    echo ""
-    echo "========================================================================"
-    echo ""
+    cat << 'EOF'
+
+╔══════════════════════════════════════════════════════════════════════════╗
+║                    SnipText OCR - Installation Complete                 ║
+╚══════════════════════════════════════════════════════════════════════════╝
+
+[!] STEP 1: Configure keyboard shortcut (REQUIRED!)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Recommended keybind: Ctrl+Alt+T
+  Command to run:      sniptext --capture-now
+
+  Configuration examples:
+
+  Hyprland (~/.config/hypr/hyprland.conf):
+    bind = CTRL ALT, T, exec, sniptext --capture-now
+
+  Sway/i3 (~/.config/sway/config or ~/.config/i3/config):
+    bindsym Ctrl+Alt+t exec sniptext --capture-now
+
+  GNOME: Settings -> Keyboard -> Custom Shortcuts
+  KDE:   System Settings -> Shortcuts -> Custom Shortcuts
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[!] STEP 2: Install screenshot tools (REQUIRED!)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  For Wayland (Hyprland, Sway, etc):
+      sudo pacman -S slurp grim wl-clipboard
+
+  For X11 (i3, bspwm, etc):
+      sudo pacman -S maim xclip
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[*] OPTIONAL: Enhanced text correction (recommended)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  For better OCR error correction:
+    yay -S python-symspellpy
+
+  * Dictionary-based spell checking for OCR output
+  * Basic correction works without it, but this makes it better!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Test it!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Test from terminal:
+    sniptext --capture-now
+
+  Documentation:
+    /usr/share/doc/sniptext/README.md
+
+╚══════════════════════════════════════════════════════════════════════════╝
+
+EOF
 }
 
 post_upgrade() {

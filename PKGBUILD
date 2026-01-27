@@ -35,7 +35,7 @@ optdepends=(
     'xclip: X11 clipboard support'
     'imagemagick: X11 screenshot tool (import command)'
 )
-# Note: For enhanced spell correction, install: pip install --user symspellpy
+# Note: For enhanced spell correction, install: yay -S python-symspellpy
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('5cd0fe35e186405e24aad46d9ba33c7783b222d4f83b1a6400f2a36e057d66d9')
