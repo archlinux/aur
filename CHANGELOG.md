@@ -15,6 +15,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.12.0] - 2026-01-27
 
+### Fix
+
+- Translations
+
+## [2.12.0] - 2026-01-27
+
 ### Added
 
 - Fine tune the Proxy Method Calls and Actions through the Preferences
