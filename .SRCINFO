@@ -1,5 +1,5 @@
 pkgbase = css-inline
-	pkgdesc = CSS inliner
+	pkgdesc = High-performance library for inlining CSS into HTML 'style' attributes
 	pkgver = 0.19.1
 	pkgrel = 1
 	url = https://github.com/Stranger6667/css-inline

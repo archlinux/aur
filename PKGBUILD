@@ -3,7 +3,7 @@
 pkgname=css-inline
 pkgver=0.19.1
 pkgrel=1
-pkgdesc="CSS inliner"
+pkgdesc="High-performance library for inlining CSS into HTML 'style' attributes"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Stranger6667/css-inline"
 license=('MIT')
