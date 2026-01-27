@@ -1,7 +1,7 @@
 # Maintainer: Alessandro Abbenante <alessandros.hube@gmail.com>
 
 pkgname=psiphonlinuxgui
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="PsiphonLinuxGUI is an unofficial Linux app for managing the Psiphon VPN and browser settings."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('nodejs')
 
 source=("https://github.com/Alessandros-Hube/PsiphonLinuxGUI/releases/download/v$pkgver/psiphonlinuxgui_"$pkgver"_amd64.deb")
-sha256sums=('78e0b859f03b239d4d76af4df2e5ce87003953a00528ae3aafeebbf5c8894880')
+sha256sums=('de4c5643afc50aff2b7f3677152365ca7cb5f2a21a40d0931b88b729961e1ae8')
 
 package() {
   # Extract the .deb package
@@ -22,23 +22,11 @@ package() {
   # Copy the necessary files into the correct directories:
   install -dm755 "$pkgdir/opt/psiphonlinuxgui"  # Create the target directory for Psiphon Linux GUI
   install -dm755 "$pkgdir/usr/share/applications"  # Create the applications directory for desktop files
-  install -dm755 "$pkgdir/usr/share/icons/hicolor/514x514/apps"  # Create icons directory (if applicable)
 
   # Make sure the file exists
   if [ -e "$pkgdir/usr/share/applications/psiphonlinuxgui.desktop" ]; then
     # Modify the Exec line in the .desktop file to add the --no-sandbox parameter
     sed -i 's|Exec=.*|& --no-sandbox|' "$pkgdir/usr/share/applications/psiphonlinuxgui.desktop"
-  fi
-
-  # Adjust file permissions
-  # Make sure the file exists before changing permissions
-  if [ -e "$pkgdir/opt/psiphonlinuxgui/resources/app/configs/psiphon.config" ]; then
-    # Change ownership of the psiphon.config file to root:root
-    chown root:root "$pkgdir/opt/psiphonlinuxgui/resources/app/configs/psiphon.config"
-
-    # Set permissions to 777 (read, write, and execute for everyone) for the config file
-    # Be careful with 777 as it gives full access to anyone, which might be a security risk
-    chmod 777 "$pkgdir/opt/psiphonlinuxgui/resources/app/configs/psiphon.config"
   fi
 
   mkdir -p "$pkgdir/usr/local/bin/"
