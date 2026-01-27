@@ -1,7 +1,7 @@
 pkgbase = android-x86-64-ffmpeg
 	pkgdesc = Complete solution to record, convert and stream audio and video (Android x86-64)
 	pkgver = 8.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ffmpeg.org/
 	arch = any
 	groups = android-ffmpeg
@@ -11,7 +11,6 @@ pkgbase = android-x86-64-ffmpeg
 	makedepends = android-x86-64-ladspa
 	makedepends = android-x86-64-opencl-headers
 	makedepends = nasm
-	depends = android-x86-64-alsa-lib
 	depends = android-x86-64-aom
 	depends = android-x86-64-bzip2
 	depends = android-x86-64-cairo
