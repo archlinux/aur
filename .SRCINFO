@@ -9,6 +9,7 @@ pkgbase = nfc-staticnested-git
 	arch = aarch64
 	license = GPL-3.0
 	makedepends = git
+	makedepends = xmake
 	depends = libnfc
 	source = nfc-staticnested-git::git+https://github.com/Redbeanw44602/nfc-staticnested.git
 	sha256sums = SKIP
