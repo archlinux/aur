@@ -5,7 +5,7 @@ _pkgname=qwe
 pkgname=${_pkgname}-bin
 pkgver=0.3.2
 pkgrel=1
-pkgdesc="A pager designed to just do the right thing without any configuration."
+pkgdesc="A simple file-first atomic version control system"
 
 arch=('x86_64')
 _barch=('x64_linux')

@@ -1,5 +1,5 @@
 pkgbase = qwe-bin
-	pkgdesc = A pager designed to just do the right thing without any configuration.
+	pkgdesc = A simple file-first atomic version control system
 	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/mainak55512/qwe
