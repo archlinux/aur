@@ -1,0 +1,5 @@
+[stto-bin]
+source = "github"
+github = "mainak55512/stto"
+use_latest_release = true
+prefix = "v"

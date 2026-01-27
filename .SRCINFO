@@ -1,0 +1,17 @@
+pkgbase = stto-bin
+	pkgdesc = Simple line of code counter
+	pkgver = 0.1.11
+	pkgrel = 1
+	url = https://github.com/mainak55512/stto
+	arch = x86_64
+	license = MIT
+	provides = stto
+	conflicts = stto
+	source = README-0.1.11.md::https://raw.githubusercontent.com/mainak55512/stto/v0.1.11/README.md
+	source = LICENSE-0.1.11::https://raw.githubusercontent.com/mainak55512/stto/v0.1.11/LICENSE
+	sha256sums = ead918a1046659f4df631e65e9c84253647f903d666350a579fce75c9f218daf
+	sha256sums = df8c89a83deed26204b4bc4878d2e4b8c1df29c6de1bc89211c62a56b2d4fb86
+	source_x86_64 = stto-x86_64-0.1.11.zip::https://github.com/mainak55512/stto/releases/download/v0.1.11/x64_linux.zip
+	sha256sums_x86_64 = d17c29d72cbc5c298e81215a7b00ce23a6f84f1d483bd17c292ee3d657f12104
+
+pkgname = stto-bin
