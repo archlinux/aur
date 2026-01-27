@@ -1,4 +1,0 @@
-[quaternion-git]
-source = "git"
-git = "https://github.com/quotient-im/Quaternion.git"
-prefix = "v"

@@ -4,32 +4,35 @@
 # Contributor: Ivan Semkin (ivan at semkin dot ru)
 # Contributor: Martin Weinelt <hexa@darmstadt.ccc.de>
 
-## links
-# https://matrix.org/
-# https://github.com/quotient-im/Quaternion
+: ${_static_libquotient:=true}
 
 _pkgname="quaternion"
 pkgname="$_pkgname-git"
-pkgver=0.0.96.1.r35.g54fc44d
-pkgrel=2
+pkgver=0.0.97.1.r6.gc693613
+pkgrel=1
 pkgdesc='Qt-based IM client for the Matrix protocol'
 url="https://github.com/quotient-im/Quaternion"
 license=('GPL-3.0-or-later' 'LGPL-2.1-or-later')
 arch=('aarch64' 'i686' 'x86_64')
 
 depends=(
-  libolm
-  qt6-declarative
-  qt6-multimedia
-  qtkeychain-qt6
+  'libolm'
+  'qt6-declarative'
+  'qt6-multimedia'
+  'qtkeychain-qt6'
 )
 makedepends=(
-  clang
-  cmake
-  git
-  ninja
-  qt6-tools
+  'clang'
+  'cmake'
+  'git'
+  'ninja'
+  'qt6-tools'
 )
+
+if [ "${_static_libquotient::1}" != "t" ]; then
+  depends+=('libquotient')
+  export LDFLAGS+=" -Wl,--copy-dt-needed-entries"
+fi
 
 provides=("$_pkgname=${pkgver%.r**}")
 conflicts=("$_pkgname")
@@ -37,22 +40,8 @@ conflicts=("$_pkgname")
 options=('!emptydirs')
 
 _pkgsrc="$_pkgname"
-source=(
-  "$_pkgsrc"::"git+$url.git"
-
-  # submodules for quaternion
-  "libquotient"::'git+https://github.com/quotient-im/libQuotient'
-
-  # submodules for libquotient
-  'gtad'::'git+https://github.com/quotient-im/gtad.git'
-  'doxygen-awesome-css'::'git+https://github.com/jothepro/doxygen-awesome-css.git'
-)
-sha256sums=(
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-)
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
@@ -60,35 +49,16 @@ pkgver() {
     | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-_prepare_quaternion() (
-  cd "$_pkgsrc"
-  local _submodules=(
-    'libquotient'::'lib'
-  )
-  _submodule_update
-)
-
-_prepare_libquotient() (
-  cd "$_pkgsrc/lib"
-  local _submodules=(
-    'doxygen-awesome-css'::'doxygen-awesome-css'
-    'gtad'::'gtad/gtad'
-  )
-  _submodule_update
-)
-
 prepare() {
-  _submodule_update() {
-    local _module
-    for _module in "${_submodules[@]}"; do
-      git submodule init "${_module##*::}"
-      git submodule set-url "${_module##*::}" "$srcdir/${_module%::*}"
-      git -c protocol.file.allow=always submodule update "${_module##*::}"
-    done
-  }
+  cd "$_pkgsrc"
 
-  _prepare_quaternion
-  _prepare_libquotient
+  if [[ "${_static_libquotient::1}" == "t" ]]; then
+    sed -E -e 's&\b(url) = \.\./\.\./&\1 = https://github.com/&' -i .gitmodules
+    git submodule update --init --recursive --depth=1
+  fi
+
+  # fix for Qt 6.10
+  sed -E -e 's&((\$\{Qt\}::)?\bWidgets\b)&\2CorePrivate \1&' -i CMakeLists.txt
 }
 
 build() {
@@ -98,11 +68,13 @@ build() {
     -G Ninja
     -DCMAKE_INSTALL_PREFIX="/usr"
     -DCMAKE_BUILD_TYPE=None
-    -DBUILD_WITH_QT6=ON
     -DUSE_INTREE_LIBQMC=ON
-    -DBUILD_TESTING=OFF
     -Wno-dev
   )
+
+  if [[ "${_static_libquotient::1}" == "t" ]]; then
+    _cmake_options+=(-DBUILD_TESTING=OFF)
+  fi
 
   cmake "${_cmake_options[@]}"
   cmake --build build
@@ -116,9 +88,7 @@ package() {
   DESTDIR="$pkgdir" cmake --install build
 
   # conflicts with extra/libquotient
-  rm "$pkgdir/usr/lib/libQuotientQt6.a"
-  rm "$pkgdir/usr/lib/pkgconfig/QuotientQt6.pc"
-  rm "$pkgdir/usr/share/ndk-modules/Android.mk"
-  rm -rf "$pkgdir/usr/include/Quotient"
-  rm -rf "$pkgdir/usr/lib/cmake/QuotientQt6"
+  rm -rf "$pkgdir/usr/include"
+  rm -rf "$pkgdir/usr/lib"
+  rm -rf "$pkgdir/usr/share/ndk-modules"
 }
