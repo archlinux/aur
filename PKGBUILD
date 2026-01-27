@@ -8,7 +8,7 @@ arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://github.com/Redbeanw44602/nfc-staticnested'
 license=('GPL-3.0')
 depends=('libnfc')
-makedepends=('git')
+makedepends=('git' 'xmake')
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
