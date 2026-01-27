@@ -1,6 +1,6 @@
 pkgbase = lavacli
 	pkgdesc = Command line interface for LAVA
-	pkgver = 2.5
+	pkgver = 2.7
 	pkgrel = 1
 	url = https://gitlab.com/lava/lavacli
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = lavacli
 	depends = python-pyzmq
 	depends = python-voluptuous
 	depends = python-ruamel-yaml
-	source = https://gitlab.com/lava/lavacli/-/archive/v2.5/lavacli-v2.5.tar.gz
-	sha256sums = d42d3543c7d46b3c913f5fa8cb5a8de41093a36cb1b11554e7cfab23430bd213
+	source = https://gitlab.com/lava/lavacli/-/archive/v2.7/lavacli-v2.7.tar.gz
+	sha256sums = 91597a78bfd5fd1eb722824449bd8e4162327bdb9e0f06b23b6f4f5f087a6b52
 
 pkgname = lavacli

@@ -4,14 +4,14 @@
 # - Sirish <aditya [at] saky [dot] in>
 
 pkgname=lavacli
-pkgver=2.5
+pkgver=2.7
 pkgrel=1
 pkgdesc="Command line interface for LAVA"
 arch=('any')
 url="https://gitlab.com/lava/lavacli"
 license=('AGPL3')
 source=("$url/-/archive/v$pkgver/lavacli-v$pkgver.tar.gz")
-sha256sums=('d42d3543c7d46b3c913f5fa8cb5a8de41093a36cb1b11554e7cfab23430bd213')
+sha256sums=('91597a78bfd5fd1eb722824449bd8e4162327bdb9e0f06b23b6f4f5f087a6b52')
 depends=(python python-{aiohttp,yaml,pyzmq,voluptuous,ruamel-yaml})
 makedepends=(python-setuptools python-pip)
 
