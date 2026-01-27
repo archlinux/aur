@@ -28,6 +28,7 @@ pkgbase = dns-lexicon
 	optdepends = python-localzone: for localzone support
 	optdepends = python-softlayer: for SoftLayer support
 	optdepends = python-zeep: for Gransy support
+	conflicts = python-lexicon
 	source = dns-lexicon::git+https://github.com/dns-lexicon/dns-lexicon#tag=v3.23.2
 	sha512sums = 2ebf5668926776dccc3928c808b48eb8774e323ed96ffdf3dcf8151343f40c652cd7bd07198a1565ac9c5bf73071a993aebf27ed117459086eedc2daa3715ce1
 	b2sums = 30d3fd2d95d5265a7ad3c25849b07c5b7e84a48d44771679fd0ec94d74d451c81643c7ba4fa26bf20089f6db7d7cfc99be8eb60133641276319b1f58f445c06d
