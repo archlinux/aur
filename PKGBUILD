@@ -5,6 +5,7 @@
 pkgname=cowsay-color-patch
 provides=(cowsay)
 conflicts=(cowsay)
+# renovate: datasource=github-tags depName=tnalpgge/rank-amateur-cowsay extractVersion=^cowsay-(?<version>.*)$
 pkgver=3.04
 pkgrel=3
 pkgdesc='Configurable talking cow (and a few other creatures). Patched to better support ANSI colors and UTF8 characters.'
