@@ -6,6 +6,7 @@ pkgdesc="Screen capture OCR tool with adaptive ensemble recognition"
 arch=('any')
 url="https://github.com/dkorbelainen/sniptext"
 license=('MIT')
+install=sniptext.install
 depends=(
     'python'
     'python-numpy'
