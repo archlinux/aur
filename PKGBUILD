@@ -1,7 +1,7 @@
 # Maintainer: Maxi Barmetler <maxi.barmetler@gmail.com>
 
 pkgname=falsec
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='Interpreter and compiler for the FALSE language'
 url='https://github.com/MixusMinimax/falsec'
@@ -10,7 +10,7 @@ makedepends=('cargo')
 depends=('gcc-libs' 'glibc' 'nasm' 'binutils')
 arch=('x86_64')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MixusMinimax/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('80712d440ccc15d9ea0403abd4d68ac8b7dd9f7d380d034453db8744783c8b5d36c82dc50e68ccd46375edc341511a0fa631c0f6b9f4dcada3cffba3ccd44976')
+b2sums=('dd8cfcf4c71d02506c00bd4e18d0aec99df2145325fe92d3ef862ac44ceeca9ea22bb0c8dbd1274c4c3723269f4242722dec8b0e23fe667076ff306861f9b3cc')
 
 prepare() {
     cd "$pkgname-$pkgver"
