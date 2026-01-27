@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=karing-bin
-pkgver=1.2.11.1406
+pkgver=1.2.12.1506
 pkgrel=1
 pkgdesc="Simple & Powerful proxy utility, Support routing rules for clash/sing-box"
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=(
 provides=('karing')
 conflicts=('karing' 'karing-git')
 source=("${pkgname}-${pkgver}.deb::https://github.com/KaringX/karing/releases/download/v${pkgver}/karing_${pkgver}_linux_amd64.deb")
-sha256sums=('45f5333c34fac767bc27e21ace370f459fb26375041c474050dc6cd5c42519a1')
+sha256sums=('42804dc92c04070a1f74d187096438336d322c3ecbef8b4a7198bc2928d85112')
 noextract=("${pkgname}-${pkgver}.deb")
 
 package() {
