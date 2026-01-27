@@ -1,7 +1,7 @@
 # Maintainer: Daniel Korbelainen <officialpand@gmail.com>
 pkgname=sniptext
-pkgver=0.1.0
-pkgrel=6
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="Screen capture OCR tool with adaptive ensemble recognition"
 arch=('any')
 url="https://github.com/dkorbelainen/sniptext"
@@ -37,7 +37,7 @@ optdepends=(
 )
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f1fab596e2c95f10ada2bf79733316f1001b2fa3876b432c25a133f777d2d427')
+sha256sums=('c40385dbc536be6d3b1921c76adca872c9ddcdf2212f2dba58e4728b27e72e48')
 
 build() {
     cd "$pkgname-$pkgver"
