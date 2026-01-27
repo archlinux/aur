@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=distributional
-_pkgver=0.5.0
+_pkgver=0.6.0
 pkgname=r-${_pkgname,,}
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Vectorised Probability Distributions'
 arch=('any')
@@ -17,6 +17,7 @@ depends=(
   r-ggplot2
   r-lifecycle
   r-numderiv
+  r-pillar
   r-rlang
   r-scales
   r-vctrs
@@ -29,7 +30,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('345cde8a5479b4783a7bee47196b360303901a03e2e72e36ca4c5e49df2e71ac')
+sha256sums=('cf8c3802e2ec8422f075b505b48aa8da80ddb8f1ad5049c5704f84f38f8d419a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
