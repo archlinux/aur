@@ -1,6 +1,6 @@
 # Maintainer: Zac Bowling <zac@zacbowling.com>
 pkgname=mt76-mt7925-dkms
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="MediaTek MT7925/MT7921 WiFi driver with MLO fixes (DKMS)"
 arch=('any')
@@ -18,7 +18,7 @@ options=('!strip')
 install=mt76-mt7925-dkms.install
 # SHA256 checksum will be updated by CI when creating releases
 source=("https://github.com/zbowling/mt7925/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('f06983fdb1e2d7ee3bcaf0dae3ebd938e957821d67c1d4e72e4db69c85a3522b')
+sha256sums=('1eebad48909873ebd243716c2fb285d33c3438c5f139c1f473cdd7a1b1353b4d')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
