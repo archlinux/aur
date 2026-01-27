@@ -1,0 +1,17 @@
+pkgbase = picto_py
+	pkgdesc = PictoPy - Desktop image gallery (Tauri/Python)
+	pkgver = 1.1.0
+	pkgrel = 2
+	url = https://github.com/AOSSIE-Org/PictoPy
+	arch = x86_64
+	license = GPL3
+	makedepends = binutils
+	makedepends = tar
+	depends = gtk3
+	depends = webkit2gtk
+	depends = python
+	depends = hicolor-icon-theme
+	source = picto_py-1.1.0.deb::https://github.com/tushar1977/PictoPy/releases/download/release/PictoPy_1.1.0_amd64.deb
+	sha256sums = SKIP
+
+pkgname = picto_py
