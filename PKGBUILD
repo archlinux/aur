@@ -1,4 +1,4 @@
-# Maintainer: 30p87 <30p87@30p87.de>
+# Maintainer: 30p87 <aur@30p87.de>
 
 pkgname='piped-backend-git'
 _componentname="${pkgname%'-git'}"
