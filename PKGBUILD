@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=NHPoisson
-_pkgver=3.3
+_pkgver=3.4
 pkgname=r-${_pkgname,,}
-pkgver=3.3
-pkgrel=3
+pkgver=3.4
+pkgrel=1
 pkgdesc='Modelling and Validation of Non Homogeneous Poisson Processes'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -14,7 +14,7 @@ depends=(
   r-car
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4d452b03d13ba6f32f456a1a55a555d1a4e5c9b6559ef43d87617636592ad6c4')
+sha256sums=('35e7db2ddfea12bd076f15f14b8d799cecae3103082a9ae0be4d2312af51c23d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

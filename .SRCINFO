@@ -1,13 +1,13 @@
 pkgbase = r-nhpoisson
 	pkgdesc = Modelling and Validation of Non Homogeneous Poisson Processes
-	pkgver = 3.3
-	pkgrel = 3
+	pkgver = 3.4
+	pkgrel = 1
 	url = https://cran.r-project.org/package=NHPoisson
 	arch = any
 	license = GPL
 	depends = r
 	depends = r-car
-	source = https://cran.r-project.org/src/contrib/NHPoisson_3.3.tar.gz
-	sha256sums = 4d452b03d13ba6f32f456a1a55a555d1a4e5c9b6559ef43d87617636592ad6c4
+	source = https://cran.r-project.org/src/contrib/NHPoisson_3.4.tar.gz
+	sha256sums = 35e7db2ddfea12bd076f15f14b8d799cecae3103082a9ae0be4d2312af51c23d
 
 pkgname = r-nhpoisson
