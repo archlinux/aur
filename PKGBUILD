@@ -1,7 +1,7 @@
 # Maintainer: Artyom Nazarov <artnazarov@vk.com>
 pkgname=htmlbuilder
 pkgver=0.0.2
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 license=('custom')
 depends=('lazarus' 'qt5pas' 'gtk2' 'fpc' )  # Зависимости
@@ -93,7 +93,6 @@ source=(
   "pop3send.pas"
   "ppas.bat"
   "ppas.sh"
-  "pyvenv.cfg"
   "random_data.pas"
   "render_custom_request.pas"
   "renderhtml.pas"
@@ -165,6 +164,7 @@ install=htmlbuilder.install
 
 
 
+# Checksums will be updated by updpkgsums
 # Checksums will be updated by updpkgsums
 # Checksums will be updated by updpkgsums
 # Checksums will be updated by updpkgsums

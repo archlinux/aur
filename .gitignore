@@ -97,7 +97,7 @@ htmlbuilder
 include/
 git-stats.sh
 _client.py
-pyvenv.cfg
+*.cfg
 # Optional text files
 req.txt
 resp.txt

@@ -1,6 +1,6 @@
 pkgbase = htmlbuilder
 	pkgver = 0.0.2
-	pkgrel = 5
+	pkgrel = 6
 	install = htmlbuilder.install
 	arch = x86_64
 	license = custom
@@ -95,7 +95,6 @@ pkgbase = htmlbuilder
 	source = pop3send.pas
 	source = ppas.bat
 	source = ppas.sh
-	source = pyvenv.cfg
 	source = random_data.pas
 	source = render_custom_request.pas
 	source = renderhtml.pas
