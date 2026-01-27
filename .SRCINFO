@@ -1,0 +1,13 @@
+pkgbase = enumer
+	pkgdesc = A Go tool to auto generate methods for your enums
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = https://github.com/dmarkham/enumer
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = go
+	options = !lto
+	source = enumer-1.6.3.tar.gz::https://github.com/dmarkham/enumer/archive/refs/tags/v1.6.3.tar.gz
+	sha512sums = 0bc20c32b57581a665ae99bba3a1a302f2d7e349b7ae2ce617c8beb76d6cb42562b0d2e22d426bc6f95ff5d679206c491e078f5879dfd2a6893a7d07ee2cc764
+
+pkgname = enumer
