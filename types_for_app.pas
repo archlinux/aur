@@ -63,7 +63,8 @@ type
   PresetRecord = record
 
   id, sitename, dirpath, headtpl, bodytpl, sectiontpl, itemtpl, orf, ors,
-  tags_tpl, item_tag_tpl : String;
+  tags_tpl, item_tag_tpl,
+  websiteUrl : String;
   end;
 
  { Properties of tag }
@@ -86,6 +87,11 @@ type
   TagsPagesMap = specialize TFPGmap<string, Tag_Page_Link>;
   { Hashmap dictationary for pairing String to Tag }
   TagsMap = specialize TFPGmap<string, Tag>;
+
+  TMyArrayOfStrings = array of String;
+  { Hashmap dictationary for pairing String to sdict }
+  TStringToArrayOfStrings = specialize TFPGmap<string,
+    TMyArrayOfStrings>;
 
   { List for sql queries}
   sqls_list = array[byte] of TSQLquery;

@@ -1,4 +1,4 @@
-Автор: Назаров А.А., 2012-2024, Оренбург
+Автор: Назаров А.А., 2012-2025, Оренбург
 Сайт: https://htmlbuilder.onhalt.site
 E-mail:  programmist.nazarov@gmail.com
 
@@ -34,6 +34,7 @@ E-mail:  programmist.nazarov@gmail.com
 {body} - html разметка контента
 {dt} - дата материала
 {tags} - теги материала
+{backlinks} - обратные ссылки с внутренних страниц
 
 - Глобальные блоки разметки
 

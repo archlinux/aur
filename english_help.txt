@@ -1,4 +1,4 @@
-Author: Nazarov A.A., 2012-2024, Orenburg
+Author: Nazarov A.A., 2012-2025, Orenburg
 Site: https://htmlbuilder.onhalt.site
 E-mail: programmist.nazarov@gmail.com
 
@@ -33,6 +33,7 @@ Paste content from remote source
 {body} - html content markup
 {dt} - date of material
 {tags} - tags of material
+{backlinks} - internal backlinks from other pages to this document
 
 - Global markup blocks
 

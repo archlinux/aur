@@ -145,9 +145,8 @@ begin
                     ' "ufn4" Char(60),'+
                     ' "ufn5" Char(60),'+
                     ' "ufn6" Char(60),'+
-                    ' "ufn7" Char(60))'
-
-                    , konnect, tranzact);
+                    ' "ufn7" Char(60),'+
+                    ' "websiteUrl" Char(60))' , konnect, tranzact);
 
         // Создание индекса на основе идентификатора в таблице "block"
         sql_execute_direct('CREATE UNIQUE INDEX "preset_id_idx" ON "preset"( "id" );', konnect, tranzact);

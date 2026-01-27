@@ -1,0 +1,17 @@
+[Row1]
+Col0=___
+Col1=#00AA00
+Col2=green
+
+[Grid]
+RowCount=3
+
+[Row0]
+Col0=___
+Col1=#FF0000
+Col2=red
+
+[Row2]
+Col0=___
+Col1=#0055FF
+Col2=blue

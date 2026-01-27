@@ -8,18 +8,19 @@ interface
 
 
 uses
-  AsyncQueue, Classes, SysUtils, DB, BufDataset, Forms, Controls, Graphics,
+  launch_web_servers, AsyncQueue, Classes, SysUtils, DB, BufDataset, Forms, Controls, Graphics,
   Dialogs, DBCtrls, dbf, SQLite3Conn, SQLDB, process, FileUtil,
-  SynHighlighterHTML, SynEdit, DBDateTimePicker, StdCtrls, ExtCtrls, ComCtrls,
-  Menus, DBGrids, ActnList, Buttons, ExtDlgs, blcksock, sockets, Synautil,
-  synaip, synsock, ftpsend, db_helpers, db_insertdemo, db_create_tables,
-  replacers, editor_in_window, editor_css, editor_js, DateUtils, fgl, regexpr,
-  types_for_app, selectorTagsPages, const_for_app, selectors_for_menu,
-  RenderHtml, httpsend,  storing_attachments, FontSettings,
+  SynHighlighterHTML, SynEdit, DBDateTimePicker, IpHtml, StdCtrls, ExtCtrls,
+  ComCtrls, Menus, DBGrids, ActnList, Buttons, ExtDlgs, blcksock, sockets,
+  Synautil, synaip, synsock, ftpsend, db_helpers, db_insertdemo,
+  db_create_tables, replacers, editor_in_window, editor_css, editor_js,
+  DateUtils, fgl, regexpr, types_for_app, selectorTagsPages, const_for_app,
+  selectors_for_menu, RenderHtml, httpsend, storing_attachments, FontSettings,
   IniFiles, selection_history_dialog, selection_history_manager,
-  emoji_shortcodes, func_str_composition; {Use Synaptic}
-
-
+  emoji_shortcodes, func_str_composition, chat_client_thread, replcallfunc,
+  sitestats, dbmemo_autocomplete, internal_backlinks,
+  rss_feed, parametrized_blocks, uRepeatExpression,
+  ifelseprocessor, render_custom_request, stringcache, palette_loader, Grids; {Use Synaptic}
 
 
 
@@ -58,54 +59,86 @@ type
     acSwitchToKoreanLocale: TAction;
     acCutText: TAction;
     acPasteText: TAction;
+    acGotoHelpSheet: TAction;
+    acFtpUpdaterChangeVisibility: TAction;
+    acSpecialChangeVisibility: TAction;
+    acCommonSettingsChangeVisibility: TAction;
+    acGotoPages: TAction;
+    acGotoSections: TAction;
+    acGotoTags: TAction;
+    acGotoTagsPages: TAction;
+    acGotoGlobalBlocks: TAction;
+    acSetMenuItemTplToDefault: TAction;
+    acRunChatCommand: TAction;
+    acCopyContent: TAction;
+    acUploadingWithBridgeChangeVisibility: TAction;
+    acWebServerChangeVisibility: TAction;
     alContextActions: TActionList;
     actsEditors: TActionList;
+    AppPages: TPageControl;
     btFtpUpdate: TButton;
+    btnAlterTableAddField: TButton;
     btnAttachTagToMaterial: TButton;
+    btnEditorBodyPagesTemplate: TButton;
+    BtnEditorBodySectionsTemplate: TButton;
     btnEditorContent: TButton;
+    btnEditorCssOpen: TButton;
+    btnEditorForBlockMarkup: TButton;
+    btnEditorForSectionFullText: TButton;
+    btnEditorForSectionNote: TButton;
+    btnEditorHeadTemplate: TButton;
+    btnEditorJs: TButton;
+    btnEditorTemplateOfItem: TButton;
+    btnGetAttachment: TButton;
+    btnGetCustomFields: TButton;
     btnJoin: TButton;
+    btnLoad: TButton;
     btnLoadFromWysiwyg: TButton;
     btnOpenWithWysiwyg: TButton;
+    btnPublishToGithubPages: TButton;
+    btnRefreshTree: TButton;
     btnRemoveAssocTag: TButton;
+    btnRemoveCustomField: TButton;
     btnRemoveOneTag: TButton;
+    btnSelectZipArchive: TButton;
+    btnSetAttachment: TButton;
+    btnSetImage: TButton;
+    btnUploadWithBridge: TButton;
     btStartServer: TButton;
     btStopServer: TButton;
     Buffer: TMemo;
     btnMakeArchive: TButton;
-    btnLoad: TButton;
-    btnEditorForSectionNote: TButton;
-    btnEditorForSectionFullText: TButton;
-    btnEditorForBlockMarkup: TButton;
-    btnEditorHeadTemplate: TButton;
-    btnEditorBodyPagesTemplate: TButton;
-    BtnEditorBodySectionsTemplate: TButton;
-    btnEditorTemplateOfItem: TButton;
-    btnEditorCssOpen: TButton;
-    btnEditorJs: TButton;
-    btnPublishToGithubPages: TButton;
-    btnRefreshTree: TButton;
-    btnAlterTableAddField: TButton;
-    btnGetCustomFields: TButton;
-    btnRemoveCustomField: TButton;
-    btnSelectZipArchive: TButton;
-    btnUploadWithBridge: TButton;
-    btnSetImage: TButton;
-    btnSetAttachment: TButton;
-    btnGetAttachment: TButton;
+    btnExecChatCommand: TButton;
+    btnStartServerWithPhp: TButton;
+    btnStartServerWithPython: TButton;
     cboLocale: TComboBox;
-    chkUseTrees: TCheckBox;
-    chkUseModules: TCheckBox;
+    chkFilterCategory: TCheckBox;
+    chkFieldFilter: TCheckBox;
     chkGetBlocksFromFile: TCheckBox;
+    chkUseModules: TCheckBox;
+    chkUseTrees: TCheckBox;
     choicePreset: TDBLookupComboBox;
-    ds_Attachments: TDataSource;
-    dbeAttachmentId: TDBEdit;
-    dbeAttachmentCaption: TDBEdit;
-    dbImage: TDBImage;
-    dbNav_Attachments: TDBNavigator;
-    ds_Images: TDataSource;
+    cboLmClient: TComboBox;
+    cboFieldFilter: TComboBox;
     DBDateTimePicker1: TDBDateTimePicker;
+    dbeAttachmentCaption: TDBEdit;
+    dbeAttachmentId: TDBEdit;
+    dbeBlockHtml: TDBMemo;
+    dbeBlockId: TDBEdit;
+    dbeBlockNote: TDBMemo;
+    dbeCssId: TDBEdit;
+    dbeCssPath: TDBEdit;
+    dbeWebsiteUrl: TDBEdit;
     dbeImageCaption: TDBEdit;
     dbeImageId: TDBEdit;
+    dbeItemMenuId: TDBEdit;
+    dbeItemMenuLinkedWith: TDBEdit;
+    dbeJsScriptId: TDBEdit;
+    dbeMenuCaption: TDBEdit;
+    dbeMenuId: TDBEdit;
+    dbeMenuItemCaption: TDBEdit;
+    dbeMenuItemMenuId: TDBEdit;
+    dbeMenuItemType: TDBEdit;
     dbePageField1: TDBEdit;
     dbePageField2: TDBEdit;
     dbePageField3: TDBEdit;
@@ -113,13 +146,56 @@ type
     dbePageField5: TDBEdit;
     dbePageField6: TDBEdit;
     dbePageField7: TDBMemo;
+    dbePreset: TDBEdit;
+    dbeScriptPath: TDBEdit;
+    dbeSectionCaption: TDBEdit;
+    dbeSectionId: TDBEdit;
+    dbeSiteDirectory: TDBEdit;
+    dbeSiteName: TDBEdit;
+    dbeTagCaption: TDBEdit;
+    dbeTagId: TDBEdit;
+    dbeTagsPages_id_page: TDBEdit;
+    dbeTagsPages_id_tag: TDBEdit;
+    dbeTagsPages_id_tag_page: TDBEdit;
     dbeTree: TDBEdit;
-    dbeMenuItemMenuId: TDBEdit;
-    dbeMenuItemType: TDBEdit;
-    dbeMenuItemCaption: TDBEdit;
+    dbeUserField1: TDBEdit;
+    dbeUserField2: TDBEdit;
+    dbeUserField3: TDBEdit;
+    dbeUserField4: TDBEdit;
+    dbeUserField5: TDBEdit;
+    dbeUserField6: TDBEdit;
+    dbeUserField7: TDBEdit;
+    dbgFilteredContent: TDBGrid;
     dbGridPages: TDBGrid;
-    dbNav_Images: TDBNavigator;
+    dbImage: TDBImage;
+    dbJoin: TDBGrid;
+    dblFilterCategory: TDBLookupComboBox;
+    dbmBodyPagesTemplate: TDBMemo;
+    dbmBodySectionsTemplate: TDBMemo;
+    dbmCssStyle: TDBMemo;
+    dbmHeadTemplate: TDBMemo;
+    dbmItemTagTemplate: TDBMemo;
+    dbmJsScriptFile: TDBMemo;
+    dbmMenuItemTpl: TDBMemo;
+    dbmMenuTpl: TDBMemo;
+    dbmSectionFullText: TDBMemo;
+    dbmSectionNote: TDBMemo;
+    dbmTagsTemplate: TDBMemo;
+    dbmTemplateOfItem: TDBMemo;
+    dbNav_Attachments: TDBNavigator;
+    dbNav_Blocks: TDBNavigator;
     dbNav_Content: TDBNavigator;
+    dbNav_Css: TDBNavigator;
+    dbNav_Images: TDBNavigator;
+    dbNav_JsScripts: TDBNavigator;
+    dbNav_MenuItems: TDBNavigator;
+    dbNav_Menus: TDBNavigator;
+    dbNav_Presets: TDBNavigator;
+    dbNav_Sections: TDBNavigator;
+    dbNav_Tags: TDBNavigator;
+    dbNav_TagsPages: TDBNavigator;
+    dbOrder_Field: TDBComboBox;
+    dbOrder_Field_Set: TDBComboBox;
     dbSelectorTag: TDBLookupComboBox;
     DBText1: TDBText;
     DBText2: TDBText;
@@ -128,239 +204,61 @@ type
     DBText5: TDBText;
     DBText6: TDBText;
     DBText7: TDBText;
+    dgCounter: TDBGrid;
+    ds_Attachments: TDataSource;
+    ds_Images: TDataSource;
     ds_MenuItem: TDataSource;
     ds_Menu: TDataSource;
-    dbeItemMenuId: TDBEdit;
-    dbeItemMenuLinkedWith: TDBEdit;
-    dbeMenuId: TDBEdit;
-    dbeMenuCaption: TDBEdit;
-    dbmMenuTpl: TDBMemo;
-    dbmMenuItemTpl: TDBMemo;
-    dbNav_MenuItems: TDBNavigator;
-    dbNav_Menus: TDBNavigator;
     ds_TagsOnPage: TDataSource;
-    dbmTagsTemplate: TDBMemo;
-    dbmItemTagTemplate: TDBMemo;
     ds_Tags_Pages: TDataSource;
-    dbeTagsPages_id_tag_page: TDBEdit;
-    dbeTagsPages_id_tag: TDBEdit;
-    dbeTagsPages_id_page: TDBEdit;
-    dbNav_TagsPages: TDBNavigator;
     ds_Tags: TDataSource;
-    dbeTagId: TDBEdit;
-    dbeTagCaption: TDBEdit;
-    dbNav_Tags: TDBNavigator;
-    dbOrder_Field_Set: TDBComboBox;
-    dbOrder_Field: TDBComboBox;
     ds_JsScripts: TDataSource;
-    dbeJsScriptId: TDBEdit;
-    dbeScriptPath: TDBEdit;
-    dbmJsScriptFile: TDBMemo;
-    dbNav_JsScripts: TDBNavigator;
     ds_CssStyles: TDataSource;
-    dbeCssPath: TDBEdit;
-    dbeCssId: TDBEdit;
-    dbmCssStyle: TDBMemo;
-    dbmSectionFullText: TDBMemo;
-    dbNav_Css: TDBNavigator;
     ds_Rubrication: TDataSource;
-    dgCounter: TDBGrid;
     ds_Counter: TDataSource;
     ds_Join: TDataSource;
-    dbJoin: TDBGrid;
-    edGithubPagesPath: TEdit;
+    edAPIKey: TEdit;
+    edArchiveName: TEdit;
+    edBridgeURL: TEdit;
     edFieldName: TEdit;
     edFieldType: TEdit;
-    edBridgeURL: TEdit;
-    edAPIKey: TEdit;
-    edListenerUrl: TEdit;
-    edPathToZip: TEdit;
-    edLocalWysigygServer: TEdit;
-    fCaption: TDBEdit;
-    fContent: TDBMemo;
-    fID: TDBEdit;
-    ImageList1: TImageList;
-    Label1: TLabel;
-    Label12: TLabel;
-    lbIsFileUploaded: TLabel;
-    lbAttachmentCaption: TLabel;
-    lbAttachmentId: TLabel;
-    lbAttachmentsList: TLabel;
-    lbImageData: TLabel;
-    lbImageCaption: TLabel;
-    lbImageId: TLabel;
-    lbImagesNavigation: TLabel;
-    lbDetails: TLabel;
-    lbListenerURL: TLabel;
-    lbBridgeURL: TLabel;
-    lbBridgeAPIKey: TLabel;
-    lbPathToZip: TLabel;
-    Label4: TLabel;
-    lbAttachTagToPage: TLabel;
-    lbCategory: TLabel;
-    lbDt: TLabel;
-    lbFieldsList: TLabel;
-    lbFieldName: TLabel;
-    lbFieldType: TLabel;
-    lbTagsOnPageTab: TLabel;
-    lbTreeStructure: TLabel;
-    lbTree: TLabel;
-    lbMenuItemMenuID: TLabel;
-    lbMenuItemType: TLabel;
-    lbMenuItemID: TLabel;
-    lbMenuItemCaption: TLabel;
-    lbMenuItem_LinkFor: TLabel;
-    lbMenuItems: TLabel;
-    lbMenuId: TLabel;
-    lbMenuCaption: TLabel;
-    lbMenuTpl: TLabel;
-    lbMenuItemTpl: TLabel;
-    lbTagsTemplate: TLabel;
-    lbItemTagTempate: TLabel;
-    lbTagsPages_Page_Tag: TLabel;
-    lbTagsPages_Tag_Id: TLabel;
-    lbTagsPages: TLabel;
-    lbTagsPages_Id_tag_page: TLabel;
-    lbTagId: TLabel;
-    lbTagCaption: TLabel;
-    lbTags: TLabel;
-    lbGithubPagesPath: TLabel;
-    lbOrderSet: TLabel;
-    lbOrderField: TLabel;
-    lbProgress: TLabel;
-    lbJsScriptId: TLabel;
-    lbJsScriptPath: TLabel;
-    lbScriptFile: TLabel;
-    lbCssPath: TLabel;
-    lbCSS_id: TLabel;
-    lbCssStyle: TLabel;
-    lbCSS: TLabel;
-    lbSpecification: TLabel;
-    listFields: TListBox;
-    listTags: TListBox;
-    lvAttachments: TListView;
-    lvImages: TListView;
-    lvContent: TListView;
-    lvMenuItems: TListView;
-    lvTagsPages: TListView;
-    lvTags: TListView;
-    lvJsScripts: TListView;
-    lvCSS: TListView;
-    lvPresets: TListView;
-    lvBlocks: TListView;
-    lvSections: TListView;
-    mnuPasteText: TMenuItem;
-    mnuCutText: TMenuItem;
-    mnuKoreanLocale: TMenuItem;
-    mnuChineseLocale: TMenuItem;
-    mnuSpanishLocale: TMenuItem;
-    mnuRussianLocale: TMenuItem;
-    mnuEnglishLocale: TMenuItem;
-    mnuLocalizations: TMenuItem;
-    mnuSetFont: TMenuItem;
-    mnuInterface: TMenuItem;
-    mnuBuildProject: TMenuItem;
-    mnuProject: TMenuItem;
-    mmDetails: TMemo;
-    mnuSpecialSettings: TMenuItem;
-    mnuSaveSpecialSettings: TMenuItem;
-    mnuRestoreSpecialSettings: TMenuItem;
-    mnuDatabase: TMenuItem;
-    mnuOpenDataBase: TMenuItem;
-    mnuSaveDataBase: TMenuItem;
-    mnuFinder: TMenuItem;
-    mnuFind: TMenuItem;
-    mmRubrics: TMemo;
-    OpenDialog1: TOpenDialog;
-    OpenDialog2: TOpenDialog;
-    opdSelectPicture: TOpenPictureDialog;
-    opdSelectFileAsAttachment: TOpenDialog;
-    PageControl1: TPageControl;
-    PageControl3: TPageControl;
-    PageControl4: TPageControl;
-    panCSSList: TPanel;
-    panCSSElements: TPanel;
-    Panel1: TPanel;
-    Panel13: TPanel;
-    Panel14: TPanel;
-    Panel15: TPanel;
-    panAttachmentNav: TPanel;
-    panAttachmentForm: TPanel;
-    panAttachmentsActions: TPanel;
-    panImageActions: TPanel;
-    panImageView: TPanel;
-    panImagesNavigation: TPanel;
-    panImages: TPanel;
-    Panel29: TPanel;
-    Panel6: TPanel;
-    panPageMainProps: TPanel;
-    panPagePropsContainer: TPanel;
-    panPageFormView: TPanel;
-    Panel18: TPanel;
-    Panel24: TPanel;
-    Panel26: TPanel;
-    panFieldsList: TPanel;
-    panAddField: TPanel;
-    panMenuProps: TPanel;
-    panMenuItems: TPanel;
-    panMenusList: TPanel;
-    panMenus: TPanel;
-    panLvTagsPages: TPanel;
-    panTagPagesForm: TPanel;
-    panTagsForm: TPanel;
-    panJoinAction: TPanel;
-    panProgress: TPanel;
-    panJsProps: TPanel;
-    panJs: TPanel;
-    panJoin: TPanel;
-    pBar: TProgressBar;
-    ds_Content: TDataSource;
-    ds_Presets: TDataSource;
-    ds_Blocks: TDataSource;
-    ds_Sections: TDataSource;
-    dbeBlockId: TDBEdit;
-    dbeUserField1: TDBEdit;
-    dbeUserField2: TDBEdit;
-    dbeUserField3: TDBEdit;
-    dbeUserField4: TDBEdit;
-    dbeUserField5: TDBEdit;
-    dbePreset: TDBEdit;
-    dbeUserField6: TDBEdit;
-    dbeUserField7: TDBEdit;
-    dbeSiteName: TDBEdit;
-    dbeSiteDirectory: TDBEdit;
-    dbeSectionId: TDBEdit;
-    dbeSectionCaption: TDBEdit;
-    dbeBlockNote: TDBMemo;
-    dbeBlockHtml: TDBMemo;
-    dbmHeadTemplate: TDBMemo;
-    dbmBodyPagesTemplate: TDBMemo;
-    dbmSectionNote: TDBMemo;
-    dbmBodySectionsTemplate: TDBMemo;
-    dbmTemplateOfItem: TDBMemo;
-    dbNav_Blocks: TDBNavigator;
-    dbNav_Presets: TDBNavigator;
-    dbNav_Sections: TDBNavigator;
+    edFileManager: TEdit;
     edFtpIP: TEdit;
     edFtpPassword: TEdit;
     edFtpPort: TEdit;
     edFtpUsername: TEdit;
-    edFileManager: TEdit;
-    edArchiveName: TEdit;
+    edGithubPagesPath: TEdit;
     edIpAddress: TEdit;
-    edPort: TEdit;
-    edPathToBuild: TEdit;
+    edFieldValue: TEdit;
     edItemsPerPage: TEdit;
+    edListenerUrl: TEdit;
+    edLocalWysigygServer: TEdit;
+    edPathToBuild: TEdit;
+    edPathToZip: TEdit;
+    edPort: TEdit;
+    fCaption: TDBEdit;
+    fContent: TDBMemo;
+    fID: TDBEdit;
+    ImageList1: TImageList;
+    ilImagesForMenuItems: TImageList;
+    IpHtmlPanel1: TIpHtmlPanel;
+    Label1: TLabel;
     Label10: TLabel;
     Label11: TLabel;
+    Label12: TLabel;
     Label13: TLabel;
     Label14: TLabel;
     Label15: TLabel;
     Label16: TLabel;
+    lbFieldValue: TLabel;
+    lbFieldFilter: TLabel;
+    lbAboutContentFilter: TLabel;
+    lbWebsiteUrl: TLabel;
+    lblChatCommand: TLabel;
+    lbChat: TLabel;
     Label18: TLabel;
     Label19: TLabel;
     Label2: TLabel;
-    lbIpAddress: TLabel;
     Label21: TLabel;
     Label22: TLabel;
     Label23: TLabel;
@@ -376,41 +274,217 @@ type
     Label32: TLabel;
     Label33: TLabel;
     Label34: TLabel;
-    lbConnectionLog: TLabel;
-    lbPort: TLabel;
-    lbArchiveName: TLabel;
-    lbPathToBuild: TLabel;
-    lbFileManager: TLabel;
-    lbItemsPerPage: TLabel;
+    Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
     Label8: TLabel;
     Label9: TLabel;
+    lbArchiveName: TLabel;
+    lbAttachmentCaption: TLabel;
+    lbAttachmentId: TLabel;
+    lbAttachmentsList: TLabel;
+    lbAttachTagToPage: TLabel;
+    lbBridgeAPIKey: TLabel;
+    lbBridgeURL: TLabel;
+    lbCategory: TLabel;
+    lbConnectionLog: TLabel;
+    lbCSS: TLabel;
+    lbCssPath: TLabel;
+    lbCssStyle: TLabel;
+    lbCSS_id: TLabel;
+    lbDetails: TLabel;
+    lbDt: TLabel;
+    lbFieldName: TLabel;
+    lbFieldsList: TLabel;
+    lbFieldType: TLabel;
+    lbFileManager: TLabel;
+    lbGithubPagesPath: TLabel;
+    lbImageCaption: TLabel;
+    lbImageData: TLabel;
+    lbImageId: TLabel;
+    lbImagesNavigation: TLabel;
+    lbIpAddress: TLabel;
+    lbIsFileUploaded: TLabel;
+    lbItemsPerPage: TLabel;
+    lbItemTagTempate: TLabel;
+    lbJsScriptId: TLabel;
+    lbJsScriptPath: TLabel;
+    lbListenerURL: TLabel;
+    lbMenuCaption: TLabel;
+    lbMenuId: TLabel;
+    lbMenuItemCaption: TLabel;
+    lbMenuItemID: TLabel;
+    lbMenuItemMenuID: TLabel;
+    lbMenuItems: TLabel;
+    lbMenuItemTpl: TLabel;
+    lbMenuItemType: TLabel;
+    lbMenuItem_LinkFor: TLabel;
+    lbMenuTpl: TLabel;
+    lbOrderField: TLabel;
+    lbOrderSet: TLabel;
+    lbPathToBuild: TLabel;
+    lbPathToZip: TLabel;
+    lbPort: TLabel;
+    lbProgress: TLabel;
+    lbScriptFile: TLabel;
+    lbSpecification: TLabel;
+    lbTagCaption: TLabel;
+    lbTagId: TLabel;
+    lbTags: TLabel;
+    lbTagsOnPageTab: TLabel;
+    lbTagsPages: TLabel;
+    lbTagsPages_Id_tag_page: TLabel;
+    lbTagsPages_Page_Tag: TLabel;
+    lbTagsPages_Tag_Id: TLabel;
+    lbTagsTemplate: TLabel;
+    lbTree: TLabel;
+    lbTreeStructure: TLabel;
+    lbAutoComplete: TListBox;
+    listFields: TListBox;
+    listTags: TListBox;
+    lvAttachments: TListView;
+    lvBlocks: TListView;
+    lvCSS: TListView;
+    lvImages: TListView;
+    lvJsScripts: TListView;
+    lvMenuItems: TListView;
+    lvPresets: TListView;
+    lvSections: TListView;
+    lvTags: TListView;
+    lvTagsPages: TListView;
+    MenuItem1: TMenuItem;
+    mmChatCommand: TMemo;
+    mmChat: TMemo;
+    mmAbout: TMemo;
+    mmDetails: TMemo;
     mmFtpLog: TMemo;
+    mmRubrics: TMemo;
+    mnuBuildSite: TMenuItem;
+    mnuSetDefaultMenuItemTplValue: TMenuItem;
+    mnuSetDefaultValues: TMenuItem;
+    mnuGotoGlobalBlocks: TMenuItem;
+    mnuGotoTagsPages: TMenuItem;
+    mnuGotoTags: TMenuItem;
+    mnuGotoSections: TMenuItem;
+    mnuGotoPages: TMenuItem;
+    mnuUploadingWithBridgeVisibility: TMenuItem;
+    mnuCommonSettingsChangeVisibility: TMenuItem;
+    mnuSpecialVisibility: TMenuItem;
+    mnuWebServerVisibility: TMenuItem;
+    mnuFtpUpdaterVisibilityChanger: TMenuItem;
+    mnuPagesVisibility: TMenuItem;
+    mnuGotoHelpSheet: TMenuItem;
+    mnuTabChanger: TMenuItem;
+    mnuPasteText: TMenuItem;
+    mnuCutText: TMenuItem;
+    mnuKoreanLocale: TMenuItem;
+    mnuChineseLocale: TMenuItem;
+    mnuSpanishLocale: TMenuItem;
+    mnuRussianLocale: TMenuItem;
+    mnuEnglishLocale: TMenuItem;
+    mnuLocalizations: TMenuItem;
+    mnuSetFont: TMenuItem;
+    mnuInterface: TMenuItem;
+    mnuBuildProject: TMenuItem;
+    mnuProject: TMenuItem;
+    mnuSpecialSettings: TMenuItem;
+    mnuSaveSpecialSettings: TMenuItem;
+    mnuRestoreSpecialSettings: TMenuItem;
+    mnuDatabase: TMenuItem;
+    mnuOpenDataBase: TMenuItem;
+    mnuSaveDataBase: TMenuItem;
+    mnuFinder: TMenuItem;
+    mnuFind: TMenuItem;
+    OpenDialog1: TOpenDialog;
+    OpenDialog2: TOpenDialog;
+    opdSelectPicture: TOpenPictureDialog;
+    opdSelectFileAsAttachment: TOpenDialog;
+    panContentFilter: TPanel;
+    pcContent: TPageControl;
     PageControl2: TPageControl;
+    PageControl3: TPageControl;
+    PageControl4: TPageControl;
+    panAddField: TPanel;
+    panApp: TPanel;
+    panAttachmentForm: TPanel;
+    panAttachmentNav: TPanel;
+    panAttachmentsActions: TPanel;
+    panCSSElements: TPanel;
+    panCSSList: TPanel;
+    Panel1: TPanel;
     Panel10: TPanel;
     Panel11: TPanel;
-    panUserFields: TPanel;
+    Panel12: TPanel;
+    Panel13: TPanel;
+    Panel14: TPanel;
+    Panel15: TPanel;
+    Panel16: TPanel;
+    Panel17: TPanel;
+    Panel18: TPanel;
     Panel19: TPanel;
+    Panel2: TPanel;
     Panel20: TPanel;
     Panel21: TPanel;
     Panel22: TPanel;
     Panel23: TPanel;
-    panWebServer: TPanel;
-    panServActions: TPanel;
-    Panel25: TPanel;
+    Panel24: TPanel;
+    Panel26: TPanel;
+    Panel27: TPanel;
+    panChatActions: TPanel;
+    Panel29: TPanel;
+    Panel3: TPanel;
+    Panel4: TPanel;
+    Panel5: TPanel;
+    Panel6: TPanel;
     Panel7: TPanel;
     Panel8: TPanel;
     Panel9: TPanel;
+    panFieldsList: TPanel;
+    panImageActions: TPanel;
+    panImages: TPanel;
+    panImagesNavigation: TPanel;
+    panImageView: TPanel;
+    panJoin: TPanel;
+    panJoinAction: TPanel;
+    panJs: TPanel;
+    panJsProps: TPanel;
+    panLvTagsPages: TPanel;
+    panMainUI: TPanel;
+    panMenuItems: TPanel;
+    panMenuProps: TPanel;
+    panMenus: TPanel;
+    panMenusList: TPanel;
+    panPageFormView: TPanel;
+    panPageMainProps: TPanel;
+    panPagePropsContainer: TPanel;
+    panProgress: TPanel;
+    panServActions: TPanel;
+    panTagPagesForm: TPanel;
+    panTagsForm: TPanel;
+    panUserFields: TPanel;
+    panWebServer: TPanel;
+    pBar: TProgressBar;
+    ds_Content: TDataSource;
+    ds_Presets: TDataSource;
+    ds_Blocks: TDataSource;
+    ds_Sections: TDataSource;
+    Panel25: TPanel;
     pmContextMenu: TPopupMenu;
-    PrefferedExtension: TComboBox;
+    pmTrayMenu: TPopupMenu;
     conn: TSQLite3Connection;
+    PrefferedExtension: TComboBox;
     SaveDialog1: TSaveDialog;
-    svdGetFromDatabase: TSaveDialog;
     selSection: TDBLookupComboBox;
+    Separator1: TMenuItem;
+    Separator2: TMenuItem;
     Splitter1: TSplitter;
     Splitter2: TSplitter;
+    Splitter3: TSplitter;
+    Splitter4: TSplitter;
+    Splitter5: TSplitter;
+    sqlCopyContent: TSQLQuery;
+    svdGetFromDatabase: TSaveDialog;
     sqlContent: TSQLQuery;
     sqlJoin: TSQLQuery;
     sqlCounter: TSQLQuery;
@@ -424,53 +498,46 @@ type
     sqlTagsPages: TSQLQuery;
     sqlTags: TSQLQuery;
     sqlRubrication: TSQLQuery;
-    tabJoin: TTabSheet;
+    tabAttachments: TTabSheet;
+    tabCommonSettings: TTabSheet;
     tabCSS: TTabSheet;
+    tabEditorProps: TTabSheet;
+    tabGlobalBlocks: TTabSheet;
+    tabHelp: TTabSheet;
+    tabImages: TTabSheet;
+    tabItemTagTemplate: TTabSheet;
+    tabJoin: TTabSheet;
     tabJs: TTabSheet;
+    tabMainProps: TTabSheet;
     tabMenus: TTabSheet;
+    tabPages: TTabSheet;
+    tabPreviewContent: TTabSheet;
+    tabSections: TTabSheet;
     TabSheet1: TTabSheet;
     TabSheet11: TTabSheet;
     TabSheet12: TTabSheet;
+    TabSheet13: TTabSheet;
     TabSheet2: TTabSheet;
     TabSheet3: TTabSheet;
-    tabMainProps: TTabSheet;
-    tabEditorProps: TTabSheet;
-    tabImages: TTabSheet;
-    tabAttachments: TTabSheet;
-    tabUploadingWithBridge: TTabSheet;
-    tabTagsTemplate: TTabSheet;
-    tabItemTagTemplate: TTabSheet;
-    tabTagsPages: TTabSheet;
+    TabSheet6: TTabSheet;
+    TabSheet7: TTabSheet;
+    TabSheet8: TTabSheet;
+    TabSheet9: TTabSheet;
+    tabSpecial: TTabSheet;
     tabTags: TTabSheet;
+    tabTagsPages: TTabSheet;
+    tabTagsTemplate: TTabSheet;
+    tabUpdateByFTP: TTabSheet;
+    tabUploadingWithBridge: TTabSheet;
+    tabWebServer: TTabSheet;
     temp_sql: TSQLQuery;
     trans: TSQLTransaction;
     sqlSections: TSQLQuery;
     sqlBlocks: TSQLQuery;
     sqlPresets: TSQLQuery;
-    TabSheet13: TTabSheet;
-    TabSheet6: TTabSheet;
-    TabSheet7: TTabSheet;
-    TabSheet8: TTabSheet;
-    TabSheet9: TTabSheet;
     mnuMainMenu: TMainMenu;
-    Panel16: TPanel;
-    Panel17: TPanel;
-    tabUpdateByFTP: TTabSheet;
-    tabSpecial: TTabSheet;
-    mmAbout: TMemo;
-    AppPages: TPageControl;
-    Panel12: TPanel;
-    Panel2: TPanel;
-    Panel3: TPanel;
-    Panel4: TPanel;
-    Panel5: TPanel;
     Process1: TProcess;
-    tabPages: TTabSheet;
-    tabWebServer: TTabSheet;
-    tabCommonSettings: TTabSheet;
-    tabHelp: TTabSheet;
-    tabGlobalBlocks: TTabSheet;
-    tabSections: TTabSheet;
+    tiTray: TTrayIcon;
     tvContent: TTreeView;
     tvSections: TTreeView;
     WebServerLog: TMemo;
@@ -483,6 +550,8 @@ type
 
 
     { Действие для открытия базы данных }
+    procedure acCommonSettingsChangeVisibilityExecute(Sender: TObject);
+    procedure acCopyContentExecute(Sender: TObject);
     procedure acCutMarkupExecute(Sender: TObject);
     procedure acCutTextExecute(Sender: TObject);
     procedure acDatabaseOpenExecute(Sender: TObject);
@@ -513,20 +582,32 @@ type
 
     { Выполняет поиск в базе по заголовку }
     procedure acFindContentByCaptionExecute(Sender: TObject);
+    procedure acFtpUpdaterChangeVisibilityExecute(Sender: TObject);
+    procedure acGotoGlobalBlocksExecute(Sender: TObject);
+    procedure acGotoHelpSheetExecute(Sender: TObject);
+    procedure acGotoPagesExecute(Sender: TObject);
+    procedure acGotoSectionsExecute(Sender: TObject);
+    procedure acGotoTagsExecute(Sender: TObject);
+    procedure acGotoTagsPagesExecute(Sender: TObject);
     procedure acPasteTextExecute(Sender: TObject);
 
     { Действие для восстановления специальных настроек }
     procedure acRestoreSpecialSettingExecute(Sender: TObject);
+    procedure acRunChatCommandExecute(Sender: TObject);
 
     { Сохраняет специальные настройки программы}
     procedure acSaveSpecialSettingsExecute(Sender: TObject);
     procedure acBuildSiteExecute(Sender: TObject);
     procedure acSetFontExecute(Sender: TObject);
+    procedure acSetMenuItemTplToDefaultExecute(Sender: TObject);
+    procedure acSpecialChangeVisibilityExecute(Sender: TObject);
     procedure acSwitchToChLocaleExecute(Sender: TObject);
     procedure acSwitchToEngLocaleExecute(Sender: TObject);
     procedure acSwitchToEspLocaleExecute(Sender: TObject);
     procedure acSwitchToKoreanLocaleExecute(Sender: TObject);
     procedure acSwitchToRusLocaleExecute(Sender: TObject);
+    procedure acUploadingWithBridgeChangeVisibilityExecute(Sender: TObject);
+    procedure acWebServerChangeVisibilityExecute(Sender: TObject);
 
     procedure AppPagesChange(Sender: TObject);
 
@@ -550,7 +631,7 @@ type
     { Обработчик кнопки получить пользовательские поля }
     procedure btnGetCustomFieldsClick(Sender: TObject);
 
-    {  }
+
     procedure btnJoinClick(Sender: TObject);
     procedure btnLoadClick(Sender: TObject);
 
@@ -584,6 +665,8 @@ type
 
     { Обработчик для загрузки в базу изображения}
     procedure btnSetImageClick(Sender: TObject);
+    procedure btnStartServerWithPhpClick(Sender: TObject);
+    procedure btnStartServerWithPythonClick(Sender: TObject);
 
     { Обработчик кнопки выгрузки zip архива через мост}
     procedure btnUploadWithBridgeClick(Sender: TObject);
@@ -602,11 +685,18 @@ type
 
     { Обработчик кнопки вызова редактора контента}
     procedure btnEditorContentClick(Sender: TObject);
+    procedure cboFieldFilterChange(Sender: TObject);
 
 
     { Обработчик смены списка языка программы }
     procedure cboLocaleChange(Sender: TObject);
+    procedure chkFieldFilterClick(Sender: TObject);
+    procedure chkFilterCategoryClick(Sender: TObject);
     procedure dbeBlockHtmlEnter(Sender: TObject);
+    procedure dbgFilteredContentDrawColumnCell(Sender: TObject;
+      const Rect: TRect; DataCol: Integer; Column: TColumn;
+      State: TGridDrawState);
+    procedure dblFilterCategoryCloseUp(Sender: TObject);
     procedure dbmBodyPagesTemplateEnter(Sender: TObject);
     procedure dbmBodySectionsTemplateEnter(Sender: TObject);
     procedure dbmCssStyleEnter(Sender: TObject);
@@ -620,8 +710,7 @@ type
     procedure dbmTagsTemplateEnter(Sender: TObject);
     procedure dbmTemplateOfItemEnter(Sender: TObject);
     procedure dbNav_AttachmentsClick(Sender: TObject; Button: TDBNavButtonType);
-    procedure dbNav_ImagesBeforeAction(Sender: TObject; Button: TDBNavButtonType
-      );
+    procedure dbNav_ImagesBeforeAction(Sender: TObject; Button: TDBNavButtonType);
 
 
 
@@ -636,12 +725,14 @@ type
     procedure dbNav_ContentBeforeAction(Sender: TObject; Button: TDBNavButtonType);
     procedure dbNav_BlocksBeforeAction(Sender: TObject; Button: TDBNavButtonType);
     procedure dbNav_CssBeforeAction(Sender: TObject; Button: TDBNavButtonType);
-    procedure dbNav_PresetsBeforeAction(Sender: TObject;
-      Button: TDBNavButtonType);
-    procedure dbNav_SectionsBeforeAction(Sender: TObject;
-      Button: TDBNavButtonType);
+    procedure dbNav_PresetsBeforeAction(Sender: TObject; Button: TDBNavButtonType);
+    procedure dbNav_SectionsBeforeAction(Sender: TObject; Button: TDBNavButtonType);
+    procedure edFieldValueChange(Sender: TObject);
+    procedure fContentChange(Sender: TObject);
+
     procedure fContentEnter(Sender: TObject);
     procedure FormDropFiles(Sender: TObject; const FileNames: array of string);
+    procedure lbAutoCompleteClick(Sender: TObject);
 
 
 
@@ -659,8 +750,11 @@ type
     { Выполнится при щелчке по названию блока }
     procedure lvBlocksClick(Sender: TObject);
 
-    { Выполнится при щелчке по названию страницы }
-    procedure lvContentClick(Sender: TObject);
+
+
+
+    procedure lvContentCustomDrawItem(Sender: TCustomListView; Item: TListItem;
+      State: TCustomDrawState; var DefaultDraw: Boolean);
 
     { Выполнится при щелчке по названию CSS таблицы}
     procedure lvCSSClick(Sender: TObject);
@@ -700,8 +794,6 @@ type
 
 
 
-
-
     { Выполнится при закрытии основного окна программы }
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
 
@@ -730,8 +822,6 @@ type
     procedure sqlContentAfterInsert(DataSet: TDataSet);
 
 
-    procedure sqlContentAfterPost(DataSet: TDataSet);
-    procedure sqlContentBeforeDelete(DataSet: TDataSet);
 
 
 
@@ -777,6 +867,7 @@ type
     procedure sqlTagsPagesAfterPost(DataSet: TDataSet);
     procedure sqlTagsPagesBeforeDelete(DataSet: TDataSet);
     procedure sqlTagsPagesBeforeRefresh(DataSet: TDataSet);
+    procedure tiTrayClick(Sender: TObject);
 
 
 
@@ -786,89 +877,112 @@ type
   public
     { public declarations }
 
+    {Текущее многострочное поле базы данных}
+    currentDBMemo: TDbMemo;
+
     {Менеджер буфера обмена}
-    SelectionHistoryManager  : TSelectionHistoryManager;
+    SelectionHistoryManager: TSelectionHistoryManager;
+
+    { Кэш приложения }
+    AppCache : TStringCache;
+
+    { Состояние найденных }
+    FindedContentState : sdict;
 
     {Последний получивший фокус элемент управления}
-    lastFocusedControl : TControl;
+    lastFocusedControl: TControl;
 
     { Имя файла, в котором хранится база }
-    db_filename : String;
+    db_filename: string;
 
     { Список названий страниц }
-    Titles : TMemo;
+    Titles: TMemo;
 
     { Список URL для страниц }
-    Urls : TMemo;
+    Urls: TMemo;
 
     { Список разделов сайта }
     Sections: TMemo;
 
     { Словарь для отношения теги - страницы }
-    PagesTree : sdict;
+    PagesTree: sdict;
 
     { Список URL для разделов }
-    SiteSectionUrls : TMemo;
+    SiteSectionUrls: TMemo;
 
     { Список URL для заголовков разделов }
     SiteSectionTitles: TMemo;
 
     { Хранит отношение раздел сайта - иерархия }
-    SiteSectionTree : sdict;
+    SiteSectionTree: sdict;
 
     { Список имен CSS }
-    CssTitles   : TStringList;
+    CssTitles: TStringList;
 
     { Список имен JS}
-    JsTitles    : TStringList;
+    JsTitles: TStringList;
 
     { Отображение для тегов}
-    Tags        : sdict;
+    Tags: sdict;
+
+    { Палитра }
+    pals : sdict;
 
     { Словарь для связи теги - страницы}
-    mTagsPages  : TagsPagesMap;
+    mTagsPages: TagsPagesMap;
+
+    { Карта обратных ссылок }
+    map_of_backlinks : TStringToArrayOfStrings;
 
     { Словарь для связи id изображения - название изображения}
-    Images      : sdict;
+    Images: sdict;
 
     { Словарь для связи id вложения - название вложения}
-    Attachments : sdict;
+    Attachments: sdict;
+
+    { Свой локальный сервер }
+
+    myWebServer : TOwnServerLauncher;
+    usedOfLocalWebServer : Boolean;
 
 
     { Какое порядок используется для сортировки }
-    POrs   : sdict;
+    POrs: sdict;
 
     { Какое поле используется для сортировки }
-    POrf   : sdict;
+    POrf: sdict;
 
 
     { Список доступных настроек }
-    SitePresets : TMemo;
+    SitePresets: TMemo;
 
     { Список SQL запросов }
-    sqls : sqls_list;
+    sqls: sqls_list;
 
-    { Сокеты для сетевых соединений }
-    ListenerSocket, ConnectionSocket: TTCPBlockSocket;
+
 
     { Список глобальных блоков }
-    Blocks : TStringList;
+    Blocks: TStringList;
 
-    { Кеш - для веб сервера }
-    Cache : tStringList;
+    FindedContentIds : TStringList;
 
 
-    PostsEditorState : String;
+    PostsEditorState: string;
 
-    rubrication_start : String;
+    rubrication_start: string;
 
     { Хранит специальные настройки программы }
-    special_settings : TSpecial_Settings;
+    special_settings: TSpecial_Settings;
 
 
     { Очередь для записи файлов}
-    Writer : TFilesQueue;
+    Writer: TFilesQueue;
 
+    { Применение изменений перед сборкой сайта }
+    procedure AutoPostAndApplyUpdates();
+
+    { Получает карту обратных ссылок }
+    procedure scanBacklinks;
 
     { новая инициализация  }
     procedure initdbSQL();
@@ -881,6 +995,12 @@ type
 
     { Применяет глобальные блоки к шаблону }
     function useBlocks(part: string): string;
+
+    { Применяем вызовы функций }
+    function useReplFunc(part: string): string;
+
+    { Применяем размножитель }
+    function useRepeater(t : String): String;
 
 
     { ----------------------------------------------}
@@ -908,6 +1028,8 @@ type
     { ----------------------------------------------}
 
 
+    { Использование палитр }
+    function usePalettes(html: string): string;
 
     { Вставляет быстрые ссылки на страницы }
     function insLinks(body: string): string;
@@ -916,7 +1038,7 @@ type
     function insSections(body: string): string;
 
     { Отображает теги на странице с данным id}
-    procedure showTagsOnPage(id : string);
+    procedure showTagsOnPage(id: string);
 
 
 
@@ -925,7 +1047,10 @@ type
     function moduleexec(cmd: string): string;
 
     { Задействует пресет для шаблона }
-    function usePreset(app : String) : string;
+    function usePreset(app: string): string;
+
+    (* Условный оператор @ifelse[leftExp]comparison[rightExpr]{stringIfTrue}{stringIfFalse}; *)
+    function useIfElseProcessor(t : string): string;
 
     { Применяет модуль к шаблону}
     function useModules(app: string): string;
@@ -937,39 +1062,25 @@ type
     function useOwnTags(app: string): string;
 
     { Построитель отдельной страницы }
-    function buildItem(itemtpl: string; itemUrl: string; itemTitle: string; itemDt : TDateTime; ur : user_records; tree : String; tags_html : String): string;
+    function buildItem(itemtpl: string; itemUrl: string; itemTitle: string;
+      itemDt: TDateTime; ur: user_records; tree: string; tags_html: string): string;
 
     { Построитель раздела }
     function buildSection(sectiontpl: string; sectionUrl: string;
-      sectionTitle: string;
-      sectionNote: string;
-      sectionFullText : string;
+      sectionTitle: string; sectionNote: string; sectionFullText: string;
       items: string): string;
 
     { Построитель переключения страниц }
-    function buildPagination(
-      url: string; currentPage: byte;
-      pagesTotal: integer;
-      orf       : String;
-      ors       : String;
-      useO      : Boolean;
-      useTrees : boolean; tree : String
-      ): string;
-
-    { Обработчик подключений к локальному серверу}
-    procedure AttendConnection(ASocket: TTCPBlockSocket);
-
-    { Пуск локального веб-сервера }
-    procedure StartOwnServer();
-
-    { Остановка локального веб-сервера}
-    procedure StopOwnServer();
+    function buildPagination(url: string; currentPage: byte;
+      pagesTotal: integer; orf: string; ors: string;
+      useO: boolean; useTrees: boolean; tree: string): string;
 
 
-    function OutputHTMLFile(uri: string): string;
+
+
 
     { Применяет к шаблону html пользовательские поля }
-    function buildOwnFields(html: string; p : page_params): string;
+    function buildOwnFields(html: string; p: page_params): string;
 
 
     { Возвращает предпочитаемое расширение }
@@ -991,18 +1102,22 @@ type
     procedure localeKp();
 
     { Применяет к шаблону переключатель страниц }
-    function Pager(layout: String; pages: String): String;
+    function Pager(layout: string; pages: string): string;
 
     { Применяет к шаблону меню }
-    function useMenus(app : String) : String;
+    function useMenus(app: string): string;
 
     { Применяет к шаблону быстрые ссылки на картинки }
-    function useImages(template : String) : String;
+    function useImages(template: string): string;
 
     { Применяет к шаблону быстрые ссылки на вложения }
-    function useAttachments(template : String) : String;
+    function useAttachments(template: string): string;
 
-
+    (* Применение параметризированных глобальных блоков *)
+    (* записываются в шаблоне в виде
+    {blockname >< variable=`value` other=`something` >< } *)
+    (* сами блоки могут содержать переменные блока вида *value *something *)
+    function useParametrizedBlocks(template: string): string;
 
 
     { Выполняет инициализацию базы данных, то есть создает структуру в новом
@@ -1071,163 +1186,172 @@ type
     procedure changeDataSourcesContent();
 
     { Переназначение datasource для таблицы section - разделы}
-     procedure changeDataSourcesSections();
+    procedure changeDataSourcesSections();
 
     { Переназначение datasource для таблицы block - глоб. блоки}
-     procedure changeDataSourcesBlocks();
+    procedure changeDataSourcesBlocks();
 
     { Переназначение datasource для таблицы preset - нач. настройки сайта}
-     procedure changeDataSourcesPresets();
+    procedure changeDataSourcesPresets();
 
     { Переназначение datasource для таблицы css - таблицы стилей}
-     procedure changeDataSourcesCss();
+    procedure changeDataSourcesCss();
 
     { Переназначение datasource для таблицы Tags}
-     procedure changeDataSourcesTags();
+    procedure changeDataSourcesTags();
 
     { Переназначение datasource для таблицы Tags_Pages - отношение страница - теги}
-     procedure changeDataSourcesTagsPages();
+    procedure changeDataSourcesTagsPages();
 
     { Переназначение datasource у таблицы js }
-     procedure changeDataSourcesJs();
+    procedure changeDataSourcesJs();
 
 
     { Переназначает datasource для таблицы images }
-     procedure changeDataSourcesImages();
+    procedure changeDataSourcesImages();
 
     { Переназначает datasource для таблицы attachments }
-     procedure changeDataSourcesAttachments();
+    procedure changeDataSourcesAttachments();
 
 
 
 
-     { Для всех переназначений }
-     procedure changeDataSources();
+    { Для всех переназначений }
+    procedure changeDataSources();
 
-     { ------------------------------------------------------- }
+    { ------------------------------------------------------- }
 
-     { Заполнение демо данными }
-     procedure makeCreationTables();
-
-
-
-
-     { Используется для сообщений для отладки }
-     procedure SilentMessage(msg : String);
-
-     { Автоматическое сохранение базы данных}
-     procedure AutoSaveDb();
-
-     { НОВАЯ ВЕРСИЯ СБОРКИ СТРАНИЦ }
-     procedure doJoinPages();
-
-     { Собирает страницу с параметрами page и именем filenam}
-     procedure  makePageJoin(page : page_params; filenam : String );
-
-
-     { Обработчик для сборки разделов }
-     procedure doSections();
-
-
-     { Обработчик для сборки карты сайта }
-     procedure doSitemap();
-
-     { Обработчик для сборки страницы со списком всех тегов }
-     procedure doTagsMap();
-
-
-     { Вставляет секции и разделы в строку }
-     function insertSectionsAndLinks(str : string) : string;
-
-     { Сканирует глобальные блоки }
-     procedure scanBlocks();
-
-     { Scan table preset }
-     procedure scanPresets();
-
-     { Scan table tags }
-     procedure scanTags();
-
-     { Scan table images for /images/ }
-     procedure scanImages();
+    { Заполнение демо данными }
+    procedure makeCreationTables();
 
 
 
 
-     { All scan actions, place here scan procedures }
-     procedure doScan();
+    { Используется для сообщений для отладки }
+    procedure SilentMessage(msg: string);
+
+    { Автоматическое сохранение базы данных}
+    procedure AutoSaveDb();
+
+    { НОВАЯ ВЕРСИЯ СБОРКИ СТРАНИЦ }
+    procedure doJoinPages();
+
+    { Собирает страницу с параметрами page и именем filenam}
+    procedure makePageJoin(page: page_params; filenam: string);
+
+
+    { Обработчик для сборки разделов }
+    procedure doSections();
+
+
+    { Обработчик для сборки карты сайта }
+    procedure doSitemap();
+
+    { Обработчик для сборки страницы со списком всех тегов }
+    procedure doTagsMap();
+
+
+    { Вставляет секции и разделы в строку }
+    function insertSectionsAndLinks(str: string): string;
+
+    { Сканирует глобальные блоки }
+    procedure scanBlocks();
+
+    { Scan table preset }
+    procedure scanPresets();
+
+    { Scan table tags }
+    procedure scanTags();
+
+    { Автозагрузка палитр }
+    procedure AutoloadPalettes();
+
+    { Scan table images for /images/ }
+    procedure scanImages();
 
 
 
-     {  Показывает окно редактора  }
-     procedure editor_win_show(var sql : TSQLQuery; field : String );
 
-     { Обработчик для таблиц стилей }
-     procedure doCssTables();
-
-     { Сканирует таблицу с javascript }
-     procedure scanJs();
-
-     { Обработчик таблиц javascript }
-     procedure doJs();
+    { All scan actions, place here scan procedures }
+    procedure doScan();
 
 
 
-     { Обработчик для прикрепленных изображений }
-     procedure doImages();
+    {  Показывает окно редактора  }
+    procedure editor_win_show(var sql: TSQLQuery; field: string);
 
-     { Обработчик для вложенных файлов }
-     procedure doAttachments();
+    { Обработчик для таблиц стилей }
+    procedure doCssTables();
 
+    { Сканирует таблицу с javascript }
+    procedure scanJs();
 
-     { Вставляет параметры в Head из page }
-     function insParamsToHead(head: String; page : page_params): String;
-
-     { Вставляет параметры page в Body}
-     function insParamsToBody(body: String; page : page_params): String;
-
-     { Получает ссылку на раздел }
-     function getSortSelector(section : String; tree : String) : String;
+    { Обработчик таблиц javascript }
+    procedure doJs();
 
 
-     { Создает отсортированную рубрикацию }
-     procedure makeRubricationUsingSorts(page : Integer; itemsPerPage : Integer; pagesInRubrics : Integer;
-       rubrication_query: String; selected_orf : String; selected_ors : String; useo : boolean);
+
+    { Обработчик для прикрепленных изображений }
+    procedure doImages();
+
+    { Обработчик для вложенных файлов }
+    procedure doAttachments();
+
+    { Обработчик для создания RSS ленты }
+    procedure doCreateRss();
 
 
-     { Действия ПОСЛЕ добавления для изменения списка lv }
-     procedure AfterPostHelper(var lv : TListView; var sql : TSQLQuery; field : String);
+    { Вставляет параметры в Head из page }
+    function insParamsToHead(head: string; page: page_params): string;
+
+    { Вставляет параметры page в Body}
+    function insParamsToBody(body: string; page: page_params): string;
+
+    { Получает ссылку на раздел }
+    function getSortSelector(section: string; tree: string): string;
+
+
+    { Создает отсортированную рубрикацию }
+    procedure makeRubricationUsingSorts(page: integer; itemsPerPage: integer;
+      pagesInRubrics: integer; rubrication_query: string;
+      selected_orf: string; selected_ors: string; useo: boolean);
+
+
+    { Действия ПОСЛЕ добавления для изменения списка lv }
+    procedure AfterPostHelper(var lv: TListView; var sql: TSQLQuery; field: string);
 
     { Действия ПОСЛЕ удаления для изменения списка lv }
-    procedure BeforeDeleteHelper(var lv : TListView; var sql : TSQLQuery; field : String);
+    procedure BeforeDeleteHelper(var lv: TListView; var sql: TSQLQuery;
+      field: string);
 
 
     { Действия при щелчке по списку для выбора определенной строки }
-    procedure listViewClickHelper(var lv : TListView; var sql : TSQLQuery; field : String);
+    procedure listViewClickHelper(var lv: TListView; var sql: TSQLQuery;
+      field: string);
 
     { Вставляет статьи в указанный узел }
-    procedure insertArticlesToNode(var Node : TTreeNode; section : String);
+    procedure insertArticlesToNode(var Node: TTreeNode; section: string);
 
     { Обновляет пользовательские колонки}
     procedure updateCustomColumns();
 
     { Добавляет пользовательскую колонки у указанным именем и типом }
-    procedure addCustomColumn(field_name, field_type : String);
+    procedure addCustomColumn(field_name, field_type: string);
 
     { Удаляет пользовательскую колонку }
-    procedure deleteCustomColumn(field_name : String);
+    procedure deleteCustomColumn(field_name: string);
 
     { Для применения к шаблону пользовательских полей }
-    function useCustomFields(  template : String; page_id : String) : String;
+    function useCustomFields(template: string; page_id: string): string;
 
     { Выполняет запрос к удаленному источнику }
-    function remotes_urls(app : String) : String;
+    function remotes_urls(app: string): string;
 
     { Сохраняет в файл специальные настройки}
-    procedure SaveSpecialSettings(path : String);
+    procedure SaveSpecialSettings(path: string);
 
     { Восстанавливает из файла специальные настройки }
-    procedure RestoreSpecialSettings(path : String);
+    procedure RestoreSpecialSettings(path: string);
 
     { Считывает специальные настройки из интерфейса }
     procedure loadfromui_special_setting();
@@ -1253,33 +1377,35 @@ type
     procedure actionSetFont();
 
     {Назначает шрифты}
-    procedure setFontsToUI(SomeFont : TFont);
+    procedure setFontsToUI(SomeFont: TFont);
 
     {Начальная установка шрифтов}
     procedure initFontsState();
 
     {Загрузка перевода из INI файла}
-    procedure loadLocaleFromIni(FileName : String);
+    procedure loadLocaleFromIni(FileName: string);
 
     {Сохранение перевода в INI файл}
-    procedure saveLocaleToIni(FileName : String);
+    procedure saveLocaleToIni(FileName: string);
 
     {Применение эмодзи}
-    function useEmojies(s: String): String;
+    function useEmojies(s: string): string;
+
+    {Статистика}
+    function useSiteStats(s: string): string;
+
+    {Автосохранение}
+    procedure AutoSave();
+
+    {Применение фильтра для контента}
+    procedure ApplyContentFilter();
 
 
 
 
 
 
-
-       end;
-
-
-
-
-
-
+  end;
 
 
 
@@ -1295,66 +1421,75 @@ implementation
 
 procedure TForm1.FormCreate(Sender: TObject);
 var
-   index : Integer;
-   Control : TControl;
+  index: integer;
+  Control: TControl;
 begin
+  pals := sdict.Create;
+  form1.AutoloadPalettes();
+  FindedContentIds := TStringList.Create;
+  FindedContentState := sdict.Create;
+  AppCache := TStringCache.Create;
+
+  form1.usedOfLocalWebServer:=False;
+  form1.myWebServer:=NIL;
+
+
   SelectionHistoryManager := TSelectionHistoryManager.Create();
 
   LastFocusedControl := nil;
   initFontsState();
 
-if not FileExists('special_settings.dat')  then
-      form1.SaveSpecialSettings('special_settings.dat')
+  if not FileExists('special_settings.dat') then
+    form1.SaveSpecialSettings('special_settings.dat')
   else
-      begin
-      form1.RestoreSpecialSettings('special_settings.dat');
-      form1.loadfromui_special_setting();
-      end;
-  SiteSectionTree:=sdict.Create;
-  PagesTree:=sdict.Create;
+  begin
+    form1.RestoreSpecialSettings('special_settings.dat');
+    form1.loadfromui_special_setting();
+  end;
+  SiteSectionTree := sdict.Create;
+  PagesTree := sdict.Create;
 
-  rubrication_start:=sqlRubrication.SQL.Text;
+  rubrication_start := sqlRubrication.SQL.Text;
 
   form1.initdbSQL();
 
-  Cache:=TStringList.Create;
+
 
   dbNav_Content.DataSource.AutoEdit := True;
   dbNav_Content.Enabled := True;
 
- // dbNav_Css.DataSource.AutoEdit := True;
- // dbNav_Css.Enabled := True;
+  // dbNav_Css.DataSource.AutoEdit := True;
+  // dbNav_Css.Enabled := True;
 
   Titles := TMemo.Create(Self); // Заголовки
   Urls := TMemo.Create(Self); // URL страниц
   Sections := TMemo.Create(Self); // Разделы страниц
-  CssTitles:=TStringList.Create;
-  JsTitles:=TStringList.Create;
+  CssTitles := TStringList.Create;
+  JsTitles := TStringList.Create;
 
-  Tags:=sdict.Create;
-  mTagsPages:=TagsPagesMap.Create;
+  Tags := sdict.Create;
+  mTagsPages := TagsPagesMap.Create;
 
-  POrf := sdict.create();
-  POrs := sdict.create();
+  POrf := sdict.Create();
+  POrs := sdict.Create();
 
-  Images:= sdict.create();
-  Attachments:=sdict.create();
+  Images := sdict.Create();
+  Attachments := sdict.Create();
 
 
   SiteSectionUrls := TMemo.Create(Self); // URL разделов
   SiteSectionTitles := TMemo.Create(Self); // Заголовки разделов
-  blocks:=TStringList.Create();
-  sitePresets:=TMemo.Create(Self);
+  blocks := TStringList.Create();
+  sitePresets := TMemo.Create(Self);
 
   doScan();
-  edPathToBuild.Text:=GetEnvironmentVariable('HOME')+'/mysite';
-
-
+  edPathToBuild.Text := GetEnvironmentVariable('HOME') + '/mysite';
 
 end;
 
 procedure TForm1.lvTagsClick(Sender: TObject);
-var tag_id : String;
+var
+  tag_id: string;
 begin
   listViewClickHelper(lvTags, sqlTags, 'tag_id');
 end;
@@ -1368,8 +1503,6 @@ procedure TForm1.panJsClick(Sender: TObject);
 begin
 
 end;
-
-
 
 
 
@@ -1392,7 +1525,7 @@ end;
 
 procedure TForm1.sqlContentAfterEdit(DataSet: TDataSet);
 begin
-   form1.refreshContentTree();
+  form1.refreshContentTree();
 end;
 
 procedure TForm1.sqlContentAfterInsert(DataSet: TDataSet);
@@ -1402,27 +1535,9 @@ end;
 
 
 
-
-
-
-
-procedure TForm1.sqlContentAfterPost(DataSet: TDataSet);
-var content_id : String; i : Integer; flag : boolean;
-begin
- AfterPostHelper(lvContent, sqlContent, 'id');
-end;
-
-procedure TForm1.sqlContentBeforeDelete(DataSet: TDataSet);
-
-begin
-  BeforeDeleteHelper(lvContent, sqlContent, 'id');
-end;
-
-
-
 procedure TForm1.sqlCssStylesAfterPost(DataSet: TDataSet);
 begin
-  AfterPostHelper(lvCSS,  sqlCssStyles, 'css_id');
+  AfterPostHelper(lvCSS, sqlCssStyles, 'css_id');
 end;
 
 procedure TForm1.sqlCssStylesBeforeDelete(DataSet: TDataSet);
@@ -1443,31 +1558,29 @@ end;
 procedure TForm1.sqlGetAllAttachmentsAfterEdit(DataSet: TDataSet);
 begin
 
- if not Assigned(Attachments) then Exit;
+  if not Assigned(Attachments) then Exit;
 
- Attachments.Clear;
- lvAttachments.Items.Clear;
- sqlGetAllAttachments.First;
- while not sqlGetAllAttachments.EOF do
-   begin
-          Images.Add( sqlGetAllAttachments.FieldByName('image_id').asString,
-                      sqlGetAllAttachments.FieldByName('image_caption').asString);
-          lvAttachments.AddItem(sqlGetAllAttachments.FieldByName('image_id').AsString, nil);
-           sqlGetAllAttachments.Next;
-       end;
+  Attachments.Clear;
+  lvAttachments.Items.Clear;
+  sqlGetAllAttachments.First;
+  while not sqlGetAllAttachments.EOF do
+  begin
+    Images.Add(sqlGetAllAttachments.FieldByName('image_id').AsString,
+      sqlGetAllAttachments.FieldByName('image_caption').AsString);
+    lvAttachments.AddItem(sqlGetAllAttachments.FieldByName(
+      'image_id').AsString, nil);
+    sqlGetAllAttachments.Next;
+  end;
 
- sqlGetAllAttachments.ApplyUpdates;
- sqlGetAllAttachments.Refresh;
+  sqlGetAllAttachments.ApplyUpdates;
+  sqlGetAllAttachments.Refresh;
   displayAttachmentStatus();
 end;
 
 procedure TForm1.sqlGetAllAttachmentsAfterInsert(DataSet: TDataSet);
-
 begin
 
   displayAttachmentStatus();
-
-
 
 end;
 
@@ -1476,18 +1589,16 @@ begin
   AfterPostHelper(lvAttachments, sqlGetAllAttachments, 'attachment_id');
   displayAttachmentStatus();
 
-
-
 end;
 
 procedure TForm1.sqlGetAllAttachmentsBeforeDelete(DataSet: TDataSet);
 begin
-   BeforeDeleteHelper(lvAttachments, sqlGetAllAttachments, 'attachment_id');
+  BeforeDeleteHelper(lvAttachments, sqlGetAllAttachments, 'attachment_id');
 end;
 
 procedure TForm1.sqlGetAllAttachmentsBeforeRefresh(DataSet: TDataSet);
 begin
-   sqlGetAllAttachments.ApplyUpdates();
+  sqlGetAllAttachments.ApplyUpdates();
 end;
 
 
@@ -1495,40 +1606,40 @@ end;
 
 procedure TForm1.sqlGetAllImagesAfterDelete(DataSet: TDataSet);
 begin
- if not Assigned(Images) then Exit;
+  if not Assigned(Images) then Exit;
 
- Images.Clear;
- lvImages.Items.Clear;
- sqlGetAllImages.First;
- while not sqlGetAllImages.EOF do
-   begin
-          Images.Add( sqlGetAllImages.FieldByName('image_id').asString,
-                      sqlGetAllImages.FieldByName('image_caption').asString);
-          lvImages.AddItem(sqlGetAllImages.FieldByName('image_id').AsString, nil);
-           sqlGetAllImages.Next;
-       end;
+  Images.Clear;
+  lvImages.Items.Clear;
+  sqlGetAllImages.First;
+  while not sqlGetAllImages.EOF do
+  begin
+    Images.Add(sqlGetAllImages.FieldByName('image_id').AsString,
+      sqlGetAllImages.FieldByName('image_caption').AsString);
+    lvImages.AddItem(sqlGetAllImages.FieldByName('image_id').AsString, nil);
+    sqlGetAllImages.Next;
+  end;
 
- sqlGetAllImages.ApplyUpdates;
- sqlGetAllImages.Refresh;
+  sqlGetAllImages.ApplyUpdates;
+  sqlGetAllImages.Refresh;
 end;
 
 procedure TForm1.sqlGetAllImagesAfterEdit(DataSet: TDataSet);
 var
-  Image_Caption : String;
-  Image_Id : String;
+  Image_Caption: string;
+  Image_Id: string;
 begin
   lvImages.Items.Clear;
   Images.Clear;
 
   sqlGetAllImages.First;
   while not sqlGetAllImages.EOF do
-    begin
-           Image_id := sqlGetAllImages.FieldByName('image_id').AsString;
-           Image_caption := sqlGetAllImages.FieldByName('image_caption').AsString;
-           Images.Add(image_id, image_caption);
-           lvImages.AddItem( Image_id, nil);
-      sqlGetAllImages.Next;
-    end;
+  begin
+    Image_id := sqlGetAllImages.FieldByName('image_id').AsString;
+    Image_caption := sqlGetAllImages.FieldByName('image_caption').AsString;
+    Images.Add(image_id, image_caption);
+    lvImages.AddItem(Image_id, nil);
+    sqlGetAllImages.Next;
+  end;
 
 
 
@@ -1545,7 +1656,6 @@ end;
 procedure TForm1.sqlGetAllImagesAfterPost(DataSet: TDataSet);
 begin
   AfterPostHelper(lvImages, sqlGetAllImages, 'image_id');
-
 
 end;
 
@@ -1572,13 +1682,14 @@ begin
 end;
 
 procedure TForm1.sqlMenuAfterScroll(DataSet: TDataSet);
-var new_request : String;
+var
+  new_request: string;
 begin
-  new_request:='select * from menu_item where menu_item_menu_id="'+
-  sqlMenu.FieldByName('menu_id').AsString+'"';
+  new_request := 'select * from menu_item where menu_item_menu_id="' +
+    sqlMenu.FieldByName('menu_id').AsString + '"';
   //showMessage(new_request);
- // sqlMenuItem.Close;
-  sqlMenuItem.SQL.text:=new_request;
+  // sqlMenuItem.Close;
+  sqlMenuItem.SQL.Text := new_request;
   open_sql(new_request, sqlMenuItem);
   sqlMenuItem.Refresh;
   redrawLvMenuItems();
@@ -1607,7 +1718,7 @@ end;
 
 procedure TForm1.sqlPresetsAfterPost(DataSet: TDataSet);
 begin
-   AfterPostHelper(lvPresets, sqlPresets, 'id');
+  AfterPostHelper(lvPresets, sqlPresets, 'id');
 end;
 
 procedure TForm1.sqlPresetsBeforeDelete(DataSet: TDataSet);
@@ -1642,25 +1753,6 @@ begin
   form1.refreshContentTree();
 
 end;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1700,9 +1792,86 @@ begin
   sqlTagsPages.ApplyUpdates;
 end;
 
+procedure TForm1.tiTrayClick(Sender: TObject);
+begin
 
+end;
 
+procedure TForm1.AutoPostAndApplyUpdates();
+begin
 
+   { Сохранение вложений }
+   if form1.ds_Attachments.State = dsEdit then
+     begin
+     form1.sqlGetAllAttachments.Post;
+     form1.sqlGetAllAttachments.ApplyUpdates();
+     end;
+  { Сохранение общих настроек }
+  if form1.ds_Presets.State = dsEdit then
+     begin
+      form1.sqlPresets.Post;
+      form1.sqlPresets.ApplyUpdates();
+     end;
+  { Сохранение глобальных блоков }
+  if form1.ds_Blocks.State = dsEdit then
+     begin
+      form1.sqlBlocks.Post;
+      form1.sqlBlocks.ApplyUpdates();
+     end;
+  { Сохранение материалов }
+  if form1.ds_Content.State = dsEdit then
+    begin
+    form1.sqlContent.Post;
+    form1.sqlContent.ApplyUpdates();
+    end;
+  { Сохранение стилей }
+  if form1.ds_CssStyles.State = dsEdit then
+    begin
+         form1.sqlCssStyles.Post;
+         form1.sqlCssStyles.ApplyUpdates();
+    end;
+   { Сохранение изображений }
+  if form1.ds_Images.State = dsEdit then
+     begin
+      form1.sqlGetAllImages.Post;
+      form1.sqlGetAllImages.ApplyUpdates();
+     end;
+  { Сохранение тегов }
+  if form1.ds_Tags.State = dsEdit then
+     begin
+          form1.sqlTags.Post;
+          form1.sqlTags.ApplyUpdates();
+     end;
+   { Сохранение связей теги-страницы }
+  if form1.ds_Tags_Pages.State = dsEdit then
+     begin
+      form1.sqlTagsPages.Post;
+      form1.sqlTagsPages.ApplyUpdates();
+     end;
+  { Сохранение разделов }
+  if form1.ds_Sections.State = dsEdit then
+     begin
+          form1.sqlSections.Post;
+          form1.sqlSections.ApplyUpdates();
+     end;
+
+end;
+
+procedure TForm1.scanBacklinks;
+var
+   sql  : TSqlQuery;
+begin
+        sql := TSqlQuery.Create(Self);
+        sql.SQLConnection := form1.conn;
+        sql.Transaction := form1.trans;
+
+        try
+            map_of_backlinks := getBacklinks(form1.conn, form1.trans, sql);
+        finally
+             sql.Free;
+        end;
+
+end;
 
 
 
@@ -1711,11 +1880,11 @@ procedure TForm1.btFtpUpdateClick(Sender: TObject);
 var
   IP, Port, FileName, LocalFile, Path, User, Pass: string;
   F: TSearchRec;
-  is_file_put : boolean;
+  is_file_put: boolean;
   ServerEnabled: boolean;
   FTPClient: TFtpSend;
 begin
-     // test with vsftpd
+  // test with vsftpd
   ServerEnabled := False;
 
   FTPClient := TFTPSend.Create;
@@ -1735,7 +1904,7 @@ begin
 
   if FtpClient.Login then
 
-      ServerEnabled := True;
+    ServerEnabled := True;
 
 
 
@@ -1746,7 +1915,7 @@ begin
 
   if ServerEnabled = True then
   begin
-    if FindFirst(Path + DELIM+'*.*', faAnyFile, F) = 0 then
+    if FindFirst(Path + DELIM + '*.*', faAnyFile, F) = 0 then
     begin
       while FindNext(F) = 0 do
       begin
@@ -1771,13 +1940,14 @@ begin
 
         // put new file
 
-       is_file_put := FtpPutFile(IP, Port, FileName, LocalFile, User, Pass);
+        is_file_put := FtpPutFile(IP, Port, FileName, LocalFile, User, Pass);
         if is_file_put then
           mmFtpLog.Lines.Add('[+] Файл ' + FileName +
             ' выгружен на сервер из ' + LocalFile)
         else
           mmFtpLog.Lines.Add('[x] Файл ' + FileName +
-            ' не удалось выгрузить на сервер из ' + LocalFile);
+            ' не удалось выгрузить на сервер из ' +
+            LocalFile);
       end;
     end;
     FindClose(F);
@@ -1789,71 +1959,73 @@ begin
 end;
 
 procedure TForm1.btnAlterTableAddFieldClick(Sender: TObject);
-var field_name, field_type : String;
+var
+  field_name, field_type: string;
 begin
   field_name := edFieldName.Text;
   field_type := edFieldType.Text;
-  if (field_name<>'') and (field_type<>'') then
-    begin
-          AddCustomColumn('custom_'+field_name, field_type);
-          updateCustomColumns();
-    end;
+  if (field_name <> '') and (field_type <> '') then
+  begin
+    AddCustomColumn('custom_' + field_name, field_type);
+    updateCustomColumns();
+  end;
 end;
-
 
 
 
 
 procedure TForm1.btnAttachTagToMaterialClick(Sender: TObject);
 var
-  link_id : String; id_tag : String; id_page : String;
-  add_sql : TSqlQuery;
+  link_id: string;
+  id_tag: string;
+  id_page: string;
+  add_sql: TSqlQuery;
 begin
 
+  add_sql := TSqlQuery.Create(self);
+  add_sql.SQLConnection := conn;
+  add_sql.Transaction := trans;
 
+  id_tag := dbSelectorTag.KeyValue;
+  id_page := sqlContent.FieldByName('id').AsString;
+  link_id := 'linked_' + id_tag + '_with_' + id_page;
+  addIntoTagsPages(link_id, id_tag, id_page, add_sql, conn, trans);
 
-  add_sql:=TSqlQuery.Create(self);
-  add_sql.SQLConnection:=conn;
-  add_sql.Transaction:=trans;
-
-   id_tag:=dbSelectorTag.KeyValue;
-   id_page:=sqlContent.FieldByName('id').AsString;
-   link_id:='linked_'+id_tag+'_with_'+id_page;
-   addIntoTagsPages(link_id,  id_tag, id_page,  add_sql, conn, trans);
-
-add_sql.Free;
-   form1.showTagsOnPage(id_page);
+  add_sql.Free;
+  form1.showTagsOnPage(id_page);
 end;
 
 procedure TForm1.btnEditorCssOpenClick(Sender: TObject);
-var ed : TfrmEditorCss;
+var
+  ed: TfrmEditorCss;
 begin
-  ed:=TfrmEditorCss.Create(self);
-  ed.editor.Text:=  sqlCssStyles.FieldByName('css_style').AsString;
+  ed := TfrmEditorCss.Create(self);
+  ed.editor.Text := sqlCssStyles.FieldByName('css_style').AsString;
   ed.ShowModal();
 
 
 
-        sqlCssStyles.ApplyUpdates();
-        sqlCssStyles.Edit;
-        sqlCssStyles.FieldByName('css_style').AsString:=ed.editor.Text;
+  sqlCssStyles.ApplyUpdates();
+  sqlCssStyles.Edit;
+  sqlCssStyles.FieldByName('css_style').AsString := ed.editor.Text;
 
-  ed.close();
-  ed.free();
+  ed.Close();
+  ed.Free();
 end;
 
 procedure TForm1.btnEditorJsClick(Sender: TObject);
-var jE : TfrmEditorJs;
+var
+  jE: TfrmEditorJs;
 begin
-   jE:=TfrmEditorJs.Create(Self);
-   jE.editor.text:=sqlJsScripts.FieldByName('js_file').AsString;
-   jE.ShowModal;
+  jE := TfrmEditorJs.Create(Self);
+  jE.editor.Text := sqlJsScripts.FieldByName('js_file').AsString;
+  jE.ShowModal;
 
 
-   sqlJsScripts.ApplyUpdates;
-   sqlJsScripts.Edit;
-   sqlJsScripts.FieldByName('js_file').AsString:=jE.editor.text;
-   sqlJsScripts.Post;
+  sqlJsScripts.ApplyUpdates;
+  sqlJsScripts.Edit;
+  sqlJsScripts.FieldByName('js_file').AsString := jE.editor.Text;
+  sqlJsScripts.Post;
 
 end;
 
@@ -1872,101 +2044,110 @@ end;
 { Тестовый код }
 procedure TForm1.btnJoinClick(Sender: TObject);
 begin
- actionBuildSite();
+  actionBuildSite();
 end;
 
 {{ ===============     ЗАГРУЗКА ИЗ ТЕКСТОВЫХ ФАЙЛОВ ============= }}
 
 procedure TForm1.btnLoadClick(Sender: TObject);
-var fbuffer : TStringList; idOfBlocksInBase : TStringList;
-   blockFiles : TStringList;
-   id, markup : String;
-   i, j, k : Integer;
-   InstalledIds, InstalledMarkups : TStringList;
-   exists : Boolean;
-   indexToUpdate : Integer;
+var
+  fbuffer: TStringList;
+  idOfBlocksInBase: TStringList;
+  blockFiles: TStringList;
+  id, markup: string;
+  i, j, k: integer;
+  InstalledIds, InstalledMarkups: TStringList;
+  exists: boolean;
+  indexToUpdate: integer;
 begin
 
-  fbuffer:=TStringList.Create();
+  fbuffer := TStringList.Create();
   // Получим список всех id из текстовых файлов /blocks/*.blk и разметку markup
-    idOfBlocksInBase:=TStringList.Create;
-    installedIds:=TStringList.Create;
-    installedMarkups:=TStringList.Create;
-    fbuffer:=TStringList.Create;
+  idOfBlocksInBase := TStringList.Create;
+  installedIds := TStringList.Create;
+  installedMarkups := TStringList.Create;
+  fbuffer := TStringList.Create;
   // Установка разметки контейнеров
   sqlPresets.Edit;
-  fbuffer.LoadFromFile( GetCurrentDir() + DELIM+'parts'+DELIM+'head.tpl' );
-  Form1.dbmHeadTemplate.Text:=fbuffer.text;
-  fbuffer.LoadFromFile( GetCurrentDir() + DELIM+'parts' + DELIM+ 'body.tpl' );
-  Form1.dbmBodyPagesTemplate.Text :=fbuffer.text;
-  fbuffer.LoadFromFile( GetCurrentDir() + DELIM+'parts'+DELIM+'section.tpl' );
-  Form1.dbmSectionNote.Text:=fbuffer.text;
-  fbuffer.LoadFromFile( GetCurrentDir() + DELIM+'parts'+DELIM+'full_text.tpl' );
-  Form1.dbmSectionFullText.Text:=fbuffer.text;
-  fbuffer.LoadFromFile( GetCurrentDir() + DELIM+'parts'+DELIM+'item.tpl' );
-  Form1.dbmTemplateOfItem.Text:=fbuffer.text;
+  fbuffer.LoadFromFile(GetCurrentDir() + DELIM + 'parts' + DELIM + 'head.tpl');
+  Form1.dbmHeadTemplate.Text := fbuffer.Text;
+  fbuffer.LoadFromFile(GetCurrentDir() + DELIM + 'parts' + DELIM + 'body.tpl');
+  Form1.dbmBodyPagesTemplate.Text := fbuffer.Text;
+  fbuffer.LoadFromFile(GetCurrentDir() + DELIM + 'parts' + DELIM + 'section.tpl');
+  Form1.dbmSectionNote.Text := fbuffer.Text;
+  fbuffer.LoadFromFile(GetCurrentDir() + DELIM + 'parts' + DELIM + 'full_text.tpl');
+  Form1.dbmSectionFullText.Text := fbuffer.Text;
+  fbuffer.LoadFromFile(GetCurrentDir() + DELIM + 'parts' + DELIM + 'item.tpl');
+  Form1.dbmTemplateOfItem.Text := fbuffer.Text;
   sqlPresets.Post; // Применяем изменения
   // Получим список всех ID в таблице sqlBlocks
   sqlBlocks.First;
-  while not sqlBlocks.EOF do begin
-      idOfBlocksInBase.Add( sqlBlocks.FieldByName('id').AsString);
+  while not sqlBlocks.EOF do
+  begin
+    idOfBlocksInBase.Add(sqlBlocks.FieldByName('id').AsString);
 
-      sqlBlocks.Next;
-      Application.ProcessMessages;
+    sqlBlocks.Next;
+    Application.ProcessMessages;
   end;
 
-    blockFiles := FindAllFiles(GetCurrentDir()+DELIM+'blocks', '*.blk', false); // получили список блоков
-    // первая строка - id блока
-    // остальные HTML разметка
-    for i:=0 to blockFiles.Count-1 do
-        begin
-          fbuffer.LoadFromFile( blockFiles[i] ); // already have abs paths
-          id:=fbuffer.Strings[0];
-          markup:='';
-          for j:=1 to fbuffer.Count-1 do
-              begin
-                markup:=markup+fbuffer.Strings[j];
-              end;
-              InstalledIds.Add(id);
-              InstalledMarkups.Add(markup);
-        end;
+  blockFiles := FindAllFiles(GetCurrentDir() + DELIM + 'blocks', '*.blk', False);
+  // получили список блоков
+  // первая строка - id блока
+  // остальные HTML разметка
+  for i := 0 to blockFiles.Count - 1 do
+  begin
+    fbuffer.LoadFromFile(blockFiles[i]); // already have abs paths
+    id := fbuffer.Strings[0];
+    markup := '';
+    for j := 1 to fbuffer.Count - 1 do
+    begin
+      markup := markup + fbuffer.Strings[j];
+    end;
+    InstalledIds.Add(id);
+    InstalledMarkups.Add(markup);
+  end;
 
-     for i:=0 to InstalledIds.Count-1 do
-         begin
-           exists:=false;
-           indexToUpdate := -1;
-           for j:=0 to  idOfBlocksInBase.Count -1 do
-               begin
-                 if idOfBlocksInBase[j]=InstalledIds[i] then
-                   begin
-                        exists:=true; IndexToUpdate := j; break;
-                   end;
-               end;
-           if exists then
-              begin
-                   sqlBlocks.First; k := 0;
-                   while not sqlBlocks.EOF do
-                         begin
-                            if k<>indexToUpdate then
+  for i := 0 to InstalledIds.Count - 1 do
+  begin
+    exists := False;
+    indexToUpdate := -1;
+    for j := 0 to idOfBlocksInBase.Count - 1 do
+    begin
+      if idOfBlocksInBase[j] = InstalledIds[i] then
+      begin
+        exists := True;
+        IndexToUpdate := j;
+        break;
+      end;
+    end;
+    if exists then
+    begin
+      sqlBlocks.First;
+      k := 0;
+      while not sqlBlocks.EOF do
+      begin
+        if k <> indexToUpdate then
 
-                             inc(k) else break;
+          Inc(k)
+        else
+          break;
 
-                             sqlBlocks.Next;
-                             application.ProcessMessages;
-                         end;
-                   sqlBlocks.Edit;
-                   sqlBlocks.FieldByName('id').AsString := installedIds[i];
-                   sqlBlocks.FieldByName('markup').AsString := installedMarkups[i];
-                   sqlBlocks.Post;
-              end
-           else
-           begin
-                 sqlBlocks.Insert;
-                 sqlBlocks.FieldByName('id').AsString := installedIds[i];
-                 sqlBlocks.FieldByName('markup').AsString := installedMarkups[i];
-                 sqlBlocks.Post;
-           end;
-         end;
+        sqlBlocks.Next;
+        application.ProcessMessages;
+      end;
+      sqlBlocks.Edit;
+      sqlBlocks.FieldByName('id').AsString := installedIds[i];
+      sqlBlocks.FieldByName('markup').AsString := installedMarkups[i];
+      sqlBlocks.Post;
+    end
+    else
+    begin
+      sqlBlocks.Insert;
+      sqlBlocks.FieldByName('id').AsString := installedIds[i];
+      sqlBlocks.FieldByName('markup').AsString := installedMarkups[i];
+      sqlBlocks.Post;
+    end;
+  end;
 
 
   fbuffer.Free;
@@ -1977,95 +2158,91 @@ end;
 
 procedure TForm1.btnLoadFromWysiwygClick(Sender: TObject);
 var
-   fileContent : TMemo;
-   path : String;
+  fileContent: TMemo;
+  path: string;
 begin
 
   path := form1.edLocalWysigygServer.Text;
 
   fileContent := TMemo.Create(Self);
-  fileContent.Lines.LoadFromFile(path+'/public/content.txt');
+  fileContent.Lines.LoadFromFile(path + '/public/content.txt');
   sqlContent.Edit;
-  sqlContent.FieldByName('content').AsString:=fileContent.Text;
+  sqlContent.FieldByName('content').AsString := fileContent.Text;
 
   fileContent.Free;
 
 
-  Process1.CommandLine:='pkill node';
+  Process1.CommandLine := 'pkill node';
   Process1.Execute;
 
 end;
 
 procedure TForm1.btnOpenWithWysiwygClick(Sender: TObject);
 var
-   fileContent : TMemo;
-   path : String;
-   Process2 : TProcess;
-   output : String;
+  fileContent: TMemo;
+  path: string;
+  Process2: TProcess;
+  output: string;
 begin
 
   path := form1.edLocalWysigygServer.Text;
 
   fileContent := TMemo.Create(Self);
-  fileContent.Text:=sqlContent.FieldByName('content').AsString;
-  fileContent.Lines.SaveToFile(path+'/public/content.txt');
+  fileContent.Text := sqlContent.FieldByName('content').AsString;
+  fileContent.Lines.SaveToFile(path + '/public/content.txt');
   fileContent.Free;
 
-  Process1.CommandLine:='node '+path+'/index.js';
+  Process1.CommandLine := 'node ' + path + '/index.js';
   Process1.Execute;
 
-  Process2:=TProcess.Create(Self);
+  Process2 := TProcess.Create(Self);
   Process2.CommandLine := 'firefox http://127.0.0.1:3000';
   Process2.Execute;
-
-
 
 end;
 
 procedure TForm1.btnPublishToGithubPagesClick(Sender: TObject);
-var ProcessCopy : TProcess;
+var
+  ProcessCopy: TProcess;
 begin
-   ProcessCopy:=TProcess.Create(Self);
-   ProcessCopy.CommandLine:='/usr/bin/bash -c "cp -r  '+form1.edPathToBuild.Text+'/* '+form1.edGithubPagesPath.Text+'" ';
-   ProcessCopy.Execute;
-   ProcessCopy.WaitOnExit; // ждем завершения копирования
-   ProcessCopy.Free;
+  ProcessCopy := TProcess.Create(Self);
+  ProcessCopy.CommandLine := '/usr/bin/bash -c "cp -r  ' + form1.edPathToBuild.Text +
+    '/* ' + form1.edGithubPagesPath.Text + '" ';
+  ProcessCopy.Execute;
+  ProcessCopy.WaitOnExit; // ждем завершения копирования
+  ProcessCopy.Free;
 
-   ProcessCopy:=TProcess.Create(Self);
-   ProcessCopy.CommandLine:='/usr/bin/bash -c "cd '+form1.edGithubPagesPath.Text+' && git add * " ';
-   ProcessCopy.Execute;
-   ProcessCopy.WaitOnExit; // добавляем файл в коммит
-   ProcessCopy.Free;
+  ProcessCopy := TProcess.Create(Self);
+  ProcessCopy.CommandLine := '/usr/bin/bash -c "cd ' + form1.edGithubPagesPath.Text +
+    ' && git add * " ';
+  ProcessCopy.Execute;
+  ProcessCopy.WaitOnExit; // добавляем файл в коммит
+  ProcessCopy.Free;
 
-   ProcessCopy:=TProcess.Create(Self);
-   ProcessCopy.CommandLine:='/usr/bin/bash -c " cd '+form1.edGithubPagesPath.Text+' &&  git commit -m /"next commit/"  " ';
-   ProcessCopy.Execute;
-   ProcessCopy.WaitOnExit; // делаем коммит
-   ProcessCopy.Free;
-
-
-
-
-
-
+  ProcessCopy := TProcess.Create(Self);
+  ProcessCopy.CommandLine := '/usr/bin/bash -c " cd ' + form1.edGithubPagesPath.Text +
+    ' &&  git commit -m /"next commit/"  " ';
+  ProcessCopy.Execute;
+  ProcessCopy.WaitOnExit; // делаем коммит
+  ProcessCopy.Free;
 
 end;
 
 procedure TForm1.btnRefreshTreeClick(Sender: TObject);
 begin
-     refreshTrees();
+  refreshTrees();
 end;
 
 procedure TForm1.btnRemoveAssocTagClick(Sender: TObject);
 var
-  id_page : String;
-  remove_sql_tags : TSqlQuery;
+  id_page: string;
+  remove_sql_tags: TSqlQuery;
 begin
-  id_page:=sqlContent.FieldByName('id').AsString;
-  remove_sql_tags:=TSqlQuery.Create(self);
-  remove_sql_tags.SQLConnection:=conn;
-  remove_sql_tags.Transaction:=trans;
-  remove_sql_tags.SQL.Text:='delete from tags_pages where id_page="'+id_page+'"';
+  id_page := sqlContent.FieldByName('id').AsString;
+  remove_sql_tags := TSqlQuery.Create(self);
+  remove_sql_tags.SQLConnection := conn;
+  remove_sql_tags.Transaction := trans;
+  remove_sql_tags.SQL.Text := 'delete from tags_pages where id_page="' + id_page + '"';
   remove_sql_tags.ExecSQL;
   remove_sql_tags.Free;
   form1.showTagsOnPage(id_page);
@@ -2073,103 +2250,145 @@ end;
 
 procedure TForm1.btnRemoveCustomFieldClick(Sender: TObject);
 begin
-  if ListFields.ItemIndex>-1 then
-     begin
-     DeleteCustomColumn(ListFields.Items[ ListFields.ItemIndex ]);
-     updateCustomColumns();
-     end;
+  if ListFields.ItemIndex > -1 then
+  begin
+    DeleteCustomColumn(ListFields.Items[ListFields.ItemIndex]);
+    updateCustomColumns();
+  end;
 end;
 
 procedure TForm1.btnRemoveOneTagClick(Sender: TObject);
 var
-  id_tag, tag_caption, id_page : String;
-  remove_sql_tag : TSqlQuery;
-  get_id_tag_by_name : TSqlQuery;
+  id_tag, tag_caption, id_page: string;
+  remove_sql_tag: TSqlQuery;
+  get_id_tag_by_name: TSqlQuery;
 begin
-  if listTags.ItemIndex>-1 then
-    begin
-       tag_caption:=listTags.Items[ listTags.ItemIndex ];
-       id_page:=sqlContent.FieldByName('id').AsString;
+  if listTags.ItemIndex > -1 then
+  begin
+    tag_caption := listTags.Items[listTags.ItemIndex];
+    id_page := sqlContent.FieldByName('id').AsString;
 
-       get_id_tag_by_name:=TSQLQuery.Create(self);
-       get_id_tag_by_name.SQLConnection:=conn;
-       get_id_tag_by_name.Transaction:=trans;
-       get_id_tag_by_name.sql.text:='select tag_id from tags WHERE tag_caption="'+tag_caption+'" LIMIT 1';
-       get_id_tag_by_name.ExecSQL;
-       get_id_tag_by_name.Active:=true;
-       get_id_tag_by_name.First;
-       id_tag:=get_id_tag_by_name.FieldByName('tag_id').AsString;
-       get_id_tag_by_name.Active:=false;
-       get_id_tag_by_name.Free;
+    get_id_tag_by_name := TSQLQuery.Create(self);
+    get_id_tag_by_name.SQLConnection := conn;
+    get_id_tag_by_name.Transaction := trans;
+    get_id_tag_by_name.sql.Text :=
+      'select tag_id from tags WHERE tag_caption="' + tag_caption + '" LIMIT 1';
+    get_id_tag_by_name.ExecSQL;
+    get_id_tag_by_name.Active := True;
+    get_id_tag_by_name.First;
+    id_tag := get_id_tag_by_name.FieldByName('tag_id').AsString;
+    get_id_tag_by_name.Active := False;
+    get_id_tag_by_name.Free;
 
 
-       conn.ExecuteDirect('delete from tags_pages where (id_page="'+id_page+'") AND (id_tag="'+id_tag+'")');
+    conn.ExecuteDirect('delete from tags_pages where (id_page="' +
+      id_page + '") AND (id_tag="' + id_tag + '")');
 
-       form1.showTagsOnPage(id_page);
-    end;
+    form1.showTagsOnPage(id_page);
+  end;
 end;
 
 procedure TForm1.btnSelectZipArchiveClick(Sender: TObject);
 begin
-    if OpenDialog2.Execute Then
-     form1.edPathToZip.Text:=  OpenDialog2.FileName;
+  if OpenDialog2.Execute then
+    form1.edPathToZip.Text := OpenDialog2.FileName;
 end;
 
 procedure TForm1.btnSetAttachmentClick(Sender: TObject);
 begin
-   setAttachment();
+  setAttachment();
 end;
 
 
 procedure TForm1.btnSetImageClick(Sender: TObject);
 begin
-    if opdSelectPicture.Execute then
-    begin
-      DBImage.Picture.LoadFromFile(opdSelectPicture.FileName);
-    end;
+  if opdSelectPicture.Execute then
+  begin
+    DBImage.Picture.LoadFromFile(opdSelectPicture.FileName);
+  end;
+end;
+
+procedure TForm1.btnStartServerWithPhpClick(Sender: TObject);
+var lws : TPhpServerLauncher;
+begin
+  lws := TPhpServerLauncher.Create(True);
+  lws.FreeOnTerminate:=True;
+  lws.port:=form1.edPort.Text;
+  lws.ipaddress:=form1.edIpAddress.Text;
+  lws.dirpath:=form1.sqlPresets.FieldByName('dirpath').AsString;
+  lws.Resume;
+  // while not lws.Finished do
+  //      Application.ProcessMessages;
+  // lws.Free;
+
+
+
+end;
+
+procedure TForm1.btnStartServerWithPythonClick(Sender: TObject);
+var
+  lws : TPythonServerLauncher;
+begin
+
+  lws := TPythonServerLauncher.Create(True);
+  //lws.FreeOnTerminate:=True;
+  lws.port:=form1.edPort.Text;
+  lws.ipaddress:=form1.edIpAddress.Text;
+  lws.dirpath:=form1.sqlPresets.FieldByName('dirpath').AsString;
+  lws.Resume;
+  // while not lws.Finished do
+  //      Application.ProcessMessages;
+  // lws.Free;
+  btStartServer.Enabled := False;
+  btStopServer.Enabled := True;
+
+
 end;
 
 procedure TForm1.btnUploadWithBridgeClick(Sender: TObject);
 const
-   scriptname : String = 'send-files.py';
+  scriptname: string = 'send-files.py';
 var
-   python_script : String;
-   mmPythonScript : TMemo;
-   UploadProcess  : TProcess;
-   i : Integer;
-   OutputLines: TStringList;
+  python_script: string;
+  mmPythonScript: TMemo;
+  UploadProcess: TProcess;
+  i: integer;
+  OutputLines: TStringList;
 begin
   // Create uploading script dynamically
-  mmPythonScript:= TMemo.Create(Self);
+  mmPythonScript := TMemo.Create(Self);
   mmPythonScript.Lines.Add('import requests');
-  mmPythonScript.Lines.Add('domain = "'+ form1.edBridgeURL.Text + '"');
-  mmPythonScript.Lines.Add('myurl = "http://" + domain + "' + form1.edListenerUrl.Text + '"');
-  mmPythonScript.Lines.Add('files = {"file": open("' + form1.edPathToZip.Text + '", "rb")}');
+  mmPythonScript.Lines.Add('domain = "' + form1.edBridgeURL.Text + '"');
+  mmPythonScript.Lines.Add('myurl = "http://" + domain + "' +
+    form1.edListenerUrl.Text + '"');
+  mmPythonScript.Lines.Add('files = {"file": open("' + form1.edPathToZip.Text +
+    '", "rb")}');
   mmPythonScript.Lines.Add('data = {"API": "' + form1.edAPIKey.Text + '"}');
-  mmPythonScript.Lines.Add('res = requests.post(myurl, data=data, files=files)');;
+  mmPythonScript.Lines.Add('res = requests.post(myurl, data=data, files=files)');
+  ;
   mmPythonScript.Lines.Add('print(res.text)');
   mmPythonScript.Lines.SaveToFile(scriptname);
 
   mmDetails.Clear;
-  for i:=0 to mmPythonScript.Lines.Count - 1 do
-       begin
-          mmDetails.Lines.Add( mmPythonScript.Lines[i] );
-       end;
+  for i := 0 to mmPythonScript.Lines.Count - 1 do
+  begin
+    mmDetails.Lines.Add(mmPythonScript.Lines[i]);
+  end;
   mmPythonScript.Free;
-  UploadProcess:=TProcess.Create(Self);
-  UploadProcess.Executable:='/usr/bin/python3';
+  UploadProcess := TProcess.Create(Self);
+  UploadProcess.Executable := '/usr/bin/python3';
   UploadProcess.Parameters.Add(scriptname);
   UploadProcess.Options := UploadProcess.Options + [poWaitOnExit, poUsePipes];
 
-  OutputLines:=TStringList.Create;
+  OutputLines := TStringList.Create;
   UploadProcess.Execute;
   OutputLines.Add('stdout:');
   OutputLines.LoadFromStream(UploadProcess.Output);
   OutputLines.Add('stderr:');
   OutputLines.LoadFromStream(UploadProcess.Stderr);
 
-  For i:=0 to OutputLines.Count - 1 do
-       mmDetails.Lines.add(outputlines[i]);
+  for i := 0 to OutputLines.Count - 1 do
+    mmDetails.Lines.add(outputlines[i]);
 
   OutputLines.Free;
   UploadProcess.Free;
@@ -2177,40 +2396,107 @@ end;
 
 
 procedure TForm1.acEditorForSectionNoteExecute(Sender: TObject);
-
 begin
-     editor_win_show( sqlSections, 'note');
+  editor_win_show(sqlSections, 'note');
 end;
 
 procedure TForm1.acFindContentByCaptionExecute(Sender: TObject);
-var q : String;
-   i : Integer;
-   is_find : boolean;
+var
+  q: string;
+  counter: Integer;
+  sqlFinder: TSQLQuery;
+  id: String;
+  idx: Integer;
 begin
-  // TODO Поиск по заголовку
-  q:=InputBox('Поиск', 'Ищем ', '');
-  is_find:=sqlContent.Locate('caption', q, [loCaseInsensitive, loPartialKey]);
-  if is_find then
+  // Clear previous search results
+  FindedContentIds.Clear;
+
+  q := InputBox('Поиск', 'Ищем:', '');
+  if q = '' then
+    Exit; // Cancelled or empty search
+
+  sqlFinder := TSQLQuery.Create(nil);
+  try
+    sqlFinder.SQLConnection := conn;
+    sqlFinder.Transaction := trans;
+    // SAFE PARAMETERIZED QUERY (fixes SQL injection + Firebird quote issues)
+    sqlFinder.SQL.Text := 'SELECT id FROM content WHERE caption LIKE :q';
+    sqlFinder.ParamByName('q').AsString := '%' + q + '%'; // Wildcards added safely
+    sqlFinder.Open;
+    FindedContentIds.Sorted:=True;
+    counter := 0;
+    while not sqlFinder.EOF do
     begin
-  for i:=0 to lvContent.Items.Count-1 do begin
-    if lvContent.Items[i]<>NIL then
-      if lvContent.Items[i].Caption = sqlContent.FieldByName('id').AsString then
-        begin
-             lvContent.ItemIndex:=i;
-             break;
-        end;
-  end;
+      id := sqlFinder.FieldByName('id').AsString;
+      FindedContentIds.Add(id);
+      Inc(counter);
+      sqlFinder.Next;
+      Application.ProcessMessages;
     end;
+    sqlFinder.Close;
+    ShowMessage('Найдено '+IntToStr(counter));
+  finally
+    sqlFinder.Free;
+  end;
+
+  dbgFilteredContent.Invalidate;
+end;
+
+procedure TForm1.acFtpUpdaterChangeVisibilityExecute(Sender: TObject);
+begin
+  acFtpUpdaterChangeVisibility.Checked := not acFtpUpdaterChangeVisibility.Checked;
+  form1.tabUpdateByFTP.TabVisible := acFtpUpdaterChangeVisibility.Checked;
+
+end;
+
+procedure TForm1.acGotoGlobalBlocksExecute(Sender: TObject);
+begin
+  AppPages.ActivePage := tabGlobalBlocks;
+end;
+
+procedure TForm1.acGotoHelpSheetExecute(Sender: TObject);
+begin
+  AppPages.ActivePage := tabHelp;
+end;
+
+procedure TForm1.acGotoPagesExecute(Sender: TObject);
+begin
+  AppPages.ActivePage := tabPages;
+end;
+
+procedure TForm1.acGotoSectionsExecute(Sender: TObject);
+begin
+  AppPages.ActivePage := tabSections;
+end;
+
+procedure TForm1.acGotoTagsExecute(Sender: TObject);
+begin
+  AppPages.ActivePage := tabTags;
+end;
+
+procedure TForm1.acGotoTagsPagesExecute(Sender: TObject);
+begin
+  AppPages.ActivePage := tabTagsPages;
 end;
 
 procedure TForm1.acPasteTextExecute(Sender: TObject);
 begin
-   SelectionHistoryManager.Paste(lastFocusedControl);
+  SelectionHistoryManager.Paste(lastFocusedControl);
 end;
 
 procedure TForm1.acRestoreSpecialSettingExecute(Sender: TObject);
 begin
-   RestoreSpecialSettings('');
+  RestoreSpecialSettings('');
+end;
+
+procedure TForm1.acRunChatCommandExecute(Sender: TObject);
+begin
+  // Сохраняем запрос во входной файл
+  mmChatCommand.Lines.SaveToFile('req.txt');
+  // Создаем и запускаем поток для выполнения клиента
+  TChatClientThread.Create(form1.mmChat,
+    ExtractFilePath(Application.ExeName),
+    cboLmClient.ItemIndex);
 end;
 
 procedure TForm1.acSaveSpecialSettingsExecute(Sender: TObject);
@@ -2226,6 +2512,18 @@ end;
 procedure TForm1.acSetFontExecute(Sender: TObject);
 begin
   actionSetFont();
+end;
+
+procedure TForm1.acSetMenuItemTplToDefaultExecute(Sender: TObject);
+begin
+  ds_Menu.Edit;
+  dbmMenuItemTpl.Text := '<li><a href="{itemUrl}.{ext}">{itemTitle}</a><li>';
+end;
+
+procedure TForm1.acSpecialChangeVisibilityExecute(Sender: TObject);
+begin
+  acSpecialChangeVisibility.Checked := not acSpecialChangeVisibility.Checked;
+  tabSpecial.TabVisible := acSpecialChangeVisibility.Checked;
 end;
 
 procedure TForm1.acSwitchToChLocaleExecute(Sender: TObject);
@@ -2253,6 +2551,19 @@ begin
   localeRus();
 end;
 
+procedure TForm1.acUploadingWithBridgeChangeVisibilityExecute(Sender: TObject);
+begin
+  acUploadingWithBridgeChangeVisibility.Checked := not
+    acUploadingWithBridgeChangeVisibility.Checked;
+  tabUploadingWithBridge.TabVisible := acUploadingWithBridgeChangeVisibility.Checked;
+end;
+
+procedure TForm1.acWebServerChangeVisibilityExecute(Sender: TObject);
+begin
+  acWebServerChangeVisibility.Checked := not acWebServerChangeVisibility.Checked;
+  tabWebServer.TabVisible := acWebServerChangeVisibility.Checked;
+end;
+
 procedure TForm1.AppPagesChange(Sender: TObject);
 begin
 
@@ -2260,12 +2571,12 @@ end;
 
 procedure TForm1.acEditorForSectionFullTextExecute(Sender: TObject);
 begin
-    editor_win_show( sqlSections, 'full_text');
+  editor_win_show(sqlSections, 'full_text');
 end;
 
 procedure TForm1.acEditorForBlockMarkupExecute(Sender: TObject);
 begin
-     editor_win_show( sqlBlocks, 'markup');
+  editor_win_show(sqlBlocks, 'markup');
 end;
 
 procedure TForm1.acCutMarkupExecute(Sender: TObject);
@@ -2273,74 +2584,97 @@ begin
 
 end;
 
-procedure TForm1.acCutTextExecute(Sender: TObject);
+procedure TForm1.acCommonSettingsChangeVisibilityExecute(Sender: TObject);
+begin
+  acCommonSettingsChangeVisibility.Checked := not acCommonSettingsChangeVisibility.Checked;
+  tabCommonSettings.TabVisible := acCommonSettingsChangeVisibility.Checked;
+end;
 
-
+{ Создает дубль страницы }
+procedure TForm1.acCopyContentExecute(Sender: TObject);
+var
+  content_id: string;
 begin
 
-   SelectionHistoryManager.Cut(lastFocusedControl);
+  content_id := sqlContent.FieldByName('id').AsString;
+  sqlCopyContent.SQL.Clear;
+  sqlCopyContent.SQL.Text := 'INSERT INTO content (id, caption, content) ' +
+    ' SELECT "copy_" || content.id, caption, content FROM content WHERE ' +
+    ' content.id = "' + content_id + '"';
+
+
+  sqlCopyContent.ExecSQL;
+  sqlCopyContent.Active := False;
+  sqlContent.ApplyUpdates;
+  sqlContent.Refresh;
+
+end;
+
+procedure TForm1.acCutTextExecute(Sender: TObject);
+begin
+
+  SelectionHistoryManager.Cut(lastFocusedControl);
 
 end;
 
 procedure TForm1.acDatabaseOpenExecute(Sender: TObject);
 var
-   filename : String;
- begin
-   if OpenDialog1.Execute then begin
+  filename: string;
+begin
+  if OpenDialog1.Execute then
+  begin
+
+    makeSqlInactive;
+
+    filename := OpenDialog1.FileName;
+    form1.Caption := filename;
+    conn.DatabaseName := filename;
 
 
 
-   makeSqlInactive;
+    conn.Open;
 
-   filename := OpenDialog1.FileName;
-   form1.Caption:=filename;
-   conn.DatabaseName := filename;
+    trans.Active := True;
 
+    conn.ExecuteDirect('End transaction');
+    conn.ExecuteDirect('pragma synchronous = 0');
+    conn.ExecuteDirect('pragma foreign_keys = off');
+    conn.ExecuteDirect('pragma journal_mode = off');
 
-
-         conn.Open;
-
-         trans.Active:=True;
-
-         conn.ExecuteDirect('End transaction');
-         conn.ExecuteDirect('pragma synchronous = 0');
-         conn.ExecuteDirect('pragma foreign_keys = off');
-         conn.ExecuteDirect('pragma journal_mode = off');
-
-         trans.Active:=True;
-         conn.ExecuteDirect('Begin transaction');
+    trans.Active := True;
+    conn.ExecuteDirect('Begin transaction');
 
 
-         checkConnect(conn, trans, 'initTransactionSQL');
-         makeSqlActive();
-         doScan;
-         refreshTrees;
-     end;
+    checkConnect(conn, trans, 'initTransactionSQL');
+    makeSqlActive();
+    doScan;
+    refreshTrees;
+  end;
 end;
 
 
 
 procedure TForm1.acDatabaseSaveAsExecute(Sender: TObject);
 var
-   dest_filename : String;
-   source_filename : String;
+  dest_filename: string;
+  source_filename: string;
 begin
   if SaveDialog1.Execute then
-   begin
-     source_filename := db_filename;
-     dest_filename := SaveDialog1.FileName;
-     CopyFile(source_filename, dest_filename);
-   end;
+  begin
+    source_filename := db_filename;
+    dest_filename := SaveDialog1.FileName;
+    CopyFile(source_filename, dest_filename);
+  end;
 end;
 
 procedure TForm1.acEditorForBodyTemplateExecute(Sender: TObject);
 begin
-       editor_win_show(sqlPresets, 'bodytpl');
+  editor_win_show(sqlPresets, 'bodytpl');
 end;
 
 procedure TForm1.acEditorForHeadTemplateExecute(Sender: TObject);
 begin
-   editor_win_show(sqlPresets, 'headtpl');
+  editor_win_show(sqlPresets, 'headtpl');
 end;
 
 procedure TForm1.acEditorForRubricItemTemplateExecute(Sender: TObject);
@@ -2350,23 +2684,43 @@ end;
 
 procedure TForm1.acEditorForRubricSectionTemplateExecute(Sender: TObject);
 begin
-   editor_win_show(sqlPresets, 'sectiontpl');
+  editor_win_show(sqlPresets, 'sectiontpl');
 end;
 
 
 
 procedure TForm1.btStartServerClick(Sender: TObject);
+
 begin
-  btStartServer.Enabled := False;
-  btStopServer.Enabled := True;
-  StartOwnServer();
+    if form1.usedOfLocalWebServer then
+       Exit;
+
+    myWebServer := TOwnServerLauncher.Create(True);
+    myWebServer.FreeOnTerminate:=True;
+
+    myWebServer.PrefferedExtension:=form1.PrefferedExtension.Text;
+    myWebServer.port:=form1.edPort.text;
+    myWebServer.ipaddress:=form1.edIpAddress.text;
+    myWebServer.dirpath:=form1.sqlPresets.FieldByName('dirpath').AsString;
+    myWebServer.Resume;
+    // while not myWebServer.Finished do
+    //      Application.ProcessMessages;
+    // MyWebServer.Free;
+
+    form1.usedOfLocalWebServer := True;
+    btStopServer.Enabled := form1.usedOfLocalWebServer ;
+    btStartServer.Enabled := not form1.usedOfLocalWebServer;
 
 end;
 
 procedure TForm1.btStopServerClick(Sender: TObject);
 begin
+  if not form1.usedOfLocalWebServer then Exit;
+  form1.myWebServer.StopOwnServer;
+  form1.myWebServer.Terminate;
 
-  StopOwnServer();
+  form1.usedOfLocalWebServer:=false;
+
   btStartServer.Enabled := True;
   btStopServer.Enabled := False;
 end;
@@ -2376,27 +2730,31 @@ end;
 procedure TForm1.btnMakeArchiveClick(Sender: TObject);
 var
   dir: string;
-  command_for_archive : String;
+  command_for_archive: string;
 begin
   dir := sqlPresets.FieldByName('dirpath').AsString;
-  command_for_archive:=applyVar(applyVar(applyVar(ZipArchiverCommand.Text, 'DIR', dir), 'ZIPNAME', edArchiveName.Text),
-  'DEST',  edPathToBuild.Text);
+  command_for_archive := applyVar(applyVar(applyVar(ZipArchiverCommand.Text, 'DIR', dir),
+    'ZIPNAME', edArchiveName.Text), 'DEST', edPathToBuild.Text);
 
   Process1.CommandLine := command_for_archive;
   Process1.Execute;
-  Process1.CommandLine := edFileManager.Text + ' '+ edPathToBuild.Text;
+  Process1.CommandLine := edFileManager.Text + ' ' + edPathToBuild.Text;
   Process1.Execute;
 
-  edFileManager.Text :=  command_for_archive;
+  edFileManager.Text := command_for_archive;
 
 end;
 
 
 
 procedure TForm1.btnEditorContentClick(Sender: TObject);
-
 begin
   form1.editor_win_show(sqlContent, 'content');
+end;
+
+procedure TForm1.cboFieldFilterChange(Sender: TObject);
+begin
+  Form1.ApplyContentFilter();
 end;
 
 
@@ -2404,17 +2762,76 @@ end;
 procedure TForm1.cboLocaleChange(Sender: TObject);
 begin
   case cboLocale.ItemIndex of
-       0  : LocaleRUS();
-       1  : LocaleENG();
-       2  : LocaleESP();
-       3  : LocaleCn();
-       4  : LocaleKp();
+    0: LocaleRUS();
+    1: LocaleENG();
+    2: LocaleESP();
+    3: LocaleCn();
+    4: LocaleKp();
   end;
+end;
+
+
+
+{ обработка включения-выключения фильтра }
+procedure TForm1.chkFieldFilterClick(Sender: TObject);
+begin
+  Form1.ApplyContentFilter();
+end;
+
+
+
+procedure TForm1.chkFilterCategoryClick(Sender: TObject);
+begin
+  Form1.ApplyContentFilter();
 end;
 
 procedure TForm1.dbeBlockHtmlEnter(Sender: TObject);
 begin
   LastFocusedControl := dbeBlockHtml;
+end;
+
+procedure TForm1.dbgFilteredContentDrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+var
+  Grid: TDBGrid absolute Sender;
+  CurrentID: String;
+  IsFound: Boolean;
+  txt : String;
+  I : Integer;
+begin
+
+  // Get current record's ID (ensure your dataset has an 'id' field)
+  CurrentID := Grid.DataSource.DataSet.FieldByName('id').AsString;
+  IsFound := FindedContentIds.IndexOf(CurrentID) <> -1;
+
+  // Preserve selection highlighting (critical for UX)
+  if gdSelected in State then
+  begin
+
+    Grid.Canvas.Brush.Color := clHighlight;
+    Grid.Canvas.Font.Color := clHighlightText;
+  end
+  else if IsFound then
+  begin
+    // Custom highlight for found records (non-selected)
+
+    Grid.Canvas.Brush.Color := clBlack;   // Background
+    Grid.Canvas.Font.Color := clred;      // Text contrast
+  end
+  else
+  begin
+    // Default colors for non-matching rows
+    Grid.Canvas.Brush.Color := clWindow;
+    Grid.Canvas.Font.Color := clWindowText;
+  end;
+
+  // Draw the cell with our custom colors
+  Grid.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+end;
+
+procedure TForm1.dblFilterCategoryCloseUp(Sender: TObject);
+begin
+  Form1.ApplyContentFilter();
 end;
 
 procedure TForm1.dbmBodyPagesTemplateEnter(Sender: TObject);
@@ -2464,23 +2881,21 @@ end;
 
 procedure TForm1.dbmTemplateOfItemEnter(Sender: TObject);
 begin
-  LastFocusedControl :=  dbmTemplateOfItem;
+  LastFocusedControl := dbmTemplateOfItem;
 end;
 
-procedure TForm1.dbNav_AttachmentsClick(Sender: TObject;
-  Button: TDBNavButtonType);
+procedure TForm1.dbNav_AttachmentsClick(Sender: TObject; Button: TDBNavButtonType);
 begin
-    if (Button = nbNext) or (Button = nbNext) or (Button = nbRefresh) then
-        displayAttachmentStatus();
+  if (Button = nbNext) or (Button = nbNext) or (Button = nbRefresh) then
+    displayAttachmentStatus();
 end;
 
-procedure TForm1.dbNav_ImagesBeforeAction(Sender: TObject;
-  Button: TDBNavButtonType);
+procedure TForm1.dbNav_ImagesBeforeAction(Sender: TObject; Button: TDBNavButtonType);
 begin
-  if (Button = nbRefresh) or (Button=nbDelete) then
+  if (Button = nbRefresh) or (Button = nbDelete) then
   begin
-   sqlGetAllImages.ApplyUpdates();
-   trans.CommitRetaining;
+    sqlGetAllImages.ApplyUpdates();
+    trans.CommitRetaining;
   end;
 end;
 
@@ -2493,74 +2908,98 @@ end;
 
 procedure TForm1.dbNav_ContentBeforeAction(Sender: TObject; Button: TDBNavButtonType);
 begin
-    if (Button = nbRefresh) or (Button=nbDelete) then
+  if (Button = nbRefresh) or (Button = nbDelete) then
   begin
-   sqlContent.ApplyUpdates();
-   trans.CommitRetaining;
+    sqlContent.ApplyUpdates();
+    trans.CommitRetaining;
   end;
 end;
 
-procedure TForm1.dbNav_BlocksBeforeAction(Sender: TObject;
-  Button: TDBNavButtonType);
+procedure TForm1.dbNav_BlocksBeforeAction(Sender: TObject; Button: TDBNavButtonType);
 begin
-   if (Button = nbRefresh) or (Button=nbDelete) then
+  if (Button = nbRefresh) or (Button = nbDelete) then
   begin
-   sqlBlocks.ApplyUpdates();
-   trans.CommitRetaining;
+    sqlBlocks.ApplyUpdates();
+    trans.CommitRetaining;
   end;
 end;
 
-procedure TForm1.dbNav_CssBeforeAction(Sender: TObject; Button: TDBNavButtonType
-  );
+procedure TForm1.dbNav_CssBeforeAction(Sender: TObject; Button: TDBNavButtonType);
 begin
-   if (Button = nbRefresh) or (Button=nbDelete) then
+  if (Button = nbRefresh) or (Button = nbDelete) then
   begin
-   sqlCssStyles.ApplyUpdates();
-   trans.CommitRetaining;
+    sqlCssStyles.ApplyUpdates();
+    trans.CommitRetaining;
   end;
 end;
 
-procedure TForm1.dbNav_PresetsBeforeAction(Sender: TObject;
-  Button: TDBNavButtonType);
+procedure TForm1.dbNav_PresetsBeforeAction(Sender: TObject; Button: TDBNavButtonType);
 begin
-     if (Button = nbRefresh) or (Button=nbDelete) then
+  if (Button = nbRefresh) or (Button = nbDelete) then
   begin
-   sqlPresets.ApplyUpdates();
-   trans.CommitRetaining;
+    sqlPresets.ApplyUpdates();
+    trans.CommitRetaining;
   end;
 end;
 
-procedure TForm1.dbNav_SectionsBeforeAction(Sender: TObject;
-  Button: TDBNavButtonType);
+procedure TForm1.dbNav_SectionsBeforeAction(Sender: TObject; Button: TDBNavButtonType);
 begin
-    if (Button = nbRefresh) or (Button=nbDelete) then
+  if (Button = nbRefresh) or (Button = nbDelete) then
   begin
-   sqlSections.ApplyUpdates();
-   trans.CommitRetaining;
+    sqlSections.ApplyUpdates();
+    trans.CommitRetaining;
   end;
 end;
+
+procedure TForm1.edFieldValueChange(Sender: TObject);
+begin
+  Form1.ApplyContentFilter();
+end;
+
+procedure TForm1.fContentChange(Sender: TObject);
+var
+  currentWord: string;
+  foundWord: boolean;
+begin
+  currentDbMemo := fContent;
+
+  if pos('<img ', fContent.Text) = 0 then
+  IpHtmlPanel1.SetHtmlFromStr(fContent.Text);
+
+  bindAutocomplete(lbAutocomplete, fContent, currentWord,
+    foundWord);
+
+  //form1.Caption := currentWord;
+
+end;
+
 
 procedure TForm1.fContentEnter(Sender: TObject);
 begin
   LastFocusedControl := fContent;
 end;
 
-procedure TForm1.FormDropFiles(Sender: TObject; const FileNames: array of string
-  );
+procedure TForm1.FormDropFiles(Sender: TObject; const FileNames: array of string);
 var
-  fileContent : TStringList;
-  addedText : String;
-  index  : Integer;
+  fileContent: TStringList;
+  addedText: string;
+  index: integer;
 begin
   addedText := '';
   fileContent := TStringList.Create();
-  for index:=Low(FileNames) to High(FileNames) do begin
-               fileContent.Clear;
-               fileContent.LoadFromFile(FileNames[index]);
-               addedText := addedText + fileContent.Text;
+  for index := Low(FileNames) to High(FileNames) do
+  begin
+    fileContent.Clear;
+    fileContent.LoadFromFile(FileNames[index]);
+    addedText := addedText + fileContent.Text;
   end;
-  if LastFocusedControl <> NIL then
-     (LastFocusedControl as tdbmemo).Text:=addedText;
+  if LastFocusedControl <> nil then
+    (LastFocusedControl as tdbmemo).Text := addedText;
+end;
+
+procedure TForm1.lbAutoCompleteClick(Sender: TObject);
+begin
+  bindChange(lbAutoComplete, currentDbMemo);
 end;
 
 
@@ -2582,15 +3021,43 @@ end;
 
 procedure TForm1.lvBlocksClick(Sender: TObject);
 begin
-    listViewClickHelper(lvBlocks, sqlBlocks, 'id');
+  listViewClickHelper(lvBlocks, sqlBlocks, 'id');
 end;
 
-procedure TForm1.lvContentClick(Sender: TObject);
+
+
+procedure TForm1.lvContentCustomDrawItem(Sender: TCustomListView;
+  Item: TListItem; State: TCustomDrawState; var DefaultDraw: Boolean);
+var
+  r: TRect;
+  i : Integer;
+  isFinded : Boolean;
+  data : String;
 begin
-  listViewClickHelper(lvContent, sqlContent, 'id');
-  showTagsOnPage(sqlContent.FieldByName('id').AsString);
+  // DefaultDraw := False;  // Disable default drawing
 
 
+
+  // Get the rectangle area for the item's label
+  r := Item.DisplayRect(drLabel);
+
+  // Fill the background
+  Sender.Canvas.Brush.Color := clWindow; // or any custom color
+   data := '';
+   isFinded := FindedContentState.TryGetData(Item.Caption, data);
+  // Set the font color depending on Caption or state
+   if  data = 'highlight' then
+             Sender.Canvas.Brush.Color := clRed;
+
+  Sender.Canvas.FillRect(r);
+
+
+  // Optionally set other font styles
+  Sender.Canvas.Font.Style := [];
+  Sender.Canvas.Font.Size:=12;
+
+  // Draw the item caption text at the top-left corner of the label area
+  Sender.Canvas.TextOut(r.Left, r.Top, Item.Caption);
 end;
 
 procedure TForm1.lvCSSClick(Sender: TObject);
@@ -2604,7 +3071,6 @@ begin
 end;
 
 procedure TForm1.lvJsScriptsClick(Sender: TObject);
-
 begin
   listViewClickHelper(lvJsScripts, sqlJsScripts, 'js_id');
 end;
@@ -2641,18 +3107,18 @@ procedure TForm1.redrawLvMenuItems;
 begin
   lvMenuItems.Clear;
   sqlMenuItem.First;
-  while not sqlMenuItem.Eof do
-         begin
-           lvMenuItems.AddItem(sqlMenuItem.FieldByName('menu_item_id').AsString, nil);
-           sqlMenuItem.Next;
-         end;
+  while not sqlMenuItem.EOF do
+  begin
+    lvMenuItems.AddItem(sqlMenuItem.FieldByName('menu_item_id').AsString, nil);
+    sqlMenuItem.Next;
+  end;
   sqlMenuItem.First;
 end;
 
 procedure TForm1.refreshTrees;
 begin
-     refreshSectionTree;
-     refreshContentTree;
+  refreshSectionTree;
+  refreshContentTree;
 end;
 
 
@@ -2660,29 +3126,30 @@ end;
 
 procedure TForm1.refreshContentTree;
 var
-  Branch : TStringList; k : Integer;
-  Node, rootNode, parentNode, childNode   : TTreeNode;
-  tree : String; // '/x/y/z';
+  Branch: TStringList;
+  k: integer;
+  Node, rootNode, parentNode, childNode: TTreeNode;
+  tree: string; // '/x/y/z';
 
-  RootId : String;
+  RootId: string;
 begin
   tvContent.Items.Clear;
 
   sqlSections.First;
   while not sqlSections.EOF do
+  begin
+    tree := sqlSections.FieldByName('tree').AsString;
+    if (tree = '') or (tree = '/') then
     begin
-      tree:=sqlSections.FieldByName('tree').AsString;
-      if (tree='') or (tree='/') then
-        begin
-           RootId:=sqlSections.FieldByName('id').AsString;
-           tvContent.Items.Add(nil, RootId );
-           RootNode:=tvContent.Items.FindNodeWithText(RootId);
-           RootNode.ImageIndex:=0;
-           insertArticlesToNode(RootNode, RootId);
-           break;
-        end;
-      sqlSections.Next;
+      RootId := sqlSections.FieldByName('id').AsString;
+      tvContent.Items.Add(nil, RootId);
+      RootNode := tvContent.Items.FindNodeWithText(RootId);
+      RootNode.ImageIndex := 0;
+      insertArticlesToNode(RootNode, RootId);
+      break;
     end;
+    sqlSections.Next;
+  end;
 
 
 
@@ -2693,71 +3160,69 @@ begin
 
   sqlSections.First;
   while not sqlSections.EOF do
+  begin
+    tree := sqlSections.FieldByName('tree').AsString;
+    Branch := TStringList.Create;
+    Branch.Delimiter := '/';
+    Branch.DelimitedText := tree;
+
+
+    node := nil;
+    for k := 0 to Branch.Count - 1 do
     begin
-      tree:=sqlSections.FieldByName('tree').AsString;
-      Branch:=TStringList.Create;
-      Branch.Delimiter:='/';
-      Branch.DelimitedText:=tree;
 
+      if (Branch[k] = '') or (Branch[k] = RootId) then continue; // skip empty
 
-       node:=nil;
-      for k:=0 to Branch.Count-1 do
-          begin
-
-            if (Branch[k] = '') or (Branch[k] = RootId) then continue; // skip empty
-
-            RootNode:=tvContent.Items.FindNodeWithText(RootId);
-            Node:=tvContent.Items.FindNodeWithText(Branch[k]);
-            if (Node=NIL) and (k=1)   then
-              begin
-               Node:=tvContent.Items.AddChild(RootNode, Branch[k]);
-               Node.ImageIndex:=0;
-               insertArticlesToNode(Node, Branch[k]);
-              end;
-            if (k>1)   then
-                begin
-                  parentNode:=tvContent.Items.FindNodeWithText(Branch[k-1]);
-                  Node:=tvContent.Items.FindNodeWithText(Branch[k]);
-                  if (parentNode<>NIL) and (Node = NIL) then
-                     childNode:=tvContent.Items.AddChild(parentNode, Branch[k]);
-                     childNode.ImageIndex:=0;
-                     insertArticlesToNode(childNode, Branch[k]);
-                end;
-
-
-
-
-          end;
-      Branch.Free;
-      sqlSections.Next;
+      RootNode := tvContent.Items.FindNodeWithText(RootId);
+      Node := tvContent.Items.FindNodeWithText(Branch[k]);
+      if (Node = nil) and (k = 1) then
+      begin
+        Node := tvContent.Items.AddChild(RootNode, Branch[k]);
+        Node.ImageIndex := 0;
+        insertArticlesToNode(Node, Branch[k]);
+      end;
+      if (k > 1) then
+      begin
+        parentNode := tvContent.Items.FindNodeWithText(Branch[k - 1]);
+        Node := tvContent.Items.FindNodeWithText(Branch[k]);
+        if (parentNode <> nil) and (Node = nil) then
+          childNode := tvContent.Items.AddChild(parentNode, Branch[k]);
+        childNode.ImageIndex := 0;
+        insertArticlesToNode(childNode, Branch[k]);
+      end;
 
     end;
+    Branch.Free;
+    sqlSections.Next;
+
+  end;
   sqlSections.First;
 
 end;
 
 procedure TForm1.refreshSectionTree;
- var
-  Branch : TStringList; k : Integer;
-  Node, rootNode, parentNode    : TTreeNode;
-  tree : String; // '/x/y/z';
+var
+  Branch: TStringList;
+  k: integer;
+  Node, rootNode, parentNode: TTreeNode;
+  tree: string; // '/x/y/z';
 
-  RootId : String;
+  RootId: string;
 begin
   tvSections.Items.Clear;
 
   sqlSections.First;
   while not sqlSections.EOF do
+  begin
+    tree := sqlSections.FieldByName('tree').AsString;
+    if (tree = '') or (tree = '/') then
     begin
-      tree:=sqlSections.FieldByName('tree').AsString;
-      if (tree='') or (tree='/') then
-        begin
-           RootId:=sqlSections.FieldByName('id').AsString;
-           tvSections.Items.Add(nil, RootId );
-           break;
-        end;
-      sqlSections.Next;
+      RootId := sqlSections.FieldByName('id').AsString;
+      tvSections.Items.Add(nil, RootId);
+      break;
     end;
+    sqlSections.Next;
+  end;
 
 
 
@@ -2768,67 +3233,51 @@ begin
 
   sqlSections.First;
   while not sqlSections.EOF do
+  begin
+    tree := sqlSections.FieldByName('tree').AsString;
+    Branch := TStringList.Create;
+    Branch.Delimiter := '/';
+    Branch.DelimitedText := tree;
+
+
+    node := nil;
+    for k := 0 to Branch.Count - 1 do
     begin
-      tree:=sqlSections.FieldByName('tree').AsString;
-      Branch:=TStringList.Create;
-      Branch.Delimiter:='/';
-      Branch.DelimitedText:=tree;
 
+      if (Branch[k] = '') or (Branch[k] = RootId) then continue; // skip empty
 
-       node:=nil;
-      for k:=0 to Branch.Count-1 do
-          begin
+      RootNode := tvSections.Items.FindNodeWithText(RootId);
+      Node := tvSections.Items.FindNodeWithText(Branch[k]);
+      if (Node = nil) and (k = 1) then
+        Node := tvSections.Items.AddChild(RootNode, Branch[k]);
 
-            if (Branch[k] = '') or (Branch[k] = RootId) then continue; // skip empty
+      if (k > 1) then
+      begin
+        parentNode := tvSections.Items.FindNodeWithText(Branch[k - 1]);
+        Node := tvSections.Items.FindNodeWithText(Branch[k]);
+        if (parentNode <> nil) and (Node = nil) then
+          tvSections.Items.AddChild(parentNode, Branch[k]);
 
-            RootNode:=tvSections.Items.FindNodeWithText(RootId);
-            Node:=tvSections.Items.FindNodeWithText(Branch[k]);
-            if (Node=NIL) and (k=1)   then
-               Node:=tvSections.Items.AddChild(RootNode, Branch[k]);
-
-            if (k>1)   then
-                begin
-                  parentNode:=tvSections.Items.FindNodeWithText(Branch[k-1]);
-                  Node:=tvSections.Items.FindNodeWithText(Branch[k]);
-                  if (parentNode<>NIL) and (Node = NIL) then
-                     tvSections.Items.AddChild(parentNode, Branch[k]);
-
-                end;
-
-
-
-
-          end;
-      Branch.Free;
-      sqlSections.Next;
+      end;
 
     end;
+    Branch.Free;
+    sqlSections.Next;
+
+  end;
   sqlSections.First;
 
 end;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 
 procedure TForm1.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
+
+  if form1.usedOfLocalWebServer then
+     form1.myWebServer.Terminate;
+
   form1.SaveSpecialSettings('special_settings.dat');
 
   Tags.Free;
@@ -2836,15 +3285,28 @@ begin
   Images.Free;
 
   try
-  form1.makeSqlInactive();
+    form1.makeSqlInactive();
   except
-   //showMessage('Проблема при сохранении');
+    //showMessage('Проблема при сохранении');
   end;
 
-  if ListenerSocket <> nil then ListenerSocket.Free;
-  if ConnectionSocket <> nil then  ConnectionSocket.Free;
+
 
   SelectionHistoryManager.Free;
+
+
+  AutoSave();
+
+
+  conn.Close();
+
+  AppCache.Free;
+
+  FindedContentIds.Free;
+
+  FindedContentState.Free;
+
+  pals.Free;
 
 end;
 
@@ -2878,87 +3340,98 @@ end;
 
 {{ ============================== ОПОРНЫЕ ЧАСТИ ДВИЖКА - СБОРКА ТЕЛА СТРАНИЦЫ =============================== }}
 function TForm1.buildBody(title: string; body: string; bodyTemplate: string): string;
-var r : String; s, s2 : string;
+var
+  r: string;
+  s, s2: string;
 begin
- r:=bodyTemplate;
- r:=applyVar(r, 'title', title);
- r:=applyVar(r, 'content', body);
- s:=sqlContent.FieldByName('section').AsString;
- r:=applyVar(r, 'section', s);
- sqlSections.First;
- while not sqlSections.EOF do
-       begin
-            s2:=sqlSections.FieldByName('id').AsString;
-            if s2=s then
-               begin
-                 r:=applyVar(r, 'sectionName', sqlSections.FieldByName('section').AsString);
-                 break;
-               end;
-               sqlSections.Next;
-               Application.ProcessMessages;
-       end;
- r:=applyVar(r, 'sitename', sqlPresets.FieldByName('sitename').AsString);
- r:=applyVar(r, 'ext', PrefferedExtension.Text);
- Result:=R;
+  r := bodyTemplate;
+  r := applyVar(r, 'title', title);
+  r := applyVar(r, 'content', body);
+  s := sqlContent.FieldByName('section').AsString;
+  r := applyVar(r, 'section', s);
+  sqlSections.First;
+  while not sqlSections.EOF do
+  begin
+    s2 := sqlSections.FieldByName('id').AsString;
+    if s2 = s then
+    begin
+      r := applyVar(r, 'sectionName',
+        sqlSections.FieldByName('section').AsString);
+      break;
+    end;
+    sqlSections.Next;
+    Application.ProcessMessages;
+  end;
+  r := applyVar(r, 'sitename', sqlPresets.FieldByName('sitename').AsString);
+  r := applyVar(r, 'ext', PrefferedExtension.Text);
+  Result := R;
 end;
 
 
 {{ ============================== ОПОРНЫЕ ЧАСТИ ДВИЖКА - ПРИМЕНЕНИЕ ГЛОБАЛЬНЫХ БЛОКОВ =============================== }}
 function TForm1.useBlocks(part: string): string;
-var r : String; i, j : Integer; h, t : String;  fbuffer : TStringList;  blockFiles : TStringList;
-   log : TStringList;
-   key, value : String;
-   block_index : integer;
+var
+  r: string;
+  i, j: integer;
+  h, t: string;
+  fbuffer: TStringList;
+  blockFiles: TStringList;
+  log: TStringList;
+  key, Value: string;
+  block_index: integer;
 begin
   r := part;
   log := TStringList.Create;
   if not chkGetBlocksFromFile.Checked then // use database
   begin
-  if logger_info then  mmRubrics.Lines.Add('USE BLOCKS FROM ram');
-  if logger_info then  mmRubrics.Lines.Add('Глобальных блоков '+IntToStr(blocks.Count));
-  for block_index:=0 to blocks.Count - 1 do
-                     begin
+    if logger_info then  mmRubrics.Lines.Add('USE BLOCKS FROM ram');
+    if logger_info then  mmRubrics.Lines.Add('Глобальных блоков ' +
+        IntToStr(blocks.Count));
+    for block_index := 0 to blocks.Count - 1 do
+    begin
 
-                       key:=Blocks.Names[block_index];
-                       value:=Blocks.ValueFromIndex[block_index];
-                       //showMessage('key '+key);
-                       //showMessage('value = '+value);
+      key := Blocks.Names[block_index];
+      Value := Blocks.ValueFromIndex[block_index];
+      //showMessage('key '+key);
+      //showMessage('value = '+value);
 
-        h := '{'+key+'}';
-        t :=  value;
-        r:=StringReplace(r, h, t, [rfReplaceAll]);
-        if logger_info then  mmRubrics.Lines.Add('replace '+h+' ==>> to '+t);
-        Application.ProcessMessages;
- end;
+      h := '{' + key + '}';
+      t := Value;
+      r := StringReplace(r, h, t, [rfReplaceAll]);
+      if logger_info then  mmRubrics.Lines.Add('replace ' + h + ' ==>> to ' + t);
+      Application.ProcessMessages;
+    end;
 
   end
-  else begin
+  else
+  begin
     if logger_info then  mmRubrics.Lines.Add('USE BLOCKS FROM FILES');
-    fbuffer:=TStringList.Create;
-    blockFiles := FindAllFiles(GetCurrentDir()+DELIM+'blocks'+DELIM, '*.blk', false); // получили список блоков
+    fbuffer := TStringList.Create;
+    blockFiles := FindAllFiles(GetCurrentDir() + DELIM + 'blocks' + DELIM, '*.blk', False);
+    // получили список блоков
     // первая строка - id блока
     // остальные HTML разметка
-    for i:=0 to blockFiles.Count-1 do
-        begin
-          fbuffer.LoadFromFile( blockFiles[i] ); // already have abs paths
-          h:=fbuffer.Strings[0];
-          t:='';
-          for j:=1 to fbuffer.Count-1 do
-              begin
-                t:=t+fbuffer.Strings[j];
-              end;
-          r:=StringReplace(r, '{'+h+'}', t, [rfReplaceAll]);
+    for i := 0 to blockFiles.Count - 1 do
+    begin
+      fbuffer.LoadFromFile(blockFiles[i]); // already have abs paths
+      h := fbuffer.Strings[0];
+      t := '';
+      for j := 1 to fbuffer.Count - 1 do
+      begin
+        t := t + fbuffer.Strings[j];
+      end;
+      r := StringReplace(r, '{' + h + '}', t, [rfReplaceAll]);
 
-          
-  if logger_info then  mmRubrics.Lines.Add('replace {'+h+'+} to '+t);
 
-          log.Add('Replace in '+r+'{'+h+'} on '+t);
-          log.Add('===== Result is ====');
-          log.Add(r);
-          log.Add('======/Result======');
+      if logger_info then  mmRubrics.Lines.Add('replace {' + h + '+} to ' + t);
 
-           Application.ProcessMessages;
-        end;
+      log.Add('Replace in ' + r + '{' + h + '} on ' + t);
+      log.Add('===== Result is ====');
+      log.Add(r);
+      log.Add('======/Result======');
+
+      Application.ProcessMessages;
+    end;
     fbuffer.Free;
     log.SaveToFile('log.txt');
     log.Free;
@@ -2966,189 +3439,240 @@ begin
 
   if logger_info then
   begin
-     form1.mmRubrics.Lines.add('ОБРАБОТКА ГЛОБ. БЛОКОВ до');
-     form1.mmRubrics.Lines.add(part);
-     form1.mmRubrics.Lines.add('ОБРАБОТКА ГЛОБ. БЛОКОВ после');
-     form1.mmRubrics.Lines.Add(r);
-     if part = r then
-             form1.mmRubrics.Lines.Add('!!! ЗАМЕНА НЕ ВЫПОЛНЕНА !!!');
+    form1.mmRubrics.Lines.add('ОБРАБОТКА ГЛОБ. БЛОКОВ до');
+    form1.mmRubrics.Lines.add(part);
+    form1.mmRubrics.Lines.add('ОБРАБОТКА ГЛОБ. БЛОКОВ после');
+    form1.mmRubrics.Lines.Add(r);
+    if part = r then
+      form1.mmRubrics.Lines.Add('!!! ЗАМЕНА НЕ ВЫПОЛНЕНА !!!');
   end;
 
-  Result:=r;
+  Result := r;
+end;
+
+function TForm1.useReplFunc(part: string): string;
+var
+  rfc: TReplFuncCaller;
+begin
+  rfc := TReplFuncCaller.Create();
+  part := rfc.ReplaceDateFuncCall(part);
+  part := rfc.ReplaceTimeFuncCall(part);
+  Result := part;
+end;
+
+function TForm1.useRepeater(t: String): String;
+begin
+  result := ProcessRepeatExpression(t);
 end;
 
 procedure TForm1.scanLinks;
 var
-   i : integer;
-   sql_GetLinks : TSQLQuery;
+  i: integer;
+  sql_GetLinks: TSQLQuery;
 begin
-   sql_GetLinks:=TSQLQuery.Create(Self);
-   sql_GetLinks.SQLConnection:=conn;
-   sql_GetLinks.Transaction:=trans;
-   sql_GetLinks.SQL.Text:='select content.* , section.tree from content left join section on content.section = section.id';
-   sql_GetLinks.ExecSQL;
-   sql_GetLinks.Active:=true;
+  sql_GetLinks := TSQLQuery.Create(Self);
+  sql_GetLinks.SQLConnection := conn;
+  sql_GetLinks.Transaction := trans;
+  sql_GetLinks.SQL.Text :=
+    'select content.* , section.tree from content left join section on content.section = section.id';
+  sql_GetLinks.ExecSQL;
+  sql_GetLinks.Active := True;
 
-  form1.dbNav_Content.Enabled:=false;
+  form1.dbNav_Content.Enabled := False;
 
   Titles.Clear;      // Titles is a list of pages captions
   Urls.Clear;        // Urls is a list of urls for pages
   Sections.Clear;
-  lvContent.clear;
+
   PagesTree.Clear;
 
-  if not sql_GetLinks.Eof then  begin
-  sql_GetLinks.First;  // lookup from first record
-  while not sql_GetLinks.EOF do
+  if not sql_GetLinks.EOF then
   begin
-    // add to list so each index is same item
-    Titles.Lines.Add(sql_GetLinks.FieldByName('caption').AsString);
-    Urls.Lines.Add(sql_GetLinks.FieldByName('id').AsString);
-    Sections.Lines.Add(sql_GetLinks.FieldByName('section').AsString);
-    PagesTree.Add(sql_GetLinks.FieldByName('id').AsString, sql_GetLinks.FieldByName('tree').AsString);
-    sql_GetLinks.Next;  // see next page
-    Application.ProcessMessages;
+    sql_GetLinks.First;  // lookup from first record
+    while not sql_GetLinks.EOF do
+    begin
+      // add to list so each index is same item
+      Titles.Lines.Add(sql_GetLinks.FieldByName('caption').AsString);
+      Urls.Lines.Add(sql_GetLinks.FieldByName('id').AsString);
+      Sections.Lines.Add(sql_GetLinks.FieldByName('section').AsString);
+      PagesTree.Add(sql_GetLinks.FieldByName('id').AsString,
+        sql_GetLinks.FieldByName('tree').AsString);
+      sql_GetLinks.Next;  // see next page
+      Application.ProcessMessages;
+    end;
+    sql_GetLinks.Free;  // set cursor to first
+
+    {
+    for i := 0 to Urls.Lines.Count - 1 do
+    begin
+      lvContent.AddItem(Urls.Lines.Strings[i], nil);
+    end;
+     }
   end;
-  sql_GetLinks.Free;  // set cursor to first
-
-
-  for i:=0 to Urls.Lines.Count-1 do
-      begin
-        lvContent.AddItem( Urls.Lines.Strings[i] , nil);
-      end;
-
-  end;
-  form1.dbNav_Content.Enabled:=true;
+  form1.dbNav_Content.Enabled := True;
 end;
 
 procedure TForm1.scanSections;
-var i : integer;
+var
+  i: integer;
 begin
   // identically as scanLinks
   SiteSectionTree.Clear;
   SiteSectionUrls.Clear;
   SiteSectionTitles.Clear;
-  lvSections.clear;
+  lvSections.Clear;
 
-  if not sqlSections.EOF then begin
-
-  sqlSections.First;
-  while not sqlSections.EOF do
+  if not sqlSections.EOF then
   begin
-    SiteSectionTitles.Lines.Add(sqlSections.FieldByName('section').AsString);
-    SiteSectionUrls.Lines.Add(sqlSections.FieldByName('id').AsString);
-    SiteSectionTree.Add(sqlSections.FieldByName('id').AsString, sqlSections.FieldByName('tree').AsString );
-    sqlSections.Next;
-    Application.ProcessMessages;
-  end;
-  sqlSections.First;
+
+    sqlSections.First;
+    while not sqlSections.EOF do
+    begin
+      SiteSectionTitles.Lines.Add(sqlSections.FieldByName('section').AsString);
+      SiteSectionUrls.Lines.Add(sqlSections.FieldByName('id').AsString);
+      SiteSectionTree.Add(sqlSections.FieldByName('id').AsString,
+        sqlSections.FieldByName('tree').AsString);
+      sqlSections.Next;
+      Application.ProcessMessages;
+    end;
+    sqlSections.First;
 
 
 
-  for i:=0 to SiteSectionUrls.Lines.Count-1 do
-      begin
-        lvSections.AddItem( SiteSectionUrls.Lines.Strings[i] , nil);
-        application.ProcessMessages;
-      end;
+    for i := 0 to SiteSectionUrls.Lines.Count - 1 do
+    begin
+      lvSections.AddItem(SiteSectionUrls.Lines.Strings[i], nil);
+      application.ProcessMessages;
+    end;
 
-  if logger_info then mmRubrics.Lines.Add('Заголовков страниц<scanSections>:'+IntToStr(SiteSectionTitles.Lines.Count));
-  if logger_info then mmRubrics.Lines.Add('URL страниц<scanSections>:'+IntToStr(SiteSectionUrls.Lines.Count));
+    if logger_info then mmRubrics.Lines.Add(
+        'Заголовков страниц<scanSections>:' + IntToStr(
+        SiteSectionTitles.Lines.Count));
+    if logger_info then mmRubrics.Lines.Add('URL страниц<scanSections>:' +
+        IntToStr(SiteSectionUrls.Lines.Count));
   end;
 end;
 
 procedure TForm1.scanCss;
-var i : integer;
+var
+  i: integer;
 begin
   // identically as scanLinks
-  CssTitles.clear;
-  lvCss.clear;
-  if not sqlCssStyles.eof then
-    begin
-
-  sqlCssStyles.First;
-  while not  sqlCssStyles.EOF do
+  CssTitles.Clear;
+  lvCss.Clear;
+  if not sqlCssStyles.EOF then
   begin
-    CssTitles.AddPair(sqlCssStyles.FieldByName('css_id').AsString, '');
+
+    sqlCssStyles.First;
+    while not sqlCssStyles.EOF do
+    begin
+      CssTitles.AddPair(sqlCssStyles.FieldByName('css_id').AsString, '');
 
       sqlCssStyles.Next;
-    Application.ProcessMessages;
-  end;
-   sqlCssStyles.First;
-
-
-
-  for i:=0 to CssTitles.Count-1 do
-      begin
-        lvCss.AddItem( CssTitles.Names[i] , nil);
-        application.ProcessMessages;
-      end;
-
-
-  if logger_info then mmRubrics.Lines.Add('URL страниц CSS<scanCss>:'+IntToStr(CssTitles.Count));
+      Application.ProcessMessages;
     end;
+    sqlCssStyles.First;
+
+
+
+    for i := 0 to CssTitles.Count - 1 do
+    begin
+      lvCss.AddItem(CssTitles.Names[i], nil);
+      application.ProcessMessages;
+    end;
+
+
+    if logger_info then mmRubrics.Lines.Add('URL страниц CSS<scanCss>:' +
+        IntToStr(CssTitles.Count));
+  end;
 end;
 
 procedure TForm1.scanTagsPages;
-var r : Tag_Page_Link;   i : Integer;
+var
+  r: Tag_Page_Link;
+  i: integer;
 begin
   sqlTagsPages.First;
   while not sqlTagsPages.EOF do
-    begin
-      r.id_tag_page:=sqlTagsPages.FieldByName('id_tag_page').AsString;
+  begin
+    r.id_tag_page := sqlTagsPages.FieldByName('id_tag_page').AsString;
 
-      r.id_tag:=sqlTagsPages.FieldByName('id_tag').AsString;
-      r.id_page:=sqlTagsPages.FieldByName('id_page').AsString;
+    r.id_tag := sqlTagsPages.FieldByName('id_tag').AsString;
+    r.id_page := sqlTagsPages.FieldByName('id_page').AsString;
 
-      r.tree:=getTreeByPageId(r.id_page, conn, trans);
+    r.tree := getTreeByPageId(r.id_page, conn, trans);
 
-      mTagsPages.Add(r.id_tag_page, r);
-      sqlTagsPages.Next;
+    mTagsPages.Add(r.id_tag_page, r);
+    sqlTagsPages.Next;
 
-    end;
+  end;
   sqlTagsPages.First;
 
   // to ui
 
-  for i:=0 to mTagsPages.Count-1 do
-      begin
-        lvTagsPages.AddItem( mTagsPages.Keys[i], nil);
-      end;
+  for i := 0 to mTagsPages.Count - 1 do
+  begin
+    lvTagsPages.AddItem(mTagsPages.Keys[i], nil);
+  end;
 
 end;
 
 procedure TForm1.scanAttachments;
-var ar : TAttachmentRecord;
+var
+  ar: TAttachmentRecord;
 begin
-     Attachments.Clear;
-     lvAttachments.Clear;
+  Attachments.Clear;
+  lvAttachments.Clear;
 
-   sqlGetAllAttachments.First;
+  sqlGetAllAttachments.First;
   while not sqlGetAllAttachments.EOF do
-    begin
+  begin
 
-      ar.attachment_id :=sqlGetAllAttachments.FieldByName('attachment_id').AsString;
-      
-      ar.attachment_caption:=sqlGetAllAttachments.FieldByName('attachment_caption').AsString;
+    ar.attachment_id := sqlGetAllAttachments.FieldByName('attachment_id').AsString;
 
-      Attachments.AddOrSetData(ar.attachment_id, ar.attachment_caption);
+    ar.attachment_caption := sqlGetAllAttachments.FieldByName(
+      'attachment_caption').AsString;
 
-      lvAttachments.AddItem(ar.attachment_id, nil);
+    Attachments.AddOrSetData(ar.attachment_id, ar.attachment_caption);
 
-      sqlGetAllAttachments.Next;
+    lvAttachments.AddItem(ar.attachment_id, nil);
 
-    end;
+    sqlGetAllAttachments.Next;
+
+  end;
   sqlGetAllAttachments.First;
   sqlGetAllAttachments.ApplyUpdates();
   sqlGetAllAttachments.Refresh;
 end;
 
+function TForm1.usePalettes(html: string): string;
+var
+  i : Integer;
+  code_color : String;
+  rgb_value : String;
+  res : String;
+begin
+  res := html;
+  for i := 0 to pals.Count - 1 do
+      begin
+              code_color := pals.Keys[i];
+              rgb_value := pals.KeyData[code_color];
+              res := StringReplace(res, '_' + code_color+'_',  rgb_value ,[rfReplaceAll]);
+      end;
+
+  // if Res <> html then
+  //   showmessage( 'Замена ' +res+' на '+html  );
+
+  Result := Res;
+end;
 
 
+{ inserts referencies to pages by their ids}
 function TForm1.insLinks(body: string): string;
 var
   r: string;
   i: integer;
-  url, base_url, link : String;
+  url, base_url, link: string;
 begin
   // in body tag all existing shorttags
   // [linkname] replaced to <a href="linkurl">title</a>
@@ -3156,27 +3680,26 @@ begin
   i := 0;
   while i < Urls.Lines.Count do
   begin
-    base_url:='';
+    base_url := '';
     if chkUseTrees.Checked then
-      base_url:=PagesTree[ Urls.Lines[i] ];
+      base_url := PagesTree[Urls.Lines[i]];
 
 
 
-    link:='<a href="{base_url}/' + Urls.Lines[i] + '.' +
+    link := '<a href="{base_url}/' + Urls.Lines[i] + '.' +
       PrefferedExtension.Text + '">' + Titles.Lines[i] + '</a>';
 
-    link:=ApplyVar(link, 'base_url', base_url);
-
-    r := StringReplace(r, '[' + Urls.Lines[i] + ']',
-      link, [rfReplaceAll]);
+    link := ApplyVar(link, 'base_url', base_url);
+    // correct form is [page_id] For sections use <<section_id>> instead
+    r := StringReplace(r, '[' + Urls.Lines[i] + ']', link, [rfReplaceAll]);
     Inc(i);
     Application.ProcessMessages;
   end;
 
 
   if logger_info then mmRubrics.Lines.Add('ПРОСТАВЛЯЕМ ССЫЛКИ');
-  if logger_info then mmRubrics.Lines.Add('Вызвана<insLinks> до '+body);
-  if logger_info then mmRubrics.Lines.Add('Вызвана<insLinks> после '+r);
+  if logger_info then mmRubrics.Lines.Add('Вызвана<insLinks> до ' + body);
+  if logger_info then mmRubrics.Lines.Add('Вызвана<insLinks> после ' + r);
   Result := r;
 end;
 
@@ -3184,7 +3707,7 @@ function TForm1.insSections(body: string): string;
 var
   r: string;
   i: integer;
-  base_url, url : String;
+  base_url, url: string;
 begin
   //  in body identically as insSections
   //  <<section_url>> will be replaced to <a href="section_url">section_title</a>
@@ -3193,48 +3716,48 @@ begin
   //showMessage(IntToStr(SiteSectionUrls.Lines.Count));
   while i < SiteSectionUrls.Lines.Count do
   begin
-    url:='<a href="{base_url}/section_' + SiteSectionUrls.Lines[i] +
+    url := '<a href="{base_url}/section_' + SiteSectionUrls.Lines[i] +
       '.' + PrefferedExtension.Text + '">' + SiteSectionTitles.Lines[i] + '</a>';
-    base_url:='';
+    base_url := '';
     if chkUseTrees.Checked then
-       base_url:=SiteSectionTree[SiteSectionUrls.Lines[i]];
-    url:=applyVar(url, 'base_url', base_url);
+      base_url := SiteSectionTree[SiteSectionUrls.Lines[i]];
+    url := applyVar(url, 'base_url', base_url);
 
     r := StringReplace(r, '<<' + SiteSectionUrls.Lines[i] + '>>', url, [rfReplaceAll]);
     Inc(i);
     Application.ProcessMessages;
   end;
   if logger_info then mmRubrics.Lines.Add('ПРОСТАВЛЯЕМ СЕКЦИИ');
-  if logger_info then mmRubrics.Lines.Add('Вызвана<insSections> до ' +body);
-  if logger_info then mmRubrics.Lines.Add('Вызвана<insSections> после '+r);
-  if logger_info then if r=body then mmRubrics.Lines.Add('!!! СОВПАДАЮТ' );
+  if logger_info then mmRubrics.Lines.Add('Вызвана<insSections> до ' + body);
+  if logger_info then mmRubrics.Lines.Add('Вызвана<insSections> после ' + r);
+  if logger_info then if r = body then mmRubrics.Lines.Add('!!! СОВПАДАЮТ');
   Result := r;
 end;
 
 procedure TForm1.showTagsOnPage(id: string);
 begin
   sqlGetTagsForPage.Clear;
-  sqlGetTagsForPage.Transaction:=trans;
-  sqlGetTagsForPage.SQLConnection:=conn;
+  sqlGetTagsForPage.Transaction := trans;
+  sqlGetTagsForPage.SQLConnection := conn;
   sqlGetTagsForPage.SQL.LoadFromFile('sql_tags_for_page.txt');
 
 
- prepared_transaction_start(sqlGetTagsForPage.SQL.Text,
-  sqlGetTagsForPage, trans);
+  prepared_transaction_start(sqlGetTagsForPage.SQL.Text,
+    sqlGetTagsForPage, trans);
 
   sqlGetTagsForPage.ParamByName('ID_PAGE').AsString := id;
 
-  prepared_transaction_end( sqlGetTagsForPage, trans);
+  prepared_transaction_end(sqlGetTagsForPage, trans);
 
-  sqlGetTagsForPage.Active:=true;
+  sqlGetTagsForPage.Active := True;
 
   listTags.Clear;
   sqlGetTagsForPage.First;
   while not sqlGetTagsForPage.EOF do
-    begin
-      listTags.AddItem(sqlGetTagsForPage.FieldByName('tag_caption').AsString, nil);
-      sqlGetTagsForPage.Next;
-    end;
+  begin
+    listTags.AddItem(sqlGetTagsForPage.FieldByName('tag_caption').AsString, nil);
+    sqlGetTagsForPage.Next;
+  end;
   sqlGetTagsForPage.First;
 
 end;
@@ -3242,186 +3765,189 @@ end;
 
 
 
-function TForm1.Pager(layout: String; pages: String): String;
+function TForm1.Pager(layout: string; pages: string): string;
 var
-   r : String;
+  r: string;
 begin
-  r:=applyVar(layout, 'pager', pages );
+  r := applyVar(layout, 'pager', pages);
   if logger_info then mmRubrics.Lines.Add('ПРОСТАВЛЯЕМ ПАГИНАТОР');
-  if logger_info then mmRubrics.Lines.Add('Вызвана<insPages> до ' +layout);
-  if logger_info then mmRubrics.Lines.Add('Вызвана<insSections> после '+r);
-  result:=r;
+  if logger_info then mmRubrics.Lines.Add('Вызвана<insPages> до ' + layout);
+  if logger_info then mmRubrics.Lines.Add('Вызвана<insSections> после ' + r);
+  Result := r;
 end;
 
-function TForm1.useMenus(app: String): String;
+function TForm1.useMenus(app: string): string;
 var
-  menu_map : sdict;
-  m : Menu;
-  sql_getMenuItems : TSqlQuery;
-  list_html : String;
-  itemView  : String;
-  itemTitle : String;
-  itemUrl   : String;
-  k : Integer;
-  tree : String;
-  R : String;
-  menuView : String;
-  RenderItem, RenderList : Render;
+  menu_map: sdict;
+  m: Menu;
+  sql_getMenuItems: TSqlQuery;
+  list_html: string;
+  itemView: string;
+  itemTitle: string;
+  itemUrl: string;
+  k: integer;
+  tree: string;
+  R: string;
+  menuView: string;
+  RenderItem, RenderList: Render;
 begin
-
 
   menu_map := sdict.Create;
 
 
-sqlMenu.Refresh;
- sqlMenu.ApplyUpdates;
+  sqlMenu.Refresh;
+  sqlMenu.ApplyUpdates;
 
- sqlMenu.First;
- while not sqlMenu.EOF do
+  sqlMenu.First;
+  while not sqlMenu.EOF do
+  begin
+    m.menu_id := sqlMenu.FieldByName('menu_id').AsString;
+    m.menu_caption := sqlMenu.FieldByName('menu_caption').AsString;
+
+    sql_GetMenuItems := TSqlQuery.Create(nil);
+
+
+    sql_GetMenuItems.Transaction := trans;
+    sql_GetMenuItems.SQLConnection := conn;
+    sql_GetMenuItems.SQL.Clear;
+    sql_GetMenuItems.SQL.Text :=
+      'select * from menu_item WHERE ' + ' menu_item_menu_id = "' + m.menu_id + '"';
+
+    sql_GetMenuItems.Active := True;
+
+    list_html := '';
+    sql_GetMenuItems.First;
+    while not sql_getMenuItems.EOF do
     begin
-       m.menu_id:=sqlMenu.FieldByName('menu_id').AsString;
-       m.menu_caption:=sqlMenu.FieldByName('menu_caption').AsString;
+      itemTitle := sql_GetMenuItems.FieldByName('menu_item_caption').AsString;
+      itemUrl := sql_GetMenuItems.FieldByName('menu_item_link_for').AsString;
+      RenderItem := Render.Create;
+      itemView := sqlMenu.FieldByName('menu_item_tpl').AsString;
+      RenderItem.setTemplate(itemView);
 
-       sql_GetMenuItems:=TSqlQuery.Create(nil);
+      RenderItem.setVar('itemTitle', itemTitle);
 
+      tree := '';
+      if sql_GetMenuItems.FieldByName('menu_item_type').AsString = 'sc' then
+      begin
 
-       sql_GetMenuItems.Transaction:=trans;
-       sql_GetMenuItems.SQLConnection:=conn;
-       sql_GetMenuItems.SQL.Clear;
-       sql_GetMenuItems.SQL.Text:=
-   'select * from menu_item WHERE '+
-   ' menu_item_menu_id = "'+m.menu_id+'"';
+        tree := getTreeBySectionId(itemUrl, conn, trans);
 
-   sql_GetMenuItems.Active:=true;
+        itemUrl := 'section_' + itemUrl;
 
-       list_html:='';
-       sql_GetMenuItems.First;
-       while not sql_getMenuItems.Eof do
-          begin
-            itemTitle:=sql_GetMenuItems.FieldByName('menu_item_caption').AsString;
-            itemUrl:=sql_GetMenuItems.FieldByName('menu_item_link_for').AsString;
-            RenderItem:=Render.Create;
-            itemView:=sqlMenu.FieldByName('menu_item_tpl').AsString;
-            RenderItem.setTemplate(itemView);
+      end
+      else
+      begin
+        tree := getTreeByPageId(itemUrl, conn, trans);
+      end;
 
-            RenderItem.setVar('itemTitle', itemTitle);
+      if chkUseTrees.Checked then
+        itemUrl := tree + '/' + itemUrl;
 
-            tree:='';
-            if sql_GetMenuItems.FieldByName('menu_item_type').AsString='sc' then
-              begin
-
-              tree:=getTreeBySectionId(itemUrl, conn, trans);
-
-              itemUrl:='section_'+itemUrl;
-
-              end
-            else
-               begin
-                 tree:=getTreeByPageId(itemUrl, conn, trans);
-               end;
-
-            if chkUseTrees.Checked then
-                 itemUrl:=tree+'/'+itemUrl;
-
-            if itemUrl[1]<>'/' then itemUrl:='/'+itemUrl;
+      if itemUrl[1] <> '/' then itemUrl := '/' + itemUrl;
 
 
-             RenderItem.setVar( 'itemUrl', itemUrl);
+      RenderItem.setVar('itemUrl', itemUrl);
 
 
 
 
-             RenderItem.setVar( 'ext', form1.PrefferedExtension.Text);
-             itemView:=RenderItem.getHtml(); RenderItem.Free;
-            list_html:=list_html+itemView+'<!-- '+tree+' -->';
-            sql_GetMenuItems.Next;
-          end;
-
-
-        menuView:=sqlMenu.FieldByName('menu_wrap_tpl').AsString;
-        RenderList:=Render.Create;
-        RenderList.setTemplate(menuView);
-
-        RenderList.setVar('items', list_html);
-        RenderList.setVar('menuCaption', m.menu_caption);
-        menuView:=RenderList.getHtml(); RenderList.Free;
-
-        menu_map.Add( m.menu_id, menuView);
-
-    sql_GetMenuItems.Free;
-    sqlMenu.Next;
+      RenderItem.setVar('ext', form1.PrefferedExtension.Text);
+      itemView := RenderItem.getHtml();
+      RenderItem.Free;
+      list_html := list_html + itemView + '<!-- ' + tree + ' -->';
+      sql_GetMenuItems.Next;
     end;
 
 
- R:=app;
- for k:=0 to menu_map.Count-1 do
-     begin
-        R:=applyvar(R, 'menu='+menu_map.Keys[k], menu_map.Data[k]);
-     end;
- menu_map.free;
- Result:=R;
+    menuView := sqlMenu.FieldByName('menu_wrap_tpl').AsString;
+    RenderList := Render.Create;
+    RenderList.setTemplate(menuView);
+
+    RenderList.setVar('items', list_html);
+    RenderList.setVar('menuCaption', m.menu_caption);
+    menuView := RenderList.getHtml();
+    RenderList.Free;
+
+    menu_map.Add(m.menu_id, menuView);
+
+    sql_GetMenuItems.Free;
+    sqlMenu.Next;
+  end;
+
+
+  R := app;
+  for k := 0 to menu_map.Count - 1 do
+  begin
+    R := applyvar(R, 'menu=' + menu_map.Keys[k], menu_map.Data[k]);
+  end;
+  menu_map.Free;
+  Result := R;
 
 end;
 
-function TForm1.useImages(template: String): String;
+function TForm1.useImages(template: string): string;
 var
-   cnt, i : Integer;
-   R : String;
+  cnt, i: integer;
+  R: string;
 begin
 
-
-  cnt  := Images.Count;
+  cnt := Images.Count;
 
   R := template;
 
-  for i:=0 to cnt-1 do
-      begin
-        R:=applyImage(R, Images.Keys[i], '/images/' +Images.Keys[i], Images.KeyData[Images.Keys[i]]);
-        // Form1.mmRubrics.Append(Images.Keys[i]);
-        // Form1.mmRubrics.Append(Images.KeyData[Images.Keys[i]]);
+  for i := 0 to cnt - 1 do
+  begin
+    R := applyImage(R, Images.Keys[i], '/images/' + Images.Keys[i],
+      Images.KeyData[Images.Keys[i]]);
+    // Form1.mmRubrics.Append(Images.Keys[i]);
+    // Form1.mmRubrics.Append(Images.KeyData[Images.Keys[i]]);
 
-
-      end;
+  end;
 
   Result := R;
 
 end;
 
-function TForm1.useAttachments(template: String): String;
-   var
-   cnt, i : Integer;
-   R : String;
+function TForm1.useAttachments(template: string): string;
+var
+  cnt, i: integer;
+  R: string;
 begin
 
-
-  cnt  := Attachments.Count;
+  cnt := Attachments.Count;
 
   R := template;
 
-  for i:=0 to cnt-1 do
-      begin
-        R:=applyFileLink(R, Attachments.Keys[i], '/files/' +Attachments.Keys[i],
-                            Attachments.KeyData[Attachments.Keys[i]]);
-        //Form1.mmRubrics.Append(Attachments.Keys[i]);
-        //Form1.mmRubrics.Append(Attachments.KeyData[Attachments.Keys[i]]);
+  for i := 0 to cnt - 1 do
+  begin
+    R := applyFileLink(R, Attachments.Keys[i], '/files/' + Attachments.Keys[i],
+      Attachments.KeyData[Attachments.Keys[i]]);
+    //Form1.mmRubrics.Append(Attachments.Keys[i]);
+    //Form1.mmRubrics.Append(Attachments.KeyData[Attachments.Keys[i]]);
 
-
-      end;
+  end;
 
   Result := R;
 end;
 
-
-
-
-
-
-
-
-
-
-
-
+function TForm1.useParametrizedBlocks(template: string): string;
+var
+  smBlocks : TStringMap;
+begin
+  try
+     smBlocks := TStringMap.Create;
+     sqlBlocks.First; // на первый блок
+     // пока не вышли за последнюю запись
+     while not sqlBlocks.EOF do begin
+       smBlocks[ sqlBlocks.FieldByName('id').AsString ] := sqlBlocks.FieldByName('markup').AsString;
+       sqlBlocks.Next; // следующий блок
+     end;
+      Result:=makeParametrization(template, smBlocks)
+  finally
+       smBlocks.Free;
+  end;
+end;
 
 
 
@@ -3433,7 +3959,7 @@ var
   M: TMemo;
   filenam: string;
 begin
-  showMessage('Запущен модуль '+cmd);
+  ShowMessage('Запущен модуль ' + cmd);
   P := TProcess.Create(Self);
   M := TMemo.Create(Self);
   P.CommandLine := cmd;
@@ -3452,53 +3978,65 @@ begin
   Result := R;
 end;
 
-function TForm1.usePreset(app: String): string;
-var R : String;
+function TForm1.usePreset(app: string): string;
+var
+  R: string;
 begin
-  R:=app;
-  R:=ApplyVar(R, 'sitename', sqlPresets.FieldByName('sitename').AsString);
-  Result:=R;
+  R := app;
+  R := ApplyVar(R, 'sitename', sqlPresets.FieldByName('sitename').AsString);
+  Result := R;
+end;
+
+function TForm1.useIfElseProcessor(t: string): string;
+begin
+  result := ProcessIfElse(t);
 end;
 
 {{ ======================== РАСШИРЕНИЕ ВОЗМОЖНОСТЕЙ МОДУЛЯМИ ================ }}
 
 function TForm1.useModules(app: string): string;
-var C, Start, En_d : integer;
-  replacement : String;
-  R : String;
-  container: String;
+var
+  C, Start, En_d: integer;
+  replacement: string;
+  R: string;
+  container: string;
 begin
 
- R:=app;
- if chkUseModules.Checked then begin
-                          if logger_info then mmRubrics.Lines.Add('ПОДДЕРЖКА МОДУЛЕЙ ВКЛЮЧЕНА');
-  C:=0;
-  Start := -1;
-  En_d := -1;
-  while C<Length(r) do
-                           begin
-                           if Copy(r, C, 1) = DLM_MODULE then
-                              begin
-                                if Start<0 then Start:=C else
-                                  begin
-                                   En_d :=C;
+  R := app;
+  if chkUseModules.Checked then
+  begin
+    if logger_info then
+      mmRubrics.Lines.Add('ПОДДЕРЖКА МОДУЛЕЙ ВКЛЮЧЕНА');
+    C := 0;
+    Start := -1;
+    En_d := -1;
+    while C < Length(r) do
+    begin
+      if Copy(r, C, 1) = DLM_MODULE then
+      begin
+        if Start < 0 then Start := C
+        else
+        begin
+          En_d := C;
 
-                                   if logger_info then mmRubrics.Lines.Add('ОБНАРУЖЕНИЕ МОДУЛЯ...');
-                                   container:=Copy(r, Start+1, En_d-Start-1);
-                                   ShowMessage(container);
-                                   replacement:=moduleexec(container);
-                                   r:=StringReplace(r, Copy(r, Start, En_d-Start+1),
-                                   replacement, [rfReplaceAll]);
-                                   c:=Start+Length(replacement)-1;
-                                   Start:=-1;
-                                   En_d := -1;
-                                  end;
-                              end;
-                           C:=C+1;
-                           Application.ProcessMessages;
-                           end;
- end; // else will be not processed
- Result:=R;
+          if logger_info then
+            mmRubrics.Lines.Add('ОБНАРУЖЕНИЕ МОДУЛЯ...');
+          container := Copy(r, Start + 1, En_d - Start - 1);
+          ShowMessage(container);
+          replacement := moduleexec(container);
+          r :=
+            StringReplace(r, Copy(r, Start, En_d - Start + 1),
+            replacement, [rfReplaceAll]);
+          c := Start + Length(replacement) - 1;
+          Start := -1;
+          En_d := -1;
+        end;
+      end;
+      C := C + 1;
+      Application.ProcessMessages;
+    end;
+  end; // else will be not processed
+  Result := R;
 end;
 
 function TForm1.owntagexec(container, cmd: string): string;
@@ -3527,7 +4065,8 @@ begin
   if FileExists(cmd + '.out') then DeleteFile(cmd + '.out');
   M.Free;
 
-  if logger_info then mmRubrics.Lines.Add('ВЫЗОВ ИСПОЛНЯЕМОГО ТЕГА<owntagexec>');
+  if logger_info then mmRubrics.Lines.Add(
+      'ВЫЗОВ ИСПОЛНЯЕМОГО ТЕГА<owntagexec>');
   if logger_info then mmRubrics.Lines.Add('КОНТЕЙНЕР');
   if logger_info then mmRubrics.Lines.Add(container);
   if logger_info then mmRubrics.Lines.Add('ОБРАБОТЧИК');
@@ -3545,90 +4084,93 @@ var
   container: string;
   replacement: string;
 
-
-  tags_list : TStringList;
-  tag_name : String;
-  t : Integer;
-  RE : TRegExpr;
-  Matcher : TRegExpr;
-  ReplaceFrom : TStringList;
-  ReplaceTo   : TStringList;
-  i : integer;
+  tags_list: TStringList;
+  tag_name: string;
+  t: integer;
+  RE: TRegExpr;
+  Matcher: TRegExpr;
+  ReplaceFrom: TStringList;
+  ReplaceTo: TStringList;
+  i: integer;
 begin
   (* ПЕРЕПИСАНО НА РЕГУЛЯРКИ *)
-  R:=app;
+  R := app;
   (* 1. НАЙДЕМ ВСЕ ПОЛЬЗОВАТЕЛЬСКИЕ ТЕГИ *)
-  re := TRegExpr.Create(DLM_OWN_TAG+'([\w]+)'+DLM_OWN_TAG);
-  tags_list:=TStringList.Create;
+  re := TRegExpr.Create(DLM_OWN_TAG + '([\w]+)' + DLM_OWN_TAG);
+  tags_list := TStringList.Create;
 
-  if re.Exec(R) then begin
-       tag_name:=re.Match[1];
-       tags_list.Add(tag_name);
-       while re.ExecNext do begin
-         tag_name := re.Match[1];
-         tags_list.Add( tag_name );
-         Application.ProcessMessages;
-      end;
+  if re.Exec(R) then
+  begin
+    tag_name := re.Match[1];
+    tags_list.Add(tag_name);
+    while re.ExecNext do
+    begin
+      tag_name := re.Match[1];
+      tags_list.Add(tag_name);
+      Application.ProcessMessages;
+    end;
   end;
 
 
 
 
+  (* 3 СОЗДАДИМ СПИСОК ЧТО НА ЧТО МЕНЯТЬ *)
+  ReplaceFrom := TStringList.Create;
+  ReplaceTo := TStringList.Create;
+
+  for t := 0 to tags_list.Count - 1 do
+  begin
+    tag_name := tags_list[t];
+
+    (* НАЙДЕМ ВСЕ, ОБРАМЛЕННОЕ ТЕГОМ *)
+    Matcher := TRegExpr.Create(
+      DLM_OWN_TAG + tag_name + DLM_OWN_TAG +
+      '([\d\D\r\n]+)' +
+      DLM_OWN_TAG + '/' + tag_name + DLM_OWN_TAG);
+
+    (* ДЛЯ ВСЕХ СОВПАДЕНИЙ ЗАПУСТИМ ОБРАБОТЧИК ТЕГОВ *)
+    if Matcher.Exec(R) then
+    begin
+      container := Matcher.Match[1];
+      replacement := owntagexec(container, tag_name);
+      (* ДОБАВИМ В СПИСКИ ЗАМЕН *)
+      ReplaceFrom.Add(container);
+      ReplaceTo.Add(replacement);
 
 
 
-        (* 3 СОЗДАДИМ СПИСОК ЧТО НА ЧТО МЕНЯТЬ *)
-        ReplaceFrom := TStringList.Create;
-        ReplaceTo := TStringList.Create;
 
-        for t:=0 to tags_list.count-1 do begin
-                 tag_name:=tags_list[t];
-
-                 (* НАЙДЕМ ВСЕ, ОБРАМЛЕННОЕ ТЕГОМ *)
-                 Matcher := TRegExpr.Create(
-                        DLM_OWN_TAG+tag_name+DLM_OWN_TAG+
-                         '([\d\D\r\n]+)'+
-                         DLM_OWN_TAG+'/'+tag_name+DLM_OWN_TAG);
-
-                (* ДЛЯ ВСЕХ СОВПАДЕНИЙ ЗАПУСТИМ ОБРАБОТЧИК ТЕГОВ *)
-                if Matcher.Exec(R) then begin
-                   container:=Matcher.Match[1];
-                   replacement:=owntagexec(container, tag_name);
-                   (* ДОБАВИМ В СПИСКИ ЗАМЕН *)
-                   ReplaceFrom.Add(container);
-                   ReplaceTo.Add(replacement);
-
-
-
-
-                      while Matcher.ExecNext do begin
-                            container := Matcher.Match[1];
-                            replacement:=owntagexec(container, tag_name);
-
-                            ReplaceFrom.Add(container);
-                            ReplaceTo.Add(replacement);
-
-                            Application.ProcessMessages;
-                   end;
-               end;
-
-        end;
-
-   (* ВЫПОЛНИМ ВСЕ НАЙДЕННЫЕ ПОДСТАНОВКИ *)
-  for i:=0 to ReplaceTo.Count - 1 do
+      while Matcher.ExecNext do
       begin
-            //ShowMessage(ReplaceFrom[i] + ' меняется на '+ReplaceTo[i]);
-            R:=StringReplace(R, ReplaceFrom[i], ReplaceTo[i], [rfReplaceAll, rfIgnoreCase]);
+        container := Matcher.Match[1];
+        replacement := owntagexec(container, tag_name);
 
+        ReplaceFrom.Add(container);
+        ReplaceTo.Add(replacement);
 
+        Application.ProcessMessages;
       end;
+    end;
 
-   (* УДАЛЯЕМ ТЕГИ *)
-  for i:=0 to tags_list.Count - 1 do
-      begin
-            R:=StringReplace(R, DLM_OWN_TAG+tags_list[i]+DLM_OWN_TAG, '', [rfReplaceAll, rfIgnoreCase]);
-            R:=StringReplace(R, DLM_OWN_TAG+'/'+tags_list[i]+DLM_OWN_TAG, '', [rfReplaceAll, rfIgnoreCase]);
-      end;
+  end;
+
+  (* ВЫПОЛНИМ ВСЕ НАЙДЕННЫЕ ПОДСТАНОВКИ *)
+  for i := 0 to ReplaceTo.Count - 1 do
+  begin
+    //ShowMessage(ReplaceFrom[i] + ' меняется на '+ReplaceTo[i]);
+    R := StringReplace(R, ReplaceFrom[i], ReplaceTo[i],
+      [rfReplaceAll, rfIgnoreCase]);
+
+  end;
+
+  (* УДАЛЯЕМ ТЕГИ *)
+  for i := 0 to tags_list.Count - 1 do
+  begin
+    R := StringReplace(R, DLM_OWN_TAG + tags_list[i] + DLM_OWN_TAG,
+      '', [rfReplaceAll, rfIgnoreCase]);
+    R := StringReplace(R, DLM_OWN_TAG + '/' + tags_list[i] + DLM_OWN_TAG,
+      '', [rfReplaceAll, rfIgnoreCase]);
+  end;
 
   Result := R;
 end;
@@ -3636,18 +4178,18 @@ end;
 
 
 function TForm1.buildSection(sectiontpl: string; sectionUrl: string;
-  sectionTitle: string; sectionNote : string; sectionFullText : string;
+  sectionTitle: string; sectionNote: string; sectionFullText: string;
   items: string): string;
 var
   r: string;
 begin
 
   r := sectionTpl;
-  r := applyVar(r, 'sectionUrl', sectionUrl );
-  r := applyVar(r, 'sectionTitle', sectionTitle );
-  r := applyVar(r, 'sectionNote', sectionNote );
-  r := applyVar(r, 'sectionFullText', sectionFullText );
-  r := applyVar(r, 'items', items );
+  r := applyVar(r, 'sectionUrl', sectionUrl);
+  r := applyVar(r, 'sectionTitle', sectionTitle);
+  r := applyVar(r, 'sectionNote', sectionNote);
+  r := applyVar(r, 'sectionFullText', sectionFullText);
+  r := applyVar(r, 'items', items);
   r := insSections(insLinks(r));
 
 
@@ -3666,47 +4208,43 @@ begin
 
 
 
-
-
   Result := R;
 end;
 
 function TForm1.buildPagination(url: string; currentPage: byte;
-  pagesTotal: integer; orf: String; ors: String; useO: Boolean;  useTrees : boolean; tree : String): string;
+  pagesTotal: integer; orf: string; ors: string; useO: boolean;
+  useTrees: boolean; tree: string): string;
 var
   paginator: string;
   page: byte;
 
-  sorted_folder : string;
+  sorted_folder: string;
 begin
-
-
-
 
   paginator := '<div class="paginator">';
   sorted_folder := '';
-    if useO then
-      begin
-           sorted_folder := '/o/'+orf+'-'+ors+'/';
-      end;
+  if useO then
+  begin
+    sorted_folder := '/o/' + orf + '-' + ors + '/';
+  end;
 
   if useTrees then
-    sorted_folder:=tree+sorted_folder;
+    sorted_folder := tree + sorted_folder;
 
-  for page := 1 to pagesTotal do   begin
-
-
-
+  for page := 1 to pagesTotal do
+  begin
 
     if currentPage <> page then
     begin
       if page = 1 then
         paginator :=
-          paginator + '<a href="{sorted_folder}/section_' + url + '.' + PrefferedExtension.Text + '">1</a> '
+          paginator + '<a href="{sorted_folder}/section_' + url +
+          '.' + PrefferedExtension.Text + '">1</a> '
       else
         paginator :=
-          paginator + '<a href="{sorted_folder}/section_' + url + '_' + IntToStr(page) + '.' + PrefferedExtension.Text +
-          '">' + IntToStr(page) + '</a> ';
+          paginator + '<a href="{sorted_folder}/section_' + url +
+          '_' + IntToStr(page) + '.' + PrefferedExtension.Text + '">' +
+          IntToStr(page) + '</a> ';
     end
     else
       paginator := paginator + ' ' + IntToStr(currentPage) + ' ';
@@ -3716,9 +4254,10 @@ begin
   {/for}
   paginator := paginator + '</div>';
 
-  paginator:=applyvar(paginator, 'sorted_folder', sorted_folder);
+  paginator := applyvar(paginator, 'sorted_folder', sorted_folder);
 
-  if logger_info then mmRubrics.Lines.Add('СБОРКА ПЕРЕКЛЮЧАТЕЛЯ СТРАНИЦ<buildPagination>');
+  if logger_info then mmRubrics.Lines.Add(
+      'СБОРКА ПЕРЕКЛЮЧАТЕЛЯ СТРАНИЦ<buildPagination>');
   if logger_info then mmRubrics.Lines.Add('URL раздела');
   if logger_info then mmRubrics.Lines.Add(url);
   if logger_info then mmRubrics.Lines.Add('Номер текущей');
@@ -3733,156 +4272,31 @@ begin
   Result := paginator;
 end;
 
-procedure TForm1.AttendConnection(ASocket: TTCPBlockSocket);
-var
-  timeout: integer;
-  s: string;
-  method, uri, protocol: string;
-  OutputDataString: string;
-  ResultCode: integer;
-  content_type: string;
-  test_flag : boolean;
-begin
-  timeout := 120000;
-  Application.ProcessMessages;
-  //  WebServerLog.Lines.Add('Полученные заголовки, запрошенный браузером документ:');
 
-  //read request line
-  s := ASocket.RecvString(timeout);
-  WebServerLog.Lines.Add(s);
-  method := fetch(s, ' ');
-  uri := fetch(s, ' ');
-  protocol := fetch(s, ' ');
 
-  //read request headers
-  repeat
 
-    s := ASocket.RecvString(Timeout);
-    WebServerLog.Lines.Add(s);
-    Application.ProcessMessages;
-  until s = '';
 
-  // Now write the document to the output stream
 
-  content_type := 'Text/Html';
-  if (pos('.css', uri) > 0) then content_type := 'text/css';
 
-  if (pos('.jpg', uri) > 0) then content_type := 'image/jpeg';
-  if (pos('.png', uri) > 0) then content_type := 'image/png';
-  if (pos('.gif', uri) > 0) then content_type := 'image/gif';
-
-  if (pos('.js', uri) > 0) then content_type := 'application/javascript';
-
-  test_flag := false;
-  test_flag := test_flag or (pos('.jpg', uri) > 0);
-  test_flag := test_flag or (pos('.gif', uri) > 0);
-  test_flag := test_flag or (pos('.png', uri) > 0);
-
-  test_flag := test_flag or (pos('.htm', uri) > 0);
-  test_flag := test_flag or (pos('.html', uri) > 0);
-  test_flag := test_flag or (pos('.css', uri) > 0);
-  test_flag := test_flag or (pos('.js', uri) > 0);
-
-  test_flag := test_flag or ( uri = '/');
-
-  if ( test_flag ) then
-  begin
-    // Write the output document to the stream
-    OutputDataString := OutputHTMLFile(uri) + CRLF;
-    // Write the headers back to the client
-    ASocket.SendString('HTTP/1.0 200' + CRLF);
-    ASocket.SendString('Content-type: ' + content_type + CRLF);
-    ASocket.SendString('Content-length: ' + IntToStr(Length(OutputDataString)) + CRLF);
-    ASocket.SendString('Connection: close' + CRLF);
-    ASocket.SendString('Date: ' + Rfc822DateTime(now) + CRLF);
-    ASocket.SendString('Server: HtmlBuilder' + CRLF);
-    ASocket.SendString('' + CRLF);
-
-    //  if ASocket.lasterror <> 0 then HandleError;
-
-    // Write the document back to the browser
-    ASocket.SendString(OutputDataString);
-  end
-  else
-    ASocket.SendString('HTTP/1.0 404' + CRLF);
-end;
-
-procedure TForm1.StartOwnServer;
-begin
-  ListenerSocket := TTCPBlockSocket.Create;
-  ConnectionSocket := TTCPBlockSocket.Create;
-
-  ListenerSocket.CreateSocket;
-  ListenerSocket.setLinger(True, 10);
-  ListenerSocket.bind('127.0.0.1', '8080');
-  ListenerSocket.listen;
-
-  repeat
-    Application.ProcessMessages;
-    if ListenerSocket.canread(512) then
-    begin
-      ConnectionSocket.Socket := ListenerSocket.accept;
-      WebServerLog.Lines.Add(
-        'Выполняем подключение. Код ошибки (0=Успех): ' +
-        IntToStr(ConnectionSocket.lasterror));
-      AttendConnection(ConnectionSocket);
-    end;
-  until ListenerSocket.StopFlag or ConnectionSocket.StopFlag;
-  ListenerSocket.Free;
-  ConnectionSocket.Free;
-end;
-
-procedure TForm1.StopOwnServer;
-begin
-  ListenerSocket.AbortSocket;
-  ConnectionSocket.AbortSocket;
-
-end;
-
-{{ ============== Чтение файла с диска / используется веб-сервером =============== }}
-
-function TForm1.OutputHTMLFile(uri: string): string;
-var path : String; filename : String; Buf : TMemo;
-  r : String;   fullq : String;
-begin
-
-  if uri = '/' then uri:='/index.'+PrefferedExtension.text;
-  path := sqlPresets.FieldByName('dirpath').AsString;
-  Buf:=TMemo.Create(Self);
-  r:='';
-  fullq:=path+uri;
-  if Cache.Values[uri] <> '' then r:=Cache.values[uri] else begin
-  if FileExists(fullq) then begin
-  Buf.Lines.LoadFromFile(fullq);
-  cache.values[uri]:=Buf.text;
-  r:=Buf.Text;
-  end;
-  end;
-  Buf.Free;
-  result:=r;
-end;
-
-function TForm1.buildOwnFields(html: string; p : page_params): string;
+function TForm1.buildOwnFields(html: string; p: page_params): string;
 var
   r: string;
   i: byte;
-
 begin
   r := html;
   for i := 1 to 7 do
   begin
-    r := StringReplace(r, '{f' + IntToStr( i )  + '}',
-                          p.user_field_names[i],
-      [rfReplaceAll]);
-   r := StringReplace(r, '{v' + IntToStr( i )  + '}',
-                          p.user_field_values[i],
-      [rfReplaceAll]);
+    r := StringReplace(r, '{f' + IntToStr(i) + '}',
+      p.user_field_names[i], [rfReplaceAll]);
+    r := StringReplace(r, '{v' + IntToStr(i) + '}',
+      p.user_field_values[i], [rfReplaceAll]);
 
   end;
 
 
 
-  if logger_info then mmRubrics.Lines.Add('СБОРКА СОБСТВЕННЫХ ПОЛЕЙ<buildOwnFields>');
+  if logger_info then mmRubrics.Lines.Add(
+      'СБОРКА СОБСТВЕННЫХ ПОЛЕЙ<buildOwnFields>');
   if logger_info then mmRubrics.Lines.Add('ВХОД');
   if logger_info then mmRubrics.Lines.Add(html);
   if logger_info then mmRubrics.Lines.Add('--- РЕЗУЛЬТАТ ---');
@@ -3897,7 +4311,8 @@ begin
   r := lin;
   r := StringReplace(r, '{ext}', PrefferedExtension.Text, [rfReplaceAll]);
 
-  if logger_info then mmRubrics.Lines.Add('УСТАНОВКА РАСШИРЕНИЯ <prefExtension>');
+  if logger_info then mmRubrics.Lines.Add(
+      'УСТАНОВКА РАСШИРЕНИЯ <prefExtension>');
   if logger_info then mmRubrics.Lines.Add('ВХОД');
   if logger_info then mmRubrics.Lines.Add(lin);
   if logger_info then mmRubrics.Lines.Add('--- РЕЗУЛЬТАТ ---');
@@ -3919,7 +4334,7 @@ begin
   tabUpdateByFTP.Caption := 'Обновление по FTP';
   tabWebServer.Caption := 'Веб-сервер';
   tabHelp.Caption := 'О программе';
-  mmAbout.lines.LoadFromFile('russian_help.txt');
+  mmAbout.Lines.LoadFromFile('russian_help.txt');
   { translations from corresponding ini}
   loadLocaleFromIni('ru_localization.ini');
 
@@ -3937,7 +4352,7 @@ begin
   tabUpdateByFTP.Caption := 'Update By FTP';
   tabWebServer.Caption := 'Web Server';
   tabHelp.Caption := 'About app';
-  mmAbout.lines.LoadFromFile('english_help.txt');
+  mmAbout.Lines.LoadFromFile('english_help.txt');
   { translations from corresponding ini}
   loadLocaleFromIni('en_localization.ini');
 end;
@@ -3960,45 +4375,38 @@ end;
 
 
 
-
 procedure TForm1.initTransactionSQL;
-
 var
-  isOK : Boolean;
+  isOK: boolean;
 begin
-
-
 
   db_filename := getCurrentDir() + DELIM + sqlite_filename;
   conn.DatabaseName := db_filename; // назначаем имя файла
-  form1.Caption:=db_filename;
+  form1.Caption := db_filename;
   try
-  //Поскольку мы делаем эту базу данных впервые,
-  // проверяем, существует ли уже файл
-  isOK := FileExists(conn.DatabaseName);
+    //Поскольку мы делаем эту базу данных впервые,
+    // проверяем, существует ли уже файл
+    isOK := FileExists(conn.DatabaseName);
 
     if isOK then
     begin
 
+      conn.Open;
+
+      trans.Active := True;
+
+      conn.ExecuteDirect('End transaction');
+      conn.ExecuteDirect('pragma synchronous = 0');
+      conn.ExecuteDirect('pragma foreign_keys = off');
+      conn.ExecuteDirect('pragma journal_mode = off');
+
+      trans.Active := True;
+      conn.ExecuteDirect('Begin transaction');
 
 
-         conn.Open;
-
-         trans.Active:=True;
-
-         conn.ExecuteDirect('End transaction');
-         conn.ExecuteDirect('pragma synchronous = 0');
-         conn.ExecuteDirect('pragma foreign_keys = off');
-         conn.ExecuteDirect('pragma journal_mode = off');
-
-          trans.Active:=True;
-         conn.ExecuteDirect('Begin transaction');
-
-
-         // делать ничего не нужно, обработается при выходе, сообщаем
-         SilentMessage('Файл найден!');
-         checkConnect(conn, trans, 'initTransactionSQL');
-
+      // делать ничего не нужно, обработается при выходе, сообщаем
+      SilentMessage('Файл найден!');
+      checkConnect(conn, trans, 'initTransactionSQL');
 
     end
 
@@ -4010,20 +4418,20 @@ begin
 
 
 
-        // запросы в рамках транзакции
+      // запросы в рамках транзакции
 
 
-       trans.Active:=True;
+      trans.Active := True;
 
-         conn.ExecuteDirect('End transaction');
-         conn.ExecuteDirect('pragma synchronous = 0');
-         conn.ExecuteDirect('pragma foreign_keys = off');
-         conn.ExecuteDirect('pragma journal_mode = off');
-          trans.Active:=True;
-         conn.ExecuteDirect('Begin transaction');
+      conn.ExecuteDirect('End transaction');
+      conn.ExecuteDirect('pragma synchronous = 0');
+      conn.ExecuteDirect('pragma foreign_keys = off');
+      conn.ExecuteDirect('pragma journal_mode = off');
+      trans.Active := True;
+      conn.ExecuteDirect('Begin transaction');
 
-       checkConnect(conn, trans,'initTransactionSQL');
-         try
+      checkConnect(conn, trans, 'initTransactionSQL');
+      try
         form1.makeCreationTables(); // запросы на создание таблиц
 
 
@@ -4035,106 +4443,91 @@ begin
 
 
 
-
-
         SilentMessage(msgBaseSuccess);
-          except
-            SilentMessage(msgErrorCreating);
-          end;
-        end;
       except
-        SilentMessage(msgCantCheckDbFile);
+        SilentMessage(msgErrorCreating);
       end;
+    end;
+  except
+    SilentMessage(msgCantCheckDbFile);
+  end;
 
 end;
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 
 procedure TForm1.makeSqlActive;
-
 begin
-    sqlPresets.Active:=true;
-    sqlBlocks.Active:=true;
-    sqlSections.Active:=true;
-    sqlContent.Active:=true;
-    sqlCssStyles.Active:=true;
-    sqlJsScripts.Active:=true;
-    sqlTags.Active:=true;
-    sqlTagsPages.Active:=true;
-    sqlMenu.Active:=true;
-    sqlMenuItem.Active:=true;
-    sqlGetAllImages.Active:=true;
-    sqlGetAllAttachments.Active:=true;
+  sqlPresets.Active := True;
+  sqlBlocks.Active := True;
+  sqlSections.Active := True;
+  sqlContent.Active := True;
+  sqlCssStyles.Active := True;
+  sqlJsScripts.Active := True;
+  sqlTags.Active := True;
+  sqlTagsPages.Active := True;
+  sqlMenu.Active := True;
+  sqlMenuItem.Active := True;
+  sqlGetAllImages.Active := True;
+  sqlGetAllAttachments.Active := True;
 
 end;
 
 procedure TForm1.makeSqlInactive;
-
 begin
 
- // showMessage('Сохраняем базу');
+  // showMessage('Сохраняем базу');
   AutoSaveDb();
- // showMessage('База сохранена');
+  // showMessage('База сохранена');
 
-  sqlPresets.Active:=false;
-  sqlContent.Active:=false;
-  sqlCssStyles.Active:=false;
-  sqlSections.Active:=false;
-  sqlBlocks.Active:=false;
-  sqlJsScripts.Active:=false;
-  sqlTags.Active:=false;
-  sqlTagsPages.Active:=false;
-  sqlMenu.Active:=false;
-  sqlMenuItem.Active:=false;
-  sqlGetAllImages.Active:=false;
-  sqlGetAllAttachments.Active:=false;
+  sqlPresets.Active := False;
+  sqlContent.Active := False;
+  sqlCssStyles.Active := False;
+  sqlSections.Active := False;
+  sqlBlocks.Active := False;
+  sqlJsScripts.Active := False;
+  sqlTags.Active := False;
+  sqlTagsPages.Active := False;
+  sqlMenu.Active := False;
+  sqlMenuItem.Active := False;
+  sqlGetAllImages.Active := False;
+  sqlGetAllAttachments.Active := False;
 
   conn.Close;
 end;
 
 procedure TForm1.viewPagesSQL;
 begin
-open_sql(    'select * from content', sqlContent);
-ds_Content.AutoEdit:=True;
-SilentMessage('выполнена загрузка страниц!');
+  open_sql('select * from content', sqlContent);
+  ds_Content.AutoEdit := True;
+  SilentMessage('выполнена загрузка страниц!');
 end;
 
 procedure TForm1.viewSectionsSQL;
-  begin
-  open_sql(  'select * from section', sqlSections);
+begin
+  open_sql('select * from section', sqlSections);
   SilentMessage('выполнена загрузка разделов!');
-  end;
+end;
 
 procedure TForm1.viewBlocksSQL;
 begin
 
-  open_sql(  'select * from block', sqlBlocks);
+  open_sql('select * from block', sqlBlocks);
 
   SilentMessage('выполнена загрузка блоков!');
 end;
 
 procedure TForm1.viewPresetsSQL;
 begin
-  open_sql ( 'select * from preset' , sqlPresets);
+  open_sql('select * from preset', sqlPresets);
   SilentMessage('выполнена загрузка настроек!');
 end;
 
 procedure TForm1.viewCssSQL;
 begin
 
-  open_sql( 'select * from css', sqlCssStyles);
+  open_sql('select * from css', sqlCssStyles);
 
   //ds_Css.AutoEdit:=true;
   SilentMessage('выполнена загрузка таблиц стилей');
@@ -4142,13 +4535,13 @@ end;
 
 procedure TForm1.viewJsSQL;
 begin
-    open_sql( 'select * from js', sqlJsScripts);
+  open_sql('select * from js', sqlJsScripts);
 
 end;
 
 procedure TForm1.viewTablesSQL;
 begin
- checkConnect(conn, trans,'viewTablesSQL');
+  checkConnect(conn, trans, 'viewTablesSQL');
   form1.makeSqlActive(); // активируем запросы
   form1.viewPagesSQL();
   form1.viewBlocksSQL();
@@ -4165,51 +4558,51 @@ end;
 
 procedure TForm1.viewTagsSQL;
 begin
-  open_sql(    'select * from tags', sqlTags);
-  ds_Tags.AutoEdit:=True;
+  open_sql('select * from tags', sqlTags);
+  ds_Tags.AutoEdit := True;
   SilentMessage('выполнена загрузка страниц!');
 end;
 
 procedure TForm1.viewTagsPagesSQL;
 begin
   //open_sql(    'select * from tags_pages', sqlTagsPages);
-  ds_Tags_Pages.AutoEdit:=True;
+  ds_Tags_Pages.AutoEdit := True;
   SilentMessage('выполнена загрузка страниц!');
 end;
 
 procedure TForm1.viewMenuSQL;
 begin
-  open_sql( 'select * from menu', sqlMenu);
-  ds_Menu.AutoEdit:=true;
+  open_sql('select * from menu', sqlMenu);
+  ds_Menu.AutoEdit := True;
 end;
 
 procedure TForm1.viewMenuItemSQL;
 begin
-  open_sql( 'select * from menu_item', sqlMenuItem);
-  ds_MenuItem.AutoEdit:=true;
+  open_sql('select * from menu_item', sqlMenuItem);
+  ds_MenuItem.AutoEdit := True;
 end;
 
 procedure TForm1.viewImagesSQL;
 begin
-   try
-       open_sql( 'select * from images', sqlGetAllImages);
-       ds_Images.AutoEdit:=true;
-   except
-       on E: Exception do
-             ShowMessage( 'Error: '+ E.ClassName + #13#10 + E.Message );
-   end;
+  try
+    open_sql('select * from images', sqlGetAllImages);
+    ds_Images.AutoEdit := True;
+  except
+    on E: Exception do
+      ShowMessage('Error: ' + E.ClassName + #13#10 + E.Message);
+  end;
 
 end;
 
 procedure TForm1.viewAttachmentsSQL;
 begin
-     try
-       open_sql( 'select * from attachments', sqlGetAllAttachments);
-       ds_Attachments.AutoEdit:=true;
-   except
-       on E: Exception do
-             ShowMessage( 'Error: '+ E.ClassName + #13#10 + E.Message );
-   end;
+  try
+    open_sql('select * from attachments', sqlGetAllAttachments);
+    ds_Attachments.AutoEdit := True;
+  except
+    on E: Exception do
+      ShowMessage('Error: ' + E.ClassName + #13#10 + E.Message);
+  end;
 end;
 
 
@@ -4219,16 +4612,16 @@ end;
 *)
 procedure TForm1.changeDataSourcesContent;
 begin
-  fID.DataSource:=form1.ds_Content;  // поле идент. страницы
-  fCaption.DataSource:=form1.ds_Content; //поле заголовок
+  fID.DataSource := form1.ds_Content;  // поле идент. страницы
+  fCaption.DataSource := form1.ds_Content; //поле заголовок
   // fContent is editor
-  fContent.DataSource:=form1.ds_Content; // поле контент
+  fContent.DataSource := form1.ds_Content; // поле контент
 
   //dbContentLook.DataSource:=form1.ds_Content; // список страниц
 
 
-  ds_Content.AutoEdit:=True;
-  dbNav_Content.DataSource:=form1.ds_Content; // листалка
+  ds_Content.AutoEdit := True;
+  dbNav_Content.DataSource := form1.ds_Content; // листалка
 end;
 
 
@@ -4237,14 +4630,15 @@ end;
 *)
 procedure TForm1.changeDataSourcesSections;
 begin
-  dbeSectionId.DataSource:=form1.ds_Sections;  // поле идент. раздела
-  dbeSectionCaption.DataSource:=form1.ds_Sections; // поле название раздела
-  dbmSectionNote.DataSource:=form1.ds_Sections; // поле шаблон раздела
+  dbeSectionId.DataSource := form1.ds_Sections;  // поле идент. раздела
+  dbeSectionCaption.DataSource := form1.ds_Sections;
+  // поле название раздела
+  dbmSectionNote.DataSource := form1.ds_Sections; // поле шаблон раздела
 
 
   //dbSectionsLook.DataSource:=form1.ds_Sections; // список секций
 
-  dbNav_Sections.DataSource:=form1.ds_Sections; // листалка
+  dbNav_Sections.DataSource := form1.ds_Sections; // листалка
 end;
 
 (*
@@ -4252,12 +4646,12 @@ end;
 *)
 procedure TForm1.changeDataSourcesBlocks;
 begin
-  dbeBlockId.DataSource:=form1.ds_Blocks;  // поле идент. раздела
-  dbeBlockNote.DataSource:=form1.ds_Blocks; // поле название раздела
-  dbeBlockHtml.DataSource:=form1.ds_Blocks; // поле шаблон раздела
+  dbeBlockId.DataSource := form1.ds_Blocks;  // поле идент. раздела
+  dbeBlockNote.DataSource := form1.ds_Blocks; // поле название раздела
+  dbeBlockHtml.DataSource := form1.ds_Blocks; // поле шаблон раздела
   //dbBlocksLook.DataSource:=form1.ds_Blocks; // список блоков
 
-  dbNav_Blocks.DataSource:=form1.ds_Blocks; // листалка
+  dbNav_Blocks.DataSource := form1.ds_Blocks; // листалка
 end;
 
 (*
@@ -4265,66 +4659,66 @@ end;
 *)
 procedure TForm1.changeDataSourcesPresets;
 begin
-  dbePreset.DataSource:=form1.ds_Presets;  // идент. настроек
-  dbeSiteName.DataSource:=form1.ds_Presets; // имя сайта
-  dbeSiteDirectory.DataSource:=form1.ds_Presets; // каталог
-  dbmHeadTemplate.DataSource:=form1.ds_Presets; // шаблон заголовка
-  dbmBodyPagesTemplate.DataSource:=form1.ds_Presets; // шаблон страниц
-  dbmBodySectionsTemplate.DataSource:=form1.ds_Presets;// шаблон секции
-  dbmTemplateOfItem.DataSource:=form1.ds_Presets; // шаблон списка
+  dbePreset.DataSource := form1.ds_Presets;  // идент. настроек
+  dbeSiteName.DataSource := form1.ds_Presets; // имя сайта
+  dbeSiteDirectory.DataSource := form1.ds_Presets; // каталог
+  dbmHeadTemplate.DataSource := form1.ds_Presets; // шаблон заголовка
+  dbmBodyPagesTemplate.DataSource := form1.ds_Presets; // шаблон страниц
+  dbmBodySectionsTemplate.DataSource := form1.ds_Presets;// шаблон секции
+  dbmTemplateOfItem.DataSource := form1.ds_Presets; // шаблон списка
 
 
   //dbPresetsLook.DataSource:=form1.ds_Presets;
-  dbNav_Presets.DataSource:=form1.ds_Presets; // листалка
+  dbNav_Presets.DataSource := form1.ds_Presets; // листалка
 end;
 
 procedure TForm1.changeDataSourcesCss;
 begin
- // dbeCssId.DataSource:=form1.ds_Css;
- // dbmCssStyle.DataSource:=form1.ds_Css;
- // dbNav_Css.DataSource:=form1.ds_Css;
+  // dbeCssId.DataSource:=form1.ds_Css;
+  // dbmCssStyle.DataSource:=form1.ds_Css;
+  // dbNav_Css.DataSource:=form1.ds_Css;
 end;
 
 procedure TForm1.changeDataSourcesTags;
 begin
-  dbeTagId.DataSource:=ds_Tags;
-  dbeTagCaption.DataSource:=ds_Tags;
-  dbNav_Tags.DataSource:=ds_Tags;
+  dbeTagId.DataSource := ds_Tags;
+  dbeTagCaption.DataSource := ds_Tags;
+  dbNav_Tags.DataSource := ds_Tags;
 
 end;
 
 procedure TForm1.changeDataSourcesTagsPages;
 begin
-  dbeTagsPages_id_tag_page.DataSource:=ds_Tags_Pages;
-  dbeTagsPages_id_tag.DataSource:=ds_Tags_Pages;
-  dbeTagsPages_id_page.DataSource:=ds_Tags_Pages;
-  dbNav_TagsPages.DataSource:=ds_Tags_Pages;
+  dbeTagsPages_id_tag_page.DataSource := ds_Tags_Pages;
+  dbeTagsPages_id_tag.DataSource := ds_Tags_Pages;
+  dbeTagsPages_id_page.DataSource := ds_Tags_Pages;
+  dbNav_TagsPages.DataSource := ds_Tags_Pages;
 end;
 
 procedure TForm1.changeDataSourcesImages;
 begin
 
   try
-    form1.dbeImageId.DataSource:=ds_Images;
-    form1.dbeImageCaption.DataSource:=ds_Images;
-    form1.dbNav_Images.DataSource:=ds_Images;
+    form1.dbeImageId.DataSource := ds_Images;
+    form1.dbeImageCaption.DataSource := ds_Images;
+    form1.dbNav_Images.DataSource := ds_Images;
   except
     on E: Exception do
-             ShowMessage( 'Error: '+ E.ClassName + #13#10 + E.Message );
+      ShowMessage('Error: ' + E.ClassName + #13#10 + E.Message);
   end;
 
 end;
 
 procedure TForm1.changeDataSourcesAttachments;
 begin
-     try
-      form1.dbeAttachmentId.DataSource:=ds_Attachments;
-      form1.dbeAttachmentCaption.DataSource:=ds_Attachments;
-      form1.dbNav_Attachments.DataSource:=ds_Attachments;
-     except
-           on E: Exception do
-              ShowMessage( 'Error: '+ E.ClassName + #13#10 + E.Message );
-     end;
+  try
+    form1.dbeAttachmentId.DataSource := ds_Attachments;
+    form1.dbeAttachmentCaption.DataSource := ds_Attachments;
+    form1.dbNav_Attachments.DataSource := ds_Attachments;
+  except
+    on E: Exception do
+      ShowMessage('Error: ' + E.ClassName + #13#10 + E.Message);
+  end;
 
 end;
 
@@ -4332,100 +4726,86 @@ end;
 procedure TForm1.makeCreationTables;
 begin
 
+  try
 
+    checkConnect(conn, trans, 'makeCreationTables');
 
+    createPagesSQL(conn, trans);
+    createSectionsSQL(conn, trans);
+    createBlocksSQL(conn, trans);
+    createPresetsSQL(conn, trans);
+    createCssSQL(conn, trans);
+    createJsSQL(conn, trans);
+    createTagsSQL(conn, trans);
+    createTagsPagesSQL(conn, trans);
+    createMenusSQL(conn, trans);
+    createItemsForMenuSQL(conn, trans);
+    createImagesSQL(conn, trans);
+    createAttachmentsSQL(conn, trans);
 
-
-         try
-
-           checkConnect(conn, trans, 'makeCreationTables');
-
-            createPagesSQL(conn, trans);
-            createSectionsSQL(conn, trans);
-            createBlocksSQL(conn, trans);
-            createPresetsSQL(conn, trans);
-            createCssSQL(conn, trans);
-            createJsSQL(conn, trans);
-            createTagsSQL(conn, trans);
-            createTagsPagesSQL(conn, trans);
-            createMenusSQL(conn, trans);
-            createItemsForMenuSQL(conn, trans);
-            createImagesSQL(conn, trans);
-            createAttachmentsSQL(conn, trans);
-
-        except
-          on E: Exception do
-             ShowMessage( 'Error: '+ E.ClassName + #13#10 + E.Message );
-         end;
-
+  except
+    on E: Exception do
+      ShowMessage('Error: ' + E.ClassName + #13#10 + E.Message);
+  end;
 
 end;
 
 procedure TForm1.changeDataSources;
 begin
   try
-      with Form1 do begin
-           changeDataSourcesContent();
-           changeDataSourcesSections();
-           changeDataSourcesBlocks();
-           changeDataSourcesPresets();
-           changeDataSourcesCss();
-           changeDataSourcesJs();
-           changeDataSourcesTags();
-           changeDataSourcesTagsPages();
-           changeDataSourcesImages();
-           changeDataSourcesAttachments();
+    with Form1 do
+    begin
+      changeDataSourcesContent();
+      changeDataSourcesSections();
+      changeDataSourcesBlocks();
+      changeDataSourcesPresets();
+      changeDataSourcesCss();
+      changeDataSourcesJs();
+      changeDataSourcesTags();
+      changeDataSourcesTagsPages();
+      changeDataSourcesImages();
+      changeDataSourcesAttachments();
 
-      end;
+    end;
   except
-   on E: Exception do
-    ShowMessage( 'Error: '+ E.ClassName + #13#10 + E.Message );
+    on E: Exception do
+      ShowMessage('Error: ' + E.ClassName + #13#10 + E.Message);
   end;
 end;
 
 
 
 
-
-
-
-
-
-
-
-procedure TForm1.SilentMessage(msg: String);
+procedure TForm1.SilentMessage(msg: string);
 begin
   if (not SilentMode) then ShowMessage(msg);
 end;
 
 procedure TForm1.AutoSaveDb; // автосохранение, исп. в FormClose
-
-
 begin
 
-   try
+  try
 
-       if sqlPresets.Active then sqlPresets.ApplyUpdates();
+    if sqlPresets.Active then sqlPresets.ApplyUpdates();
 
-       if sqlContent.Active then sqlContent.ApplyUpdates();
+    if sqlContent.Active then sqlContent.ApplyUpdates();
 
-       if sqlBlocks.Active then sqlBlocks.ApplyUpdates();
+    if sqlBlocks.Active then sqlBlocks.ApplyUpdates();
 
-       if sqlSections.Active then sqlSections.ApplyUpdates();
+    if sqlSections.Active then sqlSections.ApplyUpdates();
 
-       if sqlCssStyles.Active then sqlCssStyles.ApplyUpdates();
+    if sqlCssStyles.Active then sqlCssStyles.ApplyUpdates();
 
 
-       if sqlGetAllImages.Active then sqlGetAllImages.ApplyUpdates;
+    if sqlGetAllImages.Active then sqlGetAllImages.ApplyUpdates;
 
-       if sqlGetAllAttachments.Active then sqlGetAllAttachments.ApplyUpdates();
+    if sqlGetAllAttachments.Active then sqlGetAllAttachments.ApplyUpdates();
 
-       trans.Commit();
-   except
-   on E: Exception do
-             ShowMessage( 'Error: '+ E.ClassName + #13#10 + E.Message );
-   end;
-
+    trans.Commit();
+  except
+    on E: Exception do
+      ShowMessage('Error: ' + E.ClassName + #13#10 + E.Message);
+  end;
 
 end;
 
@@ -4433,228 +4813,260 @@ end;
 
 procedure TForm1.doJoinPages;
 var
-        page : page_params;   filenam  : String;
-        fbuffer : TStringList;
-        headT, bodyT : String;
-        page_param_num : byte;
-        cnt, k : byte;
+  page: page_params;
+  filenam: string;
+  fbuffer: TStringList;
+  headT, bodyT: string;
+  page_param_num: byte;
+  cnt, k: byte;
 
-        tagsHere : TagsMap;
-        sql_for_tags : TSQLQuery;
-        tags_html : String;
-        processDir : TProcess;
+  tagsHere: TagsMap;
+  sql_for_tags: TSQLQuery;
+  tags_html: string;
+  processDir: TProcess;
 begin
 
-
-
-   (* Загружаем шаблоны из файлов, если сделан такой выбор *)
+  (* Загружаем шаблоны из файлов, если сделан такой выбор *)
   fBuffer := TStringList.Create();
 
- if chkGetBlocksFromFile.Checked then
-       begin
-      fbuffer.LoadFromFile(GetCurrentDir + DELIM+'parts'+DELIM+'head.tpl');
-      headT:=fbuffer.Text;
-      fbuffer.LoadFromFile(GetCurrentDir + DELIM+'parts'+DELIM+'body.tpl');
-      bodyT:=fbuffer.Text;
+  if chkGetBlocksFromFile.Checked then
+  begin
+    fbuffer.LoadFromFile(GetCurrentDir + DELIM + 'parts' + DELIM + 'head.tpl');
+    headT := fbuffer.Text;
+    fbuffer.LoadFromFile(GetCurrentDir + DELIM + 'parts' + DELIM + 'body.tpl');
+    bodyT := fbuffer.Text;
+  end;
+
+  fbuffer.Free;
+
+
+  cnt := form1.Titles.Lines.Count;
+  pBar.Max := cnt;
+  pBar.Step := 1;
+  pBar.Min := 1;
+  pBar.Position := 1;
+  k := 0;
+
+  (* Сборка страниц *)
+  sqlJoin.Open;
+  sqlJoin.First;
+
+  while not sqlJoin.EOF do
+  begin
+
+    lbProgress.Caption :=
+      'Сборка страницы ' + IntToStr(k + 1) + ' / ' + IntToStr(cnt);
+
+    page.id := sqlJoin.FieldByName('id').AsString;
+    page.title := sqlJoin.FieldByName('caption').AsString;
+    page.body := sqlJoin.FieldByName('content').AsString;
+    page.section_id := sqlJoin.FieldByName('section_id').AsString;
+    page.section_title := sqlJoin.FieldByName('section').AsString;
+    page.sitename := sqlJoin.FieldByName('sitename').AsString;
+    page.dirpath := sqlJoin.FieldByName('dirpath').AsString;
+    page.dt := sqlJoin.FieldByName('dt').AsDateTime;
+    page.tree := sqlJoin.FieldByName('tree').AsString;
+
+    //получить теги страницы
+
+    sql_for_tags := TSQLQuery.Create(Self);
+
+    sql_for_tags.SQLConnection := conn;
+
+    sql_for_tags.Transaction := trans;
+
+    tagsHere := TagsMap.Create;
+
+    sql_for_tags.Active := False;
+
+    loadTagsForPages(page.id, tagsHere, sql_for_tags, trans);
+
+    tags_html := tagsInPageHtml(tagsHere, form1.PrefferedExtension.Text);
+
+    tagsHere.Free;
+
+    sql_for_tags.Free;
+
+    page.tags := tags_html;
+
+
+
+    for page_param_num := 1 to 7 do
+    begin
+      page.user_field_names[page_param_num] :=
+        sqlJoin.FieldByName(
+        'ufn' + IntToStr(page_param_num)).AsString;
+      page.user_field_values[page_param_num] :=
+        sqlJoin.FieldByName(
+        'uf' + IntToStr(page_param_num)).AsString;
+
     end;
 
- fbuffer.Free;
+
+    if chkGetBlocksFromFile.Checked then
+      page.headtpl := headT
+    else
+      page.headtpl := sqlJoin.FieldByName('headtpl').AsString;
+    if chkGetBlocksFromFile.Checked then
+      page.bodytpl := bodyT
+    else
+      page.bodytpl := sqlJoin.FieldByName('bodytpl').AsString;
 
 
-   cnt:=form1.Titles.Lines.Count;
-   pBar.Max:=cnt;
-   pBar.Step:=1;
-   pBar.Min:=1;
-   pBar.Position:=1;
-   k:=0;
-
-   (* Сборка страниц *)
-   sqlJoin.Open;
-   sqlJoin.First;
-
-   while not sqlJoin.EOF do
-         begin
-
-            lbProgress.Caption:='Сборка страницы '+IntToStr(k+1)+' / '+IntToStr(cnt);
-
-            page.id := sqlJoin.FieldByName('id').AsString;
-            page.title := sqlJoin.FieldByName('caption').AsString;
-            page.body := sqlJoin.FieldByName('content').AsString;
-            page.section_id := sqlJoin.FieldByName('section_id').AsString;
-            page.section_title := sqlJoin.FieldByName('section').AsString;
-            page.sitename := sqlJoin.FieldByName('sitename').AsString;
-            page.dirpath := sqlJoin.FieldByName('dirpath').AsString;
-            page.dt:=sqlJoin.FieldByName('dt').AsDateTime;
-            page.tree:=sqlJoin.FieldByName('tree').AsString;
-
-            //получить теги страницы
-
-            sql_for_tags:=TSQLQuery.Create(Self);
-
-            sql_for_tags.SQLConnection:=conn;
-
-            sql_for_tags.Transaction:=trans;
-
-            tagsHere:=TagsMap.Create;
-
-            sql_for_tags.Active:=false;
-
-            loadTagsForPages(page.id, tagsHere, sql_for_tags, trans);
-
-            tags_html:=tagsInPageHtml(tagsHere, form1.PrefferedExtension.text);
-
-            tagsHere.Free;
-
-            sql_for_tags.Free;
-
-            page.tags:=tags_html;
+    page.sectiontpl := sqlJoin.FieldByName('itemtpl').AsString;
 
 
+    page.dir := sqlJoin.FieldByName('dirpath').AsString;
 
-            for page_param_num:=1 to 7 do
-              begin
-                page.user_field_names[ page_param_num ]:=
-                                       sqlJoin.FieldByName('ufn'+IntToStr(page_param_num)).AsString;
-                page.user_field_values[ page_param_num ]:=
-                                       sqlJoin.FieldByName('uf'+IntToStr(page_param_num)).AsString;
+    if chkUseTrees.Checked then
+    begin
+      processDir := TProcess.Create(Self);
+      processDir.CommandLine :=
+        '/usr/bin/bash -c "mkdir -p ' + page.dir + page.tree + '"';
+      processDir.Execute;
+      processDir.WaitOnExit();
+      processDir.Free;
+      filenam := page.dir + page.tree + DELIM + page.id + '.' + prefferedExtension.Text;
+    end
 
-              end;
+    else
 
+      filenam := page.dirpath + DELIM + page.id + '.' + PrefferedExtension.Text;
 
-                         if chkGetBlocksFromFile.Checked then
-                             page.headtpl := headT
-                         else
-                             page.headtpl := sqlJoin.FieldByName('headtpl').AsString;
-                         if chkGetBlocksFromFile.Checked then
-                             page.bodytpl := bodyT
-                         else
-                           page.bodytpl := sqlJoin.FieldByName('bodytpl').AsString;
-
-
-            page.sectiontpl := sqlJoin.FieldByName('itemtpl').AsString;
+    if page.dir <> '' then
+      makePageJoin(page, filenam);
 
 
-            page.dir:=sqlJoin.FieldByName('dirpath').AsString;
+    sqlJoin.Next;
+    Application.ProcessMessages;
 
-            if chkUseTrees.checked then
-              begin
-                 processDir:=TProcess.Create(Self);
-                 processDir.CommandLine:='/usr/bin/bash -c "mkdir -p '+page.dir+page.tree+'"';
-                 processDir.Execute;
-                 processDir.WaitOnExit();
-                 processDir.Free;
-                 filenam:=page.dir+page.tree+DELIM+page.id+'.'+prefferedExtension.Text;
-              end
-
-            else
-
-            filenam := page.dirpath+DELIM+page.id+'.'+PrefferedExtension.Text;
-
-           if page.dir <> '' then
-                      makePageJoin( page, filenam);
-
-
-         sqlJoin.Next;
-         Application.ProcessMessages;
-
-         inc(k);
-         pBar.Position:=k;
-         //Sleep(10000);
-         end;
-   sqlJoin.First;
-
-
-
+    Inc(k);
+    pBar.Position := k;
+    //Sleep(10000);
+  end;
+  sqlJoin.First;
 
 end;
 
-procedure TForm1.makePageJoin(page: page_params; filenam: String) ;
+procedure TForm1.makePageJoin(page: page_params; filenam: string);
 var
-  id : String;
-  t : String;
-  Rnr : Render;
-
-  Pipeline : TFuncStrArray;
-
+  id: string;
+  t: string;
+  Rnr: Render;
+  Argument : String;
+  Pipeline: TFuncStrArray;
 begin
- Rnr:=Render.Create;
+  Rnr := Render.Create;
 
 
 
-    if FileExists(filenam) then DeleteFile(filenam);
+  if FileExists(filenam) then DeleteFile(filenam);
 
-    Buffer.Clear;
-    // TODO maybe separate template
-    Buffer.Lines.Add('<!DOCTYPE html>');
-    Buffer.Lines.Add('<html><head>{header}');
-    Buffer.Lines.Add('</head><body>');
-    Buffer.Lines.Add('{body}');
-    Buffer.Lines.Add('</body></html>');
-    Rnr.setTemplate(Buffer.Text);
-    Rnr.setVar('header',
-                        insparamstohead(
-                         buildHead(page.title, page.headtpl),
-                                    page));
+  Buffer.Clear;
+  // TODO maybe separate template
+  Buffer.Lines.Add('<!DOCTYPE html>');
+  Buffer.Lines.Add('<html><head>{header}');
+  Buffer.Lines.Add('</head><body>');
+  Buffer.Lines.Add('{body}');
+  Buffer.Lines.Add('</body></html>');
+  Rnr.setTemplate(Buffer.Text);
+  Rnr.setVar('header',
+    insparamstohead(
+    buildHead(page.title, page.headtpl),
+    page));
 
-     t:=page.bodytpl;
-     Rnr.setVar('body',
-                       insParamsToBody(
-                             buildBody(page.title, page.body, t),
-                           page)
-                       );
-     Buffer.Lines.Text:= Rnr.getHtml();
+  t := page.bodytpl;
 
 
-     // постобработка
+
+  Rnr.setVar('body',
+    insParamsToBody(
+    buildBody(page.title, page.body, t),
+    page)
+    );
+
+  Buffer.Lines.Text := ApplyVar( Rnr.getHtml(), 'backlinks',
+                    makeBacklinkHtml(form1.map_of_backlinks, page.id));
+
+  // Render custom SQL
+  Buffer.Lines.Text := renderAllCustomRequests(
+                    Buffer.Lines.Text,
+                    conn,
+                    trans,
+                    temp_sql);
 
 
-     ComposeStrFunc( Pipeline, @useEmojies);
-     ComposeStrFunc( Pipeline, @useAttachments);
-     ComposeStrFunc( Pipeline, @useImages);
-     ComposeStrFunc( Pipeline, @remotes_urls);
-     ComposeStrFunc( Pipeline, @useMenus);
-     ComposeStrFunc( Pipeline, @useModules);
-     ComposeStrFunc( Pipeline, @useOwnTags);
-     ComposeStrFunc( Pipeline, @insertSectionsAndLinks);
-     ComposeStrFunc( Pipeline, @useBlocks);
 
 
-     Buffer.Lines.Text := buildOwnFields(buffer.Lines.Text, page);
+  // постобработка
 
-     Buffer.Lines.Text :=  ApplyStringFunctions(Buffer.Lines.Text, Pipeline);
+  ComposeStrFunc(Pipeline, @usePalettes);
+  ComposeStrFunc(Pipeline, @useSiteStats);
+  ComposeStrFunc(Pipeline, @useReplFunc);
 
-     // add custom columns with prefix custom_
-     Buffer.Lines.Text:=useCustomFields( Buffer.Lines.Text, page.id);
+  ComposeStrFunc(Pipeline, @useEmojies);
+  ComposeStrFunc(Pipeline, @useAttachments);
+  ComposeStrFunc(Pipeline, @useImages);
+  ComposeStrFunc(Pipeline, @remotes_urls);
+  ComposeStrFunc(Pipeline, @useMenus);
+  ComposeStrFunc(Pipeline, @useIfElseProcessor);
+  ComposeStrFunc(Pipeline, @useModules);
+  ComposeStrFunc(Pipeline, @useOwnTags);
+  ComposeStrFunc(Pipeline, @insertSectionsAndLinks);
+  ComposeStrFunc(Pipeline, @useBlocks);
+  ComposeStrFunc(Pipeline, @useParametrizedBlocks);
+  ComposeStrFunc(Pipeline, @useRepeater);
 
 
-                              // id of pages
-                              id := ExtractFileName(filenam);
-                              id := Copy(id, 1, Pos('.', id)-1);
-                              Buffer.Text:=StringReplace(Buffer.Text, '{id}',
-                              id , [rfReplaceAll]);
 
-                              Writer.addToJob(Buffer.Lines.Text, filenam);
+  Buffer.Lines.Text := buildOwnFields(buffer.Lines.Text, page);
 
-   Rnr.Free;
+  Argument := Buffer.Lines.Text;
+
+  // Try find Argument in Cache
+  if AppCache.isKeyExists(Argument) then
+     begin
+     // Don't execute main pipeline
+     Writer.AddToJob(AppCache.getValueByKey(Argument), filenam);
+     end
+  else begin
+
+      Buffer.Lines.Text := ApplyStringFunctions(Buffer.Lines.Text, Pipeline);
+
+      // add custom columns with prefix custom_
+      Buffer.Lines.Text := useCustomFields(Buffer.Lines.Text, page.id);
+
+
+      // id of pages
+      id := ExtractFileName(filenam);
+      id := Copy(id, 1, Pos('.', id) - 1);
+      Buffer.Text :=
+        StringReplace(Buffer.Text, '{id}', id, [rfReplaceAll]);
+  // Save to cache
+  AppCache.storeKeyValue(Argument, Buffer.Lines.Text);
+  Writer.addToJob(Buffer.Lines.Text, filenam);
+       end;
+  Rnr.Free;
 end;
 
-function TForm1.buildItem(itemtpl: string; itemUrl: string; itemTitle: string; itemDt : TDateTime; ur : user_records; tree : String; tags_html : String): string;
+function TForm1.buildItem(itemtpl: string; itemUrl: string; itemTitle: string;
+  itemDt: TDateTime; ur: user_records; tree: string; tags_html: string): string;
 var
 
-  fi : byte;
-  Rnr : Render;
-  R : String;
+  fi: byte;
+  Rnr: Render;
+  R: string;
 begin
-  Rnr:=Render.Create;
+  Rnr := Render.Create;
   Rnr.setTemplate(itemTpl);
 
-  if chkUseTrees.checked then
-     itemUrl := tree+ DELIM+itemUrl;
+  if chkUseTrees.Checked then
+    itemUrl := tree + DELIM + itemUrl;
 
- // showMessage(itemUrl);
+  // showMessage(itemUrl);
 
   // fix relative links
-  if itemUrl[1]<>'/' then itemUrl:='/'+itemUrl;
+  if itemUrl[1] <> '/' then itemUrl := '/' + itemUrl;
 
   Rnr.setVar('itemUrl', itemUrl);
   Rnr.setVar('itemTitle', itemTitle);
@@ -4662,13 +5074,14 @@ begin
   Rnr.setVar('itemTags', tags_html);
 
   // применяем пользовательские поля, если есть
-  for fi:=1 to 7 do begin
-      Rnr.setVar('f'+IntToStr(fi), ur[fi].name);
-      Rnr.setVar('v'+IntToStr(fi), ur[fi].value);
+  for fi := 1 to 7 do
+  begin
+    Rnr.setVar('f' + IntToStr(fi), ur[fi].Name);
+    Rnr.setVar('v' + IntToStr(fi), ur[fi].Value);
   end;
 
 
-  R:=Rnr.getHtml();
+  R := Rnr.getHtml();
   Rnr.Free;
 
   r := insSections(insLinks(r));
@@ -4682,36 +5095,33 @@ end;
 
 procedure TForm1.doSections;
 var
-  pagesTotal : Integer;
+  pagesTotal: integer;
 
-  PagesinRubrics : Integer;
-  itemsPerPage : Integer;
-  page : byte;
+  PagesinRubrics: integer;
+  itemsPerPage: integer;
+  page: byte;
 
+  rubrication_query: string;
+  current_preset: string;
 
+  selected_ors: string; // выбранное поле для сортировки
+  selected_orf: string; // выбранный порядок сортировки
+  useo: boolean;
+  // упорядочение по умолчанию, не добавлять папки
 
-
-  rubrication_query : String;
-  current_preset : String;
-
-  selected_ors : String; // выбранное поле для сортировки
-  selected_orf : String; // выбранный порядок сортировки
-  useo  : boolean; // упорядочение по умолчанию, не добавлять папки
-
-
-  orfs   : TStringList;
-  o : Integer;
+  orfs: TStringList;
+  o: integer;
 begin
 
- orfs := TStringList.Create;
- orfs.Clear;
- orfs.Add('dt');
- orfs.Add('caption');
+  orfs := TStringList.Create;
+  orfs.Clear;
+  orfs.Add('dt');
+  orfs.Add('caption');
 
 
 
-// некоторые данные нужно считать 1 раз
-// так как они будут нужны многократно
+  // некоторые данные нужно считать 1 раз
+  // так как они будут нужны многократно
   scanLinks();  // ссылки
   scanSections(); // секции
 
@@ -4721,439 +5131,443 @@ begin
   sqlCounter.Open; // Число страниц в каждом разделе
   sqlCounter.First;
   while not sqlCounter.EOF do
-        begin
-             Current_Preset := sqlCounter.FieldByName('preset_id').AsString;
+  begin
+    Current_Preset := sqlCounter.FieldByName('preset_id').AsString;
 
-             PagesTotal:=sqlCounter.FieldByName('cnt').AsInteger;
-             if pagesTotal <= itemsPerPage then
-                           pagesInRubrics:=1
-             else
-                 begin
-                      pagesInRubrics := pagesTotal div itemsPerPage;
-                      if (pagesTotal mod itemsPerPage)>0 then inc(pagesInRubrics);
-                 end;
-
-
-
-                application.processmessages();
+    PagesTotal := sqlCounter.FieldByName('cnt').AsInteger;
+    if pagesTotal <= itemsPerPage then
+      pagesInRubrics := 1
+    else
+    begin
+      pagesInRubrics := pagesTotal div itemsPerPage;
+      if (pagesTotal mod itemsPerPage) > 0 then Inc(pagesInRubrics);
+    end;
 
 
 
-                 pBar.Max:=pagesInRubrics;
-                 pBar.Step:=1;
-                 pBar.Min:=1;
-                 pBar.Position:=1;
-
-
-                for page := 1 to pagesInRubrics do
-                    begin
-
-                       lbProgress.Caption:='Генерация рубрики '+sqlCounter.FieldByName('section').AsString+'  :  '+IntToStr(page)+' / '+IntToStr(pagesInRubrics);
-                       sqlRubrication.Close;
+    application.ProcessMessages();
 
 
 
-                       // --------------------------------
-                       rubrication_query := rubrication_start;
+    pBar.Max := pagesInRubrics;
+    pBar.Step := 1;
+    pBar.Min := 1;
+    pBar.Position := 1;
 
 
-                       selected_ors := pors[Current_Preset]; // порядок сортировки
-                       selected_orf := porf[Current_Preset]; // поле сортировки
+    for page := 1 to pagesInRubrics do
+    begin
 
-
-
-
-
-                       makeRubricationUsingSorts(page, itemsPerPage, pagesInRubrics, rubrication_query, selected_orf, selected_ors, false);
-
-                       for o:=0 to orfs.Count-1 do
-                         begin
-
-
-
-                              selected_orf := orfs.Strings[o];
-                              selected_ors := 'ASC';
-                              sqlRubrication.Close;
-                              makeRubricationUsingSorts(page, itemsPerPage, pagesInRubrics, rubrication_query, selected_orf, selected_ors, true);
-
-                              selected_ors := 'DESC';
-                              sqlRubrication.Close;
-                              makeRubricationUsingSorts(page, itemsPerPage, pagesInRubrics, rubrication_query, selected_orf, selected_ors, true);
-
-                         end;
+      lbProgress.Caption :=
+        'Генерация рубрики ' + sqlCounter.FieldByName(
+        'section').AsString + '  :  ' + IntToStr(page) + ' / ' + IntToStr(pagesInRubrics);
+      sqlRubrication.Close;
 
 
 
-                     // -----------------------
-                    end;
-         sqlCounter.Next;
-         Application.ProcessMessages;
-        end;
+      // --------------------------------
+      rubrication_query := rubrication_start;
+
+
+      selected_ors := pors[Current_Preset];
+      // порядок сортировки
+      selected_orf := porf[Current_Preset];
+      // поле сортировки
 
 
 
 
+      makeRubricationUsingSorts(page, itemsPerPage,
+        pagesInRubrics, rubrication_query, selected_orf, selected_ors, False);
+
+      for o := 0 to orfs.Count - 1 do
+      begin
+
+        selected_orf := orfs.Strings[o];
+        selected_ors := 'ASC';
+        sqlRubrication.Close;
+        makeRubricationUsingSorts(page, itemsPerPage,
+          pagesInRubrics, rubrication_query, selected_orf, selected_ors, True);
+
+        selected_ors := 'DESC';
+        sqlRubrication.Close;
+        makeRubricationUsingSorts(page, itemsPerPage,
+          pagesInRubrics, rubrication_query, selected_orf, selected_ors, True);
+
+      end;
 
 
 
+      // -----------------------
+    end;
+    sqlCounter.Next;
+    Application.ProcessMessages;
+  end;
 
-
-
-     end;
-
-
-
-
-
-
-
+end;
 
 
 
 
 procedure TForm1.doSitemap;
 
-procedure getInfoAboutSection(id : String; var section, tree  : String);
-var sq : TSQLQuery;
-begin
- sq:=TSqlQuery.Create(self);
- sq.Transaction:=trans;
- sq.SQLConnection:=conn;
- sq.SQL.Text:='select * from section where id="'+id+'" limit 1';
- sq.ExecSQL;
- sq.Active:=true;
- sq.first;
- section:=sq.FieldByName('section').AsString;
- tree:=sq.FieldByName('tree').AsString;
+  procedure getInfoAboutSection(id: string; var section, tree: string);
+  var
+    sq: TSQLQuery;
+  begin
+    sq := TSqlQuery.Create(self);
+    sq.Transaction := trans;
+    sq.SQLConnection := conn;
+    sq.SQL.Text := 'select * from section where id="' + id + '" limit 1';
+    sq.ExecSQL;
+    sq.Active := True;
+    sq.First;
+    section := sq.FieldByName('section').AsString;
+    tree := sq.FieldByName('tree').AsString;
 
- sq.free;
- end;
+    sq.Free;
+  end;
 
-function TraverseNode(Node : TTreeNode; level : Integer) : String;
-var
-  id : String;
-  r : String;
-  section : String;
-  listItem, tree, filler : String;
-  Rnr :  Render;
-  childNode : TTreeNode;
-begin
+  function TraverseNode(Node: TTreeNode; level: integer): string;
+  var
+    id: string;
+    r: string;
+    section: string;
+    listItem, tree, filler: string;
+    Rnr: Render;
+    childNode: TTreeNode;
+  begin
 
-  if node = NIL then exit;
-  id:=node.text;
-  getInfoAboutSection(id, section, tree);
-  filler:=StringOfChar('-', level);
-  Rnr:=Render.Create;
-  Rnr.setTemplate(
-  filler + '<a href="{tree}/section_{id}.{ext}">{section}</a><br/>');
-             Rnr.setVar('id', id);
-             Rnr.setVar('section', section);
-             Rnr.setVar('tree', tree);
-             Rnr.setVar('ext', form1.PrefferedExtension.text);
-             listItem:=Rnr.getHtml();
-  Rnr.Free;
-  R:=listItem;
-  if Node.HasChildren then
+    if node = nil then exit;
+    id := node.Text;
+    getInfoAboutSection(id, section, tree);
+    filler := StringOfChar('-', level);
+    Rnr := Render.Create;
+    Rnr.setTemplate(
+      filler + '<a href="{tree}/section_{id}.{ext}">{section}</a><br/>');
+    Rnr.setVar('id', id);
+    Rnr.setVar('section', section);
+    Rnr.setVar('tree', tree);
+    Rnr.setVar('ext', form1.PrefferedExtension.Text);
+    listItem := Rnr.getHtml();
+    Rnr.Free;
+    R := listItem;
+    if Node.HasChildren then
+    begin
+      childNode := Node.GetFirstChild;
+      while childNode <> nil do
       begin
-        childNode:=Node.GetFirstChild;
-        while childNode<>NIL do
-         begin
-              R:=R+TraverseNode(childNode, level+1);
-              childNode:=childNode.GetNextSibling;
-         end;
+        R := R + TraverseNode(childNode, level + 1);
+        childNode := childNode.GetNextSibling;
       end;
-  Result:=R;
-end;
-
+    end;
+    Result := R;
+  end;
 
 var
-  sitemap_param : page_params;
-  k, cnt : byte;
+  sitemap_param: page_params;
+  k, cnt: byte;
 
-  level : Integer;
-  Rnr : Render;
-  RootNode : TTreeNode;
+  level: integer;
+  Rnr: Render;
+  RootNode: TTreeNode;
 begin
-   form1.refreshSectionTree;
+  form1.refreshSectionTree;
 
-  Rnr:=Render.create;
-  RootNode:=tvSections.Items[0];
-  sitemap_param.body:=TraverseNode(RootNode, 0);
+  Rnr := Render.Create;
+  RootNode := tvSections.Items[0];
+  sitemap_param.body := TraverseNode(RootNode, 0);
 
-  sitemap_param.headtpl:=sqlPresets.FieldByName('headtpl').AsString;
-  sitemap_param.title:='Карта сайта';
+  sitemap_param.headtpl := sqlPresets.FieldByName('headtpl').AsString;
+  sitemap_param.title := 'Карта сайта';
 
-  sitemap_param.bodytpl:=sqlPresets.FieldByName('bodytpl').AsString;
-  makePageJoin( sitemap_param,
-  sqlPresets.FieldByName('dirpath').AsString+DELIM +'sitemap.'+form1.PrefferedExtension.Text);
+  sitemap_param.bodytpl := sqlPresets.FieldByName('bodytpl').AsString;
+  makePageJoin(sitemap_param,
+    sqlPresets.FieldByName('dirpath').AsString + DELIM + 'sitemap.' +
+    form1.PrefferedExtension.Text);
 
 
   Rnr.Free;
-
 
 end;
 
 procedure TForm1.doTagsMap;
 var
-  sq : TSqlQuery;
-  tm : TagsMap;
-  tags_html: String;
-  doc : String;
-  doc_path : String;
-  i : Integer;
-  pm : PagesMap;
-  item_tag_tpl : String;
-  headtpl : String;
-  tags_tpl : String;
-  items    : String;
-  head, body : String;
-
+  sq: TSqlQuery;
+  tm: TagsMap;
+  tags_html: string;
+  doc: string;
+  doc_path: string;
+  i: integer;
+  pm: PagesMap;
+  item_tag_tpl: string;
+  headtpl: string;
+  tags_tpl: string;
+  items: string;
+  head, body: string;
 begin
   sq := TSqlQuery.Create(self);
-  sq.transaction:=form1.trans;
-  sq.SQLConnection:=form1.conn;
+  sq.transaction := form1.trans;
+  sq.SQLConnection := form1.conn;
 
-  tm:=TagsMap.Create;
+  tm := TagsMap.Create;
 
   loadAllTagsForSitemap(tm, sq, trans);
 
-  tags_html:=tagsInSitemap(tm);
+  tags_html := tagsInSitemap(tm);
 
 
-  head:=ApplyVar( sqlPresets.FieldByName('headtpl').AsString, 'title', 'Теги');
+  head := ApplyVar(sqlPresets.FieldByName('headtpl').AsString, 'title', 'Теги');
 
-  body:=tags_html;
+  body := tags_html;
 
-  doc_path:=sqlPresets.FieldByName('dirpath').AsString+DELIM +'all_tags.'+form1.PrefferedExtension.Text;
+  doc_path := sqlPresets.FieldByName('dirpath').AsString + DELIM +
+    'all_tags.' + form1.PrefferedExtension.Text;
 
-  doc:='<html><head>'+head+'</head><body>'+body+'</body></hmtl>';
+  doc := '<html><head>' + head + '</head><body>' + body + '</body></hmtl>';
 
-  doc:=useMenus(usePreset(useModules(
-                         useOwnTags(
-                                    insertSectionsAndLinks(
-                                                           useBlocks(doc)
-                                                    )
-                                       ))));
+  doc := useMenus(usePreset(useModules(useOwnTags(
+    insertSectionsAndLinks(
+    useBlocks(
+    doc))
+    ))));
 
-  Writer.AddToJob( doc, doc_path);
-
-
-  if Not DirectoryExists( sqlPresets.FieldByName('dirpath').AsString+DELIM+'/tags') then
-         CreateDir(sqlPresets.FieldByName('dirpath').AsString+DELIM+'/tags');
+  Writer.AddToJob(doc, doc_path);
 
 
-  for i:=0 to tm.Count-1 do
-    begin
-         sq.Close;
-
-         pm:=PagesMap.Create;
-         loadPagesByTag(tm.Keys[i], pm, sq, trans);
-        // ShowMessage( tm.Keys[i] );
-
-         item_tag_tpl:=sqlPresets.FieldByName('item_tag_tpl').AsString;
-        // showMessage(item_tag_tpl);
-
-         items:=PagesWithTag(pm, item_tag_tpl, form1.PrefferedExtension.text, chkUseTrees.Checked);
-
-        // ShowMessage(items);
+  if not DirectoryExists(sqlPresets.FieldByName('dirpath').AsString + DELIM + '/tags') then
+    CreateDir(sqlPresets.FieldByName('dirpath').AsString + DELIM + '/tags');
 
 
-         headtpl:=sqlPresets.FieldByName('headtpl').AsString;
+  for i := 0 to tm.Count - 1 do
+  begin
+    sq.Close;
 
-         tags_tpl:=sqlPresets.FieldByName('tags_tpl').AsString;
+    pm := PagesMap.Create;
+    loadPagesByTag(tm.Keys[i], pm, sq, trans);
+    // ShowMessage( tm.Keys[i] );
 
-         head:= applyVar(headtpl, 'title',  tm.Data[i].tag_caption);
-         head:=useOwnTags(useBlocks(head));
+    item_tag_tpl := sqlPresets.FieldByName('item_tag_tpl').AsString;
+    // showMessage(item_tag_tpl);
 
-         body:= applyVar(tags_tpl, 'tagCaption', tm.Data[i].tag_caption);
-         body:= applyVar(body, 'items', items);
-         body:=useOwnTags(useBlocks(body));
+    items := PagesWithTag(pm, item_tag_tpl, form1.PrefferedExtension.Text,
+      chkUseTrees.Checked);
+
+    // ShowMessage(items);
+
+
+    headtpl := sqlPresets.FieldByName('headtpl').AsString;
+
+    tags_tpl := sqlPresets.FieldByName('tags_tpl').AsString;
+
+    head := applyVar(headtpl, 'title', tm.Data[i].tag_caption);
+    head := useOwnTags(useBlocks(head));
+
+    body := applyVar(tags_tpl, 'tagCaption', tm.Data[i].tag_caption);
+    body := applyVar(body, 'items', items);
+    body := useOwnTags(useBlocks(body));
 
 
 
-         doc:='<html><head>'+head+'</head><body>'+body+'</body></hmtl>';
-         doc:=useMenus(usePreset(useModules(
-                         useOwnTags(
-                                    insertSectionsAndLinks(
-                                                           useBlocks(doc)
-                                                    )
-                                       ))));
+    doc := '<html><head>' + head + '</head><body>' + body + '</body></hmtl>';
+    doc := useMenus(usePreset(useModules(
+      useOwnTags(
+      insertSectionsAndLinks(
+      useBlocks(
+      doc))
+      ))));
 
-         doc_path:=sqlPresets.FieldByName('dirpath').AsString+DELIM +'/tags/'+tm.Keys[i]+'.'+form1.PrefferedExtension.Text;
-         writer.AddToJob( doc, doc_path);
+    doc_path := sqlPresets.FieldByName('dirpath').AsString + DELIM
+      + '/tags/' + tm.Keys[i] + '.' + form1.PrefferedExtension.Text;
+    writer.AddToJob(doc, doc_path);
 
-         pm.Free;
-    end;
+    pm.Free;
+  end;
 
   tm.Free;
 
 
-  
+
   sq.Free;
 end;
 
 function TForm1.insertSectionsAndLinks(str: string): string;
 begin
-  Result:= insSections(insLinks(str));
+  Result := insSections(insLinks(str));
 end;
 
 procedure TForm1.scanBlocks;
-var k : byte;   i : integer;
+var
+  k: byte;
+  i: integer;
 begin
-    k:=0;
-             Blocks.Clear;
+  k := 0;
+  Blocks.Clear;
 
-   sqlBlocks.First();
-   while not sqlBlocks.EOF do
-         begin
-           Blocks.AddPair( sqlBlocks.FieldByName('id').AsString, sqlBlocks.FieldByName('markup').AsString  );
-           sqlBlocks.Next();
-           inc(k);
-           Application.ProcessMessages();
-         end;
-   sqlBlocks.First();
-   SilentMessage('ГЛОБАЛЬНЫХ БЛОКОВ '+IntToStr(k));
+  sqlBlocks.First();
+  while not sqlBlocks.EOF do
+  begin
+    Blocks.AddPair(sqlBlocks.FieldByName('id').AsString,
+      sqlBlocks.FieldByName('markup').AsString);
+    sqlBlocks.Next();
+    Inc(k);
+    Application.ProcessMessages();
+  end;
+  sqlBlocks.First();
+  SilentMessage('ГЛОБАЛЬНЫХ БЛОКОВ ' + IntToStr(k));
 
-   lvBlocks.Clear;
-   for i:=0 to Blocks.Count-1 do
-     begin
-        lvBlocks.AddItem(  Blocks.Names[i] , nil);
-     end;
+  lvBlocks.Clear;
+  for i := 0 to Blocks.Count - 1 do
+  begin
+    lvBlocks.AddItem(Blocks.Names[i], nil);
+  end;
 
 end;
 
 procedure TForm1.scanPresets;
-  var k : byte;   i : integer;
+var
+  k: byte;
+  i: integer;
 begin
-    k:=0;
-    SitePresets.Clear;
-    porf.Clear;
-    pors.Clear;
-   sqlPresets.First();
-   while not sqlPresets.EOF do
-         begin
-           pors.add(
-                    sqlPresets.FieldByName('id').AsString,
-                    sqlPresets.FieldByName('ors').AsString
-           );
-           porf.add(
-                    sqlPresets.FieldByName('id').AsString,
-                    sqlPresets.FieldByName('orf').AsString
-           );
+  k := 0;
+  SitePresets.Clear;
+  porf.Clear;
+  pors.Clear;
+  sqlPresets.First();
+  while not sqlPresets.EOF do
+  begin
+    pors.add(
+      sqlPresets.FieldByName('id').AsString,
+      sqlPresets.FieldByName('ors').AsString
+      );
+    porf.add(
+      sqlPresets.FieldByName('id').AsString,
+      sqlPresets.FieldByName('orf').AsString
+      );
 
-           SitePresets.lines.add( sqlPresets.FieldByName('id').AsString);
-           sqlPresets.Next();
-           inc(k);
-           Application.ProcessMessages;
-         end;
-   sqlPresets.First();
+    SitePresets.Lines.add(sqlPresets.FieldByName('id').AsString);
+    sqlPresets.Next();
+    Inc(k);
+    Application.ProcessMessages;
+  end;
+  sqlPresets.First();
 
-   lvPresets.Clear;
-   for i:=0 to sitePresets.Lines.Count-1 do
-     begin
-        lvPresets.AddItem( sitePresets.lines[i], nil);
-     end;
+  lvPresets.Clear;
+  for i := 0 to sitePresets.Lines.Count - 1 do
+  begin
+    lvPresets.AddItem(sitePresets.Lines[i], nil);
+  end;
 end;
 
 procedure TForm1.scanTags;
-var i : Integer;
+var
+  i: integer;
 begin
-   Tags.Clear;
-   sqlTags.First;
-   while not sqlTags.EOF do begin
-     Tags.Add(
-              sqlTags.FieldByName('tag_id').AsString,
-              sqlTags.FieldByName('tag_id').AsString
-              );
+  Tags.Clear;
+  sqlTags.First;
+  while not sqlTags.EOF do
+  begin
+    Tags.Add(
+      sqlTags.FieldByName('tag_id').AsString,
+      sqlTags.FieldByName('tag_id').AsString
+      );
 
-   sqlTags.Next;
-   end;
-   sqlTags.First;
+    sqlTags.Next;
+  end;
+  sqlTags.First;
 
-    // to interface
+  // to interface
 
 
-     for i:=0 to Tags.Count-1 do
-      begin
-        lvTags.AddItem(Tags.Keys[i], nil);
-        application.ProcessMessages;
-      end;
+  for i := 0 to Tags.Count - 1 do
+  begin
+    lvTags.AddItem(Tags.Keys[i], nil);
+    application.ProcessMessages;
+  end;
 
 end;
 
+procedure TForm1.AutoloadPalettes();
+begin
+  loadAllPalsFromDir(  ExtractFilePath(Application.ExeName) , pals);
+  // showmessage('В палитре цветов: ' + IntToStr(pals.count));
+end;
+
 procedure TForm1.scanImages;
-var i : Integer;
+var
+  i: integer;
 begin
 
   try
 
-   Images.Clear;
-   sqlGetAllImages.First;
-   while not sqlGetAllImages.EOF do begin
-     Images.Add(
-              sqlGetAllImages.FieldByName('image_id').AsString,
-              sqlGetAllImages.FieldByName('image_caption').AsString
-              );
+    Images.Clear;
+    sqlGetAllImages.First;
+    while not sqlGetAllImages.EOF do
+    begin
+      Images.Add(
+        sqlGetAllImages.FieldByName('image_id').AsString,
+        sqlGetAllImages.FieldByName('image_caption').AsString
+        );
 
-   sqlGetAllImages.Next;
-   end;
-   sqlGetAllImages.First;
+      sqlGetAllImages.Next;
+    end;
+    sqlGetAllImages.First;
 
     // to interface
 
 
-     for i:=0 to Images.Count-1 do
-      begin
-        lvImages.AddItem(Images.Keys[i], nil);
-        application.ProcessMessages;
-      end;
+    for i := 0 to Images.Count - 1 do
+    begin
+      lvImages.AddItem(Images.Keys[i], nil);
+      application.ProcessMessages;
+    end;
 
   except
-        on E: Exception do
-             ShowMessage( 'Error: '+ E.ClassName + #13#10 + E.Message );
+    on E: Exception do
+      ShowMessage('Error: ' + E.ClassName + #13#10 + E.Message);
   end;
 end;
 
 procedure TForm1.doScan;
 begin
-  Form1.Enabled:=False;
+  Form1.Enabled := False;
 
   if sqlPresets.Active then
-  sqlPresets.ApplyUpdates();
+    sqlPresets.ApplyUpdates();
 
   if sqlContent.Active then
-  sqlContent.ApplyUpdates();
+    sqlContent.ApplyUpdates();
 
 
   if sqlSections.Active then
-  sqlSections.ApplyUpdates();
+    sqlSections.ApplyUpdates();
 
   if sqlBlocks.Active then
-  sqlBlocks.ApplyUpdates();
+    sqlBlocks.ApplyUpdates();
 
   if sqlCssStyles.Active then
-  sqlCssStyles.ApplyUpdates();
+    sqlCssStyles.ApplyUpdates();
 
   if sqlJsScripts.Active then
-  sqlJsScripts.ApplyUpdates;
+    sqlJsScripts.ApplyUpdates;
 
   if sqlTags.Active then
-  sqlTags.ApplyUpdates;
+    sqlTags.ApplyUpdates;
 
   if sqlTagsPages.Active then
-  sqlTagsPages.ApplyUpdates;
+    sqlTagsPages.ApplyUpdates;
 
   if sqlMenu.Active then
-  sqlMenu.ApplyUpdates;
+    sqlMenu.ApplyUpdates;
 
-    if sqlMenuItem.Active then
-  sqlMenuItem.ApplyUpdates;
+  if sqlMenuItem.Active then
+    sqlMenuItem.ApplyUpdates;
 
-    if sqlGetAllImages.Active then
-  sqlGetAllImages.ApplyUpdates;
+  if sqlGetAllImages.Active then
+    sqlGetAllImages.ApplyUpdates;
 
-    if sqlGetAllAttachments.Active then
-  sqlGetAllAttachments.ApplyUpdates;
+  if sqlGetAllAttachments.Active then
+    sqlGetAllAttachments.ApplyUpdates;
 
 
   sqlContent.Refresh;
@@ -5187,27 +5601,27 @@ begin
 
   updateCustomColumns();
 
-  Form1.Enabled:=True;
+  Form1.Enabled := True;
 end;
 
 
 
-procedure TForm1.editor_win_show(var sql: TSQLQuery; field: String);
-
-  var fE : TfrmEditor;
+procedure TForm1.editor_win_show(var sql: TSQLQuery; field: string);
+var
+  fE: TfrmEditor;
 begin
 
   if sql.Active then sql.ApplyUpdates();
 
 
-  fE:=TfrmEditor.Create(Self);
-  fE.setMarkup( sql.FieldByName(field).AsString);
+  fE := TfrmEditor.Create(Self);
+  fE.setMarkup(sql.FieldByName(field).AsString);
   fE.ShowModal();
   conn.Open;
-  trans.Active:=true;
+  trans.Active := True;
 
   sql.Edit;
-  sql.FieldByName(field).AsString:=fE.getMarkup();
+  sql.FieldByName(field).AsString := fE.getMarkup();
 
   fE.Close();
   fE.Free;
@@ -5216,249 +5630,270 @@ end;
 
 procedure TForm1.doCssTables;
 var
-  cnt, k : byte;
-  isModuleUsed : boolean;
-  doc : String;
-  doc_path : String;
+  cnt, k: byte;
+  isModuleUsed: boolean;
+  doc: string;
+  doc_path: string;
 begin
-  isModuleUsed:=form1.chkUseModules.Checked;
+  isModuleUsed := form1.chkUseModules.Checked;
 
-  cnt:=CssTitles.Count;
-  pBar.Max:=cnt;
-  pBar.Step:=1;
-  pBar.Min:=1;
-  pBar.Position:=1;
-  k:=0;
+  cnt := CssTitles.Count;
+  pBar.Max := cnt;
+  pBar.Step := 1;
+  pBar.Min := 1;
+  pBar.Position := 1;
+  k := 0;
 
   sqlCssStyles.First;
 
-  while not sqlCssStyles.Eof do
-   begin
-     lbProgress.Caption:='Сборка CSS '+IntToStr(k+1)+' / '+IntToStr(cnt);
-     doc:=sqlCssStyles.FieldByName('css_style').AsString;
-     doc_path:=sqlCssStyles.FieldByName('css_path').AsString;
-     if isModuleUsed then
-        begin
-             doc:=useModules(doc);
-             doc:=useOwnTags(doc);
-             doc:=useMenus(doc);
-        end;
-     writer.AddToJob( doc , doc_path );
+  while not sqlCssStyles.EOF do
+  begin
+    lbProgress.Caption := 'Сборка CSS ' + IntToStr(k + 1) + ' / ' + IntToStr(cnt);
+    doc := sqlCssStyles.FieldByName('css_style').AsString;
+    doc_path := sqlCssStyles.FieldByName('css_path').AsString;
+    if isModuleUsed then
+    begin
+      doc := useModules(doc);
+      doc := useOwnTags(doc);
+      doc := useMenus(doc);
+    end;
+    writer.AddToJob(doc, doc_path);
 
-     sqlCssStyles.Next;
-     Application.ProcessMessages;
-     inc(k);
-     pBar.Position:=k;
-   end;
+    sqlCssStyles.Next;
+    Application.ProcessMessages;
+    Inc(k);
+    pBar.Position := k;
+  end;
   sqlCssStyles.First;
 end;
 
 procedure TForm1.scanJs;
-var k : integer;
-
+var
+  k: integer;
 begin
-   jsTitles.clear;
-   lvJsScripts.clear;
+  jsTitles.Clear;
+  lvJsScripts.Clear;
 
-   if not sqlJsScripts.Eof then
-         begin
+  if not sqlJsScripts.EOF then
+  begin
 
-
-
-
-  sqlJsScripts.First;
-  while not sqlJsScripts.Eof do
-   begin
-     JsTitles.AddPair( sqlJsScripts.FieldByName('js_id').AsString, '');
-     sqlJsScripts.Next;
-     Application.ProcessMessages;
-   end;
-  sqlJsScripts.First;
-
-
-  for k:=0 to JsTitles.Count-1 do
+    sqlJsScripts.First;
+    while not sqlJsScripts.EOF do
     begin
-       lvJsScripts.AddItem( jsTitles.Names[k], nil );
-       Application.ProcessMessages;
+      JsTitles.AddPair(sqlJsScripts.FieldByName('js_id').AsString, '');
+      sqlJsScripts.Next;
+      Application.ProcessMessages;
     end;
-          end;
+    sqlJsScripts.First;
+
+
+    for k := 0 to JsTitles.Count - 1 do
+    begin
+      lvJsScripts.AddItem(jsTitles.Names[k], nil);
+      Application.ProcessMessages;
+    end;
+  end;
 end;
 
 procedure TForm1.doJs;
-var cnt, i : Byte;
+var
+  cnt, i: byte;
 begin
 
-  cnt:=JsTitles.Count;
-  pBar.Max:=cnt;
-  pBar.Step:=1;
-  pBar.Min:=1;
-  pBar.Position:=1;
+  cnt := JsTitles.Count;
+  pBar.Max := cnt;
+  pBar.Step := 1;
+  pBar.Min := 1;
+  pBar.Position := 1;
 
   sqlJsScripts.First;
-  i:=0;
-  while not sqlJsScripts.Eof do
-   begin
-     lbProgress.Caption:='Генерация скриптов '+IntToStr(i+1)+' / '+IntToStr(cnt);
-     Writer.AddToJob( sqlJsScripts.FieldByName('js_file').AsString,
-            sqlJsScripts.FieldByName('js_path').AsString );
-     sqlJsScripts.Next;
-     Application.ProcessMessages;
-     inc(i);
-     pBar.Position:=i;
+  i := 0;
+  while not sqlJsScripts.EOF do
+  begin
+    lbProgress.Caption := 'Генерация скриптов ' +
+      IntToStr(i + 1) + ' / ' + IntToStr(cnt);
+    Writer.AddToJob(sqlJsScripts.FieldByName('js_file').AsString,
+      sqlJsScripts.FieldByName('js_path').AsString);
+    sqlJsScripts.Next;
+    Application.ProcessMessages;
+    Inc(i);
+    pBar.Position := i;
 
-   end;
+  end;
   sqlJsScripts.First;
 end;
 
 procedure TForm1.changeDataSourcesJs;
 begin
- try
-  dbeJsScriptId.DataSource:=ds_JsScripts;
-  dbeScriptPath.DataSource:=ds_JsScripts;
-  dbmJsScriptFile.DataSource:=ds_JsScripts;
- finally
- end
+  try
+    dbeJsScriptId.DataSource := ds_JsScripts;
+    dbeScriptPath.DataSource := ds_JsScripts;
+    dbmJsScriptFile.DataSource := ds_JsScripts;
+  finally
+  end;
 
 end;
 
 { Processing of images. Must retrieve images from blob field image_data
 and writes it to destination folder }
 procedure TForm1.doImages;
-var cnt, i : Byte;
-  image_dir : String;
+var
+  cnt, i: byte;
+  image_dir: string;
 begin
 
-   image_dir := sqlJoin.FieldByName('dirpath').AsString + '/images/';
+  image_dir := sqlJoin.FieldByName('dirpath').AsString + '/images/';
 
-   if not DirectoryExists(image_dir) then
+  if not DirectoryExists(image_dir) then
     CreateDir(image_dir);
 
 
-  cnt:=Images.Count;
-  pBar.Max:=cnt;
-  pBar.Step:=1;
-  pBar.Min:=1;
-  pBar.Position:=1;
+  cnt := Images.Count;
+  pBar.Max := cnt;
+  pBar.Step := 1;
+  pBar.Min := 1;
+  pBar.Position := 1;
 
 
 
 
   sqlGetAllImages.First;
-  i:=0;
-  while not sqlGetAllImages.Eof do
-   begin
-     lbProgress.Caption:='Генерация картинок '+IntToStr(i+1)+' / '+IntToStr(cnt);
+  i := 0;
+  while not sqlGetAllImages.EOF do
+  begin
+    lbProgress.Caption := 'Генерация картинок ' +
+      IntToStr(i + 1) + ' / ' + IntToStr(cnt);
 
 
-     if (False = sqlGetAllImages.FieldByName('image_data').IsNull) then
-                                begin
-     DBImage.Picture.SaveToFile( image_dir +
-                                 sqlGetAllImages.FieldByName('image_id').AsString);
-                                 end;
-     sqlGetAllImages.Next;
-     Application.ProcessMessages;
-     inc(i);
-     pBar.Position:=i;
+    if (False = sqlGetAllImages.FieldByName('image_data').IsNull) then
+    begin
+      DBImage.Picture.SaveToFile(
+        image_dir + sqlGetAllImages.FieldByName(
+        'image_id').AsString);
+    end;
+    sqlGetAllImages.Next;
+    Application.ProcessMessages;
+    Inc(i);
+    pBar.Position := i;
 
-   end;
+  end;
   sqlGetAllImages.First;
 end;
 
 procedure TForm1.doAttachments;
 var
-  cnt, i : Byte;
-  attachment_dir : String;
-  filename : String;
-  full_path : String;
-  blobField : TBlobField;
-
+  cnt, i: byte;
+  attachment_dir: string;
+  filename: string;
+  full_path: string;
+  blobField: TBlobField;
 begin
 
-   attachment_dir := sqlJoin.FieldByName('dirpath').AsString + '/files/';
+  attachment_dir := sqlJoin.FieldByName('dirpath').AsString + '/files/';
 
-   if not DirectoryExists(attachment_dir) then
+  if not DirectoryExists(attachment_dir) then
     CreateDir(attachment_dir);
 
 
-  cnt:=Attachments.Count;
-  pBar.Max:=cnt;
-  pBar.Step:=1;
-  pBar.Min:=1;
-  pBar.Position:=1;
+  cnt := Attachments.Count;
+  pBar.Max := cnt;
+  pBar.Step := 1;
+  pBar.Min := 1;
+  pBar.Position := 1;
 
 
 
 
   sqlGetAllAttachments.First;
-  i:=0;
-  while not sqlGetAllAttachments.Eof do
-   begin
-                                  // write not nulled
-     if (False = sqlGetAllAttachments.FieldByName('attachment_data').IsNull) then
-                                  begin
-
-     filename :=   sqlGetAllAttachments.FieldByName('attachment_id').AsString;
-
-     full_path := attachment_dir + filename;
-
-
-     lbProgress.Caption:='Генерация прикрепленных документов '+IntToStr(i+1)+' / '+IntToStr(cnt);
-
-     blobField := sqlGetAllAttachments.FieldByName('attachment_data') as TBlobField;
-
-        GetFromDatabase(blobField, full_path);
-                                       end;
-
-     sqlGetAllAttachments.Next;
-     Application.ProcessMessages;
-     inc(i);
-     pBar.Position:=i;
-
-   end;
-  sqlGetAllAttachments.First;
-end;
-
-function TForm1.insParamsToHead(head: String; page : page_params): String;
-var
-  r : String;
-  i : Integer;
-begin
-  r:=head;
-
-  r:=applyvar(r, 'sectionTitle', page.section_title);
-
-  for i:=0 to 7 do
+  i := 0;
+  while not sqlGetAllAttachments.EOF do
+  begin
+    // write not nulled
+    if (False = sqlGetAllAttachments.FieldByName('attachment_data').IsNull) then
     begin
-         r:=applyvar(r, 'f'+IntToStr(i), page.user_field_names[i]);
-         r:=applyvar(r, 'v'+IntToStr(i), page.user_field_values[i]);
+
+      filename := sqlGetAllAttachments.FieldByName('attachment_id').AsString;
+
+      full_path := attachment_dir + filename;
+
+
+      lbProgress.Caption :=
+        'Генерация прикрепленных документов ' +
+        IntToStr(i + 1) + ' / ' + IntToStr(cnt);
+
+      blobField := sqlGetAllAttachments.FieldByName('attachment_data') as TBlobField;
+
+      GetFromDatabase(blobField, full_path);
     end;
 
-  result:=r;
+    sqlGetAllAttachments.Next;
+    Application.ProcessMessages;
+    Inc(i);
+    pBar.Position := i;
+
+  end;
+  sqlGetAllAttachments.First;
 end;
 
-function TForm1.insParamsToBody(body: String; page : page_params): String;
+procedure TForm1.doCreateRss();
 var
-  r : String;
-  i : Integer;
+  websitePath : String;
+  Domain : String;
+  mode : String;
 begin
-  r:=body;
 
-  r:=applyvar(r, 'dt', DateToStr(page.dt));
-  r:=applyvar(r, 'tags', page.tags);
+   // get url from preset
+   Domain := form1.sqlPresets.FieldByName('websiteUrl').AsString;
+
+    websitePath := form1.sqlPresets.FieldByName('dirpath').AsString;
+    if FileExists(  websitePath + '/latest_news.xml' ) then
+       DeleteFile(  websitePath + '/latest_news.xml' );
+    if not form1.chkUseTrees.Checked then mode := 'plain' else mode := 'tree';
+    writeRssFeed(mode, Domain, websitePath + '/latest_news.xml', form1.conn, form1.trans);
+
+
+end;
+
+function TForm1.insParamsToHead(head: string; page: page_params): string;
+var
+  r: string;
+  i: integer;
+begin
+  r := head;
+
+  r := applyvar(r, 'sectionTitle', page.section_title);
+
+  for i := 0 to 7 do
+  begin
+    r := applyvar(r, 'f' + IntToStr(i), page.user_field_names[i]);
+    r := applyvar(r, 'v' + IntToStr(i), page.user_field_values[i]);
+  end;
+
+  Result := r;
+end;
+
+function TForm1.insParamsToBody(body: string; page: page_params): string;
+var
+  r: string;
+  i: integer;
+begin
+  r := body;
+
+  r := applyvar(r, 'dt', DateToStr(page.dt));
+  r := applyvar(r, 'tags', page.tags);
 
 
   // TODO Сюда дополнительные параметры страницы
-  result:=r;
+  Result := r;
 end;
 
-function TForm1.getSortSelector(section : String; tree : String): String;
+function TForm1.getSortSelector(section: string; tree: string): string;
 var
-  s : String;
-  orfs : sdict;
-  i : Integer;
-  base_url : String;
+  s: string;
+  orfs: sdict;
+  i: integer;
+  base_url: string;
 begin
-
 
   orfs := sdict.Create();
   orfs.Clear;
@@ -5466,630 +5901,667 @@ begin
   orfs.Add('dt', 'По дате');
 
 
-  s:='<a href="{base_url}/section_'+section+'.html">#</a>';
+  s := '<a href="{base_url}/section_' + section + '.html">#</a>';
 
-  for i:=0 to orfs.Count - 1 do
-        s:=s+' &nbsp;|&nbsp; <a href="{base_url}/o/'+orfs.Keys[i]+'-DESC/section_'+section+'.html">&#x25BC;</a>&nbsp;' + orfs.Data[i] +
-             '&nbsp;<a href="{base_url}/o/'+orfs.Keys[i]+'-ASC/section_'+section+'.html">&#x25B2;</a>&nbsp;|&nbsp;';
+  for i := 0 to orfs.Count - 1 do
+    s := s + ' &nbsp;|&nbsp; <a href="{base_url}/o/' + orfs.Keys[i] +
+      '-DESC/section_' + section + '.html">&#x25BC;</a>&nbsp;' + orfs.Data[i] +
+      '&nbsp;<a href="{base_url}/o/' + orfs.Keys[i] + '-ASC/section_' +
+      section + '.html">&#x25B2;</a>&nbsp;|&nbsp;';
   base_url := '';
-  if chkUseTrees.Checked then base_url:=tree;
-  s:=ApplyVar(s, 'base_url', base_url);
-  result := s;
+  if chkUseTrees.Checked then base_url := tree;
+  s := ApplyVar(s, 'base_url', base_url);
+  Result := s;
 
 end;
 
 // TODO refactor this sorts
-procedure TForm1.makeRubricationUsingSorts(
-page : Integer; itemsPerPage : Integer; pagesInRubrics : Integer; rubrication_query: String;
-selected_orf : String; selected_ors : String; useo : boolean);
+procedure TForm1.makeRubricationUsingSorts(page: integer; itemsPerPage: integer;
+  pagesInRubrics: integer; rubrication_query: string; selected_orf: string;
+  selected_ors: string; useo: boolean);
 var
-  headHtml : String;
-  itemHtml : String;
-  sectionId  : String;
-  itemK : byte;
-  selector_order : String;
-  sectionHtml : String;
-  document : String;
-  path : String;
-  ur : user_records;
-  fi : byte;
-  cnt, k : byte;
-  bpager : String;
-  so : string;
-  tree : string;
-  path_with_tree : string;
-  base_path : string;
-  sort_path : string;
+  headHtml: string;
+  itemHtml: string;
+  sectionId: string;
+  itemK: byte;
+  selector_order: string;
+  sectionHtml: string;
+  document: string;
+  path: string;
+  ur: user_records;
+  fi: byte;
+  cnt, k: byte;
+  bpager: string;
+  so: string;
+  tree: string;
+  path_with_tree: string;
+  base_path: string;
+  sort_path: string;
 
-  ProcessDir : TProcess;
-  tm : TagsMap;
-  sq : TSqlQuery;
-  tags_html : String;
-  Rnr : Render;
-  RnrHead : Render;
-  RnrDoc  : Render;
+  ProcessDir: TProcess;
+  tm: TagsMap;
+  sq: TSqlQuery;
+  tags_html: string;
+  Rnr: Render;
+  RnrHead: Render;
+  RnrDoc: Render;
+  Argument : String;
 begin
 
+  rubrication_query := applyvar(rubrication_query, 'ors', selected_ors);
+  rubrication_query :=
+    applyvar(rubrication_query, 'orf', selected_orf);
+
+
+
+
+  sqlRubrication.SQL.Text := rubrication_query;
 
+  prepared_transaction_start(sqlRubrication.SQL.Text,
+    sqlRubrication, trans);
+
+  sectionId := sqlCounter.FieldByName('section').AsString;
+
+
+  sqlRubrication.ParamByName('section_id').AsString := sectionId;
+  sqlRubrication.ParamByName('pageoffset').AsInteger :=
+    (page - 1) * itemsPerPage;
+  sqlRubrication.ParamByName('pagelimit').AsInteger := itemsPerPage;
 
-  rubrication_query:=applyvar(rubrication_query, 'ors', selected_ors);
-                       rubrication_query:=applyvar(rubrication_query, 'orf', selected_orf);
+  prepared_transaction_end(sqlRubrication, trans);
+  sqlRubrication.Open;
 
+  itemHtml := '';
+  itemK := 0;
+  sqlRubrication.First;
 
 
+  while not sqlRubrication.EOF do
+  begin
+    pBar.Max := itemsPerPage;
+    Inc(itemK);
+    pBar.Position := itemK;
+    lbProgress.Caption :=
+      'Сборка элемента ' + IntToStr(itemK) + ' / ' + IntToStr(itemsPerPage) +
+      ' ' + sqlRubrication.FieldByName('content_id').AsString;
+    for fi := 1 to 7 do
+    begin
+      ur[fi].Name :=
+        sqlRubrication.FieldByName('ufn' + IntToStr(fi)).AsString;
+      ur[fi].Value :=
+        sqlRubrication.FieldByName('uf' + IntToStr(fi)).AsString;
+    end;
 
-                       sqlRubrication.SQL.Text:=rubrication_query;
+    tm := TagsMap.Create;
+    sq := TSqlQuery.Create(Self);
+    sq.SQLConnection := conn;
+    sq.Transaction := trans;
 
-                       prepared_transaction_start(sqlRubrication.SQL.Text, sqlRubrication, trans);
+    loadTagsForPages(
+      sqlRubrication.FieldByName('content_id').AsString, tm, sq, trans);
 
-                       sectionId := sqlCounter.FieldByName('section').AsString;
+    sq.Free;
 
+    tags_html :=
+      tagsInPageHtml(tm, form1.PrefferedExtension.Text);
 
-                       sqlRubrication.ParamByName('section_id').AsString:=sectionId;
-                       sqlRubrication.ParamByName('pageoffset').AsInteger:=(page-1)*itemsPerPage;
-                       sqlRubrication.ParamByName('pagelimit').AsInteger := itemsPerPage;
+    tm.Free;
 
-                       prepared_transaction_end(sqlRubrication, trans);
-                       sqlRubrication.Open;
+    itemHTML :=
+      itemHtml + useCustomFields(
+      buildItem(
+      sqlRubrication.FieldByName('itemtpl').AsString,
+      sqlRubrication.FieldByName('content_id').AsString,
+      sqlRubrication.FieldByName('caption').AsString,
+      sqlRubrication.FieldByName('dt').AsDateTime,
+      ur, sqlRubrication.FieldByName('tree').AsString,
+      tags_html),
+      sqlRubrication.FieldByName('content_id').AsString);
+    sqlRubrication.Next;
+    Application.ProcessMessages;
+  end;
 
-                       itemHtml := '';
-                       itemK:=0;
-                       sqlRubrication.First;
 
+  Rnr := Render.Create;
+  RnrHead := Render.Create;
+  RnrDoc := Render.Create;
 
-                       while not sqlRubrication.EOF do
-                             begin
-                                 pBar.Max:=itemsPerPage;
-                                 inc(itemK);
-                                 pBar.Position:=itemK;
-                                 lbProgress.Caption:='Сборка элемента '+IntToStr(itemK)+' / '+IntToStr(itemsPerPage) + ' '+ sqlRubrication.FieldByName('content_id').AsString;
-                                  for fi:=1 to 7 do
-                                      begin
-                                         ur[fi].name:=sqlRubrication.FieldByName('ufn'+IntToStr(fi)).AsString;
-                                         ur[fi].value:=sqlRubrication.FieldByName('uf'+IntToStr(fi)).AsString;
-                                      end;
+  sectionHtml :=
+    buildSection(sqlRubrication.FieldByName('sectiontpl').AsString,
+    sqlRubrication.FieldByName('id').AsString,
+    sqlRubrication.FieldByName(
+    'section').AsString,
+    sqlRubrication.FieldByName('note').AsString,
+    sqlRubrication.FieldByName(
+    'full_text').AsString, itemHtml);
 
-                                  tm:=TagsMap.Create;
-                                  sq:=TSqlQuery.Create(Self);
-                                  sq.SQLConnection:=conn;
-                                  sq.Transaction:=trans;
+  Rnr.setTemplate(sectionHtml);
 
-                                  loadTagsForPages(sqlRubrication.FieldByName('content_id').AsString, tm, sq, trans);
 
-                                  sq.free;
+  bpager :=
+    buildPagination(sqlRubrication.FieldByName('id').AsString,
+    page,
+    pagesInRubrics,
+    selected_orf,
+    selected_ors,
+    useO,
+    chkUseTrees.Checked,
+    sqlRubrication.FieldByName(
+    'tree').AsString);
 
-                                  tags_html:=tagsInPageHtml(tm, form1.PrefferedExtension.text);
+  Rnr.setVar('pager', bpager);
+  selector_order :=
+    form1.getSortSelector(sectionId, sqlRubrication.FieldByName('tree').AsString);
+  Rnr.setVar('sort_order', selector_order);
 
-                                  tm.free;
 
-                                   itemHTML := itemHtml +
-                                   useCustomFields(
-                                   buildItem(
-                                     sqlRubrication.FieldByName('itemtpl').AsString,
-                                     sqlRubrication.FieldByName('content_id').AsString,
-                                     sqlRubrication.FieldByName('caption').AsString,
-                                     sqlRubrication.FieldByName('dt').AsDateTime,
-                                     ur, sqlRubrication.FieldByName('tree').AsString,
-                                     tags_html), sqlRubrication.FieldByName('content_id').asString);
-                                   sqlRubrication.Next;
-                                   Application.ProcessMessages;
-                             end;
+  Rnr.setVar(
+    'sectionTitle', sqlRubrication.FieldByName('section').AsString);
+  Rnr.setVar(
+    'sectionNote', sqlRubrication.FieldByName('note').AsString);
+  Rnr.setVar('sectionFullText',
+    sqlRubrication.FieldByName('full_text').AsString);
 
 
-                            Rnr := Render.Create;
-                            RnrHead:= Render.Create;
-                            RnrDoc := Render.Create;
 
-                            sectionHtml := buildSection( sqlRubrication.FieldByName('sectiontpl').AsString,
-                                              sqlRubrication.FieldByName('id').asString,
-                                              sqlRubrication.FieldByName('section').AsString,
-                                              sqlRubrication.FieldByName('note').AsString,
-                                              sqlRubrication.FieldByName('full_text').AsString,
-                                              itemHtml );
 
-                            Rnr.setTemplate(sectionHtml);
+  RnrHead.setTemplate(
+    buildHead(
+    sqlRubrication.FieldByName('section').AsString,
+    sqlRubrication.FieldByName(
+    'headtpl').AsString));
 
+  RnrHead.setVar('sectionTitle',
+    sqlRubrication.FieldByName('section').AsString);
 
-                            bpager:=buildPagination( sqlRubrication.FieldByName('id').AsString,
-                                                    page,
-                                                    pagesInRubrics,
-                                                    selected_orf,
-                                                    selected_ors,
-                                                    useO,
-                                                    chkUseTrees.Checked,
-                                                    sqlRubrication.FieldByName('tree').AsString);
 
-                            Rnr.setVar( 'pager', bpager );
-                            selector_order := form1.getSortSelector(sectionId, sqlRubrication.FieldByName('tree').AsString);
-                            Rnr.setVar('sort_order', selector_order);
 
 
-                            Rnr.setVar( 'sectionTitle', sqlRubrication.FieldByName('section').AsString);
-                            Rnr.setVar( 'sectionNote', sqlRubrication.FieldByName('note').AsString);
-                            Rnr.setVar( 'sectionFullText', sqlRubrication.FieldByName('full_text').AsString);
+  RnrDoc.setTemplate(
+    '<html><head>{header}</head><body>{body}</body>');
 
+  headHtml := rnrHead.getHtml();
+  sectionHtml := rnr.getHtml();
 
 
 
-                            RnrHead.setTemplate(
-                                      buildHead( sqlRubrication.FieldByName('section').AsString,
-                                                  sqlRubrication.FieldByName('headtpl').AsString));
+  RnrDoc.setVar('header', headHtml);
+  RnrDoc.setVar('body', sectionHtml);
+  document := RnrDoc.getHtml();
 
-                            RnrHead.setVar('sectionTitle',  sqlRubrication.FieldByName('section').AsString);
+  Rnr.Free;
+  RnrHead.Free;
+  RnrDoc.Free;
 
 
+  // compute path
 
+  so := '';
+  if useO then so := 'o/' + selected_orf + '-' + selected_ors + '/';
+  base_path := sqlRubrication.FieldByName('dirpath').AsString;
 
+  tree := sqlRubrication.FieldByName('tree').AsString;
+  path_with_tree :=
+    sqlRubrication.FieldByName('dirpath').AsString + tree;
 
-                            RnrDoc.setTemplate('<html><head>{header}</head><body>{body}</body>');
+  if chkUseTrees.Checked then
+    base_path := path_with_tree;
 
-                            headHtml := rnrHead.getHtml();
-                            sectionHtml:= rnr.getHtml();
+  if not DirectoryExists(base_path + DELIM + 'o') then
+    CreateDir(base_path + DELIM + 'o');
 
+  sort_path := base_path + DELIM + so;
 
+  // for different_sorts need different folrders
+  if not DirectoryExists(sort_path) then
+    CreateDir(sort_path);
 
-                            RnrDoc.setVar('header', headHtml);
-                            RnrDoc.setVar('body', sectionHtml);
-                            document:=RnrDoc.getHtml();
 
-                            Rnr.Free;
-                            RnrHead.Free;
-                            RnrDoc.Free;
+  if page > 1 then
 
+    path :=
+      base_path + DELIM + '{so}section_' +
+      sqlRubrication.FieldByName('id').AsString +
+      '_' + IntToStr(page) + '.html'
+  else
+  begin
+    path := base_path + DELIM + '{so}section_' +
+      sqlRubrication.FieldByName('id').AsString + '.html';
+  end;
 
+  path := applyvar(path, 'so', so);
 
+  // постобработка
 
+  Argument := document;
 
-                            // постобработка
+  if AppCache.isKeyExists(Argument) then begin
+      Writer.addToJob(AppCache.getValueByKey(document), path);
+  end else begin
 
-                            document:=
-                                  useModules(
-                                    useOwnTags(
-                                       insertSectionsAndLinks(
-                                      useBlocks(
-                                                document ))));
+  document :=
+    useModules(
+    useOwnTags(
+    insertSectionsAndLinks(
+    useBlocks(
+    document))));
 
-                            if (logger_info)   then
-                            mmRubrics.Lines.Add(document);
+  if (logger_info) then
+    mmRubrics.Lines.Add(document);
 
-                            so:='';
-                            if useO then so:='o/'+selected_orf+'-'+selected_ors+'/';
 
+  if chkUseTrees.Checked then
+  begin
+    ProcessDir := TProcess.Create(Self);
+    ProcessDir.CommandLine :=
+      '/usr/bin/bash -c "mkdir -p ' + path_with_tree + '"';
+    ProcessDir.WaitOnExit;
+    ProcessDir.Free;
+  end;
 
+  AppCache.storeKeyValue(Argument, document);
+  Writer.addToJob(document,
+    path
+    );
+  end;
 
-                            if chkUseTrees.checked then
-                              begin
-                                   ProcessDir:=TProcess.Create(Self);
-                                   ProcessDir.CommandLine:='/usr/bin/bash -c "mkdir -p '+ path_with_tree +'"';
-                                   ProcessDir.WaitOnExit;
-                                   ProcessDir.Free;
-                              end;
-
-
-                            base_path:=sqlRubrication.FieldByName('dirpath').AsString;
-
-                            tree:=sqlRubrication.FieldByName('tree').AsString;
-                            path_with_tree:=sqlRubrication.FieldByName('dirpath').AsString+tree;
-
-                            if chkUseTrees.Checked then
-                               base_path:=path_with_tree;
-
-                            if not DirectoryExists(base_path+DELIM+'o') then
-                               CreateDir( base_path+DELIM+'o' );
-
-                            sort_path:= base_path+DELIM+so;
-
-                            // for different_sorts need different folrders
-                            If Not DirectoryExists(  sort_path ) then
-                               CreateDir( sort_path );
-
-
-                            if page > 1 then
-
-                            path:=
-                            base_path + DELIM + '{so}section_'+
-                            sqlRubrication.FieldByName('id').AsString+'_'+IntToStr(page)+'.html'
-                            else
-                              begin
-                            path:=base_path + DELIM +'{so}section_'+
-                            sqlRubrication.FieldByName('id').AsString+'.html';
-                              end;
-
-                            path:=applyvar(path, 'so', so);
-
-
-
-                            Writer.addToJob( document,
-                            path
-                                           );
-
-
-                     pBar.Max:=pagesInRubrics;
-                     pBar.Position:=page;
+  pBar.Max := pagesInRubrics;
+  pBar.Position := page;
 end;
 
-procedure TForm1.AfterPostHelper(var lv : TListView; var sql : TSQLQuery; field : String);
-var field_id : String;  i : Integer;  flag : boolean;
+procedure TForm1.AfterPostHelper(var lv: TListView; var sql: TSQLQuery;
+  field: string);
+var
+  field_id: string;
+  i: integer;
+  flag: boolean;
 begin
-  field_id:=sql.FieldByName(field).AsString;
-  flag := true;
-   for i:=0 to lv.Items.Count-1 do
-       if lv.Items[i].Caption = field_id then
-              begin
-                   flag:=false;
-                   break;
-              end;
-   if flag then
-          lv.AddItem(field_id, nil);
+  field_id := sql.FieldByName(field).AsString;
+  flag := True;
+  for i := 0 to lv.Items.Count - 1 do
+    if lv.Items[i].Caption = field_id then
+    begin
+      flag := False;
+      break;
+    end;
+  if flag then
+    lv.AddItem(field_id, nil);
 end;
 
 procedure TForm1.BeforeDeleteHelper(var lv: TListView; var sql: TSQLQuery;
-  field: String);
-var delete_id : String; i : Integer;
+  field: string);
+var
+  delete_id: string;
+  i: integer;
 begin
-  delete_id:=sql.FieldByName(field).AsString;
-  lv.ItemIndex:=-1;
-  for i:=0 to lv.Items.Count-1 do
-      if lv.Items[i]<>nil  then
-         if lv.Items[i].Caption = delete_id then
-            begin
-                 lv.Items.Delete(i);
-            end;
+  delete_id := sql.FieldByName(field).AsString;
+  lv.ItemIndex := -1;
+  for i := 0 to lv.Items.Count - 1 do
+    if lv.Items[i] <> nil then
+      if lv.Items[i].Caption = delete_id then
+      begin
+        lv.Items.Delete(i);
+      end;
 end;
 
 procedure TForm1.listViewClickHelper(var lv: TListView; var sql: TSQLQuery;
-  field: String);
-var v : String;
+  field: string);
+var
+  v: string;
 begin
   if lv.ItemIndex >= 0 then
-    begin
-  v := lv.Items.Item[ lv.ItemIndex ].Caption;
-  sql.Locate(field, v, []);
-    end;
+  begin
+    v := lv.Items.Item[lv.ItemIndex].Caption;
+    sql.Locate(field, v, []);
+  end;
 end;
 
-procedure TForm1.insertArticlesToNode(var Node: TTreeNode; section: String);
+procedure TForm1.insertArticlesToNode(var Node: TTreeNode; section: string);
 var
-   sql : TSqlQuery;
-   iNode : TTreeNode;
+  sql: TSqlQuery;
+  iNode: TTreeNode;
 begin
-  sql:=TSQLQuery.Create(Self);
+  sql := TSQLQuery.Create(Self);
 
-  sql.Transaction:=trans;
-  sql.SQLConnection:=conn;
-  sql.SQL.Text := 'select * from content where section="'+section+'"';
+  sql.Transaction := trans;
+  sql.SQLConnection := conn;
+  sql.SQL.Text := 'select * from content where section="' + section + '"';
 
   sql.ExecSQL;
-  sql.Active:=True;
+  sql.Active := True;
   sql.First;
-  while not sql.eof do
-   begin
-     iNode:=tvContent.Items.AddChild(Node, sql.FieldByName('id').AsString);
-     iNode.ImageIndex:=1;
-     sql.next;
-   end;
+  while not sql.EOF do
+  begin
+    iNode := tvContent.Items.AddChild(Node, sql.FieldByName('id').AsString);
+    iNode.ImageIndex := 1;
+    sql.Next;
+  end;
 
   sql.Free;
 end;
 
 procedure TForm1.updateCustomColumns;
 var
-   sq : TSQLQuery;
-   field_name : String;
-   field_type : String;
+  sq: TSQLQuery;
+  field_name: string;
+  field_type: string;
 begin
-  sq:=TSQLQuery.Create(Self);
-  sq.SQLConnection:=conn;
-  sq.SQLTransaction:=trans;
+  sq := TSQLQuery.Create(Self);
+  sq.SQLConnection := conn;
+  sq.SQLTransaction := trans;
   open_sql('PRAGMA TABLE_INFO(content)', sq);
-  sq.first;
+  sq.First;
   listFields.Clear;
-  while not sq.eof do
-   begin
-     field_name:=sq.FieldByName('name').AsString;
-     field_type:=sq.FieldByName('type').AsString;
-     listFields.Items.add(field_name);
-     sq.next;
-   end;
+  while not sq.EOF do
+  begin
+    field_name := sq.FieldByName('name').AsString;
+    field_type := sq.FieldByName('type').AsString;
+    listFields.Items.add(field_name);
+    sq.Next;
+  end;
   sq.Free;
 end;
 
-procedure TForm1.addCustomColumn(field_name, field_type: String);
-var sq : TSQLQuery;
+procedure TForm1.addCustomColumn(field_name, field_type: string);
+var
+  sq: TSQLQuery;
 begin
   if field_name.Contains('custom_') then
-     begin
-  sq:=TSQLQuery.create(Self);
-  sq.SQLConnection:=conn;
-  sq.SQLTransaction:=trans;
-  sq.SQL.Text:='ALTER TABLE content ADD COLUMN '+field_name+' '+field_type;
-  sq.ExecSQL;
-  sq.Free;
-     end;
-end;
-
-procedure TForm1.deleteCustomColumn(field_name: String);
-var sq : TSQLQuery;
-begin
-  if field_name.Contains('custom_') then begin
-  sq:=TSQLQuery.create(self);
-  sq.SQLConnection:=conn;
-  sq.SQLTransaction:=trans;
-  sq.SQL.Text:='ALTER TABLE content DROP COLUMN '+field_name;
-  sq.ExecSQL;
-  sq.Free;
+  begin
+    sq := TSQLQuery.Create(Self);
+    sq.SQLConnection := conn;
+    sq.SQLTransaction := trans;
+    sq.SQL.Text := 'ALTER TABLE content ADD COLUMN ' + field_name + ' ' + field_type;
+    sq.ExecSQL;
+    sq.Free;
   end;
 end;
 
-function TForm1.useCustomFields( template: String; page_id: String): String;
+procedure TForm1.deleteCustomColumn(field_name: string);
 var
-   sq : TSQLQuery;
-   i : Integer;
-   R : String;
-   rnr : Render;
+  sq: TSQLQuery;
+begin
+  if field_name.Contains('custom_') then
+  begin
+    sq := TSQLQuery.Create(self);
+    sq.SQLConnection := conn;
+    sq.SQLTransaction := trans;
+    sq.SQL.Text := 'ALTER TABLE content DROP COLUMN ' + field_name;
+    sq.ExecSQL;
+    sq.Free;
+  end;
+end;
+
+function TForm1.useCustomFields(template: string; page_id: string): string;
+var
+  sq: TSQLQuery;
+  i: integer;
+  R: string;
+  rnr: Render;
 begin
   rnr := Render.Create;
   rnr.setTemplate(template);
 
-  sq:=TSQLQuery.create(self);
-  sq.SQLConnection:=conn;
-  sq.SQLTransaction:=trans;
-  sq.SQL.Text:='SELECT * FROM content WHERE id="'+page_id+'" LIMIT 1';
+  sq := TSQLQuery.Create(self);
+  sq.SQLConnection := conn;
+  sq.SQLTransaction := trans;
+  sq.SQL.Text := 'SELECT * FROM content WHERE id="' + page_id + '" LIMIT 1';
   sq.ExecSQL;
-  sq.Active:=True;
+  sq.Active := True;
   sq.First;
-  for i:=0 to listFields.Count-1 do
-      begin
-        if ListFields.Items[i].Contains('custom_') then
-           begin
-           // todo not strings
-             rnr.setVar( ListFields.Items[i], sq.FieldByName( ListFields.Items[i] ).AsString);
-           end;
-      end;
-   R:=Rnr.getHtml();
+  for i := 0 to listFields.Count - 1 do
+  begin
+    if ListFields.Items[i].Contains('custom_') then
+    begin
+      // todo not strings
+      rnr.setVar(ListFields.Items[i], sq.FieldByName(
+        ListFields.Items[i]).AsString);
+    end;
+  end;
+  R := Rnr.getHtml();
 
   sq.Free;
-  rnr.free;
+  rnr.Free;
 
-  Result:=R;
+  Result := R;
 end;
 
-function TForm1.remotes_urls(app: String): String;
+function TForm1.remotes_urls(app: string): string;
 
-function CurlGet(URL: String): String;
+  function CurlGet(URL: string): string;
+  var
+    CurlProcess: TProcess;
+    Response: TStringList;
+    file_name: string;
+    R: string;
+  begin
+    R := '';
+    CurlProcess := TProcess.Create(Self);
+    file_name := form1.edPathToBuild.Text + '/temp_text.txt';
+    CurlProcess.CommandLine := '/usr/bin/curl ' + URL + ' -o ' + file_name;
+    //showMessage(CurlProcess.CommandLine);
+    CurlProcess.Execute;
+    while CurlProcess.Running do ;
+    CurlProcess.Free;
+    Response := TStringList.Create;
+    if FileExists(file_name) then
+    begin
+      Response.LoadFromFile(file_name);
+      R := Response.Text;
+      DeleteFile(file_name);
+    end;
+    Response.Free;
+    Result := R;
+  end;
+
 var
-  CurlProcess : TProcess;
-  Response : TStringList;
-  file_name : String;
-  R : String;
-begin
-  R:='';
-  CurlProcess:=TProcess.Create(Self);
-  file_name:=form1.edPathToBuild.Text +'/temp_text.txt';
-  CurlProcess.CommandLine:='/usr/bin/curl '+URL+ ' -o '+file_name;
-  //showMessage(CurlProcess.CommandLine);
-  CurlProcess.Execute;
-  while CurlProcess.Running do ;
-  CurlProcess.Free;
-  Response:=TStringList.Create;
-  if FileExists(file_name) then
-      begin
-           Response.LoadFromFile(file_name);
-           R:=Response.Text;
-           DeleteFile(file_name);
-      end;
-  Response.Free;
-  Result:=R;
-end;
-
-
-var
-   re : TRegExpr;
-   http_template : String;
-   url : String;
-   urls_list : TStringList;
-   i : Integer;
-   Rnr : Render;
-   Response : TStrings;
-   var_name : String;
-   var_value : String;
+  re: TRegExpr;
+  http_template: string;
+  url: string;
+  urls_list: TStringList;
+  i: integer;
+  Rnr: Render;
+  Response: TStrings;
+  var_name: string;
+  var_value: string;
 begin
 
-
-  Rnr:=Render.Create;
+  Rnr := Render.Create;
   Rnr.setTemplate(app);
 
   urls_list := TStringList.Create;
 
-  http_template:='([\w\d@:%._\+~#=?()&//]+)';
+  http_template := '([\w\d@:%._\+~#=?()&//]+)';
 
 
-  re := TRegExpr.Create('{remote_url="'+http_template+'"}');
+  re := TRegExpr.Create('{remote_url="' + http_template + '"}');
 
 
-  if re.Exec(app) then begin
-       url:=re.Match[1];
-       urls_list.Add( url );
-       while re.ExecNext do begin
-         url := re.Match[1];
-         urls_list.Add( url ) ;
-         Application.ProcessMessages;
-      end;
+  if re.Exec(app) then
+  begin
+    url := re.Match[1];
+    urls_list.Add(url);
+    while re.ExecNext do
+    begin
+      url := re.Match[1];
+      urls_list.Add(url);
+      Application.ProcessMessages;
+    end;
   end;
 
-  for i:=0 to urls_list.Count-1 do
-       begin
-        url:=urls_list.Strings[i];
-        Response := TStrings.Create;
-        var_name := 'remote_url="'+url+'"';
-        var_value := CurlGet(url);
+  for i := 0 to urls_list.Count - 1 do
+  begin
+    url := urls_list.Strings[i];
+    Response := TStrings.Create;
+    var_name := 'remote_url="' + url + '"';
+    var_value := CurlGet(url);
 
-        //showMessage(var_name);
-        //showMessage(var_value);
-        Rnr.setVar(var_name, var_value);
-        Response.Free;
-       end;
-  urls_list.free;
+    //showMessage(var_name);
+    //showMessage(var_value);
+    Rnr.setVar(var_name, var_value);
+    Response.Free;
+  end;
+  urls_list.Free;
   Result := Rnr.getHtml();
   Rnr.Free;
 
 end;
 
-procedure TForm1.SaveSpecialSettings(path : String);
+procedure TForm1.SaveSpecialSettings(path: string);
 var
-   fout : file of TSpecial_Settings;
-
-
+  fout: file of TSpecial_Settings;
 begin
 
   form1.loadfromui_special_setting();
-  if path='' then
-     if SaveDialog1.Execute then
-         path  := SaveDialog1.FileName;
-  if path <> '' then begin
-  AssignFile(fout, path);
-  Rewrite(fout);
-  Write(fout, special_settings);
-  closefile(fout);
+  if path = '' then
+    if SaveDialog1.Execute then
+      path := SaveDialog1.FileName;
+  if path <> '' then
+  begin
+    AssignFile(fout, path);
+    Rewrite(fout);
+    Write(fout, special_settings);
+    closefile(fout);
   end;
 
 end;
 
-procedure TForm1.RestoreSpecialSettings(path : String);
+procedure TForm1.RestoreSpecialSettings(path: string);
 var
-   fin : file of TSpecial_Settings;
-
+  fin: file of TSpecial_Settings;
 begin
   if path = '' then
-   if OpenDialog1.Execute then
-          path := SaveDialog1.FileName;
-    if path <> '' then begin
-          AssignFile(fin, path);
-          Reset(fin);
-          Read(fin, special_settings);
-          closefile(fin);
-          updateui_special_setting();
-     end;
+    if OpenDialog1.Execute then
+      path := SaveDialog1.FileName;
+  if path <> '' then
+  begin
+    AssignFile(fin, path);
+    Reset(fin);
+    Read(fin, special_settings);
+    closefile(fin);
+    updateui_special_setting();
+  end;
 end;
 
 procedure TForm1.loadfromui_special_setting;
 begin
-  special_settings.ArchiveName:=form1.edArchiveName.Text;
-  special_settings.ext:=form1.PrefferedExtension.Text;
-  special_settings.fileManager:=form1.edFileManager.Text;
-  special_settings.Locale:=form1.cboLocale.ItemIndex;
-  special_settings.LocalWysiwygExpress:=form1.edLocalWysigygServer.Text;
-  special_settings.numOfRecords:=StrToInt(form1.edItemsPerPage.Text);
-  special_settings.pathToBuild:=form1.edPathToBuild.Text;
-  special_settings.UseGlobalsFromFiles:=form1.chkGetBlocksFromFile.Checked;
-  special_settings.UseModule:=form1.chkUseModules.checked;
-  special_settings.useTree:=form1.chkUseTrees.Checked;
-  special_settings.zipCommandLine:=form1.ZipArchiverCommand.Text;
-  special_settings.pathToGhPages:=form1.edGithubPagesPath.Text;
+  special_settings.ArchiveName := form1.edArchiveName.Text;
+  special_settings.ext := form1.PrefferedExtension.Text;
+  special_settings.fileManager := form1.edFileManager.Text;
+  special_settings.Locale := form1.cboLocale.ItemIndex;
+  special_settings.LocalWysiwygExpress := form1.edLocalWysigygServer.Text;
+  special_settings.numOfRecords := StrToInt(form1.edItemsPerPage.Text);
+  special_settings.pathToBuild := form1.edPathToBuild.Text;
+  special_settings.UseGlobalsFromFiles := form1.chkGetBlocksFromFile.Checked;
+  special_settings.UseModule := form1.chkUseModules.Checked;
+  special_settings.useTree := form1.chkUseTrees.Checked;
+  special_settings.zipCommandLine := form1.ZipArchiverCommand.Text;
+  special_settings.pathToGhPages := form1.edGithubPagesPath.Text;
 
-  special_settings.ftpIp:=form1.edFtpIP.text;
-  special_settings.ftpUserName:=form1.edFtpUsername.text;
-  special_settings.ftpPassword:=form1.edFtpPassword.text;
-  special_settings.ftpPort:=form1.edFtpPort.text;
+  special_settings.ftpIp := form1.edFtpIP.Text;
+  special_settings.ftpUserName := form1.edFtpUsername.Text;
+  special_settings.ftpPassword := form1.edFtpPassword.Text;
+  special_settings.ftpPort := form1.edFtpPort.Text;
 
-  special_settings.webLocalServerIp:=form1.edIpAddress.text;
-  special_settings.webLocalServerPort:=form1.edPort.text;
+  special_settings.webLocalServerIp := form1.edIpAddress.Text;
+  special_settings.webLocalServerPort := form1.edPort.Text;
 end;
 
 procedure TForm1.updateui_special_setting;
 begin
-  form1.edArchiveName.Text:= special_settings.ArchiveName;
-  form1.PrefferedExtension.Text:=special_settings.ext;
-  form1.edFileManager.Text:=special_settings.fileManager;
-  form1.cboLocale.ItemIndex:=special_settings.Locale;
-  form1.edLocalWysigygServer.Text:=special_settings.LocalWysiwygExpress;
-  form1.edItemsPerPage.Text:=IntToStr(special_settings.numOfRecords);
-  form1.edPathToBuild.Text:=special_settings.pathToBuild;
-  form1.chkGetBlocksFromFile.Checked:=special_settings.UseGlobalsFromFiles;
-  form1.chkUseModules.checked:= special_settings.UseModule;
-  form1.chkUseTrees.Checked:=special_settings.useTree;
-  form1.ZipArchiverCommand.Text:=special_settings.zipCommandLine;
-  form1.edGithubPagesPath.Text:=special_settings.pathToGhPages;
+  form1.edArchiveName.Text := special_settings.ArchiveName;
+  form1.PrefferedExtension.Text := special_settings.ext;
+  form1.edFileManager.Text := special_settings.fileManager;
+  form1.cboLocale.ItemIndex := special_settings.Locale;
+  form1.edLocalWysigygServer.Text := special_settings.LocalWysiwygExpress;
+  form1.edItemsPerPage.Text := IntToStr(special_settings.numOfRecords);
+  form1.edPathToBuild.Text := special_settings.pathToBuild;
+  form1.chkGetBlocksFromFile.Checked := special_settings.UseGlobalsFromFiles;
+  form1.chkUseModules.Checked := special_settings.UseModule;
+  form1.chkUseTrees.Checked := special_settings.useTree;
+  form1.ZipArchiverCommand.Text := special_settings.zipCommandLine;
+  form1.edGithubPagesPath.Text := special_settings.pathToGhPages;
 
 
 
-  form1.edFtpIP.text:=special_settings.ftpIp;
-  form1.edFtpUsername.text:=special_settings.ftpUserName;
-  form1.edFtpPassword.text:=special_settings.ftpPassword;
-  form1.edFtpPort.text:=special_settings.ftpPort;
+  form1.edFtpIP.Text := special_settings.ftpIp;
+  form1.edFtpUsername.Text := special_settings.ftpUserName;
+  form1.edFtpPassword.Text := special_settings.ftpPassword;
+  form1.edFtpPort.Text := special_settings.ftpPort;
 
-  form1.edIpAddress.text:=special_settings.webLocalServerIp;
-  form1.edPort.text:=special_settings.webLocalServerPort;
+  form1.edIpAddress.Text := special_settings.webLocalServerIp;
+  form1.edPort.Text := special_settings.webLocalServerPort;
 end;
 
 
 
 
 procedure TForm1.setAttachment;
-    var
-      blobField : TBlobField;
-      filename  : String;
+var
+  blobField: TBlobField;
+  filename: string;
 begin
-
-
 
   blobField := sqlGetAllAttachments.FieldByName('attachment_data') as TBlobField;
 
-  if Form1.opdSelectFileAsAttachment.execute then
-   begin
-     try
-      filename :=    Form1.opdSelectFileAsAttachment.FileName;
+  if Form1.opdSelectFileAsAttachment.Execute then
+  begin
+    try
+      filename := Form1.opdSelectFileAsAttachment.FileName;
       SaveToDatabaze(blobField, filename);
 
-     except on E: Exception do ShowMessage(E.Message);
-     end;
-   end;
-
+    except
+      on E: Exception do ShowMessage(E.Message);
+    end;
+  end;
 
 end;
 
 procedure TForm1.getAttachment;
 var
-  filename : String;
-  blobField : TBlobField;
+  filename: string;
+  blobField: TBlobField;
 begin
-    
-   blobField := sqlGetAllAttachments.FieldByName('attachment_data') as TBlobField;
-   form1.svdGetFromDatabase.FileName := sqlGetAllAttachments.FieldByName('attachment_id').AsString;
-   if svdGetFromDatabase.Execute then
-    begin
-           try
-         filename :=  form1.svdGetFromDatabase.FileName;
-         GetFromDatabase(blobField,  filename );
 
-           except on E: Exception do ShowMessage(E.Message);
-           end;
+  blobField := sqlGetAllAttachments.FieldByName('attachment_data') as TBlobField;
+  form1.svdGetFromDatabase.FileName :=
+    sqlGetAllAttachments.FieldByName('attachment_id').AsString;
+  if svdGetFromDatabase.Execute then
+  begin
+    try
+      filename := form1.svdGetFromDatabase.FileName;
+      GetFromDatabase(blobField, filename);
 
+    except
+      on E: Exception do ShowMessage(E.Message);
     end;
+
+  end;
 
 end;
 
 procedure TForm1.displayAttachmentStatus;
 begin
- if sqlGetAllAttachments.FieldByName('attachment_data').IsNull then
-               form1.lbIsFileUploaded.Caption:='Не загружено'
-               else
-               form1.lbIsFileUploaded.Caption:='Загружено';
+  if sqlGetAllAttachments.FieldByName('attachment_data').IsNull then
+    form1.lbIsFileUploaded.Caption := 'Не загружено'
+  else
+    form1.lbIsFileUploaded.Caption := 'Загружено';
 end;
 
+
+{ CENTRAL ACTION OF WHOLE APPLICATION }
 procedure TForm1.actionBuildSite();
-var start, stop: TDateTime;
-ptr : Pointer;
-
-
+var
+  start, stop: TDateTime;
+  ptr: Pointer;
 begin
-
-
-
-  start:=Now();
-
+  // применяем изменения
+  AutoPostAndApplyUpdates();
+  start := Now();
+  form1.scanBacklinks; // строим карту обратных ссылок
   form1.scanLinks(); // сканер ссылок нужен для автозамены
-  form1.scanSections(); // сканер секций нужен для автозамены
+  form1.scanSections();
+  // сканер секций нужен для автозамены
   form1.scanBlocks(); // сканируем блоки
 
 
@@ -6104,20 +6576,21 @@ begin
   doJs(); // скрипты
   doTagsMap(); // все теги на сайте
 
-  doImages();
-  doAttachments();
+  doImages(); // изображения
+  doAttachments(); // прикрепленные файлы
+
 
   Writer.processEach();
 
 
-
-  stop:=Now();
+  doCreateRss(); // создание RSS
+  stop := Now();
 
 
   mmRubrics.Lines.Add('НА СБОРКУ ПОТРЕБОВАЛОСЬ СЕКУНД:');
-  mmRubrics.Lines.Add(FloatToStr(MilliSecondsBetween(start, stop)/1000));
+  mmRubrics.Lines.Add(FloatToStr(MilliSecondsBetween(start, stop) / 1000));
 
-  mmRubrics.Lines.Add('Обработано файлов: '+IntToStr(writer.last+1));
+  mmRubrics.Lines.Add('Обработано файлов: ' + IntToStr(writer.last + 1));
 
 end;
 
@@ -6132,118 +6605,121 @@ begin
 
   try
 
-   // use settings in dialog
-   FontDialog.Font.Assign(FontManager.Font);
+    // use settings in dialog
+    FontDialog.Font.Assign(FontManager.Font);
 
-   // Show the font dialog
-   if FontDialog.Execute then
+    // Show the font dialog
+    if FontDialog.Execute then
 
-       // use selected font
-       FontManager.useFont(FontDialog.Font);
+      // use selected font
+      FontManager.useFont(FontDialog.Font);
 
   finally
     FontDialog.Free;
   end;
 
 
-      // Apply the selected fonts to UI
+  // Apply the selected fonts to UI
 
-      setFontsToUI(FontManager.Font);
-
-
-
+  setFontsToUI(FontManager.Font);
 
 end;
 
-procedure TForm1.setFontsToUI(SomeFont : TFont);
+procedure TForm1.setFontsToUI(SomeFont: TFont);
 begin
- fContent.Font :=  SomeFont;
-  dbmSectionFullText.Font :=  SomeFont;
-  dbeBlockHtml.Font :=  SomeFont;
-  dbmCssStyle.Font :=  SomeFont;
-  dbmJsScriptFile.Font :=  SomeFont;
+  fContent.Font := SomeFont;
+  dbmSectionFullText.Font := SomeFont;
+  dbeBlockHtml.Font := SomeFont;
+  dbmCssStyle.Font := SomeFont;
+  dbmJsScriptFile.Font := SomeFont;
   dbmMenuTpl.Font := SomeFont;
-  dbmMenuItemTpl.Font :=  SomeFont;
+  dbmMenuItemTpl.Font := SomeFont;
   dbmHeadTemplate.Font := SomeFont;
-  dbmBodyPagesTemplate.Font :=  SomeFont;
+  dbmBodyPagesTemplate.Font := SomeFont;
   dbmBodySectionsTemplate.Font := SomeFont;
-  dbmTemplateOfItem.Font :=  SomeFont;
+  dbmTemplateOfItem.Font := SomeFont;
   dbmTagsTemplate.Font := SomeFont;
-  dbmItemTagTemplate.Font :=  SomeFont;
+  dbmItemTagTemplate.Font := SomeFont;
 end;
 
 procedure TForm1.initFontsState();
 var
-   FontManager : TFontManager;
+  FontManager: TFontManager;
 begin
   FontManager := TFontManager.Create();
-  setFontsToUI(FontManager.Font)
+  setFontsToUI(FontManager.Font);
 
 end;
 
 { #todo : Localization - loading from ini }
-procedure TForm1.loadLocaleFromIni(FileName: String);
+procedure TForm1.loadLocaleFromIni(FileName: string);
 var
   Ini: TIniFile;
   Control: TControl;
   CaptionValue: string;
-  index : Integer;
- begin
+  index: integer;
+begin
   Ini := TMemIniFile.Create(Filename);
   try
     // Loop through each control on the form
-    for index:=0 to self.ComponentCount-1 do begin
-      if Components[Index] is TMenuItem then begin
+    for index := 0 to self.ComponentCount - 1 do
+    begin
+      if Components[Index] is TMenuItem then
+      begin
 
-                    (Self.Components[index] as TMenuItem).Caption:= Ini.ReadString('UI',
-                                                                    (Self.Components[index] as TMenuItem).Name,
-                                                                    (Self.Components[index] as TMenuItem).Caption);
-      end else
+        (Self.Components[index] as TMenuItem).Caption :=
+          Ini.ReadString('UI',
+          (Self.Components[index] as TMenuItem).Name,
+          (
+          Self.Components[index] as TMenuItem).Caption);
+      end
+      else
       if Components[Index] is TControl then
-          if (Components[Index] is TButton) or (Components[Index] is TLabel) or
-             (Components[Index] is TTabSheet) or (Components[Index] is TMenuItem)
-                        then
-            begin
-                  Control := TControl(Components[Index]);
-                  // Restore locale
-                   CaptionValue := Ini.ReadString('UI', Control.Name, Control.Caption);
-                   Control.Caption := CaptionValue; // Set the caption
-            end;
+        if (Components[Index] is TButton) or (Components[Index] is TLabel) or
+          (Components[Index] is TTabSheet) or (Components[Index] is TMenuItem)
+        then
+        begin
+          Control := TControl(Components[Index]);
+          // Restore locale
+          CaptionValue := Ini.ReadString('UI', Control.Name, Control.Caption);
+          Control.Caption := CaptionValue; // Set the caption
+        end;
     end; {for}
     Ini.UpdateFile;
   finally
     Ini.Free;
   end; {try}
 end;
-
-
-
 
 
 
 
 { #todo : saving localization to ini }
-procedure TForm1.saveLocaleToIni(FileName: String);
+procedure TForm1.saveLocaleToIni(FileName: string);
 var
   Ini: TMemIniFile;
   Control: TControl;
-  index : Integer;
+  index: integer;
 begin
   Ini := TMemIniFile.Create(Filename);
   try
     // Loop through each control on the form
-    for index:=0 to self.ComponentCount-1 do begin
-      if Components[Index] is TMenuItem then begin
-                    Ini.WriteString('UI', Self.Components[index].Name, (Self.Components[index] as TMenuItem).Caption);
-      end else
+    for index := 0 to self.ComponentCount - 1 do
+    begin
+      if Components[Index] is TMenuItem then
+      begin
+        Ini.WriteString('UI', Self.Components[index].Name,
+          (Self.Components[index] as TMenuItem).Caption);
+      end
+      else
       if Components[Index] is TControl then
-          if (Components[Index] is TButton) or (Components[Index] is TLabel) or
-             (Components[Index] is TTabSheet) then
-            begin
-                  Control := TControl(Components[Index]);
-                  // Save the caption to the INI file using the control name as the key
-                  Ini.WriteString('UI', Self.Components[index].Name, Control.Caption);
-            end;
+        if (Components[Index] is TButton) or (Components[Index] is TLabel) or
+          (Components[Index] is TTabSheet) then
+        begin
+          Control := TControl(Components[Index]);
+          // Save the caption to the INI file using the control name as the key
+          Ini.WriteString('UI', Self.Components[index].Name, Control.Caption);
+        end;
     end; {for}
     Ini.UpdateFile;
   finally
@@ -6251,25 +6727,87 @@ begin
   end; {try}
 end;
 
-function TForm1.useEmojies(s: String): String;
+function TForm1.useEmojies(s: string): string;
 var
-  emojies : TEmojiShortCodesArray;
+  emojies: TEmojiShortCodesArray;
 begin
   emojies := getEmojiShortCodes();
   Result := withEmojies(s, emojies);
 end;
 
+function TForm1.useSiteStats(s: string): string;
+var
+  stat: TSiteStats;
+begin
+  stat := TSiteStats.Create();
+  Result := stat.ReplaceStats(s);
+  stat.Free;
+end;
 
+procedure TForm1.AutoSave();
+begin
+    if form1.trans.Active then  begin
+      try
+      if form1.sqlBlocks.Active then form1.sqlBlocks.ApplyUpdates;
+      if form1.sqlContent.Active then form1.sqlContent.ApplyUpdates;
+      if form1.sqlCssStyles.Active then form1.sqlCssStyles.ApplyUpdates;
+      if form1.sqlJsScripts.Active then form1.sqlJsScripts.ApplyUpdates;
+      if form1.sqlMenu.Active then form1.sqlMenu.ApplyUpdates;
+      if form1.sqlMenuItem.Active then form1.sqlMenuItem.ApplyUpdates;
+      if form1.sqlTags.Active then form1.sqlTags.ApplyUpdates;
+      if form1.sqlTagsPages.Active then form1.sqlTagsPages.ApplyUpdates;
+      if form1.sqlPresets.Active then form1.sqlPresets.ApplyUpdates;
+      if form1.sqlSections.Active then form1.sqlSections.ApplyUpdates;
+      if form1.sqlGetAllImages.Active then form1.sqlGetAllImages.ApplyUpdates;
+      if form1.sqlGetAllAttachments.Active then form1.sqlGetAllAttachments.ApplyUpdates;
+      form1.trans.Commit;
+     except
+           on E: EDatabaseError do begin
+                              ShowMessage('Ошибка автосохранения');
+                              end;
+      end;
+  end;
+end;
 
+{ Фильтр для контента }
+procedure TForm1.ApplyContentFilter();
+var
+  WhereClause: string; // Условие предиката Where
+begin
+  WhereClause := '';
 
+  // 1. Фильтрация поля (с помощью Sqlite функции LOWER() для текствых полей)
+  if chkFieldFilter.Checked and (cboFieldFilter.ItemIndex >= 0) and (edFieldValue.Text <> '') then
+  begin
+   { #todo Поправить фильтр по дате }
+    if cboFieldFilter.Text = 'dt' then
+      WhereClause := 'dt LIKE ' + QuotedStr('%' + edFieldValue.Text + '%')
+    else
+      WhereClause := 'LOWER(' + cboFieldFilter.Text + ') LIKE ' +
+                     QuotedStr('%' + LowerCase(edFieldValue.Text) + '%');
+  end;
 
+  // 2. Фильтрация по категории
+  if chkFilterCategory.Checked and (dblFilterCategory.KeyValue <> null) then
+  begin
+    if WhereClause <> '' then
+      WhereClause := WhereClause + ' AND ';
+    WhereClause := WhereClause + 'section = ' + QuotedStr(dblFilterCategory.KeyValue);
+  end;
 
-
-
-
-
-
-
+  // Временно деактивируем выборку
+  sqlContent.Active := False;
+  // 3. Применяем предикат, если не пуст
+  if WhereClause <> '' then
+  begin
+    sqlContent.SQL.Text := 'SELECT * FROM content WHERE ' + WhereClause;
+  end
+  else  // иначе выбираем все поля
+  begin
+    sqlContent.SQL.Text := 'SELECT * FROM content';
+  end;
+   sqlContent.Active := True;
+end;
 
 
 

@@ -8,7 +8,7 @@ interface
 uses
   Classes, SysUtils, DB, BufDataset, Forms, Controls, Graphics, Dialogs,
   DBCtrls,   SQLite3Conn, SQLDB, process, StdCtrls, ExtCtrls, ComCtrls, Menus, DBGrids,
-  db_helpers, types_for_app;
+  db_helpers, types_for_app, random_data;
 
 type
 
@@ -113,45 +113,86 @@ implementation
  procedure insertDemoDataContent(var sq : TSQLQuery; var konnect : TSQLite3Connection; var tranzact : TSQLTransaction);
  var p : tpage_record;
      FS: TFormatSettings;
+     I : Integer;
+     Categories: array of String;
+     IdsOfPages : TStringList;
+     RandomPageIndex : Integer;
+     RandomPageId : String;
  begin
+ IdsOfPages := TStringList.Create;
+
+ Categories := ['blog', 'photos'];
   checkConnect(konnect, tranzact, 'нет соединения <insertDemoDataContent>!');
 
   p.id:='index';
   p.cap:='Hello!';
-  p.content:= 'This is my first static page. Here link <<blog>> to section';
+  p.content:= 'This is my first static page. Here link <<blog>> to section. <br/>';
+  p.content:= 'Backlinks test: {backlinks}';
   p.section:='blog';
   FS.DateSeparator:='.';
   FS.ShortDateFormat := 'dd.mm.yyyy';
   FS.ShortTimeFormat := 'hh:mm:ss';
   p.dt:=StrToDateTime('26.11.2022');
   addIntoContent(p, sq, konnect, tranzact);
+  IdsOfPages.Add(p.id);
 
   p.id:='about';
   p.cap:='Other page';
-  p.content:= 'This is my second static page. See <<photos>>. Here link <<blog>> to section';
+  p.content:= 'This is my second static page. Ref to [index]. See <<photos>>. Here link <<blog>> to section';
   p.section:='blog';
   addIntoContent(p, sq, konnect, tranzact);
-
+  IdsOfPages.Add(p.id);
 
   p.id:='photos1';
   p.cap:='Demo image 1';
-  p.content:='<img width="640" src="https://iso.500px.com/wp-content/uploads/2015/01/50shades_17.jpg">. Here link <<blog>> to section';
+  p.content:='<img width="640" src="https://iso.500px.com/wp-content/uploads/2015/01/50shades_17.jpg">. <br/> Ref to [index] <br/> Here link <<blog>> to section';
   p.section:='photos';
   addIntoContent(p, sq, konnect, tranzact);
+  IdsOfPages.Add(p.id);
 
   p.id:='photos2';
   p.cap:='Demo image2';
-  p.content:='<img width="640" src="https://images.squarespace-cdn.com/content/v1/5b0cc6d2e2ccd12e7e8c03c6/1542800092550-16CBUJK7FOSVUC5SC46D/levitating_woman_hat_01.jpg?format=1000w"/>. See <<photos>>. Here link <<blog>> to section';
+  p.content:='<img width="640" src="https://images.squarespace-cdn.com/content/v1/5b0cc6d2e2ccd12e7e8c03c6/1542800092550-16CBUJK7FOSVUC5SC46D/levitating_woman_hat_01.jpg?format=1000w"/>. <br/> Ref to [index] <br/> See <<photos>>. Here link <<blog>> to section';
   p.section:='photos';
 
+
   addIntoContent(p, sq, konnect, tranzact);
+  IdsOfPages.Add(p.id);
   // параметризированный запрос
 
   //or possibly CommitRetaining, depending on how your application is set up
   // SilentMessage('Демо данные установлены, страницы');
 
+  Randomize;
+  for I:=1 to 100 do begin
+    p.id:=getRandomString(32);
+    p.cap:='Caption for '+p.id;
+    p.content:='<p style="text-align:center"><img width="360" style="width:360px;height:auto" src="https://random-image-pepebigotes.vercel.app/api/random-image"></p>';
+    p.content:= p.content + GenerateHTMLParagraphs(10) + '<p>In category:<<'+p.section+'>></p>';
+      // Check if the list is not empty
+    if IdsOfPages.Count > 0 then
+    begin
+      // Initialize the random number generator
 
 
+      // Generate a random index within the range of the list
+      RandomPageIndex := Random(IdsOfPages.Count);
+
+      // Retrieve the random string
+      RandomPageId := IdsOfPages[RandomPageIndex];
+      p.content := p.content + '<p>Random internal ref link [' + RandomPageId + '] .</p>';
+
+    end;
+
+
+    p.dt:=StrToDateTime('26.11.2022');
+    p.section:=getRandomCategory(Categories);
+    addIntoContent(p, sq, konnect, tranzact);
+     IdsOfPages.Add(p.id);
+     Application.ProcessMessages;
+  end;
+
+    IdsOfPages.Free;
 end;
 
 procedure insertDemoDataSections(var sq : TSQLQuery; var konnect : TSQLite3Connection; var tranzact : TSQLTransaction);
@@ -218,7 +259,7 @@ end;
      pr.ors:='asc';
      pr.tags_tpl:='{mainmenu}<h1>Тег: {tagCaption}</h1> Список страниц :<ul>{items}</ul>';
      pr.item_tag_tpl:='<li><a href="{itemUrl}.{ext}">{itemTitle}</a></li>';
-
+     pr.websiteUrl:='127.0.0.1';
      addIntoPreset(pr, sq, konnect, tranzact);
 
 
@@ -498,8 +539,10 @@ end;
 
 
    prepared_transaction_start(
-   'insert into preset (id, sitename,dirpath,headtpl,bodytpl,sectiontpl,itemtpl, ors, orf,  tags_tpl, item_tag_tpl ) values '+
-  '(:ID,:SITENAME,:DIRPATH,:HEADTPL,:BODYTPL,:SECTIONTPL,:ITEMTPL, :ORS, :ORF, :TAGS_TPL, :ITEM_TAG_TPL)',
+   'insert into preset (id, sitename,dirpath,headtpl,bodytpl,sectiontpl,itemtpl, ors, '+
+   'orf,  tags_tpl, item_tag_tpl, websiteUrl ) values '+
+  '(:ID,:SITENAME,:DIRPATH,:HEADTPL,:BODYTPL,:SECTIONTPL,:ITEMTPL, :ORS,'+
+  ' :ORF, :TAGS_TPL, :ITEM_TAG_TPL, :WEBSITE_URL)',
   sq, tranzact);
 
    with pr do begin
@@ -515,6 +558,7 @@ end;
   sq.Params.ParamByName('ORS').AsString := ors;
   sq.Params.ParamByName('TAGS_TPL').AsString := tags_tpl;
   sq.Params.ParamByName('ITEM_TAG_TPL').AsString := item_tag_tpl;
+  sq.Params.ParamByName('WEBSITE_URL').AsString := websiteUrl;
           end;
 
  prepared_transaction_end( sq, tranzact);

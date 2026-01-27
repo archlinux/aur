@@ -25,10 +25,10 @@
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="3"/>
       <RevisionNr Value="5"/>
-      <BuildNr Value="132"/>
+      <BuildNr Value="167"/>
       <Language Value="0419"/>
       <Attributes pvaPreRelease="True"/>
-      <StringTable CompanyName="artnazarov.ru" LegalCopyright="Artyom Nazarov (artnazarov.ru)" ProductName="HtmlBuilder"/>
+      <StringTable CompanyName="https://htmlbuilder.onhalt.site" LegalCopyright="Artyom Nazarov (https://artnazarov.github.io)" ProductName="HtmlBuilder"/>
     </VersionInfo>
     <BuildModes Count="1">
       <Item1 Name="Default" Default="True"/>
@@ -42,24 +42,45 @@
         <Mode0 Name="default"/>
       </Modes>
     </RunParams>
-    <RequiredPackages Count="5">
+    <RequiredPackages Count="12">
       <Item1>
-        <PackageName Value="DateTimeCtrls"/>
+        <PackageName Value="laz_synapse"/>
       </Item1>
       <Item2>
-        <PackageName Value="SynEdit"/>
+        <PackageName Value="editor_css_window"/>
       </Item2>
       <Item3>
-        <PackageName Value="DBFLaz"/>
+        <PackageName Value="editor_js_window"/>
       </Item3>
       <Item4>
-        <PackageName Value="FCL"/>
+        <PackageName Value="Editor_Html_Window"/>
       </Item4>
       <Item5>
-        <PackageName Value="LCL"/>
+        <PackageName Value="SQLDBLaz"/>
       </Item5>
+      <Item6>
+        <PackageName Value="TurboPowerIPro"/>
+      </Item6>
+      <Item7>
+        <PackageName Value="LazUtils"/>
+      </Item7>
+      <Item8>
+        <PackageName Value="DateTimeCtrls"/>
+      </Item8>
+      <Item9>
+        <PackageName Value="SynEdit"/>
+      </Item9>
+      <Item10>
+        <PackageName Value="DBFLaz"/>
+      </Item10>
+      <Item11>
+        <PackageName Value="FCL"/>
+      </Item11>
+      <Item12>
+        <PackageName Value="LCL"/>
+      </Item12>
     </RequiredPackages>
-    <Units Count="25">
+    <Units Count="36">
       <Unit0>
         <Filename Value="htmlbuilder.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -182,6 +203,52 @@
         <Filename Value="emoji_shortcodes.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit24>
+      <Unit25>
+        <Filename Value="func_str_composition.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit25>
+      <Unit26>
+        <Filename Value="chat_client_thread.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit26>
+      <Unit27>
+        <Filename Value="replcallfunc.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ReplCallFunc"/>
+      </Unit27>
+      <Unit28>
+        <Filename Value="sitestats.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="SiteStats"/>
+      </Unit28>
+      <Unit29>
+        <Filename Value="dbmemo_autocomplete.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit29>
+      <Unit30>
+        <Filename Value="internal_backlinks.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit30>
+      <Unit31>
+        <Filename Value="random_data.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit31>
+      <Unit32>
+        <Filename Value="rss_feed.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit32>
+      <Unit33>
+        <Filename Value="url_constr.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit33>
+      <Unit34>
+        <Filename Value="launch_web_servers.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit34>
+      <Unit35>
+        <Filename Value="render_custom_request.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit35>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -192,7 +259,6 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
-      <OtherUnitFiles Value="C:\LAZARUS_LIB\SYNAPSE"/>
       <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <CodeGeneration>
