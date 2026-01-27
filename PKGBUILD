@@ -1,6 +1,6 @@
 pkgname=sundials-seq
 _pkgname=sundials
-pkgver=7.5.0
+pkgver=7.6.0
 pkgrel=1
 pkgdesc='Suite of nonlinear differential/algebraic equation solvers (sequential version)'
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=(BSD-3-Clause)
 depends=(gcc-libs glibc suitesparse superlu_mt)
 makedepends=(cmake gcc-fortran python)
 source=(https://github.com/LLNL/sundials/archive/v$pkgver/$_pkgname-$pkgver.tar.gz)
-sha256sums=('8b5fe715009cd0f1a0ff244729c2570e3e631d3bf357495e7813b5063d4d0cf3')
+sha256sums=('3e84f9e162d994d034b214279c1e5df2e2758e97051a466a5788ff9f3ff0b7be')
 provides=(sundials)
 conflicts=(sundials)
 
@@ -29,6 +29,7 @@ build() {
     -DENABLE_SUPERLUMT=ON \
     -DSUPERLUMT_THREAD_TYPE=OPENMP \
     -DSUPERLUMT_INCLUDE_DIR=/usr/include/superlu_mt \
+    -DSUPERLUMT_WORKS=ON \
     -DSUNDIALS_INDEX_SIZE=32 \
     -B build .
   cmake --build build
