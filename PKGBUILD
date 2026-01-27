@@ -2,11 +2,11 @@
 # Contributor: Eric Cheng <ericcheng@hey.com>
 
 pkgname=jellyfin-server-bin
-pkgver=10.10.7
+pkgver=10.11.6
 _pkgver="${pkgver}+deb12"
 pkgrel=1
 pkgdesc='Jellyfin server backend'
-arch=('x86_64' 'aarch64' 'armv7h')
+arch=('x86_64' 'aarch64')
 url='https://jellyfin.org/'
 license=('GPL2')
 provides=('jellyfin-server')
@@ -19,14 +19,12 @@ source=('jellyfin.conf'
         'jellyfin.tmpfiles')
 source_x86_64=("https://repo.jellyfin.org/files/server/debian/latest-stable/amd64/jellyfin-server_${_pkgver}_amd64.deb")
 source_aarch64=("https://repo.jellyfin.org/files/server/debian/latest-stable/arm64/jellyfin-server_${_pkgver}_arm64.deb")
-source_armv7h=("https://repo.jellyfin.org/files/server/debian/latest-stable/armhf/jellyfin-server_${_pkgver}_armhf.deb")
 sha256sums=('d28c4219f2ab87ca7b7e9dd53710fb689d604baffd9acb3fef6b663d537944ec'
             '0f8511673816daf528625366b6c27bc7e6182e4ac789191c87474667398376e2'
             '9bc1ddb77c73d46cc4078356b5773e5a776ebf8b47a1c820ad5fb17591ad5228'
             'b7faa4b0c756cdb361ef5b04fddfdc416b00f1246bb3a19a34bf4d185a6a7e5a')
-sha256sums_x86_64=('b72f60da5a763f30918def695dfcc74d3424e65c1dbfdd9822941d8764096854')
-sha256sums_aarch64=('fbec39665c9f1fa1a319cdd113dfc954e82d07df593c3b1145391f447d8fab43')
-sha256sums_armv7h=('010d8e6bc97776baabb3b17d4ecc5d4b95ed64656ac5e088356035143795861d')
+sha256sums_x86_64=('bdf37bb8118ad37c0d7b2609c7697c1a10dd0c7267444c1fd81c3dc138a4d360')
+sha256sums_aarch64=('af9ded4622f228436f2ab28b0dc05b0b15f30fe13098844e93ed489d5a524cc4')
 backup=('etc/conf.d/jellyfin')
 options=('staticlibs')
 
