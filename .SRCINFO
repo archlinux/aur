@@ -31,8 +31,6 @@ pkgbase = thinlinc-server
 	optdepends = openssh: native client support
 	optdepends = python-ldap: LDAP integration
 	source = tl-4.18.0-server.zip::https://www.cendio.com/downloads/server/tl-4.18.0-server.zip
-	source = LICENSE
 	sha256sums = 767fc47c46857b37ad70faefd36342ae8ddd4d44d8a1c30002340c4d7d517c56
-	sha256sums = 179583f1e2f61a9a75a99bbe8bb988e35a0216fc2ddcbd4c85ad8bdc70c3149e
 
 pkgname = thinlinc-server
