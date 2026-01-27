@@ -26,7 +26,7 @@ build() {
 
   ./config --prefix=/usr \
     --libdir=lib/openssl-1.1
-  make -j$(nproc)
+  make
 }
 
 check() {
@@ -44,6 +44,5 @@ package() {
   mkdir ${pkgdir}/usr/include/openssl-1.1/
   mv ${pkgdir}/usr/include/openssl/ ${pkgdir}/usr/include/openssl-1.1/
 
-  mv ${pkgdir}/usr/lib/openssl-1.1/libssl.so.1.1 ${pkgdir}/usr/lib
-  mv ${pkgdir}/usr/lib/openssl-1.1/libcrypto.so.1.1 ${pkgdir}/usr/lib
+  mv ${pkgdir}/usr/lib/openssl-1.1/{libssl.so.1.1,libcrypto.so.1.1} ${pkgdir}/usr/lib
 }
