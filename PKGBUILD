@@ -2,7 +2,7 @@
 
 pkgname=pufferpanel-bin
 _pkgname=pufferpanel
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="PufferPanel: A web-base game management system (binary version)."
 arch=('x86_64' 'aarch64')
@@ -17,9 +17,16 @@ optdepends=('nginx: TLS support'
 depends=()
 source_aarch64=(https://github.com/PufferPanel/PufferPanel/releases/download/v${pkgver///-}/pufferpanel_${pkgver///-}_arm64.deb)
 source_x86_64=(https://github.com/PufferPanel/PufferPanel/releases/download/v${pkgver///-}/pufferpanel_${pkgver///-}_amd64.deb)
-b2sums_x86_64=('5aa474bf2ef27e312cfbe7de64601339a2abaa2980ff5572c95846900d3948d89dc3f950223e8700a21f4150b1fa93165227f7a4631e99412c6c649b8290301c')
-b2sums_aarch64=('2227d60ef8f64f35c84385c95011f9466eb5b5336e778219fb071e83e28ba2cb4dcb5de669de08be6c07b05bcfa002105b7fd3776012479b18480def22592f34')
+b2sums_x86_64=('e41dde5f7c29928171d33a0b85da92599d91889ec0fd158ef611e3a9193c1119faffb30f30f9b1b235f37214ea282126fc84ca1e7d2c8ab861e2417ab54c4b78')
+b2sums_aarch64=('667aea3424c996c250cc89e86826f572230ee8a54c4f5e42ee9e23057a66d4bf762e5074a24e02c6a138f83d5bbf2641ec2777c2b44c9119a3f8a6cf64b9e53d')
 package() {
+  # Check openat2 exists; some other _not arch_ distros don't have this for whatever reason (like catchy)
+  #if cat /proc/kallsyms | grep do_sys_openat2zzz == false; then echo Missing openat2 support, cannot install. ; exit 1; fi
+   if !  /proc/kallsyms | grep do_sys_openat2zzz ; then
+      echo "Need openat2"
+      exit 1
+   fi
+
   tar -xJf control.tar.xz
   tar -xJf data.tar.xz
 
