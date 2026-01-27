@@ -3,7 +3,7 @@
 
 pkgname=bottles
 _pkgname=Bottles
-pkgver=60.1
+pkgver=61.1
 pkgrel=1
 epoch=2
 pkgdesc='Easily manage wine and proton prefix'
@@ -34,6 +34,7 @@ depends=(
   python-requests
   python-steamgriddb
   python-yaml
+  python-yara
   webkit2gtk
   xorg-xdpyinfo
   vkbasalt-cli
@@ -58,8 +59,8 @@ source=(
   remove-flatpak-checks.patch
 )
 sha256sums=(
-  3cdc91fab113859fcb695210fe991039a4f41643cdd9c8d0d992cbb6dd4591ea
-  ace4e81428e7991b58a2d5427cc7d3fe2dbee13b2c957fe7dfff334773a7f3b0
+  a4f0ca7111bcd0b6daff06d3c186e3412a227c4d582adf22e6e0f6c39bc59ff4
+  d2d303e8d9f8a904be554fc0b7d0a2a5f09db2799b2c496aaec2b2fffe5fc455
 )
 
 prepare() {
