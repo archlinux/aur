@@ -1,9 +1,9 @@
 pkgbase = python-uuid-utils
 	pkgdesc = Drop-in replacement for Python UUID with bindings in Rust
 	pkgver = 0.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aminalaee/uuid-utils
-	arch = any
+	arch = x86_64
 	license = BSD-3-Clause
 	checkdepends = python-pytest
 	makedepends = python-setuptools

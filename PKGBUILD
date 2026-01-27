@@ -3,9 +3,9 @@
 _base=uuid-utils
 pkgname=python-${_base}
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Drop-in replacement for Python UUID with bindings in Rust"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/aminalaee/${_base}"
 license=('BSD-3-Clause')
 depends=('python' 'python-typing_extensions')
