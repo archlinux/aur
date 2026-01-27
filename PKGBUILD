@@ -1,7 +1,7 @@
 # Maintainer: Samsagax <samsagax at gmail dot com>
 _pkgbase=chimeraos-device-quirks
 pkgname=${_pkgbase}-sk
-_srctag=v1.8.2
+_srctag=v1.9.2
 pkgver=${_srctag#v}
 pkgrel=1
 pkgdesc="A collection of device specific configuration files"
@@ -17,6 +17,7 @@ depends=(
 	'lv2'
 	'bankstown'
 	'lsp-plugins-lv2'
+	'noise-suppression-for-voice'
 )
 makedepends=('git')
 source=("${_pkgbase}::git+https://github.com/honjow/device-quirks.git#tag=${_srctag}")
