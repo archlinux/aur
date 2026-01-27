@@ -4,7 +4,7 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=spam
-_pkgver=2.11-1
+_pkgver=2.11-3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -34,8 +34,8 @@ optdepends=(
   r-truncdist
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3fa1675369dc036a1431e35f1b447951')
-b2sums=('5ea3ef57f4f0d76dba4e547b7d88534611de5d1336b7b71775012b0cdeaec0321d0ce0d3abd4267b00843210b22dff6fa8284aca7e96d9a0428b94e64227fd4f')
+md5sums=('d8182c923b4df53983c1131d7c071639')
+b2sums=('aebf11efad0d37c4d57b3077ddd36c4e60f0ad7ab367052855d457f925914c938f88286d92649bd0b48167c071be007f63e571e58ed88f910c2ad0b5aaa489f9')
 
 prepare() {
   # skip tests that require r-fields
