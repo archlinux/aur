@@ -1,4 +1,4 @@
-# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer:  Zakhar Smokotov <zaharb840@gmail.com>
 
 _pkgname="holyc-lang"
 pkgname="${_pkgname}-git"
