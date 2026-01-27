@@ -1,0 +1,14 @@
+pkgbase = zsh-uv-env-git
+	pkgdesc = Automatically activates a virtual environment based on the current directory
+	pkgver = r9.6a4b901
+	pkgrel = 1
+	url = https://github.com/matthiasha/zsh-uv-env
+	install = zsh-uv-env-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = zsh
+	source = git+https://github.com/matthiasha/zsh-uv-env
+	sha256sums = SKIP
+
+pkgname = zsh-uv-env-git
