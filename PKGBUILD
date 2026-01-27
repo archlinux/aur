@@ -2,6 +2,7 @@
 # Contributor: Morteza NourelahiAlamdari <m@0t1.me>
 # Contributor: Ray Del Rosario <michael@raydelrosario.com>
 pkgname='kubecolor'
+# renovate: datasource=github-releases depName=kubecolor/kubecolor
 pkgver=0.5.3
 pkgrel=1
 pkgdesc='Colorize your kubectl output'
