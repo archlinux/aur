@@ -35,6 +35,10 @@ _pkgext="tar.gz"
 source=("$_pkgname-$pkgver-${_commit::7}.$_pkgext"::"$url/-/archive/$_commit/$_pkgname-$_commit.$_pkgext")
 sha256sums=('SKIP')
 
+prepare() {
+  cp "$_pkgsrc"/global.json global.json
+}
+
 build() (
   export DOTNET_CLI_HOME="$SRCDEST/nuget-home"
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
