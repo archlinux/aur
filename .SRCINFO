@@ -1,7 +1,7 @@
 pkgbase = python-cssutils
 	pkgdesc = CSS Cascading Style Sheets library for Python
 	pkgver = 2.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jaraco/cssutils
 	changelog = CHANGES.rst
 	arch = any
@@ -17,6 +17,7 @@ pkgbase = python-cssutils
 	makedepends = python-toml
 	makedepends = python-wheel
 	depends = python
+	depends = python-more-itertools
 	source = https://files.pythonhosted.org/packages/source/c/cssutils/cssutils-2.11.1.tar.gz
 	sha256sums = 0563a76513b6af6eebbe788c3bf3d01c920e46b3f90c8416738c5cfc773ff8e2
 

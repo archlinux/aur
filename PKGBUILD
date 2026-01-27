@@ -11,7 +11,7 @@ pkgname=python-cssutils
 _name="${pkgname#python-}"
 
 pkgver=2.11.1
-pkgrel=1
+pkgrel=2
 
 pkgdesc='CSS Cascading Style Sheets library for Python'
 arch=('any')
@@ -19,7 +19,7 @@ url="https://github.com/jaraco/$_name"
 license=('LGPL3' 'GPL3')
 
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-setuptools-scm' 'python-toml' 'python-wheel')
-depends=('python')
+depends=(python python-more-itertools)
 checkdepends=('python-jaraco.test' 'python-mock' 'python-pytest')
 
 changelog=CHANGES.rst
