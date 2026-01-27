@@ -1,0 +1,31 @@
+# Maintainer: Local User <user@localhost>
+pkgname=dcat
+pkgver=r13.4b695f7
+pkgrel=1
+pkgdesc="A terminal-based 3D model viewer using Vulkan"
+arch=('x86_64')
+url="about:none"
+license=('custom')
+depends=('vulkan-icd-loader' 'assimp' 'glm' 'libsixel')
+makedepends=('cmake' 'shaderc' 'git')
+options=('!debug')
+source=("dcat::git+file:///home/murat/Desktop/Programs/c++/dcat")
+sha256sums=('SKIP')
+
+pkgver() {
+	cd "$pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+	# Explicitly setting CMAKE_BUILD_TYPE to Release as requested
+	cmake -B build -S "$pkgname" \
+		-DCMAKE_BUILD_TYPE='Release' \
+		-DCMAKE_INSTALL_PREFIX='/usr' \
+		-Wno-dev
+	cmake --build build
+}
+
+package() {
+	DESTDIR="$pkgdir" cmake --install build
+}

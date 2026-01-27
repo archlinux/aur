@@ -1,0 +1,19 @@
+pkgbase = dcat
+	pkgdesc = A terminal-based 3D model viewer using Vulkan
+	pkgver = r13.4b695f7
+	pkgrel = 1
+	url = about:none
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = shaderc
+	makedepends = git
+	depends = vulkan-icd-loader
+	depends = assimp
+	depends = glm
+	depends = libsixel
+	options = !debug
+	source = dcat::git+file:///home/murat/Desktop/Programs/c++/dcat
+	sha256sums = SKIP
+
+pkgname = dcat
