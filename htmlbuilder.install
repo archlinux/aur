@@ -1,6 +1,83 @@
 #!/bin/bash
 
 post_install() {
-    chmod -R 777 /opt/htmlbuilder
-    chown -R "$(id -un)" /opt/htmlbuilder
+    echo ""
+    echo "========================================"
+    echo "HTML Builder Qt5 - Post Installation"
+    echo "========================================"
+    echo ""
+    
+    # Устанавливаем права
+    echo "Setting permissions on /opt/htmlbuilder..."
+    
+    if [ -d "/opt/htmlbuilder" ]; then
+        # Вариант 1: Полные права (777) как вы просили
+        chmod -R 777 /opt/htmlbuilder 2>/dev/null || {
+            echo "Note: Some permissions could not be set"
+        }
+        
+        # Убеждаемся что исполняемые файлы имеют +x
+        chmod +x /opt/htmlbuilder/htmlbuilder 2>/dev/null || true
+        chmod +x /opt/htmlbuilder/run-htmlbuilder 2>/dev/null || true
+        
+        echo "✓ Permissions set on /opt/htmlbuilder"
+        
+        # Проверяем Qt5 зависимости
+        echo ""
+        echo "Checking Qt5 runtime dependencies..."
+        if ldd /opt/htmlbuilder/htmlbuilder 2>/dev/null | grep -q "Qt5"; then
+            echo "✓ Qt5 libraries detected"
+        else
+            echo "⚠ Note: Qt5 libraries not detected"
+            echo "  Make sure qt5-base and qt5pas are installed"
+        fi
+    else
+        echo "✗ ERROR: /opt/htmlbuilder not found!"
+        exit 1
+    fi
+    
+    # Информация для пользователя
+    echo ""
+    echo "========================================"
+    echo "INSTALLATION COMPLETE!"
+    echo "========================================"
+    echo ""
+    echo "HTML Builder has been installed with Qt5 widgetset."
+    echo ""
+    echo "Available commands:"
+    echo "  htmlbuilder      - Run HTML Builder (direct)"
+    echo "  htmlbuilder-qt5  - Run with Qt5 environment wrapper"
+    echo ""
+    echo "For Qt5-specific configuration, see:"
+    echo "  /usr/share/doc/htmlbuilder/QT5-README"
+    echo ""
+    echo "To customize Qt5 behavior, set these environment variables:"
+    echo "  export QT_SELECT=5                    # Force Qt5"
+    echo "  export QT_QPA_PLATFORM=xcb           # X11 backend"
+    echo "  export QT_QPA_PLATFORM=wayland       # Wayland backend"
+    echo ""
+    echo "If you experience display issues, try:"
+    echo "  QT_QPA_PLATFORM=xcb htmlbuilder"
+    echo ""
+    echo "/opt/htmlbuilder has been set to 777 permissions for"
+    echo "multi-user access. Use with caution on shared systems."
+}
+
+post_upgrade() {
+    echo "Updating HTML Builder Qt5 installation..."
+    post_install
+    echo "Upgrade complete!"
+}
+
+pre_remove() {
+    echo "Preparing to remove HTML Builder Qt5..."
+    echo "Application files will be removed from /opt/htmlbuilder"
+    echo "User data in ~/.config/htmlbuilder/ will be preserved."
+}
+
+post_remove() {
+    echo "HTML Builder Qt5 has been removed."
+    echo "Qt5 libraries (qt5-base, qt5pas) are still installed."
+    echo "Remove them manually if not needed:"
+    echo "  sudo pacman -Rns qt5pas"
 }

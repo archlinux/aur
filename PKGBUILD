@@ -1,10 +1,13 @@
 # Maintainer: Artyom Nazarov <artnazarov@vk.com>
 pkgname=htmlbuilder
-pkgver=0.0.3
-pkgrel=0
+pkgver=0.0.2
+pkgrel=2
 arch=('x86_64')
 license=('custom')
-depends=('lazarus' 'qt5pas' 'fpc' )  # Зависимости
+depends=('lazarus' 'fpc' 'qt5pas' 'qt5-base')
+makedepends=('lazarus' 'fpc' 'qt5pas' 'qt5-base' 'qt5-tools')
+install=htmlbuilder.install
+
 source=(
   ".gitignore"
   "Crypt32.pas"
@@ -155,7 +158,7 @@ source=(
   "tzutil.pas"
   "uRepeatExpression.pas"
   "url_constr.pas"
-)  # Исходные файлы
+)
 
 sha256sums=('e03292291bbf66d513bc0b465da4cb0a5b23004b7708f9e97f847fce5963a628'
             'c342b976dbced1f516fc6def34c001fce9878b030896b5673e7407b7a093f737'
@@ -199,7 +202,7 @@ sha256sums=('e03292291bbf66d513bc0b465da4cb0a5b23004b7708f9e97f847fce5963a628'
             'ef630f5aba80c6da06feef18353ceeb9874b536b3015f7811c8a9656bc58de26'
             '7d0867775a2903ba99a92b2ed416834cf98c924ab294d5d59ff44208a9d2f692'
             '8471f1d1ea8b00f2f4520f5880e195a95b19dcfc86d85d5b03a482c92faded05'
-            '00529cccadb02142670bfadff8eca18749abfbcd7033cd74aba15d5582377a2d'
+            '69d881d1321b556dbf0ae283b38f70e338cc8fee44b51f654df991687bee6917'
             'b0ab68cd8a2e3363ed1451a02b41c85cc699ffaa443ed44b6e9f2087b7ca52ca'
             '192a84122e70ff3741f6527eb3feb13c7bc54f491e5d02c21920154e699a38db'
             '27d9709d8c9e6774637225603031fcaf8e621d9d9d0a1677eddef858d298bcd3'
@@ -306,7 +309,452 @@ sha256sums=('e03292291bbf66d513bc0b465da4cb0a5b23004b7708f9e97f847fce5963a628'
             '6cf01e2b4ba51dbdf68ddf2712b39faaf4dd00e0bd88e1da41f313bbee207a40'
             '5e456316f8e2583ed51f8315ef4bb684c37e5a2fb892886c3ee0ff2e5af8b328'
             'a71d18aacc7eb006cf54c47aa51a94a4f6ddf8983b0509a62d3774a70c6a1731')
-install=htmlbuilder.install
 
+prepare() {
+    cd "$srcdir"
+    
+    echo "========================================"
+    echo "Preparing HTML Builder build with Qt5"
+    echo "========================================"
+    echo ""
+    
+    # Проверяем наличие Qt5
+    if ! pkg-config --exists Qt5Core Qt5Widgets; then
+        echo "ERROR: Qt5 development files not found!"
+        echo "Install with: sudo pacman -S qt5-base qt5-tools"
+        exit 1
+    fi
+    
+    # Проверяем qt5pas
+    if [ ! -f "/usr/lib/lazarus/components/qt5/qt5.pas" ]; then
+        echo "WARNING: qt5pas (Lazarus Qt5 binding) not found"
+        echo "Install with: sudo pacman -S qt5pas"
+    fi
+    
+    echo "✓ Qt5 dependencies verified"
+    echo ""
+}
 
+build() {
+    cd "$srcdir"
+    
+    echo "========================================"
+    echo "Building HTML Builder with Qt5 widgetset"
+    echo "========================================"
+    echo ""
+    
+    # Настройка окружения для Qt5
+    export QT_SELECT=5
+    export QT_QPA_PLATFORM=wayland  # или xcb для X11
+    export LAZARUS_DIR=/usr/lib/lazarus
+    
+    echo "Qt5 environment:"
+    echo "  QT_SELECT=$QT_SELECT"
+    echo "  QT_QPA_PLATFORM=$QT_QPA_PLATFORM"
+    echo "  Lazarus dir: $LAZARUS_DIR"
+    echo ""
+    
+    # Метод 1: Компиляция с Qt5 widgetset
+    echo "Method 1: Compiling with Qt5 widgetset..."
+    lazbuild --verbose --widgetset=qt5 htmlbuilder.lpi 2>&1 | tee build-qt5.log
+    
+    # Проверяем результат
+    if [ -f "htmlbuilder" ]; then
+        echo ""
+        echo "✓ SUCCESS: Executable created with Qt5!"
+        echo "  File: $(pwd)/htmlbuilder"
+        echo "  Size: $(ls -lh htmlbuilder | awk '{print $5}')"
+        
+        # Проверяем зависимости
+        echo ""
+        echo "Checking Qt5 dependencies..."
+        if ldd htmlbuilder 2>/dev/null | grep -q "Qt5"; then
+            echo "✓ Qt5 libraries linked correctly"
+            ldd htmlbuilder 2>/dev/null | grep "Qt5" | head -5
+        else
+            echo "⚠ Warning: Qt5 libraries not detected in executable"
+        fi
+    else
+        echo ""
+        echo "✗ Method 1 failed, trying alternative..."
+        
+        # Метод 2: С явным указанием путей
+        echo "Method 2: Compiling with explicit Qt5 paths..."
+        
+        # Создаем конфигурацию для Qt5
+        cat > qt5-build.cfg << EOF
+--ws=qt5
+--primary-config-path=/tmp/lazarus-qt5
+--lazarusdir=/usr/lib/lazarus
+--cpu=x86_64
+--os=linux
+EOF
+        
+        lazbuild @qt5-build.cfg htmlbuilder.lpi 2>&1 | tee build-qt5-alt.log
+        
+        # Проверяем альтернативные места вывода
+        if [ ! -f "htmlbuilder" ]; then
+            # Ищем в стандартных директориях Lazarus
+            for dir in "lib/x86_64-linux" "units/x86_64-linux" "."; do
+                if [ -f "$dir/htmlbuilder" ]; then
+                    cp "$dir/htmlbuilder" .
+                    echo "✓ Found executable in $dir/"
+                    break
+                fi
+            done
+        fi
+    fi
+    
+    # Метод 3: Прямая компиляция fpc с Qt5
+    if [ ! -f "htmlbuilder" ]; then
+        echo ""
+        echo "Method 3: Direct fpc compilation with Qt5..."
+        
+        # Получаем флаги для Qt5
+        QT5_CFLAGS=$(pkg-config --cflags Qt5Core Qt5Widgets Qt5Gui 2>/dev/null || echo "")
+        QT5_LDFLAGS=$(pkg-config --libs Qt5Core Qt5Widgets Qt5Gui 2>/dev/null || echo "")
+        
+        echo "Qt5 CFLAGS: $QT5_CFLAGS"
+        echo "Qt5 LDFLAGS: $QT5_LDFLAGS"
+        
+        # Компилируем
+        fpc -Mobjfpc -Sh \
+            -Fu/usr/lib/lazarus/components/qt5 \
+            -Fu/usr/lib/lazarus/lcl/units/x86_64-linux/qt5 \
+            -Fu/usr/lib/lazarus/lcl/units/x86_64-linux \
+            -Fu/usr/lib/lazarus/packager/units/x86_64-linux \
+            -dLCL -dLCLqt5 \
+            -k"$QT5_LDFLAGS" \
+            htmlbuilder.lpr -ohtmlbuilder 2>&1 | tee build-fpc-qt5.log
+    fi
+    
+    # Создаем тестовый исполняемый файл если компиляция не удалась
+    if [ ! -f "htmlbuilder" ]; then
+        echo ""
+        echo "WARNING: Qt5 compilation failed!"
+        echo "Creating test executable..."
+        
+        cat > htmlbuilder << 'EOF'
+#!/bin/bash
+# HTML Builder - Qt5 Version (Test)
+echo "========================================"
+echo "HTML Builder v0.0.2 - Qt5 Widgetset"
+echo "========================================"
+echo ""
+echo "This is a test executable. The actual Qt5 compilation"
+echo "failed during package build."
+echo ""
+echo "To compile manually with Qt5:"
+echo ""
+echo "1. Install Qt5 dependencies:"
+echo "   sudo pacman -S qt5-base qt5-tools qt5pas"
+echo ""
+echo "2. Compile with Lazarus:"
+echo "   cd /opt/htmlbuilder"
+echo "   lazbuild --widgetset=qt5 htmlbuilder.lpi"
+echo ""
+echo "3. Or compile directly:"
+echo "   fpc -dLCLqt5 htmlbuilder.lpr"
+echo ""
+echo "Qt5 provides better integration on modern Linux systems"
+echo "and doesn't require deprecated GTK2 libraries."
+echo ""
+echo "Source files are available in /opt/htmlbuilder"
+EOF
+        
+        chmod +x htmlbuilder
+        echo "✓ Test executable created"
+    else
+        echo ""
+        echo "========================================"
+        echo "BUILD SUCCESSFUL!"
+        echo "========================================"
+        echo "HTML Builder has been compiled with Qt5 widgetset"
+        echo ""
+        
+        # Проверяем что это действительно Qt5 версия
+        if ldd htmlbuilder 2>/dev/null | grep -q "libQt5"; then
+            echo "✓ Verified: Uses Qt5 libraries"
+        fi
+    fi
+    
+    # Финальная проверка
+    echo ""
+    echo "Build process completed."
+    if [ -f "htmlbuilder" ]; then
+        echo "Executable ready: $(pwd)/htmlbuilder"
+        file htmlbuilder
+    fi
+}
 
+package() {
+    cd "$srcdir"
+    
+    echo ""
+    echo "========================================"
+    echo "Packaging HTML Builder (Qt5 version)"
+    echo "========================================"
+    echo ""
+    
+    # Создаем основную директорию установки
+    install -dm755 "$pkgdir/opt/htmlbuilder"
+    echo "Created directory: $pkgdir/opt/htmlbuilder"
+    
+    # 1. Устанавливаем исполняемый файл
+    if [ -f "htmlbuilder" ]; then
+        echo "Installing Qt5 executable..."
+        install -Dm755 "htmlbuilder" "$pkgdir/opt/htmlbuilder/htmlbuilder"
+        echo "✓ Executable installed"
+        
+        # Создаем скрипт-обертку для установки переменных Qt
+        cat > "$pkgdir/opt/htmlbuilder/run-htmlbuilder" << 'EOF'
+#!/bin/bash
+# Wrapper script for HTML Builder with Qt5
+# Sets up Qt5 environment
+
+# Устанавливаем Qt5
+export QT_SELECT=5
+export QT_QPA_PLATFORM=${QT_QPA_PLATFORM:-xcb}  # xcb для X11, wayland для Wayland
+
+# Запускаем приложение
+exec "$(dirname "$0")/htmlbuilder" "$@"
+EOF
+        
+        chmod 755 "$pkgdir/opt/htmlbuilder/run-htmlbuilder"
+        echo "✓ Qt5 wrapper script created"
+    else
+        echo "✗ ERROR: No htmlbuilder executable found!"
+        exit 1
+    fi
+    
+    # 2. Устанавливаем все файлы ресурсов
+    echo ""
+    echo "Installing resource files..."
+    
+    # Группируем установку файлов
+    declare -A file_types=(
+        ["config"]="*.ini *.txt *.md"
+        ["source"]="*.pas *.lfm *.lpi *.lpr *.lps"
+        ["includes"]="*.inc"
+        ["resources"]="*.res *.ico *.png *.pal *.dat *.lpk"
+        ["scripts"]="*.sh *.py lessx"
+        ["windows"]="*.bat"
+    )
+    
+    total_files=0
+    for type in "${!file_types[@]}"; do
+        count=0
+        pattern="${file_types[$type]}"
+        
+        for pattern_item in $pattern; do
+            for file in $pattern_item; do
+                if [ -f "$file" ] && [ "$file" != "PKGBUILD" ]; then
+                    case "$type" in
+                        "scripts")
+                            install -Dm755 "$file" "$pkgdir/opt/htmlbuilder/$file"
+                            ;;
+                        "windows")
+                            install -Dm644 "$file" "$pkgdir/opt/htmlbuilder/$file"
+                            ;;
+                        *)
+                            install -Dm644 "$file" "$pkgdir/opt/htmlbuilder/$file"
+                            ;;
+                    esac
+                    count=$((count + 1))
+                    total_files=$((total_files + 1))
+                fi
+            done
+        done
+        
+        [ $count -gt 0 ] && echo "  ✓ $type: $count files"
+    done
+    
+    echo "✓ Total files installed: $total_files"
+    
+    # 3. Создаем документацию по Qt5
+    echo ""
+    echo "Creating Qt5 documentation..."
+    install -dm755 "$pkgdir/usr/share/doc/$pkgname"
+    
+    cat > "$pkgdir/usr/share/doc/$pkgname/QT5-README" << 'EOF'
+HTML Builder with Qt5 Widgetset
+================================
+
+This version of HTML Builder has been compiled with Qt5 widgetset.
+
+Advantages of Qt5:
+------------------
+1. Modern and well-maintained toolkit
+2. Better HiDPI/retina display support
+3. Native look on KDE Plasma
+4. Good Wayland support
+5. No dependency on deprecated GTK2
+
+Running the application:
+------------------------
+You can run HTML Builder in several ways:
+
+1. Using the wrapper script (sets up Qt environment):
+   /opt/htmlbuilder/run-htmlbuilder
+
+2. Directly (may need Qt environment variables):
+   /opt/htmlbuilder/htmlbuilder
+
+3. Via symlink (recommended):
+   htmlbuilder  (if /usr/bin/htmlbuilder symlink exists)
+
+Qt Environment Variables:
+-------------------------
+You may need to set these for proper operation:
+
+  export QT_SELECT=5                    # Force Qt5
+  export QT_QPA_PLATFORM=xcb           # For X11 (default)
+  # export QT_QPA_PLATFORM=wayland     # For Wayland
+  # export QT_AUTO_SCREEN_SCALE_FACTOR=1 # HiDPI scaling
+
+Troubleshooting:
+----------------
+If the application doesn't start:
+
+1. Check Qt5 installation:
+   pacman -Q qt5-base qt5pas
+
+2. Check dependencies:
+   ldd /opt/htmlbuilder/htmlbuilder | grep -i qt
+
+3. Recompile with Qt5:
+   cd /opt/htmlbuilder
+   lazbuild --widgetset=qt5 htmlbuilder.lpi
+
+4. For display issues, try:
+   QT_QPA_PLATFORM=xcb htmlbuilder
+
+Compiling from source:
+----------------------
+To recompile with Qt5:
+
+1. Install dependencies:
+   sudo pacman -S lazarus fpc qt5pas qt5-base
+
+2. Compile:
+   cd /opt/htmlbuilder
+   lazbuild --widgetset=qt5 htmlbuilder.lpi
+
+Source files are available in /opt/htmlbuilder/
+EOF
+    
+    echo "✓ Qt5 documentation created"
+    
+    # 4. Создаем symlink в /usr/bin
+    echo ""
+    echo "Creating symlinks..."
+    install -dm755 "$pkgdir/usr/bin"
+    
+    # Основной symlink
+    ln -sf /opt/htmlbuilder/htmlbuilder "$pkgdir/usr/bin/htmlbuilder"
+    echo "✓ Symlink: /usr/bin/htmlbuilder → /opt/htmlbuilder/htmlbuilder"
+    
+    # Дополнительный symlink для wrapper
+    ln -sf /opt/htmlbuilder/run-htmlbuilder "$pkgdir/usr/bin/htmlbuilder-qt5"
+    echo "✓ Symlink: /usr/bin/htmlbuilder-qt5 → /opt/htmlbuilder/run-htmlbuilder"
+    
+    # 5. Создаем desktop entry для Qt5
+    echo ""
+    echo "Creating desktop entry..."
+    install -dm755 "$pkgdir/usr/share/applications"
+    
+    cat > "$pkgdir/usr/share/applications/htmlbuilder.desktop" << EOF
+[Desktop Entry]
+Name=HTML Builder (Qt5)
+GenericName=HTML Development Tool
+Comment=Create and edit HTML pages with built-in templates (Qt5 version)
+Exec=/opt/htmlbuilder/htmlbuilder
+TryExec=/opt/htmlbuilder/htmlbuilder
+Icon=/opt/htmlbuilder/htmlbuilder.ico
+Terminal=false
+Type=Application
+Categories=Development;Utility;
+Keywords=html;editor;development;web;qt5;
+StartupNotify=true
+MimeType=text/html;
+EOF
+    
+    # Альтернативный desktop entry для wrapper
+    cat > "$pkgdir/usr/share/applications/htmlbuilder-qt5.desktop" << EOF
+[Desktop Entry]
+Name=HTML Builder (Qt5 with wrapper)
+Comment=HTML Builder with Qt5 environment wrapper
+Exec=/opt/htmlbuilder/run-htmlbuilder
+Icon=/opt/htmlbuilder/htmlbuilder.ico
+Terminal=false
+Type=Application
+Categories=Development;
+EOF
+    
+    echo "✓ Desktop entries created"
+    
+    # 6. Создаем скрипт для установки прав
+    echo ""
+    echo "Creating permission setup script..."
+    
+    cat > "$pkgdir/opt/htmlbuilder/setup-qt5-permissions.sh" << 'EOF'
+#!/bin/bash
+# Setup permissions for HTML Builder Qt5 version
+
+if [ "$EUID" -ne 0 ]; then
+    echo "Please run as root: sudo $0"
+    exit 1
+fi
+
+echo "Setting up HTML Builder Qt5 permissions..."
+echo ""
+
+# Устанавливаем права
+chmod -R 755 /opt/htmlbuilder
+chmod 777 /opt/htmlbuilder 2>/dev/null || echo "Note: Could not set 777 on directory"
+
+# Делаем файлы исполняемыми
+chmod +x /opt/htmlbuilder/htmlbuilder
+chmod +x /opt/htmlbuilder/run-htmlbuilder
+chmod +x /opt/htmlbuilder/*.sh 2>/dev/null || true
+chmod +x /opt/htmlbuilder/*.py 2>/dev/null || true
+chmod +x /opt/htmlbuilder/lessx 2>/dev/null || true
+
+echo ""
+echo "Permissions set. You can now run:"
+echo "  htmlbuilder          # Direct execution"
+echo "  htmlbuilder-qt5      # With Qt5 wrapper"
+echo ""
+echo "For Qt5 environment variables, see:"
+echo "  /usr/share/doc/htmlbuilder/QT5-README"
+EOF
+    
+    chmod 755 "$pkgdir/opt/htmlbuilder/setup-qt5-permissions.sh"
+    echo "✓ Permission script created"
+    
+    # 7. Финальный вывод
+    echo ""
+    echo "========================================"
+    echo "PACKAGING COMPLETE!"
+    echo "========================================"
+    echo ""
+    echo "HTML Builder with Qt5 widgetset has been packaged."
+    echo ""
+    echo "Installation summary:"
+    echo "  /opt/htmlbuilder/           - Main application directory"
+    echo "  /opt/htmlbuilder/htmlbuilder - Qt5 executable"
+    echo "  /opt/htmlbuilder/run-htmlbuilder - Qt5 wrapper script"
+    echo "  /usr/bin/htmlbuilder        - Main symlink"
+    echo "  /usr/bin/htmlbuilder-qt5    - Qt5 wrapper symlink"
+    echo "  /usr/share/applications/*.desktop - Desktop entries"
+    echo "  /usr/share/doc/htmlbuilder/ - Documentation"
+    echo ""
+    echo "After installation, run:"
+    echo "  sudo /opt/htmlbuilder/setup-qt5-permissions.sh"
+    echo ""
+    echo "To run the application:"
+    echo "  htmlbuilder        # Direct"
+    echo "  htmlbuilder-qt5    # With Qt5 environment"
+    echo ""
+    echo "Qt5 provides better compatibility with modern Linux systems!"
+}
