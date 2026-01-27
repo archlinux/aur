@@ -1,7 +1,7 @@
 # Maintainer: David Mehren <david.mehren@udo.edu>
 
 pkgname=element-desktop-nightly-bin
-pkgver=2026012601
+pkgver=2026012701
 pkgrel=1
 pkgdesc="All-in-one secure chat app for teams, friends and organisations (nightly .deb build)."
 arch=('x86_64' 'aarch64')
@@ -11,9 +11,9 @@ depends=('sqlcipher')
 source=('element-desktop-nightly.sh')
 sha256sums=('eec30e5b0e549f7fa9c9c66fd3edb60bc8e0d9d0a77b79d8659cc06deced588d')
 source_x86_64=("https://packages.element.io/debian/pool/main/e/element-nightly/element-nightly_${pkgver}_amd64.deb")
-sha256sums_x86_64=('b0caf605b43f4a5d348ef0fe7e40ab53e0e89d59094d8f058aa03019f5089009')
+sha256sums_x86_64=('40d5cb73718cc8f8b8e23981c6ec8be67043f368d9477b4835f96e2d23e9ab90')
 source_aarch64=("https://packages.element.io/debian/pool/main/e/element-nightly/element-nightly_${pkgver}_arm64.deb")
-sha256sums_aarch64=('400bdd2978b310bf56443525aab5fe7c4bbcef6d60a370a3f24ab6afaf7f81a0')
+sha256sums_aarch64=('8ec3141753f809a6bf34eea69360e9d442ddc574f933c5e7fb2614196a452d08')
 
 package() {
   echo "Extracting the data.tar.xz..."
