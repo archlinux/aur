@@ -62,7 +62,7 @@ optdepends=(
   'firefox-decentraleyes: Local emulation of Content Delivery Networks'
   'konform-multi-account-containers-lite: First-class multi-account-containers integration'
 )
-validpgpkeys=('9511FD9BD64CCF171F0B28A72B6FD58B41A0E262') # konform release keys
+validpgpkeys=('9511FD9BD64CCF171F0B28A72B6FD58B41A0E262') # konform release keys (./konform-cb-release.asc)
 backup=('usr/lib/konform/librewolf.cfg'
       'usr/lib/konform/distribution/policies.json')
 options=(!emptydirs)
