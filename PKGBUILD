@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=minty
-_pkgver=0.0.5
+_pkgver=0.0.6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -28,8 +28,8 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('06f59ecdd85d46ba63b80db3ecced7fa')
-b2sums=('c0abb5398dab3709b8c6367df3c789441e80ca9a5977edc91dc1156bd7d7e4f13dd05b4c9c3ce82948a4ca6b1aee2db6c5d149c5594d40f6a249f9fd86bf6724')
+md5sums=('86f8ab1d4a93fd186790a37ca55a9301')
+b2sums=('7e4fb982a0d53915af425880eb882c143b6bc183c3a86cb8f0c64a89b3e76b34ce6b52e6b7e8afc296ee8733a67181ee04dc60d93b96a6b4eb31712e596e5eeb')
 
 build() {
   mkdir build
