@@ -3,7 +3,7 @@
 
 _name=SiriKali
 pkgname=sirikali-bin
-pkgver=1.8.4
+pkgver=1.8.5
 pkgrel=1
 pkgdesc="A Qt/C++ GUI front end to sshfs, ecryptfs-simple, cryfs, gocryptfs, securefs, fscrypt and encfs"
 arch=('x86_64' 'i686')
@@ -25,8 +25,8 @@ conflicts=("sirikali-git" "sirikali")
 
 source_x86_64=("https://download.opensuse.org/repositories/home:/obs_mhogomchungu/Debian_12/amd64/sirikali_${pkgver}-${pkgrel}_amd64.deb")
 source_i686=("https://download.opensuse.org/repositories/home:/obs_mhogomchungu/Debian_12/i386/sirikali_${pkgver}-${pkgrel}_i386.deb")
-sha256sums_x86_64=('7bb55e3443b33a009cf8ac17f6e161d8809298b2bdb7908913bc1ff7271ab9a1')
-sha256sums_i686=('009e096c309a851f9976ff540fafc01fe79e60050449c3c16d91a8a567e9655d')
+sha256sums_x86_64=('b8f39b62047130ab193cb951ec1f06cc34b9021ac7537d2ae693c2b810758417')
+sha256sums_i686=('2eb635b21678367555c448fd69ee2bf00b48fa55252efaa389e8f4473cfabe0e')
 
 package() {
     cd "${srcdir}/"
