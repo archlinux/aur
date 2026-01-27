@@ -3,8 +3,8 @@
 pkgname=shadps4-qtlauncher-bin
 _pkgname=shadPS4QtLauncher
 _pkgid=net.shadps4.shadps4-qtlauncher
-pkgver=2026.01.21.f8ebecb
-_date=2026-01-21
+pkgver=2026.01.26.f8ebecb
+_date=2026-01-26
 _commit=f8ebecb33a773821e5bf9d3d3e273d2a7f8f4744
 _shortcommit=f8ebecb
 pkgrel=1
