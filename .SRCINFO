@@ -1,6 +1,6 @@
 pkgbase = voxdroid-kemono
 	pkgdesc = VoxDroid's Kemono Downloader - A cross-platform Python app built with PyQt6 to download posts and creator content from Kemono.su
-	pkgver = 5.5.1.r0.gab80b2a
+	pkgver = 5.8.0.r16.ga2590b7
 	pkgrel = 1
 	url = https://github.com/VoxDroid/KemonoDownloader
 	arch = any

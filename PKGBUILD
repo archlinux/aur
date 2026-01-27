@@ -1,7 +1,7 @@
 # Maintainer: bill88t <bill88t@feline.gr>
 
 pkgname=voxdroid-kemono
-pkgver=5.5.1.r0.gab80b2a
+pkgver=5.8.0.r16.ga2590b7
 pkgrel=1
 pkgdesc="VoxDroid's Kemono Downloader - A cross-platform Python app built with PyQt6 to download posts and creator content from Kemono.su"
 arch=('any')
@@ -44,5 +44,5 @@ package() {
 
     install -Dm644 "$srcdir/voxdroid-kemono.desktop" "$pkgdir/usr/share/applications/voxdroid-kemono.desktop"
 
-    rm -r "$pkgdir/usr/lib/python3.13/site-packages/kemonodownloader/__pycache__"
+    # rm -r "$pkgdir/usr/lib/python3.13/site-packages/kemonodownloader/__pycache__"
 }
