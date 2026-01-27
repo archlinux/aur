@@ -1,22 +1,28 @@
 # Maintainer: Christos Longros <chris.longros@gmail.com>
-pkgname=r-ankir
-pkgver=0.2.0
+_cranname=ankiR
+_cranver=0.3.0
+pkgname=r-${_cranname,,}
+pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="R package for reading Anki flashcard databases with FSRS support"
+pkgdesc="Read Anki Flashcard Databases with FSRS-6 Support"
 arch=('any')
 url="https://github.com/chrislongros/ankiR"
 license=('MIT')
-depends=('r')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/chrislongros/ankiR/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d96e7377bae99eb7696d4a5d752e55ef18c2323e4010ac2573e016696a3ae411')
+depends=(r r-jsonlite r-dbi r-rsqlite r-tibble)
+optdepends=(
+  'r-testthat: testing'
+  'r-knitr: vignettes'
+  'r-rmarkdown: vignettes'
+)
+source=("${_cranname}-${_cranver}.tar.gz::https://github.com/chrislongros/ankiR/archive/refs/tags/v${_cranver}.tar.gz")
+sha256sums=('SKIP')
 
 build() {
-  cd "${srcdir}/ankiR-${pkgver}"
+  cd "${srcdir}/${_cranname}-${_cranver}"
   R CMD build .
 }
 
 package() {
-  cd "${srcdir}/ankiR-${pkgver}"
-  install -dm755 "${pkgdir}/usr/lib/R/library"
-  R CMD INSTALL ankiR_${pkgver}.tar.gz -l "${pkgdir}/usr/lib/R/library"
+  cd "${srcdir}/${_cranname}-${_cranver}"
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${pkgdir}/usr/lib/R/library"
 }
