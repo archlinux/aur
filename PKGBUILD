@@ -1,7 +1,7 @@
 # Maintainer: PhantomShift <phantomsmhift at proton dot me>
 
 pkgname=lxcomm
-pkgver=0.4.0
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Mod browser, downloader and manager made for XCOM2(WOTC) on Linux"
 url="https://github.com/PhantomShift/lxcomm"
@@ -11,7 +11,7 @@ provides=('lxcomm')
 depends=('steamcmd')
 makedepends=('git' 'cargo-nightly' 'just')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('30f080f99664435711183505d759b65f0077a30b30d49b183761fd36791ccdd5')
+sha256sums=('ad87e97ee51676e90589603212c90c8aa93c7a8be2339ab110be3527d71bd863')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
