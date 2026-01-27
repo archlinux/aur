@@ -3,7 +3,7 @@
 pkgname=debug-tui
 _pkgname=${pkgname%}
 _reponame=${pkgname%}
-pkgver=0.2.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Interactive PHP step debugger for your terminal. Made on planet earth with "
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -13,7 +13,7 @@ license=('unknown')
 makedepends=('cargo' 'gcc-libs' 'glibc')
 provides=(${pkgname%})
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('d1831c767369b6c674bf37a3fcef3b3a515155a9e7c35fa22d78b9e913548f27')
+sha256sums=('a02d6905b074ea49a5e86b3872d282a9a8483c6f49435070c107a23e746de4eb')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"

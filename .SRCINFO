@@ -1,6 +1,6 @@
 pkgbase = debug-tui
 	pkgdesc = Interactive PHP step debugger for your terminal. Made on planet earth with
-	pkgver = 0.2.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/dantleech/debug-tui
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = debug-tui
 	makedepends = gcc-libs
 	makedepends = glibc
 	provides = debug-tui
-	source = debug-tui-0.2.0.tar.gz::https://github.com/dantleech/debug-tui/archive/refs/tags/0.2.0.tar.gz
-	sha256sums = d1831c767369b6c674bf37a3fcef3b3a515155a9e7c35fa22d78b9e913548f27
+	source = debug-tui-0.3.1.tar.gz::https://github.com/dantleech/debug-tui/archive/refs/tags/0.3.1.tar.gz
+	sha256sums = a02d6905b074ea49a5e86b3872d282a9a8483c6f49435070c107a23e746de4eb
 
 pkgname = debug-tui
