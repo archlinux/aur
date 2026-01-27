@@ -1,7 +1,7 @@
 pkgbase = r-sampleselection
 	pkgdesc = Sample Selection Models
-	pkgver = 1.2.12
-	pkgrel = 3
+	pkgver = 1.2.14
+	pkgrel = 1
 	url = https://cran.r-project.org/package=sampleSelection
 	arch = any
 	license = GPL-2.0-or-later
@@ -13,8 +13,8 @@ pkgbase = r-sampleselection
 	depends = r-vgam
 	optdepends = r-ecdat
 	optdepends = r-lmtest
-	source = https://cran.r-project.org/src/contrib/sampleSelection_1.2-12.tar.gz
-	md5sums = f64dba3ee084522778f3fe7f33c60ba4
-	b2sums = 89f02a465c5409abdd1bce5073dd59a84cbbac1e87f4cee5739e965824cb626d1332bd2b58d388ca3bea3b402dd7dce61879dedce63b6be7af331a1e3791d54a
+	source = https://cran.r-project.org/src/contrib/sampleSelection_1.2-14.tar.gz
+	md5sums = 29a1a20011a6c55b11f0a16a1afe4444
+	b2sums = 82dbe06a544c7d3abf43614219956573e58afe3e66f74d0f3981a9b05dfec416120f0bca078b33f362422bca53699a84890df89eb723ac7ee12425c821073ee9
 
 pkgname = r-sampleselection
