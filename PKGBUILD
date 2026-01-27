@@ -2,7 +2,7 @@
 # AUR package for hamr - builds from source
 
 pkgname=hamr
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A fast, extensible desktop launcher for Linux"
 arch=('x86_64')
@@ -50,7 +50,7 @@ optdepends=(
 )
 replaces=('hamr-qml')
 install=hamr.install
-source=("$pkgname-$pkgver::git+${url}.git#tag=v1.0.1${pkgver}")
+source=("$pkgname-$pkgver::git+${url}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
