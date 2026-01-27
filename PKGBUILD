@@ -1,7 +1,7 @@
 # Maintainer: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 
 pkgname=go-hass-agent
-pkgver=14.3.1
+pkgver=14.4.0
 pkgrel=1
 _commit=4fc151c
 pkgdesc="A Home Assistant, native app for desktop/laptop devices."
