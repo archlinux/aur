@@ -1,14 +1,13 @@
 pkgbase = ccx2paraview
 	pkgdesc = CalculiX to Paraview converter (frd to vtk/vtu)
 	pkgver = 3.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/calculix/ccx2paraview
 	arch = x86_64
 	license = GPL-3.0-or-later
-	makedepends = cython
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-hatchling
+	makedepends = python-setuptools-git-versioning
 	depends = python-numpy
 	depends = vtk
 	depends = ffmpeg
