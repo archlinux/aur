@@ -1,0 +1,22 @@
+pkgbase = wine-nvcuda-git
+	pkgdesc = Standalone version of nvcuda from Wine-Staging (git)
+	pkgver = 0.3.r3.gd04095b
+	pkgrel = 1
+	url = https://github.com/SveSop/nvcuda
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = glibc
+	depends = wine>=10.0
+	provides = wine-nvcuda
+	conflicts = wine-nvcuda
+	options = !strip
+	source = git+https://github.com/SveSop/nvcuda.git
+	b2sums = SKIP
+
+pkgname = wine-nvcuda-git
+	depends = glibc
+	depends = wine>=10.0
+	depends = nvidia-utils
