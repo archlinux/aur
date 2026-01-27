@@ -18,7 +18,7 @@
 +}
 +if (process.env.PORT === undefined && process.env.HOST !== undefined)
 +	app.listen(process.env.HOST, function(){
-+		fs.chmodSync(process.env.HOST, '775')
++		fs.chmodSync(process.env.HOST, '660')
 +	})
 +else
 +	app.listen(process.env.PORT || 3000, process.env.HOST || '::1')
