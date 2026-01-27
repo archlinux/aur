@@ -1,8 +1,8 @@
 # Contributor: Andrey Kolchenko <andrey@kolchenko.me>
 
 pkgname=rutoken-plugin
-pkgver=4.11.4
-pkgrel=4
+pkgver=4.11.5
+pkgrel=1
 pkgdesc="The Rutoken plugin is necessary for connecting USB devices with the browser, it allows you to identify devices and work with them."
 arch=('i686' 'x86_64')
 url="https://www.rutoken.ru/support/download/rutoken-plugin/"
