@@ -1,6 +1,6 @@
 pkgbase = r-vroom
 	pkgdesc = Read and Write Rectangular Text Data Quickly
-	pkgver = 1.6.7
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=vroom
 	arch = x86_64
@@ -41,7 +41,7 @@ pkgbase = r-vroom
 	optdepends = r-utils
 	optdepends = r-waldo
 	optdepends = r-xml2
-	source = https://cran.r-project.org/src/contrib/vroom_1.6.7.tar.gz
-	sha256sums = 262cebb76e8bc0ea920d70036e435c3cd78616d758de1f062a132f26fb5c76ca
+	source = https://cran.r-project.org/src/contrib/vroom_1.7.0.tar.gz
+	sha256sums = 6749c24ff27342a807c5816a0d773d9163febbde0c0247469ef45dae9d7950fc
 
 pkgname = r-vroom
