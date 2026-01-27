@@ -6,6 +6,7 @@ epoch=1
 pkgname=konform-browser
 provides=(konform-browser)
 conflicts=()
+_pkgname="${pkgname}"
 __pkgname=konform
 _ffsrcver=140.7.0
 _lwrelver=105
@@ -419,7 +420,8 @@ END
 
   # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srfv "$pkgdir/usr/bin/$__pkgname" "$pkgdir/usr/lib/$__pkgname/konform-bin"
+  ln -srfv "${pkgdir}/usr/bin/${__pkgname}" "${pkgdir}/usr/lib/${__pkgname}/${__pkgname}-bin"
+  ln -s "${__pkgname}" "${pkgdir}/usr/bin/${_pkgname}" || true
   # Use system certificates
   local nssckbi="$pkgdir/usr/lib/$__pkgname/libnssckbi.so"
   if [[ -e $nssckbi ]]; then
