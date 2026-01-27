@@ -1,18 +1,14 @@
 # Maintainer: Emiliano Bovetti <emiliano.bovetti at gmail dot com>
 
-pkgname=nanomq-bin
+pkgbase=nanomq-bin
+pkgname=(nanomq-bin nanomq-nng-bin)
 pkgver=0.24.8
-pkgrel=1
-pkgdesc='An ultra-lightweight and blazing-fast Messaging broker/bus for IoT edge & SDV'
+pkgrel=2
 url='https://nanomq.io'
 arch=(x86_64 aarch64 armel armv7h)
 license=(MIT)
 depends=(gcc-libs)
-provides=(nanomq)
-conflicts=(nanomq)
 makedepends=(libarchive)
-backup=(etc/nanomq.conf)
-install="${pkgname}.install"
 noextract=("${pkgver}-"{x86_64,aarch64,armel,armv7h}".rpm")
 source=(nanomq.service)
 source_x86_64=("${pkgver}-x86_64.rpm::https://github.com/nanomq/nanomq/releases/download/${pkgver}/nanomq-${pkgver}-linux-x86_64.rpm")
@@ -31,25 +27,65 @@ prepare() {
   bsdtar -xf "${srcdir}/${pkgver}-${CARCH}.rpm" -C "${srcdir}/root"
 }
 
-package() {
-  cd "${srcdir}/root"
+package_nanomq-bin() {
+  pkgdesc='An ultra-lightweight and blazing-fast Messaging broker/bus for IoT edge & SDV'
+  provides=(nanomq)
+  conflicts=(nanomq)
+  install=nanomq-bin.install
+  backup=(etc/nanomq.conf)
 
   install --directory \
     "${pkgdir}/usr/bin" \
-    "${pkgdir}/etc" \
     "${pkgdir}/usr/include" \
-    "${pkgdir}/usr/lib" \
-    "${pkgdir}/usr/lib/systemd/system" \
-    "${pkgdir}/usr/share"
+    "${pkgdir}/usr/share" \
+    "${pkgdir}/etc" \
+    "${pkgdir}/usr/lib/systemd/system"
+
+  cp \
+    "${srcdir}/root/usr/local/bin/nanomq" \
+    "${srcdir}/root/usr/local/bin/nanomq_cli" \
+    "${pkgdir}/usr/bin/"
 
   cp -r \
-    "usr/local/bin/" \
-    "usr/local/include/" \
-    "usr/local/lib/" \
-    "usr/local/share/" \
-    "${pkgdir}/usr/"
+    "${srcdir}/root/usr/local/include/nanomq/" \
+    "${pkgdir}/usr/include/"
 
-  cp usr/local/etc/nanomq.conf "${pkgdir}/etc/nanomq.conf"
+  cp -r \
+    "${srcdir}/root/usr/local/share/nanomq/" \
+    "${pkgdir}/usr/share"
 
-  install -Dm 644 "${srcdir}/nanomq.service" -t "${pkgdir}/usr/lib/systemd/system"
+  cp \
+    "${srcdir}/root/usr/local/etc/nanomq.conf" \
+    "${pkgdir}/etc/nanomq.conf"
+
+  install -Dm 644 "${srcdir}/nanomq.service" \
+    -t "${pkgdir}/usr/lib/systemd/system"
+}
+
+package_nanomq-nng-bin() {
+  pkgdesc='NanoNNG is the nanomsg-next-generation fork with MQTT support'
+  provides=(nng)
+  conflicts=(nng)
+
+  install --directory \
+    "${pkgdir}/usr/bin" \
+    "${pkgdir}/usr/include" \
+    "${pkgdir}/usr/lib" \
+    "${pkgdir}/usr/lib/cmake"
+
+  cp \
+    "${srcdir}/root/usr/local/bin/nngcat" \
+    "${pkgdir}/usr/bin/"
+
+  cp -r \
+    "${srcdir}/root/usr/local/include/nng/" \
+    "${pkgdir}/usr/include/"
+
+  cp -r \
+    "${srcdir}/root/usr/local/lib/libnng.a" \
+    "${pkgdir}/usr/lib/"
+
+  cp -r \
+    "${srcdir}/root/usr/local/lib/cmake/nng/" \
+    "${pkgdir}/usr/lib/cmake/"
 }
