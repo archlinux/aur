@@ -1,0 +1,17 @@
+pkgbase = css-inline
+	pkgdesc = CSS inliner
+	pkgver = 0.19.1
+	pkgrel = 1
+	url = https://github.com/Stranger6667/css-inline
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	options = !lto
+	source = css-inline::git+https://github.com/Stranger6667/css-inline#tag=rust-v0.19.1
+	b2sums = 5ad8c4d36deb281125f12f0006ba035c6f42184a0f29fe793aa479a9b0277365425760d08de49df18485c01a2b2c6d8a039d046bb730a0828c24c77fdbbdad25
+
+pkgname = css-inline
