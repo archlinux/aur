@@ -1,0 +1,14 @@
+pkgbase = perl-net-cidr-set
+	pkgdesc = Manipulate sets of IP addresses
+	pkgver = 0.19
+	pkgrel = 1
+	url = https://metacpan.org/dist/Net-CIDR-Set
+	arch = any
+	license = Artistic-1.0-Perl
+	license = GPL-1.0-or-later
+	depends = perl
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/R/RR/RRWO/Net-CIDR-Set-0.19.tar.gz
+	sha512sums = 6ea7c86274d2a0c5f3adabb9b3fa540e359d9bd20bbb311cbbbb6cdda9905b1bd8d77288548859496aedccafbb434cd88c28fc1ce888c1595b97fc288f59cc87
+
+pkgname = perl-net-cidr-set
