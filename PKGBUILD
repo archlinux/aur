@@ -8,7 +8,7 @@
 readonly _pkgname="farmOS"
 
 pkgname="farmos"
-pkgver="3.5.0"
+pkgver="3.4.6"
 pkgrel="1"
 pkgdesc="A web-based farm record keeping application."
 arch=("any")
