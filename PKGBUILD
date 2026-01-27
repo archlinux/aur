@@ -12,7 +12,7 @@
 declare srcdir pkgdir
 pkgname=neovim-zig-git
 _nvim_version=0.12.0
-pkgver=0.12.0.r2793.g6082b7f850
+pkgver=0.12.0.r2931.ga626f783f8
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs - built using zig'
 arch=(i686 x86_64 armv7h aarch64)
@@ -48,7 +48,7 @@ source=(
     'tree-sitter-c.tar.gz::https://github.com/tree-sitter/tree-sitter-c/archive/7fa1be1b694b6e763686793d97da01f36a0e5c12.tar.gz'
     'tree-sitter-markdown.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-markdown/archive/2dfd57f547f06ca5631a80f601e129d73fc8e9f0.tar.gz'
     'tree-sitter-lua.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-lua/archive/816840c592ab973500ae9750763c707b447e7fef.tar.gz'
-    'tree-sitter-vim.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-vim/archive/3dd4747082d1b717b8978211c06ef7b6cd16125b.tar.gz'
+    'tree-sitter-vim.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-vim/archive/1cd0a0892b389bd314a9bd09545160e5ee3c9137.tar.gz'
     'tree-sitter-vimdoc.tar.gz::https://github.com/neovim/tree-sitter-vimdoc/archive/f061895a0eff1d5b90e4fb60d21d87be3267031a.tar.gz'
     'https://github.com/tree-sitter-grammars/tree-sitter-query/releases/download/v0.8.0/tree-sitter-query.tar.gz'
 )
@@ -94,7 +94,7 @@ prepare() {
     ts_c_hash='N-V-__8AANxPSABzw3WBTSH_YkwaGAfrK6PBqAMqQedkDDim'
     ts_markdown_hash='N-V-__8AABcZUwBZelO8MiLRwuLD1Wk34qHHbXtS4UW3Khys'
     ts_lua_hash='N-V-__8AAHCmCAAf-5sa_C1N5Ts8B7V-vTKqUEMJZVnNkq_y'
-    ts_vim_hash='N-V-__8AAMArVAB4uo2wg2XRs8HBviQ4Pq366cC_iRolX4Vc'
+    ts_vim_hash='N-V-__8AAHWbVADvoQDYiOUyiNwPlykZsk1a9jIrlsvLNHL1'
     ts_vimdoc_hash='N-V-__8AAI7VCgBqRcQ-vIxB8DJJFhmLG42p6rfwCWIdypSJ'
     ts_query_hash='N-V-__8AAMR5AwAzZ5_8S2p2COTEf5usBeeT4ORzh-lBGkWy'
 
