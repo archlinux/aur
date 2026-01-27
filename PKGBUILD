@@ -1,5 +1,5 @@
 pkgname=mingw-w64-primesieve
-pkgver=12.11
+pkgver=12.12
 pkgrel=1
 pkgdesc="Fast prime number generator (mingw-w64)"
 url="https://github.com/kimwalisch/primesieve"
@@ -9,7 +9,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/kimwalisch/primesieve/archive/v$pkgver.tar.gz")
-sha256sums=('a4f15a055a60fcc5b2198335ca39f3e78cf9eade4b2fe258fe16b3bf1ba4abbb')
+sha256sums=('1a94574552f67c9ef45d89a435510c2c9bd1b93c6097509cf8834167c2b486ee')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
