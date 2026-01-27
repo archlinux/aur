@@ -9,6 +9,7 @@ license=('Apache')
 depends=('vulkan-icd-loader' 'assimp' 'glm' 'libsixel')
 makedepends=('cmake' 'shaderc' 'git')
 options=('!debug')
+install=dcat.install
 source=("dcat::git+https://github.com/Murat65536/dcat.git")
 sha256sums=('SKIP')
 

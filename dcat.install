@@ -1,0 +1,7 @@
+post_install() {
+  echo "To use keyboard controls, you need to be in the "input" group."
+  echo "You can add yourself to the "input" group like this:"
+  echo "sudo usermod -aG input \$USER"
+  echo "Then log out and back in."
+  echo "You can still use the program without keyboard input, it just won't be as good"
+}
