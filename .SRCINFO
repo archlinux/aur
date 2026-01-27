@@ -1,0 +1,16 @@
+pkgbase = mingw-w64-cddlib
+	pkgdesc = C library implementing Double Description Method for convex polyhedra (mingw-w64)
+	pkgver = 0.94n
+	pkgrel = 1
+	url = https://www.inf.ethz.ch/personal/fukudak/cdd_home/
+	arch = any
+	license = GPL-2.0-only
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-gmp
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = https://github.com/cddlib/cddlib/releases/download/0.94n/cddlib-0.94n.tar.gz
+	sha256sums = b87ee07ba2c1d0ab92a3e4eccacdf568f981a095a392e3b9efd7e7e4a9e125b1
+
+pkgname = mingw-w64-cddlib
