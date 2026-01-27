@@ -1,7 +1,7 @@
 # Maintainer: MLM-stuff <gfxoxinzh@mozmail.com>
 pkgname=floppy-warriors-bin
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A janky ragdoll archery battle game"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mlm-games/floppy-warriors"
