@@ -1,6 +1,6 @@
 pkgbase = python-romanisim
 	pkgdesc = Nancy Grace Roman Space Telescope WFI Simulator
-	pkgver = 0.11.1
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://romanisim.readthedocs.io
 	arch = i686
@@ -15,26 +15,25 @@ pkgbase = python-romanisim
 	makedepends = python-sphinx_rtd_theme
 	makedepends = python-numpydoc
 	makedepends = python-astropy-healpix
-	makedepends = python-astroquery
 	makedepends = python-galsim
 	makedepends = python-photutils
 	makedepends = python-roman-datamodels
 	makedepends = graphviz
-	source = https://files.pythonhosted.org/packages/source/r/romanisim/romanisim-0.11.1.tar.gz
-	md5sums = 0d3036cb2fb14d546c1764e2fe5c3c61
+	source = https://files.pythonhosted.org/packages/source/r/romanisim/romanisim-0.12.0.tar.gz
+	md5sums = 9af939f039f78e4c2810977632ac0137
+	md5sums = b5cc6fe3fe5c7ae4dfe413691338a05a
 
 pkgname = python-romanisim
 	depends = python>=3.11
 	depends = python-asdf>=4.1.0
 	depends = python-astropy-healpix>=1.1.2
-	depends = python-astroquery
+	depends = python-astroquery>=0.4.11
 	depends = python-crds>=13.0.2
 	depends = python-defusedxml>=0.5.0
 	depends = python-galsim>=2.5.1
-	depends = python-roman-datamodels>=0.28.0
+	depends = python-roman-datamodels>=0.29.0
 	depends = python-gwcs>=0.25.0
 	depends = python-photutils>=2.3.0
-	depends = cython>=0.29.21
 	optdepends = python-romanisiml-doc: Documentation for romanisim
 
 pkgname = python-romanisim-doc
