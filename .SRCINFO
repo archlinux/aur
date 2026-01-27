@@ -1,6 +1,6 @@
 pkgbase = zotero-beta-bin
 	pkgdesc = Zotero is a free, easy-to-use tool to help you collect, organize, cite, and share research.
-	pkgver = 8.0.1_beta.1_e0ff103af
+	pkgver = 8.0.1_beta.3_98b0a3a74
 	pkgrel = 1
 	url = https://www.zotero.org/support/dev_builds
 	arch = x86_64
@@ -16,11 +16,11 @@ pkgbase = zotero-beta-bin
 	conflicts = zotero
 	source = zotero-absolute-path-fix.patch
 	sha256sums = 2ef0a68483c4beaa18922cc88f13ad1a7239f7d4c460d8a5d4838a02ca419c28
-	source_x86_64 = Zotero-8.0.1-beta.1+e0ff103af_linux-x86_64.tar.xz::https://download.zotero.org/client/beta/8.0.1-beta.1%2Be0ff103af/Zotero-8.0.1-beta.1%2Be0ff103af_linux-x86_64.tar.xz
-	sha256sums_x86_64 = fe590eb48d8819a25317c56c5afabd9f06000c51fc4356b011bec09594087f49
-	source_i686 = Zotero-8.0.1-beta.1+e0ff103af_linux-i686.tar.xz::https://download.zotero.org/client/beta/8.0.1-beta.1%2Be0ff103af/Zotero-8.0.1-beta.1%2Be0ff103af_linux-i686.tar.xz
-	sha256sums_i686 = 2092ea51fbc18923095690fac331dd4aca62336cd167dfc82bd8e48c8575f3f5
-	source_aarch64 = Zotero-8.0.1-beta.1+e0ff103af_linux-aarch64.tar.xz::https://download.zotero.org/client/beta/8.0.1-beta.1%2Be0ff103af/Zotero-8.0.1-beta.1%2Be0ff103af_linux-arm64.tar.xz
-	sha256sums_aarch64 = cffc0a34e3728dfbdd17ddd7632bb3d786561d0ce9dc04c5298d78abd01adc13
+	source_x86_64 = Zotero-8.0.1-beta.3+98b0a3a74_linux-x86_64.tar.xz::https://download.zotero.org/client/beta/8.0.1-beta.3%2B98b0a3a74/Zotero-8.0.1-beta.3%2B98b0a3a74_linux-x86_64.tar.xz
+	sha256sums_x86_64 = d158a945d46b16bee0c8a005e91fa324c4f909ad22f762bc02bfcfa45b38c6ee
+	source_i686 = Zotero-8.0.1-beta.3+98b0a3a74_linux-i686.tar.xz::https://download.zotero.org/client/beta/8.0.1-beta.3%2B98b0a3a74/Zotero-8.0.1-beta.3%2B98b0a3a74_linux-i686.tar.xz
+	sha256sums_i686 = f7da300ba33719fd427cccf3594bcaa19e93d7f0dac750accba74fb26bf7eb21
+	source_aarch64 = Zotero-8.0.1-beta.3+98b0a3a74_linux-aarch64.tar.xz::https://download.zotero.org/client/beta/8.0.1-beta.3%2B98b0a3a74/Zotero-8.0.1-beta.3%2B98b0a3a74_linux-arm64.tar.xz
+	sha256sums_aarch64 = 27fea056edbee455b7cf0a53f6ee2bcf66430016ea9f6fa17427c52a63bd19cd
 
 pkgname = zotero-beta-bin
