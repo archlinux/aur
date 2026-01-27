@@ -1,7 +1,7 @@
 pkgbase = lean-spec
 	pkgdesc = Lightweight, flexible Spec-Driven Development (SDD) for modern AI-powered development
 	pkgver = 0.2.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/codervisor/lean-spec
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,7 @@ pkgbase = lean-spec
 	makedepends = pnpm
 	makedepends = rust
 	makedepends = cargo
+	depends = pnpm
 	options = !debug
 	source = lean-spec-0.2.19.tar.gz::https://github.com/codervisor/lean-spec/archive/v0.2.19.tar.gz
 	sha256sums = 9afa1b81613381204817dd2ef3a902a12b88113b6015aff47e905445cba4d9d1

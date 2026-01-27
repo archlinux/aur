@@ -1,7 +1,7 @@
 # Maintainer: Umar Alfarouk <medrivia@gmail.com>
 pkgname=lean-spec
 pkgver=0.2.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight, flexible Spec-Driven Development (SDD) for modern AI-powered development "
 arch=('x86_64' 'aarch64')
 url="https://github.com/codervisor/lean-spec"
