@@ -1,27 +1,14 @@
-<VirtualHost *:8081>
-    ServerName localhost
+<VirtualHost *:443>
 
-    DocumentRoot /usr/share/webapps/booklore/booklore-ui/
+   ServerName YOURURL
 
-    # Serve index.html for all non-API routes (for SPA routing)
-    <Directory /var/www/booklore-ui/dist>
-        Options Indexes FollowSymLinks
-        AllowOverride All
+    DocumentRoot /usr/share/webapps/booklore/booklore-ui
+    <Directory /usr/share/webapps/booklore/booklore-ui>
         Require all granted
+        FallbackResource /index.html
     </Directory>
 
-    # SPA fallback
-    RewriteEngine On
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_URI} !^/api/
-    RewriteRule ^ /index.html [L]
-
-    # Proxy API requests to backend
+    ProxyPreserveHost On
     ProxyPass /api http://localhost:8095/api
     ProxyPassReverse /api http://localhost:8095/api
-
-    # Optional: Allow CORS if needed
-    Header always set Access-Control-Allow-Origin "*"
-    Header always set Access-Control-Allow-Methods "GET,POST,OPTIONS,PUT,DELETE"
-    Header always set Access-Control-Allow-Headers "Content-Type,Authorization"
 </VirtualHost>
