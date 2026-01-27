@@ -1,12 +1,13 @@
 pkgbase = portable-git
 	pkgdesc = Portable Sandboxing framework
-	pkgver = 11.2.r0.gbaced13b
+	pkgver = 12.0.r16.g04b54f3b
 	pkgrel = 1
 	url = https://github.com/Kraftland/portable
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = libarchive
+	makedepends = go
 	depends = libnotify
 	depends = pipewire
 	depends = findutils

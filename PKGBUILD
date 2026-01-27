@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=portable-git
 epoch=1
-pkgver=11.2.r0.gbaced13b
+pkgver=12.0.r16.g04b54f3b
 pkgrel=1
 epoch=
 pkgdesc="Portable Sandboxing framework"
@@ -43,6 +43,7 @@ optdepends=(
 
 makedepends+=(
 	"libarchive"
+	"go"
 )
 
 checkdepends=()
@@ -56,13 +57,15 @@ function pkgver() {
 	git describe --long --tags --abbrev=8 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+function build() {
+	cd "${srcdir}/portable"
+	export srcdir
+	lib/build.sh
+}
+
 function package() {
-	cd portable
-	install -vDm755 portable.sh "${pkgdir}/usr/bin/portable"
-	install -d "${pkgdir}/usr/lib/"
-	cp -r "${srcdir}/portable/lib" "${pkgdir}/usr/lib/portable"
-	install -t "${pkgdir}/usr/share/portable" -Dm755 "${srcdir}/portable/share"/*
-	install -vDm755 portable-pools "${pkgdir}/usr/bin/portable-pools"
-	install -vDm755 portable-packer "${pkgdir}/usr/bin/portable-packer"
-	cp -r "${srcdir}/portable/lib/modules-load.d" "${pkgdir}/usr/lib"
+	export srcdir
+	export pkgdir
+	cd "${srcdir}/portable"
+	lib/package.sh
 }
