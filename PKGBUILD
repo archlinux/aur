@@ -3,6 +3,7 @@
 # Original maintainer: Matthew Gamble <git@matthewgamble.net>
 
 pkgname="scrutiny-web-frontend"
+# renovate: datasource=github-releases depName=AnalogJ/scrutiny
 pkgver=0.8.1
 pkgrel=1
 pkgdesc="Hard Drive S.M.A.R.T Monitoring, Historical Trends & Real World Failure Thresholds - Web Frontend Files"
