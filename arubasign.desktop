@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=ArubaSign
+Comment=Suite di Firma Digitale Aruba
+Exec=arubasign %F
+Icon=arubasign
+Terminal=false
+Type=Application
+Categories=Office;Utility;
+MimeType=application/pkcs7-signature;application/pkcs7-mime;
+Keywords=firma;digitale;sign;p7m;aruba;pec;
