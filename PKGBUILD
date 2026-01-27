@@ -24,7 +24,7 @@ sha256sums=("0ed9322294fdf037d2eb61a62d137185fe7c39aa1e9f0bcb810c44915f52508f")
 package() {
   cd "$srcdir/pairinteraction-$pkgver"
 #  cd "$srcdir/pairinteraction-$commit"
-  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps .
+MAKEFLAGS="-j2" PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps .
 }
 
 #check() {
