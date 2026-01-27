@@ -2,7 +2,7 @@
 
 _pkgname="holyc-lang"
 pkgname="${_pkgname}-git"
-pkgver=0.0.3beta.r12.b7c7de2
+pkgver=beta_v0.0.10_git
 pkgrel=2
 pkgdesc="A HolyC compiler built from scratch in C"
 arch=('x86_64')
