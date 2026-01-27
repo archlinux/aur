@@ -1,6 +1,7 @@
 # Contributor: ml <>
 # Maintainer: Nogweii <packages@nogweii.net>
 pkgname=sonobuoy
+# renovate: datasource=github-releases depName=vmware-tanzu/sonobuoy
 pkgver=0.57.3
 pkgrel=1
 pkgdesc='Diagnostic tool for Kubernetes clusters'
