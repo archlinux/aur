@@ -1,6 +1,6 @@
 # Maintainer: PairUX Team <hello@pairux.com>
 pkgname=pairux-bin
-pkgver=0.1.24
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Collaborative screen sharing with remote control"
 arch=('x86_64')
