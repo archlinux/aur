@@ -1,6 +1,6 @@
 # Maintainer: Christopher Cooper <christopher@cg505.com>
 pkgname=codename-goose-bin
-pkgver=1.21.1
+pkgver=1.21.2
 pkgrel=1
 pkgdesc="An open-source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM"
 arch=('x86_64' 'aarch64')
@@ -27,8 +27,8 @@ provides=('codename-goose')
 conflicts=('codename-goose')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.bz2::https://github.com/block/goose/releases/download/v${pkgver}/goose-x86_64-unknown-linux-gnu.tar.bz2")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.bz2::https://github.com/block/goose/releases/download/v${pkgver}/goose-aarch64-unknown-linux-gnu.tar.bz2")
-b2sums_x86_64=('a50ca100fb2b55b5b6c1c6c5020c620dc718a771017bd0396c8299a3ebc1d76c2a63ddbad12760bc8198b87d6fe55a585df8b9ccc5d4b522451ca6dff8773399')
-b2sums_aarch64=('6f12afd2675e9991e7e61031b326ad4a907a6a891fdee60f47b3a96cb4d0a6e6ca3d0d117d48b7561959a966d6bb7899d8100f9cb06185f7bd61c4a34886cb8c')
+b2sums_x86_64=('b53c97532ceaa3b52cc683fc3fedea09f2aa67c058e04c3d5739628239e89eef77d6cfc9084351c755fefb337de6e108703cb130eb0c9a55d7d231a4590cba84')
+b2sums_aarch64=('087167f23611fc8e7c7a73ca570823a7591a9cc8ae6e5e5bf59a6a9953b0cd025adc0e4d408a6850bf775e5e33ef3441554bcc0d58a67bd210699bfd01652d22')
 
 package() {
 	install -Dm755 "goose" "$pkgdir/usr/bin/goose"
