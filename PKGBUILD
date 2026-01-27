@@ -1,6 +1,6 @@
 pkgname=nerd-fonts-apple
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 license=("custom")
 pkgdesc="Apple font (San Francisco, NY), patched with the Nerd Fonts Patcher"
