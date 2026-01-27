@@ -4,12 +4,12 @@ pkgver=r13.4b695f7
 pkgrel=1
 pkgdesc="A terminal-based 3D model viewer using Vulkan"
 arch=('x86_64')
-url="about:none"
-license=('custom')
+url="https://github.com/Murat65536/dcat"
+license=('Apache')
 depends=('vulkan-icd-loader' 'assimp' 'glm' 'libsixel')
 makedepends=('cmake' 'shaderc' 'git')
 options=('!debug')
-source=("dcat::git+file:///home/murat/Desktop/Programs/c++/dcat")
+source=("dcat::git+https://github.com/Murat65536/dcat.git")
 sha256sums=('SKIP')
 
 pkgver() {
