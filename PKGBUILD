@@ -16,7 +16,7 @@ options=(!strip)
 source=("${_appimage}::https://api.wooting.io/public/wootility/download?os=linux&version=${pkgver//_/-}"
         '70-wooting.rules')
 noextract=("${_appimage}")
-b2sums=('4031fc637c084a90916a98a82d8ebe99dcd432cc82b102c6f035f0c19d5691d80a1c326740944a6c65edf8f6dc9248c2248e8ff7d930f81feb7e867bdd43ade6'
+b2sums=('f5432b02395743265f401e8aaa63b343a78bebff74c88e92d93f1ae91e3d3e400c7f69d9d2b55655d017e6769be9acd2fdb87f3728be82bdcacec5d33d96466f'
         '80b4a516f8aafb6eada36cdde59295f2358b22e6cc28b1a21b0b5f22a59bcfabc63bba956d23544faca5fd76a1c4b4c1ff98ada41e7c9ad015d48c7c436dbac1')
 
 prepare() {
