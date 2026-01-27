@@ -9,6 +9,7 @@ pkgbase = cli11-compiled
 	checkdepends = cmake
 	makedepends = cmake
 	makedepends = doxygen
+	provides = cli11
 	conflicts = cli11
 	options = !strip
 	source = cli11-compiled-v2.6.1.tar.gz::https://github.com/CLIUtils/CLI11/archive/refs/tags/v2.6.1.tar.gz

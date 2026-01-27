@@ -16,6 +16,7 @@ url="https://github.com/CLIUtils/${_pkgname}"
 license=("BSD-3-Clause")
 makedepends=("cmake" "doxygen")
 checkdepends=("catch2" "cmake")
+provides=("cli11")
 conflicts=("cli11")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 options=("!strip")
