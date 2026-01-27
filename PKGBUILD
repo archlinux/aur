@@ -1,8 +1,8 @@
-# Maintainer: Stewart <stewart@anomaly.co>
+# Maintainer: Stewart <https://github.com/Stewart86>
 # AUR package for hamr - builds from source
 
 pkgname=hamr
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A fast, extensible desktop launcher for Linux"
 arch=('x86_64')
