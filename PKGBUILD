@@ -1,7 +1,7 @@
 # Maintainer: Pater Kleomenis <paterkleomenis@gmail.com>
 pkgname=connected-desktop-bin
 _pkgname=connected-desktop
-pkgver=1.0.4
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="High-speed, offline, cross-platform ecosystem bridging devices (Binary)"
 arch=('x86_64')
