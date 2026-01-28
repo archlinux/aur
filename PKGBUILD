@@ -2,7 +2,7 @@
 
 _name=llama-index-core
 pkgname=python-${_name}
-pkgver=0.14.12
+pkgver=0.14.13
 pkgrel=1
 pkgdesc="LlamaIndex Embeddings Integration: Huggingface"
 arch=('any')
@@ -11,8 +11,8 @@ license=('MIT')
 depends=('python' 'python-filetype' 'python-dataclasses-json' 'python-banks' 'python-griffe' 'python-sqlalchemy' 'python-llama-index-workflows' 'python-llama-index-instrumentation')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=()
-source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/fd/d3/9d65f3c631a41fbb0dac47c52adad0fdbbaee3456518a97d558d8c754788/llama_index_core-0.14.12.tar.gz")
-sha256sums=('6917e5865c6c789046dca001ebeea5a7f80e1ba83ac646dc793aaa041e8feb12')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
+sha256sums=('c3b30d20ae0407e5d0a1d35bb3376a98e242661ebfc22da754b5a3da1f8108c0')
 
 build() {
     cd "${srcdir}"/${_name//-/_}-${pkgver}
