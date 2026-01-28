@@ -1,6 +1,6 @@
 # Maintainer: rg-Sens Contributors
 pkgname=rg-sens-git
-pkgver=0.7.0.1
+pkgver=0.6.0.r0.g0bcd268
 pkgrel=1
 pkgdesc="A fast, customizable system monitoring dashboard for Linux (git version)"
 arch=('x86_64')
@@ -21,7 +21,7 @@ makedepends=(
 )
 optdepends=(
     'nvidia-utils: NVIDIA GPU monitoring support'
-    'webkitgtk-6.0: CSS Template panel with WebView support'
+    'webkit2gtk-4.1: CSS Template panel with WebView support'
 )
 install=rg-sens.install
 provides=('rg-sens')
@@ -37,12 +37,11 @@ pkgver() {
     if [[ -n "$ver" ]]; then
         echo "$ver"
     else
-        # Fallback: use Cargo.toml version + commit count + short hash
-        local base count hash
-        base=$(grep -m1 '^version' Cargo.toml | sed 's/.*"\(.*\)"/\1/')
+        # Fallback: use base version + commit count + short hash
+        local count hash
         count=$(git rev-list --count HEAD 2>/dev/null || echo "0")
         hash=$(git rev-parse --short HEAD 2>/dev/null || echo "unknown")
-        echo "${base}.r${count}.g${hash}"
+        echo "0.7.1.r${count}.g${hash}"
     fi
 }
 
@@ -52,7 +51,7 @@ build() {
     export CARGO_HOME="$srcdir/cargo"
     export RUSTUP_TOOLCHAIN=stable
 
-    cargo build --release
+    cargo build --release --locked
 }
 
 package() {
@@ -79,20 +78,10 @@ package() {
         "$pkgdir/usr/share/rg-sens/examples/art_nouveau_panel.html"
     install -Dm644 "examples/art_nouveau_panel.css" \
         "$pkgdir/usr/share/rg-sens/examples/art_nouveau_panel.css"
-    install -Dm644 "examples/art_nouveau_panel_responsive.html" \
-        "$pkgdir/usr/share/rg-sens/examples/art_nouveau_panel_responsive.html"
-    install -Dm644 "examples/art_nouveau_panel_responsive.css" \
-        "$pkgdir/usr/share/rg-sens/examples/art_nouveau_panel_responsive.css"
-    install -Dm644 "examples/steampunk_panel.html" \
-        "$pkgdir/usr/share/rg-sens/examples/steampunk_panel.html"
-    install -Dm644 "examples/steampunk_panel.css" \
-        "$pkgdir/usr/share/rg-sens/examples/steampunk_panel.css"
     install -Dm644 "examples/css_template_example.html" \
         "$pkgdir/usr/share/rg-sens/examples/css_template_example.html"
     install -Dm644 "examples/css_template_example.css" \
         "$pkgdir/usr/share/rg-sens/examples/css_template_example.css"
-    install -Dm644 "examples/rg-sens-gauges.js" \
-        "$pkgdir/usr/share/rg-sens/examples/rg-sens-gauges.js"
 
     # Install documentation
     install -d "$pkgdir/usr/share/doc/rg-sens"
