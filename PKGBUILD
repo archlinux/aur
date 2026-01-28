@@ -3,7 +3,7 @@
 pkgname=windterm-bin
 _pkgname=WindTerm
 pkgver=2.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Quicker and better SSH/Telnet/Serial/Shell/Sftp client for DevOps.(Prebuilt version)"
 arch=('x86_64')
 license=('Apache-2.0')
@@ -18,7 +18,7 @@ depends=(
     'gst-plugins-base-libs'
     'xcb-util'
     'libpulse'
-    'openssl-1.1'
+    'openssl'
 )
 options=(
     '!strip'
@@ -54,7 +54,8 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}/temp"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    ln -nsf "/tmp/${pkgname%-bin}" "${pkgdir}/usr/lib/${pkgname%-bin}/temp"
     cp -Pr --no-preserve=ownership "${srcdir}/${_pkgname}_${pkgver}/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${_pkgname}_${pkgver}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${_pkgname}_${pkgver}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"

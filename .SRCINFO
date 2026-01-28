@@ -1,7 +1,7 @@
 pkgbase = windterm-bin
 	pkgdesc = A Quicker and better SSH/Telnet/Serial/Shell/Sftp client for DevOps.(Prebuilt version)
 	pkgver = 2.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://kingtoolbox.github.io/
 	arch = x86_64
 	license = Apache-2.0
@@ -11,7 +11,7 @@ pkgbase = windterm-bin
 	depends = gst-plugins-base-libs
 	depends = xcb-util
 	depends = libpulse
-	depends = openssl-1.1
+	depends = openssl
 	provides = windterm
 	conflicts = windterm
 	options = !strip
