@@ -1,17 +1,17 @@
 pkgbase = heynote-bin
 	pkgdesc = A dedicated scratchpad for developers
-	pkgver = 2.7.1
+	pkgver = 2.7.2
 	pkgrel = 1
 	url = https://github.com/heyman/heynote
 	arch = x86_64
 	license = LicenseRef-Commons-Clause-1.0
 	depends = electron35
-	provides = heynote=2.7.1
+	provides = heynote=2.7.2
 	conflicts = heynote
-	source = heynote-2.7.1.AppImage::https://github.com/heyman/heynote/releases/download/v2.7.1/Heynote_2.7.1_x86_64.AppImage
-	source = LICENSE-2.7.1::https://raw.githubusercontent.com/heyman/heynote/v2.7.1/LICENSE
+	source = heynote-2.7.2.AppImage::https://github.com/heyman/heynote/releases/download/v2.7.2/Heynote_2.7.2_x86_64.AppImage
+	source = LICENSE-2.7.2::https://raw.githubusercontent.com/heyman/heynote/v2.7.2/LICENSE
 	source = heynote.sh
-	sha256sums = 1dbf6171f74724da9e472979a74e77aa6aafff7633cfedf6895bb53c28feea76
+	sha256sums = 30431901698b19d2d9c416ff5cf10997c97746b8827d41f83a0aace062f4940c
 	sha256sums = d78b14a03247374515264208d64b975e100af8a2fd0464afa07f76ca199700a7
 	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
