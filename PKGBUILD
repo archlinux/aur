@@ -36,9 +36,6 @@ prepare() {
 build() {
 	cd "$srcdir/$pkgname-${pkgver%.*}"
 
-	# For now, ignore new errors from GCC 14 (see https://gcc.gnu.org/gcc-14/porting_to.html)
-	export CFLAGS="$CFLAGS -Wno-error=incompatible-pointer-types -Wno-error=int-conversion"
-
 	# NOTE: The following optional features are NOT enabled:
 	# * Automatic instrumentation (with dyninst)
 	# * CUDA support
