@@ -2,7 +2,7 @@
 pkgname=python-camb  
 _name=${pkgname#python-}
 pkgver=1.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Code for Anisotropies in the Microwave Background"
 arch=(any)
 url="https://github.com/cmbant/CAMB"
@@ -19,6 +19,7 @@ source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_nam
 sha256sums=('5103be105e3fe8ce2f0a9bb99d4d9919fa0db80700580d8a7e7fc46184462cd1')
 build() {
     cd "$srcdir/$_name-$pkgver"
+    export MAKEFLAGS="-j1"
     python -m build --wheel --no-isolation
 }
 
