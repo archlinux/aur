@@ -3,7 +3,7 @@
 
 pkgname=hytale-launcher-bin
 pkgver=2026.01.27.b4eb731
-pkgrel=1
+pkgrel=2
 pkgdesc="Hytale Launcher (Native Linux, Self-Updating)"
 url="https://hytale.com"
 license=('LicenseRef-custom')
@@ -30,7 +30,7 @@ source=("hytale-launcher-${_date}-${_commit}.zip::https://launcher.hytale.com/bu
 
 # generated with: updpkgsums
 sha256sums=('3f24d78d92349496512f9e84b1cff532396103c1976689c7b35d75668b6f3a53'
-            'fdf45f23d564aa6cd9367be5bebaf3d551384c15a11425e699a09df3ff2c3402'
+            '0835afe0aec4f086c72518512bf64bfa55679242f3214ca6542fb0fcadd150b9'
             '2f82dd197e945fe2be168fcc267396273dfaf7015f65b28baf32a8f2f5960e72'
             '4ba4ac60ef66d32e4bb243e3bfa0ffc59322d6a88262a398198a0b2c6e365a52'
             '2ac413e944bff6afba669883dd6686c7f08aa77708b06d8492177fcd48fd6b2c'
