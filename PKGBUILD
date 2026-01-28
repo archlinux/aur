@@ -1,26 +1,50 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgbase="infekt"
-pkgname=("${pkgbase}-"{'cli','gtk'})
+pkgname=(
+  "${pkgbase}-cli"
+  "${pkgbase}-gtk"
+)
 _commit_rel="5c57cbea0efd720940feaf04ff3e05dee1074ab2" # 1.3.0
 _commit="8ebd5a826f09c0dfe8cc664984969acca57f4d2d" # r4
 pkgver="1.3.0+r4+g${_commit::7}"
-pkgrel=1
+pkgrel=2
 pkgdesc="The ultimate best NFO viewer, ever!"
-arch=('x86_64')
+arch=(
+  'x86_64'
+)
 url="https://infekt.ws"
 _url="https://github.com/syndicodefront/${pkgbase}"
-license=('GPL-2.0-or-later')
-depends=('cairo' 'gcc-libs' 'glibc')
-makedepends=('atkmm' 'cairomm' 'cmake>=3.2' 'dos2unix' 'gendesk' 'glib2'
-             'glibmm' 'gtkmm>=2.4' 'hicolor-icon-theme' 'libpng' 'libsigc++')
+license=(
+  'GPL-2.0-or-later'
+)
+depends=(
+  'cairo'
+  'gcc-libs'
+  'glibc'
+)
+makedepends=(
+  'atkmm'
+  'cairomm'
+  'cmake>=3.2'
+  'dos2unix'
+  'gendesk'
+  'glib2'
+  'glibmm'
+  'gtkmm>=2.4'
+  'hicolor-icon-theme'
+  'libpng'
+  'libsigc++'
+)
 _pkgsrc="${pkgbase}-${_commit}"
-source=("${_pkgsrc}.tar.gz::${_url}/archive/${_commit}.tar.gz"
-        "${pkgbase}_cmake_build_type.patch"
-        "${pkgbase}_cmake_gtk_source_list.patch"
-        "${pkgbase}_missing_includes.patch"
-        "${pkgbase}_forgiving_utf8.patch"
-        "${pkgbase}_nfo_view_ctrl.patch")
+source=(
+  "${_url}/archive/${_commit}/${_pkgsrc}.tar.gz"
+  "${pkgbase}_cmake_build_type.patch"
+  "${pkgbase}_cmake_gtk_source_list.patch"
+  "${pkgbase}_missing_includes.patch"
+  "${pkgbase}_forgiving_utf8.patch"
+  "${pkgbase}_nfo_view_ctrl.patch"
+)
 b2sums=('2fa8388b49f91e295add61fc56e7244f697b24da9535601b98b5d1ab1406ad93887375b69b2f733b885bf6713d1f47ca3e643262e9c1f76e6d95a1dabd8018a9'
         'ea1df9339fbd1273dc98aa73616512308b5430d7f8927ecf6235894259bac514ed2e9bf0dfd62cc0cda32f4cfceeb011b273b31705491e428e397286f6c1efc3'
         '5693b424f7803cac656617f0723a74fb9786128a488fa2aed8749d1aa57b05bc19fbf20a29f77977135cecd7c53083857524c6482eb1a5e1b491cea49a61fdb1'
@@ -55,21 +79,23 @@ prepare() {
 build() {
   local cmake_options=(
     -G 'Unix Makefiles'
-    -B "${_pkgsrc}/build"
-    -S "${_pkgsrc}"
-    -DCMAKE_BUILD_TYPE:STRING='None'
-    -DCMAKE_INSTALL_PREFIX:PATH='/usr'
-    -DOPTION_GTK=TRUE
-    -Wno-dev
+    -W no-dev
+    -D CMAKE_BUILD_TYPE:STRING='None'
+    -D CMAKE_POLICY_VERSION_MINIMUM=3.5
+    -D CMAKE_INSTALL_PREFIX:PATH='/usr'
+    -D OPTION_GTK:BOOL=TRUE
   )
 
   cd "${srcdir}"
-  cmake "${cmake_options[@]}"
+  cmake -B "${_pkgsrc}/build" -S "${_pkgsrc}" "${cmake_options[@]}"
   cmake --build "${_pkgsrc}/build"
 }
 
 package_infekt-cli() {
-  depends+=('libpng')
+  pkgdesc+=" (CLI)"
+  depends+=(
+    'libpng'
+  )
 
   cd "${srcdir}"
   DESTDIR="${pkgdir}" cmake --install "${_pkgsrc}/build"
@@ -86,9 +112,17 @@ package_infekt-cli() {
 }
 
 package_infekt-gtk() {
-  pkgdesc+=" - GTK2 GUI"
-  depends+=('atkmm' 'cairomm' 'glib2' 'glibmm' 'gtkmm>=2.4'
-            'hicolor-icon-theme' 'infekt-cli' 'libsigc++')
+  pkgdesc+=" (GTK2 GUI)"
+  depends+=(
+    'atkmm'
+    'cairomm'
+    'glib2'
+    'glibmm'
+    'gtkmm>=2.4'
+    'hicolor-icon-theme'
+    "${pkgbase}-cli" # ?
+    'libsigc++'
+  )
 
   cd "${srcdir}"
   DESTDIR="${pkgdir}" cmake --install "${_pkgsrc}/build"
