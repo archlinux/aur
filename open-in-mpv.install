@@ -1,0 +1,32 @@
+post_install() {
+    cat << "EOF"
+
+==> MPV Enqueue Configuration
+
+For enqueue to work properly, mpv must read commands from a socket.
+
+Add the following line to your mpv configuration file:
+
+    input-ipc-server=/tmp/mpvsocket
+
+==> open-in-mpv extension installation
+
+This package comes with the Chromium extension, not available on the Chrome Web Store.
+
+To load it in Chromium browsers:
+    1. Head to chrome://extensions, or the equivalent of your browser if it doesn't work
+    2. Enable "Developer mode"
+    3. Click "Load unpacked" and select the directory /usr/lib/open-in-mpv-chromium/
+
+Firefox users:
+    The extension is available on the Firefox Add-ons site: https://addons.mozilla.org/pt-PT/firefox/addon/iina-open-in-mpv/
+
+==> Registering the mpv URI handler
+
+To register the mpv URI handler, run:
+    xdg-mime default open-in-mpv.desktop x-scheme-handler/mpv
+
+This sets the open-in-mpv desktop file as the default handler for the mpv URI scheme so mpv:// links will open with this package.
+
+EOF
+}
