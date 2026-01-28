@@ -1,0 +1,5 @@
+[tgcp-bin]
+source = "github"
+github = "huseyinbabal/tgcp"
+use_latest_release = true
+prefix = "v"
