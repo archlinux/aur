@@ -3,7 +3,7 @@
 _gpuarch=gfx1151
 pkgname="rocm-nightly-${_gpuarch,,}-bin"
 pkgver=7.12.0a20260128
-pkgrel=2
+pkgrel=3
 pkgdesc="AMD ROCm Nightly Release (${_gpuarch}) - Monolithic Install"
 arch=('x86_64')
 url="https://rocm.nightlies.amd.com"
@@ -26,7 +26,7 @@ _rocm_packages=(
     'rccl' 'rocalution' 'rocprim' 'rocthrust' 'hipcub'
     'miopen-hip' 'migraphx' 'mivisionx' 'rpp'
     'hipfort' 'hipify-clang'
-    'rocm-hip-sdk' 'rocm-opencl-sdk' 'rocm-ml-sdk' # Meta packages
+    'rocm-hip-sdk' 'rocm-hip-libraries' 'rocm-hip-runtime' 'rocm-opencl-sdk' 'rocm-ml-sdk' # Meta packages
 )
 
 provides=("${_rocm_packages[@]}" "rocm=${pkgver}")

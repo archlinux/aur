@@ -1,7 +1,7 @@
 pkgbase = rocm-nightly-gfx1151-bin
 	pkgdesc = AMD ROCm Nightly Release (gfx1151) - Monolithic Install
 	pkgver = 7.12.0a20260128
-	pkgrel = 2
+	pkgrel = 3
 	url = https://rocm.nightlies.amd.com
 	arch = x86_64
 	license = MIT
@@ -53,6 +53,8 @@ pkgbase = rocm-nightly-gfx1151-bin
 	provides = hipfort
 	provides = hipify-clang
 	provides = rocm-hip-sdk
+	provides = rocm-hip-libraries
+	provides = rocm-hip-runtime
 	provides = rocm-opencl-sdk
 	provides = rocm-ml-sdk
 	provides = rocm=7.12.0a20260128
@@ -99,6 +101,8 @@ pkgbase = rocm-nightly-gfx1151-bin
 	conflicts = hipfort
 	conflicts = hipify-clang
 	conflicts = rocm-hip-sdk
+	conflicts = rocm-hip-libraries
+	conflicts = rocm-hip-runtime
 	conflicts = rocm-opencl-sdk
 	conflicts = rocm-ml-sdk
 	conflicts = rocm
