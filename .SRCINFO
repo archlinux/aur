@@ -1,0 +1,13 @@
+pkgbase = clownfish
+	pkgdesc = Clownfish Voice Changer
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://clownfish-translator.com/voicechanger/
+	arch = x86_64
+	license = Clownfishs License
+	provides = clownfish
+	conflicts = clownfish
+	source_x86_64 = clownfish-0.1.zip::https://clownfish-translator.com/voicechanger/download/ClownfishConsole/linux64/ClownfishConsole(v0.1z).zip
+	sha256sums_x86_64 = SKIP
+
+pkgname = clownfish
