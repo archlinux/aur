@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=CodeNomad
+Comment=A fast, multi-instance workspace for running OpenCode sessions
+Exec=codenomad %U
+Icon=codenomad
+Type=Application
+Categories=Development;IDE;
+Keywords=opencode;ai;coding;assistant;
+StartupWMClass=CodeNomad
+MimeType=x-scheme-handler/codenomad;
