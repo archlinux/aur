@@ -2,11 +2,14 @@
 
 pkgname=python-sysv_ipc
 pkgver=1.2.0
-pkgrel=0
+pkgrel=1
 pkgdesc="System V IPC primitives (semaphores, shared memory and message queues) for Python"
 url="http://semanchuk.com/philip/sysv_ipc/"
 license=('BSD')
-arch=('x86_64')
+arch=(
+  'x86_64'
+  'aarch64'
+)
 depends=(
   'python'
 )

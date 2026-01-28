@@ -1,9 +1,10 @@
 pkgbase = python-sysv_ipc
 	pkgdesc = System V IPC primitives (semaphores, shared memory and message queues) for Python
 	pkgver = 1.2.0
-	pkgrel = 0
+	pkgrel = 1
 	url = http://semanchuk.com/philip/sysv_ipc/
 	arch = x86_64
+	arch = aarch64
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
