@@ -1,0 +1,17 @@
+pkgbase = alacritty-use-theme-with-redshift
+	pkgdesc = Changes alacritty theme based on the current time and locale
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/alacritty-use-theme/alacritty-use-theme-with-redshift
+	arch = x86_64
+	license = GPL-1.0-or-later
+	depends = redshift
+	depends = alacritty-use-theme
+	provides = alaritty-use-theme-with-redshift.service
+	provides = alaritty-use-theme-with-redshift.timer
+	provides = alaritty-use-theme-with-redshift.target
+	conflicts = alacritty-use-theme-with-redshift-git
+	source = alacritty-use-theme-with-redshift-1.0.0::https://github.com/alacritty-use-theme/alacritty-use-theme-with-redshift/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 184d4e18f99a1a516321a54928c399a0a3597732c36c6d79b0b05e52a411aba1
+
+pkgname = alacritty-use-theme-with-redshift
