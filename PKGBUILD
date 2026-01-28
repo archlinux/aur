@@ -1,8 +1,8 @@
 # Maintainer: Pizero <zhaory200707@outlook.com>
 pkgname=class-widgets-bin
 _appname=cn.rinlit.classwidgets
-pkgver=1.2.0.4
-_build_suffix='21334301646'
+pkgver=1.2.0.5
+_build_suffix='21400908131'
 pkgrel=1
 pkgdesc="Class Widgets 1"
 arch=('x86_64')
@@ -18,8 +18,8 @@ depends=(
 )
 options=('!debug')
 
-source_x86_64=("${pkgname}::${url}/releases/download/${pkgver}/ClassWidgets-Linux-x64_${_build_suffix}.deb")
-sha256sums_x86_64=('51af29db382c7cb2518a5545d92d9d9c3e747b0dce0386c3a9f4211cabea9cce')
+source_x86_64=("${pkgname}::${url}/releases/download/${pkgver}/ClassWidgets-Linux-x64.deb")
+sha256sums_x86_64=('39130c35ac8dd3a08fe003cdf708bf6636a295b740d80eaa5450dd419c57f62e')
 
 package() {
     bsdtar -xf data.tar.xz -C "${pkgdir}/"
