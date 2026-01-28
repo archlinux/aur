@@ -23,8 +23,10 @@ pkgbase = python-torchvision-rocm
 	depends = libpng
 	source = vision-0.25.0.tar.gz::https://github.com/pytorch/vision/archive/v0.25.0.tar.gz
 	source = torchvision-0_17_1-fix-build.patch
+	source = ffmpeg-8.patch
 	sha256sums = a7ac1b3ab489d71f6e27edfad1e27616e4b8a9b1517e60fce4a950600d3510e8
 	sha256sums = ed715ca202d2b010c50414e370ebc0492f0f42b298a8e6e03f9fe80b7ce60331
+	sha256sums = 1c466d4ae0874a8ab6518cb3b0c7747f43060fb6803352ac9e13f2b5ecae1931
 
 pkgname = torchvision-rocm
 	pkgdesc = Datasets, transforms, and models specific to computer vision (C++ library only, with ROCM support)

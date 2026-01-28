@@ -43,16 +43,19 @@ makedepends=(
 source=(
     "${_pkgname}-${pkgver}.tar.gz::https://github.com/pytorch/vision/archive/v${pkgver}.tar.gz"
     "torchvision-0_17_1-fix-build.patch"
+    "ffmpeg-8.patch"
 )
 sha256sums=(
     'a7ac1b3ab489d71f6e27edfad1e27616e4b8a9b1517e60fce4a950600d3510e8'
     'ed715ca202d2b010c50414e370ebc0492f0f42b298a8e6e03f9fe80b7ce60331'
+    '1c466d4ae0874a8ab6518cb3b0c7747f43060fb6803352ac9e13f2b5ecae1931'
 )
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
 
     # https://github.com/pytorch/vision/issues/8307
     patch -N -i "${srcdir}"/torchvision-0_17_1-fix-build.patch
+    patch -p1 -i "${srcdir}"/ffmpeg-8.patch
 }
 
 build() {
@@ -79,9 +82,8 @@ build() {
     # https://rocm.docs.amd.com/projects/llvm-project/en/latest/reference/rocmcc.html#support-status-of-other-clang-options
     CXXFLAGS+=" -fcf-protection=none"
 
-    # XXX we need to exclude this in favor of the hipified source, setup.py, make_C_extension
-    # add after: shutil.copy(str(header), str(CSRS_DIR / "ops/hip"))
-    # cuda_sources.remove(CSRS_DIR / "vision.cpp")
+    # exclude torchvision/csrc/vision.cpp in favor of the hipified source to avoid duplicate definition
+    # rm "${srcdir}/${_pkgname}-${pkgver}/torchvision/csrc/vision.cpp"
 
     cmake \
         -G Ninja \
@@ -101,7 +103,7 @@ build() {
         TORCHVISION_LIBRARY=/usr/lib \
         TORCHVISION_USE_NVJPEG=0 \
         TORCHVISION_USE_VIDEO_CODEC=0 \
-        TORCHVISION_USE_FFMPEG=0 \
+        TORCHVISION_USE_FFMPEG=1 \
         python setup.py build
 }
 
