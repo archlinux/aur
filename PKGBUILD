@@ -4,14 +4,14 @@
 # download it separately.
 
 pkgname=beekeeper-qt
-pkgver=1.2
+pkgver=1.2.99
 pkgrel=1
 pkgdesc="Deduplicate redundant data in your disk and save space"
 url="https://github.com/techmanwalker/beekeeper-qt"
 depends=('qt6-base' 'qt6-tools' 'polkit-qt6' 'systemd' 'btrfs-progs' 'bees')
 arch=('x86_64')
 license=('AGPL-3.0-or-later')
-makedepends=('git' 'cmake' 'pkgconf' 'ninja')
+makedepends=('git' 'cmake' 'pkgconf' 'ninja' 'cli11')
 optdepends=('util-linux' 'doxygen')
 provides=('beekeeper')
 source=("$pkgname::git+${url}.git")
