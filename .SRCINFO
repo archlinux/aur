@@ -1,42 +1,42 @@
 pkgbase = grpc-gateway-bin
 	pkgdesc = gRPC to JSON proxy generator following the gRPC HTTP spec
-	pkgver = 2.27.4
+	pkgver = 2.27.5
 	pkgrel = 1
 	url = https://grpc-ecosystem.github.io/grpc-gateway/
 	arch = aarch64
 	arch = x86_64
 	license = BSD-3-Clause
-	source = grpc-gateway-2.27.4-README.md::https://github.com/grpc-ecosystem/grpc-gateway/raw/refs/tags/v2.27.4/README.md
-	source = grpc-gateway-2.27.4-LICENSE::https://github.com/grpc-ecosystem/grpc-gateway/raw/refs/tags/v2.27.4/LICENSE
+	source = grpc-gateway-2.27.5-README.md::https://github.com/grpc-ecosystem/grpc-gateway/raw/refs/tags/v2.27.5/README.md
+	source = grpc-gateway-2.27.5-LICENSE::https://github.com/grpc-ecosystem/grpc-gateway/raw/refs/tags/v2.27.5/LICENSE
 	sha256sums = 3a68931f95da4152197b851116679f0d2bebe901835a9534bbe822f8a53d1d2e
 	sha256sums = a15b1d1b168954c92ff7fb1620382418f7c72f4f4d251ee791d1098ad68ab0c4
-	source_aarch64 = protoc-gen-grpc-gateway-2.27.4-aarch64::https://github.com/grpc-ecosystem/grpc-gateway/releases/download/v2.27.4/protoc-gen-grpc-gateway-v2.27.4-linux-arm64
-	source_aarch64 = protoc-gen-openapiv2-2.27.4-aarch64::https://github.com/grpc-ecosystem/grpc-gateway/releases/download/v2.27.4/protoc-gen-openapiv2-v2.27.4-linux-arm64
-	sha256sums_aarch64 = 06fb0fad3554be46c0c8ed15fc399930ecd71baed10205568722a47c2578d2fb
-	sha256sums_aarch64 = 16d54a3ca95b9ab5352f8229c50f45b2e69340bc35422ea2bcf638bd49c91a68
-	source_x86_64 = protoc-gen-grpc-gateway-2.27.4-x86_64::https://github.com/grpc-ecosystem/grpc-gateway/releases/download/v2.27.4/protoc-gen-grpc-gateway-v2.27.4-linux-x86_64
-	source_x86_64 = protoc-gen-openapiv2-2.27.4-x86_64::https://github.com/grpc-ecosystem/grpc-gateway/releases/download/v2.27.4/protoc-gen-openapiv2-v2.27.4-linux-x86_64
-	sha256sums_x86_64 = d09d18d149781eb580378192966fd1f3614d58a728f63f2877998c53976ecc51
-	sha256sums_x86_64 = 3f53f0839d0476baac232e58ee74361b17967342a48ed1b43e896218b215ea5d
+	source_aarch64 = protoc-gen-grpc-gateway-2.27.5-aarch64::https://github.com/grpc-ecosystem/grpc-gateway/releases/download/v2.27.5/protoc-gen-grpc-gateway-v2.27.5-linux-arm64
+	source_aarch64 = protoc-gen-openapiv2-2.27.5-aarch64::https://github.com/grpc-ecosystem/grpc-gateway/releases/download/v2.27.5/protoc-gen-openapiv2-v2.27.5-linux-arm64
+	sha256sums_aarch64 = 7e9d37dda4038c137b14c8cbfe68baa074fb040484a87948f178d97a05a584a6
+	sha256sums_aarch64 = 632532b5546ccf43c605ae8faf81e38a4ac5666a286b36a79f309eb7acd281cc
+	source_x86_64 = protoc-gen-grpc-gateway-2.27.5-x86_64::https://github.com/grpc-ecosystem/grpc-gateway/releases/download/v2.27.5/protoc-gen-grpc-gateway-v2.27.5-linux-x86_64
+	source_x86_64 = protoc-gen-openapiv2-2.27.5-x86_64::https://github.com/grpc-ecosystem/grpc-gateway/releases/download/v2.27.5/protoc-gen-openapiv2-v2.27.5-linux-x86_64
+	sha256sums_x86_64 = 44d430aeddbab957c85e42a05e857cc132f1ee6dbb0d2971ae09222b23685252
+	sha256sums_x86_64 = b244570acd169e194b9751270261cd19d536a5275264dcc12b700fc6e459f619
 
 pkgname = grpc-gateway-common-bin
 	pkgdesc = gRPC to JSON proxy generator following the gRPC HTTP spec (common files)
 	arch = any
-	provides = grpc-gateway-common=2.27.4
+	provides = grpc-gateway-common=2.27.5
 	conflicts = grpc-gateway-common
 
 pkgname = protoc-gen-grpc-gateway-bin
-	depends = grpc-gateway-common>=2.27.4
+	depends = grpc-gateway-common>=2.27.5
 	depends = protobuf
 	depends = protoc-gen-go
 	depends = protoc-gen-go-grpc
-	provides = protoc-gen-grpc-gateway=2.27.4
+	provides = protoc-gen-grpc-gateway=2.27.5
 	conflicts = protoc-gen-grpc-gateway
 
 pkgname = protoc-gen-openapiv2-bin
-	depends = grpc-gateway-common>=2.27.4
+	depends = grpc-gateway-common>=2.27.5
 	depends = protobuf
 	depends = protoc-gen-go
 	depends = protoc-gen-go-grpc
-	provides = protoc-gen-openapiv2=2.27.4
+	provides = protoc-gen-openapiv2=2.27.5
 	conflicts = protoc-gen-openapiv2
