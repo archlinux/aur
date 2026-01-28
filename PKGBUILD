@@ -1,7 +1,8 @@
 # Maintainer: wuxxin <wuxxin@gmail.com>
-# Contributer: francisco1892 <admin@gnlug.org>
-# Contributer: Jingbei Li <i@jingbei.li>
-# Contributer: Jose Riha <jose1711 gmail com>
+# Contributor: Amy Tobey - github.com/tobert
+# Contributor: francisco1892 <admin@gnlug.org>
+# Contributor: Jingbei Li <i@jingbei.li>
+# Contributor: Jose Riha <jose1711 gmail com>
 
 pkgname=python-torchaudio-rocm
 _pkgname=audio
@@ -24,8 +25,6 @@ depends=(
     'opus'
     'opusfile'
     'zlib'
-    # ROCm runtime (matches python-pytorch-rocm)
-    'rocm-hip-sdk'
 )
 optdepends=('python-kaldi-io')
 makedepends=(
@@ -33,7 +32,6 @@ makedepends=(
     'ninja'
     'python-setuptools'
     'boost'
-    # rocm-toolchain is included in rocm-hip-sdk
     'rocm-hip-sdk'
 )
 conflicts=('python-torchaudio-git' 'python-torchaudio')
@@ -68,7 +66,7 @@ build() {
     export HIP_ROOT_DIR="$ROCM_HOME"
 
     # -fcf-protection is not supported by HIP/clang
-    # ref: https://gitlab.archlinux.org/archlinux/packaging/packages/python-pytorch/-/blob/main/PKGBUILD
+    # https://rocm.docs.amd.com/projects/llvm-project/en/latest/reference/rocmcc.html#support-status-of-other-clang-options
     CXXFLAGS+=" -fcf-protection=none"
 
     USE_ROCM=1 python setup.py build

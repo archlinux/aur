@@ -22,7 +22,6 @@ pkgbase = python-torchaudio-rocm
 	depends = opus
 	depends = opusfile
 	depends = zlib
-	depends = rocm-hip-sdk
 	optdepends = python-kaldi-io
 	provides = python-torchaudio
 	provides = python-torchaudio=2.10.0
