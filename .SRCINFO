@@ -11,6 +11,6 @@ pkgbase = lotus-lang
 	depends = clang
 	depends = sdl3
 	source = lotus-lang-1.5.5.tar.gz::https://github.com/j-alexander3375/Lotus/archive/refs/tags/1.5.5.tar.gz
-	sha256sums = d35bf0ea71a86a05f37696cd4ebd2d767936e27810a9b6ebe1ae24fd82a7f58f
+	sha256sums = a0a8c2390466fb342478c03f33cb077deb35b67c81df13824877af63c71afb86
 
 pkgname = lotus-lang
