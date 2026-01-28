@@ -1,0 +1,19 @@
+pkgbase = pam-luks-keyring-unlock-test
+	pkgdesc = A PAM module that seamlessly unlocks your Gnome Keyring and KDE Wallet using your LUKS encryption key.
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://github.com/cubic3d/pam-luks-keyring-unlock
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	depends = pam
+	depends = keyutils
+	makedepends = meson
+	makedepends = ninja
+	conflicts = pam-luks-keyring-unlock-test
+	provides = pam-luks-keyring-unlock-test
+	
+	source = https://github.com/cubic3d/pam-luks-keyring-unlock-test/releases/download/v${pkgver}/pam-luks-keyring-unlock-test-${pkgver}.tar.gz
+	sha256sums = a9f41dab4d21ee1fc7242e2c152584b46f099e8f92db635ca76171dabc6b3139
+	
+pkgname = pam-luks-keyring-unlock-test
