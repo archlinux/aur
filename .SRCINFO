@@ -4,7 +4,7 @@ pkgbase = neutron
 	pkgrel = 1
 	url = https://github.com/yasakei/neutron
 	arch = x86_64
-	license = custom:Neutron Public License
+	license = Neutron Public License
 	makedepends = cmake
 	makedepends = git
 	makedepends = gcc
@@ -16,7 +16,7 @@ pkgbase = neutron
 	provides = neutron
 	conflicts = neutron-git
 	conflicts = neutron-bin
-	source = git+https://github.com/yasakei/neutron.git#tag=16.2.1
+	source = git+https://github.com/yasakei/neutron.git#tag=26.2.1
 	source = git+https://github.com/yasakei/nt-box.git
 	source = git+https://github.com/yasakei/docs.git
 	sha256sums = SKIP
