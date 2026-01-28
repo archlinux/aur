@@ -3,16 +3,12 @@
 _name="openxr"
 pkgname="lib32-${_name}"
 pkgver=1.1.54
-pkgrel=1
+pkgrel=2
 pkgdesc="An open standard for virtual reality and augmented reality platforms and devices (32-bit)"
-arch=(
-  'x86_64'
-)
+arch=('x86_64')
 url="https://www.khronos.org/openxr/"
 _url="https://github.com/KhronosGroup/OpenXR-SDK-Source"
-license=(
-  'Apache-2.0'
-)
+license=('Apache-2.0')
 depends=(
   "${_name}>=${pkgver}"
   'lib32-gcc-libs'
@@ -36,13 +32,15 @@ source=(
   "${_url}/releases/download/release-${pkgver}/${_pkgsrc}.tar.gz"
   "${_url}/releases/download/release-${pkgver}/${_pkgsrc}.tar.gz.asc"
 )
-sha256sums=('959be5d4ee500c2426555f335bf7fd5d7fb86754192a1d18fa2a7b3ef7f03005'
-            'SKIP')
-sha512sums=('be99658ff3d27bd8674dceb8b5d50bfbbfaf2f3667a8c38d6afb0cdb2701881c945a4c423ce68e4591cc468a9a499803ffb05a9a610f52a1c47fca97d73e13d8'
-            'SKIP')
-validpgpkeys=(
-  '45207B2B1E53E1F2755FF63CC5A2D593A61DBC9D' # Rylie Pavlik <rylie.pavlik@collabora.com>
-)
+b2sums=('8ca05d8dc9117919f5c106a6f7accea546055677c5f28d7c2dcc15102e6e6905ecd7c0118daf76de975e2de543370921456d8980866cd096e7dce0e581566daa'
+  'SKIP')
+validpgpkeys=('45207B2B1E53E1F2755FF63CC5A2D593A61DBC9D') # Rylie Pavlik <rylie.pavlik@collabora.com>
+
+prepare() {
+  cd "$srcdir/OpenXR-SDK-Source-release-${pkgver}"
+  find external/python/jinja2 -type f -name "*.py" -print0 |
+    xargs -0 sed -i 's/from markupsafe import soft_unicode/from markupsafe import soft_str as soft_unicode/g'
+}
 
 build() {
   export CFLAGS+=" -m32"
@@ -72,7 +70,6 @@ build() {
 #     --parallel "$(nproc)"
 #     --exclude-regex "${excluded_tests}"
 #   )
-
 #   cd "${srcdir}"
 #   ctest --test-dir "${_pkgsrc}/build" "${ctest_flags[@]}"
 # }
