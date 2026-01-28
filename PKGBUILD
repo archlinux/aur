@@ -2,16 +2,16 @@
 
 pkgname=banjorecomp-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A static recompilation of Banjo-Kazooie"
 arch=(x86_64)
-#url="https://github.com/${_reponame}/${_reponame}"
+url="https://github.com/${_reponame}/${_reponame}"
 _reponame=BanjoRecomp
 license=('GPL')
 depends=()
 source=(
     "https://github.com/${_reponame}/${_reponame}/releases/download/v${pkgver}/BanjoRecompiled-v${pkgver}-Linux-X64.zip"
-    "https://github.com/${_reponame}/${_reponame}/blob/main/icons/app.png"
+    "app.png::https://github.com/BanjoRecomp/BanjoRecomp/blob/045b738297053d45dfe8256c374163ef09c1b7c0/icons/app.png?raw=true"
     "https://raw.githubusercontent.com/${_reponame}/${_reponame}/refs/heads/main/COPYING"
     )
 sha256sums=(
