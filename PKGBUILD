@@ -1,21 +1,39 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=python-mnelab
 _pkgname=mnelab
-pkgver=1.0.8
-pkgrel=3
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Graphical user interface (GUI) for MNE, a Python package for EEG/MEG analysis"
 arch=('any')
 url="https://github.com/cbrnr/mnelab"
 license=('BSD')
-depends=('python' 'pyside6' 'qt6-svg' 'python-numpy' 'python-scipy' 'python-matplotlib' 'python-mne' 'python-pyxdf' 'python-edfio' 'python-pybv')
-optdepends=('python-scikit-learn' 'python-picard')
-makedepends=('python-build' 'python-uv-build' 'python-installer')
-source=("https://files.pythonhosted.org/packages/source/m/mnelab/mnelab-$pkgver.tar.gz"
-        "mnelab.desktop"
-        "mnelab-mimetypes.xml")
-sha256sums=('12c9fbcb1e359af672820be06f40e1d14548f9180c81773ae3ee622be808040c'
-            '90465ed1dcd28013a24a9410d9ea7529e9a94e58325d54d57dacf7c0552ec3ae'
-            '566cccf86be39eed374a3cfa3905945c9aa60e553b73c4758c2c66d46184c977')
+depends=(
+    'pyside6'
+    'python'
+    'python-black'
+    'python-edfio'
+    'python-isort'
+    'python-matplotlib'
+    'python-mne'
+    'python-numpy'
+    'python-onnx'
+    'python-pybv'
+    'python-pyxdf'
+    'python-scipy'
+    'qt6-svg'
+)
+optdepends=('python-picard' 'python-scikit-learn')
+makedepends=('python-build' 'python-installer' 'python-uv-build')
+source=(
+    "https://files.pythonhosted.org/packages/source/m/mnelab/mnelab-$pkgver.tar.gz"
+    "mnelab.desktop"
+    "mnelab-mimetypes.xml"
+)
+sha256sums=(
+    '3f0fba47fb3f6c7de23f3156aa58014560e61e872e117e08aa7db33a2421d983'
+    '90465ed1dcd28013a24a9410d9ea7529e9a94e58325d54d57dacf7c0552ec3ae'
+    '566cccf86be39eed374a3cfa3905945c9aa60e553b73c4758c2c66d46184c977'
+)
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
