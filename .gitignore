@@ -1,0 +1,10 @@
+connected-desktop
+connected-desktop.desktop
+ic_launcher-playstore.png
+LICENSE-MIT
+LICENSE-APACHE
+*.tar.gz
+*.tar.xz
+*.tar.zst
+pkg/
+src/
