@@ -1,0 +1,22 @@
+pkgbase = soapy-malahit-rr-git
+	pkgdesc = SoapySDR module for Malahit RR SDR receiver
+	pkgver = r27.c65c122
+	pkgrel = 1
+	url = https://github.com/luarvique/SoapyMalahitRR
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = soapysdr
+	depends = alsa-lib
+	depends = libgpiod-1.6
+	provides = soapy-malahit-rr
+	provides = SoapyMalahitRR
+	conflicts = soapy-malahit-rr
+	conflicts = SoapyMalahitRR
+	source = git+https://github.com/luarvique/SoapyMalahitRR.git
+	sha256sums = SKIP
+
+pkgname = soapy-malahit-rr-git
