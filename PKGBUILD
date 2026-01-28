@@ -5,7 +5,7 @@ _pkgname=dotstate
 pkgname=${_pkgname}-bin
 pkgdesc="A modern, secure, and user-friendly dotfile manager"
 
-pkgver=0.2.18
+pkgver=0.2.19
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,9 +25,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}-unknown-linux-musl.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}-unknown-linux-musl.tar.gz")
 sha256sums=('7efa2e24bd29cabcff7c83ee7695a8a53701d94974a4284537be6f4f1b0020a0'
-            '82c3165de80d935790bf733de80de4cfd6b83ef58c5f75a27bd0fb7e2d785de1')
-sha256sums_x86_64=('3cee0cef9356af1280079dfa82cd73f11b1741e7bd13d475ae7d51958540330a')
-sha256sums_aarch64=('abe1c48133b9527dba5098665a876700f7bd97f6ac56c4bb0ece5b85cc53a688')
+            '61daddd21dd28fe7309bc347c6085a285df348620f2322ec3d58c2036150fb1f')
+sha256sums_x86_64=('a8ac584e4a580ff934ea24ce8e20cf8a138aa0c9d7ca4432c0dbc10bc2fdcb8c')
+sha256sums_aarch64=('9a9ddbf48ca95e2ec23fe922fffd8571197b49852969eb6bea5af35acb169062')
 
 
 package() {
