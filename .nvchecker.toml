@@ -1,0 +1,5 @@
+[ksud-bin]
+source = "github"
+github = "tiann/KernelSU"
+use_latest_release = true
+prefix = "v"
