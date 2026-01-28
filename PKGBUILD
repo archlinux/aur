@@ -8,13 +8,14 @@ pkgdesc="Hytale-F2P - unofficial Hytale Launcher for free to play with multiplay
 arch=('x86_64')
 url="https://github.com/amiayweb/Hytale-F2P"
 license=('custom')
+depends=('at-spi2-core' 'gtk3')
 makedepends=('npm' 'jq' 'git' 'libxcrypt-compat' 'nodejs' 'electron-builder')
 provides=('hytale-f2p-git')
 conflicts=('Hytale-F2P-git')
 replaces=('Hytale-F2P-git')
 source=("git+$url.git" "Hytale-F2P.desktop")
 sha256sums=('SKIP'
-  '46488fada4775d9976d7b7b62f8d1f1f8d9a9a9d8f8aa9af4f2e2153019f6a30')
+            '46488fada4775d9976d7b7b62f8d1f1f8d9a9a9d8f8aa9af4f2e2153019f6a30')
 
 pkgver() {
   cd "$_pkgname"
