@@ -3,7 +3,6 @@ pkgbase = bridge-utils
 	pkgver = 1.7.1
 	pkgrel = 3
 	url = https://wiki.linuxfoundation.org/networking/bridge
-	install = bridge-utils.install
 	arch = x86_64
 	license = GPL
 	depends = glibc
