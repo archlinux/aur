@@ -1,10 +1,10 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=vcdExtra
-_pkgver=0.8.7
+_pkgver=0.9.0
 pkgname=r-${_pkgname,,}
-pkgver=0.8.7
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="'vcd' Extensions and Additions"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -45,7 +45,7 @@ optdepends=(
   r-vgam
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c4ce4caaa5008f835ad9a575bdeb3f0d40358d8a8cc4aa095f2cc0ae4426f4e8')
+sha256sums=('36352c311c8e56982a48e9ab5a928dec45442ca2884b131b870df2dcb5c093c1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
