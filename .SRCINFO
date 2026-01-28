@@ -16,6 +16,7 @@ pkgbase = python-llama-index-core
 	depends = python-griffe
 	depends = python-sqlalchemy
 	depends = python-llama-index-workflows
+	depends = python-llama-index-instrumentation
 	source = python-llama-index-core-0.14.12.tar.gz::https://files.pythonhosted.org/packages/fd/d3/9d65f3c631a41fbb0dac47c52adad0fdbbaee3456518a97d558d8c754788/llama_index_core-0.14.12.tar.gz
 	sha256sums = 6917e5865c6c789046dca001ebeea5a7f80e1ba83ac646dc793aaa041e8feb12
 
