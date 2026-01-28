@@ -3,7 +3,7 @@ pkgname=class-widgets-bin
 _appname=cn.rinlit.classwidgets
 pkgver=1.2.0.5
 _build_suffix='21400908131'
-pkgrel=1
+pkgrel=2
 pkgdesc="Class Widgets 1"
 arch=('x86_64')
 url='https://github.com/Class-Widgets/Class-Widgets'
@@ -18,7 +18,7 @@ depends=(
 )
 options=('!debug')
 
-source_x86_64=("${pkgname}::${url}/releases/download/${pkgver}/ClassWidgets-Linux-x64.deb")
+source_x86_64=("${pkgname}-${pkgver}::${url}/releases/download/${pkgver}/ClassWidgets-Linux-x64.deb")
 sha256sums_x86_64=('39130c35ac8dd3a08fe003cdf708bf6636a295b740d80eaa5450dd419c57f62e')
 
 package() {

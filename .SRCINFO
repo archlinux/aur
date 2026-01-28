@@ -1,7 +1,7 @@
 pkgbase = class-widgets-bin
 	pkgdesc = Class Widgets 1
 	pkgver = 1.2.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Class-Widgets/Class-Widgets
 	arch = x86_64
 	depends = fontconfig
@@ -11,7 +11,7 @@ pkgbase = class-widgets-bin
 	depends = zlib
 	depends = xdg-utils
 	options = !debug
-	source_x86_64 = class-widgets-bin::https://github.com/Class-Widgets/Class-Widgets/releases/download/1.2.0.5/ClassWidgets-Linux-x64.deb
+	source_x86_64 = class-widgets-bin-1.2.0.5::https://github.com/Class-Widgets/Class-Widgets/releases/download/1.2.0.5/ClassWidgets-Linux-x64.deb
 	sha256sums_x86_64 = 39130c35ac8dd3a08fe003cdf708bf6636a295b740d80eaa5450dd419c57f62e
 
 pkgname = class-widgets-bin
