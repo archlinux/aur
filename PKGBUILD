@@ -14,7 +14,7 @@
 _pkgname='vision'
 pkgbase='python-torchvision-rocm'
 pkgname=('torchvision-rocm' 'python-torchvision-rocm')
-pkgver=0.24.1
+pkgver=0.25.0
 pkgrel=1
 pkgdesc='Datasets, transforms, and models specific to computer vision (with ROCM support)'
 arch=('x86_64')
@@ -37,29 +37,22 @@ makedepends=(
     ninja
     python-setuptools
     rocm-hip-sdk
-    rocm-toolchain
     qt6-base
     miopen-hip
 )
 source=(
     "${_pkgname}-${pkgver}.tar.gz::https://github.com/pytorch/vision/archive/v${pkgver}.tar.gz"
-    "pytorch-vision-9231.patch"
     "torchvision-0_17_1-fix-build.patch"
-    "ffmpeg-8.patch"
 )
-sha256sums=('071da2078600bfec4886efab77358c9329abfedcf1488b05879b556cb9b84ba7'
-            'ac2b78100923115e7aa090c0e6f936d1580c0cdb7a19ecbfcce5c5c6fa3e5c14'
-            'ed715ca202d2b010c50414e370ebc0492f0f42b298a8e6e03f9fe80b7ce60331'
-            '1c466d4ae0874a8ab6518cb3b0c7747f43060fb6803352ac9e13f2b5ecae1931')
+sha256sums=(
+    'a7ac1b3ab489d71f6e27edfad1e27616e4b8a9b1517e60fce4a950600d3510e8'
+    'ed715ca202d2b010c50414e370ebc0492f0f42b298a8e6e03f9fe80b7ce60331'
+)
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
 
     # https://github.com/pytorch/vision/issues/8307
     patch -N -i "${srcdir}"/torchvision-0_17_1-fix-build.patch
-    # FFmpeg 7.1+ support
-    patch -p1 -N -i "${srcdir}"/pytorch-vision-9231.patch
-    # FFmpeg 8
-    patch -p1 -N -i "${srcdir}"/ffmpeg-8.patch
 }
 
 build() {
@@ -69,7 +62,7 @@ build() {
     mkdir build
 
     # populate build architecture list similar to pkg arch:python-pytorch
-    # 2.8.0-5: gfx950 lacks support for 128 bit atomics
+    # python-pytorch 2.10.0-1: gfx950 lacks support for 128 bit atomics
     _PYTORCH_ROCM_ARCH="$(rocm-supported-gfx -e gfx950)"
     if test -n "$GPU_TARGETS"; then _PYTORCH_ROCM_ARCH="$GPU_TARGETS"; fi
     if test -n "$AMDGPU_TARGETS"; then _PYTORCH_ROCM_ARCH="$AMDGPU_TARGETS"; fi
@@ -81,6 +74,10 @@ build() {
     export ROCM_HOME="${ROCM_HOME:-/opt/rocm}"
     export ROCM_PATH="$ROCM_HOME"
     export HIP_ROOT_DIR="$ROCM_HOME"
+
+    # -fcf-protection is not supported by HIP/clang
+    # https://rocm.docs.amd.com/projects/llvm-project/en/latest/reference/rocmcc.html#support-status-of-other-clang-options
+    CXXFLAGS+=" -fcf-protection=none"
 
     # XXX we need to exclude this in favor of the hipified source, setup.py, make_C_extension
     # add after: shutil.copy(str(header), str(CSRS_DIR / "ops/hip"))
