@@ -2,9 +2,14 @@ KERNELRELEASE ?= $(shell uname -r)
 KERNEL_DIR ?= /lib/modules/$(KERNELRELEASE)/build
 PWD := $(shell pwd)
 
+KERNEL_CC_IS_CLANG := $(shell grep -q '^CONFIG_CC_IS_CLANG=y' "$(KERNEL_DIR)/.config" 2>/dev/null && echo 1 || echo 0)
+ifeq ($(KERNEL_CC_IS_CLANG),1)
+LLVM_MAKEFLAG := LLVM=1
+endif
+
 default:
 	# M=指定到子目录 fs/bcachefs
-	$(MAKE) -C $(KERNEL_DIR) M=$(PWD)/fs/bcachefs BCACHEFS_DKMS=y modules
+	$(MAKE) -C $(KERNEL_DIR) M=$(PWD)/fs/bcachefs BCACHEFS_DKMS=y $(LLVM_MAKEFLAG) modules
 
 clean:
-	$(MAKE) -C $(KERNEL_DIR) M=$(PWD)/fs/bcachefs clean
+	$(MAKE) -C $(KERNEL_DIR) M=$(PWD)/fs/bcachefs $(LLVM_MAKEFLAG) clean

@@ -1,7 +1,7 @@
 # Maintainer: neycrol <330578697@qq.com>
 pkgname=bcachefs-kernel-dkms-git
 _pkgname=bcachefs-kernel
-pkgver=20260113.r1.g8bbabb8bb
+pkgver=20260125.r1.g802455d
 pkgrel=1
 pkgdesc="Bcachefs kernel module (DKMS) built directly from upstream kernel tree (fs/bcachefs), preserving directory structure"
 arch=('x86_64')
@@ -9,16 +9,21 @@ url="https://github.com/koverstreet/bcachefs"
 license=('GPL-2.0-only')
 depends=('dkms')
 makedepends=('git')
-optdepends=('bcachefs-tools: userspace utilities for bcachefs filesystem')
+optdepends=(
+    'bcachefs-tools: userspace utilities for bcachefs filesystem'
+    'clang: required when building against clang-built kernels'
+)
 # 兼容性声明：防止与其他 bcachefs 驱动包冲突
 provides=('bcachefs-dkms' 'bcachefs-dkms-git')
 conflicts=('bcachefs-dkms' 'bcachefs-dkms-git' 'bcachefs-git' 'bcachefs-source-git')
 source=(
     "dkms.conf.in"
     "Makefile.dkms"
+    "fix-sysfs-goto.patch"
 )
 sha256sums=('b57dd60f10e457258b894badc561f9a43339ae7491aebf3a98e56ef74934dfa0'
-            'ad66094a544f86e2ac89180aee35e1bdd8c8941e51812e1553b0e0c8b0c487aa')
+            'a37fa1baaf8825631ceff9410b3be78e06d19833814586cd3140b4af9c2f8d14'
+            'adf0ed462e37025ecde9c34b0a6f8a0d84ac2f49a9e688cba5472e27e7f6904c')
 
 pkgver() {
     # 防止第一次运行时目录不存在报错
@@ -26,7 +31,8 @@ pkgver() {
         cd "$srcdir/$_pkgname"
         git remote set-url origin "https://github.com/koverstreet/bcachefs.git"
         local ref="HEAD"
-        if git fetch --quiet --depth=1 origin master; then
+        # Use partial-clone filtering to avoid downloading the full kernel tree.
+        if git -c http.version=HTTP/1.1 fetch --quiet --depth=1 --filter=blob:none origin master; then
             ref="origin/master"
         fi
         printf "%s.r%s.g%s" \
@@ -66,10 +72,14 @@ EOF
     msg2 "Fetching latest kernel source..."
     
     git config http.postBuffer 524288000
+    # Enable partial clone so we don't need to download the entire kernel tree.
+    git config remote.origin.promisor true
+    git config extensions.partialClone origin
+    git config core.partialCloneFilter blob:none
     
     local _success=0
     for _i in {1..5}; do
-        if git fetch --depth=1 origin master; then
+        if git -c http.version=HTTP/1.1 fetch --depth=1 --filter=blob:none origin master; then
             _success=1
             break
         fi
@@ -83,6 +93,10 @@ EOF
     fi
 
     git reset --hard origin/master
+
+    # --- FIX: Clang goto/cleanup error (CachyOS clang kernels) ---
+    # Avoid jumping past variables declared with cleanup attributes.
+    patch -Np1 -i "$srcdir/fix-sysfs-goto.patch"
 
     # --- 4. 准备构建环境 ---
     # 这里只清理 build 目录，不清理源码目录
