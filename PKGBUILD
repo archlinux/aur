@@ -1,9 +1,9 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 pkgname=python-orbax-export
 _pkgname=${pkgname#python-}
-pkgver=0.0.6
-_pkgver=0.11.5
-pkgrel=2
+pkgver=0.0.8
+_pkgver=0.11.32
+pkgrel=1
 pkgdesc='Orbax provides common utility libraries for JAX users (export).'
 arch=('any')
 url='https://github.com/google/orbax'
@@ -17,6 +17,7 @@ depends=(
     'python-jaxtyping'
     'python-numpy'
     'python-orbax-checkpoint'
+    'python-protobuf'
 )
 makedepends=('python-build' 'python-flit-core' 'python-installer')
 optdepends=(
@@ -25,10 +26,15 @@ optdepends=(
 conflicts=('python-orbax')
 replaces=('python-orbax')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$_pkgver.tar.gz")
-sha256sums=('37947bc16fc7d0a423fa3a4d5700d9ec9e9b886a29a23923392b691b83e38e96')
+sha256sums=('bb47e3d116377fb9b38c105fad4786b5ec57a8177fdd235de089e31d501ce43e')
 
 build() {
     python -m build -nw orbax-$_pkgver/export
+}
+
+check() {
+  cd "orbax-$_pkgver/export"
+  PYTHONPATH=$PWD/src python -c 'import orbax.export'
 }
 
 package() {
