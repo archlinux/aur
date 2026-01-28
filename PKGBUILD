@@ -4,7 +4,7 @@
 
 pkgname=rare-go
 _pkgname=rare
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="A fast text scanner/regex extractor and realtime summarizer"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ license=('GPL-3.0-or-later')
 depends=('pcre2')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('f07ace4af25658c7912861233a8308710b96bfa25aac55f016ed3ff344f43981')
+sha256sums=('89e9738097f3a42b564d8c06ca4bacffe22f9f6436679298f5441d502d97e9b4')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
