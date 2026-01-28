@@ -1,0 +1,5 @@
+[tredis-bin]
+source = "github"
+github = "huseyinbabal/tredis"
+use_latest_release = true
+prefix = "v"
