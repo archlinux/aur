@@ -7,7 +7,7 @@ _android_arch=riscv64
 pkgbase=android-${_android_arch}-harfbuzz
 pkgname=("android-${_android_arch}-harfbuzz"
          "android-${_android_arch}-harfbuzz-icu")
-pkgver=12.3.0
+pkgver=12.3.2
 pkgrel=1
 pkgdesc="OpenType text shaping engine (Android ${_android_arch})"
 arch=('any')
@@ -24,7 +24,7 @@ makedepends=('android-meson'
              'ragel')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/harfbuzz/harfbuzz/archive/refs/tags/${pkgver}.tar.gz")
-md5sums=('5963b551544636df7ea5daddbcf70340')
+md5sums=('3e9011ecd909047e98a18192b620d16b')
 
 build() {
     cd "${srcdir}/harfbuzz-${pkgver}"
