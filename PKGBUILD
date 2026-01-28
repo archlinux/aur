@@ -1,6 +1,6 @@
 # Maintainer: Rotko Networks <hq@rotko.net>
 pkgname=zish
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="fast shell interpreter written in zig"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('zig>=0.15.1')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rotkonetworks/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('a3a228bc7c9ce87c3a915a84d31bd8a87b62479f04e5f5feeb5822c728ffc441')
+sha256sums=('0a43ee2fb84791c4f26a301e4ef31b5ede1d4c209b54451da71c75493a3cefec')
 
 build() {
     cd "$pkgname-$pkgver"
