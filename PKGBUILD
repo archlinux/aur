@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=garden-tools
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="Garden grows and cultivates collections of Git trees"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("https://gitlab.com/garden-rs/garden/-/archive/v${pkgver}/garden-v${pkgver}.tar.gz")
-sha256sums=('d1f89ce5a4688ca59679a38daeb3dc2c0deec7ed6d36a4dec2f814d18e324567')
+sha256sums=('330df7dfa27382b70157da6e13c9b31899c35537b7691ce800c0301ea26292a7')
 
 prepare() {
   cd "garden-v${pkgver}"
