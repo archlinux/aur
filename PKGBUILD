@@ -5,7 +5,7 @@
 : ${RUSTUP_TOOLCHAIN:=stable}
 
 pkgname='protols'
-pkgver=0.12.7
+pkgver=0.13.1
 pkgrel=1
 pkgdesc='Language Server for Protobuf and gRPC'
 url='https://github.com/coder3101/protols'
@@ -16,7 +16,7 @@ makedepends=('rust')
 checkdepends=()
 options=('!lto')
 source=("$pkgname.tar.gz"::"$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('dbd77c9c531ce8d4d96c66fa72c1f379367452013caf36967886efcff3548ea9')
+sha256sums=('482666881afc42f59ba237edb99ae00ed06bb2967c5d3150de1b75add7bb5240')
 
 _rust_env() {
   export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
