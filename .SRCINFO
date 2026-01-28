@@ -1,0 +1,17 @@
+pkgbase = striim-deck
+	pkgdesc = Wii U "stream deck" using a website
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://codeberg.org/NorthWestWind/striim-deck
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	makedepends = nodejs
+	makedepends = npm
+	source = https://codeberg.org/NorthWestWind/striim-deck/archive/v1.1.0.tar.gz
+	source = striim-deck.desktop
+	sha256sums = 47a6fdfd8b562f83bb2281e37e2e767cb74bf747b447aa674ccbb1374fd38bee
+	sha256sums = bebba34f0a22d3add69c2e4a55e8e02f2fbf53edd72c43174ed039431707a575
+
+pkgname = striim-deck

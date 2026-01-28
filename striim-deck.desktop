@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Striim Deck
+Comment=Wii U "stream deck" using a website
+Exec=striim-deck
+Icon=striim-deck
+Terminal=false
+StartupWMClass=striim-deck
