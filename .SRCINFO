@@ -1,6 +1,6 @@
 pkgbase = feedgnuplot
 	pkgdesc = Tool to plot realtime and stored data from the commandline, using gnuplot.
-	pkgver = 1.63
+	pkgver = 1.64
 	pkgrel = 1
 	url = https://github.com/dkogan/feedgnuplot
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = feedgnuplot
 	depends = perl-list-moreutils
 	depends = perl-string-shellquote
 	provides = feedgnuplot
-	source = https://github.com/dkogan/feedgnuplot/archive/v1.63.tar.gz
-	b2sums = 3bbc5c45aa23437c952daf669f312505af89f18144cd6318369de45058898b863ac9e1cfd82f9f4695b5c608f1416b7ab97b51db836d3b08b85cbbff85d29269
+	source = https://github.com/dkogan/feedgnuplot/archive/v1.64.tar.gz
+	b2sums = 69eecb8191880da96046d982ec0a96c82da940363c15ffe840fea8b7a11255ca685cf1140f2e3030069c90ea67f08822c3095408f0e10fe83796756eeab224a2
 
 pkgname = feedgnuplot

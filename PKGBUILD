@@ -1,7 +1,7 @@
 # Maintainer: Dmitri Kourennyi <dkour at mykolab dot com>
 # Contributor: Eric Schulte <[firstname] dot [lastname] at gmx dot com>
 pkgname=feedgnuplot
-pkgver=1.63
+pkgver=1.64
 pkgrel=1
 pkgdesc="Tool to plot realtime and stored data from the commandline, using gnuplot."
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('perl' 'gnuplot' 'perl-list-moreutils' 'perl-string-shellquote')
 provides=('feedgnuplot')
 source=("https://github.com/dkogan/${pkgname}/archive/v${pkgver}.tar.gz")
-b2sums=("78f3a4cb14fde2b5a8a380f6a1706b3cd6bd9f3f2f763f6b001b607481e2cbe8456b17f325e2898c9ca8c5c6b4638621950da4dda07bdba308cae1ca0cbaeb2f")
+b2sums=("69eecb8191880da96046d982ec0a96c82da940363c15ffe840fea8b7a11255ca685cf1140f2e3030069c90ea67f08822c3095408f0e10fe83796756eeab224a2")
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}" || exit
