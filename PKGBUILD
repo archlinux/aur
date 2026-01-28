@@ -74,6 +74,7 @@ build() {
     -DGGML_HIP=ON
     -DGGML_HIP_GRAPHS=ON
     -DGGML_HIP_ROCWMMA_FATTN=ON
+    -DHIP_PLATFORM=amd # 手动指定 AMD 平台, 防止因 rocm-nightly 禁用自动检测而报错
     -DGGML_CUDA_FA_ALL_QUANTS=ON
     -Wno-dev
   )
