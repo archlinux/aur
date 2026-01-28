@@ -1,4 +1,4 @@
-# Maintainer: Vasiliy Stelmachenok <ventureo@yandex.ru>
+# Maintainer: Vasiliy Stelmachenok <ventureo@cachyos.org>
 # Contributor: jcstryker <public at jasonstryker dot com>
 # Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: Peter Jung <ptr1337@archlinux.org>
@@ -7,8 +7,6 @@
 
 pkgbase=nvidia-vulkan
 pkgname=(
-    'nvidia-vulkan'
-    'nvidia-vulkan-open'
     'nvidia-vulkan-dkms'
     'nvidia-vulkan-open-dkms'
     'nvidia-vulkan-utils'
@@ -17,11 +15,10 @@ pkgname=(
     'lib32-opencl-nvidia-vulkan'
 )
 pkgver=580.94.16
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA drivers for linux (vulkan developer branch)"
 arch=('x86_64')
 url="https://developer.nvidia.com/vulkan-driver"
-makedepends=('libglvnd' 'linux' 'linux-headers')
 license=('custom')
 options=('!strip')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}"
@@ -151,39 +148,9 @@ build() {
 
 }
 
-package_nvidia-vulkan() {
-    pkgdesc="NVIDIA drivers for linux (vulkan developer branch)"
-    depends=('linux' "nvidia-vulkan-utils=${pkgver}" 'libglvnd')
-    provides=("NVIDIA-MODULE" "nvidia=$pkgver")
-    conflicts+=('nvidia')
-
-    _extradir="/usr/lib/modules/$(</usr/src/linux/version)/extramodules"
-    install -Dt "${pkgdir}${_extradir}" -m644 "${srcdir}/${_pkg}/kernel"/*.ko
-
-    # Compress each module individually
-    find "$pkgdir" -name '*.ko' -exec zstd --rm -19 {} +
-
-    install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 "${srcdir}/${_pkg}/LICENSE"
-}
-
-package_nvidia-vulkan-open() {
-    pkgdesc="NVIDIA drivers for linux (vulkan developer branch)"
-    depends=('linux' "nvidia-vulkan-utils=${pkgver}" 'libglvnd')
-    provides=("NVIDIA-MODULE" "nvidia=$pkgver")
-    conflicts+=('nvidia')
-
-    _extradir="/usr/lib/modules/$(</usr/src/linux/version)/extramodules"
-    install -Dt "${pkgdir}${_extradir}" -m644 "$srcdir/open-gpu-kernel-modules-${pkgver}/kernel-open"/*.ko
-
-    # Compress each module individually
-    find "$pkgdir" -name '*.ko' -exec zstd --rm -19 {} +
-
-    install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 "${srcdir}/${_pkg}/LICENSE"
-}
-
 package_nvidia-vulkan-dkms() {
     pkgdesc="NVIDIA kernel modules - module sources (vulkan developer branch)"
-    depends=('dkms' "nvidia-vulkan-utils=$pkgver" 'libglvnd')
+    depends=('dkms' "nvidia-vulkan-utils=$pkgver")
     provides=('NVIDIA-MODULE' 'nvidia')
     conflicts=('NVIDIA-MODULE' 'nvidia')
 

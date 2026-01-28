@@ -1,13 +1,10 @@
 pkgbase = nvidia-vulkan
 	pkgdesc = NVIDIA drivers for linux (vulkan developer branch)
 	pkgver = 580.94.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.nvidia.com/vulkan-driver
 	arch = x86_64
 	license = custom
-	makedepends = libglvnd
-	makedepends = linux
-	makedepends = linux-headers
 	options = !strip
 	source = nvidia-drm-outputclass.conf
 	source = nvidia-vulkan-utils.sysusers
@@ -16,7 +13,7 @@ pkgbase = nvidia-vulkan
 	source = systemd-suspend-override.conf
 	source = nvidia-sleep.conf
 	source = NVIDIA-Linux-x86_64-580.94.16.run::https://developer.nvidia.com/downloads/vulkan-beta-5809416-linux
-	source = nvidia-vulkan-580.94.16.tar.gz::https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/580.94.16.tar.gz
+	source = nvidia-vulkan-dkms-580.94.16.tar.gz::https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/580.94.16.tar.gz
 	source = 0001-Enable-atomic-kernel-modesetting-by-default.patch
 	source = 0003-Add-IBT-support.patch
 	sha512sums = de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770
@@ -30,29 +27,10 @@ pkgbase = nvidia-vulkan
 	sha512sums = 0bb89b9037f0baa9aae1ff8e70c9c93896f03fd0cc380eea4b0dc094a6991c3ad6738c9fbbaa42d8b5a544f77dc91c0e6401b1501c5970c576d5efbc0de8dd34
 	sha512sums = 42f621179d4fd9bf608f0d84b9019f5a5fdf5d92d68d22ce9b9a9add1cad1c90dcb3764db68e0b9bc7e902bb6b955c59563ea6d4f39f2e39a340387e4d5deb82
 
-pkgname = nvidia-vulkan
-	pkgdesc = NVIDIA drivers for linux (vulkan developer branch)
-	depends = linux
-	depends = nvidia-vulkan-utils=580.94.16
-	depends = libglvnd
-	provides = NVIDIA-MODULE
-	provides = nvidia=580.94.16
-	conflicts = nvidia
-
-pkgname = nvidia-vulkan-open
-	pkgdesc = NVIDIA drivers for linux (vulkan developer branch)
-	depends = linux
-	depends = nvidia-vulkan-utils=580.94.16
-	depends = libglvnd
-	provides = NVIDIA-MODULE
-	provides = nvidia=580.94.16
-	conflicts = nvidia
-
 pkgname = nvidia-vulkan-dkms
 	pkgdesc = NVIDIA kernel modules - module sources (vulkan developer branch)
 	depends = dkms
 	depends = nvidia-vulkan-utils=580.94.16
-	depends = libglvnd
 	provides = NVIDIA-MODULE
 	provides = nvidia
 	conflicts = NVIDIA-MODULE
