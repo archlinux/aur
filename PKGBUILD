@@ -2,7 +2,7 @@
 # Maintainer: Waldemar Faist <cubic@coldice.net>
 
 pkgname='pam-luks-keyring-unlock'
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='A PAM module that seamlessly unlocks your Gnome Keyring and KDE Wallet using your LUKS encryption key.'
 url='https://github.com/cubic3d/pam-luks-keyring-unlock'
@@ -13,7 +13,7 @@ conflicts=('pam-luks-keyring-unlock')
 depends=('pam' 'keyutils')
 makedepends=('meson' 'ninja')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/cubic3d/pam-luks-keyring-unlock/releases/download/v${pkgver}/pam-luks-keyring-unlock-${pkgver}.tar.gz")
-sha256sums=('ac1e87e26873804686c940f0ef9dedf7b6bd2e2e9e93da49d4c1ecbe6ee71a71')
+sha256sums=('b2b3b39a174978f57c02aa2a8d99eb410a3ec241f95ca40e21b8ecf2cd252243')
 build() {
   arch-meson "$pkgname-$pkgver" build
   meson compile -C build
