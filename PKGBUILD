@@ -22,7 +22,7 @@ sha512sums=(
 )
 
 build() {
-  cd "openssl-${pkgver}"
+  cd "openssl-1.1.1w"
 
   ./config --prefix=/usr \
     --libdir=lib/openssl-1.1
@@ -30,12 +30,12 @@ build() {
 }
 
 check() {
-  cd "openssl-${pkgver}"
+  cd "openssl-1.1.1w"
   make test
 }
 
 package() {
-  cd "openssl-${pkgver}"
+  cd "openssl-1.1.1w"
   make DESTDIR="${pkgdir}" install_sw
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 
