@@ -2,7 +2,7 @@
 
 pkgname=php-legacy-xdebug
 _extname=xdebug
-pkgver=3.4.1
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="Xdebug is an extension for PHP, and provides a range of features to improve the PHP development experience. This package provides xdebug for use with php-legacy."
 arch=("x86_64")
@@ -29,4 +29,4 @@ package() {
     install -m0755 -D "modules/$_extname.so" "$pkgdir$(php-config-legacy --extension-dir)/$_extname.so"
 }
 
-sha256sums=('4d96bcded78dbd271fb344c119171b625a8597cd67fc6899ec5e019549f1bb87')
+sha256sums=('f6daf55a5c7adadb07dd2af25ff78b1cc9b1c58d6cc442a463eba015b678aabf')
