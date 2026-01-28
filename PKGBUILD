@@ -1,8 +1,9 @@
 # Maintainer: solarfire <xatra169@gmail.com>
 # Contributor: Pierre Schmitz <pierre@archlinux.org>
+_pkgver='1.1.1w'
 pkgname='openssl-1.1'
 pkgver='1.1.1.w'
-pkgrel='4'
+pkgrel='5'
 pkgdesc='OpenSSL 1.1 legacy branch (deprecated)'
 
 arch=('x86_64')
@@ -14,7 +15,7 @@ depends=('glibc')
 makedepends=('perl')
 
 source=(
-  "https://github.com/openssl/openssl/releases/download/OpenSSL_1_1_1w/openssl-1.1.1w.tar.gz"
+  "https://github.com/openssl/openssl/releases/download/OpenSSL_1_1_1w/openssl-${_pkgver}.tar.gz"
 )
 
 sha512sums=(
@@ -22,7 +23,7 @@ sha512sums=(
 )
 
 build() {
-  cd "openssl-1.1.1w"
+  cd "${srcdir}/openssl-${_pkgver}"
 
   ./config --prefix=/usr \
     --libdir=lib/openssl-1.1
@@ -30,12 +31,12 @@ build() {
 }
 
 check() {
-  cd "openssl-1.1.1w"
+  cd "${srcdir}/openssl-${_pkgver}"
   make test
 }
 
 package() {
-  cd "openssl-1.1.1w"
+  cd "${srcdir}/openssl-${_pkgver}"
   make DESTDIR="${pkgdir}" install_sw
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 

@@ -1,7 +1,7 @@
 pkgbase = openssl-1.1
 	pkgdesc = OpenSSL 1.1 legacy branch (deprecated)
 	pkgver = 1.1.1.w
-	pkgrel = 4
+	pkgrel = 5
 	url = https://openssl-library.org/source/old/1.1.1
 	arch = x86_64
 	license = OpenSSL
