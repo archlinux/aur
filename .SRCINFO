@@ -1,0 +1,17 @@
+pkgbase = awww-bin
+	pkgdesc = Pre-compiled binary of awww, wallpaper daemon for Wayland
+	pkgver = 0.11.2
+	pkgrel = 1
+	url = https://codeberg.org/LGFae/awww
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = libxkbcommon
+	depends = lz4
+	provides = awww
+	conflicts = awww
+	replaces = swww
+	options = !lto
+	source = awww-0.11.2-x86_64.tar.gz::https://github.com/IncogCyberpunk/awww-bin/releases/download/v0.11.2/awww-0.11.2-x86_64.tar.gz
+	sha256sums = 57a0e1164ea7cde1393af4b35d802d0b8dbcde4f831fb62e3e48187527803eaa
+
+pkgname = awww-bin
