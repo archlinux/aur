@@ -4,7 +4,7 @@
 _pkgname=eidklient
 pkgname="${_pkgname}-native"
 pkgver=5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Slovak eID Client - uses system-provided libraries, supports Wayland, …"
 arch=('i686' 'x86_64')
 url="https://www.slovensko.sk/"
@@ -80,12 +80,14 @@ package() {
         ccid
         gcc-libs
         glibc
-        openssl-1.1
         pcsclite
         qt5-base
         qt5-svg
     )
-    optdepends=('disig-web-signer: online certificates update support')
+    optdepends=(
+        "disig-web-signer: online certificates update support"
+        "openssl-1.1: system-provided OpenSSL"
+    )
 
     : "${depends[@]}"
     : "${optdepends[@]}"
