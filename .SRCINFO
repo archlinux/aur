@@ -1,6 +1,6 @@
 pkgbase = rivetui-git
 	pkgdesc = A Terminal UI Discord Client in Rust (latest)
-	pkgver = 0.2.15
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/YetAnotherMechanicusEnjoyer/Rivet
 	arch = i686
