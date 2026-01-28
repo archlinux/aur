@@ -2,7 +2,7 @@
 # Contributor: Chrys <chrys@linux-a11y.org>
 
 pkgname="fenrir"
-pkgver=2025.12.06
+pkgver=2026.01.28
 pkgrel=1
 epoch=1
 pkgdesc='A user space console screen reader written in python3'
@@ -20,7 +20,7 @@ conflicts=('fenrir-git')
 backup=('etc/fenrirscreenreader/settings/settings.conf')
 source=("git+https://git.stormux.org/storm/${pkgname}.git#tag=${pkgver}")
 install=fenrir.install
-sha512sums=('5b5f75bb1ec091bbec81e37e7511c9a0d76f8395dbc99af1337056a1bffb01097950be7d1597f5487247b9adb8f2238729928989e79f32f2aa449c6a0ebcfea0')
+sha512sums=('d8aab55d5e4f8b1a08789f688de998682f4fe5183761c72f080b05ec1a1a026b567341f28fd3f4b48620a5c1d0dba3e3bb9e3c96ec9bb6e84f025949e6df80a6')
 
 package() {
   cd "$srcdir/$pkgname"
