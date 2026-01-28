@@ -4,7 +4,7 @@
 
 pkgname=zotero-git
 _pkgname="${pkgname%-git}"
-pkgver=7.0.11.r951.g2c0bebd
+pkgver=8.0.0.r16.gb1b0d45
 pkgrel=1
 pkgdesc="A free, easy-to-use tool to help you collect, organize, cite, and share your research sources, git version"
 arch=('x86_64' 'i686')
@@ -51,7 +51,7 @@ source=(
   "disable-updater.patch"
 )
 sha256sums=(
-  'eab76db7a56a4d9aaa17baaf240b82fcf57944a4ddf8ef1b58cc64182426cedc'
+  '6eab457a19ab59732ae97f4c6561458462c3fd5ab6ae0a0eaf7b64df113d16bd'
   'SKIP'
   'SKIP'
   'SKIP'
