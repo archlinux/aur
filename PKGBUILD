@@ -13,7 +13,7 @@ conflicts=('pam-luks-keyring-unlock')
 depends=('pam' 'keyutils')
 makedepends=('meson' 'ninja')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/cubic3d/pam-luks-keyring-unlock/releases/download/v${pkgver}/pam-luks-keyring-unlock-${pkgver}.tar.gz")
-sha256sums=('07ded5af6aa35cb4a5bd628da9f8545fcff29d7dbd5ab4f48b74679f9a6406a6')
+sha256sums=('ac1e87e26873804686c940f0ef9dedf7b6bd2e2e9e93da49d4c1ecbe6ee71a71')
 build() {
   arch-meson "$pkgname-$pkgver" build
   meson compile -C build
@@ -22,5 +22,5 @@ package() {
   # Binary
   meson install -C build --destdir "$pkgdir"
   # License
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
