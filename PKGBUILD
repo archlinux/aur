@@ -4,15 +4,15 @@
 # Maintainer: Arthur Aillet <arthur.aillet@epitech.eu>
 
 pkgname=wormhole
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc='Simple decentralized file storage'
 url='https://github.com/Agartha-Software/Wormhole'
 license=('AGPL-3.0-only')
 makedepends=(cargo git)
 depends=(fuse3 gcc-libs)
 arch=('x86_64')
-source=('git+https://github.com/Agartha-Software/Wormhole.git#commit=b655263c6dc9e267390b58637f94472ceadf8482')
+source=('git+https://github.com/Agartha-Software/Wormhole.git#commit=c4933a4306263921380adebed3d544f1a1ffecfb')
 b2sums=("SKIP") # will be added once we point a real release
 
 prepare() {
