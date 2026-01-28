@@ -87,4 +87,8 @@ package() {
     # Install license file
     install -dm 755 "${pkgdir}/usr/share/licenses/${pkgname}"
     ln -s "/usr/share/doc/${pkgname}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/copyright"
+
+    # Create graphviz library symlinks (app built against Debian 12's older graphviz)
+    ln -s libgvc.so.7 "${pkgdir}/usr/lib/libgvc.so.6"
+    ln -s libcgraph.so.8 "${pkgdir}/usr/lib/libcgraph.so.6"
 }
