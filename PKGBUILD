@@ -1,7 +1,7 @@
 # Maintainer: Norbert Preining <norbert@preining.info>
 _UpstreamPkgName=t
 pkgname=${_UpstreamPkgName,,}-lang
-pkgver=0.0.5
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Concise language for manipulating text"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/alecthomas/$_UpstreamPkgName"
 license=('MIT')
 makedepends=('git' 'cargo')
 source=(git+${url}.git#tag=v${pkgver})
-sha256sums=('bedcc5e65aeb529c37e4893a0949624d55a9fc2809f3136892e61f1abb759f3f')
+sha256sums=('df11f295804a979423bdc1f6631c5384eba4a42de537c86c08c3e3358f65b074')
 
 prepare() {
     cd ${_UpstreamPkgName}
