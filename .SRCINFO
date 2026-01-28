@@ -1,17 +1,20 @@
 pkgbase = byteonpanel-git
 	pkgdesc = Simple network traffic monitor in the systray
-	pkgver = r3.cc2fa40
+	pkgver = r5.09397fd
 	pkgrel = 1
 	url = https://github.com/whorfin/ByteOnPanel
 	arch = x86_64
-	license = GPL3
-	makedepends = git
-	makedepends = libtool
-	makedepends = automake
+	license = GPL-3.0-or-later
 	makedepends = autoconf
+	makedepends = automake
+	makedepends = git
+	makedepends = intltool
+	makedepends = libtool
+	makedepends = vala
 	depends = cairo
+	depends = glib2
+	depends = glibc
 	depends = gtk3
-	depends = vala
 	source = git+https://github.com/whorfin/ByteOnPanel.git#branch=master
 	sha256sums = SKIP
 
