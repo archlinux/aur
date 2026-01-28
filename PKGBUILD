@@ -4,7 +4,7 @@
 # Patches applied by: Lito Parra <lito.15@proton.me>
 
 pkgname=kwin-hifps
-pkgver=6.5.4
+pkgver=6.5.5
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=2
 pkgdesc='An easy to use, but flexible, Wayland compositor - patched for high refresh rate animation smoothness'
@@ -152,4 +152,6 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+
+  setcap cap_sys_nice+eip "$pkgdir/usr/bin/kwin_wayland"
 }
