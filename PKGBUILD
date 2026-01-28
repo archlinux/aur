@@ -1,21 +1,32 @@
-# Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
+# Maintainer: taotieren <admin@taotieren.com>
 
 _pkgname=nmrpflash
 pkgname=${_pkgname}-git
-pkgver=0.9.13.r20.g021e449
+pkgver=0.9.26.r11.g4ed728a
 pkgrel=1
 pkgdesc="Netgear Unbrick Utility"
-arch=('x86_64')
+arch=($CARCH)
 url="https://github.com/jclehner/nmrpflash"
+license=('GPL-3.0-or-later')
 depends=('libpcap' 'libnl>=3')
-makedepends=('make')
-source=("${_pkgname}::git+https://github.com/jclehner/nmrpflash.git")
+makedepends=(
+  make
+  git
+)
+source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
-pkgver() {
-  cd "${_pkgname}"
+prepare() {
+  git -C "${srcdir}/${_pkgname}" clean -dfx
+}
 
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+pkgver() {
+    cd "${srcdir}/${_pkgname}"
+    (
+        set -o pipefail
+        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
 }
 
 build() {
@@ -27,6 +38,9 @@ build() {
 package() {
   cd "${_pkgname}"
 
-  install -dm0755 "${pkgdir}"/usr/bin
   make install PREFIX="${pkgdir}/usr"
+  install -vDm0644 ${_pkgname}.svg -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
+  install -vDm0644 -d "${pkgdir}/usr/share/doc/${pkgname}/"
+  cp -rv *.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
+  install -vDm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
