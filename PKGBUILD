@@ -1,6 +1,6 @@
 pkgname=marmot
-pkgver=2.4.2
-pkgrel=2
+pkgver=2.8.0
+pkgrel=1
 pkgdesc="A distributed SQLite server with MySQL wire compatible interface"
 arch=(any)
 url="https://github.com/maxpert/marmot"
@@ -10,7 +10,7 @@ backup=('etc/marmot/config.toml')
 source=("https://github.com/maxpert/marmot/archive/refs/tags/v$pkgver.tar.gz"
 	"marmot.service")
 
-sha256sums=('8ab0d54994d74121aa0fca72fa9a3a1f8b74cb8c6107b2d282a556d1c169dde9'
+sha256sums=('54b2529996706653b3059933f948c99a2d05195a4261b8c957134acf289ac462'
             '87ef91c653307f985d160c2047b1f64f39eaf654635f75b623455fd27de5ee56')
 
 build() {
