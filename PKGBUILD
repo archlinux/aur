@@ -1,7 +1,7 @@
 # Maintainer: Juacrumar <juacrumar at lairen dot eu>
 
 pkgname=pineappl
-pkgver=1.0.0
+pkgver=1.3.0
 fullver=${pkgver}
 pkgrel=1
 pkgdesc='PineAPPL is not an extension of APPLgrid. Installs pineappl_cli, pineappl library and python package'
@@ -17,7 +17,7 @@ optdepends=()
 provides=("pineappl")
 changelog=
 source=("https://github.com/NNPDF/pineappl/archive/v${fullver}.tar.gz")
-md5sums=("65c0727a3e09b514154b8f0db504ed80")
+md5sums=("3853054e624197658bbcf151fbb72a4e")
 
 # workaround for the problem with ring, see https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/20 (!lto)
 options=(!lto)
