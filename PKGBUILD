@@ -1,12 +1,12 @@
 # Maintainer: Aaron Coach <aur@awc.id.au>
 _pkgname=qui
 pkgname="${_pkgname}-bin"
-pkgver=1.13.0
+pkgver=1.13.1
 pkgrel=1
 pkgdesc="A modern alternative webUI for qBittorrent (Pre-compiled binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/autobrr/qui"
-license=('GPL')
+license=('GPL-2.0-or-later')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
@@ -19,8 +19,8 @@ source=(
 sha256sums=('d52299510cf4845f0514eefd492b01c33bc2cd2819c2be9dc157f50f67462bd2'
             'ac49b4d6ae748334f7fa360d8dd58c7cd09ba5e062249666ab380d451b7925dd'
             '3bacde8867fbb7b6d566666b635589579c1cc079cd23418284f43a7b37f0c41b')
-sha256sums_x86_64=('71899b0e6de7b7f3b57161981237b6e7f99d6108f75ed94bf8bea4e5671b8a71')
-sha256sums_aarch64=('cd30117e6600ddd88e39eb4f49a9bfaf0c4345081b2563a6c1aa78ca23f071d9')
+sha256sums_x86_64=('231de1865f46ce3cee3c2909401c3fb302077d8c8ffed27cd7e2d48e039d152e')
+sha256sums_aarch64=('99cd052b06c06737f541797f444f9842acb4b021c48e0ff7961077046a63ffb1')
 
 source_x86_64=(
   "${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_x86_64.tar.gz"
