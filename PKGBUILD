@@ -1,5 +1,5 @@
 pkgname=niri_window_buttons-git
-pkgver=0.3.4.r0.gc1d2660
+pkgver=0.3.4.r0.g67c447c
 pkgrel=1
 pkgdesc="A Waybar module for displaying and managing traditional window buttons in the Niri compositor (git version)"
 arch=('x86_64')
