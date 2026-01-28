@@ -11,7 +11,7 @@ makedepends=('cargo')
 options=(!debug !lto)
 optdepends=('tailscale: required for signing locked-out devices')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wmccracken/tsa/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('5d7994889717c1580f9a67aab19d59ab20d5238ef4e27a8e14bdc6991f366d52')
 
 prepare() {
     cd "$pkgname-$pkgver"
