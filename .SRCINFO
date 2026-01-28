@@ -1,6 +1,6 @@
 pkgbase = immuarch-git
 	pkgdesc = Immutable Archlinux setup with transactional & atomic updates
-	pkgver = 0.0.1.r156.94ccd0e
+	pkgver = 0.1.0.r209.46856da
 	pkgrel = 1
 	url = https://framagit.org/Brumaire/immuarch
 	install = immuarch.install
@@ -14,14 +14,28 @@ pkgbase = immuarch-git
 	depends = grep
 	depends = sed
 	depends = mkinitcpio
-	optdepends = gzip: for backup utility
-	optdepends = openssh: for backup utility
+	optdepends = gzip: for immuarch-backup
+	optdepends = openssh: for immuarch-backup
+	optdepends = podman: import OCI images as immuarch root filesystem
 	options = emptydirs
+	source = git+https://framagit.org/Brumaire/immuarch
+	md5sums = SKIP
+
+pkgname = immuarch-core-git
+	depends = util-linux
+	depends = btrfs-progs
+	depends = grub
+	depends = bash
+	depends = grep
+	depends = sed
+	depends = mkinitcpio
+	depends = immuarch-utils-git=0.1.0.r209.46856da
+	provides = immuarch-core
+	replaces = immuarch-git
 	backup = immuarch/immuarch-etc/env.conf
 	backup = immuarch/immuarch-etc/rw-subvolumes.conf
 	backup = immuarch/immuarch-etc/user-bind-mount-runtime.conf
 	backup = immuarch/immuarch-etc/user-fstab.conf
-	source = git+https://framagit.org/Brumaire/immuarch
-	md5sums = SKIP
 
-pkgname = immuarch-git
+pkgname = immuarch-utils-git
+	provides = immuarch-utils
