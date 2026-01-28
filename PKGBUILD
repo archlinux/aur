@@ -3,9 +3,9 @@
 # Contributor: FlyInWind <2518509078@qq.com>
 pkgname=ynote-desktop-bin
 _zhsname='有道云笔记'
-pkgver=8.2.22
+pkgver=8.2.31
 _electronversion=22
-_reldate='%2F2025%2F12%2F29%2F11d457c5'
+_reldate='%2F2026%2F01%2F23%2F1857afbf'
 pkgrel=1
 pkgdesc="Netease Youdao Ynote for Linux.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=(
     "LICENSE.html::https://note.youdao.com/license.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('99642ebec8c5bc51327152fa1f3ff77d3f6543b34b8c2bc5b22a398b7a706d2e'
+sha256sums=('85c61bb944efc9cf0518d15df00d62103cab31afc4cc791409c637b87ea51586'
             'a8aec47c7cc6e6d838d525c89b58a962d650c84b0ebec09ecfb8955381fe6460'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
