@@ -28,14 +28,13 @@ depends=(
   'zlib'
 )
 makedepends=(
-  'git'
   'python-build'
   'python-setuptools'
   'python-wheel'
 )
 install=$pkgname.install
 source=(
-  "$pkgname::git+https://github.com/home-assistant/core.git#tag=$pkgver"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/home-assistant/core/archive/${pkgver}.tar.gz"
   'remove-setuptools-constraint.patch'
   'home-assistant.service'
   'home-assistant.sysusers'
@@ -50,18 +49,18 @@ prepare() {
 
   # allow any setuptools version to be used
   # also fix FTBFS due to requiring a later version of setuptools
-  cd "$pkgname"
+  cd "core-${pkgver}"
   patch -p1 -i "$srcdir/remove-setuptools-constraint.patch"
 }
 
 build() {
-  cd home-assistant
+  cd "core-${pkgver}"
   python -m script.translations develop --all
   python -m build --wheel --no-isolation
 }
 
 package() {
-  install -Dm 644 home-assistant/dist/*.whl -t "${pkgdir}"/usr/share/home-assistant/
+  install -Dm 644 "core-${pkgver}"/dist/*.whl -t "${pkgdir}"/usr/share/home-assistant/
   install -Dm 644 home-assistant.service -t "${pkgdir}"/usr/lib/systemd/system/
   install -Dm 644 home-assistant.sysusers "${pkgdir}"/usr/lib/sysusers.d/home-assistant.conf
   install -Dm 644 home-assistant.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/home-assistant.conf
