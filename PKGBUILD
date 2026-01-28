@@ -3,7 +3,7 @@
 
 pkgname=llama.cpp-hip
 _pkgname="${pkgname%-hip}"
-pkgver=b7857
+pkgver=b7858
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with AMD ROCm optimizations)"
 arch=(x86_64 armv7h aarch64)
@@ -42,7 +42,7 @@ source=(
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.service"
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.conf"
 )
-sha256sums=('86b06a8a580539a3a339b33f48a68732152f59d8f409dc73fe6cab6ad5c5f215'
+sha256sums=('c70d9bc843f25bed00193b144596f9e63f86a377838002c0fa9b4b7fd950b34d'
             '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d'
             'e4856f186f69cd5dbfcc4edec9f6b6bd08e923bceedd8622eeae1a2595beb2ec')
 
@@ -56,13 +56,14 @@ build() {
   fi
   export CC=/opt/rocm/llvm/bin/clang
   export CXX=/opt/rocm/llvm/bin/clang++
+  export HIP_PLATFORM=amd
+
   local _cmake_options=(
     -B build
     -S "${_pkgname}"
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DBUILD_SHARED_LIBS=ON
-    -DLLAMA_CURL=ON
     -DLLAMA_BUILD_TESTS=OFF
     -DLLAMA_USE_SYSTEM_GGML=OFF
     -DGGML_ALL_WARNINGS=OFF
