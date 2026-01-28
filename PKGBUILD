@@ -2,8 +2,8 @@
 
 _pkgname=split-folders
 pkgname=python-${_pkgname}
-pkgver=0.5.1
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc='A Python library to split folders with files (i.e. images) into training, validation and test (dataset) folders.'
 arch=(x86_64)
 url='https://github.com/jfilter/split-folders'
@@ -11,7 +11,7 @@ license=(MIT)
 depends=('python' 'python-tqdm')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-poetry')
 source=("$pkgname-$pkgver.tar.gz"::${url}/archive/refs/tags/${pkgver}.tar.gz)
-b2sums=('3126144fb80701028266a80ad9a27eda0939a257527186643bd6bcd582fd1dc47f35ab4fba35ba82b0688ea51c41b608f04040685a1c13af913497942957420f')
+b2sums=('f310920f4809b6ea5ec31113572db8e169c45c58032c7cf46cbdf856a8545fe863f189ab23d98daf693471128b599e89b1883f7a09ba8295ee05326c19e881ee')
 
 build() {
 	cd "${_pkgname}-${pkgver}"
