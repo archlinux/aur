@@ -1,0 +1,5 @@
+[dol-bin]
+source = "github"
+github = "netmute/dol"
+use_latest_release = true
+prefix = "v"
