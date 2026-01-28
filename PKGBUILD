@@ -1,7 +1,7 @@
 # Maintainer: Sosuke Inaba <mail[at]daizu[dot]dev>
 
 pkgname=ttf-0xproto
-pkgver=2.300
+pkgver=2.502
 pkgrel=1
 pkgdesc="An opinionated font for software engineers"
 arch=(any)
@@ -9,8 +9,8 @@ url="https://github.com/0xType/0xProto"
 license=(custom:SIL)
 source=("$url/releases/download/$pkgver/0xProto_${pkgver/./_}.zip"
         "https://raw.githubusercontent.com/0xType/0xProto/$pkgver/LICENSE")
-sha256sums=('9699314a7a061a8d4e5b1540755f9125c3321e0dee72b295797ea38691526cbe'
-            'ab565cf6f06e87f36c0f31c2dfaf3dec25fb194adf043f41cf4781a031338a3e')
+sha256sums=('179654842a35734034963a9ac4437438d1b48bedb4e1201c13d2eb93d1973e9d'
+            '8841e59e78081f4cb6ec51ad5bc698751b85ae14ee24f0f16bc9f9de07e4b90e')
 
 package() {
     install -d $pkgdir/usr/share/fonts/TTF
