@@ -5,8 +5,8 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libxmu
-pkgver=1.2.1
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 arch=('any')
 pkgdesc="X11 miscellaneous micro-utility library (Android ${_android_arch})"
 url="https://gitlab.freedesktop.org/xorg/lib/libxmu"
@@ -19,10 +19,8 @@ depends=("android-${_android_arch}-libxext"
 makedepends=('android-configure'
              "android-${_android_arch}-xorg-util-macros")
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://xorg.freedesktop.org//archive/individual/lib/libXmu-${pkgver}.tar.xz"{,.sig})
-md5sums=('85edefb7deaad4590a03fccba517669f'
-         'SKIP')
-validpgpkeys=('3BB639E56F861FA2E86505690FDD682D974CA72A') # "Matt Turner <mattst88@gmail.com>"
+source=("https://xorg.freedesktop.org//archive/individual/lib/libXmu-${pkgver}.tar.xz")
+md5sums=('532a37254137e9e1827b8eec95e79adf')
 
 build() {
     cd "${srcdir}/libXmu-${pkgver}"
@@ -41,4 +39,6 @@ package() {
     rm -rf "$pkgdir/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
