@@ -2,8 +2,8 @@
 
 pkgname=moz-phab
 _gitpkgname=review
-pkgver=2.8.1
-pkgrel=2
+pkgver=2.8.2
+pkgrel=1
 pkgdesc='Phabricator review submission/management tool'
 arch=('any')
 url='https://github.com/mozilla-conduit/review'
@@ -46,7 +46,7 @@ source=(
   'disable-telemetry.patch'
 )
 
-sha512sums=('8f0cbbec3b8ebe2a18449bed24f8b529a86b0e37ad507792d82ea8a1d6c3d3ede6904a46a85b0114862a174766a4b4a58b8a6eab6373f735f48743600c7383cc'
+sha512sums=('b41469ee23e61f3931c55d6f155bed0558e780862b32cc9bff0e9b2478a48d846a6a754a2726835bbedb1e99bb49a44e979aca4e0adb56a58dac80a307065076'
             'dd5fd9467261866549596836f72dd7d28519f71bce6e838bb1a0de8f607fa7dd7407abd5ac3a02fd8ab139e8a53affef05a73f8597ba0367be15a4e78811ca54'
             '35087a5d373f7ec1c726204b272454e08b8e43469000eb415f218adeb5606e7f48d603191571f88f23295c15b97275866ac117a5d87d0ea9e7ffefc837fefe43'
             'd8ca129d5441282124599a74e5f0c898d28f4bde574ce0e6c792d492fdcd262c0bb40e3ed79611f603a3dde74fc18659b9b6303abd1022644ebe57031f993ef6')
