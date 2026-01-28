@@ -8,7 +8,7 @@ pkgdesc="A python module to handle lzo file compression"
 arch=(
   'x86_64'
 )
-url="https://github.com/marin-m/${_pypiname}"
+url="https://github.com/Myldero/${pkgname}"
 license=(
   'GPL-2.0-or-later'
 )
