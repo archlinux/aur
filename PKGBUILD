@@ -4,7 +4,7 @@ pkgrel=3
 pkgdesc="A tool to convert OBS (and other) recordings into DaVinci Resolve–compatible videos using FFmpeg."
 arch=("any")
 url="https://github.com/"
-license=("MIT")
+license=("GNU GPLv3 or later")
 
 depends=(
   "python"
