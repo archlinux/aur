@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python' 'python-deprecated' 'python-pydantic')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=()
-source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/af/b9/a7a74de6d8aacf4be329329495983d78d96b1a6e69b6d9fcf4a233febd4b/llama_index_instrumentation-0.4.2.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
 sha256sums=('dc4957b64da0922060690e85a6be9698ac08e34e0f69e90b01364ddec4f3de7f')
 
 build() {
