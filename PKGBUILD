@@ -3,7 +3,7 @@
 
 pkgname='openwebrx-plus-git'
 _pkgname='openwebrx'
-pkgver=1.2.98.r5.g87330b0c
+pkgver=1.2.105.r6.g065df623
 pkgrel=1
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('any')
@@ -39,6 +39,7 @@ optdepends=(
     'satdump: receive weather satellite transmissions'
     'nrsc5: decode HDRadio broadcasts'
     'csdr-skimmer: decode multiple CW signals at once'
+    'radiosonde_auto_rx: decode radiosonde data'
     # tools
     'imagemagick: automatically convert received images to the PNG format'
     'sox: sound processing tools'
@@ -51,6 +52,7 @@ optdepends=(
     'soapyrtlsdr: provides additional support for rtl-sdr devices, such as the direct sampling mod'
     'soapysdrplay: interfacing with SDRPlay devices'
     'soapymiri-git: interfacing with Mirics-based hardware (MSi001 + MSi2500)'
+    'soapy-malahit-rr: interfacing with Malahit devices'
     'soapyhackrf: interfacing with HackRF devices'
     'libperseus-sdr: use the Microtelecom Perseus HF receiver'
     'soapyairspy: interfacing with Airspy devices (Airspy R2, Airspy Mini)'
@@ -110,5 +112,6 @@ package() {
 
     install -Dm 0644 ${srcdir}/openwebrx-plus.sysusers ${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf
     install -Dm 0644 ${srcdir}/openwebrx-plus.tmpfiles ${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf
+    sed -i '/^Environment="HOME=/a Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/opt/radiosonde_auto_rx/auto_rx/"' systemd/openwebrx.service
     install -Dm 0644 systemd/openwebrx.service ${pkgdir}/usr/lib/systemd/system/openwebrx.service
 }
