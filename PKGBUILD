@@ -6,11 +6,11 @@
 
 pkgname=klibc
 pkgver=2.0.14
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimalistic libc subset for use with initramfs"
-arch=(x86_64 aarch64 i686)
+arch=('x86_64' 'aarch64' 'i686' 'riscv64' 'armv7h')
 url="https://mirrors.kernel.org/pub/linux/libs/klibc"
-license=('GPL')
+license=('GPL-2.0-only OR BSD-3-Clause')
 depends=(perl)
 makedepends=(linux-api-headers)
 options=('staticlibs')
@@ -45,4 +45,5 @@ package() {
   ln -s "$pkgdir/usr/lib" "$pkgdir/lib"
   make KLIBCKERNELSRC=uapi INSTALLROOT="$pkgdir" mandir=/usr/share/man install
   rm -f "$pkgdir/lib"
+  install -Dm644 usr/klibc/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

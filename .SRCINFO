@@ -1,12 +1,14 @@
 pkgbase = klibc
 	pkgdesc = A minimalistic libc subset for use with initramfs
 	pkgver = 2.0.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mirrors.kernel.org/pub/linux/libs/klibc
 	arch = x86_64
 	arch = aarch64
 	arch = i686
-	license = GPL
+	arch = riscv64
+	arch = armv7h
+	license = GPL-2.0-only OR BSD-3-Clause
 	makedepends = linux-api-headers
 	depends = perl
 	options = staticlibs

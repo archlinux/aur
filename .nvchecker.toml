@@ -1,0 +1,5 @@
+[klibc]
+source = 'git'
+git = 'git://git.kernel.org/pub/scm/libs/klibc/klibc.git'
+prefix = 'klibc-'
+
