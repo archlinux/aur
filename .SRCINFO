@@ -5,7 +5,7 @@ pkgbase = wowzers
 	arch = any
 	license = MIT
 	depends = bash
-	source = baxlotl
+	source = baxlotl-says
 	md5sums = SKIP
 
 pkgname = wowzers
