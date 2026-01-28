@@ -1,0 +1,16 @@
+pkgbase = python-minilzo
+	pkgdesc = A python module to handle lzo file compression
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/marin-m/minilzo
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = python-build
+	makedepends = python-setuptools
+	makedepends = python-installer
+	depends = glibc
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/m/minilzo/minilzo-1.2.tar.gz
+	sha256sums = 4cdcc0dc3e8558a29d8a6fed5c66a1ae3c8014e12d0a27554890c4248f76b141
+
+pkgname = python-minilzo
