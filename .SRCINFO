@@ -1,6 +1,6 @@
 pkgbase = python-s3path
 	pkgdesc = A pathlib extension for AWS S3 Service
-	pkgver = 0.6.4
+	pkgver = 0.6.5
 	pkgrel = 1
 	url = https://github.com/liormizr/s3path
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = python-s3path
 	checkdepends = python-smart_open
 	checkdepends = python-moto
 	makedepends = python-setuptools-scm
-	source = https://files.pythonhosted.org/packages/source/s/s3path/s3path-0.6.4.tar.gz
-	source = 0.6.4-conftest.py::https://github.com/liormizr/s3path/raw/0.6.4/tests/conftest.py
-	md5sums = 95a5f1f41b4870d8e810c26d63e3fd37
-	md5sums = ecf19dfe89edde8462b7887ef823dbaf
+	source = https://files.pythonhosted.org/packages/source/s/s3path/s3path-0.6.5.tar.gz
+	source = 0.6.5-conftest.py::https://github.com/liormizr/s3path/raw/0.6.5/tests/conftest.py
+	md5sums = a91ea36112594d47bf4e6abc20b62a98
+	md5sums = 4ea9683950b52d7386a954ec74b88cdd
 
 pkgname = python-s3path
 	depends = python>=3.9

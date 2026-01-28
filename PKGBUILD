@@ -4,7 +4,7 @@ pkgbase=python-s3path
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 pkgdesc="A pathlib extension for AWS S3 Service"
 arch=('any')
@@ -19,11 +19,12 @@ checkdepends=('python-pytest'
 #             'python-pytest-xdist'
               'python-boto3'
               'python-smart_open'
-              'python-moto')   # only pass for moto>=5; requests <- smart_open
+              'python-moto'
+              )   # only pass for moto>=5; requests <- smart_open
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "${pkgver}-conftest.py::https://github.com/liormizr/s3path/raw/${pkgver}/tests/conftest.py")
-md5sums=('95a5f1f41b4870d8e810c26d63e3fd37'
-         'ecf19dfe89edde8462b7887ef823dbaf')
+md5sums=('a91ea36112594d47bf4e6abc20b62a98'
+         '4ea9683950b52d7386a954ec74b88cdd')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -43,7 +44,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    PYTHONPATH="build/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
+    PYTHONPATH="." pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
 }
 
 package_python-s3path() {
