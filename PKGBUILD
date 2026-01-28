@@ -10,7 +10,7 @@ url="https://github.com/Pawn-Appetit/pawn-appetit"
 license=('GPL-3.0')
 conflicts=()
 depends=('hicolor-icon-theme'
-    openssl-1.1
+    openssl
 	pango
  	webkit2gtk-4.1
 	gtk3
