@@ -1,0 +1,4 @@
+[certgen]
+source = "git"
+git = "https://github.com/minio/certgen.git"
+prefix = "v"
