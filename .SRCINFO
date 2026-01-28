@@ -1,0 +1,17 @@
+pkgbase = tabularis-bin
+	pkgdesc = A database manager for developers
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/debba/tabularis
+	arch = x86_64
+	license = custom
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libappindicator-gtk3
+	depends = openssl
+	provides = tabularis
+	conflicts = tabularis
+	source = tabularis_0.6.0_amd64.deb::https://github.com/debba/tabularis/releases/download/v0.6.0/tabularis_0.6.0_amd64.deb
+	sha256sums = SKIP
+
+pkgname = tabularis-bin
