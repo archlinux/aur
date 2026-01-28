@@ -51,7 +51,7 @@ build() {
     export CARGO_HOME="$srcdir/cargo"
     export RUSTUP_TOOLCHAIN=stable
 
-    cargo build --release --locked
+    cargo build --release
 }
 
 package() {
