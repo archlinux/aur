@@ -1,6 +1,6 @@
 pkgbase = rare-go-bin
 	pkgdesc = A fast text scanner/regex extractor and realtime summarizer
-	pkgver = 0.5.4
+	pkgver = 0.5.5
 	pkgrel = 1
 	url = https://github.com/zix99/rare
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = rare-go-bin
 	provides = rare-go
 	conflicts = rare-go
 	replaces = rare-bin
-	source_x86_64 = rare-go-bin-0.5.4-x86_64.tar.gz::https://github.com/zix99/rare/releases/download/0.5.4/rare_0.5.4_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = fc5ade73807543747057fe3bfe36c78e52145434793190b1a197edb549342d39
-	source_aarch64 = rare-go-bin-0.5.4-aarch64.tar.gz::https://github.com/zix99/rare/releases/download/0.5.4/rare_0.5.4_Linux_arm64.tar.gz
-	sha256sums_aarch64 = e456b855ae0a63e9af752ccc2bc4b1b99fe1c456974300b163f978e9d1553f33
+	source_x86_64 = rare-go-bin-0.5.5-x86_64.tar.gz::https://github.com/zix99/rare/releases/download/0.5.5/rare_0.5.5_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 1aabe9bc3c0074e5336b6c1a4c70177f799ad5ff0410fed07091a127398193b4
+	source_aarch64 = rare-go-bin-0.5.5-aarch64.tar.gz::https://github.com/zix99/rare/releases/download/0.5.5/rare_0.5.5_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 953275b7322285a2c2673146b0341b8dbe2e68fa8dfddd1cd5283506354cc04b
 
 pkgname = rare-go-bin
