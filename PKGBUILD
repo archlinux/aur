@@ -5,7 +5,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libnghttp3
-pkgver=1.14.0
+pkgver=1.15.0
 pkgrel=1
 arch=('any')
 pkgdesc="HTTP/3 library written in C (Android ${_android_arch})"
@@ -16,7 +16,7 @@ depends=('android-ndk')
 makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/ngtcp2/nghttp3/releases/download/v${pkgver}/nghttp3-${pkgver}.tar.xz")
-md5sums=('5d07b1bd21d8488789782f3d3f343218')
+md5sums=('3566a0d1e36f5af826271c976ae31975')
 
 prepare() {
     cd "${srcdir}/nghttp3-${pkgver}"
