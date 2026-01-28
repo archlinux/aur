@@ -3,7 +3,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 pkgname=i4tools-bin
 pkgver=3.09.002
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='爱思助手是一款集“高效管理 iOS 设备数据”，“智能刷机”和“免费下载海量应用游戏、铃声壁纸”等为一体的 iOS 设备管理工具。'
 arch=('x86_64')
