@@ -1,11 +1,11 @@
 # Maintainer: Leandro Guedes <leanguedes at icloud dot com>
 
 pkgname=karton-git
-pkgver=0.1.r54.07520e0
+pkgver=0.1.r60.96d6ad5
 pkgrel=1
 pkgdesc='A libvirt-based Virtual Machine Manager for KDE'
 arch=(x86_64)
-url='https://invent.kde.org/sitter/karton'
+url='https://invent.kde.org/system/karton'
 license=(GPL-3.0-or-later)
 depends=(gcc-libs
          glib2
@@ -26,7 +26,7 @@ makedepends=(extra-cmake-modules
              git)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=(git+https://invent.kde.org/sitter/karton.git)
+source=(git+https://invent.kde.org/system/karton.git)
 sha256sums=('SKIP')
 
 pkgver() {
