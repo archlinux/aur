@@ -39,26 +39,31 @@ post_install() {
     echo ""
     echo "    2. Log out and back in for group changes to take effect"
     echo ""
-    echo "    3. Download a whisper model:"
-    echo "       voxtype setup --download"
+    echo "    3. Download a model (Whisper or Parakeet):"
+    echo "       voxtype setup model"
     echo ""
     echo "    4. Start voxtype:"
     echo "       systemctl --user enable --now voxtype"
     echo "       Or run manually: voxtype"
     echo ""
+    echo "    Note: This package builds Whisper only. For Parakeet support,"
+    echo "    install voxtype-bin instead."
+    echo ""
 }
 
 post_upgrade() {
     echo ""
-    echo "==> Voxtype upgraded"
+    echo "==> Voxtype upgraded to 0.5.1"
     echo ""
 
     _detect_gpu
 
     echo ""
-    echo "    New in 0.4.16:"
-    echo "      - New dotool output driver with keyboard layout support"
-    echo "      - Better KDE Plasma and GNOME Wayland compatibility"
-    echo "      - Output fallback chain: wtype -> dotool -> ydotool -> clipboard"
+    echo "    New in 0.5.1:"
+    echo "      - Profile support: switch between configurations"
+    echo "      - CLI backend mode for external whisper binaries"
+    echo "      - Improved GPU setup with auto-detection"
+    echo ""
+    echo "    Note: Parakeet engine is available in voxtype-bin package."
     echo ""
 }
