@@ -9,7 +9,7 @@
 #              affiliated with, endorsed by, or owned by Hypixel Studios Canada.
 # ==============================================================================
 
-: "${XDG_DATA_HOME:=$HOME/.local/share}"
+: "${XDG_DATA_HOME:=/home/$USER/.local/share}"
 
 post_install() {
     echo ":: The Hytale Launcher has been installed."
