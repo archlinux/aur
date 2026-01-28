@@ -3,7 +3,7 @@ pkgname=uxplay
 _gitname=UxPlay
 pkgver=1.73
 epoch=1
-pkgrel=1
+pkgrel=2
 pkgdesc="AirPlay Unix mirroring server"
 arch=('any')
 url="https://github.com/FDH2/$_gitname"
@@ -40,4 +40,9 @@ package() {
 
   # install systemd service
   install -Dm 644 "$srcdir/$_gitname-$pkgver/uxplay.service" "$pkgdir/usr/lib/systemd/user/uxplay.service"
+
+  # install BlueToothLE beacon script
+  install -Dm 755 "$srcdir/$_gitname-$pkgver/Bluetooth_LE_beacon/dbus/uxplay-beacon.py" "$pkgdir/usr/bin/uxplay-beacon.py"
+  # install beacon script manpage
+  install -Dm 644 "$srcdir/$_gitname-$pkgver/Bluetooth_LE_beacon/dbus/uxplay-beacon.1" "$pkgdir/usr/share/man/man1/uxplay-beacon.1"
 }
