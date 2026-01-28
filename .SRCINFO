@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-libxdamage
 	pkgdesc = X11 damaged region extension library (Android aarch64)
-	pkgver = 1.1.6
+	pkgver = 1.1.7
 	pkgrel = 1
 	url = https://xorg.freedesktop.org/
 	arch = any
@@ -12,10 +12,7 @@ pkgbase = android-aarch64-libxdamage
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://xorg.freedesktop.org//releases/individual/lib/libXdamage-1.1.6.tar.xz
-	source = https://xorg.freedesktop.org//releases/individual/lib/libXdamage-1.1.6.tar.xz.sig
-	validpgpkeys = 4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E
-	md5sums = ca55d29fa0a8b5c4a89f609a7952ebf8
-	md5sums = SKIP
+	source = https://xorg.freedesktop.org//releases/individual/lib/libXdamage-1.1.7.tar.xz
+	md5sums = 72bb73f2a07f81784ad69a39d7df1da2
 
 pkgname = android-aarch64-libxdamage
