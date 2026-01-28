@@ -1,0 +1,11 @@
+pkgbase = wowzers
+	pkgdesc = A silly lil guy for your terminal
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = bash
+	source = baxlotl
+	md5sums = SKIP
+
+pkgname = wowzers

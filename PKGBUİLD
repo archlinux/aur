@@ -1,0 +1,22 @@
+pkgname=baxlotl-say
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="tuxsay but its a baxlotl instead of tux"
+arch=('x86_64')
+url="https://example.com"
+license=('GPL')
+depends=('glibc')
+makedepends=('git')
+source=("https://example.com/downloads/${baxlotl-say}-${pkgver}.tar.gz")
+sha256sums=('SKIP') # You should replace this with the actual hash later
+
+build() {
+    cd "$baxlotlsay"-$1.0.0"
+    ./configure --prefix=/usr
+    make
+}
+
+package() {
+    cd "$pkgname-$pkgver"
+    make DESTDIR="$pkgdir/" install
+}

@@ -1,0 +1,25 @@
+#!/bin/bash
+msg="${*:-BAXLOTL}"
+w=${#msg}
+line=$(printf '_%.0s' $(seq 1 $((w + 2))))
+
+echo "  $line"
+echo "< $msg >"
+echo "  $(printf -- '-%.0s' $(seq 1 $((w + 2))))"
+echo "   \\"
+echo "    \\"
+
+# This is the exact pattern you just sent, protected by dots
+cat << 'EOF' | tr '.' ' '
+..XXX...........XXXXXXX......XXXXXX..
+XX.........XXX.......XXX........X..
+X..........X.............X........X.
+X.........X...X.....X.....X.......X.
+X........X....X.....X......X.....X.
+XXXX.....X....X.....X......X.....X.
+..X......X............X....X....XXXX.
+.XX.......X....XXXXXXX....X......XX.
+XX.........X.............X........XX
+XXXX........XXX.......XXX........XX.
+...XX..........XXXXXXX..........XX..
+EOF
