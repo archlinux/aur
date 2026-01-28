@@ -3,7 +3,7 @@
 # Contributor: axiom <hello@axiom.co>
 
 pkgname='axiom-bin'
-pkgver=0.14.7
+pkgver=0.14.8
 pkgrel=1
 pkgdesc='Powerful log analytics from the comfort of your command-line'
 url='https://axiom.co'
@@ -12,17 +12,17 @@ license=('MIT')
 provides=('axiom-bin')
 conflicts=('axiom-bin' 'axiom-git')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/axiomhq/cli/releases/download/v0.14.7/axiom_0.14.7_linux_arm64.tar.gz")
-sha256sums_aarch64=('1b6e937dd5633ee6c79cf5c68d9416f760f0c78b1e41bb89247d0fd22fa02c56')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/axiomhq/cli/releases/download/v0.14.8/axiom_0.14.8_linux_arm64.tar.gz")
+sha256sums_aarch64=('5f8b67c37e6b7fe5d5fb0d333a6684a69bf44da37b3333e770a77c1606f7ca0d')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/axiomhq/cli/releases/download/v0.14.7/axiom_0.14.7_linux_armv7.tar.gz")
-sha256sums_armv7h=('0b730a1273c7067319b4332391f91e354750fc6aafa0fec81fd18b4a4cb0f373')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/axiomhq/cli/releases/download/v0.14.8/axiom_0.14.8_linux_armv7.tar.gz")
+sha256sums_armv7h=('9a396913d0ea6774e3021eec264308aa09fc62e1b1f75848a4b7ae0988811b62')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/axiomhq/cli/releases/download/v0.14.7/axiom_0.14.7_linux_386.tar.gz")
-sha256sums_i686=('5d6328d58d678528b23329497545010188547aa46c6e741b86bb85695cae3c53')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/axiomhq/cli/releases/download/v0.14.8/axiom_0.14.8_linux_386.tar.gz")
+sha256sums_i686=('c4699268f15b6a188a81f9ba97e05616694f7b3ba7a677bc6962f2d227c41198')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/axiomhq/cli/releases/download/v0.14.7/axiom_0.14.7_linux_amd64.tar.gz")
-sha256sums_x86_64=('3720822d50fe0c1d1cb754bc236432a38d7150817859dc5b85f8d2851e47b4c2')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/axiomhq/cli/releases/download/v0.14.8/axiom_0.14.8_linux_amd64.tar.gz")
+sha256sums_x86_64=('579b6912b3a326a0cd7474a7ba26f78b700b606d540f27635760657fb6ebd671')
 
 package() {
   case "$CARCH" in
