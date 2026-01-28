@@ -1,23 +1,38 @@
 # Maintainer: Sasha Marie te Rehorst <sasha.marieterehorst@gmail.com>
 pkgbase=zen-browser-git
 pkgname=("$pkgbase")
-pkgver=1.18.1b.r6282.g9b6937650
+pkgver=1.18.2b.r6297.g4de01a9bc
 pkgrel=1
 pkgdesc='Zen Browser Twilight (Git version)'
 url='https://zen-browser.app/'
 arch=('x86_64')
 license=(MPL-2.0)
+replaces=(
+  'zen-browser-git-i18n-ar'
+  'zen-browser-git-i18n-de'
+  'zen-browser-git-i18n-es-es'
+  'zen-browser-git-i18n-fr'
+  'zen-browser-git-i18n-it'
+  'zen-browser-git-i18n-ja'
+  'zen-browser-git-i18n-ko'
+  'zen-browser-git-i18n-nl'
+  'zen-browser-git-i18n-pl'
+  'zen-browser-git-i18n-pt-pt'
+  'zen-browser-git-i18n-ru'
+  'zen-browser-git-i18n-tr'
+  'zen-browser-git-i18n-uk'
+  'zen-browser-git-i18n-zh-cn'
+  'zen-browser-git-i18n-zh-tw'
+)
 depends=(
   alsa-lib at-spi2-core bash cairo dbus ffmpeg fontconfig freetype2 gcc-libs
   gdk-pixbuf2 glib2 glibc gtk3 hicolor-icon-theme libpulse libx11 libxcb
   libxcomposite libxdamage libxext libxfixes libxrandr libxss libxt mime-types
-  nspr nss pango ttf-font adwaita-icon-theme libnotify
-)
+  nspr nss pango ttf-font adwaita-icon-theme libnotify)
 makedepends=(
   git pnpm rsync cbindgen clang diffutils imake lld llvm mesa nasm nodejs
   python rust unzip wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi
-  xorg-server-xvfb yasm zip mold jq wget
-)
+  xorg-server-xvfb yasm zip mold jq wget)
 options=(!emptydirs !makeflags !debug !lto)
 
 _repo='https://github.com/zen-browser/desktop'
@@ -25,13 +40,18 @@ source=(
   "git+$_repo.git"
   "firefox-l10n::git+https://github.com/mozilla-l10n/firefox-l10n"
   zen-browser.desktop
+  0001-bootstrap-without-vcs.firefox.patch
+  0001-fix-desktop.zen.patch
   0003-do-not-disable-system-extensions.zen.patch
-  0005-source-firefox-language-packs.patch
-)
+  0004-fix-package-json.zen.patch
+  0005-source-firefox-language-packs.patch)
 sha256sums=('SKIP'
             'SKIP'
             'b16a9e39033e6172d6593b832aed747c50e3264326c50d04f47a168ed3f63c76'
+            '9157eb9b3509a1046bc25ed85b20864f1ff952184f4e1c61c2d43707653f7ff6'
+            'f55ed69dc6f90f898f91d24966b203cb7fb10211ce62405e3ccb8b3069014990'
             '36bff2af04da55da0cc71f960d921889ccf21c11fcd8343087c144dfcc50f10a'
+            '803c3f456abfc1acd963b594cf684aed2453534e7ab951abc38efa0351b648a1'
             '7702c197f5509e4ec7e744f74105cc8339b631e37f7a0b41bf3070bf3ccc92a7')
 
 pkgver() {
