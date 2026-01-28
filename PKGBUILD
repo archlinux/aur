@@ -1,7 +1,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=heirloom-ex-vi-git
 pkgver=4.1.3.r44.bd1f886
-pkgrel=1
+pkgrel=2
 pkgdesc='The Traditional Vi (vi with many enhancements from Gunnar Ritter)'
 arch=('i686' 'x86_64')
 url='https://github.com/n-t-roff/heirloom-ex-vi'
@@ -21,7 +21,7 @@ pkgver() {
 build() {
 	cd "$srcdir/$pkgname"
 	./configure
-	make
+	make CFLAGS='-std=gnu89'
 }
 
 package() {
