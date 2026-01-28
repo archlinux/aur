@@ -1,7 +1,7 @@
 pkgbase = immich
 	pkgdesc = Self-hosted photos and videos backup tool
-	pkgver = 2.4.1
-	pkgrel = 2
+	pkgver = 2.5.0
+	pkgrel = 1
 	url = https://github.com/immich-app/immich
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -13,6 +13,7 @@ pkgbase = immich
 	depends = postgresql>=14
 	depends = nodejs>=20
 	depends = vectorchord>=0.3
+	depends = vectorchord<2
 	depends = zlib
 	depends = glib2
 	depends = expat
@@ -40,7 +41,7 @@ pkgbase = immich
 	depends = brotli
 	depends = perl-io-compress-brotli
 	depends = highway
-	source = immich-2.4.1.tar.gz::https://github.com/immich-app/immich/archive/refs/tags/v2.4.1.tar.gz
+	source = immich-2.5.0.tar.gz::https://github.com/immich-app/immich/archive/refs/tags/v2.5.0.tar.gz
 	source = postgres-path.patch
 	source = sharp.patch
 	source = immich-server.service
@@ -52,8 +53,8 @@ pkgbase = immich
 	source = https://download.geonames.org/export/dump/admin1CodesASCII.txt
 	source = https://download.geonames.org/export/dump/admin2Codes.txt
 	source = https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_admin_0_countries.geojson
-	sha256sums = 885cf36509f79fa1ed7541236b671d7eae900c80145920299be922a45a086fc5
-	sha256sums = 00ae69ddab320aaf4e426f8372f22415c6486968f006fd12b9bd8cdeca8a8664
+	sha256sums = c02ef5c6c357e77932a12bbd39ac468c8e47751a3db55e8984b9b4e006200c25
+	sha256sums = 15121f622d9b376bb77051419100f6c91480f122ebc573912798e774cd28c639
 	sha256sums = e56fe5f8abb55f93117cd8b5e1214d06a21a9f8e0458607040c5c5e364b0a164
 	sha256sums = f7821053ceb6f0cf3a2b9a53b7795a7c56a74d3e0239ac38fa734642e9faf833
 	sha256sums = 01707746e8718fe169b729b7b3d9e26e870bf2dbc4d1f6cdc7ed7d3839e92c0e
