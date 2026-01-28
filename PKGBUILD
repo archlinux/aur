@@ -1,12 +1,14 @@
 # Maintainer: Nils Werner <nils at hey dot com>
 # 
 pkgname=just-the-browser-git
-pkgver=r73.b100f58
+pkgver=r101.6fe2f08
 pkgrel=1
 pkgdesc='Remove AI features, telemetry data reporting, sponsored content, product integrations, and other annoyances from web browsers.'
 license=('MIT')
 arch=('any')
 url='https://justthebrowser.com/'
+provides=('just-the-browser')
+conflicts=('just-the-browser')
 source=("git+https://github.com/corbindavenport/just-the-browser.git")
 sha512sums=('SKIP')
 
