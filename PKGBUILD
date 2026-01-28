@@ -3,10 +3,11 @@
 # Contributor: Sergey Shepelev (temoto) <temotor@gmail.com>
 # Contributor: Giuseppe Pagano (giuseongit) <giuseongit@latana.rocks>
 # Contributor: Daniel Voogsgerd (DanielVoogsgerd)
+# Contributor: Jakub (Nordaar)
 #shellcheck disable=2148,2034,2154,2164
 
 pkgname=yayfzf
-pkgver=2.0.10
+pkgver=2.0.11
 pkgrel=1
 pkgdesc='fzf-based interface for searching, installing, removing, and managing packages using yay'
 arch=('any')
