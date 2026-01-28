@@ -1,0 +1,15 @@
+pkgbase = fint-bin
+	pkgdesc = A high-performance, keyboard-driven GUI file manager for Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/simon-escano/fint
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk
+	depends = libappindicator-gtk3
+	provides = fint
+	conflicts = fint
+	source_x86_64 = fint-bin-0.1.0.deb::https://github.com/simon-escano/fint/releases/download/v0.1.0/fint_0.1.0_amd64.deb
+	sha256sums_x86_64 = 060c0405371754ee2cd806868b2227dbef33fb462e706398e5dcb5bcb7c9fcba
+
+pkgname = fint-bin
