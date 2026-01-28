@@ -11,8 +11,8 @@ license=('MIT')
 depends=('python')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=()
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/masci/banks/archive/refs/tags/v2.3.0.tar.gz")
-sha256sums=('b53afd4996dd3a2e4f64e99c048faaece1d703a2b0be77afc88ee4731b0613e5')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
+sha256sums=('1ecb439a0b340588fcf9a8072d806540aad03c4b874ab9aff59ac8bc08c112ff')
 
 build() {
     cd "${srcdir}"/${_name//-/_}-${pkgver}
