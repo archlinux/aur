@@ -2,7 +2,7 @@
 # Contributor: Mateus Honorato
 
 pkgname=uefitool-bin
-pkgver=A72
+pkgver=A73
 pkgrel=1
 pkgdesc='UEFI firmware image viewer and editor'
 arch=(x86_64)
@@ -27,9 +27,9 @@ source=(
   "uefitool_${pkgver}-${pkgrel}.desktop::${url}/raw/${pkgver}/UEFITool/uefitool.desktop"
   "uefitool_${pkgver}-${pkgrel}.license::${url}/raw/${pkgver}/LICENSE.md"
 )
-sha256sums=('cfa9a8ad7b17321007b81254e34cd93755e8ca194b7329b452a35542ae483a7e'
-            '9e0bcb313e535525c7c60b76653c6f95fde5a2176bea24d4a84d53c749894c92'
-            '402612653bdcc8e6a68e31ae8375db497ae228f4f888068681abc731df81938d'
+sha256sums=('01961c9537ee2cad3f481ed5a0393ab04acc0d19e174017e58e5e83babea9bea'
+            'fe5bc6c2a92e51101b5db2cea095c0448cf192109a342d32a9f64f69231d2b1d'
+            'cfabd4046cb863ecfbb8a12879316a16f47fdde4cf957e24c4df23000efd497f'
             '8a026dc03d82500aeac6bfa47ddb838b10196b7cc09169981430e67bf79aab7a'
             '9b6bce56fcccea4104642c6c8d393e6043671a8fd45b1c7bf8495407b4ad206a'
             'ed001d549f96e142fd609e9a89d3482702d9d37abfa3f6a39cfa0fd2a9b36335'

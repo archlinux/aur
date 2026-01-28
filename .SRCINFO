@@ -1,28 +1,28 @@
 pkgbase = uefitool-bin
 	pkgdesc = UEFI firmware image viewer and editor
-	pkgver = A72
+	pkgver = A73
 	pkgrel = 1
 	url = https://github.com/LongSoft/UEFITool
 	arch = x86_64
 	license = BSD-2-Clause
-	provides = uefiextract=A72
-	provides = uefifind=A72
-	provides = uefitool=A72
-	source = UEFIExtract-A72-1.zip::https://github.com/LongSoft/UEFITool/releases/download/A72/UEFIExtract_NE_A72_x64_linux.zip
-	source = UEFIFind-A72-1.zip::https://github.com/LongSoft/UEFITool/releases/download/A72/UEFIFind_NE_A72_x64_linux.zip
-	source = UEFITool-A72-1.zip::https://github.com/LongSoft/UEFITool/releases/download/A72/UEFITool_NE_A72_x64_linux.zip
-	source = uefitool_A72-1_16.png::https://github.com/LongSoft/UEFITool/raw/A72/UEFITool/icons/uefitool_16x16.png
-	source = uefitool_A72-1_32.png::https://github.com/LongSoft/UEFITool/raw/A72/UEFITool/icons/uefitool_32x32.png
-	source = uefitool_A72-1_48.png::https://github.com/LongSoft/UEFITool/raw/A72/UEFITool/icons/uefitool_48x48.png
-	source = uefitool_A72-1_64.png::https://github.com/LongSoft/UEFITool/raw/A72/UEFITool/icons/uefitool_64x64.png
-	source = uefitool_A72-1_128.png::https://github.com/LongSoft/UEFITool/raw/A72/UEFITool/icons/uefitool_128x128.png
-	source = uefitool_A72-1_256.png::https://github.com/LongSoft/UEFITool/raw/A72/UEFITool/icons/uefitool_256x256.png
-	source = uefitool_A72-1_512.png::https://github.com/LongSoft/UEFITool/raw/A72/UEFITool/icons/uefitool_512x512.png
-	source = uefitool_A72-1.desktop::https://github.com/LongSoft/UEFITool/raw/A72/UEFITool/uefitool.desktop
-	source = uefitool_A72-1.license::https://github.com/LongSoft/UEFITool/raw/A72/LICENSE.md
-	sha256sums = cfa9a8ad7b17321007b81254e34cd93755e8ca194b7329b452a35542ae483a7e
-	sha256sums = 9e0bcb313e535525c7c60b76653c6f95fde5a2176bea24d4a84d53c749894c92
-	sha256sums = 402612653bdcc8e6a68e31ae8375db497ae228f4f888068681abc731df81938d
+	provides = uefiextract=A73
+	provides = uefifind=A73
+	provides = uefitool=A73
+	source = UEFIExtract-A73-1.zip::https://github.com/LongSoft/UEFITool/releases/download/A73/UEFIExtract_NE_A73_x64_linux.zip
+	source = UEFIFind-A73-1.zip::https://github.com/LongSoft/UEFITool/releases/download/A73/UEFIFind_NE_A73_x64_linux.zip
+	source = UEFITool-A73-1.zip::https://github.com/LongSoft/UEFITool/releases/download/A73/UEFITool_NE_A73_x64_linux.zip
+	source = uefitool_A73-1_16.png::https://github.com/LongSoft/UEFITool/raw/A73/UEFITool/icons/uefitool_16x16.png
+	source = uefitool_A73-1_32.png::https://github.com/LongSoft/UEFITool/raw/A73/UEFITool/icons/uefitool_32x32.png
+	source = uefitool_A73-1_48.png::https://github.com/LongSoft/UEFITool/raw/A73/UEFITool/icons/uefitool_48x48.png
+	source = uefitool_A73-1_64.png::https://github.com/LongSoft/UEFITool/raw/A73/UEFITool/icons/uefitool_64x64.png
+	source = uefitool_A73-1_128.png::https://github.com/LongSoft/UEFITool/raw/A73/UEFITool/icons/uefitool_128x128.png
+	source = uefitool_A73-1_256.png::https://github.com/LongSoft/UEFITool/raw/A73/UEFITool/icons/uefitool_256x256.png
+	source = uefitool_A73-1_512.png::https://github.com/LongSoft/UEFITool/raw/A73/UEFITool/icons/uefitool_512x512.png
+	source = uefitool_A73-1.desktop::https://github.com/LongSoft/UEFITool/raw/A73/UEFITool/uefitool.desktop
+	source = uefitool_A73-1.license::https://github.com/LongSoft/UEFITool/raw/A73/LICENSE.md
+	sha256sums = 01961c9537ee2cad3f481ed5a0393ab04acc0d19e174017e58e5e83babea9bea
+	sha256sums = fe5bc6c2a92e51101b5db2cea095c0448cf192109a342d32a9f64f69231d2b1d
+	sha256sums = cfabd4046cb863ecfbb8a12879316a16f47fdde4cf957e24c4df23000efd497f
 	sha256sums = 8a026dc03d82500aeac6bfa47ddb838b10196b7cc09169981430e67bf79aab7a
 	sha256sums = 9b6bce56fcccea4104642c6c8d393e6043671a8fd45b1c7bf8495407b4ad206a
 	sha256sums = ed001d549f96e142fd609e9a89d3482702d9d37abfa3f6a39cfa0fd2a9b36335
