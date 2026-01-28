@@ -5,7 +5,7 @@ _pname=${pkgbase#python-}
 _pyname=${_pname//-/_}
 pkgname=("python-${_pname}")
 # "python-${_pname}-doc")
-pkgver=0.2511.25
+pkgver=0.2601.5
 pkgrel=1
 pkgdesc="This package provides convenient utilities and data to write a sphinx config file."
 arch=('any')
@@ -14,12 +14,13 @@ license=('MIT')
 makedepends=('python-flit-core'
              'python-build'
              'python-installer')  # wheel required by new setuptools
-checkdepends=('python-pytest-xdist'
+checkdepends=('python-pytest'
+#checkdepends=('python-pytest-xdist'
               'python-requests')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "${pkgver}-test_basic.py::https://github.com/Quansight-Labs/intersphinx_registry/raw/refs/tags/${pkgver}/tests/test_basic.py")
-md5sums=('c4e856c7c0b07e55b05be75970784306'
-         'eea8ea533c4d906be19ffb096eb37eb1')
+md5sums=('32c8a4a9a09f0db2af2704b927ab136f'
+         'e1804023a00665247e2f5e2f4194c1fb')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -40,8 +41,8 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-#   pytest test_basic.py -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 # || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
-    PYTHONPATH="." pytest test_basic.py || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
+#   PYTHONPATH="." pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 test_basic.py #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
+    pytest test_basic.py || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
 }
 
 package_python-intersphinx-registry() {
