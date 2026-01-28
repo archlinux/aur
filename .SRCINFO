@@ -1,0 +1,18 @@
+pkgbase = tsa
+	pkgdesc = CLI tool for managing Tailscale devices and users
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/wmccracken/tsa
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = openssl
+	optdepends = tailscale: required for signing locked-out devices
+	options = !debug
+	options = !lto
+	source = tsa-0.1.0.tar.gz::https://github.com/wmccracken/tsa/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = tsa
