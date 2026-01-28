@@ -13,5 +13,5 @@ source_x86_64=("${pkgname}-${pkgver}.deb::https://github.com/simon-escano/fint/r
 sha256sums_x86_64=('060c0405371754ee2cd806868b2227dbef33fb462e706398e5dcb5bcb7c9fcba')
 
 package() {
-	tar -xf data.tar.xz -C "${pkgdir}"
+	tar -xf data.tar.gz -C "${pkgdir}"
 }
