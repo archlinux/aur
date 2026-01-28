@@ -1,0 +1,25 @@
+pkgbase = connected-desktop-git
+	pkgdesc = High-speed, offline, cross-platform ecosystem bridging devices (Desktop Client)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/paterkleomenis/connected
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	makedepends = pkgconf
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libappindicator-gtk3
+	depends = openssl
+	depends = dbus
+	provides = connected-desktop
+	conflicts = connected-desktop
+	conflicts = connected
+	source = git+https://github.com/paterkleomenis/connected.git
+	source = connected-desktop.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = connected-desktop-git
