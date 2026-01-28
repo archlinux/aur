@@ -4,9 +4,9 @@
 
 pkgname=perl-tree-rb-xs
 pkgver=0.20
-pkgrel=1
+pkgrel=2
 pkgdesc='Red/Black Tree and LRU Cache implemented in C'
-arch=('any')
+arch=('aarch64' 'armv7h' 'i486' 'i686' 'loong64' 'pentium4' 'riscv64' 'x86_64')
 url='https://metacpan.org/dist/Tree-RB-XS'
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 # See https://metacpan.org/dist/Tree-RB-XS/source/Makefile.PL
@@ -55,4 +55,7 @@ package() {
   cd "${srcdir}/Tree-RB-XS-${pkgver}"
 
   make install DESTDIR="${pkgdir}"
+
+  # makepkg won't strip binaries if they are not writable
+  chmod -R u+w "${pkgdir}"
 }
