@@ -1,0 +1,56 @@
+From e28a0a6af688bca4714924aa0996f3f8697ae913 Mon Sep 17 00:00:00 2001
+From: Remi Collet <remi@remirepo.net>
+Date: Thu, 17 Jul 2025 15:31:42 +0200
+Subject: [PATCH 1/2] use zend_ce_exception instead of
+ zend_exception_get_default() for 8.5
+
+---
+ parle.cpp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/parle.cpp b/parle.cpp
+index 782c591..a1e2c2b 100644
+--- a/parle.cpp
++++ b/parle.cpp
+@@ -3145,11 +3145,11 @@ PHP_MINIT_FUNCTION(parle)
+ #endif
+ 
+ 	INIT_CLASS_ENTRY(ce, "Parle\\LexerException", NULL);
+-	ParleLexerException_ce = zend_register_internal_class_ex(&ce, zend_exception_get_default());
++	ParleLexerException_ce = zend_register_internal_class_ex(&ce, zend_ce_exception);
+ 	INIT_CLASS_ENTRY(ce, "Parle\\ParserException", NULL);
+-	ParleParserException_ce = zend_register_internal_class_ex(&ce, zend_exception_get_default());
++	ParleParserException_ce = zend_register_internal_class_ex(&ce, zend_ce_exception);
+ 	INIT_CLASS_ENTRY(ce, "Parle\\StackException", NULL);
+-	ParleStackException_ce = zend_register_internal_class_ex(&ce, zend_exception_get_default());
++	ParleStackException_ce = zend_register_internal_class_ex(&ce, zend_ce_exception);
+ 
+ 	REGISTER_NS_BOOL_CONSTANT("Parle", "INTERNAL_UTF32", PARLE_U32, CONST_PERSISTENT | CONST_CS);
+ 
+
+From efda0c5bac49a49e694d2eb8fc0d71f2c17f5e69 Mon Sep 17 00:00:00 2001
+From: Remi Collet <remi@remirepo.net>
+Date: Thu, 4 Sep 2025 11:04:59 +0200
+Subject: [PATCH 2/2] Fix Deprecated: Case statements followed by a semicolon
+
+---
+ tests/lexer_position_tracking_001.phpt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/lexer_position_tracking_001.phpt b/tests/lexer_position_tracking_001.phpt
+index 131e518..4fd3bd0 100644
+--- a/tests/lexer_position_tracking_001.phpt
++++ b/tests/lexer_position_tracking_001.phpt
+@@ -43,10 +43,10 @@ do {
+ 	case Parser::ACTION_REDUCE:
+ 		//echo "Trace: ", $par->trace(), PHP_EOL;
+ 		switch ($par->reduceId) {
+-			case $prod_0;
++			case $prod_0:
+ 				echo " Match: '", $par->sigil(0), "', token: '", substr($in, $lex->marker, $lex->cursor - $lex->marker), "'", PHP_EOL;
+ 				break;
+-			case $prod_1;
++			case $prod_1:
+ 				echo " Match: '", $par->sigil(1), "', token: '", substr($in, $lex->marker, $lex->cursor - $lex->marker), "'", PHP_EOL;
+ 				break;
+ 		}
