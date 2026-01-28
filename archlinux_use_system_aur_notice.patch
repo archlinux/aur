@@ -11,14 +11,18 @@ index 09cfe02..d99428e 100644
 +recursive-include cecli/prompts *.yml
 +recursive-include cecli/tui *.tcss
 diff --git a/cecli/help.py b/cecli/help.py
-index 50466d0..ba507ff 100755
+index d87e6aa..ba507ff 100755
 --- a/cecli/help.py
 +++ b/cecli/help.py
-@@ -15,12 +15,10 @@ warnings.simplefilter("ignore", category=FutureWarning)
+@@ -15,16 +15,10 @@ warnings.simplefilter("ignore", category=FutureWarning)
  
  
  async def install_help_extra(io):
--    pip_install_cmd = ["cecli[help]", "--extra-index-url", "https://download.pytorch.org/whl/cpu"]
+-    pip_install_cmd = [
+-        "cecli-dev[help]",
+-        "--extra-index-url",
+-        "https://download.pytorch.org/whl/cpu",
+-    ]
 -    res = await utils.check_pip_install_extra(
 +    res = await utils.check_aur_package(
          io,
@@ -30,10 +34,10 @@ index 50466d0..ba507ff 100755
      return res
  
 diff --git a/cecli/models.py b/cecli/models.py
-index 4241023..f210eee 100644
+index 3334776..e58dd84 100644
 --- a/cecli/models.py
 +++ b/cecli/models.py
-@@ -22,7 +22,7 @@ from cecli.helpers.model_providers import ModelProviderManager
+@@ -25,7 +25,7 @@ from cecli.helpers.model_providers import ModelProviderManager
  from cecli.helpers.requests import model_request_parser
  from cecli.llm import litellm
  from cecli.sendchat import sanity_check_messages
@@ -42,7 +46,7 @@ index 4241023..f210eee 100644
  
  RETRY_TIMEOUT = 60
  COPY_PASTE_PREFIX = "cp:"
-@@ -1120,16 +1120,9 @@ async def check_for_dependencies(io, model_name):
+@@ -1232,16 +1232,9 @@ async def check_for_dependencies(io, model_name):
          model_name: The name of the model to check dependencies for
      """
      if model_name.startswith("bedrock/"):
@@ -57,7 +61,7 @@ index 4241023..f210eee 100644
 -            "Google Vertex AI models require the google-cloud-aiplatform package.",
 -            ["google-cloud-aiplatform"],
 -        )
-+        await check_aur_package(io, "google.cloud.aiplatform", "python-aiplatform") 
++        await check_aur_package(io, "google.cloud.aiplatform", "python-aiplatform")
  
  
  def get_chat_model_names():
@@ -216,7 +220,7 @@ index c0f8adf..f0753bb 100644
  
      success, output = run_install(cmd)
 diff --git a/cecli/versioncheck.py b/cecli/versioncheck.py
-index 3cf2ae4..1e29278 100644
+index 05d13fe..1e29278 100644
 --- a/cecli/versioncheck.py
 +++ b/cecli/versioncheck.py
 @@ -1,5 +1,4 @@
@@ -234,7 +238,7 @@ index 3cf2ae4..1e29278 100644
          io,
          None,
 -        "Install the development version of cecli from the main branch?",
--        ["git+https://github.com/dwash96/aider-ce.git"],
+-        ["git+https://github.com/dwash96/cecli.git"],
 -        self_update=True,
 +        "cecli-git",
      )
@@ -250,7 +254,7 @@ index 3cf2ae4..1e29278 100644
 -        io.tool_warning(text)
 -        return True
 -    success = await utils.check_pip_install_extra(
--        io, None, new_ver_text, ["cecli"], self_update=True
+-        io, None, new_ver_text, ["cecli-dev"], self_update=True
 -    )
 -    if success:
 -        io.tool_output("Re-run cecli to use new version.")

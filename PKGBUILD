@@ -6,7 +6,7 @@ pkgname=(
   'cecli'
 )
 _gitpkgname=cecli
-pkgver=0.96.0
+pkgver=0.96.3
 pkgrel=1
 pkgdesc='AI pair programming in your terminal - dwash96 fork of AIDER with TUI and MCP support'
 arch=('any')
@@ -67,6 +67,7 @@ makedepends=(
   'ruby-jekyll-sitemap'
   'ruby-just-the-docs'
   'ruby-rake'
+  'ruby-google-protobuf'
   # We need all runtime deps at build time to generate shell completions
   "${_depends[@]}"
 )
@@ -85,8 +86,8 @@ source=(
   'fix-build-from-tarball.patch'
 )
 
-sha512sums=('cf2f8c6fce79425977f8e936096f12be8a4cdf547cddedcb3984ffb7c92d172e5f69f76a15fd20b4020bab77df66ded28ee068415f7a4e3c746affafa37064dd'
-            '2bd3db180ca14d684fcd352f3ea29ddc31c5d45353dbbdd7a1e9fa2760c8b077e0b8d3838fb64ba49c4a85a9b559d5c48a96d39459c45796ee446cec26b080e9'
+sha512sums=('f7f78241e49e883997d06861830aef2ff049bf2855bca37eb3d95418e192367caa559e3a237f0ded36078a5fba93f213a1ac2c84fee2314169f8e8135159e801'
+            'c37489522cf14ecf5808c7ef06a324b48bf5b979f27887ab47a28c68c9685dd60856596bb24000fc4676e57c249aa35e16cf6dc1524b993b16f8ab1c4589922b'
             'c1a3c9bb98f68656eba5ed62e0c46f0ebad679f5d19c220b9c22017c43436946506e96cf3a1b2b593be5a37ad791fdd61c04212c7674152ea786b725fd99dcfa')
 
 prepare() {
