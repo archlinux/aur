@@ -1,6 +1,6 @@
 pkgbase = confirmo-bin
 	pkgdesc = Your AI coding companion that lives on your desktop
-	pkgver = 1.0.41
+	pkgver = 1.0.42
 	pkgrel = 1
 	url = https://confirmo.love
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = confirmo-bin
 	depends = util-linux-libs
 	depends = libsecret
 	optdepends = libappindicator-gtk3: for system tray icon support
-	source = confirmo_1.0.41_amd64.deb::https://updates.confirmo.love/confirmo_1.0.41_amd64.deb
-	md5sums = 8f5be4134691cd2839f5ad10c7a1c98d
+	source = confirmo_1.0.42_amd64.deb::https://updates.confirmo.love/confirmo_1.0.42_amd64.deb
+	md5sums = 51fba2dfbc873fb67f43b9bec8336c20
 
 pkgname = confirmo-bin
