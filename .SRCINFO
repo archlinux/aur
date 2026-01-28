@@ -1,6 +1,6 @@
 pkgbase = kintsugi-bin
 	pkgdesc = Task management for developers with AI-powered workflow
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/juicerq/kintsugi
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = kintsugi-bin
 	conflicts = kintsugi
 	options = !strip
 	options = !debug
-	source = kintsugi-bin-0.1.6.deb::https://github.com/juicerq/kintsugi/releases/download/v0.1.6/kintsugi_0.1.6_amd64.deb
-	sha256sums = 066e334c96f42536bcb57260e45c5aef3759b6762198d888ac3e9cff48001ca0
+	source = kintsugi-bin-0.1.7.deb::https://github.com/juicerq/kintsugi/releases/download/v0.1.7/kintsugi_0.1.7_amd64.deb
+	sha256sums = 22dea13f4d90fef4ed8e9574cc85c7e10f2996e70305425123e8d4c295918ed4
 
 pkgname = kintsugi-bin
