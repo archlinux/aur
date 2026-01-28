@@ -1,6 +1,6 @@
 pkgbase = connected-desktop-git
 	pkgdesc = High-speed, offline, cross-platform ecosystem bridging devices (Desktop Client)
-	pkgver = 1.0.1
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/paterkleomenis/connected
 	arch = x86_64

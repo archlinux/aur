@@ -1,7 +1,7 @@
-# Maintainer: Pater Kleomenis <paterkleomenis@gmail.com> (Placeholder)
+# Maintainer: Pater Kleomenis <paterkleomenis@gmail.com>
 _pkgname=connected-desktop
 pkgname=$_pkgname-git
-pkgver=1.0.1
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="High-speed, offline, cross-platform ecosystem bridging devices (Desktop Client)"
 arch=('x86_64')
