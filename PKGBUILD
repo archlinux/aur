@@ -3,7 +3,7 @@
 pkgname=baidu-translate-client-bin
 _pkgname=BdTranslateClient
 _zhsname='百度翻译'
-pkgver=2.1.0
+pkgver=2.2.1
 _electronversion=11
 pkgrel=1
 pkgdesc="Baidu translate.(Prebuilt version.Use system-wide electron)${_zhsname}"
@@ -32,7 +32,7 @@ source=(
     "LICENSE-${pkgver}.html::https://fanyi.baidu.com/static/webpage/agreement.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('14b28e1f65e2116cf5376a063d79fa1450128f043de0d12811d393a4275a8e69'
+sha256sums=('106819913eba0ce50f5702474e3b2f62d51ac4a9b255b9541c9eb9584814a707'
             '883caab57df8960f025758fa321da15cdac180dfc3688d7ec975c142ccd0d3ad'
             '1bac6150492bcebb1b2f74fc4a6712a8cd9317abf3107e6fa8ca357e5023bbf7'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
