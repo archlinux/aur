@@ -1,7 +1,7 @@
 # Maintainer:  Lukas K. <lu@0x83.eu>
 
 pkgname=dune3d
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Parametric 3D CAD"
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ source=(
   "https://github.com/dune3d/dune3d/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  'a9c346005d260e7d9c4da2593d7683536536531fd6cad806bcfe2cf1c1c912e9'
+  '1465cd1d30ff00a82cadb0243065049af35149b0ed37679076ff805ffafd6d62'
 )
 
 build() {
