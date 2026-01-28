@@ -1,19 +1,18 @@
 pkgbase = animathio-bin
 	pkgdesc = AniMathIO revolutionizes the creation of mathematical videos, tailored for educators, students, and professionals seeking to bring complex concepts to life.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.5.0
+	pkgver = 1.6.3
 	pkgrel = 1
 	url = https://animathio.com/
 	arch = x86_64
 	license = MIT
-	makedepends = fuse2
-	depends = electron35
-	provides = animathio=1.5.0
+	depends = electron38
+	provides = animathio=1.6.3
 	conflicts = animathio
-	source = animathio-1.5.0.AppImage::https://github.com/AniMathIO/AniMathIO/releases/download/v1.5.0/AniMathIO-1.5.0.AppImage
-	source = LICENSE-1.5.0::https://raw.githubusercontent.com/AniMathIO/AniMathIO/v1.5.0/LICENSE
+	source = animathio-1.6.3-x86_64.AppImage::https://github.com/AniMathIO/AniMathIO/releases/download/animathio-v1.6.3/AniMathIO-1.6.3.AppImage
+	source = LICENSE-1.6.3::https://raw.githubusercontent.com/AniMathIO/AniMathIO/animathio-v1.6.3/LICENSE
 	source = animathio.sh
-	sha256sums = 73318515118b5490f4b7ccf1b539e11182b3058fbb65f602a2b96831ac7c9422
+	sha256sums = a2182f7a0069d09438b898ed03a0a638d2a7ef649075d113f4fd39aa610cb3a8
 	sha256sums = 48f6289b2552d107a41350b2ee3339010373d1e0dd59834b4c7de5ecab96df72
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = animathio-bin
