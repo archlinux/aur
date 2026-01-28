@@ -4,3 +4,4 @@
 !.gitignore
 !Makefile
 !pre-commit
+!pipewire.conf

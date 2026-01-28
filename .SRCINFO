@@ -8,6 +8,8 @@ pkgbase = clownfish
 	provides = clownfish
 	conflicts = clownfish
 	source_x86_64 = clownfish-0.1.zip::https://clownfish-translator.com/voicechanger/download/ClownfishConsole/linux64/ClownfishConsole(v0.1z).zip
+	source_x86_64 = pipewire.conf
+	sha256sums_x86_64 = SKIP
 	sha256sums_x86_64 = SKIP
 
 pkgname = clownfish
