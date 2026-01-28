@@ -4,9 +4,9 @@
 # Patches applied by: Lito Parra <lito.15@proton.me>
 
 pkgname=kwin-hifps-git
-pkgver=6.4.90.r622.ga8e1ccfd5d
+pkgver=6.5.90.r65.g663dbec8d9
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=1
+pkgrel=2
 pkgdesc='An easy to use, but flexible, Wayland compositor - patched for high refresh rate animation smoothness'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -45,6 +45,7 @@ depends=(aurorae
          kxmlgui-git
          lcms2
          libcanberra
+	 libcap
          libdisplay-info
          libdrm
          libei
@@ -64,6 +65,8 @@ depends=(aurorae
          qt6-sensors
          qt6-svg
          qt6-tools
+	 rtkit
+	 systemd
          systemd-libs
          wayland
          xcb-util-cursor
@@ -127,4 +130,6 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+
+  setcap cap_sys_nice+eip "$pkgdir/usr/bin/kwin_wayland"
 }
