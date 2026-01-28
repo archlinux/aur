@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=heirloom-doctools-git
-pkgver=191015.r525.cf40396
+pkgver=191015.r527.2e9b0c6
 pkgrel=1
 pkgdesc='The Heirloom Documentation Tools provide troff, nroff, and related utilities.'
 arch=('i686' 'x86_64')
@@ -37,7 +37,7 @@ pkgver() {
 build() {
 	cd "$srcdir/$pkgname"
 	export YACC=/usr/bin/byacc
-	make
+	make CFLAGS='-std=gnu99 -fpermissive -fcommon -Wno-incompatible-pointer-types'
 }
 
 package() {

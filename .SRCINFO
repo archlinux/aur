@@ -1,6 +1,6 @@
 pkgbase = heirloom-doctools-git
 	pkgdesc = The Heirloom Documentation Tools provide troff, nroff, and related utilities.
-	pkgver = 191015.r525.cf40396
+	pkgver = 191015.r527.2e9b0c6
 	pkgrel = 1
 	url = https://github.com/n-t-roff/heirloom-doctools
 	arch = i686
