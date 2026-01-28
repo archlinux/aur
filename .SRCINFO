@@ -1,0 +1,16 @@
+pkgbase = python-banks
+	pkgdesc = LLM prompt language based on Jinja
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/masci/banks
+	arch = any
+	license = MIT
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = python-banks-2.3.0.tar.gz::https://github.com/masci/banks/archive/refs/tags/v2.3.0.tar.gz
+	sha256sums = b53afd4996dd3a2e4f64e99c048faaece1d703a2b0be77afc88ee4731b0613e5
+
+pkgname = python-banks
