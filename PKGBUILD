@@ -5,7 +5,7 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libsndfile
 pkgver=1.2.2
-pkgrel=3
+pkgrel=4
 arch=('any')
 pkgdesc="A C library for reading and writing files containing sampled audio data (Android ${_android_arch})"
 url="https://libsndfile.github.io/libsndfile/"
@@ -18,10 +18,8 @@ depends=("android-${_android_arch}-flac"
          "android-${_android_arch}-mpg123"
          "android-${_android_arch}-opus")
 makedepends=('android-cmake'
-             "android-${_android_arch}-alsa-lib"
              "android-${_android_arch}-sqlite"
              'python')
-optdepends=("android-${_android_arch}-alsa-lib: for sndfile-play")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/libsndfile/libsndfile/releases/download/${pkgver}/libsndfile-${pkgver}.tar.xz"{,.asc}
         "libsndfile-1.2.2-CVE-2022-33065.patch::https://github.com/libsndfile/libsndfile/commit/0754562e13d2e63a248a1c82f90b30bc0ffe307c.patch")
@@ -47,6 +45,7 @@ build() {
     android-${_android_arch}-cmake \
         -S . \
         -B build-shared \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -DCMAKE_POLICY_DEFAULT_CMP0057=NEW \
         -DBUILD_SHARED_LIBS=ON \
         -DBUILD_EXAMPLES=OFF \
@@ -62,8 +61,6 @@ build() {
         -Dpkgcfg_lib_PC_Vorbis_Enc_vorbisenc="${ANDROID_PREFIX_LIB}/pkgconfig/vorbisenc.pc" \
         -Dpkgcfg_lib_PC_Vorbis_File_vorbisfile="${ANDROID_PREFIX_LIB}/pkgconfig/vorbisfile.pc" \
         -Dpkgcfg_lib_PC_Vorbis_Vorbis_vorbis="${ANDROID_PREFIX_LIB}/pkgconfig/vorbis.pc" \
-        -DALSA_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
-        -DALSA_LIBRARY="${ANDROID_PREFIX_LIB}/libasound.so" \
         -DFLAC_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
         -DFLAC_LIBRARY="${ANDROID_PREFIX_LIB}/libFLAC.so" \
         -DMP3LAME_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
@@ -90,6 +87,7 @@ build() {
     android-${_android_arch}-cmake \
         -S . \
         -B build-static \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -DCMAKE_POLICY_DEFAULT_CMP0057=NEW \
         -DBUILD_SHARED_LIBS=OFF \
         -DBUILD_EXAMPLES=OFF \
@@ -105,8 +103,6 @@ build() {
         -Dpkgcfg_lib_PC_Vorbis_Enc_vorbisenc="${ANDROID_PREFIX_LIB}/pkgconfig/vorbisenc.pc" \
         -Dpkgcfg_lib_PC_Vorbis_File_vorbisfile="${ANDROID_PREFIX_LIB}/pkgconfig/vorbisfile.pc" \
         -Dpkgcfg_lib_PC_Vorbis_Vorbis_vorbis="${ANDROID_PREFIX_LIB}/pkgconfig/vorbis.pc" \
-        -DALSA_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
-        -DALSA_LIBRARY="${ANDROID_PREFIX_LIB}/libasound.a" \
         -DFLAC_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
         -DFLAC_LIBRARY="${ANDROID_PREFIX_LIB}/libFLAC.a" \
         -DMP3LAME_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
@@ -140,4 +136,6 @@ package() {
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
