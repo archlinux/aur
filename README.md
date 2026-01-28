@@ -40,7 +40,7 @@ The only package manager which hosts `org` currently is `yay`. Install with: `ya
 For those who don't use `yay`: I plan to make `org` available on as many platforms as I can. For now, the below instructions will suffice while I am alpha testing:
 
 ```bash
-pip install "git+https://github.com/benjaminingreens/org.git@v0.1.17"
+pip install "git+https://github.com/benjaminingreens/org.git@v0.1.18"
 ```
 
 If you have a managed environment, do something like this:
@@ -50,7 +50,7 @@ If you have a managed environment, do something like this:
 python3 -m venv ~/.venvs/org
 
 # 2. Install org into that environment
-~/.venvs/org/bin/pip install "git+https://github.com/benjaminingreens/org.git@v0.1.17"
+~/.venvs/org/bin/pip install "git+https://github.com/benjaminingreens/org.git@v0.1.18"
 
 # 3. Create a bin directory in your home if it doesn't exist
 mkdir -p ~/.local/bin
@@ -66,7 +66,7 @@ echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.profile
 
 To update, run:
 ```bash
-~/.venvs/org/bin/pip install -U "git+https://github.com/benjaminingreens/org.git@v0.1.17"
+~/.venvs/org/bin/pip install -U "git+https://github.com/benjaminingreens/org.git@v0.1.18"
 ```
 
 ### 2. Initialise
