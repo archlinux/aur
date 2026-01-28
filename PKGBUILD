@@ -3,22 +3,22 @@
 
 pkgname=python-transformers
 _pkgname=${pkgname#python-}
-pkgver=4.57.6
+pkgver=5.0.0
 pkgrel=1
-pkgdesc="State-of-the-art Natural Language Processing for Jax, PyTorch and TensorFlow"
+pkgdesc='State-of-the-art pretrained models for inference and training'
 arch=('any')
 url='https://github.com/huggingface/transformers'
 license=('Apache-2.0')
 depends=(
   'python-filelock'
-  'python-huggingface-hub>=1:0.30.0'
+  'python-huggingface-hub>=1:1.3.0'
   'python-numpy'
   'python-packaging'
   'python-regex'
-  'python-requests'
   'python-safetensors'
-  'python-tokenizers>=0.22.0'
+  'python-tokenizers'
   'python-tqdm'
+  'python-typer'
   'python-yaml'
 )
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
@@ -36,14 +36,7 @@ optdepends=(
 source=(
   "python-transformers-$pkgver.tar.gz"::"https://github.com/huggingface/transformers/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('7e8d4c7e324c59fc2d37743b6ff93d79460d7dcaa32774ee286a6c9e3c4e6d01')
-
-prepare() {
-  cd "transformers-$pkgver"
-  # Relax version restrictions on core package.
-  sed -i -E 's/("huggingface-hub.*<)1.0/\12/g' setup.py
-  python setup.py deps_table_update
-}
+sha256sums=('143d5c95546a678f886f464b75368edceecac952d56d203341bcd1cc70f7f9bf')
 
 build() {
   python -m build -nw "transformers-$pkgver"
