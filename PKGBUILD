@@ -1,6 +1,6 @@
 # Maintainer: Rizzzi Git <rizzzigit@gmail.com>
 
-tmlver="2025.11.3.0"
+tmlver="2025.11.3.2"
 terrariaver="1.4.4.9"
 pkgrel=1
 epoch=0
@@ -19,7 +19,7 @@ source=(
 )
 
 sha256sums=(
-  "5a609e79d0c08eaf1a9bbfe8247a86f0ec11eb15d7aa88302483b7802543c9d1"
+  "7aea6640ca0c113b8f3f88ed78646ff0482a1e66372c1a562b0b90b888bba4a3"
   "472279759f98a8e7c220321257ffdd181c99072e46a36ad673cd82e776636066"
 )
 
