@@ -3,7 +3,7 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-opus
-pkgver=1.6
+pkgver=1.6.1
 pkgrel=1
 arch=('any')
 pkgdesc="Codec designed for interactive speech and audio transmission over the Internet (Android ${_android_arch})"
@@ -13,7 +13,7 @@ depends=('android-ndk')
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("http://downloads.us.xiph.org/releases/opus/opus-${pkgver}.tar.gz")
-md5sums=('6ddaa5851e354621b735806007fa4651')
+md5sums=('67cafc438c430aa74eeb605eef670886')
 
 prepare() {
     cd "${srcdir}/opus-${pkgver}"
