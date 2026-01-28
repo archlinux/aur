@@ -14,5 +14,5 @@ source=("${_pkgname}_${pkgver}_amd64.deb::${url}/releases/download/v${pkgver}/${
 sha256sums=('5536fb329218577684ec4cdbdbd354affc0f1229affde78d1e952047e6fd8f46')
 
 package() {
-	tar -xf data.tar.zst -C "${pkgdir}"
+    bsdtar -xf data.tar.* -C "${pkgdir}"
 }
