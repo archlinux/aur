@@ -29,7 +29,10 @@ optdepends=(
     'pipewire: audio server (recommended)'
     'pipewire-alsa: ALSA compatibility for PipeWire (required if using PipeWire)'
     'pulseaudio: audio server (alternative to PipeWire)'
-    'vulkan-icd-loader: GPU acceleration via Vulkan (enable with: voxtype setup gpu --enable)'
+    'vulkan-icd-loader: GPU acceleration via Vulkan for Whisper'
+    'onnxruntime: required for Parakeet engine (rebuild with onnxruntime installed)'
+    'cuda: GPU acceleration via CUDA for Parakeet (NVIDIA GPUs)'
+    'rocm-hip-runtime: GPU acceleration via ROCm for Parakeet (AMD GPUs)'
 )
 backup=('etc/voxtype/config.toml')
 install=voxtype.install
@@ -88,6 +91,19 @@ build() {
         --config 'profile.release.lto=false' \
         --config 'profile.release.codegen-units=8'
     cp target/release/voxtype voxtype-vulkan
+
+    # Build Parakeet binary if onnxruntime is available
+    if pacman -Q onnxruntime &>/dev/null; then
+        echo "=== Building Parakeet binary (onnxruntime found) ==="
+        export ORT_STRATEGY=system
+        cargo clean
+        cargo build --frozen --release --features parakeet-load-dynamic \
+            --config 'profile.release.lto=false' \
+            --config 'profile.release.codegen-units=8'
+        cp target/release/voxtype voxtype-parakeet
+    else
+        echo "=== Skipping Parakeet (install onnxruntime and rebuild for Parakeet support) ==="
+    fi
 }
 
 check() {
@@ -104,6 +120,11 @@ package() {
 
     # Install Vulkan GPU binary to /usr/lib/voxtype/ for optional GPU acceleration
     install -Dm755 "voxtype-vulkan" "$pkgdir/usr/lib/voxtype/voxtype-vulkan"
+
+    # Install Parakeet binary if it was built
+    if [[ -f "voxtype-parakeet" ]]; then
+        install -Dm755 "voxtype-parakeet" "$pkgdir/usr/lib/voxtype/voxtype-parakeet"
+    fi
 
     # Install default configuration
     install -Dm644 "config/default.toml" "$pkgdir/etc/voxtype/config.toml"
