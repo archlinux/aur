@@ -1,0 +1,76 @@
+# Maintainer: Orion-zhen <https://github.com/Orion-zhen>
+
+_gpuarch=gfx110X
+pkgname="rocm-nightly-${_gpuarch,,}-bin"
+pkgver=7.12.0a20260128
+pkgrel=1
+pkgdesc="AMD ROCm Nightly Release (${_gpuarch}) - Monolithic Install"
+arch=('x86_64')
+url="https://rocm.nightlies.amd.com"
+license=('MIT' 'custom:LicenseRef-ROCm-EULA')
+depends=('glibc' 'gcc-libs' 'python-pyelftools' 'python')
+
+# 官方源冲突列表：涵盖了 Core, Compilers, HIP, Math Libs, ML, Tools 等
+_rocm_packages=(
+    'rocm-core' 'rocm-cmake' 'rocm-llvm' 'rocm-device-libs'
+    'hsa-rocr' 'hsakmt-roct' 'comgr' 'rocminfo' 'rocwmma'
+    'hip-runtime-amd' 'hip-runtime-nvidia'
+    'rocm-smi-lib' 'rocm-gdb' 'rocm-dbgapi'
+    'rocprofiler' 'roctracer' 'rocm-bandwidth-test'
+    'opencl-rocm'
+    'hipblas' 'hipblas-common' 'hipblaslt' 'rocblas'
+    'hipfft' 'rocfft'
+    'hiprand' 'rocrand'
+    'hipsolver' 'rocsolver'
+    'hipsparse' 'hipsparselt' 'rocsparse'
+    'rccl' 'rocalution' 'rocprim' 'rocthrust' 'hipcub'
+    'miopen-hip' 'migraphx' 'mivisionx' 'rpp'
+    'hipfort' 'hipify-clang'
+    'rocm-hip-sdk' 'rocm-opencl-sdk' 'rocm-ml-sdk' # Meta packages
+)
+
+provides=("${_rocm_packages[@]}" "rocm=${pkgver}")
+conflicts=("${_rocm_packages[@]}" "rocm")
+options=('!strip' '!debug')
+source=("${url}/tarball/therock-dist-linux-${_gpuarch}-all-${pkgver}.tar.gz")
+sha256sums=('7a18ea14cc9e6833ea35d0dcbee61c6e0b819fc697d0eaba05a94284f3d024f5')
+
+package() {
+    local _tarball_name=$(basename "${source[0]}")
+
+    # 1. 创建安装目录 /opt/rocm
+    mkdir -p "${pkgdir}/opt/rocm"
+    
+    # 2. 复制所有内容
+    # 源码是 tarbomb 结构（直接解压在 srcdir），因此复制当前目录下所有可见文件
+    # 使用 -d (preserve links) -r (recursive)
+    msg2 "Copying files to /opt/rocm..."
+    cp -dr --no-preserve=ownership * "${pkgdir}/opt/rocm/"
+    
+    # 删除可能误复制的 tarball 和 PKGBUILD 相关文件 (如果 source 在当前目录)
+    rm -f "${pkgdir}/opt/rocm/${_tarball_name}"
+    rm -f "${pkgdir}/opt/rocm/PKGBUILD"
+    
+    # 3. 配置动态链接库路径 /etc/ld.so.conf.d/
+    install -Dm644 /dev/null "${pkgdir}/etc/ld.so.conf.d/rocm-nightly-${_gpuarch}.conf"
+    echo "/opt/rocm/lib" > "${pkgdir}/etc/ld.so.conf.d/rocm-nightly-${_gpuarch}.conf"
+    echo "/opt/rocm/lib64" >> "${pkgdir}/etc/ld.so.conf.d/rocm-nightly-${_gpuarch}.conf"
+
+    # 4. 配置环境变量 /etc/profile.d/
+    install -Dm755 /dev/null "${pkgdir}/etc/profile.d/rocm-nightly-${_gpuarch}.sh"
+    cat <<EOF > "${pkgdir}/etc/profile.d/rocm-nightly-${_gpuarch}.sh"
+export ROCM_PATH=/opt/rocm
+export ROCM_HOME=/opt/rocm
+export HIP_PATH=/opt/rocm
+export PATH=\$ROCM_PATH/bin:\$PATH
+export LD_LIBRARY_PATH=\$ROCM_PATH/lib:\$LD_LIBRARY_PATH
+EOF
+
+    # 5. 处理许可证
+    install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+    if [ -f "${pkgdir}/opt/rocm/LICENSE" ]; then
+        ln -s "/opt/rocm/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    elif [ -f "${pkgdir}/opt/rocm/LICENSE.txt" ]; then
+        ln -s "/opt/rocm/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    fi
+}
