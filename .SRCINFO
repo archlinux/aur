@@ -1,0 +1,17 @@
+pkgbase = resolvify
+	pkgdesc = Batch ffmpeg transcoder with optional CustomTkinter GUI
+	pkgver = 1.0
+	pkgrel = 3
+	url = https://github.com/
+	arch = any
+	license = MIT
+	depends = python
+	depends = tk
+	depends = ffmpeg
+	depends = kitty
+	optdepends = python-rich: pretty CLI progress output (pip install rich)
+	optdepends = python-customtkinter: GUI support (pip install customtkinter)
+	source = resolvify
+	sha256sums = SKIP
+
+pkgname = resolvify

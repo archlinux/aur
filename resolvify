@@ -1,0 +1,151 @@
+#!/usr/bin/env python3
+import os, subprocess, sys, shlex, argparse
+from concurrent.futures import ThreadPoolExecutor
+from pathlib import Path
+import customtkinter as ctk
+from tkinter import filedialog
+
+try:
+    from rich.progress import Progress, SpinnerColumn, BarColumn, TextColumn, TimeRemainingColumn
+    from rich.console import Console
+except ImportError:
+    print("Error: 'rich' library missing. Run: pip install rich --break-system-packages")
+    sys.exit(1)
+
+DEFAULT_PATH = "/mnt/synology/Keithens folder/OBS Output"
+
+FFMPEG_CMD = [
+    "ffmpeg", "-y", "-i", "{input}",
+    "-c:v", "dnxhd", "-profile:v", "dnxhr_lb",
+    "-pix_fmt", "yuv422p",
+    "-c:a", "pcm_s16le",
+    "-f", "mov", "{output}"
+]
+
+console = Console()
+running_processes = []
+
+def get_duration(file_path):
+    cmd = [
+        "ffprobe", "-v", "error",
+        "-show_entries", "format=duration",
+        "-of", "default=noprint_wrappers=1:nokey=1",
+        str(file_path)
+    ]
+    result = subprocess.run(cmd, capture_output=True, text=True)
+    try:
+        return float(result.stdout.strip())
+    except:
+        return 0
+
+def process_video(video_path, progress, task_id, quick_mode, delete_source):
+    output_dir = video_path.parent / "Done"
+    output_dir.mkdir(exist_ok=True)
+    output_path = output_dir / f"{video_path.stem}.mov"
+    source_dur = get_duration(video_path)
+
+    if output_path.exists():
+        if quick_mode or abs(get_duration(output_path) - source_dur) < 2.0:
+            progress.update(task_id, description=f"[bold green]Done: {video_path.name}", completed=source_dur)
+            if delete_source:
+                os.remove(video_path)
+            return
+
+    cmd = [c.format(input=str(video_path), output=str(output_path)) for c in FFMPEG_CMD]
+    cmd += ["-progress", "pipe:1", "-nostats"]
+
+    proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, text=True)
+    running_processes.append((proc, output_path))
+
+    while True:
+        line = proc.stdout.readline()
+        if not line and proc.poll() is not None:
+            break
+        if line.startswith("out_time_ms="):
+            try:
+                progress.update(task_id, completed=int(line.split("=")[1]) / 1_000_000)
+            except:
+                pass
+        elif line.startswith("progress=end"):
+            progress.update(task_id, completed=source_dur)
+
+    proc.wait()
+
+    if proc.returncode == 0:
+        progress.update(task_id, description=f"[bold green]Success: {video_path.name}")
+        if delete_source:
+            os.remove(video_path)
+    else:
+        progress.update(task_id, description=f"[bold red]FAILED: {video_path.name}")
+
+def run_resolvify(path, quick, delete, overnight):
+    files = [
+        f for f in Path(path).glob("*")
+        if f.suffix.lower() in [".mp4", ".mkv", ".mov"] and f.parent.name != "Done"
+    ]
+
+    with Progress(
+        SpinnerColumn(),
+        TextColumn("[progress.description]{task.description}"),
+        BarColumn(),
+        TimeRemainingColumn(),
+        console=console
+    ) as progress:
+        with ThreadPoolExecutor(max_workers=4) as executor:
+            for f in files:
+                tid = progress.add_task(f"[white]{f.name}", total=get_duration(f) if not quick else 100)
+                executor.submit(process_video, f, progress, tid, quick, delete)
+
+    if overnight:
+        os.system("sudo shutdown now")
+
+class App(ctk.CTk):
+    def __init__(self):
+        super().__init__()
+        self.title("Resolvify")
+        self.geometry("400x500")
+        self.path = ctk.StringVar(value=DEFAULT_PATH)
+        ctk.CTkLabel(self, text="Resolvify Pro", font=("Arial", 20, "bold")).pack(pady=20)
+        ctk.CTkButton(self, text="Pick Folder", command=self.pick).pack(pady=10)
+        ctk.CTkLabel(self, textvariable=self.path, wraplength=300).pack(pady=5)
+        self.q = ctk.BooleanVar()
+        self.d = ctk.BooleanVar(value=True)
+        self.o = ctk.BooleanVar()
+        ctk.CTkCheckBox(self, text="Quick Mode", variable=self.q).pack(pady=5)
+        ctk.CTkCheckBox(self, text="Delete Sources", variable=self.d).pack(pady=5)
+        ctk.CTkCheckBox(self, text="Overnight Shutdown", variable=self.o).pack(pady=5)
+        ctk.CTkButton(self, text="LAUNCH IN KITTY", fg_color="green", command=self.go).pack(pady=30)
+
+    def pick(self):
+        self.path.set(filedialog.askdirectory() or self.path.get())
+
+    def go(self):
+        cmd = [
+            sys.executable, __file__,
+            "--path", self.path.get()
+        ]
+        if self.q.get():
+            cmd.append("--quick")
+        if self.d.get():
+            cmd.append("--delete")
+        if self.o.get():
+            cmd.append("--overnight")
+        subprocess.Popen(["kitty", "bash", "-c", shlex.join(cmd) + "; echo -e '\nDone! Press any key.'; read -n 1"])
+        self.iconify()
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--path")
+    parser.add_argument("--quick", action="store_true")
+    parser.add_argument("--delete", action="store_true")
+    parser.add_argument("--overnight", action="store_true")
+    parser.add_argument("--gui", action="store_true")
+    args = parser.parse_args()
+
+    if args.gui or not args.path:
+        App().mainloop()
+    else:
+        run_resolvify(args.path, args.quick, args.delete, args.overnight)
+
+if __name__ == "__main__":
+    main()
