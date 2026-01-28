@@ -14,7 +14,7 @@ depends=('glibc')
 makedepends=('perl')
 
 source=(
-  "https://github.com/openssl/openssl/releases/download/OpenSSL_1_1_1w/openssl-${pkgver}.tar.gz"
+  "https://github.com/openssl/openssl/releases/download/OpenSSL_1_1_1w/openssl-1.1.1w.tar.gz"
 )
 
 sha512sums=(
