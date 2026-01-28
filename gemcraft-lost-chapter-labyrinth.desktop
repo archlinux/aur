@@ -1,0 +1,17 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=GemCraft Lost Chapter: Labyrinth
+Name[zh_CN]=宝石争霸失落之章：迷宫
+Name[zh_TW]=寶石爭霸失落之章：迷宮
+GenericName=GemCraft Lost Chapter: Labyrinth
+GenericName[zh_CN]=宝石争霸失落之章：迷宫
+GenericName[zh_TW]=寶石爭霸失落之章：迷宮
+Comment=Unleash your magic power and fight. The Gem of Eternity awaits you...
+Comment[zh_CN]=释放你的魔法力量并投入战斗。永恒之宝石在等待你……
+Comment[zh_TW]=釋放你的魔法力量並投入戰鬥。永恆之寶石在等待你……
+Exec=/usr/bin/gemcraft-lost-chapter-labyrinth
+Icon=/usr/share/gemcraft-lost-chapter-labyrinth/gemcraft-lost-chapter-labyrinth.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game

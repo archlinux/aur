@@ -1,0 +1,26 @@
+pkgbase = gemcraft-lost-chapter-labyrinth-zh
+	pkgdesc = Unleash your magic power and fight. The Gem of Eternity awaits you... (Chinese version)
+	pkgver = 1.23
+	pkgrel = 1
+	url = https://www.gemcraftgame.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	depends = ruffle
+	conflicts = gemcraft-lost-chapter-labyrinth
+	options = !strip
+	source = https://resource.deepchirp.com/gemcraft-lost-chapter-labyrinth.swf
+	source = http://gameinabottle.com/favicon.ico
+	source = gemcraft-lost-chapter-labyrinth
+	source = gemcraft-lost-chapter-labyrinth.desktop
+	md5sums = ea58972f9e80965afec4e512e230a776
+	md5sums = 14f045b8d2a7d75de7cdb27dd4e9d6cd
+	md5sums = a5424fcf68548661c6722afb1bca5570
+	md5sums = db16b37d33d93cbf22a818c00bd939e8
+	sha256sums = c8aabd72c13f75ecf44236568fa4cde5c450c8bfc10e41e7542d1fda6bc3d591
+	sha256sums = 7d6f3457786f44758f1e2e9fcd1aa0837d0392cf2358fc966d93a666f81b7d03
+	sha256sums = 03dfb5ec49238d300d8c2234ab8e436941ea153607237e0343fb71caa2e7204b
+	sha256sums = 7b92ff876f1f73e92029e06876aa7a559ff1112388805f73e96695124616c562
+
+pkgname = gemcraft-lost-chapter-labyrinth-zh

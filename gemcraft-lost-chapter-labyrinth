@@ -1,0 +1,2 @@
+#!/bin/bash
+exec ruffle "/usr/share/gemcraft-lost-chapter-labyrinth/gemcraft-lost-chapter-labyrinth.swf"
