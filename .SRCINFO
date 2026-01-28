@@ -1,7 +1,7 @@
 pkgbase = rmqtt
 	pkgdesc = MQTT Server/MQTT Broker - Scalable Distributed MQTT Message Broker for IoT in the 5G Era
 	pkgver = 0.18.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/rmqtt/rmqtt
 	arch = x86_64
 	arch = aarch64
@@ -19,6 +19,6 @@ pkgbase = rmqtt
 	source = rmqttd.service
 	sha256sums = 5ff05b98f0ea21c317b71c9a8ec822536db1e6babb47f2fc541ac4406eb6fc23
 	sha256sums = 68e467ee60b993eb6dfa70fdef9f70850b9bcf94e5f2cd3f0316dffdf25005b1
-	sha256sums = 7f456a4fcbd4c5b4610ab849e22dfb1358e23a012289138be8897244848b07e3
+	sha256sums = 9f76865ca930a927c919597f6bb36a9306b1b8227f58137a3979bfa766095079
 
 pkgname = rmqtt
