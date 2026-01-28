@@ -2,7 +2,7 @@
 
 _pkgname=hockeypuck
 pkgname=${_pkgname}-git
-pkgver=2.2.4.r0.g07c225bc
+pkgver=2.3.1.r3.gf0f2482c
 pkgrel=1
 pkgdesc='An OpenPGP public keyserver.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('postgresql')
 makedepends=('go' 'git')
 backup=("etc/${_pkgname}/${_pkgname}.conf")
-source=("${_pkgname}::git+https://github.com/hockeypuck/hockeypuck.git#branch=branch-2.2"
+source=("${_pkgname}::git+https://github.com/hockeypuck/hockeypuck.git#branch=branch-2.3"
         sysusers.conf
         tmpfiles.conf
         logrotate
@@ -30,7 +30,7 @@ pkgver() {
 prepare() {
   cd "${_pkgname}"
 
-  sed -i 's/var\/lib\/hockeypuck\/www/usr\/share\/webapps\/hockeypuck/g' contrib/config/hockeypuck.conf.postgres
+  sed -i 's/var\/lib\/hockeypuck\/www/usr\/share\/webapps\/hockeypuck/g' contrib/config/hockeypuck.conf.sample
 }
 
 build() {
@@ -61,5 +61,5 @@ package() {
   install -Dm644 "${srcdir}"/service "${pkgdir}"/usr/lib/systemd/system/"${_pkgname}".service
   install -Dm644 "${srcdir}"/sysusers.conf "${pkgdir}"/usr/lib/sysusers.d/"${_pkgname}".conf
   install -Dm644 "${srcdir}"/tmpfiles.conf "${pkgdir}"/usr/lib/tmpfiles.d/"${_pkgname}".conf
-  install -Dm644 contrib/config/hockeypuck.conf.postgres "${pkgdir}"/etc/${_pkgname}/hockeypuck.conf
+  install -Dm644 contrib/config/hockeypuck.conf.sample "${pkgdir}"/etc/${_pkgname}/hockeypuck.conf
 }

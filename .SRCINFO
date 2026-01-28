@@ -1,6 +1,6 @@
 pkgbase = hockeypuck-git
 	pkgdesc = An OpenPGP public keyserver.
-	pkgver = 2.2.4.r0.g07c225bc
+	pkgver = 2.3.1.r3.gf0f2482c
 	pkgrel = 1
 	url = https://hockeypuck.io
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = hockeypuck-git
 	makedepends = git
 	depends = postgresql
 	backup = etc/hockeypuck/hockeypuck.conf
-	source = hockeypuck::git+https://github.com/hockeypuck/hockeypuck.git#branch=branch-2.2
+	source = hockeypuck::git+https://github.com/hockeypuck/hockeypuck.git#branch=branch-2.3
 	source = sysusers.conf
 	source = tmpfiles.conf
 	source = logrotate
