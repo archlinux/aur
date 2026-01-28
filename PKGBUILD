@@ -1,62 +1,74 @@
-# Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
+# Maintainer: you
 pkgname=cursor-appimage
-pkgver=2.4.21
+pkgver=2.4.22
 pkgrel=1
-pkgdesc="AI-first coding environment (AppImage version)"
+pkgdesc="Cursor AI code editor (AppImage, extracted)"
 arch=('x86_64')
 url="https://www.cursor.com"
-license=('LicenseRef-Cursor_EULA')
-depends=('fuse2' 'xdg-utils' 'hicolor-icon-theme')
-conflicts=('cursor-bin')
+license=('custom')
+depends=('glibc' 'gtk3' 'nss' 'libxss' 'alsa-lib')
 options=(!strip)
 _watch=(
-  'https://api2.cursor.sh/updates/download/golden/linux-x64/cursor/2.4' 'header' 'regex' 'Cursor-([0-9.]+)-x86_64.AppImage' 'pkgver'
-  'https://api2.cursor.sh/updates/download/golden/linux-x64/cursor/2.4' 'header' 'regex' 'location:.*production/([a-f0-9]+)/' '_commit'
+  'https://api2.cursor.sh/updates/download/golden/linux-x64/cursor/2.5' 'header' 'regex' 'Cursor-([0-9.]+)-x86_64.AppImage' 'pkgver'
+  'https://api2.cursor.sh/updates/download/golden/linux-x64/cursor/2.5' 'header' 'regex' 'location:.*production/([a-f0-9]+)/' '_commit'
 )
-_commit="dc8361355d709f306d5159635a677a571b277bcc"
+_commit="618c607a249dd7fd2ffc662c6531143833bebd44"
 
 source=(
-  "cursor-${pkgver}.AppImage::https://downloads.cursor.com/production/${_commit}/linux/x64/Cursor-${pkgver}-x86_64.AppImage"
+  "Cursor-${pkgver}.AppImage::https://downloads.cursor.com/production/${_commit}/linux/x64/Cursor-${pkgver}-x86_64.AppImage"
 )
-sha512sums=('24530407a7e2bd96a6d68eb2c43f4247c454c4d54e969ef1a76771d92497a5aff9d8b097a924def0cb319956b83bb195a7f12bbaaa9a1a35b5ea635ae06ac316')
+
+sha512sums=('63a8951ac07ebb204610b1894a2368cd3b5ea2a3f311a616e9948c5b8b48b9876fc77063af0e1b1bd3b7afe01df69e8d519e7dd37cc8fdc5a42536e212444df4')
 
 prepare() {
-  chmod +x "${srcdir}/cursor-${pkgver}.AppImage"
-  
-  # Extract AppImage to access metadata
   cd "${srcdir}"
-  ./cursor-${pkgver}.AppImage --appimage-extract >/dev/null
-  
-  # Update desktop entry to use installed paths
-  if [[ -f squashfs-root/cursor.desktop ]]; then
-    sed -i 's|^Exec=.*|Exec=/opt/cursor/cursor.AppImage %F|' squashfs-root/cursor.desktop
-    sed -i 's|^Icon=.*|Icon=cursor|' squashfs-root/cursor.desktop
-  fi
+  chmod +x Cursor-${pkgver}.AppImage
+  ./Cursor-${pkgver}.AppImage --appimage-extract
 }
 
 package() {
-  local appimage="${srcdir}/cursor-${pkgver}.AppImage"
-  local extract_dir="${srcdir}/squashfs-root"
-  
-  # Install AppImage
-  install -Dm755 "$appimage" "${pkgdir}/opt/cursor/cursor.AppImage"
+  install -d "${pkgdir}/opt/cursor"
+  cp -a squashfs-root/* "${pkgdir}/opt/cursor/"
 
-  # Main binary wrapper
+  # --- FIX APPIMAGE ---
+  # Replace broken AppRun with working launcher
+  cat > "${pkgdir}/opt/cursor/AppRun" <<'EOF'
+#!/bin/bash
+HERE="$(cd "$(dirname "$0")" && pwd)"
+
+export PATH="$HERE/usr/bin:$PATH"
+export LD_LIBRARY_PATH="$HERE/usr/lib:$HERE/usr/lib64:$HERE/lib:$LD_LIBRARY_PATH"
+export XDG_DATA_DIRS="$HERE/usr/share:$XDG_DATA_DIRS"
+
+exec "$HERE/usr/share/cursor/cursor" "$@"
+EOF
+
+  chmod +x "${pkgdir}/opt/cursor/AppRun"
+
+  # chrome sandbox (required by Electron)
+  if [[ -f "${pkgdir}/opt/cursor/chrome-sandbox" ]]; then
+    chmod 4755 "${pkgdir}/opt/cursor/chrome-sandbox"
+  fi
+
+  # CLI launcher
   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/cursor" <<'EOF'
 #!/bin/bash
-exec /opt/cursor/cursor.AppImage "$@"
+exec /opt/cursor/AppRun "$@"
 EOF
 
   # Desktop entry
-  if [[ -f "${extract_dir}/cursor.desktop" ]]; then
-    install -Dm644 "${extract_dir}/cursor.desktop" \
-      "${pkgdir}/usr/share/applications/cursor.desktop"
-  fi
+  install -Dm644 squashfs-root/cursor.desktop \
+    "${pkgdir}/usr/share/applications/cursor.desktop"
 
-  # Icons - install all available sizes
-  local icon_dir="${extract_dir}/usr/share/icons/hicolor"
+  sed -i 's|^Exec=.*|Exec=cursor %F|' \
+    "${pkgdir}/usr/share/applications/cursor.desktop"
+
+  sed -i 's|^Icon=.*|Icon=cursor|' \
+    "${pkgdir}/usr/share/applications/cursor.desktop"
+
+  # Icons
   for size in 16 32 48 64 128 256 512; do
-    local icon="${icon_dir}/${size}x${size}/apps/cursor.png"
+    icon="squashfs-root/usr/share/icons/hicolor/${size}x${size}/apps/cursor.png"
     [[ -f "$icon" ]] && install -Dm644 "$icon" \
       "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/cursor.png"
   done
