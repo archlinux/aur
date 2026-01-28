@@ -2,7 +2,7 @@
 
 pkgname=ampere-git
 _pkgname=ampere
-pkgver=Release.9.gb817745
+pkgver=s.2.g44a2640
 pkgrel=1
 pkgdesc="Ampere – a simple desktop audio player built off of python-vlc"
 arch=('any')
