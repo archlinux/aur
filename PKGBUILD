@@ -1,5 +1,5 @@
 pkgname=lightningstream
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc='Lightning Stream syncs LMDB databases through S3 buckets between multiple servers, including PowerDNS Authoritative server 4.8+ LMDBs.'
 arch=('x86_64' 'aarch64')
@@ -11,9 +11,9 @@ source=(
   "$pkgname::git+$url#tag=v$pkgver"
   "lightningstream.service"
 )
-sha512sums=('5acc3521c7addce1480c21d4a3893506f550bab325d2b105b8782c296f89e52cff1e4bd0ab86afcf4eaeebf37c0e9ae9215dfed915071dbf69b798e8bb5b8de2'
+sha512sums=('20fa9e003dcb0d5cc6cd6e8b93f03ad843926dd2c2a00b47442a6826bf839142f23fbd836baec94e57f4280a7a74a32fc28f8cb8a300d05f25ec4c78b846525e'
             '4afd7c410f10bf74ce158d0fe7706f5e58e78093dd0fe699857dea938507a783c25a8d0e54cf7f1f18efca216fc0b7c18ef0df3dcec5d2ae91d6eccbea7c7f3c')
-b2sums=('05b5047b265ff25ebc919b033e0fab3cfe2bb8da358306178872b878e0c368731a368c52f17d90338409941aab7584f41b18f8cc20a1683e9d192e359c4142da'
+b2sums=('cf2f197ea36c02ce0819d449c188376e3be6811b78bb891a97dd7c52b517dd73e6f1f05c407c37dda41eeba24200ac1c1e7f937d883fd40463af5936ae0e95df'
         '017d1aab9d4de6d479a2bbbfcee03404bf3f6ce7f86c7a7523b6305be329b87eccecdb6efd8601e0d335cdf4bc87229c46273c43daba53c16df52a5165356d65')
 
 build() {
