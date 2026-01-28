@@ -1,6 +1,6 @@
 pkgbase = tidewave-bin
 	pkgdesc = Coding agent for full-stack web app development
-	pkgver = 0.3.1
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://tidewave.ai
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = tidewave-bin
 	provides = tidewave
 	conflicts = tidewave
 	options = !strip
-	source = tidewave-0.3.1.AppImage::https://github.com/tidewave-ai/tidewave_app/releases/download/v0.3.1/tidewave-app-amd64.AppImage
+	source = tidewave-0.3.3.AppImage::https://github.com/tidewave-ai/tidewave_app/releases/download/v0.3.3/tidewave-app-amd64.AppImage
 	source = tidewave.desktop
 	source = tidewave.svg
 	sha256sums = 1a12f37df950875fd201de168812749fb27652eaf767d4de2b444243cd54016f
