@@ -1,0 +1,4 @@
+[vmlinux-to-elf]
+source = "git"
+git = "https://github.com/marin-m/vmlinux-to-elf.git"
+prefix = "v"
