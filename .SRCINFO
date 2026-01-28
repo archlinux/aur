@@ -1,0 +1,23 @@
+pkgbase = display-dhammapada
+	pkgdesc = display-dhammapada
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://gitlab.com/bodhi.zazen/display-dhammapada
+	arch = any
+	license = GPLv3
+	depends = fortune-mod-dhammapada-1.0
+	depends = bash
+	source = dhammapada.about
+	source = dhammapada.m.about
+	source = dhammapada.de.about
+	source = dhammapada.pl.about
+	source = display-dhammapada
+	source = display-dhammapada.1.gz
+	sha256sums = 55aed3bd5a0a80ecff5a6e5a65b5e9d579bbf600706856e83895b02fba539a7f
+	sha256sums = 2a67fe3c801483f5885342f34ed843fd7dd11100285a8eb38015187eab4e5245
+	sha256sums = cd6dd5f178eab774f7caf55f72747ca6cf9d0be98c74f725acc883f687a31a8f
+	sha256sums = 0aec40c21d9be7c384f8250e371b39b025a00dde62d8a7b3b5fce5f35156112c
+	sha256sums = 849ad64a9ad040eff24395fe9dc49bf770262bfadd52253b9ef1512311aec547
+	sha256sums = cfc7393d1c2319104e8b0740f88384c8927276300b7828d3a2f2b35d7fc9887f
+
+pkgname = display-dhammapada

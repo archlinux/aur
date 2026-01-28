@@ -1,0 +1,128 @@
+#!/bin/bash
+
+USAGE="
+
+display-dhammapada
+
+No argument prints a random verse from Richards translation
+
+display-dhammapada [TRANSLATION]
+
+Prints a random verse from specified translation
+  
+display-dhammapada [ARGUMENT] [TRANSLATION]
+
+Prints specified verse(s) or translation notes from specified translation
+
+Arguments:
+            number	Specify the number of the verse(s) to display
+            all		Display entire Dhammapada
+            about	The Dhammapada and Translation note
+
+Translations are optional, if not given set by locale (Richards for English)
+		   
+          -r   Use John Richard's translation (default)
+          -m   Use F. Max Muller's translation
+          -de  Use German language translation
+          -pl  Use Polish language translation
+ 
+ (C) January 2026 by bodhi.zazen <https://gitlab.com/bodhi.zazen/display-dhammapada> and contributors.
+ Copying policy: GPL v3.
+ No warranty.
+ "
+# test number of arguments	
+if [[ "$#" -gt 2 ]]; then printf "%s\n" "$USAGE" ;  exit 1 ; fi
+
+ GAWK=$(which gawk)
+
+ trans (){
+        case "$lang"  in
+                r | -r )
+                        TRANS="dhammapada"
+                        ;;
+                m | -m )
+                        TRANS="dhammapada.m"
+                        ;;
+                de |-de )
+                        TRANS="dhammapada.de"
+                        ;;
+                pl |-pl )
+                        TRANS="dhammapada.pl"
+                        ;;
+                * )
+                        #should never reach this, bad kitty
+                        printf "%s\n" "$USAGE"
+                        exit 1
+                        ;;
+        esac
+}
+
+verse (){
+# Set path to files
+# Path to files
+local F_PATH="$(fortune -f 2>&1 | head -n 1 | awk '{print $2}')"
+local A_PATH="/usr/share/display-dhammapada"
+
+# Set TRANS as a local variable
+	local TRANS=""
+	local verse=""
+	local num=""
+	lang=""
+
+# Set default translation
+	if locale | grep -q "LANG=.*pl_PL" ; then TRANS="dhammapada.pl"
+	elif locale | grep -q "LANG=.*de_DE" ; then TRANS="dhammapada.de"
+	else TRANS="dhammapada"
+	fi
+
+#Set Trans if specified
+	if [[ ! -z "$2" ]]; then
+	lang="$2"
+	trans
+	fi
+
+# Handle $1
+    if [[ $1 =~ ^[0-9]+$ ]]; then
+		numb="$((10#$1))"
+		if [[ "$numb" -lt 1 ]] ; then 
+		verse=1
+		elif [[ "$numb" -gt 423 ]] ; then 
+		verse=423
+		else
+		verse="$numb" 
+		fi
+	else
+	case "$1" in
+		all )
+        	printf "\n"
+        	sed 's/^%//' "$F_PATH"/"$TRANS" | grep -v -E '%|Richard|Muller' | cat -s 
+			return 0 
+		;;
+		about )
+        	sed 's/^%//' "$A_PATH"/"$TRANS".about | grep -v -E '%|Richard|Muller' | cat -s 
+			return 0
+		;;
+		r | m | de | pl | -r | -m | -de | -pl)
+		lang="$1"
+		trans
+		verse=$(( RANDOM % 423 + 1 ))
+		;;
+		"" )
+		verse=$(( RANDOM % 423 + 1 ))
+		;;
+		* )
+        #should never reach this, bad kitty
+        printf "%s\n" "$USAGE"
+        return 1
+		;;
+	esac
+	fi
+	if [[ "$1" == 1 || "$2" == 1 ]] ; then printf "\n"; fi
+"$GAWK" -v RS=% -v num="$verse" '$0 ~ "\\<" num "\\>"' "$F_PATH"/"$TRANS"
+}
+
+if [[ -z "$2@" ]] ; then
+	6erse "$1"
+else
+	verse "$1" "$2"
+fi
