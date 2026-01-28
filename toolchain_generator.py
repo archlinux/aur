@@ -29,6 +29,18 @@ class CrossFileGenerator:
             self.cpu_family = 'x86_64'
             self.processor = 'x86_64'
 
+        self.extra_c_args = []
+        self.extra_cpp_args = []
+        self.extra_link_args = []
+
+        if self.arch == 'armv7a-eabi':
+            self.extra_c_args = ['-mfloat-abi=softfp']
+            self.extra_cpp_args = self.extra_c_args[:]
+
+        self.cflags = ' '.join(self.extra_c_args + self.cflags.split())
+        self.cxxflags = ' '.join(self.extra_cpp_args + self.cxxflags.split())
+        self.ldflags = ' '.join(self.extra_link_args + self.ldflags.split())
+
     def generate(self):
         config = configparser.ConfigParser()
         config['binaries'] = self.get_binaries_section()
