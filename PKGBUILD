@@ -5,7 +5,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libxdamage
-pkgver=1.1.6
+pkgver=1.1.7
 pkgrel=1
 pkgdesc="X11 damaged region extension library (Android ${_android_arch})"
 arch=('any')
@@ -15,10 +15,8 @@ depends=("android-${_android_arch}-libxfixes")
 makedepends=('android-configure'
              "android-${_android_arch}-xorgproto")
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("${url}/releases/individual/lib/libXdamage-${pkgver}.tar.xz"{,.sig})
-md5sums=('ca55d29fa0a8b5c4a89f609a7952ebf8'
-         'SKIP')
-validpgpkeys=('4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E') # "Alan Coopersmith <alan.coopersmith@oracle.com>"
+source=("${url}/releases/individual/lib/libXdamage-${pkgver}.tar.xz")
+md5sums=('72bb73f2a07f81784ad69a39d7df1da2')
 
 build() {
     cd "${srcdir}/libXdamage-${pkgver}"
@@ -37,4 +35,6 @@ package() {
     make DESTDIR="${pkgdir}" install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
