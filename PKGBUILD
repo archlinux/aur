@@ -1,8 +1,8 @@
 # Maintainer: solarfire <xatra169@gmail.com>
 # Contributor: Pierre Schmitz <pierre@archlinux.org>
 pkgname='openssl-1.1'
-pkgver='1.1.1w'
-pkgrel='3'
+pkgver='1.1.1.w'
+pkgrel='4'
 pkgdesc='OpenSSL 1.1 legacy branch (deprecated)'
 
 arch=('x86_64')
