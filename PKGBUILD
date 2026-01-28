@@ -3,7 +3,7 @@
 _gpuarch=gfx110X
 pkgname="rocm-nightly-${_gpuarch,,}-bin"
 pkgver=7.12.0a20260128
-pkgrel=1
+pkgrel=2
 pkgdesc="AMD ROCm Nightly Release (${_gpuarch}) - Monolithic Install"
 arch=('x86_64')
 url="https://rocm.nightlies.amd.com"
@@ -40,17 +40,23 @@ package() {
 
     # 1. 创建安装目录 /opt/rocm
     mkdir -p "${pkgdir}/opt/rocm"
-    
+
     # 2. 复制所有内容
     # 源码是 tarbomb 结构（直接解压在 srcdir），因此复制当前目录下所有可见文件
     # 使用 -d (preserve links) -r (recursive)
     msg2 "Copying files to /opt/rocm..."
     cp -dr --no-preserve=ownership * "${pkgdir}/opt/rocm/"
-    
+    # 2.1 修复 amdgcn 目录结构
+    local _amdgcn_dir="${pkgdir}/opt/rocm/lib/llvm/amdgcn"
+    if [ -d "${_amdgcn_dir}" ]; then
+        msg2 "Symlinking amdgcn directory..."
+        ln -s "lib/llvm/amdgcn" "${pkgdir}/opt/rocm/amdgcn"
+    fi
+
     # 删除可能误复制的 tarball 和 PKGBUILD 相关文件 (如果 source 在当前目录)
     rm -f "${pkgdir}/opt/rocm/${_tarball_name}"
     rm -f "${pkgdir}/opt/rocm/PKGBUILD"
-    
+
     # 3. 配置动态链接库路径 /etc/ld.so.conf.d/
     install -Dm644 /dev/null "${pkgdir}/etc/ld.so.conf.d/rocm-nightly-${_gpuarch}.conf"
     echo "/opt/rocm/lib" > "${pkgdir}/etc/ld.so.conf.d/rocm-nightly-${_gpuarch}.conf"
