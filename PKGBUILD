@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Mozzherin <dmozzherin@gmail.com>
 
 pkgname=pomati
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc='Frictionless Pomodoro timer for tiling window managers.'
 arch=('x86_64' 'aarch')
@@ -16,7 +16,7 @@ depends=(
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("https://codeberg.org/dimus/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('c0099eed3547fa4c59f800cf81244aa7670923bb3f278ad5cc6d059d28965d19')
+sha256sums=('c68d43aa55f2dd6021db798d172e0ead1e995d3ef13a8d9ca727c7afca725b30')
 options=('!debug')
 
 prepare() {
