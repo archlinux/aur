@@ -2,7 +2,7 @@
 # Contributor: Pairadux
 
 pkgname=muxly
-pkgver=0.18.2
+pkgver=0.21.0
 pkgrel=1
 pkgdesc='A lightweight CLI for handling TMUX sessions with ease'
 url='https://github.com/Pairadux/muxly'
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5aa0bc2080cae4a2b084030b529c8ddb970025f2e9e5b16e47cf27eb3554d853')
+sha256sums=('c50e6c6c6a0d066528afdf7c277f5b599dd2d8e4f955de1778c81e0ee0ff49c2')
 
 prepare() {
     export GOPATH="$srcdir"
