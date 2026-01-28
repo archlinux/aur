@@ -1,0 +1,16 @@
+pkgbase = pomodoro-tauri-bin
+	pkgdesc = A professional Pomodoro Timer built with Tauri and React (pre-built binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ravidulundu/pomodoro
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	depends = sqlite
+	provides = pomodoro-tauri
+	conflicts = pomodoro-tauri
+	source = pomodoro-tauri-bin-0.1.0.tar.gz::https://github.com/ravidulundu/pomodoro/releases/download/v0.1.0/pomodoro-tauri-0.1.0-x86_64.tar.gz
+	sha256sums = e5a12baa226072359ced6167027a73ef6c1d6438a44a4c3056d4716480ac9361
+
+pkgname = pomodoro-tauri-bin
