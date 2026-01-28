@@ -1,15 +1,13 @@
 pkgbase = android-aarch64-mpg123
 	pkgdesc = Console based real time MPEG Audio Player for Layer 1, 2 and 3 (Android aarch64)
 	pkgver = 1.33.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mpg123.de/
 	arch = any
 	groups = android-mpg123
 	license = LGPL2.1
 	makedepends = android-configure
-	makedepends = android-aarch64-sdl2
-	depends = android-aarch64-alsa-lib
-	optdepends = android-aarch64-sdl2: for sdl audio support
+	depends = android-ndk
 	options = !strip
 	options = !buildflags
 	options = staticlibs

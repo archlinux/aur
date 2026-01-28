@@ -6,16 +6,14 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-mpg123
 pkgver=1.33.4
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Console based real time MPEG Audio Player for Layer 1, 2 and 3 (Android ${_android_arch})"
 url='https://mpg123.de/'
 license=('LGPL2.1')
 groups=('android-mpg123')
-depends=("android-${_android_arch}-alsa-lib")
-makedepends=('android-configure'
-             "android-${_android_arch}-sdl2")
-optdepends=("android-${_android_arch}-sdl2: for sdl audio support")
+depends=('android-ndk')
+makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://downloads.sourceforge.net/sourceforge/mpg123/mpg123-${pkgver}.tar.bz2"{,.sig})
 md5sums=('1dcce56af481df25cb3a26db6fcaec75'
@@ -29,11 +27,9 @@ build() {
     android-${_android_arch}-configure \
         --disable-components \
         --enable-libmpg123 \
-        --enable-libout123 \
-        --enable-libout123-modules \
         --enable-libsyn123 \
         --enable-int-quality \
-        --with-audio="alsa oss sdl"
+        --disable-dependency-tracking
     # https://bugzilla.gnome.org/show_bug.cgi?id=655517
     sed -i 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
     make $MAKEFLAGS
