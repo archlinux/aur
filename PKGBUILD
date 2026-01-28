@@ -1,7 +1,7 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 
 pkgname=redsea
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="RDS decoder for the command line "
 arch=(x86_64 aarch64)
@@ -12,7 +12,7 @@ makedepends=('meson' 'catch2')
 source=(
     "$pkgname-$pkgver.tar.gz"::https://github.com/windytan/$pkgname/archive/refs/tags/v$pkgver.tar.gz
 )
-sha256sums=('eebe3b63b2348b724145916f858bd187462d78ef7e55af1b913bc1474b374a57')
+sha256sums=('b322a5253632317d0fbc6ca8b6a6c6b83f781318429f7d31f12e13e44aa05665')
 
 build() {
     cd $pkgname-$pkgver
