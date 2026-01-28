@@ -1,0 +1,19 @@
+pkgbase = votetracker
+	pkgdesc = School grade management application (italian school system)
+	pkgver = 2.7.0
+	pkgrel = 1
+	url = https://github.com/mambucodev/votetracker
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = pyside6
+	depends = python-reportlab
+	depends = python-requests
+	depends = python-installer
+	source = votetracker-2.7.0.tar.gz::https://github.com/mambucodev/votetracker/archive/refs/tags/v2.7.0.tar.gz
+	sha256sums = 6c0d3ee578e27842a59d42563131b7dd7d830caf2eec05dd3b502b58a21eff43
+
+pkgname = votetracker
