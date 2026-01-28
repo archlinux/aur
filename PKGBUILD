@@ -15,7 +15,7 @@ pkgname=(
     'lib32-opencl-nvidia-vulkan'
 )
 pkgver=580.94.16
-pkgrel=2
+pkgrel=3
 pkgdesc="NVIDIA drivers for linux (vulkan developer branch)"
 arch=('x86_64')
 url="https://developer.nvidia.com/vulkan-driver"
@@ -131,21 +131,6 @@ DEST_MODULE_LOCATION[4]="/kernel/drivers/video"' kernel-open/dkms.conf
 
     # Clean version for later copying for DKMS
     cp -r ../open-gpu-kernel-modules-${pkgver} "$srcdir"/open-gpu-kernel-modules-dkms
-}
-
-build() {
-    local MODULE_FLAGS=(
-        KERNEL_UNAME="$(</usr/src/linux/version)"
-        IGNORE_CC_MISMATCH=yes
-        SYSSRC="/usr/src/linux"
-    )
-
-    cd "${_pkg}"/kernel
-    make "${MODULE_FLAGS[@]}" -j"$(nproc)" modules
-
-    cd "${srcdir}/open-gpu-kernel-modules-${pkgver}"
-    CFLAGS="" CXXFLAGS="" LDFLAGS="" make "${MODULE_FLAGS[@]}" -j"$(nproc)" modules
-
 }
 
 package_nvidia-vulkan-dkms() {
