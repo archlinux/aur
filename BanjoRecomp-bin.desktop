@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Banjo Kazooie Recompiled - bin
+Path=/opt/BanjoRecomp-bin
+Exec=/opt/BanjoRecomp-bin/BanjoRecompiled
+Comment=Banjo Recompiled (N64 recompilation project) - bin
+Terminal=false
+Icon=banjorecomp-bin
+Categories=Game;Emulator;
