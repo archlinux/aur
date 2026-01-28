@@ -1,0 +1,4 @@
+post_remove() {
+    echo "Note: Run 'abird --cleanall' before uninstall, or manually remove:"
+    echo "  rm -rf ~/.config/abird ~/.local/share/abird ~/.local/share/applications/abird-*"
+}

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=ABird
+Comment=Desktop redistributable isolated browser
+Exec=abird %U
+Icon=abird
+Terminal=false
+Type=Application
+Categories=Network;WebBrowser;
+MimeType=x-scheme-handler/http;x-scheme-handler/https;
+Keywords=browser;web;isolated;webapp;
