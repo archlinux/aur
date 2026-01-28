@@ -1,7 +1,7 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 _pkgname=vacask
 pkgname="${_pkgname}-git"
-pkgver=0.2.0.r270.gbfc1bed
+pkgver=0.3.2.r2.g4300e5a
 pkgrel=1
 pkgdesc="Verilog-A Circuit Analysis Kernel is an analog circuit simulator"
 arch=(
@@ -37,26 +37,12 @@ optdepends=(
 )
 conflicts=("${_pkgname}")
 options=()
-source=(
-	"${_pkgname}::git+${url}"
-	"0001-no_install_openvaf-r.patch"
-	"0002-compile_with_boost_1_89.patch"
-)
-b2sums=('SKIP'
-        'c8458db954ab4cd3132244b3da49538f3c33f2f7779f3b858b9bbe7e31ccd7b35552c79a087d68e5eb6895d95fb15035fbc8d34355e69c5db73b3bdf3aad449a'
-        'cfeec714c28c83d04c14e08f965cee404c9ba4550bc0a946ff8073e2b33ba8157277bb43cb01577e6a20dfcb3e14928e3614d4074ce635fa2f568ece28c7cc90')
+source=("${_pkgname}::git+${url}")
+b2sums=('SKIP')
 
 pkgver() {
 	cd "${_pkgname}"
-	git describe --long --abbrev=7 | sed 's/^_//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-	cd "${_pkgname}"
-	# Avoid installing openvaf-r it should be installed already from openvaf-reloaded
-	patch -Np1 < "../0001-no_install_openvaf-r.patch"
-	# upstream specifically builds for Boost 1.88, here we fix it such that it builds for 1.89 (current release)
-	patch -Np1 < "../0002-compile_with_boost_1_89.patch"
+	git describe --long --tags --abbrev=7 | sed 's/^_//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -78,4 +64,7 @@ check() {
 
 package() {
 	DESTDIR="${pkgdir}" cmake --install build
+
+	# Remove redudant openvaf-r
+	rm "${pkgdir}/usr/bin/openvaf-r"
 }
