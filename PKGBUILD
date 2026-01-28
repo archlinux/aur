@@ -1,6 +1,6 @@
 # Maintainer: robertoszek <robertoszek@robertoszek.xyz>
 pkgname=hs80tray
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="Tray indicator for Corsair HS80 Headset."
 arch=("any")
