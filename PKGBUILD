@@ -1,7 +1,7 @@
 # Maintainer: aliu <aaronliu 0 1 3 0  gmail com>
 # Contributor: pikl <me@pikl.uk>
 pkgname=immich-machine-learning
-pkgver=2.4.1
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Machine learning server for the Immich photo management system"
 arch=(any)
@@ -41,7 +41,7 @@ optdepends=(
 )
 source=("immich-${pkgver}.tar.gz::https://github.com/immich-app/immich/archive/refs/tags/v${pkgver}.tar.gz"
 	"immich-machine-learning.service")
-sha256sums=('885cf36509f79fa1ed7541236b671d7eae900c80145920299be922a45a086fc5'
+sha256sums=('c02ef5c6c357e77932a12bbd39ac468c8e47751a3db55e8984b9b4e006200c25'
             'f9215f428f5bd596a24c0cce90ccfa3724d8caf33d7b5811e73b2b5277c111cd')
 
 build() {
