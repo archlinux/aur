@@ -1,0 +1,28 @@
+pkgbase = squid-music-git
+	pkgdesc = A CMUS-inspired terminal frontend for YouTube Music
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/WritingBen/squid
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	makedepends = git
+	depends = python>=3.11
+	depends = python-textual
+	depends = python-pydantic
+	depends = python-httpx
+	depends = python-aiosqlite
+	depends = python-platformdirs
+	depends = python-structlog
+	depends = python-ytmusicapi
+	depends = python-mpv
+	depends = yt-dlp
+	depends = mpv
+	provides = squid-music
+	conflicts = squid-music
+	source = squid-music-git::git+https://github.com/WritingBen/squid.git
+	sha256sums = SKIP
+
+pkgname = squid-music-git
