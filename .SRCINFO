@@ -1,6 +1,6 @@
 pkgbase = gopherbook
 	pkgdesc = Web-based comic book library manager for CBZ/CBT files
-	pkgver = 1.2.000
+	pkgver = 1.3.000
 	pkgrel = 1
 	url = https://codeberg.org/riomoo/gopherbook
 	install = gopherbook.install
