@@ -1,5 +1,5 @@
 pkgbase = python-llama-index-core
-	pkgdesc = LlamaIndex Embeddings Integration: Huggingface
+	pkgdesc = The core python package to the LlamaIndex library
 	pkgver = 0.14.13
 	pkgrel = 1
 	url = https://github.com/run-llama/llama_index
