@@ -5,8 +5,8 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libxext
-pkgver=1.3.6
-pkgrel=2
+pkgver=1.3.7
+pkgrel=1
 arch=('any')
 pkgdesc="X11 miscellaneous extensions library (Android ${_android_arch})"
 url="https://gitlab.freedesktop.org/xorg/lib/libxext"
@@ -16,10 +16,8 @@ depends=("android-${_android_arch}-libx11"
          "android-${_android_arch}-xorgproto")
 makedepends=("android-${_android_arch}-xorg-util-macros")
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://xorg.freedesktop.org/releases/individual/lib/libXext-${pkgver}.tar.xz"{,.sig})
-md5sums=('e59476db179e48c1fb4487c12d0105d1'
-         'SKIP')
-validpgpkeys=('4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E') # Alan Coopersmith <alan.coopersmith@oracle.com>
+source=("https://xorg.freedesktop.org/releases/individual/lib/libXext-${pkgver}.tar.xz")
+md5sums=('ea8149187a26e9df6dbd94a60b3d8da0')
 
 build() {
     cd "$srcdir/libXext-${pkgver}"
@@ -39,4 +37,6 @@ package() {
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
