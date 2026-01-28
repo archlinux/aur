@@ -8,7 +8,7 @@ arch=(any)
 license=('AGPL-3.0-only')
 url='https://github.com/immich-app/immich/tree/main/machine-learning'
 depends=('python>=3.11'  # 'python<4' not recommended by python
-	'python-onnxruntime>=1.23.0' 'python-onnxruntime<2'
+	'python-onnxruntime>=1.23.2' 'python-onnxruntime<2'
 	'python-aiocache>=0.12.1' 'python-aiocache<1.0'
     'python-fastapi>=0.95.2' 'python-fastapi<1.0'
     'python-ftfy>=6.1.1'

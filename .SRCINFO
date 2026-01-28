@@ -10,7 +10,7 @@ pkgbase = immich-machine-learning
 	makedepends = python-wheel
 	makedepends = python-hatchling
 	depends = python>=3.11
-	depends = python-onnxruntime>=1.23.0
+	depends = python-onnxruntime>=1.23.2
 	depends = python-onnxruntime<2
 	depends = python-aiocache>=0.12.1
 	depends = python-aiocache<1.0
