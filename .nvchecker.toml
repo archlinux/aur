@@ -1,0 +1,5 @@
+[tmpo-bin]
+source = "github"
+github = "DylanDevelops/tmpo"
+use_latest_release = true
+prefix = "v"
