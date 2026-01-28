@@ -1,7 +1,7 @@
 # Maintainer: Robert Schiele <rschiele@gmail.com>
 
 pkgname=git-incrypt-git
-pkgver=0.9.0.r3.gcb554a2
+pkgver=0.9.0.r8.gaa933c2
 pkgrel=1
 pkgdesc="A git remote helper to encrypt git repositories incrementally"
 arch=('any')
@@ -25,7 +25,12 @@ build() {
 
 check() {
     cd git-incrypt
-    make test
+    cat <<EOF > tmp_gitconfig
+[user]
+	name = Test User
+	email = test@test.test
+EOF
+    GIT_CONFIG_GLOBAL="$PWD/tmp_gitconfig" make test
 }
 
 package() {
