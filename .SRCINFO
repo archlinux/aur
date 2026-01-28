@@ -1,0 +1,18 @@
+pkgbase = omarchyiso
+	pkgdesc = A TUI app for creating customized Omarchy Linux ISO images
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/tahayvr/omarchyiso
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = git
+	depends = pacman
+	depends = curl
+	depends = expac
+	source_x86_64 = omarchyiso-x86_64-1.0.0.tar.gz::https://github.com/tahayvr/omarchyiso/releases/download/v1.0.0/omarchyiso-x86_64-linux.tar.gz
+	sha256sums_x86_64 = ef88c387b7210504c1a322e2dbc140215d0601a37ac6ab926845a70e904cd63f
+	source_aarch64 = omarchyiso-aarch64-1.0.0.tar.gz::https://github.com/tahayvr/omarchyiso/releases/download/v1.0.0/omarchyiso-aarch64-linux.tar.gz
+	sha256sums_aarch64 = 1476c097cdfd0dec771e266e535689c6f4919724be9edd640275189c286e6b66
+
+pkgname = omarchyiso
