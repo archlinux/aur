@@ -1,7 +1,7 @@
 pkgbase = rmqtt
 	pkgdesc = MQTT Server/MQTT Broker - Scalable Distributed MQTT Message Broker for IoT in the 5G Era
 	pkgver = 0.18.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rmqtt/rmqtt
 	arch = x86_64
 	arch = aarch64
@@ -9,6 +9,7 @@ pkgbase = rmqtt
 	makedepends = rust
 	makedepends = cmake
 	makedepends = cargo
+	depends = protobuf
 	conflicts = rmqtt
 	conflicts = librmqtt_macros.so
 	options = !strip
