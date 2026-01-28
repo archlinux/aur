@@ -3,28 +3,28 @@
 # Contributor: rbagpksr <rbagpksr@mailer.me>
 
 pkgname=jan-appimage
-pkgver=0.7.5
+pkgver=0.7.6
 pkgrel=1
 pkgdesc='An open source alternative to ChatGPT that runs 100% offline on your computer'
-arch=('x86_64')
+arch=(x86_64)
 url='https://jan.ai/'
-license=('Apache-2.0')
-makedepends=('jq' 'minisign')
-depends=('fontconfig' 'fribidi' 'fuse2' 'harfbuzz' 'hicolor-icon-theme' 'libx11' 'mesa' 'wayland')
-provides=('jan')
-conflicts=('jan')
-options=(!strip)
+license=(Apache-2.0)
+makedepends=(jq minisign)
+depends=(fuse2 hicolor-icon-theme)
+provides=(jan)
+conflicts=(jan)
+options=(!strip !debug)
 _appimage=$pkgname-$pkgver.AppImage
 _baseurl=https://github.com/janhq/jan/releases/download/v$pkgver
 source=("$_appimage::$_baseurl/Jan_${pkgver}_amd64.AppImage"
         "$pkgname-$pkgver-latest.json::$_baseurl/latest.json"
         "$pkgname-$pkgver-tauri.conf.json::https://raw.githubusercontent.com/janhq/jan/refs/tags/v$pkgver/src-tauri/tauri.conf.json")
-sha256sums=('448101a5ea203480cf329a18e4693cab8fadee3c5c5891192cfa891d6c9a564e'
-            '302f3ed91854c6328633352d6c9492729455d10274eb359e4185ca446686f695'
-            'ac982d729e5d173d8303e7405be656ae7b4de7e4833f63d7d9e1a685e17e864d')
-b2sums=('ef7c233e48bf94ffc2da5280a4e669a0fcbc1f0a81b5d74e1b13f7f1ed788b68069c4ff0b678a75031883655143cbd36c286f9e584e5861a326a077c96b293ec'
-        '7a10c7776486e5b1959a58f155ca636c8b37d22cdbc9d9509316739dafeb42fa0dbb8d103cb76969deb63e50cfc9f58aa8725bf35e367515f050edf2c34d5974'
-        '2d5a9ad0aeb96ebf7d8cfab9f1a72994f5cda5259362bf563956032c0051db01bf5fb8ea5412059f97d8b11d5fa0ab92dcba13e627616fee477bfedf6550fb78')
+sha256sums=('5633a054dd0ebf063b297dcf5960fb31e7843dca5568bc401186d94dda455677'
+            '8ef4190cf36bd014ebe299085611b1786da1b3a7cad27abd74b9f26a19f4a4d5'
+            '72e8efe6d15d54748ea59c9d555e29bcaa8c1ed47ca803142f6cb22e1610cfd5')
+b2sums=('2e097c989981a08c9b2b1673bdd337c8d0cfd92c1a570d91b14405b866b81fbe0ab54d8d777fc38522b67ec068820e1f6c25c0a150936ebab77e68bc9567236f'
+        '686fa2a42b412f50111a7edc15691aa318f5fe0933d47baaab8962f8cd5e5d6fbce8b8fd2e93d0fc4252f73d92cf5e90713039f150e7fd59a09b51de3d2d7d67'
+        '08ba324b472c7fb92dc36442d48c46245e16b1e8192c25877f5c7bf183cb79fd5b9357ca563b98ba17cd9685f31b70344ab96070ca63724e8dc6c40bce4b944f')
 
 prepare() {
     # XXX: move to verify() when devtools supports it
@@ -53,15 +53,15 @@ build() {
 }
 
 package() {
-    install -Dm755 $_appimage "$pkgdir/opt/Jan/$_appimage"
+    install -Dm755 $_appimage "$pkgdir/opt/Jan/Jan.AppImage"
 
     # Symlink executable
-    install -dm755 "$pkgdir/usr/bin"
-    ln -s /opt/Jan/$_appimage "$pkgdir/usr/bin/Jan"
+    install -d "$pkgdir/usr/bin"
+    ln -s /opt/Jan/Jan.AppImage "$pkgdir/usr/bin/Jan"
 
     # Install desktop entry and icon
-    install -Dm644 squashfs-root/Jan.desktop "$pkgdir/usr/share/applications/Jan.desktop"
-    install -dm755 "$pkgdir/usr/share/"
+    install -Dm644 squashfs-root/Jan.desktop -t "$pkgdir/usr/share/applications"
+    install -d "$pkgdir/usr/share/"
     cp -a squashfs-root/usr/share/icons "$pkgdir/usr/share/"
     find "$pkgdir/usr/share/icons" -type d -empty -delete
 }
