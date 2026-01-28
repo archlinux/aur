@@ -1,6 +1,6 @@
 pkgbase = cfait
 	pkgdesc = Powerful, fast and elegant task / TODO manager. (GUI & TUI, CalDAV & local)
-	pkgver = 0.4.8
+	pkgver = 0.4.9
 	pkgrel = 1
 	url = https://codeberg.org/trougnouf/cfait
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = cfait
 	options = !lto
 	options = !strip
 	options = !debug
-	source = cfait-source-v0.4.8.tar.gz::https://codeberg.org/trougnouf/cfait/releases/download/v0.4.8/cfait-source-v0.4.8.tar.gz
-	sha256sums = d4ca61aff500f14aab33b7d94460eec7e8872251e2ec872039444f9c8c84004f
+	source = cfait-source-v0.4.9.tar.gz::https://codeberg.org/trougnouf/cfait/releases/download/v0.4.9/cfait-source-v0.4.9.tar.gz
+	sha256sums = 0fc0f51c0ab290866da019cddcd5b2ef5e726476751683c434641394fae57041
 
 pkgname = cfait
