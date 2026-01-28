@@ -1,5 +1,5 @@
 # Maintainer: bodhi.zazen <bodhi.zazen@proton.me>
-pkgname=fortune-mod-dhammapada
+pkgname=fortune-mod-dhammapada-1.0
 pkgver=1.0
 pkgrel=1
 pkgdesc="fortune cookies dhammapada"
