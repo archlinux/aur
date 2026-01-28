@@ -1,0 +1,22 @@
+pkgbase = cboard-chess-git
+	pkgdesc = Interfaz TUI de ajedrez (Fork Avanzado): Plugins en C, Multimotor, Análisis Multivariación y Motor vs Motor. (Ruta a v1.0)
+	pkgver = 0.8.5.r0.gb639bfe
+	pkgrel = 1
+	url = https://gitlab.com/ntlatempa/cboard-chess
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = pkgconf
+	makedepends = autoconf-archive
+	makedepends = git
+	depends = ncurses
+	depends = glibc
+	depends = perl
+	provides = cboard-chess-tui
+	conflicts = cboard
+	source = git+https://gitlab.com/ntlatempa/cboard-chess.git
+	sha256sums = SKIP
+
+pkgname = cboard-chess-git
