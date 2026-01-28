@@ -1,6 +1,6 @@
 pkgbase = jriver-media-center
 	pkgdesc = The Most Comprehensive Media Software
-	pkgver = 35.0.37
+	pkgver = 35.0.39
 	pkgrel = 1
 	url = http://www.jriver.com/
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = jriver-media-center
 	optdepends = nvidia-libgl: nvidia video support
 	optdepends = vorbis-tools
 	optdepends = musepack-tools
-	source = https://files.jriver-cdn.com/mediacenter/channels/v35/latest/MediaCenter-35.0.37-amd64.deb
-	sha256sums = e3d852b9d857c09c0782e4fb3e2de1a5d31488a804f985a384f5a03762fcf665
+	source = https://files.jriver-cdn.com/mediacenter/channels/v35/latest/MediaCenter-35.0.39-amd64.deb
+	sha256sums = c0ee727c11cdd9632c522d819661311b4989f1c28290cffc1872b2781ddb7ef2
 
 pkgname = jriver-media-center
