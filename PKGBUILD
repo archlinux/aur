@@ -1,13 +1,12 @@
 pkgname=rmqtt
 pkgver=0.18.1
-pkgrel=3
+pkgrel=4
 pkgdesc="MQTT Server/MQTT Broker - Scalable Distributed MQTT Message Broker for IoT in the 5G Era"
 arch=(x86_64 aarch64)
 url="https://github.com/rmqtt/rmqtt"
 license=('MIT')
 conflicts=(${pkgname%-git} librmqtt_macros.so)
-makedepends=(rust cmake cargo)
-depends=(protobuf)
+makedepends=(rust cmake cargo protobuf)
 options=('!strip' '!lto')
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz"
 	'rmqttd.toml'
