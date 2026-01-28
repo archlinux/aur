@@ -6,7 +6,7 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-libxrandr
-pkgver=1.5.4
+pkgver=1.5.5
 pkgrel=1
 arch=('any')
 pkgdesc="X11 RandR extension library (Android ${_android_arch})"
@@ -18,10 +18,8 @@ depends=("android-${_android_arch}-libxext"
 makedepends=("android-${_android_arch}-xorg-util-macros"
              "android-${_android_arch}-xorgproto")
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("${url}/releases/individual/lib/libXrandr-${pkgver}.tar.xz"{,.sig})
-md5sums=('24e0b72abe16efce9bf10579beaffc27'
-         'SKIP')
-validpgpkeys+=('4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E') # Alan Coopersmith <alan.coopersmith@oracle.com>
+source=("${url}/releases/individual/lib/libXrandr-${pkgver}.tar.xz")
+md5sums=('b550dfa388292a821aecdd52acecc94c')
 
 build() {
     cd "${srcdir}/libXrandr-$pkgver"
@@ -41,4 +39,6 @@ package() {
     rm -rf "$pkgdir/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
     ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
