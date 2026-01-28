@@ -10,7 +10,7 @@ pkgrel=1
 pkgdesc='Zulu Community builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads.'
 arch=('aarch64' 'x86_64')
 url='https://www.azul.com/products/zulu-community/'
-license=('GPL-2.0-or-later')
+license=('custom')
 depends=(
   'java-environment-common' 'java-runtime-common' 'ca-certificates-utils'
   # not 100% sure if all of these dependencies are needed
