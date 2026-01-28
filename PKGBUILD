@@ -1,14 +1,15 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=ctags-lsp-git
 _pkgname="${pkgname%-git}"
-pkgver=0.10.2.r23.gec2bed6
+pkgver=0.11.0.r0.g1ff8bc8
 pkgrel=1
 pkgdesc='LSP implementation using universal-ctags as backend - Build from the main branch'
 url='https://github.com/netmute/ctags-lsp'
 arch=('x86_64' 'pentium4' 'aarch64' 'armv7h' 'riscv64')
 license=('MIT')
-makedepends=(go)
-provides=($_pkgname=$pkgver)
+depends=('ctags')
+makedepends=('go' 'git')
+provides=('ctags-lsp')
 conflicts=($_pkgname)
 source=("$_pkgname::git+$url.git#branch=main")
 sha256sums=('SKIP')
