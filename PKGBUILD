@@ -7,12 +7,12 @@ if which ccache > /dev/null 2>&1; then
 fi
 _WITH_NETWORKMANAGER=false
 # _WITH_NETWORKMANAGER=true
-_WITH_VALGRIND=false
-# _WITH_VALGRIND=true
+# _WITH_VALGRIND=false
+_WITH_VALGRIND=true
 # _TOOLKIT='gtk2'
 _TOOLKIT='gtk3'
-# _PROTECTEDHEADERSPATCHVARIANT=nopicturesplease # Use the patch from https://www.thewildbeast.co.uk/claws-mail/bugzilla/show_bug.cgi?id=4426#c39.
-_PROTECTEDHEADERSPATCHVARIANT=filippo          # Use the patch from https://www.thewildbeast.co.uk/claws-mail/bugzilla/show_bug.cgi?id=4007#c4.
+_PROTECTEDHEADERSPATCHVARIANT=nopicturesplease # Use the patch from https://www.thewildbeast.co.uk/claws-mail/bugzilla/show_bug.cgi?id=4426#c39, or a newer one sent e.g. manually via email.
+# _PROTECTEDHEADERSPATCHVARIANT=filippo          # Use the patch from https://www.thewildbeast.co.uk/claws-mail/bugzilla/show_bug.cgi?id=4007#c4.
 
 _pkgname='claws-mail'
 case "${_TOOLKIT}" in
@@ -32,7 +32,7 @@ esac
 
 pkgname="${_pkgname}-${_pkgvariant}-git"
 epoch=0
-pkgver=4.3.1+195.r13680.20251229.9ea372688
+pkgver=4.3.1+205.r13690.20260128.2d0967a41
 pkgrel=1
 pkgdesc="A GTK based e-mail client. Latest git checkout, built against '${_TOOLKIT}'. Patched to use charset supersets to decode titles and to display protected headers."
 arch=(
@@ -161,8 +161,10 @@ sha256sums=(
 )
 case "${_PROTECTEDHEADERSPATCHVARIANT}" in
   'nopicturesplease')
-    source+=("0002_protectedheaders.patch::http://web.archive.org/web/20240721164745/https://www.thewildbeast.co.uk/claws-mail/bugzilla/attachment.cgi?id=2331")
-    sha256sums+=('383f4ea03102ed2c8f19365b9bf2b757969d1617fcfd0a8375126f388cc60301')
+    #source+=("0002_protectedheaders.patch::http://web.archive.org/web/20240721164745/https://www.thewildbeast.co.uk/claws-mail/bugzilla/attachment.cgi?id=2331")
+    #sha256sums+=('383f4ea03102ed2c8f19365b9bf2b757969d1617fcfd0a8375126f388cc60301')
+    source+=('protected-headers.nopicturesplease.2026-01-21.6500e351c6889502e15a0b7365dba516142c9d65.patch')
+    sha256sums+=('cd5b5058701c988c8035eff19dc7de37a4ec86544a203bf2e76a2ecfd4937476')
     if [ "${_TOOLKIT}" == "gtk2" ]; then
       source+=("protectedheaders.patch.for-gtk2.patch")
       sha256sums+=('3b1e568398950eb93d879353cfd6d49d81f7e1790c24972f36846f22ef4106cb')
@@ -228,6 +230,7 @@ prepare() {
 
   case "${_PROTECTEDHEADERSPATCHVARIANT}" in
    'nopicturesplease')
+     cp  "${srcdir}/protected-headers.nopicturesplease.2026-01-21.6500e351c6889502e15a0b7365dba516142c9d65.patch" "${srcdir}/0002_protectedheaders.patch"
      if [ "${_TOOLKIT}" == "gtk2" ]; then
        printf '%s\n' "   > Patching '0002_protectedheaders.patch' for GTK2 ..."
        patch -N --follow-symlinks -i "${srcdir}/protectedheaders.patch.for-gtk2.patch" -o "${srcdir}/0002_protectedheaders-${_TOOLKIT}.patch" "${srcdir}/0002_protectedheaders.patch"
@@ -280,6 +283,32 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
+  ## Silence some compiler warnings (and, just to be sure, do not treat them as errors as well):
+  local _NOWARNINGS _NOWARNINGS_CConly _NOWARNINGS_CXXonly _warning _CFLAGSADDITIONS _CFLAGSADDITIONS_CConly _CFLAGSADDITIONS_CXXonly
+  _NOWARNINGS=('deprecated-declarations' 'unused-result' 'lto-type-mismatch')
+  _NOWARNINGS_CConly=('implicit-function-declaration')
+  _NOWARNINGS_CXXonly=()
+  _CFLAGSADDITIONS=''
+  _CFLAGSADDITIONS_CConly=''
+  _CFLAGSADDITIONS_CXXonly=''
+  for _warning in "${_NOWARNINGS_CConly[@]}"; do
+    _CFLAGSADDITIONS_CConly+=" -Wno-${_warning} -Wno-error=${_warning}"
+  done
+  for _warning in "${_NOWARNINGS_CXXonly[@]}"; do
+    _CFLAGSADDITIONS_CXXonly+=" -Wno-${_warning} -Wno-error=${_warning}"
+  done
+  for _warning in "${_NOWARNINGS[@]}"; do
+    _CFLAGSADDITIONS+=" -Wno-${_warning} -Wno-error=${_warning}"
+  done
+  CFLAGS+="${_CFLAGSADDITIONS} ${_CFLAGSADDITIONS_CConly}"
+  CXXFLAGS+="${_CFLAGSADDITIONS} ${_CFLAGSADDITIONS_CXXonly}"
+  export CFLAGS
+  export CXXFLAGS
+
+  #MAKEFLAGS+=' -j1'
+  #export MAKEFLAGS
+
+  local  _configure_opts
   _configure_opts=(
     --prefix=/usr
     --disable-static
