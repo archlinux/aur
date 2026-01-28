@@ -1,7 +1,7 @@
 # Maintainer: Alessandro Abbenante <alessandros.hube@gmail.com>
 
 pkgname=psiphonlinuxgui
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="PsiphonLinuxGUI is an unofficial Linux app for managing the Psiphon VPN and browser settings."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('nodejs')
 
 source=("https://github.com/Alessandros-Hube/PsiphonLinuxGUI/releases/download/v$pkgver/psiphonlinuxgui_"$pkgver"_amd64.deb")
-sha256sums=('de4c5643afc50aff2b7f3677152365ca7cb5f2a21a40d0931b88b729961e1ae8')
+sha256sums=('1c2107fa275a161fae9099fe9e16b8e9b0abd7c31f4213792b1116c4a4e6f022')
 
 package() {
   # Extract the .deb package
