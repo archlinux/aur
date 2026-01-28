@@ -1,6 +1,6 @@
 pkgbase = multicliprelay-bin
 	pkgdesc = Real-time Wayland/xclip clipboard sync via TCP relay (text/images/files/dirs; prebuilt)
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/KasumiNova/MultiClipRelay
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = multicliprelay-bin
 	conflicts = multicliprelay-git
 	conflicts = multicliprelay-debug
 	conflicts = multicliprelay-git-debug
-	source = https://github.com/KasumiNova/MultiClipRelay/releases/download/v0.1.8/multicliprelay-0.1.8-x86_64-linux.tar.gz
-	sha256sums = 7a6ba5b805f54537a42365d9f708918b9210f7c0bc9ee2d6ce53c5cb38b78d18
+	source = https://github.com/KasumiNova/MultiClipRelay/releases/download/v0.1.9/multicliprelay-0.1.9-x86_64-linux.tar.gz
+	sha256sums = 1c02e6db8680eda1603ee668192510cae0110b270d30216ec5ba3260daa173df
 
 pkgname = multicliprelay-bin

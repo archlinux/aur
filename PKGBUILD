@@ -4,7 +4,7 @@
 # Recommended package name on AUR: multicliprelay-bin
 
 pkgname=multicliprelay-bin
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="Real-time Wayland/xclip clipboard sync via TCP relay (text/images/files/dirs; prebuilt)"
 arch=(x86_64)
@@ -13,7 +13,6 @@ license=(GPL3)
 
 # Runtime deps only (no Rust toolchain needed for -bin packages)
 depends=(wl-clipboard gtk4)
-
 optdepends=(
   'xclip: optional X11 clipboard helper (compat/testing)'
 )
@@ -31,7 +30,7 @@ conflicts=(
 )
 
 source=("${url}/releases/download/v${pkgver}/multicliprelay-${pkgver}-x86_64-linux.tar.gz")
-sha256sums=('7a6ba5b805f54537a42365d9f708918b9210f7c0bc9ee2d6ce53c5cb38b78d18')
+sha256sums=('1c02e6db8680eda1603ee668192510cae0110b270d30216ec5ba3260daa173df')
 
 package() {
   local dir="multicliprelay-${pkgver}-x86_64-linux"
