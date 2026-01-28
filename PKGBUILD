@@ -1,6 +1,6 @@
 # Maintainer: Andreas Wendleder <gonsolo@gmail.com>
 pkgname=python-librelane
-pkgver=3.0.0.dev47.r5.gb33e0b7
+pkgver=3.0.0.dev49
 pkgrel=1
 pkgdesc="An infrastructure for implementing chip design flows (successor to OpenLane) - DEVELOPMENT VERSION (git dev branch)."
 arch=('any')
@@ -8,21 +8,23 @@ url="https://github.com/librelane/librelane"
 license=('Apache-2.0')
 
 depends=(
+    'abc'
+    'klayout'
     'python'
-    'python-psutil'
-    'python-semver'
+    'python-ciel'
     'python-cloup'
-    'python-pyyaml'
-    'python-lxml'
     'python-deprecated'
     'python-httpx'
-    'python-ciel'
+    'python-libparse'
+    'python-lxml'
+    'python-psutil'
+    'python-pyyaml'
     'python-rapidfuzz'
     'python-rich'
+    'python-semver'
+    'python-yamlcore'
     'tk'
-    'klayout'
     'yosys'
-    'abc'
 )
 
 makedepends=(

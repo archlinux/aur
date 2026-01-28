@@ -1,0 +1,3 @@
+[python-librelane]
+source = "git"
+git = "https://github.com/librelane/librelane.git"
