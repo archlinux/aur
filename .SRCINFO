@@ -1,6 +1,6 @@
 pkgbase = void-mod-manager-git
 	pkgdesc = A simple mod manager made for Linux
-	pkgver = r70.a8a13ea
+	pkgver = r72.be0942c
 	pkgrel = 1
 	url = https://gitlab.com/void-modding/app
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = void-mod-manager-git
 	makedepends = libappindicator-gtk3
 	makedepends = librsvg
 	makedepends = rust
-	makedepends = bun-bin
+	makedepends = bun
 	depends = cairo
 	depends = desktop-file-utils
 	depends = gdk-pixbuf2

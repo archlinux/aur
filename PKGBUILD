@@ -1,13 +1,13 @@
 # Maintainer: Void Modding team
 pkgname=void-mod-manager-git
-pkgver=r70.a8a13ea
+pkgver=r72.be0942c
 pkgrel=1
 pkgdesc="A simple mod manager made for Linux"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/void-modding/app"
 license=('GPL3')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
-makedepends=('git' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'rust' 'bun-bin')
+makedepends=('git' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'rust' 'bun')
 provides=('void-mod-manager' 'void-mod-manager-git')
 conflicts=('void-mod-manager')
 source=("${pkgname}::git+${url}.git")
