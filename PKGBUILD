@@ -1,6 +1,6 @@
 # Maintainer: Roberto Alsina <ralsina@kde.org>
 pkgname=nicolino
-pkgver=0.15.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="A fast, modular static site generator written in Crystal"
 arch=("x86_64" "aarch64")
