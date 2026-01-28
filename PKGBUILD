@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=ctags-lsp
-pkgver=0.10.2
-pkgrel=3
+pkgver=0.11.0
+pkgrel=1
 pkgdesc='LSP implementation using universal-ctags as backend'
 url='https://github.com/netmute/ctags-lsp'
 arch=('x86_64' 'pentium4' 'aarch64' 'armv7h' 'riscv64')
@@ -11,7 +11,7 @@ provides=(ctags-lsp)
 conflicts=(${pkgname%-*})
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
     "$pkgname-$pkgver.tar.gz.asc")
-sha256sums=('8ec3fdcaca155811ad9b532c6e7b5366d2f0e52d4d673c97652c9f8af8a156b8'
+sha256sums=('86d1090c7281e65aa5f16bb3a06bb57b19b9dbb5f778c108a8f33662236523d9'
             'SKIP')
 validpgpkeys=('EF4B4CB5DFB8822216A473B1597AB12E66262898')
 
