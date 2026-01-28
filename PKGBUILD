@@ -1,6 +1,6 @@
 # Maintainer: alister (major) <alister@kamikishi.net>
 pkgname=gopherbook
-pkgver=1.2.000
+pkgver=1.3.000
 pkgrel=1
 pkgdesc="Web-based comic book library manager for CBZ/CBT files"
 arch=('x86_64')
