@@ -1,0 +1,24 @@
+--- a/src/itempreferences.c
++++ b/src/itempreferences.c
+@@ -932,7 +932,7 @@ static void item_preferences_itemsstoretogsettings (ItemPreferences* self) {
+ 	_tmp20_ = self->priv->itemsettings;
+ 	_tmp21_ = self->priv->_settingskey;
+ 	_tmp22_ = _result_;
+ 	_tmp22__length1 = _result__length1;
+-	g_settings_set_strv (_tmp20_, _tmp21_, _tmp22_);
++	g_settings_set_strv (_tmp20_, _tmp21_, (const gchar * const *) _tmp22_);
+ 	self->priv->itemsignoresignals = FALSE;
+ 	_result_ = (_vala_array_free (_result_, _result__length1, (GDestroyNotify) g_free), NULL);
+ }
+--- a/src/main.c
++++ b/src/main.c
+@@ -633,8 +633,8 @@ static gboolean main_construct (Main* self) {
+ 	datadirs_length1 = 1;
+ 	_datadirs_size_ = datadirs_length1;
+-	_tmp12_ = _tmp11_ = g_get_system_data_dirs ();
++	_tmp12_ = _tmp11_ = (gchar **) g_get_system_data_dirs ();
+ 	{
+ 		gchar** datadir_collection = NULL;
+ 		gint datadir_collection_length1 = 0;
+ 		gint _datadir_collection_size_ = 0;
+

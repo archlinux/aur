@@ -1,7 +1,8 @@
 # Maintainer: Michael Egger <gcarq@archlinux.info>
+# Maintainer: Mateusz Gozdek <mgozdekof@gmail.com>
 pkgname=indicator-multiload
 pkgver=0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A System Load indicator for GTK 3."
 arch=('i686' 'x86_64')
 url="https://launchpad.net/indicator-multiload"
@@ -10,10 +11,13 @@ depends=('gtk3' 'gnome-common' 'libindicator-gtk3' 'libappindicator-gtk3' 'libgt
 makedepends=('gcc' 'make')
 options=('strip')
 install=indicator-multiload.install
-source=("https://launchpad.net/$pkgname/stable/$pkgver/+download/$pkgname-$pkgver.tar.gz")
-md5sums=('10c1b5ad2f6b6f833b4ecdcdf17ee675')
+source=("https://launchpad.net/$pkgname/stable/$pkgver/+download/$pkgname-$pkgver.tar.gz"
+        "fix-g_settings_set_strv.patch")
+md5sums=('10c1b5ad2f6b6f833b4ecdcdf17ee675'
+         'SKIP')
 build() {
   cd "$srcdir/$pkgname-$pkgver"
+  patch -p1 < "$srcdir/fix-g_settings_set_strv.patch"
   ./autogen.sh
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
