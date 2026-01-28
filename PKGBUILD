@@ -1,6 +1,6 @@
 # Maintainer: rg-Sens Contributors
 pkgname=rg-sens
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="A fast, customizable system monitoring dashboard for Linux"
 arch=('x86_64')
