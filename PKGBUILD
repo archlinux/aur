@@ -1,6 +1,6 @@
 # Maintainer: Peter Jackson <pete@peteonrails.com>
 pkgname=voxtype-bin
-pkgver=0.4.16
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Push-to-talk voice-to-text for Linux (pre-built binaries)"
 arch=('x86_64')
@@ -21,7 +21,9 @@ optdepends=(
     'pipewire: audio server (recommended)'
     'pipewire-alsa: ALSA compatibility for PipeWire (required if using PipeWire)'
     'pulseaudio: audio server (alternative to PipeWire)'
-    'vulkan-icd-loader: GPU acceleration via Vulkan (enable with: voxtype setup gpu --enable)'
+    'vulkan-icd-loader: GPU acceleration via Vulkan for Whisper (enable with: voxtype setup gpu --enable)'
+    'cuda: GPU acceleration via CUDA for Parakeet (NVIDIA GPUs)'
+    'rocm-hip-runtime: GPU acceleration via ROCm for Parakeet (AMD GPUs)'
 )
 provides=('voxtype')
 conflicts=('voxtype')
@@ -29,9 +31,16 @@ backup=('etc/voxtype/config.toml')
 install=voxtype-bin.install
 _github="https://github.com/peteonrails/voxtype/releases/download/v$pkgver"
 source=(
+    # Whisper binaries
     "voxtype-$pkgver-avx2::$_github/voxtype-$pkgver-linux-x86_64-avx2"
     "voxtype-$pkgver-avx512::$_github/voxtype-$pkgver-linux-x86_64-avx512"
     "voxtype-$pkgver-vulkan::$_github/voxtype-$pkgver-linux-x86_64-vulkan"
+    # Parakeet binaries
+    "voxtype-$pkgver-parakeet-avx2::$_github/voxtype-$pkgver-linux-x86_64-parakeet-avx2"
+    "voxtype-$pkgver-parakeet-avx512::$_github/voxtype-$pkgver-linux-x86_64-parakeet-avx512"
+    "voxtype-$pkgver-parakeet-cuda::$_github/voxtype-$pkgver-linux-x86_64-parakeet-cuda"
+    "voxtype-$pkgver-parakeet-rocm::$_github/voxtype-$pkgver-linux-x86_64-parakeet-rocm"
+    # Config and support files
     "config-$pkgver.toml::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/config/default.toml"
     "voxtype-$pkgver.service::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/packaging/systemd/voxtype.service"
     "voxtype-$pkgver.bash::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/packaging/completions/voxtype.bash"
@@ -41,9 +50,16 @@ source=(
     "README-$pkgver.md::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/README.md"
 )
 sha256sums=(
-    '44b5c00586a96136b20f754863ae0d3676b95363154139b5751bf3a4c52d6718'  # voxtype-avx2
-    'c94339d68b92c47ddb93b795d87d3df1498413e8d4283143f2b5cdb68202910c'  # voxtype-avx512
-    '2f48d7404368b12ab5c8203b886ef2e9bf8717b5ca83d4d75511b02cf4c40bae'  # voxtype-vulkan
+    # Whisper binaries
+    '6db960ba0f8d8981f60f4309d402d23de79ea46140ff6bab429ff073888b1434'  # voxtype-avx2
+    '61d4749c31d0c20ccc012d73e84f9bad9c63b1d0a286e770d97ee82c7ada2340'  # voxtype-avx512
+    'c61cb5dba01fda88736756092932ebd79519dc7f9f0644b7b6c5c92d275e039f'  # voxtype-vulkan
+    # Parakeet binaries
+    'b5bfda477515f61d179c8331fb309c2f1f2c620f0310d2fbbb137b115ecdf6b7'  # voxtype-parakeet-avx2
+    '645997a2392601cf86224500d62a2b4619f6aec97e1f86daf1eb5c074b0f654b'  # voxtype-parakeet-avx512
+    'f2fda77c41006a4f34fde286a604925cc8c26fecc4083221a7fed965fee51840'  # voxtype-parakeet-cuda
+    'ba28c7ca1fe50e131931d9bf97f098b66d50cc30e74ba62eaa109363e375230d'  # voxtype-parakeet-rocm
+    # Config and support files
     'SKIP'  # config.toml
     'SKIP'  # voxtype.service
     'SKIP'  # voxtype.bash
@@ -54,12 +70,18 @@ sha256sums=(
 )
 
 package() {
-    # Install CPU binaries to /usr/lib/voxtype/
+    # Install Whisper CPU binaries to /usr/lib/voxtype/
     install -Dm755 "$srcdir/voxtype-$pkgver-avx2" "$pkgdir/usr/lib/voxtype/voxtype-avx2"
     install -Dm755 "$srcdir/voxtype-$pkgver-avx512" "$pkgdir/usr/lib/voxtype/voxtype-avx512"
 
-    # Install Vulkan GPU binary
+    # Install Whisper Vulkan GPU binary
     install -Dm755 "$srcdir/voxtype-$pkgver-vulkan" "$pkgdir/usr/lib/voxtype/voxtype-vulkan"
+
+    # Install Parakeet binaries
+    install -Dm755 "$srcdir/voxtype-$pkgver-parakeet-avx2" "$pkgdir/usr/lib/voxtype/voxtype-parakeet-avx2"
+    install -Dm755 "$srcdir/voxtype-$pkgver-parakeet-avx512" "$pkgdir/usr/lib/voxtype/voxtype-parakeet-avx512"
+    install -Dm755 "$srcdir/voxtype-$pkgver-parakeet-cuda" "$pkgdir/usr/lib/voxtype/voxtype-parakeet-cuda"
+    install -Dm755 "$srcdir/voxtype-$pkgver-parakeet-rocm" "$pkgdir/usr/lib/voxtype/voxtype-parakeet-rocm"
 
     # Create symlink based on CPU capabilities (updated in .install file)
     # Default to avx2 for safety
