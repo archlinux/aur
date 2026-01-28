@@ -1,0 +1,23 @@
+pkgbase = python-model2vec
+	pkgdesc = Fast State-of-the-Art Static Embeddings
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/MinishLab/model2vec
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python
+	depends = python-jinja2
+	depends = python-joblib
+	depends = python-numpy
+	depends = python-rich
+	depends = python-safetensors
+	depends = python-tokenizers
+	depends = python-tqdm
+	source = python-model2vec-0.7.0.tar.gz::https://github.com/MinishLab/model2vec/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = 36c39824c724cac332cd7ab8f36ebf6bdd1119e70bcc7e4379feab0ea847da59
+
+pkgname = python-model2vec
