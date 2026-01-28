@@ -1,15 +1,13 @@
 pkgbase = android-armv7a-eabi-mpg123
 	pkgdesc = Console based real time MPEG Audio Player for Layer 1, 2 and 3 (Android armv7a-eabi)
 	pkgver = 1.33.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mpg123.de/
 	arch = any
 	groups = android-mpg123
 	license = LGPL2.1
 	makedepends = android-configure
-	makedepends = android-armv7a-eabi-sdl2
-	depends = android-armv7a-eabi-alsa-lib
-	optdepends = android-armv7a-eabi-sdl2: for sdl audio support
+	depends = android-ndk
 	options = !strip
 	options = !buildflags
 	options = staticlibs
