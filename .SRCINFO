@@ -1,13 +1,13 @@
 pkgbase = zish
 	pkgdesc = fast shell interpreter written in zig
-	pkgver = 0.8.1
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/rotkonetworks/zish
 	arch = x86_64
 	license = MIT
 	makedepends = zig>=0.15.1
 	depends = glibc
-	source = zish-0.8.1.tar.gz::https://github.com/rotkonetworks/zish/archive/v0.8.1.tar.gz
-	sha256sums = 5fac901aa57d59593b2c998dfc8f2e424ccc02e574a478ff5d87c547a5721ac5
+	source = zish-0.10.0.tar.gz::https://github.com/rotkonetworks/zish/archive/v0.10.0.tar.gz
+	sha256sums = a3a228bc7c9ce87c3a915a84d31bd8a87b62479f04e5f5feeb5822c728ffc441
 
 pkgname = zish

@@ -1,6 +1,6 @@
 # Maintainer: Rotko Networks <hq@rotko.net>
 pkgname=zish
-pkgver=0.8.1
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="fast shell interpreter written in zig"
 arch=('x86_64')
@@ -9,11 +9,11 @@ license=('MIT')
 depends=('glibc')
 makedepends=('zig>=0.15.1')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rotkonetworks/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('5fac901aa57d59593b2c998dfc8f2e424ccc02e574a478ff5d87c547a5721ac5')
+sha256sums=('a3a228bc7c9ce87c3a915a84d31bd8a87b62479f04e5f5feeb5822c728ffc441')
 
 build() {
     cd "$pkgname-$pkgver"
-    zig build -Drelease=true
+    zig build -Doptimize=ReleaseFast
 }
 
 check() {
@@ -24,5 +24,6 @@ check() {
 package() {
     cd "$pkgname-$pkgver"
     install -Dm755 "zig-out/bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm644 zish.1 "$pkgdir/usr/share/man/man1/zish.1"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md" 2>/dev/null || true
 }
