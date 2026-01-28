@@ -1,5 +1,5 @@
 pkgbase = resolvify
-	pkgdesc = Batch ffmpeg transcoder with optional CustomTkinter GUI
+	pkgdesc = A tool to convert OBS (and other) recordings into DaVinci Resolve–compatible videos using FFmpeg.
 	pkgver = 1.0
 	pkgrel = 3
 	url = https://github.com/
