@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=FactoMineR
-_pkgver=2.12
+_pkgver=2.13
 pkgname=r-${_pkgname,,}
-pkgver=2.12
+pkgver=2.13
 pkgrel=1
 pkgdesc='Multivariate Exploratory Data Analysis and Data Mining'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-missmda
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c064aee58cc485017b2d860616f13529ca1791ef14094d21643a0e6d62f2b6a2')
+sha256sums=('0967669c4b1fdbf3a34bacba353b95238f437e4ef6975f1751408d5d5eee3e6b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
