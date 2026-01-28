@@ -1,6 +1,6 @@
 pkgbase = r-ddpcr
 	pkgdesc = Analysis and Visualization of Droplet Digital PCR in R and on the Web
-	pkgver = 1.15.2
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ddpcr
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-ddpcr
 	optdepends = r-stats
 	optdepends = r-testthat
 	optdepends = r-utils
-	source = https://cran.r-project.org/src/contrib/ddpcr_1.15.2.tar.gz
-	sha256sums = 2b8c72cafc735b6f5e316a197754f7e6ef9ba578e732660f92d2d821982f42ab
+	source = https://cran.r-project.org/src/contrib/ddpcr_1.16.0.tar.gz
+	sha256sums = 698ae3b1f89495f955d063ef68fd90f3aaf2a3088f09ba199af9cdb7ee192dd2
 
 pkgname = r-ddpcr
