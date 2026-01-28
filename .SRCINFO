@@ -1,10 +1,12 @@
 pkgbase = just-the-browser-git
 	pkgdesc = Remove AI features, telemetry data reporting, sponsored content, product integrations, and other annoyances from web browsers.
-	pkgver = r73.b100f58
+	pkgver = r101.6fe2f08
 	pkgrel = 1
 	url = https://justthebrowser.com/
 	arch = any
 	license = MIT
+	provides = just-the-browser
+	conflicts = just-the-browser
 	source = git+https://github.com/corbindavenport/just-the-browser.git
 	sha512sums = SKIP
 
