@@ -2,7 +2,7 @@
 
 pkgname='netease-cloud-music-wine'
 pkgver=3.1.27.204959
-pkgrel=1
+pkgrel=2
 pkgdesc="NetEase Cloud Music Player. 使用wine运行网易云音乐windows官方包。"
 arch=('x86_64')
 license=('custom')
@@ -16,11 +16,11 @@ DLAGENTS=(
     'https::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -A "Mozilla/5.0" -o %o %u'
 )
 source=(
-    "https://d8.music.126.net/dmusic2/NeteaseCloudMusic_Music_official_${pkgver}_32.exe"
+    "https://d8.music.126.net/dmusic2/NeteaseCloudMusic_Music_official_${pkgver}_64.exe"
     "LICENSE"
 )
 sha256sums=(
-    "f4d4272a4e762416e0275d552e399e4336e51519959c1f4f5b0442b012763972"
+    "579046a79b840c35767b6678358705b0ccba276891070bff46b0114d15b3b65a"
     "e6fa7eb9853b955c49cba5f5fbd83bf8039235d5c0d3eeaac81c2e99b0b7ff81"
 )
 
@@ -317,6 +317,8 @@ Windows Registry Editor Version 5.00
 "바탕체"="Noto Sans CJK KR"
 "ＭＳ ゴシック"="Noto Sans CJK JP"
 "ＭＳ 明朝"="Noto Sans CJK JP"
+"ＭＳ Ｐゴシック"="Noto Sans CJK JP"
+"ＭＳ Ｐ明朝"="Noto Sans CJK JP"
 
 EOF
 
@@ -345,8 +347,14 @@ package() {
 
     mkdir -p "${TEMP_PROGRAM_FILES}"/redist_packages
     cd "${srcdir}"/temp/redist_packages
-    mv api-ms-win*.dll "${TEMP_PROGRAM_FILES}"/redist_packages
-    mv {apisetschema,concrt140,msvcp140,msvcp140_1,msvcp140_2,ucrtbase,vccorlib140,vcruntime140}.dll "${TEMP_PROGRAM_FILES}"/redist_packages
+    mv api-ms-win* \
+        apisetschema* \
+        concrt140* \
+        msvcp140* \
+        ucrtbase* \
+        vccorlib140* \
+        vcruntime140* \
+        "${TEMP_PROGRAM_FILES}"/redist_packages
     mv * "${TEMP_PROGRAM_FILES}"
     cd "${srcdir}"
     rmdir "${srcdir}"/temp/redist_packages
