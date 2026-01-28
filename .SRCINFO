@@ -26,7 +26,7 @@ pkgbase = i4tools-bin
 	depends = libimobiledevice-glue
 	source = i4tools_v3.09.002.rpm::https://d-updater.i4.cn/i4linux/deb/i4tools_v3.09.002.rpm
 	source = https://www.i4.cn/copyright.html
-	sha256sums = f1c054a66cc12f6e01be3c940d903e3d81f5367a
+	sha256sums = acf171b4998cab459965f2682209d7f42686f90cd42873e24134ee9306be5d8f
 	sha256sums = SKIP
 
 pkgname = i4tools-bin
