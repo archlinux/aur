@@ -1,0 +1,20 @@
+pkgbase = sddm-theme-elegant-archlinux-git
+	pkgdesc = A simple and elegant SDDM theme for Arch Linux
+	pkgver = 1.2.0.r0.gcecc07e
+	pkgrel = 1
+	url = https://github.com/sniper1720/elegant-sddm-archlinux-theme
+	install = elegant-archlinux.install
+	arch = any
+	license = CC-BY-SA-3.0
+	makedepends = git
+	depends = sddm
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = qt6-5compat
+	provides = sddm-theme-elegant-archlinux
+	conflicts = sddm-theme-elegant-archlinux
+	source = git+https://github.com/sniper1720/elegant-sddm-archlinux-theme.git
+	sha256sums = SKIP
+
+pkgname = sddm-theme-elegant-archlinux-git
