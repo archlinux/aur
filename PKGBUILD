@@ -9,7 +9,7 @@ arch=(
   'aarch64'
   'x86_64'
 )
-urk="https://kernelsu.org/guide/installation.html#use-the-command-line"
+url="https://kernelsu.org/guide/installation.html#use-the-command-line"
 _url="https://github.com/tiann/KernelSU"
 license=(
   'GPL-3.0-or-later'
