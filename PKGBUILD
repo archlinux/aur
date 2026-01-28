@@ -1,16 +1,17 @@
-pkgname=konform-browser-bin
-__pkgname="${pkgname//-bin/""}"
-provides=("${__pkgname}")
-conflicts=("${__pkgname}")
 epoch=1
+pkgname=konform-browser-bin
+_pkgname="${pkgname//-bin/""}"
+__pkgname=konform
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 pkgver=140.7.0_105
 _konformver="${pkgver%_*}"
 _konformrel="${pkgver#*_}"
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
+url="https://codeberg.org/konform-browser"
 arch=(x86_64 aarch64)
 license=(MPL-2.0)
-url="https://codeberg.org/konform-browser"
 depends=(
   dbus
   alsa-lib
@@ -69,16 +70,16 @@ options=(!emptydirs)
 install='konform-browser-bin.install'
 
 
-_base_url="https://codeberg.org/api/packages/${__pkgname}/generic/${__pkgname}/${_konformver}-${_konformrel}"
-_uploadpath_aarch64=${_base_url}/${__pkgname}-${_konformver}-${_konformrel}-linux-arm64-package.tar.xz
-_uploadpath_x86_64=${_base_url}/${__pkgname}-${_konformver}-${_konformrel}-linux-x86_64-package.tar.xz
+_base_url="https://codeberg.org/api/packages/${_pkgname}/generic/${_pkgname}/${_konformver}-${_konformrel}"
+_uploadpath_aarch64=${_base_url}/${_pkgname}-${_konformver}-${_konformrel}-linux-arm64-package.tar.xz
+_uploadpath_x86_64=${_base_url}/${_pkgname}-${_konformver}-${_konformrel}-linux-x86_64-package.tar.xz
 _uploadpath_sig_aarch64=${_uploadpath_aarch64}.sig
 _uploadpath_sig_x86_64=${_uploadpath_x86_64}.sig
 _source_tag="${_konformver}.${_konformrel}"
 source=(
   "git+https://codeberg.org/konform-browser/source.git#tag=${_source_tag}"
   default192x192.png
-  konform.desktop
+  "${__pkgname}.desktop"
 )
 source_aarch64=("${_uploadpath_aarch64}" "${_uploadpath_sig_aarch64}")
 source_x86_64=("${_uploadpath_x86_64}" "${_uploadpath_sig_x86_64}")
@@ -91,31 +92,31 @@ sha256sums_aarch64=('522928848d17468b476f39677436a2b81ec52ffb93fdad27b83537e0f19
                     'SKIP')
 
 package() {
-  install -dm 755 ${pkgdir}/usr/lib/konform
-  install -dm 755 ${pkgdir}/usr/bin
-  cp -r "${srcdir}/konform"/* "${pkgdir}"/usr/lib/konform
+  install -dm 755 "${pkgdir}/usr/lib/${__pkgname}"
+  install -dm 755 "${pkgdir}/usr/bin"
+  cp -r "${srcdir}/${__pkgname}"/* "${pkgdir}/usr/lib/${__pkgname}"
 
-  cd "${srcdir}/konform"
+  cd "${srcdir}/${__pkgname}"
 
-  local vendorjs="$pkgdir/usr/lib/konform/browser/defaults/preferences/vendor.js"
+  local vendorjs="$pkgdir/usr/lib/$__pkgname/browser/defaults/preferences/vendor.js"
 
   install -Dvm644 /dev/stdin "$vendorjs" <<END
 // Use system-provided dictionaries
 pref("spellchecker.dictionary_path", "/usr/share/hunspell");
 END
 
-  local distini="$pkgdir/usr/lib/konform/distribution/distribution.ini"
+local distini="$pkgdir/usr/lib/$__pkgname/distribution/distribution.ini"
   install -Dvm644 /dev/stdin "$distini" <<END
 
 [Global]
-id=org.codeberg.${__pkgname}
+id=org.codeberg.${_pkgname}
 version=1.0
 about="Konform Browser"
 
 [Preferences]
 app.distributor="Konform Konsortium"
-app.distributor.channel=${__pkgname}
-app.partner.konform=${__pkgname}
+app.distributor.channel=${_pkgname}
+app.partner.konform=${_pkgname}
 END
 
   for i in 16 32 48 64 128; do
@@ -129,22 +130,22 @@ END
   install -Dvm644 ${srcdir}/source/themes/browser/branding/librewolf/default16.png \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$__pkgname-symbolic.png"
 
-  install -Dvm644 ${srcdir}/konform.desktop \
+  install -Dvm644 ${srcdir}/$__pkgname.desktop \
     "$pkgdir/usr/share/applications/$__pkgname.desktop"
 
   # Install a wrapper to avoid confusion about binary path
   install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$__pkgname" <<END
 #!/bin/sh
-exec /usr/lib/konform/konform "\$@"
+exec /usr/lib/${__pkgname}/${__pkgname} "\$@"
 END
 
   # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srfv "$pkgdir/usr/bin/$__pkgname" "$pkgdir/usr/lib/konform/konform-bin"
+  ln -srfv "$pkgdir/usr/bin/$__pkgname" "$pkgdir/usr/lib/$__pkgname/$__pkgname-bin"
+  ln -s "${__pkgname}" "${pkgdir}/usr/bin/${_pkgname}" || true
   # Use system certificates
-  local nssckbi="$pkgdir/usr/lib/konform/libnssckbi.so"
+  local nssckbi="$pkgdir/usr/lib/$__pkgname/libnssckbi.so"
   if [[ -e $nssckbi ]]; then
     ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
   fi
-
 }
