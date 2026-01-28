@@ -22,3 +22,4 @@ src/
 # makepkg test
 pandora-launcher-git
 build
+icon.svg
