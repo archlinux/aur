@@ -2,8 +2,7 @@
 # Contributor: Invarianz <invarianztheorem [at] web [dot] de>
 # Contributor: cmichi <mich [at] elmueller [dot] net>
 
-# This package provides the latest snapshot of nvi with multibyte support enabled.
-# This package used to be called "nvi-multibyte-upstream".
+# This package provides nvi (new vi) with multibyte support
 
 pkgname=nvi-multibyte-git
 pkgdesc="nvi with multibyte support"
@@ -17,22 +16,24 @@ depends=(
 )
 makedepends=(
   chrpath
+  git
 )
-conflicts=('nvi' 'nvi-multibyte-upstream')
+conflicts=('nvi' 'nvi-multibyte-upstream') # previous name of this package was "nvi-multibyte-upstream"
 provides=('nvi')
-
-_COMMIT="401bfbf750bb2da400dec870f62cc59c78b8e0fa"
-source=("http://repo.or.cz/nvi.git/snapshot/$_COMMIT.tar.gz")
-sha512sums=('d1fffb784d164eaa862326c0e1b0a7e2360350c631ece62bc9ec33e7928c47474ca7329e162556f4b32eb631e08dac09426df65280c45026ac0dac558e544f6b')
-
-# The last official release was 1.81.6, but there have been commits since then.
-# Append timestamp (yyyymmdd) of latest commit.
+source=("git+https://repo.or.cz/nvi.git")
+sha512sums=('SKIP')
 pkgver=1.81.6_20260124
-pkgrel=1
-_COMMIT_HASH="${_COMMIT:0:7}"
+pkgrel=2
+
+pkgver() {
+  # The last release was 1.81.6, but there have been commits since then.
+  # Append timestamp (yyyymmdd) of latest commit.
+  cd nvi
+  printf "$(git describe --tags --abbrev=0  | sed 's/^nvi.//;s/\([^-]*-g\)/r\1/;s/-/./g')_$(git log -1 --format='%cd' --date=short | tr -d -- '-')"
+}
 
 build(){
-  cd "$srcdir"/nvi-$_COMMIT_HASH/dist/
+  cd nvi/dist
   ./distrib
   cd ../build.unix
   env CPPFLAGS="$CFLAGS -fpermissive  " \
@@ -50,8 +51,8 @@ build(){
 }
 
 package(){
-  cd "$srcdir"/nvi-$_COMMIT_HASH/build.unix
+  cd nvi/build.unix
   make install
-  install -Dm644 "$srcdir"/nvi-$_COMMIT_HASH/LICENSE \
+  install -Dm644 "$srcdir"/nvi/LICENSE \
           "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
