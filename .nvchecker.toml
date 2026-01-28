@@ -1,4 +1,4 @@
 [chessx]
 source = "regex"
-url = "https://sourceforge.net/projects/chessx/files/chessx"
-regex = "\\d\\.\\d\\.\\d"
+url = "https://sourceforge.net/projects/chessx/best_release.json"
+regex = "chessx-([^\"]*).tgz"
