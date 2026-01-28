@@ -1,0 +1,4 @@
+[libtermkey]
+source = 'regex'
+url = 'https://www.leonerd.org.uk/code/libtermkey/'
+regex = 'libtermkey-([0-9\\.]+).tar.gz'
