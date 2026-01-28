@@ -3,7 +3,7 @@
 
 _pkgname="mtkclient"
 pkgname="$_pkgname-git"
-pkgver=2.1.2.r9.gb54c0c2
+pkgver=2.1.2.r10.g91f996b
 pkgrel=1
 pkgdesc="Unofficial MTK reverse engineering and flash tool"
 url="https://github.com/bkerler/mtkclient"
@@ -36,13 +36,9 @@ _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
-prepare() {
-  cd "$_pkgsrc"
-  git tag 2.1.2 65d8c4aa8912e5f5d152466362c78ab1fbbfcd47 2> /dev/null || true
-}
-
 pkgver() {
   cd "$_pkgsrc"
+  git tag 2.1.2 65d8c4aa8912e5f5d152466362c78ab1fbbfcd47 2> /dev/null || true
   git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
     | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
