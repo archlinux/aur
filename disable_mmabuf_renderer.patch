@@ -1,0 +1,11 @@
+--- "data/usr/share/applications/Pawn Appetit.desktop"	2026-01-09 02:47:11.000000000 -0500
++++ "data/usr/share/applications/Pawn Appetit.desktop"	2026-01-28 16:13:15.852635201 -0500
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Categories=Game;BoardGame;
+ Comment=Ultimate Chess Toolkit
+-Exec=pawn-appetit
++Exec=env WEBKIT_DISABLE_DMABUF_RENDERER=1 pawn-appetit
+ StartupWMClass=pawn-appetit
+ Icon=pawn-appetit
+ Name=Pawn Appetit
