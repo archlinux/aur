@@ -2,7 +2,7 @@
 
 _pkgname=rezound
 pkgname=$_pkgname-qt-git
-pkgver=0.13.1beta.r44.ge29a29a8
+pkgver=0.13.1beta.r46.g241d10f5
 pkgrel=1
 pkgdesc='A graphical audio file editor (Qt git version)'
 arch=(x86_64)
@@ -60,6 +60,7 @@ prepare() {
 
 build() {
   cmake -B $pkgname-build -S $_pkgname-qt \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -Wno-dev \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
