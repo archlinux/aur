@@ -18,7 +18,7 @@ depends=(
 provides=('cloudtolocalllm')
 conflicts=('cloudtolocalllm-git' 'cloudtolocalllm-bin')
 source=("https://github.com/CloudToLocalLLM-online/CloudToLocalLLM/releases/download/v${pkgver}/CloudToLocalLLM-Linux-x64.tar.gz")
-sha256sums=('fa6539158640cb10bdc6050da0d28ccbaf86056a386e1c55478df977dfbd3560')
+sha256sums=('bdc8ac21580ed9f37c927c4d0614ed0bb19bbc54dd98cbeb56144584170b3a8d')
 
 package() {
     # Install the application files
