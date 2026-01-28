@@ -1,0 +1,5 @@
+[spigot-calc]
+source = 'regex'
+url = 'https://www.chiark.greenend.org.uk/~sgtatham/spigot/'
+regex = 'spigot-(\d+)\.[0-9a-fA-F]+\.tar\.gz'
+
