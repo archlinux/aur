@@ -7,7 +7,7 @@
 # See https://wiki.archlinux.org/index.php/Makepkg#Signature_checking
 # for more details # on package signing.
 pkgname=librepcb-appimage
-pkgver=1.3.0
+pkgver=2.0.0
 _pkgver=${pkgver/_/-}
 pkgrel=1
 pkgdesc="A free EDA software to develop printed circuit boards (binary AppImage version)"
@@ -24,10 +24,8 @@ source=(
   "https://download.librepcb.org/releases/${_pkgver}/${_appimage}"
   "https://download.librepcb.org/releases/${_pkgver}/${_appimage}.asc"
 )
-sha256sums=(
-  '9e327957656db9d906739bef20272b5d69efd82fda5431bb608dbb0493612271'
-  'SKIP'
-)
+sha256sums=('6358c275de8f2f63caee25318eac5b7014c0f9ac2d048afa5e24aff80e0be2d3'
+            'SKIP')
 validpgpkeys=('D6F9AF572228C5BCD6B538407EF3061F5C8D5E25')
 
 build() {
@@ -42,10 +40,10 @@ package() {
 
   # Metadata
   mkdir -p "${pkgdir}/usr/share"
-  cp -R "squashfs-root/opt/share/applications" "${pkgdir}/usr/share/"
-  cp -R "squashfs-root/opt/share/icons" "${pkgdir}/usr/share/"
-  cp -R "squashfs-root/opt/share/metainfo" "${pkgdir}/usr/share/"
-  cp -R "squashfs-root/opt/share/mime" "${pkgdir}/usr/share/"
+  cp -R "squashfs-root/usr/share/applications" "${pkgdir}/usr/share/"
+  cp -R "squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
+  cp -R "squashfs-root/usr/share/metainfo" "${pkgdir}/usr/share/"
+  cp -R "squashfs-root/usr/share/mime" "${pkgdir}/usr/share/"
   find "${pkgdir}/usr/share" -type d -exec chmod 755 {} \;
   find "${pkgdir}/usr/share" -type f -exec chmod 644 {} \;
 }
