@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simpleshell-git
 _pkgname=SimpleShell
-pkgver=0.2.4.r0.g273c45f
-_electronversion=38
+pkgver=0.3.3.r0.gab59270
+_electronversion=40
 _nodeversion=22
 pkgrel=1
 pkgdesc="A Simple Terminal based on Electron & NodeJS.(Use system-wide electron)"
@@ -20,6 +20,7 @@ makedepends=(
     'git'
     'curl'
     'gendesk'
+    'npm'
 )
 source=(
     "${pkgname//-/.}::git+${url}.git"
@@ -71,19 +72,13 @@ prepare() {
         rm -rf bun.lockb
     fi
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        export npm_config_electron_mirror="https://registry.npmmirror.com/-/binary/electron/"
-        export npm_config_electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
-        export sqlite3_binary_site="https://registry.npmmirror.com/-/sqlite3/"
-        {
-            echo '[install]'
-            echo 'registry = "https://registry.npmmirror.com"'
-        } >> bunfig.toml
+        npm config set registry https://registry.npmmirror.com
     fi
-    sed -i "s/logo.ico/${_pkgname}.png/g" src/main.js
-    sed -i "3i\const configDir = process.env.XDG_CONFIG_HOME || path.join(require('os').homedir(), '.config');" src/core/configManager.js
-    sed -i "3i\const configDir = process.env.XDG_CONFIG_HOME || path.join(require('os').homedir(), '.config');" src/core/utils/logger.js
-    sed -i 's/return path.join(path.dirname(app.getPath("exe")), "config.json");/return path.join(configDir, "simpleshell", "config.json");/g' src/core/configManager.js
-    sed -i 's/return path.join(path.dirname(process.execPath), "log");/return path.join(configDir, "simpleshell", "log");/g' src/core/utils/logger.js
+    #sed -i "s/logo.ico/${_pkgname}.png/g" src/main.js
+    #sed -i "3i\const configDir = process.env.XDG_CONFIG_HOME || path.join(require('os').homedir(), '.config');" src/core/configManager.js
+    #sed -i "3i\const configDir = process.env.XDG_CONFIG_HOME || path.join(require('os').homedir(), '.config');" src/core/utils/logger.js
+    #sed -i 's/return path.join(path.dirname(app.getPath("exe")), "config.json");/return path.join(configDir, "simpleshell", "config.json");/g' src/core/configManager.js
+    #sed -i 's/return path.join(path.dirname(process.execPath), "log");/return path.join(configDir, "simpleshell", "log");/g' src/core/utils/logger.js
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     bun install
     bun add -D @electron-forge/plugin-local-electron
