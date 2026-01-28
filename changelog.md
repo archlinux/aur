@@ -1,3 +1,20 @@
+2026.01.28, v19.1.16
+
+fix:
+- 4c242631 css: spinner: do not minify svg
+
+2026.01.28, v19.1.15
+
+feature:
+- 265c0b49 client: key: vim: migrate to ESM
+- 3bc49f02 client: set-current-by-char: migrate to ESM
+
+2026.01.28, v19.1.14
+
+feature:
+- f8a63b5a client: key: binder: migrate to ESM
+- 2cc97f33 client: cloud: migrate to ESM
+
 2026.01.27, v19.1.13
 
 feature:
