@@ -60,28 +60,16 @@ export WEBKIT_DISABLE_DMABUF_RENDERER=1
 
 export DESKTOP_STARTUP_ID=com.hypixel.HytaleLauncher
 
-# CONSTANTS
-DEFAULT_DIR="$HOME/.local/share/hytale-launcher/bin"
-LAUNCHER_DIR="$DEFAULT_DIR"
+# Set XDG Specs.
+: "${HYTALE_HOME:=$HOME}"
+: "${XDG_DATA_HOME:=$HYTALE_HOME/.local/share}"
+: "${XDG_CONFIG_HOME:=$HYTALE_HOME/.config}"
+: "${XDG_CACHE_HOME:=$HYTALE_HOME/.cache}"
+
+# Internal Script Dirs
+LAUNCHER_DIR="${XDG_DATA_HOME}/hytale-launcher/bin"
 SOURCE_DIR="/opt/hytale-launcher-bin"
 BIN_NAME="hytale-launcher"
-
-
-
-# 2. Handle Command Line Arguments
-while [[ "$#" -gt 0 ]]; do
-    case $1 in
-        -d|--directory) LAUNCHER_DIR="$2"; shift ;;
-        -h|--help)
-            echo "Usage: hytale-launcher [options]"
-            echo "Options:"
-            echo "  -d, --directory PATH    Specify a custom installation directory"
-            echo "  -h, --help              Show this help message"
-            exit 0
-            ;;
-    esac
-    shift
-done
 
 # If the launcher isn't in the user's home yet, copy the files
 if [ ! -d "$LAUNCHER_DIR" ]; then
@@ -89,6 +77,9 @@ if [ ! -d "$LAUNCHER_DIR" ]; then
     mkdir -p "$LAUNCHER_DIR"
     cp -r "$SOURCE_DIR/$BIN_NAME" "$LAUNCHER_DIR/$BIN_NAME"
 fi
+
+# Just wanna make sure these are exported.
+export HYTALE_HOME XDG_DATA_HOME XDG_CONFIG_HOME XDG_CACHE_HOME
 
 # Switch to the directory and run it
 cd "$LAUNCHER_DIR"
