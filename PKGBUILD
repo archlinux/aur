@@ -1,4 +1,4 @@
-# Maintainer: Pater Kleomenis <paterkleomenis@gmail.com>
+# Maintainer: Pater Kleomenis <paterkleomenis@protonmail.com>
 pkgname=connected-desktop-bin
 _pkgname=connected-desktop
 pkgver=1.0.9
