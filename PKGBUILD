@@ -4,7 +4,7 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-pixman
-pkgver=0.46.2
+pkgver=0.46.4
 pkgrel=1
 arch=('any')
 pkgdesc="The pixel-manipulation library for X and cairo (Android ${_android_arch})"
@@ -16,7 +16,7 @@ makedepends=("android-meson"
              "android-${_android_arch}-libpng")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("http://xorg.freedesktop.org/releases/individual/lib/pixman-${pkgver}.tar.xz")
-md5sums=('4c81133cc69a46a9436006756e43061f')
+md5sums=('f0b949cfe21fe59ac4457c57ddb7b9e5')
 
 build() {
     cd "${srcdir}/pixman-${pkgver}"
@@ -45,4 +45,6 @@ package() {
     DESTDIR="${pkgdir}" ninja -C build install
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
