@@ -3,7 +3,7 @@
 _pkgauthor=keircn
 _pkgname=archium
 pkgname=${_pkgname}-bin
-pkgver=1.10.1
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="Archium is a wrapper for AUR helpers such as YAY and Paru"
 arch=('x86_64')
@@ -22,11 +22,11 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
   "COMPLETIONS-${pkgver}.fish::${_urlraw}/completions/archium.fish")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('66a37b615c2d3d566fb792cf78eed43cbc6806a5a7241e7d4b43e475b610443e'
-            '0b5c9c1049f56bfbe28e715a32d76eba9479af5791c815dad9dd9a6b9ac74f84'
+            'd988821268dce1590462e57ded4fec6f62f636103f52fe567e0bf7a8784d9d24'
             '21edff2be0071525382ffccd5eed157c1455fb07e68072d2e2613c29970bb799'
             '5913a44fa56edca7c78929e771cc044867b04f313f377b3ad0de8a58192a4163'
             'd870f066805d2740aa8053908d405774e9fb55e85be433d2219e9c68f87050b8')
-sha256sums_x86_64=('2d43f3859dac430261520cc1082d97b6f0ee60467c4acb557a9dd726426bbf2e')
+sha256sums_x86_64=('b383e6bc32d7e5a45e5b611fecf44439ebd8d6aeb90c84b0b6fc8c4054e6186d')
 
 prepare() {
   cd "${srcdir}/" || exit
