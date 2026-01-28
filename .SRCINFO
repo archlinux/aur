@@ -1,6 +1,6 @@
 pkgbase = pandora-launcher-git
 	pkgdesc = A modern Minecraft launcher that balances ease-of-use with powerful instance management features.
-	pkgver = 2.5.0.r5.gcaec657
+	pkgver = 2.5.0.r40.g6d4c085
 	pkgrel = 1
 	url = http://pandora.moulberry.com/
 	arch = x86_64
