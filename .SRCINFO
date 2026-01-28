@@ -1,5 +1,5 @@
 pkgbase = pomodoro-tauri
-	pkgdesc = A professional Pomodoro Timer built with Tauri and React, optimized for Arch Linux.
+	pkgdesc = A professional Pomodoro Timer built with Tauri and React (Turkish UI, i18n planned)
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/ravidulundu/pomodoro

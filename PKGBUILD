@@ -2,7 +2,7 @@
 pkgname=pomodoro-tauri
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="A professional Pomodoro Timer built with Tauri and React, optimized for Arch Linux."
+pkgdesc="A professional Pomodoro Timer built with Tauri and React (Turkish UI, i18n planned)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ravidulundu/pomodoro"
 license=('GPL-3.0-or-later')
