@@ -1,6 +1,6 @@
 pkgbase = r-ankir
-	pkgdesc = Read Anki Flashcard Databases with FSRS-6 Support
-	pkgver = 0.5.0
+	pkgdesc = Comprehensive R Toolkit for Anki Flashcard Analysis (137 functions)
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/chrislongros/ankiR
 	arch = any
@@ -13,7 +13,9 @@ pkgbase = r-ankir
 	optdepends = r-testthat: testing
 	optdepends = r-knitr: vignettes
 	optdepends = r-rmarkdown: vignettes
-	source = ankiR-0.5.0.tar.gz::https://github.com/chrislongros/ankiR/archive/refs/tags/v0.5.0.tar.gz
-	sha256sums = 6bfb71f58b43cc476cca9e84d38c7ef488ca799769e56282461d2cc4c939f9b8
+	optdepends = r-ggplot2: plotting functions
+	optdepends = r-shiny: interactive dashboard
+	source = ankiR-0.6.0.tar.gz::https://github.com/chrislongros/ankiR/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = SKIP
 
 pkgname = r-ankir
