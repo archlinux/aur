@@ -1,0 +1,5 @@
+[wcd]
+source = 'git'
+git = 'https://git.code.sf.net/p/wcd/wcd'
+prefix = 'wcd-'
+
