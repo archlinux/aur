@@ -1,4 +1,5 @@
-# -*- sh -*-
+# shellcheck shell=bash
+# -*- mode: sh -*-
 
 # Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
@@ -6,17 +7,18 @@ pkgname='python-can_ada-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 _srcdir="${_srcname}"
-pkgver=2.0.0.r0.g8c56ebe
-pkgrel=2
-pkgdesc='Python bindings for Ada, a fast and WHATWG spec-compliant URL parser (latest git commit)'
-arch=('aarch64' 'x86_64')
+pkgdesc='Python bindings for Ada, a fast and WHATWG spec-compliant URL parser (development version)'
+pkgver=3.0.0.r0.gb950b43
+pkgrel=1
 url="https://github.com/TkTech/$_srcname"
+arch=('aarch64' 'x86_64')
 license=('MIT')  # SPDX-License-Identifier: MIT
 makedepends=(
   'git'
-  'pybind11'
+  'nanobind'
   'python-build'
   'python-installer'
+  'python-scikit-build-core'
   'python-wheel'
 )
 depends=(
@@ -24,9 +26,9 @@ depends=(
   'glibc'
   'python>=3.9'
 )
-source=("git+$url.git")
 provides=("$_pkgname")
-conflicts=("$_pkgname")
+conflicts=("${provides[@]}")
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -39,17 +41,6 @@ pkgver() {
 build() {
   cd "$_srcdir"
 
-  # RFC-0023
-  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  #
-  # ld(1) says: “Supported for i386 and x86-64.”
-  case "Z${CARCH:-unknown}" in
-    'Zx86_64' | 'Zi386' )
-      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
-    ;;
-    * ) : pass ;;
-  esac
-
   python -m build --wheel --no-isolation
 }
 
@@ -58,8 +49,12 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -vDm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -vDm0644 LICENSE   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+
+  for _dir in doc licenses; do
+    cd "$pkgdir/usr/share/$_dir" && ln -vsr "$pkgname" "$_pkgname"
+  done
 }
 
 # eof
