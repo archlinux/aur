@@ -1,2 +1,3 @@
-2.39.1-1 [2026-01-21]
-- Updated with the latest security patches and performance enhancements. Chromium engine updated to 144.0.7559.97.
+2.39.2-1 [2026-01-28]
+- [Desktop][BugFix] Added support for the --disable-features command-line flag. 
+- Updated with the latest security patches and performance enhancements. Chromium engine updated to 144.0.7559.110.
