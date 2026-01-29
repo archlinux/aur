@@ -28,4 +28,5 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
 
     install -Dm644 video-player.desktop "$pkgdir/usr/share/applications/untitled-video-player.desktop"
+    install -Dm644 assets/icon.svg "$pkgdir/usr/share/pixmaps/untitled-video-player.svg"
 }
