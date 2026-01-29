@@ -1,6 +1,6 @@
 pkgbase = terramind
 	pkgdesc = The AI coding agent built for the terminal.
-	pkgver = 0.1.6
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://github.com/terramind-com/terramind-cli
 	arch = aarch64
@@ -11,9 +11,9 @@ pkgbase = terramind
 	provides = terramind
 	options = !debug
 	options = !strip
-	source_aarch64 = terramind_0.1.6_aarch64.zip::https://github.com/terramind-com/terramind-cli-releases/releases/download/v0.1.6/terramind-linux-arm64.zip
-	sha256sums_aarch64 = 736a73f270c16cf76e551276dfa6c1f7d66c91ee5936a87a9bfadde17797fd91
-	source_x86_64 = terramind_0.1.6_x86_64.zip::https://github.com/terramind-com/terramind-cli-releases/releases/download/v0.1.6/terramind-linux-x64.zip
-	sha256sums_x86_64 = 66d702d37b84772b33cb3a0aab51ff9a7bc9ac7deacead22f18843451296fdc6
+	source_aarch64 = terramind_0.1.10_aarch64.zip::https://github.com/terramind-com/terramind-cli-releases/releases/download/v0.1.10/terramind-linux-arm64.zip
+	sha256sums_aarch64 = fa8bbe58ddf98324be420b134d478fc915af71e304f4f90cdec2b8a71ab85557
+	source_x86_64 = terramind_0.1.10_x86_64.zip::https://github.com/terramind-com/terramind-cli-releases/releases/download/v0.1.10/terramind-linux-x64.zip
+	sha256sums_x86_64 = 0ae2afb2e8a6e2b8405ed8129bc43ee7956ac1abfcc0b48c639965f17bf33106
 
 pkgname = terramind
