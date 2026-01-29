@@ -2,7 +2,7 @@
 
 _name=langgraph-checkpoint-sqlite
 pkgname=python-$_name
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="Library with a SQLite implementation of LangGraph checkpoint saver."
 arch=('any')
@@ -12,12 +12,7 @@ depends=('python' 'python-langgraph-checkpoint' 'python-aiosqlite' 'python-sqlit
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-mock' 'python-pytest-rerunfailures')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('a34961c035944af0ee7af416f8f26fec25059b10387a69dcb13fc6cc59c30a25')
-
-prepare() {
-  cd "$srcdir"/${_name//-/_}-$pkgver
-  sed -i '/if not self.conn.is_alive():/{N;d;}' langgraph/checkpoint/sqlite/aio.py
-}
+sha256sums=('438c234d37dabda979218954c9c6eb1db73bee6492c2f1d3a00552fe23fa34ed')
 
 build() {
     cd "$srcdir"/${_name//-/_}-$pkgver
