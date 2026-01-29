@@ -12,7 +12,7 @@
 # binary version of this package (-bin): github.com/noahvogt/ungoogled-chromium-xdg-bin-aur
 
 pkgname=ungoogled-chromium-xdg
-pkgver=144.0.7559.96
+pkgver=144.0.7559.109
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -44,18 +44,16 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         use-oauth2-client-switches-as-default.patch
-        chromium-144-fix-hdr-issue.patch
         # ungoogled-chromium-xdg patches
         xdg-basedir.patch
         no-omnibox-suggestion-autocomplete.patch)
-sha256sums=('6f7fbeaa5ef0b1b4c0ede631edb7365ae48602f587c3c3b65af874922d21a064'
-            '769dff6846ee57058cb6a7c7c0a303d2d2c5e037e0b9f136d7367c7b396bb555'
+sha256sums=('06c6bf558a17636070495d2d33117501c361c6984d71356188cdfae7d9ee8bc1'
+            'fd41306be5ee9411cae735a9a49a79dedeaacc5a8b9fb93f7b914192addf143e'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e'
             'ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             'e6da901e4d0860058dc2f90c6bbcdc38a0cf4b0a69122000f62204f24fa7e374'
-            '789ee9bfe39772eae0df42c187b7a54550921b909bfae8051df81a1b4621f307'
             '2848ccca54ec4a118471b833d20cf3a32fff7775d5b0fc881f9e1660dcd6ca23'
             'ff1591fa38e0ede7e883dc7494b813641b7a1a7cb1ded00d9baaee987c1dbea8')
 
@@ -136,8 +134,6 @@ prepare() {
 
   # Increase _FORTIFY_SOURCE level to match Arch's default flags
   patch -Np1 -i ../increase-fortify-level.patch
-
-  patch -Np1 -i ../chromium-144-fix-hdr-issue.patch
 
   # Custom Patches
 
