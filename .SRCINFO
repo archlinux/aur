@@ -1,0 +1,17 @@
+pkgbase = go-better-html-coverage-bin
+	pkgdesc = Better HTML Go Coverage - Single-file HTML coverage reports for Go
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/chmouel/go-better-html-coverage
+	license = Apache-2.0
+	optdepends = xdg-utils
+	conflicts = go-better-html-coverage
+	provides = go-better-html-coverage
+	arch = aarch64
+	source_aarch64 = https://github.com/chmouel/go-better-html-coverage/releases/download/v${pkgver}/go-better-html-coverage-${pkgver}-linux-arm64.tar.gz
+	sha256sums_aarch64 = 7c3e6479046d8cf3916bbf65ef85029f0c02230ebc08fc0ee12e066b70defc1d
+	arch = x86_64
+	source_x86_64 = https://github.com/chmouel/go-better-html-coverage/releases/download/v${pkgver}/go-better-html-coverage-${pkgver}-linux-amd64.tar.gz
+	sha256sums_x86_64 = 9e3c820a03ada83f9406798fb043e9eaefa2427902fc188fb8e5df19cc70f8fd
+	
+pkgname = go-better-html-coverage-bin
