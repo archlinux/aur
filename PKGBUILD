@@ -2,7 +2,7 @@
 pkgname=openshot-bin
 _pkgname=OpenShot
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An award-winning free and open-source video editor,is dedicated to delivering high quality video editing and animation solutions to the world.(Prebuilt version)"
 arch=('x86_64')
 url="http://www.openshot.org/"
@@ -12,11 +12,8 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'ffmpeg'
-    'libopenshot'
-    'libopenshot-audio'
     'python'
     'python-pyqt5'
-    'python-pyqt5-webengine'
     'python-pyzmq'
     'python-requests'
     'qt5-base'
