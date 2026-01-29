@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Super Mario World
+Comment=PC reimplementation of Super Mario World
+Exec=smw
+Categories=Game;
