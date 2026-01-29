@@ -1,11 +1,11 @@
 pkgbase = butane-bin
 	pkgdesc = Fedora CoreOS Config Transpiler
 	pkgver = 0.26.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coreos/butane
 	arch = aarch64
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	provides = butane
 	conflicts = butane
 	validpgpkeys = C6E7F081CF80E13146676E88829B606631645531
