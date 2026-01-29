@@ -1,7 +1,7 @@
 # Maintainer: Matteo Bonora <bonora.matteo@gmail.com>
 
 pkgname=eez-studio-appimage
-pkgver=0.24.0
+pkgver=0.25.1
 pkgrel=2
 pkgdesc="Cross-platform low-code GUI and automation"
 arch=('x86_64' 'aarch64')
@@ -28,7 +28,7 @@ source=(
     "requirements.txt"
 )
 
-sha256sums=('541b115c009b418e5a8599b490a57ddfbc6c2631456c34684c4fc62f93cafe11'
+sha256sums=('e15dab2b4540705c9ac7ab6b79c45a7309005b8284fde0a688f967b58b713c49'
             '7019be3da97f345557fb38a581aabfd8a1d2e5324391a785213d8e5eb238aa90')
 
 prepare() {
@@ -39,7 +39,7 @@ prepare() {
 
 build() {
     sed -i "s|Exec=AppRun|Exec=${pkgname%-appimage}|" "${srcdir}/squashfs-root/eezstudio.desktop"
-    pip install --target="${srcdir}/pydeps" -r "${srcdir}/requirements.txt"
+    #pip install --target="${srcdir}/pydeps" -r "${srcdir}/requirements.txt"
 }
 
 package() {
