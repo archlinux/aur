@@ -13,11 +13,11 @@ source=("${_pkgname}-v${pkgver}.tar.gz::https://github.com/bitSheriff/${_pkgname
 sha256sums=('efbe8734f76d63f4a252f20fcb9c855e5ea28879c98d4ce2380c9d9b75646338')
 
 build() {
-    cd "${srcdir}/${_pkgname}-v${pkgver}"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     cargo build --release --locked
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}-v${pkgver}"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     install -Dm755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
