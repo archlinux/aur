@@ -1,6 +1,6 @@
 pkgbase = apifox-appimage
 	pkgdesc = Apifox - API documentation, debugging, mocking, and testing tool (AppImage in Zip)
-	pkgver = 2.7.48
+	pkgver = 2.8.4
 	pkgrel = 1
 	url = https://apifox.com
 	arch = x86_64
