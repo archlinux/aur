@@ -2,7 +2,7 @@
 # Contributor: Árni Dagur <arnidg@protonmail.ch>
 
 pkgname='xcp'
-pkgver='0.24.2'
+pkgver='0.24.3'
 pkgrel=1
 pkgdesc="An extended 'cp'"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -10,13 +10,15 @@ url='https://github.com/tarka/xcp'
 license=('GPL-3.0-only')
 depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('b318d40bf95ebc51fd23046e90fa30b19cc5eff3d1582654f879514f24119c3a4f3120fd5e528b2831a55982d0448d0b65ef004ce9a10dd5a163bfbc2ed0f135')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-v$pkgver.tar.gz")
+sha512sums=('926824a4d9d1e24206189a7747ebfcdeb56fb1c5ca146a1ec92068e167f6d7d8dbad0951cc12947a675dfdb25d82fe09d3a32812cfbad2e7c1bbf6070c2b7614')
+
+_src=$pkgname-$pkgname-v$pkgver
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
 
-  cd $pkgname-$pkgver
+  cd $_src
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -24,7 +26,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
 
-  cd $pkgname-$pkgver
+  cd $_src
   cargo build --release --frozen
 }
 
@@ -32,7 +34,7 @@ check() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
 
-  cd $pkgname-$pkgver
+  cd $_src
 
   if grep --quiet '^mail:' /etc/passwd; then
     ./tests/scripts/test-linux.sh
@@ -42,7 +44,7 @@ check() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $_src
 
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "completions/$pkgname.bash" "$pkgdir/usr/share/bash-completion/completions/$pkgname"
