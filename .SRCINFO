@@ -1,6 +1,6 @@
 pkgbase = terx-bin
 	pkgdesc = Cross-platform SSH client with GPU-accelerated terminal rendering
-	pkgver = 0.2.8
+	pkgver = 0.2.9
 	pkgrel = 1
 	url = https://github.com/OutrageLabs/terX
 	arch = x86_64
@@ -18,10 +18,10 @@ pkgbase = terx-bin
 	optdepends = gst-plugins-good: video/audio support
 	provides = terx
 	conflicts = terx
-	noextract = terx-bin-0.2.8.pkg.tar.zst
+	noextract = terx-bin-0.2.9.pkg.tar.zst
 	options = !strip
 	options = !debug
-	source = terx-bin-0.2.8.pkg.tar.zst::https://github.com/OutrageLabs/terX/releases/download/v0.2.8/terx-bin-0.2.8-1-x86_64.pkg.tar.zst
-	sha256sums = cbed804206596255ca2e796a29671d11555e83d68a1016b6b9a78fe43700fd83
+	source = terx-bin-0.2.9.pkg.tar.zst::https://github.com/OutrageLabs/terX/releases/download/v0.2.9/terx-bin-0.2.9-1-x86_64.pkg.tar.zst
+	sha256sums = 89b56e42fd4591b8169a5b5f7f34799d527aad79390d8f8b3a26b630a643be01
 
 pkgname = terx-bin
