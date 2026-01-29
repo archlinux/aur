@@ -1,6 +1,6 @@
 # Maintainer: Nicolas Szabo <nsz32@github>
 pkgname=abird-bin
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Desktop redistributable isolated browser - turns websites into standalone apps"
 arch=('x86_64')
