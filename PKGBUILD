@@ -1,4 +1,5 @@
 # Maintainer: Ivan Lalik <lalikivan02 [at] gmail [dot] com>
+_pkgname="AlacrittyTuner"
 pkgname=alacrittytuner
 pkgver=0.1.0
 pkgrel=1
@@ -14,11 +15,11 @@ source=("git+${url}.git")
 md5sums=('SKIP')
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/$_pkgname"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/$_pkgname"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
