@@ -4,7 +4,7 @@
 
 pkgname=python-rawpy
 _pkg="${pkgname#python-}"
-pkgver=0.25.1
+pkgver=0.26.0
 pkgrel=1
 pkgdesc="Python wrapper for the libraw library"
 arch=('x86_64')
@@ -26,7 +26,7 @@ makedepends=(
 checkdepends=('python-pytest' 'python-imageio' 'python-opencv')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=(
-    'b80ed5123648747707a4ea457877cda67c19d506ffe74aa932f3eb6cc82f1095d1a31f213aaabf1d58a484743920a8c48e20d28b53a7d8dac944f897c1f4cbf1')
+    '303b048799030e82a619867d5f06595443a2287224148ebe4fb3ae06d63ccffc406168c1d761089ea93d81949431b2f11b4354ed8778666e9e5cabb2af24a0c6')
 
 build() {
     cd "$_pkg-$pkgver"
