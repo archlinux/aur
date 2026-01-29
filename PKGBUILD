@@ -2,7 +2,7 @@
 
 pkgname=git-meld-index
 pkgver=0.2.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Run meld or any git difftool to interactively stage changes"
 arch=('any')
 url="https://github.com/jjlee/git-meld-index"

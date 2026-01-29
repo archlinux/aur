@@ -1,7 +1,7 @@
 pkgbase = git-meld-index
 	pkgdesc = Run meld or any git difftool to interactively stage changes
 	pkgver = 0.2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jjlee/git-meld-index
 	arch = any
 	license = GPL-2.0-only
