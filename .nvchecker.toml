@@ -1,0 +1,5 @@
+[nosy-bin]
+source = "github"
+github = "ynqa/nosy"
+use_latest_release = true
+prefix = "v"

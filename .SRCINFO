@@ -1,0 +1,18 @@
+pkgbase = nosy-bin
+	pkgdesc = CLI to summarize various types of content
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ynqa/nosy
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = nosy
+	conflicts = nosy
+	source_x86_64 = nosy-x86_64-0.1.0.txz::https://github.com/ynqa/nosy/releases/download/v0.1.0/nosy-cli-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 25af3cb9b0393f281d5a16848c3c3ba269498886f745e8b820e8fd932703b92b
+	source_aarch64 = nosy-aarch64-0.1.0.txz::https://github.com/ynqa/nosy/releases/download/v0.1.0/nosy-cli-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = a02f078163754ae949fbea7846b8dd11e09af54a329e1dcbef556f5e7fda261a
+
+pkgname = nosy-bin
