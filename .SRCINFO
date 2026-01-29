@@ -1,8 +1,8 @@
 pkgbase = zignal-git
 	pkgdesc = CLI to zignal, a zero-dependency image processing library
-	pkgver = 0.10.0+dev.71+0187f66
+	pkgver = 0.10.0+dev.132+5c86999
 	pkgrel = 1
-	url = http://github.com/bfactory-ai/zignal
+	url = http://github.com/arrufat/zignal
 	arch = x86_64
 	arch = aarch64
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = zignal-git
 	makedepends = zig
 	provides = zignal
 	conflicts = zignal
-	source = git+http://github.com/bfactory-ai/zignal.git
+	source = git+http://github.com/arrufat/zignal.git
 	sha256sums = SKIP
 
 pkgname = zignal-git
