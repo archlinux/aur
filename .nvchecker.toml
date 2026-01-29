@@ -1,0 +1,5 @@
+[logu-bin]
+source = "github"
+github = "ynqa/logu"
+use_latest_release = true
+prefix = "v"
