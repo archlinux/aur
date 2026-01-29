@@ -1,0 +1,20 @@
+pkgbase = python-axios
+	pkgdesc = Command line utility to access the Axios Italia school electronic register
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/zmoog/axios
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-click
+	depends = python-lxml
+	depends = python-requests
+	depends = python-rich
+	source = https://files.pythonhosted.org/packages/source/a/axios/axios-0.4.0.tar.gz
+	sha256sums = 05ead76efd427e94ccc672e203a2b19fcbf4aafc4b8fc7060105f492f5be18a2
+
+pkgname = python-axios
