@@ -1,11 +1,11 @@
 # Maintainer: Amin Vakil <info AT aminvakil DOT com>
 pkgname=docker-bench-security-git
-pkgver=1.3.5.r142.gdfb3a90
-pkgrel=2
+pkgver=1.6.1.r14.gff26d67
+pkgrel=1
 pkgdesc="Check common best-practices around deploying Docker container"
 arch=('any')
 url="https://github.com/docker/docker-bench-security"
-license=('Apache')
+license=('Apache-2.0')
 conflicts=('docker-bench-security')
 provides=('docker-bench-security')
 source=("git+$url.git"
