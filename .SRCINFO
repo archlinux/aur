@@ -1,18 +1,21 @@
 pkgbase = wonderlab-git
-	pkgdesc = 下一代跨平台 Minecraft 启动器
-	pkgver = 1.2.8
+	pkgdesc = 下一代跨平台 Minecraft 启动器 (dev 分支)
+	pkgver = r1052.ca6d0b8
 	pkgrel = 1
-	url = https://github.com/Blessing-Studio/WonderLab.Override
+	url = https://github.com/Lunova-Studio/WonderLab.Override
 	arch = x86_64
-	license = AGPL3
-	makedepends = dotnet-sdk
-	makedepends = dotnet-runtime
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = dotnet-sdk>=8.0
+	depends = dotnet-runtime>=8.0
+	depends = fontconfig
+	provides = wonderlab
 	conflicts = wonderlab
 	options = !strip
 	options = !emptydirs
-	source = WonderLab.Override-1.2.8.tar.gz::https://github.com/Blessing-Studio/WonderLab.Override/archive/refs/heads/master.tar.gz
+	source = git+https://github.com/Lunova-Studio/WonderLab.Override.git#branch=dev
 	source = wonderlab.desktop
 	sha512sums = SKIP
-	sha512sums = f1bdc93d55f94d55eafc648bd94d38120535ba81cc7078ee90de55f9506e16efbdfb7fab5d413e1d1800e13a9b1d85445a726bee6b646011772044edcc4210ba
+	sha512sums = 6ffed303f1a399689378af1a435c2a358fc71f5dbaa110717d0a58849eccdd9965cdf024f479e84314b65fb181347d60ceec170111e4cee13802bbb000db7880
 
 pkgname = wonderlab-git
