@@ -1,0 +1,16 @@
+pkgbase = gitlab-ci-linter
+	pkgdesc = Tool for validating .gitlab-ci.yml using Gitlab API
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://gitlab.com/orobardet/gitlab-ci-linter
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	conflicts = gitlab-ci-linter-bin
+	source = gitlab-ci-linter-2.4.0.tar.bz2::https://gitlab.com/orobardet/gitlab-ci-linter/-/archive/v2.4.0/gitlab-ci-linter-v2.4.0.tar.bz2
+	sha256sums = caacfabcb3e5d01b821c685d443b709c464b999a60f72bd67ead4a2d991547d7
+
+pkgname = gitlab-ci-linter
