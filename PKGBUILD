@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=SDMetrics
 pkgname=python-${_base,,}
-pkgver=0.25.0
+pkgver=0.26.0
 pkgrel=1
 pkgdesc="Metrics for Synthetic Data Generation Projects"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(python-scikit-learn python-copulas python-tqdm python-plotly)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest python-pomegranate)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('9f746b6e7c1a1be4cfa4186a070d6f1cefa9ee64939fe93e856ce434ca57fe60fa46b19d5dcff4ba970da71a0f245b426d52dabb49dc4c820b548585f7f447a0')
+sha512sums=('d15738225cee6c98e87c7a43f8f587f2a012fec3434101d8371dd789ee95c98f929ebc9758bb5a29e740123861c733c9120c69f35232eb1cdf704b541033f230')
 
 build() {
   cd ${_base}-${pkgver}
