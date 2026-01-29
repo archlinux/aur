@@ -23,9 +23,8 @@ sha256sums=(
 
 pkgver() {
   cd pwasio
-  set -x
-  local ver
-  ver=$(git describe --long --tags --abbrev=7 2>/dev/null || true)
+
+  local ver=$(git describe --long --tags --abbrev=7 2>/dev/null || true)
   if [[ -n "$ver" ]]; then
     printf '%s\n' "${ver#v}" | sed 's/-/./g'
   else
@@ -43,6 +42,6 @@ package() {
   install -D -m755 lib/wine/x86_64-unix/pwasio.dll.so "$pkgdir"/usr/lib/wine/x86_64-unix/pwasio.dll.so
   install -D -m644 lib/wine/x86_64-windows/pwasio.dll "$pkgdir"/usr/lib/wine/x86_64-windows/pwasio.dll
   install -D -m755 ../pwasio-install "$pkgdir"/usr/bin/pwasio-install
-  install -D -m644 README.md "$pkgdir"/usr/share/"$pkgname"/README.md
+  install -D -m644 README.md "$pkgdir"/usr/share/pwasio/README.md
 }
 # vim:set ts=2 sw=2 et:
