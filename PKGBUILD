@@ -2,7 +2,7 @@
 
 pkgname=gmpublisher-bin
 _realname=gmpublisher
-pkgver=2.11.2
+pkgver=2.11.3
 pkgrel=1
 pkgdesc="Workshop Publishing Utility for Garry's Mod, written in Rust & Svelte and powered by Tauri"
 arch=('x86_64')
@@ -62,6 +62,6 @@ post_remove() {
 sha256sums=('3557f4117aed96652c76590f5727953868a377b1dee6391cdc0e14decd36252d'
             'd1bfc7a749950924bd5d27dee610ac8933f96badc14a774be796e986b9dcd3aa'
             '5e9fb667ca5095013921970c58b53f984f4ba0836edf6b78876e03861b5f4265')
-sha256sums=('01b7113f5e8106723febcb5ef3764d085bedf6c6d8d5c3fef1c6fceb13d8eb80'
+sha256sums=('4086477a89d95e2ffb5e0064ad35349561f333c3c4a51e2e43c6d683a3a7c618'
             'd1bfc7a749950924bd5d27dee610ac8933f96badc14a774be796e986b9dcd3aa'
             '5e9fb667ca5095013921970c58b53f984f4ba0836edf6b78876e03861b5f4265')
