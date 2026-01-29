@@ -33,9 +33,7 @@ class CrossFileGenerator:
         self.extra_cpp_args = []
         self.extra_link_args = []
 
-        if self.arch == 'armv7a-eabi':
-            self.extra_c_args = ['-mfloat-abi=softfp']
-            self.extra_cpp_args = self.extra_c_args[:]
+        # Add extra flags HERE if necessary.
 
         self.cflags = ' '.join(self.extra_c_args + self.cflags.split())
         self.cxxflags = ' '.join(self.extra_cpp_args + self.cxxflags.split())
