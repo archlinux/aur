@@ -1,13 +1,13 @@
 # Maintainer: Djalel Oukid(sniper1720) <sniper1720@linuxtechmore.com>
 _pkgname=elegant-sddm-manjarolinux-theme
 pkgname=sddm-theme-elegant-manjarolinux-git
-pkgver=1.2.0.r0.gc392f03
+pkgver=1.2.0.r24.gcc17b89
 pkgrel=1
 pkgdesc="A simple and elegant SDDM theme for Manjaro Linux"
 arch=('any')
 url="https://github.com/sniper1720/elegant-sddm-manjarolinux-theme"
 license=('CC-BY-SA-3.0')
-depends=('sddm' 'qt6-base' 'qt6-declarative' 'qt6-svg' 'qt6-5compat')
+depends=('sddm' 'qt6-base' 'qt6-declarative' 'qt6-svg')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
