@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _npmname=cloudcmd
-_npmver=19.1.17
+_npmver=19.1.18
 
 pkgname=${_npmname}
 pkgdesc="Cloud Commander file manager for the web with console and editor."
