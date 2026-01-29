@@ -1,13 +1,13 @@
 # Maintainer: Djalel Oukid(sniper1720) <sniper1720@linuxtechmore.com>
 _pkgname=elegant-sddm-archlinux-theme
 pkgname=sddm-theme-elegant-archlinux-git
-pkgver=1.2.0.r0.gcecc07e
+pkgver=1.2.0.r45.g465a805
 pkgrel=1
 pkgdesc="A simple and elegant SDDM theme for Arch Linux"
 arch=('any')
 url="https://github.com/sniper1720/elegant-sddm-archlinux-theme"
 license=('CC-BY-SA-3.0')
-depends=('sddm' 'qt6-base' 'qt6-declarative' 'qt6-svg' 'qt6-5compat')
+depends=('sddm' 'qt6-base' 'qt6-declarative' 'qt6-svg')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
