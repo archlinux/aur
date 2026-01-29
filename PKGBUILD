@@ -1,6 +1,6 @@
 # Maintainer: Emiliopg91 <ojosdeserbio@gmail.com>
 pkgname=rog-perf-tuner
-pkgver=4.10.7
+pkgver=4.10.8
 pkgrel=1
 pkgdesc="An utility to manage Asus Rog laptop performance and RGB lighting"
 arch=(
@@ -18,6 +18,7 @@ sha256sums=(
 )
 options=(
   '!debug'
+  '!lto'
 )
 depends=(
   'asusctl'
@@ -44,7 +45,6 @@ makedepends=(
   'clang'
   'cmake'
   'git'
-  'fuse2'
   'ninja'
   'npm'
   'pkgconf'
@@ -66,9 +66,6 @@ prepare() {
 }
 
 build() {
-    export APPIMAGE_EXTRACT_AND_RUN=1
-    unset SOURCE_DATE_EPOCH
-
     clean_flags() {
         echo "$1" \
         | sed -E 's/(^| )-Wp,-D_FORTIFY_SOURCE=[0-9]+//g' \
