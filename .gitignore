@@ -6,4 +6,4 @@ pkg
 *.tar.zst
 *.log
 LICENSE_*
-gitlab-ci-linter_*
+gitlab-ci-linter*
