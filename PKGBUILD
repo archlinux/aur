@@ -1,6 +1,6 @@
 # Maintainer: kofany <j@dabrowski.biz>
 pkgname=terx-bin
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="Cross-platform SSH client with GPU-accelerated terminal rendering"
 arch=('x86_64')
@@ -24,24 +24,14 @@ optdepends=(
 provides=('terx')
 conflicts=('terx')
 options=('!strip' '!debug')
-source=("${pkgname}-${pkgver}.deb::https://github.com/OutrageLabs/terX/releases/download/v${pkgver}/terX_${pkgver}_amd64.deb")
-sha256sums=('SKIP')
+source=("terx-bin-${pkgver}.pkg.tar.zst::https://github.com/OutrageLabs/terX/releases/download/v${pkgver}/terx-bin-${pkgver}-1-x86_64.pkg.tar.zst")
+sha256sums=('cbed804206596255ca2e796a29671d11555e83d68a1016b6b9a78fe43700fd83')
+noextract=("terx-bin-${pkgver}.pkg.tar.zst")
 
 package() {
     cd "${srcdir}"
-
-    # Extract deb
-    bsdtar -xf data.tar.* -C "${pkgdir}/"
-
-    # Ensure binary is executable
-    if [[ -f "${pkgdir}/usr/bin/terx" ]]; then
-        chmod 755 "${pkgdir}/usr/bin/terx"
-    elif [[ -f "${pkgdir}/usr/bin/ter-x" ]]; then
-        chmod 755 "${pkgdir}/usr/bin/ter-x"
-        ln -sf ter-x "${pkgdir}/usr/bin/terx"
-    fi
-
-    # Install license
-    install -Dm644 /dev/null "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    echo "terX is proprietary software. See https://github.com/OutrageLabs/terX" > "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    # Extract the pre-built Arch package directly
+    bsdtar -xf "terx-bin-${pkgver}.pkg.tar.zst" -C "${pkgdir}/"
+    # Remove package metadata (we're repackaging)
+    rm -f "${pkgdir}/.PKGINFO" "${pkgdir}/.BUILDINFO" "${pkgdir}/.MTREE" 2>/dev/null || true
 }
