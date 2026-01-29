@@ -1,23 +1,17 @@
---- a/requirements.txt	2025-09-26 08:59:44.000000000 +1000
-+++ b/requirements.txt	2025-09-28 18:35:18.750816642 +1000
-@@ -1,13 +1,12 @@
- PySide6
--winshell
--pywin32
- vdf
- nbtlib
- thefuzz
- vmu-tools
-
--psutil==5.9.8
--requests==2.31.0
--steamgriddb==1.0.5
-+psutil
-+requests
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -11,9 +11,11 @@
+ requests>=2.31.0
+ # steamgriddb  # Temporarily disabled - not available on all Linux platforms
  # For Linux native notifications
 -notify-py==0.3.43
-\ No newline at end of file
 +notify-py
-+
-+pyinstaller
+ 
+ # Google Drive Cloud Save (2.0)
+ google-auth-oauthlib>=1.0.0
+ google-auth-httplib2>=0.1.0
+-google-api-python-client>=2.0.0
 \ No newline at end of file
++google-api-python-client>=2.0.0
++# Build dependencies
++pyinstaller
