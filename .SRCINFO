@@ -1,7 +1,7 @@
 pkgbase = ledspicer
 	pkgdesc = LED controller daemon for arcade cabinets and RGB lighting
 	pkgver = 0.7.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/meduzapat/LEDSpicer
 	arch = x86_64
 	arch = aarch64
@@ -17,36 +17,57 @@ pkgbase = ledspicer
 	source = ledspicer-0.7.3.tar.gz::https://github.com/meduzapat/LEDSpicer/archive/refs/tags/0.7.3.tar.gz
 	sha256sums = 770f958e3ad3d6805878dddbd3c22478a3489d3847c378e9af62feed4cd6916d
 
+pkgname = libledspicer
+	pkgdesc = LEDSpicer shared runtime library
+	depends = tinyxml2>=6.0
+	depends = libusb>=1.0.22
+
 pkgname = ledspicer
 	pkgdesc = LED controller daemon for arcade cabinets and RGB lighting
+	install = ledspicer.install
+	depends = libledspicer
 	depends = tinyxml2>=6.0
 	depends = libusb>=1.0.22
 	depends = libpulse>=0.9
 	depends = alsa-lib>=0.2
+	optdepends = ledspicer-nanoled: Ultimarc NanoLed support
+	optdepends = ledspicer-pacdrive: Ultimarc PacDrive support
+	optdepends = ledspicer-pacled64: Ultimarc PacLed64 support
+	optdepends = ledspicer-ultimateio: Ultimarc Ultimate I/O support
+	optdepends = ledspicer-ledwiz32: Groovy Game Gear LedWiz32 support
+	optdepends = ledspicer-howler: WolfWareTech Howler support
+	optdepends = ledspicer-adalight: Adalight serial LED support
+	optdepends = ledspicer-dev: Development headers
 
 pkgname = ledspicer-nanoled
 	pkgdesc = LEDSpicer plugin for Ultimarc NanoLed
+	depends = ledspicer
 
 pkgname = ledspicer-pacdrive
 	pkgdesc = LEDSpicer plugin for Ultimarc PacDrive
+	depends = ledspicer
 
 pkgname = ledspicer-pacled64
 	pkgdesc = LEDSpicer plugin for Ultimarc PacLed64
+	depends = ledspicer
 
 pkgname = ledspicer-ultimateio
 	pkgdesc = LEDSpicer plugin for Ultimarc Ultimate I/O
+	depends = ledspicer
 
 pkgname = ledspicer-ledwiz32
 	pkgdesc = LEDSpicer plugin for Groovy Game Gear LedWiz32
+	depends = ledspicer
 
 pkgname = ledspicer-howler
 	pkgdesc = LEDSpicer plugin for WolfWareTech Howler
+	depends = ledspicer
 
 pkgname = ledspicer-adalight
 	pkgdesc = LEDSpicer plugin for Adalight serial LEDs
-
-pkgname = ledspicer-raspberrypi
-	pkgdesc = LEDSpicer plugin for Raspberry Pi GPIO
+	depends = ledspicer
 
 pkgname = ledspicer-dev
-	pkgdesc = LEDSpicer development headers
+	pkgdesc = LEDSpicer development headers and pkg-config metadata
+	depends = libledspicer
+
