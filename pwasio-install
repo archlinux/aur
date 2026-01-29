@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+WINEPREFIX="${WINEPREFIX:-$HOME/.wine}"
+SYSTEM32_DIR="$WINEPREFIX/drive_c/windows/system32"
+
+install -m 0644 /usr/lib/wine/x86_64-windows/pwasio.dll "$SYSTEM32_DIR/pwasio.dll"
+
+WINEPREFIX="$WINEPREFIX" wine regsvr32 pwasio.dll

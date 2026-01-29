@@ -1,0 +1,8 @@
+post_install() {
+echo "Your user must belong to the realtime group in order to use pwasio."
+echo "This can be done with sudo usermod -aG realtime \$(whoami)"
+echo ""
+echo "To copy/register pwasio in your prefix run:"
+echo "$ pwasio-install"
+}
+# vim:set ts=2 sw=2 et:

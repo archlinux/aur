@@ -1,0 +1,22 @@
+pkgbase = pwasio-git
+	pkgdesc = PipeWire ASIO driver for Wine
+	pkgver = 0.1.0.r142.g4ec9878
+	pkgrel = 1
+	url = https://github.com/golfiros/pwasio
+	install = pwasio.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = gcc
+	makedepends = git
+	makedepends = make
+	depends = pipewire
+	depends = realtime-privileges
+	depends = wine
+	options = !lto
+	options = !debug
+	source = git+https://github.com/golfiros/pwasio.git
+	source = pwasio-install
+	sha256sums = SKIP
+	sha256sums = d7cd82146cc55cb76ddda40e9e43d100cf7e844f072d96a88d56abb51de737e9
+
+pkgname = pwasio-git
