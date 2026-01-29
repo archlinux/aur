@@ -7,5 +7,8 @@ export LD_LIBRARY_PATH="${_APPDIR}/lib:${LD_LIBRARY_PATH}"
 #export XDG_RUNTIME_DIR="${_APPDIR}/lib:${XDG_RUNTIME_DIR}"
 export QT_PLUGIN_PATH="${_APPDIR}/lib:${QT_PLUGIN_PATH}"
 export RUNLEVEL=3
+if [ ! -d "/tmp/@appname@" ]; then
+    mkdir "/tmp/@appname@"
+fi
 cd "${_APPDIR}" || { echo "Failed to change directory to ${_APPDIR}"; exit 1; }
 exec "${_RUNNAME}" "$@" || exit $?
