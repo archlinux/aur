@@ -6,7 +6,7 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-postgresql
 pkgver=18.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Sophisticated object-relational DBMS (Android ${_android_arch})"
 url='https://www.postgresql.org/'
@@ -64,6 +64,7 @@ package() {
     source android-env ${_android_arch}
 
     make -C src/interfaces/libpq DESTDIR="${pkgdir}" install
+    make -C src/include DESTDIR="${pkgdir}" install
     rm -rf "${pkgdir}/${ANDROID_PREFIX_BIN}"
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so

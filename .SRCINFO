@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-postgresql
 	pkgdesc = Sophisticated object-relational DBMS (Android aarch64)
 	pkgver = 18.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.postgresql.org/
 	arch = any
 	groups = android-postgresql
