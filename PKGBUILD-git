@@ -1,0 +1,34 @@
+# Maintainer: Pater Kleomenis <paterkleomenis@protonmail.com>
+pkgname=connected-desktop-git
+_pkgname=connected-desktop
+pkgver=2.0.7.r0.gbb418c7
+pkgrel=1
+pkgdesc="High-speed, offline, cross-platform ecosystem bridging devices (Git version)"
+arch=('x86_64')
+url="https://github.com/paterkleomenis/connected"
+license=('MIT' 'Apache-2.0')
+depends=('gtk3' 'webkit2gtk-4.1' 'libappindicator-gtk3' 'openssl' 'dbus' 'libxss')
+makedepends=('git' 'rust' 'cargo' 'clang' 'pkgconf')
+provides=("$_pkgname")
+conflicts=("$_pkgname" "$_pkgname-bin")
+source=("git+https://github.com/paterkleomenis/connected.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "connected"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd "connected"
+  cargo build --release --package connected-desktop
+}
+
+package() {
+  cd "connected"
+  install -Dm755 "target/release/connected-desktop" "$pkgdir/usr/bin/$_pkgname"
+  install -Dm644 "packaging/aur/connected-desktop.desktop" "$pkgdir/usr/share/applications/connected-desktop.desktop"
+  install -Dm644 "android/app/src/main/ic_launcher-playstore.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/connected-desktop.png"
+  install -Dm644 "LICENSE-MIT" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE-MIT"
+  install -Dm644 "LICENSE-APACHE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE-APACHE"
+}
