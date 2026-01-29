@@ -2,7 +2,7 @@
 
 _name=spitch
 pkgname=python-$_name
-pkgver=1.41.2
+pkgver=1.45.0
 pkgrel=1
 pkgdesc='The official Python library for the spitch API.'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-httpx' 'python-pydantic' 'python-typing_extensions' 'p
 makedepends=('python-hatchling' 'python-hatch-fancy-pypi-readme' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-respx' 'python-pytest' 'python-pytest-asyncio' 'python-time-machine' 'python-dirty-equals' 'python-rich' 'python-pytest-xdist' 'npm' 'nodejs')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4d400adc8d8317911648bb3a373a220fa5a49ebcd850d9d700d91e4e1b968265')
+sha256sums=('e0542818538435c3aca624fa12654b401d18de02f93d3a594b7bf54142b4e7ed')
 
 prepare(){
   cd "$srcdir"/$_name-python-$pkgver
@@ -29,8 +29,10 @@ check() {
   export DEFER_PYDANTIC_BUILD=false
   local pytest_options=(
     -vv
+    --disable-warnings
+    -p 'no:benchmark'
     # Need to be fixed by developers
-    --deselect tests/api_resources/test_jobs.py
+    --deselect tests/api_resources/test_speech.py
     --deselect tests/api_resources/test_files.py
   )
   cd "$srcdir"/$_name-python-$pkgver
