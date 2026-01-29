@@ -13,6 +13,7 @@ depends=(
     'python-pydantic'
     'python-click'
     'python-jpype1'
+    'ghidra'
 )
 makedepends=(
     'python-build'
@@ -22,7 +23,6 @@ makedepends=(
 optdepends=(
     'python-capstone: emulation support'
     'python-unicorn: emulation support'
-    'ghidra: required for binary analysis'
 )
 source=("https://files.pythonhosted.org/packages/source/p/pyghidra-lite/pyghidra_lite-${pkgver}.tar.gz")
 sha256sums=('7b1ed447c81b96fa7fb9286c8eb6ccff78d0de59dabb7b39d4a831fa778ea1f8')

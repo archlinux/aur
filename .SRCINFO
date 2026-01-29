@@ -14,9 +14,9 @@ pkgbase = python-pyghidra-lite
 	depends = python-pydantic
 	depends = python-click
 	depends = python-jpype1
+	depends = ghidra
 	optdepends = python-capstone: emulation support
 	optdepends = python-unicorn: emulation support
-	optdepends = ghidra: required for binary analysis
 	source = https://files.pythonhosted.org/packages/source/p/pyghidra-lite/pyghidra_lite-0.1.1.tar.gz
 	sha256sums = 7b1ed447c81b96fa7fb9286c8eb6ccff78d0de59dabb7b39d4a831fa778ea1f8
 
