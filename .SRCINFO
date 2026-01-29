@@ -1,7 +1,7 @@
 pkgbase = seti-astro-suite-pro-bin
 	pkgdesc = Seti Astro Suite Pro is a comprehensive suite for staking and editing Astrophotography images.
 	pkgver = 1.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.setiastro.com/seti-astro-suite-pro
 	arch = x86_64
 	license = GPLv3
@@ -21,6 +21,6 @@ pkgbase = seti-astro-suite-pro-bin
 	sha256sums = 10ca643fd2105a538a65b3abb831db5dba40c0dfd9a42bc203a2fa8740edec6e
 	sha256sums = 26e186f5f7c3177f6adff3dfb78bc6a569704d2e187db336263c2094a49267c2
 	source_x86_64 = setiastrosuitepro_linux.tar.xz::https://github.com/setiastro/setiastrosuitepro/releases/download/V1.8.1/setiastrosuitepro_linux.tar.xz
-	sha256sums_x86_64 = c63427f375adabfb7126edbbfc12a5be5e7e736a0e11961236c82d710ce091c7
+	sha256sums_x86_64 = 2318518a92319e08b2ae34c49d7a7712c20e2bf78b5cd62b85174b232470dc87
 
 pkgname = seti-astro-suite-pro-bin
