@@ -1,0 +1,16 @@
+pkgbase = process-compose-git
+	pkgdesc = A simple and flexible scheduler and orchestrator to manage non-containerized applications
+	pkgver = 1.87.0.r17.gf9114c3
+	pkgrel = 1
+	url = https://github.com/F1bonacc1/process-compose
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go>=1.24.0
+	provides = process-compose
+	conflicts = process-compose
+	options = !debug
+	source = process-compose::git+https://github.com/F1bonacc1/process-compose
+	sha256sums = SKIP
+
+pkgname = process-compose-git
