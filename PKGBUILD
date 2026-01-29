@@ -6,7 +6,7 @@
 
 pkgname=bridge-utils
 pkgver=1.7.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Utilities for configuring the Linux ethernet bridge"
 arch=('x86_64')
 url='https://wiki.linuxfoundation.org/networking/bridge'
@@ -30,7 +30,8 @@ build() {
   ./configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
-    --sysconfdir=/etc
+    --sysconfdir=/etc \
+    --with-linux-headers=/usr/include
   make
 }
 

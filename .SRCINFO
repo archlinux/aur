@@ -1,7 +1,7 @@
 pkgbase = bridge-utils
 	pkgdesc = Utilities for configuring the Linux ethernet bridge
 	pkgver = 1.7.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://wiki.linuxfoundation.org/networking/bridge
 	arch = x86_64
 	license = GPL-2.0-or-later
