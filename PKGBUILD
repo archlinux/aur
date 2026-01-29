@@ -1,6 +1,6 @@
 # Maintainer: Sébastien Viande <sviande@gmail.com>
 pkgname=grepai-git
-pkgver=r130.98fc281
+pkgver=0.24.1.r0.g98fc281
 pkgrel=1
 pkgdesc="Semantic Search & Call Graphs for AI Agents (100% Local)"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --tags --long | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
@@ -24,8 +24,15 @@ build() {
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-    make build
+    local _version
+    _version=$(git describe --tags --abbrev=0 | sed 's/^v//')
+    go build \
+        -buildmode=pie \
+        -trimpath \
+        -mod=readonly \
+        -modcacherw \
+        -ldflags "-linkmode=external -s -w -X main.version=${_version}" \
+        -o bin/grepai ./cmd/grepai
 }
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = grepai-git
 	pkgdesc = Semantic Search & Call Graphs for AI Agents (100% Local)
-	pkgver = r130.98fc281
+	pkgver = 0.24.1.r0.g98fc281
 	pkgrel = 1
 	url = https://yoanbernabeu.github.io/grepai/
 	arch = x86_64
