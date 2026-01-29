@@ -1,0 +1,17 @@
+pkgbase = ocaml-opam-file-format
+	pkgdesc = Parser and printer for the opam file syntax
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://opam.ocaml.org
+	arch = x86_64
+	license = LicenseRef-LGPL2.1-with-OCaml-LGPL-linking-exception
+	checkdepends = ocaml-alcotest
+	checkdepends = ocaml-fmt
+	depends = dune
+	depends = ocaml
+	depends = ocaml-menhir
+	options = !strip
+	source = ocaml-opam-file-format-2.2.0.tar.gz::https://github.com/ocaml/opam-file-format/releases/download/2.2.0/opam-file-format-2.2.0.tar.gz
+	sha512sums = 87e1ddae79c47f48090b5e3205e0d2598e22838e065d0ea8924494ba225a4f8a8b4985a7eb3563652e9a9a5419741af7327035a01d446ebc7fedab468a8edb98
+
+pkgname = ocaml-opam-file-format
