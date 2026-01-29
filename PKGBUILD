@@ -14,6 +14,6 @@ package() {
     cd "${srcdir}"
     
     # Create installation directory
-    install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm755 "${_pkgname}-x86_64-unknown-linux-gnu" "${pkgdir}/usr/bin/${_pkgname}"
 }
 
