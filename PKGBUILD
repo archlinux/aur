@@ -1,7 +1,7 @@
 # Maintainer: Debba <debba@example.com>
 pkgname=tabularis-bin
 _pkgname=tabularis
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A lightweight, developer-focused database management tool"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 depends=('webkit2gtk-4.1' 'gtk3' 'libappindicator-gtk3' 'openssl')
 source=("${_pkgname}_${pkgver}_amd64.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('b690e3ad7821a7244ce158a53f880bba9bd7eeb15ecf726e3ec169d176bb6b12')
+sha256sums=('22f4f434e9713fd28633c28f277adf2e0115056a2948045f1aab452085bf6c59')
 
 package() {
     bsdtar -xf data.tar.* -C "${pkgdir}"
