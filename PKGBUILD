@@ -1,5 +1,5 @@
 pkgname=vgmstream-git
-pkgver=r2055.50.g9cbf6d5c
+pkgver=r2083.0.g57df2e17
 pkgrel=1
 pkgdesc='Library for playback of various streamed audio formats used in video games'
 arch=(x86_64)
@@ -8,7 +8,7 @@ license=(ISC)
 depends=(ffmpeg libao libatrac9-git libogg libvorbis mpg123 speex)
 makedepends=(audacious git glib2 pango)
 optdepends=('audacious: for using the bundled plugin')
-provides=(vgmstream)
+provides=(vgmstream libvgmstream)
 conflicts=(vgmstream vgmstream-kode54-git)
 replaces=(vgmstream-kode54-git)
 source=(${pkgname}::git+https://github.com/vgmstream/vgmstream.git
