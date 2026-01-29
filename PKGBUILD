@@ -1,15 +1,15 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=cs-string
-pkgver=1.4.0
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc='Standalone library for unicode aware string support'
 arch=('x86_64')
 url='https://www.copperspice.com/'
 license=('BSD-2-Clause')
 makedepends=('cmake') #'catch2'
 source=("https://github.com/copperspice/cs_string/archive/string-${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('f264994bb869916f59d356f451c3eecc6171565ae9bf828292bd3d7d14168db3')
+sha256sums=('4dc01bbc3e32d264830c6a62cbf097791759311fd665c18fd67c4f196199bc6e')
 
 build() {
     cmake -B build -S "cs_string-string-${pkgver}" \
