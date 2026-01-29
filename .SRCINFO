@@ -1,7 +1,7 @@
 pkgbase = beekeeper-qt
 	pkgdesc = Deduplicate redundant data in your disk and save space
 	pkgver = 1.2.99
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/techmanwalker/beekeeper-qt
 	arch = x86_64
 	license = AGPL-3.0-or-later
@@ -19,7 +19,7 @@ pkgbase = beekeeper-qt
 	optdepends = util-linux
 	optdepends = doxygen
 	provides = beekeeper
-	source = beekeeper-qt::git+https://github.com/techmanwalker/beekeeper-qt.git
+	source = beekeeper-qt-1.2.99.tar.gz::https://github.com/techmanwalker/beekeeper-qt/archive/refs/tags/v1.2.99.tar.gz
 	md5sums = SKIP
 
 pkgname = beekeeper-qt

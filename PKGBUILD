@@ -5,7 +5,7 @@
 
 pkgname=beekeeper-qt
 pkgver=1.2.99
-pkgrel=1
+pkgrel=2
 pkgdesc="Deduplicate redundant data in your disk and save space"
 url="https://github.com/techmanwalker/beekeeper-qt"
 depends=('qt6-base' 'qt6-tools' 'polkit-qt6' 'systemd' 'btrfs-progs' 'bees')
@@ -14,24 +14,11 @@ license=('AGPL-3.0-or-later')
 makedepends=('git' 'cmake' 'pkgconf' 'ninja' 'cli11')
 optdepends=('util-linux' 'doxygen')
 provides=('beekeeper')
-source=("$pkgname::git+${url}.git")
+source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 md5sums=('SKIP')
 
-pkgver() {
-  cd "$pkgname"
-  # Check if HEAD is exactly at a tag
-  TAG=$(git describe --tags --exact-match 2>/dev/null || true)
-  if [ -n "$TAG" ]; then
-    # If on a tag, use tag name (remove leading v if exists)
-    echo "${TAG#v}"
-  else
-    # Otherwise, fallback to commit hash style (current behavior)
-    git describe --long --always | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-  fi
-}
-
 build() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
   cmake -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
@@ -39,7 +26,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
   # remove samples instal which are only needed for unit tests
   sed '/samples\/cmake_install.cmake/d' -i build/cmake_install.cmake
   DESTDIR="${pkgdir}" cmake --install build
