@@ -1,6 +1,6 @@
 # Maintainer: Samueru-sama xdglawyer@outlook.com
 pkgname=zenity-rs-bin
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="Rust rewrite of zenity, much smaller and faster"
 arch=('aarch64' 'x86_64')
@@ -10,8 +10,8 @@ provides=('zenity')
 conflicts=('zenity')
 source_x86_64=("https://github.com/QaidVoid/zenity-rs/releases/download/v$pkgver/zenity-rs-x86_64-linux")
 source_aarch64=("https://github.com/QaidVoid/zenity-rs/releases/download/v$pkgver/zenity-rs-aarch64-linux")
-sha256sums_x86_64=('552a88052785f37d5219688722d55b08cb1b04928281e16b19a4377d91989ab1')
-sha256sums_aarch64=('f47a7ec2ce2ba33a2124badd6051a13cd7aeedcae429bfb4967ce449da0d0835')
+sha256sums_x86_64=('fc4d54c526be8aa2ef37aabd823754038b61e42827e99e167f7b56b7778f3f74')
+sha256sums_aarch64=('adb412d921cb02ade16c2e0b7bb83b02317d8b077e81c15672e732a359b0e74f')
 package() {
     cd "${srcdir}" || exit
     install -Dm755 "${srcdir}"/zenity-rs-"${CARCH}"-linux "${pkgdir}"/usr/bin/zenity
