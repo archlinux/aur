@@ -1,6 +1,6 @@
 pkgbase = aurynk
 	pkgdesc = Wirelessly connect, manage and control your Android devices
-	pkgver = 1.2.2
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://theishu.xyz/aurynk
 	arch = any
@@ -17,7 +17,8 @@ pkgbase = aurynk
 	depends = python-qrcode
 	depends = python-zeroconf
 	depends = scrcpy
-	source = aurynk-1.2.2.tar.gz::https://github.com/IshuSinghSE/aurynk/archive/refs/tags/v1.2.2.tar.gz
-	sha256sums = e273a85b2fcdc2bfe897b0ff53ff47a00792b086cb3d40b94e597a6c7239c349
+	depends = xdg-utils
+	source = aurynk-1.3.0.tar.gz::https://github.com/IshuSinghSE/aurynk/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = 604e1331c023482b158d1f8d5e5a327008e3bef404f0087bf1249ec9471a4c8c
 
 pkgname = aurynk
