@@ -5,7 +5,7 @@
 pkgbase=prusa-slicer
 pkgname=(prusa-slicer slicer-udev)
 pkgver=2.9.4
-pkgrel=4
+pkgrel=5
 pkgdesc="G-code generator for 3D printers (Prusa fork of Slic3r)"
 arch=('x86_64')
 url="https://github.com/prusa3d/PrusaSlicer"
@@ -38,11 +38,13 @@ prepare() {
   cd PrusaSlicer-version_${pkgver/_/-}
   # We want to use the system OpenVDB
   rm cmake/modules/FindOpenVDB.cmake
+
   # Dynamically link system OpenCASCADE
   sed -i -e 's/\(OpenCASCADE\).*\(REQUIRED\)/\1 \2/
              /TK/d
              s/^\(set(OCCT_LIBS\)/\1 TKDESTEP/' \
       src/occt_wrapper/CMakeLists.txt
+
   patch -Np1 -i "${srcdir}"/fixes_boost.patch
   patch -Np1 -i "${srcdir}"/fixes_cgal.patch
   patch -Np1 -i "${srcdir}"/fixes_nanosvg.patch
@@ -59,6 +61,9 @@ prepare() {
 
 build() {
   export CMAKE_POLICY_VERSION_MINIMUM=3.5
+
+  # Fix crashes
+  export CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
 
   # Use all packages currently available in extra from the system.
   # While upstream does not provide any support if we are using system deps,
