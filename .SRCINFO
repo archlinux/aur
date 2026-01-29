@@ -1,12 +1,13 @@
 pkgbase = claude-cowork-linux
 	pkgdesc = Anthropic Claude Desktop with Cowork (local agent) support for Linux
-	pkgver = 1.1.799
+	pkgver = 1.1.1200
 	pkgrel = 1
 	url = https://github.com/johnzfitch/claude-cowork-linux
 	arch = x86_64
 	license = custom:proprietary
 	makedepends = p7zip
 	makedepends = npm
+	makedepends = curl
 	depends = electron
 	depends = nodejs
 	optdepends = xdg-utils: for opening URLs
@@ -19,9 +20,7 @@ pkgbase = claude-cowork-linux
 	conflicts = claude-desktop-native
 	conflicts = claude-desktop-appimage
 	options = !strip
-	source = Claude-1.1.799.exe::https://downloads.claude.ai/releases/win32/x64/1.1.799/Claude-2e02b656cbbb1f14a5a81a4ed79b1c5ea1427507.exe
-	source = git+https://github.com/johnzfitch/claude-cowork-linux.git#tag=v1.1.799
-	sha256sums = SKIP
+	source = git+https://github.com/johnzfitch/claude-cowork-linux.git
 	sha256sums = SKIP
 
 pkgname = claude-cowork-linux

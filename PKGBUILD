@@ -1,6 +1,6 @@
 # Maintainer: Zack Fitch <zack@johnzfitch.com>
 pkgname=claude-cowork-linux
-pkgver=1.1.799
+pkgver=1.1.1200
 pkgrel=1
 pkgdesc="Anthropic Claude Desktop with Cowork (local agent) support for Linux"
 arch=('x86_64')
@@ -13,6 +13,7 @@ depends=(
 makedepends=(
     'p7zip'
     'npm'
+    'curl'
 )
 optdepends=(
     'xdg-utils: for opening URLs'
@@ -28,22 +29,40 @@ conflicts=(
 )
 options=('!strip')
 
-# Windows installer - same source as claude-desktop-debian
-_claude_hash="2e02b656cbbb1f14a5a81a4ed79b1c5ea1427507"
+# Auto-fetch latest Windows installer via redirect URL
 source=(
-    "Claude-${pkgver}.exe::https://downloads.claude.ai/releases/win32/x64/${pkgver}/Claude-${_claude_hash}.exe"
-    "git+https://github.com/johnzfitch/claude-cowork-linux.git#tag=v${pkgver}"
+    "git+https://github.com/johnzfitch/claude-cowork-linux.git"
 )
 sha256sums=(
-    'SKIP'  # Installer checksum
     'SKIP'  # Git source
 )
+
+# Dynamically determine version from Anthropic's latest redirect
+pkgver() {
+    # Follow redirect to get latest version
+    local url
+    url=$(curl -sL \
+        -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
+        -H "Accept: text/html,application/xhtml+xml" \
+        "https://claude.ai/api/desktop/win32/x64/exe/latest/redirect" \
+        -w "%{url_effective}" -o /dev/null)
+    # Extract version from URL: .../1.1.1200/Claude-hash.exe
+    echo "$url" | grep -oP '\d+\.\d+\.\d+' | head -1
+}
 
 prepare() {
     cd "${srcdir}"
 
+    # Download latest Windows installer via redirect
+    echo "Fetching latest Claude Desktop installer..."
+    curl -L \
+        -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
+        -H "Accept: text/html,application/xhtml+xml" \
+        "https://claude.ai/api/desktop/win32/x64/exe/latest/redirect" \
+        -o "Claude-latest.exe"
+
     # Extract Windows installer (contains nupkg)
-    7z x -y "Claude-${pkgver}.exe" -o"exe-extracted" >/dev/null 2>&1 || true
+    7z x -y "Claude-latest.exe" -o"exe-extracted" >/dev/null 2>&1 || true
 
     # Find and extract the nupkg (it's a zip file)
     _nupkg=$(find exe-extracted -name "*.nupkg" | head -1)
@@ -69,25 +88,33 @@ build() {
         return 1
     fi
 
-    # Extract app.asar
-    "$_asar" extract "$_app_asar" app-extracted
+    # Extract app.asar (we run from extracted dir, not repacked asar)
+    "$_asar" extract "$_app_asar" linux-app-extracted
 
     # Apply Linux stubs (replaces Windows/macOS native bindings)
-    mkdir -p "app-extracted/node_modules/@ant/claude-swift/js"
+    mkdir -p "linux-app-extracted/node_modules/@ant/claude-swift/js"
     cp -f "${srcdir}/claude-cowork-linux/stubs/@ant/claude-swift/js/index.js" \
-          "app-extracted/node_modules/@ant/claude-swift/js/index.js"
+          "linux-app-extracted/node_modules/@ant/claude-swift/js/index.js"
     cp -f "${srcdir}/claude-cowork-linux/stubs/@ant/claude-native/index.js" \
-          "app-extracted/node_modules/@ant/claude-native/index.js"
+          "linux-app-extracted/node_modules/@ant/claude-native/index.js"
 
-    # Repack asar
-    "$_asar" pack app-extracted app.asar
+    # Copy frame-fix wrapper files into extracted app
+    cp -f "${srcdir}/claude-cowork-linux/stubs/frame-fix/frame-fix-entry.js" \
+          "linux-app-extracted/frame-fix-entry.js"
+    cp -f "${srcdir}/claude-cowork-linux/stubs/frame-fix/frame-fix-wrapper.js" \
+          "linux-app-extracted/frame-fix-wrapper.js"
 }
 
 package() {
     cd "${srcdir}"
 
-    # Install app.asar
-    install -Dm644 app.asar "${pkgdir}/usr/lib/claude-cowork/app.asar"
+    # Install extracted app directory
+    install -dm755 "${pkgdir}/usr/lib/claude-cowork"
+    cp -r linux-app-extracted "${pkgdir}/usr/lib/claude-cowork/"
+
+    # Install linux-loader.js (critical wrapper for platform spoofing and fixes)
+    install -Dm644 "${srcdir}/claude-cowork-linux/linux-loader.js" \
+                   "${pkgdir}/usr/lib/claude-cowork/linux-loader.js"
 
     # Install launcher script
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/claude-cowork" <<'EOF'
@@ -99,7 +126,8 @@ if [[ -n "$WAYLAND_DISPLAY" ]] || [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
     export ELECTRON_OZONE_PLATFORM_HINT=wayland
 fi
 
-exec electron /usr/lib/claude-cowork/app.asar --no-sandbox "$@"
+cd /usr/lib/claude-cowork
+exec electron linux-loader.js --no-sandbox "$@"
 EOF
 
     # Install desktop entry
@@ -117,7 +145,7 @@ EOF
 
     # Extract and install icon from Windows exe
     if command -v wrestool &>/dev/null && command -v icotool &>/dev/null; then
-        wrestool -x -t 14 "Claude-${pkgver}.exe" -o icon.ico 2>/dev/null || true
+        wrestool -x -t 14 "Claude-latest.exe" -o icon.ico 2>/dev/null || true
         if [[ -f icon.ico ]]; then
             icotool -x icon.ico -o . 2>/dev/null || true
             _icon=$(ls -S *.png 2>/dev/null | head -1)
