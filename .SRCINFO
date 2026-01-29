@@ -1,6 +1,6 @@
 pkgbase = graphite-gtk-theme
 	pkgdesc = Graphite GTK Theme, by vinceliuice
-	pkgver = 2024.07.15
+	pkgver = 2025.07.06
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Graphite-gtk-theme
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = graphite-gtk-theme
 	provides = graphite-gtk-theme
 	conflicts = graphite-gtk-theme-git
 	options = !strip
-	source = https://github.com/vinceliuice/Graphite-gtk-theme/archive/refs/tags/2024-07-15.tar.gz
-	sha256sums = b21c3803d2c34928b2f05c6bc9e58995545e135de780ffffc143027b33df4bac
+	source = https://github.com/vinceliuice/Graphite-gtk-theme/archive/refs/tags/2025-07-06.tar.gz
+	sha256sums = 8aad3e38469047c715a75ac50d598d169c9ee05129d56b5b91f85357c98835c7
 
 pkgname = graphite-gtk-theme
