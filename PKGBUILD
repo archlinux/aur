@@ -3,7 +3,7 @@
 
 pkgname=ttf-monocode
 _name="${pkgname#ttf-}"
-pkgver=18.1.6
+pkgver=20.1.0
 pkgrel=1
 pkgdesc='A font derived from a customized version of Iosevka'
 arch=('any')
@@ -20,16 +20,16 @@ source=("${_name}-${pkgver}-bolditalic.ttf::${url}/releases/download/v${pkgver}/
         "${_name}-${pkgver}-semibolditalic.ttf::${url}/releases/download/v${pkgver}/monocode-normalsemibolditalic.ttf"
         "${_name}-${pkgver}-semiboldupright.ttf::${url}/releases/download/v${pkgver}/monocode-normalsemiboldupright.ttf"
         "${_name}-${pkgver}-LICENSE::${url}/raw/v${pkgver}/LICENSE")
-sha256sums=('9147ffb5b7ff056e12e81e349d99ce9b24938f3f82a75b20a7569169e53da574'
-            '38038d03bc099a9a246b0f70c8ec4854ae6f42a8620d642c7de02c9f618cfb0b'
-            'b8eb751b587edfd8a16d7eba4c0cc253705a05be45bc2247016d3472ed5a9304'
-            '591dcb198e8bc81ef021da3812b21866dd8fbc86f9ca2cbdfb1e6fc6e9dc8f86'
-            'e5156f8f5ac538abf82212922524514a6a00158cbb1014326149f9be48cd2d43'
-            '14d8fbe006a6dbdbdd48cd9694952e455f7904f09396ca17212c46f5f973e2ec'
-            '60733521a680feb9da147a8c33d9a956dd845677c1a9c258a3540fb00991a5e2'
-            '0f5883d71669e877b4694c293dbad9c62084c78cb0c2dc3910e1efa9ce18a1a7'
-            '0cc0b37036e605bbecb3b7295ba6f354b0229d3200374047cfde303372460b46'
-            'de09771571bc59acd64487212aeb3b0914429306737615f475fffc39000b961b'
+sha256sums=('cb81e5cfa2ee1a9f4e0539f156079a0d3561703e297eb60b5e4786e6e3026891'
+            '6c90ef36c48446ccd94510b246cbe38abd289edfab2def3b6e13a2d797ed8f00'
+            '7a7807e4814a22e31b4ea75b0d1f7e70451e3303e6551fc107940914fbf33c4a'
+            'bf33fb471aaf566e49322ad40c6952c2b4b0ff17ebba60e29d6b3928fbf67317'
+            '2bbbacbef33f01542ead430da004c2c64f45ee34a9206ced5857f6a876bd97e4'
+            '2eedfeb13d09fd19a494fb318e2d7a4aa1525a79cf445bd565e1377f767de33b'
+            'f078a0de54d4a4e2da2fa3fe8a3fd16c44ed37e8d4130dc0ad77db0a6d7b5bef'
+            '4d1ccf023b22b1222fb2967f1e67ad555e2356ca98ff35f7af33994e1af917eb'
+            '3bcf1bb20ef85ffc3a76cd10d4c0d50b9ccda0f5cc269009f7378969ef149cc6'
+            '3e4897638e0e40c979dc099dc94d5c75be9272b956e4b307ece89e5249818006'
             '3f41ef3c8872aea4774d66d4af65d84c2ae482fa93eb05986e7eb3a4bbef46e6')
 
 package() {
