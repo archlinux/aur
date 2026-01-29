@@ -5,10 +5,10 @@
 
 pkgname=routeconverter
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A free tool to edit and convert routes, tracks and waypoints"
 arch=('i686' 'x86_64')
-url="http://www.routeconverter.de/en"
+url="http://www.routeconverter.com/"
 license=('GPL')
 depends=('java-environment>=6' 'java-openjfx' 'archlinux-java-run')
 makedepends=('gendesk' 'unzip')
@@ -18,9 +18,9 @@ source=(routeconverter
         routeconverter-offline
         routeconverter-cli
         RouteConverterCmdLine-${pkgver}.jar::http://static.routeconverter.com/download/previous-releases/${pkgver}/RouteConverterCmdLine.jar
-        RouteConverterLinux-${pkgver}.jar::http://static.routeconverter.com/download/previous-releases/${pkgver}/RouteConverterLinuxOpenSource.jar)
+        RouteConverterLinux-${pkgver}.jar::http://static.routeconverter.com/download/RouteConverterLinux.jar)
 
-sha256sums=('d35cd45946a2728a8e2d6b0fb7d53d1803df1016380eb052dad0f3f1b00a25a9'
+sha256sums=('0a4dca96f3f02c274714192765eaacfb1ceb53f628150fd0c73e00bf2ce7f6d5'
          '30ed02e7180c85c0448a257a4b7d40de554b084faadeb899dead72e4e2cdc741'
          '0237729d3fb3fdb7462fb1f9064175135f7406a9fb0ec2206986ab9f668b4078'
          '3c4e889c9296ee4e205189f5962fbd09cab2e6e999de5ed6eb4565422710e8a5'
