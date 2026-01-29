@@ -1,6 +1,6 @@
 # Maintainer: Kemel Zaidan <kemelzaidan at gmail dot com>
 pkgname=ddv
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="terminal user interface DynamoDB Viewer"
 arch=("i686" "x86_64" "aarch64")
@@ -9,7 +9,7 @@ url="https://github.com/lusingander/ddv"
 makedepends=('rust' 'cargo' 'clang' 'lld' 'llvm' 'pkgconf')
 depends=('glibc' 'gcc-libs')
 source=("${url}/archive/refs/tags/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('b6f594da2cab9af5c5905cdee08770ade9676f4f1158f9038e26f3b39f3a4a19')
+sha256sums=('394292f00f1b8c62f545d5590c5cbcfb3fc42b120fed1a7ac3f19bec123d6977')
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
