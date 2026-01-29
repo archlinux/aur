@@ -7,7 +7,7 @@
 _pkgname=stellarium
 pkgname=${_pkgname}-lite
 pkgver=25.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Stellarium without GPS and Telescope Control support (no gpsd and libindi dependencies)"
 arch=(x86_64)
 url="https://${_pkgname}.org"
@@ -51,7 +51,7 @@ build() {
     -DENABLE_GPS=0 \
     -DUSE_PLUGIN_TELESCOPECONTROL=0 \
     -Wno-dev
-  cmake --build build --target all
+  cmake --build build --target all -- ${MAKEFLAGS}
 }
 
 package() {
