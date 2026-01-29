@@ -14,7 +14,7 @@ depends=(
   hyprlock
   wlogout
   swaync
-  matugen-bin
+  matugen
   grim
   nautilus
   pavucontrol
@@ -28,6 +28,21 @@ depends=(
   noto-fonts
   noto-fonts-emoji
   noto-fonts-cjk
+  xdg-user-dirs
+  python-fabric-git
+  python-psutil
+  gray-git
+  python-watchdog
+  python-pillow
+  gnome-bluetooth-3.0
+  python-toml
+  python-numpy
+  python-ijson 
+  python-requests
+  nvtop
+  power-profiles-daemon
+  gobject-introspection
+  python-setproctitle
 )
 
 optdepends=(
