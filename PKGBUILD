@@ -2,7 +2,7 @@
 
 _name=mcp
 pkgname=python-$_name
-pkgver=1.25.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='Model Context Protocol SDK.'
 arch=('any')
@@ -14,8 +14,8 @@ checkdepends=('python-pytest' 'python-trio' 'python-pytest-xdist' 'python-pytest
 optdepends=('python-rich: rich' 'python-typer: cli' 'python-dotenv: cli' 'python-websockets: ws')
 source=("$_name::git+$url.git#tag=v$pkgver"
         "https://github.com/modelcontextprotocol/python-sdk/pull/1834.patch")
-sha256sums=('08c376069011439d6fa0928267ce45eddc127aed40b59367ab2dc54c602bdcaa'
-            '34fb50d1543e374a1c6de07011b5484c08a93f3f7e3d38eca44e25b5e4ac06a6')
+sha256sums=('eb63712c1da8d41ec45b3290a9ca488e78d99ef913f735514aa058c5b973c634'
+            '61524580a527d9c4405d713edcd04d7e263fcc091ebfd4c4a438f75abb749f2d')
 
 prepare(){
   cd "$srcdir"/$_name
