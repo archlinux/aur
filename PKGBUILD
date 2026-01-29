@@ -2,10 +2,10 @@
 # Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=bspm
-_pkgver=0.5.7
+_pkgver=0.5.8
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="Bridge to System Package Manager"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -26,9 +26,9 @@ optdepends=(
 install=r-bspm.install
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-dbus.patch")
-md5sums=('9b13de322ef5bea57ec0a7f320ef7f7d'
+md5sums=('b37d1d98def7babffabf84a52a19aebe'
          'b9264c2d1a89b4947b739ed62c7b2594')
-b2sums=('8f4027862cea4b5a9324d8bbbaa1a1c985c2df9178895c66a7bd112e88a4c7a90c2676a37a696485078c1aff3896e6d5347406e0d4b92e65919a5ddc764412dc'
+b2sums=('a35c3124d2afd0943daf97fc00c70c4f8b749962334c92a071a3808cf404589ae1b1b8ec4bfdf5152b77b1f94dd1a2d32314eaceab9c51ed0ee4ef031201e453'
         'aa3a49c162c04e0600003dda3eb0b6920719df16b368b707a3e055aecfd9204d2e90f844965f685ff31c769f8066d2140e4d1b259d1765e30aeb4a0ab5ce54a6')
 
 prepare() {
