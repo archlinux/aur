@@ -1,6 +1,6 @@
 post_install() {
-  echo "To enable the layer, set the env variable: ENABLE_COOPMAT_LAYER=1"
-  echo "To disable it: export DISABLE_COOPMAT_LAYER=1"
+  echo "ENABLE with: ENABLE_COOPMAT_LAYER=1"
+  echo "DISABLE with: DISABLE_COOPMAT_LAYER=1"
 }
 
 post_upgrade() {

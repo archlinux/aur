@@ -12,7 +12,6 @@ pkgbase = coopmat-layer-git
 	makedepends = vulkan-headers
 	depends = vulkan-icd-loader
 	provides = coopmat-layer
-	conflicts = coopmat-layer
 	source = git+https://github.com/doitsujin/coopmat-layer.git
 	sha256sums = SKIP
 
