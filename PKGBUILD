@@ -3,7 +3,7 @@
 pkgname=windterm-bin
 _pkgname=WindTerm
 pkgver=2.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A Quicker and better SSH/Telnet/Serial/Shell/Sftp client for DevOps.(Prebuilt version)"
 arch=('x86_64')
 license=('Apache-2.0')
@@ -28,7 +28,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('7797697eeb60239020512e2b549695a60c39b3fd01fe7ebb047fd50a2889103c'
-            '0db90ad5817913f65974f446212e9cac99955770e585af10ea46dcf073d93182')
+            '8b39b265302a2c2657fc62a5f7e7aebbfdf51d9a7fc920290f55180e329fdf22')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
