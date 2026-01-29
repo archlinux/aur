@@ -1,32 +1,31 @@
 # Maintainer: Aleksey Smirnov <debugger94 at gmail dot com>
 
-pkgname=amneziavpn-bin
-pkgver=4.8.11.4
+_pkgname=amneziavpn
+pkgname=$_pkgname-bin
+pkgver=4.8.12.9
 pkgrel=1
 pkgdesc="Amnezia VPN Client"
 arch=('x86_64')
 url="https://github.com/amnezia-vpn/amnezia-client"
 license=('GPL-3.0-only')
-install=amneziavpn.install
-conflicts=(amneziavpn amneziavpn-git)
+provides=($_pkgname)
+conflicts=($_pkgname{,-git})
 options=(!debug)
-source=(amneziavpn-$pkgver.tar.zip::$url/releases/download/$pkgver/AmneziaVPN_${pkgver}_linux_x64.tar.zip)
-sha256sums=('1d57b8bb62f71af90ca28b5694da2f87b509e55c92bd4d48b12734b9f3c77dbd')
+install=$_pkgname.install
+source=($_pkgname-$pkgver.tar::$url/releases/download/$pkgver/AmneziaVPN_${pkgver}_linux_x64.tar)
+sha256sums=('e67bb3e1f11a3fccea1459f17a421b07d400a28ef8faa78143ec9c65c9773a11')
 
 # Signature '\x37\x7A\xBC\xAF\x27\x1C' version '\x00\x04'
 _archive_offset=0x1ABF361
-_archive_size=0x4AF3AD8
+_archive_size=0x531AD50
 
 prepare() {
   # Extract files from installer (only if exists, in case of using '--noextract').
-  if [ -e AmneziaVPN_Linux_Installer.tar ]; then
+  if [ -e AmneziaVPN_Linux_Installer.bin ]; then
     # Cleanup files from previous run
     rm -rf AmneziaVPN
 
     # Extract files
-    tar -xvf AmneziaVPN_Linux_Installer.tar
-    rm -f AmneziaVPN_Linux_Installer.tar
-
     # Technically, trimming data after the end of the archive is not necessary, 7zip will simply discard it (with warning).
     tail -c +$((_archive_offset+1)) AmneziaVPN_Linux_Installer.bin | head -c $((_archive_size)) > data.7z
     rm -f AmneziaVPN_Linux_Installer.bin
@@ -51,7 +50,7 @@ package() {
   done
 
   pushd "$pkgdir"/opt/AmneziaVPN/
-    chmod +x client/{bin/{AmneziaVPN,ck-client,openvpn,ss-local,tun2socks,update-resolv-conf.sh,wireguard-go,xray},AmneziaVPN.sh}
+    chmod +x client/{bin/{AmneziaVPN,ck-client,openvpn,ss-local,tun2socks,update-resolv-conf.sh,wireguard-go},AmneziaVPN.sh}
     chmod +x service/{bin/AmneziaVPN-service,AmneziaVPN-service.sh}
   popd
 
