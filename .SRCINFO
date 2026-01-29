@@ -1,0 +1,19 @@
+pkgbase = coopmat-layer-git
+	pkgdesc = Vulkan cooperative matrix emulation layer
+	pkgver = r23.fba7d1f
+	pkgrel = 1
+	url = https://github.com/doitsujin/coopmat-layer
+	install = coopmat-layer-git.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = vulkan-headers
+	depends = vulkan-icd-loader
+	provides = coopmat-layer
+	conflicts = coopmat-layer
+	source = git+https://github.com/doitsujin/coopmat-layer.git
+	sha256sums = SKIP
+
+pkgname = coopmat-layer-git
