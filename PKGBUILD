@@ -8,7 +8,7 @@ url="https://github.com/hyper-mcp-rs/hyper-mcp"
 license=('Apache-2.0')
 arch=('x86_64')
 source=("https://github.com/hyper-mcp-rs/hyper-mcp/releases/download/v${pkgver}/${_pkgname}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('248b7f42357e11514d9e4f0183b291fff04bccf2b0a012d2f5103f40dfee4740')
+sha256sums=('53b89e9d7d3ee721d6187b5a736bcbf3f1ce15ce53c0a06b7244cfa78e3c27de')
 
 package() {
     cd "${srcdir}"
