@@ -1,8 +1,9 @@
 pkgbase = zelda3-git
 	pkgdesc = A reverse engineered implementation of Zelda 3 - A Link to the Past
 	pkgver = r314.fbbb3f9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/snesrev/zelda3
+	install = zelda3-git.install
 	arch = x86_64
 	license = MIT
 	makedepends = clang

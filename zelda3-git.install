@@ -1,0 +1,6 @@
+post_remove() {
+    # As a workaround, save files are stored in the local directory of the application (/opt/zelda3-git/saves)
+    # Since saves are created by the application, they aren't detected to be cleaned up by pacman, so we need to do so manually
+    echo "Cleaning up save files"
+    rm -rf /opt/zelda3-git
+}

@@ -2,13 +2,14 @@
 
 pkgname=zelda3-git
 pkgver=r314.fbbb3f9
-pkgrel=1
+pkgrel=2
 pkgdesc='A reverse engineered implementation of Zelda 3 - A Link to the Past'
 url='https://github.com/snesrev/zelda3'
 arch=("x86_64")
 license=("MIT")
 depends=('python' 'python-pillow' 'python-yaml' 'sdl2')
 makedepends=('clang')
+install="$pkgname.install"
 source=(
     "git+${url}.git"
     # Zelda ROM should be named 'zelda3.sfc' and placed into the same directory as this file.
@@ -40,6 +41,11 @@ package() {
     install -Dm755 zelda3 $pkgdir/opt/$pkgname
     install -Dm644 zelda3.ini $pkgdir/opt/$pkgname
     install -Dm644 zelda3_assets.dat $pkgdir/opt/$pkgname
+
+    # The game doesn't use the XDG spec, and will only save the game in the local directory
+    # Thus, we need to make a world writable folder until the developer allows
+    mkdir $pkgdir/opt/$pkgname/saves
+    chmod a+w $pkgdir/opt/$pkgname/saves
 
     echo "#!/usr/bin/env bash
     cd /opt/${pkgname}
