@@ -32,7 +32,6 @@ prepare() {
 }
 
 build() {
-  PATH="/usr/bin/core_perl/:$PATH"
   cmake \
     -S ${_pkgname}-${pkgver} \
     -B build \
