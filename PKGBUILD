@@ -1,6 +1,6 @@
 # Maintainer: Benjamin Hammond <benjaminphammond@gmail.com>
 pkgname=org
-pkgver=0.1.19
+pkgver=0.1.20
 pkgrel=1
 pkgdesc="Suckless second-brain CLI tool"
 arch=('any')
