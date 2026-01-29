@@ -73,6 +73,7 @@ build() {
     "$_asar" extract "$_app_asar" app-extracted
 
     # Apply Linux stubs (replaces Windows/macOS native bindings)
+    mkdir -p "app-extracted/node_modules/@ant/claude-swift/js"
     cp -f "${srcdir}/claude-cowork-linux/stubs/@ant/claude-swift/js/index.js" \
           "app-extracted/node_modules/@ant/claude-swift/js/index.js"
     cp -f "${srcdir}/claude-cowork-linux/stubs/@ant/claude-native/index.js" \
