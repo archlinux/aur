@@ -12,6 +12,6 @@ pkgbase = org
 	makedepends = python-wheel
 	depends = python
 	source = git+https://github.com/benjaminingreens/org#tag=v0.1.21
-	sha256sums = 4c85829188902f5bbec7543f4ceb89ccd669305a9c9e1b73f211cb3f52d27703
+	sha256sums = SKIP
 
 pkgname = org
