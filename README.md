@@ -49,8 +49,11 @@ zipkg is actually not that hard to install, Funnily enough the installation
 process is just a simple command with **yay**.
 
 ### Use this command to install:
+
 ```bash
-yay -S zipkg
+git clone https://aur.archlinux.org/zipkg.git
+cd zipkg
+makepkg -si
 ```
 Simply launch **zipkg** by using ```zipkg```. This will initialize everything and then you can use it from there. 
 
