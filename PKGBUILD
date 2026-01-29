@@ -1,6 +1,6 @@
 pkgname=pwasio-git
-_ver=0.1.0 # repo does not have version tags
-pkgver=0.1.0.r142.g4ec9878
+_ver=0.0.2 # repo does not have version tags
+pkgver=0.0.2.r142.g4ec9878
 pkgrel=1
 pkgdesc="PipeWire ASIO driver for Wine"
 url="https://github.com/golfiros/pwasio"
