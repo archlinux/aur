@@ -1,0 +1,19 @@
+pkgbase = linux-id
+	pkgdesc = FIDO token implementation for Linux that protects the token keys using your system's TPM.
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/matejsmycka/linux-id
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = linux-id-0.1.6.tar.gz::https://github.com/matejsmycka/linux-id/archive/refs/tags/v0.1.6.tar.gz
+	source = linux-id.service
+	source = linux-id.rules
+	sha256sums = f9650331e7b790f41b2bd3be87de830c2aaae620368ef8038d48f701ef8ada67
+	sha256sums = e59c7a03fb6b7ac535dd1844dd298fbd6946464b98e6da6653a8a804526eeeb2
+	sha256sums = 8a42f5924b06effb0620714db1313b385f821db0f324982e11ebd28feca9f1dd
+
+pkgname = linux-id
+	depends = glibc
+	depends = pinentry

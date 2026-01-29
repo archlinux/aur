@@ -1,0 +1,46 @@
+[Unit]
+Description=linux-id TPM service
+Documentation=https://github.com/matejsmycka/linux-id
+Wants=modprobe@uhid.service
+After=modprobe@uhid.service
+ConditionSecurity=tpm2
+ConditionKernelModuleLoaded=uhid
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/linux-id
+
+ProtectProc=noaccess
+# pinentry may need to access /run/user/$UID/wayland-0
+BindReadOnlyPaths=%t
+# pinentry may need to access /tmp/.X11-unix
+BindReadonlyPaths=%T/.X11-unix
+# pinentry may need to write here
+BindPaths=%E
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=tmpfs
+PrivateTmp=true
+PrivateNetwork=true
+PrivatePIDs=true
+PrivateUsers=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+# pinentry may need to connect to wayland/x11 socket
+RestrictAddressFamilies=AF_UNIX
+RestrictNamespaces=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+PrivateMounts=true
+
+DeviceAllow=/dev/tpmrm0
+DeviceAllow=/dev/uhid
+
+[Install]
+WantedBy=default.target

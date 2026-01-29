@@ -1,0 +1,4 @@
+# Allow user access tpmrm0 and uhid
+
+KERNEL=="uhid",   SUBSYSTEM=="misc",  TAG+="uaccess"
+KERNEL=="tpmrm0", SUBSYSTEM=="tpmrm", TAG+="uaccess"
