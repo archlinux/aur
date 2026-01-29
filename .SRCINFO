@@ -1,0 +1,20 @@
+pkgbase = azaharplus-novulkan-git
+	pkgdesc = AzaharPlus (Citra Fork) compiled without Vulkan support
+	pkgver = r10793.176135e9b
+	pkgrel = 1
+	url = https://github.com/AzaharPlus/AzaharPlus
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = qt6-multimedia
+	depends = sdl2
+	provides = azaharplus
+	conflicts = azaharplus
+	conflicts = azaharplus-git
+	source = git+https://github.com/AzaharPlus/AzaharPlus.git
+	sha256sums = SKIP
+
+pkgname = azaharplus-novulkan-git
