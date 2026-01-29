@@ -1,15 +1,15 @@
 pkgbase = rime-wanxiang-updater
 	pkgdesc = Rime 万象输入法自动更新工具 - 支持词库、方案、模型的自动检测和更新
-	pkgver = 0.6.11
+	pkgver = 0.6.12
 	pkgrel = 1
 	url = https://github.com/ca-x/rime-wanxiang-updater
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	provides = rime-wanxiang-updater
-	source_x86_64 = rime-wanxiang-updater-0.6.11-linux-amd64::https://github.com/ca-x/rime-wanxiang-updater/releases/download/v0.6.11/rime-wanxiang-updater-linux-amd64
-	sha256sums_x86_64 = 76c38fda994346c68e161e615c3a7918eca8cbd8489c679b92bce1c0f027b5fd
-	source_aarch64 = rime-wanxiang-updater-0.6.11-linux-arm64::https://github.com/ca-x/rime-wanxiang-updater/releases/download/v0.6.11/rime-wanxiang-updater-linux-arm64
-	sha256sums_aarch64 = daa61352fa4a1efdc34b6ecbc8b3cdce936c268c7144bcdef3f4a93b529531ff
+	source_x86_64 = rime-wanxiang-updater-0.6.12-linux-amd64::https://github.com/ca-x/rime-wanxiang-updater/releases/download/v0.6.12/rime-wanxiang-updater-linux-amd64
+	sha256sums_x86_64 = 5c4fad9c97c3f1b3954e78698851d89ff9dcc0478e921db386188127f6170942
+	source_aarch64 = rime-wanxiang-updater-0.6.12-linux-arm64::https://github.com/ca-x/rime-wanxiang-updater/releases/download/v0.6.12/rime-wanxiang-updater-linux-arm64
+	sha256sums_aarch64 = bc3a595705b3d7489181f6165f726816896223c5c2442364725890c9626807a3
 
 pkgname = rime-wanxiang-updater
