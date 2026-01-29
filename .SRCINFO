@@ -1,0 +1,20 @@
+pkgbase = gitlab-ci-linter
+	pkgdesc = Tool for validating .gitlab-ci.yml using Gitlab API
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://gitlab.com/orobardet/gitlab-ci-linter
+	arch = aarch64
+	arch = x86_64
+	arch = armv7h
+	license = MIT
+	conflicts = gitlab-ci-linter
+	source = LICENSE_2.4.0::https://gitlab.com/orobardet/gitlab-ci-linter/raw/v2.4.0/LICENSE
+	sha256sums = 850407045fb0253200255888dc5ff1e953c6a265ebb6f35ec900ca4d5acd519f
+	source_aarch64 = gitlab-ci-linter_2.4.0_linux_aarch64::https://gitlab.com/orobardet/gitlab-ci-linter/-/releases/v2.4.0/downloads/gitlab-ci-linter_2.4.0_linux_arm64
+	sha256sums_aarch64 = 058f5797f4bccfdfeab73bc99a0459bf11d2c2de050c2fca18537d7877833aa3
+	source_x86_64 = gitlab-ci-linter_2.4.0_linux_x86_64::https://gitlab.com/orobardet/gitlab-ci-linter/-/releases/v2.4.0/downloads/gitlab-ci-linter_2.4.0_linux_amd64
+	sha256sums_x86_64 = b907b0c9e894a1df9fededc903dbce813f9a9ef26ff13505443046d6c56b575d
+	source_armv7h = gitlab-ci-linter_2.4.0_linux_armv7h::https://gitlab.com/orobardet/gitlab-ci-linter/-/releases/v2.4.0/downloads/gitlab-ci-linter_2.4.0_linux_armv6
+	sha256sums_armv7h = 0b1a239b2778268650ba77aa00a00cc84d5d76ec65e3d7cec867f9d322c746a8
+
+pkgname = gitlab-ci-linter

@@ -1,0 +1,9 @@
+src
+pkg
+*.tar.xz
+*.tar.bz2
+*.tar.gz
+*.tar.zst
+*.log
+LICENSE_*
+gitlab-ci-linter_*
