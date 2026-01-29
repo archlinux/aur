@@ -1,7 +1,7 @@
 pkgbase = kwin-x11
 	pkgdesc = An easy to use, but flexible, X Window Manager
 	pkgver = 6.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
 	groups = plasma
