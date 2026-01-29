@@ -2,7 +2,7 @@
 # AUR package for hamr - builds from source
 
 pkgname=hamr
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="A fast, extensible desktop launcher for Linux"
 arch=('x86_64')
@@ -21,6 +21,9 @@ makedepends=(
     'rust'
     'cargo'
     'pkgconf'
+    'cmake'
+    'clang'
+    'go'
 )
 optdepends=(
     'python-dbus: system dbus integration for plugins'
