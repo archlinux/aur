@@ -1,7 +1,7 @@
 pkgbase = ariane-git
 	pkgdesc = Fast initramfs/UKI generator with encryption and secure boot support
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/cpernot/ariane
 	arch = x86_64
 	license = GPL-3.0-only
