@@ -18,7 +18,7 @@ source=(
     "LICENSE::https://raw.githubusercontent.com/0xpix/Hei-DataHub/main/LICENSE"
 )
 sha256sums=(
-    '0ead5c718b124a1831e3595e0d73d17bc913617d5df2923942f2fbe08b71c21e'
+    '396c980fc5aa13f0dbb2f75d0ded0d7b96f8e619024f8d3d6f812b40e47634f3'
     '7e8c79f82293f6cc1e99beedd3e7c47a8fa9c9f04c4b1ff8115ed67f0378c2a3'
     '145542aa5db397d58e066ca06d838c55849e668e964617f54604018bc18eccfc'
     'de84048665a009483980ac5190e7d78824cdbc9977fd7faf47196552a58bcb8f'
