@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=enviPat
-_pkgver=2.6
+_pkgver=2.8
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Isotope Pattern, Profile and Centroid Calculation for Mass Spectrometry"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b3bf71eccf0c915ddeadd2e0bfbfa3d5')
-b2sums=('34f621614d95c312041b83c21515dd7278ccd7fae0703638c0e0eb0905840709ac2277185e69f27467ab3af2e110c4f5b2d7c44c86a7e4ef3e910ffa9962bcde')
+md5sums=('ba7a258bdc03b46a280965d693114021')
+b2sums=('e30077693c0a94be2d6f6330ca62c16737d153084fa0d5ce4634f65abeea2af6498ebfca17c254326d29226117c18e0b85b41d6791f28d20e87c3c4530ac640f')
 
 build() {
   mkdir build
