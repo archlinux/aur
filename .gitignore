@@ -1,0 +1,11 @@
+# makepkg build artifacts
+src/
+pkg/
+*.pkg.tar*
+*.log
+
+# makepkg cached git sources
+amiga-gcc/
+
+# editor/IDE
+.claude/
