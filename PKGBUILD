@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=muffon-bin
-pkgver=2.3.0
-_electronversion=37
+pkgver=2.4.0
+_electronversion=39
 pkgrel=1
 pkgdesc="Music streaming browser,retrieves audio, video and metadata from various Internet sources.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -20,8 +20,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.pacman::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-aarch64.pacman")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.pacman::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-aarch64.pacman")
 sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('9e024afd5254c35cfc904f7285d6036df928bd1c778d1d8610011259fb16565e')
-sha256sums_x86_64=('9e024afd5254c35cfc904f7285d6036df928bd1c778d1d8610011259fb16565e')
+sha256sums_aarch64=('60b18957bc8411dd400334b57fc3fb3bfe5a313f8c69b3ba2e65041b5b961f18')
+sha256sums_x86_64=('60b18957bc8411dd400334b57fc3fb3bfe5a313f8c69b3ba2e65041b5b961f18')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/opt/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
