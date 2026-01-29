@@ -2,7 +2,7 @@
 # AUR package for hamr - builds from source
 
 pkgname=hamr
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="A fast, extensible desktop launcher for Linux"
 arch=('x86_64')
@@ -25,6 +25,8 @@ makedepends=(
     'clang'
     'go'
     'perl'       # Required by aws-lc-sys (cryptography)
+    'gtk4'       # Build-time dependency for GTK bindings
+    'gtk4-layer-shell'
 )
 optdepends=(
     'python-dbus: system dbus integration for plugins'
