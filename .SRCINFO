@@ -1,0 +1,16 @@
+pkgbase = zipkg
+	pkgdesc = A simple AUR installer/remover script
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://example.com/zipkg
+	arch = x86_64
+	license = MIT
+	depends = git
+	depends = base-devel
+	depends = bash
+	source = zipkg
+	source = README.md
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = zipkg
