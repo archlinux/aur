@@ -1,10 +1,10 @@
 pkgbase = cadvisor-bin
 	pkgdesc = Analyzes resource usage and performance characteristics of running containers.
 	pkgver = 0.56.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/cadvisor
 	arch = x86_64
-	license = Apache2
+	license = Apache-2.0
 	backup = etc/conf.d/cadvisor
 	source = cadvisor-bin-0.56.2::https://github.com/google/cadvisor/releases/download/v0.56.2/cadvisor-v0.56.2-linux-amd64
 	source = cadvisor.conf

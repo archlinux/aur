@@ -3,11 +3,11 @@
 
 pkgname=cadvisor-bin
 pkgver=0.56.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Analyzes resource usage and performance characteristics of running containers."
 arch=("x86_64")
 url="https://github.com/google/cadvisor"
-license=("Apache2")
+license=("Apache-2.0")
 
 backup=('etc/conf.d/cadvisor')
 
