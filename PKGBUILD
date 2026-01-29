@@ -1,6 +1,6 @@
 # Maintainer: Warren Wu <warrenweiwu04@gmail.com>
 pkgname=bananatype
-pkgver=0.0.1
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="monkeytype in your terminal"
 arch=('x86_64')
@@ -19,7 +19,7 @@ build() {
         -trimpath \
         -mod=readonly \
         -modcacherw \
-        -ldflags="-X main.Build=prod -extldflags \"$LDFLAGS\"" \
+        -ldflags="-X 'bananas/pkg/resourcepath.Build=prod' -X 'main.Build=prod' -extldflags \"$LDFLAGS\"" \
         -o "$pkgname" .
 }
 
