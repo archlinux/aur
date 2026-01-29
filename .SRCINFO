@@ -1,0 +1,21 @@
+pkgbase = simplify
+	pkgdesc = Generic Android deobfuscator
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/CalebFenton/simplify
+	arch = any
+	license = GPL-3.0-or-later
+	depends = java-runtime>=8
+	options = !debug
+	source = simplify
+	source = sdbg
+	source = simplify-1.3.0.jar::https://github.com/CalebFenton/simplify/releases/download/v1.3.0/simplify-1.3.0.jar
+	source = sdbg-0.1.0.jar::https://github.com/CalebFenton/simplify/releases/download/v1.3.0/sdbg-0.1.0.jar
+	source = LICENSE.GPL::https://raw.githubusercontent.com/CalebFenton/simplify/v1.3.0/LICENSE.GPL
+	sha256sums = 8afa8de0114ea2ec43863eff0ef4e17047e6d6def4095348f79217e6373cae47
+	sha256sums = 630f92c5a34a67ffe389b074131df58279f0ff61e495b50840040efbef33b047
+	sha256sums = f346d6dd064a212cea3d6cd9a22aa78ad9e81f664d2f216551467e59c52d3d31
+	sha256sums = 8b44beb2591d24fc63be20df2efd760084d656d21e1b493d4a3f3d0bc8d43c52
+	sha256sums = 8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903
+
+pkgname = simplify
