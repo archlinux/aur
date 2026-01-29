@@ -3,11 +3,11 @@
 
 pkgname=butane
 pkgver=0.26.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Human readable Butane Configs into machine readable Ignition Configs Translator"
 arch=("any")
 url="https://github.com/coreos/butane"
-license=("Apache")
+license=("Apache-2.0")
 makedepends=("git" "go" "make")
 source=("git+${url}.git#tag=v${pkgver}"
         "change-bin-dir.patch")
