@@ -3,7 +3,7 @@
 
 pkgname=llama.cpp-hip
 _pkgname="${pkgname%-hip}"
-pkgver=b7865
+pkgver=b7871
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with AMD ROCm optimizations)"
 arch=(x86_64 armv7h aarch64)
@@ -42,7 +42,7 @@ source=(
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.service"
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.conf"
 )
-sha256sums=('4a05a48fc364ba0bac8b9be87d7c9c4f9ebb8aa13c2233e839c49bd5ae3dc3fa'
+sha256sums=('72384c1486ac90d37ab94ead428b46b2dd6df15d7db4740dc9c4f1eb00aecfde'
             '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d'
             'e4856f186f69cd5dbfcc4edec9f6b6bd08e923bceedd8622eeae1a2595beb2ec')
 
@@ -77,6 +77,7 @@ build() {
     -DGGML_HIP_ROCWMMA_FATTN=ON
     -DHIP_PLATFORM=amd # 手动指定 AMD 平台, 防止因 rocm-nightly 禁用自动检测而报错
     -DGGML_CUDA_FA_ALL_QUANTS=ON
+    -DLLAMA_BUILD_NUMBER="${pkgver#b}" # 修正版本号
     -Wno-dev
   )
 
