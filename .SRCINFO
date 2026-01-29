@@ -1,6 +1,6 @@
 pkgbase = obsidianwall-git
 	pkgdesc = ObsidianOS Wallpaper Compositor
-	pkgver = r25.e924876
+	pkgver = r1.e363fe4
 	pkgrel = 1
 	url = https://github.com/Obsidian-OS/obsidianwall
 	arch = any

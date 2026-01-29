@@ -1,6 +1,6 @@
 # Maintainer: NEOAPPS <asd22.info@gmail.com>
 pkgname=obsidianwall-git
-pkgver=r25.e924876
+pkgver=r1.e363fe4
 pkgrel=1
 pkgdesc="ObsidianOS Wallpaper Compositor"
 arch=('any')
