@@ -1,6 +1,6 @@
 # Maintainer: Tobias Brox <t-arch@tobixen.no>
 pkgname=inventory-md
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A flexible markdown-based inventory management system"
 url="https://github.com/tobixen/inventory-md"
@@ -17,7 +17,7 @@ optdepends=(
 )
 backup=('etc/inventory-system/example.conf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tobixen/inventory-md/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7c32ccba98736678f58760fe906090ea57603b85be7b552256538b29eeeb4d0b')
+sha256sums=('07fce006b1c690f6b8dd0bc014296a2eb7fa109c6f930001ae8c975b66d8a5d0')
 
 build() {
     cd "${pkgname}-${pkgver}"
