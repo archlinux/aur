@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=webs-tray-git
 _pkgname=WebsTray
-pkgver=1.0.5.r2.gd63592a
-_electronversion=31
-_nodeversion=22
+pkgver=1.2.0.r0.g7038c2c
+_electronversion=36
+_nodeversion=24
 pkgrel=1
 pkgdesc="📌Inspired by WebStay. WebsTray allows you to pin any web apps to system tray.(Use system-wide electron)"
 arch=(
@@ -23,6 +23,7 @@ makedepends=(
     'nvm'
     'curl'
     'git'
+    'jq'
 )
 source=(
     "${pkgname%-git}.git::git+${url}.git"
