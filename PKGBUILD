@@ -7,6 +7,7 @@ arch=('x86_64' 'aarch64')
 url="https://yoanbernabeu.github.io/grepai/"
 license=('MIT')
 makedepends=('go>=1.24' 'git')
+optdepends=('ollama: for local LLM embeddings')
 provides=('grepai')
 conflicts=('grepai')
 source=("${pkgname}::git+https://github.com/yoanbernabeu/grepai.git")

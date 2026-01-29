@@ -8,6 +8,7 @@ pkgbase = grepai-git
 	license = MIT
 	makedepends = go>=1.24
 	makedepends = git
+	optdepends = ollama: for local LLM embeddings
 	provides = grepai
 	conflicts = grepai
 	source = grepai-git::git+https://github.com/yoanbernabeu/grepai.git
