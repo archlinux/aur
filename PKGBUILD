@@ -1,7 +1,7 @@
 # Maintainer: Pater Kleomenis <paterkleomenis@protonmail.com>
 pkgname=connected-desktop-bin
 _pkgname=connected-desktop
-pkgver=1.0.9
+pkgver=2.0.6
 pkgrel=1
 pkgdesc="High-speed, offline, cross-platform ecosystem bridging devices (Binary)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("https://github.com/paterkleomenis/connected/releases/download/${pkgver}
         "https://raw.githubusercontent.com/paterkleomenis/connected/main/android/app/src/main/ic_launcher-playstore.png"
         "https://raw.githubusercontent.com/paterkleomenis/connected/main/LICENSE-MIT"
         "https://raw.githubusercontent.com/paterkleomenis/connected/main/LICENSE-APACHE")
-sha256sums=('5d7e302d87d774481ebcb4435e234c4c32ac0b0e089ad905831ce8756d6b7e8c'
+sha256sums=('SKIP'
             'baf3b2e0d55d9fcb23630a7a6c0eff68eb9b708f8f0ce8e698dcf8ea611666ad'
             '9e0b561ca05d47281fe703e6d85cb2086781b3815b267c50e4f82b2186f59a90'
             'fdc5b45803bf8f5d4435509da25399414072b3d95badd6b09b2e84c2f1f198d5'
