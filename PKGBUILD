@@ -6,7 +6,7 @@
 # Contributor: vavolkl
 pkgname=cvmfs
 pkgver=2.13.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A client-server file system implemented in FUSE and developed to deliver software distributions onto virtual machines in a fast, scalable, and reliable way."
 arch=('x86_64')
 url="http://cernvm.cern.ch/portal/filesystem"
@@ -18,9 +18,19 @@ install=cvmfs.install
 options=('!emptydirs')
 source=("https://github.com/cvmfs/cvmfs/archive/refs/tags/$pkgname-$pkgver.tar.gz"
         'settings.cmake' # TODO: use libcrypto from system openssl instead of building libressl here?
+        'man_race.patch::https://github.com/cvmfs/cvmfs/pull/4075.patch'
        )
 md5sums=('1b92cac5d44db031db4e361aeb678112'
-         '2c0adcc2f67d0294d47583a77c06a88b')
+         '2c0adcc2f67d0294d47583a77c06a88b'
+         'da3550a4ad0dcbe8e4c5bdde740610e1')
+
+prepare() {
+    #Temporary pull patch for a race condition occasionally
+    #breaking the man page generation
+    #https://github.com/cvmfs/cvmfs/pull/4075
+    #!!TO BE REMOVED FOR THE NEXT OFFICIAL RELEASE!!
+    patch -d $pkgname-$pkgname-$pkgver -Np1 -i ../man_race.patch
+}
 
 build() {
     # github tarballs have naming convention projectname-tagname, and tags are called cvmfs-2.XX.Y
