@@ -1,0 +1,33 @@
+diff --git a/internal/frontend/bridge-gui/BridgeSetup.cmake b/internal/frontend/bridge-gui/BridgeSetup.cmake
+index c50b97c9..09e18b21 100644
+--- a/internal/frontend/bridge-gui/BridgeSetup.cmake
++++ b/internal/frontend/bridge-gui/BridgeSetup.cmake
+@@ -51,21 +51,6 @@ endif()
+ # We rely on vcpkg for to get gRPC / Protobuf
+ # run build.sh / build.ps1 to get gRPC / Protobuf and dependencies installed.
+ 
+-if(WIN32)
+-    set(VCPKG_ROOT "${BRIDGE_REPO_ROOT}/extern/vcpkg-windows")
+-else()
+-    set(VCPKG_ROOT "${BRIDGE_REPO_ROOT}/extern/vcpkg")
+-endif()
+-message(STATUS "VCPKG_ROOT is ${VCPKG_ROOT}")
+-
+-if (WIN32)
+-    find_program(VCPKG_EXE "${VCPKG_ROOT}/vcpkg.exe")
+-else()
+-    find_program(VCPKG_EXE "${VCPKG_ROOT}/vcpkg")
+-endif()
+-if (NOT VCPKG_EXE)
+-    message(FATAL_ERROR "vcpkg is not installed. Run build.sh (macOS/Linux) or build.ps1 (Windows) first.")
+-endif()
+ 
+ # For now we support only a single architecture for macOS (ARM64 or x86_64). We need to investigate how to build universal binaries with vcpkg.
+ if (APPLE)
+@@ -91,5 +76,3 @@ if  (WIN32)
+     message(STATUS "Building for Intel x64 Windows computers")
+     set(VCPKG_TARGET_TRIPLET x64-windows)
+ endif()
+-
+-set(CMAKE_TOOLCHAIN_FILE "${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "toolchain")
+\ No newline at end of file

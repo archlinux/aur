@@ -1,16 +1,16 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgbase=protonmail-bridge-free
 pkgname=(protonmail-bridge-free protonmail-bridge-free-core)
-pkgver=3.21.2
-pkgrel=9
+pkgver=3.22.0
+pkgrel=1
 pkgdesc="Integrate ProtonMail account with any program that supports IMAP and SMTP"
 arch=(x86_64)
 url="https://github.com/ProtonMail/proton-bridge"
 license=('GPL-3.0-only')
-makedepends=(abseil-cpp cmake gcc-libs git glib2 glibc go grpc libsecret ninja protobuf qt6-base qt6-declarative qt6-svg sentry-native)
+makedepends=(abseil-cpp cmake gcc-libs git glib2 glibc go grpc libfido2 libsecret ninja protobuf qt6-base qt6-declarative qt6-svg sentry-native)
 source=("$pkgbase::git+$url#tag=v$pkgver"
 	"https://gitlab.archlinux.org/archlinux/packaging/packages/protonmail-bridge/-/raw/03d60b89cfb30580ad1bb8bc5c86e28348fa6ad2/protonmail-bridge.service"
-	"https://gitlab.archlinux.org/archlinux/packaging/packages/protonmail-bridge/-/raw/03d60b89cfb30580ad1bb8bc5c86e28348fa6ad2/remove-vcpkg-dependency.patch"
+	"remove-vcpkg-dependency.patch"
 	"fix-wayland-icon.patch::$url/commit/75e7bba6e62ef4b0a58334f2bcc7c56b7769c69c.patch"
 	# Patches from https://github.com/mnixry/proton-bridge. They make the app work for free users and only require the patches from this fork to work
 	"1.patch::https://github.com/mnixry/proton-bridge/commit/c9f2dd7383ad2b1c0d9ca97c7a0701124f475156.diff"
@@ -20,9 +20,9 @@ source=("$pkgbase::git+$url#tag=v$pkgver"
 	"5.patch::https://github.com/mnixry/proton-bridge/commit/e1f61f262548c50b2ca9bd88f9c2e54160bf5bc3.diff"
 )
 noextract=()
-sha256sums=('17e8014f0d30da4720492d2b68d941ddf6d2be12eb337677acf111a003956bc6'
+sha256sums=('1114a6f0c6cac19dcd75267bcb621884f0c6e37e577698eac89d9659e9b39dd6'
             '5d273f1245fec8549a3daa3fe76e22bb6c23957cf5bcb51c24f878e19c7a5692'
-            '436a9a293424fb7d48a8fd61fff7d63985dec56d6170cd2fbae24fe03ef98136'
+            '87c01adf8bfc3d3f4ee346d0bc83997a8b8e83104a7d5e53b91de58e3b13b3d7'
             '45a68688cf2a06539d60e3e35b112a67319c58c23c35ec4cf3712d2f0cb50cb2'
             '7438f711a6762a34614bc10be8b54c00691bc72743e14767f0b72e9a11051327'
             '795a17dadbd0ae8b9225c9a279b74097e153c9aea0dd8ec55b1c877864805323'
@@ -114,7 +114,7 @@ package_protonmail-bridge-free() {
 
 package_protonmail-bridge-free-core() {
 	pkgdesc="$pkgdesc (core executable and daemon)"
-	depends=(glib2 glibc libsecret)
+	depends=(glib2 glibc libfido2 libsecret)
 	optdepends=(
 	'gnome-keyring: gnome-keyring support'
 	'org.freedesktop.secrets: Applications that support Freedesktop secrets api'
