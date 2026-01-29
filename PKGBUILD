@@ -1,3 +1,5 @@
+# Denys Vusovych <deniskav2006@gmail.com>
+
 pkgname=drg_mod_integration-notag-bin
 pkgver=0.2.14
 pkgrel=2
