@@ -1,6 +1,6 @@
 pkgbase = cornelli-bin
 	pkgdesc = Write to your future self
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/hitblast/cornelli
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = cornelli-bin
 	depends = gcc-libs
 	provides = nelli
 	conflicts = cornelli
-	source = LICENSE-1.2.0::https://raw.githubusercontent.com/hitblast/cornelli/v1.2.0/LICENSE
-	source = README-1.2.0.md::https://raw.githubusercontent.com/hitblast/cornelli/v1.2.0/README.md
-	sha256sums = a64e0ba65acf699df3f07775789be56d1b98a1a437eb3062a2dbd4babf6fe39f
-	sha256sums = 115503e692b01b9a1dc67b20ca7537a75e22109142bbee199129dfc810c99378
-	source_x86_64 = cornelli-1.2.0.tgz::https://github.com/hitblast/cornelli/releases/download/v1.2.0/cornelli-ubuntu-latest.tar.gz
-	sha256sums_x86_64 = 7d09d20a742eef2006270da3df4beb00d2dc29106b92a721e58f17eaf7b8a792
+	source = LICENSE-1.3.0::https://raw.githubusercontent.com/hitblast/cornelli/v1.3.0/LICENSE
+	source = README-1.3.0.md::https://raw.githubusercontent.com/hitblast/cornelli/v1.3.0/README.md
+	sha256sums = cf69e70652912b5a51e787bb58b8d07ef2eeff0258ba4b89ff09e8090545fcfe
+	sha256sums = a8397f61fc5e389114386280e11c6bad7dd7fa2fc5304659e183be7435ecc124
+	source_x86_64 = cornelli-1.3.0.tgz::https://github.com/hitblast/cornelli/releases/download/v1.3.0/cornelli-ubuntu-latest.tar.gz
+	sha256sums_x86_64 = 58bd2167ac982b45680c43f3ce56780ad5b920d41ca82e20a1a4b4336a8546a8
 
 pkgname = cornelli-bin
