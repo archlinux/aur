@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Ruziczka <aur@sebastianruziczka.de>
 pkgname=looksyk-desktop
 _pkgnameshort=looksyk
-pkgver=1.18.3
+pkgver=1.19.0
 pkgrel=1
 pkgdesc="A markdown centric, fast and local personal knowledge platform"
 arch=("x86_64")
@@ -42,7 +42,7 @@ build() {
 check() {
 	cd "$_pkgnameshort"
 	cd backend
-	CFLAGS+=' -ffat-lto-objects' cargo test
+	CFLAGS+=' -ffat-lto-objects' cargo test --release
 }
 
 package() {
