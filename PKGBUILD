@@ -2,11 +2,11 @@
 
 pkgname=dockle
 pkgver=0.4.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Container Image Linter for Security, Helping build the Best-Practice Docker Image"
 arch=('any')
 url="https://github.com/goodwithtech/dockle"
-license=('Apache')
+license=('Apache-2.0')
 makedepends=('go' 'git' 'btrfs-progs')
 source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('d0c1013b8c618ec47fd766303ba6b975b118902a52d352484852206b7fdf2c40')
