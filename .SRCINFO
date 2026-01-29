@@ -1,17 +1,16 @@
 pkgbase = limine-mkinitcpio-hook-git
-	pkgdesc = Install kernel for the Limine bootloader.
-	pkgver = r433.d190245
+	pkgdesc = Install kernels for the Limine bootloader.
+	pkgver = r539.cb9c017
 	pkgrel = 1
 	url = https://gitlab.com/Zesko/limine-entry-tool
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = git
-	makedepends = jdk21-openjdk
-	makedepends = maven
+	makedepends = gradle
 	depends = bash
 	depends = grep
 	depends = tar
-	depends = java-runtime-headless>=17
 	depends = limine
 	depends = mkinitcpio
 	depends = efibootmgr
@@ -23,5 +22,9 @@ pkgbase = limine-mkinitcpio-hook-git
 	backup = etc/limine-entry-tool.conf
 	source = git+https://gitlab.com/Zesko/limine-entry-tool.git
 	sha256sums = SKIP
+	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-25.0.2/graalvm-community-jdk-25.0.2_linux-x64_bin.tar.gz
+	sha256sums_x86_64 = e0be791c8fda4d03b6b0a0cb824fef3149736170057b3a515252b44419606af0
+	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-25.0.2/graalvm-community-jdk-25.0.2_linux-aarch64_bin.tar.gz
+	sha256sums_aarch64 = e0e18106fa1d8628d8ba21f548865211d7c8608a3423f7b25cb2aa4eef9abf10
 
 pkgname = limine-mkinitcpio-hook-git
