@@ -4,7 +4,7 @@
 
 _pkgname='ksh93'
 pkgname="${_pkgname}-git"
-pkgver=r1976.11981f5f
+pkgver=r1996.d462de66
 pkgrel=1
 pkgdesc="KornShell 93u+m, fork based on ksh 93u+"
 arch=('x86_64' 'i686' 'pentium4' 'powerpc64le' 'powerpc64' 'powerpc' 'riscv64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -33,10 +33,6 @@ prepare() {
 	# file from operating. To work around this, file is passed the --no-sandbox
 	# flag via an alias inserted into the bin/package script.
 	sed -i '1s/^/alias file="file --no-sandbox" /' bin/package
-
-	# Notice to the few who actually read the diffs in the PKGBUILDs:
-	# The bugfix to patch out the ACE vulnerability has been merged upstream:
-	# https://github.com/ksh93/ksh/commit/970812e39c236ff385e440ac6d458d196c237667
 }
 
 build() {
