@@ -18,7 +18,7 @@ pkgver() {
   cd "${srcdir}/${_pkgname}"
   local count
   count="$(git rev-list --count HEAD)"
-  printf "0.1.0.r%s.g%s" "${count}" "$(git rev-parse --short HEAD)"
+  printf "0.1.1.r%s.g%s" "${count}" "$(git rev-parse --short HEAD)"
 }
 
 build() {
