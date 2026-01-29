@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=gopher64
-pkgver=1.1.11
+pkgver=1.1.12
 pkgrel=1
 pkgdesc='A Nintendo64 emulator'
 arch=('x86_64')
@@ -55,13 +55,14 @@ makedepends=(
 source=("git+https://github.com/gopher64/gopher64.git#tag=v${pkgver}"
         'git+https://github.com/gopher64/parallel-rdp-standalone.git'
         'gopher64.desktop')
-sha256sums=('119b67ec935596d4f6fc84ebab5f662889d819f966005185ae530c569559a4f9'
+sha256sums=('8489289afa8f13facb62c0474204cc6a2d744c0f847d824c058cb6d0e6289f56'
             'SKIP'
             '9a3c01d2064095b83261bf931aad101bddc94ae66d621e7233f7337d44a01f10')
 
 prepare() {
     git -C gopher64 submodule init
     git -C gopher64 config --local submodule.parallel-rdp/parallel-rdp-standalone.url "${srcdir}/parallel-rdp-standalone"
+    git -C gopher64 config --local submodule.src/compat/sse2neon.update none
     git -C gopher64 -c protocol.file.allow='always' submodule update
     
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')" --manifest-path='gopher64/Cargo.toml'
