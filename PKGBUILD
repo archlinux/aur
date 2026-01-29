@@ -1,6 +1,6 @@
 pkgname=linux-id
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="FIDO token implementation for Linux that protects the token keys using your system's TPM."
 arch=(x86_64)
 url=https://github.com/matejsmycka/linux-id
@@ -11,7 +11,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/matejsmycka/linux-id/archiv
         "$pkgname.service"
         "$pkgname.rules")
 sha256sums=('f9650331e7b790f41b2bd3be87de830c2aaae620368ef8038d48f701ef8ada67'
-            'e59c7a03fb6b7ac535dd1844dd298fbd6946464b98e6da6653a8a804526eeeb2'
+            '74891b75cfbd8963c13369af16a11ee0fd997400051a84c3e525d5d4e56ab084'
             '8a42f5924b06effb0620714db1313b385f821db0f324982e11ebd28feca9f1dd')
 
 prepare() {

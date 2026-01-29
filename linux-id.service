@@ -14,7 +14,7 @@ ProtectProc=noaccess
 # pinentry may need to access /run/user/$UID/wayland-0
 BindReadOnlyPaths=%t
 # pinentry may need to access /tmp/.X11-unix
-BindReadonlyPaths=%T/.X11-unix
+BindReadOnlyPaths=%T/.X11-unix
 # pinentry may need to write here
 BindPaths=%E
 NoNewPrivileges=true
