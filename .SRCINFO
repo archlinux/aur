@@ -13,8 +13,8 @@ pkgbase = prizrak-box-bin
 	source = prizrak-box.sh
 	sha256sums = 4497d4c2cfb24ca0665cbeabf377a6bc850a8cfd6dd17469b0dc937a9ed6bf65
 	source_aarch64 = Prizrak-Box-1.0.21_alpha8-aarch64.tar.zst::https://github.com/legiz-ru/prizrak-box/releases/download/v1.0.21-alpha8/linux-arm64-aur.tar.zst
-	sha256sums_aarch64 = 7f468249e30ea23defc47c5160191e0c7707e7571a002f9d1700c6bd17996546
+	sha256sums_aarch64 = e4645aeb8ea2fe124ba99ab3b2a3d7a3b0337ed55bcb6f05dd7fc512aa56ea86
 	source_x86_64 = Prizrak-Box-1.0.21_alpha8-x86_64.tar.zst::https://github.com/legiz-ru/prizrak-box/releases/download/v1.0.21-alpha8/linux-amd64-aur.tar.zst
-	sha256sums_x86_64 = 492fcebddd3ac6afdbc8e9501497bc8e613dae4830e47291141194d4ed01c73b
+	sha256sums_x86_64 = 3a0f12e5d902366201ec1e72dccf16eee703802ff0b49af42acdc2533aff350f
 
 pkgname = prizrak-box-bin
