@@ -1,12 +1,12 @@
 pkgbase = cs-libguarded
 	pkgdesc = Header only library for multithreaded programming
-	pkgver = 1.4.2
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://www.copperspice.com/
 	arch = any
 	license = BSD-2-Clause
 	makedepends = cmake
-	source = https://github.com/copperspice/cs_libguarded/archive/libguarded-1.4.2/cs-libguarded-1.4.2.tar.gz
-	sha256sums = d04b84c1e53e24d42eaa41e0c96897a3f358677154178673cfe12e2ad75a06c2
+	source = https://github.com/copperspice/cs_libguarded/archive/libguarded-2.0.0/cs-libguarded-2.0.0.tar.gz
+	sha256sums = e628c84649d3e73d595ca013fe622b7359cb5e744903120a9f93a2427ce68107
 
 pkgname = cs-libguarded

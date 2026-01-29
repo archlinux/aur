@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=cs-libguarded
-pkgver=1.4.2
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Header only library for multithreaded programming'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://www.copperspice.com/'
 license=('BSD-2-Clause')
 makedepends=('cmake')
 source=("https://github.com/copperspice/cs_libguarded/archive/libguarded-${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('d04b84c1e53e24d42eaa41e0c96897a3f358677154178673cfe12e2ad75a06c2')
+sha256sums=('e628c84649d3e73d595ca013fe622b7359cb5e744903120a9f93a2427ce68107')
 
 build() {
     cmake -B build -S "cs_libguarded-libguarded-${pkgver}" \
