@@ -1,0 +1,29 @@
+## The nice way
+# [discord-electron-openasar]
+# source = "combiner"
+# from = ["discord", "openasar"]
+# format = "$1+$2"
+#
+# [discord]
+# source = "archpkg"
+# archpkg = "discord"
+#
+# [openasar]
+# source = "cmd"
+# cmd = """\
+# git clone https://github.com/goosemod/openasar && \
+# cd openasar && \
+# git rev-list --count HEAD && \
+# rm -rf openasar
+# """
+
+## Today's way
+[discord-electron-openasar]
+source = "cmd"
+cmd = """\
+LANG=C pacman -Si discord | grep Version | sed -E 's,.*:([0-9.]+)-.*,\\1,' | tr '\\n' '+' && \
+rm -rf openasar && \
+git clone --quiet https://github.com/goosemod/openasar && \
+git -C openasar rev-list --count HEAD && \
+rm -rf openasar
+"""
