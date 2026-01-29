@@ -6,7 +6,7 @@
 pkgname=lammps
 pkgver=20250722
 _pkgver="stable_22Jul2025_update3"
-pkgrel=5
+pkgrel=6
 pkgdesc="Public development project of the LAMMPS MD software package"
 url="https://lammps.org"
 arch=('x86_64')
@@ -55,9 +55,9 @@ build() {
 
 
     # phana
-    # cd ../tools/phonon/
-    # cmake -S . -B build
-    # cmake --build build
+    cd ../tools/phonon/
+    cmake -S . -B build
+    cmake --build build
 }
 
 package() {
@@ -72,7 +72,7 @@ package() {
     install -Dm644 "../tools/vim/lammps.vim" "${pkgdir}/usr/share/vim/vimfiles/syntax/lammps.vim"
     install -Dm644 "../tools/vim/filetype.vim" "${pkgdir}/usr/share/vim/vimfiles/ftdetect/lammps.vim"
 
-    # install -Dm755 "../tools/phonon/build/phana" "${pkgdir}/usr/bin/phana"
+    install -Dm755 "../tools/phonon/build/phana" "${pkgdir}/usr/bin/phana"
 
     # python lib
     PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps ../python/dist/*.whl
