@@ -1,6 +1,6 @@
 pkgbase = rofi-chem
 	pkgdesc = Chemical Elements & Compounds Rofi Plugin
-	pkgver = 2026.01.14
+	pkgver = 2026.01.29
 	pkgrel = 1
 	url = https://github.com/fam007e/rofi-chem
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = rofi-chem
 	license = MIT
 	makedepends = go
 	depends = rofi
-	source = rofi-chem-2026.01.14.tar.gz::https://github.com/fam007e/rofi-chem/archive/v2026.01.14.tar.gz
-	sha256sums = cc0315ea69307eb45e4e10c453f10a9593fda71cb8d28fb249e12075654bfd7f
+	source = rofi-chem-2026.01.29.tar.gz::https://github.com/fam007e/rofi-chem/archive/v2026.01.29.tar.gz
+	sha256sums = 6193b78828996b4ecf56814cfb8d8ebdac9db0e50a2e871355b4bbd9a16451b3
 
 pkgname = rofi-chem

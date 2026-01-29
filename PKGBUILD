@@ -1,6 +1,6 @@
 # Maintainer: fam007e <faisalmoshiur+gpg@gmail.com>
 pkgname=rofi-chem
-pkgver=2026.01.14
+pkgver=2026.01.29
 pkgrel=1
 pkgdesc="Chemical Elements & Compounds Rofi Plugin"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('rofi')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('cc0315ea69307eb45e4e10c453f10a9593fda71cb8d28fb249e12075654bfd7f')
+sha256sums=('6193b78828996b4ecf56814cfb8d8ebdac9db0e50a2e871355b4bbd9a16451b3')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
