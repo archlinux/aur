@@ -24,6 +24,8 @@ build() {
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
+    export GOPATH="${srcdir}/gopath"
+    export GOCACHE="${srcdir}/go-cache"
     local _version
     _version=$(git describe --tags --abbrev=0 | sed 's/^v//')
     go build \
@@ -38,5 +40,5 @@ build() {
 package() {
     cd "${pkgname}"
     install -Dm755 bin/grepai "${pkgdir}/usr/bin/grepai"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%%-git}/LICENSE"
 }
