@@ -1,6 +1,6 @@
 pkgbase = votetracker-bin
 	pkgdesc = School grade management application (italian school system) (pre-built binary)
-	pkgver = 2.7.1
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/mambucodev/votetracker
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = votetracker-bin
 	depends = hicolor-icon-theme
 	provides = votetracker
 	conflicts = votetracker
-	source = VoteTracker-Linux-2.7.1::https://github.com/mambucodev/votetracker/releases/download/v2.7.1/VoteTracker-Linux
-	source = votetracker.desktop::https://raw.githubusercontent.com/mambucodev/votetracker/v2.7.1/scripts/votetracker.desktop
-	sha256sums = d0d37ab7e895a4014564e04c30cd26f11d193f88ced5ca25899e2a7dffc42fe9
-	sha256sums = 262673b7835ce28ad1d578b7ce971f2c968fca8a28da19e0383f9ff59cf54d4a
+	source = VoteTracker-Linux-2.8.0::https://github.com/mambucodev/votetracker/releases/download/v2.8.0/VoteTracker-Linux
+	source = votetracker.desktop::https://raw.githubusercontent.com/mambucodev/votetracker/v2.8.0/scripts/votetracker.desktop
+	sha256sums = f98524843fa43781c2f0deb20a5292cc53bcc4ccc2d44f6f3446e4b8c05070d4
+	sha256sums = 5839ccfa311dae0df31d59145935fb0454e1cefef18e5d36b1ce2fa322d0b2a5
 
 pkgname = votetracker-bin
