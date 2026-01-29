@@ -4,12 +4,12 @@
 : ${_ver_plutovg:=1.3.1}
 : ${_ver_plutosvg:=0.0.7}
 
-: ${_commit=9aac7e8426f9edd7d43a31b2d4399b46c725ec84}
+: ${_commit=bc8151d2a46d4aba039ea5580afbfc7bfcf6d730}
 
 _pkgname="pcsx2"
 pkgname="$_pkgname"
-pkgver=2.6.1
-pkgrel=2
+pkgver=2.6.3
+pkgrel=1
 pkgdesc='PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
 license=('GPL-3.0-or-later')
