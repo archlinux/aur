@@ -1,6 +1,6 @@
 pkgbase = retro-debugger-git
 	pkgdesc = Multiplatform debugger APIs host for retro computers: C64 (Vice), Atari800 and NES (NestopiaUE)
-	pkgver = v0.64.68.r8.4d8f80e
+	pkgver = v0.64.74.r0.6b4c7b1
 	pkgrel = 1
 	url = https://github.com/slajerek/RetroDebugger
 	arch = x86_64
@@ -20,6 +20,8 @@ pkgbase = retro-debugger-git
 	provides = retro-debugger
 	source = RetroDebugger::git+https://github.com/slajerek/RetroDebugger.git
 	source = MTEngineSDL::git+https://github.com/slajerek/MTEngineSDL.git
+	source = uSockets::git+https://github.com/uNetworking/uSockets.git
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 
