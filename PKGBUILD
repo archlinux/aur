@@ -3,11 +3,11 @@
 
 pkgname=jmeter-plugins-manager
 pkgver=1.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Custom Plugins for Apache JMeter™"
 arch=(any)
 url="http://jmeter-plugins.org/"
-license=('Apache')
+license=('Apache-2.0')
 depends=('jmeter>=3.0')
 options=(!strip)
 source=(${pkgname}-${pkgver}.jar::https://jmeter-plugins.org/get/)
