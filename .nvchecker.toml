@@ -1,0 +1,5 @@
+[linux-id]
+source = "github"
+github = "matejsmycka/linux-id"
+use_latest_release = true
+prefix = "v"

@@ -4,3 +4,4 @@
 !linux-id.service
 !.gitignore
 !.SRCINFO
+!.nvchecker.toml
