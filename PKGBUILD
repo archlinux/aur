@@ -1,4 +1,5 @@
-# Maintainer : MoetaYuko <loli at yuko dot moe>
+# Maintainer: apnea <27015 at riseup dot net>
+# Contributor: MoetaYuko <loli at yuko dot moe>
 # Contributor: jiuren <qiuwei1987@gmail.com>
 # Contributor: Benoit Favre <benoit.favre@lif.univ-mrs.fr>
 # Contributor: Kristof Marussy <kris7topher@gmail.com>
@@ -10,19 +11,19 @@
 
 pkgbase=liblinear
 pkgname=(liblinear python-liblinear)
-pkgver=2.47
+pkgver=2.50
 pkgrel=1
 pkgdesc="A Library for Large Linear Classification"
-arch=('i686' 'x86_64' 'aarch64')
-url="http://www.csie.ntu.edu.tw/~cjlin/liblinear/"
+arch=('x86_64')
+url="https://www.csie.ntu.edu.tw/~cjlin/liblinear/"
 license=('BSD')
 depends=('gcc-libs' 'python-scipy')
-makedepends=('gcc' 'python-build' 'python-installer')
+makedepends=('gcc' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("https://www.csie.ntu.edu.tw/~cjlin/$pkgbase/$pkgbase-$pkgver.tar.gz")
-sha256sums=('99ce98ca3ce7cfb31f2544c42f23ba5bc6c226e536f95d6cd21fe012f94c65e0')
+sha256sums=('e5eeafe2159c41148b59304da2ba0ed12648e3d491ce2b9625058e174e96ca29')
 
 build() {
-    cd $srcdir/${pkgbase}-${pkgver}
+    cd "${pkgbase}-${pkgver}"
     make lib all
 
     cd python
@@ -30,15 +31,14 @@ build() {
 }
 
 package_liblinear() {
-    cd $srcdir/${pkgbase}-${pkgver}
+    cd "${pkgbase}-${pkgver}"
 
     local _sover
-
-    _sover="$(find . -maxdepth 1 -type f -regextype posix-basic -regex '.*liblinear.so.[0-9]$' | awk -F'.' '{ print $NF }')"
+    _sover="$(find . -maxdepth 1 -type f -name 'liblinear.so.*' | awk -F'.' '{ print $NF }')"
 
     # binaries
-    install -D -m755 predict $pkgdir/usr/bin/liblinear-predict
-    install -D -m755 train $pkgdir/usr/bin/liblinear-train
+    install -D -m755 predict "${pkgdir}/usr/bin/liblinear-predict"
+    install -D -m755 train "${pkgdir}/usr/bin/liblinear-train"
 
     # library
     install -D -m755 "liblinear.so.${_sover}" -t "${pkgdir}/usr/lib"
@@ -55,9 +55,10 @@ package_liblinear() {
 
 package_python-liblinear() {
     pkgdesc="Python bindings for liblinear"
+    depends=('liblinear' 'python' 'python-scipy')
 
-    cd "${srcdir}/${pkgbase}-${pkgver}/python"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    cd "${pkgbase}-${pkgver}/python"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 
     # license
     install -D -m644 ../COPYRIGHT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
