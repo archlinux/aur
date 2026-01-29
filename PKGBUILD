@@ -18,8 +18,14 @@ makedepends=(
 optdepends=(
     'xdg-utils: for opening URLs'
 )
-provides=('claude-cowork')
-conflicts=('claude-cowork')
+provides=('claude-cowork' 'claude-desktop')
+conflicts=(
+    'claude-cowork'
+    'claude-desktop'
+    'claude-desktop-bin'
+    'claude-desktop-native'
+    'claude-desktop-appimage'
+)
 options=('!strip')
 source=(
     "Claude-${pkgver}.dmg::https://storage.googleapis.com/osprey-downloads-c02f6a0d-347c-492b-a752-3e0651722e97/nest/Claude.dmg"

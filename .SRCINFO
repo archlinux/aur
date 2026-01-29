@@ -12,7 +12,12 @@ pkgbase = claude-cowork-linux
 	depends = nodejs
 	optdepends = xdg-utils: for opening URLs
 	provides = claude-cowork
+	provides = claude-desktop
 	conflicts = claude-cowork
+	conflicts = claude-desktop
+	conflicts = claude-desktop-bin
+	conflicts = claude-desktop-native
+	conflicts = claude-desktop-appimage
 	options = !strip
 	source = Claude-1.23.26.dmg::https://storage.googleapis.com/osprey-downloads-c02f6a0d-347c-492b-a752-3e0651722e97/nest/Claude.dmg
 	source = git+https://github.com/johnzfitch/claude-cowork-linux.git#tag=v1.23.26
