@@ -1,6 +1,6 @@
 pkgbase = vm-curator-bin
 	pkgdesc = A TUI application to manage QEMU/KVM VMs (pre-built binary)
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/mroboff/vm-curator
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = vm-curator-bin
 	optdepends = polkit: privilege escalation for KVM
 	provides = vm-curator
 	conflicts = vm-curator
-	source = vm-curator-bin-0.2.3.tar.gz::https://github.com/mroboff/vm-curator/releases/download/v0.2.3/vm-curator-v0.2.3-linux-x86_64.tar.gz
-	sha256sums = ac937a9050c8acf220b21a6b5465f0b420523ae7534cd0651203dce98a9f37c8
+	source = vm-curator-bin-0.2.4.tar.gz::https://github.com/mroboff/vm-curator/releases/download/v0.2.4/vm-curator-v0.2.4-linux-x86_64.tar.gz
+	sha256sums = 7f4c3baf2bd8a6c8cbaacd411b6524652d6828874f0caea9bf20e0ee5fd716bf
 
 pkgname = vm-curator-bin
