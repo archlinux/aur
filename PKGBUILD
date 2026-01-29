@@ -3,7 +3,7 @@
 # Contributor: Eric BÃ©langer <eric@archlinux.org>
 
 pkgname=lib32-procps-ng
-pkgver=4.0.5
+pkgver=4.0.6
 pkgrel=1
 pkgdesc='Utilities for monitoring your system and its processes (32-bit)'
 url='https://gitlab.com/procps-ng/procps'
@@ -13,7 +13,7 @@ depends=('procps-ng' 'lib32-glibc')
 makedepends=('git')
 provides=('libproc2.so')
 source=("git+https://gitlab.com/procps-ng/procps.git#tag=v${pkgver}?signed")
-sha256sums=('640ad0085ee013efb94877072cfa7c0c025884dc8cc398e331b7efb6ebaefc01')
+sha256sums=('160aa30e2a133f44e7cc6e90c16cc018360a786f043aef84614ce595062fc894')
 validpgpkeys=('5D2FB320B825D93904D205193938F96BDF50FEA5') # Craig Small <csmall@debian.org>
 
 prepare() {
