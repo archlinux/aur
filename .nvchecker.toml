@@ -1,0 +1,4 @@
+[gog-scott-whiskers-the-search-for-the-golden-cat]
+source = "jq"
+url = "https://www.gogdb.org/data/products/1729642464/product.json"
+filter = ".dl_installer | map(select(.os == \"linux\"))[0] | .version"

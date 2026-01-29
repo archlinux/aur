@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Scott Whiskers: the Search for the Golden Cat
+Comment=The next big adventure from our missing cat specialist, Scott Whiskers
+Exec=scott-whiskers-the-search-for-the-golden-cat
+Icon=gog-scott-whiskers-the-search-for-the-golden-cat
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;
+Encoding=UTF-8

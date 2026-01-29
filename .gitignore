@@ -1,0 +1,8 @@
+/.vscode/
+/src
+/pkg
+*.log
+*.pkg.*
+*.tar.*
+*.zip
+scott-whiskers-the-search-for-the-golden-cat_*.sh
