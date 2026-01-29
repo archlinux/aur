@@ -1,4 +1,4 @@
-pkgbase = arch-update-readiness
+pkgbase = arch-update-check
 	pkgdesc = Pre-update safety checks for Arch Linux (Arch News, system state, optional AUR checks)
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -10,7 +10,6 @@ pkgbase = arch-update-readiness
 	depends = pacman
 	depends = systemd
 	optdepends = yay: for optional AUR update checks
-	source = arch-update-readiness-1.0.0.tar.gz::https://github.com/Rakosn1cek/arch-update-check/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = SKIP
+	source = arch-update-check-1.0.0.tar.gz::https://github.com/Rakosn1cek/arch-update-check/archive/refs/tags/v1.0.0.tar.gz
 
-pkgname = arch-update-readiness
+pkgname = arch-update-check

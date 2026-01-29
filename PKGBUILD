@@ -1,6 +1,7 @@
 # Maintainer: Rakosn1cek <rakosn1cek@zohomail.eu>
 
-pkgname=arch-update-readiness
+pkgname=arch-update-check
+pkbase=arch-update-check
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Pre-update safety checks for Arch Linux (Arch News, system state, optional AUR checks)"
