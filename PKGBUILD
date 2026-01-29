@@ -23,8 +23,6 @@ check() {
   local pytest_options=(
     -vv
     --disable-warnings
-    # Need to update snapshots
-    --deselect tests/test_large_cases.py::test_message_graph[memory]
   )
   cd "$srcdir"/$_name-$pkgver
   NO_DOCKER=true PYTHONPATH=$PWD pytest "${pytest_options[@]}" tests
