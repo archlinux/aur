@@ -1,0 +1,26 @@
+pkgbase = terx-bin
+	pkgdesc = Cross-platform SSH client with GPU-accelerated terminal rendering
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://github.com/OutrageLabs/terX
+	arch = x86_64
+	license = custom:proprietary
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = glib2
+	depends = gdk-pixbuf2
+	depends = cairo
+	depends = pango
+	depends = libsoup3
+	depends = openssl
+	depends = hicolor-icon-theme
+	optdepends = libappindicator-gtk3: system tray support
+	optdepends = gst-plugins-good: video/audio support
+	provides = terx
+	conflicts = terx
+	options = !strip
+	options = !debug
+	source = terx-bin-0.2.7.deb::https://github.com/OutrageLabs/terX/releases/download/v0.2.7/terX_0.2.7_amd64.deb
+	sha256sums = SKIP
+
+pkgname = terx-bin
