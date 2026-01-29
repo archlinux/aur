@@ -15,7 +15,7 @@ _pkgname='vision'
 pkgbase='python-torchvision-rocm'
 pkgname=('torchvision-rocm' 'python-torchvision-rocm')
 pkgver=0.25.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Datasets, transforms, and models specific to computer vision (with ROCM support)'
 arch=('x86_64')
 url='https://github.com/pytorch/vision'
@@ -37,6 +37,7 @@ makedepends=(
     ninja
     python-setuptools
     rocm-hip-sdk
+    rocm-toolchain
     qt6-base
     miopen-hip
 )
