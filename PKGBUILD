@@ -1,7 +1,7 @@
 # Maintainer: uwuclxdy
 pkgname=coopmat-layer-git
 pkgver=r23.fba7d1f
-pkgrel=1
+pkgrel=2
 pkgdesc="Vulkan cooperative matrix emulation layer"
 arch=('x86_64' 'aarch64')
 url="https://github.com/doitsujin/coopmat-layer"
