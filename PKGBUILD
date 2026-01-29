@@ -7,7 +7,7 @@ url="https://github.com/Strappazzon/drg-mint-notag"
 license=('MIT')
 provides=("drg_mod_integration")
 conflicts=("drg_mod_integration-bin")
-depends=('openssl-1.1')
+depends=('openssl')
 options=('!strip')
 source=(
     "${url}/releases/download/v${pkgver}/mint-notag-linux-x86_64.tar.xz"
