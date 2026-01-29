@@ -2,22 +2,21 @@
 
 _pkgname="scm_breeze"
 pkgname="$_pkgname-git"
-pkgver=1.0.0.r376.gdd6ee87
+pkgver=1.0.0.r413.g0074697
 pkgrel=1
 pkgdesc='Streamline your SCM workflow.'
 arch=('any')
 url='https://github.com/scmbreeze/scm_breeze'
 license=('MIT')
-depends=('git' 'ruby')
-optdepends=('bash: shell integration'
-            'zsh: shell integration')
+depends=('git' 'ruby' 'bash')
+optdepends=('zsh: shell integration')
 install='scm_breeze-git.install'
 source=("$pkgname::git+https://github.com/scmbreeze/$_pkgname.git"
         "scmbDir-location.patch"
         "no-updates.patch")
-sha1sums=('SKIP'
-          'd5379956705ba32215237072b953741006bb1d2e'
-          '4212a7ccff97bcef809cb96591059d66b44b0b68')
+b2sums=('SKIP'
+        'd9060fa344c391f9ac94a3d726901354bc3609b231457ca2a934038489c84dc6c9383cd8155c88e082ef620b4dcaae1565f5125c8d804bfb2f0d7ff2c0e25bf3'
+        '6f19678089d03af57f42909edb94cc83cfe8946f164b33a1ac8c6fc26e5f8363c2234c76688fe294f8db3b3da0cd3bcedf343899c307a1ae04c7d813c789452c')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -32,9 +31,6 @@ prepare() {
 
   # Change the location of the scm_breeze directory
   patch --forward --strip=1 --input="${srcdir}/scmbDir-location.patch"
-
-  # egrep is deprecated
-  sed -i 's/egrep/grep -E/' lib/git/fallback/status_shortcuts_shell.sh
 }
 
 package() {

@@ -1,0 +1,11 @@
+version = 1
+
+[[annotations]]
+path = ["PKGBUILD", ".SRCINFO", "*.install"]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = ["no-updates.patch", "scmbDir-location.patch"]
+SPDX-FileCopyrightText = "2011 Nathan Broadbent <nathan.f77@gmail.com>"
+SPDX-License-Identifier = "MIT"

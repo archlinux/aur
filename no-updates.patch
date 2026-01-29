@@ -1,19 +1,16 @@
-:100644 100644 2744b00 0000000 M	lib/scm_breeze.sh
-
-diff --git a/lib/scm_breeze.sh b/lib/scm_breeze.sh
-index 2744b00..07781d5 100644
---- a/lib/scm_breeze.sh
-+++ b/lib/scm_breeze.sh
-@@ -70,20 +70,6 @@ find_binary(){
- 
+diff --git i/lib/scm_breeze.sh w/lib/scm_breeze.sh
+index 89eeded..05969b0 100644
+--- i/lib/scm_breeze.sh
++++ w/lib/scm_breeze.sh
+@@ -106,19 +106,6 @@ find_binary() {
  export GIT_BINARY=$(find_binary git)
- 
--# Updates SCM Breeze from GitHub.
+
+ # Updates SCM Breeze from GitHub.
 -update_scm_breeze() {
 -  currDir=$PWD
 -  cd "$scmbDir"
 -  oldHEAD=$(git rev-parse HEAD 2> /dev/null)
--  git pull origin master
+-  git pull origin main
 -  # Reload latest version of '_create_or_patch_scmbrc' function
 -  source "$scmbDir/lib/scm_breeze.sh"
 -  _create_or_patch_scmbrc $oldHEAD
@@ -25,7 +22,7 @@ index 2744b00..07781d5 100644
  # Create '~/.*.scmbrc' files, or attempt to patch them if passed a previous revision
  _create_or_patch_scmbrc() {
    patchfile=$(mktemp -t tmp.XXXXXXXXXX)
-@@ -110,6 +96,3 @@ _create_or_patch_scmbrc() {
+@@ -145,6 +132,3 @@ _create_or_patch_scmbrc() {
      fi
    done
  }
