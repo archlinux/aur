@@ -3,22 +3,24 @@
 # Binary package - downloads prebuilt binary from GitHub releases
 
 pkgname=fresh-editor-bin
-pkgver=0.1.96
+pkgver=0.1.97
 pkgrel=1
 pkgdesc="A lightweight, fast terminal-based text editor with LSP support and TypeScript plugins"
 url="https://sinelaw.github.io/fresh/"
 license=("GPL-2.0-only")
 arch=('x86_64' 'aarch64')
 
-source_x86_64=("fresh-editor-0.1.96-x86_64.tar.xz::https://github.com/sinelaw/fresh/releases/download/v0.1.96/fresh-editor-x86_64-unknown-linux-gnu.tar.xz"
+source_x86_64=("fresh-editor-0.1.97-x86_64.tar.xz::https://github.com/sinelaw/fresh/releases/download/v0.1.97/fresh-editor-x86_64-unknown-linux-gnu.tar.xz"
              "https://raw.githubusercontent.com/sinelaw/fresh/master/LICENSE")
-source_aarch64=("fresh-editor-0.1.96-aarch64.tar.xz::https://github.com/sinelaw/fresh/releases/download/v0.1.96/fresh-editor-aarch64-unknown-linux-gnu.tar.xz"
+source_aarch64=("fresh-editor-0.1.97-aarch64.tar.xz::https://github.com/sinelaw/fresh/releases/download/v0.1.97/fresh-editor-aarch64-unknown-linux-gnu.tar.xz"
                "https://raw.githubusercontent.com/sinelaw/fresh/master/LICENSE")
 
-sha256sums_x86_64=("b298f1e310a231ecb728e0382f37f2981339b407d85f00b58706537bbd94755d"
+sha256sums_x86_64=("44ab0637c46ccacb31a6876b143a930c08b741f1fe3cb1f7d8086eb65e64602e"
                   "SKIP")
-sha256sums_aarch64=("83868f861dbf93ffa2112ffe21536f26615a1453cb9bb7232f8ddf93a7a6dac6"
+sha256sums_aarch64=("1e4a949089862d9e24573f370ba3acfd321dd45878ba6ea4ef75f54e22ecf722"
                    "SKIP")
+
+
 
 
 
