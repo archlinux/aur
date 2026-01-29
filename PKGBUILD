@@ -1,27 +1,29 @@
-# Maintainer: Matheus Fillipe <mattf@mattf.one>
+# Maintainer: Matheus Fillipe <mattf@h4ks.com>
 pkgname=obsidianirc
-pkgver=0.0.1
+pkgver=0.2.4
 pkgrel=1
-pkgdesc="Modern IRC Client for the web and maybe more"
+pkgdesc="Description of your app"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ObsidianIRC/ObsidianIRC"
-license=('GPLv3')
+license=('MIT')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
 makedepends=('git' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'cargo' 'pnpm' 'nodejs')
 provides=('obsidianirc')
-source=("git+${url}.git")
+source=("git+${url}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
-
-pkgver() {
-  cd ObsidianIRC
-  ( set -o pipefail
-    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-  )
-}
 
 prepare() {
   cd ObsidianIRC
+  
+  # Remove vitest types from tsconfig.json
+  sed -i '/"types":/d' tsconfig.json
+  sed -i 's/"tests"//g' tsconfig.json
+  sed -i 's/,\s*,/,/g' tsconfig.json
+  
+  # Remove vitest reference from vite.config.ts
+  sed -i '/\/\/\/ <reference types="vitest" \/>/d' vite.config.ts
+  sed -i '/\/\/\/ <reference types="@testing-library\/jest-dom" \/>/d' vite.config.ts
+  
   pnpm install
 }
 
@@ -31,5 +33,8 @@ build() {
 }
 
 package() {
-  cp -a ObsidianIRC/src-tauri/target/release/bundle/deb/ObsidianIRC_${pkgver}_*/data/* "${pkgdir}"
+  cd ObsidianIRC
+  _npmver=$(node -p "require('./package.json').version")
+  
+  cp -a src-tauri/target/release/bundle/deb/ObsidianIRC_${_npmver}_*/data/* "${pkgdir}"
 }

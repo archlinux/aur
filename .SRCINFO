@@ -1,11 +1,11 @@
 pkgbase = obsidianirc
-	pkgdesc = Modern IRC Client for the web and maybe more
-	pkgver = 0.0.1
+	pkgdesc = Description of your app
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/ObsidianIRC/ObsidianIRC
 	arch = x86_64
 	arch = aarch64
-	license = GPLv3
+	license = MIT
 	makedepends = git
 	makedepends = openssl
 	makedepends = appmenu-gtk-module
@@ -24,7 +24,7 @@ pkgbase = obsidianirc
 	depends = pango
 	depends = webkit2gtk-4.1
 	provides = obsidianirc
-	source = git+https://github.com/ObsidianIRC/ObsidianIRC.git
+	source = git+https://github.com/ObsidianIRC/ObsidianIRC.git#tag=v0.2.4
 	sha256sums = SKIP
 
 pkgname = obsidianirc
