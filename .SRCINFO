@@ -1,0 +1,18 @@
+pkgbase = empiriqa-bin
+	pkgdesc = Laboratory for pipeline construction with feedback
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ynqa/empiriqa
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = epiq
+	conflicts = empiriqa
+	source_x86_64 = empiriqa-x86_64-0.1.0.txz::https://github.com/ynqa/empiriqa/releases/download/v0.1.0/epiq-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 869ceebd88d11444061cb97f51ef402cc331e56ab923ecea88b27f6033cf25f4
+	source_aarch64 = empiriqa-aarch64-0.1.0.txz::https://github.com/ynqa/empiriqa/releases/download/v0.1.0/epiq-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 01e7e7697f3609b279cce16f4ae2954eb75637a64cd2f039ddc2760d34acc7fb
+
+pkgname = empiriqa-bin

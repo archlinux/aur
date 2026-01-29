@@ -1,0 +1,5 @@
+[empiriqa-bin]
+source = "github"
+github = "ynqa/empiriqa"
+use_latest_release = true
+prefix = "v"
