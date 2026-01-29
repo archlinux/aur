@@ -1,9 +1,10 @@
 # Maintainer: asyync1024 <asyync1024 at proton dot me>
+# Maintainer: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 _pkgname=godot
 pkgname=${_pkgname}32
 pkgver=4.6
-pkgrel=4
+pkgrel=5
 pkgdesc='Advanced cross-platform 2D and 3D game engine (32-bit)'
 url='https://godotengine.org/'
 license=(MIT)
@@ -12,7 +13,6 @@ makedepends=(
   alsa-lib
   pulse-native-provider
   scons
-  mold
   setconf
   yasm
 )
@@ -74,7 +74,6 @@ build() {
     linkflags="$LDFLAGS"
     arch=${_godot_arch}
     bits=32     # Ensure 32-bit binary.
-    linker=mold # Use mold for faster linking.
     builtin_brotli=no
     builtin_certs=no
     builtin_clipper2=yes
