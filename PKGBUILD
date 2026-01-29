@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=copperspice-git
-pkgver=2.0.0.r119.gdea67ae78
+pkgver=2.1.0.r0.gcbad1f991
 pkgrel=1
 pkgdesc='Libraries for developing cross platform software applications in C++ (git version)'
 arch=('x86_64')
@@ -28,6 +28,7 @@ depends=(
     'openssl' # loaded on demand by QLibrary
     'sqlite'
     'vulkan-icd-loader'
+    'wayland'
     'xcb-util-image'
     'xcb-util-keysyms'
     'xcb-util-renderutil'
