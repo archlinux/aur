@@ -1,0 +1,22 @@
+pkgbase = claude-cowork-linux
+	pkgdesc = Official Anthropic Claude Desktop with Cowork (local agent) support for Linux
+	pkgver = 1.23.26
+	pkgrel = 1
+	url = https://github.com/johnzfitch/claude-cowork-linux
+	arch = x86_64
+	license = custom:proprietary
+	makedepends = p7zip
+	makedepends = npm
+	depends = electron
+	depends = bubblewrap
+	depends = nodejs
+	optdepends = xdg-utils: for opening URLs
+	provides = claude-cowork
+	conflicts = claude-cowork
+	options = !strip
+	source = Claude-1.23.26.dmg::https://storage.googleapis.com/osprey-downloads-c02f6a0d-347c-492b-a752-3e0651722e97/nest/Claude.dmg
+	source = git+https://github.com/johnzfitch/claude-cowork-linux.git#tag=v1.23.26
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = claude-cowork-linux
