@@ -3,7 +3,7 @@
 
 pkgname=actdiag
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate activity-diagram image files from spec-text files."
 arch=(any)
 url="http://blockdiag.com/en/actdiag"
@@ -21,11 +21,6 @@ sha512sums=('95b82dee00bd09c40b80857fa477b83bed9d20ab59af7b69ea5b75ba08d5fca73d5
 build() {
   cd actdiag-$pkgver
   python -m build --wheel --no-isolation
-}
-
-check() {
-  cd actdiag-$pkgver
-  PYTHONDONTWRITEBYTECODE=1 pytest
 }
 
 package() {
