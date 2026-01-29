@@ -2,7 +2,7 @@
 
 pkgname=pacman-command-utils
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command utils to help out long pacman commands"
 arch=('x86_64')
 url="https://github.com/crypticverse/pacman-command-utils"
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('rust')
 depends=('pacman')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/crypticverse/pacman-command-utils/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8e449bbf4e8f459e7e78d8138304070482bf0e1cdaee24bfcbd55d8444584834')
+sha256sums=('186850dfbcdd91abf8ec394eaf47e516fea0896def1bc32b479bd4fe165b04db')
 
 prepare() {
     cd "$pkgname-$pkgver/"
