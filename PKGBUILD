@@ -1,7 +1,7 @@
 # Maintainer: leoallday
 pkgname=mov-watch
-pkgver=1.2
-pkgrel=1.1
+pkgver=1.2.1
+pkgrel=1.2
 pkgdesc="Terminal-based movie and TV show streaming"
 arch=('any')
 url="https://github.com/leoallday/mov-watch"
@@ -11,7 +11,7 @@ conflicts=('mov-watch')
 depends=('python' 'python-rich' 'python-requests' 'python-pypresence' 'python-cryptography' 'python-beautifulsoup4' 'yt-dlp' 'python-pillow' 'python-numpy' 'mpv' 'ffmpeg' 'fzf')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("https://github.com/leoallday/mov-watch/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('70c14aa9e7bf3b1e77182a723d9eb025ad3a135be36f832668fe432adfaf416c')
+sha256sums=('440563ea7d3b00014a3a59b0baace562fdf14a62be64fe7bd65807b21d7ac43c')
 
 build() {
     cd "${pkgname}-${pkgver}"
