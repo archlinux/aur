@@ -1,7 +1,7 @@
 # Maintainer: Den Shakhov <denshakhovse@gmail.com>
 
 pkgname=git-heatgrid
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Visualize git commits as a calendar heatmap"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/denshakhov/git-heatgrid"
 license=('MIT')
 depends=('bash>=5.0.0' 'coreutils' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('d7fea3b5693e8e071fd1bb854b066a85cc953fdb2b0642ff81dae62a0518a7d1')
+sha256sums=('9a02fd9b18312a0c65a99609861ebd776791d810ed81f2b9d4cf5eb157b17814')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
