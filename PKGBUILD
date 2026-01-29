@@ -5,7 +5,7 @@
 #shellcheck disable=2148,2034,2154,2164
 
 pkgname=yayfzf-git
-pkgver=2.0.12.r0.g0000000
+pkgver=2.0.13.r0.g0000000
 pkgrel=1
 pkgdesc='Development (git) version of yayfzf, fzf-based interface for searching, installing, removing, and managing packages using yay'
 arch=('any')
