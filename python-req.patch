@@ -1,0 +1,12 @@
+diff -ru OctoPrint-1.11.6.orig/setup.py OctoPrint-1.11.6/setup.py
+--- OctoPrint-1.11.6.orig/setup.py	2026-01-27 13:13:04.000000000 +0200
++++ OctoPrint-1.11.6/setup.py	2026-01-29 16:41:12.448872147 +0200
+@@ -23,7 +23,7 @@
+ # ----------------------------------------------------------------------------------------
+ 
+ # Supported python versions
+-PYTHON_REQUIRES = ">=3.7, <3.14"
++PYTHON_REQUIRES = ">=3.14"
+ 
+ # Requirements for setup.py
+ SETUP_REQUIRES = []
