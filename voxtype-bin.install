@@ -80,7 +80,7 @@ post_install() {
 
 post_upgrade() {
     echo ""
-    echo "==> Voxtype upgraded to 0.5.1"
+    echo "==> Voxtype upgraded to 0.5.2"
     echo ""
 
     CPU_VARIANT=$(_detect_cpu)
@@ -89,12 +89,9 @@ post_upgrade() {
     _detect_gpu
 
     echo ""
-    echo "    New in 0.5.1:"
-    echo "      - Parakeet engine: faster transcription, lower memory usage"
-    echo "      - ROCm GPU acceleration for AMD GPUs (Parakeet)"
-    echo "      - CUDA GPU acceleration for NVIDIA GPUs (Parakeet)"
-    echo "      - Profile support: switch between Whisper and Parakeet configs"
-    echo "      - CLI backend mode for external whisper binaries"
+    echo "    New in 0.5.2:"
+    echo "      - Fixed: ROCm backend now shows in 'voxtype setup parakeet --status'"
+    echo "      - Fixed: AMD GPU detection for auto-selecting ROCm backend"
     echo ""
     echo "    To try Parakeet: voxtype setup parakeet --enable"
     echo ""
