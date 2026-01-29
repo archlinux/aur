@@ -3,7 +3,7 @@
 
 pkgname=obs-multi-rtmp
 pkgver=0.7.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Multiple RTMP outputs plugin for OBS Studio"
 arch=('x86_64')
 url="https://github.com/sorayuki/obs-multi-rtmp"
