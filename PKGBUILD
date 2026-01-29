@@ -8,19 +8,19 @@ pkgbase=nvidia-utils
 pkgname=('nvidia-utils' 'opencl-nvidia' 'nvidia-open-dkms')
 pkgver=590.48.01
 pkgrel=4
-arch=('x86_64')
+arch=('aarch64' 'x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
 options=('!strip')
-_pkg="NVIDIA-Linux-x86_64-${pkgver}"
 _pkg_open="NVIDIA-kernel-module-source-${pkgver}"
+source_aarch64=("https://download.nvidia.com/XFree86/Linux-aarch64/${pkgver}/NVIDIA-Linux-aarch64-${pkgver}.run")
+source_x86_64=("https://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}.run")
 source=('nvidia-drm-outputclass.conf'
         'nvidia-utils.sysusers'
         'nvidia.rules'
         'systemd-homed-override.conf'
         'systemd-suspend-override.conf'
         'nvidia-sleep.conf'
-        "https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
         "https://download.nvidia.com/XFree86/NVIDIA-kernel-module-source/${_pkg_open}.tar.xz"
         0001-Enable-atomic-kernel-modesetting-by-default.patch
         0002-Add-IBT-support.patch
@@ -31,12 +31,14 @@ sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc50677
             'a0183adce78e40853edf7e6b73867e7a8ea5dabac8e8164e42781f64d5232fbe869f850ab0697c3718ebced5cde760d0e807c05da50a982071dfe1157c31d6b8'
             '55def6319f6abb1a4ccd28a89cd60f1933d155c10ba775b8dfa60a2dc5696b4b472c14b252dc0891f956e70264be87c3d5d4271e929a4fc4b1a68a6902814cee'
             'c7fea39d11565f05a507d3aded4e9ea506ef9dbebf313e0fc8d6ebc526af3f9d6dec78af9d6c4456c056310f98911c638706bccdd9926d07f492615569430455'
-            '31fd82af707dbe9a6d3848766925386f5e91c5fae0a605819450eb8e5a5a52eaab3ae5cff50b4dd36bc5c32fe1aabc29a6a79438d6614988c7b08f509ef0da6d'
             '6fe32d5d1a84df0baeaaecd4a847ba73a89bcd1b51d5f9c7525efd2af891f6d5512c1ac97c8b766ba1d1103312c53e5406653589e22684df9260fd75977591a6'
             '98ff06b32bac4297b4ca68e069750114ab5caf41d2a58f945488b52acf97c34dd3b64a6af609f8972e688bd646fe3ee598e699534001230d6f0154cebe6ff5d1'
             '3c4d87686cc79f09feca29df1a8c1973412b48077870b0d3424d575500234e9522b93df53bb6ecd72afd8dc69ecb4a8e7bd3e206080348d30a48c00e62f42943'
             '8d4633c804079e2cd26a4c6e147c7f212770a0ed5514d3c37a33d7453c209dec560fff141134590af56f44d139b87c0c29ddbcb7eb110e90d3c06a237285a5bc')
+sha512sums_aarch64=('ec81da1a11dd9609427e40434cba69d7c0426e4d60cb5c078c66ec992b6dd44483df2c9dfe02deb4db3a815a4c801b3c42f6ac2b08f0506327f1cdfe5446211d')
+sha512sums_x86_64=('31fd82af707dbe9a6d3848766925386f5e91c5fae0a605819450eb8e5a5a52eaab3ae5cff50b4dd36bc5c32fe1aabc29a6a79438d6614988c7b08f509ef0da6d')
 
+_pkg=NVIDIA-Linux-${CARCH}-${pkgver}
 
 create_links() {
     # create soname links
@@ -49,8 +51,8 @@ create_links() {
 }
 
 prepare() {
-    sh "${_pkg}.run" --extract-only
-    cd "${_pkg}"
+    sh ${_pkg}.run --extract-only
+    cd ${_pkg}
     bsdtar -xf nvidia-persistenced-init.tar.bz2
 
     # Enable modeset by default
@@ -177,10 +179,12 @@ package_nvidia-utils() {
     install -Dm644 "nvidia_icd.json" "${pkgdir}/usr/share/vulkan/icd.d/nvidia_icd.json"
     install -Dm644 "nvidia_layers.json" "${pkgdir}/usr/share/vulkan/implicit_layer.d/nvidia_layers.json"
 
-    # VulkanSC
-    install -D -m755 nvidia-pcc -t "${pkgdir}/usr/bin"
-    install -D -m755 "libnvidia-vksc-core.so.${pkgver}" -t "${pkgdir}/usr/lib"
-    install -D -m644 nvidia_icd_vksc.json -t "${pkgdir}/usr/share/vulkansc/icd.d"
+    if [[ $CARCH = x86_64 ]]; then
+      # VulkanSC
+      install -D -m755 nvidia-pcc -t "${pkgdir}/usr/bin"
+      install -D -m755 "libnvidia-vksc-core.so.${pkgver}" -t "${pkgdir}/usr/lib"
+      install -D -m644 nvidia_icd_vksc.json -t "${pkgdir}/usr/share/vulkansc/icd.d"
+    fi
 
     # VDPAU
     install -Dm755 "libvdpau_nvidia.so.${pkgver}" "${pkgdir}/usr/lib/vdpau/libvdpau_nvidia.so.${pkgver}"
@@ -208,18 +212,20 @@ package_nvidia-utils() {
     # NGX
     install -Dm755 nvidia-ngx-updater "${pkgdir}/usr/bin/nvidia-ngx-updater"
     install -Dm755 "libnvidia-ngx.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-ngx.so.${pkgver}"
-    install -Dm755 _nvngx.dll "${pkgdir}/usr/lib/nvidia/wine/_nvngx.dll"
-    install -Dm755 nvngx.dll "${pkgdir}/usr/lib/nvidia/wine/nvngx.dll"
-    install -Dm755 nvngx_dlssg.dll "${pkgdir}/usr/lib/nvidia/wine/nvngx_dlssg.dll"
+    if [[ $CARCH = x86_64 ]]; then
+      install -Dm755 _nvngx.dll "${pkgdir}/usr/lib/nvidia/wine/_nvngx.dll"
+      install -Dm755 nvngx.dll "${pkgdir}/usr/lib/nvidia/wine/nvngx.dll"
+      install -Dm755 nvngx_dlssg.dll "${pkgdir}/usr/lib/nvidia/wine/nvngx_dlssg.dll"
+    fi
 
     # Optical flow
     install -Dm755 "libnvidia-opticalflow.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-opticalflow.so.${pkgver}"
 
-    # Cryptography library wrapper
-    ls libnvidia-pkcs*
-    ls *openssl*
-    install -Dm755 "libnvidia-pkcs11.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-pkcs11.so.${pkgver}"
-    install -Dm755 "libnvidia-pkcs11-openssl3.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-pkcs11-openssl3.so.${pkgver}"
+    if [[ $CARCH = x86_64 ]]; then
+      # Cryptography library wrapper
+      install -Dm755 "libnvidia-pkcs11.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-pkcs11.so.${pkgver}"
+      install -Dm755 "libnvidia-pkcs11-openssl3.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-pkcs11-openssl3.so.${pkgver}"
+    fi
 
     # Sandboxhelper
     install -Dm755 "libnvidia-sandboxutils.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-sandboxutils.so.${pkgver}"
