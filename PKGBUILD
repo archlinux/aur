@@ -10,6 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 optdepends=('fzf: for interactive selection with gi')
+install=gump.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tenseleyFlow/gump/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 

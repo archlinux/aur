@@ -1,0 +1,71 @@
+post_install() {
+    cat << EOF
+
+==> gump has been installed!
+
+Shell Setup:
+------------
+Add one of these to your shell config:
+
+Bash (~/.bashrc):
+    eval "\$(gump init bash)"
+
+Zsh (~/.zshrc):
+    eval "\$(gump init zsh)"
+
+Fish (~/.config/fish/config.fish):
+    gump init fish | source
+
+Then restart your shell or source the config file.
+
+Usage:
+------
+    g foo              # jump to best match for "foo"
+    gi foo             # interactive selection with fzf
+    foo                # no prefix needed - just type directory name
+    g                  # go home
+    g -                # go back
+
+Directories are learned automatically as you cd around.
+
+Import existing data:
+---------------------
+    gump import        # imports from zoxide/autojump/z/fasd
+
+Documentation:
+--------------
+    /usr/share/doc/gump/README.md
+
+EOF
+}
+
+post_upgrade() {
+    cat << EOF
+
+==> gump has been upgraded!
+
+If you haven't set up shell integration yet, add to your shell config:
+
+    Bash:  eval "\$(gump init bash)"
+    Zsh:   eval "\$(gump init zsh)"
+    Fish:  gump init fish | source
+
+EOF
+}
+
+post_remove() {
+    cat << EOF
+
+==> gump has been removed
+
+Remove the init line from your shell config:
+    ~/.bashrc or ~/.zshrc or ~/.config/fish/config.fish
+
+Your gump database is still at:
+    ~/.local/share/gump/
+
+To remove database:
+    rm -rf ~/.local/share/gump
+
+EOF
+}

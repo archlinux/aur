@@ -8,6 +8,7 @@ pkgbase = gump
 	makedepends = cargo
 	depends = gcc-libs
 	optdepends = fzf: for interactive selection with gi
+	install = gump.install
 	source = gump-0.2.4.tar.gz::https://github.com/tenseleyFlow/gump/archive/refs/tags/v0.2.4.tar.gz
 	sha256sums = SKIP
 
