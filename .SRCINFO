@@ -1,0 +1,16 @@
+pkgbase = scip-zig-bin
+	pkgdesc = SCIP indexer for Zig. Experimental.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/zigtools/scip-zig
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	provides = scip-zig
+	conflicts = scip-zig
+	source_aarch64 = scip-zig-0.0.1-aarch64.zip::https://github.com/zigtools/scip-zig/releases/download/0.0.1/scip-zig-aarch64-linux.zip
+	sha256sums_aarch64 = 01938bb118da612318e792abc6bdeebc5911a369b131ac52232b59d306a7d9ee
+	source_x86_64 = scip-zig-0.0.1-x86_64.zip::https://github.com/zigtools/scip-zig/releases/download/0.0.1/scip-zig-x86_64-linux.zip
+	sha256sums_x86_64 = 7c144f13691b37eb7a0b7d8953038fdc494c994702d87c3209bfb79f56bcf444
+
+pkgname = scip-zig-bin

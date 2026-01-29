@@ -1,0 +1,5 @@
+[scip-zig-bin]
+source = "github"
+github = "zigtools/scip-zig"
+use_latest_release = true
+prefix = "v"
