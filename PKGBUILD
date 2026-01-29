@@ -3,7 +3,7 @@
 _name=slycot
 pkgname=python-$_name
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A wrapper for the SLICOT control and systems library."
 arch=('any')
 url="https://github.com/python-control/Slycot"
@@ -26,7 +26,7 @@ build() {
 check() {
   local pytest_options=(
     -vv
-    --pyargs $_name
+    --disable-warnings
   )
   cd "$srcdir"/$_name-$pkgver
   python -m venv --system-site-packages test-env
