@@ -3,12 +3,12 @@
 _pkgname=tsunami-security-scanner
 pkgname=google-tsunami-security-scanner
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A general purpose network security scanner with an extensible plugin system for detecting high severity vulnerabilities with high confidence"
 arch=(any)
 conflicts=('google-tsunami-security-scanner-git')
 url="https://github.com/google/tsunami-security-scanner"
-license=('Apache')
+license=('Apache-2.0')
 depends=('nmap>=7.80' 'ncrack>=0.7' 'java-runtime=21')
 source=(
 	"${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
