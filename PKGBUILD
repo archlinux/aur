@@ -39,7 +39,7 @@ prepare() {
 	[[ -d "${_graalvm_version}" ]] && rm -rf "${_graalvm_version}"
 	mv graalvm-community-openjdk-*/ "${_graalvm_version}"
 	if ! command -v "${_graalvm_version}"/bin/javac >/dev/null 2>&1; then
-		echo "Error: "${_graalvm_version}"/bin/javac not found." >&2
+		echo "Error: ${_graalvm_version}/bin/javac not found." >&2
 		return 1
 	fi
 }
