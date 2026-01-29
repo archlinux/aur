@@ -1,6 +1,6 @@
 pkgbase = cli-proxy-api-bin
 	pkgdesc = Proxy server providing OpenAI/Gemini/Claude compatible API interfaces (Binary)
-	pkgver = 6.7.27
+	pkgver = 6.7.28
 	pkgrel = 1
 	url = https://github.com/router-for-me/CLIProxyAPI
 	install = cli-proxy-api-bin.install
@@ -10,9 +10,9 @@ pkgbase = cli-proxy-api-bin
 	provides = cli-proxy-api
 	conflicts = cli-proxy-api
 	options = !strip
-	source_x86_64 = cli-proxy-api-bin-6.7.27-x86_64.tar.gz::https://github.com/router-for-me/CLIProxyAPI/releases/download/v6.7.27/CLIProxyAPI_6.7.27_linux_amd64.tar.gz
-	sha256sums_x86_64 = c8fb420da44f7004fad21bf6e3391429f02670a2fc001cb0fc940ff12650667b
-	source_aarch64 = cli-proxy-api-bin-6.7.27-aarch64.tar.gz::https://github.com/router-for-me/CLIProxyAPI/releases/download/v6.7.27/CLIProxyAPI_6.7.27_linux_arm64.tar.gz
-	sha256sums_aarch64 = f956ce259dc2e12c38b6ebc62ea6acdb0839a987b23741e8bddea100a01e6e47
+	source_x86_64 = cli-proxy-api-bin-6.7.28-x86_64.tar.gz::https://github.com/router-for-me/CLIProxyAPI/releases/download/v6.7.28/CLIProxyAPI_6.7.28_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6e73302c7009ef3205f68d36a0f9b7223e7a835173fa557be4a88a1c728b08e2
+	source_aarch64 = cli-proxy-api-bin-6.7.28-aarch64.tar.gz::https://github.com/router-for-me/CLIProxyAPI/releases/download/v6.7.28/CLIProxyAPI_6.7.28_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9aae63aae9ce726d9ff2a1717e044cff1fea5aa2bbc753b37817e9e795b3dc5d
 
 pkgname = cli-proxy-api-bin
