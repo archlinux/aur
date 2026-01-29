@@ -1,7 +1,7 @@
 pkgbase = coopmat-layer-git
 	pkgdesc = Vulkan cooperative matrix emulation layer
 	pkgver = r23.fba7d1f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/doitsujin/coopmat-layer
 	install = coopmat-layer-git.install
 	arch = x86_64
