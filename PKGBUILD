@@ -1,17 +1,18 @@
 # Maintainer: Zesko
 pkgname="limine-snapper-sync-git"
-pkgver=r552.4144b03
+pkgver=r557.df72c91
 pkgrel=1
-pkgdesc="The tool syncs Limine snapshot entries with Snapper snapshots."
-arch=("any")
+pkgdesc="Automatically syncs Limine snapshot entries with Snapper snapshots."
+arch=('x86_64' 'aarch64')
 url="https://gitlab.com/Zesko/limine-snapper-sync"
 source=(git+$url.git)
+source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-25.0.2/graalvm-community-jdk-25.0.2_linux-x64_bin.tar.gz")
+source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-25.0.2/graalvm-community-jdk-25.0.2_linux-aarch64_bin.tar.gz")
 license=("GPL3")
-_jre_version=17
-_jdk_version=21
+options=(!debug !strip)
+_graalvm_version=java-25-graalvm-ce
 depends=(
 	'bash'
-	'java-runtime-headless>='${_jre_version}
 	'limine'
 	'snapper'
 	'btrfs-progs'
@@ -24,8 +25,10 @@ optdepends=(
 	'b3sum: Fast Blake3 hash function to prevent duplication.'
 	'xxhash: Fast hashing utility for deduplication with shorter hashes.'
 )
-makedepends=('git' 'jdk21-openjdk' 'maven')
-sha1sums=('SKIP')
+makedepends=('git' 'gradle')
+sha256sums=('SKIP')
+sha256sums_x86_64=('e0be791c8fda4d03b6b0a0cb824fef3149736170057b3a515252b44419606af0')
+sha256sums_aarch64=('e0e18106fa1d8628d8ba21f548865211d7c8608a3423f7b25cb2aa4eef9abf10')
 backup=(etc/limine-snapper-sync.conf)
 conflicts=('limine-snapper-sync')
 
@@ -35,25 +38,24 @@ pkgver() {
 }
 
 prepare() {
-	unset JAVA_OPTS JDK_JAVA_OPTIONS JAVA_TOOL_OPTIONS
-	JAVA_HOME=/usr/lib/jvm/java-${_jdk_version}-openjdk
-	if ! command -v ${JAVA_HOME}/bin/javac >/dev/null 2>&1; then
-		echo "Error: ${JAVA_HOME}/bin/javac not found." >&2
+	[[ -d "${_graalvm_version}" ]] && rm -rf "${_graalvm_version}"
+	mv graalvm-community-openjdk-*/ "${_graalvm_version}"
+	if ! command -v "${_graalvm_version}"/bin/javac >/dev/null 2>&1; then
+		echo "Error: "${_graalvm_version}"/bin/javac not found." >&2
 		return 1
 	fi
 }
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	JAVA_HOME=/usr/lib/jvm/java-${_jdk_version}-openjdk mvn clean package
+	JAVA_HOME="$srcdir/${_graalvm_version}" gradle clean nativeCompile
 }
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	src_path="install/arch-linux/"
-	install -dm 755 $src_path/usr/share/java/
-	install -Dm 644 target/limine-snapper-sync.jar $src_path/usr/share/java/
+	install -Dm 755 "build/native/nativeCompile/${pkgname%-git}" "$src_path/usr/lib/limine/"
 	install -dm 755 $src_path/usr/share/doc/${pkgname%-git}/
-	cp -r README.md CHANGELOG.md screenshots $src_path/usr/share/doc/${pkgname%-git}/
-	cp -r $src_path/usr $src_path/etc "$pkgdir"
+	cp -r README.md CHANGELOG.md "$src_path/usr/share/doc/${pkgname%-git}/"
+	cp -r "$src_path/usr" "$src_path/etc" "$pkgdir"
 }
