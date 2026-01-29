@@ -18,7 +18,7 @@ if [[ "$CARCH" == "aarch64" || "$CARCH" == "armv7h" ]]; then
 	pkgname+=('ledspicer-raspberrypi')
 fi
 
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="LED controller daemon for arcade cabinets and RGB lighting"
 arch=('x86_64' 'aarch64' 'armv7h')
