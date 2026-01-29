@@ -1,13 +1,19 @@
+# Maintainer: rzhli tayuebuliuhen@gmail.com
 pkgname='ftnn-desktop'
-pkgver='16.2.14708'
-pkgrel=3
+pkgver='16.3.14808'
+pkgrel=1
 pkgdesc="Futu，富途，股票软件"
 arch=('x86_64')
 url="https://www.futunn.com/"
 license=('custom')
 
 depends=(
+    'glibc'
     'qt5-base'
+    'qt6-webengine'
+    'qt5-webchannel'
+    'qt5-multimedia'
+    'hicolor-icon-theme'
     'qt5-x11extras'
     'nss'
     'libxss'

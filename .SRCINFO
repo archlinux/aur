@@ -1,17 +1,22 @@
 pkgbase = ftnn-desktop
 	pkgdesc = Futu，富途，股票软件
-	pkgver = 16.2.14708
-	pkgrel = 3
+	pkgver = 16.3.14808
+	pkgrel = 1
 	url = https://www.futunn.com/
 	arch = x86_64
 	license = custom
+	depends = glibc
 	depends = qt5-base
+	depends = qt6-webengine
+	depends = qt5-webchannel
+	depends = qt5-multimedia
+	depends = hicolor-icon-theme
 	depends = qt5-x11extras
 	depends = nss
 	depends = libxss
 	depends = libxcrypt-compat
 	depends = xdg-utils
-	source = https://softwaredownload.futunn.com/FTNN_desktop_16.2.14708_amd64.deb
+	source = https://softwaredownload.futunn.com/FTNN_desktop_16.3.14808_amd64.deb
 	sha256sums = SKIP
 
 pkgname = ftnn-desktop
