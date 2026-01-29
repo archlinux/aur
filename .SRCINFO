@@ -1,10 +1,10 @@
 pkgbase = google-tsunami-security-scanner-plugins-git
 	pkgdesc = A central repository for many useful Tsunami Security Scanner plugins
-	pkgver = r691.9c56f2ec
+	pkgver = r1717.ad06b823
 	pkgrel = 1
 	url = https://github.com/google/tsunami-security-scanner-plugins
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	makedepends = git
 	depends = jre11-openjdk
 	source = git+https://github.com/google/tsunami-security-scanner-plugins.git

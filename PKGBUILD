@@ -2,12 +2,12 @@
 
 _pkgname=tsunami-security-scanner-plugins
 pkgname=google-tsunami-security-scanner-plugins-git
-pkgver=r691.9c56f2ec
+pkgver=r1717.ad06b823
 pkgrel=1
 pkgdesc="A central repository for many useful Tsunami Security Scanner plugins"
 arch=(any)
 url="https://github.com/google/tsunami-security-scanner-plugins"
-license=('Apache')
+license=('Apache-2.0')
 makedepends=('git')
 depends=('jre11-openjdk')
 source=("git+${url}.git")
