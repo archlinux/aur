@@ -22,7 +22,7 @@ noextract=("${pkgname}-${pkgver}.tgz")
 changelog="changelog.md"
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('2f5a35bc1f4a1353f8dfdfad2940ba0e610b41ad75f8744f3a2575a977fd35ae15d265283ef96bde366869c982cecf287785bf858f121eea6cdfdc654edbb1bf')
+b2sums=('c9e7b6df962d8c44923195b23b03be35d107c15b8e30fc3104409cdce0077a2509545ce560bf960a4ec895f5cd39b5bbec5beb64aa2670b15397887081118047')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
