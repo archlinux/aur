@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Ruziczka <aur@sebastianruziczka.de>
 pkgname=budgetbutlerweb-desktop
 _pkgnameshort=budgetbutlerweb
-pkgver=4.3.7
+pkgver=4.3.8
 pkgrel=1
 pkgdesc="Simple and fast household book with offline and online functionality in German."
 arch=("x86_64")
@@ -46,7 +46,7 @@ package() {
 
 	install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgnameshort}/LICENSE"
 	install -D -m644 "application-wrapper/BudgetButlerWeb/out/budgetbutlerweb-linux-x64/resources/app.asar" "${pkgdir}/usr/share/${_pkgnameshort}/app.asar"
-	install -D -m644 "application-wrapper/BudgetButlerWeb/src/BBFav.png" "${pkgdir}/usr/share/${_pkgnameshort}/icon.png"
+	install -D -m644 "icon/BudgetButlerWeb_256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/de.sebastianruziczka.${_pkgnameshort}.png"
 
 	install -D -m644 "application-wrapper/BudgetButlerWeb.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
