@@ -1,7 +1,7 @@
 # Maintainer: Ateles
 pkgname=dawn-writer-git
 pkgver=0.1.3.r0.g33e15d8
-pkgrel=2
+pkgrel=3
 pkgdesc='draft anything, write now - a distraction-free writing environment with live markdown rendering'
 arch=('x86_64')
 url='https://github.com/andrewmd5/dawn'
@@ -11,8 +11,8 @@ makedepends=('git')
 license=('MIT')
 source=("${pkgname}-${pkgver}::git+${url}.git")
 sha256sums=('SKIP')
-provides=('dawn')
-conflicts=('dawn')
+provides=('dawn-writer')
+conflicts=('dawn-writer')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -32,6 +32,7 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     make DESTDIR="$pkgdir" PREFIX=/usr install
+    mv "$pkgdir/usr/bin/dawn" "$pkgdir/usr/bin/dawn-writer"
 
     # Remove bundled PCRE2 files (owned by system pcre2)
     rm -f  "$pkgdir/usr/bin/pcre2-"*
