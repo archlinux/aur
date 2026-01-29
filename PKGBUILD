@@ -13,10 +13,10 @@ provides=('tsuru')
 conflicts=('tsuru')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/tsuru/tsuru-client/releases/download/${pkgver}/tsuru_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('1d0a10b88d75f9cbb50c7846b441703d3d2ca042650f9ffaa17180c00635f768')
+sha256sums_aarch64=('3863b39c1a6d5f1d475cf02701799a2b1c13df313f0c1c1bc4dfee1120850be7')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/tsuru/tsuru-client/releases/download/${pkgver}/tsuru_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('3acf736773000890852a49b76cd3ef88f3b742323aa405f14c5f0d0ca8d69d71')
+sha256sums_x86_64=('01c2d700c39e521305a0089a9a270cae6eed7b60c9cebdeb70b566160d30a9a0')
 
 package() {
   install -Dm755 "./tsuru" "${pkgdir}/usr/bin/tsuru"
