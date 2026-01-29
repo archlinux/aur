@@ -1,7 +1,7 @@
 # Maintainer: Djalel Oukid(sniper1720) <sniper1720@linuxtechmore.com>
 _pkgname=elegant-sddm-archlinux-theme
 pkgname=sddm-theme-elegant-archlinux-git
-pkgver=1.2.0.r45.g465a805
+pkgver=1.2.0.r61.g9c67d7c
 pkgrel=1
 pkgdesc="A simple and elegant SDDM theme for Arch Linux"
 arch=('any')
@@ -16,8 +16,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  # Standard git versioning based on commit count & hash (since no tags exist yet)
+  printf "1.2.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
