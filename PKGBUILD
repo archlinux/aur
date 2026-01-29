@@ -15,7 +15,7 @@ optdepends=('gtk-engine-murrine')
 options=(!strip)
 makedepends=('sassc')
 source=("$url/archive/refs/tags/${_pkgver}.tar.gz")
-sha256sums=('8aad3e38469047c715a75ac50d598d169c9ee05129d56b5b91f85357c98835c7')
+sha256sums=('fb22ae695ca0702a3309a6ed4ed49f4e5a24ba346f0196ce213ad4a217dd9f15')
 
 package() {
     dist="${pkgdir}/usr/share/themes"
