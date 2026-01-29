@@ -2,10 +2,10 @@
 
 pkgname=banjorecomp-bin
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A static recompilation of Banjo-Kazooie"
 arch=(x86_64)
-url="https://github.com/${_reponame}/${_reponame}"
+url="https://github.com/BanjoRecomp/BanjoRecomp"
 _reponame=BanjoRecomp
 license=('GPL')
 depends=()

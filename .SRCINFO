@@ -1,8 +1,8 @@
 pkgbase = banjorecomp-bin
 	pkgdesc = A static recompilation of Banjo-Kazooie
 	pkgver = 1.0.0
-	pkgrel = 4
-	url = https://github.com//
+	pkgrel = 5
+	url = https://github.com/BanjoRecomp/BanjoRecomp
 	arch = x86_64
 	license = GPL
 	source = https://github.com/BanjoRecomp/BanjoRecomp/releases/download/v1.0.0/BanjoRecompiled-v1.0.0-Linux-X64.zip
