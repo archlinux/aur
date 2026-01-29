@@ -1,7 +1,7 @@
 # Maintainer: Evert Vorster
 _pkgname=openmemory-backend
 pkgname=${_pkgname}-git
-pkgver=1.3.0.r17.g5df446e
+pkgver=1.3.0.r21.g30daf78
 pkgrel=1
 pkgdesc="OpenMemory backend server (HTTP API + MCP) from git"
 arch=('x86_64')
