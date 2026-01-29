@@ -3,23 +3,28 @@
 # Contributor: syntheit <daniel@matv.io>
 
 pkgname=tagspaces
-pkgver=6.7.3
+pkgver=6.8.1
 pkgrel=1
 pkgdesc="Offline file organizer and browser with tagging support"
 arch=('x86_64')
 url="https://www.tagspaces.org"
 license=('AGPL-3.0-or-later')
-_electron=electron37
+_electron=electron39
 depends=('bash' "${_electron}" 'gcc-libs' 'glibc')
 makedepends=('gendesk' 'git' 'nvm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tagspaces/tagspaces/archive/v${pkgver}.tar.gz"
         "${pkgname}.sh")
-sha256sums=('e86209361f6c3c71b3c24480e6731dabbccf873bad733097d601e06b55f18529'
+sha256sums=('cac4e0849da2fb0b8e37f0f2f1105373f7a22290f506b7743b2e2b629abebde5'
             '3ece307810a9e0acedb73bb422a58233b9d0933ebfd125db6064b5ea4723a60f')
 
+_ensure_local_nvm() {
+    which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+}
+
 prepare() {
-    source /usr/share/nvm/init-nvm.sh
-    nvm install 22
+    _ensure_local_nvm
 
     cd "${pkgname}-${pkgver}"
     gendesk -f -n \
@@ -30,21 +35,23 @@ prepare() {
         --custom StartupWMClass='TagSpaces'
 
     sed "s/@ELECTRON@/${_electron}/" -i "${srcdir}/${pkgname}.sh"
-
-    # Skip husky
-    mkdir -p .git
-    npm run skip:husky:pre-commit
+    sed 's/"husky install"/""/' -i package.json
 
     # A key is required in order for the main application to communicate with the web server
-    echo "KEY=$(tr -dc A-Za-z0-9 </dev/urandom | head -c 128)" > release/app/.env
+    echo "KEY=$(tr -dc A-Za-z0-9 </dev/urandom | head -c 128)" >release/app/.env
 
-    npm install
-    npm run install-ext-node-linux
+    nvm install 22
 }
 
 build() {
+    _ensure_local_nvm
+
     cd "${pkgname}-${pkgver}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    npm install
+    npm run install-ext-node-linux
+    npm run clean-pro-ext
+    npm run generate-extensions
     npx ts-node ./.erb/scripts/clean.js
     npm run build
     npm run clean-maps
