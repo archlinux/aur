@@ -1,6 +1,6 @@
 pkgbase = airi-bin
 	pkgdesc = 💖🧸 Self hosted, you owned Grok Companion, a container of souls of waifu, cyber livings to bring them into our worlds, wishing to achieve Neuro-sama's altitude.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.8.2
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://airi.moeru.ai/docs/
 	arch = aarch64
@@ -8,17 +8,17 @@ pkgbase = airi-bin
 	license = MIT
 	depends = electron40
 	depends = xsel
-	provides = airi=0.8.2
+	provides = airi=0.8.3
 	conflicts = airi
 	options = !emptydirs
 	options = !strip
-	source = LICENSE-0.8.2::https://raw.githubusercontent.com/moeru-ai/airi/v0.8.2/LICENSE
+	source = LICENSE-0.8.3::https://raw.githubusercontent.com/moeru-ai/airi/v0.8.3/LICENSE
 	source = airi.sh
 	sha256sums = f334260edf0508041280b534ca9d0abd5a02a9626c1d2e20a556ac4eb72b07f9
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = airi-0.8.2-aarch64.rpm::https://github.com/moeru-ai/airi/releases/download/v0.8.2/AIRI-0.8.2-linux-aarch64.rpm
-	sha256sums_aarch64 = 513c170b296597cad584a41e0f9ae8f7bef1453ae9bf2d979effe4525e5141d1
-	source_x86_64 = airi-0.8.2-x86_64.rpm::https://github.com/moeru-ai/airi/releases/download/v0.8.2/AIRI-0.8.2-linux-x86_64.rpm
-	sha256sums_x86_64 = e4e856549b0dd485ec640c3c103588dfaefda9e9ba81758fa274a60fe823c473
+	source_aarch64 = airi-0.8.3-aarch64.rpm::https://github.com/moeru-ai/airi/releases/download/v0.8.3/AIRI-0.8.3-linux-aarch64.rpm
+	sha256sums_aarch64 = b534260ac1ed66b34aab1afb125da63abbe65cae2844d7349c8ffac58f65f6e8
+	source_x86_64 = airi-0.8.3-x86_64.rpm::https://github.com/moeru-ai/airi/releases/download/v0.8.3/AIRI-0.8.3-linux-x86_64.rpm
+	sha256sums_x86_64 = f97d2139c2a97c3b979e9fdd846c83ce334f530f44122c6ecce401a17942e1d5
 
 pkgname = airi-bin
