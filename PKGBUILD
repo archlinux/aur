@@ -2,7 +2,7 @@
 
 pkgname=banjorecomp-bin
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A static recompilation of Banjo-Kazooie"
 arch=(x86_64)
 url="https://github.com/${_reponame}/${_reponame}"
@@ -13,9 +13,11 @@ source=(
     "https://github.com/${_reponame}/${_reponame}/releases/download/v${pkgver}/BanjoRecompiled-v${pkgver}-Linux-X64.zip"
     "https://raw.githubusercontent.com/${_reponame}/${_reponame}/v${pkgver}/icons/app.png"
     "https://raw.githubusercontent.com/${_reponame}/${_reponame}/v${pkgver}/COPYING"
+    "BanjoRecomp-bin.desktop"
     )
 sha256sums=(
     e70fe3227c399f3cb460ea0d245407b5a71e810ddd86e59aa62e8b094918eda9
+    SKIP
     SKIP
     SKIP
     )
@@ -33,5 +35,5 @@ package() {
 	install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 	
 	# Install .desktop file
-	install -Dm644 ../BanjoRecomp-bin.desktop "$pkgdir/usr/share/applications/BanjoRecomp-bin.desktop"
+	install -Dm644 BanjoRecomp-bin.desktop "$pkgdir/usr/share/applications/BanjoRecomp-bin.desktop"
 }
