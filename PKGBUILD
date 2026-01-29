@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=flashmq-git
-pkgver=1.22.0.r1.g001fe26
+pkgver=1.25.0.r5.g400c57d
 pkgrel=1
 pkgdesc="FlashMQ is a light-weight MQTT broker/server, designed to take good advantage of multi-CPU environments"
 arch=($CARCH)
@@ -22,7 +22,7 @@ makedepends=(
     sed
     docbook2x
     libxslt)
-backup=()
+backup=('etc/flashmq/flashmq.conf')
 options=('!strip' '!emptydirs')
 install=
 source=("${pkgname%-git}::git+${url}.git")
