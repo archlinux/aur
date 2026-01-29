@@ -5,7 +5,7 @@
 
 pkgname=nftables-git
 epoch=1
-pkgver=1.1.3.r76.g01acf253
+pkgver=1.1.6.r40.gca86f206
 pkgrel=1
 pkgdesc='Netfilter tables userspace tools'
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(git://git.netfilter.org/nftables
         nftables.service)
 install=nftables.install
 sha256sums=('SKIP'
-            'f83d6f2f99f306866850c60ff0e343bbd9bc0c989d333ebe288563f7be4afe20'
+            'fa2f984794025339cf2d26d329f9b0bf83a39b9fa310d06b4cc40a0c1b0c8f46'
             'deffeef36fe658867dd9203ec13dec85047a6d224ea63334dcf60db97e1809ea')
 
 pkgver() {
