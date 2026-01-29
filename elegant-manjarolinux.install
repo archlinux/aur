@@ -1,0 +1,14 @@
+post_install() {
+    echo ""
+    echo "===================================================================="
+    echo "  Elegant SDDM Theme (Manjaro Linux) Installed!"
+    echo "===================================================================="
+    echo "  To Customize & Activate Theme:"
+    echo "    Run: sudo /usr/share/sddm/themes/elegant-manjarolinux/customize.sh"
+    echo "===================================================================="
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
