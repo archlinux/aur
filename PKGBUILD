@@ -4,7 +4,7 @@
 pkgname=ariane-git
 _pkgname=ariane
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast initramfs/UKI generator with encryption and secure boot support"
 arch=(x86_64)
 url='https://gitlab.com/cpernot/ariane'
@@ -21,38 +21,43 @@ conflicts=(ariane)
 source=("$_pkgname::git+$url")
 sha256sums=("SKIP")
 
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 prepare() {
   # Ariane
-  cd "$_pkgname"
+  cd "$srcdir/$_pkgname"
   cargo fetch --manifest-path Cargo.toml
 
   # ariane-init
-  cd init/
+  cd "$srcdir/$_pkgname/init/"
   cargo fetch --manifest-path Cargo.toml
   
-  cd ../alpm_hooks/script/
+  cd "$srcdir/$_pkgname/alpm_hooks/script/"
   cargo fetch --manifest-path Cargo.toml
 }
 
 build() {
   # Ariane
-  cd "$_pkgname"
+  cd "$srcdir/$_pkgname"
   export CARGO_TARGET_DIR=target
   echo "Building ariane"
   cargo build --frozen --release --all-features --manifest-path Cargo.toml
 
   # ariane-init
-  cd init/
+  cd "$srcdir/$_pkgname/init/"
   echo "Building ariane-init"
   cargo build --frozen --release --manifest-path Cargo.toml
 
-  cd ../alpm_hooks/script/
+  cd "$srcdir/$_pkgname/alpm_hooks/script/"
   echo "Builing ALPM Hook helper"
   cargo build --frozen --release --manifest-path Cargo.toml
 }
 
 package() {
-  cd "$_pkgname"
+  cd "$srcdir/$_pkgname"
   install -Dm0755 "target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
   install -Dm0755 "init/target/release/$_pkgname-init" "$pkgdir/usr/lib/$_pkgname/$_pkgname-init"
   install -Dm0755 "alpm_hooks/script/target/release/ariane_helper" "$pkgdir/usr/share/libalpm/scripts/ariane_helper"
