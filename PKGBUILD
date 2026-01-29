@@ -16,7 +16,7 @@ _appimage="Project-Plus-Dolphin.AppImage"
 source=(
 	"$_package::$_url/download/$pkgver/Project+.$pkgver.Netplay.Linux.AppImage.zip"
 )
-sha256sums=('05b0e6cc80b84b5693f038272238ae3a2be89d4f728ed548c950043c24aab702')
+sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
 
 prepare() {
 	chmod +x "$srcdir/$_appimage"
