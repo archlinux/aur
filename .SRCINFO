@@ -1,6 +1,6 @@
 pkgbase = yufi-bin
 	pkgdesc = Lightweight GTK4 Wi-Fi manager (binary release)
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/AtefR/YuFi
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = yufi-bin
 	depends = networkmanager
 	provides = yufi
 	conflicts = yufi
-	source = yufi-bin-1.0.1.tar.gz::https://github.com/AtefR/YuFi/releases/download/v1.0.1/yufi-1.0.1-x86_64.tar.gz
-	sha256sums = 30a3288403c8c7e8ebf1b02ae16f1ff667e1c97f03fbecc7fa3d521ea24813ce
+	source = yufi-bin-1.0.2.tar.gz::https://github.com/AtefR/YuFi/releases/download/v1.0.2/yufi-1.0.2-x86_64.tar.gz
+	sha256sums = 2ee57bfe85a49ee4040eb54d7b82b1529a4c9ef1045fbaebe777a62f41e8953f
 
 pkgname = yufi-bin
