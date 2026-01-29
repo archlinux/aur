@@ -1,0 +1,5 @@
+[todoist-bin]
+source = "github"
+github = "sachaos/todoist"
+use_latest_release = true
+prefix = "v"

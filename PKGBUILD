@@ -1,10 +1,10 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _pkgauthor=sachaos
 _pkgname=todoist
 pkgname=${_pkgname}-bin
-pkgver=0.22.0
-pkgrel=2
+pkgver=0.23.0
+pkgrel=1
 pkgdesc='Todoist CLI Client, written in Golang.'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
@@ -19,10 +19,10 @@ source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_Linux_x86_64.tar
 source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}_Linux_i386.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_Linux_arm64.tar.gz")
 sha256sums=('d570f605a0fcedf7c47c390807dc37a0ffbbce5e291c8ce4c684044ede428c6f'
-            'c3a670fec633f1d9ef4b9cfd1c124495b26dd9b29c7247656d91fe250933b00d')
-sha256sums_x86_64=('9980c4aa5c0d6c587b4ad4c40a536b2a39c65feff5afc095642a308205174f93')
-sha256sums_i686=('f6a03124a413fe00b6f7888d6de88ebafb1edd872e16ff2aa82123e54e02e6f2')
-sha256sums_aarch64=('0d310c1d0a28a91c7d6b138c8d43f9252635972b44ee49ecf9d6d50298e0dcc6')
+            '1511ff4a22b72ba6225bc9d0b13ec80fd69cf37f6b10bf5f4052eb6b7ba6291f')
+sha256sums_x86_64=('5a7e316c4106ee25015db514fa6676307755fc7c6871d3d7725acba1130555c2')
+sha256sums_i686=('15afc881ea229eb70cdb01d42cf9307440486aba2fb5e35689fcb1af38c73d21')
+sha256sums_aarch64=('dd1c0dca792fb75a65e2f640c45e1ee305b249e9b9aeda997e83fdd5c5fa9995')
 
 
 package() {
