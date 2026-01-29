@@ -1,6 +1,5 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-
 _pkgauthor=ynqa
 _pkgname=nosy
 _appname=${_pkgname}-cli
