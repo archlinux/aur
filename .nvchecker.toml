@@ -1,0 +1,4 @@
+[check-nwc-health]
+source = "github"
+github = "lausser/check_nwc_health"
+use_max_tag = true

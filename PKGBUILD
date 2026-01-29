@@ -1,33 +1,60 @@
 # Maintainer: Julian Brost <julian@0x4a42.net>
+# Maintainer: Christopher Kreft <email@christopherkreft.de>
 
 pkgname=check-nwc-health
-pkgver=11.2.4
+pkgver=12.11
 pkgrel=1
 pkgdesc="Monitoring check for various network equipment"
 arch=('any')
 url='https://labs.consol.de/nagios/check_nwc_health/'
-license=('GPL')
+license=('GPL-2.0-only' 'Artistic-2.0')
 depends=('perl' 'perl-json' 'perl-json-xs' 'perl-file-slurp')
-makedepends=()
+makedepends=('git' 'autoconf' 'automake')
 optdepends=('perl-net-snmp: checks based on SNMP'
             'perl-soap-lite: checks based on UPnP'
             'perl-xml-libxml: checks based on UPnP'
             'perl-xml-treebuilder: FritzBox checks')
-source=("https://labs.consol.de/assets/downloads/nagios/check_nwc_health-$pkgver.tar.gz")
-sha256sums=('7d229bf18f75fb98c99cbf4e041f3fa848ba8a61cecda31fb5bb2f49feb1c61e')
+conflicts=('check-nwc-health-git')
+source=("${pkgname}::git+https://github.com/lausser/check_nwc_health.git#tag=${pkgver}"
+        "GLPlugin::git+https://github.com/lausser/GLPlugin.git")
+sha256sums=('de399ddb4a9a58ef169057e9152b043690781454418c053d3b2717430944eac7'
+            'SKIP')
+# GLPlugin is pinned via the superproject tag's submodule commit; checksums for the
+# superproject verify that exact commit, so a separate checksum here is redundant.
+
+prepare() {
+  cd "$pkgname"
+
+  git config submodule.GLPlugin.url "$srcdir/GLPlugin"
+  git -c protocol.file.allow=always submodule update --init
+
+  autoreconf
+}
 
 build() {
-	cd "check_nwc_health-$pkgver"
-	./configure --prefix=/usr --libexecdir=/usr/lib/monitoring-plugins
-	make
+  cd "$srcdir/GLPlugin"
+
+  perl Makefile.PL INSTALLDIRS=vendor
+  make
+
+  cd "$srcdir/$pkgname"
+  ./configure --prefix=/usr --libexecdir=/usr/lib/monitoring-plugins --disable-standalone
+  make
 }
 
 check() {
-	cd "check_nwc_health-$pkgver"
-	./plugins-scripts/check_nwc_health --help > /dev/null
+  cd "$srcdir/GLPlugin"
+  make test
+
+  cd "$srcdir/$pkgname"
+  export PERL5LIB="$srcdir/GLPlugin/blib/lib:$srcdir/GLPlugin/blib/arch:$PERL5LIB"
+  ./plugins-scripts/check_nwc_health --help > /dev/null
 }
 
 package() {
-	cd "check_nwc_health-$pkgver"
-	make DESTDIR="$pkgdir/" install
+  cd "$srcdir/GLPlugin"
+  make DESTDIR="$pkgdir" install
+
+  cd "$srcdir/$pkgname"
+  make DESTDIR="$pkgdir" install
 }
