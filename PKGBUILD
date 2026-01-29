@@ -1,14 +1,20 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=cs-signal-git
-pkgver=1.3.2.r0.g1ac656d
+pkgver=2.0.0.r3.gfe1827f
 pkgrel=1
 pkgdesc='Library for thread aware signal/slot delivery (git version)'
 arch=('x86_64')
 url='https://www.copperspice.com/'
 license=('BSD-2-Clause')
-depends=('gcc-libs')
-makedepends=('git' 'cmake' 'catch2' 'cs-libguarded')
+depends=(
+    'gcc-libs'
+    'glibc')
+makedepends=(
+    'catch2'
+    'cmake'
+    'cs-libguarded'
+    'git')
 provides=('cs-signal')
 conflicts=('cs-signal')
 source=('git+https://github.com/copperspice/cs_signal.git'
