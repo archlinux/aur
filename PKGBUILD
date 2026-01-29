@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Mambuco <gabriele.giambrone@icloud.com>
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 : ${_cuda_gcc_version:=$(LC_ALL=C pacman -Si cuda | grep -Pom1 '^Depends On\s*:.*\bgcc\K[0-9]+\b')}
