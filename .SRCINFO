@@ -40,6 +40,6 @@ pkgbase = project-plus-netplay
 	optdepends = pulseaudio: PulseAudio backend
 	options = !strip
 	source = Project+.v3.1.5.Netplay.Linux.AppImage.zip::https://github.com/Project-Plus-Development-Team/Project-Plus-Dolphin/releases/download/v3.1.5/Project+.v3.1.5.Netplay.Linux.AppImage.zip
-	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+	sha256sums = 05b0e6cc80b84b5693f038272238ae3a2be89d4f728ed548c950043c24aab702
 
 pkgname = project-plus-netplay
