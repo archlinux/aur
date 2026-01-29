@@ -3,8 +3,8 @@
 # Contributor: Dan Nixon <dan@dan-nixon.com>
 
 pkgname=qdmr
-pkgver=0.13.2
-pkgrel=3
+pkgver=0.13.3
+pkgrel=1
 pkgdesc="A GUI application for configuring and programming cheap DMR radios"
 arch=('x86_64')
 url="https://github.com/hmatuschek/qdmr"
@@ -15,7 +15,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("qdmr-$pkgver.tar.gz::https://github.com/hmatuschek/qdmr/archive/refs/tags/v$pkgver.tar.gz"
         'udev-rules.patch')
-sha256sums=('245809ac742e30085d94bc77386c65d78ff36961928e83eca68c0f1850b5a30a'
+sha256sums=('c4711c5062dd6477454f4aa481fd8c37497ec08b1a8fd5f56c85ca6559b86824'
             '1d15685397688aaaec4f356567581ee2ff0c5b71f748ab8a30896ef62658f7aa')
 
 prepare() {
