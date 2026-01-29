@@ -9,14 +9,15 @@ PKGBUILD_PATH="/home/cadenfinley/Documents/GitHub/cjsh-AUR/PKGBUILD"
 
 echo "Fetching latest version from CJsShell repository..."
 cd "$REPO_PATH"
-LATEST_VERSION=$(git describe --tags --abbrev=0)
+LATEST_TAG=$(git describe --tags --abbrev=0)
+LATEST_VERSION=${LATEST_TAG#v}
 
 if [ -z "$LATEST_VERSION" ]; then
     echo "Error: Could not determine latest version"
     exit 1
 fi
 
-echo "Latest version: $LATEST_VERSION"
+echo "Latest version: $LATEST_TAG (pkgver $LATEST_VERSION)"
 
 # Get current version from PKGBUILD
 CURRENT_VERSION=$(grep "^pkgver=" "$PKGBUILD_PATH" | cut -d= -f2)
@@ -27,8 +28,8 @@ if [ "$LATEST_VERSION" = "$CURRENT_VERSION" ]; then
     exit 0
 fi
 
-echo "Downloading tarball for version $LATEST_VERSION..."
-TARBALL_URL="https://github.com/CadenFinley/CJsShell/archive/${LATEST_VERSION}.tar.gz"
+echo "Downloading tarball for tag $LATEST_TAG..."
+TARBALL_URL="https://github.com/CadenFinley/CJsShell/archive/refs/tags/${LATEST_TAG}.tar.gz"
 TEMP_DIR=$(mktemp -d)
 TARBALL_PATH="$TEMP_DIR/cjsh-${LATEST_VERSION}.tar.gz"
 
