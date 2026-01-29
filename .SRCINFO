@@ -1,0 +1,18 @@
+pkgbase = ltmnight-sddm-theme
+	pkgdesc = A premium, modern SDDM theme with LTMNight styling and animated backgrounds
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/hyprltm/ltmnight-sddm-theme
+	install = ltmnight-sddm-theme.install
+	arch = any
+	license = AGPL3
+	depends = sddm
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = qt6-virtualkeyboard
+	depends = qt6-multimedia-ffmpeg
+	depends = ttf-jetbrains-mono
+	source = https://github.com/hyprltm/ltmnight-sddm-theme/archive/v1.2.0.tar.gz
+	sha256sums = dc385f83ea0359e4de724c16ddf2887357a2fa3ded0c1e715825950efa28af56
+
+pkgname = ltmnight-sddm-theme

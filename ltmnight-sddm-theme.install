@@ -1,0 +1,16 @@
+post_install() {
+    echo ""
+    echo "  🔥 LTMNight Theme installed successfully!"
+    echo "  -------------------------------------------------------"
+    echo "  To customize the background (Shader/Video) or Virtual Keyboard:"
+    echo "    sudo ltmnight-sddm-configurator"
+    echo ""
+    echo "  To test the theme:"
+    echo "    sddm-greeter-qt6 --test-mode --theme /usr/share/sddm/themes/ltmnight"
+    echo "  -------------------------------------------------------"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
