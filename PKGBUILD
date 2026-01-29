@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname="limine-entry-tool-git"
-pkgver=r539.cb9c017
+pkgver=r541.2ec2220
 pkgrel=1
 pkgdesc="Entry management for the Limine bootloader."
 arch=('x86_64' 'aarch64')
@@ -10,6 +10,7 @@ source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/j
 source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-25.0.2/graalvm-community-jdk-25.0.2_linux-aarch64_bin.tar.gz")
 license=("GPL3")
 provides=('limine-entry-tool')
+options=(!debug !strip)
 _graalvm_version=java-25-graalvm-ce
 depends=(
 	'bash'

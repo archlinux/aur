@@ -1,6 +1,6 @@
 pkgbase = limine-entry-tool-git
 	pkgdesc = Entry management for the Limine bootloader.
-	pkgver = r539.cb9c017
+	pkgver = r541.2ec2220
 	pkgrel = 1
 	url = https://gitlab.com/Zesko/limine-entry-tool
 	arch = x86_64
@@ -15,6 +15,8 @@ pkgbase = limine-entry-tool-git
 	depends = efibootmgr
 	provides = limine-entry-tool
 	conflicts = limine-entry-tool
+	options = !debug
+	options = !strip
 	backup = etc/limine-entry-tool.conf
 	source = git+https://gitlab.com/Zesko/limine-entry-tool.git
 	sha256sums = SKIP
