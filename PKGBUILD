@@ -1,6 +1,6 @@
 # Maintainer: Benjamin Hammond <benjaminphammond@gmail.com>
 pkgname=org
-pkgver=0.1.18
+pkgver=0.1.19
 pkgrel=1
 pkgdesc="Suckless second-brain CLI tool"
 arch=('any')
@@ -32,3 +32,4 @@ package() {
     [[ -f "$f" ]] && install -Dm644 "$f" "$pkgdir/usr/share/doc/$pkgname/$f"
   done
 }
+sha256sums=('4c85829188902f5bbec7543f4ceb89ccd669305a9c9e1b73f211cb3f52d27703')
