@@ -1,0 +1,20 @@
+pkgbase = libro
+	pkgdesc = Terminal based book tracking tool
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/mkaz/libro
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python-appdirs
+	depends = python-rich
+	depends = python-prompt_toolkit
+	depends = python-textual
+	source = https://github.com/mkaz/libro/archive/refs/tags/v0.6.1.tar.gz
+	b2sums = aa40e554ea192eac9b0985cdd7f85b8d07aad56e60f23112b67bcb6df757ac3405631b0c3cf62df2ff373da6b65c484312219d54cb20de26c969a3e6aa6b1663
+
+pkgname = libro
