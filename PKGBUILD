@@ -29,7 +29,7 @@ prepare() {
   cd "${_pkgname}-${pkgver}"
 
   echo "Setting version..."
-  scripts/setlocalversion --save-scmversion
+  # scripts/setlocalversion --save-scmversion
   echo "-galaxyaudio" > localversion.10-pkgname
 
   echo "Applying config..."
