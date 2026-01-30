@@ -5,7 +5,7 @@ pkgbase = heynote-bin
 	url = https://github.com/heyman/heynote
 	arch = x86_64
 	license = LicenseRef-Commons-Clause-1.0
-	depends = electron35
+	depends = electron39
 	provides = heynote=2.7.2
 	conflicts = heynote
 	source = heynote-2.7.2.AppImage::https://github.com/heyman/heynote/releases/download/v2.7.2/Heynote_2.7.2_x86_64.AppImage

@@ -5,7 +5,8 @@
 pkgname=heynote-bin
 _pkgname=Heynote
 pkgver=2.7.2
-_electronversion=35
+# Use electron version that matches https://github.com/heyman/heynote/blob/main/package.json "electron" dependency
+_electronversion=39
 pkgrel=1
 pkgdesc="A dedicated scratchpad for developers"
 arch=('x86_64')
