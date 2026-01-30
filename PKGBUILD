@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simple-irc-client-bin
-pkgver=1.0.8
-_electronversion=39
+pkgver=1.0.10
+_electronversion=40
 pkgrel=1
 pkgdesc="Desktop clients for Simple Irc Client.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9edbdc63764ff9975a36e9929f1fa6935156e77cf46fee0787b4c793f388018e'
+sha256sums=('e8ca10488e888c36029396c9d06fccaed8e7857aa951b50093a1d47e242e7629'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/usr/lib/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
