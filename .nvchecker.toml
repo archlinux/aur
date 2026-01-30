@@ -1,0 +1,4 @@
+[sql-studio-bin]
+source = "github"
+github = "frectonz/sql-studio"
+use_latest_release = true
