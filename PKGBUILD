@@ -2,7 +2,7 @@
 
 
 pkgname=butter-launcher-bin
-pkgver=1.0.9
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Butter Launcher (Electron-based launcher, prebuilt binary)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('butter-launcher')
 conflicts=('butter-launcher')
 
 source=("https://github.com/vZylev/Butter-Launcher/releases/download/v${pkgver}/butter-launcher.tar.gz")
-sha256sums=('7060711c7cd27e806501c74033023ddc3158e88491f84916d1c6ad202008d76b')
+sha256sums=('6571ca339d97ea3a9918f25e45e3a05a7048bae0fec074dcd309f34889fa40fa')
 
 package() {
   cd "$srcdir"
