@@ -1,13 +1,13 @@
 # Maintainer: dougEfresh <dchimento@gmail.com>
 pkgname=github-mcp-server
-pkgver=0.29.0
+pkgver=0.30.2
 pkgrel=1
 pkgdesc="GitHub's official MCP Server"
 arch=(x86_64)
 url="https://github.com/github/github-mcp-server/"
 license=(MIT)
 source=("https://github.com/github/github-mcp-server/releases/download/v${pkgver}/github-mcp-server_Linux_x86_64.tar.gz")
-sha256sums=('9baaacbb408feb83961cabd0fb644231713c6e286deda881d121e7804daa6bb4')
+sha256sums=('1454730e96da4469c949d67a078ff0a6e4a5ebab667b9c112fe545c81d2505ad')
 
 package() {
   install -Dm755 github-mcp-server "$pkgdir/usr/bin/github-mcp-server"
