@@ -1,6 +1,6 @@
 pkgbase = pat-aur-git
 	pkgdesc = AUR helper and tool to build Arch Linux packages in clean containers.
-	pkgver = r521.46ba3dc
+	pkgver = r534.5c0faf2
 	pkgrel = 1
 	url = https://gitlab.com/patlefort/pat-aur
 	arch = x86_64
@@ -37,7 +37,6 @@ pkgname = pat-aur-host-git
 	depends = parallel
 	depends = dumb-init
 	depends = pacutils
-	depends = aurutils
 	depends = bubblewrap
 	depends = ninja
 	depends = git
