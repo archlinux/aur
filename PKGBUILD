@@ -1,31 +1,22 @@
-# Maintainer: kneesdev <kneesdev@naver.com>
+# Maintainer: leeteral <kneesdev@naver.com>
 pkgname=duelsplus-bin
-pkgver=2.5.0
+pkgver=3.3.0
 pkgrel=1
-pkgdesc="Lightweight, custom Minecraft Proxy designed to enhance your experience on Hypixel Duels."
+pkgdesc="Compiled binaries for the Duels+ Launcher"
 arch=('x86_64')
-url="https://duelsplus.com"
+url="https://github.com/duelsplus/launcher-tauri"
 license=('MIT')
-depends=('fuse2')
+depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
+options=('!strip' '!debug')
 # these are included for future compatibility with a potential source-built 'duelsplus' package
 # currently they don't affect anything
 provides=('duelsplus')
-conflicts=('duelsplus')
-source=(
-  "Duels+-${pkgver}-x64.AppImage::https://launcher-updates.duelsplus.com/download/flavor/default/${pkgver}/linux_64/Duels%2B-${pkgver}-x64.AppImage"
-  "duelsplus.desktop"
-  "duelsplus.png"
-)
-sha256sums=('1b32e500e19285e58948f768f5a32a21e88db2bd57a57d987b6e7173a147b5fc'
-            'd8faeec892e05d62e57de71e9ac92ca7d247a6c7be8d57c2d71908ca118441c0'
-            '1da7bc1fa20f6811e584b50c84dbb8a8d1d1a2a482df6e367052d8a3fff43b53')
-
+conflicts=('duelsplus' 'duelsplus-git')
+install=${pkgname}.install
+source=("Duels+.Launcher_${pkgver}_amd64.deb::${url}/releases/download/v${pkgver}/Duels+.Launcher_${pkgver}_amd64.deb")
+sha256sums=('ae883e2638506567700901949a40b765bb1e913671102d1aabbd4eef587bfa7b')
 package() {
-  install -dm755 "${pkgdir}/opt/duelsplus"
-  cp -a "Duels+-${pkgver}-x64.AppImage" "${pkgdir}/opt/duelsplus/duelsplus.AppImage"
-  chmod 755 "${pkgdir}/opt/duelsplus/duelsplus.AppImage"
-  install -Dm644 "duelsplus.desktop" "${pkgdir}/usr/share/applications/duelsplus.desktop"
-  install -Dm644 "duelsplus.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/duelsplus.png"
-  install -dm755 "${pkgdir}/usr/bin"
-  ln -s "/opt/duelsplus/duelsplus.AppImage" "${pkgdir}/usr/bin/duelsplus"
+  # Extract package data
+  tar -xvf data.tar.gz -C "${pkgdir}"
+
 }
