@@ -1,0 +1,17 @@
+pkgbase = python-pymem
+	pkgdesc = A Python library to manipulate Windows processes
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://github.com/srounet/Pymem
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = python-pymem-0.14.0.tar.gz::https://github.com/srounet/Pymem/archive/0.14.0.tar.gz
+	sha256sums = f08726e41f756d2204c5e85c765d0e23a2f9512e8b0e6c0a2206b521f0fdd35c
+
+pkgname = python-pymem
