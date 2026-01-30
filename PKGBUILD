@@ -2,20 +2,22 @@
 # Maintainer: HurricanePooits <hurricanepootis@protonmail.com>
 # Contributor: rcf <ryan.farley@gmx.com>
 pkgname=eden
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=('x86_64' 'aarch64')
 url=https://eden-emulator.github.io/
 license=('GPL-3.0-or-later')
 depends=('enet' 'fmt' 'opus' 'lz4' 'zlib' 'zstd' 'libusb' 'openssl' 'glibc'
-	 'qt6-webengine' 'brotli' 'hicolor-icon-theme' 'qt6-base' 'sdl2' 'gcc-libs' 'ffmpeg' 'boost-libs' 'spirv-tools')
+	 'qt6-webengine' 'brotli' 'hicolor-icon-theme' 'qt6-base' 'sdl2' 'gcc-libs'
+	 'ffmpeg' 'boost-libs' 'spirv-tools' 'quazip-qt6' 'mbedtls' 'llvm-libs' 'cubeb')
 makedepends=('git' 'cmake' 'catch2' 'boost' 'wireless_tools' 'vulkan-headers' 'vulkan-utility-libraries' 'nlohmann-json' 'ninja' 'gamemode' 'renderdoc' 'qt6-multimedia' 'qt6-tools' 'nasm' 'opencl-headers')
 optdepends=('gamemode: Gamemoded support')
 conflicts=('eden-bin' 'eden-git' 'eden-preview-bin' 'eden-beta')
 options=('!debug')
 source=("eden-v${pkgver}.tar.gz::https://git.eden-emu.dev/eden-emu/eden/archive/v${pkgver}.tar.gz")
-sha256sums=('d109060ac3afbbb193f83ab9d65d3c87f3b81a8a2d742575b51acb3484086904')
+sha256sums=('73e3f189fadb71459754d3f53b8c28191c87b267a9923887477804668ff58d08')
+
 build() {
 	cd "$srcdir"
 	cmake -B build -S $pkgname -GNinja \
@@ -38,7 +40,6 @@ build() {
 		-DYUZU_TESTS=OFF \
 		-DDYNARMIC_TESTS=OFF \
 		-DBUILD_TESTING=OFF \
-		-DYUZU_USE_FASTER_LD=OFF \
 		-Wno-dev
 	cmake --build build
 }
