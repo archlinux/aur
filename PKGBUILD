@@ -1,7 +1,7 @@
 # Maintainer: KUHTOXO https://aur.archlinux.org/account/kuhtoxo
 
 pkgname=max-appimage
-pkgver=25.12.0.510
+pkgver=26.1.4.11224
 pkgrel=1
 
 pkgdesc="MAX messenger."
