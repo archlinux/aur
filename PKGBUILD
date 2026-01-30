@@ -1,4 +1,4 @@
-# Maintainer: Ahmet Ötegen <ahm3t0t@users.noreply.github.com>
+# Maintainer: Ahmet T <ahm3t0t@users.noreply.github.com>
 # https://github.com/ahm3t0t/bigfive-updater
 
 pkgname=bigfive-updater
