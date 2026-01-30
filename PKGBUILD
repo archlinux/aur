@@ -1,6 +1,6 @@
 # Maintainer: juicerq <julio.cerqueiira@gmail.com>
 pkgname=kintsugi-bin
-pkgver=0.1.13
+pkgver=0.1.14
 pkgrel=1
 pkgdesc="Task management for developers with AI-powered workflow"
 arch=('x86_64')
@@ -21,7 +21,7 @@ provides=('kintsugi')
 conflicts=('kintsugi')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/kintsugi_${pkgver}_amd64.deb")
-sha256sums=('e50a087e751b39be8e08c97620c5ff81e55a32435612a80ca7550c3a267e4270')
+sha256sums=('d26c1255a2e5c690199b8b53d4eacb1cb08264531696a6f86ef75eb51912721c')
 
 package() {
     bsdtar -xf data.tar.* -C "${pkgdir}/"
