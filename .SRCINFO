@@ -1,0 +1,19 @@
+pkgbase = python-pyevermizer
+	pkgdesc = python wrapper for the Secret of Evermore randomizer 'evermizer'
+	pkgver = 0.50.1
+	pkgrel = 1
+	url = https://github.com/black-sliver/pyevermizer
+	arch = x86_64
+	license = GPL-3.0-only
+	license = LGPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = evermizer-0.50.1.tar.gz::https://github.com/black-sliver/evermizer/archive/v050.1.tar.gz
+	source = python-pyevermizer-0.50.1.tar.gz::https://github.com/black-sliver/pyevermizer/archive/v0.50.1.tar.gz
+	sha256sums = c57bafcde45fc4d38eb219dee3daf4da3e3b89326c7ad4dac35a42203e9c7f53
+	sha256sums = 61588beb4f27c0092990e3902514947ec3a7185f0187e36203cbf54185bf62f1
+
+pkgname = python-pyevermizer
