@@ -1,26 +1,39 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgbase="interactsh"
-pkgname=("${pkgbase}"-{common,client,server})
-pkgver=1.2.4
+pkgname=(
+  "${pkgbase}-common"
+  "${pkgbase}-client"
+  "${pkgbase}-server"
+)
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="OOB interaction gathering server and client library"
-arch=('aarch64' 'armv7h' 'i686' 'x86_64')
+arch=(
+  'aarch64'
+  'armv7h'
+  'i686'
+  'x86_64'
+)
 url="https://github.com/projectdiscovery/${pkgbase}"
-license=('MIT')
-depends=('glibc')
-makedepends=('git' 'go')
+license=(
+  'MIT'
+)
+makedepends=(
+  'git'
+  'go'
+)
 _pkgsrc="${url##*/}"
-source=("${_pkgsrc}::git+${url}.git#tag=v${pkgver}")
-b2sums=('03c50500704938a15a13009335d9a9d46b64364e5a66e8ae87a7f28f0555f1ca4722f4d36ae04b1843cca89be7dbb1421dc7e2b317c2eaa4612358d8fda0317e')
+source=(
+  "${_pkgsrc}::git+${url}.git#tag=v${pkgver}"
+)
+b2sums=('a8d7587c698e514b56570f4eea58033082e063411926a8e0294be64ffb528a1f97e455aab9b42672a283b1434b90002b7a51bded9a1446d187c17d6472616e27')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
 
   cd "${srcdir}/${_pkgsrc}"
-  go mod download -x
-  find "${GOMODCACHE}" -type d -exec chmod 755 {} +
-  find "${GOMODCACHE}" -type f -exec chmod 644 {} +
+  go mod download -modcacherw -x
 
   mkdir -p "build"
 }
@@ -35,12 +48,8 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   cd "${srcdir}/${_pkgsrc}"
-  for binary in "${pkgname[@]}"; do
-    if [[ "${binary}" == "interactsh-common" ]]; then
-      continue
-    fi
-    go build -v -o "build/${binary}" ./"cmd/${binary}"
-  done
+  go build -v -o "build/${pkgbase}-client" ./"cmd/${pkgbase}-client"
+  go build -v -o "build/${pkgbase}-server" ./"cmd/${pkgbase}-server"
 }
 
 check() {
@@ -49,8 +58,10 @@ check() {
 }
 
 package_interactsh-common() {
-  pkgdesc+=" (${pkgname##*-})"
-  arch=('any')
+  pkgdesc+=" (common files)"
+  arch=(
+    'any'
+  )
 
   cd "${srcdir}/${_pkgsrc}"
   install -vDm644 "README.md"  "${pkgdir}/usr/share/doc/${pkgbase}/README.md"
@@ -59,8 +70,10 @@ package_interactsh-common() {
 
 package_interactsh-client() {
   pkgdesc+=" (${pkgname##*-})"
-  depends+=("${pkgbase}-common")
-  optdepends=("${pkgbase}-server: server functionality")
+  depends+=(
+    "${pkgbase}-common>=${pkgver}"
+    'glibc'
+  )
 
   cd "${srcdir}/${_pkgsrc}"
   install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
@@ -68,8 +81,10 @@ package_interactsh-client() {
 
 package_interactsh-server() {
   pkgdesc+=" (${pkgname##*-})"
-  depends+=("${pkgbase}-common")
-  optdepends=("${pkgbase}-client: client functionality")
+  depends+=(
+    "${pkgbase}-common>=${pkgver}"
+    'glibc'
+  )
 
   cd "${srcdir}/${_pkgsrc}"
   install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
