@@ -2,11 +2,11 @@
 pkgname=python-glob2-git
 _pkgname=python-glob2
 pkgver=0.7.r1.gef4b58f
-pkgrel=1
+pkgrel=2
 pkgdesc="An extended version of Python's builtin glob module that can capture patterns and supports recursive wildcards."
 arch=('any')
 url="https://github.com/miracle2k/python-glob2"
-license=('custom')
+license=('BSD-2-Clause')
 makedepends=('git' 'python-setuptools')
 depends=('python')
 provides=('python-glob2')
