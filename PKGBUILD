@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RSNNS
-_pkgver=0.4-17
+_pkgver=0.4-18
 pkgname=r-${_pkgname,,}
-pkgver=0.4.17
+pkgver=0.4.18
 pkgrel=1
 pkgdesc='Neural Networks using the Stuttgart Neural Network Simulator (SNNS)'
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
   r-scatterplot3d
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('424557d7326889e09e31e04d2a9b7224bed0bb4aa6f9e5433d7ce4fe04a35afc')
+sha256sums=('08a9fa31d89e2048aa71b2cfad20e12097411dfb2f9b405e94fc8b9ec4859d91')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
