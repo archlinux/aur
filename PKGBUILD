@@ -6,6 +6,7 @@ pkgdesc="::Rolling release:: Changes alacritty theme when clicking the 'Dark Sty
 arch=('x86_64')
 url="https://github.com/alacritty-use-theme/alacritty-use-theme-with-gnome-darkmode"
 license=('GPL-1.0-or-later')
+groups=('alacritty-use-theme' 'alacritty-use-theme-services')
 depends=('bash' 'awk' 'alacritty-use-theme')
 makedepends=('git')
 provides=('alacritty-listen-to-colorscheme.service')
