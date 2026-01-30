@@ -1,0 +1,24 @@
+pkgbase = gst-pipeline-studio
+	pkgdesc = GstPipelineStudio aims to provide a graphical user interface to the GStreamer framework.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://dabrain34.pages.freedesktop.org/GstPipelineStudio
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = cargo
+	depends = gtk4
+	depends = gcc-libs
+	depends = glib2
+	depends = graphene
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = gstreamer
+	depends = gst-plugins-base-libs
+	depends = gst-plugin-gtk4
+	source = https://gitlab.freedesktop.org/dabrain34/GstPipelineStudio/-/archive/0.4.0/GstPipelineStudio-0.4.0.tar.gz
+	sha256sums = 917e573c7b17a1cdf216ffef0661ded2176d06378f32ee2545134012056a833e
+
+pkgname = gst-pipeline-studio
