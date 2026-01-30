@@ -1,7 +1,6 @@
 # Maintainer: Timofei Zhakov
 
 pkgname=xdigest
-epoch=0
 pkgver=0.1.0
 pkgrel=1
 pkgdesc='Extremely fast digest algorithms packaged into a lightweight library.'
