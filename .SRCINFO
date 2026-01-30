@@ -1,6 +1,6 @@
 pkgbase = keychron-battery-dkms
 	pkgdesc = HID driver for Keychron mouse battery reporting via power_supply subsystem
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/csutcliff/keychron-battery-dkms
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = keychron-battery-dkms
 	optdepends = linux-cachyos-headers: build the module against the CachyOS kernel
 	provides = keychron-battery
 	conflicts = keychron-battery
-	source = keychron-battery-dkms-0.1.0.tar.gz::https://github.com/csutcliff/keychron-battery-dkms/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 78e819a6e33a6b1cff4ed268a2f2c53b41ad5e922c2d15b7be0c127871d33e2a
+	source = keychron-battery-dkms-0.1.1.tar.gz::https://github.com/csutcliff/keychron-battery-dkms/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 172b0d0363a118f8d6a2e745f5b293c551df80de952365a8ce0028ed6e9cda0b
 
 pkgname = keychron-battery-dkms
