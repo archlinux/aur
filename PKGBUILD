@@ -1,7 +1,7 @@
 # Maintainer: Ailton Baúque <ailtonbauque@outlook.com>
 
 pkgname=vygrant
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="vygrant - OAuth2 authentication daemon"
 arch=('x86_64' 'i686')
