@@ -8,7 +8,7 @@ url="https://github.com/Rahix/avr-hal/tree/main/ravedude"
 license=("MIT OR Apache-2.0")
 arch=("x86_64" "aarch64")
 # this fetches all of avr-hal. An alternative could be crates.io, but the license would be missing.
-source=("git+https://github.com/Rahix/avr-hal#tag=ravedude-$pkgver") 
+source=("git+https://github.com/Rahix/avr-hal#tag=ravedude-$pkgver")
 depends=("avrdude")
 makedepends=("git" "cargo")
 sha512sums=('118659e4f1b349e0b4316b5b39bfc6809216bc4458533b4186c258900000797b678e81c091c5dbf3a4d6d10bbe2014435b42c9fbb71902d155a8206213c77fd9')
