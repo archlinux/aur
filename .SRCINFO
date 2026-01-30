@@ -1,0 +1,13 @@
+pkgbase = datui-bin
+	pkgdesc = A terminal user interface for data analysis
+	pkgver = 0.2.12
+	pkgrel = 1
+	url = https://github.com/derekwisong/datui
+	arch = x86_64
+	license = MIT
+	provides = datui
+	conflicts = datui
+	source = https://github.com/derekwisong/datui/releases/download/v0.2.12/datui-0.2.12-x86_64.tar.gz
+	sha256sums = 0b2ecbd65596ec75b99920615ccc6c72979f787637d5a6e055998194c475e9fd
+
+pkgname = datui-bin
