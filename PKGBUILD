@@ -22,7 +22,7 @@ options=('!lto' '!debug')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
-  "https://packages.t3.storage.dev/OneTalker-2026.1-x86_64-linux.tar.gz"
+  "https://downloads.onetalker.org/OneTalker-${pkgver}-x86_64-linux.tar.gz"
   "onetalker.sh"
 )
 sha256sums=(
