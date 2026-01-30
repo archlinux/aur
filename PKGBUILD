@@ -3,7 +3,7 @@
 _name="libsoxr"
 pkgname="lib32-${_name}"
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The SoX Resampler library that aims to give fast and high quality results for any constant resampling ratio (32-bit)"
 arch=(
   'x86_64'
@@ -22,6 +22,7 @@ makedepends=(
 )
 provides=(
   "${_name}.so"
+  "${_name}-lsr.so"
 )
 _pkgsrc="soxr-${pkgver}-Source"
 source=(
