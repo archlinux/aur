@@ -1,7 +1,7 @@
 # Maintainer: ThatOneCalculator (Kainoa Kanter) <kainoa@t1c.dev>
 _pkgname="letta-code"
 pkgname="$_pkgname-git"
-pkgver=r811.g2c98500
+pkgver=r815.g9fd8724
 pkgrel=1
 pkgdesc="The memory-first coding agent"
 arch=('x86_64' 'aarch64')
@@ -13,10 +13,11 @@ conflicts=(
     "$_pkgname-bin"
     # "$_pkgname-git"
 )
-source=("git+$url.git")
+source=("git+$url.git" "letta")
 noextract=()
 options=(!strip)
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            'c9350b744337f0a0b0c51e1a8661e8c7bc757fcc753bddaef872b0ef626228e8')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}" || exit
@@ -37,12 +38,12 @@ prepare() {
 
 build() {
 	cd "${_pkgname}"
-	export USE_MAGIC=1
+	export USE_MAGICK=1
 	bun install
 	bun run build
 }
 
 package() {
-    cd "${_pkgname}"
-    install -Dm755 ./letta.js "$pkgdir/usr/bin/letta"
+    install -Dm755 "${_pkgname}/letta.js" "${pkgdir}/usr/share/letta/letta.js"
+    install -Dm755 "${srcdir}/letta" "${pkgdir}/usr/bin/letta"
 }

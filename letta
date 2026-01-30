@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+bun run /usr/share/letta/letta.js "$@"
