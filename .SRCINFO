@@ -1,0 +1,18 @@
+pkgbase = python-mpyq
+	pkgdesc = Python library for reading MPQ archives.
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/eagleflo/mpyq
+	arch = any
+	license = BSD-2-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-six
+	source = python-mpyq-0.2.5.tar.gz::https://github.com/eagleflo/mpyq/archive/v0.2.5.tar.gz
+	source = test_mpqarchive.patch
+	sha256sums = 1d9191738ea219e04e51ec4e9da4984db40f50c503c902249398ac7066b970cd
+	sha256sums = 840f0437aba4c8a35ce8796cc719db864fc7cc6bbe16b822956301220ea937d3
+
+pkgname = python-mpyq

@@ -1,0 +1,32 @@
+diff -ru mpyq-0.2.5.orig/test/test_mpqarchive.py mpyq-0.2.5/test/test_mpqarchive.py
+--- mpyq-0.2.5.orig/test/test_mpqarchive.py	2014-03-16 22:22:50.000000000 -0400
++++ mpyq-0.2.5/test/test_mpqarchive.py	2026-01-30 01:08:23.961118818 -0500
+@@ -16,7 +16,7 @@
+         self.archive = MPQArchive(open(TEST_DIR + 'test.SC2Replay', 'rb'))
+ 
+     def test_header(self):
+-        self.assertEqual(self.archive.header['magic'], 'MPQ\x1a')
++        self.assertEqual(self.archive.header['magic'], b'MPQ\x1a')
+         self.assertEqual(self.archive.header['header_size'], 44)
+         self.assertEqual(self.archive.header['archive_size'], 205044)
+         self.assertEqual(self.archive.header['format_version'], 1)
+@@ -31,11 +31,11 @@
+         self.assertEqual(self.archive.header['offset'], 1024)
+ 
+     def test_files(self):
+-        self.assertEqual(self.archive.files, ['replay.attributes.events',
+-                                              'replay.details',
+-                                              'replay.game.events',
+-                                              'replay.initData',
+-                                              'replay.load.info',
+-                                              'replay.message.events',
+-                                              'replay.smartcam.events',
+-                                              'replay.sync.events'])
++        self.assertEqual(self.archive.files, [b'replay.attributes.events',
++                                              b'replay.details',
++                                              b'replay.game.events',
++                                              b'replay.initData',
++                                              b'replay.load.info',
++                                              b'replay.message.events',
++                                              b'replay.smartcam.events',
++                                              b'replay.sync.events'])
