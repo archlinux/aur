@@ -1,0 +1,18 @@
+pkgbase = uki-efi-boot
+	pkgdesc = A simple utility that automatically scans for efi executables creates boot entries for them in the UEFI boot menu
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://codeberg.org/grafcube/uki-efi-boot
+	arch = any
+	license = GPL-3.0-only
+	depends = bash
+	depends = efibootmgr
+	depends = gettext
+	depends = util-linux
+	depends = jq
+	depends = systemd-ukify
+	backup = etc/uki-efi-boot.conf
+	source = uki-efi-boot-1.0.0.tar.gz::https://codeberg.org/grafcube/uki-efi-boot/archive/v1.0.0.tar.gz
+	sha256sums = 806deb2962cda7f6c00eb3e30f029f95997751576fd6b7b05be13292f4934226
+
+pkgname = uki-efi-boot
