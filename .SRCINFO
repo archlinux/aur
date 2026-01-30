@@ -1,0 +1,16 @@
+pkgbase = puncover
+	pkgdesc = Analyses C/C++ build output for code size, static variables, and stack usage
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/HBehrens/puncover
+	arch = any
+	license = MIT
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-flask
+	provides = puncover
+	conflicts = puncover-git
+	source = https://files.pythonhosted.org/packages/py3/p/puncover/puncover-0.7.0-py3-none-any.whl
+	sha256sums = e780dbd174c5ddd2854f83938cf6ce16e13adfdcb3bf3730421ac781809ef382
+
+pkgname = puncover
