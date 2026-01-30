@@ -1,0 +1,13 @@
+--- python_portpicker-1.6.0.orig/src/portserver.py	2023-08-15 00:25:10.000000000 -0400
++++ python_portpicker-1.6.0/src/portserver.py	2026-01-30 02:18:14.145031709 -0500
+@@ -364,9 +364,7 @@
+ 
+     request_handler = _PortServerRequestHandler(ports_to_serve)
+ 
+-    if sys.platform == 'win32':
+-        asyncio.set_event_loop(asyncio.ProactorEventLoop())
+-
++    asyncio.set_event_loop(asyncio.new_event_loop())
+     event_loop = asyncio.get_event_loop()
+ 
+     if sys.platform == 'win32':

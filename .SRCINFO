@@ -1,0 +1,22 @@
+pkgbase = python-portpicker
+	pkgdesc = A module to find available network ports for testing.
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/google/python_portpicker
+	arch = any
+	license = Apache-2.0
+	checkdepends = net-tools
+	checkdepends = python-psutil
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	optdepends = python-psutil: portserver
+	source = python-portpicker-1.6.0.tar.gz::https://github.com/google/python_portpicker/archive/v1.6.0.tar.gz
+	source = portserver.patch
+	sha256sums = 9d236d7fcc8e37c00a9281b9bd765d50a6352e71746ea6c36e16c179615785d3
+	sha256sums = 64aa766948a8201a2d69a379715555b07eed360548d337a226c5dad02e3aebca
+
+pkgname = python-portpicker
