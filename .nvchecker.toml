@@ -1,0 +1,5 @@
+[mynav-bin]
+source = "github"
+github = "GianlucaP106/mynav"
+use_latest_release = true
+prefix = "v"
