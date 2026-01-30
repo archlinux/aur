@@ -3,8 +3,8 @@
 # Contributor: xiota
 pkgname=legcord-bin
 _pkgname=Legcord
-pkgver=1.1.6
-_electronversion=38
+pkgver=1.2.0
+_electronversion=40
 pkgrel=1
 pkgdesc="a custom client designed to enhance your Discord experience while keeping everything lightweight.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -35,9 +35,9 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${_ghurl}/releases/downloa
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.rpm")
 sha256sums=('c2cba32542cf3a65813e83fdbd259020d6d62b6833aa18f38aec983837dc9e4d'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('94e4d4aef4959d23f598f4de1fc578fc2650b4a749bdc5bca8fb0da66a0fe3ee')
-sha256sums_armv7h=('f724d402c128dbcc9aae6cc384e6f26215c9d5a3a020ac535adb51b8474afd8c')
-sha256sums_x86_64=('651b101be818390db29d32667abfde9771e65d46f64b88642f3a910b372ce937')
+sha256sums_aarch64=('bb592647eb12f26e1dde35c5c75ac74bf506732746f220e5c8ed9e03dbf75f3b')
+sha256sums_armv7h=('b2a40c47458e38b12d4ac2c21f8dd429645509d2a9fe8413de40fad7633d898f')
+sha256sums_x86_64=('5220739f6261639aaaac6d2f04b33cc53aee55ba8d740016d4dac2844f5a4f37')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
