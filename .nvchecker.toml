@@ -1,0 +1,5 @@
+[csview-bin]
+source = "github"
+github = "wfxr/csview"
+use_latest_release = true
+prefix = "v"
