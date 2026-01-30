@@ -103,6 +103,8 @@ package_ledspicer() {
 
 	DESTDIR="${pkgdir}" cmake --install "${srcdir}/LEDSpicer-${pkgver}/build"
 
+	install -dm755 "$pkgdir/usr/share/doc/ledspicer"
+
 	# Remove library artifacts (handled by libledspicer)
 	rm -f "${pkgdir}/usr/lib/libledspicer.so"*
 	rm -rf "${pkgdir}/usr/include"
