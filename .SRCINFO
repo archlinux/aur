@@ -13,6 +13,6 @@ pkgbase = pop-cli
 	depends = openssl
 	provides = pop
 	source = pop-cli-0.12.1.tar.gz::https://github.com/r0gue-io/pop-cli/archive/refs/tags/v0.12.1.tar.gz
-	sha256sums = SKIP
+	sha256sums = d9b59a13779fae9b4a7e63bb8d0b35e20ae1ca9dc03ead1cc01f8f9499cd4784
 
 pkgname = pop-cli
