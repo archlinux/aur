@@ -6,10 +6,10 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-cachyos
-_srctag=10.0-20260101
+_srctag=10.0-20260127
 pkgver=${_srctag//-/.}
 _geckover=2.47.4
-_monover=10.4.0
+_monover=10.4.1
 _xaliaver=0.4.6
 pkgrel=1
 epoch=2
@@ -23,7 +23,8 @@ source=(wine-cachyos::git+https://github.com/CachyOS/wine-cachyos.git#tag=cachyo
         https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
         https://github.com/madewokherd/xalia/releases/download/xalia-${_xaliaver}/xalia-${_xaliaver}-net48-mono.zip
         30-win32-aliases.conf
-        wine-binfmt.conf)
+        wine-binfmt.conf
+        ntsync.conf)
 source+=(
 )
 noextract=(
@@ -34,8 +35,8 @@ validpgpkeys=(5AC1A08B03BD7A313E0A955AF5E6E9EEB9461DD7
 
 pkgdesc="A compatibility layer for running Windows programs, with extra CachyOS flavour"
 url="https://github.com/CachyOS/wine-cachyos"
-arch=(x86_64 x86_64_v3)
-options=(!staticlibs !lto !debug)
+arch=(x86_64)
+options=(!staticlibs !lto !debug pestrip)
 license=(LGPL-2.1-or-later)
 depends=(
   attr            lib32-attr
@@ -108,7 +109,6 @@ optdepends=(
   vulkan-icd-loader     lib32-vulkan-icd-loader
 )
 optdepends+=(
-  ntsync-common
   NTSYNC-MODULE
 )
 provides=("wine=10.0" 'wine-mono' 'wine-gecko')
@@ -177,7 +177,8 @@ build() {
     --without-oss \
     --disable-lsteamclient \
     --disable-tests \
-    --enable-win64
+    --enable-win64 \
+    --enable-build-id
 
   make
 
@@ -200,7 +201,8 @@ build() {
     --without-oss \
     --disable-lsteamclient \
     --disable-tests \
-    --with-wine64="$srcdir/$pkgname-64-build"
+    --with-wine64="$srcdir/$pkgname-64-build" \
+    --enable-build-id
 
   make
 }
@@ -222,9 +224,11 @@ package() {
   ln -s ../conf.avail/30-win32-aliases.conf "$pkgdir/usr/share/fontconfig/conf.default/30-win32-aliases.conf"
   install -Dm 644 "$srcdir/wine-binfmt.conf" "$pkgdir/usr/lib/binfmt.d/wine.conf"
 
-  i686-w64-mingw32-strip --strip-unneeded "$pkgdir"/usr/lib/wine/i386-windows/*.{dll,exe}
-  x86_64-w64-mingw32-strip --strip-unneeded "$pkgdir"/usr/lib/wine/x86_64-windows/*.{dll,exe}
+  i686-w64-mingw32-strip --strip-unneeded "$pkgdir"/usr/lib/wine/i386-windows/*.{dll,exe,cpl}
+  x86_64-w64-mingw32-strip --strip-unneeded "$pkgdir"/usr/lib/wine/x86_64-windows/*.{dll,exe,cpl}
 
+  # Load ntsync module
+  install -Dm644 "$srcdir/ntsync.conf" "$pkgdir/usr/lib/modules-load.d/10-ntsync.conf"
 
   # Install wine-gecko
   cd "$srcdir"
@@ -243,10 +247,11 @@ package() {
 }
 
 # vim:set ts=8 sts=2 sw=2 et:
-b2sums=('9f4b0934a7501fa2c926cbec1396383d7095bca2370e26ca720c71251512cc35395b0b6ffe55cdfbe8d526a567ac902851bf54ca40e3ac9f802d4d1dca0912e2'
+b2sums=('90aae8acdb6b722b7f0a4d6eaa136fa87f4f94228b7f2881429f1796dab6f2217088f38b565f3526e2513286794f89c0fa06c25915b3c2cc5c4812135b0354e0'
         '2a73c12585b502ae11188482cbc9fb1f45f95bfe4383a7615011104b132f4845f9813d01fb40277e1934fab5f1b35ab40b4f4a66a9967463dd1d666a666904e9'
         '62856a88266b4757602c0646e024f832974a93f03b9df253fd4895d4f11a41b435840ad8f7003ec85a0d8087dec15f2e096dbfb4b01ebe4d365521e48fd0c5c0'
-        '2abbf16156ad87feda3f413d71565e56db0ebf14a8cd920ecc24bdea7f818365751cb447b91f56f96bcec84e4e28e9c7d022fdaf0804330f056593a99a6e5c6b'
+        '9ca53dee272470806432c61587080e6dc04fd9eaafde4f55f5d57d5557ec6859d77a74b74c9e3f472da04b8ace9609f0927573faab368a25249c76b3e37e65c1'
         '4d30eea9306392790677a4e19f7e416a387aaf10c4a7681aa8fcd94faf07be81a984b28ba1437428d7c215c5ecdbba70993091547068fbdc224e809c3f7abd85'
         '45db34fb35a679dc191b4119603eba37b8008326bd4f7d6bd422fbbb2a74b675bdbc9f0cc6995ed0c564cf088b7ecd9fbe2d06d42ff8a4464828f3c4f188075b'
-        'e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588')
+        'e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588'
+        '964a3ba277821e570aec2127f0d1ae9898da6976c360deb6b196345a50bd3c2c55cb399527507006d8fddef868069032a30b083f23987d5050f185c74dd9de35')
