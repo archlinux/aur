@@ -6,6 +6,7 @@ pkgdesc="Changes alacritty theme when clicking the 'Dark Style' button in Gnome'
 arch=('x86_64')
 url="https://github.com/alacritty-use-theme/alacritty-use-theme-with-gnome-darkmode"
 license=('GPL-1.0-or-later')
+groups=('alacritty-use-theme' 'alacritty-use-theme-services')
 depends=('bash' 'awk' 'alacritty-use-theme')
 provides=('alacritty-listen-to-colorscheme.service')
 conflicts=('alacritty-use-theme-with-gnome-darkmode-git')
