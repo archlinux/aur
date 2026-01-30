@@ -1,8 +1,8 @@
 # Maintainer: Azur84 <Azur84@outlook.fr>
 pkgname=pandora-launcher-git
 _pkgname=pandora_launcher
-pkgver=2.5.0.r40.g6d4c085
-pkgrel=2
+pkgver=2.6.0.r0.g0fdf646
+pkgrel=1
 pkgdesc="A modern Minecraft launcher that balances ease-of-use with powerful instance management features."
 arch=('x86_64')
 conflicts=('pandora-launcher')
@@ -27,6 +27,9 @@ makedepends=(
 )
 optdepends=(
   'flite: minecraft narrator support'
+  'orca: minecraft screen reader'
+  'gamemode: gamemode support'
+  'mangohud: mangohud support'
 )
 source=(
   "$pkgname::git+https://github.com/Moulberry/PandoraLauncher.git#branch=master"

@@ -1,7 +1,7 @@
 pkgbase = pandora-launcher-git
 	pkgdesc = A modern Minecraft launcher that balances ease-of-use with powerful instance management features.
-	pkgver = 2.5.0.r40.g6d4c085
-	pkgrel = 2
+	pkgver = 2.6.0.r0.g0fdf646
+	pkgrel = 1
 	url = http://pandora.moulberry.com/
 	arch = x86_64
 	license = MIT
@@ -18,6 +18,9 @@ pkgbase = pandora-launcher-git
 	depends = vulkan-driver
 	depends = openssl
 	optdepends = flite: minecraft narrator support
+	optdepends = orca: minecraft screen reader
+	optdepends = gamemode: gamemode support
+	optdepends = mangohud: mangohud support
 	provides = pandora-launcher
 	conflicts = pandora-launcher
 	source = pandora-launcher-git::git+https://github.com/Moulberry/PandoraLauncher.git#branch=master
