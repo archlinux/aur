@@ -2,7 +2,7 @@
 
 _pkgname="redot"
 pkgname=${_pkgname}-bin
-pkgver=4.4.stable
+pkgver=26.1.stable.lts
 pkgrel=1
 pkgdesc="A multi-platform 2D and 3D game engine"
 arch=('x86_64')
@@ -13,8 +13,8 @@ depends=(embree3 freetype2 graphite harfbuzz harfbuzz-icu libglvnd libspeechd
     libxinerama libxrandr mbedtls2 miniupnpc pcre2)
 optdepends=('pipewire-alsa: for audio support'
     'pipewire-pulse: for audio support')
-source=("https://github.com/Redot-Engine/redot-engine/releases/download/redot-4.4-stable/Redot_v4.4-stable_linux.x86_64.zip")
-sha256sums=('7d8b0c8fd044cda0bc542bd5800b95bc99b681b0d70d481e9dbff4a5ccfb833a')
+source=("https://github.com/Redot-Engine/redot-engine/releases/download/redot-26.1-stable/Redot_v26.1-stable_linux_x64.zip")
+sha256sums=('19b7b98726bc748a571bdedae51c980f2147837024b936fdc76139f0944bfcc0')
 
 package() {
 	cp ../Redot.desktop ${srcdir}
