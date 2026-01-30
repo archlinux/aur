@@ -1,0 +1,15 @@
+pkgbase = mblaze-ui-git
+	pkgdesc = A minimal TUI for the mblaze email client
+	pkgver = r60.54f778f
+	pkgrel = 1
+	url = https://github.com/nmeum/mblaze-ui
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = go
+	depends = mblaze
+	provides = mblaze-ui
+	conflicts = mblaze-ui
+	source = git+https://github.com/nmeum/mblaze-ui
+	sha256sums = SKIP
+
+pkgname = mblaze-ui-git
