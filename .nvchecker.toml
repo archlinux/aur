@@ -1,0 +1,5 @@
+[python-manim-slides]
+source = "github"
+github = "jeertmans/manim-slides"
+use_latest_release = "true"
+prefix = "v"
