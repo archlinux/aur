@@ -1,0 +1,22 @@
+pkgbase = serialcom
+	pkgdesc = Modern graphical interface for serial communication via picocom
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/benjamimgois/serialcom
+	arch = any
+	license = MIT
+	makedepends = imagemagick
+	depends = python
+	depends = python-pyqt6
+	depends = qt6-serialport
+	depends = picocom
+	depends = sudo
+	optdepends = gnome-terminal: default terminal emulator
+	optdepends = konsole: KDE terminal emulator
+	optdepends = xfce4-terminal: XFCE terminal emulator
+	optdepends = kitty: fast GPU-based terminal emulator
+	optdepends = alacritty: cross-platform GPU-accelerated terminal emulator
+	source = serialcom-1.0.tar.gz::https://github.com/benjamimgois/serialcom/archive/refs/tags/1.0.tar.gz
+	sha256sums = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
+
+pkgname = serialcom
