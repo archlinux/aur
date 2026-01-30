@@ -5,7 +5,7 @@
 # shellcheck disable=SC2154  # srcdir/pkgdir/startdir set by makepkg
 
 pkgname=superhuman
-pkgver=1038.0.18
+pkgver=1038.0.19
 pkgrel=1
 pkgdesc="The fastest email experience ever made (unofficial)"
 arch=('x86_64')
