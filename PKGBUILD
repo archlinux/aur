@@ -2,7 +2,12 @@
 
 ## options
 : ${_scripts:=scripts/deps}
+
 : ${_clang_ver=19}
+: ${_clang_version=$(LC_ALL=C pacman -Si "extra/clang${_clang_ver}" | grep -Pom1 '^Version\s*:\s*\K\S+')}
+
+: ${_build_save_deps:=true}
+: ${_prebuilt_file=prebuilt_deps-$_clang_version.tar.zst}
 
 : ${_url:=https://github.com/stenzek/duckstation}
 : ${_commit:=aa955b8ae28314ae061613f0ddf13183a98aca03} # 0.1.r7465
@@ -11,7 +16,7 @@ _pkgname="duckstation"
 pkgbase="$_pkgname"
 pkgname=("$_pkgname" "$_pkgname-gpl")
 pkgver=0.1.7465
-pkgrel=6
+pkgrel=7
 pkgdesc="Playstation emulator"
 url="$_url/commits/$_commit"
 arch=('x86_64')
@@ -51,15 +56,18 @@ _source_duckstation() {
   license=('GPL-3.0-only')
 
   _pkgsrc="$_pkgname"
+  _pkgsrc_gcdb="mdqinc.SDL_GameControllerDB"
   source=(
     "$_pkgsrc"::"git+$_url.git#commit=$_commit"
+    "$_pkgsrc_gcdb"::"git+https://github.com/mdqinc/SDL_GameControllerDB"
     'dependencies.txt'
     'mallard-box.png'
     'mallard.png'
   )
   sha256sums=(
     'SKIP'
-    '03121c93ac00b3283789a7820c2c90bc8e77781191298d8d67a76237775802c3'
+    'SKIP'
+    'ebe081d44dba88eb4c12cf59d7f3143521d905efda5bc65bfa52eaa0148bb504'
     '2cda88837aa49f849a32d13148048259577e5c788595aa1f8b78dafc1a72c62e'
     '8a2d6c76473b324ef67ebca258d7b169c4f361a4f453056295af9c4f17fcb09f'
   )
@@ -261,8 +269,26 @@ _prepare_duckstation() {
   local _pkgver=$(pkgver)
   _commit=$(git -C "$_pkgsrc" rev-parse HEAD)
 
+  # update gamecontrollerdb
+  install -Dm644 "$_pkgsrc_gcdb/gamecontrollerdb.txt" -t "$_pkgsrc/data/resources/"
+
+  # disable forced settings
+  sed -e '/message(STATUS/d' \
+    -e '/set(CMAKE_BUILD_TYPE/d' \
+    -i "$_pkgsrc/CMakeLists.txt"
+
+  # disable pointless warning
+  sed -e 's/NOT IS_SUPPORTED_COMPILER/FALSE/' \
+    -i "$_pkgsrc/CMakeModules/DuckStationBuildSummary.cmake"
+
+  # fix settings path
+  sed -e 's/XDG_CONFIG_HOME/XDG_DATA_HOME/g' -i "$_pkgsrc/src/duckstation-qt/qthost.cpp"
+
+  # fix for Qt 6.10
+  sed -E -e 's&\b((Qt6::)?Gui)\b&\1 \1Private&' -i "$_pkgsrc/src/duckstation-qt/CMakeLists.txt"
+
   # disable autoupdate
-  sed -E -e 's@#define AUTO_UPDATER_SUPPORTED@@' \
+  sed -E -e 's&#define AUTO_UPDATER_SUPPORTED&&' \
     -e 's@#if !__has_include\("scmversion/tag.h"\) && !defined\(_DEBUG\)@#if 0@' \
     -i "$_pkgsrc/src/duckstation-qt/autoupdaterdialog.cpp"
 
@@ -273,13 +299,12 @@ _prepare_duckstation() {
       <property name="enabled"><bool>false</bool></property>' \
     -i "$_pkgsrc/src/duckstation-qt/setupwizarddialog.ui"
 
-  # adjust about dialog
-  # link to specific commit
+  # adjust about dialogs
+  # link to specific commits
   # prevent issue reports to upstream
   sed -E \
     -e 's&^(\s*).*g_scm_tag_str.*g_scm_branch_str.*$&\1tr("%1").arg(QLatin1StringView(g_scm_tag_str)));&' \
-    -e 's&, focusing on &.&' \
-    -e '/^<p.*(Connor|icons8|%2<\/span>:).*\/p>/d' \
+    -e '/^<p.*(Connor|icons8|%2<\/span>:|>  and other <).*\/p>/d' \
     -e '/tr\("(Authors|Icon by)"\)/d' \
     -e 's&>%4<&>%2<&' \
     -e 's& \| <a href="https://\S*discord\S+">.*?</a>&&' \
@@ -287,6 +312,19 @@ _prepare_duckstation() {
     -e 's&"https://github.com/\S+/LICENSE"&"'"$_url/raw/${_commit}"'/LICENSE"&' \
     -e 's&"https://github.com/\S+/duckstation"&"'"$_url/commits/${_commit}"'"&' \
     -i "$_pkgsrc/src/duckstation-qt/aboutdialog.cpp"
+
+  sed -E -e '/^TRANSLATE_NOOP/d' \
+    -e '/g_scm_tag_str/s&^(.*FSUI_CSTR).*$&\1("@@NOTICE_GPL@@"));&' \
+    -e 's&"%s", (FSUI_CSTR).*icons8.*$&\1("@@NOTICE_DNR@@"));&' \
+    -e '/playability, speed, and long-term maintainability/d' \
+    -e 's&(FSUI_CSTR).*open-source simulator.*$&\1("DuckStation '"${pkgver}"'"));&' \
+    -e 's&(FSUI_CSTR).*registered trademarks.*$&\1("Please play responsibly."));&' \
+    -e '/not affiliated/d' \
+    -e '/Discord Server/d' \
+    -e '/discord\.html/d' \
+    -e 's&"https://github.com/\S+/CONTRIBUTORS.md"&"'"$_url/raw/${_commit}"'/CONTRIBUTORS.md"&' \
+    -e 's&"https://github.com/\S+/duckstation/"&"'"$_url/commits/${_commit}"'"&' \
+    -i "$_pkgsrc/src/core/fullscreen_ui.cpp"
 
   sed -e '/addaction name="actionIssueTracker"/d' -i "$_pkgsrc/src/duckstation-qt/mainwindow.ui"
 
@@ -331,16 +369,22 @@ EOF
     "$_pkgsrc/src/duckstation-qt/translations"/*.ts
 
   # add unofficial build notice
-  local _notice_unofficial="This is an unofficial build based on the last GPL commit on 2024-09-01."
+  local _notice_gpl="This is an unofficial build based on the last GPL commit on 2024-09-01."
   local _notice_dnr="Do not report issues to the original developer"
 
-  sed -E -e 's@This wizard.*Interface Settings\.@'"${_notice_unofficial}"'\&lt;/p\&gt;\&lt;p\&gt;'"${_notice_dnr}"'.@' \
+  sed -E -e 's&This wizard.*Interface Settings\.&'"${_notice_gpl}"'\&lt;/p\&gt;\&lt;p\&gt;'"${_notice_dnr}"'.&' \
     -i "$_pkgsrc/src/duckstation-qt/setupwizarddialog.ui"
 
   sed -E \
-    -e 's&"playability, speed, and long-term maintainability\."&"</p><p>'"${_notice_unofficial}"'"&' \
-    -e 's&^(<p[^>]+>)  and other (.*contributors</a>)&\1'"${_notice_dnr}"' or \2.&' \
+    -e 's&".*free and open-source.*"&"'"${_notice_gpl}"'</p><p>"&' \
+    -e 's&".*, focusing on.*"&"'"${_notice_dnr}"'</p><p>"&' \
+    -e 's&".*long-term maintainability.*"&"Please play responsibly."&' \
     -i "$_pkgsrc/src/duckstation-qt/aboutdialog.cpp"
+
+  sed -E \
+    -e 's&@@NOTICE_GPL@@&'"${_notice_gpl}"'&' \
+    -e 's&@@NOTICE_DNR@@&'"${_notice_dnr}"'&' \
+    -i "$_pkgsrc/src/core/fullscreen_ui.cpp"
 
   # change icon
   install -Dm644 mallard-box.png "$_pkgsrc"/src/duckstation-qt/resources/icons/UpdateDuck.png
@@ -534,13 +578,25 @@ _build_duckstation() {
 }
 
 prepare() {
-  _prepare_backtrace
-  _prepare_cpuinfo
-  _prepare_discord_rpc
-  _prepare_lunasvg
-  _prepare_shaderc
-  _prepare_soundtouch
-  _prepare_spirv_cross
+  if [[ "${_build_save_deps::1}" == "t" ]]; then
+    for i in "$startdir/$_prebuilt_file"; do
+      if [ -f "$i" ]; then
+        echo "Restoring deps..."
+        bsdtar -xf "$i"
+        break
+      fi
+    done
+  fi
+
+  if [ ! -e deps ]; then
+    _prepare_backtrace
+    _prepare_cpuinfo
+    _prepare_discord_rpc
+    _prepare_lunasvg
+    _prepare_shaderc
+    _prepare_soundtouch
+    _prepare_spirv_cross
+  fi
 
   _prepare_duckstation
 }
@@ -548,22 +604,34 @@ prepare() {
 build() {
   export PATH="/usr/lib/llvm${_clang_ver}/bin:$PATH"
 
-  export CC CXX LDFLAGS
+  export CC CXX CFLAGS CXXFLAGS LDFLAGS
   CC="clang"
   CXX="clang++"
+
+  CFLAGS+=" -DNDEBUG"
+  CXXFLAGS+=" -DNDEBUG"
 
   local _ldflags=(${LDFLAGS})
   LDFLAGS+="${_ldflags[@]//*use-ld*/} -fuse-ld=lld"
 
   export CMAKE_POLICY_VERSION_MINIMUM=3.5
 
-  _build_backtrace
-  _build_cpuinfo
-  _build_discord_rpc
-  _build_lunasvg
-  _build_shaderc
-  _build_soundtouch
-  _build_spirv_cross
+  if [ ! -e deps ]; then
+    _build_backtrace
+    _build_cpuinfo
+    _build_discord_rpc
+    _build_lunasvg
+    _build_shaderc
+    _build_soundtouch
+    _build_spirv_cross
+  fi
+
+  if [[ "${_build_save_deps::1}" == "t" ]]; then
+    if [[ -e deps && ! -e "$startdir/$_prebuilt_file" ]]; then
+      echo "Saving deps..."
+      bsdtar -cf "$startdir/$_prebuilt_file" deps
+    fi
+  fi
 
   _build_duckstation
 }
@@ -571,6 +639,9 @@ build() {
 package_duckstation-gpl() {
   # add conflicts after meta package is retired
   provides=("$_pkgname")
+
+  # notify users to move data
+  install="$_pkgname.install"
 
   # rpath
   patchelf --force-rpath --set-rpath '$ORIGIN' "build/bin/$_pkgname-qt"

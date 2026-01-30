@@ -1,7 +1,7 @@
 pkgbase = duckstation
 	pkgdesc = Playstation emulator
 	pkgver = 0.1.7465
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/stenzek/duckstation/commits/aa955b8ae28314ae061613f0ddf13183a98aca03
 	arch = x86_64
 	license = GPL-3.0-only
@@ -25,6 +25,7 @@ pkgbase = duckstation
 	depends = glslang
 	depends = spirv-tools
 	source = duckstation::git+https://github.com/stenzek/duckstation.git#commit=aa955b8ae28314ae061613f0ddf13183a98aca03
+	source = mdqinc.SDL_GameControllerDB::git+https://github.com/mdqinc/SDL_GameControllerDB
 	source = dependencies.txt
 	source = mallard-box.png
 	source = mallard.png
@@ -57,7 +58,8 @@ pkgbase = duckstation
 	source = soundtouch-0002-Slim-down-for-downloads.patch.zst.002
 	source = khronosgroup.spirv-cross::git+https://github.com/KhronosGroup/SPIRV-Cross.git
 	sha256sums = SKIP
-	sha256sums = 03121c93ac00b3283789a7820c2c90bc8e77781191298d8d67a76237775802c3
+	sha256sums = SKIP
+	sha256sums = ebe081d44dba88eb4c12cf59d7f3143521d905efda5bc65bfa52eaa0148bb504
 	sha256sums = 2cda88837aa49f849a32d13148048259577e5c788595aa1f8b78dafc1a72c62e
 	sha256sums = 8a2d6c76473b324ef67ebca258d7b169c4f361a4f453056295af9c4f17fcb09f
 	sha256sums = SKIP
@@ -97,4 +99,5 @@ pkgname = duckstation
 	depends = duckstation-gpl
 
 pkgname = duckstation-gpl
+	install = duckstation.install
 	provides = duckstation

@@ -1,0 +1,28 @@
+ALL_OFF="$(tput sgr0)"
+BOLD="$(tput bold)"
+BLACK="$(tput setaf 0)"
+RED="$(tput setaf 1)"
+GREEN="$(tput setaf 2)"
+YELLOW="$(tput setaf 3)"
+BLUE="$(tput setaf 4)"
+MAGENTA="$(tput setaf 5)"
+CYAN="$(tput setaf 6)"
+WHITE="$(tput setaf 7)"
+
+_notice_dnr() {
+  local _notice_unofficial="This is an unofficial build based on the last GPL commit on 2024-09-01."
+  local _notice_dnr="Do not report issues to the original developer."
+  printf "${BOLD}${YELLOW}NOTICE: ${WHITE}%s\n        %s${ALL_OFF}\n" "${_notice_unofficial}" "${_notice_dnr}"
+}
+
+post_install() {
+  _notice_dnr
+}
+
+post_upgrade() {
+  _notice_dnr
+
+  if [[ ! "$2" > "0.1.7465-7" ]]; then
+    printf "${BOLD}${WHITE}        %s${ALL_OFF}\n" "Users may need to move data from ${CYAN}~/.config${WHITE} to ${CYAN}~/.local/share${ALL_OFF}"
+  fi
+}
