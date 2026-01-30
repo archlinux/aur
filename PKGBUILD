@@ -17,11 +17,11 @@ optdepends=(
 )
 provides=('apx')
 conflicts=('apx')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Definetly-a-username/APX/archive/refs/heads/main.tar.gz")
-sha256sums=('29961abf7d7e033ba4fd88968531483d2dfe57f31f67075141c40455bfccf4f9')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Definetly-a-username/APX/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('5108ce6f5c8d8fb753d9aaefe5e55054a5900fceaa5791245b6a5e08ace20538')
 
 build() {
-    cd "APX-main"
+    cd "APX-${pkgver}"
     
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
@@ -33,12 +33,12 @@ build() {
 }
 
 check() {
-    cd "APX-main"
+    cd "APX-${pkgver}"
     go test ./...
 }
 
 package() {
-    cd "APX-main"
+    cd "APX-${pkgver}"
     
     # Install binary
     install -Dm755 apx "${pkgdir}/usr/bin/apx"
