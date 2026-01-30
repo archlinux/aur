@@ -2,7 +2,7 @@
 
 pkgname="v2rayn-bin"
 pkgver=7.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI client for Windows and Linux, support Xray core and others"
 arch=("x86_64" "arm64")
 license=('GPL3')
