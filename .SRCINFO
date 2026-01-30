@@ -1,14 +1,14 @@
 pkgbase = kratos
 	pkgdesc = Your ultimate Go microservices framework for the cloud-native era
-	pkgver = 2.9.1
+	pkgver = 2.9.2
 	pkgrel = 1
 	url = https://go-kratos.dev
 	arch = x86_64
 	license = MIT
 	checkdepends = git
 	makedepends = go
-	source = kratos-2.9.1.tar.gz::https://github.com/go-kratos/kratos/archive/refs/tags/v2.9.1.tar.gz
-	sha256sums = 6bd9f0c3cec292143452f02f476314939e2a939b3c8db2a3597a7ef44be272bb
+	source = kratos-2.9.2.tar.gz::https://github.com/go-kratos/kratos/archive/refs/tags/v2.9.2.tar.gz
+	sha256sums = a87a03735688a79b56b106c77e7c301f1b5bf0edbf961b2732d2daac86015a40
 
 pkgname = kratos
 	depends = glibc
@@ -16,8 +16,8 @@ pkgname = kratos
 	depends = protobuf
 	depends = protoc-gen-go
 	depends = protoc-gen-go-grpc
-	depends = protoc-gen-go-errors=2.9.1
-	depends = protoc-gen-go-http=2.9.1
+	depends = protoc-gen-go-errors>=2.9.2
+	depends = protoc-gen-go-http>=2.9.2
 	depends = protoc-gen-validate
 
 pkgname = protoc-gen-go-errors

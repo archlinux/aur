@@ -6,7 +6,7 @@ pkgname=(
   "protoc-gen-go-errors"
   "protoc-gen-go-http"
 )
-pkgver=2.9.1
+pkgver=2.9.2
 pkgrel=1
 pkgdesc="Your ultimate Go microservices framework for the cloud-native era"
 arch=(
@@ -27,7 +27,7 @@ _pkgsrc="${_url##*/}-${pkgver}"
 source=(
   "${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('6bd9f0c3cec292143452f02f476314939e2a939b3c8db2a3597a7ef44be272bb')
+sha256sums=('a87a03735688a79b56b106c77e7c301f1b5bf0edbf961b2732d2daac86015a40')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
@@ -80,8 +80,8 @@ package_kratos() {
     'protobuf'
     'protoc-gen-go'
     'protoc-gen-go-grpc'
-    "protoc-gen-go-errors=${pkgver}"
-    "protoc-gen-go-http=${pkgver}"
+    "protoc-gen-go-errors>=${pkgver}"
+    "protoc-gen-go-http>=${pkgver}"
     "protoc-gen-validate"
   )
 
