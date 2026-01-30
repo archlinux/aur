@@ -1,7 +1,7 @@
 # Maintainer: Mambuco <gabriele.giambrone@icloud.com>
 pkgname=votetracker
 pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="School grade management application (italian school system)"
 arch=('any')
 url="https://github.com/mambucodev/votetracker"
