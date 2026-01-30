@@ -1,7 +1,7 @@
 pkgbase = banjorecomp
 	pkgdesc = A static recompiled port of N64 Banjo-Kazooie for PC
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/BanjoRecomp/BanjoRecomp
 	arch = x86_64
 	arch = aarch64
@@ -20,7 +20,7 @@ pkgbase = banjorecomp
 	depends = vulkan-driver
 	depends = vulkan-icd-loader
 	depends = hicolor-icon-theme
-	source = git+https://github.com/BanjoRecomp/BanjoRecomp.git#commit=045b738297053d45dfe8256c374163ef09c1b7c0
+	source = git+https://github.com/BanjoRecomp/BanjoRecomp.git#tag=v1.0.1
 	source = git+https://github.com/N64Recomp/N64ModernRuntime.git
 	source = git+https://github.com/rt64/rt64.git
 	source = bk-decomp::git+https://gitlab.com/banjo.decomp/banjo-kazooie.git
@@ -56,7 +56,7 @@ pkgbase = banjorecomp
 	source = git+https://github.com/MittenzHugg/rarezip.git
 	source = banjorecomp.desktop
 	source = file://baserom.us.rev0.z64
-	sha256sums = c4895d99e7961883eaf03d71143d918d119725d4e323006b91d4e7e912bc6138
+	sha256sums = 93d06738a06c190da7c0b4bfad74908748c7bd8ea3e307614c94bf3b2d73bb2e
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
