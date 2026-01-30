@@ -70,4 +70,3 @@ pkgname = ledspicer-adalight
 pkgname = ledspicer-dev
 	pkgdesc = LEDSpicer development headers and pkg-config metadata
 	depends = libledspicer
-
