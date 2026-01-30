@@ -1,7 +1,7 @@
 pkgbase = ausweisapp
 	pkgdesc = A software application that you install on your computer to use your national identity card or your electronic residence permit for online identification
 	pkgver = 2.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ausweisapp.bund.de/
 	arch = i686
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = ausweisapp
 	optdepends = ccid
 	optdepends = acsccid
 	optdepends = pcsc-cyberjack
+	conflicts = ausweisapp2
 	replaces = ausweisapp2
 	source = https://github.com/Governikus/AusweisApp2/releases/download/2.4.1/AusweisApp-2.4.1.tar.gz
 	source = https://github.com/Governikus/AusweisApp2/releases/download/2.4.1/AusweisApp-2.4.1.tar.gz.asc
