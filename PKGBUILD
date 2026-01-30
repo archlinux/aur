@@ -5,7 +5,7 @@ _android_arch=riscv64
 
 pkgname=android-${_android_arch}-openssl
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (Android ${_android_arch})"
 url='https://www.openssl.org'
@@ -33,8 +33,8 @@ build() {
         riscv64)
             build_arch=riscv64
 
-            export CFLAGS="${ANDROID_CFLAGS} -O1 -pipe -fno-plt"
-            export CXXFLAGS="${ANDROID_CXXFLAGS} -O1 -pipe -fno-plt -fexceptions"
+            export CFLAGS="${ANDROID_CFLAGS} -O1 -pipe"
+            export CXXFLAGS="${ANDROID_CXXFLAGS} -O1 -pipe -fexceptions"
             export CPPFLAGS="${ANDROID_CPPFLAGS} -D_FORTIFY_SOURCE=2 -D__USE_FORTIFY_LEVEL=2 -isystem ${ANDROID_PREFIX_INCLUDE}"
             export LDFLAGS="${ANDROID_LDFLAGS} -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -L${ANDROID_PREFIX_LIB}"
             ;;
@@ -63,22 +63,7 @@ build() {
         no-docs \
         no-apps \
         no-legacy \
-        no-deprecated \
-        no-asm \
-        no-engine \
-        no-fips \
-        no-comp \
-        no-dso \
-        no-ec2m \
-        no-psk \
-        no-srp \
-        no-cms \
-        no-ct \
-        no-sock \
-        no-dtls \
-        no-ocsp \
-        no-cmp \
-        no-ts
+        no-asm
 
     # get rid of debug printing so the library doesn't depend on stdio (no-stdio and no-ui are not entirely sufficient)
     sed -i -e 's/\#define TEST_ENG_OPENSSL_RC4_P_INIT//' crypto/engine/eng_openssl.c
