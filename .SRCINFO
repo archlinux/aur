@@ -1,7 +1,7 @@
 pkgbase = bambustudio-nvidia-bin
 	pkgdesc = PC Software for BambuLab's 3D printers with a fix for nVidia cards
 	pkgver = 02.05.00.66
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bambulab/BambuStudio
 	arch = x86_64
 	license = AGPL3
@@ -27,7 +27,7 @@ pkgbase = bambustudio-nvidia-bin
 	source = bambu-studio
 	source = mesa.tar.zst::https://archive.archlinux.org/packages/m/mesa/mesa-1%3A24.3.4-1-x86_64.pkg.tar.zst
 	source = llvm.tar.zst::https://archive.archlinux.org/packages/l/llvm-libs/llvm-libs-19.1.7-2-x86_64.pkg.tar.zst
-	md5sums = 5b4c7bff675d7edd67d2c69ecc5e94e0
+	md5sums = 7014b4e39be1498898703039e808a465
 	md5sums = c2729c29cbd01844507e1f0562762191
 	md5sums = 7870efc1c2644441705f8a4316455c5a
 	md5sums = e2e9476b8e0924cfc752cce1501b3ea3
