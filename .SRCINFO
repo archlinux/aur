@@ -1,0 +1,16 @@
+pkgbase = lib32-vid.stab
+	pkgdesc = Video stabilization library (32-bit)
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = http://public.hronopik.de/vid.stab
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = cmake>=2.8.5
+	depends = vid.stab>=1.1.1
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	provides = libvidstab.so
+	source = https://github.com/georgmartius/vid.stab/archive/refs/tags/v1.1.1/vid.stab-1.1.1.tar.gz
+	b2sums = e2ce03d24358404c617816466ad3fd715999ef4d391617e9cec7923353ba2ce4ac3b3eedce67f3fadf3bd6fdfb2e4516a5b95c3fca9f613e367b1490ec78ae0a
+
+pkgname = lib32-vid.stab

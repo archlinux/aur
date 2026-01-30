@@ -1,0 +1,4 @@
+["lib32-vid.stab"]
+source = "archpkg"
+archpkg = "vid.stab"
+strip_release = true
