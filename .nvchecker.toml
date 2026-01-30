@@ -1,0 +1,5 @@
+[noxdir-bin]
+source = "github"
+github = "crumbyte/noxdir"
+use_latest_release = true
+prefix = "v"
