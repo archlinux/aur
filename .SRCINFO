@@ -1,6 +1,6 @@
 pkgbase = xtatusbar
 	pkgdesc = Configurable statusbar for Xorg server using xsetroot
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/javiorfo/xtatusbar
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = xtatusbar
 	depends = xorg-xsetroot
 	provides = xtatusbar
 	conflicts = xtatusbar
-	source = xtatusbar::git+https://github.com/javiorfo/xtatusbar.git#tag=0.2.1
-	sha512sums = SKIP
+	source = xtatusbar::git+https://github.com/javiorfo/xtatusbar.git#tag=0.3.0
+	sha512sums = fd150d028c278fbe2d5757d78dc5022c485a38d0476f448abed7bdf3a62637149bbedaab2737cb08256aa91db54755d5ba68770c28c3930d2c535536c5a1dcc9
 
 pkgname = xtatusbar
