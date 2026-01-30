@@ -1,3 +1,4 @@
-limine-entry-tool*
-pkg
-src
+*
+!PKGBUILD
+!clean.sh
+!.SRCINFO
