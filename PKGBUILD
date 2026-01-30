@@ -1,6 +1,6 @@
 # Maintainer: Rob Zolkos <rob@zolkos.com>
 pkgname=basecamp-cli
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="CLI for interacting with Basecamp projects and card tables"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/robzolkos/basecamp-cli/archive/v$pkgver.tar.gz")
-sha256sums=('a808ce705539464e826eb01c194e503e7a344be197f8487d5b5d5579f65c01f7')
+sha256sums=('29947f58b960d05836f8a6bc7feb0d1741538014825deb0163036b19e3e0163e')
 options=('!debug')
 
 build() {

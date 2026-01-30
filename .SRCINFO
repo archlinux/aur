@@ -1,6 +1,6 @@
 pkgbase = basecamp-cli
 	pkgdesc = CLI for interacting with Basecamp projects and card tables
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/robzolkos/basecamp-cli
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = basecamp-cli
 	makedepends = go
 	depends = glibc
 	options = !debug
-	source = basecamp-cli-0.1.0.tar.gz::https://github.com/robzolkos/basecamp-cli/archive/v0.1.0.tar.gz
-	sha256sums = a808ce705539464e826eb01c194e503e7a344be197f8487d5b5d5579f65c01f7
+	source = basecamp-cli-0.2.0.tar.gz::https://github.com/robzolkos/basecamp-cli/archive/v0.2.0.tar.gz
+	sha256sums = 29947f58b960d05836f8a6bc7feb0d1741538014825deb0163036b19e3e0163e
 
 pkgname = basecamp-cli
