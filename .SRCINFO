@@ -1,5 +1,5 @@
 pkgbase = shef-bin
-	pkgdesc = Shef is a powerful CLI framework for cooking up dynamic shell recipes.
+	pkgdesc = A powerful CLI framework for cooking up dynamic shell recipes.
 	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/eduardoagarcia/shef
