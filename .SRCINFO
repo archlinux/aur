@@ -1,6 +1,6 @@
 pkgbase = llama.cpp-cuda-git
 	pkgdesc = Port of Facebook's LLaMA model in C/C++ (with NVIDIA CUDA optimizations)
-	pkgver = b7876.r1.bd90fc74c3
+	pkgver = b7876.r4.1025fd2c09
 	pkgrel = 1
 	url = https://github.com/ggerganov/llama.cpp
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = llama.cpp-cuda-git
 	license = MIT
 	makedepends = cmake
 	makedepends = git
+	makedepends = openssl
 	depends = cuda
 	depends = curl
 	depends = gcc-libs

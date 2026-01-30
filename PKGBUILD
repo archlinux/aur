@@ -2,7 +2,7 @@
 : ${aur_llamacpp_build_universal:=false}
 pkgname=llama.cpp-cuda-git
 _pkgname="${pkgname%-cuda-git}"
-pkgver=b7876.r1.bd90fc74c3
+pkgver=b7876.r4.1025fd2c09
 pkgrel=1
 _build_number=0
 _commit_id=
@@ -18,8 +18,9 @@ depends=(
   nvidia-utils
 )
 makedepends=(
-cmake
-git
+  cmake
+  git
+  openssl
 )
 optdepends=(
 'python-numpy: needed for convert_hf_to_gguf.py'
@@ -80,6 +81,7 @@ build() {
     -DLLAMA_BUILD_SERVER=ON
     -DLLAMA_BUILD_NUMBER="${_build_number}"
     -DLLAMA_BUILD_COMMIT="${_commit_id}"
+    -DLLAMA_OPENSSL=ON
     -Wno-dev
   )
 
