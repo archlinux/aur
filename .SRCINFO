@@ -1,6 +1,6 @@
 pkgbase = waves-bin
 	pkgdesc = Terminal music player with library browsing and queue management
-	pkgver = 0.1.35
+	pkgver = 0.1.36
 	pkgrel = 1
 	url = https://github.com/llehouerou/waves
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = waves-bin
 	depends = alsa-lib
 	provides = waves
 	conflicts = waves
-	source = https://github.com/llehouerou/waves/releases/download/v0.1.35/waves_0.1.35_linux_amd64.tar.gz
-	sha256sums = 9f8eb99dca33dfa8640b0f26b6686b24efd8b2ec06849f8635f8024a9d7c42e0
+	source = https://github.com/llehouerou/waves/releases/download/v0.1.36/waves_0.1.36_linux_amd64.tar.gz
+	sha256sums = 18ba0a4180f0ff0a046700e8fdc5ff43ad2d64aff39d8ee7020256775b6c7aee
 
 pkgname = waves-bin
