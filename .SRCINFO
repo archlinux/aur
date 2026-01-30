@@ -1,0 +1,17 @@
+pkgbase = python-maseya-z3pr
+	pkgdesc = Zelda 3 Palette Randomizer
+	pkgver = 1.0.0.rc1
+	pkgrel = 1
+	url = https://github.com/maseya/z3pr-py
+	arch = any
+	license = LGPL-3.0-or-later
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = python-maseya-z3pr-1.0.0.rc1.tar.gz::https://github.com/maseya/z3pr-py/archive/v1.0.0.rc1.tar.gz
+	sha256sums = 24a7212fa6b0f0be84c40282dcdef8e92d869d6aeff4c9081d723b048d210af4
+
+pkgname = python-maseya-z3pr
