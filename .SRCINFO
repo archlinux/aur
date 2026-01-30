@@ -1,0 +1,27 @@
+pkgbase = nodotify
+	pkgdesc = t.me/nodotify | music player
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://dotify.fun
+	arch = x86_64
+	license = custom
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator3-1
+	depends = glib2
+	depends = gtk3
+	depends = libsoup3
+	depends = curl
+	depends = openssl
+	depends = cairo
+	depends = pango
+	depends = gdk-pixbuf2
+	depends = pkgconf
+	depends = libtool
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	provides = dotify
+	conflicts = dotify
+	source = https://dotify.fun/Dotify.deb
+	sha256sums = 
+
+pkgname = nodotify
