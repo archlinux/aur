@@ -2,7 +2,7 @@
 : ${aur_llamacpp_build_universal:=false}
 pkgname=llama.cpp-cuda-git
 _pkgname="${pkgname%-cuda-git}"
-pkgver=b7668.r4.64848deb18
+pkgver=b7876.r1.bd90fc74c3
 pkgrel=1
 _build_number=0
 _commit_id=
@@ -67,7 +67,6 @@ build() {
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DBUILD_SHARED_LIBS=ON
-    -DLLAMA_CURL=ON
     -DLLAMA_BUILD_TESTS=OFF
     -DLLAMA_USE_SYSTEM_GGML=OFF
     -DGGML_ALL_WARNINGS=OFF
