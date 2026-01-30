@@ -1,0 +1,25 @@
+pkgbase = sigscan-bin
+	pkgdesc = List POSIX signal information for all processes
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/brannondorsey/sigscan
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	depends = glibc
+	depends = gcc-libs
+	provides = sigscan
+	conflicts = sigscan
+	source = README-0.2.3.md::https://raw.githubusercontent.com/brannondorsey/sigscan/v0.2.3/README.md
+	source = LICENSE-MIT-0.2.3::https://raw.githubusercontent.com/brannondorsey/sigscan/v0.2.3/LICENSE-MIT
+	source = LICENSE-APACHE-0.2.3::https://raw.githubusercontent.com/brannondorsey/sigscan/v0.2.3/LICENSE-APACHE
+	sha256sums = d6687ae4929479e8d9c2d15e446dd65ff4aa1cfee106b99afc455b3d3286c0d7
+	sha256sums = a46b51a0e2fa757b30446b2ef92352958bdc755638f32319c01b071674736d78
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = sigscan-x86_64-0.2.3.tgz::https://github.com/brannondorsey/sigscan/releases/download/v0.2.3/sigscan-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 1449248c147810368bbc28035c9925e2da579b96c9c204c51b0d7d929d904398
+	source_aarch64 = sigscan-aarch64-0.2.3.tgz::https://github.com/brannondorsey/sigscan/releases/download/v0.2.3/sigscan-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 5475ab4bb39de6a7bc034e855fb6876395062667a0474e1f7209f98566fd40c4
+
+pkgname = sigscan-bin

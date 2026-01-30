@@ -1,0 +1,5 @@
+[sigscan-bin]
+source = "github"
+github = "brannondorsey/sigscan"
+use_latest_release = true
+prefix = "v"
