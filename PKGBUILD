@@ -1,7 +1,7 @@
 # Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 
 pkgname=pass-cli
-pkgver=0.16.2
+pkgver=0.17.1
 pkgrel=1
 pkgdesc='A secure, cross-platform, always-free, and open-source alternative to 1password, bitwarden, etc., Password and API key manager'
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(Apache-2.0)
 depends=(glibc)
 makedepends=(go)
 source=("$url/archive/v$pkgver/pass-cli-v$pkgver.tar.gz")
-b2sums=('97c86cdd02ce90f7e2bf985d26a3fad69a45e2c2286a6405663b53ab58aaaec61980cf51d4f69acec0e33975c459d28127eab40dbfe62fb5ec37261e03339835')
+b2sums=('8c70d67f97720614648ff06897f8eb4346b987089eec01448c36679824489b0f0145bd9285bec6d60b8b470d376e3e22adb85bb815e95c1b0581bf0b9eb21a3f')
 
 prepare() {
     cd $pkgname-$pkgver
