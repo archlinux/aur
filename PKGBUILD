@@ -13,7 +13,7 @@
 pkgdesc='A fancy custom distribution of Valves Proton with various patches'
 pkgname=proton-ge-custom-rtsp-bin
 pkgver=GE_Proton10_26_rtsp20
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
 changelog=changelog.md
@@ -41,7 +41,7 @@ depends=('python'
   'lib32-mpg123'
   'libsoup'
   # other #
-  'lib32-openssl-1.1'
+  'lib32-openssl'
   'lib32-libusb')
 optdepends=('kdialog: KDE splash dialog support'
   'zenity: GNOME splash dialog support'
