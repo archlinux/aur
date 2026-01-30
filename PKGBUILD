@@ -1,16 +1,16 @@
 # Maintainer: Juan Roa <hello@juanroa.dev>
 pkgname=athas
-pkgver=0.3.1
-pkgrel=3
+pkgver=0.3.2
+pkgrel=1
 pkgdesc="Lightweight code editor built with React, TypeScript, and Tauri"
 arch=('x86_64' 'aarch64')
 url="https://github.com/athasdev/athas"
 license=('AGPL3')
 depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'hicolor-icon-theme')
-makedepends=('bun-bin' 'cmake' 'rust')
+makedepends=('bun' 'cmake' 'rust')
 _source_name=athas
 source=("${_source_name}-${pkgver}.tar.gz::https://github.com/athasdev/athas/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6b0f6c4d0e6d558167c99dffd6d8771b14144ed0296453b441650b130bfc642f')
+sha256sums=('45edb1e623dac9eaa4dd3367b9a182307af0782c67d118c66f741d16893c08b6')
 
 _builddir="${_source_name}-${pkgver}"
 
