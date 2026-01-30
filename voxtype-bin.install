@@ -80,7 +80,7 @@ post_install() {
 
 post_upgrade() {
     echo ""
-    echo "==> Voxtype upgraded to 0.5.2"
+    echo "==> Voxtype upgraded to 0.5.4"
     echo ""
 
     CPU_VARIANT=$(_detect_cpu)
@@ -89,11 +89,12 @@ post_upgrade() {
     _detect_gpu
 
     echo ""
-    echo "    New in 0.5.2:"
-    echo "      - Fixed: ROCm backend now shows in 'voxtype setup parakeet --status'"
-    echo "      - Fixed: AMD GPU detection for auto-selecting ROCm backend"
+    echo "    New in 0.5.4:"
+    echo "      - Fixed: GPU setup now recognizes source-built native binaries"
+    echo "      - Fixed: 'voxtype setup gpu --status' shows correct backend for source builds"
     echo ""
-    echo "    To try Parakeet: voxtype setup parakeet --enable"
+    echo "    Restart the daemon to apply updates:"
+    echo "      systemctl --user restart voxtype"
     echo ""
 }
 
