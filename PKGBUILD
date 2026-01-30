@@ -2,13 +2,13 @@
 # Contributor: Pekka Helenius <fincer89 [at] hotmail [dot] com>
 
 pkgname=pam_usb-git
-pkgver=0.8.2_r500.g7a785de
-pkgrel=4
+pkgver=0.8.5_r580.gd976762
+pkgrel=1
 pkgdesc='Hardware authentication for Linux using ordinary flash media (USB & Card based).'
 arch=($CARCH)
 url='https://github.com/mcdope/pam_usb'
 license=(GPL2)
-depends=(python-gobject libxml2 udisks2)
+depends=(python-gobject libxml2-legacy udisks2)
 makedepends=(git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
