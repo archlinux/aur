@@ -4,7 +4,7 @@
 pkgname=python-box
 pypiPkgName=python_box
 pkgver=7.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced Python dictionaries with dot notation access"
 arch=('x86_64')
 url="https://github.com/cdgriffith/Box"
