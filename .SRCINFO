@@ -7,7 +7,7 @@ pkgbase = ps2_manager
 	license = GPL3
 	makedepends = dotnet-sdk
 	options = !strip
-	source = ps2_manager-1.6.1.tar.gz::https://code.weexnes.dev/~downloads/projects/18/archives?revision=refs/tags/1.6.1&format=tgz
+	source = ps2_manager-1.6.1.tar.gz::https://code.weexnes.dev/~downloads/projects/1/archives?revision=refs/tags/1.6.1&format=tgz
 	sha256sums = SKIP
 
 pkgname = ps2_manager
