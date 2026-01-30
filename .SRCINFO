@@ -1,8 +1,9 @@
 pkgbase = fsmsg-git
 	pkgdesc = Leave messages to other users on the system
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/MatthewGlancy/fsmsg.git
+	install = fsmsg.install
 	arch = any
 	license = 0BSD
 	makedepends = git
