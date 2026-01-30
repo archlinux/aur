@@ -1,6 +1,6 @@
 #Maintainer: Larzid <juanitocampamocha@gmail.com>
 pkgname=sotw
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 epoch=
 pkgdesc="Shadow Of The Wyrm by Julian Day - Development branch."
