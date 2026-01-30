@@ -1,6 +1,6 @@
 pkgbase = hf
 	pkgdesc = Cross-platform hidden file library and utility
-	pkgver = 0.5.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/sorairolake/hf
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = hf
 	license = CC-BY-4.0
 	makedepends = cargo
 	depends = gcc-libs
-	source = hf-0.5.1.tar.gz::https://github.com/sorairolake/hf/archive/v0.5.1.tar.gz
-	sha512sums = 25dba5ed4f89132b683cae7d7263a498b349f89211696fbc16de8834eb60a0376d4ed497c4f97d2f57e6d0bfa043103d315bd07abe3c9b238731b79075ef4169
+	source = hf-0.6.0.tar.gz::https://github.com/sorairolake/hf/archive/v0.6.0.tar.gz
+	sha512sums = 7baa484b6225746600f542e4ada8ba059053965f057334d21485237e2de0c056e343bca98b2bcd49dd590d89c42d662ffae2131b4d2facd96ea9cc94e1e8cf43
 
 pkgname = hf
