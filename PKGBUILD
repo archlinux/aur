@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=linyaps-store-minimalist-bin
-_pkgname=OpenList.Desktop
-pkgver=1.1.8
+# _pkgname=
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Linyaps Store Minimalist"
 arch=('x86_64')
@@ -30,7 +30,7 @@ optdepends=("linyaps: Next-Gen Universal Package Manager for Linux (linglong)")
 backup=()
 options=('!strip' '!debug')
 source=("${url}/releases/download/${pkgver}/linux-${pkgver}-x86_64.deb")
-sha256sums=('0ca5959c6daa28db9338bf63ab9d1ceb0e4164da1a2393d8ca3dcc9f610748a1')
+sha256sums=('ef07001378cc086348c029716eed0f0ef04573f9cc789e7e295951c201840b7d')
 noextract=("linux-${pkgver}-x86_64.deb")
 
 package() {
