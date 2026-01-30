@@ -2,7 +2,7 @@
 _base=pooch
 pkgname=pypy3-${_base}
 pkgdesc="A friend to fetch your data files"
-pkgver=1.8.2
+pkgver=1.9.0
 pkgrel=1
 arch=(any)
 url="https://github.com/fatiando/${_base}"
@@ -11,8 +11,8 @@ depends=(pypy3-platformdirs pypy3-packaging pypy3-requests)
 makedepends=(pypy3-build pypy3-installer pypy3-setuptools-scm)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
   fixwheel.patch::${url}/commit/96bd5437.patch)
-sha512sums=('7110811103c36de75542280b7cd4f0c2148786c0e455a4465fdf8eb96640043ca1c6daa638755c2ad5cf9be0dbe89e646417a75e52321f199ae2b55e8960a4bc'
-            '7f1740da65438c3858357096dd866a33a1aafb266e98dc8b33e8b9167d4775ad770661c2b4308c38277b459ad05e1f26803d3ddd002e914e1f136725ff7bd96e')
+sha512sums=('5e66990f0d7b23e0d5e5e680f70bf735265af4372080b9143af5b9f1e54af088975fd387271554110de4573729ae66e4417210f1ccc2f68785bbfbdf9284c6da'
+            'b375a82c7737bf9ed779ee20656c99d198886b034f7cf124d97bac2fd822fc942ab2d05867146a7aa9a74e7e51643fa14cf048e43e7645d908236e9df49d5d05')
 
 prepare() {
   cd ${_base}-${pkgver}
