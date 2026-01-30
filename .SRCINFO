@@ -1,17 +1,16 @@
 pkgbase = zuban
 	pkgdesc = A Mypy-compatible Python Language Server built in Rust
-	pkgver = v0.1.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://zubanls.com
-	arch = i686
 	arch = x86_64
-	arch = aarch64
 	license = AGPL-3.0-only
-	makedepends = cargo
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-maturin
-	source = zuban::git+https://github.com/zubanls/zuban#tag=v0.1.1
-	sha256sums = SKIP
+	depends = gcc-libs
+	depends = glibc
+	source = zuban-0.4.2.tar.gz::https://github.com/zubanls/zuban/archive/v0.4.2.tar.gz
+	sha256sums = 5dcbc18cc4c211a035987a5668cf176232392e83df610210e576dcd38e65ed04
 
 pkgname = zuban
