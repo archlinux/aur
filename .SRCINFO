@@ -1,0 +1,14 @@
+pkgbase = zond
+	pkgdesc = A modular network scanner written in Rust
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/hollowpointer/zond
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = zond-0.3.0.tar.gz::https://github.com/hollowpointer/zond/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 9a6d42acb26fb0fecf97b29e8c8057565ef7803e246744a7b8e7a31b6c3e575e
+
+pkgname = zond
