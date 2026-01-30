@@ -1,0 +1,3 @@
+[echo]
+source = "git"
+git = "https://github.com/lo2dev/Echo.git"

@@ -1,0 +1,17 @@
+pkgbase = echo
+	pkgdesc = Utility to ping websites.
+	pkgver = 3
+	pkgrel = 1
+	url = https://lo2dev.github.io/portal/echo
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = blueprint-compiler
+	makedepends = meson
+	depends = gtk4
+	depends = libadwaita
+	depends = python-gobject
+	depends = python-icmplib
+	source = Echo-3.tar.gz::https://github.com/lo2dev/Echo/archive/refs/tags/3.tar.gz
+	sha256sums = d4730771bae69471b4e02047f5599fb4cb595de4563b3208292acc0de205d437
+
+pkgname = echo
