@@ -2,7 +2,7 @@
 # Contributor: Benjamin Denhartog <ben@sudoforge.com>
 
 pkgname=buildozer-bin
-pkgver=8.2.1
+pkgver=8.5.1
 pkgrel=1
 pkgdesc='A command line tool to rewrite Bazel BUILD files using standard conventions'
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ source_aarch64+=(
   "${pkgname}-aarch64-${pkgver}::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-arm64"
 )
 sha256sums=('cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
-sha256sums_x86_64=('04454a6a89c64c603027cc3371eb1c36e48727e04558e077c20ec37c9c2f831a')
-sha256sums_aarch64=('e55b56861a390cc993402d2974d5b74a097694f64eb08599dc704bdd7dde6484')
+sha256sums_x86_64=('2b745ca2ad41f1e01673fb59ac50af6b45ca26105c1d20fad64c3d05a95522f5')
+sha256sums_aarch64=('87ee1d2d81d08ccae8f9147fc58503967c85878279e892f2990912412feef1a1')
 
 package() {
   cd "${srcdir}" || exit
