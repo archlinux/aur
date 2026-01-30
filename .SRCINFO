@@ -9,6 +9,6 @@ pkgbase = image-analyze
 	makedepends = gcc
 	depends = glfw
 	source = https://github.com/ArthurGuihaire/image-analyze/archive/refs/tags/v2.3.2.tar.gz
-	sha256sums = 3e915ef5ff600b0184f15e4e528cc9dc276ce3e7364357a0c927236d14ae3de5
+	sha256sums = 834d10735982af7375abe0396a52d8888e7ba34d9681d319f6b3852e2f6f2798
 
 pkgname = image-analyze
