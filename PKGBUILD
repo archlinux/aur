@@ -2,13 +2,13 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=plasma-integration-git
-pkgver=6.0.80_r799.g9338c3c
-pkgrel=3
+pkgver=6.6.80_r954.ged7c0bd
+pkgrel=1
 pkgdesc="Qt Platform Theme integration plugins for the Plasma workspaces"
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL-2.0-or-later)
-depends=(gcc-libs glibc kcolorscheme-git kcompletion-git kconfig-git kcoreaddons-git kguiaddons-git kiconthemes-git ki18n-git kio-git kjobwidgets-git kservice-git kstatusnotifieritem-git kwidgetsaddons-git kwindowsystem-git kxmlgui-git libxcb libxcursor qqc2-breeze-style-git qqc2-desktop-style-git qt6-base qt6-declarative qt6-wayland wayland noto-fonts ttf-hack xdg-desktop-portal-kde)
+depends=(gcc-libs glibc kcolorscheme-git kcompletion-git kconfig-git kcoreaddons-git kguiaddons-git kiconthemes-git ki18n-git kio-git kjobwidgets-git kservice-git kstatusnotifieritem-git kwidgetsaddons-git kwindowsystem-git kxmlgui-git libxcb libxcursor qqc2-breeze-style-git qqc2-desktop-style-git qt6-base qt6-declarative qt6-wayland wayland noto-fonts ttf-hack xdg-desktop-portal-kde kwayland5-git)
 makedepends=(git extra-cmake-modules-git plasma-wayland-protocols-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
