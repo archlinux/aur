@@ -1,0 +1,32 @@
+# Maintainer: Florian Weßel <florianwessel@gmx.net>
+
+pkgname=asio-grpc
+pkgver=3.6.0
+pkgrel=1
+pkgdesc='An Executor, Networking TS and std::execution interface to grpc::CompletionQueue for writing asynchronous gRPC clients '
+arch=('any')
+url='https://github.com/Tradias/asio-grpc'
+license=('Apache-2.0')
+depends=('grpc' 'boost' 'asio' 'stdexec-git')
+makedepends=('cmake' 'ninja')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Tradias/asio-grpc/archive/refs/tags/v$pkgver.tar.gz")
+sha512sums=('5fe398d9a8e30463df64eee53ea76072294c723366cb43f45466591ae6ffbd385e76d398e0a43e7c3f74be1d2c13c29503fabd6a11177696e6f8e6c2332525ae')
+b2sums=('0109e45a2500f7f26659233fc75b4df0a4bc717431ddf9388fc5b9f1d71b5c720657105ede353752dfea33fb0892a05cd4ad7f71e5b70d31bcc9d2c4c4fedd7d')
+
+build() {
+  cd "$pkgname-$pkgver"
+
+  # build
+  mkdir -p ../build
+
+  cmake -B ../build -S . \
+    -DCMAKE_INSTALL_PREFIX=/usr
+
+  make -C ../build
+}
+
+package() {
+  make -C build DESTDIR="$pkgdir" install
+  # license
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" "$pkgname-$pkgver/LICENSE"
+}
