@@ -1,0 +1,11 @@
+diff --git a/releases.properties b/releases.properties
+index 745b4af9..efb94b76 100644
+--- a/releases.properties
++++ b/releases.properties
+@@ -10,4 +10,4 @@
+ 6.8.0=23
+ 6.9.0=26
+ 6.10.0=29
+-current=30
+\ No newline at end of file
++current=31
