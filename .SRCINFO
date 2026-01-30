@@ -1,0 +1,15 @@
+pkgbase = ai-toolbox-bin
+	pkgdesc = AI Toolbox (binary AppImage release)
+	pkgver = 0.3.7
+	pkgrel = 2
+	url = https://github.com/coulsontl/ai-toolbox
+	arch = x86_64
+	license = LicenseRef-upstream-license-missing
+	depends = bash
+	depends = fuse2
+	depends = hicolor-icon-theme
+	options = !strip
+	source = AI.Toolbox_0.3.7_amd64.AppImage::https://github.com/coulsontl/ai-toolbox/releases/download/v0.3.7/AI.Toolbox_0.3.7_amd64.AppImage
+	sha256sums = c9756e34916352fe4f4869500f555930e61d4969637a8a699c3bbcb7ec319f1b
+
+pkgname = ai-toolbox-bin
