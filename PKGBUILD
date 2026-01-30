@@ -2,7 +2,7 @@
 
 pkgname="v2rayn-bin"
 pkgver=7.17.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A GUI client for Windows and Linux, support Xray core and others"
 arch=("x86_64" "arm64")
 license=('GPL3')
@@ -16,7 +16,7 @@ sha256sums_arm64=(e461eaf34ee9ae95d479e41fb134e78f240170d3179164edde47bdecb19ea9
 
 source+=("v2rayN.png" "v2rayN-bin.desktop")
 sha256sums+=('f762fd95d93c2287f55ebb742716a54aa6b507ff8c8d75aec7256fabc93192ee'
-  'c3193fc83a87c6a0c7bd10fbfc2cbbd568d33bc33be0b8e6b3773e6207a8b07d')
+  '307cbfaf4aabf2a36f72d66963f04604f71bc068361e5d0eb8feaff8feeaf21a')
 
 package() {
 
