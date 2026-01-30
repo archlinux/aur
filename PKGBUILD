@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'pyside6' 'python-reportlab' 'python-requests' 'python-installer')
 makedepends=('python-build' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mambucodev/votetracker/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('32a4ea6fa98c7ef18bcbb1118e8124a097230df03594b558200a402863cf6be4')
+sha256sums=('62fa0114ee0bf5439c02ea0407737464c3beb3b93552b20ff328f227bdfee78c')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
