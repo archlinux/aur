@@ -89,7 +89,7 @@ package() {
   echo "  • qoder-tunnel       # If available"
   echo "  • Or search 'Qoder' in your application menu"
   echo ""
-  echo "First run: Sign in with pakrohk@gmail.com"
+  echo "First run: Sign in with your account"
   echo "Enjoy agentic coding! 🚀"
   echo "================================================================================"
 }
