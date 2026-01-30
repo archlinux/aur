@@ -1,0 +1,24 @@
+pkgbase = clockwork-orange-git
+	pkgdesc = Advanced wallpaper manager and downloader with plugin support (Wallhaven, Google Images) for KDE Plasma 6
+	pkgver = 2.2.6.r48.g861ecad
+	pkgrel = 1
+	url = https://github.com/ushineko/clockwork-orange
+	install = clockwork-orange.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-requests
+	depends = python-yaml
+	depends = python-pillow
+	depends = python-watchdog
+	depends = python-pyqt6
+	depends = qt6-tools
+	depends = kconfig
+	depends = python-psutil
+	provides = clockwork-orange
+	conflicts = clockwork-orange
+	source = git+https://github.com/ushineko/clockwork-orange.git
+	sha256sums = SKIP
+
+pkgname = clockwork-orange-git
