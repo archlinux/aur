@@ -1,0 +1,5 @@
+[dwz]
+source = 'git'
+git = 'git://sourceware.org/git/dwz.git'
+include_regex = '^dwz-[0-9.]+$'
+prefix = 'dwz-'
