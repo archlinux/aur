@@ -1,0 +1,21 @@
+pkgbase = python-zilliandomizer
+	pkgdesc = A randomizer for Zillion, the 1987 metroidvania for the Sega Master System.
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://github.com/beauxq/zilliandomizer
+	arch = any
+	license = AGPL-3.0-only
+	license = custom
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	checkdepends = python-typing_extensions
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python
+	source = python-zilliandomizer-0.9.2.tar.gz::https://github.com/beauxq/zilliandomizer/archive/v0.9.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-zilliandomizer
