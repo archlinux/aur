@@ -1,7 +1,7 @@
 pkgbase = dptf-git
 	pkgdesc = Intel (R) Dynamic Platform and Thermal Framework (Intel (R) DPTF)
 	pkgver = 9.0.11402+1.build38022.r101.20250820.3adb335c
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/intel/dptf
 	arch = x86_64

@@ -4,7 +4,7 @@ _pkgname=dptf
 pkgname="${_pkgname}-git"
 epoch=1
 pkgver=9.0.11402+1.build38022.r101.20250820.3adb335c
-pkgrel=1
+pkgrel=2
 pkgdesc='Intel (R) Dynamic Platform and Thermal Framework (Intel (R) DPTF)'
 arch=('x86_64')
 url='https://github.com/intel/dptf'
@@ -52,6 +52,7 @@ build() {
       cmake \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         ..
       make
     popd
