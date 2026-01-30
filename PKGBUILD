@@ -2,8 +2,8 @@
 # Contributor: Liviu Cristian Mirea-Ghiban <liviu dot mirea at wecodepixels dot com>
 pkgname=heidisql
 epoch=1
-pkgver=12.14.1.1
-pkgrel=5
+pkgver=12.15.1.1
+pkgrel=1
 pkgdesc="HeidiSQL Shared files: wrapper script, locale/ini files, documentation (install a provider of your choice for heidisql-client to use it)"
 arch=(x86_64)
 url="http://www.heidisql.com/"
@@ -17,7 +17,7 @@ source=(
   "https://github.com/HeidiSQL/HeidiSQL/archive/v${pkgver}.tar.gz"
   heidisql
 )
-sha256sums=('0e240b55be181bf4b8321a45b47242fe62b211ba9ca77d433d5bb700a201fb01'
+sha256sums=('a231ae7c0f441845b41fe59acb36211dadf337b4b4fa69efd9d2284800388c3b'
             'cb084209a5ce3270a2888bf93c8a5adb6f714eda487ad13a50512ac538b3fc87')
 
 prepare() {
