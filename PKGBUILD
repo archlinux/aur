@@ -4,31 +4,45 @@
 # Contributor: gumper <gumper1034@gmail.com>
 
 pkgname=libalkimia-git
-pkgver=8.2.1.r7.gaf0f368
+pkgver=8.2.1.r60.gde4b813
 pkgrel=1
 pkgdesc="A library with common classes and functionality used by finance applications for the KDE SC"
 arch=('x86_64')
 url="https://community.kde.org/Alkimia/libalkimia"
 license=('LGPL-2.1-or-later')
-depends=('qt6-webengine' 'knewstuff' 'ktextwidgets')
-makedepends=('cmake' 'doxygen' 'extra-cmake-modules' 'kdoctools')
+depends=(
+	'qt6-webengine' 'knewstuff' 'ktextwidgets' 'python' 'kxmlgui'
+	'qt6-declarative' 'kcompletion' 'hicolor-icon-theme' 'kcoreaddons'
+	'kconfig' 'kwidgetsaddons' 'gmp' 'qt6-base' 'ki18n'
+)
+makedepends=('cmake' 'doxygen' 'extra-cmake-modules' 'kdoctools' 'git')
+optdepends=(
+	'perl: for financequote.pl'
+)
 provides=('libalkimia')
 conflicts=('libalkimia')
-source=('git+https://invent.kde.org/office/alkimia.git#branch=8.2') # branch with the latest commit
+source=('git+https://invent.kde.org/office/alkimia.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd alkimia
-  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd alkimia
+	git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cmake -B build -S alkimia \
-    -DQT_MAJOR_VERSION=6 \
-    -DBUILD_APPLETS=OFF
-  cmake --build build
+	local cmake_options=(
+		-B build
+		-S alkimia
+		-W no-dev
+		-D CMAKE_BUILD_TYPE=None
+		-D CMAKE_INSTALL_PREFIX=/usr
+		-D QT_MAJOR_VERSION=6
+		-D BUILD_APPLETS=OFF
+	)
+	cmake "${cmake_options[@]}"
+	cmake --build build
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --install build
+	DESTDIR="$pkgdir" cmake --install build
 }
