@@ -1,15 +1,15 @@
 # Maintainer: hollowpointer hollowpointer@pm.me
 pkgname=zond
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
-pkgdesc="A modular network scanner written in Rust"
+pkgdesc="Deep network reconnaissance and probing tool."
 arch=('x86_64')
 url="https://github.com/hollowpointer/zond"
 license=('MIT')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('aaa31f51e0532eaa49cc671dd65602fda8873935e3f8a5afaebe3419bf96f6ab')
+sha256sums=('2687e745591fabf8aff0640d68a8a9fbcbbb7c1fe8192d4e4a4f99f82e49cabd')
 
 prepare() {
   cd "$pkgname-$pkgver"
