@@ -3,8 +3,8 @@
 # Tracks the experimental/multi-source-swarm branch with multi-source downloads & DHT mesh
 pkgname=slskdn-dev
 _pkgname=slskd
-pkgver=0.24.3.dev.91769732165
-_commit=ef34730
+pkgver=0.24.3.dev.91769733763
+_commit=c218b64
 pkgrel=1
 pkgdesc="🔋 The batteries included fork of slskd with 24+ new features: decentralized pods, content validation, swarm downloads, DHT mesh networking, auto-replace, wishlist, security hardening. [EXPERIMENTAL]"
 arch=('x86_64')
@@ -19,10 +19,10 @@ conflicts=('slskd' 'slskd-bin' 'slskdn' 'slskdn-bin')
 backup=('etc/slskd/slskd.yml')
 install=slskd.install
 source=(
-    "slskdn-dev-linux-x64.zip::https://github.com/snapetech/slskdn/releases/download/build-dev-0.24.3.dev.91769732165/slskdn-dev-linux-x64.zip"
-    "slskd.service::https://github.com/snapetech/slskdn/releases/download/build-dev-0.24.3.dev.91769732165/slskd.service"
-    "slskd.yml::https://github.com/snapetech/slskdn/releases/download/build-dev-0.24.3.dev.91769732165/slskd.yml"
-    "slskd.sysusers::https://github.com/snapetech/slskdn/releases/download/build-dev-0.24.3.dev.91769732165/slskd.sysusers"
+    "slskdn-dev-linux-x64.zip::https://github.com/snapetech/slskdn/releases/download/build-dev-0.24.3.dev.91769733763/slskdn-dev-linux-x64.zip"
+    "slskd.service::https://github.com/snapetech/slskdn/releases/download/build-dev-0.24.3.dev.91769733763/slskd.service"
+    "slskd.yml::https://github.com/snapetech/slskdn/releases/download/build-dev-0.24.3.dev.91769733763/slskd.yml"
+    "slskd.sysusers::https://github.com/snapetech/slskdn/releases/download/build-dev-0.24.3.dev.91769733763/slskd.sysusers"
 )
 # CI replaces SHA256SUM_PLACEHOLDERs with hashes of files at release tag
 sha256sums=('SKIP' 'd37b471466118629af6d6960da74c8df735d8c48d8c032c58a859c0f1811f3bc' 'a170afada9ec8673ab696506756e1b5d971ee4f67560af795f359c9bd53645df' '28b6c2c8d969a91bc8b5ae3e7289562928fff39ed07b92973e5b93fa45033056')
