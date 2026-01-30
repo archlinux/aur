@@ -1,7 +1,7 @@
 # Maintainer: Matty Glancy <ukmatty73 (at) gmail (com)>
 
 pkgname=fsmsg-git
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Leave messages to other users on the system"
 arch=('any')
@@ -10,6 +10,7 @@ license=('0BSD')
 makedepends=('git')
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
+install=fsmsg.install
 
 package() {
     cd "$pkgname"

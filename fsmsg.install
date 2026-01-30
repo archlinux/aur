@@ -1,0 +1,11 @@
+post_install() {
+    echo "fsmsg installed"
+    echo "Run fsmsg help for usage."
+    echo "In order for users to stay on top of their inboxes, its worthwhile to add a profile.d entry"
+    echo "  $ sudo echo \"fsmsg check\" > /etc/profile.d/fsmsg.sh"
+    echo "  $ sudo chmod +x /etc/profile.d/fsmsg.sh"
+}
+
+post_ugprade() {
+    post_install
+}
