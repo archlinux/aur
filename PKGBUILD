@@ -3,11 +3,11 @@
 _plugin_uri='http://geonkick.org/geonkick'
 _pkgname=geonkick
 pkgname="${_pkgname}-git"
-pkgver=3.6.2.r1915.385449a2
+pkgver=3.7.0.r1951.2fab92a7
 pkgrel=1
 pkgdesc='A free software percussion synthesizer (git version)'
 arch=(x86_64)
-url='https://geonkick.org'
+url='https://quamplex.com/geonkick/'
 license=(GPL-3.0-or-later)
 groups=(lv2-plugins pro-audio vst3-plugins)
 depends=(gcc-libs glibc cairo hicolor-icon-theme libsndfile libx11)
@@ -41,7 +41,27 @@ build() {
 }
 
 check() {
-  lv2lint -S nowarn -s "rk__*" -s "_Z*" -M pack -I $_pkgname-build/src/plugin/lv2/ "$_plugin_uri"
+  local lv2specs=(
+    atom buf-size core data-access dynmanifest event instance-access log midi
+    morph options parameters patch port-groups port-props resize-port schemas
+    state time ui units uri-map urid worker kx-programs kx-properties)
+
+  mkdir -p lv2
+
+  for spec in ${lv2specs[@]}; do
+    ln -vsf /usr/lib/lv2/$spec.lv2 lv2
+  done
+
+  cp -av $_pkgname/src/plugin/lv2/$_pkgname.lv2/*.ttl $_pkgname-build/src/plugin/lv2/
+  echo "Checking $pkgbase.lv2 with lv2lint ..."
+  LV2_PATH="$PWD/lv2" lv2lint \
+    -S nowarn \
+    -s "rk__*" \
+    -s "_Z*" \
+    -M pack \
+    -I "$_pkgname-build/src/plugin/lv2" \
+    "$_plugin_uri" "$_plugin_uri/single"
+  rm -v $_pkgname-build/src/plugin/lv2/*.ttl
 }
 
 

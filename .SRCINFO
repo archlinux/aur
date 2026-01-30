@@ -1,8 +1,8 @@
 pkgbase = geonkick-git
 	pkgdesc = A free software percussion synthesizer (git version)
-	pkgver = 3.6.2.r1915.385449a2
+	pkgver = 3.7.0.r1951.2fab92a7
 	pkgrel = 1
-	url = https://geonkick.org
+	url = https://quamplex.com/geonkick/
 	arch = x86_64
 	groups = lv2-plugins
 	groups = pro-audio
