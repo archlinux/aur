@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=WGCNA
-_pkgver=1.73
+_pkgver=1.74
 pkgname=r-${_pkgname,,}
-pkgver=1.73
+pkgver=1.74
 pkgrel=1
 pkgdesc='Weighted Correlation Network Analysis'
 arch=('x86_64')
@@ -31,7 +31,7 @@ optdepends=(
   r-org.mm.eg.db
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e8a0a367a93190dd9f738578a82d31856e004b9de46d2775e4ed0f44a95063ce')
+sha256sums=('4f61e117b82287f01b61bf936d5c5ea3814c9c4b0d0b90d5016dda77f1f955d6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

@@ -1,6 +1,6 @@
 pkgbase = r-wgcna
 	pkgdesc = Weighted Correlation Network Analysis
-	pkgver = 1.73
+	pkgver = 1.74
 	pkgrel = 1
 	url = https://cran.r-project.org/package=WGCNA
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = r-wgcna
 	optdepends = r-minet
 	optdepends = r-org.hs.eg.db
 	optdepends = r-org.mm.eg.db
-	source = https://cran.r-project.org/src/contrib/WGCNA_1.73.tar.gz
-	sha256sums = e8a0a367a93190dd9f738578a82d31856e004b9de46d2775e4ed0f44a95063ce
+	source = https://cran.r-project.org/src/contrib/WGCNA_1.74.tar.gz
+	sha256sums = 4f61e117b82287f01b61bf936d5c5ea3814c9c4b0d0b90d5016dda77f1f955d6
 
 pkgname = r-wgcna
