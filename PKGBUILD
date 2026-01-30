@@ -5,7 +5,7 @@
 # Contributor: SleepyDog
 
 pkgname=glew-git
-pkgver=2.2.0.r57.gb323ebf
+pkgver=2.3.1.r2.g16b9e06
 pkgrel=1
 pkgdesc="The OpenGL Extension Wrangler Library"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '30c77b49ff64f5b936368426f957a217b6d8a3f8d0c83a7eaa69222ed45cd811')
+            'f44a506cbf8cb02d41a8feae581a83a77fb43d4b42e26be4eaec8ee99d925540')
 
 pkgver() {
   cd ${pkgname%-git}

@@ -1,6 +1,6 @@
 pkgbase = glew-git
 	pkgdesc = The OpenGL Extension Wrangler Library
-	pkgver = 2.2.0.r57.gb323ebf
+	pkgver = 2.3.1.r2.g16b9e06
 	pkgrel = 1
 	url = https://github.com/nigels-com/glew
 	arch = i686
@@ -25,6 +25,6 @@ pkgbase = glew-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 30c77b49ff64f5b936368426f957a217b6d8a3f8d0c83a7eaa69222ed45cd811
+	sha256sums = f44a506cbf8cb02d41a8feae581a83a77fb43d4b42e26be4eaec8ee99d925540
 
 pkgname = glew-git

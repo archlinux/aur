@@ -1,5 +1,5 @@
 diff --git a/Makefile b/Makefile
-index 9a6b9ef..4a02f59 100644
+index 0ff4e2c..16183b5 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -120,7 +120,7 @@ ifneq ($(STRIP),)
@@ -55,11 +55,3 @@ index 9a6b9ef..4a02f59 100644
  
  # Install targets
  
-@@ -243,6 +243,7 @@ install.pkgconfig: glew.pc
- 	$(INSTALL) -m 0644 glew.pc "$(DESTDIR)$(PKGDIR)/"
- 
- uninstall:
-+	$(RM) "$(DESTDIR)$(INCDIR)/eglew.h"
- 	$(RM) "$(DESTDIR)$(INCDIR)/wglew.h"
- 	$(RM) "$(DESTDIR)$(INCDIR)/glew.h"
- 	$(RM) "$(DESTDIR)$(INCDIR)/glxew.h"
