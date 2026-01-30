@@ -7,38 +7,51 @@
 # Contributor: Todd Maynard <arch@toddmaynard.com>
 
 pkgname=kmymoney-git
-pkgver=5.2.1.r29.g25c253c
+pkgver=5.2.1.r236.gee982cc
 pkgrel=1
 pkgdesc="Personal finance manager for KDE which operates similarly to MS-Money or Quicken"
 arch=('x86_64')
 url="https://kmymoney.org/"
 license=('GPL-2.0-or-later')
-depends=('glibc' 'gcc-libs' 'gmp' 'libalkimia' 'sqlcipher' 'qt6-base' 'qt6-5compat' 'gpgmepp' 'karchive'
-         'kcoreaddons' 'kconfig' 'kwidgetsaddons' 'ki18n' 'kcompletion' 'kcmutils' 'kitemmodels'
-         'kitemviews' 'kxmlgui' 'ktextwidgets' 'kio' 'kholidays' 'kjobwidgets' 'sonnet'
-         'kcolorscheme' 'kconfigwidgets' 'kdiagram' 'libical' 'libofx' 'qtkeychain-qt6'
-         'kidentitymanagement' 'libakonadi' 'kcontacts' 'aqbanking' 'gwenhywfar')
-makedepends=('extra-cmake-modules' 'kdoctools' 'doxygen' 'qgpgme')
-optdepends=('perl: for financequote.pl')
+depends=(
+	'glibc' 'gcc-libs' 'gmp' 'libalkimia' 'sqlcipher' 'qt6-base' 'gpgmepp'
+	'karchive' 'kcoreaddons' 'kconfig' 'kwidgetsaddons' 'ki18n'
+	'kcompletion' 'kcmutils' 'kitemmodels' 'kitemviews' 'kxmlgui'
+	'ktextwidgets' 'kio' 'kholidays' 'kjobwidgets' 'sonnet' 'kcolorscheme'
+	'kconfigwidgets' 'kdiagram' 'libical' 'libofx' 'qtkeychain-qt6'
+	'kidentitymanagement' 'libakonadi' 'kcontacts' 'aqbanking' 'gwenhywfar'
+	'qt6-declarative' 'hicolor-icon-theme' 'kcrash'
+)
+makedepends=('cmake' 'extra-cmake-modules' 'kdoctools' 'doxygen' 'qgpgme' 'git')
+optdepends=(
+	'perl: for financequote.pl'
+	'python: for the woob plugin'
+)
 provides=('kmymoney')
 conflicts=('kmymoney')
 source=('git+https://invent.kde.org/office/kmymoney.git#branch=5.2')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd kmymoney
-  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd kmymoney
+	git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cmake -B build -S kmymoney \
-    -DBUILD_WITH_QT6=ON \
-    -DCMAKE_SKIP_RPATH=YES \
-    -DBUILD_TESTING=OFF \
-    -Wno-dev
-  cmake --build build
+	local cmake_options=(
+		-B build
+		-S kmymoney
+		-W no-dev
+		-D CMAKE_BUILD_TYPE=None
+		-D CMAKE_INSTALL_PREFIX=/usr
+		-D BUILD_WITH_QT6=ON
+		-D CMAKE_SKIP_RPATH=YES
+		-D BUILD_TESTING=OFF
+	)
+	cmake "${cmake_options[@]}"
+	cmake --build build
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --install build
+	DESTDIR="$pkgdir" cmake --install build
 }
