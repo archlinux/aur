@@ -1,55 +1,98 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 _pkgbase="interactsh"
-_name=("client" "server")
-_pkgname=("${_name[@]/#/${_pkgbase}-}")
+_pkgname=(
+  "${_pkgbase}-common"
+  "${_pkgbase}-client"
+  "${_pkgbase}-server"
+)
 pkgbase="${_pkgbase}-bin"
-pkgname=("${_pkgname[@]/%/-bin}")
-pkgver=1.2.4
-pkgrel=2
+pkgname=(
+  "${_pkgname[@]/%/-bin}"
+)
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="OOB interaction gathering server and client library"
-arch=('aarch64' 'armv7h' 'i686' 'x86_64')
+arch=(
+  'aarch64'
+  'armv7h'
+  'i686'
+  'x86_64'
+)
 url="https://github.com/projectdiscovery/${_pkgbase}"
-license=('MIT')
-for binary in "${_pkgname[@]}"; do
-  source_aarch64+=("${binary}-${pkgver}-aarch64.zip::${url}/releases/download/v${pkgver}/${binary}_${pkgver}_linux_arm64.zip")
-  source_armv7h+=("${binary}-${pkgver}-armv7h.zip::${url}/releases/download/v${pkgver}/${binary}_${pkgver}_linux_arm.zip")
-  source_i686+=("${binary}-${pkgver}-i686.zip::${url}/releases/download/v${pkgver}/${binary}_${pkgver}_linux_386.zip")
-  source_x86_64+=("${binary}-${pkgver}-x86_64.zip::${url}/releases/download/v${pkgver}/${binary}_${pkgver}_linux_amd64.zip")
-done
-sha256sums_aarch64=('c5b36d2ddf20c2524cbfc7174e66ef0e2abe9d1ece222917d8b0a5676e55568f'
-                    'd867f96bf786a54a1ed090762935e448f54202f3226e058c2fed1014fea15af7')
-sha256sums_armv7h=('d5e237643dbdc8ac486081580ce0092996916c7f4059ef816e305a831dd5b1a2'
-                   'c263c4f4e2e168bb77e3ff1a191e29d37c9ba03088a9cd3c0263edd51882427f')
-sha256sums_i686=('846b544bcfc89fe54c0a8b8a7926c137ae0891d885e1442a9160a733be60851e'
-                 '7b5d7e1bd749a5e8d0f4593df2f6635c5c243a1b1d50132a8f7e264b6ff911eb')
-sha256sums_x86_64=('d6728561b0db2266d2e301773b2fcf9079f6fe402ebae477bc6e92775cab9a72'
-                   'dedc1766422e27c88e190c60662c29503bc9aaa8e364b2bacd510e8558a9fba0')
+license=(
+  'MIT'
+)
+source_aarch64=(
+  "${url}/releases/download/v${pkgver}/${_pkgbase}-client_${pkgver}_linux_arm64.zip"
+  "${url}/releases/download/v${pkgver}/${_pkgbase}-server_${pkgver}_linux_arm64.zip"
+)
+source_armv7h=(
+  "${url}/releases/download/v${pkgver}/${_pkgbase}-client_${pkgver}_linux_arm.zip"
+  "${url}/releases/download/v${pkgver}/${_pkgbase}-server_${pkgver}_linux_arm.zip"
+)
+source_i686=(
+  "${url}/releases/download/v${pkgver}/${_pkgbase}-client_${pkgver}_linux_386.zip"
+  "${url}/releases/download/v${pkgver}/${_pkgbase}-server_${pkgver}_linux_386.zip"
+)
+source_x86_64=(
+  "${url}/releases/download/v${pkgver}/${_pkgbase}-client_${pkgver}_linux_amd64.zip"
+  "${url}/releases/download/v${pkgver}/${_pkgbase}-server_${pkgver}_linux_amd64.zip"  
+)
+sha256sums_aarch64=('b88a72d7a610e85a8b732e21bdb0257638e4428af2f8b9eeb0a249785db214e6'
+                    'fa4ecbb5c79be29fbaaeee84822f69318f3e08e9b3151f300d8457daa0f62439')
+sha256sums_armv7h=('1ce346df7ffd4fb5f516fe6c37a6c21cf29fcd92222d3bedec78a10bb788f0f6'
+                   '219ba350690574ef5cde1c8a8ff99a27703782825c7310e69debd468a7baf136')
+sha256sums_i686=('0fc0cd4dda120ee557e60f7eb0b74e5a08a2e78a2ddaaffba98c0b8ba7dadc28'
+                 '7d1fcdf3f744c173c0885275ab0e42ccae2bfe3b76d6ab79f9d822c9aca7f36e')
+sha256sums_x86_64=('1167093863ce7458e37ab962439a5c6769f915af646e7bfc73c6e5f79032f2c4'
+                   'c64fb9616f889b6a119fe1fc6ec77e76145f5881c694818571f39dac4588933a')
 
-package_interactsh-client-bin() {
-  local binary="${pkgname%-bin}"
-
-  pkgdesc+=" ($(echo "${pkgname}" | cut -d'-' -f2))"
-  optdepends=("${_pkgbase}-server: server functionality")
-  provides=("${pkgname%-bin}")
-  conflicts=("${pkgname%-bin}")
+package_interactsh-common-bin() {
+  pkgdesc+=" (common files)"
+  arch=(
+    'any'
+  )
+  provides=(
+    "${pkgname%-bin}=${pkgver}"
+  )
+  conflicts=(
+    "${pkgname%-bin}"
+  )
 
   cd "${srcdir}"
-  install -vDm755 "${binary}"  "${pkgdir}/usr/bin/${binary}"
-  install -vDm644 "README.md"  "${pkgdir}/usr/share/doc/${binary}/README.md"
-  install -vDm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${binary}/LICENSE.md"
+  install -vDm644 "README.md"  "${pkgdir}/usr/share/doc/${pkgbase}/README.md"
+  install -vDm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE.md"
+}
+
+package_interactsh-client-bin() {
+  pkgdesc+=" (client)"
+  depends+=(
+    "${_pkgbase}-common>=${pkgver}"
+  )
+  provides=(
+    "${pkgname%-bin}=${pkgver}"
+  )
+  conflicts=(
+    "${pkgname%-bin}"
+  )
+
+  cd "${srcdir}"
+  install -vDm755 "${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
 }
 
 package_interactsh-server-bin() {
-  local binary="${pkgname%-bin}"
-
-  pkgdesc+=" ($(echo "${pkgname}" | cut -d'-' -f2))"
-  optdepends=("${_pkgbase}-client: client functionality")
-  provides=("${pkgname%-bin}")
-  conflicts=("${pkgname%-bin}")
+  pkgdesc+=" (server)"
+  depends+=(
+    "${_pkgbase}-common>=${pkgver}"
+  )
+  provides=(
+    "${pkgname%-bin}=${pkgver}"
+  )
+  conflicts=(
+    "${pkgname%-bin}"
+  )
 
   cd "${srcdir}"
-  install -vDm755 "${binary}"  "${pkgdir}/usr/bin/${binary}"
-  install -vDm644 "README.md"  "${pkgdir}/usr/share/doc/${binary}/README.md"
-  install -vDm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${binary}/LICENSE.md"
+  install -vDm755 "${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
 }
