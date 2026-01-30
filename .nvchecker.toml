@@ -1,0 +1,4 @@
+[lib32-libsoxr]
+source = "archpkg"
+archpkg = "libsoxr"
+strip_release = true
