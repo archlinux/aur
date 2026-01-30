@@ -2,7 +2,7 @@
 # Contributor: Tássio Virgínio <tassiovirginio@gmail.com>
 
 pkgname=try-rs
-pkgver=0.1.53
+pkgver=0.1.55
 pkgrel=1
 pkgdesc="A blazing fast, Rust-based workspace manager for your temporary experiments"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0ab42c7ddc1aad158c8e07ce27eac3e080d50d0ecd0f11183372e97feef81d47')
+sha256sums=('5c313faa05cca4e4d535e499d98ddb081d5540582feda4ed0195113096f24b5b')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
