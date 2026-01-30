@@ -4,12 +4,12 @@
 
 pkgname=pam_usb
 pkgver=0.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Hardware authentication for Linux using ordinary flash media (USB & Card based).'
 arch=($CARCH)
 url='https://github.com/mcdope/pam_usb'
 license=(GPL2)
-depends=(python-gobject libxml2 udisks2)
+depends=(python-gobject libxml2-legacy udisks2)
 options=(!emptydirs)
 backup=("etc/security/pam_usb.conf")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
