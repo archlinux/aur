@@ -19,8 +19,8 @@ depends=(
 )
 
 makedepends=(
-    'python-pip'
-    'python-setuptools'
+    #'python-pip'
+    #'python-setuptools'
 )
 
 source=(
@@ -51,7 +51,7 @@ package() {
     cp -a "${srcdir}/squashfs-root/." "${pkgdir}/opt/${pkgname}/"
 
     # Copy Python dependencies to /opt/${pkgname}
-    cp -a "${srcdir}/pydeps/"* "${pkgdir}/opt/${pkgname}/"
+    #cp -a "${srcdir}/pydeps/"* "${pkgdir}/opt/${pkgname}/"
 
     # Ensure all files in /opt/${pkgname} have correct permissions
     chmod -R 755 "${pkgdir}/opt/${pkgname}"
