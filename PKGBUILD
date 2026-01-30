@@ -1,22 +1,22 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=newelle
-pkgver=1.0.2
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="Your Ultimate Virtual Assistant"
 url="https://github.com/qwersyk/Newelle"
 license=('GPL-3.0-or-later')
 arch=('any')
-depends=('gtksourceview5' 'libadwaita' 'portaudio' 'python-beautifulsoup4'
-         'python-curl-cffi' 'python-expandvars' 'python-gobject' 'python-gtts'
-         'python-lxml' 'python-lxml-html-clean' 'python-matplotlib' 'python-newspaper'
-         'python-numpy' 'python-openai' 'python-pillow' 'python-pyaudio' 'python-pydub'
-         'python-pygame' 'python-pylatexenc' 'python-requests' 'python-speechrecognition'
-         'python-tiktoken' 'python-tldextract' 'vte4' 'webkitgtk-6.0' 'python-markdownify')
-optdepends=('python-gpt4all')
+depends=(dconf gdk-pixbuf2 glib2 gtk4 gtksourceview5 hicolor-icon-theme libadwaita libsoup
+         libsoup3 pango portaudio python python-beautifulsoup4 python-expandvars python-gobject
+         python-gtts python-lxml python-lxml_html_clean python-markdownify python-matplotlib python-mcp
+         python-newspaper python-numpy python-openai python-pillow python-pyaudio python-pydub python-pylatexenc
+         python-requests python-tiktoken python-tldextract vte4 webkitgtk-6.0)
+optdepends=(faiss-cpu llama-index-core llama-server python-docx2txt python-model2vec python-speechrecognition)
+#optdepends=(python-llama-index-readers-file python-llama-index-retrievers-bm25 python-llama-index-vector-stores-faiss)
 makedepends=('meson')
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('144673bfbff16c6da13df127a476ee3f6f89460a24be21ce2537d149f530cd17')
+sha256sums=('0e8114a8e469830638c198f9df030d1da327374be82e054fe0251c3cead72d11')
 
 build() {
   arch-meson Newelle-$pkgver build
