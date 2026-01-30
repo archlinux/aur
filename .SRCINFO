@@ -1,0 +1,18 @@
+pkgbase = keeper-secrets-manager-helper
+	pkgdesc = Keeper Secrets Manager SDK helper module
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://github.com/Keeper-Security/secrets-manager
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	depends = keeper-secrets-manager-core>=17.1.0
+	depends = python-yaml
+	depends = python-iso8601
+	source = https://files.pythonhosted.org/packages/source/k/keeper_secrets_manager_helper/keeper_secrets_manager_helper-1.0.7.tar.gz
+	sha512sums = 657156b9b213a55e0d4a6f4abd8b8dae001d1dabc367b166e50b7549089ee11492a24513af8c8215fdf52a741efe7ee796724e716051adfbedf83a61d23cb921
+
+pkgname = keeper-secrets-manager-helper
