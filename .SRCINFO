@@ -1,0 +1,18 @@
+pkgbase = eso-addons-manager
+	pkgdesc = Cross platform addon manager for the Elder Scrolls Online
+	pkgver = 0.4.13
+	pkgrel = 1
+	url = https://github.com/arviceblot/eso-addons
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	provides = eso-addons-manager
+	conflicts = eso-addons-manager
+	options = !lto
+	source = eso-addons-manager-0.4.13.tar.gz::https://github.com/arviceblot/eso-addons/archive/refs/tags/v0.4.13.tar.gz
+	sha256sums = bcf6ec03edeb33d5c321f7a4ba2f1182d709e2d83d015db5226ae2beb8e786e8
+
+pkgname = eso-addons-manager
