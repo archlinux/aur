@@ -2,19 +2,19 @@
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=proton-mail
-pkgver=1.12.0
-pkgrel=2
+pkgver=1.12.1
+pkgrel=1
 pkgdesc='Proton official desktop application for Proton Mail and Proton Calendar'
-arch=('any')
+arch=(any)
 url='https://proton.me/mail'
-license=('GPL-3.0-or-later')
+license=(GPL-3.0-or-later)
 _electron=electron37
-depends=('bash' "$_electron" 'hicolor-icon-theme')
-makedepends=('git' 'jq' 'nodejs-lts-jod' 'yarn')
+depends=(bash $_electron hicolor-icon-theme)
+makedepends=(git jq nodejs-lts-jod yarn)
 source=("ProtonWebClients::git+https://github.com/ProtonMail/WebClients.git#branch=release/inbox-desktop@$pkgver"
-        'proton-mail.desktop'
-        'proton-mail.sh'
-        'fix-resources-path.patch')
+        proton-mail.desktop
+        proton-mail.sh
+        fix-resources-path.patch)
 b2sums=('SKIP'
         'f0a2b4eca51362b204f487c6484e07080b2d953f38acb3b7ce81a05394fe2f57e5fd42f8806111c467aa528e539654a6b1adc3965328668c4734b3eecf3407e9'
         '45d089576f2260cc425b6c9bdde79e882b24c7dd4b8173f485fb67a0d0ccaf451dbba6f403f3bd8a0d622d99132d076da79984525ed8f89e97738557e8e23bad'
