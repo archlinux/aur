@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mq3t-bin
 _pkgname=MQ3T
-pkgver=2.0.0
+pkgver=2.0.1
 _electronversion=39
 pkgrel=1
 pkgdesc="The last MQTT development tool you'll ever need(Prebuilt version.Use system-wide electron)."
@@ -26,9 +26,9 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/downl
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-armv7l.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-amd64.deb")
 sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('3cd0903538d1438eea648fcb247fbc211699933b3a6363f9b17ecc8d1874b8db')
-sha256sums_armv7h=('2f42c478aea644760848168275527b97ecd351d42fb61ebbc177fdd07ebdfd79')
-sha256sums_x86_64=('df68a6cc5810bb32f73e3e2c7fbb1fda46e668029d3fef06fb00d4409633d882')
+sha256sums_aarch64=('109245fb39a04eb68fab8af5ec489a334f968862c4aa27c3547155ffb9598ca8')
+sha256sums_armv7h=('e51578b29dc752692f35dae1f089f14f8e62387ccfe2a6cff3edf7627e24717d')
+sha256sums_x86_64=('1a575b7c73f4e993e06d31ce76dfc9855c1eb052e45220c82a43d54e64128d5b')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
