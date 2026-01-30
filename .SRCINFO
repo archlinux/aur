@@ -1,0 +1,18 @@
+pkgbase = pop-cli
+	pkgdesc = An all-in-one tool for Polkadot development
+	pkgver = 0.12.1
+	pkgrel = 1
+	url = https://onpop.io/
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = clang
+	makedepends = protobuf
+	depends = gcc-libs
+	depends = openssl
+	provides = pop
+	source = pop-cli-0.12.1.tar.gz::https://github.com/r0gue-io/pop-cli/archive/refs/tags/v0.12.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = pop-cli
