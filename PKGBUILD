@@ -21,7 +21,7 @@ url="${_url_github}"
 provides=("${_pypi_package}")
 replaces=("python-${pkgname}")
 conflicts=("python-${pkgname}")
-makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
+makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-uv-build')
 depends=('python' 'python-textual-autocomplete' 'python-rich' 'python-ujson' 'python-tomli' 'python-pillow' 'python-textual' 'python-jsonschema' 'python-rich-click' 'python-send2trash' 'python-platformdirs' 'python-psutil' 'python-rarfile' 'python-pdf2image' 'python-natsort' 'python-humanize' 'python-textual-image' 'python-pathvalidate')
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")

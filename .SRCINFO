@@ -9,6 +9,7 @@ pkgbase = rovr
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-uv-build
 	depends = python
 	depends = python-textual-autocomplete
 	depends = python-rich
