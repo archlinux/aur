@@ -18,18 +18,18 @@ prepare() {
 }
 
 build() {
-    cd $pkgname
+	cd $pkgname
 	export GOPATH="${srcdir}"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-    go build -o shq
+	go build -o shq
 }
 
 package() {
-    cd $pkgname
-    install -Dm755 shq -t "$pkgdir/usr/bin/"
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	cd $pkgname
+	install -Dm755 shq -t "$pkgdir/usr/bin/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
