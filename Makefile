@@ -12,7 +12,7 @@ srcinfo:
 	$(MP) --printsrcinfo > .SRCINFO
 
 clean:
-	$(RM) pkg/ src/
+	$(RM) pkg/ src/ monochrome* *.png
 
 install:
 	$(MP) -si
