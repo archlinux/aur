@@ -2,7 +2,7 @@
 # 🔋 slskdn - The batteries-included Soulseek web client (build from source)
 pkgname=slskdn
 _pkgname=slskd
-pkgver=0.24.3.slskdn.42
+pkgver=0.24.3.slskdn.43
 pkgrel=1
 pkgdesc="🔋 The batteries included fork of slskd with 24+ new features: decentralized pods, content validation, swarm downloads, DHT mesh networking, auto-replace, wishlist, security hardening."
 arch=('x86_64' 'aarch64')
@@ -30,18 +30,26 @@ sha256sums=('SKIP' 'd37b471466118629af6d6960da74c8df735d8c48d8c032c58a859c0f1811
 build() {
     cd "${srcdir}/slskdn-${pkgver//.slskdn/-slskdn}"
     
-    # Build frontend
+    # Build frontend (--legacy-peer-deps matches CI; resolves react-scripts vs typescript@5)
     cd src/web
-    npm ci
-    npm run build
+    npm ci --legacy-peer-deps
+    DISABLE_ESLINT_PLUGIN=true npm run build
     cd ../..
     
     # Build backend (not self-contained, uses system .NET)
+    # Clean obj/bin and publish so we get fresh 9.x DLLs (not stale 8.x from previous build)
+    rm -rf src/slskd/obj src/slskd/bin publish
+    # Set Version + InformationalVersion so UI shows correct version (not 0.0.0 / Development)
+    _version="${pkgver//.slskdn/-slskdn}"
+    _assembly_ver="${pkgver%.slskdn.*}.${pkgver##*.}"
     dotnet publish src/slskd/slskd.csproj \
         -c Release \
         -o publish \
         --self-contained false \
-        -r linux-x64
+        -r linux-x64 \
+        -p:Version="$_assembly_ver" \
+        -p:InformationalVersion="$_version" \
+        -p:PackageVersion="$_version"
 }
 
 package() {
