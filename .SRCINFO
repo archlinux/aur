@@ -1,0 +1,20 @@
+pkgbase = python-dolphin-memory-engine
+	pkgdesc = Python library for hooking to a running Dolphin process
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/randovania/py-dolphin-memory-engine
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	makedepends = cython
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python
+	source = python-dolphin-memory-engine-1.3.0.tar.gz::https://github.com/randovania/py-dolphin-memory-engine/archive/v1.3.0.tar.gz
+	sha256sums = f3df89731c5300b292738ef2d0064222fb916afb2344c9acc52deb25c460c8e0
+
+pkgname = python-dolphin-memory-engine
