@@ -1,0 +1,18 @@
+pkgbase = doas-sudo-shim-git
+	pkgdesc = Sudo wrapper which wields doas (Original upstream by Jakub Jirutka)
+	pkgver = 0.1.2.r1.g6833c8d
+	pkgrel = 1
+	url = https://github.com/jirutka/doas-sudo-shim
+	arch = any
+	license = ISC
+	makedepends = git
+	makedepends = asciidoctor
+	depends = doas
+	provides = sudo
+	provides = doas-sudo-shim
+	conflicts = sudo
+	conflicts = doas-sudo-shim
+	source = doas-sudo-shim::git+https://github.com/jirutka/doas-sudo-shim.git
+	sha256sums = SKIP
+
+pkgname = doas-sudo-shim-git
