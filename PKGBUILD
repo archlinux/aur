@@ -2,20 +2,19 @@
 
 pkgname=headsetkontrol
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Interface for HeadsetControl (by Sapd) written with Kirigami and KDE Framework"
 arch=('i686' 'x86_64')
-url="https://gitlab.com/TheBill2001/HeadsetKontrol"
+url="https://gitlab.com/TheBill2001/$pkgname"
 license=('GPL3')
 depends=('headsetcontrol' 'kirigami' 'kirigami-addons' 'ki18n' 'kcoreaddons' 'kconfig' 'kdbusaddons' 'knotifications' 'kiconthemes' 'kstatusnotifieritem' 'knotifyconfig')
 makedepends=('cmake' 'extra-cmake-modules')
-conflicts=('headsetkontrol-git' 'headsetkontrol-bin')
-source=("$url/-/archive/v$pkgver/HeadsetKontrol-v$pkgver.tar.gz")
-sha256sums=('f1384551155cead6152206e9491e0f8db748ec9c84db45b2d4c09951000f3c75')
+source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
+sha256sums=('360eaef86aa966cf20af567d38e04db6659134607174b92f9c87525f63d25208')
 
 build() {
     cmake \
-        -S HeadsetKontrol-v$pkgver \
+        -S $pkgname-v${pkgver}-f546a3ae64c17efdbc602c393d9ed067106ec930 \
         -B build \
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX=/usr \
