@@ -9,7 +9,6 @@ Type=simple
 User=slskd
 Group=slskd
 # Config search order: --config flag, working dir, ~/.local/share/slskd/
-# Users with existing configs in /var/lib/slskd/.local/share/slskd/ will be found automatically
 ExecStart=/usr/share/dotnet/dotnet /usr/lib/slskd/slskd.dll
 WorkingDirectory=/var/lib/slskd
 Environment="HOME=/var/lib/slskd"
