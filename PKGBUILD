@@ -6,6 +6,7 @@ pkgdesc="Changes alacritty theme based on the current time and locale"
 arch=('x86_64')
 url="https://github.com/alacritty-use-theme/alacritty-use-theme-with-redshift"
 license=('GPL-1.0-or-later')
+groups=('alacritty-use-theme' 'alacritty-use-theme-services')
 depends=('redshift' 'alacritty-use-theme')
 provides=('alaritty-use-theme-with-redshift.service' 'alaritty-use-theme-with-redshift.timer' 'alaritty-use-theme-with-redshift.target')
 conflicts=('alacritty-use-theme-with-redshift-git')
@@ -13,12 +14,12 @@ source=("$pkgname-$pkgver::https://github.com/alacritty-use-theme/alacritty-use-
 sha256sums=('184d4e18f99a1a516321a54928c399a0a3597732c36c6d79b0b05e52a411aba1')
 
 pkgver() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
 
   # systemd units
   install -Dm755 $srcdir/$pkgname-$pkgver/app/home/config/systemd/user/alacritty-use-theme.timer "$pkgdir/usr/lib/systemd/user/alacritty-use-theme.timer"
