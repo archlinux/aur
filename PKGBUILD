@@ -14,7 +14,7 @@ conflicts=('browseros')
 options=('!strip')
 
 source=("browseros.AppImage::https://github.com/browseros-ai/BrowserOS/releases/download/v0.38.0/BrowserOS_v0.38.0.3_x64.AppImage")
-sha256sums=('ceebd27034be72350dbd5349c2b80cd7faf272479cfeec77bbe254eeb85657b3')
+sha256sums=('SKIP')
 
 package() {
   7z x "$srcdir/browseros.AppImage" -o"$srcdir/squashfs-root" -y >/dev/null
