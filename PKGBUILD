@@ -4,7 +4,7 @@ _pkgname=dwproton
 pkgname=${_pkgname}-bin
 _srcver=10.0-15
 pkgver=${_srcver//-/_}
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Proton builds with the latest Dawn Winery fixes for gacha games, based on Proton-CachyOS"
 arch=('x86_64')
@@ -12,7 +12,7 @@ url="https://dawn.wine/dawn-winery/dwproton"
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
 options=(!strip emptydirs)
 provides=('proton' 'dwproton')
-source=("${url}/releases/download/${_pkgname}-${_srcver}/${_pkgname}-${_srcver}-x86_64.tar.xz")
+source=("${url}/releases/download/${_pkgname}-${_srcver}/${_pkgname}-${_srcver}-${CARCH}.tar.xz")
 sha256sums=('0a45138a9b121f4761c494dc9db3c772613c27195ffcb1973bc3d79e01dc285d')
 depends=(
   bash
@@ -70,17 +70,22 @@ optdepends=(
 )
 install=${pkgname}.install
 
+_srcdir="${_pkgname}-${_srcver}-${CARCH}"
+
 build() {
-    # Similar to how proton-ge-custom-bin worked
-    sed -i -E 's/"dwproton-[^"]*"/"dwproton"/g' "${srcdir}/${_pkgname}-${_srcver}-x86_64"/compatibilitytool.vdf
+    sed -i -E 's/"dwproton-[^"]*"/"dwproton"/g' \
+      "${srcdir}/${_srcdir}/compatibilitytool.vdf"
 }
 
 package() {
     # License
     install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-    mv "${srcdir}/${_pkgname}-${_srcver}-x86_64"/{PATENTS.AV1,LICENSE{,.OFL}} "${pkgdir}/usr/share/licenses/${pkgname}"
+    mv "${srcdir}/${_srcdir}"/{PATENTS.AV1,LICENSE{,.OFL}} \
+       "${pkgdir}/usr/share/licenses/${pkgname}"
 
     # Proton executable
     install -d "${pkgdir}/usr/share/steam/compatibilitytools.d/${_pkgname}"
-    mv "${srcdir}/${_pkgname}-${_srcver}-x86_64"/* "${pkgdir}/usr/share/steam/compatibilitytools.d/${_pkgname}"
+    mv "${srcdir}/${_srcdir}"/* \
+       "${pkgdir}/usr/share/steam/compatibilitytools.d/${_pkgname}"
 }
+
