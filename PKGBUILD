@@ -7,7 +7,7 @@ url="https://dotify.fun"
 license=('custom')
 depends=(
   'webkit2gtk-4.1'
-  'libayatana-appindicator3-1'
+  'libayatana-appindicator'
   'glib2'
   'gtk3'
   'libsoup3'
