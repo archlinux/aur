@@ -1,0 +1,153 @@
+#!/bin/bash
+
+# --- CONFIGURATION ---
+DEFAULT_FORMAT="zip"
+TEMP_DIR="/tmp/temporaryszip"
+
+declare -A CMD_MAP=(
+    ["zip"]="zip" ["unzip"]="unzip" ["7z"]="7z" ["gz"]="gzip"
+    ["bz2"]="bzip2" ["lzma"]="lzma" ["xz"]="xz" ["lzip"]="lzip"
+    ["lz4"]="lz4" ["tar"]="tar"
+)
+
+declare -A PKG_MAP=(
+    ["zip"]="zip" ["unzip"]="unzip" ["7z"]="p7zip" ["tar"]="tar" 
+    ["lz4"]="lz4" ["lzip"]="lzip" ["pv"]="pv" ["gpg"]="gnupg" 
+    ["bzip2"]="bzip2" ["gzip"]="gzip"
+)
+
+usage() {
+    cat << EOF
+szip - The Unified Manual Compression & Extraction Tool
+
+OPTIONS:
+  -e, --extract           Switch to Extraction Mode.
+  -p="pass", --password="pass"  
+                          Set password. Prompted securely if -p is empty.
+  -umc, --use-most-compressed   Brute-force optimization.
+EOF
+    exit 1
+}
+
+get_password() {
+    if [ -z "$PASS" ]; then
+        read -rs -p "Enter password for szip: " PASS
+        echo ""
+    fi
+}
+
+check_dep() {
+    local cmd=$1
+    if ! command -v "$cmd" &> /dev/null; then
+        local pkg=${PKG_MAP[$cmd]:-$cmd}
+        echo "Error: '$cmd' is not installed. Install: sudo pacman -S $pkg"
+        exit 1
+    fi
+}
+
+# --- PARSING ---
+PASS_SET=false; PASS=""; FORMAT=$DEFAULT_FORMAT; BRUTE_FORCE=false
+FORCE_EXTRACT=false; TARGET=""; OUTPUT=""
+
+for arg in "$@"; do
+    case $arg in
+        -h|--help) usage ;;
+        -e|--extract) FORCE_EXTRACT=true ;;
+        -p=*|--password=*) PASS="${arg#*=}"; PASS_SET=true ;;
+        -p|--password) PASS_SET=true ;;
+        -umc|--use-most-compressed) BRUTE_FORCE=true ;;
+        *) 
+            if [[ "$prev_arg" == "-t" ]]; then FORMAT="$arg"
+            elif [ -z "$TARGET" ]; then TARGET="$arg"
+            else OUTPUT="$arg"; fi ;;
+    esac
+    prev_arg="$arg"
+done
+
+[ -z "$TARGET" ] && usage
+if [ ! -e "$TARGET" ]; then
+    for ext in zip gz 7z bz2 xz tar lz4 lzip lzma; do
+        if [ -e "$TARGET.$ext" ]; then TARGET="$TARGET.$ext"; break; fi
+    done
+fi
+
+if [ ! -e "$TARGET" ]; then echo "Error: Target '$TARGET' not found."; exit 1; fi
+check_dep "file"; check_dep "pv"
+[ "$PASS_SET" = true ] && get_password
+
+# --- ENGINES ---
+compress_func() {
+    local fmt=$1; local src=$2; local dest=$3
+    local cmd=${CMD_MAP[$fmt]}
+    check_dep "$cmd"
+
+    case "$fmt" in
+        zip)   [ -n "$PASS" ] && PASS_FLAG="-P $PASS" || PASS_FLAG=""
+               zip -r $PASS_FLAG "$dest" "$src" > /dev/null ;;
+        7z)    [ -n "$PASS" ] && PASS_FLAG="-p$PASS -mhe=on" || PASS_FLAG=""
+               7z a "$dest" "$src" $PASS_FLAG -bsp1 | grep -E '^ [0-9]+%' --line-buffered ;;
+        *)     # Always use TAR to preserve metadata for gz, bz2, xz, etc.
+               local size=$(du -sb "$src" | cut -f1)
+               tar -cf - "$src" | pv -p -e -r -s "$size" | $cmd > "$dest"
+               
+               if [ -n "$PASS" ]; then
+                   check_dep "gpg"
+                   echo "$PASS" | gpg --batch --yes --passphrase-fd 0 -c "$dest" >/dev/null 2>&1
+                   rm "$dest" && mv "$dest.gpg" "$dest"
+               fi ;;
+    esac
+}
+
+# --- MAIN LOGIC ---
+if [ "$FORCE_EXTRACT" = true ]; then
+    WORKING_FILE="$TARGET"
+    if file "$WORKING_FILE" | grep -qiE "(gpg|pgp|encrypted)"; then
+        check_dep "gpg"; get_password
+        echo "Decrypting GPG layer..."
+        echo "$PASS" | gpg --batch --yes --passphrase-fd 0 -d "$WORKING_FILE" > "$WORKING_FILE.tmp" 2>/dev/null
+        if [ $? -ne 0 ]; then echo "Decryption failed."; exit 1; fi
+        WORKING_FILE="$WORKING_FILE.tmp"; CLEANUP_TMP=true
+    fi
+
+    DESC=$(file --brief "$WORKING_FILE")
+    MIME=$(file --brief --mime-type "$WORKING_FILE")
+    EXTRACT_DIR="${OUTPUT:-.}"
+    mkdir -p "$EXTRACT_DIR"
+    
+    # Identify and Extract
+    case "$MIME" in
+        application/zip)             check_dep "unzip"; [ -n "$PASS" ] && P="-P $PASS"; unzip $P "$WORKING_FILE" -d "$EXTRACT_DIR" ;;
+        application/x-7z-compressed) check_dep "7z"; [ -n "$PASS" ] && P="-p$PASS"; 7z x $P "$WORKING_FILE" -o"$EXTRACT_DIR" ;;
+        application/gzip|application/x-gzip) pv "$WORKING_FILE" | tar -xzvf - -C "$EXTRACT_DIR" ;;
+        application/x-bzip2)                 pv "$WORKING_FILE" | tar -xjvf - -C "$EXTRACT_DIR" ;;
+        application/x-xz)                    pv "$WORKING_FILE" | tar -xJvf - -C "$EXTRACT_DIR" ;;
+        *)                                   check_dep "tar"; pv "$WORKING_FILE" | tar -xvf - -C "$EXTRACT_DIR" ;;
+    esac
+    [ "$CLEANUP_TMP" = true ] && rm "$WORKING_FILE"
+else
+    # Compression / Brute Force logic
+    [ -d "$TEMP_DIR" ] && rm -rf "$TEMP_DIR"/* || mkdir -p "$TEMP_DIR"
+    if [ "$BRUTE_FORCE" = true ]; then
+        TYPES=("zip" "7z" "gz" "bz2" "xz")
+        BEST_SIZE=999999999999999; WINNER=""
+        for T in "${TYPES[@]}"; do
+            echo -n "Testing $T: "; T_FILE="$TEMP_DIR/szip_test.$T"
+            compress_func "$T" "$TARGET" "$T_FILE"
+            if [ -s "$T_FILE" ]; then
+                CUR_SIZE=$(stat -c%s "$T_FILE")
+                echo "$CUR_SIZE bytes"
+                if [ "$CUR_SIZE" -lt "$BEST_SIZE" ]; then BEST_SIZE=$CUR_SIZE; WINNER=$T; fi
+            else echo "Failed."; fi
+            rm -f "$T_FILE"
+        done
+        FINAL_OUTPUT="${OUTPUT:-${TARGET%/}.$WINNER}"
+        [[ "$FINAL_OUTPUT" == *.* ]] || FINAL_OUTPUT="$FINAL_OUTPUT.$WINNER"
+        echo "Winner: $WINNER. Finalizing..."
+        compress_func "$WINNER" "$TARGET" "$FINAL_OUTPUT"
+    else
+        [ -z "$OUTPUT" ] && OUTPUT="${TARGET%/}.$FORMAT"
+        [[ "$OUTPUT" == *.* ]] || OUTPUT="${OUTPUT}.$FORMAT"
+        compress_func "$FORMAT" "$TARGET" "$OUTPUT"
+    fi
+    rm -rf "$TEMP_DIR"
+fi
