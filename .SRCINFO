@@ -1,0 +1,20 @@
+pkgbase = radio-scheduler-git
+	pkgdesc = Scheduling and automatic playback of Internet radio stations (with MPD)
+	pkgver = r19.6352443
+	pkgrel = 1
+	url = https://github.com/Daszkan/radio-scheduler
+	install = radio-scheduler.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = pyside6
+	depends = python-pyyaml
+	depends = mpd
+	depends = mpc
+	provides = radio-scheduler
+	conflicts = radio-scheduler
+	source = git+https://github.com/Daszkan/radio-scheduler.git
+	sha256sums = SKIP
+
+pkgname = radio-scheduler-git

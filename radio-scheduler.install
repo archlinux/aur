@@ -1,0 +1,35 @@
+# radio-scheduler.install
+
+post_install() {
+  echo ""
+  echo "==> radio-scheduler-git installed successfully."
+  echo ""
+  echo "The menu entry has been created automatically in:"
+  echo "  /usr/share/applications/radio-scheduler.desktop"
+  echo "(system-wide) or in your local ~/.local/share/applications/"
+  echo ""
+  echo "To launch the application:"
+  echo "  radio-scheduler-gui"
+  echo ""
+  echo "If the menu entry is not visible:"
+  echo "  - Log out and log back in"
+  echo "  - Or run: update-desktop-database ~/.local/share/applications/"
+  echo ""
+  echo "For advanced setup or troubleshooting:"
+  echo "  git clone https://github.com/Daszkan/radio-scheduler"
+  echo "  cd radio-scheduler"
+  echo "  ./install.sh"
+  echo ""
+  echo "Report bugs: https://github.com/Daszkan/radio-scheduler/issues"
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  echo ""
+  echo "==> Removing radio-scheduler-git..."
+  echo "==> Remember to manually remove ~/.local/share/applications/radio-scheduler.desktop if needed."
+  echo ""
+}
