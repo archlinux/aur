@@ -1,4 +1,4 @@
 [proton-mail]
 source = 'jq'
 url = 'https://proton.me/download/mail/linux/version.json'
-filter = '.Releases[] | select(.CategoryName=="Stable") | .Version'
+filter = '.Releases[] | .Version'
