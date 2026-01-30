@@ -11,6 +11,7 @@ pkgbase = fortune-mod-dhammapada-1.0
 	source = dhammapada.de
 	source = dhammapada.pl
 	source = fortune-mod-dhammapada.1.gz
+	validpgpkeys = A8ECDDE6F85EB4E0753C207ED6C02821ACF022D1
 	sha256sums = 6654a8fc860c4753d42281cdc1577dd20c2bdefeec072fc1d9eca04313a46794
 	sha256sums = 240a52ec229217e30b522b7eab2328741a70f796ac4bcbfb3d9743783bda77fa
 	sha256sums = 13a3710bb9f0b6a0daaa75b4e2eff4b103de8b441e98939be6ad98cfb92587f8
