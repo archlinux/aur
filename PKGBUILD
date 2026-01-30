@@ -1,4 +1,4 @@
-# Maintainer: Timofei Zhakov
+# Maintainer: Timofei Zhakov <tima at chemodax dot net>
 
 pkgname=xdigest
 pkgver=0.1.0
