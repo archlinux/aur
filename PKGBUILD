@@ -7,8 +7,8 @@ pkgname=(
 )
 # [2025-07-23]: The version is actually 0.6.11 but the GitHub releases vs tags vs actual file version(==PyPI version) is all over the place
 #               Sent an email off to the maintainer about it
-pkgver=0.6.5
-pkgrel=2
+pkgver=0.6.6
+pkgrel=1
 pkgdesc="Convert PNG to SVG"
 arch=(x86_64)
 url="https://github.com/visioncortex/vtracer"
@@ -19,7 +19,7 @@ makedepends=(
 	'python-maturin'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/visioncortex/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('a2e927a3cc4e8e3440862aeaef3d6d2c867c6557b270a55291fe1e6ae9706444')
+sha256sums=('db785c9ce3c991746ab09f58856acad6d1c3365d4c6c811377c3662680a8bd20')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
