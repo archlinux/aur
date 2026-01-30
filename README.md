@@ -44,10 +44,10 @@ Adjust the font cascade in `config.h`:
 
 ```c
 static const char *fonts[] = {
-    "Terminus:size=10:antialias=true:autohint=true",
-    "Noto Sans CJK JP:size=10:antialias=true:autohint=true",
-    "Noto Color Emoji:size=10:antialias=true:autohint=true",
-    "monospace:size=10"
+    "Terminus:size=14:antialias=true:autohint=true",
+    "Noto Sans CJK JP:size=14:antialias=true:autohint=true",
+    "Noto Color Emoji:size=14:antialias=true:autohint=true",
+    "monospace:size=14"
 };
 ```
 
