@@ -1,0 +1,3 @@
+[happy-cli]
+source = "npm"
+npm = "happy-coder"
