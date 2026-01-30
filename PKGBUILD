@@ -4,10 +4,10 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _pkgname=irlba
-_pkgver=2.3.5.1
+_pkgver=2.3.7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=6
+pkgrel=1
 pkgdesc="Fast Truncated Singular Value Decomposition and Principal Components Analysis for Large Dense and Sparse Matrices"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -18,8 +18,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f738200d5272c7258ee59f7074dd4a6a')
-b2sums=('5255a275a2aceec0cb931529eaf67d30ee5058cee5a4c09977f56c9f142d2f3d545b86f4fa220cac5b4b69b93de9efac7b2bd9f6330363f716139be5607e46fd')
+md5sums=('b211a9d41ec6f99ae3c84c99d705ba10')
+b2sums=('268d804eb9d5884fdd9ce054c9660bf2b7dcf6915225c04b3f7a18e2e706d77333a25535241e741d378f6ca85282890d77d6e53d3a824fd880ff0416dc9fbf21')
 
 build() {
   mkdir build
