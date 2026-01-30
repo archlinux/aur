@@ -1,7 +1,7 @@
 # Maintainer: Alex Potapenko <opotapenko@gmail.com>
 
 pkgname=calibre-bin
-pkgver=8.16.2
+pkgver=9.0.0
 pkgrel=1
 pkgdesc="Official binary version Calibre"
 arch=(x86_64)
@@ -34,7 +34,7 @@ prepare() {
 
 # Checksums
 sha256sums=('c7aae61afba19c9cceed8bbafd2b39b5c4d6d683de0ccfc9c1fe2651857f757a'
-            'f5603782b815a5192b8086f5134d732211f058635babb17d950d0d0a7efeaa06')
+            'b9cc2b8fe65f25b4057b66ff0839bed986a519cbeae18ef53d6ee722ee2686cd')
 
 package() {
 	# Creating needed directories
