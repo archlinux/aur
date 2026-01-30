@@ -8,7 +8,6 @@ pkgbase = fish-lsp-git
 	makedepends = git
 	makedepends = yarn
 	makedepends = fish
-	makedepends = npm
 	depends = nodejs>=20.0.0
 	provides = fish-lsp
 	conflicts = fish-lsp

@@ -11,9 +11,7 @@ arch=('any')
 url="https://github.com/ndonfris/fish-lsp/"
 license=('MIT')
 depends=('nodejs>=20.0.0')
-makedepends=('git' 'yarn' 'fish' 'npm')
-# depends=('fish' 'nodejs>=22.0.0' 'python')
-# makedepends=('git' 'yarn')
+makedepends=('git' 'yarn' 'fish')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("$pkgname::git+https://github.com/ndonfris/fish-lsp.git")
@@ -24,11 +22,16 @@ pkgver() {
 	git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
+prepare() {
 	cd $pkgname
 	export YARN_CACHE_FOLDER="$srcdir/yarn_cache"
 	yarn install --frozen-lockfile --ignore-scripts
-	yarn build --binary
+}
+
+build() {
+	cd $pkgname
+	export YARN_CACHE_FOLDER="$srcdir/yarn_cache"
+	yarn build
 	./bin/fish-lsp complete >./fish-lsp.fish
 }
 
