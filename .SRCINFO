@@ -13,7 +13,7 @@ pkgbase = libaudclient
 	depends = glib2>=2.28
 	depends = glibc
 	provides = libaudclient.so
-	source = libaudclient-3.5-rc2.tar.bz2::https://distfiles.audacious-media-player.org/libaudclient-3.5-rc2.tar.bz2
+	source = https://distfiles.audacious-media-player.org/libaudclient-3.5-rc2.tar.bz2
 	sha256sums = 57b59936adee309308bebe6d37709ea7e833e53529164cca0720a337c17f175a
 
 pkgname = libaudclient
