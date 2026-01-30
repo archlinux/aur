@@ -1,4 +1,4 @@
-Maintainer: Samuel Kendall toxichemicals@proton.me
+#Maintainer: Samuel Kendall toxichemicals@proton.me
 pkgname=szip
 pkgver=1.0.0
 pkgrel=1
