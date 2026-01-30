@@ -2,7 +2,7 @@
 
 pkgname=max-bin
 pkgver=26.2.2.43936
-pkgrel=1
+pkgrel=2
 
 pkgdesc="MAX messenger."
 arch=("x86_64")
@@ -11,6 +11,8 @@ license=("custom:max")
 categories=("network")
 
 depends=("libxcb" "libxinerama" "libxcomposite" "xcb-util-wm" "libva" "libvdpau" "libnotify")
+optdepends=('gnome-keyring: Fixses startup in Gmome. Store passwords and encryption keys.')
+
 
 _app_name="MAX"
 _filename="${_app_name}-${pkgver}.rpm"

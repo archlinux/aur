@@ -1,7 +1,7 @@
 pkgbase = max-bin
 	pkgdesc = MAX messenger.
 	pkgver = 26.2.2.43936
-	pkgrel = 1
+	pkgrel = 2
 	url = https://max.ru
 	arch = x86_64
 	license = custom:max
@@ -12,6 +12,7 @@ pkgbase = max-bin
 	depends = libva
 	depends = libvdpau
 	depends = libnotify
+	optdepends = gnome-keyring: Fixses startup in Gmome. Store passwords and encryption keys.
 	provides = max
 	conflicts = max
 	source_x86_64 = https://download.max.ru/linux/rpm/el/9/x86_64/MAX-26.2.2.43936.rpm
