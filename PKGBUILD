@@ -3,14 +3,14 @@
 
 pkgname=release-tag
 _pkgname=tag
-pkgver=0.4.3
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Automatically create semantic version git tags.'
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/jmelahman/tag'
 license=('MIT')
 makedepends=('go' 'git')
-_commit='7bf119988283de8993ed56ca8b9c53960df45b73'
+_commit='a069af54b5de5379d3581e3fc027395d1ad0a982'
 source=("${_pkgname}::git+$url.git#commit=$_commit")
 md5sums=('SKIP')
 
