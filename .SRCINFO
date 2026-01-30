@@ -1,6 +1,6 @@
 pkgbase = quadrant-bin
 	pkgdesc = An easy way to manage your Minecraft modpacks, written in React and Rust.(Prebuilt version)
-	pkgver = 26.1.0
+	pkgver = 26.2.0
 	pkgrel = 1
 	url = https://mrquantumoff.dev/projects/quadrant
 	arch = aarch64
@@ -9,11 +9,11 @@ pkgbase = quadrant-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = quadrant=26.1.0
+	provides = quadrant=26.2.0
 	conflicts = quadrant
-	source_aarch64 = quadrant-26.1.0-aarch64.rpm::https://github.com/mrquantumoff/quadrant/releases/download/v26.1.0-stable/Quadrant-26.1.0-stable-1.aarch64.rpm
-	sha256sums_aarch64 = da2dcac37271a20afe3a145a76be4a6dbfb66bf9c69b2d0a1cda503304bb5747
-	source_x86_64 = quadrant-26.1.0-x86_64.rpm::https://github.com/mrquantumoff/quadrant/releases/download/v26.1.0-stable/Quadrant-26.1.0-stable-1.x86_64.rpm
-	sha256sums_x86_64 = a097aa93bea43c9e2df36ba51393514a53d816e5a347ba283de76c936bd00e5f
+	source_aarch64 = quadrant-26.2.0-aarch64.rpm::https://github.com/mrquantumoff/quadrant/releases/download/v26.2.0-stable/Quadrant-26.2.0-stable-1.aarch64.rpm
+	sha256sums_aarch64 = 14a8034449738d27fafce2eed575d68fd642c81a0bab7cb35900c65306ed15e4
+	source_x86_64 = quadrant-26.2.0-x86_64.rpm::https://github.com/mrquantumoff/quadrant/releases/download/v26.2.0-stable/Quadrant-26.2.0-stable-1.x86_64.rpm
+	sha256sums_x86_64 = a52b67cddcba83737ea1ad1aaa0012b9fd6309daf15de1717fcc0e56cbd92506
 
 pkgname = quadrant-bin
