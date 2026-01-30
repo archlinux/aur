@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=OpenWinControls
+GenericName=OpenWinControls
+Exec=/usr/bin/OpenWinControls
+Icon=/usr/share/icons/hicolor/256x256/apps/owc.ico
+Type=Application
+Terminal=false
+Categories=Utility
+Comment="GPD WinControls replacement"

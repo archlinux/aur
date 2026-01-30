@@ -1,0 +1,22 @@
+pkgbase = openwincontrols-git
+	pkgdesc = GPD WinControls replacement
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/OpenWinControls/OpenWinControls
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = qt6-base
+	provides = openwincontrols
+	conflicts = openwincontrols
+	source = git+https://github.com/OpenWinControls/OpenWinControls.git
+	source = owc.ico
+	source = openwincontrols.desktop
+	source = 70-gpd-controller.rules
+	sha256sums = SKIP
+	sha256sums = 924c9ae4922597c9cc8c5c83afb5ffce8879347c8c61ad4bfa1c09774aff504e
+	sha256sums = ffc480a3fdf781c683cfddce46161f97dd75637abf2b27aebc63031d5991fa2f
+	sha256sums = 8a66dcc6eac7274eaddbb9d3096bf02e3304896423fd165f205247fb09f7a07f
+
+pkgname = openwincontrols-git
