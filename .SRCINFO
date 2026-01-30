@@ -10,6 +10,6 @@ pkgbase = browseros-bin
 	conflicts = browseros
 	options = !strip
 	source = browseros.AppImage::https://github.com/browseros-ai/BrowserOS/releases/download/v0.38.0/BrowserOS_v0.38.0.3_x64.AppImage
-	sha256sums = ('ceebd27034be72350dbd5349c2b80cd7faf272479cfeec77bbe254eeb85657b3')
+	sha256sums = SKIP
 
 pkgname = browseros-bin
