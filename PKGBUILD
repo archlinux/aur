@@ -1,6 +1,6 @@
 # Maintainer: Peter Jackson <pete@peteonrails.com>
 pkgname=voxtype
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="Push-to-talk voice-to-text for Linux (optimized for Wayland, works on X11)"
 arch=('x86_64' 'aarch64')
@@ -37,7 +37,7 @@ optdepends=(
 backup=('etc/voxtype/config.toml')
 install=voxtype.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/peteonrails/voxtype/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2339f55ea7f6c66ba123a258a2b3ddb25b9d69704040f729268da544a50074bd')
+sha256sums=('f0a99403b290930cbcf60c8640882a2177b9542c2664c497aa4fbb13e7e3f1df')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -83,7 +83,7 @@ build() {
     cargo build --frozen --release \
         --config 'profile.release.lto=false' \
         --config 'profile.release.codegen-units=8'
-    cp target/release/voxtype voxtype-cpu
+    cp target/release/voxtype voxtype-native
 
     # Build Vulkan GPU binary (for GPU acceleration)
     cargo clean
@@ -115,16 +115,20 @@ check() {
 package() {
     cd "$pkgname-$pkgver"
 
-    # Install native CPU binary directly to /usr/bin/
-    install -Dm755 "voxtype-cpu" "$pkgdir/usr/bin/voxtype"
+    # Install CPU binary to /usr/lib/voxtype/ (matches binary package layout)
+    install -Dm755 "voxtype-native" "$pkgdir/usr/lib/voxtype/voxtype-native"
 
-    # Install Vulkan GPU binary to /usr/lib/voxtype/ for optional GPU acceleration
+    # Install Vulkan GPU binary to /usr/lib/voxtype/
     install -Dm755 "voxtype-vulkan" "$pkgdir/usr/lib/voxtype/voxtype-vulkan"
 
     # Install Parakeet binary if it was built
     if [[ -f "voxtype-parakeet" ]]; then
         install -Dm755 "voxtype-parakeet" "$pkgdir/usr/lib/voxtype/voxtype-parakeet"
     fi
+
+    # Create symlink at /usr/bin/voxtype -> /usr/lib/voxtype/voxtype-native
+    install -d "$pkgdir/usr/bin"
+    ln -sf /usr/lib/voxtype/voxtype-native "$pkgdir/usr/bin/voxtype"
 
     # Install default configuration
     install -Dm644 "config/default.toml" "$pkgdir/etc/voxtype/config.toml"
