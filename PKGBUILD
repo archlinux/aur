@@ -1,7 +1,7 @@
 # Maintainer: Raflos <raflos@gmx.com>
 pkgname=untitled-video-player-git
 pkgver=r39.c52bc0a
-pkgrel=1
+pkgrel=2
 pkgdesc="A video player desktop application (git version)"
 arch=('x86_64')
 url="https://github.com/raflos10/video-player"

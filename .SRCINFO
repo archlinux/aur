@@ -1,7 +1,7 @@
 pkgbase = untitled-video-player-git
 	pkgdesc = A video player desktop application (git version)
 	pkgver = r39.c52bc0a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/raflos10/video-player
 	arch = x86_64
 	license = GPL3
