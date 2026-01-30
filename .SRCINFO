@@ -1,13 +1,13 @@
 pkgbase = vault-tasks
 	pkgdesc = A TUI Markdown Task Manager
-	pkgver = 0.13.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/louis-thevenet/vault-tasks
 	arch = x86_64
 	license = MPL-2.0
 	makedepends = cargo
 	depends = gcc-libs
-	source = vault-tasks-0.13.0.tar.gz::https://github.com/louis-thevenet/vault-tasks/archive/v0.13.0.tar.gz
-	sha256sums = b4127f96025b526746c0360c42adf458d0c08804027567b260b82962ca9fa553
+	source = vault-tasks-1.0.0.tar.gz::https://github.com/louis-thevenet/vault-tasks/archive/v1.0.0.tar.gz
+	sha256sums = 953e4c83e29ce10303b15027905d5f38a1e0d6e76dfe57efd8b9e53563074135
 
 pkgname = vault-tasks
