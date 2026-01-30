@@ -1,0 +1,5 @@
+[superdb-bin]
+source = "github"
+github = "brimdata/super"
+use_latest_release = true
+prefix = "v"
