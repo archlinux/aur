@@ -1,31 +1,31 @@
-# Maintainer: tippfehlr <tippfehlr@tippfehlr.eu>
+# Maintainer: tippfehlr <tippfehlr@tippfehlr.dev>
 
 pkgname="radicle-httpd-bin"
 epoch=2
-pkgver=0.22.0
+pkgver=0.23.0
 pkgrel=1
 pkgdesc="open source, peer-to-peer code collaboration stack built on Git - web explorer"
 arch=("x86_64" "aarch64")
 license=("Apache-2.0 OR MIT")
 url="https://app.radicle.xyz/nodes/seed.radicle.xyz/rad:z3gqcJUoA1n9HaHKufZs5FCSGazv5"
 source=(
-    "$pkgname-$pkgver-LICENSE-MIT::https://seed.radicle.xyz/raw/rad:z3gqcJUoA1n9HaHKufZs5FCSGazv5/081af03362b5bd3d637ee22011a4e5b51a1f1498/LICENSE-MIT"
-    "radicle-httpd.service"
+	"$pkgname-$pkgver-LICENSE-MIT::https://seed.radicle.xyz/raw/rad:z3gqcJUoA1n9HaHKufZs5FCSGazv5/081af03362b5bd3d637ee22011a4e5b51a1f1498/LICENSE-MIT"
+	"radicle-httpd.service"
 )
 source_x86_64=("https://files.radicle.xyz/releases/radicle-httpd/$pkgver/radicle-httpd-$pkgver-x86_64-unknown-linux-musl.tar.xz")
 source_aarch64=("https://files.radicle.xyz/releases/radicle-httpd/$pkgver/radicle-httpd-$pkgver-aarch64-unknown-linux-musl.tar.xz")
 sha512sums=('76235a3247342b8531cb259a1a51c9789be81e5332f210949063e4444edc2659eebe0afb0c2aae9e9c6989599d29beca0ca57a7839156c92b195bdb54c7ca448'
             '2596b230b1a2cd097c2596bbc9baea7ba4a18e44364acb098da6e41fee622d4439c7ee397626bb7c377e2f8d7a71aa9c9a22fdea04e217250cccdc3041b76315')
-sha512sums_x86_64=('4824cac338caea0a262536d47c358f56d86cf19f5bcdb0a2ef716ffe248d9bc56e1cdd2879209de46d8c485f365807a691c5313248411aa3f8ad954ec9667eaf')
-sha512sums_aarch64=('bf8f4e16d76f77be8dfa3993276f4e050bc30d6ee1242849426db084184629f5dcb7aea84cd0f003c0f4577bd22dd8879909c53aef07b2cb7667d19ace7e63e8')
+sha512sums_x86_64=('b0d4c16d35b7694e02387450e75c59434dc88df84a97a3aeffd4bc6d4c402dc408d4389d8df36b4b943b8727a9f3cc74c4626df36501bfae4f6bbb3c097be624')
+sha512sums_aarch64=('7338dfa616855530375ac67e1d1fef3cb585daf6b280242e5a57f3d33c362a0e44d84d42d8753fafd90b997256e391df4c355ced18adde0d84f536d89dd89550')
 provides=("radicle-httpd")
 conflicts=("radicle-httpd")
 
 package() {
-    pushd "radicle-httpd-$pkgver-$CARCH-unknown-linux-musl" >/dev/null
-    install -Dm755 "bin/radicle-httpd" "$pkgdir/usr/bin/radicle-httpd"
-    install -Dm644 "man/man1/radicle-httpd.1" "$pkgdir/usr/share/man/man1/radicle-httpd.1"
-    popd >/dev/null
-    install -Dm644 "radicle-httpd.service" "$pkgdir/usr/lib/systemd/user/radicle-httpd.service"
-    install -Dm644 "$pkgname-$pkgver-LICENSE-MIT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
+	pushd "radicle-httpd-$pkgver-$CARCH-unknown-linux-musl" >/dev/null
+	install -Dm755 "bin/radicle-httpd" "$pkgdir/usr/bin/radicle-httpd"
+	install -Dm644 "man/man1/radicle-httpd.1" "$pkgdir/usr/share/man/man1/radicle-httpd.1"
+	popd >/dev/null
+	install -Dm644 "radicle-httpd.service" "$pkgdir/usr/lib/systemd/user/radicle-httpd.service"
+	install -Dm644 "$pkgname-$pkgver-LICENSE-MIT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
 }
