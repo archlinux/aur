@@ -1,6 +1,6 @@
 pkgbase = rakudo-bin
 	pkgdesc = Raku compiler for MoarVM
-	pkgver = 2025.12_01
+	pkgver = 2026.01_01
 	pkgrel = 1
 	url = https://rakudo.org/
 	install = rakudo-bin.install
@@ -20,12 +20,12 @@ pkgbase = rakudo-bin
 	conflicts = rakudo
 	conflicts = nqp
 	conflicts = moarvm
-	source = https://rakudo.org/dl/rakudo/rakudo-moar-2025.12-01-linux-x86_64-gcc.tar.gz
-	source = https://rakudo.org/dl/rakudo/rakudo-moar-2025.12-01-linux-x86_64-gcc.tar.gz.asc
+	source = https://rakudo.org/dl/rakudo/rakudo-moar-2026.01-01-linux-x86_64-gcc.tar.gz
+	source = https://rakudo.org/dl/rakudo/rakudo-moar-2026.01-01-linux-x86_64-gcc.tar.gz.asc
 	validpgpkeys = DB2BA39D1ED967B584D65D71C09FF113BB6410D0
 	validpgpkeys = FE750D152426F3E50953176ADE8F8F5E97A8FCDE
 	validpgpkeys = 59E634736AFDCF9C6DBAC382602D51EACA887C01
-	sha512sums = f9dd9749a8619a5d311a85d4870d02192f9cef394b4c16de6bbface76c6880f25b316ef9a7c142b82cacc7a559b138c4f08b949c58febb2a4ee16add881bd91e
+	sha512sums = 9a9550e46a9e81d7c6b8fd8206b0ac15754f38c3006cba47156fa2c20e983ab266599eee7e6b60e040a18b7c1748674e9281ffb1be1740d3934d906dafefd837
 	sha512sums = SKIP
 
 pkgname = rakudo-bin
