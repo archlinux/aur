@@ -1,0 +1,5 @@
+[nnd]
+source = "github"
+github = "al13n321/nnd"
+use_max_tag = true
+prefix = "v"
