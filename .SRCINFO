@@ -1,0 +1,28 @@
+pkgbase = keeper-secrets-manager-cli
+	pkgdesc = Command line tool for Keeper Secrets Manager
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/Keeper-Security/secrets-manager
+	arch = any
+	license = MIT
+	makedepends = python-installer
+	makedepends = python-build
+	makedepends = python-setuptools
+	depends = python
+	depends = keeper-secrets-manager-core>=17.0.0
+	depends = keeper-secrets-manager-helper>=1.0.6
+	depends = keeper-secrets-manager-storage>=1.0.2
+	depends = python-prompt_toolkit
+	depends = python-jsonpath-rw-ext
+	depends = python-colorama
+	depends = python-click
+	depends = python-click-help-colors
+	depends = python-click-repl
+	depends = python-yaml
+	depends = python-update-checker
+	depends = python-psutil
+	depends = python-boto3
+	source = https://files.pythonhosted.org/packages/source/k/keeper_secrets_manager_cli/keeper_secrets_manager_cli-1.2.0.tar.gz
+	sha512sums = 3406e37302fa3065c747da3e741714f2fe80afe84e0d10687aa69ded7661d86b798dea1180fdf50024575a73842c5211b1d7f977f0a3c2a1257b541cce461fe7
+
+pkgname = keeper-secrets-manager-cli
