@@ -6,6 +6,7 @@ pkgdesc="Small utility to switch the selected theme used by alacritty terminal."
 arch=('x86_64')
 url="https://github.com/alacritty-use-theme/alacritty-use-theme"
 license=('GPL-1.0-or-later')
+groups=('alacritty-use-theme')
 depends=('alacritty>=0.13.0' 'go-yq')
 provides=('alacritty-use-theme')
 conflicts=('alacritty-use-theme-git')
