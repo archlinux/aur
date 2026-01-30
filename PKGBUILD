@@ -6,7 +6,7 @@
 pkgname='offpunk-git'
 _pkgname='offpunk'
 epoch=6
-pkgver=2.8.r21.g64bcb8b
+pkgver=2.8.r106.gd197b7d
 pkgrel=2
 pkgdesc='Fork of the command-line Gemini client AV-98 with added offline capabilities (latest commit)'
 arch=('any')
@@ -42,7 +42,7 @@ optdepends=(
   'xsel: copies text to the X11 clipboard (alternative)'
 )
 provides=('offpunk')
-conflicts=('offpunk')
+conflicts=('offpunk' 'xkcd')
 source=("git+$url")
 noextract=("$_pkgname")
 sha256sums=('SKIP')
@@ -72,6 +72,12 @@ package() {
     tutorial/*.{gmi,html,py}
   install -vDm0644 -t "$pkgdir/usr/share/man/man1" \
     man/*.1
+
+  cd "$pkgdir/usr/share/man/man1/" && {
+    test -f opnk.1 && ln -vsrf opnk.1 openk.1
+  }
+
+  cd "$pkgdir/usr/share/doc/" && ln -vsrf "$pkgname" "$_pkgname"
 }
 
 # eof
