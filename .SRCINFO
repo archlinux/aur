@@ -1,0 +1,18 @@
+pkgbase = python-setuptools-cmake-helper
+	pkgdesc = Simpler helper to build a Python C/C++ Extension using CMake
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/henriquegemignani/setuptools-cmake-helper
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python
+	source = python-setuptools-cmake-helper-0.2.1.tar.gz::https://github.com/henriquegemignani/setuptools-cmake-helper/archive/v0.2.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-setuptools-cmake-helper
