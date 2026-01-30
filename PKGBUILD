@@ -8,8 +8,8 @@
 pkgbase=protonmail-bridge-free-nokeychain
 pkgname="${pkgbase}-git"
 _pkgbase=proton-bridge
-pkgver=3.21.2
-pkgrel=6
+pkgver=3.22.0
+pkgrel=1
 # upstream_commit=11ecdd9
 pkgdesc="Proton Mail Bridge fork (free) without keychain requirement; stores secrets in a file"
 arch=(x86_64)
@@ -17,7 +17,7 @@ url="https://github.com/mnixry/proton-bridge"
 license=(GPL3)
 provides=(protonmail-bridge)
 conflicts=(protonmail-bridge protonmail-bridge-core protonmail-bridge-nokeychain "${pkgbase}")
-depends=()
+depends=(libfido2)
 makedepends=(git go)
 source=("${_pkgbase}::git+https://github.com/mnixry/proton-bridge.git"
         "keyfile.patch"
