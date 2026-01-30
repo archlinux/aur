@@ -1,9 +1,9 @@
 # Maintainer: kylon
 pkgbase="pqhex"
 pkgname="pqhex-git"
-pkgver=v1.0.5f69ed1
-_version="1.0"
-pkgrel=2
+pkgver=1.0
+_version=1.0
+pkgrel=3
 pkgdesc="The Pokemon Quest save editor"
 url="https://github.com/kylon/PQHex"
 arch=("x86_64")
@@ -16,30 +16,28 @@ license=("GPL3")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(
-    "pqhex::git+https://github.com/kylon/PQHex.git"
+    "git+https://github.com/kylon/PQHex.git"
     'pqhex.ico'
     'pqhex.desktop'
 )
 sha256sums=(
     'SKIP'
     '8b3742983ea97064c8d635f7571cbd6a4be428b5ffb64a436b805d2d1efac52b'
-    'aaea65499cd447e1324aebcbfac1123887a9d7d2e433942a23615cc694154daf'
+    '0295aac00eb2f6d86d3555fe40b8efc0fcd7d68104a049aec86078fc0fb0285c'
 )
 
 pkgver() {
-    cd "${srcdir}/${pkgname%-git}"
-    printf "v%s.%s" "${_version}" "$(git rev-parse --short=7 HEAD)"
+    cd "${srcdir}/PQHex"
+    printf "%s.%s" "${_version}" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
-    cmake -B build -S pqhex -DCMAKE_BUILD_TYPE=Release
-
-    cd build
-    make
+    cmake -B build -S PQHex -DCMAKE_BUILD_TYPE=Release
+    cmake --build build
 }
 
 package() {
-    install -Dm 755 ${srcdir}/build/PQHex -t "${pkgdir}"/usr/bin/
-    install -Dm 644 ${srcdir}/pqhex.ico -t "${pkgdir}"/usr/icon/hicolor/
-    install -Dm 644 pqhex.desktop -t "${pkgdir}"/usr/share/applications/
+    install -Dm755 ${srcdir}/build/PQHex -t "${pkgdir}/usr/bin/"
+    install -Dm644 ${srcdir}/pqhex.ico -t "${pkgdir}/usr/icons/hicolor/256x256/apps/"
+    install -Dm644 pqhex.desktop -t "${pkgdir}/usr/share/applications/"
 }

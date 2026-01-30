@@ -2,7 +2,7 @@
 Name=PQHex
 GenericName=PQHex
 Exec=/usr/bin/PQHex
-Icon=/usr/share/icons/pqhex.ico
+Icon=/usr/share/icons/hicolor/256x256/apps/pqhex.ico
 Type=Application
 Terminal=false
 Categories=Utility;Games;
