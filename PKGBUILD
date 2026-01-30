@@ -2,15 +2,15 @@
 # Contributor:
 
 pkgname=buildifier
-pkgver=8.2.1
-pkgrel=2
+pkgver=8.5.1
+pkgrel=1
 pkgdesc='A command line tool to format Bazel BUILD files'
 arch=('x86_64' 'aarch64')
 license=('Apache')
 url='https://github.com/bazelbuild/buildtools'
 makedepends=('git' 'python')
 conflicts=('buildifier-bin')
-_commit='b1e23f1025b8556cc75eebb28ff7f40b8930d353'
+_commit='f6a1982250030df9c2d24a675a04f150ff6aca6b'
 source=("${pkgname}::git+$url.git#commit=$_commit")
 _bazelisk_pkgver="1.25.0"
 source_x86_64=(
