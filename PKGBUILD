@@ -12,7 +12,7 @@ arch=("x86_64")
 provides=("datui")
 conflicts=("datui")
 source=("https://github.com/derekwisong/datui/releases/download/v$pkgver/datui-$pkgver-x86_64.tar.gz")
-sha256sums=("0b2ecbd65596ec75b99920615ccc6c72979f787637d5a6e055998194c475e9fd")
+sha256sums=("3b28c9b1a18207db87598fa0c95d5cd6592e16aa360e93a701492e8b7524da47")
 
 package() {
     install -Dm755 datui -t "$pkgdir/usr/bin"
