@@ -2,7 +2,7 @@
 
 pkgname=headsetkontrol
 pkgver=2.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Interface for HeadsetControl (by Sapd) written with Kirigami and KDE Framework"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/TheBill2001/$pkgname"
