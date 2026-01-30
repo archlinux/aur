@@ -1,0 +1,20 @@
+pkgbase = bigfive-updater
+	pkgdesc = Armored, Smart, Multi-Distro Update Tool for Linux Systems
+	pkgver = 6.0.2
+	pkgrel = 1
+	url = https://github.com/ahm3t0t/bigfive-updater
+	arch = any
+	license = MIT
+	depends = bash
+	depends = curl
+	optdepends = flatpak: Flatpak application updates
+	optdepends = snapd: Snap package updates
+	optdepends = fwupd: Firmware updates
+	optdepends = snapper: Btrfs/LVM snapshot support
+	optdepends = timeshift: System restore point support
+	provides = guncel
+	provides = updater
+	source = bigfive-updater-6.0.2.tar.gz::https://github.com/ahm3t0t/bigfive-updater/archive/v6.0.2.tar.gz
+	sha256sums = a40ce496c241fd60368da51a962372399666e083656f5b8115d26fd8f87957c1
+
+pkgname = bigfive-updater
