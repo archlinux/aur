@@ -1,0 +1,15 @@
+pkgbase = keeper-secrets-manager-storage
+	pkgdesc = Keeper Secrets Manager SDK helper for managing configurations key-value storage
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/Keeper-Security/secrets-manager
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/9b/f9/e6bdac16ee384e4c5a788cb3c24568376ce91a3b093cfcceb0f21a867439/keeper-secrets-manager-storage-1.0.2.tar.gz
+	sha512sums = 2b6244c4545c6f0757a5fe3a8426f0ec6d64b7eaa7c098b6ddfd91714a3d722a40c0fee1634a851f24f4765a8540d763b3461ccb73111b9b1bb7a9b89a4e096f
+
+pkgname = keeper-secrets-manager-storage
