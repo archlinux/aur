@@ -2,27 +2,26 @@
 # Maintained at: https://github.com/matt-h/aur-pkgbuilds or https://codeberg.org/matt/aur-pkgbuilds
 
 pkgname=mago
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="An extremely fast PHP linter, formatter, and static analyzer, written in Rust."
-url="https://github.com/carthage-software/mago"
+url="https://mago.carthage.software/"
 arch=('x86_64')
 license=('MIT')
 depends=('gcc-libs' 'glibc')
 makedepends=('git' 'cargo' 'openssl')
 source=("git+https://github.com/carthage-software/mago.git#tag=${pkgver}")
-b2sums=('e98791a41f46e9880f17a6ab3d8b6890b254425b4d29b4db668e6c5f1d31c591f18699be385b1994786f459d4298d69e4ff55520020b6b209f7630bfecdef298')
+b2sums=('893ead781a7304a64f47e74fa43dac52994100f6fb9c7457d669ce65cd762f5875b4a743d685a75e7085ccca7eacfd5ac3e46bb30b51461787537597dc789d21')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
   cd "${srcdir}/${pkgname}"
   export CFLAGS="$CFLAGS -ffat-lto-objects"
-  export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix $srcdir=src"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release
@@ -31,7 +30,7 @@ build() {
 check() {
   cd "${srcdir}/${pkgname}"
   export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen
+  cargo test --frozen --all-features
 }
 
 package() {
