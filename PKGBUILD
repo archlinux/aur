@@ -31,7 +31,7 @@ source=("${pkgname}-${pkgver}.deb::https://github.com/${_repouser}/${_reponame}/
 
 # [需更新] 校验和
 # 运行 'updpkgsums' 命令可以自动更新此处的值，无需手动修改
-sha256sums=('6e085d4bec8e826acf46f1fb71c46c93982794129776893ea726fecb7191ce41'
+sha256sums=('fb5b5d491147065c8b6bb8185575ce0c5868760a5df94331fecec5a1c3fb52cd'
             '6f0afc78b16f446941c6201dcc0a53e1d19dcb96b9fc2ccb497b1bf029aa3512')
 
 options=('!strip')
