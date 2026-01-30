@@ -33,7 +33,7 @@ makedepends=(
 )
 
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/meduzapat/LEDSpicer/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('770f958e3ad3d6805878dddbd3c22478a3489d3847c378e9af62feed4cd6916d')
+sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
 
 build() {
 	cd "${srcdir}/LEDSpicer-${pkgver}"
@@ -102,8 +102,6 @@ package_ledspicer() {
 	install=ledspicer.install
 
 	DESTDIR="${pkgdir}" cmake --install "${srcdir}/LEDSpicer-${pkgver}/build"
-
-	install -dm755 "$pkgdir/usr/share/doc/ledspicer"
 
 	# Remove library artifacts (handled by libledspicer)
 	rm -f "${pkgdir}/usr/lib/libledspicer.so"*
@@ -183,3 +181,4 @@ package_ledspicer-dev() {
 
 	ln -s libledspicer.so.1 "${pkgdir}/usr/lib/libledspicer.so"
 }
+
