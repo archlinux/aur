@@ -1,0 +1,22 @@
+post_install() {
+  echo ":: Updating module dependencies..."
+  depmod -a "${1%-*}"
+  
+  echo ""
+  echo "WARNING: You have installed a custom kernel."
+  echo "You MUST update your bootloader configuration to boot this kernel."
+  echo "Examples:"
+  echo "  - GRUB: sudo grub-mkconfig -o /boot/grub/grub.cfg"
+  echo "  - systemd-boot: Check /boot/loader/entries/"
+  echo ""
+}
+
+post_upgrade() {
+  post_install "$1"
+}
+
+post_remove() {
+  # Clean up is handled by pacman hooks mostly
+  rm -f "/boot/initramfs-linux-galaxyaudio.img"
+  rm -f "/boot/initramfs-linux-galaxyaudio-fallback.img"
+}

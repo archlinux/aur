@@ -1,0 +1,37 @@
+pkgbase = linux-galaxyaudio
+	pkgdesc = Linux kernel for Samsung Galaxy Book 4 with MAX98390 sound support
+	pkgver = 6.12.8
+	pkgrel = 1
+	url = https://github.com/thesofproject/linux/pull/5616
+	install = linux-galaxyaudio.install
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = kmod
+	makedepends = libelf
+	makedepends = cpio
+	makedepends = perl
+	makedepends = tar
+	makedepends = xz
+	makedepends = python
+	makedepends = git
+	options = !strip
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.8.tar.xz
+	source = config
+	source = max98390-sound.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = linux-galaxyaudio
+	pkgdesc = The Linux kernel for Samsung Galaxy Book 4 with MAX98390 sound support kernel and modules
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = linux
+	conflicts = linux
+
+pkgname = linux-galaxyaudio-headers
+	pkgdesc = Headers and scripts for building modules for the Linux kernel for Samsung Galaxy Book 4 with MAX98390 sound support kernel
+	depends = pahole
