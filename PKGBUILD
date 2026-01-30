@@ -8,7 +8,7 @@
 
 pkgname=pythonscad-git
 _pkg="${pkgname%-git}"
-pkgver=r12464.4ed26e2
+pkgver=r12762.8a13038
 pkgrel=1
 pkgdesc="Fork of OpenSCAD allowing models to be written in Python"
 arch=('x86_64')
@@ -84,11 +84,6 @@ check() {
 
 package() {
 	DESTDIR="$pkgdir" cmake --install build
-
-	# the pythonscad fork leaves the original openscad manpage intact
-	man1="$pkgdir/usr/share/man/man1"
-	mv "$man1"/{open,python}scad.1
-	sed -i 's/openscad/pythonscad/g;s/OPENSCAD/PYTHONSCAD/g;/graphical program/s/OpenSCAD/PythonSCAD/' "$man1"/*.1
 
 	cd "$_pkg"
 	install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

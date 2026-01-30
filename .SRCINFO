@@ -1,6 +1,6 @@
 pkgbase = pythonscad-git
 	pkgdesc = Fork of OpenSCAD allowing models to be written in Python
-	pkgver = r12464.4ed26e2
+	pkgver = r12762.8a13038
 	pkgrel = 1
 	url = https://github.com/pythonscad/pythonscad
 	arch = x86_64
