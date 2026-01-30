@@ -1,0 +1,18 @@
+pkgbase = uki-snapper
+	pkgdesc = A simple utility that automatically adds boot entries for snapper snapshots
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://codeberg.org/grafcube/uki-snapper
+	arch = any
+	license = GPL-3.0-only
+	depends = bash
+	depends = btrfs-progs
+	depends = snapper
+	depends = util-linux
+	optdepends = mkinitcpio: To generate UKIs
+	optdepends = uki-efi-boot: To add entries to the UEFI boot menu
+	backup = etc/uki-snapper.conf
+	source = uki-snapper-1.0.0.tar.gz::https://codeberg.org/grafcube/uki-snapper/archive/v1.0.0.tar.gz
+	sha256sums = 9d26bfa7e5df819671c28677c45d92a06ea9e6c800e22f004dda61632964d39b
+
+pkgname = uki-snapper
