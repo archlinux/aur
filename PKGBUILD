@@ -1,5 +1,5 @@
 pkgname=image-analyze
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="Lightweight image viewer for wayland"
 arch=('any')
