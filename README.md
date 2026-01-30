@@ -57,6 +57,26 @@ Rebuild:
 make clean install
 ```
 
+## Syncing to AUR
+
+Since AUR doesn't allow subdirectories (like `.github/`), use this workflow to sync updates:
+
+```bash
+# Create clean branch from AUR
+git checkout -b aur-branch aur/master
+
+# Copy only AUR-compatible files from master
+git checkout master -- PKGBUILD config.h *.diff README.md
+
+# Commit and push to AUR
+git commit -m "Update package"
+git push aur aur-branch:master
+
+# Clean up
+git checkout master
+git branch -D aur-branch
+```
+
 ## Contributing
 
 1. **Fork** and create a topic branch: `git checkout -b feature/name`.

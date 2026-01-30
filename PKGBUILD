@@ -17,7 +17,7 @@ source=(
   "config.h"
 )
 sha256sums=('8fbace2a0847aa80fe861066b118252dcc7b4ca0a0a8f3a93af02da8fb6cd453'
-            '5d0ad90d272b7a11dce9da914e2777e6e168b38070c02ed057f1d26532e60500'
+            'bd1d0bd332b90d39abb3723c1101937529e41663cfe977a6b0cde91c8f546c2d'
             'e62952aa4d8798d3abe5007faddda851b23ab971cc15dd7f201f5b7099fa4887')
 
 prepare() {
