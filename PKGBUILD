@@ -6,6 +6,7 @@ pkgdesc="::Rolling release:: Changes alacritty theme based on the current time a
 arch=('x86_64')
 url="https://github.com/alacritty-use-theme/alacritty-use-theme-with-redshift"
 license=('GPL-1.0-or-later')
+groups=('alacritty-use-theme' 'alacritty-use-theme-services')
 depends=('redshift' 'alacritty-use-theme')
 makedepends=('git')
 provides=('alaritty-use-theme-with-redshift.service' 'alaritty-use-theme-with-redshift.timer' 'alaritty-use-theme-with-redshift.target')
