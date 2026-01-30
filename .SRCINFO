@@ -1,8 +1,7 @@
 pkgbase = xdigest
-	pkgdesc = Fast digest algorithms
+	pkgdesc = Extremely fast digest algorithms packaged into a lightweight library.
 	pkgver = 0.1.0
 	pkgrel = 1
-	epoch = 0
 	url = https://github.com/rinrab/xdigest
 	arch = x86_64
 	license = Apache 2.0
@@ -10,8 +9,7 @@ pkgbase = xdigest
 	makedepends = make
 	makedepends = ninja
 	depends = glibc
-	provides = libxdigest.so
-	source = https://github.com/rinrab/xdigest/archive/refs/tags/0.1.0.tar.gz
+	source = xdigest-0.1.0.tar.gz::https://github.com/rinrab/xdigest/archive/refs/tags/0.1.0.tar.gz
 	sha256sums = 20663922437a53451ffe85c61775ec4c9c471a857b3059a71b8eb0db72b6eba0
 
 pkgname = xdigest
