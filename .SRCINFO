@@ -1,7 +1,7 @@
 pkgbase = servicer-bin
 	pkgdesc = Simplify service management on systemd
 	pkgver = 0.1.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/servicer-labs/servicer
 	arch = x86_64
 	arch = aarch64

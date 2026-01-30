@@ -2,7 +2,7 @@
 
 pkgname=servicer-bin
 pkgver=0.1.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Simplify service management on systemd"
 url="https://github.com/servicer-labs/servicer"
 license=("MIT")
@@ -19,6 +19,6 @@ sha512sums_x86_64=('443fba105a8bac6fcb0328269e0c6d2cd4d19d84d68bc8f78d5da250a968
 sha512sums_aarch64=('6b729f564225bc8cb0e64a5abf84df387796ef0c97bcfcd6bf74a314f2320fd8a2719c19349899901bdab88a9f202ef6b724545d39392bdaf0d946f4f45bc385')
 
 package() {
-	install -Dm755 $_prefix-servicer -t "$pkgdir/usr/bin"
+	install -Dm755 $_prefix-servicer "$pkgdir/usr/bin/servicer"
 	install -Dm644 $_prefix-LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
