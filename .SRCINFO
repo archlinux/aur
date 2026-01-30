@@ -1,7 +1,7 @@
 pkgbase = tac-writer
 	pkgdesc = Academic writing assistant using the Continuous Argumentation Technique (CAT)
-	pkgver = 26.01.28
-	pkgrel = 1111
+	pkgver = 26.01.30
+	pkgrel = 0923
 	url = https://github.com/narayanls/tac-writer
 	arch = any
 	license = MIT
@@ -23,6 +23,7 @@ pkgbase = tac-writer
 	depends = hunspell-es_any
 	depends = python-pylatex-git
 	depends = texlive-langportuguese
+	depends = python-dropbox
 	optdepends = hunspell-bg: For Bulgarian spell checking
 	optdepends = hunspell-de: For German spell checking
 	optdepends = hunspell-el: For Greek spell checking

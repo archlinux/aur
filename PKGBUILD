@@ -1,5 +1,5 @@
 # Maintainer: Narayan Lima da Silva <narayan.song@gmail.com>
-# Former Contributer: Tales Mendonça <talesam@gmail.com>
+# Contributor: Tales Mendonça <talesam@gmail.com>
 
 pkgname=tac-writer
 pkgdesc="Academic writing assistant using the Continuous Argumentation Technique (CAT)"
@@ -22,6 +22,7 @@ depends=(
     'hunspell-es_any'
     'python-pylatex-git'
     'texlive-langportuguese'
+    'python-dropbox'
 )
 makedepends=('gettext')
 optdepends=(
