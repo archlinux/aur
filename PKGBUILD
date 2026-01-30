@@ -1,6 +1,6 @@
 # Maintainer: Local User <user@localhost>
 pkgname=dcat
-pkgver=r29.87d7d7d
+pkgver=r30.ea1b44c
 pkgrel=1
 pkgdesc="A terminal-based 3D model viewer using Vulkan"
 arch=('x86_64')
