@@ -1,0 +1,21 @@
+pkgbase = apx-env
+	pkgdesc = APX - Accelerated Package X: Multi-language environment manager for Python, Node.js, Go, Rust, and Ruby
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Definetly-a-username/APX
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go>=1.21
+	depends = glibc
+	optdepends = python: Python environment support
+	optdepends = nodejs: Node.js environment support
+	optdepends = go: Go environment support
+	optdepends = rust: Rust environment support
+	optdepends = ruby: Ruby environment support
+	provides = apx
+	conflicts = apx
+	source = apx-env-1.0.0.tar.gz::https://github.com/Definetly-a-username/APX/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 29961abf7d7e033ba4fd88968531483d2dfe57f31f67075141c40455bfccf4f9
+
+pkgname = apx-env
