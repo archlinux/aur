@@ -1,6 +1,6 @@
 pkgbase = xmcl-launcher
 	pkgdesc = X Minecraft Launcher - A modern, open-source Minecraft Launcher with modpack, resource, and instance management
-	pkgver = 0.54.2
+	pkgver = 0.54.3
 	pkgrel = 1
 	url = https://xmcl.app/
 	arch = x86_64
@@ -27,9 +27,9 @@ pkgbase = xmcl-launcher
 	source = xmcl.png
 	sha256sums = 01407037620c1f763c16c64006c5e5457b23d3e3734b212ed543cbe3bf576a2d
 	sha256sums = 312763b5fa502280a694a78fd1e55a400b345e7d571020ee863e67db8f1eaec4
-	source_x86_64 = xmcl-0.54.2-x64.tar.xz::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.54.2/xmcl-0.54.2-x64.tar.xz
-	sha256sums_x86_64 = c6b55d6e39ad6f6d7695c9e7d691d67480acff6b26e3c6024ad4eba8fd1e4f45
-	source_aarch64 = xmcl-0.54.2-arm64.tar.xz::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.54.2/xmcl-0.54.2-arm64.tar.xz
-	sha256sums_aarch64 = d1398f526fa2fab18e42f1da1000f262f656a4ce168e2eef57ab73a6ad1e47ec
+	source_x86_64 = xmcl-0.54.3-x64.tar.xz::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.54.3/xmcl-0.54.3-x64.tar.xz
+	sha256sums_x86_64 = 8447c90b17e46cb194cb129e8186c63bc518c4c1a513d9a5f1d7d278b452ddba
+	source_aarch64 = xmcl-0.54.3-arm64.tar.xz::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.54.3/xmcl-0.54.3-arm64.tar.xz
+	sha256sums_aarch64 = 4b5c0fd18bc667c2f4325c0f04b2377edec95c75222a7f83a4f15a58c05ffa7b
 
 pkgname = xmcl-launcher
