@@ -2,7 +2,7 @@
 
 pkgname=ps2_manager
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A game manager for Open PS2 Loader (OPL)"
 arch=('x86_64')
 url="https://code.weexnes.dev/ps2_manager"

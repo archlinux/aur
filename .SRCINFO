@@ -1,7 +1,7 @@
 pkgbase = ps2_manager
 	pkgdesc = A game manager for Open PS2 Loader (OPL)
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.weexnes.dev/ps2_manager
 	arch = x86_64
 	license = GPL3
