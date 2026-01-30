@@ -1,0 +1,20 @@
+pkgbase = monochrome
+	pkgdesc = Monochrome is a lightweight, privacy-focused music streaming client designed for high-fidelity audio playback. Built with modern web technologies, it provides a clean, distraction-free listening experience.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/SamidyFR/monochrome
+	arch = x86_64
+	license = HIPPOCRATIC LICENSE
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = gst-plugins-ugly
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	provides = monochrome
+	conflicts = monochrome
+	source_x86_64 = monochrome-2.0.0.zip::https://downloads.samidy.com/Monochrome-linux.zip
+	sha256sums_x86_64 = SKIP
+
+pkgname = monochrome
