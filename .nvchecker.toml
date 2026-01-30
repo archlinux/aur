@@ -1,0 +1,4 @@
+[gog-scott-whiskers-in-the-search-for-mr-fumbleclaw]
+source = "jq"
+url = "https://www.gogdb.org/data/products/1259892701/product.json"
+filter = ".dl_installer | map(select(.os == \"linux\"))[0] | .version"
