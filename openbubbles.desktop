@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=OpenBubbles
+Comment=OpenBubbles Messaging App
+Exec=openbubbles
+Icon=openbubbles
+Terminal=false
+Type=Application
+Categories=Network;Chat;
+StartupWMClass=bluebubbles
+
