@@ -1,7 +1,7 @@
 pkgbase = gjay
 	pkgdesc = DJ-friendly GUI for generating playlists across large music collections
 	pkgver = 0.4+r7+g9df0279
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gjay.sourceforge.net
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -20,7 +20,7 @@ pkgbase = gjay
 	optdepends = audacious: small and fast audio player which supports lots of formats
 	optdepends = libmpdclient: Music Player Daemon
 	optdepends = vorbis-tools: support .ogg files
-	source = gjay-9df02799e62e7c3da3bb087cda976ed7accbfdd9.tar.gz::https://github.com/csmall/gjay/archive/9df02799e62e7c3da3bb087cda976ed7accbfdd9.tar.gz
+	source = https://github.com/csmall/gjay/archive/9df02799e62e7c3da3bb087cda976ed7accbfdd9/gjay-9df02799e62e7c3da3bb087cda976ed7accbfdd9.tar.gz
 	sha256sums = bc84d87c057a1da15c94909f36b4015604e48b6f1e41ba151a0326ac8d201538
 
 pkgname = gjay
