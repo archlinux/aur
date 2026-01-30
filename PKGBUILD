@@ -5,7 +5,7 @@
 
 _realname=procps
 pkgname=procps-ng-git
-pkgver=4.0.5.r18.g3d2158fc
+pkgver=4.0.6.r1.g15056a27
 pkgrel=1
 pkgdesc='Utilities for monitoring your system and its processes'
 url='https://gitlab.com/procps-ng/procps'
@@ -45,7 +45,4 @@ build() {
 package() {
 	cd "$_realname"
 	make DESTDIR="$pkgdir" install
-
-	# https://gitlab.com/procps-ng/procps/-/issues/379
-	rm -fv "$pkgdir"/usr/share/man/{de,ro,uk}/man1/kill.1
 }
