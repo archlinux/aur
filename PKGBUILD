@@ -3,7 +3,7 @@
 
 pkgname=hytale-launcher-bin
 pkgver=2026.01.29.06d8678
-pkgrel=2
+pkgrel=1
 pkgdesc="Hytale Launcher (Native Linux, Self-Updating)"
 url="https://hytale.com"
 license=('LicenseRef-custom')
