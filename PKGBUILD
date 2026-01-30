@@ -6,6 +6,7 @@ pkgdesc="::Rolling release:: A Small utility to switch the selected theme used b
 arch=('x86_64')
 url="https://github.com/alacritty-use-theme/alacritty-use-theme"
 license=('GPL-1.0-or-later')
+groups=('alacritty-use-theme')
 depends=('alacritty>=0.13.0' 'go-yq')
 makedepends=('git')
 provides=('alacritty-use-theme')
