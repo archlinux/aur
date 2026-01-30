@@ -1,0 +1,25 @@
+pkgbase = lib32-snappy
+	pkgdesc = A fast compressor/decompressor library (32-bit)
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/google/snappy
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = lib32-gtest
+	depends = snappy>=1.2.2
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	provides = libsnappy.so
+	source = https://github.com/google/snappy/archive/refs/tags/1.2.2/snappy-1.2.2.tar.gz
+	source = snappy.pc.in
+	source = snappy-cmake_add_pkgconfig.patch
+	source = snappy-use_system_gtest.patch
+	source = snappy-reenable_rtti.patch
+	sha256sums = 90f74bc1fbf78a6c56b3c4a082a05103b3a56bb17bca1a27e052ea11723292dc
+	sha256sums = 134f06ca0584a1026538d0fb972fc141c008390ecae1806184b721eca1abbc75
+	sha256sums = 2a204d7d35509ffc290d80c641fcb7e8488c67ca550aa1695493cff12c53156b
+	sha256sums = 50b31b45511e8907f1319305c102f37631b0fbe509f862b612e70073383658e4
+	sha256sums = 6ff6970d2a1961aed375a8e5098bf3b7340ff86fe60aff4483dec3400f273372
+
+pkgname = lib32-snappy
