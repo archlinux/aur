@@ -16,7 +16,7 @@ pkgname=(
 )
 
 pkgver=0.7.3
-pkgrel=3
+pkgrel=6
 pkgdesc="LED controller daemon for arcade cabinets and RGB lighting"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/meduzapat/LEDSpicer"
@@ -103,9 +103,6 @@ package_ledspicer() {
 	install=ledspicer.install
 
 	DESTDIR="${pkgdir}" cmake --install "${srcdir}/LEDSpicer-${pkgver}/build"
-
-	cp -r "${srcdir}/LEDSpicer-${pkgver}/docs/examples" \
-		"${pkgdir}/usr/share/doc/ledspicer/"
 
 	# Remove library artifacts (handled by libledspicer)
 	rm -f "${pkgdir}/usr/lib/libledspicer.so"*
