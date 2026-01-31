@@ -1,0 +1,4 @@
+[github-mcp-server]
+source = "git"
+git = "https://github.com/github/github-mcp-server.git"
+prefix = "v"

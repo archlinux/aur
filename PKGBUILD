@@ -1,26 +1,66 @@
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 # Maintainer: dougEfresh <dchimento@gmail.com>
-pkgname=github-mcp-server
+
+pkgname="github-mcp-server"
 pkgver=0.30.2
-pkgrel=1
-pkgdesc="GitHub's official MCP Server"
-arch=(x86_64)
-url="https://github.com/github/github-mcp-server/"
-license=(MIT)
-source=("https://github.com/github/github-mcp-server/releases/download/v${pkgver}/github-mcp-server_Linux_x86_64.tar.gz")
-sha256sums=('1454730e96da4469c949d67a078ff0a6e4a5ebab667b9c112fe545c81d2505ad')
+pkgrel=2
+pkgdesc="GitHub's official MCP server which connects AI tools directly to GitHub's platform"
+arch=(
+  'aarch64'
+  'i686'
+  'x86_64'
+)
+url="https://github.com/github/${pkgname}"
+license=(
+  'MIT'
+)
+depends=(
+  'glibc'
+)
+makedepends=(
+  'git'
+  'go'
+)
+_pkgsrc="${url##*/}"
+source=(
+  "${_pkgsrc}::git+${url}.git#tag=v${pkgver}"
+)
+sha256sums=('7c35be2bdc9d6030fb92731e4d68931ab5c24f1dfd255680241fdd3c579ff1a1')
 
-package() {
-  install -Dm755 github-mcp-server "$pkgdir/usr/bin/github-mcp-server"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+prepare() {
+  export GOMODCACHE="${srcdir}/go-mod-cache"
 
-  # Shell completions
-install -dm755 "$pkgdir/usr/share/bash-completion/completions"
-install -dm755 "$pkgdir/usr/share/zsh/site-functions"
-install -dm755 "$pkgdir/usr/share/fish/vendor_completions.d"
+  cd "${srcdir}/${_pkgsrc}"
+  go mod download -modcacherw -x
 
-"$srcdir/github-mcp-server" completion bash > "$pkgdir/usr/share/bash-completion/completions/github-mcp-server"
-"$srcdir/github-mcp-server" completion zsh > "$pkgdir/usr/share/zsh/site-functions/_github-mcp-server"
-"$srcdir/github-mcp-server" completion fish > "$pkgdir/usr/share/fish/vendor_completions.d/github-mcp-server.fish"
+  mkdir -p "build"
 }
 
+build() {
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOCACHE="${srcdir}/go-cache"
+  export GOMODCACHE="${srcdir}/go-mod-cache"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+  cd "${srcdir}/${_pkgsrc}"
+  go build -v -o "build/${pkgname}" -ldflags "\
+    -X main.version=${pkgver} \
+    -X main.commit=$(git rev-parse HEAD) \
+    -X main.date=$(date --utc --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" '+%Y-%m-%dT%H:%M:%SZ')" \
+    ./"cmd/${pkgname}"
+}
+
+check() {
+  cd "${srcdir}/${_pkgsrc}"
+  go test ./...
+}
+
+package() {
+  cd "${srcdir}/${_pkgsrc}"
+  install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
