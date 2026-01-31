@@ -2,7 +2,7 @@
 # Maintainer: Masato TOYOSHIMA <phoepsilonix@gmail.com>
 # Contributor: Morgan <morganamilo@archlinux.org>
 
-_ver_pacman_static=7.1.0.r10
+_ver_pacman_static=7.1.0.r9.g54d9411-1
 _unistring_ver=1.4.1
 _attr_ver=2.5.2
 _acl_ver=2.3.2
@@ -247,7 +247,7 @@ build () {
   cd $srcdir/pacman-static
   # If pacman-static($_ver_pacman_static) is not installed, build and install it.(Because it requires libalpm.a.)
   # Build and install pacman-static if the version is not greater than or not equal to $_ver_pacman_static or if the package cannot read symbols in the static link library(libalpm.a).
-  if ! checkver $(LC_ALL=C pacman -Qi pacman-static|grep Version|grep -Eo "[0-9]+\.[0-9]+\.[0-9]+\.r[0-9]+") $_ver_pacman_static || [[ ! $(LC_ALL=C objdump --syms /usr/lib/pacman/lib/libalpm.a | grep -E "\.text.* alpm_version") ]] ; then
+  if ! checkver $(LC_ALL=C pacman -Qi pacman-static|grep Version|grep -Eo "[0-9]+\.[0-9]+\.[0-9]+\.r[0-9]+.*$") $_ver_pacman_static || [[ ! $(LC_ALL=C objdump --syms /usr/lib/pacman/lib/libalpm.a | grep -E "\.text.* alpm_version") ]] ; then
     # Addition of -ffat-lto-objects to LTOFLAGS.(prevent static lib mangling)
     sed -r "/(export LDFLAGS=.*)/s/(.+)/export LTOFLAGS+=' -fuse-linker-plugin -ffat-lto-objects'\n\1/" PKGBUILD -i
     # _sslver=3.6.1 above
