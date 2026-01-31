@@ -3,7 +3,7 @@
 
 pkgname=mkclean
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Clean up and optimize MKV files"
 arch=('x86_64')
 url='https://www.matroska.org/downloads/mkclean.html'
@@ -16,7 +16,8 @@ sha256sums=('2f5cdcab0e09b65f9fef8949a55ef00ee3dd700e4b4050e245d442347d7cc3db')
 build() {
   cmake -S "mkclean-${pkgver}" -B build \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
   cmake --build build
 }
