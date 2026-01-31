@@ -1,36 +1,74 @@
-post_install()
-{
-  echo "creating wazuh user and group"
-  groupadd -f wazuh
-  usuario="wazuh" && id "$usuario" &>/dev/null || useradd --system -g wazuh -d /var/ossec -s /usr/bin/nologin wazuh
+_ossec_conf="/var/ossec/etc/ossec.conf"
+_ossec_conf_bak="/var/ossec/etc/ossec.conf.bak"
+
+post_install() {
+  echo "Creating wazuh user and group..."
+  # Crear grupo de sistema (-r) si no existe
+  getent group wazuh &>/dev/null || groupadd -r wazuh
+  # Crear usuario de sistema (-r) sin home (-M), shell nologin, para que no aparezca en login
+  getent passwd wazuh &>/dev/null || useradd -r -g wazuh -M -d /var/ossec -s /usr/sbin/nologin -c "Wazuh Agent" wazuh
   chown -R wazuh:wazuh /var/ossec
+
   echo "Done!"
-  echo "Visit https://documentation.wazuh.com/current/installation-guide/wazuh-agent/wazuh-agent-package-linux.html and follow the configure instructions, also, check https://documentation.wazuh.com/current/user-manual/deployment-variables/deployment-variables-linux.html for deployment vars, and https://documentation.wazuh.com/current/user-manual/agent-enrollment/index.html if you didn't follow wazu's installation guide
-  or, just run the next commands:
-  /var/ossec/bin/manage_agents -i <agent_key>
-  systemctl daemon-reload
-  systemctl enable wazuh-agent
-  systemctl start wazuh-agent"
+  echo ""
+  echo "A default ossec.conf has been installed."
+  echo "Edit /var/ossec/etc/ossec.conf to configure your Wazuh manager IP address."
+  echo ""
+  echo "Visit https://documentation.wazuh.com/current/installation-guide/wazuh-agent/wazuh-agent-package-linux.html"
+  echo "and follow the configure instructions."
+  echo ""
+  echo "Quick start commands:"
+  echo "  /var/ossec/bin/manage_agents -i <agent_key>"
+  echo "  systemctl daemon-reload"
+  echo "  systemctl enable wazuh-agent"
+  echo "  systemctl start wazuh-agent"
+}
+
+pre_upgrade() {
+  # Respaldar configuración actual antes de la actualización
+  if [ -f "$_ossec_conf" ]; then
+    echo "Backing up current ossec.conf..."
+    cp -f "$_ossec_conf" "$_ossec_conf_bak"
+  fi
 }
 
 post_upgrade() {
   # Asegurarse de que el usuario y grupo existan después de una actualización
-  groupadd -f wazuh
-  usuario="wazuh" && id "$usuario" &>/dev/null || useradd --system -g wazuh -d /var/ossec -s /usr/bin/nologin wazuh
-  
+  getent group wazuh &>/dev/null || groupadd -r wazuh
+  getent passwd wazuh &>/dev/null || useradd -r -g wazuh -M -d /var/ossec -s /usr/sbin/nologin -c "Wazuh Agent" wazuh
+
+  # Restaurar configuración respaldada si existe
+  if [ -f "$_ossec_conf_bak" ]; then
+    echo "Restoring previous ossec.conf configuration..."
+    cp -f "$_ossec_conf_bak" "$_ossec_conf"
+    echo "Your previous configuration has been restored."
+  fi
+
   # Restaurar permisos correctos después de una actualización
   chown -R wazuh:wazuh /var/ossec
-  
+
   # Asegurarse de que los archivos de configuración tengan los permisos correctos
-  if [ -f "/var/ossec/etc/ossec.conf" ]; then
-    chmod 644 /var/ossec/etc/ossec.conf
+  if [ -f "$_ossec_conf" ]; then
+    chmod 640 "$_ossec_conf"
+    chown wazuh:wazuh "$_ossec_conf"
   fi
-  
+
   if [ -f "/var/ossec/etc/local_internal_options.conf" ]; then
-    chmod 644 /var/ossec/etc/local_internal_options.conf
+    chmod 640 /var/ossec/etc/local_internal_options.conf
   fi
-  
+
   if [ -f "/var/ossec/etc/client.keys" ]; then
-    chmod 644 /var/ossec/etc/client.keys
+    chmod 640 /var/ossec/etc/client.keys
   fi
+}
+
+pre_remove() {
+  echo "Stopping wazuh-agent service..."
+  systemctl stop wazuh-agent 2>/dev/null || true
+  systemctl disable wazuh-agent 2>/dev/null || true
+}
+
+post_remove() {
+  echo "Note: Configuration files in /var/ossec/etc/ have been preserved."
+  echo "Remove /var/ossec manually if you want to delete all data."
 }
