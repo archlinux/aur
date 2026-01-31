@@ -9,6 +9,7 @@ arch=('any')
 url="https://github.com/openai/codex"
 license=('Apache')
 depends=('openai-codex-bin')
+install=openai-codex-autoup-bin.install
 
 package() {
   :
