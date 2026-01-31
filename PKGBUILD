@@ -31,3 +31,4 @@ package() {
     install -Dm644 "${srcdir}/envycontrol-tray.desktop" "${pkgdir}/etc/xdg/autostart/envycontrol-tray.desktop"
 }
 
+
