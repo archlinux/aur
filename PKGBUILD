@@ -13,7 +13,7 @@
 pkgname=mongodb
 _pkgname=mongodb
 # #.<odd number>.# releases are unstable development/testing
-pkgver=8.2.3
+pkgver=8.2.4
 pkgrel=1
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64" "aarch64")
@@ -30,7 +30,9 @@ optdepends=('mongodb-tools: mongoimport, mongodump, mongotop, etc'
 backup=("etc/mongodb.conf")
 provides=(mongodb="$pkgver")
 options=(!debug)
-source=("https://github.com/mongodb/mongo/archive/refs/tags/r$pkgver.tar.gz"
+# mongo forgot to tag 8.2.4 properly, temporarily use last 8.2.4 tag
+#source=("https://github.com/mongodb/mongo/archive/refs/tags/r$pkgver.tar.gz"
+source=("https://github.com/mongodb/mongo/archive/refs/tags/r$pkgver-alpha1.tar.gz"
         mongodb.sysusers
         mongodb.tmpfiles
         bazel-python-path.patch
@@ -39,7 +41,7 @@ source=("https://github.com/mongodb/mongo/archive/refs/tags/r$pkgver.tar.gz"
         bazel-version.patch
         bazelisk-url.patch
 )
-sha256sums=('eb2592c71dc75081bd044607e3bbcf3c8436a07b26d6532630b5c1bf55732350'
+sha256sums=('fce69cbebe922e861b758ce0ff8a616de3baf66ad5f265825d67a13ec04b9d72'
             '3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795'
             'b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39'
             '59a522f2a20a003799dbff2846a5b7a2e46eb1deab75b0bb3c3746cfe2b5446e'
