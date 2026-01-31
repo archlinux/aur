@@ -11,7 +11,7 @@
 
 _android_arch=armv7a-eabi
 pkgname=android-armv7a-eabi-qt6-base
-_qtver=6.10.1
+_qtver=6.10.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -55,28 +55,36 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/subm
         '0017-Allow-configuring-use-of-OpenSSL-in-QPasswordDigesto.patch'
         '0018-Drop-CMAKE_SYSTEM_VERSION-from-modules-json-if-Linux.patch'
         '0019-Workaround-linker-error-about-missing-symbol-__sync_.patch'
-        '0020-Fix-Android-build-after-ec2e3e7ac92d000e0df0c693b9a6.patch')
-sha256sums=('5a6226f7e23db51fdc3223121eba53f3f5447cf0cc4d6cb82a3a2df7a65d265d'
-            '0f03776b94757fa171b10410870142627886f428a7d1c148eada92e4b378ea55'
-            '0c2b64aa5fe1aef64ce2cf755451ec4759b88b073afb877468f4b507e9a1d205'
-            '530461532946fce52c9c68aff1ba4ec9cb0a14a76ede5aad7715663900833b89'
-            '766fdcf5f760007617c851293d6c500b04f74c3c2fd7d011d757d370c5d661fe'
-            '532a54e7d952184ce3d57c0264a8e884bba6e5b42defea5caa7903c07b4a2a65'
-            'c9aac3871b4cc8e362bf17ba32eafd7709e8d680cd0d21d43a4c43ee2e3fe452'
-            '3c232d2b1f772d269ec0cb20862679b0691c35b36dac681d4d42cd9c11f059d4'
-            '083a28fd5c64bdc65974c86d1c253bfd36bcba41e1b023a0ba6ca26167a54011'
-            '49b3a49812aa4b52231e99c9989cb5b3fb27e4d465699ba96ba476a3d84f16a5'
-            '0ce2efbddd69a9fc8cd23cf975663c5add4d1ec4d414436ebfbee3e5c9b131bd'
-            '3e709a2e268e6d65ccd467d6c7b0f89b532070c8db72ff2a048a7ad0ac75067c'
-            '8a69dfde420ac520616828d0eb81af6ede1f2d274807199c56549374f3ff58b6'
-            'd4df5a66dbe460a5d17e3acc7e3007cb9d1a2815def091d65cb879763744058a'
-            '498257c1b259e46bdf569b37d9c0bd3194751c4c35ec75b42b2deb15c171fc49'
-            'c25f1941eac2241140f942fb6c1aad5509c94fb8e34008772259f1b01593d75e'
-            '117ca3f87dad78d79cce494e42cd4395663c10e9ae6ef16f2789ed49b28a94fb'
-            '13ce923c2735c2d7097330aea6d137237354469c4df1b04aba4e3ff12466ac6a'
-            '74ca87c89118560aa6a4feaee9cd668996c17da7e66bc4e3ea6594f843e584ee'
-            '760788b8eb19e876515e05b59381d322419ba9be3615e0da922a06c0f0d277ed'
-            '6e1fb73a571158dca4c7d32e75ed71b1ea9beae2d3dfa7c67ba1d8f56d5a10e9')
+        '0020-Fix-Android-build-after-ec2e3e7ac92d000e0df0c693b9a6.patch'
+        '0021-Fix-inclusion-of-OpenGL-header-after-Qt-6-header.patch'
+        '0022-Use-a-more-reasonable-fallback-directory-for-fonts-o.patch'
+        '0023-Undefine-mingw-stat.patch'
+        '0024-Export-some-constexpr-variables.patch')
+sha256sums=('aeb78d29291a2b5fd53cb55950f8f5065b4978c25fb1d77f627d695ab9adf21e'
+            '4e3664deeed9cad5a36b3a0c8a424666f15761b27edeb7c1d88d9e8c6180e4cd'
+            'e4fb252c8411057d78d8a9db99535213342f3d014775905c5873ee9adb289b51'
+            'e8a9751153224b4c3ebbe44b9c915384deaad323647c05f766da6b573493fedc'
+            'cce050a3beaaab45ebcd280efd360fecb1218893d05d324f5640dc73b5dfe669'
+            'c91ad27e0608b6ceeb41772055ac301c04231f38150eb5a77d34c8324377e373'
+            'b5f3b11db1795502d9df739f9ce70919950ef28348340ee76feb19685454cbc4'
+            '078a10549fb30d66e2506a1694783dc238467cdf7ee41aeb3d2e3d28f0ac7898'
+            '193a246d06a3eb1fc74b8516bd682e2e73da9c6d39b10acf937c424df1ce9035'
+            '30b9ef3e9eaa7159fb05958a2f1bdb88a492a7064175f0f2a4eba0992327afe4'
+            '159f8fee1c3a199f2bdd72eb893ba4271c3b0149a34e8c45bfab0def55d1f3c5'
+            'e9115b33492d3bbeebbd7e27861e438a7ed5b7849c5a56c9c43c273178c87391'
+            'c19e24db24b1759907a0fb8b68dc0b204e1489b7d4b164b93330684fb28be404'
+            '218a9d341f3f1fce5beb648be907fb168cd8550c6f34b7d90da3f9e3c054df8b'
+            '19beffb348ea93463e84d8f5c738268eac560a3dc4a35a31651e252b0c218ca9'
+            'eabd7e2e1333aba95f1b9ce840338b89a393c86f007b3a50453d036dc7a7bbef'
+            '6a205d48f669b28f527ba8e2d2f4e67c544f6a02c16589482d2b2b824198df6b'
+            'fbf25d0ff91ae30b95fbacb9c354997a51c4d2dd1c5d32263c541e56ba807133'
+            'b70ae6aa150462a60af383994e23a74cba192452b675c313882a04601de19cdd'
+            '13b6e54998864d0667c39e66076a1f9fb23a7fbcc84a5c1df0f6a05c578399bd'
+            'a36d753b93690f52b523d99b055c032d3686ed2b0c8d73def315b6e2e8a0a0ee'
+            '9c0c7f03791ea6144a3ba8da955423a270757020894ca4b63f8df6238180ebbd'
+            '4f93ddcd38f0d2f4ee240e555841aab6857cbaecce4b1999bc51cc1417a5ccc1'
+            '23c584af4d6b2bd776f894930efa8fa7b46deae67c65e0bbbfaff036253efe4f'
+            '8c34f996f6915fda316ed2bb6253b4595c171236195076a5c211ad6b0e54178a')
 
 prepare () {
   cd $_pkgfqn

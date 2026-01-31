@@ -1,0 +1,30 @@
+From bb98309775828565cfbbcb0e380d1ffc18fd6ead Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Mon, 1 Dec 2025 11:28:49 +0100
+Subject: [PATCH 23/24] Undefine mingw stat
+
+From MINGW-packages commit e5c4652cad95df5f6435b6c564c52a7ae7d8e5f7.
+
+Change-Id: I2c21a2b4bb46f582a5e694761c94c168e2ca98f7
+---
+ src/corelib/io/qfileinfo.h | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/corelib/io/qfileinfo.h b/src/corelib/io/qfileinfo.h
+index 01e69f62c4d..0bce9fb0abe 100644
+--- a/src/corelib/io/qfileinfo.h
++++ b/src/corelib/io/qfileinfo.h
+@@ -13,6 +13,10 @@
+ #include <QtCore/qdatetime.h>
+ #include <QtCore/qtimezone.h>
+ 
++#ifdef stat
++#undef stat
++#endif
++
+ QT_BEGIN_NAMESPACE
+ 
+ 
+-- 
+2.52.0
+
