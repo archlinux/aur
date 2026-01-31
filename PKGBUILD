@@ -1,13 +1,13 @@
 #Maintainer: Drake Strickland <drake.o.strickland at gmail dot com>
 
 pkgname=banjorecomp-bin
-pkgver=1.0.0
-pkgrel=5
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="A static recompilation of Banjo-Kazooie"
 arch=(x86_64)
 url="https://github.com/BanjoRecomp/BanjoRecomp"
 _reponame=BanjoRecomp
-license=('GPL')
+license=('GPLv3')
 depends=()
 source=(
     "https://github.com/${_reponame}/${_reponame}/releases/download/v${pkgver}/BanjoRecompiled-v${pkgver}-Linux-X64.zip"
@@ -16,14 +16,14 @@ source=(
     "BanjoRecomp-bin.desktop"
     )
 sha256sums=(
-    e70fe3227c399f3cb460ea0d245407b5a71e810ddd86e59aa62e8b094918eda9
+    e315303c34f4e5fa54fa4b507a63fb19766182a257b5b50302bb8d7a7b1847a6
     SKIP
     SKIP
     SKIP
     )
 
 prepare() {
-	bsdtar -xf BanjoRecompiled-v1.0.0-Linux-X64.zip
+	bsdtar -xf BanjoRecompiled-v${pkgver}-Linux-X64.zip
 	tar xvf "$srcdir/BanjoRecompiled.tar.gz"
 }
 
