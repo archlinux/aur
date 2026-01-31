@@ -1,7 +1,7 @@
 pkgbase = clp
 	pkgdesc = writes input files to stdout with syntax highlighting
-	pkgver = 0.3.0
-	pkgrel = 2
+pkgver = 0.4.0
+pkgrel = 1
 	url = https://git.sr.ht/~eskin/clp
 	arch = x86_64
 	arch = aarch64
@@ -10,7 +10,7 @@ pkgbase = clp
 	depends = lua51-lpeg
 	depends = lua51-luautf8
 	conflicts = clp-git
-	source = clp-0.3.0.tar.gz::https://git.sr.ht/~eskin/clp/archive/v0.3.0.tar.gz
-	sha256sums = a832775b68ba625106d0e58ec1ec646fe7f3abc8371e0a878c9ffe107be559bb
+source = clp-0.4.0.tar.gz::https://git.sr.ht/~eskin/clp/archive/v0.4.0.tar.gz
+sha256sums = 8e3b7d77ab588c4df6630713e5de9d5bd3a167f3ad7eeed377f9f7e189489c1b
 
 pkgname = clp

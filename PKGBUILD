@@ -1,15 +1,15 @@
 # Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
 
 pkgname=clp
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc='writes input files to stdout with syntax highlighting'
 arch=('x86_64' 'aarch64')
 url="https://git.sr.ht/~eskin/clp"
 license=('custom')
 depends=('luajit' 'lua51-lpeg' 'lua51-luautf8')
 source=("${pkgname}-${pkgver}.tar.gz::https://git.sr.ht/~eskin/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('a832775b68ba625106d0e58ec1ec646fe7f3abc8371e0a878c9ffe107be559bb')
+sha256sums=('8e3b7d77ab588c4df6630713e5de9d5bd3a167f3ad7eeed377f9f7e189489c1b')
 conflicts=("${pkgname}-git")
 
 build() {
