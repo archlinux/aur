@@ -1,5 +1,5 @@
 pkgname=airctl-bin
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="WiFi network manager GUI (prebuilt binary)"
 arch=('x86_64')
@@ -9,16 +9,15 @@ license=('GPL-3.0-only')
 conflicts=('airctl')
 provides=('airctl')
 
-options=('!strip')
+options=('!strip' '!debug')
 
 depends=(
   gtk4
   networkmanager
 )
 
-
 source=(
-  "airctl-$pkgver.bin::https://github.com/pshycodr/airctl/releases/download/v$pkgver/main.bin"
+  "airctl::https://github.com/pshycodr/airctl/releases/download/v$pkgver/airctl.bin"
   "airctl.desktop"
   "airctl.png"
 )
@@ -30,7 +29,7 @@ sha256sums=(
 )
 
 package() {
-  install -Dm755 "$srcdir/airctl-$pkgver.bin" \
+  install -Dm755 "$srcdir/airctl" \
     "$pkgdir/usr/bin/airctl"
 
   install -Dm644 "$srcdir/airctl.desktop" \
