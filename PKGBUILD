@@ -1,9 +1,9 @@
 # Maintainer: puddings233 <puddings233 at outlook dot com>
 
 _java_ver=17
-_zulu_build="${_java_ver}.60.17-ca"
+_zulu_build="${_java_ver}.64.15-ca"
 pkgname=jre${_java_ver}-zulu-bin
-pkgver="${_java_ver}.0.16"
+pkgver="${_java_ver}.0.18"
 pkgrel=1
 pkgdesc='Azul Zulu OpenJDK full runtime environment, bin version.'
 arch=('aarch64' 'i686' 'x86_64')
@@ -38,9 +38,9 @@ install="$pkgname.install"
 source_aarch64=("https://cdn.azul.com/zulu/bin/zulu${_zulu_build}-jre${pkgver}-linux_aarch64.tar.gz")
 source_i686=("https://cdn.azul.com/zulu/bin/zulu${_zulu_build}-jre${pkgver}-linux_i686.tar.gz")
 source_x86_64=("https://cdn.azul.com/zulu/bin/zulu${_zulu_build}-jre${pkgver}-linux_x64.tar.gz")
-sha256sums_aarch64=('c322b8e7aef06b8ea1aa32f896f25a272a3cf3f6b202418e192161e8d667c460')
-sha256sums_i686=('9e0b5292f7fede3ead0aad345446a50eb675f5b8266889dbca9b38a85b03cf59')
-sha256sums_x86_64=('0111fb8b77921b0f9a717b3aeb34c5407aaf8381dd68d7d1e596ba2321cd18b1')
+sha256sums_aarch64=('c6ba91af1150bc87af618b6845bf23c453adc7ba6a502193ce9a5e204ef68ae8')
+sha256sums_i686=('c50aa0062b226f808a28998ecaab3f0fd8344838afd270262a1d3c4a5581fb1a')
+sha256sums_x86_64=('54facaef98a24c159b33d455b5463a1b3bcb4a63ec5da7dfda64d3ae62415b5f')
 
 _jvmdir=/usr/lib/jvm/java-${_java_ver}-zulu
 
