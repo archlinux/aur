@@ -2,13 +2,14 @@
 # Contributor: Sin Kim <kimsin98@gmail.com>
 
 pkgname=webchanges
-pkgver=3.31.4
+pkgver=3.33.0
 pkgrel=1
 pkgdesc='Check web content for changes and notify'
 arch=('any')
 url='https://github.com/mborsetti/webchanges'
 license=('MIT' 'BSD')
-depends=('python-cssselect'
+depends=('python-argparse-manpage'
+         'python-cssselect'
          'python-html2text'
          'python-httpx'
          'python-lxml'
@@ -38,7 +39,7 @@ optdepends=('python-playwright: option to use browser'
             'python-redis: redis database'
             'python-keyring: password keyring storage')
 source=("https://github.com/mborsetti/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5c5cfbbc555d49a726cb8e567106e958c0bfba3405cfa59e826405eef2e4d1eb')
+sha256sums=('0fc873948790fe0b82c74d11306c3f73abc91f5b334d585be299d670e35011f4')
 
 build() {
     cd "$pkgname-$pkgver"
