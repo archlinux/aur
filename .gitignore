@@ -4,4 +4,5 @@
 pkg/
 src/
 *.tar.zst
+nohup.out
 
