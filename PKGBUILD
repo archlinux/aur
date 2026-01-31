@@ -98,6 +98,11 @@ package() {
     mkdir "${pkgdir}/opt"
     cp -r "${srcdir}/squashfs-root" "${pkgdir}/opt/${_pkgname}"
 
+    # Deduplicate OpenSSL libraries
+    for lib in lib{crypto,ssl}.so; do
+        ln -fs "${lib}.1.1" "${pkgdir}/opt/${_pkgname}/lib/${lib}"
+    done
+
     # Custom wrapper
     install -Dm755 "${srcdir}/eidklient" "${pkgdir}/usr/bin/eID_Client"
 
