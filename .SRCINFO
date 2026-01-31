@@ -1,7 +1,7 @@
 pkgbase = hackrf-spectrum-analyzer
 	pkgdesc = Spectrum Analyzer GUI for hackrf_sweep
 	pkgver = 2024.11.10
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/pavsa/hackrf-spectrum-analyzer
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = hackrf-spectrum-analyzer
 	makedepends = gendesk
 	depends = java-runtime>=8
 	depends = hackrf>=2024.02.1
-	depends = fftw>=3,
+	depends = fftw>=3
 	depends = libusb>=1
 	source = hackrf-spectrum-analyzer-2024.11.10.zip::https://github.com/pavsa/hackrf-spectrum-analyzer/releases/download/v2024.11.10/hackrf_spectrum_analyzer.zip
 	sha512sums = 8e54d02bf2d7561acc4633160b18a36d750d09b78f19afec235c850526d96e596a782450e5a48816e36df7c0cda3e97a4da6c5704ace362094d744c9ef4f1646
