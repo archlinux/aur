@@ -1,6 +1,6 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=pystand
-pkgver=2.26
+pkgver=2.27
 pkgrel=1
 pkgdesc="Install Python Versions From The Python-Build-Standalone Project"
 url="https://github.com/bulletmark/$pkgname"
@@ -12,7 +12,7 @@ depends=("python>=3.8" "python-argcomplete" "python-packaging"
 makedepends=(python-setuptools python-build python-installer
              python-wheel python-setuptools-scm)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha1sums=('8befaaa0234dd520ee488f43697a6fc352a58c9c')
+sha1sums=('09a3a068a613972b737ef59da0bd058518e59ddb')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
