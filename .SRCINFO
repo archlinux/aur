@@ -1,0 +1,23 @@
+pkgbase = mx-snapshot
+	pkgdesc = A tool for creating live ISO images from running systems
+	pkgver = 26.01arch
+	pkgrel = 1
+	url = https://mxlinux.org
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = polkit
+	depends = squashfs-tools
+	depends = xorriso
+	depends = mx-iso-template-arch
+	provides = mx-remaster-live-files=1.0.0
+	conflicts = mx-remaster-live-files
+	replaces = mx-remaster-live-files
+	source = https://github.com/MX-Linux/mx-snapshot/archive/refs/tags/26.01arch.tar.gz
+	sha256sums = 6145fb5cd547f245519e25c82df11bf7923d4ddeb79d91e0dce2247ef2987022
+
+pkgname = mx-snapshot
