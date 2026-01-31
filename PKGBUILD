@@ -23,8 +23,8 @@ sha256sums=('SKIP')
 prepare () {
     sed -i "s/subproject('libdwarf').*/dependency('libdwarf')/" "$srcdir/orbuculum/meson.build"
 
-	# Remove plugdev group that prevents the rule from loading. We rely on uaccess tag.
-	sed -i 's/, GROUP="plugdev"//' "$srcdir/orbuculum/Support/60-orbcode.rules"
+    # Remove plugdev group that prevents the rule from loading. We rely on uaccess tag.
+    sed -i 's/, GROUP="plugdev"//' "$srcdir/orbuculum/Support/60-orbcode.rules"
 }
 
 pkgver() {
