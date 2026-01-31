@@ -1,6 +1,6 @@
 pkgbase = connected-desktop-bin
 	pkgdesc = High-speed, offline, cross-platform ecosystem bridging devices (Binary)
-	pkgver = 2.1.5
+	pkgver = 2.1.7
 	pkgrel = 1
 	url = https://github.com/paterkleomenis/connected
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = connected-desktop-bin
 	provides = connected-desktop
 	conflicts = connected-desktop
 	conflicts = connected-desktop-git
-	source = https://github.com/paterkleomenis/connected/releases/download/2.1.5/connected-desktop
+	source = https://github.com/paterkleomenis/connected/releases/download/2.1.7/connected-desktop
 	source = https://raw.githubusercontent.com/paterkleomenis/connected/main/packaging/aur/connected-desktop.desktop
 	source = https://raw.githubusercontent.com/paterkleomenis/connected/main/android/app/src/main/ic_launcher-playstore.png
 	source = https://raw.githubusercontent.com/paterkleomenis/connected/main/LICENSE-MIT
