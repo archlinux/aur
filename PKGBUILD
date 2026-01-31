@@ -2,7 +2,7 @@
 
 _pkgname='zvm'
 pkgname="$_pkgname-bin"
-pkgver='0.8.12'
+pkgver='0.8.13'
 pkgrel='1'
 pkgdesc='Version manager for Zig compilers (binary version)'
 provides=("$_pkgname")
@@ -33,10 +33,10 @@ source_ppc64le=(
 sha256sums=('6149c9a360f7fcde722b0d3c54a129737d10142857b26d1aaf1a5ec9737bb459'
             '08cd47b1b748b3b5a6b29bd012a9d09bbd70717180debe7edcf2a2d230b2089d'
             '66da3559a9c3083f4e9dcbc288891974dac57bc4c2ed27bd4d434131ca6f65d2')
-sha256sums_x86_64=('56162f8cac745489762393272130c2ea0d26efe021d3aa9827aa7482f0c7bf2c')
-sha256sums_aarch64=('fc46b2b0cd71829f3ba9a4bf228d503da3debe0cbc0fbc792d871cf3566405ed')
-sha256sums_loongarch64=('c28a2c357e75ce3eb1fff7c270992c292e5557cef3eb757dc7c7b4c6a77b9cdf')
-sha256sums_ppc64le=('c2869b09b200c990f6d85ad924d6da386dc7cb058986c0a2aeafd98174715b0d')
+sha256sums_x86_64=('d1407c42847f0b34ff72671dedc96780673bab199ab21b58c09c6842edaa7110')
+sha256sums_aarch64=('de3ac05d419195c43bc6693de9b6231f1c7a5b9373a6ad69cab72f7839670e35')
+sha256sums_loongarch64=('6d2714d8a4324ebc9212d6276fe47cb37fdf490902f8ff9e0509c3379703b2d1')
+sha256sums_ppc64le=('c4aca6c39e8abf2881b1be58f6851aade813d802e69cfa51aac73a313f5f3d7e')
 
 package() {  
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
