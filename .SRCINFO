@@ -1,6 +1,6 @@
 pkgbase = glpi
 	pkgdesc = GLPI Inventory Management
-	pkgver = 11.0.4
+	pkgver = 11.0.5
 	pkgrel = 1
 	url = https://www.glpi-project.org
 	install = glpi.install
@@ -21,7 +21,7 @@ pkgbase = glpi
 	options = !strip
 	backup = etc/httpd/conf/extra/httpd-glpi.conf
 	backup = etc/glpi/local_define.php
-	source = https://github.com/glpi-project/glpi/releases/download/11.0.4/glpi-11.0.4.tgz
+	source = https://github.com/glpi-project/glpi/releases/download/11.0.5/glpi-11.0.5.tgz
 	source = httpd-glpi.conf
 	source = glpi.install
 	source = glpi.service

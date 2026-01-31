@@ -3,7 +3,7 @@
 # Contributor: khvalera <khvalera[at]ukr[dot]net>
 
 pkgname=glpi
-pkgver=11.0.4
+pkgver=11.0.5
 pkgrel=1
 pkgdesc="GLPI Inventory Management"
 arch=('any')
@@ -66,5 +66,4 @@ package() {
   find $pkgdir/var/lib/glpi -type d -exec chmod 775 "{}" \;
   rmdir "$pkgdir"/var/lib/glpi/_log
   install -Dm644 "${srcdir}"/*.po $pkgdir/usr/share/webapps/glpi/locales/
-  #msgfmt $pkgdir/usr/share/webapps/glpi/locales/uk_UA.po -o $pkgdir/usr/share/webapps/glpi/locales/uk_UA.mo
 }
