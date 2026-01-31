@@ -2,7 +2,7 @@
 pkgname=zerobrew-git
 pkgver=r109.31b8d83
 pkgrel=1
-pkgdesc="High-performance drop-in Homebrew replacement written in Rust"
+pkgdesc="A drop-in, 5-20x faster, experimental Homebrew alternative"
 arch=('x86_64' 'aarch64')
 url="https://github.com/lucasgelfond/zerobrew"
 license=('MIT' 'Apache-2.0')
