@@ -1,0 +1,19 @@
+pkgbase = sorta
+	pkgdesc = CLI tool to automatically sort PDFs into folders using keyword routing
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/woterr/sorta
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-typer
+	depends = python-rich
+	depends = python-watchdog
+	depends = python-pypdf
+	source = sorta-1.0.0.tar.gz::https://github.com/woterr/sorta/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = c622a4732d6f52660560c62041bdf54ee374342f2b3786de503c0bbba095bbb6
+
+pkgname = sorta
