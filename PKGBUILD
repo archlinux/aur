@@ -1,7 +1,7 @@
 # Maintainer: Volodymyr Zolotopupov <zvova7890@gmail.com>
 
 pkgname=ksysguard6-git
-pkgver=r3602.5794f61
+pkgver=r3613.6ecc098
 pkgrel=1
 pkgdesc='Track and control the processes running in your system. KF6 version'
 arch=(x86_64)
@@ -30,7 +30,7 @@ depends=(gcc-libs
 makedepends=(extra-cmake-modules
              kdoctools
              git)
-source=(git+https://github.com/zvova7890/ksysguard6.git#branch=kf6)
+source=(git+https://github.com/zvova7890/ksysguard6.git#branch=master)
 sha256sums=('SKIP')
 
 
@@ -41,7 +41,8 @@ pkgver() {
 
 build() {
   cmake -B build -S ksysguard6 \
-    -DBUILD_TESTING=OFF
+    -DBUILD_TESTING=OFF \
+    -DWITH_SYSTEMMONITOR=ON
   cmake --build build
 }
 

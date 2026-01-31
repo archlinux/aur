@@ -1,6 +1,6 @@
 pkgbase = ksysguard6-git
 	pkgdesc = Track and control the processes running in your system. KF6 version
-	pkgver = r3602.5794f61
+	pkgver = r3613.6ecc098
 	pkgrel = 1
 	url = https://github.com/zvova7890/ksysguard6
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = ksysguard6-git
 	depends = lm_sensors
 	depends = qt6-base
 	depends = zlib
-	source = git+https://github.com/zvova7890/ksysguard6.git#branch=kf6
+	source = git+https://github.com/zvova7890/ksysguard6.git#branch=master
 	sha256sums = SKIP
 
 pkgname = ksysguard6-git
