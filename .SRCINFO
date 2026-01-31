@@ -1,0 +1,17 @@
+pkgbase = docs-browser
+	pkgdesc = Unified documentation browser with Walker integration for Hyprland desktops
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/johnzfitch/docs-browser
+	arch = any
+	license = MIT
+	depends = bash
+	depends = walker
+	depends = wl-clipboard
+	optdepends = bat: syntax-highlighted preview
+	optdepends = ghostty: default terminal emulator
+	optdepends = hyprland: window tagging support
+	source = docs-browser-1.0.0.tar.gz::https://github.com/johnzfitch/docs-browser/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = docs-browser
