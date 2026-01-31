@@ -1,0 +1,24 @@
+pkgbase = envycontrol-tray
+	pkgdesc = A simple GTK tray application for switching GPU modes using EnvyControl
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-gobject
+	depends = gtk3
+	depends = envycontrol
+	depends = polkit
+	source = envycontrol-tray.py
+	source = envycontrol-tray.desktop
+	source = prime-intel.png
+	source = prime-nvidia.png
+	source = prime-hybrid.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = envycontrol-tray

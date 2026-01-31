@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=EnvyControl Tray
+Comment=NVIDIA GPU Mode Switcher
+Exec=/usr/bin/envycontrol-tray
+Icon=/usr/share/envycontrol-tray/prime-nvidia.png
+Terminal=false
+Categories=System;Settings;
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
