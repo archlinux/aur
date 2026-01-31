@@ -1,11 +1,11 @@
 pkgbase = cs-demo-manager-appimage
 	pkgdesc = Companion application for Counter-Strike demos.
 	pkgver = 3.18.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cs-demo-manager.com/
 	arch = any
 	license = MIT
-	optdepends = postgresql
+	depends = postgresql
 	noextract = CS-Demo-Manager-3.18.2.AppImage
 	options = !strip
 	source = CS-Demo-Manager-3.18.2.AppImage::https://github.com/akiver/cs-demo-manager/releases/download/v3.18.2/CS-Demo-Manager-3.18.2.AppImage

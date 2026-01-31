@@ -2,12 +2,12 @@
 _pkgname=cs-demo-manager
 pkgname=$_pkgname-appimage
 pkgver=3.18.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Companion application for Counter-Strike demos."
 arch=('any')
 url="https://cs-demo-manager.com/"
 license=('MIT')
-optdepends=('postgresql')
+depends=('postgresql')
 options=('!strip')
 _appimage="CS-Demo-Manager-$pkgver.AppImage"
 noextract=("$_appimage")
