@@ -1,6 +1,6 @@
 pkgbase = fcitx5-vmk-bin
 	pkgdesc = VMK (Vietnamese Micro Key) for Fcitx5 - Bộ gõ tiếng Việt mô phỏng UniKey
-	pkgver = 0.9.3alpha6
+	pkgver = 0.9.4
 	pkgrel = 1
 	url = https://github.com/nhktmdzhg/VMK
 	install = fcitx5-vmk.install
@@ -14,7 +14,7 @@ pkgbase = fcitx5-vmk-bin
 	depends = systemd-libs
 	provides = fcitx5-vmk
 	conflicts = fcitx5-vmk
-	source = https://github.com/nhktmdzhg/VMK/releases/download/v0.9.3-alpha6/fcitx5-vmk-v0.9.3-alpha6.tar.gz
-	sha256sums = 1fc17cb0cfc61a7230edb8ea6e295af005733cd4730d29585841e6a81b22ce8c
+	source = https://github.com/nhktmdzhg/VMK/releases/download/v0.9.4/fcitx5-vmk-v0.9.4.tar.gz
+	sha256sums = 1f2c931c5860ce88a5edcbf6b6b3a67232a4d445789796794a854e3c4a5d9a19
 
 pkgname = fcitx5-vmk-bin
