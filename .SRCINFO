@@ -1,6 +1,6 @@
 pkgbase = zerobrew-git
 	pkgdesc = High-performance drop-in Homebrew replacement written in Rust
-	pkgver = r1.0000000
+	pkgver = r109.31b8d83
 	pkgrel = 1
 	url = https://github.com/lucasgelfond/zerobrew
 	install = zerobrew-git.install
@@ -20,7 +20,8 @@ pkgbase = zerobrew-git
 	provides = zb
 	conflicts = zerobrew
 	conflicts = zb
-	source = zerobrew-git::git+https://github.com/lucasgelfond/zerobrew.git
+	options = !lto
+	source = zerobrew-git::git+https://github.com/lucasgelfond/zerobrew.git#branch=main
 	sha256sums = SKIP
 
 pkgname = zerobrew-git

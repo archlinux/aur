@@ -6,6 +6,9 @@ pkg/
 src/
 target/
 
+# Source clones (matches pkgname)
+zerobrew-git/
+
 # Backup files
 *.bak
 *~

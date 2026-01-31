@@ -1,6 +1,6 @@
 # Maintainer: Maria <maria@kuuro.net>
 pkgname=zerobrew-git
-pkgver=r1.0000000
+pkgver=r109.31b8d83
 pkgrel=1
 pkgdesc="High-performance drop-in Homebrew replacement written in Rust"
 arch=('x86_64' 'aarch64')
@@ -11,23 +11,30 @@ makedepends=('git' 'rust' 'cargo')
 provides=('zerobrew' 'zb')
 conflicts=('zerobrew' 'zb')
 install="$pkgname.install"
-source=("$pkgname::git+https://github.com/lucasgelfond/zerobrew.git")
+options=(!lto)
+source=("$pkgname::git+https://github.com/lucasgelfond/zerobrew.git#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare() {
+    cd "$pkgname"
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
     cd "$pkgname"
+    export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --release --locked
+    cargo build --release --frozen
 }
 
 check() {
     cd "$pkgname"
-    cargo test --locked
+    cargo test --frozen
 }
 
 package() {
