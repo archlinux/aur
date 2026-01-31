@@ -2,7 +2,7 @@
 _pkgname=openmemory-backend
 pkgname=${_pkgname}-git
 pkgver=1.3.0.r21.g30daf78
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenMemory backend server (HTTP API + MCP) from git"
 arch=('x86_64')
 url="https://github.com/CaviraOSS/OpenMemory"
@@ -29,9 +29,9 @@ source=(
 
 # For AUR convenience while iterating; you can later replace SKIP with fixed sums.
 sha256sums=('SKIP'
-            '9c5e30768facbc24c28b9f30ae3489e6c46f857e3847f3b4b52821f0ff99021b'
-            'b3e41cca84a25b3ebb86d5a5795bb6a7eff38a21609af52bdc6d5e023299d95e'
-            '9f99895d611103aaf92d1aff003f7746171aa052e21342733a3eb4af085f2607')
+            '19bf453eb01f50e9c2be6dc632202daa9385a669ea8051c3310423b1f71eba88'
+            '9992d4a471fcbfcadac82f13a59885b286967e13cbb8f71dfe26cc5495a6f14c'
+            'af2acf2ba5ce8f441704e5879e2d42d58a03b5dfc97d8e17f47f9e4cea5fece9')
 
 pkgver() {
   cd "${srcdir}/OpenMemory"
@@ -75,14 +75,14 @@ package() {
   # Install the corrected wrapper from the AUR repo (NOT generated inline)
   install -Dm755 "${srcdir}/openmemory-backend" \
     "${pkgdir}/usr/bin/openmemory-backend"
-
-  # Ship a default env template under /etc (users can copy to ~/.config/openmemory/openmemory.env)
-  install -d "${pkgdir}/etc/openmemory"
+  # Ship an env template under /usr/share (read-only, pacman-tracked).
+  # Users can override by copying it to ~/.config/openmemory/openmemory.env.
+  install -d "${pkgdir}/usr/share/openmemory"
   if [[ -f .env.example ]]; then
-    install -m644 .env.example "${pkgdir}/etc/openmemory/openmemory.env"
+    install -m644 .env.example "${pkgdir}/usr/share/openmemory/openmemory.env.example"
   else
     printf "# Upstream .env.example not found in this revision.\n" \
-      > "${pkgdir}/etc/openmemory/openmemory.env"
+      > "${pkgdir}/usr/share/openmemory/openmemory.env.example"
   fi
 
   # systemd user service (from source=(), not generated inline)

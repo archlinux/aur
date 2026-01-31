@@ -1,5 +1,10 @@
 post_install() {
   cat <<'EOF'
+==> Default configuration template:
+    /usr/share/openmemory/openmemory.env.example
+    To customize (recommended), copy it to:
+    ~/.config/openmemory/openmemory.env
+
 ==> To enable and start the OpenMemory backend (user service):
     systemctl --user daemon-reload
     systemctl --user enable --now openmemory-backend.service

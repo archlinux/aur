@@ -2,17 +2,17 @@
 Description=OpenMemory backend (HTTP API + MCP)
 After=network.target
 
+# Fail fast with a clear reason if user config is missing
+ConditionPathExists=%E/openmemory/openmemory.env
+
 [Service]
 Type=simple
 ExecStart=/usr/bin/openmemory-backend
 Restart=on-failure
 RestartSec=2
 
-# Environment configuration
-# 1) System-wide defaults shipped by the package
-EnvironmentFile=-/etc/openmemory/openmemory.env
-# 2) Optional per-user override (wins over /etc if present)
-EnvironmentFile=-%E/openmemory/openmemory.env
+# Environment configuration (mandatory per-user config)
+EnvironmentFile=%E/openmemory/openmemory.env
 
 [Install]
 WantedBy=default.target
