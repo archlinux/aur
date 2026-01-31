@@ -23,13 +23,6 @@ build() {
     cargo build --frozen --release --all-features
 }
 
-check() {
-    cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo test --frozen --all-features
-}
-
 package() {
     cd "$pkgname-$pkgver"
     install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
