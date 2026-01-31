@@ -1,6 +1,6 @@
 pkgbase = hyprkcs-git
 	pkgdesc = A fast, minimal Hyprland keybind cheat sheet and editor written in Rust/GTK4
-	pkgver = 1.22.3
+	pkgver = 1.22.4
 	pkgrel = 1
 	url = https://github.com/kosa12/hyprKCS
 	arch = x86_64
