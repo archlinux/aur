@@ -40,6 +40,7 @@ pkgbase = paru-static
 	source = e2fsprogs-1.47.3.tar.gz::https://github.com/tytso/e2fsprogs/archive/refs/tags/v1.47.3.tar.gz
 	source = nghttp3-1.13.1.tar.gz::https://github.com/ngtcp2/nghttp3/releases/download/v1.13.1/nghttp3-1.13.1.tar.gz
 	source = libpsl-0.21.5.tar.gz::https://github.com/rockdaboot/libpsl/archive/refs/tags/0.21.5.tar.gz
+	source = https://github.com/Morganamilo/paru/pull/1500.patch
 	source = rust_2024_edition.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -56,6 +57,7 @@ pkgbase = paru-static
 	sha256sums = 9286ee5471a8a5339a61eb952739e4614a5b1dbed79ca73a78f014885ce2ad53
 	sha256sums = 07160f28af3ddc3e8b95c8bbefe08c650e7cf303375141b6ca35cc89b319f70d
 	sha256sums = d6717685a5f221403041907cca98ae9f72aef163b9d813d40d417c2663373a32
-	sha256sums = 94441bb276bce401c43dd571d9c6a652e25e2ba352cf3c3198c179a64077e473
+	sha256sums = 61936da5e20bdae2578c739c53d836cfd733cac1879ce1fa1feaba01fcf75a9d
+	sha256sums = ed3a5cdc846a069ac703dfa33c03345080530cc8632e8d3f583a533a3f1e468f
 
 pkgname = paru-static

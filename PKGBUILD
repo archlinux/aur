@@ -30,26 +30,27 @@ pkgdesc='Feature packed AUR helper'
 url='https://github.com/Morganamilo/paru'
 source=(git+https://github.com/Morganamilo/paru.git?commit=$_commit
         # Pacman Static
-		git+https://aur.archlinux.org/pacman-static.git
-		# Static Library
-		https://curl.haxx.se/download/curl-${_curl_ver}.tar.gz
+        git+https://aur.archlinux.org/pacman-static.git
+        # Static Library
+        https://curl.haxx.se/download/curl-${_curl_ver}.tar.gz
         https://ftp.gnu.org/gnu/libunistring/libunistring-${_unistring_ver}.tar.gz
         https://download-mirror.savannah.gnu.org/releases/acl/acl-${_acl_ver}.tar.gz
         https://download.savannah.gnu.org/releases/attr/attr-${_attr_ver}.tar.gz
-		attr.patch::https://cgit.git.savannah.gnu.org/cgit/attr.git/patch/?id=8a80d895dfd779373363c3a4b62ecce5a549efb2
-		lz4-${_lz4_ver}.tar.gz::https://github.com/lz4/lz4/archive/refs/tags/v${_lz4_ver}.tar.gz
+        attr.patch::https://cgit.git.savannah.gnu.org/cgit/attr.git/patch/?id=8a80d895dfd779373363c3a4b62ecce5a549efb2
+        lz4-${_lz4_ver}.tar.gz::https://github.com/lz4/lz4/archive/refs/tags/v${_lz4_ver}.tar.gz
         https://gitlab.gnome.org/GNOME/libxml2/-/archive/v${_libxml2_ver}/libxml2-v${_libxml2_ver}.tar.gz
         https://ftp.gnu.org/gnu/libidn/libidn2-${_libidn2_ver}.tar.gz
-		brotli-${_brotli_ver}.tar.gz::https://github.com/google/brotli/archive/refs/tags/v${_brotli_ver}.tar.gz
-		https://libssh2.org/download/libssh2-${_libssh2_ver}.tar.gz
-		e2fsprogs-${_e2fsprogs_ver}.tar.gz::https://github.com/tytso/e2fsprogs/archive/refs/tags/v${_e2fsprogs_ver}.tar.gz
+        brotli-${_brotli_ver}.tar.gz::https://github.com/google/brotli/archive/refs/tags/v${_brotli_ver}.tar.gz
+        https://libssh2.org/download/libssh2-${_libssh2_ver}.tar.gz
+        e2fsprogs-${_e2fsprogs_ver}.tar.gz::https://github.com/tytso/e2fsprogs/archive/refs/tags/v${_e2fsprogs_ver}.tar.gz
         nghttp3-${_nghttp3_ver}.tar.gz::https://github.com/ngtcp2/nghttp3/releases/download/v${_nghttp3_ver}/nghttp3-${_nghttp3_ver}.tar.gz
         libpsl-${_libpsl_ver}.tar.gz::https://github.com/rockdaboot/libpsl/archive/refs/tags/${_libpsl_ver}.tar.gz
-		#https://ftp.gnu.org/gnu/readline/readline-${_readline_ver}.tar.gz
-		#https://thrysoee.dk/editline/libedit-${_libedit_ver}.tar.gz
-		#https://web.mit.edu/kerberos/dist/krb5/${_krb5_ver%\.[0-9]*}/krb5-${_krb5_ver}.tar.gz
-		#krb5.patch
-		rust_2024_edition.patch
+        #https://ftp.gnu.org/gnu/readline/readline-${_readline_ver}.tar.gz
+        #https://thrysoee.dk/editline/libedit-${_libedit_ver}.tar.gz
+        #https://web.mit.edu/kerberos/dist/krb5/${_krb5_ver%\.[0-9]*}/krb5-${_krb5_ver}.tar.gz
+        #krb5.patch
+		https://github.com/Morganamilo/paru/pull/1500.patch
+        rust_2024_edition.patch
 )
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 license=('GPL-3.0-or-later')
@@ -73,7 +74,8 @@ sha256sums=('SKIP'
             '9286ee5471a8a5339a61eb952739e4614a5b1dbed79ca73a78f014885ce2ad53'
             '07160f28af3ddc3e8b95c8bbefe08c650e7cf303375141b6ca35cc89b319f70d'
             'd6717685a5f221403041907cca98ae9f72aef163b9d813d40d417c2663373a32'
-            '94441bb276bce401c43dd571d9c6a652e25e2ba352cf3c3198c179a64077e473')
+            '61936da5e20bdae2578c739c53d836cfd733cac1879ce1fa1feaba01fcf75a9d'
+            'ed3a5cdc846a069ac703dfa33c03345080530cc8632e8d3f583a533a3f1e468f')
 #options=('lto')
 
 # Use musl toolchain
@@ -152,6 +154,7 @@ prepare() {
   rustup target add $TARGET
   #sed -i "s/version = \"2.1.0\"/version = \"2.2.0\"/" Cargo.toml 
   #sed -i "s/edition = \"2021\"/edition = \"2024\"/" Cargo.toml 
+  patch -p1 -i ${srcdir}/1500.patch
   patch -p1 -i ${srcdir}/rust_2024_edition.patch
   cargo update
   #cargo update paru
@@ -181,11 +184,11 @@ build_lib() {
 
   TMPDIR=${srcdir}/tmp
   if compgen -G "$TMPDIR/usr/lib/*${name}*.a" > /dev/null; then
-	  echo "skip ${name}"
-	  return
+      echo "skip ${name}"
+      return
   elif [ ${name} == "e2fsprogs" ] && [ -f $TMPDIR/usr/lib/libcom_err.a ]; then
-	  echo "skip ${name}"
-	  return
+      echo "skip ${name}"
+      return
   fi
   echo "Building: $name"
   CFLAGS_=$CFLAGS
@@ -198,13 +201,13 @@ build_lib() {
   # configureがなく、autogen.sh があれば実行（configure生成）
   if [ ! -f configure ] && [ -f autogen.sh ]; then
     #./autogen.sh
-	autoreconf -vfi
+    autoreconf -vfi
   fi
 
   if [[ $name == "krb5" ]]; then
   # Step 1: Build dynamic (default) first
     CFLAGS_="$CFLAGS"
-	export CFLAGS+=" -fPIC -fno-strict-aliasing -fstack-protector-all -std=gnu17"
+    export CFLAGS+=" -fPIC -fno-strict-aliasing -fstack-protector-all -std=gnu17"
     autoreconf -vfi
     sed -i "s/error-implicit-function-declaration/no-implicit-function-declaration/" configure
     #./configure $extra_flags
@@ -213,9 +216,9 @@ build_lib() {
     ./configure --prefix="$TMPDIR"/usr --enable-static --disable-shared $extra_flags
     make -j$(nproc)
     make install
-	export CFLAGS="$CFLAGS_"
+    export CFLAGS="$CFLAGS_"
   elif [ -f configure ]; then
-	./configure --prefix="$TMPDIR"/usr --enable-static --disable-shared $extra_flags
+    ./configure --prefix="$TMPDIR"/usr --enable-static --disable-shared $extra_flags
     make -j$(nproc)
     make install-libs || make install
   # configure なしで Makefile があれば makeベース
@@ -251,14 +254,14 @@ build () {
     # Addition of -ffat-lto-objects to LTOFLAGS.(prevent static lib mangling)
     sed -r "/(export LDFLAGS=.*)/s/(.+)/export LTOFLAGS+=' -fuse-linker-plugin -ffat-lto-objects'\n\1/" PKGBUILD -i
     echo "Building pacman-static"
-	# _sslver=3.6.1 above
-	# pacman-static 7.1.0.r9 : _sslver=3.6.0
+    # _sslver=3.6.1 above
+    # pacman-static 7.1.0.r9 : _sslver=3.6.0
     sed -e "s/^_sslver=.*$/_sslver=${_ssl_ver}/" PKGBUILD -i
-	sed -e "s/866825a1cdf0b705b409402fbc7a713e7d9b8e7736c5126be57b354927954c148a341fc52b02c0629c1e015a889bfd40217f8e703b73235892e91da060909b76/492cd2e0a7506e085d9840a929ead994390409a35c24e47e0cf44987920711b61f1513f21b7eee50e56f226b26cd654cda6dbd1f6e439563a93a8f0e530fefb5/" PKGBUILD -i
+    sed -e "s/866825a1cdf0b705b409402fbc7a713e7d9b8e7736c5126be57b354927954c148a341fc52b02c0629c1e015a889bfd40217f8e703b73235892e91da060909b76/492cd2e0a7506e085d9840a929ead994390409a35c24e47e0cf44987920711b61f1513f21b7eee50e56f226b26cd654cda6dbd1f6e439563a93a8f0e530fefb5/" PKGBUILD -i
     #for i in $( . PKGBUILD; echo "${validpgpkeys[@]}" ); do gpg --receive "$i"; gpg -a --export "$i" > "keys/pgp/$i.asc" ; done
     makepkg -si --noconfirm --skippgpcheck
   else
-	echo "Using the installed pacman-static"
+    echo "Using the installed pacman-static"
   fi
 
   TARGETS=$(rustup target list | grep "$ARCH"-); : "${TARGET:=$(echo "$TARGETS" | grep musl | head -n1 | cut -d' ' -f1)}" "${TARGET:=$(echo "$TARGETS" | grep -v musl | head -n1 | cut -d' ' -f1)}"
