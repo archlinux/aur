@@ -2,7 +2,7 @@
 
 pkgname='librekitten-cli-bin'
 pkgver='0.10.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Server for LibreKitten projects using the Web Server extension.'
 arch=('any')
 url='https://librekitten.org'
@@ -10,7 +10,7 @@ license=('MPL-2.0')
 depends=('nodejs')
 
 source=("https://codeberg.org/LibreKitten/LibreKitten/releases/download/${pkgver}/${pkgver}-cli.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('cfdc73560e34bde38a7252e227fa6f79f29205f6907bf4502fc56792c0b42bee')
 
 package() {
 	# copy the app itself
