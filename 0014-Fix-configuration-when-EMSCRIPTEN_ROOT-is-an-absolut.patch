@@ -1,7 +1,7 @@
-From ac4aca3f2ccb0ad1e5f317966d2e77abfad34278 Mon Sep 17 00:00:00 2001
+From 422e2e633bb2978ca13d65769916d89235bde1a4 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 9 Jun 2024 23:31:12 +0200
-Subject: [PATCH 14/20] Fix configuration when `EMSCRIPTEN_ROOT` is an absolute
+Subject: [PATCH 14/24] Fix configuration when `EMSCRIPTEN_ROOT` is an absolute
  path
 
 Not sure whether this is unusual but under Arch Linux the `emscripten`
