@@ -6,7 +6,6 @@ pkgdesc="A simple GTK tray application for switching GPU modes using EnvyControl
 arch=('any')
 url="https://github.com"
 license=('MIT')
-depends=('python' 'python-gobject' 'gtk3' 'envycontrol' 'polkit')
 source=("envycontrol-tray.py"
         "envycontrol-tray.desktop"
         "prime-intel.png"
