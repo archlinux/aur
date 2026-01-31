@@ -6,22 +6,22 @@
 pkgname=simple-live-app
 _pkgname=dart_simple_live
 _appname=simple_live_app
-pkgver=1.9.4
-pkgrel=2
+pkgver=1.11.4
+pkgrel=1
 pkgdesc='An app for watching live'
 arch=('x86_64' 'aarch64')
 url='https://github.com/xiaoyaocz/dart_simple_live'
 license=('GPL-3.0-only')
 _flutterchannel=stable
-_flutterversion=3.22.3
+_flutterversion=3.38.9
 depends=('xdg-user-dirs' 'gtk3' 'mpv')
 makedepends=('ninja' 'cmake' 'clang' 'git' 'patchelf')
 source=(
     "flutter-${_flutterversion}.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/${_flutterchannel}/linux/flutter_linux_${_flutterversion}-${_flutterchannel}.tar.xz"
-    "git+https://github.com/xiaoyaocz/dart_simple_live.git#commit=dca4e88b6004a1297b0598296f4136d377e1f3cd"
+    "git+https://github.com/xiaoyaocz/dart_simple_live.git#commit=615ea4b1b0c808c5ac21d6f0410c519dbac1a19d"
 )
-sha256sums=('9c5f70ba118b9163552144901a2efd91d40b22a68a04e67271d6a5ad936e8368'
-            '9bd1518aec234854115cb47f64d107ebf89a3bc3f76c48230ced7ba66e54b4de')
+sha256sums=('cb39eeb717c7d7dce95736b862cada2fdedeebcbb0107c44a346659c77031003'
+            '8e1f6b5497238c6b358e6438bf29e7c812e33fcba285c4c9feed64f5125b7767')
 case "${CARCH}" in
   "x86_64")
     export _dartarch="x64"
@@ -40,18 +40,18 @@ prepare() {
   export PATH="${srcdir}/flutter/bin:$PATH"
   flutter config --no-analytics
   flutter config --enable-linux-desktop
-  cd ${_pkgname}/simple_live_app
-  sed -i "s/use_header_bar = TRUE/use_header_bar = FALSE/g" linux/my_application.cc
+  cd ${_pkgname}/${_appname}
+  sed -i "s/use_header_bar = TRUE/use_header_bar = FALSE/g" linux/runner/my_application.cc
   rm -rf pub-cache
   mkdir pub-cache
-  export PUB_CACHE="${srcdir}/${_pkgname}-${pkgver}/${_appname}/pub-cache"
+  export PUB_CACHE="${srcdir}/${_pkgname}/${_appname}/pub-cache"
   flutter clean
   flutter pub get
 }
 
 build() {
   export PATH="${srcdir}/flutter/bin:$PATH"
-  export PUB_CACHE="${srcdir}/${_pkgname}-${pkgver}/${_appname}/pub-cache"
+  export PUB_CACHE="${srcdir}/${_pkgname}/${_appname}/pub-cache"
   cd ${_pkgname}/${_appname}
   flutter build linux --no-pub
 }
@@ -66,7 +66,7 @@ package() {
   cmake -P cmake_install.cmake
   for f in ${pkgdir}/usr/lib/${_pkgname}/lib/*.so; do patchelf --shrink-rpath --allowed-rpath-prefixes '$ORIGIN' "$f"; done
   for f in ${pkgdir}/usr/lib/${_pkgname}/lib/*.so; do if [ -z "$(patchelf --print-rpath $f)" ]; then patchelf --remove-rpath "$f"; fi; done
-  patchelf --add-needed libquickjs_c_bridge_plugin.so "${pkgdir}/usr/lib/${_pkgname}/${_appname}"
+  patchelf --add-needed libdart_quickjs.so "${pkgdir}/usr/lib/${_pkgname}/${_appname}"
   # link executable into PATH
   install -dm755 "${pkgdir}/usr/bin"
   ln -s "/usr/lib/${_pkgname}/${_appname}" "${pkgdir}/usr/bin/${_pkgname}"  
