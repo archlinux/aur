@@ -1,0 +1,75 @@
+From 5aefba3133f53c0d1806f74261d223144778f974 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Mon, 1 Dec 2025 11:31:42 +0100
+Subject: [PATCH 24/24] Export some constexpr variables
+
+From MINGW-packages commit e5c4652cad95df5f6435b6c564c52a7ae7d8e5f7.
+
+Change-Id: I3c051f6f3a6de38fc2e46faaa3358e091bce7b8d
+---
+ src/corelib/kernel/qdeadlinetimer.cpp | 2 ++
+ src/corelib/time/qtimezone.cpp        | 3 +++
+ src/gui/rhi/qrhi.cpp                  | 3 +++
+ src/network/kernel/qhostaddress.cpp   | 5 +++++
+ 4 files changed, 13 insertions(+)
+
+diff --git a/src/corelib/kernel/qdeadlinetimer.cpp b/src/corelib/kernel/qdeadlinetimer.cpp
+index 44e84b9bddb..603c0798027 100644
+--- a/src/corelib/kernel/qdeadlinetimer.cpp
++++ b/src/corelib/kernel/qdeadlinetimer.cpp
+@@ -6,6 +6,8 @@
+ 
+ QT_BEGIN_NAMESPACE
+ 
++constexpr QDeadlineTimer::ForeverConstant QDeadlineTimer::Forever;
++
+ QT_IMPL_METATYPE_EXTERN(QDeadlineTimer)
+ 
+ using namespace std::chrono;
+diff --git a/src/corelib/time/qtimezone.cpp b/src/corelib/time/qtimezone.cpp
+index 7b43aab22d1..19e7fdd5a22 100644
+--- a/src/corelib/time/qtimezone.cpp
++++ b/src/corelib/time/qtimezone.cpp
+@@ -16,6 +16,9 @@
+ 
+ QT_BEGIN_NAMESPACE
+ 
++constexpr int QTimeZone::MinUtcOffsetSecs;
++constexpr int QTimeZone::MaxUtcOffsetSecs;
++
+ static_assert(!std::is_constructible_v<QTimeZone, Qt::TimeSpec>);
+ using namespace Qt::StringLiterals;
+ 
+diff --git a/src/gui/rhi/qrhi.cpp b/src/gui/rhi/qrhi.cpp
+index 3cade9ec2cb..03cb8c82772 100644
+--- a/src/gui/rhi/qrhi.cpp
++++ b/src/gui/rhi/qrhi.cpp
+@@ -25,6 +25,9 @@
+ 
+ QT_BEGIN_NAMESPACE
+ 
++constexpr int QRhi::MAX_MIP_LEVELS;
++constexpr int QRhiShaderResourceBinding::LAYOUT_DESC_ENTRIES_PER_BINDING;
++
+ // Play nice with QSG_INFO since that is still the most commonly used
+ // way to get graphics info printed from Qt Quick apps, and the Quick
+ // scenegraph is our primary user.
+diff --git a/src/network/kernel/qhostaddress.cpp b/src/network/kernel/qhostaddress.cpp
+index 12522f28122..8637b288326 100644
+--- a/src/network/kernel/qhostaddress.cpp
++++ b/src/network/kernel/qhostaddress.cpp
+@@ -29,6 +29,11 @@
+ 
+ QT_BEGIN_NAMESPACE
+ 
++constexpr QAbstractSocket::NetworkLayerProtocol QHostAddress::IPv4Protocol;
++constexpr QAbstractSocket::NetworkLayerProtocol QHostAddress::IPv6Protocol;
++constexpr QAbstractSocket::NetworkLayerProtocol QHostAddress::AnyIPProtocol;
++constexpr QAbstractSocket::NetworkLayerProtocol QHostAddress::UnknownNetworkLayerProtocol;
++
+ #if QT_VERSION < QT_VERSION_CHECK(7, 0, 0)
+ const QAbstractSocket::NetworkLayerProtocol QHostAddress::IPv4Protocol;
+ const QAbstractSocket::NetworkLayerProtocol QHostAddress::IPv6Protocol;
+-- 
+2.52.0
+

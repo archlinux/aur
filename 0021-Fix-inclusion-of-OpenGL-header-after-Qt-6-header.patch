@@ -1,0 +1,62 @@
+From e98c3d40557c0a980f2fda26c0dcbdfbc11aea47 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Mon, 1 Dec 2025 11:23:41 +0100
+Subject: [PATCH 21/24] Fix inclusion of OpenGL header after Qt 6 header
+
+Avoid issue for projects that include <GL/glu.h> after <QOpenGLContext>
+on Windows.
+
+Taken from MINGW-packages commit af1a2c926bbd6c190d60c50d4a14319c043e30cb.
+
+Change-Id: I3769326571c83f9f60a9fdd87298ca9af62be7ba
+---
+ src/gui/opengl/qopengl.h | 19 ++++++++-----------
+ 1 file changed, 8 insertions(+), 11 deletions(-)
+
+diff --git a/src/gui/opengl/qopengl.h b/src/gui/opengl/qopengl.h
+index e9a11080ce6..a97f73c3c3c 100644
+--- a/src/gui/opengl/qopengl.h
++++ b/src/gui/opengl/qopengl.h
+@@ -11,15 +11,21 @@
+ // On Windows we need to ensure that APIENTRY and WINGDIAPI are defined before
+ // we can include gl.h. But we do not want to include <windows.h> in this public
+ // Qt header, as it pollutes the global namespace with macros.
++// We also need to make sure that CALLBACK and GLAPI are defined (and all of
++// these keep being defined) in case <GL/glu.h> is included after this header.
+ #if defined(Q_OS_WIN)
+ # ifndef APIENTRY
+ #  define APIENTRY __stdcall
+-#  define Q_UNDEF_APIENTRY
+ # endif // APIENTRY
+ # ifndef WINGDIAPI
+ #  define WINGDIAPI __declspec(dllimport)
+-#  define Q_UNDEF_WINGDIAPI
+ # endif // WINGDIAPI
++# ifndef CALLBACK
++#  define CALLBACK APIENTRY
++# endif // CALLBACK
++# ifndef GLAPI
++#  define GLAPI extern
++# endif // GLAPI
+ # define QT_APIENTRY __stdcall
+ #endif
+ 
+@@ -281,15 +287,6 @@ typedef ptrdiff_t qopengl_GLsizeiptr;
+ 
+ QT_END_NAMESPACE
+ 
+-#ifdef Q_UNDEF_WINGDIAPI
+-# undef WINGDIAPI
+-# undef Q_UNDEF_WINGDIAPI
+-#endif
+-#ifdef Q_UNDEF_APIENTRY
+-# undef APIENTRY
+-# undef Q_UNDEF_APIENTRY
+-#endif
+-
+ #endif // QT_NO_OPENGL
+ 
+ #endif // QOPENGL_H
+-- 
+2.52.0
+

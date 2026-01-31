@@ -1,7 +1,7 @@
-From 17ddbfd24c1e6a2cd06025c0444743ef0d575212 Mon Sep 17 00:00:00 2001
+From 892493b1a4c6c1811543d57e19403266d0ef5b9a Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 9 May 2025 22:26:39 +0200
-Subject: [PATCH 20/20] Fix Android build after
+Subject: [PATCH 20/24] Fix Android build after
  ec2e3e7ac92d000e0df0c693b9a636390d34a9eb
 
 Change-Id: I02563b129a949c36aff91a4645b6ee10a8cfba2c
