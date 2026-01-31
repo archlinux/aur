@@ -1,0 +1,13 @@
+pkgbase = novafetch
+	pkgdesc = A blazing fast, customizable CLI system information tool written in Rust
+	pkgver = 0.8
+	pkgrel = 1
+	url = https://github.com/Ninso112/NovaFetch
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	depends = gcc-libs
+	source = novafetch-0.8.tar.gz::https://github.com/Ninso112/NovaFetch/archive/refs/tags/v0.8.tar.gz
+	sha256sums = f682b98566b45c6f1a65a498a427f93d9673cf9bbac6847e0ea2b1bc6ebf4476
+
+pkgname = novafetch
