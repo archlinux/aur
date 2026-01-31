@@ -1,7 +1,7 @@
 # Maintainer: Mateusz Russak <mateusz@russak.biz>
 
 pkgname=lazytail
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A fast, universal terminal-based log viewer with live filtering and follow mode"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=()
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/raaymax/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('f60b4bd946b6c879cf208934f418e8557a8f418073c32f71a0170159a24dbd89')
+sha256sums=('f5b6a737bbc126179c89344c90bb6b9800aa926a09c3c36cb967181437c50e7d')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
