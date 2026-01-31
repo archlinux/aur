@@ -1,0 +1,11 @@
+pkgbase = ptodo
+	pkgdesc = My cool python script
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	depends = python
+	depends = python-rich
+	source = ptodo.py
+	sha256sums = 8b46988ddf1a9cbd4ed3579231be0dd4cdd353839ea0cc36bf450377dce34495
+
+pkgname = ptodo
