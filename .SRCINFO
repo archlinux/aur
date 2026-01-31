@@ -1,16 +1,16 @@
 pkgbase = libretextus
 	pkgdesc = Bible Accordance Application
-	pkgver = 0.2
+	pkgver = 0.1.r15.gcc55d3d
 	pkgrel = 1
 	url = https://libretextus.github.io
-	install = libretextus.install
-	arch = any
-	license = CC0
+	arch = x86_64
+	license = CC0-1.0
+	makedepends = git
+	makedepends = rapidxml
+	makedepends = boost
 	depends = gtkmm3
-	depends = rapidxml
-	depends = boost
-	source = libretextus-0.2::git://github.com/LibreTextus/LibreTextus.git
-	md5sums = SKIP
+	depends = boost-libs
+	source = libretextus::git+https://github.com/LibreTextus/LibreTextus.git#commit=cc55d3d7911a631a8d05fc403aa429b46964ce83
+	sha256sums = b646be557f9101ee25b3ed382fc8f698fd8e74fa3792e0730003795a9e482035
 
 pkgname = libretextus
-
