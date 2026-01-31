@@ -4,7 +4,7 @@
 
 _pkgname=gns3-gui
 pkgname="$_pkgname"-2
-pkgver=2.2.55
+pkgver=2.2.56.1
 pkgrel=1
 pkgdesc='GNS3 network simulator. Graphical user interface package.'
 arch=('any')
@@ -16,12 +16,12 @@ depends=(
     'python-distro'
     'python-jsonschema'
     'python-psutil'
-    'python-pyqt5'
-    'python-pyqt5-sip'
+    'python-pyqt6'
     'python-sentry_sdk'
     'python-setuptools'
     'python-truststore'
-    'qt5-svg'
+    'qt6-svg'
+    'qt6-websockets'
 )
 optdepends=(
     'gns3-server: GNS3 backend. Manages emulators such as Dynamips, VirtualBox or Qemu/KVM'
@@ -32,9 +32,9 @@ provides=('gns3-gui')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         'gns3.desktop'
         'fix_requirements_for_Arch.patch')
-sha256sums=('bf8f5d71cce30131eae266c496d426b16cbc9fd118f733caf9acb8f23e8dce08'
+sha256sums=('ab6bdf9e9eb3de5c4f651b5d08650f9bd69a98019943b15dd1cb91f1581741a2'
             '51e6db5b47e6af3d008d85e8c597755369fafb75ddb2af9e79a441f943f4c166'
-            '5b3995d37d247e1d30b8322a912b5384e8b9faabf26041592ebdbb48a3cda863')
+            '4ae6a201b72e41277edbe5bce25b1ed10b48b0c36d05838a8362efea62db4974')
 
 prepare() {
     cd "$_pkgname-$pkgver"
