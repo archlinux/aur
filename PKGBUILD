@@ -5,7 +5,7 @@ _srcname=polyglot
 _pkgname=polyglot-winboard
 pkgname=polyglot-winboard-git
 pkgver=r93.433d26d
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="UCI/USI/UCCI to XBoard adapter (WinBoard fork)"
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ build() {
   cd "${srcdir}/${_srcname}"
 
   ./configure --prefix=/usr
-  make CFLAGS="$CFLAGS -fcommon" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS"
+  make CFLAGS="$CFLAGS -fcommon -std=gnu17" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS"
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = polyglot-winboard-git
 	pkgdesc = UCI/USI/UCCI to XBoard adapter (WinBoard fork)
 	pkgver = r93.433d26d
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/ulthiel/polyglot
 	arch = i686
