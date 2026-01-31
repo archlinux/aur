@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 makedepends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base' 'qt6-declarative' 'thrift' 'boost')
 makedepends+=('cmake' 'gendesk' 'go' 'qt6-tools' 'vulkan-headers' 'cpio' 'upx' 'boost-libs')
 source=("https://github.com/qr243vbi/nekobox/releases/download/${pkgver}/nekobox-unified-source-${pkgver}.tar.xz")
-sha256sums=("8a87ee8fa9e2cb13b9ac9256d5874316daa2eacdce263d891da558b8cbdec9e5")
+sha256sums=("658b924307c761b68061653decda4c92f66c3e369072a693151ef0a9dedcdac9")
 
 prepare() {
     gendesk -f -n \
