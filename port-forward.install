@@ -1,0 +1,34 @@
+post_install() {
+    systemd-sysusers 2>/dev/null || true
+    systemd-tmpfiles --create 2>/dev/null || true
+    echo ""
+    echo "Port Forward Manager v$pkgver installed!"
+    echo ""
+    echo "Configuration files:"
+    echo "  /etc/port-forward/port-forward.conf"
+    echo "  /etc/port-forward/ports.conf"
+    echo ""
+    echo "To start the service:"
+    echo "  sudo systemctl start port-forward"
+    echo ""
+    echo "To enable at boot:"
+    echo "  sudo systemctl enable port-forward"
+    echo ""
+    echo "Documentation: $url"
+}
+
+post_upgrade() {
+    systemd-sysusers 2>/dev/null || true
+    systemd-tmpfiles --create 2>/dev/null || true
+    systemctl daemon-reload
+    if systemctl is-active --quiet port-forward; then
+        systemctl restart port-forward
+    fi
+}
+
+post_remove() {
+    if systemctl is-active --quiet port-forward; then
+        systemctl stop port-forward
+    fi
+    systemctl daemon-reload
+}

@@ -1,0 +1,17 @@
+pkgbase = port-forward
+	pkgdesc = Universal port forwarding manager using socat
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/snuglinux/port-forward
+	install = port-forward.install
+	arch = any
+	license = MIT
+	depends = socat
+	depends = bash
+	optdepends = jq: localized messages (JSON locales)
+	backup = etc/port-forward/port-forward.conf
+	backup = etc/port-forward/ports.conf
+	source = https://github.com/snuglinux/port-forward/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = ce0448b98ad813bd2f6cd764db70e777bbc23ce22ee5408d78dd2ac3892c0bd7
+
+pkgname = port-forward
