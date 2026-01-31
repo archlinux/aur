@@ -1,0 +1,15 @@
+pkgbase = python-pytest-missing-modules
+	pkgdesc = Pytest plugin for faking missing modules
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/jeertmans/pytest-missing-modules
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatch-fancy-pypi-readme
+	depends = python-pytest
+	source = pytest-missing-modules-0.2.2.tar.gz::https://github.com/jeertmans/pytest-missing-modules/archive/v0.2.2.tar.gz
+	sha512sums = 6d1da46f7667748657b8503f853c173b71ed127735fad3ecb8bf52aaf33fb20894e95d2ac85984b2154818508b0d132f7829a1fe9eccc59b9b2bb414fbcfacfb
+
+pkgname = python-pytest-missing-modules

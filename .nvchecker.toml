@@ -1,0 +1,5 @@
+[python-pytest-missing-modules]
+source = "github"
+github = "jeertmans/pytest-missing-modules"
+use_latest_release = "true"
+prefix = "v"
