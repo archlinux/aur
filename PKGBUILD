@@ -8,7 +8,7 @@ pkgdesc="Feature-filled Bittorrent client based on the Azureus project"
 arch=('x86_64' 'armv7h')
 url="https://www.biglybt.com/"
 license=('GPL3')
-depends=('desktop-file-utils' 'xdg-user-dirs' 'java-runtime>=8')
+depends=('desktop-file-utils' 'xdg-user-dirs' 'java-runtime>=8' 'unzip')
 optdepends=('jna' 'libappindicator-gtk3' 'ttf-dejavu')
 options=('!strip')
 install=$pkgname.install

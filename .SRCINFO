@@ -10,6 +10,7 @@ pkgbase = biglybt
 	depends = desktop-file-utils
 	depends = xdg-user-dirs
 	depends = java-runtime>=8
+	depends = unzip
 	optdepends = jna
 	optdepends = libappindicator-gtk3
 	optdepends = ttf-dejavu
