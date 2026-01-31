@@ -12,11 +12,11 @@
 pkgname=jdk21-openj9-bin
 _jdkver=21
 _jdkminor=0
-_jdkpatch=9
+_jdkpatch=10
 _jdksubpatch=0
 _jdkfullver=${_jdkver}.${_jdkminor}.${_jdkpatch} #.${_jdksubpatch}
-_openj9ver=0.56.0
-_buildvershort=10
+_openj9ver=0.57.0
+_buildvershort=7
 _buildver=${_buildvershort}_openj9-${_openj9ver}
 pkgver=${_jdkfullver}b${_buildver//-/_}
 pkgrel=1
@@ -37,7 +37,7 @@ conflicts=("jdk${_jdkver}-openj9-bin" "jdk${_jdkver}-openj9")
 options=(!strip)
 source=("https://github.com/ibmruntimes/semeru${_jdkver}-binaries/releases/download/jdk-${_jdkfullver}%2B${_buildver}/ibm-semeru-open-jdk_x64_linux_${_jdkfullver}_${_buildver}.tar.gz")
 
-sha256sums=('bbf506e09ad0c84b77534d3ce10afa60cfc50196a70580c75d6e4994530717c0')
+sha256sums=('f7f971225362cac4170f601795da97371746ccddc9fa6ea937b83f08bb901b03')
 
 _jvmdir=usr/lib/jvm/java-${_jdkver}-j9
 
