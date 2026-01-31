@@ -1,9 +1,6 @@
 # Created by: damachin3 (damachine3 at proton dot me)
 # Website: https://github.com/damachine/coolerdash
 
-# This `coolerdash.install` script is for building the coolerdash package from local source.
-# It assumes the source code is already present in the current directory.
-
 pre_install() {
     echo "Checking for legacy files and performing migration cleanup..." 2>/dev/null
     # Stop and disable service before install or update to prevent conflicts with plugin mode
