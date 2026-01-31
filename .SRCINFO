@@ -1,7 +1,7 @@
 pkgbase = bdsh
 	pkgdesc = Better Distributed Shell - run commands on multiple hosts with consensus view
 	pkgver = 0.2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/brianm/bdsh
 	arch = x86_64
 	arch = aarch64
