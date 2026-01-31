@@ -1,7 +1,7 @@
 # Maintainer: Christopher Price <pricechrispy at gmail dot com>
 # Contributor: nerflad (nerflad@gmail.com)
 pkgname=gapi-ocaml
-pkgver=0.4.5
+pkgver=0.4.8
 pkgrel=1
 pkgdesc='A simple OCaml client for Google Services.'
 arch=('x86_64')
@@ -9,9 +9,8 @@ url='https://astrada.github.io/gapi-ocaml/'
 license=('MIT')
 depends=(
 'ocaml>=4.08.0'
-'ocaml-findlib>=1.2.7'
 'ocaml-curl>=0.5.3'
-'ocaml-cryptokit>=1.3.14'
+'ocaml-cryptokit>=1.21.1'
 'ocaml-yojson>=1.6.0'
 'cppo>=1.1.0'
 'camlp-streams'
@@ -22,7 +21,7 @@ makedepends=(
 )
 options=('!strip' 'staticlibs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/astrada/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('13f859ccd38be6d18d2c7e010ad67b3e5a0254ed607f6508e11f3669b5776d66')
+sha256sums=('5cc769af46198deb88707ccb50398088316e60f51db8c36389e6a2aae4c2ad30')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
