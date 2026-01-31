@@ -2,11 +2,11 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-cachyos
-_srctag=10.0-20260101
+_srctag=10.0-20260127
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.4
-_monover=10.4.0
+_monover=10.4.1
 _xaliaver=0.4.6
 pkgrel=1
 epoch=1
@@ -220,6 +220,7 @@ prepare() {
     mv "$srcdir"/xalia-${_xaliaver}-net48-mono.zip contrib/
 
     _submodules=(
+        d7vk
         dav1d
         dxvk
         dxvk-gplasync
@@ -234,6 +235,7 @@ prepare() {
         gstreamer
         libpcap
         libxkbcommon
+        libxml2
         meson
         nvidia-libs/dxvk-nvapi
         nvidia-libs/nvcuda
@@ -337,9 +339,9 @@ package() {
         $(find "${_monodir}" -iname "*x86_64.dll" -or -iname "*x86_64.exe")
 }
 
-b2sums=('db322556f64851afece61268d585483d67491fc8672b9832e403c113a9e969550436c12462a82a06ad67a3d597805b4e3824127572c30269de07d4b01b1b9e36'
+b2sums=('c12f7dced746c74ecf27f48ba75952136aa2a3baa5400e670cd471b434071a202363289ebb542d7841e1e1db58990c38777cc18af6a21ac93ac8632a1666333e'
         '2a73c12585b502ae11188482cbc9fb1f45f95bfe4383a7615011104b132f4845f9813d01fb40277e1934fab5f1b35ab40b4f4a66a9967463dd1d666a666904e9'
         '62856a88266b4757602c0646e024f832974a93f03b9df253fd4895d4f11a41b435840ad8f7003ec85a0d8087dec15f2e096dbfb4b01ebe4d365521e48fd0c5c0'
-        '2abbf16156ad87feda3f413d71565e56db0ebf14a8cd920ecc24bdea7f818365751cb447b91f56f96bcec84e4e28e9c7d022fdaf0804330f056593a99a6e5c6b'
+        '9ca53dee272470806432c61587080e6dc04fd9eaafde4f55f5d57d5557ec6859d77a74b74c9e3f472da04b8ace9609f0927573faab368a25249c76b3e37e65c1'
         '4d30eea9306392790677a4e19f7e416a387aaf10c4a7681aa8fcd94faf07be81a984b28ba1437428d7c215c5ecdbba70993091547068fbdc224e809c3f7abd85'
         'f0a81d83e644ca074a6bf54fc74ae12f5bd047e29d87fab528fba20e4b8d013547ad4b26e912c2b3218a75114f5c76b64aa84fdbc3054d3a1d9bf96635c6212b')
