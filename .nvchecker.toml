@@ -1,0 +1,5 @@
+[spent-bin]
+source = "github"
+github = "FrogSnot/Spent"
+use_latest_release = true
+prefix = "v"
