@@ -3,7 +3,7 @@
 _pkgname=tonearm
 pkgname="${_pkgname}-git"
 
-pkgver=v1.0.0.r0.gbda304f
+pkgver=v1.1.0.r0.g4c7cbb4
 pkgver() {
     cd "${_pkgname}"
     ( set -o pipefail
@@ -18,7 +18,7 @@ arch=("x86_64")
 url="https://codeberg.org/dergs/Tonearm"
 license=("GPL-3.0-or-later")
 
-depends=(gtk4 gstreamer gst-plugins-base gst-plugins-good gst-plugins-bad libadwaita libsecret)
+depends=(glib-networking gtk4 gstreamer gst-plugins-base gst-plugins-good gst-plugins-bad libadwaita libsecret)
 makedepends=(git go)
 conflicts=("${_pkgname}")
 provides=("${_pkgname}=${pkgver}")
