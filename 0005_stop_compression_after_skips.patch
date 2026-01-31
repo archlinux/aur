@@ -1,0 +1,20 @@
+diff --git a/protocol.c b/protocol.c
+index 677cb44..ce070db 100644
+--- a/protocol.c
++++ b/protocol.c
+@@ -2369,6 +2369,7 @@ static int SKIP (STATE *state, char *args, int sz, BINKD_CONFIG *config)
+         return 0;
+       }
+       Log (2, "%s skipped by remote", state->out.netname);
++      z_send_stop(state);
+       TF_ZERO (&state->out);
+     }
+     ND_set_status("", &state->ND_addr, state, config);
+@@ -2418,6 +2419,7 @@ static int GOT (STATE *state, char *args, int sz, BINKD_CONFIG *config)
+     if (!tfile_cmp (&state->out, argv[0], fsize, ftime))
+     {
+       Log (2, "remote already has %s", state->out.netname);
++      z_send_stop(state);
+       if (state->out.f)
+       {
+         fclose (state->out.f);

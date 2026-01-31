@@ -1,0 +1,21 @@
+diff --git a/protocol.c b/protocol.c
+index 677cb44..ce070db 100644
+--- a/protocol.c
++++ b/protocol.c
+@@ -2610,6 +2612,7 @@ static int recv_block (STATE *state, BINKD_CONFIG *config)
+         else
+         {
+           state->ibuf[state->isize] = 0;
++          state->remote_EOB = 0;
+           Log (5, "rcvd msg %s %s", scommand[(unsigned char)(state->ibuf[0])], state->ibuf+1);
+           rc = commands[(unsigned) (state->ibuf[0])]
+             (state, state->ibuf + 1, state->isize - 1, config);
+@@ -3283,7 +3286,7 @@ void protocol (SOCKET socket_in, SOCKET socket_out, FTN_NODE *to, FTN_ADDR *fa,
+         {
+           /* Start the next batch */
+           state.msgs_in_batch = 0;
+-          state.remote_EOB = state.local_EOB = 0;
++          state.local_EOB = 0;
+           if (OK_SEND_FILES (&state, config))
+           {
+             state.q = q_scan_boxes (state.q, state.fa, state.nfa, state.to ? 1 : 0, config);

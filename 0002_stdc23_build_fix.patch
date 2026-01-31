@@ -1,0 +1,23 @@
+diff --git a/md5b.h b/md5b.h
+index 0c1de6a..74cf2f7 100644
+--- a/md5b.h
++++ b/md5b.h
+@@ -32,10 +32,18 @@ documentation and/or software.
+   function argument prototyping.
+   The following makes PROTOTYPES default to 0 if it has not already
+   been defined with C compiler flags.
++
++  K&R-style function declarations have been deprecated since C99.
++  Additionally, starting with C23, function declarations without prototypes
++  are treated as functions without parameters and therefore no longer compile.
+  */
+ #ifndef PROTOTYPES
++#if __STDC_VERSION__ >= 199901L
++#define PROTOTYPES 1
++#else
+ #define PROTOTYPES 0
+ #endif
++#endif
+ 
+ /* POINTER defines a generic pointer type */
+ typedef unsigned char *POINTER;

@@ -1,0 +1,13 @@
+diff --git a/client.c b/client.c
+index 81dfefe..f0918fb 100644
+--- a/client.c
++++ b/client.c
+@@ -582,7 +582,7 @@ static int call0 (FTN_NODE *node, BINKD_CONFIG *config)
+           if (aiErr == EAI_FAMILY)
+             /* address family of target and bind address don't match */
+             continue;
+-          else
++          else if (aiErr != EAI_ADDRFAMILY)
+             /* otherwise just warn and don't bind() */
+             Log(2, "bind -- getaddrinfo: %s (%d)", gai_strerror(aiErr), aiErr);
+       }

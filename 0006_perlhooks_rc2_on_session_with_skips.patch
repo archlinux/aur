@@ -1,0 +1,13 @@
+diff --git a/perlhooks.c b/perlhooks.c
+index 4265df9..e4b4901 100644
+--- a/perlhooks.c
++++ b/perlhooks.c
+@@ -1999,7 +1999,7 @@ void perl_after_session(STATE *state, int status) {
+     lockperlsem();
+     { dSP;
+       if (state->perl_set_lvl < 3) setup_session(state, 3);
+-      VK_ADD_intz(sv, "rc", status == 0);
++      VK_ADD_intz(sv, "rc", state->r_skipped_flag ? 2 : status == 0);
+       ENTER;
+       SAVETMPS;
+       PUSHMARK(SP);

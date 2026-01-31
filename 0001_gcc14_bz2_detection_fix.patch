@@ -1,0 +1,15 @@
+diff --git a/mkfls/unix/configure.in b/mkfls/unix/configure.in
+index c9e5486..5798ff9 100644
+--- a/mkfls/unix/configure.in
++++ b/mkfls/unix/configure.in
+@@ -504,8 +504,8 @@ if test ".$do_bzip2" != ".no" ; then
+ #endif
+ ],
+ [
+-  BZ2_bzBuffToBuffCompress(0, (unsigned long*) 0, "", 0, 6, 0, 0);
+-  BZ2_bzBuffToBuffDecompress(0, (unsigned long*) 0, "", 0, 0, 0);
++  BZ2_bzBuffToBuffCompress(0, (unsigned int*) 0, "", 0, 6, 0, 0);
++  BZ2_bzBuffToBuffDecompress(0, (unsigned int*) 0, "", 0, 0, 0);
+ ],
+ 	    found_bzlib2="$bzlib2_path", found_bzlib2=no
+ 	  )

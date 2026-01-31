@@ -1,0 +1,13 @@
+diff --git a/ftnnode.c b/ftnnode.c
+index 11c3fe1..6a6f388 100644
+--- a/ftnnode.c
++++ b/ftnnode.c
+@@ -277,7 +277,7 @@ static FTN_NODE *get_defnode_info(FTN_ADDR *fa, FTN_NODE *on, BINKD_CONFIG *conf
+     on->NP_flag=np->NP_flag;
+     on->HC_flag=np->HC_flag;
+     on->restrictIP=np->restrictIP;
+-    on->pipe=np->pipe;
++    on->pipe=xstrdup(np->pipe);
+     on->IP_afamily=np->IP_afamily;
+ #ifdef BW_LIM
+     on->bw_send = np->bw_send; on->bw_recv = np->bw_recv;

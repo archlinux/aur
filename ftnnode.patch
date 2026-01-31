@@ -1,0 +1,24 @@
+--- a/ftnnode.c
++++ b/ftnnode.c
+@@ -258,8 +258,11 @@
+     if (!strcmp(host, "-"))
+       continue;
+ 
+-    aiErr = srv_getaddrinfo(host, port[0] ? port : NULL, &hints, &ai);
++    if (on->recheck < safe_time())
++    {
++    aiErr = srv_getaddrinfo(host, port[0] ? port : NULL, &hints, &ai);
+     if (aiErr != 0) continue;
++    }
+     freeaddrinfo(ai);
+     sprintf (host+strlen(host), ":%s", port);
+     i=0;
+@@ -318,7 +321,7 @@
+ 
+   /* not found or not in config file and recheck required ... */
+   if (( !np || 
+-        (np->listed != NL_NODE && np->recheck < safe_time())) 
++        (np->listed != NL_NODE)) 
+       && config->havedefnode) 
+     /* ... try resolve from defnode */
+     np=get_defnode_info(fa, np, config);
