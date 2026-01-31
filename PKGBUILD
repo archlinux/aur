@@ -1,10 +1,10 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=BART
-_pkgver=2.9.9
+_pkgver=2.9.10
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Bayesian Additive Regression Trees"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -15,10 +15,11 @@ depends=(
 optdepends=(
   r-knitr
   r-rmarkdown
+  r-rpart.plot
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('184a2651755daa64bb9ff13a07389443')
-b2sums=('d4491309b8b7a5c4efba128e8064b8a8aba32b49df6b1add0ddea5c82a6b5d9880e3840f6b714b8c358b55b6c7a7933c9c499ccb7d2392bf95564790941f638d')
+md5sums=('b4edb44c2111194cbd7f57268b1fb9d4')
+b2sums=('79e873421fdc3b53dd0ff6f5c78c77759ed69eac2435a9c1a3c78f60d0725a919f872dd1a90e2173a4e44d595f70b5b3667ac4a02113de1c15a682beae80172b')
 
 build() {
   mkdir build
