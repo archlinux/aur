@@ -1,36 +1,39 @@
-# Maintainer: Sam Whited <sam@samwhited.com>
+# Maintainer: Tim Henkes <me+aur@syndace.dev>
+# Contributor: Sam Whited <sam@samwhited.com>
 
-_pkgname=libxeddsa
-pkgname="${_pkgname}-git"
-pkgver=r40.d725c816bb26
-pkgrel=3
-pkgdesc='A toolkit around Curve25519 and Ed25519 key pairs.'
-url="https://github.com/Syndace/${_pkgname}"
-license=('MIT')
-arch=('x86_64')
-makedepends=('git' 'cmake' 'libsodium')
-source=("${_pkgname}::git+https://github.com/Syndace/${_pkgname}.git")
-sha256sums=('SKIP')
-depends=('glibc')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+pkgname="libxeddsa-git"
+pkgver=r44.a9a2bb9
+pkgrel=1
+pkgdesc="A toolkit around Curve25519 and Ed25519 key pairs, with a focus on conversion between the two."
+arch=("x86_64" "aarch64")
+url="https://github.com/Syndace/libxeddsa"
+license=("MIT")
+depends=("glibc" "libsodium")
+makedepends=("git" "cmake")
+checkdepends=("cmake")
+provides=("libxeddsa" "libxeddsa.so")
+conflicts=("libxeddsa")
+source=("${pkgname}::git+https://github.com/Syndace/libxeddsa.git")
+sha256sums=("SKIP")
 
 pkgver() {
-	cd ${_pkgname}
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-	cd ${_pkgname}
-	cmake -DCMAKE_INSTALL_PREFIX=/usr .
+    cd "${pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd ${_pkgname}
-	make
+    cd "${pkgname}"
+    cmake -DCMAKE_INSTALL_PREFIX=/usr .
+    make
+}
+
+check() {
+    cd "${pkgname}"
+    ctest
 }
 
 package() {
-    cd ${_pkgname}
-		make DESTDIR="$pkgdir" install
+    cd "${pkgname}"
+    make DESTDIR="${pkgdir}/" install/strip
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }

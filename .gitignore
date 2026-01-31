@@ -1,4 +1,8 @@
-libxeddsa/
-pkg/
-*.pkg.tar.zst
-src/
+*
+!.gitignore
+!.SRCINFO
+!LICENSE
+!LICENSES
+!LICENSES/*
+!PKGBUILD
+!REUSE.toml

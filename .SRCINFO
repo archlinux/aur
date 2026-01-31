@@ -1,17 +1,20 @@
 pkgbase = libxeddsa-git
-	pkgdesc = A toolkit around Curve25519 and Ed25519 key pairs.
-	pkgver = r40.d725c816bb26
-	pkgrel = 3
+	pkgdesc = A toolkit around Curve25519 and Ed25519 key pairs, with a focus on conversion between the two.
+	pkgver = r44.a9a2bb9
+	pkgrel = 1
 	url = https://github.com/Syndace/libxeddsa
 	arch = x86_64
+	arch = aarch64
 	license = MIT
+	checkdepends = cmake
 	makedepends = git
 	makedepends = cmake
-	makedepends = libsodium
 	depends = glibc
+	depends = libsodium
 	provides = libxeddsa
+	provides = libxeddsa.so
 	conflicts = libxeddsa
-	source = libxeddsa::git+https://github.com/Syndace/libxeddsa.git
+	source = libxeddsa-git::git+https://github.com/Syndace/libxeddsa.git
 	sha256sums = SKIP
 
 pkgname = libxeddsa-git
