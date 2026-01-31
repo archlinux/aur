@@ -12,7 +12,8 @@ pkgbase = spent
 	depends = gtk3
 	depends = libayatana-appindicator
 	depends = librsvg
+	depends = sqlite
 	source = spent-1.0.1.tar.gz::https://github.com/FrogSnot/Spent/archive/v1.0.1.tar.gz
-	sha256sums = 5ecea7f3d28ba399ff496bcd6a8a6a17a120cd51e62b88dcbc7bb46d3c8d0011
+	sha256sums = ff8bee1db90619b0fc5694c929d7ebccfc280b003648e6a4f910974f065709e3
 
 pkgname = spent
