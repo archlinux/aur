@@ -8,6 +8,7 @@ pkgbase = baballonia
 	makedepends = dotnet-sdk-8.0
 	makedepends = git
 	makedepends = ca-certificates
+	makedepends = unzip
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel

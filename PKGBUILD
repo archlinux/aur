@@ -15,6 +15,7 @@ makedepends=(
     dotnet-sdk-8.0
     git
     ca-certificates
+    unzip
 
     # babbletrainer
     python-build
