@@ -1,0 +1,21 @@
+pkgbase = patreon-dl-gui-bin
+	pkgdesc = GUI for patreon-dl - download media from Patreon
+	pkgver = 2.7.0
+	pkgrel = 1
+	url = https://github.com/patrickkfkan/patreon-dl-gui
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = libxss
+	depends = libnotify
+	depends = libappindicator-gtk3
+	provides = patreon-dl-gui
+	conflicts = patreon-dl-gui
+	options = !strip
+	options = !debug
+	source = patreon-dl-gui-2.7.0.deb::https://github.com/patrickkfkan/patreon-dl-gui/releases/download/v2.7.0/patreon-dl-gui_2.7.0_amd64.deb
+	sha256sums = 833fd0f308038e98e1fbe7817fd678b6c38b7a5c8586e5b29c8b112282091fc6
+
+pkgname = patreon-dl-gui-bin
