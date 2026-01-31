@@ -2,5 +2,6 @@
 !.nvchecker.toml
 !.gitignore
 !*.install
+!*.patch
 !PKGBUILD
 !.SRCINFO
