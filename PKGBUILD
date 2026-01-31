@@ -2,13 +2,14 @@
 # Contributor: nerflad (nerflad@gmail.com)
 pkgname=gapi-ocaml
 pkgver=0.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple OCaml client for Google Services.'
 arch=('x86_64')
 url='https://astrada.github.io/gapi-ocaml/'
 license=('MIT')
 depends=(
 'ocaml>=4.08.0'
+'ocaml-findlib>=1.2.7'
 'ocaml-curl>=0.5.3'
 'ocaml-cryptokit>=1.21.1'
 'ocaml-yojson>=1.6.0'
