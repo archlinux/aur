@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 
-_upstreamver='2.1.2'
+_upstreamver='2.1.3'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='scalene'
@@ -18,7 +18,7 @@ depends=('glibc' 'gcc-libs' 'python' 'ipython' 'python-yaml' 'python-cloudpickle
 optdepends=()
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
-sha256sums=('21b896a27bd795769628ca7cd787427b032e177be343ad7a00bfdf63e8ba5150')
+sha256sums=('151a952b1dcf8c128c822d51f86bf951bb4216239cb6cd277824a61cee54961f')
 
 
 build() {
