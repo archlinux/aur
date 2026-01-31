@@ -1,7 +1,7 @@
 # Maintainer: Azur84 <Azur84@outlook.fr>
 pkgname=pandora-launcher
 _pkgname=pandora_launcher
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="A modern Minecraft launcher that balances ease-of-use with powerful instance management features."
 arch=('x86_64')
@@ -33,7 +33,7 @@ source=(
   "$pkgname::git+https://github.com/Moulberry/PandoraLauncher.git#tag=v$pkgver"
   "$pkgname.desktop"
 )
-sha256sums=('195abe92278efdfbd9b03acbaf5b134bd88c028b01b6e185500b9f13c5bbe4a4'
+sha256sums=('0194cb757c94e01c4aeda17d67da8105b1296eb96bf5fc60a96c827cf87d65ff'
             'f9ab75791b696e27569c5bc44b8d325f356a6e36efe4eb9c2e227cb2ba95b6b3')
 
 export RUSTUP_TOOLCHAIN=stable
