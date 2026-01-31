@@ -1,0 +1,14 @@
+# Built artifacts
+*.tar.zst
+*.tar.xz
+*.tar.gz
+pkg/
+src/
+target/
+
+# Backup files
+*.bak
+*~
+
+# Source packages
+*.src.tar.gz

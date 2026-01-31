@@ -1,0 +1,26 @@
+pkgbase = zerobrew-git
+	pkgdesc = High-performance drop-in Homebrew replacement written in Rust
+	pkgver = r1.0000000
+	pkgrel = 1
+	url = https://github.com/lucasgelfond/zerobrew
+	install = zerobrew-git.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	depends = sqlite
+	depends = openssl
+	depends = zlib
+	depends = xz
+	provides = zerobrew
+	provides = zb
+	conflicts = zerobrew
+	conflicts = zb
+	source = zerobrew-git::git+https://github.com/lucasgelfond/zerobrew.git
+	sha256sums = SKIP
+
+pkgname = zerobrew-git
