@@ -1,8 +1,8 @@
 pkgbase = python-manim-beamer-git
 	pkgdesc = Emulate LATEX beamer with Python and manim-slides
-	pkgver = r75.9f716cc%
+	pkgver = r75.9f716cc
 	pkgrel = 1
-	url = https://github.com/sdv-dev/manim-beamer
+	url = https://github.com/johnHostetter/manim-beamer
 	arch = x86_64
 	license = MIT
 	makedepends = python-build
@@ -15,7 +15,7 @@ pkgbase = python-manim-beamer-git
 	depends = python-manimpango
 	depends = pyside6
 	depends = python-qtpy
-	source = git+https://github.com/sdv-dev/manim-beamer.git
+	source = git+https://github.com/johnHostetter/manim-beamer.git
 	sha512sums = SKIP
 
 pkgname = python-manim-beamer-git
