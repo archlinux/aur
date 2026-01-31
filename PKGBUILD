@@ -4,7 +4,7 @@ _pyname="meshcore_py"
 _pkgname="python-meshcore"
 pkgname="${_pkgname}-git"
 pkgver=2.2.1+29.r216.20251225.01e3f21
-pkgrel=2
+pkgrel=3
 pkgdesc="Python library for interacting with MeshCore companion radio nodes."
 arch=(
   'any'
@@ -23,6 +23,7 @@ depends=(
 makedepends=(
   'git'
   'python-build'
+  'python-hatchling'
   'python-installer'
   'python-setuptools>=61.0.0'
   'python-wheel'
