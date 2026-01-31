@@ -1,0 +1,6 @@
+PACKAGE_NAME="tuxedo-yt6801"
+PACKAGE_VERSION="#MODULE_VERSION#"
+AUTOINSTALL="yes"
+
+DEST_MODULE_LOCATION[0]="/kernel/drivers/net/ethernet/motorcomm"
+BUILT_MODULE_NAME[0]="yt6801"
