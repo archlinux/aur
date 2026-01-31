@@ -1,7 +1,7 @@
 pkgbase = pandora-launcher-bin
 	pkgdesc = A modern Minecraft launcher that balances ease-of-use with powerful instance management features.
 	pkgver = 2.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pandora.moulberry.com/
 	arch = x86_64
 	license = MIT
@@ -20,7 +20,7 @@ pkgbase = pandora-launcher-bin
 	provides = pandora-launcher
 	conflicts = pandora-launcher
 	options = !strip
-	source = pandora-launcher::https://github.com/Moulberry/PandoraLauncher/releases/download/v2.6.1/PandoraLauncher-Linux-2.6.1-x86_64-Portable
+	source = pandora-launcher-2.6.1-2::https://github.com/Moulberry/PandoraLauncher/releases/download/v2.6.1/PandoraLauncher-Linux-2.6.1-x86_64-Portable
 	source = LICENSE::https://raw.githubusercontent.com/Moulberry/PandoraLauncher/refs/tags/v2.6.1/LICENSE
 	source = icon.svg::https://raw.githubusercontent.com/Moulberry/PandoraLauncher/refs/tags/v2.6.1/package/windows.svg
 	source = pandora-launcher-bin.desktop

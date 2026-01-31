@@ -1,7 +1,7 @@
 # Maintainer: Azur84 <Azur84@outlook.fr>
 pkgname=pandora-launcher-bin
 pkgver=2.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern Minecraft launcher that balances ease-of-use with powerful instance management features."
 arch=('x86_64')
 provides=("pandora-launcher")
@@ -26,7 +26,7 @@ optdepends=(
   'mangohud: mangohud support'
 )
 source=(
-  "pandora-launcher::https://github.com/Moulberry/PandoraLauncher/releases/download/v$pkgver/PandoraLauncher-Linux-$pkgver-x86_64-Portable"
+  "pandora-launcher-$pkgver-$pkgrel::https://github.com/Moulberry/PandoraLauncher/releases/download/v$pkgver/PandoraLauncher-Linux-$pkgver-x86_64-Portable"
   "LICENSE::https://raw.githubusercontent.com/Moulberry/PandoraLauncher/refs/tags/v$pkgver/LICENSE"
   "icon.svg::https://raw.githubusercontent.com/Moulberry/PandoraLauncher/refs/tags/v$pkgver/package/windows.svg"
   "$pkgname.desktop"
@@ -39,7 +39,7 @@ sha256sums=('2b01ee6d40e5029ac061e4f51e29e57bedd8b7809c3b421b300344486410862a'
 package() {
   install -d "$pkgdir/usr/"{bin,share/{pixmaps,applications}}
 
-  install -Dm755 pandora-launcher "$pkgdir/usr/bin/${pkgname::-4}"
+  install -Dm755 pandora-launcher-$pkgver-$pkgrel "$pkgdir/usr/bin/${pkgname::-4}"
   install -Dm644 "icon.svg" "$pkgdir/usr/share/pixmaps/${pkgname::-4}.svg"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname::-4}/LICENSE"
   install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/${pkgname::-4}.desktop"

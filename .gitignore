@@ -22,4 +22,5 @@ src/
 # source
 icon.svg
 LICENSE
-pandora-launcher
+pandora-launcher-*
+!pandora-launcher-bin.desktop
