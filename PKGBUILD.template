@@ -1,4 +1,4 @@
-pkgname=lm-studio-bin
+pkgname=lmstudio-bin
 pkgver={{version}}
 pkgrel=1
 pkgdesc="LM Studio - A desktop app for exploring and running large language models locally"

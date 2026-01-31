@@ -1,4 +1,4 @@
-pkgbase = lm-studio-bin
+pkgbase = lmstudio-bin
 	pkgdesc = LM Studio - A desktop app for exploring and running large language models locally
 	pkgver = 0.4.1
 	pkgrel = 1
@@ -17,4 +17,4 @@ pkgbase = lm-studio-bin
 	sha256sums = d18e178cadef7d6798f19e6d41f33a297e26a1d285091cbc30da8252d18a46f0
 	sha256sums = SKIP
 
-pkgname = lm-studio-bin
+pkgname = lmstudio-bin
