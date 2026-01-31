@@ -1,14 +1,14 @@
 pkgbase = pureref
 	pkgdesc = Reference Image Viewer
-	pkgver = 2.0.3
-	pkgrel = 3
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = http://www.pureref.com
 	arch = x86_64
 	license = LicenseRef-PureRef
 	depends = fuse2
 	options = !debug
 	options = !strip
-	source = pureref-2.0.3.deb::https://www.pureref.com/files/build.php?build=LINUX64.deb&version=2.0.3&downloadKey=o%2FfbD4CLIHlKrClkq8gv6g%3D%3D
-	b2sums = f4705bac2c96be5f07fedec0e6190f5b41370a84a1ec59f30c2e9a47adbaa87500effb7041b36021f3db92051934ef16875a28ec94601273b336c0e670712f68
+	source = pureref-2.1.0.deb::https://www.pureref.com/files/build.php?build=LINUX64.deb&version=2.1.0&downloadKey=Glmf5h67EQAzi3XRrzyVPA%3D%3D
+	b2sums = 0c620f064dfbe81b0f7fba5b07308027af5e637ed63dd22d19b349c7ab7362d4e123eb5afed0bdb691d6c10d6d2e5e7500a85b36e225a7515b75da852ad58e3a
 
 pkgname = pureref
