@@ -1,6 +1,6 @@
 pkgbase = docker-color-output-git
 	pkgdesc = Enhances docker's command output by adding customizable colors
-	pkgver = 2.6.1.r0.g7c44fec
+	pkgver = 3.0.1.r1.gd9f2e87
 	pkgrel = 1
 	url = https://github.com/devemio/docker-color-output
 	arch = x86_64

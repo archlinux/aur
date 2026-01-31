@@ -1,7 +1,7 @@
 # Contributor: Danilo Carolino <danilogcarolino@gmail.com>
 
 pkgname=docker-color-output-git
-pkgver=2.6.1.r0.g7c44fec
+pkgver=3.0.1.r1.gd9f2e87
 pkgrel=1
 pkgdesc="Enhances docker's command output by adding customizable colors"
 arch=('x86_64')
@@ -25,7 +25,7 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-    go build -o ${pkgname%-git} ./cmd/cli
+    go build -o ${pkgname%-git} ./cmd/docker-color-output
 }
 
 package() {
