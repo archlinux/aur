@@ -80,13 +80,13 @@ package() {
         ccid
         gcc-libs
         glibc
+        openssl-1.1
         pcsclite
         qt5-base
         qt5-svg
     )
     optdepends=(
         "disig-web-signer: online certificates update support"
-        "openssl-1.1: system-provided OpenSSL"
     )
 
     : "${depends[@]}"
@@ -108,8 +108,16 @@ package() {
     install -dm755 "${pkgdir}/usr/lib/eID_klient"
     ln -s /usr/bin/eID_Client "${pkgdir}/usr/lib/eID_klient/VirtualKeyboard"
 
-    for lib in "${srcdir}"/squashfs-root/lib/lib{CardAPI,botan,pkcs11_,crypto,ssl}*; do
+    for lib in "${srcdir}"/squashfs-root/lib/lib{CardAPI,botan,pkcs11_}*; do
         ln -s "/opt/${_pkgname}/lib/${lib##*/}" "${pkgdir}/usr/lib/eID_klient/"
+    done
+
+    for lib in lib{crypto,ssl}.so; do
+        src="${lib}.1.1"
+
+        for dst in "${lib}" "${src}"; do
+            ln -s "/usr/lib/${src}" "${pkgdir}/usr/lib/eID_klient/${dst}"
+        done
     done
 
     # Icons + desktop file
