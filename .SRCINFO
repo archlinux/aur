@@ -1,0 +1,15 @@
+pkgbase = oxid-git
+	pkgdesc = A customizable TUI editor written in Rust
+	pkgver = r4.ae84775
+	pkgrel = 1
+	url = https://github.com/Ninso112/oxid
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	provides = oxid
+	conflicts = oxid
+	source = git+https://github.com/Ninso112/oxid.git
+	sha256sums = SKIP
+
+pkgname = oxid-git
