@@ -1,15 +1,14 @@
 pkgbase = limine-snapper-sync
-	pkgdesc = The tool syncs Limine snapshot entries with Snapper snapshots.
-	pkgver = 1.21.0
+	pkgdesc = Automatically syncs Limine snapshot entries with Snapper snapshots.
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://gitlab.com/Zesko/limine-snapper-sync
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = git
-	makedepends = jdk21-openjdk
-	makedepends = maven
+	makedepends = gradle
 	depends = bash
-	depends = java-runtime-headless>=17
 	depends = limine
 	depends = snapper
 	depends = btrfs-progs
@@ -21,8 +20,14 @@ pkgbase = limine-snapper-sync
 	optdepends = b3sum: Fast Blake3 hash function to prevent duplication.
 	optdepends = xxhash: Fast hashing utility for deduplication with shorter hashes.
 	conflicts = limine-snapper-sync-git
+	options = !debug
+	options = !strip
 	backup = etc/limine-snapper-sync.conf
-	source = limine-snapper-sync-1.21.0.tar.gz::https://gitlab.com/Zesko/limine-snapper-sync/-/archive/1.21.0/limine-snapper-sync-1.21.0.tar.gz
-	sha256sums = b114a368405121be236c1f5c97c6fd6f765a637611256586c9996415bcf41cad
+	source = limine-snapper-sync-1.22.0.tar.gz::https://gitlab.com/Zesko/limine-snapper-sync/-/archive/1.22.0/limine-snapper-sync-1.22.0.tar.gz
+	sha256sums = c68cf79d04da748eeed7df191999c4f3200dfe145e63beec7ea4767f9bd8ba74
+	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-25.0.2/graalvm-community-jdk-25.0.2_linux-x64_bin.tar.gz
+	sha256sums_x86_64 = e0be791c8fda4d03b6b0a0cb824fef3149736170057b3a515252b44419606af0
+	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-25.0.2/graalvm-community-jdk-25.0.2_linux-aarch64_bin.tar.gz
+	sha256sums_aarch64 = b4580d9f223d0a4b3a1757e58b18ff4c1db950e67e105fc5cb741457d2384a71
 
 pkgname = limine-snapper-sync
