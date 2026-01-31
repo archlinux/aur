@@ -2,7 +2,7 @@
 # Maintainer: devlinman <dev.linman.tech@gmail.com>
 
 pkgname=whatsit-git
-pkgver=4.0.0
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="Lightweight (KDE) native Qt6 WhatsApp Web client"
 arch=('x86_64')
