@@ -10,7 +10,7 @@
 
 pkgname=hmcl-bin
 pkgver=3.10.2
-pkgrel=2
+pkgrel=3
 install=.install
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."
 arch=('any')
