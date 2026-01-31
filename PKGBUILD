@@ -1,7 +1,7 @@
 # Maintainer: Brian McCallister <brianm@apache.org>
 pkgname=bdsh
-pkgver=0.2.8
-pkgrel=3
+pkgver=0.2.14
+pkgrel=1
 pkgdesc="Better Distributed Shell - run commands on multiple hosts with consensus view"
 arch=('x86_64' 'aarch64')
 url="https://github.com/brianm/bdsh"
@@ -27,6 +27,6 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
     install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
-    install -Dm644 "doc/$pkgname.1" "$pkgdir/usr/share/man/man1/$pkgname.1"
+    install -Dm644 "$(find target -name 'bdsh.1' -path '*/build/*/out/*' | head -1)" "$pkgdir/usr/share/man/man1/$pkgname.1"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
