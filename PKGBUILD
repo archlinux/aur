@@ -1,7 +1,7 @@
 pkgname=serycade-git
 pkgdesc='Some tui games i made because i was bored. Currently pong and a maze'
-pkgver=r33.a4325bf
-pkgrel=2
+pkgver=r36.9b7b3f6
+pkgrel=1
 license=('CDDL-1.0')
 url='https://serenit.ie/projects#serycade'
 arch=('x86_64' 'aarch64')
@@ -28,16 +28,18 @@ pkgver() {
 
 build() {
 
-    if [ "$CARCH" == "x86_64" ]; then
-        target='LinuxX64'
-    elif [ "$CARCH" == "aarch64" ]; then
-        target='LinuxArm64'
-    fi
+    local target=$(_target caps)
 
     # Figure out jvm >= 17 installation
-    jvm=$(ls /usr/lib/jvm | sed -n -r "s/(.*([0-9][0-9]).*)/\2 \1/p" | awk '$1>=17{print $2}' | head -n 1)
+    for jvm in /usr/lib/jvm/*; do
+        if [ ! -f "$jvm/release" ]; then continue; fi
+        local java_major=$(sed -n -r 's/^JAVA_VERSION="(.*)"$/\1/p' < "$jvm/release" | cut -d. -f1)
+        if [ "$java_major" -ge 17 ]; then
+            export JAVA_HOME="$jvm"
+            break
+        fi
+    done
 
-    export JAVA_HOME="/usr/lib/jvm/$jvm"
     export KONAN_DATA_DIR="$srcdir/konan"
     # Also using local konan and gradle directories to avoid weird conflicts
 
@@ -46,16 +48,21 @@ build() {
 }
 
 package() {
-    if [ "$CARCH" == "x86_64" ]; then
-        target='linuxX64'
-    elif [ "$CARCH" == "aarch64" ]; then
-        target='linuxArm64'
-    fi
+    local target=$(_target)
 
     cd "$srcName"
 
-    install -Dm755 "build/bin/$target/releaseExecutable/$binaryName.kexe" "$pkgdir/usr/bin/$binaryName"
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -v -Dm755 "build/bin/$target/releaseExecutable/$binaryName.kexe" "$pkgdir/usr/bin/$binaryName"
+    install -v -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+_target() {
+    local target
+    case "$CARCH" in
+        "x86_64") target='linuxX64'; ;;
+        "aarch64") target='linuxArm64'; ;;
+    esac
+    if [ "$1" == caps ]; then echo "${target^}"; else echo "$target"; fi
 }
 
 # invokekitty (sery) <meow@serenit.ie>
