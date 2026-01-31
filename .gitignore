@@ -2,5 +2,6 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
+!.install
 !hmcl.desktop
 !hmcl-launch-script

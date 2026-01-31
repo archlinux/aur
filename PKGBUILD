@@ -1,12 +1,17 @@
 # Maintainer: TTsdzb <ttsdzb at outlook dot com>
 # Maintainer: Jia Yin<yenfeng.shetiko at gmail dot com>
+# Contributor: Misaka13514 <Misaka13514 at gmail dot com>
+# Contributor: Hao Long <imlonghao@archlinuxcn.org>
+# Contributor: Lin Ruoshui <LinRs at users.noreply.github dot com>
+# Contributor: hexchain <i at hexchain.org>
 # Contributor: Rowisi < nomail <at> private <dot> com >
 # Contributor: So1ar <so1ar114514@gmail.com>
 # Contributor: Bot-wxt1221 <3264117476@qq.com>
 
 pkgname=hmcl-bin
 pkgver=3.10.2
-pkgrel=1
+pkgrel=2
+install=.install
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."
 arch=('any')
 url="https://github.com/huanghongxun/HMCL"
