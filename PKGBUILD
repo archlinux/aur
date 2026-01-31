@@ -4,7 +4,7 @@
 pkgname=intel-sgx-psw-bin
 pkgdesc='Intel® Software Guard Extensions Platform Software for Linux* OS'
 pkgver=2.27
-pkgrel=2
+pkgrel=3
 url='https://github.com/intel/linux-sgx'
 arch=('x86_64')
 license=('BSD-3-Clause AND LicenseRef-IntelSgx-ThirdParty') # https://github.com/intel/linux-sgx?tab=License-1-ov-file
@@ -23,7 +23,7 @@ backup=('etc/aesmd.conf' 'etc/mpa_registration.conf' 'etc/qgs.conf' 'etc/sgx_def
 source=("sgx_${pkgver}_debian_local_repo.tgz::https://download.01.org/intel-sgx/sgx-linux/${pkgver}/distro/ubuntu24.04-server/sgx_debian_local_repo.tgz"
        'intel-sgx-sysusers.conf')
 b2sums=('aaa33087d8002a643f95d6699273738bdc847ea6b910e0f0ce61d42857a31f71517faaa9f4ea62396682622cdb0e01fec110e99d47d47fbec59bdddbb0a563e2'
-        '258d4bf13a00b299f72f1fe720fa1adc40201dfdb45ca2f557d9fff660c3233163e82114e2b5f5037cbb07fee82676e79c7def8bdf62b06e3d14b30ed6148761')
+        'f0a1415f8e88ffe2fe189c56a701a9756f74947375f142aa3965679129d3182f1b380beea02d70e07cbe7c9443461b8cbb674193ae07f71d543d13a10ecaf7ff')
 
 package() {
   # shellcheck disable=SC2016
@@ -31,7 +31,7 @@ package() {
     sh -c 'ar -p "$1" -O data.tar.zst | tar -x --zstd -C "$0"' "${pkgdir}" {} \;
 
   # required users and groups
-  install -Dm644 intel-sgx-sysusers.conf -t "${pkgdir}"/usr/lib/sysusers.d/intel-sgx.conf
+  install -Dm644 intel-sgx-sysusers.conf "${pkgdir}"/usr/lib/sysusers.d/intel-sgx.conf
 
   # composed license
   install -Dm644 "${pkgdir}"/usr/share/doc/libsgx-enclave-common/copyright -t "${pkgdir}/usr/share/licenses/${pkgname}"
@@ -61,7 +61,7 @@ _fix_non_standard_paths() {
 
 # Update symbolic links using non-standard Arch Linux paths
 _fix_binary_symlinks() {
-  broken_symlinks=(
+  local broken_symlinks=(
     "${pkgdir}/opt/intel/sgx-aesm-service/aesm/libsgx_pce.signed.so"
     "${pkgdir}/opt/intel/sgx-aesm-service/aesm/libsgx_pce.signed.so.1"
     "${pkgdir}/opt/intel/sgx-aesm-service/aesm/libsgx_qe3.signed.so"
@@ -70,6 +70,7 @@ _fix_binary_symlinks() {
     "${pkgdir}/opt/intel/sgx-pck-id-retrieval-tool/libsgx_pce.signed.so.1"
   )
 
+  local symlink target
   for symlink in "${broken_symlinks[@]}"; do
     target="${pkgdir}/usr/lib/$(basename "${symlink}")"
     target="$(realpath --relative-to="$(dirname "${symlink}")" "${target}")"
