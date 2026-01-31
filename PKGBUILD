@@ -1,21 +1,30 @@
 # Maintainer: Onxy <onxy@example.com>
 pkgname=betterwallpaper-git
-pkgver=r4.5e1762d
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="A modern, high-performance animated wallpaper manager for Linux (WIP)"
+pkgdesc="A modern, high-performance animated wallpaper manager for Linux"
 arch=('x86_64')
 url="https://github.com/Misiix9/BetterWallpaper"
 license=('GPL3')
-depends=('gtk4' 'libadwaita' 'gtk4-layer-shell' 'mpv' 'curl' 'glew' 'nlohmann-json' 'wayland')
-optdepends=('linux-wallpaperengine: for Wallpaper Engine support')
+depends=(
+    'gtk4'
+    'libadwaita'
+    'gtk4-layer-shell'
+    'mpv'
+    'curl'
+    'wayland'
+)
+optdepends=(
+    'linux-wallpaperengine: for Wallpaper Engine scene support'
+    'swaybg: alternative wallpaper backend'
+    'swww: alternative wallpaper backend with animations'
+    'hyprpaper: Hyprland native wallpaper support'
+)
 makedepends=('git' 'cmake' 'base-devel')
-source=("git+https://github.com/Misiix9/BetterWallpaper.git")
+provides=('betterwallpaper')
+conflicts=('betterwallpaper')
+source=("git+https://github.com/Misiix9/BetterWallpaper.git#tag=v${pkgver}")
 md5sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/BetterWallpaper"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 build() {
   cd "$srcdir/BetterWallpaper"
@@ -28,4 +37,10 @@ build() {
 package() {
   cd "$srcdir/BetterWallpaper"
   DESTDIR="$pkgdir" cmake --install build
+  
+  # Install desktop file
+  install -Dm644 betterwallpaper.desktop "$pkgdir/usr/share/applications/betterwallpaper.desktop"
+  
+  # Install systemd service
+  install -Dm644 packaging/betterwallpaper-daemon.service "$pkgdir/usr/lib/systemd/user/betterwallpaper-daemon.service"
 }
