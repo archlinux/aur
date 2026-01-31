@@ -1,15 +1,15 @@
 # Maintainer: Mambuco <gabriele.giambrone@icloud.com>
 pkgname=votetracker
-pkgver=2.8.0
-pkgrel=3
+pkgver=2.8.1
+pkgrel=1
 pkgdesc="School grade management application (italian school system)"
 arch=('any')
 url="https://github.com/mambucodev/votetracker"
 license=('MIT')
-depends=('python' 'pyside6' 'pyside6-svg' 'python-reportlab' 'python-requests' 'python-installer')
+depends=('python' 'pyside6' 'qt6-svg' 'python-reportlab' 'python-requests' 'python-installer')
 makedepends=('python-build' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mambucodev/votetracker/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('62fa0114ee0bf5439c02ea0407737464c3beb3b93552b20ff328f227bdfee78c')
+sha256sums=('c8d4cf52a7712fc94754cdc6ccbff390d09bfbea50f0c798118ec75af1cafcd1')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
