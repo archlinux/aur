@@ -1,5 +1,5 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
-# Maintainer: dougEfresh <dchimento@gmail.com>
+# Contributor: dougEfresh <dchimento@gmail.com>
 
 pkgname="github-mcp-server"
 pkgver=0.30.2
