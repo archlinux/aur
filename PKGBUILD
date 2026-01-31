@@ -4,7 +4,7 @@
 _pkgname=eidklient
 pkgname="${_pkgname}-native"
 pkgver=5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Slovak eID Client - uses system-provided libraries, supports Wayland, …"
 arch=('i686' 'x86_64')
 url="https://www.slovensko.sk/"
