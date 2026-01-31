@@ -1,7 +1,7 @@
 pkgbase = trac
 	pkgdesc = Enhanced wiki and issue tracking system for software development projects
 	pkgver = 1.6
-	pkgrel = 2
+	pkgrel = 3
 	url = http://trac.edgewall.org/
 	arch = any
 	license = BSD-3-Clause
