@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-datavis3d
-_qtver=6.10.1
+_qtver=6.10.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -22,11 +22,12 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtdatavis3d-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('601c7cfafd6ae525258fe5bc0f759c67237a0aa61f91fb71db2a9c5eaa50bb07')
+sha256sums=('b769408bf4a3d03220331d5de59636fdf97a21831d01d3fd141c36c698355bc1')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
   source android-env ${_android_arch}
+  export QT_ANDROID_JAR_PATH=${ANDROID_PREFIX}/jar
   android-${_android_arch}-cmake -G Ninja -B build-$_android_arch -S $_pkgfqn \
     -DCMAKE_FIND_ROOT_PATH="${ANDROID_PREFIX}" \
     -DQT_BINARY_DIR=${ANDROID_PREFIX_BIN} \
