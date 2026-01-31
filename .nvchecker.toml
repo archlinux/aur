@@ -1,0 +1,5 @@
+[icinga-php-library]
+source = "github"
+github = "icinga/icinga-php-library"
+use_max_tag = true
+prefix = "v"
