@@ -1,60 +1,6 @@
-# Source files
-bin/
-build/
-.cache/
-.makepkg/
-*/pkg/
-pkg/*
-*.tgz
-*.xz
-*.zip
-*.gz
-*.zst
-*.bz2
-*.7z
-*.rar
-*.pkg
-*.pkg.*
-*.tar.gz
-*.files
-*.bak
-*.run
-
-# OS files
 *~
-.directory
-.DS_Store
-Thumbs.db
-.Trash-*
-logs/*
-temp/
-gnupg/
-*.orig
-*.old
-*.tmp
-*.log
-*.bak
-*.env
-
-# Editor files
-*.code-workspace
-*.kate-swp
-*.swp
-*.swo
-.vscode/
-.idea/
-.qodo/
-.zencoder/
-.codacy/
-.codacy.*
-.zenflow/
-
-############################
-
-# Internal files
-coolerdash/
-coolerdash-bin/
-
-# GitHub files
-.github/
-.gitlab/
+.*
+!PKGBUILD
+!.SRCINFO
+!coolerdash.install
+!.gitignore
