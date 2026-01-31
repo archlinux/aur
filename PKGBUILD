@@ -33,7 +33,7 @@ makedepends=(
 )
 
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/meduzapat/LEDSpicer/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
+sha256sums=('10cae9d87608ecf7c36acefb18eee8ab59197415f54ffa71ae0bf6916a3cf3a7')
 
 build() {
 	cd "${srcdir}/LEDSpicer-${pkgver}"
