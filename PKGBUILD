@@ -1,7 +1,7 @@
 # Maintainer: schnur[at]i2pmail.org
 
 pkgname=nrc
-_pkgver=0.6.17
+_pkgver=0.6.19
 _channel=beta
 _rel=9
 _is_beta=false
