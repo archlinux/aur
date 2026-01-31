@@ -1,0 +1,18 @@
+pkgbase = mx-conky
+	pkgdesc = MX Conky - Conky configuration tool, for MX, antiX, and Arch Linux
+	pkgver = 26.01
+	pkgrel = 1
+	url = https://mxlinux.org
+	install = mx-conky.install
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = conky
+	depends = qt6-base
+	source = https://github.com/MX-Linux/mx-conky/archive/refs/tags/26.01.tar.gz
+	sha256sums = ac9cc78f41761db2f1385a57484ff45793334a1dadcbc5746312b57d85f9e2f0
+
+pkgname = mx-conky

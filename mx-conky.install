@@ -1,0 +1,45 @@
+#!/bin/sh
+
+wrapper_path="/usr/share/mx-conky-data/conky-startup.sh"
+wrapper_marker="# mx-conky wrapper (arch package)"
+
+create_wrapper_if_missing() {
+    if [ -e "$wrapper_path" ]; then
+        return 0
+    fi
+
+    mkdir -p "$(dirname "$wrapper_path")"
+    cat >"$wrapper_path" <<EOF
+#!/bin/sh
+$wrapper_marker
+# Only create this wrapper when no file exists to avoid pacman conflicts
+# with an mx-conky-data package that may be installed later.
+if [ -x "\$HOME/.conky/conky-startup.sh" ]; then
+    exec "\$HOME/.conky/conky-startup.sh" "\$@"
+fi
+exit 0
+EOF
+    chmod 755 "$wrapper_path"
+}
+
+remove_wrapper_if_ours() {
+    if [ ! -f "$wrapper_path" ]; then
+        return 0
+    fi
+
+    if grep -q "$wrapper_marker" "$wrapper_path"; then
+        rm -f "$wrapper_path"
+    fi
+}
+
+post_install() {
+    create_wrapper_if_missing
+}
+
+post_upgrade() {
+    create_wrapper_if_missing
+}
+
+post_remove() {
+    remove_wrapper_if_ours
+}
