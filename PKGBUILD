@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=stabs
-_pkgver=0.6-4
+_pkgver=0.7-1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=9
+pkgrel=1
 pkgdesc="Stability Selection with Error Control"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -24,8 +24,8 @@ optdepends=(
   r-th.data
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b05e82dca362b6442b1c2d2970252509')
-b2sums=('4c29ed288d3386fe6293b9eeb11fb316879ecb6a1d1198e8fab711fd9b60f283072ea1c0b040d0cd67aa7d34222979a480ae13170b905855e0b72287e9f80108')
+md5sums=('98c6d1e9b8f856d3e500e4d69b9c03f7')
+b2sums=('460998c9f1950ac2305a5b695265a3943aabec746e3f59168804b27c4f7fcad6b4689683a5d4db0239be0f08b3f32190cc54601698b678adca13c98516003e4f')
 
 build() {
   mkdir build
