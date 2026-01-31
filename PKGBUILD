@@ -2,7 +2,7 @@
 
 _pkgname=libheif
 pkgname=lib32-libheif
-pkgver=1.19.8
+pkgver=1.21.2
 pkgrel=1
 pkgdesc="HEIF file format decoder and encoder (32-bit)"
 arch=('x86_64')
