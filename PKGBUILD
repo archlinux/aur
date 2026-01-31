@@ -4,8 +4,9 @@ _pyname="meshcore-cli"
 _pkgname="${_pyname}"
 pkgname="${_pkgname}-git"
 pkgver=1.3.16.r446.20260127.246a84e
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line interface to MeshCore node."
+groups=("meshcore")
 arch=(
   'any'
 )
