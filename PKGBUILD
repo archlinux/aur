@@ -2,7 +2,7 @@
 # Maintainer: Masato TOYOSHIMA <phoepsilonix@gmail.com>
 # Contributor: Morgan <morganamilo@archlinux.org>
 
-_ver_pacman_static=7.1.0.r9.g54d9411-1
+_ver_pacman_static=7.1.0.r9.g54d9411-2
 _unistring_ver=1.4.1
 _attr_ver=2.5.2
 _acl_ver=2.3.2
@@ -250,12 +250,15 @@ build () {
   if ! checkver $(LC_ALL=C pacman -Qi pacman-static|grep Version|grep -Eo "[0-9]+\.[0-9]+\.[0-9]+\.r[0-9]+.*$") $_ver_pacman_static || [[ ! $(LC_ALL=C objdump --syms /usr/lib/pacman/lib/libalpm.a | grep -E "\.text.* alpm_version") ]] ; then
     # Addition of -ffat-lto-objects to LTOFLAGS.(prevent static lib mangling)
     sed -r "/(export LDFLAGS=.*)/s/(.+)/export LTOFLAGS+=' -fuse-linker-plugin -ffat-lto-objects'\n\1/" PKGBUILD -i
-    # _sslver=3.6.1 above
+    echo "Building pacman-static"
+	# _sslver=3.6.1 above
 	# pacman-static 7.1.0.r9 : _sslver=3.6.0
     sed -e "s/^_sslver=.*$/_sslver=${_ssl_ver}/" PKGBUILD -i
 	sed -e "s/866825a1cdf0b705b409402fbc7a713e7d9b8e7736c5126be57b354927954c148a341fc52b02c0629c1e015a889bfd40217f8e703b73235892e91da060909b76/492cd2e0a7506e085d9840a929ead994390409a35c24e47e0cf44987920711b61f1513f21b7eee50e56f226b26cd654cda6dbd1f6e439563a93a8f0e530fefb5/" PKGBUILD -i
     #for i in $( . PKGBUILD; echo "${validpgpkeys[@]}" ); do gpg --receive "$i"; gpg -a --export "$i" > "keys/pgp/$i.asc" ; done
     makepkg -si --noconfirm --skippgpcheck
+  else
+	echo "Using the installed pacman-static"
   fi
 
   TARGETS=$(rustup target list | grep "$ARCH"-); : "${TARGET:=$(echo "$TARGETS" | grep musl | head -n1 | cut -d' ' -f1)}" "${TARGET:=$(echo "$TARGETS" | grep -v musl | head -n1 | cut -d' ' -f1)}"
