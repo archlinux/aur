@@ -1,6 +1,6 @@
 pkgbase = panoramax_cli
 	pkgdesc = CLI tool for uploading your pictures to Panoramax
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://gitlab.com/panoramax/clients/cli
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = panoramax_cli
 	depends = python-tomli
 	depends = python-tomli-w
 	depends = python-typer
-	source = https://gitlab.com/panoramax/clients/cli/-/archive/1.2.2/cli-1.2.2.tar.gz
-	b2sums = b06da8cdb106898afb496059bb64cb599dbbbb34f2e2b6c1210f970611831104138ff28458ceb124e3ec83259a744333eaa4bdbfb9998ccce1debc5ba4b9d746
+	source = https://gitlab.com/panoramax/clients/cli/-/archive/1.2.3/cli-1.2.3.tar.gz
+	b2sums = e9543f325d5df6ed7f25148253d5538fbec49440bf132c2c0209cb3fff2bc560f88e853cc4e7fdfac53bae663b00fdc9e1f0b93ee24fcb0115bada0f1306b8f6
 
 pkgname = panoramax_cli
