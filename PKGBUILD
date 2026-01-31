@@ -9,6 +9,7 @@ pkgdesc="Library to aid in drawing to Logitech G15 screens"
 arch=('x86_64')
 url="https://github.com/vividnightmare/$_pkgname"
 license=('GPL')
+makedepends=('autoconf')
 depends=('freetype2' 'libg15')
 conflicts=('libg15render')
 provides=('libg15render')
@@ -17,6 +18,7 @@ sha512sums=('SKIP')
 
 build() {
   cd "${pkgname}"
+  autoreconf -fi
   chmod +x configure
   ./configure --prefix=/usr --enable-ttf
   make

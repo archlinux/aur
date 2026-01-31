@@ -6,6 +6,7 @@ pkgbase = libg15render-git
 	url = https://github.com/vividnightmare/libg15render
 	arch = x86_64
 	license = GPL
+	makedepends = autoconf
 	depends = freetype2
 	depends = libg15
 	provides = libg15render
