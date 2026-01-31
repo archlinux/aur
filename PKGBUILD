@@ -16,8 +16,8 @@ depends=("glibc")
 conflicts=("${_pkgname}" "${_pkgname}-git")
 source=("LICENSE_${pkgver}::${_urlraw}/LICENSE"
         "README_${pkgver}::${_urlraw}/README.md")
-source_x86_64=("${_pkgname}_x86_64.tar.gz::${url}/releases/download/v${_pkgver}/${_pkgname}-v${_pkgver}-linux-amd64.tar.gz")
-source_aarch64=("${_pkgname}_aarch64.tar.gz::${url}/releases/download/v${_pkgver}/${_pkgname}-v${_pkgver}-linux-arm64.tar.gz")
+source_x86_64=("${_pkgname}_${pkgver}_x86_64.tar.gz::${url}/releases/download/v${_pkgver}/${_pkgname}-v${_pkgver}-linux-amd64.tar.gz")
+source_aarch64=("${_pkgname}_${pkgver}_aarch64.tar.gz::${url}/releases/download/v${_pkgver}/${_pkgname}-v${_pkgver}-linux-arm64.tar.gz")
 md5sums=('2334c8619b392ef67df716363660a45d'
          '6676979e97fd01cddc8a16cadd8ec934')
 md5sums_x86_64=('4b293a2b48eb4147d73fd5fc1eedbc95')
