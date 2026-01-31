@@ -3,7 +3,7 @@
 
 pkgname=p4
 _version=2025.2
-pkgver=2025.2.2852709
+pkgver=2025.2.2882317
 pkgrel=1
 
 pkgdesc="Perforce's Helix command-line client"
@@ -13,7 +13,7 @@ url="https://www.perforce.com"
 license=('custom:p4')
 
 _url="${url}/downloads/perforce"
-_filename="${pkgver:2:4}-20251113-${pkgname}"
+_filename="${pkgver:2:4}-20260130-${pkgname}"
 
 source=(LICENSE
         "${_filename}"::"${_url}/r${pkgver:2:4}/bin.linux26x86_64/${pkgname}"
@@ -21,7 +21,7 @@ source=(LICENSE
 
 
 sha256sums=('c4ed3aef62b1bbf2d16ce4cceb65dc49ab9635b38e2fed0a595fe259283a9f32'
-            'ac62fa52a05e848090fc29765e020a5ea62ff0d7634cb862975773e9b2b9fa4a'
+            '41b2d2f9fa41b2e2775471103270c59d0b098504d52abf3e3e0ce6171ecdc877'
             'SKIP')
 
 # Perforce Software (Package Signing) <support+packaging@perforce.com>
