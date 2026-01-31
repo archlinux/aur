@@ -1,7 +1,7 @@
 # Maintainer: nblock <nblock [/at\] archlinux DOT us>
 
 pkgname=vja
-pkgver=4.10.1
+pkgver=5.0.0
 pkgrel=1
 pkgdesc='A simple CLI for Vikunja'
 arch=('any')
@@ -20,8 +20,8 @@ makedepends=('python-build'
              'python-installer'
             )
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha1sums=('c6b7ac7818b8a3b5c2a82b69a86367d4711a9ce8')
-sha256sums=('4d24feaf91868729714d8703fa60d8971f3d72ec36e609f86607edee0b0556ec')
+sha1sums=('b7867b6eb2d2f99d86db10ff9fd0c97dc34c9e1c')
+sha256sums=('d7abc8c5c9df83b5b0c3dc3db05fb4599b1d16b0b2e2bf3749c6fbe18a25a85c')
 
 prepare() {
   cd "$pkgname-$pkgver"
