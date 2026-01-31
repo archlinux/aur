@@ -1,0 +1,14 @@
+post_install() {
+    echo ""
+    echo "╔════════════════════════════════════════════════════════════════╗"
+    echo "║  LobeHub Legacy (v1) installed successfully!                   ║"
+    echo "║                                                                ║"
+    echo "║  This is the legacy version with local database features.     ║"
+    echo "║  For the latest v2 version, install: lobehub-desktop-bin      ║"
+    echo "╚════════════════════════════════════════════════════════════════╝"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}

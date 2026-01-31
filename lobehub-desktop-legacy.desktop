@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=LobeHub-Legacy
+Exec=/opt/LobeHub-Beta/lobehub-desktop-beta %U
+Terminal=false
+Type=Application
+Icon=lobehub-desktop-legacy
+StartupWMClass=LobeHub-Legacy
+Comment=LobeHub Desktop Application (Legacy v1 with local database)
+MimeType=x-scheme-handler/lobehub-legacy;
+Categories=Utility;
