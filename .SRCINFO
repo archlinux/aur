@@ -1,0 +1,17 @@
+pkgbase = ovrport-bin
+	pkgdesc = Patch Quest games to run on Pico and other VR headsets
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/ovrport/app
+	arch = x86_64
+	license = GPL-3.0-only
+	provides = ovrport
+	provides = overport
+	conflicts = ovrport
+	conflicts = overport
+	source = ovrport-bin-1.2.2.zip::https://github.com/ovrport/app/releases/download/v1.2.2/desktop-linux.zip
+	source = ovrport.desktop
+	sha256sums = ff9007afc365007e246c2b070528f7f5ccfb68598b100c43627e3ef60b7f3528
+	sha256sums = 84aeba61906e77d69a15e90ef09624fa37589d9c87a77f1811e3633cfa00c38a
+
+pkgname = ovrport-bin

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Overport
+Comment=Patch Quest games to run on Pico and other VR headsets
+Exec=ovrport
+Icon=ovrport
+Categories=Development;Utility;
+Terminal=false
