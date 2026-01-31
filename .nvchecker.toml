@@ -1,0 +1,5 @@
+[fackr-bin]
+source = "github"
+github = "tenseleyFlow/fackr"
+use_latest_release = true
+prefix = "v"

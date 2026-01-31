@@ -1,0 +1,15 @@
+pkgbase = fackr-bin
+	pkgdesc = Terminal text editor written in Rust - facsimile reimplementation
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/tenseleyFlow/fackr
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = fackr
+	conflicts = fackr
+	source_x86_64 = fackr-x86_64-1.2.0.tgz::https://github.com/tenseleyFlow/fackr/releases/download/v1.2.0/fackr-1.2.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = f4ba8f4f91c71b33675e853d32cb6fd5d340c9e9a8e71e5913741be3e662e9b0
+
+pkgname = fackr-bin
