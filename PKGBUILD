@@ -5,7 +5,7 @@
 
 _android_arch=x86
 pkgname=android-$_android_arch-qt6-virtualkeyboard
-_qtver=6.10.1
+_qtver=6.10.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -21,11 +21,12 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtvirtualkeyboard-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('5b9cde3188afbc01b602b9016cee95ccd536aea43a6e6cfd297b44f328b9b6df')
+sha256sums=('6273256091a83f3f283d1a91498964fd6a91256b667d7b9e98005d731fdb986b')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
   source android-env ${_android_arch}
+  export QT_ANDROID_JAR_PATH=${ANDROID_PREFIX}/jar
   android-${_android_arch}-cmake -G Ninja -B build-$_android_arch -S $_pkgfqn \
     -DCMAKE_FIND_ROOT_PATH="${ANDROID_PREFIX}" \
     -DQT_BINARY_DIR=${ANDROID_PREFIX_BIN} \
