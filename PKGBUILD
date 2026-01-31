@@ -1,6 +1,6 @@
 # Maintainer: Maciej Borzecki <maciek.borzecki@gmail.com
 pkgname=image-garden
-pkgver=0.3.4
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Tool for creating test virtual machines"
 arch=(any)
@@ -8,7 +8,8 @@ url="https://gitlab.com/zygoon/image-garden"
 license=('Apache-2.0')
 groups=()
 depends=('xorriso' 'edk2-ovmf' 'qemu-system-x86' 'qemu-system-aarch64' 'whois' 'wget' 'xz' 'virtiofsd')
-makedepends=('shellcheck')
+optdepends=('qemu-system-ppc' 'qemu-system-riscv' 'qemu-system-s390x')
+makedepends=('shellcheck' 'python')
 provides=()
 conflicts=()
 replaces=()
@@ -17,11 +18,9 @@ options=()
 install=
 source=(
 	"$pkgname-$pkgver.tar.bz2::https://gitlab.com/zygoon/${pkgname}/-/archive/v${pkgver}/image-garden-v${pkgver}.tar.bz2"
-	"0001-Arch-override-default-OVMF-blobs-location.patch"
 )
 noextract=()
-sha256sums=('2be3b152050d3270c7808858989366984e9c5b36be0fd6907db163697dcd6606'
-            'd6db7cd3e41fc296eca1b22494bcda2076efa49044894c97ec86c6064e2fdf9f')
+sha256sums=('d974f02a0b758a8a9510577afb2305e407692f8627db38492d846e6697e1ed25')
 
 prepare() {
 	cd "$pkgname-v$pkgver"
