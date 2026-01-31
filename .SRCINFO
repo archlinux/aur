@@ -1,4 +1,4 @@
-pkgbase = planex
+pkgbase = planex-git
 	pkgdesc = Package installer utility for Plasma
 	pkgver = 4.14.0
 	pkgrel = 1
@@ -21,4 +21,4 @@ pkgbase = planex
 	source = git+file:///home/micro/Dokumenty/Projects/planex
 	sha256sums = SKIP
 
-pkgname = planex
+pkgname = planex-git

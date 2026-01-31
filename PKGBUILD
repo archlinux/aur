@@ -1,7 +1,7 @@
 # Maintainer: Peter Jung <ptr1337@archlinux.org>
 # Contributor: Ali Molaei <ali dot molaei at protonmail dot com>
 
-pkgname=planex
+pkgname=planex-git
 pkgver=4.14.0
 pkgrel=1
 pkgdesc="Package installer utility for Plasma"
