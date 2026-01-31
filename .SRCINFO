@@ -1,4 +1,4 @@
-pkgbase = wswitch
+pkgbase = wswitch-git
 	pkgdesc = A fast, Alt+Tab window switcher for wayland compositors
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -18,8 +18,8 @@ pkgbase = wswitch
 	depends = librsvg
 	optdepends = tela-icon-theme: Recommended icon theme
 	provides = wswitch
-	conflicts = wswitch-git
-	source = wswitch::git+https://github.com/DreamMaoMao/wswitch.git
+	conflicts = wswitch
+	source = wswitch-git::git+https://github.com/DreamMaoMao/wswitch.git
 	md5sums = SKIP
 
-pkgname = wswitch
+pkgname = wswitch-git

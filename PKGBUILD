@@ -1,5 +1,5 @@
 # Maintainer: DreamMaoMao <maoopzopaasnmakslpo@gmail.com>
-pkgname=wswitch
+pkgname=wswitch-git
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="A fast, Alt+Tab window switcher for wayland compositors"
@@ -24,8 +24,8 @@ makedepends=(
 optdepends=(
   'tela-icon-theme: Recommended icon theme'
 )
-provides=("$pkgname")
-conflicts=("$pkgname-git")
+provides=("wswitch")
+conflicts=("wswitch")
 # Use this for release versions. For now, we SKIP the check.
 source=("$pkgname::git+https://github.com/DreamMaoMao/wswitch.git")
 md5sums=('SKIP')
