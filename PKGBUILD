@@ -5,7 +5,7 @@ _pkgname=repeater
 pkgname=${_pkgname}-bin
 pkgdesc="Spaced repetition, in your terminal"
 
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -23,8 +23,8 @@ depends=('glibc' 'gcc-libs')
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.txz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}-unknown-linux-gnu.tar.xz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.txz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=('0ba791dd14a294075548790d32619046a5257b4dcca19ab7c76a80f182d8122f')
-sha256sums_aarch64=('a8ffed5140ba089f4e2e161cb6946d799f759ead3246f5347d6da753ac2840ae')
+sha256sums_x86_64=('81bb98d69c0899b45d4dee7c660a80d116d4c26dc1c99a570d32ffce842f5fec')
+sha256sums_aarch64=('729fedb841a03f32aa569f6d136271f4c596506fe144456d4673fbcf61991607')
 
 
 package() {
