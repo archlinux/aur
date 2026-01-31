@@ -1,0 +1,25 @@
+pkgbase = rmpd-git
+	pkgdesc = Modern, high-performance MPD server written in pure Rust with DSD support and multi-room audio
+	pkgver = r54.5bc8d59
+	pkgrel = 1
+	url = https://github.com/M0Rf30/rmpd
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = alsa-lib
+	optdepends = pulseaudio: PulseAudio output support
+	optdepends = pipewire: PipeWire output support
+	optdepends = snapcast: Multi-room audio synchronization
+	provides = rmpd
+	conflicts = rmpd
+	source = rmpd-git::git+https://github.com/M0Rf30/rmpd.git
+	source = rmpd.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = rmpd-git
