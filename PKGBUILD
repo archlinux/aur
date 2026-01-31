@@ -2,7 +2,7 @@
 
 pkgname=gosplugin
 pkgver=1.3.19.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Crypto Interface Web Browser Plugin for https://gosuslugi.ru/'
 arch=('x86_64')
 url="https://www.gosuslugi.ru/help/faq/esignature/3842"
@@ -52,13 +52,11 @@ optdepends=('rutoken-connect' 'jacartauc')
 makedepends=('grep' 'libarchive')
 
 source=(
-	'https://gu-st.ru/content/Gosplugin/Gosplugin_Linux-Debian_Installer.deb.zip'
+    "${pkgname}-${pkgver}-${pkgrel}.deb.zip::https://gu-st.ru/content/Gosplugin/Gosplugin_Linux-Debian_Installer.deb.zip"
 	'gosuslugi_plugin.sh'
 )
-sha256sums=(
-	'5cce84af9529ae636a6732393b40f99287f1c1f046b356ab909607156cdadda1'
-	'b2a148903b0fc84a60a8e1423b01c865491401a2b65d6b16dbe8442b15705dda'
-)
+sha256sums=('0c370ba1f9df8588ea3e0189bd6bf55cecd8d675234bc48697cd6bcdbcd4dc06'
+            'b2a148903b0fc84a60a8e1423b01c865491401a2b65d6b16dbe8442b15705dda')
 
 _script='Gosplugin_Linux-Debian_Installer.deb.sh'
 
