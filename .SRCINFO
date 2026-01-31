@@ -1,0 +1,19 @@
+pkgbase = chemicalfun
+	pkgdesc = C++ library (Python and C++ API) for generating balanced chemical reactions and for parsing and calculating properties of chemical formulas
+	pkgver = 0.1.13
+	pkgrel = 1
+	url = https://github.com/thermohub/chemicalfun
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = cmake
+	makedepends = eigen3
+	makedepends = fmt
+	makedepends = nlohmann-json
+	makedepends = python-setuptools
+	makedepends = spdlog
+	depends = gcc-libs
+	provides = libChemicalFun.so
+	source = chemicalfun-0.1.13.tar.gz::https://github.com/thermohub/chemicalfun/archive/refs/tags/v0.1.13.tar.gz
+	sha256sums = fe009d0b9ed491f57fe48048fd677e4746c32422c466bd1b61013782a7e58654
+
+pkgname = chemicalfun
