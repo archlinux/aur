@@ -7,49 +7,47 @@
 
 *A pure functional language for system configuration and package management*
 
-**[English](#english)** | **[中文](#中文)**
-
 </div>
 
 ---
 
-## English
+## About / 关于
 
-### About
+This is the AUR package for [Neve](https://github.com/MCB-SMART-BOY/Neve) that installs prebuilt binaries. For building from source, use [neve-git](https://aur.archlinux.org/packages/neve-git).
+这是 [Neve](https://github.com/MCB-SMART-BOY/Neve) 的 AUR 预编译二进制包。如需从源码构建，请使用 [neve-git](https://aur.archlinux.org/packages/neve-git)。
 
-This is the AUR package for [Neve](https://github.com/MCB-SMART-BOY/Neve) that installs prebuilt binaries. For building from source, see [neve-git](https://aur.archlinux.org/packages/neve-git).
+## Package Comparison / 包对比
 
-### Package Comparison
+| Item / 项目 | neve-bin | neve-git |
+|:--|:--|:--|
+| Build / 构建 | Prebuilt binary / 预编译二进制 | From source / 源码构建 |
+| Install time / 安装时间 | Fast (~10s) / 快（约 10 秒） | Slow (~5min) / 慢（约 5 分钟） |
+| Version / 版本 | Latest release / 最新发布版 | Latest commit / 最新提交 |
+| Disk usage / 磁盘占用 | Minimal / 最小 | Requires Rust toolchain / 需要 Rust 工具链 |
 
-| Package | neve-bin | neve-git |
-|:--------|:---------|:---------|
-| Build | Prebuilt binary | From source |
-| Install time | Fast (~10s) | Slow (~5min) |
-| Version | Latest release | Latest commit |
-| Disk usage | Minimal | Requires Rust toolchain |
+Recommendation: use `neve-bin` unless you need the latest unreleased features.
+推荐：除非需要最新未发布特性，否则建议使用 `neve-bin`。
 
-**Recommendation:** Use `neve-bin` unless you need the latest unreleased features.
+## Supported Architectures / 支持架构
 
-### Supported Architectures
+| Architecture / 架构 | Status / 状态 |
+|:--|:--|
+| x86_64 | ✅ Supported / ✅ 支持 |
+| aarch64 | ✅ Supported / ✅ 支持 |
 
-| Architecture | Status |
-|:-------------|:-------|
-| x86_64 | ✅ Supported |
-| aarch64 | ✅ Supported |
+## Installation / 安装
 
-### Installation
-
-Using an AUR helper (recommended):
+Using an AUR helper (recommended) / 使用 AUR 助手（推荐）：
 
 ```bash
-# Using yay
+# Using yay / 使用 yay
 yay -S neve-bin
 
-# Using paru
+# Using paru / 使用 paru
 paru -S neve-bin
 ```
 
-Manual installation:
+Manual installation / 手动安装：
 
 ```bash
 git clone https://aur.archlinux.org/neve-bin.git
@@ -57,29 +55,29 @@ cd neve-bin
 makepkg -si
 ```
 
-### Upgrade
+## Upgrade / 升级
 
 ```bash
 yay -Syu neve-bin
 ```
 
-### Uninstall
+## Uninstall / 卸载
 
 ```bash
 sudo pacman -Rns neve-bin
 ```
 
-### Usage
+## Usage / 使用
 
 ```bash
-neve repl              # Start interactive REPL
-neve eval "1 + 2"      # Evaluate expression
-neve run file.neve     # Run a file
-neve doc               # View documentation
-neve doc quickstart    # Quick start guide
+neve repl              # Start interactive REPL / 启动交互式 REPL
+neve eval "1 + 2"      # Evaluate expression / 求值表达式
+neve run file.neve     # Run a file / 运行文件
+neve doc               # View documentation / 查看文档
+neve doc quickstart    # Quick start guide / 快速入门
 ```
 
-### Quick Example
+## Quick Example / 快速示例
 
 ```bash
 $ neve repl
@@ -88,98 +86,13 @@ neve> greet("World")
 "Hello, World!"
 ```
 
-### Links
+## Links / 链接
 
-- [Neve Repository](https://github.com/MCB-SMART-BOY/Neve)
-- [neve-git (from source)](https://aur.archlinux.org/packages/neve-git)
-- [Documentation](https://github.com/MCB-SMART-BOY/Neve/tree/master/docs)
-- [Issue Tracker](https://github.com/MCB-SMART-BOY/Neve/issues)
-- [Releases](https://github.com/MCB-SMART-BOY/Neve/releases)
-
----
-
-## 中文
-
-### 关于
-
-这是 [Neve](https://github.com/MCB-SMART-BOY/Neve) 的 AUR 包，安装预编译二进制。如需从源码构建，请参见 [neve-git](https://aur.archlinux.org/packages/neve-git)。
-
-### 包对比
-
-| 包 | neve-bin | neve-git |
-|:---|:---------|:---------|
-| 构建方式 | 预编译二进制 | 从源码构建 |
-| 安装时间 | 快（约 10 秒） | 慢（约 5 分钟） |
-| 版本 | 最新发布版 | 最新提交 |
-| 磁盘占用 | 最小 | 需要 Rust 工具链 |
-
-**推荐：** 使用 `neve-bin`，除非你需要最新的未发布功能。
-
-### 支持架构
-
-| 架构 | 状态 |
-|:-----|:-----|
-| x86_64 | ✅ 支持 |
-| aarch64 | ✅ 支持 |
-
-### 安装
-
-使用 AUR 助手（推荐）：
-
-```bash
-# 使用 yay
-yay -S neve-bin
-
-# 使用 paru
-paru -S neve-bin
-```
-
-手动安装：
-
-```bash
-git clone https://aur.archlinux.org/neve-bin.git
-cd neve-bin
-makepkg -si
-```
-
-### 升级
-
-```bash
-yay -Syu neve-bin
-```
-
-### 卸载
-
-```bash
-sudo pacman -Rns neve-bin
-```
-
-### 使用
-
-```bash
-neve repl              # 启动交互式 REPL
-neve eval "1 + 2"      # 求值表达式
-neve run file.neve     # 运行文件
-neve doc               # 查看文档
-neve doc quickstart    # 快速入门
-```
-
-### 快速示例
-
-```bash
-$ neve repl
-neve> let greet = fn(name) `你好，{name}！`
-neve> greet("世界")
-"你好，世界！"
-```
-
-### 链接
-
-- [Neve 仓库](https://github.com/MCB-SMART-BOY/Neve)
-- [neve-git（从源码构建）](https://aur.archlinux.org/packages/neve-git)
-- [文档](https://github.com/MCB-SMART-BOY/Neve/tree/master/docs)
-- [问题反馈](https://github.com/MCB-SMART-BOY/Neve/issues)
-- [版本发布](https://github.com/MCB-SMART-BOY/Neve/releases)
+- [Neve Repository / 仓库](https://github.com/MCB-SMART-BOY/Neve)
+- [neve-git (from source) / neve-git（源码构建）](https://aur.archlinux.org/packages/neve-git)
+- [Documentation / 文档](https://github.com/MCB-SMART-BOY/Neve/tree/master/docs)
+- [Issue Tracker / 问题反馈](https://github.com/MCB-SMART-BOY/Neve/issues)
+- [Releases / 版本发布](https://github.com/MCB-SMART-BOY/Neve/releases)
 
 ---
 
