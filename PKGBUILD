@@ -1,12 +1,12 @@
 # Maintainer:Chenx Dust <chenx_dust@outlook.com>
 pkgname=ez4connect
-pkgver=1.2.10
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Imporved Qt-based ZJU-Connect GUI"
 arch=("i686" "x86_64" "armv7h" "aarch64" "riscv64")
-url='https://github.com/PageChen04/EZ4Connect'
+url='https://github.com/chenx-dust/EZ4Connect'
 license=('GPL3')
-depends=('hicolor-icon-theme' 'qt6-base>6.8.0' 'qt6-5compat>=6.8.0' 'zju-connect-bin')
+depends=('hicolor-icon-theme' 'qt6-base>6.8.0' 'qt6-5compat>=6.8.0' 'qt6-webengine>=6.8.0' 'zju-connect-bin')
 makedepends=('make' 'qt6-tools' 'gcc' 'cmake')
 provides=('ez4connect')
 conflicts=('ez4connect')
@@ -14,7 +14,7 @@ _appname='EZ4Connect'
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('e1231381f7ce3de7b1f19d7d0f781bdeceb2903d87bc4c8cb4bd6c69ed5ef036')
+sha256sums=('3fd89e9dd0c4cf592fb946b061e18f9daa117ecb6d6eff1007a15727f0a53adf')
 
 build(){
     cd "${srcdir}"/${_appname}-${pkgver}
