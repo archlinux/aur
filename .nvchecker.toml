@@ -1,0 +1,5 @@
+[icinga2]
+source = "github"
+github = "icinga/icinga2"
+use_max_tag = true
+prefix = "v"
