@@ -3,7 +3,7 @@
 
 pkgname=linuxcnc
 pkgver=2.9.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Controls CNC machines (mills, lathes, 3D printers, robots, etc.)"
 arch=(x86_64)
 url="https://linuxcnc.org/"
@@ -31,9 +31,9 @@ prepare() {
   cd "$srcdir/$pkgname-$pkgver/src"
 
   # libtirpc (glibc no longer provides SunRPC)
-  export CPPFLAGS=" -I/usr/include/tirpc"
-  export CFLAGS=" -I/usr/include/tirpc"
-  export LDFLAGS=" -ltirpc"
+  export CPPFLAGS="-I/usr/include/tirpc"
+  export CFLAGS="-I/usr/include/tirpc"
+  export LDFLAGS="-ltirpc"
   
   ./autogen.sh
 
@@ -47,13 +47,11 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/src"
-
   make
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver/src"
-
   DESTDIR="$pkgdir" make install
 
   # License
@@ -64,19 +62,35 @@ package() {
   install -Dm644 ../share/menus/CNC.menu \
     "$pkgdir/etc/xdg/menus/CNC.menu"
 
-  # Tcl path fix (LinuxCNC Tcl modules)
+  # Tcl path fix
   install -Dm644 /dev/stdin "$pkgdir/etc/profile.d/linuxcnc.sh" <<'EOF'
 [[ ":$TCLLIBPATH:" != *":/usr/lib/tcltk/linuxcnc:"* ]] && \
 export TCLLIBPATH="/usr/lib/tcltk/linuxcnc:$TCLLIBPATH"
 EOF
 
-  # Fix Python install path (dist-packages → site-packages)
+  # Fix Python path (dist-packages → site-packages)
   pyver=$(python -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')
-
   if [[ -d "$pkgdir/usr/lib/python3/dist-packages" ]]; then
     mkdir -p "$pkgdir/usr/lib/python$pyver/site-packages"
-    mv "$pkgdir/usr/lib/python3/dist-packages/"* \
-       "$pkgdir/usr/lib/python$pyver/site-packages/"
+    mv "$pkgdir/usr/lib/python3/dist-packages/"* "$pkgdir/usr/lib/python$pyver/site-packages/"
     rmdir "$pkgdir/usr/lib/python3/dist-packages" || true
+  fi
+
+  # Ensure hallib and modules are in /usr/lib/linuxcnc
+  mkdir -p "$pkgdir/usr/lib/linuxcnc/modules"
+  cp -a ../rtlib/*.so "$pkgdir/usr/lib/linuxcnc/modules/"
+
+  # Install manpages
+  install -Dm644 ../docs/man/man1/*.1 "$pkgdir/usr/share/man/man1"
+  install -Dm644 ../docs/man/man3/* "$pkgdir/usr/share/man/man3"
+  install -Dm644 ../docs/man/man9/* "$pkgdir/usr/share/man/man9"
+
+  # Fix: Remove /lib directory (Arch uses /usr/lib, /lib is a symlink)
+  # Move any contents to /usr/lib if they exist, then remove /lib
+  if [[ -d "$pkgdir/lib" ]]; then
+    if [[ -n "$(ls -A "$pkgdir/lib")" ]]; then
+      cp -a "$pkgdir/lib/"* "$pkgdir/usr/lib/"
+    fi
+    rm -rf "$pkgdir/lib"
   fi
 }
