@@ -2,8 +2,9 @@
 Name=LM Studio
 Comment=A desktop app for exploring and running large language models locally
 Exec=lm-studio %U
-Icon=lm-studio
+Icon=lmstudio-bin
 Type=Application
 Categories=Development;ArtificialIntelligence;
 Terminal=false
 StartupNotify=true
+StartupWMClass=LM Studio
