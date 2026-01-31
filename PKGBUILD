@@ -1,6 +1,6 @@
 # Maintainer: kobe-koto <k [at] koto [dot] cc>
 pkgname=fluent-lyrics-bin
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=1
 pkgdesc="Fluent Lyrics, a lyrics viewer supports various sources, written in Flutter. (prebuilt binary)"
 arch=('x86_64')
@@ -19,12 +19,12 @@ source=(
   "${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/fluent_lyrics-${pkgver}-linux.zip"
   "cc.koto.fluent_lyrics.desktop"
   "fluent-lyrics.sh"
-  "fluent-lyrics.png::${url}/raw/main/assets/logo.png"
+  "fluent-lyrics.png::${url}/raw/main/assets/logo-rounded.png"
   )
-sha256sums=('921ee2db690d1d30fac613c9b8f4505e5cbdf3b4f6a6425ed02d2036b19c1aec'
+sha256sums=('0c0f533d629cc9cc1bd8317697d92f005533b5bf25583fedc077ffce70bb7d2b'
             '29a9f40ec748ba132cd776862f99f84442f8018e1d4b6996691ee9ddf7ad917d'
             '22bda8e153e0a8b97c2657a1fb49c9d0907b93e0b83e2a15664019d14ae97f3e'
-            '0f4deb38f94893827d3203a15da50f10f82128eae2be364deb2b696784ea9670')
+            '8e331b6e8925e78030fdc86417e7f8fbf987a30261d1cf09432e5baaff027282')
 
 package() {
   install -d "$pkgdir/usr/lib/fluent-lyrics"
