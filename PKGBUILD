@@ -1,6 +1,6 @@
 # Maintainer: Burhanverse <contact@burhanverse.eu.org>
 pkgname=fagram-bin
-pkgver=2.1.5
+pkgver=2.1.6
 pkgrel=1
 pkgdesc="Telegram Desktop based messenger with Feature-rich modifications."
 arch=(x86_64)
@@ -19,7 +19,7 @@ options=(!debug)
 
 source=("https://github.com/fagramdesktop/fagram-rpm/releases/download/v${pkgver}/fagram-${pkgver}.tar.gz")
 
-sha256sums=('cee14a9f625384c25df47babd2c358ff3030a9b1c18cb660fe5b8a7609cf770c')
+sha256sums=('0ae87cc71ab67af8b7f8c1ae929b75639243c2fe1f9a4e5cc630f2e1df72e9e8')
 
 package() {
     cd "${srcdir}/"
