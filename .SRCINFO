@@ -1,0 +1,20 @@
+pkgbase = lm-studio-bin
+	pkgdesc = LM Studio - A desktop app for exploring and running large language models locally
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://lmstudio.ai
+	arch = x86_64
+	license = EULA
+	depends = fuse2
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = gtk3
+	depends = nss
+	depends = libxcrypt-compat
+	options = !strip
+	source = https://installers.lmstudio.ai/linux/x64/0.4.1-1/LM-Studio-0.4.1-1-x64.AppImage
+	source = lmstudio.desktop
+	sha256sums = d18e178cadef7d6798f19e6d41f33a297e26a1d285091cbc30da8252d18a46f0
+	sha256sums = SKIP
+
+pkgname = lm-studio-bin

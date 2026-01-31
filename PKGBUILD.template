@@ -1,0 +1,32 @@
+pkgname=lm-studio-bin
+pkgver={{version}}
+pkgrel=1
+pkgdesc="LM Studio - A desktop app for exploring and running large language models locally"
+arch=('x86_64')
+url="https://lmstudio.ai"
+license=('EULA')
+depends=('fuse2' 'zlib' 'hicolor-icon-theme' 'gtk3' 'nss' 'libxcrypt-compat')
+options=('!strip')
+source=("{{url}}"
+        "lmstudio.desktop")
+sha256sums=('{{sha256}}'
+            'SKIP')
+
+prepare() {
+  chmod +x "${srcdir}/${source[0]##*/}"
+}
+
+package() {
+  # Create installation directory
+  install -dm755 "$pkgdir/opt/lm-studio"
+  
+  # Install AppImage
+  install -Dm755 "${srcdir}/${source[0]##*/}" "$pkgdir/opt/lm-studio/lm-studio.AppImage"
+  
+  # Desktop entry
+  install -Dm644 "$srcdir/lmstudio.desktop" "$pkgdir/usr/share/applications/lmstudio.desktop"
+  
+  # Symlink to binary
+  install -dm755 "$pkgdir/usr/bin"
+  ln -s /opt/lm-studio/lm-studio.AppImage "$pkgdir/usr/bin/lm-studio"
+}
