@@ -1,6 +1,6 @@
 # Maintainer: kofany <j@dabrowski.biz>
 pkgname=terx-bin
-pkgver=0.2.10
+pkgver=0.2.11
 pkgrel=1
 pkgdesc="Cross-platform SSH client with GPU-accelerated terminal rendering"
 arch=('x86_64')
@@ -25,13 +25,11 @@ provides=('terx')
 conflicts=('terx')
 options=('!strip' '!debug')
 source=("terx-bin-${pkgver}.pkg.tar.zst::https://github.com/OutrageLabs/terX/releases/download/v${pkgver}/terx-bin-${pkgver}-1-x86_64.pkg.tar.zst")
-sha256sums=('c4947b0865d1dac2eb26f901e47320a8ce45f7fd63e0c6285eb9b844707c0c2e')
+sha256sums=('1c22ec83323de2b07729ef750a286efbf028a4f6c90c9781bd0c68fd6708ce2c')
 noextract=("terx-bin-${pkgver}.pkg.tar.zst")
 
 package() {
     cd "${srcdir}"
-    # Extract the pre-built Arch package directly
     bsdtar -xf "terx-bin-${pkgver}.pkg.tar.zst" -C "${pkgdir}/"
-    # Remove package metadata (we're repackaging)
     rm -f "${pkgdir}/.PKGINFO" "${pkgdir}/.BUILDINFO" "${pkgdir}/.MTREE" 2>/dev/null || true
 }
