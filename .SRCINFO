@@ -1,0 +1,14 @@
+pkgbase = mpd_info_screen2
+	pkgdesc = Views graphical info on MPD, the successor to mpd_info_screen, in C++
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://github.com/Stephen-Seo/mpd_info_screen2
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	makedepends = cmake
+	depends = glfw
+	source = mpd_info_screen2::git+https://github.com/Stephen-Seo/mpd_info_screen2.git#tag=1.6
+	sha256sums = SKIP
+
+pkgname = mpd_info_screen2
