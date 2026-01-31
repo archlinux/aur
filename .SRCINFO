@@ -1,7 +1,7 @@
 pkgbase = linuxcnc
 	pkgdesc = Controls CNC machines (mills, lathes, 3D printers, robots, etc.)
 	pkgver = 2.9.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://linuxcnc.org/
 	arch = x86_64
 	license = GPL2

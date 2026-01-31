@@ -3,7 +3,7 @@
 
 pkgname=linuxcnc
 pkgver=2.9.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Controls CNC machines (mills, lathes, 3D printers, robots, etc.)"
 arch=(x86_64)
 url="https://linuxcnc.org/"
@@ -62,10 +62,10 @@ package() {
   install -Dm644 ../share/menus/CNC.menu \
     "$pkgdir/etc/xdg/menus/CNC.menu"
 
-  # Tcl path fix
+  # Tcl path fix (TCLLIBPATH is space-separated)
   install -Dm644 /dev/stdin "$pkgdir/etc/profile.d/linuxcnc.sh" <<'EOF'
-[[ ":$TCLLIBPATH:" != *":/usr/lib/tcltk/linuxcnc:"* ]] && \
-export TCLLIBPATH="/usr/lib/tcltk/linuxcnc:$TCLLIBPATH"
+[[ " $TCLLIBPATH " != *" /usr/lib/tcltk/linuxcnc "* ]] && \
+export TCLLIBPATH="/usr/lib/tcltk/linuxcnc $TCLLIBPATH"
 EOF
 
   # Fix Python path (dist-packages → site-packages)
