@@ -16,6 +16,8 @@ pkgbase = trac
 	optdepends = python-babel: localization support
 	optdepends = python-pytz: complete list of time zones
 	source = https://download.edgewall.org/trac/Trac-1.6.tar.gz
+	source = python3.14-sqlite.patch
 	sha256sums = 61d73c61f670d68ffc346829d24b2f1d2050aa561aa71cb98e2fb43992c27304
+	sha256sums = d2598d1d76cb8e16dd39f6463f102034422175784c6afc6a0a120ae468ef3a4a
 
 pkgname = trac

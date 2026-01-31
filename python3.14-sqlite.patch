@@ -1,0 +1,51 @@
+Index: /branches/1.6-stable/contrib/make_status.py
+===================================================================
+--- /branches/1.6-stable/contrib/make_status.py	(revision 17913)
++++ /branches/1.6-stable/contrib/make_status.py	(revision 17914)
+@@ -58,6 +58,5 @@
+     ("multipart",         'multipart.__version__'),
+     ("Babel",             'babel.__version__'),
+-    ("sqlite3",           ('sqlite3.version',
+-                           'sqlite3.sqlite_version')),
++    ("sqlite3",           'sqlite3.sqlite_version'),
+     ("PySqlite3",         ('__main__._pysqlite3_version()',
+                            'pysqlite3.dbapi2.sqlite_version')),
+Index: /branches/1.6-stable/trac/db/sqlite_backend.py
+===================================================================
+--- /branches/1.6-stable/trac/db/sqlite_backend.py	(revision 17913)
++++ /branches/1.6-stable/trac/db/sqlite_backend.py	(revision 17914)
+@@ -38,11 +38,11 @@
+ except ImportError:
+     import sqlite3 as sqlite
++    pysqlite3_version = None
++else:
++    pysqlite3_version = get_pkginfo(sqlite).get('version', '%d.%d.%s' %
++                                                           sqlite.version_info)
+ 
+ sqlite_version = sqlite.sqlite_version_info
+ sqlite_version_string = sqlite.sqlite_version
+-pysqlite_version = sqlite.version_info
+-pysqlite_version_string = get_pkginfo(sqlite).get('version',
+-                                                  '%d.%d.%s'
+-                                                  % pysqlite_version)
+ min_sqlite_version = (3, 0, 0)
+ 
+@@ -274,5 +274,6 @@
+     def get_system_info(self):
+         yield 'SQLite', sqlite_version_string
+-        yield 'pysqlite', pysqlite_version_string
++        if pysqlite3_version:
++            yield 'pysqlite3', pysqlite3_version
+ 
+     @lazy
+Index: /branches/1.6-stable/trac/tests/env.py
+===================================================================
+--- /branches/1.6-stable/trac/tests/env.py	(revision 17913)
++++ /branches/1.6-stable/trac/tests/env.py	(revision 17914)
+@@ -521,6 +521,4 @@
+             self.assertRegex(get_info(info_before, 'SQLite'),
+                              r'^\d+(\.\d+)+$')
+-            self.assertRegex(get_info(info_before, 'pysqlite'),
+-                             r'^\d+(\.\d+)+$')
+         else:
+             self.fail("Unknown value for dburi %s" % self.env.dburi)

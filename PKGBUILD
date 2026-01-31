@@ -16,8 +16,16 @@ optdepends=('python-psycopg2: PostgreSQL database support'
             'python-docutils: reStructuredText support'
             'python-babel: localization support'
             'python-pytz: complete list of time zones')
-source=(https://download.edgewall.org/trac/Trac-$pkgver.tar.gz)
-sha256sums=('61d73c61f670d68ffc346829d24b2f1d2050aa561aa71cb98e2fb43992c27304')
+source=(https://download.edgewall.org/trac/Trac-$pkgver.tar.gz
+        # https://trac.edgewall.org/changeset/17914
+        python3.14-sqlite.patch)
+sha256sums=('61d73c61f670d68ffc346829d24b2f1d2050aa561aa71cb98e2fb43992c27304'
+            'd2598d1d76cb8e16dd39f6463f102034422175784c6afc6a0a120ae468ef3a4a')
+
+prepare() {
+  cd "$srcdir"/Trac-$pkgver
+  patch -p3 < "$srcdir"/python3.14-sqlite.patch
+}
 
 package() {
   cd "$srcdir"/Trac-$pkgver
