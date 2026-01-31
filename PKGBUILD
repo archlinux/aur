@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=bayesrules
-_pkgver=0.0.2
+_pkgver=0.0.3
 pkgname=r-${_pkgname,,}
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc='Datasets and Supplemental Functions from Bayes Rules! Book'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8bc801d95109c8e38867ffd9036566ce53f974601883d60b4a3eab90b00a2a28')
+sha256sums=('5a43806ed8afb59bce420bbf3f07e13cc64400fa21a4fb93e65cc72395faa3b8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
