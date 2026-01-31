@@ -1,6 +1,6 @@
 # Maintainer: Robert Greener <dev@r0bert.dev>
 pkgname=microsoft-openjdk-25-bin
-pkgver=25.0.1
+pkgver=25.0.2
 pkgrel=1
 pkgdesc='Microsoft build of OpenJDK'
 arch=('x86_64')
@@ -21,5 +21,5 @@ package() {
     cp -a "jdk-$pkgver"* "$pkgdir/usr/lib/jvm/java-25-microsoft-openjdk"
 }
 
-sha256sums=('1186ada3f51f6517f46edfbca06ab21c692f3d95f7abe403691f85267eb0c3aa'
+sha256sums=('3ed688a48c9b9295e67f074a5d201f761af15f83a2e003e5d8fd6dd93c18a10a'
             'SKIP')
