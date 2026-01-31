@@ -5,16 +5,21 @@ pkgbase = waymux-bin
 	url = https://github.com/ido50/waymux
 	arch = x86_64
 	license = MIT
-	checkdepends = check
-	makedepends = meson>=0.58.1
-	makedepends = scdoc>=1.9.2
-	makedepends = check
 	depends = wlroots0.19
 	depends = wayland
 	depends = libxkbcommon
 	depends = cairo
 	depends = tomlc17-git
-	source = waymux-bin-0.0.1.tar.gz::https://github.com/ido50/waymux/archive/refs/tags/v0.0.1.tar.gz
-	sha256sums = SKIP
+	depends = libinput
+	depends = libdrm
+	depends = mesa
+	depends = seatd
+	depends = xcb-util-wm
+	depends = libdisplay-info
+	optdepends = xorg-xwayland: X11 application support
+	provides = waymux
+	conflicts = waymux
+	source = https://github.com/ido50/waymux/releases/download/v0.0.1/waymux-0.0.1-x86_64.tar.gz
+	sha256sums = 974fd8b5e521b307cd949c74a5b2e1c4f1bf4510c122f12f3ed29a18a5bf8e1c
 
 pkgname = waymux-bin
