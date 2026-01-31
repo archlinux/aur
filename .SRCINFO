@@ -1,0 +1,17 @@
+pkgbase = python-bgutil-ytdlp-pot-provider
+	pkgdesc = PO Token provider plugin for yt-dlp
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/Brainicism/bgutil-ytdlp-pot-provider
+	arch = any
+	license = custom:GNU General Public License v3 (GPLv3)
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	noextract = bgutil_ytdlp_pot_provider-1.2.2.tar.gz
+	source = https://files.pythonhosted.org/packages/eb/2b/6ee7ce5eb7ec148ad43603f9ed6875c65f93668e62e41f3faae2abeeadca/bgutil_ytdlp_pot_provider-1.2.2.tar.gz
+	sha256sums = f597d7f453a3ceee24251405a5d769e1e3f31f39d5760670f273630fddae417e
+
+pkgname = python-bgutil-ytdlp-pot-provider
