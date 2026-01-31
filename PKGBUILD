@@ -1,22 +1,23 @@
 # Maintainer: Zesko
 _pkgname="limine-entry-tool"
 pkgname="limine-mkinitcpio-hook"
-pkgver=1.28.3
+pkgver=1.29.0
 pkgrel=1
 _extver="-${pkgrel}"
-pkgdesc="Install kernel for the Limine bootloader."
-arch=("any")
+pkgdesc="Install kernels for the Limine bootloader."
+arch=('x86_64' 'aarch64')
 url="https://gitlab.com/Zesko/limine-entry-tool"
 source=("$url/-/archive/${pkgver}${_extver}/$_pkgname-${pkgver}${_extver}.tar.gz")
+source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-25.0.2/graalvm-community-jdk-25.0.2_linux-x64_bin.tar.gz")
+source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-25.0.2/graalvm-community-jdk-25.0.2_linux-aarch64_bin.tar.gz")
 license=("GPL3")
 provides=('limine-entry-tool')
-_jre_version=17
-_jdk_version=21
+options=(!debug !strip)
+_graalvm_version=java-25-graalvm-ce
 depends=(
 	'bash'
 	'grep'
 	'tar'
-	'java-runtime-headless>='${_jre_version}
 	'limine'
 	'mkinitcpio'
 	'efibootmgr')
@@ -25,33 +26,34 @@ optdepends=(
 	'sbctl: Signs UEFI boot files for Secure Boot when enabled'
 	'journalctl-desktop-notification: Sends desktop notifications when errors occur'
 )
-makedepends=('git' 'jdk21-openjdk' 'maven')
+makedepends=('git' 'gradle')
 backup=(etc/limine-entry-tool.conf)
 conflicts=('limine-entry-tool')
-sha256sums=('3feb5987f34fd28b8073d2c52fc8966b136c1219ff8efe9fa392ffad053d571d')
+sha256sums=('03e041631aa1275f0a03ecae0ada6f1bb3fa69e5b428e5b68f7240da68b6b4f4')
+sha256sums_x86_64=('e0be791c8fda4d03b6b0a0cb824fef3149736170057b3a515252b44419606af0')
+sha256sums_aarch64=('b4580d9f223d0a4b3a1757e58b18ff4c1db950e67e105fc5cb741457d2384a71')
 
 prepare() {
-	unset JAVA_OPTS JDK_JAVA_OPTIONS JAVA_TOOL_OPTIONS
-	JAVA_HOME=/usr/lib/jvm/java-${_jdk_version}-openjdk
-	if ! command -v ${JAVA_HOME}/bin/javac >/dev/null 2>&1; then
-		echo "Error: ${JAVA_HOME}/bin/javac not found." >&2
+	[[ -d "${_graalvm_version}" ]] && rm -rf "${_graalvm_version}"
+	mv graalvm-community-openjdk-*/ "${_graalvm_version}"
+	if ! command -v "${_graalvm_version}"/bin/javac >/dev/null 2>&1; then
+		echo "Error: ${_graalvm_version}/bin/javac not found." >&2
 		return 1
 	fi
 }
 
 build() {
 	cd "$srcdir/${_pkgname}-${pkgver}${_extver}"
-	JAVA_HOME=/usr/lib/jvm/java-${_jdk_version}-openjdk mvn clean package
+	JAVA_HOME="$srcdir/${_graalvm_version}" gradle clean nativeCompile
 }
 
 package() {
 	cd "$srcdir/${_pkgname}-${pkgver}${_extver}"
 	src_path="install/arch-linux/${pkgname}"
-	install -dm 755 $src_path/usr/share/java/
-	install -dm 755 $src_path/usr/share/limine-entry-tool.d/
-	install -dm 755 $src_path/etc/limine-entry-tool.d/
-	install -Dm 644 target/limine-entry-tool*.jar $src_path/usr/share/java/
-	install -dm 755 $src_path/usr/share/doc/${pkgname}/
-	cp -r README.md CHANGELOG.md $src_path/usr/share/doc/${pkgname}/
-	cp -r $src_path/usr $src_path/etc "$pkgdir"
+	install -dm 755 "$src_path/usr/share/limine-entry-tool.d/"
+	install -dm 755 "$src_path/etc/limine-entry-tool.d/"
+	install -Dm 755 build/native/nativeCompile/limine-entry-tool "$src_path/usr/lib/limine/"
+	install -dm 755 "$src_path/usr/share/doc/${pkgname}/"
+	cp -r README.md CHANGELOG.md "$src_path/usr/share/doc/${pkgname}/"
+	cp -r "$src_path/usr" "$src_path/etc" "$pkgdir"
 }
