@@ -1,6 +1,6 @@
 pkgbase = nexus-client-git
 	pkgdesc = Cross-platform BBS client with chat, file transfers, and news support (git version)
-	pkgver = r420.2a9a524
+	pkgver = r555.30f1ecc
 	pkgrel = 1
 	url = https://github.com/zquestz/nexus
 	arch = x86_64

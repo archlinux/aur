@@ -1,6 +1,6 @@
 # Maintainer: Josh Ellithorpe <quest@mac.com>
 pkgname=nexus-client-git
-pkgver=r420.2a9a524
+pkgver=r555.30f1ecc
 pkgrel=1
 pkgdesc="Cross-platform BBS client with chat, file transfers, and news support (git version)"
 arch=('x86_64' 'aarch64')
@@ -22,14 +22,14 @@ pkgver() {
 prepare() {
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release -p nexus-client
+    cargo build --release -p nexus-client
 }
 
 package() {
