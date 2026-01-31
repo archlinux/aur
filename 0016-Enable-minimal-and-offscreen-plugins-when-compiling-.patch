@@ -1,7 +1,7 @@
-From e88a19af5777dd865076af2ea0853f1b408c0d7e Mon Sep 17 00:00:00 2001
+From 2d342e3c4cd7fe82f5c8efb546d1b12f2c3615d1 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Mon, 9 Jun 2025 21:15:42 +0200
-Subject: [PATCH 16/20] Enable minimal and offscreen plugins when compiling for
+Subject: [PATCH 16/24] Enable minimal and offscreen plugins when compiling for
  Android
 
 Those platform plugins are very useful to run "graphical" code from
