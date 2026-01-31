@@ -2,7 +2,7 @@
 Name=LM Studio
 Comment=A desktop app for exploring and running large language models locally
 Exec=lm-studio %U
-Icon=lmstudio-bin
+Icon=/usr/share/pixmaps/lmstudio-bin.png
 Type=Application
 Categories=Development;ArtificialIntelligence;
 Terminal=false

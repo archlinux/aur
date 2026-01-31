@@ -7,6 +7,7 @@ url="https://lmstudio.ai"
 license=('EULA')
 depends=('fuse2' 'zlib' 'hicolor-icon-theme' 'gtk3' 'nss' 'libxcrypt-compat')
 options=('!strip')
+install=lmstudio-bin.install
 source=("https://installers.lmstudio.ai/linux/x64/0.4.1-1/LM-Studio-0.4.1-1-x64.AppImage"
         "lmstudio.desktop")
 sha256sums=('d18e178cadef7d6798f19e6d41f33a297e26a1d285091cbc30da8252d18a46f0'
@@ -41,7 +42,7 @@ package() {
     install -Dm644 "squashfs-root/resources/app/.webpack/Icon-512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/lmstudio-bin.png"
   fi
   
-  # Install pixmap fallback (512x512 for legacy compatibility)
+  # Install pixmap fallback (512x512 for absolute path reference in .desktop)
   if [ -f "squashfs-root/resources/app/.webpack/Icon-512x512.png" ]; then
     install -Dm644 "squashfs-root/resources/app/.webpack/Icon-512x512.png" "$pkgdir/usr/share/pixmaps/lmstudio-bin.png"
   fi
