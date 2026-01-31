@@ -1,4 +1,5 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: Jasmin <theblazehen@gmail.com>
+# Contributor: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
 
 _pkgauthor=mediar-ai
 _pkgname=screenpipe
