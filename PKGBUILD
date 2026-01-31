@@ -13,12 +13,8 @@ source=("${pkgname}::git+https://github.com/Fuwn/faustus.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${pkgname}"
-    if tag=$(git describe --tags --abbrev=0 2>/dev/null); then
-        echo "${tag#v}"
-    else
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    fi
+    cd "${srcdir}/${pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
