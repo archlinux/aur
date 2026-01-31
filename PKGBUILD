@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=jolt-git
 _pkgname=jolt
-pkgver=1.1.3
+pkgver=1.2.0.beta.1.r1.g1d3a4f8
 pkgrel=1
 pkgdesc='TUI-based battery and energy monitor.'
 arch=('x86_64')
@@ -23,6 +23,12 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP')
 validpgpkeys=('EF4B4CB5DFB8822216A473B1597AB12E66262898')
+
+
+pkgver() {
+    cd "$_pkgname"
+    git describe --long --abbrev=7 --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
     cd "$_pkgname"
