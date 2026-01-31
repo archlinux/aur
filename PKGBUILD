@@ -28,6 +28,7 @@ depends=(
     'vulkan-utility-libraries'
     'vulkan-validation-layers'
     'ffmpeg'
+    'hidapi'
     'stb'
     'magic_enum'
 )

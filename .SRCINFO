@@ -25,6 +25,7 @@ pkgbase = mayaflux-dev-bin
 	depends = vulkan-utility-libraries
 	depends = vulkan-validation-layers
 	depends = ffmpeg
+	depends = hidapi
 	depends = stb
 	depends = magic_enum
 	optdepends = doxygen: for documentation generation
