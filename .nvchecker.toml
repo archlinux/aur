@@ -1,0 +1,6 @@
+[tuitube-bin]
+source = "github"
+github = "remorses/tuitube"
+use_latest_release = true
+from_pattern = 'tuitube@([\d]{4})([\d]{2})([\d]{2})[\d]+'
+to_pattern = '\1.\2.\3'

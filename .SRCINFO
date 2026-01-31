@@ -1,0 +1,20 @@
+pkgbase = tuitube-bin
+	pkgdesc = Download videos from the command line with a TUI
+	pkgver = 2026.01.10
+	pkgrel = 2121
+	url = https://github.com/remorses/tuitube
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = tuitube
+	conflicts = tuitube
+	options = !strip
+	source = README-2026.01.10.md::https://raw.githubusercontent.com/remorses/tuitube/tuitube%40202601102121/README.md
+	sha256sums = baa23913a8cd0753e94cb2bf53b4e9df17a5b05ad638b7a430401f27a8595cc4
+	source_x86_64 = tuitube-x86_64-2026.01.10.tgz::https://github.com/remorses/tuitube/releases/download/tuitube%40202601102121/tuitube-linux-x64.tar.gz
+	sha256sums_x86_64 = 26daf015f5803004ff7853ce45f7fa8c55aaec4afdc8d1639b75b5deec03e693
+	source_aarch64 = tuitube-aarch64-2026.01.10.tgz::https://github.com/remorses/tuitube/releases/download/tuitube%40202601102121/tuitube-linux-arm64.tar.gz
+	sha256sums_aarch64 = b95a2b200f17321b83bc32e3c9d854d01bbbeec5be115eb5f234e63ef6bdbbed
+
+pkgname = tuitube-bin
