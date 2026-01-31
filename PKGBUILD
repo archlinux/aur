@@ -1,11 +1,12 @@
 # Maintainer: Brian McCallister <brianm@apache.org>
 pkgname=bdsh
 pkgver=0.2.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Better Distributed Shell - run commands on multiple hosts with consensus view"
 arch=('x86_64' 'aarch64')
 url="https://github.com/brianm/bdsh"
 license=('Apache-2.0')
+depends=('tmux')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/brianm/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
