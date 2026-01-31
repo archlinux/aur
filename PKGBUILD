@@ -47,6 +47,8 @@ backup=('etc/h2o.conf')
 provides=('h2o' 'libh2o')
 conflicts=('h2o' 'libh2o')
 
+: "${_openssl_no_engine:=0}"
+
 pkgver() {
     cd "$srcdir/h2o"
     git describe --long --abbrev=7 --tags | sed 's/^v\([^-]*\)-\([0-9]*\)-g\(.*\)/\1.r\2.g\3/'
@@ -62,19 +64,11 @@ prepare() {
     #patch -p1 -i ${srcdir}/3285.patch
     patch -p1 -i ${srcdir}/fix-openssl-deprecated-warn.patch
 
-    # neverbleed OPENSSL_NO_ENGINE
-    # https://github.com/openbsd/ports/tree/c1521c4eb969ddf29306117ea125802a2644e734/www/h2o/patches
-    #patch -p1 -i ${srcdir}/openssl-no-engine.patch
-    patch -p1 -i ${srcdir}/3553.patch
-
     # libaegis 0.9.1
     patch -p1 -i ${srcdir}/3552.patch
 
     # 404 error message
     patch -p1 -i ${srcdir}/3551.patch
-
-    # libressl-3.8(OPENSSL_NO_ENGINE)
-    #git apply ${srcdir}/neverbleed-fix-when-lacking-engines.patch
 
     # set CMake minimal version to 3.15 to set CMP0039 to new
     sed -i 's/VERSION 2.8.12/VERSION 3.15/g' CMakeLists.txt
@@ -87,8 +81,15 @@ prepare() {
     #export LDFLAGS="$LDFLAGS $LTOFLAGS -Wl,-rpath,/usr/lib/libressl"
     
     # OPENSSL_NO_ENGINE
-    export CFLAGS="$CFLAGS -DOPENSSL_NO_ENGINE"
-    export CXXFLAGS="$CXXFLAGS -DOPENSSL_NO_ENGING"
+    if [[ $_openssl_no_engine -eq 1 ]]; then
+        msg2 "Building with CFLAGS and CXXFLAGS -DOPENSSL_NO_ENGINE"
+        export CFLAGS="$CFLAGS -DOPENSSL_NO_ENGINE"
+        export CXXFLAGS="$CXXFLAGS -DOPENSSL_NO_ENGING"
+        # neverbleed OPENSSL_NO_ENGINE
+        # https://github.com/openbsd/ports/tree/c1521c4eb969ddf29306117ea125802a2644e734/www/h2o/patches
+        # https://github.com/h2o/h2o/pull/3553
+        patch -p1 -i ${srcdir}/3553.patch
+    fi
 
     local cmake_args=(
         -DCMAKE_BUILD_TYPE=Release
