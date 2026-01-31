@@ -10,7 +10,7 @@ depends=('fcitx5' 'libinput' 'hicolor-icon-theme' 'glibc' 'gcc-libs' 'systemd-li
 makedepends=('cmake' 'go' 'extra-cmake-modules' 'gcc' 'git' 'libx11')
 provides=('fcitx5-vmk')
 conflicts=('fcitx5-vmk')
-source=('git+https://github.com/nhktmdzhg/VMK.git#tag=v0.9.4')
+source=("git+https://github.com/nhktmdzhg/VMK.git#tag=v$pkgver")
 sha256sums=('SKIP')
 install='fcitx5-vmk.install'
 
