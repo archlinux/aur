@@ -1,12 +1,12 @@
 pkgbase = aretext
 	pkgdesc = Minimalist text editor with vim-compatible key bindings
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/aretext/aretext
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = go
-	source = aretext-1.6.1.tar.gz::https://github.com/aretext/aretext/archive/refs/tags/v1.6.1.tar.gz
-	sha256sums = 70e0a51a971991c7f91c232dbaa8504f594059400f1667d38bb9ffef31b0d9f3
+	source = aretext-1.6.2.tar.gz::https://github.com/aretext/aretext/archive/refs/tags/v1.6.2.tar.gz
+	sha256sums = deb603f6e8f06981add5b35b8941ac0e8a34a319b4430d4b733d02871523ac02
 
 pkgname = aretext
