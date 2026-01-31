@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=dlss-updater
 _app_id="io.github.recol.$pkgname"
-pkgver=3.6.1
+pkgver=3.9.1
 pkgrel=1
 pkgdesc="DLSS, XeSS, DirectStorage, FSR, and Streamline DLL updater for games"
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
   'python-aiosqlite'
   'python-appdirs'
   'python-darkdetect'
-  'python-flet=0.28.3'
+  'python-flet>=0.80.4'
   'python-msgspec'
   'python-nvidia-ml-py'
   'python-packaging'
@@ -24,6 +24,7 @@ depends=(
   'python-uvloop'
 )
 makedepends=(
+  'desktop-file-utils'
   'python-build'
   'python-hatchling'
   'python-installer'
@@ -31,22 +32,22 @@ makedepends=(
 )
 checkdepends=(
   'appstream'
-  'desktop-file-utils'
   'python-pytest'
   'python-pytest-asyncio'
   'python-pytest-codspeed'
 )
-optdepends=('python-rapidfuzz: fuzzy matching')
+optdepends=('python-rapidfuzz: Fast fuzzy string matching for game search')
 source=("DLSS-Updater-$pkgver.tar.gz::$url/archive/refs/tags/V$pkgver.tar.gz"
         "$pkgname.sh")
-sha256sums=('4d0267c8f91aec2339b8fc68ecf959dc2aad8db1268a672b22558607f286bab4'
+sha256sums=('a98c023cdc1dff313940d4bd0b99f586e4b9f084c9eaada371f73eea57e721c7'
             'd98bd361773dee09cc82fa02a185a9fdf21779676ed72b69d550323e9abe14f0')
 
 prepare() {
   cd "DLSS-Updater-$pkgver"
 
-  # Bump version
-  sed -i "s/3.6.0/$pkgver/g" dlss_updater/version.py
+  # Set StartupWMClass
+  desktop-file-edit --set-key=StartupWMClass --set-value=flet_view \
+    "flatpak/${_app_id}.desktop"
 }
 
 build() {
@@ -62,7 +63,7 @@ check() {
 
   pytest benchmarks/ --codspeed
 
-  appstreamcli validate --no-net "${_app_id}.appdata.xml" || :
+  appstreamcli validate --no-net "${_app_id}.appdata.xml"
   desktop-file-validate "flatpak/${_app_id}.desktop"
 }
 
