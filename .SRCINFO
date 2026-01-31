@@ -1,0 +1,17 @@
+pkgbase = hydracad
+	pkgdesc = Professional CAD application (C++/Qt6)
+	pkgver = 3.0.11
+	pkgrel = 1
+	url = https://github.com/drixber/CAD
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = git
+	depends = qt6-base
+	depends = qt6-tools
+	depends = qt6-translations
+	optdepends = qt6-network: in-app updates without curl
+	source = hydracad-3.0.11.tar.gz::https://github.com/drixber/CAD/archive/refs/tags/v3.0.11.tar.gz
+	sha256sums = SKIP
+
+pkgname = hydracad
