@@ -2,7 +2,7 @@
 
 _pkgname=clp
 pkgname="${_pkgname}-git"
-pkgver=r68.8749f30
+pkgver=r75.efb3044
 pkgrel=1
 pkgdesc='writes input files to stdout with syntax highlighting'
 arch=('x86_64' 'aarch64')
