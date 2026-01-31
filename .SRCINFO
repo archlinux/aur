@@ -1,0 +1,13 @@
+pkgbase = obsidianos-branding
+	pkgdesc = ObsidianOS branding (os-release and logos)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Obsidian-OS
+	arch = x86_64
+	license = MIT
+	source = obsidianos.png::https://obsidianos.xyz/logo.png
+	source = os-release::https://obsidianos.xyz/os-release
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = obsidianos-branding
