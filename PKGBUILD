@@ -1,6 +1,6 @@
 # Maintainer: DBeidachazi <a269502169@gmail.com>
 pkgname=apifox-appimage
-pkgver=2.8.5
+pkgver=2.8.5.1
 pkgrel=1
 pkgdesc="Apifox - API documentation, debugging, mocking, and testing tool (AppImage in Zip) API 文档、API 调试、API Mock、API 自动化测试"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('apifox')
 options=('!strip')
 
 # 使用官方 latest 链接
-source=("https://file-assets.apifox.com/download/Apifox-linux-latest.zip")
+source=("Apifox-linux-${pkgver}.zip::https://file-assets.apifox.com/download/Apifox-linux-latest.zip")
 # 跳过校验，因为 latest 文件内容会变
 sha256sums=('SKIP') 
 
