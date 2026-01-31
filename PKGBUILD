@@ -1,7 +1,7 @@
 # Maintainer: tippfehlr <tippfehlr@tippfehlr.dev>
 pkgname=cpx
-pkgver=1.3.5
-pkgrel=2
+pkgver=1.3.6
+pkgrel=1
 pkgdesc="Cargo-like CLI for C++, compatible with CMake (vcpkg), Bazel and Meson"
 arch=(x86_64 aarch64)
 url="https://github.com/ozacod/cpx"
@@ -9,7 +9,7 @@ license=(MIT)
 depends=(cmake vcpkg bazel meson)
 makedepends=(git go)
 source=("git+$url#tag=v$pkgver")
-sha512sums=('a347c6e6e1e1f125faade3b13e2b63e49324d8fa7533323115053398f469918f9d8306ca1383e93dafe8e69a5506022ecfd26d588f5ad31a4cc4eee25fa5aa2f')
+sha512sums=('a814ab938885936f4d2526f3a0d3c30f9fb88851da6798529f17f50a288a1f4d001aeb92d744c684b48e9caf039976fb15ed44d2fdb4b51983a4298acd473cf1')
 
 prepare() {
 	cd $pkgname
