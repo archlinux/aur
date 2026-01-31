@@ -2,15 +2,17 @@
 # Contributor: Fabien Devaux <fdev31@gmail.com>
 pkgname=pyprland-git
 pkgver=r1424.5293179
-pkgrel=6
+pkgrel=7
 
 pkgdesc="Enhance your Desktop with menus, easy monitor layout and other extensions (powerful hyprland scratchpads)"
 arch=(any)
 url="https://github.com/fdev31/pyprland"
 license=('MIT')
 groups=()
-depends=('python' 'python-aiofiles' 'python-aiohttp' 'python-pillow')
-makedepends=('git' 'python-build' 'python-installer' 'python-poetry' 'python-pillow' 'gcc')
+depends=('python' 'python-aiofiles' 'python-aiohttp')
+makedepends=('git' 'python-build' 'python-installer' 'python-poetry' 'gcc')
+optdepends=('python-pillow: for wallpapers rounded borders'
+    'python-questionary: for pypr-quickstart to work')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
@@ -36,7 +38,5 @@ build() {
 package() {
     cd "$srcdir/${pkgname%-git}"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dm0644 "scripts/completions/pypr.bash" "$pkgdir/usr/share/bash-completion/completions/pypr"
-    install -Dm0644 "scripts/completions/pypr.zsh" "$pkgdir/usr/share/zsh/site-functions/_pypr"
     install -Dm0755 "client/pypr-client" "$pkgdir/usr/bin/pypr-client"
 }
