@@ -26,7 +26,7 @@ pkgbase = jre21-zulu-bin
 	provides = jre21-openjdk=21.0.10-1
 	provides = jre21-openjdk-headless=21.0.10-1
 	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu21.48.15-ca-jre21.0.10-linux_aarch64.tar.gz
-	sha256sums_aarch64 = becac14732a3f2650bf930b5fc0253680253c6ffd9a9583384e2d4034aa89d30
+	sha256sums_aarch64 = 4454376b8023c1aaa11a3575f19a3f64059b184929d20d7286002c7de2f73397')
 	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu21.48.15-ca-jre21.0.10-linux_x64.tar.gz
 	sha256sums_x86_64 = becac14732a3f2650bf930b5fc0253680253c6ffd9a9583384e2d4034aa89d30
 pkgname = jre21-zulu-bin
