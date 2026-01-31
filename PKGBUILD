@@ -6,8 +6,8 @@
 pkgname=suwayomi-server-preview-bin
 _pkgname=suwayomi-server
 _PkgName=Suwayomi-Server
-pkgver=2.1.2056
-pkgrel=1.5
+pkgver=2.1.2065
+pkgrel=1
 _pkgver="${pkgver%_*}"
 pkgdesc="A free and open source manga reader that runs extensions built for Tachiyomi"
 arch=("any")
@@ -29,7 +29,7 @@ source=("$url/releases/download/v$_pkgver/$_jar"
 noextract=("$_jar")
 sha256sums=('SKIP'
             'SKIP'
-            'c08aa53d12d6b9944bed6e624ed271c94c771e24e9578600b5718b9754a39d3c'
+            'SKIP'
 )
 
 build() {
