@@ -1,7 +1,7 @@
 pkgbase = pyprland-git
 	pkgdesc = Enhance your Desktop with menus, easy monitor layout and other extensions (powerful hyprland scratchpads)
 	pkgver = r1424.5293179
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/fdev31/pyprland
 	arch = any
 	license = MIT

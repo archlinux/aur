@@ -2,7 +2,7 @@
 # Contributor: Fabien Devaux <fdev31@gmail.com>
 pkgname=pyprland-git
 pkgver=r1424.5293179
-pkgrel=7
+pkgrel=8
 
 pkgdesc="Enhance your Desktop with menus, easy monitor layout and other extensions (powerful hyprland scratchpads)"
 arch=(any)
@@ -39,4 +39,5 @@ package() {
     cd "$srcdir/${pkgname%-git}"
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm0755 "client/pypr-client" "$pkgdir/usr/bin/pypr-client"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
