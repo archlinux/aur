@@ -1,6 +1,6 @@
 pkgbase = voxtype
 	pkgdesc = Push-to-talk voice-to-text for Linux (optimized for Wayland, works on X11)
-	pkgver = 0.5.4
+	pkgver = 0.5.5
 	pkgrel = 1
 	url = https://voxtype.io
 	install = voxtype.install
@@ -30,7 +30,7 @@ pkgbase = voxtype
 	optdepends = cuda: GPU acceleration via CUDA for Parakeet (NVIDIA GPUs)
 	optdepends = rocm-hip-runtime: GPU acceleration via ROCm for Parakeet (AMD GPUs)
 	backup = etc/voxtype/config.toml
-	source = voxtype-0.5.4.tar.gz::https://github.com/peteonrails/voxtype/archive/refs/tags/v0.5.4.tar.gz
-	sha256sums = 0765745c6453a04db0c7e17e303bfd5a03b7a1ff910a911fba891d7a63898bcf
+	source = voxtype-0.5.5.tar.gz::https://github.com/peteonrails/voxtype/archive/refs/tags/v0.5.5.tar.gz
+	sha256sums = 64ead71512047cfdc3f4d288d57198cbe31aa10085ed0702df8445662683448f
 
 pkgname = voxtype

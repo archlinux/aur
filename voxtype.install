@@ -70,15 +70,16 @@ post_install() {
 
 post_upgrade() {
     echo ""
-    echo "==> Voxtype upgraded to 0.5.2"
+    echo "==> Voxtype upgraded to 0.5.5"
     echo ""
 
     _detect_gpu
 
     echo ""
-    echo "    New in 0.5.2:"
-    echo "      - Fixed: ROCm backend now shows in 'voxtype setup parakeet --status'"
-    echo "      - Fixed: AMD GPU detection for auto-selecting ROCm backend"
+    echo "    New in 0.5.5:"
+    echo "      - New: eitype output driver for libei protocol (GNOME 46+, KDE 6.1+)"
+    echo "      - New: Media key names (MUTE, VOLUMEUP, etc.) for hotkey config"
+    echo "      - New: Numeric keycode support (e.g., key = 125 for Super key)"
     echo ""
     # Check if Parakeet was built
     if [ -f /usr/lib/voxtype/voxtype-parakeet ]; then
