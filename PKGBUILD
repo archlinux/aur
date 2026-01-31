@@ -1,7 +1,7 @@
 # Maintainer: hollowpointer hollowpointer@pm.me
 pkgname=zond
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Deep network reconnaissance and probing tool."
 arch=('x86_64')
 url="https://github.com/hollowpointer/zond"
