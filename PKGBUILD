@@ -1,6 +1,6 @@
 # Maintainer: FrogSnot
 pkgname=spent
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Minimalist personal finance tracker for Linux desktop"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('AGPL3')
 depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'librsvg')
 makedepends=('npm' 'rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('db47e15b2f90083678aa5a596ddaef3fd46e3ab8b998775113357ebac780dd8a')
+sha256sums=('ff784a3af9e6f34a6c354a59e9711e236eaed3e01297070e6bef285c5e8f7d90')
 
 prepare() {
     cd "$srcdir/Spent-$pkgver"
