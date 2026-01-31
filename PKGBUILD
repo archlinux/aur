@@ -3,7 +3,7 @@
 # Maintainer: Mathilde <github.com/Mathilde411>
 
 pkgname=cutekit-git
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="The magical build system and package manager"
 arch=('any')
