@@ -47,8 +47,6 @@ backup=('etc/h2o.conf')
 provides=('h2o' 'libh2o')
 conflicts=('h2o' 'libh2o')
 
-: "${_enable_zlib_ng:=0}"
-
 pkgver() {
     cd "$srcdir/h2o"
     git describe --long --abbrev=7 --tags | sed 's/^v\([^-]*\)-\([0-9]*\)-g\(.*\)/\1.r\2.g\3/'
