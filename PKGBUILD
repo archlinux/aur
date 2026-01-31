@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=yosys-nightly
-pkgver=20260130_v0.61_112_g5a4ad6a6d
+pkgver=20260131_v0.61_118_gac427a79b
 pkgrel=1
 epoch=1
 pkgdesc="Yosys Open SYnthesis Suite, A framework for RTL synthesis"
@@ -12,17 +12,17 @@ groups=()
 options=("!strip")
 depends=("tcl" "libffi" "python" "boost-libs" "zlib" "readline")
 optdepends=("graphviz: Schematics display support" "xdot: Design netlist display support")
-makedepends=("git" "gcc" "bison" "flex" "pkgconf" "gawk" "protobuf" "iverilog")
-conflicts=("yosys" "yosys-git")
-replaces=("yosys" "yosys-git")
+makedepends=("git" "gcc" "bison" "flex" "pkgconf" "gawk" "protobuf" "iverilog" "pybind11")
+conflicts=("yosys" "yosys-git" "python-yosys")
+replaces=("yosys" "yosys-git" "python-yosys")
 provides=("yosys=$(cut -d _ -f 3 <<< "${pkgver}")")
 source=(
-	"yosys::git+https://github.com/YosysHQ/yosys.git#commit=5a4ad6a6d"
+	"yosys::git+https://github.com/YosysHQ/yosys.git#commit=ac427a79b"
 	"yosys.conf"
 )
 sha256sums=(
 	"SKIP"
-	"7513c07ccaf3ff00b1692348ece8a44ee48a7b9f5318f773de78d7538e82c127"
+	"19f15460e07c8e737857026e30a611236c8bb076b7befec7d547d9e46f36d8a3"
 )
 
 _PREFIX="/usr"
