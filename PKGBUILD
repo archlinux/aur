@@ -2,14 +2,14 @@
 _UpstreamPkgName=t
 pkgname=${_UpstreamPkgName,,}-lang
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Concise language for manipulating text"
 arch=('x86_64')
 url="https://github.com/alecthomas/$_UpstreamPkgName"
 license=('MIT')
 makedepends=('git' 'cargo')
 source=(git+${url}.git#tag=v${pkgver})
-sha256sums=('a7662ac940a9d4b39941dbe8aa5964955648d62e8854e67f9d8207b32f02b6fa')
+sha256sums=('a81d39edd186adff03033f17d5edecf148756e08ccebfb64266a6711416484bc')
 
 prepare() {
     cd ${_UpstreamPkgName}

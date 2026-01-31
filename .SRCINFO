@@ -1,13 +1,13 @@
 pkgbase = t-lang
 	pkgdesc = Concise language for manipulating text
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alecthomas/t
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = cargo
 	source = git+https://github.com/alecthomas/t.git#tag=v0.2.0
-	sha256sums = a7662ac940a9d4b39941dbe8aa5964955648d62e8854e67f9d8207b32f02b6fa
+	sha256sums = a81d39edd186adff03033f17d5edecf148756e08ccebfb64266a6711416484bc
 
 pkgname = t-lang
