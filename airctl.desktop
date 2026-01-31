@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Airctl
+Comment=WiFi Network Manager for Arch Linux
+Exec=airctl
+Icon=airctl
+Terminal=false
+Type=Application
+Categories=Network;Utility;
+StartupNotify=true
