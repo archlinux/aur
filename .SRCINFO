@@ -1,13 +1,16 @@
 pkgbase = crush-extended-bin
-	pkgdesc = ⚠️  UNOFFICIAL BUILD - Crush AI assistant with community plugins (NOT an official Charm Labs release)
-	pkgver = 2026.01.30.1
+	pkgdesc = Unofficial Crush build with community plugins (otlp, agent-status, periodic-prompts)
+	pkgver = 2026.01.31.12
 	pkgrel = 1
 	url = https://github.com/aleksclark/crush-modules
-	arch = x86_64
 	license = MIT
-	provides = crush-extended
 	conflicts = crush
-	source = crush-extended-bin-2026.01.30.1.tar.gz::https://github.com/aleksclark/crush-modules/releases/download/2026.01.30.1/crush-extended_2026.01.30.1_linux_x86_64.tar.gz
-	sha256sums = SKIP
-
+	provides = crush-extended
+	arch = aarch64
+	source_aarch64 = https://github.com/aleksclark/crush-modules/releases/download/${pkgver}/crush-extended_${pkgver}_linux_arm64.tar.gz
+	sha256sums_aarch64 = ace56b9033c683db0c0d3f21729915c8c63f38a58e11b7fcf54c3560ffec3c32
+	arch = x86_64
+	source_x86_64 = https://github.com/aleksclark/crush-modules/releases/download/${pkgver}/crush-extended_${pkgver}_linux_x86_64.tar.gz
+	sha256sums_x86_64 = e3c6a872c77b45e27dfaa55c447cf3827cb9fafbf34fdf122d5c852472db6eaa
+	
 pkgname = crush-extended-bin
