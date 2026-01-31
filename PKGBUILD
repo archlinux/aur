@@ -23,7 +23,7 @@ package() {
   # Install AppImage
   install -Dm755 "${srcdir}/${source[0]##*/}" "$pkgdir/opt/lm-studio/lm-studio.AppImage"
   
-  # Extract icon from AppImage and install to hicolor theme
+  # Extract icons from AppImage and install to hicolor theme and pixmaps
   # Create temporary directory for extraction
   local tmpdir=$(mktemp -d)
   cd "$tmpdir"
@@ -31,11 +31,19 @@ package() {
   # Extract AppImage
   "${srcdir}/${source[0]##*/}" --appimage-extract > /dev/null 2>&1 || true
   
-  # Find and install icon (check both 512x512 and 0x0 for XDG compliance)
-  if [ -f "squashfs-root/usr/share/icons/hicolor/512x512/apps/lm-studio.png" ]; then
-    install -Dm644 "squashfs-root/usr/share/icons/hicolor/512x512/apps/lm-studio.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/lmstudio-bin.png"
-  elif [ -f "squashfs-root/usr/share/icons/hicolor/0x0/apps/lm-studio.png" ]; then
-    install -Dm644 "squashfs-root/usr/share/icons/hicolor/0x0/apps/lm-studio.png" "$pkgdir/usr/share/icons/hicolor/0x0/apps/lmstudio-bin.png"
+  # Install 1024x1024 icon (from 0x0 resolution - XDG fallback)
+  if [ -f "squashfs-root/usr/share/icons/hicolor/0x0/apps/lm-studio.png" ]; then
+    install -Dm644 "squashfs-root/usr/share/icons/hicolor/0x0/apps/lm-studio.png" "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/lmstudio-bin.png"
+  fi
+  
+  # Install 512x512 icon (from resources)
+  if [ -f "squashfs-root/resources/app/.webpack/Icon-512x512.png" ]; then
+    install -Dm644 "squashfs-root/resources/app/.webpack/Icon-512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/lmstudio-bin.png"
+  fi
+  
+  # Install pixmap fallback (512x512 for legacy compatibility)
+  if [ -f "squashfs-root/resources/app/.webpack/Icon-512x512.png" ]; then
+    install -Dm644 "squashfs-root/resources/app/.webpack/Icon-512x512.png" "$pkgdir/usr/share/pixmaps/lmstudio-bin.png"
   fi
   
   cd - > /dev/null
