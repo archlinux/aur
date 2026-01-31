@@ -1,0 +1,3 @@
+post_upgrade() {
+    echo ">>> Restart wgtray to apply changes: pkill wgtray; wgtray &"
+}

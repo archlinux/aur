@@ -1,15 +1,16 @@
 pkgbase = wgtray
 	pkgdesc = WireGuard system tray client for easy VPN switching
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/0xNatal/wgtray
+	install = wgtray.install
 	arch = any
 	license = GPL-3.0-or-later
 	depends = python-pyqt6
 	depends = wireguard-tools
 	depends = polkit
 	depends = qt6-svg
-	source = wgtray-1.0.1.tar.gz::https://github.com/0xNatal/wgtray/archive/v1.0.1.tar.gz
-	sha256sums = 4844a32408693d9ebc8970e36fb8c067ef2ea823c62111d0867c07297c638df0
+	source = wgtray-1.0.2.tar.gz::https://github.com/0xNatal/wgtray/archive/v1.0.2.tar.gz
+	sha256sums = b307c613f53950df7111a9d117c395b88352d98d0b2a96c2c36f679ba8ba7e0f
 
 pkgname = wgtray
