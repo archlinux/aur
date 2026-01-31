@@ -1,13 +1,13 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=mx-iso-template-arch
-pkgver=26.01
+pkgver=26.01.1
 pkgrel=1
 pkgdesc="Arch ISO template for MX snapshot and remaster workflows -- to be used only with MX Snapshot and arch-remaster tools"
 arch=('any')
 url="https://github.com/MX-Linux/arch-iso-template"
 license=('GPL')
-source=("https://github.com/MX-Linux/arch-iso-template/archive/refs/tags/26.01.tar.gz")
-sha256sums=('bd083a859e6d0b96651603e54383a4539fc3947b498ab12f9445c72850f41397')
+source=("https://github.com/MX-Linux/arch-iso-template/archive/refs/tags/26.01.1.tar.gz")
+sha256sums=('2cc193dd58dad716a20ca063c259fe0ca770d9955fd8409022bcc836a1452ee0')
 
 build() {
     cd "${srcdir}/arch-iso-template-${pkgver}"
