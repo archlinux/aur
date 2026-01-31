@@ -1,0 +1,36 @@
+pkgbase = python-fastkml-git
+	pkgdesc = A Python library for reading, writing and manipulating KML files.
+	pkgver = 1.4.0+49.r1659.20260119.052ae67
+	pkgrel = 1
+	url = https://fastkml.readthedocs.io/
+	arch = any
+	license = LGPL-2.1-or-later
+	checkdepends = python-anyio
+	checkdepends = python-hypothesis
+	checkdepends = python-pluggy
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytz
+	checkdepends = python-tzdata
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools>=61.2
+	makedepends = python-wheel
+	makedepends = python-sphinx
+	makedepends = python-pyshp
+	makedepends = python-sphinx-autodoc-typehints
+	makedepends = python-sphinx_rtd_theme
+	depends = python>=3.9
+	depends = python-arrow
+	depends = python-lxml
+	depends = python-pygeoif>=1.5
+	depends = python-typing_extensions>=4
+	provides = python-fastkml=1.4.0+49.r1659.20260119.052ae67
+	provides = python-fastkml-docs=1.4.0+49.r1659.20260119.052ae67
+	conflicts = python-fastkml
+	conflicts = python-fastkml-docs
+	source = python-fastkml::git+https://github.com/cleder/fastkml.git
+	sha256sums = SKIP
+
+pkgname = python-fastkml-git
