@@ -3,7 +3,7 @@
 pkgname=obsidian-control-git
 pkgver=r2.650ceea
 pkgrel=1
-pkgdesc="ObsidianOS Control Center"
+pkgdesc="(Deprecated) ObsidianOS Control Center"
 arch=('any')
 url="https://github.com/Obsidian-OS/obsidian-control"
 license=('MIT')
@@ -19,6 +19,7 @@ pkgver() {
 }
 
 package() {
+  echo "ObsidianOS Control Center is deprecated. Please do not use and migrate to obsidianos-kcm-git"
   cd "$srcdir/$pkgname"
   install -Dm755 obsidian-control.py "$pkgdir/usr/bin/obsidian-control"
   install -Dm755 obsidian-control.desktop "$pkgdir/usr/share/applications/obsidian-control.desktop"

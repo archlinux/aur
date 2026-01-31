@@ -1,5 +1,5 @@
 pkgbase = obsidian-control-git
-	pkgdesc = ObsidianOS Control Center
+	pkgdesc = (Deprecated) ObsidianOS Control Center
 	pkgver = r2.650ceea
 	pkgrel = 1
 	url = https://github.com/Obsidian-OS/obsidian-control
