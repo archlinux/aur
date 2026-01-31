@@ -1,21 +1,21 @@
+# shellcheck shell=bash
 # -*- sh -*-
 
 # Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='fhtagn'
-pkgver=0.2.1
-pkgrel=3
 pkgdesc='Literate testing for command-line programs'
-arch=('any')
+pkgver=0.3.0
+pkgrel=1
 url='https://github.com/xonixx/fhtagn'
-license=('MIT')  # SPDX-License-Identifier: MIT
+arch=('any')
 depends=('awk')
+license=('MIT')  # SPDX-License-Identifier: MIT
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 
 check() {
   cd "$pkgname-$pkgver"
 
-  # Please note that this will download tush
   ./makesure tested_by_gawk
 }
 
@@ -28,10 +28,10 @@ package() {
 }
 
 sha256sums=(
-  '8695bf88d66f3df0e2fc9fe275bb181039ca060ebbbb9ca2e838c1ae207d19c4'
+  'a45cb31741f90986d511ada6b50ff22129ed687f7dd1207cc1a96733c599e124'
 )
 b2sums=(
-  '477f9d9a63be11d3db1a82c50f43031e0cb7185165513e8312b742228442aa8780cfd7947efb5419311a83e977b795d2eee6a47cd3db5d7b8eba5f0aa1a0e869'
+  '1efb82b37d3398a435b489d1f68261bddff75d3346c1371e78f620a80a18e8431b6aff9d5bb4f6e2797a6fce79dfb22b9829f5f4bc7736e79cdffe5f75f3f8ab'
 )
 
 # eof
