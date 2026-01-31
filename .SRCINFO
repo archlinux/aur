@@ -1,0 +1,12 @@
+pkgbase = librekitten-cli-bin
+	pkgdesc = Server for LibreKitten projects using the Web Server extension.
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://librekitten.org
+	arch = any
+	license = MPL-2.0
+	depends = nodejs
+	source = https://codeberg.org/LibreKitten/LibreKitten/releases/download/0.10.1/0.10.1-cli.tar.gz
+	sha256sums = SKIP
+
+pkgname = librekitten-cli-bin
