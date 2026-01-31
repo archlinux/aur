@@ -1,6 +1,6 @@
 pkgbase = python-underthesea-core
 	pkgdesc = Underthesea Core
-	pkgver = 1.0.7
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://pypi.org/project/underthesea-core
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = python-underthesea-core
 	depends = python
 	provides = python-underthesea-core
 	conflicts = python-underthesea-core
-	source = underthesea_core-1.0.7.tar.gz::https://files.pythonhosted.org/packages/source/u/underthesea_core/underthesea_core-1.0.7.tar.gz
-	sha256sums = 0826a8f93a8a4bd90df3e58a049593a6ad4137f68f60cf8e8249d0f149caf5a6
+	source = underthesea_core-2.0.0.tar.gz::https://files.pythonhosted.org/packages/source/u/underthesea_core/underthesea_core-2.0.0.tar.gz
+	sha256sums = bd2290302a46c22806addd65c019ba89458c430dc9fd04b7fb3d138301bbdb26
 
 pkgname = python-underthesea-core
