@@ -1,5 +1,5 @@
 pkgname=sorta
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="CLI tool to automatically sort PDFs into folders using keyword routing"
 arch=("any")
@@ -21,7 +21,7 @@ makedepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("c622a4732d6f52660560c62041bdf54ee374342f2b3786de503c0bbba095bbb6")
+sha256sums=("bb086e5d0f1f83c5a9c04a4cd382db13020000bb97f533844ec60c3c0d406684")
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
