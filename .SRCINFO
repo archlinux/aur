@@ -1,6 +1,6 @@
 pkgbase = microsoft-openjdk-11-bin
 	pkgdesc = Microsoft build of OpenJDK
-	pkgver = 11.0.29
+	pkgver = 11.0.30
 	pkgrel = 1
 	url = https://www.microsoft.com/openjdk
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = microsoft-openjdk-11-bin
 	provides = java-runtime=11
 	provides = java-environment=11
 	options = !strip
-	source = https://aka.ms/download-jdk/microsoft-jdk-11.0.29-linux-x64.tar.gz
-	source = https://aka.ms/download-jdk/microsoft-jdk-11.0.29-linux-x64.tar.gz.sig
+	source = https://aka.ms/download-jdk/microsoft-jdk-11.0.30-linux-x64.tar.gz
+	source = https://aka.ms/download-jdk/microsoft-jdk-11.0.30-linux-x64.tar.gz.sig
 	validpgpkeys = B602433384B8991302924D8235531D315B21C189
-	sha256sums = 013703e991080434979c60c649b1639aa1e08e7937f612545e7d7c3d87cc31e4
+	sha256sums = 30b1cac2c4f8b43ef6d74f965e0d6fdbc22fe54d34ac75cf05976ed5ae2d3848
 	sha256sums = SKIP
 
 pkgname = microsoft-openjdk-11-bin

@@ -1,6 +1,6 @@
 # Maintainer: Robert Greener <dev@greener.sh>
 pkgname=microsoft-openjdk-11-bin
-pkgver=11.0.29
+pkgver=11.0.30
 pkgrel=1
 pkgdesc='Microsoft build of OpenJDK'
 arch=('x86_64')
@@ -21,5 +21,5 @@ package() {
     cp -a "jdk-$pkgver"* "$pkgdir/usr/lib/jvm/java-11-microsoft-openjdk"
 }
 
-sha256sums=('013703e991080434979c60c649b1639aa1e08e7937f612545e7d7c3d87cc31e4'
+sha256sums=('30b1cac2c4f8b43ef6d74f965e0d6fdbc22fe54d34ac75cf05976ed5ae2d3848'
             'SKIP')
