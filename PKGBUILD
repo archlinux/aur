@@ -5,7 +5,7 @@
 
 _android_arch=x86
 pkgname=android-$_android_arch-qt6-webview
-_qtver=6.10.1
+_qtver=6.10.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -21,11 +21,12 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtwebview-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('421080583d7af564a855013dc336363a65303f31c9045a39963ae6b94ab26f6f')
+sha256sums=('7ec406ff0998900ccef0ff8e4e5b1fbf15e4e18f3b43eb72e8b2aeda0dd0eab4')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
   source android-env ${_android_arch}
+  export QT_ANDROID_JAR_PATH=${ANDROID_PREFIX}/jar
   android-${_android_arch}-cmake -G Ninja -B build-$_android_arch -S $_pkgfqn \
     -DCMAKE_FIND_ROOT_PATH="${ANDROID_PREFIX}" \
     -DQT_BINARY_DIR=${ANDROID_PREFIX_BIN} \
