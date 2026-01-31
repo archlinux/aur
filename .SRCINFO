@@ -1,0 +1,16 @@
+pkgbase = pipewire-web-remote
+	pkgdesc = A remote control web interface for PipeWire audio systems
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/oudeis01/pipewire-web-remote
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = pkgconf
+	makedepends = clang
+	depends = pipewire
+	depends = wireplumber
+	source = pipewire-web-remote-0.1.0.tar.gz::https://github.com/oudeis01/pipewire-web-remote/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 0005bb71f4b45417a3ccd65cc626ec02c6dae138c87868fb80c8c345111c9763
+
+pkgname = pipewire-web-remote
