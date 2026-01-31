@@ -1,0 +1,12 @@
+pkgbase = rooks-bin
+	pkgdesc = State-of-the-art adaptive steganography toolkit
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://gitlab.com/harrose/rooks
+	arch = x86_64
+	license = MIT
+	options = !debug
+	source = rooks::https://gitlab.com/harrose/rooks/-/package_files/265705041/download
+	sha256sums = 39d5ab92416826572fa4c387fbf568127354267818b30f2c62fc342e8e91ca56
+
+pkgname = rooks-bin
