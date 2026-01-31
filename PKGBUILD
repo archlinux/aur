@@ -3,12 +3,12 @@
 _pkgname=gyroflow
 pkgname=${_pkgname}-bin
 pkgver=1.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Video stabilization using gyroscope data"
 arch=("x86_64")
 license=("GPL3")
 url="https://gyroflow.xyz/"
-depends=("libc++" "qt6-base" "qt6-quick3d" "qt6-declarative" "qt6-3d" "pulseaudio" "libxkbcommon" "opencv" "ocl-icd" "ffmpeg")
+depends=("libc++" "qt6-base" "qt6-quick3d" "qt6-declarative" "qt6-3d" "libpulse" "libxkbcommon" "opencv" "ocl-icd" "ffmpeg")
 optdepends=("opencl-driver: OpenCL driver for GPU accelerated stabilization"
             "libva-mesa-driver: VAAPI video acceleration for NVIDIA and AMD GPU"
             "intel-media-driver: VAAPI video acceleration for Intel GPU")

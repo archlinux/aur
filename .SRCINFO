@@ -1,7 +1,7 @@
 pkgbase = gyroflow-bin
 	pkgdesc = Video stabilization using gyroscope data
 	pkgver = 1.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gyroflow.xyz/
 	arch = x86_64
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = gyroflow-bin
 	depends = qt6-quick3d
 	depends = qt6-declarative
 	depends = qt6-3d
-	depends = pulseaudio
+	depends = libpulse
 	depends = libxkbcommon
 	depends = opencv
 	depends = ocl-icd
