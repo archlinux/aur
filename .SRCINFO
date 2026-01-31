@@ -1,4 +1,4 @@
-pkgbase = traymd-git
+pkgbase = traymd
 	pkgdesc = Lightweight markdown notes in the system tray
 	pkgver = 0.r5.geaf8aa2
 	pkgrel = 1
@@ -16,4 +16,4 @@ pkgbase = traymd-git
 	source = traymd::git+https://github.com/rabfulton/TrayMD.git
 	sha256sums = SKIP
 
-pkgname = traymd-git
+pkgname = traymd

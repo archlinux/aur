@@ -1,7 +1,7 @@
 ## Maintainer: rabfulton (GitHub) <noreply@github.com>
 
 _pkgname=traymd
-pkgname=traymd-git
+pkgname=traymd
 pkgver=0.r5.geaf8aa2
 pkgrel=1
 pkgdesc="Lightweight markdown notes in the system tray"
