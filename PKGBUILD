@@ -3,7 +3,7 @@
 pkgname=rustfs
 pkgver=1.0.0_alpha.82
 _console_ver=0.0.12
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance distributed object storage for MinIO alternative."
 url='https://rustfs.com/en/'
 arch=('x86_64')
@@ -38,8 +38,9 @@ build() {
 	cd console-${_console_ver}
 
 	# `NUXT_TELEMETRY_DISABLED=1` ignores the Nuxt.js starting question
+	export NUXT_TELEMETRY_DISABLED=1
 	# pnpm-lock.yaml exists, but pnpm failed to build. The following options fixes it.
-	NUXT_TELEMETRY_DISABLED=1 pnpm i --shamefully-hoist --dangerously-allow-all-builds
+	pnpm i --shamefully-hoist --dangerously-allow-all-builds
 	pnpm generate
 	cp -r .output/public/* ${srcdir}/${pkgname}-${pkgver//_/-}/rustfs/static/
 
