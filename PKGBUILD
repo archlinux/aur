@@ -1,11 +1,11 @@
 pkgname=gale-bin
 pkgver=1.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight Thunderstore client"
 arch=('x86_64')
 url="https://github.com/Kesomannen/gale"
 license=('GPL-3.0-or-later')
-depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'openssl-1.1' 'pango' 'webkit2gtk-4.1' 'xdg-utils')
+depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'openssl' 'pango' 'webkit2gtk-4.1' 'xdg-utils')
 options=('!strip' '!emptydirs')
 source_x86_64=("https://github.com/Kesomannen/gale/releases/download/$pkgver/gale_"$pkgver"_amd64_linux.deb"
     "webkit-disable-compositing.patch"

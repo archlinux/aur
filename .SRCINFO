@@ -1,7 +1,7 @@
 pkgbase = gale-bin
 	pkgdesc = Lightweight Thunderstore client
 	pkgver = 1.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kesomannen/gale
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -12,7 +12,7 @@ pkgbase = gale-bin
 	depends = gtk3
 	depends = hicolor-icon-theme
 	depends = libsoup
-	depends = openssl-1.1
+	depends = openssl
 	depends = pango
 	depends = webkit2gtk-4.1
 	depends = xdg-utils
