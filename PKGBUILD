@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-connectivity-static
-_qtver=6.10.1
+_qtver=6.10.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -21,7 +21,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtconnectivity-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('7baefd3a90c73820e33ddc59ded8c018e233d14d23eaa4eadbf332b5ac2154ff')
+sha256sums=('cf58f021f32857b5b6799cd4404ef613399ecc1c515492f0f620ce338a311a32')
 
 _architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
 
