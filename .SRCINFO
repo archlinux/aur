@@ -1,16 +1,16 @@
 pkgbase = zenity-rs-bin
 	pkgdesc = Rust rewrite of zenity, much smaller and faster
-	pkgver = 0.1.9
-	pkgrel = 2
+	pkgver = 0.1.10
+	pkgrel = 1
 	url = https://github.com/QaidVoid/zenity-rs
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	provides = zenity
 	conflicts = zenity
-	source_aarch64 = https://github.com/QaidVoid/zenity-rs/releases/download/v0.1.9/zenity-rs-aarch64-linux
-	sha256sums_aarch64 = d3a323919dae67a3ff2e9c8d70aed7a4e3ac2d14b5a1c645a4854c1c1ef63a5c
-	source_x86_64 = https://github.com/QaidVoid/zenity-rs/releases/download/v0.1.9/zenity-rs-x86_64-linux
-	sha256sums_x86_64 = fc4d54c526be8aa2ef37aabd823754038b61e42827e99e167f7b56b7778f3f74
+	source_aarch64 = https://github.com/QaidVoid/zenity-rs/releases/download/v0.1.10/zenity-rs-aarch64-linux
+	sha256sums_aarch64 = 78a6a8ba1217c315417b763eda82bfca50ac3b5025a9a4ba936f0885ec9b7e3f
+	source_x86_64 = https://github.com/QaidVoid/zenity-rs/releases/download/v0.1.10/zenity-rs-x86_64-linux
+	sha256sums_x86_64 = a0540fe6fcdb2ba542f9ec874b15ccdf0fc467c73fd7af1b78841867ba13b4eb
 
 pkgname = zenity-rs-bin
