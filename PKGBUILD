@@ -2,20 +2,16 @@
 
 _pkgname=system76-scheduler-niri
 pkgname="$_pkgname-git"
-pkgver=r2.gc950aac
-pkgrel=2
+pkgver=r6.g9fe30d7
+pkgrel=1
 pkgdesc="Niri integration for system76-scheduler"
 arch=("x86_64")
 url="https://github.com/Kirottu/system76-scheduler-niri"
-license=("Custom:NONE")
+license=("MIT")
 makedepends=(cargo git)
 conflicts=("$_pkgname")
-source=(
-  "git+$url.git"
-  "fix-niri-latest.patch"
-)
-sha256sums=('SKIP'
-            '57706686333c43b1cbf280c3430912386e8e46b2c91c3bb7d8d644275763a53a')
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}" || exit
@@ -24,7 +20,6 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgname}" || exit
-  patch -p1 < "${srcdir}/fix-niri-latest.patch"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
