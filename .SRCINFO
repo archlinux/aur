@@ -1,0 +1,20 @@
+pkgbase = python-pygeoif-git
+	pkgdesc = A Python library providing a GeoJSON-like protocol for geo-spatial (GIS) vector data.
+	pkgver = 1.6.0+47.r1029.20260128.196efdc
+	pkgrel = 1
+	url = https://pygeoif.readthedocs.io/
+	arch = any
+	license = LGPL-2.1-or-later
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools>=61.2
+	makedepends = python-wheel
+	depends = python>=3.9
+	depends = python-typing_extensions
+	provides = python-pygeoif=1.6.0+47.r1029.20260128.196efdc
+	conflicts = python-pygeoif
+	source = python-pygeoif::git+https://github.com/cleder/pygeoif.git
+	sha256sums = SKIP
+
+pkgname = python-pygeoif-git
