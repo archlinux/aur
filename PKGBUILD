@@ -2,7 +2,7 @@
 
 pkgname=tonearm
 
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 
 pkgdesc="Unofficial native GTK4 / Adwaita music streaming client for TIDAL"
@@ -10,12 +10,12 @@ arch=("x86_64")
 url="https://codeberg.org/dergs/Tonearm"
 license=("GPL-3.0-or-later")
 
-depends=(gtk4 gstreamer gst-plugins-base gst-plugins-good gst-plugins-bad libadwaita libsecret)
+depends=(glib-networking gtk4 gstreamer gst-plugins-base gst-plugins-good gst-plugins-bad libadwaita libsecret)
 makedepends=(git go)
 provides=("${pkgname}=${pkgver}")
 
 source=("${pkgname}::https://codeberg.org/dergs/Tonearm/archive/v${pkgver}.tar.gz")
-sha256sums=('5fc3f2ae3b6d2fc2aad5cd9c48c4e7621517b10c6d4417eb4c83a6f3e21f6983')
+sha256sums=('09584d054e4ff5c9e9c31d12db1cc923ae8b36d9916c82fda09fc60daa36b9a7')
 
 build() {
     cd "$srcdir/${pkgname}"
