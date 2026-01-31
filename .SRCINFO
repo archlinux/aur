@@ -1,0 +1,25 @@
+pkgbase = wswitch
+	pkgdesc = A fast, Alt+Tab window switcher for wayland compositors
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/DreamMaoMao/wswitch
+	arch = x86_64
+	license = GPL3
+	makedepends = wayland-protocols
+	makedepends = pkgconf
+	makedepends = gcc
+	makedepends = make
+	depends = wayland
+	depends = cairo
+	depends = pango
+	depends = json-c
+	depends = libxkbcommon
+	depends = glib2
+	depends = librsvg
+	optdepends = tela-icon-theme: Recommended icon theme
+	provides = wswitch
+	conflicts = wswitch-git
+	source = wswitch::git+https://github.com/DreamMaoMao/wswitch.git
+	md5sums = SKIP
+
+pkgname = wswitch
