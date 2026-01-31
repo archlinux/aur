@@ -1,7 +1,7 @@
 pkgbase = zen-c
 	pkgdesc = Write like a high-level language, run like C.
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/z-libs/Zen-C
 	arch = x86_64
 	arch = pentium4
