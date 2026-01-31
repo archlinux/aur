@@ -1,6 +1,6 @@
 pkgbase = android-armv7a-eabi-qt6-webview
 	pkgdesc = Provides a way to display web content in a QML application (android)
-	pkgver = 6.10.1
+	pkgver = 6.10.2
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = android-armv7a-eabi-qt6-webview
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.10/6.10.1/submodules/qtwebview-everywhere-src-6.10.1.tar.xz
-	sha256sums = 421080583d7af564a855013dc336363a65303f31c9045a39963ae6b94ab26f6f
+	source = https://download.qt.io/official_releases/qt/6.10/6.10.2/submodules/qtwebview-everywhere-src-6.10.2.tar.xz
+	sha256sums = 7ec406ff0998900ccef0ff8e4e5b1fbf15e4e18f3b43eb72e8b2aeda0dd0eab4
 
 pkgname = android-armv7a-eabi-qt6-webview
