@@ -1,7 +1,7 @@
 pkgbase = python-manim-slides
 	pkgdesc = Tool for live presentations using manim
 	pkgver = 5.5.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/jeertmans/manim-slides
 	arch = x86_64
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = python-manim-slides
 	checkdepends = pyside6
 	checkdepends = python-pytest-missing-modules
 	checkdepends = python-manimgl
+	checkdepends = manim
 	checkdepends = python-setuptools
 	checkdepends = xorg-server-xvfb
 	makedepends = python-build
