@@ -1,6 +1,6 @@
 pkgbase = zonylrctoolsx-bin
 	pkgdesc = A command line tool to download lyric (.lrc) files for local songs from online music services.
-	pkgver = 2024121577
+	pkgver = 2026010879
 	pkgrel = 1
 	url = https://github.com/real-zony/ZonyLrcToolsX
 	arch = x86_64
@@ -11,14 +11,14 @@ pkgbase = zonylrctoolsx-bin
 	provides = ZonyLrcTools.Cli
 	conflicts = zonylrctoolsx
 	conflicts = ZonyLrcTools.Cli
-	noextract = zonylrctoolsx-2024121577-x86_64.zip
-	noextract = zonylrctoolsx-2024121577-aarch64.zip
+	noextract = zonylrctoolsx-2026010879-x86_64.zip
+	noextract = zonylrctoolsx-2026010879-aarch64.zip
 	options = !strip
 	source = ZonyLrcTools.Cli
 	sha256sums = 7c5d030183eb7f40e71af7248e69d88d5876f5521cdab187248aa489b812b1d0
-	source_x86_64 = zonylrctoolsx-2024121577-x86_64.zip::https://github.com/real-zony/ZonyLrcToolsX/releases/download/ZonyLrcToolsX_Alpha.2024121577/ZonyLrcTools_linux-x64_2024121577.zip
+	source_x86_64 = zonylrctoolsx-2026010879-x86_64.zip::https://github.com/real-zony/ZonyLrcToolsX/releases/download/ZonyLrcToolsX_Alpha.2026010879/ZonyLrcTools_linux-x64_2026010879.zip
 	sha256sums_x86_64 = b1778845c09275b1214628dda11fddceadf8dc2724f99ed4b7660ad7f9c3110c
-	source_aarch64 = zonylrctoolsx-2024121577-aarch64.zip::https://github.com/real-zony/ZonyLrcToolsX/releases/download/ZonyLrcToolsX_Alpha.2024121577/ZonyLrcTools_linux-arm64_2024121577.zip
+	source_aarch64 = zonylrctoolsx-2026010879-aarch64.zip::https://github.com/real-zony/ZonyLrcToolsX/releases/download/ZonyLrcToolsX_Alpha.2026010879/ZonyLrcTools_linux-arm64_2026010879.zip
 	sha256sums_aarch64 = 2da6ee5bb4bea8f68b21bfe7a09842ed089ba8c6b707955930fa7536823cb4a7
 
 pkgname = zonylrctoolsx-bin
