@@ -1,7 +1,7 @@
 pkgbase = ledspicer
 	pkgdesc = LED controller daemon for arcade cabinets and RGB lighting
 	pkgver = 0.7.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/meduzapat/LEDSpicer
 	arch = x86_64
 	arch = aarch64

@@ -74,6 +74,7 @@ package_libledspicer() {
 	rm -rf "${pkgdir}/usr/lib/ledspicer"
 	rm -rf "${pkgdir}/usr/share"
 	rm -rf "${pkgdir}/usr/lib/systemd"
+	rm -rf "${pkgdir}/usr/share/doc"
 
 	find "${pkgdir}/usr/lib" -type f ! -name 'libledspicer.so.*' -delete
 }
@@ -102,6 +103,9 @@ package_ledspicer() {
 	install=ledspicer.install
 
 	DESTDIR="${pkgdir}" cmake --install "${srcdir}/LEDSpicer-${pkgver}/build"
+
+	cp -r "${srcdir}/LEDSpicer-${pkgver}/docs/examples" \
+		"${pkgdir}/usr/share/doc/ledspicer/"
 
 	# Remove library artifacts (handled by libledspicer)
 	rm -f "${pkgdir}/usr/lib/libledspicer.so"*
