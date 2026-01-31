@@ -8,3 +8,4 @@ USER builduser
 COPY PKGBUILD PKGBUILD
 RUN makepkg --nobuild
 RUN ulimit -n 10000 && makepkg
+RUN udevadm verify ./pkg/orbuculum-git/usr/lib/udev/rules.d/60-orbcode.rules
