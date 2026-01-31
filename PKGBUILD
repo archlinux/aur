@@ -5,7 +5,7 @@
 
 _android_arch=x86
 pkgname=android-$_android_arch-qt6-websockets
-_qtver=6.10.1
+_qtver=6.10.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -22,11 +22,12 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtwebsockets-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('272ac7e94418e2b13b3384d73ba89dbd6b746d7661b44dce906f8bfc0795bd01')
+sha256sums=('eccc751bea509ef656d20029693987a0fc03c58e21c38f1351480f3c8eb42ebd')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
   source android-env ${_android_arch}
+  export QT_ANDROID_JAR_PATH=${ANDROID_PREFIX}/jar
   android-${_android_arch}-cmake -G Ninja -B build-$_android_arch -S $_pkgfqn \
     -DCMAKE_FIND_ROOT_PATH="${ANDROID_PREFIX}" \
     -DQT_BINARY_DIR=${ANDROID_PREFIX_BIN} \
