@@ -70,7 +70,7 @@ package() {
     "$pkgdir/usr/lib/sysusers.d/waechter.conf" 
   install -Dm644 "Meta/Package/waechter.desktop" \
     "$pkgdir/usr/share/applications/waechter.desktop"
-  install -Dm644 Meta/Icon.png \
+  install -Dm644 Meta/Assets/Branding/Icon.png \
     "$pkgdir/usr/share/icons/hicolor/256x256/apps/waechter.png"
 
   install -Dm644 "Meta/Package/waechterd.ini" "$pkgdir/etc/waechter/waechterd.ini"
