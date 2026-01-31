@@ -3,7 +3,7 @@
 _pkgauthor=Audio-Solutions
 _pkgname=pulse-visualizer
 pkgname=${_pkgname}-bin
-pkgver=1.3.3
+pkgver=1.3.5
 pkgrel=1
 pkgdesc="A GPU-accelerated audio visualizer for PulseAudio/PipeWire"
 arch=('x86_64')
@@ -20,8 +20,8 @@ source=("${_urlraw}/LICENSE"
         "${_urlraw}/README.md")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-Linux.tar.gz")
 sha256sums=('c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271'
-            'f00685045c62bdd53c452d18643e01fdde7d93a019c2b074e1bc611659ad3ce4')
-sha256sums_x86_64=('19d8cf4aea81c6c2a03576e114ef8e7ffe4fda1c43f34a11b7faec1fcb3fccb1')
+            'cd51469ac88654a8339c855bbbd7f97f2f9ca02358cf1c29981ebe87c03b4e8c')
+sha256sums_x86_64=('b0a57d343119214978b3c90fe0f4dd15ef02a8ce0c8dfcb07951458239d78722')
 
 package() {
   cd "$srcdir" || return

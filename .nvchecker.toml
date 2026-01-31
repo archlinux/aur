@@ -1,0 +1,5 @@
+[pulse-visualizer-bin]
+source = "github"
+github = "Audio-Solutions/pulse-visualizer"
+use_latest_release = true
+prefix = "v"
