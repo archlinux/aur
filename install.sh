@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-VERSION="170_2"
+VERSION="171_5"
 
 PATH_TO_INSTALL="/home/$(whoami)/.local/share"
 
