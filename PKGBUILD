@@ -1,6 +1,6 @@
 # Maintainer: MCB-SMART-BOY <2720838051@qq.com>
 pkgname=neve-bin
-pkgver=0.7.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A pure functional language for system configuration and package management (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ conflicts=('neve' 'neve-git')
 
 source_x86_64=("neve-${pkgver}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/MCB-SMART-BOY/Neve/releases/download/v${pkgver}/neve-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("neve-${pkgver}-aarch64-unknown-linux-gnu.tar.gz::https://github.com/MCB-SMART-BOY/Neve/releases/download/v${pkgver}/neve-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('324b0b098d7a2f60c44d2e7bef7d88da8f8067519c04af3bd78561fe3fadb294')
-sha256sums_aarch64=('e3f2493682df57a7eb916cc15fca2aff8db23d653756796f13160b692fd9dfa6')
+sha256sums_x86_64=('97ae473288b824be7b4157d9c1eddc867b6467ff25fd2ed41e430451a6253076')
+sha256sums_aarch64=('30ff7c258eb6b207b3c02778b7957795aa0980b66594458ad75e09daf7d55f9d')
 
 package() {
     install -Dm755 "neve" "$pkgdir/usr/bin/neve"
