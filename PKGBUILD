@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-tilingshell
-pkgver=17.2
+pkgver=17.3
 pkgrel=1
-_nodeversion=22
+_nodeversion=24
 pkgdesc="Extend GNOME Shell with advanced tiling window management."
 arch=('any')
 url="https://github.com/domferr/tilingshell"
@@ -14,7 +14,7 @@ makedepends=(
   'zip'
 )
 source=("tilingshell-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('843d667dbb8a2d5e9cb57edfb283e7c1f2eaeffb03eac53c1e1303f5698080f3')
+sha256sums=('803951b4f05e605360082474146a54d74722af6ef7f84c5cb587f468e0b231b9')
 
 _ensure_local_nvm() {
   # let's be sure we are starting clean
@@ -29,6 +29,11 @@ _ensure_local_nvm() {
 
 prepare() {
   cd "tilingshell-$pkgver"
+
+  # Fix upstream dependency conflict
+  # https://github.com/domferr/tilingshell/issues/495
+  sed -i 's/"esbuild": "^0.25.10"/"esbuild": "^0.27.0"/g' package.json
+
   export npm_config_cache="$srcdir/npm_cache"
   _ensure_local_nvm
   nvm install "${_nodeversion}"
