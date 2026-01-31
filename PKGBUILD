@@ -12,10 +12,10 @@ provides=('clinvoker')
 conflicts=('clinvoker')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/signalridge/clinvoker/releases/download/v${pkgver}/clinvoker_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('c65f3c0693f8964740dfa5744726a4369079be63de9cda9b6c4264c10ed7a697')
+sha256sums_aarch64=('d6bd7da9caf2a6808f477004bf1e4499ca4d1039b861c71975b1e7df60fa1235')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/signalridge/clinvoker/releases/download/v${pkgver}/clinvoker_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('2808d3dcb4681c0917de16ec5fe08b292ddca4ed27194a0520438d12bf06fc9b')
+sha256sums_x86_64=('8ba29267e08f7cd0731378d2852f9ca1fefe9a88646ba6f04bbdeb500e64e7fa')
 
 package() {
   install -Dm755 "./clinvk" "${pkgdir}/usr/bin/clinvk"
