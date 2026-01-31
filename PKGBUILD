@@ -10,7 +10,7 @@ arch=('any')
 url="https://github.com/cute-engineering/cutekit"
 license=('MIT')
 depends=('python>=3.11' 'ninja' 'python-requests' 'python-graphviz' 'graphviz' 'python-dataclasses-json')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-setuptools' 'python-build')
 checkdepends=('python-pytest')
 optdepends=('clang: for compiling C/C++ code'
             'llvm: tools for C/C++ development'
