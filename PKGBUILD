@@ -11,7 +11,7 @@ provides=('llminxsolver')
 conflicts=('llminxsolver')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/llminxsolver-v${pkgver}-x86_64-linux.tar.gz")
-sha256sums=('97acb7f9171463e3dbb8c92ef433a040b2c0c5da4a35f5ac77a26c174dd7cb34')
+sha256sums=('912afa459404e804fc02e0e779a46e7192e446035067d3d50ccc86a32d5f59ac')
 
 package() {
     cd "$srcdir"
