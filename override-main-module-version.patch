@@ -1,0 +1,43 @@
+--- a/caddy.go~	2022-10-02 18:58:35.059343203 +0200
++++ b/caddy.go	2022-10-02 18:58:21.125992368 +0200
+@@ -875,39 +875,7 @@
+ 	}
+ 
+ 	if full == "" {
+-		var vcsRevision string
+-		var vcsTime time.Time
+-		var vcsModified bool
+-		for _, setting := range bi.Settings {
+-			switch setting.Key {
+-			case "vcs.revision":
+-				vcsRevision = setting.Value
+-			case "vcs.time":
+-				vcsTime, _ = time.Parse(time.RFC3339, setting.Value)
+-			case "vcs.modified":
+-				vcsModified, _ = strconv.ParseBool(setting.Value)
+-			}
+-		}
+-
+-		if vcsRevision != "" {
+-			var modified string
+-			if vcsModified {
+-				modified = "+modified"
+-			}
+-			full = fmt.Sprintf("%s%s (%s)", vcsRevision, modified, vcsTime.Format(time.RFC822))
+-			simple = vcsRevision
+-
+-			// use short checksum for simple, if hex-only
+-			if _, err := hex.DecodeString(simple); err == nil {
+-				simple = simple[:8]
+-			}
+-
+-			// append date to simple since it can be convenient
+-			// to know the commit date as part of the version
+-			if !vcsTime.IsZero() {
+-				simple += "-" + vcsTime.Format("20060102")
+-			}
+-		}
++		full = "unknown"
+ 	}
+ 
+ 	if simple == "" || simple == "(devel)" {

@@ -1,0 +1,12 @@
+diff --git a/cmd/caddy/main.go b/cmd/caddy/main.go
+index 5002605b..694e95b6 100644
+--- a/cmd/caddy/main.go
++++ b/cmd/caddy/main.go
+@@ -34,6 +34,7 @@ import (
+ 	caddycmd "github.com/caddyserver/caddy/v2/cmd"
+ 
+ 	// plug in Caddy modules here
++	_ "github.com/caddy-dns/he"
+ 	_ "github.com/caddyserver/caddy/v2/modules/standard"
+ )
+ 

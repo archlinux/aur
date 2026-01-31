@@ -1,0 +1,30 @@
+From e3a60a8058d2c75c9bc47f550351d0008aefb314 Mon Sep 17 00:00:00 2001
+From: anthraxx <levente@leventepolyak.net>
+Date: Fri, 12 Feb 2021 19:23:50 +0100
+Subject: [PATCH] storage: use data dir for autosave.json as /etc is write
+ protected
+
+This is more a state file instead of a custom file as caddy also
+persists this. We do not want to have any files in /etc being mapped
+writable, not even the /etc/caddy directory, hence move the persisted
+autosave.json state to the actual application data directory.
+---
+ storage.go | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/storage.go b/storage.go
+index 62f9b1c6..5babea79 100644
+--- a/storage.go
++++ b/storage.go
+@@ -154,7 +154,7 @@ func AppDataDir() string {
+ }
+ 
+ // ConfigAutosavePath is the default path to which the last config will be persisted.
+-var ConfigAutosavePath = filepath.Join(AppConfigDir(), "autosave.json")
++var ConfigAutosavePath = filepath.Join(AppDataDir(), "autosave.json")
+ 
+ // DefaultStorage is Caddy's default storage module.
+ var DefaultStorage = &certmagic.FileStorage{Path: AppDataDir()}
+-- 
+2.30.0
+
