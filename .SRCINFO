@@ -1,0 +1,21 @@
+pkgbase = obsidianos-kcm-git
+	pkgdesc = KDE System Settings module for ObsidianOS management
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Obsidian-OS/kcm
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = kirigami
+	depends = obsidianctl
+	depends = polkit
+	depends = systemsettings
+	depends = obsidianos-branding
+	source = obsidianos-kcm-git::git+https://github.com/Obsidian-OS/kcm.git
+	sha256sums = SKIP
+
+pkgname = obsidianos-kcm-git
