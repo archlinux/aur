@@ -1,8 +1,8 @@
 pkgbase = klassy-git
 	pkgdesc = Highly customizable binary Window Decoration, Application Style and Global Theme plugin for recent versions of the KDE Plasma desktop.
-	pkgver = 6.2.breeze6.2.1.r3211.g2552f9df
+	pkgver = v6.4.r3216.gce8a67fd
 	pkgrel = 1
-	url = https://invent.kde.org/paulm/klassy
+	url = https://github.com/paulmcauley/klassy
 	arch = x86_64
 	license = GPL-2.0-only AND GPL-3.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 	makedepends = git
@@ -34,7 +34,7 @@ pkgbase = klassy-git
 	depends = qt6-svg
 	depends = xdg-utils
 	replaces = classik-git
-	source = klassy::git+https://invent.kde.org/paulm/klassy.git#branch=master
+	source = klassy::git+https://github.com/paulmcauley/klassy.git#branch=master
 	sha256sums = SKIP
 
 pkgname = klassy-git

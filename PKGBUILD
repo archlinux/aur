@@ -5,11 +5,11 @@ _pkgname=klassy
 pkgbase="${_pkgname}-git"
 pkgname=("${_pkgname}-git"
          "${_pkgname}-qt5-git")
-pkgver=6.2.breeze6.2.1.r3211.g2552f9df
+pkgver=v6.4.r3216.gce8a67fd
 pkgrel=1
 pkgdesc='Highly customizable binary Window Decoration, Application Style and Global Theme plugin for recent versions of the KDE Plasma desktop.'
 arch=(x86_64)
-url="https://invent.kde.org/paulm/klassy"
+url="https://github.com/paulmcauley/klassy"
 license=('GPL-2.0-only AND GPL-3.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT')
 replaces=(classik-git)
 depends=(breeze-icons
