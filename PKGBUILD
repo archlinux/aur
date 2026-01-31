@@ -1,6 +1,6 @@
 # Maintainer: Arfad <arfadmuzali258@gmail.com>
 pkgname=restui
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Terminal UI API client for testing HTTP requests"
 arch=('any')
@@ -19,7 +19,7 @@ build() {
   export CGO_ENABLED=0
   go build \
     -trimpath \
-    -ldflags "-s -w -X main.version=v$pkgver" \
+    -ldflags "-s -w -X github.com/arfadmuzali/restui/internal/version.Version=v$pkgver" \
     -o restui
 }
 
