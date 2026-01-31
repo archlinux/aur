@@ -1,6 +1,6 @@
 # Maintainer: Robert Greener <dev@greener.sh>
 pkgname=microsoft-openjdk-17-bin
-pkgver=17.0.17
+pkgver=17.0.18
 pkgrel=1
 pkgdesc='Microsoft build of OpenJDK'
 arch=('x86_64')
@@ -21,5 +21,5 @@ package() {
     cp -a "jdk-$pkgver"* "$pkgdir/usr/lib/jvm/java-17-microsoft-openjdk"
 }
 
-sha256sums=('aaa05d730eb76382ac3154919b62fdf5fc1459683aca4f79b2a5dbcef412818b'
+sha256sums=('0b0bc896d89a1741bbf3e7525addf9280b1aa3e13abb3183d19d98c0f2fbd1cc'
             'SKIP')

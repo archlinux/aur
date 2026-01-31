@@ -1,6 +1,6 @@
 pkgbase = microsoft-openjdk-17-bin
 	pkgdesc = Microsoft build of OpenJDK
-	pkgver = 17.0.17
+	pkgver = 17.0.18
 	pkgrel = 1
 	url = https://www.microsoft.com/openjdk
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = microsoft-openjdk-17-bin
 	provides = java-runtime=17
 	provides = java-environment=17
 	options = !strip
-	source = https://aka.ms/download-jdk/microsoft-jdk-17.0.17-linux-x64.tar.gz
-	source = https://aka.ms/download-jdk/microsoft-jdk-17.0.17-linux-x64.tar.gz.sig
+	source = https://aka.ms/download-jdk/microsoft-jdk-17.0.18-linux-x64.tar.gz
+	source = https://aka.ms/download-jdk/microsoft-jdk-17.0.18-linux-x64.tar.gz.sig
 	validpgpkeys = B602433384B8991302924D8235531D315B21C189
-	sha256sums = aaa05d730eb76382ac3154919b62fdf5fc1459683aca4f79b2a5dbcef412818b
+	sha256sums = 0b0bc896d89a1741bbf3e7525addf9280b1aa3e13abb3183d19d98c0f2fbd1cc
 	sha256sums = SKIP
 
 pkgname = microsoft-openjdk-17-bin
