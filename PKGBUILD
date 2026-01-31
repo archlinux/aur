@@ -21,9 +21,9 @@ source=(
   "config"
   "max98390-sound.patch"
 )
-sha256sums=('2291da065ca04b715c89ee50362aec3f021a7414bc963f1b56736682c8122979'
+sha256sums=('f011f6c8ea471df1b3dbbdd1eb261b29c92e43360503c3ebd005beec2155b66a'
             '505d823490e964e66ebe5889a3701347b4e4e2faf1772b3964f0360a176eadf8'
-            '664a9dc97538388576d73c29d96f848ef74d6352f0cc544f578bd837c41b5819')
+            'd04297d5ff976a35846877f6fd7b294258504f0c3b60c3ca57a4e3947dcae321')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"

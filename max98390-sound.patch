@@ -1,12 +1,12 @@
 From 57088c5b295e49fbb2ed00ab50946739e3279a6a Mon Sep 17 00:00:00 2001
 From: PastellaPNG <83626012+BreadJS@users.noreply.github.com>
 Date: Sat, 6 Dec 2025 00:54:57 +0100
-Subject: [PATCH 1/7] Sound support for the Samsung Galaxy Book 4
+Subject: [PATCH 1/8] Sound support for the Samsung Galaxy Book 4
 
 ---
  drivers/acpi/scan.c                           |   1 +
  .../platform/x86/serial-multi-instantiate.c   |  12 +
- sound/pci/hda/patch_realtek.c             |  12 +
+ sound/hda/codecs/realtek/alc269.c             |  12 +
  sound/hda/codecs/side-codecs/Kconfig          |  19 +
  sound/hda/codecs/side-codecs/Makefile         |   4 +
  sound/hda/codecs/side-codecs/max98390_hda.c   | 214 +++++++++++
@@ -24,16 +24,19 @@ Subject: [PATCH 1/7] Sound support for the Samsung Galaxy Book 4
  create mode 100644 sound/hda/codecs/side-codecs/max98390_hda_i2c.c
 
 diff --git a/drivers/acpi/scan.c b/drivers/acpi/scan.c
-index ef16d58b29499d..b33e5e984ef186 100644
+index ef16d58b2..b33e5e984 100644
 --- a/drivers/acpi/scan.c
 +++ b/drivers/acpi/scan.c
 @@ -1768,6 +1768,7 @@ static bool acpi_device_enumeration_by_parent(struct acpi_device *device)
  		{"CSC3557", },
+ 		{"INT33FE", },
+ 		{"INT3515", },
 +		{"MAX98390", },
+ 		{"TXNW2781", },
  		/* Non-conforming _HID for Cirrus Logic already released */
  		{"CLSA0100", },
 diff --git a/drivers/platform/x86/serial-multi-instantiate.c b/drivers/platform/x86/serial-multi-instantiate.c
-index db030b0f176a24..b41f0cca10e94e 100644
+index db030b0f1..b41f0cca1 100644
 --- a/drivers/platform/x86/serial-multi-instantiate.c
 +++ b/drivers/platform/x86/serial-multi-instantiate.c
 @@ -395,6 +395,17 @@ static const struct smi_node tas2781_hda = {
@@ -57,13 +60,15 @@ index db030b0f176a24..b41f0cca10e94e 100644
 @@ -407,6 +418,7 @@ static const struct acpi_device_id smi_acpi_ids[] = {
  	{ "CSC3556", (unsigned long)&cs35l56_hda },
  	{ "CSC3557", (unsigned long)&cs35l57_hda },
+ 	{ "INT3515", (unsigned long)&int3515_data },
 +	{ "MAX98390", (unsigned long)&max98390_hda },
+ 	{ "TXNW2781", (unsigned long)&tas2781_hda },
  	/* Non-conforming _HID for Cirrus Logic already released */
  	{ "CLSA0100", (unsigned long)&cs35l41_hda },
-diff --git a/sound/pci/hda/patch_realtek.c b/sound/pci/hda/patch_realtek.c
-index c0a6acd7d42dc0..854a160590542b 100644
---- a/sound/pci/hda/patch_realtek.c
-+++ b/sound/pci/hda/patch_realtek.c
+diff --git a/sound/hda/codecs/realtek/alc269.c b/sound/hda/codecs/realtek/alc269.c
+index c0a6acd7d..854a16059 100644
+--- a/sound/hda/codecs/realtek/alc269.c
++++ b/sound/hda/codecs/realtek/alc269.c
 @@ -2989,6 +2989,11 @@ static void cs35l41_fixup_spi_four(struct hda_codec *codec, const struct hda_fix
  	comp_generic_fixup(codec, action, "spi", "CSC3551", "-%s:00-cs35l41-hda.%d", 4);
  }
@@ -71,11 +76,6 @@ index c0a6acd7d42dc0..854a160590542b 100644
 +static void max98390_fixup_i2c_four(struct hda_codec *codec, const struct hda_fixup *fix, int action)
 +{
 +	comp_generic_fixup(codec, action, "i2c", "MAX98390", "-%s:00-max98390-hda.%d", 4);
-+}
-
-+static void max98390_fixup_i2c_two(struct hda_codec *codec, const struct hda_fixup *fix, int action)
-+{
-+	comp_generic_fixup(codec, action, "i2c", "MAX98390", "-%s:00-max98390-hda.%d", 2);
 +}
 +
  static void alc287_fixup_legion_16achg6_speakers(struct hda_codec *cdc, const struct hda_fixup *fix,
@@ -86,7 +86,6 @@ index c0a6acd7d42dc0..854a160590542b 100644
  	ALC298_FIXUP_SAMSUNG_AMP_V2_2_AMPS,
  	ALC298_FIXUP_SAMSUNG_AMP_V2_4_AMPS,
 +	ALC298_FIXUP_SAMSUNG_MAX98390_4_AMPS,
-+	ALC298_FIXUP_SAMSUNG_MAX98390_2_AMPS,
  	ALC298_FIXUP_SAMSUNG_HEADPHONE_VERY_QUIET,
  	ALC256_FIXUP_SAMSUNG_HEADPHONE_VERY_QUIET,
  	ALC295_FIXUP_ASUS_MIC_NO_PRESENCE,
@@ -98,12 +97,6 @@ index c0a6acd7d42dc0..854a160590542b 100644
 +		.type = HDA_FIXUP_FUNC,
 +		.v.func = max98390_fixup_i2c_four
 +	},
-+	[ALC298_FIXUP_SAMSUNG_MAX98390_2_AMPS] = {
-+		.type = HDA_FIXUP_FUNC,
-+		.v.func = max98390_fixup_i2c_two,
-+		.chained = true,
-+		.chain_id = ALC269_FIXUP_HEADSET_MIC,
-+	},
  	[ALC298_FIXUP_SAMSUNG_HEADPHONE_VERY_QUIET] = {
  		.type = HDA_FIXUP_VERBS,
  		.v.verbs = (const struct hda_verb[]) {
@@ -113,12 +106,11 @@ index c0a6acd7d42dc0..854a160590542b 100644
  	SND_PCI_QUIRK(0x144d, 0xca06, "Samsung Galaxy Book3 360 (NP730QFG)", ALC298_FIXUP_SAMSUNG_HEADPHONE_VERY_QUIET),
 +	SND_PCI_QUIRK(0x144d, 0xca07, "Samsung Galaxy Book4 Pro (MAX98390)", ALC298_FIXUP_SAMSUNG_MAX98390_4_AMPS),
 +	SND_PCI_QUIRK(0x144d, 0xc892, "Samsung Galaxy Book4 360 (MAX98390)", ALC298_FIXUP_SAMSUNG_MAX98390_4_AMPS),
-+	SND_PCI_QUIRK(0x144d, 0xc896, "Samsung Galaxy Book 2 Pro SE (NP950XGK)", ALC298_FIXUP_SAMSUNG_MAX98390_2_AMPS),
  	SND_PCI_QUIRK(0x144d, 0xc868, "Samsung Galaxy Book2 Pro (NP930XED)", ALC298_FIXUP_SAMSUNG_AMP),
  	SND_PCI_QUIRK(0x144d, 0xc870, "Samsung Galaxy Book2 Pro (NP950XED)", ALC298_FIXUP_SAMSUNG_AMP_V2_2_AMPS),
  	SND_PCI_QUIRK(0x144d, 0xc872, "Samsung Galaxy Book2 Pro (NP950XEE)", ALC298_FIXUP_SAMSUNG_AMP_V2_2_AMPS),
 diff --git a/sound/hda/codecs/side-codecs/Kconfig b/sound/hda/codecs/side-codecs/Kconfig
-index f674e9a9c7d7af..9e9d82e016472b 100644
+index f674e9a9c..9e9d82e01 100644
 --- a/sound/hda/codecs/side-codecs/Kconfig
 +++ b/sound/hda/codecs/side-codecs/Kconfig
 @@ -141,3 +141,22 @@ config SND_HDA_SCODEC_TAS2781_SPI
@@ -145,7 +137,7 @@ index f674e9a9c7d7af..9e9d82e016472b 100644
 +comment "Set to Y if you want auto-loading the side codec driver"
 +	depends on SND_HDA=y && SND_HDA_SCODEC_MAX98390_I2C=m
 diff --git a/sound/hda/codecs/side-codecs/Makefile b/sound/hda/codecs/side-codecs/Makefile
-index 245e84f6a121d6..e80857adcaf38e 100644
+index 245e84f6a..e80857adc 100644
 --- a/sound/hda/codecs/side-codecs/Makefile
 +++ b/sound/hda/codecs/side-codecs/Makefile
 @@ -13,6 +13,8 @@ snd-hda-scodec-component-y :=	hda_component.o
@@ -165,7 +157,7 @@ index 245e84f6a121d6..e80857adcaf38e 100644
 +obj-$(CONFIG_SND_HDA_SCODEC_MAX98390_I2C) += snd-hda-scodec-max98390-i2c.o
 diff --git a/sound/hda/codecs/side-codecs/max98390_hda.c b/sound/hda/codecs/side-codecs/max98390_hda.c
 new file mode 100644
-index 00000000000000..869169b3915ba3
+index 000000000..869169b39
 --- /dev/null
 +++ b/sound/hda/codecs/side-codecs/max98390_hda.c
 @@ -0,0 +1,214 @@
@@ -385,7 +377,7 @@ index 00000000000000..869169b3915ba3
 +MODULE_LICENSE("GPL");
 diff --git a/sound/hda/codecs/side-codecs/max98390_hda.h b/sound/hda/codecs/side-codecs/max98390_hda.h
 new file mode 100644
-index 00000000000000..6c9f648e0a5c6d
+index 000000000..6c9f648e0
 --- /dev/null
 +++ b/sound/hda/codecs/side-codecs/max98390_hda.h
 @@ -0,0 +1,33 @@
@@ -424,7 +416,7 @@ index 00000000000000..6c9f648e0a5c6d
 +#endif /* __MAX98390_HDA_H__ */
 diff --git a/sound/hda/codecs/side-codecs/max98390_hda_filters.c b/sound/hda/codecs/side-codecs/max98390_hda_filters.c
 new file mode 100644
-index 00000000000000..ca4f064b50897a
+index 000000000..ca4f064b5
 --- /dev/null
 +++ b/sound/hda/codecs/side-codecs/max98390_hda_filters.c
 @@ -0,0 +1,334 @@
@@ -764,7 +756,7 @@ index 00000000000000..ca4f064b50897a
 +MODULE_LICENSE("GPL");
 diff --git a/sound/hda/codecs/side-codecs/max98390_hda_filters.h b/sound/hda/codecs/side-codecs/max98390_hda_filters.h
 new file mode 100644
-index 00000000000000..d41dd4ca3b510c
+index 000000000..d41dd4ca3
 --- /dev/null
 +++ b/sound/hda/codecs/side-codecs/max98390_hda_filters.h
 @@ -0,0 +1,15 @@
@@ -786,7 +778,7 @@ index 00000000000000..d41dd4ca3b510c
 \ No newline at end of file
 diff --git a/sound/hda/codecs/side-codecs/max98390_hda_i2c.c b/sound/hda/codecs/side-codecs/max98390_hda_i2c.c
 new file mode 100644
-index 00000000000000..38d2ca7f8ee661
+index 000000000..38d2ca7f8
 --- /dev/null
 +++ b/sound/hda/codecs/side-codecs/max98390_hda_i2c.c
 @@ -0,0 +1,74 @@
@@ -865,7 +857,7 @@ index 00000000000000..38d2ca7f8ee661
 +MODULE_AUTHOR("Kevin Cuperus <cuperus.kevin@hotmail.com>");
 +MODULE_LICENSE("GPL");
 diff --git a/sound/soc/codecs/max98390.c b/sound/soc/codecs/max98390.c
-index 3dd4dd94bc371f..446465cbb4ccd7 100644
+index 3dd4dd94b..446465cbb 100644
 --- a/sound/soc/codecs/max98390.c
 +++ b/sound/soc/codecs/max98390.c
 @@ -978,7 +978,7 @@ static const struct snd_soc_component_driver soc_codec_dev_max98390 = {
@@ -894,7 +886,7 @@ index 3dd4dd94bc371f..446465cbb4ccd7 100644
  	{},
  };
 diff --git a/sound/soc/codecs/max98390.h b/sound/soc/codecs/max98390.h
-index f4d6758ab4c630..c235df0f2ac822 100644
+index f4d6758ab..c235df0f2 100644
 --- a/sound/soc/codecs/max98390.h
 +++ b/sound/soc/codecs/max98390.h
 @@ -664,4 +664,8 @@ struct max98390_priv {
@@ -906,70 +898,77 @@ index f4d6758ab4c630..c235df0f2ac822 100644
 +extern const struct regmap_config max98390_regmap;
 +
  #endif
+-- 
+2.52.0
+
 
 From 4898a18397e096a12b6c46ecdb67caa30db3f03e Mon Sep 17 00:00:00 2001
 From: PastellaPNG <83626012+BreadJS@users.noreply.github.com>
 Date: Sun, 7 Dec 2025 14:28:30 +0100
-Subject: [PATCH 2/7] Rename model number of Book4 360 and Book4 Pro
+Subject: [PATCH 2/8] Rename model number of Book4 360 and Book4 Pro
 
 ---
- sound/pci/hda/patch_realtek.c | 4 ++--
+ sound/hda/codecs/realtek/alc269.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/sound/pci/hda/patch_realtek.c b/sound/pci/hda/patch_realtek.c
-index 854a160590542b..18f70c8b83b071 100644
---- a/sound/pci/hda/patch_realtek.c
-+++ b/sound/pci/hda/patch_realtek.c
+diff --git a/sound/hda/codecs/realtek/alc269.c b/sound/hda/codecs/realtek/alc269.c
+index 854a16059..18f70c8b8 100644
+--- a/sound/hda/codecs/realtek/alc269.c
++++ b/sound/hda/codecs/realtek/alc269.c
 @@ -6985,8 +6985,8 @@ static const struct hda_quirk alc269_fixup_tbl[] = {
  	SND_PCI_QUIRK(0x144d, 0xc832, "Samsung Galaxy Book Flex Alpha (NP730QCJ)", ALC256_FIXUP_SAMSUNG_HEADPHONE_VERY_QUIET),
  	SND_PCI_QUIRK(0x144d, 0xca03, "Samsung Galaxy Book2 Pro 360 (NP930QED)", ALC298_FIXUP_SAMSUNG_AMP),
  	SND_PCI_QUIRK(0x144d, 0xca06, "Samsung Galaxy Book3 360 (NP730QFG)", ALC298_FIXUP_SAMSUNG_HEADPHONE_VERY_QUIET),
 -	SND_PCI_QUIRK(0x144d, 0xca07, "Samsung Galaxy Book4 Pro (MAX98390)", ALC298_FIXUP_SAMSUNG_MAX98390_4_AMPS),
 -	SND_PCI_QUIRK(0x144d, 0xc892, "Samsung Galaxy Book4 360 (MAX98390)", ALC298_FIXUP_SAMSUNG_MAX98390_4_AMPS),
-+	SND_PCI_QUIRK(0x144d, 0xc896, "Samsung Galaxy Book 2 Pro SE (NP950XGK)", ALC298_FIXUP_SAMSUNG_MAX98390_2_AMPS),
 +	SND_PCI_QUIRK(0x144d, 0xca07, "Samsung Galaxy Book4 Pro (NP940XGK)", ALC298_FIXUP_SAMSUNG_MAX98390_4_AMPS),
 +	SND_PCI_QUIRK(0x144d, 0xc892, "Samsung Galaxy Book4 360 (NP960QGK)", ALC298_FIXUP_SAMSUNG_MAX98390_4_AMPS),
  	SND_PCI_QUIRK(0x144d, 0xc868, "Samsung Galaxy Book2 Pro (NP930XED)", ALC298_FIXUP_SAMSUNG_AMP),
  	SND_PCI_QUIRK(0x144d, 0xc870, "Samsung Galaxy Book2 Pro (NP950XED)", ALC298_FIXUP_SAMSUNG_AMP_V2_2_AMPS),
  	SND_PCI_QUIRK(0x144d, 0xc872, "Samsung Galaxy Book2 Pro (NP950XEE)", ALC298_FIXUP_SAMSUNG_AMP_V2_2_AMPS),
+-- 
+2.52.0
+
 
 From 4a4b8433f1738f4f9d4807e0a7c22b3f23b7eb53 Mon Sep 17 00:00:00 2001
 From: PastellaPNG <83626012+BreadJS@users.noreply.github.com>
 Date: Sun, 7 Dec 2025 14:30:27 +0100
-Subject: [PATCH 3/7] Added fixup model
+Subject: [PATCH 3/8] Added fixup model
 
 ---
- sound/pci/hda/patch_realtek.c | 2 ++
+ sound/hda/codecs/realtek/alc269.c | 2 ++
  1 file changed, 2 insertions(+)
 
-diff --git a/sound/pci/hda/patch_realtek.c b/sound/pci/hda/patch_realtek.c
-index 18f70c8b83b071..276db80dddcd4f 100644
---- a/sound/pci/hda/patch_realtek.c
-+++ b/sound/pci/hda/patch_realtek.c
+diff --git a/sound/hda/codecs/realtek/alc269.c b/sound/hda/codecs/realtek/alc269.c
+index 18f70c8b8..276db80dd 100644
+--- a/sound/hda/codecs/realtek/alc269.c
++++ b/sound/hda/codecs/realtek/alc269.c
 @@ -7490,6 +7490,8 @@ static const struct hda_model_fixup alc269_fixup_models[] = {
  	{.id = ALC298_FIXUP_SAMSUNG_AMP, .name = "alc298-samsung-amp"},
  	{.id = ALC298_FIXUP_SAMSUNG_AMP_V2_2_AMPS, .name = "alc298-samsung-amp-v2-2-amps"},
  	{.id = ALC298_FIXUP_SAMSUNG_AMP_V2_4_AMPS, .name = "alc298-samsung-amp-v2-4-amps"},
 +	{.id = ALC298_FIXUP_SAMSUNG_AMP_V2_4_AMPS, .name = "alc298-samsung-amp-v2-4-amps"},
-+	{.id = ALC298_FIXUP_SAMSUNG_MAX98390_4_AMPS,
-+	ALC298_FIXUP_SAMSUNG_MAX98390_2_AMPS, .name = "alc298-samsung-max98390-4-amps"},
++	{.id = ALC298_FIXUP_SAMSUNG_MAX98390_4_AMPS, .name = "alc298-samsung-max98390-4-amps"},
  	{.id = ALC256_FIXUP_SAMSUNG_HEADPHONE_VERY_QUIET, .name = "alc256-samsung-headphone"},
  	{.id = ALC255_FIXUP_XIAOMI_HEADSET_MIC, .name = "alc255-xiaomi-headset"},
  	{.id = ALC274_FIXUP_HP_MIC, .name = "alc274-hp-mic-detect"},
+-- 
+2.52.0
+
 
 From 0a4ffae2a24c43db201b262f4f028c4b3229f1a4 Mon Sep 17 00:00:00 2001
 From: PastellaPNG <83626012+BreadJS@users.noreply.github.com>
 Date: Sun, 7 Dec 2025 14:49:25 +0100
-Subject: [PATCH 4/7] Typo: Book 4 360 was a Book 4 Pro 360
+Subject: [PATCH 4/8] Typo: Book 4 360 was a Book 4 Pro 360
 
 ---
- sound/pci/hda/patch_realtek.c | 2 +-
+ sound/hda/codecs/realtek/alc269.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/sound/pci/hda/patch_realtek.c b/sound/pci/hda/patch_realtek.c
-index 276db80dddcd4f..6779ef4ffca712 100644
---- a/sound/pci/hda/patch_realtek.c
-+++ b/sound/pci/hda/patch_realtek.c
+diff --git a/sound/hda/codecs/realtek/alc269.c b/sound/hda/codecs/realtek/alc269.c
+index 276db80dd..6779ef4ff 100644
+--- a/sound/hda/codecs/realtek/alc269.c
++++ b/sound/hda/codecs/realtek/alc269.c
 @@ -6986,7 +6986,7 @@ static const struct hda_quirk alc269_fixup_tbl[] = {
  	SND_PCI_QUIRK(0x144d, 0xca03, "Samsung Galaxy Book2 Pro 360 (NP930QED)", ALC298_FIXUP_SAMSUNG_AMP),
  	SND_PCI_QUIRK(0x144d, 0xca06, "Samsung Galaxy Book3 360 (NP730QFG)", ALC298_FIXUP_SAMSUNG_HEADPHONE_VERY_QUIET),
@@ -979,20 +978,23 @@ index 276db80dddcd4f..6779ef4ffca712 100644
  	SND_PCI_QUIRK(0x144d, 0xc868, "Samsung Galaxy Book2 Pro (NP930XED)", ALC298_FIXUP_SAMSUNG_AMP),
  	SND_PCI_QUIRK(0x144d, 0xc870, "Samsung Galaxy Book2 Pro (NP950XED)", ALC298_FIXUP_SAMSUNG_AMP_V2_2_AMPS),
  	SND_PCI_QUIRK(0x144d, 0xc872, "Samsung Galaxy Book2 Pro (NP950XEE)", ALC298_FIXUP_SAMSUNG_AMP_V2_2_AMPS),
+-- 
+2.52.0
+
 
 From 774c875bae4b4b044f342674f3410f273f5545e4 Mon Sep 17 00:00:00 2001
 From: PastellaPNG <83626012+BreadJS@users.noreply.github.com>
 Date: Mon, 8 Dec 2025 00:30:42 +0100
-Subject: [PATCH 5/7] Added Galaxy Book 5 and removed duplicated line
+Subject: [PATCH 5/8] Added Galaxy Book 5 and removed duplicated line
 
 ---
- sound/pci/hda/patch_realtek.c | 2 +-
+ sound/hda/codecs/realtek/alc269.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/sound/pci/hda/patch_realtek.c b/sound/pci/hda/patch_realtek.c
-index 6779ef4ffca712..939564f2f8da7f 100644
---- a/sound/pci/hda/patch_realtek.c
-+++ b/sound/pci/hda/patch_realtek.c
+diff --git a/sound/hda/codecs/realtek/alc269.c b/sound/hda/codecs/realtek/alc269.c
+index 6779ef4ff..939564f2f 100644
+--- a/sound/hda/codecs/realtek/alc269.c
++++ b/sound/hda/codecs/realtek/alc269.c
 @@ -6987,6 +6987,7 @@ static const struct hda_quirk alc269_fixup_tbl[] = {
  	SND_PCI_QUIRK(0x144d, 0xca06, "Samsung Galaxy Book3 360 (NP730QFG)", ALC298_FIXUP_SAMSUNG_HEADPHONE_VERY_QUIET),
  	SND_PCI_QUIRK(0x144d, 0xca07, "Samsung Galaxy Book4 Pro (NP940XGK)", ALC298_FIXUP_SAMSUNG_MAX98390_4_AMPS),
@@ -1006,24 +1008,26 @@ index 6779ef4ffca712..939564f2f8da7f 100644
  	{.id = ALC298_FIXUP_SAMSUNG_AMP_V2_2_AMPS, .name = "alc298-samsung-amp-v2-2-amps"},
  	{.id = ALC298_FIXUP_SAMSUNG_AMP_V2_4_AMPS, .name = "alc298-samsung-amp-v2-4-amps"},
 -	{.id = ALC298_FIXUP_SAMSUNG_AMP_V2_4_AMPS, .name = "alc298-samsung-amp-v2-4-amps"},
- 	{.id = ALC298_FIXUP_SAMSUNG_MAX98390_4_AMPS,
-+	ALC298_FIXUP_SAMSUNG_MAX98390_2_AMPS, .name = "alc298-samsung-max98390-4-amps"},
+ 	{.id = ALC298_FIXUP_SAMSUNG_MAX98390_4_AMPS, .name = "alc298-samsung-max98390-4-amps"},
  	{.id = ALC256_FIXUP_SAMSUNG_HEADPHONE_VERY_QUIET, .name = "alc256-samsung-headphone"},
  	{.id = ALC255_FIXUP_XIAOMI_HEADSET_MIC, .name = "alc255-xiaomi-headset"},
+-- 
+2.52.0
+
 
 From c4a897b0609bf70506523a6992ce28fbce2fd191 Mon Sep 17 00:00:00 2001
 From: PastellaPNG <83626012+BreadJS@users.noreply.github.com>
 Date: Mon, 8 Dec 2025 14:59:43 +0100
-Subject: [PATCH 6/7] Added support for Book4 Pro 16-inch and Book4 Ultra
+Subject: [PATCH 6/8] Added support for Book4 Pro 16-inch and Book4 Ultra
 
 ---
- sound/pci/hda/patch_realtek.c | 4 +++-
+ sound/hda/codecs/realtek/alc269.c | 4 +++-
  1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/sound/pci/hda/patch_realtek.c b/sound/pci/hda/patch_realtek.c
-index 939564f2f8da7f..c44a774672a737 100644
---- a/sound/pci/hda/patch_realtek.c
-+++ b/sound/pci/hda/patch_realtek.c
+diff --git a/sound/hda/codecs/realtek/alc269.c b/sound/hda/codecs/realtek/alc269.c
+index 939564f2f..c44a77467 100644
+--- a/sound/hda/codecs/realtek/alc269.c
++++ b/sound/hda/codecs/realtek/alc269.c
 @@ -6985,8 +6985,10 @@ static const struct hda_quirk alc269_fixup_tbl[] = {
  	SND_PCI_QUIRK(0x144d, 0xc832, "Samsung Galaxy Book Flex Alpha (NP730QCJ)", ALC256_FIXUP_SAMSUNG_HEADPHONE_VERY_QUIET),
  	SND_PCI_QUIRK(0x144d, 0xca03, "Samsung Galaxy Book2 Pro 360 (NP930QED)", ALC298_FIXUP_SAMSUNG_AMP),
@@ -1036,11 +1040,14 @@ index 939564f2f8da7f..c44a774672a737 100644
  	SND_PCI_QUIRK(0x144d, 0xc1da, "Samsung Galaxy Book5 Pro 360 (NP960QHA)", ALC298_FIXUP_SAMSUNG_MAX98390_4_AMPS),
  	SND_PCI_QUIRK(0x144d, 0xc868, "Samsung Galaxy Book2 Pro (NP930XED)", ALC298_FIXUP_SAMSUNG_AMP),
  	SND_PCI_QUIRK(0x144d, 0xc870, "Samsung Galaxy Book2 Pro (NP950XED)", ALC298_FIXUP_SAMSUNG_AMP_V2_2_AMPS),
+-- 
+2.52.0
+
 
 From bfa17b7c1a43a2c474ed8d803fd88f5108ecff11 Mon Sep 17 00:00:00 2001
 From: BreadJS <cuperus.kevin@hotmail.com>
 Date: Thu, 25 Dec 2025 21:36:35 +0100
-Subject: [PATCH 7/7] Put the new biquads from the official Samsung firmware in
+Subject: [PATCH 7/8] Put the new biquads from the official Samsung firmware in
  the firmware blob
 
 ---
@@ -1048,7 +1055,7 @@ Subject: [PATCH 7/7] Put the new biquads from the official Samsung firmware in
  1 file changed, 72 insertions(+), 170 deletions(-)
 
 diff --git a/sound/hda/codecs/side-codecs/max98390_hda_filters.c b/sound/hda/codecs/side-codecs/max98390_hda_filters.c
-index ca4f064b50897a..a72401dea0cafa 100644
+index ca4f064b5..a72401dea 100644
 --- a/sound/hda/codecs/side-codecs/max98390_hda_filters.c
 +++ b/sound/hda/codecs/side-codecs/max98390_hda_filters.c
 @@ -72,40 +72,40 @@ static const u8 max98390_dsm_firmware_woofer[] = {
@@ -1333,3 +1340,71 @@ index ca4f064b50897a..a72401dea0cafa 100644
  	// SET DSP_GLOBAL_EN TO 1 (WRITE 0x01 TO 0x23E1)
  	regmap_write(priv->regmap, 0x23E1, 0x01);
  
+-- 
+2.52.0
+
+
+From f70e7a233777e8e5aa5c790faed9b5a648f13fd3 Mon Sep 17 00:00:00 2001
+From: Antoine PLIN <antoine.plin.cjd@gmail.com>
+Date: Sat, 31 Jan 2026 13:59:42 +0100
+Subject: [PATCH 8/8] Fix for NP950XGK
+
+---
+ sound/hda/codecs/realtek/alc269.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/sound/hda/codecs/realtek/alc269.c b/sound/hda/codecs/realtek/alc269.c
+index c44a77467..820f544d2 100644
+--- a/sound/hda/codecs/realtek/alc269.c
++++ b/sound/hda/codecs/realtek/alc269.c
+@@ -2993,6 +2993,10 @@ static void max98390_fixup_i2c_four(struct hda_codec *codec, const struct hda_fi
+ {
+ 	comp_generic_fixup(codec, action, "i2c", "MAX98390", "-%s:00-max98390-hda.%d", 4);
+ }
++static void max98390_fixup_i2c_two(struct hda_codec *codec, const struct hda_fixup *fix, int action) 
++{
++	comp_generic_fixup(codec, action, "i2c", "MAX98390", "-%s:00-max98390-hda.%d", 2); 
++}
+ 
+ static void alc287_fixup_legion_16achg6_speakers(struct hda_codec *cdc, const struct hda_fixup *fix,
+ 						 int action)
+@@ -3684,6 +3688,7 @@ enum {
+ 	ALC298_FIXUP_SAMSUNG_AMP_V2_2_AMPS,
+ 	ALC298_FIXUP_SAMSUNG_AMP_V2_4_AMPS,
+ 	ALC298_FIXUP_SAMSUNG_MAX98390_4_AMPS,
++	ALC298_FIXUP_SAMSUNG_MAX98390_2_AMPS,
+ 	ALC298_FIXUP_SAMSUNG_HEADPHONE_VERY_QUIET,
+ 	ALC256_FIXUP_SAMSUNG_HEADPHONE_VERY_QUIET,
+ 	ALC295_FIXUP_ASUS_MIC_NO_PRESENCE,
+@@ -5364,6 +5369,12 @@ static const struct hda_fixup alc269_fixups[] = {
+ 		.type = HDA_FIXUP_FUNC,
+ 		.v.func = max98390_fixup_i2c_four
+ 	},
++	[ALC298_FIXUP_SAMSUNG_MAX98390_2_AMPS] = { 
++		.type = HDA_FIXUP_FUNC, 
++		.v.func = max98390_fixup_i2c_two, 
++		.chained = true, 
++		.chain_id = ALC269_FIXUP_HEADSET_MIC, 
++	},
+ 	[ALC298_FIXUP_SAMSUNG_HEADPHONE_VERY_QUIET] = {
+ 		.type = HDA_FIXUP_VERBS,
+ 		.v.verbs = (const struct hda_verb[]) {
+@@ -6994,6 +7005,7 @@ static const struct hda_quirk alc269_fixup_tbl[] = {
+ 	SND_PCI_QUIRK(0x144d, 0xc870, "Samsung Galaxy Book2 Pro (NP950XED)", ALC298_FIXUP_SAMSUNG_AMP_V2_2_AMPS),
+ 	SND_PCI_QUIRK(0x144d, 0xc872, "Samsung Galaxy Book2 Pro (NP950XEE)", ALC298_FIXUP_SAMSUNG_AMP_V2_2_AMPS),
+ 	SND_PCI_QUIRK(0x144d, 0xc886, "Samsung Galaxy Book3 Pro (NP964XFG)", ALC298_FIXUP_SAMSUNG_AMP_V2_4_AMPS),
++	SND_PCI_QUIRK(0x144d, 0xc896, "Samsung Galaxy Book 2 Pro SE (NP950XGK)", ALC298_FIXUP_SAMSUNG_MAX98390_2_AMPS),
+ 	SND_PCI_QUIRK(0x144d, 0xc1ca, "Samsung Galaxy Book3 Pro 360 (NP960QFG)", ALC298_FIXUP_SAMSUNG_AMP_V2_4_AMPS),
+ 	SND_PCI_QUIRK(0x144d, 0xc1cc, "Samsung Galaxy Book3 Ultra (NT960XFH)", ALC298_FIXUP_SAMSUNG_AMP_V2_4_AMPS),
+ 	SND_PCI_QUIRK(0x1458, 0xfa53, "Gigabyte BXBT-2807", ALC283_FIXUP_HEADSET_MIC),
+@@ -7494,6 +7506,7 @@ static const struct hda_model_fixup alc269_fixup_models[] = {
+ 	{.id = ALC298_FIXUP_SAMSUNG_AMP_V2_2_AMPS, .name = "alc298-samsung-amp-v2-2-amps"},
+ 	{.id = ALC298_FIXUP_SAMSUNG_AMP_V2_4_AMPS, .name = "alc298-samsung-amp-v2-4-amps"},
+ 	{.id = ALC298_FIXUP_SAMSUNG_MAX98390_4_AMPS, .name = "alc298-samsung-max98390-4-amps"},
++	{.id = ALC298_FIXUP_SAMSUNG_MAX98390_2_AMPS, .name = "alc298-samsung-max98390-2-amps"},
+ 	{.id = ALC256_FIXUP_SAMSUNG_HEADPHONE_VERY_QUIET, .name = "alc256-samsung-headphone"},
+ 	{.id = ALC255_FIXUP_XIAOMI_HEADSET_MIC, .name = "alc255-xiaomi-headset"},
+ 	{.id = ALC274_FIXUP_HP_MIC, .name = "alc274-hp-mic-detect"},
+-- 
+2.52.0
+
