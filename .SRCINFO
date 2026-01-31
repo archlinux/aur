@@ -1,7 +1,7 @@
 pkgbase = drg_mod_integration-git
 	pkgdesc = Deep Rock Galactic mod loader and integration tool
 	pkgver = 0.2.10.r154.g57aa964
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/trumank/mint
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = drg_mod_integration-git
 	makedepends = cargo
 	makedepends = rustup
 	makedepends = pkg-config
+	makedepends = mingw-w64-gcc
 	depends = gcc-libs
 	depends = glibc
 	depends = libxkbcommon

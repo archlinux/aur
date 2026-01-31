@@ -1,7 +1,7 @@
 # Maintainer: dan361 <daniel@m8t.io>
 pkgname=drg_mod_integration-git
 pkgver=0.2.10.r154.g57aa964
-pkgrel=1
+pkgrel=2
 pkgdesc="Deep Rock Galactic mod loader and integration tool"
 arch=('x86_64')
 url="https://github.com/trumank/mint"
@@ -24,6 +24,7 @@ makedepends=(
   'cargo'
   'rustup'
   'pkg-config'
+  'mingw-w64-gcc'
 )
 provides=('drg_mod_integration-git' 'drg-mod-integration-bin')
 conflicts=('drg_mod_integration-git' 'drg-mod-integration-bin')
@@ -46,6 +47,7 @@ prepare() {
   cd "$pkgname"
   rm -f rust-toolchain.toml
   export RUSTUP_TOOLCHAIN=nightly
+  rustup target add x86_64-pc-windows-gnu --toolchain nightly
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
@@ -53,13 +55,13 @@ build() {
   cd "$pkgname"
   export RUSTUP_TOOLCHAIN=nightly
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --no-default-features
+  cargo build --frozen --release --features hook
 }
 
 check() {
   cd "$pkgname"
   export RUSTUP_TOOLCHAIN=nightly
-  cargo test --frozen --release --no-default-features
+  cargo test --frozen --release --features hook
 }
 
 package() {
