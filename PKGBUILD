@@ -1,17 +1,16 @@
-# Maintainer: Sam S. <smls75@gmail.com>
+# Contributor: Sam S. <smls75@gmail.com>
 
 pkgname=pngrim-git
-pkgver=r5.9f13288
+pkgver=r10.6ef76bb
 pkgrel=1
 pkgdesc="A tool that fixes PNG images to prevent white borders when used as OpenGL textures"
 url='https://github.com/fgenesis/pngrim'
-arch=('i686' 'x86_64')
-license=('WTFPL')
+arch=('x86_64')
+license=('LicenseRef-Public-Domain')
 depends=('gcc-libs')
-makedepends=('cmake')
-
+makedepends=('cmake' 'git')
 _gitname=pngrim
-source=("git://github.com/fgenesis/$_gitname.git")
+source=("git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -20,19 +19,19 @@ pkgver() {
   echo r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
-build() {
+prepare() {
   cd $_gitname
-  cmake .
-  make
+  sed -i 's/VERSION [0-9\.]\+/VERSION 4.2/' CMakeLists.txt
+}
+
+build() {
+  cmake -B build -S $_gitname -DCMAKE_INSTALL_PREFIX=/usr
+  cmake --build build
 }
 
 package() {
-  cd $pkgdir
-
-  # Install executable
-  install -Dm755 "$srcdir/$_gitname/src/pngrim/pngrim" usr/bin/pngrim
+  DESTDIR="$pkgdir" cmake --install build
 
   # Install documentation
-  install -Dm644 "$srcdir/$_gitname/README" usr/share/doc/pngrim/README
-  cp -r "$srcdir/$_gitname"/example usr/share/doc/pngrim/
+  install -Dm644 "$_gitname/README" -t "$pkgdir/usr/share/doc/$pkgname"
 }
