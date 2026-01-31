@@ -1,7 +1,7 @@
 pkgbase = ccpkip11
 	pkgdesc = PKCS #11 driver for CryptoTech smart cards
 	pkgver = 2.00.00261
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.cryptotech.com.pl/en/technical-support/smart-card-software
 	arch = x86_64

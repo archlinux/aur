@@ -8,7 +8,7 @@ _build=00261
 
 pkgname=ccpkip11
 pkgver="$_version.$_build"
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="PKCS #11 driver for CryptoTech smart cards"
 arch=('x86_64')
@@ -22,6 +22,9 @@ source=("ccs_$_version-$_build.amd64.zip::https://download.cryptotech.com.pl/?ke
 sha256sums=('97c8efb035d3214e3951157213a9ee6007c747ebc57c1fb00f52bff58f5eef77'
             '361a2c17332988b84272676815bc711f26f1a4e460aa68b02009a7b2c8b0b538'
             '40d59f898853a0389b75f22701278d39e116acb8ee0d7d95380cec201640b268')
+
+# Hack for the broken download server
+DLAGENTS=('https::/usr/bin/curl -qgb "" -fLC - --retry 3 --retry-delay 3 -k --pinnedpubkey 'sha256//GFKF9BImq3QA0PZR+FzLlZ7ghSfkRXx4S/xwuloH4yQ=' -o %o %u')
 
 prepare() {
   cd Linuxx64
