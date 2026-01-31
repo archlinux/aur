@@ -5,7 +5,7 @@
 
 _android_arch=x86
 pkgname=android-$_android_arch-qt6-multimedia
-_qtver=6.10.1
+_qtver=6.10.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -23,8 +23,8 @@ groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtmultimedia-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Fix-compile-flags-of-resonance-audio-for-mingw-w64.patch')
-sha256sums=('f7a4f9bc2840d4f0f9f7329f0dcb3d3500c54177b8e368091a3727c7320e67b8'
-            'ee25f25fa51291db2b61858c0d5ed8c87f21b837c263811978b3bb7899607ccd')
+sha256sums=('93f7ef0106fbd731165a2723f3e436c911fc5e6880f5bc987b55516c20833e2b'
+            '15f252ac668b7cc1a2d51a68ee016fe72070ed6a71b070cb53ed6227400f4eb6')
 
 prepare () {
   cd $_pkgfqn
@@ -40,6 +40,7 @@ build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
   export ANDROID_MINIMUM_PLATFORM=28
   source android-env ${_android_arch}
+  export QT_ANDROID_JAR_PATH=${ANDROID_PREFIX}/jar
   android-${_android_arch}-cmake -G Ninja -B build-$_android_arch -S $_pkgfqn \
     -DCMAKE_FIND_ROOT_PATH="${ANDROID_PREFIX}" \
     -DQT_BINARY_DIR=${ANDROID_PREFIX_BIN} \
