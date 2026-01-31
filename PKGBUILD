@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=varSelRF
-_pkgver=0.7-8
+_pkgver=0.7-9
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=7
+pkgrel=1
 pkgdesc="Variable Selection using Random Forests"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r-randomforest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('103c460d0734bd38ae13496c839d3435')
-b2sums=('9d23e3b083b84d71c79ae3faf19022a5b6c6421f6511060e45559172f843303abf86cf7ac2b4b104c48d2df8406f899aa437822766f8ba3e659461838a374b6f')
+md5sums=('af519df1a34f1fe356a4e239f7970973')
+b2sums=('0391c6d2f3c0691668e65593536978f46e62419371c34836cfc8531853edc2dedaeb7f4ffbc07fe6074f6aea50639fa06d5635ec56b24957fc09368632cf3796')
 
 build() {
   mkdir build
