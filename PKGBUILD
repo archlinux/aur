@@ -497,7 +497,7 @@ _build_sapi() {
 ################################################################################
 build() {
     if ((_phpbase <= 80)); then
-        export CFLAGS="${CFLAGS} -fPIC -std=gnu89 -Wno-error=incompatible-pointer-types -Wno-implicit-function-declaration -fpermissive"
+        export CFLAGS="${CFLAGS} -fPIC -std=gnu99 -Wno-error=incompatible-pointer-types -Wno-implicit-function-declaration -fpermissive"
         export CXXFLAGS="${CXXFLAGS} -fPIC -Wno-error=incompatible-pointer-types -std=c++17 -Wno-implicit-function-declaration -fpermissive"
     else
         export CFLAGS="${CFLAGS} -fPIC -Wno-error=incompatible-pointer-types"
