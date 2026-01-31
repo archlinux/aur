@@ -1,0 +1,48 @@
+From 658b01dfac213f19a882bd48df10c08f065f3195 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Mon, 1 Dec 2025 11:26:18 +0100
+Subject: [PATCH 22/24] Use a more reasonable fallback directory for fonts on
+ Windows
+
+The existing fallback points to a directory that no longer exists by default
+which causes warnings like the following on run-time:
+
+```
+QFontDatabase: Cannot find font directory C:/msys64/mingw64/qt6/libs/fonts.
+Note that Qt no longer ships fonts. Deploy some (from
+https://dejavu-fonts.github.io/ for example) or switch to fontconfig.
+```
+
+From MINGW-packages commit 6fa4cbd657c7853d664247636675192be74b281d.
+
+Change-Id: Ia5789b64e06952875e4efa014e92a61bcb50b394
+---
+ src/gui/text/qplatformfontdatabase.cpp | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/src/gui/text/qplatformfontdatabase.cpp b/src/gui/text/qplatformfontdatabase.cpp
+index 314df8152c6..9be468f5077 100644
+--- a/src/gui/text/qplatformfontdatabase.cpp
++++ b/src/gui/text/qplatformfontdatabase.cpp
+@@ -361,8 +361,17 @@ void QPlatformFontDatabase::releaseHandle(void *handle)
+ QString QPlatformFontDatabase::fontDir() const
+ {
+     QString fontpath = qEnvironmentVariable("QT_QPA_FONTDIR");
+-    if (fontpath.isEmpty())
++    if (fontpath.isEmpty()) {
++#ifdef Q_OS_WIN
++        QString windir = qEnvironmentVariable("WINDIR");
++        if (windir.isEmpty())
++            fontpath = "C:/Windows/Fonts"_L1;
++        else
++            fontpath = windir + "/Fonts"_L1;
++#else
+         fontpath = QLibraryInfo::path(QLibraryInfo::LibrariesPath) + "/fonts"_L1;
++#endif
++    }
+ 
+     return fontpath;
+ }
+-- 
+2.52.0
+
