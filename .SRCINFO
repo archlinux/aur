@@ -231,6 +231,7 @@ pkgbase = proton-cachyos
 	options = !lto
 	options = !debug
 	options = emptydirs
+	options = pestrip
 	source = proton-cachyos::git+https://github.com/CachyOS/proton-cachyos.git#tag=cachyos-10.0-20260127-native
 	source = https://dl.winehq.org/wine/wine-gecko/2.47.4/wine-gecko-2.47.4-x86.tar.xz
 	source = https://dl.winehq.org/wine/wine-gecko/2.47.4/wine-gecko-2.47.4-x86_64.tar.xz
