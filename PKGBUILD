@@ -9,16 +9,18 @@ license=('AGPL3')
 depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'librsvg')
 makedepends=('npm' 'rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('cdf630ea69824e92551d7325142db192e4561a326574d05f5341d65135861aa9')
+sha256sums=('c5446ec354ce03c64559694ac6dac2db6aa511eef8300e7d5478f5fc9f21eb4a')
 
 prepare() {
     cd "$srcdir/Spent-$pkgver"
+    export LIBSQLITE3_SYS_USE_PKG_CONFIG=0
     npm install
 }
 
 build() {
     cd "$srcdir/Spent-$pkgver"
     export LIBSQLITE3_SYS_USE_PKG_CONFIG=0
+    cargo clean -p libsqlite3-sys || true
     npm run tauri build
 }
 
