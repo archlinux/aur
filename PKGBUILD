@@ -2,7 +2,7 @@
 pkgname=openwincontrols-git
 pkgver=1.0
 _version=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GPD WinControls replacement"
 url="https://github.com/OpenWinControls/OpenWinControls"
 arch=("x86_64")
@@ -11,6 +11,7 @@ depends=("qt6-base")
 makedepends=("git" "cmake")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+install="owc.install"
 source=(
   "git+https://github.com/OpenWinControls/OpenWinControls.git"
   "owc.ico"

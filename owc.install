@@ -1,0 +1,9 @@
+post_install() {
+    echo -e "\n\nyou may need to reload udev rules after install:\nsudo udevadm control --reload-rules && sudo udevadm trigger\n\n"
+    udevadm control --reload-rules && udevadm trigger
+}
+
+post_upgrade() {
+    echo -e "\n\nyou may need to reload udev rules after install:\nsudo udevadm control --reload-rules && sudo udevadm trigger\n\n"
+    udevadm control --reload-rules && udevadm trigger
+}

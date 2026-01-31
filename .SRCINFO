@@ -1,8 +1,9 @@
 pkgbase = openwincontrols-git
 	pkgdesc = GPD WinControls replacement
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OpenWinControls/OpenWinControls
+	install = owc.install
 	arch = x86_64
 	license = GPL3
 	makedepends = git
