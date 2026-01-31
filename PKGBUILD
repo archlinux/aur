@@ -2,7 +2,7 @@
 pkgname=fan-control
 _app_id="io.github.wiiznokes.$pkgname"
 pkgver=26.01
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Control your fans with different behaviors"
 arch=('x86_64')
@@ -37,6 +37,10 @@ prepare() {
 
   # Don't run `git submodule update`
   sed -i '/submodule/d' justfile
+
+  # fix cache dir not being created
+  # https://github.com/wiiznokes/fan-control/issues/240
+  git cherry-pick -n 44a042ecb5087fa296b0196c3485c6462af53c2a
 }
 
 build() {
@@ -57,7 +61,7 @@ check() {
 
 package() {
   cd "$pkgname"
-  just rootdir="$pkgdir/usr" install
+  just rootdir="$pkgdir" install
 
   install -Dm644 "res/linux/60-$pkgname.rules" -t \
     "$pkgdir/usr/lib/udev/rules.d/"
