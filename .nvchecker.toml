@@ -1,0 +1,5 @@
+[qq-bin]
+source = "github"
+github = "JFryy/qq"
+use_latest_release = true
+prefix = "v"

@@ -2,7 +2,7 @@
 
 _pkgname=qq
 pkgname=${_pkgname}-bin
-_pkgver=0.3.1
+_pkgver=0.3.3
 pkgver=${_pkgver}
 pkgrel=1
 pkgdesc="jq, but with many interoperable configuration format transcodings and interactive querying."
@@ -19,9 +19,9 @@ source=("LICENSE_${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}_x86_64.tar.gz::${url}/releases/download/v${_pkgver}/${_pkgname}-v${_pkgver}-linux-amd64.tar.gz")
 source_aarch64=("${_pkgname}_aarch64.tar.gz::${url}/releases/download/v${_pkgver}/${_pkgname}-v${_pkgver}-linux-arm64.tar.gz")
 md5sums=('2334c8619b392ef67df716363660a45d'
-         'e5b3664c561f5d2b6b5a6c6eddfd6f2f')
-md5sums_x86_64=('48033f3423dd82c7f0a1d553e07d5e37')
-md5sums_aarch64=('7cadd3d53605445bad115503d8d5e20b')
+         '6676979e97fd01cddc8a16cadd8ec934')
+md5sums_x86_64=('4b293a2b48eb4147d73fd5fc1eedbc95')
+md5sums_aarch64=('a8d40e86bff83e098c2a34735c9fe75f')
 
 build() {
   cd "${srcdir}/" || exit
