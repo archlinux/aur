@@ -13,6 +13,6 @@ pkgbase = spent
 	depends = libayatana-appindicator
 	depends = librsvg
 	source = spent-1.1.0.tar.gz::https://github.com/FrogSnot/Spent/archive/v1.1.0.tar.gz
-	sha256sums = 96db9c75951a225e07331a1d554885603c2b80d9b15ccb70d3516b0222aae962
+	sha256sums = 04ae70ac1b4f12d6bede9e8297e2aa780562ea1d637a31d759ca7e4dfeada885
 
 pkgname = spent
