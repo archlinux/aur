@@ -14,7 +14,7 @@ pkgname=mongodb
 _pkgname=mongodb
 # #.<odd number>.# releases are unstable development/testing
 pkgver=8.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64" "aarch64")
 url="https://www.mongodb.com/"
@@ -52,7 +52,7 @@ sha256sums=('fce69cbebe922e861b758ce0ff8a616de3baf66ad5f265825d67a13ec04b9d72'
 )
 
 prepare() {
-  cd "${srcdir}/mongo-r${pkgver}"
+  cd "${srcdir}/mongo-r${pkgver}-alpha1"
 
   # Keep historical Arch dbPath
   sed -i 's|dbPath: /var/lib/mongo|dbPath: /var/lib/mongodb|' rpm/mongod.conf
@@ -80,7 +80,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/mongo-r${pkgver}"
+  cd "${srcdir}/mongo-r${pkgver}-alpha1"
   
   # Set gcc14 toolchain for Bazel to resolve C++ toolchain properly
   export CC="${CC:-gcc-14}"
@@ -143,7 +143,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/mongo-r${pkgver}"
+  cd "${srcdir}/mongo-r${pkgver}-alpha1"
 
   # Install binaries from Bazel install-core output
   # Built binaries are in bazel-bin/install-devcore/bin/ (symlinks to real outputs)
