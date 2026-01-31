@@ -9,6 +9,7 @@ Updated to handle:
 - AppImage file with calculated sha256
 - .desktop file with 'SKIP' (locally managed)
 - Icon extraction verification for multi-resolution support
+- .install file staging and template rendering
 """
 
 import re
@@ -119,6 +120,18 @@ def verify_icon_in_appimage(appimage_path: str) -> bool:
         return False
 
 
+def stage_install_file() -> None:
+    """
+    Ensure lmstudio-bin.install file exists and is staged.
+    """
+    install_path = Path("/home/madgoat/Documents/LMStudio-bin Aur/lmstudio-bin.install")
+    
+    if install_path.exists():
+        print(f"✓ Install file staged: {install_path}")
+    else:
+        print(f"Warning: Install file not found at {install_path}")
+
+
 def render_template(template_path: str, output_path: str, version: str, url: str, sha256: str) -> None:
     """
     Render PKGBUILD.template with version, url, and sha256.
@@ -191,13 +204,17 @@ def main():
     verify_icon_in_appimage(filename)
     print()
     
-    # Step 6: Render PKGBUILD from template
+    # Step 6: Stage install file
+    stage_install_file()
+    print()
+    
+    # Step 7: Render PKGBUILD from template
     # The template uses {{sha256}} for the AppImage hash
     # and the sha256sums array in the template already includes 'SKIP' for .desktop file
     render_template("PKGBUILD.template", "PKGBUILD", version, final_url, sha256)
     print()
     
-    # Step 7: Generate .SRCINFO
+    # Step 8: Generate .SRCINFO
     generate_srcinfo()
     
     print("\n=== Maintenance Engine Complete ===")

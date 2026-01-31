@@ -1,37 +1,42 @@
-# LM Studio AUR Package - Test & Maintenance Guide
+# LM Studio AUR Package Tests
 
-## Overview
-This package uses a maintenance engine (`update_package.py`) to resolve the latest AppImage download URL from LM Studio's official redirectors, calculate the SHA256 checksum, and update the `PKGBUILD` and `.SRCINFO` files.
+This document outlines the verification steps and tests for the `lmstudio-bin` AUR package.
 
-## Files
-- `PKGBUILD`: The Arch Linux package build script.
-- `PKGBUILD.template`: Template used by the maintenance engine.
-- `.SRCINFO`: Metadata for the AUR.
-- `update_package.py`: Python script to automate updates.
-- `lmstudio.desktop`: Desktop entry for the application.
+## Test Inventory
 
-## Maintenance Workflow
-To update the package to the latest version:
-1. Run the maintenance script: `python3 update_package.py`
-2. Verify the changes in `PKGBUILD` and `.SRCINFO`.
-3. Test the build: `makepkg -f`
+### 1. Icon Resolution & Source Verification
+- **Test:** Verify source icons exist in extracted AppImage.
+- **Criteria:** 
+    - `squashfs-root/usr/share/icons/hicolor/0x0/apps/lm-studio.png` (1024x1024) must exist.
+    - `squashfs-root/resources/app/.webpack/Icon-512x512.png` (512x512) must exist.
+- **Purpose:** Ensure high-quality assets are available for installation.
 
-## Local Verification
-To verify the package build locally without installing:
+### 2. Naming Consistency (XDG Standards)
+- **Test:** Compare `lmstudio.desktop` Icon field with `PKGBUILD` installation targets.
+- **Criteria:** `Icon=lmstudio-bin` in `.desktop` file must match the filename installed to `/usr/share/icons/hicolor/*/apps/`.
+- **Purpose:** Prevent broken icons in application launchers.
+
+### 3. Execution Path Linkage
+- **Test:** Compare `lmstudio.desktop` Exec field with `PKGBUILD` symlink.
+- **Criteria:** `Exec=lm-studio` must match the symlink created in `/usr/bin/`.
+- **Purpose:** Ensure the application launches correctly from the desktop entry.
+
+### 4. PKGBUILD Integrity
+- **Test:** Run `makepkg --printsrcinfo` and verify checksums.
+- **Criteria:** `.SRCINFO` must be up to date with `PKGBUILD`.
+- **Purpose:** Ensure AUR submission compatibility.
+
+## Execution Instructions
+
+Run the automated verification script:
+
 ```bash
-makepkg -f --nodeps
+chmod +x verify_system.sh
+./verify_system.sh
 ```
-This will:
-- Download the AppImage.
-- Verify the SHA256 sum.
-- Run the `prepare()` and `package()` functions.
-- Generate a `.pkg.tar.zst` file.
 
-## AUR Hygiene
-Only the following files should be committed to the AUR:
-- `PKGBUILD`
-- `.SRCINFO`
-- `lmstudio.desktop`
-- `update_package.py`
-- `PKGBUILD.template`
-- `.gitignore`
+### Manual Regression Check
+To manually verify icon mapping:
+1. Extract AppImage: `./LM-Studio-*.AppImage --appimage-extract`
+2. Check `PKGBUILD` `package()` function for `install` commands.
+3. Verify `lmstudio.desktop` contains `Icon=lmstudio-bin`.
