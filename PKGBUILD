@@ -6,7 +6,7 @@ pkgdesc="Modern, high-performance MPD server written in pure Rust with DSD suppo
 arch=('x86_64' 'aarch64')
 url="https://github.com/M0Rf30/rmpd"
 license=('MIT' 'Apache-2.0')
-depends=('gcc-libs' 'alsa-lib')
+depends=('gcc-libs' 'alsa-lib' 'sqlite')
 makedepends=('rust' 'cargo' 'git')
 optdepends=(
   'pulseaudio: PulseAudio output support'
@@ -28,20 +28,24 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${pkgname}"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+
+  # Use system SQLite instead of bundled
+  sed -i 's/rusqlite = { version = "0.38", features = \["bundled"\] }/rusqlite = "0.38"/' Cargo.toml
+
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   cd "${srcdir}/${pkgname}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
+  cargo build --release --all-features
 }
 
 check() {
   cd "${srcdir}/${pkgname}"
   export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen --all-features
+  cargo test --release --all-features
 }
 
 package() {

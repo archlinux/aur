@@ -12,6 +12,7 @@ pkgbase = rmpd-git
 	makedepends = git
 	depends = gcc-libs
 	depends = alsa-lib
+	depends = sqlite
 	optdepends = pulseaudio: PulseAudio output support
 	optdepends = pipewire: PipeWire output support
 	optdepends = snapcast: Multi-room audio synchronization
