@@ -3,7 +3,7 @@
 
 pkgname=rtlsdr-airband-git
 pkgver=5.0.12.0.ge7cd0ec
-pkgrel=1
+pkgrel=2
 pkgdesc="RTLSDR AM demodulator, support multiple channels per dongle"
 arch=('i686' 'x86_64')
 url="https://github.com/charlie-foxtrot/RTLSDR-Airband"
@@ -48,7 +48,7 @@ build() {
 
 package() {
     cd "$srcdir"/"${pkgname%-git}"/BUILD
-    make install
+    make DESTDIR="${pkgdir}" install
     install -Dm 0755 "$srcdir"/"${pkgname%-git}"/BUILD/src/rtl_airband "${pkgdir}"/usr/bin/rtl_airband
     install -Dm 0600 "$srcdir"/"${pkgname%-git}"/config/basic_multichannel.conf  "${pkgdir}"/etc/rtl_airband/basic_multichannel.conf
     install -Dm 0600 "$srcdir"/"${pkgname%-git}"/config/basic_scanning.conf "${pkgdir}"/etc/rtl_airband/basic_scanning.conf
