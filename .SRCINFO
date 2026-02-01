@@ -8,7 +8,6 @@ pkgbase = sc0710-dkms-git
 	license = GPL-2.0-or-later
 	makedepends = git
 	depends = dkms
-	depends = linux-headers
 	provides = sc0710-dkms
 	provides = elgato-4k60pro-mk2-driver
 	provides = elgato-4k60pro-mk2-dkms
