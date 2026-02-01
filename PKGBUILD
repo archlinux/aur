@@ -4,7 +4,7 @@ _pkgauthor=cadamsdev
 _pkgname=gitarbor-tui
 _appname=${_pkgname%%-tui}
 pkgname=${_appname}-bin
-pkgdesc="A next-generation Git client that runs in your terminal. Built with Bun, OpenTUI, and React"
+pkgdesc="A next-generation Git client that runs in your terminal. Built with Bun, OpenTUI, and React."
 
 pkgver=0.0.2
 pkgrel=1

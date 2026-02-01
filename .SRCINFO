@@ -1,5 +1,5 @@
 pkgbase = gitarbor-bin
-	pkgdesc = A next-generation Git client that runs in your terminal. Built with Bun, OpenTUI, and React
+	pkgdesc = A next-generation Git client that runs in your terminal. Built with Bun, OpenTUI, and React.
 	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/cadamsdev/gitarbor-tui
