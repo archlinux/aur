@@ -1,24 +1,26 @@
 pkgbase = openseachest-logparser
 	pkgdesc = Open source version of the Log Parser that parses ATA/SCSI/NVMe & Seagate vendor unique logs
-	pkgver = 1.5.4
-	pkgrel = 4
+	pkgver = 24.5.1
+	pkgrel = 1
 	url = https://github.com/Seagate/openSeaChest_LogParser
-	arch = any
+	arch = x86_64
 	license = MPL-2.0
-	makedepends = make
-	makedepends = gcc
+	makedepends = git
+	depends = glibc
 	depends = gcc-libs
-	source = openseachest-logparser.git::git+https://github.com/Seagate/openSeaChest_LogParser#tag=Release_24.5.1
-	source = libjson.git::git+https://github.com/Seagate/libjson
-	source = opensea-common.git::git+https://github.com/Seagate/opensea-common
-	source = opensea-parser.git::git+https://github.com/Seagate/opensea-parser
-	source = wingetopt.git::git+https://github.com/Seagate/wingetopt
+	source = git+https://github.com/Seagate/openSeaChest_LogParser.git#tag=Release_24.5.1
+	source = seagate-libjson::git+https://github.com/Seagate/libjson.git
+	source = seagate-wingetopt::git+https://github.com/Seagate/wingetopt.git
+	source = git+https://github.com/Seagate/opensea-common.git
+	source = git+https://github.com/Seagate/opensea-parser.git
 	source = opensea-common-no-memset-explicit.patch
+	source = sanitize-buildsystem.patch
 	sha256sums = ab8fa60f9cc9fa4fe4ff91ca8c5a879263e9308c1860db1c57af2e296e3ba88f
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = d26ed859da6148b115676964fd3e6e57ca6aba748faf364eed8b2202694018c4
+	sha256sums = f25a7f84c0ae19b9955d197074bdb664ef8b00849e66ab098e10beb8b8a252eb
 
 pkgname = openseachest-logparser

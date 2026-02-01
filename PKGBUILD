@@ -1,48 +1,58 @@
-# Maintainer: Doridian <archlinux at doridian dot net>
+# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
+# Contributor: Doridian <archlinux at doridian dot net>
 
 pkgname=openseachest-logparser
-pkgver=1.5.4
-_release=Release_24.5.1
-pkgrel=4
+pkgver=24.5.1
+pkgrel=1
 pkgdesc='Open source version of the Log Parser that parses ATA/SCSI/NVMe & Seagate vendor unique logs'
-arch=('any')
+arch=('x86_64')
 _baseurl='https://github.com/Seagate'
-url="${_baseurl}/openSeaChest_LogParser"
+_gitname="openSeaChest_LogParser"
+url="${_baseurl}/${_gitname}"
 license=('MPL-2.0')
-makedepends=('make' 'gcc')
-depends=('gcc-libs')
+makedepends=('git')
+depends=('glibc' 'gcc-libs')
 source=(
-  "${pkgname}.git::git+${url}#tag=${_release}"
-  "libjson.git::git+${_baseurl}/libjson"
-  "opensea-common.git::git+${_baseurl}/opensea-common"
-  "opensea-parser.git::git+${_baseurl}/opensea-parser"
-  "wingetopt.git::git+${_baseurl}/wingetopt"
+  "git+${_baseurl}/${_gitname}.git#tag=Release_${pkgver}"
+  "seagate-libjson::git+${_baseurl}/libjson.git"
+  "seagate-wingetopt::git+${_baseurl}/wingetopt.git"
+  "git+${_baseurl}/opensea-common.git"
+  "git+${_baseurl}/opensea-parser.git"
   'opensea-common-no-memset-explicit.patch'
+  'sanitize-buildsystem.patch'
 )
 sha256sums=('ab8fa60f9cc9fa4fe4ff91ca8c5a879263e9308c1860db1c57af2e296e3ba88f'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'd26ed859da6148b115676964fd3e6e57ca6aba748faf364eed8b2202694018c4')
+            'd26ed859da6148b115676964fd3e6e57ca6aba748faf364eed8b2202694018c4'
+            'f25a7f84c0ae19b9955d197074bdb664ef8b00849e66ab098e10beb8b8a252eb')
 
 prepare() {
-  cd "${srcdir}/${pkgname}.git"
-  git reset --hard
-  git -c protocol.file.allow=always submodule update --init
-  git submodule foreach --recursive git reset --hard
-  patch -p1 -i "${srcdir}/opensea-common-no-memset-explicit.patch"
+  cd "${_gitname}"
+
+  git submodule init
+  git config "submodule.libjson.url" "$srcdir/seagate-libjson"
+  git config "submodule.wingetopt.url" "$srcdir/seagate-wingetopt"
+  git config "submodule.opensea-common.url" "$srcdir/opensea-common"
+  git config "submodule.opensea-parser.url" "$srcdir/opensea-parser"
+  git -c protocol.file.allow=always submodule update
+
+  git apply "${srcdir}/opensea-common-no-memset-explicit.patch"
+  git apply "${srcdir}/sanitize-buildsystem.patch"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}.git/Make/gcc"
-  # We need to build with -j1, libjson won't build otherwise
-  make release -j1
+  cd "${_gitname}"
+
+  make -C Make/gcc release
 }
 
 package() {
-  cd "${srcdir}/${pkgname}.git"
-  # It suffixes with the architecture for no discernable reason, so we just glob it
+  cd "${_gitname}"
+
+  # The binary is suffixed with a pseudo architecture label (not exactly $CARCH)
   install -Dm755 Make/gcc/openSeaChest_LogParser_* "${pkgdir}/usr/bin/openSeaChest_LogParser"
 }
 

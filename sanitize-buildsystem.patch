@@ -1,0 +1,144 @@
+diff --git a/Make/gcc/Makefile b/Make/gcc/Makefile
+index 950e83e..4de6fa8 100644
+--- a/Make/gcc/Makefile
++++ b/Make/gcc/Makefile
+@@ -26,13 +26,14 @@ CXX ?= g++
+ STRIP ?= strip
+ TOOL_CHAIN=gcc
+ LIB_FILE_OUTPUT_DIR=lib
+-CXXFLAGS = -Wall -Wextra -Werror=old-style-cast -Wshadow -Wmaybe-uninitialized -Wvla -Wfloat-equal \
+-    -Wlogical-op -Wdouble-promotion -Wformat-security -std=c++11
++CXXFLAGS ?= -Wall -Wextra -Werror=old-style-cast -Wshadow -Wmaybe-uninitialized -Wvla -Wfloat-equal \
++    -Wlogical-op -Wdouble-promotion -Wformat-security
++CXXFLAGS += -std=c++11
+ CFLAGS ?= -Wall -Wextra
+ ARCHIVE ?= ar
+ ARCH=x86_$(shell getconf LONG_BIT)
+ 
+-LFLAGS = \
++LFLAGS += \
+ 	../../libjson/libjson.a \
+ 	../../opensea-common/Make/$(TOOL_CHAIN)/$(LIB_FILE_OUTPUT_DIR)/libopensea-common.a \
+ 	../../opensea-parser/Make/$(TOOL_CHAIN)/$(LIB_FILE_OUTPUT_DIR)/libopensea-parser.a
+@@ -126,7 +127,7 @@ export CFLAGS
+ export CXXFLAGS 
+ export PROJECT_DEFINES 
+ 
+-all: clean debug
++all: debug
+ 
+ seaclibs:
+ 	$(MAKE) -C ../../opensea-common/Make/$(TOOL_CHAIN)
+@@ -135,22 +136,22 @@ opensea-parser:
+ 	$(MAKE) -C ../../opensea-parser/Make/$(TOOL_CHAIN)
+ 
+ libjson:
+-	$(MAKE) -C ../../libjson/ CXXFLAGS=''
++	$(MAKE) -C ../../libjson/
+ 
+-$(OUTFILE): clean libjson seaclibs opensea-parser $(OBJS) done
+-	$(CXX) $(INC_DIR) $(CXXFLAGS) $(PROJECT_DEFINES) $(OBJS) -o $@ $(LFLAGS)
++$(OUTFILE): libjson seaclibs opensea-parser $(OBJS) done
++	$(CXX) $(INC_DIR) $(CXXFLAGS) $(PROJECT_DEFINES) $(OBJS) -o $@ $(LDFLAGS) $(LFLAGS)
+ 
+ %.o: %.cpp
+ 	$(CXX) -c $(CXXFLAGS) $(INC_DIR) $(PROJECT_DEFINES) $< -o $@
+ 
+ static:	release 
+-	$(CXX) $(INC_DIR) $(PROJECT_DEFINES) $(OBJS) -static -o $(OUTFILE)_static $(LFLAGS)
++	$(CXX) $(INC_DIR) $(CXXFLAGS) $(PROJECT_DEFINES) $(OBJS) -static -o $(OUTFILE)_static $(LDFLAGS) $(LFLAGS)
+ 
+ strip: 
+ 	$(STRIP) -s $(OUTFILE) -o $(OUTFILE)__stripped
+ 
+ 
+-farm: clean release 
++farm: release 
+ 	mv $(OUTFILE) $(FARM_OUTFILE)
+ clean: banner
+ 	rm -f *.o *.a openSeaChest_LogParser*
+diff --git a/libjson/makefile b/libjson/makefile
+index ba5a213..a03a1e7 100644
+--- a/libjson/makefile
++++ b/libjson/makefile
+@@ -132,9 +132,11 @@ OS=$(shell uname)
+ 
+ # Defaults
+ ifeq ($(OS), Darwin)
+-	cxxflags_default = -fast -ffast-math -fexpensive-optimizations -DNDEBUG
++	cxxflags_default = -fast -ffast-math -fexpensive-optimizations
++	cxxflags_always += -DNDEBUG
+ else
+-	cxxflags_default = -O3 -ffast-math -fexpensive-optimizations -DNDEBUG -f$(PIC)
++	cxxflags_default = -O3 -ffast-math -fexpensive-optimizations
++	cxxflags_always = -DNDEBUG -f$(PIC)
+ endif
+ cxxflags_small   = -Os -ffast-math -DJSON_LESS_MEMORY -DNDEBUG -f$(PIC)
+ cxxflags_debug   = -g -DJSON_SAFE -DJSON_DEBUG -f$(PIC)
+@@ -158,7 +160,7 @@ srcdir          ?= _internal/Source
+ CXX             ?= c++
+ AR              ?= ar
+ PIC             ?= PIC
+-BUILD_TYPE      ?= "default"
++BUILD_TYPE      ?= default
+ SHARED          ?= "1"
+ 
+ 
+@@ -169,8 +171,8 @@ include_path     = $(prefix)/$(includedir)
+ 
+ # Usage check
+ ifdef CXXFLAGS
+-ifdef BUILD_TYPE
+-	$(error CXXFLAGS and BUILD_TYPE are mutually exclusive)
++ifneq ($(BUILD_TYPE), default)
++$(error CXXFLAGS and BUILD_TYPE are mutually exclusive)
+ endif
+ endif
+ 
+@@ -182,6 +184,7 @@ else ifeq ($(BUILD_TYPE), debug)
+ 	libname     := $(libname_debug)
+ else
+ 	CXXFLAGS    ?= $(cxxflags_default)
++	CXXFLAGS    += $(cxxflags_always)
+ endif
+ 
+ ifeq ($(ARCH),x86_32)
+Submodule opensea-common contains modified content
+diff --git a/opensea-common/Make/gcc/Makefile b/opensea-common/Make/gcc/Makefile
+index 8b2e0f7..206b220 100644
+--- a/opensea-common/Make/gcc/Makefile
++++ b/opensea-common/Make/gcc/Makefile
+@@ -109,12 +109,12 @@ FILE_OUTPUT_DIR=lib
+ 
+ .PHONY: all 
+ 
+-all: clean mkoutputdir $(LIBS)
++all: mkoutputdir $(LIBS)
+ 
+ %.o: %.c
+ 	$(CC) $(CFLAGS) $(PROJECT_DEFINES) $(INC_DIR) $< -o $@
+ 
+-$(LIBS): $(LIB_OBJ_FILES)
++$(LIBS): $(LIB_OBJ_FILES) mkoutputdir
+ 	rm -f $(FILE_OUTPUT_DIR)/$@
+ 	$(AR) cq $(FILE_OUTPUT_DIR)/$@ $(LIB_OBJ_FILES)
+ # Removing the line below since we don't need a shared object for this right now...a static library is enough for the common stuff
+diff --git a/opensea-parser/Make/gcc/Makefile b/opensea-parser/Make/gcc/Makefile
+index dcd091e..5016662 100644
+--- a/opensea-parser/Make/gcc/Makefile
++++ b/opensea-parser/Make/gcc/Makefile
+@@ -119,12 +119,12 @@ endif
+ python: PROJECT_DEFINES += -DPREPYTHON
+ python: all 
+ 
+-all: clean mkoutputdir $(LIBS) done
++all: mkoutputdir $(LIBS) done
+ 
+ %.o: %.cpp
+ 	$(CXX) $(CXXFLAGS) $(PROJECT_DEFINES) $(INC_DIR) $< -o $@
+ 
+-$(LIBS): $(LIB_OBJ_FILES)
++$(LIBS): $(LIB_OBJ_FILES) mkoutputdir
+ 	rm -f $(FILE_OUTPUT_DIR)/$@
+ 	$(ARCHIVE) cq $(FILE_OUTPUT_DIR)/$@ $(LIB_OBJ_FILES)
+ # Removing the line below since we don't need a shared object for this right now...a static library is enough for the common stuff
