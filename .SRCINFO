@@ -1,0 +1,17 @@
+pkgbase = phasor-git
+	pkgdesc = Phasor Programming Language Toolchain
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/DanielLMcGuire/Phasor
+	arch = x86_64
+	license = 0BSD
+	makedepends = git
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = ninja
+	conflicts = phasor
+	conflicts = phasor-dev
+	source = git+https://github.com/DanielLMcGuire/Phasor.git
+	sha256sums = SKIP
+
+pkgname = phasor-git
