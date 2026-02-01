@@ -52,6 +52,7 @@ def extract_version(filename: str) -> str:
 def calculate_sha256(file_path: str) -> str:
     """
     Calculate SHA256 checksum of a file.
+    Handles both AppImage and icon files with identical hashing logic.
     """
     print(f"Calculating SHA256 for: {file_path}")
     
@@ -93,7 +94,7 @@ def stage_install_file() -> None:
     install_path = Path("/home/madgoat/Documents/LMStudio-bin Aur/lmstudio-bin.install")
     
     if install_path.exists():
-        print(f"✓ Install file staged: {install_path}")
+        print(f"✓ Install file present: {install_path}")
     else:
         print(f"Warning: Install file not found at {install_path}")
 
@@ -173,7 +174,8 @@ def main():
     sha256 = calculate_sha256(filename)
     print()
     
-    # Step 5: Calculate SHA256 for static icon
+    # Step 5: Calculate SHA256 for static icon (lmstudio.png)
+    # Uses identical hashing logic as AppImage
     icon_hash = calculate_sha256("lmstudio.png")
     print()
     
