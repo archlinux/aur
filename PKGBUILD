@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ggstats
-_pkgver=0.9.0
+_pkgver=0.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -53,8 +53,8 @@ optdepends=(
   r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('574df8d8ca1126f79652d4c8b889fd91')
-b2sums=('f86023cd9409fb4aeda234da4176fb32cdb72b26115b48db3598898bab2c27b09f415cad569c000d16a5750a371c6e01ef21d687fad0e1d4d2b6368b25f8d4a5')
+md5sums=('b163cfddf5cf8a0143a9b29d587f032f')
+b2sums=('508a206c581426e346694e71a1b75b31e857804c79d636f873be05c9a93b8067891e8f19a0137a8db2b8521c2fc2e0b2e2b8a9b9714431220b093af05d6ec8c1')
 
 build() {
   mkdir build
