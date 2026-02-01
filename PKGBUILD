@@ -1,32 +1,47 @@
-# Maintainer: Maxime “pep” Buquet <archlinux@bouah.net>
+# Maintainer: Tim Henkes <me+aur@syndace.dev>
+# Contributor: Maxime “pep” Buquet <archlinux@bouah.net>
 
-pkgname=python-slixmpp-omemo
-_pkgbase=slixmpp-omemo
-_tag=v0.6.0
-pkgver=v0.6.0.r0.g9c547be
+pkgname="python-slixmpp-omemo"
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Slixmpp OMEMO plugin"
-arch=(any)
-url="https://lab.louiz.org/poezio/slixmpp-omemo"
-license=('GPL3')
+arch=("any")
+url="https://github.com/Syndace/slixmpp-omemo"
+license=("AGPL-3.0-only")
 depends=(
-  'python>=3.5'
-  'python-slixmpp'
-  'python-omemo-syndace'
-  'python-setuptools')
-provides=('python-slixmpp-omemo')
-conflicts=('python-slixmpp-omemo')
-makedepends=('git' 'python-setuptools')
+    "python"
+    "python-oldmemo"
+    "python-omemo"
+    "python-slixmpp"
+    "python-twomemo"
+    "python-xmlschema"
+    "python-typing_extensions"
+)
+makedepends=(
+    "python-build"
+    "python-installer"
+    "python-setuptools"
+    "python-wheel"
+)
+checkdepends=("python-pytest" "python-pytest-asyncio")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Syndace/slixmpp-omemo/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=("d48c80b702b590a7821f2477c3fa2508ca5ffffd328ca57140557219e757eb75")
 
-source=("${_pkgbase}::git+https://lab.louiz.org/poezio/${_pkgbase}#tag=${_tag}")
-md5sums=('SKIP')
+prepare() {
+    mv "slixmpp-omemo-${pkgver}" "${pkgname}-${pkgver}"
+}
 
-pkgver() {
-    cd "$srcdir/$_pkgbase"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+build() {
+    cd "${pkgname}-${pkgver}"
+    python -m build --wheel --no-isolation
+}
+
+check() {
+    cd "${pkgname}-${pkgver}"
+    pytest -o addopts=""
 }
 
 package() {
-    cd "$srcdir/$_pkgbase"
-    python setup.py install --root="$pkgdir/" --optimize=1
+    cd "${pkgname}-${pkgver}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
