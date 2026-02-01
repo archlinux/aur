@@ -8,14 +8,7 @@ arch=('x86_64')
 url="https://github.com/tycho-kirchner/${pkgname}"
 license=('MIT')
 makedepends=('git')
-depends=(
-  'glibc'
-  'libx11'
-  'libxcomposite'
-  'libxdamage'
-  'libxfixes'
-  'libxrender'
-)
+depends=('glibc' 'libx11' 'libxcomposite' 'libxdamage' 'libxfixes' 'libxrender')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('cfca9446ee92c06a294dbd710e73c2bd681eb3e26b84129827517f6ff09f0c64')
 
