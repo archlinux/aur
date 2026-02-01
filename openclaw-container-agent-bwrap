@@ -23,48 +23,37 @@ if [ ! -S "$CONTAINER_SOCKET" ]; then
 fi
 
 # Ensure config directories exist to prevent bind mount errors
-mkdir -p "${HOME}/.openclaw" "${HOME}/.config/openclaw" "${HOME}/.openclaw-bwrap"
+mkdir -p "${HOME}/.openclaw" "${HOME}/.config/openclaw" "${HOME}/.cache/openclaw"
 
 # Agent needs access to container socket
 BWRAP_ARGS=(
-    # Unshare namespaces for isolation
     --unshare-all
     --share-net
     --die-with-parent
-    --new-session
-
-    # Mount host root read-only
-    --ro-bind / /
-
-    # Overlay a writable tmpfs on /tmp
-    --tmpfs /tmp
-
-    # Mount devices and process info
-    --dev-bind /dev /dev
-    --ro-bind /sys /sys
+    --dir /tmp
+    --ro-bind /usr /usr
+    --ro-bind /lib /lib
+    --ro-bind /lib64 /lib64
+    --ro-bind /bin /bin
+    --ro-bind /sbin /sbin
+    --ro-bind /etc /etc
     --proc /proc
-
-    # bind the bwrap folder to $HOME
-    --bind "$HOME/.openclaw-bwrap" "$HOME"
-
-    # --- OVERRIDES ---
+    --dev /dev
     --bind "${HOME}/.openclaw" "${HOME}/.openclaw"
     --bind "${HOME}/.config/openclaw" "${HOME}/.config/openclaw"
-
+    --bind "${HOME}/.cache/openclaw" "${HOME}/.cache/openclaw"
     # Bind container socket
     --bind "$CONTAINER_SOCKET" "$CONTAINER_SOCKET"
-
-    # Pass socket path env var if needed by certain tools,
+    --setenv PATH "$PATH"
+    --setenv HOME "$HOME"
+    # Pass socket path env var if needed by certain tools, 
     # though standard tools often check default paths.
     # For docker client using podman socket:
     --setenv DOCKER_HOST "unix://$CONTAINER_SOCKET"
-
-    --setenv PATH "$PATH"
-    --setenv HOME "$HOME"
 )
 
 if [ -n "${OPENCLAW_CONTAINER_AGENT_BWRAP_EXTRA_ARGS:-}" ]; then
-    read -ra EXTRA_ARGS <<<"$OPENCLAW_CONTAINER_AGENT_BWRAP_EXTRA_ARGS"
+    read -ra EXTRA_ARGS <<< "$OPENCLAW_CONTAINER_AGENT_BWRAP_EXTRA_ARGS"
     BWRAP_ARGS+=("${EXTRA_ARGS[@]}")
 fi
 

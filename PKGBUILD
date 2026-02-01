@@ -1,6 +1,6 @@
 # Maintainer: Wuxxin <wuxxin@gmail.com>
 pkgname=openclaw-git
-pkgver=2026.1.30.r98.g6453f5c39
+pkgver=2026.1.30.r100.gd3e53eaf2
 pkgrel=1
 pkgdesc="Personal AI assistant that runs on your own devices"
 arch=('x86_64')
@@ -15,18 +15,14 @@ source=(
     'git+https://github.com/openclaw/openclaw.git'
     'openclaw-bwrap'
     'openclaw-agent-bwrap'
-    'openclaw-container-agent-bwrap'
     'openclaw-install-systemd-user-service'
     'enable-npm-plugins.patch'
 )
-sha256sums=(
-    'SKIP'
-    'aaea26c3563aeef9def080e6d7d587710cd9a08022e80238e8d87db7569100c2'
-    '3285fb067e78ccd588abac722eb4c03b3b56ee36ec92e333e0749bf065898ea0'
-    'fa332a27b63044a42a8ac8a72c249b902815d204427c035075696509ec215dd2'
-    '44688c25fd6c6414ac4f7dbe249a94d9b38097e51ae0af79b13c4b5837ee23fb'
-    '5958cca82b4fb21b9bc70e33f33290830dc7e2e4c69044686dbcd8f504e22a0e'
-)
+sha256sums=('SKIP'
+            'aaea26c3563aeef9def080e6d7d587710cd9a08022e80238e8d87db7569100c2'
+            '3285fb067e78ccd588abac722eb4c03b3b56ee36ec92e333e0749bf065898ea0'
+            '44688c25fd6c6414ac4f7dbe249a94d9b38097e51ae0af79b13c4b5837ee23fb'
+            '201b0587aa16e5525d5991367e637f46c7e7691dcdfbd0e8ab8cac4ca11233ec')
 
 pkgver() {
     cd "$srcdir/openclaw"
@@ -72,7 +68,6 @@ EOF
     # Install bwrap scripts
     install -m755 "$srcdir/openclaw-bwrap" "$pkgdir/usr/bin/openclaw-bwrap"
     install -m755 "$srcdir/openclaw-agent-bwrap" "$pkgdir/usr/bin/openclaw-agent-bwrap"
-    install -m755 "$srcdir/openclaw-container-agent-bwrap" "$pkgdir/usr/bin/openclaw-container-agent-bwrap"
     install -m755 "$srcdir/openclaw-install-systemd-user-service" "$pkgdir/usr/bin/openclaw-install-systemd-user-service"
 
     # Install license

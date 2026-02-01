@@ -92,7 +92,6 @@
    const bundledDir = resolveBundledPluginsDir();
    if (bundledDir) {
      discoverInDirectory({
-
 --- a/src/plugins/install.ts
 +++ b/src/plugins/install.ts
 @@ -340,6 +340,32 @@
@@ -129,3 +128,31 @@
    const logger = params.logger ?? defaultLogger;
    const timeoutMs = params.timeoutMs ?? 120_000;
    const mode = params.mode ?? "install";
+--- a/src/agents/skills-install.ts
++++ b/src/agents/skills-install.ts
+@@ -369,6 +369,14 @@
+ 
+   const prefs = resolveSkillsInstallPreferences(params.config);
+   const command = buildInstallCommand(spec, prefs);
++
++  // Force installation into user config directory if package.json exists there
++  const configPkgJson = path.join(CONFIG_DIR, "package.json");
++  if (spec.kind === "node" && command.argv && fs.existsSync(configPkgJson)) {
++      // Remove global flags
++      command.argv = command.argv.filter(arg => arg !== "-g" && arg !== "global");
++  }
++
+   if (command.error) {
+     return {
+       ok: false,
+@@ -469,6 +477,10 @@
+       return await runCommandWithTimeout(argv, {
+         timeoutMs,
+         env,
++        // If we are installing locally (stripped globals), use CONFIG_DIR as cwd
++        cwd: (spec.kind === "node" && !argv.includes("-g") && !argv.includes("global")) 
++             ? CONFIG_DIR 
++             : undefined,
+       });
+     } catch (err) {
+       const stderr = err instanceof Error ? err.message : String(err);

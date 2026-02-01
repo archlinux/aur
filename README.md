@@ -6,6 +6,7 @@ Please refer to the [official documentation](https://docs.openclaw.ai) for confi
 
 This directory contains the `PKGBUILD` and helper scripts to package OpenClaw for Arch Linux (AUR).
 
+
 > [!WARNING]
 > **Security Risks**: OpenClaw is a tool that can execute code and interact with your system.
 > *   **Prompt Injection**: AI models can be tricked by malicious input (e.g., from a message in a connected chat) into performing unauthorized actions.
@@ -28,6 +29,8 @@ Restart OpenClaw. The plugin will be automatically discovered and loaded.
 
 ## Security
 
+OpenClaw supports sandboxing to limit the agent's reach. The official recommendation is to use the **OpenClaw Sandbox** (often container-based).
+
 ### Security Check
 OpenClaw includes a built-in "Doctor" to check your environment for potential issues.
 Run it with:
@@ -37,7 +40,7 @@ openclaw doctor
 
 ### Systemd User Service
 
-To install OpenClaw as a systemd user service (autostart on login):
+To install OpenClaw BubbleWrapped as a systemd user service (autostart on login):
 
 ```bash
 # Install default profile
@@ -56,19 +59,18 @@ systemctl --user start openclaw-default
 systemctl --user stop openclaw-default
 ```
 
-### Sandboxing
-OpenClaw supports sandboxing to limit the agent's reach. The official recommendation is to use the **OpenClaw Sandbox** (often container-based).
-
 ### Experimental Bubblewrap Scripts
-This package provides **experimental** custom scripts that use `bubblewrap` (bwrap) to sandbox the agent or the gateway processes. These are a lightweight alternative to full containers but should be used with caution and tested in your specific environment.
 
-These wrappers restrict filesystem access, protecting your system.
+This package provides an **experimental** custom scripts that use `bubblewrap` (bwrap) to sandbox the gateway or the agent processes. These are an alternative to container isolation but should be used with caution and fitted to your specific environment.
+
+These wrappers restrict filesystem access, to protect personal files from being read, and the system from being overwritten.
+
+It readonly binds `/`, makes a wrapped/isolated `home`, make a private writeable `/tmp` and mounts `~/.openclaw` and `~/.config/openclaw` writeable to the wrapped home.
 
 You can pass extra bubblewrap arguments via environment variables:
 
 -   `OPENCLAW_BWRAP_EXTRA_ARGS`
 -   `OPENCLAW_AGENT_BWRAP_EXTRA_ARGS`
--   `OPENCLAW_CONTAINER_AGENT_BWRAP_EXTRA_ARGS`
 
 Example: using a custom bind mount
 
@@ -76,39 +78,16 @@ Example: using a custom bind mount
 OPENCLAW_BWRAP_EXTRA_ARGS="--bind /mnt/data /mnt/data" openclaw-bwrap ...
 ```
 
-#### `openclaw-bwrap`
-
-Wrapper for the main `openclaw` binary.
-
--   **Restrictions**: Read-only access to system directories (`/usr`, `/lib`, etc.). Writable access only to `/tmp` and `~/.openclaw`.
--   **Usage**: replace `openclaw` with `openclaw-bwrap`.
+**Usage**: replace `openclaw` with `openclaw-bwrap`.
 
 ```bash
 openclaw-bwrap --help
 ```
 
-#### `openclaw-agent-bwrap`
 
-Wrapper specifically for running agents.
-
--   **Defaults**: Same as `openclaw-bwrap` but with intended specific defaults for agent isolation.
--   **Usage**:
+**Usage**: replace `openclaw agent` with `openclaw-agent-bwrap`.
 
 ```bash
 openclaw-agent-bwrap [agent-args]
 ```
-
-#### `openclaw-container-agent-bwrap`
-
-Wrapper for agents that require container access (e.g., Docker Agent Executor).
-
--   **Runtime Detection**: Automatically detects **Podman** (default) or **Docker**.
--   **Override**: Set `OPENCLAW_CONTAINER_RUNTIME=docker` to force Docker use.
--   **Access**: Mounts the appropriate socket (`/run/user/$UID/podman/podman.sock` or `/var/run/docker.sock`).
--   **Usage**:
-
-```bash
-openclaw-container-agent-bwrap [agent-args]
-```
-
 
