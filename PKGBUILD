@@ -1,7 +1,7 @@
 # Maintainer:
 pkgname=eprosima-fast-dds-monitor
-pkgver=3.3.0
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 pkgdesc='eProsima Fast DDS Monitor is a graphical desktop application aimed at monitoring DDS environments deployed using the eProsima Fast DDS library.'
 arch=('x86_64')
 url='https://github.com/eProsima/Fast-DDS-monitor'
@@ -20,7 +20,7 @@ source=(
 )
 
 sha512sums=(
-	"6077b61e2facf74ec2cda1834d27be19f3d66f8e05d373f220751792a47d3a36cf1f09bca002aac71c1791b254b767d4c3fab1750d8da108beb82af58532794e"
+	"540415817e0ca6929f45a77d4e07818a91b225c5824f86d9903b529a14d0971b72dc4fcc56a1a3a7bd210312a1128066a0987c4b08055ba31a05d3beb0a7b5bb"
 	"5dd6d0486e13765e498f9d499bcbe7a2ba78ae12e62be0b5af2997bdcc3a86a4c36baa1c919fd2745c130fdc9eada17621c4ac30a8e0d36bea23b60da5d8e138"
 	"54132f15c6f770d8e7a844500a15a16b42f592d7295d09b04130cb8248587d2b825f32bf743c4d0927019392e70fc4d26277f52f03a4b56a65faa0343216e2fa"
 )
