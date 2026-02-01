@@ -6,7 +6,7 @@ _name="cops"
 _github_name="seblucas-cops"
 provides=('cops')
 conflicts=('cops')
-pkgver=3.8.2
+pkgver=4.0.2
 pkgrel=1
 pkgdesc='Lightweight Calibre OPDS (and HTML) PHP Server (mikespub.org fork)'
 arch=('any')
@@ -27,12 +27,12 @@ makedepends=('composer')
 backup=("etc/webapps/${_name}/local.php")
 install="${_name}.install"
 source=("${pkgname}_${pkgver}.zip::${url}/archive/refs/tags/${pkgver}.zip")
-sha256sums=('a820337b56d87a0cf52c29ed729e425585f9ef6fc800ae424396777985a0254b')
+sha256sums=('ac05055cfffa3ed27243d71c1a72a28dd7807915800dbc9d77c54e3cdf0cb523')
 
 prepare () {
     cd "${_github_name}-$pkgver"
     # The external packages are requirements, and they cause composer errors if
-    # building in chroot
+    # building in chroot, but we have them in deps so ignore them here
     composer update --no-dev \
 	--ignore-platform-req=ext-gd \
 	--ignore-platform-req=ext-intl \
