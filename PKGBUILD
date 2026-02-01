@@ -3,12 +3,13 @@
 
 pkgname=python-django-docs
 pkgver=6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Documentation for the Django framework"
 arch=('any')
 url='https://docs.djangoproject.com/'
 license=('BSD-3-Clause')
 source=("${pkgname}-${pkgver}.zip::https://media.djangoproject.com/docs/django-docs-${pkgver}-en.zip")
+sha256sums=('6655b5a194a31d379cea055a6bcc857c6dbf37a4bd4b30a6187efab15946aa2e')
 
 prepare() {
 	rm ${pkgname}-${pkgver}.zip
@@ -19,5 +20,3 @@ package() {
 	cp -r ./* ${pkgdir}/usr/share/doc/python-django/html/
 	chmod -R a=rX,u=rwX ${pkgdir}/usr/share/doc/python-django/html
 }
-
-sha256sums=('e1bf8b58d4e3bc7d87b83d707f246905f8544b2c68687a4e973d415b5f836dc1')
