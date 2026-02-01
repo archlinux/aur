@@ -1,0 +1,94 @@
+--- a/src/plugins/discovery.ts
++++ b/src/plugins/discovery.ts
+@@ -301,6 +301,75 @@
+   }
+ }
+ 
++
++function discoverNpmPlugins(params: {
++  dir: string;
++  origin: PluginOrigin;
++  workspaceDir?: string;
++  candidates: PluginCandidate[];
++  diagnostics: PluginDiagnostic[];
++  seen: Set<string>;
++}) {
++  const nodeModules = path.join(params.dir, "node_modules");
++  if (!fs.existsSync(nodeModules)) {
++    return;
++  }
++
++  let entries: fs.Dirent[] = [];
++  try {
++    entries = fs.readdirSync(nodeModules, { withFileTypes: true });
++  } catch {
++    return;
++  }
++
++  for (const entry of entries) {
++    if (!entry.isDirectory()) continue;
++    
++    // Handle scoped packages
++    if (entry.name.startsWith("@")) {
++      const scopeDir = path.join(nodeModules, entry.name);
++      let scopeEntries: fs.Dirent[] = [];
++      try {
++        scopeEntries = fs.readdirSync(scopeDir, { withFileTypes: true });
++      } catch {
++        continue;
++      }
++      for (const scopeEntry of scopeEntries) {
++        if (!scopeEntry.isDirectory()) continue;
++        const fullPath = path.join(scopeDir, scopeEntry.name);
++        const manifest = readPackageManifest(fullPath);
++        if (!manifest || !getPackageManifestMetadata(manifest)) continue;
++        
++        // Use generic discovery but only because we confirmed manifest metadata exists
++        discoverInDirectory({
++          dir: fullPath,
++          origin: params.origin,
++          workspaceDir: params.workspaceDir,
++          candidates: params.candidates,
++          diagnostics: params.diagnostics,
++          seen: params.seen,
++        });
++      }
++      continue;
++    }
++
++    if (entry.name.startsWith(".")) continue;
++
++    const fullPath = path.join(nodeModules, entry.name);
++    const manifest = readPackageManifest(fullPath);
++    if (!manifest || !getPackageManifestMetadata(manifest)) continue;
++
++    discoverInDirectory({
++      dir: fullPath,
++      origin: params.origin,
++      workspaceDir: params.workspaceDir,
++      candidates: params.candidates,
++      diagnostics: params.diagnostics,
++      seen: params.seen,
++    });
++  }
++}
++
+ export function discoverOpenClawPlugins(params: {
+   workspaceDir?: string;
+   extraPaths?: string[];
+@@ -421,6 +490,15 @@
+     seen,
+   });
+ 
++  // Discover NPM package plugins in config dir (e.g. ~/.openclaw/node_modules)
++  discoverNpmPlugins({
++    dir: resolveConfigDir(),
++    origin: "global",
++    candidates,
++    diagnostics,
++    seen,
++  });
++
+   const bundledDir = resolveBundledPluginsDir();
+   if (bundledDir) {
+     discoverInDirectory({

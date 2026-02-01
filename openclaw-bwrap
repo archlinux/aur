@@ -1,0 +1,35 @@
+#!/bin/bash
+set -euo pipefail
+
+# Configuration
+OPENCLAW_BIN="/usr/bin/openclaw"
+# Ensure config directories exist to prevent bind mount errors
+mkdir -p "${HOME}/.openclaw" "${HOME}/.config/openclaw"
+
+BWRAP_ARGS=(
+    --unshare-all
+    --share-net
+    --die-with-parent
+    --dir /tmp
+    --ro-bind /usr /usr
+    --ro-bind /lib /lib
+    --ro-bind /lib64 /lib64
+    --ro-bind /bin /bin
+    --ro-bind /sbin /sbin
+    --ro-bind /etc /etc
+    --proc /proc
+    --dev /dev
+    --bind "${HOME}/.openclaw" "${HOME}/.openclaw"
+    --bind "${HOME}/.config/openclaw" "${HOME}/.config/openclaw"
+    --setenv PATH "$PATH"
+    --setenv HOME "$HOME"
+)
+
+# Optional: Add more restrictions or mounts based on arguments or env vars
+if [ -n "${OPENCLAW_BWRAP_EXTRA_ARGS:-}" ]; then
+    read -ra EXTRA_ARGS <<< "$OPENCLAW_BWRAP_EXTRA_ARGS"
+    BWRAP_ARGS+=("${EXTRA_ARGS[@]}")
+fi
+
+# Execute openclaw inside bubblewrap
+exec bwrap "${BWRAP_ARGS[@]}" "$OPENCLAW_BIN" "$@"

@@ -1,0 +1,39 @@
+#!/bin/bash
+set -euo pipefail
+
+# Configuration
+OPENCLAW_BIN="/usr/bin/openclaw"
+# Agents might need specific access.
+# Defaults:
+# - Share net (agents usually need internet)
+# - Restrict home, only allow ~/.openclaw
+# Ensure config directories exist to prevent bind mount errors
+mkdir -p "${HOME}/.openclaw" "${HOME}/.config/openclaw" "${HOME}/.cache/openclaw"
+
+BWRAP_ARGS=(
+    --unshare-all
+    --share-net
+    --die-with-parent
+    --dir /tmp
+    --ro-bind /usr /usr
+    --ro-bind /lib /lib
+    --ro-bind /lib64 /lib64
+    --ro-bind /bin /bin
+    --ro-bind /sbin /sbin
+    --ro-bind /etc /etc
+    --proc /proc
+    --dev /dev
+    --bind "${HOME}/.openclaw" "${HOME}/.openclaw"
+    --bind "${HOME}/.config/openclaw" "${HOME}/.config/openclaw"
+    # Allow cache access if needed
+    --bind "${HOME}/.cache/openclaw" "${HOME}/.cache/openclaw"
+    --setenv PATH "$PATH"
+    --setenv HOME "$HOME"
+)
+
+if [ -n "${OPENCLAW_AGENT_BWRAP_EXTRA_ARGS:-}" ]; then
+    read -ra EXTRA_ARGS <<< "$OPENCLAW_AGENT_BWRAP_EXTRA_ARGS"
+    BWRAP_ARGS+=("${EXTRA_ARGS[@]}")
+fi
+
+exec bwrap "${BWRAP_ARGS[@]}" "$OPENCLAW_BIN" agent "$@"
