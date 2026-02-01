@@ -1,6 +1,6 @@
 pkgbase = nip4
 	pkgdesc = image processing spreadsheet
-	pkgver = 9.0.15
+	pkgver = 9.0.16
 	pkgrel = 1
 	url = https://github.com/libvips/nip4
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = nip4
 	depends = libvips
 	depends = libxml2
 	depends = pango
-	source = nip4-9.0.15.tar.xz::https://github.com/libvips/nip4/releases/download/v9.0.15/nip4-9.0.15.tar.xz
-	sha256sums = 25145902a5ef15ca1519c37556e2fb80c88b5b639a8656abfac3e17a62fafa22
+	source = nip4-9.0.16.tar.xz::https://github.com/libvips/nip4/releases/download/v9.0.16/nip4-9.0.16.tar.xz
+	sha256sums = 1af13d06923bfc4d1dc9ce988da1d7ef3981b0ed77958f50831bcf5cef3f0861
 
 pkgname = nip4
