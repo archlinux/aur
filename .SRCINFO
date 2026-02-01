@@ -1,6 +1,6 @@
 pkgbase = opentaikohub-bin
 	pkgdesc = Description of your app
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/OpenTaiko/OpenTaiko-Hub
 	install = opentaikohub-bin.install
@@ -17,7 +17,7 @@ pkgbase = opentaikohub-bin
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/OpenTaiko/OpenTaiko-Hub/releases/download/v0.1.6/OpenTaiko.Hub_0.1.6_amd64.deb
-	sha256sums_x86_64 = 7fad267f8e1b8e75effe15fa60b7575d5613a6cfa7973441abcf156fde59b277
+	source_x86_64 = https://github.com/OpenTaiko/OpenTaiko-Hub/releases/download/v0.1.7/OpenTaiko.Hub_0.1.7_amd64.deb
+	sha256sums_x86_64 = e95a7cbe5cc5ccc474775e6b3e21648249eed7157c6192921b01db6d2c21c0e2
 
 pkgname = opentaikohub-bin
