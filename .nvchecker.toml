@@ -1,0 +1,4 @@
+[lib32-openh264]
+source = "archpkg"
+archpkg = "openh264"
+strip_release = true
