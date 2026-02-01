@@ -3,3 +3,4 @@ src/
 pkg/
 p4d
 p4d.asc
+*.tgz
