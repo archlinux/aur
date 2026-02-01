@@ -5,10 +5,10 @@ echo "=== LM Studio AUR Verification ==="
 
 # 1. Icon Existence Check
 echo "[1/4] Checking Icon Sources..."
-if [ -f "squashfs-root/usr/share/icons/hicolor/0x0/apps/lm-studio.png" ]; then
-    echo "✓ Found 1024x1024 source icon"
+if [ -f "/usr/share/pixmaps/lmstudio-bin.png" ]; then
+    echo "✓ Found lmstudio-bin pixmap icon"
 else
-    echo "✗ MISSING: 1024x1024 source icon"
+    echo "✗ MISSING: lmstudio-bin pixmap icon"
     exit 1
 fi
 

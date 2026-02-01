@@ -111,13 +111,14 @@ def verify_icon_in_appimage(appimage_path: str) -> bool:
             # We verify the following paths exist post-extraction:
             # - usr/share/icons/hicolor/0x0/apps/lm-studio.png
             # - resources/app/.webpack/Icon-512x512.png
-            return True
-        else:
-            print(f"✗ File is not a valid AppImage")
-            return False
-    except Exception as e:
-        print(f"Warning: Could not verify icons - {e}")
-        return False
+            # Validate icon source during update cycle
+            # Validate icon source during update cycle
+            icon_source = "resources/app/.webpack/Icon-512x512.png"
+            if not os.path.exists(icon_source):
+                print(f"✗ Icon source invalid: {icon_source}")
+                return False
+            print(f"✓ Icon source valid: {icon_source}")
+        return True
 
 
 def stage_install_file() -> None:

@@ -24,30 +24,23 @@ package() {
   # Install AppImage
   install -Dm755 "${srcdir}/${source[0]##*/}" "$pkgdir/opt/lm-studio/lm-studio.AppImage"
   
-  # Extract icons from AppImage and install to hicolor theme and pixmaps
-  # Create temporary directory for extraction
-  local tmpdir=$(mktemp -d)
-  cd "$tmpdir"
-  
-  # Extract AppImage
-  "${srcdir}/${source[0]##*/}" --appimage-extract > /dev/null 2>&1 || true
-  
-  # Install 1024x1024 icon (from 0x0 resolution - XDG fallback)
-  if [ -f "squashfs-root/usr/share/icons/hicolor/0x0/apps/lm-studio.png" ]; then
-    install -Dm644 "squashfs-root/usr/share/icons/hicolor/0x0/apps/lm-studio.png" "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/lmstudio-bin.png"
+  # Icon Extraction with Search & Fail
+  local icon_source=""
+  if [ -L "${srcdir}/squashfs-root/.DirIcon" ]; then
+      icon_source=$(readlink -f "${srcdir}/squashfs-root/.DirIcon")
+  elif [ -f "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/lm-studio.png" ]; then
+      icon_source="${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/lm-studio.png"
+  else
+      icon_source=$(find "${srcdir}/squashfs-root" -maxdepth 2 -name "*.png" | head -n 1)
   fi
-  
-  # Install 512x512 icon (from resources)
-  if [ -f "squashfs-root/resources/app/.webpack/Icon-512x512.png" ]; then
-    install -Dm644 "squashfs-root/resources/app/.webpack/Icon-512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/lmstudio-bin.png"
+
+  if [ -z "$icon_source" ] || [ ! -f "$icon_source" ]; then
+      echo "ERROR: No application icon found!"
+      exit 1
   fi
-  
-  # Install pixmap fallback (512x512 for absolute path reference in .desktop)
-  if [ -f "squashfs-root/resources/app/.webpack/Icon-512x512.png" ]; then
-    install -Dm644 "squashfs-root/resources/app/.webpack/Icon-512x512.png" "$pkgdir/usr/share/pixmaps/lmstudio-bin.png"
-  fi
-  
-  cd - > /dev/null
+
+  install -Dm644 "$icon_source" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/lmstudio-bin.png"
+  install -Dm644 "$icon_source" "${pkgdir}/usr/share/pixmaps/lmstudio-bin.png"
   rm -rf "$tmpdir"
   
   # Desktop entry
