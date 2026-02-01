@@ -4,26 +4,31 @@
 # Contributor: Wieland Hoffmann <the_mineo@web.de>
 # Contributor: stonecrest <stonecrest[at]gmail[dot]com>
 
-pkgname='python-mpd2-git'
+pkgname=python-mpd2-git
+pkgver=3.0.4.r132.gae4f8ef
 pkgrel=1
-pkgver=20241214
 pkgdesc="Python MPD client library"
+url="http://github.com/Mic92/python-mpd2"
+arch=('any')
+license=('LGPL-3.0-or-later')
 depends=('python')
+makedepends=(git python-build python-installer python-wheel python-setuptools)
 conflicts=('python-mpd2')
 provides=('python-mpd2')
-url="http://github.com/Mic92/python-mpd2"
-makedepends=('git' 'python-distribute')
-license=('LGPL-3.0-or-later')
-arch=('any')
-sha1sums=('SKIP')
 source=("git+https://github.com/Mic92/python-mpd2.git")
+sha1sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/python-mpd2"
-  git log -1 --format='%cd' --date=short | tr -d -- '-'
+  cd ${pkgname%-git}
+  git describe --long --abbrev=7 | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+}
+
+build() {
+  cd ${pkgname%-git}
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/python-mpd2"
-  python3 setup.py install --root="$pkgdir/" --optimize=1
+  cd ${pkgname%-git}
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
