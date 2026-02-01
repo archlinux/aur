@@ -3,14 +3,14 @@
 pkgname=heidisql
 epoch=1
 pkgver=12.15.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="HeidiSQL Shared files: wrapper script, locale/ini files, documentation (install a provider of your choice for heidisql-client to use it)"
 arch=(x86_64)
 url="http://www.heidisql.com/"
 license=('GPL-2.0-or-later')
 optdepends=('heidisql-qt6: Qt6 variant'
             'heidisql-gtk2: GTK2 variant')
-makedepends=(curl jq)
+makedepends=(curl unzip)
 install=heidisql.install
 
 source=(
@@ -22,38 +22,14 @@ sha256sums=('a231ae7c0f441845b41fe59acb36211dadf337b4b4fa69efd9d2284800388c3b'
 
 prepare() {
   cd "${srcdir}/HeidiSQL-${pkgver}"
-  
+
   # Fetch compiled translations from the daily Transifex snapshots served by heidisql.com
-  echo "Downloading translation files from heidisql.com"
+  local locale_zip="HeidiSQL-locale.zip"
   local locale_dir="${srcdir}/HeidiSQL-${pkgver}/extra/locale"
   mkdir -p "${locale_dir}"
-
-  local base_url="https://www.heidisql.com/downloads/locale/"
-  local index_file
-  index_file="$(mktemp)"
-
-  curl -fsSL "${base_url}" -o "${index_file}" || exit 1
-
-  mapfile -t locales < <(jq -r '.[] | select(length>0)' "${index_file}")
-  rm -f "${index_file}"
-
-  if [ "${#locales[@]}" -eq 0 ]; then
-    echo "Locale index is empty or invalid" >&2
-    exit 1
-  fi
-
-  local downloaded=0
-  for name in "${locales[@]}"; do
-    echo "Downloading ${base_url}${name}"
-    if curl -fsSL "${base_url}${name}" -o "${locale_dir}/${name}"; then
-      downloaded=$((downloaded + 1))
-    else
-      echo "Failed to download ${name}" >&2
-      exit 1
-    fi
-  done
-
-  echo "Downloaded ${downloaded} locale files"
+  curl -fsSL "https://www.heidisql.com/downloads/locale/${locale_zip}" -o "/tmp/${locale_zip}" || exit 1
+  unzip -o -j "/tmp/${locale_zip}" -d "${locale_dir}"
+  rm -f "/tmp/${locale_zip}"
 }
 
 package() {
