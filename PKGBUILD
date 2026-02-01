@@ -1,4 +1,4 @@
-# Maintainer: Haram Choi <altitudimen at google dot com>
+# Maintainer: Haram Choi <altitudinem at google dot com>
 pkgname=linux-fireface-mixer-bin
 _pkgname=linux-fireface-mixer
 pkgver=0.1.0
@@ -17,8 +17,8 @@ source_x86_64=("totalmixer_gui-x86_64-$pkgver::${url}/releases/download/v${pkgve
 source=("README-$pkgver.md::${url}/raw/v${pkgver}/README.md"
         "README-kr-$pkgver.md::${url}/raw/v${pkgver}/README-kr.md")
 
-sha256sums=('23ed7e0ad3a436c18c1dcdf30f0303ae993e9b5bf311327eac11fcf64281fb53'
-            '7f88edb8a01fbb148ef1b543b0b1012830d9e01935902c605936b12fb8382a18')
+sha256sums=('87284245a04b7e3e6c1e5d559482cf65c1103fff23ed6402164b217d4c05120c'
+            'd9ee1c1aeca5423a78c6eaa4dcb2cdd169fe475046e61eefadd3453cc5d5ac73')
 sha256sums_x86_64=('21a6937053d20d1d2b91d347fdf16fe42b6acad1e6904bcceb583814d34a33b0'
                    'ed479becdeb9caee09efc20f35557941f3daf6623215b1fc0eb90b3d61a4230a')
 
