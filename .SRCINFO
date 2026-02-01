@@ -1,0 +1,19 @@
+pkgbase = trusttunnel
+	pkgdesc = Modern, open-source VPN protocol endpoint by AdGuard
+	pkgver = 0.9.115
+	pkgrel = 1
+	url = https://github.com/TrustTunnel/TrustTunnel
+	install = trusttunnel.install
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = gcc-libs
+	depends = glibc
+	provides = trusttunnel-endpoint
+	conflicts = trusttunnel-endpoint
+	source_x86_64 = trusttunnel-v0.9.115-linux-x86_64-0.9.115.tar.gz::https://github.com/TrustTunnel/TrustTunnel/releases/download/v0.9.115/trusttunnel-v0.9.115-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 772e4af5b406e1a0a1ad29904f281bf932cb91228a27f6f0b19614b9dd6a4ee1
+	source_aarch64 = trusttunnel-v0.9.115-linux-aarch64-0.9.115.tar.gz::https://github.com/TrustTunnel/TrustTunnel/releases/download/v0.9.115/trusttunnel-v0.9.115-linux-aarch64.tar.gz
+	sha256sums_aarch64 = bff555389f42b1b233c048c57ec896afdc1f7c56434efa2aa9816085fb4ae606
+
+pkgname = trusttunnel

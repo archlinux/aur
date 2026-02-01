@@ -1,0 +1,16 @@
+post_install() {
+  echo ">>> TrustTunnel Endpoint installed."
+  echo ">>> To configure the endpoint, run:"
+  echo ">>>   sudo trusttunnel-setup-wizard"
+  echo ">>>"
+  echo ">>> The configuration files will be generated. You should then"
+  echo ">>> move them to /etc/trusttunnel/ (e.g. vpn.toml and hosts.toml)."
+  echo ">>>"
+  echo ">>> Finally, start and enable the service:"
+  echo ">>>   sudo systemctl enable --now trusttunnel"
+}
+
+post_upgrade() {
+  echo ">>> Remember to restart the trusttunnel service if configurations changed."
+  echo ">>>   sudo systemctl restart trusttunnel"
+}
