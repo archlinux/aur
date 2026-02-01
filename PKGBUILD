@@ -15,8 +15,10 @@ optdepends=('modprobed-db: For modprobed-db integration support'
 # The binary tarball should be named: goatdkernel-${pkgver}-x86_64.tar.gz
 # Extract URL from: https://github.com/MadGoatHaz/GOATd-Kernel/releases/download/v${pkgver}/
 source=("goatdkernel-${pkgver}-x86_64.tar.gz::https://github.com/MadGoatHaz/GOATd-Kernel/releases/download/v${pkgver}/goatdkernel-${pkgver}-x86_64.tar.gz"
-        "git+https://github.com/MadGoatHaz/GOATd-Kernel.git#tag=v${pkgver}")
+        "git+https://github.com/MadGoatHaz/GOATd-Kernel.git#tag=v${pkgver}"
+        "https://github.com/MadGoatHaz/GOATd-Kernel/releases/download/v${pkgver}/goatdkernel.png")
 sha256sums=('2fa276fcf9e8cd62989f2d6838b11b55a79e8c166af9b332c7ccdc6378cf9ccd'
+            'SKIP'
             'SKIP')
 
 package() {
@@ -28,7 +30,7 @@ package() {
     install -Dm 644 assets/goatdkernel.desktop "${pkgdir}/usr/share/applications/goatdkernel.desktop"
     
     # Install icon
-    install -Dm 644 assets/goatdkernel.png "${pkgdir}/usr/share/pixmaps/goatdkernel.png"
+    install -Dm 644 "${srcdir}/goatdkernel.png" "${pkgdir}/usr/share/pixmaps/goatdkernel.png"
     
     # Install polkit policy
     install -Dm 644 assets/com.goatd.kernel.policy "${pkgdir}/usr/share/polkit-1/actions/com.goatd.kernel.policy"
