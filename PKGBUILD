@@ -2,14 +2,14 @@
 _pkgname=muse-sounds-manager
 pkgname="$_pkgname-bin"
 pkgver=2.1.1.912
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage MuseScore Libraries"
 arch=('x86_64')
 url='https://www.musehub.com/'
 license=(custom:muse-sounds-manager)  # TODO: probably needs update?
 replaces=('muse-hub')
 conflicts=('muse-hub')
-depends=('fontconfig' 'zlib' 'hicolor-icon-theme' 'skia-sharp')
+depends=('fontconfig' 'zlib' 'hicolor-icon-theme')
 makedepends=()
 install="$_pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://muse-cdn.com/Muse_Sounds_Manager_x64.tar.gz" 'LICENSE')
@@ -30,7 +30,8 @@ package(){
   mkdir -p "$pkgdir/usr/share/icons"
 
   cp bin/* "$pkgdir/opt/muse-sounds-manager/"
-  rm "$pkgdir/opt/muse-sounds-manager/libSkiaSharp.so"
+  # rm "$pkgdir/opt/muse-sounds-manager/libSkiaSharp.so"
+  # ln -s /usr/lib/libSkiaSharp.so "$pkgdir/opt/muse-sounds-manager/libSkiaSharp.so"
 
   ln -s /opt/muse-sounds-manager/muse-sounds-manager "$pkgdir/usr/bin/muse-sounds-manager"
 
