@@ -1,11 +1,12 @@
 pkgbase = ptodo
-	pkgdesc = My cool python script
-	pkgver = 1.0
-	pkgrel = 1
+	pkgdesc = a TUI todolist app written in python
+	pkgver = 1.1
+	pkgrel = 2
+	url = https://github.com/NVitschDEV/ptodo
 	arch = any
 	depends = python
 	depends = python-rich
 	source = ptodo.py
-	sha256sums = 8b46988ddf1a9cbd4ed3579231be0dd4cdd353839ea0cc36bf450377dce34495
+	sha256sums = 19b0d4ef3b7de0d041efa5d06649999a1e60666a9b0fddcc979f977761f6deed
 
 pkgname = ptodo
