@@ -4,7 +4,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=mingw-w64-orc
-pkgver=0.4.41
+pkgver=0.4.42
 pkgrel=1
 pkgdesc="Optimized Inner Loop Runtime Compiler (mingw-w64)"
 arch=(any)
@@ -21,12 +21,13 @@ options=(
   '!strip'
   '!buildflags'
   '!libtool'
-  staticlibs
+  'staticlibs'
+  '!debug'
 )
 source=("git+https://gitlab.freedesktop.org/gstreamer/orc.git?signed#tag=$pkgver"
         meson_i686-w64-mingw32
         meson_x86_64-w64-mingw32)
-b2sums=('eb29733e3033b272c718a622e774379d993aa50ca4f23be0ef1d7dc1e99c267b0c07173f2a79ce47cbf1cb1fecfe2742c48e43994b15308c703aecf8887526e3'
+b2sums=('65b8fc3a403fb0eeb89edf865f8631bc56997149ef8e09a6a20a5e36a2fea84ab1b5cc7e916e0016d3e49cdc188957279f16baba615648bc7c7dbaf7f57e791a'
         '982c4e5403159748625fccdea5754e10c7f191e04058f76378271a63c5ff5aa7d093b22a004382e47837412e836ee2278e762c98aaceb47afe690e8e48ea8c43'
         '96fe847dc06e9dd81ed0d28200275ef0ee8873666236b732c9933202e19d81f37625a2b7ca59056531877e9d4542a8faa34dba2f0bdcd87ac74b6c1360c3a4b7')
 validpgpkeys=(
@@ -42,7 +43,7 @@ build() {
     ${_arch}-meson \
           --default-library both \
 	  -D examples=disabled \
-	  -D gtk_doc=disabled \
+	  -D hotdoc=disabled \
           "${srcdir}/orc"
     ninja
   done
