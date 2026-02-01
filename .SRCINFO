@@ -1,7 +1,7 @@
-pkgbase = Goxe
+pkgbase = goxe
 	pkgdesc = Log reduction tool (compilado desde fuente)
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DumbNoxx/Goxe
 	arch = x86_64
 	arch = aarch64
@@ -10,4 +10,4 @@ pkgbase = Goxe
 	source = Goxe-1.1.1.tar.gz::https://github.com/DumbNoxx/Goxe/archive/v1.1.1.tar.gz
 	sha256sums = 46954a89afea5c3bc1e99caf6298fced345fe4416d1937d8b8171793bc24052b
 
-pkgname = Goxe
+pkgname = goxe
