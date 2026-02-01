@@ -10,6 +10,8 @@ license=('Apache-2.0')
 arch=('x86_64')
 depends=('gcc-libs' 'glibc' 'ncnn' 'libjpeg-turbo' 'zlib' 'libpng' 'libwebp')
 makedepends=('git' 'cmake')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=("git+${url}.git")
 sha256sums=('SKIP')
 

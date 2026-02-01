@@ -14,6 +14,8 @@ pkgbase = zimage-ncnn-vulkan-git
 	depends = zlib
 	depends = libpng
 	depends = libwebp
+	provides = zimage-ncnn-vulkan
+	conflicts = zimage-ncnn-vulkan
 	source = git+https://github.com/nihui/zimage-ncnn-vulkan.git
 	sha256sums = SKIP
 
