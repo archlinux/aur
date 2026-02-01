@@ -40,3 +40,37 @@ To manually verify icon mapping:
 1. Extract AppImage: `./LM-Studio-*.AppImage --appimage-extract`
 2. Check `PKGBUILD` `package()` function for `install` commands.
 3. Verify `lmstudio.desktop` contains `Icon=lmstudio-bin`.
+
+## Repository Hygiene & Git Checks
+
+Maintaining a clean repository is critical for AUR packages. Binary files and source directories must never be tracked in git.
+
+### Checking Repository Size
+```bash
+# View total size of staged changes
+git diff --cached --stat
+
+# View size breakdown by file
+git diff --cached --stat -- .
+
+# Check repository size
+du -sh .git
+```
+
+### Tracking Status Verification
+```bash
+# List all tracked files in src/ directory
+git ls-files src/
+
+# List all tracked files in pkg/ directory
+git ls-files pkg/
+
+# Check for any staged binaries
+git diff --cached --name-only | grep -E "\.(AppImage|zst|tar\.gz)$"
+```
+
+### Critical Requirements
+- **NEVER track binaries**: `.AppImage`, `.zst`, `.tar.gz` files must not be in git history.
+- **NEVER track `src/` folder**: Source extraction directories are transient and must be in `.gitignore`.
+- **NEVER track `pkg/` folder**: Build output directories are transient and must be in `.gitignore`.
+- All staged changes should be reviewed with `git diff --cached` before commit.
