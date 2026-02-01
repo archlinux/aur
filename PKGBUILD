@@ -1,5 +1,5 @@
 # Maintainer: Emilia <gasd228337@gmail.com>
-pkgname=opentaiko-bin
+pkgname=opentaiko
 pkgver=0.6.0.96
 pkgrel=1
 pkgdesc="Open source Taiko no Tatsujin rhythm game clone (Linux binaries from 0auBSQ fork)"
