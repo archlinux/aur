@@ -1,0 +1,4 @@
+[lib32-rubberband]
+source = "archpkg"
+archpkg = "rubberband"
+strip_release = true

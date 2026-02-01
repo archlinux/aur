@@ -1,0 +1,66 @@
+pkgbase = lib32-rubberband
+	pkgdesc = Time-stretching and pitch-shifting audio library and utility
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://www.breakfastquay.com/rubberband/
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = lib32-ladspa
+	makedepends = lib32-lv2
+	makedepends = lib32-libsamplerate>=0.1.8
+	makedepends = lib32-libsndfile>=1.0.16
+	makedepends = lib32-vamp-plugin-sdk
+	makedepends = java-environment-openjdk
+	makedepends = meson>=0.53.0
+	depends = lib32-fftw
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = lib32-libsamplerate
+	options = !emptydirs
+	source = https://github.com/breakfastquay/rubberband/archive/refs/tags/v4.0.0/rubberband-4.0.0.tar.gz
+	sha512sums = f581e900a71f78fde3361d2bed2fe165952c2ca087168c5f4e4994586bd832267eea58e0662a74b6a7430bc361fe80b5307b2ee6bf631a3561a8cba86e1cd3f2
+	b2sums = 5ed7c160ac6653eec25c0e0d555ae98b72bb36ae330f7361e39104ace64d837c3b17dbb0922c40e9a630b37e25d6bb2e17f6455c870ae477361496307c82b980
+
+pkgname = lib32-rubberband
+	pkgdesc = Time-stretching and pitch-shifting audio library and utility (32-bit)
+	depends = lib32-fftw
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = lib32-libsamplerate
+	depends = lib32-fftw
+	depends = lib32-libsndfile
+	provides = librubberband.so
+	provides = librubberband-jni.so
+
+pkgname = lib32-rubberband-ladspa
+	pkgdesc = Time-stretching and pitch-shifting audio library and utility - LADSPA plugin (32-bit)
+	groups = lib32-pro-audio
+	groups = lib32-ladspa-plugins
+	depends = lib32-fftw
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = lib32-libsamplerate
+	depends = lib32-ladspa-host
+
+pkgname = lib32-rubberband-lv2
+	pkgdesc = Time-stretching and pitch-shifting audio library and utility - LV2 plugin (32-bit)
+	groups = lib32-pro-audio
+	groups = lib32-lv2-plugins
+	depends = lib32-fftw
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = lib32-libsamplerate
+	depends = lib32-libsamplerate
+	depends = lib32-lv2-host
+
+pkgname = lib32-rubberband-vamp
+	pkgdesc = Time-stretching and pitch-shifting audio library and utility - VAMP plugin (32-bit)
+	groups = lib32-pro-audio
+	groups = lib32-vamp-plugins
+	depends = lib32-fftw
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = lib32-libsamplerate
+	depends = lib32-libsamplerate
+	depends = lib32-vamp-host
+	depends = lib32-vamp-plugin-sdk
