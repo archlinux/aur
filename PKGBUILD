@@ -1,7 +1,6 @@
 # Maintainer: Nguyen Ky <nhktmdzhg at google mail>
 pkgname=fcitx5-vmk-bin
-pkgver=0.9.4
-_tagver=v${pkgver}
+pkgver=0.9.4.1
 pkgrel=1
 pkgdesc="VMK (Vietnamese Micro Key) for Fcitx5 - Bộ gõ tiếng Việt mô phỏng UniKey"
 arch=('x86_64')
@@ -10,8 +9,8 @@ license=('GPL-3.0-or-later')
 depends=('fcitx5' 'libinput' 'hicolor-icon-theme' 'glibc' 'gcc-libs' 'systemd-libs')
 provides=('fcitx5-vmk')
 conflicts=('fcitx5-vmk')
-source=("https://github.com/nhktmdzhg/VMK/releases/download/${_tagver}/fcitx5-vmk-${_tagver}.tar.gz")
-sha256sums=('1f2c931c5860ce88a5edcbf6b6b3a67232a4d445789796794a854e3c4a5d9a19')
+source=("https://github.com/nhktmdzhg/VMK/releases/download/v${pkgver}/fcitx5-vmk-v${pkgver}.tar.gz")
+sha256sums=('1141a4f121e0b4ab644ecff44f385b8e417aeaccb966059f595249ed1717cd3d')
 install='fcitx5-vmk.install'
 
 package() {
