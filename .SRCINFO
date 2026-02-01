@@ -1,6 +1,6 @@
 pkgbase = celeste64-fuji-git
 	pkgdesc = A free and open source mod loader for Celeste 64: Fragments of the Mountain (dev branch)
-	pkgver = 0.7.1.r0.c5f3d41
+	pkgver = 0.7.2.r0.48a9b28
 	pkgrel = 1
 	url = https://fujiapi.github.io
 	arch = x86_64
