@@ -111,7 +111,6 @@ package_lib32-rubberband-ladspa() {
 package_lib32-rubberband-lv2() {
   pkgdesc+=" - LV2 plugin (32-bit)"
   depends+=(
-    'lib32-libsamplerate'
     # 'lib32-lv2-host'
   )
   groups=(
@@ -130,7 +129,6 @@ package_lib32-rubberband-lv2() {
 package_lib32-rubberband-vamp() {
   pkgdesc+=" - VAMP plugin (32-bit)"
   depends+=(
-    'lib32-libsamplerate'
     # 'lib32-vamp-host'
     'lib32-vamp-plugin-sdk'
   )

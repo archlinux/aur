@@ -50,7 +50,6 @@ pkgname = lib32-rubberband-lv2
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
 	depends = lib32-libsamplerate
-	depends = lib32-libsamplerate
 
 pkgname = lib32-rubberband-vamp
 	pkgdesc = Time-stretching and pitch-shifting audio library and utility - VAMP plugin (32-bit)
@@ -59,6 +58,5 @@ pkgname = lib32-rubberband-vamp
 	depends = lib32-fftw
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
-	depends = lib32-libsamplerate
 	depends = lib32-libsamplerate
 	depends = lib32-vamp-plugin-sdk
