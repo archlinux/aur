@@ -1,5 +1,5 @@
 pkgname=orca-note-appimage
-pkgver=1.62.0
+pkgver=1.63.0
 pkgrel=1
 pkgdesc='一款既适合大纲写作，也适合长篇写作的笔记应用'
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('fuse2')
 source=(
   "https://github.com/sethyuan/orca-note/releases/download/v${pkgver}/orcanote-linux-x86_64-${pkgver}.AppImage"
 )
-sha512sums=('2dfd7ec4c96486a9f2e91c63e20c28858770a0103cf3cb7ce3053f1d1afa26492294e88207b1e84f748bb0da749a3c5938016b05e66116e33f57531227166e32')
+sha512sums=('5a6aba58b6cba076c11edae6c56d429280f13ce1de8ca1bf05ce28cebabcd17888570e3f9588ce19b9ebf4cf399ad0d728985e3c9db8c0790e08a55a6dac8b6e')
 
 _installdir=/opt/orca-note
 
