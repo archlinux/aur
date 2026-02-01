@@ -8,7 +8,7 @@ pkgbase = github-desktop-plus-git
 	arch = armv7h
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = nodejs>=22
+	makedepends = nodejs-lts-jod
 	makedepends = npm
 	makedepends = xorg-server-xvfb
 	makedepends = yarn
