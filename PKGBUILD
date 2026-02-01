@@ -2,7 +2,7 @@
 
 _pkgname=libdovi
 pkgname=${_pkgname}-git
-pkgver=3.2.0.r12.g13f32b3
+pkgver=3.3.2.r14.g25c397e
 pkgrel=1
 pkgdesc='Library to read and write Dolby Vision metadata (C-API) - git version'
 arch=('x86_64')
@@ -14,6 +14,7 @@ conflicts=('libdovi')
 provides=('libdovi' 'libdovi.so')
 source=(git+https://github.com/quietvoid/dovi_tool.git)
 sha256sums=(SKIP)
+_libdovidir="dovi_tool/dolby_vision"
 
 pkgver() {
   cd dovi_tool
@@ -22,32 +23,37 @@ pkgver() {
 }
 
 prepare() {
-  cargo fetch \
-    --manifest-path dovi_tool/dolby_vision/Cargo.toml
+  export RUSTUP_TOOLCHAIN=stable
+
+  cd "${_libdovidir}"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+
+  cd "${_libdovidir}"
   cargo cbuild \
-    --release \
     --frozen \
-    --prefix=/usr \
-    --manifest-path dovi_tool/dolby_vision/Cargo.toml
+    --profile release-deploy \
+    --prefix=/usr
 }
 
 check() {
-  cargo test \
-    --release \
-    --frozen \
-    --all-features \
-    --manifest-path dovi_tool/dolby_vision/Cargo.toml
+  export RUSTUP_TOOLCHAIN=stable
+
+  cd "${_libdovidir}"
+  cargo test --frozen --all-features
 }
 
 package() {
-  cd dovi_tool/dolby_vision
+  export CARGO_TARGET_DIR=target
 
+  cd "${_libdovidir}"
   cargo cinstall \
-    --release \
     --frozen \
+    --profile release-deploy \
     --prefix /usr \
     --destdir "${pkgdir}"
 
