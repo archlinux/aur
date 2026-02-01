@@ -1,41 +1,49 @@
-# Maintainer: Maxime "pep" Buquet <archlinux@bouah.net>
+# Maintainer: Tim Henkes <me+aur@syndace.dev>
+# Contributor: Maxime "pep" Buquet <archlinux@bouah.net>
 
-pkgname=poezio-omemo-git
-_pkgname=poezio-omemo
+pkgname="poezio-omemo-git"
+pkgver=r81.758499b
 pkgrel=1
-pkgver=r25.29cb0cd
-pkgdesc="OMEMO plugin for the Poezio XMPP console client"
-arch=('i686' 'x86_64')
+pkgdesc="OMEMO plugin for poezio"
+arch=("any")
 url="https://codeberg.org/poezio/poezio-omemo"
-conflicts=('poezio-omemo')
-provides=('poezio-omemo')
-license=('GPL')
+license=("GPL-3.0-only")
 depends=(
-  'python'
-  'poezio-git'
-  'python-slixmpp-omemo-git'
-  'python-omemo-backend-signal-git'
+    "poezio"
+    "python"
+    "python-oldmemo"
+    "python-omemo"
+    "python-slixmpp"
+    "python-slixmpp-omemo"
 )
 makedepends=(
-  'git'
-  'python-setuptools'
+    "git"
+    "python-build"
+    "python-installer"
+    "python-setuptools"
+    "python-wheel"
 )
-
-source=("${_pkgname}::git+https://codeberg.org/poezio/poezio-omemo.git")
+provides=("poezio-omemo")
+conflicts=("poezio-omemo")
+source=("${pkgname}::git+https://codeberg.org/poezio/poezio-omemo.git")
+sha256sums=("SKIP")
 
 pkgver() {
-  cd ${_pkgname}
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    cd "${pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    cd "${pkgname}"
+    git clean -dfx
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
-  python3 setup.py build
+    cd "${pkgname}"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-  python3 setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+    cd "${pkgname}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
-
-sha256sums=('SKIP')
