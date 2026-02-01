@@ -1,6 +1,6 @@
 pkgbase = c47-git
 	pkgdesc = Emulator for the C47 pocket calculator
-	pkgver = 00.109.03.00b1.r85.gc387fc7
+	pkgver = 00.109.03.00b1.r288.g66cba98
 	pkgrel = 1
 	url = https://47calc.com
 	arch = x86_64

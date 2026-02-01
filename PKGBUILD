@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 _pkgname=c43
 pkgname=c47-git
-pkgver=00.109.03.00b1.r85.gc387fc7
+pkgver=00.109.03.00b1.r288.g66cba98
 pkgrel=1
 pkgdesc="Emulator for the C47 pocket calculator"
 arch=(x86_64)
@@ -56,7 +56,14 @@ ln -s /usr/share/${pkgname::-4}/res ./
 ln -s /usr/lib/${pkgname::-4}/${pkgname::-4} ${pkgname::-4}
 ./${pkgname::-4} "\$@"
 wait
-rm -rf res ${pkgname::-4}
+if [[ -d res ]]
+then
+rm res
+fi
+if [[ -f ${pkgname::-4} ]]
+then
+rm ${pkgname::-4}
+fi
 EOF
 	chmod 755 "$pkgdir/usr/bin/${pkgname::-4}"
 
