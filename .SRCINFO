@@ -1,10 +1,11 @@
 pkgbase = opentaiko-bin
-	pkgdesc = Open source Taiko no Tatsujin rhythm game clone (Linux binaries)
-	pkgver = 0.6.4
+	pkgdesc = Open source Taiko no Tatsujin rhythm game clone (Linux binaries from 0auBSQ fork)
+	pkgver = 0.6.0.96
 	pkgrel = 1
-	url = https://github.com/OpenTaiko/OpenTaiko
+	url = https://github.com/0auBSQ/OpenTaiko
 	arch = x86_64
 	license = MIT
+	makedepends = unzip
 	depends = dotnet-runtime
 	depends = sdl2
 	depends = openal
@@ -13,7 +14,7 @@ pkgbase = opentaiko-bin
 	depends = libxrandr
 	provides = opentaiko
 	conflicts = opentaiko-git
-	source = https://github.com/OpenTaiko/OpenTaiko/releases/download/v0.6.4/OpenTaiko-v0.6.4-Linux.tar.gz
-	sha256sums = SKIP
+	source = https://github.com/0auBSQ/OpenTaiko/releases/download/0.6.0.96/OpenTaiko.Linux.x64.zip
+	sha256sums = 18e4f06036fde06150aba8b93cafb86aef93c6550f11d86a4eed911bff052eba
 
 pkgname = opentaiko-bin

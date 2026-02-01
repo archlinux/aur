@@ -1,31 +1,29 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: linuxvod <твоя_почта>
 pkgname=opentaiko-bin
-pkgver=0.6.4
+pkgver=0.6.0.96
 pkgrel=1
-pkgdesc="Open source Taiko no Tatsujin rhythm game clone (Linux binaries)"
+pkgdesc="Open source Taiko no Tatsujin rhythm game clone (Linux binaries from 0auBSQ fork)"
 arch=('x86_64')
-url="https://github.com/OpenTaiko/OpenTaiko"
+url="https://github.com/0auBSQ/OpenTaiko"
 license=('MIT')
 depends=('dotnet-runtime' 'sdl2' 'openal' 'ffmpeg' 'libx11' 'libxrandr')
+makedepends=('unzip') # Добавляем, чтобы zip точно распаковался
 provides=('opentaiko')
 conflicts=('opentaiko-git')
-source=("https://github.com/OpenTaiko/OpenTaiko/releases/download/v${pkgver}/OpenTaiko-v${pkgver}-Linux.tar.gz")
-sha256sums=('SKIP')
+source=("https://github.com/0auBSQ/OpenTaiko/releases/download/${pkgver}/OpenTaiko.Linux.x64.zip")
+sha256sums=('18e4f06036fde06150aba8b93cafb86aef93c6550f11d86a4eed911bff052eba')
 
 package() {
-    # Create necessary directories
     mkdir -p "${pkgdir}/opt/${pkgname}"
     mkdir -p "${pkgdir}/usr/bin"
 
-    # Copy game files to /opt
+    # Копируем всё содержимое распакованного архива в /opt
+    # Внимание: проверь, не создается ли внутри архива лишняя вложенная папка
     cp -r "${srcdir}/"* "${pkgdir}/opt/${pkgname}/"
 
-    # Remove the source archive if it was extracted into the same folder
-    rm -rf "${pkgdir}/opt/${pkgname}/OpenTaiko-v${pkgver}-Linux.tar.gz"
-
-    # Set up a symbolic link for easy execution
+    # Создаем симлинк
     ln -s "/opt/${pkgname}/OpenTaiko" "${pkgdir}/usr/bin/opentaiko"
 
-    # Ensure the main binary is executable
+    # Делаем файл исполняемым
     chmod +x "${pkgdir}/opt/${pkgname}/OpenTaiko"
 }
