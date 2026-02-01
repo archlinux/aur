@@ -4,7 +4,7 @@
 pkgname=idescriptor
 _srcname=iDescriptor
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, open-source, and cross-platform iDevice management tool"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/${_srcname}/${_srcname}"
@@ -45,7 +45,7 @@ depends=(
 )
 makedepends=('git' 'cmake' 'go')
 source=("git+${url}.git#tag=v${pkgver}"
-	"git+https://github.com/uncor3/airplay.git"
+	"git+https://github.com/iDescriptor/uxplay.git"
 	"git+https://github.com/uncor3/libipatool-go.git"
 	"git+https://github.com/libZQT/ZUpdater.git")
 sha256sums=('554bc489048c4a1a0c93a4c40996021ccc486138a96af5acb6dba0f9766b1246'
@@ -55,11 +55,10 @@ sha256sums=('554bc489048c4a1a0c93a4c40996021ccc486138a96af5acb6dba0f9766b1246'
 
 prepare() {
 	cd "${_srcname}/"
-	git cherry-pick -n dd9a6a7577e75b5897fda714b2d4019b8814f748
 	git rm lib/win-ifuse
 
 	git submodule init
-	git config submodule.lib/airplay.url "${srcdir}/airplay"
+	git config submodule.lib/uxplay.url "${srcdir}/uxplay"
 	git config submodule.lib/ipatool-go.url "${srcdir}/libipatool-go"
 	git config submodule.lib/zupdater.url "${srcdir}/ZUpdater"
 	git -c protocol.file.allow=always submodule update
