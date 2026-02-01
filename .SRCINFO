@@ -1,0 +1,19 @@
+pkgbase = fdir
+	pkgdesc = The search language for your filesystem
+	pkgver = 3.3.1
+	pkgrel = 1
+	url = https://github.com/VG-dev1/fdir
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	provides = fdir-cli
+	conflicts = python-fdir
+	replaces = python-fdir
+	source = fdir-cli-.tar.gz::https://github.com/VG-dev1/fdir/archive/refs/tags/v3.3.1.tar.gz
+	sha256sums = 8fc0f78ee9206fb4d42dcc3cead83023cefa5445879eb3829d577d036f968670
+
+pkgname = fdir

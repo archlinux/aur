@@ -1,0 +1,3 @@
+[fdir]
+source = "pypi"
+pypi = "fdir-cli"
