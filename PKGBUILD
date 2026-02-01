@@ -2,7 +2,7 @@
 
 pkgname=noorfetch
 pkgver=0.5.8
-pkgrel=2
+pkgrel=1
 pkgdesc="Minimal and fast system information fetch tool written in Rust"
 arch=('x86_64')
 url="https://codeberg.org/limforge/noorfetch"
@@ -16,9 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --tags --always --dirty 2>/dev/null | \
-    sed 's/^v//;s/$$   [^-]*-g   $$/r\1/;s/-/./g' || \
-    printf "0.5.8.r%s.g%s" "$$   (git rev-list --count HEAD)" "   $$(git rev-parse --short HEAD)"
+  git describe --long --tags --always | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -37,6 +35,5 @@ build() {
 package() {
   cd "$pkgname"
   cargo install --frozen --root "$pkgdir/usr" --path . --no-track
-
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
