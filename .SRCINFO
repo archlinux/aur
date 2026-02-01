@@ -1,7 +1,7 @@
 pkgbase = raysession
 	pkgdesc = Session manager for audio programs using the Non Session Manager (NSM) API
 	pkgver = 0.17.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Houston4444/RaySession
 	arch = any
 	groups = pro-audio
