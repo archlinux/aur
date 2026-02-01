@@ -1,8 +1,8 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 pkgname=xdgctl-git
 pkgdesc='TUI for managing XDG default applications'
-pkgver=r7.2a5d5ea
-pkgrel=2
+pkgver=r15.f7654de
+pkgrel=1
 url=https://github.com/mitjafelicijan/xdgctl
 _rawurl="${url/github.com/raw.githubusercontent.com}/refs/heads/master"
 license=(BSD-2-Clause)
@@ -25,7 +25,7 @@ pkgver() {
 
 build () {
   cd "$pkgname"
-  gcc $(pkg-config --cflags gio-2.0 gio-unix-2.0) -o xdgctl main.c $(pkg-config --libs gio-2.0 gio-unix-2.0)
+  gcc $CFLAGS $(pkg-config --cflags gio-2.0 gio-unix-2.0) -o xdgctl main.c $(pkg-config --libs gio-2.0 gio-unix-2.0) $LDFLAGS
 }
 
 package () {
