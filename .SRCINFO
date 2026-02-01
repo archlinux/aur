@@ -1,0 +1,23 @@
+pkgbase = spotify-tray-wayland-git
+	pkgdesc = Native Wayland/Hyprland system tray for Spotify with scroll and middle-click controls
+	pkgver = r7.00dc93d
+	pkgrel = 1
+	url = https://github.com/xander1421/spotify-tray-wayland
+	install = spotify-tray-wayland-git.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = go
+	makedepends = git
+	depends = dbus
+	optdepends = spotify-launcher: official Spotify launcher
+	optdepends = spotify: Spotify client (AUR)
+	optdepends = hyprland: for window show/hide functionality
+	provides = spotify-tray-wayland
+	conflicts = spotify-tray-wayland
+	conflicts = spotify-tray-wayland-bin
+	options = !debug
+	source = spotify-tray-wayland-git::git+https://github.com/xander1421/spotify-tray-wayland.git
+	sha256sums = SKIP
+
+pkgname = spotify-tray-wayland-git
