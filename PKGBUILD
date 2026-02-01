@@ -1,7 +1,7 @@
 # Maintainer: zayn7lie <zayn7lie.ber7+git@gmail.com>
 
 pkgname="trezor-suite"
-pkgver="25.12.2"
+pkgver="26.1.2"
 pkgrel=0
 pkgdesc="The simplier, the safer. This AUR just install the pure AppImage."
 arch=("x86_64")
@@ -19,8 +19,8 @@ source=(
 )
 noextract=($_pkgname.AppImage)
 sha512sums=(
-    "fe48ea2c617b318fb6506484ec39d2eb8a3c5361e7b731abc377396f9006a1773cc31dde9840633e64c42e70f142980c765ecbeee695dced528f679b7f0791a5"
-    # echo '/kjqLGF7MY+2UGSE7DnS64o8U2HntzGrw3c5b5AGoXc8wx3emEBjPmTELnDxQpgMdl7L7uaV3O1Sj2ebfweRpQ==' | base64 -d | od -An -tx1 | tr -d ' \n' 
+    "42c9629b99cb53a05634ab0f1f7d26bca526cfdcf52a017bddf8a667ec9167157387a4477646d5028edabaff65da98700656506c8a1975e598bbefc8790ef515"
+    # echo 'Qslim5nLU6BWNKsPH30mvKUmz9z1KgF73fimZ+yRZxVzh6RHdkbVAo7auv9l2phwBlZQbIoZdeWYu+/IeQ71FQ==' | base64 -d | od -An -tx1 | tr -d ' \n' 
     "644da8513c9d3475f4f610376da885de20308d5cc458d01b1bf9d7613b009e82be3dd8ab0a2b875e309a374786127471da360920f8f8cc0aa17f613c135ce9fc"
     "9d26b0ca4878857c839f1604c63a50b89e3ecfaa03ad36b1b83a2a74a33636896c42ff22ed9434e9a54ab57e2ea2310305a5d062b0616b7ae64bbd3cc8b80748"
     "f12c122d7f297511cf6b2cf47e41d0a4c1ced4b6d0c34109646e977e51228a3e9249af00ff757da633df840a60e06b86f31e44dfd980876ab9b33139bed2d32c"
