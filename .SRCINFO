@@ -1,7 +1,7 @@
 pkgbase = xrefactory
 	pkgdesc = Professional refactoring tool for C/Java and Emacs
 	pkgver = 1.6.10
-	pkgrel = 7
+	pkgrel = 8
 	url = http://xrefactory.com
 	arch = x86_64
 	license = custom
@@ -43,6 +43,7 @@ pkgbase = xrefactory
 	source = 0040-Fix-parsing-initializer-list-for-arrays.patch
 	source = 0041-Fix-workMemory-overflowed-over-borne-with-Linux-kern.patch
 	source = 0042-Fix-build-for-Mingw-w64.patch
+	source = 0043-Fix-detecting-GCC-include-files-and-predefined-macro.patch
 	md5sums = 63e10baa9a5dfce9165570e7c3897701
 	md5sums = 4791f8a42e53a141ded3bd36e39b3a6d
 	md5sums = a00b17df920380afd6689369845acbc8
@@ -81,5 +82,6 @@ pkgbase = xrefactory
 	md5sums = 20c7f661b6b8ce9bcbbd384fab2517a8
 	md5sums = 1f25e46f2d826ba50078f4c61be4f13e
 	md5sums = 651328ad9af97cbfcbb59c268eb89e37
+	md5sums = ab0c52ccdb4ed0127b33f23477abfd17
 
 pkgname = xrefactory
