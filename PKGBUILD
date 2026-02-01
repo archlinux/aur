@@ -3,7 +3,7 @@
 pkgname=symp
 
 # Version
-pkgver=5.2.12
+pkgver=5.2.13
 pkgrel=1
 
 # Generic
@@ -19,7 +19,7 @@ conflicts=('symp-git')
 
 # Download
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Dracape/${pkgname}/archive/refs/tags/${pkgver}.zip")
-b2sums=('c3b976b637173bda6e64a04cb200fc3ff2270acd643404751f234d10914d63f4197168378278ed1d1a3a859b758225968555d76d3896730331cf7b60e8087dfa')
+b2sums=('25b3f906e5baadc97399e58f924587e4c7b69ef099e7ec633cdd37dd5c4122c4019a6052e65119086e960d7ccaefd3d1c50c792dc1f67f3edf83d4b67a609df2')
 
 
 package() { "SymP-$pkgver"/install.fish --vendor --repository="SymP-$pkgver" --rootdir=${pkgdir}; }
