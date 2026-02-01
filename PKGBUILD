@@ -33,7 +33,7 @@ makedepends=(
   'lib32-libsndfile>=1.0.16'
   'lib32-vamp-plugin-sdk'
 
-  'java-environment-openjdk'
+  'java-environment'
   'meson>=0.53.0'
 )
 options=(
@@ -51,12 +51,12 @@ build() {
   export CXXFLAGS+=" -m32"
   export LDFLAGS+=" -m32"
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
-  local java_major=$(java --version 2>/dev/null |grep 'openjdk'| cut -d ' ' -f2| cut -d '.' -f1)
+  local java_name="$(archlinux-java get)"
   local meson_options=(
     --cross-file lib32
     -Dfft=fftw
     -Dresampler=libsamplerate
-    -Dextra_include_dirs="/usr/lib/jvm/java-$java_major-openjdk/include,/usr/lib/jvm/java-$java_major-openjdk/include/linux"
+    -Dextra_include_dirs="/usr/lib/jvm/${java_name}/include,/usr/lib/jvm/${java_name}/include/linux"
   )
 
   cd "${srcdir}"
