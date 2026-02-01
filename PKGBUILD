@@ -1,6 +1,6 @@
 # Maintainer: Noa <coolreader18@gmail.com>
 pkgname=celeste64-fuji
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=2
 pkgdesc="A free and open source mod loader for Celeste 64: Fragments of the Mountain"
 arch=(x86_64 aarch64)
@@ -12,7 +12,7 @@ options=('!strip' '!debug')
 source=(Fuji-$pkgver.tar.gz::"https://github.com/FujiAPI/Fuji/archive/refs/tags/$pkgver.tar.gz"
 	'fuji.desktop')
 noextract=()
-sha256sums=('3f37c2997e75d6a07cb3267e220aac4f6925a8bdf83773dba4ebceeab777a5dd'
+sha256sums=('caa039279118daa4b5fb7034518cda6cb1b39b6793f5a733a063b1840081fb18'
             '35ffe246db00f9a6e54d50eb7e37d637ac2107413e88f2fe12d27c64ef1830dd')
 
 prepare() {
