@@ -18,6 +18,5 @@ package() {
 	# Extract package data
 	tar -xz -f data.tar.gz -C "${pkgdir}" 
 
-	sed -i 's/^Exec=OpenTaiko-Hub/Exec=env GDK_BACKEND=x11 OpenTaiko-Hub/' "${pkgdir}/usr/share/applications/opentaiko-hub.desktop"
-	
+	sed -i 's/^Exec=OpenTaiko-Hub/Exec=env GDK_BACKEND=x11 OpenTaiko-Hub/' "${pkgdir}/usr/share/applications/OpenTaiko.Hub.desktop"	
 }
