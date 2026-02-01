@@ -1,33 +1,24 @@
-# Maintainer: amolnaristvan <https://github.com>
 pkgname=envycontrol-tray
 pkgver=1.0.0
-pkgrel=1
-pkgdesc="A simple GTK tray application for switching GPU modes using EnvyControl"
+pkgrel=2
+pkgdesc="A GTK tray icon for EnvyControl to switch between graphics modes. Rocker fegyelem!"
 arch=('any')
-url="https://github.com/amolnaristvan/envycontrol-tray/"
-license=('MIT')
-source=("envycontrol-tray.py"
-        "envycontrol-tray.desktop"
-        "prime-intel.png"
-        "prime-nvidia.png"
-        "prime-hybrid.png")
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
-
+url="https://github.com/amolnaristvan/envycontrol-tray"
+license=('GPL3')
+depends=('envycontrol' 'python-gobject' 'gtk3' 'libappindicator-gtk3')
+makedepends=('git')
+source=("git+https://github.com/amolnaristvan/envycontrol-tray.git")
+sha256sums=('SKIP')
 package() {
-    # 1. Program telepítése kiterjesztés nélkül
-    install -Dm755 "${srcdir}/envycontrol-tray.py" "${pkgdir}/usr/bin/envycontrol-tray"
-    
-    # 2. Ikonok telepítése a várt helyre
-    install -d "${pkgdir}/usr/share/envycontrol-tray"
-    install -m644 "${srcdir}/prime-intel.png"  "${pkgdir}/usr/share/envycontrol-tray/prime-intel.png"
-    install -m644 "${srcdir}/prime-nvidia.png" "${pkgdir}/usr/share/envycontrol-tray/prime-nvidia.png"
-    install -m644 "${srcdir}/prime-hybrid.png" "${pkgdir}/usr/share/envycontrol-tray/prime-hybrid.png"
+  cd "$srcdir/$pkgname"
 
-    # 3. Menü bejegyzés
-    install -Dm644 "${srcdir}/envycontrol-tray.desktop" "${pkgdir}/usr/share/applications/envycontrol-tray.desktop"
+  # Könyvtárak létrehozása
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/applications"
+  install -dm755 "$pkgdir/usr/share/pixmaps"
 
-    # 4. Automatikus indítás minden bejelentkezéskor
-    install -Dm644 "${srcdir}/envycontrol-tray.desktop" "${pkgdir}/etc/xdg/autostart/envycontrol-tray.desktop"
+  # Fájlok telepítése a GitHub repóból
+  install -m755 envycontrol-tray.py "$pkgdir/usr/bin/envycontrol-tray"
+  install -m644 envycontrol-tray.desktop "$pkgdir/usr/share/applications/"
+  install -m644 *.png "$pkgdir/usr/share/pixmaps/"
 }
-
-
