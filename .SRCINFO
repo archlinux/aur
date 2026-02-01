@@ -1,7 +1,7 @@
 pkgbase = waymux
 	pkgdesc = Tabbed Wayland Compositor
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ido50/waymux
 	arch = x86_64
 	license = MIT
@@ -16,6 +16,6 @@ pkgbase = waymux
 	depends = tomlc17-git
 	conflicts = waymux-bin
 	source = waymux-0.0.1.tar.gz::https://github.com/ido50/waymux/archive/refs/tags/v0.0.1.tar.gz
-	sha256sums = ed7fb1da364e16ca84a26d61795a00e45b7083a8b03199c1eb87b4b1909471d6
+	sha256sums = 7e33c5f1c0450af1398e9121c79d6ea248ae80565b2f53b2776107529bb34915
 
 pkgname = waymux

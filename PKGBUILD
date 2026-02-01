@@ -1,7 +1,7 @@
 # Maintainer: Ido Perlmuter <ido@ido50.net>
 pkgname=waymux
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tabbed Wayland Compositor"
 arch=('x86_64')
 url="https://github.com/ido50/waymux"
@@ -10,7 +10,7 @@ depends=('wlroots0.19' 'wayland' 'libxkbcommon' 'cairo' 'tomlc17-git')
 makedepends=('meson>=0.58.1' 'scdoc>=1.9.2' 'check')
 checkdepends=('check')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ido50/waymux/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ed7fb1da364e16ca84a26d61795a00e45b7083a8b03199c1eb87b4b1909471d6')
+sha256sums=('7e33c5f1c0450af1398e9121c79d6ea248ae80565b2f53b2776107529bb34915')
 conflicts=('waymux-bin')
 
 build() {
