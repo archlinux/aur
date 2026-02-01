@@ -1,0 +1,19 @@
+pkgbase = zapret-gtk
+	pkgdesc = GUI client for Zapret DPI Bypass
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/Taygun86/zapret-gtk
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	depends = gtk4
+	depends = libadwaita
+	depends = iptables
+	depends = ipset
+	depends = curl
+	depends = git
+	depends = polkit
+	source = git+https://github.com/Taygun86/zapret-gtk.git#tag=v0.3.0
+	md5sums = SKIP
+
+pkgname = zapret-gtk
