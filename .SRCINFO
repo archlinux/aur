@@ -1,0 +1,20 @@
+pkgbase = now-playing-gtk
+	pkgdesc = Minimal GTK now-playing widget using playerctl
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-gobject
+	depends = gtk3
+	depends = python-cairo
+	depends = playerctl
+	depends = glib2
+	depends = gdk-pixbuf2
+	optdepends = nerd-fonts: for proper Unicode icons
+	source = now-playing-gtk.py
+	source = nowplaying.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = now-playing-gtk
