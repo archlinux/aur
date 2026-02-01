@@ -1,0 +1,21 @@
+pkgbase = crosspipe-git
+	pkgdesc = A visual graph manager for PipeWire, built with GTK4/Libadwaita and Vala, following the GNOME Human Interface Guidelines (git version)
+	pkgver = r7.3a89932
+	pkgrel = 1
+	url = https://github.com/dp0sk/Crosspipe
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = gtk4
+	depends = libadwaita
+	depends = libgee
+	depends = libxml2
+	depends = pipewire
+	provides = crosspipe
+	conflicts = crosspipe
+	source = git+https://github.com/dp0sk/Crosspipe.git
+	sha256sums = SKIP
+
+pkgname = crosspipe-git
