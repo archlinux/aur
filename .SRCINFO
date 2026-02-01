@@ -1,0 +1,23 @@
+pkgbase = skyscraper-simulator-bin
+	pkgdesc = 3D skyscraper and elevator simulator (SourceForge build with OpenEXR 3.1 compat)
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = http://www.skyscrapersim.com/
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = curl
+	depends = jxrlib
+	depends = freeimage
+	depends = openal
+	depends = libxaw
+	depends = libpng12
+	source = skyscraper-2.0.3.tar.bz2::https://sourceforge.net/projects/skyscraper/files/v2.0.3/skyscraper-2.0.3-linux-x64.tar.bz2/download
+	source = https://github.com/AcademySoftwareFoundation/Imath/archive/refs/tags/v3.1.3.tar.gz
+	source = https://github.com/AcademySoftwareFoundation/openexr/archive/refs/tags/v3.1.5.tar.gz
+	sha256sums = 1527b2b876ae4ac18b2bc76aac59d9c15e0787be8db020db61b8d24c95bd018a
+	sha256sums = 0bf7ec51162c4d17a4c5b850fb3f6f7a195cff9fa71f4da7735f74d7b5124320
+	sha256sums = 93925805c1fc4f8162b35f0ae109c4a75344e6decae5a240afdfce25f8a433ec
+
+pkgname = skyscraper-simulator-bin
