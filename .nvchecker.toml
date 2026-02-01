@@ -1,0 +1,4 @@
+[lib32-vamp-plugin-sdk]
+source = "archpkg"
+archpkg = "vamp-plugin-sdk"
+strip_release = true

@@ -1,0 +1,21 @@
+pkgbase = lib32-vamp-plugin-sdk
+	pkgdesc = The Vamp audio analysis plug-in system (32-bit)
+	pkgver = 2.10
+	pkgrel = 1
+	url = https://github.com/vamp-plugins/vamp-plugin-sdk
+	arch = x86_64
+	groups = lib32-pro-audio
+	license = BSD-3-Clause
+	license = MIT
+	makedepends = lib32-libsndfile
+	depends = vamp-plugin-sdk>=2.10
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	optdepends = lib32-libsndfile: for vamp-simple-host
+	provides = libvamp-hostsdk.so
+	provides = libvamp-sdk.so
+	source = https://github.com/vamp-plugins/vamp-plugin-sdk/archive/refs/tags/vamp-plugin-sdk-v2.10/vamp-plugin-sdk-vamp-plugin-sdk-v2.10.tar.gz
+	sha512sums = 67a71e5396eab5ce9503e9111b4cfc16fc9755cf6ae2d8dfc99ed29fd91e75eaf0de9a9c55ce8f7751f04c235eb86430856eff18f02adde54f1850a87c917ef0
+	b2sums = ba206443d4a6f94f56c1e3b7e8f47b7c8f893d2df6601f9d26a613d56bf58fee7d0a4a996964aa0690ecf69fd1d686db28165e73a0d37880a7891c67ecaaae5f
+
+pkgname = lib32-vamp-plugin-sdk
