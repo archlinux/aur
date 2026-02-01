@@ -1,7 +1,7 @@
 pkgbase = beekeeper-studio-appimage
 	pkgdesc = Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more
 	pkgver = 5.5.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://beekeeperstudio.io/
 	arch = x86_64
 	license = LicenseRef-BeekeeperStudioApplicationEULA
@@ -13,7 +13,7 @@ pkgbase = beekeeper-studio-appimage
 	options = !strip
 	source = https://github.com/beekeeper-studio/beekeeper-studio/releases/download/v5.5.6/Beekeeper-Studio-5.5.6.AppImage
 	source = LICENSE.md
-	sha256sums = dbdcac8e02721fce68ad011b2e02fb52a435447dedc917384d78161b20f0487d
+	sha256sums = b24017dfd5e7982cc0cedf05a79d9a2c9f8bfc80edbe24d3a86f6181aef84e6c
 	sha256sums = 05559651711dc746837dadcbdc5f3176e1cdde3b1de5a8c3ac95e4709a297d1d
 
 pkgname = beekeeper-studio-appimage
