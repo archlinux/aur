@@ -6,10 +6,13 @@ path = [
     "README.md",
     "keys/**",
     ".SRCINFO",
+    ".gitignore",
     ".nvchecker.toml",
     "*.install",
     "*.sysusers",
+    "*sysusers.conf",
     "*.tmpfiles",
+    "*tmpfiles.conf",
     "*.logrotate",
     "*.pam",
     "*.service",
@@ -23,13 +26,14 @@ SPDX-License-Identifier = "0BSD"
 
 [[annotations]]
 path = [
+    "allow_wayland.patch",
     "boost-1.88.patch",
+    "boost-1.89.patch",
     "fixes_boost.patch",
     "fixes_cgal.patch",
     "fixes_nanosvg.patch",
     "integrate_occtwrapper.patch",
-    "boost-1.89.patch",
-    "allow_wayland.patch",
+    "use_glad.patch",
 ]
 SPDX-FileCopyrightText = "prusa-slicer contributors"
 SPDX-License-Identifier = "AGPL-3.0-only"
