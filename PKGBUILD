@@ -1,6 +1,6 @@
 # Maintainer: ThatOneCalculator (Kainoa Kanter) <kainoa@t1c.dev>
 pkgname="nerdfetch"
-pkgver=8.4.2
+pkgver=8.5.0
 pkgrel=1
 pkgdesc="A POSIX fetch using NerdFonts"
 arch=('any')
@@ -10,7 +10,7 @@ depends=()
 optdepends=('nerd-fonts: NerdFont to show icons in fetch')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/thatonecalculator/NerdFetch/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('cad765074e4b3f442bf78813f690343d58d3dfd42c90ab83bf93d101f890b27e')
+sha256sums=('c2fb7e7fc33690a69b7beaf6473d56c882a44ba3bbe63150f45a97f107220741')
 provides=('nerdfetch')
 conflicts=('nerdfetch-git')
 
