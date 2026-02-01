@@ -3,7 +3,7 @@
 # Contributor: Matteo Triggiani <davvore33@gmail.com>
 
 pkgname=python-pickledb
-pkgver=1.3.2
+pkgver=1.6
 pkgrel=2
 pkgdesc='A Lightweight, simple and fast Python key-value store with asynchronous support'
 url="https://patx.github.io/pickledb/"
@@ -17,23 +17,18 @@ depends=(
 makedepends=(
   'git'
   'python-build'
+  'python-flit-core'
   'python-installer'
-  'python-setuptools'
   'python-wheel'
 )
 checkdepends=(
+  'python-aiosqlite'
   'python-pytest'
+  'python-pytest-asyncio'
 )
-source=("git+https://github.com/patx/pickledb.git#tag=v$pkgver"
-        "fix_test_invalid_file_loading.patch")
-sha256sums=('526cb7976899b641bb6500faf14978cf9c87a7955e7e7828dfd3e64d2abded8c'
-            '24b9ca38bfa9d5e5f732d62c125cf45888c1883a0c0a32f4bfc2fa7c76197ccb')
-
-prepare () {
-    cd "pickledb"
-    # https://github.com/patx/pickledb/issues/102
-    patch -p1 < ../fix_test_invalid_file_loading.patch
-}
+optdepends=("python-aiosqlite: Alternative backend to orjson")
+source=("git+https://github.com/patx/pickledb.git#tag=v$pkgver")
+sha256sums=('35404eb52818f11e601573d6562678612a912a11f608423c392d80a7804dcc3d')
 
 build() {
     cd "pickledb"
@@ -42,7 +37,7 @@ build() {
 
 check() {
     cd "pickledb"
-    pytest tests.py -v
+    pytest -v
 }
 
 package() {
