@@ -1,13 +1,13 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname=ef3kffusb
 pkgver=1.93
-pkgrel=1
+pkgrel=2
 pkgdesc='All-in-1 utility for the Kung Fu Flash cartridge based on EasyFlash 3 USB Utilities and its USB connection to the PC'
 arch=('x86_64')
-url='https://github.com/KimJorgensen/KungFuFlash/tree/master/3rd_party/ef3utils'
+url='https://codeberg.org/KimJorgensen/KungFuFlash/src/branch/master/3rd_party/ef3utils'
 makedepends=('git' 'tass64')
 license=('unknown')
-source=("git+https://github.com/KimJorgensen/KungFuFlash")
+source=("git+https://codeberg.org/KimJorgensen/KungFuFlash")
 sha256sums=('SKIP')
 
 pkgver() {
