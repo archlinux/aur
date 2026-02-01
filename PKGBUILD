@@ -1,15 +1,16 @@
-# Maintainer : DXC-0 <thecyberarcher@protonmail.ch>
+# Maintainer : Zen Wen <zen.8841@gmail.com>
+# Contributor : DXC-0 <thecyberarcher@protonmail.ch>
 # Contributor : tadly <me@tadly.de>
 
 pkgname=parsec-bin
 pkgver=150_97c
-pkgrel=1
+pkgrel=2
 pkgdesc='Remotely connect to a gaming pc for a low latency remote computing experience'
 url='http://parsec.app'
 license=('custom')
 arch=('x86_64')
 provides=('parsec')
-depends=('gcc-libs' 'libglvnd' 'libxext' 'libxcb' 'ffmpeg4.4' 'openssl-1.1' 'libxi' 'pipewire-alsa')
+depends=('gcc-libs' 'libglvnd' 'libxext' 'libxcb' 'ffmpeg4.4' 'openssl' 'libxi' 'pipewire-alsa')
 optdepends=('libva: For hardware accelerated decoding')
 
 source=("$pkgname-$pkgver.deb::https://builds.parsec.app/package/parsec-linux.deb")

@@ -1,7 +1,7 @@
 pkgbase = parsec-bin
 	pkgdesc = Remotely connect to a gaming pc for a low latency remote computing experience
 	pkgver = 150_97c
-	pkgrel = 1
+	pkgrel = 2
 	url = http://parsec.app
 	arch = x86_64
 	license = custom
@@ -10,7 +10,7 @@ pkgbase = parsec-bin
 	depends = libxext
 	depends = libxcb
 	depends = ffmpeg4.4
-	depends = openssl-1.1
+	depends = openssl
 	depends = libxi
 	depends = pipewire-alsa
 	optdepends = libva: For hardware accelerated decoding
