@@ -2,7 +2,7 @@
 
 _pkgname=xdelta3-cross-gui
 pkgname=$_pkgname-bin
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="A cross-platform GUI for creating xDelta3 patches (binary release)"
 url="https://github.com/dan0v/xdelta3-cross-gui"
@@ -13,13 +13,13 @@ optdepends=('xdelta3: to use the system version instead of the bundled one')
 makedepends=('fuse2')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/${_pkgname}_linux_AppImage_x86_64.tar.gz")
-sha256sums=('cdf3d79d60cd4b29c943441935a9479a55125fd7b5c857c78bf85fe1fcb7dace')
+source=("$_pkgname-$pkgver.AppImage::$url/releases/download/$pkgver/xDelta3_Cross_Gui-x86_64.AppImage")
+sha256sums=('18faa43e66c58300ebbb8bbe76de2d41a1fa6bafcd8ee4004800a657e51b72a3')
 
 prepare() {
 # Extract the AppImage
-  chmod +x xDelta3_Cross_Gui-x86_64.AppImage
-  ./xDelta3_Cross_Gui-x86_64.AppImage --appimage-extract
+  chmod +x $_pkgname-$pkgver.AppImage
+  ./$_pkgname-$pkgver.AppImage --appimage-extract
 
 # Edit the shortcut
   cd squashfs-root
