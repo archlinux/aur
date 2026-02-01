@@ -1,0 +1,19 @@
+pkgbase = gopass-secret-service
+	pkgdesc = D-Bus Secret Service provider using GoPass as backend
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/nikicat/gopass-secret-service
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = gopass
+	optdepends = libsecret: for secret-tool CLI
+	optdepends = python-secretstorage: for Python applications
+	provides = secret-service
+	conflicts = gnome-keyring
+	backup = etc/gopass-secret-service/config.yaml
+	source = gopass-secret-service-0.1.1.tar.gz::https://github.com/nikicat/gopass-secret-service/archive/v0.1.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = gopass-secret-service
