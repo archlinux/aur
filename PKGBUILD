@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=apx-env
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="APX - Accelerated Package X: Multi-language environment manager for Python, Node.js, Go, Rust, and Ruby"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ optdepends=(
 provides=('apx')
 conflicts=('apx')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Definetly-a-username/APX/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2b190c12e82daa9744ce67f6da26435e5601f79e490c7adabd7f555969b5a15d')
+sha256sums=('9aa72bcf98ce4051c155a38db5c9de113a732f04739b75cd8fd2811bfe39c4bc')
 
 build() {
     cd "APX-${pkgver}"
