@@ -1,13 +1,14 @@
-# Maintainer: Thomas Jost <schnouki@schnouki.net>
+# Contributor: Thomas Jost <schnouki@schnouki.net>
 # Contributor: Yann Büchau <nobodyinperson at posteo de>
+# Contributor: tee < teeaur at duck dot com >
 pkgname=git-annex-standalone
-pkgver=10.20230926
+pkgver=10.20260115
 pkgrel=1
 pkgdesc="Manage files with git, without checking their contents into git. Standalone version, with no Haskell dependency."
 arch=(x86_64 aarch64)
-url="https://git-annex.branchable.com/"
-license=('GPL')
-depends=("bzip2" "file" "git" "gmp" "libffi" "libyaml" "lsof" "rsync" "sqlite" "xz" "zlib")
+url="https://git-annex.branchable.com"
+license=('custom')
+depends=("bzip2" "file" "git" "glibc" "gmp" "libffi" "libyaml" "lsof" "rsync" "sqlite" "zlib")
 depends_aarch64=("libffi7")
 provides=("git-annex")
 conflicts=("git-annex")
