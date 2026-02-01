@@ -1,0 +1,5 @@
+[sfzlint]
+source = "github"
+github = "jisaacstone/sfzlint"
+use_max_tag = true
+prefix = "v"
