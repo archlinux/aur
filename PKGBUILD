@@ -1,7 +1,7 @@
 # Maintainer: Jakob Hellermann <jakob.hellermann@protonmail.com>
 
 pkgname=obs-pwvideo
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="OBS Plugin for generic PipeWire video sources"
 arch=('x86_64')
@@ -9,8 +9,8 @@ url="https://github.com/hoshinolina/obs-pwvideo"
 license=('GPL-2.0-or-later')
 depends=('libpipewire' 'obs-studio' 'glibc')
 makedepends=('cmake')
-source=("$pkgname::https://github.com/hoshinolina/$pkgname/archive/refs/tags/0.1.0.tar.gz")
-sha256sums=('789423a2e05a8258638178d7713fff9e093c7c5d0b9bd6c72c7bb4e4cd4af3eb')
+source=("$pkgname::https://github.com/hoshinolina/$pkgname/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('f68a570f6c60964e1d2b4cd9757190f858abded3d0ef51c837c7ce57da2c53cd')
 
 build() {
 	local cmake_options=(
