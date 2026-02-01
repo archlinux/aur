@@ -1,8 +1,8 @@
 # Maintainer: Petr Manek <pm+aur at petrmanek dot cz>
 
 pkgname=varicad-view
-_pkgver_year=2025
-_pkgver_majmin=1.04
+_pkgver_year=2026
+_pkgver_majmin=1.01
 _pkgver_rel=1
 pkgver=${_pkgver_year}.${_pkgver_majmin}
 pkgrel=1
@@ -12,9 +12,9 @@ license=(custom)
 makedepends=()
 depends=(libx11 libxcomposite libxdamage libxext libxfixes libxrender mime-types gtk2 hicolor-icon-theme)
 provides=(varicad-view)
-source=("https://www.varicad.com/userdata/files/release/en/VariCAD_View-${_pkgver_year}.${_pkgver_majmin}_en-${_pkgver_rel}.$CARCH.rpm")
+source=("https://www.varicad.com/userdata/files/release/VariCAD_View-${_pkgver_year}.${_pkgver_majmin}-${_pkgver_rel}.$CARCH.rpm")
 url="https://www.varicad.com/"
-sha256sums=('9048993a3896912141cae410be73acaf291d78e4e963643279eb21b5c9056033')
+sha256sums=('8d987f213420be5dac7f1ab7b359b1e92dd9e65f05c10900ec5b34e5f4ec332f')
 
 package() {
   # Contents of this function are inspired by the install script located at:
