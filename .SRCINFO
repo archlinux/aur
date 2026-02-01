@@ -1,6 +1,6 @@
 pkgbase = nextpnr-machxo2-nightly
 	pkgdesc = nextpnr portable FPGA place and route tool - for machxo2
-	pkgver = 20260131_nextpnr_0.9_59_g8c627817
+	pkgver = 20260201_nextpnr_0.9_60_gb4da86ed
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/YosysHQ/nextpnr
@@ -23,7 +23,7 @@ pkgbase = nextpnr-machxo2-nightly
 	conflicts = nextpnr-git
 	conflicts = nextpnr-all-nightly
 	options = !strip
-	source = nextpnr::git+https://github.com/YosysHQ/nextpnr.git#commit=8c627817
+	source = nextpnr::git+https://github.com/YosysHQ/nextpnr.git#commit=b4da86ed
 	sha256sums = SKIP
 
 pkgname = nextpnr-machxo2-nightly
