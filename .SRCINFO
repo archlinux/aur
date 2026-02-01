@@ -1,4 +1,4 @@
-pkgbase = shiori
+pkgbase = shiori-reader
 	pkgdesc = Shiori - A simple MangaDex-based manga reader
 	pkgver = 0.5
 	pkgrel = 1
@@ -9,4 +9,4 @@ pkgbase = shiori
 	source = shiori.jar::https://files.meowcat.site/aur-files/shiori/0.5/shiori.jar
 	sha256sums = SKIP
 
-pkgname = shiori
+pkgname = shiori-reader

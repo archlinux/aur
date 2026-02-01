@@ -1,5 +1,5 @@
 # maintainer: meowcat <at> meowcat.site
-pkgname=shiori
+pkgname=shiori-reader
 pkgver=0.5
 pkgrel=1
 pkgdesc="Shiori - A simple MangaDex-based manga reader"
