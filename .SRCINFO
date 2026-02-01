@@ -1,6 +1,6 @@
 pkgbase = pt-depiler
 	pkgdesc = A web extension that can improve the efficiency of PT sites, based on PT-Plugin-Plus and Manifest v3.
-	pkgver = 0.0.5.1436
+	pkgver = 0.0.5.1465
 	pkgrel = 1
 	url = https://github.com/pt-plugins/PT-depiler
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = pt-depiler
 	optdepends = google-chrome
 	provides = pt-depiler
 	conflicts = pt-depiler
-	source = pt-depiler::git+https://github.com/pt-plugins/PT-depiler.git#tag=v0.0.5.1436
-	sha256sums = 6ab00da151151021fc8fd510bf15b62f402a1d90dc1aec7f109dee082474877c
+	source = pt-depiler::git+https://github.com/pt-plugins/PT-depiler.git#tag=v0.0.5.1465
+	sha256sums = 491cf116059215caecad5a739e9eebceb73522e2b7c13223636237b17ef4214e
 
 pkgname = pt-depiler
