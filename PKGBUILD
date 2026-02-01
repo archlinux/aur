@@ -13,7 +13,8 @@ conflicts=('opentaiko-git')
 source=("https://github.com/0auBSQ/OpenTaiko/releases/download/${pkgver}/OpenTaiko.Linux.x64.zip"
         "opentaiko.sh")
 # Для скрипта можно написать 'SKIP', чтобы не высчитывать сумму каждый раз
-sha256sums=('18e4f06036fde06150aba8b93cafb86aef93c6550f11d86a4eed911bff052eba')
+sha256sums=('18e4f06036fde06150aba8b93cafb86aef93c6550f11d86a4eed911bff052eba'
+            'SKIP')
 
 package() {
     # 1. Распаковываем игру в /opt
