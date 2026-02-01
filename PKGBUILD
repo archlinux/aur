@@ -1,11 +1,11 @@
 # Maintainer: Zesko
 pkgname="limine-snapper-sync-git"
-pkgver=r566.373f418
+pkgver=r573.5ce9715
 pkgrel=1
 pkgdesc="Automatically syncs Limine snapshot entries with Snapper snapshots."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/Zesko/limine-snapper-sync"
-source=(git+$url.git)
+source=("${pkgname%-git}::git+${url}.git")
 source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-25.0.2/graalvm-community-jdk-25.0.2_linux-x64_bin.tar.gz")
 source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-25.0.2/graalvm-community-jdk-25.0.2_linux-aarch64_bin.tar.gz")
 license=("GPL3")
@@ -54,7 +54,7 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	src_path="install/arch-linux/"
-	install -Dm 755 "build/native/nativeCompile/${pkgname%-git}" "$src_path/usr/lib/limine/"
+	install -Dm 755 "build/native/nativeCompile/limine-snapper-sync" "$src_path/usr/lib/limine/"
 	install -dm 755 $src_path/usr/share/doc/${pkgname%-git}/
 	cp -r README.md CHANGELOG.md "$src_path/usr/share/doc/${pkgname%-git}/"
 	cp -r "$src_path/usr" "$src_path/etc" "$pkgdir"
