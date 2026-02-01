@@ -3,7 +3,7 @@
 
 pkgname=openseachest-logparser
 pkgver=24.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source version of the Log Parser that parses ATA/SCSI/NVMe & Seagate vendor unique logs'
 arch=('x86_64')
 _baseurl='https://github.com/Seagate'
@@ -27,7 +27,7 @@ sha256sums=('ab8fa60f9cc9fa4fe4ff91ca8c5a879263e9308c1860db1c57af2e296e3ba88f'
             'SKIP'
             'SKIP'
             'd26ed859da6148b115676964fd3e6e57ca6aba748faf364eed8b2202694018c4'
-            'f25a7f84c0ae19b9955d197074bdb664ef8b00849e66ab098e10beb8b8a252eb')
+            '5a0095d319d5e771ac1622ef721dd0de9cecd96c649f1a0423d4c024d0c1db5a')
 
 prepare() {
   cd "${_gitname}"

@@ -58,7 +58,7 @@ index 950e83e..4de6fa8 100644
  clean: banner
  	rm -f *.o *.a openSeaChest_LogParser*
 diff --git a/libjson/makefile b/libjson/makefile
-index ba5a213..a03a1e7 100644
+index ba5a213..c11abc2 100644
 --- a/libjson/makefile
 +++ b/libjson/makefile
 @@ -132,9 +132,11 @@ OS=$(shell uname)
@@ -103,7 +103,15 @@ index ba5a213..a03a1e7 100644
  endif
  
  ifeq ($(ARCH),x86_32)
-Submodule opensea-common contains modified content
+@@ -240,7 +243,7 @@ $(lib_target): banner installdirs $(addprefix $(objdir)/, $(objects))
+ endif
+ 
+ # Compile object files
+-$(objdir)/%.o: $(srcdir)/%.cpp
++$(objdir)/%.o: $(srcdir)/%.cpp installdirs
+ 	$(CXX) $< -o $@ -c $(CXXFLAGS) $(BUILD)
+ 
+ ifeq ($(SHARED),1)
 diff --git a/opensea-common/Make/gcc/Makefile b/opensea-common/Make/gcc/Makefile
 index 8b2e0f7..206b220 100644
 --- a/opensea-common/Make/gcc/Makefile
