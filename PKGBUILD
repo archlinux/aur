@@ -1,8 +1,8 @@
-# Maintainer: Tokyob0t <kparra2023[at]alu.uct.cl>
+# Maintainer: Tokyob0t <tokyob0t.business[at]proton.me>
 
 _pkgname=fht-compositor
 pkgname="$_pkgname-git"
-pkgver=25.10.1.r731.f9dd077
+pkgver=25.10.1.r744.9f38cda
 pkgrel=1
 pkgdesc='A dynamic tiling Wayland compositor (git development version)'
 arch=('x86_64')
@@ -49,6 +49,10 @@ build() {
     cargo build --profile opt --features systemd
 }
 
+prepare() {
+    cd "$srcdir/$_pkgname"
+    cargo fetch --locked
+}
 
 package() {
     cd "$srcdir/$_pkgname"
