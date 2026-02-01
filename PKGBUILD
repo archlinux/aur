@@ -2,7 +2,7 @@
 _pkgname=c43
 pkgname=c47
 pkgver=00.109.03.00b1
-pkgrel=3
+pkgrel=4
 pkgdesc="Emulator for the C47 pocket calculator"
 arch=(x86_64)
 url="https://47calc.com"
@@ -49,7 +49,14 @@ ln -s /usr/share/${pkgname}/res ./
 ln -s /usr/lib/${pkgname}/${pkgname} ${pkgname}
 ./${pkgname} "\$@"
 wait
-rm -rf res ${pkgname}
+if [[ -d res ]]
+then
+rm res
+fi
+if [[ -f c47 ]]
+then
+rm ${pkgname}
+fi
 EOF
 	chmod 755 "$pkgdir/usr/bin/$pkgname"
 
