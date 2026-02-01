@@ -1,0 +1,4 @@
+[lib32-vapoursynth]
+source = "archpkg"
+archpkg = "vapoursynth"
+strip_release = true
