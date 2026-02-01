@@ -1,5 +1,8 @@
-pkg/
-*.pkg.tar.zst
-python-x3dh/
-src/
-*.zip
+*
+!.gitignore
+!.SRCINFO
+!LICENSE
+!LICENSES
+!LICENSES/*
+!PKGBUILD
+!REUSE.toml
