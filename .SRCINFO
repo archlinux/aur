@@ -1,6 +1,6 @@
 pkgbase = funky-git
 	pkgdesc = Create directory-specific shell functions
-	pkgver = v3.3.1.r11.g2997e05
+	pkgver = v3.5.5.r26.g26282cb
 	pkgrel = 1
 	url = https://github.com/bbugyi200/funky
 	install = funky-git.install
@@ -8,7 +8,6 @@ pkgbase = funky-git
 	license = MIT
 	makedepends = git
 	depends = python-setuptools
-	depends = python-future
 	depends = python-pygments
 	depends = python-six
 	provides = funky
@@ -17,4 +16,3 @@ pkgbase = funky-git
 	md5sums = SKIP
 
 pkgname = funky-git
-

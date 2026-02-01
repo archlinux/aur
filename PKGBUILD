@@ -1,13 +1,12 @@
-# Maintainer: Elias Riedel Gårding <eliasrg@kth.se>
-# Author: Bryan Bugyi <bryanbugyi34@gmail.com>
+# Contributor: Elias Riedel Gårding <eliasrg@kth.se>
 pkgname=funky-git
-pkgver=v3.3.1.r11.g2997e05
+pkgver=v3.5.5.r26.g26282cb
 pkgrel=1
 pkgdesc="Create directory-specific shell functions"
 arch=('any')
 url="https://github.com/bbugyi200/funky"
 license=('MIT')
-depends=('python-setuptools' 'python-future' 'python-pygments' 'python-six')
+depends=('python-setuptools'  'python-pygments' 'python-six')
 makedepends=('git')
 provides=('funky')
 conflicts=('funky')
