@@ -1,6 +1,6 @@
 # Maintainer: Natal Bumann wgtray@rcklt.ch
 pkgname=wgtray
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="WireGuard system tray client for easy VPN switching"
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
 )
 install=wgtray.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('03e46c2caee689778651ef87626923b604bf43f7290b682bc47d993138f8da6e')
+sha256sums=('SKIP')
 
 package() {
     cd "$pkgname-$pkgver"
