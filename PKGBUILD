@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=apx-env
-pkgver=1.2.0
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="APX - Accelerated Package X: Multi-language environment manager for Python, Node.js, Go, Rust, and Ruby"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ optdepends=(
 provides=('apx')
 conflicts=('apx')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Definetly-a-username/APX/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fda77c63eeef3884de541cd87a2f0305dcae0e113723d703f35de03e217b4f79')
+sha256sums=('2b190c12e82daa9744ce67f6da26435e5601f79e490c7adabd7f555969b5a15d')
 
 build() {
     cd "APX-${pkgver}"
@@ -27,9 +27,14 @@ build() {
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
     
-    go build -v -ldflags "-X main.version=${pkgver} -s -w" -o apx .
+    local _commit
+    _commit=$(git rev-parse --short HEAD 2>/dev/null || echo "unknown")
+    local _date
+    _date=$(date -u +%Y-%m-%d)
+    
+    go build -v -ldflags "-X main.version=${pkgver} -X main.commit=${_commit} -X main.date=${_date} -s -w -linkmode=external" -o apx .
 }
 
 check() {
