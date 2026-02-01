@@ -1,0 +1,54 @@
+#!/bin/bash
+set -e
+
+# Default values
+PROFILE="default"
+BIN_PATH="/usr/bin/openclaw-bwrap"
+REMOVE=false
+
+# Parse arguments
+while [[ "$#" -gt 0 ]]; do
+    case $1 in
+        --profile) PROFILE="$2"; shift ;;
+        --openclaw-bin) BIN_PATH="$2"; shift ;;
+        --remove) REMOVE=true ;;
+        *) echo "Unknown parameter passed: $1"; exit 1 ;;
+    esac
+    shift
+done
+
+SERVICE_NAME="openclaw-$PROFILE"
+UNIT_FILE="$HOME/.config/systemd/user/$SERVICE_NAME.service"
+
+if [ "$REMOVE" = true ]; then
+    echo "Stopping and removing service $SERVICE_NAME..."
+    systemctl --user stop "$SERVICE_NAME" || true
+    systemctl --user disable "$SERVICE_NAME" || true
+    rm -f "$UNIT_FILE"
+    systemctl --user daemon-reload
+    echo "Service removed."
+    exit 0
+fi
+
+echo "Installing systemd user service $SERVICE_NAME..."
+mkdir -p "$HOME/.config/systemd/user"
+
+cat > "$UNIT_FILE" <<EOF
+[Unit]
+Description=OpenClaw Gateway ($PROFILE)
+After=network.target
+
+[Service]
+ExecStart=$BIN_PATH gateway run
+Restart=on-failure
+RestartPreventExitStatus=2
+RestartSec=10
+Environment=OPENCLAW_PROFILE=$PROFILE
+
+[Install]
+WantedBy=default.target
+EOF
+
+systemctl --user daemon-reload
+systemctl --user enable "$SERVICE_NAME"
+echo "Service installed. Start it with: systemctl --user start $SERVICE_NAME"

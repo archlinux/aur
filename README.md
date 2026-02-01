@@ -35,6 +35,27 @@ Run it with:
 openclaw doctor
 ```
 
+### Systemd User Service
+
+To install OpenClaw as a systemd user service (autostart on login):
+
+```bash
+# Install default profile
+openclaw-install-systemd-user-service
+
+# Install specific profile
+openclaw-install-systemd-user-service --profile my-profile
+
+# Remove service
+openclaw-install-systemd-user-service --remove
+```
+
+Start/Stop the service:
+```bash
+systemctl --user start openclaw-default
+systemctl --user stop openclaw-default
+```
+
 ### Sandboxing
 OpenClaw supports sandboxing to limit the agent's reach. The official recommendation is to use the **OpenClaw Sandbox** (often container-based).
 

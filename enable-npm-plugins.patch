@@ -92,3 +92,40 @@
    const bundledDir = resolveBundledPluginsDir();
    if (bundledDir) {
      discoverInDirectory({
+
+--- a/src/plugins/install.ts
++++ b/src/plugins/install.ts
+@@ -340,6 +340,32 @@
+   mode?: "install" | "update";
+   dryRun?: boolean;
+   expectedPluginId?: string;
+ }): Promise<InstallPluginResult> {
++  // Force installation into user config directory if package.json exists there
++  const configPkgJson = path.join(CONFIG_DIR, "package.json");
++  if (await fileExists(configPkgJson)) {
++      const logger = params.logger ?? defaultLogger;
++      logger.info?.(`Installing ${params.spec} to ${CONFIG_DIR} using system package manager...`);
++
++      const hasPnpmLock = await fileExists(path.join(CONFIG_DIR, "pnpm-lock.yaml"));
++      const pm = hasPnpmLock ? "pnpm" : "npm";
++
++      const res = await runCommandWithTimeout([pm, "install", params.spec], {
++        cwd: CONFIG_DIR,
++        timeoutMs: params.timeoutMs ?? 300_000,
++      });
++
++      if (res.code !== 0) {
++         return { ok: false, error: `${pm} install failed: ${res.stderr || res.stdout}` };
++      }
++
++      return {
++        ok: true,
++        pluginId: params.spec,
++        targetDir: path.join(CONFIG_DIR, "node_modules", params.spec),
++        extensions: [],
++      };
++  }
++
+   const logger = params.logger ?? defaultLogger;
+   const timeoutMs = params.timeoutMs ?? 120_000;
+   const mode = params.mode ?? "install";

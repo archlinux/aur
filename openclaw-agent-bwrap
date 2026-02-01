@@ -3,36 +3,50 @@ set -euo pipefail
 
 # Configuration
 OPENCLAW_BIN="/usr/bin/openclaw"
-# Agents might need specific access.
-# Defaults:
-# - Share net (agents usually need internet)
-# - Restrict home, only allow ~/.openclaw
-# Ensure config directories exist to prevent bind mount errors
-mkdir -p "${HOME}/.openclaw" "${HOME}/.config/openclaw" "${HOME}/.cache/openclaw"
+mkdir -p "${HOME}/.openclaw" "${HOME}/.config/openclaw" "${HOME}/.openclaw-bwrap"
 
 BWRAP_ARGS=(
+    # Unshare namespaces for isolation
     --unshare-all
     --share-net
     --die-with-parent
-    --dir /tmp
-    --ro-bind /usr /usr
-    --ro-bind /lib /lib
-    --ro-bind /lib64 /lib64
-    --ro-bind /bin /bin
-    --ro-bind /sbin /sbin
-    --ro-bind /etc /etc
+    --new-session
+
+    # Mount host root read-only
+    --ro-bind / /
+
+    # Overlay a writable tmpfs on /tmp
+    --tmpfs /tmp
+
+    # Mount devices and process info
+    --dev-bind /dev /dev
+    --ro-bind /sys /sys
     --proc /proc
-    --dev /dev
+
+    # bind the bwrap folder to $HOME
+    --bind "$HOME/.openclaw-bwrap" "$HOME"
+
+    # --- OVERRIDES ---
     --bind "${HOME}/.openclaw" "${HOME}/.openclaw"
     --bind "${HOME}/.config/openclaw" "${HOME}/.config/openclaw"
-    # Allow cache access if needed
-    --bind "${HOME}/.cache/openclaw" "${HOME}/.cache/openclaw"
+
     --setenv PATH "$PATH"
     --setenv HOME "$HOME"
 )
 
+# Optional Wayland Support
+#
+# if [[ -n "$XDG_RUNTIME_DIR" ]]; then
+#     BWRAP_ARGS+=(
+#         --ro-bind /tmp/.X11-unix /tmp/.X11-unix
+#         --setenv DISPLAY "$DISPLAY"
+#         --bind "$XDG_RUNTIME_DIR" "$XDG_RUNTIME_DIR"
+#         --setenv XDG_RUNTIME_DIR "$XDG_RUNTIME_DIR"
+#     )
+# fi
+
 if [ -n "${OPENCLAW_AGENT_BWRAP_EXTRA_ARGS:-}" ]; then
-    read -ra EXTRA_ARGS <<< "$OPENCLAW_AGENT_BWRAP_EXTRA_ARGS"
+    read -ra EXTRA_ARGS <<<"$OPENCLAW_AGENT_BWRAP_EXTRA_ARGS"
     BWRAP_ARGS+=("${EXTRA_ARGS[@]}")
 fi
 
