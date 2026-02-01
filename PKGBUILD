@@ -7,16 +7,16 @@
 pkgname="srb2-legacy"
 pkgver=2.1.29
 _dataver=2.1.25
-pkgrel=1
+pkgrel=2
 pkgdesc='Updated fork of Sonic Robo Blast 2 2.1.25'
 arch=('i686' 'x86_64' 'aarch64')
 license=('GPL-2.0-or-later')
-url='https://github.com/P-AS/srb2-legacy'
+url='https://github.com/srb2-preservation/srb2-legacy'
 depends=('sdl2' 'sdl2_mixer' 'curl' 'libpng' 'libgme' 'libopenmpt' "srb2-legacy-data>=$_dataver")
 makedepends=('git' 'mesa')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("https://github.com/P-AS/srb2-legacy/archive/SRB2_release_${pkgver}.zip")
+source=("https://github.com/srb2-preservation/srb2-legacy/archive/SRB2_release_${pkgver}.zip")
 sha256sums=('c5e32e4a57b45b162646a3fc1043f02886e21afdd40455c38838a0493bcf99a0')
 
 build() {
