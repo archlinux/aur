@@ -11,8 +11,10 @@ makedepends=('unzip') # Добавляем, чтобы zip точно распа
 provides=('opentaiko')
 conflicts=('opentaiko-git')
 source=("https://github.com/0auBSQ/OpenTaiko/releases/download/${pkgver}/OpenTaiko.Linux.x64.zip"
-        "opentaiko.sh")
-# Для скрипта можно написать 'SKIP', чтобы не высчитывать сумму каждый раз
+        "opentaiko.sh::https://raw.githubusercontent.com/Emilia228x/OpenTaiko.sh/main/opentaiko.sh")
+
+# Сумма для архива настоящая, а для скрипта ставим SKIP,
+# чтобы он не ругался при каждом мелком изменении текста скрипта
 sha256sums=('18e4f06036fde06150aba8b93cafb86aef93c6550f11d86a4eed911bff052eba'
             'SKIP')
 
