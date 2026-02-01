@@ -1,7 +1,7 @@
 pkgbase = access-irc
 	pkgdesc = Accessible IRC client with GTK3 and screen reader support
-	pkgver = 1.6.0
-	pkgrel = 2
+	pkgver = 1.7.0
+	pkgrel = 1
 	url = https://github.com/destructatron/access-irc
 	arch = any
 	license = MIT
@@ -17,10 +17,10 @@ pkgbase = access-irc
 	depends = at-spi2-core
 	depends = gst-plugins-base
 	depends = gst-plugins-good
-	depends = gspell
+	depends = python-gtkspellcheck
 	optdepends = python-numpy: for sound generation
 	optdepends = python-scipy: for sound generation
-	source = access-irc-1.6.0.tar.gz::https://github.com/destructatron/access-irc/archive/refs/tags/v1.6.0.tar.gz
-	sha256sums = 7e037c173a6095840fccf240710129c72c89a678ca95267ace8fc75c40d5c083
+	source = access-irc-1.7.0.tar.gz::https://github.com/destructatron/access-irc/archive/refs/tags/v1.7.0.tar.gz
+	sha256sums = fa02cc159b883d96a63ed2813360c527422f433af22fca9b4f4b62a27221c72b
 
 pkgname = access-irc
