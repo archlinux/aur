@@ -1,7 +1,8 @@
 # Maintainer: quietvoid <tcChlisop0@gmail.com>
 
-pkgname=dovi_tool-git
-pkgver=2.1.2.r10.ga4f1b62
+_pkgname=dovi_tool
+pkgname=${_pkgname}-git
+pkgver=2.3.1.r8.g25c397e
 pkgrel=1
 pkgdesc='CLI tool combining multiple utilities for working with Dolby Vision'
 arch=('x86_64')
@@ -15,40 +16,38 @@ source=(git+https://github.com/quietvoid/dovi_tool.git)
 sha256sums=('SKIP')
 
 pkgver() {
-  cd dovi_tool
+  cd "${_pkgname}"
 
   git describe --match "[0-9]*" --long HEAD --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cargo fetch \
-    --locked \
-    --manifest-path dovi_tool/Cargo.toml
+  export RUSTUP_TOOLCHAIN=stable
+
+  cd "${_pkgname}"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
-  cargo build \
-    --release \
-    --frozen \
-    --manifest-path dovi_tool/Cargo.toml
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+
+  cd "${_pkgname}"
+  cargo build --frozen --profile release-deploy
 }
 
 check() {
-  cargo test \
-    --release \
-    --frozen \
-    --manifest-path dovi_tool/Cargo.toml
+  export RUSTUP_TOOLCHAIN=stable
+
+  cd "${_pkgname}"
+  cargo test --frozen --all-features
+  cargo test --frozen --all-features --bins
 }
 
 package() {
-  cd dovi_tool
+  export CARGO_TARGET_DIR=target
 
-  cargo install \
-    --frozen \
-    --offline \
-    --no-track \
-    --path . \
-    --root "${pkgdir}"/usr
-
+  cd "${_pkgname}"
+  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release-deploy/$_pkgname"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/dovi_tool/LICENSE"
 }
