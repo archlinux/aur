@@ -14,7 +14,8 @@ pkgbase = opentaiko
 	depends = libxrandr
 	provides = opentaiko
 	conflicts = opentaiko-git
-	source = https://github.com/0auBSQ/OpenTaiko/releases/download/0.6.0.96/OpenTaiko.Linux.x64.zip
+	source = https://github.com/0auBSQ/OpenTaiko/releases/download/v0.6.0.96/OpenTaiko.Linux.x64.zip
+	source = opentaiko.sh
 	sha256sums = 18e4f06036fde06150aba8b93cafb86aef93c6550f11d86a4eed911bff052eba
 
 pkgname = opentaiko
