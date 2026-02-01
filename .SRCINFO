@@ -1,0 +1,18 @@
+pkgbase = backuptousb-git
+	pkgdesc = Backup your home directory to USB or any folder with optional SSH copy, large file deletion, and logging. GTK4 GUI with dynamic About dialog.
+	pkgver = 0.1.0.alpha
+	pkgrel = 1
+	url = https://github.com/Kuznix/BackupToUSB
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = gtk4
+	depends = glib2
+	provides = backuptousb
+	conflicts = backuptousb
+	source = git+https://github.com/Kuznix/backuptousb.git
+	sha256sums = SKIP
+
+pkgname = backuptousb-git
