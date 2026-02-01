@@ -35,7 +35,6 @@ package() {
     
     # Install documentation
     install -Dm 644 README.md "${pkgdir}/usr/share/doc/goatdkernel/README.md"
-    install -Dm644 "$srcdir/assets/goatdkernel.png" "$pkgdir/usr/share/pixmaps/goatdkernel.png"
 }
 
 # Post-install message
