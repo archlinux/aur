@@ -1,38 +1,55 @@
-#Maintainer: lubosz <lubosz@gmail.com>
-#Contributor: socke <github@socker.lepus.uberspace.de>
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: lubosz <lubosz@gmail.com>
+# Contributor: socke <github@socker.lepus.uberspace.de>
 
 pkgname=assimp-git
-pkgver=5.1.0.r10655.gfe7321342
+pkgver=6.0.4.r2.g18798f150
 pkgrel=1
-pkgdesc="Portable Open Source library to import various well-known 3D model formats in an uniform manner"
-arch=(i686 x86_64)
+pkgdesc="Open Asset Importer Library"
+arch=('i686' 'x86_64')
 url="https://www.assimp.org/"
-license=('BSD')
-depends=('boost' 'minizip')
-makedepends=('cmake' 'git')
+license=('BSD-3-Clause')
+depends=('gcc-libs' 'glibc' 'zlib')
+makedepends=('git' 'cmake')
+provides=("assimp=$pkgver")
 conflicts=('assimp')
-provides=("assimp=${pkgver%.r*}")
-options=(makeflags !emptydirs)
-_gitname="assimp"
-source=("git://github.com/assimp/assimp.git")
-md5sums=('SKIP')
+source=("git+https://github.com/assimp/assimp.git")
+sha256sums=('SKIP')
 
 
 pkgver() {
-  cd $_gitname
-  printf "%s.r%s.g%s" \
-  "$(grep -oP '^PROJECT\(Assimp VERSION \K[0-9.]*' CMakeLists.txt)" \
-  "$(git rev-list --count HEAD)" \
-  "$(git rev-parse --short HEAD)"
+  cd "assimp"
+
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
-  cmake -S "$_gitname" -B build \
-   -DCMAKE_INSTALL_PREFIX=/usr \
-   -DCMAKE_BUILD_TYPE=Release
-  make -C build
+  cd "assimp"
+
+  cmake \
+    -B "_build" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DCMAKE_INSTALL_LIBDIR="lib" \
+    -DASSIMP_BUILD_ASSIMP_TOOLS=ON \
+    -DASSIMP_BUILD_ZLIB=OFF \
+    -DASSIMP_WARNINGS_AS_ERRORS=OFF \
+    ./
+  cmake --build "_build"
+}
+
+check() {
+  cd "assimp"
+
+  #cmake --build "_build" --target test
 }
 
 package() {
-  make -C build DESTDIR="$pkgdir" install
+  cd "assimp"
+
+  DESTDIR="$pkgdir" cmake --install "_build"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/assimp"
 }
