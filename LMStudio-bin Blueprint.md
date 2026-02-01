@@ -8,7 +8,7 @@ Target Platform: Arch Linux (AUR)
 
 Upstream Software: LM Studio (Proprietary AppImage)
 
-This project provides a professional-grade Arch User Repository (AUR) package for LM Studio. It employs a "Maintenance Bridge" architecture to convert dynamic upstream releases into deterministic, security-verified Arch Linux packages while adhering strictly to Arch Linux packaging standards for binary software.
+This project provides an Arch User Repository (AUR) package for LM Studio. It employs a "Maintenance Bridge" architecture to convert dynamic upstream releases into deterministic, security-verified Arch Linux packages while adhering strictly to Arch Linux packaging standards for binary software.
 
 2. Core Objectives
 
@@ -40,11 +40,10 @@ The build process follows a specific lifecycle to ensure stability:
 
 Extraction Stage: Uses --appimage-extract within a temporary sandbox to access internal assets.
 
-Icon Strategy: * Targets squashfs-root/.DirIcon as the primary high-res source.
-
-Fallbacks to Electron-specific paths (resources/app/.webpack/).
-
-Deploys to /usr/share/icons/hicolor/ for theme integration and /usr/share/pixmaps/ for legacy support.
+Icon Strategy (Static Vendoring):
+* Static Icon: The high-resolution (512x512) icon is vendored as `lmstudio.png` in the base repository.
+* Optimization: Icons must be optimized to stay under the 500KB AUR repository blob limit.
+* Rationale: Static vendoring prevents build-time extraction failures and ensures consistent visual presentation across versions without relying on internal AppImage layout stability.
 
 Binary Placement: Installs the AppImage to /opt/lm-studio/ and provides a symbolic link at /usr/bin/lm-studio.
 
@@ -72,23 +71,31 @@ Inspect pkg/ directory to ensure icon assets are present at /usr/share/icons/hic
 
 Publish: * Refresh .SRCINFO (makepkg --printsrcinfo > .SRCINFO).
 
-Commit PKGBUILD, .SRCINFO, lmstudio.desktop, and lmstudio-bin.install.
+Commit PKGBUILD, .SRCINFO, lmstudio.desktop, lmstudio.png, and lmstudio-bin.install.
 
 Push to origin master.
 
-5. Directory Structure
+5. Git Hygiene & AUR Constraints
+
+* Blob Limit: The AUR imposes a strict 512KB limit on individual file blobs. All vendored assets (like `lmstudio.png`) must be optimized to comply.
+* Tracking Restrictions: Only source-of-truth files and metadata are permitted in the repository. Tracking of `src/` or `pkg/` directories is strictly prohibited.
+* Verification: Use `verify_git_hygiene.sh` to audit the repository state before pushing to the AUR remote.
+
+6. Directory Structure
 
 .
 ├── PKGBUILD                # Generated Arch Linux build script
 ├── PKGBUILD.template       # Blueprint for the maintenance engine
 ├── .SRCINFO                # AUR metadata index (auto-generated)
 ├── lmstudio.desktop        # Desktop integration file
+├── lmstudio.png            # Static vendored icon (512x512)
 ├── lmstudio-bin.install    # Post-install hooks for cache clearing
 ├── update_package.py       # The Maintenance Engine script
-└── PROJECT_BLUEPRINT.md    # This reference document
+├── verify_git_hygiene.sh   # Hygiene enforcement script
+└── LMStudio-bin Blueprint.md # This reference document
 
 
-6. Maintenance Contacts & Authority
+7. Maintenance Contacts & Authority
 
 Maintainer: madgoat (AUR)
 
