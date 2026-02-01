@@ -1,6 +1,6 @@
 pkgbase = slipstream-git
 	pkgdesc = High-performance multi-path covert channel over DNS in Rust with vibe coding
-	pkgver = r63.af38c2b
+	pkgver = r66.bc772dd
 	pkgrel = 1
 	url = https://github.com/Mygod/slipstream-rust
 	arch = x86_64
