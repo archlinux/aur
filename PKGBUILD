@@ -2,7 +2,7 @@
 pkgname=mistserver
 pkgdesc="The MistServer media server toolkit"
 pkgver=3.10
-pkgrel=1
+pkgrel=2
 license=('Unlicense')
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://mistserver.org"
@@ -12,7 +12,7 @@ url="https://mistserver.org"
 # Similarly, libusrsctp has an AUR package available, but does not provide a pkgbuild file so the dependency check fails.
 # For this reason we built it as a static subproject as well, to prevent conflicts.
 depends=('srt' 'libsrtp' 'librist')
-makedepends=('meson')
+makedepends=('meson' 'git')
 source=("https://github.com/DDVTECH/mistserver/archive/${pkgver}.tar.gz")
 md5sums=('dbd89254c48b869b61517ec48402947d')
 build() {
