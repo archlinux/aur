@@ -1,7 +1,11 @@
 # Maintainer: limforge
 
 pkgname=noorfetch
+<<<<<<< HEAD
 pkgver=0.5.8.r1.g8fb21b0
+=======
+pkgver=0.5.7
+>>>>>>> aur/master
 pkgrel=1
 pkgdesc="Minimal and fast system information fetch tool written in Rust"
 arch=('x86_64')
@@ -11,6 +15,7 @@ license=('GPL-3.0-or-later')
 makedepends=('cargo' 'git')
 depends=('gcc-libs' 'glibc')
 
+<<<<<<< HEAD
 source=("git+${url}.git")
 sha256sums=('SKIP')
 pkgver() {
@@ -19,6 +24,10 @@ pkgver() {
     sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || \
     printf "0.5.8.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+=======
+source=("git+${url}.git#tag=v${pkgver}")
+sha256sums=('SKIP')
+>>>>>>> aur/master
 
 prepare() {
   cd "$pkgname"
