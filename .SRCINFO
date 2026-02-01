@@ -1,7 +1,7 @@
 pkgbase = airctl-bin
 	pkgdesc = WiFi network manager GUI (prebuilt binary)
 	pkgver = 0.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pshycodr/airctl
 	arch = x86_64
 	license = GPL-3.0-only
@@ -14,8 +14,8 @@ pkgbase = airctl-bin
 	source = airctl::https://github.com/pshycodr/airctl/releases/download/v0.2.1/airctl.bin
 	source = airctl.desktop
 	source = airctl.png
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 390a3f2a2360235b832ba9f85990fcab3fa4ade70333c6fcc7feb8ed0869f79c
+	sha256sums = 6793e486bfb640f93e7456364172355bdee80b759502d638ecf7cc3fdc078a5b
+	sha256sums = d05d396e1e0550f7cd523be523728f1a48ed66db18f9488ddc4ec59dff0ee273
 
 pkgname = airctl-bin
