@@ -1,8 +1,8 @@
 pkgbase = fht-share-picker-git
 	pkgdesc = A Wayland XDG screencast output picker
-	pkgver = 25.10.0.r10.a6ed304
+	pkgver = 25.10.0.r744.9f38cda
 	pkgrel = 1
-	url = https://github.com/nferhat/fht-share-picker
+	url = https://github.com/nferhat/fht-compositor
 	arch = x86_64
 	groups = fht-desktop
 	license = GPL-3.0-or-later
@@ -19,7 +19,7 @@ pkgbase = fht-share-picker-git
 	depends = libadwaita
 	provides = fht-share-picker
 	conflicts = fht-share-picker
-	source = git+https://github.com/nferhat/fht-share-picker.git
+	source = git+https://github.com/nferhat/fht-compositor.git
 	sha256sums = SKIP
 
 pkgname = fht-share-picker-git
