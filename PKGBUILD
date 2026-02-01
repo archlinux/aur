@@ -1,6 +1,6 @@
-# Maintainer: Haram Choi <altitudimen at google dot com>
+# Maintainer: Haram Choi <altitudinem at google dot com>
 pkgname=pipewire-web-remote
-pkgver=0.1.0  # 태그 푸시 시 자동으로 업데이트되지만 초기값은 필요합니다.
+pkgver=0.1.0 
 pkgrel=1
 pkgdesc="A remote control web interface for PipeWire audio systems"
 arch=('x86_64')
