@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=resources-git
-pkgver=1.8.0.r11.g1f6df52
+pkgver=1.10.0.r0.g58aae11
 pkgrel=1
 pkgdesc="Monitor your system resources and processes"
 arch=('x86_64' 'aarch64')
@@ -8,6 +8,7 @@ url="https://apps.gnome.org/Resources"
 license=('GPL-3.0-or-later')
 depends=(
   'dmidecode'
+  'gtk4'
   'libadwaita'
   'polkit'
 )
@@ -29,16 +30,17 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --target "$(rustc --print host-tuple)"
 }
 
 build() {
   export RUSTUP_TOOLCHAIN=stable
-  arch-meson "${pkgname%-git}" build
+  arch-meson "${pkgname%-git}" build -Dprofile=default
   meson compile -C build
 }
 
 check() {
+  export RUSTUP_TOOLCHAIN=stable
   meson test -C build --no-rebuild --print-errorlogs
 }
 
