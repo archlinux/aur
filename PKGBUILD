@@ -2,7 +2,7 @@
 # Contributor: peelz <peelz.dev+arch@gmail.com>
 
 pkgname="xrizer-multilib-git"
-pkgver=bb7e2e5
+pkgver=ba56af9
 pkgrel=1
 pkgdesc="Reimplementation of OpenVR, translating calls to OpenXR. (32-bit support)"
 arch=("x86_64")

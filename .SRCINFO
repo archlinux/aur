@@ -1,6 +1,6 @@
 pkgbase = xrizer-multilib-git
 	pkgdesc = Reimplementation of OpenVR, translating calls to OpenXR. (32-bit support)
-	pkgver = bb7e2e5
+	pkgver = ba56af9
 	pkgrel = 1
 	url = https://github.com/Mr-Zero88/xrizer
 	arch = x86_64
