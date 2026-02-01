@@ -3,7 +3,7 @@
 
 pkgname=noto-fonts-lite
 epoch=1
-pkgver=2025.08.01
+pkgver=2026.02.01
 pkgrel=1
 pkgdesc='Google Noto TTF fonts (lite version)'
 arch=(any)
@@ -18,8 +18,8 @@ source=("${_url}/NotoSans/hinted/ttf/NotoSans-"{Black,BlackItalic,Bold,BoldItali
         "${_url}/NotoSansMono/hinted/ttf/NotoSansMono-"{Black,Bold,Light,Medium,Regular,Thin}.ttf
         "${_url}/NotoSerif/hinted/ttf/NotoSerif-"{Black,BlackItalic,Bold,BoldItalic,Italic,Light,LightItalic,Medium,MediumItalic,Regular,Thin,ThinItalic}.ttf
         "noto-fonts-license::${_url}/LICENSE"
-        66-noto-sans.conf 66-noto-serif.conf 66-noto-mono.conf
-        46-noto-sans.conf 46-noto-serif.conf 46-noto-mono.conf)
+        66-noto-sans.conf 66-noto-serif.conf
+        46-noto-sans.conf 46-noto-serif.conf)
 sha256sums=('5d4d9e0ded710a4603e10afebfce2c2d56fa0d216890e8915511d2a53a004c1c'
             '828d361910e9e3f7e323b73cf6de65f9117a4eea5283f5a92a8b214029a593cc'
             '1df075a380fc7cb898acf64c1f7b3b4dd780de3caa860178bf929de35817a913'
@@ -53,10 +53,8 @@ sha256sums=('5d4d9e0ded710a4603e10afebfce2c2d56fa0d216890e8915511d2a53a004c1c'
             'f2095b08bed08b23a6fe26112fcd679a2bee3f002eef077eb05d215ed1051bd8'
             '52684bebf6447be22618d2a04ff37623ec92f9d8ccf6b6f972e5bcbcfee90d69'
             '4459944b63dc083107280f5d7375c69746bf80a09416a4a4909a100e58e5a33a'
-            '4526289f59654e2a81dc734669a1ae4e416f9a56d0896ec3741c6bf065baf8a8'
             '83a8faf6a47954075f97a2d555048e2a6689c38603b2ca00150157bf645f4593'
-            'c94368b24506770767d003e5bcba589a8e402e489c240ee52453bf3ac7e9b5fa'
-            'f5c09b37280d7569b6c99a78511639be4ae25b8c5406464422fe0421fe13a884')
+            'c94368b24506770767d003e5bcba589a8e402e489c240ee52453bf3ac7e9b5fa')
 
 package() {
   install -Dm644 Noto*.tt[fc] -t "$pkgdir"/usr/share/fonts/noto
