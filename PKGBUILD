@@ -2,7 +2,7 @@
 # Contributor: Ali Molaei <ali dot molaei at protonmail dot com>
 
 _pkgname=planex
-pkgname=${_pkgname}-git
+pkgname=planex-git
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="Package installer utility for Plasma"
@@ -40,6 +40,7 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -d -m755 "${pkgdir}/usr/share/applications"
   install -d -m755 "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
+  install -d -m755 "${pkgdir}/usr/share/knotifications6/"
 
   cp org.kde.planex.desktop "${pkgdir}/usr/share/applications/org.kde.planex.desktop"
   cp planex.notifyrc "${pkgdir}/usr/share/knotifications6/planex.notifyrc"
