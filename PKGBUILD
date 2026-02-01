@@ -1,5 +1,5 @@
 # Maintainer: Emilia <your-email@example.com>
-pkgname=skyscraper-simulator-bin
+pkgname=skyscraper-simulator
 pkgver=2.0.3
 pkgrel=1
 pkgdesc="3D skyscraper and elevator simulator (SourceForge build with OpenEXR 3.1 compat)"
