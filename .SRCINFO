@@ -1,6 +1,6 @@
 pkgbase = hyprshot-rs
 	pkgdesc = A utility to easily take screenshots in Hyprland using your mouse
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/shikoucore/hyprshot-rs
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = hyprshot-rs
 	depends = slurp
 	provides = hyprshot-rs
 	conflicts = hyprshot-rs
-	source = https://github.com/shikoucore/hyprshot-rs/releases/download/v0.1.5/hyprshot-rs-0.1.5-x86_64.tar.gz
-	sha256sums = a7b6865090fade28e5faefe57410aace85e29b4362a88991387454bcd1ce3686
+	source = https://github.com/shikoucore/hyprshot-rs/releases/download/v0.1.6/hyprshot-rs-0.1.6-x86_64.tar.gz
+	sha256sums = 6aadfc6f0c552d980d73b06d56d42cbfd5fe4e8d2f3eb73d14fb9b89418b5dc9
 
 pkgname = hyprshot-rs
