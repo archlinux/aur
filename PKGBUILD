@@ -17,7 +17,7 @@ optdepends=('modprobed-db: For modprobed-db integration support'
 source=("goatdkernel-${pkgver}-x86_64.tar.gz::https://github.com/MadGoatHaz/GOATd-Kernel/releases/download/v${pkgver}/goatdkernel-${pkgver}-x86_64.tar.gz"
         "git+https://github.com/MadGoatHaz/GOATd-Kernel.git#tag=v${pkgver}"
         "https://github.com/MadGoatHaz/GOATd-Kernel/releases/download/v${pkgver}/goatdkernel.png")
-sha256sums=('2fa276fcf9e8cd62989f2d6838b11b55a79e8c166af9b332c7ccdc6378cf9ccd'
+sha256sums=('b915145b72f49533b4248119eeda979878cb1fc7e10871c0c76347915c3a58c7'
             'SKIP'
             'SKIP')
 
