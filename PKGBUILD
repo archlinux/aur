@@ -6,7 +6,7 @@
 # Contributor: Jiawen Geng
 
 pkgname=github-desktop-plus
-pkgver=3.5.5.6
+pkgver=3.5.5.7
 pkgrel=1
 pkgdesc="Fork of GitHub Desktop with extra features and improvements."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -27,7 +27,7 @@ depends=(curl
 optdepends=('github-cli: CLI interface for GitHub'
             'hub: CLI interface for GitHub')
 makedepends=(python-setuptools
-             'nodejs>=22'
+             'nodejs-lts-jod'
              npm
              xorg-server-xvfb
              yarn)
