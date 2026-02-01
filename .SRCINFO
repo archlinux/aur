@@ -1,6 +1,6 @@
 pkgbase = secretd
 	pkgdesc = Local-first encrypted password manager
-	pkgver = 6f74d92
+	pkgver = 5ed991f
 	pkgrel = 1
 	url = https://github.com/saintmili/secretd
 	arch = x86_64
