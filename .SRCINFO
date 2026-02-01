@@ -1,6 +1,6 @@
 pkgbase = r-parameters
 	pkgdesc = Processing of Model Parameters
-	pkgver = 0.28.2
+	pkgver = 0.28.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=parameters
 	arch = any
@@ -68,6 +68,7 @@ pkgbase = r-parameters
 	optdepends = r-ivreg
 	optdepends = r-knitr
 	optdepends = r-lavaan
+	optdepends = r-lcmm
 	optdepends = r-lfe
 	optdepends = r-lm.beta
 	optdepends = r-lme4
@@ -134,8 +135,8 @@ pkgbase = r-parameters
 	optdepends = r-wrs2
 	optdepends = r-logitr
 	optdepends = r-modelbased
-	source = https://cran.r-project.org/src/contrib/parameters_0.28.2.tar.gz
-	md5sums = dc48f360c97eee15cbbf48fb000e990a
-	b2sums = 838ab348585a97610cc59c5a807529f8e623802ba0f794ac002be31c7031dac540721de9a29620aea4331d9d8b35127b8e5c7c8ccbecba330427d41a2201d5c8
+	source = https://cran.r-project.org/src/contrib/parameters_0.28.3.tar.gz
+	md5sums = ee18bb59bfcfab6b6dd725fda5600e6d
+	b2sums = c68ac65e7ccf27b0993204c986c582cfdda16ca233ce7ca41eccf47790814d82d6a560b89ea4986c872f227f58246472dddac9a5cc63e836902350ff15c2a011
 
 pkgname = r-parameters
