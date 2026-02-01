@@ -1,7 +1,7 @@
 # Maintainer: fdossena <info@fdossena.com>
 
 pkgname=modetc
-pkgver=0.1.4.r13.b0883a3.6.18.7.zen1.1.zen
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='Move your dotfiles from kernel space'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
