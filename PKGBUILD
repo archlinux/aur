@@ -1,7 +1,8 @@
 # Maintainer: quietvoid <tcChlisop0@gmail.com>
 
-pkgname=hevc_hdr_editor-git
-pkgver=1.0.0.r1.gb28ad98
+_pkgname=hevc_hdr_editor
+pkgname=${_pkgname}-git
+pkgver=1.0.1.r0.g6772c91
 pkgrel=1
 pkgdesc='CLI tool combining multiple utilities for working with Dolby Vision'
 arch=('x86_64')
@@ -11,43 +12,39 @@ makedepends=('git' 'cargo')
 depends=('fontconfig')
 source=(git+https://github.com/quietvoid/hevc_hdr_editor.git)
 sha256sums=('SKIP')
-options=('!debug')
 
 pkgver() {
-  cd hevc_hdr_editor
+  cd "${_pkgname}"
 
   git describe --long HEAD --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cargo fetch \
-    --locked \
-    --manifest-path hevc_hdr_editor/Cargo.toml
+  export RUSTUP_TOOLCHAIN=stable
+
+  cd "${_pkgname}"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
-  cargo build \
-    --release \
-    --frozen \
-    --manifest-path hevc_hdr_editor/Cargo.toml
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+
+  cd "${_pkgname}"
+  cargo build --frozen --profile release-deploy
 }
 
 check() {
-  cargo test \
-    --release \
-    --frozen \
-    --manifest-path hevc_hdr_editor/Cargo.toml
+  export RUSTUP_TOOLCHAIN=stable
+
+  cd "${_pkgname}"
+  cargo test --frozen --workspace --all-features
 }
 
 package() {
-  cd hevc_hdr_editor
+  export CARGO_TARGET_DIR=target
 
-  cargo install \
-    --frozen \
-    --offline \
-    --no-track \
-    --path . \
-    --root "${pkgdir}"/usr
-
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/hevc_hdr_editor/LICENSE"
+  cd "${_pkgname}"
+  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release-deploy/$_pkgname"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
