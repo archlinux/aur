@@ -1,4 +1,4 @@
 #!/bin/bash
 export SDL_VIDEODRIVER=x11
-cd /opt/opentaiko-bin/
+cd /opt/opentaiko/
 exec ./OpenTaiko "$@"
