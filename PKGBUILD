@@ -9,7 +9,7 @@ license=('AGPL3')
 depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'librsvg' 'sqlite')
 makedepends=('npm' 'rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d60acd078fa35fe86b1b0adedf742fe847cd2e0dd22b9536ef11d17b9e3be0f9')
+sha256sums=('dff8bf75291d4016664b805f7cc06548f4040bbcfc4b8b684aef57667d1a9bc5')
 
 prepare() {
     cd "$srcdir/Spent-$pkgver"
