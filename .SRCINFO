@@ -1,6 +1,6 @@
 pkgbase = limine-snapper-sync-git
 	pkgdesc = Automatically syncs Limine snapshot entries with Snapper snapshots.
-	pkgver = r573.5ce9715
+	pkgver = r575.4665d73
 	pkgrel = 1
 	url = https://gitlab.com/Zesko/limine-snapper-sync
 	arch = x86_64

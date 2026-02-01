@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname="limine-snapper-sync-git"
-pkgver=r573.5ce9715
+pkgver=r575.4665d73
 pkgrel=1
 pkgdesc="Automatically syncs Limine snapshot entries with Snapper snapshots."
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/j
 source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-25.0.2/graalvm-community-jdk-25.0.2_linux-aarch64_bin.tar.gz")
 license=("GPL3")
 options=(!debug !strip)
-_graalvm_version=java-25-graalvm-ce
+_graalvm_version=graalvm_ce_jdk25
 depends=(
 	'bash'
 	'limine'
