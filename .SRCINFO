@@ -1,0 +1,20 @@
+pkgbase = zimage-ncnn-vulkan-git
+	pkgdesc = ncnn implementation of Z-Image image generater
+	pkgver = r18.86968b1
+	pkgrel = 1
+	url = https://github.com/nihui/zimage-ncnn-vulkan
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = cmake
+	depends = gcc-libs
+	depends = glibc
+	depends = ncnn
+	depends = libjpeg-turbo
+	depends = zlib
+	depends = libpng
+	depends = libwebp
+	source = git+https://github.com/nihui/zimage-ncnn-vulkan.git
+	sha256sums = SKIP
+
+pkgname = zimage-ncnn-vulkan-git
