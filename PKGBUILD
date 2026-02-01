@@ -25,7 +25,7 @@ source=(
   "https://github.com/JetBrains/kotlin/releases/download/v${pkgver}/kotlin-native-prebuilt-linux-x86_64-${pkgver}.tar.gz"
 )
 sha256sums=(
-    '60d4f92af2cd06dacf3e01e574c433cecca2e4b22fddefadaae40c4f531a567e'
+  '60d4f92af2cd06dacf3e01e574c433cecca2e4b22fddefadaae40c4f531a567e'
 )
 
 package() {
