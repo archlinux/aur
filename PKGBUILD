@@ -25,7 +25,7 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.deb::${url}/releases/download/${_pkgvername}/spent_${_pkgrealversion}_${_barch[0]}.deb")
 sha256sums=('c4215762b499abb4cf9674a5653c08691bbed2fbcad74441971069d0364485fe'
             '039d45f02015c1bcd91fe4f8f64afe66920c6138e79c775bdb0bf1cf3aa09543')
-sha256sums_x86_64=('a6819dd9cdee7ce39e4c06133984419e74c260b02f61d6dc732955bfb16ba306')
+sha256sums_x86_64=('32c897da9f53eb478b7e0c07e85bc26b52c72b708664521d663db8266c36ef9b')
 
 
 package() {
