@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 pkgname=vulkan-caps-viewer-wayland-bin
-pkgver=4.10
+pkgver=4.11
 pkgrel=1
 epoch=1
 pkgdesc="Vulkan Hardware Capability Viewer"
@@ -18,8 +18,8 @@ provides=('vulkan-caps-viewer')
 conflicts=('vulkan-caps-viewer')
 source_x86_64=("https://vulkan.gpuinfo.org/downloads/vulkancapsviewer_${pkgver}_linux64_wayland.AppImage")
 source_aarch64=("https://vulkan.gpuinfo.org/downloads/vulkancapsviewer_${pkgver}_linux64_wayland_aarch64.AppImage")
-sha256sums_x86_64=('68d844bd667cbec84e3f905af3af4eff616ef469fd129c730a5fb1dd896cd08a')
-sha256sums_aarch64=('db6c0534ee90b4a97b9b27022ca2fc1e1a97caff453dd8bdb07edbc711299ed1')
+sha256sums_x86_64=('3d3f1a292547e1e351a35bc1b0a2809bb84472b6f1b19025613decdf6a0de7b0')
+sha256sums_aarch64=('57c231dbcd5bfd8880e7242a1832ca98c7b1da979f7d8df3a3b982b56be1b1de')
 
 prepare() {
   if [ $CARCH == "aarch64" ]; then
