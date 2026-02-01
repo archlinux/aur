@@ -1,0 +1,16 @@
+pkgbase = mbed-cli
+	pkgdesc = Mbed Command Line Interface
+	pkgver = 1.10.4
+	pkgrel = 43
+	url = https://github.com/ARMmbed/mbed-cli
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-pyserial
+	depends = mbed-os-tools
+	source = mbed-cli-1.10.4.tar.gz::https://github.com/ARMmbed/mbed-cli/archive/refs/tags/v1.10.4.tar.gz
+	sha512sums = 5ffeca471bc853d247416a341d715b7b8f4f0cccf44ca131e667efe999c194a347b7b61e57450555d412e25dc6138c02e02fcdd4fbda260da495544580c34470
+
+pkgname = mbed-cli
