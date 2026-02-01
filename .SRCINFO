@@ -1,7 +1,7 @@
 pkgbase = jellyfin-desktop-cef-git
 	pkgdesc = Experimental rewrite of Jellyfin Desktop built on CEF
-	pkgver = 0.r124.506ba96
-	pkgrel = 1
+	pkgver = 0.r176.b61d73a
+	pkgrel = 2
 	url = https://github.com/jellyfin-labs/jellyfin-desktop-cef
 	arch = x86_64
 	license = GPL-2.0-only

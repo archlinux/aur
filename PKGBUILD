@@ -1,7 +1,7 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 pkgname=jellyfin-desktop-cef-git
-pkgver=0.r124.506ba96
-pkgrel=1
+pkgver=0.r176.b61d73a
+pkgrel=2
 license=('GPL-2.0-only')
 pkgdesc="Experimental rewrite of Jellyfin Desktop built on CEF"
 arch=('x86_64')
@@ -55,11 +55,11 @@ package() {
     ln -s /opt/jellyfin-desktop-cef/jellyfin-desktop-cef "$pkgdir/usr/bin/jellyfin-desktop-cef"
 
     # Icon
-    install -Dm644 resources/linux/jellyfin-desktop-cef.svg \
+    install -Dm644 resources/linux/org.jellyfin.JellyfinDesktopCEF.svg \
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/jellyfin-desktop-cef.svg"
 
     # Desktop entry
-    install -Dm644 resources/linux/jellyfin-desktop-cef.desktop \
+    install -Dm644 resources/linux/org.jellyfin.JellyfinDesktopCEF.desktop \
         "$pkgdir/usr/share/applications/jellyfin-desktop-cef.desktop"
 
     # License
