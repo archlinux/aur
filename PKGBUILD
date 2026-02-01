@@ -31,12 +31,12 @@ prepare() {
 }
 
 package() {
-    # Путь может измениться в зависимости от того, куда unzip кинул файлы
-    # Обычно это src/publish/
     mkdir -p "${pkgdir}/opt/${pkgname}"
     cp -r "${srcdir}/publish/"* "${pkgdir}/opt/${pkgname}/"
 
+    # ВОТ ЭТА СТРОЧКА — СПАСИТЕЛЬНИЦА:
+    chmod +x "${pkgdir}/opt/${pkgname}/OpenTaiko"
+
     mkdir -p "${pkgdir}/usr/bin"
-    # Тот самый скрипт с гитхаба (убедись, что он запускает ./OpenTaiko)
     install -m755 "${srcdir}/opentaiko.sh" "${pkgdir}/usr/bin/opentaiko"
 }
