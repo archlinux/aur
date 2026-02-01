@@ -1,6 +1,6 @@
 pkgname=wayland-push-to-talk-fix-git
 pkgver=r18.fecb045
-pkgrel=1
+pkgrel=2
 pkgdesc="This fixes the inability to use push to talk in Discord when running Wayland"
 arch=('x86_64')
 url="https://github.com/Rush/wayland-push-to-talk-fix.git"
@@ -26,8 +26,6 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname"
-  mkdir -p $pkgdir/usr/bin
-  mkdir -p $pkgdir/etc/xdg/autostart
-	install -m 755 push-to-talk $pkgdir/usr/bin/
-	install -m 644 push-to-talk.desktop $pkgdir/etc/xdg/autostart
+  install -Dm 755 push-to-talk $pkgdir/usr/bin/push-to-talk
+  install -Dm 644 push-to-talk.desktop $pkgdir/etc/xdg/autostart/push-to-talk.desktop
 }

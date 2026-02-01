@@ -1,7 +1,7 @@
 pkgbase = wayland-push-to-talk-fix-git
 	pkgdesc = This fixes the inability to use push to talk in Discord when running Wayland
 	pkgver = r18.fecb045
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Rush/wayland-push-to-talk-fix.git
 	arch = x86_64
 	license = MIT
