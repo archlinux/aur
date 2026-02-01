@@ -1,0 +1,18 @@
+# Binarios y carpetas de construcción
+/pkg/
+/src/
+/bin/
+
+# Archivos de paquetes comprimidos (los que genera makepkg)
+*.tar.gz
+*.tar.xz
+*.tar.zst
+
+# Archivos de log y temporales de makepkg
+*.log
+*.log.gz
+pkg/
+src/
+
+# Si se generan archivos de firma
+*.sig
