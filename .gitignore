@@ -1,4 +1,8 @@
-*.AppImage
-*.AppImage.zsync
-src/
 pkg/
+src/
+*.AppImage
+*.tar.gz
+*.tar.xz
+*.log
+squashfs-root/
+__pycache__/
