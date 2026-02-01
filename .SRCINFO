@@ -9,7 +9,7 @@ pkgbase = pamtester
 	arch = aarch64
 	license = custom
 	depends = pam
-	source = http://sourceforge.net/projects/pamtester/files/pamtester/0.1.2/pamtester-0.1.2.tar.gz
+	source = https://downloads.sourceforge.net/project/pamtester/pamtester/0.1.2/pamtester-0.1.2.tar.gz
 	sha256sums = 83633d0e8a4f35810456d9d52261c8ae0beb9148276847cae8963505240fb2d5
 
 pkgname = pamtester

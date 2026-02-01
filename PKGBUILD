@@ -7,7 +7,7 @@ arch=(i686 x86_64 armv7h aarch64)
 url="http://pamtester.sourceforge.net/"
 license=(custom)
 depends=(pam)
-source=("http://sourceforge.net/projects/pamtester/files/pamtester/$pkgver/pamtester-$pkgver.tar.gz")
+source=("https://downloads.sourceforge.net/project/pamtester/pamtester/$pkgver/pamtester-$pkgver.tar.gz")
 sha256sums=('83633d0e8a4f35810456d9d52261c8ae0beb9148276847cae8963505240fb2d5')
 
 prepare() {
