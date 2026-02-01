@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=notepadnext-bin
-pkgver=0.12
+pkgver=0.13
 pkgrel=1
 pkgdesc="A cross-platform, reimplementation of Notepad++ (binary release)"
 url="https://github.com/dail8859/NotepadNext"
@@ -13,7 +13,7 @@ conflicts=("notepadnext")
 provides=("notepadnext")
 options=(!strip)
 source=("$url/releases/download/v$pkgver/NotepadNext-v$pkgver-x86_64.AppImage")
-sha256sums=('1d5070c00086fec85ae9bc205867bcf1ce9c319b2b9d58eb4629e4f7295e7e30')
+sha256sums=('e32f904b791220e60be94002b67d3e77f2aa2f2876a55c2b4170fbdd11af6290')
 
 prepare() {
 # Extract the AppImage
