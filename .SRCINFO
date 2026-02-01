@@ -1,7 +1,7 @@
 pkgbase = spent
 	pkgdesc = Minimalist personal finance tracker for Linux desktop
 	pkgver = 1.1.6
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/FrogSnot/Spent
 	arch = x86_64
 	license = AGPL3
@@ -14,6 +14,6 @@ pkgbase = spent
 	depends = librsvg
 	depends = sqlite
 	source = spent-1.1.6.tar.gz::https://github.com/FrogSnot/Spent/archive/v1.1.6.tar.gz
-	sha256sums = 2cb595bd1a00f7a0e17388835895fda2acb75eb8c8f93f8400ed0dce78b7b93e
+	sha256sums = 90a784ac14812dd9543b9900c0541763f9574a888d8d826a80b2ed1bc58b46a5
 
 pkgname = spent

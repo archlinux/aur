@@ -1,7 +1,7 @@
 # Maintainer: FrogSnot
 pkgname=spent
 pkgver=1.1.6
-pkgrel=2
+pkgrel=1
 pkgdesc="Minimalist personal finance tracker for Linux desktop"
 arch=('x86_64')
 url="https://github.com/FrogSnot/Spent"
@@ -9,7 +9,7 @@ license=('AGPL3')
 depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'librsvg' 'sqlite')
 makedepends=('npm' 'rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('2cb595bd1a00f7a0e17388835895fda2acb75eb8c8f93f8400ed0dce78b7b93e')
+sha256sums=('90a784ac14812dd9543b9900c0541763f9574a888d8d826a80b2ed1bc58b46a5')
 
 prepare() {
     cd "$srcdir/Spent-$pkgver"
@@ -28,7 +28,7 @@ build() {
 package() {
     cd "$srcdir/Spent-$pkgver"
     
-    install -Dm755 "src-tauri/target/release/spent-app" "$pkgdir/usr/bin/spent"
+    install -Dm755 "src-tauri/target/release/spent-app" "$pkgdir/usr/bin/spent-app"
     
     install -Dm644 "spent.desktop" \
         "$pkgdir/usr/share/applications/$pkgname.desktop"
