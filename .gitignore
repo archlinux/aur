@@ -4,4 +4,4 @@ pkg
 *.tar.gz
 *.tar.zst
 *.log
-
+handy-*
