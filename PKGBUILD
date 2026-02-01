@@ -1,6 +1,6 @@
 # Hydra CAD – AUR (generiert von packaging/arch/aur-upload.sh)
 pkgname=hydracad
-pkgver=3.0.11
+pkgver=3.0.16
 pkgrel=1
 pkgdesc="Professional CAD application (C++/Qt6)"
 arch=("x86_64")
