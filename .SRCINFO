@@ -1,11 +1,11 @@
 pkgbase = nimbus-beacon-node-bin
 	pkgdesc = Nimbus Beacon Node (Ethereum consensus client)
-	pkgver = 25.12.0
+	pkgver = 26.1.0
 	pkgrel = 1
 	url = https://github.com/status-im/nimbus-eth2
 	arch = x86_64
 	license = Apache
-	source = https://github.com/status-im/nimbus-eth2/releases/download/v25.12.0/nimbus-eth2_Linux_amd64_25.12.0_ce4689f7.tar.gz
-	sha256sums = 9942b9c77b1ba134c16fe450d979b3fa2315d0c6ce74138ad8e751bf55b2e072
+	source = https://github.com/status-im/nimbus-eth2/releases/download/v26.1.0/nimbus-eth2_Linux_amd64_26.1.0_ad142111.tar.gz
+	sha256sums = 1f4a376d937622a3a697112b3ec8282cd8d747dc60dc44a20e7eb44b73bd426e
 
 pkgname = nimbus-beacon-node-bin
