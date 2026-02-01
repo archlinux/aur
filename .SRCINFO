@@ -1,0 +1,23 @@
+pkgbase = python-twomemo
+	pkgdesc = Backend implementation of the `urn:xmpp:omemo:2` namespace for python-omemo.
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/Syndace/python-twomemo
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-doubleratchet
+	depends = python-omemo
+	depends = python-protobuf
+	depends = python-typing_extensions
+	depends = python-x3dh
+	depends = python-xeddsa
+	optdepends = python-xmlschema: etree-based XML (de)serialization and validation
+	source = python-twomemo-2.1.0.tar.gz::https://github.com/Syndace/python-twomemo/archive/refs/tags/v2.1.0.tar.gz
+	sha256sums = 89c9d9ca8c1383e561271745f8229d8819d2cc6c708040ca5e7f459cef238b84
+
+pkgname = python-twomemo
