@@ -1,4 +1,4 @@
-# Maintainer: Haram Choi <altitudimen at google dot com>
+# Maintainer: Haram Choi <altitudinem at google dot com>
 pkgname=linux-fireface-mixer
 pkgver=0.1.0
 pkgrel=1
@@ -10,7 +10,7 @@ depends=('alsa-lib' 'libx11' 'libxrandr' 'libxinerama' 'libxcursor' 'libxi' 'sys
 makedepends=('cmake')
 optdepends=('snd-firewire-ctl-services: Required for hardware control')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0488494a44c24d7ae682c26b11bd58c13d24ae446f27c38cf843180ef91dea13')
+sha256sums=('e98f7ca9b67ddf85c3c7543cbb72478f610f064b80c6eb3857eb94f09657d90d')
 
 build() {
   cd "$pkgname-$pkgver"
