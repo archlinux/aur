@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Now Playing
+Comment=Now playing widget
+Exec=/usr/bin/now-playing-gtk
+Icon=media-playback-start
+Terminal=false
+Type=Application
+Categories=Audio;Music;
+StartupWMClass=Now Playing
