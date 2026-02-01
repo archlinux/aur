@@ -4,7 +4,7 @@
 pkgname=emote
 _pkgname=Emote
 pkgver=4.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Modern popup emoji picker'
 arch=('any')
 url='https://github.com/tom-james-watson/Emote'
@@ -15,10 +15,15 @@ optdepends=('xdotool: automatic pasting in X11'
             'wl-clipboard: automatic copying in Wayland'
             'ydotool: automatic pasting in Wayland')
 source=("https://github.com/tom-james-watson/$_pkgname/archive/refs/tags/v${pkgver}.tar.gz"
+        openmoji-${pkgver}-${pkgrel}.csv::'https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/data/openmoji.csv'
+        # Emote uses a hard-coded old version of openmoji's database, so here we use the current version from openmoji.
+        # This does not necessarily include all the current emoji from the Unicode Consortium.
+        # For example, some of the missing emoji are listed here: https://github.com/hfg-gmuend/openmoji/blob/master/data/openmoji-emoji-unicode-missing.csv
         'setup.py' # might be better to patch upstream rather than hardcoding a completely new version
         "${pkgname}_154.patch::${url}/pull/154.patch"
         'emote_wayland_autopaste.patch')
 sha256sums=('171ddf7e216f12a9e0ed63cd0a97796fd63967df3b3aa5e452877b74aabd48c9'
+            'd5cae7dbe0507c40c63901aa349c40ade26d810ed97c2a45e677f097afcf0811'
             'c4a32b3e4be22e0214012c46a20de8218dd77cf54f884a4dccc3c4ff2ca0a18f'
             'c8fab9cd79c7def484809158930df576de5a6a4c08232272b3f8eed9ae18c874'
             '386def90668191e0930f2773e9b756399a4b8ec402760391128956ec02a35893')
@@ -38,7 +43,9 @@ prepare() {
   # Duplicate logo.svg as emote.svg to save renaming it later
   install -Dm 644 "$staticdir/logo.svg" "$staticdir/emote.svg"
   # Add static files Emote needs at runtime to the emote package
-  install -Dm 644 -t "$srcdir/$_pkgname-$pkgver/emote/static/" "$staticdir"/{emojis.csv,logo.svg,style.css}
+  install -Dm 644 -t "$srcdir/$_pkgname-$pkgver/emote/static/" "$staticdir"/{logo.svg,style.css}
+  # Update emoji from remote
+  install -m 644 "$srcdir/openmoji-${pkgver}-${pkgrel}.csv" "$srcdir/$_pkgname-$pkgver/emote/static/emojis.csv"
   # Replace setup.py with one that installs the assets above
   install -Dm 644 "$srcdir/setup.py" "$srcdir/$_pkgname-$pkgver/setup.py"
   # And replace relative references to "static/"
