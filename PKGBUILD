@@ -1,10 +1,12 @@
 # Source: https://launcher.hytale.com/version/release/launcher.json
 # Maintainer: SCDevel <root@scdevel.net>
 
+_version=2026.01.29-a86a538
+
 pkgname=hytale-launcher-bin
-pkgver=2026.01.29.a86a538
-pkgrel=1
-pkgdesc="Hytale Launcher (Native Linux, Self-Updating)"
+pkgver=${_version%-*}
+pkgrel=2
+pkgdesc="Hytale Launcher (Native Linux, Self-Updating) [${_version}]"
 url="https://hytale.com"
 license=('LicenseRef-custom')
 arch=('x86_64')
@@ -16,11 +18,7 @@ optdepends=('systemd: Required to check System Time Synchronization.'
             'iproute2: Required to check IPV6 status')
 install="hytale-launcher.install"
 
-# We split the pkgver back into the date and commit parts for the URL
-_date=$(echo $pkgver | cut -d. -f1-3)
-_commit=$(echo $pkgver | cut -d. -f4)
-
-source=("hytale-launcher-${_date}-${_commit}.zip::https://launcher.hytale.com/builds/release/linux/amd64/hytale-launcher-${_date}-${_commit}.zip"
+source=("hytale-launcher-${_version}.zip::https://launcher.hytale.com/builds/release/linux/amd64/hytale-launcher-${_version}.zip"
         "hytale-launcher.install"
         "hytale-launcher.sh"
         "nautilus-fix.sh"
