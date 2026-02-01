@@ -1,0 +1,15 @@
+pkgbase = preset
+	pkgdesc = Save and run command presets
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/VG-dev1/preset
+	arch = any
+	license = MIT
+	makedepends = rust
+	depends = glibc
+	depends = gcc-libs
+	provides = preset
+	source = preset-0.2.0.tar.gz::https://github.com/VG-dev1/preset/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = bc368a3c491c382d68b7b3d2d0946f0c6b703fdbdcedaae22e7959e30f113ff2
+
+pkgname = preset
