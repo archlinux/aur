@@ -1,6 +1,6 @@
 pkgbase = limine-mkinitcpio-hook-git
 	pkgdesc = Install kernels for the Limine bootloader.
-	pkgver = r539.cb9c017
+	pkgver = r548.6827169
 	pkgrel = 1
 	url = https://gitlab.com/Zesko/limine-entry-tool
 	arch = x86_64
