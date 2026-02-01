@@ -1,6 +1,6 @@
 # Maintainer: hollowpointer hollowpointer@pm.me
 pkgname=zond
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Deep network reconnaissance and probing tool."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7fe698e58462daeab5f71e3dcd49713303b023315921809d3d80b81047677944')
+sha256sums=('ef575d7a07776fe1d0f330c0334f5ef629a796e211079710dd0014d65d7d056d')
 
 prepare() {
   cd "$pkgname-$pkgver"
