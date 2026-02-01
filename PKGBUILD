@@ -2,7 +2,7 @@
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
 pkgver=7.1.60
-pkgrel=1
+pkgrel=2
 _mpris_ver=2.1.5
 # Commit hash for aunetx/deezer-linux for patches
 _patch_commit=74e5c3e2638c00039242d10d466480fb835f0cd4
@@ -45,8 +45,8 @@ sha256sums=('91ca528326494e88529a45d29943f67dbd9b482a3b9caacf66ac886dcf1d705c'
             '0d0034a367fb4e70849b604a2ab35d5ced0dccb67ad16c231783acfc9b8f64ee'
             'a369f25a29b43112cb80873d8e1691a66ea1273fd13507d1e698223bb6233a2b'
             '77eee637ad6f2571169a72f2dda125e004f4ed8471e4de71d7d0175772600cde'
-            'f8ea3dd7c788c79d77d656dc9b3b8d5b8891d88f3bdccbc3d9fb3bd95cec9f9c'
-            'fe0504f6e77f12bb09a5b14ecdbebe743a0bf576d8b10d9e891c53e257d1cc14'
+            'a5cda0227476a21f10cb98e6ccde1e53b8dbdfcfdf3a05eb0838f2562bbe4ace'
+            '693ead502f9a59ef907aa5a9bfd972069a521b9f3256ec9fe8bda4d46f6c5934'
             'a95a35315d00c353be2aae8cacaab22283377bb0d3177a22c18c220b8f5ece69'
             'd1fe858c87e1d8f36c16b8ce185052e182196e06174f27f9ce5112762282d3d8'
             '81543bb13c0977890c634f8ac150a451a509fc5acecaf1ab6a2abfa50493617d'
