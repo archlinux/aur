@@ -1,0 +1,56 @@
+From 5a0f1a9a7ef57c16664770aca629fb06d9a5a534 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Sun, 3 Aug 2025 09:10:33 +0200
+Subject: [PATCH] Add D-Bus service file
+
+And mark the application as D-Bus activatable. This allows application
+launchers to activate it via D-Bus.
+---
+ data/com.belmoussaoui.ReadItLater.desktop.in.in |  1 +
+ data/com.belmoussaoui.ReadItLater.service.in    |  3 +++
+ data/meson.build                                | 11 +++++++++++
+ 3 files changed, 15 insertions(+)
+ create mode 100644 data/com.belmoussaoui.ReadItLater.service.in
+
+diff --git a/data/com.belmoussaoui.ReadItLater.desktop.in.in b/data/com.belmoussaoui.ReadItLater.desktop.in.in
+index 208928b..f671a23 100644
+--- a/data/com.belmoussaoui.ReadItLater.desktop.in.in
++++ b/data/com.belmoussaoui.ReadItLater.desktop.in.in
+@@ -9,5 +9,6 @@ Keywords=GNOME;GTK;Wallabag;Web;Article;Offline;
+ # Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+ Icon=@icon@
+ StartupNotify=true
++DBusActivatable=true
+ # Translators: Do NOT translate or transliterate this text (these are enum types)!
+ X-Purism-FormFactor=Workstation;Mobile;
+diff --git a/data/com.belmoussaoui.ReadItLater.service.in b/data/com.belmoussaoui.ReadItLater.service.in
+new file mode 100644
+index 0000000..7d25349
+--- /dev/null
++++ b/data/com.belmoussaoui.ReadItLater.service.in
+@@ -0,0 +1,3 @@
++[D-BUS Service]
++Name=@app-id@
++Exec=@bindir@/read-it-later --gapplication-service
+diff --git a/data/meson.build b/data/meson.build
+index d60bce4..23ba4fc 100644
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -79,3 +79,14 @@ if glib_compile_schemas.found()
+     ],
+   )
+ endif
++
++# D-Bus service file
++service_conf = configuration_data()
++service_conf.set('app-id', application_id)
++service_conf.set('bindir', bindir)
++configure_file(
++  input: '@0@.service.in'.format(base_id),
++  output: '@0@.service'.format(application_id),
++  configuration: service_conf,
++  install_dir: datadir / 'dbus-1' / 'services'
++)
+-- 
+GitLab
+
