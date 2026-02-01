@@ -21,39 +21,46 @@ sha256sums=(
   '20f1168e3ad003502031578246a6f8f61a73f53cd2b00b583f944fda0dea2654'
 )
 _rootdir="dovi_tool-${_pkgtag}"
+_targettuple="i686-unknown-linux-gnu"
 
 prepare() {
+  export RUSTUP_TOOLCHAIN=stable
+
   cd "${_rootdir}"
   patch -Np1 -i "${srcdir}/0001-lib32-libdovi-remove-subdirectory.patch"
 
-  cargo fetch \
-    --manifest-path dolby_vision/Cargo.toml
+  cd dolby_vision
+  cargo fetch --locked --target "${_targettuple}"
 }
 
 build() {
-  cargo cbuild --target i686-unknown-linux-gnu \
-    --release \
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+
+  cd "${_rootdir}/dolby_vision"
+  cargo cbuild --target "${_targettuple}" \
     --frozen \
+    --profile release-deploy \
     --prefix=/usr \
     --libdir /usr/lib32 \
-    --includedir /usr/include/"${_pkgname}"32 \
-    --manifest-path ${_rootdir}/dolby_vision/Cargo.toml
+    --includedir /usr/include/"${_pkgname}"32
 }
 
 check() {
-  cargo test --target i686-unknown-linux-gnu \
-    --release \
-    --frozen \
-    --all-features \
-    --manifest-path ${_rootdir}/dolby_vision/Cargo.toml
+  export RUSTUP_TOOLCHAIN=stable
+
+  cd "${_rootdir}/dolby_vision"
+  cargo test --target "${_targettuple}" --frozen --all-features
 }
 
 package() {
+  export CARGO_TARGET_DIR=target
+
   cd "${_rootdir}/dolby_vision"
 
-  cargo cinstall --target i686-unknown-linux-gnu \
-    --release \
+  cargo cinstall --target "${_targettuple}" \
     --frozen \
+    --profile release-deploy \
     --prefix /usr \
     --libdir /usr/lib32 \
     --includedir /usr/include/"${_pkgname}"32 \
