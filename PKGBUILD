@@ -1,4 +1,4 @@
-# Maintainer: ChoihHaram <your_email@example.com>
+# Maintainer: ChoihHaram <altitudinem at google dot com>
 pkgname=pipewire-web-remote-bin
 _pkgname=pipewire-web-remote
 pkgver=0.1.1
@@ -21,9 +21,9 @@ source_x86_64+=()
 source_aarch64+=()
 source_armv7h+=()
 sha256sums=('f9985372422f36e9618e96655c61ca70c8840b87a6c803ad42bcf450c52fb376')
-sha256sums_x86_64=('c8297bb97fce406bc99eff550dbc011569b42df6e83f6b065b0e414ceed72e52')
-sha256sums_aarch64=('8c1a02ecab0c751d865238cdf166b11f999d49f704c1ef79172fef1bb4555fe3')
-sha256sums_armv7h=('cd04b715349a53a5b7baff3a094d6dd99f0c3574f95f8c5416dc4c1247ad32d7')
+sha256sums_x86_64=('60f70428e7c8893ba7f8aa913bc4f24c0c7816ea859ab685785141d64e9cd246')
+sha256sums_aarch64=('084655550c823b04cfe54461ec71653d8d17ce639ff59abb76a59c005233f868')
+sha256sums_armv7h=('aedf840f31d541e50a8ffdad9f05d3af09c42bcb3cdecc7cdfa3c00e85434705')
 
 package() {
   install -Dm755 "$srcdir/$_pkgname-$CARCH-$pkgver" "$pkgdir/usr/bin/$_pkgname"

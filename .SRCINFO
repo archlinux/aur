@@ -14,10 +14,10 @@ pkgbase = pipewire-web-remote-bin
 	source = LICENSE-0.1.1::https://github.com/oudeis01/pipewire-web-remote/raw/v0.1.1/LICENSE
 	sha256sums = f9985372422f36e9618e96655c61ca70c8840b87a6c803ad42bcf450c52fb376
 	source_x86_64 = pipewire-web-remote-x86_64-0.1.1::https://github.com/oudeis01/pipewire-web-remote/releases/download/v0.1.1/pipewire-web-remote-x86_64
-	sha256sums_x86_64 = c8297bb97fce406bc99eff550dbc011569b42df6e83f6b065b0e414ceed72e52
+	sha256sums_x86_64 = 60f70428e7c8893ba7f8aa913bc4f24c0c7816ea859ab685785141d64e9cd246
 	source_aarch64 = pipewire-web-remote-aarch64-0.1.1::https://github.com/oudeis01/pipewire-web-remote/releases/download/v0.1.1/pipewire-web-remote-aarch64
-	sha256sums_aarch64 = 8c1a02ecab0c751d865238cdf166b11f999d49f704c1ef79172fef1bb4555fe3
+	sha256sums_aarch64 = 084655550c823b04cfe54461ec71653d8d17ce639ff59abb76a59c005233f868
 	source_armv7h = pipewire-web-remote-armv7h-0.1.1::https://github.com/oudeis01/pipewire-web-remote/releases/download/v0.1.1/pipewire-web-remote-armv7h
-	sha256sums_armv7h = cd04b715349a53a5b7baff3a094d6dd99f0c3574f95f8c5416dc4c1247ad32d7
+	sha256sums_armv7h = aedf840f31d541e50a8ffdad9f05d3af09c42bcb3cdecc7cdfa3c00e85434705
 
 pkgname = pipewire-web-remote-bin
