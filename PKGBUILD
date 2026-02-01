@@ -1,11 +1,12 @@
-# Maintainer: dorphell <dorphell@archlinux.org>
+# Maintainer: Mike Pento <mjpento@gmail.com>
+# Contributor: dorphell <dorphell@archlinux.org>
 # Contributor: Matt Smith (Majik) <darkknight@helpdesk.zaz.net>
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 # Contributor: Jozef Riha <jose1711@gmail.com>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 
 pkgname=gkrellm
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="System monitor package for GTK2"
 arch=('x86_64')
@@ -15,7 +16,7 @@ depends=('gtk2' 'libsm' 'lm_sensors')
 makedepends=('gettext')
 backup=('etc/gkrellmd.conf')
 source=("${url}/releases/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('6f83665760b936ad4b55f9182b1ec7601faf38a0f25ea1e4bddc9965088f032d')
+sha256sums=('68c75a03a06b935afa93d3331ca1c2d862c1d50c3e9df19d9a8d48970d766b55')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -28,7 +29,7 @@ package() {
 
   make DESTDIR="$pkgdir" \
     SERVICE_DIR="$pkgdir"/usr/lib/systemd/system \
-    CFGDIR="$pkgdir"/etc \
+    CFGDIR=/etc \
     PREFIX=/usr install
 }
 
