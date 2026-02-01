@@ -1,4 +1,4 @@
-# Maintainer: Dracape <Dracape at outlook dot com>
+# Maintainer: Drazape <Drazape at outlook dot com>
 
 pkgname=symp-git
 
@@ -9,7 +9,7 @@ pkgrel=1
 # Generic
 pkgdesc='Populate directories with least amount of symlinks'
 arch=(any)
-url='https://github.com/Dracape/SymP'
+url='https://github.com/Drazape/SymP'
 license=('MIT')
 
 # Dependencies
@@ -19,7 +19,7 @@ conflicts=('symp')
 provides=("symp=${pkgver}")
 
 # Download
-source=("${pkgname}::git+https://github.com/Dracape/SymP.git")
+source=("${pkgname}::git+https://github.com/Drazape/SymP.git")
 b2sums=('SKIP')
 
 # Functions
