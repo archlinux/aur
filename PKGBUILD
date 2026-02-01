@@ -2,7 +2,7 @@
 _pkgname=c43
 pkgname=c47-bin
 pkgver=00.109.03.00b1
-pkgrel=1
+pkgrel=2
 pkgdesc="Emulator for the C47 pocket calculator"
 arch=('x86_64')
 url="https://47calc.com"
@@ -46,7 +46,18 @@ ln -s /usr/lib/${pkgname::-4}/${pkgname::-4} ${pkgname::-4}
 ln -s /usr/share/${pkgname::-4}/C47__StandardFont.ttf C47__StandardFont.ttf
 ./${pkgname::-4} "\$@"
 wait
-rm -rf res ${pkgname::-4} C47__StandardFont.ttf
+if [[ -d res ]]
+then
+rm res
+fi
+if [[ -f ${pkgname::-4} ]]
+then
+rm ${pkgname::-4}
+fi
+if [[ -f C47__StandardFont.ttf ]]
+then
+rm C47__StandardFont.ttf
+fi
 EOF
 	chmod 755 "$pkgdir/usr/bin/${pkgname::-4}"
 
