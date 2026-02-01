@@ -1,7 +1,7 @@
 # Maintainer: allddd <me (at) allddd (dot) onl>
 
 pkgname=tuptime
-pkgver=5.2.4
+pkgver=5.2.5
 pkgrel=1
 pkgdesc='Historical and statistical system uptime reporting'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python')
 source=("${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('d4038c5efb561ce4672f1b60025c6099fa243bed10063921ff9d1390cf5de863'
+sha256sums=('a4dfeac8221688be1452273458d69075c83a2ecad0dc8a27f973e8456737ec48'
             '5a8c0a9c26df2f2a2356021784b03674b764d608ec4220138e4c5032bb74a3bb'
             '1364cd0e16b017b6d2cc19a873b63ee1ac07f56fbc4641b5ed9f07b5bf37be82')
 install=${pkgname}.install
