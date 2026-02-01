@@ -2,7 +2,7 @@
 # Contributor: Samuel Corsi-House <chouse.samuel@gmail.com>
 _pkgname=playit
 pkgname=$_pkgname-bin
-pkgver=0.16.5
+pkgver=0.17.1
 pkgrel=1
 pkgdesc="The playit program"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('BSD-2-Clause')
 conflicts=(playit)
 source=("$_pkgname-$pkgver.deb::https://playit-cloud.github.io/ppa/data/${_pkgname}_${pkgver}_amd64.deb"
 	"LICENSE.txt::https://raw.githubusercontent.com/playit-cloud/playit-agent/master/LICENSE.txt")
-sha256sums=('73dc9f517f7257484110d0179818c8489fe1318cfdbedeea36e86e5077a6f538'
+sha256sums=('eedffa59baa3d18ea5cf18c1a831a3ffa655a5d463e98683b589cbbd5fae8216'
 	'SKIP')
 
 package() {
