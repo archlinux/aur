@@ -30,7 +30,7 @@ package() {
     install -Dm 644 assets/goatdkernel.desktop "${pkgdir}/usr/share/applications/goatdkernel.desktop"
     
     # Install icon
-    install -Dm 644 "${srcdir}/goatdkernel.png" "${pkgdir}/usr/share/pixmaps/goatdkernel.png"
+    install -Dm644 "${srcdir}/goatdkernel.png" "${pkgdir}/usr/share/pixmaps/goatdkernel.png"
     
     # Install polkit policy
     install -Dm 644 assets/com.goatd.kernel.policy "${pkgdir}/usr/share/polkit-1/actions/com.goatd.kernel.policy"
