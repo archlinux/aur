@@ -1,21 +1,26 @@
 pkgbase = python-omemo
-	pkgdesc = An open python implementation of the OMEMO Multi-End Message and Object Encryption protocol
-	pkgver = 0.14.0beta
-	pkgrel = 2
+	pkgdesc = An open python implementation of the OMEMO Multi-End Message and Object Encryption protocol.
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = https://github.com/Syndace/python-omemo
 	arch = any
 	license = MIT
-	makedepends = git
+	checkdepends = python-oldmemo
+	checkdepends = python-twomemo
+	checkdepends = python-twisted
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-xmlschema
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	depends = python-pynacl
-	depends = python-cryptography
+	makedepends = python-wheel
+	depends = python
+	depends = python-typing_extensions
 	depends = python-xeddsa
-	depends = python-doubleratchet
-	depends = python-x3dh
-	depends = python-protobuf
-	provides = python-omemo-syndace=0.14.0beta
-	conflicts = python-omemo-syndace
-	source = python-omemo::git+https://github.com/Syndace/python-omemo.git#tag=v0.14.0-beta
-	sha256sums = SKIP
+	optdepends = python-prettytable: for the optional cli
+	optdepends = python-twisted: alternative async backend
+	source = python-omemo-2.1.0.tar.gz::https://github.com/Syndace/python-omemo/archive/refs/tags/v2.1.0.tar.gz
+	sha256sums = 49fb4597996dc0b4cc4fa2696a77b9e3c5af601e2f83462e811d0683d182635d
 
 pkgname = python-omemo
