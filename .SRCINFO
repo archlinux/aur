@@ -1,6 +1,6 @@
 pkgbase = modetc
 	pkgdesc = Move your dotfiles from kernel space
-	pkgver = 0.1.4
+	pkgver = 0.1.5.r15.0388539.6.18.7.zen1.1.zen
 	pkgrel = 1
 	url = https://maxwell.eurofusion.eu/git/rnhmjoj/modetc
 	arch = x86_64
