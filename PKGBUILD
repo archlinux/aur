@@ -7,8 +7,9 @@ pkgdesc="GOATd Kernel - High-performance computing platform with multi-language 
 arch=('x86_64')
 url="https://github.com/MadGoatHaz/GOATd-Kernel"
 license=('MIT')
-depends=('gtk3' 'glib2' 'systemd-libs' 'libepoxy' 'pango' 'gdk-pixbuf2' 'atk' 'cairo' 'harfbuzz' 'fribidi' 'libthai' 'libxft' 'fontconfig' 'libxrender' 'libx11' 'libxext' 'libxcb' 'libxau' 'libxdmcp' 'libpng' 'zlib' 'bzip2' 'brotli' 'freetype2' 'libffi' 'pcre2' 'libblkid' 'libmount' 'libcap' 'libgpg-error' 'libgcrypt' 'lz4' 'xz' 'zstd' 'libsystemd' 'libdrm' 'wayland' 'mesa' 'libglvnd' 'libxi' 'libxrandr' 'libxcursor' 'libxdamage' 'libxinerama' 'libxcomposite' 'libxfixes' 'libxxf86vm' 'vulkan-icd-loader' 'vulkan-driver')
-optdepends=('wayland: Wayland display server support')
+depends=('glibc' 'gcc-libs' 'openssl' 'zlib')
+makedepends=('git')
+# Optimized for precompiled binary: 50 deps → 4 runtime libs (analyzed via ldd)
 
 # The binary tarball should be named: goatdkernel-${pkgver}-x86_64.tar.gz
 # Extract URL from: https://github.com/MadGoatHaz/GOATd-Kernel/releases/download/v${pkgver}/
