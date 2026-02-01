@@ -10,14 +10,19 @@ license=('mit')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-pkgver=0.1.7
+pkgver=0.1.6
 source_x86_64=("https://github.com/OpenTaiko/OpenTaiko-Hub/releases/download/v$pkgver/OpenTaiko.Hub_"$pkgver"_amd64.deb")
-sha256sums_x86_64=('e95a7cbe5cc5ccc474775e6b3e21648249eed7157c6192921b01db6d2c21c0e2')
+sha256sums_x86_64=('7fad267f8e1b8e75effe15fa60b7575d5613a6cfa7973441abcf156fde59b277')
 package() {
-	
-	# Extract package data
-	tar -xz -f data.tar.gz -C "${pkgdir}" 
+    tar -xz -f data.tar.gz -C "${pkgdir}"
 
-	find "${pkgdir}" -name "*.desktop" -type f -exec sed -i 's|Exec=OpenTaiko-Hub|Exec=env WEBKIT_DISABLE_COMPOSITING_MODE=1 GDK_BACKEND=x11 OpenTaiko-Hub|g' {} +
+    # Ищем десктоп-файл
+    local desktop_file=$(find "${pkgdir}" -name "*.desktop")
 
+    # 1. Прописываем наши переменные окружения
+    sed -i 's|Exec=OpenTaiko-Hub|Exec=env WEBKIT_DISABLE_COMPOSITING_MODE=1 GDK_BACKEND=x11 OpenTaiko-Hub|g' "$desktop_file"
+
+    # 2. Добавляем рабочую директорию, чтобы он видел настройки
+    # Вставляем строку Path после Exec
+    sed -i '/^Exec=/a Path=/usr/lib/OpenTaiko Hub/' "$desktop_file"
 }
