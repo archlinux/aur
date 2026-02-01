@@ -1,9 +1,9 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=jolt
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='TUI-based battery and energy monitor.'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/jordond/jolt'
 license=('MIT')
 makedepends=('cargo' 'patch')
