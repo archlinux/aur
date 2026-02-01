@@ -1,7 +1,7 @@
 pkgbase = goatd-kernel-bin
 	pkgdesc = GOATd Kernel - High-performance computing platform with multi-language integration
-	pkgver = 0.2.1
-	pkgrel = 2
+	pkgver = 0.2.1.2
+	pkgrel = 1
 	url = https://github.com/MadGoatHaz/GOATd-Kernel
 	arch = x86_64
 	license = MIT
@@ -55,10 +55,10 @@ pkgbase = goatd-kernel-bin
 	depends = vulkan-icd-loader
 	depends = vulkan-driver
 	optdepends = wayland: Wayland display server support
-	source = goatdkernel-0.2.1-2-x86_64.tar.gz::https://github.com/MadGoatHaz/GOATd-Kernel/releases/download/v0.2.1-2/goatdkernel-0.2.1-2-x86_64.tar.gz
-	source = git+https://github.com/MadGoatHaz/GOATd-Kernel.git#tag=v0.2.1-2
-	source = https://github.com/MadGoatHaz/GOATd-Kernel/releases/download/v0.2.1-2/goatdkernel.png
-	sha256sums = SKIP
+	source = goatdkernel-0.2.1.2-1-x86_64.tar.gz::https://github.com/MadGoatHaz/GOATd-Kernel/releases/download/v0.2.1.2-1/goatdkernel-0.2.1.2-1-x86_64.tar.gz
+	source = git+https://github.com/MadGoatHaz/GOATd-Kernel.git#tag=v0.2.1.2-1
+	source = https://github.com/MadGoatHaz/GOATd-Kernel/releases/download/v0.2.1.2-1/goatdkernel.png
+	sha256sums = fa48d5dd88e15e761b409e92211459989cfe773692d0bed64b4674ae8657496a
 	sha256sums = SKIP
 	sha256sums = SKIP
 

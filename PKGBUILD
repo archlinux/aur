@@ -1,8 +1,8 @@
 # Maintainer: MadGoatHaz <your-email@example.com>
 pkgbase=goatd-kernel-bin
 pkgname=goatdkernel
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.2.1.2
+pkgrel=1
 pkgdesc="GOATd Kernel - High-performance computing platform with multi-language integration"
 arch=('x86_64')
 url="https://github.com/MadGoatHaz/GOATd-Kernel"
@@ -15,7 +15,7 @@ optdepends=('wayland: Wayland display server support')
 source=("goatdkernel-${pkgver}-${pkgrel}-x86_64.tar.gz::https://github.com/MadGoatHaz/GOATd-Kernel/releases/download/v${pkgver}-${pkgrel}/goatdkernel-${pkgver}-${pkgrel}-x86_64.tar.gz"
         "git+https://github.com/MadGoatHaz/GOATd-Kernel.git#tag=v${pkgver}-${pkgrel}"
         "https://github.com/MadGoatHaz/GOATd-Kernel/releases/download/v${pkgver}-${pkgrel}/goatdkernel.png")
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('fa48d5dd88e15e761b409e92211459989cfe773692d0bed64b4674ae8657496a' 'SKIP' 'SKIP')
 
 package() {
     cd "${srcdir}"
