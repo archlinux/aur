@@ -2,24 +2,16 @@
 
 pkgname=python-zenlib
 _name=${pkgname#python-}
-pkgver=3.1.5
-pkgrel=4
+pkgver=3.2.1
+pkgrel=1
 pkgdesc='Useful python decorators and utilities'
 arch=(any)
 url="https://github.com/desultory/$_name"
 license=(GPL-2.0-only)
 depends=(python)
 makedepends=(python-build python-installer python-wheel python-setuptools)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
-        'skip-test-python314.patch')
-b2sums=('900cc0dbdb087d0d294027747eed046dee452ac7dd15cb572ff769e148e07478a5030f8412fdbebcf89db17c6e06df5368fe28ff1df983723e068b9005cba6ce'
-        'ec784569067e545eaf01abae5abd9cad2e71dee22b883b593726dd5dfe59e68c9c261730ac67590ac8f4ee415b61cec37374583ec4ba36bfb191ecf59f20aee4')
-
-prepare() {
-    cd $_name-$pkgver
-    # Skip test_bad_type which fails on Python 3.14 due to annotation handling changes
-    patch -Np1 -i "$srcdir/skip-test-python314.patch"
-}
+source=("$url/archive/$pkgver/$_name-$pkgver.tar.gz")
+b2sums=('f0d4c30f8103e1fa97302205e84be422c45d337034ead9912dc6ca42d30c834ee454c73c2eb0b72102c0aac68d8c650c16880318c14d82cf053edf87f146e1bc')
 
 build() {
     cd $_name-$pkgver
