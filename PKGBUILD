@@ -63,13 +63,13 @@ makedepends=(
   python-maturin
   python-pip
 )
+optdepends=(
+  'python-truststore: Verify certificates using OS trust stores'
+)
 provides=('umu-launcher')
 conflicts=('umu-launcher')
-install=
-_commit=
-_origin="https://github.com/Open-Wine-Components/umu-launcher.git"
 source=(
-  "git+$_origin"
+    "git+https://github.com/Open-Wine-Components/umu-launcher.git"
 )
 
 sha256sums=('SKIP')
