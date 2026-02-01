@@ -11,6 +11,8 @@ pkgbase = phasor-git
 	makedepends = ninja
 	conflicts = phasor
 	conflicts = phasor-dev
+	conflicts = phasor-debug
+	conflicts = phasor-dev-debug
 	source = git+https://github.com/DanielLMcGuire/Phasor.git
 	sha256sums = SKIP
 
