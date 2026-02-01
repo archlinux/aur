@@ -1,6 +1,6 @@
 # Maintainer: lawliet <https://github.com/laewliet>
 pkgname=make-your-choice
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Dead by Daylight server region selector for Linux"
 arch=('x86_64')
