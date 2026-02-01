@@ -1,4 +1,4 @@
-pkgbase = skyscraper-simulator-bin
+pkgbase = skyscraper-simulator
 	pkgdesc = 3D skyscraper and elevator simulator (SourceForge build with OpenEXR 3.1 compat)
 	pkgver = 2.0.3
 	pkgrel = 1
@@ -20,4 +20,4 @@ pkgbase = skyscraper-simulator-bin
 	sha256sums = 0bf7ec51162c4d17a4c5b850fb3f6f7a195cff9fa71f4da7735f74d7b5124320
 	sha256sums = 93925805c1fc4f8162b35f0ae109c4a75344e6decae5a240afdfce25f8a433ec
 
-pkgname = skyscraper-simulator-bin
+pkgname = skyscraper-simulator
