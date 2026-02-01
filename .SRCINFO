@@ -1,6 +1,6 @@
 pkgbase = fre
 	pkgdesc = CLI tool for tracking your most-used directories and files
-	pkgver = 0.3.1
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/camdencheek/fre
 	arch = x86_64
@@ -12,8 +12,7 @@ pkgbase = fre
 	makedepends = rust
 	makedepends = cargo
 	depends = gcc-libs
-	source = https://github.com/camdencheek/fre/archive/0.3.1.tar.gz
-	sha256sums = 22d8dddd1c634031e731ab3966d07aa01acc184b773ae1d9aa5fe5aa6c0c3858
+	source = https://github.com/camdencheek/fre/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = dab1da46e8e2dc581c0812c6160893a962fb677dfebe773ba333fd28b98e818b
 
 pkgname = fre
-

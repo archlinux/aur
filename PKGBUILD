@@ -11,7 +11,7 @@ license=('MIT')
 source=("https://github.com/camdencheek/fre/archive/refs/tags/v${pkgver}.tar.gz")
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
-sha256sums=("dab1da46e8e2dc581c0812c6160893a962fb677dfebe773ba333fd28b98e818b")
+sha256sums=('dab1da46e8e2dc581c0812c6160893a962fb677dfebe773ba333fd28b98e818b')
 
 build() {
     tar -xf v${pkgver}.tar.gz
