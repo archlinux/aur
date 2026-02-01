@@ -1,13 +1,13 @@
 pkgbase = isleward
 	pkgdesc = The moddable, multiplayer roguelike.
-	pkgver = 0.12
+	pkgver = 0.23.0.2
 	pkgrel = 1
 	url = https://gitlab.com/Isleward/isleward
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = npm
-	source = git+https://gitlab.com/Isleward/isleward.git
-	md5sums = SKIP
+	source = https://gitlab.com/Isleward/isleward/-/archive/v0.23.0.2/isleward-v0.23.0.2.tar.gz
+	b2sums = 95fb0bcef35d5f912bacaf8a0fd8b4445976c52cb26fd6dfc38e7585b3d044ac93c6f46e93a9020d7a64d02c6043e7f13390da47d6175629563be9145a100aa8
 
 pkgname = isleward
