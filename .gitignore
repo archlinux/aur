@@ -6,3 +6,4 @@ src/
 *.log
 squashfs-root/
 __pycache__/
+*.pkg.tar.zst
