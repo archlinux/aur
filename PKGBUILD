@@ -1,7 +1,7 @@
 # Maintainer: Andrew Grechkin <andrew.grechkin@gmail.com>
 _name=fuse3-p7zip
 pkgname="$_name-git"
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="fuse3 file system that uses the 7zip library to mount archives"
 arch=('x86_64')
