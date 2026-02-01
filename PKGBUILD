@@ -34,5 +34,6 @@ package() {
     install -Dm644 "$pkgdir/opt/${_pkgname}/usr/share/icons/hicolor/scalable/apps/net.shadps4.shadPS4.svg" "$pkgdir/usr/share/pixmaps/net.shadps4.shadps4-qtlauncher.svg"
     install -Dm644 "$pkgdir/opt/${_pkgname}/${_pkgid}.desktop" -t "$pkgdir/usr/share/applications"
     sed -i "s|Exec=shadPS4QtLauncher|Exec=shadps4-qtlauncher|" "$pkgdir/usr/share/applications/${_pkgid}.desktop"
+    sed -i "s|Icon=net.shadps4.shadPS4|Icon=${_pkgid}|" "$pkgdir/usr/share/applications/${_pkgid}.desktop"
     chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
