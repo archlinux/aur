@@ -1,12 +1,12 @@
 # Maintainer: Alynx Zhou <alynx.zhou@gmail.com>
 pkgname=reframe
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="DRM/KMS based remote desktop for Linux that supports Wayland/NVIDIA/headless/login…"
-arch=("x86_64" "i686" "aarch64" "armv7h" "armv6h")
+arch=("x86_64" "i686" "aarch64" "armv7h")
 url="https://reframe.alynx.one/"
 license=("Apache-2.0")
-depends=("glib2" "libepoxy" "libvncserver" "libxkbcommon" "libdrm" "systemd-libs" "glibc")
+depends=("glib2" "libepoxy" "libvncserver" "libxkbcommon" "libdrm" "systemd-libs" "glibc" "gtk4")
 optdepends=("neatvnc: experimental neatvnc implementation")
 makedepends=("git" "meson")
 backup=("etc/${pkgname}/example.conf")
