@@ -8,7 +8,7 @@ pkgdesc="A simple GTK application to control brightness of displays including ex
 arch=('x86_64')
 url="https://github.com/sidevesh/$_pkgname"
 license=('GPL3')
-makedepends=('git')
+makedepends=('git' 'meson')
 depends=('glib2' 'gtk4' 'libadwaita' 'ddcutil')
 provides=("$pkgname")
 conflicts=("$pkgname")
@@ -17,22 +17,16 @@ sha256sums=('SKIP' 'SKIP')
 
 prepare() {
   cd "$srcdir/$_pkgname"
-  git submodule init
+  git submodule init ddcbc-api
   git config submodule.ddcbc-api.url "$srcdir/ddcbc-api"
-  git -c protocol.file.allow=always submodule update
+  git -c protocol.file.allow=always submodule update ddcbc-api
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
-  ./build.sh
+  arch-meson "$_pkgname" build
+  meson compile -C build
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-  install -Dm755 ./build/app "$pkgdir/usr/bin/com.sidevesh.Luminance"
-  install -Dm644 "./install_files/com.sidevesh.Luminance.desktop" "$pkgdir/usr/share/applications/com.sidevesh.Luminance.desktop"
-  install -Dm644 "./install_files/com.sidevesh.Luminance.gschema.xml" "$pkgdir/usr/share/glib-2.0/schemas/com.sidevesh.Luminance.gschema.xml"
-  install -Dm644 "./install_files/44-backlight-permissions.rules" "$pkgdir/usr/lib/udev/rules.d/44-backlight-permissions.rules"
-  install -Dm644 "./icons/hicolor/scalable/apps/com.sidevesh.Luminance.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.sidevesh.Luminance.svg"
-  install -Dm644 "./icons/hicolor/symbolic/apps/com.sidevesh.Luminance-symbolic.svg" "$pkgdir/usr/share/icons/hicolor/symbolic/apps/com.sidevesh.Luminance-symbolic.svg"
+  meson install -C build --destdir "$pkgdir"
 }
