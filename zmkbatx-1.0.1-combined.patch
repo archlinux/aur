@@ -1,0 +1,83 @@
+diff --git a/assets/linux/zmkBATx.desktop b/assets/linux/zmkBATx.desktop
+index 13cfb80..a07de47 100644
+--- a/assets/linux/zmkBATx.desktop
++++ b/assets/linux/zmkBATx.desktop
+@@ -2,7 +2,7 @@
+ Type=Application
+ Name=zmkBATx
+ Comment=Opensource tool for peripheral battery monitoring zmk split keyboard over BLE for linux 
+-Exec=zmkBATx
++Exec=zmkbatx
+ Icon=zmkBATx
+ Categories=Utility;DataVisualization;Qt;
+-Name[en_US]=zmkBATx.desktop
++Name[en_US]=zmkBATx
+diff --git a/src/bleinterfacebluez.cpp b/src/bleinterfacebluez.cpp
+index 9fdef80..7f3fd73 100644
+--- a/src/bleinterfacebluez.cpp
++++ b/src/bleinterfacebluez.cpp
+@@ -86,7 +86,8 @@ void BLEInterfaceBluez::readCharacteristicFromBatteryServices()
+ {
+     for (auto charac : service->characteristics()) {
+         SimpleBluez::ByteArray value = charac->read();
+-        auto battery_value = hex2dec(QString::fromStdString(value.c_str()).toUtf8().toHex().toStdString());
++        std::string valueStr = std::string(value);
++        auto battery_value = hex2dec(QString::fromStdString(valueStr).toUtf8().toHex().toStdString());
+         qDebug() << "Characteristic uuid: " << charac->uuid();
+         qDebug() << "Characteristic contents: " << battery_value;
+         try {
+diff --git a/zmkBATx.pro b/zmkBATx.pro
+index 3b00a3c..d1b09b3 100644
+--- a/zmkBATx.pro
++++ b/zmkBATx.pro
+@@ -3,6 +3,9 @@
+ QT     += core gui bluetooth
+ CONFIG += c++17
+ 
++# Ensure compatibility with system simplebluez library ABI
++DEFINES += _GLIBCXX_USE_CXX11_ABI=1
++
+ QT += widgets
+ 
+ # Validate Qt version
+@@ -22,7 +25,7 @@ HEADERS  += src/mainwindow.h \
+     src/appSettings.h \
+     src/bleinterfacebluez.h
+ 
+-INCLUDEPATH += src/ src/thirdparty/
++INCLUDEPATH += src/
+ 
+ FORMS    += src/forms/mainwindow.ui \
+     src/forms/about.ui
+@@ -35,10 +38,7 @@ OTHER_FILES += README.md \
+                deploy_dep.sh \
+                .gitignore
+ 
+-LIBS += -L$$PWD/src/thirdparty/ -lsimplebluez
+-
+-INCLUDEPATH += $$PWD/src/thirdparty
+-DEPENDPATH += $$PWD/src/thirdparty
++LIBS += -lsimplebluez -lsimpledbus
+ 
+ # Inclui o diretório do D-Bus
+ INCLUDEPATH += /usr/include/dbus-1.0
+@@ -46,6 +46,7 @@ INCLUDEPATH += /usr/include/dbus-1.0
+ 
+ # Inclui o diretório para o mecanismo de sistema de mensagem D-Bus
+ INCLUDEPATH += /usr/lib/x86_64-linux-gnu/dbus-1.0/include
++INCLUDEPATH += /usr/lib64/dbus-1.0/include
+ 
+ # Link com a biblioteca D-Bus
+ LIBS += -ldbus-1
+@@ -74,8 +75,10 @@ linux:!android {
+     target_appentry.path    = $${PREFIX}/share/applications
+     target_appdata.files   += $${OUT_PWD}/assets/linux/$$lower($${TARGET}).appdata.xml
+     target_appdata.path     = $${PREFIX}/share/appdata
++    target_icons.files     += $${OUT_PWD}/assets/linux/$$lower($${TARGET}).png
++    target_icons.path       = $${PREFIX}/share/icons
+ 
+-    INSTALLS += target_app target_appentry target_appdata
++    INSTALLS += target_app target_appentry target_appdata target_icons
+ 
+ }
+ 
