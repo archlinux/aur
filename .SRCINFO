@@ -1,0 +1,11 @@
+pkgbase = tagcli-git
+	pkgdesc = Edit Music Metatada with your favourite text editor
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/AderynCrow/tagcli
+	arch = any
+	makedepends = go
+	source = git+https://gitlab.com/AderynCrow/tagcli.git
+	sha256sums = SKIP
+
+pkgname = tagcli-git
