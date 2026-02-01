@@ -1,3 +1,27 @@
+pre_remove() {
+    pkill -f "python3 -m wgtray" 2>/dev/null || true
+}
+
+post_install() {
+    echo ""
+    cat /usr/share/doc/wgtray/ascii-logo.txt 2>/dev/null || true
+    echo ""
+    echo "==> wgtray installed successfully!"
+    echo ""
+    echo "    Start:     wgtray"
+    echo "    Autostart: Enabled (logout/login to activate)"
+    echo ""
+}
+
 post_upgrade() {
-    echo ">>> Restart wgtray to apply changes: pkill wgtray; wgtray &"
+    post_install
+}
+
+pre_upgrade() {
+    pre_remove
+}
+
+post_remove() {
+    echo "==> wgtray removed."
+    echo "    User config remains at: ~/.config/wgtray/"
 }
