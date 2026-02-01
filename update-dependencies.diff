@@ -1,11 +1,11 @@
 diff --git a/package.json b/package.json
-index bc7dbbe91..18756afa2 100644
+index 597aa80e3..483e75c5e 100644
 --- a/package.json
 +++ b/package.json
-@@ -121,6 +121,9 @@
-     "@leafygreen-ui/text-input": "^16.2.2",
-     "@leafygreen-ui/tokens": "^4.2.1",
-     "@leafygreen-ui/typography": "^22.2.3",
+@@ -122,6 +122,9 @@
+     "@leafygreen-ui/text-input": "^16.2.3",
+     "@leafygreen-ui/tokens": "^4.2.2",
+     "@leafygreen-ui/typography": "^22.2.4",
 -    "kerberos": "^2.2.2"
 +    "kerberos": "^2.2.2",
 +    "electron": "%%ELECTRON_VERSION%%",
