@@ -1,6 +1,6 @@
 # Maintainer: Taha YVR <taha@noiserandom.com>
 pkgname=omarchyiso
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A TUI app for creating customized Omarchy Linux ISO images"
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ depends=('git' 'pacman' 'curl' 'expac')
 options=('!debug')
 source_x86_64=("$pkgname-x86_64-$pkgver.tar.gz::$url/releases/download/v$pkgver/omarchyiso-x86_64-linux.tar.gz")
 source_aarch64=("$pkgname-aarch64-$pkgver.tar.gz::$url/releases/download/v$pkgver/omarchyiso-aarch64-linux.tar.gz")
-sha256sums_x86_64=('31d6d72e783cc1adf3d9c7a94dd806a1ff9c2c4719181a7ce2f47dd8c0528420')
-sha256sums_aarch64=('dc4cfc20d84cb410eefd3e3d261b7b9690115ecbbf557b34709d549b427d399d')
+sha256sums_x86_64=('dda3e0a150188b84661f4d87e6456edce29dd96f97adf8a881becece81914a52')
+sha256sums_aarch64=('2a66b25ec5a2f1d3cc3a4fb6b8fbfad3679810f013c4a61578308206f0e1dc69')
 
 package() {
   # Install binary

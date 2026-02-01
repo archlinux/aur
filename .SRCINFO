@@ -1,6 +1,6 @@
 pkgbase = omarchyiso
 	pkgdesc = A TUI app for creating customized Omarchy Linux ISO images
-	pkgver = 1.0.2
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/tahayvr/omarchyiso
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = omarchyiso
 	depends = curl
 	depends = expac
 	options = !debug
-	source_x86_64 = omarchyiso-x86_64-1.0.2.tar.gz::https://github.com/tahayvr/omarchyiso/releases/download/v1.0.2/omarchyiso-x86_64-linux.tar.gz
-	sha256sums_x86_64 = 31d6d72e783cc1adf3d9c7a94dd806a1ff9c2c4719181a7ce2f47dd8c0528420
-	source_aarch64 = omarchyiso-aarch64-1.0.2.tar.gz::https://github.com/tahayvr/omarchyiso/releases/download/v1.0.2/omarchyiso-aarch64-linux.tar.gz
-	sha256sums_aarch64 = dc4cfc20d84cb410eefd3e3d261b7b9690115ecbbf557b34709d549b427d399d
+	source_x86_64 = omarchyiso-x86_64-1.1.0.tar.gz::https://github.com/tahayvr/omarchyiso/releases/download/v1.1.0/omarchyiso-x86_64-linux.tar.gz
+	sha256sums_x86_64 = dda3e0a150188b84661f4d87e6456edce29dd96f97adf8a881becece81914a52
+	source_aarch64 = omarchyiso-aarch64-1.1.0.tar.gz::https://github.com/tahayvr/omarchyiso/releases/download/v1.1.0/omarchyiso-aarch64-linux.tar.gz
+	sha256sums_aarch64 = 2a66b25ec5a2f1d3cc3a4fb6b8fbfad3679810f013c4a61578308206f0e1dc69
 
 pkgname = omarchyiso
