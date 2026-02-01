@@ -1,26 +1,25 @@
 # Maintainer: FrogSnot
 pkgname=spent
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc="Minimalist personal finance tracker for Linux desktop"
 arch=('x86_64')
 url="https://github.com/FrogSnot/Spent"
 license=('AGPL3')
-depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'librsvg')
+depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'librsvg' 'sqlite')
 makedepends=('npm' 'rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('867d9f64c747cd3c05d4c3473c5a35791e661f40b18b4d7009aabd99c7873e42')
+sha256sums=('7055b1a6127281c9daa8c44323a6372a6c5f4ec16be02f025c2469651bbe44a4')
 
 prepare() {
     cd "$srcdir/Spent-$pkgver"
-    export LIBSQLITE3_SYS_USE_PKG_CONFIG=0
     npm install
 }
 
 build() {
     cd "$srcdir/Spent-$pkgver"
     export CARGO_HOME="$srcdir/cargo-home"
-    export LIBSQLITE3_SYS_USE_PKG_CONFIG=0
+    export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
     npm run tauri build
 }
 
