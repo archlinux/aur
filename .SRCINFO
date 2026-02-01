@@ -1,10 +1,10 @@
 pkgbase = neutron
 	pkgdesc = A Fast, Modern Scripting Language Built for Performance
-	pkgver = 26.2.1
+	pkgver = 26.2.3
 	pkgrel = 1
 	url = https://github.com/yasakei/neutron
 	arch = x86_64
-	license = Neutron Public License
+	license = Neutron Permissive License
 	makedepends = cmake
 	makedepends = git
 	makedepends = gcc
@@ -16,7 +16,7 @@ pkgbase = neutron
 	provides = neutron
 	conflicts = neutron-git
 	conflicts = neutron-bin
-	source = git+https://github.com/yasakei/neutron.git#tag=26.2.1
+	source = git+https://github.com/yasakei/neutron.git#tag=26.2.3
 	source = git+https://github.com/yasakei/nt-box.git
 	source = git+https://github.com/yasakei/docs.git
 	sha256sums = SKIP

@@ -1,11 +1,11 @@
 # Maintainer: yasakei <yas.studios.en@gmail.com>
 pkgname=neutron
-pkgver=26.2.1
+pkgver=26.2.3
 pkgrel=1
 pkgdesc="A Fast, Modern Scripting Language Built for Performance"
 arch=('x86_64')
 url="https://github.com/yasakei/neutron"
-license=('Neutron Public License')
+license=('Neutron Permissive License')
 provides=("neutron")
 conflicts=("neutron-git" "neutron-bin")
 depends=('curl' 'jsoncpp' 'glibc' 'gcc-libs')
