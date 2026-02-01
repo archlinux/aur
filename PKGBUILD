@@ -1,28 +1,24 @@
-# Maintainer: Jan Peter Koenig <public@janpeterkoenig.com>
+# Contributor: Jan Peter Koenig <public@janpeterkoenig.com>
 # Contributor: John Lane <archlinux at jelmail dot com>
 # Contributor: Nathan Owe <ndowens.aur at gmail dot com>
 
 pkgname=dcc
-pkgver=2.3.167
+pkgver=2.3.169
 pkgrel=1
 pkgdesc="Distributed Checksum Clearinghouse spam tool"
-url="http://www.rhyolite.com/anti-spam/dcc"
+url="https://www.dcc-servers.net/dcc/"
 arch=('x86_64')
 license=('custom')
 depends=('sh')
-
 source=(
 	"https://www.dcc-servers.net/dcc/source/old/${pkgname}-${pkgver}.tar.Z"
 )
-
-sha256sums=(
-	'e5da87aca80ddc8bc52fa93869576a2afaf0c1e563e3f97dee6e6531690fbad5'
-)
+sha256sums=('3447e655476ac742942daf25fc217236da456dd0f82b7117661b9a70484b7bf6')
 
 _dstdir="/var/lib/${pkgname}"
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd ${pkgname}-${pkgver}
 	
 	# Following fix is no longer needed
 	# CPPFLAGS="$CPPFLAGS -O2" # https://bbs.archlinux.org/viewtopic.php?id=182812
@@ -38,7 +34,7 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd ${pkgname}-${pkgver}
 
 	# AUR comment zmeYski 2014-10-14 17:57
 	MAKEFLAGS="$MAKEFLAGS -j1"
@@ -52,6 +48,6 @@ package() {
 	chown -R root:root "${pkgdir}/"
 
 	# Fix libraries not being stripped
-	find "${pkgdir}/" -exec file {} \; | grep -i elf|grep "not stripped"|awk -F: '{ print $1 }'|xargs strip
+	#find "${pkgdir}/" -exec file {} \; | grep -i elf|grep "not stripped"|awk -F: '{ print $1 }'|xargs strip
 }
 
