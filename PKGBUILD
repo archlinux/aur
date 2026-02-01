@@ -1,33 +1,40 @@
-# Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
-# Contributor:
+# Maintainer: asyync1024 <asyync1024 at proton dot me>
+# Contributor: Josip Ponjavic <josipponjavic at gmail dot com>
 
-pkgname=fastcompmgr-git
-pkgver=0.2.r1.gbd5a171
+_pkgname=fastcompmgr
+pkgname=${_pkgname}-git
+pkgver=0.5.r20.ga449edb
 pkgrel=1
-pkgdesc="fastcompmgr is a fast compositor for X, a fork of an early version of Compton"
-arch=(x86_64)
-url='https://github.com/tycho-kirchner/fastcompmgr'
-license=('custom')
-depends=('libxcomposite' 'libxdamage' 'libxrender' 'libxext')
+pkgdesc="An early Compton-based compositor for X11 focused on performance. (git)"
+arch=('x86_64')
+url="https://github.com/tycho-kirchner/${_pkgname}"
+license=('MIT')
+depends=('glibc' 'libx11' 'libxcomposite' 'libxdamage' 'libxfixes' 'libxrender')
 makedepends=('git')
-provides=("${pkgname%-*}")
-conflicts=("${pkgname%-*}")
+provides=(${_pkgname})
+conflicts=(${_pkgname})
 source=("git+${url}.git")
-sha512sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-*}"
+  cd ${_pkgname}
   git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//g'
 }
 
 build() {
-  cd "${pkgname%-*}"
+  cd ${_pkgname}
   make
 }
 
 package() {
-  cd "${pkgname%-*}"
-  install -Dm755 "${pkgname%-*}" -t "${pkgdir}/usr/bin/"
-  install -Dm644 "${pkgname%-*}".1 -t "${pkgdir}/usr/share/man/man1/"
-  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  cd ${_pkgname}
+
+  install -Dm755 ${_pkgname} -t \
+    "${pkgdir}/usr/bin/"
+
+  install -Dm644 ${_pkgname}.1 -t \
+    "${pkgdir}/usr/share/man/man1/"
+
+  install -Dm644 LICENSE -t \
+    "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
