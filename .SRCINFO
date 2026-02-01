@@ -12,7 +12,7 @@ pkgbase = python-pypardiso
 	makedepends = python-wheel
 	depends = intel-oneapi-mkl
 	depends = python-scipy
-	source = PyPardisoProject-0.4.7.tar.gz::https://github.com/haasad/PyPardisoProject/archive/v0.4.7.tar.gz
+	source = PyPardiso-0.4.7.tar.gz::https://github.com/haasad/PyPardisoProject/archive/v0.4.7.tar.gz
 	sha512sums = a99e6c9d427e5c5f6ff9fa78b25b84d73905bf156637723863105e791511a0682730e7394d132b73a4b36b47d8f54d795123a9547b899836321f397c89adf2ea
 
 pkgname = python-pypardiso
