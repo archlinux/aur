@@ -1,7 +1,7 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 _pkgname=openvaf-reloaded
 pkgname=${_pkgname}-git
-pkgver=r810.75df7b3
+pkgver=r813.7afecc5
 pkgrel=1
 pkgdesc="Continuation of OpenVAF - A Next-generation VerilogA Compiler - OSDI >= 4 support"
 arch=(
@@ -54,7 +54,7 @@ prepare() {
 	# VACASK - for integration tests
 	git config submodule."external/vacask".url "$srcdir/vacask"
 	# Update submodule
-	git -c protocol.file.allow=always submodule update
+	git -c protocol.file.allow=always submodule update --remote
 
 	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
