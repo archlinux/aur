@@ -1,17 +1,15 @@
 pkgbase = autoadb-git
 	pkgdesc = Allows executing a command whenever a new device is connected to adb
 	pkgver = r4.7f84029
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/rom1v/autoadb
-	arch = any
-	license = Apache
+	arch = x86_64
+	license = Apache-2.0
 	makedepends = git
 	makedepends = rust
-	makedepends = curl
 	provides = autoadb
 	conflicts = autoadb
 	source = git+https://github.com/rom1v/autoadb
 	sha256sums = SKIP
 
 pkgname = autoadb-git
-

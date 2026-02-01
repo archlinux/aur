@@ -1,12 +1,12 @@
-# Maintainer: Cullen Ross <cullenrss@gmail.com>
+# Contributor: Cullen Ross <cullenrss@gmail.com>
 
 _pkgname='autoadb'
 pkgname="${_pkgname}-git"
 pkgver=r4.7f84029
-pkgrel=3
-arch=('any')
-license=('Apache')
-makedepends=('git' 'rust' 'curl')
+pkgrel=4
+arch=('x86_64')
+license=('Apache-2.0')
+makedepends=('git' 'rust')
 provides=('autoadb')
 conflicts=('autoadb')
 pkgdesc="Allows executing a command whenever a new device is connected to adb"
@@ -20,14 +20,11 @@ pkgver() {
 }
 
 build() {
-  cd $srcdir/${_pkgname}
-  curl http://www.apache.org/licenses/LICENSE-2.0 > LICENSE
-  sed -i '190s/.*/   Copyright (C) 2017 Genymobile\n   Copyright (C) 2019 Romain Vimont/' LICENSE
+  cd ${_pkgname}
   cargo build --release
 }
 
 package() {
-  cd $srcdir/${_pkgname}
+  cd ${_pkgname}
   install -D -m 755 "$srcdir/${_pkgname}/target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${_pkgname}"
 }
