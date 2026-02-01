@@ -1,0 +1,13 @@
+[Unit]
+Description=URL Poller and Trigger
+After=network.target
+
+[Service]
+Type=simple
+User=mod
+ExecStart=/usr/bin/upi --config /etc/upi/config.yml
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

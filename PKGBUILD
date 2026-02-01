@@ -1,0 +1,36 @@
+# Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
+
+pkgname=upi
+pkgver=0.1.2
+pkgrel=1
+pkgdesc="A minimalistic, lightweight Rust daemon that monitors URLs and triggers local scripts when content changes."
+arch=('x86_64' 'aarch64')
+url="https://github.com/skorotkiewicz/upi"
+license=('MIT')
+install=upi.install
+depends=('gcc-libs' 'glibc')
+provides=('upi')
+conflicts=('upi')
+backup=('etc/upi/config.yml')
+
+source=('upi.service' 'LICENSE' 'config.yml')
+source_x86_64=("upi::$url/releases/download/v$pkgver/upi-linux-x86_64")
+source_aarch64=("upi::$url/releases/download/v$pkgver/upi-linux-aarch64")
+
+sha256sums=('1723c122c4c4bf120bdd792bd1761794864b2df65be22902b2cb02fa07b1a412'
+            '184086b302ece79e686ac701ca404fe7a49499626c82f684dce1b820af59710c'
+            '368a8c66aa63a7cef1d891dba5ee3126de1a90069474d5bad31b0235bdde4b18')
+sha256sums_x86_64=('2f4012a20d944c1f36d3808a131d35cad0e92e3a09eef88a6c6799ef43fb2d85')
+sha256sums_aarch64=('2f4012a20d944c1f36d3808a131d35cad0e92e3a09eef88a6c6799ef43fb2d85')
+
+package() {
+  # Binaries and Service
+  install -Dm755 "$srcdir/upi" "$pkgdir/usr/bin/upi"
+  install -Dm644 "$srcdir/upi.service" "$pkgdir/usr/lib/systemd/system/upi.service"
+  
+  # Config
+  install -Dm644 "$srcdir/config.yml" "$pkgdir/etc/upi/config.yml"
+  
+  # License
+  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

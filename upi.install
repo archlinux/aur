@@ -1,0 +1,11 @@
+post_install() {
+  echo ">>> upi installed."
+  echo ">>>"
+  echo ">>> Start and enable the service:"
+  echo ">>>   sudo systemctl enable --now upi"
+}
+
+post_upgrade() {
+  echo ">>> Remember to restart the upi service if configurations changed."
+  echo ">>>   sudo systemctl restart upi"
+}
