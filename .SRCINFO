@@ -1,0 +1,17 @@
+pkgbase = garak
+	pkgdesc = GTK4 MPRIS popup widget for Waybar
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/bityoungjae/garak
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = nodejs
+	depends = gjs
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = playerctl
+	source = garak-1.0.0.tar.gz::https://github.com/bityoungjae/garak/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = a0810e54117ce67c9b9eeb558ca45daaa49f154ca2d1c2b59b71ae55e114c5c4
+
+pkgname = garak
