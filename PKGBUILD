@@ -9,8 +9,10 @@ depends=('fuse2' 'zlib' 'hicolor-icon-theme' 'gtk3' 'nss' 'libxcrypt-compat')
 options=('!strip')
 install=lmstudio-bin.install
 source=("https://installers.lmstudio.ai/linux/x64/0.4.1-1/LM-Studio-0.4.1-1-x64.AppImage"
+        "lmstudio.png"
         "lmstudio.desktop")
 sha256sums=('d18e178cadef7d6798f19e6d41f33a297e26a1d285091cbc30da8252d18a46f0'
+            '9f791789c959a11316328692807737a5f1bc1c170ae99ec04c56bfd8ee8263e5'
             'SKIP')
 
 prepare() {
@@ -24,24 +26,9 @@ package() {
   # Install AppImage
   install -Dm755 "${srcdir}/${source[0]##*/}" "$pkgdir/opt/lm-studio/lm-studio.AppImage"
   
-  # Icon Extraction with Search & Fail
-  local icon_source=""
-  if [ -L "${srcdir}/squashfs-root/.DirIcon" ]; then
-      icon_source=$(readlink -f "${srcdir}/squashfs-root/.DirIcon")
-  elif [ -f "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/lm-studio.png" ]; then
-      icon_source="${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/lm-studio.png"
-  else
-      icon_source=$(find "${srcdir}/squashfs-root" -maxdepth 2 -name "*.png" | head -n 1)
-  fi
-
-  if [ -z "$icon_source" ] || [ ! -f "$icon_source" ]; then
-      echo "ERROR: No application icon found!"
-      exit 1
-  fi
-
-  install -Dm644 "$icon_source" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/lmstudio-bin.png"
-  install -Dm644 "$icon_source" "${pkgdir}/usr/share/pixmaps/lmstudio-bin.png"
-  rm -rf "$tmpdir"
+  # Install static icon
+  install -Dm644 "${srcdir}/lmstudio.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/lmstudio-bin.png"
+  install -Dm644 "${srcdir}/lmstudio.png" "${pkgdir}/usr/share/pixmaps/lmstudio-bin.png"
   
   # Desktop entry
   install -Dm644 "$srcdir/lmstudio.desktop" "$pkgdir/usr/share/applications/lmstudio.desktop"

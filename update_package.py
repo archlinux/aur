@@ -8,7 +8,7 @@ and generates PKGBUILD from template.
 Updated to handle:
 - AppImage file with calculated sha256
 - .desktop file with 'SKIP' (locally managed)
-- Icon extraction verification for multi-resolution support
+- Static icon (lmstudio.png) with calculated sha256
 - .install file staging and template rendering
 """
 
@@ -86,41 +86,6 @@ def download_file(url: str, file_path: str) -> None:
     print(f"Downloaded: {file_path}")
 
 
-def verify_icon_in_appimage(appimage_path: str) -> bool:
-    """
-    Verify that icons exist in the extracted AppImage directory.
-    AppImages are xz-compressed cpio archives with .AppImage extension.
-    Checks for multi-resolution icon support:
-    - usr/share/icons/hicolor/0x0/apps/lm-studio.png (1024x1024 fallback)
-    - resources/app/.webpack/Icon-512x512.png (512x512 resolution)
-    """
-    print(f"Verifying icons in AppImage: {appimage_path}")
-    
-    try:
-        # Use file command to verify AppImage format
-        result = subprocess.run(
-            ["file", appimage_path],
-            capture_output=True,
-            text=True
-        )
-        
-        if "AppImage" in result.stdout:
-            print(f"✓ AppImage format verified")
-            # Icon verification via direct inspection is complex for AppImage
-            # The presence of icons is handled by the packaging process
-            # We verify the following paths exist post-extraction:
-            # - usr/share/icons/hicolor/0x0/apps/lm-studio.png
-            # - resources/app/.webpack/Icon-512x512.png
-            # Validate icon source during update cycle
-            # Validate icon source during update cycle
-            icon_source = "resources/app/.webpack/Icon-512x512.png"
-            if not os.path.exists(icon_source):
-                print(f"✗ Icon source invalid: {icon_source}")
-                return False
-            print(f"✓ Icon source valid: {icon_source}")
-        return True
-
-
 def stage_install_file() -> None:
     """
     Ensure lmstudio-bin.install file exists and is staged.
@@ -133,10 +98,17 @@ def stage_install_file() -> None:
         print(f"Warning: Install file not found at {install_path}")
 
 
-def render_template(template_path: str, output_path: str, version: str, url: str, sha256: str) -> None:
+def render_template(template_path: str, output_path: str, version: str, url: str, sha256: str, icon_sha256: str) -> None:
     """
-    Render PKGBUILD.template with version, url, and sha256.
-    The template includes sha256sums array with the appimage hash and 'SKIP' for .desktop file.
+    Render PKGBUILD from template by replacing placeholders.
+    
+    Placeholders:
+    - {{version}}: Semantic version extracted from filename
+    - {{url}}: Resolved download URL
+    - {{sha256}}: SHA256 checksum of the AppImage
+    - {{icon_sha256}}: SHA256 checksum of the static icon (lmstudio.png)
+    
+    The template includes sha256sums array with appimage hash, icon hash, and SKIP for .desktop file.
     """
     print(f"Rendering template: {template_path} -> {output_path}")
     
@@ -146,6 +118,7 @@ def render_template(template_path: str, output_path: str, version: str, url: str
     content = content.replace("{{version}}", version)
     content = content.replace("{{url}}", url)
     content = content.replace("{{sha256}}", sha256)
+    content = content.replace("{{icon_sha256}}", icon_sha256)
     
     with open(output_path, "w") as f:
         f.write(content)
@@ -200,9 +173,8 @@ def main():
     sha256 = calculate_sha256(filename)
     print()
     
-    # Step 5: Verify icons in AppImage
-    print()
-    verify_icon_in_appimage(filename)
+    # Step 5: Calculate SHA256 for static icon
+    icon_hash = calculate_sha256("lmstudio.png")
     print()
     
     # Step 6: Stage install file
@@ -210,9 +182,9 @@ def main():
     print()
     
     # Step 7: Render PKGBUILD from template
-    # The template uses {{sha256}} for the AppImage hash
-    # and the sha256sums array in the template already includes 'SKIP' for .desktop file
-    render_template("PKGBUILD.template", "PKGBUILD", version, final_url, sha256)
+    # The template uses {{sha256}} for the AppImage hash and {{icon_sha256}} for icon hash
+    # and the sha256sums array in the template includes both hashes plus 'SKIP' for .desktop file
+    render_template("PKGBUILD.template", "PKGBUILD", version, final_url, sha256, icon_hash)
     print()
     
     # Step 8: Generate .SRCINFO
@@ -222,7 +194,8 @@ def main():
     print(f"Version: {version}")
     print(f"URL: {final_url}")
     print(f"AppImage SHA256: {sha256}")
-    print(f"SHA256sums: ('{sha256}' 'SKIP')")
+    print(f"Icon SHA256: {icon_hash}")
+    print(f"SHA256sums: ('{sha256}' '{icon_hash}' 'SKIP')")
 
 
 if __name__ == "__main__":
