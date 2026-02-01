@@ -1,7 +1,7 @@
 pkgbase = lib32-rubberband
 	pkgdesc = Time-stretching and pitch-shifting audio library and utility
 	pkgver = 4.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.breakfastquay.com/rubberband/
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -27,6 +27,7 @@ pkgname = lib32-rubberband
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
 	depends = lib32-libsamplerate
+	depends = rubberband>=4.0.0
 	depends = lib32-fftw
 	depends = lib32-libsndfile
 	provides = librubberband.so

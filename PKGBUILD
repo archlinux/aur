@@ -9,7 +9,7 @@ pkgname=(
   "${pkgbase}-vamp"
 )
 pkgver=4.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Time-stretching and pitch-shifting audio library and utility" # (32-bit)
 arch=(
   'x86_64'
@@ -72,6 +72,7 @@ build() {
 package_lib32-rubberband() {
   pkgdesc+=" (32-bit)"
   depends+=(
+    "${pkgname#lib32-}>=${pkgver}"
     'lib32-fftw'
     'lib32-libsndfile'
   )
