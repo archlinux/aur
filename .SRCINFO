@@ -1,0 +1,14 @@
+pkgbase = leafmon
+	pkgdesc = Lightweight terminal-based system monitor
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/MridulSharma2552007/leafmon
+	arch = x86_64
+	license = custom
+	makedepends = gcc
+	makedepends = make
+	depends = ncurses
+	source = git+https://github.com/MridulSharma2552007/leafmon.git
+	sha256sums = SKIP
+
+pkgname = leafmon
