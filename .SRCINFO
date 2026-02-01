@@ -1,0 +1,13 @@
+pkgbase = catppuccin-qtcreator-theme
+	pkgdesc = qtcreator catppuccin theme
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/catppuccin/qtcreator
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = qtcreator
+	source = git+https://github.com/catppuccin/qtcreator
+	sha256sums = SKIP
+
+pkgname = catppuccin-qtcreator-theme
