@@ -9,14 +9,7 @@ arch=('x86_64')
 url="https://github.com/tycho-kirchner/${_pkgname}"
 license=('MIT')
 makedepends=('git')
-depends=(
-  'glibc'
-  'libx11'
-  'libxcomposite'
-  'libxdamage'
-  'libxfixes'
-  'libxrender'
-)
+depends=('glibc' 'libx11' 'libxcomposite' 'libxdamage' 'libxfixes' 'libxrender')
 source=("git+${url}.git#branch=dev")
 sha256sums=('SKIP')
 provides=(${_pkgname})
