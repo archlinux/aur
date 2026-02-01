@@ -10,7 +10,7 @@ depends=('fcitx5' 'libinput' 'hicolor-icon-theme' 'glibc' 'gcc-libs' 'systemd-li
 provides=('fcitx5-vmk')
 conflicts=('fcitx5-vmk')
 source=("https://github.com/nhktmdzhg/VMK/releases/download/v${pkgver}/fcitx5-vmk-v${pkgver}.tar.gz")
-sha256sums=('1141a4f121e0b4ab644ecff44f385b8e417aeaccb966059f595249ed1717cd3d')
+sha256sums=('4839eaca253b5d9f608314892a7002cbf632067d16fe7621c29cc1245579cd8c')
 install='fcitx5-vmk.install'
 
 package() {

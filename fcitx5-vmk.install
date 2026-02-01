@@ -17,7 +17,7 @@ post_install() {
     echo -e "2. Cấu hình Fcitx5:"
     echo -e "   - Mở 'Fcitx5 Configuration', thêm bộ gõ ${green}VMK${all_off}."
     echo ""
-    echo -e "3. Lưu ý cho Wayland (KDE/GNOME):"
+    echo -e "3. Lưu ý cho Wayland (KDE):"
     echo -e "   - Hãy chọn 'Fcitx 5' trong phần Virtual Keyboard của hệ thống."
     echo "------------------------------------------------"
 }
