@@ -4,12 +4,12 @@ pkgbase = python-jaydebeapi
 	pkgrel = 1
 	url = https://github.com/baztian/jaydebeapi
 	arch = any
-	license = LGPL3
+	license = GPL3
+	makedepends = python
 	depends = python
 	depends = python-jpype1
 	depends = python-setuptools
-	source = JayDeBeApi-1.2.3.tar.gz::https://github.com/baztian/jaydebeapi/archive/v1.2.3.tar.gz
+	source = JayDeBeApi-1.2.3.tar.gz::https://github.com/baztian/jaydebeapi/archive/refs/tags/v1.2.3.tar.gz
 	sha256sums = 6ca5e4c2a333b03fa7a14f50cb8c33756fdd6dc02c696acc30fda406f2368031
 
 pkgname = python-jaydebeapi
-
