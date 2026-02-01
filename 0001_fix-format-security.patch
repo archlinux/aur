@@ -1,0 +1,115 @@
+--- a/Barony-4.3.2-hf1/src/interface/interface.cpp
++++ b/Barony-4.3.2-hf1/src/interface/interface.cpp
+@@ -19138,15 +19138,15 @@
+ 							char buf[128];
+ 							if ( itemActionType == FEATHER_ACTION_MAY_SUCCEED )
+ 							{
+-								snprintf(buf, sizeof(buf), Language::get(4188));
++								snprintf(buf, sizeof(buf), "%s", Language::get(4188));
+ 							}
+ 							else if ( itemActionType == FEATHER_ACTION_OK_AND_DESTROY )
+ 							{
+-								snprintf(buf, sizeof(buf), Language::get(4189));
++								snprintf(buf, sizeof(buf), "%s", Language::get(4189));
+ 							}
+ 							else
+ 							{
+-								snprintf(buf, sizeof(buf), Language::get(4184));
++								snprintf(buf, sizeof(buf), "%s", Language::get(4184));
+ 							}
+ 							actionPromptTxt->setText(buf);
+ 						}
+@@ -22726,7 +22726,7 @@
+ 			if ( targetPlayer >= 0 && getPlayer() == targetPlayer && text_map.worldMsgEmoteYou != "" )
+ 			{
+ 				// messaging the player that owns the callout "you gesture to"
+-				snprintf(buf, sizeof(buf), text_map.worldMsgEmoteYou.c_str());
++				snprintf(buf, sizeof(buf), "%s", text_map.worldMsgEmoteYou.c_str());
+ 			}
+ 			else
+ 			{
+@@ -26340,13 +26340,13 @@
+ 					}
+ 					else
+ 					{
+-						snprintf(buf, sizeof(buf), Language::get(4348));
++						snprintf(buf, sizeof(buf), "%s", Language::get(4348));
+ 					}
+ 					spaces = 1;
+ 				}
+ 				else
+ 				{
+-					snprintf(buf, sizeof(buf), Language::get(4348));
++					snprintf(buf, sizeof(buf), "%s", Language::get(4348));
+ 					spaces = 1;
+ 				}
+ 
+--- a/Barony-4.3.2-hf1/src/interface/shopgui.cpp
++++ b/Barony-4.3.2-hf1/src/interface/shopgui.cpp
+@@ -1567,7 +1567,7 @@
+ 		char priceFormat[64];
+ 		if ( itemUnknownPreventPurchase )
+ 		{
+-			snprintf(priceFormat, sizeof(priceFormat), Language::get(4261)); // ??? gold
++			snprintf(priceFormat, sizeof(priceFormat), "%s", Language::get(4261)); // ??? gold
+ 		}
+ 		else
+ 		{
+--- a/Barony-4.3.2-hf1/src/ui/GameUI.cpp
++++ b/Barony-4.3.2-hf1/src/ui/GameUI.cpp
+@@ -11381,7 +11381,7 @@
+ 
+ 			std::string data = messageSanitizePercentSign(current->text->data, nullptr);
+ 			char str[ADD_MESSAGE_BUFFER_LENGTH];
+-			snprintf(str, sizeof(str), data.c_str());
++			snprintf(str, sizeof(str), "%s", data.c_str());
+ 
+ 			entry->setText(str);
+ 			entry->setFont(useBigFont ? bigfont : smallfont);
+@@ -15564,7 +15564,7 @@
+ 					(real_t)attackHoverTextInfo.attackMinRange + ((attackHoverTextInfo.attackMaxRange - attackHoverTextInfo.attackMinRange) / 2.0));
+ 				return true;
+ 			case 2:
+-				snprintf(titleBuf, 127, Player::CharacterSheet_t::getHoverTextString("attributes_atk_range_noskill").c_str());
++				snprintf(titleBuf, 127, "%s", Player::CharacterSheet_t::getHoverTextString("attributes_atk_range_noskill").c_str());
+ 				snprintf(valueBuf, 127,
+ 					Player::CharacterSheet_t::getHoverTextString("attributes_atk_range_format").c_str(),
+ 					attackHoverTextInfo.attackMinRange, attackHoverTextInfo.attackMaxRange);
+@@ -17133,22 +17133,22 @@
+ 				}
+ 				else if ( attackHoverTextInfo.hoverType == AttackHoverText_t::ATK_HOVER_TYPE_PICKAXE )
+ 				{
+-					snprintf(descBuf, sizeof(descBuf), getHoverTextString("attributes_atk_pickaxe_desc").c_str());
++					snprintf(descBuf, sizeof(descBuf), "%s", getHoverTextString("attributes_atk_pickaxe_desc").c_str());
+ 					descText = descBuf;
+ 				}
+ 				else if ( attackHoverTextInfo.hoverType == AttackHoverText_t::ATK_HOVER_TYPE_MAGICSTAFF )
+ 				{
+-					snprintf(descBuf, sizeof(descBuf), getHoverTextString("attributes_atk_magicstaff_desc").c_str());
++					snprintf(descBuf, sizeof(descBuf), "%s", getHoverTextString("attributes_atk_magicstaff_desc").c_str());
+ 					descText = descBuf;
+ 				}
+ 				else if ( attackHoverTextInfo.hoverType == AttackHoverText_t::ATK_HOVER_TYPE_TOOL )
+ 				{
+-					snprintf(descBuf, sizeof(descBuf), getHoverTextString("attributes_atk_tool_desc").c_str());
++					snprintf(descBuf, sizeof(descBuf), "%s", getHoverTextString("attributes_atk_tool_desc").c_str());
+ 					descText = descBuf;
+ 				}
+ 				else if ( attackHoverTextInfo.hoverType == AttackHoverText_t::ATK_HOVER_TYPE_TOOL_TRAP )
+ 				{
+-					snprintf(descBuf, sizeof(descBuf), getHoverTextString("attributes_atk_tinker_tool_desc").c_str());
++					snprintf(descBuf, sizeof(descBuf), "%s", getHoverTextString("attributes_atk_tinker_tool_desc").c_str());
+ 					descText = descBuf;
+ 				}
+ 				else
+--- a/Barony-4.3.2-hf1/src/ui/MainMenu.cpp
++++ b/Barony-4.3.2-hf1/src/ui/MainMenu.cpp
+@@ -19950,7 +19950,7 @@
+         if (multiple_players) {
+ 		    snprintf(text, sizeof(text), Language::get(5474), index + 1);
+         } else {
+-		    snprintf(text, sizeof(text), Language::get(5475));
++		    snprintf(text, sizeof(text), "%s", Language::get(5475));
+         }
+ 
+         auto prompt = textPrompt("controller_prompt", text, prompt_tick_callback, false);
