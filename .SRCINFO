@@ -1,0 +1,20 @@
+pkgbase = wit-bin
+	pkgdesc = Wiimms ISO Tools is a set of command line tools to manipulate Wii and GameCube ISO images and WBFS containers.
+	pkgver = 3.05a
+	pkgrel = 1
+	url = https://wit.wiimm.de/
+	arch = x86_64
+	license = GPL-2.0
+	depends = bzip2
+	depends = fuse2
+	depends = glibc
+	depends = libncursesw.so
+	depends = openssl
+	depends = zlib
+	optdepends = bash: Update title list
+	optdepends = wget: Update title list
+	conflicts = wit-git
+	source = https://wit.wiimm.de/download/wit-v3.05a-r8638-x86_64.tar.gz
+	sha256sums = df95a14f1b4b2bd95d3111b70c6304e91d4ed3e4c7f72b1ad5306c3616d8933f
+
+pkgname = wit-bin
