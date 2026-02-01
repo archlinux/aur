@@ -1,7 +1,7 @@
 pkgbase = rtcqs
 	pkgdesc = Scanner for potential real-time bottlenecks
 	pkgver = 0.6.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/rtcqs/rtcqs
 	arch = any
 	groups = pro-audio
