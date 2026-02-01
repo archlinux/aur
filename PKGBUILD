@@ -1,5 +1,5 @@
 pkgname=secretd
-pkgver=6f74d92
+pkgver=5ed991f
 pkgrel=1
 pkgdesc="Local-first encrypted password manager"
 arch=('x86_64')
