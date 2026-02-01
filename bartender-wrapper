@@ -1,0 +1,21 @@
+#!/bin/bash
+# bartender-wrapper - Environment setup for bartender
+# Loads user configuration and sets required environment variables
+
+set -euo pipefail
+
+# Load user configuration if present
+USER_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/bartender/.env"
+if [[ -f "$USER_CONFIG" ]]; then
+    set -a
+    # shellcheck source=/dev/null
+    source "$USER_CONFIG"
+    set +a
+fi
+
+# Ensure GTK4 compatibility
+export GTK_ICON_THEME="${GTK_ICON_THEME:-Adwaita}"
+export GI_TYPELIB_PATH="${GI_TYPELIB_PATH:-/usr/lib/girepository-1.0}"
+
+# Launch bartender
+exec /usr/bin/bartender "$@"

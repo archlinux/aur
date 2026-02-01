@@ -1,0 +1,76 @@
+post_install() {
+    cat << 'EOF'
+
+==> Bartender installed successfully!
+
+CONFIGURATION
+-------------
+1. Create your configuration directory:
+   mkdir -p ~/.config/bartender
+
+2. Copy and edit the example config:
+   cp /usr/share/doc/bartender-git/README.md ~/.config/bartender/
+
+3. Create your .env file with API credentials:
+   cat > ~/.config/bartender/.env << 'ENVEOF'
+   # FreshRSS API (required for feed widget)
+   FRESHRSS_API_URL=https://your-freshrss-instance.com/api/greader.php/reader/api/0/stream/contents/reading-list
+   FRESHRSS_AUTH_TOKEN=your_auth_token_here
+
+   # Audio card number (default: 3)
+   AUDIO_CARD=3
+   ENVEOF
+
+4. IMPORTANT: Protect your credentials:
+   chmod 600 ~/.config/bartender/.env
+
+STARTING BARTENDER
+------------------
+Enable and start the systemd service:
+   systemctl --user enable --now bartender.service
+
+This will automatically stop waybar and mako if they're running as services.
+
+To switch back to waybar/mako, simply stop bartender:
+   systemctl --user stop bartender.service
+   systemctl --user start waybar.service mako.service
+
+EOF
+}
+
+pre_remove() {
+    # Stop and disable the service before removal
+    if systemctl --user is-active bartender.service &>/dev/null; then
+        systemctl --user stop bartender.service || true
+    fi
+    if systemctl --user is-enabled bartender.service &>/dev/null; then
+        systemctl --user disable bartender.service || true
+    fi
+}
+
+post_remove() {
+    cat << 'EOF'
+
+==> Bartender has been removed.
+
+Your configuration in ~/.config/bartender/ was preserved.
+Remove it manually if no longer needed:
+   rm -rf ~/.config/bartender
+
+If you were using bartender as your status bar, you can now
+restart waybar and mako:
+   systemctl --user start waybar.service mako.service
+
+EOF
+}
+
+post_upgrade() {
+    cat << 'EOF'
+
+==> Bartender upgraded!
+
+Restart the service to apply changes:
+   systemctl --user restart bartender.service
+
+EOF
+}

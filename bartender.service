@@ -1,0 +1,22 @@
+[Unit]
+Description=Bartender GTK4 Status Bar
+Documentation=https://github.com/johnzfitch/bartender
+After=graphical-session.target
+PartOf=graphical-session.target
+
+# Graceful replacement: stops waybar/mako when bartender starts
+# When bartender stops, waybar/mako can be started again manually or via their services
+Conflicts=waybar.service mako.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/bartender-wrapper
+Restart=on-failure
+RestartSec=3
+
+# Environment defaults (can be overridden in ~/.config/bartender/.env)
+Environment="GTK_ICON_THEME=Adwaita"
+Environment="GI_TYPELIB_PATH=/usr/lib/girepository-1.0"
+
+[Install]
+WantedBy=graphical-session.target
