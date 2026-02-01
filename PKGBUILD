@@ -1,5 +1,5 @@
 pkgname=kiraws
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Kira web server, a simple yet flexible and scalable web server written in python"
 arch=('x86_64' 'arm7h' 'aarch64')
@@ -8,7 +8,7 @@ license=('GPL')
 depends=('python')
 makedepends=('unzip')
 source=("$url/-/archive/$pkgver/kira-$pkgver.tar.bz2")
-sha256sums=('fd9bd09e99dc48a9d4da5f2a37c7ab37c27d3d68436ee89115d288bf5b05fb00')
+sha256sums=('9b256ce0159bdc483d143be32170b708e329ac9aba57dea26a351d586e7d4ad8')
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
