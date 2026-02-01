@@ -9,7 +9,7 @@ license=('AGPL3')
 depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'librsvg' 'sqlite')
 makedepends=('npm' 'rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('178f7d287d17b57477f3e3a716f8b3474ff76b13117db730f9d9f6f0d042ea98')
+sha256sums=('bc8df74937be13a0e5aa8b188ce8c92b765570e67c65d584c2d077c17f592a57')
 
 prepare() {
     cd "$srcdir/Spent-$pkgver"
@@ -20,16 +20,18 @@ build() {
     cd "$srcdir/Spent-$pkgver"
     export CARGO_HOME="$srcdir/cargo-home"
     export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
-    npm run tauri build
+    npm run build
+    cd src-tauri
+    cargo build --release
 }
 
 package() {
     cd "$srcdir/Spent-$pkgver"
     
-    install -Dm755 "src-tauri/target/release/spent-app" "$pkgdir/usr/bin/spent-app"
+    install -Dm755 "src-tauri/target/release/spent-app" "$pkgdir/usr/bin/spent"
     
-    install -Dm644 "src-tauri/target/release/bundle/deb/$pkgname.desktop" \
-        "$pkgdir/usr/share/applications/$pkgname.desktop" 2>/dev/null || true
+    install -Dm644 "spent.desktop" \
+        "$pkgdir/usr/share/applications/$pkgname.desktop"
     
     install -Dm644 "src-tauri/icons/128x128.png" \
         "$pkgdir/usr/share/pixmaps/$pkgname.png"
