@@ -1,7 +1,7 @@
 # Maintainer: John-Michael Mulesa <jmulesa@gmail.com>
 _pkgbase='luxtorpeda'
 pkgname="${_pkgbase}-bin"
-pkgver=v74.3.0
+pkgver=v75.0.0
 pkgrel=1
 pkgdesc='Steam Play compatibility tool to run games using native Linux engines'
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('steam: The Steam client')
 provides=("${pkgname}" "${_pkgbase}")
 conflicts=("${pkgname}" "${_pkgbase}" "${_pkgbase}-git")
 source=("${url}/releases/download/${pkgver}/${_pkgbase}-${pkgver}.tar.xz")
-sha512sums=('e6925b5a8fcf3fe5ed4c898c3dc46cb14894538cf62f995befe121a9fe1e8a7f66da4dc9523aeb432fe0880ab042e5ef5568f246a7de75d45a7a5f4ef3cdfb90')
+sha512sums=('bfe9091deeb12fea2343c70459cca98a94ffac036487158530cf9a85a3ee8534a333cc7b41398650dff2afbce082de6460857cdafa2e5a364936a8f6a642264c')
 
 package() {
   cd "${srcdir}/${_pkgbase}"
