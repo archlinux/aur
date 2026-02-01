@@ -1,7 +1,7 @@
 # Maintainer: Zesko
 pkgname="limine-dracut-support-git"
 _pkgname="limine-entry-tool"
-pkgver=r547.bf8060d
+pkgver=r548.6827169
 pkgrel=1
 pkgdesc="Install kernels for the Limine bootloader."
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/
 license=("GPL3")
 provides=('limine-entry-tool')
 options=(!debug !strip)
-_graalvm_version=java-25-graalvm-ce
+_graalvm_version=graalvm_ce_jdk25
 depends=(
 	'bash'
 	'grep'
