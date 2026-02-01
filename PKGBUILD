@@ -5,7 +5,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 
 pkgname=dgraph-bin
-pkgver=25.1.0
+pkgver=25.2.0
 pkgrel=1
 #pkgdesc='Fast, transactional, distributed graph database'
 pkgdesc='Dgraph is a horizontally scalable and distributed GraphQL database with a graph backend'
@@ -23,10 +23,10 @@ source=("dgraph-$pkgver.tar.gz::$url/releases/download/v$pkgver/dgraph-linux-amd
         "$url/raw/v$pkgver/contrib/systemd/centos/dgraph-alpha.service"
         "$url/raw/v$pkgver/contrib/systemd/centos/dgraph-zero.service"
         "$url/raw/v$pkgver/contrib/systemd/centos/add_dgraph_account.sh")
-sha256sums=('4cc8be73af1288c074e2d61f26ee00f1629d2e6dfbc97edee4b1c650c4262ecc'
-            '4d650a97ca7837be38c1dd626ddc56e80531b5e86da6490f0ed849c502842db0'
-            '8af2e6f64aa7fe850fcaffd94700a53ab639ae42ae78d70713f6f44158e15937'
-            '74a449f7100f36530a8d2a8b0ccc5e2a2e01044a9bdcfeeb60069235f8ec7cad'
+sha256sums=('2bbd0929cb8720f9aa83ffdaa717cf8d74f5c8a13d461776862728aee3c11c31'
+            '7dde4282286dc9a4e25e90b92b878a2b68d38993778599f01670ca9449533e5e'
+            '56bac56de02dc9e6f8da0f93cedbae0356d50af17e97748d97aca76338518eee'
+            'a3206be0d02663940f7bc1dec13f4dfc5a6a64a1549a645755320c439c4434f6'
             '5f245e21547ee20c65bde76a0b1db995a7dbfdd30f99de861036672cdebfb395'
             'b0436225ea1b65e47cea0e4bc039bcf5c795330f352b6333a99e84f5bd000d23'
             '1d717b444a2bd4a6a5bfe035c8e46bba8319793f9ca211c3d815fa24327dc37f'
@@ -34,12 +34,14 @@ sha256sums=('4cc8be73af1288c074e2d61f26ee00f1629d2e6dfbc97edee4b1c650c4262ecc'
 
 package() {
   cd "$srcdir"
-  install -Dm644 DCL.txt "$pkgdir/usr/share/licenses/$pkgname/DCL.txt"
   install -Dm755 dgraph "$pkgdir/usr/bin/dgraph"
   install -Dm755 badger-linux-amd64 "$pkgdir/usr/bin/badger"
+  install -Dm644 DCL.txt "$pkgdir/usr/share/licenses/$pkgname/DCL.txt"
   install -Dm644 dgraph-alpha.service "$pkgdir/usr/lib/systemd/system/dgraph-alpha.service"
   install -Dm644 dgraph-zero.service "$pkgdir/usr/lib/systemd/system/dgraph-zero.service"
   install -Dm755 add_dgraph_account.sh "$pkgdir/usr/share/dgraph/add_dgraph_account.sh"
+  install -Dm644 <(./dgraph completion bash 2>/dev/null) "$pkgdir/usr/share/bash-completion/completions/dgraph"
+  install -Dm644 <(./dgraph completion zsh 2>/dev/null) "$pkgdir/usr/share/zsh/site-functions/_dgraph"
 }
 
 # vim:set ts=2 sw=2 et:
