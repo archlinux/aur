@@ -21,6 +21,7 @@ WinAuth
 dotnet-packaging
 Facepunch.Steamworks
 appcenter-sdk-dotnet
+Fusillade
 *.log
 *.pkg.tar.*
 

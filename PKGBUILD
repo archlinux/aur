@@ -1,12 +1,12 @@
 #Maintainer: rmbgame<rmb@rmbgame.net>
 #Maintainer: AigioL<https://github.com/AigioL>
 
-_dotnet_version=9.0
-_download_dotnet_version=9.0
+_dotnet_version=10.0
+_download_dotnet_version="$_dotnet_version"
 
 pkgname=watt-toolkit-git
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
-pkgver=3.0.0.rc16.r1.gece1768b2
+pkgver=3.0.0.rc16.r6.ga8701adbb
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://steampp.net/"
@@ -27,6 +27,8 @@ source=(
     'git+https://github.com/BeyondDimension/Credentials-Public'
     'watt-toolkit.desktop'
     'set-cap.hook'
+    '0001-fix-MsgPack.diff'
+    '0002-fix-X509CertificatePackable-to-byte[].diff'
     # Submodules
     'git+https://github.com/BeyondDimension/DirectoryPackages.git'
     'git+https://github.com/BeyondDimension/ArchiSteamFarm.git'
@@ -46,11 +48,15 @@ source=(
     'git+https://github.com/BeyondDimension/WTTS.Public.git'
     'git+https://github.com/BeyondDimension/Facepunch.Steamworks.git'
     'git+https://github.com/BeyondDimension/appcenter-sdk-dotnet.git'
+    'git+https://github.com/reactiveui/Fusillade'
     )
 sha256sums=('SKIP'
             'SKIP'
-            'f4466ae2f443b82cc9d865a1ed53630639b55d19bb358905587483303eccdb50'
-            '2a906c968f25e7e8a8fd949a7f024da7277bf31098371bdb066b8d422982fa8a'
+            '971f095988215965ba7256158a2c23af8be27222ea4f50655acd6c3bf3c4a23a'
+            'ee4c5a20eb3a44f9af37b67cc6b5f91e646ac8a35bb1b8be784413dad2ed34ea'
+            '59dfa3d31e7cb7f6025e163e824bd703835f08f5b16a614bcd516a78a90cd732'
+            'a822f7fb11aa94e7aed682f8f85272a820e20b3169c3856c9ddba6782e514743'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -84,88 +90,76 @@ declare -Ag _plugins=(
     #[BD.WTTS.Client.Plugins.Update]=Update
 )
 
-prepare(){
-    target_dirs=(
-        "${srcdir}/SteamTools" "${srcdir}/SteamTools/ref/ArchiSteamFarm"
-        "${srcdir}/SteamTools/ref/Avalonia.Image2" "${srcdir}/SteamTools/ref/Common"
-        "${srcdir}/SteamTools/ref/SteamClient" "${srcdir}/SteamTools/ref/dotnet-packaging"
-        "${srcdir}/SteamTools/ref/WTTS.MicroServices.ClientSDK" "${srcdir}/SteamTools/ref/WinAuth"
-        "${srcdir}/SteamTools/ref/WTTS.MicroServices.ClientSDK/ref/WTTS.Public"
-        "${srcdir}/SteamTools/ref/appcenter-sdk-dotnet"
-    )
-    #https://wiki.archlinux.org/title/VCS_package_guidelines#Git_submodules
-    for target_dir in "${target_dirs[@]}"
-    do
-        cd "${target_dir}"
-        git submodule init
-        grep submodule .gitmodules | sed 's/\[submodule "//;s/"\]//' | while read -r module
+_fill_submodules_recursively(){
+    if [[ -f "$1/.gitmodules" ]]
+    then
+        while read -r submodule
         do
-            repo=$(basename "${module}")
-            git config "submodule.${module}.url" "${srcdir}/${repo}"
-        done
-        git -c protocol.file.allow=always submodule update
-    done
+            echo "Filling submodule $submodule in $1/.gitmodules..."
+            local path new_url
+            path="$(git config get --file "$1/.gitmodules" "submodule.$submodule.path")"
+            new_url="file://$srcdir/$(basename "$path")"
+            git -C "$1" submodule set-url "$path" "$new_url"
+            echo "Setting url of $path to $new_url"
+            git -C "$1" -c protocol.file.allow=always submodule update --init "$path"
+            _fill_submodules_recursively "$1/$path"
+        done < <(git config list --file "$1/.gitmodules" --name-only | cut -d . -f 2- | rev | cut -d . -f 2- | rev | sort -u)
+    fi
+}
+
+prepare(){
+    #https://wiki.archlinux.org/title/VCS_package_guidelines#Git_submodules
+    _fill_submodules_recursively "${srcdir}/SteamTools"
     # Install dotnet-sdk
-    dotnet-install --channel ${_download_dotnet_version} --install-dir "${srcdir}/dotnet-sdk" --no-path
+    export DOTNET_ROOT="$srcdir/dotnet-sdk"
+    export PATH="$DOTNET_ROOT:$DOTNET_ROOT/tools:$PATH"
+    dotnet-install --channel ${_download_dotnet_version} --install-dir "${DOTNET_ROOT}" --no-path
     if [[ "${_dotnet_version}" != "${_download_dotnet_version}" ]]
     then
-        dotnet-install --channel ${_dotnet_version} --install-dir "${srcdir}/dotnet-sdk" --no-path --runtime dotnet
+        dotnet-install --channel ${_dotnet_version} --install-dir "${DOTNET_ROOT}" --no-path --runtime dotnet
     fi
+    dotnet --info | grep RID | cut -d : -f 2 | xargs | tee _platform
+    cd "${srcdir}/SteamTools"
+    # SteamTools/src/BD.WTTS.Client.Plugins.GameAccount/Models/PlatformSettings.cs(4,22): error MsgPack003: Type must be marked with MessagePackObjectAttribute: global::BD.WTTS.Models.PlatformSettings (https://github.com/MessagePack-CSharp/MessagePack-CSharp/blob/master/doc/analyzers/MsgPack003.md)
+    # SteamTools/src/BD.WTTS.Client.Plugins.Accelerator/Settings/GameAcceleratorSettings.cs(34,49): error MsgPack004: Properties and fields of MessagePackObject-attributed types require either KeyAttribute or IgnoreMemberAttribute: global::BD.WTTS.Settings.GameAcceleratorSettings_.MyGames (https://github.com/MessagePack-CSharp/MessagePack-CSharp/blob/master/doc/analyzers/MsgPack004.md)
+    patch -Np1 -i ../0001-fix-MsgPack.diff
+    # SteamTools/src/BD.WTTS.Client.Plugins.Accelerator.ReverseProxy/Services/Certificate/ICertificateManager.cs(31,63): error CS1503: Argument 1: cannot convert from 'System.Runtime.Serialization.Formatters.X509CertificatePackable' to 'byte[]'
+    patch -Np1 -i ../0002-fix-X509CertificatePackable-to-byte[].diff
+    dotnet workload restore src/BD.WTTS.Client.Avalonia.App/BD.WTTS.Client.Avalonia.App.csproj \
+        -p:EnableWindowsTargeting=true
+
 }
 pkgver(){
     cd "${srcdir}/SteamTools"
     git describe --tags --long | sed 's/-rc./.rc/;s/-/.r/;s/-/./g'
 }
 build(){
-    keys=(
-        aes-key.pfx rsa-public-key-debug.pfx rsa-public-key-release.pfx
-    )
+    cp -v "${srcdir}/Credentials-Public/"*.pfx "${srcdir}/SteamTools"
+
+    _platform="$(< _platform)"
     cd "${srcdir}/SteamTools"
     export DOTNET_ROOT="${srcdir}/dotnet-sdk"
     export PATH=$DOTNET_ROOT:$DOTNET_ROOT/tools:$PATH
 
-    for key in "${keys[@]}"
-    do
-        cp "${srcdir}/Credentials-Public/${key}" "${key}"
-    done
-
-    dotnet workload restore src/BD.WTTS.Client.Avalonia.App/BD.WTTS.Client.Avalonia.App.csproj \
-        -p:EnableWindowsTargeting=true
     echo "Building BD.WTTS.Client.Avalonia.App..."
     dotnet publish src/BD.WTTS.Client.Avalonia.App/BD.WTTS.Client.Avalonia.App.csproj \
-        -c Release --output "${srcdir}/SteamTools/linux-out" --framework "net${_dotnet_version}" \
-        -p:EnableWindowsTargeting=true
-    echo "Building plugins..."
+        -c Release --framework "net${_dotnet_version}" --runtime "${_platform}"
     for _id in "${!_plugins[@]}"
     do
-        echo "Building ${_id}..."
+        echo "Building plugin ${_id}..."
         case "${_id}" in
             "BD.WTTS.Client.Plugins.Accelerator.ReverseProxy")
                 dotnet publish "src/${_id}/${_id}.csproj" -c Release --nologo -v q -p:WarningLevel=1 \
-                    -p:PublishSingleFile=true --self-contained \
-                    --output "${srcdir}/SteamTools/linux-plugins-out/${_plugins[${_id}]}" --framework "net${_dotnet_version}" \
-                    -p:EnableWindowsTargeting=true
+                    -p:PublishSingleFile=true --self-contained  --framework "net${_dotnet_version}" --runtime "${_platform}" \
+                    -p:EnableWindowsTargeting=true -p:NoWarn=NU1605 -p:WarningsNotAsErrors=CS8604
                 ;;
             *)
                 dotnet publish "src/${_id}/${_id}.csproj" -c Release --nologo -v q -p:WarningLevel=1 \
-                    --output "${srcdir}/SteamTools/linux-plugins-out/${_plugins[${_id}]}" --framework "net${_dotnet_version}" \
+                    --framework "net${_dotnet_version}" --runtime "${_platform}" \
                     -p:EnableWindowsTargeting=true
                 ;;
         esac
     done
-}
-check(){
-    cd "${srcdir}/SteamTools"
-    export DOTNET_ROOT="${srcdir}/dotnet-sdk"
-    export PATH=$DOTNET_ROOT:$DOTNET_ROOT/tools:$PATH
-
-    # Hacking about missing System.Directory on Linux
-    sed -i '/<\/ItemGroup>/i <Compile Remove="CertificateUnitTest.cs" />' \
-        src/BD.WTTS.UnitTest/BD.WTTS.UnitTest.csproj
-
-    dotnet test src/BD.WTTS.UnitTest/BD.WTTS.UnitTest.csproj \
-        -c Release -p:GeneratePackageOnBuild=false --nologo -v q -p:WarningLevel=1 \
-        -p:EnableWindowsTargeting=true --framework "net${_dotnet_version}"
 }
 package(){
     depends+=(
@@ -174,58 +168,47 @@ package(){
         'gcc-libs'
     )
 
+    _platform="$(< _platform)"
     cd "${srcdir}/SteamTools"
     mkdir -p "${pkgdir}/usr/bin" "${pkgdir}/usr/lib"
-    cp -av "${srcdir}/SteamTools/linux-out" "${pkgdir}/usr/lib/watt-toolkit"
-    echo "Removing useless runtimes..."
-    case ${CARCH} in
-        x86_64)
-            _platform=linux-x64
-            ;;
-        armv7l)
-            _platform=linux-arm
-            ;;
-        aarch64)
-            _platform=linux-arm64
-            ;;
-        *)
-            _platform=linux-${CARCH}
-            ;;
-    esac
-    find "${pkgdir}/usr/lib/watt-toolkit/runtimes" -mindepth 1 -maxdepth 1 ! -name "${_platform}" -exec rm -rf {} \;
-    echo "Installing plugins..."
+    cp -av "${srcdir}/SteamTools/src/BD.WTTS.Client.Avalonia.App/bin/Release/net$_dotnet_version/$_platform/publish" \
+        "${pkgdir}/usr/lib/watt-toolkit"
     for _id in "${!_plugins[@]}"
     do
-        echo "Installing ${_id}..."
+        echo "Installing plugin ${_id}..."
         case "${_id}" in
             "BD.WTTS.Client.Plugins.Accelerator.ReverseProxy")
-                install -Dm755 "${srcdir}/SteamTools/linux-plugins-out/${_plugins[${_id}]}/Steam++.Accelerator" \
-                    "${pkgdir}/usr/lib/watt-toolkit/modules/Accelerator/Steam++.Accelerator"
-                install -Dm644 "${srcdir}/SteamTools/linux-plugins-out/${_plugins[${_id}]}/libe_sqlite3.so" \
-                    "${pkgdir}/usr/lib/watt-toolkit/modules/Accelerator/libe_sqlite3.so"
+                install -Dvm755 "${srcdir}/SteamTools/src/${_id}/bin/Release/net${_dotnet_version}/${_platform}/publish/Steam++.Accelerator" \
+                    "${pkgdir}/usr/lib/watt-toolkit/modules/${_plugins[${_id%.*}]}/Steam++.Accelerator"
+                install -Dvm644 "${srcdir}/SteamTools/src/${_id}/bin/Release/net${_dotnet_version}/${_platform}/publish/libe_sqlite3.so" \
+                    "${pkgdir}/usr/lib/watt-toolkit/modules/${_plugins[${_id%.*}]}/libe_sqlite3.so"
                 ;;
             *)
-                install -Dm644 "${srcdir}/SteamTools/linux-plugins-out/${_plugins[${_id}]}/${_id}.dll" \
-                    "${pkgdir}/usr/lib/watt-toolkit/modules/${_plugins[${_id}]}/${_id}.dll"
+                install -Dvm644 -t "${pkgdir}/usr/lib/watt-toolkit/modules/${_plugins[$_id]}" \
+                    "${srcdir}/SteamTools/src/${_id}/bin/Release/net${_dotnet_version}/${_platform}/publish/${_id}".*
                 ;;
         esac
     done
     echo "Installing misc files..."
+    # See ./src/BD.WTTS.Client.Avalonia.App/BD.WTTS.Client.Avalonia.App.csproj#L8
+    local -r appid=net.steampp.app
     for width in 16 24 32 48 64 96 128 256 512
     do
         echo "Processing ${width}x${width} icon..."
-        install -Dm644 \
+        install -Dvm644 \
             "./res/icons/app/v3/Logo_${width}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${width}x${width}/apps/watt-toolkit.png"
+            "${pkgdir}/usr/share/icons/hicolor/${width}x${width}/apps/${appid}.png"
     done
-    install -Dm644 "./res/icons/app/v3/Icon_Logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/watt-toolkit.svg"
-    install -Dm644 "${srcdir}/watt-toolkit.desktop" "${pkgdir}/usr/share/applications/watt-toolkit.desktop"
-    install -Dm644 "${srcdir}/set-cap.hook" "${pkgdir}/usr/share/libalpm/hooks/watt-toolkit-set-cap.hook"
-    install -Dm755 "./build/linux/environment_check.sh" "${pkgdir}/usr/lib/watt-toolkit/script/environment_check.sh"
+    install -Dvm644 "./res/icons/app/v3/Icon_Logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${appid}.svg"
+    install -Dvm644 "${srcdir}/watt-toolkit.desktop" "${pkgdir}/usr/share/applications/${appid}.desktop"
+    install -Dvm644 "${srcdir}/set-cap.hook" "${pkgdir}/usr/share/libalpm/hooks/watt-toolkit-set-cap.hook"
+    install -Dvm755 "./build/linux/environment_check.sh" "${pkgdir}/usr/lib/watt-toolkit/script/environment_check.sh"
     ln -sf /usr/lib/watt-toolkit/Steam++ "${pkgdir}/usr/bin/watt-toolkit"
     echo "Stripping binaries..."
-    find "${pkgdir}/usr/lib/watt-toolkit" -type f -name '*.dll' -exec strip $STRIP_STATIC {} \;
-    find "${pkgdir}/usr/lib/watt-toolkit" -type f -name '*.so' -exec strip $STRIP_SHARED {} \;
+    find "${pkgdir}/usr/lib/watt-toolkit" -type f -name '*.dll' -printf "Stripping dll %f...\n" \
+        -exec strip $STRIP_STATIC {} \;
+    find "${pkgdir}/usr/lib/watt-toolkit" -type f -name '*.so' -printf "Stripping shared object %f...\n" \
+        -exec strip $STRIP_SHARED {} \;
     # Fix https://github.com/BeyondDimension/SteamTools/issues/3403
-    ln -srfv "$pkgdir/usr/lib/watt-toolkit/Steam++" "$pkgdir/usr/lib/watt-toolkit/Steam++.sh"
+    ln -srfv "${pkgdir}/usr/lib/watt-toolkit/Steam++" "${pkgdir}/usr/lib/watt-toolkit/Steam++.sh"
 }

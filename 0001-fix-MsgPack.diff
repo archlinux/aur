@@ -1,0 +1,244 @@
+diff --git a/src/BD.WTTS.Client.Plugins.Accelerator/Models/XunYouGameViewModel.cs b/src/BD.WTTS.Client.Plugins.Accelerator/Models/XunYouGameViewModel.cs
+index 542b775..36a49f1 100644
+--- a/src/BD.WTTS.Client.Plugins.Accelerator/Models/XunYouGameViewModel.cs
++++ b/src/BD.WTTS.Client.Plugins.Accelerator/Models/XunYouGameViewModel.cs
+@@ -1,10 +1,10 @@
+ namespace BD.WTTS.Models;
+ 
+-[MP2Obj(MP2SerializeLayout.Explicit)]
++[MP2Obj(MP2SerializeLayout.Explicit), MPObj]
+ public partial class XunYouGameViewModel : ReactiveSerializationObject, IReactiveObject
+ {
+     /// <inheritdoc cref="XunYouGame"/>
+-    [MP2Key(0), JsonPropertyOrder(0)]
++    [MP2Key(0), JsonPropertyOrder(0), MPKey(0)]
+     public XunYouGame Model { get; set; } = model;
+ 
+     /// <summary>
+@@ -73,14 +73,14 @@ public partial class XunYouGameViewModel : ReactiveSerializationObject, IReactiv
+     /// 是否正在加速等待
+     /// </summary>
+     [Reactive]
+-    [MP2Ignore, SystemTextJsonIgnore]
++    [MP2Ignore, SystemTextJsonIgnore, MPIgnore]
+     public bool IsAccelerating { get; set; }
+ 
+     /// <summary>
+     /// 加速进度
+     /// </summary>
+     [Reactive]
+-    [MP2Ignore, SystemTextJsonIgnore]
++    [MP2Ignore, SystemTextJsonIgnore, MPIgnore]
+     public int AcceleratingProgress { get; set; }
+ 
+     bool _IsAccelerated;
+@@ -88,7 +88,7 @@ public partial class XunYouGameViewModel : ReactiveSerializationObject, IReactiv
+     /// <summary>
+     /// 是否已加速
+     /// </summary>
+-    [MP2Ignore, SystemTextJsonIgnore]
++    [MP2Ignore, SystemTextJsonIgnore, MPIgnore]
+     public bool IsAccelerated
+     {
+         get => _IsAccelerated;
+@@ -107,14 +107,14 @@ public partial class XunYouGameViewModel : ReactiveSerializationObject, IReactiv
+     /// 是否正在停止加速等待
+     /// </summary>
+     [Reactive]
+-    [MP2Ignore, SystemTextJsonIgnore]
++    [MP2Ignore, SystemTextJsonIgnore, MPIgnore]
+     public bool IsStopAccelerating { get; set; }
+ 
+     /// <summary>
+     /// 最后加速时间
+     /// </summary>
+     [Reactive]
+-    [MP2Key(1), JsonPropertyOrder(1)]
++    [MP2Key(1), JsonPropertyOrder(1), MPKey(1)]
+ 
+     public DateTimeOffset? LastAccelerateTime { get; set; }
+ 
+@@ -122,14 +122,14 @@ public partial class XunYouGameViewModel : ReactiveSerializationObject, IReactiv
+     /// 加速的区服
+     /// </summary>
+     [Reactive]
+-    [MP2Key(2), JsonPropertyOrder(2)]
++    [MP2Key(2), JsonPropertyOrder(2), MPKey(2)]
+     public XunYouGameArea? SelectedArea { get; set; }
+ 
+     /// <summary>
+     /// 加速的区服服务器
+     /// </summary>
+     [Reactive]
+-    [MP2Key(3), JsonPropertyOrder(3)]
++    [MP2Key(3), JsonPropertyOrder(3), MPKey(3)]
+     public XunYouGameServer? SelectedServer { get; set; }
+ }
+ 
+diff --git a/src/BD.WTTS.Client.Plugins.Accelerator/Settings/GameAcceleratorSettings.cs b/src/BD.WTTS.Client.Plugins.Accelerator/Settings/GameAcceleratorSettings.cs
+index 19a54cc..c065548 100644
+--- a/src/BD.WTTS.Client.Plugins.Accelerator/Settings/GameAcceleratorSettings.cs
++++ b/src/BD.WTTS.Client.Plugins.Accelerator/Settings/GameAcceleratorSettings.cs
+@@ -30,13 +30,13 @@ public sealed partial class GameAcceleratorSettings_ : ISettings, ISettings<Game
+     /// <summary>
+     /// 我的加速游戏列表
+     /// </summary>
+-    [MP2Key(0), JsonPropertyOrder(0)]
++    [MP2Key(0), JsonPropertyOrder(0), MPKey(0)]
+     public Dictionary<int, XunYouGameViewModel> MyGames { get; set; } = [];
+ 
+     /// <summary>
+     /// 加速插件安装路径
+     /// </summary>
+-    [MP2Key(1), JsonPropertyOrder(1)]
++    [MP2Key(1), JsonPropertyOrder(1), MPKey(1)]
+     public string WattAcceleratorDirPath { get; set; } = DefaultWattAcceleratorDirPath;
+ 
+     public static readonly string DefaultWattAcceleratorDirPath = OperatingSystem.IsWindows() ?
+diff --git a/src/BD.WTTS.Client.Plugins.Accelerator/XunYouSDK/Models/XunYouGame.cs b/src/BD.WTTS.Client.Plugins.Accelerator/XunYouSDK/Models/XunYouGame.cs
+index 1a1f2c0..87337fc 100644
+--- a/src/BD.WTTS.Client.Plugins.Accelerator/XunYouSDK/Models/XunYouGame.cs
++++ b/src/BD.WTTS.Client.Plugins.Accelerator/XunYouSDK/Models/XunYouGame.cs
+@@ -5,55 +5,55 @@ namespace Mobius.Models;
+ /// <para>13.接口 xunyou_get_all_games</para>
+ /// <para>14.接口 xunyou_get_hot_games</para>
+ /// </summary>
+-[MP2Obj(MP2SerializeLayout.Explicit)]
++[MP2Obj(MP2SerializeLayout.Explicit), MPObj]
+ public sealed partial record class XunYouGame
+ {
+     /// <summary>
+     /// 迅游库中的游戏 Id
+     /// </summary>
+     [JsonPropertyName("game_id")]
+-    [MP2Key(0)]
++    [MP2Key(0), MPKey(0)]
+     public int Id { get; set; }
+ 
+     /// <summary>
+     /// 游戏名称
+     /// </summary>
+     [JsonPropertyName("game_name")]
+-    [MP2Key(1)]
++    [MP2Key(1), MPKey(1)]
+     public string? Name { get; set; }
+ 
+     /// <summary>
+     /// 游戏图标地址
+     /// </summary>
+     [JsonPropertyName("game_icon_url")]
+-    [MP2Key(2)]
++    [MP2Key(2), MPKey(2)]
+     public string? IconUrl { get; set; }
+ 
+     /// <summary>
+     /// 游戏图片地址
+     /// </summary>
+     [JsonPropertyName("game_pic_url")]
+-    [MP2Key(3)]
++    [MP2Key(3), MPKey(3)]
+     public string? PicUrl { get; set; }
+ 
+     /// <summary>
+     /// 游戏图片的 <see cref="MD5"/>
+     /// </summary>
+     [JsonPropertyName("game_pic_md5_url")]
+-    [MP2Key(4)]
++    [MP2Key(4), MPKey(4)]
+     public string? PicMD5 { get; set; }
+ 
+     /// <summary>
+     /// 游戏 Logo 图片地址
+     /// </summary>
+     [JsonPropertyName("game_logo_url")]
+-    [MP2Key(5)]
++    [MP2Key(5), MPKey(5)]
+     public string? LogoUrl { get; set; }
+ 
+     /// <summary>
+     /// 游戏 Logo 图片的 <see cref="MD5"/>
+     /// </summary>
+     [JsonPropertyName("game_logo_md5_url")]
+-    [MP2Key(6)]
++    [MP2Key(6), MPKey(6)]
+     public string? LogoMD5 { get; set; }
+ }
+diff --git a/src/BD.WTTS.Client.Plugins.Accelerator/XunYouSDK/Models/XunYouGameArea.cs b/src/BD.WTTS.Client.Plugins.Accelerator/XunYouSDK/Models/XunYouGameArea.cs
+index 8e875bb..8d4928d 100644
+--- a/src/BD.WTTS.Client.Plugins.Accelerator/XunYouSDK/Models/XunYouGameArea.cs
++++ b/src/BD.WTTS.Client.Plugins.Accelerator/XunYouSDK/Models/XunYouGameArea.cs
+@@ -3,27 +3,27 @@ namespace Mobius.Models;
+ /// <summary>
+ /// 迅游游戏区服信息
+ /// </summary>
+-[MP2Obj(MP2SerializeLayout.Explicit)]
++[MP2Obj(MP2SerializeLayout.Explicit), MPObj]
+ public sealed partial record class XunYouGameArea
+ {
+     /// <summary>
+     /// 区服 Id
+     /// </summary>
+     [JsonPropertyName("area_id")]
+-    [MP2Key(0)]
++    [MP2Key(0), MPKey(0)]
+     public int Id { get; set; }
+ 
+     /// <summary>
+     /// 区服名称
+     /// </summary>
+     [JsonPropertyName("area_name")]
+-    [MP2Key(1)]
++    [MP2Key(1), MPKey(1)]
+     public string? Name { get; set; }
+ 
+     /// <summary>
+     /// 游戏服务器信息
+     /// </summary>
+     [JsonPropertyName("game_server")]
+-    [MP2Key(2)]
++    [MP2Key(2), MPKey(2)]
+     public List<XunYouGameServer>? Servers { get; set; }
+ }
+diff --git a/src/BD.WTTS.Client.Plugins.Accelerator/XunYouSDK/Models/XunYouGameServer.cs b/src/BD.WTTS.Client.Plugins.Accelerator/XunYouSDK/Models/XunYouGameServer.cs
+index 2717b10..d01ddd2 100644
+--- a/src/BD.WTTS.Client.Plugins.Accelerator/XunYouSDK/Models/XunYouGameServer.cs
++++ b/src/BD.WTTS.Client.Plugins.Accelerator/XunYouSDK/Models/XunYouGameServer.cs
+@@ -3,20 +3,20 @@ namespace Mobius.Models;
+ /// <summary>
+ /// 迅游游戏服务器信息
+ /// </summary>
+-[MP2Obj(MP2SerializeLayout.Explicit)]
++[MP2Obj(MP2SerializeLayout.Explicit), MPObj]
+ public sealed partial record class XunYouGameServer
+ {
+     /// <summary>
+     /// 服务器 Id
+     /// </summary>
+     [JsonPropertyName("server_id")]
+-    [MP2Key(0)]
++    [MP2Key(0), MPKey(0)]
+     public int Id { get; set; }
+ 
+     /// <summary>
+     /// 服务器名称
+     /// </summary>
+     [JsonPropertyName("server_name")]
+-    [MP2Key(1)]
++    [MP2Key(1), MPKey(1)]
+     public string? Name { get; set; }
+ }
+diff --git a/src/BD.WTTS.Client.Plugins.GameAccount/Models/PlatformSettings.cs b/src/BD.WTTS.Client.Plugins.GameAccount/Models/PlatformSettings.cs
+index eda2d3b..f329280 100644
+--- a/src/BD.WTTS.Client.Plugins.GameAccount/Models/PlatformSettings.cs
++++ b/src/BD.WTTS.Client.Plugins.GameAccount/Models/PlatformSettings.cs
+@@ -1,8 +1,8 @@
+ namespace BD.WTTS.Models;
+ 
+-[MP2Obj(SerializeLayout.Explicit)]
++[MP2Obj(SerializeLayout.Explicit), MPObj]
+ public partial class PlatformSettings : BaseNotifyPropertyChanged
+ {
+-    [Reactive, MP2Key(0)]
++    [Reactive, MP2Key(0), MPKey(0)]
+     public string? PlatformPath { get; set; }
+ }

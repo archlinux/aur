@@ -1,0 +1,13 @@
+diff --git a/src/BD.WTTS.Client.Plugins.Accelerator.ReverseProxy/Services/Certificate/ICertificateManager.cs b/src/BD.WTTS.Client.Plugins.Accelerator.ReverseProxy/Services/Certificate/ICertificateManager.cs
+index 5bc85d1..de99a1f 100644
+--- a/src/BD.WTTS.Client.Plugins.Accelerator.ReverseProxy/Services/Certificate/ICertificateManager.cs
++++ b/src/BD.WTTS.Client.Plugins.Accelerator.ReverseProxy/Services/Certificate/ICertificateManager.cs
+@@ -28,7 +28,7 @@ public interface ICertificateManager
+                 OperatingSystem.IsLinux() ||
+                 OperatingSystem.IsMacOS())
+             {
+-                return platformService.IsCertificateInstalled(packable);
++                return platformService.IsCertificateInstalled(Serializable.SMP2(packable));
+             }
+             else
+             {
