@@ -1,0 +1,15 @@
+pkgbase = hydracad-bin
+	pkgdesc = Professional CAD application (C++/Qt6) – AppImage build
+	pkgver = 3.0.22
+	pkgrel = 1
+	url = https://github.com/drixber/CAD
+	arch = x86_64
+	license = custom
+	depends = fuse2
+	optdepends = qt6-network: in-app updates
+	provides = hydracad
+	conflicts = hydracad
+	source = HydraCAD-3.0.22.AppImage::https://github.com/drixber/CAD/releases/download/v3.0.22/HydraCAD-3.0.22.AppImage
+	sha256sums = SKIP
+
+pkgname = hydracad-bin
