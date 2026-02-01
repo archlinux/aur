@@ -1,7 +1,7 @@
 # Maintainer: Lehel Gyuro <lehel@freemail.hu>
 
 pkgname=libindi-celestronaux
-pkgver=2.1.7
+pkgver=2.1.8
 pkgrel=1
 pkgdesc="INDI driver for products manufactured by indi-celestronaux"
 url="http://www.indilib.org/index.php?title=Main_Page"
@@ -10,7 +10,7 @@ arch=(i686 x86_64 aarch64)
 depends=(libnova libindi gcc-libs )
 makedepends=(cmake)
 source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz")
-sha256sums=("4d1e3ee713af1bac2e86627d5fed3c542187f2246168f195b3ec802607c71e8b")
+sha256sums=("3f9a42e6f07aa7cce4271c1842fef9bf62a2b1bcd1d1a0a6e7476b00be386da8")
 
 prepare() {
   mkdir -p build
