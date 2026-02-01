@@ -2,13 +2,14 @@
 _base=PyFVTool
 pkgname=python-${_base,,}
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Finite volume toolbox in Python"
 arch=(any)
 url="https://github.com/FiniteVolumeTransportPhenomena/${_base}"
 license=(MIT)
 depends=(python-scipy python-matplotlib)
-makedepends=(python-build python-installer python-setuptools)
+makedepends=(python-build python-installer python-setuptools
+  python-sphinx python-myst-parser python-nbsphinx python-sphinx_rtd_theme pandoc-cli)
 checkdepends=(python-pytest python-tqdm python-pypardiso)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('da3476288acb22e5bbed548f0a98fddb3e22e6f7ad264b902e3cea595bc2cf96e0e4df9641af6f09e7175c0447eea39bbf14820409bda03e8a9ff6fa75d15839')
@@ -16,6 +17,9 @@ sha512sums=('da3476288acb22e5bbed548f0a98fddb3e22e6f7ad264b902e3cea595bc2cf96e0e
 build() {
   cd ${_base}-${pkgver}
   python -m build --wheel --skip-dependency-check --no-isolation
+  cd docs
+  sphinx-apidoc ../src/pyfvtool -o ./source/pyfvtool_api_autodoc
+  make html
 }
 
 check() {
@@ -29,4 +33,6 @@ package() {
   cd ${_base}-${pkgver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "${pkgdir}/usr/share/doc/${pkgname}"
+  mv docs/build/html "${pkgdir}/usr/share/doc/${pkgname}"
 }
