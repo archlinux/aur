@@ -1,9 +1,9 @@
-# Maintainer: Miguel de Val-Borro <miguel . deval @ gmail . com>
+# Contributor: Miguel de Val-Borro <miguel . deval @ gmail . com>
 # Contributor: Abhishek Dasgupta <abhidg@gmail.com>
 
 pkgname=num-utils
 pkgver=0.5
-pkgrel=4
+pkgrel=5
 pkgdesc="Set of programs for dealing with numbers from the command line."
 arch=(i686 x86_64)
 license=("GPL")
@@ -12,11 +12,11 @@ source=(http://suso.suso.org/programs/num-utils/downloads/${pkgname}-${pkgver}.t
 md5sums=('58eed69761c2da97c3bfdfa422633427')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver/
-  make || return 1
+  cd $pkgname-$pkgver/
+  make
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver/
+  cd $pkgname-$pkgver/
   make TOPDIR=${pkgdir}/usr install
 }
