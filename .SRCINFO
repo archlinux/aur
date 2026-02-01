@@ -1,0 +1,17 @@
+pkgbase = python-questo
+	pkgdesc = A library of extensible and modular CLI prompt elements
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/petereon/questo
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-yakh
+	depends = python-rich
+	source = https://files.pythonhosted.org/packages/a8/e6/4a86ccd5710c2fddae92786f15f2c69637b417905ff239d7424b55e342cb/questo-0.4.2.tar.gz
+	sha256sums = bcc917c2f1a65872e2bd02e79e226a716fd2d68a1ebe0d23c1828aa116aa6da6
+
+pkgname = python-questo
