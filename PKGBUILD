@@ -3,7 +3,7 @@
 # Maintainer: Christian Cornelssen <email@address.invalid>
 
 pkgname=theia-electron
-pkgver=1.67.0
+pkgver=1.68.0
 pkgrel=1
 arch=('i686' 'x86_64' 'aarch64')
 url='https://www.theia-ide.org/'
@@ -35,7 +35,7 @@ source=(
 )
 sha256sums=('49dc3027c1bed942afde93608248765178d8f32145c1f8c75b68f4b191bf0af0'
             '590086824e60c5a7f6b8796f876b6a3ad0521ab252ed739206a46bc94543b762'
-            '0f92aca453800b0a5b554333975f2a22634eea85f25d0ae8930e1e49077735c3'
+            '82b7b2cf3b30aecf79b44cb5b5d3000f91e8610a4bcc019720b6ecfa6045529d'
             'f43cc8aaf4738166acdf4e54817ad7e9c031c4dacf23eb8496f9edae33b3f1d0'
             '76f48bbc421d298113c73cee628c9d0fd8b14381590d871928f4f0bd87e812ce'
             'd9712e3b79a98d7b1d5fd64d709daa806be6944c3f0cebf22879cd0e3c08ce06'
@@ -47,16 +47,19 @@ sha256sums=('49dc3027c1bed942afde93608248765178d8f32145c1f8c75b68f4b191bf0af0'
 prepare() {
   cd "$srcdir"
   # Remove @theia/preview in favor of vscode.markdown*.
+  # Remove @theia/getting-started because it pulls in @theia/preview.
   # @theia/notebook not enabled for electron yet, work in progress anyway.
   # @theia/test: Not listed in the electron version.
   # Note: As of 1.41.0, those get pulled in anyway. Sigh.
   # 1.50.0: @theia/git removed from electron version
   # (presumably in favor of vscode.git{,-base}).
   # Removing @theia/ai-vercel-ai because it pulls in opentelemetry.
+  # Manually add upstream URL of vscode-builtin-extensions (not an OpenVSX URL)
   # Add postinstall script.
   bash make-package-json.sh "${pkgver/.next./-next.}" | \
-  grep -vE "@theia/(ai-vercel-ai|git|notebook|plugin[-0-9_a-z]*|preview|test)\b" | \
-  jq '.scripts.postinstall = "theia-patch"' >package.json
+  grep -vE "@theia/(ai-vercel-ai|getting-started|git|notebook|plugin[-0-9_a-z]*|preview|test)\b" | \
+  jq '.theiaPlugins."vscode-builtin-extensions" = "https://github.com/eclipse-theia/vscode-builtin-extensions/releases/download/1.104.0/vscode-builtin-extensions-1.104.0.tar.gz" |
+      .scripts.postinstall = "theia-patch"' >package.json
 }
 
 build() {
