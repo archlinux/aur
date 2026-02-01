@@ -1,6 +1,6 @@
 pkgbase = heidisql-qt6-git
 	pkgdesc = A lightweight GUI for managing MySQL, PostgreSQL, Microsoft SQL and SQLite databases (Qt6)
-	pkgver = r460.c8c3b23e
+	pkgver = r474.71bb25b2
 	pkgrel = 2
 	url = http://www.heidisql.com/
 	arch = x86_64
