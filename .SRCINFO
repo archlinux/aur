@@ -4,6 +4,7 @@ pkgbase = qpdfview
 	pkgrel = 3
 	url = https://launchpad.net/qpdfview
 	arch = x86_64
+	arch = aarch64
 	license = GPL-2.0-or-later
 	makedepends = qt6-tools
 	makedepends = libspectre
