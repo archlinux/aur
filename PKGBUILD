@@ -4,7 +4,7 @@ _pkgauthor=cadamsdev
 _pkgname=restman
 _appname=${_pkgname}
 pkgname=${_appname}-bin
-pkgdesc="A simple and easy to use REST API client that runs in your terminal (TUI). Open-source alternative to Postman"
+pkgdesc="A simple and easy to use REST API client that runs in your terminal (TUI). Open-source alternative to Postman."
 
 pkgver=0.0.2
 pkgrel=1
