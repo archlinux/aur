@@ -1,0 +1,19 @@
+pkgbase = lib32-libvpl
+	pkgdesc = Intel Video Processing Library (32-bit)
+	pkgver = 2.16.0
+	pkgrel = 1
+	url = https://intel.github.io/libvpl/
+	arch = x86_64
+	license = MIT
+	makedepends = cmake>=3.13.0
+	depends = libvpl>=2.16.0
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	provides = lib32-onevpl=2.16.0
+	provides = libvpl.so
+	conflicts = lib32-onevpl
+	replaces = lib32-onevpl
+	source = https://github.com/intel/libvpl/archive/refs/tags/v2.16.0/libvpl-2.16.0.tar.gz
+	sha256sums = d60931937426130ddad9f1975c010543f0da99e67edb1c6070656b7947f633b6
+
+pkgname = lib32-libvpl
