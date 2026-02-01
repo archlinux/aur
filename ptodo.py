@@ -1,17 +1,19 @@
 #!/usr/bin/env python
 
+import inspect
 import json
 import os
+import pickle
 import time
 
-from rich import print as rprint
 from rich.align import Align
 from rich.console import Console
 from rich.panel import Panel
-from rich.prompt import IntPrompt, Prompt
+from rich.prompt import Prompt
 from rich.table import Table
 
 FILENAME = "TODOLIST.json"
+PICKLE_FILE = "my_data.pkl"
 console = Console()
 
 
@@ -54,16 +56,82 @@ def get_task_table(todos):
     return table
 
 
+logo = r"""
+[bold #cba6f7]___________________  ________    ________  .____    .___  ____________________[/bold #cba6f7]
+[bold #cba6f7]\__    ___/\_____  \ \______ \   \_____  \ |    |   |   |/      _____/\__    ___/[/bold #cba6f7]
+[bold #89b4fa]  |    |    /    |  \ |    |  \   /   |   \|    |   |   |\_____  \      |    |[/bold #89b4fa]
+[bold #89b4fa]  |    |   /     |   \|    `   \ /    |    \    |___|   |/        \     |    |[/bold #89b4fa]
+[bold #89b4fa]  |____|   \_______  /_______  / \_______  /_______ \___/_______  /     |____|[/bold #89b4fa]
+[#585b70]                    \/       \/          \/        \/           \/[/#585b70]
+"""
+
+
+def colorscemes():
+    global logo
+    print_header()
+    console.print("\n[1] [bold pink]Catppuchin (Mocha)[/bold pink]")
+    console.print("[2] [bold blue1]Tokyo Night[/bold blue1]")
+    console.print("[3] [bold orange]Dracula[/bold orange]")
+    console.print("[4] [bold red]Gruvbox[/bold red]")
+    console.print("[5] [bold blue]Nord[/bold blue]")
+    choice = Prompt.ask("\nChoose", choices=["1", "2", "3", "4", "5"])
+    if choice == "1":
+        logo = inspect.cleandoc(r"""
+        [bold #cba6f7]___________________  ________    ________  .____    .___  ____________________[/bold #cba6f7]
+        [bold #cba6f7]\__    ___/\_____  \ \______ \   \_____  \ |    |   |   |/      _____/\__    ___/[/bold #cba6f7]
+        [bold #89b4fa]  |    |    /    |  \ |    |  \   /   |   \|    |   |   |\_____  \      |    |[/bold #89b4fa]
+        [bold #89b4fa]  |    |   /     |   \|    `   \ /    |    \    |___|   |/        \     |    |[/bold #89b4fa]
+        [bold #89b4fa]  |____|   \_______  /_______  / \_______  /_______ \___/_______  /     |____|[/bold #89b4fa]
+        [#585b70]                    \/       \/          \/        \/           \/[/#585b70]
+        """)
+        print_header()
+        time.sleep(1)
+    elif choice == "2":
+        logo = inspect.cleandoc(r"""
+        [bold #7aa2f7]___________________  ________    ________  .____    .___  ____________________[/bold #7aa2f7]
+        [bold #7aa2f7]\__    ___/\_____  \ \______ \   \_____  \ |    |   |   |/      _____/\__    ___/[/bold #7aa2f7]
+        [bold #bb9af7]  |    |    /    |   \ |    | \   /   |   \|    |   |   |\_____  \      |    |[/bold #bb9af7]
+        [bold #bb9af7]  |    |   /     |    \|    `  \ /    |    \    |___|   |/        \     |    |[/bold #bb9af7]
+        [bold #bb9af7]  |____|   \_______  /_______  / \_______  /_______ \___/_______  /     |____|[/bold #bb9af7]
+        [#565f89]                    \/         \/        \/        \/           \/[/#565f89]
+        """)
+        print_header()
+        time.sleep(1)
+    elif choice == "3":
+        logo = inspect.cleandoc(r"""
+        [bold #ff79c6]___________________  ________    ________  .____    .___  ____________________[/bold #ff79c6]
+        [bold #ff79c6]\__    ___/\_____  \ \______ \   \_____  \ |    |   |   |/      _____/\__    ___/[/bold #ff79c6]
+        [bold #bd93f9]  |    |    /    |  \ |    |  \   /   |   \|    |   |   |\_____  \      |    |[/bold #bd93f9]
+        [bold #bd93f9]  |    |   /     |   \|    `   \ /    |    \    |___|   |/        \     |    |[/bold #bd93f9]
+        [bold #bd93f9]  |____|   \_______  /_______  / \_______  /_______ \___/_______  /     |____|[/bold #bd93f9]
+        [#6272a4]                    \/         \/        \/        \/           \/[/#6272a4]
+        """)
+        print_header()
+        time.sleep(1)
+    elif choice == "4":
+        logo = inspect.cleandoc(r"""
+        [bold #fb4934]___________________  ________    ________  .____    .___  ____________________[/bold #fb4934]
+        [bold #fb4934]\__    ___/\_____  \ \______ \   \_____  \ |    |   |   |/      _____/\__    ___/[/bold #fb4934]
+        [bold #fabd2f]  |    |    /    |  \ |    |  \   /   |   \|    |   |   |\_____  \      |    |[/bold #fabd2f]
+        [bold #fabd2f]  |    |   /     |   \|    `   \ /    |    \    |___|   |/        \     |    |[/bold #fabd2f]
+        [bold #fabd2f]  |____|   \_______  /_______  / \_______  /_______ \___/_______  /     |____|[/bold #fabd2f]
+        [#928374]                    \/         \/        \/        \/           \/[/#928374]
+        """)
+        print_header()
+        time.sleep(1)
+    elif choice == "5":
+        logo = inspect.cleandoc(r"""
+            [bold #88C0D0]___________________  ________    ________  .____    .___  ____________________[/bold #88C0D0]
+            [bold #88C0D0]\__    ___/\_____  \ \______ \   \_____  \ |    |   |   |/      _____/\__    ___/[/bold #88C0D0]
+            [bold #81A1C1]  |    |    /    |  \ |    |  \   /   |   \|    |   |   |\_____  \      |    |[/bold #81A1C1]
+            [bold #81A1C1]  |    |   /     |   \|    `   \ /    |    \    |___|   |/        \     |    |[/bold #81A1C1]
+            [bold #81A1C1]  |____|   \_______  /_______  / \_______  /_______ \___/_______  /     |____|[/bold #81A1C1]
+            [#4C566A]                    \/         \/        \/        \/           \/[/#4C566A]
+            """)
+
+
 def print_header():
     os.system("cls" if os.name == "nt" else "clear")
-    logo = r"""
-    [bold red]___________________  ________    ________  .____    .___  ____________________[/bold red]
-    [bold red]\__    ___/\_____  \ \______ \   \_____  \ |    |   |   |/     _____/\__    ___/[/bold red]
-    [bold blue1]  |    |    /   |   \ |    |  \   /   |   \|    |   |   |\_____  \     |    |[/bold blue1]
-    [bold blue]  |    |   /    |    \|    `   \ /    |    \    |___|   |/        \    |    |[/bold blue]
-    [bold blue]  |____|   \_______  /_______  / \_______  /_______ \___/_______  /    |____|[/bold blue]
-    [dim]                   \/        \/          \/        \/           \/[/dim]
-    """
     console.print(Align.center(logo))
 
 
@@ -133,10 +201,6 @@ def removeAll_mode(todos):
             console.print("[red]Invalid number![/red]")
 
 
-def colorscemes():
-    pass
-
-
 def app():
     while True:
         todos = load_todos()
@@ -151,10 +215,10 @@ def app():
         console.print("[2] [bold blue1]Complete Task[/bold blue1]")
         console.print("[3] [bold orange]Remove Task[/bold orange]")
         console.print("[4] [bold red]Remove all[/bold red]")
-        console.print("[5] [bold white]Reload[/bold white]")
-        console.print("[6] [bold white]Exit[/bold white]")
+        console.print("[5] [bold white]Exit[/bold white]")
+        console.print("[6] [bold purple]Settings[/bold purple]")
 
-        choice = Prompt.ask("\nChoose", choices=["1", "2", "3", "4", "5", "6", "exit"])
+        choice = Prompt.ask("\nChoose", choices=["1", "2", "3", "4", "5", "exit", "6"])
 
         if choice == "1":
             add_mode(todos)
@@ -165,14 +229,30 @@ def app():
         elif choice == "4":
             removeAll_mode(todos)
         elif choice == "5":
-            console.print("[bold yellow]Reload[/bold yellow]")
-            todos = load_todos()
-        elif choice == "6":
             console.print("[bold yellow]Goodbye![/bold yellow]")
             break
         elif choice == "exit":
             console.print("[bold yellow]Goodbye![/bold yellow]")
             break
+        elif choice == "6":
+            colorscemes()
 
 
+def load_logo():
+    global logo
+    if os.path.exists(PICKLE_FILE):
+        try:
+            with open(PICKLE_FILE, "rb") as f:
+                logo = pickle.load(f)
+        except Exception:
+            pass
+
+
+def save_logo():
+    with open(PICKLE_FILE, "wb") as f:
+        pickle.dump(logo, f)
+
+
+load_logo()
 app()
+save_logo()
