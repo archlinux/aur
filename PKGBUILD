@@ -1,11 +1,12 @@
 # Maintainer: Zesko
 pkgname="limine-entry-tool-git"
-pkgver=r541.2ec2220
+_pkgname="limine-entry-tool"
+pkgver=r547.bf8060d
 pkgrel=1
 pkgdesc="Entry management for the Limine bootloader."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/Zesko/limine-entry-tool"
-source=(git+$url.git)
+source=("${_pkgname}::git+${url}.git")
 source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-25.0.2/graalvm-community-jdk-25.0.2_linux-x64_bin.tar.gz")
 source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-25.0.2/graalvm-community-jdk-25.0.2_linux-aarch64_bin.tar.gz")
 license=("GPL3")
@@ -26,7 +27,7 @@ backup=(etc/limine-entry-tool.conf)
 conflicts=('limine-entry-tool')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/${_pkgname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -40,17 +41,17 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir"/limine-entry-tool
+	cd "$srcdir/${_pkgname}"
 	JAVA_HOME="$srcdir/${_graalvm_version}" gradle clean nativeCompile
 }
 
 package() {
-	cd "$srcdir"/limine-entry-tool
-	src_path="install/arch-linux/${pkgname%-git}"
+	cd "$srcdir/${_pkgname}"
+	src_path="install/arch-linux/${_pkgname}"
 	install -dm 755 "$src_path/usr/share/limine-entry-tool.d/"
 	install -dm 755 "$src_path/etc/limine-entry-tool.d/"
 	install -Dm 755 build/native/nativeCompile/limine-entry-tool "$src_path/usr/lib/limine/"
-	install -dm 755 "$src_path/usr/share/doc/${pkgname%-git}/"
-	cp -r README.md CHANGELOG.md "$src_path/usr/share/doc/${pkgname%-git}/"
+	install -dm 755 "$src_path/usr/share/doc/${_pkgname}/"
+	cp -r README.md CHANGELOG.md "$src_path/usr/share/doc/${_pkgname}/"
 	cp -r "$src_path/usr" "$src_path/etc" "$pkgdir"
 }
