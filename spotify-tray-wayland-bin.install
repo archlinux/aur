@@ -1,0 +1,36 @@
+post_install() {
+    # Auto-configure Hyprland keybinds for the user who ran sudo
+    if [[ -n "$SUDO_USER" ]] && command -v hyprctl &>/dev/null; then
+        echo ">>> Configuring Hyprland keybinds for $SUDO_USER..."
+        sudo -u "$SUDO_USER" spotify-tray-setup
+    elif command -v hyprctl &>/dev/null; then
+        echo ""
+        echo ">>> Run 'spotify-tray-setup' to configure Hyprland keybinds"
+        echo ""
+    fi
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    # Clean up user config files
+    if [[ -n "$SUDO_USER" ]]; then
+        USER_HOME=$(eval echo ~$SUDO_USER)
+        USER_ID=$(id -u "$SUDO_USER")
+
+        rm -f "$USER_HOME/.config/hypr/conf.d/spotify.conf"
+        rm -f "$USER_HOME/.config/hypr/UserScripts/smart-close.sh"
+        rm -f "$USER_HOME/.local/share/applications/spotify.desktop"
+
+        # Remove source line from hyprland.conf
+        sed -i '/source.*spotify\.conf/d' "$USER_HOME/.config/hypr/hyprland.conf" 2>/dev/null
+
+        # Reload Hyprland if running
+        HYPRLAND_INSTANCE_SIGNATURE=$(ls /run/user/$USER_ID/hypr/ 2>/dev/null | head -1)
+        if [[ -n "$HYPRLAND_INSTANCE_SIGNATURE" ]]; then
+            sudo -u "$SUDO_USER" HYPRLAND_INSTANCE_SIGNATURE="$HYPRLAND_INSTANCE_SIGNATURE" hyprctl reload 2>/dev/null || true
+        fi
+    fi
+}
