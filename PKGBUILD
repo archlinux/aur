@@ -10,7 +10,7 @@ depends=('dotnet-runtime' 'sdl2' 'openal' 'ffmpeg' 'libx11' 'libxrandr')
 makedepends=('unzip') # Добавляем, чтобы zip точно распаковался
 provides=('opentaiko')
 conflicts=('opentaiko-git')
-source=("https://github.com/0auBSQ/OpenTaiko/releases/download/v${pkgver}/OpenTaiko.Linux.x64.zip"
+source=("https://github.com/0auBSQ/OpenTaiko/releases/download/${pkgver}/OpenTaiko.Linux.x64.zip"
         "opentaiko.sh")
 # Для скрипта можно написать 'SKIP', чтобы не высчитывать сумму каждый раз
 sha256sums=('18e4f06036fde06150aba8b93cafb86aef93c6550f11d86a4eed911bff052eba')
