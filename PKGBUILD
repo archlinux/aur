@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 pkgname=handy
-pkgver=0.7.0
-pkgrel=4
+pkgver=0.7.1
+pkgrel=1
 pkgdesc="Open source and extensible speech-to-text application that works completely offline"
 arch=(x86_64 aarch64)
 url="https://github.com/cjpais/Handy"
@@ -39,16 +39,15 @@ optdepends=(
   'wtype: Wayland support'
   'xdotool: X11 support'
 )
-
 # git rev-parse "v$pkgver"
-_tag=f38b52e123220f2f45d044ff679df2f511addec6
+_tag=e2028a4b8245e854442e1c1e77321fa8f9b7c06e
 
 source=(
   "$pkgname-$pkgver::git+$url.git#tag=$_tag"
   Handy.desktop
 )
 conflicts=("$pkgname-bin")
-sha256sums=('d60905d474c6d46c4f428d432d57c64c4243854cfbeebdd3a8241d64eab24b53'
+sha256sums=('5bd7a7fc59562aedb7cb7b4409e480e3cbd277eddb1b5e740c7b3a196696a131'
             'a0b1b93e21d18adcb6d5f58e3c818bd797cae57b865ae0d6769298876e7103dc')
 
 build() {
