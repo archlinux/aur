@@ -18,15 +18,20 @@ source=("https://github.com/0auBSQ/OpenTaiko/releases/download/${pkgver}/OpenTai
 sha256sums=('18e4f06036fde06150aba8b93cafb86aef93c6550f11d86a4eed911bff052eba'
             'SKIP')
 
+# Добавь это в начало, чтобы makepkg не ломал архив
+prepare() {
+    cd "$srcdir"
+    # Распаковываем вручную, так как bsdtar ломает .NET бандл
+    unzip -o OpenTaiko.Linux.x64.zip -d .
+}
+
 package() {
-    # 1. Распаковываем игру в /opt
+    # Путь может измениться в зависимости от того, куда unzip кинул файлы
+    # Обычно это src/publish/
     mkdir -p "${pkgdir}/opt/${pkgname}"
     cp -r "${srcdir}/publish/"* "${pkgdir}/opt/${pkgname}/"
 
-    # 2. Устанавливаем наш скрипт-запускатор в /usr/bin
     mkdir -p "${pkgdir}/usr/bin"
+    # Тот самый скрипт с гитхаба (убедись, что он запускает ./OpenTaiko)
     install -m755 "${srcdir}/opentaiko.sh" "${pkgdir}/usr/bin/opentaiko"
-
-    # 3. Права на сам бинарник
-    chmod +x "${pkgdir}/opt/${pkgname}/OpenTaiko"
 }
