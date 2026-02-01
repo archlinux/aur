@@ -19,6 +19,7 @@ build() {
 		-W no-dev
 		-D CMAKE_BUILD_TYPE=None
 		-D CMAKE_INSTALL_PREFIX=/usr
+		-D CMAKE_C_FLAGS="${CFLAGS} -DNDEBUG" # fix source reference
 	)
 	cmake "${cmake_options[@]}"
 	cmake --build build
