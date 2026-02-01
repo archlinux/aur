@@ -1,0 +1,24 @@
+pkgbase = mbed-os-tools
+	pkgdesc = Herramientas para compilar proyectos de Mbed OS
+	pkgver = 0.0.15
+	pkgrel = 15
+	url = https://github.com/ARMmbed/mbed-os-tools
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-pyserial
+	depends = python-requests
+	depends = python-intelhex
+	depends = python-prettytable
+	depends = python-fasteners
+	depends = python-appdirs
+	depends = python-junit-xml
+	depends = python-lockfile
+	depends = python-six
+	depends = python-colorama
+	source = mbed-os-tools-0.0.15.tar.gz::https://github.com/ARMmbed/mbed-os-tools/archive/refs/tags/v0.0.15.tar.gz
+	sha256sums = 60e77755e43d9dc0612ecbbb02ff3321dd79993a664a22c3ad2405f6de61c7e2
+
+pkgname = mbed-os-tools
