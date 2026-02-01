@@ -2,7 +2,7 @@
 
 _pkgname=libhdr10plus-rs
 pkgname=${_pkgname}-git
-pkgver=2.1.2.r0.gcfa5c36
+pkgver=2.1.5.r3.g2ab405a
 pkgrel=1
 pkgdesc='Library to read and write HDR10+ metadata (C-API) - git version'
 arch=('x86_64')
@@ -14,6 +14,7 @@ conflicts=('libhdr10plus-rs')
 provides=('libhdr10plus-rs' 'libhdr10plus-rs.so')
 source=(git+https://github.com/quietvoid/hdr10plus_tool.git)
 sha256sums=(SKIP)
+_libdir="hdr10plus_tool/hdr10plus"
 
 pkgver() {
   cd hdr10plus_tool
@@ -22,24 +23,35 @@ pkgver() {
 }
 
 prepare() {
-  cargo fetch \
-    --manifest-path hdr10plus_tool/hdr10plus/Cargo.toml
+  export RUSTUP_TOOLCHAIN=stable
+
+  cd "${_libdir}"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
-  cargo cbuild \
-    --release \
-    --frozen \
-    --prefix=/usr \
-    --manifest-path hdr10plus_tool/hdr10plus/Cargo.toml
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+
+  cd "${_libdir}"
+  cargo cbuild --frozen \
+    --profile release-deploy \
+    --prefix=/usr
+}
+
+check() {
+  export RUSTUP_TOOLCHAIN=stable
+
+  cd "${_libdir}"
+  cargo test --frozen --all-features
 }
 
 package() {
-  cd hdr10plus_tool/hdr10plus
+  export CARGO_TARGET_DIR=target
 
-  cargo cinstall \
-    --release \
-    --frozen \
+  cd "${_libdir}"
+  cargo cinstall --frozen \
+    --profile release-deploy \
     --prefix /usr \
     --destdir "${pkgdir}"
 

@@ -1,6 +1,6 @@
 pkgbase = libhdr10plus-rs-git
 	pkgdesc = Library to read and write HDR10+ metadata (C-API) - git version
-	pkgver = 2.1.2.r0.gcfa5c36
+	pkgver = 2.1.5.r3.g2ab405a
 	pkgrel = 1
 	url = https://github.com/quietvoid/hdr10plus_tool/hdr10plus
 	arch = x86_64
