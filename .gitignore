@@ -5,3 +5,4 @@ src/
 pkg
 
 p4-*.tar.*
+*.tgz

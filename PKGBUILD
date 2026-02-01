@@ -4,7 +4,7 @@
 pkgname=p4
 _version=2025.2
 pkgver=2025.2.2882317
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Perforce's Helix command-line client"
 arch=('x86_64')
@@ -12,30 +12,23 @@ depends=('glibc')
 url="https://www.perforce.com"
 license=('custom:p4')
 
-_url="${url}/downloads/perforce"
-_filename="${pkgver:2:4}-20260130-${pkgname}"
+_url="https://cdist2.perforce.com/perforce"
+_filename="${pkgname}-${pkgver}.tgz"
 
 source=(LICENSE
-        "${_filename}"::"${_url}/r${pkgver:2:4}/bin.linux26x86_64/${pkgname}"
-        "${_filename}.asc"::"${_url}/r${pkgver:2:4}/bin.linux26x86_64/${pkgname}.asc")
+        "${_filename}"::"${_url}/r${pkgver:2:4}/bin.linux26x86_64/helix-core-server.tgz")
 
 
 sha256sums=('c4ed3aef62b1bbf2d16ce4cceb65dc49ab9635b38e2fed0a595fe259283a9f32'
-            '41b2d2f9fa41b2e2775471103270c59d0b098504d52abf3e3e0ce6171ecdc877'
-            'SKIP')
+            '73c798190ceff8c9ba5c80543ef52488c517d8b7e736e1238d90823485650e99')
 
 # Perforce Software (Package Signing) <support+packaging@perforce.com>
 validpgpkeys=('7123CB760FF18869'
               'E58131C0AEA7B082C6DC4C937123CB760FF18869')
 
-pkgver() {
-  # grab the build version from the asc file itself
-  echo "${_version}.$(grep "$_version" "${_filename}.asc" | awk -F'/' '{print $NF}')"
-}
-
 package() {
   install -D -m 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
-  install -D -m 755 "${_filename}" "${pkgdir}/usr/bin/${pkgname}"
+  install -D -m 755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
 
 # vim:set ts=2 sw=2 et:
