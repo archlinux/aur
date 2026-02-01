@@ -27,7 +27,7 @@ package() {
   install -Dm644 "dist/main.js" "$pkgdir/usr/lib/$pkgname/main.js"
 
   # Update the bin script to point to the installed location
-  sed -i "s|dist/main.js|/usr/lib/$pkgname/main.js|" "$pkgdir/usr/bin/mpris-popup"
+  sed -i 's|$SCRIPT_DIR/../dist/main.js|/usr/lib/garak/main.js|' "$pkgdir/usr/bin/mpris-popup"
 
   # Install config example
   install -Dm644 "config.example.json" "$pkgdir/usr/share/doc/$pkgname/config.example.json"
