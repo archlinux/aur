@@ -3,8 +3,8 @@
 # shellcheck disable=SC2034,SC2148,SC2154
 
 pkgname='monochrome'
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="Monochrome is a lightweight, privacy-focused music streaming client designed for high-fidelity audio playback. Built with modern web technologies, it provides a clean, distraction-free listening experience."
 arch=('x86_64')
 url=https://github.com/SamidyFR/monochrome
