@@ -1,14 +1,13 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
-
+# Maintainer: FrogSnot
 _pkgauthor=FrogSnot
 _pkgname=Spent
 pkgname=${_pkgname,,}-bin
 pkgdesc="Minimalist personal finance tracker for Linux desktop"
 
-pkgver=1.1.2
+pkgver=1.1.4
 pkgrel=1
 _pkgvername=v${pkgver}
-_pkgrealversion=1.1.1
+_pkgrealversion=1.1.4
 
 arch=('x86_64')
 _barch=('amd64')
@@ -16,7 +15,7 @@ _barch=('amd64')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
 
-license=('MIT')
+license=('AGPL3')
 
 provides=("${_pkgname,,}")
 conflicts=("${_pkgname,,}" "opensp")
@@ -24,16 +23,15 @@ depends=('glibc' 'gcc-libs' 'glib2' 'webkit2gtk-4.1' 'gtk3' 'gdk-pixbuf2' 'cairo
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
-source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.deb::${url}/releases/download/${_pkgvername}/${_pkgname}_${_pkgrealversion}_${_barch[0]}.deb")
-sha256sums=('c4215762b499abb4cf9674a5653c08691bbed2fbcad74441971069d0364485fe'
-            'fbe2e13189a6d7957b3650ec518e5f98a36b0f6ef67c7296fc607dacf8d21a9b')
-sha256sums_x86_64=('b9da92631fd5bb8c2709346b54b998543d07e255f95315f2aecf8c69f3d19c96')
+source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.deb::${url}/releases/download/${_pkgvername}/${_pkgname,,}_${_pkgrealversion}_${_barch[0]}.deb")
+sha256sums=("c4215762b499abb4cf9674a5653c08691bbed2fbcad74441971069d0364485fe"
+            '039d45f02015c1bcd91fe4f8f64afe66920c6138e79c775bdb0bf1cf3aa09543')
+sha256sums_x86_64=("8bd6605bf3e93101f40e20fbf7fdf516f005bf31d193f3d27eb12a845b68c77d")
 
 
 package() {
     cd "${pkgdir}/" || exit
 
-    # this extracts all into the pkgdir
     tar -xf "${srcdir}/data.tar.gz"
 
     install -Dm644 "${srcdir}/README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
