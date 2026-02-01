@@ -1,8 +1,9 @@
 # Maintainer: Peter Jung <ptr1337@archlinux.org>
 # Contributor: Ali Molaei <ali dot molaei at protonmail dot com>
 
-pkgname=planex-git
-pkgver=4.14.0
+_pkgname=planex
+pkgname=${_pkgname}-git
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Package installer utility for Plasma"
 arch=(any)
@@ -15,6 +16,7 @@ depends=(
   appstream
   libplasma
   layer-shell-qt
+  knotifications
   kirigami
   qt6-declarative
 )
@@ -25,20 +27,21 @@ makedepends=(
   python-setuptools
   python-wheel
 )
-source=("git+file:///home/micro/Dokumenty/Projects/planex")
+source=("git+https://github.com/MicrogamerCz/planex.git")
 sha256sums=('SKIP')
 
 build() {
-  cd ${pkgname}
+  cd ${_pkgname}
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd ${pkgname}
+  cd ${_pkgname}
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -d -m755 "${pkgdir}/usr/share/applications"
   install -d -m755 "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
 
   cp org.kde.planex.desktop "${pkgdir}/usr/share/applications/org.kde.planex.desktop"
-#   cp ./rpmbuild/SOURCES/proton-vpn-logo.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
+  cp planex.notifyrc "${pkgdir}/usr/share/knotifications6/planex.notifyrc"
+#   cp ./rpmbuild/SOURCES/icon.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/" # TODO
 }
