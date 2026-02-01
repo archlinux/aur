@@ -2,7 +2,7 @@
 pkgname=goxe
 pkgver=1.1.1
 pkgrel=2
-pkgdesc="Log reduction tool (compilado desde fuente)"
+pkgdesc="Is a log reduction tool that normalizes, filters, and aggregates repeated messages to reduce noise and storage."
 arch=('x86_64' 'aarch64')
 url="https://github.com/DumbNoxx/Goxe"
 license=('Apache')
