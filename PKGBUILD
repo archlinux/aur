@@ -1,7 +1,8 @@
 # Maintainer: quietvoid <tcChlisop0@gmail.com>
 
-pkgname=hdr10plus_tool-git
-pkgver=1.6.1.r0.g5a5b835
+_pkgname=hdr10plus_tool
+pkgname=${_pkgname}-git
+pkgver=1.7.2.r2.g2ab405a
 pkgrel=1
 pkgdesc='CLI utility to work with HDR10+ in HEVC files'
 arch=('x86_64')
@@ -14,40 +15,37 @@ source=(git+https://github.com/quietvoid/hdr10plus_tool.git)
 sha256sums=('SKIP')
 
 pkgver() {
-  cd hdr10plus_tool
+  cd "${_pkgname}"
 
   git describe --match "[0-9]*" --long HEAD --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cargo fetch \
-    --locked \
-    --manifest-path hdr10plus_tool/Cargo.toml
+  export RUSTUP_TOOLCHAIN=stable
+
+  cd "${_pkgname}"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
-  cargo build \
-    --release \
-    --frozen \
-    --manifest-path hdr10plus_tool/Cargo.toml
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+
+  cd "${_pkgname}"
+  cargo build --frozen --profile release-deploy
 }
 
 check() {
-  cargo test \
-    --release \
-    --frozen \
-    --manifest-path hdr10plus_tool/Cargo.toml
+  export RUSTUP_TOOLCHAIN=stable
+
+  cd "${_pkgname}"
+  cargo test --frozen --workspace --all-features
 }
 
 package() {
-  cd hdr10plus_tool
+  export CARGO_TARGET_DIR=target
 
-  cargo install \
-    --frozen \
-    --offline \
-    --no-track \
-    --path . \
-    --root "${pkgdir}"/usr
-
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/hdr10plus_tool/LICENSE"
+  cd "${_pkgname}"
+  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release-deploy/$_pkgname"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
