@@ -5,7 +5,7 @@ _pkgname=klassy
 pkgbase="${_pkgname}-git"
 pkgname=("${_pkgname}-git"
          "${_pkgname}-qt5-git")
-pkgver=v6.4.r3216.gce8a67fd
+pkgver=6.4.r3217.g61c1e969
 pkgrel=1
 pkgdesc='Highly customizable binary Window Decoration, Application Style and Global Theme plugin for recent versions of the KDE Plasma desktop.'
 arch=(x86_64)
@@ -47,7 +47,7 @@ pkgver () {
   cd "${_pkgname}"
   # latest tag is not on master branch
   #git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-  local _latest_tag=$(git tag -l --sort=-creatordate | head -n 1)
+  local _latest_tag=$(git tag -l --sort=-creatordate | head -n 1 | sed 's/^v//')
   local _commit_cnt=$(git rev-list --count HEAD)
   local _commit_hash=$(git rev-parse --short HEAD)
   echo "${_latest_tag}.r${_commit_cnt}.g${_commit_hash}"
