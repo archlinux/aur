@@ -1,7 +1,7 @@
-# Maintainer: Brian Salcedo <brian@salcedo.tech>
+# Maintainer: Mike Phipps <qrz@k8wu.me>
+# Contributor: Brian Salcedo <brian@salcedo.tech>
 # Contributor: GI Jack <GI_Jack@hackermail.com>
 # Contributor: Thomas Gatzweiler <thomas.gatzweiler@gmail.com>
-# Contributor: Mike Phipps <qrz@k8wu.me>
 
 pkgname=flamp
 pkgver=2.2.14
