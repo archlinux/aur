@@ -10,10 +10,9 @@ pkgbase = fdir
 	makedepends = python-build
 	makedepends = python-installer
 	depends = python
-	provides = fdir-cli
-	conflicts = python-fdir
-	replaces = python-fdir
-	source = fdir-cli-.tar.gz::https://github.com/VG-dev1/fdir/archive/refs/tags/v3.3.1.tar.gz
+	provides = fdir
+	conflicts = fdir-cli
+	source = fdir-3.3.1.tar.gz::https://github.com/VG-dev1/fdir/archive/refs/tags/v3.3.1.tar.gz
 	sha256sums = 8fc0f78ee9206fb4d42dcc3cead83023cefa5445879eb3829d577d036f968670
 
 pkgname = fdir
