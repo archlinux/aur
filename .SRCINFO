@@ -1,0 +1,27 @@
+pkgbase = python-oldmemo-git
+	pkgdesc = Backend implementation of the `eu.siacs.conversations.axolotl` namespace for python-omemo.
+	pkgver = r85.5640e04
+	pkgrel = 1
+	url = https://github.com/Syndace/python-oldmemo
+	arch = any
+	license = AGPL-3.0-only
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-cryptography
+	depends = python-doubleratchet
+	depends = python-omemo
+	depends = python-protobuf
+	depends = python-typing_extensions
+	depends = python-x3dh
+	depends = python-xeddsa
+	optdepends = python-xmlschema: etree-based XML (de)serialization and validation
+	provides = python-oldmemo
+	conflicts = python-oldmemo
+	source = python-oldmemo-git::git+https://github.com/Syndace/python-oldmemo.git
+	sha256sums = SKIP
+
+pkgname = python-oldmemo-git
