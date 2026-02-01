@@ -1,6 +1,6 @@
 # Maintainer: Nguyen Ky <nhktmdzhg at google mail>
 pkgname=fcitx5-vmk-git
-pkgver=0.9.r33.g8f2ddc8
+pkgver=0.9.4.r71.g72f03ef
 pkgrel=1
 pkgdesc="VMK (Vietnamese Micro Key) for Fcitx5 - Bộ gõ tiếng Việt mô phỏng UniKey"
 arch=('x86_64')
@@ -10,13 +10,16 @@ depends=('fcitx5' 'libinput' 'hicolor-icon-theme' 'glibc' 'gcc-libs' 'systemd-li
 makedepends=('cmake' 'go' 'extra-cmake-modules' 'gcc' 'git' 'libx11')
 provides=('fcitx5-vmk')
 conflicts=('fcitx5-vmk')
-source=('git+https://github.com/nhktmdzhg/VMK.git')
-sha256sums=('SKIP')
+source=(
+    'git+https://github.com/nhktmdzhg/VMK.git'
+    'git+https://github.com/BambooEngine/bamboo-core.git'
+)
+sha256sums=('SKIP' 'SKIP')
 install='fcitx5-vmk.install'
 
 pkgver() {
     cd "$srcdir/VMK"
-    local version=$(grep "^project(fcitx5-vmk VERSION" fcitx5-vmk/CMakeLists.txt | \
+    local version=$(grep "^project(fcitx5-vmk VERSION" CMakeLists.txt | \
     sed 's/.*VERSION \([0-9.]*\).*/\1/')
     
     local count=$(git rev-list --count HEAD)
@@ -25,9 +28,17 @@ pkgver() {
     echo "${version}.r${count}.g${hash}"
 }
 
+prepare() {
+    cd VMK
+    git submodule init
+    git config submodule.bamboo/bamboo-core.url "$srcdir"/bamboo-core
+    git -c protocol.file.allow=always submodule update
+}
+
 build() {
     cd "$srcdir/VMK"
-    make build
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib .
+    make
 }
 
 package() {
