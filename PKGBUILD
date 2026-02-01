@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=portable-git
 epoch=1
-pkgver=13.0.alpha.1.r30.ge8992ce7
+pkgver=13.0.alpha.6.r0.g1ab3cb69
 pkgrel=1
 epoch=
 pkgdesc="Portable Sandboxing framework"
@@ -12,8 +12,6 @@ provides=(portable)
 groups=()
 options=(!debug !strip)
 conflicts=(portable)
-
-makedepends+=(git)
 
 depends=(
 	"libnotify"
@@ -43,6 +41,7 @@ optdepends=(
 
 makedepends+=(
 	"libarchive"
+	"git"
 	"go"
 )
 
