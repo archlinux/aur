@@ -2,7 +2,7 @@
 
 pkgname=noorfetch
 pkgver=0.5.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimal and fast system information fetch tool written in Rust"
 arch=('x86_64')
 url="https://codeberg.org/limforge/noorfetch"
