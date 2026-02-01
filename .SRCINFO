@@ -1,7 +1,7 @@
 pkgbase = goatd-kernel-bin
 	pkgdesc = GOATd Kernel Builder - Pure Rust + egui UI for building and managing kernels (binary release)
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MadGoatHaz/GOATd-Kernel
 	arch = x86_64
 	license = GPL-2.0+
@@ -13,7 +13,7 @@ pkgbase = goatd-kernel-bin
 	optdepends = polly: For LLVM vectorization support
 	source = goatdkernel-0.2.1-x86_64.tar.gz::https://github.com/MadGoatHaz/GOATd-Kernel/releases/download/v0.2.1/goatdkernel-0.2.1-x86_64.tar.gz
 	source = git+https://github.com/MadGoatHaz/GOATd-Kernel.git#tag=v0.2.1
-	sha256sums = 5f95f8835b4e88d22e92004dfbed5b99b0d8911024f26515e5d1c28ed7de0266
-	sha256sums = ed7c6e22e9813bf7452cec32d158a58ffb188b4e9ff4461702155d0c3982da40
+	sha256sums = 2fa276fcf9e8cd62989f2d6838b11b55a79e8c166af9b332c7ccdc6378cf9ccd
+	sha256sums = SKIP
 
 pkgname = goatd-kernel-bin
