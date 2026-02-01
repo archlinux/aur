@@ -1,10 +1,10 @@
-# Maintainer: Edmund Lodewijks <e.lodewijks@gmail.com>
+# Maintainer: Edmund Lodewijks <edmund@proteamail.com>
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 _fontname=spleen
 
 pkgname=spleen-font
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Monospaced bitmap fonts for user interface including console (OTB, OTF, PSFU)"
 arch=('any')
@@ -14,7 +14,7 @@ conflicts=('bdf-spleen')
 source=(
   "https://github.com/fcambus/spleen/releases/download/${pkgver}/spleen-${pkgver}.tar.gz"
 )
-sha256sums=('8b47c56f1a6eb858fbcf9e34530557404b02fbb3455e38e64fb84473fd0c372f')
+sha256sums=('ec42925c6b56d2138c862b2f97147c872e472f674bf03423417d827a08d69a89')
 
 package() {
   cd "${srcdir}/${_fontname}-${pkgver}"
