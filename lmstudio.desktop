@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=LM Studio
+GenericName=Large Language Model Studio
 Comment=A desktop app for exploring and running large language models locally
 Exec=lm-studio %U
 Icon=lmstudio-bin
@@ -8,3 +9,4 @@ Categories=Development;ArtificialIntelligence;
 Terminal=false
 StartupNotify=true
 StartupWMClass=LM Studio
+MimeType=text/plain;
