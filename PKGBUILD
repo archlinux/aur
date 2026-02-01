@@ -4,7 +4,7 @@
 _name=miditk-smf
 pkgname=python-miditk-smf
 pkgver=0.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A Python toolkit for working with Standard MIDI files'
 url='https://github.com/SpotlightKid/miditk-smf'
 arch=(any)

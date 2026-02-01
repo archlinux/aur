@@ -1,7 +1,7 @@
 pkgbase = python-miditk-smf
 	pkgdesc = A Python toolkit for working with Standard MIDI files
 	pkgver = 0.3.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/SpotlightKid/miditk-smf
 	arch = any
 	groups = pro-audio
