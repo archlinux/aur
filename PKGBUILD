@@ -2,9 +2,9 @@
 pkgname=jolt-git
 _pkgname=jolt
 pkgver=1.2.0.beta.1.r1.g1d3a4f8
-pkgrel=1
+pkgrel=2
 pkgdesc='TUI-based battery and energy monitor.'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/jordond/jolt'
 license=('MIT')
 makedepends=('cargo' 'patch' 'git')
