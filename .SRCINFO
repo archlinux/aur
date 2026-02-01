@@ -1,0 +1,26 @@
+pkgbase = lib32-devil
+	pkgdesc = Library for reading several different image formats (32-bit)
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://sourceforge.net/projects/openil/
+	arch = x86_64
+	license = LGPL-2.1-only
+	makedepends = cmake>=2.6
+	depends = devil>=1.8.0
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = lib32-lcms2
+	depends = lib32-libjpeg-turbo
+	depends = lib32-libpng
+	depends = lib32-libtiff
+	provides = libIL.so
+	provides = libILU.so
+	provides = libILUT.so
+	source = https://downloads.sourceforge.net/openil/DevIL-1.8.0.tar.gz
+	source = devil_soversion.patch
+	source = devil_jasper.patch
+	sha256sums = 0075973ee7dd89f0507873e2580ac78336452d29d34a07134b208f44e2feb709
+	sha256sums = f6ef4b428fd68f0fb837af548d20ffa5ca96f3e8e4f57faca8f5a90dc48b0377
+	sha256sums = a3e1009e70be5a159250e3ea30d39f5aef1fa23eacece79e72deda51d7200159
+
+pkgname = lib32-devil

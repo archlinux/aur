@@ -1,0 +1,47 @@
+From 1763633e5f7a8b86c293bd9a2f030961e77b0067 Mon Sep 17 00:00:00 2001
+From: Juergen Buchmueller <pullmoll@t-online.de>
+Date: Mon, 2 Jan 2017 16:48:55 +0100
+Subject: [PATCH] Add solib version number to CMakeLists.txt
+
+---
+ DevIL/src-IL/CMakeLists.txt   | 1 +
+ DevIL/src-ILU/CMakeLists.txt  | 1 +
+ DevIL/src-ILUT/CMakeLists.txt | 1 +
+ 3 files changed, 3 insertions(+)
+
+diff --git a/DevIL/src-IL/CMakeLists.txt b/DevIL/src-IL/CMakeLists.txt
+index 02e4f033..095f43e7 100644
+--- a/DevIL/src-IL/CMakeLists.txt
++++ b/DevIL/src-IL/CMakeLists.txt
+@@ -58,6 +58,7 @@ source_group("Text Files" FILES ${DevIL_TXT} )
+ 
+ if(BUILD_SHARED_LIBS)
+     add_library(IL SHARED ${DevIL_SRCS} ${DevIL_INC} ${DevIL_RSRC} ${DevIL_TXT})
++    set_target_properties(IL PROPERTIES SOVERSION 1)
+ else(BUILD_SHARED_LIBS)
+     add_library(IL ${DevIL_SRCS} ${DevIL_INC} ${DevIL_RSRC} ${DevIL_TXT})
+ endif(BUILD_SHARED_LIBS)
+diff --git a/DevIL/src-ILU/CMakeLists.txt b/DevIL/src-ILU/CMakeLists.txt
+index 17a3afe7..44b9531b 100644
+--- a/DevIL/src-ILU/CMakeLists.txt
++++ b/DevIL/src-ILU/CMakeLists.txt
+@@ -44,6 +44,7 @@ source_group("Resource Files" FILES ${ILU_RSRC} )
+ 
+ # Remove SHARED to create a static library
+ add_library(ILU SHARED ${ILU_SRCS} ${ILU_INC} ${ILU_RSRC})
++set_target_properties(ILU PROPERTIES SOVERSION 1)
+ 
+ 
+ ## ILU requires IL
+diff --git a/DevIL/src-ILUT/CMakeLists.txt b/DevIL/src-ILUT/CMakeLists.txt
+index 21470cbc..296f9955 100644
+--- a/DevIL/src-ILUT/CMakeLists.txt
++++ b/DevIL/src-ILUT/CMakeLists.txt
+@@ -44,6 +44,7 @@ source_group("Resource Files" FILES ${ILUT_RSRC} )
+ 
+ # Remove SHARED to create a static library
+ add_library(ILUT SHARED ${ILUT_SRCS} ${ILUT_INC} ${ILUT_RSRC})
++set_target_properties(ILUT PROPERTIES SOVERSION 1)
+ 
+ ## add link sub library info
+ target_link_libraries(ILUT
