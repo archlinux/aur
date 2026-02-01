@@ -1,12 +1,12 @@
-global-update-every: 3600
+global-check-every: 3600
 
 tasks:
   - url: "https://raw.githubusercontent.com/rust-lang/rust/master/src/stage0"
     parse: "grep -o 'compiler_date=[0-9-]*' | cut -d= -f2"
     command: "echo \"New rust date detected: $UPI_PARSED\""
-    update-every: 300
+    check-every: 300
 
   - url: "https://api.github.com/repos/rust-lang/rust/releases/latest"
     parse: "jq -r .tag_name"
     command: 'notify-send "New Rust Release: $UPI_PARSED"'
-    update-every: 3600
+    check-every: 3600

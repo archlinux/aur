@@ -1,5 +1,5 @@
 [Unit]
-Description=URL Poller and Trigger
+Description=URL Poller and Trigger (upi)
 After=network.target
 
 [Service]

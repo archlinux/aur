@@ -1,6 +1,8 @@
 post_install() {
   echo ">>> upi installed."
   echo ">>>"
+  echo ">>> Edit /etc/upi/config.yml to configure tasks."
+  echo ">>>"
   echo ">>> Start and enable the service:"
   echo ">>>   sudo systemctl enable --now upi"
 }
