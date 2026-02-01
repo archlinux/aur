@@ -1,7 +1,7 @@
 # Maintainer: Noa <coolreader18@gmail.com>
 pkgname=celeste64-git
-pkgver=1.1.1.r9.e24fcff
-pkgrel=2
+pkgver=1.1.1.r12.bf7b209
+pkgrel=1
 pkgdesc="A game made in under 2 weeks for Celeste's 6th Anniversary (git)"
 arch=(x86_64)
 url="https://github.com/ExOK/Celeste64"
