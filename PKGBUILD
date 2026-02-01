@@ -1,6 +1,6 @@
 # Hydra CAD – AUR (generiert von packaging/arch/aur-upload.sh)
 pkgname=hydracad
-pkgver=3.0.20
+pkgver=3.0.22
 pkgrel=1
 pkgdesc="Professional CAD application (C++/Qt6)"
 arch=("x86_64")
@@ -22,6 +22,7 @@ build() {
 package() {
   cd "${srcdir}/CAD-${pkgver}"
   install -Dm755 build/cad_desktop -t "${pkgdir}/usr/bin"
+  ln -s cad_desktop "${pkgdir}/usr/bin/hydracad"
   install -Dm644 packaging/linux/HydraCAD.desktop -t "${pkgdir}/usr/share/applications"
   install -Dm644 installer/license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
