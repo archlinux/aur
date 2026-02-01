@@ -1,0 +1,11 @@
+pkgbase = openscad-attachable-text3d
+	pkgdesc = OpenSCAD module for creating blocks of 3D text that are attachable with BOSL2
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = github.com/jon-gilbert/openscad_attachable_text3d
+	arch = any
+	license = MIT
+	source = openscad_attachable_text3d-1.0.2.tar.gz::https://github.com/jon-gilbert/openscad_attachable_text3d/archive/refs/tags/1.0.2.tar.gz
+	sha512sums = a798100e7f6204d1a7ffda688b1d752ed6e34cb76fd9d64fa693a2091c93eb18d0389a663f60c9104c11552a7c2c0f9902debe4ff94e6acdcd14e25fbd926fb0
+
+pkgname = openscad-attachable-text3d
