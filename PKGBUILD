@@ -2,7 +2,7 @@
 _pkgname=openvaf-reloaded
 pkgname=${_pkgname}-git
 pkgver=r813.7afecc5
-pkgrel=1
+pkgrel=2
 pkgdesc="Continuation of OpenVAF - A Next-generation VerilogA Compiler - OSDI >= 4 support"
 arch=(
 	"x86_64"
@@ -30,11 +30,10 @@ provides=("openvaf-r")
 conflicts=("${_pkgname}")
 source=(
 	"${_pkgname}::git+${url}"
-	"vacask::git+https://codeberg.org/arpadbuermen/VACASK#commit=42e5bcdec8376252023e78abe1ec141eb5498208"
+	"vacask::git+https://codeberg.org/arpadbuermen/VACASK"
 )
 b2sums=('SKIP'
-        '24ace0387ef54d8da94b551bd940aac4f25210a56605b59c55375a84ea0d8ed5cc15b6daef524c1f734a81c406e2c9547bac3b78ba6ad7d9d27a5b04a42d9f82')
-
+        'SKIP')
 # lld fails to link mimalloc when LTO is enabled...
 options=(!lto)
 
