@@ -21,8 +21,13 @@ sha256sums=('18e4f06036fde06150aba8b93cafb86aef93c6550f11d86a4eed911bff052eba'
 # Добавь это в начало, чтобы makepkg не ломал архив
 prepare() {
     cd "$srcdir"
-    # Распаковываем вручную, так как bsdtar ломает .NET бандл
-    unzip -o OpenTaiko.Linux.x64.zip -d .
+    # Удаляем старое, если оно есть
+    rm -rf publish
+
+    # Запускаем unzip.
+    # '|| [ $? -le 2 ]' означает: "если код возврата 1 или 2 (предупреждения),
+    # то всё равно считать, что всё прошло успешно"
+    unzip -o OpenTaiko.Linux.x64.zip -d . || [ $? -le 2 ]
 }
 
 package() {
