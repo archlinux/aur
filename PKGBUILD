@@ -1,10 +1,9 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='0.6.0'
+_upstreamver='0.7.0'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='rovr'
-
 
 pkgname="${_pypi_package}"
 pkgver="${_upstreamver}"
@@ -26,7 +25,7 @@ depends=('python' 'python-textual-autocomplete' 'python-rich' 'python-ujson' 'py
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
 source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9fbcd84a6bf99fbb43f2749579ff4622f535b6cbf3bb621c83332dd0f514eaec')
+sha256sums=('540c703b84211cc919524717592a223cd7f4ec87b17d0e55c55dc151f897d8ac')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${pkgver}/"
