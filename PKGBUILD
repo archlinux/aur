@@ -1,6 +1,6 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=heidisql-gtk2-git
-pkgver=r460.c8c3b23e
+pkgver=r474.71bb25b2
 pkgrel=2
 pkgdesc="A lightweight GUI for managing MySQL, PostgreSQL, Microsoft SQL and SQLite databases (GTK2)"
 arch=(x86_64)
@@ -26,10 +26,10 @@ pkgver() {
 build() {
   cd "${srcdir}/${pkgname}"
   
-  LAZARUS_PKG_REPO="https://packages.lazarus-ide.org" \
-  LAZARUS_PKG_TMP="${srcdir}/lazarus-packages" \
-  LAZARUSDIR="/usr/lib/lazarus" \
-  python "${srcdir}/lazarus-packages.py"
+  #LAZARUS_PKG_REPO="https://packages.lazarus-ide.org" \
+  #LAZARUS_PKG_TMP="${srcdir}/lazarus-packages" \
+  #LAZARUSDIR="/usr/lib/lazarus" \
+  #python "${srcdir}/lazarus-packages.py"
 
   lazbuild --lazarusdir=/usr/lib/lazarus -B --bm=Release --ws=gtk2 heidisql.lpi
 }
