@@ -9,7 +9,7 @@ pkgname=(
   "${pkgbase}-vamp"
 )
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Time-stretching and pitch-shifting audio library and utility" # (32-bit)
 arch=(
   'x86_64'
@@ -92,7 +92,7 @@ package_lib32-rubberband() {
 package_lib32-rubberband-ladspa() {
   pkgdesc+=" - LADSPA plugin (32-bit)"
   depends+=(
-    'lib32-ladspa-host'
+    # 'lib32-ladspa-host'
   )
   groups=(
     'lib32-pro-audio'
@@ -111,7 +111,7 @@ package_lib32-rubberband-lv2() {
   pkgdesc+=" - LV2 plugin (32-bit)"
   depends+=(
     'lib32-libsamplerate'
-    'lib32-lv2-host'
+    # 'lib32-lv2-host'
   )
   groups=(
     'lib32-pro-audio'
@@ -130,7 +130,7 @@ package_lib32-rubberband-vamp() {
   pkgdesc+=" - VAMP plugin (32-bit)"
   depends+=(
     'lib32-libsamplerate'
-    'lib32-vamp-host'
+    # 'lib32-vamp-host'
     'lib32-vamp-plugin-sdk'
   )
   groups=(
