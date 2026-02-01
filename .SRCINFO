@@ -1,0 +1,15 @@
+pkgbase = git-pkgs
+	pkgdesc = About A git subcommand for analyzing package/dependency usage in git repositories over time
+	pkgver = 0.11.4
+	pkgrel = 1
+	url = https://github.com/git-pkgs/git-pkgs/
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	source = git+https://github.com/git-pkgs/git-pkgs/#tag=v0.11.4
+	b2sums = fb3a35e25a18ca6129f7e0ca20ae8430a51e47b1a7466481a0cd450facf7c789207b522cb3d208fbdb300fc4f99f2cfee030568d142f6f9761fabcbdd9846c75
+
+pkgname = git-pkgs
