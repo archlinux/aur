@@ -1,42 +1,55 @@
-# Maintainer: Maxime "pep" Buquet <archlinux@bouah.net>
+# Maintainer: Tim Henkes <me+aur@syndace.dev>
+# Contributor: Maxime "pep" Buquet <archlinux@bouah.net>
 
-_pkgname=python-xeddsa
-pkgbase=${_pkgname}-git
-pkgname=${pkgbase}
-pkgver=r75.5b6b93b
-pkgrel=2
-pkgdesc="A python implementation of the XEdDSA signature scheme"
-url='https://github.com/Syndace/python-xeddsa'
-license=('MIT')
-arch=('any')
-makedepends=('git' 'python-setuptools' 'cmake' 'libsodium')
-depends=('glibc' 'python-libnacl' 'python-pynacl')
-source=("${_pkgname}::git+https://github.com/Syndace/python-xeddsa.git")
-sha256sums=('SKIP')
-conflicts=(${_pkgname})
-provides=(${_pkgname})
+pkgname="python-xeddsa-git"
+pkgver=r152.adc9409
+pkgrel=1
+pkgdesc="Python bindings to libxeddsa."
+arch=("x86_64" "aarch64")
+url="https://github.com/Syndace/python-xeddsa"
+license=("MIT")
+depends=(
+    "glibc"
+    "libxeddsa"
+    "python"
+)
+makedepends=(
+    "git"
+    "python-build"
+    "python-cffi"
+    "python-installer"
+    "python-setuptools"
+    "python-wheel"
+)
+checkdepends=("python-pytest")
+provides=("python-xeddsa")
+conflicts=("python-xeddsa")
+source=("${pkgname}::git+https://github.com/Syndace/python-xeddsa.git")
+sha256sums=("SKIP")
 
 pkgver() {
-    cd ${_pkgname}
+    cd "${pkgname}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
-    cd ${_pkgname}
-    python3 setup.py build
+prepare() {
+    cd "${pkgname}"
+    git clean -dfx
+}
 
-    cd ref10
-    mkdir -p build && cd build
-    cmake ..
+build() {
+    cd "${pkgname}"
+    python -m build --wheel --no-isolation
+}
+
+check() {
+    cd "${pkgname}"
+    local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
+    PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-$python_version" pytest -o addopts=""
 }
 
 package() {
-    cd ${_pkgname}
-    python3 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-
-    install -m755 -d "${pkgdir}/usr/lib"
-    install -Dm 644 \
-      ref10/bin/libcrypto_scalarmult_dynamic.so \
-      ref10/bin/libcrypto_sign_dynamic.so \
-      "${pkgdir}/usr/lib"
+    cd "${pkgname}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
