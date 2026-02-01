@@ -1,7 +1,7 @@
 # Maintainer: Antoine Gaudreau Simard <antoineg.simard 'at' gmail.com>
 pkgname=python-lnxlink
 pkgver=2026.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux system integration for Home Assistant via MQTT"
 arch=('any')
 url="https://github.com/bkbilly/lnxlink"
@@ -16,6 +16,7 @@ depends=(
     'python-jeepney'
     'python-aiohttp'
     'python-distro'
+    'python-beaupy'
 )
 makedepends=(
     'python-build'
