@@ -1,4 +1,5 @@
 # Maintainer: MadGoatHaz <your-email@example.com>
+pkgbase=goatd-kernel-bin
 pkgname=goatdkernel
 pkgver=0.2.1
 pkgrel=2

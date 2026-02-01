@@ -1,4 +1,4 @@
-pkgbase = goatdkernel
+pkgbase = goatd-kernel-bin
 	pkgdesc = GOATd Kernel - High-performance computing platform with multi-language integration
 	pkgver = 0.2.1
 	pkgrel = 2
