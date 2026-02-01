@@ -1,0 +1,5 @@
+[gitarbor-bin]
+source = "github"
+github = "cadamsdev/gitarbor-tui"
+use_latest_release = true
+prefix = "v"
