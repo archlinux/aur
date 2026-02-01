@@ -8,7 +8,7 @@ _ver=1.1.1w
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 pkgrel=7
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
-arch=('x86_64')
+arch=('aarch64' 'x86_64')
 url='https://www.openssl.org'
 license=('custom:BSD')
 depends=('glibc')
@@ -90,7 +90,7 @@ build() {
 	cd "$srcdir/$_pkgname-$_ver"
 
 	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib/openssl-1.1 \
-		shared no-ssl3-method enable-ec_nistp_64_gcc_128 linux-x86_64
+		shared no-ssl3-method enable-ec_nistp_64_gcc_128 "linux-${CARCH}"
 
 	make depend
 	make

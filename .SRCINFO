@@ -3,6 +3,7 @@ pkgbase = openssl-1.1
 	pkgver = 1.1.1.w
 	pkgrel = 7
 	url = https://www.openssl.org
+	arch = aarch64
 	arch = x86_64
 	license = custom:BSD
 	makedepends = perl
