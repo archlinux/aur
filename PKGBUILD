@@ -69,6 +69,7 @@ build() {
     -B build
     -S $_pkgname-$pkgver-$_build_types
     -D CMAKE_INSTALL_PREFIX=/usr
+    -D CMAKE_POLICY_VERSION_MINIMUM=3.5
     -D CMAKE_BUILD_TYPE=None
     -D ENABLE_OPENMP=ON
     -D ENABLE_THREADS=ON
