@@ -1,0 +1,15 @@
+pkgbase = sit-git
+	pkgdesc = A tool to create StuffIt 1.5.1 archives, compatible with Classic Mac OS
+	pkgver = r28.8e3d641
+	pkgrel = 1
+	url = https://github.com/thecloudexpanse/sit
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	provides = sit
+	conflicts = sit
+	source = git+https://github.com/thecloudexpanse/sit.git
+	sha256sums = SKIP
+
+pkgname = sit-git
