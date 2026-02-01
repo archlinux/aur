@@ -1,0 +1,37 @@
+--- Cargo.lock	2026-02-01 13:01:08.509358288 +0100
++++ Cargo.lock	2026-02-01 13:01:20.054104725 +0100
+@@ -1271,15 +1271,6 @@
+ checksum = "d05e27ee213611ffe7d6348b942e8f942b37114c00cc03cec254295a4a17852e"
+
+ [[package]]
+-name = "openssl-src"
+-version = "300.5.2+3.5.2"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "d270b79e2926f5150189d475bc7e9d2c69f9c4697b185fa917d5a32b792d21b4"
+-dependencies = [
+- "cc",
+-]
+-
+-[[package]]
+ name = "openssl-sys"
+ version = "0.9.109"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+@@ -1287,7 +1278,6 @@
+ dependencies = [
+  "cc",
+  "libc",
+- "openssl-src",
+  "pkg-config",
+  "vcpkg",
+ ]
+--- Cargo.toml	2026-02-01 12:54:40.309718248 +0100
++++ Cargo.toml	2026-02-01 13:02:02.369181933 +0100
+@@ -22,7 +22,7 @@
+ jsonwebtoken = "9.3.1"
+ lazy_static = "1.5.0"
+ log = "0.4.25"
+-reqwest = { version = "0.11.27", features = ["native-tls-vendored", "blocking", "json"] }
++reqwest = { version = "0.11.27", features = ["native-tls", "blocking", "json"] }
+ la-arena = "0.3.1"
+ serde = { version = "1.0.215", features = ["derive"] }
+ serde_json = "1.0"
