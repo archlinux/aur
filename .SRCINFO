@@ -1,17 +1,20 @@
 pkgbase = beets-alternatives-git
 	pkgdesc = Beets plugin to manage external files
-	pkgver = 0.10.1.r22.gfb23fe0
+	pkgver = 0.14.0.r4.gb376590
 	pkgrel = 1
 	url = https://github.com/geigerzaehler/beets-alternatives
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
 	depends = python
 	depends = beets>=1.4.7
-	provides = beets-alternatives=0.10.1.r22.gfb23fe0
+	provides = beets-alternatives=0.14.0.r4.gb376590
 	conflicts = beets-alternatives
 	source = git+https://github.com/geigerzaehler/beets-alternatives.git
 	md5sums = SKIP
 
 pkgname = beets-alternatives-git
-
