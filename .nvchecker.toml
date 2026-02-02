@@ -1,0 +1,5 @@
+[bmm-bin]
+source = "github"
+github = "dhth/bmm"
+use_latest_release = true
+prefix = "v"
