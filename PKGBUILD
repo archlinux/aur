@@ -4,19 +4,19 @@
 
 set -u
 pkgname=liquibase
-pkgver=4.31.1
+pkgver=5.0.1
 pkgrel=1
 pkgdesc='VCS source control tailored for database management'
 arch=('any')
-url="http://www.liquibase.org/"
-license=('Apache-2.0')
+url="https://www.liquibase.org/"
+license=('FSL-1.1-ALv2')
 depends=('bash' 'java-environment')
 _giturl="https://github.com/liquibase/${pkgname}"
 _verwatch=("${_giturl}/releases.atom" '\s\+<link rel="alternate" type="text/html" href="http.*/releases/tag/liquibase-parent-\([^"]\+\)"/>.*' 'f') # RSS
 options=('!strip')
 source=("https://github.com/liquibase/liquibase/releases/download/v${pkgver}/liquibase-${pkgver}.tar.gz"
         "liquibase.profile")
-sha256sums=('0555808b59941d497f0c1114c3f2225698afde11c60d191c88e449506a60a3ea'
+sha256sums=('3ae11ccdcd4c080e421e5fd043bdbd624d56fcfc9b294d5d9d898cb8b074e449'
             '7c1939e5b1aee63db199c86989726bbdf81102784512ed69f8595fddf80c30c0')
 package() {
   set -u
@@ -43,8 +43,8 @@ package() {
 
   # install license files
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
-  mv -v "${pkgdir}/opt/${pkgname}/licenses/"{commercial,oss} "${pkgdir}/usr/share/licenses/${pkgname}/"
-  ln -s "/usr/share/licenses/${pkgname}/"{commercial,oss} "${pkgdir}/opt/${pkgname}/licenses/"
+  mv -v "${pkgdir}/opt/${pkgname}/licenses/oss" "${pkgdir}/usr/share/licenses/${pkgname}/"
+  ln -s "/usr/share/licenses/${pkgname}/oss" "${pkgdir}/opt/${pkgname}/licenses/"
   mv -v "${pkgdir}/opt/${pkgname}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   ln -s "/usr/share/licenses/${pkgname}/LICENSE" "${pkgdir}/opt/${pkgname}/LICENSE.txt"
 
