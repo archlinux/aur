@@ -115,18 +115,18 @@ extract_appimage() (
 build() {
     mkdir opt
     extract_appimage "VRCX_${pkgver}_x64.AppImage" opt/vrcx -no-xattrs
-    rm -f opt/vrcx/AppRun
-    rm -f opt/vrcx/.DirIcon
-    rm -f opt/vrcx/vrcx.desktop
-    rm -f opt/vrcx/resources/app-update.yml
-    rm -rf opt/vrcx/resources/app.asar.unpacked/build/Electron/dotnet-runtime
-    rm -rf opt/vrcx/resources/dotnet-runtime
+    rm opt/vrcx/AppRun
+    rm opt/vrcx/.DirIcon
+    rm opt/vrcx/vrcx.desktop
+    rm opt/vrcx/resources/app-update.yml
+    rm -r opt/vrcx/resources/app.asar.unpacked/build/Electron/dotnet-runtime
+    rm -r opt/vrcx/resources/dotnet-runtime
     if [ "$_omit_libs" = true ]; then
-        rm -f opt/vrcx/resources/app.asar.unpacked/build/Electron/Microsoft.Win32.SystemEvents.dll
-        rm -f opt/vrcx/resources/app.asar.unpacked/build/Electron/System.Management.dll
-        rm -f opt/vrcx/resources/app.asar.unpacked/build/Electron/System.Private.Windows.Core.dll
-        rm -f opt/vrcx/resources/app.asar.unpacked/build/Electron/System.Security.Cryptography.ProtectedData.dll
-        rm -f opt/vrcx/resources/app.asar.unpacked/build/Electron/System.Windows.Extensions.dll
+        rm opt/vrcx/resources/app.asar.unpacked/build/Electron/Microsoft.Win32.SystemEvents.dll
+        rm opt/vrcx/resources/app.asar.unpacked/build/Electron/System.Management.dll
+        rm opt/vrcx/resources/app.asar.unpacked/build/Electron/System.Private.Windows.Core.dll
+        rm opt/vrcx/resources/app.asar.unpacked/build/Electron/System.Security.Cryptography.ProtectedData.dll
+        rm opt/vrcx/resources/app.asar.unpacked/build/Electron/System.Windows.Extensions.dll
 
         (
             CDPATH='' cd opt/vrcx/resources/app.asar.unpacked/node_modules/node-api-dotnet
@@ -139,21 +139,21 @@ build() {
             for path in linux-*; do
                 case "$path" in
                     linux-"$netarch") :;;
-                    *) rm -rf -- "$path";;
+                    *) rm -r -- "$path";;
                 esac
             done
             for path in net*; do
                 case "$path" in
                     net"$_dotnet_ver"|net"$_dotnet_ver".js) :;;
-                    *) rm -rf -- "$path";;
+                    *) rm -r -- "$path";;
                 esac
             done
-            rm -rf -- osx-*
-            rm -rf -- win-*
+            rm -r -- osx-*
+            rm -r -- win-*
         )
 
-        rm -f opt/vrcx/vk_swiftshader_icd.json
-        rm -f opt/vrcx/libvk_swiftshader.so
+        rm opt/vrcx/vk_swiftshader_icd.json
+        rm opt/vrcx/libvk_swiftshader.so
         ln -sf "../../usr/lib/electron$_electron_ver/libEGL.so" opt/vrcx/libEGL.so
         ln -sf "../../usr/lib/electron$_electron_ver/libGLESv2.so" opt/vrcx/libGLESv2.so
         ln -sf "../../usr/lib/electron$_electron_ver/libffmpeg.so" opt/vrcx/libffmpeg.so
@@ -182,7 +182,7 @@ build() {
             done
         )
     fi
-    rm -rf opt/vrcx/usr/lib
+    rm -r opt/vrcx/usr/lib
     mv opt/vrcx/usr usr
     mkdir -p -m755 usr/share
     mkdir -p -m755 usr/share/locale
@@ -234,8 +234,8 @@ package() {
     install -Dm644 "LICENSE-v$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 opt/vrcx/LICENSE.electron.txt -t "$pkgdir/usr/share/licenses/$pkgname"
     install -Dm644 opt/vrcx/LICENSES.chromium.html -t "$pkgdir/usr/share/licenses/$pkgname"
-    rm -f -- "$pkgdir/opt/vrcx/LICENSE.electron.txt"
-    rm -f -- "$pkgdir/opt/vrcx/LICENSES.chromium.html"
+    rm -- "$pkgdir/opt/vrcx/LICENSE.electron.txt"
+    rm -- "$pkgdir/opt/vrcx/LICENSES.chromium.html"
 
     find "$pkgdir/opt/vrcx" "$pkgdir/usr/share" -type l -print0 | while IFS='' read -r -d '' file; do
         target="$(readlink -- "$file")"
