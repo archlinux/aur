@@ -5,9 +5,9 @@ _pkgname=sweep
 pkgname=${_pkgname}-bin
 pkgdesc="A flexible minesweeping experience in your terminal emulator"
 
-pkgver=0.2.7
-pkgrel=2
-_pkgvername=v${pkgver}a
+pkgver=0.2.8
+pkgrel=1
+_pkgvername=v${pkgver}
 
 arch=('x86_64' 'aarch64')
 _barch=('amd64' 'arm64')
@@ -31,8 +31,8 @@ sha256sums=('220d4501b2be53b547c280d2b3c4864fcdb3a8e6180df18abb626491ebaeaf99'
             '82b1d120d26113860306107fb379ceacbe1b0f818657dddd6ac745508d2dd7c2'
             '73acd9e722a185b7f2947974bd577f47c21379b140ad2e3fdc68444036d2ef03'
             'd7cd8aad3fba2449721a11d8345aa276f825de3d090f5e3c116d666eb4e02a1a')
-sha256sums_x86_64=('6b8d8504087312b90664df6e80e51f573495fae7b3d9ffa18f0afff72539686a')
-sha256sums_aarch64=('dcd99eb4199adceb95738177d2dff345b5de2ea9de425206d2e4195a49fdfa0e')
+sha256sums_x86_64=('fdf8a420682dc95b8dcc87488a94ae48ac1a90280aa08fb99cfc60870456a5ed')
+sha256sums_aarch64=('bcc38becc4466c601f24a0191956044704b86e7cbc38b7bd22f2c2d555db6b73')
 
 
 package() {
