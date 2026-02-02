@@ -1,0 +1,16 @@
+pkgbase = croaring-git
+	pkgdesc = Roaring bitmaps in C (and C++), with SIMD (AVX2, AVX-512 and NEON) optimizations: used by Apache Doris, ClickHouse, Alibaba Tair, Redpanda, YDB and StarRocks
+	pkgver = VERSION
+	pkgrel = 1
+	url = https://github.com/RoaringBitmap/CRoaring
+	arch = x86_64
+	license = Apache-2.0
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	provides = croaring-git
+	conflicts = croaring-git
+	source = git+https://github.com/RoaringBitmap/CRoaring.git
+	sha256sums = SKIP
+
+pkgname = croaring-git
