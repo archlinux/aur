@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=postybirb-plus-bin
-pkgver=3.1.65
+pkgver=3.1.67
 _electronversion=19
 pkgrel=1
 pkgdesc="An application that helps artists post art and other multimedia to multiple websites more quickly.(Prebuilt version.Use system-wide electron)"
@@ -20,7 +20,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/mvdicarlo/postybirb-plus/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('010334e0111d0298400b327e251e541390d08974e69caba74a8acd779b4b8ec0'
+sha256sums=('f78896c5f819bedcd4ad64f08ee408b3b5ac2291fb641cb9df8e3555177136ac'
             'a0b91aa0ffc9564128c6599eac1fc0ba93b8fe477dff6258ef315f0019b5726d'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
