@@ -1,13 +1,24 @@
 pkgbase = lqth
 	pkgdesc = Simple but blazingly fast screenshot utility
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/0x61nas/lqth
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = libx11
-	source = lqth-0.2.4.tar.gz::https://static.crates.io/crates/lqth/lqth-0.2.4.crate
-	sha256sums = 2a616f8a882f2247b4b2b79cb6473fe149e594706670df7b29a204f00ed0b7df
+	source = lqth-0.2.5.tar.gz::https://static.crates.io/crates/lqth/lqth-0.2.5.crate
+	source = LICENSE::https://raw.githubusercontent.com/0x61nas/lqth/refs/tags/0.2.5/LICENSE
+	source = lqth.1::https://raw.githubusercontent.com/0x61nas/lqth/refs/tags/0.2.5/man/lqth.1
+	source = lqth-0.2.5.tar.gz.asc
+	source = LICENSE.asc
+	source = lqth.1.asc
+	validpgpkeys = EF4B4CB5DFB8822216A473B1597AB12E66262898
+	sha256sums = e2a362d6f7f3b10dcad99a0690e32c1f8678e26167d3608c5be79fe94213a4e3
+	sha256sums = ddc49ced9f48c7402b323b4f379bf92973c44ae63f5ba047f828121efafcd319
+	sha256sums = 03f3ebaec29bc2ca4a8e1854de6951b51d0bb04d74c7b4871cae0eb5dd0f8c79
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = lqth
