@@ -4,7 +4,7 @@
 
 pkgbase=linux-g14
 pkgver=6.18.7.arch1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux-g14'
 url="https://gitlab.com/asus-linux/linux-g14"
 _url='https://github.com/archlinux/linux'
@@ -49,7 +49,8 @@ source=(
   0003-platform-x86-asus-armoury-add-panel_hd_mode-attribut.patch
   0004-platform-x86-asus-armoury-add-apu-mem-control-suppor.patch
   0005-platform-x86-asus-armoury-add-screen-auto-brightness.patch
-  0006-platform-x86-asus-wmi-deprecate-bios-features.patch
+  # 0006-platform-x86-asus-wmi-deprecate-bios-features.patch
+  # PATCH-v4-1-3-platform-x86-asus-wmi-explicitly-mark-more-code-with-CONFIG_ASUS_WMI_DEPRECATED_ATTRS.patch
   0007-platform-x86-asus-wmi-rename-ASUS_WMI_DEVID_PPT_FPPT.patch
   0008-platform-x86-asus-armoury-add-ppt_-and-nv_-tuning-kn.patch
   0001-platform-x86-asus-armoury-Fix-error-code-in-mini_led.patch
@@ -62,7 +63,7 @@ source=(
 	0003-platform-x86-asus-armoury-add-support-for-GU605CR.patch
 	0003-0-3-asus-armoury-add-support-for-GV302XV-FA401UV-FA617XT.patch
   0001-platform-x86-asus-armoury-fix-only-DC-tunables-being.patch
-  0010-platform-x86-asus-wmi-move-keyboard-control-firmware.patch
+  # 0010-platform-x86-asus-wmi-move-keyboard-control-firmware.patch
 
   0003-0-4-platform-x86-asus-armoury-ppt-fixes-and-new-models.patch
 	
@@ -92,6 +93,9 @@ source=(
 
   0047-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch
   0048-asus-nb-wmi-fix-tablet_mode_sw_int.patch
+
+  ga403wr-fix-audio.patch
+  0001-bluetooth-btus-add-new-vid-pid.patch
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
@@ -103,7 +107,7 @@ sha256sums=('b726a4d15cf9ae06219b56d87820776e34d89fbc137e55fb54a9b9c3015b8f1e'
             'SKIP'
             '57c22879f2228398564091db2ec9b186acbd56dfb0e1072f83418bfdd3829aae'
             'SKIP'
-            '505d823490e964e66ebe5889a3701347b4e4e2faf1772b3964f0360a176eadf8'
+            '6fbacecde255d0b6d70fdc143b65cb72f455508df7ecfa4372cfc3a97ce698a0'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             '11e570d8a355c2c6ccd413b7ecea9ae1f9b9801eb9a16249f8c4c5e6c80a1ead'
             '47d8cea0e2edb636ff86b4c331e91e71396302fc4bbf9610b6bf62b0f745f755'
@@ -111,7 +115,6 @@ sha256sums=('b726a4d15cf9ae06219b56d87820776e34d89fbc137e55fb54a9b9c3015b8f1e'
             'b932e95ec04c612a2e6468527c028f8f57a198a9af783dcd63514065b0d29fb9'
             '1fea6441e150e239028a45758c4c8fd1db57e06caf3c9201c05e063c1713b075'
             '33eed5af89ae3dc6be95dfd1c205a0bb9e77fb923c79f35b5abeebee3a900921'
-            '3cdaa9e41e096fdf724ea4ad2cf02f5fea2e2e873e60e2e52d77a1c4b9ccced6'
             'f89c7d9ab3711cc6a8bbf2b94f501954d17b7d402468b04d99ab5a0920453b60'
             '3c9711ade705328889628107ea886f8d59c68ba3994200be6b745364ee44b98f'
             'f2e7f0f5bf499236f6e457e13270d7a907d00daf74111e6369b6e6c20fb6b9d0'
@@ -124,7 +127,6 @@ sha256sums=('b726a4d15cf9ae06219b56d87820776e34d89fbc137e55fb54a9b9c3015b8f1e'
             '5da11e4b347640baaebf9af8bb164188dc4c3ae937485108a24d9764e0d693a9'
             '3caa20406c8436a8429f70341c8c0410ffa77dd13a0a051718e70204ddbe0589'
             'e1d4954d0ca79d1857683bd87bab44f8088a08e16a0754ed46f1c462f6e5a34b'
-            '5e4c3877608a79142078e35301d6c97f91219705bd91ecd3dfa01fef9a324651'
             'ba540fb3f4df7e8df9aba4bc4caec3d3214a2581ecae290a853e7780d5d2a557'
             '610f5d1bc0a47ded90f8143bd3ac6b0908800b80bd3c0eae04023ec9548ddffc'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
@@ -138,7 +140,9 @@ sha256sums=('b726a4d15cf9ae06219b56d87820776e34d89fbc137e55fb54a9b9c3015b8f1e'
             'e90bb17f74c5b232001de5558ff96e09612f35a8552e1fa506c8a3451b0516b7'
             'd89bedd7ef4d7bfe5c5d8b1f3c2e12cbb293ce7e11647700cc077e772d5f7fe8'
             '15e912a66e4bbce1cf0450f1dc6610653df29df8dd6d5426f9c1b039490436c8'
-            '444f2d86de8c2177655b01596f939f99c2e7abfa8efad8a509e0a334f42dfa85')
+            '444f2d86de8c2177655b01596f939f99c2e7abfa8efad8a509e0a334f42dfa85'
+            'd7cc40adef82487bb557c9e85a1251c47c993df3dd28394aa13d7310a7c120c1'
+            'f376bf5e588b971c0130887b781cfbc393bf6a6ebb24cf2f32a4d9d9d88ba886')
 
 # notable microarch levels:
 #
