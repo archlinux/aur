@@ -1,0 +1,5 @@
+[onleiharr]
+source = "github"
+github = "nzb-tuxxx/Onleiharr"
+prefix = "v"
+use_max_tag = true

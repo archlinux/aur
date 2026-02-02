@@ -1,0 +1,29 @@
+[general]
+poll_interval_secs = 60.0
+urls = []
+keywords = []
+
+[notification]
+# urls = [
+#   "tgram://{bot_token}/{chat_id}/?format=html",
+# ]
+test_notification = false
+email = ""
+
+[gourou]
+# bin_dir = "/usr/bin"
+# adept_dir = "~/.config/adept"
+# download_dir = "/var/lib/onleiharr/downloads"
+# download_permissions = "0644"
+# timeout_secs = 30.0
+# remove_drm = false
+# remove_drm_ack = "I_UNDERSTAND"
+# lendings_poll_interval_secs = 21600.0
+# lendings_download_keywords_only = true
+# lendings_notify = true
+
+[credentials]
+username = ""
+password = ""
+library = ""
+library_id = 0

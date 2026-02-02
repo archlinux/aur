@@ -1,0 +1,17 @@
+[Unit]
+Description=Onleiharr Onleihe watcher
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=onleiharr
+Group=onleiharr
+ExecStart=/usr/bin/onleiharr -c /etc/onleiharr/onleiharr.toml
+WorkingDirectory=/var/lib/onleiharr
+StateDirectory=onleiharr
+Restart=on-failure
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target
