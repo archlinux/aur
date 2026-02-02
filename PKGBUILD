@@ -1,4 +1,5 @@
 # Maintainer: Igor Aguiar Rodrigues <igor_aguiar@yahoo.com.br>
+# Maintainer: Sheikh Limon <sheikhlimonde@gmail.com>
 pkgname=goose-desktop-bin
 pkgver=1.22.2
 pkgrel=1
