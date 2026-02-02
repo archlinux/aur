@@ -1,6 +1,6 @@
 # Maintainer: Amin Tehrani <t.mohammadamin@gmail.com>
 pkgname=alarm-gui-git
-pkgver=0.1.r0.g0000000
+pkgver=0.1.4.r0.g0000000 
 pkgrel=1
 pkgdesc="High-performance, CLI-driven, full-screen alarm application with video background and UI"
 arch=('x86_64')
@@ -15,7 +15,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "0.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  # Read the VERSION file from the cloned source, then append git info
+  printf "%s.r%s.%s" "$(cat VERSION)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -31,6 +32,8 @@ build() {
 package() {
   cd "${pkgname%-git}"
   install -Dm755 alarm-gui "$pkgdir/usr/bin/alarm-gui"
+  # Note: Use $pkgname if you want the license in /usr/share/licenses/alarm-gui-git
+  # Or use ${pkgname%-git} if you want it in /usr/share/licenses/alarm-gui
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
