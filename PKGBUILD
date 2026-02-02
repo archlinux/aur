@@ -1,7 +1,7 @@
 # Maintainer: awh (https://aur.archlinux.org/account/awh)
 
 pkgname=baballonia
-pkgver=v1.1.0.9rc15
+pkgver=v1.1.0.9
 _trainerver=1.3.8-linux-paths
 _calibrationver=1.0.6
 pkgrel=1
@@ -68,7 +68,7 @@ source=(
 noextract=(
     "BabbleCalibration_${_calibrationver}.zip"
 )
-sha256sums=('85bcc66751a2399fb1e24a979f8dd91bff980e54ec122dd7426e3d5d922c2ccc'
+sha256sums=('75b81cd0227ddc5a5561c88ae9b63b44e22c05623b84fd845bb9efc131c71973'
             '5b3cd1a2a4be0021ee74ca3bb836dd8bc2e9fe23b2f16cf746da564d36362f2d'
             '3a36a498005a31a2512ffa73625895b3eb43bba1a5b64313838ab28df0586884'
             'f14601e1bca1b90fa4a83198fe7982cc4503efd83d2f5094fdfafc9abb66d760'

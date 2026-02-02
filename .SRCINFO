@@ -1,6 +1,6 @@
 pkgbase = baballonia
 	pkgdesc = A cross-platform, hardware-agnostic VR eye and face tracking application.
-	pkgver = v1.1.0.9rc15
+	pkgver = v1.1.0.9
 	pkgrel = 1
 	url = https://github.com/Project-Babble/Baballonia
 	arch = x86_64
@@ -39,14 +39,14 @@ pkgbase = baballonia
 	optdepends = python-pytorch-rocm: with ROCm for training
 	optdepends = python-pytorch-opt-rocm: with ROCm and AVX2 CPU optimizations for training
 	noextract = BabbleCalibration_1.0.6.zip
-	source = baballonia::git+https://github.com/Project-Babble/Baballonia.git#tag=v1.1.0.9rc15
+	source = baballonia::git+https://github.com/Project-Babble/Baballonia.git#tag=v1.1.0.9
 	source = babbletrainer::git+https://github.com/Project-Babble/BabbleTrainer.git#tag=1.3.8-linux-paths
 	source = BabbleCalibration_1.0.6.zip::https://github.com/Project-Babble/BabbleCalibration/releases/download/1.0.6/Linux.zip
 	source = baballonia.sh
 	source = babbletrainer.sh
 	source = Baballonia.desktop
 	source = LICENSE
-	sha256sums = 85bcc66751a2399fb1e24a979f8dd91bff980e54ec122dd7426e3d5d922c2ccc
+	sha256sums = 75b81cd0227ddc5a5561c88ae9b63b44e22c05623b84fd845bb9efc131c71973
 	sha256sums = 5b3cd1a2a4be0021ee74ca3bb836dd8bc2e9fe23b2f16cf746da564d36362f2d
 	sha256sums = 3a36a498005a31a2512ffa73625895b3eb43bba1a5b64313838ab28df0586884
 	sha256sums = f14601e1bca1b90fa4a83198fe7982cc4503efd83d2f5094fdfafc9abb66d760
