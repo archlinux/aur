@@ -4,7 +4,7 @@
 _project=QJackCapture
 pkgname="${_project,,}"
 pkgver=0.2.1
-pkgrel=5
+pkgrel=6
 pkgdesc='A GUI for easy recording of JACK audio sources using jack_capture'
 arch=(any)
 url='https://github.com/SpotlightKid/qjackcapture'
