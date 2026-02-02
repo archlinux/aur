@@ -1,139 +1,59 @@
-# Maintainer: Unknown Packager
+# Maintainer: Benson Muite <benson_muite at emailplus dot org>
 
-export PIP_CONFIG_FILE=/dev/null
-export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=inkcut
+_pkg=inkcut
 epoch=
-pkgver=2.1.5
+pkgver=2.1.7
 pkgrel=00
 pkgdesc='An application for controlling 2D plotters, cutters, engravers, and CNC machines.'
 arch=(any)
-url=https://github.com/codelv/inkcut/
-license=(custom:GPLv3)
-depends=(python python-enaml python-enamlx python-jsonpickle python-lxml python-pycups python-pyqtgraph python-pyserial python-qt-reactor python-qtconsole python-twisted)
-depends+=(python-pyqt5-webengine python-setuptools)
-makedepends=(python-pip)
-checkdepends=()
-provides=()
-conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
-source=(PKGBUILD_EXTRAS)
-md5sums=(SKIP)
-noextract=()
-source+=(https://files.pythonhosted.org/packages/11/d2/485dcbe344d98b97b8dc2ab0c48b5375ef7427694216847b466d8c76e5ab/inkcut-2.1.5-py2.py3-none-any.whl)
-md5sums+=(7feb837b61317590e1abf676719ebc6f)
-noextract+=(inkcut-2.1.5-py2.py3-none-any.whl)
-source+=(LICENSE)
-md5sums+=(d32239bcb673463ab874e80d47fae504)
+url=https://github.com/inkcut/inkcut
+license=(GPLv3)
+depends=(
+	 'inkscape'
+	 'python'
+	 'python-enaml'
+	 'python-twisted'
+	 'python-pyqtgraph'
+	 'python-qtconsole'
+	 'python-pyserial'
+	 'python-jsonpickle'
+	 'python-lxml'
+	 'python-pyqt6'
+	 'python-qt-reactor')
+depends+=(
+	  'python-numpy')
+makedepends=(
+	'python-build'
+	'python-installer'
+	'python-setuptools'
+	'python-setuptools-scm'
+	'python-wheel')
+optdepends=()
+checkdepends=(
+	'python-pytest'
+	'python-pytest-qt')
+source=("https://github.com/inkcut/inkcut/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('5df2c0ab3a92fc9f63659389c5aee9a01220e6b4ec54db74da4664436230dd28')
 
-_first_source() {
-    echo " ${source_i686[@]} ${source_x86_64[@]} ${source[@]}" |
-        tr ' ' '\n' | grep -Pv '^(PKGBUILD_EXTRAS)?$' | head -1
+build() {
+	cd "$_pkg-$pkgver"
+	python setup.py bdist_wheel
 }
 
-_vcs="$(grep -Po '^[a-z]+(?=\+)' <<< "$(_first_source)")"
-if [[ "$_vcs" ]]; then
-    makedepends+=("$(pkgfile --quiet /usr/bin/$_vcs)")
-    provides+=("${pkgname%-$_vcs}")
-    conflicts+=("${pkgname%-$_vcs}")
-fi
-
-_is_wheel() {
-    [[ $(_first_source) =~ \.whl$ ]]
+check() {
+	cd "$_pkg-$pkgver"
+        QT_QPA_PLATFORM=offscreen python -m pytest tests
 }
 
-if [[ _is_wheel &&
-      $(basename "$(_first_source)" | rev | cut -d- -f1 | rev) =~ ^manylinux ]]; then
-    options=(!strip)  # https://github.com/pypa/manylinux/issues/119
-fi
-
-_dist_name() {
-    find "$srcdir" -mindepth 1 -maxdepth 1 -type d -printf '%f
-' |
-        grep -v '^_tmpenv$'
+package() {
+	cd "$_pkg-$pkgver"
+	python -m installer --destdir="$pkgdir" dist/*.whl
+	# Inkscape extension
+        mkdir -p $pkgdir/usr/share/inkscape/extensions
+        cp -a plugins/inkscape/ink* $pkgdir/usr/share/inkscape/extensions/
+	install -m755 -d "$pkgdir/usr/share/licenses/$pkgname/"
+	install -m755 LICENSE "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
-if [[ $(_first_source) =~ ^git+ ]]; then
-    _pkgver() {
-        ( set -o pipefail
-          cd "$srcdir/$(_dist_name)"
-          git describe --long --tags 2>/dev/null |
-            sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-          printf "r%s.%s" \
-              "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-        )
-    }
-
-    pkgver() { _pkgver; }
-fi
-
-_build() {
-    if _is_wheel; then return; fi
-    cd "$srcdir"
-    # See Arch Wiki/PKGBUILD/license.
-    # Get the first filename that matches.
-    local test_name
-    if [[ ${license[0]} =~ ^(BSD|MIT|ZLIB|Python)$ ]]; then
-        for test_name in LICENSE LICENSE.txt license.txt COPYING COPYING.md COPYING.rst COPYING.txt COPYRIGHT; do
-            if cp "$srcdir/$(_dist_name)/$test_name" "$srcdir/LICENSE" 2>/dev/null; then
-                break
-            fi
-        done
-    fi
-    # Use the latest version of pip, as Arch's version is historically out of
-    # date(!) and newer versions do fix bugs (sometimes).
-    python -mvenv --clear --system-site-packages _tmpenv
-    _tmpenv/bin/pip --quiet install -U pip
-    # Build the wheel (which we allow to fail) only after fetching the license.
-    # In order to isolate from ~/.pydistutils.cfg, we need to set $HOME to a
-    # temporary directory, and thus first $XDG_CACHE_HOME back to its real
-    # location, so that pip inserts the wheel in the wheel cache.  We cannot
-    # use --global-option=--no-user-cfg instead because that fully disables
-    # wheels, causing a from-source build of build dependencies such as
-    # numpy/scipy.
-    XDG_CACHE_HOME="${XDG_CACHE_HOME:-"$HOME/.cache"}" HOME=_tmpenv \
-        _tmpenv/bin/pip wheel -v --no-deps --wheel-dir="$srcdir" \
-        "./$(_dist_name)" || true
-}
-
-build() { _build; }
-
-_check() {
-    # Define check(), possibly using _check as a helper, to run the tests.
-    # You may need to call `python setup.py build_ext -i` first.
-    if _is_wheel; then return; fi
-    cd "$srcdir/$(_dist_name)"
-    /usr/bin/python setup.py -q test
-}
-
-_package() {
-    cd "$srcdir"
-    # pypa/pip#3063: pip always checks for a globally installed version.
-    python -mvenv --clear --system-site-packages _tmpenv
-    _tmpenv/bin/pip install --prefix="$pkgdir/usr" \
-        --no-deps --ignore-installed --no-warn-script-location \
-        "$(ls ./*.whl 2>/dev/null || echo ./"$(_dist_name)")"
-    if [[ -d "$pkgdir/usr/bin" ]]; then  # Fix entry points.
-        for f in "$pkgdir/usr/bin/"*; do
-            if [[ $(head -n1 "$f") = "#!$(readlink -f _tmpenv)/bin/python" ]]; then
-                sed -i '1c#!/usr/bin/python' "$f"
-            fi
-        done
-    fi
-    if [[ -d "$pkgdir/usr/etc" ]]; then
-        mv "$pkgdir/usr/etc" "$pkgdir/etc"
-    fi
-    if [[ -f LICENSE ]]; then
-        install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    fi
-}
-
-package() { _package; }
-
-. "$(dirname "$BASH_SOURCE")/PKGBUILD_EXTRAS"
-
-# Remove makedepends already in depends (which may have been listed for the
-# first build, but autodetected on the second.
-makedepends=($(printf '%s\n' "${makedepends[@]}" |
-               grep -Pwv "^($(IFS='|'; echo "${depends[*]}"))$"))
-:  # Apparently ending with makedepends assignment sometimes fails.
