@@ -1,8 +1,8 @@
 # Maintainer: Mark Pustjens <pustjens@dds.nl>
 
 pkgname=json-schema-validator
-pkgver=2.2.0
-pkgrel=3
+pkgver=2.4.0
+pkgrel=1
 pkgdesc="JSON schema validator for JSON for Modern C++"
 arch=(any)
 url="https://github.com/pboettch/json-schema-validator"
@@ -12,7 +12,7 @@ makedepends=(cmake git)
 source=(
   https://github.com/pboettch/json-schema-validator/archive/refs/tags/${pkgver}.zip
 )
-sha512sums=(0a078c7a43d6651ed7e0fc444087695ed99b02fd3460a526d79634960425a6f7f59d8103f8132f6d16d129cff8def09289277f2575a3e82d90408a1118c2637c)
+sha512sums=(45003f6205e719eca3c5c1e464ea297bd7debd6a960b33e84aabda995ee2e7ad319830dfe7d2a6a1a22e426984bb4cff794ceb44a086a1a605a9eea82c2b4b5d)
 
 build() {
   mv ${pkgname}-${pkgver} ${pkgname}
