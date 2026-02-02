@@ -1,12 +1,12 @@
 pkgbase = openwebrx-plus
 	pkgdesc = Open source, multi-user SDR receiver software with a web interface
-	pkgver = 1.2.105
+	pkgver = 1.2.106
 	pkgrel = 1
 	url = https://luarvique.github.io/ppa/
 	install = openwebrx-plus.install
 	arch = any
 	license = AGPL3
-	depends = python-csdr-luarvique>=0.18.36
+	depends = python-csdr-luarvique>=0.18.37
 	depends = rtl-sdr
 	depends = owrx_connector-luarvique
 	depends = python-setuptools
@@ -61,10 +61,10 @@ pkgbase = openwebrx-plus
 	optdepends = soapysddc: interfacing with SDDC SDR devices such as the RX666, RX888, HF103, etc
 	provides = openwebrx
 	conflicts = openwebrx
-	source = openwebrx-plus-1.2.105.tar.gz::https://github.com/luarvique/openwebrx/archive/1.2.105.tar.gz
+	source = openwebrx-plus-1.2.106.tar.gz::https://github.com/luarvique/openwebrx/archive/1.2.106.tar.gz
 	source = openwebrx-plus.sysusers
 	source = openwebrx-plus.tmpfiles
-	sha256sums = d7c6a57498ffe055cd4aa6446ba87c49984be4b8e826a8b1366405aee09595f0
+	sha256sums = 1fd11a4c31669d0b5cecabd2dfbbf12afa406f4a561e044b346b19f2b7d4481d
 	sha256sums = 4ec6dec1df40a1f3db62a2add760f97cf870d65a2c1d5b63cd9b22704754f997
 	sha256sums = eea488bd3f4c76b46bffbf3c88691818f93ad73db98c18659856d1690b0deade
 
