@@ -1,6 +1,6 @@
 pkgbase = searxng-git
 	pkgdesc = A privacy-respecting, hackable metasearch engine
-	pkgver = r9110.3f91ac4
+	pkgver = r9201.ad42b55
 	pkgrel = 1
 	url = https://searxng.github.io/searxng/
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = searxng-git
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	makedepends = python-msgspec
+	makedepends = python-yaml
 	depends = valkey
 	provides = searxng
 	conflicts = searx
