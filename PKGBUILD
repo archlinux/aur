@@ -5,7 +5,7 @@
 pkgname=papis-git
 _pkgname=papis
 pkgver=0.14.1.r124.g005c8b47
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line document and bibliography manager'
 arch=('any')
 url='https://github.com/papis/papis'
@@ -69,7 +69,6 @@ makedepends=('git'
 checkdepends=(
     # For pytest
     'python-pytest'
-    'python-pytest-cov'
     # These are needed for the integration tests against the corresponding
     # optdepends, papis will autoskip the relevant tests if they're not
     # installed
@@ -77,8 +76,6 @@ checkdepends=(
     'python-jinja'
     'python-markdownify'
     'python-whoosh'
-
-    'python-ruff'
 
     # For mypy
     'mypy'
@@ -122,7 +119,6 @@ check() {
   _site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
   export PYTHONPATH="$PWD/tmp_install/${_site_packages}"
 
-  python -m ruff check
   # Override papis python version selection which is too old for us,
   # see https://github.com/papis/papis/pull/1137
   python -m mypy \
@@ -130,8 +126,9 @@ check() {
       "$(python -c 'import platform; print(
         ".".join(platform.python_version_tuple()[:2])
         )')"
-  python -m pytest --disable-plugin-autoload \
-    -p pytest_cov -p papis_testing
+  python -m pytest \
+    --disable-plugin-autoload -o addopts='' \
+    -p papis_testing
 }
 
 package() {
