@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=sigye
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="A beautiful terminal clock with ASCII art fonts"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d343bb59deabaca895b605acf273c88b4a0c18b20b11ec0d49d4ab848e6897b5')
+sha256sums=('aa5d3c5fac015ae2bf0e9edc79f6d39185c04c955a8f82d4b31a2e290e30be58')
 options=('!lto')
 
 prepare() {
