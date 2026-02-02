@@ -6,7 +6,7 @@ _pkgname=rip-go
 pkgname=${_pkgname}-bin
 pkgdesc="Fuzzy find and kill processes from your terminal with real-time updates"
 
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -26,8 +26,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[0]}.tar.gz")
 sha256sums=('1654036be573fb23122c21f88006be1458b6f6c0a59ccab4501fc10af0a104cc'
-            '119f19db041a06b5f93705f6435bc647a86ac2205f2940e2e15517dec193241d')
-sha256sums_x86_64=('232f118457a47ab6b0f7cd065d4fb0bf1e702066bb528131bb036367d8234819')
+            '3d24a044f9c281f18b02d318bce9f17514ce5e434a4ef16211fce721b359ebaa')
+sha256sums_x86_64=('40c50a81e46415fd3d0979bd29a46b6adc40401f2b738c507d035ac75c04f63b')
 
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = rip-go-bin
 	pkgdesc = Fuzzy find and kill processes from your terminal with real-time updates
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/roniel-rhack/rip-go
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = rip-go-bin
 	depends = glibc
 	provides = rip-go
 	conflicts = rip-go
-	source = LICENSE-0.2.2::https://raw.githubusercontent.com/roniel-rhack/rip-go/v0.2.2/LICENSE
-	source = README-0.2.2.md::https://raw.githubusercontent.com/roniel-rhack/rip-go/v0.2.2/README.md
+	source = LICENSE-0.2.3::https://raw.githubusercontent.com/roniel-rhack/rip-go/v0.2.3/LICENSE
+	source = README-0.2.3.md::https://raw.githubusercontent.com/roniel-rhack/rip-go/v0.2.3/README.md
 	sha256sums = 1654036be573fb23122c21f88006be1458b6f6c0a59ccab4501fc10af0a104cc
-	sha256sums = 119f19db041a06b5f93705f6435bc647a86ac2205f2940e2e15517dec193241d
-	source_x86_64 = rip-go-x86_64-0.2.2.tgz::https://github.com/roniel-rhack/rip-go/releases/download/v0.2.2/rip-go-linux-amd64.tar.gz
-	sha256sums_x86_64 = 232f118457a47ab6b0f7cd065d4fb0bf1e702066bb528131bb036367d8234819
+	sha256sums = 3d24a044f9c281f18b02d318bce9f17514ce5e434a4ef16211fce721b359ebaa
+	source_x86_64 = rip-go-x86_64-0.2.3.tgz::https://github.com/roniel-rhack/rip-go/releases/download/v0.2.3/rip-go-linux-amd64.tar.gz
+	sha256sums_x86_64 = 40c50a81e46415fd3d0979bd29a46b6adc40401f2b738c507d035ac75c04f63b
 
 pkgname = rip-go-bin
