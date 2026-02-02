@@ -15,8 +15,8 @@ source=(
 )
 sha256sums=(
     SKIP
-    SKIP
-    SKIP
+    adaf7ce12ccead24b2321d4343a638f4e9cdc82060e64f17c816278a474bf4b0
+    fa4a2d987d35b8a2b29314c70d560c26bf5672cce467df0ca29704d8f024a66b
 )
 
 depends=(pipewire-pulse)
