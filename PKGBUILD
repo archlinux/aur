@@ -1,19 +1,19 @@
 appname="zen-adblocker"
 pkgname="${appname}"-bin
-pkgver="0.16.0"
+pkgver="0.17.0"
 pkgrel=1
 pkgdesc="An open-source system-wide ad-blocker and privacy guard"
 arch=('x86_64')
-url="https://github.com/anfragment/zen"
+url="https://github.com/ZenPrivacy/zen-desktop"
 license=('MIT')
 depends=('networkmanager' 'glib2' 'webkit2gtk-4.1')
 conflicts=('zen-adblocker')
 provides=('zen-adblocker')
-source=("Zen_linux_amd64_${pkgver}.tar.gz::https://github.com/anfragment/zen/releases/download/v${pkgver}/Zen_linux_amd64_noselfupdate.tar.gz"
+source=("Zen_linux_amd64_${pkgver}.tar.gz::https://github.com/ZenPrivacy/zen-desktop/releases/download/v${pkgver}/Zen_linux_amd64_noselfupdate.tar.gz"
         "${appname}.desktop"
-        "appicon.png::https://github.com/anfragment/zen/blob/v${pkgver}/assets/appicon.png?raw=true"
-        "LICENSE::https://github.com/anfragment/zen/blob/v${pkgver}/LICENSE?raw=true")
-sha256sums=('371fc3b214bac95425420b37d332daca4b8fc202befb9cd0b2ab7b2819884aca'
+        "appicon.png::https://github.com/ZenPrivacy/zen-desktop/blob/v${pkgver}/assets/appicon.png?raw=true"
+        "LICENSE::https://github.com/ZenPrivacy/zen-desktop/blob/v${pkgver}/LICENSE?raw=true")
+sha256sums=('bee078716661779165ab8cead4829ebd0afe6614ac55492040c1432d1bc097ed'
             'b8fd4a272875b236b953bbeca99459cfcd6d6e10a1d00cf50eaadf742db27fc2'
             '86c811ab545ee63d398ddc2da04a75d968d349102a4b73a087e01cebc346f1e2'
             'd39888b5658d9207779b855f1626eca78ab97525dc2dbcdb1df4ebc199d414a6')
