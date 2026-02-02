@@ -4,7 +4,7 @@
 _pkgauthor=bitrise-io
 _pkgname=stepman
 pkgname="${_pkgname}-bin"
-pkgver=0.18.5
+pkgver=0.18.6
 pkgrel=1
 pkgdesc="Manage decentralized StepLib Step (script) collections"
 arch=('x86_64' 'aarch64')
@@ -23,8 +23,8 @@ source_aarch64=("${_pkgsrc}-${arch[1]}::${url}/releases/download/v${pkgver}/${_p
 
 sha256sums=('a6f4e5eef34a61a1fe87cbc06109bf3d077b9eb7fa945d70c95c5643dea9ed0c'
             'a0379118157469b6a466bf070c8986ffbca0874d10bb4950e0c6018544914414')
-sha256sums_x86_64=('8738276238db46d025c5a722dfaad5c15661a5dc0391fa4b191ed8992f29ec56')
-sha256sums_aarch64=('f64dfa2075a49dba776e34d485a92f7a755a10b92f43d0b180a840222f1e929b')
+sha256sums_x86_64=('e3668dd3c990857f648bde8b99baba5021e438c4bea1b100c61b6b65840402e7')
+sha256sums_aarch64=('64f3429d1b90b371f3be2dc829171d8315023b06b389a169165820e22a27df05')
 
 package() {
   cd "${srcdir}" || exit
