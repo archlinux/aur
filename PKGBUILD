@@ -3,7 +3,7 @@
 
 pkgname=python-habanero
 pkgver=2.3.0
-pkgrel=2
+pkgrel=3
 _name=${pkgname#python-}
 _name="${_name//-/_}"
 _src_folder="${_name}-${pkgver}"
@@ -26,7 +26,6 @@ checkdepends=(
   # Only needed to test integration of the optdep, uncomment this if using
   # 'python-bibtexparser>=2.0.0b5'
   'python-pytest'
-  'python-pytest-cov'
   'python-pytest-recording'
 )
 optdepends=(
@@ -46,7 +45,7 @@ check() {
     cd "$_src_folder"
 
     python -m pytest --disable-plugin-autoload \
-      -p pytest_cov -p recording
+      -p recording
 }
 
 package() {
