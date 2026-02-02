@@ -1,6 +1,6 @@
 pkgbase = netinfo
-	pkgdesc = Command-line tool untuk melihat informasi jaringan user (IP, ISP, lokasi, ASN, dll)
-	pkgver = 1.1.0
+	pkgdesc = Professional CLI tool to display user network and system information (IP, ASN, ISP, etc)
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/Bangkah/netinfo
 	arch = any

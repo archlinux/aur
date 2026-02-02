@@ -1,9 +1,9 @@
 # Maintainer: atha mdhyaulatha@gmail.com
 
 pkgname=netinfo
-pkgver=1.1.0
+pkgver=2.1.0
 pkgrel=1
-pkgdesc="Command-line tool untuk melihat informasi jaringan user (IP, ISP, lokasi, ASN, dll)"
+pkgdesc="Professional CLI tool to display user network and system information (IP, ASN, ISP, etc)"
 arch=('any')
 url="https://github.com/Bangkah/netinfo"
 license=('MIT')

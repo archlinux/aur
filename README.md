@@ -1,31 +1,32 @@
+
 # netinfo
 
 ![AUR version](https://img.shields.io/aur/version/netinfo?style=flat-square)
 ![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)
 
-**netinfo** adalah utilitas command-line sederhana dan cepat untuk menampilkan informasi jaringan user secara detail. Cocok untuk troubleshooting, audit, scripting, atau sekadar mengetahui status koneksi Anda.
+**netinfo** is a fast, minimal, and reliable command-line utility to display your network and system information. Designed for troubleshooting, auditing, scripting, or simply checking your connection status, netinfo only shows verifiable and essential data.
 
 ---
 
-## Fitur Utama
+## Features
 
-- Menampilkan IP publik & lokal
-- Deteksi ISP, ASN, lokasi (kota, region, negara)
-- Deteksi timezone
-- Status VPN/proxy (jika tersedia)
-- Output JSON untuk scripting/otomasi
-- Output singkat (hanya IP & kota)
+- Show public and local IP addresses
+- Detect ASN and organization/ISP
+- Reverse DNS lookup
+- Estimate network type (Mobile/Fiber/DSL/Wireless/ISP)
+- Display system info: OS, kernel, architecture, hostname, terminal, shell
+- Detect VPN/proxy status (if available)
 
 ---
 
-## Instalasi
+## Installation
 
-### Melalui AUR (Arch User Repository)
+### From AUR (Arch User Repository)
 ```sh
 yay -S netinfo
 ```
 
-### Manual (build lokal)
+### Manual (local build)
 ```sh
 git clone https://github.com/Bangkah/netinfo.git
 cd netinfo
@@ -34,92 +35,49 @@ makepkg -si
 
 ---
 
-## Penggunaan
+## Usage
 
 ```sh
-netinfo [opsi]
+netinfo
 ```
 
-### Opsi
+No options are required. The tool always outputs a full, structured report.
 
-| Opsi              | Keterangan                                 |
-|-------------------|---------------------------------------------|
-| (tanpa opsi)      | Output lengkap (default)                    |
-| --json            | Output dalam format JSON                    |
-| --short           | Output singkat (hanya IP publik & kota)     |
-| --public-only     | Hanya menampilkan IP publik                 |
-| --anon            | Output anonim: hanya kota & negara, tanpa IP publik      |
-| --safe-demo       | Output demo: IP publik diganti contoh, aman dibagikan    |
+### Example Output
+```
+User Network Info
+-----------------
+Public IP    : 114.122.19.115
+Local IP     : 192.168.8.191
+IP Version   : IPv4
+ASN          : AS23693
+Organization : PT. Telekomunikasi Selular
+Reverse DNS  : -
+Network Type : ISP (estimated from ASN)
 
-### Contoh Penggunaan
-- Output lengkap: `netinfo`
-- Output JSON: `netinfo --json`
-- Output singkat: `netinfo --short`
-- Hanya IP publik: `netinfo --public-only`
-- Mode anonim: `netinfo --anon`
-- Mode demo aman: `netinfo --safe-demo`
+System Info
+-----------
+OS           : Linux
+Kernel       : 6.18.6-zen1-1-zen
+Architecture : x86_64
+Hostname     : atha-ANV16-71-79NR
+Terminal     : xterm-256color
+Shell        : /usr/bin/zsh
 
-### Contoh Output Mode Anonim
-```
-Kota: Banda Aceh
-Negara: Indonesia
-```
-
-### Contoh Output Mode Demo Aman
-```
-User Info
----------
-Public IP   : 103.xxx.xxx.xxx
-Local IP    : 192.168.1.10
-ISP         : Telkom Indonesia
-Location    : Banda Aceh, Indonesia
-Timezone    : Asia/Jakarta
-ASN         : AS7713
-VPN/Proxy   : No/Unknown
-User-Agent  : - (not available)
-```
-
-### Contoh Output
-```
-User Info
----------
-Public IP   : 103.xxx.xxx.xxx
-Local IP    : 192.168.1.10
-ISP         : Telkom Indonesia
-Location    : Banda Aceh, Indonesia
-Timezone    : Asia/Jakarta
-ASN         : AS7713
-VPN/Proxy   : No/Unknown
-User-Agent  : - (not available)
-```
-
-### Output JSON
-```
-netinfo --json
-{
-  "public_ip": "103.xxx.xxx.xxx",
-  "local_ip": "192.168.1.10",
-  "isp": "Telkom Indonesia",
-  "location": "Banda Aceh, Indonesia",
-  "city": "Banda Aceh",
-  "region": "Aceh",
-  "country": "ID",
-  "timezone": "Asia/Jakarta",
-  "asn": "AS7713",
-  "vpn_proxy": "No/Unknown",
-  "user_agent": "- (not available)"
-}
+Privacy
+-------
+VPN / Proxy  : No / Unknown
 ```
 
 ---
 
-## Kontribusi
+## Contributing
 
-Pull request, issue, dan saran sangat dipersilakan! Pastikan perubahan Anda jelas dan teruji. Lihat PKGBUILD dan LICENSE untuk detail.
+Pull requests, issues, and suggestions are welcome! Please ensure your changes are clear and well-tested. See PKGBUILD and LICENSE for details.
 
-## Lisensi
+## License
 
-MIT. Lihat file LICENSE untuk detail.
+MIT. See LICENSE file for details.
 
 ---
 
@@ -129,5 +87,5 @@ MIT. Lihat file LICENSE untuk detail.
 
 ---
 
-Sumber: [AUR netinfo](https://aur.archlinux.org/packages/netinfo) | [GitHub](https://github.com/Bangkah/netinfo)
+Links: [AUR netinfo](https://aur.archlinux.org/packages/netinfo) | [GitHub](https://github.com/Bangkah/netinfo)
 

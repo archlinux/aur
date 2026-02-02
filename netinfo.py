@@ -1,21 +1,25 @@
 #!/usr/bin/env python3
+"""
+netinfo: Professional network and system information CLI tool
+Author: Bangkah <mdhyaulatha@gmail.com>
+License: MIT
+"""
+
 import socket
 import requests
-import json
 import os
-import argparse
 
 def get_local_ip():
+    """Return the local (LAN) IP address."""
     try:
-        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        s.connect(("8.8.8.8", 80))
-        ip = s.getsockname()[0]
-        s.close()
-        return ip
+        with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
+            s.connect(("8.8.8.8", 80))
+            return s.getsockname()[0]
     except Exception:
         return "-"
 
 def get_public_info():
+    """Return public IP and related info from ipinfo.io."""
     try:
         resp = requests.get("https://ipinfo.io/json", timeout=5)
         if resp.status_code == 200:
@@ -24,91 +28,77 @@ def get_public_info():
         pass
     return {}
 
-def get_user_agent():
-    return os.environ.get("HTTP_USER_AGENT", "- (not available)")
-
 def main():
-    parser = argparse.ArgumentParser(description="Tampilkan info jaringan user.")
-    parser.add_argument('--json', action='store_true', help='Output dalam format JSON')
-    parser.add_argument('--short', action='store_true', help='Output singkat: IP publik & kota')
-    parser.add_argument('--public-only', action='store_true', help='Hanya tampilkan IP publik')
-    parser.add_argument('--anon', action='store_true', help='Output anonim: hanya kota & negara, tanpa IP')
-    parser.add_argument('--safe-demo', action='store_true', help='Output demo: IP publik diganti contoh, aman dibagikan')
-    parser.add_argument('-v', '--version', action='store_true', help='Tampilkan versi netinfo')
-    args = parser.parse_args()
+    """Main entry point: gather and print network/system info."""
+    import platform
 
     local_ip = get_local_ip()
     info = get_public_info()
     public_ip = info.get("ip", "-")
-    isp = info.get("org", "-")
-    asn = "-"
-    if isp != "-":
-        asn = isp.split()[0] if isp.startswith("AS") else "-"
     org = info.get("org", "-")
-    city = info.get("city", "-")
-    region = info.get("region", "-")
-    country = info.get("country", "-")
-    loc = f"{city}, {region}, {country}" if city != "-" else f"{region}, {country}"
-    timezone = info.get("timezone", "-")
-    user_agent = get_user_agent()
+    asn = "-"
+    if org and org.startswith("AS"):
+        asn = org.split()[0]
+    organization = org.split(" ", 1)[1] if org and org.startswith("AS") and len(org.split(" ", 1)) > 1 else org
+
+    # Reverse DNS lookup
+    try:
+        reverse_dns = socket.gethostbyaddr(public_ip)[0]
+    except Exception:
+        reverse_dns = "-"
+
+    # Network type estimation
+    network_type = "Unknown"
+    if organization:
+        org_lower = organization.lower()
+        if any(x in org_lower for x in ["telkomsel", "indosat", "xl", "tri", "smartfren", "mobile"]):
+            network_type = "Mobile"
+        elif any(x in org_lower for x in ["fiber", "indihome", "biznet", "myrepublic", "iconnet"]):
+            network_type = "Fiber"
+        elif any(x in org_lower for x in ["dsl", "speedy"]):
+            network_type = "DSL"
+        elif any(x in org_lower for x in ["wifi", "wireless"]):
+            network_type = "Wireless"
+        else:
+            network_type = "ISP"
+
+    # System info
+    os_name = platform.system()
+    kernel = platform.release()
+    arch = platform.machine()
+    hostname = platform.node()
+    term_type = os.environ.get("TERM", "-")
+    shell = os.environ.get("SHELL", "-")
+
+    # VPN/Proxy detection (if available)
     vpn_proxy = info.get("privacy", {}).get("vpn", False) or info.get("privacy", {}).get("proxy", False)
-    vpn_status = "Yes" if vpn_proxy else "No/Unknown"
+    vpn_status = "Yes" if vpn_proxy else "No / Unknown"
 
-    data = {
-        "public_ip": public_ip,
-        "local_ip": local_ip,
-        "isp": org,
-        "location": loc,
-        "city": city,
-        "region": region,
-        "country": country,
-        "timezone": timezone,
-        "asn": asn,
-        "vpn_proxy": vpn_status,
-        "user_agent": user_agent
-    }
+    # IP version
+    ip_version = "IPv4" if "." in public_ip else "IPv6"
 
+    # Output
+    print("User Network Info\n-----------------")
+    print(f"Public IP    : {public_ip}")
+    print(f"Local IP     : {local_ip}")
+    print(f"IP Version   : {ip_version}")
+    print(f"ASN          : {asn}")
+    print(f"Organization : {organization}")
+    print(f"Reverse DNS  : {reverse_dns}")
+    print(f"Network Type : {network_type} (estimated from ASN)")
 
-    if args.version:
-        print("netinfo 1.1.0 (cli) (built: Feb 1 2026)")
-        print("Copyright (c) Bangkah, 2024-2026")
-        print("Netinfo Engine v1.1.0, Copyright (c) Bangkah Technologies")
-        return
-    if args.anon:
-        print(f"Kota: {city}\nNegara: {country}")
-        return
-    elif args.safe_demo:
-        demo_ip = "103.xxx.xxx.xxx"
-        print("User Info\n---------")
-        print(f"Public IP   : {demo_ip}")
-        print(f"Local IP    : {local_ip}")
-        print(f"ISP         : {org}")
-        print(f"Location    : {loc}")
-        print(f"Timezone    : {timezone}")
-        print(f"ASN         : {asn}")
-        print(f"VPN/Proxy   : {vpn_status}")
-        print(f"User-Agent  : {user_agent}")
-        return
-    elif args.json:
-        print(json.dumps(data, indent=2, ensure_ascii=False))
-        return
-    elif args.short:
-        print(f"{public_ip} | {city}")
-        return
-    elif args.public_only:
-        print(public_ip)
-        return
+    print("\nSystem Info\n-----------")
+    print(f"OS           : {os_name}")
+    print(f"Kernel       : {kernel}")
+    print(f"Architecture : {arch}")
+    print(f"Hostname     : {hostname}")
+    print(f"Terminal     : {term_type}")
+    print(f"Shell        : {shell}")
 
-    # Output default lengkap
-    print("User Info\n---------")
-    print(f"Public IP   : {public_ip}")
-    print(f"Local IP    : {local_ip}")
-    print(f"ISP         : {org}")
-    print(f"Location    : {loc}")
-    print(f"Timezone    : {timezone}")
-    print(f"ASN         : {asn}")
-    print(f"VPN/Proxy   : {vpn_status}")
-    print(f"User-Agent  : {user_agent}")
+    print("\nPrivacy\n-------")
+    print(f"VPN / Proxy  : {vpn_status}")
+
+    return
 
 if __name__ == "__main__":
     main()
