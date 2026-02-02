@@ -2,7 +2,7 @@
 
 _pkgname="mxw"
 pkgname="$_pkgname-git"
-pkgver=v0.2.2.r0.g865836d
+pkgver=v0.2.2.r2.g710c73c
 pkgrel=1
 pkgdesc="Cross platform CLI tool for Glorious Core v1 compatible wireless mice, based on mow"
 arch=('any')
@@ -25,8 +25,7 @@ build() {
 }
 
 package() {
-  install \
-    -Dm755 \
-	$srcdir/${pkgname//-git}/target/release/${pkgname//-git} \
-	$pkgdir/usr/bin/${pkgname//-git};
+  install -Dm755 \
+	$srcdir/${_pkgname}/target/release/${_pkgname} \
+	$pkgdir/usr/bin/${_pkgname};
 }
