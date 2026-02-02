@@ -49,7 +49,6 @@ shared_library_build_options=" \
 build_with_clang_options=" \
 			-DLLVM_BINUTILS_INCDIR=/usr/include \
             -DLLVM_ENABLE_LLD=ON \
-            -DLLVM_ENABLE_LTO=Thin \
             -DCMAKE_C_COMPILER=clang \
             -DCMAKE_CXX_COMPILER=clang++ \
             -DCMAKE_LINKER=lld \
