@@ -1,6 +1,6 @@
 pkgbase = air
 	pkgdesc = Live reload for Go apps
-	pkgver = 1.64.1
+	pkgver = 1.64.5
 	pkgrel = 1
 	url = https://github.com/air-verse/air
 	arch = x86_64
