@@ -1,7 +1,7 @@
 # Maintainer: Aleksey Smirnov <debugger94 at gmail dot com>
 
 pkgname=zapret2
-pkgver=0.8.6
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Anti-DPI software"
 arch=('x86_64')
@@ -17,6 +17,8 @@ depends=(
 )
 optdepends=('ipset: required for iptables mode')
 makedepends=('git')
+provides=($pkgname)
+conflicts=($pkgname-{git,bin})
 backup=(
   "opt/$pkgname/config"
   "opt/$pkgname/ipset/zapret-hosts-user-exclude.txt"
@@ -26,7 +28,7 @@ backup=(
 )
 install=$pkgname.install
 source=($pkgname::git+$url.git#tag=v$pkgver)
-sha256sums=('3ffc17fd98d9c6a31da5264ce0fc79d41aab9a6df1c1a84ba7784bb4aae5424e')
+sha256sums=('1f97f3fc00fbbcfc20f3a4a2ed0e15ef9d6e111d3472bfc51f5c7714f6425c29')
 
 prepare() {
   # 'KillMode=none' is a deprecated option and is not recommended for use.
