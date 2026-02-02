@@ -1,4 +1,4 @@
-pkgbase = see-bin
+pkgbase = see-desktop-bin
 	pkgdesc = A native GNOME desktop client for S.EE URL shortening service (prebuilt binary)
 	pkgver = 0.1.0
 	pkgrel = 1
@@ -14,11 +14,12 @@ pkgbase = see-bin
 	depends = glib2
 	provides = see
 	conflicts = see
+	conflicts = see-desktop
 	options = !strip
 	options = !debug
-	source_x86_64 = see-bin-0.1.0-x86_64.deb::https://github.com/sdotee/desktop/releases/download/v0.1.0/see_0.1.0_amd64.deb
+	source_x86_64 = see-desktop-bin-0.1.0-x86_64.deb::https://github.com/sdotee/desktop/releases/download/v0.1.0/see_0.1.0_amd64.deb
 	sha256sums_x86_64 = e98ed9a8175e39343f582092a3558567f31413073b92e9d95349c8222f55fad0
-	source_aarch64 = see-bin-0.1.0-aarch64.deb::https://github.com/sdotee/desktop/releases/download/v0.1.0/see_0.1.0_arm64.deb
+	source_aarch64 = see-desktop-bin-0.1.0-aarch64.deb::https://github.com/sdotee/desktop/releases/download/v0.1.0/see_0.1.0_arm64.deb
 	sha256sums_aarch64 = a6d524697c6fe61f79924a6a7672ffdb0ad37fed7ce03e69e223c8eb8899cecf
 
-pkgname = see-bin
+pkgname = see-desktop-bin
