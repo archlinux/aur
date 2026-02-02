@@ -1,0 +1,16 @@
+pkgbase = sley-bin
+	pkgdesc = CLI for semantic versioning using a simple .version file. Language-agnostic with plugins for git tagging, changelog generation, versioning policies and more...
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/indaco/sley
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = sley
+	conflicts = sley
+	source_x86_64 = sley-x86_64-0.11.0.tgz::https://github.com/indaco/sley/releases/download/v0.11.0/sley_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 7094e5c851e8f99f92e53ef5e5481dbc86deace28734989f8c08f929b2a5c438
+	source_aarch64 = sley-aarch64-0.11.0.tgz::https://github.com/indaco/sley/releases/download/v0.11.0/sley_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 63ab18f6c901461d2d0d7bcd1b88524c02893d84c97befe9f94e674d474b41cd
+
+pkgname = sley-bin

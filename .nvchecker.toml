@@ -1,0 +1,5 @@
+[sley-bin]
+source = "github"
+github = "indaco/sley"
+use_latest_release = true
+prefix = "v"
