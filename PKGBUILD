@@ -6,7 +6,7 @@
 pkgname=papis
 pkgver=0.14.1+PR1018
 _pkgver=0.14.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Command-line document and bibliography manager'
 arch=('any')
 url='https://github.com/papis/papis'
@@ -68,7 +68,6 @@ makedepends=(
 )
 checkdepends=(
     'python-pytest'
-    'python-pytest-cov'
     # These are needed for the integration tests against the corresponding
     # optdepends, papis will autoskip the relevant tests if they're not
     # installed
@@ -123,8 +122,9 @@ check() {
   _site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
   export PYTHONPATH="$PWD/tmp_install/$_site_packages"
 
-  python -m pytest --disable-plugin-autoload \
-    -p pytest_cov -p papis_testing \
+  python -m pytest \
+    --disable-plugin-autoload -o addopts='' \
+    -p papis_testing \
       papis tests
 }
 

@@ -1,12 +1,11 @@
 pkgbase = papis
 	pkgdesc = Command-line document and bibliography manager
 	pkgver = 0.14.1+PR1018
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/papis/papis
 	arch = any
 	license = GPL-3.0-or-later
 	checkdepends = python-pytest
-	checkdepends = python-pytest-cov
 	checkdepends = git
 	checkdepends = python-jinja
 	checkdepends = python-markdownify
