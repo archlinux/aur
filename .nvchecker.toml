@@ -1,0 +1,6 @@
+[linux-show-player]
+source = "github"
+github = "FrancescoCeruti/linux-show-player"
+use_max_tag = true
+include_regex = '^v\d+(\.\d+)+$'
+prefix = "v"

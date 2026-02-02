@@ -4,7 +4,7 @@
 
 pkgname=linux-show-player
 pkgver=0.6.5
-pkgrel=1
+pkgrel=3
 pkgdesc='Cue player designed for stage productions'
 url='https://www.linux-show-player.org/'
 arch=(any)
