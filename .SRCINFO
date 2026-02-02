@@ -1,7 +1,7 @@
 pkgbase = murex
 	pkgdesc = A smarter shell and scripting environment with advanced features designed for usability, safety and productivity (eg smarter DevOps tooling)
-	pkgver = 7.2.0079
-	pkgrel = 46
+	pkgver = 7.2.1001
+	pkgrel = 48
 	url = https://github.com/lmorg/murex
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = murex
 	optdepends = aspell: inline spell checking
 	optdepends = git: package management
 	replaces = murex-git
-	source = https://github.com/lmorg/murex/archive/refs/tags/v7.2.0079.tar.gz
-	sha256sums = 9f2c70496e9c465ecfa86d74b86e8c4489354ef755f130a775f02851b846c15f
+	source = https://github.com/lmorg/murex/archive/refs/tags/v7.2.1001.tar.gz
+	sha256sums = 264a1b3ffca3fce8d8c1b0757e0498dc544fd5388694c405c6e4e42c6f87a82c
 
 pkgname = murex
