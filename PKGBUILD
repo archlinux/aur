@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bilibili
-_pkgver=1.17.4
+_pkgver=1.17.5
 _subver=1
 pkgver="${_pkgver}_${_subver}"
 _electronversion=28
-_nodeversion=22
+_nodeversion=24
 pkgrel=1
 pkgdesc="Linux version based on Beilai official client porting supports roaming.(Use system-wide electron).基于哔哩哔哩官方客户端移植的Linux版本,支持漫游"
 arch=(
@@ -33,12 +33,13 @@ makedepends=(
     'nvm'
     'pnpm'
     'git'
+    'jq'
 )
 source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${_pkgver}-${_subver}"
     "${pkgname}.sh"
 )
-sha256sums=('82bcc46c9a4d2574214e96e957c7f90c069645a2f74bf0bfa3275c6d26662947'
+sha256sums=('812349a97e63c43d00180dc02759ff3588c439156082a8aeb3c4e8f5fb95a4f3'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -47,8 +48,9 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver="$(grep '^ *"electronVersion": *"' "${srcdir}/${pkgname}-${pkgver}/conf/build.json" | cut -d'"' -f4 | cut -d. -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+    _elec_ver=$(jq -r '.electronVersion' "${srcdir}/${pkgname}-${pkgver}/conf/build.json" | tr -d '^')
+    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
+    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -94,7 +96,6 @@ build() {
     local electronDist="/usr/lib/electron${_electronversion}"
     sh tools/update-bilibili
     sh tools/fix-other.sh
-    #sh tools/area-unlimit.sh
     sh tools/extension.sh
     mv tmp/bili/resources/* app
 }
