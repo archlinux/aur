@@ -4,7 +4,7 @@
 _name=DXconvert
 pkgname=${_name,,}
 pkgver=3.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A file conversion and manipulation toolkit for Yamaha FM synth patches'
 arch=(any)
 url='https://dxconvert.martintarenskeen.nl/'
@@ -20,7 +20,7 @@ optdepends=(
 )
 groups=(pro-audio)
 source=("https://dxconvert.martintarenskeen.nl/$_name-$pkgver.zip")
-sha256sums=('38af18baa7b2d55ee4fc515b3f97e53bd11b2aa4b9c33e53f792493dfcf02bc2')
+sha256sums=('43507dc2370007e1a0b2c092e907c56d865d5b1c94e969e40aacc3a2a07f6f06')
 
 prepare() {
   cd $_name-$pkgver
