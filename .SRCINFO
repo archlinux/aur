@@ -1,0 +1,13 @@
+pkgbase = iflow-cli
+	pkgdesc = iFlow AI Assistant CLI tool (@iflow-ai/iflow-cli)
+	pkgver = 0.5.4
+	pkgrel = 1
+	url = https://github.com/iflow-ai
+	arch = any
+	license = unknown
+	depends = nodejs
+	depends = npm
+	provides = iflow
+	conflicts = iflow
+
+pkgname = iflow-cli
