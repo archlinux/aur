@@ -2,7 +2,7 @@
 pkgname=saber-bin
 _appname="com.adilhanney.${pkgname%-bin}"
 _pkgname=Saber
-pkgver=1.29.5
+pkgver=1.30.0
 pkgrel=1
 pkgdesc="The cross-platform open-source app built for handwriting.(Prebuilt version)"
 arch=(
@@ -26,8 +26,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/do
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_Linux_x86_64.tar.gz")
 source=("${pkgname%-bin}.sh")
 sha256sums=('3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
-sha256sums_aarch64=('54b37e18b093349266ee0c8f61542b9008fb65cc02bb1eea8a85a182e95570be')
-sha256sums_x86_64=('4c55169ab04347674776ff56421ddd2892e5143c16adebc23054955f69572cd1')
+sha256sums_aarch64=('5b66df852e7306d70924e0db92ef9ed6b9e9022d55a855aee8324b601ba829e4')
+sha256sums_x86_64=('71387d276a62a916faa3064514233647c65ca85a3a9240d43c847e8d432f330e')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
