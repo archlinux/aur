@@ -41,11 +41,22 @@ sha256sums=('64ead71512047cfdc3f4d288d57198cbe31aa10085ed0702df8445662683448f')
 
 prepare() {
     cd "$pkgname-$pkgver"
+
+    # Respect XDG Base Directory Specification
+    # Use srcdir to avoid creating ~/.cargo and ~/.rustup during build
+    export CARGO_HOME="${CARGO_HOME:-$srcdir/.cargo}"
+    export RUSTUP_HOME="${RUSTUP_HOME:-$srcdir/.rustup}"
     export RUSTUP_TOOLCHAIN=stable
+
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
+    # Respect XDG Base Directory Specification
+    # Use srcdir to avoid creating ~/.cargo and ~/.rustup during build
+    export CARGO_HOME="${CARGO_HOME:-$srcdir/.cargo}"
+    export RUSTUP_HOME="${RUSTUP_HOME:-$srcdir/.rustup}"
+
     echo "=== BUILD ENVIRONMENT DEBUG ==="
     echo "cargo: $(which cargo)"
     cargo --version
@@ -57,6 +68,8 @@ build() {
     cmake --version | head -1
     echo "PATH=$PATH"
     echo "RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-unset}"
+    echo "CARGO_HOME=$CARGO_HOME"
+    echo "RUSTUP_HOME=$RUSTUP_HOME"
     echo "CFLAGS=$CFLAGS"
     echo "CXXFLAGS=$CXXFLAGS"
     echo "LDFLAGS=$LDFLAGS"
@@ -108,7 +121,12 @@ build() {
 
 check() {
     cd "$pkgname-$pkgver"
+
+    # Respect XDG Base Directory Specification
+    export CARGO_HOME="${CARGO_HOME:-$srcdir/.cargo}"
+    export RUSTUP_HOME="${RUSTUP_HOME:-$srcdir/.rustup}"
     export RUSTUP_TOOLCHAIN=stable
+
     cargo test --frozen
 }
 
