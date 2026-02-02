@@ -1,3 +1,5 @@
+# Maintainer: invokekitty (sery)
+
 pkgname=serycade-git
 pkgdesc='Some tui games i made because i was bored. Currently pong and a maze'
 pkgver=r36.9b7b3f6
@@ -8,11 +10,11 @@ arch=('x86_64' 'aarch64')
 
 depends=('libcrypt.so')
 makedepends=(gradle git)
-source=("git+https://codeberg.org/sery/serycade.git")
-sha256sums=("SKIP")
+source=('git+https://codeberg.org/sery/serycade.git')
+sha256sums=('SKIP')
 
-srcName="serycade"
-binaryName="serycade"
+srcName='serycade'
+binaryName='serycade'
 
 prepare() {
     cd "$srcName"
@@ -35,7 +37,7 @@ build() {
         if [ ! -f "$jvm/release" ]; then continue; fi
         local java_major=$(sed -n -r 's/^JAVA_VERSION="(.*)"$/\1/p' < "$jvm/release" | cut -d. -f1)
         if [ "$java_major" -ge 17 ]; then
-            export JAVA_HOME="$jvm"
+            export JAVA_HOME=$jvm
             break
         fi
     done
@@ -62,5 +64,3 @@ _target() {
     esac
     if [ "$1" == caps ]; then echo "${target^}"; else echo "$target"; fi
 }
-
-# invokekitty (sery) <meow@serenit.ie>
