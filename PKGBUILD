@@ -4,7 +4,7 @@
 pkgname=python-pytest-recording
 _pkgname=${pkgname#python-}
 pkgver=0.13.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Pytest plugin to record network interactions with VCR.py'
 arch=('any')
 url="https://pypi.org/project/${_pkgname//-/_}"
@@ -36,14 +36,9 @@ check() {
 
     python -m venv --system-site-packages test-env
     test-env/bin/python -m installer dist/*.whl
-    # TODO: Seemingly don't need pytest_recording loaded for self-test?
-    # See
-    # https://github.com/pytest-dev/pytest/issues/13388
-    # https://github.com/pytest-dev/pytest/pull/14113
-    # export PYTEST_PLUGINS=pytest_recording.plugin
     test-env/bin/python -P -m pytest \
         --disable-plugin-autoload \
-        -p httpbin -p pytest_mock
+        -p recording -p httpbin -p pytest_mock
 }
 
 package() {
