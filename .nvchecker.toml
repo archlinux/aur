@@ -1,0 +1,5 @@
+[python-pylustrator]
+source = "github"
+github = "rgerum/pylustrator"
+use_latest_release = "true"
+prefix = "v"
