@@ -1,11 +1,12 @@
-# Maintainer: deadhead <deadhead3492@gmail.com>
+# Maintainer: xxvirusxx <condor20_05 at yahoo dot it>
+# Author: deadhead <deadhead3492 at gmail dot com>
 pkgname=fetchpkg
 pkgver=0.3
-pkgrel=7
+pkgrel=8
 pkgdesc="CLI frontend for pacman / AUR"
 arch=('any')
 url="https://github.com/deadhead420/fetchpkg"
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=('curl')
 optdepends=('fetchmirrors: update and rank pacman mirrorlist')
 source=(git+https://github.com/deadhead420/fetchpkg.git)

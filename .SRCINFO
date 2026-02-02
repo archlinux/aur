@@ -1,12 +1,13 @@
 pkgbase = fetchpkg
 	pkgdesc = CLI frontend for pacman / AUR
 	pkgver = 0.3
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/deadhead420/fetchpkg
 	arch = any
-	license = GPL
+	license = GPL-3.0-or-later
 	depends = curl
-	source = https://github.com/deadhead420/fetchpkg.git
+	optdepends = fetchmirrors: update and rank pacman mirrorlist
+	source = git+https://github.com/deadhead420/fetchpkg.git
+	md5sums = SKIP
 
 pkgname = fetchpkg
-
