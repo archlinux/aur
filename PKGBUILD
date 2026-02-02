@@ -31,7 +31,7 @@ build() {
 _package() {
 	cd $pkgbase-$pkgver
 
-	LUAPKG=${pkgname%%-*}
+	local LUAPKG=${pkgname%%-*}
 	depends+=($LUAPKG)
 
 	luarocks install \
@@ -42,9 +42,15 @@ _package() {
 		$1/*.rock
 
 	find "$pkgdir/usr/bin" -type f -execdir sed -i -e "s#$pkgdir##g" {} \;
-	[ $LUAPKG != lua ] && for f in "$pkgdir/usr/bin"/*; do
+
+	for f in "$pkgdir/usr/bin"/*; do
 		mv "$f" "$f-$1"
 	done
+	if [ $LUAPKG = lua ]; then
+		for f in json2lua lua2json; do
+			ln -s "$f-$1" "$pkgdir/usr/bin/$f"
+		done
+	fi
 
 	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
 }
