@@ -117,9 +117,10 @@ check() {
   cd "${pkgname}-${_pkgver}"
 
   build-env/bin/python -m pytest \
-    --disable-plugin-autoload -o addopts='' \
+    --disable-plugin-autoload \
+    -o addopts='--papis-tmp-doctests --papis-tmp-xdg-home --doctest-modules' \
     -p papis_testing \
-      papis tests
+    papis tests
 }
 
 package() {
