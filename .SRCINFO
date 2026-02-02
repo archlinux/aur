@@ -1,0 +1,18 @@
+pkgbase = python-flux-led
+	pkgdesc = python flux-led
+	pkgver = 1.2.0
+	pkgrel = 1
+	arch = any
+	license = custom:MIT License
+	makedepends = cmake
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	depends = python
+	depends = libsndfile
+	depends = python-pytest-runner
+	source = https://files.pythonhosted.org/packages/source/f/flux_led/flux_led-1.2.0.tar.gz
+	sha256sums = 3cfb68df243bdc9bdde6a91e9d05960949de70b8a76fdb799b70021c54380c3d
+
+pkgname = python-flux-led
