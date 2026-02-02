@@ -1,0 +1,13 @@
+pkgbase = ttf-sadiec64ex-git
+	pkgdesc = Unicode Truetype font based on the Commodore 64's PETSCII character set.
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/zulc22/bmpfont-c64ex
+	arch = any
+	license = 0BSD
+	makedepends = bitsnpicas
+	depends = xorg-fonts-encodings
+	source = c64ex::git+https://github.com/zulc22/bmpfont-c64ex.git
+	sha256sums = SKIP
+
+pkgname = ttf-sadiec64ex-git
