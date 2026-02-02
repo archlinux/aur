@@ -2,7 +2,7 @@
 
 pkgbase='ahriman'
 pkgname=('ahriman' 'ahriman-core' 'ahriman-triggers' 'ahriman-web')
-pkgver=2.19.3
+pkgver=2.19.4
 pkgrel=1
 pkgdesc="ArcH linux ReposItory MANager"
 arch=('any')
@@ -88,6 +88,6 @@ package_ahriman-web() {
 
     install -Dm644 "$pkgdir/usr/share/$pkgbase/settings/ahriman.ini.d/00-web.ini" "$pkgdir/etc/ahriman.ini.d/00-web.ini"
 }
-sha256sums=('1532ce91ecef3f4dde6441cbbb94947affca0a03bd91403da294572de44fe7a1'
+sha256sums=('ab30821e6520e06c78b4570c777edbb1ab0f928dbb89b6230a96188be7bd5e2f'
             '0c1cb37a57c47b5159c626f69c08d094c58241319e2a5a3b29c76170b92f09c8'
             '720a02af47ac718b31acd9feb73b1b81a5eed4f0bc4ca7a18dfc299dc0da5013')
