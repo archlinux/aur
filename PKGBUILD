@@ -2,7 +2,7 @@
 # Maintainer: Dominik Bühler <dom.buehler@outlook.com>
 
 pkgname='switchtube-downloader-bin'
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='A lightweight CLI to download SwitchTube videos'
 url='https://github.com/domi413/SwitchTube-Downloader'
@@ -11,11 +11,11 @@ license=('MIT')
 provides=('SwitchTube-Downloader')
 conflicts=('SwitchTube-Downloader')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.zip::https://github.com/niekdomi/SwitchTube-Downloader/releases/download/v0.4.1/switchtube-downloader_linux_arm64.zip")
-sha256sums_aarch64=('d31e7986012c84376b223c5de1f6ad04765216f96c354ececcdf0acb4e0271c0')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.zip::https://github.com/niekdomi/SwitchTube-Downloader/releases/download/v${pkgver}/switchtube-downloader_linux_arm64.zip")
+sha256sums_aarch64=('f819d4b0c244ecd2dd920c7f2fefd1d6b07c1797393e329fd547f05900be08e7')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.zip::https://github.com/niekdomi/SwitchTube-Downloader/releases/download/v0.4.1/switchtube-downloader_linux_amd64.zip")
-sha256sums_x86_64=('d3fe4fdc085b72d5aeb3aa03906551cc5fa93ab46aad0fc4e33af84b36cc342c')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.zip::https://github.com/niekdomi/SwitchTube-Downloader/releases/download/v${pkgver}/switchtube-downloader_linux_amd64.zip")
+sha256sums_x86_64=('79d08d91cacce838552bb79ed5c807fdabe91a55984cf521c4b3b8d3bf1ac9d7')
 
 package() {
   # Install the binary, license, and documentation
