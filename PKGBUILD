@@ -1,6 +1,6 @@
 # Maintainer: Stephen Seo <seo.disparate@gmail.com>
 pkgname=mpd_info_screen2
-pkgver=1.6.2
+pkgver=1.7
 pkgrel=1
 pkgdesc="Views graphical info on MPD, the successor to mpd_info_screen, in C++"
 arch=(x86_64)
@@ -30,7 +30,8 @@ prepare() {
     cmake -S . -B BuildRel \
         -DCMAKE_BUILD_TYPE=Release \
         -DUSE_EXTERNAL_GLFW=On \
-        -DFORCE_DEBUG_FLAG=On
+        -DFORCE_DEBUG_FLAG=On \
+        -DMPD_INFO_SCREEN_2_VERSION="${pkgver}-${pkgrel} (AUR)"
 }
 
 build() {
