@@ -1,7 +1,7 @@
 # Maintainer: MadGoatHaz <your-email@example.com>
 pkgbase=goatd-kernel-bin
 pkgname=goatdkernel
-pkgver=0.2.1.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="GOATd Kernel - High-performance computing platform with multi-language integration"
 arch=('x86_64')
@@ -13,10 +13,10 @@ makedepends=('git')
 
 # The binary tarball should be named: goatdkernel-${pkgver}-x86_64.tar.gz
 # Extract URL from: https://github.com/MadGoatHaz/GOATd-Kernel/releases/download/v${pkgver}/
-source=("goatdkernel-${pkgver}-${pkgrel}-x86_64.tar.gz::https://github.com/MadGoatHaz/GOATd-Kernel/releases/download/v${pkgver}-${pkgrel}/goatdkernel-${pkgver}-${pkgrel}-x86_64.tar.gz"
+source=("goatdkernel-${pkgver}-${pkgrel}-x86_64.tar.gz::https://github.com/MadGoatHaz/GOATd-Kernel/releases/download/v0.2.3/goatdkernel-0.2.3-1-x86_64.tar.gz"
         "git+https://github.com/MadGoatHaz/GOATd-Kernel.git#tag=v${pkgver}-${pkgrel}"
         "https://github.com/MadGoatHaz/GOATd-Kernel/releases/download/v${pkgver}-${pkgrel}/goatdkernel.png")
-sha256sums=('fa48d5dd88e15e761b409e92211459989cfe773692d0bed64b4674ae8657496a' 'SKIP' 'SKIP')
+sha256sums=('bcc5caf5f2e087a3504b4e5102353d1865a9d759fe71bbd4391857b67a3ffc32' 'SKIP' 'SKIP')
 
 package() {
     cd "${srcdir}"
