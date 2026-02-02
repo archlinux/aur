@@ -1,14 +1,16 @@
 pkgbase = python-geonamescache
 	pkgdesc = A Python library that provides functions to retrieve names, ISO and FIPS codes of continents, countries as well as US states and counties as Python dictionaries. The country and city datasets also include population and geographic data.
-	pkgver = 1.2.0
+	pkgver = 3.0.0
 	pkgrel = 1
-	url = https://github.com/yaph/geonamescache
+	url = https://pypi.org/project/geonamescache/
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
-	depends = python
-	source = https://files.pythonhosted.org/packages/b7/14/496060518f2390d1cda1c94907250f0b0c2ffa0dfad1f3d8006258b70dc9/geonamescache-1.2.0.tar.gz
-	sha256sums = 40f92d4de21f7b7e49b352c2cb150735067c924d86f37626a17f998eb40e2e94
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.10
+	depends = python-typing_extensions
+	source = geonamescache-3.0.0.tar.gz::https://files.pythonhosted.org/packages/25/16/250e1be82f1a10581361ddc0d379a37c5660f1818fed780ac42ef6706540/geonamescache-3.0.0.tar.gz
+	sha256sums = 6eca4a4ceca134a6827dc36b9a0415428081129ec1d731ea496f63f9e9e450ba
 
 pkgname = python-geonamescache
-
