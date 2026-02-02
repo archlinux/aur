@@ -3,7 +3,7 @@
 # Maintainer: Claudio Netto <nettinhorama@gmail.com>
 
 pkgname='tsuru-bin'
-pkgver=1.31.1
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='tsuru-client is a tsuru command line tool for application developers.'
 url='https://tsuru.io'
@@ -13,10 +13,10 @@ provides=('tsuru')
 conflicts=('tsuru')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/tsuru/tsuru-client/releases/download/${pkgver}/tsuru_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('4888cea080d3b8abe5c1b8c691f6248d5518ae174f0305b92bd07a9c5ba65ce0')
+sha256sums_aarch64=('471e10819184fc8de3a5002248f362c5076f272005aa017b899249bcb9661ed6')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/tsuru/tsuru-client/releases/download/${pkgver}/tsuru_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('fee62cedb2c0a4d772b9769eba47d7611a43be0d245c23128c1f02b9706c9e0e')
+sha256sums_x86_64=('c61b5417313fec5060d04e72ef36b3628327fd6c316caeba493b8eb8f67f7319')
 
 package() {
   install -Dm755 "./tsuru" "${pkgdir}/usr/bin/tsuru"
