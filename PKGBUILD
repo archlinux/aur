@@ -77,7 +77,7 @@ checkdepends=(
     'python-whoosh'
 )
 
-source=("${pkgname}-${_pkgver}::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
+source=("${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
 sha256sums=('592b9ad2296019062922ed7f573c8c70c02fcc3b92e518fea47a00088753f440'
             'b3b5a97c7af2c9c6e3f0bd993a93e61c6b34f72f4774766612aec907277e4ad3')
 prs=(
