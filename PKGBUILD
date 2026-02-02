@@ -2,7 +2,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=citron-git
 pkgver=2026.02.1.r0.g544456b
-pkgrel=1
+pkgrel=2
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
 url=https://citron-emu.org
@@ -13,7 +13,7 @@ depends=('qt6-base' 'qt6-webengine' 'ffmpeg' 'sdl2-compat' 'hicolor-icon-theme' 
 	 'zstd' 'libva' 'zlib' 'openal' 'speexdsp')
 makedepends=('git' 'cmake' 'glslang' 'ninja' 'doxygen' 'nlohmann-json' 'vulkan-headers' 'boost'
 	     'qt6-tools' 'qt6-multimedia' 'rapidjson' 'vulkan-headers' 'vulkan-utility-libraries'
-	     'catch2')
+	     'catch2' 'qt6-svg')
 optdepends=('gamemode: Gamemoded support')
 conflicts=('citron')
 options=(!debug)
