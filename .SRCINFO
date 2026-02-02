@@ -12,7 +12,7 @@ pkgbase = mantpro-bin
 	options = !strip
 	source_x86_64 = https://github.com/AnabasaSoft/MantPro/releases/download/v1.2/MantPro_Linux
 	source_x86_64 = https://raw.githubusercontent.com/AnabasaSoft/MantPro/main/icono.png
-	sha256sums_x86_64 = SKIP
-	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = ca5c8fc3ef6fe64e39c874045335fc246657af7ed6f4acfc8aaba397b32dd8b5
+	sha256sums_x86_64 = 2bf0349b288d8b77834fdfdd1a036e6fb2b5927b6aea89ca0606c6369694d5e3
 
 pkgname = mantpro-bin

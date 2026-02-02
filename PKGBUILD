@@ -17,8 +17,8 @@ source_x86_64=("https://github.com/AnabasaSoft/MantPro/releases/download/v${pkgv
                "https://raw.githubusercontent.com/AnabasaSoft/MantPro/main/icono.png")
 
 # Usamos SKIP para evitar errores de checksum antes de que GitHub compile la release
-sha256sums_x86_64=('SKIP'
-                   'SKIP')
+sha256sums_x86_64=('ca5c8fc3ef6fe64e39c874045335fc246657af7ed6f4acfc8aaba397b32dd8b5'
+                   '2bf0349b288d8b77834fdfdd1a036e6fb2b5927b6aea89ca0606c6369694d5e3')
 
 package() {
     # 1. Instalar el binario renombrándolo a 'mantpro' en /usr/bin
