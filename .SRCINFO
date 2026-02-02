@@ -1,0 +1,24 @@
+pkgbase = caire-bin
+	pkgdesc = Run multiple commands in parallel
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/esimov/caire
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libxcursor
+	depends = libxfixes
+	depends = libxkbcommon
+	depends = wayland
+	depends = libxkbcommon-x11
+	depends = libx11
+	depends = libxcb
+	depends = libglvnd
+	provides = caire
+	conflicts = caire
+	source = LICENSE-1.5.0::https://raw.githubusercontent.com/esimov/caire/v1.5.0/LICENSE
+	sha256sums = b33c6f418a5c2407c24250ea0ce13af06b9050c695bdeae81badcbbfe688a8c5
+	source_x86_64 = caire-x86_64-1.5.0.tgz::https://github.com/esimov/caire/releases/download/v1.5.0/caire-1.5.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = b723221defae71ca7fe44c9007a0583568a0e1ac4436e696cc0b80c7be697fa4
+
+pkgname = caire-bin
