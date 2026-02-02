@@ -34,7 +34,7 @@ depends=(
   'zlib'
 )
 makedepends=(
-  'cargo'
+  'cargo-nightly'
   'cmake'
   'git'
   'python'
