@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+
+set -euo pipefail
+
+source PKGBUILD
+
+tar -x -f "mullvad-browser-linux-x86_64-$pkgver.tar.xz" \
+  --strip-components=4 \
+  mullvad-browser/Browser/MullvadBrowser/Docs/ChangeLog.txt
+
+mv ChangeLog.txt mullvad-browser.changelog
