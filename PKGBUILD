@@ -1,6 +1,6 @@
 # Maintainer: yiming564 <yiming564@proton.me>
 pkgname=croaring-git
-pkgver=VERSION			# Only a placeholder
+pkgver=4.5.1.6.g41100ea6
 pkgrel=1
 pkgdesc="Roaring bitmaps in C (and C++), with SIMD (AVX2, AVX-512 and NEON) optimizations: used by Apache Doris, ClickHouse, Alibaba Tair, Redpanda, YDB and StarRocks"
 arch=('x86_64')
