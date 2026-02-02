@@ -1,0 +1,18 @@
+pkgbase = insight-x-bin
+	pkgdesc = A Tauri based data processing toolbox designed to simplify data operations and management,supports processing of multiple file formats, including Excel, CSV, Parquet, etc.(Prebuilt version)一个基于Tauri的数据处理工具箱，旨在简化数据操作和管理
+	pkgver = 0.5.5
+	pkgrel = 1
+	url = https://github.com/tansen87/insight-x
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	provides = insight-x=0.5.5
+	conflicts = insight-x
+	source = insight-x-0.5.5.deb::https://github.com/tansen87/insight-x/releases/download/v0.5.5/insight-x_0.5.5_amd64.deb
+	source = LICENSE-0.5.5::https://raw.githubusercontent.com/tansen87/insight-x/v0.5.5/LICENSE
+	sha256sums = b1a7bbca6ced172c4fdf6099c9820f1880ca81b64581344e24d0d14ca231005a
+	sha256sums = 40aef2075dd3e27889c8d2393daa9df182e5c7720d35cca6deec7b06354a805c
+
+pkgname = insight-x-bin
