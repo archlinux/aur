@@ -55,9 +55,6 @@ build_with_clang_options=" \
             -DCMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
             -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld" \
             -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld" \\
-            -DCMAKE_AR=llvm-ar \
-            -DCMAKE_RANLIB=llvm-ranlib \
-            -DCMAKE_NM=llvm-nm \
 	"
 
 _prepare_install_script() {
