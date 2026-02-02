@@ -1,7 +1,7 @@
 pkgbase = spent
 	pkgdesc = Minimalist personal finance tracker for Linux desktop
 	pkgver = 1.1.6
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/FrogSnot/Spent
 	arch = x86_64
 	license = AGPL3
