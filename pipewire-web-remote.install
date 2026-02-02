@@ -1,0 +1,28 @@
+post_install() {
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo "PipeWire Web Remote installed successfully!"
+    echo ""
+    echo "To enable as a user service:"
+    echo "  systemctl --user enable --now pipewire-web-remote.service"
+    echo ""
+    echo "To start on boot (even when not logged in):"
+    echo "  loginctl enable-linger \$USER"
+    echo ""
+    echo "Web interface: http://localhost:8449"
+    echo ""
+    echo "For help and options:"
+    echo "  pipewire-web-remote --help"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+}
+
+post_upgrade() {
+    echo "PipeWire Web Remote upgraded to version ${2}"
+    echo "Restart the service: systemctl --user restart pipewire-web-remote"
+}
+
+pre_remove() {
+    if systemctl --user is-enabled pipewire-web-remote.service &>/dev/null; then
+        echo "Stopping and disabling pipewire-web-remote service..."
+        systemctl --user disable --now pipewire-web-remote.service
+    fi
+}
