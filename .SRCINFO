@@ -1,0 +1,14 @@
+pkgbase = holesail
+	pkgdesc = TCP/UDP peer-to-peer proxy that lets you instantly share any application running on a specific port
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = https://github.com/holesail/holesail
+	arch = any
+	license = AGPL-3.0-only
+	makedepends = npm
+	depends = nodejs
+	noextract = holesail-2.4.1.tgz
+	source = https://registry.npmjs.org/holesail/-/holesail-2.4.1.tgz
+	sha256sums = SKIP
+
+pkgname = holesail
