@@ -1,23 +1,23 @@
-# Maintainer: CuVoodoo <pcb-rnd@cuvoodoo.info>
-# Contributor: aksr <aksr at t-com dot me>
+# Maintainer: aksr <aksr at t-com dot me>
+# Contributor: CuVoodoo <pcb-rnd@cuvoodoo.info>
 pkgname=libmawk
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
-pkgdesc="a fork of mawk 1.3.3, restructured for embedding"
-url="http://www.repo.hu/projects/libmawk/"
+pkgdesc='A fork of mawk 1.3.3, restructured for embedding.'
+url='http://www.repo.hu/projects/libmawk/'
 arch=('i686' 'x86_64')
 license=('GPL2')
 depends=('glibc')
-source=("http://www.repo.hu/projects/$pkgname/releases/$pkgname-$pkgver.tar.gz")
-sha256sums=('1f8bad481034d2bd583d621f73a2184540c3bbc3b610be04453576c6dbc6352e')
+source=("$url/releases/$pkgname-$pkgver.tar.gz")
+sha256sums=('18db04b5931968f5cb9864e0009578a57ef449e8f2997bedbc829ce55f2dc2b1')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver/"
-  ./configure --prefix=/usr
-  make
+	cd "$srcdir/$pkgname-$pkgver/"
+	./configure --prefix=/usr
+	make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver/"
-  make DESTDIR="$pkgdir/" install
+	cd "$srcdir/$pkgname-$pkgver/"
+	make DESTDIR="$pkgdir/" install
 }

@@ -1,13 +1,13 @@
 pkgbase = libmawk
-	pkgdesc = a fork of mawk 1.3.3, restructured for embedding
-	pkgver = 1.0.4
+	pkgdesc = A fork of mawk 1.3.3, restructured for embedding
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = http://www.repo.hu/projects/libmawk/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = glibc
-	source = http://www.repo.hu/projects/libmawk/releases/libmawk-1.0.4.tar.gz
-	sha256sums = 1f8bad481034d2bd583d621f73a2184540c3bbc3b610be04453576c6dbc6352e
+	source = http://www.repo.hu/projects/libmawk//releases/libmawk-1.0.5.tar.gz
+	sha256sums = 18db04b5931968f5cb9864e0009578a57ef449e8f2997bedbc829ce55f2dc2b1
 
 pkgname = libmawk
