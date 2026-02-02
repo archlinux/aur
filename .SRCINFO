@@ -1,22 +1,22 @@
 pkgbase = postybirb-bin
 	pkgdesc = An application that helps artists post art and other multimedia to multiple websites more quickly.(Prebuilt version.Use system-wide electron)
-	pkgver = 4.0.10
+	pkgver = 4.0.12
 	pkgrel = 1
 	url = https://www.postybirb.com/
 	arch = aarch64
 	arch = x86_64
 	license = BSD-3-Clause
 	depends = electron35
-	provides = postybirb=4.0.10
+	provides = postybirb=4.0.12
 	conflicts = postybirb
 	conflicts = postybirb-plus
-	source = LICENSE-4.0.10::https://raw.githubusercontent.com/mvdicarlo/postybirb/v4.0.10/LICENSE
+	source = LICENSE-4.0.12::https://raw.githubusercontent.com/mvdicarlo/postybirb/v4.0.12/LICENSE
 	source = postybirb.sh
 	sha256sums = f549ac630b1a4e0e8a80ae21c37d1c7d63f00e1cd155d5f747a5315b54ae2e31
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = postybirb-4.0.10-aarch64.rpm::https://github.com/mvdicarlo/postybirb/releases/download/v4.0.10/PostyBirb-4.0.10-linux-rpm-aarch64.rpm
-	sha256sums_aarch64 = 17815f9117ba8d3a9270022940bf22f4bd79785c700e24ae0300ef1d0df1b51a
-	source_x86_64 = postybirb-4.0.10-x86_64.rpm::https://github.com/mvdicarlo/postybirb/releases/download/v4.0.10/PostyBirb-4.0.10-linux-rpm-x86_64.rpm
-	sha256sums_x86_64 = 163b4fe3f6600114f54e6fb2887212ef47c6446a946e72f470b25837a3c3003f
+	source_aarch64 = postybirb-4.0.12-aarch64.rpm::https://github.com/mvdicarlo/postybirb/releases/download/v4.0.12/PostyBirb-4.0.12-linux-rpm-aarch64.rpm
+	sha256sums_aarch64 = 7f5ac957e645afb377382db205af0dfdff3fe6a2ca3703c798ea66b14179a5f4
+	source_x86_64 = postybirb-4.0.12-x86_64.rpm::https://github.com/mvdicarlo/postybirb/releases/download/v4.0.12/PostyBirb-4.0.12-linux-rpm-x86_64.rpm
+	sha256sums_x86_64 = c7ecca1fe2a10697d4b85a6719b337956a4271e0a84a9080ac170d503c40b4be
 
 pkgname = postybirb-bin
