@@ -1,4 +1,5 @@
-# Maintainer: Mark Wells <contact@markwells.dev>
+# Maintainer: Mark Wells <contact at markwells dot dev>
+# Contributor: David Runge <dvzrv at archlinux dot org>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-click-repl
 pkgver=0.3.0
