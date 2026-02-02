@@ -1,0 +1,50 @@
+--- sdel-lib.c.orig	2026-02-02 20:28:42.426954714 +0700
++++ sdel-lib.c	2026-02-02 20:30:20.645079731 +0700
+@@ -307,7 +307,10 @@
+ }
+ 
+ void sdel_wipe_inodes(char *loc, char **array) {
+-    char *template = malloc(strlen(loc) + 16);
++    const char *pat = "xxxxxxxx.xxx";
++    size_t loclen = strlen(loc);
++    int need_slash = (loclen > 0 && loc[loclen - 1] != '/');
++    char *template = malloc(loclen + need_slash + strlen(pat) + 1);
+     int i = 0;
+     int fail = 0;
+     int fd;
+@@ -315,25 +318,29 @@
+     if (verbose)
+         printf("Wiping inodes ...");
+ 
+-    array = malloc(MAXINODEWIPE * sizeof(template));
++    array = malloc((MAXINODEWIPE + 1) * sizeof(*array));
++    if (!array || !template) { perror("malloc"); exit(1); }
+     strcpy(template, loc);
+-    if (loc[strlen(loc) - 1] != '/')
++    if (need_slash)
+         strcat(template, "/");
+-    strcat(template, "xxxxxxxx.xxx");
++    strcat(template, pat);
+        
+     while(i < MAXINODEWIPE && fail < 5) {
+         __sdel_random_filename(template);
+-        if (open(template, O_CREAT | O_EXCL | O_WRONLY, 0600) < 0)
++        fd = open(template, O_CREAT | O_EXCL | O_WRONLY, 0600);
++        if (fd < 0)
+             fail++;
+         else {
+-            array[i] = malloc(strlen(template));
++            (void) close(fd);
++            array[i] = malloc(strlen(template) + 1);
+             strcpy(array[i], template);
+             i++;
+         }
+     }
++    free(template);
+     FLUSH;
+        
+-    if (fail < 5) {
++    if (fail >= 5) {
+         fprintf(stderr, "Warning: could not wipe all inodes!\n");
+     }
+        
