@@ -1,7 +1,7 @@
 # Maintainer: Aira Hinano <hinanoaira at hinasense dot jp>
 # Co-Maintainer: kazu0617 <archlinux at kazu0617 dot net>
 pkgname=vrcx
-pkgver=2026.01.04
+pkgver=2026.01.28
 pkgrel=1
 pkgdesc="Friendship management tool for VRChat (built with Electron)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
     "build.patch"
 )
 
-sha256sums=('9364e447a2c7d8e0693e6448f56d8c67689e4f9cb12669bffb7c21a86735ab26'
+sha256sums=('9d423ad8be7f489e6b2879ffc067fb462464c9475b8bd4e26897836644ac2d1c'
             '3e40d0056adfd86848cf0bc594bf399d9fff1f894d470bad90d2b232d17f95c5'
             'db8f2ca37e76cc81ab15f91005882248cd68b97f59f3c8a5bf54674d190ca5df')
             
@@ -26,7 +26,11 @@ prepare() {
     patch -p1 < "$srcdir/build.patch"
     echo "$pkgver" > Version
     echo "" > .no-updater
-
+    # WORKAROUND: Upstream lock file is out of sync.
+    # Prefer package.json until it gets fixed upstream.
+    # npm ci --loglevel=error
+	
+    npm install --package-lock-only --no-fund
     npm ci --loglevel=error
 }
 
