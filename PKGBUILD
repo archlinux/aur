@@ -1,14 +1,14 @@
-# Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
+# Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=monkeytype-git
-pkgver=v19.11.2.r3.ga586173
+pkgver=v23.3.0.r27.g15e7bca
 pkgrel=1
 pkgdesc="Generates static type annotations for Python modules by collecting runtime types"
 arch=('any')
 url="https://github.com/instagram/MonkeyType"
 license=('BSD')
 makedepends=('git')
-depends=('python' 'python-setuptools' 'python-stringcase' 'python-retype')
+depends=('python' 'python-libcst' 'python-mypy_extensions' 'python-setuptools')
 conflicts=('monkeytype')
 provides=('monkeytype')
 source=("git+https://github.com/instagram/MonkeyType")
