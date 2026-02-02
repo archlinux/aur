@@ -13,7 +13,7 @@ pkgver=2512
 _build1=8.17.0
 _build2=20187591429
 _cart="CART26FQ4_LIN_${pkgver}_TARBALL"
-pkgrel=3
+pkgrel=4
 pkgdesc='Omnissa Horizon Client - connect to Omnissa Horizon virtual desktop'
 arch=('x86_64')
 makedepends=('resvg' 'oxipng')
@@ -63,8 +63,11 @@ build() {
 	rm --recursive --force \
 		"Omnissa-Horizon-serialportClient-${pkgver}-${_build1}-${_build2}.x64/usr/lib/omnissa/"{'horizon/scannerSerialPortCommon/','rdpvcbridge'}
 
-	# add a comment to desktop file, use proper icons
-	sed -i -e '/Name=/a Comment=Connect to Omnissa Horizon View virtual machines' -e '/^Icon=/c Icon=horizon-client' \
+	# add a Comment and StartupWMClass to desktop file, use proper icon
+	sed -i \
+		-e '/Name=Omnissa/a Comment=Connect to Omnissa Horizon View virtual machines' \
+		-e '/Name=Omnissa/a StartupWMClass=Horizon-client' \
+		-e '/^Icon=/c Icon=horizon-client' \
 		"Omnissa-Horizon-Client-${pkgver}-${_build1}-${_build2}.x64/usr/share/applications/horizon-client.desktop"
 
 	# prepare high(er) quality icons
