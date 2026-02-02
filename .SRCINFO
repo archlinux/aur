@@ -1,6 +1,6 @@
 pkgbase = xraygui-bin
 	pkgdesc = A small and nimble GUI for XRay.(Prebuilt version)
-	pkgver = 2.7
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://github.com/AKotov-dev/XRayGUI
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = xraygui-bin
 	depends = gtk2
 	depends = libproxy
 	depends = fping
-	provides = xraygui=2.7
+	provides = xraygui=2.7.1
 	conflicts = xraygui
-	source = xraygui-2.7.rpm::https://github.com/AKotov-dev/XRayGUI/releases/download/v2.7/xraygui-2.7-0.mrx10.x86_64.rpm
+	source = xraygui-2.7.1.rpm::https://github.com/AKotov-dev/XRayGUI/releases/download/v2.7.1/xraygui-2.7.1-0.mrx9.x86_64.rpm
 	source = xraygui.sh
-	sha256sums = cd12e9a3b46e3a1affafe5d69a1b613286a9282af3d6badfe1f93d3000a3f471
+	sha256sums = 6be38b223a8430ce4a91583b126575df14529da514bf85940cb39b64f951bfd3
 	sha256sums = 2603edafb8afdc7a9984f667bee03cc7c9d71f17f43ed2bb072e5bcf9726b6e4
 
 pkgname = xraygui-bin
