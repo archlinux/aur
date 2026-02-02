@@ -1,20 +1,20 @@
 # Maintainer: Hakan İSMAİL <hakanismail53@gmail.com>
 pkgname=rclone-manager-headless
 appname='RClone.Manager.Headless'
-releasetag=0.1.9
-pkgver=0.1.9
+releasetag=0.2.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="User-friendly WebUI for Rclone (Headless Server)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Zarestia-Dev/rclone-manager"
 license=('GPL-3.0-or-later')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1' 'xorg-server-xvfb' 'xorg-xset' 'dbus')
-optdepends=('rclone: for file operations')
+optdepends=('rclone')
 options=('!strip' '!debug')
 source_x86_64=("${url}/releases/download/headless-v${releasetag}/${appname}_${pkgver}_amd64.deb")
 source_aarch64=("${url}/releases/download/headless-v${releasetag}/${appname}_${pkgver}_arm64.deb")
-sha256sums_x86_64=('SKIP')
-sha256sums_aarch64=('SKIP')
+sha256sums_x86_64=('777f8b5187917a86d92535a66a48b42ea7342e327e3969d1d641a2cf57de73dd')
+sha256sums_aarch64=('066f61b08397d21710740131333dfae997a80698b280cd057b549483d113a26e')
 
 prepare() {
   cd "${srcdir}"

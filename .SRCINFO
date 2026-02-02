@@ -1,6 +1,6 @@
 pkgbase = rclone-manager-headless
 	pkgdesc = User-friendly WebUI for Rclone (Headless Server)
-	pkgver = 0.1.9
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/Zarestia-Dev/rclone-manager
 	arch = x86_64
@@ -18,12 +18,12 @@ pkgbase = rclone-manager-headless
 	depends = xorg-server-xvfb
 	depends = xorg-xset
 	depends = dbus
-	optdepends = rclone: for file operations
+	optdepends = rclone
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/Zarestia-Dev/rclone-manager/releases/download/headless-v0.1.9/RClone.Manager.Headless_0.1.9_amd64.deb
-	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://github.com/Zarestia-Dev/rclone-manager/releases/download/headless-v0.1.9/RClone.Manager.Headless_0.1.9_arm64.deb
-	sha256sums_aarch64 = SKIP
+	source_x86_64 = https://github.com/Zarestia-Dev/rclone-manager/releases/download/headless-v0.2.0/RClone.Manager.Headless_0.2.0_amd64.deb
+	sha256sums_x86_64 = 777f8b5187917a86d92535a66a48b42ea7342e327e3969d1d641a2cf57de73dd
+	source_aarch64 = https://github.com/Zarestia-Dev/rclone-manager/releases/download/headless-v0.2.0/RClone.Manager.Headless_0.2.0_arm64.deb
+	sha256sums_aarch64 = 066f61b08397d21710740131333dfae997a80698b280cd057b549483d113a26e
 
 pkgname = rclone-manager-headless
