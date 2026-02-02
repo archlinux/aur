@@ -1,0 +1,34 @@
+pkgbase = map-tiles-downloader-git
+	pkgdesc = Open Street Map map tiles downloader for Meshtastic and MeshCore.
+	pkgver = 1.3.3.r70.20251009.e16451b
+	pkgrel = 1
+	url = https://github.com/tekk/map-tiles-downloader
+	arch = any
+	groups = meshcore
+	groups = meshtastic
+	license = CC-BY-4.0
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools>=61.0.0
+	makedepends = python-wheel
+	depends = python>=3.9
+	depends = python-aiohttp>=3.9
+	depends = python-tqdm>=4.65
+	depends = python-fastkml>=0.12
+	depends = python-aiofiles>=23.1
+	depends = python-questionary>=2.0
+	depends = python-lxml>=5.0
+	depends = python-geonamescache>=2.0
+	provides = map-tiles-downloader=1.3.3.r70.20251009.e16451b
+	provides = mt-downloader=1.3.3.r70.20251009.e16451b
+	provides = mt-downloader-git=1.3.3.r70.20251009.e16451b
+	provides = python-map-tiles-downloader=1.3.3.r70.20251009.e16451b
+	provides = python-map-tiles-downloader-git=1.3.3.r70.20251009.e16451b
+	conflicts = map-tiles-downloader
+	conflicts = mt-downloader
+	conflicts = python-map-tiles-downloader
+	source = map-tiles-downloader::git+https://github.com/tekk/map-tiles-downloader.git
+	sha256sums = SKIP
+
+pkgname = map-tiles-downloader-git
