@@ -3,24 +3,37 @@
 _name="jule"
 _pkgname="${_name}c"
 pkgname="${_pkgname}-bin"
-pkgver=0.1.7
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Jule programming language compiler"
-arch=('aarch64' 'x86_64')
+arch=(
+  'aarch64'
+  'x86_64'
+)
 url="https://jule.dev"
 _url="https://github.com/julelang/${_name}"
-license=('BSD-3-Clause')
+license=(
+  'BSD-3-Clause'
+)
 optdepends=(
   'clang: clang backend support'
   'gcc: gcc backend support'
 )
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+provides=(
+  "${_pkgname}"
+)
+conflicts=(
+  "${_pkgname}"
+)
 _pkgsrc="${_pkgname}-${pkgver}"
-source_aarch64=("${_pkgsrc}-aarch64.zip::${_url}/releases/download/${_name}${pkgver}/${_name}${pkgver}-linux-arm64.zip")
-source_x86_64=("${_pkgsrc}-x86_64.zip::${_url}/releases/download/${_name}${pkgver}/${_name}${pkgver}-linux-amd64.zip")
-sha256sums_aarch64=('2fc2db18e3883bea4fc8959d90790bbc54642db287f6f887f265a7c832e5adb3')
-sha256sums_x86_64=('4f6698e08aa7119077a639e4ae6539cdbceb4a77a2f97c8ba8895738c67f627d')
+source_aarch64=(
+  "${_pkgsrc}-aarch64.zip::${_url}/releases/download/${_name}${pkgver}/${_name}-linux-arm64.zip"
+)
+source_x86_64=(
+  "${_pkgsrc}-x86_64.zip::${_url}/releases/download/${_name}${pkgver}/${_name}-linux-amd64.zip"
+)
+sha256sums_aarch64=('194534665638e13972efaf2a66bf3ab45f3f461a9e4aac83602a294f3ac4ed20')
+sha256sums_x86_64=('3c59592382fbfd491bf111dccc5333f8b7f64e1536b7fa8b91702700d94ddbb6')
 
 package() {
   cd "${srcdir}/${_name}"
