@@ -94,8 +94,7 @@
      discoverInDirectory({
 --- a/src/plugins/install.ts
 +++ b/src/plugins/install.ts
-@@ -340,6 +340,32 @@
-   mode?: "install" | "update";
+@@ -346,6 +346,35 @@
    dryRun?: boolean;
    expectedPluginId?: string;
  }): Promise<InstallPluginResult> {
@@ -106,7 +105,10 @@
 +      logger.info?.(`Installing ${params.spec} to ${CONFIG_DIR} using system package manager...`);
 +
 +      const hasPnpmLock = await fileExists(path.join(CONFIG_DIR, "pnpm-lock.yaml"));
-+      const pm = hasPnpmLock ? "pnpm" : "npm";
++      const hasBunLock = await fileExists(path.join(CONFIG_DIR, "bun.lockb"));
++      const pm = hasBunLock ? "bun" : (hasPnpmLock ? "pnpm" : "npm");
++
++      await fs.mkdir(path.join(CONFIG_DIR, "node_modules"), { recursive: true });
 +
 +      const res = await runCommandWithTimeout([pm, "install", params.spec], {
 +        cwd: CONFIG_DIR,
@@ -130,14 +132,17 @@
    const mode = params.mode ?? "install";
 --- a/src/agents/skills-install.ts
 +++ b/src/agents/skills-install.ts
-@@ -369,6 +369,14 @@
+@@ -369,6 +369,17 @@
  
    const prefs = resolveSkillsInstallPreferences(params.config);
    const command = buildInstallCommand(spec, prefs);
 +
-+  // Force installation into user config directory if package.json exists there
++
++  // Force installation into user config directory if package.json exists there or forced by env
 +  const configPkgJson = path.join(CONFIG_DIR, "package.json");
-+  if (spec.kind === "node" && command.argv && fs.existsSync(configPkgJson)) {
++  const forceLocal = process.env.OPENCLAW_FORCE_LOCAL_SKILLS === "1";
++  
++  if (spec.kind === "node" && command.argv && (forceLocal || fs.existsSync(configPkgJson))) {
 +      // Remove global flags
 +      command.argv = command.argv.filter(arg => arg !== "-g" && arg !== "global");
 +  }
@@ -145,13 +150,13 @@
    if (command.error) {
      return {
        ok: false,
-@@ -469,6 +477,10 @@
+@@ -469,6 +480,10 @@
        return await runCommandWithTimeout(argv, {
          timeoutMs,
          env,
 +        // If we are installing locally (stripped globals), use CONFIG_DIR as cwd
-+        cwd: (spec.kind === "node" && !argv.includes("-g") && !argv.includes("global")) 
-+             ? CONFIG_DIR 
++        cwd: (spec.kind === "node" && (forceLocal || fs.existsSync(configPkgJson)))
++             ? CONFIG_DIR
 +             : undefined,
        });
      } catch (err) {

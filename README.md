@@ -14,13 +14,13 @@ This directory contains the `PKGBUILD` and helper scripts to package OpenClaw fo
 
 ## Plugins & Skills
 
-### Local NPM Plugins
-This package includes a patch (`enable-npm-plugins.patch`) that allows loading plugins and skills installed as standard NPM packages in your configuration directory.
+### Local Plugins (Bun)
+This package is patched to support `bun` for managing plugins and skills. **You MUST configure Bun** as your package manager in the OpenClaw config.
 
 ```bash
 cd ~/.openclaw
-npm init -y
-npm install openclaw-plugin-foo
+bun init -y
+bun install openclaw-plugin-foo
 ```
 
 *(Note: The package must have valid `openclaw` metadata in its `package.json` to be discovered)*
@@ -39,6 +39,9 @@ openclaw doctor
 ```
 
 ### Systemd User Service
+
+
+If using OpenClaw without additional bubblewrap, openclaw can install itself as systemd user service.
 
 To install OpenClaw BubbleWrapped as a systemd user service (autostart on login):
 

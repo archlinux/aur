@@ -1,12 +1,13 @@
 pkgbase = openclaw-git
 	pkgdesc = Personal AI assistant that runs on your own devices
-	pkgver = 2026.1.30.r100.gd3e53eaf2
+	pkgver = 2026.1.30.r144.g7ee99af9f
 	pkgrel = 1
 	url = https://github.com/openclaw/openclaw
+	install = openclaw.install
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = pnpm
+	makedepends = bun
 	makedepends = python
 	depends = nodejs>=22
 	depends = bubblewrap
@@ -18,10 +19,14 @@ pkgbase = openclaw-git
 	source = openclaw-agent-bwrap
 	source = openclaw-install-systemd-user-service
 	source = enable-npm-plugins.patch
+	source = openclaw.install
+	source = README.md
 	sha256sums = SKIP
 	sha256sums = aaea26c3563aeef9def080e6d7d587710cd9a08022e80238e8d87db7569100c2
 	sha256sums = 3285fb067e78ccd588abac722eb4c03b3b56ee36ec92e333e0749bf065898ea0
-	sha256sums = 44688c25fd6c6414ac4f7dbe249a94d9b38097e51ae0af79b13c4b5837ee23fb
-	sha256sums = 201b0587aa16e5525d5991367e637f46c7e7691dcdfbd0e8ab8cac4ca11233ec
+	sha256sums = 5b50d5a4a4991fe95034d4da58e78e142e0bee8f1ba3c9850e2c86b27074805a
+	sha256sums = 5e1f0836e1066c3676582b496f94eb77e00e57d047e3005300033020404f95a0
+	sha256sums = 72cf00f138984381e747bafe04d853d4f8dc3b6e2fa92f58e0739e881eda2799
+	sha256sums = 615a6ec5e675308f9de13449fb682c1df44ea6191146b059437a8743cbb3be1b
 
 pkgname = openclaw-git

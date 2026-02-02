@@ -1,0 +1,29 @@
+post_install() {
+    cat <<EOF
+==========================================================================
+  WARNING: SECURITY NOTICE & EXPERIMENTAL SOFTWARE
+==========================================================================
+  OpenClaw is powerful experimental AI software that executes code
+  and interacts with external services.
+ 
+  SECURITY RISKS:
+  - Prompt Injection: AI models can be tricked into executing malicious commands.
+  - Remote Execution: If exposed to the internet, secure it properly.
+  - Data Privacy: Ensure you trust the models and plugins you use.
+
+  IMPORTANT: You must select 'bun' as the package manager for installing skills.
+ 
+  You can run OpenClaw inside a Bubblewrap sandbox for added security, 
+  but this is not a guarantee of isolation. 
+ 
+  Please read further documentation and security warnings at:
+  file:///usr/share/doc/openclaw-git/README-arch.md
+  file:///usr/share/doc/openclaw-git/README.md
+ 
+==========================================================================
+EOF
+}
+
+post_upgrade() {
+    post_install
+}

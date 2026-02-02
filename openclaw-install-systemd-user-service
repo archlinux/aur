@@ -35,7 +35,7 @@ mkdir -p "$HOME/.config/systemd/user"
 
 cat > "$UNIT_FILE" <<EOF
 [Unit]
-Description=OpenClaw Gateway ($PROFILE)
+Description=OpenClaw Gateway - $BIN_PATH ($PROFILE)
 After=network.target
 
 [Service]
