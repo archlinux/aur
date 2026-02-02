@@ -3,7 +3,7 @@
 
 _pkgname=pypika
 pkgname="python-${_pkgname}"
-pkgver=0.50.0
+pkgver=0.51.0
 pkgrel=1
 pkgdesc="A SQL query builder API for Python"
 arch=("any")
@@ -12,7 +12,7 @@ license=('Apache-2.0')
 depends=("python")
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('7ffa531bbcfb6ee2240e66137291693a401bacf935ecda4ee8ac4d4c4b80af1c06987d82f6ab56a08157a9d13f3fdc3a88c186df83cdf43e8569791c67f9e264')
+b2sums=('94c96fba41f3879f8f125a7f7da232e973d364052d9c85a97fe7ada4bdf2ffc0c55b70691a62f3eb394a05a6ce9360856fe1d581fb2f49318d6c317e9faa5a97')
 
 build() {
     cd "${_pkgname}-${pkgver}"
