@@ -14,14 +14,15 @@ changelog=
 _raylib_ver=5.5
 source=(
     "${pkgname}::git+https://github.com/Stephen-Seo/mpd_info_screen2.git#tag=${pkgver}"
-    "raylib-${_raylib_ver}::git+https://github.com/raysan5/raylib.git#tag=${_raylib_ver}"
+    "raylib::git+https://github.com/raysan5/raylib.git#tag=${_raylib_ver}"
 )
 sha256sums=(SKIP SKIP)
 
 prepare() {
     mkdir -p "${srcdir}/${pkgname}/third_party/"
     cd "${srcdir}"
-    tar -cf "${srcdir}/${pkgname}/third_party/raylib-${_raylib_ver}.tar.gz" --exclude='*.git*' "raylib-${_raylib_ver}"
+    ln -s raylib "raylib-${_raylib_ver}"
+    tar -chf "${srcdir}/${pkgname}/third_party/raylib-${_raylib_ver}.tar.gz" --exclude='*.git*' "raylib-${_raylib_ver}"
     cd "${srcdir}/${pkgname}"
     sha256sum "third_party/raylib-${_raylib_ver}.tar.gz" > "third_party/raylib-5.5_SHA256SUMS.txt"
 
