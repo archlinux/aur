@@ -1,19 +1,19 @@
 pkgbase = piclist-bin
 	pkgdesc = A cloud storage platform management and file upload tool based on PicGo, which has been deeply redeveloped.(Prebuilt version.Use system-wide electron)一款云储存/图床管理和文件上传客户端工具,基于PicGo深度二次开发.
-	pkgver = 3.3.0
+	pkgver = 3.3.1
 	pkgrel = 1
 	url = https://piclist.cn/
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	depends = electron39
-	source = LICENSE-3.3.0::https://raw.githubusercontent.com/Kuingsmile/PicList/v3.3.0/LICENSE
+	source = LICENSE-3.3.1::https://raw.githubusercontent.com/Kuingsmile/PicList/v3.3.1/LICENSE
 	source = piclist.sh
 	sha256sums = cddebc59798c76d191fc65eb4176d960e4e157177c9d81db80eaff8d84d86a1c
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = piclist-3.3.0-aarch64.deb::https://github.com/Kuingsmile/PicList/releases/download/v3.3.0/PicList-3.3.0-arm64.deb
-	sha256sums_aarch64 = 02242893bc8fef0437fb9a4d10e4935d4cb547b0bb9eaa94cca9066b10d4da12
-	source_x86_64 = piclist-3.3.0-x86_64.deb::https://github.com/Kuingsmile/PicList/releases/download/v3.3.0/PicList-3.3.0-amd64.deb
-	sha256sums_x86_64 = c77c0f192cbdff425ae0f2810c9e9765cc3c886b53c4c382623bd8348e050851
+	source_aarch64 = piclist-3.3.1-aarch64.deb::https://github.com/Kuingsmile/PicList/releases/download/v3.3.1/PicList-3.3.1-arm64.deb
+	sha256sums_aarch64 = 0f20a3bfd59e3c123111821aebfcd0220f8c28eaada3768147ad9648837a160a
+	source_x86_64 = piclist-3.3.1-x86_64.deb::https://github.com/Kuingsmile/PicList/releases/download/v3.3.1/PicList-3.3.1-amd64.deb
+	sha256sums_x86_64 = 91ec74c8673bf892f6df5a33cf5df8071182672f0f447270fdf94e67a65ec91f
 
 pkgname = piclist-bin
