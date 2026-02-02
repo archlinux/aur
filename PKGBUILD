@@ -1,7 +1,7 @@
 # Maintainer: Guru <anjanaya@gmail.com>
 pkgname=agent-browser
-pkgver=0.8.5
-pkgrel=2
+pkgver=0.8.6
+pkgrel=1
 pkgdesc="Headless browser automation CLI for AI agents"
 arch=('any')
 url="https://github.com/vercel-labs/agent-browser"
@@ -10,7 +10,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=('0f954f68d31771a4f1f040ec6a4917b1f1739d23f6f3ce1e802a7ebcb9b14cd4')
+sha256sums=('ec5b248b9f87a65f10eac16a999f29f966a0a4d7bd4ee62472dc46401676423f')
 
 package() {
     # Ensure system node/npm are used, bypassing version managers like asdf
