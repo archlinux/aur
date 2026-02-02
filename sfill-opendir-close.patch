@@ -1,0 +1,16 @@
+--- sfill.c.orig	2026-02-02 20:38:47.924555747 +0700
++++ sfill.c	2026-02-02 20:42:24.751577707 +0700
+@@ -135,10 +135,11 @@
+     do {
+        char newname[strlen(argv[loop]) + 16];
+        strcpy(newname, argv[loop]); // can not overflow
+-       if (opendir(newname) == NULL) {  /* no need for ensuring close */
++       DIR *d = opendir(newname);
++       if (d == NULL) {
+            fprintf(stderr, "Error: %s is not a directory\n", newname);
+        } else {
+-
++        closedir(d);
+             /* Generate random unique name for tempfile */
+ 	    srand(getpid()+getuid());
+ 
