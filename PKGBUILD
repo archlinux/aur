@@ -29,23 +29,19 @@ sha256sums=('c86e695e95acbe0ad2576410397950193a78de65be0c91c98f4ba7fa8e705a3e')
 build() {
     cd "$_pkgname-$pkgver"
     python -m build --wheel --no-isolation
-
-    python -m installer --destdir=tmp_install dist/*.whl
 }
 
 check() {
     cd "$_pkgname-$pkgver"
 
-    local _site_packages
-    _site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
-    export PYTHONPATH="$PWD/tmp_install/$_site_packages"
-
+    python -m venv --system-site-packages test-env
+    test-env/bin/python -m installer dist/*.whl
     # TODO: Seemingly don't need pytest_recording loaded for self-test?
     # See
     # https://github.com/pytest-dev/pytest/issues/13388
     # https://github.com/pytest-dev/pytest/pull/14113
     # export PYTEST_PLUGINS=pytest_recording.plugin
-    python -m pytest \
+    test-env/bin/python -P -m pytest \
         --disable-plugin-autoload \
         -p httpbin -p pytest_mock
 }
