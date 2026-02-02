@@ -4,7 +4,7 @@ _pkgname=Leavepad
 pkgver=1.3.5
 _electronversion=40
 _nodeversion=24
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-platform notepad. focuses on writing memos. File editing is not supported.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/kaishuu0123/leavepad"
@@ -25,7 +25,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('21b2457b8311d06e4293b393903961bef639a26cbffbe7344d71cc8dc3549104'
+sha256sums=('a9f5d2afde4ac5da74e5ace0f426c65c4640b5cca6eb72507aaaccad1bff0a09'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
