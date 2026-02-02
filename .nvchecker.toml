@@ -1,0 +1,5 @@
+[abcrypt-cli-bin]
+source = "github"
+github = "sorairolake/abcrypt"
+use_latest_release = true
+prefix = "abcrypt-cli-v"
