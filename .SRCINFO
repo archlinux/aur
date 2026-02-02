@@ -22,6 +22,6 @@ pkgbase = spent-bin
 	sha256sums = c4215762b499abb4cf9674a5653c08691bbed2fbcad74441971069d0364485fe
 	sha256sums = 41b3fb88556e0b6a74c57368b62611bcd8b79a64b061ddf522cb0bb78209acb8
 	source_x86_64 = Spent-x86_64-1.1.6.deb::https://github.com/FrogSnot/Spent/releases/download/v1.1.6/spent_1.1.6_amd64.deb
-	sha256sums_x86_64 = 5c85712d2d3d2b04e5dc91b0275e8a5e615ff9895371983dedf589933279b2ec
+	sha256sums_x86_64 = e1f687fc396ddea0413ac80d0f3f88023a9f380829e7a57d03d7b2c70ce39012
 
 pkgname = spent-bin
