@@ -3,7 +3,7 @@
 # Contributor: d6k283tix <d6k283tix@mozmail.com>
 
 pkgname=bitcomet
-pkgver=2.19.2
+pkgver=2.20.0
 pkgrel=1
 pkgdesc="A BitTorrent/HTTP/FTP download client"
 arch=(x86_64)
@@ -22,8 +22,8 @@ depends=('cairo'
          'webkit2gtk')
 source=("${pkgname}-${pkgver}.deb::https://download.bitcomet.com/linux/x86_64/BitComet-${pkgver}-x86_64.deb"
         "LICENSE.html::https://www.bitcomet.com/en/license")
-sha256sums=('dba86928d09eb6a574c217f3368f79d040262be2ca0b546c3797fff4753dccab'
-            'a5ceafe53c05956057d4abb7f29992cd61789c71d223ea9389569df1651b2289')
+sha256sums=('0d4c768934d8aa8a2b2f2f2f730b689f27ab5b8b3cd73e9979ee06396619f078'
+            '00a64879877b1ecd7a316a3ffa82229689b8eeab058db78e5a3ccf0568fb886c')
 
 package() {
     bsdtar -xf data.tar.xz -C "${pkgdir}" --no-same-owner --no-same-permissions
