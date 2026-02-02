@@ -2,21 +2,21 @@
 
 _pkgname=goby
 pkgname=goby-community
-pkgver=2.9.23
+pkgver=2.9.25
 pkgrel=1
 pkgdesc="Goby 社区版 | Goby Community Edition"
 arch=("x86_64")
 url="https://gobies.org/"
 license=('unknown')
 options=("!strip" "!debug")
-depends=("gtk3" "libpcap")
+depends=("gtk3")
 source=(
 	"https://$_pkgname-storage-public.oss-cn-beijing.aliyuncs.com/$pkgver/$_pkgname-linux-x64-$pkgver-Community.zip"
 	"$pkgname.desktop"
 	"$pkgname.png"
 )
 sha256sums=(
-	'71b44fc1fbf0f8491e43a07e66a1072c3a48dcd4305f0f7b5a91183be7548535'
+	'6363fede20d96e418738c09713eba3da5986e54208df3ece64053ea3c7e1a1c0'
 	'0624f9c1aa7377ccb5bd6b6a54a3dbea3cdd1a1e838a154c73bd01d22ff5fc3f'
 	'11e10dc114bd6cd8ecfe018b277798f1c7727f113c15ebc09090682f8575bb1f'
 )
