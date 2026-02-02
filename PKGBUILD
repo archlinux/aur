@@ -1,7 +1,7 @@
 # Maintainer: Stephen Seo <seo.disparate@gmail.com>
 pkgname=mpd_info_screen2
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Views graphical info on MPD, the successor to mpd_info_screen, in C++"
 arch=(x86_64)
 url="https://github.com/Stephen-Seo/mpd_info_screen2"
@@ -11,11 +11,21 @@ makedepends=(git cmake)
 options=()
 install=
 changelog=
-source=("${pkgname}::git+https://github.com/Stephen-Seo/mpd_info_screen2.git#tag=${pkgver}")
-sha256sums=(SKIP)
+_raylib_ver=5.5
+source=(
+    "${pkgname}::git+https://github.com/Stephen-Seo/mpd_info_screen2.git#tag=${pkgver}"
+    "raylib-${_raylib_ver}::git+https://github.com/raysan5/raylib.git#tag=${_raylib_ver}"
+)
+sha256sums=(SKIP SKIP)
 
 prepare() {
-    cd "${pkgname}"
+    mkdir -p "${srcdir}/${pkgname}/third_party/"
+    cd "${srcdir}"
+    tar -cf "${srcdir}/${pkgname}/third_party/raylib-${_raylib_ver}.tar.gz" --exclude='*.git*' "raylib-${_raylib_ver}"
+    cd "${srcdir}/${pkgname}"
+    sha256sum "third_party/raylib-${_raylib_ver}.tar.gz" > "third_party/raylib-5.5_SHA256SUMS.txt"
+
+    cd "${srcdir}/${pkgname}"
     cmake -S . -B BuildRel \
         -DCMAKE_BUILD_TYPE=Release \
         -DUSE_EXTERNAL_GLFW=On \
