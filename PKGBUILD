@@ -7,7 +7,7 @@ _electron=electron39
 _nodejs="22.18.0"
 
 pkgname=${_pkgname}-electron
-pkgver=1.108.10359
+pkgver=1.108.20787
 pkgrel=2
 pkgdesc="VS Code without MS branding/telemetry/licensing. - System-wide Electron edition"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -19,7 +19,7 @@ optdepends=(
 	'gvfs: For move to trash functionality'
 	'libdbusmenu-glib: For KDE global menu'
 )
-makedepends=('git' 'python' 'nvm' 'jq' 'rustup')
+makedepends=('git' 'python' 'nvm' 'jq' 'cargo-nightly')
 provides=(
 	'codium'
 	'vscodium'
@@ -38,7 +38,7 @@ source=(
 	"${_pkgname}.desktop"
 	"${_pkgname}-uri-handler.desktop"
 )
-sha256sums=('9d29f353fcd04f9e2a447a4e59d3aa92617dc5e3014d3b696fee09f8defec9cc'
+sha256sums=('da7db2e411821307e0ff5991c1ef26700e11d390eb45023da4cefcb6a53d2ea5'
             '263ab5c08072d3ff88dfc9eb5b1698a898e4550b1701d3283d1e18e811473cf4'
             '617591ac74e2ef1ab30425895a79be5580db3280e7e44cee56a7a809637d438f'
             '28a271ba5b2e50b11259abd794ad2ab083612c78bee2d617bb5a8702932c8f44'
@@ -110,13 +110,11 @@ build() {
 	export VSCODE_QUALITY="stable"
 	export RELEASE_VERSION="${pkgver}"
 	export DISABLE_UPDATE="yes"
+	export HOME="${srcdir}"
 	_ensure_local_nvm
 	nvm install "${_nodejs}"
 	nvm use "${_nodejs}"
 	npm install --global node-gyp
-
-	# Contain electron and node
-	export HOME=$srcdir
 
 	cd "$srcdir/vscodium"
 
