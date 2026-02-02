@@ -62,7 +62,12 @@ build () {
 # Set the compiled files to create the package
 # in this specific order to be able to be installed
 package() {
+    pwd
     cd $srcdir/$pkgname-$pkgver
+    pwd
+    echo "listing: "
+    ls -l
+    echo "listing finish"
     mkdir -p $pkgdir/usr
     mkdir -p $pkgdir/usr/include
     mkdir -p $pkgdir/usr/lib
