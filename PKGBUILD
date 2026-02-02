@@ -2,7 +2,7 @@
 _appname=feishin
 pkgname="${_appname}-electron-bin"
 _pkgname=Feishin
-pkgver=1.3.0
+pkgver=1.4.2
 _electronversion=39
 pkgrel=1
 pkgdesc="A modern self-hosted music player.(Prebuilt version.Use system-wide electron)"
@@ -25,8 +25,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-x86_64.AppImage")
 sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('6f37b44eda32d60e2d11dbec00871bd9b24edd27587cfcfe6153d522853c7c17')
-sha256sums_x86_64=('d9a6a05c04ef89a9f12817f7ab7cca92e06ce8da70d82c9fa5ba976a5838e9a5')
+sha256sums_aarch64=('6c96c5a1843ceb2d15acd60a11507feaef92d8badb08b87b79e8a9336bb64218')
+sha256sums_x86_64=('e7d153b5de22586cb2e89030fe265ea02d15dae980226bc6fde6487763977998')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${_appname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
