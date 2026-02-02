@@ -27,6 +27,9 @@ basedir=$(pwd)
 
 # Compile the source code 
 build () {
+    pwd
+    echo "${basedir}"
+    echo "${basedir##*/}"
     if [[ "${basedir##*/}" != $pkgname ]]; then
 	echo "[1m[32m==>[0m[1m Compiling package..."
         tar -xf "$basedir/$pkgname-$pkgver.tar.gz"
