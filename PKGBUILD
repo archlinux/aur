@@ -43,9 +43,9 @@ prepare() {
     cd "$pkgname-$pkgver"
 
     # Respect XDG Base Directory Specification
-    # Use srcdir to avoid creating ~/.cargo and ~/.rustup during build
-    export CARGO_HOME="${CARGO_HOME:-$srcdir/.cargo}"
-    export RUSTUP_HOME="${RUSTUP_HOME:-$srcdir/.rustup}"
+    # Use existing toolchain/cache, but allow override via environment
+    export CARGO_HOME="${CARGO_HOME:-$HOME/.cargo}"
+    export RUSTUP_HOME="${RUSTUP_HOME:-$HOME/.rustup}"
     export RUSTUP_TOOLCHAIN=stable
 
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
@@ -53,9 +53,9 @@ prepare() {
 
 build() {
     # Respect XDG Base Directory Specification
-    # Use srcdir to avoid creating ~/.cargo and ~/.rustup during build
-    export CARGO_HOME="${CARGO_HOME:-$srcdir/.cargo}"
-    export RUSTUP_HOME="${RUSTUP_HOME:-$srcdir/.rustup}"
+    # Use existing toolchain/cache, but allow override via environment
+    export CARGO_HOME="${CARGO_HOME:-$HOME/.cargo}"
+    export RUSTUP_HOME="${RUSTUP_HOME:-$HOME/.rustup}"
 
     echo "=== BUILD ENVIRONMENT DEBUG ==="
     echo "cargo: $(which cargo)"
@@ -123,8 +123,8 @@ check() {
     cd "$pkgname-$pkgver"
 
     # Respect XDG Base Directory Specification
-    export CARGO_HOME="${CARGO_HOME:-$srcdir/.cargo}"
-    export RUSTUP_HOME="${RUSTUP_HOME:-$srcdir/.rustup}"
+    export CARGO_HOME="${CARGO_HOME:-$HOME/.cargo}"
+    export RUSTUP_HOME="${RUSTUP_HOME:-$HOME/.rustup}"
     export RUSTUP_TOOLCHAIN=stable
 
     cargo test --frozen
