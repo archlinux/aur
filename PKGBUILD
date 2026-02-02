@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MetaCycle
-_pkgver=1.2.0
+_pkgver=1.2.1
 pkgname=r-${_pkgname,,}
-pkgver=1.2.0
-pkgrel=4
+pkgver=1.2.1
+pkgrel=1
 pkgdesc='Evaluate Periodicity in Large Scale Data'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -19,7 +19,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1300172b57264c71d0a4fb877a7c102db2a1f01d4896dfa32c179ccfb2ae01d2')
+sha256sums=('c50aaedf83bb6adf98844b13598a52d7356c66cc43624f96a4ed5d9169076903')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
