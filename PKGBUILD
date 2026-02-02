@@ -1,7 +1,7 @@
 # Maintainer: Geballin - Guillaume Ballin <macniaque at free dot fr>
 pkgname=gtkttk
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="ttk theme that gives to your Tk applications a native GTK+ look and feel."
 url="https://github.com/Geballin/gtkTtk"
 arch=('x86_64' 'i686')
@@ -22,7 +22,7 @@ md5sums=('4a1eb695e7c01f12bbdcbbb78e7cbace'
 
 build() {
   cd ${srcdir}/gtkTtk-${pkgver}
-  cmake -DCMAKE_INSTALL_PREFIX=`tclsh <<< 'puts [lindex $auto_path end]'`
+  cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_INSTALL_PREFIX=`tclsh <<< 'puts [lindex $auto_path end]'`
   make
 }
 
