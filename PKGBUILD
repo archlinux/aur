@@ -68,6 +68,7 @@ package() {
     
     # If the package is builded not in local
     if [[ -d build/ ]]; then
+	ls -la
 	cp -r include/* $pkgdir/usr/include
 	cp -r build/lib/*.so $pkgdir/usr/lib
 	cp -r build/lib/*.a $pkgdir/usr/lib
