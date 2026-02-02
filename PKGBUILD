@@ -1,7 +1,7 @@
 pkgbase=gcc-snapshot
 pkgname=({gcc,gcc-libs,lib32-gcc-libs,gcc-ada,gcc-ga68,gcc-gcobol,gcc-d,gcc-fortran,gcc-go,gcc-m2,gcc-objc,gcc-rust,lto-dump,libgccjit}-snapshot)
-pkgver=16.0.0.snapshot20260111
-_pkgver=16-20260111
+pkgver=16.0.0.snapshot20260201
+_pkgver=16-20260201
 _majorver=${_pkgver//-*}
 _snapshot=${_pkgver#*-}
 _realver=${pkgver//.s*}
@@ -32,7 +32,7 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # Jakub Jelinek <jakub@redhat.com>
               343C2FF0FBEE5EC2EDBEF399F3599FF828C67298  # nisse@lysator.liu.se
               A534BE3F83E241D918280AEB5831D11A0D4DB02A) # vincent@vinc17.net
-sha256sums=('276ff5ce522121da716f1fcdbf375205786a03b170a397691cb13ffc60e146f2'
+sha256sums=('0b93b1ab14d7fbf0d80c90c2e64f2a0bfde2b0544be39ee46311a6de679475bf'
             'SKIP'
             'a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898'
             'SKIP'
@@ -130,15 +130,6 @@ build() {
   cp -a gcc/libgccjit.so* ../gcc-build/gcc/
 }
 
-#check() {
-#  cd gcc-build
-#
-#  sed -i '/maybe-check-target-libphobos \\/d' Makefile
-#
-#  make -O -k check || true
-#  ${srcdir}/gcc/contrib/test_summary
-#}
-
 package_gcc-libs-snapshot() {
   pkgdesc='Runtime libraries shipped by GCC (snapshot)'
   depends=("glibc>=2.40")
@@ -174,6 +165,9 @@ package_gcc-libs-snapshot() {
 
   rm -rf ${pkgdir}/usr/{lib32,lib/gcc}
 
+  install -Dm644 gcc/libatomic_asneeded.a ${pkgdir}/usr/lib/
+  install -Dm755 gcc/libatomic_asneeded.so ${pkgdir}/usr/lib/
+
   install -Dm644 ${srcdir}/gcc/COPYING.RUNTIME \
     ${pkgdir}/usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION
 }
@@ -199,6 +193,7 @@ package_gcc-snapshot() {
   make -C ${CHOST}/32/libgcc DESTDIR=${pkgdir} install
 
   rm -f ${pkgdir}/usr/lib{,32}/libgcc_s.so*
+  rm -f ${pkgdir}/usr/lib{,32}/libgcc_s_asneeded.so*
 
   make -C ${CHOST}/libstdc++-v3/src DESTDIR=${pkgdir} install
   make -C ${CHOST}/libstdc++-v3/include DESTDIR=${pkgdir} install
@@ -411,6 +406,9 @@ package_lib32-gcc-libs-snapshot() {
   make -C ${CHOST}/libphobos DESTDIR=${pkgdir} install
 
   rm -rf ${pkgdir}/${_libdir}/32/libgcc_eh.a ${pkgdir}/usr/lib32/libgphobos.spec ${pkgdir}/usr/lib
+
+  install -Dm644 gcc/32/libatomic_asneeded.a ${pkgdir}/usr/lib32/
+  install -Dm755 gcc/32/libatomic_asneeded.so ${pkgdir}/usr/lib32/
 
   install -Dm644 ${srcdir}/gcc/COPYING.RUNTIME \
     ${pkgdir}/usr/share/licenses/lib32-gcc-libs/RUNTIME.LIBRARY.EXCEPTION
