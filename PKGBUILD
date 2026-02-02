@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://github.com/DanielLMcGuire/Phasor"
 license=('0BSD')
 makedepends=('git' 'gcc' 'cmake' 'ninja')
+optdepends=('gcc: For building Phasor Native wrappers.')
 conflicts=('phasor' 'phasor-dev')
 options=(strip !debug)
 depends=()

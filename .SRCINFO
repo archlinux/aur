@@ -9,6 +9,7 @@ pkgbase = phasor-git
 	makedepends = gcc
 	makedepends = cmake
 	makedepends = ninja
+	optdepends = gcc: For building Phasor Native wrappers.
 	conflicts = phasor
 	conflicts = phasor-dev
 	options = strip
