@@ -1,0 +1,21 @@
+post_install() {
+  local fuse_conf_src="/opt/lucidlink/resources/etc/fuse.conf"
+  local fuse_conf_dest="/etc/fuse.conf"
+
+  if [[ -f "${fuse_conf_src}" && ! -f "${fuse_conf_dest}" ]]; then
+    install -Dm644 "${fuse_conf_src}" "${fuse_conf_dest}"
+  fi
+
+  if command -v pkg-config >/dev/null 2>&1; then
+    local completions_dir
+    completions_dir="$(pkg-config --variable=completionsdir bash-completion 2>/dev/null)"
+    if [[ -n "${completions_dir}" && -f "/opt/lucidlink/resources/etc/lucid-autocompletion.sh" ]]; then
+      install -Dm644 "/opt/lucidlink/resources/etc/lucid-autocompletion.sh" "${completions_dir}/lucid"
+      ln -sf lucid "${completions_dir}/lucid3"
+    fi
+  fi
+}
+
+post_upgrade() {
+  post_install
+}
