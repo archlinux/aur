@@ -7,7 +7,7 @@ _pkgname=querycat
 pkgname=${_pkgname}-bin
 pkgdesc="Use SQL to query different data sources like logs, JSON, CSV, XML, etc."
 
-pkgver=0.17.1
+pkgver=0.17.3
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -27,8 +27,8 @@ source=("README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${pkgver}-linux-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${pkgver}-linux-${_barch[1]}.tar.gz")
 sha256sums=('bf85525dfeee9c8649ea1bc9eaa20ad46cda01d9239003de02e1cc3ec41b9f12')
-sha256sums_x86_64=('70221c5352e99eb5a3015da491345d5052a8ce935ab72ee306daa832ea2686c0')
-sha256sums_aarch64=('427f9aa3d192d90f6b7b15259788933613d596090184d24885f77f1ba7b428d8')
+sha256sums_x86_64=('f573e67af521422c3e9b15e1e002792d099e6cd60d742ca1ad80170f50acff36')
+sha256sums_aarch64=('3ce143cac9159059486e907a9ca85d0bd334efaf5e0dfb9ce59e30b2309faefa')
 
 
 package() {
