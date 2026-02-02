@@ -1,0 +1,4 @@
+[cpx-copy]
+source = "git"
+git = "https://github.com/11happy/cpx.git"
+prefix = "v"
