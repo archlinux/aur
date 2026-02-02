@@ -100,13 +100,10 @@ build() {
 
   python -m build --wheel --no-isolation
 
-  python -m installer --destdir=tmp_install dist/*.whl
-
-  local _site_packages
-  _site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
-  export PYTHONPATH="$PWD/tmp_install/$_site_packages"
-
-  env -C doc sphinx-build -b man -d build/doctrees source build/man
+  python -m venv --system-site-packages build-env
+  build-env/bin/python -m installer dist/*.whl
+  build-env/bin/python -P "$(command -v sphinx-build)" \
+    -b man -d doc/build/doctrees doc/source doc/build/man
 
   # Needed to add the generated manpages into the wheel
   python -m build --wheel --no-isolation
@@ -115,18 +112,15 @@ build() {
 check() {
   cd "${_pkgname}"
 
-  local site_packages
-  _site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
-  export PYTHONPATH="$PWD/tmp_install/${_site_packages}"
-
   # Override papis python version selection which is too old for us,
   # see https://github.com/papis/papis/pull/1137
-  python -m mypy \
+  build-env/bin/python -m mypy \
     --python-version \
       "$(python -c 'import platform; print(
         ".".join(platform.python_version_tuple()[:2])
         )')"
-  python -m pytest \
+
+  build-env/bin/python -m pytest \
     --disable-plugin-autoload -o addopts='' \
     -p papis_testing
 }
