@@ -43,7 +43,6 @@ package() {
   install -Dm755 sfill "$pkgdir/usr/bin/sfill"
   install -Dm755 sswap "$pkgdir/usr/bin/sswap"
   install -Dm755 sdmem "$pkgdir/usr/bin/sdmem"
-  install -Dm755 the_cleaner.sh "$pkgdir/usr/bin/the_cleaner.sh"
 
   # Provide the "sdel" name (Makefile intended this as a symlink to srm)
   ln -s srm "$pkgdir/usr/bin/sdel"
