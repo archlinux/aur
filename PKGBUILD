@@ -1,6 +1,6 @@
 # Maintainer: S.EE Team <dev@s.ee>
 # Maintainer: Xiufeng Guo <i@m.ac>
-pkgname=see-bin
+pkgname=see-desktop-bin
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="A native GNOME desktop client for S.EE URL shortening service (prebuilt binary)"
@@ -9,7 +9,7 @@ url="https://github.com/sdotee/desktop"
 license=('MIT')
 depends=('gtk4' 'libadwaita' 'cairo' 'pango' 'gdk-pixbuf2' 'glib2')
 provides=('see')
-conflicts=('see')
+conflicts=('see' 'see-desktop')
 options=('!strip' '!debug')
 source_x86_64=("$pkgname-$pkgver-x86_64.deb::$url/releases/download/v$pkgver/see_${pkgver}_amd64.deb")
 source_aarch64=("$pkgname-$pkgver-aarch64.deb::$url/releases/download/v$pkgver/see_${pkgver}_arm64.deb")
