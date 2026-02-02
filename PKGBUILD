@@ -2,7 +2,7 @@
 
 pkgname=python-sqltrie
 pkgver=0.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="SQL-based prefix tree implementation inspired by pygtrie and python-diskcache."
 arch=('any')
 url="https://github.com/iterative/sqltrie"
@@ -13,6 +13,7 @@ depends=(
 makedepends=(
 	'python-build'
 	'python-installer'
+	'git'
 )
 source=("sqltrie-${pkgver}::git+${url}.git#tag=${pkgver}")
 sha256sums=(
