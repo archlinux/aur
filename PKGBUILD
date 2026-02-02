@@ -40,11 +40,14 @@ check() {
     _site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
     export PYTHONPATH="$PWD/tmp_install/$_site_packages"
 
-    export PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-    # Can't pass these via -p for some reason, see
+    # TODO: Seemingly don't need pytest_recording loaded for self-test?
+    # See
     # https://github.com/pytest-dev/pytest/issues/13388
-    export PYTEST_PLUGINS=pytest_httpbin.plugin,pytest_mock,pytest_recording.plugin
-    python -m pytest
+    # https://github.com/pytest-dev/pytest/pull/14113
+    # export PYTEST_PLUGINS=pytest_recording.plugin
+    python -m pytest \
+        --disable-plugin-autoload \
+        -p httpbin -p pytest_mock
 }
 
 package() {
