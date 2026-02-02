@@ -2,7 +2,7 @@
 _appname=supersonic
 pkgname="${_appname}-desktop-bin"
 _pkgname=Supersonic
-pkgver=0.20.0
+pkgver=0.20.1
 pkgrel=1
 pkgdesc="A lightweight cross-platform desktop client for Subsonic music servers.(Prebuilt version)"
 arch=('x86_64')
@@ -15,21 +15,16 @@ depends=(
     'libx11'
     'mpv'
 )
-makedepends=(
-    'gendesk'
-)
 source=("${pkgname%-bin}-${pkgver}.tar.xz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64-libmpv2.tar.xz")
-sha256sums=('b45816899c93ffd9184e7984c7eba78b7992d7429ebcc6ba47848fd0ca8826ee')
+sha256sums=('224983b96499874841102fa834d7fca7292c5217dc9df62e5108bf1f0fba8f13')
 prepare() {
-    gendesk -f -n -q \
-        --pkgname="${pkgname%-bin}" \
-        --pkgdesc="${pkgdesc}" \
-        --categories="AudioVideo" \
-        --name="${_pkgname}" \
-        --exec="${pkgname%-bin} %U"
+    sed -i -e "
+        s/Exec=${_appname}/Exec=${pkgname%-bin}/g
+        s/Icon=/Icon=${pkgname%-bin}/g
+    " "${srcdir}/usr/local/share/applications/.desktop"
 }
 package() {
-    install -Dm755 "${srcdir}/${_appname}/usr/local/bin/${_appname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${_appname}/usr/local/share/pixmaps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm755 "${srcdir}/usr/local/bin/${_appname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/usr/local/share/applications/.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/usr/local/share/pixmaps/.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
 }
