@@ -1,13 +1,14 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=codesearch-git
 pkgver=r42.b34f2a0
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool for indexing and then performing regular expression searches over large bodies of source code.'
 arch=('i686' 'x86_64')
 url='https://github.com/google/codesearch'
 license=('BSD-3-Clause')
 makedepends=('git' 'go')
 conflicts=("${pkgname%-*}")
+provides=("${pkgname%-*}")
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
