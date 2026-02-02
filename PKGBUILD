@@ -4,7 +4,7 @@
 _pkgname="piper-tts"
 pkgname="$_pkgname-git"
 pkgver=1.4.0.r0.g490b4df
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A fast, local neural text to speech system"
 url="https://github.com/OHF-Voice/piper1-gpl"
@@ -47,4 +47,7 @@ build() {
 package() {
   cd "$_pkgsrc"
   python -m installer --destdir="$pkgdir" dist/*.whl
+
+  # prevent conflict with extra/piper
+  mv "$pkgdir/usr/bin"/{piper,piper-tts}
 }

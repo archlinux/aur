@@ -1,7 +1,7 @@
 pkgbase = piper-tts-git
 	pkgdesc = A fast, local neural text to speech system
 	pkgver = 1.4.0.r0.g490b4df
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/OHF-Voice/piper1-gpl
 	arch = x86_64
