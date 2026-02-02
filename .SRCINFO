@@ -1,7 +1,7 @@
 pkgbase = c47-git
 	pkgdesc = Emulator for the C47 pocket calculator
 	pkgver = 00.109.03.00b1.r288.g66cba98
-	pkgrel = 1
+	pkgrel = 2
 	url = https://47calc.com
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -22,9 +22,14 @@ pkgbase = c47-git
 	depends = libpulse
 	depends = glib2
 	depends = gmp
-	provides = c47
-	conflicts = c47
 	source = c43::git+https://gitlab.com/rpncalculators/c43.git
 	sha256sums = SKIP
 
 pkgname = c47-git
+	provides = c47
+	conflicts = c47
+
+pkgname = r47-git
+	pkgdesc = Emulator for the R47 pocket calculator
+	provides = r47
+	conflicts = r47
