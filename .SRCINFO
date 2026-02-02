@@ -1,6 +1,6 @@
 pkgbase = openrct2-appimage
 	pkgdesc = Develop appimages for OpenRCT2
-	pkgver = 0.4.31.5
+	pkgver = 0.4.31.6
 	pkgrel = 1
 	url = https://openrct2.io
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = openrct2-appimage
 	provides = openrct2-appimage
 	conflicts = openrct2-appimage
 	options = !strip
-	source = openrct2-0.4.31.5.AppImage::https://github.com/OpenRCT2/OpenRCT2-binaries/releases/download/v0.4.31-5-g11439f48a5/OpenRCT2-v0.4.31-5-g11439f48a5-linux-x86_64.AppImage
-	sha256sums = f49a7f4bc8343fc8c6d84391f391492bb8f1a3c6ca47763e5efc25d127ff13cd
+	source = openrct2-0.4.31.6.AppImage::https://github.com/OpenRCT2/OpenRCT2-binaries/releases/download/v0.4.31-6-g8ecb8796c1/OpenRCT2-v0.4.31-6-g8ecb8796c1-linux-x86_64.AppImage
+	sha256sums = c8233732dd0d667314cc22e040bc668437977b523b5afb027891a1e309f7272d
 
 pkgname = openrct2-appimage
