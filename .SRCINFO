@@ -1,16 +1,13 @@
 pkgbase = neowofetch-git
-	pkgdesc = a combination of neofetch and uwufetch written in go
-	pkgver = r37.55c749c
+	pkgdesc = Standalone installation of hyfetch's neofetch fork, neowofetch
+	pkgver = 2.0.5.r2.g62b0fd9
 	pkgrel = 1
-	url = https://git.exhq.dev/neowofetch
-	arch = x86_64
-	license = GPL3
-	makedepends = go
+	url = https://github.com/hykilpikonna/hyfetch
+	arch = any
+	license = MIT
 	makedepends = git
-	depends = wmctrl
 	depends = bash
-	depends = pciutils
-	source = git+https://github.com/exhq/neOwOfetch.git
+	source = git+https://github.com/hykilpikonna/hyfetch
 	sha256sums = SKIP
 
 pkgname = neowofetch-git

@@ -1,29 +1,24 @@
-# Maintainer: ECHO <exhq@waifu.club>
-# Contributor: nea <nea@nea.moe>
+# Maintainer: A43 <arirera43 [at] gmail [dot] com>
 
-pkgbase=neowofetch-git
-pkgname=$pkgbase
-license=('GPL3')
-pkgdesc="a combination of neofetch and uwufetch written in go"
-pkgver=r37.55c749c
+_pkgname='neowofetch'
+pkgname="$_pkgname-git"
+license=('MIT')
+pkgdesc="Standalone installation of hyfetch's neofetch fork, neowofetch"
+pkgver=2.0.5.r2.g62b0fd9
 pkgrel=1
-url="https://git.exhq.dev/neowofetch"
-depends=(wmctrl)
-makedepends=(go git)
-arch=('x86_64')
-source=("git+https://github.com/exhq/neOwOfetch.git")
+url="https://github.com/hykilpikonna/hyfetch"
+makedepends=('git')
+depends=('bash')
+arch=('any')
+source=("git+https://github.com/hykilpikonna/hyfetch")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $srcdir/neOwOfetch
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-build() {
-	cd $srcdir/neOwOfetch
-	go build .
+  cd "hyfetch"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-	install -Dm755 $srcdir/neOwOfetch/neowofetch $pkgdir/usr/bin/neowofetch
+	install -Dm755 "$srcdir/hyfetch/neofetch" "$pkgdir/usr/bin/neowofetch"
+	install -Dm644 "$srcdir/hyfetch/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
