@@ -1,0 +1,4 @@
+fastapi-sso/
+pkg/
+python-fastapi-sso-git*.pkg.tar*
+src/
