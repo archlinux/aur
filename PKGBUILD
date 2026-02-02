@@ -1,9 +1,9 @@
 # Maintainer: zoeyrae <zoey.ronain at gmail dot com>
 # Contributor: Rasmus Moorats <xx+aur@nns.ee>
 _java=21
-_java_minor=12.1
+_java_minor=8.1
 pkgname="jdk${_java}-graalvm-ee-bin"
-pkgver=21.0.8
+pkgver=21.0.10
 pkgrel=1
 pkgdesc="Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java ${_java} version"
 arch=('x86_64'
@@ -19,8 +19,8 @@ provides=("java-runtime=${_java}"
 options=('staticlibs'
 	'!debug')
 install="$pkgname.install"
-sha256sums_x86_64=('c8035b3ce6e45f1481752c6b38153bb4a53eeb477c5345d5bec5ca44ed18a056')
-sha256sums_aarch64=('aa1100beb3377717a0ba1937e51878c48917615922a36c4508baf46927a9a6e4')
+sha256sums_x86_64=('5607d35ad56ca484030667e885e3170b43c879754f218f463f94e791b747b7fd')
+sha256sums_aarch64=('c63f98f0bc9825382d1334beffef6eda97dff41e8cd3bcb0972b0ad5f1e48944')
 source_x86_64=("https://download.oracle.com/graalvm/${_java}/archive/graalvm-jdk-${pkgver}_linux-x64_bin.tar.gz")
 source_aarch64=("https://download.oracle.com/graalvm/${_java}/archive/graalvm-jdk-${pkgver}_linux-aarch64_bin.tar.gz")
 

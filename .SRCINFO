@@ -1,6 +1,6 @@
 pkgbase = jdk21-graalvm-ee-bin
 	pkgdesc = Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java 21 version
-	pkgver = 21.0.8
+	pkgver = 21.0.10
 	pkgrel = 1
 	url = https://www.graalvm.org/
 	install = jdk21-graalvm-ee-bin.install
@@ -14,9 +14,9 @@ pkgbase = jdk21-graalvm-ee-bin
 	provides = java-environment-openjdk=21
 	options = staticlibs
 	options = !debug
-	source_x86_64 = https://download.oracle.com/graalvm/21/archive/graalvm-jdk-21.0.8_linux-x64_bin.tar.gz
+	source_x86_64 = https://download.oracle.com/graalvm/21/archive/graalvm-jdk-21.0.10_linux-x64_bin.tar.gz
 	sha256sums_x86_64 = c8035b3ce6e45f1481752c6b38153bb4a53eeb477c5345d5bec5ca44ed18a056/a
-	source_aarch64 = https://download.oracle.com/graalvm/21/archive/graalvm-jdk-21.0.8_linux-aarch64_bin.tar.gz
+	source_aarch64 = https://download.oracle.com/graalvm/21/archive/graalvm-jdk-21.0.10_linux-aarch64_bin.tar.gz
 	sha256sums_aarch64 = aa1100beb3377717a0ba1937e51878c48917615922a36c4508baf46927a9a6e4
 
 pkgname = jdk21-graalvm-ee-bin
