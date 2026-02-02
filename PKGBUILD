@@ -4,7 +4,7 @@ pkgname=v2rayn
 _pkgname=v2rayN
 pkgver=7.17.3
 _bin_commit=65a63f0737d48cd465b985ac51d14557f8618939
-pkgrel=2
+pkgrel=3
 pkgdesc="A GUI client supporting Xray core, sing-box core and other cores"
 arch=('x86_64' 'aarch64')
 url="https://github.com/2dust/v2rayN"
@@ -42,6 +42,8 @@ prepare() {
 
 build() {
     cd "${srcdir}/${_pkgname}/${_pkgname}"
+    dotnet clean ./v2rayN.Desktop/v2rayN.Desktop.csproj \
+        --configuration Release
     dotnet publish ./v2rayN.Desktop/v2rayN.Desktop.csproj \
         -p:DebugType=None \
         --configuration Release \
