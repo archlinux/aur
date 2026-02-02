@@ -40,6 +40,7 @@ build() {
 
 package() {
     install -Dm644 "$srcdir/$pkgname/sh.natty.Wleave.desktop" "$pkgdir/usr/share/applications/sh.natty.Wleave.desktop"
+    install -Dm644 "$srcdir/$pkgname/wleave.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/wleave.svg"
 
     install -Dm755 "$srcdir/$pkgname/target/release/wleave" "$pkgdir/usr/bin/wleave"
     install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
