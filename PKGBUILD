@@ -8,6 +8,7 @@ url="https://github.com/holesail/holesail"
 license=('AGPL-3.0-only')
 depends=('nodejs')
 makedepends=('npm')
+options=('!strip')
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
 sha256sums=('5227fda317be5f85acabe4bc714c75559668b58417c80644a1261d0042d998ae')
