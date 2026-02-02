@@ -3,7 +3,7 @@
 
 pkgname=arch-wiki-cli
 pkgver=0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Search the arch wiki from the cli"
 arch=('any')
 url="https://github.com/deadhead420/arch-wiki"
