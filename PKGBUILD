@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=zen-adblocker
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 _nodeversion=22
 pkgdesc="Simple, free and efficient ad-blocker and privacy guard"
@@ -24,7 +24,7 @@ makedepends=(
 )
 source=("git+https://github.com/ZenPrivacy/zen-desktop.git#tag=v$pkgver"
         "$pkgname.desktop")
-sha256sums=('d829344d489bf1fc4b32fabe1785e025364df8e727d1a94982657fbff4294211'
+sha256sums=('eff427ab74af73bfb914171577a6f133de700714425313c1c0c80a4e866b32d6'
             '83ba6731812f400d32e595b893e8b1e42a8df5c32d11637976c39dad40e243cf')
 
 _ensure_local_nvm() {
@@ -48,16 +48,18 @@ prepare() {
 
 build() {
   cd zen-desktop
+  _instance_id="$(node -e 'const {randomUUID}=require("node:crypto");console.log(randomUUID());')"
   export npm_config_cache="$srcdir/npm_cache"
-  _ensure_local_nvm
   export GOPATH="$srcdir/gopath"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  _ensure_local_nvm
   wails build \
     -ldflags "-X 'github.com/ZenPrivacy/zen-desktop/internal/cfg.Version=${pkgver}' \
+      -X 'github.com/ZenPrivacy/zen-desktop/internal/constants.InstanceID=${_instance_id}' \
       -X 'github.com/ZenPrivacy/zen-desktop/internal/selfupdate.NoSelfUpdate=true'" \
     -m -skipbindings \
     -tags prod,webkit2_41 \
