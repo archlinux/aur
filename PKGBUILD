@@ -4,7 +4,7 @@
 
 _pkgname="aqua"
 pkgname="${_pkgname}-bin"
-pkgver=2.56.5
+pkgver=2.56.6
 pkgrel=1
 pkgdesc="Declarative CLI version manager"
 arch=('x86_64' 'aarch64')
@@ -34,12 +34,12 @@ source=("${_pkgsrc}-checksums.txt::${_url}/releases/download/v${pkgver}/${_pkgsr
         "${_pkgsrc}-multiple.intoto.jsonl::${_url}/releases/download/v${pkgver}/multiple.intoto.jsonl")
 source_x86_64=("${_pkgsrc}-${arch[0]}.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}_linux_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgsrc}-${arch[1]}.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}_linux_${_barch[1]}.tar.gz")
-sha256sums=('daafafd7683ba5484aa970727ba62979688f429b81f06c1948d6b6bcb3cc4308'
-            '676ae243cf365c94623a520da20154c2af00fec292a11f92d7a047010f059e79'
-            '1fa5849cd2ffc4f769e385430e1ad94a0a358e6dc56a604e9843b4f4cb27ddcc'
-            '02d8c7d96f871d93a0be283c47ba34b177d8f5f6758584f9dc057eced6ed7f56')
-sha256sums_x86_64=('9c21a5f54759bffce6ff7ba424ce85ed1415928c05c930bea5c03f82150ab6f6')
-sha256sums_aarch64=('68f80352abd7fd9e6f3afd3d0562affba40d395c30864f51adc6955fbb96caf1')
+sha256sums=('9eb12318805ffb7b3bf338cfdf9a424e3049e623bef6662afd263c9e18789bab'
+            '30d643737ed1bfab7d899c2fe3789dccc27bed76311a2f9c5b5d067584b4c837'
+            '1e01347e23038c60b503171f9fc9eea623ad1d484bbbff8fd52b2c38a6e480cb'
+            '2d2c2c9a524ed6f57895f4cbe43fd00dff9bd9ffd8292a6c3e58245907f43b67')
+sha256sums_x86_64=('f6ffd22e02e6d454ab2699a03b70b7f9b8ae5aaa0d84405592db3c6a3c48c19a')
+sha256sums_aarch64=('47e098b62d1794956026ba4bd56be3fa0772074576747463b03ccea4825952d6')
 
 verify() {
   export COSIGN_EXPERIMENTAL=true
