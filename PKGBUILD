@@ -1,6 +1,6 @@
 # Maintainer: BitYoungjae <bityoungjae@github.com>
 pkgname=garak
-pkgver=1.0.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="GTK4 MPRIS popup widget for Waybar"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gjs' 'gtk4' 'gtk4-layer-shell' 'playerctl')
 makedepends=('nodejs')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a0810e54117ce67c9b9eeb558ca45daaa49f154ca2d1c2b59b71ae55e114c5c4')
+sha256sums=('b843fe655e7e5d7fbc0d4b25ad20c470d68845b8fdbb8bc25c7384756e3a03d9')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -21,7 +21,7 @@ package() {
   cd "$pkgname-$pkgver"
 
   # Install the main script
-  install -Dm755 "bin/mpris-popup" "$pkgdir/usr/bin/garak"
+  install -Dm755 "bin/garak" "$pkgdir/usr/bin/garak"
 
   # Install the bundled JavaScript
   install -Dm644 "dist/main.js" "$pkgdir/usr/lib/$pkgname/main.js"
