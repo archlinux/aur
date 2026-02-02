@@ -7,12 +7,12 @@
 pkgname=libfprint-2-tod1-elan
 _pkgdirname=libfprint-2-tod1-elan
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Proprietary driver for the Elan/Lenovo 04fe:0c4b fingerprint reader, from Lenovo E14 Gen 4 Ubuntu driver."
 arch=(x86_64)
 url="https://download.lenovo.com/pccbbs/mobiles/r1sle01w.zip"
 license=(custom)
-depends=(libfprint-tod)
+depends=(libfprint-tod libcrypto.so=1.1)
 makedepends=(git)
 checkdepends=()
 optdepends=()
