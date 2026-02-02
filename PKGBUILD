@@ -2,7 +2,7 @@
 # Contributor: Raansu
 # Contributor: Lance G. <Gero3977@gmail.com>
 pkgname=postybirb-plus
-pkgver=3.1.65
+pkgver=3.1.67
 _electronversion=19
 _nodeversion=16
 pkgrel=1
@@ -21,12 +21,13 @@ makedepends=(
     'git'
     'gendesk'
     'yarn'
+    'jq'
 )
 source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('f074026cd3083673ba1479cacb8736f81c08706bc814580b45bb2547bbf162f6'
+sha256sums=('f0d1bf2628f7ac2f1fcd5dd577fcde8a2509d1a4ec9415b2a549e5b2910537ba'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -35,8 +36,9 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver="$(grep -m 1 '"electron":' "${srcdir}/${pkgname}-${pkgver}/electron-app/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname}-${pkgver}/electron-app/package.json" | tr -d '^')
+    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
+    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
