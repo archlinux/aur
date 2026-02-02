@@ -1,0 +1,16 @@
+pkgbase = rsfetch-gustafeden-bin
+	pkgdesc = Fast system fetch display for your terminal
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/gustafeden/rsfetch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = rsfetch
+	conflicts = rsfetch
+	source_x86_64 = rsfetch-gustafeden-bin-0.3.0-x86_64.tar.gz::https://github.com/gustafeden/rsfetch/releases/download/v0.3.0/rsfetch-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 49889500dd44c33c44cd517c532eb6e0d741c49140fb47a27deb6ef27fc8bfba
+	source_aarch64 = rsfetch-gustafeden-bin-0.3.0-aarch64.tar.gz::https://github.com/gustafeden/rsfetch/releases/download/v0.3.0/rsfetch-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = dc4bd91cc2caf04a4840eeae041eceaebc05d8233807cd04fbc3cf74be7f1cea
+
+pkgname = rsfetch-gustafeden-bin
