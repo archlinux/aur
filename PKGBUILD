@@ -13,19 +13,19 @@
 # Originally based on a Debian Squeeze package
 
 pkgname=zoneminder
-pkgver=1.36.37
+pkgver=1.38.0
 pkgrel=1
 pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system'
 arch=('any')
 url='https://zoneminder.com/'
-license=('GPL-2.0-only')
+license=('GPL-2.0-only AND MIT')
 depends=('ffmpeg' 'libvlc' 'polkit'
          'php-apcu' 'php-fpm' 'php-gd'
          'perl-archive-zip' 'perl-data-dump' 'perl-date-manip' 'perl-datetime' 'perl-dbd-mysql' 'perl-device-serialport' 'perl-file-slurp'
          'perl-image-info' 'perl-libwww' 'perl-mime-lite' 'perl-mime-tools' 'perl-net-sftp-foreign' 'perl-number-bytes-human' 'perl-php-serialization'
          'perl-sys-cpu' 'perl-sys-meminfo' 'perl-sys-mmap' 'perl-uri-encode'
          # ONVIF
-         'libvncserver' 'perl-data-uuid' 'perl-io-interface' 'perl-io-socket-multicast' 'perl-soap-wsdl' 'perl-xml-libxml' 'perl-xml-parser'
+         'gsoap' 'libvncserver' 'mosquitto' 'perl-data-uuid' 'perl-io-interface' 'perl-io-socket-multicast' 'perl-soap-wsdl' 'perl-xml-libxml' 'perl-xml-parser'
          # TLS
          'perl-lwp-protocol-https'
          # Telemetry
@@ -33,7 +33,7 @@ depends=('ffmpeg' 'libvlc' 'polkit'
          # Encryption
          'perl-crypt-eksblowfish' 'perl-data-entropy'
          # JSON Web Token API
-         'libjwt2')
+         'nlohmann-json')
 makedepends=('cmake')
 optdepends=('mariadb'
             'apache'
@@ -48,17 +48,19 @@ backup=("etc/nginx/sites-available/${pkgname}.conf"
         "etc/php/conf.d/${pkgname}.ini")
 install=${pkgname}.install
 source=("https://github.com/ZoneMinder/zoneminder/archive/refs/tags/${pkgver}.tar.gz"
-        'https://github.com/ZoneMinder/CakePHP-Enum-Behavior/archive/refs/tags/1.0-zm.tar.gz'
-        'https://github.com/FriendsOfCake/crud/archive/refs/tags/v3.2.0.tar.gz'
-        'https://github.com/ZoneMinder/RtspServer/archive/eab32851421ffe54fec0229c3efc44c642bc8d46.zip'
+        'https://github.com/FriendsOfCake/crud/archive/v3.2.0.tar.gz'
+        'https://github.com/ZoneMinder/CakePHP-Enum-Behavior/archive/1.0-zm.tar.gz'
+        'https://github.com/ZoneMinder/RtspServer/archive/24e6b7153aa561ecc4123cc7c8fc1b530cde0bc9.tar.gz'
+        'https://github.com/chmike/CxxUrl/archive/eaf46c0207df24853a238d4499e7f4426d9d234c.tar.gz'
         'zoneminder-nginx.conf'
         'zoneminder-httpd.conf'
         'zoneminder-php.ini'
         'fcgiwrap-multiwatch.service')
-b2sums=('10d57b6e7e41f56204f3f52145e579ac62f7de00da73325a548de0ceb5e4251450d5985f3f47184e831ce0f31bfb6605f25bef997f7ab08edc8b342893d383cd'
-        '7d5b18e1a7a21c967128745591870cd5bf5b380c55a62f7c465f7cf1fd718961fb392b5bc80c941bf9a9819e7c87829ca6217d19505c655ffdc859e50662659c'
+b2sums=('d674e162eb4e2c97fa6e719ab1a5f247166a4b0226e29b00240ff11c4789ef5eae82b6882d2884ecaf80e5899aac015e1827cf53512d0da8ea68524704b8d8a0'
         'a6d2c6960515f5b3402c306eb28710d00abce19d07a38a76a841928b69573cb30608f50e7ad458dd8771bb9267e56df68c1037019abb7b5eec4d990a33f9c234'
-        '89f9aeb88d06cad19d1a6d9c223b8291ad486f605bc87d939120d64524a85f2d8a07a0f23c9877833a6fdf03da84b20394e4f2a61c742a6669b6fae03c8af599'
+        '7d5b18e1a7a21c967128745591870cd5bf5b380c55a62f7c465f7cf1fd718961fb392b5bc80c941bf9a9819e7c87829ca6217d19505c655ffdc859e50662659c'
+        '79fc6560c09127b6b9e0af7ffaaac7180882a0798abb5238fd824470f41921ab47e22e3f55c24f7ad79f0a03c722e42a5720cf633835e9e326ae7666f07b6bbc'
+        'fedbb69dd0ed76b07ee8c62de116067dad392614423b5f83c5395ee5de609fedbee2eb4cca0f31dab1c5f4551a4c2ff0e3ac356c7f93f292aad8332e1ab1a0fe'
         '3886117b5471ab62a291a6d068f2bc168c1467da512a68b049a02046ab15ced1078cd96e342222ff8393858ce206ed03fe102b09db4534b97bd3b95d76c3e8cd'
         '9ce42fe44f2c3c1a1b205d36e08e0703519d3bf955c14538171f4b9eabfeae8847fda37b53bfded8e371e6765ef9ecc6a59d3a719ddc1b0acf4f486a925ed6ba'
         'd29126e6bb733a9655573e5e2f1934d248f47d301361dbf4a4b1db67bea1c244d3a902f3d4d3aecca7de64c39eeca88803bde72740bc805163c790a6dbd13a54'
@@ -75,16 +77,17 @@ prepare () {
     sed -i 's|Requires=mysqld.service httpd.service|Wants=mysqld.service httpd.service nginx.service|g' misc/${pkgname}.service.in
 
     # Move third-party plugins into place
-    mv ../CakePHP-Enum-Behavior-1.0-zm/* web/api/app/Plugin/CakePHP-Enum-Behavior
     mv ../crud-3.2.0/* web/api/app/Plugin/Crud
-    mv ../RtspServer-eab32851421ffe54fec0229c3efc44c642bc8d46/* dep/RtspServer
+    mv ../CakePHP-Enum-Behavior-1.0-zm/* web/api/app/Plugin/CakePHP-Enum-Behavior
+    mv ../RtspServer-24e6b7153aa561ecc4123cc7c8fc1b530cde0bc9/* dep/RtspServer
+    mv ../CxxUrl-eaf46c0207df24853a238d4499e7f4426d9d234c/* dep/CxxUrl
 }
 
 build() {
     cd ${pkgname}-${pkgver}
 
     cmake -DCMAKE_INSTALL_PREFIX=/usr \
-          -DLIBJWT_LIBRARY=/usr/lib/libjwt.so \
+          -DENABLE_INSTALL=OFF \
           -DZM_CONFIG_DIR=/etc/${pkgname} \
           -DZM_CONFIG_SUBDIR=/etc/${pkgname}/conf.d \
           -DZM_RUNDIR=/run/${pkgname} \
@@ -104,6 +107,10 @@ package() {
     cd ${pkgname}-${pkgver}
 
     make DESTDIR=${pkgdir} install
+
+    # Remove static cruft
+    rm -r ${pkgdir}/usr/cmake
+    rm -r ${pkgdir}/usr/include
 
     # Create ZM_LOGDIR
     install -dm755 -o http -g http                              ${pkgdir}/var/log/${pkgname}
@@ -150,4 +157,9 @@ package() {
 
     # database schemas
     install -Dm644 db/zm*.sql                                   ${pkgdir}/usr/share/${pkgname}/db
+
+    # licenses
+    install -Dm644 web/api/app/Plugin/Crud/LICENSE.txt          ${pkgdir}/usr/share/licenses/${pkgname}/Crud
+    install -Dm644 dep/RtspServer/LICENSE                       ${pkgdir}/usr/share/licenses/${pkgname}/RtspServer
+    install -Dm644 dep/CxxUrl/LICENSE                           ${pkgdir}/usr/share/licenses/${pkgname}/CxxUrl
 }
