@@ -2,7 +2,7 @@
 # Contributor: zoeyrae <zoey.ronain at gmail dot com>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=amazon-corretto-25-bin
-pkgver=25.0.1.9.1
+pkgver=25.0.2.10.1
 pkgrel=1
 pkgdesc='No-cost, multiplatform, production-ready distribution of OpenJDK'
 arch=('x86_64')
@@ -21,7 +21,7 @@ package() {
   cp -a "amazon-corretto-$pkgver-linux-x64" "$pkgdir/usr/lib/jvm/java-25-amazon-corretto"
 }
 
-sha256sums=('8c1c0da1de121ce3570c5c84f92bf13cbc5a294a1fb0bb694dfa7e408d0af228'
+sha256sums=('313e9921e573cf28a4876ab039d56b3a142e7b1b1e847b0dddd170b8dee80387'
             'SKIP')
 # vim:set ts=2 sw=2 et:
 
