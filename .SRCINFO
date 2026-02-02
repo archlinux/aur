@@ -1,6 +1,6 @@
 pkgbase = weakauras-companion-bin
 	pkgdesc = A cross-platform application built to provide the missing link between Wago.io and World of Warcraft.
-	pkgver = 5.2.10
+	pkgver = 5.3.0
 	pkgrel = 1
 	url = https://github.com/WeakAuras/WeakAuras-Companion
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = weakauras-companion-bin
 	depends = libdrm
 	depends = gdk-pixbuf2
 	depends = gtk3
-	source = https://github.com/WeakAuras/WeakAuras-Companion/releases/download/v5.2.10/weakauras-companion_5.2.10_amd64.deb
-	sha512sums = 89ec422341e482fe3c3b7cc39a5c6bbabef0a8c187a51a397b03465c0d1cf9b7b080a996222606edf749ca6299fb6579b5632a8edd6bb81d1744acf357c4e0cd
+	source = https://github.com/WeakAuras/WeakAuras-Companion/releases/download/v5.3.0/weakauras-companion_5.3.0_amd64.deb
+	sha512sums = ed0664ca17619f1093bd4e923d8dfb1a1118fc235555dce72623078e9ce37015dd812145f02701fb6d63ea51574c21c462975ff5f54630268f314c7bab6df90a
 
 pkgname = weakauras-companion-bin
