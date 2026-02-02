@@ -1,5 +1,5 @@
 pkgbase = mem-c
-	pkgdesc = mem-c is a simple memory allocator using a heap data structure with the mmap Linux syscall for dynamic memory management. It has a worst-case search time of O(n * log n) and averages O(log n). The allocator supports memory pagination, chunk merging, and plans for advanced features like garbage collection and arenas.
+	pkgdesc = mem-c is a simple memory allocator using a heap data structure with the mmap Linux syscall for dynamic memory management. It has a worst-case search time of O(n * log n) and averages O(log n).
 	pkgver = 1.0.1
 	pkgrel = 2
 	url = https://github.com/alecksandr26/mem-c/archive/refs/tags/v1.0.1.tar.gz
