@@ -18,6 +18,6 @@ pkgbase = ecss-elph-bin
 	provides = ecss-elph
 	conflicts = ecss-elph
 	source = https://archive.eltex.org/ssw/jammy/elph/pool/main/e/ecss-elph/ecss-elph_2.14.0.156_amd64.deb
-	sha256sums = 5e69796720c2ca978b6c3491f646ddaa06e130c5eaf68eeca76095e3ee01c0f8
+	sha256sums = 211078226deb5ea796ce5d081627a9ef13c1b8ca5656b218d87ca76b3dd8135c
 
 pkgname = ecss-elph-bin
