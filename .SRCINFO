@@ -20,7 +20,7 @@ pkgbase = fcitx5-vmk-git
 	depends = systemd-libs
 	provides = fcitx5-vmk
 	conflicts = fcitx5-vmk
-	source = git+https://github.com/nhktmdzhg/VMK.git
+	source = git+https://github.com/nhktmdzhg/VMK.git#branch=dev
 	source = git+https://github.com/BambooEngine/bamboo-core.git
 	sha256sums = SKIP
 	sha256sums = SKIP
