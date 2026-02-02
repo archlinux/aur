@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cine
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Video Player for Linux"
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=(
   'meson'
 )
 source=("Cine-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e4c15c3979ed4f7a495637111692e294bd899b0fa105d4413f7a52e7cc4dec5e')
+sha256sums=('57c31eaf04c4707fe42c483050a86cf16e44415f501613b98378b0d80f01991c')
 
 build() {
   arch-meson "Cine-$pkgver" build
