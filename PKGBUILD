@@ -1,4 +1,4 @@
-# Maintainer: Mark Wells <contact@markwells.dev>
+# Maintainer: Mark Wells <contact at markwells dot dev>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=keeper-secrets-manager-cli
 pkgver=1.2.0
