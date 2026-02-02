@@ -4,7 +4,7 @@
 # Contributor: yochananmarqos
 
 pkgname=notepadnext
-pkgver=0.12
+pkgver=0.13
 pkgrel=1
 pkgdesc="Cross-platform reimplementation of Notepad++"
 arch=('x86_64')
@@ -20,13 +20,13 @@ source=("$pkgname::git+$url#tag=v$pkgver"
     'git+https://gitlab.freedesktop.org/uchardet/uchardet.git/'
     'missing_stdlib_hdr.patch')
 
-sha256sums=('1ece102a395ac1c20da55bda35fa9aed3b96ff30410b7e93190e2fac28f9d5a4'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'fc13d8633f55957aad51218548c622a51ada3002a6fcdffeaea00cd5708c1b4a')
+sha256sums=('f733d07021b27e9fa801e99a17f8af1a1f5fd25226c443045381c5f2b0ed0931'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'fc13d8633f55957aad51218548c622a51ada3002a6fcdffeaea00cd5708c1b4a')
 
 prepare() {
     cd "${srcdir}/${pkgname}"
