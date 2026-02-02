@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=actual-bin
 _pkgname=Actual
-pkgver=26.1.0
-_electronversion=38
+pkgver=26.2.0
+_electronversion=39
 pkgrel=1
 pkgdesc="A local-first personal finance tool. It is 100% free and open-source, written in NodeJS, it has a synchronization element so that all your changes can move between devices without any heavy lifting.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -25,8 +25,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-x86_64.AppImage")
 sha256sums=('71e4b3053e4622e1f5fc5d8aa5336350de32ead39247924c596d659b89b47b6f'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('9374d9d380ba80e8dc9efd6a8dcf57cca3c26fa48df8ff19af52fd78826a9269')
-sha256sums_x86_64=('a3c6726099110eff8a078060241156138506baa5ba2c4da28f7e564e7460780a')
+sha256sums_aarch64=('07fe5c1424a03f858eb36680ca0bd7a5d3944e6b7091cd117218ab421b3aefdc')
+sha256sums_x86_64=('2daf434afae8278ba11a8495881626df0546bdbeecfafb95bef0b8c860925b1b')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
