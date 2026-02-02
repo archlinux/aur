@@ -1,6 +1,6 @@
 # Maintainer: Bill Sideris <bill88t@feline.gr>
 pkgname=gpmaster
-pkgver=1.1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="GPG-backed lockbox for secrets management"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel')
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/bill88t/gpmaster/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('6811a1f880866985ba9fb6867d5fdec6f367ca9e46bc943a2e875586cec1f83c')
+sha256sums=('c50dc12cc223b5969dc41958ec221d40f51ad4e1bba34a1fce43d65cdad73e3f')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
