@@ -5,7 +5,7 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-libunistring
-pkgver=1.3
+pkgver=1.4.1
 pkgrel=1
 arch=('any')
 pkgdesc="Library for manipulating Unicode strings and C strings (Android ${_android_arch})"
@@ -16,11 +16,9 @@ depends=('android-ndk'
          "android-${_android_arch}-libiconv")
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://ftp.gnu.org/gnu/libunistring/libunistring-${pkgver}.tar.xz"{,.sig})
-validpgpkeys=('462225C3B46F34879FC8496CD605848ED7E69871'  # Daiki Ueno <ueno@unixuser.org>
-              '9001B85AF9E1B83DF1BDA942F5BE8B267C6A406D') # Bruno Haible (Open Source Development) <bruno@clisp.org>
-md5sums=('57dfd9e4eba93913a564aa14eab8052e'
-         'SKIP')
+source=("https://ftp.gnu.org/gnu/libunistring/libunistring-${pkgver}.tar.xz")
+validpgpkeys=('462225C3B46F34879FC8496CD605848ED7E69871')
+md5sums=('7419fcbca7c0b29d3b218a09a15cbc76')
 
 build() {
     cd "${srcdir}/libunistring-${pkgver}"
@@ -40,4 +38,6 @@ package() {
     rm -r "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
