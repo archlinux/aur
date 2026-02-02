@@ -1,0 +1,4 @@
+# Enable bartender status bar by default
+# Users can override by creating ~/.config/systemd/user-preset/*.preset
+# or by running: systemctl --user disable bartender.service
+enable bartender.service

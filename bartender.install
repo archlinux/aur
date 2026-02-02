@@ -1,39 +1,41 @@
 post_install() {
+    # Apply systemd preset to enable bartender for the installing user
+    # This runs as the user via makepkg, so --user works correctly
+    if systemctl --user daemon-reload 2>/dev/null; then
+        systemctl --user preset bartender.service 2>/dev/null || true
+    fi
+
     cat << 'EOF'
 
 ==> Bartender installed successfully!
 
-CONFIGURATION
--------------
-1. Create your configuration directory:
-   mkdir -p ~/.config/bartender
+AUTOSTART
+---------
+Bartender is enabled by default and will start automatically on login.
 
-2. Copy and edit the example config:
-   cp /usr/share/doc/bartender-git/README.md ~/.config/bartender/
+To start it now (without logging out):
+   systemctl --user start bartender.service
 
-3. Create your .env file with API credentials:
-   cat > ~/.config/bartender/.env << 'ENVEOF'
-   # FreshRSS API (required for feed widget)
-   FRESHRSS_API_URL=https://your-freshrss-instance.com/api/greader.php/reader/api/0/stream/contents/reading-list
-   FRESHRSS_AUTH_TOKEN=your_auth_token_here
+To disable autostart:
+   systemctl --user disable bartender.service
 
-   # Audio card number (default: 3)
-   AUDIO_CARD=3
-   ENVEOF
+CONFIGURATION (optional)
+------------------------
+Create ~/.config/bartender/config.toml to customize settings.
+See /usr/share/doc/bartender-git/README.md for configuration options.
 
-4. IMPORTANT: Protect your credentials:
-   chmod 600 ~/.config/bartender/.env
+For widgets requiring API credentials (like FreshRSS), add them to config.toml:
+   [freshrss]
+   api_url = "https://your-instance.com/api/..."
+   auth_token = "your_token_here"
 
-STARTING BARTENDER
-------------------
-Enable and start the systemd service:
-   systemctl --user enable --now bartender.service
+IMPORTANT: Protect your config file:
+   chmod 600 ~/.config/bartender/config.toml
 
-This will automatically stop waybar and mako if they're running as services.
-
-To switch back to waybar/mako, simply stop bartender:
-   systemctl --user stop bartender.service
-   systemctl --user start waybar.service mako.service
+NOTE
+----
+Bartender will automatically stop waybar and mako if they're running as services.
+To switch back: systemctl --user stop bartender && systemctl --user start waybar mako
 
 EOF
 }
@@ -65,6 +67,9 @@ EOF
 }
 
 post_upgrade() {
+    # Reload systemd to pick up any service file changes
+    systemctl --user daemon-reload 2>/dev/null || true
+
     cat << 'EOF'
 
 ==> Bartender upgraded!

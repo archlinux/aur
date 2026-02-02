@@ -67,8 +67,9 @@ package() {
     cp -r utils "$pkgdir/usr/share/bartender/"
     cp app.tsx Bar.tsx "$pkgdir/usr/share/bartender/"
 
-    # Install systemd user service
+    # Install systemd user service and preset (auto-enables on install)
     install -Dm644 "$srcdir/../bartender.service" "$pkgdir/usr/lib/systemd/user/bartender.service"
+    install -Dm644 "$srcdir/../50-bartender.preset" "$pkgdir/usr/lib/systemd/user-preset/50-bartender.preset"
 
     # Install license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
