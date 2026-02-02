@@ -1,6 +1,6 @@
 # Maintainer: Natty4 <natty.sh.git at gmail dot com>
 pkgname="wleave-git"
-pkgver=0.6.2.r14.gd0e355f
+pkgver=0.7.1.r1.g1def4ac
 pkgrel=1
 pkgdesc="A Wayland-native logout menu, fork of Wlogout"
 arch=("x86_64")
