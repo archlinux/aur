@@ -5,7 +5,7 @@ pkgname=${_pkgname,,}-bin
 pkgdesc="Minimalist personal finance tracker for Linux desktop"
 
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 _pkgvername=v${pkgver}
 _pkgrealversion=1.1.6
 
@@ -24,8 +24,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.deb::${url}/releases/download/${_pkgvername}/spent_${_pkgrealversion}_${_barch[0]}.deb")
 sha256sums=('c4215762b499abb4cf9674a5653c08691bbed2fbcad74441971069d0364485fe'
-            '039d45f02015c1bcd91fe4f8f64afe66920c6138e79c775bdb0bf1cf3aa09543')
-sha256sums_x86_64=('49fae44ad3c9344e92a97e34f4da61eb6d7467d43509bffc686c9aaf768dc73e')
+            '41b3fb88556e0b6a74c57368b62611bcd8b79a64b061ddf522cb0bb78209acb8')
+sha256sums_x86_64=('f6d2547797db887dbf8d28386a4a5425da0776d2504a5d1a3a7973404cbe07df')
 
 
 package() {
