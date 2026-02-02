@@ -1,6 +1,6 @@
-pkgbase = reelvault-git
+pkgbase = reelvault
 	pkgdesc = Browse and launch your local film collection
-	pkgver = 0.0.0.r4.g379983f
+	pkgver = 0.0.0.r0.g0000000
 	pkgrel = 1
 	url = https://github.com/rabfulton/reelvault
 	arch = x86_64
@@ -13,9 +13,7 @@ pkgbase = reelvault-git
 	depends = sqlite
 	depends = curl
 	depends = json-c
-	provides = reelvault
-	conflicts = reelvault
 	source = reelvault::git+https://github.com/rabfulton/reelvault.git
 	sha256sums = SKIP
 
-pkgname = reelvault-git
+pkgname = reelvault
