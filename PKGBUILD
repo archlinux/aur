@@ -2,7 +2,7 @@
 # Maintainer: Puru <east5330021@gmail.com>
 # Contributor: Puru <east5330021@gmail.com>
 pkgname=cubic-bin
-pkgver=2026.01.99
+pkgver=2026.01.100
 pkgrel=1
 pkgdesc="Wizard to create a customized Ubuntu Live ISO image. Cubic (Custom Ubuntu ISO Creator) is a GUI wizard to create a customized Live ISO image for Ubuntu and Debian based distributions."
 arch=('any')
@@ -11,9 +11,9 @@ license=('GPL-3.0-or-later')
 depends=('bash-completion' 'binwalk>=2.1.1' 'cdrtools' 'gtksourceview3' 'gtksourceview4' 'hicolor-icon-theme' 'mkinitcpio' 'libisoburn>=1.4.8' 'polkit>=124' 'python>=3.6.' 'python-gobject' 'python-magic>=0.4.15' 'python-packaging>=17.1' 'python-pydbus>=0.6.0' 'python-pyicu>=1.9.8' 'qemu-audio-jack' 'rsync' 'squashfs-tools' 'syslinux>=6.03' 'python-argcomplete' 'python-pexpect' 'python-pyinotify' 'python-yaml' 'vte3' 'dpkg')
 options=('!strip' '!emptydirs')
 install=cubic-bin.install
-source=("https://ppa.launchpadcontent.net/cubic-wizard/release/ubuntu/pool/main/c/cubic/cubic_2026.01.99-release~202601182109~ubuntu24.04.1_all.deb"
+source=("https://ppa.launchpadcontent.net/cubic-wizard/release/ubuntu/pool/main/c/cubic/cubic_2026.01.100-release~202601240408~ubuntu24.04.1_all.deb"
 cubic_wizard.patch)
-sha512sums=('661901bd7ce180b2c7696c55b2d38e555ad7b07e08e43169d48395302048b5246e6c2dabbde9c233d1a65d4d27c61f1290364c6b218a15b25a9e55dc233cb49c'
+sha512sums=('8d6fc22c016d0989b1367c1cfe407611dfd83d7c15503dcd3574388f0a7c25ea48bbfe5ffdffbf1cfdd4d5c55d3755d95f0bc7a4423d81528c1a80f3a44de735'
 '30b9ec2910149dbce05e084cc85acf9e9775ac65b298357a4492db2ee8e88c759cb501050c5436e9d39bd6ebe06ed6a8b78f5df66532003f7d44af1f14b1b81f')
 
 package(){
