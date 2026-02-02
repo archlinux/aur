@@ -13,7 +13,7 @@ makedepends=('git')
 
 # The binary tarball should be named: goatdkernel-${pkgver}-x86_64.tar.gz
 # Extract URL from: https://github.com/MadGoatHaz/GOATd-Kernel/releases/download/v${pkgver}/
-source=("goatdkernel-${pkgver}-x86_64.tar.gz::https://github.com/MadGoatHaz/GOATd-Kernel/releases/download/v0.2.3/goatdkernel-0.2.3-1-x86_64.tar.gz"
+source=("goatdkernel-${pkgver}-x86_64.tar.gz::https://github.com/MadGoatHaz/GOATd-Kernel/releases/download/v0.2.3/goatdkernel-0.2.3-x86_64.tar.gz"
         "git+https://github.com/MadGoatHaz/GOATd-Kernel.git#tag=v${pkgver}-${pkgrel}"
         "https://github.com/MadGoatHaz/GOATd-Kernel/releases/download/v${pkgver}-${pkgrel}/goatdkernel.png")
 sha256sums=('190bcd5f0aa4c02a8c6324b511420eaa318a4d60f1d78e8e9509319700c52caf' 'SKIP' 'SKIP')
