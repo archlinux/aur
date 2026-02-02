@@ -1,0 +1,14 @@
+pkgbase = python-vnoise
+	pkgdesc = vnoise is a pure-Python, Numpy-based, vectorized port of the noise library.
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = any
+	license = custom:MIT License
+	makedepends = python-build
+	makedepends = python-setuptools
+	makedepends = python-pytest-runner
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/v/vnoise/vnoise-0.1.0.tar.gz
+	sha256sums = 831b529bc0c035edaf65218ee5c0586f4e8255452af8f6ddf003d80e7bf9c038
+
+pkgname = python-vnoise
