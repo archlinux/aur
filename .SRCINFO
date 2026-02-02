@@ -1,0 +1,25 @@
+pkgbase = kerneldrive
+	pkgdesc = Modular Linux system control application (Ghub, Armoury Crate, Ryzen Controller)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/acedmicabhishek/KernelDrive
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	makedepends = git
+	makedepends = gcc
+	depends = gtk4
+	depends = libadwaita
+	depends = hidapi
+	depends = libdrm
+	depends = libx11
+	depends = libxrandr
+	depends = polkit
+	optdepends = ryzenadj: Ryzen CPU Power Control
+	optdepends = stress-ng: CPU Stress Testing
+	optdepends = gpu-burn-git: GPU Stress Testing
+	source = git+https://github.com/acedmicabhishek/KernelDrive
+	sha256sums = SKIP
+
+pkgname = kerneldrive
