@@ -1,7 +1,7 @@
 pkgbase = kerneldrive
 	pkgdesc = Modular Linux system control application (Ghub, Armoury Crate, Ryzen Controller)
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/acedmicabhishek/KernelDrive
 	arch = x86_64
 	license = GPL3
