@@ -7,6 +7,7 @@ pkgbase = serycade-git
 	arch = aarch64
 	license = CDDL-1.0
 	makedepends = gradle
+	makedepends = git
 	depends = libcrypt.so
 	source = git+https://codeberg.org/sery/serycade.git
 	sha256sums = SKIP
