@@ -11,9 +11,9 @@ depends=('glibc' 'gcc-libs' 'openssl' 'zlib')
 makedepends=('git')
 # Optimized for precompiled binary: 50 deps → 4 runtime libs (analyzed via ldd)
 
-# The binary tarball should be named: goatdkernel-${pkgver}-x86_64.tar.gz
-# Extract URL from: https://github.com/MadGoatHaz/GOATd-Kernel/releases/download/v${pkgver}/
-source=("goatdkernel-${pkgver}-x86_64.tar.gz::https://github.com/MadGoatHaz/GOATd-Kernel/releases/download/v0.2.3/goatdkernel-0.2.3-x86_64.tar.gz"
+# Local filename ALWAYS includes pkgrel for Arch standard compliance
+# URL NEVER includes pkgrel to match GitHub release tag structure (v${pkgver})
+source=("goatdkernel-${pkgver}-${pkgrel}-x86_64.tar.gz::https://github.com/MadGoatHaz/GOATd-Kernel/releases/download/v${pkgver}/goatdkernel-${pkgver}-x86_64.tar.gz"
         "git+https://github.com/MadGoatHaz/GOATd-Kernel.git#tag=v${pkgver}"
         "https://github.com/MadGoatHaz/GOATd-Kernel/releases/download/v${pkgver}/goatdkernel.png")
 sha256sums=('190bcd5f0aa4c02a8c6324b511420eaa318a4d60f1d78e8e9509319700c52caf' 'SKIP' 'SKIP')
