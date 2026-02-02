@@ -1,4 +1,4 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 
