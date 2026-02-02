@@ -2,7 +2,7 @@
 # Author: deadhead <deadhead3492 at gmail dot com>
 pkgname=fetchpkg
 pkgver=0.3
-pkgrel=8
+pkgrel=9
 pkgdesc="CLI frontend for pacman / AUR"
 arch=('any')
 url="https://github.com/deadhead420/fetchpkg"
@@ -14,6 +14,7 @@ md5sums=('SKIP')
 
 package() {
   cd "${srcdir}"/fetchpkg
+  sed -i 's/\.xz/\.zst/g' fetchpkg
   install -Dm755 fetchpkg "$pkgdir"/usr/bin/fetchpkg
   install -Dm644 fetchpkg.conf "$pkgdir"/etc/fetchpkg.conf
   install -Dm644 fetchpkg.png "$pkgdir"/usr/share/pixmaps/fetchpkg.png
