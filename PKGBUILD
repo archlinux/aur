@@ -1,6 +1,6 @@
 # Maintainer: ReelVault
 
-pkgname=reelvault-git
+pkgname=reelvault
 pkgver=0.0.0.r4.g379983f
 pkgrel=1
 pkgdesc="Browse and launch your local film collection"
