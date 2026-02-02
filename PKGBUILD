@@ -1,8 +1,8 @@
 # Maintainer: Birbwell <jmbirdwell.us@gmail.com>
 
 pkgname=linuxmix-git
-pkgver=0.1.4
-pkgrel=2
+pkgver=0.1.5
+pkgrel=1
 arch=(any)
 url=https://codeberg.org/Birbwell/linuxmix
 
@@ -16,7 +16,7 @@ source=(
 sha256sums=(
     SKIP
     adaf7ce12ccead24b2321d4343a638f4e9cdc82060e64f17c816278a474bf4b0
-    fa4a2d987d35b8a2b29314c70d560c26bf5672cce467df0ca29704d8f024a66b
+    ef2ea45db9b9a4eeb227848cd57df56249746d3945d93e4d0f434af24ecfa0bd
 )
 
 depends=(pipewire-pulse)

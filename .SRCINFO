@@ -1,7 +1,7 @@
 pkgbase = linuxmix-git
 	pkgdesc = Implements SteelSeries' ChatMix feature in Linux.
-	pkgver = 0.1.4
-	pkgrel = 2
+	pkgver = 0.1.5
+	pkgrel = 1
 	url = https://codeberg.org/Birbwell/linuxmix
 	install = linuxmix.install
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = linuxmix-git
 	source = linuxmix.service
 	source = 99-linuxmix.rules
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = adaf7ce12ccead24b2321d4343a638f4e9cdc82060e64f17c816278a474bf4b0
+	sha256sums = ef2ea45db9b9a4eeb227848cd57df56249746d3945d93e4d0f434af24ecfa0bd
 
 pkgname = linuxmix-git
