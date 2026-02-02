@@ -1,6 +1,6 @@
 pkgbase = toybox
 	pkgdesc = All-in-one Linux command line
-	pkgver = 0.8.12
+	pkgver = 0.8.13
 	pkgrel = 1
 	url = https://landley.net/toybox
 	arch = i686
@@ -9,7 +9,9 @@ pkgbase = toybox
 	arch = armv7h
 	license = BSD
 	depends = attr
-	source = https://landley.net/toybox/downloads/toybox-0.8.12.tar.gz
-	sha256sums = ad88a921133ae2231d9f2df875ec0bd42af4429145caea7d7db9e02208a6fd2e
+	source = https://landley.net/toybox/downloads/toybox-0.8.13.tar.gz
+	source = makefile-target-fix.patch
+	sha256sums = 9d4c124d7d731a2db399f6278baa2b42c2e3511f610c6ad30cc3f1a52581334b
+	sha256sums = 9da82384d2e641d14928385d4659bf123a6f329d4fd26dd91a09facc5d1fc7e1
 
 pkgname = toybox

@@ -1,0 +1,9 @@
+# Package files
+/*.pkg.*
+
+# Source files
+/*.tar.gz
+
+# makepkg outputs
+/pkg
+/src
