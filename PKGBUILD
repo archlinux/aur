@@ -12,7 +12,7 @@ depends=("gtk3" "libnotify" "nss" "libxss" "libxtst" "xdg-utils" "at-spi2-core" 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("https://archive.eltex.org/ssw/jammy/elph/pool/main/e/${_pkgname}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('5e69796720c2ca978b6c3491f646ddaa06e130c5eaf68eeca76095e3ee01c0f8')
+sha256sums=('211078226deb5ea796ce5d081627a9ef13c1b8ca5656b218d87ca76b3dd8135c')
 
 prepare() {
   tar -xvf data.tar.zst
