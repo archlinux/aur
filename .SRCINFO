@@ -1,13 +1,13 @@
 pkgbase = cli-stash
 	pkgdesc = Terminal UI for saving and recalling shell commands
-	pkgver = 0.2.8
+	pkgver = 0.2.9
 	pkgrel = 1
 	url = https://github.com/itcaat/cli-stash
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = go
-	source = git+https://github.com/itcaat/cli-stash.git#tag=v0.2.8
-	sha256sums = d5d6bf9cd4ea48ab585041e46593b51a0075eedd3a1f4e11e2996f254c66494f
+	source = git+https://github.com/itcaat/cli-stash.git#tag=v0.2.9
+	sha256sums = c51cc6893fbc924cf4babcd396042a9035e307ae344daf3e1371d51e777d32a2
 
 pkgname = cli-stash
