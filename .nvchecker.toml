@@ -1,0 +1,5 @@
+[alman-bin]
+source = "github"
+github = "vaibhav-mattoo/alman"
+use_latest_release = true
+prefix = "v"
