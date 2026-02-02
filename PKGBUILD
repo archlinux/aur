@@ -12,10 +12,10 @@ provides=('SwitchTube-Downloader')
 conflicts=('SwitchTube-Downloader')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.zip::https://github.com/niekdomi/SwitchTube-Downloader/releases/download/v${pkgver}/switchtube-downloader_linux_arm64.zip")
-sha256sums_aarch64=('f819d4b0c244ecd2dd920c7f2fefd1d6b07c1797393e329fd547f05900be08e7')
+sha256sums_aarch64=('d3fc7d5b97bd6f27030a07dc74aea1bd480b5832cda87cf500084f1a9463ee8c')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.zip::https://github.com/niekdomi/SwitchTube-Downloader/releases/download/v${pkgver}/switchtube-downloader_linux_amd64.zip")
-sha256sums_x86_64=('79d08d91cacce838552bb79ed5c807fdabe91a55984cf521c4b3b8d3bf1ac9d7')
+sha256sums_x86_64=('5dfe3216f2f58fec3a55a1ffc2febef31b34c19112dbc394e0e55a4d2f5b4bba')
 
 package() {
   # Install the binary, license, and documentation
