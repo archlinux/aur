@@ -1,0 +1,14 @@
+[Unit]
+Description=Soteria Polkit Authentication Agent
+After=graphical-session.target
+Wants=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/lib/soteria-polkit/soteria
+Restart=on-failure
+RestartSec=2
+Environment=GDK_BACKEND=wayland
+
+[Install]
+WantedBy=default.target
