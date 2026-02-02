@@ -3,12 +3,12 @@
 pkgname=corplink-bin
 pkgver=3.1.18
 _pkgrel=r6560_8a2fab
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux client of Feilian (veCorpLink) from Bytedance."
 arch=('x86_64')
 url="https://www.volcengine.com/product/feilian"
 license=('unknown')
-depends=('gtk3' 'libxss' 'nss' 'dnsmasq')
+depends=('gtk3' 'libxss' 'nss' 'dnsmasq' 'iw')
 optdepends=('networkmanager: NetworkManager integration')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
