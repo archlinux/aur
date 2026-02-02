@@ -3,7 +3,7 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-gettext
-pkgver=0.26
+pkgver=1.0
 pkgrel=1
 arch=('any')
 pkgdesc="GNU internationalization library (Android ${_android_arch})"
@@ -17,7 +17,7 @@ license=("GPL")
 url="http://www.gnu.org/software/gettext/"
 source=("http://ftp.gnu.org/pub/gnu/gettext/gettext-${pkgver}.tar.gz"
         "intl.pc")
-md5sums=('ee66cf742805c0027a7f3db5f2d3f7eb'
+md5sums=('4ba57b13fc49183a9b8ef6a691571a90'
          'b0a123ec7ad1a345d0d712dae986a543')
 
 build() {
