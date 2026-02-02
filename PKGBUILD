@@ -1,7 +1,7 @@
 # Maintainer: Gesh <gesh@gesh.uni.cx>
 # Contributor: JP-Ellis <josh@jpellis.me>
 
-pkgname='python-habanero'
+pkgname=python-habanero
 pkgver=2.3.0
 pkgrel=2
 _name=${pkgname#python-}
@@ -38,21 +38,21 @@ source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_
 sha256sums=('871e5d088ef641b05514d44b004af512852b309bcd0d81f10545e58d54a654ab')
 
 build() {
-    cd "${srcdir}/${_src_folder}"
+    cd "$_src_folder"
     python -m build --wheel --no-isolation
 }
 
 check() {
-    cd "${srcdir}/${_src_folder}"
+    cd "$_src_folder"
 
     python -m pytest --disable-plugin-autoload \
       -p pytest_cov -p recording
 }
 
 package() {
-    cd "${srcdir}/${_src_folder}"
-    python -m installer --destdir="${pkgdir}" dist/*.whl
-    install -Dm644 LICENSE.md -t "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+    cd "$_src_folder"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE.md -t "$pkgdir"/usr/share/licenses/"$pkgname"/
 }
 
 # vim:set ts=2 sw=2 et:
