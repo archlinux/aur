@@ -1,14 +1,14 @@
 pkgbase = zond
 	pkgdesc = Deep network reconnaissance and probing tool.
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/hollowpointer/zond
 	arch = x86_64
-	license = MIT
+	license = MPL-2.0
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
-	source = zond-0.3.3.tar.gz::https://github.com/hollowpointer/zond/archive/refs/tags/v0.3.3.tar.gz
+	source = zond-0.3.4.tar.gz::https://github.com/hollowpointer/zond/archive/refs/tags/v0.3.4.tar.gz
 	sha256sums = ef575d7a07776fe1d0f330c0334f5ef629a796e211079710dd0014d65d7d056d
 
 pkgname = zond
