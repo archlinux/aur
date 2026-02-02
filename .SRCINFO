@@ -1,6 +1,6 @@
 pkgbase = dotidx
 	pkgdesc = A declarative, multi-profile dotfile manager focused on physical isolation and manifest-based tracking.
-	pkgver = 1.0.0
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/ArielBaron/dotidx
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = dotidx
 	depends = python
 	depends = python-rich
 	depends = rsync
-	source = dotidx::git+https://github.com/ArielBaron/dotidx.git#tag=v1.0.0
+	source = dotidx::git+https://github.com/ArielBaron/dotidx.git#tag=v1.0.2
 	sha256sums = SKIP
 
 pkgname = dotidx
