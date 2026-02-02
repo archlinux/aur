@@ -5,7 +5,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libxmu
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 arch=('any')
 pkgdesc="X11 miscellaneous micro-utility library (Android ${_android_arch})"
@@ -20,7 +20,7 @@ makedepends=('android-configure'
              "android-${_android_arch}-xorg-util-macros")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://xorg.freedesktop.org//archive/individual/lib/libXmu-${pkgver}.tar.xz")
-md5sums=('532a37254137e9e1827b8eec95e79adf')
+md5sums=('1ef8065f0284e76c2238770365012ab2')
 
 build() {
     cd "${srcdir}/libXmu-${pkgver}"
