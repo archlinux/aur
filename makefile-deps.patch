@@ -1,0 +1,23 @@
+--- Makefile.orig	2015-08-10 07:17:29.000000000 +0700
++++ Makefile	2026-02-02 15:08:46.411173831 +0700
+@@ -21,16 +21,16 @@
+ sdel-lib.o: sdel-lib.c
+ 	$(CC) ${OPT} -c sdel-lib.c
+ 
+-srm: srm.c
++srm: srm.c sdel-lib.o
+ 	$(CC) ${OPT} -o srm srm.c sdel-lib.o
+ 	-strip srm
+-sfill: sfill.c
++sfill: sfill.c sdel-lib.o
+ 	$(CC) ${OPT} -o sfill sfill.c sdel-lib.o
+ 	-strip sfill
+-sswap: sswap.c
++sswap: sswap.c sdel-lib.o
+ 	$(CC) ${OPT} -o sswap sswap.c sdel-lib.o
+ 	-strip sswap
+-sdmem: smem.c
++sdmem: smem.c sdel-lib.o
+ 	$(CC) ${OPT} -o sdmem smem.c sdel-lib.o
+ 	-strip sdmem
+ 

@@ -1,0 +1,37 @@
+--- sdel-lib.c.orig	2015-08-10 07:17:29.000000000 +0700
++++ sdel-lib.c	2026-02-02 14:39:09.327889631 +0700
+@@ -83,7 +83,10 @@
+         for (loop = 0; loop < bufsize; loop++)
+             *buf++ = (unsigned char) (256.0*rand()/(RAND_MAX+1.0));
+     else
+-        fread(buf, bufsize, 1, devrandom);
++        if (fread(buf, bufsize, 1, devrandom) != 1) {
++            perror("fread");
++            exit(1);
++        }
+ }
+ 
+ void __sdel_random_filename(char *filename) {
+--- srm.c.orig	2015-08-10 07:17:29.000000000 +0700
++++ srm.c	2026-02-02 14:39:56.234862989 +0700
+@@ -66,7 +66,7 @@
+             return 1;
+ 
+     if (S_ISREG(filestat.st_mode) && filestat.st_nlink > 1) {
+-        fprintf(stderr, "Error: File %s - file is hardlinked %d time(s), skipping!\n", filename, filestat.st_nlink - 1);
++        fprintf(stderr, "Error: File %s - file is hardlinked %lu time(s), skipping!\n", filename, (unsigned long)(filestat.st_nlink - 1));
+         return -1;
+     }
+ 
+@@ -90,7 +90,10 @@
+ 	    int chdir_success = 1;
+  
+             if (verbose) printf("DIRECTORY (going recursive now)\n");
+-            getcwd(current_dir, 4096);
++            if (!getcwd(current_dir, sizeof(current_dir))) {
++                perror("getcwd");
++                return 1;
++            }
+             current_dir[4096] = '\0';
+             
+             /* a won race will chmod a file to 0700 if the user is owner/root

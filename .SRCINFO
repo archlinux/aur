@@ -1,0 +1,26 @@
+pkgbase = thc-secure-delete
+	pkgdesc = THC secure deletion tools (srm, sfill, sswap, sdmem)
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = https://github.com/gordrs/thc-secure-delete
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = gcc
+	makedepends = make
+	makedepends = patch
+	depends = glibc
+	depends = bash
+	options = !lto
+	options = !strip
+	source = thc-secure-delete-3.1.1.tar.gz::https://github.com/gordrs/thc-secure-delete/archive/refs/tags/v3.1.1.tar.gz
+	source = signal-handler-fix.patch
+	source = warnings-fix.patch
+	source = makefile-deps.patch
+	source = hardening-ldflags.patch
+	sha256sums = 228b1cfe25c1ad5dbb8237be770779b97ebd7ea9eb9db34cee4ab31cf3a8dc13
+	sha256sums = 5c22a29b6e7b0e5ccb6fb8ee214e4cc4a2141c4f2e550d5007e29030c5e0f320
+	sha256sums = 2d7edb6089a9819c681acba53a749619b44db472151142679e350167905561ea
+	sha256sums = 75d24c465349f8859ed418f760e7219de2877d259a8b4aa970c3fc433f9a2d1a
+	sha256sums = 2d115a0460107f15849d800264aa148ee4eea804041eb74074fa6734af3d0116
+
+pkgname = thc-secure-delete
