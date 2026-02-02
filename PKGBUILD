@@ -2,12 +2,12 @@
 
 pkgname=opkg
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Opkg is a lightweight package management system based upon ipkg"
 arch=('i386' 'x86_64')
 url="https://git.yoctoproject.org/cgit/cgit.cgi/opkg"
 license=('GPL')
-depends=('curl' 'libarchive' 'gpgme' 'libsolv>=0.7.14')
+depends=('curl' 'libarchive' 'gpgme' 'libsolv>=0.7.14' 'zstd')
 source=("https://git.yoctoproject.org/opkg/snapshot/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('def0d6e95b4106be074c0fce5a0caa0e8d737f21fe31fbeef1588597bad39666')
 
@@ -18,7 +18,8 @@ build() {
     ./configure --prefix=/usr \
         --sysconfdir=/etc \
         --localstatedir=/var \
-        --with-libsolv
+        --with-libsolv \
+        --enable-zstd
     make
 }
 
