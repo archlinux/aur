@@ -1,0 +1,6 @@
+update.sh
+nvchecker.toml
+version_history.json
+check_result.json
+kimi-cli-*-any.pkg.tar.zst 
+pkg
