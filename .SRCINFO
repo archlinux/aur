@@ -1,6 +1,6 @@
 pkgbase = rdiff-backup-fs
 	pkgdesc = A FUSE filesystem for accessing rdiff-backup archives.
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://code.google.com/archive/p/rdiff-backup-fs
 	arch = i686
@@ -10,9 +10,7 @@ pkgbase = rdiff-backup-fs
 	arch = aarch64
 	license = GPLv3
 	depends = fuse2
-	source = rdiff-backup-fs-1.0.1.tar.gz::https://github.com/rdiff-backup/rdiff-backup-fs/archive/v1.0.1.tar.gz
-	source = gcc15.patch
-	sha256sums = fc1209896321e451a25e2ee389c2bab9d0be1cfee2c827b2f119200c67c0ad41
-	sha256sums = e319231735e45c98997347a5c06642623cf34e108c27f760df49324916945a8d
+	source = rdiff-backup-fs-1.0.2.tar.gz::https://github.com/rdiff-backup/rdiff-backup-fs/archive/v1.0.2.tar.gz
+	sha256sums = 5e01a4bbf2f3aa525aefd02e795096ac6aef2ee4252c490729aa93d4899ba057
 
 pkgname = rdiff-backup-fs
