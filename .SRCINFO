@@ -1,6 +1,6 @@
 pkgbase = electron41-bin
 	pkgdesc = Build cross platform desktop apps with web technologies — prebuilt
-	pkgver = 41.0.0alpha.4
+	pkgver = 41.0.0alpha.5
 	pkgrel = 1
 	url = https://electronjs.org
 	arch = aarch64
@@ -17,21 +17,21 @@ pkgbase = electron41-bin
 	optdepends = gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
-	provides = electron41=41.0.0alpha.4
+	provides = electron41=41.0.0alpha.5
 	conflicts = electron41
-	noextract = electron41-chromedriver-41.0.0alpha.4-x86_64.zip
-	noextract = electron41-41.0.0alpha.4-x86_64.zip
-	source_aarch64 = electron41-chromedriver-41.0.0alpha.4-aarch64.zip::https://github.com/electron/electron/releases/download/v41.0.0-alpha.4/chromedriver-v41.0.0-alpha.4-linux-arm64.zip
-	source_aarch64 = electron41-41.0.0alpha.4-aarch64.zip::https://github.com/electron/electron/releases/download/v41.0.0-alpha.4/electron-v41.0.0-alpha.4-linux-arm64.zip
-	sha256sums_aarch64 = 85ebdd242afdda494f8054b3c39ec97d99df69094fb1080bcf7e999e315fee72
-	sha256sums_aarch64 = 8008f54878d278f4d40f037990b7ae4d4f571ba6e4f76b3255f49f6bcef95760
-	source_armv7h = electron41-chromedriver-41.0.0alpha.4-armv7h.zip::https://github.com/electron/electron/releases/download/v41.0.0-alpha.4/chromedriver-v41.0.0-alpha.4-linux-armv7l.zip
-	source_armv7h = electron41-41.0.0alpha.4-armv7h.zip::https://github.com/electron/electron/releases/download/v41.0.0-alpha.4/electron-v41.0.0-alpha.4-linux-armv7l.zip
-	sha256sums_armv7h = b6dab5a05d675fb9746c9f41f536a8d7dd20a2b1942a170a01cb0ca5b72226f8
-	sha256sums_armv7h = 91b0855db01372b4dca749ddebb7b41a26752cc150efb022a25e8a6ab5622a1e
-	source_x86_64 = electron41-chromedriver-41.0.0alpha.4-x86_64.zip::https://github.com/electron/electron/releases/download/v41.0.0-alpha.4/chromedriver-v41.0.0-alpha.4-linux-x64.zip
-	source_x86_64 = electron41-41.0.0alpha.4-x86_64.zip::https://github.com/electron/electron/releases/download/v41.0.0-alpha.4/electron-v41.0.0-alpha.4-linux-x64.zip
-	sha256sums_x86_64 = b4dd0adef8324febbcb71448cb5c24722052d2e45abbe9b275070acd3d4850d6
-	sha256sums_x86_64 = 090e549fdd13057afd8c395a95e637164157f09d3236831818e7490a94223fc5
+	noextract = electron41-chromedriver-41.0.0alpha.5-x86_64.zip
+	noextract = electron41-41.0.0alpha.5-x86_64.zip
+	source_aarch64 = electron41-chromedriver-41.0.0alpha.5-aarch64.zip::https://github.com/electron/electron/releases/download/v41.0.0-alpha.5/chromedriver-v41.0.0-alpha.5-linux-arm64.zip
+	source_aarch64 = electron41-41.0.0alpha.5-aarch64.zip::https://github.com/electron/electron/releases/download/v41.0.0-alpha.5/electron-v41.0.0-alpha.5-linux-arm64.zip
+	sha256sums_aarch64 = 2f91f7f6c098fda0b13a38d23877771623529b74c42f2297e683ec377d9f3269
+	sha256sums_aarch64 = 80f72d0ffda63973c4e26f5a4b59e6741618da30c5b4cb45bf82e23349742e9a
+	source_armv7h = electron41-chromedriver-41.0.0alpha.5-armv7h.zip::https://github.com/electron/electron/releases/download/v41.0.0-alpha.5/chromedriver-v41.0.0-alpha.5-linux-armv7l.zip
+	source_armv7h = electron41-41.0.0alpha.5-armv7h.zip::https://github.com/electron/electron/releases/download/v41.0.0-alpha.5/electron-v41.0.0-alpha.5-linux-armv7l.zip
+	sha256sums_armv7h = 4206a79ef4f43a3737e8597c836f706bcf39fb469f10c42ddc6afbc724596abf
+	sha256sums_armv7h = dc185c77db32aa155285ea422b724cd3f56c6b6b029bb1d74401a00f400dee71
+	source_x86_64 = electron41-chromedriver-41.0.0alpha.5-x86_64.zip::https://github.com/electron/electron/releases/download/v41.0.0-alpha.5/chromedriver-v41.0.0-alpha.5-linux-x64.zip
+	source_x86_64 = electron41-41.0.0alpha.5-x86_64.zip::https://github.com/electron/electron/releases/download/v41.0.0-alpha.5/electron-v41.0.0-alpha.5-linux-x64.zip
+	sha256sums_x86_64 = 783048e171c0f991968de4d2d4aa881091bcd0d113591ac34dc6dab027ef6282
+	sha256sums_x86_64 = ad953df7a7c9b2213e1817d7fcc6ed7c81de2ac7191a3e8360817d4eea2379f2
 
 pkgname = electron41-bin
