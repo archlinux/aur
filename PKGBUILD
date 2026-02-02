@@ -7,7 +7,7 @@ url='https://serenit.ie/projects#serycade'
 arch=('x86_64' 'aarch64')
 
 depends=('libcrypt.so')
-makedepends=('gradle')
+makedepends=(gradle git)
 source=("git+https://codeberg.org/sery/serycade.git")
 sha256sums=("SKIP")
 
@@ -40,11 +40,9 @@ build() {
         fi
     done
 
-    export KONAN_DATA_DIR="$srcdir/konan"
     # Also using local konan and gradle directories to avoid weird conflicts
-
     cd "$srcName"
-    gradle -g "$srcdir/gradle" "linkReleaseExecutable$target"
+    KONAN_DATA_DIR="$srcdir/konan" gradle -g "$srcdir/gradle" "linkReleaseExecutable$target"
 }
 
 package() {
