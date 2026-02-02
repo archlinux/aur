@@ -1,8 +1,9 @@
+# Maintainer: Rezn1r <rezn1r@proton.me>
 # Maintainer: RAI SULEMAN <cerebellumdigital@gmail.com>
 
 
 pkgname=thorium-browser-avx2-bin
-pkgver=130.0.6723.174
+pkgver=138.0.7204.300
 pkgrel=1
 pkgdesc="Thorium browser AVX2 build (RPM binary) – Chromium fork focused on performance and security"
 arch=('x86_64')
@@ -13,17 +14,17 @@ depends=(
   'libnotify' 'libxcomposite' 'libxkbcommon' 'libxrandr'
   'mesa' 'nspr' 'nss' 'pango'
 )
-makedepends=('rpmextract' 'cpio')
+makedepends=('rpm-tools' 'cpio')
 provides=('thorium-browser')
 conflicts=('thorium-browser')
 
 source=("https://github.com/Alex313031/thorium/releases/download/M${pkgver}/thorium-browser_${pkgver}_AVX2.rpm")
 noextract=("thorium-browser_${pkgver}_AVX2.rpm")
-sha256sums=('045c1739692725cd46e8f144dcbdd26dff83fb6b085b43e035af55d7ede0c5ff')
+sha256sums=('67ec59223af4934cc111bc4ec6cbb10adc4b70d4a774fa87f11032ec2f7f9203')
 
 package() {
   cd "$srcdir"
-  rpmextract.sh "thorium-browser_${pkgver}_AVX2.rpm"
+  rpm2cpio "thorium-browser_${pkgver}_AVX2.rpm" | cpio -idmv
 
   # Move binaries to /opt
   install -d "$pkgdir/opt/thorium-browser-avx2"
