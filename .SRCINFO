@@ -1,0 +1,26 @@
+pkgbase = python-docling-core
+	pkgdesc = A python library to define and validate data types in Docling.
+	pkgver = 2.62.0
+	pkgrel = 1
+	url = https://github.com/docling-project/docling-core
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pdm-backend
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python-jsonschema
+	depends = python-jsonref
+	depends = python-tabulate
+	depends = python-pandas
+	depends = python-pillow
+	depends = python-pydantic
+	depends = python-pyyaml
+	depends = python-typing_extensions
+	depends = python-typer
+	depends = python-latex2mathml
+	source = python-docling-core-2.62.0.tar.gz::https://github.com/docling-project/docling-core/archive/refs/tags/v2.62.0.tar.gz
+	sha256sums = 5ead869e6891c241cbf1953b6229ea5774389d434f2bd873567dea29d3ad95d0
+
+pkgname = python-docling-core
