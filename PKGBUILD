@@ -12,6 +12,7 @@ makedepends=()
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libsecret')
 conflicts=('lobehub-desktop' 'lobe-chat-appimage')
 provides=('lobehub-desktop')
+replaces=('lobehub-desktop-beta-bin')
 install=${pkgname}.install
 
 source=("lobehub-desktop-beta-1.143.2.x86_64.rpm::https://github.com/lobehub/lobe-chat/releases/download/v${_pkgver}/lobehub-desktop-beta-1.143.2.x86_64.rpm"
