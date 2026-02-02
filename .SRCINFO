@@ -1,6 +1,6 @@
 pkgbase = android-armv7a-eabi-wavpack
 	pkgdesc = Audio compression format with lossless, lossy and hybrid compression modes (Android armv7a-eabi)
-	pkgver = 5.8.1
+	pkgver = 5.9.0
 	pkgrel = 1
 	url = https://www.wavpack.com/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = android-armv7a-eabi-wavpack
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/dbry/WavPack/releases/download/5.8.1/wavpack-5.8.1.tar.xz
-	md5sums = ff40072de82dd299fc45161bc46b8566
+	source = https://github.com/dbry/WavPack/releases/download/5.9.0/wavpack-5.9.0.tar.xz
+	md5sums = bba3cd4c109d8180ac9b5dcaf8dd0b3b
 
 pkgname = android-armv7a-eabi-wavpack
