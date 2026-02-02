@@ -15,7 +15,7 @@ pkgbase = weakauras-companion-git
 	depends = electron38
 	provides = weakauras-companion=5.3.0
 	conflicts = weakauras-companion
-	source = weakauras-companion.git::git+https://wget.la/https://github.com/WeakAuras/WeakAuras-Companion
+	source = weakauras-companion.git::git+https://github.com/WeakAuras/WeakAuras-Companion
 	source = weakauras-companion.sh
 	sha256sums = SKIP
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6

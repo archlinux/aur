@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="A cross-platform application built to provide the missing link between Wago.io and World of Warcraft.(Use system-wide electron)"
 arch=('any')
 url="https://weakauras.wtf/"
-_ghurl="https://wget.la/https://github.com/WeakAuras/WeakAuras-Companion"
+_ghurl="https://github.com/WeakAuras/WeakAuras-Companion"
 license=('GPL-2.0-only')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
