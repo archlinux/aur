@@ -2,7 +2,7 @@
 # Contributor: Kilo Code <ai@kilo.dev>
 
 pkgname=ca-racing
-_app_version="0.1.1-alpha"
+_app_version="1.0.0-demo"
 # Sanitize version for Arch (replace - with _)
 pkgver="${_app_version//-/_}"
 pkgrel=1

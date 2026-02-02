@@ -1,6 +1,6 @@
 pkgbase = ca-racing
 	pkgdesc = Top-down 2D racing game written in Python
-	pkgver = 0.1.1_alpha
+	pkgver = 1.0.0_demo
 	pkgrel = 1
 	url = https://github.com/piotrek1372/ca-racing
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = ca-racing
 	depends = python-numpy
 	depends = python-pillow
 	depends = python-pytmx
-	source = ca-racing-0.1.1-alpha.tar.gz::https://github.com/piotrek1372/ca-racing/archive/refs/tags/v0.1.1-alpha.tar.gz
+	source = ca-racing-1.0.0-demo.tar.gz::https://github.com/piotrek1372/ca-racing/archive/refs/tags/v1.0.0-demo.tar.gz
 	source = ca-racing.desktop
 	source = ca-racing.sh
 	sha256sums = 207673becefcaff48e12b13e607bc38678aa0529ab92b4a057441c498ac0e895
