@@ -4,7 +4,7 @@ pkgname=v2rayn
 _pkgname=v2rayN
 pkgver=7.17.3
 _bin_commit=65a63f0737d48cd465b985ac51d14557f8618939
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI client supporting Xray core, sing-box core and other cores"
 arch=('x86_64' 'aarch64')
 url="https://github.com/2dust/v2rayN"
@@ -65,6 +65,6 @@ package() {
     done
 
     # Install geofiles
-    bsdtar -xf "${srcdir}/extra-source-${pkgver}.zip" -C "${srcdir}"
+    bsdtar -xf "${srcdir}/extra-source-${_bin_commit}.zip" -C "${srcdir}"
     cp -r "${srcdir}/v2rayN-linux-64/bin"/{srss,*.dat,*db} "${pkgdir}/usr/lib/${_pkgname}/bin"
 }
