@@ -1,0 +1,5 @@
+[aichat-ng-bin]
+source = "github"
+github = "blob42/aichat-ng"
+use_latest_release = true
+prefix = "v"
