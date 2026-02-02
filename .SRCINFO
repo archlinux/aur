@@ -1,6 +1,6 @@
 pkgbase = vrcx-bin
 	pkgdesc = Friendship management tool for VRChat (extracted AppImage version)
-	pkgver = 2026.01.04
+	pkgver = 2026.01.28
 	pkgrel = 1
 	url = https://vrcx.app/
 	arch = x86_64
@@ -20,12 +20,12 @@ pkgbase = vrcx-bin
 	depends = electron39
 	provides = vrcx
 	conflicts = vrcx
-	source = https://github.com/vrcx-team/VRCX/releases/download/v2026.01.04/VRCX_2026.01.04_x64.AppImage
-	source = LICENSE-v2026.01.04::https://raw.githubusercontent.com/vrcx-team/VRCX/refs/tags/v2026.01.04/LICENSE
+	source = https://github.com/vrcx-team/VRCX/releases/download/v2026.01.28/VRCX_2026.01.28_x64.AppImage
+	source = LICENSE-v2026.01.28::https://raw.githubusercontent.com/vrcx-team/VRCX/refs/tags/v2026.01.28/LICENSE
 	source = vrcx
 	source = VRCX.desktop
-	sha256sums = 4d1cd282807ff0e0fa9607b3bfba760bab1e7b16d845c0acfa7ab1f61e4eb672
-	sha256sums = 1927804117a7ac55e00646df36f77edd09d2cfee850588fc453a81d01bad90d1
+	sha256sums = 20adc47f37bb72b9a99bbe4d31f6365009b2fea588890721fa1b96799cc39409
+	sha256sums = e51564d05fd8f98bba289b476815150c78d3bf8f4acd248d78986e0061bb7427
 	sha256sums = 464858e86b74bc4c49c8ec4b59aded48bcd8f0f57ab5366b1bbe77db1d868033
 	sha256sums = bdf079d1d72c5a207ae8322303a8c0c7b61fbcbc0eff6bd4a42b461f50137ff3
 

@@ -9,7 +9,7 @@ _sdk_ver=112
 
 pkgname='vrcx-bin'
 pkgdesc='Friendship management tool for VRChat (extracted AppImage version)'
-pkgver='2026.01.04'
+pkgver='2026.01.28'
 pkgrel='1'
 arch=('x86_64')
 url='https://vrcx.app/'
@@ -22,8 +22,8 @@ source=("https://github.com/vrcx-team/VRCX/releases/download/v$pkgver/VRCX_${pkg
         "LICENSE-v$pkgver::https://raw.githubusercontent.com/vrcx-team/VRCX/refs/tags/v$pkgver/LICENSE"
         'vrcx'
         'VRCX.desktop')
-sha256sums=('4d1cd282807ff0e0fa9607b3bfba760bab1e7b16d845c0acfa7ab1f61e4eb672'
-            '1927804117a7ac55e00646df36f77edd09d2cfee850588fc453a81d01bad90d1'
+sha256sums=('20adc47f37bb72b9a99bbe4d31f6365009b2fea588890721fa1b96799cc39409'
+            'e51564d05fd8f98bba289b476815150c78d3bf8f4acd248d78986e0061bb7427'
             '464858e86b74bc4c49c8ec4b59aded48bcd8f0f57ab5366b1bbe77db1d868033'
             'bdf079d1d72c5a207ae8322303a8c0c7b61fbcbc0eff6bd4a42b461f50137ff3')
 
@@ -31,7 +31,7 @@ if [ "$_omit_libs" = true ]; then
     depends+=('libglvnd' 'vulkan-icd-loader' "electron$_electron_ver")
 fi
 if [ "$_omit_dlls" = true ]; then
-    depends+=("dotnet-runtime=$_dotnet_ver.$_runtime_ver.sdk$_sdk_ver" "dotnet-sdk=$_dotnet_ver.$_runtime_ver.sdk$_sdk_ver")
+    depends+=("dotnet-runtime-$_dotnet_ver=$_dotnet_ver.$_runtime_ver.sdk$_sdk_ver" "dotnet-sdk-$_dotnet_ver=$_dotnet_ver.$_runtime_ver.sdk$_sdk_ver")
 fi
 
 # AppImage related functions copied from https://gist.github.com/openglfreak/585b6f1ba965d183c6d0e2ee8778c204
@@ -124,7 +124,6 @@ build() {
     if [ "$_omit_libs" = true ]; then
         rm opt/vrcx/resources/app.asar.unpacked/build/Electron/Microsoft.Win32.SystemEvents.dll
         rm opt/vrcx/resources/app.asar.unpacked/build/Electron/System.Management.dll
-        rm opt/vrcx/resources/app.asar.unpacked/build/Electron/System.Private.Windows.Core.dll
         rm opt/vrcx/resources/app.asar.unpacked/build/Electron/System.Security.Cryptography.ProtectedData.dll
         rm opt/vrcx/resources/app.asar.unpacked/build/Electron/System.Windows.Extensions.dll
 
