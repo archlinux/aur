@@ -1,0 +1,15 @@
+pkgbase = rollbar-cli
+	pkgdesc = CLI for reading and listing Rollbar items and occurrences
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/robzolkos/rollbar-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	options = !debug
+	source = rollbar-cli-0.1.0.tar.gz::https://github.com/robzolkos/rollbar-cli/archive/v0.1.0.tar.gz
+	sha256sums = 014110bc5888d775b130884dea3808189c3a553bf2cbec5d058b225e43a38e6e
+
+pkgname = rollbar-cli
