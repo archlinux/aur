@@ -27,16 +27,10 @@ basedir=$(pwd)
 
 # Compile the source code 
 build () {
-    pwd
-    echo "${basedir}"
-    echo "${basedir##*/}"
-    if [[ "${basedir##*/}" != $pkgname ]]; then
-	echo "[1m[32m==>[0m[1m Compiling package..."
-        tar -xf "$basedir/$pkgname-$pkgver.tar.gz"
-        cd "$srcdir/$pkgname-$pkgver"
-        make compile
-    else
-        echo "[1m[32m==>[0m[1m Compiling package locally..."
+    # Verify if in that path exist a PKGBUILD if thats true then it means that we are compiling in local
+    # and if by any chance we find out that PKGBUILD contains the package name mem-c it 
+    if [[ -f "../../../../$pkgname/PKGBUILD" ]] && grep -q "pkgname=mem-c" "../../../../$pkgname/PKGBUILD" ; then
+	echo "[1m[32m==>[0m[1m Compiling package locally..."
 	echo "[1m[32m==>[0m[1m Trying to find the local source code path..."
 	if [ -d "../../$pkgname" ]; then
 	    echo "[1m[32m==>[0m[1m Source code $pkgname found..."
@@ -57,6 +51,11 @@ build () {
 	    echo "[1m[32m==>[0m[1m Error source code $pkgname not found..."
 	    exit 1
 	fi
+    else
+        echo "[1m[32m==>[0m[1m Compiling package..."
+        tar -xf "$basedir/$pkgname-$pkgver.tar.gz"
+        cd "$srcdir/$pkgname-$pkgver"
+        make compile
     fi
 }
 
