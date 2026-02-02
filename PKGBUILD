@@ -22,4 +22,25 @@ build() {
 package() {
     cd "${_pkgname}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+pkgname=python-pysqlcipher3
+pkgver=1.2.0
+pkgrel=1
+pkgdesc="Python bindings for SQLCipher"
+arch=('x86_64')
+url="https://github.com/rigglemania/pysqlcipher3"
+license=('BSD')
+depends=('python' 'sqlcipher')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/p/pysqlcipher3/pysqlcipher3-${pkgver}.tar.gz")
+sha256sums=('SKIP')
+
+build() {
+  cd "pysqlcipher3-${pkgver}"
+  python setup.py build
+}
+
+package() {
+  cd "pysqlcipher3-${pkgver}"
+  python setup.py install --root="$pkgdir" --optimize=1
+
 }

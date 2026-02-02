@@ -13,3 +13,16 @@ pkgbase = python-pysqlcipher3
 
 pkgname = python-pysqlcipher3
 
+	pkgdesc = Python bindings for SQLCipher
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/rigglemania/pysqlcipher3
+	arch = x86_64
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = sqlcipher
+	source = https://files.pythonhosted.org/packages/source/p/pysqlcipher3/pysqlcipher3-1.2.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-pysqlcipher3
