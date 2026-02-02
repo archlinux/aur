@@ -3,7 +3,7 @@ _appname=ratssearch
 pkgname="${_appname//ss/s-s}-bin"
 _pkgname=RatsSearch
 pkgver=2.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="BitTorrent P2P multi-platform search engine for Desktop and Web servers with integrated torrent client.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/librats/rats-search"
@@ -14,9 +14,6 @@ depends=(
     'libx11'
     'libgpg-error'
     'libglvnd'
-    'zlib-ng-compat'
-    'freetype2'
-    'fontconfig'
 )
 source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-Linux-x64-v${pkgver}.AppImage"
