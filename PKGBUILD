@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgname=rumdl-bin
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc='Markdown Linter and Formatter written in Rust'
 arch=('x86_64' 'aarch64')
@@ -25,10 +25,10 @@ source_x86_64=(
 )
 
 sha256sums=('531eee1345aea0b92d0b2cb7c3994b233dffe9d738ed1d2a6ae3cddf49b3d773')
-sha256sums_x86_64=('430a2dd94a043dac9f1b352a1a49fde97b9f2bc3a7a6b95866571abb179ab1be'
-                   '664d24e58c63758f0520d0fbd38c9d7bdc9b05f1b244cc089b7aadf547ebafbd')
-sha256sums_aarch64=('29e0d9114dcc10460a93d26d970a96bc11c095e442247e76c09610286a7f6b88'
-                    '8f38cdc2bfe100cc74520dddc9e3f71bc02d2e8ed154a8c5ca87015bab6a10a6')
+sha256sums_x86_64=('efef9cc1183c500ca53b5f008ba8fd5000772e04b368c1b055cc79a05c567ed6'
+                   '86f10287b6f8295cd2fd0e4b654dab2cda9336b63ba1b331ee8652fd81db8c65')
+sha256sums_aarch64=('daa5db89be67d4996dc9dbaadfa671231b79e2b670df9866f610636394d05cf7'
+                    'dd3e93583ac3d843ce60b761225f2ed303a2bc94bf7d2329e26d75c4b1044cc2')
 
 package() {
   install -Dm0755 -t "$pkgdir/usr/bin/" "${pkgname%-bin}"
