@@ -1,18 +1,21 @@
 pkgbase = edbrowse-git
 	pkgdesc = A line-oriented editor, browser and mail client.
-	pkgver = 3.8.10.r15.g1c6e8631
+	pkgver = 3.8.15.r328.g1898d890
 	pkgrel = 1
 	url = http://edbrowse.org/
 	arch = i686
 	arch = x86_64
-	license = GPL
-	license = openssl
+	license = GPL-2
+	license = MIT
+	license = OpenSSL
+	license = CC0-1.0
+	license = curl
 	makedepends = git
 	depends = openssl
-	depends = pcre
+	depends = pcre2
 	depends = curl>=7.29.0
 	depends = unixodbc
-	depends = quickjs
+	depends = quickjs-ng
 	provides = edbrowse
 	conflicts = edbrowse
 	source = edbrowse-git::git+https://github.com/CMB/edbrowse
