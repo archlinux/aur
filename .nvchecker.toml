@@ -1,0 +1,5 @@
+["async++"]
+source = "github"
+github = "Amanieu/asyncplusplus"
+use_latest_release = true
+prefix = "v"
