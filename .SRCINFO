@@ -1,7 +1,7 @@
 pkgbase = marimo
 	pkgdesc = A reactive Python notebook that's reproducible, git-friendly, and deployable as scripts or apps
 	pkgver = 0.19.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/marimo-team/marimo
 	arch = any
 	license = Apache-2.0
@@ -9,7 +9,7 @@ pkgbase = marimo
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-uv-build
-	depends = python<3.14
+	depends = python
 	depends = python-click>=8.0
 	depends = python-click<9
 	depends = python-jedi>=0.18.0
@@ -30,7 +30,7 @@ pkgbase = marimo
 	depends = python-itsdangerous>=2.0.0
 	depends = python-narwhals>=2.0.0
 	depends = python-packaging
-	depends = python-msgspec>=0.19.0
+	depends = python-msgspec>=0.20.0
 	optdepends = python-lsp-server: LSP server
 	optdepends = python-lsp-ruff: LSP server
 	optdepends = python-pyzmq: IPC communication for sandbox kernels

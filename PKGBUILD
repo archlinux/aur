@@ -5,7 +5,7 @@
 _name=marimo
 pkgname=marimo
 pkgver=0.19.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A reactive Python notebook that's reproducible, git-friendly, and deployable as scripts or apps"
 arch=(any)
 url='https://github.com/marimo-team/marimo'
@@ -13,7 +13,7 @@ license=('Apache-2.0')
 options=(!debug)
 
 depends=(
-    'python<3.14' # For python-msgspec package compatibility
+    'python'
     'python-click>=8.0' 'python-click<9'
     'python-jedi>=0.18.0'
     'python-markdown>=3.6' 'python-markdown<4'
@@ -34,7 +34,7 @@ depends=(
     'python-itsdangerous>=2.0.0'
     'python-narwhals>=2.0.0'
     'python-packaging'
-    'python-msgspec>=0.19.0' # TODO: change to 0.20 once the package is updated
+    'python-msgspec>=0.20.0'
 )
 
 optdepends=(
