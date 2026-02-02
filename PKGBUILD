@@ -52,6 +52,13 @@ build_with_clang_options=" \
             -DLLVM_ENABLE_LTO=Thin \
             -DCMAKE_C_COMPILER=clang \
             -DCMAKE_CXX_COMPILER=clang++ \
+            -DCMAKE_LINKER=lld \
+            -DCMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+            -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+            -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld" \\
+            -DCMAKE_AR=llvm-ar \
+            -DCMAKE_RANLIB=llvm-ranlib \
+            -DCMAKE_NM=llvm-nm \
 	"
 
 _prepare_install_script() {
