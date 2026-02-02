@@ -109,7 +109,7 @@ build() {
   _site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
   export PYTHONPATH="$PWD/tmp_install/$_site_packages"
 
-  make -C doc man
+  env -C doc sphinx-build -b man -d build/doctrees source build/man
 
   # Needed to add the generated manpages into the wheel
   python -m build --wheel --no-isolation
