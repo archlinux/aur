@@ -1,7 +1,7 @@
 pkgbase = chiaki
 	pkgdesc = Free and Open Source PS4 Remote Play Client
 	pkgver = 2.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://git.sr.ht/~thestr4ng3r/chiaki
 	arch = x86_64
 	license = custom
@@ -23,11 +23,13 @@ pkgbase = chiaki
 	optdepends = mesa-vdpau: VDPAU for AMD (>= Radeon R600) and Nvidia (Nouveau, GeForce 8 -> GTX 750) GPUs
 	optdepends = nvidia-utils: Proprietary VDPAU / Codec support for Nvidia GPUs
 	provides = chiaki
-	source = https://git.sr.ht/thestr4ng3r/chiaki/refs/download/v2.2.0/chiaki-v2.2.0-src.tar.gz
+	source = https://git.sr.ht/~thestr4ng3r/chiaki/refs/download/v2.2.0/chiaki-v2.2.0-src.tar.gz
 	source = nanopb-protobuf.patch
 	source = munit-stdatomic.patch
+	source = ffmpeg-avcodec.patch
 	sha256sums = f406894f3c2d751961d58c1e27e81f1313a3fed3d1a33d3bf4d6092ce6575cf8
 	sha256sums = e5275fbb5353c5700119c25f5e449946339ed9e4bfc5b70b508ce324426b7c20
 	sha256sums = 5b8b32b1ecc982b5092ead640a0f364eda7cd5c952c699a5a758e5ed83f20710
+	sha256sums = 498c4482e932e6a9237f839107cbcde0412f642b13a759fa800c4bae3dafdca5
 
 pkgname = chiaki

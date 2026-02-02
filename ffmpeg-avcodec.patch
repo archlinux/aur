@@ -1,0 +1,14 @@
+diff --git 1/src/chiaki/lib/src/ffmpegdecoder.c 2/src/chiaki/lib/src/ffmpegdecoder.c.b
+index 5dd5bf0..3e947e7 100644
+--- 1/lib/src/ffmpegdecoder.c
++++ 2/lib/src/ffmpegdecoder.c
+@@ -99,7 +99,9 @@ error_mutex:
+ 
+ CHIAKI_EXPORT void chiaki_ffmpeg_decoder_fini(ChiakiFfmpegDecoder *decoder)
+ {
++#if LIBAVCODEC_VERSION_MAJOR <= 61
+ 	avcodec_close(decoder->codec_context);
++#endif
+ 	avcodec_free_context(&decoder->codec_context);
+ 	if(decoder->hw_device_ctx)
+ 		av_buffer_unref(&decoder->hw_device_ctx);
