@@ -2,6 +2,41 @@
 
 All the changes made to runa are documented here.
 
+## [0.6.1] - 2026-02-01
+
+### Patch to keymap
+
+### Fixed
+- Keymap: Prefix actions (e.g., `g` + `h` for "Go to home") no longer overwrite or conflict with single-key actions (`h`, `p`, etc.) after removing their insertion into the main keymap. Now you can use the same keys both for navigation and for prefix commands.
+
+
+---
+
+
+## [0.6.0] - 2026-02-01
+
+### New overlay and keybindings for easier navigation of directories and entries.
+
+### Added
+- **`g` prefix navigation:** Implemented the `"g"` prefix to quickly jump to the first selection (`go_to_top`), to the home (`go_to_home`) or a specific path (`go_to_path`).
+- **`go_to_path` function:** Added the ability to jump to a specific path using `fd`-powered auto-complete.
+- **Go To Help overlay:** Introduced a smart overlay widget that visualizes available `"g"` prefix navigation options.
+- **Configurable `go_to` bindings:** `go_to_top`, `go_to_path`, `go_to_home` actions in `[keys]` config; these are triggered by the `"g"` prefix.
+- **Cycling directory autocomplete:** Added stateful, cycling directory autocomplete with Tab in path entry prompts, allowing to cycle and select directory completions from the current input.
+
+### Fixed
+- **Empty parent content**: Fixed parent pane being blank when starting runa in a empty directory.
+- **Display layout**: Fixed `[display.layout]` being forced to always include all the layout options keys.
+- **Broken previews**: Fixed edge case where previews of library/object files (`.a`) could cause the UI to break.
+
+### Changed
+- **AUR PKGBUILD**: Moved the PKGBUILD and the aur.yml action workflow into a dedicated [runa-packaging](https://github.com/alexm-dev/runa-packaging).
+- **Keymap refactor:** Separated binding helpers and `parse_key` for improved maintainability and clarity.
+
+
+---
+
+
 ### [0.5.13] - 2026-01-30
 
 Small packaging update.
