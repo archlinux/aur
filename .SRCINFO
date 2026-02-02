@@ -1,0 +1,24 @@
+pkgbase = semantic-diff
+	pkgdesc = AI-powered semantic analysis of git commits. Goes beyond git diff to show intent, impact, risk, and review questions.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/tkenaz/semantic_diff
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-rich
+	depends = python-dotenv
+	depends = python-click
+	depends = python-anthropic
+	depends = python-gitpython
+	depends = python-pydantic
+	provides = semantic-diff
+	conflicts = python-semantic-diff
+	source = semantic-diff-0.2.0.tar.gz::https://github.com/tkenaz/semantic_diff/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = bc8e2b410526f464ae70d8541b9d48f35f1fd71ef6ebb543152d774b2cf6cd1f
+
+pkgname = semantic-diff

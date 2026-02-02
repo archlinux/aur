@@ -1,0 +1,5 @@
+[semantic-diff]
+source = "github"
+github = "tkenaz/semantic_diff"
+use_latest_release = true
+prefix = "v"
