@@ -1,0 +1,16 @@
+pkgbase = triangle-bin
+	pkgdesc = Convert images to computer generated art using delaunay triangulation
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/esimov/triangle
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = triangle
+	conflicts = triangle
+	source = LICENSE-2.0.0::https://raw.githubusercontent.com/esimov/triangle/v2.0.0/LICENSE
+	sha256sums = 196afccd110faf5216df31f163c3c4ad95c98eb33a7a63f4da465ce221a2b026
+	source_x86_64 = triangle-x86_64-2.0.0.tgz::https://github.com/esimov/triangle/releases/download/v2.0.0/triangle-2.0.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 707ce9a1f540e45d109760d44246ac040eced619a99aec2d5df15ab2714fbd86
+
+pkgname = triangle-bin

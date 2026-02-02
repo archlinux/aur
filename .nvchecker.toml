@@ -1,0 +1,5 @@
+[triangle-bin]
+source = "github"
+github = "esimov/triangle"
+use_latest_release = true
+prefix = "v"
