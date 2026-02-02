@@ -3,7 +3,7 @@
 
 _archive_extension="tar.gz"
 pkgname=ipfs-desktop
-pkgver=0.45.0
+pkgver=0.47.0
 pkgrel=1
 epoch=1
 pkgdesc="Desktop client for the InterPlanetary File System"
@@ -34,7 +34,7 @@ makedepends=(
 )
 install=$pkgname.install
 source=("$pkgname-$pkgver.$_archive_extension::https://github.com/ipfs/ipfs-desktop/archive/refs/tags/v$pkgver.$_archive_extension")
-b2sums=('e5b97f5cb7bd1a42d53df471917a1feb1fa63e4c6112c71d5faee4c6718915d3561248bc1ad98112a1a6fb510c90f8547e9861061201878edf27026561b6f535')
+b2sums=('e32ddb5a86147e9fbeb45093a1d72d4f4e85a63c93a99c785d24f24f2f9c06229c1ea14c81f34f7560a5c1d022b5fe294e227f310f10e9832788c6d85f52dfd7')
 
 prepare() {
 	cd "$pkgname-$pkgver"
