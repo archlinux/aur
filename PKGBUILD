@@ -3,7 +3,7 @@
 _appname=codium
 _pkgname="vs${_appname}"
 pkgname="${_pkgname}-electron-bin"
-pkgver=1.108.10359
+pkgver=1.108.20787
 _electronversion=39
 pkgrel=1
 pkgdesc="VS Code without MS branding/telemetry/licensing.(Prebuilt and System-wide Electron edition)"
@@ -34,6 +34,8 @@ depends=(
     'python'
     'python-fonttools'
     'perl'
+    'libsecret'
+    'webkit2gtk-4.1'
 )
 optdepends=(
 	'gvfs: For move to trash functionality'
@@ -50,9 +52,9 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/downloa
 sha256sums=('ed289092386002771285e3423f66f49af65ff918e1b667b517d977fa4fe1f057'
             '7222e3026ab0eda7d60698a036354a2bae4d0878b1d75fc893c91e30b60804bf'
             'c418b7c5c17b3771f53541b46ed1eff461de5871e2c7c177546e2577d480594f')
-sha256sums_aarch64=('c98050d04f90d9313c361a193dab1b789b9fefe05fcc0f7737654368599b8fc1')
-sha256sums_armv7h=('66acc243ae94e01c1f9ed00e590897765c33f57cbe3fa59132dafbcdd4d69c2f')
-sha256sums_x86_64=('5055ee85f8fb7d45e0f7afd7c053d45bd819184fa4504bc79ba0894c4da19ad5')
+sha256sums_aarch64=('57cb8a8478be55cfd30e64e6733df9317b2b36d3ee5740da61e99733fb728a41')
+sha256sums_armv7h=('d9a349deb3fd33c1606771fcd11a89e96ee989ab137e8a35abe7a0e8d0058ccf')
+sha256sums_x86_64=('0c6d98d18b670b679afb149c6ead1a1b4b78f1f296e3bf52a1ff29cdef5d62de')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/usr/share/${_appname}/${_appname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
