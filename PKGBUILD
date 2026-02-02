@@ -1,4 +1,5 @@
-# Maintainer: Mauro Santos <registo.mailling@gmail.com>
+# Maintainer: Pedro Cunha <arch [at] pyker [dot] net>
+# Contributor: Mauro Santos <registo.mailling@gmail.com>
 
 pkgname='hunspell-pt_pt'
 _pkgname='hunspell-pt_PT'
