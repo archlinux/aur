@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=tree-sitter-matlab
 pkgname=python-${_base}
-pkgver=1.2.12
+pkgver=1.2.13
 pkgrel=1
 pkgdesc="MATLAB tree-sitter parser"
 arch=(any)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(python)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('8c805ec6045bb5f1f8262a496f640106a9b78bbca0d113f9cf0d4092b1c82d782e365bd5f2de8154360a9c1c2aa19c754425bd139230d6a6ac834c649788314b')
+sha512sums=('d152e296179870ef785d46e5576ddf092b0dbd4edc342fe52adc81a2995ac8715c30a420b14a9d2aa9528991cc4cf9cf0bca7c7683d84601581fe5e07892f3f0')
 
 build() {
   cd ${_base}-${pkgver}
