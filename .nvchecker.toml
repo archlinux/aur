@@ -1,0 +1,5 @@
+[chamber-bin]
+source = "github"
+github = "mikeleppane/chamber"
+use_latest_release = true
+prefix = "v"
