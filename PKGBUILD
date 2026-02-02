@@ -3,13 +3,13 @@
 pkgbase=autodiff
 pkgname=(${pkgbase} python-${pkgbase})
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic differentiation made easier for C++"
-arch=(any)
+arch=(x86_64)
 url="https://github.com/${pkgbase}/${pkgbase}"
 license=(MIT)
 depends=()
-makedepends=(cmake eigen pybind11 python-build python-installer python-setuptools python-wheel)
+makedepends=(cmake eigen3 pybind11 python-build python-installer python-setuptools)
 # checkdepends=(catch2)
 source=(${pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('a8f3c3126fc8fb9502384eaf6cb416bfb24dede83edc70a8333c9e2824fefcb4221da71d2f0b30b52dcbe86042cb79a9dd1d93249bfdb052af71c0c1c63c819e')
@@ -48,7 +48,6 @@ package_autodiff() {
 
 package_python-autodiff() {
   depends=(python)
-  arch=(x86_64)
   pkgdesc+=" (python bindings)"
 
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" build/python/package/dist/*.whl
