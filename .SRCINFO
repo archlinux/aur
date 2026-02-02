@@ -1,6 +1,6 @@
 pkgbase = ampere-git
 	pkgdesc = Ampere – a simple desktop audio player built off of python-vlc
-	pkgver = s.2.g44a2640
+	pkgver = s.7.g6376594
 	pkgrel = 1
 	url = https://github.com/hent83722/ampere-audio-player
 	arch = any
