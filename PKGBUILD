@@ -1,6 +1,6 @@
 # Maintainer: Rob Zolkos <rob@zolkos.com>
 pkgname=appsignal-cli
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="CLI for AppSignal error monitoring"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/robzolkos/appsignal-cli/archive/v$pkgver.tar.gz")
-sha256sums=('273a09abdb53be0e1949dd959fd3532cb3d58ad5c9054b3316d87df2481924ad')
+sha256sums=('382ff78558aaa5031e14940957c25bd9a4a1fb1efd56e97f3b6159e4c2531c32')
 options=('!debug')
 
 build() {
@@ -19,11 +19,11 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-    go build -ldflags "-s -w -X main.version=${pkgver}" -o appsignal ./cmd/appsignal
+    go build -ldflags "-s -w -X main.version=${pkgver}" -o appsignal-cli ./cmd/appsignal
 }
 
 package() {
     cd "$pkgname-$pkgver"
-    install -Dm755 appsignal "$pkgdir/usr/bin/appsignal"
+    install -Dm755 appsignal-cli "$pkgdir/usr/bin/appsignal-cli"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
