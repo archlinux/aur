@@ -11,8 +11,8 @@
 
 # Maintainer: alecksandr <sansepiol26@gmail.com>
 pkgname=mem-c
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.1.1
+pkgrel=3
 epoch=
 pkgdesc="mem-c is a simple memory allocator using a heap data structure with the mmap Linux syscall for dynamic memory management. It has a worst-case search time of O(n * log n) and averages O(log n)."
 arch=(x86_64)
