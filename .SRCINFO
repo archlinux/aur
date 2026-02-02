@@ -1,0 +1,22 @@
+pkgbase = alarm-gui-git
+	pkgdesc = High-performance, CLI-driven, full-screen alarm application with video background and UI
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/amin-tehrani/alarm
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	depends = ffmpeg
+	depends = libglvnd
+	depends = libxcursor
+	depends = libxrandr
+	depends = libxinerama
+	depends = libxi
+	provides = alarm-gui
+	conflicts = alarm-gui
+	source = git+https://github.com/amin-tehrani/alarm.git
+	sha256sums = SKIP
+
+pkgname = alarm-gui-git
