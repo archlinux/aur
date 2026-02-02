@@ -1,0 +1,19 @@
+pkgbase = see-desktop
+	pkgdesc = A native GNOME desktop client for S.EE URL shortening service
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/sdotee/desktop
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = gtk4
+	depends = libadwaita
+	depends = cairo
+	depends = pango
+	depends = gdk-pixbuf2
+	depends = glib2
+	source = see-desktop-0.1.0.tar.gz::https://github.com/sdotee/desktop/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 038129604ca8311a2cb47840c35c2d680c69cf53d5b9d8125281380e2a4515da
+
+pkgname = see-desktop
