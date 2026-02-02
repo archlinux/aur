@@ -1,6 +1,6 @@
 # Maintainer: Tobias Os Finsbøl <tobias.finsbol@protonmail.com>
 pkgname=bitwarden-fuzzy
-pkgver=1.3.8
+pkgver=1.3.9
 pkgrel=1
 pkgdesc="An unoffical fuzzy finder for bitwarden."
 provides=('bitwarden-fuzzy')
@@ -11,7 +11,7 @@ url="https://gitlab.com/TobbeBob123/bitwarden-fuzzy/"
 license=('GPL2' 'GPL3')
 depends=('bitwarden-cli' 'xclip')
 source=("https://gitlab.com/TobbeBob123/bitwarden-fuzzy/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('efae55106fa829e5e197b5eb30d2479f40ac130ea0a1ff69cf44f988da9c52a2')
+sha256sums=('dc467829ef874b4c82cc651807ccdb448c148cff0348a1df9cbeb981727fa4eb')
 
 package() {
 	install -Dm755 "$srcdir/${pkgname}-$pkgver/bff" "$pkgdir/usr/bin/bff"
