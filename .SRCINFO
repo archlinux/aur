@@ -1,6 +1,6 @@
 pkgbase = pokeclicker-automation-bin
 	pkgdesc = Pokeclicker Desktop with automation scripts support
-	pkgver = 1.2.12
+	pkgver = 1.2.13
 	pkgrel = 1
 	url = https://github.com/Farigh/pokeclicker-automation-desktop
 	install = pokeclicker-automation-bin.install
@@ -21,7 +21,7 @@ pkgbase = pokeclicker-automation-bin
 	provides = pokeclicker
 	conflicts = pokeclicker-bin
 	conflicts = pokeclicker-scripts-bin
-	source = pokeclicker-automation-bin-1.2.12.deb::https://github.com/Farigh/pokeclicker-automation-desktop/releases/download/v1.2.12/pokeclicker-desktop-with-scripts_1.2.12_amd64.deb
+	source = pokeclicker-automation-bin-1.2.13.deb::https://github.com/Farigh/pokeclicker-automation-desktop/releases/download/v1.2.13/pokeclicker-desktop-with-scripts_1.2.13_amd64.deb
 	sha256sums = 5c3073c1f80941cf7f8f2e96ca498e52251aa850b57f3213d76e2d571306975c
 
 pkgname = pokeclicker-automation-bin

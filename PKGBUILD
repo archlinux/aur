@@ -1,7 +1,7 @@
 # Maintainer: Anany Sachan <ananysachan2005@gmail.com>
 pkgname=pokeclicker-automation-bin
 _pkgname="PokéClicker with Scripts"
-pkgver=1.2.12
+pkgver=1.2.13
 pkgrel=1
 pkgdesc="Pokeclicker Desktop with automation scripts support"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('pokeclicker')
 conflicts=('pokeclicker-bin' 'pokeclicker-scripts-bin')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/pokeclicker-desktop-with-scripts_${pkgver}_amd64.deb")
-sha256sums=('5c3073c1f80941cf7f8f2e96ca498e52251aa850b57f3213d76e2d571306975c')
+sha256sums=('578cf4443c9a2472025017056a77d9a8654735525c29a900071f5149e9fa859c')
 
 prepare() {
 	cd "$srcdir"
