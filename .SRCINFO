@@ -1,7 +1,7 @@
 pkgbase = r-bigutilsr
 	pkgdesc = Utility Functions for Large-scale Data
-	pkgver = 0.3.4
-	pkgrel = 3
+	pkgver = 0.3.11
+	pkgrel = 1
 	url = https://cran.r-project.org/package=bigutilsr
 	arch = x86_64
 	license = GPL-3.0-only
@@ -9,6 +9,8 @@ pkgbase = r-bigutilsr
 	checkdepends = r-mvtnorm
 	checkdepends = r-rrcov
 	checkdepends = r-testthat
+	makedepends = r-rcpparmadillo
+	makedepends = r-rcppeigen
 	depends = r-bigassertr
 	depends = r-bigparallelr
 	depends = r-nabor
@@ -21,8 +23,8 @@ pkgbase = r-bigutilsr
 	optdepends = r-rrcov
 	optdepends = r-spelling
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/bigutilsr_0.3.4.tar.gz
-	md5sums = 49ad25ab76efaab30f5dbaed238f2b31
-	b2sums = def3d1a5c1f5d69016d3569e694df90f531f5b869a0434b83cd7ad9aefc4998196ab9907847db75ed48a218a401f6fc9f241c11518908d928c607df84ec995f8
+	source = https://cran.r-project.org/src/contrib/bigutilsr_0.3.11.tar.gz
+	md5sums = 64eff2c8c490f17074c00d3c50101d94
+	b2sums = 5550070cbaacccb4c89dd9a99b82c78b7a1ea893c8e63e7a23d19aa5ed3e67d4dc80fb1e6509c513e4770586751f1ccb3da3cedba269ae8b0e33bb1518a7effb
 
 pkgname = r-bigutilsr
