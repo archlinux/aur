@@ -9,6 +9,6 @@ pkgbase = holesail
 	depends = nodejs
 	noextract = holesail-2.4.1.tgz
 	source = https://registry.npmjs.org/holesail/-/holesail-2.4.1.tgz
-	sha256sums = SKIP
+	sha256sums = 5227fda317be5f85acabe4bc714c75559668b58417c80644a1261d0042d998ae
 
 pkgname = holesail
