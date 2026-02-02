@@ -1,0 +1,15 @@
+pkgbase = dnstt-git
+	pkgdesc = IP over DNS tunnel using UDP, DoT or DoH (like iodine)
+	pkgver = 1.20241021.0.2.ge5e873b
+	pkgrel = 1
+	url = http://www.bamsoftware.com/software/dnstt
+	arch = x86_64
+	license = CC0-1.0
+	makedepends = go
+	makedepends = git
+	provides = dnstt
+	conflicts = dnstt
+	source = git+https://www.bamsoftware.com/git/dnstt.git
+	sha256sums = SKIP
+
+pkgname = dnstt-git
