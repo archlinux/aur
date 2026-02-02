@@ -1,31 +1,38 @@
-pkgname=xfce4-panel-xfce-ask-git
-_pkgbase=xfce-ask
-pkgver=1.0.5.r3.g28b63ac
+# Maintainer: ReelVault
+
+pkgname=reelvault-git
+pkgver=0.0.0.r4.g379983f
 pkgrel=1
-pkgdesc="XFCE panel plugin: quick one-off questions to OpenAI-compatible chat endpoints"
-arch=('x86_64' 'aarch64')
-url="https://github.com/rabfulton/xfce-ask"
+pkgdesc="Browse and launch your local film collection"
+arch=('x86_64')
+url="https://github.com/rabfulton/reelvault"
 license=('MIT')
-depends=('xfce4-panel' 'gtk3' 'libsoup3' 'json-glib' 'libsecret')
-makedepends=('git' 'pkgconf')
-provides=('xfce4-panel-xfce-ask')
-conflicts=('xfce4-panel-xfce-ask')
-source=("git+https://github.com/rabfulton/xfce-ask.git")
+depends=('gtk3' 'sqlite' 'curl' 'json-c')
+makedepends=('git' 'make' 'gcc' 'pkgconf')
+provides=('reelvault')
+conflicts=('reelvault')
+source=("reelvault::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgbase"
-  git describe --long --tags --always | sed 's/^v//; s/-/.r/; s/-/./'
+  cd "${srcdir}/reelvault"
+  local describe revcount shorthash
+  describe="$(git describe --tags --long --abbrev=7 2>/dev/null || true)"
+  if [[ -n "$describe" ]]; then
+    printf '%s\n' "$describe" | sed 's/^v//;s/-/./g'
+  else
+    revcount="$(git rev-list --count HEAD)"
+    shorthash="$(git rev-parse --short HEAD)"
+    printf '0.0.0.r%s.g%s\n' "$revcount" "$shorthash"
+  fi
 }
 
 build() {
-  cd "$srcdir/$_pkgbase"
-  make
+  cd "${srcdir}/reelvault"
+  make -j"$(nproc)"
 }
 
 package() {
-  cd "$srcdir/$_pkgbase"
-  make DESTDIR="$pkgdir" PREFIX=/usr install
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "${srcdir}/reelvault"
+  make DESTDIR="${pkgdir}" install
 }
-
