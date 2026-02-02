@@ -1,19 +1,18 @@
 # Maintainer: Antonio Prates <hello@aprates.dev>
 
 pkgname=fatscript-fry
-pkgver=4.3.0
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="fry - FatScript Interpreter"
 arch=('any')
 url="https://fatscript.org/"
-license=('GPL3')
+license=('LGPL3')
 groups=('fatscript')
-depends=('libcurl-compat')
-makedepends=('git' 'gcc' 'bash' 'libcurl-compat')
+depends=('curl')
+makedepends=('git' 'gcc' 'bash' 'curl')
 optdepends=(
   'openssl: for SSL/TLS support'
   'libffi: for DLL/FFI support'
-  'readline: for better terminal input'
 )
 source=("git+https://gitlab.com/fatscript/fry.git#tag=v${pkgver}")
 sha256sums=('SKIP')
@@ -37,6 +36,7 @@ package() {
   install -Dm755 bin/fry "${pkgdir}/usr/local/bin/fry"
   install -Dm644 man/fry.1 "${pkgdir}/usr/local/man/man1/fry.1"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 linenoise/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LINENOISE_LICENSE"
   
   if [ -d "/usr/share/nano/" ]; then
     install -Dm644 extras/fat.nanorc "${pkgdir}/usr/share/nano/fat.nanorc"
