@@ -1,7 +1,7 @@
 pkgbase = c47
 	pkgdesc = Emulator for the C47 pocket calculator
 	pkgver = 00.109.03.00b1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://47calc.com
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -26,3 +26,6 @@ pkgbase = c47
 	sha256sums = 72d4b6906ab49b3236698f8a88e86f30f946d4ea1e78c87ff7e95682ad6883e2
 
 pkgname = c47
+
+pkgname = r47
+	pkgdesc = Emulator for the R47 pocket calculator
