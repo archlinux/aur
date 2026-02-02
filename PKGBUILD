@@ -1,7 +1,7 @@
 # Maintainer: Bart Libert <bart plus aur at libert dot email>
 _pkgname=piri
 pkgname=${_pkgname}-asthestarsfalll
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="High-performance Niri extension tool built with Rust"
 arch=(x86_64)
@@ -12,7 +12,7 @@ makedepends=(cargo)
 provides=(${_pkgname})
 conflicts=(${_pkgname}-git)
 source=("${_pkgname}-$pkgver::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b0a53214b03d9aede6415493b4063e424b358a6df87337bf468477e3f8db0806')
+sha256sums=('37c224ae691bf79081feb92f1bc937349719ed13a67c94d87720bfe47f97bf49')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
