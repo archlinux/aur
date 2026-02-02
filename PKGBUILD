@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=typesense-dashboard-bin
 _pkgname=Typesense-Dashboard
-pkgver=2.4.4
+pkgver=2.4.5
 _electronversion=39
 pkgrel=1
 pkgdesc="A Typesense Dashboard to manage and browse collections.(Prebuilt version.Use system-wide electron)"
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/bfritscher/typesense-dashboard/v${pkgver}/public/icons/favicon-128x128.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a5c0b1eedd5d443e5d30caa8da488bfa730bd07f34d1cc9394c530675c90f1d4'
+sha256sums=('93c9ded23e84cd2f816a7902cfc6d478ad210e93703504a26faae9e653f54f7b'
             'ce61a0d27e9167938ce2083e1391de1ee514b40d8a0f5c3602a7a04f449f6779'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
