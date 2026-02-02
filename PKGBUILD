@@ -1,8 +1,8 @@
 # Maintainer: matthias.brandt@elpro.com
 
 pkgname=asyncapi-cli-bin
-pkgver=5.0.6
-pkgrel=2
+pkgver=6.0.0
+pkgrel=0
 pkgdesc="AsyncAPI CLI"
 arch=('x86_64')
 url="https://www.asyncapi.com/tools/cli"
