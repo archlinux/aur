@@ -1,11 +1,11 @@
 pkgbase = polaris-bin
 	pkgdesc = Validation of best practices in Kubernetes
-	pkgver = 10.1.3
+	pkgver = 10.1.4
 	pkgrel = 1
 	url = https://github.com/FairwindsOps/polaris
 	arch = x86_64
 	license = Apache-2.0
-	source = polaris-bin-10.1.3.tar.gz::https://github.com/FairwindsOps/polaris/releases/download/10.1.3/polaris_linux_amd64.tar.gz
-	sha256sums = e349284528473bebacfd9f8e29fb4e0bda01e520c72e4e8b191e4337465689c6
+	source = polaris-bin-10.1.4.tar.gz::https://github.com/FairwindsOps/polaris/releases/download/10.1.4/polaris_linux_amd64.tar.gz
+	sha256sums = e33ed63398c68db609c7a4d27b35fcda566781af6e379870f877ed25590de101
 
 pkgname = polaris-bin
