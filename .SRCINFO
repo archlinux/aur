@@ -1,6 +1,6 @@
 pkgbase = rclone-manager
 	pkgdesc = User-friendly GUI for Rclone
-	pkgver = 0.1.9
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/Zarestia-Dev/rclone-manager
 	arch = x86_64
@@ -15,12 +15,12 @@ pkgbase = rclone-manager
 	depends = libsoup
 	depends = pango
 	depends = webkit2gtk-4.1
-	optdepends = rclone: for file operations
+	optdepends = rclone
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/Zarestia-Dev/rclone-manager/releases/download/v0.1.9/Rclone.Manager_0.1.9_amd64.deb
-	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://github.com/Zarestia-Dev/rclone-manager/releases/download/v0.1.9/Rclone.Manager_0.1.9_arm64.deb
-	sha256sums_aarch64 = SKIP
+	source_x86_64 = https://github.com/Zarestia-Dev/rclone-manager/releases/download/v0.2.0/Rclone.Manager_0.2.0_amd64.deb
+	sha256sums_x86_64 = 57fb35d4ad012641cd1bc1097a7731af8e58bb0dcc83f89bc32bad57b859d1c4
+	source_aarch64 = https://github.com/Zarestia-Dev/rclone-manager/releases/download/v0.2.0/Rclone.Manager_0.2.0_arm64.deb
+	sha256sums_aarch64 = 9b19da93d2a48dd9f66e5d2c5531dc1f8c29f877a0587cc7a0d6a3e62ad0d445
 
 pkgname = rclone-manager
