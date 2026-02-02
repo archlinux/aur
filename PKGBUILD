@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=mercurial-hg
-pkgver=r49336.290c29df1915
-pkgrel=2
+pkgver=r55050.7ee1447e6977
+pkgrel=1
 pkgdesc="Distributed source control management tool"
 arch=('i686' 'x86_64')
 url="https://www.mercurial-scm.org/"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('glibc' 'python')
-makedepends=('mercurial' 'python-docutils' 'rust')
+makedepends=('mercurial' 'cargo' 'python-docutils' 'python-pip' 'python-setuptools-scm')
 optdepends=('tk: for the hgk GUI')
 provides=("mercurial=$pkgver")
 conflicts=('mercurial')
@@ -30,11 +30,9 @@ pkgver() {
 build() {
   cd "hg"
 
-  export PYTHONHASHSEED=0
   make \
     PURE="--rust" \
-    all
-  make -C "contrib/chg"
+    -C "contrib/chg"
 }
 
 check() {
