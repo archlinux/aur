@@ -29,7 +29,7 @@ basedir=$(pwd)
 build () {
     # Verify if in that path exist a PKGBUILD if thats true then it means that we are compiling in local
     # and if by any chance we find out that PKGBUILD contains the package name mem-c it 
-    if [[ -f "../../../../$pkgname/PKGBUILD" ]] && grep -q "pkgname=mem-c" "../../../../$pkgname/PKGBUILD" ; then
+    if [[ -f "../../../../$pkgname/PKGBUILD" ]] && grep -q "pkgname=$pkgname" "../../../../$pkgname/PKGBUILD" ; then
 	echo "[1m[32m==>[0m[1m Compiling package locally..."
 	echo "[1m[32m==>[0m[1m Trying to find the local source code path..."
 	if [ -d "../../$pkgname" ]; then
