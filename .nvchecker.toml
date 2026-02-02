@@ -1,0 +1,5 @@
+[pigo-bin]
+source = "github"
+github = "esimov/pigo"
+use_latest_release = true
+prefix = "v"

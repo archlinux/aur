@@ -1,0 +1,16 @@
+pkgbase = pigo-bin
+	pkgdesc = Fast face detection, pupil/eyes localization and facial landmark points detection
+	pkgver = 1.4.6
+	pkgrel = 1
+	url = https://github.com/esimov/pigo
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = pigo
+	conflicts = pigo
+	source = LICENSE-1.4.6::https://raw.githubusercontent.com/esimov/pigo/v1.4.6/LICENSE
+	sha256sums = b33c6f418a5c2407c24250ea0ce13af06b9050c695bdeae81badcbbfe688a8c5
+	source_x86_64 = pigo-x86_64-1.4.6.tgz::https://github.com/esimov/pigo/releases/download/v1.4.6/pigo-1.4.6-linux-amd64.tar.gz
+	sha256sums_x86_64 = 80adf887a2e0df15631b5f4755e8405b0420b1848a96d305f7a73fcbea1fecbc
+
+pkgname = pigo-bin
