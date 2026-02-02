@@ -1,12 +1,14 @@
 pkgbase = lqth
 	pkgdesc = Simple but blazingly fast screenshot utility
 	pkgver = 0.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/0x61nas/lqth
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = libx11
+	provides = lqth
+	conflicts = lqth-git
 	source = lqth-0.2.5.tar.gz::https://static.crates.io/crates/lqth/lqth-0.2.5.crate
 	source = LICENSE::https://raw.githubusercontent.com/0x61nas/lqth/refs/tags/0.2.5/LICENSE
 	source = lqth.1::https://raw.githubusercontent.com/0x61nas/lqth/refs/tags/0.2.5/man/lqth.1

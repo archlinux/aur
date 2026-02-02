@@ -1,12 +1,14 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=lqth
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple but blazingly fast screenshot utility'
 arch=('x86_64')
 url='https://github.com/0x61nas/lqth'
 license=('MIT')
 makedepends=('cargo' 'libx11')
+provides=('lqth')
+conflicts=('lqth-git')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate"
     "LICENSE::https://raw.githubusercontent.com/0x61nas/lqth/refs/tags/$pkgver/LICENSE"
     "lqth.1::https://raw.githubusercontent.com/0x61nas/lqth/refs/tags/$pkgver/man/lqth.1"
