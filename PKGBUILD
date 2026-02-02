@@ -1,6 +1,6 @@
 # Maintainer: JoelSGC <contact@joelsgc.dev>
 pkgname=netpala
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Golang based Wi-Fi manager inspired by Impala"
 arch=('x86_64')
