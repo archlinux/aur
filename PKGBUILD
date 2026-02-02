@@ -1,8 +1,8 @@
 pkgname=llama-swap
 
-: "${_fragment:=tag=v187}"
+: "${_fragment:=tag=v189}"
 
-pkgver=187
+pkgver=189
 pkgrel=1
 pkgdesc='Model swapping for llama.cpp (or any local OpenAPI compatible server)'
 
@@ -20,7 +20,7 @@ source=(
 	"git+$url.git#$_fragment"
 	llama-swap.service
 )
-sha256sums=('0bf7ff850612f712a517fdc982135d42fc87ea86dbdd5b832587dc6d6f696740'
+sha256sums=('635e127feeda80834e48d8a65b6daed438c2b8176467a4369735e18aa14a353c'
             '8f247fec3e347c212006415e23260a4851ccc435ea3fe0b2c7eaed12b49c406c')
 
 pkgver() {
@@ -31,7 +31,7 @@ prepare() {
 	cd "$pkgname"
 	go mod download
 
-	cd ui
+	cd ui-svelte
 	deno install --npm
 }
 
@@ -52,7 +52,7 @@ build() {
 		"
 	)
 
-	deno task --cwd=ui build
+	deno task --cwd=ui-svelte build
 	go build "${build_opts[@]}"
 }
 
