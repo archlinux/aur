@@ -6,12 +6,12 @@
 pkgname=papis
 pkgver=0.14.1+PR1018
 _pkgver=0.14.1
-pkgrel=5
+pkgrel=6
 pkgdesc='Command-line document and bibliography manager'
 arch=('any')
 url='https://github.com/papis/papis'
 license=('GPL-3.0-or-later')
-depends=('python'
+depends=('python<3.14'
     'python-arxiv'
     'python-beautifulsoup4'
     'python-bibtexparser<2'
@@ -116,8 +116,9 @@ build() {
 check() {
   cd "${pkgname}-${_pkgver}"
 
+  export PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
   build-env/bin/python -m pytest \
-    --disable-plugin-autoload \
+    # --disable-plugin-autoload \
     -o addopts='--papis-tmp-doctests --papis-tmp-xdg-home --doctest-modules' \
     -p papis_testing \
     papis tests
