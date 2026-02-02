@@ -2,13 +2,14 @@
 
 pkgname='vodbot-git'
 pkgver=1.1.10.r0.g376e311
-pkgrel=2
+pkgrel=3
 pkgdesc='A command line interface VOD and Clip manager for Twitch.'
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/FriendTeamInc/VodBot"
 provides=('vodbot')
 conflicts=('vodbot')
-depends=('ffmpeg'
+depends=('git'
+	 'ffmpeg'
          'python-argcomplete'
          'python-dataclasses-json' # AUR
          'python-requests'

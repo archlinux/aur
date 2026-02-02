@@ -1,12 +1,13 @@
 pkgbase = vodbot-git
 	pkgdesc = A command line interface VOD and Clip manager for Twitch.
 	pkgver = 1.1.10.r0.g376e311
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/FriendTeamInc/VodBot
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = MIT
+	depends = git
 	depends = ffmpeg
 	depends = python-argcomplete
 	depends = python-dataclasses-json
