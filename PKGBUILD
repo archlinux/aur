@@ -3,7 +3,7 @@
 _pkgauthor=esimov
 _pkgname=caire
 pkgname=${_pkgname}-bin
-pkgdesc="Run multiple commands in parallel"
+pkgdesc="Content aware image resize library based on Seam Carving"
 
 pkgver=1.5.0
 pkgrel=1
