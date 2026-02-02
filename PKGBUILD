@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=protonup-rs
-pkgver=0.9.3
+pkgver=0.10.0
 pkgrel=1
-pkgdesc="CLI program to automate the installation and update of Proton-GE"
+pkgdesc="Automate the installation and update of Linux Gaming Compatibility tools"
 arch=('x86_64')
 url="https://github.com/auyer/Protonup-rs"
 license=('Apache-2.0')
@@ -12,12 +12,12 @@ depends=(
 )
 makedepends=('cargo')
 source=("Protonup-rs-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6a15a38209bad820731f9b118f5c31f5c10ea34bb22d76463467bead93014cec')
+sha256sums=('d933627875bcf80b07d1aa1a1d2e6ec9a6df66ee45af499946afcd2c5ab0b9a7')
 
 prepare() {
   cd "Protonup-rs-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
