@@ -1,15 +1,15 @@
 pkgbase = easyeffects-bundy01-presets
 	pkgdesc = Community Presets for Easyeffects: Bose, Music, Sony and Video
-	pkgver = 2.2
-	pkgrel = 2
+	pkgver = 2.3
+	pkgrel = 1
 	url = https://github.com/Bundy01/EasyEffects-Presets
 	arch = any
 	license = MIT
-	depends = easyeffects>=7.1.7
-	depends = lsp-plugins-lv2>=1.2.17
+	depends = easyeffects
+	depends = lsp-plugins-lv2
 	depends = mda.lv2
 	depends = zam-plugins-lv2
-	source = EasyEffects-Presets-2.2.tar.gz::https://github.com/Bundy01/EasyEffects-Presets/archive/refs/tags/2.2.tar.gz
-	sha256sums = f9d875d6c22f2eeaf39449192059f3160e4d6867766306587069997c14f46419
+	source = EasyEffects-Presets-2.3.tar.gz::https://github.com/Bundy01/EasyEffects-Presets/archive/refs/tags/2.3.tar.gz
+	sha256sums = d1b6dc793b7d020660924fc1d1f71e3aebb275330221093008495563ba42b941
 
 pkgname = easyeffects-bundy01-presets
