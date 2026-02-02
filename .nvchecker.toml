@@ -1,0 +1,5 @@
+[jsongrep-bin]
+source = "github"
+github = "micahkepe/jsongrep"
+use_latest_release = true
+prefix = "v"

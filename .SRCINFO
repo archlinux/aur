@@ -1,0 +1,13 @@
+pkgbase = jsongrep-bin
+	pkgdesc = A JSONPath-inspired query language over JSON documents
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/micahkepe/jsongrep
+	arch = x86_64
+	license = MIT
+	provides = jg
+	conflicts = jsongrep
+	source_x86_64 = jsongrep-x86_64-0.4.1.tgz::https://github.com/micahkepe/jsongrep/releases/download/v0.4.1/jsongrep-0.4.1-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 4b7c21fefb1630dbff3d58dc727b8469e505ee4763486ba6b58e963077e65d29
+
+pkgname = jsongrep-bin
