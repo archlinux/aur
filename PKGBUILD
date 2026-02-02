@@ -1,8 +1,8 @@
 # Maintainer: Terromur <terromuroz@proton.me>
-# Maintainer: 00ein00
+# Maintainer: 00ein00 <ein420@proton.me>
 pkgname=hytale-f2p-git
 _pkgname=Hytale-F2P
-pkgver=2.2.0.r282.g8719cd3
+pkgver=2.2.1.r293.ga6c61ae
 pkgrel=1
 pkgdesc="Hytale-F2P - unofficial Hytale Launcher for free to play with multiplayer support"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('Hytale-F2P-git')
 replaces=('Hytale-F2P-git')
 source=("git+$url.git" "Hytale-F2P.desktop")
 sha256sums=('SKIP'
-            '46488fada4775d9976d7b7b62f8d1f1f8d9a9a9d8f8aa9af4f2e2153019f6a30')
+  '46488fada4775d9976d7b7b62f8d1f1f8d9a9a9d8f8aa9af4f2e2153019f6a30')
 
 pkgver() {
   cd "$_pkgname"
