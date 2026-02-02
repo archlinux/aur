@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Zaoqi
 pkgname=electerm
-pkgver=2.4.38
+pkgver=2.5.9
 _electronversion=38
 _nodeversion=22
 pkgrel=1
@@ -12,7 +12,7 @@ arch=(
     'x86_64'
 )
 url="https://electerm.html5beta.com/"
-_ghurl="https://github.com/electerm/electerm"
+_ghurl="https://wget.la/https://github.com/electerm/electerm"
 license=('MIT')
 conflicts=("${pkgname}")
 depends=(
@@ -32,7 +32,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('4a97d3f419ed8ca937ea7a8fede4b8d9175d92c8afa528ab6f9ace7d83e8df59'
+sha256sums=('a071c16e372b8d4266fd057211cdc23239d78adee8bc12fbcdadea81ae5a436d'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
