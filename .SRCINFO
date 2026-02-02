@@ -1,14 +1,20 @@
 pkgbase = numbat-bin
 	pkgdesc = A statically typed programming language for scientific computations with first class support for physical dimensions and units
 	pkgver = 1.20.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sharkdp/numbat
 	arch = x86_64
+	arch = aarch64
+	arch = i686
 	license = MIT
 	license = Apache-2.0
 	provides = numbat
 	conflicts = numbat
-	source = numbat-1.20.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/sharkdp/numbat/releases/download/v1.20.0/numbat-v1.20.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 24e7e538001a9ca374ce0f161a78642b789997212036d2d26bdc5f6961e05902
+	source_x86_64 = numbat-1.20.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/sharkdp/numbat/releases/download/v1.20.0/numbat-v1.20.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 24e7e538001a9ca374ce0f161a78642b789997212036d2d26bdc5f6961e05902
+	source_aarch64 = numbat-1.20.0-aarch64-unknown-linux-gnu.tar.gz::https://github.com/sharkdp/numbat/releases/download/v1.20.0/numbat-v1.20.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 75179040cc1785ea61ba95cb40aa7dc0ed1902c48c99a207a229ac9a59bb34a1
+	source_i686 = numbat-1.20.0-i686-unknown-linux-gnu.tar.gz::https://github.com/sharkdp/numbat/releases/download/v1.20.0/numbat-v1.20.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_i686 = b3bd6f4d4609e089646af1336206859415397dd7055b5699ff36282e3b24b21f
 
 pkgname = numbat-bin
