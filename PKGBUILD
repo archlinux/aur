@@ -15,6 +15,8 @@ depends=("libnotify"
          "python-packaging"
          "python-psutil"
          "python-xlib")
+provides=("safeeyes")
+conflicts=("safeeyes")
 makedepends=("python-setuptools" "python-packaging" "python-pip")
 optdepends=("python-pywayland: for Smart Pause plugin in Wayland" "xprintidle: for Smart Pause plugin in X11" "ffmpeg: For playing the audible bell" "python-croniter: for Health Stats plugin" "snixembed: For tray icon support in LXDE/MATE/WMs")
 source=("git+https://github.com/slgobinath/safeeyes.git")
