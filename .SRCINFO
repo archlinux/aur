@@ -1,0 +1,17 @@
+pkgbase = waybar-niri-windows-bin
+	pkgdesc = Niri focus indicator for Waybar
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/calico32/waybar-niri-windows
+	arch = x86_64
+	license = MIT
+	depends = waybar
+	depends = niri>=25.08
+	depends = glibc
+	conflicts = waybar-niri-windows
+	source = waybar-niri-windows-bin-2.3.0.so::https://github.com/calico32/waybar-niri-windows/releases/download/v2.3.0/waybar-niri-windows.so
+	source = waybar-niri-windows-bin-2.3.0.zip::https://github.com/calico32/waybar-niri-windows/archive/refs/tags/v2.3.0.zip
+	sha256sums = b145a7752e762a700a05e9a43dd0ccd61a6babdecb2ac7eb698d285c9135467c
+	sha256sums = 3d493b853d53b9781762b2695a9949b688b206b9578f21c0c916566679ae7181
+
+pkgname = waybar-niri-windows-bin
