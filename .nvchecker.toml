@@ -1,0 +1,4 @@
+[brotab]
+source = "github"
+github = "balta2ar/brotab"
+use_max_tag = true

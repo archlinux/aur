@@ -1,12 +1,10 @@
 pkgbase = brotab
 	pkgdesc = Control your browser's tabs from the command line
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/balta2ar/brotab
 	arch = any
 	license = MIT
-	checkdepends = python-pytest
-	checkdepends = python-pytest-cov
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python
@@ -18,7 +16,9 @@ pkgbase = brotab
 	conflicts = brotab-git
 	source = brotab-1.5.0.tar.gz::https://github.com/balta2ar/brotab/archive/refs/tags/1.5.0.tar.gz
 	source = json-output.patch
+	source = asyncio.patch
 	sha256sums = 1159b201abfdd4436c1a114985e052e97db87deffebf8c92df8e8b64f3a131b5
 	sha256sums = 68d6c02c64afcc7da5755795ec86c33a95a7aa00c4f4b99557aaf03b70b4b64d
+	sha256sums = 57aec43cfda79a277a7429032fc82a1ad412a60a4a2f5c8564c9a366d822a21c
 
 pkgname = brotab

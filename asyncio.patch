@@ -1,0 +1,28 @@
+GitHub: https://github.com/balta2ar/brotab/pull/139/changes
+
+--- brotab-1.5.0/brotab/parallel.py	2025-01-22 17:02:00.000000000 -0300
++++ brotab-1.5.0/brotab/parallel.py	2025-01-22 17:02:00.000000000 -0300
+@@ -1,5 +1,5 @@
+ from concurrent.futures import ThreadPoolExecutor
+-from asyncio import get_event_loop, gather
++from asyncio import get_event_loop, gather, new_event_loop, set_event_loop
+ 
+ 
+ def call_parallel(functions):
+@@ -9,7 +9,15 @@
+     Create a pool of thread as large as the number of functions.
+     Functions should accept no parameters (wrap then with partial or lambda).
+     """
+-    loop = get_event_loop()
++
++    try:
++        loop = get_event_loop()
++        if loop.is_closed():
++            raise RuntimeError("Event loop is closed.")
++    except RuntimeError:
++        loop = new_event_loop()
++        set_event_loop(loop)
++
+     executor = ThreadPoolExecutor(max_workers=len(functions))
+ 
+     try:
