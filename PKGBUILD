@@ -2,7 +2,7 @@
 # Contributor: solarbaron
 # Contributor: Dlani
 pkgname=feishin
-pkgver=1.3.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='A modern self-hosted music player.'
 arch=('x86_64' 'aarch64')
