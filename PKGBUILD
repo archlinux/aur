@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@example.com>
+# Maintainer: p741633 <p741633@hotmail.com>
 pkgname=thc-secure-delete
 pkgver=3.1.1
 pkgrel=1
