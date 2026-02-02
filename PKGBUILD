@@ -31,10 +31,31 @@ case ${CARCH} in
     ;;
 esac
 
+build() {
+	cd "${srcdir}/${_pkgname}-${pkgver}-${_CARCH}/" || exit
+
+	mkdir -p ./completions
+	./${_appname} generate shell bash > ./completions/${_appname}.bash
+	./${_appname} generate shell zsh > ./completions/${_appname}.zsh
+	./${_appname} generate shell fish > ./completions/${_appname}.fish
+
+	mkdir -p man
+	./${_appname} generate man -o ./man/ > /dev/null 2>&1
+}
+
 package() {
 	cd "${srcdir}/${_pkgname}-${pkgver}-${_CARCH}/" || exit
 
 	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
+
+	install -D -m644 "./completions/${_appname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${_appname}"
+	install -D -m644 "./completions/${_appname}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${_appname}"
+	install -D -m644 "./completions/${_appname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${_appname}.fish"
+
+	install -d -m755 "${pkgdir}/usr/share/man/man1/"
+	for man in man/*.1; do
+		cp -P "${man}" "${pkgdir}/usr/share/man/man1/"
+	done
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
