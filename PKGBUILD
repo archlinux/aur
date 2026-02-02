@@ -7,7 +7,7 @@
 
 pkgname=python-pyminiracer
 _name=mini-racer
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=1
 pkgdesc='Minimal, modern embedded V8 for Python'
 arch=('x86_64')
@@ -18,7 +18,7 @@ makedepends=(python-installer)
 _py=py3
 _glibc=2_27
 source=("https://files.pythonhosted.org/packages/$_py/${_name::1}/$_name/${_name//-/_}-$pkgver-$_py-none-manylinux_${_glibc}_x86_64.whl")
-sha256sums=('b53c95d86b0093bad8066aa6adff6babb718998c7f376f83597174ac8570773f')
+sha256sums=('cdf3a088e1363f16a695288f882abf76b3705b8e1df21418208b87ed010037a4')
 
 package() {
 	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" ${_name//-/_}-$pkgver-$_py-none-manylinux_${_glibc}_x86_64.whl

@@ -1,6 +1,6 @@
 pkgbase = python-pyminiracer
 	pkgdesc = Minimal, modern embedded V8 for Python
-	pkgver = 0.14.0
+	pkgver = 0.14.1
 	pkgrel = 1
 	url = https://github.com/bpcreech/PyMiniRacer
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = python-pyminiracer
 	makedepends = python-installer
 	depends = python
 	depends = python-typing_extensions
-	source = https://files.pythonhosted.org/packages/py3/m/mini-racer/mini_racer-0.14.0-py3-none-manylinux_2_27_x86_64.whl
-	sha256sums = b53c95d86b0093bad8066aa6adff6babb718998c7f376f83597174ac8570773f
+	source = https://files.pythonhosted.org/packages/py3/m/mini-racer/mini_racer-0.14.1-py3-none-manylinux_2_27_x86_64.whl
+	sha256sums = cdf3a088e1363f16a695288f882abf76b3705b8e1df21418208b87ed010037a4
 
 pkgname = python-pyminiracer
