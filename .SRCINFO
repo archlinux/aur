@@ -1,0 +1,26 @@
+pkgbase = hadlink-bin
+	pkgdesc = High-assurance URL shortener with formally verified SPARK core
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/Jbsco/hadlink
+	install = hadlink-bin.install
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	depends = sqlite
+	provides = hadlink
+	conflicts = hadlink
+	backup = etc/hadlink/hadlink.conf
+	source = hadlink-1.0.1.tar.gz::https://github.com/Jbsco/hadlink/releases/download/v1.0.1/hadlink-linux-x64.tar.gz
+	source = hadlink-shorten.service::https://raw.githubusercontent.com/Jbsco/hadlink/v1.0.1/deploy/systemd/hadlink-shorten.service
+	source = hadlink-redirect.service::https://raw.githubusercontent.com/Jbsco/hadlink/v1.0.1/deploy/systemd/hadlink-redirect.service
+	source = hadlink.conf::https://raw.githubusercontent.com/Jbsco/hadlink/v1.0.1/deploy/systemd/hadlink.conf
+	source = hadlink.sysusers
+	source = hadlink.tmpfiles
+	sha256sums = e3a8f4049568020d47997747ef8cf1ded76d1ca4f60209ce6b04ce6b5e361d0b
+	sha256sums = 142e8577209be0edc91a99155d8ea4266f8eb4aace81901be7bcd76800d63f2a
+	sha256sums = 034076cc94daa3095109e57d5ba123cd7950cb811a2ef294dc24f66cf4ae1d7f
+	sha256sums = c0dc4a11a0c06d5307af0eceabf73fdc0a432bf337df451d1292bec3b01de713
+	sha256sums = 3f86c4b7a821080e3548aafc63af204b01373a01a8cacb30955cb5f936d6787d
+	sha256sums = 335fd4d12858142aa05a3e5e742e8053316da6ee54d9a14e9d7851b5c817c562
+
+pkgname = hadlink-bin

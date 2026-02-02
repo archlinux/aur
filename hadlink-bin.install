@@ -1,0 +1,13 @@
+post_install() {
+    echo ":: To configure hadlink, edit /etc/hadlink/hadlink.conf"
+    echo ":: Create a secret for the shorten service:"
+    echo "::   openssl rand -hex 16 > /etc/hadlink/secret.conf"
+    echo "::   chmod 600 /etc/hadlink/secret.conf"
+    echo ":: Then format it as: HADLINK_SECRET=<value>"
+    echo ":: Start services with:"
+    echo "::   systemctl enable --now hadlink-shorten hadlink-redirect"
+}
+
+post_upgrade() {
+    post_install
+}
