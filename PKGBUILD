@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=airi-bin
 _pkgname=AIRI
-pkgver=0.8.3
+pkgver=0.8.4
 _electronversion=40
 pkgrel=1
 pkgdesc="💖🧸 Self hosted, you owned Grok Companion, a container of souls of waifu, cyber livings to bring them into our worlds, wishing to achieve Neuro-sama's altitude.(Prebuilt version.Use system-wide electron)"
@@ -30,8 +30,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.rpm")
 sha256sums=('f334260edf0508041280b534ca9d0abd5a02a9626c1d2e20a556ac4eb72b07f9'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('b534260ac1ed66b34aab1afb125da63abbe65cae2844d7349c8ffac58f65f6e8')
-sha256sums_x86_64=('f97d2139c2a97c3b979e9fdd846c83ce334f530f44122c6ecce401a17942e1d5')
+sha256sums_aarch64=('e1b5db4eb3830212dcfa0d9af273eb7b50667fd52816db48d3a3bb30f22df0bc')
+sha256sums_x86_64=('c22e4fe8e945b549d3bb97b1254670da152b84e710a2ce3c0995b548bc399fbb')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
