@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/aur/rxvt-unicode-truecolor-wide-glyphs/patch-builder.sh
 # author: klassiker [mrdotx]
 # url:    https://aur.archlinux.org/packages/rxvt-unicode-truecolor-wide-glyphs
-# date:   2025-04-07T09:52:03+0200
+# date:   2026-02-02T16:59:27+0100
 
 # config
 pkgname="rxvt-unicode"
@@ -40,3 +40,4 @@ build_patch "lines-rewrap"
 build_patch "24-bit-color"
 build_patch "enable-wide-glyphs"
 build_patch "improve-font-rendering"
+build_patch "osc-110-112-reset"

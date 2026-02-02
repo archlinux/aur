@@ -4,7 +4,7 @@ _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-truecolor-wide-glyphs
 pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt) with true color, enhanced glyphs and improved font rendering support'
 pkgver=9.31
-pkgrel=11
+pkgrel=12
 url='https://software.schmorp.de/pkg/rxvt-unicode.html'
 arch=('i686' 'x86_64')
 license=('GPL-3.0-only')
@@ -47,6 +47,7 @@ source=(
     '24-bit-color.patch'
     'enable-wide-glyphs.patch'
     'improve-font-rendering.patch'
+    'osc-110-112-reset.patch'
 )
 b2sums=('439a8c33b7260e0f2fd68b8a4409773c06c3bb7623b5dfbbb0742cc198c9fd25e8a247907878639db5fac3dcd3b6be3d839347787bcf08ca602ae246607f750b'
         '1c58b1d53c72dbfae4f9302f5903365f84e85b2a1e9846d9dd9c712a7900e73a94621a41bee6dd75d690df8ae95d1d987d93ca4355eb8d8c423c57680df0edcf'
@@ -60,7 +61,8 @@ b2sums=('439a8c33b7260e0f2fd68b8a4409773c06c3bb7623b5dfbbb0742cc198c9fd25e8a2479
         '136ffb38a0a5820a413ddf85a88556d57dc5ab9944454596402692f336cbc5ec96180534eba04f0921dfb9dcbe59a0849197842e12c65eab59ef0741e6ee3b91'
         '564371ab9873c5bf12a95e0a2807a166eb472ae37f1fe6b5e6afd8335ca106f40dbce152fa9df11531df74d75a734cb32be57921223bbd0e7db85f4e27bd0f13'
         '88c07389328c12b5c639b226d9a41d1d15eddeb7212431653832d53b0b786ef1be1dd7f32023ea19078b103217299fda8333668f73246b660a0e07aaa54ad108'
-        '4365664301075347df66c38ce994ef8700043a2ab09770f3e9caf8c98ba7673ab93507029782cc34efcd6c1cc203b6ea9139a7a411a8f3398f4f43f3bfb58519')
+        '4365664301075347df66c38ce994ef8700043a2ab09770f3e9caf8c98ba7673ab93507029782cc34efcd6c1cc203b6ea9139a7a411a8f3398f4f43f3bfb58519'
+        '8da9911519554ba63ad32e56a492039d075861f5516a56a334cf6c988d3fc890e82c1fe362da385d44cba4620b6dcedba36c28a2360173cfc14f2b6300775452')
 
 prepare() {
     mv -v "$_archive.tar.bz2.signature" "$_archive.tar.bz2.sig"
@@ -95,6 +97,10 @@ prepare() {
     # https://gist.githubusercontent.com/emonkak/28bbc5474697695321452b6d9bf1d0bd/raw/a888c37ae10376598e663cf989132648f89219c0/rxvt-unicode-9.22-improve-font-endering.patch
     # patch rewritten to work with version ≥ 9.29
     patch -p1 -i ../improve-font-rendering.patch
+
+    # https://patch-diff.githubusercontent.com/raw/exg/rxvt-unicode/pull/6.patch
+    # patch to reset the terminal bg/fg/cursor colors via OSC 110/111/112
+    patch -p1 -i ../osc-110-112-reset.patch
 }
 
 build() {

@@ -1,0 +1,251 @@
+This change add support for resetting the terminal bg/fg/cursor
+colors via OSC 110/111/112. These OSC command are widely used
+among other terminals and are part of the XTerm control
+sequences. Some terminals that implement this include but
+not limited to: xterm, vte, konsole, foot, ghostty, alacritty,
+iterm2, apple terminal, st, and many other.
+
+--- a/src/command.C
++++ b/src/command.C
+@@ -3299,22 +3299,22 @@
+ rxvt_term::process_osc_seq ()
+ {
+   int arg;
++  string_term st;
++  char *s;
+ 
+-  unicode_t ch = cmd_getc ();
+-  for (arg = 0; isdigit (ch); ch = cmd_getc ())
+-    arg = arg * 10 + (ch - '0');
++  s = get_to_st (st);
++  if (!s)
++    return;
+ 
+-  if (ch == ';')
+-    {
+-      string_term st;
+-      char *s = get_to_st (st);
++  char *ch = s;
++  for (arg = 0; isdigit (ch[0]); ch++)
++    arg = arg * 10 + (*ch - '0');
+ 
+-      if (s)
+-        {
+-          process_xterm_seq (arg, s, st);
+-          free (s);
+-        }
+-    }
++  if (*ch == ';')
++    ch++;
++
++  process_xterm_seq (arg, ch, st);
++  free (s);
+ }
+ 
+ static unsigned int
+@@ -3463,6 +3463,13 @@
+   if (HOOK_INVOKE ((this, HOOK_OSC_SEQ, DT_INT, op, DT_STR, str, DT_END)))
+     return;
+ 
++  // These operations take no parameters and expect empty string.
++  if (strlen (str) == 0 &&
++      op != XTerm_RestoreColor00 &&
++      op != XTerm_RestoreColor01 &&
++      op != XTerm_RestoreColor_cursor)
++    return;
++
+   switch (op)
+     {
+       case XTerm_name:
+@@ -3533,14 +3540,17 @@
+         break;
+       case Rxvt_restoreFG:
+       case XTerm_Color00:
++      case XTerm_RestoreColor00:
+         process_color_seq (op, Color_fg, str, st);
+         break;
+       case Rxvt_restoreBG:
+       case XTerm_Color01:
++      case XTerm_RestoreColor01:
+         process_color_seq (op, Color_bg, str, st);
+         break;
+ #ifndef NO_CURSORCOLOR
+       case XTerm_Color_cursor:
++      case XTerm_RestoreColor_cursor:
+         process_color_seq (op, Color_cursor, str, st);
+         break;
+ #endif
+--- a/src/init.C
++++ b/src/init.C
+@@ -765,10 +765,13 @@
+     }
+ #endif
+ 
+-  for (i = 0; i < NRS_COLORS; i++)
++  for (i = 0; i < NRS_COLORS; i++) {
+     if (!rs[Rs_color + i])
+       rs[Rs_color + i] = def_colorName[i];
+ 
++    def_colors[i] = rs[Rs_color + i];
++  }
++
+ #ifndef XTERM_REVERSE_VIDEO
+   /* this is how we implement reverseVideo */
+   if (option (Opt_reverseVideo))
+--- a/src/main.C
++++ b/src/main.C
+@@ -944,6 +944,8 @@
+ {
+ #ifdef XTERM_COLOR_CHANGE
+   if (color == NULL || *color == '\0')
++    color = get_def_color (idx);
++  if (!color)
+     return;
+ 
+   color = strdup (color);
+@@ -1045,6 +1047,27 @@
+   return false;
+ }
+ 
++const char *
++rxvt_term::get_def_color(int idx)
++{
++  const char *color;
++
++  color = def_colors[idx];
++  if (!color) {
++    // If cursor colors are not defined, use fg/bg respectively.
++    switch (idx) {
++    case Color_cursor:
++      color = def_colors[Color_fg];
++      break;
++    case Color_cursor2:
++      color = def_colors[Color_bg];
++      break;
++    }
++  }
++
++  return color;
++}
++
+ void
+ rxvt_term::alias_color (int dst, int src)
+ {
+--- a/src/rxvt.h
++++ b/src/rxvt.h
+@@ -425,54 +425,58 @@
+  * colour extensions by Christian W. Zuckschwerdt <zany@triq.net>
+  */
+ enum {
+-  XTerm_name             =  0,
+-  XTerm_iconName         =  1,
+-  XTerm_title            =  2,
+-  XTerm_property         =  3,      // change X property
+-  XTerm_Color            =  4,      // change colors
+-  XTerm_Color00          = 10,      // change fg color
+-  XTerm_Color01          = 11,      // change bg color
+-  XTerm_Color_cursor     = 12,      // change actual 'Cursor' color
+-  XTerm_Color_pointer_fg = 13,      // change actual 'Pointer' fg color
+-  XTerm_Color_pointer_bg = 14,      // change actual 'Pointer' bg color
+-  XTerm_Color05          = 15,      // not implemented (tektronix fg)
+-  XTerm_Color06          = 16,      // not implemented (tektronix bg)
+-  XTerm_Color_HC         = 17,      // change actual 'Highlight' bg color
+-  XTerm_Color_HTC        = 19,      // change actual 'Highlight' fg color
+-  XTerm_logfile          = 46,      // not implemented
+-  XTerm_font             = 50,
+-
+-  XTerm_konsole30        = 30,      // reserved for konsole
+-  XTerm_konsole31        = 31,      // reserved for konsole
+-  XTerm_emacs51          = 51,      // reserved for emacs shell
++  XTerm_name                =  0,
++  XTerm_iconName            =  1,
++  XTerm_title               =  2,
++  XTerm_property            =  3,      // change X property
++  XTerm_Color               =  4,      // change colors
++  XTerm_Color00             = 10,      // change fg color
++  XTerm_Color01             = 11,      // change bg color
++  XTerm_Color_cursor        = 12,      // change actual 'Cursor' color
++  XTerm_Color_pointer_fg    = 13,      // change actual 'Pointer' fg color
++  XTerm_Color_pointer_bg    = 14,      // change actual 'Pointer' bg color
++  XTerm_Color05             = 15,      // not implemented (tektronix fg)
++  XTerm_Color06             = 16,      // not implemented (tektronix bg)
++  XTerm_Color_HC            = 17,      // change actual 'Highlight' bg color
++  XTerm_Color_HTC           = 19,      // change actual 'Highlight' fg color
++  XTerm_logfile             = 46,      // not implemented
++  XTerm_font                = 50,
++
++  XTerm_konsole30           = 30,      // reserved for konsole
++  XTerm_konsole31           = 31,      // reserved for konsole
++  XTerm_emacs51             = 51,      // reserved for emacs shell
+   /*
+    * rxvt extensions of XTerm OSCs: ESC ] Ps;Pt (ST|BEL)
+    */
+ 
+   // deprecated
+-  Rxvt_restoreFG         = 39,
+-  Rxvt_restoreBG         = 49,
++  Rxvt_restoreFG            = 39,
++  Rxvt_restoreBG            = 49,
+ 
+-  Rxvt_dumpscreen        = 55,      // dump scrollback and all of screen
++  Rxvt_dumpscreen           = 55,      // dump scrollback and all of screen
++                                       //
++  XTerm_RestoreColor00      = 110,     // restore fg color
++  XTerm_RestoreColor01      = 111,     // restore bg color
++  XTerm_RestoreColor_cursor = 112,     // restore cursor color
++
++  URxvt_locale              = 701,     // change locale
++  URxvt_version             = 702,     // request version
++
++  URxvt_Color_IT            = 704,     // change actual 'Italic' colour
++  URxvt_Color_BD            = 706,     // change actual 'Bold' color
++  URxvt_Color_UL            = 707,     // change actual 'Underline' color
++  URxvt_Color_border        = 708,
++
++  URxvt_font                = 710,
++  URxvt_boldFont            = 711,
++  URxvt_italicFont          = 712,
++  URxvt_boldItalicFont      = 713,
+ 
+-  URxvt_locale           = 701,     // change locale
+-  URxvt_version          = 702,     // request version
++  URxvt_view_up             = 720,
++  URxvt_view_down           = 721,
+ 
+-  URxvt_Color_IT         = 704,     // change actual 'Italic' colour
+-  URxvt_Color_BD         = 706,     // change actual 'Bold' color
+-  URxvt_Color_UL         = 707,     // change actual 'Underline' color
+-  URxvt_Color_border     = 708,
+-
+-  URxvt_font             = 710,
+-  URxvt_boldFont         = 711,
+-  URxvt_italicFont       = 712,
+-  URxvt_boldItalicFont   = 713,
+-
+-  URxvt_view_up          = 720,
+-  URxvt_view_down        = 721,
+-
+-  URxvt_cellinfo         = 776,     // returns font cell width, height etc.
+-  URxvt_perl             = 777,     // for use by perl extensions, starts with "extension-name;"
++  URxvt_cellinfo            = 776,     // returns font cell width, height etc.
++  URxvt_perl                = 777,     // for use by perl extensions, starts with "extension-name;"
+ };
+ 
+ /* Words starting with `Color_' are colours.  Others are counts */
+@@ -1243,6 +1247,8 @@
+ #endif
+ 
+   const char     *rs[NUM_RESOURCES];
++  const char     *def_colors[NRS_COLORS];
++
+   /* command input buffering */
+   char           *cmdbuf_ptr, *cmdbuf_endp;
+   char            cmdbuf_base[CBUFSIZ];
+@@ -1432,6 +1438,7 @@
+   void set_window_color (int idx, const char *color);
+   char *get_colorfgbg ();
+   bool set_color (rxvt_color &color, const char *name);
++  const char *get_def_color(int idx);
+   void alias_color (int dst, int src);
+   void set_widthheight (unsigned int newwidth, unsigned int newheight);
+   void get_window_origin (int &x, int &y);
