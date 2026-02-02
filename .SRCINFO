@@ -1,6 +1,6 @@
 pkgbase = lexicanter-bin
 	pkgdesc = A lexicon management tool for constructed languages.It was developed and will occasionally be updated by Ethan Ray (known online as Cthethan or Saturnine).(Prebuilt version.Use system-wide electron)
-	pkgver = 2.2.5
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/Saturnine-Softworks/Lexicanter
 	arch = aarch64
@@ -8,15 +8,15 @@ pkgbase = lexicanter-bin
 	license = GPL-3.0-only
 	makedepends = asar
 	makedepends = fuse2
-	depends = electron36
+	depends = electron38
 	depends = python
-	provides = lexicanter=2.2.5
+	provides = lexicanter=2.3.0
 	conflicts = lexicanter
 	source = lexicanter.sh
 	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
-	source_aarch64 = lexicanter-2.2.5-aarch64.AppImage::https://github.com/Saturnine-Softworks/Lexicanter/releases/download/2.2.5/Lexicanter-2.2.5-arm64.AppImage
-	sha256sums_aarch64 = b1b068c1d979b9b9f3e11c9a552aab734e0eb4796841e8e5f2995507e32afa74
-	source_x86_64 = lexicanter-2.2.5-x86_64.AppImage::https://github.com/Saturnine-Softworks/Lexicanter/releases/download/2.2.5/Lexicanter-2.2.5.AppImage
-	sha256sums_x86_64 = 993b144639046f033bcab9cffc1f24d98e8cb51f631b00fa376a46b4a4749751
+	source_aarch64 = lexicanter-2.3.0-aarch64.AppImage::https://github.com/Saturnine-Softworks/Lexicanter/releases/download/2.3.0/Lexicanter-2.3.0-arm64.AppImage
+	sha256sums_aarch64 = 1100bf51d63c5dc3ac4e3af2a73d0e867c1f35575eb547749b22ca3a3652f675
+	source_x86_64 = lexicanter-2.3.0-x86_64.AppImage::https://github.com/Saturnine-Softworks/Lexicanter/releases/download/2.3.0/Lexicanter-2.3.0.AppImage
+	sha256sums_x86_64 = 914b7e798374fd74f16b45402d071a27af3c20a834a832384cb85489880f35e4
 
 pkgname = lexicanter-bin
