@@ -3,7 +3,7 @@
 # Contributor: xiota
 pkgname=legcord-bin
 _pkgname=Legcord
-pkgver=1.2.0
+pkgver=1.2.1
 _electronversion=40
 pkgrel=1
 pkgdesc="a custom client designed to enhance your Discord experience while keeping everything lightweight.(Prebuilt version.Use system-wide electron)"
@@ -35,9 +35,9 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${_ghurl}/releases/downloa
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.rpm")
 sha256sums=('c2cba32542cf3a65813e83fdbd259020d6d62b6833aa18f38aec983837dc9e4d'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('bb592647eb12f26e1dde35c5c75ac74bf506732746f220e5c8ed9e03dbf75f3b')
-sha256sums_armv7h=('b2a40c47458e38b12d4ac2c21f8dd429645509d2a9fe8413de40fad7633d898f')
-sha256sums_x86_64=('5220739f6261639aaaac6d2f04b33cc53aee55ba8d740016d4dac2844f5a4f37')
+sha256sums_aarch64=('14aa9bc7af18253029f5f00bd7c7f1333b372af2d7031555d33d952b4f54e34d')
+sha256sums_armv7h=('83edbdcfce4fd4c27314fdaeadbef32cbe1098015b15aed775be1fd9536a630b')
+sha256sums_x86_64=('1686881a41d2560224e739b623db1deaa72cf22dc6482e44bb4a7ffb4901907b')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
@@ -61,7 +61,7 @@ prepare() {
     case "${CARCH}" in
         aarch64)
             rm -rf \
-                "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/koffi/build/koffi/"{linux_armhf,linux_x64} \
+                "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/koffi/build/koffi/"{linux_armhf,linux_x64,musl_x64} \
                 "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/@vencord/venmic/prebuilds/venmic-addon-linux-x64"
             ;;
         armv7h)
@@ -71,7 +71,7 @@ prepare() {
             ;;
         x86_64)
             rm -rf \
-                "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/koffi/build/koffi/"{linux_arm64,linux_armhf} \
+                "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/koffi/build/koffi/"{linux_arm64,linux_armhf,musl_arm64} \
                 "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/@vencord/venmic/prebuilds/venmic-addon-linux-arm64"
             ;;
     esac
