@@ -10,8 +10,8 @@ pkgbase = phasor
 	makedepends = ninja
 	conflicts = phasor-git
 	conflicts = phasor-dev
-	conflicts = phasor-git-debug
-	conflicts = phasor-dev-debug
+	options = strip
+	options = !debug
 	source = https://github.com/DanielLMcGuire/Phasor/archive/refs/tags/2.2.0.tar.gz
 	sha256sums = 3AB4C4A1DAC0EDD4582678737CBD7B891E438EF074015D1695141A4EE9B7E065
 
