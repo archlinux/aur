@@ -1,15 +1,15 @@
 pkgbase = zedis-bin
 	pkgdesc = Zedis: A blazing-fast, native Redis GUI built with Rust and GPUI.
-	pkgver = 0.1.9
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/vicanso/zedis
 	arch = x86_64
 	license = Apache-2.0
 	provides = zedis
 	options = !debug
-	source_x86_64 = zedis-bin-0.1.9-x86_64::https://github.com/vicanso/zedis/releases/download/v0.1.9/zedis-linux-x86_64.tar.gz
+	source_x86_64 = zedis-bin-0.2.1-x86_64::https://github.com/vicanso/zedis/releases/download/v0.2.1/zedis-linux-x86_64.tar.gz
 	source_x86_64 = LICENSE::https://raw.githubusercontent.com/vicanso/zedis/main/LICENSE
-	b2sums_x86_64 = 497ae80fbfa0113bdddd7ad4ee749a9dc774401ac5bd5000200beccc6a008af739094ef60074eec982fd551f7bc7a5e218cf89d9ca4cdcaa38f6c6ee38c613ee
+	b2sums_x86_64 = a23bd86f54a7f64336c83c770cc0503ea1359506ed3408bd6b5594514cabaf9294acee5d68284e5d4a793edc223b54f572e13cf4fe6897080e0c66e432faf978
 	b2sums_x86_64 = 43452dd4216bba835bff542c02fcd0a80b77fef97a6f1042adcbbbcf312bb856b0707c35b2f1af356e0b4262e501a159f06bf1f947f182d0023cdd4aefbd8a85
 
 pkgname = zedis-bin
