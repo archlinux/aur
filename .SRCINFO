@@ -1,7 +1,7 @@
 pkgbase = xdigest
 	pkgdesc = Extremely fast digest algorithm implementations packaged into a lightweight library.
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rinrab/xdigest
 	arch = x86_64
 	license = Apache 2.0

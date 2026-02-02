@@ -2,7 +2,7 @@
 
 pkgname=xdigest
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Extremely fast digest algorithm implementations packaged into a lightweight library. '
 arch=('x86_64')
 url='https://github.com/rinrab/xdigest'
@@ -13,18 +13,24 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rinrab/xdigest/archive/
 sha256sums=('aea497c2043b329c6306fe23a84fd8d125395ccedc3f565fc43fe3d08625f14b')
 
 build() {
-  cd $pkgname-$pkgver
-  make
+  local cmake_options=(
+    -B build
+    -S $pkgname-$pkgver
+    # we actually need -O3. this is one of those rare exceptional cases
+    -D CMAKE_BUILD_TYPE=Release
+    -D CMAKE_INSTALL_PREFIX=/usr
+  )
+
+  cmake "${cmake_options[@]}"
+  cmake --build build
 }
 
 check() {
-  cd $pkgname-$pkgver
-  make test
+  ctest --test-dir build --verbose
 }
 
 package() {
-  cd $pkgname-$pkgver
-  make install prefix=${pkgdir}/usr
+  DESTDIR="$pkgdir" cmake --install build
 }
 
 # vim:set ts=2 sw=2 et:
