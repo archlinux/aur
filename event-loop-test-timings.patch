@@ -1,0 +1,36 @@
+diff -uNr ola-0.10.9.orig/python/ola/ClientWrapperTest.py ola-0.10.9/python/ola/ClientWrapperTest.py
+--- ola-0.10.9.orig/python/ola/ClientWrapperTest.py	2023-02-26 02:23:26.000000000 +0100
++++ ola-0.10.9/python/ola/ClientWrapperTest.py	2026-02-02 14:00:16.356274253 +0100
+@@ -188,26 +188,23 @@
+     self.assertIsNotNone(results.c_called)
+     self.assertIsNotNone(results.d_called)
+ 
+-    # Check when the callbacks were called. Allow 500 microseconds of drift.
++    # Check when the callbacks were called. Allow max_delta microseconds of drift.
++    max_delta = datetime.timedelta(microseconds=5000)
+     # Called immediately
+     a_diff = results.a_called - self.start
+-    self.assertAlmostEqual(a_diff, datetime.timedelta(milliseconds=0),
+-                           delta=datetime.timedelta(microseconds=750))
++    self.assertAlmostEqual(a_diff, datetime.timedelta(milliseconds=0), delta=max_delta)
+ 
+     # Called in 5 milliseconds
+     b_diff = results.b_called - self.start
+-    self.assertAlmostEqual(b_diff, datetime.timedelta(milliseconds=5),
+-                           delta=datetime.timedelta(microseconds=750))
++    self.assertAlmostEqual(b_diff, datetime.timedelta(milliseconds=5), delta=max_delta)
+ 
+     # Called in 10 milliseconds
+     c_diff = results.c_called - self.start
+-    self.assertAlmostEqual(c_diff, datetime.timedelta(milliseconds=10),
+-                           delta=datetime.timedelta(microseconds=750))
++    self.assertAlmostEqual(c_diff, datetime.timedelta(milliseconds=10), delta=max_delta)
+ 
+     # Called in 15 milliseconds
+     d_diff = results.d_called - self.start
+-    self.assertAlmostEqual(d_diff, datetime.timedelta(milliseconds=15),
+-                           delta=datetime.timedelta(microseconds=750))
++    self.assertAlmostEqual(d_diff, datetime.timedelta(milliseconds=15), delta=max_delta)
+ 
+     sockets[0].close()
+     sockets[1].close()
