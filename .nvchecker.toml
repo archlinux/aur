@@ -1,0 +1,5 @@
+[pmg-bin]
+source = "github"
+github = "safedep/pmg"
+use_latest_release = true
+prefix = "v"

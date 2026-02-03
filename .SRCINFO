@@ -1,0 +1,19 @@
+pkgbase = pmg-bin
+	pkgdesc = PMG protects developers from getting hacked by malicious open source packages
+	pkgver = 0.3.8
+	pkgrel = 1
+	url = https://github.com/safedep/pmg
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = Apache-2.0
+	provides = pmg
+	conflicts = pmg
+	source_x86_64 = pmg-x86_64-0.3.8.tgz::https://github.com/safedep/pmg/releases/download/v0.3.8/pmg_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = fb28eba3a7264553f46dfc2c8625c10a0d02c8cd956747deb16273f1aaca6097
+	source_i686 = pmg-i686-0.3.8.tgz::https://github.com/safedep/pmg/releases/download/v0.3.8/pmg_Linux_i386.tar.gz
+	sha256sums_i686 = 7979a18566623ce25fd34bf209c0931baa22c5fc2050bd2bab08b358c99789f5
+	source_aarch64 = pmg-aarch64-0.3.8.tgz::https://github.com/safedep/pmg/releases/download/v0.3.8/pmg_Linux_arm64.tar.gz
+	sha256sums_aarch64 = eb9ddad8b6eb9575a9b37ef3a3483513ed903760be6c89c426b86652f03284fd
+
+pkgname = pmg-bin
