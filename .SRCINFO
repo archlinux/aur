@@ -1,0 +1,24 @@
+pkgbase = speedynote-src
+	pkgdesc = A user uploaded package from official release source of SpeedyNote
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/alpha-liu-01/SpeedyNote
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt6-tools
+	depends = glibc
+	depends = gcc-libs
+	depends = qt6-base
+	depends = qt6-svg
+	depends = mupdf
+	depends = mujs
+	depends = tesseract-data-eng
+	options = !debug
+	source = SpeedyNote-1.2.1-2.tar.gz::https://github.com/alpha-liu-01/SpeedyNote/archive/refs/tags/v1.2.1-2.tar.gz
+	source = LICENSE-1.2.1::https://raw.githubusercontent.com/alpha-liu-01/SpeedyNote/v1.2.1/LICENSE
+	sha256sums = 23c4b26ff19a2baef6e80bd5a263ad8abb5ef61d4db830b1354ac6fc02355eb9
+	sha256sums = b3fac2b0946e0676aaef25f841b1be51df3331289301520e9a0bf23da9f93f01
+
+pkgname = speedynote-src
