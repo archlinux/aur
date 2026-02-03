@@ -1,12 +1,12 @@
 # Maintainer: Ahmet T <ahm3t0t@users.noreply.github.com>
-# https://github.com/ahm3t0t/bigfive-updater
+# https://github.com/CalmKernelTR/bigfive-updater
 
 pkgname=bigfive-updater
-pkgver=6.0.2
+pkgver=6.2.2
 pkgrel=1
 pkgdesc="Armored, Smart, Multi-Distro Update Tool for Linux Systems"
 arch=('any')
-url="https://github.com/ahm3t0t/bigfive-updater"
+url="https://github.com/CalmKernelTR/bigfive-updater"
 license=('MIT')
 depends=('bash' 'curl')
 optdepends=(
@@ -18,7 +18,7 @@ optdepends=(
 )
 provides=('guncel' 'updater')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('a40ce496c241fd60368da51a962372399666e083656f5b8115d26fd8f87957c1')
+sha256sums=('ae8f077512b109fbe1a05999372a36cdde1d3f9a7fd7f9a97d15a0989ad546a3')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
