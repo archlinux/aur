@@ -2,7 +2,7 @@
 
 _pkgname=BB_Launcher
 pkgname=${_pkgname,,}
-pkgver=13.03
+pkgver=13.04
 pkgrel=1
 pkgdesc='Simple launcher for Bloodborne shadPS4'
 url="https://github.com/rainmakerv3/$_pkgname"
@@ -29,7 +29,7 @@ source=("$_pkgname::git+$url.git#tag=Release$pkgver"
         "nlohmann-json::git+https://github.com/nlohmann/json.git"
         "qmicroz::git+https://github.com/artemvlas/qmicroz.git"
         "volk::git+https://github.com/zeux/volk.git")
-sha256sums=('2f0af6744fe5559a751ddc3358ac26d555d8ff95c96f7d8490fc7234daa343c1'
+sha256sums=('e3311feaf5b1ff9087704ecdff47b4274f8ef8154748223717ffd041598da321'
             'SKIP'
             'SKIP'
             'SKIP')

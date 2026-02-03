@@ -1,6 +1,6 @@
 pkgbase = bb_launcher
 	pkgdesc = Simple launcher for Bloodborne shadPS4
-	pkgver = 13.03
+	pkgver = 13.04
 	pkgrel = 1
 	url = https://github.com/rainmakerv3/BB_Launcher
 	arch = x86_64
@@ -22,11 +22,11 @@ pkgbase = bb_launcher
 	depends = qt6-websockets
 	depends = sdl3
 	depends = zlib
-	source = BB_Launcher::git+https://github.com/rainmakerv3/BB_Launcher.git#tag=Release13.03
+	source = BB_Launcher::git+https://github.com/rainmakerv3/BB_Launcher.git#tag=Release13.04
 	source = nlohmann-json::git+https://github.com/nlohmann/json.git
 	source = qmicroz::git+https://github.com/artemvlas/qmicroz.git
 	source = volk::git+https://github.com/zeux/volk.git
-	sha256sums = 2f0af6744fe5559a751ddc3358ac26d555d8ff95c96f7d8490fc7234daa343c1
+	sha256sums = e3311feaf5b1ff9087704ecdff47b4274f8ef8154748223717ffd041598da321
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
