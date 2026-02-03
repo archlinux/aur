@@ -39,6 +39,7 @@ package() {
     cp -aR etc/ opt/ usr/ var/ "$pkgdir"
 
     install -dm755 "$pkgdir"/usr/lib
+    cp -af usr/lib64/libnss_passwdaliases.so.2 "$pkgdir"/usr/lib
 
     cd "$srcdir/tl-${pkgver}-server"
     cp -aR libs/etc/* "$pkgdir"/etc
