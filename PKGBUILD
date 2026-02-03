@@ -1,16 +1,17 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Yigit Sever <yigit at yigitsever dot com>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=drill
-pkgver=0.8.3
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="HTTP load testing application written in Rust inspired by Ansible syntax"
 url="https://github.com/fcsonline/drill"
 depends=('openssl' 'gcc-libs')
 makedepends=('cargo')
 arch=('x86_64')
-license=('GPL3')
+license=('GPL-3.0-or-later')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('12096bfeb57fa567f9104615c872b5fec787bacf5b9efcc9f14d496c08efe30d')
+sha256sums=('ac486698c33daecb2d099fbb890d0b37ffd9baf3655d620f57932e1d398b44fc')
 
 build() {
   cd "$pkgname-$pkgver"
