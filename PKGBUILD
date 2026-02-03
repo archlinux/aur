@@ -14,7 +14,7 @@ _securityver=2
 _updatever=9
 pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
 # pkgver=${_majorver}.u${_updatever}
-pkgrel=2
+pkgrel=3
 _git_tag=jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}
 # _git_tag=jdk-${_majorver}+${_updatever}
 arch=('x86_64')
@@ -148,7 +148,7 @@ package_jre22-openjdk-headless() {
   depends=("${_commondeps[@]}")
   optdepends=('java-rhino: for some JavaScript support')
   provides=("java-runtime-headless=${_majorver}" "java-runtime-headless-openjdk=${_majorver}" "jre${_majorver}-openjdk-headless=${pkgver}-${pkgrel}")
-  conflicts=("jdk-openjdk" "jre-openjdk")
+  conflicts=("jdk${_majorver}-openjdk" "jre${_majorver}-openjdk")
   backup=(etc/${pkgbase}/logging.properties
           etc/${pkgbase}/management/jmxremote.access
           etc/${pkgbase}/management/jmxremote.password.template
@@ -207,7 +207,7 @@ package_jre22-openjdk() {
               'gtk3: for the Gtk+ 3 look and feel - desktop usage')
   provides=("java-runtime=${_majorver}" "java-runtime-openjdk=${_majorver}" "jre${_majorver}-openjdk=${pkgver}-${pkgrel}"
             "java-runtime-headless=${_majorver}" "java-runtime-headless-openjdk=${_majorver}" "jre${_majorver}-openjdk-headless=${pkgver}-${pkgrel}")
-  conflicts=("jdk-openjdk" "jre-openjdk-headless")
+  conflicts=("jdk${_majorver}-openjdk" "jre${_majorver}-openjdk-headless")
   backup=(etc/${pkgbase}/logging.properties
           etc/${pkgbase}/management/jmxremote.access
           etc/${pkgbase}/management/jmxremote.password.template
@@ -279,7 +279,7 @@ package_jdk22-openjdk() {
   provides=("java-environment=${_majorver}" "java-environment-openjdk=${_majorver}" "jdk${_majorver}-openjdk=${pkgver}-${pkgrel}"
             "java-runtime=${_majorver}" "java-runtime-openjdk=${_majorver}" "jre${_majorver}-openjdk=${pkgver}-${pkgrel}"
             "java-runtime-headless=${_majorver}" "java-runtime-headless-openjdk=${_majorver}" "jre${_majorver}-openjdk-headless=${pkgver}-${pkgrel}")
-  conflicts=("jre-openjdk" "jre-openjdk-headless")
+  conflicts=("jre${_majorver}-openjdk" "jre${_majorver}-openjdk-headless")
   backup=(etc/${pkgbase}/logging.properties
           etc/${pkgbase}/management/jmxremote.access
           etc/${pkgbase}/management/jmxremote.password.template
