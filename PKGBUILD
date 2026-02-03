@@ -4,7 +4,9 @@
 # This is a user uploaded package.
 pkgname=speedynote-src
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
+provides=("speedynote=$pkgver")
+conflicts=('speedynote')
 pkgdesc="A user uploaded package from official release source of SpeedyNote"
 arch=('x86_64')
 options=('!debug')

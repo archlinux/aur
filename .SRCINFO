@@ -1,7 +1,7 @@
 pkgbase = speedynote-src
 	pkgdesc = A user uploaded package from official release source of SpeedyNote
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alpha-liu-01/SpeedyNote
 	arch = x86_64
 	license = GPLv3
@@ -15,6 +15,8 @@ pkgbase = speedynote-src
 	depends = mupdf
 	depends = mujs
 	depends = tesseract-data-eng
+	provides = speedynote=1.2.1
+	conflicts = speedynote
 	options = !debug
 	source = SpeedyNote-1.2.1-2.tar.gz::https://github.com/alpha-liu-01/SpeedyNote/archive/refs/tags/v1.2.1-2.tar.gz
 	source = LICENSE-1.2.1::https://raw.githubusercontent.com/alpha-liu-01/SpeedyNote/v1.2.1/LICENSE
