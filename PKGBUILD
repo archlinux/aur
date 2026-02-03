@@ -6,7 +6,7 @@
 pkgbase=goatd-kernel-bin
 pkgname=goatdkernel
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 source=("goatdkernel-${pkgver}-${pkgrel}-x86_64.tar.gz::https://github.com/MadGoatHaz/GOATd-Kernel/releases/download/v${pkgver}/goatdkernel-${pkgver}-x86_64.tar.gz"
         "git+https://github.com/MadGoatHaz/GOATd-Kernel.git#tag=v${pkgver}"
         "goatdkernel.png::https://raw.githubusercontent.com/MadGoatHaz/GOATd-Kernel/master/assets/goatdkernel.png")
