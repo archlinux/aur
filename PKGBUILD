@@ -10,7 +10,7 @@
 
 pkgname=ffmpeg-headless
 pkgver=8.0.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
 arch=(i686 x86_64 armv7h armv6h aarch64)
@@ -113,9 +113,11 @@ _tag='d22ecc4f6f3fca77b3e71b18641ceddb25973e97'
 source=(
   "$pkgname::git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}"
   '0001-unbreak-glslang-build.patch'
+  '0001-unbreak-svt-av1-4-build.patch'
 )
 b2sums=('0796d77c58d5db487ccda15454dadf129a6e0ae2a5a9cec562c86f2050b1e9314164c7f2dbf0a6c8cdae37dfd5e28f494d5ac248e970bc7f01b097100971fe8a'
-        '650631d4f06dffec55bd6419f680d95617a9093d8e548b3dac0b379496477dcbd4121883128438343c568e992cb5b455efc0b7c4e34a5e7200518f9b5beaa231')
+        '650631d4f06dffec55bd6419f680d95617a9093d8e548b3dac0b379496477dcbd4121883128438343c568e992cb5b455efc0b7c4e34a5e7200518f9b5beaa231'
+        'a004d7b7b021e82ae01e9fd171c4cd2901bb1348aafa8ec2256f38c967521cdb947c01b8b6872b6076fc0ee96bf296992abfecb5446a83eb8c052b976851948a')
 validpgpkeys=('DD1EC9E8DE085C629B3E1846B18E8928B3948D64')   # Michael Niedermayer <michael@niedermayer.cc>
 
 prepare() {
@@ -123,6 +125,9 @@ prepare() {
 
   # https://github.com/FFmpeg/FFmpeg/commit/f1e9032a2000b8b885cffd6fed8eacd47b37673f
   git apply -3 ../0001-unbreak-glslang-build.patch
+
+  # https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/a5d4c398b411a00ac09d8fe3b66117222323844c
+  git apply -3 ../0001-unbreak-svt-av1-4-build.patch
 }
 
 pkgver() {
