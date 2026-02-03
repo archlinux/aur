@@ -1,6 +1,6 @@
 pkgbase = bootc-git
 	pkgdesc = Boot and upgrade via container images
-	pkgver = 1.5.1.r14.g03fa72b
+	pkgver = 1.12.1.r60.g216d720
 	pkgrel = 1
 	url = https://bootc-dev.github.io/bootc
 	arch = x86_64
@@ -10,10 +10,12 @@ pkgbase = bootc-git
 	license = MIT OR Apache-2.0
 	makedepends = cargo
 	makedepends = git
+	makedepends = go-md2man
+	makedepends = make
 	depends = gcc-libs
 	depends = glibc
 	depends = ostree
-	provides = bootc=1.5.1.r14.g03fa72b
+	provides = bootc=1.12.1.r60.g216d720
 	conflicts = bootc
 	source = git+https://www.github.com/bootc-dev/bootc.git
 	sha256sums = SKIP

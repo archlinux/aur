@@ -2,7 +2,7 @@
 
 pkgname=bootc-git
 _pkgname=bootc
-pkgver=1.5.1.r14.g03fa72b
+pkgver=1.12.1.r61.g0a75768
 pkgrel=1
 pkgdesc="Boot and upgrade via container images"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
@@ -13,7 +13,9 @@ depends=(gcc-libs
   glibc
   ostree)
 makedepends=(cargo
-  git)
+  git
+  go-md2man
+  make)
 provides=("bootc=$pkgver")
 conflicts=('bootc')
 source=("git+$_url.git")
@@ -40,9 +42,5 @@ build() {
 
 package() {
   cd "$_pkgname"
-  install -Dm755 target/release/bootc -t "${pkgdir}/usr/bin"
-  install -Dm755 -d "${pkgdir}/usr/share/doc/$pkgname"
-  cp -Rv docs/src/* "${pkgdir}/usr/share/doc/$pkgname/"
-  install -Dm644 LICENSE-APACHE -t "${pkgdir}/usr/share/licenses/$pkgname/"
-  install -Dm644 LICENSE-MIT -t "${pkgdir}/usr/share/licenses/$pkgname/"
+  make "DESTDIR=${pkgdir}" install-all
 }
