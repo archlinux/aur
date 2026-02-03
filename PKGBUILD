@@ -1,16 +1,25 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
-pkgname=libdvdnav-git
-pkgver=6.1.1.23.g9831fe0
+pkgbase=libdvdnav-git
+pkgname=(
+  'libdvdnav-git'
+  'lib32-libdvdnav-git'
+)
+pkgver=7.0.0.1.gcf11277
 pkgrel=1
 pkgdesc="Library to navigate DVD disks. (GIT version)"
 arch=('x86_64')
 license=('GPL2')
 url='https://dvdnav.mplayerhq.hu'
-depends=('libdvdread')
-makedepends=('git')
-provides=('libdvdnav')
-conflicts=('libdvdnav')
+makedepends=(
+  'git'
+  'libdvdread'
+  'lib32-libdvdread'
+  'glibc'
+  'lib32-glibc'
+  'meson'
+)
+provides=('libdvdnav.so')
 source=('git+https://code.videolan.org/videolan/libdvdnav.git')
 sha256sums=('SKIP')
 
@@ -20,23 +29,44 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build
+  mkdir -p build build32
 }
 
 build() {
   cd libdvdnav
-  autoreconf -vif
 
-  cd "${srcdir}/build"
-  ../libdvdnav/configure \
-    --prefix=/usr \
-    --enable-static=no
+  arch-meson . build
 
-  make
+  meson compile -C build
+
+  arch-meson . build32 \
+    --cross-file lib32
+
+  meson compile -C build32
 }
 
-package() {
-  depends=('libdvdread.so')
+package_libdvdnav-git() {
+  depends=(
+    'libdvdread.so'
+    'glibc'
+  )
+  provides+=('libdvdnav')
+  conflicts=('libdvdnav')
 
-  make -C build DESTDIR="${pkgdir}" install
+  meson install -C libdvdnav/build --destdir "${pkgdir}"
+}
+
+package_lib32-libdvdnav-git() {
+  pkgdesc+=" (32-bits)"
+  depends=(
+    'libdvdread.so'
+    'lib32-glibc'
+  )
+  provides+=('lib32-libdvdnav')
+  conflicts=('lib32-libdvdnav')
+
+  meson install -C libdvdnav/build --destdir "${pkgdir}"
+
+  rm -fr "${pkgdir}/usr/include"
+  rm -fr "${pkgdir}/usr/share"
 }
