@@ -5,7 +5,7 @@ _pkgname=tredis
 pkgname=${_pkgname}-bin
 pkgdesc="A terminal-based Redis data viewer and manager"
 
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,9 +25,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}.tar.gz")
 sha256sums=('57dcba79753b55c060bb71a06abe9563afb742d31be067c0c0e735b5a58223f9'
-            '4a1bcd6b93e4869e474cb5123b9efd58033abc84cd574b57b8bc12e8a6f93b1d')
-sha256sums_x86_64=('21f0b008a347ce39159f8ea017c0c95161c523807dd8b4dff1fed45152b0e409')
-sha256sums_aarch64=('ac4274a938ec0afab789173e43bfd29c86bcdf0639f8823522ff1edc3200dfb5')
+            'd8c85adfc20e61c2c05aa6dd4295781386cd6d208ebe720a07a6c3a5104964a8')
+sha256sums_x86_64=('1dd74162fc238b4eade54312259390a4184b827627b9a624814db8c4e0d59143')
+sha256sums_aarch64=('e1fdd13904ffaf9d00921d87b96f326b0eff0bd977b076878dac3e6bb3a4cf03')
 
 
 package() {
