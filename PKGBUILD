@@ -43,12 +43,13 @@ package() {
 
     cd "$srcdir/tl-${pkgver}-server"
     cp -aR libs/etc/* "$pkgdir"/etc
-    cp -aR libs/libexec/tl-ssh* "$pkgdir"/opt/thinlinc/bin
+    cp -aR libs/libexec/* "$pkgdir"/opt/thinlinc/libexec
     cp -aR libs/modules/* "$pkgdir"/opt/thinlinc/modules
-    cp -aR libs/share/* "$pkgdir"/usr/share
+    cp -aR libs/share/* "$pkgdir"/opt/thinlinc/share
     rm -rf "$pkgdir/usr/lib64/"
     rm -rf "$pkgdir/usr/lib/.build-id"
     ln -s "/opt/thinlinc/modules" "$pkgdir/usr/lib/$pkgname"
+    chmod u+s "$pkgdir"/opt/thinlinc/libexec/tl-mount-personal
     
     install -Dm644 "$srcdir/tl-${pkgver}-server/EULA.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
