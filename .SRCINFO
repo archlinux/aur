@@ -1,6 +1,6 @@
 pkgbase = yutovo
 	pkgdesc = Arbitrary precision graphical WYSIWYG calculator inside a text editor
-	pkgver = 1.4.3
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://yutovo.com
 	arch = x86_64
