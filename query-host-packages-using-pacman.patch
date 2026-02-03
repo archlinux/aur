@@ -1,6 +1,6 @@
-diff -aur package.pristine/pbuilder-checkparams package.new/pbuilder-checkparams
---- package.pristine/pbuilder-checkparams	2019-04-02 11:33:15.000000000 +0200
-+++ package.new/pbuilder-checkparams	2021-04-23 16:20:57.360850335 +0200
+diff -aur a/pbuilder-checkparams b/pbuilder-checkparams
+--- a/pbuilder-checkparams	2026-01-13 21:10:44.000000000 +0100
++++ b/pbuilder-checkparams	2026-02-03 12:54:27.154957216 +0100
 @@ -391,7 +391,7 @@
      if [ "$USECGROUP" = "yes" ]; then
          # v215 is required for systemd-escape
@@ -10,3 +10,12 @@ diff -aur package.pristine/pbuilder-checkparams package.new/pbuilder-checkparams
              # --description uses that no-spaces string because the quoting sucks
              # right now, and it would end up trying to execute $PBUILDER_OPERATION…
              # long-term solution is to turn $CHROOTEXEC into a command and properly
+@@ -407,7 +407,7 @@
+             # Allow dpkg-query --showformat='${Version}' etc to not need the
+             # dollar signs to be escaped as $$ when using systemd-run. Option
+             # available since v254, defaulted to no for --scope until v258.
+-            if dpkg --compare-versions "$(dpkg-query -W --showformat='${Version}' systemd)" gt 254; then
++            if dpkg --compare-versions "$(pacman -Q systemd | cut -d' ' -f2)" gt 254; then
+                 systemctl_run+=("--expand-environment=no")
+             fi
+             CHROOTEXEC="${systemctl_run[*]} $CHROOTEXEC"
