@@ -25,6 +25,6 @@ pkgbase = speedynote
 	conflicts = speedynote-git
 	conflicts = speedynote-src
 	source = speedynote-1.2.1.6.tar.gz::https://github.com/alpha-liu-01/SpeedyNote/archive/refs/tags/v1.2.1-6.tar.gz
-	sha256sums = 48139df1836f0285c4ee9648054dac818f9a74984199fd92fbc8d10c5591ef7c
+	sha256sums = 9af2735fb40c82adbe7b342607081b4a0206abc08a5c192b375f6091b5cfe7ed
 
 pkgname = speedynote
