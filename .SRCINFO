@@ -1,0 +1,17 @@
+pkgbase = foxy-jumpscare
+	pkgdesc = A rare 1-in-10000 Foxy jumpscare (rolls every second in background)
+	pkgver = 1.0
+	pkgrel = 5
+	arch = x86_64
+	makedepends = xxd
+	makedepends = gcc
+	depends = sdl2
+	depends = ffmpeg
+	source = main.cpp
+	source = foxy.mp4
+	source = foxy-jumpscare.service
+	sha256sums = c8cff5ef5caf401640170207fc8b8493c89cc2bdb6642031aeea5daa018cebeb
+	sha256sums = 9e6e4fdc40a077db281acbdf9420024977dfa49e5da2a951abb8c6764c938813
+	sha256sums = e46261bdb38dd0d7eb3a49330300b155cb50898db1d86a331f3629140f02ac43
+
+pkgname = foxy-jumpscare

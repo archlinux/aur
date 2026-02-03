@@ -1,0 +1,14 @@
+[Unit]
+Description=Foxy Jumpscare Background Stalker
+After=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/foxy_scare
+Restart=always
+RestartSec=10
+# Silences log spam
+StandardOutput=null
+StandardError=null
+
+[Install]
+WantedBy=graphical-session.target
