@@ -1,0 +1,16 @@
+pkgbase = python-aubio-ledfx
+	pkgdesc = Library to listen to audio signals and attempts to detect events
+	pkgver = 0.4.11
+	pkgrel = 1
+	url = https://github.com/LedFx/aubio-ledfx
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = meson-python
+	depends = python
+	source = https://github.com/LedFx/aubio-ledfx/archive/refs/tags/v0.4.11.tar.gz
+	sha256sums = a07df9ce3da2d328dbfaf30836c04c3619bc16f27b2a2ba33a924c3f11a0723f
+
+pkgname = python-aubio-ledfx
