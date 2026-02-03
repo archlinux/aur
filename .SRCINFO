@@ -8,8 +8,8 @@ pkgbase = croaring-git
 	license = MIT
 	makedepends = git
 	makedepends = cmake
-	provides = croaring-git
-	conflicts = croaring-git
+	provides = croaring
+	conflicts = croaring
 	source = git+https://github.com/RoaringBitmap/CRoaring.git
 	sha256sums = SKIP
 
