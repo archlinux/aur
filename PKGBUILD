@@ -1,9 +1,9 @@
-# Maintainer: Adam Perkowski <adas1per@protonmail.com>
-# https://github.com/adamperkowski/PKGBUILDs
+# Maintainer: koi <me@koi.rip>
+# https://github.com/koibtw/PKGBUILDs
 __pkgname=jule
 _pkgname="${__pkgname}c"
 pkgname="$_pkgname-git"
-pkgver=0.1.6+r.52e51891
+pkgver=0.2.0+r.89ab17b
 pkgrel=1
 pkgdesc='The Jule Programming Language Compiler'
 arch=('x86_64' 'aarch64' 'i386')
@@ -43,7 +43,7 @@ build() {
     mkdir -p bin
     echo "Building $_pkgname-dev for $CARCH..."
     clang++ ir.cpp \
-        --std=c++17 \
+        --std=c++20 \
         -Wno-everything \
         -fwrapv \
         -ffloat-store \
