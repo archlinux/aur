@@ -5,7 +5,7 @@ pkgname="plumeimpactor-appimage"
 pkgver="2.0.3"
 pkgrel=2
 pkgdesc="Sideloading tool for iOS devices"
-url="https://github.com/khcrysalis/PlumeImpactor"
+url="https://github.com/khcrysalis/Impactor"
 arch=("x86_64")
 license=("MIT")
 depends=("fuse3" "hicolor-icon-theme" "usbmuxd" "libayatana-appindicator")
@@ -13,7 +13,7 @@ options=("!strip" "!debug")
 
 _appimage="Impactor-linux-x86_64.AppImage"
 source=("$_appimage::$url/releases/download/v$pkgver/$_appimage"
-        "LICENSE::https://raw.githubusercontent.com/khcrysalis/PlumeImpactor/main/LICENSE")
+        "LICENSE::https://raw.githubusercontent.com/khcrysalis/Impactor/main/LICENSE")
 sha256sums=('cd3d174d318919f7d20ea747665c9bbed83dbb26ca17589441a551c99bc1c0ee'
             '6e91aca9b6eacf944ae628db34a60253d917b7ddb411c4748ab6e5105ffe5a3e')
 
