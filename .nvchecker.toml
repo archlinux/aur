@@ -1,0 +1,5 @@
+[rt-bin]
+source = "github"
+github = "unvalley/rt"
+use_latest_release = true
+prefix = "v"

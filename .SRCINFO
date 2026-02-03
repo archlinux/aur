@@ -1,0 +1,22 @@
+pkgbase = rt-bin
+	pkgdesc = One command to run tasks across task runners
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/unvalley/rt
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = rt
+	conflicts = rt
+	source = LICENSE-0.1.5::https://raw.githubusercontent.com/unvalley/rt/v0.1.5/LICENSE
+	source = README-0.1.5.md::https://raw.githubusercontent.com/unvalley/rt/v0.1.5/README.md
+	sha256sums = 08a555dad3bc78b57a584f21fe995e94b2215f3d4628bda053fd332d532fa95b
+	sha256sums = c1ba3abea1c9c0664cb62b6c47dcb13d28f9ea1ca1f9429957782814f7921706
+	source_x86_64 = rt-x86_64-0.1.5.txz::https://github.com/unvalley/rt/releases/download/v0.1.5/rt-cli-x86_64-unknown-linux-gnu-v0.1.5.tgz
+	sha256sums_x86_64 = fb64b08bb7cfb9a76d8d9737ee8b19198c38f1e19b88920ac255370d6068292e
+	source_aarch64 = rt-aarch64-0.1.5.txz::https://github.com/unvalley/rt/releases/download/v0.1.5/rt-cli-aarch64-unknown-linux-gnu-v0.1.5.tgz
+	sha256sums_aarch64 = 0ff45047a7cb73bb3f57a4af31bec1a5cd02d7cf9c1d0323c7a85ac3c64c75b4
+
+pkgname = rt-bin
