@@ -40,5 +40,5 @@ package() {
     cd "$srcdir/nucleus"
 
     install -Dm755 nucleus "$pkgdir/usr/bin/nucleus"  # binary installed as nucleus
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/nucleus/LICENSE"
+#    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/nucleus/LICENSE"
 }
