@@ -1,6 +1,6 @@
 pkgbase = syncthingtray-qt6
 	pkgdesc = Tray application for Syncthing (using Qt 6)
-	pkgver = 2.0.6
+	pkgver = 2.0.7
 	pkgrel = 1
 	url = https://github.com/Martchus/syncthingtray
 	arch = i686
@@ -33,8 +33,8 @@ pkgbase = syncthingtray-qt6
 	optdepends = gnome-shell-extension-appindicator: tray icon support for GNOME Shell
 	optdepends = kio: KIO plugin for Syncthing actions in Dolphin
 	optdepends = plasma-workspace: Plasmoid for Plasma 6 desktop
-	source = syncthingtray-2.0.6.tar.gz::https://github.com/Martchus/syncthingtray/archive/v2.0.6.tar.gz
-	sha256sums = 1df91eede8ce4f20a04664a93242f0dd0f79d6b0d5e45e0ad5f0ec6bb28c37f8
+	source = syncthingtray-2.0.7.tar.gz::https://github.com/Martchus/syncthingtray/archive/v2.0.7.tar.gz
+	sha256sums = e19777fe6791f3c8e03a2bc010d3a6bce6a18b8a2c304b068f70860f03527dd1
 
 pkgname = syncthingtray-qt6
 	depends = qtutilities-qt6
