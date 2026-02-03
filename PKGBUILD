@@ -1,6 +1,6 @@
 # Maintainer: Wimpy <vvinn.py[AT]github.com>
 pkgname=iflow-cli
-pkgver=0.5.4 
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="iFlow AI Assistant CLI tool (@iflow-ai/iflow-cli)"
 arch=('any')
@@ -12,9 +12,6 @@ conflicts=('iflow')
 source=()
 sha256sums=()
 
-pkgver() {
-  npm view @iflow-ai/iflow-cli version 2> /dev/null | tr -d "'"
-}
 
 prepare() {
   cd "$srcdir"
