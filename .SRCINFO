@@ -1,7 +1,7 @@
 pkgbase = dragonfly-gcc-cross-bin
 	pkgdesc = A GCC cross-compiler targeting DragonFly BSD
 	pkgver = 15.2.0
-	pkgrel = 20251211
+	pkgrel = 20260203
 	url = https://github.com/AmanoTeam/Venti
 	arch = i686
 	arch = x86_64
@@ -13,12 +13,12 @@ pkgbase = dragonfly-gcc-cross-bin
 	options = !strip
 	options = staticlibs
 	source_i686 = https://github.com/AmanoTeam/Venti/releases/download/gcc-15/i386-unknown-linux-gnu.tar.xz
-	sha256sums_i686 = 5e2a3202fc08ae1a3fdb2952a606d7af23a23d10b2044a03fbc5f4e07ef96ae5
+	sha256sums_i686 = 756cc7b0d19773a47e08febd5828341dee78d4fafc38a14e8795f08ad36402b1
 	source_x86_64 = https://github.com/AmanoTeam/Venti/releases/download/gcc-15/x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 6e12a77eb561e0ffd95d3f6c19761a18c27a48a027d5271eafdf0b133c9086e2
+	sha256sums_x86_64 = bf61d2db9ff82395afa6b4138f4841ee522e8daa42bc27c98992f3297706b3b0
 	source_aarch64 = https://github.com/AmanoTeam/Venti/releases/download/gcc-15/aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 2a09662e5be31ce1bacad22006a9c400601842f445c17b2c41210693700168f5
+	sha256sums_aarch64 = ac4ca5ad856f44dc01bde30602ede216aaf38bc7227f4e46c66b46593ea95b3d
 	source_armv7h = https://github.com/AmanoTeam/Venti/releases/download/gcc-15/arm-unknown-linux-gnueabihf.tar.xz
-	sha256sums_armv7h = e278bd414bb12978170130a1741fdad7d94f2e1a0eacc3642a4663df1be8d852
+	sha256sums_armv7h = d38b59f93615266dc559d5b57684117963edd1a41cfdea4997541979f46dfeb9
 
 pkgname = dragonfly-gcc-cross-bin
