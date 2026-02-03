@@ -1,20 +1,20 @@
 pkgbase = kibana-xpack
 	pkgdesc = Browser based analytics and search dashboard for Elasticsearch
-	pkgver = 9.2.4
-	pkgrel = 3
+	pkgver = 9.3.0
+	pkgrel = 1
 	url = https://www.elastic.co/products/kibana
 	arch = x86_64
 	license = custom:Elastic2
 	depends = nodejs
 	optdepends = elasticsearch
 	optdepends = nss: screenshotting plugin
-	provides = kibana=9.2.4
+	provides = kibana=9.3.0
 	conflicts = kibana
 	options = !strip
 	options = emptydirs
 	backup = etc/kibana/kibana.yml
 	backup = etc/kibana/node.options
-	source = kibana-v9.2.4.tar.gz::https://github.com/elastic/kibana/archive/v9.2.4.tar.gz
+	source = kibana-v9.3.0.tar.gz::https://github.com/elastic/kibana/archive/v9.3.0.tar.gz
 	source = kibana.service
 	source = tmpfile.conf
 	source = user.conf
