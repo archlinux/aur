@@ -1,6 +1,6 @@
 pkgbase = gkeys-rs-git
 	pkgdesc = G-key macro daemon for Logitech keyboards (G815, G915, G910) using hidraw
-	pkgver = 0.1.0.r0.g0000000
+	pkgver = 0.2.2.r0.g4a76b7f
 	pkgrel = 1
 	url = https://github.com/csutcliff/gkeys-rs
 	arch = x86_64
