@@ -1,0 +1,9 @@
+# Binary and package artifacts
+*.pkg.tar.zst
+*.tar.gz
+*.png
+
+# Build directories
+pkg/
+src/
+GOATd-Kernel/
