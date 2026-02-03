@@ -6,12 +6,12 @@
 pkgbase=goatd-kernel-bin
 pkgname=goatdkernel
 pkgver=0.2.3
-pkgrel=2
+pkgrel=1
 source=("goatdkernel-${pkgver}-${pkgrel}-x86_64.tar.gz::https://github.com/MadGoatHaz/GOATd-Kernel/releases/download/v${pkgver}/goatdkernel-${pkgver}-x86_64.tar.gz"
         "git+https://github.com/MadGoatHaz/GOATd-Kernel.git#tag=v${pkgver}"
         "goatdkernel.png::https://raw.githubusercontent.com/MadGoatHaz/GOATd-Kernel/master/assets/goatdkernel.png")
 
-pkgdesc="GOATd Kernel - High-performance computing platform with multi-language integration"
+pkgdesc="Advanced Rust-based framework for automated kernel sovereignty and microarchitecture tuning using Clang, LLVM LTO, and Polly Vectorization and more!"
 arch=("x86_64")
 url="https://github.com/MadGoatHaz/GOATd-Kernel"
 license=("MIT")
@@ -22,8 +22,8 @@ makedepends=("git")
 # URL NEVER includes pkgrel to match GitHub release tag structure (v${pkgver})
 
 sha256sums=('190bcd5f0aa4c02a8c6324b511420eaa318a4d60f1d78e8e9509319700c52caf'
-            'SKIP'
-            'SKIP')
+            'c1c8168bbc7ba60b34dfb80dd18fbf704d44345e5bb79d7ec26e9224f8be9d15'
+            'd7a42aee4ee5254c6568ecf7260156d735ae1e5c3c8c21f00da18546a298ba9b')
 
 package() {
     sed -i 's/Exec=goatd_kernel/Exec=goatdkernel/' "$srcdir/GOATd-Kernel/assets/goatdkernel.desktop"
