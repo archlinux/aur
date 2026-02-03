@@ -1,0 +1,35 @@
+pkgbase = alacritty-use-theme-with-services-git
+	pkgdesc = services to use alacritty-use-theme
+	pkgver = r64.351643e
+	pkgrel = 1
+	url = https://github.com/alacritty-use-theme/alacritty-use-theme-with-services
+	arch = x86_64
+	groups = alacritty-use-theme
+	groups = alacritty-use-theme-services
+	license = GPL-1.0-or-later
+	makedepends = git
+	depends = redshift
+	depends = alacritty-use-theme
+	source = alacritty-use-theme-with-services-git::git+https://github.com/alacritty-use-theme/alacritty-use-theme-with-services.git
+	md5sums = SKIP
+
+pkgname = alacritty-use-theme-with-redshift-git
+	pkgdesc = ::Rolling release:: Changes alacritty theme based on the current time and locale
+	depends = redshift
+	depends = alacritty-use-theme
+	provides = alaritty-use-theme-with-redshift.service
+	provides = alaritty-use-theme-with-redshift.timer
+	provides = alaritty-use-theme-with-redshift.target
+	conflicts = alacritty-use-theme-with-redshift
+	conflicts = alacritty-use-theme-with-redshift-git
+
+pkgname = alacritty-use-theme-with-gnome-darkmode-git
+	pkgdesc = ::Rolling release:: Changes alacritty theme when clicking the 'Dark Style' button in Gnome's System tray
+	url = https://github.com/alacritty-use-theme/alacritty-use-theme-with-gnome-darkmode
+	depends = bash
+	depends = awk
+	depends = alacritty-use-theme
+	provides = alacritty-listen-to-colorscheme.service
+	conflicts = alacritty-use-theme-with-gnome-darkmode
+	replaces = alacritty-use-theme-with-gnome-darkmode-git
+	replaces = alacritty-toggle-theme-on-darkmode-git
