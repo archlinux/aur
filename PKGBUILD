@@ -1,6 +1,6 @@
 pkgname=ptodo
-pkgver=1.1
-pkgrel=2
+pkgver=1.3
+pkgrel=3
 pkgdesc="a TUI todolist app written in python"
 arch=('any')
 depends=('python' 'python-rich')
