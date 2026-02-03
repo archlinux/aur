@@ -1,3 +1,4 @@
+# shellcheck disable=SC2034,SC2086,SC2128,SC2148,SC2154,SC2164
 # Maintainer: Toria <ninetailedtori@uwu.gal>
 # Maintainer: Darjan Krijan [https://disc-kuraudo.eu]
 # Contributor: Jesse R Codling <codling@umich.edu>
@@ -11,18 +12,18 @@ pkgdesc="AMD Optimizing CPU Libraries"
 arch=('x86_64')
 license=('custom')
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
-_url_aocc="https://download.amd.com/developer/eula/aocl/aocl-${_major}/aocl-linux-aocc-${pkgver}.tar.gz"
-_url_gcc="https://download.amd.com/developer/eula/aocl/aocl-${_major}/aocl-linux-gcc-${pkgver}.tar.gz"
+_url_aocc="https://download.amd.com/developer/eula/aocl/aocl-${_major}/aocl-linux-aocc-${pkgver:?}.tar.gz"
+_url_gcc="https://download.amd.com/developer/eula/aocl/aocl-${_major}/aocl-linux-gcc-${pkgver:?}.tar.gz"
 url="https://www.amd.com/en/developer/aocl.html"
 source=(
-	"$_url_aocc"
-	"$_url_gcc"
-	"${pkgbase}-aocc.install"
-	"${pkgbase}-gcc.install"
-	"modulefile"
+    "$_url_aocc"
+    "$_url_gcc"
+    "${pkgbase}-aocc.install"
+    "${pkgbase}-gcc.install"
+    "modulefile"
 )
 options=('staticlibs' '!strip')
-makedepends=('patchelf')
+makedepends=('curl' 'patchelf')
 optdepends=('env-modules')
 _sha256sum1=$(curl -A 'Mozilla' "$url" | grep --perl-regexp '\w{64}(?=\<\/td\>)' --only-matching | sed -n '1 p')
 _sha256sum2=$(curl -A 'Mozilla' "$url" | grep --perl-regexp '\w{64}(?=\<\/td\>)' --only-matching | sed -n '4 p')
@@ -39,78 +40,78 @@ sha256sums=("$_sha256sum1"
 # upstream manually for safety.
 
 package_aocl-aocc() {
-	install=${pkgname}.install
+    install=${pkgname}.install
 
-	aocl_prefix=/opt/aocl
-	prefix=${pkgdir}/${aocl_prefix}
-	mkdir -p ${prefix}
+    aocl_prefix=/opt/aocl
+    prefix=${pkgdir}/${aocl_prefix}
+    mkdir -p ${prefix:?}
 
-	cd ${srcdir}/${pkgbase}-linux-aocc-${pkgver}
+    cd ${srcdir}/${pkgbase}-linux-aocc-${pkgver:?}
 
-	#cp AOCL_User_Guide_${pkgver}.pdf ${prefix}
+    #cp AOCL_User_Guide_${pkgver:?}.pdf ${prefix:?}
 
-	# Option: set '-i ilp64' for ILP64 libraries as default
-	./install.sh -t ${prefix} -i lp64
+    # Option: set '-i ilp64' for ILP64 libraries as default
+    ./install.sh -t ${prefix:?} -i lp64
 
-	# strip unneeded directories
-	mv ${prefix}/${pkgver}/* ${prefix}
-	rm -r ${prefix}/${pkgver}
+    # strip unneeded directories
+    mv ${prefix:?}/${pkgver:?}/* ${prefix:?}
+    rm -r ${prefix:?}/${pkgver:?}
 
-	# add missing libFLAME dependency on BLIS and AOCL-Utils
-	patchelf --add-needed ${aocl_prefix}/aocc/lib_ILP64/libblis-mt.so ${prefix}/aocc/lib_ILP64/libflame.so
-	patchelf --add-needed ${aocl_prefix}/aocc/lib_ILP64/libaoclutils.so ${prefix}/aocc/lib_ILP64/libflame.so
-	patchelf --add-needed ${aocl_prefix}/aocc/lib_LP64/libblis-mt.so ${prefix}/aocc/lib_LP64/libflame.so
-	patchelf --add-needed ${aocl_prefix}/aocc/lib_LP64/libaoclutils.so ${prefix}/aocc/lib_LP64/libflame.so
+    # add missing libFLAME dependency on BLIS and AOCL-Utils
+    patchelf --add-needed ${aocl_prefix}/aocc/lib_ILP64/libblis-mt.so ${prefix:?}/aocc/lib_ILP64/libflame.so
+    patchelf --add-needed ${aocl_prefix}/aocc/lib_ILP64/libaoclutils.so ${prefix:?}/aocc/lib_ILP64/libflame.so
+    patchelf --add-needed ${aocl_prefix}/aocc/lib_LP64/libblis-mt.so ${prefix:?}/aocc/lib_LP64/libflame.so
+    patchelf --add-needed ${aocl_prefix}/aocc/lib_LP64/libaoclutils.so ${prefix:?}/aocc/lib_LP64/libflame.so
 
-	# fix amd-libs.cfg, pkgconfig, and cmake files containing ${pkgdir}
-	find ${prefix}/aocc \( -name 'amd-libs.cfg' -o -name '*.pc' -o -name '*.cmake' -o -name '*_module' \) -exec sed -e "s:/.*/opt:/opt:g" -s -i {} \;
+    # fix amd-libs.cfg, pkgconfig, and cmake files containing ${pkgdir}
+    find ${prefix:?}/aocc \( -name 'amd-libs.cfg' -o -name '*.pc' -o -name '*.cmake' -o -name '*_module' \) -exec sed -e "s:/.*/opt:/opt:g" -s -i {} \;
 
-	# fix provided shell and module files to match ${aocl_prefix}
-	sed -e "s:aocl/${pkgver}:aocl:g" -s -i ${prefix}/aocc/*_module ${prefix}/aocc/amd-libs.cfg
+    # fix provided shell and module files to match ${aocl_prefix}
+    sed -e "s:aocl/${pkgver:?}:aocl:g" -s -i ${prefix:?}/aocc/*_module ${prefix:?}/aocc/amd-libs.cfg
 
-	# env-modules (optional)
-	cp ${srcdir}/modulefile ${prefix}/aocc
-	mkdir -p ${pkgdir}/etc/modules/modulefiles
-	ln -s ${aocl_prefix}/aocc/modulefile ${pkgdir}/etc/modules/modulefiles/${pkgname}
+    # env-modules (optional)
+    cp ${srcdir}/modulefile ${prefix:?}/aocc
+    mkdir -p ${pkgdir}/etc/modules/modulefiles
+    ln -s ${aocl_prefix}/aocc/modulefile ${pkgdir}/etc/modules/modulefiles/${pkgname}
 }
 
 package_aocl-gcc() {
-	install=${pkgname}.install
+    install=${pkgname}.install
 
-	aocl_prefix=/opt/aocl
-	prefix=${pkgdir}/${aocl_prefix}
-	mkdir -p ${prefix}
+    aocl_prefix=/opt/aocl
+    prefix=${pkgdir}/${aocl_prefix}
+    mkdir -p ${prefix:?}
 
-	cd ${srcdir}/${pkgbase}-linux-gcc-${pkgver}
+    cd ${srcdir}/${pkgbase}-linux-gcc-${pkgver:?}
 
-	#cp AOCL_User_Guide_${pkgver}.pdf ${prefix}
+    #cp AOCL_User_Guide_${pkgver:?}.pdf ${prefix:?}
 
-	# Option: set '-i ilp64' for ILP64 libraries as default
-	./install.sh -t ${prefix} -i lp64
+    # Option: set '-i ilp64' for ILP64 libraries as default
+    ./install.sh -t ${prefix:?} -i lp64
 
-	# strip unneeded directories
-	mv ${prefix}/${pkgver}/* ${prefix}
-	rm -r ${prefix}/${pkgver}
+    # strip unneeded directories
+    mv ${prefix:?}/${pkgver:?}/* ${prefix:?}
+    rm -r ${prefix:?}/${pkgver:?}
 
-	# add missing libFLAME dependency on BLIS and AOCL-Utils
-	patchelf --add-needed ${aocl_prefix}/gcc/lib_ILP64/libblis-mt.so ${prefix}/gcc/lib_ILP64/libflame.so
-	patchelf --add-needed ${aocl_prefix}/gcc/lib_ILP64/libaoclutils.so ${prefix}/gcc/lib_ILP64/libflame.so
-	patchelf --add-needed ${aocl_prefix}/gcc/lib_LP64/libblis-mt.so ${prefix}/gcc/lib_LP64/libflame.so
-	patchelf --add-needed ${aocl_prefix}/gcc/lib_LP64/libaoclutils.so ${prefix}/gcc/lib_LP64/libflame.so
+    # add missing libFLAME dependency on BLIS and AOCL-Utils
+    patchelf --add-needed ${aocl_prefix}/gcc/lib_ILP64/libblis-mt.so ${prefix:?}/gcc/lib_ILP64/libflame.so
+    patchelf --add-needed ${aocl_prefix}/gcc/lib_ILP64/libaoclutils.so ${prefix:?}/gcc/lib_ILP64/libflame.so
+    patchelf --add-needed ${aocl_prefix}/gcc/lib_LP64/libblis-mt.so ${prefix:?}/gcc/lib_LP64/libflame.so
+    patchelf --add-needed ${aocl_prefix}/gcc/lib_LP64/libaoclutils.so ${prefix:?}/gcc/lib_LP64/libflame.so
 
-	# fix amd-libs.cfg, pkconfig, and cmake files containing ${pkgdir} and ${pkgver}
-	find ${prefix}/gcc \( -name 'amd-libs.cfg' -o -name '*.pc' -o -name '*.cmake' -o -name '*_module' \) -exec sed -e "s:/.*/opt:/opt:g" -s -i {} \;
+    # fix amd-libs.cfg, pkconfig, and cmake files containing ${pkgdir} and ${pkgver:?}
+    find ${prefix:?}/gcc \( -name 'amd-libs.cfg' -o -name '*.pc' -o -name '*.cmake' -o -name '*_module' \) -exec sed -e "s:/.*/opt:/opt:g" -s -i {} \;
 
-	# fix provided shell and module files to match ${aocl_prefix}
-	sed -e "s:aocl/${pkgver}:aocl:g" -s -i ${prefix}/gcc/*_module ${prefix}/gcc/amd-libs.cfg
+    # fix provided shell and module files to match ${aocl_prefix}
+    sed -e "s:aocl/${pkgver:?}:aocl:g" -s -i ${prefix:?}/gcc/*_module ${prefix:?}/gcc/amd-libs.cfg
 
-	# env-modules (optional)
-	cp ${srcdir}/modulefile ${prefix}/gcc
-	sed -e "s/aocc/gcc/g" \
-		-e "s/conflict aocl-gcc/conflict aocl-aocc/g" \
-		-i ${prefix}/gcc/modulefile
-	mkdir -p ${pkgdir}/etc/modules/modulefiles
-	ln -s ${aocl_prefix}/gcc/modulefile ${pkgdir}/etc/modules/modulefiles/${pkgname}
+    # env-modules (optional)
+    cp ${srcdir}/modulefile ${prefix:?}/gcc
+    sed -e "s/aocc/gcc/g" \
+        -e "s/conflict aocl-gcc/conflict aocl-aocc/g" \
+        -i ${prefix:?}/gcc/modulefile
+    mkdir -p ${pkgdir}/etc/modules/modulefiles
+    ln -s ${aocl_prefix}/gcc/modulefile ${pkgdir}/etc/modules/modulefiles/${pkgname}
 }
 
 # vim:set ts=4

@@ -5,6 +5,7 @@ pkgbase = aocl
 	url = https://www.amd.com/en/developer/aocl.html
 	arch = x86_64
 	license = custom
+	makedepends = curl
 	makedepends = patchelf
 	optdepends = env-modules
 	options = staticlibs
