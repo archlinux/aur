@@ -40,7 +40,5 @@ package() {
     cd "$srcdir/nucleus"
 
     install -Dm755 nucleus "$pkgdir/usr/bin/nucleus"  # binary installed as nucleus
-
-# This fails build:  install -Dm644 .github/README.md "$pkgdir/usr/share/doc/nucleus-cli/README.md"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/nucleus/LICENSE"
 }
