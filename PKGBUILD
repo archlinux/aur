@@ -1,7 +1,7 @@
 # Maintainer: SelectionRemark
 
 pkgname=beancount-language-server
-pkgver=1.8.1
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="A Language Server Protocol (LSP) for beancount files"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('beancount')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('ca9cbef4652fe1d2bff93bb367c8f5414a40d21ab8f05efc4db01879f31e441dd23cbeb1ace1bc2597ff09d471751aa657b2c21ab9caa89d75b7475b40f276f3')
+sha512sums=('bc50fbbb05766fc558c5f06f1ccee4333d06038003e1926386842a2ed045a68f0548f4bab8aa43edacb5461075e2d5f486e42a84423402285b5c04f5cb1ba6a8')
 
 # needed for rust packages, cargo compilation fails. See
 # https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/20#note_172172
