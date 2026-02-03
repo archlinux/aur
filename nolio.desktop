@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Nolio
+Comment=Minimal calendar-based todo app
+Exec=nolio
+Icon=nolio
+Terminal=false
+Type=Application
+Categories=Utility;Productivity;
+StartupWMClass=nolio
