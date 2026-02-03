@@ -1,0 +1,14 @@
+pkgbase = shellshare
+	pkgdesc = Share your terminal session in real-time
+	pkgver = 2.0.5
+	pkgrel = 1
+	url = https://shellshare.net/
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = openssl
+	options = !lto
+	source = https://github.com/vitorbaptista/shellshare/archive/refs/tags/v2.0.5.tar.gz
+	b2sums = 4dd63f9ae2ffa53b39f0ecb98b35f42fe6553e037c8ecc47fe3cfd3e9ea0db8609bba9bb5fcccc35b12f83e93ed6c4b78ea9232b641d035f2151792e2f295912
+
+pkgname = shellshare
