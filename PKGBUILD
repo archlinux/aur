@@ -11,7 +11,7 @@ source=("goatdkernel-${pkgver}-${pkgrel}-x86_64.tar.gz::https://github.com/MadGo
         "git+https://github.com/MadGoatHaz/GOATd-Kernel.git#tag=v${pkgver}"
         "goatdkernel.png::https://raw.githubusercontent.com/MadGoatHaz/GOATd-Kernel/master/assets/goatdkernel.png")
 
-pkgdesc="Advanced Rust-based framework for automated kernel sovereignty and microarchitecture tuning using Clang, LLVM LTO, and Polly Vectorization and more!"
+pkgdesc="Custom Arch kernel building & compile with microarchitecture tuning using Clang, LLVM LTO, Polly Vectorization and more!"
 arch=("x86_64")
 url="https://github.com/MadGoatHaz/GOATd-Kernel"
 license=("GPL3")

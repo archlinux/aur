@@ -1,5 +1,5 @@
 pkgbase = goatd-kernel-bin
-	pkgdesc = Advanced Rust-based framework for automated kernel sovereignty and microarchitecture tuning using Clang, LLVM LTO, and Polly Vectorization and more!
+	pkgdesc = Custom Arch kernel building & compile with microarchitecture tuning using Clang, LLVM LTO, Polly Vectorization and more!
 	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/MadGoatHaz/GOATd-Kernel
