@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=avm
-pkgver=11.0.0
+pkgver=13.0.0
 pkgrel=1
 pkgdesc='AOM Video Model - the reference software for next codec from Alliance for Open Media'
 arch=('x86_64')
@@ -15,11 +15,9 @@ makedepends=(
     'perl'
     #'python' # for tests
     'yasm')
-provides=('libaom.so')
-conflicts=('aom')
 source=("git+https://gitlab.com/AOMediaCodec/avm.git#tag=research-v${pkgver}"
         'git+https://github.com/abseil/abseil-cpp.git')
-sha256sums=('7d93802484ca961917134080ccfdc682b01991d22d842d19d618b0d57acd59ef'
+sha256sums=('a7eb676d6b056c7909c01cb5d087b80f61cf79f4dbf89e280f4e9bd20dff9263'
             'SKIP')
 
 prepare() {
@@ -39,7 +37,6 @@ build() {
         -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DCMAKE_POLICY_VERSION_MINIMUM:STRING='3.5' \
         -DCONFIG_DIP_EXT_PRUNING:STRING='0' \
         -DCONFIG_ML_PART_SPLIT:STRING='0' \
         -DCONFIG_TENSORFLOW_LITE:STRING='0' \
