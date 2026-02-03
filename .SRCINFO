@@ -1,7 +1,7 @@
 pkgbase = map-tiles-downloader-git
-	pkgdesc = Open Street Map map tiles downloader for Meshtastic and MeshCore.
+	pkgdesc = OpenStreetMap and thunderforest map tiles downloader: For selected regions, within a bounding box, or around points of a KML file. For Meshtastic and MeshCore.
 	pkgver = 1.3.3.r70.20251009.e16451b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tekk/map-tiles-downloader
 	arch = any
 	groups = meshcore
