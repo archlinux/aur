@@ -7,9 +7,9 @@
 #_qmake_args="CONFIG+=debug"
 _building=true
 pkgname=qtcreator-prerelease
-_pkgvermajmin=18.0
+_pkgvermajmin=19.0
 _pkgver=${_pkgvermajmin}.0
-_verpostfix=""
+_verpostfix="beta1"
 pkgver="${_pkgver}${_verpostfix}"
 pkgrel=1
 _urlbase="https://download.qt.io/official_releases"
@@ -38,7 +38,7 @@ optdepends=('qt6-doc: integrated Qt documentation'
             'valgrind: analyze support')
 makedepends=('gcc' 'mold' 'qt6-base' 'patchelf' 'ninja')
 source=("${_urlbase}/qtcreator/${_pkgvermajmin}/${_pkgver}/${_source_archive_name}.tar.xz")
-sha512sums=('180bb491947b2b57d5420fdda3bc184b22e1158b6f6e292ada294b7c32b4d3696cb99674b92a75682d405eb573d96ecebbf5d80db90de1d7748aaca59ebb4781')
+sha512sums=('bd90d69359a424e8a37c570fbdbcbf9b13ded1c6ab08018c75484d9e59d1eed8b802449968a7a23926636158ddb4c00d43d0f3c3ef159dba159026a3c2ff05cd')
 
 prepare() {
   local working_dir=${srcdir}/${_source_archive_name}
@@ -62,8 +62,8 @@ build() {
 	-DQT_CHAINLOAD_TOOLCHAIN_FILE=${startdir}/toolchain.cmake \
 	-DCMAKE_BUILD_TYPE=Release \
 	-DWITH_DOCS=ON \
-	-DBUILD_QBS=OFF \
-	-DWITH_QMLDESIGNER=OFF \
+	-DBUILD_QBS=ON \
+	-DWITH_QMLDESIGNER=ON \
 	-DBUILD_WITH_CRASHPAD=OFF \
 	${working_dir}
 
