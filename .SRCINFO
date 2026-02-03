@@ -1,15 +1,15 @@
 pkgbase = kibo-appimage
 	pkgdesc = Kibo Anime AppImage - Application for watching anime
-	pkgver = 1.1.4
-	pkgrel = 2
+	pkgver = 1.1.5
+	pkgrel = 1
 	url = https://kiboanime.app
 	arch = x86_64
 	license = custom
 	depends = fuse2
 	options = !strip
-	source = kibo-appimage-1.1.4.AppImage::https://apk.kiboanime.app/downloadpc/Kibo-1.1.4.AppImage
+	source = kibo-appimage-1.1.5.AppImage::https://apk.kiboanime.app/downloadpc/Kibo-1.1.5.AppImage
 	source = kibo.svg::https://www.kiboanime.app/group-2.svg
-	sha256sums = 9c91a12e0ee50bc00cbee52ce7f76f29eb570048ebe29de6096ffac507050157
+	sha256sums = 1e1acd5acbb247d0f8f233f12bb70737c2a9a5d7f6ebef263b04d6d04ba10894
 	sha256sums = bbe7aef71d090ed5eabc7b2933431990ce8e5253ea3123d3695cd2264434bbd6
 
 pkgname = kibo-appimage
