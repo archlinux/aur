@@ -1,5 +1,5 @@
 pkgbase = map-tiles-downloader-git
-	pkgdesc = OpenStreetMap and thunderforest map tiles batch downloader: For selected regions, within a bounding box, or around points of a KML file. (Original designation was for Meshtastic and MeshCore handhelds, but it just downloads the generic x/y/z.png map tile structure to a directory tree.)
+	pkgdesc = OpenStreetMap and thunderforest map tiles batch downloader: For selectable regions, within a bounding box, or around points of a KML file. Downloads the generic x/y/z.png(jpg) map tile structure to a directory tree.
 	pkgver = 1.3.3.r70.20251009.e16451b
 	pkgrel = 3
 	url = https://github.com/tekk/map-tiles-downloader
