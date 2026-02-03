@@ -12,7 +12,7 @@ conflicts=('mx-remaster-live-files')
 replaces=('mx-remaster-live-files')
 provides=('mx-remaster-live-files=1.0.0')
 source=("https://github.com/MX-Linux/mx-snapshot/archive/refs/tags/26.02.1arch.tar.gz")
-sha256sums=('PLACEHOLDER_NEEDS_ACTUAL_CHECKSUM')
+sha256sums=('7973474184b864cb1526b99bde0bdaa0cea07d1f073ace2fb5dc0ac4358f344c')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
