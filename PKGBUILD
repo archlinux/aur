@@ -1,58 +1,51 @@
-_pkgname=api-calls
-pkgname="${_pkgname}-bin"
-pkgver=0.17.1
+# Maintainer: Francesc d'Assís Requesens i Roca <francescrequesens.com>
+
+pkgname=api-calls-bin
+pkgver=0.18.0
 pkgrel=1
-pkgdesc="Simple application to call and test REST APIs"
+pkgdesc="A lightweight Electron-based desktop tool for sending and inspecting REST API requests."
 arch=('x86_64')
 url="https://github.com/elpeix/apicalls"
-license=('GPLv3')
-
-# Dev source
-# source=(
-#   "${_pkgname}-${pkgver}.tar.xz"
-#   "${_pkgname}.desktop"
-#   "${_pkgname}.png"
-#   "${_pkgname}.sh"
-#   "LICENSE-${pkgver}"
-# )
-
-# Release source
-source=(
-  "${_pkgname}-${pkgver}.tar.xz::https://github.com/elpeix/apicalls/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.xz"
-  "${_pkgname}-${pkgver}.desktop::https://raw.githubusercontent.com/elpeix/apicalls/v${pkgver}/aur/${_pkgname}.desktop"
-  "${_pkgname}-${pkgver}.png::https://raw.githubusercontent.com/elpeix/apicalls/v${pkgver}/aur/${_pkgname}.png"
-  "${_pkgname}-${pkgver}.sh::https://raw.githubusercontent.com/elpeix/apicalls/v${pkgver}/aur/${_pkgname}.sh"
-  "LICENSE-${pkgver}::https://raw.githubusercontent.com/elpeix/apicalls/v${pkgver}/LICENSE"
+license=('GPL-3.0-only')
+makedepends=('libarchive')
+depends=(
+  'gtk3'
+  'nss'
+  'nspr'
+  'alsa-lib'
+  'at-spi2-core'
+  'libxcomposite'
+  'libxdamage'
+  'libxrandr'
+  'libxkbcommon'
+  'libxss'
+  'libxtst'
+  'mesa'
+  'libdrm'
+  'xdg-utils'
+  'hicolor-icon-theme'
+  'libnotify'
 )
-sha256sums=("6401dee365a8fd0e122407010b38d5adde2c228be9a396a7488c9d31c5ac2526" "056d6bc11fd8fa9fdbd9460a5a1a8dab4254751d28fb3857194be45d0f51a673" "581195c48c61f557d6011e28e1b73744c53c2511b844ea85ede40ef2fa146e27" "6caf04ab572e54edbe2ce69ea035a92f22ae328d1b44769f792930bbd7931c34" "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986")
+provides=('api-calls')
+conflicts=('api-calls')
+source=("${pkgname}-${pkgver}.deb::https://github.com/elpeix/apicalls/releases/download/v0.18.0/api-calls_0.18.0_amd64.deb")
+sha256sums=('2c18cbf62164a042d2b0cf0fd31a083cfdb8f637edf32192f43359171624a56b')
 
 package() {
-  # Extract xz file
-  mkdir -p "${srcdir}/${_pkgname}-${pkgver}"
-  bsdtar -xf "${srcdir}/${_pkgname}-${pkgver}.tar.xz" -C "${srcdir}"
+  cd "${srcdir}"
 
-  # Remove old files
-  rm -rf "${pkgdir}/usr/share/${_pkgname}"
-  rm -rf "${pkgdir}/usr/bin/${_pkgname}"
-  rm -rf "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  rm -rf "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
-  rm -rf "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  # Extract the .deb to a temporary directory
+  rm -rf debpkg
+  mkdir -p debpkg
+  bsdtar -xf "${pkgname}-${pkgver}.deb" -C debpkg
 
-  # Create the package directory
-  mkdir -p "${pkgdir}/usr/share/${_pkgname}"
+  # Extract the payload to pkgdir
+  bsdtar -xf debpkg/data.tar.* -C "${pkgdir}"
 
-  # Copy the files to the package directory
-  cp -r "${srcdir}/${_pkgname}-${pkgver}/"* "${pkgdir}/usr/share/${_pkgname}/"
+  # Install license
+  _license_path="$(find "${pkgdir}" -maxdepth 4 -type f -iname 'LICENSE' | head -n1)"
 
-  # Install sh
-  install -Dm755 "${srcdir}/${_pkgname}-${pkgver}.sh" "${pkgdir}/usr/bin/${_pkgname}"
-
-  # Install desktop file
-  install -Dm644 "${srcdir}/${_pkgname}-${pkgver}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-
-  # Install to the icon
-  install -Dm644 "${srcdir}/${_pkgname}-${pkgver}.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
-
-  # Install to the license file
-  install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  if [[ -n "${_license_path}" ]]; then
+    install -Dm644 "${_license_path}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  fi
 }
