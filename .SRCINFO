@@ -1,0 +1,19 @@
+pkgbase = wayscrollshot-bin
+	pkgdesc = A screenshot tool for Wayland compositors that support the wlr-screencopy-unstable-v1 protocol
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jswysnemc/wayscrollshot
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = wayscrollshot
+	conflicts = wayscrollshot
+	conflicts = wayscrollshot-git
+	source_x86_64 = https://github.com/jswysnemc/wayscrollshot/releases/download/v0.1.0/wayscrollshot-linux-x86_64.tar.gz
+	sha256sums_x86_64 = ddc13a8043be130144850fbe9979ac14274d61489882daa5877ff8b8da939b95
+	source_aarch64 = https://github.com/jswysnemc/wayscrollshot/releases/download/v0.1.0/wayscrollshot-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 3b8c2f813d505639e301075b72d3d3ab1d06e43539e5c1a504b28c2400921c6b
+
+pkgname = wayscrollshot-bin
