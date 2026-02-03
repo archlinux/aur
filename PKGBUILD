@@ -1,6 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='0.1.11'
+_upstreamver='0.1.20'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='lic-cli'
@@ -24,7 +24,7 @@ makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/kushvinth/lic/refs/heads/main/LICENSE")
-sha256sums=('0efd4329bb5aa3e81af3f505389966b967e5cf496d94eab964fbe6391a17522e'
+sha256sums=('9cf768d68a8a2b6482741f3b2991000529606bbd716da77c12b082245907807c'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 build() {
