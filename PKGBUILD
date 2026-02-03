@@ -1,6 +1,6 @@
 # Maintainer: Didier BONNEFOI <aur at prestaconcept dot net>
 pkgname=ringover-bin
-pkgver=2.1.15
+pkgver=2.1.16
 pkgrel=1
 pkgdesc="Ringover desktop application"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=("custom")
 install=ringover.install
 
 source=("https://github.com/ringover/ringover-desktop-v2/releases/download/${pkgver}/Ringover.deb")
-sha512sums=("0fe83058d877afdef9e7e97b84daa7123d88352447f96d7f619e7ecfdf4032e84b5ad3ca9ee9cd77eabe57ebb20cd1244975a8e52621fe8755f8232aa9d64a5e")
+sha512sums=("08ae2e0f5df0babadb4322055a21f4f23ab1414f42b39e9bc38ae0a1f0fb60fcbb6c74e8431e741184b925947fe7ce3cc0661e4b3cd191d32c14787d38565cac")
 
 package() {
   echo "Extracting the data.tar.xz..."
