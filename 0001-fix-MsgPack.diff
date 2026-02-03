@@ -227,18 +227,3 @@ index 2717b10..d01ddd2 100644
 +    [MP2Key(1), MPKey(1)]
      public string? Name { get; set; }
  }
-diff --git a/src/BD.WTTS.Client.Plugins.GameAccount/Models/PlatformSettings.cs b/src/BD.WTTS.Client.Plugins.GameAccount/Models/PlatformSettings.cs
-index eda2d3b..f329280 100644
---- a/src/BD.WTTS.Client.Plugins.GameAccount/Models/PlatformSettings.cs
-+++ b/src/BD.WTTS.Client.Plugins.GameAccount/Models/PlatformSettings.cs
-@@ -1,8 +1,8 @@
- namespace BD.WTTS.Models;
- 
--[MP2Obj(SerializeLayout.Explicit)]
-+[MP2Obj(SerializeLayout.Explicit), MPObj]
- public partial class PlatformSettings : BaseNotifyPropertyChanged
- {
--    [Reactive, MP2Key(0)]
-+    [Reactive, MP2Key(0), MPKey(0)]
-     public string? PlatformPath { get; set; }
- }
