@@ -1,22 +1,18 @@
 pkgbase = lib32-raptor
-	pkgdesc = A C library that parses RDF/XML/N-Triples into RDF triples (32 bit)
+	pkgdesc = A C library that parses RDF/XML/N-Triples into RDF triples (32-bit)
 	pkgver = 2.0.16
-	pkgrel = 2
-	url = https://librdf.org/raptor
+	pkgrel = 3
+	url = https://librdf.org/raptor/
 	arch = x86_64
-	license = Apache
-	license = GPL2
-	license = LGPL2.1
-	makedepends = gcc-multilib
+	license = Apache-2.0 OR GPL-2.0-or-later OR LGPL-2.1-or-later
+	makedepends = lib32-gcc-libs
 	makedepends = gtk-doc
-	makedepends = lib32-curl
-	makedepends = lib32-icu
+	depends = raptor>=2.0.16
+	depends = lib32-curl>=7.12.0
 	depends = lib32-glibc
-	depends = lib32-libxml2
-	depends = lib32-libxslt
-	depends = lib32-xz
-	depends = lib32-zlib
-	depends = raptor
+	depends = lib32-icu
+	depends = lib32-libxml2>=2.6.8
+	depends = lib32-libxslt>=1.0.18
 	source = https://librdf.org/dist/source/raptor2-2.0.16.tar.gz
 	source = https://librdf.org/dist/source/raptor2-2.0.16.tar.gz.asc
 	source = raptor-2.0.15-libxml2-2.11.patch

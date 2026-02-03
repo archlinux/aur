@@ -1,0 +1,4 @@
+[lib32-raptor]
+source = "archpkg"
+archpkg = "raptor"
+strip_release = true
