@@ -63,8 +63,8 @@ pkgname = jre23-openjdk-headless
 	provides = java-runtime-headless=23
 	provides = java-runtime-headless-openjdk=23
 	provides = jre23-openjdk-headless=23.0.2.u7-2
-	conflicts = jdk-openjdk
-	conflicts = jre-openjdk
+	conflicts = jdk23-openjdk
+	conflicts = jre23-openjdk
 	backup = etc/java23-openjdk/logging.properties
 	backup = etc/java23-openjdk/management/jmxremote.access
 	backup = etc/java23-openjdk/management/jmxremote.password.template
@@ -108,8 +108,8 @@ pkgname = jre23-openjdk
 	provides = java-runtime-headless=23
 	provides = java-runtime-headless-openjdk=23
 	provides = jre23-openjdk-headless=23.0.2.u7-2
-	conflicts = jdk-openjdk
-	conflicts = jre-openjdk-headless
+	conflicts = jdk23-openjdk
+	conflicts = jre23-openjdk-headless
 	backup = etc/java23-openjdk/logging.properties
 	backup = etc/java23-openjdk/management/jmxremote.access
 	backup = etc/java23-openjdk/management/jmxremote.password.template
@@ -170,8 +170,8 @@ pkgname = jdk23-openjdk
 	provides = java-runtime-headless=23
 	provides = java-runtime-headless-openjdk=23
 	provides = jre23-openjdk-headless=23.0.2.u7-2
-	conflicts = jre-openjdk
-	conflicts = jre-openjdk-headless
+	conflicts = jre23-openjdk
+	conflicts = jre23-openjdk-headless
 	backup = etc/java23-openjdk/logging.properties
 	backup = etc/java23-openjdk/management/jmxremote.access
 	backup = etc/java23-openjdk/management/jmxremote.password.template
