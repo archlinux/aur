@@ -2,21 +2,18 @@
 
 _pkgname=panel-date-format
 pkgname=gnome-shell-extension-panel-date-format
-pkgver=22
-# Upstream repo does not tag releases, manually determine commit for now
-# https://github.com/KEIII/gnome-shell-panel-date-format/issues/28
-_pkgsha=a14b59b7d8ec9db3207331d3c063b40fea758228
+pkgver=23
 pkgrel=1
 pkgdesc='Allows to customize the date format on the panel'
 arch=('any')
 url="https://github.com/KEIII/gnome-shell-${_pkgname}"
 license=('MIT')
 depends=('gnome-shell')
-source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${_pkgsha}.tar.gz")
-sha256sums=('f9365ad5a0a8e812fab4a4a74539d87f9b0e9766bc10b6420d0a7a47085d23ec')
+source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('bab6f1f3458bffa51080da5d7b13e0494e58e16fc6a8fe9d803d729d1190a779')
 
 package() {
-    cd "gnome-shell-${_pkgname}-${_pkgsha}"
+    cd "gnome-shell-${_pkgname}-${pkgver}"
 
     local _extname=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
     local _destdir="${pkgdir}/usr/share/gnome-shell/extensions/${_extname}"
