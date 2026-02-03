@@ -1,0 +1,18 @@
+pkgbase = r-lsoda
+	pkgdesc = A 'C++' header library for using the 'libsoda-cxx' library with R.
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=lsoda
+	arch = any
+	license = MIT
+	makedepends = gcc
+	depends = r
+	depends = r-rcpp
+	optdepends = r-desolve
+	optdepends = r-microbenchmark
+	optdepends = r-rcpparmadillo
+	optdepends = r-rcppeigen
+	source = https://cran.r-project.org/src/contrib/lsoda_1.2.tar.gz
+	sha256sums = 85b52abd1d5495c06adf93436c150445bcb3992a1eb6f9ae5848f5a2bb317ce5
+
+pkgname = r-lsoda
