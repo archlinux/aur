@@ -1,11 +1,11 @@
 pkgbase = togo-bin
 	pkgdesc = a command line task/todo management utility designed to be simple, fast, and easy to use.
-	pkgver = 1.0.5
-	pkgrel = 6
+	pkgver = 1.1.0
+	pkgrel = 7
 	url = https://github.com/prime-run/togo
 	arch = x86_64
 	license = MIT
-	source = togo-1.0.5.tar.gz::https://github.com/prime-run/togo/releases/download/v1.0.5/togo_1.0.5_linux_amd64.tar.gz
-	sha256sums = b757f83d7463dc3e61e281e555d5b34d010854465b6f9d5007cfe7d871f9b4ef
+	source = togo-1.1.0.tar.gz::https://github.com/prime-run/togo/releases/download/v1.1.0/togo_1.1.0_linux_amd64.tar.gz
+	sha256sums = 8e07e14340ddd1029004a763d59a0a322502a9e69f5e4f780ba40de350d30e79
 
 pkgname = togo-bin
