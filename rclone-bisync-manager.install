@@ -21,7 +21,9 @@ post_install() {
     echo "3. To check the status of the service:"
     echo "   systemctl --user status rclone-bisync-manager.service"
     echo ""
-    echo "For more information, please refer to the documentation."
+    echo "4. (Optional) System tray: run rclone-bisync-manager-tray or start it from your applications menu."
+    echo ""
+    echo "For more information, see: https://github.com/Gunther-Schulz/rclone-bisync-manager#readme"
 }
 
 post_upgrade() {
