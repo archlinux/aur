@@ -1,6 +1,6 @@
 # Maintainer: Erin Heimer <heimer16 at protonmail dot com>
 pkgname='mailpit-bin'
-pkgver=1.28.4
+pkgver=1.29.0
 pkgrel=1
 pkgdesc="Web and API based SMTP testing"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
         "mailpit.service"
        )
 
-sha256sums=('8f1c37566e8b59a3f2de9ed9a31c0cdea559d05ae36fb08b7f0ea24a660e74b2'
+sha256sums=('80cb7a6cc0287dca5426ab250e60a037f53bbec0f7e1dc1413ab03460172c9ac'
             '602494cc3d28d58fa430ec3c53fd66e694db9faa87e98e45effe00a844affc4b')
 
 package() {
