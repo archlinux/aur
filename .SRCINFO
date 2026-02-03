@@ -1,0 +1,15 @@
+pkgbase = nextdots-cli-git
+	pkgdesc = The CLI for my NEXTDOTS
+	pkgver = r6.0098923
+	pkgrel = 1
+	url = https://github.com/DESKEDIT/nextGPLdots-cli.git
+	arch = any
+	license = unknown
+	makedepends = base
+	makedepends = git
+	depends = bash
+	provides = nextdots-cli
+	source = git+https://github.com/DESKEDIT/nextdots-cli.git
+	sha256sums = SKIP
+
+pkgname = nextdots-cli-git
