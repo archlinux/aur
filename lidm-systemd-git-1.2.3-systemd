@@ -1,0 +1,17 @@
+[Unit]
+Description=TUI display manager
+After=systemd-user-sessions.service plymouth-quit-wait.service
+
+[Service]
+Type=idle
+ExecStart=/usr/bin/lidm 7
+StandardInput=tty
+StandardOutput=tty
+StandardError=tty
+TTYPath=/dev/tty7
+TTYReset=yes
+TTYVHangup=yes
+Restart=always
+
+[Install]
+Alias=display-manager.service

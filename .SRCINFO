@@ -1,0 +1,12 @@
+pkgbase = lidm-systemd-git
+	pkgdesc = A fully colorful customizable TUI display manager made in C. (systemd service files - git vcs)
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/javalsai/lidm
+	arch = any
+	license = GPL-3.0-only
+	provides = lidm-service
+	source = lidm-systemd-git-1.2.3-systemd::https://raw.githubusercontent.com/javalsai/lidm/refs/heads/master/assets/services/systemd.service
+	sha256sums = SKIP
+
+pkgname = lidm-systemd-git
