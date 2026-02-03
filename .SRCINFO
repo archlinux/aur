@@ -1,6 +1,6 @@
 pkgbase = moonbit-bin
 	pkgdesc = Intelligent developer platform for Cloud and Edge using WASM
-	pkgver = 0.1.20260119
+	pkgver = 0.1.20260126
 	pkgrel = 1
 	url = https://www.moonbitlang.com/
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = moonbit-bin
 	provides = moonbit
 	conflicts = moonbit
 	options = !debug
-	source = https://cli.moonbitlang.cn/binaries/latest/moonbit-linux-x86_64.tar.gz#filename=moonbit-bin-0.1.20260119-linux-x86_64.tar.gz
-	source = https://cli.moonbitlang.cn/cores/core-latest.tar.gz#filename=moonbit-core-0.1.20260119.tar.gz
+	source = https://cli.moonbitlang.cn/binaries/latest/moonbit-linux-x86_64.tar.gz#filename=moonbit-bin-0.1.20260126-linux-x86_64.tar.gz
+	source = https://cli.moonbitlang.cn/cores/core-latest.tar.gz#filename=moonbit-core-0.1.20260126.tar.gz
 	source = moon.sh
-	sha256sums = 0d9df3c561ce0a145ff3d457b0bedee6134c214c1533ed316ee548c958d67046
-	sha256sums = d07b3819cec1fdd3a4b0bb18df8aa1b60e6dc2337456ab2d55ae2557210ec439
+	sha256sums = 9dda4cc4bd2709bf12f621a9e1cbcf99f8cf01f344a5fcb5cd47ed7438f0176a
+	sha256sums = 6c77dc4a6451963b7a6d1287eaeb8c7e8c0d62a148439404ead3e0ea08b3d712
 	sha256sums = a7ba404eb6995d8573e81fbe6c302fa5de96081585dc0420d29e4b419056c6a3
 
 pkgname = moonbit-bin
