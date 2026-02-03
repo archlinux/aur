@@ -1,23 +1,23 @@
 # Maintainer: killab33z <killab33z @ protonmail-dot-ch>
 pkgname=meshtasticd-bin
 _pkgname=meshtasticd
-pkgver=2.6.11.25
+pkgver=2.7.15.48
 pkgrel=1
 pkgdesc='Meshtastic daemon for Linux systems.'
-url='https://download.opensuse.org/repositories/network:/Meshtastic:/beta/Debian_12'
+url='https://download.opensuse.org/repositories/network:/Meshtastic:/beta/Debian_13'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 license=('custom')
 depends=('i2c-tools' 'libgpiod' 'ulfius' 'yaml-cpp')
 conflicts=("$_pkgname" "$_pkgname-git")
 provides=("$_pkgname")
-source_x86_64=("$url/amd64/meshtasticd_$pkgver~obs60ec05e~beta_amd64.deb")
-sha512sums_x86_64=('b3756851bf3a41df11bb0c77d461ef5e2221c73c28082cedabfd11da1a9152d3f04f59d1ce2557d8ca84ff064bda5ffeaef67bb330a4978be830c150ecacb923')
-source_i686=("$url/i386/meshtasticd_$pkgver~obs60ec05e~beta_i386.deb")
-sha512sums_i686=('d2fbb6bd909d341128084cd51e0338c1daaef260d550c2c6826036d6c371594697ec3aee8dbf3ff6c62e9581c7ff300d1c299b3e1add8c373347ba76497a1157')
-source_armv7h=("$url/armhf/meshtasticd_$pkgver~obs60ec05e~beta_armhf.deb")
-sha512sums_armv7h=('8f91df83b4bf70473608db87255b07e5048b166f18492b16bc989f7ae530f7afaff510120a7d5535fc28569c1325367790f5c6bb845805ac01bc8f3a81f16185')
-source_aarch64=("$url/arm64/meshtasticd_$pkgver~obs60ec05e~beta_arm64.deb")
-sha512sums_aarch64=('c1ebb2ec3a2c633e0fbd4c19a1dd415f8c96fb399f3a12518dc4bc62600f1de531874c4c174e662127b7cb6a9ad9d0bf812c92e8d3e391bc6dc832d8e1220a50')
+source_x86_64=("$url/amd64/meshtasticd_$pkgver~obsd18f3f7~beta_amd64.deb")
+sha512sums_x86_64=('06446b873d57b1bdd5ea249ea1c7980753cff3afada4ba30558d5bfdeee1d6bc65c779fc07969c56f7da684d9d694e18ae10f258e3627230b6c14938771940fe')
+source_i686=("$url/i386/meshtasticd_$pkgver~obsd18f3f7~beta_i386.deb")
+sha512sums_i686=('f387b02cf1100ae1788fd869f8704d98946c96964ad658b23f9778968ac32bb9e14a9475d22bfeaf0074d3cc13a0f942abd5587623c16c7fa2844c122d2f1477')
+source_armv7h=("$url/armhf/meshtasticd_$pkgver~obsd18f3f7~beta_armhf.deb")
+sha512sums_armv7h=('64790d0a74b6f0097dbe79711d58a99caf6a5ad27bc50147321826900d7b858aa6f2a07aa663e9158adbabf102963f1596320cafe58d247356639ef25f6c616f')
+source_aarch64=("$url/arm64/meshtasticd_$pkgver~obsd18f3f7~beta_arm64.deb")
+sha512sums_aarch64=('a92fdac968269ac87d3b25d436fe1974e3ed5edec3f5563d5943c6ed85dce27bb6ff4751f7afd0fd4333232ff2292e4fcfc10a34bfbaccfe5fe68b526cb9d2b8')
 
 # extract bin from deb file
 build() {
