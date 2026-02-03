@@ -49,8 +49,10 @@ prepare() {
     # The Editor repo uses ShareX.Editor naming but XerahS expects XerahS.Editor
     ln -sfn "$srcdir/xerahs-editor/src/ShareX.Editor" "$srcdir/xerahs-editor/src/XerahS.Editor"
 
-    # The .csproj file is also named ShareX.Editor.csproj but XerahS expects XerahS.Editor.csproj
-    ln -sfn "$srcdir/xerahs-editor/src/ShareX.Editor/ShareX.Editor.csproj" "$srcdir/xerahs-editor/src/ShareX.Editor/XerahS.Editor.csproj"
+    # Patch XerahS project references to use ShareX.Editor.csproj instead of XerahS.Editor.csproj
+    # This keeps the assembly named ShareX.Editor so avares:// URIs work correctly
+    find "$srcdir/xerahs" -name "*.csproj" -exec sed -i 's/XerahS\.Editor\.csproj/ShareX.Editor.csproj/g' {} \;
+    sed -i 's/XerahS\.Editor\.csproj/ShareX.Editor.csproj/g' "$srcdir/xerahs/XerahS.sln"
 }
 
 build() {
