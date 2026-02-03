@@ -1,3 +1,4 @@
+# shellcheck disable=SC2034,SC2086,SC2128,SC2148,SC2154,SC2164
 # Maintainer: Toria <ninetailedtori@uwu.gal>
 # Maintainer: Darjan Krijan [https://disc-kuraudo.eu]
 
@@ -13,6 +14,7 @@ _url="https://download.amd.com/developer/eula/aocc/aocc-${_major}/aocc-compiler-
 url="https://www.amd.com/en/developer/aocc.html"
 source=("$_url"
         "modulefile")
+makedepends=('curl')
 options=('staticlibs' '!strip' 'libtool')
 optdepends=('env-modules')
 install=aocc.install
@@ -31,22 +33,22 @@ _default_flags="$CFLAGS"
 _aocc_prefix=/opt/aocc
 
 package() {
-	prefix=${pkgdir}${_aocc_prefix}
-	mkdir -p ${prefix}
+    prefix=${pkgdir}${_aocc_prefix}
+    mkdir -p ${prefix}
 
-	cp -rp ${srcdir}/${pkgname}-compiler-${pkgver}/* ${prefix}
+    cp -rp ${srcdir}/${pkgname}-compiler-${pkgver}/* ${prefix}
 
-	ln -s ${_aocc_prefix}/bin/clang   ${prefix}/bin/aocc-clang
-	ln -s ${_aocc_prefix}/bin/clang++ ${prefix}/bin/aocc-clang++
-	ln -s ${_aocc_prefix}/bin/flang   ${prefix}/bin/aocc-flang
+    ln -s ${_aocc_prefix}/bin/clang   ${prefix}/bin/aocc-clang
+    ln -s ${_aocc_prefix}/bin/clang++ ${prefix}/bin/aocc-clang++
+    ln -s ${_aocc_prefix}/bin/flang   ${prefix}/bin/aocc-flang
 
-	# Default flags the compilers should use
-	# This only works together with calling the "aocc-" prefixed symlinks above
-	# Verbose output should read "Configuration file: /opt/aocc/bin/aocc.cfg"
-	echo "${_default_flags}" > ${prefix}/bin/aocc.cfg
+    # Default flags the compilers should use
+    # This only works together with calling the "aocc-" prefixed symlinks above
+    # Verbose output should read "Configuration file: /opt/aocc/bin/aocc.cfg"
+    echo "${_default_flags}" > ${prefix}/bin/aocc.cfg
 
-	# env-modules (optional)
-	cp ${srcdir}/modulefile ${prefix}
-	mkdir -p ${pkgdir}/etc/modules/modulefiles
-	ln -s ${_aocc_prefix}/modulefile ${pkgdir}/etc/modules/modulefiles/${pkgname}
+    # env-modules (optional)
+    cp ${srcdir}/modulefile ${prefix}
+    mkdir -p ${pkgdir}/etc/modules/modulefiles
+    ln -s ${_aocc_prefix}/modulefile ${pkgdir}/etc/modules/modulefiles/${pkgname}
 }

@@ -6,6 +6,7 @@ pkgbase = aocc
 	install = aocc.install
 	arch = x86_64
 	license = custom
+	makedepends = curl
 	optdepends = env-modules
 	options = staticlibs
 	options = !strip
