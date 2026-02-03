@@ -1,10 +1,90 @@
+diff --git a/src/Artemis.Core/Plugins/PluginFeature.cs b/src/Artemis.Core/Plugins/PluginFeature.cs
+index a7430da08..79dbdf55c 100644
+--- a/src/Artemis.Core/Plugins/PluginFeature.cs
++++ b/src/Artemis.Core/Plugins/PluginFeature.cs
+@@ -198,7 +198,10 @@ public abstract class PluginFeature : CorePropertyChanged, IDisposable
+         if (Plugin == null)
+             throw new ArtemisCoreException("Cannot lock a plugin feature that is not associated with a plugin");
+ 
+-        File.Create(Plugin.ResolveRelativePath($"{GetType().FullName}.lock")).Close();
++        string lockDir = Path.Combine(Constants.DataFolder, "PluginLocks");
++        if (!Directory.Exists(lockDir))
++            Directory.CreateDirectory(lockDir);
++        File.Create(Path.Combine(lockDir, $"{Plugin.Guid}.{GetType().FullName}.lock")).Close();
+     }
+ 
+     internal void DeleteLockFile()
+@@ -207,7 +210,11 @@ public abstract class PluginFeature : CorePropertyChanged, IDisposable
+             throw new ArtemisCoreException("Cannot lock a plugin feature that is not associated with a plugin");
+ 
+         if (GetLockFileCreated())
+-            File.Delete(Plugin.ResolveRelativePath($"{GetType().FullName}.lock"));
++        {
++            string lockDir = Path.Combine(Constants.DataFolder, "PluginLocks");
++            string lockFile = Path.Combine(lockDir, $"{Plugin.Guid}.{GetType().FullName}.lock");
++            File.Delete(lockFile);
++        }
+     }
+ 
+     internal bool GetLockFileCreated()
+@@ -215,7 +222,9 @@ public abstract class PluginFeature : CorePropertyChanged, IDisposable
+         if (Plugin == null)
+             throw new ArtemisCoreException("Cannot lock a plugin feature that is not associated with a plugin");
+ 
+-        return File.Exists(Plugin.ResolveRelativePath($"{GetType().FullName}.lock"));
++        string lockDir = Path.Combine(Constants.DataFolder, "PluginLocks");
++        string lockFile = Path.Combine(lockDir, $"{Plugin.Guid}.{GetType().FullName}.lock");
++        return File.Exists(lockFile);
+     }
+ 
+     #endregion
+@@ -262,4 +271,4 @@ public abstract class PluginFeature : CorePropertyChanged, IDisposable
+     }
+ 
+     #endregion
+-}
+\ No newline at end of file
++}
+diff --git a/src/Artemis.Core/Services/CoreService.cs b/src/Artemis.Core/Services/CoreService.cs
+index f6716082e..847ca2465 100644
+--- a/src/Artemis.Core/Services/CoreService.cs
++++ b/src/Artemis.Core/Services/CoreService.cs
+@@ -1,5 +1,6 @@
+ ﻿using System;
+ using System.Diagnostics;
++using System.IO;
+ using System.Linq;
+ using System.Reflection;
+ using Artemis.Core.DryIoc.Factories;
+@@ -63,6 +64,16 @@ internal class CoreService : ICoreService
+         _logger.Debug("Forcing plugins to use HidSharp {HidSharpVersion}", hidSharpVersion);
+ 
+         // Initialize the services
++        string builtInPlugins = Path.Combine(Constants.ApplicationFolder, "Plugins");
++        if (Directory.Exists(builtInPlugins))
++        {
++            foreach (string pluginDir in Directory.GetDirectories(builtInPlugins))
++            {
++                DirectoryInfo dirInfo = new(pluginDir);
++                if (_pluginManagementService.AdditionalPluginDirectories.All(d => d.FullName != dirInfo.FullName))
++                    _pluginManagementService.AdditionalPluginDirectories.Add(dirInfo);
++            }
++        }
+         _pluginManagementService.LoadPlugins(IsElevated);
+         _pluginManagementService.StartHotReload();
+         _renderService.Initialize();
+@@ -103,4 +114,4 @@ internal class CoreService : ICoreService
+         IsInitialized = true;
+         Initialized?.Invoke(this, EventArgs.Empty);
+     }
+-}
+\ No newline at end of file
++}
 diff --git a/src/Artemis.UI.Linux/ApplicationStateManager.cs b/src/Artemis.UI.Linux/ApplicationStateManager.cs
-index e580f5fd..226fb289 100644
+index 7bae51aaf..d9277a879 100644
 --- a/src/Artemis.UI.Linux/ApplicationStateManager.cs
 +++ b/src/Artemis.UI.Linux/ApplicationStateManager.cs
-@@ -140,23 +140,9 @@ public class ApplicationStateManager
-         //todo
-     }
+@@ -152,21 +152,7 @@ public class ApplicationStateManager
      
      private void UtilitiesOnUpdateRequested(object? sender, UpdateEventArgs e)
      {
@@ -23,13 +103,57 @@ index e580f5fd..226fb289 100644
 -        // Lets try a graceful shutdown, the script will kill if needed
 -        if (Application.Current?.ApplicationLifetime is IControlledApplicationLifetime controlledApplicationLifetime)
 -            Dispatcher.UIThread.Post(() => controlledApplicationLifetime.Shutdown());
-+		return;
++        return;
      }
      
      private static void RunScriptWithOutputFile(string script, string arguments, string outputFile)
-@@ -170,4 +156,4 @@ public class ApplicationStateManager
+@@ -180,4 +166,4 @@ public class ApplicationStateManager
          };
          Process.Start(info);
+     }
+-}
+\ No newline at end of file
++}
+diff --git a/src/Artemis.UI/Services/Updating/UpdateService.cs b/src/Artemis.UI/Services/Updating/UpdateService.cs
+index e80ae10ae..2612b4389 100644
+--- a/src/Artemis.UI/Services/Updating/UpdateService.cs
++++ b/src/Artemis.UI/Services/Updating/UpdateService.cs
+@@ -198,6 +198,10 @@ public class UpdateService : IUpdateService
+ 
+     private async Task<bool> AutoCheckForUpdates()
+     {
++        // Disable built-in updater on Linux packages; defer to package manager
++        if (OperatingSystem.IsLinux())
++            return false;
++
+         // Don't perform auto-updates if the current version is local
+         if (Constants.CurrentVersion == "local")
+             return false;
+@@ -277,4 +281,4 @@ public class UpdateService : IUpdateService
+             await _workshopUpdateService.AutoUpdateEntries();
+         }
+     }
+-}
+\ No newline at end of file
++}
+diff --git a/src/Artemis.WebClient.Workshop/BuiltInPluginsMigrator.cs b/src/Artemis.WebClient.Workshop/BuiltInPluginsMigrator.cs
+index afa9158fd..52d45b40c 100644
+--- a/src/Artemis.WebClient.Workshop/BuiltInPluginsMigrator.cs
++++ b/src/Artemis.WebClient.Workshop/BuiltInPluginsMigrator.cs
+@@ -20,6 +20,10 @@ public static class BuiltInPluginsMigrator
+ 
+     public static async Task<bool> Migrate(IWorkshopService workshopService, IWorkshopClient workshopClient, ILogger logger, IPluginRepository pluginRepository)
+     {
++        // Skip workshop migration for packaged Linux installs; built-in plugins are already provided
++        if (OperatingSystem.IsLinux() && Constants.ApplicationFolder.StartsWith("/opt/artemisrgb", StringComparison.Ordinal))
++            return true;
++
+         // If no default plugins are present (later installs), do nothing
+         DirectoryInfo pluginDirectory = new(Constants.PluginsFolder);
+         if (!pluginDirectory.Exists)
+@@ -97,4 +101,4 @@ public static class BuiltInPluginsMigrator
+         logger.Information("MigrateBuiltInPlugins - Finished migrating built-in plugins to workshop entries");
+         return true;
      }
 -}
 \ No newline at end of file

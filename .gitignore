@@ -1,0 +1,7 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!artemis.desktop
+!artemis.png
+!disable-update.patch
