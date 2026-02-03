@@ -3,7 +3,7 @@
 _pkgbase=pivccu-modules
 pkgname=${_pkgbase}-dkms
 pkgver=1.0.85
-pkgrel=2
+pkgrel=3
 pkgdesc="Kernel modules needed for Homematic"
 arch=('x86_64' 'aarch64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/alexreinert/piVCCU/"
