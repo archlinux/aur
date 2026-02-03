@@ -1,6 +1,6 @@
 pkgbase = bcachefs-kernel-dkms-git
 	pkgdesc = Bcachefs kernel module (DKMS) built directly from upstream kernel tree (fs/bcachefs), preserving directory structure
-	pkgver = 20260125.r1.g802455d
+	pkgver = 20260202160435.r1.gd00615b
 	pkgrel = 1
 	url = https://github.com/koverstreet/bcachefs
 	arch = x86_64
@@ -17,9 +17,7 @@ pkgbase = bcachefs-kernel-dkms-git
 	conflicts = bcachefs-source-git
 	source = dkms.conf.in
 	source = Makefile.dkms
-	source = fix-sysfs-goto.patch
 	sha256sums = b57dd60f10e457258b894badc561f9a43339ae7491aebf3a98e56ef74934dfa0
 	sha256sums = a37fa1baaf8825631ceff9410b3be78e06d19833814586cd3140b4af9c2f8d14
-	sha256sums = adf0ed462e37025ecde9c34b0a6f8a0d84ac2f49a9e688cba5472e27e7f6904c
 
 pkgname = bcachefs-kernel-dkms-git

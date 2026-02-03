@@ -1,7 +1,7 @@
 # Maintainer: neycrol <330578697@qq.com>
 pkgname=bcachefs-kernel-dkms-git
 _pkgname=bcachefs-kernel
-pkgver=20260125.r1.g802455d
+pkgver=20260202160435.r1.gd00615b
 pkgrel=1
 pkgdesc="Bcachefs kernel module (DKMS) built directly from upstream kernel tree (fs/bcachefs), preserving directory structure"
 arch=('x86_64')
@@ -19,38 +19,15 @@ conflicts=('bcachefs-dkms' 'bcachefs-dkms-git' 'bcachefs-git' 'bcachefs-source-g
 source=(
     "dkms.conf.in"
     "Makefile.dkms"
-    "fix-sysfs-goto.patch"
 )
 sha256sums=('b57dd60f10e457258b894badc561f9a43339ae7491aebf3a98e56ef74934dfa0'
-            'a37fa1baaf8825631ceff9410b3be78e06d19833814586cd3140b4af9c2f8d14'
-            'adf0ed462e37025ecde9c34b0a6f8a0d84ac2f49a9e688cba5472e27e7f6904c')
+            'a37fa1baaf8825631ceff9410b3be78e06d19833814586cd3140b4af9c2f8d14')
 
-pkgver() {
-    # 防止第一次运行时目录不存在报错
-    if [ -d "$srcdir/$_pkgname" ]; then
-        cd "$srcdir/$_pkgname"
-        git remote set-url origin "https://github.com/koverstreet/bcachefs.git"
-        local ref="HEAD"
-        # Use partial-clone filtering to avoid downloading the full kernel tree.
-        if git -c http.version=HTTP/1.1 fetch --quiet --depth=1 --filter=blob:none origin master; then
-            ref="origin/master"
-        fi
-        printf "%s.r%s.g%s" \
-            "$(git show -s --format=%cd --date=format:%Y%m%d "$ref")" \
-            "$(git rev-list --count "$ref")" \
-            "$(git rev-parse --short "$ref")"
-    else
-        # 初始占位符（首次构建时目录不存在）
-        printf "0.0.0.r0.g0000000"
-    fi
-}
-
-prepare() {
+_ensure_sparse_repo() {
     local _kernel_repo="https://github.com/koverstreet/bcachefs.git"
     local _repo_dir="$srcdir/$_pkgname"
 
-    # --- 1. 初始化仓库 ---
-    if [ ! -d "$_repo_dir" ]; then
+    if [ ! -d "$_repo_dir/.git" ]; then
         msg2 "Initializing sparse checkout..."
         mkdir -p "$_repo_dir"
         cd "$_repo_dir"
@@ -62,21 +39,39 @@ prepare() {
         git remote set-url origin "$_kernel_repo"
     fi
 
-    # --- 2. 配置稀疏检出 ---
     cat > .git/info/sparse-checkout <<EOF
 fs/bcachefs/
 include/trace/events/bcachefs.h
 EOF
-    
-    # --- 3. 拉取代码 ---
-    msg2 "Fetching latest kernel source..."
-    
+
     git config http.postBuffer 524288000
-    # Enable partial clone so we don't need to download the entire kernel tree.
     git config remote.origin.promisor true
     git config extensions.partialClone origin
     git config core.partialCloneFilter blob:none
-    
+}
+
+pkgver() {
+    _ensure_sparse_repo
+
+    local ref="origin/master"
+    if ! git -c http.version=HTTP/1.1 fetch --quiet --depth=1 --filter=blob:none origin master; then
+        ref="HEAD"
+    fi
+
+    # Timestamp keeps monotonic updates even with shallow history.
+    printf "%s.r%s.g%s" \
+        "$(git show -s --format=%cd --date=format:%Y%m%d%H%M%S "$ref")" \
+        "$(git rev-list --count "$ref")" \
+        "$(git rev-parse --short "$ref")"
+}
+
+prepare() {
+    local _repo_dir="$srcdir/$_pkgname"
+    _ensure_sparse_repo
+
+    # --- 1. 拉取代码 ---
+    msg2 "Fetching latest kernel source..."
+
     local _success=0
     for _i in {1..5}; do
         if git -c http.version=HTTP/1.1 fetch --depth=1 --filter=blob:none origin master; then
@@ -94,11 +89,7 @@ EOF
 
     git reset --hard origin/master
 
-    # --- FIX: Clang goto/cleanup error (CachyOS clang kernels) ---
-    # Avoid jumping past variables declared with cleanup attributes.
-    patch -Np1 -i "$srcdir/fix-sysfs-goto.patch"
-
-    # --- 4. 准备构建环境 ---
+    # --- 2. 准备构建环境 ---
     # 这里只清理 build 目录，不清理源码目录
     rm -rf "$srcdir/build"
     install -dm755 "$srcdir/build"
