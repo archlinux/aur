@@ -1,0 +1,21 @@
+pkgbase = python-diwire
+	pkgdesc = A lightweight, type-safe dependency injection container with automatic wiring, scoped lifetimes, and zero dependencies
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://github.com/maksimzayats/diwire
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-pydantic
+	depends = python-pydantic-settings
+	depends = python-fastapi
+	depends = python-typing_extensions
+	depends = python-pytest
+	source = https://files.pythonhosted.org/packages/source/d/diwire/diwire-0.0.9.tar.gz
+	sha256sums = b4c6ff61a9f572396bbea3d5145e39799edd95966bec2fc47718c07504016311
+
+pkgname = python-diwire
