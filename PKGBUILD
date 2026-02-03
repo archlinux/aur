@@ -8,7 +8,7 @@ license=('MIT')
 depends=('wireplumber' 'brightnessctl' 'bluez' 'bluez-utils' 'acpi' 'asusctl' 'procps-ng')
 makedepends=('cargo' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0d1d655c81042759696124d5c89d830cacbb9d81f6e7210fce25d0926cf1ce27')
+sha256sums=('ae104fb5c320c73cc2584470b4ed6c5bb0fbc49f79db0ad095bbee12534722e1')
 
 build() {
 	cd "$pkgname-$pkgver"

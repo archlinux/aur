@@ -15,6 +15,6 @@ pkgbase = bar_daemon
 	depends = asusctl
 	depends = procps-ng
 	source = bar_daemon-0.2.0.tar.gz::https://github.com/tmforshaw/bar_daemon/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 0d1d655c81042759696124d5c89d830cacbb9d81f6e7210fce25d0926cf1ce27
+	sha256sums = ae104fb5c320c73cc2584470b4ed6c5bb0fbc49f79db0ad095bbee12534722e1
 
 pkgname = bar_daemon
