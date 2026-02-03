@@ -14,20 +14,22 @@ license=('MIT')
 depends=(gcc-libs)
 makedepends=(rust git)
 optdepends=("rust-src: optimize with RUSTC_BOOTSTRAP=1")
-source=("uutils-acl::git+${url}.git")
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+source=("${pkgname%-git}::git+${url}.git")
 b2sums=('SKIP')
 
 build(){
-  cd uutils-acl
+  cd ${pkgname%-git}
   [ $RUSTC_BOOTSTRAP = 1 ] && _cargoflags='-Zbuild-std=std,panic_abort --config=profile.release.panic="immediate-abort" -Zpanic-immediate-abort'
   cargo build --profile=release-fast $_cargoflags
 }
 
 package() {
   unset optdepends
-  install -Dm755 uutils-acl/target/release-fast/acl "$pkgdir"/usr/bin/uu-acl
+  install -Dm755 ${pkgname%-git}/target/release-fast/acl "$pkgdir"/usr/bin/uu-acl
   for _b in {ch,getf,setf}acl
     do ln -svf uu-acl "$pkgdir"/usr/bin/uu-$_b
   done
-  install -Dm644 uutils-acl/LICENSE -t "$pkgdir"/usr/share/licenses/uutils-tar
+  install -Dm644 uutils-acl/LICENSE -t "$pkgdir"/usr/share/licenses/${pkgname}
 }

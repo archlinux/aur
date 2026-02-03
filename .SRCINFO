@@ -9,6 +9,8 @@ pkgbase = uutils-acl-git
 	makedepends = git
 	depends = gcc-libs
 	optdepends = rust-src: optimize with RUSTC_BOOTSTRAP=1
+	provides = uutils-acl
+	conflicts = uutils-acl
 	source = uutils-acl::git+https://github.com/uutils/acl.git
 	b2sums = SKIP
 
