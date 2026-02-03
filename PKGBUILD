@@ -1,7 +1,7 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 pkgname=klayout-pex
-pkgver=0.3.7
-pkgrel=2
+pkgver=0.3.8
+pkgrel=1
 pkgdesc="Parasitic Extraction (PEX) tool for KLayout"
 arch=("x86_64")
 _git_url="https://github.com/iic-jku/klayout-pex"
@@ -42,9 +42,8 @@ source=(
 	"${pkgname}::git+${_git_url}#tag=v${pkgver}"
 	"0001-fix-use-locally-installed-protobuf.patch"
 )
-b2sums=('3f8bce85a4fa88634b89013993c4cac47c154715b7099213f611debac6f6be4aeabf3bb8e916a172cdd56bbbf431e3144d35393480862ec2d25cc8eb2f6d7c2a'
-        '6adf186dd2a46c1919d6d03e380628679926901975d160f416616ae5bfb905be9a96b88cac42966611539f647a742c106cb10d237bd0f404e369a0d909ad80de')
-
+b2sums=('17d1291e0eadb7df0b5e0b4ea88aea425d6eb58a00dbcd2164d2cd74e722a4b0fff59e56acdf2f2a5fc7403bd97f0b1267c6e1e86bca924cce92d6b53dc6f6eb'
+        '0642c635ed405a6938ab3a968e6a92b6864b5b3ea685cefbad214f46fdf6fb7e80068b3c89e6770e55508a1dce0042a291698885d575778f6775885e083bbe61')
 
 prepare() {
 	cd "${pkgname}"
