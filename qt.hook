@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = qt6-base
+
+[Action]
+Description = Patching Qt 6 libraries for eidklient...
+Depends = binutils
+When = PostTransaction
+Exec = /opt/eidklient/patch-qt

@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+# Removes GNU_PROPERTY_1_NEEDED_INDIRECT_EXTERN_ACCESSION from Qt libraries.
+
+set -e
+
+for lib in libQt6{Core,Widgets}.so.6; do
+	objcopy \
+		--remove-section .note.gnu.property \
+		"/usr/lib/${lib}" \
+		"/opt/eidklient/lib/patched/${lib}"
+done

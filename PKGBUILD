@@ -16,6 +16,8 @@ _appimage="eID_klient-${_upstream_arch}.AppImage"
 _url="https://web.archive.org/web/%dif_/https://eidas.minv.sk/downloadservice/eidklient/linux/eID_klient_%s.tar.gz"
 source=(
     eidklient
+    patch-qt
+    qt.hook
     qt6.conf
 )
 # shellcheck disable=SC2059
@@ -27,6 +29,8 @@ source_x86_64=(
     "eID_klient_${pkgver}_x86_64.tar.gz::$(printf "${_url}" 20260203082146 x86_64)"
 )
 sha256sums=(
+    SKIP
+    SKIP
     SKIP
     SKIP
 )
@@ -79,6 +83,7 @@ prepare() {
 
 package() {
     depends=(
+        binutils
         ccid
         gcc-libs
         glibc
@@ -102,6 +107,13 @@ package() {
     # With QT_PLUGIN_PATH and QT_QPA_PLATFORM_PLUGIN_PATH, some bundled plugins
     # were still used.
     cp qt6.conf "${pkgdir}/opt/${_pkgname}"
+
+    # Patched Qt 6 libraries are required, otherwise the app crashes on launch with
+    # `error due to GNU_PROPERTY_1_NEEDED_INDIRECT_EXTERN_ACCESS`.
+    # https://gitlab.archlinux.org/archlinux/packaging/packages/qt6-base/-/issues/21
+    mkdir "${pkgdir}/opt/${_pkgname}/lib/patched"
+    install -Dm755 "${srcdir}/patch-qt" "${pkgdir}/opt/${_pkgname}"
+    install -Dm644 "${srcdir}/qt.hook" "${pkgdir}/usr/share/libalpm/hooks/${pkgname}-qt.hook"
 
     # Custom wrapper
     install -Dm755 "${srcdir}/eidklient" "${pkgdir}/usr/bin/eID_Client"
