@@ -1,16 +1,16 @@
 pkgbase = syng
 	pkgdesc = All in one karaoke software
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/christofsteel/syng
 	arch = any
 	license = AGPL-3.0-or-later
-	makedepends = python-poetry-core
+	makedepends = python-uv-build
 	makedepends = python-build
 	makedepends = python-installer
-	source = syng-2.2.0.tar.gz::https://github.com/christofsteel/syng/archive/refs/tags/v2.2.0.tar.gz
+	source = syng-2.3.0.tar.gz::https://github.com/christofsteel/syng/archive/refs/tags/v2.3.0.tar.gz
 	source = syng.desktop
-	sha256sums = 278c840a5f5213f3248156047569aa212147d395a248659a6c4f7f05123f3e8b
+	sha256sums = b4eb6cfdf626cc443503f1680bbd1e74b5f3584ca616390ccafd204d6f95afa6
 	sha256sums = 7ed5ae1a81667ebe73206736a531ce8425347b2a8c4240db363c026670efada2
 
 pkgname = syng-common
@@ -19,6 +19,7 @@ pkgname = syng-common
 	depends = python-aiohttp
 	depends = python-platformdirs
 	depends = python-socketio
+	depends = python-packaging
 	depends = yt-dlp
 	optdepends = syng-server: Server requirements for syng
 	optdepends = syng-client: Client requirements for syng
@@ -38,5 +39,5 @@ pkgname = syng-client
 
 pkgname = syng-server
 	pkgdesc = All in one karaoke software (server)
-	depends = python-alt-profanity-check
 	depends = syng-common
+	optdepends = python-alt-profanity-check: Profanity checking of user names

@@ -1,14 +1,15 @@
 # Maintainer: Tobias Boesch <tobias.boesch at googlemail dot com>
+# Take dependencies from pyproject.toml of the upstream repo
 pkgbase=syng
 pkgname=(syng-common syng-client syng-server)
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="All in one karaoke software"
 arch=(any)
 url="https://github.com/christofsteel/syng"
 license=(AGPL-3.0-or-later)
 makedepends=(
-    python-poetry-core
+    python-uv-build
     python-build
     python-installer
 )
@@ -16,7 +17,7 @@ source=(
     "$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
     'syng.desktop'
 )
-sha256sums=('278c840a5f5213f3248156047569aa212147d395a248659a6c4f7f05123f3e8b'
+sha256sums=('b4eb6cfdf626cc443503f1680bbd1e74b5f3584ca616390ccafd204d6f95afa6'
             '7ed5ae1a81667ebe73206736a531ce8425347b2a8c4240db363c026670efada2')
 prepare() {
     cd $pkgbase-$pkgver
@@ -33,6 +34,7 @@ package_syng-common() {
         python-aiohttp
         python-platformdirs
         python-socketio
+        python-packaging
         yt-dlp
     )
     optdepends=(
@@ -49,8 +51,10 @@ package_syng-server() {
     pkgdesc="All in one karaoke software (server)"
     pkgname=syng-server
     depends=(
-        python-alt-profanity-check
         syng-common
+    )
+    optdepends=(
+        'python-alt-profanity-check: Profanity checking of user names'
     )
 }
 package_syng-client() {
