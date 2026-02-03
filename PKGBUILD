@@ -1,14 +1,22 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=cs-paint-git
-pkgver=1.0.2.r0.g2eacba9
+pkgver=1.1.1.r0.gc73d031
 pkgrel=1
 pkgdesc='Library for abstraction of the Vulkan API (git version)'
 arch=('x86_64')
 url='https://www.copperspice.com/'
 license=('BSD-2-Clause')
-depends=('gcc-libs' 'vulkan-icd-loader')
-makedepends=('git' 'cmake' 'glm' 'glslang' 'vulkan-headers')
+depends=(
+    'gcc-libs'
+    'glibc'
+    'vulkan-icd-loader')
+makedepends=(
+    'cmake'
+    'git'
+    'glm'
+    'glslang'
+    'vulkan-headers')
 provides=('cs-paint')
 conflicts=('cs-paint')
 options=('!emptydirs')
@@ -23,6 +31,7 @@ build() {
     cmake -B build -S cs_paint \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DCMAKE_POLICY_VERSION_MINIMUM:STRING='3.5' \
         -Wno-dev
     cmake --build build
 }
