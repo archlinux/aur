@@ -1,5 +1,7 @@
 # Maintainer: Jack Ratermann <jackratermann@gmail.com>
-pkgname=hermes
+pkgname=hermes-pm
+provides=('hermes')
+conflicts=('hermes')
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="A beautiful TUI package manager for Arch Linux"
