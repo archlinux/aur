@@ -1,9 +1,10 @@
 pkgbase = pinnacle-comp-git
 	pkgdesc = A Wayland compositor inspired by AwesomeWM (git version)
 	pkgver = 0.1.0.r1547.1b165ca
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pinnacle-comp/pinnacle
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	makedepends = git
