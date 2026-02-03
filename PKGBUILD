@@ -2,7 +2,7 @@
 # Maintainer: Chmouel Boudjnah <chmouel@chmouel.com>
 
 pkgname='lazyworktree-bin'
-pkgver=1.30.0
+pkgver=1.13.0
 pkgrel=1
 pkgdesc='lazyworktree - A TUI tool to manage git worktrees'
 url='https://github.com/chmouel/lazyworktree'
@@ -10,13 +10,12 @@ arch=('aarch64' 'x86_64')
 license=('Apache 2.0')
 provides=('lazyworktree')
 conflicts=('lazyworktree')
-depends=('git' 'git-delta' 'lazygit' 'less' 'tmux')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/chmouel/lazyworktree/releases/download/v${pkgver}/lazyworktree_Linux_arm64.tar.gz")
-sha256sums_aarch64=('5fc13a6dc0d02a5c6976a79cd135d4a876cb92c6a86662866be5b18e48535824')
+sha256sums_aarch64=('b040b8ff61bb646ecaec2df0af5a8a18f4e831431c9286ac185b35637dfbcf6f')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chmouel/lazyworktree/releases/download/v${pkgver}/lazyworktree_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('e283f844c976dcce53d8141605d28c111417f5e56164e5986e6c878d90495a3e')
+sha256sums_x86_64=('7ec23275e09b7f5c6715bd4d5eaa1c69e865ef58e85cb0243fdfc85d40d60192')
 
 package() {
   # bin
@@ -27,18 +26,4 @@ package() {
 
   # config example
   install -Dm644 "./config.example.yaml" "${pkgdir}/usr/share/doc/lazyworktree/config.example.yaml"
-
-  # shell functions
-  install -Dm644 "./shell/functions.bash" "${pkgdir}/usr/share/lazyworktree/functions.bash"
-  install -Dm644 "./shell/functions.zsh" "${pkgdir}/usr/share/lazyworktree/functions.zsh"
-  install -Dm644 "./shell/functions.fish" "${pkgdir}/usr/share/lazyworktree/functions.fish"
-
-  # man page
-  install -Dm644 "./lazyworktree.1" "${pkgdir}/usr/share/man/man1/lazyworktree.1"
-
-  # completions
-  install -Dm644 "./completions/lazyworktree.bash" "${pkgdir}/usr/share/bash-completion/completions/lazyworktree"
-  install -Dm644 "./completions/lazyworktree.zsh" "${pkgdir}/usr/share/zsh/site-functions/_lazyworktree"
-  install -Dm644 "./completions/lazyworktree.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/lazyworktree.fish"
-  install -Dm644 "./completions/lazyworktree.ps1" "${pkgdir}/usr/share/powershell/Modules/lazyworktree/lazyworktree.ps1"
 }
