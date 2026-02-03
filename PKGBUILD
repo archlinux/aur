@@ -10,6 +10,7 @@ license=('LGPL 3.0+')
 depends=('jdk21-openjdk')
 makedepends=(
     'git'
+    'tar'
     'jdk21-openjdk'
 )
 
