@@ -1,0 +1,3 @@
+[faff]
+source = "git"
+git = "https://github.com/wimpysworld/faff.git"
