@@ -1,10 +1,12 @@
 # Maintainer:
 # Contributor: memchr
 
+: ${_install_path:=usr/lib}
+
 _pkgname="piper-tts"
 pkgname="$_pkgname-git"
 pkgver=1.4.0.r0.g490b4df
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="A fast, local neural text to speech system"
 url="https://github.com/OHF-Voice/piper1-gpl"
@@ -45,9 +47,24 @@ build() {
 }
 
 package() {
+  local _venv_path="$pkgdir/$_install_path/$_pkgname"
   cd "$_pkgsrc"
-  python -m installer --destdir="$pkgdir" dist/*.whl
 
-  # prevent conflict with extra/piper
-  mv "$pkgdir/usr/bin"/{piper,piper-tts}
+  python -m venv --system-site-packages "$_venv_path"
+  "$_venv_path/bin/pip3" install dist/*.whl
+
+  # compile with path adjustment
+  python -m compileall -f -p / -s "$pkgdir" "$pkgdir/"
+
+  # unwanted files
+  rm -f "$_venv_path/.gitignore"
+
+  # relocate venv (remove build paths)
+  sed -e "s|$_venv_path|/$_install_path/$_pkgname|g" \
+    -i "$_venv_path"/pyvenv.cfg \
+    "$_venv_path"/bin/*
+
+  # symlink
+  mkdir -pm755 "$pkgdir/usr/bin"
+  ln -sf /usr/lib/piper-tts/bin/piper "$pkgdir/usr/bin/piper-tts"
 }
