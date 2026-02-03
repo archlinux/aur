@@ -1,6 +1,0 @@
-diff --git a/ui/desktop/src/main.ts b/ui/desktop/src/main.ts
-index b86e34d3aa..c2075a3883 100644
---- a/ui/desktop/src/main.ts
-+++ b/ui/desktop/src/main.ts
-@@ -541,0 +542 @@ const createChat = async (
-+    autoHideMenuBar: process.platform === 'linux' ? true : false,

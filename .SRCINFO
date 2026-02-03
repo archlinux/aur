@@ -1,7 +1,7 @@
 pkgbase = goose-desktop
-	pkgdesc = An open-source, extensible AI agent that goes beyond code suggestions (with UI)
-	pkgver = 1.0.35
-	pkgrel = 2
+	pkgdesc = Goose Desktop (built from source) - an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM
+	pkgver = 1.22.2
+	pkgrel = 1
 	url = https://github.com/block/goose
 	arch = x86_64
 	license = Apache-2.0
@@ -9,15 +9,11 @@ pkgbase = goose-desktop
 	makedepends = nodejs
 	makedepends = just
 	makedepends = oniguruma
-	depends = uv
-	depends = npm
-	conflicts = codename-goose
-	conflicts = codename-goose-bin
+	provides = goose-desktop
+	conflicts = goose-desktop-bin
 	options = !lto
 	options = !debug
-	source = https://github.com/block/goose/archive/refs/tags/v1.0.35.tar.gz
-	source = auto-hide-menu-bar.patch
-	b2sums = 4a65ce80da087ffcf23c236677c1385ab688375ae2204459f362c560114a76366dd63ab26c04db87376517b7479d3e515367affbf382696bb7dd5da6c46bc16e
-	b2sums = 94d5a2add73bcde850f5c0555039d71b63611e54dc896ab8b5c12165884ad4126e3298c6542a10d82ef9b84f6b191468c6ba4a7843a854c560facd3591b5bdc5
+	source = git+https://github.com/block/goose.git#tag=v1.22.2
+	b2sums = SKIP
 
 pkgname = goose-desktop
