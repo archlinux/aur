@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=koRpus
-_pkgver=0.13-8
+_pkgver=0.13-9
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=7
+pkgrel=1
 pkgdesc="Text Analysis with Emphasis on POS Tagging, Readability, and Lexical Diversity"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -30,8 +30,8 @@ optdepends=(
   r-tm
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('87f5cf19ee31e22af6e8f099290440d8')
-b2sums=('7d387b64e6a80d97d3aa00d9833ec2aca32cffa072dc3b1c09b3a7e3dbcf4a4a5ec765f886b1c30a2977296e50d1ba20d550aff992ef3f75a74f69e83d3eb043')
+md5sums=('06796bcd2502b0aeb9308c9457ec55de')
+b2sums=('0d9f9b55450fb7851b519410b22238e0d1788e4db9f01413beb3a1b8ebf2e005618e422ea92d65a0f120b1a03dec3f184968231d24c8c610a40c353eaee6bd62')
 
 build() {
   mkdir build
