@@ -2,7 +2,7 @@
 # Contributor: Epix <epixtm@protonmail.com>
 pkgbase=ce-toolchain
 pkgname=ce-toolchain-bin
-pkgver=14.1
+pkgver=14.2
 pkgrel=1
 pkgdesc="Toolchain and libraries for C/C++ programming on the TI-84+ CE calculator series"
 install=$pkgname.install
@@ -14,7 +14,7 @@ arch=('i686' 'x86_64')
 url="https://ce-programming.github.io/toolchain/index.html"
 license=('LGPL-3.0-only')
 source=("CEdev-Linux-${pkgver}.tar.gz::https://github.com/CE-Programming/toolchain/releases/download/v${pkgver}/CEdev-Linux.tar.gz")
-sha256sums=('248faccf3a31f86f09866c83f0cd26f6f2761f22a02e01cbf58abcae95d66a84')
+sha256sums=('5a5ef2902d2300dee3cbfc09561a69ca9492abaee6e06a59f16b331356d15f7c')
 
 package_ce-toolchain-bin() {
         cd "$srcdir/CEdev"
