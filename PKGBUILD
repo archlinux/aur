@@ -1,0 +1,61 @@
+# Maintainer: tirith contributors
+pkgname=tirith
+pkgver=0.1.2
+pkgrel=1
+pkgdesc='Terminal security - catches homograph attacks, pipe-to-shell, ANSI injection'
+arch=('x86_64' 'aarch64')
+url='https://github.com/sheeki03/tirith'
+license=('Apache-2.0')
+depends=('gcc-libs')
+makedepends=('cargo')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+  cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release -p tirith
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+
+  install -Dm755 "target/release/tirith" "$pkgdir/usr/bin/tirith"
+
+  # Shell hooks
+  install -Dm644 "shell/tirith.sh" "$pkgdir/usr/share/tirith/shell/tirith.sh"
+  install -Dm644 "shell/lib/zsh-hook.zsh" "$pkgdir/usr/share/tirith/shell/lib/zsh-hook.zsh"
+  install -Dm644 "shell/lib/bash-hook.bash" "$pkgdir/usr/share/tirith/shell/lib/bash-hook.bash"
+  install -Dm644 "shell/lib/fish-hook.fish" "$pkgdir/usr/share/tirith/shell/lib/fish-hook.fish"
+  install -Dm644 "shell/lib/powershell-hook.ps1" "$pkgdir/usr/share/tirith/shell/lib/powershell-hook.ps1"
+
+  # Completions
+  install -Dm644 <(target/release/tirith completions bash) "$pkgdir/usr/share/bash-completion/completions/tirith"
+  install -Dm644 <(target/release/tirith completions zsh) "$pkgdir/usr/share/zsh/site-functions/_tirith"
+  install -Dm644 <(target/release/tirith completions fish) "$pkgdir/usr/share/fish/vendor_completions.d/tirith.fish"
+
+  # Man page
+  install -Dm644 <(target/release/tirith manpage) "$pkgdir/usr/share/man/man1/tirith.1"
+
+  # License
+  install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
+}
+
+post_install() {
+  echo ""
+  echo "Activate tirith by adding to your shell profile:"
+  echo ""
+  echo "  zsh  (~/.zshrc):                        eval \"\$(tirith init)\""
+  echo "  bash (~/.bashrc):                       eval \"\$(tirith init)\""
+  echo "  fish (~/.config/fish/config.fish):      tirith init | source"
+  echo ""
+  echo "Then restart your terminal. Verify: tirith doctor"
+  echo ""
+}
