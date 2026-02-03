@@ -1,6 +1,6 @@
 pkgbase = elf2uf2-rs-git
 	pkgdesc = Port of elf2uf2 to Rust (git)
-	pkgver = r45.73e1585
+	pkgver = r105.f14bf2d
 	pkgrel = 1
 	url = https://github.com/JoNil/elf2uf2-rs
 	arch = x86_64

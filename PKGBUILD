@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=elf2uf2-rs-git
-pkgver=r45.73e1585
+pkgver=r105.f14bf2d
 pkgrel=1
 pkgdesc="Port of elf2uf2 to Rust (git)"
 arch=('x86_64')
@@ -30,11 +30,10 @@ build() {
   cargo build --release --frozen
 }
 
-# https://github.com/JoNil/elf2uf2-rs/pull/26
-# check() {
-#   cd "${pkgname%-git}"
-#   cargo test --frozen
-# }
+ check() {
+   cd "${pkgname%-git}"
+   cargo test --frozen
+ }
 
 package() {
   cd "${pkgname%-git}"
