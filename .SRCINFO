@@ -1,6 +1,6 @@
 pkgbase = snappy-switcher
 	pkgdesc = A fast, animated Alt+Tab window switcher for Hyprland with MRU sorting and context grouping
-	pkgver = 1.0.0
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/OpalAayan/snappy-switcher
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = snappy-switcher
 	depends = wayland
 	depends = cairo
 	depends = pango
-	depends = json-c
 	depends = libxkbcommon
 	depends = glib2
 	depends = librsvg
@@ -20,7 +19,7 @@ pkgbase = snappy-switcher
 	optdepends = tela-icon-theme: Recommended icon theme
 	provides = snappy-switcher
 	conflicts = snappy-switcher-git
-	source = https://github.com/OpalAayan/snappy-switcher/archive/v1.0.0.tar.gz
-	sha256sums = a3e9d527f1598c0ad59b22a9a7f52bc4f8c0ed690a3a22d0fc75d5afc6df24f1
+	source = https://github.com/OpalAayan/snappy-switcher/archive/v2.0.tar.gz
+	sha256sums = 8cf8c1800dd0fe0539b9d1e71c9c92369a8536f8beecbc1a214ba80bdd8b8245
 
 pkgname = snappy-switcher
