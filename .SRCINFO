@@ -1,0 +1,19 @@
+pkgbase = cheating-daddy
+	pkgdesc = Real-time AI assistant for video calls, interviews, and meetings using Gemini AI
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/sohzm/cheating-daddy
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = npm
+	makedepends = git
+	depends = electron
+	depends = nodejs
+	source = cheating-daddy-0.5.0.tar.gz::https://github.com/sohzm/cheating-daddy/archive/refs/tags/0.5.0.tar.gz
+	source = cheating-daddy.desktop
+	source = cheating-daddy.sh
+	sha256sums = f72cda703175e601c3a4ec313f064e7b14844de16cde05be73369862ea643f5d
+	sha256sums = fd32245b72be6fdd87866ed3ae21720e80eed6d79cc5a8062d4252c777a2eadd
+	sha256sums = 31eb724ca119a8268409e2f5202ed145df0a2c36794bda551eef1ae47ebe3700
+
+pkgname = cheating-daddy

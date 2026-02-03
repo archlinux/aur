@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Cheating Daddy
+Comment=Real-time AI assistant for video calls and interviews
+Exec=cheating-daddy
+Icon=cheating-daddy
+Type=Application
+Categories=Development;Education;Utility;
+Terminal=false
+StartupWMClass=cheating-daddy
+Keywords=AI;Assistant;Interview;Meeting;Gemini;
