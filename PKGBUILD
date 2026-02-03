@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=faff
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc='ollama powered conventional commit message generator'
 arch=(any)
 url="https://github.com/wimpysworld/$pkgname"
@@ -15,7 +15,7 @@ depends=(bash
          git)
 optdepends=('ollama: default usage expects models on localhost')
 source=("git+$url.git#tag=$pkgver")
-sha256sums=('f99c59bc26d4155e396eb37df1cb4fa5b9f1905b4d7396e5e3567ea5575af7d5')
+sha256sums=('b3762bdba5f6150c57dbbdf9db38028954d803b0c579e36906874d51780afbe2')
 
 package () {
 	cd "$pkgname"
