@@ -10,7 +10,7 @@ pkgbase = hermes-pm
 	depends = pacman
 	provides = hermes
 	conflicts = hermes
-	source = hermes-pm-0.1.0.tar.gz::https://github.com/Ap0ll02/hermes/archive/refs/tags/v0.1.0.tar.gz
+	source = hermes-0.1.0.tar.gz::https://github.com/Ap0ll02/hermes/archive/refs/tags/v0.1.0.tar.gz
 	sha256sums = 6c2210334469b4a502a42f4f8f70c2a2923b1a31e0462eebc24042992b06e4c5
 
 pkgname = hermes-pm
