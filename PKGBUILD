@@ -1,19 +1,25 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
-pkgname=libdvdread-git
-pkgver=6.1.3.9.gba2227b
+pkgbase=libdvdread-git
+pkgname=(
+  'libdvdread-git'
+  'lib32-libdvdread-git'
+)
+pkgver=7.0.1.37.ge294cf7
 pkgrel=1
 pkgdesc="Library to access DVD disks. (GIT version)"
 arch=('x86_64')
 license=('GPL2')
 url='https://dvdnav.mplayerhq.hu'
-depends=('libdvdcss')
-makedepends=('git')
-provides=(
-  'libdvdread'
-  'libdvdread.so'
+makedepends=(
+  'git'
+  'glibc'
+  'lib32-glibc'
+  'libdvdcss'
+  'lib32-libdvdcss'
+  'meson'
 )
-conflicts=('libdvdread')
+provides=('libdvdread.so')
 source=('git+https://code.videolan.org/videolan/libdvdread.git')
 sha256sums=('SKIP')
 
@@ -22,24 +28,47 @@ pkgver() {
   echo "$(git describe --long --tags | tr - .)"
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
   cd libdvdread
-  autoreconf -vif
+  arch-meson . build \
+    -D libdvdcss=enabled
 
-  cd "${srcdir}/build"
-  ../libdvdread/configure \
-    --prefix=/usr \
-    --enable-static=no \
-    --with-libdvdcss
+  meson compile -C build
 
-  make
+  export CFLAGS="-m32 ${CFLAGS}"
+  export CXXFLAGS="-m32 ${CXXFLAGS}"
+  export LDFLAGS="-m32 ${LDFLAGS}"
+  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+
+  arch-meson . build32 \
+    --cross-file lib32 \
+    -D libdvdcss=enabled
+
+  meson compile -C build32
 }
 
-package() {
-  depends+=('libdvdcss.so')
-  make -C build DESTDIR="${pkgdir}" install
+package_libdvdread-git() {
+  depends+=(
+    'libdvdcss.so'
+    'glibc'
+  )
+  provides+=('libdvdread')
+  conflicts=('libdvdread')
+
+  meson install -C libdvdread/build --destdir "${pkgdir}"
+}
+
+package_lib32-libdvdread-git() {
+  pkgdesc=" (32-bits)"
+  depends+=(
+    'libdvdcss.so'
+    'lib32-glibc'
+  )
+  provides+=('lib32-libdvdread')
+  conflicts=('lib32-libdvdread')
+
+  meson install -C libdvdread/build32 --destdir "${pkgdir}"
+
+  rm -fr "${pkgdir}/usr/include"
+  rm -fr "${pkgdir}/usr/share"
 }

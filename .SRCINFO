@@ -1,18 +1,31 @@
 pkgbase = libdvdread-git
 	pkgdesc = Library to access DVD disks. (GIT version)
-	pkgver = 6.1.3.9.gba2227b
+	pkgver = 7.0.1.37.ge294cf7
 	pkgrel = 1
 	url = https://dvdnav.mplayerhq.hu
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	depends = libdvdcss
-	provides = libdvdread
+	makedepends = glibc
+	makedepends = lib32-glibc
+	makedepends = libdvdcss
+	makedepends = lib32-libdvdcss
+	makedepends = meson
 	provides = libdvdread.so
-	conflicts = libdvdread
 	source = git+https://code.videolan.org/videolan/libdvdread.git
 	sha256sums = SKIP
 
 pkgname = libdvdread-git
-	depends = libdvdcss
 	depends = libdvdcss.so
+	depends = glibc
+	provides = libdvdread.so
+	provides = libdvdread
+	conflicts = libdvdread
+
+pkgname = lib32-libdvdread-git
+	pkgdesc = (32-bits)
+	depends = libdvdcss.so
+	depends = lib32-glibc
+	provides = libdvdread.so
+	provides = lib32-libdvdread
+	conflicts = lib32-libdvdread
