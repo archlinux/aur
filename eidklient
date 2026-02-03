@@ -5,6 +5,5 @@ set -e
 FILENAME=$(basename "$0")
 
 export LD_LIBRARY_PATH=/usr/lib
-export QT_QPA_PLATFORM_PLUGIN_PATH=/usr/lib/qt/plugins
 
 exec "/opt/eidklient/${FILENAME}" "$@"
