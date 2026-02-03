@@ -3,7 +3,7 @@
 # Contributor: Cebtenzzre <cebtenzzre (at) gmail (dot) com>
 
 pkgname=thinlinc-server
-pkgver=4.18.0
+pkgver=4.20.0
 pkgrel=1
 pkgdesc="Cendio ThinLinc Linux remote desktop server"
 arch=('x86_64')
@@ -23,7 +23,7 @@ optdepends=('cups: printer redirection'
 
 source=("tl-${pkgver}-server.zip::https://www.cendio.com/downloads/server/tl-${pkgver}-server.zip")
 
-sha256sums=('767fc47c46857b37ad70faefd36342ae8ddd4d44d8a1c30002340c4d7d517c56')
+sha256sums=('9dd537fb3b95018888affbd4431672308c433e7f5611143e060462190ed768d3')
 
 prepare() {
     cd "${srcdir}/tl-${pkgver}-server/packages"
