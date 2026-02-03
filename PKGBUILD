@@ -1,7 +1,7 @@
 # Maintainer: Wimpy <vvinn.py[AT]@gmail.com>
 pkgname=kimi-cli
 _pkgname=kimi-cli
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc="Kimi Code CLI is your next CLI agent."
 provides=('kimi')
@@ -12,9 +12,6 @@ license=('Apache-2.0')
 depends=('uv' 'python>=3.13')
 options=('!strip')
 
-pkgver() {
-    curl -s "https://pypi.org/pypi/${_pkgname}/json" | grep -Po '"version":\s*"\K[^"]+'
-}
 
 build() {
     # 在构建目录创建虚拟环境，避免污染系统
