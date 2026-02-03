@@ -34,4 +34,5 @@ package() {
     
     install -Dm644 "$startdir"/.SRCINFO \
         "$pkgdir/usr/share/doc/goatdkernel/.SRCINFO"
+    install -Dm644 "$srcdir"/GOATd-Kernel/assets/goatdkernel.desktop "$pkgdir"/usr/share/applications/goatdkernel.desktop
 }
