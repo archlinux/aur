@@ -1,6 +1,6 @@
 pkgbase = cs-paint
 	pkgdesc = Library for abstraction of the Vulkan API
-	pkgver = 1.0.2
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://www.copperspice.com/
 	arch = x86_64
@@ -10,9 +10,10 @@ pkgbase = cs-paint
 	makedepends = glslang
 	makedepends = vulkan-headers
 	depends = gcc-libs
+	depends = glibc
 	depends = vulkan-icd-loader
 	options = !emptydirs
-	source = https://github.com/copperspice/cs_paint/archive/paint-1.0.2/cs-paint-1.0.2.tar.gz
-	sha256sums = c09c562d3efe02ef2f9dfc22222107dd5f8fe3e142cea8dad6bd442f087a785e
+	source = https://github.com/copperspice/cs_paint/archive/paint-1.1.1/cs-paint-1.1.1.tar.gz
+	sha256sums = e56d599feaa8b2de69dd01e03b5b1e3f70ace725bcfb8d5c285f8c039f078850
 
 pkgname = cs-paint
