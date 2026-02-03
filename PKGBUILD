@@ -43,8 +43,11 @@ pkgver() {
 
 prepare() {
     # XerahS.Editor needs to be a sibling directory named XerahS.Editor
-    # The solution references ../XerahS.Editor/src/ShareX.Editor/ShareX.Editor.csproj
+    # The solution references ../XerahS.Editor/src/XerahS.Editor/XerahS.Editor.csproj
     ln -sfn "$srcdir/xerahs-editor" "$srcdir/XerahS.Editor"
+
+    # The Editor repo uses ShareX.Editor naming but XerahS expects XerahS.Editor
+    ln -sfn "$srcdir/xerahs-editor/src/ShareX.Editor" "$srcdir/xerahs-editor/src/XerahS.Editor"
 }
 
 build() {
