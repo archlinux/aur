@@ -8,6 +8,8 @@ arch=('x86_64')
 url="https://github.com/Grey-007/nolio"
 license=('MIT')
 
+options=(!debug)
+
 depends=(
   'gtk3'
   'libepoxy'
