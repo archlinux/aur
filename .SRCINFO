@@ -1,0 +1,20 @@
+pkgbase = diskusage-bin
+	pkgdesc = 💥A tool for showing disk usage
+	pkgver = 1.2.8
+	pkgrel = 1
+	url = https://github.com/chenquan/diskusage
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = diskusage
+	conflicts = diskusage
+	source_x86_64 = https://github.com/chenquan/diskusage/releases/download/v1.2.8/diskusage-v1.2.8-linux-amd64.tar.gz
+	source_x86_64 = https://github.com/chenquan/diskusage/releases/download/v1.2.8/diskusage-v1.2.8-linux-amd64.tar.gz.md5
+	sha256sums_x86_64 = e8acb09981182e9a865c55aa664a36b7a139a335ba9d02592be08990213e2580
+	sha256sums_x86_64 = 18749e83f57264c864d640dd6b31f0361ecae36f9bd467bc07acecb329da1f78
+	source_aarch64 = https://github.com/chenquan/diskusage/releases/download/v1.2.8/diskusage-v1.2.8-linux-arm64.tar.gz
+	source_aarch64 = https://github.com/chenquan/diskusage/releases/download/v1.2.8/diskusage-v1.2.8-linux-arm64.tar.gz.md5
+	sha256sums_aarch64 = 9e69ebfa8aa35c5c5ef1b3f6a5cd8fedfa52ff943a5faeee872829d88a14f078
+	sha256sums_aarch64 = f1b4b06a6a2485509916b843a510d6bc245109f9174e55a0c1cd4c95c61d5f13
+
+pkgname = diskusage-bin
