@@ -14,7 +14,7 @@ sha512sums=('deb48d92007e2af274f6e3bc6e210b6e73e52b2fbdea3448f74ed4d17dea1ba7f06
 
 _vendor_name="fadein-linux-x86_64"
 
-_current_version="$(curl -s 'https://www.fadeinpro.com/page.pl?content=version_notes' | sed -n 's/.*The current version is <b>\(.\..\..\)<\/b>.*/\1/p')"
+_current_version="$(curl -s 'https://www.fadeinpro.com/page.pl?content=version_notes' | sed -n 's/.*The current version is <b>\([0-9]*\.[0-9]*\.[0-9]*\)<\/b>.*/\1/p')"
 
 if [[ "$_current_version" != "$pkgver" ]] then
     echo "ERROR: the fadein package is out of date and may not build properly.
