@@ -2,7 +2,7 @@
 # Maintainer: SignalRidge <support@signalridge.com>
 
 pkgname='clinvk-bin'
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Unified AI CLI wrapper for multiple backends'
 url='https://github.com/signalridge/clinvoker'
@@ -12,10 +12,10 @@ provides=('clinvoker')
 conflicts=('clinvoker')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/signalridge/clinvoker/releases/download/v${pkgver}/clinvoker_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('d6bd7da9caf2a6808f477004bf1e4499ca4d1039b861c71975b1e7df60fa1235')
+sha256sums_aarch64=('d13a3a1390f19ec32d023b62412d0528e1fa81ccf8123817681087a77b23aafb')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/signalridge/clinvoker/releases/download/v${pkgver}/clinvoker_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('8ba29267e08f7cd0731378d2852f9ca1fefe9a88646ba6f04bbdeb500e64e7fa')
+sha256sums_x86_64=('a863451473f03e454a2d19427337909c5e32199f362fe741080e61329643017a')
 
 package() {
   install -Dm755 "./clinvk" "${pkgdir}/usr/bin/clinvk"
