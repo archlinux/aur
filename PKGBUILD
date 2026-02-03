@@ -6,7 +6,7 @@ arch=('any')
 depends=('python' 'python-rich')
 url='https://github.com/NVitschDEV/ptodo'
 source=("ptodo.py")
-sha256sums=('19b0d4ef3b7de0d041efa5d06649999a1e60666a9b0fddcc979f977761f6deed')
+sha256sums=('a80e22a9a250798e8a27a9c59577e63ef71883023c6351b81e4dff563e3abf71')
 
 package() {
   # Installs the script to /usr/bin/ and makes it executable
