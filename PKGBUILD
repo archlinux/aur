@@ -13,7 +13,7 @@ optdepends=('ddnet-maps-git: All the maps used on the official DDNet Servers.'
             'discord-game-sdk: Enable rich presence in Discord desktop client.')
 backup=('usr/share/ddnet/data/autoexec_server.cfg')
 install="tclient.install"
-source=("https://github.com/sjrc6/TaterClient-ddnet/releases/download/V$pkgver/TClient-ubuntu.tar.xz" "tclient.png")
+source=("https://github.com/TaterClient/TClient/releases/download/V$pkgver/TClient-ubuntu.tar.xz" "tclient.png")
 sha256sums=('f7d515a3c1945e35bf92c82059ca3e3a759016ea263f69eb972f8ff8a311487c'
             '29ecb3376c3fe0a56af495f71754c72c54f3e7f97031446e23a355833b954b65')
 
