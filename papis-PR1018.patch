@@ -1,0 +1,30 @@
+From 4534d6a647dabdbaa0d5175aac3f094de62b585e Mon Sep 17 00:00:00 2001
+From: Alexandru Fikl <alexfikl@gmail.com>
+Date: Fri, 16 May 2025 20:32:52 +0300
+Subject: [PATCH] fix: support new click in PapisRunner
+
+---
+ papis/testing.py | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/papis/testing.py b/papis/testing.py
+index f0c4b5b19..13cb56f72 100644
+--- a/papis/testing.py
++++ b/papis/testing.py
+@@ -394,11 +394,13 @@ class PapisRunner(click.testing.CliRunner):
+     """A wrapper around :class:`click.testing.CliRunner`."""
+ 
+     def __init__(self, **kwargs: Any) -> None:
+-        if "mix_stderr" not in kwargs:
+-            kwargs["mix_stderr"] = False
+-
+         super().__init__(**kwargs)
+ 
++        # NOTE: click v8.2.0 removed mix_stderr, which was True by default before.
++        # This should have the streams not mix in all versions, hopefully.
++        if hasattr(self, "mix_stderr") and "mix_stderr" not in kwargs:
++            self.mix_stderr = False
++
+     def invoke(self,        # type: ignore[override]
+                cli: click.Command,
+                args: Sequence[str], **kwargs: Any) -> click.testing.Result:

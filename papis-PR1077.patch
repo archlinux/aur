@@ -1,0 +1,188 @@
+From 7b0dbc5b27c6d967cf393532b30dcb3387bd7c4d Mon Sep 17 00:00:00 2001
+From: Alexandru Fikl <alexfikl@gmail.com>
+Date: Sun, 21 Sep 2025 20:41:12 +0300
+Subject: [PATCH 1/2] feat: make git a standalone command
+
+---
+ papis/commands/git.py | 41 +++++++++++++++++++++++++++++++++--------
+ 1 file changed, 33 insertions(+), 8 deletions(-)
+
+diff --git a/papis/commands/git.py b/papis/commands/git.py
+index e0b6de344..05cc5593e 100644
+--- a/papis/commands/git.py
++++ b/papis/commands/git.py
+@@ -25,13 +25,37 @@
+     :prog: papis git
+ """
+ 
+-import copy
+-
+ import click
+ 
+-import papis.commands.run
++import papis.cli
+ 
+-cli = copy.deepcopy(papis.commands.run.cli)
+-cli.name = "git"
+-cli.help = "Run git command in a library or document folder"
+-cli = click.option("--prefix", hidden=True, default="git", type=str)(cli)
++@click.command("git", context_settings={"ignore_unknown_options": True})
++@click.argument("arguments", metavar="<ARGUMENTS>", nargs=-1)
++@click.help_option("--help", "-h")
++@click.option(
++    "--pick", "-p",
++    help="Give a query to pick a document to run the command in its folder.",
++    metavar="<QUERY>",
++    type=str,
++    default="")
++@papis.cli.sort_option()
++@papis.cli.doc_folder_option()
++@papis.cli.all_option()
++@click.pass_context
++def cli(ctx: click.Context,
++        arguments: list[str],
++        pick: str,
++        sort_field: str,
++        sort_reverse: bool,
++        doc_folder: tuple[str, ...],
++        _all: bool) -> None:
++    """Run git command in a library or document folder."""
++
++    from papis.commands.run import cli as run_cli
++    ctx.invoke(run_cli,
++               run_command=arguments,
++               pick=pick,
++               sort_field=sort_field, sort_reverse=sort_reverse,
++               prefix="git",
++               doc_folder=doc_folder,
++               _all=_all)
+
+From 2488ea74847da524243bccdea5cb603c526173b6 Mon Sep 17 00:00:00 2001
+From: Alexandru Fikl <alexfikl@gmail.com>
+Date: Sun, 21 Sep 2025 20:14:49 +0300
+Subject: [PATCH 2/2] feat: remove some global imports in update
+
+---
+ papis/commands/tag.py    |  2 +-
+ papis/commands/update.py | 26 ++++++++++++++------------
+ 2 files changed, 15 insertions(+), 13 deletions(-)
+
+diff --git a/papis/commands/tag.py b/papis/commands/tag.py
+index 04c7ba465..819aa9399 100644
+--- a/papis/commands/tag.py
++++ b/papis/commands/tag.py
+@@ -170,7 +170,7 @@ def cli(
+             to_rename_tuples = [
+                 ("tags", old_tag, new_tag) for old_tag, new_tag in to_rename
+             ]
+-            success = run_rename(ctx.data, to_rename_tuples, False)
++            success = run_rename(ctx.data, to_rename_tuples, key_types, False)
+ 
+         if success:
+             processed_documents.append((document, ctx.data))
+diff --git a/papis/commands/update.py b/papis/commands/update.py
+index 1636592fe..08f9cd66a 100644
+--- a/papis/commands/update.py
++++ b/papis/commands/update.py
+@@ -133,20 +133,15 @@
+ import click
+ 
+ import papis.cli
+-import papis.commands.doctor
+ import papis.config
+ import papis.document
+ import papis.format
+-import papis.git
+ import papis.importer
+ import papis.logging
+ import papis.strings
+-import papis.utils
+ 
+ logger = papis.logging.get_logger(__name__)
+ 
+-KEY_TYPES = papis.commands.doctor.get_key_type_check_keys()
+-
+ 
+ def try_parsing_str(key: str, value: str) -> str:
+     """
+@@ -199,7 +194,8 @@
+                 "rename any files on disk."
+             )
+         elif key == "ref" and isinstance(value, str):
+-            document[key] = papis.bibtex.ref_cleanup(value)
++            from papis.bibtex import ref_cleanup
++            document[key] = ref_cleanup(value)
+         else:
+             document[key] = value
+ 
+@@ -324,6 +320,7 @@
+ def run_rename(
+     document: papis.document.DocumentLike,
+     to_rename: List[Tuple[str, str, str]],
++    key_types: dict[str, type],
+     batch: bool,
+ ) -> bool:
+     """
+@@ -338,7 +335,7 @@
+     to_append = [x[::2] for x in to_rename]
+     success = run_remove(document, to_remove, batch)
+     if success:
+-        success = run_append(document, to_append, KEY_TYPES, batch)
++        success = run_append(document, to_append, key_types, batch)
+     return success
+ 
+ 
+@@ -371,18 +368,21 @@
+     [document.pop(k) for k in to_drop]
+ 
+     if auto_doctor:
++        from papis.commands.doctor import fix_errors
++
+         logger.info(
+             "Running doctor auto-fixers on document: '%s'.",
+             papis.document.describe(document),
+         )
+-        papis.commands.doctor.fix_errors(document)
++        fix_errors(document)
+ 
+     from papis.api import save_doc
+ 
+     save_doc(document)
+ 
+     if git:
+-        papis.git.add_and_commit_resource(
++        from papis.git import add_and_commit_resource
++        add_and_commit_resource(
+             folder,
+             info,
+             "Update information for '{}'".format(papis.document.describe(document)),
+@@ -481,16 +481,18 @@
+         logger.warning(papis.strings.no_documents_retrieved_message)
+         return
+ 
++    known_key_types = papis.commands.doctor.get_key_type_check_keys()
+     processed_documents = []
++
+     for document in documents:
+         ctx = papis.importer.Context()
+ 
+         ctx.data.update(document)
+         if to_set:
+-            run_set(ctx.data, to_set, KEY_TYPES)
++            run_set(ctx.data, to_set, known_key_types)
+ 
+         if to_append and success:
+-            success = run_append(ctx.data, to_append, KEY_TYPES, batch)
++            success = run_append(ctx.data, to_append, known_key_types, batch)
+ 
+         if to_remove and success:
+             success = run_remove(ctx.data, to_remove, batch)
+@@ -499,7 +501,7 @@
+             run_drop(ctx.data, to_drop)
+ 
+         if to_rename:
+-            success = run_rename(ctx.data, to_rename, batch)
++            success = run_rename(ctx.data, to_rename, known_key_types, batch)
+ 
+         if success:
+             logger.info(

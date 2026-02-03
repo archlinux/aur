@@ -1,0 +1,19 @@
+diff --git a/papis/utils.py b/papis/utils.py
+index 65acd06c..ea9ca348 100644
+--- a/papis/utils.py
++++ b/papis/utils.py
+@@ -95,6 +95,13 @@ def parmap(f: Callable[[A], B],
+     if np is None:
+         np = int(os.environ.get("PAPIS_NP", str(os.cpu_count())))
+
++    if np != 0 and sys.version_info[:2] >= (3, 14):
++        from papis import __version__
++
++        warn("Setting 'PAPIS_NP' or using the '--np' flag does not work on "
++             f"Python >=3.14 and Papis {__version__}.", stacklevel=2)
++        np = 0
++
+     if np and HAS_MULTIPROCESSING and sys.platform != "darwin":
+         with Pool(np) as pool:
+             return list(pool.map(f, xs))
+

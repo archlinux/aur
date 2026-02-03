@@ -4,14 +4,14 @@
 # Contributor: JP-Ellis <josh@jpellis.me>
 
 pkgname=papis
-pkgver=0.14.1+PR1018
+pkgver=0.14.1+PR1018+1077+1139
 _pkgver=0.14.1
-pkgrel=6
+pkgrel=7
 pkgdesc='Command-line document and bibliography manager'
 arch=('any')
 url='https://github.com/papis/papis'
 license=('GPL-3.0-or-later')
-depends=('python<3.14'
+depends=('python'
     'python-arxiv'
     'python-beautifulsoup4'
     'python-bibtexparser<2'
@@ -79,12 +79,17 @@ checkdepends=(
 
 source=("${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
 sha256sums=('592b9ad2296019062922ed7f573c8c70c02fcc3b92e518fea47a00088753f440'
-            'b3b5a97c7af2c9c6e3f0bd993a93e61c6b34f72f4774766612aec907277e4ad3')
+            'b3b5a97c7af2c9c6e3f0bd993a93e61c6b34f72f4774766612aec907277e4ad3'
+            '9851d49355d6cbd46e94f917a765897b07c690ea03f6085a4a81cecfaf6b662a'
+            'f525d2dff8263e0a7e8378585e543c4536fffd5680982541f598e121d8dca8b8')
 prs=(
   1018 # Support python-click 8.2.0
+  1077 # Support python-click 8.3.0
+  1139 # Support Python 3.14
 )
 for pr in "${prs[@]}"; do
-    source+=("${pkgname}-PR$pr.patch::$url/pull/$pr.patch")
+    source+=("${pkgname}-PR$pr.patch")
+    # source+=("${pkgname}-PR$pr.patch::$url/pull/$pr.patch")
 done
 
 pkgver() {
@@ -118,7 +123,6 @@ check() {
 
   export PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
   build-env/bin/python -m pytest \
-    # --disable-plugin-autoload \
     -o addopts='--papis-tmp-doctests --papis-tmp-xdg-home --doctest-modules' \
     -p papis_testing \
     papis tests
