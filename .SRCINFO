@@ -1,0 +1,19 @@
+pkgbase = yt-beats
+	pkgdesc = The minimal, cross-platform terminal music player for YouTube and local audio
+	pkgver = 0.0.16
+	pkgrel = 1
+	url = https://github.com/krishnakanthb13/yt-beats
+	arch = any
+	license = GPL-3.0
+	makedepends = sed
+	depends = bash
+	depends = python
+	depends = yt-dlp
+	depends = python-requests
+	depends = python-textual
+	depends = python-mpv-jsonipc
+	provides = yt-beats
+	source = yt-beats-0.0.16.tgz::https://github.com/krishnakanthb13/yt-beats/archive//v0.0.16.tar.gz
+	sha256sums = e04853bf4edc2992ef87fc28a6cd8ef1f1f46b8a88e9e498d016c2280db82f3f
+
+pkgname = yt-beats

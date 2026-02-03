@@ -1,0 +1,5 @@
+[yt-beats]
+source = "github"
+github = "krishnakanthb13/yt-beats"
+use_latest_release = true
+prefix = "v"
