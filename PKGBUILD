@@ -21,28 +21,24 @@ build() {
 
     	[[ -d build ]] && rm -rf build
     	mkdir build && cd build
-
-	cmake ..
+	CFLAGS="${CFLAGS} -Wno-error=array-parameter -Wno-error=stringop-overflow" \
+	cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 ..
 	make
-	cp -v $srcdir/bsresources.zip bin/
-	cd bin
-	unzip -u bsresources.zip
-	rm bsresources.zip
 }
 
 package() {
-	cd $srcdir/BetterSpades-${pkgver}/build/bin
+	cd $srcdir/BetterSpades-${pkgver}/build/BetterSpades
 	install -d "$pkgdir/usr/share/icons/hicolor/256x256/apps"
 	install -Dm644 "icon.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
 	rm icon.png
 	install -d "$pkgdir/opt/$pkgname"
-	cp -a "$srcdir/BetterSpades-${pkgver}-beta/build/bin/." "$pkgdir/opt/$pkgname"
+	cp -a "$srcdir/BetterSpades-${pkgver}/build/BetterSpades/." "$pkgdir/opt/$pkgname"
 	install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
 	install -d "$pkgdir/usr/share/applications"
 	install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 	install -d "$pkgdir/usr/share/doc/$pkgname"
-	install -Dm644 "$srcdir/BetterSpades-${pkgver}-beta/LICENSE" "$pkgdir/usr/share/doc/$pkgname/LICENSE"
-	install -Dm644 "$srcdir/BetterSpades-${pkgver}-beta/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm644 "$srcdir/BetterSpades-${pkgver}/LICENSE" "$pkgdir/usr/share/doc/$pkgname/LICENSE"
+	install -Dm644 "$srcdir/BetterSpades-${pkgver}/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 	# Moving cache and config files to home dir to avoid crashes
 	rm -rf "$pkgdir/opt/$pkgname/cache"
 	ln -sf "/tmp/$pkgname/cache" "$pkgdir/opt/$pkgname/cache"
