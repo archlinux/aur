@@ -26,6 +26,7 @@ sha256sums=('190bcd5f0aa4c02a8c6324b511420eaa318a4d60f1d78e8e9509319700c52caf'
             'SKIP')
 
 package() {
+    sed -i 's/Exec=goatd_kernel/Exec=goatdkernel/' "$srcdir/GOATd-Kernel/assets/goatdkernel.desktop"
     install -Dm755 "$srcdir"/goatd_kernel \
         "$pkgdir/usr/bin/goatdkernel"
     
