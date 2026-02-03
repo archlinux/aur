@@ -7,7 +7,7 @@
 # Contributor: Todd Maynard <arch@toddmaynard.com>
 
 pkgname=kmymoney-git
-pkgver=5.2.1.r236.gee982cc
+pkgver=5.1.95.r572.gcc9596c
 pkgrel=1
 pkgdesc="Personal finance manager for KDE which operates similarly to MS-Money or Quicken"
 arch=('x86_64')
@@ -29,7 +29,7 @@ optdepends=(
 )
 provides=('kmymoney')
 conflicts=('kmymoney')
-source=('git+https://invent.kde.org/office/kmymoney.git#branch=5.2')
+source=('git+https://invent.kde.org/office/kmymoney.git')
 sha256sums=('SKIP')
 
 pkgver() {
