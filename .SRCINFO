@@ -1,0 +1,18 @@
+pkgbase = rdap
+	pkgdesc = A modern RDAP (Registration Data Access Protocol) client
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/xtomcom/rdap
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = cmake
+	depends = gcc-libs
+	provides = rdap
+	conflicts = rdap
+	options = !lto
+	source = rdap-1.0.1.tar.gz::https://github.com/xtomcom/rdap/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 6fb20dca71e5b29ad2b518510317acb842cb8f9d4e5cc79f1257d535ae3bf27a
+
+pkgname = rdap
