@@ -1,6 +1,6 @@
 # Maintainer: Andrew Fields <andy at andybug dot com>
 pkgname=pathsearch
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Search PATH for executables"
 arch=("x86_64")
@@ -11,7 +11,7 @@ license=(MIT)
 makedepends=(rust cargo)
 
 source=("https://github.com/andybug/pathsearch/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=("945b9db77e846919f508854227cb800dfde152584d843205373156809967f567ef17b77ae2497e9792ed37bf40d6dcd0bb131ed8de7e0b49515cf2b52bb55fd2")
+b2sums=("b0a0c54d24eb6333e7432f8a051750dc8d38edad88425605960827308b52f5840662198171fe64a98d7d371aef284c18234c4e8e9103768291e725a1baac54e5")
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
