@@ -14,35 +14,42 @@ sha256sums=('SKIP')
 
 prepare() {
   # Extract the debian control and data files
-  ar x "pictopy-bin-${pkgver}.deb"
-  tar -xf data.tar.*
+prepare() {
+  cd "$srcdir"
+  ar x "${pkgname}-${pkgver}.deb"
+
+  # Extract data archive safely (handles .xz/.zst/.gz)
+  bsdtar -xf data.tar.*
+}
+
 }
 
 package_pictopy-bin() {
-  # Install the main files extracted from the deb
-  # Using 'cp -a' preserves permissions and directory structure
-  cp -a usr "$pkgdir/"
-  
+  cd "$srcdir"
+
+  # Copy system files
+  if [ -d "usr" ]; then
+    cp -a usr "$pkgdir/"
+  fi
+
+  # Copy application bundle (THIS IS THE IMPORTANT PART)
   if [ -d "opt" ]; then
     cp -a opt "$pkgdir/"
   fi
 
-  # Fix permissions for the backend binaries
-  # Note: Adjust these paths if the .deb structure puts them elsewhere
-  find "$pkgdir/usr/lib/PictoPy" -type f -name "PictoPy_*" -exec chmod +x {} +
+  # Ensure backend binaries are executable
+  find "$pkgdir/opt/PictoPy" -type f -exec chmod +x {} +
 
-  # Create a symlink or wrapper to the actual binary
-  # If the app is in /opt/PictoPy/PictoPy, let's link it properly
+  # Symlink launcher
   install -d "$pkgdir/usr/bin"
   ln -sf /opt/PictoPy/PictoPy "$pkgdir/usr/bin/pictopy"
 
-  # Clean up and fix the Desktop Entry
-  rm -rf "$pkgdir/usr/share/applications/PictoPy.desktop"
+  # Desktop entry
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/pictopy.desktop" <<EOF
 [Desktop Entry]
 Name=PictoPy
 Comment=Desktop image gallery
-Exec=picto_py
+Exec=pictopy
 Icon=PictoPy
 Type=Application
 Categories=Graphics;Utility;
