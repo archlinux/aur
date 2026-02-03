@@ -1,0 +1,16 @@
+pkgbase = nucleus-cli
+	pkgdesc = A blazingly fast CLI for managing and supercharging nucleus-shell.
+	pkgver = r0.0.0
+	pkgrel = 1
+	url = https://github.com/unf6/nucleus
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = nucleus
+	conflicts = nucleus
+	source = git+https://github.com/unf6/nucleus.git
+	sha256sums = SKIP
+
+pkgname = nucleus-cli
