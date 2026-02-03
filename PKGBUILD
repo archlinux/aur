@@ -1,17 +1,17 @@
 # Maintainer: Your Name <your.email@example.com>
 
 pkgname=rclone-bisync-manager-git
-pkgver=0.3.12
+pkgver=0.4.0b1
 pkgrel=1
-pkgdesc="A daemon-based solution for automated, bidirectional synchronization of files using RClone"
+pkgdesc="A daemon-based solution for automated, bidirectional synchronization of files using RClone (includes system tray)"
 arch=('any')
 url="https://github.com/Gunther-Schulz/rclone-bisync-manager"
 license=('MIT')
-depends=('python>=3.12' 'rclone' 'python-croniter' 'python-pydantic' 'python-daemon' 'python-yaml' 'python-psutil')
-optdepends=('rclone-bisync-manager-tray-git: for tray application' 'cpulimit: for limiting CPU usage of rclone processes')
+depends=('python>=3.12' 'rclone' 'python-croniter' 'python-pydantic' 'python-daemon' 'python-yaml' 'python-psutil' 'python-pillow' 'python-gobject' 'python-cairosvg')
+optdepends=('cpulimit: for limiting CPU usage of rclone processes' 'libappindicator: system tray icon (needed on KDE/minimal)' 'gtk3: status window and config editor (needed on KDE/minimal)' 'libnotify: tray notifications (needed on KDE/minimal)')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('63a881df4bfd2343b964b1789ce5b510d523960169849a75b49434641fc29079')
+sha256sums=('b6ab5cebac337e960b8decdc20f7407818a54f3cdb61d77079f529af285729ee')
 install=rclone-bisync-manager.install
 
 build() {
@@ -23,10 +23,6 @@ package() {
     cd "$srcdir/rclone-bisync-manager-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
 
-    # Remove files that conflict with the main package
-    rm -rf "$pkgdir/usr/lib/python3.12/site-packages/rclone_bisync_manager_tray"
-    rm -f "$pkgdir/usr/bin/rclone-bisync-manager-tray"
-
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # Install user service file
@@ -34,4 +30,8 @@ package() {
 
     # Install sample configuration file
     install -Dm644 examples/config.yaml.example "$pkgdir/usr/share/doc/$pkgname/config.yaml.example"
+
+    # Install tray desktop file and icon (tray is part of main app)
+    install -Dm644 desktop/rclone-bisync-manager-tray.desktop "$pkgdir/usr/share/applications/rclone-bisync-manager-tray.desktop"
+    install -Dm644 desktop/rclone-bisync-manager.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/rclone-bisync-manager.svg"
 }

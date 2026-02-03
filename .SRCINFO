@@ -1,6 +1,6 @@
 pkgbase = rclone-bisync-manager-git
-	pkgdesc = A daemon-based solution for automated, bidirectional synchronization of files using RClone
-	pkgver = 0.3.12
+	pkgdesc = A daemon-based solution for automated, bidirectional synchronization of files using RClone (includes system tray)
+	pkgver = 0.4.0b1
 	pkgrel = 1
 	url = https://github.com/Gunther-Schulz/rclone-bisync-manager
 	install = rclone-bisync-manager.install
@@ -17,9 +17,14 @@ pkgbase = rclone-bisync-manager-git
 	depends = python-daemon
 	depends = python-yaml
 	depends = python-psutil
-	optdepends = rclone-bisync-manager-tray-git: for tray application
+	depends = python-pillow
+	depends = python-gobject
+	depends = python-cairosvg
 	optdepends = cpulimit: for limiting CPU usage of rclone processes
-	source = rclone-bisync-manager-git-0.3.12.tar.gz::https://github.com/Gunther-Schulz/rclone-bisync-manager/archive/v0.3.12.tar.gz
-	sha256sums = 63a881df4bfd2343b964b1789ce5b510d523960169849a75b49434641fc29079
+	optdepends = libappindicator: system tray icon (needed on KDE/minimal)
+	optdepends = gtk3: status window and config editor (needed on KDE/minimal)
+	optdepends = libnotify: tray notifications (needed on KDE/minimal)
+	source = rclone-bisync-manager-git-0.4.0b1.tar.gz::https://github.com/Gunther-Schulz/rclone-bisync-manager/archive/v0.4.0b1.tar.gz
+	sha256sums = b6ab5cebac337e960b8decdc20f7407818a54f3cdb61d77079f529af285729ee
 
 pkgname = rclone-bisync-manager-git

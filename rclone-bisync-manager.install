@@ -3,7 +3,7 @@ post_install() {
     echo ""
     echo "1. Set up the configuration:"
     echo "   - Copy the sample configuration file:"
-    echo "     cp /usr/share/doc/rclone-bisync-manager/config.yaml.sexample ~/.config/rclone-bisync-manager/config.yaml"
+    echo "     cp /usr/share/doc/rclone-bisync-manager-git/config.yaml.example ~/.config/rclone-bisync-manager/config.yaml"
     echo "   - Edit the configuration file to suit your needs:"
     echo "     nano ~/.config/rclone-bisync-manager/config.yaml"
     echo ""
