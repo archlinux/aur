@@ -1,7 +1,7 @@
 pkgbase = accel-ppp
 	pkgdesc = High performance PPTP/L2TP/SSTP/PPPoE/IPoE server for Linux
-	pkgver = 1.13.0
-	pkgrel = 4
+	pkgver = 1.14.0
+	pkgrel = 1
 	url = https://github.com/accel-ppp/accel-ppp
 	install = accel-ppp.install
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = accel-ppp
 	makedepends = cmake>=2.6
 	makedepends = net-snmp>=5.x
 	depends = openssl>=1.0.0
-	depends = pcre>=8.30
+	depends = pcre2
 	depends = lua51
 	optdepends = accel-ppp-ipoe-dkms
 	optdepends = accel-ppp-vlanmon-dkms
@@ -21,14 +21,14 @@ pkgbase = accel-ppp
 	backup = etc/accel-ppp.lua
 	backup = etc/snmp/accel-ppp.conf
 	backup = usr/share/accel-ppp/radius/dictionary
-	source = accel-ppp-1.13.0.tar.gz::https://github.com/accel-ppp/accel-ppp/archive/refs/tags/1.13.0.tar.gz
+	source = accel-ppp-1.14.0.tar.gz::https://github.com/accel-ppp/accel-ppp/archive/refs/tags/1.14.0.tar.gz
 	source = accel-ppp.logrotate
 	source = accel-ppp.lua
 	source = accel-ppp.tmpfiles
 	source = accel-pppd.service
 	source = dictionary.abills
 	source = dictionary.accel_ipoe
-	md5sums = 239f03b9e3b81d6a156950dd3e983b28
+	md5sums = c8cbda7b01965bfee393c096fa3cf413
 	md5sums = 0536dd60960e76cf5a6cdbf0518782d8
 	md5sums = 1faebf39e7a665d756cae3e0e33831a9
 	md5sums = 312fd63b9688a05b71a6b33ddd3a9f4b

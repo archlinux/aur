@@ -2,13 +2,13 @@
 # Contributor: Alexandr Boiko <4le34n at gmail dot com>
 # Contributor: Brian F.G. <bidulock@openss7.org>
 pkgname=accel-ppp
-pkgver=1.13.0
-pkgrel=4
+pkgver=1.14.0
+pkgrel=1
 pkgdesc="High performance PPTP/L2TP/SSTP/PPPoE/IPoE server for Linux"
 arch=('i686' 'x86_64')
 url="https://github.com/accel-ppp/accel-ppp"
 license=('GPL')
-depends=('openssl>=1.0.0' 'pcre>=8.30' 'lua51')
+depends=('openssl>=1.0.0' 'pcre2' 'lua51')
 makedepends=('cmake>=2.6' 'net-snmp>=5.x')
 optdepends=('accel-ppp-ipoe-dkms' 'accel-ppp-vlanmon-dkms' 'logrotate')
 conflicts=('accel-ppp-git')
@@ -80,7 +80,7 @@ package() {
 	install -Dm0644 "$srcdir/$pkgname-$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-md5sums=('239f03b9e3b81d6a156950dd3e983b28'
+md5sums=('c8cbda7b01965bfee393c096fa3cf413'
          '0536dd60960e76cf5a6cdbf0518782d8'
          '1faebf39e7a665d756cae3e0e33831a9'
          '312fd63b9688a05b71a6b33ddd3a9f4b'
