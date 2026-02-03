@@ -1,6 +1,6 @@
 pkgname=omazed
-pkgver=1.2.0
-pkgrel=3
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Live theme switching for Zed in Omarchy - automatically synchronize your Zed editor theme with your Omarchy system theme"
 arch=('any')
 url="https://github.com/aps6/omazed"
@@ -10,18 +10,15 @@ makedepends=('git')
 backup=()
 install=omazed.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aps6/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('de297758778b30a0e0c6058751ef99a66322c8ab860016621f99680a4c2b9837')
+sha256sums=('3ac6233b246af86aad869789755141827dc8973c6dd7e9046dc2adbe3a2e4750')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
 
     # Install main scripts
     install -Dm755 omazed "$pkgdir/usr/bin/omazed"
-    install -Dm755 omazed-converter.sh "$pkgdir/usr/bin/omazed-converter.sh"
-
-    # Install themes
-    install -dm755 "$pkgdir/usr/share/omazed/themes"
-    install -Dm644 themes/*.json "$pkgdir/usr/share/omazed/themes/"
+    install -Dm755 omazed-generator.sh "$pkgdir/usr/bin/omazed-generator.sh"
+    install -Dm644 omazed-theme.tpl "$pkgdir/usr/bin/omazed-theme.tpl"
 
     # Install documentation
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
