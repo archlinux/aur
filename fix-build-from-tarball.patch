@@ -1,5 +1,5 @@
 diff --git a/pyproject.toml b/pyproject.toml
-index 79e0965..3ac71c6 100644
+index 12833c7..e81844c 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
 @@ -36,11 +36,13 @@ help = { file = "requirements/requirements-help.in" }
@@ -23,7 +23,7 @@ index 79e0965..3ac71c6 100644
 @@ -52,4 +54,4 @@ local_scheme = "no-local-version"
  
  [tool.codespell]
- skip = "*.svg,Gemfile.lock,tests/fixtures/*,cecli/website/assets/*"
+ skip = "*.svg,*.scss,Gemfile.lock,tests/fixtures/*,cecli/website/assets/*"
 -write-changes = true
 \ No newline at end of file
 +write-changes = true
