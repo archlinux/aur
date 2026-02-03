@@ -1,0 +1,28 @@
+post_install() {
+    echo ""
+    echo "==> whisper-toggle installed"
+    echo "    Run 'whisper-toggle-setup' to configure:"
+    echo "      - GPU selection"
+    echo "      - Model download"
+    echo "      - Backend (server or cli)"
+    echo "      - Window manager keybinding"
+    echo ""
+    echo "    Requires whisper.cpp (whisper-server or whisper-cli in PATH)."
+    echo "    Install via AUR (e.g. yay -S whisper.cpp-cuda) or build from source."
+    echo ""
+    echo "    Example config is at /usr/share/whisper-toggle/whisper-toggle.conf"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo ""
+    echo "==> whisper-toggle removed"
+    echo "    Config preserved at: ~/.config/whisper-toggle/"
+    echo "    Models preserved at: ~/.local/share/whisper-toggle/models/"
+    echo "    Remove manually if no longer needed."
+    echo ""
+}
