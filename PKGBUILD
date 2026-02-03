@@ -4,7 +4,7 @@ _pkgname=yandex-browser
 pkgname=yandex-browser-corporate
 pkgver=25.12.1.1303
 _pkgver=25.12.1.1303-1
-pkgrel=1
+pkgrel=2
 
 pkgdesc="The web browser from Yandex.
  Yandex Browser is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier."
