@@ -18,5 +18,5 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 
-	install -Dm755 target/release/bar_daemon "$pkgdir/usr/bin/bar_daemon"
+	install -Dm755 target/release/bar_daemon "$pkgdir/bin/bar_daemon"
 }
