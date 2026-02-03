@@ -1,19 +1,23 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
-pkgname=libdvdcss-git
-pkgver=1.4.3.3.gd0b6a29
+pkgbase=libdvdcss-git
+pkgname=(
+  'libdvdcss-git'
+  'lib32-libdvdcss-git'
+)
+pkgver=1.5.0.27.g2682a4a
 pkgrel=1
 pkgdesc='A portable abstraction library for DVD decryption. (GIT version)'
 arch=('x86_64')
 license=('GPL2')
 url='https://www.videolan.org/libdvdcss'
-depends=('glibc')
-makedepends=('git')
-provides=(
-  'libdvdcss'
-  'libdvdcss.so'
+makedepends=(
+  'git'
+  'glibc'
+  'lib32-glibc'
+  'meson'
 )
-conflicts=('libdvdcss')
+provides=('libdvdcss.so')
 source=('git+https://code.videolan.org/videolan//libdvdcss.git')
 sha256sums=('SKIP')
 
@@ -22,21 +26,35 @@ pkgver() {
   echo "$(git describe --long --tags | tr - .)"
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
   cd libdvdcss
-  autoreconf -vif
 
-  cd "${srcdir}/build"
-  ../libdvdcss/configure \
-    --prefix=/usr
+  arch-meson . build
 
-  make
+  meson compile -C build
+
+  arch-meson . build32 \
+    --cross-file lib32
+
+  meson compile -C build32
 }
 
-package() {
-  make -C build DESTDIR="${pkgdir}" install
+package_libdvdcss-git() {
+  depends=('glibc')
+  provides+=('libdvdcss')
+  conflicts=('libdvdcss')
+
+  meson install -C libdvdcss/build --destdir "${pkgdir}"
+}
+
+package_lib32-libdvdcss-git() {
+  pkgdesc+=" (32-bits)"
+  depends=('lib32-glibc')
+  provides+=('lib32-libdvdcss')
+  conflicts=('lib32-libdvdcss')
+
+  meson install -C libdvdcss/build32 --destdir "${pkgdir}"
+
+  rm -fr "${pkgdir}/usr/include"
+  rm -fr "${pkgdir}/usr/share"
 }
