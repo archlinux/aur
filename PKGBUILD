@@ -3,9 +3,9 @@
 pkgname=(lua-protobuf lua53-protobuf lua52-protobuf lua51-protobuf)
 pkgdesc="A Lua module to work with Google protobuf"
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 _rockrel=1
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url="https://luarocks.org/modules/xavier-wang/lua-protobuf"
 license=("MIT")
 makedepends=(lua lua53 lua52 lua51 luarocks)
