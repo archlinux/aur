@@ -1,0 +1,16 @@
+pkgbase = wazero-bin
+	pkgdesc = wazero: the zero dependency WebAssembly runtime for Go developers
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = https://github.com/wazero/wazero
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = wazero
+	conflicts = wazero
+	source_x86_64 = https://github.com/wazero/wazero/releases/download/v1.11.0/wazero_1.11.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = cb61ba01f493f889180e7a79b1683313dc5fdabf7e63a62fee7154085ffac9f5
+	source_aarch64 = https://github.com/wazero/wazero/releases/download/v1.11.0/wazero_1.11.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 59951f6060aed1e35c7260b96d88b0e77db3fb44744ecab045d572a1617c1b1a
+
+pkgname = wazero-bin
