@@ -1,0 +1,16 @@
+pkgbase = puny-manager
+	pkgdesc = Minimal, local CLI password manager with encrypted vault
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = https://github.com/Vaspyyy/puny-manager
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-cryptography
+	source = puny-manager-1.5.3.tar.gz::https://github.com/Vaspyyy/puny-manager/archive/refs/tags/v1.5.3.tar.gz
+	sha256sums = SKIP
+
+pkgname = puny-manager
