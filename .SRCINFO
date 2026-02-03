@@ -1,6 +1,6 @@
 pkgbase = fcitx5-vmk
 	pkgdesc = VMK (Vietnamese Micro Key) for Fcitx5 - Bộ gõ tiếng Việt mô phỏng UniKey
-	pkgver = 0.9.5
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/nhktmdzhg/VMK
 	install = fcitx5-vmk.install
@@ -20,7 +20,7 @@ pkgbase = fcitx5-vmk
 	depends = systemd-libs
 	provides = fcitx5-vmk
 	conflicts = fcitx5-vmk
-	source = git+https://github.com/nhktmdzhg/VMK.git#tag=v0.9.5
+	source = git+https://github.com/nhktmdzhg/VMK.git#tag=v0.10.0
 	source = git+https://github.com/BambooEngine/bamboo-core.git
 	sha256sums = SKIP
 	sha256sums = SKIP

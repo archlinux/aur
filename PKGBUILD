@@ -1,6 +1,6 @@
 # Maintainer: Nguyen Ky <nhktmdzhg at google mail>
 pkgname=fcitx5-vmk
-pkgver=0.9.5
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="VMK (Vietnamese Micro Key) for Fcitx5 - Bộ gõ tiếng Việt mô phỏng UniKey"
 arch=('x86_64')
