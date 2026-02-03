@@ -1,7 +1,7 @@
 pkgbase = cecli
 	pkgdesc = AI pair programming in your terminal - dwash96 fork of AIDER with TUI and MCP support
 	pkgver = 0.96.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dwash96/cecli
 	arch = any
 	license = Apache-2.0
