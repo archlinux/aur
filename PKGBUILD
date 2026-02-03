@@ -2,7 +2,7 @@
 
 pkgname=pinnacle-comp
 _pkgname=pinnacle
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="A Wayland compositor inspired by AwesomeWM"
 arch=(x86_64)
@@ -34,10 +34,10 @@ source=(
     "$_pkgname-$pkgver.tar.gz::https://github.com/pinnacle-comp/pinnacle/archive/v$pkgver.tar.gz"
     "https://github.com/pinnacle-comp/pinnacle/releases/download/v$pkgver/pinnacle-api-$pkgver-1.all.rock"
 )
-sha256sums=('31eb0325f4e5cf1851fd9c4445d5712ddd77379159df978f720e77d2d6b17558'
-            '89963617ec2a8eafe64a16786e936a311c35b3bf727a27e208c743eb9d53d651')
-b2sums=('4eda3c4afe61c5a7ce4495793a3a0a29a0b532fea110f4f5175f881ffd6f7fe03620cf5e7135f2d0a6bbfaf2f16abf15a6aed74a00fc1abd7bf094f906230daf'
-        'bba5ff47ee1d707aae23fa83ba19a62eca436fe53528d7de686713d8d5778772c5e8d365796905850d6059f26614c79fe87b65a23d5b55973951cb1f4b6ce826')
+sha256sums=('9b41576f0e3d4379b2c7845e2361ec29ab21510d11d8425bf825c43a3035b93a'
+            '3dd765665ce6cf8381611396375f4fb6ab44a50e6caf626a8cdc92e435e03a40')
+b2sums=('b8e75ebc1b3ef96bdb5faf1a4a407ba0481b012783bd416f44b647a50b2ad336b26bc75828f9123b1e29cfa07d3b946618b2347b922bd17c13f6a2c3d51db590'
+        '1284e046fdf85233e9dc17345278ef26603f0fcc8f210e873f8ddc3eaeb45bd5ab8680149d366fabc85b09787bba4f2fb25e90ab40170dda05e4512a3c067c83')
 
 prepare() {
 	cd "$_pkgname-$pkgver"
@@ -51,9 +51,9 @@ build() {
 	export RUSTUP_TOOLCHAIN=stable
 
     # Git info (should probably automate if possible)
-    export VERGEN_GIT_BRANCH=main
-    export VERGEN_GIT_COMMIT_MESSAGE="release: v0.2.2"
-    export VERGEN_GIT_SHA="8e11f00"
+    export VERGEN_GIT_BRANCH=v0.2
+    export VERGEN_GIT_COMMIT_MESSAGE="release: v0.2.3"
+    export VERGEN_GIT_SHA="b33d2fe"
     export VERGEN_GIT_DIRTY="false"
 
 	cargo build --frozen --release
