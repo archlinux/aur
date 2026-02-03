@@ -1,0 +1,24 @@
+post_install() {
+    echo ""
+    echo "==> i3-resurrect-auto installed!"
+    echo ""
+    echo "    Commands available:"
+    echo "      i3-resurrect-save        - Save all workspaces"
+    echo "      i3-resurrect-restore     - Restore all workspaces"
+    echo "      i3-resurrect-rofi        - Rofi menu (full)"
+    echo "      i3-resurrect-rofi-simple - Rofi menu (simple)"
+    echo ""
+    echo "    Config will be created at ~/.config/i3-resurrect-auto/config.sh"
+    echo "    on first run. Edit it to set your workspace mappings."
+    echo ""
+    echo "    Add to your i3 config:"
+    echo "      exec --no-startup-id i3-resurrect-restore"
+    echo ""
+    echo "    Add to your power menu before shutdown/reboot:"
+    echo "      i3-resurrect-save"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
