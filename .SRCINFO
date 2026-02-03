@@ -1,7 +1,7 @@
 pkgbase = zerobrew
 	pkgdesc = A drop-in, 5-20x faster, experimental Homebrew alternative.
-	pkgver = r89.067c213
-	pkgrel = 1
+	pkgver = r128.f5561f0
+	pkgrel = 2
 	url = https://github.com/lucasgelfond/zerobrew
 	arch = x86_64
 	arch = aarch64
@@ -10,7 +10,7 @@ pkgbase = zerobrew
 	makedepends = cargo
 	makedepends = git
 	provides = zb
-	conflicts = zerobrew
+	conflicts = zerobrew-git
 	conflicts = zerobrew-bin
 	options = !lto
 	source = zerobrew::git+https://github.com/lucasgelfond/zerobrew.git#branch=main
