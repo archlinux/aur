@@ -1,6 +1,6 @@
 pkgbase = edisyn-bin
 	pkgdesc = A cross-platform synthesizer patch editor library
-	pkgver = 35
+	pkgver = 36
 	pkgrel = 1
 	url = https://github.com/eclab/edisyn/
 	arch = i686
@@ -9,12 +9,12 @@ pkgbase = edisyn-bin
 	depends = java-runtime>=20
 	provides = edisyn
 	conflicts = edisyn
-	noextract = edisyn-35.jar
-	source = edisyn-35.jar::https://cs.gmu.edu/~eclab/projects/edisyn/edisyn.jar
+	noextract = edisyn-36.jar
+	source = edisyn-36.jar::https://people.cs.gmu.edu/~eclab/projects/edisyn/edisyn.jar
 	source = edisyn.desktop
 	source = edisyn.sh
-	sha256sums = 37361ec928be5cbb47dc1e197de733a3f74846c71dbbb76fd5d5463413d2689d
+	sha256sums = e3cfceb320bb3aee72601c0c828b4f23fcdadba0566145e5c0bc23ca037235c6
 	sha256sums = 6545bfc5fb5e41d1f6917c0c40145f8168c5d205a70ad1fb6810cf57c68fb618
-	sha256sums = 00b15c90b4c8d902567ec6544ae13d845851afd94b0e76822593774493a25b45
+	sha256sums = e8154776a330ab82a6daf48dd9f6f09e7a923ccfdd698a6645cbca1d2b1d7be1
 
 pkgname = edisyn-bin

@@ -4,7 +4,7 @@ JAVA_SHARE_DIR="/usr/share/java"
 export JDK_JAVA_OPTIONS="${JDK_JAVA_OPTIONS:--Dsun.java2d.opengl=true}"
 
 if [[ -z "$JAVA_ENV_NAME" ]]; then
-    for env in java-24-openjdk java-21-openjdk; do
+    for env in java-25-openjdk java-24-openjdk java-21-openjdk; do
         if [[ -d /usr/lib/jvm/$env ]]; then
             JAVA_ENV_NAME=$env
             break
