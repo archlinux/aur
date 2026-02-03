@@ -1,7 +1,7 @@
 pkgbase = stardrop-bin
 	pkgdesc = an Open Source Cross-platform mod manager for Stardew Valley
-	pkgver = 1.6.0
-	pkgrel = 2
+	pkgver = 1.8.1
+	pkgrel = 1
 	url = https://floogen.gitbook.io/stardrop
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -11,10 +11,10 @@ pkgbase = stardrop-bin
 	provides = stardrop
 	conflicts = stardrop
 	options = !strip
-	source = Stardrop-v1.6.0-Linux-x64.zip::https://github.com/Floogen/Stardrop/releases/download/v1.6.0/Stardrop-linux-x64.zip
+	source = Stardrop-v1.8.1-Linux-x64.zip::https://github.com/Floogen/Stardrop/releases/download/v1.8.1/Stardrop-linux-x64.zip
 	source = https://github.com/Floogen/Stardrop/raw/refs/heads/development/Stardrop/Assets/icon.ico
 	source = x-scheme-handler-nxm.xml
-	sha256sums = cd7c607367303653e39d5dad40d0a96375a5d72182e74d6973e6939c2d44218d
+	sha256sums = 57b2cf5a6ae5c5198715b3fc041e21d61bc2b9d2828cd0cc9c25634f6bb68c2b
 	sha256sums = 5d6884136fd49d0475b1b757429088871e729c21aefc6d9ff69725b1473fd7da
 	sha256sums = 1ede43022617702a3564a2db1c8041121b1703d1bd542709394d0ee0461df2ce
 
