@@ -1,0 +1,23 @@
+pkgbase = tagstudio-bin
+	pkgdesc = A User-Focused Photo & File Management System (pre-compiled)
+	pkgver = 9.5.6
+	pkgrel = 1
+	url = https://github.com/TagStudioDev/TagStudio
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = libva
+	depends = libvdpau
+	depends = libxrandr
+	depends = pipewire
+	depends = qt6-base
+	depends = qt6-multimedia
+	depends = qt6-wayland
+	depends = ripgrep
+	optdepends = ffmpeg: audio/video thumbnails and playback
+	optdepends = unrar: RAR based files thumbnails
+	source = tagstudio-bin-9.5.6.tar.gz::https://github.com/TagStudioDev/TagStudio/releases/download/v9.5.6/tagstudio_linux_x86_64.tar.gz
+	source = tagstudio.desktop
+	sha256sums = b010e163eda7129b4b6c6d74e05d5de1866dd214ec90dd267b50a03ec72390ef
+	sha256sums = 42cbcfe8641c8cd86014628855b3aaf05ed3c6c08d0668607c451d48a4c67192
+
+pkgname = tagstudio-bin

@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Version=9.5.6
+Name=TagStudio
+Icon=/usr/share/tagstudio/_internal/tagstudio/resources/icon.png
+Comment=Tag, find, and organize files
+Exec=/usr/share/tagstudio/tagstudio
+Categories=Utility;AudioVideo;Qt;
