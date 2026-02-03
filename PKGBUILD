@@ -2,13 +2,13 @@
 
 pkgname=dida-bin
 _pkgname=dida
-pkgver=6.0.40
-pkgrel=2
+pkgver=8.0.0
+pkgrel=1
 pkgdesc="Official Dida client, a todo list."
 arch=("any")
 url="https://dida365.com/home"
 license=("LicenseRef-Proprietary")
-_electron=electron37
+_electron=electron39
 depends=(${_electron})
 makedepends=('asar' 'yarn')
 optdepends=('noto-fonts-emoji: for emoji support')
@@ -16,8 +16,8 @@ provides=(${_pkgname})
 source=("${_pkgname}_${pkgver}.deb::https://cdn.dida365.cn/download/linux/linux_deb_x64/dida-${pkgver}-amd64.deb"
     "${_pkgname}".sh
 )
-sha512sums=('a024c045d26dfffffd571f922c315dca6f23a3e2a187d21881094e533dc58132538b46711f29a87876af2b327d60a131b8ffc4f13f716f4b5f83ce04aa35f19e'
-    '218ff1e8c89d1567c214d0fec91745606ab48077bb24168a2b18b28f9c69a6918d34c38fe6a70e8aeaee3b6df448e7174c343924e6fa875ba1a583cc656c91ba')
+sha512sums=('f4a43d9b0b3bff24b3effc6348953910d43b711847a6016aa40258ca488ab9f61a566f8a516dd0feeee544e49ab3d91a41d78a5405c6fe5e74ec5435ce5cceef'
+            '218ff1e8c89d1567c214d0fec91745606ab48077bb24168a2b18b28f9c69a6918d34c38fe6a70e8aeaee3b6df448e7174c343924e6fa875ba1a583cc656c91ba')
 
 prepare() {
     cd ${srcdir}
