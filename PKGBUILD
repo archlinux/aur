@@ -1,6 +1,6 @@
 # Maintainer: Denis Gordenin <support@yutovo.ru>
 pkgname=yutovo
-pkgver=1.4.3
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Arbitrary precision graphical WYSIWYG calculator inside a text editor"
 arch=(x86_64)
@@ -17,16 +17,16 @@ source=(
     "boost_1_83_0::https://archives.boost.io/release/1.83.0/source/boost_1_83_0.zip"
     "libgmp::https://ftp.gnu.org/gnu/gmp/gmp-6.3.0.tar.xz"
     "libmpfr::https://www.mpfr.org/mpfr-4.2.1/mpfr-4.2.1.tar.gz"
-    "yutovo-calculator::git+https://github.com/denprog/yutovo-calculator.git#commit=c0a460ab2f12ff139f4db58635e469bf5e59bb64"
+    "yutovo-calculator::git+https://github.com/denprog/yutovo-calculator.git#commit=0103d6e65b9e6db0209ece2dfeba7989b2423f88"
     "rapidjson::git+https://github.com/Tencent/rapidjson.git#commit=f54b0e47a08782a6131cc3d60f94d038fa6e0a51"
-    "yutovo-solver::git+https://github.com/denprog/yutovo-solver.git#commit=a480e9df389d29a791e0137a809ca1007b8497e6"
+    "yutovo-solver::git+https://github.com/denprog/yutovo-solver.git#commit=d8545b9d156970e3f651abea70e1a34bffd35e2d"
     "mathgl-8.0.3.tar.gz::https://downloads.sourceforge.net/mathgl/mathgl-8.0.3.tar.gz"
     "libharu::git+https://github.com/libharu/libharu.git#commit=0c598becaadaef8e3d12b883f9fc2864a118c12d"
     "stb_image.h::https://raw.githubusercontent.com/nothings/stb/master/stb_image.h"
     "stb_image_write.h::https://raw.githubusercontent.com/nothings/stb/master/stb_image_write.h"
-    "yutovo-editor::git+https://github.com/denprog/yutovo-editor.git#commit=a4ab21f12c4db606d6508da85f17dc1dcef8b701"
-    "yutovo-server::git+https://github.com/denprog/yutovo-server.git#commit=03d829f03c7058c8e39dc9c2ace38c117c036037"
-    "yutovo-desktop::git+https://github.com/denprog/yutovo-desktop.git#commit=7bfc061fdcc8c3de52a27c8590a7be3485663d1a"
+    "yutovo-editor::git+https://github.com/denprog/yutovo-editor.git#commit=dfa4513dedc626df37e1a6eeabe2bcdd915c96f8"
+    "yutovo-server::git+https://github.com/denprog/yutovo-server.git#commit=4a9827649414124eeab91dcd94ff9b76680fb647"
+    "yutovo-desktop::git+https://github.com/denprog/yutovo-desktop.git#commit=53a5b6005d6d373ee69918704fb1ba1649c9b85e"
 )
 
 sha256sums=(
