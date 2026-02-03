@@ -4,38 +4,46 @@
 
 _basename=libdvdread
 pkgname=lib32-libdvdread
-pkgver=6.1.3
+pkgver=7.0.1
 pkgrel=1
-pkgdesc="Provides a simple foundation for reading DVD video disks (32 bit)"
+pkgdesc='Library for reading DVD video disks'
 arch=(x86_64)
-url="https://www.videolan.org/developers/libdvdnav.html"
-license=(GPL)
-depends=(lib32-glibc libdvdread)
-makedepends=(lib32-libdvdcss)
-source=(https://download.videolan.org/pub/videolan/$_basename/$pkgver/$_basename-$pkgver.tar.bz2{,.asc})
-sha256sums=('ce35454997a208cbe50e91232f0e73fb1ac3471965813a13b8730a8f18a15369'
-            'SKIP')
-validpgpkeys=(65F7C6B4206BD057A7EB73787180713BE58D1ADC)
+url='https://www.videolan.org/developers/libdvdnav.html'
+license=(GPL-2.0-or-later)
+depends=(
+    lib32-glibc
+    libdvdread
+)
+makedepends=(
+    git
+    meson
+)
+source=("git+https://code.videolan.org/videolan/libdvdread.git#tag=$pkgver")
+b2sums=(9d649778290335ae732f68f24e229a8efc244eb3a4d19300eb9d81290edb9e35057182481b0100168db95d2413b1e83e073d7c068a8a9b7353fd402681742c39)
+validpgpkeys=(65F7C6B4206BD057A7EB73787180713BE58D1ADC) # VideoLAN Release Signing Key (2015)
+
+prepare() {
+    cd $_basename
+
+  # Fix out of tree build
+    sed -i "s|'git', 'log'|'git', '-C', meson.project_source_root(), 'log' |" meson.build
+}
+
 
 build() {
-    cd $_basename-$pkgver
-
     export CC='gcc -m32'
     export CXX='g++ -m32'
-    export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+    export PKG_CONFIG='/usr/bin/i686-pc-linux-gnu-pkg-config'
 
-    ./configure \
-        --build=i686-pc-linux-gnu \
-        --prefix=/usr \
-        --libdir=/usr/lib32
+    arch-meson $_basename build \
+            --libdir='/usr/lib32' \
+            -D libdvdcss=disabled
 
-    make
+    meson compile -C build
 }
 
 package() {
-    cd $_basename-$pkgver
+    meson install -C build --destdir "$pkgdir"
 
-    make DESTDIR="${pkgdir}" install
-
-    rm -rf "${pkgdir}/usr"/{include,share}
+    rm -rf "$pkgdir/usr"/{include,share}
 }
