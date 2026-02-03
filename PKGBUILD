@@ -5,22 +5,22 @@ pkgname=certbot-dns-ovh
 pkgver=5.2.2
 pkgrel=2
 pkgdesc='OVH DNS Authenticator plugin for Certbot'
-arch=('any')
-license=('Apache-2.0')
+arch=(any)
+license=(Apache-2.0)
 url='https://pypi.python.org/pypi/certbot-dns-ovh'
 depends=(
   "certbot=$pkgver"
   "python-acme=$pkgver"
-  'dns-lexicon'
+  dns-lexicon
 )
 makedepends=(
-  'git'
-  'python-build'
-  'python-installer'
-  'python-setuptools'
-  'python-wheel'
+  git
+  python-build
+  python-installer
+  python-setuptools
+  python-wheel
 )
-checkdepends=('python-pytest')
+checkdepends=(python-pytest)
 # git repository is used because certbot is a huge monorepo and it's easier to
 # share the entire repository across all certbot related packages than a few
 # hundred tarballs.
