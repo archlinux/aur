@@ -1,22 +1,22 @@
 # Maintainer: Tobias Boesch <tobias.boesch at googlemail dot com>
 _name=alt-profanity-check
 pkgname=python-$_name
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="A fast, robust library to check for offensive language in strings, \
     dropdown replacement of \"profanity-check\"".
 arch=(any)
 url="https://github.com/dimitrismistriotis/alt-profanity-check"
 # Upstream only signs commits, not tags. Using commit to be able to verify the source.
-# https://github.com/KnossosNET/Knossos.NET/commit/9017229a93d8310e5b5a1e294e8a44bb0c86565f
-_commit='9017229a93d8310e5b5a1e294e8a44bb0c86565f'
+# https://github.com/dimitrismistriotis/alt-profanity-check/commit/61717daa3f142e883196ca652a1f782c825943f4
+_commit='61717daa3f142e883196ca652a1f782c825943f4'
 license=(MIT)
 depends=(
     python
     python-setuptools
     python-joblib
     python-numpy
-    'python-scikit-learn=1.7.0'
+    'python-scikit-learn=1.8.0'
 )
 provides=(
     profanity-check
