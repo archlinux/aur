@@ -36,11 +36,6 @@ build() {
 
   meson compile -C build
 
-  export CFLAGS="-m32 ${CFLAGS}"
-  export CXXFLAGS="-m32 ${CXXFLAGS}"
-  export LDFLAGS="-m32 ${LDFLAGS}"
-  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
-
   arch-meson . build32 \
     --cross-file lib32 \
     -D libdvdcss=enabled
