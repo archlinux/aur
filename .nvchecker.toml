@@ -1,0 +1,4 @@
+[ttf-nishiki-teki]
+source = "regex"
+url = 'https://umihotaru.work/'
+regex = 'Version (\d+\.\d+[a-z]+) \(\d{4}-\d{2}-\d{2}\)'
