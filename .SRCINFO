@@ -8,6 +8,7 @@ pkgbase = puny-manager
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python
 	depends = python-cryptography
 	source = puny-manager-1.5.3.tar.gz::https://github.com/Vaspyyy/puny-manager/archive/refs/tags/v1.5.3.tar.gz

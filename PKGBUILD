@@ -6,7 +6,7 @@ arch=('any')
 url="https://github.com/Vaspyyy/puny-manager"
 license=('MIT')
 depends=('python' 'python-cryptography')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Vaspyyy/puny-manager/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
