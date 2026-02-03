@@ -1,7 +1,7 @@
 # Maintainer: Leonardo Berbert <leo4berbert@gmail.com>
 
 pkgname=zashterminal
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="A modern GTK4/Adwaita terminal emulator with advanced session management, SSH integration, and security features. "
 arch=('any')
