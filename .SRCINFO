@@ -1,8 +1,8 @@
 pkgbase = libalkimia-git
 	pkgdesc = A library with common classes and functionality used by finance applications for the KDE SC
-	pkgver = 8.2.1.r60.gde4b813
+	pkgver = 8.1.95.r115.gc24c05f
 	pkgrel = 1
-	url = https://community.kde.org/Alkimia/libalkimia
+	url = https://invent.kde.org/office/alkimia.git
 	arch = x86_64
 	license = LGPL-2.1-or-later
 	makedepends = cmake
