@@ -110,7 +110,7 @@ options=(
 
 install='librewolf.install'
 source=(
-  https://gitlab.com/api/v4/projects/32320088/packages/generic/librewolf-source/$_firefoxver-$_librewolfver/librewolf-$_firefoxver-$_librewolfver.source.tar.gz{,.sig}
+  https://codeberg.org/api/packages/librewolf/generic/librewolf-source/$_firefoxver-$_librewolfver/librewolf-$_firefoxver-$_librewolfver.source.tar.gz{,.sig}
   $__pkgname.desktop
   "default192x192.png"
   allow_dark.patch
