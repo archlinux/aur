@@ -1,6 +1,6 @@
 pkgbase = pipewire-web-remote
 	pkgdesc = A remote control web interface for PipeWire audio systems
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/oudeis01/pipewire-web-remote
 	install = pipewire-web-remote.install
@@ -11,7 +11,7 @@ pkgbase = pipewire-web-remote
 	makedepends = clang
 	depends = pipewire
 	depends = wireplumber
-	source = pipewire-web-remote-0.2.0.tar.gz::https://github.com/oudeis01/pipewire-web-remote/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 4be564e572c5d340e66f839251f3b23223a13486dd09786c08d3657c4446d259
+	source = pipewire-web-remote-0.2.1.tar.gz::https://github.com/oudeis01/pipewire-web-remote/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 20bf5c086ac483cf9161be81ef47e1a1abcb1575ba88046710c134455feab94e
 
 pkgname = pipewire-web-remote

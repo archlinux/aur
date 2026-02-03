@@ -1,6 +1,6 @@
 # Maintainer: Haram Choi <altitudinem at google dot com>
 pkgname=pipewire-web-remote
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A remote control web interface for PipeWire audio systems"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('pipewire' 'wireplumber')
 makedepends=('cargo' 'pkgconf' 'clang')
 install="${pkgname}.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4be564e572c5d340e66f839251f3b23223a13486dd09786c08d3657c4446d259')
+sha256sums=('20bf5c086ac483cf9161be81ef47e1a1abcb1575ba88046710c134455feab94e')
 prepare() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
