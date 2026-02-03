@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _name=json_repair
 pkgname=python-$_name
-pkgver=0.55.1
+pkgver=0.56.0
 pkgrel=1
 pkgdesc="A python module to repair invalid JSON, commonly used to parse the output of LLMs"
 arch=(any)
@@ -14,9 +14,17 @@ makedepends=(
     python-setuptools
     python-wheel
 )
-checkdepends=(python-pytest)
+optdepends=(
+    "python-jsonschema: jsonschema support"
+    "python-pydantic: pydantic support"
+)
+checkdepends=(
+    python-jsonschema
+    python-pydantic
+    python-pytest
+)
 source=($_name-$pkgver.tar.gz::https://github.com/mangiucugna/$_name/archive/refs/tags/v$pkgver.tar.gz)
-b2sums=('085a0cc37a0c7f88a5ab143a8594aae6b034209b6ecf2449e170f5ea57e007a567e4a63458ed32ff9a9ba757e833557c071e058526ce6a63e9eb5958a1cf1173')
+b2sums=('7ac6eb7631ccc570598c473a04c930e9302699e2b681332d06db4fffe5cd558f15f768c1b4c13d6e3a6d1f0a808c41e861482753aca8357ae34cb5e8814790a4')
 
 build() {
     cd $_name-$pkgver
@@ -25,9 +33,9 @@ build() {
 
 check() {
     cd $_name-$pkgver
-    local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
-    python -m installer --destdir=../test_dir dist/*.whl
-    PYTHONPATH="$PWD/../test_dir/usr/lib/python$python_version/site-packages" pytest tests/test_json_repair.py
+    python -m venv --system-site-packages test-env
+    test-env/bin/python -m installer dist/*.whl
+    test-env/bin/python -P -m pytest -o addopts="" --ignore=tests/test_performance.py
 }
 
 package() {
