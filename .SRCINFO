@@ -1,12 +1,13 @@
 pkgbase = ttf-petme
 	pkgdesc = KreativeKorp's Ultimate Commodore Font, with VIC-20, PET, CBM2, C64, and C128 typefaces, including 40 and 80 column variations.
-	pkgver = latest
-	pkgrel = 1
+	pkgver = 2020may
+	pkgrel = 2
 	url = https://www.kreativekorp.com/software/fonts/c64/
 	arch = any
 	license = custom:relay-fonts-1.2f
+	makedepends = wget
 	depends = xorg-fonts-encodings
 	source = https://www.kreativekorp.com/swdownload/fonts/retro/petme.zip
-	sha256sums = SKIP
+	sha256sums = 5479b901ef7b5f87bbd1a24ca13afe116f56450f97025ac6e28776f5a77edf6e
 
 pkgname = ttf-petme
