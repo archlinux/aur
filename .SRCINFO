@@ -1,0 +1,15 @@
+pkgbase = python-lifx-async
+	pkgdesc = Library for controlling LIFX smart devices over the local network.
+	pkgver = 5.1.0
+	pkgrel = 1
+	url = https://github.com/Djelibeybi/lifx-async
+	arch = any
+	license = UPL-1.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://github.com/Djelibeybi/lifx-async/archive/refs/tags/v5.1.0.tar.gz
+	sha256sums = 2468730fb33483f90d1b26fdc33bac8f58cd83c5901857325e0fcf8b99ff9005
+
+pkgname = python-lifx-async
