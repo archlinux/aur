@@ -39,7 +39,7 @@ optdepends=(
 )
 provides=('libheif.so')
 source=(
-  "git+https://github.com/strukturag/libheif#tag=v${pkgver}"
+  "git+https://github.com/strukturag/libheif.git#tag=v${pkgver}"
   'https://gitlab.archlinux.org/archlinux/packaging/packages/libheif/-/raw/c70b9768700829f3303bddc88789e8c8a5dac5e0/svt-av1-4.patch'
 )
 sha256sums=(

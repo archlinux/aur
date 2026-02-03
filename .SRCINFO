@@ -34,7 +34,7 @@ pkgbase = lib32-libheif
 	optdepends = lib32-libdav1d: DAV1D encoder
 	provides = libheif.so
 	options = debug
-	source = git+https://github.com/strukturag/libheif#tag=v1.21.2
+	source = git+https://github.com/strukturag/libheif.git#tag=v1.21.2
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/libheif/-/raw/c70b9768700829f3303bddc88789e8c8a5dac5e0/svt-av1-4.patch
 	sha256sums = SKIP
 	sha256sums = 84c9298918dcb1de59acb3eb25aff657eee2a602bf3d2572c93663dd1374b15f
