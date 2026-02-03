@@ -1,0 +1,24 @@
+pkgbase = dailydriver
+	pkgdesc = Visual keyboard shortcut configuration for GNOME
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/gregfelice/dailydriver
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = ninja
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = gtk4>=4.10
+	depends = libadwaita>=1.4
+	depends = python
+	depends = python-gobject
+	depends = python-pydantic
+	depends = python-tomli-w
+	depends = dconf
+	optdepends = gnome-shell-extension-tiling-assistant: Tiling Assistant shortcut support
+	source = dailydriver-0.1.0.tar.gz::https://github.com/gregfelice/dailydriver/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = dbb0b3bcaf9880d3246a5abdb44e282544ded099ca8ff3e499659afa191ce173
+
+pkgname = dailydriver
