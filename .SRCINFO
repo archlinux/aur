@@ -1,13 +1,15 @@
 pkgbase = spek
 	pkgdesc = An acoustic spectrum analyser
 	pkgver = 0.8.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://spek.cc/
 	arch = x86_64
 	license = GPL3
 	depends = ffmpeg
 	depends = wxwidgets-gtk3
 	source = https://github.com/alexkay/spek/releases/download/v0.8.5/spek-0.8.5.tar.xz
+	source = https://github.com/alexkay/spek/commit/df8402575f1550d79c751051e9006fd3b7fa0fe0.patch
 	sha256sums = 1bccf85a14a01af8f2f30476cbad004e8bf6031f500e562bbe5bbd1e5eb16c59
+	sha256sums = caa031f430b5016ebb47d8e77c4311857dd5da431246ae76566da0cd95cb8816
 
 pkgname = spek
