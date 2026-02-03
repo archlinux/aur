@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-avisynthplus
 	pkgdesc = An improved version of the AviSynth frameserver (mingw-w64)
 	pkgver = 3.7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://avs-plus.net/
 	arch = any
 	license = GPL-2.0-or-later
@@ -15,9 +15,13 @@ pkgbase = mingw-w64-avisynthplus
 	options = staticlibs
 	options = !debug
 	source = https://github.com/AviSynth/AviSynthPlus/archive/v3.7.5/avisynthplus-3.7.5.tar.gz
+	source = 010-avisynthplus-fix-symbol-conflict-with-vmaf.patch::https://github.com/AviSynth/AviSynthPlus/commit/d1a32d5229602f181574c95fa0db68bcf1762606.patch
+	source = avisynthplus.xml
 	source = mingw.patch
 	source = staticlib.patch
 	sha256sums = 2533fafe5b5a8eb9f14d84d89541252a5efd0839ef62b8ae98f40b9f34b3f3d5
+	sha256sums = 30aeed221e21aef5aa1d99687bf49a5543602681e0f05bd857d3cf717343a6ee
+	sha256sums = c4b270a3df7fbe1c153400215169c4ae4cae3b7a8710c843393e3a6ed0fd8a3e
 	sha256sums = 692e6cf0b2abf1adcd8716b129022a059b61c9f9909d7032067abdfee81875a3
 	sha256sums = 0be77313c68329ccd2ec42828e2e5a8ad76822f9debb037d92b8a8145531eae6
 
