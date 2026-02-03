@@ -8,29 +8,25 @@ arch=('x86_64')
 url="https://github.com/Obsidian-OS/kcm"
 license=('GPL-3.0-or-later')
 depends=(
-    'qt6-base'
-    'qt6-declarative'
-    'kirigami'
-    'obsidianctl'
-    'polkit'
-    'systemsettings'
-    'obsidianos-branding'
+  'qt6-base'
+  'qt6-declarative'
+  'kirigami'
+  'obsidianctl'
+  'polkit'
+  'systemsettings'
+  'obsidianos-branding'
 )
 makedepends=(
-    'cmake'
-    'extra-cmake-modules'
-    'qt6-tools'
+  'cmake'
+  'extra-cmake-modules'
+  'qt6-tools'
 )
 source=("$pkgname::git+https://github.com/Obsidian-OS/kcm.git")
 sha256sums=('SKIP')
 build() {
-    cmake -B build -S "$startdir" \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DBUILD_TESTING=OFF
-    cmake --build build
+  make -j$(nproc) -B
 }
 
 package() {
-    DESTDIR="$pkgdir" cmake --install build
+  make DESTDIR="$pkgdir" install
 }
