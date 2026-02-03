@@ -1,0 +1,15 @@
+pkgbase = python-stupidartnet
+	pkgdesc = Library for controlling LIFX smart devices over the local network.
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/cpvalente/stupidArtnet
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://github.com/cpvalente/stupidArtnet/archive/refs/tags/1.6.0.tar.gz
+	sha256sums = 55c64a1467d621917d93f2dd0248befb291b08ee2ad0c40411528a71deadf4d0
+
+pkgname = python-stupidartnet
