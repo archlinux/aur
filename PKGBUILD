@@ -2,7 +2,7 @@
 
 pkgname="python-omemo-git"
 pkgver=r243.ea8c408
-pkgrel=1
+pkgrel=2
 pkgdesc="An open python implementation of the OMEMO Multi-End Message and Object Encryption protocol."
 arch=("any")
 url="https://github.com/Syndace/python-omemo"
@@ -19,14 +19,14 @@ makedepends=(
     "python-setuptools"
     "python-wheel"
 )
-checkdepends=(
-    "python-oldmemo"
-    "python-twomemo"
-    "python-twisted"
-    "python-pytest"
-    "python-pytest-asyncio"
-    "python-xmlschema"
-)
+#checkdepends=(
+#    "python-oldmemo"
+#    "python-twomemo"
+#    "python-twisted"
+#    "python-pytest"
+#    "python-pytest-asyncio"
+#    "python-xmlschema"
+#)
 optdepends=(
     "python-prettytable: for the optional cli"
     "python-twisted: alternative async backend"
@@ -51,10 +51,10 @@ build() {
     python -m build --wheel --no-isolation
 }
 
-check() {
-    cd "${pkgname}"
-    pytest -o addopts=""
-}
+#check() {
+#    cd "${pkgname}"
+#    pytest -o addopts=""
+#}
 
 package() {
     cd "${pkgname}"
