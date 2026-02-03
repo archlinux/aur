@@ -1,11 +1,11 @@
-# Maintainer: Adam Perkowski <adas1per@protonmail.com>
+# Maintainer: koi <me@koi.rip>
 # Contributor: Sebaguardian <sebaguardian13@gmail.com>
-# https://github.com/adamperkowski/PKGBUILDs
+# https://github.com/koibtw/PKGBUILDs
 _pkgname=jule
 pkgname="${_pkgname}c"
-pkgver=0.1.7
+pkgver=0.2.0
 _pkgver="$_pkgname$pkgver"
-_irsha='81ddbed06a715428a90d3645f7242fa4e522ea16'
+_irsha='e4134d89f34588e9fb5cc5698f27b0471918e057'
 pkgrel=1
 pkgdesc='The Jule Programming Language Compiler'
 arch=('x86_64' 'aarch64' 'i386')
@@ -17,10 +17,10 @@ source=("$_pkgname-$pkgver.tar.gz::$url/archive/$_pkgver.tar.gz")
 source_x86_64=("$_pkgname-ir-$pkgver-$CARCH.cpp::$_url_raw/$_irsha/src/linux-amd64.cpp")
 source_aarch64=("$_pkgname-ir-$pkgver-aarch64.cpp::$_url_raw/$_irsha/src/linux-arm64.cpp")
 source_i386=("$_pkgname-ir-$pkgver-i386.cpp::$_url_raw/$_irsha/src/linux-i386.cpp")
-sha256sums=('d6cc0ec48f35258b918718cd1766a8f9913fc536d5ddfe95e79bbc0d49d0e8ab')
-sha256sums_x86_64=('39222afc208b7fe92161ef262dc0f13a972dd8e9b22f5b2f07b148529036011e')
-sha256sums_aarch64=('0a232e6777a193e65de20afeacd68f76cc4eede58c1e926c101807a6170e0904')
-sha256sums_i386=('5bcc7a0edd842ffe5c3ca9ccb939789252594c3f340468d6dc2d522510471cbd')
+sha256sums=('8f810a594d9747edeca3a8890a1b701b75a05bcf2c0789d4284996e9a0fbec74')
+sha256sums_x86_64=('fafc628658ec4cb585812dc167091e5e4d6801aa59daf48f192cdb05aeabe592')
+sha256sums_aarch64=('a729f2bb665646be65dad66ea419839a50fd67308d36e47fa0d74d453b5fc9f7')
+sha256sums_i386=('b6a189b4e8a0d8cfc35fc4ad566cb9c9d8c195cad2011e70b06022975fa67386')
 depends=('glibc' 'gcc-libs')
 makedepends=('clang')
 optdepends=('clang: clang backend support'
@@ -40,7 +40,7 @@ build() {
     mkdir -p bin
     echo "Building $pkgname-dev for $CARCH..."
     clang++ ir.cpp \
-        --std=c++17 \
+        --std=c++20 \
         -Wno-everything \
         -fwrapv \
         -ffloat-store \
