@@ -3,15 +3,15 @@
 pkgname="python-swagger-ui-py"
 _name=${pkgname#python-}
 pkgver=25.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Swagger UI for Python web framework, such Tornado, Flask and Sanic"
 url="https://pwzer.github.io/swagger-ui-py/"
 license=("APACHE2")
 arch=("any")
 depends=("python" "python-jinja" "python-packaging" "python-yaml")
 makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools")
-source=("https://github.com/PWZER/swagger-ui-py/releases/download/v$pkgver/swagger_ui_py-$pkgver-py3-none-any.whl")
-b2sums=('8298c0d15c610f75bb7d4c98889bf57e1872e2e8aac953c6126d1d2c270290df19e283fde8547f7a5a0325f81163c932331d97f8cfbf3c451c994568637cb577')
+source=("https://github.com/PWZER/swagger-ui-py/releases/download/v$pkgver/swagger-ui-py-$pkgver.tar.gz")
+b2sums=('f72fdde83d45f8afeba2f62fe26a1c0c3064dae6968de8695352aade7d9e50bd1c380e44f6654fa2b72d389bd8e93dc5058010a8cafe8e85fefb4ef41f3de1d2')
 options=("!strip")
 
 build(){
