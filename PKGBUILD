@@ -17,7 +17,7 @@ makedepends=(
   'pkgconf'
 )
 conflicts=('ntfsprogs' 'ntfs-3g' 'ntfsprogs-plus-git')
-provides=('ntfsprogs' "$pkgname")
+provides=('ntfsprogs' "$pkgname" 'ntfs-3g')
 source=("${pkgname}.tar.gz::https://api.github.com/repos/ntfsprogs-plus/ntfsprogs-plus/tarball/refs/tags/1.0.0")
 sha256sums=('28f24aa673a81bf84d339cd0842dc7afd571bfa5345b6554fe3760ed6a71e343')
 

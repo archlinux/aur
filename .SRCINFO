@@ -13,6 +13,7 @@ pkgbase = ntfsprogs-plus
 	depends = util-linux
 	provides = ntfsprogs
 	provides = ntfsprogs-plus
+	provides = ntfs-3g
 	conflicts = ntfsprogs
 	conflicts = ntfs-3g
 	conflicts = ntfsprogs-plus-git
