@@ -1,0 +1,52 @@
+diff --git a/fortinet.c b/fortinet.c
+index 22b5982a..d2c510be 100644
+--- a/fortinet.c
++++ b/fortinet.c
+@@ -497,12 +497,21 @@ static int parse_fortinet_xml_config(struct openconnect_info *vpninfo, char *buf
+				} else if (xmlnode_is_named(x, "split-dns")) {
+					int ii;
+					if (!xmlnode_get_prop(x, "domains", &s) && s && *s)
+-						vpn_progress(vpninfo, PRG_ERR, _("WARNING: Got split-DNS domains %s (not yet implemented)\n"), s);
++					{
++						vpn_progress(vpninfo, PRG_INFO,
++								_("Got split-DNS domains %s\n"), s);
++
++						buf_append(domains, "%s ", s);
++					}
++
+					for (ii=1; ii<10; ii++) {
+						char propname[] = "dnsserver0";
+						propname[9] = '0' + ii;
+						if (!xmlnode_get_prop(x, propname, &s) && s && *s)
+-							vpn_progress(vpninfo, PRG_ERR, _("WARNING: Got split-DNS server %s (not yet implemented)\n"), s);
++						{
++							vpn_progress(vpninfo, PRG_INFO, _("Got split-DNS server %s\n"), s);
++							if (n_dns < 3) new_ip_info.dns[n_dns++] = add_option_steal(&new_opts, "DNS", &s);
++						}
+						else
+							break;
+					}
+@@ -529,12 +529,21 @@ static int parse_fortinet_xml_config(struct openconnect_info *vpninfo, char *buf
+ 				} else if (xmlnode_is_named(x, "split-dns")) {
+ 					int ii;
+ 					if (!xmlnode_get_prop(x, "domains", &s) && s && *s)
+-						vpn_progress(vpninfo, PRG_ERR, _("WARNING: Got split-DNS domains %s (not yet implemented)\n"), s);
++					{
++						vpn_progress(vpninfo, PRG_INFO,
++									_("Got split-DNS domains %s\n"), s);
++
++						buf_append(domains, "%s ", s);
++					}
++
+ 					for (ii=1; ii<10; ii++) {
+ 						char propname[] = "dnsserver0";
+ 						propname[9] = '0' + ii;
+ 						if (!xmlnode_get_prop(x, propname, &s) && s && *s)
+-							vpn_progress(vpninfo, PRG_ERR, _("WARNING: Got split-DNS server %s (not yet implemented)\n"), s);
++						{
++							vpn_progress(vpninfo, PRG_INFO, _("Got split-DNS server %s\n"), s);
++							if (n_dns < 3) new_ip_info.dns[n_dns++] = add_option_steal(&new_opts, "DNS", &s);
++						}
+ 						else
+ 							break;
+ 					}
