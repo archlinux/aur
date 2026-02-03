@@ -1,7 +1,7 @@
 pkgbase = betterspades
 	pkgdesc = Opensource game client for Ace Of Spades 0.75 protocol
 	pkgver = 0.1.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/xtreme8000/betterspades/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = betterspades
 	makedepends = libdeflate
 	makedepends = enet
 	makedepends = cmake
-	makedepends = unzip
 	depends = hicolor-icon-theme
 	depends = openal
 	depends = glfw
