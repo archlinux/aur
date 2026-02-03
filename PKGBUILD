@@ -20,7 +20,7 @@ depends=('freetype2' 'libxrender' 'libxtst')
 optdepends=('gtk2: GTK+ look and feel'
             'libgl: emulator support')
 options=('!strip')
-source=("https://redirector.gvt1.com/edgedl/android/studio/ide-zips/$pkgver/android-studio-$pkgver-linux.tar.gz"
+source=("https://edgedl.me.gvt1.com/android/studio/ide-zips/2025.3.2.2/android-studio-panda2-canary2-linux.tar.gz"
         "$pkgname.desktop")
 sha256sums=('0f676b9a3cbf8e6a5970149cab737e6e96abc60e009aa3cebe97ff0a69d412d8'
             '12ff377490cff386ba7b3ab9c94adfc2ca99515fdfad4773813268217dcd56b7')
