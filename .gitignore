@@ -1,0 +1,8 @@
+/*.old
+/*.orig
+/*.rej
+/*.zst*
+/*.xz
+/*.sign
+/pkg/
+/src/
