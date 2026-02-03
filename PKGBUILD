@@ -3,7 +3,7 @@
 pkgname=speedynote
 pkgver=1.2.1.6
 _tagver=1.2.1-6
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast note-taking app with PDF annotation, export, and multi-platform sync"
 arch=('x86_64' 'aarch64')
 url="https://github.com/alpha-liu-01/SpeedyNote"
