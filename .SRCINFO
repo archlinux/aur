@@ -1,0 +1,14 @@
+pkgbase = aur-check
+	pkgdesc = Quick safety checker for AUR packages
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/IzzyLerman/aur-check
+	arch = any
+	license = MIT
+	depends = bash
+	depends = curl
+	depends = jq
+	source = aur-check-1.0.0.tar.gz::https://github.com/IzzyLerman/aur-check/archive/v1.0.0.tar.gz
+	sha256sums = 20c2a130773e22fea4d9a66ac35ba8432ff4aaa192406b5df47387171467456c
+
+pkgname = aur-check
