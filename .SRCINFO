@@ -1,6 +1,6 @@
 pkgbase = java24-openjdk
 	pkgver = 24.0.2.u12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openjdk.java.net/
 	arch = x86_64
 	license = LicenseRef-Java
@@ -79,15 +79,15 @@ pkgname = jdk24-openjdk
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-environment=24
 	provides = java-environment-openjdk=24
-	provides = jdk24-openjdk=24.0.2.u12-1
+	provides = jdk24-openjdk=24.0.2.u12-2
 	provides = java-runtime=24
 	provides = java-runtime-openjdk=24
-	provides = jre24-openjdk=24.0.2.u12-1
+	provides = jre24-openjdk=24.0.2.u12-2
 	provides = java-runtime-headless=24
 	provides = java-runtime-headless-openjdk=24
-	provides = jre24-openjdk-headless=24.0.2.u12-1
-	conflicts = jre-openjdk
-	conflicts = jre-openjdk-headless
+	provides = jre24-openjdk-headless=24.0.2.u12-2
+	conflicts = jre24-openjdk
+	conflicts = jre24-openjdk-headless
 	backup = etc/java24-openjdk/logging.properties
 	backup = etc/java24-openjdk/management/jmxremote.access
 	backup = etc/java24-openjdk/management/jmxremote.password.template
@@ -127,12 +127,12 @@ pkgname = jre24-openjdk
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=24
 	provides = java-runtime-openjdk=24
-	provides = jre24-openjdk=24.0.2.u12-1
+	provides = jre24-openjdk=24.0.2.u12-2
 	provides = java-runtime-headless=24
 	provides = java-runtime-headless-openjdk=24
-	provides = jre24-openjdk-headless=24.0.2.u12-1
-	conflicts = jdk-openjdk
-	conflicts = jre-openjdk-headless
+	provides = jre24-openjdk-headless=24.0.2.u12-2
+	conflicts = jdk24-openjdk
+	conflicts = jre24-openjdk-headless
 	backup = etc/java24-openjdk/logging.properties
 	backup = etc/java24-openjdk/management/jmxremote.access
 	backup = etc/java24-openjdk/management/jmxremote.password.template
@@ -168,9 +168,9 @@ pkgname = jre24-openjdk-headless
 	optdepends = java-rhino: for some JavaScript support
 	provides = java-runtime-headless=24
 	provides = java-runtime-headless-openjdk=24
-	provides = jre24-openjdk-headless=24.0.2.u12-1
-	conflicts = jdk-openjdk
-	conflicts = jre-openjdk
+	provides = jre24-openjdk-headless=24.0.2.u12-2
+	conflicts = jdk24-openjdk
+	conflicts = jre24-openjdk
 	backup = etc/java24-openjdk/logging.properties
 	backup = etc/java24-openjdk/management/jmxremote.access
 	backup = etc/java24-openjdk/management/jmxremote.password.template
@@ -188,10 +188,10 @@ pkgname = jre24-openjdk-headless
 
 pkgname = openjdk24-doc
 	pkgdesc = OpenJDK Java 24 documentation
-	depends = jdk24-openjdk=24.0.2.u12-1
-	provides = openjdk24-doc=24.0.2.u12-1
+	depends = jdk24-openjdk=24.0.2.u12-2
+	provides = openjdk24-doc=24.0.2.u12-2
 
 pkgname = openjdk24-src
 	pkgdesc = OpenJDK Java 24 sources
-	depends = jdk24-openjdk=24.0.2.u12-1
-	provides = openjdk24-src=24.0.2.u12-1
+	depends = jdk24-openjdk=24.0.2.u12-2
+	provides = openjdk24-src=24.0.2.u12-2

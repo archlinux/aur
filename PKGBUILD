@@ -20,7 +20,7 @@ _securityver=2
 _updatever=12
 pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
 # pkgver=${_majorver}.u${_updatever}
-pkgrel=1
+pkgrel=2
 _git_tag=jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}
 # _git_tag=jdk-${_majorver}+${_updatever}
 arch=('x86_64')
@@ -194,8 +194,8 @@ package_jre24-openjdk-headless() {
     "jre${_majorver}-openjdk-headless=${pkgver}-${pkgrel}"
   )
   conflicts=(
-    jdk-openjdk
-    jre-openjdk
+    jdk${_majorver}-openjdk
+    jre${_majorver}-openjdk
   )
   backup=(
     etc/${pkgbase}/logging.properties
@@ -271,8 +271,8 @@ package_jre24-openjdk() {
     "jre${_majorver}-openjdk-headless=${pkgver}-${pkgrel}"
   )
   conflicts=(
-    jdk-openjdk
-    jre-openjdk-headless
+    jdk${_majorver}-openjdk
+    jre${_majorver}-openjdk-headless
   )
   backup=(
     etc/${pkgbase}/logging.properties
@@ -372,8 +372,8 @@ package_jdk24-openjdk() {
     "jre${_majorver}-openjdk-headless=${pkgver}-${pkgrel}"
   )
   conflicts=(
-    jre-openjdk
-    jre-openjdk-headless
+    jre${_majorver}-openjdk
+    jre${_majorver}-openjdk-headless
   )
   backup=(
     etc/${pkgbase}/logging.properties
