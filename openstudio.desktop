@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=OpenStudio
+Comment=Whole building energy modeling
+Exec=/opt/openstudio/bin/openstudio
+Icon=/opt/openstudio/share/openstudio/icons/os_icon.png
+Terminal=false
+Type=Application
+Categories=Science;Engineering;

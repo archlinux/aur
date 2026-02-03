@@ -1,0 +1,21 @@
+pkgbase = openstudio-bin
+	pkgdesc = Supports whole building energy modeling using EnergyPlus and Radiance
+	pkgver = 3.9.0
+	pkgrel = 1
+	url = https://openstudio.net
+	arch = x86_64
+	license = BSD-3-Clause
+	depends = gcc-libs
+	depends = glibc
+	depends = libxcrypt-compat
+	optdepends = ruby: for Ruby bindings
+	optdepends = python: for Python bindings
+	provides = openstudio
+	conflicts = openstudio
+	options = !strip
+	source = https://github.com/NREL/OpenStudio/releases/download/v3.9.0/OpenStudio-3.9.0+c77fbb9569-Ubuntu-24.04-x86_64.deb
+	source = openstudio.desktop
+	sha256sums = ee8059c5cf082e6007753bd528602ae046d3192b1278fa915f2c905f9510b428
+	sha256sums = SKIP
+
+pkgname = openstudio-bin
