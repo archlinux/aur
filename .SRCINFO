@@ -1,6 +1,6 @@
 pkgbase = clockwork-orange-git
 	pkgdesc = Advanced wallpaper manager and downloader with plugin support (Wallhaven, Google Images) for KDE Plasma 6
-	pkgver = 2.7.2.r104.gf64a7dc
+	pkgver = 2.7.5.r124.gcd0b6cb
 	pkgrel = 1
 	url = https://github.com/ushineko/clockwork-orange
 	install = clockwork-orange.install
