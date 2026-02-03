@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname="webhookd"
-pkgver=1.20.2
+pkgver=1.21.0
 pkgrel=1
 pkgdesc="A very simple webhook server launching scripts."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -12,9 +12,9 @@ backup=("etc/default/${pkgname}")
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "${pkgname}.service"
         "${pkgname}.user.service")
-sha256sums=('187c21e80bb0be6f5f7192352bdfc4ee25f31d2cb5c00b2bdb201c790cc82615'
+sha256sums=('d353890f8897d6a21f83cc0100f60cd5d21f0f8f3c04071da536073bb056efe8'
             'b24d5dfc84bf7b1cceea963b96de3085b6ed079c8f99c56225d8125c791d3543'
-            '714e9e219b51af192208500b6936f748ad86a5ec79d5e5683cab1e81fbeae09c')
+            '2223be35a46ec95d048a5923612b5ec293c81433cd9f30a83a9b5bf39638b69b')
 
 build() {
     export CGO_CFLAGS="${CFLAGS}"
