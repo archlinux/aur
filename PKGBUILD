@@ -7,15 +7,15 @@ arch=('x86_64')
 url="https://github.com/Roy3838/Observer"
 license=('MIT')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
-makedepends=('git' 'openssl' 'libappindicator-gtk3' 'librsvg' 'cargo' 'npm' 'nodejs')
+makedepends=('git' 'openssl' 'libappindicator-gtk3' 'librsvg' 'cargo' 'pnpm' 'nodejs' 'cargo-tauri')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Roy3838/Observer/archive/v$pkgver.tar.gz")
 sha256sums=('65415ab112e0e92cbd2f199702857f1a1bbdfe543c38684a587ee6544adf299b')
 
 prepare() {
     cd "$srcdir/Observer-$pkgver/app"
     # Disable updater artifacts for AUR build to avoid signing errors
-    sed -i 's/"createUpdaterArtifacts": true/"createUpdaterArtifacts": false/' src-tauri/tauri.conf.json
-    npm install
+    sed -i 's/"createUpdaterArtifacts": true/"createUpdaterArtifacts": false/' desktop/tauri.conf.json
+    pnpm install
 }
 
 build() {
@@ -33,14 +33,17 @@ build() {
     # Disable signing for packaging
     unset TAURI_SIGNING_PRIVATE_KEY
     unset TAURI_SIGNING_PRIVATE_KEY_PASSWORD
-    # Force only deb bundle to avoid linking issues
-    npm run tauri:build -- --bundles deb
+    # Build frontend first
+    pnpm build
+    # Build desktop app with only deb bundle to avoid linking issues
+    cd desktop
+    cargo tauri build -b deb
 }
 
 package() {
     cd "$srcdir/Observer-$pkgver"
     # Install the binary directly from the release build
-    install -Dm755 "app/src-tauri/target/release/app" "$pkgdir/usr/bin/observer-ai"
+    install -Dm755 "app/desktop/target/release/app" "$pkgdir/usr/bin/observer-ai"
     
     # Install the static files that Tauri expects
     install -dm755 "$pkgdir/usr/lib/Observer/_up_"
