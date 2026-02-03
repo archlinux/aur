@@ -1,7 +1,7 @@
 # Maintainer: ChoihHaram <altitudinem at google dot com>
 pkgname=pipewire-web-remote-bin
 _pkgname=pipewire-web-remote
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A remote control web interface for PipeWire audio systems (Pre-compiled binary)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -22,10 +22,10 @@ source=("${source_license[@]}" "${source_service[@]}")
 source_x86_64+=()
 source_aarch64+=()
 source_armv7h+=()
-sha256sums=('SKIP')
-sha256sums_x86_64=('SKIP')
-sha256sums_aarch64=('SKIP')
-sha256sums_armv7h=('SKIP')
+sha256sums=('SKIP' 'SKIP')
+sha256sums_x86_64=('60eb987818db6085fb25203f8a90eecc6b95404d3217401de06424f9035aff58')
+sha256sums_aarch64=('1547baacb9ceb6b2598e638a6ab0aaebcc7786d19b7a4311ac113977c6bc73a6')
+sha256sums_armv7h=('66486892cd8c963b256e55c7dd801f45b41077867b7b405fd9153d74d3daf621')
 
 package() {
   install -Dm755 "$srcdir/$_pkgname-$CARCH-$pkgver" "$pkgdir/usr/bin/$_pkgname"
