@@ -25,7 +25,8 @@ pkgver() {
 build() {
     cd "$srcdir/nucleus"
     export CGO_ENABLED=0
-
+    go mod tidy
+    go mod download
     go build \
         -trimpath \
         -buildmode=pie \
