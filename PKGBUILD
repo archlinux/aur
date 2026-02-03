@@ -30,6 +30,7 @@ pkgver() {
 
 build() {
   cd libdvdread
+
   arch-meson . build \
     -D libdvdcss=enabled
 
