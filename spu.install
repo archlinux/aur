@@ -1,0 +1,11 @@
+post_install() {
+	echo
+	echo -e "\tYou need to set \$SPU_PLAYLIST_PATH and \$SPU_DUMP_PATH"
+	echo -e "\tThis can be done in a ~/.bashrc or ~/.bash_profile"
+	echo
+	echo -e "\tFor \`spu-current-song' and \`spu-play' to work,"
+	echo -e "\ta config file \`~/.config/spu/spu-scripts-config.sh' is needed."
+	echo -e "\tPlease refer to documentation for details."
+	echo
+}
+
