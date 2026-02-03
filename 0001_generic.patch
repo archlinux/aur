@@ -1,0 +1,11 @@
+--- a/src/gpu_impl.rs
++++ b/src/gpu_impl.rs
+@@ -24,7 +24,7 @@ impl Gpu {
+         let namespace_qualifier = if cfg!(feature = "apple") {
+             "#define NAMESPACE_QUALIFIER __private\n"
+         } else {
+-            "#define NAMESPACE_QUALIFIER __generic\n"
++            "#define NAMESPACE_QUALIFIER\n"
+         };
+         prog_bldr
+             .source(namespace_qualifier)
