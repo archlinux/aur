@@ -1,0 +1,3 @@
+# Epilogue GB Operator
+SUBSYSTEM=="usb", ATTR{idVendor}=="16d0", ATTR{idProduct}=="123d", MODE="0666"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="16d0", ATTRS{idProduct}=="123d", MODE="0666"
