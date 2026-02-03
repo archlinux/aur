@@ -25,13 +25,15 @@ pkgver() {
 build() {
     cd "$srcdir/nucleus"
     export CGO_ENABLED=0
-    go mod tidy
-    go mod download
+
+    go mod vendor
+
     go build \
+        -mod=vendor \
         -trimpath \
         -buildmode=pie \
         -ldflags="-s -w" \
-        -o nucleus    # binary remains nucleus
+        -o nucleus
 }
 
 package() {
