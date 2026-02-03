@@ -21,12 +21,14 @@ makedepends=(
   'extra-cmake-modules'
   'qt6-tools'
 )
-source=("$pkgname::git+https://github.com/Obsidian-OS/kcm.git")
+source=("git+https://github.com/Obsidian-OS/kcm.git")
 sha256sums=('SKIP')
 build() {
+  cd kcm
   make -j$(nproc) -B
 }
 
 package() {
+  cd kcm
   make DESTDIR="$pkgdir" install
 }
