@@ -1,15 +1,16 @@
 pkgbase = ufw-docker
 	pkgdesc = To fix the Docker and UFW security flaw without disabling iptables.
-	pkgver = 250710
+	pkgver = 251123
 	pkgrel = 1
 	url = https://github.com/chaifeng/ufw-docker
 	install = ufw-docker.install
 	arch = any
 	license = GPL License Version 3.0
 	depends = ufw
-	source = ufw-docker-250710.tar.gz::https://github.com/chaifeng/ufw-docker/archive/refs/tags/250710.tar.gz
+	depends = docker
+	source = ufw-docker-251123.tar.gz::https://github.com/chaifeng/ufw-docker/archive/refs/tags/251123.tar.gz
 	source = ufw-docker.install
-	sha256sums = 13b17fc74df2fdb6bda653c6130054f156318a4910db4c943be1df54110a450b
-	sha256sums = d97ba0e63766444128e4ddfadc316734f431b5d6d9fc6a6ddadbfd1057ae95f7
+	b2sums = d4ac771a83a5f7bd328c8d30094a45752dd1b38de7f2d7f5269e369289d9e8ef189b020b97e4d93025d9d7ad61757cda31f80e548e8611b77653f75e731400b7
+	b2sums = 6f7c41d047dc2fd657708cbb9b35f52e06fbe03fed060e00696fb14ffd291ea4dae759b5d73780799ab0c773a015f16f4d5633b311de9130b3bd78da7d1aa9e3
 
 pkgname = ufw-docker
