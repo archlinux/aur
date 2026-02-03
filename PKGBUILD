@@ -3,7 +3,7 @@
 _pkgname=libheif
 pkgname=mingw-w64-${_pkgname}
 pkgver=1.21.2
-pkgrel=2
+pkgrel=3
 pkgdesc='HEIF file format decoder and encoder (mingw-w64)'
 url='https://github.com/strukturag/libheif'
 license=('LGPL-3.0-or-later')
@@ -27,8 +27,12 @@ makedepends=('mingw-w64-cmake' 'ninja')
 arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
-sha256sums=('79996de959d28ca82ef070c382304683f5cdaf04cbe2953a74587160a3710a36')
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/strukturag/${_pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('79996de959d28ca82ef070c382304683f5cdaf04cbe2953a74587160a3710a36'
+            '84c9298918dcb1de59acb3eb25aff657eee2a602bf3d2572c93663dd1374b15f')
+source=(
+	"$_pkgname-$pkgver.tar.gz::https://github.com/strukturag/${_pkgname}/archive/v${pkgver}.tar.gz"
+	'svt-av1-4.patch'
+)
 
 _srcdir="${_pkgname}-${pkgver}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
@@ -69,7 +73,7 @@ EOF
 		-e 's/__declspec(dllexport)/__attribute__((__dllexport__))/' \
 		-e 's/__declspec(dllimport)/__attribute__((__dllimport__))/' \
 		'libheif/api/libheif/heif.h'
-	sed -i 's/SvtAv1PredStructure::SVT_AV1_PRED_RANDOM_ACCESS/2/' 'libheif/plugins/encoder_svt.cc'
+	patch -p1 -i "${srcdir}/svt-av1-4.patch"
 }
 
 build() {
