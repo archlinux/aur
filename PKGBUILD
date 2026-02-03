@@ -61,7 +61,7 @@ package_lib32-libdvdnav-git() {
   provides+=('lib32-libdvdnav')
   conflicts=('lib32-libdvdnav')
 
-  meson install -C libdvdnav/build --destdir "${pkgdir}"
+  meson install -C libdvdnav/build32 --destdir "${pkgdir}"
 
   rm -fr "${pkgdir}/usr/include"
   rm -fr "${pkgdir}/usr/share"
