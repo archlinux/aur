@@ -2,7 +2,7 @@
 # Contributor: fossdd <fossdd@pwned.life
 # Contributor: Julian <juliannfairfax@protonmail.com>
 pkgname=pipeline-gtk
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="Watch YouTube and PeerTube videos in one place"
 arch=('x86_64' 'aarch64')
@@ -24,7 +24,7 @@ makedepends=(
 )
 conflicts=('tubefeeder')
 source=("$url/-/archive/$pkgver/pipeline-$pkgver.tar.gz")
-sha256sums=('dfb1689c00cb89305bb1d7853f442159e97f4ac8e402a785591a4b9241ab5528')
+sha256sums=('8e6d87fcb4bcc889607eb26f2c4b2a2f0596107c01ece87736863c2bd881cc3c')
 
 prepare() {
   cd pipeline-$pkgver
