@@ -7,6 +7,10 @@ pkgbase=goatd-kernel-bin
 pkgname=goatdkernel
 pkgver=0.2.3
 pkgrel=1
+source=("goatdkernel-${pkgver}-${pkgrel}-x86_64.tar.gz::https://github.com/MadGoatHaz/GOATd-Kernel/releases/download/v${pkgver}/goatdkernel-${pkgver}-x86_64.tar.gz"
+        "git+https://github.com/MadGoatHaz/GOATd-Kernel.git#tag=v${pkgver}"
+        "goatdkernel.png::https://github.com/MadGoatHaz/GOATd-Kernel/releases/download/v${pkgver}/goatdkernel.png")
+
 pkgdesc="GOATd Kernel - High-performance computing platform with multi-language integration"
 arch=("x86_64")
 url="https://github.com/MadGoatHaz/GOATd-Kernel"
@@ -16,9 +20,7 @@ makedepends=("git")
 
 # Local filename ALWAYS includes pkgrel for Arch standard compliance
 # URL NEVER includes pkgrel to match GitHub release tag structure (v${pkgver})
-source=("goatdkernel-${pkgver}-${pkgrel}-x86_64.tar.gz::https://github.com/MadGoatHaz/GOATd-Kernel/releases/download/v${pkgver}/goatdkernel-${pkgver}-x86_64.tar.gz"
-        "git+https://github.com/MadGoatHaz/GOATd-Kernel.git#tag=v${pkgver}"
-        "goatdkernel.png::https://github.com/MadGoatHaz/GOATd-Kernel/releases/download/v${pkgver}/goatdkernel.png")
+
 sha256sums=('190bcd5f0aa4c02a8c6324b511420eaa318a4d60f1d78e8e9509319700c52caf'
             'SKIP'
             'SKIP')
