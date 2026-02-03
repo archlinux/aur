@@ -1,10 +1,14 @@
 pkgbase = python-appstream-python
 	pkgdesc = A Python library for dealing with Freedesktop Appstream data
-	pkgver = 0.8.1
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://codeberg.org/JakobDev/appstream-python
 	arch = any
 	license = BSD
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytest-subtests
+	checkdepends = python-requests-mock
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
@@ -15,7 +19,7 @@ pkgbase = python-appstream-python
 	depends = python
 	depends = python-requests
 	depends = python-lxml
-	source = python-appstream-python-0.8.1.tar.gz::https://codeberg.org/JakobDev/appstream-python/archive/0.8.1.tar.gz
-	sha256sums = 90e9f83b438b639faa40e53f24e8329fd1d59e1ba454fb45bdd6edf8d9a82c62
+	source = python-appstream-python-0.9.0.tar.gz::https://codeberg.org/JakobDev/appstream-python/archive/0.9.0.tar.gz
+	sha512sums = c0c290687b07144c724f20f82ed7ef6a287656fc241706a084cc1fdffd2831d35dd8521da9a7c5e0f2c62d738c9518f3d4fa09179965628b146020eae7776100
 
 pkgname = python-appstream-python
