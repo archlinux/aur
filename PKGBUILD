@@ -1,6 +1,6 @@
 # Maintainer: Sykik [xo.sykik@gmail.com]
 pkgname=inno
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A lightweight, event-driven Wayland notification agent (Rust)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('wayland' 'cairo' 'dbus' 'glibc')
 makedepends=('rust' 'cargo')
 backup=('etc/xdg/inno/inno.conf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f8829d2c10fd679b432ba259d4d3c7f2bcaff23f19815f62a876b62f2463d0d9')
+sha256sums=('b23d892d4c0faac8e8598b98958908b4b90342dff64ba535fa74abba5aebaaee')
 
 build() {
   cd "$pkgname-$pkgver"
