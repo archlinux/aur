@@ -11,7 +11,7 @@ depends=('python>=3.12' 'rclone' 'python-croniter' 'python-pydantic' 'python-dae
 optdepends=('cpulimit: for limiting CPU usage of rclone processes' 'libappindicator: system tray icon (needed on KDE/minimal)' 'gtk3: status window and config editor (needed on KDE/minimal)' 'libnotify: tray notifications (needed on KDE/minimal)')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('63a881df4bfd2343b964b1789ce5b510d523960169849a75b49434641fc29079')
+sha256sums=('b6ab5cebac337e960b8decdc20f7407818a54f3cdb61d77079f529af285729ee')
 install=rclone-bisync-manager.install
 
 # Follow Arch Wiki Python guidelines: no hardcoded site-packages or python3.X;

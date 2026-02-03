@@ -25,6 +25,6 @@ pkgbase = rclone-bisync-manager-git
 	optdepends = gtk3: status window and config editor (needed on KDE/minimal)
 	optdepends = libnotify: tray notifications (needed on KDE/minimal)
 	source = rclone-bisync-manager-git-0.4.0b1.tar.gz::https://github.com/Gunther-Schulz/rclone-bisync-manager/archive/v0.4.0b1.tar.gz
-	sha256sums = 63a881df4bfd2343b964b1789ce5b510d523960169849a75b49434641fc29079
+	sha256sums = b6ab5cebac337e960b8decdc20f7407818a54f3cdb61d77079f529af285729ee
 
 pkgname = rclone-bisync-manager-git
