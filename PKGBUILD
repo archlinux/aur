@@ -2,7 +2,7 @@
 # Contributer: Tomasz Zok <tomasz dot zok at gmail dot com>
 # Inspired by PKGBUILD of ucsf-chimera
 pkgname=chimerax
-pkgver=1.11
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="UCSF ChimeraX (or simply ChimeraX) is the next-generation molecular visualization program from the Resource for Biocomputing, Visualization, and Informatics (RBVI), following UCSF Chimera."
 arch=(x86_64)
@@ -27,7 +27,7 @@ extract() {
 	# extract flatpak bundle, ref: https://github.com/flatpak/flatpak/issues/126#issuecomment-227068860
 	ostree init --repo=repo --mode=bare-user
 	ostree static-delta apply-offline --repo=repo ${_file}
-	rm -r outdir
+	if [ -d outdir ]; then rm -r outdir; fi
 	ostree checkout --repo=repo -U $(basename $(echo repo/objects/*/*.commit | cut -d/ -f3- --output-delimiter= ) .commit) outdir
 	mv "outdir/files" "${srcdir}/${pkgname}-${pkgver}"
 }
