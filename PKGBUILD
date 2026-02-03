@@ -8,11 +8,11 @@
 
 pkgname=virtualbox-kvm
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use (KVM backend)'
-pkgver=20251103
+pkgver=20260201
 _pkgver=dev-${pkgver}
-_vboxver='7.2.4'
+_vboxver='7.2.6'
 _vboxsubver=''
-pkgrel=3
+pkgrel=1
 conflicts=('virtualbox' 'virtualbox-ose')
 depends=('curl' 'gcc-libs' 'glibc' 'liblzf' 'libpng' 'libtpms' 'libvpx' 'libx11' 'libxcursor'
             'libxext' 'libxinerama' 'libxml2' 'libxmu' 'libxt' 'openssl' 'procps-ng' 'python'
@@ -54,9 +54,10 @@ source=("https://download.virtualbox.org/virtualbox/${_vboxver}/VirtualBox-${_vb
         '012-vbglR3GuestCtrlDetectPeekGetCancelSupport.patch'
         '013-support-building-from-dkms.patch'
         '018-upate-xclient-script.patch'
-        '023-new-curl.patch')
-sha256sums=('d281ec981b5f580211a0cedd1b75a1adcb0fbfcbb768d8c2bf4429f4763e8bbd'
-            '1e41b9e94f2268e7c0f66477c3d8f81550773843d3f65a5dae7ad824d099302c'
+        '020-python-3-12.patch'
+        '024-soapC.patch')
+sha256sums=('c58443a0e6fcc7fc7e84c1011a10823b3540c6a2b8f2e27c4d8971272baf09f7'
+            'c1b1db76af6a79f84c6eb51212ac440b67a7968951ea071472c83da98fc8ca45'
             'f753501352054576c510aa81e83f4935079ea620e601057784b02b4d4d1eeb04'
             '2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c'
             'da4c49f6ca94e047e196cdbcba2c321199f4760056ea66e0fbc659353e128c9e'
@@ -76,7 +77,8 @@ sha256sums=('d281ec981b5f580211a0cedd1b75a1adcb0fbfcbb768d8c2bf4429f4763e8bbd'
             '81900e13d36630488accd8c0bfd2ceb69563fb2c4f0f171caba1cca59d438024'
             '00f68b86d32a1fada900c2da8dad2ab4215106cd58004f049bded99727cda2ff'
             '2540381de895fabbcc68d820c1f72ba644ef566ff5dab0f60be055c7b45cc06f'
-            '4f5c525160ebe0e1f051cfe4fc7e69d8067b618934b3f5cd3ebfad0b2cc57d89')
+            'ddb2092a5a000aa6ef854796f39dcdf86e72c06d53b24bac3835350571182df6'
+            'b70d86e7ca687f65e2bd71ec87d70daad32872acd9b141fb609dff7cce0cd291')
 
 prepare() {
     cd "VirtualBox-${_vboxver}"

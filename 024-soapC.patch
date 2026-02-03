@@ -1,0 +1,10 @@
+--- a/src/VBox/Main/webservice/Makefile.kmk
++++ b/src/VBox/Main/webservice/Makefile.kmk
+@@ -205,6 +205,7 @@
+ 	$(VBOXWEB_GSOAPH_FROM_XSLT)
+ 
+ 
++VBOX_WITHOUT_SPLIT_SOAPC := 1
+ # GCC 9.2 doesn't cope ver well with the split soapC.cpp files (internal error).
+ # Seemingly, the issue goes away when we strip inline functions from soapH.h.
+ ifdef VBOX_WITHOUT_NOINLINE_SOAPH
