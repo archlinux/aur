@@ -21,17 +21,17 @@ makedepends=("git")
 # Local filename ALWAYS includes pkgrel for Arch standard compliance
 # URL NEVER includes pkgrel to match GitHub release tag structure (v${pkgver})
 
-sha256sums=('cfcb9c5c1cc9aa2fc739d02163145f3f1c236c5d113dfe6c0f1d6e5b587c8b87')
+sha256sums=('190bcd5f0aa4c02a8c6324b511420eaa318a4d60f1d78e8e9509319700c52caf'
             'SKIP'
             'SKIP')
 
 package() {
-    install -Dm755 "$srcdir/goatdkernel-${pkgver}-x86_64/bin/goatdkernel" \
+    install -Dm755 "$srcdir"/goatd_kernel \
         "$pkgdir/usr/bin/goatdkernel"
     
-    install -Dm644 "$srcdir/goatdkernel.png" \
+    install -Dm644 "$srcdir"/goatdkernel.png \
         "$pkgdir/usr/share/pixmaps/goatdkernel.png"
     
-    install -Dm644 "$srcdir/GOATd-Kernel/.SRCINFO" \
+    install -Dm644 "$startdir"/.SRCINFO \
         "$pkgdir/usr/share/doc/goatdkernel/.SRCINFO"
 }
