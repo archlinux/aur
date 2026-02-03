@@ -3,7 +3,7 @@
 _pkgname=libheif
 pkgname=lib32-libheif
 pkgver=1.21.2
-pkgrel=1
+pkgrel=2
 pkgdesc="HEIF file format decoder and encoder (32-bit)"
 arch=('x86_64')
 url="https://github.com/strukturag/libheif"
@@ -17,6 +17,7 @@ depends=(
 )
 makedepends=(
   'cmake'
+  'git'
   'lib32-libjpeg-turbo'
   'lib32-libpng'
   'lib32-svt-av1'
@@ -37,9 +38,19 @@ optdepends=(
   'lib32-libdav1d: DAV1D encoder'
 )
 provides=('libheif.so')
-source=("https://github.com/strukturag/libheif/releases/download/v${pkgver}/libheif-${pkgver}.tar.gz")
-sha256sums=('6c4a5b08e6eae66d199977468859dea3b5e059081db8928f7c7c16e53836c906')
+source=(
+  "git+https://github.com/strukturag/libheif#tag=v${pkgver}"
+  'https://gitlab.archlinux.org/archlinux/packaging/packages/libheif/-/raw/c70b9768700829f3303bddc88789e8c8a5dac5e0/svt-av1-4.patch'
+)
+sha256sums=(
+  'SKIP'
+  '84c9298918dcb1de59acb3eb25aff657eee2a602bf3d2572c93663dd1374b15f'
+)
 options=('debug')
+
+prepare() {
+  patch -d libheif -p1 < svt-av1-4.patch
+}
 
 build() {
 
@@ -48,7 +59,7 @@ build() {
   export PKG_CONFIG='/usr/bin/i686-pc-linux-gnu-pkg-config'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-  cmake -B build -S "${_pkgname}-${pkgver}" \
+  cmake -B build -S "${_pkgname}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib32 \
     -DWITH_AOM_DECODER_PLUGIN=ON \

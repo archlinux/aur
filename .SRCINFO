@@ -1,11 +1,12 @@
 pkgbase = lib32-libheif
 	pkgdesc = HEIF file format decoder and encoder (32-bit)
 	pkgver = 1.21.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/strukturag/libheif
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
+	makedepends = git
 	makedepends = lib32-libjpeg-turbo
 	makedepends = lib32-libpng
 	makedepends = lib32-svt-av1
@@ -33,7 +34,9 @@ pkgbase = lib32-libheif
 	optdepends = lib32-libdav1d: DAV1D encoder
 	provides = libheif.so
 	options = debug
-	source = https://github.com/strukturag/libheif/releases/download/v1.21.2/libheif-1.21.2.tar.gz
-	sha256sums = 6c4a5b08e6eae66d199977468859dea3b5e059081db8928f7c7c16e53836c906
+	source = git+https://github.com/strukturag/libheif#tag=v1.21.2
+	source = https://gitlab.archlinux.org/archlinux/packaging/packages/libheif/-/raw/c70b9768700829f3303bddc88789e8c8a5dac5e0/svt-av1-4.patch
+	sha256sums = SKIP
+	sha256sums = 84c9298918dcb1de59acb3eb25aff657eee2a602bf3d2572c93663dd1374b15f
 
 pkgname = lib32-libheif
