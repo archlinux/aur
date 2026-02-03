@@ -1,7 +1,7 @@
 pkgbase = dnstt-git
 	pkgdesc = IP over DNS tunnel using UDP, DoT or DoH (like iodine)
 	pkgver = 1.20241021.0.2.ge5e873b
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.bamsoftware.com/software/dnstt
 	install = dnstt-git.install
 	arch = x86_64

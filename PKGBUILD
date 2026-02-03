@@ -1,6 +1,6 @@
 pkgname=dnstt-git
 pkgver=1.20241021.0.2.ge5e873b
-pkgrel=1
+pkgrel=2
 pkgdesc='IP over DNS tunnel using UDP, DoT or DoH (like iodine)'
 arch=('x86_64')
 url="http://www.bamsoftware.com/software/dnstt"
