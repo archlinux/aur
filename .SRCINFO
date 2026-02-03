@@ -1,6 +1,6 @@
 pkgbase = nerdfetch
 	pkgdesc = A POSIX fetch using NerdFonts
-	pkgver = 8.5.0
+	pkgver = 8.5.1
 	pkgrel = 1
 	url = https://github.com/thatonecalculator/NerdFetch
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = nerdfetch
 	optdepends = nerd-fonts: NerdFont to show icons in fetch
 	provides = nerdfetch
 	conflicts = nerdfetch-git
-	source = nerdfetch-8.5.0.tar.gz::https://github.com/thatonecalculator/NerdFetch/archive/refs/tags/v8.5.0.tar.gz
-	sha256sums = c2fb7e7fc33690a69b7beaf6473d56c882a44ba3bbe63150f45a97f107220741
+	source = nerdfetch-8.5.1.tar.gz::https://github.com/thatonecalculator/NerdFetch/archive/refs/tags/v8.5.1.tar.gz
+	sha256sums = 5c9d3ef573050188f3efc6b903b8ededbfd0e61c7342a4ea327c2c8c5434b84e
 
 pkgname = nerdfetch
