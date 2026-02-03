@@ -41,6 +41,6 @@ package() {
 
     install -Dm755 nucleus "$pkgdir/usr/bin/nucleus"  # binary installed as nucleus
 
-    install -Dm644 README.md "$pkgdir/usr/share/doc/nucleus-cli/README.md"
+    install -Dm644 .github/README.md "$pkgdir/usr/share/doc/nucleus-cli/README.md"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/nucleus/LICENSE"
 }
