@@ -8,3 +8,20 @@ post_install () {
     echo '||                                                                     ||'
     echo '========================================================================='
 }
+
+pre_upgrade () {
+    new_version=$(echo $1 | cut -d "." -f 1-3 )
+    old_version=$(echo $2 | cut -d "." -f 1-3 )
+
+    #rename config files
+    if [[ "$old_version" < "0.1.1" ]] ; then
+        echo '========================================================================='
+        echo '||                           /!\ WARNING /!\                           ||'
+        echo '========================================================================='
+        echo "From 0.1.1, some immuarch config files were renamed :"
+        echo "rw-subvolumes.conf => subvolumes.conf"
+        echo "user-bind-mount-runtime.conf => add-bind-mount-runtime.conf"
+        echo "user-fstab.conf => add-fstab.conf"
+        echo "Please update your /immuarch/immuarch-etc config to comply with the new name"
+    fi
+}
