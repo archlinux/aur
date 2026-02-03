@@ -1,24 +1,24 @@
 # Maintainer: Richard Cesar <richard.cesar@netkeepers.cz>
 
 pkgname=flexibee-client-bin
-pkgver=2025.7.7
-pkgbasever=2025.7
+pkgver=2026.2.0
+pkgbasever=2026.2
 pkgrel=1
 pkgdesc="Accounting economic system for person and business usage. Client-only package."
 arch=('i686' 'x86_64')
 url="http://www.flexibee.eu"
 license=('custom')
-depends=('glibc' 'jre8-openjdk')
+depends=('glibc' 'java-environment=11' 'fontconfig' 'libxrender' 'libxtst' 'ttf-dejavu' 'gtk3' 'ttf-dejavu' 'libxi')
 install=flexibee.install
 source=("https://download.flexibee.eu/download/$pkgbasever/$pkgver/flexibee-client_${pkgver}_all.deb")
 
-sha256sums=('7cfa61f366b1fa18bad5e378e5867081af46c148ed66c96525b790f73fa80e2f')
+sha256sums=('8030656857424d1364beda52cdf143a2dcdbe3c1e2ff9ab0ed2562294ab4cf1c')
 
 prepare() {
     cd ${srcdir}
     mkdir $pkgname-$pkgver
     tar -vxzf data.tar.gz -C ./$pkgname-$pkgver
-    sed -i 's/^# FLEXIBEE_JAVA=$/FLEXIBEE_JAVA=\/usr\/lib\/jvm\/java-8-openjdk\/jre\/bin\/java/' ./$pkgname-$pkgver/etc/default/flexibee
+    #sed -i 's/^# FLEXIBEE_JAVA=$/FLEXIBEE_JAVA=\/usr\/lib\/jvm\/java-11-openjdk\/jre\/bin\/java/' ./$pkgname-$pkgver/etc/default/flexibee
 }
 
 package() {
