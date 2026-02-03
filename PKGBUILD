@@ -1,7 +1,7 @@
 # Maintainer: SpeedyNote Team <info@speedynote.org>
 
 pkgname=speedynote
-pkgver=1.2.1
+pkgver=1.2.1.6
 pkgrel=1
 pkgdesc="Fast note-taking app with PDF annotation, export, and multi-platform sync"
 arch=('x86_64' 'aarch64')
@@ -36,8 +36,8 @@ provides=('speedynote')
 conflicts=('speedynote-bin' 'speedynote-git' 'speedynote-src')
 
 # Source from GitHub release
-source=("$pkgname-$pkgver.tar.gz::https://github.com/alpha-liu-01/SpeedyNote/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')  # Update with actual checksum for release
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver//./-}.tar.gz")
+sha256sums=('48139df1836f0285c4ee9648054dac818f9a74984199fd92fbc8d10c5591ef7c')
 
 build() {
     cd "SpeedyNote-${pkgver}"
@@ -90,4 +90,4 @@ EOF
     # Install license
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-sha256sums=('48139df1836f0285c4ee9648054dac818f9a74984199fd92fbc8d10c5591ef7c')
+
