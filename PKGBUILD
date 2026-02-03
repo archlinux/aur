@@ -12,7 +12,7 @@
 _py="python"
 pkgname="blivet-gui"
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='GUI tool for storage configuration'
 arch=(
   'x86_64'
@@ -31,6 +31,7 @@ depends=(
 makedepends=(
   'git'
   'make'
+  'gettext'
   "${_py}-setuptools")
 source=(
   "${url}/archive/refs/tags/${pkgver}.tar.gz")
@@ -40,7 +41,14 @@ build() {
   cd \
     "${pkgname}-${pkgver}" || \
     exit
-  make
+  # Build .mo files directly - skip update-po which requires translation-canary
+  # submodule (not in release tarball) and xgettext_werror.sh that fails on
+  # embedded URL warnings in upstream code
+  for po in po/*.po; do
+    lang="${po%.po}"
+    lang="${lang#po/}"
+    msgfmt -o "po/${lang}.mo" "$po"
+  done
 }
 
 # shellcheck disable=SC2154

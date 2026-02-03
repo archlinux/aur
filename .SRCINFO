@@ -1,7 +1,7 @@
 pkgbase = blivet-gui
 	pkgdesc = GUI tool for storage configuration
 	pkgver = 2.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/storaged-project/blivet-gui
 	arch = x86_64
 	arch = pentium4
@@ -10,6 +10,7 @@ pkgbase = blivet-gui
 	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = make
+	makedepends = gettext
 	makedepends = python-setuptools
 	depends = python
 	depends = python-blivet
