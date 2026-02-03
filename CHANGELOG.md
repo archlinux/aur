@@ -2,6 +2,17 @@
 
 All the changes made to runa are documented here.
 
+## [0.6.2] - 2026-02-02
+
+### Patch to input mode
+
+### Fixed
+- **Input mode**: New `g` prefix keybind now correctly ignores normal input when typing.
+
+
+---
+
+
 ## [0.6.1] - 2026-02-01
 
 ### Patch to keymap
