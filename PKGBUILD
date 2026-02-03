@@ -5,9 +5,9 @@ _gitname="map-tiles-downloader"
 _pkgname="${_pyname}"
 pkgname="${_pkgname}-git"
 pkgver=1.3.3.r70.20251009.e16451b
-pkgrel=2
-pkgdesc="OpenStreetMap and thunderforest map tiles downloader: For selected regions, within a bounding box, or around points of a KML file. For Meshtastic and MeshCore."
-groups=("meshcore" "meshtastic")
+pkgrel=3
+pkgdesc="OpenStreetMap and thunderforest map tiles batch downloader: For selected regions, within a bounding box, or around points of a KML file. (Original designation was for Meshtastic and MeshCore handhelds, but it just downloads the generic x/y/z.png map tile structure to a directory tree.)"
+groups=('openstreetmap')
 arch=(
   'any'
 )
