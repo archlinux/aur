@@ -1,89 +1,124 @@
-# Maintainer: Kyle De'Vir (QuartzDragon) <kyle.devir.mykolab.com>
+# Maintainer: neycrol <330578697@qq.com>
+# Contributor: Kyle De'Vir (QuartzDragon) <kyle.devir.33@proton.me>
 
 pkgname=bcachefs-tools-git
-pkgver=v1.25.3.r56.gda8f1d0
+_pkgname=bcachefs-tools
+pkgver=20260202.r2332.gdbdb2f4c
 pkgrel=1
-pkgdesc="BCacheFS filesystem utilities (Git)"
+pkgdesc="Bcachefs userspace tools (Git version) with FUSE support enabled"
 arch=('x86_64')
 url="https://github.com/koverstreet/bcachefs-tools"
 license=('GPL-2.0-only')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
-provides=(bcachefs-tools)
-conflicts=(bcachefs-tools)
 depends=(
-  git
-  bash
-  gcc-libs
-  libaio.so libaio
-  libblkid.so libuuid.so util-linux-libs
-  libkeyutils.so keyutils
-  libsodium.so libsodium
-  liburcu
-  libz.so zlib
-  libzstd.so zstd
-  lz4
-  libudev.so systemd-libs
-  udev
+    'glibc'
+    'libaio'
+    'util-linux-libs'
+    'keyutils'
+    'libsodium'
+    'liburcu'
+    'zlib'
+    'zstd'
+    'lz4'
+    'systemd-libs'
+    'fuse3'
 )
 makedepends=(
-  git
-  cargo
-  clang
-  llvm
-  pkgconf
-  valgrind
+    'git'
+    'rust'
+    'cargo'
+    'clang'
+    'llvm'
+    'pkgconf'
 )
 
-_reponame="bcachefs-tools"
-_repo_url="https://github.com/koverstreet/$_reponame"
+source=("git+https://github.com/koverstreet/bcachefs-tools.git")
+sha256sums=('SKIP')
 
-options=('!lto' '!strip')
-source=("git+$_repo_url")
-b2sums=('SKIP')
+# Disable LTO to prevent issues with Rust's ThinLTO
+options=('!lto' '!debug')
 
 pkgver() {
-    cd "$srcdir/$_reponame"
-    git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$_pkgname"
+    git remote set-url origin "https://github.com/koverstreet/bcachefs-tools.git"
+    local ref="HEAD"
+    if git fetch --quiet origin; then
+        if git rev-parse --verify -q origin/HEAD >/dev/null; then
+            ref="origin/HEAD"
+        elif git rev-parse --verify -q origin/master >/dev/null; then
+            ref="origin/master"
+        fi
+    fi
+    # Date + revcount + short hash keeps version ordering obvious for audit.
+    printf "%s.r%s.g%s" \
+        "$(git show -s --format=%cd --date=format:%Y%m%d "$ref")" \
+        "$(git rev-list --count "$ref")" \
+        "$(git rev-parse --short "$ref")"
+}
+
+prepare() {
+    cd "$_pkgname"
+    # Ensure a clean tree for reproducible patches.
+    git reset --hard
+
+    # Fetch Rust deps up front (helps offline builds later).
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+
+    # Upstream no longer ships include/linux/types.h; keep prepare() clean.
 }
 
 build() {
-    cd "$srcdir/$_reponame"
+    cd "$_pkgname"
 
-    # this uses malloc_usable_size, which is incompatible with fortification level 3
-    export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
-    export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+    # Honor user toolchain flags and add reproducibility-friendly path remap.
+    export RUSTFLAGS="${RUSTFLAGS} -C link-arg=${LDFLAGS} --remap-path-prefix=${srcdir}/=/"
+    export CFLAGS="${CFLAGS} -fdebug-prefix-map=${srcdir}/=/"
 
     make \
+        BCACHEFS_FUSE=1 \
+        PREFIX=/usr \
+        ROOT_SBINDIR=/usr/bin \
         LIBEXECDIR=/usr/lib \
-        DESTDIR="${pkgdir}" \
-        ROOT_SBINDIR="/usr/bin" \
-        INITRAMFS_DIR="/usr/lib/initcpio/"
+        INITRAMFS_DIR=/usr/lib/initcpio \
+        EXTRA_CFLAGS="${CFLAGS} -include linux/types.h" \
+        all
+    
+    # Generate shell completions using the built binary
+    local _bin="./target/release/bcachefs"
+    if [ -x "$_bin" ]; then
+        msg2 "Generating shell completions..."
+        "$_bin" completions bash > bcachefs.bash
+        "$_bin" completions zsh  > _bcachefs
+        "$_bin" completions fish > bcachefs.fish
+    fi
 }
 
 package() {
-    cd "$srcdir/$_reponame"
-
-    # this uses malloc_usable_size, which is incompatible with fortification level 3
-    export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
-    export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+    cd "$_pkgname"
 
     make \
-        PREFIX="/usr" \
+        BCACHEFS_FUSE=1 \
+        PREFIX=/usr \
+        ROOT_SBINDIR=/usr/bin \
         LIBEXECDIR=/usr/lib \
-        DESTDIR="${pkgdir}" \
-        ROOT_SBINDIR="/usr/bin" \
-        INITRAMFS_DIR="/usr/lib/initcpio/" \
+        INITRAMFS_DIR=/usr/lib/initcpio \
+        DESTDIR="$pkgdir" \
         install
 
-    # replace incompatible initcpio hooks
-    rm -rf "${pkgdir}"/usr/lib/initcpio/*
-    install -dm755 "${pkgdir}"/usr/lib/initcpio/{hooks,install}
-    install -Dm644 arch/etc/initcpio/hooks/bcachefs "${pkgdir}"/usr/lib/initcpio/hooks/
-    install -Dm644 arch/etc/initcpio/install/bcachefs "${pkgdir}"/usr/lib/initcpio/install/
+    # Remove DKMS sources installed by upstream makefile.
+    # Userspace tools stay here; kernel module is provided elsewhere to avoid mismatches.
+    rm -rf "$pkgdir/usr/src"
 
-    # package completions
-    install -dm755 "${pkgdir}"/usr/share/{bash-completion/completions,fish/vendor_completions.d,zsh/site-functions}
-    "${pkgdir}"/usr/bin/bcachefs completions bash > "${pkgdir}"/usr/share/bash-completion/completions/bcachefs
-    "${pkgdir}"/usr/bin/bcachefs completions fish > "${pkgdir}"/usr/share/fish/vendor_completions.d/bcachefs.fish
-    "${pkgdir}"/usr/bin/bcachefs completions zsh > "${pkgdir}"/usr/share/zsh/site-functions/_bcachefs
+    # License
+    install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    # Shell completions
+    if [ -f bcachefs.bash ]; then
+        install -Dm644 bcachefs.bash "$pkgdir/usr/share/bash-completion/completions/bcachefs"
+        install -Dm644 _bcachefs      "$pkgdir/usr/share/zsh/site-functions/_bcachefs"
+        install -Dm644 bcachefs.fish  "$pkgdir/usr/share/fish/vendor_completions.d/bcachefs.fish"
+    fi
 }
