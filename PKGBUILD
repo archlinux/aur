@@ -1,7 +1,10 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-pkgname=('pop-launcher-git' 'pop-shell-plugin-system76-power-git')
+pkgname=(
+  'pop-launcher-git'
+  'pop-shell-plugin-system76-power-git'
+)
 pkgbase=pop-launcher-git
-pkgver=1.2.4.r14.g8d9da92
+pkgver=1.0.5.r0.geead361
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/launcher"
@@ -10,7 +13,7 @@ depends=(
   'dbus'
   'fd'
   'libqalculate'
-  'libegl'
+  'libglvnd'
   'libxkbcommon'
   'pop-icon-theme-git'
   'sh'
@@ -28,13 +31,13 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd launcher
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^epoch-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd launcher
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target "$(rustc --print host-tuple)"
 
   # Use thin LTO objects
   sed -i 's/lto = "fat"/lto = "thin"/g' Cargo.toml

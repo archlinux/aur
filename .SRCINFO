@@ -1,5 +1,5 @@
 pkgbase = pop-launcher-git
-	pkgver = 1.2.4.r14.g8d9da92
+	pkgver = 1.0.5.r0.geead361
 	pkgrel = 1
 	url = https://github.com/pop-os/launcher
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = pop-launcher-git
 	depends = dbus
 	depends = fd
 	depends = libqalculate
-	depends = libegl
+	depends = libglvnd
 	depends = libxkbcommon
 	depends = pop-icon-theme-git
 	depends = sh
