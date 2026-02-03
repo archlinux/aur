@@ -26,13 +26,13 @@ makedepends=(git
              vulkan-headers
              zlib-ng)
 source=("$_pkgname::git+$url.git#tag=Release$pkgver"
-        "nlohmann-json::git+https://github.com/nlohmann/json.git"
-        "qmicroz::git+https://github.com/artemvlas/qmicroz.git"
-        "volk::git+https://github.com/zeux/volk.git")
+        "nlohmann-json::git+https://github.com/nlohmann/json.git#commit=11cc676142d9ca85cc40a60330ed1b081c3afc6d"
+        "qmicroz::git+https://github.com/artemvlas/qmicroz.git#commit=14d6e8154628b7e9cdd37e78cf0e6f93785257a3"
+        "volk::git+https://github.com/zeux/volk.git#commit=9767549a8bba5454555764ee0f3319bc5d205da9")
 sha256sums=('e3311feaf5b1ff9087704ecdff47b4274f8ef8154748223717ffd041598da321'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+            '716398fce8d8bd0d477c9ff0277e3c4f0f3e2b2d2a7f0e948c9407a85c97f63e'
+            'a006b22a89af4b5b7981f3b1375fbcf96e4d027105dd4537959b032cc206399c'
+            'e7284d206228f5f84e4e8a67b38a95f08b5db2a8d1b882d68b0f0782df55f078')
 
 prepare() {
     cd "$_pkgname"
