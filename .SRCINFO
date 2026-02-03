@@ -31,7 +31,6 @@ pkgbase = linux-bsb
 	source = https://github.com/archlinux/linux/releases/download/v6.18.7-arch1/linux-v6.18.7-arch1.patch.zst
 	source = https://github.com/archlinux/linux/releases/download/v6.18.7-arch1/linux-v6.18.7-arch1.patch.zst.sig
 	source = config
-	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 83BC8889351B5DEBBB68416EB8AC08600F108CDF
 	sha256sums = b726a4d15cf9ae06219b56d87820776e34d89fbc137e55fb54a9b9c3015b8f1e
