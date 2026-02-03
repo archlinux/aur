@@ -1,6 +1,6 @@
 # Maintainer: Oshgnacknak <osh@oshgnacknak.de>
 pkgname=vegalinux64
-pkgver=20251007
+pkgver=20260203
 pkgrel=1
 pkgdesc="Chess tournament administration sorfware"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=("http://www.vegachess.com/download/vegalinux64.tar.gz"
         'vegateam.desktop'
         'logo.png')
 noextract=()
-sha256sums=('c9f5360d89e8814f37dc11e314acdb2789011489bff65bc3a5cfacfbb15edb84'
+sha256sums=('fbc818ee12930c95761b375fc71cb69489b02072b8a8ff2eed14a6f396a0bcf7'
             '7ed253af097df983fc1ead3b77cd0ebb443696b32a0c50399d316f31e4b1c51b'
             'e6b762f998a4cf88e7b52a4a7884c58c55cf0939e7077f1d038868a2706115fc'
             'ac0385b28ad27877947913ae486d619f39c495d4e69369066e7e10755247bfc6')

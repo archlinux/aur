@@ -1,6 +1,6 @@
 pkgbase = vegalinux64
 	pkgdesc = Chess tournament administration sorfware
-	pkgver = 20251007
+	pkgver = 20260203
 	pkgrel = 1
 	url = https://www.vegachess.com
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = vegalinux64
 	source = vegachess.desktop
 	source = vegateam.desktop
 	source = logo.png
-	sha256sums = c9f5360d89e8814f37dc11e314acdb2789011489bff65bc3a5cfacfbb15edb84
+	sha256sums = fbc818ee12930c95761b375fc71cb69489b02072b8a8ff2eed14a6f396a0bcf7
 	sha256sums = 7ed253af097df983fc1ead3b77cd0ebb443696b32a0c50399d316f31e4b1c51b
 	sha256sums = e6b762f998a4cf88e7b52a4a7884c58c55cf0939e7077f1d038868a2706115fc
 	sha256sums = ac0385b28ad27877947913ae486d619f39c495d4e69369066e7e10755247bfc6
