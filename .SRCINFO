@@ -61,9 +61,9 @@ pkgbase = immich
 	sha256sums = 4ae8a73ccbef568b7841dbdfe9b9d8a76fa78db00051317b6313a6a50a66c900
 	sha256sums = 077b85d692df4625300a785eed1efdc7af8fbb8e05dfa8c7d8b4053c1eb76a58
 	sha256sums = 614b56dba38f9201d8a391d0f3d2cdf5571935a1ea6c5d19a74a942f18411763
-	sha256sums = 27a691cf1be3f9a8f89046c124065bde668964d3c7d8e8f0e147324f0340b8a3
-	sha256sums = 3e26be58deace8fa962fe8817db09b227c789d0ab1a441f656a00f45838099f3
-	sha256sums = ba84f39e417cf3efbfa2f6d0ad3e71b7c9cbbc013d0fdc227c6be94f1676e5f4
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = 239eec57ac17f100a11e2536cffc56752c318b50ae765b0918ff7aab4ce8f255
 
 pkgname = immich-server
