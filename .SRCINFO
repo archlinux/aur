@@ -1,6 +1,6 @@
 pkgbase = wezterm-sctk-adwaita-wayland-git
-	pkgdesc = A GPU-accelerated cross-platform terminal emulator and multiplexer. Test build with better CSD support on wayland via PR #7095
-	pkgver = 20240203.110809.r803.g05343b3
+	pkgdesc = Wezterm with PR #7095 (SCTK Adwaita Wayland CSD support)
+	pkgver = 20240203.110809.r804.g5d795ed
 	pkgrel = 1
 	url = https://github.com/wez/wezterm
 	arch = x86_64
@@ -26,11 +26,20 @@ pkgbase = wezterm-sctk-adwaita-wayland-git
 	depends = xcb-util-image
 	depends = zlib
 	optdepends = python-gobject: for nautilus extension
-	provides = wezterm=20240203.110809.r803
+	provides = wezterm
 	conflicts = wezterm
 	conflicts = wezterm-git
 	conflicts = wezterm-nightly-bin
+	options = !lto
 	source = wezterm::git+https://github.com/wez/wezterm.git
+	source = freetype.freetype2::git+https://github.com/freetype/freetype2.git
+	source = glennrp.libpng::git+https://github.com/glennrp/libpng.git
+	source = harfbuzz::git+https://github.com/harfbuzz/harfbuzz.git
+	source = madler.zlib::git+https://github.com/madler/zlib.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = wezterm-sctk-adwaita-wayland-git
