@@ -1,0 +1,5 @@
+[gryph-bin]
+source = "github"
+github = "safedep/gryph"
+use_latest_release = true
+prefix = "v"
