@@ -12,7 +12,7 @@ pkgbase = goatd-kernel-bin
 	depends = zlib
 	source = goatdkernel-0.2.3-1-x86_64.tar.gz::https://github.com/MadGoatHaz/GOATd-Kernel/releases/download/v0.2.3/goatdkernel-0.2.3-x86_64.tar.gz
 	source = git+https://github.com/MadGoatHaz/GOATd-Kernel.git#tag=v0.2.3
-	source = goatdkernel.png::https://github.com/MadGoatHaz/GOATd-Kernel/releases/download/v0.2.3/goatdkernel.png
+	source = goatdkernel.png::https://raw.githubusercontent.com/MadGoatHaz/GOATd-Kernel/master/assets/goatdkernel.png
 	sha256sums = 190bcd5f0aa4c02a8c6324b511420eaa318a4d60f1d78e8e9509319700c52caf
 	sha256sums = SKIP
 	sha256sums = SKIP

@@ -9,7 +9,7 @@ pkgver=0.2.3
 pkgrel=1
 source=("goatdkernel-${pkgver}-${pkgrel}-x86_64.tar.gz::https://github.com/MadGoatHaz/GOATd-Kernel/releases/download/v${pkgver}/goatdkernel-${pkgver}-x86_64.tar.gz"
         "git+https://github.com/MadGoatHaz/GOATd-Kernel.git#tag=v${pkgver}"
-        "goatdkernel.png::https://github.com/MadGoatHaz/GOATd-Kernel/releases/download/v${pkgver}/goatdkernel.png")
+        "goatdkernel.png::https://raw.githubusercontent.com/MadGoatHaz/GOATd-Kernel/master/assets/goatdkernel.png")
 
 pkgdesc="GOATd Kernel - High-performance computing platform with multi-language integration"
 arch=("x86_64")
