@@ -1,0 +1,18 @@
+pkgbase = panox
+	pkgdesc = Modern clipboard manager for Wayland
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/cosarberk/panox
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gtk4
+	depends = libadwaita
+	depends = gtk4-layer-shell
+	depends = wl-clipboard
+	source = panox-0.1.0.tar.gz::https://github.com/cosarberk/panox/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 4cffb9599513a2e0690b2a0f656e3985544a789f7639abfac2ea764095d4b2ce
+
+pkgname = panox
