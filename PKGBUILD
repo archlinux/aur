@@ -13,7 +13,7 @@ depends=('python')
 options=(!strip)
 
 source_x86_64=("setiastrosuitepro_linux.tar.xz::https://github.com/setiastro/setiastrosuitepro/releases/download/V$pkgver/setiastrosuitepro_linux.tar.xz")
-sha256sums_x86_64=('429398de53ccd6acd78702003e2cdaf57a7f0ed543c8928159499c5890f8c122')
+sha256sums_x86_64=('362d1e6c88eeca03b21d164afdf9835e460c0c40fd4f1a3be908501e9e7ee567')
 
 source=("16x16.png"
         "32x32.png"

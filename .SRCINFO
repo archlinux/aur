@@ -21,6 +21,6 @@ pkgbase = seti-astro-suite-pro-bin
 	sha256sums = 10ca643fd2105a538a65b3abb831db5dba40c0dfd9a42bc203a2fa8740edec6e
 	sha256sums = 26e186f5f7c3177f6adff3dfb78bc6a569704d2e187db336263c2094a49267c2
 	source_x86_64 = setiastrosuitepro_linux.tar.xz::https://github.com/setiastro/setiastrosuitepro/releases/download/V1.8.4/setiastrosuitepro_linux.tar.xz
-	sha256sums_x86_64 = 429398de53ccd6acd78702003e2cdaf57a7f0ed543c8928159499c5890f8c122
+	sha256sums_x86_64 = 362d1e6c88eeca03b21d164afdf9835e460c0c40fd4f1a3be908501e9e7ee567
 
 pkgname = seti-astro-suite-pro-bin
