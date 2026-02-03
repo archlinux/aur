@@ -8,7 +8,10 @@ arch=('x86_64')
 url="https://codeberg.org/packwitch/packwitch"
 license=('LGPL 3.0+')
 depends=('jdk21-openjdk')
-makedepends=('git')
+makedepends=(
+    'git'
+    'jdk21-openjdk'
+)
 
 source=("git+https://codeberg.org/packwitch/packwitch")
 sha256sums=('SKIP')
