@@ -28,10 +28,6 @@ pkgver() {
   echo "$(git describe --long --tags | tr - .)"
 }
 
-prepare() {
-  mkdir -p build build32
-}
-
 build() {
   cd libdvdnav
 
