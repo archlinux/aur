@@ -1,0 +1,15 @@
+pkgbase = quary-bin
+	pkgdesc = Business Intelligence for Engineers
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://github.com/quarylabs/quary
+	arch = x86_64
+	license = Apache-2.0
+	provides = quary
+	conflicts = quary
+	source = https://github.com/quarylabs/quary/raw/v0.10.1/LICENSE
+	sha256sums = 954c30259208c39cf74febfd8e7466e1a9bf6479c6aa7a7e85f1e39afce7bda7
+	source_x86_64 = quary-0.10.1-x86_64.zip::https://github.com/quarylabs/quary/releases/download/v0.10.1/quary-linux-x86_64-gnu.zip
+	sha256sums_x86_64 = 054171fc14c425724b4f7d245b197f53b3b9d13f4810e9598603871137af6219
+
+pkgname = quary-bin
