@@ -3,7 +3,7 @@
 
 pkgname=bcachefs-tools-git
 _pkgname=bcachefs-tools
-pkgver=20260202.r2332.gdbdb2f4c
+pkgver=20260202172648.r2332.gdbdb2f4c
 pkgrel=1
 pkgdesc="Bcachefs userspace tools (Git version) with FUSE support enabled"
 arch=('x86_64')
@@ -51,9 +51,9 @@ pkgver() {
             ref="origin/master"
         fi
     fi
-    # Date + revcount + short hash keeps version ordering obvious for audit.
+    # Date/time + revcount + short hash keeps version ordering obvious for audit.
     printf "%s.r%s.g%s" \
-        "$(git show -s --format=%cd --date=format:%Y%m%d "$ref")" \
+        "$(git show -s --format=%cd --date=format:%Y%m%d%H%M%S "$ref")" \
         "$(git rev-list --count "$ref")" \
         "$(git rev-parse --short "$ref")"
 }

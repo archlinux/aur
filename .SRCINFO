@@ -1,6 +1,6 @@
 pkgbase = bcachefs-tools-git
 	pkgdesc = Bcachefs userspace tools (Git version) with FUSE support enabled
-	pkgver = 20260202.r2332.gdbdb2f4c
+	pkgver = 20260202172648.r2332.gdbdb2f4c
 	pkgrel = 1
 	url = https://github.com/koverstreet/bcachefs-tools
 	arch = x86_64
