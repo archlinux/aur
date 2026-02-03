@@ -1,6 +1,6 @@
 # Maintainer: Rob Zolkos <rob@zolkos.com>
 pkgname=rollbar-cli
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="CLI for reading and listing Rollbar items and occurrences"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/robzolkos/rollbar-cli/archive/v$pkgver.tar.gz")
-sha256sums=('014110bc5888d775b130884dea3808189c3a553bf2cbec5d058b225e43a38e6e')
+sha256sums=('62534e916405cc294232a42c54c4c0edb6d87c3f178804c6eef05cab832c8534')
 options=('!debug')
 
 build() {
