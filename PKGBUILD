@@ -4,7 +4,7 @@
 
 pkgname=python-prospector
 _name=prospector
-pkgver=1.17.3
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="Python static analysis tool"
 url="https://github.com/PyCQA/prospector/"
@@ -20,7 +20,7 @@ makedepends=('python-poetry'
 license=('GPL-2.0-only')
 arch=('any')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_name}-dev/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f5157637842434998560142ce8fe98abb43edeb66e3b9ad4c4d71dc5b19248a9')
+sha256sums=('fe2bbf5b276582d9906057683ae828d17256c7dda5d6191056891f31cae71932')
 
 build() {
 	cd "$_name-$pkgver"
@@ -42,7 +42,6 @@ package() {
 		'python-dodgy'
 		'python-toml'
 		'python-setoptconf'
-		'python-gitpython'
 		'python-packaging'
 		'python-flake8')
 
