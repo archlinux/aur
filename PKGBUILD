@@ -13,6 +13,8 @@ depends=(
     'mpv'
     'curl'
     'wayland'
+    'libayatana-appindicator'
+    'glew'
 )
 optdepends=(
     'linux-wallpaperengine: for Wallpaper Engine scene support'
@@ -20,11 +22,16 @@ optdepends=(
     'swww: alternative wallpaper backend with animations'
     'hyprpaper: Hyprland native wallpaper support'
 )
-makedepends=('git' 'cmake' 'base-devel')
+makedepends=('git' 'cmake' 'base-devel' 'wayland-protocols' 'nlohmann-json')
 provides=('betterwallpaper')
 conflicts=('betterwallpaper')
-source=("git+https://github.com/Misiix9/BetterWallpaper.git#tag=v${pkgver}")
+source=("git+https://github.com/Misiix9/BetterWallpaper.git")
 md5sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/BetterWallpaper"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+}
 
 build() {
   cd "$srcdir/BetterWallpaper"

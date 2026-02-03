@@ -8,19 +8,23 @@ pkgbase = betterwallpaper-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = base-devel
+	makedepends = wayland-protocols
+	makedepends = nlohmann-json
 	depends = gtk4
 	depends = libadwaita
 	depends = gtk4-layer-shell
 	depends = mpv
 	depends = curl
 	depends = wayland
+	depends = libayatana-appindicator
+	depends = glew
 	optdepends = linux-wallpaperengine: for Wallpaper Engine scene support
 	optdepends = swaybg: alternative wallpaper backend
 	optdepends = swww: alternative wallpaper backend with animations
 	optdepends = hyprpaper: Hyprland native wallpaper support
 	provides = betterwallpaper
 	conflicts = betterwallpaper
-	source = git+https://github.com/Misiix9/BetterWallpaper.git#tag=v0.2.0
+	source = git+https://github.com/Misiix9/BetterWallpaper.git
 	md5sums = SKIP
 
 pkgname = betterwallpaper-git
