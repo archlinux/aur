@@ -1,6 +1,6 @@
 # Maintainer: iff <iff@ik.me>
 pkgname="pay-respects"
-pkgver=0.7.9
+pkgver=0.7.10
 pkgrel=1
 pkgdesc="Command suggestions, command-not-found and thefuck replacement written in Rust (All modules)"
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
@@ -12,7 +12,7 @@ makedepends=('cargo' 'git')
 optdepends=()
 source=($pkgname::git+https://github.com/iffse/pay-respects#tag=v$pkgver)
 
-sha1sums=('6ece4576b212c7250642b35cd4a5f517fd389b5a')
+sha1sums=('f9a6bf62db07ef1ec35ffa38e27dc4ff4a306c99')
 
 prepare() {
 	cd "$pkgname"
