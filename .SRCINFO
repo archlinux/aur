@@ -1,19 +1,19 @@
 pkgbase = termirs
 	pkgdesc = A modern, async SSH terminal client
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://github.com/caelansar/termirs
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = cargo
-	provides = termirs=0.2.6
+	provides = termirs=0.2.7
 	conflicts = termirs
 	options = !debug
 	options = !lto
-	source = termirs::git+https://github.com/caelansar/termirs.git#tag=v0.2.6
-	sha256sums = 1f1a1e954b491c2c7bdc0603b64cc3263327bae5ec6f9938d5761cfed6252c4c
-	sha512sums = e2ebdde6d19ae66be5a6418827266b917070f67ceb7253d1fcbb6ad80336ed274bcc65996fb71b64a3f949addcb2e1631f1e272ca1290578fb50a750115acdbf
-	b2sums = 5ed26d11089cc5cd8efa70f418ff3d920e9a90dffdc729b6e4e9287dfd34cfb083fbd1c8cf2ecd62de1cab78f6638708f62f64e3f66c153950db8ea40176f521
+	source = termirs::git+https://github.com/caelansar/termirs.git#tag=v0.2.7
+	sha256sums = 0e0e45041cdbd6206d82b1e5f1642b02fef590e4037a1401a2389f17df3b49e8
+	sha512sums = bb7f24fd3f111841e3a5fce600f2ec7d284c4a465acc4087238ad668de40abdb903d08a174d3554c4e9d1e6ad77e931d72e53bc7525c421bb34087578f7e8d07
+	b2sums = 8fe23f31749a078413d268fa526029c9559a3f154ff1d9f0f6a7849268fdbe9a7e8f5833a947cde2be38a316c174d134810b6ac35d3d6fc57a6c7805305fb139
 
 pkgname = termirs
