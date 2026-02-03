@@ -36,7 +36,7 @@ optdepends=('qt6-doc: integrated Qt documentation'
             'mercurial: mercurial support'
             'bzr: bazaar support'
             'valgrind: analyze support')
-makedepends=('gcc' 'mold' 'qt6-base' 'patchelf' 'ninja')
+makedepends=('clang' 'lld' 'qt6-base' 'patchelf' 'ninja')
 source=("${_urlbase}/qtcreator/${_pkgvermajmin}/${_pkgver}/${_source_archive_name}.tar.xz")
 sha512sums=('bd90d69359a424e8a37c570fbdbcbf9b13ded1c6ab08018c75484d9e59d1eed8b802449968a7a23926636158ddb4c00d43d0f3c3ef159dba159026a3c2ff05cd')
 
@@ -65,6 +65,12 @@ build() {
 	-DBUILD_QBS=ON \
 	-DWITH_QMLDESIGNER=ON \
 	-DBUILD_WITH_CRASHPAD=OFF \
+  -DCMAKE_C_COMPILER=clang \
+  -DCMAKE_CXX_COMPILER=clang++ \
+  -DCMAKE_LINKER=lld \
+  -DCMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+  -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+  -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
 	${working_dir}
 
 	ninja all
