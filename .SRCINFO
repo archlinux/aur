@@ -1,0 +1,12 @@
+pkgbase = minecart-gui
+	pkgdesc = Minecart Asset Management Client for Shard Engine
+	pkgver = 2026.1.0.0
+	pkgrel = 1
+	url = https://skyforge.crystalbluegames.com/CrystalBlueDevelopers/minecart
+	arch = x86_64
+	license = GPL-2
+	depends = qt6-base
+	source_x86_64 = https://skyforge.crystalbluegames.com/CrystalBlueDevelopers/minecart/releases/download/2026.1.0.0/minecart-2026.1.0.0-Linux.tar.gz
+	sha256sums_x86_64 = dcf6cb534faf2229209ba4800004e0c8ed6889d863082d13d0817bb4fffe35b0
+
+pkgname = minecart-gui
