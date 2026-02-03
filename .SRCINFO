@@ -1,0 +1,13 @@
+pkgbase = sqinn-bin
+	pkgdesc = SQLite over stdin/stdout
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/cvilsmeier/sqinn
+	arch = x86_64
+	license = MIT
+	provides = sqinn
+	conflicts = sqinn
+	source_x86_64 = sqinn-2.0.2-x86_64.zip::https://github.com/cvilsmeier/sqinn/releases/download/v2.0.2/dist-linux-amd64.zip
+	sha256sums_x86_64 = 10ed034a848f8aa8e0a8838db45ee18630913e1210edba3393745ee895f0bf0d
+
+pkgname = sqinn-bin
