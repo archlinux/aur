@@ -42,9 +42,7 @@ fi
 # Since 6.18 only 1 real time config is shipped with this package.
 # Be careful. Selecting any option in microarchitecture script could break rt
 # Source files: https://gitlab.com/xanmod/linux/-/tree/6.18-rt/CONFIGS/x86_64?ref_type=heads
-if [ -z ${_config+x} ]; then
-  _config=config-rt
-fi
+_config=config-rt
 
 # Compress modules with ZSTD (to save disk space)
 if [ -z ${_compress_modules+x} ]; then
@@ -78,11 +76,11 @@ _rt=
 xanmod=1
 _revision=
 _sf_branch=rt
-pkgrel=${xanmod}
+pkgrel=2
 pkgdesc='Linux Xanmod real-time version'
 url="http://www.xanmod.org/"
 arch=(x86_64)
-license=(GPL2)
+license=(GPL-2.0-only)
 makedepends=(
   bc
   cpio
@@ -91,6 +89,9 @@ makedepends=(
   pahole
   perl
   python
+  rust
+  rust-bindgen
+  rust-src
   tar
   xz
 )
@@ -146,7 +147,7 @@ prepare() {
   done
 
   # Applying configuration
-  cp -vf CONFIGS/xanmod-rt/gcc/${_config} .config
+  cp -vf CONFIGS/x86_64/${_config} .config
   # enable LTO_CLANG_THIN
   if [ "${_compiler}" = "clang" ]; then
     scripts/config --disable LTO_CLANG_FULL
@@ -263,6 +264,7 @@ _package() {
   )
   provides=(
     KSMBD-MODULE
+    NTSYNC-MODULE
     VIRTUALBOX-GUEST-MODULES
     WIREGUARD-MODULE
     NTFS3-MODULE
@@ -333,6 +335,14 @@ _package-headers() {
 
   echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
+
+  msg2 "Installing Rust files..."
+  [ -f rust/*.rmeta ] && install -Dt "$builddir/rust" -m644 rust/*.rmeta
+  [ -f rust/*.so ] && install -Dt "$builddir/rust" rust/*.so
+
+  msg2 "Installing unstripped VDSO..."
+  make INSTALL_MOD_PATH="$pkgdir/usr" vdso_install \
+    link=  # Suppress build-id symlinks
 
   msg2 "Removing unneeded architectures..."
   local arch
