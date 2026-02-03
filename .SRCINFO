@@ -1,0 +1,14 @@
+pkgbase = slicepdf-bin
+	pkgdesc = slicePDF | lightweight document manipulation tool (AppImage)
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://slicepdf.vercel.app
+	arch = x86_64
+	license = MIT
+	depends = fuse2
+	provides = slicepdf
+	options = !strip
+	source = slicePDF.AppImage::https://github.com/soamn/slicePDF/releases/latest/download/slicePDF.AppImage
+	sha256sums = SKIP
+
+pkgname = slicepdf-bin
