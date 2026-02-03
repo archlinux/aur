@@ -1,8 +1,0 @@
---- ./CMakeLists.txt	2025-05-24 04:21:23.000000000 +0200
-+++ ./CMakeLists.txt	2025-06-14 17:19:40.821362310 +0200
-@@ -1,4 +1,4 @@
--cmake_minimum_required(VERSION 3.13)
-+cmake_minimum_required(VERSION 4.0)
- 
- project(ClangSharp VERSION 20.1.2)
- 

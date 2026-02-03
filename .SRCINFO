@@ -1,6 +1,6 @@
 pkgbase = clangsharp-pinvoke-generator
 	pkgdesc = A tool that takes a C/C++ header files as input and generates C# interop code
-	pkgver = 20.1.2.4
+	pkgver = 21.1.8.2
 	pkgrel = 1
 	url = https://github.com/dotnet/ClangSharp
 	arch = x86_64
@@ -12,13 +12,9 @@ pkgbase = clangsharp-pinvoke-generator
 	depends = llvm-libs
 	depends = clang
 	options = !strip
-	source = clangsharp-pinvoke-generator-20.1.2.4.tar.gz::https://github.com/dotnet/ClangSharp/archive/refs/tags/v20.1.2.4.tar.gz
-	source = 001-cmake-version-fix.patch
+	source = clangsharp-pinvoke-generator-20.1.8.2.tar.gz::https://github.com/dotnet/ClangSharp/archive/refs/tags/v20.1.8.2.tar.gz
 	source = 002-arch-clang-cpp-libs.patch
-	source = 003-clang-21-compatibility.patch
-	sha256sums = 93eda9ec3c01daeb712f3940fb249b608e70536cd94e5044210d917c5c227092
-	sha256sums = cb402c2415a4a0fbe8dc89d33f2febbfd6a0f0be67e4e40608dda37d8f64af20
+	sha256sums = ba5660953df2d6c74e18d7d9443de0befaddc567ed848d3156d74ee4f4514c74
 	sha256sums = 816216493ca272ec115f0972088d07f0cd5f3ee930df9313a3e54dbdee934381
-	sha256sums = a7162b0788f44c679b866935ea75d45c387e4c7366949302d7b6109e90663b9b
 
 pkgname = clangsharp-pinvoke-generator
