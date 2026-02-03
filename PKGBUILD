@@ -14,7 +14,7 @@ source=("goatdkernel-${pkgver}-${pkgrel}-x86_64.tar.gz::https://github.com/MadGo
 pkgdesc="Advanced Rust-based framework for automated kernel sovereignty and microarchitecture tuning using Clang, LLVM LTO, and Polly Vectorization and more!"
 arch=("x86_64")
 url="https://github.com/MadGoatHaz/GOATd-Kernel"
-license=("MIT")
+license=("GPL3")
 depends=("glibc" "gcc-libs" "openssl" "zlib")
 makedepends=("git")
 
