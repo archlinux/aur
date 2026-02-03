@@ -1,13 +1,13 @@
 pkgbase = qtcreator-prerelease
 	pkgdesc = Qt Creator prerelease/latest
-	pkgver = 18.0.0
+	pkgver = 19.0.0beta1
 	pkgrel = 1
 	url = http://qt.io/ide
 	install = qtcreator-prerelease.install
 	arch = x86_64
 	license = GPL
-	makedepends = gcc
-	makedepends = mold
+	makedepends = clang
+	makedepends = lld
 	makedepends = qt6-base
 	makedepends = patchelf
 	makedepends = ninja
@@ -28,7 +28,7 @@ pkgbase = qtcreator-prerelease
 	optdepends = valgrind: analyze support
 	provides = qtcreator
 	conflicts = qtcreator
-	source = https://download.qt.io/official_releases/qtcreator/18.0/18.0.0/qt-creator-opensource-src-18.0.0.tar.xz
-	sha512sums = 180bb491947b2b57d5420fdda3bc184b22e1158b6f6e292ada294b7c32b4d3696cb99674b92a75682d405eb573d96ecebbf5d80db90de1d7748aaca59ebb4781
+	source = https://download.qt.io/development_releases/qtcreator/19.0/19.0.0-beta1/qt-creator-opensource-src-19.0.0-beta1.tar.xz
+	sha512sums = bd90d69359a424e8a37c570fbdbcbf9b13ded1c6ab08018c75484d9e59d1eed8b802449968a7a23926636158ddb4c00d43d0f3c3ef159dba159026a3c2ff05cd
 
 pkgname = qtcreator-prerelease
