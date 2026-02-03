@@ -1,6 +1,6 @@
 # Maintainer: Andy Kelk <andy@andykelk.net>
 pkgname=whosthere-bin
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Local Area Network discovery tool with a modern Terminal User Interface"
 arch=('x86_64' 'aarch64' 'i686')
@@ -13,9 +13,9 @@ source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/ramonverm
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/ramonvermeulen/whosthere/releases/download/v${pkgver}/whosthere_${pkgver}_linux_arm64.tar.gz")
 source_i686=("${pkgname}-${pkgver}-i686.tar.gz::https://github.com/ramonvermeulen/whosthere/releases/download/v${pkgver}/whosthere_${pkgver}_linux_386.tar.gz")
 
-sha256sums_x86_64=('e5596e149a7ed970717213fb974099201d7dc0796ffd52350350176f043605ac')
-sha256sums_aarch64=('4008aa3601653099c377c887af52c79e93a1b7c5fcbb259271bc14fcce856ab9')
-sha256sums_i686=('fe566751333c69edfd00c6b68f2c67012d8e14bfb22b009fb5f2242c13ddf2bc')
+sha256sums_x86_64=('19e87e085a01ea8cea1d392bdb262aa4996266f34060c43ff4c1cd523a2e0caf')
+sha256sums_aarch64=('79c9c7fba00e589bab1af8f69cd76253c53ad2f476fc4b9fd6e6c23c1fdf395e')
+sha256sums_i686=('d8fc789edfd95fc96ba48320615e51a74001e6d28fd8572f6bf1b7d0be43851f')
 
 package() {
   # Install binary
