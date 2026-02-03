@@ -2,6 +2,7 @@
 
 pkgname=speedynote
 pkgver=1.2.1.6
+_tagver=1.2.1-6
 pkgrel=1
 pkgdesc="Fast note-taking app with PDF annotation, export, and multi-platform sync"
 arch=('x86_64' 'aarch64')
@@ -36,11 +37,11 @@ provides=('speedynote')
 conflicts=('speedynote-bin' 'speedynote-git' 'speedynote-src')
 
 # Source from GitHub release
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver//./-}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${_tagver}.tar.gz")
 sha256sums=('48139df1836f0285c4ee9648054dac818f9a74984199fd92fbc8d10c5591ef7c')
 
 build() {
-    cd "SpeedyNote-${pkgver}"
+    cd "SpeedyNote-${_tagver}"
     
     # Create build directory
     cmake -B build -S . \
@@ -54,7 +55,7 @@ build() {
 }
 
 package() {
-    cd "SpeedyNote-${pkgver}"
+    cd "SpeedyNote-${_tagver}"
     
     # Install binary
     install -Dm755 "build/NoteApp" "$pkgdir/usr/bin/speedynote"
