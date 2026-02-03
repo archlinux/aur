@@ -48,6 +48,9 @@ prepare() {
 
     # The Editor repo uses ShareX.Editor naming but XerahS expects XerahS.Editor
     ln -sfn "$srcdir/xerahs-editor/src/ShareX.Editor" "$srcdir/xerahs-editor/src/XerahS.Editor"
+
+    # The .csproj file is also named ShareX.Editor.csproj but XerahS expects XerahS.Editor.csproj
+    ln -sfn "$srcdir/xerahs-editor/src/ShareX.Editor/ShareX.Editor.csproj" "$srcdir/xerahs-editor/src/ShareX.Editor/XerahS.Editor.csproj"
 }
 
 build() {
