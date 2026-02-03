@@ -1,0 +1,3 @@
+post_install() {
+	[ ! -s etc/dnstt.key ] && dnstt-server -gen-key -privkey-file etc/dnstt.key -pubkey-file etc/dnstt.pub
+}

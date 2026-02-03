@@ -3,12 +3,14 @@ pkgbase = dnstt-git
 	pkgver = 1.20241021.0.2.ge5e873b
 	pkgrel = 1
 	url = http://www.bamsoftware.com/software/dnstt
+	install = dnstt-git.install
 	arch = x86_64
 	license = CC0-1.0
 	makedepends = go
 	makedepends = git
 	provides = dnstt
 	conflicts = dnstt
+	backup = etc/conf.d/dnstt-server
 	source = git+https://www.bamsoftware.com/git/dnstt.git
 	sha256sums = SKIP
 

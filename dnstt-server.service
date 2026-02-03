@@ -1,0 +1,13 @@
+[Unit]
+Description=IP over DNS tunnel using UDP, DoT or DoH (like iodine)
+After=local-fs.target network.target
+
+[Service]
+EnvironmentFile=/etc/conf.d/dnstt-server
+LoadCredential=dnstt.key:/etc/dnstt.key
+ExecStart=/usr/bin/dnstt-server -udp $DNSTT_UDP -privkey-file ${CREDENTIALS_DIRECTORY}/dnstt.key $DNSTT_DOMAIN $DNSTT_UPSTREAM
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+DynamicUser=yes
+
+[Install]
+WantedBy=multi-user.target

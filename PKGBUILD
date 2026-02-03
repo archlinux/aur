@@ -10,6 +10,8 @@ source=("git+https://www.bamsoftware.com/git/dnstt.git")
 sha256sums=('SKIP')
 provides=('dnstt')
 conflicts=('dnstt')
+install=dnstt-git.install
+backup=('etc/conf.d/dnstt-server')
 pkgver() {
 	cd dnstt
 	git describe --long --tags --dirty | sed 's/^v//;s/-/./g'
@@ -30,4 +32,6 @@ package() {
 	cd dnstt
 	install -Dm755 dnstt-server/dnstt-server "$pkgdir"/usr/bin/dnstt-server
 	install -Dm755 dnstt-client/dnstt-client "$pkgdir"/usr/bin/dnstt-client
+	install -Dm644  "$startdir"/dnstt-server.service "$pkgdir"/usr/lib/systemd/system/dnstt-server.service
+	install -Dm644  "$startdir"/dnstt-server "$pkgdir"/etc/conf.d/dnstt-server
 }

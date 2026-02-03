@@ -1,0 +1,6 @@
+DNSTT_UDP=:53
+DNSTT_DOMAIN=i.4a.si
+DNSTT_UPSTREAM=[::1]:22
+# key should be in /etc/dnstt.key for privkey and /etc/dnstt.pub for pubkey
+# it should be generated automatically upon package installation
+# dnstt-server -gen-key -privkey-file /etc/dnstt.key -pubkey-file /etc/dnstt.pub
