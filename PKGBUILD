@@ -4,38 +4,41 @@
 
 _basename=libdvdnav
 pkgname=lib32-libdvdnav
-pkgver=6.1.1
+pkgver=7.0.0
 pkgrel=1
-pkgdesc="The library for xine-dvdnav plugin (32 bit)"
+pkgdesc="'Library to navigate DVD video disks' (32 bit)"
 arch=(x86_64)
-license=(GPL)
-url="https://www.videolan.org/developers/libdvdnav.html"
-depends=(lib32-libdvdread libdvdnav)
-source=("https://download.videolan.org/pub/videolan/libdvdnav/${pkgver}/libdvdnav-${pkgver}.tar.bz2"{,.asc})
-sha256sums=('c191a7475947d323ff7680cf92c0fb1be8237701885f37656c64d04e98d18d48'
-            'SKIP')
-validpgpkeys=('65F7C6B4206BD057A7EB73787180713BE58D1ADC') # VideoLAN Release Signing Key
+url='https://www.videolan.org/developers/libdvdnav.html'
+license=(GPL-2.0-or-later)
+depends=(
+    lib32-libdvdread
+    libdvdnav
+)
+makedepends=(
+    git
+    meson
+)
+source=("git+https://code.videolan.org/videolan/libdvdnav.git#tag=$pkgver")
+b2sums=(64a37fb6c68aed46b2cbf2bd98e499bf9ed8694d9f358d07a2e630bba385bb48b909eea04097da86d0bc4f8958c987895fd98a7ba4d82119d8a8a4a9e6743583)
+validpgpkeys=(65F7C6B4206BD057A7EB73787180713BE58D1ADC) # VideoLAN Release Signing Key
+
+prepare() {
+  cd $_basename
+}
 
 build() {
-    cd "${_basename}-${pkgver}"
-
     export CC='gcc -m32'
     export CXX='g++ -m32'
-    export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+    export PKG_CONFIG='/usr/bin/i686-pc-linux-gnu-pkg-config'
 
-    ./configure \
-        --build=i686-pc-linux-gnu \
-        --prefix=/usr \
-        --libdir=/usr/lib32
+    arch-meson $_basename build \
+            --libdir='/usr/lib32'
 
-    make
+    meson compile -C build
 }
 
 package() {
-    cd "${_basename}-${pkgver}"
+    meson install -C build --destdir "$pkgdir"
 
-    make DESTDIR="${pkgdir}" install
-
-    rm -rf "${pkgdir}/usr"/{include,share}
+    rm -rf "$pkgdir/usr"/{include,share}
 }
-
