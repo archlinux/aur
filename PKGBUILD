@@ -20,8 +20,6 @@ package() {
     install -Dm644 -t "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/ \
         pivccu/kernel/* dkms.conf
 
-    # This is in the eq3_char_loop-dkms package
-    sed -i '/eq3_char_loop/d' "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/Makefile
 
     # Set name and version in dkms.conf
     sed -e "s/@_PKGBASE@/${_pkgbase}/" \
