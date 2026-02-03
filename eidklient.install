@@ -13,12 +13,20 @@ checkpcscd() {
 
 ## arg 1:  the new package version
 post_install() {
+    /opt/eidklient/patch-qt
+
     checkpcscd
+}
+
+pre_remove() {
+    rm -f /opt/eidklient/lib/patched/*
 }
 
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 post_upgrade() {
+    /opt/eidklient/patch-qt
+
     checkpcscd
 }
 

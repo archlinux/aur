@@ -3,8 +3,8 @@
 
 _pkgname=eidklient
 pkgname="${_pkgname}-native"
-pkgver=5.1
-pkgrel=4
+pkgver=5.3
+pkgrel=1
 pkgdesc="Slovak eID Client - uses system-provided libraries, supports Wayland, …"
 arch=('i686' 'x86_64')
 url="https://www.slovensko.sk/"
@@ -16,23 +16,29 @@ _appimage="eID_klient-${_upstream_arch}.AppImage"
 _url="https://web.archive.org/web/%dif_/https://eidas.minv.sk/downloadservice/eidklient/linux/eID_klient_%s.tar.gz"
 source=(
     eidklient
+    patch-qt
+    qt.hook
+    qt6.conf
 )
 # shellcheck disable=SC2059
 source_i686=(
-    "eID_klient_${pkgver}_i386.tar.gz::$(printf "${_url}" 20250802074912 i386)"
+    "eID_klient_${pkgver}_i386.tar.gz::$(printf "${_url}" 20260203082204 i386)"
 )
 # shellcheck disable=SC2059
 source_x86_64=(
-    "eID_klient_${pkgver}_x86_64.tar.gz::$(printf "${_url}" 20250803084623 x86_64)"
+    "eID_klient_${pkgver}_x86_64.tar.gz::$(printf "${_url}" 20260203082146 x86_64)"
 )
 sha256sums=(
     SKIP
+    SKIP
+    SKIP
+    SKIP
 )
 sha256sums_i686=(
-    6eb840b8bbb47c0c090e34a05bab522a61f2eb80096987ed3e15c9e49078f128
+    c9f252e75e08400c00b41f519e7c2e48a0a9beb58748d1b64e52a0a621948a6c
 )
 sha256sums_x86_64=(
-    4c1729aeae2ba9b0118319dcc0243548c3e1eaeab1dbcbbb2b7cd16234de35a6
+    5b2c322abe65839e33da7903559a24c47a958a2a474698fb08e6d6b4e097f06f
 )
 options=(
     !debug
@@ -77,14 +83,13 @@ prepare() {
 
 package() {
     depends=(
+        binutils
         ccid
         gcc-libs
         glibc
-        openjpeg
-        openssl-1.1
+        openssl
         pcsclite
-        qt5-base
-        qt5-svg
+        qt6-base
     )
     optdepends=(
         "disig-web-signer: online certificates update support"
@@ -99,10 +104,16 @@ package() {
     mkdir "${pkgdir}/opt"
     cp -r "${srcdir}/squashfs-root" "${pkgdir}/opt/${_pkgname}"
 
-    # Deduplicate OpenSSL libraries
-    for lib in lib{crypto,ssl}.so; do
-        ln -fs "${lib}.1.1" "${pkgdir}/opt/${_pkgname}/lib/${lib}"
-    done
+    # With QT_PLUGIN_PATH and QT_QPA_PLATFORM_PLUGIN_PATH, some bundled plugins
+    # were still used.
+    cp qt6.conf "${pkgdir}/opt/${_pkgname}"
+
+    # Patched Qt 6 libraries are required, otherwise the app crashes on launch with
+    # `error due to GNU_PROPERTY_1_NEEDED_INDIRECT_EXTERN_ACCESS`.
+    # https://gitlab.archlinux.org/archlinux/packaging/packages/qt6-base/-/issues/21
+    mkdir "${pkgdir}/opt/${_pkgname}/lib/patched"
+    install -Dm755 "${srcdir}/patch-qt" "${pkgdir}/opt/${_pkgname}"
+    install -Dm644 "${srcdir}/qt.hook" "${pkgdir}/usr/share/libalpm/hooks/${pkgname}-qt.hook"
 
     # Custom wrapper
     install -Dm755 "${srcdir}/eidklient" "${pkgdir}/usr/bin/eID_Client"
@@ -118,12 +129,8 @@ package() {
         ln -s "/opt/${_pkgname}/lib/${lib##*/}" "${pkgdir}/usr/lib/eID_klient/"
     done
 
-    for lib in lib{crypto,ssl}.so; do
-        src="${lib}.1.1"
-
-        for dst in "${lib}" "${src}"; do
-            ln -s "/usr/lib/${src}" "${pkgdir}/usr/lib/eID_klient/${dst}"
-        done
+    for lib in "${srcdir}"/squashfs-root/lib/lib{crypto,ssl}*; do
+        ln -s "/usr/lib/${lib##*/}" "${pkgdir}/usr/lib/eID_klient/"
     done
 
     # Icons + desktop file
