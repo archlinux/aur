@@ -3,9 +3,9 @@
 pkgname=pinnacle-comp
 _pkgname=pinnacle
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A Wayland compositor inspired by AwesomeWM"
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url="https://github.com/pinnacle-comp/$_pkgname"
 license=("GPL-3.0-or-later")
 depends=(
@@ -58,7 +58,7 @@ build() {
 
 	cargo build --frozen --release
 
-    mkdir completions
+    mkdir -p completions
     ./target/release/$_pkgname gen-completions --shell bash > completions/$_pkgname
     ./target/release/$_pkgname gen-completions --shell fish > completions/$_pkgname.fish
     ./target/release/$_pkgname gen-completions --shell zsh > completions/_$_pkgname
