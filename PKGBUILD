@@ -2,8 +2,8 @@
 
 pkgname=python-stupidartnet
 pkgver=1.6.0
-pkgrel=1
-pkgdesc="Library for controlling LIFX smart devices over the local network."
+pkgrel=2
+pkgdesc="Simple Art-Net implementation in Python"
 arch=(any)
 url="https://github.com/cpvalente/stupidArtnet"
 license=(MIT)
