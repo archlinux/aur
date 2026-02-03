@@ -1,11 +1,12 @@
 pkgbase = gw-tools
 	pkgdesc = Git worktree manager - Streamline your multi-branch development workflow
 	pkgver = 0.13.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mthines/gw-tools
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	options = !strip
 	provides = gw
 	conflicts = gw
 	source_x86_64 = gw-tools-0.13.14-x64::https://github.com/mthines/gw-tools/releases/download/v0.13.14/gw-linux-x64

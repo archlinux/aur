@@ -1,11 +1,12 @@
 # Maintainer: Mads Thines Coello <madsthines@gmail.com>
 pkgname=gw-tools
 pkgver=0.13.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Git worktree manager - Streamline your multi-branch development workflow"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mthines/gw-tools"
 license=('MIT')
+options=('!strip')
 provides=('gw')
 conflicts=('gw')
 
