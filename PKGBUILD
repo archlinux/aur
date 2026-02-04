@@ -17,10 +17,10 @@ source_x86_64=("https://github.com/AmanoTeam/Sil/releases/download/gcc-${pkgver%
 source_aarch64=("https://github.com/AmanoTeam/Sil/releases/download/gcc-${pkgver%%.*}/aarch64-unknown-linux-gnu.tar.xz")
 source_armv7h=("https://github.com/AmanoTeam/Sil/releases/download/gcc-${pkgver%%.*}/arm-unknown-linux-gnueabihf.tar.xz")
 
-sha256sums_i686=('ea423165035e48cacbc190a7a8480c45e65a8029f6bf6e0e234affe3710996d7')
-sha256sums_x86_64=('f1fd65d5351ab57dcba24702413d045bf2db70295ab02c7814b6c04a7a81e090')
-sha256sums_aarch64=('70b228dcbceb198c8752f7e16dfd14e661041a382cc19bec36a046bcb8be8dcc')
-sha256sums_armv7h=('9ef4581ba04706be3186ca74896aa07972a98ac9aeb0e5edb3c66cc92c671935')
+sha256sums_i686=('8c914dfc32cc0841236ed5c9d404477f2ec8e4a74a0d99df896681f459eccd4d')
+sha256sums_x86_64=('7cf509c88269afe1341d8e478a0831301c4c9481cdeb3a9206342157578781cd')
+sha256sums_aarch64=('6fe5648a039708f88fa45b0a06b93e08bc63722da8727c349ff3f9aeef010088')
+sha256sums_armv7h=('d8b18070585307843c7d7cb538254114951e89737fb50a522a346183f82e26ca')
 
 __alt_pkgname='sil'
 
