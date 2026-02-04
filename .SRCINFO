@@ -1,7 +1,7 @@
 pkgbase = opentaikohub-bin
 	pkgdesc = Description of your app
 	pkgver = 0.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OpenTaiko/OpenTaiko-Hub
 	install = opentaikohub-bin.install
 	arch = x86_64
