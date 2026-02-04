@@ -1,7 +1,7 @@
 pkgbase = wperf
 	pkgdesc = A simple HTTP load testing utility with detailed performance metrics.
 	pkgver = 1.0.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jhuckaby/wperf
 	arch = x86_64
 	license = MIT

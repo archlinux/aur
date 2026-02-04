@@ -1,9 +1,9 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _npmname=wperf
 pkgname=$_npmname
 pkgver=1.0.11
-pkgrel=1
+pkgrel=2
 
 pkgdesc="A simple HTTP load testing utility with detailed performance metrics."
 arch=("x86_64")
@@ -24,17 +24,17 @@ b2sums=('8046df2f9fdb0c95cf6a78e8b2cb7722f7880312cefa451a49aa6edd882a8f0966fd073
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
-	# Install using Using npm
+	msg2 "Install using Using npm"
 	npm install -s -g \
 		--cache "${srcdir}/npm-cache" \
 		--prefix "${pkgdir}/usr" \
 		"${srcdir}/${_npmname}-${pkgver}.tgz"
 
-	# Fix ownership of ALL FILES
+	msg2 "Fix ownership of ALL FILES"
 	find "${pkgdir}/usr" -type d -exec chmod 755 {} +
 	chown -R root:root "${pkgdir}"
 
-	# Remove references to $pkgdir
+	msg2 "Remove references to ${pkgdir}"
 	find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
 
 	local tmppackage="$(mktemp)"
@@ -50,6 +50,11 @@ package() {
 		chmod 644 "$pkgjson"
 	done
 
-	# Install LICENSE file
-	install -Dm 644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	msg2 "Install README file"
+	install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/"
+	ln -sf "/usr/lib/node_modules/${_npmname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+	msg2 "Install LICENSE file"
+	install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
+	ln -sf "/usr/lib/node_modules/${_npmname}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
