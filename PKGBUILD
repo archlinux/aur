@@ -1,19 +1,19 @@
 # Maintainer: Lukas Grossar <lukas.grossar@gmail.com>
 
-pkgname=polaris-bin
-pkgver=10.1.4
+pkgname=guacone-bin
+pkgver=1.0.1
 pkgrel=1
-pkgdesc="Validation of best practices in Kubernetes"
+pkgdesc="CLI to interact with GUAC"
 arch=('x86_64')
-url="https://github.com/FairwindsOps/polaris"
+url="https://github.com/guacsec/guac"
 license=('Apache-2.0')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/FairwindsOps/polaris/releases/download/${pkgver}/polaris_linux_amd64.tar.gz")
-sha256sums=('e33ed63398c68db609c7a4d27b35fcda566781af6e379870f877ed25590de101')
+source=("${pkgname}-${pkgver}::https://github.com/guacsec/guac/releases/download/v${pkgver}/guacone-linux-amd64")
+sha256sums=('dc009d77280e1f56c7ed6a98632b961d3eb651688b81de89e78945d8bb50ac64')
 
 package() {
-	install -Dm 755 "$srcdir/polaris" -t "$pkgdir/usr/bin"
+	install -Dm 755 "$srcdir/${pkgname}-${pkgver}" "$pkgdir/usr/bin/guacone"
 
-	"$pkgdir/usr/bin/polaris" completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/polaris"
-	"$pkgdir/usr/bin/polaris" completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_polaris"
-	"$pkgdir/usr/bin/polaris" completion fish | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/polaris.fish"
+	"$pkgdir/usr/bin/guacone" completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/guacone"
+	"$pkgdir/usr/bin/guacone" completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_guacone"
+	"$pkgdir/usr/bin/guacone" completion fish | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/guacone.fish"
 }

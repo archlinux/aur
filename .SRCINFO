@@ -1,11 +1,11 @@
-pkgbase = polaris-bin
-	pkgdesc = Validation of best practices in Kubernetes
-	pkgver = 10.1.4
+pkgbase = guacone-bin
+	pkgdesc = CLI to interact with GUAC
+	pkgver = 1.0.1
 	pkgrel = 1
-	url = https://github.com/FairwindsOps/polaris
+	url = https://github.com/guacsec/guac
 	arch = x86_64
 	license = Apache-2.0
-	source = polaris-bin-10.1.4.tar.gz::https://github.com/FairwindsOps/polaris/releases/download/10.1.4/polaris_linux_amd64.tar.gz
-	sha256sums = e33ed63398c68db609c7a4d27b35fcda566781af6e379870f877ed25590de101
+	source = guacone-bin-1.0.1::https://github.com/guacsec/guac/releases/download/v1.0.1/guacone-linux-amd64
+	sha256sums = dc009d77280e1f56c7ed6a98632b961d3eb651688b81de89e78945d8bb50ac64
 
-pkgname = polaris-bin
+pkgname = guacone-bin
