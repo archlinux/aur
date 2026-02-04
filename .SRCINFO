@@ -1,0 +1,16 @@
+pkgbase = llama-cpp-pascal-noavx-bin
+	pkgdesc = Llama.cpp (no AVX, SSE4.2 only) for i3-540 and NVIDIA Pascal (GT 1030) support
+	pkgver = 7825
+	pkgrel = 2
+	url = https://github.com/trappedwastaken/old_cpus_linux_binaries
+	arch = x86_64
+	license = MIT
+	provides = llama-cpp
+	conflicts = llama-cpp
+	conflicts = llama-cpp-git
+	conflicts = llama-cpp-bin
+	options = !debug
+	source = https://github.com/trappedwastaken/old_cpus_linux_binaries/releases/download/v7825/llama-noavx.tar.gz
+	sha256sums = 4923a758a4b6420f395334919a54612d87f73cf3a50c49735454477ed7a36314
+
+pkgname = llama-cpp-pascal-noavx-bin
