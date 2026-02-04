@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-tiling-assistant
 	pkgdesc = A GNOME Shell extension which adds a Windows-like snap assist to the GNOME desktop
-	pkgver = 53
+	pkgver = 54
 	pkgrel = 1
 	url = https://github.com/Leleat/Tiling-Assistant
 	install = tiling-assistant.install
@@ -8,7 +8,7 @@ pkgbase = gnome-shell-extension-tiling-assistant
 	license = GPL-2.0-or-later
 	makedepends = git
 	depends = gnome-shell
-	source = git+https://github.com/Leleat/Tiling-Assistant.git#tag=v53
-	sha256sums = 5596e7d00257593d1511468fa2dc3671cd69a04dc82dfbc9dd5b5152de76e843
+	source = git+https://github.com/Leleat/Tiling-Assistant.git#tag=v54
+	sha256sums = 2bc37dfce343b6d96d1dd499151360794c3fd7266956f3bc0b27f1542dd8857e
 
 pkgname = gnome-shell-extension-tiling-assistant
