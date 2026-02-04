@@ -14,9 +14,9 @@ pkgname=(
   networkmanager-docs-clat
 )
 pkgver=1.57.1
-pkgrel=4
-commit=e311df0c7502497cbaed7485068d1c0e3f1e5f0f
-pkgdesc="Network connection manager and user applications, with CLAT support (PR !2107)"
+pkgrel=5
+commit=60873656b98db66b7d1c52419763deb99a4b4419
+pkgdesc="Network connection manager and user applications, with CLAT support (MR !2107)"
 url="https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/merge_requests/2107"
 arch=(x86_64)
 license=(LGPL-2.1-or-later)
@@ -70,7 +70,7 @@ checkdepends=(
 source=(
   "git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=${commit}"
 )
-b2sums=('c41b7c0269821f581f6c070e0f28d5b56b2260a02c5ed2be3b780302edfb9481df6b1702ef16e310e999460387ee6344785205274f44c7db61caa0c7e34c9cb3')
+b2sums=('702a582a072b4771143eef91ad2597c9a607476c968b43970e7a0f9cff021b3cbdfa6441eb80d258c292fab6bdec99315e41a8f67b09e57775af5764ac4fa289')
 validpgpkeys=(
   3D10AD045AB4AAFF8E8F36AF9B980AC2FB874FEB # Ana Cabral <acabral@redhat.com>
   F07F7C1EABD382F81CBFBA3B998D4828CD7E1656 # Beniamino Galvani <bgalvani@redhat.com>

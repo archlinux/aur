@@ -1,7 +1,7 @@
 pkgbase = networkmanager-clat
-	pkgdesc = Network connection manager and user applications, with CLAT support (PR !2107)
+	pkgdesc = Network connection manager and user applications, with CLAT support (MR !2107)
 	pkgver = 1.57.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/merge_requests/2107
 	arch = x86_64
 	license = LGPL-2.1-or-later
@@ -48,7 +48,7 @@ pkgbase = networkmanager-clat
 	makedepends = vala
 	makedepends = vala
 	makedepends = wpa_supplicant
-	source = git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=e311df0c7502497cbaed7485068d1c0e3f1e5f0f
+	source = git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=60873656b98db66b7d1c52419763deb99a4b4419
 	validpgpkeys = 3D10AD045AB4AAFF8E8F36AF9B980AC2FB874FEB
 	validpgpkeys = F07F7C1EABD382F81CBFBA3B998D4828CD7E1656
 	validpgpkeys = 2B5F3B2028801E15F57AAA309906C97AA15D984F
@@ -60,7 +60,7 @@ pkgbase = networkmanager-clat
 	validpgpkeys = 07F9AEC86144386D9576210B66A44781B4EBC2D0
 	validpgpkeys = 8D1F4C471D38D59A56301CEBE1974C8D8DD6ED2A
 	validpgpkeys = 1CFF865BDF957BE935765BBD2E1878D078DEF7C6
-	b2sums = c41b7c0269821f581f6c070e0f28d5b56b2260a02c5ed2be3b780302edfb9481df6b1702ef16e310e999460387ee6344785205274f44c7db61caa0c7e34c9cb3
+	b2sums = 702a582a072b4771143eef91ad2597c9a607476c968b43970e7a0f9cff021b3cbdfa6441eb80d258c292fab6bdec99315e41a8f67b09e57775af5764ac4fa289
 
 pkgname = networkmanager-clat
 	license = LGPL-2.1-or-later
@@ -128,7 +128,7 @@ pkgname = nm-cloud-setup-clat
 	conflicts = nm-cloud-setup
 
 pkgname = networkmanager-docs-clat
-	pkgdesc = Network connection manager and user applications, with CLAT support (PR !2107) (API documentation)
+	pkgdesc = Network connection manager and user applications, with CLAT support (MR !2107) (API documentation)
 	depends = 
 	provides = networkmanager-docs
 	conflicts = networkmanager-docs
