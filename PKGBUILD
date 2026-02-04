@@ -28,6 +28,7 @@ prepare() {
 	cp Makefile.gcc Makefile
 	sed -i 's/-lcuda//g' Makefile
 	sed -i 's/-lcudart//g' Makefile
+	sed -i 's/ rt / -lrt /g' Makefile
 	sed -i "s%^LIBS += -lecm /users/buhrow/src%#LIBS += -lecm /users/buhrow/src%" Makefile
 	sed -i "s/^\#LIBS += -lecm -lgmp -lytools -lysieve/LIBS += -lecm -lgmp -lytools -lysieve/" Makefile
 }
