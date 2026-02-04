@@ -1,8 +1,8 @@
 # Maintainer: Your Name <your.email@example.com>
 
 pkgname=vbox-windows-app-launcher-git
-pkgver=0.1.7
-pkgrel=2
+pkgver=0.1.8
+pkgrel=1
 pkgdesc="A tool for launching Windows applications in a VirtualBox environment with desktop integration."
 arch=('any')
 url="https://github.com/Gunther-Schulz/vbox-windows-app-launcher"
@@ -25,11 +25,10 @@ package() {
     # Install the main script
     install -Dm755 vbox_windows_app_launcher.sh "$pkgdir/usr/bin/${pkgname%-git}"
 
-    # Install the sample config file to ~/.config/
-    install -Dm644 vbox_windows_app_launcher.conf.sample "$pkgdir/etc/skel/.config/${pkgname%-git}/${pkgname%-git}.conf.sample"
+    # Sample config in skel; script reads $XDG_CONFIG_HOME/vbox_windows_app_launcher.conf (default ~/.config/) at runtime
+    install -Dm600 vbox_windows_app_launcher.conf.sample "$pkgdir/etc/skel/.config/${pkgname%-git}/${pkgname%-git}.conf.sample"
 
-    # Install and update the desktop file
-    sed -i "s|Exec=.*|Exec=/usr/bin/${pkgname%-git} %f|" open-windows-app-in-vm.desktop
+    # Install the desktop file (Exec uses bare command name; script is in /usr/bin on PATH)
     install -Dm644 open-windows-app-in-vm.desktop "$pkgdir/usr/share/applications/open-windows-app-in-vm.desktop"
 
     # Install README
