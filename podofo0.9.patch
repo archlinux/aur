@@ -1,0 +1,51 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index afc09fa..5ea5132 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.1)
++cmake_minimum_required(VERSION 3.11)
+ 
+ project(Csuper C CXX)
+ 
+@@ -36,10 +36,7 @@ find_package(
+ 	REQUIRED
+ )
+ 
+-find_package(
+-	podofo
+-	REQUIRED
+-)
++set(ENV{PKG_CONFIG_PATH} "/usr/lib/podofo-0.9/pkgconfig")
+ 
+ find_package(
+ 	PkgConfig
+@@ -53,6 +50,11 @@ IF(UNIX)
+ 	)
+ ENDIF()
+ 
++pkg_check_modules(
++	PODOFO
++	REQUIRED libpodofo=0.9.8
++)
++
+ pkg_check_modules(
+ 	GLIBMM
+ 	REQUIRED glibmm-2.4
+@@ -97,7 +99,7 @@ include_directories(
+ 	${CAIRO_INCLUDE_DIRS}
+ 	"Externals_libraries/AsynchronousExecution/include"
+ 	"Externals_libraries/Slope/src"
+-	${PODOFO_INCLUDES}
++	${PODOFO_INCLUDE_DIRS}
+ 	${MUPARSER_INCLUDE_DIRS}
+ 	Sources
+ )
+@@ -107,6 +109,7 @@ link_directories(
+ 	${GLIBMM_LIBRARY_DIRS}
+ 	${GIOMM_LIBRARY_DIRS}
+ 	${CAIRO_LIBRARY_DIRS}
++	${PODOFO_LIBRARY_DIRS}
+ 	${PROJECT_BINARY_DIR}
+ )
+ 
