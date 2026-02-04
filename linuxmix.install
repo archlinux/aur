@@ -13,7 +13,7 @@ post_install() {
 	    systemctl -M "$U@.host" --user enable --now linuxmix
         
         # Create blacklist file
-        sudo mkdir "/home/$U/.config/linuxmix"
+        mkdir "/home/$U/.config/linuxmix"
         echo "# Enter the node name for each device you wish to blacklist" >> "/home/$U/.config/linuxmix/blacklist.conf"
         echo "# This can be retrieved by entering 'pw-cli ls Node', and searching for the corresponding 'node.name'" >> "/home/$U/.config/linuxmix/blacklist.conf"
         echo "# NOTE: Not all Nodes may correspond to an audio sink, but you should be able to tell." >> "/home/$U/.config/linuxmix/blacklist.conf"
