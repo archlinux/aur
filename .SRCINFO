@@ -1,0 +1,24 @@
+pkgbase = python-kicad-jlc-manager
+	pkgdesc = Project-local JLC component library manager for KiCad
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/peterb154/kicad-jlc-manager
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = uv
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-click
+	depends = python-jlc2kicadlib
+	depends = python-requests
+	provides = python-kicad-jlc-manager
+	conflicts = python-kicad-jlc-manager
+	source = kicad-jlc-manager::git+https://github.com/peterb154/kicad-jlc-manager.git#tag=v0.1.0
+	sha256sums = 2482acf73c8340032dbb86ac200bab62a8f5a5a6cd0bd928886877bdcba29912
+
+pkgname = python-kicad-jlc-manager
