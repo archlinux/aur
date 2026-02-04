@@ -1,0 +1,21 @@
+pkgbase = pam-bin
+	pkgdesc = A minimal CLI tool for managing and executing SQL queries across multiple databases
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/eduardofuncao/pam
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = pam
+	conflicts = pam
+	source = LICENSE-0.2.0::https://raw.githubusercontent.com/eduardofuncao/pam/v0.2.0-beta/LICENSE
+	source = README-0.2.0.md::https://raw.githubusercontent.com/eduardofuncao/pam/v0.2.0-beta/README.md
+	sha256sums = f87660b383928d6c66256ff89cc4c441e041b16fc786760822bd49567e33fcde
+	sha256sums = 35631325772760fb137c401956790752650bf29e0351795cb30fea430c185155
+	source_x86_64 = pam-x86_64-0.2.0::https://github.com/eduardofuncao/pam/releases/download/v0.2.0-beta/pam-linux-amd64
+	sha256sums_x86_64 = baec651d37cc0899081976ad8ece6f378d3372fab7cef4092ea8eefbfe75b462
+	source_aarch64 = pam-aarch64-0.2.0::https://github.com/eduardofuncao/pam/releases/download/v0.2.0-beta/pam-linux-arm64
+	sha256sums_aarch64 = 87ba1994ca6e3d2a4c706c6de0ba7da9efe87b089a2a3fdd6bb280e6f46bf432
+
+pkgname = pam-bin
