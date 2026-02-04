@@ -20,12 +20,13 @@ Environment=IMMICH_BUILD_DATA=/usr/lib/immich/build
 SyslogIdentifier=immich-server
 ExecStart=node dist/main
 
-DeviceAllow=char-drm  # hardware transcoding access
 ProtectHome=true
 ProtectSystem=strict
 ProtectKernelTunables=yes
 ProtectKernelModules=yes
 ProtectControlGroups=yes
+## hardware transcoding access
+DeviceAllow=char-drm
 
 RestrictNamespaces=yes
 
