@@ -1,6 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='0.1.13.0'
+_upstreamver='0.1.13.1'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='aria2tui'
@@ -26,7 +26,7 @@ depends=('python' 'aria2' 'python-pyperclip' 'python-toml' 'python-requests' 'py
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
 source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6596601f4b5ce4ef8a4607bda4481773e3bf73adcf756778eed14d6ecdfd70ad')
+sha256sums=('1307f34ffa21927d5972614fa453ba19bd6cbe1425890266154fbe8333354694')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${pkgver}/"
