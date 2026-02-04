@@ -1,8 +1,8 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=jolt-git
 _pkgname=jolt
-pkgver=1.2.0.beta.1.r1.g1d3a4f8
-pkgrel=2
+pkgver=1.2.0.beta.2.r1.gffb8294
+pkgrel=1
 pkgdesc='TUI-based battery and energy monitor.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/jordond/jolt'
@@ -18,7 +18,7 @@ source=("$_pkgname::git+$url.git#branch=main"
     '120-remove-daemon-install-and-uninstall-subcommands.patch.asc'
     'jolt.install.asc')
 sha256sums=('SKIP'
-            'ad48949dd17dd34cd70344c521d17f4a1477eb88eed99fcb21bd454faf83e977'
+            'c8551a1e5b3eb8fa2c31dd6a2e34b89cff29cdc77217b5cd570e74c76eab5a04'
             '08972ab4d23a67622d2177988338c7a4a4341b4f1557b359f30b7512fb277fff'
             'SKIP'
             'SKIP')
