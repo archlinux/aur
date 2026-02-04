@@ -6,8 +6,8 @@ pkgname=(
     'python-slint'
     'slint-cpp'
     'slint-tools')
-pkgver=1.14.1
-pkgrel=2
+pkgver=1.15.0
+pkgrel=1
 pkgdesc='Declarative GUI toolkit to build native user interfaces'
 license=('GPL-3.0-or-later OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0')
 arch=('x86_64')
@@ -32,8 +32,8 @@ makedepends=(
     'wayland')
 source=("https://github.com/slint-ui/slint/archive/v${pkgver}/slint-${pkgver}.tar.gz"
         '010-slint-remove-jemalloc.patch')
-sha256sums=('009dba754f0bdb42f56381b960dc9169568bcdecc588096b70ccccd2771ffff1'
-            'fcb40b0b3395785debab59d4d4c09ee8ded180e013de563aab3585f2358aaceb')
+sha256sums=('0e171da6c39e45b7243d15a373128a3df53a3868bc1808e58fd9f4085bbf3913'
+            'fb4c238d6186c434b72e1aa6e24453bee57754466f3091e51095ea92dbc24d84')
 
 prepare () {
     cargo fetch --locked --target "$(rustc --print host-tuple)" --manifest-path="${pkgbase}-${pkgver}/Cargo.toml"
@@ -107,6 +107,7 @@ _install_licenses() {
 package_nodejs-slint() {
     pkgdesc="${pkgdesc} for Node.js apps"
     depends=(
+        'fontconfig'
         'gcc-libs'
         'glibc'
         'nodejs'
@@ -140,6 +141,7 @@ package_nodejs-slint() {
 package_python-slint() {
     pkgdesc="${pkgdesc} for Python apps"
     depends=(
+        'fontconfig'
         'gcc-libs'
         'glibc'
         'python'

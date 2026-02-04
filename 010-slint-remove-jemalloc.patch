@@ -1,16 +1,16 @@
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -170,7 +169,6 @@ rayon = { version = "1.10.0", default-features = false }
+@@ -176,7 +176,6 @@ rayon = { version = "1.10.0", default-features = false }
  raw-window-handle-06 = { package = "raw-window-handle", version = "0.6", features = ["alloc"] }
  unicode-segmentation = { version = "1.12.0" }
  glow = { version = "0.16" }
 -tikv-jemallocator = { version = "0.6" }
- wgpu-26 = { package = "wgpu", version = "26", default-features = false }
  wgpu-27 = { package = "wgpu", version = "27", default-features = false }
+ wgpu-28 = { package = "wgpu", version = "28", default-features = false }
  input = { version = "0.9.0", default-features = false }
 --- a/api/cpp/CMakeLists.txt
 +++ b/api/cpp/CMakeLists.txt
-@@ -153,10 +153,6 @@ if(SLINT_FEATURE_COMPILER AND NOT SLINT_COMPILER)
+@@ -161,10 +161,6 @@ if(SLINT_FEATURE_COMPILER AND NOT SLINT_COMPILER)
      if (SLINT_FEATURE_SDF_FONTS)
          list(APPEND slint_compiler_features "sdf-fonts")
      endif()
@@ -25,7 +25,7 @@
 +++ b/api/cpp/lib.rs
 @@ -3,7 +3,7 @@
  
- /*! This crate just expose the function used by the C++ integration */
+ /*! This crate just exposes the function used by the C++ integration */
  
 -#![no_std]
 +
@@ -96,6 +96,17 @@
  #![no_main]
  #![macro_use]
  
+--- a/examples/safe-ui/core/src/lib.rs
++++ b/examples/safe-ui/core/src/lib.rs
+@@ -1,7 +1,7 @@
+ // Copyright © SixtyFPS GmbH <info@slint.dev>
+ // SPDX-License-Identifier: MIT
+ 
+-#![no_std]
++
+ 
+ // Enforce mutual exclusivity of pixel format
+ #[cfg(all(feature = "pixel-bgra8888", feature = "pixel-rgb565"))]
 --- a/examples/uefi-demo/main.rs
 +++ b/examples/uefi-demo/main.rs
 @@ -2,7 +2,7 @@
@@ -142,31 +153,54 @@
  use alloc::boxed::Box;
 --- a/internal/core/lib.rs
 +++ b/internal/core/lib.rs
-@@ -6,7 +6,7 @@
- #![doc = include_str!("README.md")]
- #![doc(html_logo_url = "https://slint.dev/logo/slint-logo-square-light.svg")]
+@@ -9,7 +9,7 @@
  #![deny(unsafe_code)]
+ #![cfg_attr(slint_nightly_test, feature(non_exhaustive_omitted_patterns_lint))]
+ #![cfg_attr(slint_nightly_test, warn(non_exhaustive_omitted_patterns))]
 -#![no_std]
 +
+ #![debugger_visualizer(gdb_script_file = "gdb_pretty_printers.py")]
  
  extern crate alloc;
- #[cfg(feature = "std")]
+--- a/internal/core/platform.rs
++++ b/internal/core/platform.rs
+@@ -89,7 +89,7 @@ fn new_event_loop_proxy(&self) -> Option<Box<dyn EventLoopProxy>> {
+     /// This is used by the animations and timer to compute the elapsed time.
+     ///
+     /// When the `std` feature is enabled, this function is implemented in terms of
+-    /// [`std::time::Instant::now()`], but on `#![no_std]` platform, this function must
++    /// [`std::time::Instant::now()`], but on `` platform, this function must
+     /// be implemented.
+     fn duration_since_start(&self) -> core::time::Duration {
+         #[cfg(feature = "std")]
+--- a/internal/renderers/software/lib.rs
++++ b/internal/renderers/software/lib.rs
+@@ -7,7 +7,7 @@
+ #![deny(unsafe_code)]
+ #![cfg_attr(slint_nightly_test, feature(non_exhaustive_omitted_patterns_lint))]
+ #![cfg_attr(slint_nightly_test, warn(non_exhaustive_omitted_patterns))]
+-#![no_std]
++
+ #![warn(missing_docs)]
+ 
+ extern crate alloc;
 --- a/tools/compiler/Cargo.toml
 +++ b/tools/compiler/Cargo.toml
-@@ -19,11 +19,10 @@ path = "main.rs"
+@@ -19,12 +19,11 @@ path = "main.rs"
  
  [features]
  software-renderer = ["i-slint-compiler/software-renderer"]
 -jemalloc = ["dep:tikv-jemallocator"]
  sdf-fonts = ["i-slint-compiler/sdf-fonts"]
+ fontconfig-dlopen = ["i-slint-common/fontconfig-dlopen"]
  
  # Keep defaults in sync with defaults applied in api/cpp/CMakeLists.txt for slint-compiler
 -default = ["software-renderer", "jemalloc"]
 +default = ["software-renderer", ]
  
  [dependencies]
- i-slint-compiler = { workspace = true, features = ["default", "display-diagnostics", "bundle-translations", "cpp", "rust"] }
-@@ -34,4 +33,3 @@ spin_on = { workspace = true }
+ i-slint-compiler = { workspace = true, features = ["default", "display-diagnostics", "bundle-translations", "cpp", "rust", "python"] }
+@@ -36,4 +35,3 @@ spin_on = { workspace = true }
  itertools = { workspace = true }
  
  [target.'cfg(not(any(target_os = "windows", all(target_arch = "aarch64", target_os = "linux"))))'.dependencies]
@@ -194,7 +228,7 @@
  enum Embedding {
 --- a/tools/lsp/Cargo.toml
 +++ b/tools/lsp/Cargo.toml
-@@ -106,7 +106,6 @@ slint-interpreter = { workspace = true, features = ["compat-1-2", "internal", "i
+@@ -109,7 +109,6 @@ slint-interpreter = { workspace = true, features = ["compat-1-2", "internal", "i
  nucleo-matcher = "0.3.1"
  
  [target.'cfg(not(any(target_os = "windows", target_arch = "wasm32", all(target_arch = "aarch64", target_os = "linux"))))'.dependencies]
@@ -204,7 +238,7 @@
  clap = { workspace = true }
 --- a/tools/lsp/main.rs
 +++ b/tools/lsp/main.rs
-@@ -45,15 +45,12 @@
+@@ -47,15 +47,12 @@
      target_arch = "wasm32",
      all(target_arch = "aarch64", target_os = "linux")
  )))]
@@ -222,7 +256,7 @@
  #[command(author, version, about, long_about = None)]
 --- a/tools/viewer/Cargo.toml
 +++ b/tools/viewer/Cargo.toml
-@@ -69,7 +69,6 @@ serde_json = { workspace = true }
+@@ -67,7 +67,6 @@ serde_json = { workspace = true }
  smol_str = { workspace = true }
  
  [target.'cfg(not(any(target_os = "windows", all(target_arch = "aarch64", target_os = "linux"))))'.dependencies]
