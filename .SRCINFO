@@ -1,8 +1,8 @@
 pkgbase = dnsjit
 	pkgdesc = Engine for capturing, parsing and replaying DNS
 	pkgver = 1.5.1
-	pkgrel = 1
-	url = https://github.com/DNS-OARC/dnsjit
+	pkgrel = 2
+	url = https://www.dns-oarc.net/tools/dnsjit
 	arch = x86_64
 	license = GPL3
 	makedepends = autoconf

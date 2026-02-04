@@ -1,10 +1,10 @@
 # Maintainer: Nicki Krizek <nicki@isc.org>
 pkgname=dnsjit
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Engine for capturing, parsing and replaying DNS"
 arch=('x86_64')
-url="https://github.com/DNS-OARC/dnsjit"
+url="https://www.dns-oarc.net/tools/dnsjit"
 license=('GPL3')
 depends=(
     'luajit'
