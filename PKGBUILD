@@ -17,7 +17,7 @@ depends=(
   'proj' 'geos' 'sqlite' 'qwtpolar' 'expat' 'spatialindex' 'gsl' 'libzip' 'exiv2' 'ocl-icd' 'protobuf' 'pdal'
   'qt6-tools' 'qtkeychain' 'sip' 'qca-qt6' 'qt6-webengine' 'qt6-3d' 'qt6-serialport'
   'python-gdal' 'python-owslib' 'python-psycopg2' 'python-yaml' 'python-numpy' 'python-jinja' 'python-pygments'
-  'python-pyqt6' 'python-qscintilla-qt6'
+  'python-pyqt6' 'python-qscintilla-qt6' 'qwt-qt6'
 )
 makedepends=(git cmake ninja pyqt-builder opencl-clhpp fcgi qt6-tools sip)
 optdepends=('grass: for GRASS providers and plugin (6 or 7)'
@@ -66,8 +66,9 @@ build() {
     -DWITH_QUICK=TRUE \
     -DWITH_SERVER=TRUE \
     -DBINDINGS_GLOBAL_INSTALL=FALSE \
-    -DQWTPOLAR_LIBRARY=/usr/lib/libqwt.so \
-    -DQWTPOLAR_INCLUDE_DIR=/usr/include/qwt \
+    -DWITH_QWTPOLAR=TRUE \
+    -DQWTPOLAR_LIBRARY=/usr/lib/libqwt-qt6.so \
+    -DQWTPOLAR_INCLUDE_DIR=/usr/include/qwt-qt6 \
     -DWITH_INTERNAL_SPATIALINDEX=TRUE
 
   ninja
