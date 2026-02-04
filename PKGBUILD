@@ -2,8 +2,8 @@
 
 pkgname=seti-astro-suite-pro-bin
 _pkgname=seti-astro-suite-pro
-pkgver=1.8.4
-pkgrel=2
+pkgver=1.9.0
+pkgrel=1
 provides=("seti-astro-suite-pro=$pkgver")
 pkgdesc='Seti Astro Suite Pro is a comprehensive suite for staking and editing Astrophotography images.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('python')
 options=(!strip)
 
 source_x86_64=("setiastrosuitepro_linux.tar.xz::https://github.com/setiastro/setiastrosuitepro/releases/download/V$pkgver/setiastrosuitepro_linux.tar.xz")
-sha256sums_x86_64=('362d1e6c88eeca03b21d164afdf9835e460c0c40fd4f1a3be908501e9e7ee567')
+sha256sums_x86_64=('e3b71dc3b8832632ef2c2bb697be0ebf64ba320596c21405351d1219ec882846')
 
 source=("16x16.png"
         "32x32.png"
