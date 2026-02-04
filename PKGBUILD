@@ -49,12 +49,14 @@ build() {
 
     ../bazel-${_bazel_ver}-linux-x86_64 --bazelrc=../bazelrc build \
         --repo_env=HERMETIC_PYTHON_VERSION=3.14 \
-        //jaxlib/tools:jaxlib_wheel
+        --config=cuda_libraries_from_stubs \
+        //jaxlib/tools:jaxlib_wheel \
+        //jaxlib/tools:jax_cuda12_plugin_wheel
 }
 
 package() {
     cd jax-jax-v$pkgver
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     python -m installer --compile-bytecode=1 --destdir=$pkgdir \
-        bazel-out/k8-opt/bin/jaxlib/tools/dist/jaxlib-${pkgver}*x86_64.whl
+        bazel-out/k8-opt/bin/jaxlib/tools/dist/jax${pkgver}*x86_64.whl
 }

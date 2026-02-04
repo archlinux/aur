@@ -17,7 +17,6 @@ build --config=build_cuda_with_nvcc
 build --config=clang
 build --config=cuda13
 build --config=cuda_clang_local
-build --config=cuda_libraries_from_stubs
 build --config=mkl_open_source_only
 build --repo_env=BAZEL_COMPILER="/usr/lib/llvm20/bin/clang-20"
 build --repo_env=CC="/usr/lib/llvm20/bin/clang-20"
