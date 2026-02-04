@@ -7,8 +7,8 @@ pkgname=dingtalk-bin
 _pkgname=dingtalk
 _pkgname2=com.alibabainc.dingtalk
 # https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Update/other/amd64/linux_dingtalk_update_package_gray.json
-pkgver=7.8.15.5102301
-pkgrel=3
+pkgver=8.1.0.6011301
+pkgrel=1
 pkgdesc="钉钉"
 arch=("x86_64" 'aarch64')
 url="https://www.dingtalk.com/"
@@ -37,8 +37,8 @@ sha512sums=('2b87849b0db3717f00809b2583511cc5cc5e7a9e0b123b54b11d7f7c0ad00008da7
             'c8570ec4cd978e26ac622a83db053a0555324752f5000dc5b3cd680d782138e8ef856f09ec9b7850e04e1faa1e39de94dabeb16fbfbe0fd44af43247b30e8b2f'
             'b2493e7bddc2d701204899bcd82930f97779eec23485870c64665c525b9faca382a3c0e9e9c1bd18f8fa8157ea408943e542de56dc3410388e78f30732511f5c'
             '5f05f90704526fbd16371f6f9deaa171a3cac25a103b21daba72a3028ab7cdf9b566a3ac7842c6ce88d30cc29fe0c8b989c77aa36daab73793a827a1a0d6c775')
-sha512sums_x86_64=('d2d27fffbd5beae9458201785bfbb1d87d7584fec5a63a92d8c4507a753eb979be5a50d2d01a8b12e2048026242105c2cac18b38704949b19b21bb621366bfc6')
-sha512sums_aarch64=('97c35ad28c1504380b282b80a0fe94a8936a74a627fc9a04a5870224bd2ad1d0c7727abe31aeab4ce5b9b6b1df6c9f88c3b71812109ab0d94621e18a9f00b113')
+sha512sums_x86_64=('9d46988d7f26beb71d7d9c4f721068cf8c59a492da661ce1f7312e0871ded107091c5fefc0dc3dc7b5926bd1131e322b4cdec90f23d94b71380272d89df2f35d')
+sha512sums_aarch64=('e9a3bf04edae24d9dc26c86a7dc6b1c6b0fda7420eb3425f80abe5fd6dec14fa0c57ca7b025743df3edd0626fb60d10eb6a39b0286ff67bf9635bf28289f76a5')
 
 prepare() {
     tar -Jxf data.tar.xz -C "${srcdir}"
