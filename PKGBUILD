@@ -3,11 +3,11 @@
 # Disclaimer: While this PKGBUILD is tested on multiple devices, it is fully vibe-coded.
 
 pkgname=chrony-git
-pkgver=4.8.r22.g007a1ae
+pkgver=4.8.r28.ge313f5a
 pkgrel=1
 pkgdesc="Lightweight NTP client and server (git version)"
 arch=('x86_64')
-url="https://chrony-project.org"
+url="https://gitlab.com/chrony/chrony.git"
 license=('GPL-2.0-only')
 depends=(
     'glibc'
@@ -27,7 +27,7 @@ backup=(
     'etc/chrony.conf'
 )
 source=(
-    "chrony::git+https://gitlab.com/chrony/chrony.git#branch=master"
+    "chrony::git+https://gitlab.com/chrony/chrony.git"
     "chrony.conf"
 )
 sha256sums=(
