@@ -1,6 +1,6 @@
 pkgbase = python-pyproject-parser
 	pkgdesc = Parser for pyproject.toml
-	pkgver = 0.13.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/repo-helper/pyproject-parser
 	arch = any
@@ -24,8 +24,9 @@ pkgbase = python-pyproject-parser
 	depends = python-typing_extensions
 	optdepends = python-readme-renderer: render markdown
 	optdepends = python-cmarkgfm: render markdown
-	source = python-pyproject-parser::git+https://github.com/repo-helper/pyproject-parser#tag=v0.13.0
-	sha512sums = 35d5f6544728c11da35e7405f9dbf582a18bc113f46ca91e7aa90902673d87b1756c8ab5d86e77cbfb30b40066b223927913aa3427f01180c5a0dbfa16e6bc4f
-	b2sums = 28f7fffcaea44c3109b340caa16042e9a5cbe82eb629eacad626f5a75236545486795118b8ba36a07ad4aa0c5bbc007006bc9cfab0e9ff57689b0ef62591c3b9
+	provides = python-pyproject-parser
+	conflicts = python-pyproject-parser
+	source = pyproject-parser::git+https://github.com/repo-helper/pyproject-parser.git#tag=v0.14.0
+	sha512sums = 6eef1ee28a1c0ee37d47bb4849617daf92b2ead7f142fd781b9a862a2be79ac3eb88d9d7c2afdce38623f40fc81226504da92458baff0f1fd06da51814875d2b
 
 pkgname = python-pyproject-parser

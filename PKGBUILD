@@ -1,12 +1,14 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=python-pyproject-parser
-pkgver=0.13.0
+_name=${pkgname#python-}
+pkgver=0.14.0
 pkgrel=1
-pkgdesc='Parser for pyproject.toml'
-arch=(any)
-url='https://github.com/repo-helper/pyproject-parser'
-license=(MIT)
+pkgdesc="Parser for pyproject.toml"
+provides=(${pkgname})
+conflicts=(${pkgname})
+arch=('any')
+url="https://github.com/repo-helper/pyproject-parser"
 depends=(
   python
   python-apeye-core
@@ -28,27 +30,25 @@ makedepends=(
   python-setuptools
   python-wheel
 )
-#checkdepends=()
-# cli optdepends: click, consolekit & sdjson
 optdepends=(
   'python-readme-renderer: render markdown'
   'python-cmarkgfm: render markdown'
 )
-source=("$pkgname::git+$url#tag=v$pkgver")
-sha512sums=('35d5f6544728c11da35e7405f9dbf582a18bc113f46ca91e7aa90902673d87b1756c8ab5d86e77cbfb30b40066b223927913aa3427f01180c5a0dbfa16e6bc4f')
-b2sums=('28f7fffcaea44c3109b340caa16042e9a5cbe82eb629eacad626f5a75236545486795118b8ba36a07ad4aa0c5bbc007006bc9cfab0e9ff57689b0ef62591c3b9')
+license=('MIT')
+source=("${_name}::git+${url}.git#tag=v$pkgver")
+sha512sums=('6eef1ee28a1c0ee37d47bb4849617daf92b2ead7f142fd781b9a862a2be79ac3eb88d9d7c2afdce38623f40fc81226504da92458baff0f1fd06da51814875d2b')
+
+prepare() {
+    git -C "${srcdir}/${_name}" clean -dfx
+}
 
 build() {
-  cd "$pkgname"
-
-  python -m build --wheel --no-isolation
+    cd "${srcdir}/${_name}"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$pkgname"
-
-  python -m installer --destdir="$pkgdir" dist/*.whl
-
-  # license
-  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+    cd "${srcdir}/${_name}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+    install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
