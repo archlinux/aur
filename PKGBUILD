@@ -5,14 +5,14 @@ pkgname=(
     'tensorrt'
     'tensorrt-cross-builder-libs'
     'python-tensorrt')
-pkgver=10.14.1.48
-_cudaver=13.0
+pkgver=10.15.1.29
+_cudaver=13.1
 _protobuf_ver=3.20.1
 _pybind11_ver=2.9.2
 #_onnx_graphsurgeon_ver=0.5.9
 _polygraphy_ver=0.49.27
 _tensorflow_quantization_ver=0.2.0
-pkgrel=4
+pkgrel=1
 pkgdesc='A platform for high-performance deep learning inference on NVIDIA hardware'
 arch=('x86_64')
 url='https://developer.nvidia.com/tensorrt/'
@@ -43,8 +43,8 @@ source=("https://developer.nvidia.com/downloads/compute/machine-learning/tensorr
         '020-tensorrt-fix-python.patch'
         'TensorRT-LICENSE-AGREEMENT.txt')
 noextract=("protobuf-cpp-${_protobuf_ver}.tar.gz")
-sha256sums=('c74af67db57f1a0d7e66bb01ab93f1ecda5facac491ca76e680d832f1e035ce6'
-            '0c976d276abfde1b5de2b341907b696bc670c6235a2f04ed478e8a508f2b2fe9'
+sha256sums=('2e2d6e800221e840e1fc7eba7a5e4b13390cf14856b4b21af429694e21602222'
+            'f20344cde14f624baab91e9c5a7a6180a1201180816a7e41b9a0fee33f23b329'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -52,7 +52,7 @@ sha256sums=('c74af67db57f1a0d7e66bb01ab93f1ecda5facac491ca76e680d832f1e035ce6'
             'SKIP'
             'dddd73664306d7d895a95e1cf18925b31b52785e468727e4635b45edae5166f9'
             'ba94c0685216fe9566f7989df98b372e72a8da04b66d64380024107f2f7f4a8f'
-            '85bb4af31efe157e3e5d13b26ee105b338ef868acb6c66a712f38b06b79ed71c'
+            'c9bb60e8e0cbb4fb54fe24a8ce47b3d0491d7cde1ec6b42aaaa659031d26f4e7'
             '64907f271b91655a28f3c9f3555a3c645b23d878f41063192a9d2a67f752205a')
 
 prepare() {

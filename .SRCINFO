@@ -1,7 +1,7 @@
 pkgbase = tensorrt
 	pkgdesc = A platform for high-performance deep learning inference on NVIDIA hardware
-	pkgver = 10.14.1.48
-	pkgrel = 4
+	pkgver = 10.15.1.29
+	pkgrel = 1
 	url = https://developer.nvidia.com/tensorrt/
 	arch = x86_64
 	license = Apache-2.0 AND LicenseRef-TensorRT-LICENSE-AGREEMENT
@@ -17,8 +17,8 @@ pkgbase = tensorrt
 	makedepends = python-typing_extensions
 	makedepends = python-wheel
 	noextract = protobuf-cpp-3.20.1.tar.gz
-	source = https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/10.14.1/tars/TensorRT-10.14.1.48.Linux.x86_64-gnu.cuda-13.0.tar.gz
-	source = git+https://github.com/NVIDIA/TensorRT.git#tag=v10.14
+	source = https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/10.15.1/tars/TensorRT-10.15.1.29.Linux.x86_64-gnu.cuda-13.1.tar.gz
+	source = git+https://github.com/NVIDIA/TensorRT.git#tag=v10.15
 	source = git+https://github.com/protocolbuffers/protobuf.git
 	source = cub-nvlabs::git+https://github.com/NVlabs/cub.git
 	source = git+https://github.com/onnx/onnx-tensorrt.git
@@ -28,8 +28,8 @@ pkgbase = tensorrt
 	source = 010-tensorrt-use-local-protobuf-sources.patch
 	source = 020-tensorrt-fix-python.patch
 	source = TensorRT-LICENSE-AGREEMENT.txt
-	sha256sums = c74af67db57f1a0d7e66bb01ab93f1ecda5facac491ca76e680d832f1e035ce6
-	sha256sums = 0c976d276abfde1b5de2b341907b696bc670c6235a2f04ed478e8a508f2b2fe9
+	sha256sums = 2e2d6e800221e840e1fc7eba7a5e4b13390cf14856b4b21af429694e21602222
+	sha256sums = f20344cde14f624baab91e9c5a7a6180a1201180816a7e41b9a0fee33f23b329
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -37,7 +37,7 @@ pkgbase = tensorrt
 	sha256sums = SKIP
 	sha256sums = dddd73664306d7d895a95e1cf18925b31b52785e468727e4635b45edae5166f9
 	sha256sums = ba94c0685216fe9566f7989df98b372e72a8da04b66d64380024107f2f7f4a8f
-	sha256sums = 85bb4af31efe157e3e5d13b26ee105b338ef868acb6c66a712f38b06b79ed71c
+	sha256sums = c9bb60e8e0cbb4fb54fe24a8ce47b3d0491d7cde1ec6b42aaaa659031d26f4e7
 	sha256sums = 64907f271b91655a28f3c9f3555a3c645b23d878f41063192a9d2a67f752205a
 
 pkgname = tensorrt

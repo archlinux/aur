@@ -1,6 +1,6 @@
 --- a/python/CMakeLists.txt
 +++ b/python/CMakeLists.txt
-@@ -274,7 +274,7 @@ set(CMAKE_CXX_STANDARD ${CPP_STANDARD})
+@@ -275,7 +275,7 @@ set(CMAKE_CXX_STANDARD ${CPP_STANDARD})
  
  if(NOT MSVC)
      # This allows us to use TRT libs shipped with standalone wheels.
@@ -9,7 +9,7 @@
  endif()
  
  # -------- PATHS --------
-@@ -340,8 +340,8 @@ if(MSVC)
+@@ -341,8 +341,8 @@ if(MSVC)
  else()
      find_path(
          PY_INCLUDE Python.h
