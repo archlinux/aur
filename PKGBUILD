@@ -4,7 +4,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-openldap
-pkgver=2.6.10
+pkgver=2.6.12
 pkgrel=1
 arch=('any')
 pkgdesc="Lightweight Directory Access Protocol (LDAP) (Android ${_android_arch})"
@@ -21,7 +21,7 @@ makedepends=('android-configure'
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-${pkgver}.tgz"
         '0001-Add-missing-headers.patch')
-md5sums=('6be5e6c43d599e7a422669c70229ca74'
+md5sums=('0f2dc1afef5b39287dd0a4a294a261d1'
          'a02479170500e252834e45e977d95567')
 
 prepare() {
@@ -66,4 +66,6 @@ package() {
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
