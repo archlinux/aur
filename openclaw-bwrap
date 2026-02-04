@@ -1,8 +1,16 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -euo pipefail
 
 # Configuration
 OPENCLAW_BIN="/usr/bin/openclaw"
+
+# Check if the first argument is --exec and a second argument exists
+if [[ "${1:-}" == "--exec" ]] && [[ -n "${2:-}" ]]; then
+    OPENCLAW_BIN="$2"
+    shift 2 # Remove --exec and the path from the argument list
+fi
+
+# Ensure necessary directories exist
 mkdir -p "${HOME}/.openclaw" "${HOME}/.config/openclaw" "${HOME}/.openclaw-bwrap"
 
 BWRAP_ARGS=(
@@ -23,7 +31,7 @@ BWRAP_ARGS=(
     --ro-bind /sys /sys
     --proc /proc
 
-    # bind the bwrap folder to $HOME
+    # Bind the bwrap folder to $HOME
     --bind "$HOME/.openclaw-bwrap" "$HOME"
 
     # --- OVERRIDES ---
@@ -34,11 +42,11 @@ BWRAP_ARGS=(
     --setenv HOME "$HOME"
 )
 
-# Optional: Add more restrictions or mounts based on arguments or env vars
+# Optional: Add extra arguments via environment variable
 if [ -n "${OPENCLAW_BWRAP_EXTRA_ARGS:-}" ]; then
     read -ra EXTRA_ARGS <<<"$OPENCLAW_BWRAP_EXTRA_ARGS"
     BWRAP_ARGS+=("${EXTRA_ARGS[@]}")
 fi
 
-# Execute openclaw inside bubblewrap
+# Execute the chosen binary inside bubblewrap
 exec bwrap "${BWRAP_ARGS[@]}" "$OPENCLAW_BIN" "$@"
