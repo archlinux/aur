@@ -119,9 +119,6 @@ package() {
     install -Dm644 images/icons/qgis_${type}_icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/mimetypes/qgis-git-$type.svg"
   done
 
-  # compile python files, since the cmake option doesn't seem to account for DESTDIR
-  python -m compileall -q "$pkgdir"
-  
   # link libraries
   install -d -m755 "${pkgdir}"/etc/ld.so.conf.d/
   echo '/opt/qgis-git/lib' > "${pkgdir}"/etc/ld.so.conf.d/qgis-git.conf
