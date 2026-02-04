@@ -15,7 +15,7 @@ conflicts=("${_pkgbase}")
 optdepends=('linux-headers: Build the module for Arch kernel'
             'linux-lts-headers: Build the module for LTS Arch kernel')
 source=(
-    "https://github.com/wget/realtek-r8152-linux/archive/v${pkgver}.tar.gz"
+    "${_pkgbase}-${pkgver}.tar.gz"::"https://github.com/wget/realtek-r8152-linux/archive/v${pkgver}.tar.gz"
     'dkms.conf'
 )
 sha512sums=('6617cf7cb50fd35b97b5e3f2e47118f30af06654a809bf6b35d24a039591ab960b5ce54696fd67ae57955a5184904fdc9ad4c06c332aa9ce26c7b33fb30a4a12'
