@@ -1,6 +1,6 @@
 pkgbase = android-riscv64-expat
 	pkgdesc = An XML parser library (Android riscv64)
-	pkgver = 2.7.3
+	pkgver = 2.7.4
 	pkgrel = 1
 	url = https://libexpat.github.io/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = android-riscv64-expat
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/libexpat/libexpat/archive/R_2_7_3.tar.gz
-	md5sums = e87e396c0062f9bb0f1b57c85f11dd0c
+	source = https://github.com/libexpat/libexpat/archive/R_2_7_4.tar.gz
+	md5sums = 25bf9b1985a674b0562dd2d789074e16
 
 pkgname = android-riscv64-expat
