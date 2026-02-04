@@ -3,7 +3,7 @@
 pkgname=bontmia
 pkgver=0.19.1
 pkgrel=1
-pkgdesc="Bontmia (Backup Over Network To Multiple Incremental Archives)"
+pkgdesc="Rsync-based tool for incremental backup and rotation"
 arch=('x86_64')
 url="https://github.com/hcartiaux/bontmia"
 license=('GPL-2.0')
