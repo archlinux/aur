@@ -1,0 +1,12 @@
+# Main purpose of this config is to make work with flash drives and memory cards more adequate.
+# mq-deadline scheduler using IO latency as main measure, what makes it great for low IO/low concurrency
+# devices as usb flash drives, but also, it work really well for SATA SSDs.
+
+# HDD
+ACTION=="add|change", KERNEL=="sd[a-z]*", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="bfq"
+
+# SSD
+ACTION=="add|change", KERNEL=="sd[a-z]*|mmcblk[0-9]*", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="mq-deadline"
+
+# NVMe SSD
+ACTION=="add|change", KERNEL=="nvme[0-9]*", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="none"
