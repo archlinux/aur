@@ -3,29 +3,24 @@
 
 _pkgname=yaml-cpp
 pkgname=mingw-w64-${_pkgname}
-pkgver=0.8.0
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc='YAML parser and emitter in C++, written around the YAML 1.2 spec (mingw-w64)'
 url="https://github.com/jbeder/${_pkgname}"
 arch=('any')
 license=('MIT')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake' 'mingw-w64-gcc')
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/jbeder/${_pkgname}/archive/${pkgver}.tar.gz")
+source=("https://github.com/jbeder/${_pkgname}/archive/refs/tags/${_pkgname}-${pkgver}.tar.gz")
 options=(staticlibs !strip !buildflags)
-sha384sums=('586ebc665c33e073be78670fd1810016a9e7ca8ae0ae8290328fc0c2f1e8f7acaa5e415eea5fb8a57efd772a011b1304')
+sha384sums=('0952b637c27fb9e0e5c645dc80ac78f2fc0e6fd4085c302eb5aa32f1dfb79dfd1326d1380daf2926f2d6ee8d3f5fcbd9')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release
 	-DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG' -DCMAKE_C_FLAGS_RELEASE='-DNDEBUG'
 	-DYAML_CPP_BUILD_TOOLS=OFF
 	-DCMAKE_POLICY_VERSION_MINIMUM='3.5' )
-_srcdir="${_pkgname}-$pkgver"
-
-prepare() {
-	cd "$_srcdir"
-	sed -i '/#include "yaml-cpp\/null.h"/a #include <cstdint>' 'src/emitterutils.cpp'
-}
+_srcdir="${_pkgname}-${_pkgname}-$pkgver"
 
 build() {
 	for _arch in ${_architectures}; do
