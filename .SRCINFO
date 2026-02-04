@@ -10,7 +10,7 @@ pkgbase = gitflow-cjs
 	conflicts = gitflow
 	conflicts = gitflow-git
 	conflicts = gitflow-ahv
-	source = https://github.com/CJ-Systems/gitflow-cjs/archive/v2.2.1.tar.gz
+	source = gitflow-cjs-2.2.1.tar.gz::https://github.com/CJ-Systems/gitflow-cjs/archive/v2.2.1.tar.gz
 	sha512sums = 1cb748e2b677462002e769d3ca39c6a3f2594111b9000567f8de7a2baef0eac949d66a7da7dfbb0fc2bcf62733e0b759f162fe679b8fc02f90fb571f48b86e81
 
 pkgname = gitflow-cjs

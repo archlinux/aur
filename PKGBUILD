@@ -10,7 +10,7 @@ license=("LGPL")
 depends=("git")
 provides=('gitflow')
 conflicts=('gitflow' 'gitflow-git' 'gitflow-ahv')
-source=("$url/archive/v$pkgver.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz"::"$url/archive/v$pkgver.tar.gz")
 sha512sums=('1cb748e2b677462002e769d3ca39c6a3f2594111b9000567f8de7a2baef0eac949d66a7da7dfbb0fc2bcf62733e0b759f162fe679b8fc02f90fb571f48b86e81')
 
 package() {
