@@ -1,5 +1,5 @@
 # Maintainer: trappedwastaken <realtrapped@gmail.com>
-pkgname=llama-cpp-pascal-noavx-bin
+pkgname=llama.cpp-bin-noavx
 pkgver=7825
 pkgrel=2
 pkgdesc="Llama.cpp (no AVX, SSE4.2 only) for i3-540 and NVIDIA Pascal (GT 1030) support"
@@ -8,7 +8,7 @@ url="https://github.com/trappedwastaken/old_cpus_linux_binaries"
 license=('MIT')
 provides=('llama-cpp')
 conflicts=('llama-cpp' 'llama-cpp-git' 'llama-cpp-bin')
-options=(!debug) # ВОТ ЭТО ДОБАВИЛИ
+options=(!debug)
 
 source=("https://github.com/trappedwastaken/old_cpus_linux_binaries/releases/download/v7825/llama-noavx.tar.gz")
 sha256sums=('4923a758a4b6420f395334919a54612d87f73cf3a50c49735454477ed7a36314')
