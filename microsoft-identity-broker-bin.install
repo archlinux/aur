@@ -1,9 +1,7 @@
 post_install() {
-    # Recolic: I believe it's not necessary to start the service at all. This service is triggered by edge from libsdbus. 
-    # I don't know why they are doing this. just leave them there. 
     if [ -d /run/systemd/system ]; then
         systemctl --system daemon-reload || true
-        # systemctl restart microsoft-identity-devicebroker.service || true
+        systemctl restart microsoft-identity-device-broker.service || true
     fi
 }
 
@@ -13,8 +11,12 @@ post_upgrade() {
 
 pre_remove() {
     if [ -d /run/systemd/system ]; then
-        systemctl stop microsoft-identity-devicebroker.service || true
+        systemctl stop microsoft-identity-device-broker.service || true
     fi
+
+    # NOTE (chrisn): Run this command as root to remove all state files from the
+    # device enrollment procedures.
+    # dsreg --cleanup
 }
 
 post_remove() {
@@ -22,4 +24,3 @@ post_remove() {
         systemctl --system daemon-reload || true
     fi
 }
-
