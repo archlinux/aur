@@ -1,0 +1,18 @@
+post_install() {
+    echo ""
+    echo ">>> Download the Moonshine model (~106MB):"
+    echo "    /usr/share/hammertalk/download-model.sh"
+    echo ""
+    echo ">>> Start the service:"
+    echo "    systemctl --user start hammertalk"
+    echo ""
+    echo ">>> Keybinding examples: https://github.com/hiasinho/hammertalk#keybindings"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo ">>> Restart the service:"
+    echo "    systemctl --user restart hammertalk"
+    echo ""
+}

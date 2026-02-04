@@ -1,0 +1,23 @@
+pkgbase = hammertalk-bin
+	pkgdesc = Push-to-talk transcription daemon for Wayland (Sway, Hyprland, niri, COSMIC)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/hiasinho/hammertalk
+	install = hammertalk-bin.install
+	arch = x86_64
+	license = MIT
+	depends = ydotool
+	depends = gcc-libs
+	optdepends = pipewire: audio capture
+	optdepends = pulseaudio: audio capture (alternative)
+	provides = hammertalk
+	conflicts = hammertalk
+	conflicts = hammertalk-git
+	source = hammertalk-1.0.0::https://github.com/hiasinho/hammertalk/releases/download/v1.0.0/hammertalk
+	source = hammertalk-ctl-1.0.0::https://github.com/hiasinho/hammertalk/releases/download/v1.0.0/hammertalk-ctl
+	source = download-model.sh-1.0.0::https://github.com/hiasinho/hammertalk/releases/download/v1.0.0/download-model.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = hammertalk-bin
