@@ -1,0 +1,16 @@
+pkgbase = lyrwal
+	pkgdesc = A program to set the wallpaper to random song lyrics
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ZerimGH/lyrwal
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	makedepends = gcc
+	makedepends = python
+	depends = python
+	depends = freetype2
+	source = git+https://github.com/ZerimGH/lyrwal.git
+	sha256sums = SKIP
+
+pkgname = lyrwal
