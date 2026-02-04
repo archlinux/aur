@@ -4,7 +4,7 @@
 _pkgauthor=screenpipe
 _pkgname=screenpipe
 pkgname=${_pkgname}-bin
-pkgver=0.2.74
+pkgver=0.3.59
 pkgrel=1
 pkgdesc="24/7 Screen and Audio Capture with AI-powered tools"
 arch=('x86_64')
@@ -21,11 +21,11 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE.md"
         "TESTING-${pkgver}::${_urlraw}/TESTING.md"
         "CONTRIBUTING-${pkgver}::${_urlraw}/CONTRIBUTING.md")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${arch[0]}-unknown-linux-gnu.tar.gz")
-sha256sums=('fb72ea7f10634208c877c393401cd02676816f2e45367b20d28405f5b719b9b6'
-            'd3e40ef47c733168caf9042c1f25c435f2a961ea28f4a2162de34d560b853388'
-            '5c92311c6d78302508543460ab84acd24688a62d4b44674042524a6be0903bb0'
-            'de6bfe4b5b12bdb632ed7c165fb7eec975edd25255cf08d0468a1776fc1ca9d3')
-sha256sums_x86_64=('d2d95ea2ec82779fbc661f1b7feffcccfdfaaa6717d821a4dbcf23583620b770')
+sha256sums=('7c8870ce4a6920da8c667759f25f7d99cdbbd45a40ea32978b34ab06e39c2f1f'
+            '3a5bdfb91acdffb931dd89017dad495008d2ec9733306aa0583a1318f7a94658'
+            'ea3e49f991612437374fb7fccab7c07ddd5831215d9ab1284a3c5304be68fcf1'
+            'd62f9b5a4efa50ac07d89366a37957b75fb2552dad3b4a79e1bcd41a382ae975')
+sha256sums_x86_64=('7e21aeb4963e0f884f536d43114a64ee2d569669c52788ba1443a97d7196a03e')
 
 package() {
 	cd "${srcdir}/" || exit
