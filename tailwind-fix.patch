@@ -1,0 +1,24 @@
+From 578dc5a88d27a8757bc9a7ebab219f7c89bf3349 Mon Sep 17 00:00:00 2001
+From: Sheikh Limon <sheikhlimon404@gmail.com>
+Date: Tue, 3 Feb 2026 22:11:12 +0600
+Subject: [PATCH] fix: broken Tailwind scan in tarball releases (#6917)
+
+Signed-off-by: sheikhlimon <sheikhlimon404@gmail.com>
+---
+ ui/desktop/src/styles/main.css | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/ui/desktop/src/styles/main.css b/ui/desktop/src/styles/main.css
+index eeb6d3392911..6829376dc02b 100644
+--- a/ui/desktop/src/styles/main.css
++++ b/ui/desktop/src/styles/main.css
+@@ -2,6 +2,9 @@
+ @import 'tw-animate-css';
+ @plugin '@tailwindcss/typography';
+
++@source '../../index.html';
++@source '../**/*.{js,ts,jsx,tsx}';
++
+ @theme {
+   --breakpoint-md: 930px;
+ }

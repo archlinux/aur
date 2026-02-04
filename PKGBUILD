@@ -1,7 +1,7 @@
 # Maintainer: Sheikh Limon <sheikhlimon404@gmail.com>
 
 pkgname=goose-desktop
-pkgver=1.22.2
+pkgver=1.23.0
 pkgrel=1
 pkgdesc="Goose Desktop (built from source) - an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM"
 arch=("x86_64")
@@ -16,23 +16,30 @@ makedepends=(
   "oniguruma"
 )
 # LTO is broken for dependency ring https://github.com/briansmith/ring/issues/1444
+# TODO: Remove tailwind-fix.patch when upstream releases include PR #6917
 options=("!lto" "!debug")
 source=(
-  "git+https://github.com/block/goose.git#tag=v${pkgver}"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/block/goose/archive/refs/tags/v${pkgver}.tar.gz"
+  "tailwind-fix.patch"
 )
-b2sums=('SKIP')
+b2sums=('855b3463006b17e2343dae4f50220a7689beeead488c70ad46646533e16910f023e17ec6d49687c480ce89ade2746c9f3420aff636132b169374a03fd4b442b9'
+        '46d01b3c652405ccdbb79889c07e2efe5b50dca4bc930abbe192be2e0f7feb6eeb69b813905524507b7d6227d0da697c15d00cd54fcdee14d837a95de2d4d13b')
 conflicts=("goose-desktop-bin")
 provides=("goose-desktop")
 
 prepare() {
-  cd goose
+  cd "goose-${pkgver}"
 
+  # Fix Tailwind scan in tarball releases
+  patch -p1 < "../tailwind-fix.patch"
+
+  # Hide menu bar on Linux
   sed -i '/useContentSize: true/a\    autoHideMenuBar: process.platform === '\''linux'\'',' \
     ui/desktop/src/main.ts
 }
 
 build() {
-  cd goose
+  cd "goose-${pkgver}"
 
   # Use the prebuilt oniguruma for now
   # https://github.com/block/goose/issues/2572
@@ -52,7 +59,7 @@ build() {
 }
 
 package() {
-  cd goose
+  cd "goose-${pkgver}"
 
   install -Dm755 "target/release/goose" "$pkgdir/usr/bin/goose"
 

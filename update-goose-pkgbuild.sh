@@ -1,61 +1,46 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Colors
-RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
 REPO="block/goose"
-PKGBUILD_FILE="PKGBUILD"
 
-echo -e "${GREEN}Fetching latest release from GitHub API...${NC}"
-
-# Fetch latest release
+echo -e "${GREEN}Fetching latest release...${NC}"
 RELEASE_DATA=$(curl -s "https://api.github.com/repos/${REPO}/releases/latest")
-
-# Extract version
 LATEST_VERSION=$(echo "$RELEASE_DATA" | jq -r '.tag_name' | sed 's/^v//')
 
 if [[ -z "$LATEST_VERSION" || "$LATEST_VERSION" == "null" ]]; then
-    echo -e "${RED}Error: Could not fetch latest version${NC}"
+    echo "Error: Could not fetch latest version"
     exit 1
 fi
 
-echo -e "${GREEN}Latest version: ${YELLOW}${LATEST_VERSION}${NC}"
+echo -e "${GREEN}Latest: ${YELLOW}${LATEST_VERSION}${NC}"
 
-# Get current version
-CURRENT_VERSION=$(grep '^pkgver=' "$PKGBUILD_FILE" | cut -d'=' -f2)
-
-echo -e "${GREEN}Current version: ${YELLOW}${CURRENT_VERSION}${NC}"
+CURRENT_VERSION=$(grep '^pkgver=' PKGBUILD | cut -d'=' -f2)
+echo -e "${GREEN}Current: ${YELLOW}${CURRENT_VERSION}${NC}"
 
 if [[ "$LATEST_VERSION" == "$CURRENT_VERSION" ]]; then
-    echo -e "${YELLOW}Already up to date!${NC}"
+    echo "Already up to date!"
     exit 0
 fi
 
-# Update PKGBUILD
-echo -e "${GREEN}Updating PKGBUILD...${NC}"
+sed -i "s/^pkgver=.*/pkgver=${LATEST_VERSION}/" PKGBUILD
+sed -i "s/^pkgrel=.*/pkgrel=1/" PKGBUILD
 
-# Update pkgver
-sed -i "s/^pkgver=.*/pkgver=${LATEST_VERSION}/" "$PKGBUILD_FILE"
+echo -e "${GREEN}Downloading tarball for b2sum...${NC}"
+TARBALL_URL="https://github.com/${REPO}/archive/refs/tags/v${LATEST_VERSION}.tar.gz"
+B2SUM=$(curl -L "$TARBALL_URL" | b2sum | awk '{print $1}')
+sed -i "s|^b2sums=.*|b2sums=('${B2SUM}')|" PKGBUILD
 
-# Reset pkgrel to 1
-sed -i "s/^pkgrel=.*/pkgrel=1/" "$PKGBUILD_FILE"
+makepkg --printsrcinfo > .SRCINFO
 
-# Generate .SRCINFO
-echo -e "${GREEN}Generating .SRCINFO...${NC}"
-makepkg --printsrcinfo | tee .SRCINFO
+echo -e "${GREEN}Verifying tarball download...${NC}"
+makepkg -od
 
-echo -e "${GREEN}✓ PKGBUILD updated successfully!${NC}"
-echo -e "${GREEN}✓ .SRCINFO generated successfully!${NC}"
+echo -e "${GREEN}✓ Updated to ${LATEST_VERSION}${NC}"
 echo ""
-echo -e "${YELLOW}Changes:${NC}"
-echo -e "  Version: ${CURRENT_VERSION} → ${LATEST_VERSION}"
-echo ""
-echo -e "${YELLOW}Next steps:${NC}"
-echo "  1. Review changes: git diff PKGBUILD .SRCINFO"
-echo "  2. Test build: makepkg -si"
-echo "  3. Commit: git add PKGBUILD .SRCINFO && git commit -m 'upgpkg: ${LATEST_VERSION}'"
-echo "  4. Push: git push"
+echo "Next:"
+echo "  git diff PKGBUILD .SRCINFO"
+echo "  makepkg -si"
