@@ -1,30 +1,27 @@
 # Maintainer: Dominik Wetzel <dimonok at web dot de>
 # Contributor: usrmusicman
 pkgname=gvst-vst-bin
-pkgver=20210127
-pkgrel=2
+pkgver=20240925
+pkgrel=1
 pkgdesc="GVST Plugin Suite."
 arch=('x86_64' 'i686')
-url="https://www.gvst.co.uk"
+url="https://gvst.uk"
 license=('custom')
 groups=('pro-audio' 'vst-plugins')
 depends=('glibc' 'libcurl-gnutls')
 replaces=('gvst-vst')
 
 # Needed to get the cookie for the download
-_tmp=`curl -sc cookies.txt https://www.gvst.co.uk/packages.htm`
-_tmp=`echo ${_tmp} | sed -n 's/.*dlcode=\(.*\)" download.*/\1/p'`
-_dlcode=`echo "${_tmp}" | head -1`
+_tmp=`curl -sc cookies.txt https://gvst.uk/Downloads`
+DLAGENTS=("https::/usr/bin/curl -b cookies.txt -L -o %o %u")
 
-DLAGENTS=("https::/usr/bin/curl -b cookies.txt -o %o %u")
+_url="${url}/Downloads/Get"
 
-_url="${url}/Get/PlugG4/AllGVSTLinux"
+source_x86_64=("${_url}/AllGVSTLinux64.zip")
+source_i686=("${_url}/AllGVSTLinux32.zip")
 
-source_x86_64=("${_url}64.zip?dlcode=${_dlcode}")
-source_i686=("${_url}32.zip?dlcode=${_dlcode}")
-
-md5sums_x86_64=("6e72bbdeea1f42380afadab29d7d6887")
-md5sums_i686=("292532d0201359ba5d5c163e5c509035")
+md5sums_x86_64=("e5ef7eb3eb7bd1d5bda572c5d6afa293")
+md5sums_i686=("4b866fc29297c60fdc9ede09efd3cf2f")
 
 package() {
 	## Install GVST
