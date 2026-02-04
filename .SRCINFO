@@ -1,23 +1,22 @@
 pkgbase = lumina
-	pkgdesc = Free cross-platform development environment for GLSL shaders
-	pkgver = 0.4.0
-	pkgrel = 3
-	url = http://lumina.sourceforge.net
-	install = lumina.install
-	arch = i686
+	pkgdesc = Lumina — select a screen region and ask AI (OpenAI, Gemini, DeepSeek, Ollama)
+	pkgver = 0.1.0
+	pkgrel = 5
+	url = https://github.com/razenfh/lumina
 	arch = x86_64
-	license = GPL
-	makedepends = glew
-	depends = qt
-	optdepends = blender: for mesh export script
-	source = http://downloads.sourceforge.net/lumina/Lumina-0.4.0.tar.bz2
-	source = lumina.desktop
-	source = search_paths.patch
-	source = source_edit.patch
-	md5sums = f6d17cb7ee39fbcc88623ba3ab252524
-	md5sums = 3e99ede58a3fd82c209fc72b887ebc39
-	md5sums = 4a6126d743a05184a8a45874d186f6d3
-	md5sums = dc46667f3d19a119d2daa89b45e262ba
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	makedepends = cargo-tauri
+	makedepends = nodejs
+	makedepends = npm
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libsoup3
+	optdepends = spectacle: region capture on KDE (Linux)
+	optdepends = ollama: local models provider
+	source = git+https://github.com/razenfh/lumina.git#tag=v0.1.0
+	sha256sums = SKIP
 
 pkgname = lumina
-
