@@ -1,14 +1,13 @@
-pkgbase = dmitry
-	pkgdesc = Simple utility to perform host audition and extended whois queries using Google and ICANN
-	pkgver = 1.2a
+pkgbase = dmitry-git
+	pkgdesc = Simple utility to perform host audition and extended whois queries using Google and ICANN (git version)
+	pkgver = 1.3a.r33.g1cdadb9
 	pkgrel = 1
 	url = http://mor-pah.net/software/dmitry-deepmagic-information-gathering-tool/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = glibc
-	source = https://dl.packetstormsecurity.net/UNIX/misc/DMitry-1.2a.tar.gz
-	md5sums = 5917242266383be3aa7e0e618ae0c015
+	source = git+https://github.com/0zitro/dmitry#branch=feat/0zitro/renovate
+	md5sums = SKIP
 
-pkgname = dmitry
-
+pkgname = dmitry-git
