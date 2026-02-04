@@ -5,7 +5,7 @@
 _pkgauthor=AlistGo
 _pkgname=alist
 pkgname=${_pkgname}-bin
-pkgver=3.56.0
+pkgver=3.57.0
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="Another file list program that supports multiple storage"
@@ -36,8 +36,8 @@ sha256sums=('b72f194a7b8855e97eeb76e63e179f38132cc9e6be9daa5b396699c9c11611de'
             '5712b21aebf669fe9fb5d47dd685809d4d9670b1bb1d5e6fef962b9d11ba9d72'
             '3658370660806f73c3d9bc5f1b6e2a013c9520d34ffc4462df99f7692473613d'
             'c6b62c4a750ab921c2e8f965e4baeee28855c9a969b00eddd346670f2fdf12de')
-sha256sums_x86_64=('f6718da34448d6becfef8d28b68b078a727f9a3e0aca140342c1524a3239fc09')
-sha256sums_aarch64=('6045fb9bc694144cdc2679b6ee7ef729cbc5d6fda9911db910329ad1599a650b')
+sha256sums_x86_64=('0ba5ffccf13ac7914ef4a6d75f843af43ba3ea371be6a5caac0de2331baf7a07')
+sha256sums_aarch64=('b1889c270d21418e8dd5f8a2f94459bab07da49a659d7f178aeb51013d6b2097')
 
 package() {
     cd "${srcdir}/" || exit
