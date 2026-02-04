@@ -1,7 +1,7 @@
 pkgbase = zenscreen
 	pkgdesc = Digital Wellbeing for Linux (ZenScreen) - Screen Time Tracker
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Someshwar1006/Digital-Wellbeing-for-Linux
 	install = zenscreen.install
 	arch = any

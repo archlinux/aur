@@ -3,7 +3,7 @@
 
 pkgname=zenscreen
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Digital Wellbeing for Linux (ZenScreen) - Screen Time Tracker"
 arch=('any')
 url="https://github.com/Someshwar1006/Digital-Wellbeing-for-Linux"
@@ -70,6 +70,10 @@ package() {
     # Install systemd user service
     install -Dm644 systemd/zenscreen.service \
         "$pkgdir/usr/lib/systemd/user/zenscreen.service"
+        
+    # Install autostart file (starts daemon on login)
+    install -Dm644 data/zenscreen-autostart.desktop \
+        "$pkgdir/etc/xdg/autostart/zenscreen-autostart.desktop"
     
     # Install license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
