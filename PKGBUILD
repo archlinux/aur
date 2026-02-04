@@ -1,5 +1,6 @@
-# Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
-# Contributor: Lubosz Sarnecki <lubosz@gmail.com>
+# Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
+# Contributor: Daniel Bershatsky <bepshatsky@yandex.ru>
+
 pkgname=python-flash-attention
 _pkgname=${pkgname#python-}
 pkgver=2.8.3
