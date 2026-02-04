@@ -1,0 +1,95 @@
+--- questing-wallpapers.xml.in	2025-09-03 02:00:21.000000000 -0300
++++ questing-wallpapers-patched.xml.in	2026-02-04 06:02:03.359061589 -0300
+@@ -3,52 +3,79 @@
+ <wallpapers>
+  <wallpaper deleted="false">
+    <name>Ubuntu 25.10 Community Wallpapers</name>
+-   <filename>/usr/share/backgrounds/contest/questing.xml</filename>
++   <filename>/usr/share/gnome-background-properties/questing-wallpapers.xml</filename>
+    <options>zoom</options>
+  </wallpaper>
+  <wallpaper>
+-     <_name>Flash and Thunder</_name>
+-     <filename>/usr/share/backgrounds/Flash_and_Thunder_by_Julian_Tomasini.jpg</filename>
++     <name>Questing Quokka Color</name>
++     <filename>/usr/share/backgrounds/ubuntu-backgrounds-questing/Questing_Quokka_Full_Color_3840x2160.png</filename>
++     <filename-dark>/usr/share/backgrounds/ubuntu-backgrounds-questing/Questing_Quokka_Full_Dimmed_3840x2160.png</filename-dark>
+      <options>zoom</options>
+      <pcolor>#000000</pcolor>
+      <scolor>#000000</scolor>
+      <shade_type>solid</shade_type>
+  </wallpaper>
+  <wallpaper>
+-     <_name>Lonely Quokka</_name>
+-     <filename>/usr/share/backgrounds/Lonely_Quokka_by_Dilip.png</filename>
++     <name>Questing Quokka Full</name>
++     <filename>/usr/share/backgrounds/ubuntu-backgrounds-questing/Questing_Quokka_Full_Light_3840x2160.png</filename>
++     <filename-dark>/usr/share/backgrounds/ubuntu-backgrounds-questing/Questing_Quokka_Full_Dark_3840x2160.png</filename-dark>
+      <options>zoom</options>
+      <pcolor>#000000</pcolor>
+      <scolor>#000000</scolor>
+      <shade_type>solid</shade_type>
+  </wallpaper>
+  <wallpaper>
+-     <_name>Quokka Everywhere</_name>
+-     <filename>/usr/share/backgrounds/Quokka_Everywhere_by_Dilip.png</filename>
++     <name>Questing Quokka Wallpaper</name>
++     <filename>/usr/share/backgrounds/ubuntu-backgrounds-questing/Questing_Quokka_Wallpaper_Light_3840x2160.png</filename>
++     <filename-dark>/usr/share/backgrounds/ubuntu-backgrounds-questing/Questing_Quokka_Wallpaper_Dimmed_3840x2160.png</filename-dark>
+      <options>zoom</options>
+      <pcolor>#000000</pcolor>
+      <scolor>#000000</scolor>
+      <shade_type>solid</shade_type>
+  </wallpaper>
+  <wallpaper>
+-     <_name>The Web</_name>
+-     <filename>/usr/share/backgrounds/The_Web_by_nkhdiscovery.png</filename>
++     <name>Flash and Thunder</name>
++     <filename>/usr/share/backgrounds/ubuntu-backgrounds-questing/Flash_and_Thunder_by_Julian_Tomasini.jpg</filename>
+      <options>zoom</options>
+      <pcolor>#000000</pcolor>
+      <scolor>#000000</scolor>
+      <shade_type>solid</shade_type>
+  </wallpaper>
+  <wallpaper>
+-     <_name>Ubuntu with Frutiger Metro</_name>
+-     <filename>/usr/share/backgrounds/Ubuntu_with_Frutiger_Metro_by_lyk_lyk.png</filename>
++     <name>Lonely Quokka</name>
++     <filename>/usr/share/backgrounds/ubuntu-backgrounds-questing/Lonely_Quokka_by_Dilip.png</filename>
+      <options>zoom</options>
+      <pcolor>#000000</pcolor>
+      <scolor>#000000</scolor>
+      <shade_type>solid</shade_type>
+  </wallpaper>
+  <wallpaper>
+-     <_name>Schattenzug</_name>
+-     <filename>/usr/share/backgrounds/Schattenzug_by_OrbiteLambda.webp</filename>
++     <name>Quokka Everywhere</name>
++     <filename>/usr/share/backgrounds/ubuntu-backgrounds-questing/Quokka_Everywhere_by_Dilip.png</filename>
++     <options>zoom</options>
++     <pcolor>#000000</pcolor>
++     <scolor>#000000</scolor>
++     <shade_type>solid</shade_type>
++ </wallpaper>
++ <wallpaper>
++     <name>The Web</name>
++     <filename>/usr/share/backgrounds/ubuntu-backgrounds-questing/The_Web_by_nkhdiscovery.png</filename>
++     <options>zoom</options>
++     <pcolor>#000000</pcolor>
++     <scolor>#000000</scolor>
++     <shade_type>solid</shade_type>
++ </wallpaper>
++ <wallpaper>
++     <name>Ubuntu with Frutiger Metro</name>
++     <filename>/usr/share/backgrounds/ubuntu-backgrounds-questing/Ubuntu_with_Frutiger_Metro_by_lyk_lyk.png</filename>
++     <options>zoom</options>
++     <pcolor>#000000</pcolor>
++     <scolor>#000000</scolor>
++     <shade_type>solid</shade_type>
++ </wallpaper>
++ <wallpaper>
++     <name>Schattenzug</name>
++     <filename>/usr/share/backgrounds/ubuntu-backgrounds-questing/Schattenzug_by_OrbiteLambda.webp</filename>
+      <options>zoom</options>
+      <pcolor>#000000</pcolor>
+      <scolor>#000000</scolor>

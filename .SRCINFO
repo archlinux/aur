@@ -1,0 +1,13 @@
+pkgbase = ubuntu-backgrounds-questing
+	pkgdesc = The backgrounds included in Ubuntu 25.10 questing
+	pkgver = 25.10.2
+	pkgrel = 1
+	url = http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers
+	arch = any
+	license = Commons Attribution-ShareAlike 3.0 Unported
+	source = http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers/ubuntu-wallpapers_25.10.2.orig.tar.gz
+	source = quokka.patch
+	sha256sums = 63e28929087636f021162fd33827c109c79182969c7a0dca4a14c36014b93c1b
+	sha256sums = 8727233f156e6cc467e08ba3a2ae75b7b585ea7130ac5c5716be5ad65d4652ea
+
+pkgname = ubuntu-backgrounds-questing
