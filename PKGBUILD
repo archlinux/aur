@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=portable-git
 epoch=1
-pkgver=13.0.alpha.6.r0.g1ab3cb69
+pkgver=13.0.alpha.8.r2.g7d6a0a38
 pkgrel=1
 epoch=
 pkgdesc="Portable Sandboxing framework"
@@ -16,21 +16,16 @@ conflicts=(portable)
 depends=(
 	"libnotify"
 	pipewire
-	findutils
-	"procps-ng"
 	"coreutils"
-	"xdg-user-dirs"
-	"xorg-xhost"
 	"zenity"
 	"xdg-dbus-proxy"
 	"bubblewrap"
 	"util-linux"
 	"glib2"
-	"wayland"
+	"glibc"
 	"dbus"
 	"bash"
 	"xdg-desktop-portal-impl"
-	"inotify-tools"
 	"grep"
 )
 
