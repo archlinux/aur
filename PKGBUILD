@@ -1,7 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=geforce-infinity
-pkgver=1.2.0
-pkgrel=2
+_app_id=net.astralvixen.geforceinfinity
+pkgver=1.2.1
+pkgrel=1
 _nodeversion=22
 _electronversion=37
 pkgdesc="A next-gen application designed to enhance the GeForce NOW experience."
@@ -9,13 +10,16 @@ arch=('x86_64')
 url="https://geforce-infinity.xyz"
 license=('MIT')
 depends=("electron${_electronversion}")
-makedepends=('nvm')
+makedepends=(
+  'bun'
+  'git'
+  'nvm'
+  'python-setuptools'
+)
 source=("GeForce-Infinity-$pkgver.tar.gz::https://github.com/AstralVixen/GeForce-Infinity/archive/refs/tags/$pkgver.tar.gz"
-        "$pkgname.sh"
-        "$pkgname.desktop")
-sha256sums=('0de53385a83797ec377173e30133a470cd3909d4cb027d20d9320cf63e788ed1'
-            '426e8f155c4f2273201ad33d0c0521c35bbea2259a11cb018572d6ca8b40b82d'
-            'ba47bbcd38d72e3b1f92a72aebb89a0dae5782b4650a749d476642f731230865')
+        "$pkgname.sh")
+sha256sums=('d5a9c8885aa87769a0e1353b09668e20bd6036a6561cc3a89f31530e8df8a24b'
+            '426e8f155c4f2273201ad33d0c0521c35bbea2259a11cb018572d6ca8b40b82d')
 
 _ensure_local_nvm() {
   # let's be sure we are starting clean
@@ -34,6 +38,9 @@ prepare() {
   nvm install "${_nodeversion}"
 
   sed -i "s|@ELECTRONVERSION@|${_electronversion}|" "$srcdir/$pkgname.sh"
+
+  desktop-file-edit --set-key=Exec --set-value="$pkgname" \
+    "com.github.astralvixen.$pkgname.desktop"
 }
 
 build() {
@@ -43,11 +50,15 @@ build() {
   electronDist="/usr/lib/electron${_electronversion}"
   electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
   _ensure_local_nvm
-  npm install
-  npm install bun
-  npm run build
-  ./node_modules/.bin/electron-builder --linux --x64 --dir \
+  bun install
+  bun run build
+  bun electron-builder --linux --x64 --dir \
     $dist -c.electronDist=$electronDist -c.electronVersion=$electronVer
+}
+
+check() {
+  cd "GeForce-Infinity-$pkgver"
+  desktop-file-validate "com.github.astralvixen.$pkgname.desktop"
 }
 
 package() {
@@ -58,8 +69,9 @@ package() {
     "$pkgdir/usr/lib/$pkgname/"
 
   install -Dm644 dist/assets/resources/infinitylogo.png \
-    "$pkgdir/usr/share/pixmaps/$pkgname.png"
+    "$pkgdir/usr/share/pixmaps/${_app_id}.png"
+  install -Dm644 "com.github.astralvixen.$pkgname.desktop" \
+    "$pkgdir/usr/share/applications/${_app_id}.desktop"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
 }

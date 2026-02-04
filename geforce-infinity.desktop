@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=GeForceInfinity
-Exec=geforce-infinity
-Terminal=false
-Type=Application
-Icon=geforce-infinity
-StartupWMClass=GeForceInfinity
-Comment=Enhance your GeForce NOW application experience!
-Categories=Game;
