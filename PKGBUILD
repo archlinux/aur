@@ -24,7 +24,7 @@ package() {
 
   # All scripts and main entry into /usr/bin
   install -d "${pkgdir}/usr/bin"
-  for _s in cleanme cram crush fold ufold namechange pull stick flatten nest hop trim prefix dedupe archive bak pullfrom pushto dotsync topd paclock; do
+  for _s in cleanme cram crush bfold ufold namechange pull stick flatten nest hop trim prefix dedupe archive bak pullfrom pushto dotsync topd paclock; do
     install -Dm755 "${_bd}/scripts/${_s}" "${pkgdir}/usr/bin/${_s}"
   done
   install -Dm755 "${_bd}/bashd" "${pkgdir}/usr/bin/bashd"
