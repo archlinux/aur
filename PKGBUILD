@@ -27,7 +27,7 @@ optdepends=(
   'qucs: for Qucsator simulation backend'
   'xyce-serial: SPICE-compatible simulation backend'
   'spiceopus: general purpose simulation backend for optimization loops'
-  'openvaf: compiler for Verilog-A devices support'
+  'openvaf-readloaded: compiler for Verilog-A devices support'
   'octave: high-level language for post-simulation data processing'
 )
 source=(https://github.com/ra3xdh/qucs_s/releases/download/$pkgver/$pkgname-$pkgver.tar.gz)
