@@ -3,8 +3,8 @@
 
 pkgname=python-bibtexparser-git
 _pkgname="${pkgname%-git}"
-pkgrel=3
 pkgver=2.0.0b8.r0.gb379599
+pkgrel=3
 pkgdesc="Bibtex parser in Python"
 arch=('any')
 url="https://bibtexparser.readthedocs.org/"
