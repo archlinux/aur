@@ -1,6 +1,6 @@
 pkgbase = cupola-git
 	pkgdesc = An image viewer for the COSMIC desktop environment.
-	pkgver = r48.ae49078
+	pkgver = r51.658a925
 	pkgrel = 1
 	url = https://codeberg.org/bhh32/cupola
 	arch = x86_64

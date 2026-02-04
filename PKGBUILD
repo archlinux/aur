@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cupola-git
 _app_id=org.codeberg.bhh32.Cupola
-pkgver=r48.ae49078
+pkgver=r51.658a925
 pkgrel=1
 pkgdesc="An image viewer for the COSMIC desktop environment."
 arch=('x86_64' 'aarch64')
@@ -34,9 +34,12 @@ prepare() {
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc --print host-tuple)"
 
+  # Correct binary name
+  sed -i "s/cosmic-viewer/${pkgname%-git}/g" crates/viewer/Cargo.toml
+
   # Add StartupWMClass
   desktop-file-edit --set-key=StartupWMClass --set-value="${_app_id}" \
-    "data/${pkgname%-git}.desktop"
+    "data/${_app_id}.desktop"
 
   # Fix typo
   mv -f "data/${_app_id}.meta.info.xml" "data/${_app_id}.metainfo.xml"
@@ -59,7 +62,7 @@ check() {
 package() {
   cd "${pkgname%-git}"
   install -Dm755 "target/release/${pkgname%-git}" -t "$pkgdir/usr/bin/"
-  install -Dm644 "data/${pkgname%-git}.desktop" -t \
+  install -Dm644 "data/${_app_id}.desktop" -t \
     "$pkgdir/usr/share/applications/"
   install -Dm644 "data/${_app_id}.svg" -t \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
