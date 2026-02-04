@@ -1,0 +1,19 @@
+pkgbase = python-sigfig
+	pkgdesc = Python library for rounding numbers (with expected results)
+	pkgver = 1.3.19
+	pkgrel = 1
+	url = https://github.com/drakegroup/sigfig
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-sortedcontainers
+	provides = python-sigfig
+	conflicts = python-sigfig
+	source = sigfig-1.3.19.tar.gz::https://files.pythonhosted.org/packages/source/s/sigfig/sigfig-1.3.19.tar.gz
+	sha256sums = a9e4fa37aa7595cc01b7207bfabf86cccd2d3edfddcdaa925ffd57dd77efcd9e
+
+pkgname = python-sigfig
