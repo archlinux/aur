@@ -11,12 +11,12 @@
 
 # Maintainer: alecksandr <sansepiol26@gmail.com>
 pkgname=mem-c
-pkgver=1.1.1
-pkgrel=3
+pkgver=1.1.2
+pkgrel=4
 epoch=
 pkgdesc="mem-c is a simple memory allocator using a heap data structure with the mmap Linux syscall for dynamic memory management. It has a worst-case search time of O(n * log n) and averages O(log n)."
 arch=(x86_64)
-url="https://github.com/alecksandr26/mem-c/archive/refs/tags/v$pkgver.tar.gz"
+url="https://github.com/alecksandr26/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
 license=('MIT License')
 depends=()
 makedepends=(gcc git make binutils coreutils)
