@@ -6,7 +6,7 @@ arch=('any')
 url="https://github.com/KevinCrrl/UASPL"
 license=('GPL3 and MIT')
 source=("${url}/archive/refs/tags/${pkgver}/${pkgver}.tar.gz")
-sha512sums=("0d58893d8b4c1e5fb712294e3b4c6fb5332747fd679a6cb7bbee5a6df3009daf7a1b631cf539e5cf910e3640eb3d7a73307397528a6183528b82ae8c205cd2fb")
+sha512sums=("9fc33d5d84808bb5a6181a9af1a164bf866bad6457877eec45c43d637c5e7c5be45ed905934de36ac58679dc7a24bba6fa6dda317d8a4cc6948470287959d787")
 conflicts=('uaspl-bin')
 depends=(
     'python'
