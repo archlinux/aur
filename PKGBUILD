@@ -3,8 +3,8 @@
 
 pkgname=flclash-appimage-bin
 _pkgname=FlClash
-pkgver=0.8.91
-pkgrel=2
+pkgver=0.8.92
+pkgrel=1
 pkgdesc="A multi-platform proxy client based on ClashMeta, simple and easy to use, open-source and ad-free"
 arch=('x86_64')
 url="https://github.com/chen08209/FlClash"
@@ -16,7 +16,7 @@ options=('!strip')
 
 # 來源 100% 來自官方 GitHub
 source_x86_64=("${_pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.AppImage")
-sha256sums_x86_64=('fdb76b7d9c1b40a434923f16b92db96d6843f6ab8e360fd8b6d0a35b5dff5738')
+sha256sums_x86_64=('8f3743fe8980449329f31f8d4fbfa08b8b8be0180796ca68935dfaa9458e2f7d')
 
 prepare() {
     chmod +x "${srcdir}/${_pkgname}-${pkgver}.AppImage"
