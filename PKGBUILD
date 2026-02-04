@@ -2,7 +2,7 @@
 pkgname=focusnoise-cli-git
 _pkgname=FocusNoiseCLI
 pkgver=1.0.0.r1.g0f2126d
-pkgrel=1
+pkgrel=2
 pkgdesc="Focus Noise Player CLI - Ambient sounds for deep focus"
 arch=('any')
 url="https://github.com/SyreeseOfficial/FocusNoiseCLI"
