@@ -1,7 +1,7 @@
 # Maintainer: x2b <psaoj.10.Toranaga-San@spamgourmet.com>
 
 pkgname=spral
-pkgver=2024.05.08
+pkgver=2025.09.18
 pkgrel=1
 license=('LicenseRef-STFC')
 pkgdesc="Sparse Parallel Robust Algorithms Library"
@@ -10,7 +10,7 @@ url="https://github.com/ralna/spral"
 makedepends=('meson')
 depends=('metis' 'lapack' 'hwloc' 'glibc' 'gcc-libs')
 source=("https://github.com/ralna/spral/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0795c10c1c4dab1cf8c2de4024296d75d9d83b7525e82c77584c16060e29e4f5')
+sha256sums=('1358168ac95297049e4fc810e54a16e0c765796cfbaa156e09979e2620b7dae7')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
