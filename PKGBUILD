@@ -1,32 +1,28 @@
 # Maintainer:
 # Contributor: Tony Lambiris <tony@libpcap.net>
 
-pkgname=steinberg-asio-sdk
-pkgver=2.3.3
-pkgrel=4
+_pkgname="steinberg-asio"
+pkgname="$_pkgname-sdk"
+pkgver=2.3.4
+pkgrel=1
 pkgdesc="Steinberg's ASIO SDK"
 url="https://www.steinberg.net/en/company/developers.html"
 arch=('any')
-license=('custom')
+license=(
+  'GPL-3.0-only' # dual license
+  'LicenseRef-Steinberg'
+)
 
-provides=(
-  "$pkgname"
-  'steinberg-asio'
-)
-conflicts=(${provides[@]})
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
-_release="asiosdk_2.3.3_2019-06-14"
-source=(
-  "https://download.steinberg.net/sdk_downloads/$_release.zip"
-)
-sha256sums=(
-  '80f5bf2703563f6047acec2edd468d0838c9f61eced9f7cdce9629b04e9710ac'
-)
+_pkgsrc="ASIOSDK"
+_release="ASIO-SDK_2.3.4_2025-10-15"
+source=("https://download.steinberg.net/sdk_downloads/$_release.zip")
+sha256sums=('d5ebf0c20dd2c5f43771fd0c1418f4b361bf52434ee670097cfa6b3a335e2eca')
 
 package() {
-  cd "$srcdir/$_release"
-
-  install -D -m644 common/asio.h "$pkgdir/usr/include/steinberg-asio/asio.h"
-
-  install -D -m644 Steinberg*Licensing*Agreement*.pdf -t "$pkgdir/usr/share/licenses/$pkgname"
+  cd "$_pkgsrc"
+  install -Dm644 common/*.h -t"$pkgdir/usr/include/steinberg-asio/"
+  install -Dm644 common/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
