@@ -1,6 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='0.1.17.3'
+_upstreamver='0.1.18.1'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='listpick'
@@ -26,7 +26,7 @@ depends=('python' 'ipython' 'python-pandas' 'python-wcwidth' 'python-openpyxl' '
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
 # source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9e4aca889e4f741ddbda5e29cd40902a6918d1fd2ef2eb8840b3afb90212608e')
+sha256sums=('8bf0f4387144f704f2399ef4d8ff36000b30b3e2aae914a778c2f797c0aef0ef')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${pkgver}/"
