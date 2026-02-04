@@ -1,6 +1,6 @@
 # Maintainer: Prasanth Baskar <bupdprasanth@gmail.com>
 pkgname=kitops
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="An open source DevOps tool from the CNCF for packaging and versioning AI/ML models, datasets, code, and configuration into an OCI Artifact."
 arch=('x86_64' 'i686' 'aarch64')
