@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pipgrip
-pkgver=0.11.1
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Lightweight pip dependency resolver with deptree preview functionality based on the PubGrub algorithm"
 arch=('any')
@@ -19,8 +19,15 @@ makedepends=(
   'python-installer'
   'python-setuptools-scm'
 )
+checkdepends=(
+  'python-pkginfo'
+  'python-pytest'
+  'python-pytest-cov'
+  'python-pytest-env'
+  'python-testfixtures'
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('3c762ac72e39c168733c81f217e4804680805bf2a93ef3485cb01ca3311de326')
+sha256sums=('1677bc740cd3c8bb4b1e12b3e271927797da99099dc76dd20e0fda7ad07cfee1')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -33,6 +40,11 @@ build() {
   cd "$pkgname-$pkgver"
   export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
   python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "$pkgname-$pkgver"
+  PYTHONPATH=src/ pytest
 }
 
 package() {
