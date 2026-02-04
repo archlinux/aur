@@ -1,6 +1,6 @@
 pkgbase = mdbook-epub
 	pkgdesc = An experimental mdbook backend for creating EPUB documents.
-	pkgver = 0.4.48
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/Michael-F-Bryan/mdbook-epub
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = mdbook-epub
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
-	source = mdbook-epub-0.4.48.tar.gz::https://github.com/Michael-F-Bryan/mdbook-epub/archive/v0.4.48.tar.gz
-	sha256sums = 3c135eaf37f9c2bfb694a34ffefe2aaf80aa6b09968bcaee7ef428221025fa7a
+	source = mdbook-epub-0.5.2.tar.gz::https://github.com/Michael-F-Bryan/mdbook-epub/archive/0.5.2.tar.gz
+	sha256sums = 5040097cc5177012e15152d2bc548dbbad211adb91b3399a4c96fcc2ea966557
 
 pkgname = mdbook-epub
