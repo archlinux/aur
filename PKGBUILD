@@ -2,7 +2,7 @@
 pkgname=phasor
 PACKAGER="Daniel McGuire <danielmcguire2023@gmail.com>"
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Phasor Programming Language Toolchain"
 arch=('x86_64')
 url="https://github.com/DanielLMcGuire/Phasor"
@@ -11,6 +11,7 @@ makedepends=('gcc' 'cmake' 'ninja')
 optdepends=('gcc: For building Phasor Native wrappers.')
 conflicts=('phasor-git' 'phasor-dev')
 options=(strip !debug)
+install=phasor.install
 depends=()
 source=("https://github.com/DanielLMcGuire/Phasor/archive/refs/tags/2.2.0.tar.gz")
 sha256sums=('3AB4C4A1DAC0EDD4582678737CBD7B891E438EF074015D1695141A4EE9B7E065')
@@ -32,4 +33,7 @@ package() {
             [ -f "$file" ] && install -Dm644 "$file" "$dest"/
         done
     done
+	
+	install -Dm644 "$startdir/src/Extensions/unix/phasor.magic" \
+        "$pkgdir/usr/share/file/magic/phasor"
 }
