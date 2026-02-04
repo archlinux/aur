@@ -1,0 +1,23 @@
+pkgbase = sortarr
+	pkgdesc = A Python based monitoring and tracking tool for Plex Media Server.
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/Jaredharper1/Sortarr
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python-flask
+	depends = python-flask-compress
+	depends = python-flask-babel
+	depends = python-waitress
+	depends = python-requests
+	source = sortarr-0.8.0.tar.gz::https://github.com/Jaredharper1/Sortarr/archive/0.8.0.tar.gz
+	source = sortarr.tmpfiles
+	source = sortarr.service
+	source = sortarr.sysusers
+	sha256sums = 1fa73b326738c282267418112c8c546e8ea16851556f21e4c33aef16c59d7044
+	sha256sums = de7f8d7c30c7758de371369345922430e255eaa1675aa18ad0a18dbe03d2fa72
+	sha256sums = 99f1d408646954e768387fe87c88be35713ecb9bcd9f231f36497fbe0b4677db
+	sha256sums = ba7dec1d29aa45936979bffbcfcd2e64d849ac911fd507f1aad0ca229df9725c
+
+pkgname = sortarr

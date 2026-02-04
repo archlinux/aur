@@ -1,0 +1,13 @@
+[Unit]
+Description=sortarr Service
+
+[Service]
+User=sortarr
+Group=sortarr
+Type=simple
+WorkingDirectory=/usr/lib/sortarr
+ExecStart=/usr/bin/python -m waitress --host=0.0.0.0 --port 8787 --threads=4 app:app
+SyslogIdentifier=sortarr
+
+[Install]
+WantedBy=multi-user.target

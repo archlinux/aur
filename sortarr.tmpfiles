@@ -1,0 +1,4 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /var/lib/sortarr 0755 sortarr sortarr
+Z /var/lib/sortarr - sortarr sortarr
+L /var/log/sortarr - - - - /var/lib/sortarr/logs
