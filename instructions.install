@@ -1,0 +1,11 @@
+BOLD='\033[1m'
+GREEN='\033[32m'
+RESET='\033[0m'
+
+post_install() {
+	echo
+	echo -e "${BOLD}spout2pw${RESET} has been installed at ${BOLD}/opt${RESET}."
+	echo -e "To use ${BOLD}spout2pw${RESET}, follow the instructions at:"
+	echo "https://github.com/hoshinolina/spout2pw/wiki"
+	echo
+}
