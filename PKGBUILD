@@ -5,7 +5,7 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libgcrypt
 pkgver=1.11.2
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="General purpose cryptographic library based on the code from GnuPG (Android ${_android_arch})"
 url="https://www.gnupg.org"
@@ -35,9 +35,9 @@ build() {
     unset ANDROID_CXXFLAGS
     unset ANDROID_LDFLAGS
 
-    export CFLAGS="-pipe -fno-plt -fexceptions -I${ANDROID_PREFIX_INCLUDE}"
+    export CFLAGS="-pipe -fexceptions -I${ANDROID_PREFIX_INCLUDE}"
     export CPPFLAGS="-D_FORTIFY_SOURCE=2 -D__USE_FORTIFY_LEVEL=2 -I${ANDROID_PREFIX_INCLUDE}"
-    export CXXFLAGS="-pipe -fno-plt -fexceptions -I${ANDROID_PREFIX_INCLUDE}"
+    export CXXFLAGS="-pipe -fexceptions -I${ANDROID_PREFIX_INCLUDE}"
     export LDFLAGS="-Wl,--undefined-version -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -L${ANDROID_PREFIX_LIB}"
 
     android-${_android_arch}-configure \
