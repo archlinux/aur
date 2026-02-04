@@ -3,7 +3,7 @@
 pkgname=python-jlcpcb-search-mcp
 _name=${pkgname#python-}
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="MCP server for searching JLCPCB components with live stock and pricing"
 provides=(${pkgname})
 conflicts=(${pkgname})
@@ -40,5 +40,5 @@ build() {
 package() {
     cd "${srcdir}/${_name}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
-    install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    #     install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
