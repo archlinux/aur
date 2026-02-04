@@ -1,6 +1,6 @@
 pkgbase = python-cyipopt
 	pkgdesc = Cython interface for the interior point optimzer IPOPT
-	pkgver = 1.5.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://github.com/mechmotum/cyipopt/
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = python-cyipopt
 	depends = python-numpy
 	depends = python-pytest
 	depends = coin-or-ipopt
-	source = https://github.com/mechmotum/cyipopt/archive/refs/tags/v1.5.0.tar.gz
-	sha256sums = 88f280be6540607bac082be95385f473d922bfa4e811a5ec00f97fbdeca925fa
+	source = https://github.com/mechmotum/cyipopt/archive/refs/tags/v1.6.1.tar.gz
+	sha256sums = 5a827a9f94b34a6924e6f6d257248c2b75d95598c6b2b315d9315e4cdb0847a4
 
 pkgname = python-cyipopt

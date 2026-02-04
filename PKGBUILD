@@ -2,7 +2,7 @@
 # Contributor: Maximilian Stahlberg <maximilian.stahlberg tu-berlin de>
 
 pkgname=python-cyipopt
-pkgver=1.5.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc='Cython interface for the interior point optimzer IPOPT'
 arch=(x86_64)
@@ -23,7 +23,7 @@ makedepends=(cython
              python-wheel)
 
 source=("https://github.com/mechmotum/cyipopt/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('88f280be6540607bac082be95385f473d922bfa4e811a5ec00f97fbdeca925fa')
+sha256sums=('5a827a9f94b34a6924e6f6d257248c2b75d95598c6b2b315d9315e4cdb0847a4')
 
 build() {
   cd "cyipopt-${pkgver}"
