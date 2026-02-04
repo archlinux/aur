@@ -1,0 +1,7 @@
+post_install() {
+  echo -e "====================[alacritty-use-theme-with-gnome-darkmode]====================\n"
+  echo -e "Run this command to enable and start the service:"
+  echo  "\`systemctl --user enable --now alacritty-listen-to-colorscheme.service\`"
+  echo -e "====================\n"
+}
+

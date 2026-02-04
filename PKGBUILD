@@ -24,6 +24,7 @@ package_alacritty-use-theme-with-redshift-git() {
   depends=('redshift' 'alacritty-use-theme')
   provides=('alaritty-use-theme-with-redshift.service' 'alaritty-use-theme-with-redshift.timer' 'alaritty-use-theme-with-redshift.target')
   conflicts=('alacritty-use-theme-with-redshift' 'alacritty-use-theme-with-redshift-git')
+  install=alacritty-use-theme-with-redshift-git.install
 
 	cd "$pkgbase"
 
@@ -59,6 +60,7 @@ package_alacritty-use-theme-with-gnome-darkmode-git() {
   provides=('alacritty-listen-to-colorscheme.service')
   conflicts=('alacritty-use-theme-with-gnome-darkmode')
   replaces=('alacritty-use-theme-with-gnome-darkmode-git' 'alacritty-toggle-theme-on-darkmode-git')
+  install=alacritty-use-theme-with-gnome-darkmode-git.install
 
 	cd "$pkgbase"
 

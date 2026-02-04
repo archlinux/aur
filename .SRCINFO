@@ -15,6 +15,7 @@ pkgbase = alacritty-use-theme-with-services-git
 
 pkgname = alacritty-use-theme-with-redshift-git
 	pkgdesc = ::Rolling release:: Changes alacritty theme based on the current time and locale
+	install = alacritty-use-theme-with-redshift-git.install
 	depends = redshift
 	depends = alacritty-use-theme
 	provides = alaritty-use-theme-with-redshift.service
@@ -26,6 +27,7 @@ pkgname = alacritty-use-theme-with-redshift-git
 pkgname = alacritty-use-theme-with-gnome-darkmode-git
 	pkgdesc = ::Rolling release:: Changes alacritty theme when clicking the 'Dark Style' button in Gnome's System tray
 	url = https://github.com/alacritty-use-theme/alacritty-use-theme-with-gnome-darkmode
+	install = alacritty-use-theme-with-gnome-darkmode-git.install
 	depends = bash
 	depends = awk
 	depends = alacritty-use-theme
