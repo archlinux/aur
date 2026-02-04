@@ -1,8 +1,8 @@
 # Maintainer: Jake Stanger <mail@jstanger.dev>
 
 pkgname=ironbar-git
-pkgver=0.17.1.r32.ga3c5189
-pkgrel=3
+pkgver=0.18.0.r114.ge45a178
+pkgrel=2
 makedepends=('rust' 'cargo' 'git' 'openssl')
 
 depends=(
@@ -52,5 +52,5 @@ package() {
   install -Dm 644 "$srcdir/ironbar/target/completions/ironbar.fish" "$pkgdir/usr/share/fish/vendor_completions.d/ironbar.fish"
 
   install -Dm 644 "$srcdir/ironbar/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm 644 "$srcdir/ironbar/ironbar.service" "${pkgdir}/lib/systemd/user/ironbar.service"
+  install -Dm 644 "$srcdir/ironbar/ironbar.service" "${pkgdir}/usr/lib/systemd/user/ironbar.service"
 }
