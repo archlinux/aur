@@ -1,20 +1,20 @@
-# Maintainer: pappy <pa314159@users.noreply.github.com>
+# Contributor: pappy <pa314159@users.noreply.github.com>
 pkgbase=python-sarge
 pkgname=('python-sarge')
-pkgver=0.1.7.post1
-pkgrel=3
+pkgver=0.1.8
+pkgrel=1
 pkgdesc="The sarge package provides a wrapper for subprocess which provides command pipeline functionality."
 arch=('any')
 url="https://github.com/vsajip/sarge"
 license=('BSD')
 source=("git+https://github.com/vsajip/sarge.git#tag=${pkgver}")
-sha256sums=('b882b7529c22ab95ee4c6bab40557529640a28841180b4cc1fdb59d67a982e1f')
+sha256sums=('436e54c8803991e741585ed50ef35c4c778f1d065e7dab63cc8838f28f4eed07')
 depends=('python')
-makedepends=('python-setuptools' 'git')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'git')
 conflicts=('python-sarge-git')
 
 package() {
   cd "${srcdir}/sarge"
-  python setup.py build
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python -m build --wheel --no-isolation
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
