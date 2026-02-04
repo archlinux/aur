@@ -15,7 +15,7 @@ pkgname=(
   mutter-render-source-docs
 )
 pkgver=49.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Mutter 49.3 with render-source fix for NVIDIA Wayland (LP #2081140)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -103,7 +103,7 @@ source=(
 b2sums=('SKIP'
         'SKIP'
         'f5db1c711d8ba8aed74281c4d1ca4f1ad16de794aa3273aae959cd6619f1d4ead38be36864cf514fafb430ef6dcda936f83c6b31ad2dec6bf833f138386ad0c1'
-        '75dee38dfe712f03e494205571d3664d27978d2918ff6a11abc6ec816ecc82fd6d2839cbe091f1a9c131762d855d5f165c9982046a2380c2b2399200084911ac')
+        '9c44c008722891edad2adda95429964d8ce4fa597af9e5a9378c906f9cc333a62a0895e210c9c4de93de3abaf1e697cf9ff55c2b93b7a49152020b1241183182')
 
 pkgver() {
   cd "$srcdir/mutter"
