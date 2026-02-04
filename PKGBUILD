@@ -16,12 +16,12 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/envmodules/modules/rele
 sha256sums=('b175e57860e62d87b6118a79cc2d76e857e5774a9ff78558d6726122760b0034')
 
 # Install locations:
-install_prefix=/usr
-config_path=/etc
-profiled="/etc/profile.d"
-moduledir=modules
+_install_prefix=/usr
+_config_path=/etc
+_profiled="/etc/profile.d"
+_moduledir=modules
 
-backup=("${config_path:1}/${moduledir}/init/modulerc")
+backup=("${_config_path:1}/${_moduledir}/init/modulerc")
 
 build() {
     cd "modules-$pkgver"
@@ -73,6 +73,6 @@ package() {
     ln -s ../${moduledir}/init/profile.sh $_profiled/env-modules.sh
 
     # Keep up with old versions:
-    ln -s ./perl.pm ${pkgdir}${config_path}/${moduledir}/init/perl
-    ln -s ./python.py ${pkgdir}${config_path}/${moduledir}/init/python
+    ln -s ./perl.pm ${pkgdir}${_config_path}/${_moduledir}/init/perl
+    ln -s ./python.py ${pkgdir}${_config_path}/${_moduledir}/init/python
 }
