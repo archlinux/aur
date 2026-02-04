@@ -1,0 +1,5 @@
+pkg/
+src/
+xcc/
+*.pkg.tar.zst
+
