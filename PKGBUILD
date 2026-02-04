@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/SyreeseOfficial/FocusNoiseCLI"
 license=('MIT')
 depends=('python' 'python-pygame' 'python-rich')
-makedepends=('git')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 provides=('focusnoise-cli')
 conflicts=('focusnoise-cli')
 source=("git+https://github.com/SyreeseOfficial/FocusNoiseCLI.git")
@@ -20,23 +20,12 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build() {
+  cd "$_pkgname"
+  python -m build --wheel --no-isolation
+}
+
 package() {
   cd "$_pkgname"
-
-  # Create installation directories
-  install -d "$pkgdir/usr/share/focusnoise-cli"
-  install -d "$pkgdir/usr/bin"
-
-  # Install application files and assets
-  # Using cp -a to preserve structure
-  cp -a assets *.py "$pkgdir/usr/share/focusnoise-cli/"
-
-  # Create and install the launcher script
-  cat > "$pkgdir/usr/bin/focusnoise" <<EOF
-#!/bin/sh
-exec python /usr/share/focusnoise-cli/main.py "\$@"
-EOF
-
-  # Make launcher executable
-  chmod 755 "$pkgdir/usr/bin/focusnoise"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
