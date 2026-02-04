@@ -49,12 +49,12 @@ sha256sums=('SKIP')
 # sha256sums=('SKIP')
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/Digital-Wellbeing-for-Linux-$pkgver"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/Digital-Wellbeing-for-Linux-$pkgver"
     
     # Install Python package
     python -m installer --destdir="$pkgdir" dist/*.whl
