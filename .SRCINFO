@@ -1,13 +1,12 @@
 pkgbase = python-tensorflow-probability
 	pkgdesc = Probabilistic reasoning and statistical analysis in TensorFlow
 	pkgver = 0.25.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/tensorflow/probability
 	arch = any
 	license = Apache-2.0
-	makedepends = python-setuptools
-	makedepends = bazel
-	makedepends = python-absl
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = python-tensorflow
 	depends = python-numpy
@@ -18,7 +17,7 @@ pkgbase = python-tensorflow-probability
 	depends = python-dm-tree
 	depends = python-absl
 	depends = python-tf-keras
-	source = https://github.com/tensorflow/probability/archive/v0.25.0.tar.gz
-	sha256sums = 73cf3e52d3b5ee48fc919631e7fa3621849b8ce8d453017016a5148815856bc2
+	source = https://files.pythonhosted.org/packages/py2.py3/t/tensorflow_probability/tensorflow_probability-0.25.0-py2.py3-none-any.whl
+	sha256sums = f3f4d6431656c0122906888afe1b67b4400e82bd7f254b45b92e6c5b84ea8e3e
 
 pkgname = python-tensorflow-probability
