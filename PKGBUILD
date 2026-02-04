@@ -1,65 +1,60 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 
 pkgname=python-jaxlib-cuda
-pkgver=0.6.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='XLA library for JAX'
 arch=('x86_64')
-url='https://github.com/jax-ml/jax/'
+url='https://github.com/jax-ml/jax'
 license=('Apache-2.0')
 groups=('jax')
-depends=('cuda' 'cudnn' 'nccl' 'python-absl' 'python-ml-dtypes>=0.4.0'
-	 'python-numpy' 'python-scipy')
-makedepends=('clang18' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-conflicts=('python-jaxlib')
-provides=("python-jaxlib=$pkgver")
-_bazel_ver=7.4.1
-source=("jaxlib-${pkgver}.tar.gz::$url/archive/refs/tags/jax-v${pkgver}.tar.gz"
-        "bazel-${_bazel_ver}-linux-x86_64::https://github.com/bazelbuild/bazel/releases/download/${_bazel_ver}/bazel-${_bazel_ver}-linux-x86_64")
-sha256sums=('07ec7a19c3a27c4cca88288f9e9477a62cd0b54bd43c4a77f497505ddadc72ed'
-            'c97f02133adce63f0c28678ac1f21d65fa8255c80429b588aeeba8a1fac6202b')
+depends=(
+    'cuda'
+    'cudnn'
+    'nccl'
+    'python-ml-dtypes'
+    'python-numpy'
+    'python-scipy'
+)
+makedepends=(
+    'clang20'
+    'python-build'
+    'python-installer'
+    'python-setuptools'
+    'python-wheel'
+)
+_bazel_ver=7.7.0
+source=("jax-${pkgver}.tar.gz::$url/archive/refs/tags/jax-v${pkgver}.tar.gz"
+        "bazel-${_bazel_ver}-linux-x86_64::https://github.com/bazelbuild/bazel/releases/download/${_bazel_ver}/bazel-${_bazel_ver}-linux-x86_64"
+        'bazelrc.sh')
+noextract=("bazel-${_bazel_ver}-linux-x86_64")
+sha256sums=('8525c72ac7ea01851297df5b25ca4622c65299c265c87dfe78420bb29e7b1bb3'
+            'fe7e799cbc9140f986b063e06800a3d4c790525075c877d00a7112669824acbf'
+            'SKIP')
 
 prepare() {
-    ln -sf $(readlink bazel-${_bazel_ver}-linux-x86_64) $srcdir/jax-jax-v${pkgver}/build
+    mkdir -p {base,cache,dist,repo,sandbox}
+
+    ln -sf "$(readlink bazel-${_bazel_ver}-linux-x86_64)" "$srcdir/bazel"
     chmod +x $srcdir/bazel-${_bazel_ver}-linux-x86_64
+
+    env -i srcdir="${srcdir}" envsubst < bazelrc.sh > bazelrc
 }
 
 build() {
-    # CUDA and CUDNN versions.
-    export CUDA_VERSION=$(/opt/cuda/bin/nvcc --version | sed -n 's/^.*release \(.*\),.*/\1/p').0
-    export CUDNN_MAJOR=$(sed -n 's/^#define CUDNN_MAJOR\s*\(.*\).*/\1/p' /usr/include/cudnn_version.h)
-    export CUDNN_MINOR=$(sed -n 's/^#define CUDNN_MINOR\s*\(.*\).*/\1/p' /usr/include/cudnn_version.h)
-    export CUDNN_PATCH=$(sed -n 's/^#define CUDNN_PATCHLEVEL\s*\(.*\).*/\1/p' /usr/include/cudnn_version.h)
-    export CUDNN_VERSION="${CUDNN_MAJOR}.${CUDNN_MINOR}.${CUDNN_PATCH}"
-    export CUDA_COMPUTE_CAPABILITIES=sm_80,sm_86,sm_89,sm_90,compute_90
+    cd jax-jax-v$pkgver
 
     # Override default version.
     export JAXLIB_RELEASE=$pkgver
 
-    cd $srcdir/jax-jax-v$pkgver
-    build/build.py build \
-        --bazel_options='--action_env=JAXLIB_RELEASE' \
-        --bazel_options="--action_env=TF_CUDA_COMPUTE_CAPABILITIES=${CUDA_COMPUTE_CAPABILITIES}" \
-        --bazel_options="--repo_env=HERMETIC_CUDA_VERSION=${CUDA_VERSION}" \
-        --bazel_options='--repo_env=LOCAL_NCCL_PATH=/usr' \
-        --bazel_path="$srcdir/bazel-${_bazel_ver}-linux-x86_64" \
-        --bazel_startup_options="--output_user_root=$srcdir/bazel"\
-        --build_cuda_with_clang \
-        --use_clang --clang_path='/usr/lib/llvm18/bin/clang' \
-        --cuda_version=$CUDA_VERSION \
-        --cudnn_version=$CUDNN_VERSION \
-        --target_cpu_features=release \
-        --verbose \
-        --wheels=jaxlib,jax-cuda-plugin,jax-cuda-pjrt
+    ../bazel-${_bazel_ver}-linux-x86_64 --bazelrc=../bazelrc build \
+        --repo_env=HERMETIC_PYTHON_VERSION=3.14 \
+        //jaxlib/tools:jaxlib_wheel
 }
 
 package() {
-    cd $srcdir/jax-jax-v$pkgver
-    install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd jax-jax-v$pkgver
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     python -m installer --compile-bytecode=1 --destdir=$pkgdir \
-        $srcdir/jax-jax-v$pkgver/dist/jaxlib-$pkgver-*.whl
-    python -m installer --compile-bytecode=1 --destdir=$pkgdir \
-        $srcdir/jax-jax-v$pkgver/dist/jax_cuda12_pjrt-$pkgver-*.whl
-    python -m installer --compile-bytecode=1 --destdir=$pkgdir \
-        $srcdir/jax-jax-v$pkgver/dist/jax_cuda12_plugin-$pkgver-*.whl
+        bazel-out/k8-opt/bin/jaxlib/tools/dist/jaxlib-${pkgver}*x86_64.whl
 }
