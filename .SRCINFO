@@ -1,14 +1,14 @@
 pkgbase = hpcgame-kube-cli-bin
 	pkgdesc = HPCGame Kube CLI
-	pkgver = 0.5.6
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/hpcgame/hpcgame-kube-cli
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	source_x86_64 = hpcgame-kube-cli-bin-0.5.6-x86_64.tar.gz::https://github.com/hpcgame/hpcgame-kube-cli/releases/download/v0.5.6/hpcgame-linux-amd64.tar.gz
-	sha256sums_x86_64 = e93684b858bcaff1c92a321e6d48d88461b75bc7862abf4b62aef87617f29e61
-	source_aarch64 = hpcgame-kube-cli-bin-0.5.6-aarch64.tar.gz::https://github.com/hpcgame/hpcgame-kube-cli/releases/download/v0.5.6/hpcgame-linux-arm64.tar.gz
-	sha256sums_aarch64 = a871352e8a62dd9ef9b1b2d27e45912ce40028d5cd6220b1687d2b7d35082f1f
+	source_x86_64 = hpcgame-kube-cli-bin-0.6.1-x86_64.tar.gz::https://github.com/hpcgame/hpcgame-kube-cli/releases/download/v0.6.1/hpcgame-linux-amd64.tar.gz
+	sha256sums_x86_64 = 5be52915f96340f23fd03a143e8e129d64acf11dc1584b6bd6a9d29ad5e8791e
+	source_aarch64 = hpcgame-kube-cli-bin-0.6.1-aarch64.tar.gz::https://github.com/hpcgame/hpcgame-kube-cli/releases/download/v0.6.1/hpcgame-linux-arm64.tar.gz
+	sha256sums_aarch64 = 3e315e7916d4ea605dcf123c5cda73c07d6f5d44d8d508eee50e61518e42982a
 
 pkgname = hpcgame-kube-cli-bin
