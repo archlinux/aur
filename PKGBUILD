@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=skmeans
-_pkgver=0.2-18
+_pkgver=0.2-19
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,8 +14,8 @@ depends=(
   r-slam
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9720b156d31e7f4dbd6de5bcf611a453')
-b2sums=('7734d820170019a795a13bc7c0828c02ebbcdfc8bf29cf9b1cdceb456fd65afdddb0841c9c89cc29034141e276ba3d31d2649d44b1b9dfb5bae99d67a73b0819')
+md5sums=('1da2c0d1de7446eeb4ce39e1cb516e8e')
+b2sums=('a6870f81cfe9d559c1ae830fbe62c54531c9c4ea25cfba2d7ec081dc592b740c87e96e0bb3b9aeceee5669cf610bd89c0205a5d6742a301dfb0e5d6130747bc7')
 
 build() {
   mkdir build
