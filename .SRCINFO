@@ -1,0 +1,21 @@
+pkgbase = hyprshutdown
+	pkgdesc = A graceful shutdown utility for Hyprland
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/hyprwm/hyprshutdown
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	depends = glaze
+	depends = hyprtoolkit
+	depends = hyprutils
+	depends = pixman
+	depends = libdrm
+	provides = hyprshutdown
+	source = https://github.com/hyprwm/hyprshutdown/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 28b125c6d8406029b59beacb77aa080d5d8905239b1006c94c7307f1997e6819
+
+pkgname = hyprshutdown
