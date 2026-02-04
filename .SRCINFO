@@ -1,7 +1,7 @@
 pkgbase = alogi
 	pkgdesc = AI-powered log viewer
 	pkgver = 0.1.26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/allisonhere/alogi
 	arch = x86_64
 	license = MIT
