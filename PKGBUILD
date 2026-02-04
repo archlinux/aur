@@ -1,7 +1,7 @@
 pkgname=python-wyoming-piper
 _pkgname=wyoming-piper
 pkgdesc="Wyoming Server for Piper"
-pkgver=2.1.2
+pkgver=2.2.1
 pkgrel=1
 arch=(any)
 url="https://github.com/rhasspy/wyoming-piper"
@@ -15,7 +15,7 @@ source=("git+https://github.com/rhasspy/wyoming-piper.git#tag=v${pkgver}"
         wyoming-piper.service
         wyoming-piper.sysusers
         wyoming-piper.tmpfiles)
-b2sums=('d3e0228955728f805ab4937c091b74d10c41993aad26933bc1fe844b3e31d1eb4c202b0cbe81e08c497b63f4b7309501260745775e5f1db51b9b0c7daf1f8ecc'
+b2sums=('f3d281eca0f0e2df5f952cf9d3b8782fa9c6936e1a97c2910ee455815f05357bc5f31609ed4c37a35cc6a01c19f21693836dd89be66844fa24502229c8741cfa'
         'd81867797c195e91d22cf0d8a93d63c07ecfa2f7bffe2fc67ccb00c988e6184deba12317b2cf5f049478fbb884e2f73a42072528629cf903f1bfef8cfcd02ac9'
         '79ef3201b170b502244eb48d5df7a7e22f1ef16aad24fba5f09f5b35c38e2b30d1e5e189626efa04fcfc6387e909d770b7e8534e416a0d34e75ee278c0b80012'
         '5f67679c77b4f184134c3b4443a259758442c30600b90ef78acaa2a13c36b304900fcdc4e98d4c31d599f83328ef240f460a3d58b0cb556c38c249fe44ecd031'
