@@ -1,7 +1,7 @@
 # Maintainer: terpinedream <terpinedream@gmail.com>
 
 pkgname=bashd
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Bulk data management toolkit for Linux CLI"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('bash')
 optdepends=('figlet: pretty headers for bashd --<command>')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
 _repo="Bashd"
-sha256sums=('925d528e1840f1fd5f4b25899dcfea13d29ea75366ec3055e949dc749f2202a4')
+sha256sums=('b48b3dbcf7767400c174651c2d1ed630961535ea550e34501cc2ee8629b6aca1')
 
 package() {
   _bd="${srcdir}/${_repo}-${pkgver}"
