@@ -1,7 +1,7 @@
 # Maintainer: grifs <grifoniantaure at gmail dot com>
 pkgname=brother-mfc-l8390cdw
 pkgver=3.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="LPR and CUPS driver for the Brother MFC-L8390CDW"
 arch=('i686' 'x86_64')
 url="http://solutions.brother.com/linux"
@@ -20,6 +20,7 @@ package() {
   mkdir -p ${pkgdir}/usr/share/ppd/Brother
   mkdir -p ${pkgdir}/usr/lib/cups/filter
   # install -Dm755 ${srcdir}/usr/bin/brprintconf_mfcl8390cdw ${pkgdir}/usr/bin/brprintconf_mfcl8390cdw
+  install -Dm755 ${srcdir}/opt/brother/Printers/mfcl8390cdw/lpd/x86_64/brprintconf_mfcl8390cdw ${pkgdir}/usr/bin/brprintconf_mfcl8390cdw
   install -Dm644 ${srcdir}/opt/brother/Printers/mfcl8390cdw/cupswrapper/brother_mfcl8390cdw_printer_en.ppd ${pkgdir}/usr/share/cups/model/Brother
   install -Dm644 ${srcdir}/opt/brother/Printers/mfcl8390cdw/cupswrapper/brother_mfcl8390cdw_printer_en.ppd ${pkgdir}/usr/share/ppd/Brother
   ln -s \
