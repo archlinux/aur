@@ -8,7 +8,7 @@
 
 pkgname=gnome-shell-pomodoro
 pkgver=0.28.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A time management utility for GNOME based on the pomodoro technique'
 arch=('i686' 'x86_64')
 url='https://github.com/gnome-pomodoro/gnome-pomodoro'
