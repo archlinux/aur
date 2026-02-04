@@ -1,7 +1,7 @@
 # Maintainer: Mike Wilson <aur at mjwilson dot org>
 
 pkgname=qui
-pkgver=1.13.0
+pkgver=1.13.1
 pkgrel=1
 pkgdesc="A fast, modern web interface for qBittorrent"
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 	"$pkgname.service"
 	"$pkgname.sysusers"
 	"$pkgname.tmpfiles")
-sha256sums=('a9e49979b0e0610d39b165be5a7fcdc7f72698a986777428407129faf6eacd68'
+sha256sums=('e21834262b6d08c72fa057efd5ecfcea3b51b4fc16da6210d11b6f8e1eb8f821'
             'd52299510cf4845f0514eefd492b01c33bc2cd2819c2be9dc157f50f67462bd2'
             '149029ffcc078976e0ac6cd1f002b25221bb1561a1c979362dc27d9e6ad5dda3'
             '3bacde8867fbb7b6d566666b635589579c1cc079cd23418284f43a7b37f0c41b')
