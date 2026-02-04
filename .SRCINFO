@@ -1,6 +1,6 @@
 pkgbase = android-riscv64-libpng
 	pkgdesc = A collection of routines used to create PNG format graphics (Android riscv64)
-	pkgver = 1.6.53
+	pkgver = 1.6.54
 	pkgrel = 1
 	url = http://www.libpng.org/pub/png/libpng.html
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = android-riscv64-libpng
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = http://downloads.sourceforge.net/sourceforge/libpng/libpng-1.6.53.tar.xz
-	md5sums = 0d95e8af31991e976811bbf55f693d2d
+	source = http://downloads.sourceforge.net/sourceforge/libpng/libpng-1.6.54.tar.xz
+	md5sums = ba9e86853c794d111398b66a42bfa0dc
 
 pkgname = android-riscv64-libpng
