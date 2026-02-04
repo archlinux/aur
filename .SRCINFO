@@ -1,7 +1,7 @@
 pkgbase = python-bibtexparser-git
 	pkgdesc = Bibtex parser in Python
 	pkgver = 2.0.0b8.r0.gb379599
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bibtexparser.readthedocs.org/
 	arch = any
 	license = LicenseRef-MIT
@@ -13,7 +13,7 @@ pkgbase = python-bibtexparser-git
 	makedepends = python-setuptools
 	depends = python
 	depends = python-pylatexenc
-	provides = python-bibtexparser=2.0.0b8.r0.gb379599
+	provides = python-bibtexparser=2.0.0b8
 	conflicts = python-bibtexparser
 	source = git+https://github.com/sciunto-org/python-bibtexparser.git
 	sha256sums = SKIP

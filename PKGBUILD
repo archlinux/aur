@@ -3,7 +3,7 @@
 
 pkgname=python-bibtexparser-git
 _pkgname="${pkgname%-git}"
-pkgrel=2
+pkgrel=3
 pkgver=2.0.0b8.r0.gb379599
 pkgdesc="Bibtex parser in Python"
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=(
     'python-setuptools'
 )
 checkdepends=('python-pytest' 'python-pytest-cov')
-provides=("python-bibtexparser=$pkgver")
+provides=("python-bibtexparser=${pkgver%.r*}")
 conflicts=("python-bibtexparser")
 source=("git+https://github.com/sciunto-org/python-bibtexparser.git")
 sha256sums=('SKIP')
