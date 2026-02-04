@@ -1,0 +1,35 @@
+pkgbase = zenscreen
+	pkgdesc = A Digital Wellbeing & Screen Time Tracker for Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/someshwar/zenscreen
+	install = zenscreen.install
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python>=3.11
+	depends = python-gobject
+	depends = python-cairo
+	depends = python-click
+	depends = python-rich
+	depends = python-pynput
+	depends = python-xlib
+	depends = python-dbus
+	depends = python-matplotlib
+	depends = python-appdirs
+	depends = gtk4
+	depends = libadwaita
+	depends = libnotify
+	depends = xprintidle
+	optdepends = xdotool: for XWayland window detection
+	optdepends = python-pytest: for running tests
+	provides = zenscreen
+	conflicts = zenscreen-git
+	options = !emptydirs
+	source = zenscreen-1.0.0.tar.gz::https://github.com/someshwar/zenscreen/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = zenscreen

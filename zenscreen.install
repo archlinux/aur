@@ -1,0 +1,90 @@
+# Post-installation script for ZenScreen
+
+post_install() {
+    echo ""
+    echo "╔═══════════════════════════════════════════════════════════════╗"
+    echo "║                                                               ║"
+    echo "║   🧘  ZenScreen - Digital Wellbeing for Linux                 ║"
+    echo "║                                                               ║"
+    echo "╠═══════════════════════════════════════════════════════════════╣"
+    echo "║                                                               ║"
+    echo "║   Thank you for installing ZenScreen!                         ║"
+    echo "║                                                               ║"
+    echo "║   Quick Start:                                                ║"
+    echo "║                                                               ║"
+    echo "║   • Launch GUI:       zenscreen-gtk                           ║"
+    echo "║   • View status:      zenscreen status                        ║"
+    echo "║   • Start focus:      zenscreen focus start                   ║"
+    echo "║   • View reports:     zenscreen report --week                 ║"
+    echo "║                                                               ║"
+    echo "║   Enable auto-start tracking:                                 ║"
+    echo "║   $ systemctl --user enable --now zenscreen.service           ║"
+    echo "║                                                               ║"
+    echo "║   Documentation: zenscreen --help                             ║"
+    echo "║                                                               ║"
+    echo "╚═══════════════════════════════════════════════════════════════╝"
+    echo ""
+    
+    # Update icon cache
+    if [ -x /usr/bin/gtk-update-icon-cache ]; then
+        gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+    fi
+    
+    # Update desktop database
+    if [ -x /usr/bin/update-desktop-database ]; then
+        update-desktop-database -q /usr/share/applications
+    fi
+}
+
+post_upgrade() {
+    echo ""
+    echo "🧘 ZenScreen has been upgraded to version $1"
+    echo ""
+    echo "If you're running the daemon, restart it:"
+    echo "  $ systemctl --user restart zenscreen.service"
+    echo ""
+    
+    # Update icon cache
+    if [ -x /usr/bin/gtk-update-icon-cache ]; then
+        gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+    fi
+    
+    # Update desktop database
+    if [ -x /usr/bin/update-desktop-database ]; then
+        update-desktop-database -q /usr/share/applications
+    fi
+}
+
+pre_remove() {
+    # Stop the service if running
+    if systemctl --user is-active --quiet zenscreen.service 2>/dev/null; then
+        systemctl --user stop zenscreen.service
+    fi
+    
+    # Disable the service
+    if systemctl --user is-enabled --quiet zenscreen.service 2>/dev/null; then
+        systemctl --user disable zenscreen.service
+    fi
+}
+
+post_remove() {
+    echo ""
+    echo "🧘 ZenScreen has been removed."
+    echo ""
+    echo "Your usage data is preserved in:"
+    echo "  ~/.local/share/zenscreen/"
+    echo ""
+    echo "To completely remove all data:"
+    echo "  $ rm -rf ~/.local/share/zenscreen/"
+    echo ""
+    
+    # Update icon cache
+    if [ -x /usr/bin/gtk-update-icon-cache ]; then
+        gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+    fi
+    
+    # Update desktop database
+    if [ -x /usr/bin/update-desktop-database ]; then
+        update-desktop-database -q /usr/share/applications
+    fi
+}
