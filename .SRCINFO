@@ -1,7 +1,7 @@
 pkgbase = betterwallpaper-git
 	pkgdesc = A modern, high-performance animated wallpaper manager for Linux
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Misiix9/BetterWallpaper
 	arch = x86_64
 	license = GPL3
