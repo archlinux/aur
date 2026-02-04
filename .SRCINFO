@@ -1,6 +1,6 @@
 pkgbase = rom-properties
 	pkgdesc = Shell extension for displaying ROM and disc image metadata in file managers
-	pkgver = 2.7
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://github.com/GerbilSoft/rom-properties
 	arch = x86_64
@@ -27,8 +27,8 @@ pkgbase = rom-properties
 	makedepends = qt6-tools
 	makedepends = tinyxml2
 	options = !debug
-	source = rom-properties-2.7.tar.gz::https://github.com/GerbilSoft/rom-properties/archive/v2.7.tar.gz
-	sha256sums = 64a275bb6f4bfe94cee94c6526f2825c88265ae136532b0f12b653548ca58984
+	source = rom-properties-2.7.1.tar.gz::https://github.com/GerbilSoft/rom-properties/archive/v2.7.1.tar.gz
+	sha256sums = 6856e3ad88720d0571e82fcac64c0c51605f8ddfbd942130ee5a6e688a2bc399
 
 pkgname = rom-properties
 	depends = curl
