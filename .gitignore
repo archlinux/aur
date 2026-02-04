@@ -1,0 +1,13 @@
+# makepkg build artifacts
+src/
+pkg/
+*.pkg.tar*
+*.log
+
+# Source downloads
+*.zip
+*.tar.*
+
+# Editor files
+*~
+*.swp
