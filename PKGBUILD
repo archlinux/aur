@@ -58,6 +58,7 @@ prepare() {
 build() {
   cd $_pkgname/build
 
+  # https://github.com/libspatialindex/libspatialindex/issues/276
   cmake -G "Ninja" ../ \
     -DCMAKE_INSTALL_PREFIX=/opt/$pkgname \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
@@ -67,7 +68,6 @@ build() {
     -DBINDINGS_GLOBAL_INSTALL=FALSE \
     -DQWTPOLAR_LIBRARY=/usr/lib/libqwt.so \
     -DQWTPOLAR_INCLUDE_DIR=/usr/include/qwt \
-    # https://github.com/libspatialindex/libspatialindex/issues/276
     -DWITH_INTERNAL_SPATIALINDEX=TRUE
 
   ninja
