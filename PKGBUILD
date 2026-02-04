@@ -1,7 +1,7 @@
 # Contributor: PumpkinCheshire <me at pumpkincheshire dot com>
 _name=libpysal
 pkgname=python-libpysal
-pkgver=4.13.0
+pkgver=4.14.1
 pkgrel=1
 pkgdesc="Core components of Python Spatial Analysis Library."
 arch=('any')
@@ -57,7 +57,7 @@ makedepends=(
   'python-installer'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-b2sums=('6b993fccdef2bc7934b8753a17debd3c4d00f731fb5da449aa40771c3811fac6f0e1b053c1575ed2e24b7ce5b43c31229f32efc704ff317c613ee361e1451510')
+b2sums=('0937a255fd4be95ae0ff4aef41e94a32124dc1fd9c2a679f396aa8786631081b73c7426b949e525150399cbe0d1c0390ddb2ab325668b71e5d40da7f67fbff16')
 
 build() {
   cd "$srcdir/$_name-$pkgver" || exit
