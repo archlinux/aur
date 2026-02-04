@@ -3,7 +3,7 @@
 # Installs the AppImage system-wide with desktop integration
 
 pkgname=hei-datahub
-pkgver=0.64.14b
+pkgver=0.64.15b
 pkgrel=1
 pkgdesc="Lightweight local data hub with TUI for managing datasets"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     "LICENSE::https://raw.githubusercontent.com/0xpix/Hei-DataHub/main/LICENSE"
 )
 sha256sums=(
-    '5a13ac16e849f3d16e49da2a9b0cf71e3d5216fae375a4f7061615bd30ae2ef8'
+    '9b96117491e22bcd0176df47a297cfe75702b24716abfc1b1bdb3142ec017545'
     '7e8c79f82293f6cc1e99beedd3e7c47a8fa9c9f04c4b1ff8115ed67f0378c2a3'
     '145542aa5db397d58e066ca06d838c55849e668e964617f54604018bc18eccfc'
     'de84048665a009483980ac5190e7d78824cdbc9977fd7faf47196552a58bcb8f'
