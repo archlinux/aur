@@ -10,6 +10,8 @@ pkgbase = pixieditor-bin
 	depends = glibc
 	depends = libxcursor
 	depends = zlib
+	provides = pixieditor
+	conflicts = pixieditor
 	source = https://github.com/PixiEditor/PixiEditor/releases/download/2.0.1.19/PixiEditor-2.0.1.19-amd64-linux.tar.gz
 	sha256sums = fff63567b97bcb62ab742289406fcb2a1bd013ad1bb396368a8eeda04ff22dfb
 

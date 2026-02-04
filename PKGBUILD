@@ -9,6 +9,8 @@ pkgdesc="Universal 2D Graphics Editor"
 arch=('x86_64')
 url="https://pixieditor.net"
 license=('LGPL-3.0-only')
+provides=("pixieditor")
+conflicts=("pixieditor")
 depends=(
   'fontconfig'
   'gcc-libs'
