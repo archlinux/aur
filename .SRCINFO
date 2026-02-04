@@ -1,0 +1,16 @@
+pkgbase = om-rec
+	pkgdesc = Minimalist, native C screen recorder for Omarchy/Hyprland (Wayland)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://markbus-ai.github.io/
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	depends = wf-recorder
+	depends = slurp
+	depends = libnotify
+	source = https://github.com/markbus-ai/om-rec/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = e2850eaa44c42045341a58e32ee84dee9f50c58c1179f08c5e375ff6b08f5d88
+
+pkgname = om-rec
