@@ -3,8 +3,8 @@
 
 pkgname=vibe-kanban-bin
 _pkgname=vibe-kanban
-pkgver=0.1.2
-_binary_tag=v0.1.2-20260203101746
+pkgver=0.1.3
+_binary_tag=v0.1.3-20260204081224
 pkgrel=1
 pkgdesc="Vibe Kanban - AI-powered Kanban board (Binary)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ install=vibe-kanban-bin.install
 
 source=("https://npm-cdn.vibekanban.com/binaries/${_binary_tag}/linux-x64/${_pkgname}.zip"
         "vibe-kanban.service")
-sha256sums=('f16cf3737d98f2f595c5e34ce52c5a949d193a5be50aa47e55127e5f8d3f740a'
+sha256sums=('ce0660afaaedbdfc195c27e7afeb70a7d8c2ca2cac383c9d858f752b96763b65'
             '48b6d94e9693f7098ad7d3786ff08b648ce08ab8fcfe8ff13cff97906a12a33f')
 
 package() {
