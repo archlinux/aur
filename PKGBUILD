@@ -3,7 +3,7 @@
 # Contributor: Aetf <aetf at unlimitedcodeworks dot xyz>
 
 pkgname=python-coolname
-pkgver=2.2.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Random Name and Slug Generator"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python')
 makedepends=('python-setuptools')
 checkdepends=('python-six' 'python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/c/coolname/coolname-$pkgver.tar.gz")
-sha256sums=('6c5d5731759104479e7ca195a9b64f7900ac5bead40183c09323c7d0be9e75c7')
+sha256sums=('01eb22437f77a904d5cb993842b3cd07e182e707014a82f3dfa31881968ecee1')
 
 build() {
 	cd "coolname-$pkgver"
