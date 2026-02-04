@@ -1,17 +1,20 @@
 pkgbase = banjorecomp-bin
 	pkgdesc = A static recompilation of Banjo-Kazooie
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BanjoRecomp/BanjoRecomp
 	arch = x86_64
+	arch = aarch64
 	license = GPLv3
-	source = https://github.com/BanjoRecomp/BanjoRecomp/releases/download/v1.0.1/BanjoRecompiled-v1.0.1-Linux-X64.zip
 	source = https://raw.githubusercontent.com/BanjoRecomp/BanjoRecomp/v1.0.1/icons/app.png
 	source = https://raw.githubusercontent.com/BanjoRecomp/BanjoRecomp/v1.0.1/COPYING
 	source = BanjoRecomp-bin.desktop
-	sha256sums = e315303c34f4e5fa54fa4b507a63fb19766182a257b5b50302bb8d7a7b1847a6
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	source_x86_64 = https://github.com/BanjoRecomp/BanjoRecomp/releases/download/v1.0.1/BanjoRecompiled-v1.0.1-Linux-X64.zip
+	sha256sums_x86_64 = e315303c34f4e5fa54fa4b507a63fb19766182a257b5b50302bb8d7a7b1847a6
+	source_aarch64 = https://github.com/BanjoRecomp/BanjoRecomp/releases/download/v1.0.1/BanjoRecompiled-v1.0.1-Linux-ARM64.zip
+	sha256sums_aarch64 = 81be04f4027df8618e5788849789664a29086c6dc3409ebabf115a791d003faf
 
 pkgname = banjorecomp-bin
