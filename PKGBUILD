@@ -1,9 +1,10 @@
-# Maintainer: Charles Dong <chardon_cs@proton.me>
+# Maintainer:  Gillwilljam <gillbilljam@gmail.com>
+# Contributor: Charles Dong <chardon_cs@proton.me>
 
 pkgname=stellarium-qt5-bin
 _pkgname=stellarium
 _pkgname2=${_pkgname^}
-pkgver=25.2
+pkgver=25.4
 _pkgtag=v$pkgver
 pkgrel=1
 pkgdesc="Software which renders realistic skies in real time with OpenGL - Binary (Qt5)"
@@ -26,8 +27,8 @@ source=(
     "$_pkgname.bash"
 )
 sha256sums=(
-    '059470007eade281c556bc3ac7476858d299c41e0b9fd3df1272c8c13883f5c8'
-    '1e726d103213fa85c49e2d5a7cd575ab2682560a7a03b6285477c4ce98169d3b'
+    '0ff2e296f7e0e1f8b3075162590ad015b18d7d3bd78fc73367aa22269c64180b'
+    '082d62e5fbd2850afce517f3276ed89de5cdb38812ac6fce787f314c50b613ff'
     'cc8903384ef8b8349dda202be45c3f68542dc74d40c4a1c266a5e057e96323ff'
 )
 
