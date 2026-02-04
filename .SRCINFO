@@ -1,6 +1,6 @@
 pkgbase = immuarch-git
 	pkgdesc = Immutable Archlinux setup with transactional & atomic updates
-	pkgver = 0.1.1.r222.5fba346
+	pkgver = 0.1.2.r227.a10a589
 	pkgrel = 1
 	url = https://framagit.org/Brumaire/immuarch
 	arch = any
@@ -28,7 +28,7 @@ pkgname = immuarch-core-git
 	depends = grep
 	depends = sed
 	depends = mkinitcpio
-	depends = immuarch-utils-git=0.1.1.r222.5fba346
+	depends = immuarch-utils-git=0.1.2.r227.a10a589
 	provides = immuarch-core
 	replaces = immuarch-git
 	options = emptydirs

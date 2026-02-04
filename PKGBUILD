@@ -3,7 +3,7 @@
 _pkgname=immuarch
 pkgbase=immuarch-git
 pkgname=("${_pkgname}-core-git" "${_pkgname}-utils-git")
-pkgver=0.1.1.r222.5fba346
+pkgver=0.1.2.r227.a10a589
 pkgrel=1
 pkgdesc="Immutable Archlinux setup with transactional & atomic updates"
 url="https://framagit.org/Brumaire/immuarch"
@@ -72,6 +72,8 @@ package_immuarch-core-git() {
   mkdir "$pkgdir/${_HOOKS_DIR:?}" ; chmod 700 "$pkgdir/${_HOOKS_DIR:?}"
   mkdir "$pkgdir/${_HOOKS_DIR:?}/pre.d" ; chmod 700 "$pkgdir/${_HOOKS_DIR:?}/pre.d"
   mkdir "$pkgdir/${_HOOKS_DIR:?}/post.d" ; chmod 700 "$pkgdir/${_HOOKS_DIR:?}/post.d"
+  mkdir "$pkgdir/${_HOOKS_DIR:?}/pre-overlay.d" ; chmod 700 "$pkgdir/${_HOOKS_DIR:?}/pre-overlay.d"
+  mkdir "$pkgdir/${_HOOKS_DIR:?}/post-overlay.d" ; chmod 700 "$pkgdir/${_HOOKS_DIR:?}/post-overlay.d"
 
   install -Dm700 "$srcdir/$_pkgname/src/evolve.sh" "$pkgdir/${_CONTROL_DIR:?}"
   install -Dm700 "$srcdir/$_pkgname/src/backup.sh" "$pkgdir/${_CONTROL_DIR:?}"
