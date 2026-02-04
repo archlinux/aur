@@ -1,0 +1,26 @@
+pkgbase = python-numbers-parser
+	pkgdesc = Read and write Apple Numbers spreadsheets
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/masaccio/numbers-parser
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-compact-json
+	depends = python-enum-tools
+	depends = python-sigfig
+	depends = python-dateutil
+	depends = python-importlib-resources
+	depends = python-protobuf
+	depends = python-snappy
+	provides = python-numbers-parser
+	conflicts = python-numbers-parser
+	source = numbers-parser::git+https://github.com/masaccio/numbers-parser.git#tag=v3.0.0
+	sha256sums = 93261eeae1a3a8af0a0f79a08584554a1235ada9852ad510a22a854526256323
+
+pkgname = python-numbers-parser
