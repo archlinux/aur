@@ -1,6 +1,6 @@
 # Maintainer: Andy Stewart <lazycat.manatee@gmail.com>
 pkgname=lazycat-terminal
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="A high-performance terminal emulator with tabs, splits and transparent background"
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=(
     'vala'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('91cb307875dec8c045e50bb9f952e14bd4facc9424e126cd79c64d4fe25ac76e')
+sha256sums=('bafc646b18f557336ae4d82c3d330e41cc0fcc8c95f08831c7923e34170a569d')
 
 build() {
     cd "$pkgname-$pkgver"
