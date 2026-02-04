@@ -1,0 +1,22 @@
+pkgbase = python-compact-json
+	pkgdesc = A JSON formatter that produces compact but human-readable
+	pkgver = 1.8.2
+	pkgrel = 1
+	url = https://pypi.org/project/compact-json
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-poetry-core
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-wcwidth
+	depends = python-importlib-resources
+	provides = python-compact-json
+	conflicts = python-compact-json
+	source = compact_json-1.8.2.tar.gz::https://files.pythonhosted.org/packages/source/c/compact_json/compact_json-1.8.2.tar.gz
+	sha256sums = dc200148695be04b91ac45cd3cda531aa017fb25609b66b9961a008db25eae77
+
+pkgname = python-compact-json
