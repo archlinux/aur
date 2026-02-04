@@ -1,0 +1,16 @@
+pkgbase = cull-bin
+	pkgdesc = Interactive TUI disk space analyzer
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/legostin/cull
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = cull
+	conflicts = cull
+	source_x86_64 = cull-x86_64-0.5.1.tgz::https://github.com/legostin/cull/releases/download/v0.5.1/cull_linux_amd64.tar.gz
+	sha256sums_x86_64 = f34880f936908359ce6f890ab66bc921a6d01373e1ad0ff19b47b9c691012660
+	source_aarch64 = cull-aarch64-0.5.1.tgz::https://github.com/legostin/cull/releases/download/v0.5.1/cull_linux_arm64.tar.gz
+	sha256sums_aarch64 = 99a84fba04f4fbecfd2b79a3a46c2b31d65ce8f44a5604e181d6db6c1cd5b8e7
+
+pkgname = cull-bin
