@@ -4,7 +4,9 @@ Mutter 49.3 with the **render-source** workaround for “Poor desktop frame rate
 
 **What this is:** It’s a **workaround for an NVIDIA driver/GBM issue**, not a bug fix in mutter. On nvidia-drm, `gbm_surface_lock_front_buffer()` can block while the GPU is still rendering (GBM doesn’t require it to be non-blocking). That blocking causes poor frame rate. The workaround: mutter defers calling `lock_front_buffer` until the GPU has signalled completion (via the sync fd), so it avoids blocking. The change lives in mutter but works around nvidia-drm (and possibly other bespoke GBM implementations).
 
-**Patches:** `render-source-lp2081140-49.3.patch` backports Daniel van Vugt’s four render-source commits (defer front-buffer acquisition, GPollFD frame helpers, is_nvidia rename, render source signalling GL completion). `fix-build-49.patch` adds the forward declaration and `COGL_WINSYS_FEATURE_SYNC_FD` in Cogl so the backport builds on 49.3.
+**Patches:**  
+- `render-source-lp2081140-49.3.patch` — backports Daniel van Vugt’s four render-source commits (defer front-buffer acquisition, GPollFD frame helpers, is_nvidia rename, render source signalling GL completion).  
+- `fix-build-49.patch` — forward declaration and `COGL_WINSYS_FEATURE_SYNC_FD` in Cogl so the backport builds on 49.3.
 
 ---
 
@@ -39,9 +41,9 @@ This will:
 
 1. Clone mutter from GNOME at tag **49.3** and gvdb
 2. Apply `render-source-lp2081140-49.3.patch` then `fix-build-49.patch`
-3. Build and produce: `mutter-render-source-49.3-1-x86_64.pkg.tar.zst`, `mutter-render-source-devkit-...`, `mutter-render-source-docs-...`
+3. Build and produce: `mutter-render-source-49.3-3-x86_64.pkg.tar.zst` (single package; no devkit or docs).
 
-After building, the `.pkg.tar.zst` files are in the current directory; you can move them into `built-pkgs/` for tidiness.
+After building, the `.pkg.tar.zst` file is in the current directory; you can move it into `built-pkgs/` for tidiness.
 
 ---
 
@@ -55,17 +57,11 @@ After building, the `.pkg.tar.zst` files are in the current directory; you can m
    IgnorePkg = mutter
    ```
 
-2. **Install the built packages** (run from the directory that contains the `.pkg.tar.zst` files — either repo root or `built-pkgs/`):
+2. **Install the built package** (run from the directory that contains the `.pkg.tar.zst` file — either repo root or `built-pkgs/`):
 
    ```bash
    cd /home/g/setup/mutter-49-render-source
-   sudo pacman -U mutter-render-source-49.3-1-x86_64.pkg.tar.zst mutter-render-source-devkit-49.3-1-x86_64.pkg.tar.zst
-   ```
-
-   Optionally install docs:
-
-   ```bash
-   sudo pacman -U mutter-render-source-docs-49.3-1-x86_64.pkg.tar.zst
+   sudo pacman -U mutter-render-source-49.3-3-x86_64.pkg.tar.zst
    ```
 
 3. **Relog or reboot** so the new compositor is used (Wayland session starts mutter at login).
@@ -74,18 +70,18 @@ After building, the `.pkg.tar.zst` files are in the current directory; you can m
 
    ```bash
    pacman -Q mutter
-   # Should show: mutter-render-source 49.3-1
+   # Should show: mutter-render-source 49.3-3
    ```
 
 ---
 
-## Reinstall from built packages (no rebuild)
+## Reinstall from built package (no rebuild)
 
-If you still have the `.pkg.tar.zst` files (e.g. in `built-pkgs/`):
+If you still have the `.pkg.tar.zst` file (e.g. in `built-pkgs/`):
 
 ```bash
 cd /home/g/setup/mutter-49-render-source/built-pkgs
-sudo pacman -U mutter-render-source-49.3-1-x86_64.pkg.tar.zst mutter-render-source-devkit-49.3-1-x86_64.pkg.tar.zst
+sudo pacman -U mutter-render-source-49.3-3-x86_64.pkg.tar.zst
 ```
 
 Then relog or reboot.
