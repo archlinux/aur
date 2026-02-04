@@ -1,6 +1,6 @@
 pkgbase = proton-pass-cli-bin
 	pkgdesc = A command-line interface for managing your Proton Pass vaults, items, and secrets.
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://protonpass.github.io/pass-cli/
 	arch = aarch64
@@ -8,9 +8,9 @@ pkgbase = proton-pass-cli-bin
 	license = proprietary
 	depends = glibc
 	depends = gcc-libs
-	source_aarch64 = pass-cli-aarch64-1.4.1::https://proton.me/download/pass-cli/1.4.1/pass-cli-linux-aarch64
-	sha256sums_aarch64 = 28f4ab25b0ea215c95e87d4d57c2499fe809aca6e9545104ec08995973aa83ad
-	source_x86_64 = pass-cli-x86_64-1.4.1::https://proton.me/download/pass-cli/1.4.1/pass-cli-linux-x86_64
-	sha256sums_x86_64 = 0c642cdf84186ce5084995b71029c0fbb7795428232beab8d8741937fdb7264b
+	source_aarch64 = pass-cli-aarch64-1.4.2::https://proton.me/download/pass-cli/1.4.2/pass-cli-linux-aarch64
+	sha256sums_aarch64 = 287cb53268ad1c493865a4bc9de043be3ceeb3395ebe51e51a3e0216219cebd5
+	source_x86_64 = pass-cli-x86_64-1.4.2::https://proton.me/download/pass-cli/1.4.2/pass-cli-linux-x86_64
+	sha256sums_x86_64 = 64ce6c65eb00d5403dfb53dd4270f7489d4d22beac9be18ad62c86af9fbeeca9
 
 pkgname = proton-pass-cli-bin
