@@ -2,7 +2,7 @@
 pkgname=phasor
 PACKAGER="Daniel McGuire <danielmcguire2023@gmail.com>"
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Phasor Programming Language Toolchain"
 arch=('x86_64')
 url="https://github.com/DanielLMcGuire/Phasor"
@@ -34,6 +34,6 @@ package() {
         done
     done
 	
-	install -Dm644 "$startdir/src/Extensions/unix/phasor.magic" \
+	install -Dm644 "$srcdir/src/Extensions/unix/phasor.magic" \
         "$pkgdir/usr/share/file/magic/phasor"
 }
