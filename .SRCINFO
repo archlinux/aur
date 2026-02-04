@@ -1,6 +1,6 @@
 pkgbase = pypy3-tqdm
 	pkgdesc = Fast, Extensible Progress Meter
-	pkgver = 4.67.2
+	pkgver = 4.67.3
 	pkgrel = 1
 	url = https://github.com/tqdm/tqdm
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = pypy3-tqdm
 	makedepends = pypy3-installer
 	makedepends = pypy3-setuptools
 	depends = pypy3
-	source = tqdm-4.67.2.tar.gz::https://github.com/tqdm/tqdm/archive/v4.67.2.tar.gz
-	sha512sums = 94589716b9bd5fe8df9e3008a32099c8759d85d03226aa61d9154a34932a53c1d7038975e1ceeb64b8531a1f66c259a9fc30b9854e05ba6808b06b94c1c81c2d
+	source = tqdm-4.67.3.tar.gz::https://github.com/tqdm/tqdm/archive/v4.67.3.tar.gz
+	sha512sums = 7bdcc7f4d894b789f1458319641d2067cb836ed06a679b552fc2a99629044c858b9f28ae6f369565e3f7bde918d211991b9c1ee84cc0fdd6d534a2dd71318eec
 
 pkgname = pypy3-tqdm
