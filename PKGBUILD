@@ -18,7 +18,7 @@ build() {
   for _arch in $_architectures; do
     mkdir -p "build-${_arch}"
     cd "build-${_arch}"
-    ${_arch}-meson .. --buildtype plain -Ddocs=true -Dman=true
+    ${_arch}-meson .. -Dintrospection=disabled
     ninja
     cd ..
 
