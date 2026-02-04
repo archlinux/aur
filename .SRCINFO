@@ -1,10 +1,11 @@
 pkgbase = far2l-git
 	pkgdesc = Linux port of FAR v2
-	pkgver = r5664.9778d37a
+	pkgver = r6967.884cbbe02
 	pkgrel = 1
 	url = https://github.com/elfmz/far2l
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL2
 	makedepends = git
 	makedepends = cmake

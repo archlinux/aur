@@ -1,11 +1,11 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=far2l-git
-pkgver=r5664.9778d37a
+pkgver=r6967.884cbbe02
 pkgrel=1
 pkgdesc='Linux port of FAR v2'
 url='https://github.com/elfmz/far2l'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 license=('GPL2')
 source=('git+https://github.com/elfmz/far2l')
 sha256sums=('SKIP')
@@ -30,6 +30,6 @@ pkgver() {
 package() {
   cd "$srcdir"/far2l
 
-  cmake . -DCMAKE_INSTALL_PREFIX="${pkgdir}"/usr -DCMAKE_XDGDATA_DIR="${pkgdir}"/usr/share -DCMAKE_BUILD_TYPE=Release -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -Wno-dev
+  cmake . -DCMAKE_INSTALL_PREFIX="${pkgdir}"/usr -DCMAKE_BUILD_TYPE=Release -Wno-dev
   cmake --build . --target install
 }
