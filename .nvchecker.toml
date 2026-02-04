@@ -1,0 +1,4 @@
+[hledger-lsp]
+source = "git"
+git = "https://github.com/juev/hledger-lsp.git"
+prefix = "v"
