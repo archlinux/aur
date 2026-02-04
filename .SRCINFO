@@ -1,6 +1,6 @@
 pkgbase = po-llm-bin
 	pkgdesc = Translate PO files using LLM
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/Abab-bk/po-llm
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = po-llm-bin
 	depends = glibc
 	provides = po-llm
 	conflicts = po-llm
-	source = https://github.com/Abab-bk/po-llm/releases/download/v0.2.0/po-llm-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums = 99f90cc2f31ce90af1d2ae35252c553b338bfb12252829f04081500a032b473b
+	source = https://github.com/Abab-bk/po-llm/releases/download/v0.2.1/po-llm-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums = 6a5e0bd7ddac15a087ab1657ffb7e66325f2ab14e05be9acf9472305b5893939
 
 pkgname = po-llm-bin
