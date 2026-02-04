@@ -4,7 +4,7 @@
 
 pkgname=zotero-git
 _pkgname="${pkgname%-git}"
-pkgver=8.0.0.r16.gb1b0d45
+pkgver=8.0.2.r6.geecdd66
 pkgrel=1
 pkgdesc="A free, easy-to-use tool to help you collect, organize, cite, and share your research sources, git version"
 arch=('x86_64' 'i686')
@@ -17,6 +17,7 @@ depends=(
   'gtk3'
   'nss'
   'libxt'
+  'alsa-lib'
 )
 makedepends=(
   'npm'
