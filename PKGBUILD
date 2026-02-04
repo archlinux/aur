@@ -24,7 +24,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Jaredharper1/Sortarr/archiv
 
 sha256sums=('1fa73b326738c282267418112c8c546e8ea16851556f21e4c33aef16c59d7044'
             'de7f8d7c30c7758de371369345922430e255eaa1675aa18ad0a18dbe03d2fa72'
-            '99f1d408646954e768387fe87c88be35713ecb9bcd9f231f36497fbe0b4677db'
+            'e19eb73522e9f57e6eefb492529e0afda787972fcb7a514ca449307ffb395937'
             'ba7dec1d29aa45936979bffbcfcd2e64d849ac911fd507f1aad0ca229df9725c')
 
 package() {

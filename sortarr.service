@@ -5,6 +5,7 @@ Description=sortarr Service
 User=sortarr
 Group=sortarr
 Type=simple
+Environment=ENV_FILE_PATH=/var/lib/sortarr/sortarr.env
 WorkingDirectory=/usr/lib/sortarr
 ExecStart=/usr/bin/python -m waitress --host=0.0.0.0 --port 8787 --threads=4 app:app
 SyslogIdentifier=sortarr
