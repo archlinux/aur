@@ -1,6 +1,6 @@
 pkgbase = fsautocomplete-bin
 	pkgdesc = F# language server using Language Server Protocol (LSP)
-	pkgver = 0.82.0
+	pkgver = 0.83.0
 	pkgrel = 1
 	url = https://ionide.io/Tools/fsac.html
 	arch = any
@@ -10,12 +10,12 @@ pkgbase = fsautocomplete-bin
 	provides = fsautocomplete
 	conflicts = fsautocomplete
 	source = dotnet-tool-common.sh
-	source = https://github.com/ionide/FsAutoComplete/releases/download/v0.82.0/FsAutoComplete.0.82.0.nupkg
-	source = fsautocomplete-0.82.0-CHANGELOG.md::https://github.com/ionide/FsAutoComplete/raw/refs/tags/v0.82.0/CHANGELOG.md
-	source = fsautocomplete-0.82.0-LICENSE.md::https://github.com/ionide/FsAutoComplete/raw/refs/tags/v0.82.0/LICENSE.md
+	source = https://github.com/ionide/FsAutoComplete/releases/download/v0.83.0/FsAutoComplete.0.83.0.nupkg
+	source = fsautocomplete-0.83.0-CHANGELOG.md::https://github.com/ionide/FsAutoComplete/raw/refs/tags/v0.83.0/CHANGELOG.md
+	source = fsautocomplete-0.83.0-LICENSE.md::https://github.com/ionide/FsAutoComplete/raw/refs/tags/v0.83.0/LICENSE.md
 	sha256sums = 8569a77543f4db3ce10517dd1614bc1d7200f8e746370c59ceb8b58cff267f8f
-	sha256sums = 7e2fe7d15c17cd5e223951d536d7cd8e3a592ca804193ab40b6a8bebe0683122
-	sha256sums = 6d959c2b3b88e5ed42b48638a04d669d6728ab31339fb4713c126d4acf23899c
+	sha256sums = 9f68e62de031c4c782100f2f43a98f6706882a15833113d2baa5458d5fe1af7f
+	sha256sums = 658e8b91e2d408a889cb835639f08d9212aace3bd175467d9a5749f0576223cc
 	sha256sums = 1ee6b06043c1f7eca730ecb0e4d2272c451077f6c96ff66fdd252d29843ba482
 
 pkgname = fsautocomplete-bin

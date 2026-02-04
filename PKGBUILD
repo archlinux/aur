@@ -4,7 +4,7 @@ _sdk=10.0
 _Name="FsAutoComplete"
 _pkgname="${_Name,,}"
 pkgname="${_pkgname}-bin"
-pkgver=0.82.0
+pkgver=0.83.0
 pkgrel=1
 pkgdesc="F# language server using Language Server Protocol (LSP)"
 arch=('any')
@@ -27,8 +27,8 @@ source=("dotnet-tool-common.sh"
         "${_pkgsrc}-CHANGELOG.md::${_url}/raw/refs/tags/v${pkgver}/CHANGELOG.md"
         "${_pkgsrc}-LICENSE.md::${_url}/raw/refs/tags/v${pkgver}/LICENSE.md")
 sha256sums=('8569a77543f4db3ce10517dd1614bc1d7200f8e746370c59ceb8b58cff267f8f'
-            '7e2fe7d15c17cd5e223951d536d7cd8e3a592ca804193ab40b6a8bebe0683122'
-            '6d959c2b3b88e5ed42b48638a04d669d6728ab31339fb4713c126d4acf23899c'
+            '9f68e62de031c4c782100f2f43a98f6706882a15833113d2baa5458d5fe1af7f'
+            '658e8b91e2d408a889cb835639f08d9212aace3bd175467d9a5749f0576223cc'
             '1ee6b06043c1f7eca730ecb0e4d2272c451077f6c96ff66fdd252d29843ba482')
 
 if   [ "${CARCH}" = 'aarch64' ]; then _msarch=arm64;
