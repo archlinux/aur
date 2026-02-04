@@ -8,15 +8,14 @@ pkgrel=1
 pkgdesc='Fast and memory-efficient exact attention'
 arch=('x86_64')
 url='https://github.com/Dao-AILab/flash-attention'
-license=('Apache-2.0')
-groups=()
+license=('BSD-3-Clause')
 depends=('python-einops' 'python-pytorch-cuda')
 makedepends=('ninja' 'python-build' 'python-installer' 'python-packaging'
              'python-psutil' 'python-setuptools' 'python-wheel')
 optdepends=()
 cutlass_commit_full=dc4817921edda44a549197ff3a9dcf5df0636e7b
 cutlass_commit=${cutlass_commit_full:0:8}
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/HazyResearch/$_pkgname/archive/refs/tags/v$pkgver.tar.gz"
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/Dao-AILab/$_pkgname/archive/refs/tags/v$pkgver.tar.gz"
         "cutlass-${cutlass_commit}.tar.gz::https://github.com/NVIDIA/cutlass/archive/${cutlass_commit_full}.tar.gz"
         '0001-setup.py-Add-DGLOG_USE_GLOG_EXPORT-flag.patch'
         '0002-setup.py-Remove-ninja-from-setup_requires.patch')
