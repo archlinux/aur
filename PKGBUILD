@@ -1,31 +1,34 @@
 # shellcheck disable=SC2034,SC2154,SC2164
+# Maintainer: Toria <ninetailedtori@uwu.gal>
 # Maintainer: javalsai <javalsai@proton.me>
-pkgname=lidm-git
-pkgver=1.2.3.r12.g7e7a297
+
+_pkgname=lidm
+pkgname=${_pkgname}-git
+pkgver=2.0.0.r0.g978aaad
 pkgrel=1
-depends=('pam' 'lidm-service')
+depends=('pam' "${_pkgname}-service")
 makedepends=('git')
-pkgdesc="A fully colorful customizable TUI display manager made in C. (last git commit)"
+pkgdesc="A fully colorful customizable TUI display manager made in C. (git vcs)"
 arch=('any')
 url="https://github.com/javalsai/lidm"
 license=('GPL-3.0-only')
-provides=('lidm')
-conflicts=('lidm')
-source=("lidm::git+https://github.com/javalsai/lidm")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("${_pkgname}::git+https://github.com/javalsai/lidm")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/lidm"
+    cd "$srcdir/${_pkgname}"
     git describe --long --abbrev=7 --tags | \
         sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$srcdir/lidm"
+    cd "$srcdir/${_pkgname}"
     make
 }
 
 package() {
-    cd "$srcdir/lidm"
-    make DESTDIR="${pkgdir}" install
+    cd "$srcdir/${_pkgname}"
+    make DESTDIR="${pkgdir}" PREFIX="/usr" install
 }
