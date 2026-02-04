@@ -1,0 +1,12 @@
+pkgbase = cvmfs-config-eessi
+	pkgdesc = CernVM-FS configuration for the EESSI project
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/EESSI/filesystem-layer
+	arch = any
+	license = GPL-2.0
+	depends = cvmfs
+	source = https://github.com/EESSI/filesystem-layer/releases/download/v0.5.0/cvmfs-config-eessi-0.5.0.tar
+	sha256sums = defd151b6bcd3b53e3b941853bb31ca869360e3d697f1ddbdceda34f1de42857
+
+pkgname = cvmfs-config-eessi
