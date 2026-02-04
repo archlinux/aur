@@ -4,7 +4,7 @@
 _module="asyncio-dgram"
 _pkgname="python-$_module"
 pkgname="$_pkgname"
-pkgver=2.2.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Higher level Datagram support for Asyncio"
 url="https://github.com/jsbronder/asyncio-dgram"
@@ -22,7 +22,7 @@ makedepends=(
 _pkgsrc="$_module-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/v$pkgver.$_pkgext")
-sha256sums=('5a1aa6b2d1247a8ad0222ae83f789edfb49a413e912607bb827976c94711293d')
+sha256sums=('60faea091bd143cf615f310049a8ceb2e4f0dcac9f1c333f4724051f03f2c715')
 
 build() {
   cd "$_pkgsrc"
