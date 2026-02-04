@@ -2,7 +2,7 @@
 # Maintainer: Sebastian Ehlert  <awvwgk at gmail dot com>
 
 pkgname=dftd4
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/dftd4/dftd4'
@@ -15,7 +15,7 @@ makedepends=('meson'
 license=('LGPL-3.0')
 pkgdesc='A Generally Applicable Atomic-Charge Dependent London Dispersion Correction'
 source=("https://github.com/dftd4/dftd4/releases/download/v${pkgver}/${pkgname}-${pkgver}-source.tar.xz")
-sha256sums=('d3781763390c349794d70663e4e54e368d19a5869c98fe939b32e9069432201b')
+sha256sums=('ed4a6a3ba0a89b8d6825bf11724dee647fd8ee6272e7822e0cbd9847994eb872')
 
 build() {
   local options=(
