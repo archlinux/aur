@@ -1,42 +1,38 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=python-handy-archives
+_name=${pkgname#python-}
 pkgver=0.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Handy archive helpers for Python'
+provides=(${pkgname})
+conflicts=(${pkgname})
 arch=('any')
 url='https://handy-archives.readthedocs.io/'
-license=('MIT')
 depends=('python')
 makedepends=(
-  'git'
-  'python-build'
-  'python-installer'
-  'python-flit-core'
+    'git'
+    'python-build'
+    'python-installer'
+    'python-setuptools'
+    'python-wheel'
+    'python-flit-core'
 )
-#checkdepends=('') pytest+coincidence
-#optdepends=('')
-_commit='fadd8999b7bdb0f5220683ee55bf107de819fa16'
-source=("$pkgname::git+https://github.com/domdfcoding/handy-archives#commit=$_commit")
-b2sums=('SKIP')
+license=('MIT')
+source=("${_name}::git+https://github.com/domdfcoding/handy-archives.git#tag=v$pkgver")
+sha256sums=('65f8449e6863bd0ba87d85b1291866226edbf15324d4200da4fc69773fcec1ef')
 
-pkgver() {
-  cd "$pkgname"
-
-  git describe --tags | sed 's/^v//'
+prepare() {
+    git -C "${srcdir}/${_name}" clean -dfx
 }
 
 build() {
-  cd "$pkgname"
-
-  python -m build --wheel --no-isolation
+    cd "${srcdir}/${_name}"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$pkgname"
-
-  python -m installer --destdir="$pkgdir" dist/*.whl
-
-  # license
-  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+    cd "${srcdir}/${_name}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+    install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

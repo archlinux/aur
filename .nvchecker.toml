@@ -1,4 +1,0 @@
-[python-handy-archives]
-source = "git"
-git = "https://github.com/domdfcoding/handy-archives.git"
-prefix = "v"
