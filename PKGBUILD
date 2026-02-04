@@ -2,7 +2,7 @@
 
 pkgname=banjorecomp-bin
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A static recompilation of Banjo-Kazooie"
 arch=("x86_64" "aarch64")
 url="https://github.com/BanjoRecomp/BanjoRecomp"
@@ -10,8 +10,8 @@ _reponame=BanjoRecomp
 license=('GPLv3')
 depends=()
 
-source_x86_64=(https://github.com/${_reponame}/${_reponame}/releases/download/v${pkgver}/BanjoRecompiled-v${pkgver}-Linux-X64.zip)
-source_aarch64=(https://github.com/${_reponame}/${_reponame}/releases/download/v${pkgver}/BanjoRecompiled-v${pkgver}-Linux-ARM64.zip)
+source_x86_64=(BanjoRecompiled-v${pkgver}.zip::https://github.com/${_reponame}/${_reponame}/releases/download/v${pkgver}/BanjoRecompiled-v${pkgver}-Linux-X64.zip)
+source_aarch64=(BanjoRecompiled-v${pkgver}.zip::https://github.com/${_reponame}/${_reponame}/releases/download/v${pkgver}/BanjoRecompiled-v${pkgver}-Linux-ARM64.zip)
 source=(
     "https://raw.githubusercontent.com/${_reponame}/${_reponame}/v${pkgver}/icons/app.png"
     "https://raw.githubusercontent.com/${_reponame}/${_reponame}/v${pkgver}/COPYING"
@@ -27,7 +27,7 @@ sha256sums=(
     )
 
 prepare() {
-	bsdtar -xf BanjoRecompiled-v${pkgver}-Linux-X64.zip
+	bsdtar -xf BanjoRecompiled-v${pkgver}.zip
 	tar xvf "$srcdir/BanjoRecompiled.tar.gz"
 }
 
