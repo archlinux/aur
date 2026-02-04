@@ -1,0 +1,8 @@
+# AUR / makepkg: do not commit build artifacts or downloaded sources
+src/
+pkg/
+*.pkg.tar*
+built-pkgs/
+mutter/
+gvdb/
+*.log

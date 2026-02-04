@@ -1,0 +1,43 @@
+# Build fixes for render-source backport on mutter 49.3 (LP #2081140).
+# 1) Forward declaration: maybe_post_next_frame_if_gl_finished is used before definition.
+# 2) Cogl: 49.3 has no COGL_WINSYS_FEATURE_SYNC_FD; vanvugt's render-source branch has it
+#    and meta-onscreen-native.c checks it to enable the render source. We add the enum
+#    and set it when NATIVE_FENCE_SYNC is available (same as vanvugt's cogl-winsys-egl.c).
+--- a/src/backends/native/meta-onscreen-native.c
++++ b/src/backends/native/meta-onscreen-native.c
+@@ -156,6 +156,9 @@
+ maybe_post_next_frame (CoglOnscreen *onscreen);
+ 
+ static void
++maybe_post_next_frame_if_gl_finished (CoglOnscreen *onscreen);
++
++static void
+ post_nonprimary_plane_update (MetaOnscreenNative *onscreen_native,
+                               ClutterFrame       *frame,
+                               MetaKmsUpdate      *kms_update);
+--- a/cogl/cogl/cogl-types.h
++++ b/cogl/cogl/cogl-types.h
+@@ -267,6 +267,9 @@
+   /* Available if the winsys directly handles _SYNC and _COMPLETE events */
+   COGL_WINSYS_FEATURE_SYNC_AND_COMPLETE_EVENT,
+ 
++  /* cogl_context_get_latest_sync_fd() is supported */
++  COGL_WINSYS_FEATURE_SYNC_FD,
++
+   COGL_WINSYS_FEATURE_N_FEATURES
+ } CoglWinsysFeature;
+ 
+--- a/cogl/cogl/winsys/cogl-winsys-egl.c
++++ b/cogl/cogl/winsys/cogl-winsys-egl.c
+@@ -497,8 +497,12 @@
+     COGL_FLAGS_SET (context->features, COGL_FEATURE_ID_FENCE, TRUE);
+ 
+   if (egl_renderer->private_features & COGL_EGL_WINSYS_FEATURE_NATIVE_FENCE_SYNC)
+-    COGL_FLAGS_SET (context->features, COGL_FEATURE_ID_SYNC_FD, TRUE);
++    {
++      COGL_FLAGS_SET (context->features, COGL_FEATURE_ID_SYNC_FD, TRUE);
++      COGL_FLAGS_SET (context->winsys_features, COGL_WINSYS_FEATURE_SYNC_FD, TRUE);
++    }
+ 
+   if (egl_renderer->private_features & COGL_EGL_WINSYS_FEATURE_BUFFER_AGE)
+     {
