@@ -1,6 +1,6 @@
 pkgbase = ultrapaper
 	pkgdesc = GTK4 GUI for hyprpaper (Hyprland wallpaper management)
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/AhmedAlYousif/ultrapaper
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = ultrapaper
 	optdepends = hyprland: provides hyprctl command (required)
 	optdepends = hyprpaper: wallpaper backend (required)
 	options = !strip
-	source = ultrapaper-0.0.2.tar.gz::https://github.com/AhmedAlYousif/ultrapaper/archive/refs/tags/v0.0.2.tar.gz
+	source = ultrapaper-0.0.3.tar.gz::https://github.com/AhmedAlYousif/ultrapaper/archive/refs/tags/v0.0.3.tar.gz
 	source = ultrapaper.desktop
-	sha256sums = dbb606cd7a5aa366d56a75993383b77dbacc6bab03125e863214f36a23e2cd75
+	sha256sums = 550ee70ba55685e5132c51486e3f676b7031e8efbeeb56e1b0e646b58c680156
 	sha256sums = c3231c3690c1b509ee5b4cd1d83e1dc826ddd115e7b64130ba6cce8c1ffe83b9
 
 pkgname = ultrapaper
