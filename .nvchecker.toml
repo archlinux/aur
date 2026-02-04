@@ -1,0 +1,5 @@
+[viddy-bin]
+source = "github"
+github = "sachaos/viddy"
+use_latest_release = true
+prefix = "v"
