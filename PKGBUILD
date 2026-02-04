@@ -1,5 +1,5 @@
 pkgname=po-llm-bin
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Translate PO files using LLM"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
   "https://github.com/Abab-bk/po-llm/releases/download/v${pkgver}/po-llm-x86_64-unknown-linux-gnu.tar.xz"
 )
 
-sha256sums=('aafe6780e0d7af3b909e321b8ece580d152aaa84e9987c38f6ef160cfbe5103b')
+sha256sums=('99f90cc2f31ce90af1d2ae35252c553b338bfb12252829f04081500a032b473b')
 
 package() {
   install -Dm755 po-llm "$pkgdir/usr/bin/po-llm"
