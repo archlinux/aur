@@ -12,47 +12,38 @@ source=("${pkgname}-${pkgver}.deb::https://github.com/tushar1977/PictoPy/release
 # Replace 'SKIP' with actual hash using: updpkgsums
 sha256sums=('SKIP') 
 
-prepare() {
-  # Extract the debian control and data files
-prepare() {
-  cd "$srcdir"
-  ar x "${pkgname}-${pkgver}.deb"
+package() {
+    cd "${srcdir}"
 
-  # Extract data archive safely (handles .xz/.zst/.gz)
-  bsdtar -xf data.tar.*
-}
+    # Install the main application binary
+    install -Dm755 "usr/bin/picto-py" "${pkgdir}/usr/bin/pictopy"
 
-}
+    # Install libraries and resources
+    if [ -d "usr/lib" ]; then
+        cp -r usr/lib "${pkgdir}/usr/"
+    fi
 
-package_pictopy-bin() {
-  cd "$srcdir"
+    # Install desktop entry
+    install -Dm644 "usr/share/applications/picto-py.desktop" \
+        "${pkgdir}/usr/share/applications/pictopy.desktop"
 
-  # Copy system files
-  if [ -d "usr" ]; then
-    cp -a usr "$pkgdir/"
-  fi
+    # Update desktop entry to use correct binary name
+    sed -i 's/Exec=picto-py/Exec=pictopy/g' "${pkgdir}/usr/share/applications/pictopy.desktop"
 
-  # Copy application bundle (THIS IS THE IMPORTANT PART)
-  if [ -d "opt" ]; then
-    cp -a opt "$pkgdir/"
-  fi
+    # Install icons
+    for size in 32x32 128x128 256x256; do
+        if [ -f "usr/share/icons/hicolor/${size}/apps/picto-py.png" ]; then
+            install -Dm644 "usr/share/icons/hicolor/${size}/apps/picto-py.png" \
+                "${pkgdir}/usr/share/icons/hicolor/${size}/apps/pictopy.png"
+        fi
+    done
 
-  # Ensure backend binaries are executable
-  find "$pkgdir/opt/PictoPy" -type f -exec chmod +x {} +
+    # Install scalable icon if available
+    if [ -f "usr/share/icons/hicolor/scalable/apps/picto-py.svg" ]; then
+        install -Dm644 "usr/share/icons/hicolor/scalable/apps/picto-py.svg" \
+            "${pkgdir}/usr/share/icons/hicolor/scalable/apps/pictopy.svg"
+    fi
 
-  # Symlink launcher
-  install -d "$pkgdir/usr/bin"
-  ln -sf /opt/PictoPy/PictoPy "$pkgdir/usr/bin/pictopy"
-
-  # Desktop entry
-  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/pictopy.desktop" <<EOF
-[Desktop Entry]
-Name=PictoPy
-Comment=Desktop image gallery
-Exec=pictopy
-Icon=PictoPy
-Type=Application
-Categories=Graphics;Utility;
-Terminal=false
-EOF
+    # Install license
+    install -Dm644 "${srcdir}/../LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" 2>/dev/null || true
 }
