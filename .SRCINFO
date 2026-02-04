@@ -1,7 +1,7 @@
 pkgbase = dyad-bin
 	pkgdesc = Free, local, open-source AI app builder | v0 / lovable / Bolt alternative
 	pkgver = 0.35.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dyad-sh/dyad
 	arch = x86_64
 	license = Apache
