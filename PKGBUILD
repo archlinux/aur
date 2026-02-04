@@ -1,6 +1,6 @@
 # Maintainer: Mathias Maisberger <me@hiasinho.com>
 pkgname=hammertalk-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Push-to-talk transcription daemon for Wayland (Sway, Hyprland, niri, COSMIC)"
 arch=('x86_64')
