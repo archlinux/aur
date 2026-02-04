@@ -1,6 +1,6 @@
 # Maintainer: egoroff <egoroff@gmail.com>
 pkgname=copyto-go-bin
-pkgver=1.3.0
+pkgver=1.3.1
 _app=copyto
 pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -10,9 +10,9 @@ license=('MIT')
 source_x86_64=("https://github.com/aegoroff/${_app}/releases/download/v${pkgver}/${_app}_${pkgver}_linux_amd64.tar.gz")
 source_armv7h=("https://github.com/aegoroff/${_app}/releases/download/v${pkgver}/${_app}_${pkgver}_linux_armv7.tar.gz")
 source_aarch64=("https://github.com/aegoroff/${_app}/releases/download/v${pkgver}/${_app}_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('1be1fce42f4e522bbcd938484af310b85795f32a94b8f0d34267cf3b56eb0376')
-sha256sums_armv7h=('68ba85e7f1229c2537849ae8146c73959751136c89daf7859cfe7bbf340c3f23')
-sha256sums_aarch64=('dd50e562d560509be3f318791da20bd06d0d851b32b247089fe317a66e73eb4d')
+sha256sums_x86_64=('0d1ef7c18ffc66e18cd5689920b4e3e78a68a7418c5d19de248cac30eedcb552')
+sha256sums_armv7h=('e0072d7eb9d0da3973b01d4f95883cf4d841ed50c2d508dbdd828e990c93c058')
+sha256sums_aarch64=('179765ddf527f942595e180a6c36224efd76ea00540ea715f3615dccbd11103c')
 build() {
 	return 0
 }
