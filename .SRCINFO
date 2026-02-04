@@ -1,0 +1,13 @@
+pkgbase = bashd
+	pkgdesc = Bulk data management toolkit for Linux CLI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/terpinedream/Bashd
+	arch = any
+	license = custom
+	depends = bash
+	optdepends = figlet: pretty headers for bashd --<command>
+	source = bashd-0.1.0.tar.gz::https://github.com/terpinedream/Bashd/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 925d528e1840f1fd5f4b25899dcfea13d29ea75366ec3055e949dc749f2202a4
+
+pkgname = bashd
