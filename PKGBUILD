@@ -9,13 +9,9 @@
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
 pkgbase=mutter-render-source
-pkgname=(
-  mutter-render-source
-  mutter-render-source-devkit
-  mutter-render-source-docs
-)
+pkgname=mutter-render-source
 pkgver=49.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Mutter 49.3 with render-source fix for NVIDIA Wayland (LP #2081140)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -85,12 +81,10 @@ depends=(
 )
 makedepends=(
   bash-completion
-  gi-docgen
   git
   glib2-devel
   gobject-introspection
   meson
-  python-docutils
   sysprof
   wayland-protocols
 )
@@ -123,7 +117,7 @@ prepare() {
 
 build() {
   local meson_options=(
-    -D docs=true
+    -D docs=false
     -D egl_device=true
     -D installed_tests=false
     -D tests=disabled
@@ -138,60 +132,12 @@ build() {
   meson compile -C build
 }
 
-_pick() {
-  local p="$1" f d; shift
-  for f; do
-    d="$srcdir/$p/${f#$pkgdir/}"
-    mkdir -p "$(dirname "$d")"
-    mv "$f" "$d"
-    rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")" 2>/dev/null || true
-  done
-}
-
-package_mutter-render-source() {
+package() {
   provides=(mutter libmutter-17.so)
   conflicts=(mutter)
-  optdepends=(
-    'bash-completion: Bash completions for gdctl'
-    'mutter-render-source-devkit: Mutter SDK, "MDK"'
-  )
+  optdepends=('bash-completion: Bash completions for gdctl')
 
   meson install -C build --destdir "$pkgdir"
-
-  _pick devkit "$pkgdir"/usr/lib/mutter-devkit
-  _pick devkit "$pkgdir"/usr/share/applications/org.gnome.Mutter.Mdk.desktop
-  _pick devkit "$pkgdir"/usr/share/icons/hicolor/scalable/apps/org.gnome.Mutter.Mdk.Devel.svg
-  _pick devkit "$pkgdir"/usr/share/icons/hicolor/scalable/apps/org.gnome.Mutter.Mdk.svg
-  _pick devkit "$pkgdir"/usr/share/icons/hicolor/symbolic/apps/org.gnome.Mutter.Mdk-symbolic.svg
-  _pick docs "$pkgdir"/usr/share/mutter-*/doc
-}
-
-package_mutter-render-source-devkit() {
-  pkgdesc="GNOME Mutter Development Kit (from mutter-render-source)"
-  provides=(mutter-devkit)
-  conflicts=(mutter-devkit)
-  depends=(
-    gcc-libs
-    glib2
-    glibc
-    gtk4
-    hicolor-icon-theme
-    libadwaita
-    libei
-    libpipewire
-    mutter
-  )
-
-  mv devkit/* "$pkgdir"
-}
-
-package_mutter-render-source-docs() {
-  pkgdesc="Mutter 49.3 render-source (documentation)"
-  provides=(mutter-docs)
-  conflicts=(mutter-docs)
-  depends=()
-
-  mv docs/* "$pkgdir"
 }
 
 # vim: set sw=2 sts=2 et:
