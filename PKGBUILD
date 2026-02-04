@@ -1,6 +1,6 @@
 # Maintainer: Petr Spacek <pspacek@isc.org>
 pkgname=dnsjit-git
-pkgver=1.5.0.r11.505e23c
+pkgver=1.5.1.r1.eadc4ad
 pkgrel=1
 pkgdesc="Engine for capturing, parsing and replaying DNS"
 arch=('x86_64')
