@@ -2,7 +2,7 @@
 pkgname=phasor-git
 PACKAGER="Daniel McGuire <danielmcguire2023@gmail.com>"
 pkgver=2.2.0.git
-pkgrel=2
+pkgrel=3
 pkgdesc="Phasor Programming Language Toolchain"
 arch=('x86_64')
 url="https://github.com/DanielLMcGuire/Phasor"
@@ -24,7 +24,7 @@ pkgver() {
     if [ "$commits_since_tag" -eq 0 ]; then
         echo "$tag.git"
     else
-        echo "${tag}.r${commits_since_tag}.git-${short_hash}"
+        echo "${tag}.r${commits_since_tag}.${short_hash}"
     fi
 }
 
