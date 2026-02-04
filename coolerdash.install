@@ -76,6 +76,13 @@ post_install() {
         chmod 644 /etc/coolercontrol/plugins/coolerdash/ui/* 2>/dev/null || true
     fi
 
+    # Reload udev rules for USB power management
+    if [ -f /usr/lib/udev/rules.d/99-coolerdash.rules ]; then
+        echo "Reloading udev rules..."
+        udevadm control --reload-rules 2>/dev/null || true
+        udevadm trigger --subsystem-match=usb 2>/dev/null || true
+    fi
+
     # Create systemd drop-in for startup delay (allow shutdown.png to display)
     mkdir -p /etc/systemd/system/cc-plugin-coolerdash.service.d
     printf "[Service]\nExecStartPre=/bin/sleep 10\n" > /etc/systemd/system/cc-plugin-coolerdash.service.d/startup-delay.conf

@@ -1,8 +1,9 @@
+
 # Created by: damachin3 (damachine3 at proton dot me)
 # Website: https://github.com/damachine/coolerdash
 
 pkgname=coolerdash-git
-pkgver=2.1.4.r0.gabf6a17
+pkgver=2.2.1.r0.gc356e8c
 pkgrel=1
 provides=('coolerdash')
 replaces=('coolerdash')
@@ -15,7 +16,7 @@ depends=('cairo' 'coolercontrol' 'jansson' 'libcurl-gnutls' 'ttf-roboto')
 makedepends=('gcc' 'make' 'pkg-config' 'git')
 backup=('etc/coolercontrol/plugins/coolerdash/config.json')
 install=coolerdash.install
-_commit=abf6a17754f2c0230076a6e1a8d02012fe9257b4
+_commit=c356e8cb4861bab23995416695358dbbf7d51409
 source=("git+https://github.com/damachine/coolerdash.git#commit=${_commit}")
 sha256sums=('SKIP') # SKIP for git repo source builds
 
@@ -79,6 +80,9 @@ package() {
 
     # Desktop shortcut for settings UI
     install -Dm644 "${srcdir}/coolerdash/etc/applications/coolerdash.desktop" "${pkgdir}/usr/share/applications/coolerdash.desktop"
+
+    # USB power management udev rule for
+    install -Dm644 "${srcdir}/coolerdash/etc/udev/rules.d/99-coolerdash.rules" "${pkgdir}/usr/lib/udev/rules.d/99-coolerdash.rules"
 
     # Application icon
     install -Dm644 "${srcdir}/coolerdash/etc/icons/coolerdash.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/coolerdash.svg"
