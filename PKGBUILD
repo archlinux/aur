@@ -1,13 +1,13 @@
 # Maintainer: ReelVault
 
 pkgname=reelvault
-pkgver=0.0.0.r0.g0000000
+pkgver=0.1.6.1.g348d3d8
 pkgrel=1
 pkgdesc="Browse and launch your local film collection"
 arch=('x86_64')
 url="https://github.com/rabfulton/reelvault"
 license=('MIT')
-depends=('gtk3' 'sqlite' 'curl' 'json-c')
+depends=('gtk3' 'sqlite' 'curl' 'json-c' 'libjpeg-turbo')
 makedepends=('git' 'make' 'gcc' 'pkgconf')
 source=("reelvault::git+$url.git")
 sha256sums=('SKIP')

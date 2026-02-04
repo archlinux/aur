@@ -1,7 +1,7 @@
 pkgbase = reelvault
 	pkgdesc = Browse and launch your local film collection
 	pkgver = 0.0.0.r0.g0000000
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rabfulton/reelvault
 	arch = x86_64
 	license = MIT
@@ -13,6 +13,7 @@ pkgbase = reelvault
 	depends = sqlite
 	depends = curl
 	depends = json-c
+	depends = libjpeg-turbo
 	source = reelvault::git+https://github.com/rabfulton/reelvault.git
 	sha256sums = SKIP
 
