@@ -1,6 +1,6 @@
 pkgbase = gam
 	pkgdesc = command line management for Google Workspace
-	pkgver = 7.29.04
+	pkgver = 7.33.00
 	pkgrel = 1
 	url = https://github.com/GAM-team/GAM
 	arch = any
@@ -8,26 +8,12 @@ pkgbase = gam
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-hatchling
 	depends = python>=3.10
-	depends = python-arrow
-	depends = python-certifi
-	depends = python-dateutil
-	depends = python-distro
-	depends = python-dnspython
-	depends = python-filelock
-	depends = python-google-api-core
-	depends = python-google-api-python-client
-	depends = python-google-auth
-	depends = python-google-auth-httplib2
-	depends = python-google-auth-oauthlib
-	depends = python-httplib2
-	depends = python-pathvalidate
-	depends = python-passlib
-	depends = python-lxml
 	replaces = gamadv-xtd3
-	source = GAM-7.29.04.tar.gz::https://github.com/GAM-team/GAM/archive/refs/tags/v7.29.04.tar.gz
+	source = GAM-7.33.00.tar.gz::https://github.com/GAM-team/GAM/archive/refs/tags/v7.33.00.tar.gz
 	source = gam.sh
-	sha256sums = d3e2335e467d2df94026e6c383e04ea23c45bf0bdf2d3f4e6978f23e9acedcfd
+	sha256sums = 660c9c92f759201d3bf828c7a96d4fdc30d02fbf9e30fc7c0aed436b50155c31
 	sha256sums = f8613546b8d4a51f05342d3680553c20a2e0995c3be90e469f1da3bb83ca172e
 
 pkgname = gam
