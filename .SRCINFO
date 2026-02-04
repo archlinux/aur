@@ -1,0 +1,24 @@
+pkgbase = python-jbom
+	pkgdesc = Intelligent KiCad Bill of Materials generator with inventory matching
+	pkgver = 6.3.1
+	pkgrel = 1
+	url = https://github.com/plocher/jBOM
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-numbers-parser
+	depends = python-sexpdata
+	depends = python-openpyxl
+	depends = python-requests
+	depends = python-yaml
+	provides = python-jbom
+	conflicts = python-jbom
+	source = jbom::git+https://github.com/plocher/jBOM.git#tag=v6.3.1
+	sha256sums = f590056b153f83aceb954c79bd7f596dcc67ccd813125baf01dcc6194f911aff
+
+pkgname = python-jbom
