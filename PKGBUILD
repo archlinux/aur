@@ -65,11 +65,8 @@ build() {
     -DWITH_QUICK=TRUE \
     -DWITH_SERVER=TRUE \
     -DBINDINGS_GLOBAL_INSTALL=FALSE \
-    -DWITH_QWTPOLAR=TRUE \
     -DQWTPOLAR_LIBRARY=/usr/lib/libqwt.so \
     -DQWTPOLAR_INCLUDE_DIR=/usr/include/qwt \
-    -DCMAKE_CXX_FLAGS="${CXXFLAGS} -DQWT_POLAR_VERSION=0x060200" \
-    -DWITH_INTERNAL_QWTPOLAR=FALSE \
     # https://github.com/libspatialindex/libspatialindex/issues/276
     -DWITH_INTERNAL_SPATIALINDEX=TRUE
 
