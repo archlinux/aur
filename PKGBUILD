@@ -2,7 +2,7 @@
 # Contributor: <kfgz at interia dot pl>
 
 pkgname=nwipe
-pkgver=0.39 # renovate: datasource=github-tags depName=martijnvanbrummelen/nwipe
+pkgver=0.40 # renovate: datasource=github-tags depName=martijnvanbrummelen/nwipe
 pkgrel=1
 pkgdesc="A fork of the dwipe command that will securely erase disks using a variety of recognised methods"
 arch=('i686' 'x86_64' 'aarch64')
@@ -24,4 +24,4 @@ package() {
   make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('1038386b0c745ce418a43bf09ecf3a4ff17072961f4a3be0e940dfa45b10e9e4')
+sha256sums=('826ff4431324cc06f34da7a86829cd5c1a1bb10cf5528bbe7d07676816b813f8')
