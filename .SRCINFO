@@ -1,6 +1,6 @@
 pkgbase = golazo
 	pkgdesc = A minimalist TUI for following football / soccer matches in real-time
-	pkgver = 0.17.0
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://github.com/0xjuanma/golazo
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = golazo
 	makedepends = go
 	depends = glibc
 	optdepends = libnotify: notifications support
-	source = golazo-0.17.0.tar.gz::https://github.com/0xjuanma/golazo/archive/v0.17.0.tar.gz
+	source = golazo-0.18.0.tar.gz::https://github.com/0xjuanma/golazo/archive/v0.18.0.tar.gz
 	source = 001-disable-update.patch
-	sha256sums = c9caea21c02b78c09b79622b949d56fbbb26bd8a1a78495d5201d15f089a0d53
+	sha256sums = 944bb9bf6cb48abf1ccee3ddb2bbb8176d2fab003f0e21180506deaa5ab24922
 	sha256sums = f23b163db4832a024c52bd99178909b73d3095dd37b2f290279c8d8b16bc55ed
 
 pkgname = golazo
