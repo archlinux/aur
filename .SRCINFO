@@ -1,11 +1,12 @@
 pkgbase = sparrow-wallet-git
 	pkgdesc = Desktop Bitcoin Wallet focused on security and privacy (git version)
-	pkgver = 2.2.3.r40.g9e33861
+	pkgver = 2.3.1.r50.g4309216
 	pkgrel = 1
 	url = https://sparrowwallet.com/
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = git
+	makedepends = jdk-temurin
 	depends = alsa-lib
 	depends = freetype2
 	depends = hicolor-icon-theme
@@ -23,12 +24,10 @@ pkgbase = sparrow-wallet-git
 	source = sparrow::git+https://github.com/sparrowwallet/sparrow.git#branch=master
 	source = drongo::git+https://github.com/sparrowwallet/drongo.git
 	source = lark::git+https://github.com/sparrowwallet/lark.git
-	source = https://github.com/adoptium/temurin22-binaries/releases/download/jdk-22.0.2%2B9/OpenJDK22U-jdk_x64_linux_hotspot_22.0.2_9.tar.gz
 	source = MimeInfo.xml
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 05cd9359dacb1a1730f7c54f57e0fed47942a5292eb56a3a0ee6b13b87457a43
 	sha256sums = d0ad5f5457005776fb5021752f9468a55f3a01f498a7984fc97ef652b44460c1
 
 pkgname = sparrow-wallet-git

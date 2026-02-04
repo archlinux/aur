@@ -1,9 +1,7 @@
 # Maintainer: tuxxx <nzb_tuxxx@proton.me>
 
 pkgname=sparrow-wallet-git
-pkgver=2.2.3.r40.g9e33861
-_jdkver=22.0.2_9
-_jdkmajor="${_jdkver%%[^0-9]*}"
+pkgver=2.3.1.r50.g4309216
 pkgrel=1
 pkgdesc="Desktop Bitcoin Wallet focused on security and privacy (git version)"
 arch=('x86_64')
@@ -17,7 +15,10 @@ depends=(
     'libxrender'
     'libxtst'
 )
-makedepends=('git')
+makedepends=(
+    'git'
+    'jdk-temurin'
+)
 optdepends=(
     'bitbox-udev: udev rules for BitBox hardware wallets'
     'keepkey-udev: udev rules for KeepKey hardware wallets'
@@ -31,14 +32,12 @@ source=(
     "sparrow::git+https://github.com/sparrowwallet/sparrow.git#branch=master"
     "drongo::git+https://github.com/sparrowwallet/drongo.git"
     "lark::git+https://github.com/sparrowwallet/lark.git"
-    "https://github.com/adoptium/temurin${_jdkmajor}-binaries/releases/download/jdk-${_jdkver/_/%2B}/OpenJDK${_jdkmajor}U-jdk_x64_linux_hotspot_${_jdkver}.tar.gz"
     "MimeInfo.xml"
 )
 sha256sums=(
     'SKIP'
     'SKIP'
     'SKIP'
-    '05cd9359dacb1a1730f7c54f57e0fed47942a5292eb56a3a0ee6b13b87457a43'
     'd0ad5f5457005776fb5021752f9468a55f3a01f498a7984fc97ef652b44460c1'
 )
 
@@ -56,17 +55,24 @@ prepare() {
 }
 
 build() {
-    # Setup Java build environment - only for build, not for runtime
-    export JAVA_HOME="$srcdir/jdk-${_jdkver/_/+}"
-    export PATH="$JAVA_HOME/bin:$PATH"
-    
+    local _temurin_home
+
+    _temurin_home="$(find /usr/lib/jvm -maxdepth 1 -type d -name 'java-*-temurin' | sort -V | tail -n1)"
+    if [[ -z "${_temurin_home}" || ! -x "${_temurin_home}/bin/jpackage" ]]; then
+        echo "ERROR: jdk-temurin with jpackage was not found under /usr/lib/jvm" >&2
+        return 1
+    fi
+
+    export JAVA_HOME="${_temurin_home}"
+    export PATH="${JAVA_HOME}/bin:${PATH}"
+
     cd "$srcdir/sparrow"
-    
+
     echo "Building ${pkgname} with Java $(java -version 2>&1 | head -n1)"
-    
+
     echo "Creating jlink runtime image..."
     ./gradlew jlink
-    
+
     echo "Creating jpackage application image..."
     ./gradlew jpackageImage
 }
