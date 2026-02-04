@@ -1,7 +1,7 @@
 # Maintainer: Gonsolo <gonsolo@gmail.com>
 
 pkgname=scalafmt
-pkgver=3.10.4
+pkgver=3.10.6
 pkgrel=1
 pkgdesc="code formatter for the Scala programming language"
 arch=('any')
