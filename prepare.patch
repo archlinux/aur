@@ -1,0 +1,13 @@
+diff '--color=auto' -ura "package.orig/CTR Studio/CTR Studio.csproj" "package.new/CTR Studio/CTR Studio.csproj"
+--- "package.orig/CTR Studio/CTR Studio.csproj"	2026-02-04 15:51:13.537167621 +0000
++++ "package.new/CTR Studio/CTR Studio.csproj"	2026-02-04 15:54:28.442161781 +0000
+@@ -186,8 +186,4 @@
+     <Folder Include="LUTs\" />
+   </ItemGroup>
+ 
+-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+-    <Exec Command="xcopy ..\Plugins\CtrLibrary\bin\$(Configuration)\net6.0 bin\$(Configuration)\net6.0\Plugins\net6.0\ /E" />
+-  </Target>
+-
+ </Project>
+\ No newline at end of file

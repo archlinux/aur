@@ -1,0 +1,10 @@
+[Desktop Entry]
+Exec=ctrstudio %f
+GenericName=Editor for 3DS formats including BCH and BCRES
+Icon=ctrstudio
+Name=CTR Studio
+StartupNotify=true
+Type=Application
+Terminal=false
+Keywords=ctr;3ds;bch;bfres;
+Categories=Development;

@@ -1,0 +1,22 @@
+pkgbase = ctrstudio-git
+	pkgdesc = An editor for 3DS formats including BCH and BCRES.
+	pkgver = r494.d359eb8
+	pkgrel = 1
+	url = https://github.com/MapStudioProject/CTR-Studio
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk>=6.0
+	makedepends = icoutils
+	makedepends = git
+	depends = dotnet-runtime>=6.0
+	depends = hicolor-icon-theme
+	options = !strip
+	options = !debug
+	source = git+https://github.com/MapStudioProject/CTR-Studio.git
+	source = ctrstudio.desktop
+	source = prepare.patch
+	sha256sums = SKIP
+	sha256sums = b0eaaf5cd8ccf49b0fac1f3f2736817d8a581af3a2c8af5fefa1010bd7b831d7
+	sha256sums = 1e06e2a0cbf2a12f7697b10f28f3abf1997712a61d83e4d0186c3a1f70d02c5b
+
+pkgname = ctrstudio-git
