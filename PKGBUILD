@@ -1,6 +1,6 @@
 # Maintainer: Nicki Krizek <nicki@isc.org>
 pkgname=dnsjit
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Engine for capturing, parsing and replaying DNS"
 arch=('x86_64')
@@ -18,12 +18,11 @@ depends=(
 makedepends=(
     'autoconf'
 )
-source=("https://github.com/DNS-OARC/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('24666ba4b6147a59c01add990185e455c4568697e869fe8dff5cded5ebeef032')
+source=("https://www.dns-oarc.net/files/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('ab52a6ab66cb99038287cdeaba7c8154790d3b1a91c213799dd6ce327a25f0ec3b2ade64727115a9c9f51ccbdba94d50b7dd079337407a887a350ae366e08571')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    ./autogen.sh
     ./configure --prefix=/usr
     make
 }
