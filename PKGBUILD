@@ -6,7 +6,7 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-libxinerama
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 arch=('any')
 pkgdesc="X11 Xinerama extension library (Android ${_android_arch})"
@@ -16,10 +16,8 @@ depends=("android-${_android_arch}-libxext")
 makedepends=("android-${_android_arch}-xorg-util-macros"
              "android-${_android_arch}-xorgproto")
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("${url}/archive/individual/lib/libXinerama-${pkgver}.tar.xz"{,.sig})
-md5sums=('228c877558c265d2f63c56a03f7d3f21'
-         'SKIP')
-validpgpkeys=('4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E') # "Alan Coopersmith <alan.coopersmith@oracle.com>"
+source=("${url}/archive/individual/lib/libXinerama-${pkgver}.tar.xz")
+md5sums=('5f3f5754a40730d1518233a60ba5c48e')
 
 build() {
     cd "${srcdir}/libXinerama-${pkgver}"
@@ -38,4 +36,6 @@ package() {
     rm -rf "$pkgdir/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
     ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
