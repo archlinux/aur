@@ -31,6 +31,7 @@ optdepends=("apache: HTTP server."
 )
 provides=("${pkgname}")
 conflicts=("matomo-bin")
+options=("!strip")
 install="${pkgname}.install"
 source=("${pkgname}::git+${url}.git#tag=${_tag}"
     "git+https://github.com/matomo-org/matomo-icons.git"

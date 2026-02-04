@@ -63,6 +63,7 @@ pkgbase = matomo
 	optdepends = uwsgi-plugin-php-legacy: CGI.
 	provides = matomo
 	conflicts = matomo-bin
+	options = !strip
 	source = matomo::git+https://github.com/matomo-org/matomo.git#tag=54b4667ef7e8d6498e27599b3658b486a44e9b71
 	source = git+https://github.com/matomo-org/matomo-icons.git
 	source = git+https://github.com/matomo-org/matomo-log-analytics.git
