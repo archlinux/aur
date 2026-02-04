@@ -1,7 +1,7 @@
 # Maintainer: Jasmin <theblazehen@gmail.com>
 # Contributor: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
 
-_pkgauthor=mediar-ai
+_pkgauthor=screenpipe
 _pkgname=screenpipe
 pkgname=${_pkgname}-bin
 pkgver=0.2.74
