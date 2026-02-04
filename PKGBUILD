@@ -63,8 +63,6 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/opt/$pkgname \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DQGIS_MANUAL_SUBDIR=share/man \
-    -DWITH_QUICK=TRUE \
-    -DWITH_SERVER=TRUE \
     -DBINDINGS_GLOBAL_INSTALL=FALSE \
     -DWITH_QWTPOLAR=TRUE \
     -DQWTPOLAR_LIBRARY=/usr/lib/libqwt-qt6.so \
