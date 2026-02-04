@@ -2,7 +2,7 @@
 
 pkgname=paqet
 pkgver=1.0.0_alpha.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Ferries Packets Across Forbidden Boundaries"
 arch=("any")
 url="https://github.com/hanselime/paqet"
@@ -17,8 +17,17 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o paqet_${pkgver//_/-}-${pkgrel} ./cmd/main.go
+  go build -o paqet_${pkgver//_/-}-${pkgrel} \
+    -buildmode=pie \
+    -trimpath \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-linkmode external \
+              -X paqet/cmd/version.Version=v${pkgver//_/-} \
+              -X paqet/cmd/version.GitCommit=$(git rev-parse --short HEAD) \
+              -X paqet/cmd/version.GitTag=v${pkgver//_/-} \
+              -extldflags \"$LDFLAGS\"" \
+    ./cmd/main.go
 }
 
 package() {
