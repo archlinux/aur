@@ -1,7 +1,7 @@
 pkgbase = envycontrol-tray
 	pkgdesc = A GTK tray icon for EnvyControl to switch between graphics modes. Rocker fegyelem!
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/amolnaristvan/envycontrol-tray
 	arch = any
 	license = GPL3

@@ -1,6 +1,6 @@
 pkgname=envycontrol-tray
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A GTK tray icon for EnvyControl to switch between graphics modes. Rocker fegyelem!"
 arch=('any')
 url="https://github.com/amolnaristvan/envycontrol-tray"
