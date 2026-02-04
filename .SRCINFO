@@ -1,7 +1,7 @@
 pkgbase = webhookd-bin
 	pkgdesc = A very simple webhook server launching shell scripts
-	pkgver = 1.20.2
-	pkgrel = 2
+	pkgver = 1.21.0
+	pkgrel = 1
 	url = https://github.com/ncarlier/webhookd
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = webhookd-bin
 	depends = glibc
 	provides = webhookd
 	conflicts = webhookd
-	source_x86_64 = webhookd-bin-1.20.2-x86_64.tgz::https://github.com/ncarlier/webhookd/releases/download/v1.20.2/webhookd-linux-amd64.tgz
-	sha256sums_x86_64 = 815d5c3f9e569af317bd2a0ce28fe1603f570b2c1effaa32f0bc3b697f939fe4
+	source_x86_64 = webhookd-bin-1.21.0-x86_64.tgz::https://github.com/ncarlier/webhookd/releases/download/v1.21.0/webhookd-linux-amd64.tgz
+	sha256sums_x86_64 = 60ddf9a21af6819711347f88e3d874bf7327c4bb47d3dfd25896f675851aa77b
 
 pkgname = webhookd-bin
