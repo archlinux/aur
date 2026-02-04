@@ -62,26 +62,16 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/opt/$pkgname \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DQGIS_MANUAL_SUBDIR=share/man \
-    -DWITH_3D=TRUE \
     -DWITH_QUICK=TRUE \
     -DWITH_SERVER=TRUE \
     -DBINDINGS_GLOBAL_INSTALL=FALSE \
-    -DWITH_QTWEBKIT=FALSE \
     -DWITH_QWTPOLAR=TRUE \
     -DQWTPOLAR_LIBRARY=/usr/lib/libqwt.so \
     -DQWTPOLAR_INCLUDE_DIR=/usr/include/qwt \
     -DCMAKE_CXX_FLAGS="${CXXFLAGS} -DQWT_POLAR_VERSION=0x060200" \
     -DWITH_INTERNAL_QWTPOLAR=FALSE \
     # https://github.com/libspatialindex/libspatialindex/issues/276
-    -DWITH_INTERNAL_SPATIALINDEX=TRUE \
-    -DWITH_PDAL=TRUE
-    #-DHAS_KDE_QT5_PDF_TRANSFORM_FIX=TRUE \
-    #-DHAS_KDE_QT5_SMALL_CAPS_FIX=TRUE \
-    #-DHAS_KDE_QT5_FONT_STRETCH_FIX=TRUE
-    # https://github.com/qgis/QGIS/issues/48374
-    #-DWITH_INTERNAL_LAZPERF=FALSE \
-    # https://github.com/qgis/QGIS/issues/35440
-    #-DWITH_PY_COMPILE=TRUE \
+    -DWITH_INTERNAL_SPATIALINDEX=TRUE
 
   ninja
 }
