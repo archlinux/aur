@@ -1,7 +1,7 @@
 pkgbase = phasor-git
 	pkgdesc = Phasor Programming Language Toolchain
 	pkgver = 2.2.0.git
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/DanielLMcGuire/Phasor
 	install = phasor.install
 	arch = x86_64
