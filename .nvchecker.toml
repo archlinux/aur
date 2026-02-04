@@ -1,0 +1,4 @@
+[catt]
+source = "git"
+git = "https://github.com/skorokithakis/catt.git"
+prefix = "v"
