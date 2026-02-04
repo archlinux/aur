@@ -1,0 +1,6 @@
+sushi/
+upstream.git/
+src/
+pkg/
+fsh-sushi-*.tgz
+*.log
