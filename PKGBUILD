@@ -7,7 +7,7 @@ arch=("any")
 url="https://github.com/com-lihaoyi/mill"
 license=("MIT")
 
-source=("mill::https://repo1.maven.org/maven2/com/lihaoyi/mill-dist/${pkgver/_/-}/mill-dist-${pkgver/_/-}-mill.sh"
+source=("https://repo1.maven.org/maven2/com/lihaoyi/mill-dist/${pkgver/_/-}/mill-dist-${pkgver/_/-}-mill.sh"
         "https://raw.githubusercontent.com/lefou/mill-bash-completion/dfd5ac9b8b0d08b0a22596e88f0f4b1d15abcfd4/mill.complete.sh")
 sha256sums=('a3d774e977ab6135f603ea8c4e39994b0671ff9f4a6c158ab354c0302383a925'
             'bf293fbc521cc0c8108cbbc3580adc81cbf470380b4f5cd160af075a5f1214e0')
@@ -20,6 +20,6 @@ prepare() {
 
 package() {
     cd "${srcdir}"
-    install -Dm755 "${srcdir}/mill" "${pkgdir}/usr/bin/mill"
+    install -Dm755 "${srcdir}/mill-dist-${pkgver/_/-}-mill.sh" "${pkgdir}/usr/bin/mill"
     install -Dm644 "${srcdir}/mill.complete.sh" "${pkgdir}/usr/share/bash-completion/completions/mill"
 }
