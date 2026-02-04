@@ -2,7 +2,7 @@
 # Contributor: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 
 pkgname=cypher-shell
-pkgver="2025.12.1"
+pkgver="2026.01.3"
 pkgrel=1
 pkgdesc="A command line shell where you can execute Cypher against an instance of Neo4j"
 arch=('any')
@@ -15,7 +15,7 @@ source=(
   "wrapper.sh"
 )
 # https://dist.neo4j.org/neo4j-community-${pkgver}-unix.tar.gz.sha256
-sha256sums=('06c3d7b6cb9532e3ec2c03f24d076e3acac5abfe6d7394f855910d2c12f7c542'
+sha256sums=('fd9376186034a84eeca384971b2e9e3e80f8e41166529843f49c48e390a48694'
             '9454c1c0b17ea9dd243e96914067c7d238bd1c97a389c5ffad2dda13db6a94c8')
 
 package() {
