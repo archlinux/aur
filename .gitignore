@@ -1,46 +1,14 @@
-# =========================
-# Rust / Cargo
-# =========================
-/target/
-**/*.rs.bk
-Cargo.lock.backup
-
-# =========================
-# Arch Linux / PKGBUILD
-# =========================
+# makepkg build artifacts
 pkg/
 src/
+
+# built packages
 *.pkg.tar.*
 *.pkg.tar.zst
-*.pkg.tar.zst.sig
+*.pkg.tar.xz
 
-# =========================
-# Build artifacts
-# =========================
-*.log
-*.tmp
-*.cache
-
-# =========================
-# Editor / IDE
-# =========================
-.vscode/
-.idea/
-*.swp
-*.swo
-*.swn
-*.bak
-*~
-
-# =========================
-# OS files
-# =========================
-.DS_Store
-Thumbs.db
-
-# =========================
-# Local env / experiments
-# =========================
-.env
-.env.*
+# downloaded source archives
+*.tar.gz
+*.tar.xz
+*.tar.zst
 
