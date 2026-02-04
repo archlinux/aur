@@ -5,12 +5,12 @@ pkgname=('clickhouse-server-bin' 'clickhouse-common-static-bin' 'clickhouse-clie
 # 'testing' - most recent version
 # 'prestable' and 'lts' are available
 _channel='stable'
-pkgver=26.1.1.912
+pkgver=26.1.2.11
 pkgrel=1
 provides=('clickhouse')
 pkgdesc="ClickHouse is a fast open-source OLAP database management system"
 arch=('x86_64' 'aarch64')
-url="https://clickhouse.tech/"
+url="https://clickhouse.com/"
 license=('Apache-2.0')
 source_x86_64=(
 	"https://packages.clickhouse.com/tgz/$_channel/clickhouse-client-$pkgver-amd64.tgz"
