@@ -1,4 +1,4 @@
-[mousai]
+[breathing]
 source = "git"
 git = "https://github.com/SeaDve/Breathing.git"
 prefix = "v"
