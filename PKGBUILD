@@ -4,7 +4,7 @@
 pkgname=python-bibtexparser-git
 _pkgname="${pkgname%-git}"
 pkgver=2.0.0b8.r0.gb379599
-pkgrel=3
+pkgrel=4
 pkgdesc="Bibtex parser in Python"
 arch=('any')
 url="https://bibtexparser.readthedocs.org/"
@@ -16,7 +16,7 @@ makedepends=(
     'python-installer'
     'python-setuptools'
 )
-checkdepends=('python-pytest' 'python-pytest-cov')
+checkdepends=('python-pytest')
 provides=("python-bibtexparser=${pkgver%.r*}")
 conflicts=("python-bibtexparser")
 source=("git+https://github.com/sciunto-org/python-bibtexparser.git")
@@ -35,8 +35,7 @@ build() {
 check() {
     cd "$srcdir/$_pkgname"
 
-    python -m pytest --disable-plugin-autoload \
-        -p pytest_cov
+    python -m pytest --disable-plugin-autoload -o addopt=''
 }
 
 package() {

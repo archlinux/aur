@@ -1,12 +1,11 @@
 pkgbase = python-bibtexparser-git
 	pkgdesc = Bibtex parser in Python
 	pkgver = 2.0.0b8.r0.gb379599
-	pkgrel = 3
+	pkgrel = 4
 	url = https://bibtexparser.readthedocs.org/
 	arch = any
 	license = LicenseRef-MIT
 	checkdepends = python-pytest
-	checkdepends = python-pytest-cov
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
