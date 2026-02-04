@@ -1,6 +1,6 @@
 pkgbase = ungoogled-chromium
 	pkgdesc = A lightweight approach to removing Google web service dependency
-	pkgver = 144.0.7559.109
+	pkgver = 144.0.7559.132
 	pkgrel = 1
 	url = https://github.com/ungoogled-software/ungoogled-chromium
 	arch = x86_64
@@ -19,6 +19,11 @@ pkgbase = ungoogled-chromium
 	makedepends = java-runtime-headless
 	makedepends = git
 	makedepends = compiler-rt
+	makedepends = python-httplib2
+	makedepends = python-pyparsing
+	makedepends = python-six
+	makedepends = npm
+	makedepends = rsync
 	depends = gtk3
 	depends = nss
 	depends = alsa-lib
@@ -52,13 +57,13 @@ pkgbase = ungoogled-chromium
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
 	optdepends = upower: Battery Status API support
-	provides = chromium=144.0.7559.109
-	provides = chromedriver=144.0.7559.109
+	provides = chromium=144.0.7559.132
+	provides = chromedriver=144.0.7559.132
 	conflicts = chromium
 	conflicts = chromedriver
 	options = !lto
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-144.0.7559.109-lite.tar.xz
-	source = ungoogled-chromium-144.0.7559.109-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/144.0.7559.109-1.tar.gz
+	source = fetch-chromium-release
+	source = ungoogled-chromium-144.0.7559.132-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/144.0.7559.132-1.tar.gz
 	source = https://github.com/foutrelis/chromium-launcher/archive/v8/chromium-launcher-8.tar.gz
 	source = compiler-rt-adjust-paths.patch
 	source = increase-fortify-level.patch
@@ -69,8 +74,8 @@ pkgbase = ungoogled-chromium
 	source = 0001-ozone-wayland-implement-text_input_manager-fixes.patch
 	source = 0001-vaapi-flag-ozone-wayland.patch
 	source = chromium-138-nodejs-version-check.patch
-	sha256sums = 06c6bf558a17636070495d2d33117501c361c6984d71356188cdfae7d9ee8bc1
-	sha256sums = fd41306be5ee9411cae735a9a49a79dedeaacc5a8b9fb93f7b914192addf143e
+	sha256sums = 2e2f36e3cd1ebc4ad57fd310774a5e5e9db77883d5f9374fedeaabd3c103b819
+	sha256sums = 64190ebab8b29b8225db8cb9fcef6607b0840387062b65abee36983a9fdaa7c4
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
 	sha256sums = ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863
 	sha256sums = d634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342
