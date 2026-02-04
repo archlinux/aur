@@ -1,5 +1,5 @@
 pkgname=mingw-w64-json-glib
-pkgver=1.6.6
+pkgver=1.10.8
 pkgrel=1
 pkgdesc="JSON library built on GLib (mingw-w64)"
 arch=('any')
@@ -9,11 +9,9 @@ makedepends=('mingw-w64-meson' 'ninja')
 depends=('mingw-w64-glib2>=2.38')
 options=(!strip !buildflags staticlibs)
 source=("http://ftp.gnome.org/pub/gnome/sources/json-glib/${pkgver%.*}/json-glib-${pkgver}.tar.xz")
-sha256sums=('96ec98be7a91f6dde33636720e3da2ff6ecbb90e76ccaa49497f31a6855a490e')
-
+sha256sums=('55c5c141a564245b8f8fbe7698663c87a45a7333c2a2c56f06f811ab73b212dd')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
-
 
 build() {
   cd "${srcdir}/json-glib-${pkgver}"
@@ -21,12 +19,11 @@ build() {
     mkdir -p "build-${_arch}"
     cd "build-${_arch}"
     ${_arch}-meson .. --buildtype plain -Ddocs=true -Dman=true
-	ninja
+    ninja
     cd ..
-	
+
   done
 }
-
 
 package() {
   cd "${srcdir}/json-glib-${pkgver}"
