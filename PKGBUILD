@@ -1,3 +1,4 @@
+# Maintainer: NEOAPPS <neo@obsidianos.xyz> <asd22.info@gmail.com>
 pkgname=mingw-w64-json-glib
 pkgver=1.10.8
 pkgrel=1
