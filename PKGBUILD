@@ -6,7 +6,7 @@
 _pkgname="adms"
 pkgname="${_pkgname}-git"
 pkgver=2.3.7.r25.gcadf421
-pkgrel=2
+pkgrel=3
 pkgdesc="ADMS is a codegenerator for the VERILOG-A(MS) language"
 arch=(
   'x86_64'
@@ -29,7 +29,7 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=(
   "${_pkgname}::git+${url}"
-  "0001-Fix-incorrect-argument-given-to-verilogaparse.patch::${url}/pull/117.patch"
+  "0001-Fix-incorrect-argument-given-to-verilogaparse.patch"
 )
 b2sums=('SKIP'
         '7a87dfea134fd1a9bd528baf6b84b2f2323f68008183083bb8e7eba8a456a4e53dff4eb80cb7e36d335036235208a82cef6140db8a7921c672fe4b2b103f2054')
