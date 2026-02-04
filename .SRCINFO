@@ -1,13 +1,13 @@
 pkgbase = datui-bin
 	pkgdesc = Data Exploration in the Terminal
-	pkgver = 0.2.26
+	pkgver = 0.2.28
 	pkgrel = 1
 	url = https://github.com/derekwisong/datui
 	arch = x86_64
 	license = MIT
 	provides = datui
 	conflicts = datui
-	source = https://github.com/derekwisong/datui/releases/download/v0.2.26/datui-0.2.26-x86_64.tar.gz
-	sha256sums = 82e4e45f79d3d84e090dd456493ca7c015a126700ad36b0f0443d2896b2ad232
+	source = https://github.com/derekwisong/datui/releases/download/v0.2.28/datui-0.2.28-x86_64.tar.gz
+	sha256sums = cdcd720725e1dd0c1a9f7d29e8909588a6e966cfcd81e16ede36a54ef31d7437
 
 pkgname = datui-bin
