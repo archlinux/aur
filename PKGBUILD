@@ -1,6 +1,6 @@
 # Maintainer: Emiliopg91 <ojosdeserbio@gmail.com>
 pkgname=rog-perf-tuner
-pkgver=4.11.1
+pkgver=4.11.2
 pkgrel=1
 pkgdesc="An utility to manage Asus Rog laptop performance and RGB lighting"
 arch=(
@@ -27,6 +27,7 @@ depends=(
   'hicolor-icon-theme'
   'hidapi'
   'libusb'
+  'mangohud-git'
   'nlohmann-json'
   'power-profiles-daemon'
   'python'
