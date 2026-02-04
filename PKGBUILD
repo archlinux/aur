@@ -24,7 +24,6 @@ depends=(
   at-spi2-core
   bash
   cairo
-  ffmpeg
   fontconfig
   freetype2
   gcc-libs
@@ -88,6 +87,8 @@ makedepends=(
 ) # pciutils: only to avoid some PGO warning
 optdepends=(
   'hunspell-dictionary: Spell checking'
+  'ffmpeg4.4: additional video and audio codec support'
+  'openh264: H264 video decoding support'
   'libnotify: Notification integration'
   'networkmanager: Location detection via available WiFi networks'
   'speech-dispatcher: Text-to-Speech'
