@@ -1,7 +1,7 @@
 # Maintainer: Mathijs Verhaegh <mathijs@verhaegh.nl>
 
 pkgname=openscad-snapshot-appimage
-pkgver=2025.12.17.ai30001
+pkgver=2026.02.04
 pkgrel=1
 pkgdesc="The Programmers Solid 3D CAD Modeller (Snapshot AppImage version)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
   "openscad.png::https://openscad.org/assets/img/logo.png"
 )
 sha256sums=(
-  'efb2faefbb8ed364e89234a83f6588acfb2b999fb43924643adc46a18826d47b'
+  '06d482f3bb2f9f3889548ab843039a6e1386e44b78eff6179d5b5db07e0b9117'
   '75f0c029b6bfc37576f6875443e30d8e1cac0cfbf9be0673c5e1a23849200f3c'
   '9839be1ae8e9203798713b2d0377d265354f4c5d70fc457c3ff6f015e0e5f56d'
 )
