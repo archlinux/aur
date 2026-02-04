@@ -15,8 +15,8 @@ url='https://github.com/gnome-pomodoro/gnome-pomodoro'
 license=('GPL3')
 depends=('gobject-introspection' 'glib2' 'gom' 'gtk3' 'cairo' 'glibc' 'libpeas' 'sqlite' 'gstreamer' 'libcanberra')
 makedepends=('meson' 'vala')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/gnome-pomodoro/gnome-pomodoro/archive/$pkgver.tar.gz")
-sha256sums=('0da09c19080d29576d1b665ec4038ab803efb7badd651fcd441e7ad65c3cfd04')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/focustimerhq/FocusTimer/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('ab8136fe4e585941d67dbb7a81e2442285a0cbeead47fb1c99a37ffd473a4e53')
 
 prepare() {
   cd "$srcdir/focus-timer-$pkgver"

@@ -18,7 +18,7 @@ pkgbase = gnome-shell-pomodoro
 	depends = sqlite
 	depends = gstreamer
 	depends = libcanberra
-	source = gnome-shell-pomodoro-0.28.1.tar.gz::https://github.com/gnome-pomodoro/gnome-pomodoro/archive/0.28.1.tar.gz
-	sha256sums = 0da09c19080d29576d1b665ec4038ab803efb7badd651fcd441e7ad65c3cfd04
+	source = gnome-shell-pomodoro-0.28.1.tar.gz::https://github.com/focustimerhq/FocusTimer/archive/refs/tags/0.28.1.tar.gz
+	sha256sums = ab8136fe4e585941d67dbb7a81e2442285a0cbeead47fb1c99a37ffd473a4e53
 
 pkgname = gnome-shell-pomodoro
