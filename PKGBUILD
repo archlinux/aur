@@ -1,6 +1,6 @@
 # Maintainer: Lewis Donaldson <lewdon0001@gmail.com>
 pkgname=lyrwal
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A program to set the wallpaper to random song lyrics"
 arch=('x86_64')
@@ -13,12 +13,9 @@ sha256sums=('SKIP')
 
 prepare() {
   rm -rf "$srcdir/lyrwal"
-
   git clone --recursive https://github.com/ZerimGH/lyrwal.git "$srcdir/lyrwal"
-
-  if [ -d "$srcdir/lyrwal/py" ]; then
-    mkdir -p ~/.lyrwal
-    cp -r "$srcdir/lyrwal/py" ~/.lyrwal
+  mkdir -p ~/.lyrwal
+  cp -r "$srcdir/lyrwal/py" ~/.lyrwal
 }
 
 build() {
