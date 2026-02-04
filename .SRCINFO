@@ -1,0 +1,22 @@
+pkgbase = easy-conflict-bin
+	pkgdesc = Terminal-native Git mergetool with 3-pane IntelliJ-like conflict resolver
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/chojs23/ec
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = git
+	provides = easy-conflict
+	provides = ec
+	conflicts = easy-conflict
+	source = LICENSE-0.1.3::https://raw.githubusercontent.com/chojs23/ec/v0.1.3/LICENSE
+	source = README-0.1.3::https://raw.githubusercontent.com/chojs23/ec/v0.1.3/README.md
+	sha256sums = 2b9594f469f8c9681fc312d9afeea94461ca929e5e109edc08f3b7e90bc34e98
+	sha256sums = d57fca0d8f2b9835142a2af637fcd973f028b1b7e683f08b8c5a65ea59146087
+	source_x86_64 = ec-0.1.3::https://github.com/chojs23/ec/releases/download/v0.1.3/ec-linux-amd64
+	sha256sums_x86_64 = 774209fcb4a0f9bc34da91cd4954a241864454b20ae670f4e5380310c41eefa5
+	source_aarch64 = ec-0.1.3::https://github.com/chojs23/ec/releases/download/v0.1.3/ec-linux-arm64
+	sha256sums_aarch64 = 774209fcb4a0f9bc34da91cd4954a241864454b20ae670f4e5380310c41eefa5
+
+pkgname = easy-conflict-bin
