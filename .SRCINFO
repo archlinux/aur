@@ -1,7 +1,7 @@
 pkgbase = python-shippinglabel
 	pkgdesc = Utilities for handling Python packages
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://shippinglabel.readthedocs.io/
 	arch = any
 	license = MIT
@@ -20,8 +20,9 @@ pkgbase = python-shippinglabel
 	depends = python-packaging
 	depends = python-platformdirs
 	depends = python-typing_extensions
-	source = python-shippinglabel::git+https://github.com/domdfcoding/shippinglabel#tag=v2.3.0
+	provides = python-shippinglabel
+	conflicts = python-shippinglabel
+	source = shippinglabel::git+https://github.com/domdfcoding/shippinglabel.git#tag=v2.3.0
 	sha512sums = 45d25d5e62bc041dc86d9971aafe3ee6489fe7af10884e44359e52e0c15111186367ab2bbad8b4dc4fd90ef24974759dfa51bbbeff3bd60b7cb8296d0d294c19
-	b2sums = 1f90a5d1a3523783937f0805185f3ca681251cad42b495ee6c58bb744c3147378745b152335e20dd1d24a55d7b7e4933a1228d9f133296b43423f37c435f5202
 
 pkgname = python-shippinglabel
