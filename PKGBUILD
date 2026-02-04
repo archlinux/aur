@@ -6,7 +6,7 @@ pkgname=(
     'python-slint-git'
     'slint-cpp-git'
     'slint-tools-git')
-pkgver=1.14.1.r579.g2cac71880
+pkgver=1.14.1.r785.g3e35bb9585
 pkgrel=1
 pkgdesc='Declarative GUI toolkit to build native user interfaces (git version)'
 license=('GPL-3.0-or-later OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0')
@@ -137,6 +137,7 @@ _install_licenses() {
 package_nodejs-slint-git() {
     pkgdesc='Declarative GUI toolkit to build native user interfaces for Node.js apps (git version)'
     depends=(
+        'fontconfig'
         'gcc-libs'
         'glibc'
         'nodejs'
@@ -174,6 +175,7 @@ package_nodejs-slint-git() {
 package_python-slint-git() {
     pkgdesc='Declarative GUI toolkit to build native user interfaces for Python apps (git version)'
     depends=(
+        'fontconfig'
         'gcc-libs'
         'glibc'
         'python'

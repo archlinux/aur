@@ -1,6 +1,6 @@
 pkgbase = slint-git
 	pkgdesc = Declarative GUI toolkit to build native user interfaces (git version)
-	pkgver = 1.14.1.r579.g2cac71880
+	pkgver = 1.14.1.r785.g3e35bb9585
 	pkgrel = 1
 	url = https://github.com/slint-ui/slint/
 	arch = x86_64
@@ -29,6 +29,7 @@ pkgbase = slint-git
 
 pkgname = nodejs-slint-git
 	pkgdesc = Declarative GUI toolkit to build native user interfaces for Node.js apps (git version)
+	depends = fontconfig
 	depends = gcc-libs
 	depends = glibc
 	depends = nodejs
@@ -43,6 +44,7 @@ pkgname = nodejs-slint-git
 
 pkgname = python-slint-git
 	pkgdesc = Declarative GUI toolkit to build native user interfaces for Python apps (git version)
+	depends = fontconfig
 	depends = gcc-libs
 	depends = glibc
 	depends = python
