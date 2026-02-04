@@ -1,6 +1,6 @@
 pkgbase = glimpse
 	pkgdesc = A blazingly fast tool for peeking at codebases.
-	pkgver = r40.4208ee8
+	pkgver = r97.bd7ef51
 	pkgrel = 1
 	url = https://github.com/seatedro/glimpse
 	arch = x86_64
