@@ -15,7 +15,7 @@ depends=('python')
 makedepends=(
   'python-build'
   'python-installer'
-  'python-setuptools'
+  'python-hatchling'
   'python-wheel'
 )
 
