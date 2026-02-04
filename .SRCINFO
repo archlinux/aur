@@ -1,6 +1,6 @@
 pkgbase = retroarch-git
 	pkgdesc = Reference frontend for the libretro API (Git-latest)
-	pkgver = 1.8.7.r89.7cbb79277d
+	pkgver = 1.22.2.r266.dc44c0814a
 	pkgrel = 1
 	url = http://www.libretro.com/
 	install = retroarch-git.install
@@ -45,6 +45,7 @@ pkgbase = retroarch-git
 	optdepends = retroarch-autoconfig-udev-git: udev joypad autoconfig (git latest)
 	optdepends = xdg-utils-git: Includes updated screensaver suspend fixes
 	optdepends = qt5-base: For the new WIMP interface
+	optdepends = libsmb2: samba integration
 	provides = retroarch
 	conflicts = retroarch
 	backup = etc/retroarch.cfg
@@ -56,4 +57,3 @@ pkgbase = retroarch-git
 	sha256sums = SKIP
 
 pkgname = retroarch-git
-

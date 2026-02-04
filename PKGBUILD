@@ -10,7 +10,7 @@
 #        'git+https://github.com/KhronosGroup/SPIRV-Cross.git#commit=5c24d99')
 
 pkgname=retroarch-git
-pkgver=1.8.7.r89.7cbb79277d
+pkgver=1.22.2.r266.dc44c0814a
 pkgrel=1
 #epoch=1
 _gitname=RetroArch
@@ -34,7 +34,8 @@ optdepends=('libretro-overlays-git: Collection of overlays'
 	    'retroarch-assets-xmb: XMB menu assets'
 	    'retroarch-autoconfig-udev-git: udev joypad autoconfig (git latest)'
 	    'xdg-utils-git: Includes updated screensaver suspend fixes'
-	    'qt5-base: For the new WIMP interface')
+	    'qt5-base: For the new WIMP interface'
+	    'libsmb2: samba integration')
 backup=('etc/retroarch.cfg')
 source=('git+https://github.com/libretro/RetroArch.git'
         'git+https://github.com/KhronosGroup/glslang.git'
