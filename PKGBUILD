@@ -2,11 +2,11 @@
 
 pkgname=markus-bin
 _appname=markus-the-editor
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A local WYSIWYG Markdown editor built with Electron, React, and ProseMirror"
 arch=('x86_64')
-url="https://github.com/erkkimon/markus-the-editor"
+url="https://github.com/benquemax/markus-the-editor"
 license=('MIT')
 depends=('gtk3' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'libsecret' 'libappindicator-gtk3')
 optdepends=('libnotify: for desktop notifications')
@@ -14,7 +14,7 @@ provides=('markus' 'markus-the-editor')
 conflicts=('markus' 'markus-the-editor')
 options=('!strip' '!debug')
 source=("Markus-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Markus-${pkgver}.AppImage")
-sha256sums=('fd20b1ea21233211b3c3030accc9c988df0aa9210299eb3e5af0a939328ac4c1')
+sha256sums=('56fef625914391cfb3d49cd9c62dd375836a06f36ab77b913a92aaefd0ccdeb8')
 
 prepare() {
     chmod +x "Markus-${pkgver}.AppImage"
