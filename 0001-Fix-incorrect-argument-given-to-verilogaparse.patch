@@ -1,0 +1,25 @@
+From a167c61ebc23abab7f94d4e27c41ad90ba8de1d2 Mon Sep 17 00:00:00 2001
+From: Adam Sampson <ats@offog.org>
+Date: Fri, 11 Jul 2025 00:28:20 +0100
+Subject: [PATCH] Fix incorrect argument given to verilogaparse
+
+It doesn't take any arguments. This fixes compilation with GCC 15, which
+defaults to the C23 language standard where () in a prototype is
+equivalent to (void).
+---
+ admsXml/admsXml.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/admsXml/admsXml.c b/admsXml/admsXml.c
+index 5d314b4..2014557 100644
+--- a/admsXml/admsXml.c
++++ b/admsXml/admsXml.c
+@@ -642,7 +642,7 @@ static void parseva (const int argc,const char** argv,char* myverilogamsfile)
+     if(root()->_dbg_vla==admse_yes)
+       adms_veriloga_setint_yydebug(1);
+     adms_veriloga_setfile_input(ifh);
+-    if(verilogaparse(root()))
++    if(verilogaparse())
+       adms_message_fatal(("parse Verilog-AMS preprocessed file '%s' failed\n",mytmpverilogamsfile))
+     else
+       adms_message_verbose(("No error found during parsing\n"))
