@@ -1,6 +1,6 @@
 # Maintainer: Lewis Donaldson <lewdon0001@gmail.com>
 pkgname=lyrwal
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A program to set the wallpaper to random song lyrics"
 arch=('x86_64')
@@ -23,12 +23,12 @@ prepare() {
 
 build() {
   make -C "$srcdir/lyrwal/textwal" install
-  make -C "~/.lyrwal/py" install
 }
 
 package() {
   install -Dm755 "$srcdir/lyrwal/lyrwal.sh" "$pkgdir/usr/local/bin/lyrwal"
   chmod +x "$pkgdir/usr/local/bin/lyrwal"
+  make -C "~/.lyrwal/py" install
 }
 
 clean() {
