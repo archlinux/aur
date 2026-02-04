@@ -2,11 +2,11 @@
 pkgname=dred
 pkgdesc="Fast, ultra-lightweight graphical text editor"
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://dred.io/"
 license=('MIT')
-depends=('gtk3')
+depends=('gtk3' 'harfbuzz' 'pango' 'cairo' 'hicolor-icon-theme' 'glibc' 'at-spi2-core' 'zlib' 'glib2' 'gdk-pixbuf2')
 makedepends=('gcc')
 source=(https://github.com/mackron/dred/archive/refs/tags/$pkgver.tar.gz)
 sha256sums=('6a0fc9b70d1c539e14921bba0ae24cc54de5637733f11f2e117bd8c9e9b92e7f')
@@ -22,10 +22,11 @@ prepare() {
 }
 build() {
 	cd $pkgname-$pkgver
-	cc source/$pkgname/dred_main.c -o dred `pkg-config --cflags --libs gtk+-3.0` -lm -ldl
+	cc source/$pkgname/dred_main.c -o dred $(pkg-config --cflags --libs gtk+-3.0) -lm -ldl
 }
 package() {
 	cd $pkgname-$pkgver
+	install -Dm744 LICENSE "$pkgdir/usr/share/licenses/dred/LICENSE"
 	install -Dm755 dred "$pkgdir/usr/bin/dred"
 	cd resources
 	install -Dm755 unix/dred.desktop "$pkgdir/usr/share/applications/dred.desktop"
