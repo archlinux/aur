@@ -3,7 +3,7 @@
 pkgname=cvmfs-config-eessi
 pkgver=0.5.0
 pkgrel=1
-pkgdesc="CernVM-FS configuration for the EESSI project"
+pkgdesc="CernVM-FS configuration for the EESSI project (European Environment for Scientific Software Installations)"
 arch=('any')
 url="https://github.com/EESSI/filesystem-layer"
 license=('GPL-2.0')
