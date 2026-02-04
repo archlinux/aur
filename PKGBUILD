@@ -1,7 +1,7 @@
 # Maintainer: Alexander Jacocks <alexander@redhat.com>
 pkgname=trs80gp-bin
 _pkgname=trs80gp
-pkgver=2.5.5
+pkgver=2.5.6
 pkgrel=1
 pkgdesc="A TRS-80 Model 1,2,3,4,12,16,6000,MC-10,Color Computer,DT-1,Videotex Emulator"
 arch=('x86_64')
@@ -76,7 +76,7 @@ source=(
   'trs80gp.man'
   'AppIcon.appiconset.zip'
   )
-sha256sums=('753787bc4f7937f58bda26438922f26bb67d98c2f4ff182f12c035c1685a41f0'
+sha256sums=('1fa6c17d2aaf8fd28d466e187702625e07bcec2da19d2077867129eb4dbfa7a2'
             '09254eb4ab4b07a7604ac26bf87a8f64873671abb3d2de07603e2e28064788c0'
             'b5786dc40374acbbf2891db508bb373a5d3678c8c2e5524bdb92d2c01b1425c4'
             '8f1a877dea80f8ea19e8aa277b8348caeed9307bcdc9e4e65d14a9f90f1bc48b'
