@@ -1,7 +1,6 @@
-# Maintainer: lantw44 at gmail dot com
-
+# Maintainer: NEOAPPS <neo@obsidianos.xyz> <asd22.info@gmail.com>
 pkgname=mingw-w64-gtk3
-pkgver=3.24.41
+pkgver=3.24.51
 pkgrel=1
 pkgdesc='GObject-based multi-platform GUI toolkit (mingw-w64)'
 arch=('any')
@@ -12,13 +11,12 @@ makedepends=(
   'mingw-w64-gcc'
   'mingw-w64-pkg-config'
   'mingw-w64-meson'
-  'gdk-pixbuf2' # gdk-pixbuf-pixdata
+  'gdk-pixbuf2'      # gdk-pixbuf-pixdata
   'python-packaging' # gdbus-codegen
   'sassc')
 depends=(
   'mingw-w64-crt'
   'mingw-w64-adwaita-icon-theme'
-  'mingw-w64-atk>=2.15.1'
   'mingw-w64-cairo>=1.14.2-3'
   'mingw-w64-fribidi>=0.19.7'
   'mingw-w64-gdk-pixbuf2>=2.30.0'
@@ -28,9 +26,9 @@ depends=(
   'mingw-w64-pango>=1.41.0')
 options=('!strip' '!buildflags' 'staticlibs')
 source=(
-  "https://download.gnome.org/sources/gtk+/${pkgver%.*}/gtk+-${pkgver}.tar.xz")
+  "https://gitlab.gnome.org/GNOME/gtk/-/archive/${pkgver}/gtk-${pkgver}.tar.gz")
 sha256sums=(
-  '47da61487af3087a94bc49296fd025ca0bc02f96ef06c556e7c8988bd651b6fa')
+  'f3c87a20b3380b69efa720f412a0fea6ab6edce021f8ffaf5c4531fe1321b24f')
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
 
@@ -39,9 +37,9 @@ prepare() {
   local source_file
   for source_file in "${source[@]}"; do
     case "${source_file}" in
-      *.patch)
-        patch -p1 < "${srcdir}/${source_file}"
-        ;;
+    *.patch)
+      patch -p1 <"${srcdir}/${source_file}"
+      ;;
     esac
   done
 }
