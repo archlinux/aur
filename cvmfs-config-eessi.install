@@ -1,0 +1,9 @@
+post_install() {
+  echo "Mount the EESSI repository manually"
+  echo "  # mkdir -p /cvmfs/software.eessi.io"
+  echo "  # mount -t cvmfs software.eessi.io /cvmfs/software.eessi.io"
+  echo "Initialize your environment"
+  echo "  \$ source /cvmfs/software.eessi.io/versions/2025.06/init/bash"
+  echo "Explore the softwares included in EESSI"
+  echo "  \$ module avail"
+}

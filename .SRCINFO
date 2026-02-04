@@ -3,6 +3,7 @@ pkgbase = cvmfs-config-eessi
 	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/EESSI/filesystem-layer
+	install = cvmfs-config-eessi.install
 	arch = any
 	license = GPL-2.0
 	depends = cvmfs
