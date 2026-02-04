@@ -19,16 +19,11 @@ prepare() {
   if [ -d "$srcdir/lyrwal/py" ]; then
     mkdir -p ~/.lyrwal
     cp -r "$srcdir/lyrwal/py" ~/.lyrwal
-  else
-    echo "Error: 'py' directory not found in the source."
-    exit 1
-  fi
 }
 
 build() {
   make -C "$srcdir/lyrwal/textwal" install
-  cd "$srcdir/lyrwal/py"
-  make install
+  make -C "~/.lyrwal/py" install
 }
 
 package() {
