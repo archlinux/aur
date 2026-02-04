@@ -1,4 +1,5 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Maintainer: Jasmin <theblazehen@gmail.com>
+# Contributor: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 
 pkgname=caire
