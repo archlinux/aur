@@ -1,6 +1,6 @@
 # Maintainer: Oshgnacknak <osh@oshgnacknak.de>
 pkgname=vegalinux64
-pkgver=20260203
+pkgver=20260204
 pkgrel=1
 pkgdesc="Chess tournament administration sorfware"
 arch=('x86_64')
@@ -9,35 +9,34 @@ license=('Custom')
 depends=('jre-openjdk'
          'libmariadbclient')
 makedepends=()
-source=("http://www.vegachess.com/download/vegalinux64.tar.gz"
-        'vegachess.desktop'
+source=('vegachess.desktop'
         'vegateam.desktop'
         'logo.png')
-noextract=()
-sha256sums=('fbc818ee12930c95761b375fc71cb69489b02072b8a8ff2eed14a6f396a0bcf7'
-            '7ed253af097df983fc1ead3b77cd0ebb443696b32a0c50399d316f31e4b1c51b'
+sha256sums=('7ed253af097df983fc1ead3b77cd0ebb443696b32a0c50399d316f31e4b1c51b'
             'e6b762f998a4cf88e7b52a4a7884c58c55cf0939e7077f1d038868a2706115fc'
             'ac0385b28ad27877947913ae486d619f39c495d4e69369066e7e10755247bfc6')
+sha256sums_x86_64=('fbc818ee12930c95761b375fc71cb69489b02072b8a8ff2eed14a6f396a0bcf7')
+source_x86_64=("vegalinux64-${pkgver}.tar.gz::http://www.vegachess.com/download/vegalinux64.tar.gz")
 
 pkgver() {
-    date '+%Y%m%d'
+  date '+%Y%m%d'
 }
 
 package() {
-    install --directory \
-        "${pkgdir}/usr/bin" \
-        "${pkgdir}/usr/share/applications" \
-        "${pkgdir}/usr/share/vegalinux64"
+  install --directory \
+    "${pkgdir}/usr/bin" \
+    "${pkgdir}/usr/share/applications" \
+    "${pkgdir}/usr/share/vegalinux64"
 
-    cp -v \
-        "${srcdir}/vegachess.desktop" \
-        "${srcdir}/vegateam.desktop" \
-        "${pkgdir}/usr/share/applications"
+  cp -v \
+    "${srcdir}/vegachess.desktop" \
+    "${srcdir}/vegateam.desktop" \
+    "${pkgdir}/usr/share/applications"
 
-    cp -v "${srcdir}/logo.png" "${pkgdir}/usr/share/vegalinux64"
+  cp -v "${srcdir}/logo.png" "${pkgdir}/usr/share/vegalinux64"
 
-    cp -rv "${srcdir}/vegalinux64" "${pkgdir}/usr/share"
+  cp -rv "${srcdir}/vegalinux64" "${pkgdir}/usr/share"
 
-    ln -s /usr/share/vegalinux64/Vega "${pkgdir}/usr/bin/Vega"
-    ln -s /usr/share/vegalinux64/VegaTeam "${pkgdir}/usr/bin/VegaTeam"
+  ln -s /usr/share/vegalinux64/Vega "${pkgdir}/usr/bin/Vega"
+  ln -s /usr/share/vegalinux64/VegaTeam "${pkgdir}/usr/bin/VegaTeam"
 }
