@@ -25,7 +25,7 @@ build() {
     -ldflags "-linkmode external \
               -X paqet/cmd/version.Version=v${pkgver//_/-} \
               -X paqet/cmd/version.GitCommit=$(git rev-parse --short HEAD) \
-              -X paqet/cmd/version.GitTag=v${pkgver//_/-} \
+              -X paqet/cmd/version.GitTag=$(git describe --tags --exact-match 2>/dev/null || echo unknown)
               -extldflags \"$LDFLAGS\"" \
     ./cmd/main.go
 }
