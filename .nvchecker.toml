@@ -1,0 +1,4 @@
+[python-curl-adapter]
+source = "git"
+git = "https://github.com/el1s7/curl-adapter.git"
+prefix = "v"
