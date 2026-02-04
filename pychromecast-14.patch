@@ -1,0 +1,54 @@
+From b55d799d77a22b0f7ae1ef305b5abc2dd6754a3a Mon Sep 17 00:00:00 2001
+From: captainmustard <ianataylor42@gmail.com>
+Date: Mon, 2 Feb 2026 19:39:11 -0600
+Subject: [PATCH] Fix compatibility with pychromecast >= 14.0.0
+
+---
+ cattqt/cattqt.py | 6 +++---
+ pyproject.toml   | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/cattqt/cattqt.py b/cattqt/cattqt.py
+index 9dc8272..fdf3c95 100644
+--- a/cattqt/cattqt.py
++++ b/cattqt/cattqt.py
+@@ -197,7 +197,7 @@ def set_text(self, s, status_text, title):
+             s.status_label.setText("Idle")
+ 
+     def update_text(self):
+-        title = self.cast.media_controller.title
++        title = self.cast.media_controller.status.title
+         status_text = self.cast.status.status_text
+         s = self._self
+         if not self.playing:
+@@ -637,7 +637,7 @@ def initUI(self):
+             cast.register_status_listener(device.status_listener)
+             cast.register_connection_listener(device.connection_listener)
+             device.disconnect_volume = round(cast.status.volume_level * 100)
+-            device.filename = cast.media_controller.title
++            device.filename = cast.media_controller.status.title
+             self.device_list.append(device)
+             self.devices.append(catt_device)
+             self.combo_box.addItem(cast.name)
+@@ -645,7 +645,7 @@ def initUI(self):
+                 device.set_dial_value(cast)
+             print(cast.name)
+             i = i + 1
+-            if cast.media_controller.is_playing:
++            if cast.media_controller.status.player_state == "PLAYING":
+                 cast.media_controller.update_status()
+         self.app.focusChanged.connect(self.focus_changed)
+         self.combo_box.currentIndexChanged.connect(self.on_index_changed)
+diff --git a/pyproject.toml b/pyproject.toml
+index 859baec..627a882 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -8,7 +8,7 @@ requires=[
+     "cattqt",
+     "pyqt5",
+     "chardet >=3.0.4",
+-    "pychromecast >=12.1.4",
++    "pychromecast >=14.0.0",
+ ]
+ 
+ [project]

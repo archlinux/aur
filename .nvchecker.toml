@@ -1,0 +1,4 @@
+[catt-qt]
+source = "git"
+git = "https://github.com/soreau/catt-qt.git"
+prefix = "v"
