@@ -3,8 +3,8 @@
 
 _pkgname=pano-scrobbler
 pkgname=pano-scrobbler-bin
-_pkgver=420
-pkgver=4.20
+_pkgver=426
+pkgver=4.26
 pkgrel=1
 pkgdesc="Feature packed cross-platform music tracker"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ conflicts=("${_pkgname}")
 options=(!strip)
 source_x86_64=("pano-scrobbler-${_pkgver}-linux-x64.tar.gz::${url}/releases/download/${_pkgver}/pano-scrobbler-linux-x64.tar.gz")
 source_aarch64=("pano-scrobbler-${_pkgver}-linux-arm64.tar.gz::${url}/releases/download/${_pkgver}/pano-scrobbler-linux-arm64.tar.gz")
-sha256sums_x86_64=('7c227fe50c18cbd4fa7a9d9512e4f842a046171e72e3bc311c24a1f950d6910b')
-sha256sums_aarch64=('69317323ae208a1c623294afbc021fd052987c37004c6d5ae16f4c10a0db0976')
+sha256sums_x86_64=('04430f41b984b41b75d094f29a5c67812adb8ae0e3682cdb496c37381ffdceed')
+sha256sums_aarch64=('a16d75ce2e231a257689fd8eb3e22426ca09e32caa051223c88c5b3f9e4e425e')
 
 prepare() {
     # Patch desktop entry
