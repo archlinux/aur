@@ -2,8 +2,8 @@
 
 _pkgname="libbbf"
 pkgname="$_pkgname"
-pkgver=1.1.0
-pkgrel=3
+pkgver=3.0.1
+pkgrel=1
 pkgdesc="Bound Book Format: A high-performance, DirectStorage-native container format for comics and manga"
 url="https://github.com/ef1500/libbbf"
 license=('MIT')
@@ -15,6 +15,7 @@ makedepends=(
   cmake
   ninja
 )
+optdepends=('catch2: bbfbench')
 provides=("$_pkgname=$pkgver")
 conflicts=(
     # "$_pkgname"
@@ -23,15 +24,11 @@ conflicts=(
 )
 source=(
     "${url}/archive/refs/tags/v${pkgver}.tar.gz"
-    "CMakeLists.txt"
 )
-sha256sums=('f730a2e8950f850a661ce94b577f787572614bc91306d6360431938775a85af2'
-            '58b6aa1fdd80844b34e589c00f4de3768ab3c64f4e588a77396681e099749d3e')
+sha256sums=('18f25d199a6a372a2b894f00d6578d41ceadd022ffd2a773c18377d9fb441c02')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
-
-  cp ../CMakeLists.txt .
 
   local _cmake_options=(
     -B build
