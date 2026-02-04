@@ -1,0 +1,20 @@
+pkgbase = python-enum-tools
+	pkgdesc = Tools to expand Python's enum module
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/domdfcoding/enum_tools
+	arch = any
+	license = LGPL-3.0-or-later
+	makedepends = git
+	makedepends = python-whey
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = python-enum-tools
+	conflicts = python-enum-tools
+	source = enum-tools::git+https://github.com/domdfcoding/enum_tools.git#tag=v0.13.0
+	sha256sums = 84b2240d0953b4924523950a45983cb33569b6f9807fe6b43dc1798c0fc94d58
+
+pkgname = python-enum-tools
