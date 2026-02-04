@@ -11,7 +11,7 @@ makedepends=('pkgconf')
 provides=('pixelterm-c')
 options=('!debug' '!strip')
 source=("pixelterm-c-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('91588a6692c17d3de530fe7b341f30f8ea85a3667605bde23945ea8b204fc3b1')
+sha256sums=('b995ef7261ed257ba78d78288e4c6c3aa2d745c2204e602ae54e65375f6c0eb0')
 
 build() {
   cd "${srcdir}/PixelTerm-C-${pkgver}"
