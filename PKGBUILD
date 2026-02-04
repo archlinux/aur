@@ -1,6 +1,6 @@
 # Maintainer: afkdev8 <mail@afkdev8.com>
 pkgname=qrcode-pretty
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="A tool which generates pretty QR codes"
 arch=('any')
