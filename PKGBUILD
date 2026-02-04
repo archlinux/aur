@@ -4,7 +4,7 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libvpx
 pkgver=1.15.2
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="VP8 and VP9 codec (Android ${_android_arch})"
 url="http://www.webmproject.org/"
@@ -56,9 +56,9 @@ build() {
             ;;
     esac
 
-    export CFLAGS="-O2 -pipe -fno-plt -fexceptions"
+    export CFLAGS="-O2 -pipe -fexceptions"
     export CPPFLAGS="-D_FORTIFY_SOURCE=2 -D__USE_FORTIFY_LEVEL=2"
-    export CXXFLAGS="-O2 -pipe -fno-plt -fexceptions"
+    export CXXFLAGS="-O2 -pipe -fexceptions"
     export LDFLAGS="-Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now,-z,max-page-size=16384"
 
     ./configure \
