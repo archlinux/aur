@@ -158,6 +158,17 @@ export ANDROID_CPPFLAGS="${ANDROID_CPPFLAGS} -D_FORTIFY_SOURCE=2 -D__USE_FORTIFY
 export ANDROID_CXXFLAGS="${ANDROID_CXXFLAGS} -O2 -pipe -fexceptions -isystem${ANDROID_PREFIX_INCLUDE}"
 export ANDROID_LDFLAGS="${ANDROID_LDFLAGS} -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now,-z,max-page-size=16384 -L${ANDROID_PREFIX_LIB}"
 
+case "${_android_arch}" in
+    armv7a-eabi|riscv64)
+        # remove `-fno-plt` as it does not seem to be recognoized on armv7a-eabi and riscv64 targets
+        # leading to `warning: argument unused during compilation: '-fno-plt'`
+        export ANDROID_CFLAGS=${ANDROID_CFLAGS/-fno-plt /}
+        export ANDROID_CXXFLAGS=${ANDROID_CXXFLAGS/-fno-plt /}
+        ;;
+    *)
+        ;;
+esac
+
 if [ -z "${ANDROID_WHITHOUT_CENV}" ]; then
     export CC="${ANDROID_CC}"
     export CXX="${ANDROID_CXX}"
