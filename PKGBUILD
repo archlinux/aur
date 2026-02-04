@@ -1,7 +1,7 @@
 # Maintainer: Kartatz <kartatz at amanoteam.com>
 pkgname=haiku-gcc-cross-bin
 pkgver=15.2.0
-pkgrel=20251209
+pkgrel=20260204
 pkgdesc='A GCC cross-compiler targeting Haiku'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url='https://github.com/AmanoTeam/Sil'
@@ -17,10 +17,10 @@ source_x86_64=("https://github.com/AmanoTeam/Sil/releases/download/gcc-${pkgver%
 source_aarch64=("https://github.com/AmanoTeam/Sil/releases/download/gcc-${pkgver%%.*}/aarch64-unknown-linux-gnu.tar.xz")
 source_armv7h=("https://github.com/AmanoTeam/Sil/releases/download/gcc-${pkgver%%.*}/arm-unknown-linux-gnueabihf.tar.xz")
 
-sha256sums_i686=('ad468e942f82c2d79879d46db70c18dd328300949a194b1b7305e3b24d01df2b')
-sha256sums_x86_64=('ea9b4221854e7d7e91c95236a91c2eaac936c193ed58c8d9ce5ed79ae2af8c31')
-sha256sums_aarch64=('4bd18d1ab7ad7cf5e72d7d609627f76c7c4ab2e8834e2ebb584dd507e16b2f90')
-sha256sums_armv7h=('ec6ac6b94455b1c7aa12c8bf0606c274eac8273c51fe30486c66faa8e5ed6553')
+sha256sums_i686=('ea423165035e48cacbc190a7a8480c45e65a8029f6bf6e0e234affe3710996d7')
+sha256sums_x86_64=('f1fd65d5351ab57dcba24702413d045bf2db70295ab02c7814b6c04a7a81e090')
+sha256sums_aarch64=('70b228dcbceb198c8752f7e16dfd14e661041a382cc19bec36a046bcb8be8dcc')
+sha256sums_armv7h=('9ef4581ba04706be3186ca74896aa07972a98ac9aeb0e5edb3c66cc92c671935')
 
 __alt_pkgname='sil'
 
