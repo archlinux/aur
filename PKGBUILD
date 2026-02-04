@@ -2,7 +2,7 @@
 pkgname=opentaikohub-bin
 _pkgname=OpenTaiko-Hub
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Description of your app"
 arch=('x86_64')
 url="https://github.com/OpenTaiko/OpenTaiko-Hub"
