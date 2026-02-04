@@ -2,13 +2,13 @@
 # Upstream Author / Project Maintainer: seatedro <me at seated dot ro>
 
 pkgname="glimpse"
-pkgver=r40.4208ee8
+pkgver=r97.bd7ef51
 pkgrel=1
 pkgdesc="A blazingly fast tool for peeking at codebases."
 arch=('x86_64' 'aarch64' 'i686')
 url="https://github.com/seatedro/$pkgname"
 license=('MIT')
-makedepends=('git' 'cargo')
+makedepends=('git' 'cargo' 'clang')
 conflicts=("$pkgname")
 options=('!lto')
 source=("git+$url")
@@ -16,19 +16,21 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-   ( set -o pipefail
+  (
+    set -o pipefail
     git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-   )
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  )
 }
 
 build() {
-    cd "$srcdir/$pkgname"
-    cargo build --all-features --release
+  cd "$srcdir/$pkgname"
+  export CC=clang
+  cargo build --all-features --release
 }
 
 package() {
-    cd "$srcdir/$pkgname"
-    install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin/"
-    install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
+  cd "$srcdir/$pkgname"
+  install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin/"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
