@@ -1,7 +1,7 @@
 # Maintainer: Alynx Zhou <alynx.zhou@gmail.com>
 pkgname=reframe
-pkgver=1.9.0
-pkgrel=2
+pkgver=1.10.0
+pkgrel=1
 pkgdesc="DRM/KMS based remote desktop for Linux that supports Wayland/NVIDIA/headless/login…"
 arch=("x86_64" "i686" "aarch64" "armv7h")
 url="https://reframe.alynx.one/"
@@ -11,7 +11,7 @@ optdepends=("neatvnc: experimental neatvnc implementation")
 makedepends=("git" "meson")
 backup=("etc/${pkgname}/example.conf")
 source=("git+https://github.com/AlynxZhou/${pkgname}.git#tag=v${pkgver}"
-        "git+https://github.com/AlynxZhou/mvmath.git#commit=612ee51db46491c692cd320fc148740607d76dbf")
+        "git+https://github.com/AlynxZhou/mvmath.git")
 sha512sums=('SKIP'
             'SKIP')
 
