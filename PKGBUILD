@@ -3,8 +3,8 @@
 # Contributor: gryffyn <aur at evan dot me>
 
 pkgname=zsteg
-pkgver=0.2.13
-pkgrel=2
+pkgver=0.2.14
+pkgrel=1
 pkgdesc="detect stegano-hidden data in PNG & BMP"
 arch=(any)
 url="https://github.com/zed-0xff/zsteg"
@@ -16,7 +16,7 @@ depends=(
         "ruby-prime"
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("7113fee4bba57df3eb9874ba2b4dbc00826b0bec72e77ac2af24fbdc356e3469")
+sha256sums=('4f008163d9d3e156c79f77aa8a356c07f33cd7080208458e0c2edbe0df60cf67')
 
 prepare() {
   cd "$pkgname-$pkgver"
