@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Alogi
+Comment=AI-powered log viewer
+Exec=alogi
+Icon=alogi
+Terminal=false
+Categories=Utility;Development;
