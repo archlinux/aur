@@ -1,7 +1,7 @@
 # Source: https://launcher.hytale.com/version/release/launcher.json
 # Maintainer: SCDevel <root@scdevel.net>
 
-_version=2026.02.02-abc3fcb
+_version=2026.02.03-6e80ea9
 
 pkgname=hytale-launcher-bin
 pkgver=${_version%-*}
@@ -27,7 +27,7 @@ source=("hytale-launcher-${_version}.zip::https://launcher.hytale.com/builds/rel
         "LICENSE")
 
 # generated with: updpkgsums
-sha256sums=('0a58b99f589aed8bfabfdbfe3db05ee2b0b3fc1c521b87b3909acbf80cb239ba'
+sha256sums=('b515114410fa4eddc40a6d4315203563aacd42481c4478854f67737e447a062f'
             '0835afe0aec4f086c72518512bf64bfa55679242f3214ca6542fb0fcadd150b9'
             '2f82dd197e945fe2be168fcc267396273dfaf7015f65b28baf32a8f2f5960e72'
             '4ba4ac60ef66d32e4bb243e3bfa0ffc59322d6a88262a398198a0b2c6e365a52'
