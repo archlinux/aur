@@ -1,7 +1,7 @@
-# Maintainer: vantu5z <vantu5z@mail.ru>
+# Contributor: vantu5z <vantu5z@mail.ru>
 
 pkgname=python-libretranslate-git
-pkgver=r31.20221015
+pkgver=r51.20250302
 pkgrel=1
 pkgdesc="Python bindings for LibreTranslate"
 url="https://github.com/argosopentech/LibreTranslate-py"
@@ -32,4 +32,5 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}"
     python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }

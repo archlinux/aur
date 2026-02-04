@@ -1,6 +1,6 @@
 pkgbase = python-libretranslate-git
 	pkgdesc = Python bindings for LibreTranslate
-	pkgver = r31.20221015
+	pkgver = r51.20250302
 	pkgrel = 1
 	url = https://github.com/argosopentech/LibreTranslate-py
 	arch = any
