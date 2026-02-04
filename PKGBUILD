@@ -50,14 +50,14 @@ sha256sums=('SKIP')
 
 build() {
     cd "$srcdir/Digital-Wellbeing-for-Linux-$pkgver"
-    python -m build --wheel --no-isolation
+    /usr/bin/python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$srcdir/Digital-Wellbeing-for-Linux-$pkgver"
     
     # Install Python package
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    /usr/bin/python -m installer --destdir="$pkgdir" dist/*.whl
     
     # Install desktop file
     install -Dm644 data/zenscreen.desktop \
