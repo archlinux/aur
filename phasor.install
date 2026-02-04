@@ -1,0 +1,15 @@
+post_install() {
+    echo "==> Rebuilding file magic database..."
+    cd /usr/share/file/misc
+    file -C -m /usr/share/file/magic
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo "==> Rebuilding file magic database..."
+    cd /usr/share/file/misc
+    file -C -m /usr/share/file/magic
+}
