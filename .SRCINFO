@@ -1,6 +1,6 @@
 pkgbase = substitcher-bin
 	pkgdesc = Audiobook encoder and player with subtitle support
-	pkgver = 26.02.01
+	pkgver = 26.02.04
 	pkgrel = 1
 	url = https://github.com/mrfragger/substitcher
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = substitcher-bin
 	depends = gtk3
 	provides = substitcher
 	conflicts = substitcher
-	source = https://github.com/mrfragger/substitcher/releases/download/v26.02.01/substitcher-x64.AppImage
-	sha256sums = f91209b22ad68ea6ce3b324012618326d9323b0d9aa06d33c79bbd7b57f61ecb
+	source = https://github.com/mrfragger/substitcher/releases/download/v26.02.04/substitcher-x64.AppImage
+	sha256sums = 080a9883a96fc8f8f561cc831cfdbe6460c7bf6c5bf9a453cfbd45b12efea602
 
 pkgname = substitcher-bin
