@@ -1,5 +1,5 @@
 pkgname=zig-git
-pkgver=0.16.0.r2205.gd86e8b7795a5
+pkgver=0.16.0.r2488.gd1e01e94311c
 pkgrel=1
 pkgdesc='Zig programming language (static standalone toolchain)'
 arch=('aarch64' 'x86_64')
@@ -9,7 +9,7 @@ conflicts=(zig)
 provides=("zig=${pkgver%%.r*}")
 depends=(glibc libxml2)
 makedepends=(cmake gcc git glibc libxml2 ninja python)
-options=(!lto !debug)
+options=(!debug !lto strip)
 source=("git+https://github.com/zlib-ng/zlib-ng#tag=2.3.2"
         "git+https://github.com/facebook/zstd.git#tag=v1.5.7"
         "git+https://github.com/llvm/llvm-project.git#tag=llvmorg-21.1.8"
@@ -29,10 +29,6 @@ pkgver() {
   echo "$MAJ.$MIN.$PAT.${HASH}"
 }
 
-prepare() {
-  mkdir -p build-zlib build-zstd build-llvm build-zig deps-install
-}
-
 build() {
   local DEPS_PREFIX="${srcdir}/deps-install"
   local LLVM_CONFIG="${DEPS_PREFIX}/bin/llvm-config"
@@ -40,11 +36,10 @@ build() {
   msg2 "###########################"
   msg2 "# Building static zlib... #"
   msg2 "###########################"
-  cd ${srcdir}/zlib-ng
 
-  cmake -B ../build-zlib -G Ninja \
+  cmake -S ${srcdir}/zlib-ng -B build-zlib -G Ninja \
     -DCMAKE_BUILD_TYPE=MinSizeRel \
-    -DCMAKE_INSTALL_PREFIX="$DEPS_PREFIX" \
+    -DCMAKE_INSTALL_PREFIX="${DEPS_PREFIX}" \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DWITH_GTEST=OFF \
     -DZLIB_BUILD_STATIC=ON \
@@ -53,17 +48,16 @@ build() {
     -DZLIB_COMPAT=ON \
     -Wno-dev
 
-  cmake --build ../build-zlib
-  cmake --install ../build-zlib
+  cmake --build build-zlib
+  cmake --install build-zlib
 
   msg2 "###########################"
   msg2 "# Building static zstd... #"
   msg2 "###########################"
-  cd ${srcdir}/zstd
 
-  cmake -B ../build-zstd -S build/cmake -G Ninja \
+  cmake -S ${srcdir}/zstd/build/cmake -B build-zstd -G Ninja \
     -DCMAKE_BUILD_TYPE=MinSizeRel \
-    -DCMAKE_INSTALL_PREFIX="$DEPS_PREFIX" \
+    -DCMAKE_INSTALL_PREFIX="${DEPS_PREFIX}" \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DZSTD_ZLIB_SUPPORT=ON \
     -DZSTD_LZMA_SUPPORT=ON \
@@ -75,19 +69,18 @@ build() {
     -DZSTD_BUILD_TESTS=OFF \
     -DZSTD_PROGRAMS_LINK_SHARED=OFF
 
-  cmake --build ../build-zstd
-  cmake --install ../build-zstd
+  cmake --build build-zstd
+  cmake --install build-zstd
   rm -f ${DEPS_PREFIX}/lib/*zstd*so*
 
   msg2 "###########################"
   msg2 "# Building static LLVM... #"
   msg2 "###########################"
-  cd ${srcdir}/llvm-project
 
-  cmake -B ../build-llvm -S llvm -G Ninja \
+  cmake -S ${srcdir}/llvm-project/llvm -B build-llvm -G Ninja \
     -DCMAKE_BUILD_TYPE=MinSizeRel \
-    -DCMAKE_INSTALL_PREFIX="$DEPS_PREFIX" \
-    -DCMAKE_PREFIX_PATH="$DEPS_PREFIX" \
+    -DCMAKE_INSTALL_PREFIX="${DEPS_PREFIX}" \
+    -DCMAKE_PREFIX_PATH="${DEPS_PREFIX}" \
     -DLLVM_ENABLE_PROJECTS="lld;clang" \
     -DLLVM_ENABLE_LIBXML2=OFF \
     -DLLVM_ENABLE_TERMINFO=OFF \
@@ -98,33 +91,31 @@ build() {
     -DLLVM_LINK_LLVM_DYLIB=OFF \
     -DLLVM_TARGETS_TO_BUILD="all"
 
-  cmake --build ../build-llvm
-  cmake --install ../build-llvm
+  cmake --build build-llvm
+  cmake --install build-llvm
 
   msg2 "##########################"
   msg2 "# Building static Zig... #"
   msg2 "##########################"
-  cd ${srcdir}/zig
 
   $LLVM_CONFIG --link-static --libs --system-libs
-  cmake -B ../build-zig -G Ninja \
-    -DCMAKE_BUILD_TYPE=Release \
+  cmake -S ${srcdir}/zig -B build-zig -G Ninja \
+    -DCMAKE_BUILD_TYPE=MinSizeRel \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_PREFIX_PATH="$DEPS_PREFIX" \
+    -DCMAKE_PREFIX_PATH="${DEPS_PREFIX}" \
     -DCMAKE_IGNORE_PATH="/usr/lib/llvm;/usr/lib/cmake/llvm" \
     -DLLVM_ENABLE_ZLIB=FORCE_ON \
     -DLLVM_ENABLE_ZSTD=FORCE_ON \
     -DZIG_STATIC_LLVM=ON \
     -DZIG_USE_LLVM_CONFIG=ON \
     -DLLVM_CONFIG_EXE="${LLVM_CONFIG}" \
-    -DZIG_TARGET_TRIPLE=native-linux.6.18-gnu.2.42 \
+    -DZIG_TARGET_TRIPLE=native-linux.6.12-gnu.2.40 \
     -DZIG_TARGET_MCPU=baseline \
-    -DZIG_VERSION="${pkgver%%.r*}" \
     -DCMAKE_CXX_STANDARD_LIBRARIES="-Wl,--start-group -lpthread -ldl -lz -lzstd -lxml2 -Wl,--end-group"
 
-  cmake --build ../build-zig
+  cmake --build build-zig
 }
 
 package() {
-  DESTDIR=${pkgdir} cmake --install build-zig
+  DESTDIR=${pkgdir} ninja -C build-zig install
 }

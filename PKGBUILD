@@ -1,16 +1,15 @@
 pkgname=zig-git
-pkgver=0.16.0.r2193.gfc517bd01c8c
+pkgver=0.16.0.r2488.gd1e01e94311c
 pkgrel=1
 pkgdesc='General-purpose programming language and toolchain'
 arch=('aarch64' 'x86_64')
 url='https://ziglang.org/'
 license=('MIT')
-options=('!lto')
+options=(!debug !lto strip)
 conflicts=(zig)
 provides=("zig=${pkgver%%.r*}")
 depends=("clang>=21" icu libffi libxml2 "lld>=21" "llvm-libs>=21" ncurses xz zlib zstd)
-makedepends=(cmake "llvm>=21")
-checkdepends=(lib32-glibc)
+makedepends=(cmake git icu libffi libxml2 "llvm>=21" ncurses ninja xz zlib zstd)
 source=("git+https://codeberg.org/ziglang/zig.git#branch=master")
 sha256sums=('SKIP')
 
@@ -24,18 +23,10 @@ pkgver() {
   echo "$MAJ.$MIN.$PAT.${HASH}"
 }
 
-prepare() {
-  cd ${srcdir}/zig
-
-  mkdir -p build
-}
-
 build() {
-  cd zig
-
-  cmake -B build \
+  cmake -S zig -B build -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=MinSizeRel \
     -DCMAKE_C_STANDARD=17 \
     -DCMAKE_CXX_STANDARD=20 \
     -DZIG_PIE=ON \
@@ -43,13 +34,10 @@ build() {
     -DZIG_USE_LLVM_CONFIG=ON \
     -DZIG_TARGET_TRIPLE=native-linux.6.12-gnu.2.40 \
     -DZIG_TARGET_MCPU=baseline
-  cmake --build build --parallel ${MAKEFLAGS//-j}
+
+  ninja -C build
 }
 
 package() {
-  cd zig
-
-  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-
-  DESTDIR=${pkgdir} cmake --install build
+  DESTDIR=${pkgdir} ninja -C build install
 }
