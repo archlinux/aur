@@ -3,8 +3,8 @@
 # Maintainer:  Chmouel Boudjnah <chmouel@chmouel.com>
 pkgname=openai-codex-bin
 pkgver=0.95.0
-pkgrel=2
-pkgdesc="Arch Linux package for OpenAI’s Codex CLI - Auto Updated"
+pkgrel=3
+pkgdesc="Arch Linux package for OpenAI's Codex CLI - Auto Updated"
 arch=('x86_64' 'aarch64')
 url="https://github.com/openai/codex"
 license=('Apache')
@@ -37,4 +37,16 @@ package() {
   if [[ "$CARCH" == "aarch64" ]]; then
     install -Dm755 "codex-aarch64-unknown-linux-gnu" "$pkgdir/usr/bin/codex"
   fi
+
+  # Install completions
+  mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
+  mkdir -p "${pkgdir}/usr/share/zsh/site-functions/"
+
+  # Generate completion scripts
+  "${pkgdir}/usr/bin/codex" completion bash >codex.bash
+  "${pkgdir}/usr/bin/codex" completion zsh >codex.zsh
+
+  # Install completion files
+  install -Dm644 "codex.bash" "${pkgdir}/usr/share/bash-completion/completions/codex"
+  install -Dm644 "codex.zsh" "${pkgdir}/usr/share/zsh/site-functions/_codex"
 }
