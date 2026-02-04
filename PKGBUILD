@@ -11,8 +11,9 @@ url="https://github.com/0xpix/Hei-DataHub"
 license=('MIT')
 depends=('fuse2')
 options=('!strip')
+_realver=0.64.15b
 source=(
-    "HeiDataHub-${pkgver}-x86_64.AppImage::https://github.com/0xpix/Hei-DataHub/releases/download/${pkgver}/HeiDataHub-${pkgver}-x86_64.AppImage"
+    "HeiDataHub-${_realver}-x86_64.AppImage::https://github.com/0xpix/Hei-DataHub/releases/download/${_realver}/HeiDataHub-${_realver}-x86_64.AppImage"
     "hei-datahub.desktop"
     "hei-datahub.png::https://raw.githubusercontent.com/0xpix/Hei-DataHub/main/assets/png/icon_1024.png"
     "LICENSE::https://raw.githubusercontent.com/0xpix/Hei-DataHub/main/LICENSE"
@@ -33,7 +34,7 @@ package() {
     install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
 
     # Install AppImage
-    install -Dm755 "HeiDataHub-${pkgver}-x86_64.AppImage" "${pkgdir}/opt/${pkgname}/HeiDataHub.AppImage"
+    install -Dm755 "HeiDataHub-${_realver}-x86_64.AppImage" "${pkgdir}/opt/${pkgname}/HeiDataHub.AppImage"
 
     # Create wrapper script
     cat > "${pkgdir}/usr/bin/${pkgname}" << 'WRAPPER'
