@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 # shellcheck disable=SC2034
-# Maintainer: Chinmay Dalal <dalal DOT chinmay DOT 0101 AT gmail DOT com>
+# Maintainer: Chinmay Dalal <~chinmay/public-inbox@lists.sr.ht>
 # Contributor: A Farzat <a@farzat.xyz>
 # Contributor: éclairevoyant
 # Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
@@ -12,7 +12,7 @@
 declare srcdir pkgdir
 pkgname=neovim-zig-git
 _nvim_version=0.12.0
-pkgver=0.12.0.r2931.ga626f783f8
+pkgver=0.12.0.r2943.g1d57374c41
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs - built using zig'
 arch=(i686 x86_64 armv7h aarch64)
