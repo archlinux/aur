@@ -4,9 +4,9 @@
 pkgname=zenscreen
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="A Digital Wellbeing & Screen Time Tracker for Linux"
+pkgdesc="Digital Wellbeing for Linux (ZenScreen) - Screen Time Tracker"
 arch=('any')
-url="https://github.com/someshwar/zenscreen"
+url="https://github.com/Someshwar1006/Digital-Wellbeing-for-Linux"
 license=('GPL3')
 depends=(
     'python>=3.11'
@@ -39,7 +39,7 @@ conflicts=('zenscreen-git')
 backup=()
 options=(!emptydirs)
 install=zenscreen.install
-source=("$pkgname-$pkgver.tar.gz::https://github.com/someshwar/$pkgname/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Someshwar1006/Digital-Wellbeing-for-Linux/archive/v$pkgver.tar.gz")
 # For local development, use:
 # source=("$pkgname-$pkgver::git+file:///path/to/local/repo")
 sha256sums=('SKIP')
