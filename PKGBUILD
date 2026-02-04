@@ -8,20 +8,19 @@ arch=(any)
 url="http://cea-hpc.github.io/clustershell/"
 license=('LGPL-2.1-or-later')
 depends=('python')
-makedepends=('python' 'python-setuptools')
+makedepends=('python-setuptools')
 optdepends=('openssh: Secure SHell client to connect to distant machines', 'vim: Vi Improved', 'bash-completion')
 backup=(etc/clustershell/{clush.conf,groups.conf,groups.d/local.cfg})
 changelog=ChangeLog
-source=(https://github.com/cea-hpc/${pkgname}/archive/v${pkgver}.tar.gz)
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/cea-hpc/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('94c97e8de4d701ceb953772a4cfd88b60323dd5b50bfd9ad765e92fe543303f3')
 
 build() {
-    echo "Directory: ${srcdir}/${pkgname}-${pkgver}"
-    cd ${srcdir}/${pkgname}-${pkgver}
+    cd ${pkgname}-${pkgver}
     python setup.py build
 }
 package(){
-    cd ${srcdir}/${pkgname}-${pkgver}
+    cd ${pkgname}-${pkgver}
     python setup.py install -O1 --skip-build --root="${pkgdir}"
     # config files
     install -d ${pkgdir}/etc/
@@ -42,9 +41,8 @@ package(){
     install -p -m 0644 bash_completion.d/cluset ${pkgdir}/usr/share/bash-completion/completions/
     install -p -m 0644 bash_completion.d/clush ${pkgdir}/usr/share/bash-completion/completions/
 
-    local vimdatadir=/usr/share/vim/vimfiles
-    cd ${srcdir}/${pkgbase}-${pkgver}
     # vim addons
+    local vimdatadir=/usr/share/vim/vimfiles
     install -d ${pkgdir}/$vimdatadir/{ftdetect,syntax}
     install -p -m 0644 doc/extras/vim/ftdetect/clustershell.vim ${pkgdir}/${vimdatadir}/ftdetect/
     install -p -m 0644 doc/extras/vim/syntax/clushconf.vim ${pkgdir}/${vimdatadir}/syntax/
