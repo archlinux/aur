@@ -1,7 +1,7 @@
 pkgbase = musl-gcc-cross-bin
 	pkgdesc = A GCC cross-compiler targeting Linux musl
 	pkgver = 15.2.0
-	pkgrel = 20260110
+	pkgrel = 20260204
 	url = https://github.com/AmanoTeam/Raiden
 	arch = i686
 	arch = x86_64
@@ -13,12 +13,12 @@ pkgbase = musl-gcc-cross-bin
 	options = !strip
 	options = staticlibs
 	source_i686 = https://github.com/AmanoTeam/Raiden/releases/download/gcc-15/i386-unknown-linux-gnu.tar.xz
-	sha256sums_i686 = 1f5c69cdd2983c735481f99bccd0251d2bf986c564a20facdf41e594d51c5b66
+	sha256sums_i686 = 19423794353b5205aa862a7c61f499788e56bceb0e24df5d8199839d92c794de
 	source_x86_64 = https://github.com/AmanoTeam/Raiden/releases/download/gcc-15/x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = cf040ac18bf6e5d185bd633cb667408c176e4bde19299ca68f4550f257f7453e
+	sha256sums_x86_64 = 76104ab83a8f79ec4be6189cdc6c5fad2676f7d5ce1abbea481253dccaf51204
 	source_aarch64 = https://github.com/AmanoTeam/Raiden/releases/download/gcc-15/aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = d43e7561b01b9d9649252de92f3fd1e773188d7d88e12dec292ab8695dda8619
+	sha256sums_aarch64 = 21ea5ea6ff136a0c6376111b641de6df717415f02fe5f2f928c1bb8e0fe02d5a
 	source_armv7h = https://github.com/AmanoTeam/Raiden/releases/download/gcc-15/arm-unknown-linux-gnueabihf.tar.xz
-	sha256sums_armv7h = a9f6303d80393e057219c5ec4fa7b45271a666c791205ce41d603de8ffd76c1c
+	sha256sums_armv7h = a01b55d4eca7ae968023258a50235ea2f3fe8d199c7089f6888b9308f122e949
 
 pkgname = musl-gcc-cross-bin
