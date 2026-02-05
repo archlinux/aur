@@ -12,7 +12,7 @@ pkgver=20260201
 _pkgver=dev-${pkgver}
 _vboxver='7.2.6'
 _vboxsubver=''
-pkgrel=1
+pkgrel=2
 conflicts=('virtualbox' 'virtualbox-ose')
 depends=('curl' 'gcc-libs' 'glibc' 'liblzf' 'libpng' 'libtpms' 'libvpx' 'libx11' 'libxcursor'
             'libxext' 'libxinerama' 'libxml2' 'libxmu' 'libxt' 'openssl' 'procps-ng' 'python'
@@ -108,6 +108,7 @@ build() {
         --disable-docs \
         --disable-kmods \
         --disable-vmmraw \
+        --disable-hardening \
         --enable-vde \
         --enable-vnc \
         --enable-webservice \
@@ -130,17 +131,13 @@ package() {
     install -m0755 *.so -t "${pkgdir}/usr/lib/virtualbox"
     install -m0644 *.r0 VBoxEFI*.fd -t "${pkgdir}/usr/lib/virtualbox"
 
-    # binaries (in /usr/lib/virtualbox) with setuid
-    install -m4755 \
+    # binaries (in /usr/lib/virtualbox)
+    install -m0755 \
         VirtualBoxVM \
         VBoxHeadless \
         VBoxNetAdpCtl \
         VBoxNetDHCP \
         VBoxNetNAT \
-        -t "${pkgdir}/usr/lib/virtualbox"
-
-    # binaries (in /usr/lib/virtualbox)
-    install -m0755 \
         VBoxSDL \
         VirtualBox \
         VBoxManage \

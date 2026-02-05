@@ -1,7 +1,7 @@
 pkgbase = virtualbox-kvm
 	pkgdesc = Powerful x86 virtualization for enterprise as well as home use (KVM backend)
 	pkgver = 20260201
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cyberus-technology/virtualbox-kvm
 	arch = x86_64
 	license = GPL-3.0-only AND (GPL-3.0-only OR CDDL-1.0)
