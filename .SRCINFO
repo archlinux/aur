@@ -1,7 +1,7 @@
 pkgbase = drasl
 	pkgdesc = Yggdrasil-compatible API server for Minecraft
-	pkgver = 3.4.0
-	pkgrel = 2
+	pkgver = 3.4.1
+	pkgrel = 1
 	url = https://github.com/unmojang/drasl
 	arch = x86_64
 	arch = aarch64
@@ -15,7 +15,7 @@ pkgbase = drasl
 	depends = glibc
 	conflicts = drasl
 	backup = etc/drasl/config.toml
-	source = drasl::git+https://github.com/unmojang/drasl.git#tag=v3.4.0
-	sha256sums = af73d57558df7032c936ce9577b6ed13ffd5709edd118c8436257b004799c8c2
+	source = drasl::git+https://github.com/unmojang/drasl.git#tag=v3.4.1
+	sha256sums = 5c1d26edad7d4e2476f3dc5b90a31e5fe512e417adff6b567ffc79f6d3b5a28e
 
 pkgname = drasl
