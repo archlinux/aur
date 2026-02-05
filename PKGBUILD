@@ -3,7 +3,7 @@ pkgname=ajclassic-grapefruit
 pkgdesc="Lightweight launcher and runtime for AJ Classic"
 pkgver=1.0.1
 url="https://github.com/themirrazz/grapefruit"
-pkgrel=6
+pkgrel=7
 arch=("x86_64")
 provides=("ajclassic-bin")
 conflicts=("ajclassic-bin"
@@ -44,8 +44,6 @@ prepare() {
 
 package() {
     cd bins
-    cp aj-classic $pkgdir/usr/bin/aj-classic
-    cp ajclassic-grapefruit $pkgdir/usr/bin/ajclassic-grapefruit
     install -Dm755 -t "$pkgdir/usr/bin" aj-classic
     install -Dm755 -t "$pkgdir/usr/bin" ajclassic-grapefruit
     cd ..
