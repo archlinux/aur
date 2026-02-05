@@ -1,0 +1,18 @@
+pkgbase = cosmic-ext-applet-dict-git
+	pkgdesc = An English language dictionary applet for the COSMIC™ desktop
+	pkgver = v0.1.3.r2.g4fef6df
+	pkgrel = 1
+	url = https://github.com/cappsyco/cosmic-ext-applet-dict
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	makedepends = just
+	depends = cosmic-applets
+	provides = cosmic-ext-applet-dict
+	conflicts = cosmic-ext-applet-dict
+	source = git+https://github.com/cappsyco/cosmic-ext-applet-dict.git
+	sha256sums = SKIP
+
+pkgname = cosmic-ext-applet-dict-git
