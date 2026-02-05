@@ -1,0 +1,12 @@
+post_install() {
+  if [[ -d /opt/layaair-ide ]]; then
+    chmod -R a+rX /opt/layaair-ide 2>/dev/null || true
+    if [[ -f /opt/layaair-ide/AppRun ]]; then
+      chmod 755 /opt/layaair-ide/AppRun 2>/dev/null || true
+    fi
+  fi
+}
+
+post_upgrade() {
+  post_install
+}
