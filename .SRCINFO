@@ -1,0 +1,18 @@
+pkgbase = libhinawa-git
+	pkgdesc = GObject introspection library for Linux FireWire subsystem (Git version)
+	pkgver = 4.0.2.r0.g123456
+	pkgrel = 1
+	url = https://git.kernel.org/pub/scm/libs/ieee1394/libhinawa.git/
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	makedepends = git
+	depends = glib2
+	provides = libhinawa
+	conflicts = libhinawa
+	source = git+https://git.kernel.org/pub/scm/libs/ieee1394/libhinawa.git
+	sha256sums = SKIP
+
+pkgname = libhinawa-git
