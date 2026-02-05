@@ -7,6 +7,7 @@ After=network.target
 Wants=network-online.target
 After=network-online.target
 StartLimitIntervalSec=60
+StartLimitBurst=3
 
 [Service]
 User=immich
@@ -25,8 +26,11 @@ ProtectSystem=strict
 ProtectKernelTunables=yes
 ProtectKernelModules=yes
 ProtectControlGroups=yes
-## hardware transcoding access
-DeviceAllow=char-drm
+# hardware transcoding access, based on hwaccel.transcoding.yml
+DeviceAllow=char-drm rw
+DeviceAllow=char-nvidia* rw
+SupplementaryGroups=render video
+# if you use Rockchip you might want to just PrivateDevices=false
 
 RestrictNamespaces=yes
 
@@ -36,7 +40,7 @@ CapabilityBoundingSet=
 NoNewPrivileges=yes
 
 WorkingDirectory=/usr/lib/immich/app/server
-ReadWritePaths=/tmp /var/tmp /var/lib/immich/upload
+ReadWritePaths=/tmp /var/tmp /var/lib/immich/upload /var/lib/immich/.cache
 
 # overwrites ffmpeg in /usr/bin with the jellyfin version for this unit only
 BindReadOnlyPaths=/usr/lib/jellyfin-ffmpeg/ffmpeg:/usr/bin/ffmpeg /usr/lib/jellyfin-ffmpeg/ffprobe:/usr/bin/ffprobe
