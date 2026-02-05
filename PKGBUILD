@@ -33,7 +33,7 @@ depends=(
 source=("https://github.com/allisonhere/alogi/releases/download/v${pkgver}/alogi-${pkgver}-linux-unpacked.tar.gz"
         "alogi.desktop"
         "icon.png")
-sha256sums=("0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5" "SKIP" "SKIP")
+sha256sums=("52a70da1fa912489dbf278f9db7571f7550ecbefc6e57352ccf3d95395a8e8a9" "SKIP" "SKIP")
 
 package() {
   install -d "${pkgdir}/opt/alogi"
