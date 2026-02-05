@@ -1,0 +1,17 @@
+# Pacman hook to refresh KDE sycoca cache when KCM modules are installed
+# Ensures new System Settings modules are immediately visible
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Target = usr/lib/qt6/plugins/plasma/kcms/systemsettings/*.so
+Target = usr/share/applications/kcm_*.desktop
+
+[Action]
+Description = Refreshing KDE service cache...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/plasmazones-refresh-sycoca

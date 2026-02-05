@@ -1,0 +1,19 @@
+#!/bin/bash
+# Refresh KDE sycoca cache for all logged-in users with KDE sessions
+# This script is called by the pacman hook after KCM installation
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+# Find all users running kded6 (indicates active KDE session)
+for pid in $(pgrep -x kded6); do
+    user=$(ps -o user= -p "$pid" 2>/dev/null | tr -d ' ')
+    if [ -n "$user" ] && [ "$user" != "root" ]; then
+        # Run kbuildsycoca6 as that user
+        su - "$user" -c "kbuildsycoca6 --noincremental" >/dev/null 2>&1 &
+    fi
+done
+
+# Wait for all background jobs
+wait 2>/dev/null
+
+exit 0
