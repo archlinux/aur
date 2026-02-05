@@ -1,0 +1,4 @@
+[lokinet]
+source = "git"
+git = "https://github.com/oxen-io/lokinet.git"
+prefix = "v"

@@ -1,4 +1,4 @@
-/src
-/pkg
-/lokinet-*.tar.*
-/lokinet-*.log
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
