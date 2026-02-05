@@ -1,6 +1,6 @@
 pkgbase = git-contrib-tree
 	pkgdesc = Analyze git repository contributions and display a tree of files with top contributors for each.
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://gitlab.com/wykwit/git-contrib-tree
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = git-contrib-tree
 	makedepends = python-wheel
 	depends = git
 	depends = python3
-	source = git-contrib-tree-0.2.0.tar.gz::https://gitlab.com/wykwit/git-contrib-tree/-/archive/v0.2.0/git-contrib-tree-v0.2.0.tar.gz
-	sha256sums = fae416d3841e9e68607a5d528690f486c7660f29ac462f3752b45081d8747887
+	source = git-contrib-tree-0.2.1.tar.gz::https://gitlab.com/wykwit/git-contrib-tree/-/archive/v0.2.1/git-contrib-tree-v0.2.1.tar.gz
+	sha256sums = 6917aef97d62647723e279f1418c4caa40d9df7ad98e52f40647a6bf24102e61
 
 pkgname = git-contrib-tree
