@@ -1,7 +1,7 @@
 # Maintainer: Wimpy <vvinn.py[AT]@gmail.com>
 pkgname=kimi-cli
 _pkgname=kimi-cli
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Kimi Code CLI is your next CLI agent."
 provides=('kimi')
