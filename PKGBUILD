@@ -3,7 +3,7 @@ pkgname=ajclassic-grapefruit
 pkgdesc="Lightweight launcher and runtime for AJ Classic"
 pkgver=1.0.1
 url="https://github.com/themirrazz/grapefruit"
-pkgrel=8
+pkgrel=9
 arch=("x86_64")
 provides=("ajclassic-bin")
 conflicts=("ajclassic-bin"
@@ -49,6 +49,6 @@ package() {
     cd ..
     install -Dm755 -t "$pkgdir/usr/share/applications" ajclassic-grapefruit.desktop
     mkdir -p "$pkgdir/usr/lib"
-    cp ajclassic-grapefruit "$pkgdir/usr/lib"
+    cp -r ajclassic-grapefruit "$pkgdir/usr/lib"
     cp gameicon.png $pkgdir/usr/lib/ajclassic-grapefruit/gameicon.png
 }
