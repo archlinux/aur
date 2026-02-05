@@ -1,6 +1,6 @@
 pkgbase = python-numba-mpi
 	pkgdesc = Numba @njittable MPI wrappers tested on Linux, macOS and Windows
-	pkgver = 1.1.7
+	pkgver = 1.1.8
 	pkgrel = 1
 	url = https://github.com/numba-mpi/numba-mpi
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-numba-mpi
 	depends = python-numba
 	depends = python-mpi4py
 	depends = python-psutil
-	source = numba-mpi-1.1.7.tar.gz::https://github.com/numba-mpi/numba-mpi/archive/v1.1.7.tar.gz
-	sha512sums = fe8d279a1f6ddba058a9f8e011f3d568d5ae82c97bde220b33554b6976d602c3a1b6fc1e6c3f99c8aa9ba558e2c2ea9a195f1edd6124ae119d9aa151c6de3894
+	source = numba-mpi-1.1.8.tar.gz::https://github.com/numba-mpi/numba-mpi/archive/v1.1.8.tar.gz
+	sha512sums = be2134aa60b6e5b313424f25f09c4d9f6f7ac61267bec9b9af5bd42cd145f6d05a4e50bd0984c355358f673cfa2fd31483921dda00e4736fe31c1c003f8fcaa2
 
 pkgname = python-numba-mpi
