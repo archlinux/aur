@@ -1,6 +1,6 @@
 pkgbase = codex-app-manjaro-arch-port-git
 	pkgdesc = helper script to port the codex macos desktop app to arch/manjaro (x86_64)
-	pkgver = r0.0000000
+	pkgver = r4.13c0811
 	pkgrel = 1
 	url = https://github.com/fvaha/New-Codex-App-Manjaro-Arch-Port
 	install = codex-app-manjaro-arch-port-git.install

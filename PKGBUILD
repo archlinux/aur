@@ -1,7 +1,7 @@
 # Maintainer: clxud <you@example.com>
 
 pkgname=codex-app-manjaro-arch-port-git
-pkgver=r0.0000000
+pkgver=r4.13c0811
 pkgrel=1
 pkgdesc="helper script to port the codex macos desktop app to arch/manjaro (x86_64)"
 arch=('x86_64')
