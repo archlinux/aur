@@ -9,7 +9,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libxcomposite' 'libxdamage' 'libxfixe
 optdepends=('xdg-desktop-portal-gtk: GTK portal backend' 'xdg-desktop-portal-kde: KDE portal backend' 'xdg-desktop-portal-wlr: wlroots portal backend')
 makedepends=('dotnet-sdk')
 source=("WriterSuite-src.tar.gz::https://softenough.com/download/aur/src/WriterSuite-src.tar.gz")
-sha256sums=('352da125ba3fbfb8b7144049073ef839cfdf64dffbeca29457a983ee5dea3a38')
+sha256sums=('d657e38529b694317d09098202f6fe392a243bfce1feb1ed944e027b9ae0498e')
 
 build() {
   cd "$srcdir"
