@@ -1,4 +1,4 @@
-pkgbase = vimcord
+pkgbase = vimcord-git
 	pkgdesc = A Terminal UI Discord Client in Rust (latest)
 	pkgver = 0.3.1
 	pkgrel = 1
@@ -8,7 +8,7 @@ pkgbase = vimcord
 	arch = aarch64
 	license = MIT
 	depends = cargo
-	source = vimcord-0.3.1.tar.gz::https://github.com/YetAnotherMechanicusEnjoyer/vimcord/archive/refs/heads/main.tar.gz
+	source = vimcord-git-0.3.1.tar.gz::https://github.com/YetAnotherMechanicusEnjoyer/vimcord/archive/refs/heads/main.tar.gz
 	sha256sums = SKIP
 
-pkgname = vimcord
+pkgname = vimcord-git
