@@ -4,11 +4,11 @@
 
 _browser=vivaldi-snapshot
 pkgname=${_browser}-ffmpeg-codecs
-pkgver=144.0.7559.114
+pkgver=144.0.7559.167
 _vivaldi_major_version=7.9
 _commit=e18f48eba6b367ac68b9c477ae6cbe224e36b031
 #_commit=$(curl -sL "https://chromium.googlesource.com/chromium/src.git/+/refs/tags/${pkgver}/DEPS?format=TEXT" | base64 -d | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
-pkgrel=2
+pkgrel=1
 pkgdesc="additional support for proprietary codecs for ${_browser}"
 arch=('x86_64')
 url='https://chromium.googlesource.com/chromium/third_party/ffmpeg'
