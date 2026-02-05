@@ -1,6 +1,6 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='pie'
-pkgver='1.3.7'
+pkgver='1.3.8'
 pkgrel='1'
 pkgdesc='The PHP Installer for Extensions'
 arch=('any')
@@ -9,7 +9,7 @@ license=('BSD-3-Clause')
 depends=('php' 'git')
 makedepends=('composer' 'php-box')
 source=("$pkgname-$pkgver::git+$url#tag=$pkgver?signed")
-b2sums=('47fcd798495999276660f97cde4c735e5498f5e528a245ca6dcd00c1980d5afbe57aa6907fd716fc170f2edd6f819856ebe6d6cf29af2d03ac523ca819c35325')
+b2sums=('5c4cbcfd906253909eed0bdf67cd911924753929c78ba2f6ecd44bd1e187d227e1c6141d35ec2eaf1721e76dbbfad02bcbbd8262d4da1d3b0f43f68ef9642896')
 validpgpkeys=('9DF6EF8E20B7258D38940D789FC9ACAF5F2D9B75') # James Titcumb <james@asgrim.com> (https://github.com/asgrim.gpg)
 
 _sourcedirectory="$pkgname-$pkgver"
