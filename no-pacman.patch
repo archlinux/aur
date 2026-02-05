@@ -1,17 +1,61 @@
 diff --git a/codex-port-manjaro.sh b/codex-port-manjaro.sh
-index 41a6be0..e97fcbd 100644
+index 41a6be0..f69d1c5 100644
 --- a/codex-port-manjaro.sh
 +++ b/codex-port-manjaro.sh
-@@ -25,7 +25,7 @@ echo "HOME      : $HOME"
+@@ -2,12 +2,12 @@
+ set -euo pipefail
+ 
+ ##
+-## Codex macOS -> Manjaro port helper (shareable)
+-## Pokreće se ovako:
++## Codex macOS -> Arch/Manjaro port helper (shareable)
++## Run it like this:
+ ##   bash ./codex-port-manjaro.sh
+ ##
+ 
+-echo "=== [0] Brza provera sistema (nema hardcodovanih putanja za ovu mašinu) ==="
++echo "=== [0] Quick system check (no machine-specific paths) ==="
+ 
+ ARCH="$(uname -m 2>/dev/null || echo unknown)"
+ KERNEL="$(uname -r 2>/dev/null || echo unknown)"
+@@ -24,124 +24,113 @@ echo "Arch      : $ARCH"
+ echo "HOME      : $HOME"
  
  echo
- echo "Provera komandi:"
+-echo "Provera komandi:"
 -for cmd in pacman curl 7z node npm pnpm electron; do
++echo "Checking required commands:"
 +for cmd in curl 7z node pnpm electron; do
    if command -v "$cmd" >/dev/null 2>&1; then
      echo "  - $cmd: OK ($(command -v "$cmd"))"
    else
-@@ -53,27 +53,16 @@ else
+-    echo "  - $cmd: nije pronađen (skripta će ga instalirati ili nije obavezan)"
++    echo "  - $cmd: NOT FOUND (install it first if required)"
+   fi
+ done
+ 
+ if [ "$ARCH" != "x86_64" ]; then
+   echo
+-  echo "UPOZORENJE: arhitektura nije x86_64 (detektovano: $ARCH)."
+-  echo "Native moduli kao better-sqlite3 možda neće moći da se izgrade ispravno."
++  echo "WARNING: architecture is not x86_64 (detected: $ARCH)."
++  echo "Native modules like better-sqlite3 may fail to build."
+ fi
+ 
+ echo
+ 
+-echo "=== [1] Preuzimanje Codex.dmg na ~/Downloads/codex-macos ==="
++echo "=== [1] Downloading Codex.dmg to ~/Downloads/codex-macos ==="
+ mkdir -p "$HOME/Downloads/codex-macos"
+ cd "$HOME/Downloads/codex-macos"
+ 
+ if [ ! -f Codex.dmg ]; then
+-  echo "Preuzimam Codex.dmg..."
++  echo "Downloading Codex.dmg..."
+   curl -L -o Codex.dmg "https://persistent.oaistatic.com/codex-app-prod/Codex.dmg"
+ else
+-  echo "Codex.dmg već postoji, preskačem download."
++  echo "Codex.dmg already exists, skipping download."
  fi
  
  echo
@@ -25,17 +69,18 @@ index 41a6be0..e97fcbd 100644
 -
 -echo "Instaliram osnovne pakete preko pacman (može da traži sudo lozinku)..."
 -sudo pacman -S --needed p7zip nodejs npm python base-devel git electron
--
--echo
--echo "Verzije nakon pacman instalacije:"
--node -v || true
--npm -v || true
--electron --version || true
 +echo "This script no longer tries to install packages via pacman."
 +echo "Install dependencies yourself (e.g. pacman -S --needed p7zip nodejs pnpm python electron gcc make)."
  
  echo
- echo "Proveravam pnpm..."
+-echo "Verzije nakon pacman instalacije:"
+-node -v || true
+-npm -v || true
+-electron --version || true
+-
+-echo
+-echo "Proveravam pnpm..."
++echo "Checking pnpm..."
  if ! command -v pnpm >/dev/null 2>&1; then
 -  echo "pnpm nije instaliran, instaliram ga preko npm (jedini put kada koristimo npm)..."
 -  sudo npm i -g pnpm
@@ -44,8 +89,178 @@ index 41a6be0..e97fcbd 100644
  fi
  
  pnpm -v
-@@ -225,4 +214,3 @@ echo "  export PATH=\"\$PNPM_HOME:\$PATH\""
+ 
+-# apsolutna putanja do pnpm binara
++# absolute path to pnpm
+ PNPM_BIN="$(command -v pnpm)"
+ 
+-# postavi PNPM_HOME tako da global bin ima gde da ide (i da bude predvidljiv)
++# set PNPM_HOME so the global bin path is predictable
+ export PNPM_HOME="${PNPM_HOME:-$HOME/.local/share/pnpm}"
+ mkdir -p "$PNPM_HOME"
  
  echo
- echo "=== Gotovo. Codex port skripta je završena. ==="
+-echo "Proveravam asar preko pnpm dlx (bez globalne instalacije)..."
++echo "Checking asar via pnpm dlx (no global install)..."
+ "$PNPM_BIN" dlx asar --version || true
+ 
+ echo
+-echo "=== [3] Ekstrakcija DMG i app.asar u ~/apps/codex-port ==="
++echo "=== [3] Extracting DMG and app.asar to ~/apps/codex-port ==="
+ 
+ ROOT_APP_DIR="$HOME/apps/codex-port"
+ mkdir -p "$ROOT_APP_DIR"
+ cd "$ROOT_APP_DIR"
+ 
+-echo "Ekstrahujem Codex.dmg pomoću 7z (auto overwrite - A za sve)..."
++echo "Extracting Codex.dmg with 7z (overwrite enabled)..."
+ 7z x -y -aoa "$HOME/Downloads/codex-macos/Codex.dmg" -o./dmg_extracted
+ 
+ echo
+-echo "Tražim app.asar unutar dmg_extracted..."
++echo "Searching for app.asar inside dmg_extracted..."
+ APP_ASAR_PATH=$(find ./dmg_extracted -name "app.asar" -print | head -n 1 || true)
+ 
+ if [ -z "${APP_ASAR_PATH:-}" ]; then
+-  echo "Nisam pronašao app.asar unutar ./dmg_extracted." >&2
++  echo "Could not find app.asar inside ./dmg_extracted." >&2
+   exit 1
+ fi
+ 
+-echo "Nađeni app.asar: $APP_ASAR_PATH"
++echo "Found app.asar: $APP_ASAR_PATH"
+ 
+ mkdir -p "$ROOT_APP_DIR/app_asar"
+-echo "Raspakujem app.asar u app_asar direktorijum (preko pnpm dlx asar)..."
++echo "Extracting app.asar to app_asar (via pnpm dlx asar)..."
+ "$PNPM_BIN" dlx asar extract "$APP_ASAR_PATH" "$ROOT_APP_DIR/app_asar"
+ 
+ echo
+-echo "=== [4] Rebuild native modula (better-sqlite3, node-pty) preko pnpm ==="
++echo "=== [4] Rebuilding native modules (better-sqlite3, node-pty) via pnpm ==="
+ 
+ cd "$ROOT_APP_DIR/app_asar"
+ 
+ echo
+-echo "Čitam Electron verziju..."
++echo "Reading Electron version..."
+ ELECTRON_VERSION=$(electron --version | tr -d 'v' || true)
+ 
+ if [ -z "${ELECTRON_VERSION:-}" ]; then
+-  echo "Nisam uspeo da očitam Electron verziju. Proveri da li je electron ispravno instaliran." >&2
++  echo "Failed to read Electron version. Check that electron is installed correctly." >&2
+   exit 1
+ fi
+ 
+-echo "Electron verzija: $ELECTRON_VERSION"
++echo "Electron version: $ELECTRON_VERSION"
+ 
+ echo
+-echo "Pravim izolovani projekat za build better-sqlite3 za Electron (da zaobiđem workspace i polovičan paket iz DMG)..."
++echo "Creating isolated project to build better-sqlite3 for Electron (avoid workspace / partial DMG package)..."
+ TMP_BUILD_DIR="$ROOT_APP_DIR/_better-sqlite3-build"
+ rm -rf "$TMP_BUILD_DIR"
+ mkdir -p "$TMP_BUILD_DIR"
+ 
+-echo "Čitam verziju better-sqlite3 iz Codex app-a..."
++echo "Reading better-sqlite3 version from the Codex app..."
+ BSQL_VERSION=$(node -p "require('$ROOT_APP_DIR/app_asar/node_modules/better-sqlite3/package.json').version" 2>/dev/null || echo "12.5.0")
+-echo "better-sqlite3 verzija: $BSQL_VERSION"
++echo "better-sqlite3 version: $BSQL_VERSION"
+ 
+ cd "$TMP_BUILD_DIR"
+-echo "Kreiram minimalni package.json za temp projekat..."
++echo "Creating minimal package.json for temp project..."
+ cat > package.json <<EOF
+ {
+   "name": "better-sqlite3-electron-build",
+@@ -153,30 +142,30 @@ EOF
+ pnpm add "better-sqlite3@$BSQL_VERSION"
+ 
+ echo
+-echo "Rebuildujem better-sqlite3 u izolovanom projektu za Electron $ELECTRON_VERSION..."
++echo "Rebuilding better-sqlite3 in isolated project for Electron $ELECTRON_VERSION..."
+ ELECTRON_REBUILD_CMD="$PNPM_BIN dlx electron-rebuild -v \"$ELECTRON_VERSION\" -f better-sqlite3"
+-echo "Komanda: $ELECTRON_REBUILD_CMD"
++echo "Command: $ELECTRON_REBUILD_CMD"
+ set +e
+ eval "$ELECTRON_REBUILD_CMD"
+ REB_RES=$?
+ set -e
+ 
+ if [ "$REB_RES" -ne 0 ]; then
+-  echo "UPOZORENJE: electron-rebuild (u izolovanom projektu) je pukao (exit code $REB_RES). Pokušavam ipak da kopiram modul."
++  echo "WARNING: electron-rebuild (in isolated project) failed (exit code $REB_RES). Will still try to copy the module."
+ fi
+ 
+ echo
+-echo "Kopiram bolje izgrađen modul better-sqlite3 u Codex app_asar..."
++echo "Copying rebuilt better-sqlite3 module into Codex app_asar..."
+ if [ -d "$TMP_BUILD_DIR/node_modules/better-sqlite3" ]; then
+   rm -rf "$ROOT_APP_DIR/app_asar/node_modules/better-sqlite3"
+   cp -a "$TMP_BUILD_DIR/node_modules/better-sqlite3" "$ROOT_APP_DIR/app_asar/node_modules/better-sqlite3"
+-  echo "better-sqlite3 je kopiran u app_asar/node_modules."
++  echo "better-sqlite3 copied into app_asar/node_modules."
+ else
+-  echo "UPOZORENJE: u izolovanom projektu nije pronađen node_modules/better-sqlite3; preskačem kopiranje."
++  echo "WARNING: node_modules/better-sqlite3 not found in isolated project; skipping copy."
+ fi
+ 
+ echo
+-echo "=== [5] run-codex.sh skripta za pokretanje Codex-a ==="
++echo "=== [5] Creating run-codex.sh launcher script ==="
+ 
+ cat > "$ROOT_APP_DIR/run-codex.sh" <<'EOF'
+ #!/usr/bin/env bash
+@@ -188,7 +177,7 @@ APP_DIR="$ROOT_DIR/app_asar"
+ export ELECTRON_FORCE_IS_PACKAGED=1
+ export NODE_ENV=production
+ 
+-# default CLI path na pnpm instalaciju; može da se override-uje spolja
++# default CLI path for the pnpm install; can be overridden externally
+ export CODEX_CLI_PATH="${CODEX_CLI_PATH:-$HOME/.local/share/pnpm/codex}"
+ 
+ electron "$APP_DIR"
+@@ -197,32 +186,31 @@ EOF
+ chmod +x "$ROOT_APP_DIR/run-codex.sh"
+ 
+ echo
+-echo "run-codex.sh je kreiran u: $ROOT_APP_DIR/run-codex.sh"
+-echo "Primer pokretanja (sa CODEX_CLI_PATH ako treba):"
+-echo "  CODEX_CLI_PATH=/neki/drugi/codex $ROOT_APP_DIR/run-codex.sh"
++echo "run-codex.sh created at: $ROOT_APP_DIR/run-codex.sh"
++echo "Example run (override CODEX_CLI_PATH if needed):"
++echo "  CODEX_CLI_PATH=/some/other/codex $ROOT_APP_DIR/run-codex.sh"
+ 
+ echo
+-echo "=== [6] Codex CLI instalacija preko pnpm (globalno) ==="
++echo "=== [6] Installing Codex CLI via pnpm (global) ==="
+ 
+-echo "Podesavam pnpm global okruzenje (pnpm setup)..."
++echo "Setting up pnpm global environment (pnpm setup)..."
+ "$PNPM_BIN" setup || true
+ 
+-# osiguraj da PNPM_HOME i global dir postoje (za izbegavanje ENOENT na pnpm-lock.yaml)
++# ensure PNPM_HOME and global dir exist (avoid ENOENT for pnpm-lock.yaml)
+ mkdir -p "$PNPM_HOME/global/5"
+ 
+-echo "Instaliram @openai/codex globalno za korisnika (pnpm -g, bez sudo)..."
++echo "Installing @openai/codex globally for the current user (pnpm -g, no sudo)..."
+ "$PNPM_BIN" i -g @openai/codex || true
+ 
+ echo
+-echo "Proveravam codex CLI:"
++echo "Checking codex CLI:"
+ PATH="$PNPM_HOME:$PATH" which codex || true
+ PATH="$PNPM_HOME:$PATH" codex --version || true
+ 
+ echo
+-echo "Ako 'which codex' ne pokazuje ništa, dodaj u ~/.zshrc ili ~/.bashrc linije:"
++echo "If 'which codex' prints nothing, add these lines to ~/.zshrc or ~/.bashrc:"
+ echo "  export PNPM_HOME=\"$PNPM_HOME\""
+ echo "  export PATH=\"\$PNPM_HOME:\$PATH\""
+ 
+ echo
+-echo "=== Gotovo. Codex port skripta je završena. ==="
 -
++echo "=== Done. Codex port script finished. ==="
