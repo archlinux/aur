@@ -1,10 +1,10 @@
 # Maintainer: George Sofianos <george at sofianos dot dev>
 # Contributor Michele Balistreri <michele at bitgamma dot com>
 
-# Release notes https://github.com/lemonade-sdk/lemonade/releases/tag/v9.2.0
+# Release notes https://github.com/lemonade-sdk/lemonade/releases/tag/v9.3.0
 pkgname=lemonade-server
 pkgdesc="Lemonade: Local LLM Serving with GPU and NPU acceleration (Server)"
-pkgver=9.2.0
+pkgver=9.3.0
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/lemonade-sdk/lemonade/'
@@ -18,26 +18,24 @@ _httplibver=0.30.1
 source=(
 "${pkgname}-${pkgver}.tar.gz::https://github.com/lemonade-sdk/lemonade/archive/refs/tags/v${pkgver}.tar.gz"
 "httplib-${_httplibver}.tar.gz::https://github.com/yhirose/cpp-httplib/archive/refs/tags/v${_httplibver}.tar.gz"
-lemonade-server.service
-lemonade.conf
+secrets.conf
 sysusers.conf
 tmpfiles.conf
 )
 
 sha256sums=(  
-'c5aee810d6e30e969d962b265a2e2a637769f81e9e29fd88bdc650ce76411cc3'
+'c6aee123bc4f5ca153bf3ab31db4f60c7471987cc94ac0c92242e36c1357e5c7'
 '2818b183757e29dd52b47a185f0cea9ef2d0fba377d8710b450a26328e51c2fe'
-'ae859c2949ea0122f97ee0972f5d3a00f13106182939ef041bdfcfd65fa6d250'
-'30893dd8f50716d8fb9a44aad49f26120ebeff7ddb7d72463bf351ed6aec1ab8'
+'464336783e25081a04af8d204759ad617243724796da5b9f601ca83570c60fb2'
 '069d5612d570e83128d7eed7ffe4525943d75d22b9c84537d861833157e74b26'
-'dea2b027049b7415c4a9551bc32aff04963ba3fc55fd087a13602bc50dd3a14f'
+'6fbbdf843a4c74811e304d666b99b887c1b5bf94d04d924cf5c2136c0b3cc691'
 )
 
 build() {
   local cmake_options=(
     -B build
     -G Ninja
-    -S lemonade-${pkgver}/src/cpp
+    -S lemonade-${pkgver}
     -W no-dev
     -D FETCHCONTENT_FULLY_DISCONNECTED=ON
     -D FETCHCONTENT_SOURCE_DIR_HTTPLIB="${srcdir}/cpp-httplib-${_httplibver}"
@@ -51,11 +49,11 @@ build() {
 package() {
   DESTDIR="$pkgdir" cmake --install build
 
+  sed -i "10i EnvironmentFile=/etc/lemonade/secrets.conf" ${pkgdir}/usr/lib/systemd/system/lemonade-server.service
   install -dm0755 "${pkgdir}"/var/lib/lemonade
   install -dm0755 "${pkgdir}"/etc/lemonade
 
-  install -vDm644 lemonade.conf "${pkgdir}/etc/lemonade/lemonade.conf"
-  install -vDm644 lemonade-server.service "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -vDm660 secrets.conf "${pkgdir}/etc/lemonade/secrets.conf"
   install -vDm644 "${srcdir}/sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
   install -vDm644 "${srcdir}/tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 }
