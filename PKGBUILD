@@ -3,6 +3,7 @@
 : ${_build_profiled_xvfb:=false}
 
 epoch=1
+# Maintainer: konvix <busybeaver@2mail.co>
 pkgname=konform-browser
 provides=(konform-browser)
 conflicts=()
