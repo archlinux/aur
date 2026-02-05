@@ -18,10 +18,10 @@ depends=(
   'python-requests'
 )
 optdepends=(
-  'sonarr: To show TV library data.'
-  'radarr: To show Movie library data.'
-  'tautulli: To augment w/ Plex watch data.'
-  'jellystat: To autment w/ Jellyfin watch data.'
+  'sonarr: TV library data'
+  'radarr: Movie library data'
+  'tautulli: Augment w/ Plex data'
+  'jellystat: Augment w/ Jellyfin data'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Jaredharper1/Sortarr/archive/$pkgver.tar.gz"
         'sortarr.tmpfiles'
