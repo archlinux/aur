@@ -16,7 +16,7 @@ pkgbase = plover
 	depends = python-cmarkgfm
 	depends = python-evdev
 	depends = python-plover_stroke>=1.1.0
-	depends = pyside6>=6.9.0
+	depends = python-pyside6>=6.9.0
 	depends = python-pkginfo
 	depends = python-psutil
 	depends = python-pyserial

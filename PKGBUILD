@@ -19,7 +19,7 @@ depends=(
 	python-cmarkgfm
 	python-evdev
 	'python-plover_stroke>=1.1.0'
-	'pyside6>=6.9.0'
+	'python-pyside6>=6.9.0'
 	python-pkginfo
 	python-psutil
 	python-pyserial
