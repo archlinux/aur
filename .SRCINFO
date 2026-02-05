@@ -1,0 +1,18 @@
+pkgbase = python-pylibyaml
+	pkgdesc = Python module that patches the PyYAML library to enable libyaml parser/emitter
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/philsphicas/pylibyaml
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-pyyaml
+	source = python-pylibyaml-0.1.0.tar.gz::https://files.pythonhosted.org/packages/source/p/pylibyaml/pylibyaml-0.1.0.tar.gz
+	sha512sums = 1fdab10678688ae85091b0a0aa6e52db9f4236c458eaab46234c5696a09128a582bc51d7c796e7562eda484864591700ca3b7f885b6f5ba19a65504cabce8c3f
+	b2sums = 4d8acfbbf01a37cbf607867b05d4947e8140965ea99bf0acdb59e097f64b83efb8d9bad4a98e418636a8f9001b120081c1a0028abd05d43b509a763a9f404265
+
+pkgname = python-pylibyaml
