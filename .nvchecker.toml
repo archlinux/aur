@@ -1,0 +1,3 @@
+[python-n64img]
+source = "git"
+git = "https://github.com/decompals/n64img.git"
