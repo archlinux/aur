@@ -3,7 +3,7 @@
 
 pkgname=oolite
 pkgver=1.92
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source remake of Elite with many, many enhancements, git version"
 arch=('x86_64')
 url="https://oolite.space/"
