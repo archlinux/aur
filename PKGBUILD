@@ -48,6 +48,7 @@ depends=(
   nspr
   nss
   pango
+  pixman
   sh
   ttf-font
   zlib
