@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nuclia-sync-agent-bin
-pkgver=1.9.7
+pkgver=1.9.8
 _electronversion=40
 pkgrel=1
 pkgdesc="A small application that runs on your computer and keeps your files in sync with the Nuclia cloud."
@@ -16,7 +16,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('4d62f2891bc1ec603974964ae9577800ec40ddc7e4d2f95e649c4f2154bf5c5c'
+sha256sums=('9f16f01c54c3e97d874da8a33e1a35cc9c433a6ffda42800f6961ea5991b0524'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/usr/lib/${pkgname%-bin}/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
