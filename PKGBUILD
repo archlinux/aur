@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=trufos-git
 _pkgname=Trufos
-pkgver=0.3.0.r0.ge211826
-_electronversion=39
-_nodeversion=22
+pkgver=0.4.0.r1.g2534792
+_electronversion=40
+_nodeversion=24
 pkgrel=1
 pkgdesc="A modern, open source REST client app.(Use system-wide electron)"
 arch=('any')
@@ -21,6 +21,7 @@ makedepends=(
     'git'
     'curl'
     'gendesk'
+    'jq'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
@@ -63,25 +64,26 @@ prepare() {
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
-    {
-        echo -e '\n'
-        #echo 'build_from_source=true'
-        echo "cache=${srcdir}/.npm_cache"
-        echo "maxsockets=10"
-    } >> .npmrc
+    mkdir -p "${srcdir}/.electron-gyp"
+    touch "${srcdir}/.electron-gyp/.yarnrc"
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-            echo 'registry=https://registry.npmmirror.com'
-            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
-            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
-        } >> .npmrc
-        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
+            echo 'npmRegistryServer: "https://registry.npmmirror.com"'
+            echo "cacheFolder: "${srcdir}"/.yarn/cache"
+            echo "globalFolder: "${srcdir}"/.yarn/global"
+            echo 'networkConcurrency: 32'
+        } >> .yarnrc.yml
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     fi
     _ensure_local_nvm
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    npm install --leagcy-peer-deps
-    NODE_ENV=development    npm add -D @electron-forge/plugin-local-electron
+    _yarnver=`grep "yarn@" package.json | awk '{print $2}' | sed "s/\"//g;s/yarn@//g;s/,//g"`
+    corepack enable yarn
+    echo y | yarn version "${_yarnver}"
+    NODE_ENV=development    yarn install
+    NODE_ENV=development    yarn add -D @electron-forge/plugin-local-electron
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
@@ -94,7 +96,7 @@ build() {
             electronPath: \'${electronDist}\',\\
         },\\
     }," forge.config.*
-    NODE_ENV=production     npm run package
+    NODE_ENV=production     yarn run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
