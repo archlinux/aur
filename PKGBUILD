@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 _base=datatypes
 pkgname=python-${_base}
-pkgver=0.31.0
+pkgver=0.32.0
 pkgrel=1
 pkgdesc="Utility Classes and Functions that are handy across multiple projects"
 arch=(any)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(python)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('952effdef1cb1bdfdaae9dd6c18e336e802379804439a6f4c561c465191d289768868bdd66f0e3006dac0bd3e501b063795932342abf5d6d6c6d848fa9c0ade8')
+sha512sums=('12c7051fbd2eef7d4fc26b11f1d79f8e8e842c95c076309ee894527fb840cd0fae535d6a49218960d1a51ce0451e3f8c097205eea581faaec616c3c9afaaafae')
 
 build() {
   cd ${_base}-${pkgver}
