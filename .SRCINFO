@@ -1,7 +1,7 @@
 pkgbase = mod_auth_radius
 	pkgdesc = Radius authentication module for Apache
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://freeradius.org/mod_auth_radius/
 	arch = x86_64
 	arch = i686
@@ -13,4 +13,3 @@ pkgbase = mod_auth_radius
 	sha256sums = 018a2f9887fb838a256fcc76c37ca996928392e2aaee0a0ef936b6381de60a51
 
 pkgname = mod_auth_radius
-
