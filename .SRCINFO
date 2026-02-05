@@ -1,7 +1,7 @@
 pkgbase = leash-bin
 	pkgdesc = Leash wraps AI coding agents in containers and monitors their activity
 	pkgver = 1.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/strongdm/leash
 	arch = x86_64
 	license = apache
