@@ -2,7 +2,7 @@
 # Maintainer: Jérôme Poulin <jeromepoulin@gmail.com>
 pkgname=claude-code
 pkgver=2.1.32
-pkgrel=1
+pkgrel=2
 pkgdesc="An agentic coding tool that lives in your terminal"
 arch=('x86_64' 'aarch64')
 url="https://github.com/anthropics/claude-code"
@@ -15,6 +15,7 @@ optdepends=(
 	'github-cli: interact with GitHub'
 	'glab: interact with GitLab'
 	'ripgrep: enhanced file search'
+	'tmux: agent team split panes'
 )
 
 # This bucket is used in the official install script at https://claude.ai/install.sh
