@@ -1,0 +1,12 @@
+[Desktop Entry]
+
+Type=Application
+Version=1.0
+Name=NordPy
+Comment=NordVPN client application for connecting to recommended servers
+Path=/usr/share/nordpy
+Exec=/usr/bin/nordpy
+Icon=/usr/share/nordpy/media/nordvpn.png
+StartupWMClass=tk
+Terminal=false
+Categories=Internet;System;Utilities;
