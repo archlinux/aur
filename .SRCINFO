@@ -1,0 +1,11 @@
+pkgbase = stalloc
+	pkgdesc = library for stack allocation in c
+	pkgver = 1.0
+	pkgrel = 1.0
+	url = https://github.com/qsqcqs/stalloc
+	arch = x86_64
+	license = GPL-3.0-or-later
+	source = https://codeberg.org/qsqcqs/stalloc/releases/download/1.0/stalloc.tar.gz
+	sha256sums = b663772d8137d559fe750f6e9b3c97cdfacef6e3e2fd6ea24a322decfe1b4433
+
+pkgname = stalloc
