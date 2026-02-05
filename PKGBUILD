@@ -1,14 +1,13 @@
 # Maintainer: Insidious Fiddler <aur[at]codycody31[dot]dev>
 pkgname=1code
 pkgver=0.0.54
-pkgrel=1
+pkgrel=2
 pkgdesc="Best UI for Claude Code with local and remote agent execution"
 arch=('x86_64')
 url="https://github.com/21st-dev/1code"
 license=('Apache-2.0')
 depends=('gtk3' 'nss' 'libxss' 'alsa-lib')
 makedepends=('bun' 'python' 'nodejs')
-optdepends=('claude-code: Claude Code CLI for agent functionality')
 provides=("$pkgname")
 conflicts=("$pkgname-bin" "$pkgname-git")
 options=('!strip')
