@@ -1,0 +1,16 @@
+pkgbase = battinfo-git
+	pkgdesc = battinfo is a CLI tool & nim library to get battery detials.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://gitlab.com/prashere/battinfo
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	makedepends = git
+	makedepends = nim
+	provides = battinfo
+	conflicts = battinfo
+	source = git+https://gitlab.com/prashere/battinfo.git
+	sha256sums = SKIP
+
+pkgname = battinfo-git
