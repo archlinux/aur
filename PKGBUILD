@@ -1,7 +1,7 @@
 # Maintainer: yiming564 <yiming564@proton.me>
 pkgname=croaring-git
 pkgver=4.5.1.6.g41100ea6
-pkgrel=1
+pkgrel=2
 pkgdesc="Roaring bitmaps in C (and C++), with SIMD (AVX2, AVX-512 and NEON) optimizations: used by Apache Doris, ClickHouse, Alibaba Tair, Redpanda, YDB and StarRocks"
 arch=('x86_64')
 url="https://github.com/RoaringBitmap/CRoaring"
@@ -27,7 +27,7 @@ pkgver() {
 build() {
 	cd "$srcdir/CRoaring"
 	mkdir -p build && cd build
-	cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DENABLE_ROARING_TESTS=OFF
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DENABLE_ROARING_TESTS=OFF -DBUILD_SHARED_LIBS=ON
 	cmake --build . --parallel
 }
 
