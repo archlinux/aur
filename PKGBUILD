@@ -6,7 +6,7 @@
 # Contributor: Terrence
 pkgbase=immich
 pkgname=('immich-server' 'immich-cli')
-pkgrel=1
+pkgrel=2
 pkgver=2.5.3
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
@@ -76,7 +76,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archi
 sha256sums=('1f744208f8175eaa7871ea024f2ae0379d804db5eafb4e3d6fde980e21dcdd19'
             '15121f622d9b376bb77051419100f6c91480f122ebc573912798e774cd28c639'
             'e56fe5f8abb55f93117cd8b5e1214d06a21a9f8e0458607040c5c5e364b0a164'
-            '88fa5c6427c3d4c50b2100932459b9a18bc04f4d8a36e33db05cd4510e3fda6b'
+            '2ca8f6776aef27c455142edbe9120b7c38ee354dca5336ce89c16f71dd633a28'
             '01707746e8718fe169b729b7b3d9e26e870bf2dbc4d1f6cdc7ed7d3839e92c0e'
             '4ae8a73ccbef568b7841dbdfe9b9d8a76fa78db00051317b6313a6a50a66c900'
             '077b85d692df4625300a785eed1efdc7af8fbb8e05dfa8c7d8b4053c1eb76a58'
