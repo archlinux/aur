@@ -1,0 +1,19 @@
+pkgbase = python-pygfxd
+	pkgdesc = Python bindings for libgfxd using ctypes
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/Thar0/pygfxd
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = glibc
+	depends = python
+	source = python-pygfxd::git+https://github.com/Thar0/pygfxd#tag=v1.0.5
+	sha512sums = 6b8e64208fbfeeb8795b5e773d0763a168e24181d79b668f12a48da6e0bc9353ecec1adbe8d4d00cfecee403a459d0f077121e6c7fb5aa5b06c8318c7a4fc103
+	b2sums = 81d50b17081f5f6c952d7769e6ee87144d4981d3b19959e25f93de32a6c6743929f3e6d7d22baa6b19c85c94b3ecaf4e5021404a9b12f8d0de9eed313fb89493
+
+pkgname = python-pygfxd

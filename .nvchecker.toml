@@ -1,0 +1,4 @@
+[python-pygfxd]
+source = "git"
+git = "https://github.com/Thar0/pygfxd.git"
+prefix = "v"
