@@ -2,7 +2,7 @@
 
 pkgname=indielinks-git
 _pkgname=${pkgname%-git}
-pkgver=r126.04006f2
+pkgver=r132.7d5121d
 pkgrel=1
 pkgdesc="del.icio.us in the Fediverse (git version)"
 arch=('x86_64')
@@ -10,16 +10,19 @@ url=https://github.com/sp1ff/indielinks
 license=('GPL-3.0-or-later')
 # https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/20#note_172172
 options=(!lto)
-depends=('openssl' 'glibc' 'gcc-libs' 'scylla-bin' 'bash' 'acl')
+depends=('openssl' 'glibc' 'gcc-libs' 'bash' 'acl')
+optdepends=('scylla-bin')
 # `cargo` (and the Rust toolchain generally) is required, but I don't want to require
 # the package, since it may have been installed in another way
 makedepends=('git' 'protobuf')
 conflicts=('indielinks')
 install='.INSTALL'
 source=("${_pkgname}::git+https://github.com/sp1ff/indielinks.git"
-        'indielinks.toml')
+        'indielinks.toml'
+        'indielinks.service')
 sha256sums=('SKIP'
-            '532152abc869542c942c35ea49164c22c2d4da20e3fc0d699f9c2338e0716895')
+            '8ab60070e0e724a2d3d09f0322f339a145f4e5946b79970728a0aaf2b7030eae'
+            '4c2ce8335375dade18a5f1ab84384d3589c6610257bb6fa14804c6309a1faaf8')
 _nproc=$(($(nproc)/4))
 if [ $_nproc -eq 0 ]; then
     _nproc=1
@@ -46,8 +49,8 @@ package() {
     install -Dm755 target/release/indielinksd        "$pkgdir/usr/bin/indielinksd"
     install -Dm755 target/release/indic              "$pkgdir/usr/bin/indic"
     install -Dm755 target/release/indielinks-schemas "$pkgdir/usr/bin/indielinks-schemas"
-    install -Dm755 scripts/indielinks-post-install   "$pkgdir/usr/bin/indielinks-post-install"
     install -Dm755 scripts/indielinks-ctl            "$pkgdir/usr/bin/indielinks-ctl"
+    install -Dm755 scripts/indielinks-post-install   "$pkgdir/usr/bin/indielinks-post-install"
     
     cd indielinks-fe/dist
     wasm=$(ls -1 indielinks-fe*.wasm)
@@ -66,5 +69,6 @@ package() {
     install -Dm644 indielinks-fe.wasm "$pkgdir/usr/share/indielinks/assets/indielinks-fe.wasm"
 
     cd ../../..
-    install -Dm644 indielinks.toml "$pkgdir/etc/indielinks.toml"
+    install -Dm644 indielinks.toml    "$pkgdir/etc/indielinks.toml"
+    install -Dm644 indielinks.service "$pkgdir/usr/lib/systemd/system/indielinks.service"
 }
