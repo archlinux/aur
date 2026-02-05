@@ -1,8 +1,8 @@
 pkgbase = gnome-pomodoro-extension
 	pkgdesc = GNOME Shell extension that manages focus and break cycles with the Pomodoro technique
 	pkgver = 0.28.1
-	pkgrel = 2
-	url = https://github.com/gnome-pomodoro/gnome-pomodoro
+	pkgrel = 3
+	url = https://github.com/focustimerhq/FocusTimer
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -19,7 +19,7 @@ pkgbase = gnome-pomodoro-extension
 	depends = cairo
 	depends = gdk-pixbuf2
 	depends = gobject-introspection
-	source = gnome-pomodoro-extension-0.28.1.tar.gz::https://github.com/gnome-pomodoro/gnome-pomodoro/archive/0.28.1.tar.gz
+	source = gnome-pomodoro-extension-0.28.1.tar.gz::https://github.com/focustimerhq/FocusTimer/archive/0.28.1.tar.gz
 	sha256sums = c4f832b27022ec25768e595e5566a6261ab426a552a9c209074b0596fbf772b9
 
 pkgname = gnome-pomodoro-extension
