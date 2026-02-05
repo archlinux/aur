@@ -1,6 +1,6 @@
 pkgbase = chromium-extension-plasma-integration
 	pkgdesc = KDE plasma browser integration extension for chromium
-	pkgver = 2.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/KDE/plasma-browser-integration
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = chromium-extension-plasma-integration
 	makedepends = jq
 	optdepends = chromium: open-source web browser from Google
 	optdepends = google-chrome: Google's freeware web browser
-	source = https://github.com/KDE/plasma-browser-integration/archive/browser/2.0.tar.gz
-	sha256sums = a6d80899560857d484915045dc05cbfb64285736f28851f1f5d88c75bcc39bab
+	source = https://github.com/KDE/plasma-browser-integration/archive/browser/2.1.1.tar.gz
+	sha256sums = 81ee3be873d67e62eb79b1d6ec216b77e314e86828f65011e6aa2a7f7da03065
 
 pkgname = chromium-extension-plasma-integration
