@@ -10,6 +10,6 @@ pkgbase = protec
 	depends = alsa-lib
 	conflicts = protec-git
 	source = protec-0.2.1.tar.gz::https://github.com/Saturncorgi/protec/archive/refs/tags/0.2.1.tar.gz
-	sha256sums = 1665bee06b7affd0843f3ba3b93ae5a2c50ebd6f14731c26c3de8cd1d0795326
+	sha256sums = 474343a9af88d2128d5b0b7c77f960ad9bf59997f55f08a855212f098b09b230
 
 pkgname = protec
