@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=picacomic-downloader
-pkgver=0.6.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="哔咔漫画 picacomic pica漫画 bika漫画 PicACG 多线程下载器，带图形界面，已打包exe，带收藏夹，下载速度飞快"
 arch=($CARCH)
@@ -27,12 +27,13 @@ makedepends=(
     cargo-tauri
     git
     pnpm
+    nodejs-lts
 )
 backup=()
 options=(!debug !strip !lto)
 #install=${pkgname}.install
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('2f78fed7bf1413a15eec734acab0f4702b68a912c0690e7914251eeacb6048f7')
+sha256sums=('8fc8b902114f1529e2f214677468fd92ee8631a3606926234e801cc3201f65e5')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
