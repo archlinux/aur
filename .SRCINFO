@@ -1,7 +1,7 @@
 pkgbase = ajclassic-grapefruit
 	pkgdesc = Lightweight launcher and runtime for AJ Classic
 	pkgver = 1.0.1
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/themirrazz/grapefruit
 	arch = x86_64
 	license = custom
