@@ -1,7 +1,7 @@
 pkgbase = git-recursive
 	pkgdesc = Execute git operations in multiple repositories
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aelesbao/git-recursive
 	arch = i686
 	arch = x86_64
@@ -11,6 +11,6 @@ pkgbase = git-recursive
 	makedepends = make
 	depends = git
 	source = git-recursive-0.3.1.tar.gz::https://github.com/aelesbao/git-recursive/archive/refs/tags/0.3.1.tar.gz
-	sha256sums = ac16bb9e9af5e5f85149d4539431b836c2767a6cfd81ba2f267a8996d756666d
+	sha256sums = 343cba10f81c1ef6d65fbd2a1a9211f35da7ac2e065f5535d50c800365da8e30
 
 pkgname = git-recursive
