@@ -9,7 +9,7 @@
 # https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+packages
 
 pkgname=mozillavpn
-pkgver=2.32.0
+pkgver=2.33.0
 pkgrel=1
 pkgdesc="Fast, secure, and easy to use VPN from the makers of Firefox"
 arch=('x86_64')
@@ -49,6 +49,7 @@ makedepends=(
 )
 optdepends=(
   'qt6-wayland: for Wayland support'
+  'wayland-protocols: for Wayland support'
 )
 
 install=mozillavpn.install
@@ -58,10 +59,8 @@ _dl_url="https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefi
 _pkgsrc="$pkgname-$pkgver"
 source=(
   "$_dl_url/${pkgver}-${_debian_series}/mozillavpn_${pkgver}.orig.tar.gz"
-  "https://patch-diff.githubusercontent.com/raw/mozilla-mobile/mozilla-vpn-client/pull/10832.patch"
 )
-sha256sums=('8469d29a975d20864cfb18ff12173fe7de9bc5073aa834c3ce8208996669cc7f'
-            '2bbfd19a27b6633cee05f3ace41f789ba7a41d971bb4a50db7b4edc0a0ea32b6')
+sha256sums=('3f45f9e89962315a9a56beda78918918d5c7c6f7dd41efbd268d66316afffff8')
 
 _cargo_env() {
   : ${CARGO_HOME:=$SRCDEST/cargo-home}
@@ -77,12 +76,6 @@ prepare() {
 
   cd "$_pkgsrc"
   cargo update
-
-  cd "extension/bridge"
-  cargo update
-
-  cd ../../
-  patch -p1 < ../10832.patch
 }
 
 build() {
