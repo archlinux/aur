@@ -1,5 +1,5 @@
 pkgname=lumina
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Lumina — select a screen region and ask AI (OpenAI, Gemini, DeepSeek, Ollama)"
 arch=('x86_64')
