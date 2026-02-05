@@ -31,4 +31,5 @@ build() {
 package() {
   	cd "$srcdir/$pkgname-$_pkgver"
   	make install
+	chmod 777 /var/games/nethack4/save
 }
