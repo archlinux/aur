@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=heynote
-pkgver=2.7.2
+pkgver=2.8.0
 pkgrel=1
 _electronversion=39
 pkgdesc="A dedicated scratchpad for developers"
@@ -12,7 +12,7 @@ makedepends=('npm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/heyman/heynote/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop"
         "$pkgname.sh")
-sha256sums=('beb98d8d4cd421994558577a5c193a95bda49f94e51928a58f141eb1ab3ed058'
+sha256sums=('2f17b7bc447f61adaa9871273a687ee85858af0a9a086ccb39026c1791e8c856'
             '22eca2d471190a5c59d3bfc9d95333071a7f63711e89c11991b12ebe068197ad'
             '01f72b81076197876af162436ce58754ceb35a0f7726f00255bfa55a5936f5ff')
 
@@ -28,8 +28,7 @@ build() {
   electronDist="/usr/lib/electron${_electronversion}"
   electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
   npm install
-  npx vue-tsc --noEmit
-  npx vite build
+  npm run prebuild
   npx electron-builder --linux dir -c electron-builder.json5 \
     ${dist} -c.electronDist=${electronDist} -c.electronVersion=${electronVer}
 }
@@ -37,6 +36,8 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm644 "release/$pkgver/linux-unpacked/resources/app.asar" -t \
+    "$pkgdir/usr/lib/$pkgname/"
+  cp -a "release/$pkgver/linux-unpacked/resources/app.asar.unpacked" -t \
     "$pkgdir/usr/lib/$pkgname/"
   install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"

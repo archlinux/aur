@@ -1,16 +1,16 @@
 pkgbase = heynote
 	pkgdesc = A dedicated scratchpad for developers
-	pkgver = 2.7.2
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://heynote.com
 	arch = x86_64
 	license = Commons-Clause-1.0
 	makedepends = npm
 	depends = electron39
-	source = heynote-2.7.2.tar.gz::https://github.com/heyman/heynote/archive/refs/tags/v2.7.2.tar.gz
+	source = heynote-2.8.0.tar.gz::https://github.com/heyman/heynote/archive/refs/tags/v2.8.0.tar.gz
 	source = heynote.desktop
 	source = heynote.sh
-	sha256sums = beb98d8d4cd421994558577a5c193a95bda49f94e51928a58f141eb1ab3ed058
+	sha256sums = 2f17b7bc447f61adaa9871273a687ee85858af0a9a086ccb39026c1791e8c856
 	sha256sums = 22eca2d471190a5c59d3bfc9d95333071a7f63711e89c11991b12ebe068197ad
 	sha256sums = 01f72b81076197876af162436ce58754ceb35a0f7726f00255bfa55a5936f5ff
 
