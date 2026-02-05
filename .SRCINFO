@@ -1,6 +1,6 @@
 pkgbase = kimi-cli
 	pkgdesc = Kimi Code CLI is your next CLI agent.
-	pkgver = 1.6
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://moonshotai.github.io
 	arch = any
