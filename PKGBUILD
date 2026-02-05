@@ -4,7 +4,7 @@
 pkgname=datadog-agent
 pkgver=7.75.2
 _agentrel=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Datadog Agent: collect metrics and events from your systems and apps'
 arch=('x86_64' 'aarch64')
 license=('Apache')

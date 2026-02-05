@@ -1,7 +1,7 @@
 pkgbase = datadog-agent
 	pkgdesc = Datadog Agent: collect metrics and events from your systems and apps
 	pkgver = 7.75.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://datadoghq.com
 	install = datadog-agent.install
 	arch = x86_64
