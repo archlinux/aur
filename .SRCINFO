@@ -7,6 +7,7 @@ pkgbase = nuclei-git
 	license = MIT
 	makedepends = git
 	makedepends = go>=1.24.2
+	depends = glibc
 	provides = nuclei
 	conflicts = nuclei
 	source = git+https://github.com/projectdiscovery/nuclei

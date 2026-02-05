@@ -7,6 +7,9 @@ pkgdesc="Fast and customizable vulnerability scanner, git version"
 arch=(x86_64)
 url="https://projectdiscovery.io/nuclei"
 license=(MIT)
+depends=(
+  'glibc'
+)
 makedepends=(
   'git'
   'go>=1.24.2'
