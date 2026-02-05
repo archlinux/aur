@@ -1,7 +1,7 @@
 # Maintainer: vho <v_h@me.com>
 
 pkgname=lucidlink-bin
-pkgver=3.3.7766
+pkgver=3.6.7820
 pkgrel=1
 pkgdesc="Your private filespace in the cloud"
 arch=('x86_64')
@@ -23,7 +23,7 @@ provides=('lucidlink')
 conflicts=('lucidlink')
 install="${pkgname}.install"
 source=("https://releases.lucidlink.com/prod/linux-deb/lucidlink_${pkgver}_amd64.deb")
-sha256sums=('1534ae00761dd75bb2cb9dc29c1b312cbaa88922883a1a54d65c7ad1bf5ab9a0')
+sha256sums=('647a5b2c0d32312a406491cb26c2c89cb497376b849135a5f0acc032e7deec29')
 
 package() {
   bsdtar -xf "${srcdir}/lucidlink_${pkgver}_amd64.deb" -C "${srcdir}"
