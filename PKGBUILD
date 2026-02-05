@@ -4,8 +4,8 @@
 _jdkname=zulu-8
 pkgname="${_jdkname}-bin"
 _java_ver=8
-_zulu_build=8.90.0.19-ca
-pkgver=8.0.472
+_zulu_build=8.92.0.21-ca
+pkgver=8.0.482
 pkgrel=1
 pkgdesc='Zulu Community builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads.'
 arch=('aarch64' 'x86_64')
@@ -30,8 +30,8 @@ provides=(
 install="$pkgname.install"
 source_aarch64=("https://cdn.azul.com/zulu/bin/zulu${_zulu_build}-jdk${pkgver}-linux_aarch64.tar.gz")
 source_x86_64=("https://cdn.azul.com/zulu/bin/zulu${_zulu_build}-jdk${pkgver}-linux_x64.tar.gz")
-sha256sums_aarch64=('c372fb26480c052537125013cb0ba7336c404e5190ea8f6e2de247b676432a67')
-sha256sums_x86_64=('6f9e3fa773829ac2553411fb0cdeb394980627c47c9ab8f8892d4b917b70e2dd')
+sha256sums_aarch64=('14a0ca3c75676b65c97e1937664ba33c204769d71297013780a5d19dbc73dff3')
+sha256sums_x86_64=('dbb1d5580afe8379d8457397c868e4a4b9c82798ac1cf0f7ee6842dfa3e7fd5d')
 
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
