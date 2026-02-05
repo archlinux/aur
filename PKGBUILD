@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=copymanga-downloader
-pkgver=0.10.4
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="拷贝漫画 copymanga 的多线程下载器，带图形界面，带收藏夹，支持下载下架的漫画，没有每分钟15次API请求的限制，已打包exe，下载速度飞快。 "
 arch=($CARCH)
@@ -27,12 +27,13 @@ makedepends=(
     cargo-tauri
     git
     pnpm
+    nodejs-lts
 )
 backup=()
 options=(!debug !strip !lto)
 #install=${pkgname}.install
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('3039cff86410825af71192f5d6f0219801ad944bd41fc2bfe15d0dbf32143535')
+sha256sums=('e3b3743d2727bac82aa078e0c29fb6e267c3d9f342a33811d0dc1548658d376c')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
