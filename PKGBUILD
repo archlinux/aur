@@ -2,7 +2,7 @@
 
 pkgname=reflectortk-git
 pkgver=r2.f8e83c8
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple GUI for selecting pacman mirrors using reflector (git version)."
 arch=('any')
 license=('GPL-2.0-or-later')
@@ -12,6 +12,7 @@ depends=(
   reflector
   python
   polkit
+  tk
 )
 
 makedepends=(

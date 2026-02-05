@@ -1,7 +1,7 @@
 pkgbase = reflectortk-git
 	pkgdesc = Simple GUI for selecting pacman mirrors using reflector (git version).
 	pkgver = r2.f8e83c8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/indiscipline/reflectortk
 	arch = any
 	license = GPL-2.0-or-later
@@ -9,6 +9,7 @@ pkgbase = reflectortk-git
 	depends = reflector
 	depends = python
 	depends = polkit
+	depends = tk
 	provides = reflectortk
 	conflicts = reflectortk
 	source = reflectortk::git+https://github.com/indiscipline/reflectortk.git
