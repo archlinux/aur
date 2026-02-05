@@ -8,7 +8,6 @@ pkgbase = pam-bin
 	license = MIT
 	depends = glibc
 	provides = pam
-	conflicts = pam
 	source = LICENSE-0.2.0::https://raw.githubusercontent.com/eduardofuncao/pam/v0.2.0-beta/LICENSE
 	source = README-0.2.0.md::https://raw.githubusercontent.com/eduardofuncao/pam/v0.2.0-beta/README.md
 	sha256sums = f87660b383928d6c66256ff89cc4c441e041b16fc786760822bd49567e33fcde

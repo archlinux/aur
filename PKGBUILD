@@ -20,7 +20,6 @@ license=('MIT')
 
 depends=('glibc')
 provides=("${_pkgname}")
-conflicts=("${_pkgname}")
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
