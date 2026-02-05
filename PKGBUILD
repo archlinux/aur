@@ -22,7 +22,7 @@ prepare() {
 
 package() {
   cd "$srcdir" || exit 1
-	install -Dm644 rrwm.desktop -t "$pkgdir/usr/local/share/wayland-sessions/"
+	install -Dm644 rrwm.desktop -t "$pkgdir/usr/share/wayland-sessions/"
   install -Dm755 rrwm "$pkgdir/usr/bin/rrwm"
 }
 # makepkg --printsrcinfo > .SRCINFO
