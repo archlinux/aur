@@ -1,6 +1,6 @@
 pkgbase = chunker-bin
 	pkgdesc = The open-source Minecraft world converter
-	pkgver = 1.14.0
+	pkgver = 1.15.0
 	pkgrel = 1
 	url = https://www.chunker.app/
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = chunker-bin
 	provides = chunker
 	conflicts = chunker
 	options = !debug
-	source = https://github.com/HiveGamesOSS/Chunker/releases/download/1.14.0/Chunker-1.14.0-amd64-linux.deb
-	sha256sums = c663f9b49125ecfb928be7d081f7f917571ce495140bd5be486f65fd8fe821b3
+	source = https://github.com/HiveGamesOSS/Chunker/releases/download/1.15.0/Chunker-1.15.0-amd64-linux.deb
+	sha256sums = 914e33b8b6be788b48484db26258694c99a700cd5f7985d6bf7b8bee58ac04e2
 
 pkgname = chunker-bin
