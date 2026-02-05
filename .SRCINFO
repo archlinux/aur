@@ -1,7 +1,7 @@
 pkgbase = ghdl
 	pkgdesc = VHDL 2008/93/87 simulator - mcode backend
 	pkgver = 5.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ghdl/ghdl
 	arch = x86_64
 	license = GPL-2.0-only
@@ -10,6 +10,6 @@ pkgbase = ghdl
 	depends = gcc-ada
 	optdepends = python-pyghdl: python bindings and utilities
 	source = ghdl-5.1.1.tar.gz::https://github.com/ghdl/ghdl/archive/refs/tags/v5.1.1.tar.gz
-	sha256sums = aca5d20522ef9b8e273e95c9157d2d3f77f6e40a4fdeee431fa330885bd78f7f
+	sha256sums = e065bbf0d3c76f9b8d1d852be87c0c1d47976d56c19ab0d72a606c71d640c5da
 
 pkgname = ghdl

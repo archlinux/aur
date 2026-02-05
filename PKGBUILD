@@ -1,8 +1,8 @@
-# Maintainer: George Tsiamasiotis <gtsiam@windowslive.com>
+# Maintainer: George Tsiamasiotis <george@tsiamasiotis.gr>
 
 pkgname=ghdl
 pkgver=5.1.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc='VHDL 2008/93/87 simulator - mcode backend'
 url='https://github.com/ghdl/ghdl'
@@ -16,9 +16,9 @@ checkdepends=(
 	'python-pytest'
 	'python-pytooling')
 
-source=(
+source=( # Upstream likes moving this tag - I'm really tempted to just pin a commit.
 	"$pkgname-$pkgver.tar.gz::https://github.com/ghdl/ghdl/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('aca5d20522ef9b8e273e95c9157d2d3f77f6e40a4fdeee431fa330885bd78f7f')
+sha256sums=('e065bbf0d3c76f9b8d1d852be87c0c1d47976d56c19ab0d72a606c71d640c5da')
 
 build() {
 	cd "$pkgname-$pkgver"
