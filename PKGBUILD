@@ -2,7 +2,7 @@
 # Contributor: Mort Yao <soi@mort.ninja>
 
 pkgname=posh
-pkgver=0.14.2
+pkgver=0.14.3
 pkgrel=1
 pkgdesc="A stripped-down version of pdksh that aims for compliance with Debian's policy, and few extra features."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('custom')
 depends=('glibc')
 install="$pkgname".install
 source=(http://deb.debian.org/debian/pool/main/p/posh/posh_"$pkgver".tar.xz)
-sha256sums=('a0941a3f489bd87e2a799b9e22ee29983779e240517a1507f90fa46621500c82')
+sha256sums=('dad30b053afffeef2b944766733dad709bc1d966e73f127b444380d2e1dc4905')
 
 # Silence warnings caused by old coding style.
 CFLAGS+=' -Wno-old-style-declaration -Wno-old-style-definition'

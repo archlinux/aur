@@ -1,6 +1,6 @@
 pkgbase = posh
 	pkgdesc = A stripped-down version of pdksh that aims for compliance with Debian's policy, and few extra features.
-	pkgver = 0.14.2
+	pkgver = 0.14.3
 	pkgrel = 1
 	url = https://salsa.debian.org/clint/posh
 	install = posh.install
@@ -8,7 +8,7 @@ pkgbase = posh
 	arch = x86_64
 	license = custom
 	depends = glibc
-	source = http://deb.debian.org/debian/pool/main/p/posh/posh_0.14.2.tar.xz
-	sha256sums = a0941a3f489bd87e2a799b9e22ee29983779e240517a1507f90fa46621500c82
+	source = http://deb.debian.org/debian/pool/main/p/posh/posh_0.14.3.tar.xz
+	sha256sums = dad30b053afffeef2b944766733dad709bc1d966e73f127b444380d2e1dc4905
 
 pkgname = posh
