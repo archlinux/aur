@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=codenest-bin
 _pkgname=CodeNest
-pkgver=0.0.5
-_electronversion=38
+pkgver=0.0.6
+_electronversion=40
 pkgrel=1
 pkgdesc="A local project management tool that helps organize projects scattered across different locations on your disk.(Prebuilt version.Use system-wide electron)一款本地项目管理工具，可整理分散在磁盘各处的项目"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/MidnightCrowing/CodeNest/v${pkgver}/LICENSE.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('0b29d0a6d58d0e8f76d7334d1ea2b3872877392e149bc5ba424a7f5fd63f3c39'
+sha256sums=('3dd71b4a35259b834d1a2c207f0d0865dcb1ae4cfe005d8202f6b708b890af86'
             'fa2ce613f35af27497fb5c984f5596efcbc067434c47f7826c184155289906ba'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
