@@ -1,0 +1,14 @@
+pkgbase = pkg2appimage
+	pkgdesc = Tool and recipes to convert existing deb packages to AppImage. (Upstream CI)
+	pkgver = 1eceb30
+	pkgrel = 1
+	url = https://github.com/AppImageCommunity/pkg2appimage
+	arch = any
+	license = GPL-2.0-only
+	makedepends = wget
+	makedepends = grep
+	provides = pkg2appimage=1eceb30
+	noextract = pkg2appimage.AppImage
+	source = pkg2appimage::https://github.com/AppImageCommunity/pkg2appimage/releases/download/continuous/pkg2appimage-1eceb30-x86_64.AppImage
+
+pkgname = pkg2appimage
