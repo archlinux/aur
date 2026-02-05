@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=leavepad
 _pkgname=Leavepad
-pkgver=1.3.5
+pkgver=1.4.0
 _electronversion=40
 _nodeversion=24
-pkgrel=2
+pkgrel=1
 pkgdesc="A multi-platform notepad. focuses on writing memos. File editing is not supported.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/kaishuu0123/leavepad"
@@ -25,7 +25,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('a9f5d2afde4ac5da74e5ace0f426c65c4640b5cca6eb72507aaaccad1bff0a09'
+sha256sums=('f558c562c05c201ca715435ce4eb0cd9f62557599081b48a9c063faa6c986fe4'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
