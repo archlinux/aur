@@ -9,7 +9,7 @@ pkgver=1.5.2
 pkgrel=3
 
 makedepends=('intltool')
-depends=('gtk2>=2.20.0' 'cairo' 'lxpanel>=0.5.8' 'multiload-ng-common')
+depends=('gtk2>=2.20.0' 'cairo' 'lxpanel-gtk2>=0.5.8' 'multiload-ng-common')
 
 conflicts=('lxpanel-multiload-ng-plugin-gtk3' 'lxpanel-multiload-ng-plugin-gtk2-git' 'lxpanel-multiload-ng-plugin-gtk3-git')
 

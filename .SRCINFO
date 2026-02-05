@@ -9,7 +9,7 @@ pkgbase = lxpanel-multiload-ng-plugin-gtk2
 	makedepends = intltool
 	depends = gtk2>=2.20.0
 	depends = cairo
-	depends = lxpanel>=0.5.8
+	depends = lxpanel-gtk2>=0.5.8
 	depends = multiload-ng-common
 	conflicts = lxpanel-multiload-ng-plugin-gtk3
 	conflicts = lxpanel-multiload-ng-plugin-gtk2-git
