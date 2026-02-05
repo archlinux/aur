@@ -1,6 +1,6 @@
 pkgbase = lumina
 	pkgdesc = Lumina — select a screen region and ask AI (OpenAI, Gemini, DeepSeek, Ollama)
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/razenfh/lumina
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = lumina
 	depends = libsoup3
 	optdepends = spectacle: region capture on KDE (Linux)
 	optdepends = ollama: local models provider
-	source = git+https://github.com/razenfh/lumina.git#tag=v0.1.1
+	source = git+https://github.com/razenfh/lumina.git#tag=v0.1.2
 	sha256sums = SKIP
 
 pkgname = lumina
