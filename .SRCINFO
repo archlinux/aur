@@ -1,0 +1,15 @@
+pkgbase = protec
+	pkgdesc = Yell at anyone who dares touch your computer when you're not there
+	pkgver = 0.2.1
+	pkgrel = 1
+	arch = x86_64
+	license = custom:for_good_eyes_only
+	depends = cargo
+	depends = libinput
+	depends = evtest
+	depends = alsa-lib
+	conflicts = protec
+	source = protec-0.2.1.tar.gz::https://github.com/Saturncorgi/protec/archive/refs/tags/0.2.1.tar.gz
+	sha256sums = 1665bee06b7affd0843f3ba3b93ae5a2c50ebd6f14731c26c3de8cd1d0795326
+
+pkgname = protec
