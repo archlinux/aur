@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=ssh-vault
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Encrypt/Decrypt using SSH keys"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('rust' 'musl' 'git')
 options=(!debug !lto)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ssh-vault/ssh-vault/archive/${pkgver}.tar.gz")
-sha256sums=('e5bb2e0374775ed6229501d2b0c9e84f42a0ed7fceb0af8ab21778846924aa38')
+sha256sums=('040aaadb85fad375388b836157bd2615081607d58dbcfc51d1af1e922a2d29c4')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
