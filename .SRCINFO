@@ -1,6 +1,6 @@
 pkgbase = visual-studio-code-electron-bin
 	pkgdesc = Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications.(Prebuilt and System-wide Electron edition)
-	pkgver = 1.108.2
+	pkgver = 1.109.0
 	pkgrel = 1
 	url = https://code.visualstudio.com/
 	arch = aarch64
@@ -29,11 +29,11 @@ pkgbase = visual-studio-code-electron-bin
 	source = visual-studio-code-electron.sh
 	sha256sums = dc5406ddd35ed5e3be39fe0a5a460f061aff3d296dc70124fd3eface8444c947
 	sha256sums = c418b7c5c17b3771f53541b46ed1eff461de5871e2c7c177546e2577d480594f
-	source_aarch64 = visual-studio-code-electron-1.108.2-aarch64.rpm::https://packages.microsoft.com/yumrepos/vscode/Packages/c/code-1.108.2-1769004935.el8.aarch64.rpm
-	sha256sums_aarch64 = 3244cfab2ccf0d9bad8ecc5cf21d66dea452a8fcfdc4e5030661f766a61ebecf
-	source_armv7h = visual-studio-code-electron-1.108.2-armv7h.rpm::https://packages.microsoft.com/yumrepos/vscode/Packages/c/code-1.108.2-1769004864.el8.armv7hl.rpm
-	sha256sums_armv7h = f3b74a2710983f75a1965d51d0951882cdf8fa6c557e3b25a3c72766ae50859c
-	source_x86_64 = visual-studio-code-electron-1.108.2-x86_64.rpm::https://packages.microsoft.com/yumrepos/vscode/Packages/c/code-1.108.2-1769004860.el8.x86_64.rpm
-	sha256sums_x86_64 = f4f2c8ed1c5698b62ee5afee2f4f79c138333fb31a5f8a488325465c16a77587
+	source_aarch64 = visual-studio-code-electron-1.109.0-aarch64.rpm::https://packages.microsoft.com/yumrepos/vscode/Packages/c/code-1.109.0-1770171923.el8.aarch64.rpm
+	sha256sums_aarch64 = 79827cff55b9b5a670275836bc630f674bfda982990fcbbd1c9fe0d3707e040e
+	source_armv7h = visual-studio-code-electron-1.109.0-armv7h.rpm::https://packages.microsoft.com/yumrepos/vscode/Packages/c/code-1.109.0-1770171809.el8.armv7hl.rpm
+	sha256sums_armv7h = 4df4d72127a60f1070dcaef6b05864da3882fa7799171639baa554762a07c4ad
+	source_x86_64 = visual-studio-code-electron-1.109.0-x86_64.rpm::https://packages.microsoft.com/yumrepos/vscode/Packages/c/code-1.109.0-1770171922.el8.x86_64.rpm
+	sha256sums_x86_64 = d14f531d1382a4ac9c2b5d73382450d1f5f1c88114eed384a2a30cbbd5d23a19
 
 pkgname = visual-studio-code-electron-bin
