@@ -1,6 +1,6 @@
 pkgbase = yolobox
 	pkgdesc = Sandboxing tool for AI coding agents using containers
-	pkgver = 0.5.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/finbarr/yolobox
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = yolobox
 	makedepends = git
 	optdepends = docker: Container runtime (recommended)
 	optdepends = podman: Alternative container runtime
-	source = yolobox-0.5.0.tar.gz::https://github.com/finbarr/yolobox/archive/refs/tags/v0.5.0.tar.gz
-	sha256sums = 51c2bb24fe46e290a03a07e090552e207c5dddaf0b5712f797183ab3a0b67fa9
+	source = yolobox-0.6.1.tar.gz::https://github.com/finbarr/yolobox/archive/refs/tags/v0.6.1.tar.gz
+	sha256sums = c440290a27fab8827ecf7ba9381f1af9619b23f88d8b5c057308b0b14b8d3c78
 
 pkgname = yolobox
