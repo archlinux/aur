@@ -16,7 +16,7 @@ source=(
   "https://github.com/piec/elecwhat/releases/download/v${pkgver}/elecwhat-${pkgver}.pacman"
 )
 sha256sums=('253626db788c9013d48ce2e4c4b3bf8b1bb709d9427e523bfbed520d3f3377e1'
-            '0c6141b99e76d688c60a8a81fe65932fbb317cdb6a1ac5f099166a6a70749f70')
+            '68fc120aca214e45adde8bbcae076dcc78e08d059e3318f2a69333cc93cb5383')
 
 package() {
   cd "$srcdir"
