@@ -3,7 +3,7 @@
 # Maintainer: Štěpán Němec <stepnem@smrk.net>
 
 pkgname=exman
-pkgver=2081.35
+pkgver=2082.16
 pkgrel=1
 pkgdesc="manuals for other systems"
 arch=(any)
@@ -12,7 +12,7 @@ license=(ISC)
 depends=(man sh)
 makedepends=(bmake git)
 source=("https://git.causal.agency/$pkgname/snapshot/$pkgname-$pkgver.tar.gz")
-sha256sums=('362f71362465d6213184617d42ca679bbbc43defc4b388cca2381b7ea1da4a4e')
+sha256sums=('253ef8a7a52655d7e4fca03b9d9f830a93438c6a594b77e8a812906e8d61bec1')
 # zipman autocompression took 40m(!?) on my machine (4-core i7),
 # parallelized and all (compared to ~20s with the custom package()
 # below)
