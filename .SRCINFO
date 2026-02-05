@@ -1,0 +1,11 @@
+pkgbase = BehaviorTree.CPP-git
+	pkgdesc = Behavior Trees Library in C++. Batteries included.
+	pkgver = 4.8.4.r64.gfee8964
+	pkgrel = 1
+	url = https://github.com/BehaviorTree/BehaviorTree.CPP
+	arch = any
+	makedepends = conan
+	source = BehaviorTree.CPP-git::git+https://github.com/BehaviorTree/BehaviorTree.CPP.git#branch=master
+	sha256sums = SKIP
+
+pkgname = BehaviorTree.CPP-git
