@@ -1,0 +1,19 @@
+pkgbase = snd-firewire-ctl-services-git
+	pkgdesc = ALSA FireWire control services (User space drivers) (Git version)
+	pkgver = 0.2.0.r0.g123456
+	pkgrel = 1
+	url = https://github.com/alsa-project/snd-firewire-ctl-services
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	makedepends = clang
+	depends = libhitaki
+	depends = glib2
+	provides = snd-firewire-ctl-services
+	conflicts = snd-firewire-ctl-services
+	options = !lto
+	source = git+https://github.com/alsa-project/snd-firewire-ctl-services.git
+	sha256sums = SKIP
+
+pkgname = snd-firewire-ctl-services-git
