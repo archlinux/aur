@@ -31,7 +31,7 @@ pkgbase = alogi
 	source = https://github.com/allisonhere/alogi/releases/download/v0.1.33/alogi-0.1.33-linux-unpacked.tar.gz
 	source = alogi.desktop
 	source = icon.png
-	sha256sums = 52a70da1fa912489dbf278f9db7571f7550ecbefc6e57352ccf3d95395a8e8a9
+	sha256sums = 51d37d2e6e9eb9bfaa20df432eea134fee6e246eafa0cb12beff744067efd449
 	sha256sums = SKIP
 	sha256sums = SKIP
 
