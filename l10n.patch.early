@@ -1,0 +1,43 @@
+diff --git a/scripts/librewolf-patches.py b/scripts/librewolf-patches.py
+index c8ad5ec..ba76f3a 100755
+--- a/scripts/librewolf-patches.py
++++ b/scripts/librewolf-patches.py
+@@ -148,19 +148,20 @@ def librewolf_patches():
+         with open(file, "w") as f:
+             f.write("{}-{}".format(version,release))
+ 
+-    l10nurl = environ.get('FF_L10N_ZIP_URL', 'https://codeload.github.com/mozilla-l10n/firefox-l10n/zip/refs/heads/main')
+-    print("-> Downloading locales from ${l10nurl}")
+-    with TemporaryDirectory() as tmpdir:
+-        exec(f"wget -qO {tmpdir}/l10n.zip '{l10nurl}'")
+-        exec(f"unzip -qo {tmpdir}/l10n.zip -d {tmpdir}/l10n")
+-        exec(f"mv {tmpdir}/l10n/firefox-l10n-main lw/l10n")
++    l10n_dir = Path("..", "l10n")
++    if not l10n_dir.exists():
++        l10nurl = environ.get('FF_L10N_ZIP_URL', 'https://codeload.github.com/mozilla-l10n/firefox-l10n/zip/refs/heads/main')
++        print("-> Downloading locales from ${l10nurl}")
++        with TemporaryDirectory() as tmpdir:
++            exec(f"wget -qO {tmpdir}/l10n.zip '{l10nurl}'")
++            exec(f"unzip -qo {tmpdir}/l10n.zip -d {tmpdir}/l10n")
++            exec(f"mv {tmpdir}/l10n/firefox-l10n-main lw/l10n")
+ 
+     print("-> Patching appstrings.properties")
+     # Why is "Firefox" hardcoded there???
+-    exec("find . -path '*/appstrings.properties' -exec sed -i s/Firefox/LibreWolf/ {} \\;")
++    exec("find . -path '*/appstrings.properties' -exec sed -i s/Firefox/Konform/ {} \\;")
+ 
+-    print("-> Applying LibreWolf locales")
+-    l10n_dir = Path("..", "l10n")
++    print("-> Patching locales")
+     for source_path in l10n_dir.rglob("*"):
+         if source_path.is_dir() or source_path.name.endswith(".md"):
+             continue
+@@ -200,7 +201,7 @@ def librewolf_patches():
+ #
+ 
+ if len(args) != 2:
+-    sys.stderr.write('error: please specify version and release of librewolf source')
++    sys.stderr.write('error: please specify version and release of konform source')
+     sys.exit(1)
+ version = args[0]
+ release = args[1]

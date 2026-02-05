@@ -10,6 +10,7 @@ conflicts=()
 _pkgname="${pkgname}"
 __pkgname=konform
 _ffsrcver=140.7.0
+_l10n_commit=c857bb7d5e043b8bd8658e1fafa54a4baa9d3f0e
 _lwrelver=106
 pkgver="${_ffsrcver}.${_lwrelver}"
 pkgrel=1
@@ -126,21 +127,32 @@ options=(
 
 install='konform.install'
 _tag="${_ffsrcver}.${_lwrelver}"
+_ff_source_tarball="firefox-${_ffsrcver}esr.source.tar.xz"
 source=(
   "src"::"git+https://codeberg.org/konform-browser/source.git#tag=${_tag}"
+  "${_ff_source_tarball}"::"https://archive.mozilla.org/pub/firefox/releases/${_ffsrcver}esr/source/${_ff_source_tarball}"
+  "${_ff_source_tarball}.asc"::"https://archive.mozilla.org/pub/firefox/releases/${_ffsrcver}esr/source/${_ff_source_tarball}.asc"
+  "firefox-l10n-${_l10n_commit}.tar.gz"::"https://github.com/mozilla-l10n/firefox-l10n/archive/$_l10n_commit.tar.gz"
+  "l10n.patch.early"
   "${__pkgname}.desktop"
   "default192x192.png"
 )
 sha256sums=('b19b7695445e979e1a305219f917ec0487650158d3dd21d5251a15156a047161'
+            '608a739071726f30236f7100ec5e30e1b8ec342d4e91e715948c287909cb1529'
+            'SKIP'
+            'b006db2a8fc22f95d7ca3f90cd210b3504faf8f72d7bd9a48c1d4874a08d2516'
+            '332c5484d0af270ce41bf2deb958594f5b639de8ca29d9a6c654ad44c1eee451'
             '68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4'
             'b86ddfc0cec482f7900f296857cdd0f1b736ff5037e0a86712b258ae0092924b')
 
+validpgpkeys=(
+  # Mozilla Software Releases <release@mozilla.com>
+  # https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
+  14F26682D0916CDD81E37B6D61B7B526D98F0353
+)
+
 prepare() {
   _lw_srcdir=$srcdir/src/librewolf-$_ffsrcver-$_lwrelver
-
-  ## NOTE: upstream librewolf AUR PKGBUILD fetches prebaked librewolf source archive,
-  ##       while we bake our own. therefore `make dir` step and another nesting of
-  ##       source-dirs are added vs upstream
   ## <srcprep>
   cp -p *.desktop *.png src/
 
@@ -148,8 +160,12 @@ prepare() {
   mkdir -p mozbuild
   echo "${_lwrelver}" > release
   git submodule update --init --recursive
+  mv "${srcdir}/firefox-${_ffsrcver}" "$_lw_srcdir"
+  mkdir "${_lw_srcdir}/lw"
+  mv "../firefox-l10n-${_l10n_commit}" "${_lw_srcdir}/lw/l10n"
+  patch -p1 < "$srcdir/l10n.patch.early"
 
-  make lw_source_dir=$_lw_srcdir dir
+  python3 scripts/librewolf-patches.py "${_ffsrcver}" "${_lwrelver}"
 
   ## </srcprep>
 
