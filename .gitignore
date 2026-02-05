@@ -1,8 +1,8 @@
-# Source and package folders
+# Source and package directories
 src/
 pkg/
 
-# The bare Git repository
+# Bare Git repository
 xcat/
 
 # Archive files

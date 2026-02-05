@@ -1,10 +1,12 @@
 # Maintainer: bemxio <bemxiov at protonmail dot com>
 
-pkgname=xcat-git
+_pkgname=xcat
+pkgname="${_pkgname}-git"
+
 pkgdesc="A command line tool to XOR a data stream with a given key"
 
 pkgver=r2.d92ce2e
-pkgrel=1
+pkgrel=2
 
 arch=(any)
 
@@ -14,23 +16,24 @@ url="https://github.com/mstrand/xcat"
 depends=(python)
 makedepends=(git)
 
-provides=(xcat)
+provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}")
 
-source=("git+https://github.com/mstrand/xcat.git")
-md5sums=("SKIP")
+source=("git+${url}.git")
+md5sums=(SKIP)
 
 pkgver() {
   	# move to the source directory
-	cd xcat
-  	
+	cd "${_pkgname}"
+
 	# use the number of revisions since beginning of the history
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
 	# move to the source directory
-	cd xcat
+	cd "${_pkgname}"
 
 	# copy the script to the package
-	install -Dm755 xcat.py "${pkgdir}/usr/bin/xcat"
+	install -Dm755 "${_pkgname}.py" "${pkgdir}/usr/bin/${_pkgname}"
 }
