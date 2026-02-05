@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=jarl-bin
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Fast linter for the R language"
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=('!debug')
 provides_x86_64=("jarl=${pkgver}")
 source_x86_64=("${pkgname}-${pkgver}.tar.gz::https://github.com/etiennebacher/jarl/releases/download/${pkgver}/jarl-$CARCH-unknown-linux-gnu.tar.gz"
                 "https://raw.githubusercontent.com/etiennebacher/jarl/refs/tags/${pkgver}/LICENSE")
-sha256sums_x86_64=('b0dd44f3c5e895837bb5954c95d1d3f230b7197f3ed8282d04e723b44de2e16e'
+sha256sums_x86_64=('255dd329b7207a12b2ed9cb2da095d38c18ebc19dffd65df2a01d4824bffda64'
                    '79725ebd381352c76377a38ad2e9bf763abe79d72892f9343d609ed603733adf')
 
 package() {
