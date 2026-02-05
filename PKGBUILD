@@ -9,7 +9,7 @@ url="https://projectdiscovery.io/nuclei"
 license=(MIT)
 makedepends=(
   'git'
-  'go'
+  'go>=1.24.2'
 )
 optdepends=()
 provides=("$_pkgname")
