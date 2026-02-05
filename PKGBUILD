@@ -1,7 +1,7 @@
 # Maintainer: Augusto Elesbão <aelesbao@gmail.com>
 _pkgname=suiup
 pkgname=${_pkgname}-bin
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="Installer & version manager for Sui toolchain"
 arch=("x86_64" "arm64")
