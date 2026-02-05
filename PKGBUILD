@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://projectdiscovery.io/nuclei"
 license=(MIT)
 makedepends=(
-	'git'
+  'git'
   'go'
 )
 optdepends=()
@@ -18,7 +18,7 @@ source=("git+https://github.com/projectdiscovery/nuclei")
 b2sums=('SKIP')
 
 pkgver() {
-	cd "$_pkgname"
+  cd "$_pkgname"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -30,7 +30,7 @@ prepare() {
 }
 
 build() {
-	cd "$_pkgname"
+  cd "$_pkgname"
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
@@ -41,8 +41,8 @@ build() {
 }
 
 package() {
-	cd "$_pkgname"
-	install -Dm0755 "build/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  cd "$_pkgname"
+  install -Dm0755 "build/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
   install -Dm0644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
