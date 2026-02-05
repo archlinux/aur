@@ -1,3 +1,4 @@
+# Maintainer: noureddinex
 pkgname=lmstudio-bin
 pkgver=0.4.1
 pkgrel=1
@@ -8,12 +9,12 @@ license=('EULA')
 depends=('fuse2' 'zlib' 'hicolor-icon-theme' 'gtk3' 'nss' 'libxcrypt-compat')
 options=('!strip')
 install=lmstudio-bin.install
-source=("https://installers.lmstudio.ai/linux/x64/0.4.1-1/LM-Studio-0.4.1-1-x64.AppImage"
-        "lmstudio.png"
-        "lmstudio.desktop")
+source=("https://installers.lmstudio.ai/linux/x64/${pkgver}-1/LM-Studio-${pkgver}-1-x64.AppImage"
+         "lmstudio.png"
+         "lmstudio.desktop")
 sha256sums=('d18e178cadef7d6798f19e6d41f33a297e26a1d285091cbc30da8252d18a46f0'
             '9f791789c959a11316328692807737a5f1bc1c170ae99ec04c56bfd8ee8263e5'
-            'SKIP')
+            'd5ac11aae025cd1cc0f9aa0713ee427dc6f46e4d1adac2a5948f93d8bbca705f')
 
 prepare() {
   chmod +x "${srcdir}/${source[0]##*/}"

@@ -18,6 +18,6 @@ pkgbase = lmstudio-bin
 	source = lmstudio.desktop
 	sha256sums = d18e178cadef7d6798f19e6d41f33a297e26a1d285091cbc30da8252d18a46f0
 	sha256sums = 9f791789c959a11316328692807737a5f1bc1c170ae99ec04c56bfd8ee8263e5
-	sha256sums = SKIP
+	sha256sums = d5ac11aae025cd1cc0f9aa0713ee427dc6f46e4d1adac2a5948f93d8bbca705f
 
 pkgname = lmstudio-bin
