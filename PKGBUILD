@@ -1,9 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=jmcomic-downloader
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
-pkgdesc="禁漫天堂 18comic.vip jmcomic 18comic 的多线程下载器，带图形界面，已打包exe，带收藏夹，免费下载收费的漫画，下载速度飞快"
+pkgdesc="禁漫天堂 18comic.vip jmcomic 18comic 的多线程下载器，带图形界面，带收藏夹，免费下载收费的漫画，下载速度飞快"
 arch=($CARCH)
 url="https://github.com/lanyeeee/jmcomic-downloader"
 license=('MIT')
@@ -27,12 +27,13 @@ makedepends=(
     cargo-tauri
     git
     pnpm
+    nodejs-lts
 )
 backup=()
 options=(!debug !strip !lto)
 #install=${pkgname}.install
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('b7785a11e518422cccd1a22a2e82ad8c4997cf106d6bce283630eb83946231a7')
+sha256sums=('dd1a64cd992c80f11e94c80826e8323750853d48d4ccdd2846debf8da810e082')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
@@ -47,7 +48,6 @@ build() {
     export CARGO_HOME="${srcdir}/.cargo"
     {
         echo -e '\n'
-        #echo 'build_from_source=true'
         echo 'link-workspace-packages=true'
         echo 'fetch-retry-maxtimeout=10000'
         echo "cache-dir="${srcdir}"/.pnpm_cache"
