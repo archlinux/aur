@@ -1,0 +1,18 @@
+pkgbase = libhitaki-git
+	pkgdesc = GObject introspection library for ALSA FireWire stack (Git version)
+	pkgver = 0.2.1.r0.g123456
+	pkgrel = 1
+	url = https://github.com/alsa-project/libhitaki
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = gobject-introspection
+	makedepends = git
+	depends = libhinawa
+	depends = alsa-lib
+	provides = libhitaki
+	conflicts = libhitaki
+	source = git+https://github.com/alsa-project/libhitaki.git
+	sha256sums = SKIP
+
+pkgname = libhitaki-git
