@@ -69,6 +69,7 @@ makedepends=(
   nodejs
   pciutils
   python
+  python-filelock
   python-setuptools
   rust
   sccache
