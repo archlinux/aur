@@ -11,7 +11,7 @@
 _pkgname="beekeeper-studio"
 pkgname="$_pkgname-bin"
 pkgver=5.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more"
 arch=('x86_64' 'aarch64')
 url="https://github.com/beekeeper-studio/beekeeper-studio"
@@ -42,10 +42,14 @@ package() {
     install -Dm644 LICENSE-COMMERCIAL "${pkgdir}/usr/share/licenses/${pkgname}/BeekeeperStudioApplicationEULA"
 
     # Extract prebuilt package into pkgdir
-    cd "$srcdir"
-    bsdtar -xf "${_pkgname}-${pkgver}-${CARCH}.tar.xz" -C "$pkgdir"
+    cd "${srcdir}"
+    bsdtar -xf "${_pkgname}-${pkgver}-${CARCH}.tar.xz" -C "${pkgdir}"
 
     # Remove prebuilt package metadata files (if they exist)
-    cd "$pkgdir"
+    cd "${pkgdir}"
     rm -f .PKGINFO .MTREE .INSTALL
+
+    # Symlink executable to /usr/bin
+    install -dm0755 "${pkgdir}/usr/bin"
+    ln -s "/opt/Beekeeper Studio/beekeeper-studio" "${pkgdir}/usr/bin/beekeeper-studio"
 }
