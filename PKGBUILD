@@ -1,10 +1,10 @@
-# Maintainer: Jonathan Capps <cappsy at gmail dot com>
+# Maintainer: Jonathan Capps <hello at cappsy dot dev>
 pkgname=cosmic-ext-applet-drives-git
 pkgver=v0.1.0.r0.gc0d04fc
 pkgrel=1
 pkgdesc="Ani removable drives applet for the COSMIC™ desktop"
 arch=('x86_64' 'aarch64')
-url="https://github.com/cappsyco/cosmic-ext-applet-drives"
+url="https://github.com/cosmic-utils/cosmic-ext-applet-drives"
 license=('GPL-3.0-or-later')
 depends=('cosmic-applets')
 makedepends=(
@@ -14,7 +14,7 @@ makedepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/cappsyco/cosmic-ext-applet-drives.git')
+source=('git+https://github.com/cosmic-utils/cosmic-ext-applet-drives.git')
 sha256sums=('SKIP')
 
 pkgver() {

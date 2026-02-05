@@ -1,8 +1,8 @@
 pkgbase = cosmic-ext-applet-drives-git
 	pkgdesc = Ani removable drives applet for the COSMIC™ desktop
-	pkgver = v0.1.0
+	pkgver = v0.1.0.r0.gc0d04fc
 	pkgrel = 1
-	url = https://github.com/cappsyco/cosmic-ext-applet-drives
+	url = https://github.com/cosmic-utils/cosmic-ext-applet-drives
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
@@ -12,7 +12,7 @@ pkgbase = cosmic-ext-applet-drives-git
 	depends = cosmic-applets
 	provides = cosmic-ext-applet-drives
 	conflicts = cosmic-ext-applet-drives
-	source = git+https://github.com/cappsyco/cosmic-ext-applet-drives.git
+	source = git+https://github.com/cosmic-utils/cosmic-ext-applet-drives.git
 	sha256sums = SKIP
 
 pkgname = cosmic-ext-applet-drives-git
