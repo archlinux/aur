@@ -1,6 +1,6 @@
 pkgbase = bintelai-ssh-assistant
 	pkgdesc = Cyberpunk style with integrated AI modernized Web SSH client side.(Use system-wide electron)集成 AI 的赛博朋克风格现代化 Web SSH 客户端
-	pkgver = 1.0.17
+	pkgver = 1.0.21
 	pkgrel = 1
 	url = https://github.com/bintelAI/aissh
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = bintelai-ssh-assistant
 	makedepends = pnpm
 	makedepends = jq
 	depends = electron39
-	source = bintelai-ssh-assistant-1.0.17::git+https://github.com/bintelAI/aissh#tag=v1.0.17
+	source = bintelai-ssh-assistant-1.0.21::git+https://github.com/bintelAI/aissh#tag=v1.0.21
 	source = bintelai-ssh-assistant.sh
-	sha256sums = ca6c767444773d0c242f964dbe2ba926dad5b29e8e130e96a6e4350b50e38f18
+	sha256sums = 06c6ead13610f5b614374ea61cb8d7db01eb88106d2fdf35fe1fa76b8e88737f
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = bintelai-ssh-assistant
