@@ -4,7 +4,7 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-ffmpeg
 pkgver=8.0.1
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="Complete solution to record, convert and stream audio and video (Android ${_android_arch})"
 url="http://ffmpeg.org/"
@@ -27,7 +27,6 @@ depends=("android-${_android_arch}-aom"
          "android-${_android_arch}-libavc1394"
          "android-${_android_arch}-libbluray"
          "android-${_android_arch}-libbs2b"
-         "android-${_android_arch}-libdrm"
          "android-${_android_arch}-libidn2"
          "android-${_android_arch}-libiec61883"
          "android-${_android_arch}-libjxl"
@@ -37,17 +36,10 @@ depends=("android-${_android_arch}-aom"
          "android-${_android_arch}-libsoxr"
          "android-${_android_arch}-libssh"
          "android-${_android_arch}-libtheora"
-         "android-${_android_arch}-libva"
-         "android-${_android_arch}-libvdpau"
          "android-${_android_arch}-libvorbis"
-         "android-${_android_arch}-libvpl"
          "android-${_android_arch}-libvpx"
          "android-${_android_arch}-libwebp"
-         "android-${_android_arch}-libx11"
-         "android-${_android_arch}-libxcb"
-         "android-${_android_arch}-libxext"
          "android-${_android_arch}-libxml2"
-         "android-${_android_arch}-libxv"
          "android-${_android_arch}-ocl-icd"
          "android-${_android_arch}-opencore-amr"
          "android-${_android_arch}-openjpeg2"
@@ -142,13 +134,6 @@ build() {
             ;;
     esac
 
-    if [ "${ANDROID_MINIMUM_PLATFORM}" -lt 26 ]; then
-        extra_options="${extra_options} --disable-libxcb --disable-xlib"
-
-    else
-        extra_options="${extra_options} --enable-libxcb"
-    fi
-
     if [ "${_android_arch}" != riscv64 ]; then
 #         extra_options="${extra_options} --enable-librsvg"
         extra_options="${extra_options} --enable-librav1e"
@@ -198,7 +183,6 @@ build() {
         --enable-libbluray \
         --enable-libbs2b \
         --enable-libdav1d \
-        --enable-libdrm \
         --enable-libfreetype \
         --enable-libfribidi \
         --enable-libgsm \
@@ -223,7 +207,6 @@ build() {
         --enable-libvidstab \
         --enable-libvmaf \
         --enable-libvorbis \
-        --enable-libvpl \
         --enable-libvpx \
         --enable-libwebp \
         --enable-libx264 \
@@ -233,6 +216,17 @@ build() {
         --enable-opencl \
         --enable-jni \
         --enable-mediacodec \
+        --disable-xlib \
+        --disable-large-tests \
+        --disable-cuda-llvm \
+        --disable-libdrm \
+        --disable-vaapi \
+        --disable-vdpau \
+        --disable-libvpl \
+        --disable-libxcb \
+        --disable-libxcb-shm \
+        --disable-libxcb-xfixes \
+        --disable-libxcb-shape \
         ${extra_options}
     make $MAKEFLAGS
 }
