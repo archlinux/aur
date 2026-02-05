@@ -1,14 +1,14 @@
 pkgbase = zemon-bin
 	pkgdesc = A terminal system monitor for zellij written in Rust
-	pkgver = 0.2.1
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://github.com/sunng87/zemon
 	arch = x86_64
 	license = MIT
 	makedepends = patchelf
 	depends = glibc
 	provides = zemon
-	source = https://github.com/sunng87/zemon/releases/download/v0.2.1/zemon-linux-x86_64
-	sha256sums = SKIP
+	source = https://github.com/sunng87/zemon/releases/download/v0.3.0/zemon-linux-x86_64
+	sha256sums = 7d0482e089b695d4c4d832a8f1471ea74628de73a52d69596a244b4e0676fd22
 
 pkgname = zemon-bin
