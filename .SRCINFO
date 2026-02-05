@@ -1,6 +1,6 @@
 pkgbase = lyrwal
 	pkgdesc = A program to set the wallpaper to random song lyrics
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/ZerimGH/lyrwal
 	arch = x86_64
