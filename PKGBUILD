@@ -1,8 +1,8 @@
 # Maintainer: Zachary M <minein12@protonmail.com>
 
 pkgname=falcond-profiles
-pkgver=r21.f52c344
-_pkgver=f52c3445a9b9aa18401b7c8e9bf532c37758e585 # commit version
+pkgver=r23.a3e0e63
+_pkgver=a3e0e63303c0a310a504c5f3e2a9d71496d7aaab # commit version
 pkgrel=1
 pkgdesc='Default falcond profiles'
 url='https://github.com/PikaOS-Linux/falcond-profiles'
@@ -11,7 +11,7 @@ license=(MIT)
 makedepends=(git)
 
 source=("git+${url}.git#commit=${_pkgver}")
-sha256sums=(c0e8d277df3b8e2306a2564d73a952196bf2bbc6ef9162379b671d2e9b0c8524)
+sha256sums=('5f72eaecea1ad6da073f4e9c173cab617ac3ff348d9e548cab3fbd25978354fe')
 
 pkgver() {
     cd "$pkgname"
