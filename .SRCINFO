@@ -1,6 +1,6 @@
 pkgbase = aria2tui
 	pkgdesc = A TUI Frontend for the Aria2c Download Manager
-	pkgver = 0.1.13.1
+	pkgver = 0.1.13.4
 	pkgrel = 1
 	url = https://github.com/grimandgreedy/aria2tui
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = aria2tui
 	provides = aria2tui
 	conflicts = python-aria2tui
 	replaces = python-aria2tui
-	source = aria2tui-0.1.13.1.tar.gz::https://github.com/grimandgreedy/aria2tui/archive/refs/tags/v0.1.13.1.tar.gz
-	sha256sums = 1307f34ffa21927d5972614fa453ba19bd6cbe1425890266154fbe8333354694
+	source = https://files.pythonhosted.org/packages/source/a/aria2tui/aria2tui-0.1.13.4.tar.gz
+	sha256sums = 08e41b3c686b3344cc158a1cd6e611d6e2dc446ac61aa84fb64bb9b913576d2b
 
 pkgname = aria2tui
