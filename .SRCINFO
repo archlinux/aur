@@ -1,0 +1,16 @@
+pkgbase = linuxpad
+	pkgdesc = Simple soundboard for Linux with PipeWire support
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ohixx/linuxpad
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-pyqt6
+	depends = pipewire
+	depends = pipewire-pulse
+	optdepends = python-pynput: Global hotkey support
+	source = linuxpad-1.0.0.tar.gz::https://github.com/ohixx/linuxpad/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 4c80256cce1eaa642f168166b54f547a4fbd8c020a9cac15b8d3ef44c855c631
+
+pkgname = linuxpad
