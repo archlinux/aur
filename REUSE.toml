@@ -12,11 +12,3 @@ path = [
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
-
-[[annotations]]
-path = [
-	  "modified-41c8e63cd5a1bf0800bb01559b1acd01e97bbc94.patch",
-	  "modified-d787648e71f7d910e367e12abc7382904e6fe7df.patch",
-]
-SPDX-FileCopyrightText = "python-platformio-core contributors"
-SPDX-License-Identifier = "Apache-2.0"
