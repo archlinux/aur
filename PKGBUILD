@@ -2,13 +2,18 @@
 
 _pkgname=nmrpflash
 pkgname=${_pkgname}-git
-pkgver=0.9.26.r11.g4ed728a
+pkgver=0.9.26.r16.g2594885
 pkgrel=1
 pkgdesc="Netgear Unbrick Utility"
 arch=($CARCH)
 url="https://github.com/jclehner/nmrpflash"
 license=('GPL-3.0-or-later')
-depends=('libpcap' 'libnl>=3')
+depends=(
+  'libpcap' 
+  'libnl>=3'
+  glibc
+  hicolor-icon-theme
+)
 makedepends=(
   make
   git
@@ -30,17 +35,17 @@ pkgver() {
 }
 
 build() {
-  cd "${_pkgname}"
+  cd "${srcdir}/${_pkgname}"
 
   make
 }
 
 package() {
-  cd "${_pkgname}"
+  cd "${srcdir}/${_pkgname}"
 
   make install PREFIX="${pkgdir}/usr"
   install -vDm0644 ${_pkgname}.svg -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
   install -vDm0644 -d "${pkgdir}/usr/share/doc/${pkgname}/"
-  cp -rv *.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
+  cp -rv *.md "${pkgdir}/usr/share/doc/${pkgname}/"
   install -vDm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }

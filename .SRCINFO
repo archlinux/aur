@@ -1,6 +1,6 @@
 pkgbase = nmrpflash-git
 	pkgdesc = Netgear Unbrick Utility
-	pkgver = 0.9.26.r11.g4ed728a
+	pkgver = 0.9.26.r16.g2594885
 	pkgrel = 1
 	url = https://github.com/jclehner/nmrpflash
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = nmrpflash-git
 	makedepends = git
 	depends = libpcap
 	depends = libnl>=3
+	depends = glibc
+	depends = hicolor-icon-theme
 	source = nmrpflash::git+https://github.com/jclehner/nmrpflash.git
 	sha256sums = SKIP
 
