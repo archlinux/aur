@@ -2,7 +2,7 @@
 _appname=cherry-studio
 pkgname="${_appname}-electron-bin"
 _pkgname='Cherry Studio'
-pkgver=1.7.15
+pkgver=1.7.16
 _electronversion=38
 pkgrel=1
 pkgdesc="🍒A desktop client that supports for multiple LLM providers.(Prebuilt version.Use system-wide electron)"
@@ -20,14 +20,6 @@ provides=("${_appname}=${pkgver}")
 conflicts=("${_appname}")
 depends=(
     "electron${_electronversion}"
-    'python'
-    'python-defusedxml'
-    'python-numpy'
-    'python-lxml'
-    'python-six'
-    'python-yaml'
-    'python-pillow'
-    'python-playwright'
 )
 optdepends=(
     'ollama: Use your local LLM'
@@ -40,8 +32,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /-}-${pkgver}-x86_64.rpm")
 sha256sums=('0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('59f073f27956d934fd18fa034f915742b804c3da65e9115a837c0d38c480baa6')
-sha256sums_x86_64=('3159b6ad987a61820fdcaa70bf77024868d3f85053b957b16219ed00d6e04247')
+sha256sums_aarch64=('bbff215aa9caa119854515d5c54c345b6c266d3857205760721c198473aa5f7f')
+sha256sums_x86_64=('e8ccf992ad7e684aa44f9d6b443566ecd6e5f1c83d9b598bd663d5500567e9d1')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${_pkgname// /}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
@@ -65,7 +57,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/"{app.asar.unpacked,claude-code-plugins} "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
     _icon_sizes=(16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname// /}.png" \

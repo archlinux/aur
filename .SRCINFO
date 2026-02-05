@@ -1,6 +1,6 @@
 pkgbase = cherry-studio-electron-bin
 	pkgdesc = 🍒A desktop client that supports for multiple LLM providers.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.7.15
+	pkgver = 1.7.16
 	pkgrel = 1
 	url = https://cherry-ai.com/
 	arch = aarch64
@@ -8,24 +8,16 @@ pkgbase = cherry-studio-electron-bin
 	license = Apache-2.0
 	license = LicenseRef-custom
 	depends = electron38
-	depends = python
-	depends = python-defusedxml
-	depends = python-numpy
-	depends = python-lxml
-	depends = python-six
-	depends = python-yaml
-	depends = python-pillow
-	depends = python-playwright
 	optdepends = ollama: Use your local LLM
-	provides = cherry-studio=1.7.15
+	provides = cherry-studio=1.7.16
 	conflicts = cherry-studio
-	source = LICENSE-1.7.15::https://raw.githubusercontent.com/CherryHQ/cherry-studio/v1.7.15/LICENSE
+	source = LICENSE-1.7.16::https://raw.githubusercontent.com/CherryHQ/cherry-studio/v1.7.16/LICENSE
 	source = cherry-studio-electron.sh
 	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = cherry-studio-electron-1.7.15-aarch64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v1.7.15/Cherry-Studio-1.7.15-aarch64.rpm
-	sha256sums_aarch64 = 59f073f27956d934fd18fa034f915742b804c3da65e9115a837c0d38c480baa6
-	source_x86_64 = cherry-studio-electron-1.7.15-x86_64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v1.7.15/Cherry-Studio-1.7.15-x86_64.rpm
-	sha256sums_x86_64 = 3159b6ad987a61820fdcaa70bf77024868d3f85053b957b16219ed00d6e04247
+	source_aarch64 = cherry-studio-electron-1.7.16-aarch64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v1.7.16/Cherry-Studio-1.7.16-aarch64.rpm
+	sha256sums_aarch64 = bbff215aa9caa119854515d5c54c345b6c266d3857205760721c198473aa5f7f
+	source_x86_64 = cherry-studio-electron-1.7.16-x86_64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v1.7.16/Cherry-Studio-1.7.16-x86_64.rpm
+	sha256sums_x86_64 = e8ccf992ad7e684aa44f9d6b443566ecd6e5f1c83d9b598bd663d5500567e9d1
 
 pkgname = cherry-studio-electron-bin
