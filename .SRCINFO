@@ -1,0 +1,18 @@
+pkgbase = bluetooth-voice-box-auto-connect
+	pkgdesc = A script to automatically reconnect bluetooth speakers/headphones after system sleep
+	pkgver = 0.1.0
+	pkgrel = 1
+	install = bluetooth-voice-box-auto-connect.install
+	arch = any
+	license = GPL
+	depends = bluez
+	depends = bluez-utils
+	depends = bash
+	source = bluetooth-voice-box-auto-connect.sh
+	source = bluetooth-voice-box-auto-connect.service
+	source = bluetooth-voice-box-auto-connect-from-sleep.sh
+	sha256sums = aadb1fe91b76c0b2c8c6d4d102320a63b94bf007258cce2241ddf5c34495886d
+	sha256sums = 63e829ff91221e797efb8b808b905fa1a4106089e9c6afd68d85d68bab806d8d
+	sha256sums = bbcc15de980d1b45a9248cb39bd1cd98af7c353f968320c32f2d674100b443b2
+
+pkgname = bluetooth-voice-box-auto-connect

@@ -1,0 +1,6 @@
+post_install() {
+    echo ">>> 脚本已安装到 /usr/lib/systemd/system-sleep/"
+    echo ">>> 请确保你的蓝牙设备已经执行过 'bluetoothctl trust <MAC>'"
+    echo ">>> 电脑唤醒后将自动连接蓝牙音频设备"
+    echo ">>> 需要开机自动连接,请执行: systemctl enable bluetooth-voice-box-auto-connect"
+}

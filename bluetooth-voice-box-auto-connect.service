@@ -1,0 +1,12 @@
+[Unit]
+Description=Auto-connect bluetooth speaker on boot
+After=bluetooth.service
+Requires=bluetooth.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bluetooth-voice-box-auto-connect
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
