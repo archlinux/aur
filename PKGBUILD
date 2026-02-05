@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Neidel <aur@jneidel.com>
 
 pkgname=phpactor
-pkgver="2025.07.25.0"
+pkgver="2025.12.21.1"
 pkgrel=1
 _tmppkgver="${pkgver}"
 pkgdesc="PHP completion, refactoring, introspection tool and language server"
@@ -11,10 +11,21 @@ license=(MIT)
 depends=(php)
 makedepends=(composer)
 optdepends=('composer: faster class location and more features'
-  'git: faster refactorings in your repository scope')
+            'git: faster refactorings in your repository scope')
 provides=(phpactor)
 source=("https://github.com/phpactor/phpactor/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=("bba5f773c8d3f71d5199fee76411badfe912b2a8bc9271d45cb69e3cd5b87da9")
+sha256sums=("9b07a50b9662cf13a1ac2f3e64dfd26c45463a437eefb4f785a7c997568241e5")
+
+check() {
+  if ! php -m | grep iconv >/dev/null; then
+    echo "The iconv extension is not installed for the php installation in use.
+See: https://wiki.archlinux.org/title/PHP#Extensions
+
+For the default php enable the extension in /etc/php/conf.d/extensions.ini with:
+extension=iconv"
+    false
+  fi
+}
 
 package() {
   cd "$srcdir/${pkgname}-${_tmppkgver}"
