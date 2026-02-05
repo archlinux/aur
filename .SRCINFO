@@ -1,13 +1,12 @@
 pkgbase = android-x86-jasper
 	pkgdesc = Software-based implementation of the codec specified in the emerging JPEG-2000 Part-1 standard (Android x86)
 	pkgver = 4.2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ece.uvic.ca/~frodo/jasper/
 	arch = any
 	license = custom:JasPer2.0
 	makedepends = android-cmake
 	makedepends = android-x86-libjpeg
-	makedepends = android-x86-libxmu
 	depends = android-x86-libjpeg
 	options = !strip
 	options = !buildflags

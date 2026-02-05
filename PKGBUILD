@@ -6,15 +6,14 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-jasper
 pkgver=4.2.8
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Software-based implementation of the codec specified in the emerging JPEG-2000 Part-1 standard (Android ${_android_arch})"
 url='https://www.ece.uvic.ca/~frodo/jasper/'
 license=('custom:JasPer2.0')
 depends=("android-${_android_arch}-libjpeg")
 makedepends=('android-cmake'
-             "android-${_android_arch}-libjpeg"
-             "android-${_android_arch}-libxmu")
+             "android-${_android_arch}-libjpeg")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/mdadams/jasper/archive/version-${pkgver}.tar.gz")
 md5sums=('2277a24310224952f49149615fa853eb')
