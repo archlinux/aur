@@ -1,6 +1,6 @@
 pkgname=lumina
-pkgver=0.1.0
-pkgrel=5
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="Lumina — select a screen region and ask AI (OpenAI, Gemini, DeepSeek, Ollama)"
 arch=('x86_64')
 url="https://github.com/razenfh/lumina"
