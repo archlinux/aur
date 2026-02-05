@@ -3,7 +3,7 @@
 
 _pkgname=nitrolaunch
 pkgname=$_pkgname-gui
-pkgver=0.28.0
+pkgver=0.29.0
 pkgrel=1
 pkgdesc="A fast, extensible, and powerful Minecraft launcher (GUI Version)"
 arch=(x86_64 aarch64)
@@ -12,7 +12,7 @@ license=('GPL-3.0-or-later')
 depends=(webkit2gtk-4.1)
 makedepends=(cargo cargo-tauri npm imagemagick)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('0023407378d47d07d47d8b2b8bfc7e469ef670b95b7bdb7e86fc726255fde28a')
+sha256sums=('ccb76d3b467a8cd24f9440e0d32ecd829bc64de4d040a51545b7eb9a447dd64e')
 options=(!lto)
 
 prepare() {
