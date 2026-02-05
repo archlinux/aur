@@ -11,7 +11,7 @@
 pkgbase=mutter-render-source
 pkgname=mutter-render-source
 pkgver=49.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Mutter 49.3 with render-source fix for NVIDIA Wayland (LP #2081140)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -85,6 +85,7 @@ makedepends=(
   glib2-devel
   gobject-introspection
   meson
+  python-docutils
   sysprof
   wayland-protocols
 )
