@@ -2,12 +2,13 @@
 
 pkgname=jarl-bin
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast linter for the R language"
 arch=('x86_64')
 url="https://github.com/etiennebacher/jarl"
 license=('MIT')
 depends=('gcc-libs' 'glibc' 'zlib')
+conflicts=('jarl')
 options=('!debug')
 provides_x86_64=("jarl=${pkgver}")
 source_x86_64=("${pkgname}-${pkgver}.tar.gz::https://github.com/etiennebacher/jarl/releases/download/${pkgver}/jarl-$CARCH-unknown-linux-gnu.tar.gz"
