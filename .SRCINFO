@@ -1,0 +1,19 @@
+pkgbase = happy-cli-git
+	pkgdesc = Mobile and Web client for Claude Code and Codex - remote control your AI coding agent
+	pkgver = r1518.3ed8b121
+	pkgrel = 1
+	url = https://github.com/slopus/happy
+	arch = any
+	license = MIT
+	makedepends = yarn
+	makedepends = npm
+	makedepends = git
+	depends = nodejs
+	depends = ripgrep
+	depends = difftastic
+	provides = happy-cli
+	conflicts = happy-cli
+	source = happy-cli-git::git+https://github.com/slopus/happy.git
+	b2sums = SKIP
+
+pkgname = happy-cli-git
