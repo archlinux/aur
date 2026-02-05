@@ -1,0 +1,23 @@
+pkgbase = linux-g13-driver-git
+	pkgdesc = User-space driver and configuration tool for the Logitech G13 gameboard (Modernized Fork)
+	pkgver = r1.0.0
+	pkgrel = 1
+	url = https://github.com/Lordbooker/linux-g13-driver.git
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = maven
+	makedepends = jdk17-openjdk
+	depends = libusb
+	depends = gtk3
+	depends = libappindicator-gtk3
+	depends = jre17-openjdk
+	depends = python-psutil
+	provides = linux-g13-driver
+	conflicts = linux-g13-driver
+	conflicts = g13-driver
+	source = git+https://github.com/Lordbooker/linux-g13-driver.git
+	sha256sums = SKIP
+
+pkgname = linux-g13-driver-git
