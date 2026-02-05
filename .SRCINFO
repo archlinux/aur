@@ -1,9 +1,10 @@
 pkgbase = yt-feeds
+	pkgdesc = Cross-platform simple, fast, and distraction free CLI application to view videos from your favorite channels
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nate-craft/yt-feeds
 	arch = x86_64
-	license = MIT
+	license = GPL-2.0
 	source = https://github.com/nate-craft/yt-feeds/releases/download/1.0.5/yt-feeds-1.0.5-x86_64-unknown-linux-gnu
 	sha256sums = 4705e12fcf1cd4f0cb3eee562e0ac6486e5af0d148a91ed4eab44e925863b70b
 
