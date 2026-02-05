@@ -1,6 +1,6 @@
 pkgbase = protec
 	pkgdesc = Yell at anyone who dares touch your computer when you're not there
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/Saturncorgi/protec
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = protec
 	depends = evtest
 	depends = alsa-lib
 	conflicts = protec-git
-	source = protec-0.2.2.tar.gz::https://github.com/Saturncorgi/protec/archive/refs/tags/0.2.2.tar.gz
-	sha256sums = 1086ffd5342c39f792304af4f8555aa4d24ee7e9b7031ab62a1feeb7a9f62dfa
+	source = protec-0.2.3.tar.gz::https://github.com/Saturncorgi/protec/archive/refs/tags/0.2.3.tar.gz
+	sha256sums = c12f31d2f54430a6dc83fac54fc64cbae88dcf335a982f89df9f00bac999645c
 
 pkgname = protec

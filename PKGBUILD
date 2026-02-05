@@ -1,6 +1,6 @@
 # Maintainer: Lyra saturn@saturncorgi.com
 pkgname=protec
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Yell at anyone who dares touch your computer when you're not there"
 arch=(x86_64)
@@ -10,7 +10,7 @@ conflicts=(protec-git)
 source=(
 ${pkgname}-${pkgver}.tar.gz::https://github.com/Saturncorgi/protec/archive/refs/tags/$pkgver.tar.gz
 )
-sha256sums=('1086ffd5342c39f792304af4f8555aa4d24ee7e9b7031ab62a1feeb7a9f62dfa')
+sha256sums=('c12f31d2f54430a6dc83fac54fc64cbae88dcf335a982f89df9f00bac999645c')
 url="https://github.com/Saturncorgi/protec"
 prepare() {
     cd protec-$pkgver
