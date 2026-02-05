@@ -12,7 +12,7 @@ pkgdesc="A fully transactional graph database implemented in Java"
 arch=(any)
 url="https://github.com/neo4j/neo4j"
 license=(GPL-3.0-only)
-_java_version=17
+_java_version=21
 depends=("java-runtime=$_java_version")
 makedepends=(
   "java-environment=$_java_version"
@@ -41,6 +41,8 @@ sha256sums=('19e4f1ddffb9efa472023568f5c2c00a539c73e95043c763b4b3a05aabd5dd7c'
 prepare() {
   cd $_pkgname-$pkgver
 
+  export JAVA_HOME="/usr/lib/jvm/java-$_java_version-openjdk"
+  export PATH="$JAVA_HOME/bin:$PATH"
   mvn versions:set -DnewVersion="$pkgver"
 
   # Download dependencies
@@ -69,7 +71,8 @@ prepare() {
 build() {
   cd $_pkgname-$pkgver
 
-  export PATH="/usr/lib/jvm/java-$_java_version-openjdk/bin:$PATH"
+  export JAVA_HOME="/usr/lib/jvm/java-$_java_version-openjdk"
+  export PATH="$JAVA_HOME/bin:$PATH"
   mvn \
     -Dmaven.repo.local="$srcdir/repo" \
     package -DskipTests
@@ -78,6 +81,8 @@ build() {
 check() {
   cd $_pkgname-$pkgver
 
+  export JAVA_HOME="/usr/lib/jvm/java-$_java_version-openjdk"
+  export PATH="$JAVA_HOME/bin:$PATH"
   # Running all integration tests takes ~1 hour
   mvn \
     -Dmaven.repo.local="$srcdir/repo" \

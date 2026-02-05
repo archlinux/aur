@@ -5,9 +5,9 @@ pkgbase = neo4j-community
 	url = https://github.com/neo4j/neo4j
 	arch = any
 	license = GPL-3.0-only
-	makedepends = java-environment=17
+	makedepends = java-environment=21
 	makedepends = maven
-	depends = java-runtime=17
+	depends = java-runtime=21
 	conflicts = neo4j-enterprise
 	backup = etc/neo4j/neo4j-admin.conf
 	backup = etc/neo4j/neo4j.conf

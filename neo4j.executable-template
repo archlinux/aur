@@ -14,7 +14,7 @@ for name in "$SCALADIR"/*.jar ; do
   CLASSPATH=$CLASSPATH:$name
 done
 
-export PATH="/usr/lib/jvm/java-17-openjdk/bin/:$PATH"
+export PATH="/usr/lib/jvm/java-21-openjdk/bin/:$PATH"
 exec java \
   -classpath "$CLASSPATH" \
   -Dapp.name="%APP_NAME%" \
