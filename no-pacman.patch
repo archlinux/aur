@@ -1,0 +1,55 @@
+diff --git a/codex-port-manjaro.sh b/codex-port-manjaro.sh
+index 6b2c4ad..e0c9b02 100755
+--- a/codex-port-manjaro.sh
++++ b/codex-port-manjaro.sh
+@@ -25,16 +25,16 @@ echo "HOME      : $HOME"
+ 
+ echo
+ echo "Provera komandi:"
+-for cmd in pacman curl 7z node npm pnpm electron; do
++for cmd in curl 7z node pnpm electron; do
+   if command -v "$cmd" >/dev/null 2>&1; then
+     echo "  - $cmd: OK ($(command -v "$cmd"))"
+   else
+     echo "  - $cmd: nije pronađen (skripta će ga instalirati ili nije obavezan)"
+   fi
+ done
+@@ -55,28 +55,15 @@ fi
+ echo
+ echo
+-echo "=== [2] Sistemski paketi (pacman) + pnpm + asar + electron ==="
+-
+-if ! command -v pacman >/dev/null 2>&1; then
+-  echo "pacman nije pronađen. Izgleda da nisi na Manjaro/Arch sistemu." >&2
+-  exit 1
+-fi
+-
+-echo "Instaliram osnovne pakete preko pacman (može da traži sudo lozinku)..."
+-sudo pacman -S --needed p7zip nodejs npm python base-devel git electron
+-
+-echo
+-echo "Verzije nakon pacman instalacije:"
+-node -v || true
+-npm -v || true
+-electron --version || true
+-
+-echo
+-echo "Proveravam pnpm..."
+-if ! command -v pnpm >/dev/null 2>&1; then
+-  echo "pnpm nije instaliran, instaliram ga preko npm (jedini put kada koristimo npm)..."
+-  sudo npm i -g pnpm
+-fi
++echo "=== [2] Zavisnosti (bez auto-install) + pnpm + asar + electron ==="
++
++echo "Ova skripta vise ne pokusava da instalira pakete preko pacman." 
++echo "Instaliraj zavisnosti sam (npr. pacman -S --needed p7zip nodejs pnpm python electron gcc make)."
++
++echo
++echo "Proveravam pnpm..."
++if ! command -v pnpm >/dev/null 2>&1; then
++  echo "pnpm nije pronadjen. Instaliraj ga: sudo pacman -S pnpm" >&2
++  exit 1
++fi
+ 
+ pnpm -v
+ 

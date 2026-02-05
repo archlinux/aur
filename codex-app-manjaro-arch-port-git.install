@@ -1,0 +1,17 @@
+post_install() {
+  cat <<'EOF'
+codex-app-manjaro-arch-port-git installs a helper script only.
+
+usage:
+  codex-port-manjaro
+
+notes:
+- this downloads the proprietary codex.dmg at runtime (into your home dir).
+- this rebuilds native node modules (better-sqlite3) locally.
+- this package does not auto-install deps via pacman; install them yourself.
+
+default output paths:
+  ~/downloads/codex-macos/codex.dmg
+  ~/apps/codex-port/
+EOF
+}
