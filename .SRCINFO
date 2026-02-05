@@ -1,7 +1,7 @@
 pkgbase = whisper.cpp-vulkan
 	pkgdesc = Port of OpenAI's Whisper model in C/C++ (using system llama.cpp-vulkan)
 	pkgver = 1.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ggml-org/whisper.cpp
 	arch = armv7h
 	arch = aarch64
@@ -17,7 +17,12 @@ pkgbase = whisper.cpp-vulkan
 	provides = whisper.cpp
 	conflicts = whisper.cpp
 	conflicts = whisper.cpp-hip
+	backup = etc/conf.d/llama.cpp
 	source = whisper.cpp-1.8.3.tar.gz::https://github.com/ggml-org/whisper.cpp/archive/v1.8.3.tar.gz
+	source = https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/whisper.cpp/whisper.cpp.service
+	source = https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/whisper.cpp/whisper.cpp.conf
 	sha256sums = 870ba21409cdf66697dc4db15ebdb13bc67037d76c7cc63756c81471d8f1731a
+	sha256sums = a6e16d6cf3ceaa1bc699f5bca893d6bc7cf595a15638a0a3f456a42a2718e067
+	sha256sums = d96d82cfe9816e06c2389a608ee5706e24ad0fbc3e7e90f570ff249e44363ad6
 
 pkgname = whisper.cpp-vulkan
