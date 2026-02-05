@@ -3,17 +3,17 @@
 # Contributor: Malte Jürgens <maltejur@dismail.de>
 
 pkgname=libation
-pkgver=13.1.7
+pkgver=13.1.8
 pkgrel=1
 pkgdesc="A free, open-source application for downloading and managing your Audible audiobooks"
 arch=('x86_64')
 url="https://getlibation.com"
 license=('GPL-3.0-only')
-depends=('bash' 'fontconfig' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'lttng-ust2.12')
+depends=('bash' 'dotnet-runtime' 'fontconfig' 'gcc-libs' 'glibc' 'hicolor-icon-theme')
 makedepends=('dotnet-sdk>=10')
 options=(!strip)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rmcrackan/Libation/archive/v${pkgver}.tar.gz")
-sha256sums=('2b2e2969ffdc1d28985ced74826b6d044b79efb668b899528f117dcb55feb107')
+sha256sums=('b9772890a84c97f06aa70bc6be6e23bb3d93044503fcabc06493bccff6f88eaf')
 
 prepare() {
     cd "${pkgname^}-${pkgver}"
@@ -28,7 +28,6 @@ build() {
         --runtime linux-x64
         -p:PublishProtocol=FileSystem
         -p:PublishReadyToRun=true
-        -p:SelfContained=true
     )
     dotnet publish "${publish_args[@]}" Source/LibationAvalonia/LibationAvalonia.csproj
     dotnet publish "${publish_args[@]}" Source/LoadByOS/LinuxConfigApp/LinuxConfigApp.csproj
@@ -41,7 +40,6 @@ package() {
     install -Dm755 build/* -t "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 Source/LoadByOS/LinuxConfigApp/Libation.desktop -t "${pkgdir}/usr/share/applications"
     install -Dm644 Images/libation_glass.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
-
     install -d "${pkgdir}/usr/bin"
     ln -s "/usr/lib/${pkgname}/Libation" "${pkgdir}/usr/bin/libation"
     ln -s "/usr/lib/${pkgname}/Hangover" "${pkgdir}/usr/bin/hangover"
