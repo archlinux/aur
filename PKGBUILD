@@ -1,60 +1,100 @@
 # Maintainer: @RubenKelevra
 # Contributor: Alex Henrie <alexhenrie24@gmail.com>
 
+_electron_pkg=electron39
+
 _archive_extension="tar.gz"
+
 pkgname=ipfs-desktop
 pkgver=0.47.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Desktop client for the InterPlanetary File System"
 arch=(x86_64)
 url="https://github.com/ipfs/$pkgname"
 license=(MIT)
 depends=(
-	gtk3
-	alsa-lib
+	"$_electron_pkg"
 )
 makedepends=(
-	"nodejs>=16"
+	nodejs
 	npm
-	node-gyp
-	libxcrypt-compat
-	libnotify
-	snappy
-	libappindicator-gtk3
-	re2
-	nss
-	minizip
-	libxss
-	libxslt
-	libvpx
-	http-parser
-	c-ares
-	libevent
 )
-install=$pkgname.install
-source=("$pkgname-$pkgver.$_archive_extension::https://github.com/ipfs/ipfs-desktop/archive/refs/tags/v$pkgver.$_archive_extension")
-b2sums=('e32ddb5a86147e9fbeb45093a1d72d4f4e85a63c93a99c785d24f24f2f9c06229c1ea14c81f34f7560a5c1d022b5fe294e227f310f10e9832788c6d85f52dfd7')
 
-prepare() {
-	cd "$pkgname-$pkgver"
-	npm ci --no-audit --progress=false --cache "$srcdir/npm-cache"
+source=(
+	"$pkgname-$pkgver.$_archive_extension::$url/archive/refs/tags/v$pkgver.$_archive_extension"
+	"$pkgname.desktop"
+	"$pkgname-startup.sh"
+)
+b2sums=('e32ddb5a86147e9fbeb45093a1d72d4f4e85a63c93a99c785d24f24f2f9c06229c1ea14c81f34f7560a5c1d022b5fe294e227f310f10e9832788c6d85f52dfd7'
+        '849d57fd59653ed0c6eca01769ad12a01f37f6a5316f1a83c0bf7cae576074b978e3ca555d50a56114d177e5fe4817338106698716f054a3e18ae1c81d7a8785'
+        '2d7bfa3be33c0199cbe18889e477dc0c207c52d801f52a8b24ae09646f9bb3bf77046d1137dedc08d1481a6995071c4a480bf3884123d356fcd8af69fbfb554f')
+
+_pkgsrc="$pkgname-$pkgver"
+
+_electron_env() {
+	export SYSTEM_ELECTRON_VERSION=$(< "/usr/lib/${_electron_pkg}/version")
+}
+
+_warn_if_electron_outdated() {
+	local _installed _latest_local _vf _v
+
+	[[ -r "/usr/lib/${_electron_pkg}/version" ]] || return 0
+	_installed=$(< "/usr/lib/${_electron_pkg}/version")
+	_latest_local=$_installed
+
+	shopt -s nullglob
+	for _vf in /usr/lib/electron*/version; do
+		_v=$(< "$_vf")
+		if [[ "$(printf '%s\n%s\n' "$_latest_local" "$_v" | sort -V | tail -n1)" != "$_latest_local" ]]; then
+			_latest_local=$_v
+		fi
+	done
+	shopt -u nullglob
+
+	if [[ $_installed != "$_latest_local" ]]; then
+		echo "==> WARNING: Packaging uses not the latest major version of electron installed. ${_electron_pkg} ${_installed} is used, but a newer local Electron version (${_latest_local}) is available on the system." >&2
+	fi
 }
 
 build() {
-	cd "$pkgname-$pkgver"
-	npm run-script build
-	npx electron-builder build --linux pacman
+	_warn_if_electron_outdated
+	_electron_env
+
+	local _builder_options=(
+		"-c.electronDist=/usr/lib/${_electron_pkg}"
+		"-c.electronVersion=${SYSTEM_ELECTRON_VERSION}"
+	)
+
+	cd "$_pkgsrc"
+	npm ci --no-audit --no-fund
+	npm run build
+	npm exec -- electron-builder --linux --dir --publish never "${_builder_options[@]}"
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	tar -xf dist/$pkgname-$pkgver-linux-x64.pacman -C "$pkgdir"
-	mv "$pkgdir/.INSTALL" "../$pkgname.install"
-	rm "$pkgdir/.MTREE" "$pkgdir/.PKGINFO"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	mv "$pkgdir/opt/IPFS Desktop/LICENSE.electron.txt" "$pkgdir/usr/share/licenses/$pkgname"
-	mv "$pkgdir/opt/IPFS Desktop/LICENSES.chromium.html" "$pkgdir/usr/share/licenses/$pkgname"
-	mkdir -p "$pkgdir/usr/bin"
-	ln -s '/opt/IPFS Desktop/ipfs-desktop' "$pkgdir/usr/bin/ipfs-desktop"
+	_electron_env
+
+	depends=("$_electron_pkg")
+
+	mkdir -pm755 "$pkgdir/usr/lib/$pkgname"
+	cp -a "$_pkgsrc/dist/linux-unpacked/resources"/* -t "$pkgdir/usr/lib/$pkgname/"
+	rm -f \
+		"$pkgdir/usr/lib/$pkgname/app.asar.unpacked/node_modules/kubo/tsconfig.json"
+	rm -f \
+		"$pkgdir/usr/lib/$pkgname/app.asar.unpacked/node_modules/kubo/LICENSE" \
+		"$pkgdir/usr/lib/$pkgname/app.asar.unpacked/node_modules/kubo/kubo/README.md" \
+		"$pkgdir/usr/lib/$pkgname/app.asar.unpacked/node_modules/kubo/kubo/build-log" \
+		"$pkgdir/usr/lib/$pkgname/app.asar.unpacked/node_modules/kubo/kubo/install.sh" \
+		"$pkgdir/usr/lib/$pkgname/app.asar.unpacked/node_modules/kubo/kubo/LICENSE" \
+		"$pkgdir/usr/lib/$pkgname/app.asar.unpacked/node_modules/kubo/kubo/LICENSE-APACHE" \
+		"$pkgdir/usr/lib/$pkgname/app.asar.unpacked/node_modules/kubo/kubo/LICENSE-MIT"
+
+	install -Dm644 "$_pkgsrc/assets/webui/ipfs-logo-512-ice.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+	install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
+
+	install -Dm755 "$srcdir/ipfs-desktop-startup.sh" "$pkgdir/usr/bin/$pkgname"
+	install -Dm644 "$srcdir/ipfs-desktop.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+
+	chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
