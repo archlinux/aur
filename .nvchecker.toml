@@ -1,0 +1,3 @@
+[crunch64]
+source = "git"
+git = "https://github.com/decompals/crunch64.git"
