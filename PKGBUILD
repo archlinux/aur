@@ -3,11 +3,11 @@
 pkgname=codex-app-bin
 pkgver=r4.13c0811
 pkgrel=1
-pkgdesc="helper script to port the codex macos desktop app to arch linux (x86_64)"
+pkgdesc="Codex Desktop app for Arch Linux, built and patched from the macOS app"
 arch=('x86_64')
 url="https://github.com/fvaha/New-Codex-App-Manjaro-Arch-Port"
 license=('unknown')
-
+keywords=('ai' 'assistant' 'chatgpt' 'codex' 'openai')
 depends=(
   'bash'
   'curl'
