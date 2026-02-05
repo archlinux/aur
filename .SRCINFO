@@ -1,0 +1,17 @@
+pkgbase = lianwalld-bin
+	pkgdesc = LianWall Daemon - wallpaper engine based on swww and mpvpaper
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://github.com/Yueosa/lianwall
+	arch = x86_64
+	license = MIT
+	depends = swww
+	depends = mpvpaper
+	optdepends = nvidia-utils: NVIDIA GPU VRAM monitoring
+	optdepends = rocm-smi-lib: AMD GPU VRAM monitoring
+	provides = lianwalld
+	conflicts = lianwalld
+	source = https://github.com/Yueosa/lianwall/releases/download/v5.0.0/lianwalld_5.0.0_linux_x86_64
+	sha256sums = 131bbf1f2c7f3d233d8a082ef1e6e4cf053d27a60f0d9c0ca7dba0d6c089cd77
+
+pkgname = lianwalld-bin
