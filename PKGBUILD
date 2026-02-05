@@ -1,7 +1,7 @@
 # Maintainer: Djalel Oukid (sniper1720) <sniper1720@linuxtechmore.com>
 _pkgname=elegant-sddm-manjarolinux-theme
 pkgname=sddm-theme-elegant-manjarolinux-git
-pkgver=1.2.0.r53.gafe45d2
+pkgver=1.2.1.r59.g3eea2a5
 pkgrel=1
 pkgdesc="A simple and elegant SDDM theme for Manjaro Linux"
 arch=('any')
