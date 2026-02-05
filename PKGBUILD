@@ -2,7 +2,7 @@
 
 _pkgname=ashell
 pkgname="${_pkgname}-git"
-pkgver=r1020.8075b13
+pkgver=r1159.b7eaaa6
 pkgrel=1
 pkgdesc="A ready to go Wayland status bar for Hyprland and Niri"
 _git="https://github.com/MalpenZibo/${_pkgname}.git"
@@ -24,6 +24,7 @@ depends=(
   "libpulse"
 )
 arch=("x86_64")
+options=(!lto)
 source=(${_pkgname}::git+${_git})
 b2sums=('SKIP')
 
