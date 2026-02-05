@@ -1,7 +1,7 @@
 # Maintainer: brionical27 <brionical@proton.me>
 pkgname=kh-melonmix-bin
-pkgver=0.7.2
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 pkgdesc="A fork of MelonDS, focused on remastering Kingdom Hearts: 358/2 Days and Re:coded"
 arch=(x86_64)
 url="https://github.com/vitor251093/KHMelonMix"
@@ -18,7 +18,7 @@ kh-melonmix-days.desktop
 kh-melonmix-recoded.desktop
 kh-melonmix
 )
-sha256sums=("205377b5907ca0601e72e79066e178f66548450c4345e158145bdf3842583143"
+sha256sums=("bc860e4bc3e5a6263c8398dd83d5650456298c8df68577fa6cd57f9d823c7b8f"
 	SKIP
 	SKIP
 	SKIP
