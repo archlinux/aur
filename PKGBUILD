@@ -23,7 +23,7 @@ pkgver() {
 build() {
   cd "$srcdir/linux-g13-driver/g13-driver/src"
  
-   make all
+   make build-driver build-gui
 
 }
 
