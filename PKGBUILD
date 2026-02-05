@@ -12,9 +12,9 @@ depends=(
 	'gcc-ada')
 optdepends=(
 	'python-pyghdl: python bindings and utilities')
-checkdepends=(
-	'python-pytest'
-	'python-pytooling')
+#checkdepends=(
+#	'python-pytest'
+#	'python-pytooling')
 
 source=( # Upstream likes moving this tag - I'm really tempted to just pin a commit.
 	"$pkgname-$pkgver.tar.gz::https://github.com/ghdl/ghdl/archive/refs/tags/v$pkgver.tar.gz")
@@ -28,10 +28,11 @@ build() {
 	make
 }
 
-check() {
-	cd "$pkgname-$pkgver"
-	make test
-}
+# Check disabled as python-pytooling build is broken.
+#check() {
+#	cd "$pkgname-$pkgver"
+#	make test
+#}
 
 package() {
 	cd "$pkgname-$pkgver"
