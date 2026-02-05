@@ -1,9 +1,9 @@
 post_install() {
   cat <<'EOF'
-codex-app-manjaro-arch-port-git installs a helper script only.
+codex-app-bin installs a helper script only.
 
 usage:
-  codex-port-manjaro
+  codex-app
 
 notes:
 - this downloads the proprietary codex.dmg at runtime (into your home dir).

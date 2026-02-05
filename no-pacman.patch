@@ -16,7 +16,7 @@ index 41a6be0..e97fcbd 100644
  
  echo
 -echo "=== [2] Sistemski paketi (pacman) + pnpm + asar + electron ==="
-+echo "=== [2] Zavisnosti (bez auto-install) + pnpm + asar + electron ==="
++echo "=== [2] Dependencies (no auto-install) + pnpm + asar + electron ==="
  
 -if ! command -v pacman >/dev/null 2>&1; then
 -  echo "pacman nije pronađen. Izgleda da nisi na Manjaro/Arch sistemu." >&2
@@ -31,15 +31,15 @@ index 41a6be0..e97fcbd 100644
 -node -v || true
 -npm -v || true
 -electron --version || true
-+echo "Ova skripta vise ne pokusava da instalira pakete preko pacman."
-+echo "Instaliraj zavisnosti sam (npr. pacman -S --needed p7zip nodejs pnpm python electron gcc make)."
++echo "This script no longer tries to install packages via pacman."
++echo "Install dependencies yourself (e.g. pacman -S --needed p7zip nodejs pnpm python electron gcc make)."
  
  echo
  echo "Proveravam pnpm..."
  if ! command -v pnpm >/dev/null 2>&1; then
 -  echo "pnpm nije instaliran, instaliram ga preko npm (jedini put kada koristimo npm)..."
 -  sudo npm i -g pnpm
-+  echo "pnpm nije pronadjen. Instaliraj ga: sudo pacman -S pnpm" >&2
++  echo "pnpm not found. Install it: sudo pacman -S pnpm" >&2
 +  exit 1
  fi
  
