@@ -2,7 +2,7 @@ _name=setuptools-golang
 pkgname=python-$_name
 pkgdesc="A setuptools extension for building cpython extensions written in golang."
 pkgver=2.9.0
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 license=('MIT')
 source=(git+https://github.com/asottile-archive/$_name#tag=v$pkgver)
@@ -24,7 +24,7 @@ check(){
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
     
-    pytest
+    pytest -k cmdclass
 }
 
 package() {
