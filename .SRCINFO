@@ -1,0 +1,20 @@
+pkgbase = simple-notes-desktop-bin
+	pkgdesc = Cross-platform note-taking app with WebDAV sync, built with Tauri
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/inventory69/simple-notes-desktop
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = hicolor-icon-theme
+	optdepends = xdg-utils: for opening URLs in default browser
+	provides = simple-notes-desktop
+	conflicts = simple-notes-desktop
+	conflicts = simple-notes-desktop-git
+	options = !strip
+	source = simple-notes-desktop-bin-0.2.0.deb::https://github.com/inventory69/simple-notes-desktop/releases/download/v0.2.0/simple-notes-desktop_0.2.0_amd64.deb
+	sha256sums = SKIP
+
+pkgname = simple-notes-desktop-bin
