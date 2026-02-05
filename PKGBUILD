@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qoder-bin
 _pkgname=Qoder
-pkgver=0.4.2
+pkgver=0.4.3
 _electronversion=37
 pkgrel=1
 pkgdesc="Agent Programming Platform for Real Software.(Prebuilt version.Use system-wide electron)"
@@ -13,31 +13,6 @@ conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
-    'python'
-    'python-websockets'
-    'gtk4'
-    'python-importlib-metadata'
-    'python-tomlkit'
-    'python-colorama'
-    'python-pyqt6'
-    'python-orjson'
-    'python-opengl'
-    'pyside6'
-    'python-packaging'
-    'python-yaml'
-    'python-attrs'
-    'python-wxpython'
-    'python-zipp'
-    'python-pyqt5'
-    'python-msgpack'
-    'python-requests'
-    'python-typing_extensions'
-    'python-greenlet'
-    'python-setuptools'
-    'python-pip'
-    'python-gobject'
-    'gtk2'
-    'libxkbfile'
 )
 optdepends=(
     'bash'
@@ -53,10 +28,14 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2b51bcbfd62574ab15669a62085239bf34af5c378ad94fa75cc440108180f015'
-            '90260784b1f4b066ae397af0b8a12f9b546715706b0f16d14ae391f96de34475'
+sha256sums=('3e6065cac53c60a24b8dcb5f0c71e6055042668b035bcc2356d88f488f1b5c45'
+            '79da146f92fd51a1c179076f4720f83004b24f4342f0ef076f09eb070abb8de1'
             '51c4f53005bf6cbfb3740a04f9ede901e7bb84cc60ad6a2bbae77e8355b34ebc'
             'e0ab2fe87491fabd9c7886f22c6929169edb508be832036a02698760b721f207')
+pkgver() {
+    cd "${srcdir}/usr/share/${pkgname%-bin}/resources/app"
+    grep '"version":' featureFlags.json | awk -F'"version": "' '{print $2}' | awk -F',' '{print $1}' | tr -d '"'
+}
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/usr/share/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
