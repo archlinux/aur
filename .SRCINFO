@@ -1,0 +1,25 @@
+pkgbase = 1code
+	pkgdesc = Best UI for Claude Code with local and remote agent execution
+	pkgver = 0.0.54
+	pkgrel = 1
+	url = https://github.com/21st-dev/1code
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = bun
+	makedepends = python
+	makedepends = nodejs
+	depends = gtk3
+	depends = nss
+	depends = libxss
+	depends = alsa-lib
+	optdepends = claude-code: Claude Code CLI for agent functionality
+	provides = 1code
+	conflicts = 1code-bin
+	conflicts = 1code-git
+	options = !strip
+	source = 1code-0.0.54.tar.gz::https://github.com/21st-dev/1code/archive/refs/tags/v0.0.54.tar.gz
+	source = 1code.desktop
+	sha256sums = b8cc8461dc3bf6d91ab683d8deef939089e0d4cad60b1ea40b4dccf784acfbf8
+	sha256sums = 3ef29244e4af479309b5c61185bf5274dd72d40ddab8ec2b85a632ba27a9195d
+
+pkgname = 1code

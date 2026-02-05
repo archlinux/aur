@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=1Code
+Comment=Best UI for Claude Code with local and remote agent execution
+Exec=1code %U
+Icon=1code
+Terminal=false
+Type=Application
+Categories=Development;IDE;
+Keywords=claude;code;ai;agent;
+StartupWMClass=1Code
