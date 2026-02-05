@@ -1,6 +1,6 @@
 # Maintainer: Lewis Donaldson <lewdon0001@gmail.com>
 pkgname=lyrwal
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="A program to set the wallpaper to random song lyrics"
 arch=('x86_64')
