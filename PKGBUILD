@@ -12,16 +12,16 @@ ${pkgname}-${pkgver}.tar.gz::https://github.com/Saturncorgi/protec/archive/refs/
 )
 sha256sums=('474343a9af88d2128d5b0b7c77f960ad9bf59997f55f08a855212f098b09b230')
 prepare() {
-    cd protec*
+    cd protec-$pkgver
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 build(){
-    cd protec*
+    cd protec-$pkgver
     cargo build --release --offline
 }
 package(){
-    cd protec*
+    cd protec-$pkgver
     install -Dm711 -t "$pkgdir"/usr/bin target/release/protec
     install -Dm644 -t "$pkgdir"/usr/share/licenses/$protec $srcdir/protec-$pkgver/LICENSE.md
 }
