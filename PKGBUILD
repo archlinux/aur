@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cupola-git
 _app_id=org.codeberg.bhh32.Cupola
-pkgver=r51.658a925
+pkgver=r53.fca1866
 pkgrel=1
 pkgdesc="An image viewer for the COSMIC desktop environment."
 arch=('x86_64' 'aarch64')
@@ -33,9 +33,6 @@ prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc --print host-tuple)"
-
-  # Correct binary name
-  sed -i "s/cosmic-viewer/${pkgname%-git}/g" crates/viewer/Cargo.toml
 
   # Add StartupWMClass
   desktop-file-edit --set-key=StartupWMClass --set-value="${_app_id}" \
