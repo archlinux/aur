@@ -13,6 +13,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Options on description menu
 - Show interface on properties list
 
+## [2.12.5] - 2026-02-05
+
+### Fix
+
+- Unit description, in some cases, was not displayed in the browser
+
 ## [2.12.4] - 2026-01-29
 
 ### Fix
