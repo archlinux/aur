@@ -1,0 +1,4 @@
+[bandcampsync]
+source = "git"
+git = "https://github.com/meeb/bandcampsync.git"
+prefix = "v"

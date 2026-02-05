@@ -1,0 +1,22 @@
+pkgbase = bandcampsync
+	pkgdesc = Downloads your Bandcamp purchases automatically
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/meeb/bandcampsync
+	arch = any
+	license = BSD-3-Clause
+	checkdepends = python-pytest
+	checkdepends = python-pytest-mock
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-curl_cffi
+	depends = python-beautifulsoup4
+	source = bandcampsync::git+https://github.com/meeb/bandcampsync#tag=v0.7.0
+	sha512sums = 469357c4a0c8502041739f80d67536477f87267455394ecc6ad3c78f795807f619736e36e96ea1c00c33b14c555d43ec6ca9a7c22fa5e1f0688a6da2183cb230
+	b2sums = 54658ed00e356af311b08569e0944c53685e7364f7352fd5c13cf9eb2dbe46de675994c848e73b2fa010a426b189f9b1b3886305737a35aab186dd702f85c0e2
+
+pkgname = bandcampsync
