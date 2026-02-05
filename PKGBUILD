@@ -3,7 +3,7 @@
 pkgname=nethack4
 pkgver=4.3.0.beta2
 _pkgver=4.3-beta2
-pkgrel=3
+pkgrel=4
 pkgdesc="A modern fork of Nethack"
 arch=('i686' 'x86_64')
 url="http://nethack4.org/"
