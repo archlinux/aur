@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jitsi-meet-desktop-git
 _pkgname='Jitsi Meet'
-pkgver=2025.8.1.r0.g04af37c
-_electronversion=37
+pkgver=2026.1.0.r0.gd4cef1b
+_electronversion=39
 _nodeversion=22
 pkgrel=1
 pkgdesc="Jitsi Meet desktop application.(Use system-wide electron)"
@@ -20,6 +20,7 @@ makedepends=(
     'nvm'
     'git'
     'curl'
+    'jq'
 )
 source=(
     "${pkgname%-git}.git::git+${url}"
@@ -40,8 +41,9 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver="$(grep '^ *"electron": *"' "${srcdir}/${pkgname%-git}.git/package.json" | cut -d'"' -f4 | cut -d. -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname%-git}.git/package.json" | tr -d '^')
+    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
+    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
     cd "${srcdir}/${pkgname%-git}.git"
