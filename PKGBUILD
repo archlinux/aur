@@ -9,7 +9,7 @@ license=('MIT')
 depends=("mpv" "ffmpeg")
 conflicts=("auditorium-minimal")
 source=("https://github.com/nate-craft/auditorium/releases/download/${pkgver}/auditorium-${pkgver}-x86_64-unknown-linux-gnu")
-sha256sums=('85087da0807726b439a31b7bd32cf8a25e36c8c623b2fe4852ed1a126113b024')
+sha256sums=('5980d7535a3ac13c25aeaaccbbc94c090c120f390872ed6d8583665387e6e3b9') 
 
 package() {
     install -Dm755 "$srcdir/auditorium-${pkgver}-x86_64-unknown-linux-gnu" "$pkgdir/usr/bin/auditorium"
