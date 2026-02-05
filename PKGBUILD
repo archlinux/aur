@@ -3,7 +3,7 @@
 
 pkgname=python-pycpio
 _name=${pkgname#python-}
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='Python library for CPIO manipulation'
 arch=(any)
@@ -12,7 +12,7 @@ license=(GPL-2.0-only)
 depends=(python python-zenlib)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=("$url/archive/$pkgver/$_name-$pkgver.tar.gz")
-b2sums=('768c7773343bc19de893edfd5640f79df29b13ecf051b644b751a2f6f699d836f2add472a7c439af9bc7348c0e1833b9bea2230349fc3961411135c962df1ca0')
+b2sums=('b4479df7b02bc2bc8751b1b833c0d82829383c9475544c11469facec172e2a54e4ee156e29b9a71c65bbd9ab7102448eee5c299e853bf470f39c3c55c4eff302')
 
 build() {
     cd $_name-$pkgver
