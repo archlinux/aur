@@ -1,0 +1,17 @@
+pkgbase = r-rig
+	pkgdesc = The R Installation Manager
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/r-lib/rig
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	depends = gcc-libs
+	depends = glibc
+	options = !lto
+	options = !debug
+	source = rig-0.7.1.tar.gz::https://github.com/r-lib/rig/archive/v0.7.1.tar.gz
+	sha512sums = b854341f0fda0d6d542250d0f196959b70b9204a5d62b9b9afb765006a06cfc694ef52af562e87342b393986b6ddb3c5f87e28e0639ae86b9af663c916a6993d
+
+pkgname = r-rig
