@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dartsmate-git
 _pkgname=DartsMate
-pkgver=0.5.0.r0.g08ce5ca
-_electronversion=39
-_nodeversion=22
+pkgver=0.6.1.r1.g679524b
+_electronversion=40
+_nodeversion=25
 pkgrel=1
 pkgdesc="Analyze, compare and track your darts games with DartsMate.(Use system-wide electron)"
 arch=('any')

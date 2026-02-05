@@ -1,6 +1,6 @@
 pkgbase = dartsmate-git
 	pkgdesc = Analyze, compare and track your darts games with DartsMate.(Use system-wide electron)
-	pkgver = 0.5.0.r0.g08ce5ca
+	pkgver = 0.6.1.r1.g679524b
 	pkgrel = 1
 	url = https://github.com/derechtenap/dartsmate
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = dartsmate-git
 	makedepends = gendesk
 	makedepends = curl
 	makedepends = jq
-	depends = electron39
-	provides = dartsmate=0.5.0
+	depends = electron40
+	provides = dartsmate=0.6.1
 	conflicts = dartsmate
 	source = dartsmate.git::git+https://github.com/derechtenap/dartsmate.git
 	source = dartsmate.sh
