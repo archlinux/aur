@@ -3,29 +3,39 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=neoleo
-pkgver=15.1
+pkgver=16.0
 pkgrel=1
 pkgdesc="Lightweight curses spreadsheet based on GNU oleo"
 arch=('x86_64')
 url="https://github.com/blippy/neoleo"
 license=('GPL-2.0-or-later')
-depends=('ncurses')
+depends=('ncurses' 'tcl')
+makedepends=('cmake' 'swig')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b4c67a9887506a26c6f55e80bbf45316b424e6a123310d69c0c1e15842045dfb')
+sha256sums=('a5467433f048e9d54cacdf8c44a33f9a75570a280616500415dee3979e10eba1')
 
 build() {
-	cd "$pkgname-$pkgver"
-	autoreconf -iv
-	LIBS+=" -lstdc++fs" ./configure --prefix=/usr
-	make CFLAGS+=" -Werror=use-after-free"
+    local cmake_opts=(
+        -B build
+        -S "$pkgname-$pkgver"
+        -Wno-dev
+        -DCMAKE_INSTALL_PREFIX=/usr
+        -DCMAKE_BUILD_TYPE=None
+    )
+    cmake "${cmake_opts[@]}"
+    cmake --build build
 }
 
 check() {
-	cd "$pkgname-$pkgver"
-	make check
+    local ctest_opts=(
+        --test-dir build
+        --output-on-failure
+        --parallel $(nproc)
+    )
+    ctest "${ctest_opts[@]}"
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+    DESTDIR="$pkgdir" cmake --install build
+    rm -rf "$pkgdir/usr/man/"
 }
