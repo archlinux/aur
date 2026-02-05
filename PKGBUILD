@@ -2,7 +2,7 @@
 # Co-Maintainer: Naxels <naxels at gmail dot com>
 
 pkgname="metabase-driver-duckdb"
-pkgver=1.4.3.0
+pkgver=1.4.3.1
 pkgrel=1
 pkgdesc="DuckDB driver for Metabase"
 arch=("any")
