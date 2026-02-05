@@ -2,9 +2,9 @@
 pkgname='fet-timetabling'
 _module='fet'
 pkgver=7.7.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A software for automatically scheduling the timetable of a school, high-school or university."
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url="https://lalescu.ro/liviu/fet/"
 license=('AGPL3')
 depends=('qt6-base' 'hicolor-icon-theme')
@@ -14,18 +14,21 @@ sha256sums=('2f5737c6c240afad2ae1134143737c1a4fd7b94e18d786e0a31c47e82041f048')
 
 build() {
 	cd "$srcdir/$_module-$pkgver"
-	qmake6 fet.pro "DEFINES+=USE_SYSTEM_LOCALE"
-	make
+	# Use qt-cmake as recommended by the author
+	mkdir -p build
+	cd build
+	/usr/lib/qt6/bin/qt-cmake .. \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DUSE_SYSTEM_LOCALE=ON \
+		-DCMAKE_INSTALL_DATADIR=/usr/share
+	cmake --build .
 }
 
 package() {
-	cd "$srcdir/$_module-$pkgver"
-	# Process deployment files to avoid conflicts as suggested in AUR comments
-	if [ -d build ]; then
-		cd build
-		# Truncate deployment files to prevent conflicts with system Qt plugins
-		find .qt/ -name "deploy_fet_*.cmake" -exec truncate -s 0 {} + 2>/dev/null || true
-		cd ..
-	fi
-	make INSTALL_ROOT="${pkgdir}/" install
+	cd "$srcdir/$_module-$pkgver/build"
+	
+	find .qt/ -name "deploy_fet_*.cmake" -exec truncate -s 0 {} + 2>/dev/null || true
+
+	DESTDIR="${pkgdir}" cmake --install . --prefix /usr
 }
