@@ -1,6 +1,6 @@
 pkgbase = cwc-git
 	pkgdesc = Extensible Wayland compositor with dynamic window management
-	pkgver = r230.6dad743
+	pkgver = r235.ee7a82b
 	pkgrel = 1
 	url = https://github.com/Cudiph/cwcwm
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = cwc-git
 	depends = hyprcursor
 	depends = libdrm
 	depends = libinput
-	depends = libwlroots-0.19.so
+	depends = libwlroots-0.20.so
 	depends = libxcb
 	depends = libxkbcommon
 	depends = lua51-lgi

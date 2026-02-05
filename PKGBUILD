@@ -1,7 +1,7 @@
 # Maintainer: Dwi Asmoro Bangun <dwiaceromo@gmail.com>
 _pkgname=cwc
 pkgname="$_pkgname-git"
-pkgver=r230.6dad743
+pkgver=r235.ee7a82b
 pkgrel=1
 pkgdesc='Extensible Wayland compositor with dynamic window management'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(
   'hyprcursor'
   'libdrm'
   'libinput'
-  'libwlroots-0.19.so'
+  'libwlroots-0.20.so'
   'libxcb'
   'libxkbcommon'
   'lua51-lgi'
