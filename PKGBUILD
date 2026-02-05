@@ -3,7 +3,7 @@
 pkgname=hypryou
 _pkgname="hyprland-material-you"
 pkgver=2.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Dynamic and elegant desktop setup inspired by Material You, featuring auto-generated colors, fluid animations, and customizable user experience."
 arch=('x86_64' 'aarch64')
 conflicts=('hypryou-git')
@@ -42,7 +42,7 @@ depends=(
   'hyprshot'
 
   'gtk4-layer-shell'
-  'python-materialyoucolor-git'
+  'python-materialyoucolor'
   'libastal-bluetooth-git'
   'libastal-wireplumber-git'
   'ttf-material-symbols-variable-git'
