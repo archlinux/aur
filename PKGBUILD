@@ -6,7 +6,7 @@
 # For local/AUR builds, update pkgver and sha256sums to match the release tarball.
 
 pkgname=plasmazones
-pkgver=0.0.0
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="FancyZones-style window tiling for KDE Plasma"
 arch=('x86_64')
@@ -45,7 +45,7 @@ source=(
     "plasmazones-refresh-sycoca"
 )
 sha256sums=(
-    '1836cc5877937666e1b139a4219d3a7cbf124551abc211e8ede5b09907403ae8'
+    '9661908abffb05fa01ebc8a870202b477f390dae20c80bc91e0a968aa2616b97'
     '8bd1b7fe1ca040f18fc0aa95f5da775cdbc1b090a23f63d8e16dd572cbba3c80'
     'f128058da53fd97e6a35718348fefa219b6352517bd13f6a1039368872cb0b6d'
 )
