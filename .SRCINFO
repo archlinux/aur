@@ -1,7 +1,7 @@
 pkgbase = auditorium
 	pkgdesc = A cross-platform, local, simple, fast, and distraction free CLI application to listen to your music library
 	pkgver = 1.2.6
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/nate-craft/auditorium
 	arch = x86_64
 	license = GPL-2.0

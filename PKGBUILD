@@ -1,7 +1,7 @@
 # Maintainer: Nate Craft <secondarynate at icloud dot com>
 pkgname=auditorium
 pkgver=1.2.6
-pkgrel=2
+pkgrel=1
 pkgdesc="A cross-platform, local, simple, fast, and distraction free CLI application to listen to your music library"
 arch=('x86_64')
 url="https://github.com/nate-craft/auditorium"
