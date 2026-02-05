@@ -1,0 +1,20 @@
+pkgbase = svt-av1-psyex-git
+	pkgdesc = Bleeding edge psycho-visually focused fork of SVT-AV1. BlueSwordMs fork
+	pkgver = 3.0.2.B.r9.g59d1a0256
+	pkgrel = 1
+	url = https://github.com/BlueSwordM/svt-av1-psyex
+	arch = x86_64
+	license = BSD
+	license = custom: Alliance for Open Media Patent License 1.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = yasm
+	depends = glibc
+	provides = svt-av1
+	provides = svt-av1-git
+	conflicts = svt-av1
+	conflicts = svt-av1-git
+	source = git+https://github.com/BlueSwordM/svt-av1-psyex
+	sha256sums = SKIP
+
+pkgname = svt-av1-psyex-git
