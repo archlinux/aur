@@ -3,12 +3,12 @@
 pkgbase=cuvs
 pkgname=(libcuvs python-cuvs)
 pkgver=25.12.00
-pkgrel=1
+pkgrel=2
 pkgdesc="cuVS - a library for vector search and clustering on the GPU"
 url="https://github.com/rapidsai/cuvs"
 arch=('x86_64')
 license=('Apache-2.0')
-depends=('cuda' 'rmm' 'libraft')
+depends=('cuda' 'rmm' 'libraft' 'dlpack')
 makedepends=('cuda' 'python-setuptools' 'cmake' 'python-scikit-build-core' 'python-rapids-build-backend' 'ninja' 'cython')
 source=(
     "$url/archive/refs/tags/v$pkgver.tar.gz" 
