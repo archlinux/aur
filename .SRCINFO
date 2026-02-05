@@ -1,11 +1,11 @@
-pkgbase = dora-ssr
-	pkgdesc = A game engine for rapid development across devices, featuring a built-in Web IDE with intuitive toolchain.
-	pkgver = 1.6.2
+pkgbase = ourchat-bin
+	pkgdesc = A cross-platform instant messaging app, made in flutter and rust, supporting matrix. Gracefully designed, Powerfully featured
+	pkgver = 0.1.0
 	pkgrel = 1
-	url = https://github.com/IppClub/Dora-SSR
+	url = https://github.com/SkyUOI/OurChat
 	arch = x86_64
-	license = MIT
-	source = dora.zip::https://github.com/limuy2022/Dora-SSR/releases/download/1.6.2/dora-ssr-archlinux.zip
-	sha256sums = 66c57b9d7a7e88d08f798be3cc57eda3521d56ab040849c31784513764dc9b34
+	license = BSD 3-Clause
+	source = ourchat.zip::https://github.com/SkyUOI/OurChat/releases/download/v0.1.0-beta5/OurChat_v0.1.0-beta5_linux.tar.gz
+	sha256sums = 64e76d8e321c99f1a67da9fa1acf078ffa6cba515ba7ef09625569b2803b6883
 
-pkgname = dora-ssr
+pkgname = ourchat-bin
