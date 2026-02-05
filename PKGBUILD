@@ -3,12 +3,12 @@
 pkgbase=libraft
 pkgname=(libraft python-pylibraft python-raft-dask)
 pkgver=25.12.00
-pkgrel=1
+pkgrel=2
 pkgdesc="Reusable Accelerated Functions and Tools for Vector Search and More"
 url="https://github.com/rapidsai/raft"
 arch=('x86_64')
 license=('Apache-2.0')
-depends=(cuda rmm)
+depends=(cuda rmm nccl)
 makedepends=(
     cuda
     python-build
