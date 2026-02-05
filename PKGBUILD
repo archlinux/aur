@@ -2,7 +2,7 @@
 # Contributors: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 
 pkgname=huntarr
-pkgver=9.1.5
+pkgver=9.2.0
 pkgrel=1
 _repoorg=plexguide
 _reponame=Huntarr.io
@@ -12,7 +12,7 @@ url="https://github.com/$_repoorg/$_reponame"
 license=('GPL3')
 depends=('python' 'python-flask' 'python-requests' 'python-waitress' 'python-bcrypt' 'python-qrcode' 'python-pyotp' 'python-pytz' 'apprise')
 source=("${url}/archive/refs/tags/$pkgver.tar.gz" 'huntarr.service' 'huntarr.sysusers' 'huntarr.tmpfiles')
-sha256sums=('f97befaa1b1545417f0b77c99ed24ad712fad17d4b2ab065f04bc430252c7f75'
+sha256sums=('35ac76a131ca3231e565022dea12dc9b1c41faef8aac7029d24e8da219834c19'
             '660e4f9dc6d38b06feeda7e7e8748191887a63a4a4087d6a23d36a4a4394bbd4'
             '42a4c3451509f4ee82aa555f83f80fa638fbef162a33e937127a82723e2ab19e'
             '57d8031a1a03293bc422cfd20cd8238219c4823557d17f5ad0874e633e864db5')
