@@ -6,7 +6,7 @@ arch=('x86_64')
 url="https://mlir.llvm.org/"
 license=("Apache-2.0 WITH LLVM-exception")
 depends=("llvm-libs")
-makedepends=("cmake" "llvm>=${pkgver%%.*}")
+makedepends=("cmake" "llvm>=${pkgver%%.*}" lld)
 options=(!lto !debug)
 _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver
 source=($_source_base/mlir-$pkgver.src.tar.xz{,.sig}
@@ -41,6 +41,7 @@ build() {
     -DLLVM_BUILD_TOOLS=ON \
     -DLLVM_BUILD_UTILS=ON \
     -DLLVM_ENABLE_PIC=ON \
+    -DLLVM_USE_LINKER=lld \
     -B build -S .
   cmake --build build
 }
