@@ -22,7 +22,6 @@ depends=(
   dbus
   alsa-lib
   at-spi2-core
-  bash
   cairo
   fontconfig
   freetype2
@@ -49,6 +48,7 @@ depends=(
   nspr
   nss
   pango
+  sh
   ttf-font
   zlib
 )
