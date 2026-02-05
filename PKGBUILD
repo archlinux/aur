@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Zaoqi
 pkgname=electerm
-pkgver=2.5.9
+pkgver=2.5.16
 _electronversion=38
 _nodeversion=22
 pkgrel=1
@@ -12,7 +12,7 @@ arch=(
     'x86_64'
 )
 url="https://electerm.html5beta.com/"
-_ghurl="https://wget.la/https://github.com/electerm/electerm"
+_ghurl="https://github.com/electerm/electerm"
 license=('MIT')
 conflicts=("${pkgname}")
 depends=(
