@@ -1,6 +1,6 @@
 pkgbase = limine-mkinitcpio-hook
 	pkgdesc = Install kernels for the Limine bootloader.
-	pkgver = 1.29.0
+	pkgver = 1.29.1_1
 	pkgrel = 1
 	url = https://gitlab.com/Zesko/limine-entry-tool
 	arch = x86_64
@@ -22,8 +22,8 @@ pkgbase = limine-mkinitcpio-hook
 	options = !debug
 	options = !strip
 	backup = etc/limine-entry-tool.conf
-	source = https://gitlab.com/Zesko/limine-entry-tool/-/archive/1.29.0-1/limine-entry-tool-1.29.0-1.tar.gz
-	sha256sums = 03e041631aa1275f0a03ecae0ada6f1bb3fa69e5b428e5b68f7240da68b6b4f4
+	source = limine-entry-tool::git+https://gitlab.com/Zesko/limine-entry-tool.git#tag=1.29.1_1
+	sha256sums = 0f35e2be0043e98dc5727fe3317e936a0a82b77474ea9c5bf4bf546366c8e597
 	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-25.0.2/graalvm-community-jdk-25.0.2_linux-x64_bin.tar.gz
 	sha256sums_x86_64 = e0be791c8fda4d03b6b0a0cb824fef3149736170057b3a515252b44419606af0
 	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-25.0.2/graalvm-community-jdk-25.0.2_linux-aarch64_bin.tar.gz
