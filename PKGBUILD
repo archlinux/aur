@@ -2,7 +2,7 @@
 
 pkgname=tonearm
 
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 
 pkgdesc="Unofficial native GTK4 / Adwaita music streaming client for TIDAL"
@@ -15,7 +15,7 @@ makedepends=(git go)
 provides=("${pkgname}=${pkgver}")
 
 source=("${pkgname}::https://codeberg.org/dergs/Tonearm/archive/v${pkgver}.tar.gz")
-sha256sums=('09584d054e4ff5c9e9c31d12db1cc923ae8b36d9916c82fda09fc60daa36b9a7')
+sha256sums=('4f0bbd6be56439780f9d2b446bd8a203427efd97c55661e73648a36c5a3b5bf2')
 
 build() {
     cd "$srcdir/${pkgname}"
