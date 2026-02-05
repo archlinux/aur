@@ -1,7 +1,7 @@
 # Maintainer: Wiktor W. <wykwit@disroot.org>
 
 pkgname='madgit'
-pkgver=0.2.0
+pkgver=0.3.0
 _pkgver="v${pkgver}"
 pkgrel=1
 pkgdesc='Mass run git distributed across multiple repositories'
@@ -11,7 +11,7 @@ makedepends=('cargo' 'rust')
 depends=('git')
 arch=('x86_64' 'i686')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('3b58ad3ae8d24f3d2f85dd165730abe43c2ed5d717aff59ad4d6ef1fafda17e2')
+sha256sums=('b0508a3fa15e294203552810b34416bc3fd9a8d8f368a31c1e231a2efc66da4b')
 
 prepare() {
   cd "${pkgname}-${_pkgver}"
