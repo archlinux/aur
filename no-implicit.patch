@@ -1,0 +1,23 @@
+diff -ur nethack4-4.3-beta2/nethack/src/rungame.c nethack4-fixed/nethack/src/rungame.c
+--- nethack4-4.3-beta2/nethack/src/rungame.c    2015-04-01 19:08:28.000000000 -0600
++++ nethack4-fixed/nethack/src/rungame.c        2026-02-05 10:30:16.399688788 -0700
+@@ -4,6 +4,7 @@
+ /* NetHack may be freely redistributed.  See license for details. */
+ 
+ #include "nhcurses.h"
++#include "nethack_client.h"
+ #include "common_options.h"
+ #include <fcntl.h>
+ #include <time.h>
+diff -ur nethack4-4.3-beta2/nethack/src/windows.c nethack4-fixed/nethack/src/windows.c
+--- nethack4-4.3-beta2/nethack/src/windows.c    2015-04-01 19:08:28.000000000 -0600
++++ nethack4-fixed/nethack/src/windows.c        2026-02-05 10:30:37.450484339 -0700
+@@ -4,6 +4,7 @@
+ /* NetHack may be freely redistributed.  See license for details. */
+ 
+ #include "nhcurses.h"
++#include "nethack_client.h"
+ #include <signal.h>
+ #include <locale.h>
+ #include <time.h>
+
