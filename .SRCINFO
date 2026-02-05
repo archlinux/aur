@@ -1,0 +1,16 @@
+pkgbase = imgfetch
+	pkgdesc = Display pixel-perfect images in your terminal using Kitty's graphics protocol. 
+	pkgver = r32.904f81c
+	pkgrel = 1
+	url = https://github.com/alan-ar1/imgfetch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	conflicts = imgfetch
+	options = !lto
+	source = git+https://github.com/alan-ar1/imgfetch
+	sha256sums = SKIP
+
+pkgname = imgfetch
