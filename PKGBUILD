@@ -1,10 +1,10 @@
-# Maintainer: Jonathan Capps <cappsy at gmail dot com>
+# Maintainer: Jonathan Capps <hello at cappsy dot net>
 pkgname=cosmic-ext-applet-dict-git
 pkgver=v0.1.3.r2.g4fef6df
 pkgrel=1
 pkgdesc="An English language dictionary applet for the COSMIC™ desktop"
 arch=('x86_64' 'aarch64')
-url="https://github.com/cappsyco/cosmic-ext-applet-dict"
+url="https://github.com/cosmic-utils/cosmic-ext-applet-dict"
 license=('GPL-3.0-or-later')
 depends=('cosmic-applets')
 makedepends=(
@@ -14,7 +14,7 @@ makedepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/cappsyco/cosmic-ext-applet-dict.git')
+source=('git+https://github.com/cosmic-utils/cosmic-ext-applet-dict.git')
 sha256sums=('SKIP')
 
 pkgver() {
