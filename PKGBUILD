@@ -6,7 +6,7 @@ pkgdesc="Yell at anyone who dares touch your computer when you're not there"
 arch=(x86_64)
 depends=('cargo' 'libinput' 'evtest' 'alsa-lib')
 license=(custom:for_good_eyes_only)
-conflicts=(protec)
+conflicts=(protec-git)
 source=(
 ${pkgname}-${pkgver}.tar.gz::https://github.com/Saturncorgi/protec/archive/refs/tags/$pkgver.tar.gz
 )

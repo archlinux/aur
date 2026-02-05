@@ -8,7 +8,7 @@ pkgbase = protec
 	depends = libinput
 	depends = evtest
 	depends = alsa-lib
-	conflicts = protec
+	conflicts = protec-git
 	source = protec-0.2.1.tar.gz::https://github.com/Saturncorgi/protec/archive/refs/tags/0.2.1.tar.gz
 	sha256sums = 1665bee06b7affd0843f3ba3b93ae5a2c50ebd6f14731c26c3de8cd1d0795326
 
