@@ -1,7 +1,7 @@
 pkgbase = crunch64
 	pkgdesc = A library for handling common N64 compression formats
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/decompals/crunch64
 	arch = x86_64
 	license = MIT
@@ -19,6 +19,7 @@ pkgbase = crunch64
 pkgname = crunch64
 
 pkgname = python-crunch64
+	pkgdesc = A library for handling common N64 compression formats - Python bindings
 	depends = glibc
 	depends = gcc-libs
 	depends = python
