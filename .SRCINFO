@@ -2,7 +2,7 @@ pkgbase = linux-g13-driver-git
 	pkgdesc = User-space driver and configuration tool for the Logitech G13 gameboard (Modernized Fork)
 	pkgver = r1.0.0
 	pkgrel = 1
-	url = https://github.com/Lordbooker/linux-g13-driver.git
+	url = https://github.com/Lordbooker/linux-g13-driver
 	arch = x86_64
 	license = GPL
 	makedepends = git
@@ -17,7 +17,7 @@ pkgbase = linux-g13-driver-git
 	provides = linux-g13-driver
 	conflicts = linux-g13-driver
 	conflicts = g13-driver
-	source = git+https://github.com/Lordbooker/linux-g13-driver.git
+	source = git+https://github.com/Lordbooker/linux-g13-driver
 	sha256sums = SKIP
 
 pkgname = linux-g13-driver-git
