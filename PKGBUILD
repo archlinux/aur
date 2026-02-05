@@ -1,5 +1,3 @@
-# Maintainer : Zak BlueSwordM <neutronpcxt@gmail.com>
-
 pkgname=svt-av1-psyex-git
 pkgver=3.0.2.B.r9.g59d1a0256
 pkgrel=1
