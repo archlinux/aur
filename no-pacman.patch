@@ -1,8 +1,8 @@
 diff --git a/codex-port-manjaro.sh b/codex-port-manjaro.sh
-index 6b2c4ad..e0c9b02 100755
+index 41a6be0..e97fcbd 100644
 --- a/codex-port-manjaro.sh
 +++ b/codex-port-manjaro.sh
-@@ -25,16 +25,16 @@ echo "HOME      : $HOME"
+@@ -25,7 +25,7 @@ echo "HOME      : $HOME"
  
  echo
  echo "Provera komandi:"
@@ -11,14 +11,13 @@ index 6b2c4ad..e0c9b02 100755
    if command -v "$cmd" >/dev/null 2>&1; then
      echo "  - $cmd: OK ($(command -v "$cmd"))"
    else
-     echo "  - $cmd: nije pronađen (skripta će ga instalirati ili nije obavezan)"
-   fi
- done
-@@ -55,28 +55,15 @@ fi
- echo
+@@ -53,27 +53,16 @@ else
+ fi
+ 
  echo
 -echo "=== [2] Sistemski paketi (pacman) + pnpm + asar + electron ==="
--
++echo "=== [2] Zavisnosti (bez auto-install) + pnpm + asar + electron ==="
+ 
 -if ! command -v pacman >/dev/null 2>&1; then
 -  echo "pacman nije pronađen. Izgleda da nisi na Manjaro/Arch sistemu." >&2
 -  exit 1
@@ -32,24 +31,21 @@ index 6b2c4ad..e0c9b02 100755
 -node -v || true
 -npm -v || true
 -electron --version || true
--
--echo
--echo "Proveravam pnpm..."
--if ! command -v pnpm >/dev/null 2>&1; then
++echo "Ova skripta vise ne pokusava da instalira pakete preko pacman."
++echo "Instaliraj zavisnosti sam (npr. pacman -S --needed p7zip nodejs pnpm python electron gcc make)."
+ 
+ echo
+ echo "Proveravam pnpm..."
+ if ! command -v pnpm >/dev/null 2>&1; then
 -  echo "pnpm nije instaliran, instaliram ga preko npm (jedini put kada koristimo npm)..."
 -  sudo npm i -g pnpm
--fi
-+echo "=== [2] Zavisnosti (bez auto-install) + pnpm + asar + electron ==="
-+
-+echo "Ova skripta vise ne pokusava da instalira pakete preko pacman." 
-+echo "Instaliraj zavisnosti sam (npr. pacman -S --needed p7zip nodejs pnpm python electron gcc make)."
-+
-+echo
-+echo "Proveravam pnpm..."
-+if ! command -v pnpm >/dev/null 2>&1; then
 +  echo "pnpm nije pronadjen. Instaliraj ga: sudo pacman -S pnpm" >&2
 +  exit 1
-+fi
+ fi
  
  pnpm -v
+@@ -225,4 +214,3 @@ echo "  export PATH=\"\$PNPM_HOME:\$PATH\""
  
+ echo
+ echo "=== Gotovo. Codex port skripta je završena. ==="
+-
