@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=rocketchat-desktop-git
 _pkgname=Rocket.Chat
-pkgver=4.10.0.r0.g3b1c7c3
-_electronversion=39
-_nodeversion=22
+pkgver=4.12.0.r2.g8e2b092
+_electronversion=40
+_nodeversion=25
 pkgrel=1
 pkgdesc="The Ultimate Open Source WebChat Platform.(Use system-wide electron)"
 arch=('any')
@@ -22,6 +22,7 @@ makedepends=(
     'git'
     'curl'
     'yarn'
+    'jq'
 )
 optdepends=(
     'libnotify: For sending desktop notifications'
@@ -46,8 +47,9 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver="$(grep '"electron":' "${srcdir}/${pkgname%-git}.git/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname%-git}.git/package.json" | tr -d '^')
+    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
+    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
     cd "${srcdir}/${pkgname%-git}.git"
