@@ -2,7 +2,7 @@
 _pkgname=ValveResourceFormat
 pkgbase=source2viewer
 pkgname=(source2viewer source2viewer-cli)
-pkgver=17.0
+pkgver=18.0
 pkgrel=1
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=(!strip !debug)
 conflicts=('valveresourceformat')
 replaces=('valveresourcefromat')
 source=("$url/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('aca0f60bc52f7ceaf5ddcd8cfff2c1f1a3d0d2551a7ef9bfb7aee7341e12a538')
+sha256sums=('a2a49fcbd2478700de36a57c2f7ae444ce5d7549a173a74ed0be549d453d9faa')
 
 prepare() {
 	cd "$srcdir/$_pkgname-$pkgver"
@@ -38,7 +38,7 @@ build() {
 	dotnet build-server shutdown
 
 	cd "$srcdir"
-	gendesk -f --pkgname=source2viewer \
+	gendesk -n -f --pkgname=source2viewer \
 	--pkgdesc="$pkgdesc" \
 	--exec="${pkgname}" \
 	--name="Source 2 Viewer" \
