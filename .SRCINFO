@@ -1,0 +1,14 @@
+pkgbase = plasma6-applets-virtual-desktop-bar-wayland
+	pkgdesc = Configurable virtual desktop bar widget for KDE Plasma 6
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/lenonk/virtual-desktop-bar
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = plasma-workspace
+	source = https://github.com/lenonk/virtual-desktop-bar/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = plasma6-applets-virtual-desktop-bar-wayland
