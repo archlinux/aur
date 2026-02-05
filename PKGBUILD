@@ -2,7 +2,7 @@
 
 pkgname=obs-recursion-effect
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Plugin for add recursion effect to a source using a filter"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/recursion-effect.1008/"
@@ -10,7 +10,7 @@ license=("GPL-2.0-or-later")
 depends=("obs-studio>=28" "glibc")
 makedepends=("cmake" "git")
 options=('debug')
-source=("$pkgname::git+https://github.com/exeldro/$pkgname#commit=61a835ecda4209e8678197b1e9582ede582aa876")
+source=("$pkgname::git+https://github.com/exeldro/$pkgname#commit=889a8484d5c0eb33267b44ccda545a8fadc189a5")
 sha256sums=("SKIP")
 
 build() {
