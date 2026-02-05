@@ -2,14 +2,14 @@
 
 _pkgname=dlib
 pkgname=python-${_pkgname}-cuda-git
-pkgver=20.0.r29.g49b7cba
+pkgver=20.0.r36.ga41c2e6
 pkgrel=1
 pkgdesc="Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques. -- git CUDA version"
 arch=('x86_64')
 url="http://www.dlib.net/"
 license=('BSL-1.0')
 depends=('cblas' 'giflib' 'lapack' 'libjpeg-turbo' 'libpng' 'python' 'cuda' 'cudnn' 'ffmpeg')
-makedepends=('git' 'boost' 'cmake' 'python-setuptools' 'sqlite' 'ccache-ext' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('git' 'boost' 'python-setuptools' 'sqlite' 'ccache-ext' 'python-build' 'python-installer' 'python-wheel' 'python-cmake')
 optdepends=('sqlite')
 provides=('python-dlib' 'python-dlib-cuda')
 options=(!lto)
