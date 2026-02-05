@@ -1,0 +1,20 @@
+pkgbase = perl-radiator
+	pkgdesc = Radiator RADIUS server, providing the Perl Radius module.
+	pkgver = 4.30.1
+	pkgrel = 1
+	url = https://radiatorsoftware.com/products/radiator/
+	arch = any
+	license = LicenseRef-Radiator
+	depends = perl
+	optdepends = perl-digest-md4: NTLM hash support
+	optdepends = perl-net-ssleay: EAP-TLS and other SSL/TLS-based functionality
+	optdepends = perl-dbi: SQL database support
+	optdepends = perl-dbd-mariadb: MariaDB SQL database support
+	optdepends = perl-dbd-pg: Postgres SQL database support
+	optdepends = perl-dbd-sqlite: SQLite SQL database support
+	options = !emptydirs
+	options = purge
+	source = file://Radiator-4.30-1.tgz
+	b2sums = 60bae5454c085927945da0a9a336ef4d87bca55aee01330603a8ea09739e73ca4975ed1154b90de1a7a676663be9d43d15e7027f0904d19dadda591351bd1379
+
+pkgname = perl-radiator

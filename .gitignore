@@ -1,0 +1,5 @@
+/Radiator-*.tgz
+/src/
+/pkg/
+*.pkg.tar
+*.pkg.tar.*
