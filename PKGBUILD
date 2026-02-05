@@ -23,7 +23,7 @@ optdepends=('ipython: ipython-static'
   'python-meshio: io'
   'python-pillow: io')
 source=(${_base}-${pkgver}.tar.gz::https://github.com/${_base}/${_base}/archive/v${pkgver}.tar.gz)
-sha512sums=('de5edb25ff5c263352022a7c0ef8c41febd2fdf3322d9209f6032e4a50b9f5f78baa148f60c7d242211d5a63593970b7e2e232c7e4e2b6add794e06a491f0db1')
+sha512sums=('23095956dcd5fed98f9028b59543c6dfc62bb1159daeeb150f20dd0e49b4625a708886e9a42efa9b6c941b604b2cfa3fa6b646c0e583d95ffb3b40d6d2cf18af')
 
 build() {
   cd ${_base}-${pkgver}
