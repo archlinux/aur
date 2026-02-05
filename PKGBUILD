@@ -1,16 +1,12 @@
-# Maintainer: fuddlesworth
-# PlasmaZones - FancyZones-style window tiling for KDE Plasma
+# Maintainer: fuddlesworth <fuddlesworth at users dot noreply dot github dot com>
 # SPDX-License-Identifier: GPL-3.0-or-later
-#
-# pkgver is set by CI from the git tag when building in the release workflow.
-# For local/AUR builds, update pkgver and sha256sums to match the release tarball.
 
 pkgname=plasmazones
 pkgver=1.3.4
 pkgrel=1
-pkgdesc="FancyZones-style window tiling for KDE Plasma"
+pkgdesc='FancyZones-style window tiling for KDE Plasma'
 arch=('x86_64')
-url="https://github.com/fuddlesworth/PlasmaZones"
+url='https://github.com/fuddlesworth/PlasmaZones'
 license=('GPL-3.0-or-later')
 depends=(
     'qt6-base'
@@ -32,23 +28,13 @@ makedepends=(
     'cmake'
     'extra-cmake-modules'
     'qt6-tools'
-    'qt6-shadertools'
 )
 optdepends=(
     'plasma-activities: activity-based layouts'
 )
-provides=('plasmazones')
-conflicts=('plasmazones-git')
-source=(
-    "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-    "kbuildsycoca.hook"
-    "plasmazones-refresh-sycoca"
-)
-sha256sums=(
-    '9661908abffb05fa01ebc8a870202b477f390dae20c80bc91e0a968aa2616b97'
-    '8bd1b7fe1ca040f18fc0aa95f5da775cdbc1b090a23f63d8e16dd572cbba3c80'
-    'f128058da53fd97e6a35718348fefa219b6352517bd13f6a1039368872cb0b6d'
-)
+conflicts=('plasmazones-bin' 'plasmazones-git')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('9661908abffb05fa01ebc8a870202b477f390dae20c80bc91e0a968aa2616b97')
 install=plasmazones.install
 
 build() {
@@ -63,10 +49,4 @@ build() {
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
-
-    # Install pacman hook to auto-refresh sycoca cache
-    install -Dm644 kbuildsycoca.hook \
-        "$pkgdir/usr/share/libalpm/hooks/plasmazones-kbuildsycoca.hook"
-    install -Dm755 plasmazones-refresh-sycoca \
-        "$pkgdir/usr/share/libalpm/scripts/plasmazones-refresh-sycoca"
 }

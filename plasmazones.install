@@ -1,19 +1,16 @@
-# PlasmaZones pacman install hooks
+# PlasmaZones pacman install script
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 post_install() {
-    # Refresh sycoca for logged-in KDE users (makes KCM immediately visible)
-    _refresh_sycoca
-
     echo ""
     echo "══════════════════════════════════════════════════════════════════"
     echo "  PlasmaZones installed successfully!"
     echo "══════════════════════════════════════════════════════════════════"
     echo ""
-    echo "  Settings: System Settings -> Window Management -> PlasmaZones"
-    echo ""
     echo "  To enable the daemon:"
     echo "      systemctl --user enable --now plasmazones.service"
+    echo ""
+    echo "  Settings: System Settings → Window Management → PlasmaZones"
     echo ""
     echo "  If PlasmaZones doesn't appear in System Settings, run:"
     echo "      kbuildsycoca6 --noincremental"
@@ -22,9 +19,6 @@ post_install() {
 }
 
 post_upgrade() {
-    # Refresh sycoca in case KCM metadata changed
-    _refresh_sycoca
-
     echo ""
     echo "══════════════════════════════════════════════════════════════════"
     echo "  PlasmaZones upgraded!"
@@ -37,31 +31,7 @@ post_upgrade() {
 
 post_remove() {
     echo ""
-    echo "  Stopping PlasmaZones daemon..."
-
-    # Stop for all users
-    for pid in $(pgrep -x kded6 2>/dev/null); do
-        user=$(ps -o user= -p "$pid" 2>/dev/null | tr -d ' ')
-        if [ -n "$user" ] && [ "$user" != "root" ]; then
-            su - "$user" -c "systemctl --user stop plasmazones.service 2>/dev/null; systemctl --user disable plasmazones.service 2>/dev/null" &
-        fi
-    done
-    wait 2>/dev/null
-
-    # Refresh sycoca to remove KCM from System Settings
-    _refresh_sycoca
-
-    echo "  PlasmaZones removed."
+    echo "  To fully remove PlasmaZones:"
+    echo "      systemctl --user disable --now plasmazones.service"
     echo ""
-}
-
-# Helper: refresh sycoca cache for all logged-in KDE users
-_refresh_sycoca() {
-    for pid in $(pgrep -x kded6 2>/dev/null); do
-        user=$(ps -o user= -p "$pid" 2>/dev/null | tr -d ' ')
-        if [ -n "$user" ] && [ "$user" != "root" ]; then
-            su - "$user" -c "kbuildsycoca6 --noincremental" >/dev/null 2>&1 &
-        fi
-    done
-    wait 2>/dev/null
 }
