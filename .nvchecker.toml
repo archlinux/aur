@@ -1,0 +1,4 @@
+[python-rabbitizer]
+source = "git"
+git = "https://github.com/Decompollaborate/rabbitizer.git"
+exclude_regex = ".*(pre|release|weekly|rc|alpha|beta|dev).*"
