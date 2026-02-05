@@ -3,7 +3,7 @@ pkgname=escrcpy
 pkgver=2.3.1
 _electronversion=33
 _nodeversion=22
-pkgrel=1
+pkgrel=2
 pkgdesc="📱Graphical Scrcpy to display and control Android devices powered by Electron(Use system-wide electron).使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动。"
 arch=(
     'aarch64'
@@ -117,16 +117,19 @@ package() {
         aarch64)
             install -Dm644 "${srcdir}/${pkgname}-${pkgver}/desktop/dist-release/linux-arm64-unpacked/resources/app.asar" \
                 -t "${pkgdir}/usr/lib/${pkgname}"
-            cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-${pkgver}/desktop/dist-release/linux-arm64-unpacked/resources/extra" \
+            cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-${pkgver}/desktop/dist-release/linux-arm64-unpacked/resources/"{app.asar.unpacked,extra} \
                 "${pkgdir}/usr/lib/${pkgname}"
             ;;
         x86_64)
             install -Dm644 "${srcdir}/${pkgname}-${pkgver}/desktop/dist-release/linux-unpacked/resources/app.asar" \
                 -t "${pkgdir}/usr/lib/${pkgname}"
-            cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-${pkgver}/desktop/dist-release/linux-unpacked/resources/extra" \
+            cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-${pkgver}/desktop/dist-release/linux-unpacked/resources/"{app.asar.unpacked,extra} \
                 "${pkgdir}/usr/lib/${pkgname}"
             ;;
     esac
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}/lib"
+    ln -sf "/usr/lib/${pkgname}/app.asar.unpacked/node_modules/@img/sharp-libvips-linux-x64/lib/libvips-cpp.so.8.17.3" \
+        "${pkgdir}/usr/lib/${pkgname}/lib/libvips-cpp.so.8.17.3"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/desktop/electron/resources/build/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
