@@ -5,7 +5,7 @@
 pkgname=lemonade-server
 pkgdesc="Lemonade: Local LLM Serving with GPU and NPU acceleration (Server)"
 pkgver=9.3.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/lemonade-sdk/lemonade/'
 license=('Apache-2.0')
