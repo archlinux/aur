@@ -1,0 +1,52 @@
+pkgbase = java24-openjfx
+	pkgdesc = Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version
+	pkgver = 27.2
+	pkgrel = 1
+	url = https://wiki.openjdk.java.net/display/OpenJFX/Main
+	arch = x86_64
+	arch = x86_64_v3
+	license = GPL-2.0-only WITH Classpath-exception-2.0
+	makedepends = alsa-lib
+	makedepends = ant
+	makedepends = cairo
+	makedepends = cmake
+	makedepends = ffmpeg
+	makedepends = freetype2
+	makedepends = gdk-pixbuf2
+	makedepends = glib2
+	makedepends = gperf
+	makedepends = gtk3
+	makedepends = java-environment-openjdk=24
+	makedepends = libgl
+	makedepends = libx11
+	makedepends = libxtst
+	makedepends = libxxf86vm
+	makedepends = pango
+	makedepends = perl
+	makedepends = python
+	makedepends = unzip
+	makedepends = zip
+	makedepends = gradle
+	options = !lto
+	source = java24-openjfx-27.2.tar.gz::https://github.com/openjdk/jfx/archive/refs/tags/27+2.tar.gz
+	source = java24-openjfx-gradle.properties
+	source = java24-openjfx-flags.patch
+	source = java24-openjfx-env.sh
+	b2sums = e9f6d830f34910ba684851e077e3fd67052b37129e228f63671631076db44c4e25b34e23f7caad6f296f281e4101940a74639257d209580c4144f434c2a3c197
+	b2sums = 0c023ef99e7ee600710c54dad0ad59070620595109ca42c5057fa2ab74ef6d244631745f5cd4c1bea9c0321ee69f1e1efaab820ff124ad1d4f453121e77fd14f
+	b2sums = 5b6dafc22995b57564fda89aaedeb2b6ee58b2c635336ac43a123ea4ac6ced3a20eba39d99cc4eb7ec7b29fc7541f5c3bee454ee55ca79fd2d7ce5ef4ed65cd3
+	b2sums = 4e67afda5db9e48dfe1341c25fc597f2b4c21d784b65a510bf56c4bf5c475db5f995dcfbf4db417ba9ebe99dc5b1c286dbf43e948669ace93906f45720100a50
+
+pkgname = java24-openjfx
+	depends = java-runtime-openjdk=24
+	depends = libgl
+	depends = libx11
+	depends = libxtst
+	optdepends = gtk3: GTK3 support
+	provides = java-openjfx=27
+
+pkgname = java24-openjfx-doc
+	arch = any
+
+pkgname = java24-openjfx-src
+	arch = any
