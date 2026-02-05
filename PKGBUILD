@@ -1,7 +1,7 @@
 # Maintainer: Thomas Aunvik <contact@thaun.dev>
 pkgname=ninjarmm-ncplayer
-pkgver=11.35.7720
-_filever=11.35.7720
+pkgver=12.35.8100
+_filever=12.35.8100
 pkgrel=1
 pkgdesc="Fast, reliable, single-click remote access. Manage and control Windows, Mac, and Linux endpoints with one click from the NinjaOne console."
 arch=('x86_64' 'aarch64')
@@ -11,10 +11,10 @@ license=('custom')
 depends=()
 
 source_x86_64=(https://resources.ninjarmm.com/development/ninjacontrol/${_filever}/ninjarmm-ncplayer-${_filever}_x86_64.rpm)
-sha256sums_x86_64=('99a3852199b491bc73abab0930749d7167c05dbb2ce2bdaf3d1c691be0a5bedc')
+sha256sums_x86_64=('3681ad3000e22f2c598478ea66f9495e5e0ada0a2c471ef92e07c68a4a3cd5b1')
 
 source_aarch64=(https://resources.ninjarmm.com/development/ninjacontrol/${_filever}/ninjarmm-ncplayer-${_filever}_aarch64.rpm)
-sha256sums_aarch64=('ef9bd54b50c1689c8f4c18c5918648d1ef32929fb19b018a735683e658f92ad7')
+sha256sums_aarch64=('a91532e2c225033e1613c118284f9c255f2ba206bb18190f81abac3feaffb11b')
 
 
 package() {
