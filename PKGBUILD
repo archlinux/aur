@@ -49,6 +49,8 @@ package() {
     cd ..
     install -Dm755 -t "$pkgdir/usr/share/applications" ajclassic-grapefruit.desktop
     mkdir -p "$pkgdir/usr/lib"
-    cp -r ajclassic-grapefruit "$pkgdir/usr/lib"
+    cd ajclassic-grapefruit
+    install -Dm755 -t "$pkgdir/usr/lib/ajclassic-grapefruit" index.js package.json
+    cd ..
     cp gameicon.png $pkgdir/usr/lib/ajclassic-grapefruit/gameicon.png
 }
