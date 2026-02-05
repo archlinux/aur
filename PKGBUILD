@@ -19,7 +19,7 @@ _urlver="${pkgver/_/-}"
 source=("$pkgname-$_urlver.tar.gz::https://github.com/piotrek1372/$pkgname/archive/refs/tags/v$_urlver.tar.gz"
         "ca-racing.desktop"
         "ca-racing.sh")
-sha256sums=('2ce684afe246d350d8bd9d9878f288d9375b5b18bb80611404505cc6d47ec3f9'
+sha256sums=('50b2799a4012a49df6000072b45eecab7afbdef632cd073cf3028fe4077f098a'
             '1daadbed224442b479eb435bb7927a3c16353acbf25eff04d7348202b07cf3f3'
             'ded2d55a2da0ccd2a3273130d3ed41c2e6d6e5b6f0e9c0d7f8cbbbf5365316d5')
 

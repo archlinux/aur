@@ -15,7 +15,7 @@ pkgbase = ca-racing
 	source = ca-racing-1.0.0-demo.tar.gz::https://github.com/piotrek1372/ca-racing/archive/refs/tags/v1.0.0-demo.tar.gz
 	source = ca-racing.desktop
 	source = ca-racing.sh
-	sha256sums = 2ce684afe246d350d8bd9d9878f288d9375b5b18bb80611404505cc6d47ec3f9
+	sha256sums = 50b2799a4012a49df6000072b45eecab7afbdef632cd073cf3028fe4077f098a
 	sha256sums = 1daadbed224442b479eb435bb7927a3c16353acbf25eff04d7348202b07cf3f3
 	sha256sums = ded2d55a2da0ccd2a3273130d3ed41c2e6d6e5b6f0e9c0d7f8cbbbf5365316d5
 
