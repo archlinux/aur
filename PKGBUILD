@@ -2,7 +2,7 @@
 _appname='khiops covisualization'
 pkgname="${_appname// /-}-bin"
 _pkgname='khiops Covisualization'
-pkgver=11.5.4
+pkgver=11.6.0
 _electronversion=39
 pkgrel=1
 pkgdesc="The Electron application that encapsulates Khiops Covisualization.(Prebuilt version.Use system-wide electron)"
@@ -28,8 +28,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.x86_64.rpm")
 sha256sums=('21c50cd52b1dc529cad93ad16720ab453012c21f01d85d3761da9e709e57dc00'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('84becc8c7b9670f1674b2215e79ef997a9c79a9e0dd459b5ebf7c3903541a76d')
-sha256sums_x86_64=('93faddaa695a56e081a59365a294d3d2ba56273f81b5eb4363c69d61f5086eed')
+sha256sums_aarch64=('6a3116e25e9feeaa366a029301f859b93fbfeaac0d153652aed8e009d49910f4')
+sha256sums_x86_64=('620a065d34bbde888a75cc3d02162fc46a08c471971ed093b39938f8253890fe')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_appname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
