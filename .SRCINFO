@@ -1,6 +1,6 @@
 pkgbase = diffnav
 	pkgdesc = A git diff pager based on delta but with a file tree, à la Github.
-	pkgver = 0.7.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/dlvhdr/diffnav
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = diffnav
 	optdepends = otf-commit-mono-nerd: icon support in the terminal
 	options = strip
 	options = buildflags
-	source = https://github.com/dlvhdr/diffnav/archive/refs/tags/v0.7.0/diffnav-0.7.0.tar.gz
-	sha256sums = c9eefb662dc27a0d196e59a134dd18b4fe7e6e579f7eab1c0b9c71ca75c47c5a
+	source = https://github.com/dlvhdr/diffnav/archive/refs/tags/v0.8.1/diffnav-0.8.1.tar.gz
+	sha256sums = e2304e5cb87c47ff3927f401a97bd24fbbd86ff6e939ad21c51d7e03082821c9
 
 pkgname = diffnav
