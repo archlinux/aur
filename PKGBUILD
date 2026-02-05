@@ -1,13 +1,14 @@
 epoch=1
 pkgname=konform-browser-bin
 _pkgname="${pkgname//-bin/""}"
+# Maintainer: konvix <busybeaver@2mail.co>
 __pkgname=konform
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 pkgver=140.7.0_106
 _konformver="${pkgver%_*}"
 _konformrel="${pkgver#*_}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 url="https://codeberg.org/konform-browser"
 arch=(x86_64 aarch64)
@@ -16,9 +17,7 @@ depends=(
   dbus
   alsa-lib
   at-spi2-core
-  bash
   cairo
-  ffmpeg
   fontconfig
   freetype2
   gcc-libs
@@ -33,13 +32,10 @@ depends=(
   libx11
   libxcb
   libxcomposite
-  libxcursor
   libxdamage
   libxext
-  libxi
   libxfixes
   libxrandr
-  libxrender
   libxss
   libxt
   libwebp
@@ -47,12 +43,16 @@ depends=(
   nspr
   nss
   pango
+  pixman
+  sh
   ttf-font
   zlib
 )
 makedepends=(git)
 optdepends=(
-  'hunspell-en_US: Spell checking, American English'
+  'hunspell-dictionary: Spell checking'
+  'ffmpeg4.4: additional video and audio codec support'
+  'openh264: H264 video decoding support'
   'libnotify: Notification integration'
   'networkmanager: Location detection via available WiFi networks'
   'pulseaudio: Audio support'
@@ -60,6 +60,7 @@ optdepends=(
   'startup-notification'
   'xdg-desktop-portal: Screensharing with Wayland'
   'firefox-ublock-origin: Content filter extension'
+  'firefox-noscript: Selectively enable javascript on pages'
   'firefox-decentraleyes: Local emulation of Content Delivery Networks'
   'konform-multi-account-containers-lite: First-class multi-account-containers integration'
 )
