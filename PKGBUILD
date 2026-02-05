@@ -1,7 +1,7 @@
-# Maintainer: envolution
+# Maintainer: noureddinex
+# Contributor: envolution
 # Contributor: Aaron Coach <aur@awc.id.au>
 # shellcheck shell=bash disable=SC2034,SC2154
-# ci|prebuild=_verformat.sh| https://github.com/envolution/aur/blob/main/maintain/build/qwen-code/_verformat.sh
 
 pkgname=qwen-code
 pkgver=0.9.1
@@ -21,4 +21,3 @@ sha256sums=('74afb3ab7d50f5a6a2bc0d9172846eb87e2112addf034be18bdc03ed05fa16a9')
 package() {
   npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${_pkgver}.tgz"
 }
-# vim:set ts=2 sw=2 et:
