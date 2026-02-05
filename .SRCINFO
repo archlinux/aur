@@ -1,6 +1,6 @@
 pkgbase = kaggle-api
 	pkgdesc = Kaggle API CLI
-	pkgver = 1.8.3
+	pkgver = 1.8.4
 	pkgrel = 1
 	url = https://github.com/Kaggle/kaggle-api
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = kaggle-api
 	depends = python-protobuf
 	depends = python-packaging
 	depends = python-kagglesdk
-	source = https://files.pythonhosted.org/packages/source/k/kaggle/kaggle-1.8.3.tar.gz
-	sha256sums = 3335da5752ae2843c3aa0523b7a7ed91a8dd5505c19cb4031f9d57651c346106
+	source = https://files.pythonhosted.org/packages/source/k/kaggle/kaggle-1.8.4.tar.gz
+	sha256sums = d71137f98312581726047cadceb28992c53ef905fe38c6dd9d6d3bfc4e43c982
 
 pkgname = kaggle-api
