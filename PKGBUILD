@@ -2,7 +2,7 @@
 pkgname=portable
 epoch=1
 pkgver=12.0
-pkgrel=2
+pkgrel=1
 epoch=1
 pkgdesc="Fast, private, efficient sandbox for Linux desktop."
 arch=('any')
@@ -12,19 +12,26 @@ provides=(portable)
 groups=()
 options=(!debug !strip)
 
+makedepends+=(git)
+
 depends=(
 	"libnotify"
+	"findutils"
 	pipewire
+	"procps-ng"
 	"coreutils"
+	"xdg-user-dirs"
+	"xorg-xhost"
 	"zenity"
 	"xdg-dbus-proxy"
 	"bubblewrap"
 	"util-linux"
 	"glib2"
-	"glibc"
+	"wayland"
 	"dbus"
 	"bash"
 	"xdg-desktop-portal-impl"
+	"inotify-tools"
 	"grep"
 )
 
@@ -35,25 +42,22 @@ optdepends=(
 
 makedepends+=(
 	"libarchive"
-	"git"
-	"go"
 )
 
 checkdepends=()
 
-source=(portable::git+https://github.com/Kraftland/portable.git)
+source=(portable::git+https://github.com/Kraftland/portable.git#tag=${pkgver})
 
-md5sums=('SKIP')
+md5sums=('a9c36be583dae2cebe5fdf7a5a2d9c8f')
 
-function build() {
-	cd "${srcdir}/portable"
-	export srcdir
-	lib/build.sh
-}
 
 function package() {
-	export srcdir
-	export pkgdir
-	cd "${srcdir}/portable"
-	lib/package.sh
+	cd portable
+	install -vDm755 portable.sh "${pkgdir}/usr/bin/portable"
+	install -d "${pkgdir}/usr/lib/"
+	cp -r "${srcdir}/portable/lib" "${pkgdir}/usr/lib/portable"
+	install -t "${pkgdir}/usr/share/portable" -Dm755 "${srcdir}/portable/share"/*
+	install -vDm755 portable-pools "${pkgdir}/usr/bin/portable-pools"
+	install -vDm755 portable-packer "${pkgdir}/usr/bin/portable-packer"
+	cp -r "${srcdir}/portable/lib/modules-load.d" "${pkgdir}/usr/lib"
 }
