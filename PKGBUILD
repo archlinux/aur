@@ -1,4 +1,4 @@
-# Maintainer: Jonathan Capps <hello at cappsy dot net>
+# Maintainer: Jonathan Capps <hello at cappsy dot dev>
 pkgname=cosmic-ext-applet-dict-git
 pkgver=v0.1.3.r2.g4fef6df
 pkgrel=1
