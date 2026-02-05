@@ -1,6 +1,6 @@
 # Maintainer: Vamp898 <vamp898-aur@ikaros.space>
 pkgname=mastodon
-pkgver=4.5.5
+pkgver=4.5.6
 pkgrel=1
 pkgdesc='Your self-hosted, globally interconnected microblogging community'
 arch=(any)
@@ -31,7 +31,7 @@ source=(https://github.com/mastodon/mastodon/archive/v$pkgver.tar.gz
         mastodon.sysusers.d
         mastodon.tmpfiles.d
         devise_pam.patch)
-sha256sums=('75da7df3d5475cb1d6279f48ca983cf139e9e5d04543331e11d8ca4f3217004a'
+sha256sums=('a2f436ae866c3150292edc27981888c56b5d47a8523429d4d0fb0471fea9ee0d'
             'e9928ced31f6490476100f02f2e158e41a076988dd7f3dff8f21d245bc2bb0ff'
             '1b67693f7de5802a34985b9ac969497fc6e6042dcae0b8abf6595b9fe15ee80e'
             '3fdd54dd1f374b7206c8beaebafdf890e74d30385f0c93f9cd99e1e4be92f8fa'
