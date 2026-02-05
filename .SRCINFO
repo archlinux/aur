@@ -1,0 +1,17 @@
+pkgbase = cockpit-tools-bin
+	pkgdesc = A tool for managing Cockpit (Tauri-based)
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/jlcodes99/cockpit-tools
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libnm
+	depends = libayatana-appindicator
+	provides = cockpit-tools
+	conflicts = cockpit-tools
+	source = cockpit-tools-bin-0.5.1.deb::https://github.com/jlcodes99/cockpit-tools/releases/download/v0.5.1/Cockpit.Tools_0.5.1_amd64.deb
+	sha256sums = 722bed583c3eff33c69c69676eeb46bdbe8386e90efb66f0fa2decbb65b1d92b
+
+pkgname = cockpit-tools-bin
