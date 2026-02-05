@@ -2,8 +2,8 @@
 
 pkgname=rustfs
 pkgver=1.0.0_alpha.82
-_console_ver=0.0.12
-pkgrel=2
+_console_ver=0.1.1
+pkgrel=3
 pkgdesc="High-performance distributed object storage for MinIO alternative."
 url='https://rustfs.com/en/'
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
 )
 sha256sums=(
 	'58d07a741cd6a0757deda58cb94982c2bfe612162b9df4beeafae6984a995a61'
-	'97da67edd2d95941922010d5d0c18d30f42954ff557d683cfd386dc8829de7e7'
+	'de67a70bd01dcaf88efdc44aa9fd189e2f2ecfd57e8576d966420aaca8088de5'
 )
 
 prepare() {
@@ -37,12 +37,9 @@ build() {
 	# build embedded console assets
 	cd console-${_console_ver}
 
-	# `NUXT_TELEMETRY_DISABLED=1` ignores the Nuxt.js starting question
-	export NUXT_TELEMETRY_DISABLED=1
-	# pnpm-lock.yaml exists, but pnpm failed to build. The following options fixes it.
-	pnpm i --shamefully-hoist --dangerously-allow-all-builds
-	pnpm generate
-	cp -r .output/public/* ${srcdir}/${pkgname}-${pkgver//_/-}/rustfs/static/
+	pnpm i --dangerously-allow-all-builds
+	pnpm build
+	cp -r out/* ${srcdir}/${pkgname}-${pkgver//_/-}/rustfs/static/
 
 	# build rustfs
 	cd ${srcdir}/${pkgname}-${pkgver//_/-}
