@@ -3,7 +3,7 @@
 pkgname=python-whey
 _name=${pkgname#python-}
 pkgver=0.1.1
-pkgrel=2
+pkgrel=4
 pkgdesc='A simple Python wheel builder for simple projects'
 arch=('any')
 url='https://whey.readthedocs.io/'
@@ -26,6 +26,8 @@ depends=(
 makedepends=(
   'git'
   'python-build'
+  'python-hatchling'
+  'python-hatch-requirements-txt'
   'python-installer'
   'python-wheel'
   'python-setuptools'
@@ -42,8 +44,8 @@ sha512sums=('2d2de412ec4b9d6441b6ecc603335f29bfaa7c4a32e7692a4d80be80a3fc1badcd3
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
     cd "${srcdir}/${_name}"
-    sed \
-    -e 's/^requires = \[.*/requires = \[ "setuptools", "wheel" \]/' \
+    sed -r \
+    -e '/^requires =/ s/"([A-Za-z0-9._-]+)[^"]*"/"\1"/g' \
     -i pyproject.toml
 }
 
