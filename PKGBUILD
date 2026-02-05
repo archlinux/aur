@@ -5,7 +5,7 @@
 
 pkgname=mawk
 
-pkgver=1.3.4_20250131
+pkgver=1.3.4_20260129
 pkgrel=1
 
 pkgdesc="An interpreter for the AWK Programming Language"
@@ -17,7 +17,7 @@ depends=('glibc')
 changelog="changelog.txt"
 
 source=("https://invisible-island.net/archives/$pkgname/$pkgname-${pkgver//_/-}.tgz")
-b2sums=('7a23051cfdb23f2451c23b357e895e49532c2211bac8d092d1fff9f7ea08dc43661d1d78eca2cff2b45998854eb0f64265c400e8f9cb7df83769cb98f96ba716')
+b2sums=('e8ffc51d599ad9039676790f1179814a8f8c4f71c43b90245e089c533160ab9ee86e30e8c660d7a92cffef510822d3d257ee986c578489c5d49c596f90c654b9')
 
 build() {
 	cd $pkgname-${pkgver/_/-}
