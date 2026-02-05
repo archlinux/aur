@@ -1,6 +1,6 @@
 # Maintainer: blitzkriegfc <blitzkriegfc@proton.me>
 pkgname=qbz-bin
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 pkgdesc="Native Qobuz client for Linux with bit-perfect hi-res audio, DAC passthrough, Last.fm scrobbling, and Chromecast/DLNA casting"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ url="https://github.com/vicrodh/qbz"
 license=('MIT')
 depends=('webkit2gtk-4.1' 'gtk3' 'alsa-lib' 'libappindicator-gtk3' 'libxkbcommon' 'openssl')
 optdepends=(
-    'alsa-utils: Better ALSA device names and descriptions'
+    'alsa-utils: Required for bit-perfect device detection and better ALSA device names'
     'pipewire-alsa: PipeWire audio support'
     'pipewire-pulse: PulseAudio compatibility'
 )
@@ -17,8 +17,8 @@ conflicts=('qbz')
 options=('!strip')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/vicrodh/qbz/releases/download/v${pkgver}/qbz_${pkgver}_amd64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/vicrodh/qbz/releases/download/v${pkgver}/qbz_${pkgver}_aarch64.tar.gz")
-sha256sums_x86_64=('510d2c270d1c98f692c088af21dc6b58f6455ec1047d3a160bee83fc18c0c427')
-sha256sums_aarch64=('8b18097a64fbf84da57b38241dce48cd9ad85f519fb20590cd4cc5c29f199499')
+sha256sums_x86_64=('3ff7dc7dd0af60581f9ae1de7b47741272ad0178a6ed68b8e5b2720f3d9c4462')
+sha256sums_aarch64=('d3c4eb7455d8d917c097f6cc507495b1bd8a7c60e8fbaba2b3e1ccdc0d1257ec')
 
 package() {
     if [ "$CARCH" = "x86_64" ]; then
