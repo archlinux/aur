@@ -61,6 +61,7 @@ sha256sums=('e9db10f2065fda0ee715c1f41fa110cccc4c800a2d7d9a5f8f355b2e210f377f'
 
 if (( _manual_clone )); then
   source[0]=fetch-chromium-release
+  sha256sums[0]='2e2f36e3cd1ebc4ad57fd310774a5e5e9db77883d5f9374fedeaabd3c103b819'
   makedepends+=('python-httplib2' 'python-pyparsing' 'python-six' 'npm' 'rsync')
 fi
 
