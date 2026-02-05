@@ -1,6 +1,6 @@
 # Maintainer: unicxrn
 pkgname=xerahs-git
-pkgver=r1070.3eedc85
+pkgver=r1093.06531df
 pkgrel=1
 pkgdesc="Cross-platform screen capture and file sharing tool (ShareX port) built with Avalonia UI"
 arch=('x86_64')
