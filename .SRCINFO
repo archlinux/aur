@@ -1,5 +1,5 @@
 pkgbase = tzyfetch
-	pkgdesc = An extremely simple fetch utility, built for a single line output with a three character distro logo.
+	pkgdesc = A simple fetch utility, built for a single line output with a three character logo.
 	pkgver = 1.0.0
 	pkgrel = 5
 	arch = any
