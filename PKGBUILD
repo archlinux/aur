@@ -1,6 +1,6 @@
 # Maintainer: Frezzydy <frezzydygaming@gmail.com>
 
-pkgname=vimcord
+pkgname=vimcord-git
 pkgver=0.3.1
 pkgrel=1
 pkgdesc="A Terminal UI Discord Client in Rust (latest)"
@@ -14,15 +14,15 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/heads/main.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-  cd "${pkgname}-main"
+  cd "vimcord-main"
 
   cargo build --release
 }
 
 package() {
-  cd "${pkgname}-main"
+  cd "vimcord-main"
 
-  install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}-git"
+  install -Dm755 "target/release/vimcord" "${pkgdir}/usr/bin/${pkgname}"
 
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}-git/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
