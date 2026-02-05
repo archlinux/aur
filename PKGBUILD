@@ -1,6 +1,6 @@
 # Maintainer: Samueru-sama xdglawyer@outlook.com
 pkgname=zenity-rs-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Rust rewrite of zenity, much smaller and faster"
 arch=('aarch64' 'x86_64')
