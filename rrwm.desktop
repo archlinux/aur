@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=rrwm
+Comment=A window manager developed in Rust for River 0.4.0, using the cosmic/bspwm layout.
+Exec=river
+Type=Application
