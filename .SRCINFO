@@ -2,6 +2,7 @@ pkgbase = protec
 	pkgdesc = Yell at anyone who dares touch your computer when you're not there
 	pkgver = 0.2.2
 	pkgrel = 1
+	url = https://github.com/Saturncorgi/protec
 	arch = x86_64
 	license = custom:for_good_eyes_only
 	depends = cargo

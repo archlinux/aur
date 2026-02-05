@@ -11,6 +11,7 @@ source=(
 ${pkgname}-${pkgver}.tar.gz::https://github.com/Saturncorgi/protec/archive/refs/tags/$pkgver.tar.gz
 )
 sha256sums=('1086ffd5342c39f792304af4f8555aa4d24ee7e9b7031ab62a1feeb7a9f62dfa')
+url="https://github.com/Saturncorgi/protec"
 prepare() {
     cd protec-$pkgver
     export RUSTUP_TOOLCHAIN=stable
