@@ -3,7 +3,7 @@
 
 pkgname="devpod-community-bin"
 pkgver=0.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Codespaces but open-source, client-only, and unopinionated - community fork (prebuilt .deb version)"
 arch=("x86_64")
 url="https://github.com/skevetter/devpod"
@@ -37,8 +37,9 @@ sha256sums=('aa477f2766524a91c11617d30064432ec6b0b808a5bda2026f600096c89d8fb9')
 package() {
   bsdtar -xf "${srcdir}/data.tar.gz" -C "${srcdir}"
 
-  install -Dm755 "${srcdir}/usr/bin/devpod-cli" \
-    "${pkgdir}/usr/bin/devpod-cli"
+  install -Dm755 "${srcdir}/usr/bin/devpod" \
+    "${pkgdir}/usr/bin/devpod"
+  ln -s /usr/bin/devpod "${pkgdir}/usr/bin/devpod-cli"
   install -Dm755 "${srcdir}/usr/bin/DevPod Desktop" \
     "${pkgdir}/usr/bin/dev-pod-desktop"
 
