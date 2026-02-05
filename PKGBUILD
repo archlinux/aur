@@ -31,7 +31,7 @@ package() {
   install -dm755 "${pkgdir}/usr/lib/${pkgname}"
 
   # Install application files - include node_modules for runtime dependencies
-  cp -r dist bin node_modules package.json README.md LICENSE "${pkgdir}/usr/lib/${pkgname}/"
+  cp -r dist bin schemas node_modules package.json README.md LICENSE "${pkgdir}/usr/lib/${pkgname}/"
 
   # Install the CLI executable
   install -Dm755 "bin/openspec.js" "${pkgdir}/usr/lib/${pkgname}/bin/openspec.js"
