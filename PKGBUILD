@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=geforce-infinity-bin
 _pkgname=GeForceInfinity
-pkgver=1.2.0
+pkgver=1.2.1
 _electronversion=37
 pkgrel=1
 pkgdesc="A work-in-progress application designed to enhance the GeForce NOW experience.(Prebuilt version.Use system-wide electron)"
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/AstralVixen/GeForce-Infinity/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f4cad9de754764c1d0aead924a2f34da9d90f282428a487b0b685ac229fa8744'
+sha256sums=('614e7939d20ef0537762f7587090cb83d70dba24399e03e03e753448bce95ed5'
             '669b46a31342a99549197ed97fac42000bbfe178114b2d6843aa08f6902b11a1'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
