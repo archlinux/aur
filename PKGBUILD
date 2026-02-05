@@ -1,23 +1,25 @@
-# Maintainer: redponike <proton (dot) me>
+# Maintainer: Sebastian Larsen Prehn <slp (at) sebastianprehn (dot) dk>
+# Contributor: redponike <proton (dot) me>
 # Contributor: Mikael Blomstrand <gmail.com: kmbloms>
 
 pkgname=futhark-bin
 provides=('futhark')
 conflicts=('futhark')
-pkgver=0.25.29
+pkgver=0.25.35
 pkgrel=1
 pkgdesc="A data-parallel functional programming language."
 arch=('x86_64')
 url='https://futhark-lang.org/'
-license=('custom:ISC')
-depends=('ncurses5-compat-libs' 'zlib' 'gmp')
+license=('LicenseRef-ISC')
+depends=()
+options=('!debug')
 optdepends=('opencl-headers: OpenCL backend'
             'cuda: CUDA backend'
             'python-pyopencl: PyOpenCL backend')
 source=("https://github.com/diku-dk/futhark/releases/download/v${pkgver}/futhark-${pkgver}-linux-x86_64.tar.xz"
 		"https://raw.githubusercontent.com/diku-dk/futhark/v${pkgver}/LICENSE")
 
-sha256sums=('1f833289ff1981d05e80554a14b9b1b28934af13aaa3752642f17e5da3d28b36'
+sha256sums=('9ac448218e818c7bd0ee05fccb2bffa51f0c1bfaae9b1096c5449423601d8204'
             'd029ffa271dcee84cc883fb9e83744f703401e2abb097b8ef084fff0674d935b')
 
 package() {
