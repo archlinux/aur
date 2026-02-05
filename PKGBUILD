@@ -44,7 +44,7 @@ build() {
 
 package() {
   cd nuclei
-  install -Dm0755 nuclei "$pkgdir/usr/bin/$_pkgname"
+  install -Dm0755 nuclei "$pkgdir/usr/bin/nuclei"
   install -Dm0644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
