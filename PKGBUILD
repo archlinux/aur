@@ -1,6 +1,6 @@
 # Maintainer: Murray Groves <aur at murraygrov dot es>
 
-pkgname=BehaviorTree.CPP-git
+pkgname=behaviortree-cpp-git
 pkgver=4.8.4.r64.gfee8964
 pkgrel=1
 pkgdesc="Behavior Trees Library in C++. Batteries included."
