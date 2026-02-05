@@ -1,4 +1,5 @@
-/*
-!/.gitignore
-!/.SRCINFO
-!/PKGBUILD
+pkg/
+src/
+*.tar.gz
+*.tar.zst
+plover-simplify-build-system-requires.tar.gz

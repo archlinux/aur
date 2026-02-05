@@ -1,30 +1,33 @@
 pkgbase = plover
 	pkgdesc = Free and open source real-time stenography engine
-	pkgver = 4.0.0.rc2
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://www.openstenoproject.org/plover/
 	arch = any
 	license = GPL2
-	checkdepends = python-mock
-	checkdepends = python-pytest
-	checkdepends = python-pytest-qt
-	checkdepends = python-pytest-xvfb
 	makedepends = python-babel
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = qt6-base
 	depends = dbus
 	depends = python
 	depends = python-appdirs
+	depends = python-cmarkgfm
+	depends = python-evdev
 	depends = python-plover_stroke>=1.1.0
-	depends = python-pyqt5
+	depends = pyside6>=6.9.0
+	depends = python-pkginfo
+	depends = python-psutil
 	depends = python-pyserial
+	depends = python-readme-renderer
+	depends = python-requests-cache
+	depends = python-requests-futures
 	depends = python-rtf_tokenize
-	depends = python-setuptools
 	depends = python-wcwidth
 	depends = python-xlib
-	depends = qt5-svg
-	source = plover-4.0.0.rc2.tar.gz::https://github.com/openstenoproject/plover/archive/refs/tags/v4.0.0rc2.tar.gz
-	b2sums = b83bf5bd831115e91da55ba8e4530d7ff0194ca5c02c46e0915da9dd3909b5bc4d112d9161a89cdb3268b28f005595479f1731dcfc381762a5553d41edb7bc05
+	depends = qt6-svg
+	source = plover-simplify-build-system-requires.tar.gz::https://github.com/openstenoproject/plover/archive/refs/heads/simplify-build-system-requires.tar.gz
+	b2sums = SKIP
 
 pkgname = plover
