@@ -1,8 +1,9 @@
-# Maintainer: Mauro Santos <registo.mailling@gmail.com>
+# Maintainer: dllud <dllud riseup net>
+# Contributor: Mauro Santos <registo.mailling@gmail.com>
 
 pkgname='hunspell-pt_pt-preao'
 _pkgname='hunspell-pt_PT-preao'
-pkgver=20220621
+pkgver=20251001
 pkgrel=1
 pkgdesc="Portuguese (European, pre-orthographic agreement) hunspell dictionaries"
 arch=('any')
@@ -10,7 +11,7 @@ url="https://natura.di.uminho.pt/download/sources/Dictionaries/hunspell/"
 license=('GPL' 'LGPL' 'MPL')
 optdepends=('hunspell:	the spell checking libraries and apps')
 source=("https://natura.di.uminho.pt/download/sources/Dictionaries/hunspell/$_pkgname-$pkgver.tar.gz")
-sha256sums=('ddfe261e867f0c5489ec06f2d83f390b28e9631d667e88a33670b6ce755b4cf5')
+sha256sums=('41cdcd83613fc70af2f129bae3b9d1919d40cf5cf2b3c4c87964e543323d00a7')
 
 package() {
   cd $srcdir/$_pkgname-$pkgver
