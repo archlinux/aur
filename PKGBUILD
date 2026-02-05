@@ -1,7 +1,7 @@
 # Maintainer: Nate Craft <secondarynate at icloud dot com>
 pkgname=yt-feeds
 pkgver=1.0.6
-pkgrel=2
+pkgrel=1
 pkgdesc="Cross-platform simple, fast, and distraction free CLI application to view videos from your favorite channels"
 arch=('x86_64')
 url="https://github.com/nate-craft/yt-feeds"
