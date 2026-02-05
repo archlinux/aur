@@ -1,14 +1,14 @@
 pkgbase = auth0-bin
 	pkgdesc = auth0 is the command line to supercharge your development workflow
-	pkgver = 1.14.1
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://github.com/auth0/auth0-cli
 	arch = x86_64
 	arch = arm64
 	license = MIT
-	source_x86_64 = auth0-cli_1.14.1_x86_64.tar.gz::https://github.com/auth0/auth0-cli/releases/download/v1.14.1/auth0-cli_1.14.1_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 5c2f6075e97312ae76d026b7050447bd7247e6cbb3594aac8bf0f0a7a6a22a3f
-	source_arm64 = auth0-cli_1.14.1_arm64.tar.gz::https://github.com/auth0/auth0-cli/releases/download/v1.14.1/auth0-cli_1.14.1_Linux_arm64.tar.gz
-	sha256sums_arm64 = e7d6d8c09cb5f2fae744b7a09d982e8bc4d95e81a9bb1ba418d29cc3d736977b
+	source_x86_64 = auth0-cli_1.26.0_x86_64.tar.gz::https://github.com/auth0/auth0-cli/releases/download/v1.26.0/auth0-cli_1.26.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 5a7d8179b7189387f4ca9749fdb4e84168f3893ac556663ad17fce57567b3000
+	source_arm64 = auth0-cli_1.26.0_arm64.tar.gz::https://github.com/auth0/auth0-cli/releases/download/v1.26.0/auth0-cli_1.26.0_Linux_arm64.tar.gz
+	sha256sums_arm64 = 39299ed19b071558583d371bbb0437a928cd26493e161d50419f1f3933d60ce3
 
 pkgname = auth0-bin
