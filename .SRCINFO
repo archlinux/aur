@@ -1,0 +1,17 @@
+pkgbase = hugvi
+	pkgdesc = A note-taking app for programmers with markdown syntax (Pre-built binary)
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/cbdefontenay/hugvi
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libnm
+	depends = hicolor-icon-theme
+	provides = hugvi
+	conflicts = hugvi
+	source_x86_64 = https://github.com/cbdefontenay/hugvi/releases/download/Release/Hugvi_1.3.0_amd64.deb
+	sha256sums_x86_64 = SKIP
+
+pkgname = hugvi
