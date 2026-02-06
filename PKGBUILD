@@ -1,6 +1,6 @@
 pkgname='alsa-scarlett-gui-git'
 _pkgname='alsa-scarlett-gui'
-pkgver=0.5.1.13.g292b
+pkgver=1.0beta3
 pkgrel=1
 pkgdesc="GUI for the ALSA controls presented by the Scarlett2 driver, Development version"
 arch=('i686' 'x86_64')
@@ -20,7 +20,8 @@ depends=(
 makedepends=('gcc' 'make' 'git' 'pkgconf' 'sed')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+${url}.git")
+# If you want a specific tag add `#tag=$pkgver` to the source.
+source=("git+${url}.git#tag=$pkgver")
 sha256sums=('SKIP')
 
 pkgver() {
