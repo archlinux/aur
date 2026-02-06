@@ -1,6 +1,6 @@
 pkgbase = kumono-bin
 	pkgdesc = Media ripper for coomer and kemono
-	pkgver = 0.68.2
+	pkgver = 0.69.0
 	pkgrel = 1
 	url = https://github.com/APT37/kumono
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = kumono-bin
 	conflicts = kumono
 	conflicts = kumono-git
 	options = !lto
-	source = kumono-0.68.2.tar.gz::https://github.com/APT37/kumono/archive/refs/tags/0.68.2.tar.gz
-	sha256sums = 77c8511d9c1e8b5090a677ba0ee86073a63c415e71c32c7665ce50ed0f31ed4c
-	source_x86_64 = kumono-0.68.2-x86_64::https://github.com/APT37/kumono/releases/download/0.68.2/kumono-linux-x64
-	sha256sums_x86_64 = acc2f80eff256221e6089c1629029b42e6ef2507e14ca32773989c5cc9da5804
-	source_aarch64 = kumono-0.68.2-aarch64::https://github.com/APT37/kumono/releases/download/0.68.2/kumono-linux-arm64
-	sha256sums_aarch64 = 60e937f1713cda0522586ec5aaee7f6173d9a238f7060eff9efa9bd0a82c23c2
+	source = kumono-0.69.0.tar.gz::https://github.com/APT37/kumono/archive/refs/tags/0.69.0.tar.gz
+	sha256sums = 0b94a80754823e7d3b2a150ae5f01ee01ed760f75f3e30fb0781166dde8c6dc4
+	source_x86_64 = kumono-0.69.0-x86_64::https://github.com/APT37/kumono/releases/download/0.69.0/kumono-linux-x64
+	sha256sums_x86_64 = abfc9ee4822dc49719f60f8c52c0a4c0c8ec747d3a0edfb8f63c555e53e055f4
+	source_aarch64 = kumono-0.69.0-aarch64::https://github.com/APT37/kumono/releases/download/0.69.0/kumono-linux-arm64
+	sha256sums_aarch64 = 28ce393ef02d74acae83746892e0bc8f934156d01302eb2f8702c41ec4e02eae
 
 pkgname = kumono-bin
