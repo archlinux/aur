@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=subtrack-bin
 _pkgname=SubTrack
-pkgver=1.1.0
+pkgver=1.1.1
 _electronversion=28
 pkgrel=1
 pkgdesc="Subscription tracking and reminder application.(Prebuilt version.Use system-wide electron)"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('80be16c38067968536419a47ad92c58d35339be927d2bc4e61cb3cf4bb910a77'
+sha256sums=('0dd63f2f49bf9df2f60ead1e27cfe235ebd370887584849b9e22d371f5a096a1'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
