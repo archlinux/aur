@@ -1,0 +1,11 @@
+post_install() {
+  cat <<'MSG'
+
+To get Tor working, go to Settings > Network > Connections
+and set the Soulseek server to: 127.0.0.1:22400
+
+If you installed the wrapper script, run the package-provided
+nicotine-tor wrapper to start Nicotine+ through Tor.
+
+MSG
+}
