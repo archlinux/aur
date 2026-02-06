@@ -1,27 +1,28 @@
 # Maintainer: tirith contributors
 pkgname=tirith
-pkgver=0.1.2
+pkgver=0.1.8
 pkgrel=1
 pkgdesc='Terminal security - catches homograph attacks, pipe-to-shell, ANSI injection'
 arch=('x86_64' 'aarch64')
 url='https://github.com/sheeki03/tirith'
-license=('Apache-2.0')
+license=('AGPL-3.0-only')
 depends=('gcc-libs')
-makedepends=('cargo')
+makedepends=('cargo' 'base-devel')
+install=tirith.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('eb54417858b6e94b2877bf92a566d31bc30ce4d1979a6cbff3785e2ded13ca3a')
 
 prepare() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release -p tirith
+  cargo build --release -p tirith
 }
 
 package() {
@@ -45,17 +46,5 @@ package() {
   install -Dm644 <(target/release/tirith manpage) "$pkgdir/usr/share/man/man1/tirith.1"
 
   # License
-  install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
-}
-
-post_install() {
-  echo ""
-  echo "Activate tirith by adding to your shell profile:"
-  echo ""
-  echo "  zsh  (~/.zshrc):                        eval \"\$(tirith init)\""
-  echo "  bash (~/.bashrc):                       eval \"\$(tirith init)\""
-  echo "  fish (~/.config/fish/config.fish):      tirith init | source"
-  echo ""
-  echo "Then restart your terminal. Verify: tirith doctor"
-  echo ""
+  install -Dm644 LICENSE-AGPL "$pkgdir/usr/share/licenses/$pkgname/LICENSE-AGPL"
 }
