@@ -3,14 +3,14 @@
 pkgname=python-sphinx-jinja2-compat
 _name=${pkgname#python-}
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Patches Jinja2 v3 to restore compatibility with earlier Sphinx versions'
 arch=('any')
 url='https://github.com/sphinx-toolbox/sphinx-jinja2-compat'
 license=('MIT')
 depends=(
   'python'
-  'python-jinja2'
+  'python-jinja'
   'python-markupsafe'
   'python-sphinx-prompt'
 )

@@ -1,7 +1,7 @@
 pkgbase = python-sphinx-jinja2-compat
 	pkgdesc = Patches Jinja2 v3 to restore compatibility with earlier Sphinx versions
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sphinx-toolbox/sphinx-jinja2-compat
 	arch = any
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = python-sphinx-jinja2-compat
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	depends = python-jinja2
+	depends = python-jinja
 	depends = python-markupsafe
 	depends = python-sphinx-prompt
 	source = sphinx-jinja2-compat::git+https://github.com/sphinx-toolbox/sphinx-jinja2-compat.git#tag=v0.4.1
