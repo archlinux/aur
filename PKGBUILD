@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=clockwork-orange-git
-pkgver=2.7.7.r132.gf58f05d
+pkgver=2.7.12.r138.g40373fb
 pkgrel=1
 pkgdesc="Advanced wallpaper manager and downloader with plugin support (Wallhaven, Google Images) for KDE Plasma 6"
 arch=('any')
