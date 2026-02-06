@@ -1,6 +1,6 @@
 pkgbase = alescript
 	pkgdesc = A programming language targeted for building console applications.
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://jd.pnc3.net/software/alescript
 	arch = x86_64
