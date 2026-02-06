@@ -1,8 +1,8 @@
 # Maintainer: Mikata Riko <sanbikappa at qq dot com>
 
 pkgname='netease-cloud-music-wine'
-pkgver=3.1.27.204959
-pkgrel=2
+pkgver=3.1.28.205001
+pkgrel=1
 pkgdesc="NetEase Cloud Music Player. 使用wine运行网易云音乐windows官方包。"
 arch=('x86_64')
 license=('custom')
@@ -20,7 +20,7 @@ source=(
     "LICENSE"
 )
 sha256sums=(
-    "579046a79b840c35767b6678358705b0ccba276891070bff46b0114d15b3b65a"
+    "2a90e0434dadc43d57975c9bf4386cdc5ef3abfd265b76b7dc4aa12d7a9ae603"
     "e6fa7eb9853b955c49cba5f5fbd83bf8039235d5c0d3eeaac81c2e99b0b7ff81"
 )
 
@@ -264,7 +264,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\Software\Wow6432Node\Netease]
 [HKEY_LOCAL_MACHINE\Software\Wow6432Node\Netease\cloudmusic]
 "install_dir"="C:\\NetEase\\CloudMusic"
-"version"="3.1.27.204959"
+"version"="3.1.28.205001"
 
 
 [HKEY_CURRENT_USER\Software\Wine\Fonts\Replacements]
