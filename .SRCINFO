@@ -1,0 +1,17 @@
+pkgbase = preditor
+	pkgdesc = Minimal GTK3 image previewer with basic editing functions
+	pkgver = r3.343910a
+	pkgrel = 1
+	url = https://github.com/rabfulton/preditor
+	arch = x86_64
+	license = custom
+	makedepends = make
+	makedepends = gcc
+	makedepends = pkgconf
+	makedepends = git
+	depends = gtk3
+	depends = gdk-pixbuf2
+	source = git+https://github.com/rabfulton/preditor.git#branch=master
+	sha256sums = SKIP
+
+pkgname = preditor
