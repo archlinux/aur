@@ -1,5 +1,5 @@
 pkgname=alogi
-pkgver=0.1.33
+pkgver=0.1.39
 pkgrel=1
 pkgdesc="AI-powered log viewer"
 arch=("x86_64")
@@ -30,10 +30,16 @@ depends=(
   "dbus"
   "glib2"
 )
-source=("https://github.com/allisonhere/alogi/releases/download/v${pkgver}/alogi-${pkgver}-linux-unpacked.tar.gz"
-        "alogi.desktop"
-        "icon.png")
-sha256sums=("51d37d2e6e9eb9bfaa20df432eea134fee6e246eafa0cb12beff744067efd449" "SKIP" "SKIP")
+source=(
+  "https://github.com/allisonhere/alogi/releases/download/v${pkgver}/alogi-${pkgver}-linux-unpacked.tar.gz"
+  "alogi.desktop"
+  "icon.png"
+)
+sha256sums=(
+  "__SHA256__"
+  "SKIP"
+  "SKIP"
+)
 
 package() {
   install -d "${pkgdir}/opt/alogi"
@@ -49,4 +55,8 @@ EOF
 
   install -Dm644 "${srcdir}/alogi.desktop" "${pkgdir}/usr/share/applications/alogi.desktop"
   install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/alogi.png"
+  for size in 16 24 32 48 64 128 256 512; do
+    install -Dm644 "${srcdir}/icon.png" \
+      "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/alogi.png"
+  done
 }
