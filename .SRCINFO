@@ -1,19 +1,20 @@
 pkgbase = python-jinja2
-	pkgdesc = A very fast and expressive template engine.
-	pkgver = 3.1.2
-	pkgrel = 00
-	url = https://palletsprojects.com/p/jinja/
+	pkgdesc = A very fast and expressive template engine
+	pkgver = 3.1.6
+	pkgrel = 1
+	url = https://github.com/pallets/jinja
 	arch = any
-	license = BSD
+	license = MIT
+	makedepends = git
+	makedepends = python-flit-core
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python
 	depends = python-markupsafe
 	depends = python-typing_extensions
-	noextract = Jinja2-3.1.2-py3-none-any.whl
-	source = PKGBUILD_EXTRAS
-	source = https://files.pythonhosted.org/packages/bc/c3/f068337a370801f372f2f8f6bad74a5c140f6fda3d9de154052708dd3c65/Jinja2-3.1.2-py3-none-any.whl
-	source = LICENSE
-	md5sums = SKIP
-	md5sums = 00ccdb509d3592cc2163b286177d75c8
-	md5sums = 53603c402b2015364986250ac360fd0e
+	source = jinja2::git+https://github.com/pallets/jinja.git#tag=3.1.6
+	sha512sums = f5c81462b5ce26327d1f34378178d81b251e9e46e7a936a1b7e82ef86b20a7e2a08a812a6d65d7dee278381221eddc790a5afa9ce60b505f67b7b467a49926d4
 
 pkgname = python-jinja2
