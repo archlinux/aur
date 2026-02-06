@@ -24,8 +24,8 @@ sha256sums=('094632a98fe9a1464238120b43ff6777b2da340b2859454f448cfdf1e89e3a71'
             '39817ac608d5eb5d36ab350faa00afde8fdd89e0e6f229a48bfa6374736a4217')
 
 prepare() {
-    dotnet --info | grep RID | cut -d : -f 2 | xargs > _rid
-    _rid_restore="$(sed 's/^arch/linux/' _rid)"
+    dotnet --info | grep RID | cut -d : -f 2 | sed 's/^arch/linux/' | xargs > _rid
+    _rid="$(< _rid)"
     _runtime_version_pacman="$(LANG=C pacman -Qi "dotnet-runtime-$_dotnet_runtime_version" | grep Version | cut -d : -f 2 | cut -d - -f 1 | xargs)"
     _runtime_version="${_runtime_version_pacman%.*.sdk*}.${_runtime_version_pacman#*.sdk}"
     _sdk_version_pacman="$(LANG=C pacman -Qi "dotnet-sdk-$_dotnet_sdk_version" | grep Version | cut -d : -f 2 | cut -d - -f 1 | xargs)"
@@ -40,25 +40,24 @@ prepare() {
     jq ".sdk.version=\"$_sdk_version\" | .tools.dotnet=\"$_sdk_version\"" global.json.old > global.json
     # They do not publish an executable when no rid specified...
     dotnet restore ./src/LanguageServer/Microsoft.CodeAnalysis.LanguageServer/Microsoft.CodeAnalysis.LanguageServer.csproj \
-        --runtime="$_rid_restore"
+        --runtime="$_rid"
 }
 
 build() {
-    _rid_restore="$(sed 's/^arch/linux/' _rid)"
     _rid="$(< _rid)"
     cd "$srcdir/roslyn-VSCode-CSharp-$pkgver"
     dotnet publish ./src/LanguageServer/Microsoft.CodeAnalysis.LanguageServer/Microsoft.CodeAnalysis.LanguageServer.csproj \
-        --no-restore --no-self-contained --runtime="$_rid_restore" --configuration Release \
+        --no-restore --no-self-contained --runtime="$_rid" --configuration Release \
         --property:PublishReadyToRun=false --property:TargetRid="$_rid" \
         --property:EnableWindowsTargeting=false --property:EnableAppHostPackDownload=true
 }
 
 package() {
-    _rid_restore="$(sed 's/^arch/linux/' _rid)"
+    _rid="$(< _rid)"
     mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/lib"
     cd "$srcdir/roslyn-VSCode-CSharp-$pkgver"
     cp -a --no-preserve=ownership \
-        "artifacts/LanguageServer/Release/net$_dotnet_runtime_version/$_rid_restore" \
+        "artifacts/LanguageServer/Release/net$_dotnet_runtime_version/$_rid" \
         "$pkgdir/usr/lib/$pkgname"
     ln -srf "$pkgdir/usr/lib/$pkgname/Microsoft.CodeAnalysis.LanguageServer" \
             "$pkgdir/usr/bin/Microsoft.CodeAnalysis.LanguageServer"
