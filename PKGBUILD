@@ -2,7 +2,7 @@
 
 pkgname=goose-desktop
 pkgver=1.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Goose Desktop (built from source) - an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM"
 arch=("x86_64")
 url="https://github.com/block/goose"
@@ -13,10 +13,11 @@ makedepends=(
   "cargo"
   "nodejs"
   "just"
-  "oniguruma"
 )
-# LTO is broken for dependency ring https://github.com/briansmith/ring/issues/1444
+
 # TODO: Remove tailwind-fix.patch when upstream releases include PR #6917
+
+# LTO is broken for dependency ring https://github.com/briansmith/ring/issues/1444
 options=("!lto" "!debug")
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/block/goose/archive/refs/tags/v${pkgver}.tar.gz"
@@ -41,19 +42,12 @@ prepare() {
 build() {
   cd "goose-${pkgver}"
 
-  # Use the prebuilt oniguruma for now
-  # https://github.com/block/goose/issues/2572
-  export RUSTONIG_SYSTEM_LIBONIG=1
-
   just release-binary
 
   cd ui/desktop
-  # Ignore husky prepare script
-  npm ci --ignore-scripts
 
-  # Fix Forge errors: missing native modules
-  npm i @rollup/rollup-linux-x64-gnu@4.43.0
-  npm i @esbuild/linux-x64@0.25.5
+  # Ignore husky prepare script
+  npm ci --ignore-scripts --no-audit
 
   npx electron-forge package
 }
