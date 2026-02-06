@@ -41,4 +41,8 @@ package() {
   if [ -f "${srcdir}/nicotine-over-tor/nicotine-tor.sh" ]; then
     install -Dm755 "${srcdir}/nicotine-over-tor/nicotine-tor.sh" "${pkgdir}/usr/bin/nicotine-tor"
   fi
+
+  # Replace upstream desktop file and install patched one to launch 'nicotine-tor' instead of 'nicotine'
+  rm -f "${pkgdir}/usr/share/applications/org.nicotine_plus.Nicotine.desktop"
+  install -Dm644 "${srcdir}/org.nicotine_plus.Nicotine.desktop" "${pkgdir}/usr/share/applications/org.nicotine_plus.Nicotine.desktop"
 }
