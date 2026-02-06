@@ -1,0 +1,5 @@
+[qdl-bin]
+source = "github"
+github = "linux-msm/qdl"
+use_latest_release = true
+prefix = "v"
