@@ -1,17 +1,17 @@
 pkgbase = simple-irc-client-bin
 	pkgdesc = Desktop clients for Simple Irc Client.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.0.13
+	pkgver = 1.0.14
 	pkgrel = 1
 	url = https://github.com/Simple-Irc-Client/desktop
 	arch = x86_64
 	license = AGPL-3.0-only
 	depends = electron40
-	provides = simple-irc-client=1.0.13
+	provides = simple-irc-client=1.0.14
 	conflicts = simple-irc-client
 	options = !emptydirs
-	source = simple-irc-client-1.0.13.rpm::https://github.com/Simple-Irc-Client/desktop/releases/download/v1.0.13/simple-irc-client-1.0.13-1.x86_64.rpm
+	source = simple-irc-client-1.0.14.rpm::https://github.com/Simple-Irc-Client/desktop/releases/download/v1.0.14/simple-irc-client-1.0.14-1.x86_64.rpm
 	source = simple-irc-client.sh
-	sha256sums = 53409780b4bc3396aab9126d7a8ac88e322087ed4add120f9ad81d8921b12b7b
+	sha256sums = 8f9e553dcba381826a15d67389c2499b97c96662007a5a3b30198136a16dfac4
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = simple-irc-client-bin
