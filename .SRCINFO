@@ -1,6 +1,6 @@
 pkgbase = hdas-git
 	pkgdesc = Track which packages create files in your home directory using eBPF
-	pkgver = 1.2.1.r0.gf28a9b5
+	pkgver = 1.0.0.r0.g22f96e5
 	pkgrel = 1
 	url = https://github.com/adelmonte/hdas
 	install = hdas.install
