@@ -1,0 +1,14 @@
+pkgbase = python-myers
+	pkgdesc = Compute the Myers diff of two lists
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://pypi.org/project/myers
+	arch = any
+	license = MIT
+	makedepends = python-poetry-core
+	makedepends = python-build
+	makedepends = python-installer
+	source = myers-1.0.1.tar.gz::https://files.pythonhosted.org/packages/ac/49/49cb1d292dbce2999d7c812750f739e71fee2df845cf9852561ff64db5b8/myers-1.0.1.tar.gz
+	sha256sums = 4f9d7681c04e1fd0c61e840e26e22b1bd4d5031887c7d5fb43dccc76e64423a3
+
+pkgname = python-myers
