@@ -1,12 +1,12 @@
 pkgbase = surfpool-bin
 	pkgdesc = A drop-in replacement for solana-test-validator and IaC for Solana
-	pkgver = 0.12.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/txtx/surfpool
 	arch = x86_64
 	license = Apache-2.0
 	provides = surfpool
-	source = surfpool-bin-0.12.0.tar.gz::https://github.com/txtx/surfpool/releases/download/v0.12.0/surfpool-linux-x64.tar.gz
-	sha256sums = 5b39cf5374ce29ac0476181cb910d666a0e1c638f7ea5905cc94965a120064de
+	source = surfpool-bin-1.0.0.tar.gz::https://github.com/txtx/surfpool/releases/download/v1.0.0/surfpool-linux-x64.tar.gz
+	sha256sums = 4812efc59f8f144a891df7fab9f52d88779fcf35ac8b6b5d6cdd5fb173bda7b1
 
 pkgname = surfpool-bin
