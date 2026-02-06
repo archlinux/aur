@@ -1,7 +1,7 @@
 pkgbase = shorinclip
 	pkgdesc = A wayland clipboard TUI script using fzf wl-clipboard cliphist and kitty image preview
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.1.2
+	pkgrel = 1
 	url = https://github.com/SHORiN-KiWATA/shorinclip
 	arch = any
 	license = MIT
@@ -11,6 +11,6 @@ pkgbase = shorinclip
 	depends = ffmpegthumbnailer
 	depends = chafa
 	source = https://raw.githubusercontent.com/SHORiN-KiWATA/shorinclip/refs/heads/main/shorinclip
-	sha256sums = c78619525d55b14d469efbbd342d1190027eadc45d794190b45473e9edf8fd54
+	sha256sums = e321c7f3ceacb16c34a79feddbdbc45e87f62332da15c3978a577c0cc694e146
 
 pkgname = shorinclip
