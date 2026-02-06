@@ -1,35 +1,41 @@
 # Maintainer: Nguyễn Quang Minh <minhnbnt at gmail dot com>
 
+_dotnetver="10.0"
+
 pkgname=garnet-bin
 _pkgname=${pkgname/-bin/}
-pkgver=1.0.93 # datasource=github-releases depName=microsoft/garnet
+pkgver=1.0.97 # datasource=github-releases depName=microsoft/garnet
 pkgrel=1
 pkgdesc='A high-performance cache-store from Microsoft Research'
 url='https://microsoft.github.io/garnet'
 license=('MIT')
-arch=('x86_64')
+arch=('aarch64' 'x86_64')
 options=('!strip')
 conflicts=($_pkgname)
 provides=($_pkgname)
-depends=("dotnet-runtime-9.0" "gcc-libs" "glibc" "libaio")
+depends=("dotnet-runtime-${_dotnetver}" "gcc-libs" "glibc" "libaio")
+
+_baseurl="https://github.com/microsoft/${_pkgname}/releases/download/v${pkgver}"
+source_aarch64=("garnet-arm64-${pkgver}.tar.xz::${_baseurl}/linux-x64-based.tar.xz")
+source_x86_64=("garnet-x64-${pkgver}.tar.xz::${_baseurl}/linux-x64-based.tar.xz")
 
 source=(
-	"garnet-${pkgver}.tar.xz::https://github.com/microsoft/${_pkgname}/releases/download/v${pkgver}/linux-x64-based.tar.xz"
-	"LICENSE-${pkgver}::https://raw.githubusercontent.com/microsoft/garnet/refs/tags/v${pkgver}/LICENSE"
+	"LICENSE-${pkgver}::https://raw.githubusercontent.com/microsoft/${_pkgname}/refs/tags/v${pkgver}/LICENSE"
 	"garnet-server.service"
 )
 
-sha256sums=('db7ca595b7c0f85aa35e0ff62af7403787fb2353af6288caa02843b33580fff6'
-            'c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383'
+sha256sums_aarch64=('43712f8464a82d5dec96558ddbd82ca9463718c82ab224a75be9a07da0325445')
+sha256sums_x86_64=('43712f8464a82d5dec96558ddbd82ca9463718c82ab224a75be9a07da0325445')
+sha256sums=('c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383'
             'a536b51496a330d8faa8f00fea134177d6e48f404663211db876af5adc7e6470')
 
 package() {
 
 	local garnet_location="$pkgdir/usr/lib/garnet" 
 
-	install -Dm755 "net9.0/GarnetServer" -t $garnet_location
-	install -Dm644 "net9.0/garnet.conf" "$pkgdir/etc/garnet/garnet-server.conf"
-	install -Dm644 "net9.0/liblua54.so" "net9.0/libnative_device.so" -t $garnet_location
+	install -Dm755 "net${_dotnetver}/GarnetServer" -t $garnet_location
+	install -Dm644 "net${_dotnetver}/garnet.conf" "$pkgdir/etc/garnet/garnet-server.conf"
+	install -Dm644 "net${_dotnetver}/liblua54.so" "net${_dotnetver}/libnative_device.so" -t $garnet_location
 
 	mkdir -p "$pkgdir/usr/bin"
 	ln -sr "$pkgdir/usr/lib/garnet/GarnetServer" "$pkgdir/usr/bin/GarnetServer"
