@@ -1,7 +1,7 @@
 pkgbase = irixium-theme-git
 	pkgdesc = Modern take on Indigo Magic for Plasma
 	pkgver = r184.ddbdc26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.opencode.net/phob1an/irixium
 	arch = any
 	source = git+https://www.opencode.net/phob1an/irixium
@@ -57,4 +57,4 @@ pkgname = sddm-irixium-theme-git
 pkgname = irixium-icons-git
 	pkgdesc = Modern take on Indigo Magic for Plasma (Icons)
 	url = https://www.pling.com/p/2142965
-	provides = irixium-icons-git
+	provides = irixium-icons

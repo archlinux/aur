@@ -13,6 +13,7 @@ pkgname=(
 	# Plasma 6 Window Decoration
 	'irixium-aurorae-theme-git'
 	# Global Theme (Plasma 6)
+	# NOTE: KDE splash screen comes with global theme
 	'plasma6-theme-irixium-git'
 	# Kvantum
 	'kvantum-theme-irixium-git'
@@ -38,7 +39,7 @@ pkgname=(
 )
 pkgdesc="Modern take on Indigo Magic for Plasma"
 pkgver=r184.ddbdc26
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://www.opencode.net/phob1an/irixium"
 licence=('GPL-3.0-only')
@@ -156,7 +157,7 @@ package_sddm-irixium-theme-git() {
 }
 package_irixium-icons-git() {
 	pkgdesc="Modern take on Indigo Magic for Plasma (Icons)"
-	provides=('irixium-icons-git')
+	provides=('irixium-icons')
 	url="https://www.pling.com/p/2142965"
 
 	cd "$srcdir/$_gitname"
