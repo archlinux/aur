@@ -6,7 +6,9 @@ pkgbase = anicli-esp
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
+	depends = mpv
+	depends = yt-dlp
 	source = anicli-esp-main.tar.gz::https://github.com/Asempere123123/anicli-esp/archive/main.tar.gz
-	sha256sums = ec49ff6dbc2cacb033c6899c6f6ff2a3fbb0ab553429a8b7796daa078ec9bdd2
+	sha256sums = ac3e2bee5579208b68d8e53450e17d4350f40617fd5d351d1c6e58eb68659c0e
 
 pkgname = anicli-esp
