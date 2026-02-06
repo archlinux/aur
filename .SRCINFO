@@ -1,0 +1,12 @@
+pkgbase = people-work
+	pkgdesc = Manage your most important professional relationships
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://people-work.io
+	arch = x86_64
+	license = custom:people-work
+	noextract = people-work-1.3.0.pkg.tar.zst
+	source = people-work-1.3.0.pkg.tar.zst::https://github.com/hedge-ops/people-work-releases/releases/download/v1.3.0/people-work-1.3.0-1-x86_64.pkg.tar.zst
+	sha256sums = SKIP
+
+pkgname = people-work
