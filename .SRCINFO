@@ -1,7 +1,7 @@
-pkgbase = ids-ips-tool
+pkgbase = athaguard
 	pkgver = 1.0.1
 	pkgrel = 1
-	url = https://github.com/Bangkah/IDS-IPS-Tool
+	url = https://github.com/Bangkah/athaguard
 	arch = any
 	license = MIT
 	makedepends = git
@@ -19,12 +19,12 @@ pkgbase = ids-ips-tool
 	depends = python-requests
 	depends = python-pyotp
 	depends = python-passlib
-	depends = python-python-jose
+	depends = python-jose
 	depends = python-multipart
 	depends = iptables
 	depends = nftables
 	depends = ufw
-	source = ids-ips-tool-1.0.1.tar.gz::https://github.com/Bangkah/IDS-IPS-Tool/archive/refs/tags/v1.0.1.tar.gz
+	source = athaguard-1.0.1.tar.gz::https://github.com/Bangkah/athaguard/archive/refs/tags/v1.0.1.tar.gz
 	sha256sums = SKIP
 
-pkgname = ids-ips-tool
+pkgname = athaguard
