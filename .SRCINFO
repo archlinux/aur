@@ -1,0 +1,15 @@
+pkgbase = fcitx5-themes-macos-git
+	pkgdesc = Simple macOS style themes for Fcitx5 (Light & Dark)
+	pkgver = r1.1f5a392
+	pkgrel = 1
+	url = https://github.com/yorha2B0826/fcitx5-themes-macos
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = fcitx5
+	provides = fcitx5-themes-macos
+	conflicts = fcitx5-themes-macos
+	source = git+https://github.com/yorha2B0826/fcitx5-themes-macos.git
+	sha256sums = SKIP
+
+pkgname = fcitx5-themes-macos-git
