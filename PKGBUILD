@@ -8,7 +8,7 @@ pkgname=(
   psqldef
 )
 pkgver=3.9.7
-pkgrel=2
+pkgrel=1
 pkgdesc='Idempotent schema management for MySQL, PostgreSQL, SQLite, and SQL Server'
 arch=(x86_64 aarch64)
 url='https://github.com/sqldef/sqldef'
