@@ -1,8 +1,8 @@
 # Maintainer: Ahmet Arda Kavakcı <ahmetardakavakci@gmail.com>
 
 pkgname=ungoogled-chromium-widevine-bin
-pkgver=144.0.7559.109
-pkgrel=1
+pkgver=144.0.7559.132
+pkgrel=2
 pkgdesc="A lightweight approach to removing Google web service dependency (with Widevine)"
 arch=('x86_64')
 url="https://github.com/ungoogled-software/ungoogled-chromium"
@@ -23,8 +23,8 @@ source=(
   "google-chrome-stable_${pkgver}-1_amd64.deb::https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${pkgver}-1_amd64.deb"
 )
 noextract=("google-chrome-stable_${pkgver}-1_amd64.deb")
-sha256sums=('df28649a5ac2b42ba5804facd93f502140e844d15266f2d222e3394209cacd4c'
-  '3b77c509c4a0847a2bf146aabd40a7fc60ea283fbc482ad74fa1449d687d4147')
+sha256sums=('67458e698db1b9f7e271f7fbf5324ec69d6b4f751bb997edbe50c201b2537e7a'
+  'e55b896a2c65c3da3ea03d5ba7a4b7a36911f0a7289689921725a93194327703')
 
 declare -gA _system_libs=(
   [brotli]=brotli
