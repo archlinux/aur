@@ -1,8 +1,8 @@
 pkgbase = salt-onedir
 	pkgdesc = Central system and configuration manager (onedir installation +[])
 	pkgver = 3007.12
-	pkgrel = 1
-	url = http://saltstack.org/
+	pkgrel = 2
+	url = https://saltproject.io
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0

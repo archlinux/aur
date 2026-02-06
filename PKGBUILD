@@ -15,10 +15,10 @@
 pkgname=salt-onedir
 provides=('salt')
 pkgver=3007.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Central system and configuration manager (onedir installation +[${SALT_ADDITIONAL_PIP_PACKAGES}])"
 arch=('x86_64' 'aarch64')
-url='http://saltstack.org/'
+url='https://saltproject.io'
 license=('Apache-2.0')
 replaces=('salt-zmq' 'salt-raet')
 conflicts=('salt-zmq' 'salt-raet' 'salt')
