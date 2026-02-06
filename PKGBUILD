@@ -1,6 +1,6 @@
 # Maintainer: Parker Rowen <gitporker@gmail.com>
 pkgname=openwork
-pkgver=0.7.2
+pkgver=0.11.21
 pkgrel=2
 pkgdesc="An Open source alternative to Claude Cowork"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gtk3' 'glib2' 'libayatana-appindicator' 'libsoup3' 'webkit2gtk-4.1' 'openssl' 'dbus' 'librsvg')
 
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/openwork-desktop-linux-amd64.deb")
-sha256sums=('3415a83776019c5876b47ea9e0151c4838f0f22d4e0c2e4d6c02b917f8716ee0')
+sha256sums=('0d31bcfd9cff4d3681485004f3d7cd6ec3661ae41a214022fef39cb0729918f9')
 noextract=("${pkgname}-${pkgver}.deb")
 
 package() {
