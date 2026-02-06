@@ -1,7 +1,7 @@
 # Maintainer: Sheikh Limon <sheikhlimon404@gmail.com>
 
 pkgname=goose-desktop
-pkgver=1.23.1
+pkgver=1.23.2
 pkgrel=1
 pkgdesc="Goose Desktop (built from source) - an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM"
 arch=("x86_64")
@@ -23,7 +23,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/block/goose/archive/refs/tags/v${pkgver}.tar.gz"
   "tailwind-fix.patch"
 )
-b2sums=('dff076ea05befd4ea78de3b9249340e622f06e4b7ea83455f0e2bb9a6109f1703570526caa776589947f727d6213747f6131985871814472aea62cc63ea4197a'
+b2sums=('ea06c2292a60d820895bcc88bd93589f7e2f7ca5c0efddf12b00e374758bc9de98b459e9a7a298ad8eae25fee49f75e1183c5dd04aaef40a60b1f7b30a021edd'
         '46d01b3c652405ccdbb79889c07e2efe5b50dca4bc930abbe192be2e0f7feb6eeb69b813905524507b7d6227d0da697c15d00cd54fcdee14d837a95de2d4d13b')
 conflicts=("goose-desktop-bin")
 provides=("goose-desktop")
@@ -47,7 +47,7 @@ build() {
   cd ui/desktop
 
   # Ignore husky prepare script
-  npm ci --ignore-scripts --no-audit
+  npm install --ignore-scripts --no-audit
 
   npx electron-forge package
 }
