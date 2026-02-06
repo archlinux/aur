@@ -4,7 +4,7 @@ _dotnet_ver=8.0
 _reponame=SyncClipboard
 _pkgname="${_reponame,,}"
 pkgname="${_pkgname}-server"
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Cross-Platform Cipboard Syncing Solution (Server)"
 arch=("x86_64" "aarch64")
@@ -17,7 +17,7 @@ source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.g
         "${_pkgname}.service"
         "${_pkgname}.sysusers"
         "${_pkgname}.tmpfiles")
-sha256sums=('cd67b468577ee8abaf9f957bc3467ffcf356a9bb046479aa39054b0292f73a6a'
+sha256sums=('359030e91aa83c984da278eda408ffac4f1e5366ddcbda5b69bb66416838a1eb'
             'b4681cd27db19cb742c89d5e50ec00bd0231d2f773a60c5c85c00577798007d1'
             'c926ecd545f945ac27cf4b2e54004f0d6847d58f012b9dda5b4e8416523e991c'
             'bf6ce00dbedafc8b2874818138c37d8371cb165721c5b88293c64f216cee1c66')
@@ -36,6 +36,11 @@ build() {
         -p:DebugSymbols=false \
         -p:DebugType=none
     mv builddir/appsettings* .
+
+    case $CARCH in
+        x86_64)  find builddir/runtimes -mindepth 1 -maxdepth 1 -type d ! -name 'linux-x64' -exec rm -rf {} + ;;
+        aarch64) find builddir/runtimes -mindepth 1 -maxdepth 1 -type d ! -name 'linux-arm64' -exec rm -rf {} + ;;
+    esac
 }
 
 package() {
@@ -47,10 +52,12 @@ package() {
 
     cd "${_reponame}-${pkgver}"
     install -Dm644 *.md docs/*.md      -t "${pkgdir}/usr/share/doc/${pkgname}"
-    install -Dm644 builddir/*          -t "${pkgdir}/usr/lib/${_pkgname}/server"
     install -Dm644 LICENSE                "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 appsettings*.json   -t "${pkgdir}/etc/${_pkgname}"
+
+    cd builddir
+    find -type f -exec install -Dm644 {}  "${pkgdir}/usr/lib/${_pkgname}/server/"{} \;
     install -dm755                        "${pkgdir}/usr/bin"
     ln -sf "${_binary}"                   "${pkgdir}/usr/bin/${pkgname}"
-    chmod 755 "${pkgdir}/${_binary}"
+    chmod 755 "${pkgdir}${_binary}"
 }
