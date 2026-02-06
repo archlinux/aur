@@ -2,8 +2,8 @@
 
 pkgname=r-air
 pkgver=0.8.1
-pkgrel=1
-pkgdesc="The R Installation Manager"
+pkgrel=2
+pkgdesc="An R language server and formatter"
 url="https://github.com/r-lib/rig"
 arch=('x86_64' 'aarch64')
 license=('MIT')

@@ -1,7 +1,7 @@
 pkgbase = r-air
-	pkgdesc = The R Installation Manager
+	pkgdesc = An R language server and formatter
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/r-lib/rig
 	arch = x86_64
 	arch = aarch64
