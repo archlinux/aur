@@ -17,6 +17,7 @@ pkgbase = vial-git
 	makedepends = ruby-dotenv
 	makedepends = fpm
 	makedepends = imagemagick
+	makedepends = pkg2appimage
 	depends = python>=3.6
 	depends = python-pipx
 	depends = python-altgraph>=0.17
@@ -36,5 +37,17 @@ pkgbase = vial-git
 	source = Vial::git+https://github.com/vial-kb/vial-gui
 	source = 59-vial.rules
 	source = 92-viia.rules
+	sha256sums = SKIP
+	sha256sums = a6af0820ee6960dccab9ce0df0a898ccd0a50fecd992e341656dd1af78680502
+	sha256sums = f91d36792b315caf9faa380860ae093fb1ef0ee966dad46023f033ab2ba7f22e
+	sha384sums = SKIP
+	sha384sums = decab0867ff4d986694af51a3d63365099a60d33c42507f4552923e212d6febacb63f3b9af51442e3d3f044a22be796c
+	sha384sums = d9610feda8565d9acc748bdd4333b0a6e39525a505ee0331c865d4485d6786d85fca016beee7227a00b742cc08933d5d
+	sha512sums = SKIP
+	sha512sums = f3f9ef5998685766419503a8eb9b7d5e87211d6e3cc00d580bcc4bb6eca774b5ef158e4d0b30c387c958b9bf66bc3d8be4b6479905d296dde6ba179575797c00
+	sha512sums = 0178e610e722a2b69a0de3eaadceb6955649f7ffecfd9f2c85ebe3673965fb99352a422db77051c95e8364a386b42461393ac2493dfec618932be965e19536dc
+	b2sums = SKIP
+	b2sums = da06e9b911ca5ae59054311ae477061dfd50bb9c43158f89c0041f0b0a4e67a4358ebc169d8fe533b298b165f323f011c432eb24e5be5f55242e7946c32674d9
+	b2sums = c8e395bfbc72c35cd5194b1db7bd130baaadfb8bbe404cd19b08fa50a2fff4c783d83e30ad1ff954d3d829f52a8e303cfad5b6820425da59a40cc7b48dd4b020
 
 pkgname = vial-git
