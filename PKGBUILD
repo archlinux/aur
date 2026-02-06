@@ -1,6 +1,6 @@
 # Maintainer: Mark Wells <contact@markwells.dev>
 pkgname=anneal-bin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Proactive AUR rebuild management for Arch Linux (prebuilt binary)"
 arch=('x86_64')
@@ -18,20 +18,20 @@ optdepends=(
 provides=('anneal')
 conflicts=('anneal' 'anneal-git')
 source=(
-    "$url/releases/download/v$pkgver/anneal-$CARCH-linux"
-    "$url/releases/download/v$pkgver/anneal-trigger.hook"
-    "$url/raw/v$pkgver/LICENSE"
+    "anneal-$pkgver-x86_64::$url/releases/download/v$pkgver/anneal-x86_64-linux"
+    "anneal-trigger-$pkgver.hook::$url/releases/download/v$pkgver/anneal-trigger.hook"
+    "LICENSE-$pkgver::$url/raw/v$pkgver/LICENSE"
 )
-sha256sums=('b2982df7a8b830e237ddfeaf36d398a91755525bfde042f70d9d483eab841fc5'
+sha256sums=('b7606a995e5a7dc406b300bb2ced0ab874c0a1d664b39bdf7880325e7bbe79a3'
             '10cfa2ed5510c7535437ac54097137262841131717ac73a221c5ebde3d050e88'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 package() {
     # Binary
-    install -Dm755 "anneal-$CARCH-linux" "$pkgdir/usr/bin/anneal"
+    install -Dm755 "anneal-$pkgver-x86_64" "$pkgdir/usr/bin/anneal"
 
     # Pacman hook
-    install -Dm644 anneal-trigger.hook \
+    install -Dm644 "anneal-trigger-$pkgver.hook" \
         "$pkgdir/usr/share/libalpm/hooks/anneal-trigger.hook"
 
     # Shell completions
@@ -48,5 +48,5 @@ package() {
     install -dm755 "$pkgdir/etc/anneal/packages"
 
     # License
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
