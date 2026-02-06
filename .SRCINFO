@@ -1,0 +1,18 @@
+pkgbase = mtrans-git
+	pkgdesc = A CLI tool for translation using LLM API
+	pkgver = v0.1.1.r0.ga236af1
+	pkgrel = 1
+	url = https://github.com/jswysnemc/mtrans
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = openssl
+	provides = mtrans
+	conflicts = mtrans
+	options = !lto
+	source = git+https://github.com/jswysnemc/mtrans.git
+	sha256sums = SKIP
+
+pkgname = mtrans-git
