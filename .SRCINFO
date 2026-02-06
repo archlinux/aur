@@ -1,0 +1,18 @@
+pkgbase = rv
+	pkgdesc = A declarative R package manager
+	pkgver = 0.17.1
+	pkgrel = 1
+	url = https://github.com/a2-ai/rv
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	depends = gcc-libs
+	depends = glibc
+	conflicts = rv-bin
+	options = !lto
+	options = !debug
+	source = rv-0.17.1.tar.gz::https://github.com/a2-ai/rv/archive/v0.17.1.tar.gz
+	sha512sums = 8147c9361c9e1dc5d22a5209be3d6554d38d272fcb203eb568eca496ea26d52e0082cce43f0544e46f38b9fd78bdcbfad870356992e98d25c46ce396c880aea8
+
+pkgname = rv
