@@ -1,7 +1,7 @@
 # Maintainer: Relish0171 <aur.such581@aleeas.com>
 _basename=ck3-tiger
 pkgname=${_basename}-bin
-pkgver=1.14.0
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="Checks game mod files for common mistakes and warns about them."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/amtep/tiger"
 license=('GPL3')
 depends=()
 source=("https://github.com/amtep/tiger/releases/download/v${pkgver}/${_basename}-linux-v${pkgver}.tar.gz")
-sha256sums=('b6c3f5e074ca69ae6ea79a76bb03338712eec4059d1d14cc3d895035f9978e70')
+sha256sums=('106dd3b7f96bee3b207837cd9c110c9f94b3c14df4d152da769dd2571eced909')
 
 package() {
     cd "${srcdir}/${_basename}-linux-v${pkgver}"
