@@ -1,7 +1,7 @@
 pkgbase = echomind
 	pkgdesc = AI-powered CLI tool with multiple provider support, streaming, and interactive mode
 	pkgver = 0.3.2
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/thepinak503/echomind
 	arch = x86_64
 	arch = aarch64
@@ -11,10 +11,17 @@ pkgbase = echomind
 	makedepends = clang
 	depends = openssl
 	depends = gcc-libs
+	depends = glibc
 	optdepends = jq: for JSON output formatting
+	optdepends = xclip: clipboard support (X11)
+	optdepends = xsel: clipboard support alternative (X11)
+	optdepends = wl-clipboard: clipboard support (Wayland)
+	optdepends = sox: voice input support (macOS)
+	optdepends = arecord: voice input support (Linux)
+	optdepends = espeak: text-to-speech support (Linux)
 	provides = echomind
 	conflicts = echomind-git
-	source = https://github.com/thepinak503/echomind/archive/refs/tags/v0.3.2.tar.gz
+	source = echomind-0.3.2.tar.gz::https://github.com/thepinak503/echomind/archive/refs/tags/v0.3.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = echomind
