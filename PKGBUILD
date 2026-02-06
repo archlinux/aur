@@ -1,7 +1,7 @@
 # Maintainer: yuzujr <15568103056@163.com>
 
 pkgname=coomer
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Zoomer application for everyone on Linux"
 arch=('x86_64')
@@ -27,7 +27,7 @@ makedepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('405a66b9d159d72cf57c38b70584577eeb2059e4513a5f99b38e2c9c670fec47')
+sha256sums=('f76ca33046b54d6c8404555960dc05152de517eaef87fb4324aefc216040989c')
 
 _xmake_env() {
   export XMAKE_GLOBALDIR="$srcdir/.xmake-global"
