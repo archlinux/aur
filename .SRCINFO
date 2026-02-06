@@ -1,14 +1,14 @@
 pkgbase = anidesk-bin
 	pkgdesc = Unofficial desktop client for Anixart
-	pkgver = 0.0.1.beta.5
+	pkgver = 0.0.1.beta.6
 	pkgrel = 1
 	url = https://github.com/theDesConnet/AniDesk
 	arch = x86_64
 	license = GPL-2.0-only
-	source = https://github.com/theDesConnet/AniDesk/releases/download/v0.0.1-beta.5/anidesk-0.0.1-beta.5-linux-x64.tar.gz
+	source = https://github.com/theDesConnet/AniDesk/releases/download/v0.0.1-beta.6/anidesk-0.0.1-beta.6-linux-x64.tar.gz
 	source = anidesk-bin.desktop
 	source = icon.png
-	sha256sums = 1113bde48314065ba38d1ed56059cb631d15e9fb9a910d0f5c11029afb25de42
+	sha256sums = 7fd31eaaeb361a27f00ce4097bb6fcebc23283992732f71e5da1a4ded7f0ed6a
 	sha256sums = 99a571d436f1a6c62570af4eacd730f8f4267daab9e7b409539b29b9e28a83ba
 	sha256sums = c970f40c25d2a619f33cebe7d0c9edf08087e483921a2a5bc341bb73a54e199c
 
