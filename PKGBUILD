@@ -5,10 +5,10 @@
 
 _pkgname='github-desktop-plus'
 pkgname="${_pkgname}-bin"
-pkgver=3.5.5.7
+pkgver=3.5.5.9
 pkgrel=1
 pkgdesc="Fork of GitHub Desktop with extra features and improvements (binary release)."
-arch=('x86_64' 'aarch64' 'armv7h')
+arch=('x86_64' 'aarch64')
 url="https://github.com/pol-rivero/github-desktop-plus"
 license=('MIT')
 provides=(${_pkgname})
@@ -33,15 +33,13 @@ source=(
 _common_download_url="${url}/releases/download/v${pkgver}/GitHubDesktopPlus-v${pkgver}-linux"
 source_x86_64=(${_common_download_url}-x86_64.deb)
 source_aarch64=(${_common_download_url}-arm64.deb)
-source_armv7h=(${_common_download_url}-armhf.deb)
 
 sha256sums=(
     '480742d5e68d1e64e3732b521ebfdd40944573a8f43c187eb24c6109c21a37fe'
     '2fb026db6ac25ade0535ec1fffec415fd1d023fbfd28b452f29523e51921083a'
 )
-sha256sums_x86_64=('7c6a389abfe44fa1023a76efddd3b1ed99048ad101923d3ad284125722dc0de9')
-sha256sums_aarch64=('e9617ba749cfd6a775f4cb648817c8a7ff0a8fba7df196719e631fa6147122c2')
-sha256sums_armv7h=('6a4da12de0be2495368b79a74d03d3081c3a7e15aec389a5afb3b604508861a3')
+sha256sums_x86_64=('5f58d9364711d4064daf48e6ab0ca74561fef3b3e1d523e239cb8fde2a4cf776')
+sha256sums_aarch64=('2c212bdff951a6d90e4c88c6e767dd9a8e5e64166ab5dfa19c4d616d5185e0bb')
 package() {
     INSTALL_DIR="$pkgdir/opt/${_pkgname}"
 
