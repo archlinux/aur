@@ -1,0 +1,16 @@
+pkgbase = tuxpit-kneeboard
+	pkgdesc = Kneeboard overlay for Digital Combat Simulator made with golang and qt6.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Kam1ni/tuxpit-kneeboard
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	makedepends = pkgconf
+	makedepends = qt6-base
+	optdepends = ttf-dejavu: fallback font if no system font available
+	source = git+https://github.com/Kam1ni/tuxpit-kneeboard.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = tuxpit-kneeboard
