@@ -7,8 +7,8 @@
 # Contributor: Paul Mattal <paul at archlinux dot org>
 
 pkgname="lib32-ffmpeg-minimal-dev"
-pkgver=7.1
-pkgrel=2
+pkgver=8.0.1
+pkgrel=1
 pkgdesc="A minimal set of lib32 headers and development libraries for ffmpeg"
 arch=('x86_64')
 url="https://ffmpeg.org"
@@ -26,7 +26,7 @@ options=(
 source=(
   "git+https://github.com/FFmpeg/FFmpeg.git#tag=n${pkgver}"
 )
-b2sums=('c7ec6b1db61608195117b79f3f0c8f6323c3abeb39721359da0f10e7d739da8301e04ff5fa83c022f86fc760f66e00066f9a50d97b771f797ccc679f9d912c40')
+b2sums=('0796d77c58d5db487ccda15454dadf129a6e0ae2a5a9cec562c86f2050b1e9314164c7f2dbf0a6c8cdae37dfd5e28f494d5ac248e970bc7f01b097100971fe8a')
 
 build() {
   export CFLAGS="${CFLAGS} -Wno-error=incompatible-pointer-types -Wno-error=int-conversion -m32"

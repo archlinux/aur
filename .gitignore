@@ -1,5 +1,4 @@
-*.tar.gz
-*.tar.xz
+*.tar.*
 *.tgz
 *.rpm
 *.zip
@@ -8,3 +7,4 @@
 src/
 pkg/
 ffmpeg*/
+FFmpeg/
