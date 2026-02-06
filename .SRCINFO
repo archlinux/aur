@@ -1,14 +1,12 @@
 pkgbase = android-aarch64-libwmf
 	pkgdesc = A library for reading vector images in Microsoft's native Windows Metafile Format (WMF) (Android aarch64)
 	pkgver = 0.2.13
-	pkgrel = 3
+	pkgrel = 4
 	url = http://wvware.sourceforge.net/libwmf.html
 	arch = any
 	groups = android-libwmf
 	license = LGPL
 	makedepends = android-configure
-	makedepends = android-aarch64-libxt
-	depends = android-aarch64-libx11
 	depends = android-aarch64-libjpeg
 	depends = android-aarch64-freetype2
 	depends = android-aarch64-expat
