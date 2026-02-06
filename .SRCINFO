@@ -1,0 +1,60 @@
+pkgbase = irixium-theme-git
+	pkgdesc = Modern take on Indigo Magic for Plasma
+	pkgver = r184.ddbdc26
+	pkgrel = 1
+	url = https://www.opencode.net/phob1an/irixium
+	arch = any
+	source = git+https://www.opencode.net/phob1an/irixium
+	md5sums = SKIP
+
+pkgname = irixium-plasma-colorscheme-git
+	pkgdesc = Modern take on Indigo Magic for Plasma (Colors)
+	url = https://www.pling.com/p/1457776
+	depends = plasma-desktop
+	provides = irixium-plasma-colorscheme
+
+pkgname = irixium-plasma-style-git
+	pkgdesc = Modern take on Indigo Magic for Plasma (Plasma Style)
+	url = https://www.pling.com/p/1457753
+	depends = plasma-desktop
+	provides = irixium-plasma-style
+
+pkgname = irixium-aurorae-theme-git
+	pkgdesc = Modern take on Indigo Magic for Plasma (Window Decorations)
+	url = https://www.pling.com/p/2142963
+	depends = kwin
+	provides = irixium-aurorae-theme
+
+pkgname = plasma6-theme-irixium-git
+	pkgdesc = Modern take on Indigo Magic for Plasma (Global Theme)
+	url = https://www.pling.com/p/2142966
+	depends = irixium-aurorae-theme-git
+	depends = irixium-plasma-colorscheme-git
+	depends = irixium-plasma-style-git
+	depends = irixium-icons-git
+	depends = irixium-backgrounds-git
+	depends = sddm-irixium-theme-git
+	depends = kvantum-theme-irixium-git
+	provides = plasma6-theme-irixium
+
+pkgname = kvantum-theme-irixium-git
+	pkgdesc = Modern take on Indigo Magic for Plasma (Kvantum Theme)
+	url = https://www.pling.com/p/1457738
+	depends = kvantum
+	provides = kvantum-theme-irixium
+
+pkgname = irixium-backgrounds-git
+	pkgdesc = Modern take on Indigo Magic for Plasma (Wallpapers)
+	url = https://www.pling.com/p/1457745
+	provides = irixium-backgrounds
+
+pkgname = sddm-irixium-theme-git
+	pkgdesc = Modern take on Indigo Magic for Plasma (SDDM Login Screen)
+	url = https://www.pling.com/p/1673443
+	depends = sddm
+	provides = sddm-irixium-theme
+
+pkgname = irixium-icons-git
+	pkgdesc = Modern take on Indigo Magic for Plasma (Icons)
+	url = https://www.pling.com/p/2142965
+	provides = irixium-icons-git
