@@ -1,6 +1,6 @@
 pkgbase = lianwall-bin
 	pkgdesc = LianWall CLI - wallpaper engine based on swww and mpvpaper
-	pkgver = 5.0.0
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://github.com/Yueosa/lianwall
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = lianwall-bin
 	depends = lianwalld-bin
 	provides = lianwall
 	conflicts = lianwall
-	source = https://github.com/Yueosa/lianwall/releases/download/v5.0.0/lianwall_5.0.0_linux_x86_64
-	sha256sums = 913ad6897e6f1c5da7f557f9fb0d4512dd8ac721d10bb458ccdf80e3949884a3
+	source = https://github.com/Yueosa/lianwall/releases/download/v5.1.0/lianwall_5.1.0_linux_x86_64
+	sha256sums = 6bde281791d8c69736278cf00604e48a4563a4253acccc14ef5087df2c3b522c
 
 pkgname = lianwall-bin
