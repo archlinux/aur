@@ -1,7 +1,7 @@
 pkgbase = tractor
 	pkgdesc = Setup an onion routing proxy
-	pkgver = 5.1.0
-	pkgrel = 3
+	pkgver = 5.2.0
+	pkgrel = 1
 	url = https://framagit.org/tractor/tractor/
 	arch = any
 	license = GPL-3.0-or-later
@@ -17,9 +17,7 @@ pkgbase = tractor
 	depends = tor
 	depends = dconf
 	optdepends = carburetor: Graphical settings app using GTK
-	source = tractor-5.1.0.tar.gz::https://framagit.org/tractor/tractor/-/archive/5.1.0/tractor-5.1.0.tar.gz
-	source = 0001-fix-missing-schema-check.patch
-	sha256sums = 54735797e3bc1a99499b2409beb67bfa2fa5058039a1dc3da7bfcb9999b2cc21
-	sha256sums = f7f986e07d44c0a7af1b5efabe44fc3e77d9b814622fa6089e1414e86fdd64cc
+	source = tractor-5.2.0.tar.gz::https://framagit.org/tractor/tractor/-/archive/5.2.0/tractor-5.2.0.tar.gz
+	sha256sums = 73eea1b31669bfc7879b5de3ce854fe6be754dd01317467f1501c60ce28c94f0
 
 pkgname = tractor

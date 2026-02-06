@@ -1,8 +1,8 @@
 # Maintainer: George Tsiamasiotis <gtsiam@windowslive.com>
 
 pkgname=tractor
-pkgver=5.1.0
-pkgrel=3
+pkgver=5.2.0
+pkgrel=1
 pkgdesc='Setup an onion routing proxy'
 arch=(any)
 url='https://framagit.org/tractor/tractor/'
@@ -31,17 +31,8 @@ optdepends=(
   'carburetor: Graphical settings app using GTK'
 )
 
-source=("$pkgname-$pkgver.tar.gz::https://framagit.org/tractor/tractor/-/archive/$pkgver/tractor-$pkgver.tar.gz"
-        "0001-fix-missing-schema-check.patch")
-
-sha256sums=('54735797e3bc1a99499b2409beb67bfa2fa5058039a1dc3da7bfcb9999b2cc21'
-            'f7f986e07d44c0a7af1b5efabe44fc3e77d9b814622fa6089e1414e86fdd64cc')
-
-prepare() {
-  cd "$pkgname-$pkgver"
-
-  patch -Np1 -i "$srcdir/0001-fix-missing-schema-check.patch"
-}
+source=("$pkgname-$pkgver.tar.gz::https://framagit.org/tractor/tractor/-/archive/$pkgver/tractor-$pkgver.tar.gz")
+sha256sums=('73eea1b31669bfc7879b5de3ce854fe6be754dd01317467f1501c60ce28c94f0')
 
 build() {
   cd "$pkgname-$pkgver"
