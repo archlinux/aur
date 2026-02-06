@@ -8,6 +8,7 @@ pkgbase = anneal-git
 	makedepends = cargo
 	makedepends = git
 	depends = pacman
+	depends = sqlite
 	optdepends = paru: AUR helper for rebuilding packages
 	optdepends = yay: AUR helper for rebuilding packages
 	optdepends = pikaur: AUR helper for rebuilding packages

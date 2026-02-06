@@ -6,7 +6,7 @@ pkgdesc="Proactive AUR rebuild management for Arch Linux (git version)"
 arch=('x86_64')
 url="https://github.com/MarkWells-Dev/Anneal"
 license=('GPL-3.0-or-later')
-depends=('pacman')
+depends=('pacman' 'sqlite')
 makedepends=('cargo' 'git')
 optdepends=(
     'paru: AUR helper for rebuilding packages'
