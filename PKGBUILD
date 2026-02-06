@@ -13,6 +13,7 @@ makedepends=('cargo')
 _pkgsrc="${url##*/}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 b2sums=('44b3016a8aac2d6e34215236de664a08175903821b00ca3a06a2611788bc7b0b08f85ad0ab574b24b676202d3f747257a8de12484de6cb4774c9c40ed86fd25a')
+CFLAGS+=' -ffat-lto-objects'
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
