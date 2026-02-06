@@ -2,7 +2,7 @@ pkgbase = kde-builder-git
 	pkgdesc = A tool to build KDE software
 	pkgver = r467.0fbeb97
 	pkgrel = 1
-	url = https://invent.kde.org/sdk/kde-builder
+	url = https://kde-builder.kde.org/en/introduction/brief-intro.html
 	arch = any
 	license = GPL
 	depends = git
@@ -10,6 +10,8 @@ pkgbase = kde-builder-git
 	depends = python-yaml
 	depends = python-setproctitle
 	optdepends = python-pytest: testing support
+	provides = kde-builder
+	conflicts = kde-builder
 	source = git+https://invent.kde.org/sdk/kde-builder.git
 	sha256sums = SKIP
 
