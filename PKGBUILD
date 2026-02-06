@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 pkgname=plasmazones-bin
-pkgver=1.5.9
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='FancyZones-style window tiling for KDE Plasma (binary)'
 arch=('x86_64')
@@ -30,7 +30,7 @@ optdepends=(
 provides=('plasmazones')
 conflicts=('plasmazones' 'plasmazones-git')
 source=("$pkgname-$pkgver.pkg.tar.zst::$url/releases/download/v$pkgver/plasmazones-$pkgver-1-x86_64.pkg.tar.zst")
-sha256sums=('2ed2c0fb470c837bacc09de307ffaa4208fe65d5ba9741bf4c383116fed93949')
+sha256sums=('0cbd949a0720159a984932cd7555743d10d7e8e52952ddcff9b0f2c947620d22')
 install=plasmazones.install
 
 package() {

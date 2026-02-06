@@ -10,6 +10,10 @@ post_install() {
     echo "  To enable the daemon:"
     echo "      systemctl --user enable --now plasmazones.service"
     echo ""
+    echo "  The KWin effect is enabled by default, but KWin must be"
+    echo "  restarted to load it. Log out and back in, or run:"
+    echo "      kwin_wayland --replace &"
+    echo ""
     echo "  Settings: System Settings → Window Management → PlasmaZones"
     echo ""
     echo "  If PlasmaZones doesn't appear in System Settings, run:"
@@ -26,6 +30,9 @@ post_upgrade() {
     echo ""
     echo "  If the daemon was running, restart it:"
     echo "      systemctl --user restart plasmazones.service"
+    echo ""
+    echo "  Note: KWin must be restarted to pick up effect plugin changes."
+    echo "  Log out and back in, or run: kwin_wayland --replace &"
     echo ""
 }
 
