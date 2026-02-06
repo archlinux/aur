@@ -1,7 +1,7 @@
 # Maintainer: tuxxx <nzb_tuxxx@proton.me>
 
 pkgname=sparrow-wallet-git
-pkgver=2.3.1.r50.g4309216
+pkgver=2.3.1.r64.gb51bd90
 pkgrel=1
 pkgdesc="Desktop Bitcoin Wallet focused on security and privacy (git version)"
 arch=('x86_64')
@@ -32,13 +32,11 @@ source=(
     "sparrow::git+https://github.com/sparrowwallet/sparrow.git#branch=master"
     "drongo::git+https://github.com/sparrowwallet/drongo.git"
     "lark::git+https://github.com/sparrowwallet/lark.git"
-    "MimeInfo.xml"
 )
 sha256sums=(
     'SKIP'
     'SKIP'
     'SKIP'
-    'd0ad5f5457005776fb5021752f9468a55f3a01f498a7984fc97ef652b44460c1'
 )
 
 pkgver() {
@@ -96,6 +94,6 @@ EOF
         "src/main/deploy/package/linux/Sparrow.desktop" > \
         "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
 
-    install -Dm644 "${srcdir}/MimeInfo.xml" \
+    install -Dm644 "src/main/deploy/package/linux/sparrowwallet-Sparrow-MimeInfo.xml" \
         "${pkgdir}/usr/share/mime/packages/${pkgname%-git}.xml"
 }
