@@ -1,0 +1,25 @@
+pkgbase = anneal-bin
+	pkgdesc = Proactive AUR rebuild management for Arch Linux (prebuilt binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/MarkWells-Dev/Anneal
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = pacman
+	optdepends = paru: AUR helper for rebuilding packages
+	optdepends = yay: AUR helper for rebuilding packages
+	optdepends = pikaur: AUR helper for rebuilding packages
+	optdepends = aura: AUR helper for rebuilding packages
+	optdepends = trizen: AUR helper for rebuilding packages
+	optdepends = rebuild-detector: detect packages needing rebuild via checkrebuild
+	provides = anneal
+	conflicts = anneal
+	conflicts = anneal-git
+	source = https://github.com/MarkWells-Dev/Anneal/releases/download/v0.1.0/anneal-x86_64-linux
+	source = https://github.com/MarkWells-Dev/Anneal/releases/download/v0.1.0/anneal-trigger.hook
+	source = https://github.com/MarkWells-Dev/Anneal/raw/v0.1.0/LICENSE
+	sha256sums = b1c2b5850b3542548efa8855590bc1dac03cc3b525a86a6ea7640594913ef344
+	sha256sums = 10cfa2ed5510c7535437ac54097137262841131717ac73a221c5ebde3d050e88
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+
+pkgname = anneal-bin
