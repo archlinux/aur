@@ -1,13 +1,13 @@
 pkgbase = claude-code-acp
 	pkgdesc = Use Claude Code from any ACP client such as Zed!
-	pkgver = 0.14.0
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/zed-industries/claude-code-acp
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = npm
 	depends = nodejs
-	source = https://registry.npmjs.org/@zed-industries/claude-code-acp/-/claude-code-acp-0.14.0.tgz
-	sha256sums = 16f496a52a8f8e16531424f307cc4ff8df81c724edd0076c4970aa576aa035a4
+	source = https://registry.npmjs.org/@zed-industries/claude-code-acp/-/claude-code-acp-0.15.0.tgz
+	sha256sums = 768fdafee838dc167a09e14f81ad0d4f2c44e06cfba804d2badc397f620bbdc1
 
 pkgname = claude-code-acp
