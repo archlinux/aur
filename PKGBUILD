@@ -1,7 +1,7 @@
 # Maintainer: Christopher McAdams <mca.christopher@gmail.com>
 pkgname=("alacritty-use-theme-with-redshift-git" "alacritty-use-theme-with-gnome-darkmode-git")
 pkgbase=alacritty-use-theme-with-services-git
-pkgver=r64.351643e
+pkgver=r65.ed38a3e
 pkgrel=1
 pkgdesc="services to use alacritty-use-theme"
 arch=('x86_64')
@@ -32,7 +32,7 @@ package_alacritty-use-theme-with-redshift-git() {
   install -Dm755 $srcdir/$pkgbase/app/home/config/systemd/user/alacritty-use-theme.timer "$pkgdir/usr/lib/systemd/user/alacritty-use-theme.timer"
   install -Dm755 $srcdir/$pkgbase/app/home/config/systemd/user/alacritty-use-theme.target "$pkgdir/usr/lib/systemd/user/alacritty-use-theme.target"
   install -Dm755 $srcdir/$pkgbase/app/home/config/systemd/user/alacritty-use-theme.service "$pkgdir/usr/lib/systemd/user/alacritty-use-theme.service"
-  install -Dm755 $srcdir/$pkgbase/app/home/config/systemd/user/update-gtk-theme.service "$pkgdir/usr/lib/systemd/user/update-gtk-theme.service"
+  install -Dm755 $srcdir/$pkgbase/app/home/config/systemd/user/update-de-theme.service "$pkgdir/usr/lib/systemd/user/update-de-theme.service"
 
   #config$pkgbase
   install -Dm755 $srcdir/$pkgbase/app/home/config/theme-switcher/environment.env "$pkgdir/usr/lib/alacritty-use-theme/environment.env"
@@ -43,7 +43,7 @@ package_alacritty-use-theme-with-redshift-git() {
   install -Dm777 $srcdir/$pkgbase/app/home/local/share/theme-switcher/toggle-theme-per-mode.sh "$pkgdir/usr/lib/alacritty-use-theme/bin/theme-switcher/toggle-theme-per-mode.sh"
 
   install -Dm755 $srcdir/$pkgbase/app/home/local/theme-switcher/bin/get-sunrise-sunset.sh "$pkgdir/usr/lib/alacritty-use-theme/bin/theme-switcher/get-sunrise-sunset.sh"
-  install -Dm755 $srcdir/$pkgbase/app/home/local/theme-switcher/bin/update-gdm.sh "$pkgdir/usr/lib/alacritty-use-theme/bin/theme-switcher/update-gdm.sh"
+  install -Dm755 $srcdir/$pkgbase/app/home/local/theme-switcher/bin/update-de.sh "$pkgdir/usr/lib/alacritty-use-theme/bin/theme-switcher/update-de.sh"
 
   install -Dm755 $srcdir/$pkgbase/app/home/local/theme-switcher/src/utils/debug.sh "$pkgdir/usr/lib/alacritty-use-theme/utils/debug.sh"
   install -Dm755 $srcdir/$pkgbase/app/home/local/theme-switcher/src/utils/is_theme_locked.sh "$pkgdir/usr/lib/alacritty-use-theme/utils/is_theme_locked.sh"
