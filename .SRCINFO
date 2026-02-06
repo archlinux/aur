@@ -16,6 +16,6 @@ pkgbase = adw-network-bin
 	source = icon.png::https://raw.githubusercontent.com/PlayRood32/adw-network/v0.1.0/data/icons/hicolor/scalable/apps/icon.png
 	sha256sums = 4a9da1aca52386158afbd6012b01dd4020e70be4c7485bfe5c313faa338b2888
 	sha256sums = SKIP
-	sha256sums = 3eaf915ebb5bcbc0d49a5a7c22ecb8d5ff453d4583efcf9dc6b0f044e079f16a
+	sha256sums = 518a328abee19239ba5f20bcbfe3f15c474bc5c18b8adcb37c9793ecf7c640cc
 
 pkgname = adw-network-bin

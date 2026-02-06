@@ -13,7 +13,7 @@ source=(
   "com.github.adw-network.desktop::https://raw.githubusercontent.com/PlayRood32/adw-network/v${pkgver}/data/com.github.adw-network.desktop"
   "icon.png::https://raw.githubusercontent.com/PlayRood32/adw-network/v${pkgver}/data/icons/hicolor/scalable/apps/icon.png"
 )
-sha256sums=('4a9da1aca52386158afbd6012b01dd4020e70be4c7485bfe5c313faa338b2888' 'SKIP' '3eaf915ebb5bcbc0d49a5a7c22ecb8d5ff453d4583efcf9dc6b0f044e079f16a')
+sha256sums=('4a9da1aca52386158afbd6012b01dd4020e70be4c7485bfe5c313faa338b2888' 'SKIP' '518a328abee19239ba5f20bcbfe3f15c474bc5c18b8adcb37c9793ecf7c640cc')
 
 package() {
   install -Dm755 "${srcdir}/adwaita-network" "${pkgdir}/usr/bin/adwaita-network"
