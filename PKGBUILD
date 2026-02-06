@@ -1,9 +1,9 @@
 # Maintainer: Augusto Elesbão <aelesbao@gmail.com>
 pkgname=git-recursive
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Execute git operations in multiple repositories"
-arch=("i686" "x86_64" "armv6h" "armv7h")
+arch=(any)
 url="https://github.com/aelesbao/git-recursive"
 license=("MIT")
 options=()
