@@ -1,6 +1,7 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgbase=sqldef-bin
+groups=('sqldef-bin')
 pkgname=(
   mysqldef-bin
   sqlite3def-bin
@@ -8,7 +9,7 @@ pkgname=(
   psqldef-bin
 )
 pkgver=3.9.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Idempotent schema management for MySQL, PostgreSQL, SQLite, and SQL Server'
 arch=(x86_64 aarch64)
 url='https://github.com/sqldef/sqldef'
