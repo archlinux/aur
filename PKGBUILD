@@ -4,7 +4,7 @@
 
 pkgname=ncspot-ncurses
 _pkgname=ncspot
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc='Cross-platform ncurses Spotify client written in Rust, inspired by ncmpc and the likes'
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=('openssl' 'libpulse' 'libxcb' 'dbus' 'hicolor-icon-theme' 'gcc-libs' 'g
 makedepends=('cargo' 'python' 'pkgconf' 'ueberzug' 'pandoc-cli')
 optdepends=('ueberzug: display album art in terminal (X11 and wayland using ueberzugpp)')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/hrkfdn/ncspot/archive/v${pkgver}.tar.gz")
-b2sums=('f2d5c8ceb571bb20e53f1ac0fe740be927fe29227c50b2de32d17952e632e935c4a4706e1d537dc3da40bb8dcd539b7ff56ec4652a7a5e8fb057eb626af66b1e')
+b2sums=('aeec753e4103139952822337b180319dd0c4bb955c6e76c9b35288f02f4a2110d9e3279f15aae6516e4ea8fb96463e65fcb29ab0cfc5d8d1d678bdbf8756fced')
 options=('!lto' '!debug' 'strip')
 
 prepare() {
