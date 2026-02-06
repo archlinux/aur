@@ -1,7 +1,7 @@
 # Maintainer: Love Billenius <lovebillenius@disroot.org>
 pkgname=lolcat++-bin
 _pkgname=lolcat++
-pkgver=2.3.2
+pkgver=2.3.3
 pkgrel=1
 pkgdesc="A lolcat reimplementation in C++ -- BLAZINGLY FAST"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
     "LICENSE-$pkgver::$url/raw/v$pkgver/LICENSE"
 )
 sha256sums=(
-    '25ead9a66b5ee9aa74f2acad78937805f8ef01c681e1924ade122aa4f5b89bfe'
+    'ed718ba60d081c0a19111d8bbefcf9b34b7fe8d9fc5c8311294ff8fed8762473'
     'acb93081ed46c3ac2a45091a6d2a0b522921f884e47bb2d090dbeee4767c7b85'
 )
 
