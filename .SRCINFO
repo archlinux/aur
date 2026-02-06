@@ -1,0 +1,27 @@
+pkgbase = nicotine-plus-cigorette-git
+	pkgdesc = Nicotine+ Soulseek client patched for Tor anonymity via Cigorette
+	pkgver = r12218.caf9e10
+	pkgrel = 1
+	url = https://gitlab.com/lilacashes/nicotine-over-tor
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-gobject
+	depends = gtk3
+	depends = gobject-introspection
+	depends = tor
+	depends = torsocks
+	provides = nicotine-plus
+	conflicts = nicotine-plus
+	conflicts = nicotine-plus-git
+	source = git+https://github.com/nicotine-plus/nicotine-plus.git
+	source = git+https://gitlab.com/lilacashes/nicotine-over-tor.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = nicotine-plus-cigorette-git
