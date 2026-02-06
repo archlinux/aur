@@ -2,12 +2,13 @@
 
 pkgname=r-air-bin
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An R language server and formatter"
 arch=('x86_64')
 url="https://github.com/posit-dev/air"
 license=('MIT')
 depends=('gcc-libs' 'glibc')
+conflicts=('r-air')
 options=('!debug')
 provides_x86_64=("r-air=${pkgver}")
 source_x86_64=("${pkgname}-${pkgver}.tar.gz::https://github.com/posit-dev/air/releases/download/${pkgver}/air-$CARCH-unknown-linux-gnu.tar.gz"
