@@ -2,10 +2,10 @@
 
 pkgname=arf-bin
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern R console"
 arch=('x86_64')
-url="https://github.com/a2-ai/arf"
+url="https://github.com/eitsupi/arf"
 license=('MIT')
 depends=('gcc-libs' 'glibc')
 conflicts=('arf')
