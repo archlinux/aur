@@ -1,0 +1,19 @@
+pkgbase = lolcat++-bin
+	pkgdesc = A lolcat reimplementation in C++ -- BLAZINGLY FAST
+	pkgver = 2.3.2
+	pkgrel = 1
+	url = https://github.com/lolcatpp/lolcatpp
+	arch = x86_64
+	license = BSD-3-Clause
+	provides = lolcat++
+	provides = lolcat
+	conflicts = lolcat++
+	conflicts = lolcat
+	conflicts = lolcat-c
+	conflicts = lolcat-rs
+	source = lolcat++-2.3.2-x86_64::https://github.com/lolcatpp/lolcatpp/releases/download/v2.3.2/lolcat-linux-amd64
+	source = LICENSE-2.3.2::https://github.com/lolcatpp/lolcatpp/raw/v2.3.2/LICENSE
+	sha256sums = 25ead9a66b5ee9aa74f2acad78937805f8ef01c681e1924ade122aa4f5b89bfe
+	sha256sums = acb93081ed46c3ac2a45091a6d2a0b522921f884e47bb2d090dbeee4767c7b85
+
+pkgname = lolcat++-bin
