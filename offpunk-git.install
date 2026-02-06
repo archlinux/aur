@@ -1,7 +1,10 @@
+# shellcheck shell=bash
 # -*- sh -*-
 
 post_install() {
   cat <<__EOT__
+» Please notice that the opnk command has been renamed to openk.
+»
 » In order to take advantage of the Full-Text RSS Site Config,
 » add the following line to your ~/.config/offpunk/offpunkrc:
 »

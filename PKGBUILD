@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # -*- mode: sh -*-
 
 #  Maintainer: Klaus Alexander Seistrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
@@ -5,13 +6,22 @@
 
 pkgname='offpunk-git'
 _pkgname='offpunk'
-epoch=6
-pkgver=2.8.r106.gd197b7d
+pkgdesc='Command-line and offline-first smolnet browser/feed reader for Gemini, Gopher, Spartan and web (development version)'
+pkgver=3.0.beta2.r1.g1f49b05
 pkgrel=2
-pkgdesc='Fork of the command-line Gemini client AV-98 with added offline capabilities (latest commit)'
-arch=('any')
+epoch=6
 url='https://git.sr.ht/~lioploum/offpunk'
+install="$pkgname.install"
+arch=('any')
 license=('AGPL-3.0-or-later')  # SPDX-License-Identifier: AGPL-3.0-or-later
+makedepends=(
+  'coreutils'
+  'git'
+  'python-build'
+  'python-hatchling'
+  'python-installer'
+  'python-wheel'
+)
 depends=(
   'file'
   'ftr-site-config'
@@ -25,14 +35,6 @@ depends=(
   'python-requests'
   'python-setproctitle'
 )
-makedepends=(
-  'coreutils'
-  'git'
-  'python-build'
-  'python-hatchling'
-  'python-installer'
-  'python-wheel'
-)
 optdepends=(
   'chafa>=1.10: chafa and ansiwrap are required to render images in terminal'
   'timg>1.3.2: view images and videos in the terminal'
@@ -42,11 +44,10 @@ optdepends=(
   'xsel: copies text to the X11 clipboard (alternative)'
 )
 provides=('offpunk')
-conflicts=('offpunk' 'xkcd')
-source=("git+$url")
+conflicts=("${provides[@]}")
 noextract=("$_pkgname")
+source=("git+$url")
 sha256sums=('SKIP')
-install="$pkgname.install"
 
 pkgver() {
   cd "$_pkgname"
@@ -66,18 +67,16 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
     CHANGELOG CONTRIBUTORS README.md
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/tutorial" \
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/tutorial" \
     tutorial/*.{gmi,html,py}
-  install -vDm0644 -t "$pkgdir/usr/share/man/man1" \
+  install -Dm0644 -t "$pkgdir/usr/share/man/man1" \
     man/*.1
 
-  cd "$pkgdir/usr/share/man/man1/" && {
-    test -f opnk.1 && ln -vsrf opnk.1 openk.1
-  }
-
-  cd "$pkgdir/usr/share/doc/" && ln -vsrf "$pkgname" "$_pkgname"
+  cd "$pkgdir/usr/bin/"            && ln -srf openk opnk
+  cd "$pkgdir/usr/share/man/man1/" && ln -srf openk.1 opnk.1
+  cd "$pkgdir/usr/share/doc/"      && ln -srf "$pkgname" "$_pkgname"
 }
 
 # eof

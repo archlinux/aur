@@ -1,6 +1,6 @@
 pkgbase = offpunk-git
-	pkgdesc = Fork of the command-line Gemini client AV-98 with added offline capabilities (latest commit)
-	pkgver = 2.8.r106.gd197b7d
+	pkgdesc = Command-line and offline-first smolnet browser/feed reader for Gemini, Gopher, Spartan and web (development version)
+	pkgver = 3.0.beta2.r1.g1f49b05
 	pkgrel = 2
 	epoch = 6
 	url = https://git.sr.ht/~lioploum/offpunk
@@ -32,7 +32,6 @@ pkgbase = offpunk-git
 	optdepends = xsel: copies text to the X11 clipboard (alternative)
 	provides = offpunk
 	conflicts = offpunk
-	conflicts = xkcd
 	noextract = offpunk
 	source = git+https://git.sr.ht/~lioploum/offpunk
 	sha256sums = SKIP
