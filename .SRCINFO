@@ -1,0 +1,24 @@
+pkgbase = dekl-git
+	pkgdesc = Declarative Arch Linux system manager - packages, dotfiles, services
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/Keithsel/dekl
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = pacman
+	depends = python
+	depends = python-typer
+	depends = python-yaml
+	depends = python-rich
+	optdepends = paru: AUR support
+	optdepends = yay: AUR support
+	provides = dekl
+	conflicts = dekl
+	source = dekl-git::git+https://github.com/Keithsel/dekl.git
+	sha256sums = SKIP
+
+pkgname = dekl-git
