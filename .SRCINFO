@@ -1,6 +1,6 @@
 pkgbase = anytype-alpha-bin
 	pkgdesc = Operating environment for the new internet (Anytype)
-	pkgver = 0.53.38_alpha
+	pkgver = 0.53.39_alpha
 	pkgrel = 1
 	url = https://anytype.io
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = anytype-alpha-bin
 	conflicts = anytype-bin
 	options = !strip
 	options = !debug
-	source = anytype-0.53.38-alpha.deb::https://github.com/anyproto/anytype-ts/releases/download/v0.53.38-alpha/anytype_0.53.38-alpha_amd64.deb
-	source = LICENSE-0.53.38-alpha.md::https://raw.githubusercontent.com/anyproto/anytype-ts/refs/tags/v0.53.38-alpha/LICENSE.md
-	sha256sums = e8366852ac861816d5fca784a60d432544deed7a635c9fe93534d40db246ecb7
+	source = anytype-0.53.39-alpha.deb::https://github.com/anyproto/anytype-ts/releases/download/v0.53.39-alpha/anytype_0.53.39-alpha_amd64.deb
+	source = LICENSE-0.53.39-alpha.md::https://raw.githubusercontent.com/anyproto/anytype-ts/refs/tags/v0.53.39-alpha/LICENSE.md
+	sha256sums = a1548ac9359957f37f9f666a062b838a4cb4be27216d3bcb58a2462fa82fcc3e
 	sha256sums = daad9eb95adc6262b07115ba2cf87cd4c64acaca4b45d48e0fd3b15a72a31dc1
 
 pkgname = anytype-alpha-bin
