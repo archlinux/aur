@@ -1,6 +1,6 @@
 # Maintainer: Kosa Matyas <kosa03matyas@gmail.com>
 pkgname=hyprkcs-git
-pkgver=1.23.8
+pkgver=1.24.0
 pkgrel=1
 pkgdesc="A fast, minimal Hyprland keybind cheat sheet and editor written in Rust/GTK4"
 arch=('x86_64')
