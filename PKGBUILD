@@ -2,8 +2,8 @@
 
 pkgname=python-dict2css
 _name=${pkgname#python-}
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.3.0.post1
+pkgrel=1
 pkgdesc='A μ-library for constructing cascading style sheets from Python dictionaries'
 arch=('any')
 url='https://github.com/sphinx-toolbox/dict2css'
@@ -25,7 +25,7 @@ makedepends=(
 )
 optdepends=()
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha512sums=('6f9daaeee7e8005b2279780b1a47b9cb5115ee18bb6daa1e3f70cf5e6486af2d7306ee1a6f0de2d9ea54991281c3235a126415cc725959a91f506eacafd5590f')
+sha512sums=('d1b8d9d87373064212d125064a75af706fa00c5717968221add8773ce4d276b443ab301911be358c1ffbfb5612a0e29e4b3c06083f622e8ff549ccf71349e935')
 
 prepare() {
   git -C "${srcdir}/${_name}" clean -dfx
