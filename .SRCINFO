@@ -1,0 +1,18 @@
+pkgbase = r-air
+	pkgdesc = The R Installation Manager
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/r-lib/rig
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	depends = gcc-libs
+	depends = glibc
+	conflicts = r-air-bin
+	options = !lto
+	options = !debug
+	source = air-0.8.1.tar.gz::https://github.com/posit-dev/air/archive/ 0.8.1.tar.gz
+	sha512sums = a8fc63743bbe7fb08460e93c22851624a9ec83451ede22a93759db8fe2ba2dbf52d52301d11da737c7d0548d67e80b009497e0370ede0faac5b7f9c0351d6ae1
+
+pkgname = r-air
