@@ -1,0 +1,17 @@
+pkgbase = stalker-gamma-cli-bin
+	pkgdesc = a cli to install Stalker Anomaly and the GAMMA mod pack (appimage)
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/FaithBeam/stalker-gamma-cli
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	depends = unzip
+	depends = fuse2
+	options = !strip
+	source_x86_64 = https://github.com/FaithBeam/stalker-gamma-cli/releases/download/1.5.1/stalker-gamma+linux.x64.AppImage
+	sha256sums_x86_64 = 50d4ce008b619e6cc37597e0b33e1e5e0fcd51e03d3b18c0ca8e0831aba001e3
+	source_aarch64 = https://github.com/FaithBeam/stalker-gamma-cli/releases/download/1.5.1/stalker-gamma+linux.arm64.AppImage
+	sha256sums_aarch64 = 60d56f44fdf031d741f0c09f6b59c72e16cde9d2a94a685cc01b03bda15c0441
+
+pkgname = stalker-gamma-cli-bin
