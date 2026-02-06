@@ -1,6 +1,6 @@
 pkgbase = chatwise
 	pkgdesc = The second fastest AI chatbot
-	pkgver = 0.9.79
+	pkgver = 0.9.80
 	pkgrel = 1
 	url = https://chatwise.app/
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = chatwise
 	depends = libappindicator-gtk3
 	options = !strip
 	options = !debug
-	source = https://github.com/egoist/chatwise-releases/releases/download/v0.9.79/ChatWise_0.9.79_amd64.deb
-	sha256sums = 6055bc139af2db924f240340abd05379117f18db5dc205f4e833411fa24c20f7
+	source = https://github.com/egoist/chatwise-releases/releases/download/v0.9.80/ChatWise_0.9.80_amd64.deb
+	sha256sums = 053b9837eb97fd3f1211ccd557cdf81f840ef71917960115ea69f34e69dece46
 
 pkgname = chatwise
