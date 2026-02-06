@@ -1,8 +1,8 @@
-# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer:  Leah Anderson <leah@chromebooks.lol>
 
 _binname="dtk"
 pkgname="decomp-toolkit"
-pkgver=1.5.1
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="A GameCube & Wii decompilation toolkit"
 arch=('aarch64' 'x86_64')
@@ -12,27 +12,12 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 _pkgsrc="${url##*/}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('8034f1981d98664bb9e25e5c91d9191ab45af09493e40ad868e2b38412b682738f9bae83dbb73415190d47e6be7c013108f450579699a2528378efd16761f41d')
-
-prepare() {
-  cd "${srcdir}/${_pkgsrc}"
-  export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
-}
+b2sums=('44b3016a8aac2d6e34215236de664a08175903821b00ca3a06a2611788bc7b0b08f85ad0ab574b24b676202d3f747257a8de12484de6cb4774c9c40ed86fd25a')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
+  cargo build --release
 }
-
-check() {
-  cd "${srcdir}/${_pkgsrc}"
-  export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen --all-features
-}
-
 package() {
   cd "${srcdir}/${_pkgsrc}"
   install -vDm755 "target/release/${_binname}" "${pkgdir}/usr/bin/${pkgname}"
