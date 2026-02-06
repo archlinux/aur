@@ -1,6 +1,6 @@
 post_install() {
   echo -e "====================[alacritty-use-theme-with-redshift]====================\n"
   echo -e "Run this command to enable and start the services:"
-  echo -e "\`systemctl --user enable --now alacritty-use-theme.service alacritty-use-theme.timer alacritty-use-theme.target\`"
+  echo -e "\`systemctl --user enable --now alacritty-use-theme.service alacritty-use-theme.timer alacritty-use-theme.target update-gtk-theme.service`"
   echo -e "====================\n"
 }
