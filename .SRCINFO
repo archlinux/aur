@@ -1,0 +1,24 @@
+pkgbase = python-coincidence
+	pkgdesc = Helper functions for pytest
+	pkgver = 0.6.6
+	pkgrel = 1
+	url = https://github.com/python-coincidence/coincidence
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-whey
+	makedepends = python-build
+	makedepends = python-license-expression
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-domdf-python-tools
+	depends = python-pytest
+	depends = python-pytest-regressions
+	depends = python-toml
+	depends = python-typing_extensions
+	source = coincidence::git+https://github.com/python-coincidence/coincidence.git#tag=v0.6.6
+	sha512sums = 020fcfc06a30f3b1416c255a94faec5feacc58dbed194d3146235da74d72db78f125da433140060e992e25a02e57ea0fb0ce517b49d3282a86b3997ae9cf0295
+
+pkgname = python-coincidence
