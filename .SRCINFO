@@ -1,0 +1,16 @@
+pkgbase = libsmb2-git
+	pkgdesc = Userspace client/server library for accessing or serving SMB2/SMB3 shares on a network
+	pkgver = 6.2.r163.gaedafb2
+	pkgrel = 1
+	url = https://github.com/sahlberg/libsmb2
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	provides = libsmb2=$pkgver
+	conflicts = libsmb2
+	options = staticlibs
+	source = git+https://github.com/sahlberg/libsmb2.git
+	sha256sums = SKIP
+
+pkgname = libsmb2-git
