@@ -6,7 +6,7 @@
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
 pkgname="dprint-plugin-markdown"
-pkgver="0.20.0"
+pkgver="0.21.1"
 pkgrel="1"
 pkgdesc="Markdown code formatting plugin for dprint."
 arch=("any")
@@ -15,7 +15,7 @@ license=("MIT")
 depends=("dprint")
 makedepends=("rust" "rust-wasm")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=("3e4c9f1ac5a4b0c980572b653c82aa3b26fae163759e5a09996b5aa6c99289c287129cc7737c2f80d19088f4842bf312caae7f02561696e91bb93c520fe7737d")
+sha512sums=("f04f33427c8419cb2e5605f5a9cf9e0eb785fa349f695468f26d0db1f16b18894335308d6db950919af0f16dde24b07abac49eccb4af131c5c90dee9f3b1f274")
 
 prepare()
 {
