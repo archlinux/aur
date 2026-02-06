@@ -1,9 +1,50 @@
 -------------------------------------------------------
  Changelog    : kea_config
- Tags         : 5.0.0 ➙ 5.2.2
-              : 2025-07-20 ➙ 2026-01-06
+ Tags         : 5.0.1 ➙ 6.1.0
+              : 2025-07-20 ➙ 2026-02-06
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-02-06   : 6.1.0
+              - Version 6.0.0
+            
+                * Major Changes
+            
+                  Our testing has not uncovered any issues, but it is always sensible to
+                  backup the *kea-dhcp4* and *kea-ctrl-agent* config files (these are
+                  the output of the *kea-config* tool) before running the new version.
+            
+                  *kea-config* does keeps 1 backup copy of previous runs outputs as well.
+            
+                * New dependency *python-ruamel-yaml*
+                * Add support for multiple network interfaces with separate subnets.
+            
+                  The server section *interface* is replaced by *interfaces* that is now a list
+                  of pairs, (interface, subnet).  Note that even if the primary server supports
+                  more than 1 interface/subnet, multiples are optional for standby and backup.
+            
+                * Configuration file has been changed from TOML to YAML format.
+            
+                  Existing config files will be auto converted to the new format. Comments will be lost
+                  unfortunately, so you may want to edit the file.
+            
+                  Example configs have been updated using the new format (the previous one are there too).
+                  One example illustrates a server offering IPs for 2 different subnets, with each
+                  subnet associated with its own network interface.
+            
+                * Code simplification and rewrite. Remove dynamic created classes and replace with
+                  clearly defined classes. More robust (if less cool). Re-organize the code to
+                  keep it more maintainable.
+            
+                * Config variables removed.
+                  - *server_types*
+                    Each server is enabled using in the server section using *active: true* or disabled with *active: false*
+            
+                * Backup of current kea configuration files.
+                  - Now keeps a backup copy of each output kea file under "Prev" subdirectory before generating
+                    any ones.
+ 2026-01-06   ⋯
+              - update Docs/Changelog
 
  2026-01-06   : 5.2.2
               - PKGBUILD small change
@@ -28,11 +69,4 @@
               - readme - more rst tweaks
               - more readme
               - Readme: tidy up some rst
-              - update Docs/Changelog Docs/kea_config.pdf
-
- 2025-07-20   : 5.0.0
-              - update Docs/Changelog Docs/kea_config.pdf
-              - Code re-org/cleanup.
-                Code now complies with PEP-8, PEP-257 and PEP-484 style and type annotations
- 2025-05-29   ⋯
               - update Docs/Changelog Docs/kea_config.pdf
