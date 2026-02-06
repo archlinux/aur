@@ -1,6 +1,6 @@
 pkgbase = preditor
 	pkgdesc = Minimal GTK3 image previewer with basic editing functions
-	pkgver = r3.343910a
+	pkgver = r0.0
 	pkgrel = 1
 	url = https://github.com/rabfulton/preditor
 	arch = x86_64

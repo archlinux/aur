@@ -1,5 +1,5 @@
 pkgname=preditor
-pkgver=r3.343910a
+pkgver=r4.9e3a113
 pkgrel=1
 pkgdesc='Minimal GTK3 image previewer with basic editing functions'
 arch=('x86_64')
@@ -23,6 +23,5 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}"
 
-  install -Dm755 preditor "${pkgdir}/usr/bin/preditor"
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/preditor/README.md"
+  make DESTDIR="${pkgdir}" install
 }
