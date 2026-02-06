@@ -1,36 +1,40 @@
-# Maintainer: Sumner Evans <sumner.evans98 at gmail dot com>
+# Maintainer: taotieren <admin@taotieren.com>
 
-pkgbase='python-typing-inspect'
-pkgname=('python-typing-inspect')
-_module='typing_inspect'
-pkgver='0.6.0'
-pkgrel=2
-pkgdesc='Runtime inspection utilities for Python typing module'
+pkgname=python-typing-inspect
+_name=${pkgname#python-}
+pkgver=0.9.0
+pkgrel=1
+pkgdesc='Runtime inspection utilities for typing module'
+arch=('any')
 url='https://github.com/ilevkivskyi/typing_inspect'
+license=('MIT')
 depends=(
-    'python'
-    'python-mypy_extensions'
-    'python-typing_extensions'
+  'python'
+  'python-mypy_extensions'
+  'python-typing_extensions'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-wheel'
+  'python-setuptools'
 )
 optdepends=()
-makedepends=(
-    'python-setuptools'
-)
-license=('MIT')
-arch=('any')
-source=(
-    'https://files.pythonhosted.org/packages/source/t/typing_inspect/typing_inspect-0.6.0.tar.gz'
-)
-md5sums=('987fa620fd0ac7b6be9c8f6d71eeea2e')
+source=("${_name}::git+${url}.git#tag=$pkgver")
+sha512sums=('9e33e5e03f6bb69f41207ea46ad9d7adbbe326314ddfe090b0dd0c2f48efe07e05e8a4a545653109348f5f8ff9c77e6146ca52f0e68c1e5a169f3366b1a624a0')
 
+prepare() {
+    git -C "${srcdir}/${_name}" clean -dfx
+}
 
 build() {
-    cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py build
+    cd "${srcdir}/${_name}"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    pushd "${srcdir}/${_module}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-    popd
+    cd "${srcdir}/${_name}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+    install -Dm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
