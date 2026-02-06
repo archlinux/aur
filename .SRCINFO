@@ -1,20 +1,20 @@
 pkgbase = roslyn-ls
 	pkgdesc = Language server behind C# Dev Kit for Visual Studio Code
-	pkgver = 2.110.4
+	pkgver = 2.120.3
 	pkgrel = 1
 	url = https://github.com/dotnet/roslyn/tree/main/src/LanguageServer
 	arch = x86_64
 	license = MIT
-	makedepends = dotnet-sdk-10.0
-	makedepends = dotnet-targeting-pack-9.0
+	makedepends = jq
+	makedepends = dotnet-targeting-pack-10.0
 	depends = gcc-libs
 	depends = glibc
-	depends = dotnet-sdk>=10.0
-	depends = dotnet-runtime-9.0
-	source = roslyn-VSCode-CSharp-2.110.4.tar.gz::https://github.com/dotnet/roslyn/archive/refs/tags/VSCode-CSharp-2.110.4.tar.gz
+	depends = dotnet-sdk-10.0
+	depends = dotnet-runtime-10.0
+	source = roslyn-VSCode-CSharp-2.120.3.tar.gz::https://github.com/dotnet/roslyn/archive/refs/tags/VSCode-CSharp-2.120.3.tar.gz
 	source = versions.targets
 	source = 0001-move-cache-directory.diff
-	sha256sums = 76f4a2dad8eb9166be7b3f83d9d6eb7c22c92461b985e92a681e04b0450b9d1b
+	sha256sums = 094632a98fe9a1464238120b43ff6777b2da340b2859454f448cfdf1e89e3a71
 	sha256sums = 66ef609bcee14f41754820a9dd4aeda578c338867e93da04ce15b48f9f93026b
 	sha256sums = 39817ac608d5eb5d36ab350faa00afde8fdd89e0e6f229a48bfa6374736a4217
 
