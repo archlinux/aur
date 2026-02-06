@@ -1,10 +1,10 @@
 pkgbase = kde-builder-git
 	pkgdesc = A tool to build KDE software
 	pkgver = r467.0fbeb97
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kde-builder.kde.org/en/introduction/brief-intro.html
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = git
 	depends = dbus-python
 	depends = python-yaml

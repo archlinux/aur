@@ -3,11 +3,11 @@
 _pkgname=kde-builder
 pkgname="${_pkgname}-git"
 pkgver=r467.0fbeb97
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to build KDE software"
 url="https://kde-builder.kde.org/en/introduction/brief-intro.html"
 arch=("any")
-license=("GPL")
+license=("GPL-2.0-or-later")
 depends=("git" "dbus-python" "python-yaml" "python-setproctitle")
 makedepends=()
 provides=(kde-builder)
