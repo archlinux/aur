@@ -1,16 +1,17 @@
 # Maintainer: Strahinya Radich <contact@strahinja.org>
 pkgname=sled
-pkgver=0.20.2
+pkgver=0.20.3
 pkgrel=1
 pkgdesc="Simple text editor"
 arch=('x86_64')
 url="https://strahinja.srht.site/sled"
 license=('GPL3')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~strahinja/sled/archive/v$pkgver.tar.gz")
-md5sums=('ff83547586264c4edcba1e3063475c46')
+md5sums=('42f38b4cf5dc5d9619ab20e382c68531')
 
 build() {
 	cd "${pkgname}-v$pkgver"
+	cp config.$(uname -s) config.mk
 
 	# Example on how to apply patches: syntax patch (uncomment last
 	# line in this paragraph); program patch(1) needed
@@ -29,6 +30,7 @@ build() {
 
 package() {
 	cd "${pkgname}-v$pkgver"
+	cp config.$(uname -s) config.mk
 
 	make FALLBACKVER="${pkgver}-$pkgrel" DESTDIR="$pkgdir" PREFIX="/usr" \
 		install
