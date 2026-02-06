@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=bilibili-video-downloader
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="哔哩哔哩 bilibili B站 视频 下载器，图形界面 + nfo刮削 + 广告标记 + 字幕下载 + 弹幕下载，轻松将视频加入emby等媒体库"
 arch=($CARCH)
@@ -33,7 +33,7 @@ backup=()
 options=(!debug !strip !lto)
 #install=${pkgname}.install
 source=("${pkgname}::git+${url}#tag=v${pkgver}")
-sha256sums=('0543e1cc38906366adc9d08d3d75b8c0a9a3f0dea53fb025f7a5aa0b5d687300')
+sha256sums=('6ff5927c4aa1e137649d48fbf6ada08c15df0d7ee2a48d44d146d1edf34843d3')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
