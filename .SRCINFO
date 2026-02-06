@@ -1,7 +1,7 @@
 pkgbase = klassy
 	pkgdesc = Highly customizable binary Window Decoration, Application Style and Global Theme plugin for recent versions of the KDE Plasma desktop.
-	pkgver = 6.5
-	pkgrel = 1
+	pkgver = 6.5.1
+	pkgrel = 2
 	url = https://github.com/paulmcauley/klassy
 	arch = x86_64
 	license = GPL-2.0-only AND GPL-3.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
@@ -33,8 +33,8 @@ pkgbase = klassy
 	depends = qt6-svg
 	depends = xdg-utils
 	replaces = classik
-	source = klassy-6.5.tar.gz::https://github.com/paulmcauley/klassy/archive/refs/tags/v6.5.tar.gz
-	sha256sums = 7083d5761758a530a8b86d97137e9f852ae1f47b110f8d1d78b0aa8960d2a799
+	source = klassy-6.5.1.tar.gz::https://github.com/paulmcauley/klassy/archive/refs/tags/v6.5.1.tar.gz
+	sha256sums = 2e8222a6e29b79d02bbd61c9276093f4d66fa36855c181d00827e6c1214ff9fd
 
 pkgname = klassy
 
