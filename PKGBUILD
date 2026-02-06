@@ -1,3 +1,11 @@
+# If you have a problem/question or want to improve this PKGBUILD,
+# you can create an issue/pull request on this Github repository:
+#
+# https://github.com/siaeyy/PKGBUILDs
+#
+# You can still use the Arch website as well.
+#
+
 _pkgname=typomat
 pkgname="$_pkgname"-git
 pkgver=0.1.3.r0.g2baf227
