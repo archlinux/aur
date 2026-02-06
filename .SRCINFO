@@ -12,6 +12,6 @@ pkgbase = qt-hearts
 	depends = qt6-multimedia
 	depends = qt6-declarative
 	source = qt-hearts-1.0.4.tar.gz::https://github.com/adelmonte/qt-hearts/archive/v1.0.4.tar.gz
-	sha256sums = d5f5a9c6f0ded5eceb97758e79964befa69e6386bba02def7cb781406e40c069
+	sha256sums = aa7603358d56b2e2bc84bf9d94690262d8bd34b04c20e6bc4b1d1777a91392f1
 
 pkgname = qt-hearts

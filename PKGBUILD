@@ -8,7 +8,7 @@ license=('GPL-3.0-or-later')
 depends=('qt6-base' 'qt6-svg' 'qt6-multimedia' 'qt6-declarative')
 makedepends=('cmake' 'qt6-tools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d5f5a9c6f0ded5eceb97758e79964befa69e6386bba02def7cb781406e40c069')
+sha256sums=('aa7603358d56b2e2bc84bf9d94690262d8bd34b04c20e6bc4b1d1777a91392f1')
 
 build() {
     cd "$pkgname-$pkgver"
