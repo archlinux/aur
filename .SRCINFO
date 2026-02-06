@@ -1,0 +1,44 @@
+pkgbase = sqldef-bin
+	pkgdesc = Idempotent schema management for MySQL, PostgreSQL, SQLite, and SQL Server
+	pkgver = 3.9.7
+	pkgrel = 1
+	url = https://github.com/sqldef/sqldef
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = sqldef
+	conflicts = sqldef
+	source = LICENSE_3.9.7::https://raw.githubusercontent.com/sqldef/sqldef/refs/tags/v3.9.7/LICENSE
+	sha256sums = c31299e97dde871d8a3c717f73fbb812a5cc25f4a089e4abc4bcc490eb13cfb1
+	source_x86_64 = mysqldef-bin-3.9.7-amd64.tar.gz::https://github.com/sqldef/sqldef/releases/download/v3.9.7/mysqldef_linux_amd64.tar.gz
+	source_x86_64 = sqlite3def-bin-3.9.7-amd64.tar.gz::https://github.com/sqldef/sqldef/releases/download/v3.9.7/sqlite3def_linux_amd64.tar.gz
+	source_x86_64 = mssqldef-bin-3.9.7-amd64.tar.gz::https://github.com/sqldef/sqldef/releases/download/v3.9.7/mssqldef_linux_amd64.tar.gz
+	source_x86_64 = psqldef-bin-3.9.7-amd64.tar.gz::https://github.com/sqldef/sqldef/releases/download/v3.9.7/psqldef_linux_amd64.tar.gz
+	sha256sums_x86_64 = 3f540e24e189466f59e10223a931066ec8448af0376d9c3f4772b7fca0553a84
+	sha256sums_x86_64 = aced0ba1c07bf019b24c44b3671216a27339570c1cc2cab08b82482f42703257
+	sha256sums_x86_64 = ec0bdd99045f499319f8e9e5d208bc7a197269a3fcf0c0ec08358224e01c68f7
+	sha256sums_x86_64 = c1a1dacca6c4d88d4805e69af3c40f31531d426cf3c2f0cc4fcb1f429b6faf72
+	source_aarch64 = mysqldef-bin-3.9.7-arm64.tar.gz::https://github.com/sqldef/sqldef/releases/download/v3.9.7/mysqldef_linux_arm64.tar.gz
+	source_aarch64 = sqlite3def-bin-3.9.7-arm64.tar.gz::https://github.com/sqldef/sqldef/releases/download/v3.9.7/sqlite3def_linux_arm64.tar.gz
+	source_aarch64 = mssqldef-bin-3.9.7-arm64.tar.gz::https://github.com/sqldef/sqldef/releases/download/v3.9.7/mssqldef_linux_arm64.tar.gz
+	source_aarch64 = psqldef-bin-3.9.7-arm64.tar.gz::https://github.com/sqldef/sqldef/releases/download/v3.9.7/psqldef_linux_arm64.tar.gz
+	sha256sums_aarch64 = 5d84304ea3c1cef832496266988e0f394285994ae8a16f9f5045257e1fdaa18a
+	sha256sums_aarch64 = 2d071b804f164c75dcaf773da438053a686700561a56d8ff32e97139aec5a9c9
+	sha256sums_aarch64 = 07d44d42e587c3175232b94ad1cfcae8518ebb80cff9ac3eb135f8e12f1f290d
+	sha256sums_aarch64 = 40ad39c70d3552a64372e5f1ba36d1dd0e21a07663287218de7fbffe8be58379
+
+pkgname = mysqldef-bin
+	provides = mysqldef
+	conflicts = mysqldef
+
+pkgname = sqlite3def-bin
+	provides = sqlite3def
+	conflicts = sqlite3def
+
+pkgname = mssqldef-bin
+	provides = mssqldef
+	conflicts = mssqldef
+
+pkgname = psqldef-bin
+	provides = psqldef
+	conflicts = psqldef
