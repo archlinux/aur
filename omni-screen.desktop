@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Omni Screen
+Comment=Multi-platform stream and link viewer
+Exec=env DESKTOPINTEGRATION=false /opt/omni-screen/omni-screen.AppImage %U
+Icon=omni-screen
+Terminal=false
+Type=Application
+Categories=Utility;Video;Network;
+StartupWMClass=omni-screen
