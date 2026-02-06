@@ -1,6 +1,6 @@
 # Maintainer: silverhikari <kerrickethan@gmail.com>
 pkgname=stardrop-bin
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="an Open Source Cross-platform mod manager for Stardew Valley"
 arch=("x86_64")
@@ -12,7 +12,7 @@ options=(!strip)
 provides=("stardrop")
 conflicts=("stardrop")
 source=("Stardrop-v${pkgver}-Linux-x64.zip::https://github.com/Floogen/Stardrop/releases/download/v${pkgver}/Stardrop-linux-x64.zip" "https://github.com/Floogen/Stardrop/raw/refs/heads/development/Stardrop/Assets/icon.ico" "x-scheme-handler-nxm.xml")
-sha256sums=("57b2cf5a6ae5c5198715b3fc041e21d61bc2b9d2828cd0cc9c25634f6bb68c2b" "5d6884136fd49d0475b1b757429088871e729c21aefc6d9ff69725b1473fd7da" "1ede43022617702a3564a2db1c8041121b1703d1bd542709394d0ee0461df2ce")
+sha256sums=("ec6b6d241d46d0ff61a9282b9fb8b8d55bb53dfff21dadf0bdc6757f257b7c6e" "5d6884136fd49d0475b1b757429088871e729c21aefc6d9ff69725b1473fd7da" "1ede43022617702a3564a2db1c8041121b1703d1bd542709394d0ee0461df2ce")
 
 prepare() {
 	gendesk -f -n --pkgname="Stardrop" --pkgdesc="${pkgdesc}" --name="Stardrop" --comment="Stardew Valley Cross-Platform Mod Manger with Nexus support" --exec="/usr/bin/Stardrop --nxm %u" --icon="Stardrop" --categories="Game" --mimetypes="x-scheme-handler/nxm"
