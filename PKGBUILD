@@ -2,10 +2,10 @@
 
 pkgname=fcp-support-git
 _pkgname=fcp-support
-pkgver=r21.edae476
-pkgrel=2
+pkgver=r44.cc8061d
+pkgrel=1
 pkgdesc="Focusrite Control Protocol user-space driver for Scarlett 4th Gen big models (16i16, 18i16, 18i20)"
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url="https://github.com/geoffreybennett/fcp-support"
 license=('GPL-3.0-or-later')
 depends=(
@@ -14,11 +14,8 @@ depends=(
     'openssl'
     'zlib'
     'json-c'
-    'libcap'
 )
 makedepends=(
-    'gcc'
-    'make'
     'git'
     'pkgconf'
 )
@@ -30,7 +27,7 @@ optdepends=(
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 install=$pkgname.install
-source=("git+${url}.git")
+source=("git+${url}.git#branch=1.0beta")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -55,27 +52,6 @@ package() {
     make install \
         PREFIX=/usr \
         DESTDIR="$pkgdir"
-
-    # Install systemd drop-in to fix StopWhenUnneeded issue
-    # The upstream service has StopWhenUnneeded=yes which causes systemd to stop
-    # the service immediately after udev starts it, breaking reliability
-    install -Dm644 /dev/stdin \
-        "$pkgdir/usr/lib/systemd/system/fcp-server@.service.d/arch.conf" <<'EOF'
-# Arch Linux package override for fcp-server auto-stop issue
-# See: https://github.com/geoffreybennett/fcp-support/issues
-#
-# The upstream service has StopWhenUnneeded=yes which conflicts with udev-based
-# activation. This override keeps the service running while the device is connected.
-
-[Unit]
-# Keep service running while device is connected
-StopWhenUnneeded=no
-
-[Service]
-# Always restart on crash
-Restart=always
-RestartSec=3
-EOF
 
     # Install polkit rule to allow audio group to manage fcp-server without password
     # This enables alsa-scarlett-gui to auto-start the server seamlessly
