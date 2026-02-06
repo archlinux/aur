@@ -1,6 +1,6 @@
 pkgbase = python-librelane
-	pkgdesc = An infrastructure for implementing chip design flows (successor to OpenLane) - DEVELOPMENT VERSION (git dev branch).
-	pkgver = 3.0.0.dev49
+	pkgdesc = An infrastructure for implementing chip design flows (successor to OpenLane).
+	pkgver = 3.0.0.dev50.r1.gb1ef9cb
 	pkgrel = 1
 	url = https://github.com/librelane/librelane
 	arch = any

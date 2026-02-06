@@ -1,8 +1,8 @@
 # Maintainer: Andreas Wendleder <gonsolo@gmail.com>
 pkgname=python-librelane
-pkgver=3.0.0.dev49
+pkgver=3.0.0.dev50.r1.gb1ef9cb
 pkgrel=1
-pkgdesc="An infrastructure for implementing chip design flows (successor to OpenLane) - DEVELOPMENT VERSION (git dev branch)."
+pkgdesc="An infrastructure for implementing chip design flows (successor to OpenLane)."
 arch=('any')
 url="https://github.com/librelane/librelane"
 license=('Apache-2.0')
@@ -37,9 +37,6 @@ makedepends=(
     'python-wheel'
 )
 
-# Since this is now named 'python-librelane', it provides itself.
-# We keep 'python-librelane-git' in provides/conflicts so users of 
-# the old naming scheme can transition smoothly.
 provides=("python-librelane-git")
 conflicts=("python-librelane-git")
 
@@ -53,17 +50,15 @@ pkgver() {
 
 build() {
     cd "$srcdir/librelane"
-    
-    # Exporting the version helps setuptools_scm recognize the dynamic version
     export SETUPTOOLS_SCM_PRETEND_VERSION=$(git describe --long --tags --abbrev=7 | sed 's/^v//;s/-/+/')
-    
     python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$srcdir/librelane"
 
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    local _wheel=$(ls dist/*.whl)
+    python -m installer --destdir="$pkgdir" "$_wheel"
 
     # Fix for Yosys synthesis pathing
     install -d "$pkgdir/usr/bin"
