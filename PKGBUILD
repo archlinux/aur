@@ -32,7 +32,7 @@ EOF
 
 
 package_polarity-md-vst3() {
-  pkgdesc="Polarity-MD (VST3) - prebuilt binary"
+  pkgdesc="Polarity-MD Four-band dynamics with upward + downward compression, per-band clipping. OTT style. (VST3) - prebuilt binary"
   provides=('polarity-md-vst3')
   conflicts=('polarity-md-vst3')
 
@@ -43,7 +43,7 @@ package_polarity-md-vst3() {
 }
 
 package_polarity-md-clap() {
-  pkgdesc="Polarity-MD (CLAP) - prebuilt binary"
+  pkgdesc="Polarity-MD Four-band dynamics with upward + downward compression, per-band clipping. OTT style. (CLAP) - prebuilt binary"
   provides=('polarity-md-clap')
   conflicts=('polarity-md-clap')
 
@@ -54,7 +54,7 @@ package_polarity-md-clap() {
 }
 
 package_polarity-md() {
-  pkgdesc="Polarity-MD meta package (installs VST3 + CLAP)"
+  pkgdesc="Polarity-MD meta package (installs VST3 + CLAP) Four-band dynamics with upward + downward compression, per-band clipping. OTT style."
   depends+=('polarity-md-vst3' 'polarity-md-clap')
   provides=('polarity-md')
   conflicts=('polarity-md')
