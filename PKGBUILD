@@ -14,8 +14,8 @@ makedepends=(
 )
 
 depends=(
-    'dotnet-runtime-bin'
-    'aspnet-runtime-bin'
+    'dotnet-runtime-9.0'
+    'aspnet-runtime-9.0'
 )
 
 optdepends=(
