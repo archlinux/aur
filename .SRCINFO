@@ -3,6 +3,7 @@ pkgbase = nicotine-plus-cigorette-git
 	pkgver = r12218.caf9e10
 	pkgrel = 1
 	url = https://gitlab.com/lilacashes/nicotine-over-tor
+	install = nicotine-plus-cigorette-git.install
 	arch = any
 	license = GPL3
 	makedepends = git
