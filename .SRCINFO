@@ -1,25 +1,23 @@
 pkgbase = avogadro2-bin
 	pkgdesc = An advanced molecular editor designed for cross-platform use in computational chemistry, molecular modeling, bioinformatics, materials science, and related areas.(Prebuilt version)
-	pkgver = 1.102.1
+	pkgver = 1.103.0
 	pkgrel = 1
 	url = https://two.avogadro.cc/
 	arch = x86_64
 	license = BSD-3-Clause
-	depends = libxml2
 	depends = e2fsprogs
 	depends = libglvnd
 	depends = libxcb
 	depends = libgpg-error
-	depends = python-numpy
 	depends = python-requests
 	depends = glew
-	provides = avogadro2=1.102.1
+	provides = avogadro2=1.103.0
 	conflicts = avogadro2
 	options = !strip
-	source = avogadro2-1.102.1-x86_64.AppImage::https://github.com/OpenChemistry/avogadroapp/releases/download/1.102.1/Avogadro2-x86_64.AppImage
-	source = LICENSE-1.102.1::https://raw.githubusercontent.com/OpenChemistry/avogadroapp/1.102.1/LICENSE
+	source = avogadro2-1.103.0-x86_64.AppImage::https://github.com/OpenChemistry/avogadroapp/releases/download/1.103.0/Avogadro2-x86_64.AppImage
+	source = LICENSE-1.103.0::https://raw.githubusercontent.com/OpenChemistry/avogadroapp/1.103.0/LICENSE
 	source = avogadro2.sh
-	sha256sums = e154ee714fc702169ad3be307141d2a6c7e1e7d134e9403adfad3f7f92259b26
+	sha256sums = 22ec4e67e04be6dcc57dcbd7173b515c6c3c876afc29b9e7c7d00e00ee2a68a1
 	sha256sums = 3e6a55dc0da9bb56a7f232b1766da524c9d9c1dad61dfeea8424f1df7fb6f2f4
 	sha256sums = 0d625edc1abc14e5971788272ff95412cc4851274633c34b94144541609b92ac
 

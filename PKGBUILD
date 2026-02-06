@@ -2,7 +2,7 @@
 pkgname=avogadro2-bin
 _pkgname=Avogadro2
 _appname="org.openchemistry.${_pkgname}"
-pkgver=1.102.1
+pkgver=1.103.0
 pkgrel=1
 pkgdesc="An advanced molecular editor designed for cross-platform use in computational chemistry, molecular modeling, bioinformatics, materials science, and related areas.(Prebuilt version)"
 arch=('x86_64')
@@ -12,12 +12,10 @@ license=('BSD-3-Clause')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'libxml2'
     'e2fsprogs'
     'libglvnd'
     'libxcb'
     'libgpg-error'
-    'python-numpy'
     'python-requests'
     'glew'
 )
@@ -27,7 +25,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/OpenChemistry/avogadroapp/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e154ee714fc702169ad3be307141d2a6c7e1e7d134e9403adfad3f7f92259b26'
+sha256sums=('22ec4e67e04be6dcc57dcbd7173b515c6c3c876afc29b9e7c7d00e00ee2a68a1'
             '3e6a55dc0da9bb56a7f232b1766da524c9d9c1dad61dfeea8424f1df7fb6f2f4'
             '0d625edc1abc14e5971788272ff95412cc4851274633c34b94144541609b92ac')
 prepare() {
