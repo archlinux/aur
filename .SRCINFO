@@ -1,0 +1,17 @@
+pkgbase = arduino-flasher-cli-bin
+	pkgdesc = CLI tool to flash UNO Q boards with the latest Arduino Linux image
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/arduino/arduino-flasher-cli
+	arch = aarch64
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = glibc
+	provides = arduino-flasher-cli
+	conflicts = arduino-flasher-cli
+	source_aarch64 = https://github.com/arduino/arduino-flasher-cli/releases/download/v0.5.0/arduino-flasher-cli-0.5.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = ac56dee5b55451fa3d0889b72ab216375d45ca0e217e4525d53f49038ea1318c
+	source_x86_64 = https://github.com/arduino/arduino-flasher-cli/releases/download/v0.5.0/arduino-flasher-cli-0.5.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 0fd72ca93ebc118a74c5edfee51bd94f6e97ec5469d4c7fb936083dd8c65ad28
+
+pkgname = arduino-flasher-cli-bin

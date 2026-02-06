@@ -1,0 +1,5 @@
+[arduino-flasher-cli-bin]
+source = "github"
+github = "arduino/arduino-flasher-cli"
+use_latest_release = true
+prefix = "v"
