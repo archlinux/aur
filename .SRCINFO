@@ -11,6 +11,7 @@ pkgbase = qt-hearts-git
 	depends = qt6-base
 	depends = qt6-svg
 	depends = qt6-multimedia
+	depends = qt6-declarative
 	provides = qt-hearts
 	conflicts = qt-hearts
 	source = qt-hearts-git::git+https://github.com/adelmonte/qt-hearts.git
