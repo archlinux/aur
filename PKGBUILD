@@ -5,18 +5,16 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libwmf
 pkgver=0.2.13
-pkgrel=3
+pkgrel=4
 arch=('any')
 pkgdesc="A library for reading vector images in Microsoft's native Windows Metafile Format (WMF) (Android ${_android_arch})"
 url="http://wvware.sourceforge.net/libwmf.html"
 license=('LGPL')
 groups=(android-libwmf)
-depends=("android-${_android_arch}-libx11"
-         "android-${_android_arch}-libjpeg"
+depends=("android-${_android_arch}-libjpeg"
          "android-${_android_arch}-freetype2"
          "android-${_android_arch}-expat")
-makedepends=('android-configure'
-             "android-${_android_arch}-libxt")
+makedepends=('android-configure')
 optdepends=("android-${_android_arch}-gdk-pixbuf2: for pixbuf loader")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/caolanm/libwmf/archive/v${pkgver}.tar.gz")
@@ -37,8 +35,9 @@ build() {
     export LDFLAGS="${LDFLAGS} -L\"${PWD}/src/.libs\""
 
     android-${_android_arch}-configure \
-        --with-pic
-     make $MAKEFLAGS
+        --with-pic \
+        --without-x
+    make $MAKEFLAGS
 }
 
 package() {
@@ -49,4 +48,6 @@ package() {
     rm -f "${pkgdir}/${ANDROID_PREFIX_BIN}/"{wmf2eps,wmf2fig,wmf2gd,wmf2svg,wmf2x}
     find "${pkgdir}/${ANDROID_PREFIX_LIB}" -type f -name '*.so' -exec ${ANDROID_STRIP} -g --strip-unneeded {} \;
     find "${pkgdir}/${ANDROID_PREFIX_LIB}" -type f -name '*.a' -exec ${ANDROID_STRIP} -g {} \;
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
