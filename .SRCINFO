@@ -1,0 +1,16 @@
+pkgbase = dekl
+	pkgdesc = Declarative Arch Linux system manager
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Keithsel/dekl
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = pacman
+	optdepends = paru: AUR support
+	optdepends = yay: AUR support
+	provides = dekl
+	conflicts = dekl-git
+	source = dekl-0.1.0::https://github.com/Keithsel/dekl/releases/download/v0.1.0/dekl
+	sha256sums = SKIP
+
+pkgname = dekl
