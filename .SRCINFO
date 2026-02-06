@@ -1,6 +1,6 @@
 pkgbase = teams-for-linux-electron-bin
 	pkgdesc = Unofficial Microsoft Teams for Linux client.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.7.2
+	pkgver = 2.7.3
 	pkgrel = 1
 	url = https://github.com/IsmaelMartinez/teams-for-linux
 	arch = aarch64
@@ -8,7 +8,7 @@ pkgbase = teams-for-linux-electron-bin
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = electron39
-	provides = teams-for-linux-electron=2.7.2
+	provides = teams-for-linux-electron=2.7.3
 	conflicts = teams-for-linux
 	conflicts = teams-for-linux-wayland-hook
 	conflicts = teams-for-linux-git
@@ -16,11 +16,11 @@ pkgbase = teams-for-linux-electron-bin
 	conflicts = teams-for-linux-electron
 	source = teams-for-linux-electron.sh
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = teams-for-linux-electron-2.7.2-aarch64.rpm::https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v2.7.2/teams-for-linux-2.7.2.aarch64.rpm
-	sha256sums_aarch64 = 4fefcd1a2abc57ec99db5ef9f54a1643eb4c661d0538d2e0232746da975e110d
-	source_armv7h = teams-for-linux-electron-2.7.2-armv7h.rpm::https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v2.7.2/teams-for-linux-2.7.2.armv7l.rpm
-	sha256sums_armv7h = 75f0848e0fc7a4afc144c5cb953aac51a1c5453c3a92451125226a225824c7b7
-	source_x86_64 = teams-for-linux-electron-2.7.2-x86_64.rpm::https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v2.7.2/teams-for-linux-2.7.2.x86_64.rpm
-	sha256sums_x86_64 = 072b9b1982f78bc83458a357f6f7f09386a710cf5869cd278afef3afb8284ba1
+	source_aarch64 = teams-for-linux-electron-2.7.3-aarch64.rpm::https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v2.7.3/teams-for-linux-2.7.3.aarch64.rpm
+	sha256sums_aarch64 = b6a4408c001fb8970ed70129482faad8af1e2510844be8b6d55912be73d04180
+	source_armv7h = teams-for-linux-electron-2.7.3-armv7h.rpm::https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v2.7.3/teams-for-linux-2.7.3.armv7l.rpm
+	sha256sums_armv7h = 5c014d8fcfecfafaef16dc7406ba7ce5253573691d7efa486a5652a038119615
+	source_x86_64 = teams-for-linux-electron-2.7.3-x86_64.rpm::https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v2.7.3/teams-for-linux-2.7.3.x86_64.rpm
+	sha256sums_x86_64 = 6fae274eed0d481811361a25ee3cad3ce0e232ee092747c8b4c0ff4b13957ca7
 
 pkgname = teams-for-linux-electron-bin
