@@ -1,7 +1,7 @@
 # Maintainer: KorespondentAda <0kononov0 at gmail dot com>
 _pkgname="boosty_downloader"
 pkgname="boosty-downloader"
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Download any type of content from boosty.to"
 arch=(any)
@@ -40,7 +40,7 @@ conflicts=("${pkgname}" "${_pkgname}")
 source=(
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/Glitchy-Sheep/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('9342c19ae8378e89a8af23a17697cb7c4d5c6035aa4b9acc5e69ff969a801d39')
+sha256sums=('69bed5f80f1ca88958992cc77f85774e7b2395114fecd3d935372f8fca31e964')
 
 build() {
 	cd "$srcdir/${pkgname}-$pkgver"
