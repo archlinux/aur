@@ -1,0 +1,4 @@
+[python-condastats]
+source = "github"
+github = "sophiamyang/condastats"
+use_latest_release = "true"
