@@ -1,13 +1,13 @@
 # Maintainer: Lewis Donaldson <lewdon0001@gmail.com>
 pkgname=lyrwal2
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A program to set the wallpaper to random song lyrics"
 arch=('any')
 url="https://github.com/ZerimGH/lyrwal2"
 license=('MIT')
 depends=('python' 'freetype2')
-makedepends=('make' 'gcc' 'python')
+makedepends=('make' 'gcc' 'python' 'freetype2')
 source=("git+https://github.com/ZerimGH/lyrwal2.git")
 sha256sums=('SKIP')
 
