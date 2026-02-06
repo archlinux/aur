@@ -1,32 +1,49 @@
-# Copyright (C) 2019 Denis 'GNUtoo' Carikli <GNUtoo@cyberdimension.org>
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the CC0 1.0 License.
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-pkgname=qdl
-pkgver=1.0
-pkgrel=5
+pkgname="qdl"
+pkgver=2.4
+pkgrel=1
 pkgdesc="Tool to communicate with Qualcomm System On a Chip bootroms to install or execute code"
-arch=('armv7h' 'i686' 'x86_64')
-url='https://github.com/andersson/qdl'
-license=('BSD3')
-depends=('libxml2')
-source=("https://github.com/andersson/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('561b6ffaf26d063f107a0769b41d0ed02f1f6c4656b6284e653e8baf69b2f34d5f6051e54bb45ab55c028bb8bfa9b4e5218b796dbdb7ab7686576168b1b11d77')
+arch=(
+  'aarch64'
+  'x86_64'
+)
+url="https://github.com/linux-msm/${pkgname}"
+license=(
+  'BSD-3-Clause'
+)
+depends=(
+  'glibc'
+  'libusb'
+  'libxml2'
+)
+makedepends=(
+  'help2man'
+)
+_pkgsrc="${pkgname}-${pkgver}"
+source=(
+  "${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
+)
+b2sums=('691dc7e6625ea7c19c62aed41a4bb6c63b8371c1f1182b88e5b0173b8cd5e5799e23ef99e4c09f82cd5d4060bc5b48e96a607ee9d6e19104a5d42c4adc797d82')
+
+prepare() {
+  cd "${srcdir}/${_pkgsrc}"
+  sed -e 's/-O2//g' \
+      -i 'Makefile'
+}
 
 build(){
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgsrc}"
   make
+  make manpages
 }
 
 package(){
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  make prefix="/usr" DESTDIR="${pkgdir}" install
+  cd "${srcdir}/${_pkgsrc}"
+  make DESTDIR="${pkgdir}" prefix="/usr" install
 
-  # Package license
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
-  install LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -vDm644 ./*.1 -t "${pkgdir}/usr/share/man/man1"
 
-  # Package documentation
-  install -d "${pkgdir}/usr/share/doc/${pkgname}/"
-  install README "${pkgdir}/usr/share/doc/${pkgname}/"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

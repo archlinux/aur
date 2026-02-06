@@ -1,0 +1,4 @@
+[qdl]
+source = "git"
+git = "https://github.com/andersson/qdl.git"
+prefix = "v"
