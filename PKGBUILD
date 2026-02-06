@@ -11,7 +11,7 @@ url="https://github.com/NickMarcha/omni-screen"
 license=('MIT')
 depends=('fuse2' 'gtk3')
 source=(
-  "omni-screen.AppImage::https://github.com/NickMarcha/omni-screen/releases/download/v${pkgver}/Omni%20Screen-Linux-${pkgver}-x64.AppImage"
+  "omni-screen.AppImage::https://github.com/NickMarcha/omni-screen/releases/download/v${pkgver}/Omni-Screen-Linux-${pkgver}-x86_64.AppImage"
   "omni-screen.desktop"
 )
 sha256sums=(
