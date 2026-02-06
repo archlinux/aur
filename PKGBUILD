@@ -26,11 +26,11 @@ else
     # We are probably inside a clean chroot environment, use fixed version info instead
     _git_branch="branch=zfs-2.4.1-staging"
     _staging_ver="2.4.1"
-    _base_ver="2.4.0-rc5"
+    _base_ver="2.4.0"
 fi
 
 pkgname=${_pkgname}-dkms-staging-git
-pkgver=2.4.0.r0.g743334913e
+pkgver=2.4.0.r46.g22b959d2e5
 pkgrel=1
 pkgdesc="Kernel modules for the Zettabyte File System (release staging branch) with compatibility patches for latest stable kernel."
 arch=('any')
