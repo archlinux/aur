@@ -1,0 +1,4 @@
+[garamontio-capo-font]
+source = "regex"
+url = "https://codeberg.org/m-casanova/GaramontioCapo"
+regex = 'Versione (\d\.\d{3}):'

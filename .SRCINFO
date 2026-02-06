@@ -1,0 +1,15 @@
+pkgbase = garamontio-capo-font
+	pkgdesc = Dropcaps for Garamontio
+	pkgver = 2.101
+	pkgrel = 1
+	url = https://m-casanova.codeberg.page/GaramontioCapo/
+	arch = any
+	license = OFL
+	source = garamontiocapo-2.101.tar.gz::https://codeberg.org/m-casanova/GaramontioCapo/archive/3c0c3eca9c9c0dea0f6160652bd3bc138572644b.tar.gz
+	sha256sums = 155152fb46736b302a7dc5e00d7f677fce1a54aae84766553794b2b58fea9ccf
+
+pkgname = otf-garamontio-capo
+	provides = garamontio-capo-font
+
+pkgname = ttf-garamontio-capo
+	provides = garamontio-capo-font
