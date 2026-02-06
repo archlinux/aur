@@ -19,17 +19,17 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/focustimerhq/FocusTimer/arc
 sha256sums=('ab8136fe4e585941d67dbb7a81e2442285a0cbeead47fb1c99a37ffd473a4e53')
 
 prepare() {
-  cd "$srcdir/focus-timer-$pkgver"
+  cd "$srcdir/FocusTimer-$pkgver"
 }
 
 build() {
-  cd "$srcdir/focus-timer-$pkgver"
+  cd "$srcdir/FocusTimer-$pkgver"
   arch-meson build
   meson compile -C build
 }
 
 package() {
-  cd "$srcdir/focus-timer-$pkgver"
+  cd "$srcdir/FocusTimer-$pkgver"
   meson install -C build --destdir "$pkgdir"
 }
 
