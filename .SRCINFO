@@ -1,6 +1,6 @@
 pkgbase = shoko-server-bin
 	pkgdesc = An anime cataloging program designed to automate the cataloging of your anime collection regardless of the size and number of files in your collection.
-	pkgver = 5.2.5
+	pkgver = 5.3.0
 	pkgrel = 1
 	url = https://shokoanime.com/
 	install = shoko-server-bin.install
@@ -14,10 +14,10 @@ pkgbase = shoko-server-bin
 	optdepends = shoko-webui-git: web-admin ui in latest commit (should use this for best compatibility)
 	provides = shoko-server
 	conflicts = shoko-server
-	source = Shoko.CLI_Framework_any-x64-v5.2.5.zip::https://github.com/ShokoAnime/ShokoServer/releases/download/v5.2.5/Shoko.CLI_Framework_any-x64.zip
+	source = Shoko.CLI_Framework_any-x64-v5.3.0.zip::https://github.com/ShokoAnime/ShokoServer/releases/download/v5.3.0/Shoko.CLI_Framework_any-x64.zip
 	source = shoko-server.service
 	source = LICENSE
-	sha512sums = 10548eeb948cee1e64445af303308fbf09424c0431bc81753babff146e6a36daf219f6c58ce04e801145c27031da2ecabc6078c6cb6f61bb9c9af1e0fe5b3eef
+	sha512sums = 898aa7ee014ca95cf2f961031d1be35959a8b1e0d51dc3f201456a9237701f794fb5958bc6050b171b14db4746c1b02235edfc87ef5ed38cf0c8bf49c93f7707
 	sha512sums = e9089dafa54773a0d63e76071b16f774cbeff6d9defe9763f3283471d801fb36fa209c9eb507a504712f0b82751191c5bcde4cffa3cb32a4f52a673ab6856ef6
 	sha512sums = c323e1561eea9fba6e6248cfb07fb0e4c4621ffa8f17e1f0b856405cd1505b04c56b395afffeda651475c259d94cc1f88a77f97573b293154d90ef2eaf0ef0b2
 
