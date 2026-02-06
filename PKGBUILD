@@ -1,14 +1,14 @@
 pkgname=qt-hearts
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Classic hearts card game"
 arch=('x86_64')
 url="https://github.com/adelmonte/qt-hearts"
 license=('GPL-3.0-or-later')
-depends=('qt6-base' 'qt6-svg' 'qt6-multimedia')
+depends=('qt6-base' 'qt6-svg' 'qt6-multimedia' 'qt6-declarative')
 makedepends=('cmake' 'qt6-tools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1d8be117f6a7b236c4bed1d36c89255d7dcc463d17b5742abd52b4c0ef4a108f')
+sha256sums=('d5f5a9c6f0ded5eceb97758e79964befa69e6386bba02def7cb781406e40c069')
 
 build() {
     cd "$pkgname-$pkgver"
