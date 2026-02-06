@@ -1,0 +1,23 @@
+pkgbase = python-sphinx-jinja2-compat
+	pkgdesc = Patches Jinja2 v3 to restore compatibility with earlier Sphinx versions
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/sphinx-toolbox/sphinx-jinja2-compat
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-whey
+	makedepends = python-whey-pth
+	makedepends = python-license-expression
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-jinja2
+	depends = python-markupsafe
+	depends = python-sphinx-prompt
+	source = sphinx-jinja2-compat::git+https://github.com/sphinx-toolbox/sphinx-jinja2-compat.git#tag=v0.4.1
+	sha512sums = a1b0ecc5dc9c03b55cecc83eb231e920221cd865152b27b0654256c48e9fc02a5e37444b46f9ed4a6ed9bd8cfaa2c15d2c9a54ab60585c53bde05fdd50f195ed
+
+pkgname = python-sphinx-jinja2-compat
