@@ -1,0 +1,18 @@
+pkgbase = arf
+	pkgdesc = A modern R console
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/eitsupi/arf
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	depends = gcc-libs
+	depends = glibc
+	conflicts = arf-bin
+	options = !lto
+	options = !debug
+	source = arf-0.1.1.tar.gz::https://github.com/eitsupi/arf/archive/v0.1.1.tar.gz
+	sha512sums = e419772231a157d3de7a88b99b9712ddff01d9f47d8ca8c076a5afe7e1e567c68ae7564027f9b5084504fbb25b699edc85c4f27a28b64834a5e32498fa57e70a
+
+pkgname = arf
