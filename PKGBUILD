@@ -4,7 +4,7 @@ _name=garamontio
 pkgbase=$_name-font
 pkgname=(otf-$_name ttf-$_name ttf-$_name-variable)
 pkgver=1.082
-pkgrel=1
+pkgrel=2
 pkgdesc='a fork of EB Garamond'
 arch=(any)
 url="https://m-casanova.codeberg.page/${_name^}/"
@@ -22,7 +22,7 @@ sha256sums=('2da598ecdeed29bc787458077443577859f6981041e3684eef8c8eaa90af4c52'
 
 package_otf-garamontio() {
 	provides=("$pkgbase")
-	install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" ${_name^}-*.otf
+	install -Dm644 -t "$pkgdir/usr/share/fonts/OTF/" ${_name^}-*.otf
 	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" $_name/OFL.txt
 }
 
@@ -34,6 +34,6 @@ package_ttf-garamontio() {
 
 package_ttf-garamontio-variable() {
 	provides=("$pkgbase")
-	install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" ${_name}*.ttf
+	install -Dm644 -t "$pkgdir/usr/share/fonts/VAR/" ${_name}*.ttf
 	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" $_name/OFL.txt
 }

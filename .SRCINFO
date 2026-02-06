@@ -1,7 +1,7 @@
 pkgbase = garamontio-font
 	pkgdesc = a fork of EB Garamond
 	pkgver = 1.082
-	pkgrel = 1
+	pkgrel = 2
 	url = https://m-casanova.codeberg.page/Garamontio/
 	arch = any
 	license = OFL
