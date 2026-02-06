@@ -13,7 +13,7 @@ conflicts=('nicotine-plus' 'nicotine-plus-git')
 source=("git+https://github.com/nicotine-plus/nicotine-plus.git"
   "git+https://gitlab.com/lilacashes/nicotine-over-tor.git")
 sha256sums=('SKIP'
-  'SKIP')
+            'SKIP')
 install='nicotine-plus-cigorette-git.install'
 
 prepare() {
