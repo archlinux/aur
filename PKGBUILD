@@ -3,7 +3,7 @@
 # Contributor: Slacker
 
 pkgname=cronicle
-pkgver=0.9.102
+pkgver=0.9.105
 pkgrel=1
 pkgdesc="A simple, distributed task scheduler and runner"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('npm')
 install="$pkgname.install"
 source=("https://github.com/jhuckaby/Cronicle/archive/refs/tags/v$pkgver.tar.gz"
         "cronicle.service")
-sha256sums=('4a0718baa15065c51d6a5e726354fd8957161fc56f1a2d3754329e32f5c3d2bd'
+sha256sums=('5dea6da5a6c767c5b695b782ceb57f6c75d3699916d0ff7828543a74c0cf99be'
             '62a03d25afa12fd53e3cb0a81fa8b16e6a82c2be4a8a96dd79ebb976a2705315')
 backup=('opt/cronicle/conf/config.json'
         'usr/lib/systemd/system/cronicle.service')
