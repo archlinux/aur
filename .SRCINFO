@@ -1,6 +1,6 @@
 pkgbase = libclc
 	pkgdesc = Library requirements of the OpenCL C programming language
-	pkgver = 21.1.6
+	pkgver = 21.1.8
 	pkgrel = 1
 	url = https://libclc.llvm.org/
 	arch = any
@@ -11,13 +11,13 @@ pkgbase = libclc
 	makedepends = llvm
 	makedepends = python
 	makedepends = spirv-llvm-translator
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.6/libclc-21.1.6.src.tar.xz
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.6/libclc-21.1.6.src.tar.xz.sig
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.8/libclc-21.1.8.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.8/libclc-21.1.8.src.tar.xz.sig
 	validpgpkeys = 474E22316ABF4785A88C6E8EA2C794A986419D8A
 	validpgpkeys = D574BD5D1D0E98895E3BF90044F2485E45D59042
 	validpgpkeys = FFB3368980F3E6BB5737145A316C56D064CACBA5
 	validpgpkeys = 71046D1E9C6656BDD61171873E83BABF4A4F9E85
-	sha256sums = a1a09ccfa17f2d5fbe5e54271a4a9fbe396950f29f80f52b67a7083fee73120c
+	sha256sums = 6c2677362a53531c35edf482bdc9171ea0471ca0a1e9138ac9b5a1782925616f
 	sha256sums = SKIP
 
 pkgname = libclc
