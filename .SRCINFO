@@ -30,7 +30,7 @@ pkgbase = thinlinc-server
 	optdepends = nfs-utils: local drive redirection
 	optdepends = openssh: native client support
 	optdepends = python-ldap: LDAP integration
-	source = tl-4.20.0-server.zip::https://www.cendio.com/downloads/server/tl-4.20.0-server.zip
+	source = https://www.cendio.com/downloads/server/tl-4.20.0-server.zip
 	sha256sums = 9dd537fb3b95018888affbd4431672308c433e7f5611143e060462190ed768d3
 
 pkgname = thinlinc-server

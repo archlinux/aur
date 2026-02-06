@@ -21,7 +21,7 @@ optdepends=('cups: printer redirection'
             'openssh: native client support'
             'python-ldap: LDAP integration')
 
-source=("tl-${pkgver}-server.zip::https://www.cendio.com/downloads/server/tl-${pkgver}-server.zip")
+source=("https://www.cendio.com/downloads/server/tl-${pkgver}-server.zip")
 
 sha256sums=('9dd537fb3b95018888affbd4431672308c433e7f5611143e060462190ed768d3')
 
