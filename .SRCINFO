@@ -1,7 +1,7 @@
 pkgbase = instagram-cli
 	pkgdesc = Instagram's terminal UI app - The ultimate weapon against brainrot
 	pkgver = 1.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/supreme-gg-gg/instagram-cli
 	arch = any
 	license = MIT
