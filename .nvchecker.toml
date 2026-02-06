@@ -1,0 +1,5 @@
+[openmoonray]
+source = "git"
+git = "https://github.com/dreamworksanimation/openmoonray.git"
+include_regex = "openmoonray-[0-9.]+"
+prefix = "openmoonray-"

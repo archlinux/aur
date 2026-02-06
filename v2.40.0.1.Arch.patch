@@ -63,6 +63,19 @@ index 0cc9ee4..9206012 100755
      boost::asio::ip::udp::socket mSocket;
      boost::asio::ip::udp::endpoint mTarget;
      std::string mLocalHostName;
+Submodule arras/arras_render contains modified content
+diff --git a/arras/arras_render/client/OrbitCam.h b/arras/arras_render/client/OrbitCam.h
+index 070a2db..95ac568 100644
+--- a/arras/arras_render/client/OrbitCam.h
++++ b/arras/arras_render/client/OrbitCam.h
+@@ -3,6 +3,7 @@
+ #pragma once
+ #include "NavigationCam.h"
+ 
++#include <functional>
+ ///
+ /// Controls:
+ ///
 diff --git a/arras/distributed/CMakeLists.txt b/arras/distributed/CMakeLists.txt
 index 788085e..88c590d 100644
 --- a/arras/distributed/CMakeLists.txt
@@ -659,7 +672,7 @@ index 5bc7fa8..d0a2d79 100644
          ${PlatformSpecificLibs}
  )
 diff --git a/moonray/hydra/hdMoonray/plugin/adapters/CMakeLists.txt b/moonray/hydra/hdMoonray/plugin/adapters/CMakeLists.txt
-index ef986a8..3039a80 100644
+index 5765232..0ae2938 100644
 --- a/moonray/hydra/hdMoonray/plugin/adapters/CMakeLists.txt
 +++ b/moonray/hydra/hdMoonray/plugin/adapters/CMakeLists.txt
 @@ -32,7 +32,7 @@ target_include_directories(${component}
@@ -706,7 +719,7 @@ index b262d79..e4b97d9 100644
      PUBLIC
          $<BUILD_INTERFACE:${buildIncludeDir}>
          $<INSTALL_INTERFACE:include/hdMoonray>
-+        /usr/include/python3.12 # gonsolo
++        /usr/include/python3.14 # gonsolo
  )
  
  target_link_libraries(${component}
@@ -725,7 +738,7 @@ index a5a2365..20b9b80 100644
      PUBLIC
          $<BUILD_INTERFACE:${buildIncludeDir}>
          $<INSTALL_INTERFACE:include/hdMoonray>
-+        /usr/include/python3.12
++        /usr/include/python3.14 # gonsolo
  )
  
  target_link_libraries(${component}
@@ -754,10 +767,10 @@ index 5b77f43..f34ee35 100644
          if (cpuid_leaf_7[EBX] & bit_AVX512IFMA) features |= CPUFeatures::CPU_FEATURE_AVX512IFMA;
 Submodule moonray/moonray_arras/mcrt_computation contains modified content
 diff --git a/moonray/moonray_arras/mcrt_computation/computation/progmcrt_merge/ProgMcrtMergeComputation.cc b/moonray/moonray_arras/mcrt_computation/computation/progmcrt_merge/ProgMcrtMergeComputation.cc
-index 922b765..363bad2 100644
+index 054a119..1097b3c 100644
 --- a/moonray/moonray_arras/mcrt_computation/computation/progmcrt_merge/ProgMcrtMergeComputation.cc
 +++ b/moonray/moonray_arras/mcrt_computation/computation/progmcrt_merge/ProgMcrtMergeComputation.cc
-@@ -29,6 +29,8 @@
+@@ -28,6 +28,8 @@
  #include <tbb/task_scheduler_init.h>
  #endif
  
@@ -766,6 +779,7 @@ index 922b765..363bad2 100644
  #include <cmath> // round()
  #include <cstdlib>
  #include <stdint.h>
+Submodule moonray/moonray_arras/mcrt_dataio contains modified content
 diff --git a/moonray/moonray_arras/mcrt_dataio/CMakeLists.txt b/moonray/moonray_arras/mcrt_dataio/CMakeLists.txt
 index 9cd6fd2..b7f6e62 100644
 --- a/moonray/moonray_arras/mcrt_dataio/CMakeLists.txt
@@ -779,12 +793,12 @@ index 9cd6fd2..b7f6e62 100644
  if("${PROJECT_NAME}" STREQUAL "${CMAKE_PROJECT_NAME}")
      find_package(McrtMessages REQUIRED)
 diff --git a/moonray/moonray_arras/mcrt_dataio/lib/share/codec/InfoCodec.h b/moonray/moonray_arras/mcrt_dataio/lib/share/codec/InfoCodec.h
-index 613d0fb..f459842 100644
+index 4144006..d3a90aa 100644
 --- a/moonray/moonray_arras/mcrt_dataio/lib/share/codec/InfoCodec.h
 +++ b/moonray/moonray_arras/mcrt_dataio/lib/share/codec/InfoCodec.h
-@@ -3,6 +3,7 @@
+@@ -4,6 +4,7 @@
  
- #pragma once
+ #include <scene_rdl2/common/math/Vec3.h>
  
 +#include <cstdint>
  #include <memory>
@@ -802,11 +816,12 @@ index d172ece..3121630 100644
  #include <string>
  
  namespace mcrt_dataio {
+Submodule moonray/moonray_gui contains modified content
 diff --git a/moonray/moonray_gui/cmd/moonray_gui/CMakeLists.txt b/moonray/moonray_gui/cmd/moonray_gui/CMakeLists.txt
-index 8b05082..d7d2dba 100644
+index ee33633..08c8a0f 100644
 --- a/moonray/moonray_gui/cmd/moonray_gui/CMakeLists.txt
 +++ b/moonray/moonray_gui/cmd/moonray_gui/CMakeLists.txt
-@@ -104,5 +104,8 @@ if (NOT OpenColorIO_FOUND)
+@@ -103,5 +103,8 @@ if (NOT OpenColorIO_FOUND)
      target_compile_definitions(${target} PRIVATE DISABLE_OCIO)
  endif()
  
@@ -876,7 +891,7 @@ index 2f52c3d..2b0b8b6 100644
  };
  
 diff --git a/moonray/moonray_gui/cmd/moonray_gui/PathVisualizerGui.cc b/moonray/moonray_gui/cmd/moonray_gui/PathVisualizerGui.cc
-index 1355ac2..285687a 100644
+index b29bd98..cf3d708 100644
 --- a/moonray/moonray_gui/cmd/moonray_gui/PathVisualizerGui.cc
 +++ b/moonray/moonray_gui/cmd/moonray_gui/PathVisualizerGui.cc
 @@ -302,7 +302,7 @@ PathVisualizerGui::slot_togglePathVisualizer()
@@ -890,7 +905,7 @@ index 1355ac2..285687a 100644
          // process, and set the button text to "Turn off"
 @@ -419,42 +419,42 @@ PathVisualizerGui::slot_setLineWidth(const int value)
  {
-     mPathVisualizerManager->setLineWidth(value);
+     mPathVisualizerManager->setLineWidth(static_cast<float>(value));
      mLineWidthValue->setText(QString::number(value));
 -    emit sig_styleParamChanged();
 +    Q_EMIT sig_styleParamChanged();
@@ -1001,10 +1016,10 @@ index 0ec9694..ef48c41 100644
      /// The timestamp of the frame the renderer is currently processing.
      uint32_t                mRenderTimestamp;
 diff --git a/moonray/moonray_gui/cmd/moonray_gui/RenderViewport.cc b/moonray/moonray_gui/cmd/moonray_gui/RenderViewport.cc
-index 502773b..81eefbe 100644
+index 75311ae..cd8d089 100644
 --- a/moonray/moonray_gui/cmd/moonray_gui/RenderViewport.cc
 +++ b/moonray/moonray_gui/cmd/moonray_gui/RenderViewport.cc
-@@ -778,7 +778,7 @@ RenderViewport::mousePressEvent(QMouseEvent *event)
+@@ -779,7 +779,7 @@ RenderViewport::mousePressEvent(QMouseEvent *event)
          const int finalY = y + static_cast<int>(heightDiscrepancy*0.5f);
  
          if (x >= 0 && x < mWidth && finalY >= 0 && finalY < mHeight) {
@@ -1114,6 +1129,18 @@ index ce6672d..6c2360a 100644
  #include <iostream> // debug
  #include <unistd.h> // getpid()
  #include <unordered_set>
+diff --git a/moonray/scene_rdl2/lib/common/grid_util/BinPacketDictionary.h b/moonray/scene_rdl2/lib/common/grid_util/BinPacketDictionary.h
+index d7e6bf5..50da2b6 100644
+--- a/moonray/scene_rdl2/lib/common/grid_util/BinPacketDictionary.h
++++ b/moonray/scene_rdl2/lib/common/grid_util/BinPacketDictionary.h
+@@ -5,6 +5,7 @@
+ #include <scene_rdl2/render/cache/ValueContainerDequeue.h>
+ #include <scene_rdl2/render/cache/ValueContainerEnqueue.h>
+ 
++#include <functional>
+ #include <string>
+ 
+ namespace scene_rdl2 {
 diff --git a/moonray/scene_rdl2/mod/python/py_scene_rdl2/CMakeLists.txt b/moonray/scene_rdl2/mod/python/py_scene_rdl2/CMakeLists.txt
 index a36f8f3..aa9873e 100644
 --- a/moonray/scene_rdl2/mod/python/py_scene_rdl2/CMakeLists.txt

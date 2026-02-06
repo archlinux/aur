@@ -1,9 +1,7 @@
 # Maintainer: Andreas Wendleder <gonsolo@gmail.com>
-# Note that ispc v1.28.0 has to be patched with the two patches from
-# https://github.com/ispc/ispc/issues/3545, otherwise, moonray will not work.
 pkgname=openmoonray
-pkgver=2.34.0.1
-pkgrel=5
+pkgver=2.40.0.1
+pkgrel=1
 pkgdesc="DreamWorks Animation's open-source Monte Carlo ray tracer"
 arch=('x86_64')
 url="https://github.com/dreamworksanimation/openmoonray"
@@ -12,8 +10,8 @@ license=('Apache')
 source=("git+${url}.git#tag=${pkgname}-${pkgver}"
         "v${pkgver}.Arch.patch") # User-provided patch file
 
-sha256sums=('5267b56fb02f65b0d353dac64fefef79f0c571cd858e7514db5673f84da17f81'
-            '7dd55f32d12a7262f0ce57c1c5736cc69793f8b7eeb1db2f7869ed1d0fc59f56')
+sha256sums=('30abca0fb8420eeed806a01811d611b5ff2e1359d7b16196364d15cce461923c'
+            '31e9a69e2bd6b9724c198b074c17107aed62c1e6fe18a4c8d80b789884167359')
 
 depends=(
   'gcc'
