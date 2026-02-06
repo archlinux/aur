@@ -1,4 +1,4 @@
-pkgbase = adw-network-bin
+pkgbase = adw-network
 	pkgdesc = Modern network management application for GNOME (prebuilt binary)
 	pkgver = 0.1.0
 	pkgrel = 1
@@ -18,4 +18,4 @@ pkgbase = adw-network-bin
 	sha256sums = SKIP
 	sha256sums = 3eaf915ebb5bcbc0d49a5a7c22ecb8d5ff453d4583efcf9dc6b0f044e079f16a
 
-pkgname = adw-network-bin
+pkgname = adw-network
