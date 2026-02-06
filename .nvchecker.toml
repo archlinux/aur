@@ -1,0 +1,4 @@
+[garamontio-font]
+source = "git"
+git = "https://codeberg.org/m-casanova/Garamontio.git"
+prefix = "v"

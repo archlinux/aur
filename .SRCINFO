@@ -1,0 +1,24 @@
+pkgbase = garamontio-font
+	pkgdesc = a fork of EB Garamond
+	pkgver = 1.082
+	pkgrel = 1
+	url = https://m-casanova.codeberg.page/Garamontio/
+	arch = any
+	license = OFL
+	source = Garamontio-1.082-otf.zip::https://codeberg.org/m-casanova/Garamontio/releases/download/v1.082/garamontio_otf.zip
+	source = Garamontio-1.082-ttf.zip::https://codeberg.org/m-casanova/Garamontio/releases/download/v1.082/garamontio_ttf.zip
+	source = Garamontio-1.082-var.zip::https://codeberg.org/m-casanova/Garamontio/releases/download/v1.082/garamontio_var.zip
+	source = Garamontio-1.082.tar.gz::https://codeberg.org/m-casanova/Garamontio/archive/v1.082.tar.gz
+	sha256sums = 2da598ecdeed29bc787458077443577859f6981041e3684eef8c8eaa90af4c52
+	sha256sums = 3e19d7d4ef827b7399d464b4429d109d406cd525dcee77e1b279e1000c710c6e
+	sha256sums = 89d0098741e0b5274200d25ba436732c3b6e8bf4b45be6b719790186dee38de7
+	sha256sums = 0febd51cc042c9632c3a651b8531fa752113140788c6487e876f75cfbba285ed
+
+pkgname = otf-garamontio
+	provides = garamontio-font
+
+pkgname = ttf-garamontio
+	provides = garamontio-font
+
+pkgname = ttf-garamontio-variable
+	provides = garamontio-font
