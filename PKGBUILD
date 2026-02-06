@@ -1,10 +1,10 @@
 # Maintainer: sfn
 
 pkgbase='zl-compressor'
-pkgname=('zl-compressor-vst' 'zl-compressor-lv2' 'zl-compressor')
+pkgname=('zl-compressor-vst3' 'zl-compressor-lv2' 'zl-compressor')
 groups=('zl-audio' 'pro-audio')
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 options=()
 pkgdesc="Sidechain and oversample capable compressor plugin by ZL Audio"
 arch=('x86_64')
@@ -43,8 +43,9 @@ build () {
 	make -C Builds
 }
 
-package_zl-compressor-vst() {
-	groups+=('vst-plugins')
+package_zl-compressor-vst3() {
+	groups+=('vst3-plugins')
+	pkgdesc+=' (VST3 version)'
 	mkdir -p ${pkgdir}/usr/lib/vst3/ZL\ Compressor.vst3
 	cp -r "${srcdir}/ZLCompressor/Builds/ZLCompressor_artefacts/VST3/ZL Compressor.vst3" "${pkgdir}/usr/lib/vst3/ZL Compressor.vst3"
 	install -Dm755 ${srcdir}/ZLCompressor/LICENSE.md ${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.md"
@@ -52,11 +53,12 @@ package_zl-compressor-vst() {
 
 package_zl-compressor-lv2() {
 	groups+=('lv2-plugins')
+	pkgdesc+=' (LV2 version)'
 	mkdir -p ${pkgdir}/usr/lib/lv2/ZL\ Compressor.lv2
 	cp -r "${srcdir}/ZLCompressor/Builds/ZLCompressor_artefacts/LV2/ZL Compressor.lv2" "${pkgdir}/usr/lib/lv2/ZL Compressor.lv2"
 	install -Dm755 ${srcdir}/ZLCompressor/LICENSE.md ${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.md"
 }
 
 package_zl-compressor() {
-	depends+=('zl-compressor-vst' 'zl-compressor-lv2')
+	depends+=('zl-compressor-vst3' 'zl-compressor-lv2')
 }
