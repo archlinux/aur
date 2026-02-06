@@ -1,0 +1,5 @@
+*.AppImage
+*.pkg.tar*
+src/
+pkg/
+update-pkgbuild.sh
