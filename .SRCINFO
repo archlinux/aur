@@ -1,12 +1,14 @@
 pkgbase = elasticvue-bin
 	pkgdesc = A free and open source gui for elasticsearch
 	pkgver = 1.13.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cars10/elasticvue
 	arch = x86_64
 	license = MIT
 	provides = elasticvue
 	conflicts = elasticvue
+	options = !debug
+	options = !strip
 	source = elasticvue-1.13.0::https://github.com/cars10/elasticvue/releases/download/v1.13.0/elasticvue
 	source = elasticvue.desktop
 	source = blue_96.png::https://raw.githubusercontent.com/cars10/elasticvue/master/src/assets/images/logo/blue_96.png
