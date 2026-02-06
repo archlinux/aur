@@ -64,10 +64,14 @@ package() {
   export HOME="$srcdir/home"
 
   # Install the pre-built executable (do not rebuild during package())
+  # Find the built executable under dist-newstyle. New-build layout places
+  # the executable under nested directories (e.g. */x/aeth/build/aeth/aeth).
+  # Search for an executable file named 'aeth' to be robust across layouts.
   local binpath
-  binpath="$(find dist-newstyle -type f -path '*/build/Aeth/Aeth' -print -quit)"
+  binpath="$(find dist-newstyle -type f -name aeth -perm /111 -print -quit)"
   if [[ -z "$binpath" ]]; then
     echo "ERROR: built executable not found under dist-newstyle" >&2
+    echo "Tried: find dist-newstyle -type f -name aeth -perm /111" >&2
     return 1
   fi
   install -Dm755 "$binpath" "$pkgdir/usr/bin/aeth"
