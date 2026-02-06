@@ -32,7 +32,8 @@ sed -i "s/^pkgrel=.*/pkgrel=1/" PKGBUILD
 echo -e "${GREEN}Downloading tarball for b2sum...${NC}"
 TARBALL_URL="https://github.com/${REPO}/archive/refs/tags/v${LATEST_VERSION}.tar.gz"
 B2SUM=$(curl -L "$TARBALL_URL" | b2sum | awk '{print $1}')
-sed -i "s|^b2sums=.*|b2sums=('${B2SUM}')|" PKGBUILD
+# Replace first checksum only, preserve patch checksum
+sed -i "0s/b2sums=('.*'/b2sums=('${B2SUM}'/" PKGBUILD
 
 makepkg --printsrcinfo > .SRCINFO
 
