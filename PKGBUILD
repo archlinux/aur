@@ -2,7 +2,7 @@
 
 pkgname=skeema
 pkgver=1.13.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Declarative pure-SQL schema management for MySQL and MariaDB'
 arch=(x86_64 aarch64)
 url='https://github.com/skeema/skeema'
@@ -28,7 +28,6 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOPATH="${srcdir}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   go build -o "build/$pkgname" .
