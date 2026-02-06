@@ -72,7 +72,7 @@ build() {
     pkg2appimage misc/$_Pkgname.yml
 
     chmod +x out/$_Pkgname-*.AppImage
-    eval out/$_Pkgname-*.AppImage --appimage-extract
+    out/$_Pkgname-*.AppImage --appimage-extract
     # Adjust .desktop so it will work outside of AppImage container
     sed -i -E "s|Exec=$_Pkgname|Exec=env DESKTOPINTEGRATION=false /usr/bin/$_Pkgname|"\
         "$srcdir/squashfs-root/$_Pkgname.desktop"
