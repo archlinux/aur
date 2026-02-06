@@ -1,5 +1,5 @@
 pkgname=alogi
-pkgver=0.1.43
+pkgver=0.1.44
 pkgrel=1
 pkgdesc="AI-powered log viewer"
 arch=("x86_64")
@@ -36,7 +36,7 @@ source=(
   "icon.png"
 )
 sha256sums=(
-    "c0839123b49b10edd1bbfbff502fa698370018e58c6a6a00b7ad494e2413f901"
+    "d21ac44c66b5300a5f990db30c845e739cd05ace03864d55a7bc64d011e42404"
   "SKIP"
   "SKIP"
 )
