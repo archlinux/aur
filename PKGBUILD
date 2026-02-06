@@ -1,7 +1,7 @@
 # Maintainer: Super Tecno Gym <banana@grrlz.net>
 
 pkgname=arduino-flasher-cli
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Arduino UNO Q image flasher"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=(
 )
 depends=('qdl-git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('00bde6c4c461de91e7cd0592e4eaca1fbfadd64e3fcd10f7f448ef794efdeb3a')
+sha256sums=('8b9a1521b045db5b0f5b41efbb7a16fdffa8f6d382fa3e5ef46132b636246f94')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
