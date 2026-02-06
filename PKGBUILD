@@ -3,7 +3,7 @@
 pkgname=python-typing-inspect
 _name=${pkgname#python-}
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Runtime inspection utilities for typing module'
 arch=('any')
 url='https://github.com/ilevkivskyi/typing_inspect'

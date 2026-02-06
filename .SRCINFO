@@ -1,7 +1,7 @@
 pkgbase = python-typing-inspect
 	pkgdesc = Runtime inspection utilities for typing module
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ilevkivskyi/typing_inspect
 	arch = any
 	license = MIT
