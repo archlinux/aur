@@ -1,19 +1,39 @@
 pre_remove() {
     pkill -f "python3 -m wgtray" 2>/dev/null || true
+    systemctl --user disable wgtray.service 2>/dev/null || true
 }
 
 post_install() {
+    rm -f /etc/xdg/autostart/wgtray.desktop
+    
     echo ""
     cat /usr/share/doc/wgtray/ascii-logo.txt 2>/dev/null || true
     echo ""
     echo "==> wgtray installed successfully!"
     echo ""
     echo "    Start:     wgtray"
-    echo "    Autostart: Enabled (logout/login to activate)"
+    echo ""
+    echo "    Enable autostart:"
+    echo "      Desktop Environments: wgtray --enable-xdg"
+    echo "      Window Managers:      wgtray --enable-systemd"
     echo ""
 }
 
 post_upgrade() {
+    rm -f /etc/xdg/autostart/wgtray.desktop
+    
+    # Warn about hooks migration
+    if [ -d "$HOME/.config/wgtray/hooks" ] && [ "$(ls -A "$HOME/.config/wgtray/hooks" 2>/dev/null)" ]; then
+        echo ""
+        echo "==> WARNING: Hooks location changed!"
+        echo "    Old: ~/.config/wgtray/hooks/"
+        echo "    New: /usr/local/lib/wgtray/hooks/"
+        echo ""
+        echo "    Recreate your hooks with: wgtray --hook <interface> <event>"
+        echo "    Old hooks will no longer run."
+        echo ""
+    fi
+    
     post_install
 }
 
@@ -22,6 +42,9 @@ pre_upgrade() {
 }
 
 post_remove() {
+    rm -f /etc/xdg/autostart/wgtray.desktop
     echo "==> wgtray removed."
     echo "    User config remains at: ~/.config/wgtray/"
+    echo "    Hooks remain at: /usr/local/lib/wgtray/hooks/"
+    echo "    Sudoers rules remain at: /etc/sudoers.d/wgtray-*"
 }
