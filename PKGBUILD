@@ -1,11 +1,11 @@
 # Maintainer: Keithsel <keithsel@disroot.org>
 pkgname=dekl-git
-pkgver=0.1.0.r0.g0000000
+pkgver=0.1.0.r1.gf696bb9
 pkgrel=1
-pkgdesc='Declarative Arch Linux system manager - packages, dotfiles, services'
+pkgdesc='Declarative Arch Linux system manager'
 arch=('any')
 url='https://github.com/Keithsel/dekl'
-license=('MIT')
+license=('GPL-3.0-or-later')
 depends=(
     'pacman'
     'python'
