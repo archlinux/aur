@@ -3,15 +3,16 @@
 # Version is substituted by .github/workflows/aur-publish.yml
 
 pkgname=omni-screen-bin
-pkgver=1.8.3
+pkgver=1.8.5
 pkgrel=1
 pkgdesc="Omni Screen - multi-platform stream and link viewer"
 arch=('x86_64')
 url="https://github.com/NickMarcha/omni-screen"
 license=('MIT')
 depends=('fuse2' 'gtk3')
+# Local filename must include pkgver so makepkg re-downloads when version changes (avoids stale cache)
 source=(
-  "omni-screen.AppImage::https://github.com/NickMarcha/omni-screen/releases/download/v${pkgver}/Omni-Screen-Linux-${pkgver}-x86_64.AppImage"
+  "omni-screen-${pkgver}.AppImage::https://github.com/NickMarcha/omni-screen/releases/download/v${pkgver}/Omni-Screen-Linux-${pkgver}-x86_64.AppImage"
   "omni-screen.desktop"
 )
 sha256sums=(
@@ -21,7 +22,7 @@ sha256sums=(
 options=('!strip')
 
 package() {
-  install -Dm755 "$srcdir/omni-screen.AppImage" "$pkgdir/opt/omni-screen/omni-screen.AppImage"
+  install -Dm755 "$srcdir/omni-screen-${pkgver}.AppImage" "$pkgdir/opt/omni-screen/omni-screen.AppImage"
   install -Dm644 "$srcdir/omni-screen.desktop" "$pkgdir/usr/share/applications/omni-screen.desktop"
   # Wrapper so the app is in PATH
   mkdir -p "$pkgdir/usr/bin"
