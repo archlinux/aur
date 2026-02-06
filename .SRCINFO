@@ -1,6 +1,6 @@
 pkgbase = python-dspy
 	pkgdesc = The framework for programming (not prompting) language models
-	pkgver = 3.1.2
+	pkgver = 3.1.3
 	pkgrel = 1
 	url = https://github.com/stanfordnlp/dspy
 	arch = any
@@ -12,14 +12,11 @@ pkgbase = python-dspy
 	depends = litellm
 	depends = python-anyio
 	depends = python-asyncer
-	depends = python-backoff
 	depends = python-cachetools
 	depends = python-cloudpickle
 	depends = python-diskcache
-	depends = python-joblib
 	depends = python-json_repair
-	depends = python-magicattr
-	depends = python-importlib-metadata
+	depends = python-numpy
 	depends = python-openai
 	depends = python-optuna
 	depends = python-orjson
@@ -29,7 +26,6 @@ pkgbase = python-dspy
 	depends = python-tenacity
 	depends = python-tqdm
 	depends = python-xxhash
-	depends = python-yaml
 	optdepends = deno: python interpreter
 	optdepends = python-anthropic: support for Anthropic
 	optdepends = python-chromadb: support for Chroma
@@ -47,7 +43,7 @@ pkgbase = python-dspy
 	optdepends = python-weaviate-client: support for Weaviate
 	optdepends = python-pymilvus: support for Milvus
 	optdepends = python-boto3: support for AWS
-	source = dspy::git+https://github.com/stanfordnlp/dspy.git#tag=3.1.2
-	b2sums = e8c1e303ad539916020305b446db4dd67cd629e256259106131689f3b39f44b503cfc961f1926d616a20f14b1d00bdea97560c555a17cc9d15499050ca868a42
+	source = dspy::git+https://github.com/stanfordnlp/dspy.git#tag=3.1.3
+	b2sums = ff7facdae581303ed7b0de37a67bfbdf674eaa8137a8284c6d7cc355af0b5de32093e143d13b4536c390a8750bf079461d96e71b770e0a354f22ee10ff561968
 
 pkgname = python-dspy

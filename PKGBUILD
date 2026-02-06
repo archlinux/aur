@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _name=dspy
 pkgname=python-$_name
-pkgver=3.1.2
+pkgver=3.1.3
 pkgrel=1
 pkgdesc="The framework for programming (not prompting) language models"
 arch=(any)
@@ -11,15 +11,12 @@ depends=(
     litellm
     python-anyio
     python-asyncer
-    python-backoff
     python-cachetools
     python-cloudpickle
     python-diskcache
-    # python-gepa
-    python-joblib
+#     python-gepa  # TODO: some dependencies are broken in AUR
     python-json_repair
-    python-magicattr
-    python-importlib-metadata
+    python-numpy
     python-openai
     python-optuna
     python-orjson
@@ -29,7 +26,6 @@ depends=(
     python-tenacity
     python-tqdm
     python-xxhash
-    python-yaml
 )
 optdepends=(
     "deno: python interpreter"
@@ -57,7 +53,7 @@ makedepends=(
     python-setuptools
 )
 source=($_name::git+https://github.com/stanfordnlp/dspy.git#tag=$pkgver)
-b2sums=('e8c1e303ad539916020305b446db4dd67cd629e256259106131689f3b39f44b503cfc961f1926d616a20f14b1d00bdea97560c555a17cc9d15499050ca868a42')
+b2sums=('ff7facdae581303ed7b0de37a67bfbdf674eaa8137a8284c6d7cc355af0b5de32093e143d13b4536c390a8750bf079461d96e71b770e0a354f22ee10ff561968')
 
 build() {
     cd $_name
