@@ -1,0 +1,11 @@
+pkgbase = njuconnect
+	pkgdesc = NJUConnect - A cross-platform VPN client for Nanjing University
+	pkgver = 14
+	pkgrel = 1
+	url = https://github.com/lyc8503/NJUConnect
+	arch = x86_64
+	license = unknown
+	source = njuconnect-14::https://github.com/lyc8503/NJUConnect/releases/download/TestBuild14/EasierConnect-linux-amd64.zip
+	sha256sums = 9a686c3861a04132ce7b14fd240550e88f60e2b0f5d4fc1186519aa9bd2735ba
+
+pkgname = njuconnect
