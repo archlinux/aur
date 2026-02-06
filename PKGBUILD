@@ -6,10 +6,10 @@
 # Contributor: Jiawen Geng
 
 pkgname=github-desktop-plus
-pkgver=3.5.5.7
+pkgver=3.5.5.9
 pkgrel=1
 pkgdesc="Fork of GitHub Desktop with extra features and improvements."
-arch=('x86_64' 'aarch64' 'armv7h')
+arch=('x86_64' 'aarch64')
 url="https://github.com/pol-rivero/github-desktop-plus"
 license=('MIT')
 provides=($pkgname)
@@ -27,7 +27,7 @@ depends=(curl
 optdepends=('github-cli: CLI interface for GitHub'
             'hub: CLI interface for GitHub')
 makedepends=(python-setuptools
-             'nodejs-lts-jod'
+             'nodejs-lts-krypton'
              npm
              xorg-server-xvfb
              yarn)
@@ -71,7 +71,6 @@ package() {
     case "$CARCH" in
         x86_64) suffix="x64" ;;
         aarch64) suffix="arm64" ;;
-        armv7h) suffix="armv7l" ;;
         *) echo "Unsupported architecture: $CARCH"; exit 1 ;;
     esac
     cp -r --preserve=mode "dist/github-desktop-plus-linux-$suffix/"* "$INSTALL_DIR/"
