@@ -1,5 +1,5 @@
 pkgname=plasma6-applets-virtual-desktop-bar-wayland
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Configurable virtual desktop bar widget for KDE Plasma 6"
 arch=('x86_64')
