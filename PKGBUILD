@@ -2,7 +2,7 @@
 ##If you spot any issues, please don't hesitate to email me.
 ##Email: pony at just-a-pony dot net
 pkgname=yukigram-desktop
-pkgver=6.2.4
+pkgver=6.4.1
 pkgrel=1
 pkgdesc='A Fork of 64Gram,A Telegram Desktop fork'
 arch=('x86_64')
@@ -61,7 +61,7 @@ optdepends=(
 )
 
 _td_commit=6d74326c5ce53aeb52496f157f0080d9b8515970
-_yukigram_commit=f4dabf3858a7e4aad107ae400e8386fc2bcaeb2e
+_yukigram_commit=9389a17dc3570f30b150acf6f87107a39deee7ca
 source=("yukigram::git+https://github.com/yukigram/yukigram.git#tag=${_yukigram_commit}"
     "git+https://github.com/tdlib/td.git#tag=${_td_commit}")
 
