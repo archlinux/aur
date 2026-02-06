@@ -1,15 +1,17 @@
 pkgbase = dmarc-cat-git
 	pkgdesc = Small utility to decode the report sent by various email providers following the DMARC spec
 	pkgver = 0.15.0.r8.g7001688
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/keltia/dmarc-cat
 	arch = x86_64
-	license = BSD
+	license = BSD-2-Clause
 	makedepends = git
 	makedepends = go
+	depends = glibc
+	depends = gpgme
 	provides = dmarc-cat
 	conflicts = dmarc-cat
-	source = dmarc-cat::git+https://github.com/keltia/dmarc-cat.git
+	source = dmarc-cat-git::git+https://github.com/keltia/dmarc-cat.git
 	sha256sums = SKIP
 
 pkgname = dmarc-cat-git

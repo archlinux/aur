@@ -1,6 +1,6 @@
 src
 pkg
-dmarc-cat
+dmarc-cat-git
 *.tar.xz
 *.tar.gz
 *.tar.zst
