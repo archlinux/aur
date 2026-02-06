@@ -1,0 +1,33 @@
+pkgbase = polarity-md
+	pkgver = 0.beta8
+	pkgrel = 1
+	url = https://polarity.productions/polarity-md/
+	arch = x86_64
+	license = custom
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = glib2
+	depends = libsoup3
+	source = polarity-md-0.beta8.zip::https://polarity.productions/polarity-md/downloads/PolarityMD-linux-beta8.zip
+	sha256sums = 0de1a95c9ac29a96466f889724c086ea9ee634980414f2f261c7ccedec0fbfa0
+
+pkgname = polarity-md
+	pkgdesc = Polarity-MD meta package (installs VST3 + CLAP)
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = glib2
+	depends = libsoup3
+	depends = polarity-md-vst3
+	depends = polarity-md-clap
+	provides = polarity-md
+	conflicts = polarity-md
+
+pkgname = polarity-md-vst3
+	pkgdesc = Polarity-MD (VST3) - prebuilt binary
+	provides = polarity-md-vst3
+	conflicts = polarity-md-vst3
+
+pkgname = polarity-md-clap
+	pkgdesc = Polarity-MD (CLAP) - prebuilt binary
+	provides = polarity-md-clap
+	conflicts = polarity-md-clap
