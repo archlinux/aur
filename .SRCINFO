@@ -1,0 +1,16 @@
+pkgbase = nvrh-bin
+	pkgdesc = Neovim Remote Helper - remote Neovim experience similar to VSCode Remote
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/mikew/nvrh
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = nvrh
+	conflicts = nvrh
+	source_x86_64 = nvrh-bin-0.7.0-x86_64::https://github.com/mikew/nvrh/releases/download/v0.7.0/nvrh-linux-amd64
+	sha256sums_x86_64 = f089d926aeca20fd66726317f6511d1500d101fdf09127cdf89c6cc9351ef920
+	source_aarch64 = nvrh-bin-0.7.0-aarch64::https://github.com/mikew/nvrh/releases/download/v0.7.0/nvrh-linux-arm64
+	sha256sums_aarch64 = 2a1eabf7d8661e556a712678cdbbfaa19c6ee3455ff3829bd659e6c028693c02
+
+pkgname = nvrh-bin
