@@ -1,7 +1,7 @@
 # Maintainer: yuzujr <15568103056@163.com>
 
 pkgname=coomer-bin
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Zoomer application for everyone on Linux (prebuilt binary)"
 arch=('x86_64')
@@ -25,7 +25,7 @@ provides=('coomer')
 conflicts=('coomer')
 
 source=("coomer-v$pkgver-linux-x86_64.tar.gz::https://github.com/yuzujr/coomer/releases/download/v$pkgver/coomer-v$pkgver-linux-x86_64.tar.gz")
-sha256sums=('1da333271bb4634ec07c435327e068b9f6fb7e749334ccb2a3295d56677b2fbf')
+sha256sums=('ab9522eef12aba3b1f98ceccb58e8e6cd9ad74eb30bd258a489bca029463d30a')
 
 package() {
   cd "$srcdir"

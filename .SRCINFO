@@ -1,6 +1,6 @@
 pkgbase = coomer-bin
 	pkgdesc = Zoomer application for everyone on Linux (prebuilt binary)
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/yuzujr/coomer
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = coomer-bin
 	optdepends = xdg-desktop-portal: portal screenshot backend
 	provides = coomer
 	conflicts = coomer
-	source = coomer-v1.1.1-linux-x86_64.tar.gz::https://github.com/yuzujr/coomer/releases/download/v1.1.1/coomer-v1.1.1-linux-x86_64.tar.gz
-	sha256sums = 1da333271bb4634ec07c435327e068b9f6fb7e749334ccb2a3295d56677b2fbf
+	source = coomer-v1.1.2-linux-x86_64.tar.gz::https://github.com/yuzujr/coomer/releases/download/v1.1.2/coomer-v1.1.2-linux-x86_64.tar.gz
+	sha256sums = ab9522eef12aba3b1f98ceccb58e8e6cd9ad74eb30bd258a489bca029463d30a
 
 pkgname = coomer-bin
