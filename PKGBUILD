@@ -18,7 +18,7 @@ optdepends=(
     'rebuild-detector: detect packages needing rebuild via checkrebuild'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d6784e3be65b27fb4034a67d8e15f4d27c34822b12013ecb0173751f5ccbe34e')
+sha256sums=('39ff875d60c88d5bf1d6c897e7ae8787292c6c88a29cc56ea4ff0f1e07b1ad73')
 
 prepare() {
     cd "$_reponame-$pkgver"
