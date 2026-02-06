@@ -1,0 +1,63 @@
+diff --git a/webext/app/credential_manager_shim.py b/webext/app/credential_manager_shim.py
+index ace3ba2..a5e3bf1 100755
+--- a/webext/app/credential_manager_shim.py
++++ b/webext/app/credential_manager_shim.py
+@@ -1,8 +1,11 @@
+ #!/usr/bin/env python3
+ 
+-import asyncio
+ import base64
+ import codecs
++from signal import signal
++from signal import SIGTERM
++from asyncio import run as asyncio_run
++from asyncio import Event
+ from dataclasses import dataclass
+ from enum import Enum
+ import json
+@@ -395,23 +398,25 @@ async def run(cmd, options, origin, top_origin):
+         raise Exception(f"unknown cmd: {cmd}")
+ 
+ 
+-logging.info("starting credential_manager_shim")
+-while True:
+-    logging.debug("starting event loop message")
+-    receivedMessage = getMessage()
+-    request_id = receivedMessage["requestId"]
+-    try:
+-        cmd = receivedMessage["cmd"]
+-
+-        options = None
+-        if "options" in receivedMessage:
+-            options = receivedMessage["options"]
+-        origin = receivedMessage["origin"]
+-        top_origin = receivedMessage["topOrigin"]
+-        loop = asyncio.get_event_loop()
+-        auth_data = loop.run_until_complete(run(cmd, options, origin, top_origin))
+-        sendMessage(encodeMessage({"requestId": request_id, "data": auth_data}))
+-    except Exception as e:
+-        logging.error("Failed to send message", exc_info=e)
+-        sendMessage(encodeMessage({"requestId": request_id, "error": str(e)}))
+-        logging.debug("Sent error message")
++async def main():
++    logging.info("starting credential_manager_shim")
++    while not quit.is_set():
++        logging.debug("starting event loop message")
++        receivedMessage = getMessage()
++        request_id = receivedMessage["requestId"]
++        try:
++            cmd = receivedMessage["cmd"]
++            options = receivedMessage.get("options", None)
++            origin = receivedMessage["origin"]
++            top_origin = receivedMessage["topOrigin"]
++            auth_data = await run(cmd, options, origin, top_origin)
++            sendMessage(encodeMessage({"requestId": request_id, "data": auth_data}))
++        except Exception as e:
++            logging.error("Failed to send message", exc_info=e)
++            sendMessage(encodeMessage({"requestId": request_id, "error": str(e)}))
++            logging.debug("Sent error message")
++    logging.info("quitting credential_manager_shim")
++
++quit = Event()
++signal(SIGTERM, lambda _, __ : quit.set())
++asyncio_run(main())

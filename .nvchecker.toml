@@ -1,0 +1,6 @@
+[credentialsd]
+prefix = "v"
+source = "github"
+github = "linux-credentials/credentialsd"
+use_latest_release = true
+include_prereleases = true

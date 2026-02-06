@@ -1,0 +1,6 @@
+*
+!0001-fix-get_event_loop-failure.diff
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
