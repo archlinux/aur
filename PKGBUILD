@@ -2,7 +2,7 @@
 
 pkgname=onleiharr
 _gitname=Onleiharr
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Onleihe watcher with notifications and auto-rent'
 arch=('any')
@@ -31,10 +31,10 @@ source=(
   'onleiharr.sysusers'
   'onleiharr.toml'
 )
-sha256sums=('237505abd5d4a905afac7885fc44acbb6905a23837af29b4ea99749ef74bd0d6'
+sha256sums=('2921886945772f961d07c9f1eb03fb97fe7b299cacf063630414cd048dc3c9be'
             '0c17422722ad64eebd2c20986f60a0c155724070fe1a4e6bab9b119fdba5f0ae'
             '742faee2b1064dbf77b5e2b8e29f6b20a06e83711e5415bafd9dabb1e02ee1e0'
-            '1a733196d06a2cf650e36eb84200cb1754901042eab4ffa193e94eb3e7ef195c')
+            '6167b405e052bdf239124e0e4aa6396757709d541c56235a563988376f87375f')
 
 build() {
   cd "${srcdir}/${_gitname}-${pkgver}"

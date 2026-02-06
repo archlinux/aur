@@ -1,5 +1,5 @@
 [general]
-poll_interval_secs = 60.0
+poll_interval_secs = 300.0
 urls = []
 keywords = []
 
