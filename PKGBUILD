@@ -9,6 +9,13 @@ license=('MIT')
 depends=('python' 'python-requests' 'python-yaml' 'python-pillow' 'python-watchdog' 'python-pyqt6' 'qt6-tools' 'kconfig' 'python-psutil')
 
 makedepends=('git')
+optdepends=(
+    'python-pytorch: Required for Stable Diffusion AI wallpaper generation'
+    'python-pytorch-cuda: CUDA acceleration for Stable Diffusion (NVIDIA GPUs)'
+    'python-diffusers: Required for Stable Diffusion AI wallpaper generation'
+    'python-transformers: Required for Stable Diffusion AI wallpaper generation'
+    'python-accelerate: Optimized inference for Stable Diffusion'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+https://github.com/ushineko/clockwork-orange.git")
@@ -44,10 +51,16 @@ package() {
     # Install Plugins
     install -d "${pkgdir}/usr/lib/${pkgname%-git}/plugins"
     cp -r plugins/* "${pkgdir}/usr/lib/${pkgname%-git}/plugins/"
-    
-    # Create /usr/bin symlink
+
+    # Create /usr/bin directory
     install -d "${pkgdir}/usr/bin"
     ln -s "/usr/lib/${pkgname%-git}/clockwork-orange.py" "${pkgdir}/usr/bin/clockwork-orange"
+
+    # Install Scripts (setup helpers)
+    install -d "${pkgdir}/usr/lib/${pkgname%-git}/scripts"
+    install -Dm755 scripts/setup_stable_diffusion.sh "${pkgdir}/usr/lib/${pkgname%-git}/scripts/setup_stable_diffusion.sh"
+    # Create convenience symlink in /usr/bin
+    ln -s "/usr/lib/${pkgname%-git}/scripts/setup_stable_diffusion.sh" "${pkgdir}/usr/bin/clockwork-orange-setup-sd"
 
 	# Install desktop entry
     # We need to fix the Icon and Exec path in the desktop file or install a new one
