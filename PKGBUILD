@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=deepchat-bin
 _pkgname=DeepChat
-pkgver=0.5.5
+pkgver=0.5.7
 _electronversion=37
 pkgrel=1
 pkgdesc="A smart assistant that connects powerful AI to your personal world.(Prebuilt version.Use system-wide electron)"
@@ -14,6 +14,11 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'python'
+    'python-six'
+    'python-lxml'
+    'python-defusedxml'
+    'python-pillow'
+    'python-yaml'
 )
 options=(
     '!strip'
@@ -22,7 +27,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ee3085483bc9058733fc3e351663f8154ab341a9bf8b1d7ca6803ad07f5b81e0'
+sha256sums=('cd2c1daa97347c109ba49a10b2a0cde3281af84d4e5cdff5a88ba3454f4c3ba3'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}.bin" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
@@ -45,6 +50,7 @@ prepare() {
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     _get_electron_version
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    find "${srcdir}/squashfs-root/resources/app.asar.unpacked" -type d \( -name "darwin" -o -name "win32" \) -exec rm -rf {} +
     find "${srcdir}/squashfs-root/resources" -type d -perm 700 -exec chmod 755 {} +
 }
 package() {
