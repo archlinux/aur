@@ -1,0 +1,21 @@
+pkgbase = aeth-git
+	pkgdesc = An elegant polymorphic shell that lacks the concept of elegance. Written in Haskell.
+	pkgver = r21.a99d56d
+	pkgrel = 1
+	url = https://github.com/prabinpanta0/Aeth
+	arch = x86_64
+	license = MIT
+	makedepends = ghc
+	makedepends = ghc-static
+	makedepends = cabal-install
+	makedepends = git
+	depends = gmp
+	depends = ncurses
+	depends = zlib
+	depends = libffi
+	provides = aeth
+	conflicts = aeth
+	source = aeth-git::git+https://github.com/prabinpanta0/Aeth.git
+	sha256sums = SKIP
+
+pkgname = aeth-git
