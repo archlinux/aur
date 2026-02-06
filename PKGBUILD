@@ -3,7 +3,7 @@
 
 pkgname=comchan
 _pkgname=ComChan
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="A blazingly fast minimal serial monitor"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('gcc-libs' 'libudev.so')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('54c60eaa4f5941a9252a22ad92886a4f3dd70f9f0f231427fe3bdb60b38f7ae1')
+sha256sums=('b4ef7d7dfbf2dcdf2a22ba4f4de356f8237f9252ccb69c7f2aab1e76191a8cb9')
 
 prepare() {
   cd "$_pkgname-$pkgver"
