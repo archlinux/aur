@@ -1,6 +1,6 @@
 # Maintainer: Nguyen Ky <nhktmdzhg at google mail>
 pkgname=fcitx5-vmk
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="VMK (Vietnamese Micro Key) for Fcitx5 - Bộ gõ tiếng Việt mô phỏng UniKey"
 arch=('x86_64')
@@ -14,7 +14,10 @@ source=(
     "git+https://github.com/nhktmdzhg/VMK.git#tag=v$pkgver"
     'git+https://github.com/BambooEngine/bamboo-core.git'
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=(
+    '36df127e1b0023427760ba3014a1d1ad6d536cc3aa7508b8b9f18bef4750278a'
+    'SKIP'
+)
 install='fcitx5-vmk.install'
 
 prepare() {
