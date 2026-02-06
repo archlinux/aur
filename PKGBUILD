@@ -20,7 +20,7 @@ source_x86_64=(
 
 # SHA256 校验和（建议填写真实值，“SKIP” 仅用于测试）
 # 获取方式：下载后运行 `sha256sum ceru-music-1.8.0-linux-x86_64.AppImage`
-sha256sums_x86_64=('b0cc1bcabbd61b4d3fb3db62552553609df1e3375ad1dfecc483b84a1d0b3588')        # 替换为真实 SHA256 值以通过校验
+sha256sums_x86_64=('83bef1f0a1acd3b2793b92cf66f13adbbe14aba8aea98250fd71c78565ef43e5')        # 替换为真实 SHA256 值以通过校验
 
 prepare() {
     # 赋予 AppImage 可执行权限

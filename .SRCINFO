@@ -11,6 +11,6 @@ pkgbase = ceru-music-appimage
 	conflicts = ceru-music
 	options = !strip
 	source_x86_64 = ceru-music-1.8.1-linux-x86_64.AppImage::https://github.com/timeshiftsauce/CeruMusic/releases/download/v1.8.1/ceru-music-1.8.1-linux-x86_64.AppImage
-	sha256sums_x86_64 = b0cc1bcabbd61b4d3fb3db62552553609df1e3375ad1dfecc483b84a1d0b3588
+	sha256sums_x86_64 = 83bef1f0a1acd3b2793b92cf66f13adbbe14aba8aea98250fd71c78565ef43e5
 
 pkgname = ceru-music-appimage
