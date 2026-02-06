@@ -3,6 +3,6 @@
 !.SRCINFO
 !.gitignore
 !.nvchecker.toml
-!*.patch
+!gnutls_ktls_disable_keyupdate_test.patch
 !gnutls3.8.9-config
 !*.modules-load

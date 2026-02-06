@@ -4,11 +4,15 @@
 
 _basename=gnutls
 pkgver=3.8.9
-pkgrel=1
+pkgrel=2
 pkgname="${_basename}${pkgver}"
 pkgdesc="A library which provides a secure layer over a reliable transport layer"
-arch=('x86_64')
-license=('GPL-3.0-or-later AND LGPL-2.1-or-later')
+arch=(
+  'x86_64'
+)
+license=(
+  'GPL-3.0-or-later AND LGPL-2.1-or-later'
+)
 url="https://www.gnutls.org"
 depends=(
   'brotli>=1.0.0'
@@ -43,27 +47,35 @@ backup=(
   "etc/modules-load.d/${pkgname}.conf"
 )
 _pkgsrc="${_basename}-${pkgver}"
-source=("${_pkgsrc}.tar.xz::https://www.gnupg.org/ftp/gcrypt/${_basename}/v${pkgver%.*}/${_pkgsrc}.tar.xz"
-        "${_pkgsrc}.tar.xz.sig::https://www.gnupg.org/ftp/gcrypt/${_basename}/v${pkgver%.*}/${_pkgsrc}.tar.xz.sig"
-        "${_basename}-ktls_disable_keyupdate_test.patch"
-        "${pkgname}-config"
-        "${pkgname}.modules-load")
+source=(
+  "https://www.gnupg.org/ftp/gcrypt/${_basename}/v${pkgver%.*}/${_pkgsrc}.tar.xz"
+  "https://www.gnupg.org/ftp/gcrypt/${_basename}/v${pkgver%.*}/${_pkgsrc}.tar.xz.sig"
+  "${_basename}_ktls_disable_keyupdate_test.patch"
+  "${_basename}_hide_m4_ifdef_from_autopoint.patch::https://gitlab.com/gnutls/gnutls/-/merge_requests/2061.patch"
+  "${pkgname}-config"
+  "${pkgname}.modules-load"
+)
 sha256sums=('69e113d802d1670c4d5ac1b99040b1f2d5c7c05daec5003813c049b5184820ed'
             'SKIP'
             '2a911615739cb327b6dced36b595ea10c89f40bb7274d062dab14a9ecfe89708'
+            'cb9000c5c73a4be7fc68408d8efbb485c2deacfa2098152bc84dcad44906fd1a'
             '22e614510fe52defe8c233ce3e5ead2205739fd967657ce3176ca121f3c562b5'
             'bdc4c4eb010d766cb8dca8832adddd58b964e715473a823cfd7a6b236a54ceb6')
-validpgpkeys=('462225C3B46F34879FC8496CD605848ED7E69871') # "Daiki Ueno <ueno@unixuser.org>"
+validpgpkeys=(
+  '462225C3B46F34879FC8496CD605848ED7E69871' # "Daiki Ueno <ueno@unixuser.org>"
+)
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  patch -Np1 -i "${srcdir}/${_basename}-ktls_disable_keyupdate_test.patch"
+  patch -Np1 -i "${srcdir}/${_basename}_ktls_disable_keyupdate_test.patch"
+  # https://gitlab.com/gnutls/gnutls/-/issues/1792
+  patch -Np1 -i "${srcdir}/${_basename}_hide_m4_ifdef_from_autopoint.patch"
 }
 
 build() {
   local configure_options=(
     --prefix='/usr'
-    --program-suffix="${pkgver}"
+    --program-suffix="-${pkgver}"
     --includedir="/usr/include/${pkgname}"
     --libdir="/usr/lib/${pkgname}"
     --docdir="/usr/share/doc/${pkgname}"
