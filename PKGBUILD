@@ -18,7 +18,7 @@ optdepends=(
 provides=('simple-notes-desktop')
 conflicts=('simple-notes-desktop' 'simple-notes-desktop-git')
 options=('!strip')
-source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/simple-notes-desktop_${pkgver}_amd64.deb")
+source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/Simple.Notes.Desktop_${pkgver}_amd64.deb")
 sha256sums=('SKIP')
 
 package() {
