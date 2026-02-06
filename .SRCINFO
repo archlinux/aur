@@ -9,6 +9,6 @@ pkgbase = anicli-esp
 	depends = mpv
 	depends = yt-dlp
 	source = anicli-esp-main.tar.gz::https://github.com/Asempere123123/anicli-esp/archive/main.tar.gz
-	sha256sums = 35e3f760ddef1d7b667fde71194e71da2608b3d8b0e571190ceab47a1fd6db92
+	sha256sums = 1851881fe019f259e76dc8a457736da78079324bbfdbbf00c3eed73ca221f246
 
 pkgname = anicli-esp
