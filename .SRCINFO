@@ -1,6 +1,6 @@
 pkgbase = cfrds
 	pkgdesc = Client side ColdFusion RDS protocol.
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/bokic/cfrds
 	arch = x86_64
@@ -16,8 +16,9 @@ pkgbase = cfrds
 	depends = glibc
 	depends = gcc-libs
 	depends = libxml2
+	depends = json-c
 	options = !debug
-	source = cfrds-1.0.1.tar.gz::https://github.com/bokic/cfrds/archive/refs/tags/1.0.1.tar.gz
-	sha512sums = 05eefb701c3460dde6cf3aca578de027326328f607b53e46ee2010a065f8d9933f0735db21c6be30130dc36a482c62626e7494d61a79d11e8dd97fb5bcedc5b2
+	source = cfrds-1.0.2.tar.gz::https://github.com/bokic/cfrds/archive/refs/tags/1.0.2.tar.gz
+	sha512sums = baedaa8158c889ba93fd4bb904a69b79ba3d29d6acc13fcb0f314b958d3e18398ffd78ea46f49e0ec378cac450b86b24acf19f0b26d111bc70ff0bc6ad8f448c
 
 pkgname = cfrds

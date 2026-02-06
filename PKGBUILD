@@ -1,6 +1,6 @@
 # Maintainer: Boris Barbulovski <bbarbulovski@gmail.com>
 pkgname=('cfrds')
-pkgver='1.0.1'
+pkgver='1.0.2'
 pkgrel=1
 options=(!debug)
 pkgdesc='Client side ColdFusion RDS protocol.'
@@ -8,18 +8,18 @@ arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url='https://github.com/bokic/cfrds'
 license=('MIT')
 makedepends=('cmake' 'ninja' 'gcc' 'pkgconf')
-depends=('glibc' 'gcc-libs' 'libxml2')
+depends=('glibc' 'gcc-libs' 'libxml2' 'json-c')
 
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/bokic/$pkgname/archive/refs/tags/${pkgver}.tar.gz"
 )
 
 sha512sums=(
-    '05eefb701c3460dde6cf3aca578de027326328f607b53e46ee2010a065f8d9933f0735db21c6be30130dc36a482c62626e7494d61a79d11e8dd97fb5bcedc5b2'
+    'baedaa8158c889ba93fd4bb904a69b79ba3d29d6acc13fcb0f314b958d3e18398ffd78ea46f49e0ec378cac450b86b24acf19f0b26d111bc70ff0bc6ad8f448c'
 )
 
 build() {
-    cmake -DMY_GIT_TAG="$pkgver" -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" -B"$pkgname-$pkgver/build" -G Ninja "$pkgname-$pkgver"
+    cmake -DCFRDS_GIT_TAG="$pkgver" -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" -B"$pkgname-$pkgver/build" -G Ninja "$pkgname-$pkgver"
     cmake --build "$pkgname-$pkgver/build"
 }
 
