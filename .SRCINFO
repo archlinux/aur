@@ -1,6 +1,6 @@
 pkgbase = cockpit-tools-bin
 	pkgdesc = A tool for managing Cockpit (Tauri-based)
-	pkgver = 0.5.1
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://github.com/jlcodes99/cockpit-tools
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = cockpit-tools-bin
 	depends = libayatana-appindicator
 	provides = cockpit-tools
 	conflicts = cockpit-tools
-	source = cockpit-tools-bin-0.5.1.deb::https://github.com/jlcodes99/cockpit-tools/releases/download/v0.5.1/Cockpit.Tools_0.5.1_amd64.deb
-	sha256sums = 722bed583c3eff33c69c69676eeb46bdbe8386e90efb66f0fa2decbb65b1d92b
+	source = cockpit-tools-bin-0.5.3.deb::https://github.com/jlcodes99/cockpit-tools/releases/download/v0.5.3/Cockpit.Tools_0.5.3_amd64.deb
+	sha256sums = 21982c1f2dd24cea67d1044dab83fbf43218f69593cb9b2c97c1d97f4b2adb79
 
 pkgname = cockpit-tools-bin
