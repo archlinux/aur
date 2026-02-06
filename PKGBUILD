@@ -1,3 +1,5 @@
+# Maintainer: Wenrui Huang <wr-huang@outlook.com>
+
 pkgname=njuconnect
 pkgver=14
 pkgrel=1
