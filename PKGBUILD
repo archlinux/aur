@@ -1,6 +1,6 @@
 # Maintainer: Mads Thines Coello <madsthines@gmail.com>
 pkgname=gw-tools
-pkgver=0.15.1
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="Git worktree manager - Streamline your multi-branch development workflow"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ conflicts=('gw')
 source_x86_64=("$pkgname-$pkgver-x64::$url/releases/download/v$pkgver/gw-linux-x64")
 source_aarch64=("$pkgname-$pkgver-arm64::$url/releases/download/v$pkgver/gw-linux-arm64")
 
-sha256sums_x86_64=('3c0e4f0ce80fd609fa7057f04a31000b25d0b209e6ca2d42b10566d98c9de61c')
-sha256sums_aarch64=('d196bea609461fde70b2208b9661ab4be49cbc43bc8d15cb2087f1ae1aed56b8')
+sha256sums_x86_64=('b82bf6f59933065985360d5a58bb4e5eb800598f5dddc473c9bfe5186cfc684e')
+sha256sums_aarch64=('2ebbf2eaa5bf31e23b856364db45e60ca6ce6d637c75f3df1a78108b8bb2c9ed')
 
 package() {
     if [ "$CARCH" = "x86_64" ]; then
