@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=profileModel
-_pkgver=0.6.1
+_pkgver=0.6.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=10
+pkgrel=1
 pkgdesc="Profiling Inference Functions for Various Model Classes"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -16,8 +16,8 @@ optdepends=(
   r-gnm
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4e6b2c73ecfc85cc289c0612fa27c33e')
-b2sums=('6dbd8543d97dbf6b193d167aef0e177b7dce9019b0658f3d1c3a3273ddf4de0855543419538cee7a3609d0113aa862d9534d6bb6a789695e1d6cf662065d0113')
+md5sums=('06a0703e2b2c77b5bc0bc41f45cd0a64')
+b2sums=('91a969c1dee6d94ac9be8f029b2d9dbee6abab7c4dd0006fbce9737b8cf5efecfbd3d36b326f9886a6664e071f86fa1ec18d102a05f99c8e12e5b335ceffef97')
 
 build() {
   mkdir build

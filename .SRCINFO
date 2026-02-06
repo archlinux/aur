@@ -1,14 +1,14 @@
 pkgbase = r-profilemodel
 	pkgdesc = Profiling Inference Functions for Various Model Classes
-	pkgver = 0.6.1
-	pkgrel = 10
+	pkgver = 0.6.2
+	pkgrel = 1
 	url = https://cran.r-project.org/package=profileModel
 	arch = any
 	license = GPL-2.0-or-later
 	depends = r
 	optdepends = r-gnm
-	source = https://cran.r-project.org/src/contrib/profileModel_0.6.1.tar.gz
-	md5sums = 4e6b2c73ecfc85cc289c0612fa27c33e
-	b2sums = 6dbd8543d97dbf6b193d167aef0e177b7dce9019b0658f3d1c3a3273ddf4de0855543419538cee7a3609d0113aa862d9534d6bb6a789695e1d6cf662065d0113
+	source = https://cran.r-project.org/src/contrib/profileModel_0.6.2.tar.gz
+	md5sums = 06a0703e2b2c77b5bc0bc41f45cd0a64
+	b2sums = 91a969c1dee6d94ac9be8f029b2d9dbee6abab7c4dd0006fbce9737b8cf5efecfbd3d36b326f9886a6664e071f86fa1ec18d102a05f99c8e12e5b335ceffef97
 
 pkgname = r-profilemodel
