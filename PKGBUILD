@@ -12,6 +12,7 @@ url="https://www.zotero.org"
 license=('AGPL-3.0-or-later')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
+options=(!debug)
 depends=(
   'dbus-glib'
   'gtk3'
