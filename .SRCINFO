@@ -1,7 +1,7 @@
 pkgbase = decomp-toolkit
 	pkgdesc = A GameCube & Wii decompilation toolkit
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/encounter/decomp-toolkit
 	arch = aarch64
 	arch = x86_64
