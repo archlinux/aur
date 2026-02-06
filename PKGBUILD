@@ -1,7 +1,8 @@
 # Maintainer: Mark Wells <contact@markwells.dev>
 pkgname=anneal
+_reponame=Anneal
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Proactive AUR rebuild management for Arch Linux"
 arch=('x86_64')
 url="https://github.com/MarkWells-Dev/Anneal"
@@ -17,30 +18,30 @@ optdepends=(
     'rebuild-detector: detect packages needing rebuild via checkrebuild'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('09aa91b15e58cc6e6f753aed09c12cc46b5f60542511d008842198556a778045')
+sha256sums=('27a1f2488ca00a45d99e3c881869f7f1be51cee39b2e7f8e2693a0e6324a2032')
 
 prepare() {
-    cd "$pkgname-$pkgver"
+    cd "$_reponame-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$_reponame-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release
 }
 
 check() {
-    cd "$pkgname-$pkgver"
+    cd "$_reponame-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo test --frozen
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$_reponame-$pkgver"
 
     # Binary
     install -Dm755 target/release/anneal "$pkgdir/usr/bin/anneal"
