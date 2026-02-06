@@ -13,6 +13,7 @@ optdepends=(
 )
 provides=('dekl')
 conflicts=('dekl-git')
+options=('!strip')
 source=("$pkgname-$pkgver::$url/releases/download/v$pkgver/dekl")
 sha256sums=('SKIP')
 

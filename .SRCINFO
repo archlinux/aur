@@ -10,6 +10,7 @@ pkgbase = dekl
 	optdepends = yay: AUR support
 	provides = dekl
 	conflicts = dekl-git
+	options = !strip
 	source = dekl-0.1.0::https://github.com/Keithsel/dekl/releases/download/v0.1.0/dekl
 	sha256sums = SKIP
 
