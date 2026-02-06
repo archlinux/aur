@@ -1,15 +1,15 @@
 pkgbase = wiki2book
 	pkgdesc = Wiki2book is a CLI tool to convert one or multiple Wikipedia articles into an eBook.
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hauke96/wiki2book
 	arch = any
 	license = GPL-3.0
 	makedepends = go>=1.24
-	depends = imagemagick
 	depends = pandoc
+	optdepends = imagemagick: Default but optional tool to convert and process images
 	optdepends = ttf-dejavu: Font used in the default style
-	optdepends = librsvg: Tool used to convert SVGs into raster images
+	optdepends = librsvg: Default but optional tool used to convert SVGs into raster images
 	provides = wiki2book=0.6.0
 	options = !debug
 	options = !lto
