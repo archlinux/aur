@@ -1,3 +1,5 @@
 *.pkg.tar.zst
 *.AppImage
+pkg
+src
 Makefile
