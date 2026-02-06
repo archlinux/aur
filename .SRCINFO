@@ -1,0 +1,14 @@
+pkgbase = tunacode-cli
+	pkgdesc = A terminal-based AI coding agent with a NeXTSTEP-inspired interface.
+	pkgver = 0.1.60
+	pkgrel = 1
+	url = https://tunacode.xyz
+	arch = any
+	license = MIT
+	depends = uv
+	depends = python>=3.13
+	provides = tunacode
+	conflicts = tunacode
+	options = !strip
+
+pkgname = tunacode-cli
