@@ -19,8 +19,7 @@ pkgver() {
 
 build() {
   cd "libsmb2"
-  chmod +x ./bootstrap
-  ./bootstrap
+  sh ./bootstrap
   ./configure --prefix="/usr"
   make
 }
@@ -33,4 +32,5 @@ check() {
 package() {
   cd "libsmb2"
   make DESTDIR="$pkgdir" install
+  install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/libsmb2/"
 }
