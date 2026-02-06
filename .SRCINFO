@@ -1,0 +1,18 @@
+pkgbase = nurv-bin
+	pkgdesc = Assumption Based Runtime Verificaton tool built on nuXmv
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://es-static.fbk.eu/tools/nurv/
+	arch = x86_64
+	license = LicenseRef-NuRV-FBK-License
+	makedepends = patchelf
+	depends = gcc-libs
+	depends = glibc
+	depends = gmp
+	depends = libxml2
+	depends = util-linux-libs
+	provides = NuRV
+	source_x86_64 = https://es-static.fbk.eu/tools/nurv/releases/NuRV-2.0.0-linuxx64.tar.bz2
+	sha256sums_x86_64 = SKIP
+
+pkgname = nurv-bin
