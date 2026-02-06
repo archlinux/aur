@@ -6,13 +6,17 @@ pkgbase = python-dict2css
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = python-whey
+	makedepends = python-license-expression
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-whey
+	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python
+	depends = python-cssutils
 	depends = python-css-parser
 	depends = python-domdf-python-tools
-	source = python-dict2css::git+https://github.com/sphinx-toolbox/dict2css#commit=fe95ef7433306258a58b6a91b1e777c6c3628a1c
-	b2sums = SKIP
+	source = dict2css::git+https://github.com/sphinx-toolbox/dict2css.git#tag=v0.3.0
+	sha512sums = 6f9daaeee7e8005b2279780b1a47b9cb5115ee18bb6daa1e3f70cf5e6486af2d7306ee1a6f0de2d9ea54991281c3235a126415cc725959a91f506eacafd5590f
 
 pkgname = python-dict2css
