@@ -1,7 +1,7 @@
 pkgbase = marimo
 	pkgdesc = A reactive Python notebook that's reproducible, git-friendly, and deployable as scripts or apps
-	pkgver = 0.19.7
-	pkgrel = 2
+	pkgver = 0.19.8
+	pkgrel = 1
 	url = https://github.com/marimo-team/marimo
 	arch = any
 	license = Apache-2.0
@@ -11,20 +11,15 @@ pkgbase = marimo
 	makedepends = python-uv-build
 	depends = python
 	depends = python-click>=8.0
-	depends = python-click<9
 	depends = python-jedi>=0.18.0
 	depends = python-markdown>=3.6
-	depends = python-markdown<4
 	depends = python-pymdown-extensions>=10.15
-	depends = python-pymdown-extensions<11
 	depends = python-pygments>=2.19
-	depends = python-pygments<3
 	depends = python-tomlkit>=0.12.0
 	depends = python-yaml>=6.0.1
 	depends = uvicorn>=0.22.0
 	depends = python-starlette>=0.37.2
 	depends = python-websockets>=14.2.0
-	depends = python-loro>=1.5.0
 	depends = python-docutils>=0.16.0
 	depends = python-psutil>=5.0
 	depends = python-itsdangerous>=2.0.0
@@ -43,7 +38,7 @@ pkgbase = marimo
 	optdepends = jupyter-nbformat: Export as IPYNB
 	optdepends = ruff: Formatting
 	options = !debug
-	source = https://files.pythonhosted.org/packages/source/m/marimo/marimo-0.19.7.tar.gz
-	sha512sums = c2efcaaa3b65f54d01a6de5b9e6ca489235d4ddb4e55370d715a1b9613ff578fb7f0499164f774812e4a4416a891e29e68fe943f7c426624e71323bd479f3aab
+	source = https://files.pythonhosted.org/packages/source/m/marimo/marimo-0.19.8.tar.gz
+	sha512sums = 2b5702e2708bfe37a72ca4b7c49fde256451a6a08cfbdbaa511d659ad1873814c8390c1139b656f1cd836093410a7489c9bbc492252f068c1c3d3eb9e548a45f
 
 pkgname = marimo
