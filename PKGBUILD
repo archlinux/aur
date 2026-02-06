@@ -1,10 +1,10 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=aarty
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc='Simple CLI tool to convert the images to ASCII art'
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')
-url="https://github.com/0x61nas/aarty"
+url='https://github.com/0x61nas/aarty'
 license=('MIT')
 makedepends=('cargo')
 provides=('aarty')
@@ -15,9 +15,9 @@ source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgn
     "$pkgname-$pkgver.tar.gz.asc"
     'LICENSE.asc'
     'aarty.1.asc')
-sha256sums=('25386951b910afe8ac6f84408fa65c425a4efdec46f0173250b1305c956021c3'
+sha256sums=('5e856c0c003cfbb158e1df931dfeaa15ab565654c77aca0a78a2e730e5a356cc'
             'ddc49ced9f48c7402b323b4f379bf92973c44ae63f5ba047f828121efafcd319'
-            '10d32b22ace47f09fdd0567a683a98e81c8a9e19481ae7649e30eab7390bbc1e'
+            'ce82d7d52cd0042057c7d51a7834968853adfff4454207a01909197c31b4c667'
             'SKIP'
             'SKIP'
             'SKIP')
