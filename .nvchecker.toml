@@ -1,4 +1,6 @@
 [linux-vfio]
-source = "regex"
-url = "https://www.kernel.org/feeds/kdist.xml"
-regex = '([0-9]+\.[0-9]+\.[0-9]+|[0-9]+\.[0-9]+): stable'
+source = "git"
+git = "https://gitlab.archlinux.org/archlinux/packaging/packages/linux.git"
+include_regex = '[0-9\.]+\.arch[0-9]-[0-9]'
+from_pattern = '\.arch[0-9]-[0-9]$'
+to_pattern = ''
