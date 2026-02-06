@@ -61,6 +61,7 @@ pkgname = linux-hardened
 pkgname = linux-hardened-headers
 	pkgdesc = Headers and scripts for building modules for the Security-Hardened Linux kernel
 	depends = pahole
+	provides = LINUX-HEADERS
 
 pkgname = linux-hardened-docs
 	pkgdesc = Documentation for the Security-Hardened Linux kernel
