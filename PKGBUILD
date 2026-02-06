@@ -4,7 +4,7 @@ pkgbase=python-asdf_coordinates_schemas
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="ASDF schemas for coordinates"
 arch=('any')
@@ -22,7 +22,7 @@ checkdepends=('python-pytest-asdf-plugin')
 #             'python-pytest-xdist'
 #             )
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('6d5d71d544813d2e2ffce987a26fc4d3')
+md5sums=('d06064dfd717d663b87f3b268265d259')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
