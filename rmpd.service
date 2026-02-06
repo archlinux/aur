@@ -1,0 +1,20 @@
+[Unit]
+Description=Rust music player daemon
+Documentation=https://github.com/M0Rf30/rmpd
+After=network.target sound.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/rmpd
+Restart=on-failure
+RestartSec=5
+
+# Security hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=%h/.config/rmpd %h/Music
+
+[Install]
+WantedBy=default.target

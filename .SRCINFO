@@ -1,0 +1,26 @@
+pkgbase = rmpd-bin
+	pkgdesc = A flexible, powerful, server-side application for playing music
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/M0Rf30/rmpd
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	depends = gcc-libs
+	depends = alsa-lib
+	depends = sqlite
+	optdepends = pulseaudio: PulseAudio output support
+	optdepends = pipewire: PipeWire output support
+	optdepends = snapcast: Multi-room audio synchronization
+	provides = rmpd
+	conflicts = rmpd
+	conflicts = rmpd-git
+	source = rmpd.service
+	sha256sums = f8068b7c7aa732a8b0649d795c50ff74d5da10069f103206366b051368c9c8fe
+	source_x86_64 = rmpd-0.1.0-x86_64.tar.gz::https://github.com/M0Rf30/rmpd/releases/download/0.1.0/rmpd-0.1.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = f93d1bfbda2a9aac903c8ffea87fad1512ecacb9490a90684622b7ff851f023c
+	source_aarch64 = rmpd-0.1.0-aarch64.tar.gz::https://github.com/M0Rf30/rmpd/releases/download/0.1.0/rmpd-0.1.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 9753f5b0c6ddf35f1446960e59cc5db0ca1f05f7896d7fc5d2499e4262cf41d0
+
+pkgname = rmpd-bin
