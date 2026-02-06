@@ -1,0 +1,19 @@
+pkgbase = python-whey-pth
+	pkgdesc = Extension to whey to support .pth files
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://whey-pth.readthedocs.io/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-dom-toml
+	depends = python-whey
+	source = whey-pth::git+https://github.com/repo-helper/whey-pth.git#tag=v0.0.6
+	sha512sums = b56b0226beed216438d750e192963ebd06d825fd46885944da88822b40133417de7df8178d1450d3df5d8c437cdab08bd7c27d81d8f7c078705bfd838a46274f
+
+pkgname = python-whey-pth
