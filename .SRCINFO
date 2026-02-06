@@ -1,7 +1,7 @@
 pkgbase = rmtfs
 	pkgdesc = Qualcomm Remote Filesystem Service Implementation
-	pkgver = 1.1.1
-	pkgrel = 3
+	pkgver = 1.2
+	pkgrel = 1
 	url = https://github.com/linux-msm/rmtfs
 	arch = aarch64
 	arch = x86_64
@@ -10,15 +10,9 @@ pkgbase = rmtfs
 	depends = qrtr
 	depends = libudev.so
 	conflicts = rmtfs
-	source = rmtfs-1.1.1.tar.gz::https://github.com/linux-msm/rmtfs/archive/refs/tags/v1.1.1.tar.gz
+	source = rmtfs-1.2.tar.gz::https://github.com/linux-msm/rmtfs/archive/refs/tags/v1.2.tar.gz
 	source = udev.rules
-	source = 0001-sharedmem-Fix-build-warning-on-32-bit-arm.patch
-	source = 0002-storage-Try-opening-the-slot-suffixed-partition.patch
-	source = 0003-storage-Add-modem_study-into-partition_table.patch
-	sha256sums = 190b50e97d2bb2cfa2ea20137a91aa5b113351f53f8c05fbb152ab97f31b57f7
+	sha256sums = 5be459af54b5ff0f1447fc265246e526d27e8250212f5f380458f9ee551bd3a3
 	sha256sums = 0c2f26d40d9d18e3089c6d836b64231c4f7e0c1ca41686fe7c9d1eb495dc6bbe
-	sha256sums = a86309dfe9272accab23f0e0cd2367e5481b56a0eb6f72a6b147916eea2249b7
-	sha256sums = a60a6f5d37b56ae013c805bae246b43a1c8637a29b681b083cc3e270d97a2814
-	sha256sums = 11296c19676c977dda256ee480ba1be2c681573656095ab4cd4cdece6548a1c0
 
 pkgname = rmtfs
