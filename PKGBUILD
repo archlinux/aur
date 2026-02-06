@@ -2,12 +2,13 @@
 
 pkgname=dmarc-cat
 pkgver=0.15.0
-pkgrel=9
+pkgrel=10
 pkgdesc='Small utility to decode the report sent by various email providers following the DMARC spec'
 arch=('x86_64')
 url='https://github.com/keltia/dmarc-cat'
 license=('BSD-2-Clause')
 conflicts=("${pkgname}-git")
+depends=(glibc gpgme)
 makedepends=(go)
 source=("dmarc-cat-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('886bf33ba60d601de74a1e9d437a8e09eea5c03a05b09c0f685fa02d1c174bba')
