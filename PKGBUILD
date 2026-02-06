@@ -1,7 +1,7 @@
 # Maintainer: Display-HDMI <wjr2009945@163.com>
 pkgname=ceru-music-appimage
 _pkgname=Ceru-Music               # 用于 .desktop 文件和内部引用
-pkgver=1.8.0                      # AppImage 版本号，请与 GitHub Release 保持一致
+pkgver=1.8.1                      # AppImage 版本号，请与 GitHub Release 保持一致
 pkgrel=1
 pkgdesc="Ceru Music 是一个跨平台音乐播放器，支持获取公开音乐信息和基于插件的播放功能。"
 arch=('x86_64')                   # AppImage 通常是 x86_64
