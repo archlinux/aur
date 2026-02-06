@@ -1,7 +1,7 @@
 pkgbase = rclone-ui-bin
 	pkgdesc = The cross-platform desktop GUI for rclone & S3.(Prebuilt version)
 	pkgver = 3.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rcloneui.com/
 	arch = aarch64
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = rclone-ui-bin
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
 	depends = rclone
+	depends = libayatana-appindicator
 	provides = rclone-ui=3.4.1
 	conflicts = rclone-ui
 	source_aarch64 = rclone-ui-3.4.1-aarch64.rpm::https://github.com/rclone-ui/rclone-ui/releases/download/v3.4.1/Rclone.UI_aarch64.rpm

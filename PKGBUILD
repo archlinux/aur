@@ -2,7 +2,7 @@
 pkgname=rclone-ui-bin
 _pkgname='Rclone UI'
 pkgver=3.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The cross-platform desktop GUI for rclone & S3.(Prebuilt version)"
 arch=(
     'aarch64'
@@ -18,6 +18,7 @@ depends=(
     'gdk-pixbuf2'
     'webkit2gtk-4.1'
     'rclone'
+    'libayatana-appindicator'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /.}_aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /.}_x86_64.rpm")
