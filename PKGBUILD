@@ -8,7 +8,7 @@ pkgname=(
   psqldef
 )
 pkgver=3.9.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Idempotent schema management for MySQL, PostgreSQL, SQLite, and SQL Server'
 arch=(x86_64 aarch64)
 url='https://github.com/sqldef/sqldef'
@@ -34,7 +34,6 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOPATH="${srcdir}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   for _bin in "${pkgname[@]}"; do
