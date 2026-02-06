@@ -10,16 +10,14 @@ pkgver=r8.0d3e547
 pkgrel=1
 makedepends=(python-build python-installer python-wheel git python-packaging)
 provides=(${pkgname} YT-DLP-GET-POT-PROVIDER)
-depends=(python yt-dlp python-nodriver)
+depends=(python yt-dlp python-nodriver chromium)
 
 
 source=(
 	"git+https://github.com/coletdjnz/yt-dlp-getpot-wpc.git"
 )
 
-sha256sums=(
-	"SKIP"
-)
+sha256sums=('SKIP')
 
 function pkgver() {
 	cd "${srcdir}/yt-dlp-getpot-wpc"

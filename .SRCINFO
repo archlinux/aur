@@ -13,6 +13,7 @@ pkgbase = yt-dlp-getpot-wpc-git
 	depends = python
 	depends = yt-dlp
 	depends = python-nodriver
+	depends = chromium
 	provides = yt-dlp-getpot-wpc-git
 	provides = YT-DLP-GET-POT-PROVIDER
 	source = git+https://github.com/coletdjnz/yt-dlp-getpot-wpc.git
