@@ -5,7 +5,7 @@ _appimageprefix=WayVR
 _pkgowner=wlx-team
 pkgname="${_pkgname}-actions-bin"
 branch=main
-pkgver=21696946710
+pkgver=21735815276
 pkgrel=1
 pkgdesc="Your way to enjoy VR on Linux! Access your Wayland/X11 desktop from SteamVR/Monado (OpenVR+OpenXR, CI build)"
 arch=('x86_64')
@@ -49,7 +49,7 @@ source=(
     "${zipName}::https://nightly.link/${_pkgowner}/${_pkgname}/actions/runs/${pkgver}/${_appimageprefix}-${branch}-${CARCH}.AppImage.zip"
 )
 
-sha256sums=('4217679d0d39c2dc7b1dd23f95d9d5311bca6719e54bb8b29b6a27e27319c3c7')
+sha256sums=('d974e4732ba11f55df52d70dad44f74af4832551e324cd968f6db19d0e2366cb')
 
 prepare() {
   cd "${srcdir}"
