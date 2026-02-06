@@ -1,6 +1,6 @@
 pkgbase = portable
 	pkgdesc = Fast, private, efficient sandbox for Linux desktop.
-	pkgver = 13.0.2
+	pkgver = 13.0.3
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Kraftland/portable
@@ -29,7 +29,7 @@ pkgbase = portable
 	provides = portable
 	options = !debug
 	options = !strip
-	source = portable::git+https://github.com/Kraftland/portable.git#tag=13.0.2
-	md5sums = 204bc3c53823494e74bd1d36f000c901
+	source = portable::git+https://github.com/Kraftland/portable.git#tag=13.0.3
+	md5sums = 86f22c6f8e4409b2a77fe3ce34a06496
 
 pkgname = portable
