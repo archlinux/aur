@@ -1,0 +1,22 @@
+pkgbase = dev-janitor-git
+	pkgdesc = Dev Janitor - A developer tool management app (Tauri/Rust Source Build)
+	pkgver = r151.3f595f4
+	pkgrel = 1
+	url = https://github.com/cocojojo5213/Dev-Janitor
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = pnpm
+	makedepends = python
+	makedepends = rust
+	makedepends = cargo
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = openssl
+	depends = libappindicator-gtk3
+	provides = dev-janitor
+	conflicts = dev-janitor
+	source = git+https://github.com/cocojojo5213/Dev-Janitor.git
+	sha256sums = SKIP
+
+pkgname = dev-janitor-git
