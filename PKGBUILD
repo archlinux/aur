@@ -1,8 +1,8 @@
 # Maintainer: Matteo Bonora <bonora.matteo@gmail.com>
 
 pkgname=eez-studio-appimage
-pkgver=0.25.1
-pkgrel=2
+pkgver=0.26.0
+pkgrel=1
 pkgdesc="Cross-platform low-code GUI and automation"
 arch=('x86_64' 'aarch64')
 url="https://github.com/eez-open/studio/releases"
@@ -28,7 +28,7 @@ source=(
     "requirements.txt"
 )
 
-sha256sums=('e15dab2b4540705c9ac7ab6b79c45a7309005b8284fde0a688f967b58b713c49'
+sha256sums=('ce6bab01e8d891e0db313d052efdabcddeee84d51b83b2a42d47f56dea6ae4df'
             '7019be3da97f345557fb38a581aabfd8a1d2e5324391a785213d8e5eb238aa90')
 
 prepare() {
@@ -38,7 +38,7 @@ prepare() {
 }
 
 build() {
-    sed -i "s|Exec=AppRun|Exec=${pkgname%-appimage}|" "${srcdir}/squashfs-root/eezstudio.desktop"
+    sed -i "s|Exec=AppRun|Exec=${pkgname%-appimage}|" "${srcdir}/squashfs-root/EEZ Studio.desktop"
     #pip install --target="${srcdir}/pydeps" -r "${srcdir}/requirements.txt"
 }
 
@@ -57,10 +57,10 @@ package() {
     chmod -R 755 "${pkgdir}/opt/${pkgname}"
 
     # Install desktop file
-    install -Dm644 "${srcdir}/squashfs-root/eezstudio.desktop" "${pkgdir}/usr/share/applications/${pkgname%-appimage}.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/EEZ Studio.desktop" "${pkgdir}/usr/share/applications/${pkgname%-appimage}.desktop"
 
     # Install icon
-    install -Dm644 "${srcdir}/squashfs-root/eezstudio.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname%-appimage}.png"
+    install -Dm644 "${srcdir}/squashfs-root/EEZ Studio.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname%-appimage}.png"
 
     # Create symlink for executable
     mkdir -p "${pkgdir}/usr/bin"
