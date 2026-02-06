@@ -9,7 +9,7 @@
 
 pkgname=sonic-pi
 pkgver=4.6.0
-pkgrel=5
+pkgrel=6
 pkgdesc="The Live Coding Music Synth for Everyone"
 arch=(x86_64)
 url="https://sonic-pi.net/"

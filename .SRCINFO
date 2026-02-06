@@ -1,7 +1,7 @@
 pkgbase = sonic-pi
 	pkgdesc = The Live Coding Music Synth for Everyone
 	pkgver = 4.6.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://sonic-pi.net/
 	arch = x86_64
 	groups = pro-audio
@@ -18,7 +18,6 @@ pkgbase = sonic-pi
 	license = custom:ISC
 	makedepends = boost>=1.74.0
 	makedepends = ruby-gettext>=3.4.4
-	makedepends = ruby-ruby-beautify2>=0.92.2
 	makedepends = erlang-asn1
 	makedepends = erlang-public_key
 	makedepends = erlang-ssl
