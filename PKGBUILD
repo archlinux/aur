@@ -1,8 +1,8 @@
 # Maintainer: BrainDamage
 
 pkgname=keyfinder-cli
-pkgver=1.1.4
-pkgrel=2
+pkgver=1.1.5
+pkgrel=1
 pkgdesc='Estimate the musical key of many different audio file formats'
 arch=(x86_64 aarch64 armv7h)
 url='https://github.com/evanpurkhiser/keyfinder-cli'
@@ -10,7 +10,7 @@ license=('GPL-3.0-only')
 depends=(ffmpeg libkeyfinder fftw)
 makedepends=('cmake')
 source=("https://github.com/evanpurkhiser/keyfinder-cli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7826eab103bf925804cd6b522a8e61cdc51e89991770e46cb765f8d7f7fc3809')
+sha256sums=('14ec8f453e0873d1504ba517ae0950722ec30c451e694261d6c138810b1d1468')
 
 
 _basename="${pkgname}"
@@ -38,10 +38,4 @@ package() {
 		-exec install -Dvm 644 -t "${pkgdir}/usr/share/doc/${_basename}" {} +
 	find . -maxdepth 1 -iname 'LICENSE*' \
 		-exec install -Dvm 644 -t "${pkgdir}/usr/share/licenses/${_basename}" {} +
-
-
-	# FIXME: temp workaround for upstream wrong usage of CMAKE_INSTALL_MANDIR, remove after 1.1.5 release
-	mkdir -p "${pkgdir}/usr/share/man/man1"
-	find "${pkgdir}/usr/share/man" -iname '*.1' \
-		-exec mv {} "${pkgdir}/usr/share/man/man1" \;
 }
