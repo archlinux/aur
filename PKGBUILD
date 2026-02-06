@@ -9,8 +9,8 @@ url="https://github.com/lolcatpp/lolcatpp"
 license=('BSD-3-Clause')
 depends=('boost' 'gcc-libs')
 makedepends=('cmake')
-provides=('lolcat')
-conflicts=('lolcat' 'lolcat-c' 'lolcat-rs')
+provides=('lolcat' "$pkgname")
+conflicts=('lolcat' "$pkgname-bin" 'lolcat-c' 'lolcat-rs')
 source=("$_reponame-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('52c8762aa1d9f3599a0ac1caf8e5b884a4974b1ee515cb8d9af5a27cdd19aedd')
 
