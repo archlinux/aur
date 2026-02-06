@@ -35,7 +35,7 @@ B2SUM=$(curl -L "$TARBALL_URL" | b2sum | awk '{print $1}')
 # Replace first checksum only, preserve patch checksum
 sed -i "0s/b2sums=('.*'/b2sums=('${B2SUM}'/" PKGBUILD
 
-makepkg --printsrcinfo > .SRCINFO
+makepkg --printsrcinfo >| .SRCINFO
 
 echo -e "${GREEN}Verifying tarball download...${NC}"
 makepkg -od
