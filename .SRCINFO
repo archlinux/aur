@@ -1,7 +1,7 @@
 pkgbase = dev-janitor-bin
 	pkgdesc = Dev Janitor - A developer tool management app (Binary release)
 	pkgver = 2.2.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cocojojo5213/Dev-Janitor
 	arch = x86_64
 	license = MIT
