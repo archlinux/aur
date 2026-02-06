@@ -1,0 +1,22 @@
+pkgbase = anneal-git
+	pkgdesc = Proactive AUR rebuild management for Arch Linux (git version)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/MarkWells-Dev/Anneal
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = pacman
+	optdepends = paru: AUR helper for rebuilding packages
+	optdepends = yay: AUR helper for rebuilding packages
+	optdepends = pikaur: AUR helper for rebuilding packages
+	optdepends = aura: AUR helper for rebuilding packages
+	optdepends = trizen: AUR helper for rebuilding packages
+	optdepends = rebuild-detector: detect packages needing rebuild via checkrebuild
+	provides = anneal
+	conflicts = anneal
+	source = git+https://github.com/MarkWells-Dev/Anneal.git
+	sha256sums = SKIP
+
+pkgname = anneal-git
