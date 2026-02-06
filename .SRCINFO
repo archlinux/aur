@@ -1,0 +1,14 @@
+pkgbase = sudoku-simple
+	pkgdesc = Simple sudoku game made with raylib, features auto-annotations
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/uwiwiow/sudoku-simple
+	arch = x86_64
+	license = MIT
+	options = !debug
+	source = sudoku-simple-1.0.1-x86_64.tar.gz::https://github.com/uwiwiow/sudoku-simple/releases/download/1.0.1/sudoku-simple-1.0.1-x86_64.tar.gz
+	source = sudoku-simple.desktop
+	sha256sums = 41cdb6e8c8b2cdd6bc46e037755bb31c066da2ce4bf225103f28651ce790e99e
+	sha256sums = 9b840c25ee736a0132d84c66dd08d083aee6de65fc64bb2458b8ecaab184b564
+
+pkgname = sudoku-simple

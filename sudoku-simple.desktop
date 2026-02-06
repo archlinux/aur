@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Sudoku Simple
+Comment=Simple sudoku game made with raylib
+Exec=sudoku-simple
+Terminal=false
+Categories=Game;LogicGame;
+
