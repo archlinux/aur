@@ -4,7 +4,7 @@ _dotnet_ver=8.0
 _reponame=SyncClipboard
 _pkgname="${_reponame,,}"
 pkgname="${_pkgname}-desktop"
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Cross-Platform Cipboard Syncing Solution (Desktop)"
 arch=("x86_64" "aarch64")
@@ -14,7 +14,7 @@ depends=("aspnet-runtime-${_dotnet_ver}" "fontconfig" "libxinerama" "libxt" "lib
 makedepends=("dotnet-sdk-${_dotnet_ver}" "librsvg")
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${_pkgname}.desktop")
-sha256sums=('cd67b468577ee8abaf9f957bc3467ffcf356a9bb046479aa39054b0292f73a6a'
+sha256sums=('359030e91aa83c984da278eda408ffac4f1e5366ddcbda5b69bb66416838a1eb'
             '77a340cd087cbfd79fdbbb1d53a33288884c21cd0945b6ea4abfd0c6a298fc75')
 case $CARCH in
     x86_64)  _dotnet_cpu=x64;;
@@ -52,6 +52,7 @@ package() {
 
     cd "${_reponame}-${pkgver}"
     install -Dm644 icon.svg                "${pkgdir}/usr/share/icons/hicolor/symbolic/apps/${_pkgname}.svg"
+    install -Dm644 icon.svg                "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
     install -Dm644 LICENSE                 "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 *.md docs/*.md       -t "${pkgdir}/usr/share/doc/${pkgname}"
     install -dm755 "${pkgdir}/usr/bin"     "${pkgdir}/usr/lib/${_pkgname}"
