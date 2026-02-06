@@ -1,5 +1,5 @@
 pkgname=hdas
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Track which packages create files in your home directory using eBPF"
 arch=('x86_64')
@@ -10,7 +10,7 @@ makedepends=('rust' 'clang')
 options=(!lto)
 install=hdas.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('78b6e8cbc38faed711f64f57362ec37a523c6c448acece0f2fb87ae9c0978d95')
+sha256sums=('4489edf23c1c0898ed8298867eef96934daa929e4fecce86bffee593f59e8586')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -21,4 +21,16 @@ package() {
     cd "$pkgname-$pkgver"
     install -Dm755 "target/release/hdas" "$pkgdir/usr/bin/hdas"
     install -Dm644 "hdas@.service" "$pkgdir/usr/lib/systemd/system/hdas@.service"
+
+    # Shell completions
+    install -dm755 "$pkgdir/usr/share/bash-completion/completions"
+    install -dm755 "$pkgdir/usr/share/zsh/site-functions"
+    install -dm755 "$pkgdir/usr/share/fish/vendor_completions.d"
+    target/release/hdas completions bash > "$pkgdir/usr/share/bash-completion/completions/hdas"
+    target/release/hdas completions zsh > "$pkgdir/usr/share/zsh/site-functions/_hdas"
+    target/release/hdas completions fish > "$pkgdir/usr/share/fish/vendor_completions.d/hdas.fish"
+
+    # Man page
+    install -dm755 "$pkgdir/usr/share/man/man1"
+    target/release/hdas man-page > "$pkgdir/usr/share/man/man1/hdas.1"
 }
