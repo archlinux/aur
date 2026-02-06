@@ -68,10 +68,10 @@ package() {
   # the executable under nested directories (e.g. */x/aeth/build/aeth/aeth).
   # Search for an executable file named 'aeth' to be robust across layouts.
   local binpath
-  binpath="$(find dist-newstyle -type f -name aeth -perm /111 -print -quit)"
+  binpath="$(find . -type f -name aeth -perm /111 -print -quit)"
   if [[ -z "$binpath" ]]; then
-    echo "ERROR: built executable not found under dist-newstyle" >&2
-    echo "Tried: find dist-newstyle -type f -name aeth -perm /111" >&2
+    echo "ERROR: built executable not found under ${srcdir}/${pkgname}" >&2
+    echo "Tried: find . -type f -name aeth -perm /111" >&2
     return 1
   fi
   install -Dm755 "$binpath" "$pkgdir/usr/bin/aeth"
