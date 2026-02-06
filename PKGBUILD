@@ -20,7 +20,7 @@ pkgname=(
   java-openjfx-src
 )
 _java_ver=25
-_tag='27+2'
+_tag='27+3'
 pkgver=${_tag//+/.}
 pkgrel=1
 pkgdesc="Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version"
@@ -61,12 +61,12 @@ fi
 options=(!lto)
 source=(
   "${pkgbase}-${pkgver}.tar.gz::https://github.com/openjdk/jfx/archive/refs/tags/${_tag}.tar.gz"
-  gradle.properties
+  "${pkgbase}-gradle.properties"
   "${pkgbase}-flags.patch"
   "${pkgbase}-profile"{.sh,.csh}
   "${pkgbase}-env.sh"
 )
-b2sums=('e9f6d830f34910ba684851e077e3fd67052b37129e228f63671631076db44c4e25b34e23f7caad6f296f281e4101940a74639257d209580c4144f434c2a3c197'
+b2sums=('fe6b169e81c39f8330a3d8907ec4c3375b636a5f590bd22b36f5b207b3e9283907800685f17abccabf9ff32e720f8a57f958ffe652255b5fb4dbaa917e791fb2'
         '0c023ef99e7ee600710c54dad0ad59070620595109ca42c5057fa2ab74ef6d244631745f5cd4c1bea9c0321ee69f1e1efaab820ff124ad1d4f453121e77fd14f'
         '5b6dafc22995b57564fda89aaedeb2b6ee58b2c635336ac43a123ea4ac6ced3a20eba39d99cc4eb7ec7b29fc7541f5c3bee454ee55ca79fd2d7ce5ef4ed65cd3'
         '73cc0da90136a8a564599fb23c321bae64c35c4381e74d00f24604ed9a46dc2c7aa988077846160e8cb6a61e0eaa80d1e153d89a93fb4818d2589b067eff2522'
@@ -87,15 +87,15 @@ prepare() {
   "${_gradle[@]}" --stop
   rm -rf build
 
-  ln -sf ../gradle.properties .
-  patch -Np1 -i ../java-openjfx-flags.patch
+  ln -sf "../${pkgbase}-gradle.properties" 'gradle.properties'
+  patch -Np1 -i "../${pkgbase}-flags.patch"
   sed 's|, "-Werror"||g' -i buildSrc/linux.gradle
 }
 
 build() {
   cd $_jfxdir
 
-  # Build with openjdk-(current version minus 1)
+  # Build with openjdk $_java_ver
   export PATH="/usr/lib/jvm/java-$_java_ver-openjdk/bin/:$PATH"
 
   # Workaround for situation where the linker treats whitespace as arguments
@@ -119,10 +119,10 @@ package_java-openjfx() {
   cd $_jfxdir
 
   install -dm 755  "${pkgdir}"/usr/{lib/$pkgbase,share/java/$pkgbase,share/licenses}
-  cp -dr --no-preserve=ownership build/sdk/lib/*.jar "${pkgdir}"/usr/share/java/$pkgbase/
-  cp -dr --no-preserve=ownership build/sdk/lib/*.so "${pkgdir}"/usr/lib/$pkgbase/
-  cp -dr --no-preserve=ownership build/jmods "${pkgdir}"/usr/share/java/$pkgbase/
-  cp -dr --no-preserve=ownership build/sdk/legal "${pkgdir}"/usr/share/licenses/java-openjfx
+  cp -dr --no-preserve=ownership build/sdk/lib/*.jar "${pkgdir}/usr/share/java/$pkgbase"
+  cp -dr --no-preserve=ownership build/sdk/lib/*.so "${pkgdir}/usr/lib/$pkgbase"
+  cp -dr --no-preserve=ownership build/jmods "${pkgdir}/usr/share/java/$pkgbase"
+  cp -dr --no-preserve=ownership build/sdk/legal "${pkgdir}/usr/share/licenses/$pkgbase"
 
   install -Dm644 "${srcdir}/${pkgbase}-profile"{.sh,.csh} -t "${pkgdir}/etc/profile.d"
   install -Dm755 "${srcdir}/${pkgbase}-env.sh" "${pkgdir}/usr/bin/${pkgbase}-env"
@@ -133,8 +133,8 @@ package_java-openjfx-doc() {
   cd $_jfxdir
 
   install -dm 755 "${pkgdir}"/usr/share/{doc,licenses}
-  cp -dr --no-preserve=ownership build/javadoc "${pkgdir}"/usr/share/doc/java-openjfx
-  ln -s java-openjfx "${pkgdir}"/usr/share/licenses/java-openjfx-doc
+  cp -dr --no-preserve=ownership build/javadoc "${pkgdir}/usr/share/doc/$pkgbase"
+  ln -s "$pkgbase" "${pkgdir}/usr/share/licenses/$pkgbase-doc"
 }
 
 package_java-openjfx-src() {
@@ -142,8 +142,8 @@ package_java-openjfx-src() {
   cd $_jfxdir
 
   install -dm 755  "${pkgdir}"/usr/{lib/jvm/java-$_java_ver-openjdk,share/licenses}
-  install -m 644 build/sdk/src.zip "${pkgdir}"/usr/lib/jvm/java-$_java_ver-openjdk/javafx-src.zip
-  ln -s java-openjfx "${pkgdir}"/usr/share/licenses/java-openjfx-src
+  install -m 644 build/sdk/src.zip "${pkgdir}/usr/lib/jvm/java-$_java_ver-openjdk/javafx-src.zip"
+  ln -s "$pkgbase" "${pkgdir}/usr/share/licenses/$pkgbase-src"
 }
 
 # vim: ts=2 sw=2 et:
