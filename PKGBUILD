@@ -1,13 +1,11 @@
-# Maintainer: xiota / aur.chaotic.cx
-
-: ${_commit_patch:=7cce4b12e43b046104bbfc9a6da481e97f4f2f3c}
+# Maintainer:
 
 _pkgname="dolphin"
 pkgname="$_pkgname-tabopts"
-pkgver=25.12.1
+pkgver=25.12.2
 pkgrel=1
 pkgdesc='KDE File Manager - with extended tab options'
-url="https://invent.kde.org/xiota/dolphin/-/merge_requests/1"
+url="https://invent.kde.org/system/dolphin/-/merge_requests/1152"
 license=('GPL-2.0-or-later')
 arch=('x86_64' 'i686')
 
@@ -47,11 +45,11 @@ conflicts=("$_pkgname")
 _pkgsrc="$_pkgname"
 source=(
   "$_pkgsrc"::"git+https://invent.kde.org/system/dolphin.git#tag=v$pkgver"
-  "dolphin-tabopts-${_commit_patch::7}.patch"::"https://invent.kde.org/xiota/dolphin/-/commit/${_commit_patch}.patch"
+  "dolphin-MR1152-tab_options.patch"::"https://invent.kde.org/system/dolphin/-/commit/a31695655194c57c608f938c94684fe8db93696b.patch"
 )
 sha256sums=(
-  '2966e1b7e487833798a4f75b6f4f4ed951c457ee48a2419fdf642883f3be248b'
-  'a299037d34c16d8e078e1f751ab6a921bae64f4804755864a5416da2f62db121'
+  '5489cce485cf12179b2d0e2d49b4a819f1c4a08182409ff1386b3bf1df7075c6'
+  'bf81aa3ed12a3cdad45ec96f136d629ab0b6a2b20c54239a89ebdd418813e4ae'
 )
 
 prepare() {
