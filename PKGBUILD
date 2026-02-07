@@ -17,7 +17,7 @@ provides=('fagram')
 conflicts=('fagram')
 options=(!debug)
 
-source=("https://github.com/fagramdesktop/fadesktop/releases/download/v${pkgver}/fagram-${pkgver}.tar.gz")
+source=("https://github.com/fagramdesktop/fadesktop/releases/download/${pkgver}/fagram-${pkgver}.tar.gz")
 
 sha256sums=('dca053f0b7425dcbdeed4ec88f7e74423d7f1db27b8428b7c5ba7ed209e327ac')
 
