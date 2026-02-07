@@ -1,11 +1,24 @@
-[Desktop Entry]
-Type=Application
-Name=Calculator
-GenericName=Calculator
-Comment=Omcalc (GTK4)
-Exec=omcalc
-Icon=accessories-calculator
-Terminal=false
-Categories=Utility;Calculator;
-Keywords=calculator;calc;math;omcalc;
-StartupWMClass=org.omarchy.Omcalc
+pkgbase = omcalc-git
+	pkgdesc = Minimal GTK4 calculator tuned for Omarchy/Hyprland workflows
+	pkgver = r0.0000000
+	pkgrel = 4
+	url = https://github.com/jadabreu/omcalc
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = gjs
+	depends = gtk4
+	depends = libadwaita
+	provides = omcalc
+	conflicts = omcalc
+	options = !debug
+	source = omcalc-src::git+https://github.com/jadabreu/omcalc.git
+	source = omcalc
+	source = omcalc-clear-history
+	source = omcalc.desktop
+	sha256sums = SKIP
+	sha256sums = f0c3d37b3ee278490488b4158c583981c96407ddc666871b4402edc21e0f6c53
+	sha256sums = a384f0c1ea3613a23d84f25dca56b52a34b3b822158f03cc7783e4dcd4230b8c
+	sha256sums = eecc1c3fabee9142f7318dd08247c64aa4702e227333ab4f1250b25f87f11c3b
+
+pkgname = omcalc-git
