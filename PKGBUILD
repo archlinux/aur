@@ -9,7 +9,7 @@ depends=('git' 'pacman')
 provides=('traur')
 conflicts=('traur')
 source=("$url/releases/download/v$pkgver/traur-$pkgver-x86_64.tar.gz")
-sha256sums=('c77633726157a74ffd1fe017954863f3b63c7d96e14961b8e7e20312f829a5d3')
+sha256sums=('f11feca5292e0b5ef103dde376d3e1e5d1c917a545d2b0f4b7882d0d4ef24592')
 
 package() {
     install -Dm755 traur "$pkgdir/usr/bin/traur"
