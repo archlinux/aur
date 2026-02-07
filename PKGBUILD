@@ -1,7 +1,7 @@
 # Maintainer: el gato <gato.mega.mp3@gmail.com>
 pkgname=winamp-mpris
-pkgver=0.1.3
-pkgrel=3
+pkgver=0.1.4
+pkgrel=4
 pkgdesc="MPRIS bridge for Winamp running under Wine (exposes a playerctl-compatible MPRIS endpoint)"
 arch=('any')
 url="https://github.com/elgatolinux/winamp-mpris"
@@ -12,10 +12,9 @@ conflicts=()
 replaces=()
 source=(git+${url}.git#branch=main)
 sha256sums=('SKIP')
-
 pkgver() {
   cd "$srcdir/$pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
