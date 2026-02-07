@@ -2,24 +2,24 @@
 
 pkgname=python-slixmpp
 _pkgbase=slixmpp
-pkgver=1.12.0
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="An XMPP library written for Python 3.7+ (SleekXMPP asyncio fork)"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://codeberg.org/poezio/slixmpp"
 license=('MIT')
-depends=('python' 'python-aiodns' 'libidn' 'python-pyasn1' 'python-pyasn1-modules' 'python-aiohttp' 'python-typing_extensions')
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-maturin')
+depends=('python' 'python-aiodns' 'libidn' 'python-pyasn1' 'python-pyasn1-modules' 'python-aiohttp' 'python-typing_extensions' 'python-setuptools-scm')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-maturin' 'python-setuptools-rust')
 optdepends=('python-emoji: For compliant XEP-0444 support')
 options=(!emptydirs)
 
 source=("https://codeberg.org/poezio/${_pkgbase}/archive/slix-${pkgver}.tar.gz")
-sha512sums=('f6649ad33f6d4c8ee0f45f51b29feeef34b42806c1fbea8b93db1dc75c8b8d8d105d66c17f72a66d33b0a12445505e9287e5b6379a31dc766add8740d2dce85a')
+sha512sums=('3ca5bd8c4e7cc8f7dec6f0c795ed4964436d38be167b28e054b1bfd78f5e64489273bbd4b70458ad62d34c151f5d5227da41c27dd3c7ad571c60783cdbdd506b')
 
 build() {
     cd $_pkgbase
     rm -f dist/*.whl
-    python -m build --wheel --no-isolation
+    SETUPTOOLS_SCM_PRETEND_VERSION_FOR_SLIXMPP=$pkgver python -m build --wheel --no-isolation
 }
 
 package() {
