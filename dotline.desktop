@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Dotline
+Comment=A modern crosshair overlay
+Exec=/usr/bin/dotline
+Icon=dotline
+Terminal=false
+Type=Application
+Categories=Utility;Game;
+StartupWMClass=dotline
