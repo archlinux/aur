@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.13.0.r2.g9a3e4ea
+pkgver=0.14.0.r2.gef5b40c
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator (CLI)"
 arch=('aarch64' 'x86_64')
@@ -12,11 +12,12 @@ depends=(
 	'glibc'
 	'glslang>=15'
 	'pugixml>=1.14'
-	'sdl3>=3.1.8'
+	'sdl3>=3.3.5'
 	'sdl3_mixer'
 )
 makedepends=(
 	'boost>=1.84'
+	'cli11>=2.6.1'
 	'cmake>=3.16.3'
 	'ffmpeg>=2:5.1.2'
 	'fmt>=10.2'
@@ -60,20 +61,7 @@ source=(
 	"nlohmann-json::git+https://github.com/nlohmann/json.git"
 	"zydis::git+https://github.com/zyantific/zydis.git"
 )
-b2sums=(
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-)
+b2sums=('SKIP'{,,,,,,,,,,,})
 
 pkgver() {
 	cd $_pkgname
@@ -98,6 +86,8 @@ prepare() {
 	sed -i '/-march=/d' CMakeLists.txt
 	# use system glslang
 	sed -i '/find_package/s/glslang 15/glslang/' CMakeLists.txt
+	# use system sdl3_mixer
+	sed -i 's/MIX_\(G\|S\)etMasterGain/MIX_\1etMixerGain/g' src/core/libraries/np/trophy_ui.cpp
 }
 
 build() {

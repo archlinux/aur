@@ -1,12 +1,13 @@
 pkgbase = shadps4-git
 	pkgdesc = Sony PlayStation 4 emulator (CLI)
-	pkgver = 0.13.0.r2.g9a3e4ea
+	pkgver = 0.14.0.r2.gef5b40c
 	pkgrel = 1
 	url = https://shadps4.net/
 	arch = aarch64
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = boost>=1.84
+	makedepends = cli11>=2.6.1
 	makedepends = cmake>=3.16.3
 	makedepends = ffmpeg>=2:5.1.2
 	makedepends = fmt>=10.2
@@ -32,12 +33,12 @@ pkgbase = shadps4-git
 	depends = glibc
 	depends = glslang>=15
 	depends = pugixml>=1.14
-	depends = sdl3>=3.1.8
+	depends = sdl3>=3.3.5
 	depends = sdl3_mixer
 	optdepends = renderdoc: for graphics debugging
 	optdepends = shadps4-qtlauncher: for official Qt GUI
 	optdepends = vulkan-validation-layers: for vulkan debugging
-	provides = shadps4=0.13.0.r2.g9a3e4ea
+	provides = shadps4=0.14.0.r2.gef5b40c
 	conflicts = shadps4
 	source = shadps4::git+https://github.com/shadps4-emu/shadPS4.git
 	source = shadps4-discord-rpc::git+https://github.com/shadps4-emu/ext-discord-rpc.git
@@ -69,7 +70,7 @@ pkgname = shadps4-git
 	depends = glibc
 	depends = glslang>=15
 	depends = pugixml>=1.14
-	depends = sdl3>=3.1.8
+	depends = sdl3>=3.3.5
 	depends = sdl3_mixer
 	depends = libavcodec.so
 	depends = libavformat.so
