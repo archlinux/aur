@@ -1,0 +1,4 @@
+[xplot]
+source = 'regex'
+url = 'http://www.xplot.org/xplot/'
+regex = 'xplot-([\d.]+).tar'
