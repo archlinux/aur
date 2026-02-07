@@ -2,7 +2,7 @@
 # Contributor: Anthony Wang <ta180m@gmail.com>
 _name=jupyterlab-git
 pkgname=jupyterlab-extension-jupyterlab_git
-pkgver=0.51.2
+pkgver=0.51.4
 pkgrel=1
 pkgdesc='Git extension for JupyterLab'
 arch=(any)
@@ -13,7 +13,7 @@ makedepends=(unzip)
 provides=(jupyterlab-extension-git python-jupyterlab-git)
 _wheel="${_name/-/_}-$pkgver-py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/$_wheel")
-sha256sums=('1150edabd844f9a5a3c7ba676409b18b8cc95b1a7bb171f357318f4075db2263')
+sha256sums=('b49ce4a69ec22a9a265c447ff08442ee0efc533d9f109eb76b5d735f33f4e510')
 
 package() {
 	local site="$pkgdir/usr/lib/$(readlink /bin/python3)/site-packages"

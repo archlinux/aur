@@ -1,6 +1,6 @@
 pkgbase = jupyterlab-extension-jupyterlab_git
 	pkgdesc = Git extension for JupyterLab
-	pkgver = 0.51.2
+	pkgver = 0.51.4
 	pkgrel = 1
 	url = https://github.com/jupyterlab/jupyterlab-git
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = jupyterlab-extension-jupyterlab_git
 	depends = python-traitlets
 	provides = jupyterlab-extension-git
 	provides = python-jupyterlab-git
-	source = https://files.pythonhosted.org/packages/py3/j/jupyterlab-git/jupyterlab_git-0.51.2-py3-none-any.whl
-	sha256sums = 1150edabd844f9a5a3c7ba676409b18b8cc95b1a7bb171f357318f4075db2263
+	source = https://files.pythonhosted.org/packages/py3/j/jupyterlab-git/jupyterlab_git-0.51.4-py3-none-any.whl
+	sha256sums = b49ce4a69ec22a9a265c447ff08442ee0efc533d9f109eb76b5d735f33f4e510
 
 pkgname = jupyterlab-extension-jupyterlab_git
