@@ -3,13 +3,14 @@
 
 pkgname="k3s-bin"
 pkgver="1.35.0+k3s3"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Lightweight Kubernetes"
 url="https://k3s.io"
 license=("Apache")
 arch=("x86_64" "armv7h" "aarch64")
 conflicts=("k3s" "k3s-git")
 backup=("etc/systemd/system/k3s.service.env")
+options=('!debug')
 
 source=(
     "k3s.service"
