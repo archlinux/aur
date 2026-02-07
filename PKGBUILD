@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bintelai-ssh-assistant
 _pkgname='Gemini SSH 助手'
-pkgver=1.0.21
+pkgver=1.0.23
 _electronversion=39
 _nodeversion=22
 pkgrel=1
@@ -25,7 +25,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('06c6ead13610f5b614374ea61cb8d7db01eb88106d2fdf35fe1fa76b8e88737f'
+sha256sums=('e6840e95b086981542666e9e0fda3e246b593aec56667add97526df8ab99f68e'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
