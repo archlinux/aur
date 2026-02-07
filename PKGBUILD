@@ -5,10 +5,9 @@
 
 pkgname=plover
 pkgdesc="Free and open source real-time stenography engine"
-pkgver=5.0.0
-_pkgver=5.0.0
+pkgver=5.2.1
+_pkgver=5.2.1
 pkgrel=1
-_branchname='simplify-build-system-requires'
 arch=(any)
 url="https://www.openstenoproject.org/plover/"
 license=(GPL2)
@@ -18,8 +17,9 @@ depends=(
 	python-appdirs
 	python-cmarkgfm
 	python-evdev
+	python-hidapi
 	'python-plover_stroke>=1.1.0'
-	'python-pyside6>=6.9.0'
+	'pyside6>=6.9.0'
 	python-pkginfo
 	python-psutil
 	python-pyserial
@@ -28,6 +28,7 @@ depends=(
 	python-requests-futures
 	python-rtf_tokenize
 	python-wcwidth
+	python-xkbcommon
 	python-xlib
 	qt6-svg  # Updated to Qt6
 )
@@ -39,11 +40,9 @@ makedepends=(
 	qt6-base # Added to ensure uic/rcc binaries exist
 )
 source=(
-	"$pkgname-$_branchname.tar.gz::https://github.com/openstenoproject/$pkgname/archive/refs/heads/$_branchname.tar.gz"
+    "$pkgname-$pkgver.tar.gz::https://github.com/openstenoproject/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
 )
-b2sums=(
-	'SKIP'
-)
+b2sums=('a6b921870b3ba4ac0cc1a6e775c8d10c9b7fc60de873334e34b2084074e6dd35184c7a38167af2ca93c19b5391de78a954d1ade8b608966287de94617185ef0b')
 
 prepare() {
 	# Create shims that call Qt6 host tools with Python generators.
@@ -77,7 +76,7 @@ EOF
 }
 
 build() {
-	cd "$pkgname-$_branchname"
+	cd "$srcdir/$pkgname-$pkgver"
 	# Add the shim directory to the PATH for the build process
 	export PATH="$srcdir/_tools:$PATH"
 	python -m build -wn
@@ -85,7 +84,7 @@ build() {
 
 
 package() {
-	cd "$pkgname-$_branchname"
+	cd "$srcdir/$pkgname-$pkgver"
 	python -m installer -d "$pkgdir" dist/*.whl
 	install -vDm644 plover/assets/$pkgname.png -t "$pkgdir/usr/share/pixmaps/"
 	install -vDm644 linux/$pkgname.desktop -t "$pkgdir/usr/share/applications/"
