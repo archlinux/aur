@@ -1,3 +1,6 @@
+v0.30-2
+Remove 'provides' and 'conflicts' fields from PKGBUILD.
+
 v0.30-1
 Version 0.30 was released in December 2024. Sorry for the delay.
 The changelog entry from upstream follows:

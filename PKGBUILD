@@ -4,15 +4,13 @@
 
 pkgname=jbig2enc
 pkgver=0.30
-pkgrel=1
+pkgrel=2
 pkgdesc="A JBIG2 image encoder"
 arch=('i686' 'x86_64')
 url="https://github.com/agl/jbig2enc"
 license=('Apache')
 depends=('gcc-libs' 'leptonica>=1.74' 'libpng' 'libjpeg' 'libtiff')
 optdepends=('python: for pdf.py')
-provides=('jbig2enc')
-conflicts=('jbig2enc-git')
 makedepends=('automake' 'libtool' 'gzip')
 changelog=CHANGELOG
 source=("https://github.com/agl/jbig2enc/archive/refs/tags/$pkgver.tar.gz"
