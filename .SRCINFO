@@ -1,0 +1,14 @@
+pkgbase = pajlada-signals
+	pkgdesc = simple C++ signal library
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/pajlada/signals
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = gtest
+	source = git+https://github.com/pajlada/signals.git#tag=v0.1.1
+	sha256sums = 2b22dbc39f5b0946da63663afbfc93f60fbcc7a54e5f3078850e12127e1bcffc
+
+pkgname = pajlada-signals
