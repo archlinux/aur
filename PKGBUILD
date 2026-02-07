@@ -5,7 +5,7 @@
 
 pkgname=hyprquickframe-git
 pkgver=r33.g82d9baf
-pkgrel=1
+pkgrel=2
 pkgdesc="Quickshell-based screenshot utility for Hyprland"
 arch=('any')
 url="https://github.com/Ronin-CK/HyprQuickFrame"
@@ -43,6 +43,10 @@ pkgver() {
 }
 
 package() {
+    # Install license
+    install -Dm644 HyprQuickFrame/LICENSE \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
     # Install Quickshell config (system-wide XDG)
     install -d "$pkgdir/etc/xdg/quickshell/HyprQuickFrame"
 
