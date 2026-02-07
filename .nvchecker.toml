@@ -2,3 +2,4 @@
 source = "git"
 git = "https://github.com/zxing-cpp/zxing-cpp.git"
 prefix = "v"
+exclude_regex = ".*(alpha|beta|rc).*"
