@@ -1,8 +1,8 @@
 # Maintainer: Aaron Coach <aur@awc.id.au>
 
 pkgname=yamtrack
-pkgver=0.24.11
-pkgrel=2
+pkgver=0.25.0
+pkgrel=1
 pkgdesc="Self-hosted media tracker"
 arch=('any')
 url="https://github.com/FuzzyGrim/Yamtrack"
@@ -29,7 +29,7 @@ source=(
   "yamtrack-manage"
 )
 
-sha256sums=('b6516defa8dad9f857a8ca4b8108f4c952b158fd950d1d89ecc0813dc6b1ebc1'
+sha256sums=('aaf6b5ce228560216f1c77b765766aa2adbf83d6baaf62c8e30259cb2654a579'
             '491b49f33107a36727db4fd181b5f1da1d43a564737a3656d90d3acc22816a36'
             'b802edf0f341b2ec008eedb79b1f4b4c7cec4b89428765a20fa6dd5db30e3a48'
             '1caecf3ac52fd3c0a9c2ada54d4130aba03ff454185c6b10f04f4cf514c4a3b7'
@@ -69,6 +69,9 @@ package() {
 
   install -d "${pkgdir}/usr/lib/yamtrack"
   cp -a venv "${pkgdir}/usr/lib/yamtrack/venv"
+
+  # Remove the Unicode "Pi-thon" alias which causes a bsdtar error
+  rm -f "${pkgdir}/usr/lib/yamtrack/venv/bin/𝜋thon"
 
   install -d "${pkgdir}/usr/lib/sysusers.d"
   install -m 0644 "${srcdir}/yamtrack.sysusers" "${pkgdir}/usr/lib/sysusers.d/yamtrack.conf"
