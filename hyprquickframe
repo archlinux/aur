@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+APP_NAME="HyprQuickFrame"
+
+usage() {
+    cat <<EOF
+Usage: hyprquickframe [OPTION]
+
+Options:
+  -e, --edit    Open editor after capture
+  -h, --help    Show this help message
+EOF
+}
+
+case "${1:-}" in
+    -e|--edit)
+        HYPRQUICKFRAME_EDITOR=1 quickshell -c "$APP_NAME" -n
+        ;;
+    -h|--help)
+        usage
+        ;;
+    "")
+        quickshell -c "$APP_NAME" -n
+        ;;
+    *)
+        echo "Unknown option: $1"
+        usage
+        exit 1
+        ;;
+esac
