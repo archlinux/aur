@@ -1,0 +1,31 @@
+pkgbase = kodaskanna
+	pkgdesc = A multi-format 1D/2D code scanner
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://apps.kde.org/kodaskanna/
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = ninja
+	makedepends = qt6-multimedia
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = kconfigwidgets
+	depends = kcoreaddons
+	depends = kcrash
+	depends = ki18n
+	depends = kio
+	depends = kservice
+	depends = kwidgetsaddons
+	depends = kxmlgui
+	depends = purpose
+	depends = qt6-base
+	depends = zxing-cpp
+	source = git+https://invent.kde.org/graphics/kodaskanna.git?signed#tag=v0.2.2
+	validpgpkeys = E6EBD6EB0518FE5BCCA5F6A76AACDD263C2CEFD4
+	b2sums = 3e0a5cde331839cedcba3db045858b48cafd1aee44cc920d65aa70297067e20b61aed103ccec38b6b6edd84a403295799ce70116324f2dc4368a3616002bc605
+
+pkgname = kodaskanna

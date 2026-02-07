@@ -1,0 +1,4 @@
+[kodaskanna]
+source = "git"
+git = "https://invent.kde.org/graphics/kodaskanna.git"
+prefix = "v"
