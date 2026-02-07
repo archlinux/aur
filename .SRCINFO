@@ -1,5 +1,5 @@
 pkgbase = traur
-	pkgdesc = Pre-install trust scoring for AUR packages
+	pkgdesc = Trust scoring for AUR packages
 	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/Sohimaster/traur

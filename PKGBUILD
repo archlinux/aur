@@ -1,7 +1,7 @@
 pkgname=traur
 pkgver=0.2.0
 pkgrel=1
-pkgdesc='Pre-install trust scoring for AUR packages'
+pkgdesc='Trust scoring for AUR packages'
 arch=('x86_64')
 url='https://github.com/Sohimaster/traur'
 license=('MIT')
