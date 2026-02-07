@@ -4,7 +4,7 @@
 
 pkgname=python-conda
 _name=${pkgname#python-}
-pkgver=25.11.0
+pkgver=26.1.0
 pkgrel=1
 pkgdesc="OS-agnostic, system-level binary package manager and ecosystem https://conda.io"
 arch=('any')
@@ -49,7 +49,7 @@ options=(!emptydirs)
 backup=(etc/conda/condarc)
 source=("$url/releases/download/$pkgver/$_name-$pkgver.tar.gz"
         "py-3.13-logging.patch::$url/commit/62196c897df3d7aea7063d0c08d1bf6e6fd91600.patch")
-sha256sums=('62aad5c046936b07e3ea44d6d908f2d94b427049420332def421e9c72ff3961e'
+sha256sums=('ebb5573ff611f82377dd283401fbd823172c4d0573d798228a48e85f9acf7a8e'
             'ffb6ee9cc5572e1a24d547bcaf04ccf987a2f8a6c54321ccd242633454675743')
 
 prepare() {

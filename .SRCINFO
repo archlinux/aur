@@ -1,6 +1,6 @@
 pkgbase = python-conda
 	pkgdesc = OS-agnostic, system-level binary package manager and ecosystem https://conda.io
-	pkgver = 25.11.0
+	pkgver = 26.1.0
 	pkgrel = 1
 	url = https://github.com/conda/conda
 	arch = any
@@ -32,9 +32,9 @@ pkgbase = python-conda
 	conflicts = python-conda-git
 	options = !emptydirs
 	backup = etc/conda/condarc
-	source = https://github.com/conda/conda/releases/download/25.11.0/conda-25.11.0.tar.gz
+	source = https://github.com/conda/conda/releases/download/26.1.0/conda-26.1.0.tar.gz
 	source = py-3.13-logging.patch::https://github.com/conda/conda/commit/62196c897df3d7aea7063d0c08d1bf6e6fd91600.patch
-	sha256sums = 62aad5c046936b07e3ea44d6d908f2d94b427049420332def421e9c72ff3961e
+	sha256sums = ebb5573ff611f82377dd283401fbd823172c4d0573d798228a48e85f9acf7a8e
 	sha256sums = ffb6ee9cc5572e1a24d547bcaf04ccf987a2f8a6c54321ccd242633454675743
 
 pkgname = python-conda
