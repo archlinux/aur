@@ -1,7 +1,7 @@
 # Maintainer: Lian <yichengxin7@gmail.com>
 pkgname=lianwall-gui-bin
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="LianWall GUI - Qt6/QML graphical client for lianwalld wallpaper daemon"
 arch=('x86_64')
 url="https://github.com/Yueosa/lianwall-gui"
