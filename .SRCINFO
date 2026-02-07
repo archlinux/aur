@@ -1,11 +1,14 @@
 pkgbase = fuzzel-dmenu-dropin
 	pkgdesc = Makes symlinks to provide dmenu when using fuzzel.
-	pkgver = 1.0
+	pkgver = 1.0.0
 	pkgrel = 1
+	url = https://codeberg.org/dnkl/fuzzel
 	arch = any
-	license = none
+	license = MIT
 	depends = fuzzel
 	provides = dmenu
 	conflicts = dmenu
+	source = LICENSE
+	sha256sums = SKIP
 
 pkgname = fuzzel-dmenu-dropin
