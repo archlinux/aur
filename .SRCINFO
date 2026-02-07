@@ -1,6 +1,6 @@
 pkgbase = alogi
 	pkgdesc = AI-powered log viewer
-	pkgver = 0.1.46
+	pkgver = 0.1.47
 	pkgrel = 1
 	url = https://github.com/allisonhere/alogi
 	arch = x86_64
@@ -28,10 +28,10 @@ pkgbase = alogi
 	depends = cairo
 	depends = dbus
 	depends = glib2
-	source = https://github.com/allisonhere/alogi/releases/download/v0.1.46/alogi-0.1.46-linux-unpacked.tar.gz
+	source = https://github.com/allisonhere/alogi/releases/download/v0.1.47/alogi-0.1.47-linux-unpacked.tar.gz
 	source = alogi.desktop
 	source = icon.png
-	sha256sums = eb52a0ecaa82e1cd572fa89b0a61b6a29f31d1f031fc934ba132cf28ea7a147c
+	sha256sums = 5ab527a6f93c528f0af118ae1b87822479ec14f95eafb4541df4587bb7c531fa
 	sha256sums = SKIP
 	sha256sums = SKIP
 
