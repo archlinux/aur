@@ -5,7 +5,7 @@ pkgver=2025.11.26
 pkgrel=2
 pkgdesc='A command-line program to download videos from YouTube.com and a few more sites'
 arch=('any')
-url='https://ytdl-org.github.io/youtube-dl'
+url='https://github.com/ytdl-org/ytdl-nightly'
 license=('Unlicense')
 depends=('python')
 provides=('youtube-dl')
@@ -19,7 +19,7 @@ optdepends=('ffmpeg: for video post-processing'
             'python-brotli: support for Brotli HTTP compression'
             'python-zstandard: support for zstd HTTP compression'
             'aria2: alternative parallel downloader')
-source=("https://github.com/ytdl-org/ytdl-nightly/releases/download/${pkgver}/youtube-dl-${pkgver}.tar.gz")
+source=("$url/releases/download/$pkgver/youtube-dl-$pkgver.tar.gz")
 sha256sums=('3057800d1a6f18fd63da8f11554ec1c2c1c1fc05307905c6a6d1bca938af65ac')
 
 prepare() {
