@@ -16,6 +16,8 @@ steps:
     environment:
       CODEBERG_TOKEN:
         from_secret: codeberg_token
+      NVCHECKER_GITHUB_TOKEN:
+        from_secret: nvchecker_github_token
     commands:
       # Install all required tools
       - pacman -Syu --noconfirm --needed git base-devel devtools nvchecker pacman-contrib namcap sudo xdg-utils
@@ -25,6 +27,18 @@ steps:
       - useradd -m -G wheel builduser
       - "echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers"
       - chown -R builduser:builduser .
+      # Configure nvchecker GitHub auth via env var to avoid API 403 rate limits
+      - |
+        if [ -n "$${NVCHECKER_GITHUB_TOKEN:-}" ]; then
+          install -d -m 700 -o builduser -g builduser /home/builduser/.config
+          install -d -m 700 -o builduser -g builduser /home/builduser/.config/nvchecker
+          printf '[keys]\ngithub = "%s"\n' "$${NVCHECKER_GITHUB_TOKEN}" > /home/builduser/.config/nvchecker/keyfile.toml
+          chown builduser:builduser /home/builduser/.config/nvchecker/keyfile.toml
+          chmod 600 /home/builduser/.config/nvchecker/keyfile.toml
+          echo "nvchecker keyfile.toml with GitHub token created."
+        else
+          echo "WARNING: NVCHECKER_GITHUB_TOKEN is not set; nvchecker runs without GitHub auth (possible GitHub 403/rate limits)."
+        fi
       # Configure git for builduser
       - sudo -u builduser git config --global user.name "Woodpecker CI"
       - sudo -u builduser git config --global user.email "ci@codeberg.org"
