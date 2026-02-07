@@ -3,7 +3,7 @@
 
 pkgbase="zyplayer-appimage"
 pkgname="zyfun-appimage"
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="跨平台桌面端视频资源播放器,免费高颜值"
 arch=(aarch64
@@ -18,8 +18,8 @@ replaces=(zyplayer)
 _install_path="/opt/appimages"
 source_aarch64=("${pkgname%-appimage}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-appimage}-linux-${pkgver}-arm64.AppImage")
 source_x86_64=("${pkgname%-appimage}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-appimage}-linux-${pkgver}-x86_64.AppImage")
-sha256sums_aarch64=('5e12e46f61fd40225b15aeaf15cc6f5051f346700118ee57808fffca7774dbe5')
-sha256sums_x86_64=('02b6fc52aee0bac3522d00380659c8e04f018999d56bc1b6f733a7d862796cd8')
+sha256sums_aarch64=('e47ea485df83a2eece1289c83e8066ed38ee013e99be4dca43b8047b5219bb00')
+sha256sums_x86_64=('ca1f4af1e5d078bb1101c38b8606e76b80f8730b288d588d89efde57a5a3bf87')
 _appimage="${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage"
 
 prepare() {
