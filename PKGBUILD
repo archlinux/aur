@@ -1,6 +1,6 @@
 # Maintainer: FrogSnot
 pkgname=hardbore
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="High-performance file manager for Linux"
 arch=('x86_64')
