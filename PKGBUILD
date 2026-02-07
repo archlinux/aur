@@ -1,8 +1,8 @@
 # Maintainer: noureddinex
 pkgname=lmstudio-bin
-pkgver=0.4.2
-_pkgver=${pkgver}-2
-pkgrel=1
+pkgver=0.4.2_2
+pkgrel=2
+_pkgver=${pkgver}-${pkgrel}
 pkgdesc="LM Studio - A desktop app for exploring and running large language models locally"
 arch=('x86_64')
 url="https://lmstudio.ai"
