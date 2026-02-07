@@ -1,0 +1,21 @@
+pkgbase = sortify-bin
+	pkgdesc = A flexible automated file sorter with custom themes and extensions
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/ninjaytxz/Sortify
+	arch = x86_64
+	license = LicenseRef-Proprietary
+	depends = webkit2gtk
+	depends = gtk3
+	depends = libappindicator-gtk3
+	provides = sortify
+	conflicts = sortify
+	options = !strip
+	source = Sortify-2.0.0-Linux-x64::https://github.com/ninjaytxz/Sortify/releases/download/v2.0.0/Sortify-2.0.0-Linux-x64
+	source = sortify.desktop
+	source = sortify.png::https://raw.githubusercontent.com/ninjaytxz/Sortify/main/Documentation%20assets/Sortify%20logo.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = sortify-bin
