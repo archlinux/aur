@@ -2,7 +2,7 @@
 
 _pkgname="gopher64"
 pkgname="${_pkgname}-bin"
-pkgver=1.1.13
+pkgver=1.1.14
 pkgrel=1
 pkgdesc="N64 emulator written in Rust"
 arch=('aarch64' 'x86_64')
@@ -34,8 +34,8 @@ sha256sums=('95e04ec4bc1331e8d12bfb353db17dd8e7c8d7d9f83c0580728453b8e9b8b4d1'
             'c5b7d0fc27c4a838b174b6b2f3357d66b888b97cd9b5acd5460d1d102c7a8597'
             '886c63542d29a20804de8c3555a9abb2dac635b55b521ecffb067ec484780d67'
             '589dbc308e9910010fa0cbfdfa895dbc7dc895876ad3fda882008c59d7db3d22')
-sha256sums_aarch64=('28be0bb24577c266f2c38019856ea1a5a42f4f98422dc4aee89ac98569163341')
-sha256sums_x86_64=('c9f62eae46aaba1256481351846b57e1d128cd4dfadc89fae2b1aa1aef591e19')
+sha256sums_aarch64=('f7cc6b3551aa64dce7587e5d220f2133d948cc6937033f3959c057f0cd8883d7')
+sha256sums_x86_64=('d7e1280af65eefac4dad1723663486a07684c408362a968c759e55ed88db4cca')
 
 for _size in 128 256 512; do
   source+=("${_pkgsrc}.${_size}x${_size}.png::${url}/raw/refs/tags/v${pkgver}/data/icon/${_pkgname}_${_size}x${_size}.png")
