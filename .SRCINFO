@@ -1,0 +1,25 @@
+pkgbase = rexit-git
+	pkgdesc = A rice-ready TUI power menu for Linux with multi-WM support
+	pkgver = r20.4e33f53
+	pkgrel = 1
+	url = https://github.com/Ninso112/rexit
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	makedepends = git
+	makedepends = cargo
+	depends = systemd
+	optdepends = hyprland: Hyprland support
+	optdepends = hyprlock: Screen locking for Hyprland
+	optdepends = swaylock: Screen locking for Sway
+	optdepends = i3lock: Screen locking for i3
+	optdepends = sway: Sway WM support
+	optdepends = i3-wm: i3 WM support
+	optdepends = bspwm: BSPWM support
+	optdepends = awesome: Awesome WM support
+	provides = rexit
+	conflicts = rexit
+	source = rexit-git::git+https://github.com/Ninso112/rexit.git
+	sha256sums = SKIP
+
+pkgname = rexit-git
