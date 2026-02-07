@@ -2,7 +2,7 @@
 # Contributor: Jacqueline Fisher <jcfisher@reality-overwritten.net>
 pkgname=postybirb
 _pkgname=PostyBirb
-pkgver=4.0.14
+pkgver=4.0.15
 _electronversion=35
 _nodeversion=22
 pkgrel=1
@@ -32,7 +32,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('72e3a900b144a7c653a1c2dd25e630c0e4c1bbc6dca79ba41ad043533778e461'
+sha256sums=('a15524b912d96df77f24ccb4549ccd642c66da90b3c7cd76cfcec288f65b0e0a'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
