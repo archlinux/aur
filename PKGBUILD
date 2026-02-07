@@ -1,6 +1,6 @@
 pkgname=omcalc-git
 pkgver=r0.0000000
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimal GTK4 calculator tuned for Omarchy/Hyprland workflows'
 arch=('x86_64')
 url='https://github.com/jadabreu/omcalc'
@@ -11,10 +11,10 @@ makedepends=('git')
 provides=('omcalc')
 conflicts=('omcalc')
 source=(
-  'git+https://github.com/jadabreu/omcalc.git'
-  'omcalc'
-  'omcalc-clear-history'
-  'omcalc.desktop'
+  'omcalc-src::git+https://github.com/jadabreu/omcalc.git'
+  'omcalc-wrapper::omcalc'
+  'omcalc-clear-history-wrapper::omcalc-clear-history'
+  'omcalc-desktop::omcalc.desktop'
 )
 sha256sums=(
   'SKIP'
@@ -24,12 +24,12 @@ sha256sums=(
 )
 
 pkgver() {
-  cd "${srcdir}/omcalc"
+  cd "${srcdir}/omcalc-src"
   printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "${srcdir}/omcalc"
+  cd "${srcdir}/omcalc-src"
 
   install -Dm755 app/gtk4/run.sh "${pkgdir}/usr/lib/omcalc/run.sh"
   install -Dm644 app/gtk4/omarchy_calc_ui.js "${pkgdir}/usr/lib/omcalc/omarchy_calc_ui.js"
@@ -40,7 +40,7 @@ package() {
   install -Dm644 app/gtk4/hyprland-snippet.conf "${pkgdir}/usr/share/doc/omcalc/hyprland-snippet.conf"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  install -Dm755 "${srcdir}/omcalc" "${pkgdir}/usr/bin/omcalc"
-  install -Dm755 "${srcdir}/omcalc-clear-history" "${pkgdir}/usr/bin/omcalc-clear-history"
-  install -Dm644 "${srcdir}/omcalc.desktop" "${pkgdir}/usr/share/applications/omcalc.desktop"
+  install -Dm755 "${srcdir}/omcalc-wrapper" "${pkgdir}/usr/bin/omcalc"
+  install -Dm755 "${srcdir}/omcalc-clear-history-wrapper" "${pkgdir}/usr/bin/omcalc-clear-history"
+  install -Dm644 "${srcdir}/omcalc-desktop" "${pkgdir}/usr/share/applications/omcalc.desktop"
 }
