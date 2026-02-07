@@ -1,6 +1,6 @@
 pkgbase = libggml
 	pkgdesc = Tensor library for machine learning
-	pkgver = 0.9.5
+	pkgver = 0.9.6
 	pkgrel = 1
 	url = https://github.com/ggml-org/ggml
 	arch = x86_64
@@ -12,8 +12,10 @@ pkgbase = libggml
 	makedepends = vulkan-headers
 	depends = openblas
 	depends = vulkan-icd-loader
-	source = ggml-0.9.5.tar.gz::https://github.com/ggml-org/ggml/archive/refs/tags/v0.9.5.tar.gz
-	sha256sums = 566d957c5884e4538ee62725b9a13ec0eb09e6442292572c4d95556a7309d107
+	provides = libggml-git
+	conflicts = libggml-git
+	source = ggml-0.9.6.tar.gz::https://github.com/ggml-org/ggml/archive/refs/tags/v0.9.6.tar.gz
+	sha256sums = 85e141f2a323946119bd9a6f03e8af32e4c1c9e872d81043bf1c3e1ed3c6fb88
 
 pkgname = libggml
 	pkgdesc = Tensor library for machine learning with OpenBLAS + Vulkan optimizations
