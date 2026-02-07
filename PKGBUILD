@@ -1,7 +1,7 @@
 # Maintainer: fEst <refer.nfs@gmail.com>
 pkgname=pipewire-audio-idle-inhibit-git
-_ver=0.2.0
-pkgver=0.2.0.r67.e9dff65
+_ver=0.3.0
+pkgver=$_ver.r68.faf1348
 pkgrel=1
 pkgdesc="Prevents the screen from sleeping while audio is actively playing or being recorded through Pipewire"
 _pkgfoldername=PipewireAudioIdleInhibit
@@ -34,4 +34,5 @@ build() {
 package() {
   DESTDIR="$pkgdir" meson install -C build
 }
+sha256sums=('SKIP')
 sha256sums=('SKIP')

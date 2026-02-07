@@ -16,6 +16,7 @@
 
 pkg/
 src/
+PipewireAudioIdleInhibit/
 
 # End of https://www.toptal.com/developers/gitignore/api/archlinuxpackages
 
