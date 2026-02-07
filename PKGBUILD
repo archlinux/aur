@@ -2,7 +2,7 @@
 _pkgname=todo-or-not
 pkgname=python-todo-or-not
 pkgver=0.14.7
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A simple tool that checks your project for TODOs and FIXMEs"
 arch=(any)
