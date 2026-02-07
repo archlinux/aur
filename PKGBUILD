@@ -62,7 +62,7 @@ build() {
   # Optimized Rust compilation flags for AUR
   export CARGO_TARGET_DIR="$srcdir/target"
   export CARGO_BUILD_JOBS=$(nproc)
-  export RUSTFLAGS="-C target-cpu=native -C opt-level=3 -C embed-bitcode=no -C codegen-units=1 -C lto=fat -C panic=abort"
+  export RUSTFLAGS="-C target-cpu=native -C opt-level=3 -C codegen-units=1 -C lto=fat -C panic=abort"
   export CFLAGS="${CFLAGS} -flto -march=native -mtune=native"
   export CXXFLAGS="${CXXFLAGS} -flto -march=native -mtune=native"
   
