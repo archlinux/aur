@@ -1,6 +1,6 @@
 pkgname=hisat2
-pkgver=2.2.1
-pkgrel=3
+pkgver=2.2.2
+pkgrel=1
 pkgdesc='A fast and sensitive alignment program for mapping next-generation sequencing reads against genomes'
 url="https://daehwankimlab.github.io/$pkgname"
 license=(GPL-3.0-only)
@@ -10,7 +10,7 @@ optdepends=(
 	'python: To use the `hisat2-{build,build-new,inspect}` scripts'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DaehwanKimLab/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f3f4f867d0a6b1f880d64efc19deaa5788c62050e0a4d614ce98b3492f702599')
+sha256sums=('d3996d7bee30e38e51beb69c44b10461a4692e686487c465f9a20e3f54b6e815')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"

@@ -1,13 +1,13 @@
 pkgbase = hisat2
 	pkgdesc = A fast and sensitive alignment program for mapping next-generation sequencing reads against genomes
-	pkgver = 2.2.1
-	pkgrel = 3
+	pkgver = 2.2.2
+	pkgrel = 1
 	url = https://daehwankimlab.github.io/hisat2
 	arch = x86_64
 	license = GPL-3.0-only
 	optdepends = perl: To use the `hisat2` wrapper script
 	optdepends = python: To use the `hisat2-{build,build-new,inspect}` scripts
-	source = hisat2-2.2.1.tar.gz::https://github.com/DaehwanKimLab/hisat2/archive/refs/tags/v2.2.1.tar.gz
-	sha256sums = f3f4f867d0a6b1f880d64efc19deaa5788c62050e0a4d614ce98b3492f702599
+	source = hisat2-2.2.2.tar.gz::https://github.com/DaehwanKimLab/hisat2/archive/refs/tags/v2.2.2.tar.gz
+	sha256sums = d3996d7bee30e38e51beb69c44b10461a4692e686487c465f9a20e3f54b6e815
 
 pkgname = hisat2
