@@ -2,7 +2,7 @@
 pkgbase=linux-galaxyaudio
 pkgname=(linux-galaxyaudio linux-galaxyaudio-headers)
 _pkgname=linux
-pkgver=6.12.8
+pkgver=6.18.7
 pkgrel=1
 pkgdesc='Linux kernel for Samsung Galaxy Book 4 with MAX98390 sound support'
 arch=(x86_64)
@@ -21,9 +21,9 @@ source=(
   "config"
   "max98390-sound.patch"
 )
-sha256sums=('f011f6c8ea471df1b3dbbdd1eb261b29c92e43360503c3ebd005beec2155b66a'
-            '505d823490e964e66ebe5889a3701347b4e4e2faf1772b3964f0360a176eadf8'
-            'd04297d5ff976a35846877f6fd7b294258504f0c3b60c3ca57a4e3947dcae321')
+sha256sums=('b726a4d15cf9ae06219b56d87820776e34d89fbc137e55fb54a9b9c3015b8f1e'
+            '3afa69d43f44a8d88f01080bbf1cee73dab85d8c726714cb08e9f1f33dc8b24c'
+            '11d333d7efe10e52dee4c662a6598b4eb689095ed58c0306379ff7855551e9d1')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
@@ -41,6 +41,16 @@ prepare() {
   echo "Enabling Galaxy Book 4 Sound Configs..."
   scripts/config --module CONFIG_SND_SOC_MAX98390
   scripts/config --enable CONFIG_SND_HDA_CODEC_REALTEK
+
+  echo "Disabling Debug Info for faster build..."
+  scripts/config --disable CONFIG_DEBUG_INFO
+  scripts/config --disable CONFIG_DEBUG_INFO_BTF
+  scripts/config --disable CONFIG_DEBUG_INFO_DWARF4
+  scripts/config --disable CONFIG_DEBUG_INFO_DWARF5
+  scripts/config --disable CONFIG_PAHOLE_HAS_SPLIT_BTF
+  scripts/config --disable CONFIG_DEBUG_INFO_BTF_MODULES
+  scripts/config --disable CONFIG_SLUB_DEBUG
+  scripts/config --disable CONFIG_PM_DEBUG
   # Ensure dependencies are met (I2C, etc normally are)
 
   make olddefconfig
@@ -75,7 +85,7 @@ package_linux-galaxyaudio() {
   make INSTALL_MOD_PATH="${pkgdir}/usr" INSTALL_MOD_STRIP=1 modules_install
 
   # remove build and source links
-  rm "${modulesdir}"/{source,build}
+  rm -f "${modulesdir}"/{source,build}
 }
 
 package_linux-galaxyaudio-headers() {
