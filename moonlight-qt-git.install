@@ -1,0 +1,8 @@
+post_install() {
+    echo "Setting capabilities for Moonlight to allow setting nice levels..."
+    setcap cap_sys_nice+ep /usr/local/bin/moonlight
+}
+
+post_upgrade() {
+    post_install
+}
