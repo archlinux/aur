@@ -1,6 +1,6 @@
 pkgbase = traur
 	pkgdesc = Heuristic security scanner for AUR packages
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/Sohimaster/traur
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = traur
 	depends = git
 	depends = pacman
 	backup = etc/traur/config.toml
-	source = traur-0.1.5.tar.gz::https://github.com/Sohimaster/traur/archive/v0.1.5.tar.gz
-	sha256sums = dcc00877bc4bcc0a0d052dd431a9fa7f6958bd00274fec37b8b47b71258e44cd
+	source = traur-0.1.6.tar.gz::https://github.com/Sohimaster/traur/archive/v0.1.6.tar.gz
+	sha256sums = 53e74bdeb56e00888d90de925c3c14889e69d098aa3f4d961a6ba65e9fc1c410
 
 pkgname = traur
