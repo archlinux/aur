@@ -1,7 +1,7 @@
 # Maintainer: veggieTanuki <4d7orvu7@anonaddy.me>
 
 pkgname=bws-bin
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Bitwarden Secrets Manager CLI"
 arch=("aarch64" "x86_64")
