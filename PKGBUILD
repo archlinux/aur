@@ -17,7 +17,7 @@ sha256sums=('80c59dd03991aa0617bf0dc44365871a3a03dc0f2158cdb30e0219e88ffbc9a9'
 
 package() {
     install -Dm755 "lianwall-gui-${pkgver}" "$pkgdir/usr/bin/lianwall-gui"
-    install -Dm644 "lianwall.png" "$pkgdir/usr/share/icons/hicolor/640x640/apps/lianwall.png"
+    install -Dm644 "lianwall.png" "$pkgdir/usr/share/icons/hicolor/scalable/apps/lianwall.png"
 
     # 生成 desktop 文件
     install -dm755 "$pkgdir/usr/share/applications"
