@@ -1,7 +1,7 @@
 # Maintainer: Ren Tatsumoto <tatsu at autistici dot org>
 
 pkgname=gd-tools-git
-pkgver=1.6.r0.g01b5adc
+pkgver=1.8.r0.g82c1333
 pkgrel=1
 pkgdesc="A set of helpful programs to enhance goldendict for immersion learning."
 arch=("x86_64")
