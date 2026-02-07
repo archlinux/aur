@@ -1,0 +1,7 @@
+[icu]
+source = "git"
+git = "https://github.com/unicode-org/icu.git"
+include_regex = 'release-\d+((-|\.)\d+)*'
+prefix = "release-"
+from_pattern = '-'
+to_pattern = '.'
