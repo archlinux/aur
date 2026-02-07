@@ -1,0 +1,21 @@
+pkgbase = lianwall-gui-bin
+	pkgdesc = LianWall GUI - Qt6/QML graphical client for lianwalld wallpaper daemon
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Yueosa/lianwall-gui
+	arch = x86_64
+	license = MIT
+	depends = lianwalld-bin
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-quickcontrols2
+	depends = ffmpeg
+	optdepends = lianwall-bin: CLI client for lianwalld
+	provides = lianwall-gui
+	conflicts = lianwall-gui
+	source = lianwall-gui-1.0.0::https://github.com/Yueosa/lianwall-gui/releases/download/v1.0.0/lianwall-gui
+	source = lianwall.png::https://raw.githubusercontent.com/Yueosa/lianwall-gui/main/resources/icons/lianwall.png
+	sha256sums = 80c59dd03991aa0617bf0dc44365871a3a03dc0f2158cdb30e0219e88ffbc9a9
+	sha256sums = a0328df19674629349b2ba601d7b66f2863414a215585f33d856341b535f2011
+
+pkgname = lianwall-gui-bin
