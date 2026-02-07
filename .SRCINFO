@@ -1,0 +1,16 @@
+pkgbase = winamp-mpris
+	pkgdesc = MPRIS bridge for Winamp running under Wine (exposes a playerctl-compatible MPRIS endpoint)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/elgatolinux/winamp-mpris
+	arch = any
+	license = MIT
+	depends = python
+	depends = wine
+	depends = playerctl
+	depends = python-dbus-next
+	provides = winamp-mpris
+	source = git+https://github.com/elgatolinux/winamp-mpris.git#branch=main
+	sha256sums = SKIP
+
+pkgname = winamp-mpris
