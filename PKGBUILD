@@ -7,7 +7,7 @@ _image_url_x86_64="https://capacities-desktop-app.fra1.cdn.digitaloceanspaces.co
 _image_url_aarch64="https://capacities-desktop-app.fra1.cdn.digitaloceanspaces.com/Capacities-${_version}-arm64.AppImage"
 
 pkgname="${_pkgname}"-appimage
-pkgver="${_version}"
+pkgver=1.58.38
 pkgrel=1
 pkgdesc="Personal Knowledge Management app - A studio for your mind"
 arch=('x86_64' 'aarch64')
