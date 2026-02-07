@@ -14,7 +14,7 @@ backup=('etc/traur/config.toml')
 build() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    cargo build --frozen --release
+    cargo build --locked --release
 }
 
 package() {
