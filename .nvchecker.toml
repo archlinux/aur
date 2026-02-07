@@ -1,0 +1,4 @@
+[lhapdf]
+source = 'git'
+git = 'https://gitlab.com/hepcedar/lhapdf/'
+prefix = 'lhapdf-'
