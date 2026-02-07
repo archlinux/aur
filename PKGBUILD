@@ -2,12 +2,12 @@
 # Contributor: Adrian Petrescu <adrian@apetre.sc>
 pkgname=lieer
 pkgver=1.6
-pkgrel=3
+pkgrel=4
 pkgdesc='Fast fetch and two-way tag synchronization between notmuch and GMail'
 arch=('any')
 url=https://github.com/gauteh/${pkgname}
 license=('GPL-3.0-or-later')
-depends=('python-google-auth-oauthlib' 'python-oauthlib' 'python-google-api-python-client' 'notmuch' 'python')
+depends=('python-google-auth-oauthlib' 'python-google-api-python-client' 'python-oauthlib' 'notmuch' 'python' 'python-cryptography')
 optdepends=('python-tqdm: Progress bar')
 makedepends=('python-setuptools')
 source=("$url/archive/v$pkgver/${pkgname}-v$pkgver.tar.gz")
