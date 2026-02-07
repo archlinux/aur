@@ -14,7 +14,7 @@ options=(!strip !debug)
 install="$pkgname.install"
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "trim-executables.diff")
-sha512sums=('df08ffcfb9063fba6a8d178d558abf1919a72d5a4dde414e7af1e13304c59651901953fc45a773a5e9f484bb38959f5cf522f64e04baf51947e3b1d0abb5bd5f'
+sha512sums=('1aa4620dc7dc66d9ddd5909cd54e8ea024ad53320aecf7283a6513d5d58bec0f936b3c4acf06d96b36b8d3aa263dd7633b809821ed71111939ceaa4b2efd65a3'
             'e5253397233ef8aee547402c4c1e2430ed8bf87346896d7052ce5ef4967fb705431b3516d53c1508aee9eb1fbe3204500c614be04fe2af326851a8a7d2fefd6d')
 
 # Seems that trimming is not required, either because of newer .NET or project changes
