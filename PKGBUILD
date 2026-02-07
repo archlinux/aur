@@ -2,7 +2,7 @@
 
 pkgname=rate-mirrors-bin
 pkgver=0.25.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Everyday-use client-side map-aware mirror ranking tool - pre-built with musl"
 url="https://github.com/westandskif/rate-mirrors"
 license=('CC-BY-NC-SA-3.0')
