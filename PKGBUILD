@@ -2,22 +2,59 @@
 # Maintainer: Artem Vorotnikov <artem@vorotnikov.me>
 
 _gemname=arr-pm
-pkgname=ruby-$_gemname
+pkgname="ruby-$_gemname"
 pkgver=0.0.12
-pkgrel=1
+pkgrel=2
 pkgdesc='RPM reader and writer library'
 arch=(any)
 url='https://rubygems.org/gems/arr-pm'
-license=('Apache 2')
-depends=(ruby ruby-cabin)
+license=('Apache-2.0')
+depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
 sha512sums=('f616f29f2c7a5912327aeb2c42be33d014808c6466472314d19a2f1ed50f2317de3e4d61516bacd765c77d3fe5325870eaad2a2e7da675429d554f299ac5daba')
 
+build() {
+  local _gemdir="$(gem env gemdir)"
+
+  gem install \
+    --local \
+    --verbose \
+    --ignore-dependencies \
+    --build-root "tmp_install" \
+    "${_gemname}-${pkgver}.gem"
+
+  # remove unrepreducible files
+  rm --force --recursive --verbose \
+    "tmp_install/${_gemdir}/cache/" \
+    "tmp_install/${_gemdir}/gems/${_name}-${pkgver}/vendor/" \
+    "tmp_install/${_gemdir}/doc/${_name}-${pkgver}/ri/ext/"
+
+  find "tmp_install/${_gemdir}/gems/" \
+    -type f \
+    \( \
+      -iname "*.o" -o \
+      -iname "*.c" -o \
+      -iname "*.so" -o \
+      -iname "*.time" -o \
+      -iname "gem.build_complete" -o \
+      -iname "Makefile" \
+    \) \
+    -delete
+
+  find "tmp_install/${_gemdir}/extensions/" \
+    -type f \
+    \( \
+      -iname "mkmf.log" -o \
+      -iname "gem_make.out" \
+    \) \
+    -delete
+}
+
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  local _gemdir="$(gem env gemdir)"
+  cp --archive --verbose tmp_install/* "${pkgdir}"
+  install --verbose -D --mode=0644 "tmp_install/$_gemdir/gems/$_gemname-$pkgver/LICENSE" --target-directory "${pkgdir}/usr/share/licenses/${pkgname}"
+  install --verbose -D --mode=0644 "tmp_install/$_gemdir/gems/$_gemname-$pkgver/README.md" --target-directory "${pkgdir}/usr/share/doc/${pkgname}"
 }
