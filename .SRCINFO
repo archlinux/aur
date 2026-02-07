@@ -1,18 +1,16 @@
 pkgbase = python-ansimarkup
 	pkgdesc = Produce colored terminal text with an xml-like markup
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/gvalkov/python-ansimarkup
 	arch = any
 	license = BSD-3-Clause
-	checkdepends = python-pytest
-	checkdepends = python-colorama
-	makedepends = python-setuptools
+	makedepends = python-uv-build
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/a/ansimarkup/ansimarkup-2.1.0.tar.gz
-	source = 2.1.0-conftest.py::https://raw.githubusercontent.com/gvalkov/python-ansimarkup/refs/tags/v2.1.0/tests/conftest.py
-	sha256sums = 7b3e3d93fecc5b64d23a6e8eb96dbc8b0b576a211829d948afb397d241a8c51b
+	source = https://files.pythonhosted.org/packages/source/a/ansimarkup/ansimarkup-2.2.0.tar.gz
+	source = 2.2.0-conftest.py::https://raw.githubusercontent.com/gvalkov/python-ansimarkup/refs/tags/v2.2.0/tests/conftest.py
+	sha256sums = 69ce2b9521bcea28b2a487e02abe3ce524578dc5f84235ffc15b53462c2e1188
 	sha256sums = 944a40e46b66fd3c2e10354a6c9c472b2e57f6a83ba6f2c26663e29533de9784
 
 pkgname = python-ansimarkup
