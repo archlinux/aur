@@ -1,6 +1,6 @@
 pkgbase = rayforge
 	pkgdesc = A software for laser cutters and engravers
-	pkgver = 0.28.4
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://rayforge.org
 	arch = any
@@ -41,9 +41,9 @@ pkgbase = rayforge
 	depends = python-vtracer>=0.6.5
 	depends = python-websockets>=14.2
 	depends = python-yaml>=6.0.2
-	provides = python-rayforge=0.28.4
+	provides = python-rayforge=1.0.2
 	conflicts = python-rayforge
-	source = rayforge::git+https://github.com/barebaric/rayforge.git#tag=0.28.4
-	sha256sums = b702ba6fd8f0bbb864cfc025114c0d9ba0d38a8c56486e61852cd822a633332e
+	source = rayforge::git+https://github.com/barebaric/rayforge.git#tag=1.0.2
+	sha256sums = 21d7bf6158d1752a62291a51e5c0a3c0f2e9abb5f497ebbfbdea48e20d615cba
 
 pkgname = rayforge

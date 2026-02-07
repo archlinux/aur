@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="rayforge"
-pkgver=0.28.4
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A software for laser cutters and engravers"
 arch=(
@@ -68,7 +68,7 @@ _pkgsrc="${_url##*/}"
 source=(
   "${_pkgsrc}::git+${_url}.git#tag=${pkgver}"
 )
-sha256sums=('b702ba6fd8f0bbb864cfc025114c0d9ba0d38a8c56486e61852cd822a633332e')
+sha256sums=('21d7bf6158d1752a62291a51e5c0a3c0f2e9abb5f497ebbfbdea48e20d615cba')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
@@ -86,7 +86,7 @@ package() {
   local site_packages="$(python -c "import site; print(site.getsitepackages()[0])")"
 
   cd "${srcdir}/${_pkgsrc}"
-  python -m installer --destdir="${pkgdir}" dist/*.whl
+  python -m installer --destdir="${pkgdir}" dist/*"${pkgver}"*.whl
 
   install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
