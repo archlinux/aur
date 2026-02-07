@@ -1,4 +1,4 @@
-# Maintainer: Trumpetrespas (Please comment on the package to contact me)
+# Maintainer: Trumpetrespas <email [at] trumpetrespas [dot] com>
 _pkgname=todo-or-not
 pkgname=python-todo-or-not
 pkgver=0.14.7
