@@ -1,7 +1,7 @@
 pkgbase = hyprquickframe-git
 	pkgdesc = Quickshell-based screenshot utility for Hyprland
-	pkgver = r33.g82d9baf
-	pkgrel = 1
+	pkgver = r41.g0471d6e
+	pkgrel = 2
 	url = https://github.com/Ronin-CK/HyprQuickFrame
 	arch = any
 	license = MIT
