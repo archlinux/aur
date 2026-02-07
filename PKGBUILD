@@ -1,34 +1,48 @@
+# Maintainer: Folf <folf@folf.me>
+
 pkgname=osmium
-pkgver=r888.76cdda0
+pkgver=0.0.6
 pkgrel=1
-pkgdesc="C++/Javascript framework for working with OSM files"
-arch=(i686 x86_64)
-url="https://github.com/joto/osmium"
-license=(GPL LGPL)
-depends=(osm-binary boost zlib shapelib sqlite gd expat gdal geos sparsehash v8-3.15 icu)
-makedepends=(git doxygen)
-source="git+https://github.com/joto/osmium.git"
-md5sums=('SKIP')
+pkgdesc="A globally distributed community messaging and voice/video platform"
+arch=('x86_64')
+url='https://osmium.chat/'
+license=('custom')
+depends=('alsa-lib' 'gtk3' 'libnotify' 'libxss' 'nspr' 'nss')
+optdepends=(
+    'libpulse: Pulseaudio support'
+    'xdg-utils: Open files'
+)
+options=('!strip')
+_pkgver=0.0.6
+_suffix=alpha
+source=("https://updater-test.tangle.chat/Osmium-${_pkgver}-${_suffix}-x64.tar.gz")
+sha512sums=('8cd5c7a71866e97c6b87ead46b70fb7eec6889a5f6dbf4dc8d4b984614ae454a0b690ef417941d8c98cd84ab7fba69c6026254612da9c5d9808951e6c0088191')
 
-pkgver() {
-  cd osmium
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+prepare() {
+    cd "Osmium-${_pkgver}-${_suffix}-x64"
 
-build() {
-  cd osmium
-  make
-  make -C osmjs
-  make -C examples
-  make doc
+    sed -i \
+        -e "s|Exec=.*|Exec=/usr/bin/${pkgname} --enable-features=UseOzonePlatform --ozone-platform-hint=auto %U|" \
+        Osmium.desktop
+    echo 'Path=/usr/bin' >> Osmium.desktop
 }
 
 package() {
-  cd osmium
+    cd "Osmium-${_pkgver}-${_suffix}-x64"
 
-  make install DESTDIR="$pkgdir"
-  make -C osmjs install DESTDIR="$pkgdir"
+    install -dm755 "${pkgdir}/opt/${pkgname}"
+    cp -a . "${pkgdir}/opt/${pkgname}"
 
-  rm examples/*.cpp
-  cp examples/osmium_* "$pkgdir/usr/bin"
+    chmod 755 "${pkgdir}/opt/${pkgname}/${pkgname}"
+    chmod u+s "${pkgdir}/opt/${pkgname}/chrome-sandbox"
+
+    install -d "${pkgdir}"/usr/{bin,share/{pixmaps,applications}}
+    ln -s "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    ln -s "/opt/${pkgname}/Osmium.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    ln -s "/opt/${pkgname}/resources/assets/icon-1024.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+
+    install -Dm644 LICENSE.electron.txt \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.electron.txt"
+    install -Dm644 LICENSES.chromium.html \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
 }
