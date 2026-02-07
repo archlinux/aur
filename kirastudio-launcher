@@ -1,0 +1,10 @@
+#!/bin/sh
+
+WDIR="$HOME/.local/share/kirastudio"
+
+if [ ! -d "$WDIR" ]; then
+    cp -r /usr/share/kirastudio $WDIR
+fi
+
+cd $WDIR
+wine KiraStudio.exe
