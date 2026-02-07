@@ -1,12 +1,12 @@
 pkgbase = wasm-language-tools
 	pkgdesc = Language server and other tools for WebAssembly
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/g-plane/wasm-language-tools
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = https://github.com/g-plane/wasm-language-tools/archive/refs/tags/v0.8.0.tar.gz
-	b2sums = 888dd0aaf445795abf5ccc2940f74adc11c27bfe6d68edb87b7c35994236aa700c76eaacd1902b5b3df5c909b1147c62c51dcac173b733fec4ab459bb6811b61
+	source = https://github.com/g-plane/wasm-language-tools/archive/refs/tags/v0.9.0.tar.gz
+	b2sums = 633a3f4e29314af760d21c22e2f6cb6ed9e04dfcd5b9a361488a58906af008b93592e3978db2f40d86d50f6bb2e41cab7b2beebed8d438e554c4ce399beca813
 
 pkgname = wasm-language-tools
