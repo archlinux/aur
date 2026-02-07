@@ -7,7 +7,7 @@
 
 pkgname=maubot
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A plugin-based Matrix bot system"
 arch=(any)
 license=(AGPL3)
@@ -15,9 +15,10 @@ url="https://github.com/maubot/maubot"
 depends=('sudo' 'python-sqlalchemy' 'python-aiohttp' 'python-aiosqlite' 'python-asyncpg' 'python-attrs' 'python-bcrypt' 'python-click' 'python-colorama' 'python-commonmark' 'python-jinja' 'python-mautrix' 'python-packaging' 'python-questionary' 'python-setuptools' 'python-ruamel-yaml' 'python-yarl')
 makedepends=('python-pre-commit' 'python-isort' 'python-black' 'yarn')
 optdepends=(
-  "python-olm: e2be"
-  "python-pycryptodome: e2be"
-  "python-unpaddedbase64: e2be"
+  "python-olm: E2EE support"
+  "python-pycryptodome: E2EE support"
+  "python-unpaddedbase64: E2EE support"
+  "python-base58: E2EE support"
 )
 backup=(etc/${pkgname}/config.yaml)
 install=${pkgname}.install
