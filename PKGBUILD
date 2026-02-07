@@ -1,7 +1,7 @@
 # Maintainer: Lian <yichengxin7@gmail.com>
 pkgname=lianwall-gui-bin
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="LianWall GUI - Qt6/QML graphical client for lianwalld wallpaper daemon"
 arch=('x86_64')
 url="https://github.com/Yueosa/lianwall-gui"
@@ -10,9 +10,9 @@ depends=('lianwalld-bin' 'qt6-base' 'qt6-declarative' 'ffmpeg')
 optdepends=('lianwall-bin: CLI client for lianwalld')
 provides=('lianwall-gui')
 conflicts=('lianwall-gui')
-source=("lianwall-gui-${pkgver}::https://github.com/Yueosa/lianwall-gui/releases/download/v${pkgver}/lianwall-gui"
+source=("lianwall-gui-${pkgver}::https://github.com/Yueosa/lianwall-gui/releases/download/v${pkgver}/lianwall-gui_${pkgver}_linux_x86_64"
         "lianwall.png::https://raw.githubusercontent.com/Yueosa/lianwall-gui/main/resources/icons/lianwall.png")
-sha256sums=('80c59dd03991aa0617bf0dc44365871a3a03dc0f2158cdb30e0219e88ffbc9a9'
+sha256sums=('c0dde83febe39800f5374957a47381188f32e039cf7195a8d787fc61577b49dd'
             'a0328df19674629349b2ba601d7b66f2863414a215585f33d856341b535f2011')
 
 package() {
