@@ -1,0 +1,22 @@
+pkgbase = bitcoin-knots-bip110
+	pkgdesc = enhanced Bitcoin node/wallet software with BIP-110 support
+	pkgver = 29.2.knots20251110_bip110_v0.1
+	pkgrel = 1
+	url = https://bip110.org
+	arch = x86_64
+	groups = bitcoin
+	license = MIT
+	checkdepends = python3
+	makedepends = boost
+	makedepends = cmake
+	depends = gcc-libs
+	depends = sqlite
+	depends = libevent
+	depends = glibc
+	conflicts = bitcoin
+	options = !debug
+	backup = etc/bitcoin/bitcoin.conf
+	source = https://github.com/dathonohm/bitcoin/archive/refs/tags/v29.2.knots20251110+bip110-v0.1.tar.gz
+	sha256sums = 173d7cf1b8248c3dcb60d932566d81e3b3ea736e1a64dd01df50004e26ea710b
+
+pkgname = bitcoin-knots-bip110

@@ -1,0 +1,11 @@
+# Build artifacts
+*.tar.gz
+*.tar.zst
+*.pkg.tar.*
+src/
+pkg/
+
+# Editor files
+*.swp
+*.swo
+*~
