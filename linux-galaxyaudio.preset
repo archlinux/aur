@@ -1,0 +1,16 @@
+# mkinitcpio preset file for the 'linux-galaxyaudio' package
+
+ALL_config="/etc/mkinitcpio.conf"
+ALL_kver="/boot/vmlinuz-linux-galaxyaudio"
+
+PRESETS=('default' 'fallback')
+
+#default_config="/etc/mkinitcpio.conf"
+default_image="/boot/initramfs-linux-galaxyaudio.img"
+#default_uki="/efi/EFI/Linux/arch-linux-galaxyaudio.efi"
+#default_options="--splash /usr/share/systemd/bootctl/splash-arch.bmp"
+
+#fallback_config="/etc/mkinitcpio.conf"
+fallback_image="/boot/initramfs-linux-galaxyaudio-fallback.img"
+fallback_options="-S autodetect"
+#fallback_uki="/efi/EFI/Linux/arch-linux-galaxyaudio-fallback.efi"
