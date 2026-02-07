@@ -10,6 +10,6 @@ pkgbase = traur
 	depends = pacman
 	backup = etc/traur/config.toml
 	source = traur-0.2.0.tar.gz::https://github.com/Sohimaster/traur/archive/v0.2.0.tar.gz
-	sha256sums = f1fcf80477adaf204ebd4975f1fd5ec500fd8026840f0eebddb526211e9b6d61
+	sha256sums = f953a444e0a09bfb8cd6ceea7e44eac3b276c7bd12549f01dfbca1dd81c191fb
 
 pkgname = traur
