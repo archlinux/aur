@@ -2,7 +2,7 @@
 pkgname=next-music
 pkgver=2.4.2
 pkgrel=1
-pkgdesc="Web client for Yandex Music with support for themes, addons and Discord Rich Presence (RPC)"
+pkgdesc="Web client for Yandex Music with support for themes, addons, Discord Rich Presence (RPC) and OBS widget"
 arch=('x86_64')
 url="https://github.com/Web-Next-Music/Next-Music-Client"
 license=('MIT')
