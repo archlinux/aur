@@ -1,0 +1,20 @@
+pkgbase = osmium
+	pkgdesc = A globally distributed community messaging and voice/video platform
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://osmium.chat/
+	arch = x86_64
+	license = custom
+	depends = alsa-lib
+	depends = gtk3
+	depends = libnotify
+	depends = libxss
+	depends = nspr
+	depends = nss
+	optdepends = libpulse: Pulseaudio support
+	optdepends = xdg-utils: Open files
+	options = !strip
+	source = https://updater-test.tangle.chat/Osmium-0.0.6-alpha-x64.tar.gz
+	sha512sums = 8cd5c7a71866e97c6b87ead46b70fb7eec6889a5f6dbf4dc8d4b984614ae454a0b690ef417941d8c98cd84ab7fba69c6026254612da9c5d9808951e6c0088191
+
+pkgname = osmium
