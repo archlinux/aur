@@ -1,6 +1,6 @@
 pkgname=omcalc-git
 pkgver=r0.0000000
-pkgrel=4
+pkgrel=6
 pkgdesc='Minimal GTK4 calculator tuned for Omarchy/Hyprland workflows'
 arch=('x86_64')
 url='https://github.com/jadabreu/omcalc'
@@ -20,7 +20,7 @@ sha256sums=(
   'SKIP'
   'f0c3d37b3ee278490488b4158c583981c96407ddc666871b4402edc21e0f6c53'
   'a384f0c1ea3613a23d84f25dca56b52a34b3b822158f03cc7783e4dcd4230b8c'
-  'eecc1c3fabee9142f7318dd08247c64aa4702e227333ab4f1250b25f87f11c3b'
+  'f1cae8950f5c8368bb5749a2c63db16e4a2a85297a87721bd0488b57d79dd28e'
 )
 
 pkgver() {

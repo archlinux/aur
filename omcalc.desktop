@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Name=Omcalc
+Name=Calculator (OM)
 GenericName=Calculator
 Comment=Omcalc (GTK4)
 Exec=omcalc
