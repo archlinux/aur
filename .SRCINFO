@@ -1,0 +1,26 @@
+pkgbase = kclock-rs-bin
+	pkgdesc = A high-performance cross-platform timer application built with Rust and Slint UI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeberg.org/qml-to-slint/kclock-rs
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = alsa-lib
+	depends = fontconfig
+	depends = freetype2
+	depends = libxkbcommon
+	depends = pango
+	depends = wayland
+	depends = xdg-utils
+	provides = kclock-rs
+	conflicts = kclock-rs
+	source = kclock-rs-bin-0.1.0.tar.gz::https://codeberg.org/qml-to-slint/kclock-rs/releases/download/v0.1.0/kclock-rs-x86_64-linux.tar.gz
+	source = kclock-rs.desktop
+	source = logo.svg
+	source = LICENSE.md
+	sha256sums = e00d6819eabb2267dcd82c5fad8488cfa44b96c615cb57fe5d283227de5920af
+	sha256sums = f444a862b990c9f8f12c6e96189f53ec4e822a266ee52ce38ce5fdeb6f247e45
+	sha256sums = dc74db5ade14026b250ed77ef314c7a9c399524987f60f30648bcb62a72f4ea1
+	sha256sums = 07e538516e7f484ae13c2edba3c11944c437902a27af81c222cffb3fc896967d
+
+pkgname = kclock-rs-bin

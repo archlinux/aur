@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=KClock-rs
+Comment=A high-performance cross-platform timer application
+Exec=kclock-rs
+Icon=kclock-rs
+Type=Application
+Categories=Utility;Clock;
+Keywords=clock;timer;alarm;stopwatch;time;countdown;
