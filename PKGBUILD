@@ -2,7 +2,7 @@
 
 _name=wheel-filename
 pkgname=python-$_name
-pkgver=1.4.2
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Parse wheel filenames'
 arch=(any)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(python)
 makedepends=(python-hatchling python-build python-installer)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name/-/_}-$pkgver.tar.gz")
-sha256sums=('87891c465dcbb40b40394a906f01a93214bdd51aa5d25e3a9a59cae62bc298fd')
+sha256sums=('4c12c51ee92d5fb77ed0932e4f83ff82d8b129b845422f0a1ab2ab9d2d2e2aa4')
 
 build() {
 	cd "${_name/-/_}-$pkgver"
