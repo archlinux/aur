@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=KiraStudio
 Comment=KiraStudio is a lightweight, cross-platform music studio built around clarity and automation.
-Exec=wine /usr/share/kirastudio/KiraStudio.exe
+Exec=kirastudio
 Icon=kirastudio
 Terminal=false
 Categories=Music
