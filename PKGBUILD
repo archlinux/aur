@@ -1,6 +1,6 @@
 # Maintainer: Guru <anjanaya@gmail.com>
 pkgname=playwright-cli
-pkgver=0.0.66
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="CLI for browser automation - record, generate code, inspect selectors, take screenshots"
 arch=('any')
@@ -9,7 +9,7 @@ license=('Apache-2.0')
 depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/@playwright/cli/-/cli-${pkgver}.tgz")
-sha256sums=('72fba563821d67ec6af74a58060d967e4a10b70004525380d45cf4b914fc1caa')
+sha256sums=('83cc21857b4e76645b49b8cee4663cbc49b0c549ae3ead0f76cad17937f2df5e')
 noextract=("cli-${pkgver}.tgz")
 
 package() {
