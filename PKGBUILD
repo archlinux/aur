@@ -6,7 +6,7 @@
 
 pkgname=proton-pass
 pkgver=1.34.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source and secure identity manager"
 arch=('aarch64' 'x86_64')
 url="https://proton.me/pass"
@@ -25,6 +25,9 @@ prepare() {
     # Limit workspace applications to avoid mysterious dependency issues
     sed -i 's@"applications/\*",@"applications/pass*",@' package.json
 
+    # Upgrade out-of-date netlify-cli dependency (fixes build issues down the chain)
+    sed -i 's@17\.38\.1@23.15.1@' packages/atoms/package.json
+
     # Bypass pass-desktop-native build script
     sed -i 's@build:multi@build@' applications/pass-desktop/package.json
 
@@ -38,7 +41,9 @@ prepare() {
 build() {
     cd WebClients-${pkgname}-${pkgver}/applications/pass-desktop
 
-    yarn install
+    # HACK: Update to a non-broken nan version (implicitly runs yarn install)
+    yarn up -R nan
+
     yarn run build:desktop
 
     # HACK: Move Rust target directory to avoid asset-relocator including it (reduces size of .asar file)
