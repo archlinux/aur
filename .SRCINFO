@@ -1,0 +1,17 @@
+pkgbase = whisper-dictate-git
+	pkgdesc = Toggle local speech-to-text dictation using whisper.cpp
+	pkgver = r10.67c37c0
+	pkgrel = 1
+	url = https://github.com/dhensen/whisper-dictate
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = whisper.cpp
+	depends = ydotool
+	depends = libnotify
+	provides = whisper-dictate
+	conflicts = whisper-dictate
+	source = whisper-dictate-git::git+https://github.com/dhensen/whisper-dictate.git
+	sha256sums = SKIP
+
+pkgname = whisper-dictate-git
