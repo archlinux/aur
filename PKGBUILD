@@ -8,7 +8,7 @@ pkgname=(
 )
 pkgbase=autokey
 pkgver=0.96.0
-pkgrel=8
+pkgrel=9
 pkgdesc="A desktop automation utility for Linux and X11"
 arch=('any')
 url="https://github.com/autokey/autokey"
@@ -21,9 +21,11 @@ makedepends=(
   'python-wheel'
 )
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/autokey/autokey/archive/v$pkgver.tar.gz"
-        'imghdr.patch')
+        'imghdr.patch'
+        'syntax.patch')
 sha256sums=('40341fc4cd9703a34264e9191b5938fc7ed5a6f357992d91e492975d89933acd'
-            '67d6fb46df85ae8ac820ee76da099fb84c3d5e723720bfe9feba5054b8d0954a')
+            '67d6fb46df85ae8ac820ee76da099fb84c3d5e723720bfe9feba5054b8d0954a'
+            '8677b2de58d777ecdc7f9c624067ce8f2bb8c3c6729f6d1ebeebe449cd19a587')
 
 prepare() {
   cd "$pkgbase-$pkgver"
@@ -31,6 +33,10 @@ prepare() {
   # The imghdr module was removed in Python 3.13, use magic instead
   # https://github.com/autokey/autokey/issues/961
   patch -Np1 -i ../imghdr.patch
+
+  # Remove old Python 2 syntax
+  # https://github.com/autokey/autokey/issues/646#issuecomment-2996981726
+  patch -Np1 -i ../syntax.patch
 }
 
 build() {

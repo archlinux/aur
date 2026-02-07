@@ -1,0 +1,12 @@
+diff --unified --recursive --text a/lib/autokey/gtkui/dialogs.py b/lib/autokey/gtkui/dialogs.py
+--- a/lib/autokey/gtkui/dialogs.py	2022-06-05 17:28:30.000000000 -0600
++++ b/lib/autokey/gtkui/dialogs.py	2026-02-06 18:21:47.267445682 -0700
+@@ -333,7 +333,7 @@
+         # TODO: list comprehension or for loop, instead of manual loop
+         try:
+             while True:
+-                text = model.get_value(i.next().iter, 0)
++                text = model.get_value(next(i).iter, 0)
+                 ret.append(text)
+                 # ret.append(text.decode("utf-8"))
+         except StopIteration:
