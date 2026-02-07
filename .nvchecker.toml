@@ -1,0 +1,4 @@
+[gnome-shell-extension-papirus-folders-colorizer]
+source = "git"
+git = "https://github.com/NiffirgkcaJ/papirus-folders-colorizer.git"
+prefix = "v"
