@@ -1,0 +1,18 @@
+pkgbase = rustwhy-git
+	pkgdesc = Unified Linux system diagnostics - understand WHY things happen
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Ninso112/rustwhy
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	optdepends = nvidia-utils: For NVIDIA GPU support
+	provides = rustwhy
+	conflicts = rustwhy
+	source = rustwhy-git::git+https://github.com/Ninso112/rustwhy.git
+	sha256sums = SKIP
+
+pkgname = rustwhy-git
