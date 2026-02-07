@@ -1,7 +1,7 @@
 pkgbase = lmstudio-bin
 	pkgdesc = LM Studio - A desktop app for exploring and running large language models locally
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lmstudio.ai
 	install = lmstudio-bin.install
 	arch = x86_64
