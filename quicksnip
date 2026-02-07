@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+APP_NAME="QuickSnip"
+
+usage() {
+    cat <<EOF
+Usage: qui [OPTION]
+
+Options:
+  -h, --help    Show this help message
+EOF
+}
+
+case "${1:-}" in
+    -h|--help)
+        usage
+        ;;
+    "")
+        quickshell -c "$APP_NAME" -n
+        ;;
+    *)
+        echo "Unknown option: $1"
+        usage
+        exit 1
+        ;;
+esac

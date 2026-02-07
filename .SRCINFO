@@ -1,0 +1,25 @@
+pkgbase = quicksnip-git
+	pkgdesc = Quickshell-based Google Lens and OCR utility for Hyprland
+	pkgver = r33.g7768491
+	pkgrel = 1
+	url = https://github.com/Ronin-CK/QuickSnip
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = quickshell
+	depends = tesseract
+	depends = tesseract-data-eng
+	depends = curl
+	depends = grim
+	depends = imagemagick
+	depends = wl-clipboard
+	depends = satty
+	depends = libnotify
+	provides = quicksnip
+	conflicts = quicksnip
+	source = QuickSnip::git+https://github.com/Ronin-CK/QuickSnip.git
+	source = quicksnip
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = quicksnip-git
