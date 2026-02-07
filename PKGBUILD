@@ -34,7 +34,7 @@ prepare() {
   # https://github.com/autokey/autokey/issues/961
   patch -Np1 -i ../imghdr.patch
 
-  # Remove old Python 2 syntax
+  # Update old Python 2 syntax
   # https://github.com/autokey/autokey/issues/646#issuecomment-2996981726
   patch -Np1 -i ../syntax.patch
 }
