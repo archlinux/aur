@@ -2,7 +2,7 @@
 pkgname=portable
 epoch=1
 pkgver=13.1
-pkgrel=1
+pkgrel=3
 epoch=1
 pkgdesc="Fast, private, efficient sandbox for Linux desktop."
 arch=('x86_64' 'aarch64' 'loongarch64')
@@ -10,7 +10,7 @@ url="https://github.com/Kraftland/portable"
 license=(GPL-3.0-or-later)
 provides=(portable)
 groups=()
-options=(!debug !strip)
+options=(!debug)
 
 depends=(
 	"libnotify"
@@ -20,12 +20,12 @@ depends=(
 	"xdg-dbus-proxy"
 	"bubblewrap"
 	"util-linux"
-	"glib2"
 	"glibc"
 	"dbus"
 	"bash"
 	"xdg-desktop-portal-impl"
 	"grep"
+	"systemd-libs"
 )
 
 optdepends=(

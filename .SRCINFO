@@ -1,7 +1,7 @@
 pkgbase = portable
 	pkgdesc = Fast, private, efficient sandbox for Linux desktop.
 	pkgver = 13.1
-	pkgrel = 1
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/Kraftland/portable
 	arch = x86_64
@@ -18,17 +18,16 @@ pkgbase = portable
 	depends = xdg-dbus-proxy
 	depends = bubblewrap
 	depends = util-linux
-	depends = glib2
 	depends = glibc
 	depends = dbus
 	depends = bash
 	depends = xdg-desktop-portal-impl
 	depends = grep
+	depends = systemd-libs
 	optdepends = at-spi2-core: accessibility
 	optdepends = orca: screen reader
 	provides = portable
 	options = !debug
-	options = !strip
 	source = portable::git+https://github.com/Kraftland/portable.git#tag=13.1
 	md5sums = e45f5d3fa7cddc18664137c0dcefc948
 
