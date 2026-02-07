@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=shadps4-bin
 _pkgname=shadPS4
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator.(Prebuilt version)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/v.${pkgver}/${pkgname%-bin}-linux-sdl-${pkgver}.zip"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('558d1bb3888ca71e49394d4a43472344b1b2367cc0419180a6b0e6205843419c'
+sha256sums=('eb6d0be1562b611b121381075eeba2c41692c11a18e14edd2fd7b20811eb5aa2'
             'c2668b966dc1f5fef271c64e1749cf136e26b42dd9f993f063c69900a191e323')
 prepare() {
     sed -i -e "
