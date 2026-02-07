@@ -18,25 +18,6 @@ license=('LicenseRef-Unicode-3.0'
 depends=('gcc-libs' 'glibc' 'sh')
 makedepends=('python')
 provides=(libicu{data,i18n,io,test,tu,uc}.so=${_pkgmainver})
-conflicts=(
-  "${_pkgname}=${_pkgmainver}"
-  "${_pkgname}=${_pkgmainver}.0"
-  "${_pkgname}=${_pkgmainver}.1"
-  "${_pkgname}=${_pkgmainver}.2"
-  "${_pkgname}=${_pkgmainver}.3"
-  "${_pkgname}=${_pkgmainver}.4"
-  "${_pkgname}=${_pkgmainver}.5"
-  "${_pkgname}=${_pkgmainver}.6"
-  "${_pkgname}=${_pkgmainver}.7"
-  "${_pkgname}=${_pkgmainver}.8"
-  "${_pkgname}=${_pkgmainver}.9"
-  "libicudata.so=${_pkgmainver}"
-  "libicui18n.so=${_pkgmainver}"
-  "libicuio.so=${_pkgmainver}"
-  "libicutest.so=${_pkgmainver}"
-  "libicutu.so=${_pkgmainver}"
-  "libicuuc.so=${_pkgmainver}"
-)
 source=(https://github.com/unicode-org/icu/releases/download/release-${pkgver//./-}/icu4c-${pkgver//./_}-src.tgz{,.asc}
         ICU-22132.patch)
 # https://github.com/unicode-org/icu/releases/download/release-77.1/SHASUM512.txt
