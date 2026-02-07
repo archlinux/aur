@@ -1,6 +1,6 @@
 pkgbase = mysql
 	pkgdesc = Fast SQL database server, community edition
-	pkgver = 9.5.0
+	pkgver = 9.6.0
 	pkgrel = 1
 	url = https://www.mysql.com/products/community/
 	arch = x86_64
@@ -20,8 +20,8 @@ pkgbase = mysql
 	makedepends = libfido2
 	makedepends = re2
 	makedepends = rapidjson
-	source = https://cdn.mysql.com/Downloads/MySQL-9.5/mysql-9.5.0.tar.gz
-	source = https://cdn.mysql.com/Downloads/MySQL-9.5/mysql-9.5.0.tar.gz.asc
+	source = https://cdn.mysql.com/Downloads/MySQL-9.6/mysql-9.6.0.tar.gz
+	source = https://cdn.mysql.com/Downloads/MySQL-9.6/mysql-9.6.0.tar.gz.asc
 	source = my-default.cnf
 	source = mysql-ld.so.conf
 	source = mysql.sysconfig
@@ -29,7 +29,7 @@ pkgbase = mysql
 	source = systemd-tmpfiles.patch
 	source = systemd-sysusers.conf
 	validpgpkeys = BCA43417C3B485DD128EC6D4B7B3B788A8D3785C
-	sha256sums = ef3343981375865a2519f72b600e55f9c646e60e204a2964d3b7e8e748a110a5
+	sha256sums = 240061d869d5ae188c9a333845928899e9d963ccbd67865a8a2e4b6fcb67178c
 	sha256sums = SKIP
 	sha256sums = edd5ffa5a982e47c5fcda5751b79690c38a5a57e32616df27631c51c2dfd5760
 	sha256sums = e1c23fa0971a13d998f2790379b68c475438d05b6d6f2691b99051dbf497567f
@@ -54,8 +54,8 @@ pkgname = mysql
 	depends = zstd
 	depends = bash
 	optdepends = perl-dbd-mysql: for mysqlhotcopy, mysql_convert_table_format, mysql_setpermission, mysqldumpslow
-	provides = mariadb=9.5.0
-	provides = mysql=9.5.0
+	provides = mariadb=9.6.0
+	provides = mysql=9.6.0
 	conflicts = mariadb
 	options = emptydirs
 	backup = etc/mysql/my.cnf
@@ -68,9 +68,9 @@ pkgname = libmysqlclient
 	depends = libsasl
 	depends = zlib
 	depends = zstd
-	provides = libmariadbclient=9.5.0
-	provides = libmysqlclient=9.5.0
-	provides = mariadb-libs=9.5.0
+	provides = libmariadbclient=9.6.0
+	provides = libmysqlclient=9.6.0
+	provides = mariadb-libs=9.6.0
 	conflicts = libmariadbclient
 	conflicts = mariadb-libs
 
@@ -84,6 +84,6 @@ pkgname = mysql-clients
 	depends = lz4
 	depends = zstd
 	depends = bash
-	provides = mariadb-clients=9.5.0
-	provides = mysql-clients=9.5.0
+	provides = mariadb-clients=9.6.0
+	provides = mysql-clients=9.6.0
 	conflicts = mariadb-clients
