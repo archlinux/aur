@@ -1,6 +1,6 @@
 # Maintainer: Aaron Bockelie <aaronsb@gmail.com>
 pkgname=playtimed
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Screen time daemon with personality - parental controls with friendly AI assistant character"
 arch=('any')
@@ -19,6 +19,7 @@ makedepends=(
 )
 optdepends=(
     'kde-cli-tools: For KDE notification integration'
+    'python-lz4: For Firefox session file reading (all open tabs)'
 )
 backup=(
     'etc/playtimed/config.yaml'
@@ -27,7 +28,7 @@ install=playtimed.install
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/aaronsb/playtimed/archive/v$pkgver.tar.gz"
 )
-sha256sums=('1af4e7b8104d3186f06fa1b2440356149b75cdaf40026f394cdc82882ae8beaa')
+sha256sums=('ba9a690bcfd40d70a8ae906372bedb11f7715f161754f21225e05d03c54ccd03')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"

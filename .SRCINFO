@@ -1,6 +1,6 @@
 pkgbase = playtimed
 	pkgdesc = Screen time daemon with personality - parental controls with friendly AI assistant character
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/aaronsb/playtimed
 	install = playtimed.install
@@ -14,8 +14,9 @@ pkgbase = playtimed
 	depends = python-yaml
 	depends = python-dbus
 	optdepends = kde-cli-tools: For KDE notification integration
+	optdepends = python-lz4: For Firefox session file reading (all open tabs)
 	backup = etc/playtimed/config.yaml
-	source = playtimed-0.3.2.tar.gz::https://github.com/aaronsb/playtimed/archive/v0.3.2.tar.gz
-	sha256sums = 1af4e7b8104d3186f06fa1b2440356149b75cdaf40026f394cdc82882ae8beaa
+	source = playtimed-0.3.3.tar.gz::https://github.com/aaronsb/playtimed/archive/v0.3.3.tar.gz
+	sha256sums = ba9a690bcfd40d70a8ae906372bedb11f7715f161754f21225e05d03c54ccd03
 
 pkgname = playtimed
