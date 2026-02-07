@@ -29,15 +29,15 @@ export RUSTFLAGS="${RUSTFLAGS} -C force-unwind-tables=no" # Use old rust's panic
 package(){
   cd ${pkgname%-git}
   unset optdepends
-  export DESTDIR="$pkgdir" PREFIX=/usr PROFILE=release-fast MULTICALL=y LN="ln -f" MANPAGES=n COMPLETIONS=n #LOCALES=n
+  export DESTDIR="$pkgdir" PREFIX=/usr PROFILE=release MULTICALL=y LN="ln -f" MANPAGES=n COMPLETIONS=n #LOCALES=n
   make install LIBSTDBUF_DIR=/usr/lib/${pkgname%-git} SKIP_UTILS="arch kill more uptime hostname" #"sum shred shuf factor"
   make install PROG_PREFIX=uu- UTILS="arch kill more uptime hostname"
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/${pkgname%-git}
   cp -r ../share "$pkgdir"/usr && cd "$pkgdir"/usr/share
   rm -r bash-completion elvish
   for _b in arch kill more uptime hostname;do
-    mv man/man1/{${_b},uu-${_b}}.1
-    mv fish/vendor_completions.d/{${_b},uu-${_b}}.fish
-    mv zsh/site-functions/_{${_b},uu-${_b}}
+    rm man/man1/${_b}.1
+    rm fish/vendor_completions.d/${_b}.fish
+    rm zsh/site-functions/_${_b}
   done
 }
