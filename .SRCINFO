@@ -5,7 +5,7 @@ pkgbase = ebgaramond-otf
 	url = https://github.com/octaviopardo/EBGaramond12
 	arch = any
 	license = OFL-1.1
-	source = https://github.com/octaviopardo/EBGaramond12/archive/f1a739685ce2eb4214eba4b834cbc0fc269d79d5.zip
-	sha256sums = ec01c92b42b56244188ec790db86c5f952b1f6824b88e5764689e22e44a46d20
+	source = https://github.com/octaviopardo/EBGaramond12/archive/e608414f52e532b68e2182f96b4ce9db35335593.zip
+	sha256sums = 07ec82a5b503922f5d45afbb2ef585059308419a446d5fd79488f964d233c93c
 
 pkgname = ebgaramond-otf
