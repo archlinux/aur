@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-amd-full
 	pkgdesc = Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac for AMD)
 	pkgver = 8.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ffmpeg.org/
 	arch = x86_64
 	license = LicenseRef-nonfree-and-unredistributable

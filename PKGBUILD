@@ -5,7 +5,7 @@
 
 pkgname=ffmpeg-amd-full
 pkgver=8.0.1
-pkgrel=2
+pkgrel=3
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
 _svt_vp9_ver='290fb8c3662ed76a8887b587a9b8201878ba71ed'
 _whispercpp_ver='1.8.3'
@@ -205,6 +205,7 @@ build() {
         '-GUnix Makefiles'
         '-DBUILD_SHARED_LIBS:BOOL=OFF'
         '-DCMAKE_BUILD_TYPE:STRING=None'
+        '-DCMAKE_POSITION_INDEPENDENT_CODE=ON'
         "-DCMAKE_INSTALL_PREFIX:PATH=${_stagingdir}"
         '-Wno-dev')
     
