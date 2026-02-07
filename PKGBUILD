@@ -2,8 +2,8 @@
 
 _pkgname=amplitude-soundboard
 pkgname="${_pkgname}-appimage"
-pkgver=2.11.0
-pkgrel=3
+pkgver=2.12.0
+pkgrel=1
 pkgdesc='A sleek, cross-platform soundboard, available for Windows, MacOS, and Linux'
 arch=('x86_64')
 url='https://amplitude-soundboard.dan0v.com/'
@@ -16,7 +16,7 @@ source=(
     "${_appimage}::https://github.com/dan0v/${_uppername}/releases/download/${pkgver}/Amplitude_Soundboard-x86_64.AppImage"
 )
 noextract=("${_appimage}")
-sha256sums=('bdae9020323da57818be30106811e6da47eb51e2049b5c7e22e75abaa5e0a61d')
+sha256sums=('2c99fa7457c40e5b684a0739847f97e4faabfee07b735b43c83da650a5cc3705')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
