@@ -1,6 +1,6 @@
 pkgbase = nessus
 	pkgdesc = Nessus vulnerability scanner
-	pkgver = 10.11.1
+	pkgver = 10.11.2
 	pkgrel = 1
 	url = https://www.tenable.com/downloads/nessus
 	install = nessus.install
@@ -16,9 +16,9 @@ pkgbase = nessus
 	b2sums = e9f6346d0c2b444c71f0673a9dd22f4298abf1ccc4500fa2db4439627844106e3d523cda976411aa243f56711b691a12ac228809cdae038371607db11a44dd61
 	b2sums = fbc6b44c6722e48b26011314d3cd2a44780ef94965db159ef1a35743e371927ec4927a9da2db9ebbb9714fc3a0a30fa4d785b23aa76e4a8a1e446a515fc1bcdd
 	b2sums = 2c68d4f30686a711fbf5c77b70d9b307f9fdcc8095cea79d8c310edfeea87563d94b9106fce35fc53685e6703afb729b9d81f504a1983c367621605690ea03e1
-	source_x86_64 = nessus-10.11.1-el9.x86_64.rpm::https://www.tenable.com/downloads/api/v1/public/pages/nessus/downloads/27364/download?i_agree_to_tenable_license_agreement=true
-	b2sums_x86_64 = 6fd7839c1db42ee05a5566eb35cc14a60653b0e687de74a56bdf3a616459d177c37b76535202d6ada77df89c9ab2d38acf69072197d6e5529b7b95dcd4693d71
-	source_aarch64 = nessus-10.11.1-el9.aarch64.rpm::https://www.tenable.com/downloads/api/v1/public/pages/nessus/downloads/27365/download?i_agree_to_tenable_license_agreement=true
-	b2sums_aarch64 = 753de463c1722ce6cabd3abb3e374e1603d2f1a2e05d21141568a175bcdf849c362ca2a028d834c08bc549d3c96096a4220efe9ece853fe3d11361adedc291cd
+	source_x86_64 = nessus-10.11.2-el9.x86_64.rpm::https://www.tenable.com/downloads/api/v1/public/pages/nessus/downloads/27762/download?i_agree_to_tenable_license_agreement=true
+	b2sums_x86_64 = 2d23bdf511cf508527a5d1e4bbbeffb633bd76d22e35906cca6f088b29feb3dff4ca08a46ef4be40d4b7fae97cb875b78e5966776cf0e3d35e9e6312fdfe114c
+	source_aarch64 = nessus-10.11.2-el9.aarch64.rpm::https://www.tenable.com/downloads/api/v1/public/pages/nessus/downloads/27763/download?i_agree_to_tenable_license_agreement=true
+	b2sums_aarch64 = cc68dfb51017400b9bb78e0c562893b95466d8e344dd303d86a34f357a770963663c89f0a34ab4c3ebf4feda8cde5f96b96fb6b50ce0b1af1d8f07e9949ac9f6
 
 pkgname = nessus
