@@ -1,7 +1,7 @@
 # Maintainer: el gato <gato.mega.mp3@gmail.com>
 pkgname=winamp-mpris
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.1.3
+pkgrel=3
 pkgdesc="MPRIS bridge for Winamp running under Wine (exposes a playerctl-compatible MPRIS endpoint)"
 arch=('any')
 url="https://github.com/elgatolinux/winamp-mpris"
