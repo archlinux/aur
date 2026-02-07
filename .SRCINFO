@@ -1,0 +1,16 @@
+pkgbase = aurora-ui-git
+	pkgdesc = Cross-platform beanstalkd queue server admin console.
+	pkgver = 2.2.r17.g8ddad1a
+	pkgrel = 1
+	url = https://xuri.me/aurora/
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = aurora
+	conflicts = aurora
+	source = aurora-ui-git::git+https://github.com/xuri/aurora.git#commit=8ddad1a3ff5296e74ac6fa1e25aba9432908f26e
+	sha256sums = c343e2db6327d8f7ae3df2ae196cd0114a5a1ebb0b743b0e063d43ca84eb9e7a
+
+pkgname = aurora-ui-git
