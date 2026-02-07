@@ -2,7 +2,7 @@
 # Contributor: Peter Mattern <pmattern at arcor dot de>
 
 pkgname=meteo-qt
-pkgver=4.2
+pkgver=4.3
 pkgrel=1
 pkgdesc='System tray application for weather status information'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-lxml' 'python-pyqt6')
 makedepends=('python-setuptools' 'qt6-tools')
 optdepends=('qt6-translations: translations of some native UI components')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('807b33b0fed573d129a344dd98da8c7d2f7cbfed9cde65cef7b62805f9afe5f75c9aeefec613a03ee30cc0df088f9984357a2658a6f02f0117e2f67e1c2ac67f')
+b2sums=('1cd21c8019db4e895b938496487e3b5483f7079c17d22d633b0c6052d08cba5ebd9be68381a4eb3551694d38f4128ef04219d134919499486ad3c6e1e9f5935d')
 
 prepare() {
     # setup.py assumes a command named lrelease-pro-qt6 exists.
@@ -26,4 +26,3 @@ package() {
     cd $pkgname-$pkgver
     python setup.py install --root $pkgdir
 }
-
