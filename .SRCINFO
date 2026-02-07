@@ -1,0 +1,15 @@
+pkgbase = traur-bin
+	pkgdesc = Heuristic security scanner for AUR packages (prebuilt)
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/Sohimaster/traur
+	arch = x86_64
+	license = MIT
+	depends = git
+	depends = pacman
+	provides = traur
+	conflicts = traur
+	source = https://github.com/Sohimaster/traur/releases/download/v0.1.4/traur-0.1.4-x86_64.tar.gz
+	sha256sums = d39b79b487b6d30a384cbbeb543b450f415dc47125582c51c96f22772b482383
+
+pkgname = traur-bin
