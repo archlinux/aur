@@ -13,6 +13,11 @@ replaces=()
 source=(git+${url}.git#branch=main)
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "$srcdir/$pkgname"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 prepare() {
   cd "$srcdir/$pkgname"
   # Verificar que los archivos existen
