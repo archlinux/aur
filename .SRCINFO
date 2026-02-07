@@ -1,6 +1,6 @@
 pkgbase = python-plotnine
 	pkgdesc = A grammar of graphics for python
-	pkgver = 0.15.1
+	pkgver = 0.15.3
 	pkgrel = 1
 	url = https://github.com/has2k1/plotnine
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = python-plotnine
 	optdepends = python-scikit-learn: gaussian process smoothing, kernel density implementation
 	optdepends = python-scikit-misc: loess smoothing
 	optdepends = python-shapely: Manipulation and analysis of geometric objects in the Cartesian plane
-	source = https://files.pythonhosted.org/packages/source/p/plotnine/plotnine-0.15.1.tar.gz
-	sha256sums = d52801561bb403a89fa8716f4b63b1468ee7cedb50991406ae2feb373a745c1f
+	source = https://files.pythonhosted.org/packages/source/p/plotnine/plotnine-0.15.3.tar.gz
+	sha256sums = 2e8130db4673e0daccb1fd1dfc9f2a6cd2e7843b14f861f4ab861dde1639045f
 
 pkgname = python-plotnine
