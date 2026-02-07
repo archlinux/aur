@@ -1,0 +1,20 @@
+pkgbase = hardbore
+	pkgdesc = High-performance file manager for Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/FrogSnot/HardBore
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = npm
+	makedepends = rust
+	makedepends = cargo
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = librsvg
+	depends = sqlite
+	depends = dbus
+	source = hardbore-1.0.0.tar.gz::https://github.com/FrogSnot/HardBore/archive/v1.0.0.tar.gz
+	sha256sums = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
+
+pkgname = hardbore
