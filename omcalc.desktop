@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Calculator
+GenericName=Calculator
+Comment=Omcalc (GTK4)
+Exec=omcalc
+Icon=accessories-calculator
+Terminal=false
+Categories=Utility;Calculator;
+Keywords=calculator;calc;math;omcalc;
+StartupWMClass=org.omarchy.Omcalc
