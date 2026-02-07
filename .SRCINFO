@@ -1,0 +1,15 @@
+pkgbase = rsimg-git
+	pkgdesc = Terminal image viewer with unicode characters
+	pkgver = r17.33bf3a2
+	pkgrel = 1
+	url = https://github.com/kirchberger/rsimg
+	arch = x86_64
+	license = GPL
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	source = rsimg::https://github.com/kirchberger/rsimg.git
+	sha256sums = SKIP
+
+pkgname = rsimg-git
