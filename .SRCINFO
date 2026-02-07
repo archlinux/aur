@@ -1,7 +1,7 @@
 pkgbase = roslyn-ls
 	pkgdesc = Language server behind C# Dev Kit for Visual Studio Code
 	pkgver = 2.120.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dotnet/roslyn/tree/main/src/LanguageServer
 	arch = x86_64
 	license = MIT

@@ -5,7 +5,7 @@ _dotnet_sdk_version=10.0
 _dotnet_runtime_version=$_dotnet_sdk_version
 pkgname=roslyn-ls
 pkgver=2.120.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Language server behind C# Dev Kit for Visual Studio Code"
 arch=(x86_64)
 url=https://github.com/dotnet/roslyn/tree/main/src/LanguageServer
@@ -24,7 +24,7 @@ sha256sums=('094632a98fe9a1464238120b43ff6777b2da340b2859454f448cfdf1e89e3a71'
             '39817ac608d5eb5d36ab350faa00afde8fdd89e0e6f229a48bfa6374736a4217')
 
 prepare() {
-    dotnet --info | grep RID | cut -d : -f 2 | sed 's/^arch/linux/' | xargs > _rid
+    dotnet --info | grep RID | cut -d : -f 2 | sed 's/arch/linux/' | xargs > _rid
     _rid="$(< _rid)"
     _runtime_version_pacman="$(LANG=C pacman -Qi "dotnet-runtime-$_dotnet_runtime_version" | grep Version | cut -d : -f 2 | cut -d - -f 1 | xargs)"
     _runtime_version="${_runtime_version_pacman%.*.sdk*}.${_runtime_version_pacman#*.sdk}"
