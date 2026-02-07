@@ -1,8 +1,8 @@
 # Maintainer: Kimiblock Moe
 pkgname=portable-git
 epoch=1
-pkgver=13.0.alpha.8.r2.g7d6a0a38
-pkgrel=1
+pkgver=13.1.r45.g4c7f5bea
+pkgrel=2
 epoch=
 pkgdesc="Portable Sandboxing framework"
 arch=('x86_64' 'aarch64' 'loongarch64')
@@ -21,7 +21,7 @@ depends=(
 	"xdg-dbus-proxy"
 	"bubblewrap"
 	"util-linux"
-	"glib2"
+	"systemd-libs"
 	"glibc"
 	"dbus"
 	"bash"
