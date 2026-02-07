@@ -12,7 +12,7 @@ options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/linux-credentials/credentialsd/archive/refs/tags/v$pkgver.tar.gz"
         "0001-fix-get_event_loop-failure.diff")
 sha256sums=('2bc73f5dd91d73eed3446f0ede9256eaf192c76eee21066af4330db22c2c6d8a'
-            'a4242f4afd655e7a9d1dfd40c2cfe38c279e39111441c213fcb1996721423ff3')
+            '09fa917e0a5f24156c6641851bbb27514804e15e4137dd4b3d63ae3a69132e08')
 
 prepare() {
     cd "$pkgbase-$pkgver"
