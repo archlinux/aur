@@ -12,8 +12,8 @@ depends=('glibc')
 options=('!strip')
 
 source=(
-    "rvkernel-manager-${pkgver}.deb::https://github.com/Rve27/RvKernel-Manager-Linux/releases/download/${pkgver}/rvkernel-manager_${pkgver}_amd64.deb"
-    "LICENSE::https://raw.githubusercontent.com/Rve27/RvKernel-Manager-Linux/main/LICENSE"
+    "https://github.com/Rve27/RvKernel-Manager-Linux/releases/download/${pkgver}/rvkernel-manager_${pkgver}_amd64.deb"
+    "rvkernel-manager-LICENSE::https://raw.githubusercontent.com/Rve27/RvKernel-Manager-Linux/main/LICENSE"
 )
 
 sha256sums=('af288196fbfcd664db3caa2c3cc4a63682023dfcc0a56b3dd7327fd3193b8f32'
@@ -28,7 +28,7 @@ package() {
 
     install -Dm644 "${pkgdir}/opt/rvkernel-manager/lib/rvkernel-manager.png" "${pkgdir}/usr/share/pixmaps/rvkernel-manager.png"
 
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 rvkernel-manager-LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     mkdir -p "${pkgdir}/usr/share/applications"
     cat > "${pkgdir}/usr/share/applications/rvkernel-manager.desktop" <<EOF

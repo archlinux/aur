@@ -9,8 +9,8 @@ pkgbase = rvkernel-manager-bin
 	provides = rvkernel-manager
 	conflicts = rvkernel-manager
 	options = !strip
-	source = rvkernel-manager-1.0.0.deb::https://github.com/Rve27/RvKernel-Manager-Linux/releases/download/1.0.0/rvkernel-manager_1.0.0_amd64.deb
-	source = LICENSE::https://raw.githubusercontent.com/Rve27/RvKernel-Manager-Linux/main/LICENSE
+	source = https://github.com/Rve27/RvKernel-Manager-Linux/releases/download/1.0.0/rvkernel-manager_1.0.0_amd64.deb
+	source = rvkernel-manager-LICENSE::https://raw.githubusercontent.com/Rve27/RvKernel-Manager-Linux/main/LICENSE
 	sha256sums = af288196fbfcd664db3caa2c3cc4a63682023dfcc0a56b3dd7327fd3193b8f32
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 
