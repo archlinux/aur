@@ -1,13 +1,13 @@
 pkgbase = python-dust-extinction
 	pkgdesc = Interstellar Dust Extinction Models
-	pkgver = 1.6
+	pkgver = 1.7
 	pkgrel = 1
 	url = https://dust-extinction.readthedocs.io
 	arch = any
 	license = BSD-3-Clause
 	checkdepends = python-pytest-astropy-header
 	checkdepends = python-pytest-doctestplus
-	makedepends = python-setuptools-scm
+	makedepends = python-setuptools-scm>=8.0.0
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-sphinx-automodapi
@@ -15,8 +15,8 @@ pkgbase = python-dust-extinction
 	makedepends = python-astropy
 	makedepends = python-scipy
 	makedepends = graphviz
-	source = https://files.pythonhosted.org/packages/source/d/dust_extinction/dust_extinction-1.6.tar.gz
-	md5sums = 592b8b2c8491a87ee3bdd18b50c51531
+	source = https://files.pythonhosted.org/packages/source/d/dust_extinction/dust_extinction-1.7.tar.gz
+	md5sums = 314dd8fef86316ea78d59d0898b7103d
 
 pkgname = python-dust-extinction
 	depends = python-astropy
