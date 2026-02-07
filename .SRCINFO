@@ -1,6 +1,6 @@
 pkgbase = spu
 	pkgdesc = Simple playlist management utility
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://codeberg.org/413x1nkp/spu
 	install = spu.install
@@ -9,10 +9,10 @@ pkgbase = spu
 	depends = glibc
 	depends = bash
 	optdepends = bash-completion: bash completion
-	source = git+https://codeberg.org/413x1nkp/spu#tag=v0.1.0
+	source = git+https://codeberg.org/413x1nkp/spu#tag=v0.1.1
 	source = argparse::git+https://github.com/cofyc/argparse
 	source = spu.install
-	sha256sums = 62b6426565c8a387b9f4da1d7c9e00dc4c6acdeb2e4b41272f033892fb4d6116
+	sha256sums = d797c4a94d68b0a7a536f02b12c4583abbeb802816b26518d5bf4e0fa3b0aa28
 	sha256sums = SKIP
 	sha256sums = 5bc84ad475235b7ff42dd917916e42fc92a0651022715d5ef8965cde02e9ad18
 
