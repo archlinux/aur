@@ -1,7 +1,7 @@
 # Maintainer: Davide Gerhard <rainbow@irh.it>
 
 pkgname=freedv-gui
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Digital Voice for Radio Amateurs"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/drowe67/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
   )
 sha512sums=('7d505ff36176baeca347c52a5c7bdb819bea9cd059783588e3438a02a9f707d66cf2201ce7ff202cee660936ff33adcfda4b1a707013b14fcb25b82c3007531a'
-            '1b8d51b7747ba415fa39b3adda5299aed1496534c593510090b1860d628e40db0903efe270286d4e845077a0676e7e31bd64edd29ff135a7ad8d37645e8fce31')
+            '4e217542b3cbf35848c392e248ea6141903d81a7b9ea1b2b861dbdb554c347823c65fec3aef5cf3d60b59d0c3216b565c36b5849293e78da6e33d8201d6d8bab')
 
 ## trying to use local library
 # Codec2:  fatal error: codec2_alloc.h: No such file or directory
