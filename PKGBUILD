@@ -1,6 +1,6 @@
 # Maintainer: Alex Murkoff <413x1nkp@gmail.com>
 pkgname=spu
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Simple playlist management utility"
 arch=("x86_64")
@@ -19,7 +19,7 @@ source=(
 )
 
 sha256sums=(
-	'62b6426565c8a387b9f4da1d7c9e00dc4c6acdeb2e4b41272f033892fb4d6116'
+	'd797c4a94d68b0a7a536f02b12c4583abbeb802816b26518d5bf4e0fa3b0aa28'
 	'SKIP'
 	'5bc84ad475235b7ff42dd917916e42fc92a0651022715d5ef8965cde02e9ad18'
 )
@@ -44,5 +44,7 @@ package() {
 	install -Dm 755 -t "${pkgdir}"/usr/bin/ "out/spu"
 	install -Dm 755 -t "${pkgdir}"/usr/bin/ "scripts/spu-play"
 	install -Dm 755 -t "${pkgdir}"/usr/bin/ "scripts/spu-current-song"
-	install -Dm 755 -T "scripts/spu-completion.sh" "${pkgdir}"/usr/share/bash-completion/completions/spu
+
+	install -Dm 755 -T "scripts/spu-comp.sh" "${pkgdir}"/usr/share/bash-completion/completions/spu
+	install -Dm 755 -T "scripts/spu-play-comp.sh" "${pkgdir}"/usr/share/bash-completion/completions/spu-play
 }
