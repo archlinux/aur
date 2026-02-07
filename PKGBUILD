@@ -1,6 +1,6 @@
 # Maintainer: Grisshink <grisshink@mail.ru>
 pkgname=scrap-git
-pkgver=0.5.1.r5.g32ce623
+pkgver=0.6.r20.ga1d6046
 pkgrel=1
 pkgdesc="New advanced block based programming language, built from ground up in C"
 arch=(x86_64)
@@ -31,7 +31,7 @@ prepare() {
 
 build() {
     cd "scrap"
-    make SCRAP_VERSION="$pkgver"
+    make SCRAP_VERSION="v$pkgver"
 }
 
 package() {
