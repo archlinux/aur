@@ -2,7 +2,7 @@
 
 _pkgname="ksud"
 pkgname="${_pkgname}-bin"
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="KernelSU userspace CLI"
 arch=(
@@ -34,8 +34,8 @@ source_x86_64=(
   "${_pkgsrc}-x86_64::${_url}/releases/download/v${pkgver}/${_pkgname}-x86_64-unknown-linux-musl"
 )
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-sha256sums_aarch64=('3f56e8f28903e4bfb7268e6bdf8956d6d216dce637abb2a95eed7648ec26cab1')
-sha256sums_x86_64=('67c81f7eab5622c7fb4af94539e010320e287b462f9f3a37790101270c47ad85')
+sha256sums_aarch64=('fc4ccb3af7460400c5a8350044245167200a706cf2ed78088ff61b8c3fc489ee')
+sha256sums_x86_64=('5983c2209a3241436a657cf020a5732547cf45e027e865b54147059cd5363fd5')
 
 package() {
   cd "${srcdir}"
