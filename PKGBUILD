@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 
 pkgname=python-jaxlib
-pkgver=0.8.2
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='XLA library for JAX'
 arch=('x86_64')
@@ -20,13 +20,18 @@ makedepends=(
     'python-setuptools'
     'python-wheel'
 )
-_bazel_ver=7.4.1
+_bazel_ver=7.7.0
+_xla_sha='bb760b047bdbfeff962f0366ad5cc782c98657e0'
 source=("jax-${pkgver}.tar.gz::$url/archive/refs/tags/jax-v${pkgver}.tar.gz"
+        "jax-xla-${pkgver}.tar.gz::https://github.com/openxla/xla/archive/${_xla_sha}.tar.gz"
         "bazel-${_bazel_ver}-linux-x86_64::https://github.com/bazelbuild/bazel/releases/download/${_bazel_ver}/bazel-${_bazel_ver}-linux-x86_64"
-        'bazelrc')
+        'bazelrc.sh'
+        'xla.diff')
 noextract=("bazel-${_bazel_ver}-linux-x86_64")
-sha256sums=('f7e5080c97c1aaffb490a17d174cb59a83dd037800d9c41d309287bebd15b0b8'
-            'c97f02133adce63f0c28678ac1f21d65fa8255c80429b588aeeba8a1fac6202b'
+sha256sums=('8525c72ac7ea01851297df5b25ca4622c65299c265c87dfe78420bb29e7b1bb3'
+            '665ec74f3ca69905ac21dbf075ccaeed97755d8e125e068a4297b5c6c35d3a5c'
+            'fe7e799cbc9140f986b063e06800a3d4c790525075c877d00a7112669824acbf'
+            'SKIP'
             'SKIP')
 
 prepare() {
@@ -34,6 +39,11 @@ prepare() {
 
     ln -sf "$(readlink bazel-${_bazel_ver}-linux-x86_64)" "$srcdir/bazel"
     chmod +x $srcdir/bazel-${_bazel_ver}-linux-x86_64
+
+    env -i srcdir="${srcdir}" envsubst < bazelrc.sh > bazelrc
+
+    cd "$srcdir/xla-$_xla_sha"
+    patch -p 1 -i ../xla.diff
 }
 
 build() {
@@ -42,14 +52,26 @@ build() {
     # Override default version.
     export JAXLIB_RELEASE=$pkgver
 
-    ../bazel-7.4.1-linux-x86_64 --bazelrc=../bazelrc build \
-        --repo_env=HERMETIC_PYTHON_VERSION=3.14 \
+    # ArchLinux have been started to use source fortification level 3 since
+    # 2023. It is too restrictive to build complex projects.
+    #
+    # [rfc0017]: https://rfc.archlinux.page/0017-increase-fortification-level/
+    export CFLAGS="${CFLAGS/-Wp,-D_FORTIFY_SOURCE=3/} -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2"
+    export CXXFLAGS="${CXXFLAGS/-Wp,-D_FORTIFY_SOURCE=3/} -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2"
+
+    ../bazel-${_bazel_ver}-linux-x86_64 --bazelrc=../bazelrc build \
+        --override_repository=xla="${srcdir}/xla-${_xla_sha}" \
         //jaxlib/tools:jaxlib_wheel
 }
 
 package() {
     cd jax-jax-v$pkgver
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    bazel_bin=$(../bazel-${_bazel_ver}-linux-x86_64 --bazelrc=../bazelrc \
+                info bazel-bin 2> /dev/null)
+    wheel_abi=cp314-cp314-manylinux_2_27_x86_64
+    wheel="jaxlib-${pkgver}.dev0+selfbuilt-${wheel_abi}.whl"
     python -m installer --compile-bytecode=1 --destdir=$pkgdir \
-        bazel-out/k8-opt/bin/jaxlib/tools/dist/jaxlib-${pkgver}*x86_64.whl
+        "${bazel_bin}/jaxlib/tools/dist/$wheel"
 }
