@@ -3,7 +3,7 @@ PROJECT=ufo
 DESCR="A tool for opening files"
 makedepends=("bash" "chrpath" "findutils" "glib2" "amalthea-ldc2" "ldc")
 depends=("glib2" "amalthea-ldc2")
-pkgver=0.7.6
+pkgver=0.8.0
 pkgrel=0
 license=("BSL-1.0 or GPL-3+")
 
@@ -16,7 +16,7 @@ arch=("x86_64")
 url="https://gitlab.com/os-18/${PROJECT}"
 TARBALL=$pkgname-$pkgver.tar.gz
 source=("$TARBALL::$url/-/archive/v$pkgver/${PROJECT}-v$pkgver.tar.gz")
-sha256sums=("c91f75d63746bde3a6f0a6631c56113097e8d55833a014880bc8b21b6bd80c6c")
+sha256sums=("52f50d51c3e81101dad6e1d3edea0b5e095d1847621b42b81a5d32dce189a6ef")
 
 build() {
     cd "${PROJECT}-v$pkgver"
