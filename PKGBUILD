@@ -4,8 +4,8 @@ _pkgauthor=BinaryHarbinger
 _pkgname=riftbar
 
 pkgname=${_pkgname}-bin
-pkgver=0.1.3
-pkgrel=1
+pkgver=0.1.4
+pkgrel=0
 _pkgvername=v${pkgver}
 
 pkgdesc='Highly customizable GTK4 bar for Wayland written in Rust'
@@ -30,7 +30,7 @@ source=(
 )
 
 
-sha256sums=('0f42045fdf512cf76e05621e0771a017a728d65d99fdf45e2a7dfe11c0a09166'
+sha256sums=('513f05406b712ffd47589ee471a6ddaceab78fa96a72c59d68364ac62fb41b9f'
             'SKIP'
             'SKIP')
 
