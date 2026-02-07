@@ -1,7 +1,7 @@
 pkgname=traur-bin
-pkgver=0.1.6
+pkgver=0.2.0
 pkgrel=1
-pkgdesc='Heuristic security scanner for AUR packages (prebuilt)'
+pkgdesc='Pre-install trust scoring for AUR packages (prebuilt)'
 arch=('x86_64')
 url='https://github.com/Sohimaster/traur'
 license=('MIT')
@@ -9,7 +9,7 @@ depends=('git' 'pacman')
 provides=('traur')
 conflicts=('traur')
 source=("$url/releases/download/v$pkgver/traur-$pkgver-x86_64.tar.gz")
-sha256sums=('42f451ab427f3c7f5a16935a5e7f5ba28b3a0e3ff1c720938b70203a6210ec62')
+sha256sums=('c77633726157a74ffd1fe017954863f3b63c7d96e14961b8e7e20312f829a5d3')
 
 package() {
     install -Dm755 traur "$pkgdir/usr/bin/traur"

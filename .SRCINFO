@@ -1,6 +1,6 @@
 pkgbase = traur-bin
-	pkgdesc = Heuristic security scanner for AUR packages (prebuilt)
-	pkgver = 0.1.6
+	pkgdesc = Pre-install trust scoring for AUR packages (prebuilt)
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/Sohimaster/traur
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = traur-bin
 	depends = pacman
 	provides = traur
 	conflicts = traur
-	source = https://github.com/Sohimaster/traur/releases/download/v0.1.6/traur-0.1.6-x86_64.tar.gz
-	sha256sums = 42f451ab427f3c7f5a16935a5e7f5ba28b3a0e3ff1c720938b70203a6210ec62
+	source = https://github.com/Sohimaster/traur/releases/download/v0.2.0/traur-0.2.0-x86_64.tar.gz
+	sha256sums = c77633726157a74ffd1fe017954863f3b63c7d96e14961b8e7e20312f829a5d3
 
 pkgname = traur-bin
