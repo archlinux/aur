@@ -1,6 +1,6 @@
 pkgbase = pnpm-bin
 	pkgdesc = Fast, disk space efficient package manager (No dependency on nodejs)
-	pkgver = 10.28.2
+	pkgver = 10.29.1
 	pkgrel = 1
 	url = https://github.com/pnpm/pnpm
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = pnpm-bin
 	provides = pnpm
 	conflicts = pnpm
 	options = !strip
-	source_x86_64 = pnpm-10.28.2-x86_64::https://github.com/pnpm/pnpm/releases/download/v10.28.2/pnpm-linux-x64
-	sha256sums_x86_64 = 9f38396f660cd3b1f71e0b0af0b7ba22dd1fd446dc37840a1b6a025868557390
-	source_aarch64 = pnpm-10.28.2-aarch64::https://github.com/pnpm/pnpm/releases/download/v10.28.2/pnpm-linux-arm64
-	sha256sums_aarch64 = 6f265c811d1aef8e817e0017cd700d0d345a1100bd8a90358db64eaab2fbff85
+	source_x86_64 = pnpm-10.29.1-x86_64::https://github.com/pnpm/pnpm/releases/download/v10.29.1/pnpm-linux-x64
+	sha256sums_x86_64 = df728857c759d9d355b245ae889aee1c54a634d51486e76d1ecaaaead26569b2
+	source_aarch64 = pnpm-10.29.1-aarch64::https://github.com/pnpm/pnpm/releases/download/v10.29.1/pnpm-linux-arm64
+	sha256sums_aarch64 = 09d3821bc2f1ed882885429b25652df8b2f1e25f95b5588ca4664bc9b1096e31
 
 pkgname = pnpm-bin
