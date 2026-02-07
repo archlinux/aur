@@ -1,6 +1,6 @@
 pkgname=omcalc-git
 pkgver=r0.0000000
-pkgrel=2
+pkgrel=3
 pkgdesc='Minimal GTK4 calculator tuned for Omarchy/Hyprland workflows'
 arch=('x86_64')
 url='https://github.com/jadabreu/omcalc'
@@ -12,9 +12,9 @@ provides=('omcalc')
 conflicts=('omcalc')
 source=(
   'omcalc-src::git+https://github.com/jadabreu/omcalc.git'
-  'omcalc-wrapper::omcalc'
-  'omcalc-clear-history-wrapper::omcalc-clear-history'
-  'omcalc-desktop::omcalc.desktop'
+  'omcalc'
+  'omcalc-clear-history'
+  'omcalc.desktop'
 )
 sha256sums=(
   'SKIP'
@@ -40,7 +40,7 @@ package() {
   install -Dm644 app/gtk4/hyprland-snippet.conf "${pkgdir}/usr/share/doc/omcalc/hyprland-snippet.conf"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  install -Dm755 "${srcdir}/omcalc-wrapper" "${pkgdir}/usr/bin/omcalc"
-  install -Dm755 "${srcdir}/omcalc-clear-history-wrapper" "${pkgdir}/usr/bin/omcalc-clear-history"
-  install -Dm644 "${srcdir}/omcalc-desktop" "${pkgdir}/usr/share/applications/omcalc.desktop"
+  install -Dm755 "${srcdir}/omcalc" "${pkgdir}/usr/bin/omcalc"
+  install -Dm755 "${srcdir}/omcalc-clear-history" "${pkgdir}/usr/bin/omcalc-clear-history"
+  install -Dm644 "${srcdir}/omcalc.desktop" "${pkgdir}/usr/share/applications/omcalc.desktop"
 }
