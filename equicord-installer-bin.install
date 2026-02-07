@@ -1,0 +1,9 @@
+post_install() {
+    echo ">> The Equicord installer is now available as 'equicord-installer'."
+    echo ">> 'Equilotl' and 'equilotl' still work but have been moved to 'equicord-installer'."
+}
+
+post_upgrade() {
+    echo ">> The Equicord installer is now available as 'equicord-installer'."
+    echo ">> 'Equilotl' and 'equilotl' still work but have been moved to 'equicord-installer'."
+}
