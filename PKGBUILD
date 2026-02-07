@@ -3,7 +3,7 @@
 # Contributor: Xesxen
 
 pkgname=steamlink
-pkgver=1.3.18.291
+pkgver=1.3.22.298
 pkgrel=1
 pkgdesc="Steam Link client"
 arch=('x86_64')
@@ -17,12 +17,13 @@ depends=(
 	'dbus'
 	'ffmpeg'
 	'freetype2'
-	libicu{data,i18n,uc}.so=73
+	libicu{data,i18n,uc}.so=77
 	'libglvnd'
 	'opus'
 	'sdl3'
 	'systemd-libs'
 	'zlib'
+  'libjpeg6-turbo'
 )
 makedepends=('ostree' 'fakeroot')
 options=(!debug !lto)
@@ -31,7 +32,7 @@ source=(
     "steamlink.sh"
 )
 
-_ostree_commit="f0713764946c8cb361faf44f079cd3ec4f1fbcc435e050498be71f5f569792da"
+_ostree_commit="1bd0c157161b0a7d8df1aa2987e570bb026f1438a59218146ca057028bf1a015"
 sha256sums=('8bdc20abc4e19c0796460beb5bfe0e7aa4138716999e19c6f2dbdd78cc41aeaa'
             '4d5bd2835b7ccf71e53e0f6f2c4bc9a3fe2477345cb51517f05b019dd63b8fe8')
 
