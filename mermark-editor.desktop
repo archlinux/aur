@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=MerMark Editor
+Comment=Elegant and simple Markdown, Mermaid editor
+Exec=/usr/bin/mermark-editor
+Icon=mermark-editor
+Terminal=false
+Type=Application
+Categories=Office;Utility;
