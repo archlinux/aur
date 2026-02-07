@@ -1,6 +1,6 @@
 pkgbase = python-array-api-compat
 	pkgdesc = A wrapper around NumPy and other array libraries to make them compatible with the Array API standard.
-	pkgver = 1.12.0
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://data-apis.org/array-api-compat/
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-array-api-compat
 	optdepends = python-pytorch
 	optdepends = python-dask
 	optdepends = python-sparse
-	source = https://files.pythonhosted.org/packages/source/a/array-api-compat/array_api_compat-1.12.0.tar.gz
-	sha256sums = 585bc615f650de53ac24b7c012baecfcdd810f50df3573be47e6dd9fa20df974
+	source = https://files.pythonhosted.org/packages/source/a/array-api-compat/array_api_compat-1.13.0.tar.gz
+	sha256sums = 8b83a56aa8b9477472fee37f7731968dd213e20c198a05ac49caeff9b03f48a6
 
 pkgname = python-array-api-compat
