@@ -18,6 +18,23 @@ pkgbase = icu77
 	provides = libicutest.so=77
 	provides = libicutu.so=77
 	provides = libicuuc.so=77
+	conflicts = icu=77
+	conflicts = icu=77.0
+	conflicts = icu=77.1
+	conflicts = icu=77.2
+	conflicts = icu=77.3
+	conflicts = icu=77.4
+	conflicts = icu=77.5
+	conflicts = icu=77.6
+	conflicts = icu=77.7
+	conflicts = icu=77.8
+	conflicts = icu=77.9
+	conflicts = libicudata.so=77
+	conflicts = libicui18n.so=77
+	conflicts = libicuio.so=77
+	conflicts = libicutest.so=77
+	conflicts = libicutu.so=77
+	conflicts = libicuuc.so=77
 	source = https://github.com/unicode-org/icu/releases/download/release-77-1/icu4c-77_1-src.tgz
 	source = https://github.com/unicode-org/icu/releases/download/release-77-1/icu4c-77_1-src.tgz.asc
 	source = ICU-22132.patch

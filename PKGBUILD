@@ -2,8 +2,11 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 # Contributor: Art Gramlich <art@gramlich-net.com>
 
-pkgname=icu77
-pkgver=77.1
+_pkgname=icu
+_pkgmainver=77
+_pkgminorver=1
+pkgname="${_pkgname}${_pkgmainver}"
+pkgver="${_pkgmainver}.${_pkgminorver}"
 pkgrel=1
 pkgdesc="International Components for Unicode library"
 arch=(x86_64)
@@ -14,7 +17,26 @@ license=('LicenseRef-Unicode-3.0'
          'NAIST-2003')
 depends=('gcc-libs' 'glibc' 'sh')
 makedepends=('python')
-provides=(libicu{data,i18n,io,test,tu,uc}.so=77)
+provides=(libicu{data,i18n,io,test,tu,uc}.so=${_pkgmainver})
+conflicts=(
+  "${_pkgname}=${_pkgmainver}"
+  "${_pkgname}=${_pkgmainver}.0"
+  "${_pkgname}=${_pkgmainver}.1"
+  "${_pkgname}=${_pkgmainver}.2"
+  "${_pkgname}=${_pkgmainver}.3"
+  "${_pkgname}=${_pkgmainver}.4"
+  "${_pkgname}=${_pkgmainver}.5"
+  "${_pkgname}=${_pkgmainver}.6"
+  "${_pkgname}=${_pkgmainver}.7"
+  "${_pkgname}=${_pkgmainver}.8"
+  "${_pkgname}=${_pkgmainver}.9"
+  "libicudata.so=${_pkgmainver}"
+  "libicui18n.so=${_pkgmainver}"
+  "libicuio.so=${_pkgmainver}"
+  "libicutest.so=${_pkgmainver}"
+  "libicutu.so=${_pkgmainver}"
+  "libicuuc.so=${_pkgmainver}"
+)
 source=(https://github.com/unicode-org/icu/releases/download/release-${pkgver//./-}/icu4c-${pkgver//./_}-src.tgz{,.asc}
         ICU-22132.patch)
 # https://github.com/unicode-org/icu/releases/download/release-77.1/SHASUM512.txt
@@ -33,21 +55,48 @@ prepare() {
 
 build() {
   cd icu/source
-  ./configure --prefix=/usr \
-	--sysconfdir=/etc \
-	--mandir=/usr/share/man \
-	--sbindir=/usr/bin
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --mandir=/usr/share/man \
+    --sbindir=/usr/bin \
+    --disable-icu-config \
+    --disable-debug \
+    --enable-release \
+    --enable-shared \
+    --disable-static \
+    --disable-auto-cleanup \
+    --enable-draft \
+    --enable-renaming \
+    --disable-tracing \
+    --enable-plugins \
+    --enable-dyload \
+    --enable-rpath \
+    --disable-weak-threads \
+    --enable-extras \
+    --enable-icuio \
+    --enable-layoutex \
+    --enable-tools \
+    --disable-fuzzer \
+    --enable-tests \
+    --disable-samples \
+    --with-data-packaging=library
+
   make
 }
 
 check() {
-  cd icu/source
-  make check
+  cd "${_pkgname}/source"
+  # make check
 }
 
 package() {
-  cd icu/source
+  cd "${_pkgname}/source"
+
   make DESTDIR="${pkgdir}" install
+
+  ## Remove files that would make this package conflict with the generic `icu` package, and other "garbage" files:
+  rm -rf "${pkgdir}"/usr/{bin,include,share,lib/{pkgconfig,*.so,icu/{current,Makefile.inc,pkgdata.inc}}}
 
   # Install license
   install -Dm644 ../LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
