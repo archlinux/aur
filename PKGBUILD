@@ -27,4 +27,5 @@ package() {
 
     sed -i 's#/usr/bin/LDDC#/opt/lddc-bin/LDDC.bin#g' "${pkgdir}/usr/share/applications/LDDC.desktop"
     
+    chown -R root:root "${pkgdir}/opt/lddc-bin/"
 }
