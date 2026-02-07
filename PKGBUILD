@@ -12,7 +12,7 @@ conflicts=('sortify')
 options=('!strip')
 source=("Sortify-${pkgver}-Linux-x64::https://github.com/ninjaytxz/Sortify/releases/download/v${pkgver}/Sortify-${pkgver}-Linux-x64"
         "sortify.desktop"
-        "sortify.png::https://raw.githubusercontent.com/ninjaytxz/Sortify/main/Documentation%20assets/Sortify%20logo.png")
+        "sortify.png::https://raw.githubusercontent.com/ninjaytxz/Sortify/main/assets/SortifyAppIcon.png")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP')
