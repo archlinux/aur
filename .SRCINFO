@@ -1,8 +1,8 @@
 pkgbase = miru-viewer-git
 	pkgdesc = GitHub Issue/Pull Request/Release viewer.(Use system-wide electron)
-	pkgver = 1.4.1.r1.g81254f2
+	pkgver = 1.4.2.r0.g8059737
 	pkgrel = 1
-	url = https://github.com/ytakahashi/miru
+	url = https://ghfast.top/https://github.com/ytakahashi/miru
 	arch = any
 	license = MIT
 	makedepends = npm
@@ -11,12 +11,13 @@ pkgbase = miru-viewer-git
 	makedepends = nvm
 	makedepends = gendesk
 	makedepends = curl
-	depends = electron36
-	provides = miru-viewer=1.4.1
+	makedepends = jq
+	depends = electron40
+	provides = miru-viewer=1.4.2
 	conflicts = miru-viewer
-	source = miru-viewer.git::git+https://github.com/ytakahashi/miru.git
+	source = miru-viewer.git::git+https://ghfast.top/https://github.com/ytakahashi/miru.git
 	source = miru-viewer.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = miru-viewer-git
