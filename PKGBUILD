@@ -1,7 +1,7 @@
 # Maintainer: Rasmus Karlsson <rasmus.karlsson@pajlada.com>
 
 pkgname=pajlada-serialize
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='c++ serialize/deserialize helper functions based on rapidjson'
 arch=('any')
@@ -9,7 +9,7 @@ url=https://github.com/pajlada/serialize
 license=('MIT')
 makedepends=('git' 'cmake' 'gtest' 'rapidjson')
 source=("git+https://github.com/pajlada/serialize.git#tag=v${pkgver}")
-sha256sums=('fef0b41f447f93a416c707c01386ea98b9a4675a69c95ebaef20864ca5193a9a')
+sha256sums=('87078a66e951bc7926597df20b6c85a55d14a062b7d6ce1116573274c47a0588')
 
 build() {
     cmake -S serialize \
