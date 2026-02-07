@@ -1,0 +1,17 @@
+pkgbase = pajlada-settings
+	pkgdesc = C++ Settings library
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/pajlada/settings
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = gtest
+	makedepends = rapidjson
+	makedepends = pajlada-serialize
+	makedepends = pajlada-signals
+	source = git+https://github.com/pajlada/settings.git#tag=v0.5.0
+	sha256sums = 4ce5aadc3990c4fadec519d4ce9dc8ccf4c73e5dbbb9b135949c0ea6fb0c9c5e
+
+pkgname = pajlada-settings
