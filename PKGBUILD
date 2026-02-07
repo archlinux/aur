@@ -1,47 +1,69 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
-# Maintainer: Xiang Chen <iflygo@outlook.com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: George Rawlinson <grawlinson@archlinux.org>
+# Contributor: Xiang Chen <iflygo@outlook.com>
 
+_zig=0.14
 pkgname=zigup
-pkgver=2025.01.02
+pkgver=2025_05_24
 pkgrel=1
-pkgdesc='Download and manage Zig compilers'
-arch=('x86_64')
-url='https://github.com/marler8997/zigup'
-license=('MIT-0')
-depends=('tar')
-makedepends=('git' 'zig')
-options=('!debug')
-_commit='570255f54b42a5305703d193274a9e7702f4f194'
-source=("$pkgname::git+$url#commit=$_commit")
-b2sums=('53985104436ae87c2c5da421d377a2ca92c62bcfa9d5aaeeba5c159a0e6d1167519f5f7129cc3e2f69e557cb3078f98fe01277f3ee29c06fe3974ac45a7fd9a9')
-
-pkgver() {
-  cd "$pkgname"
-
-  git describe --tags | sed -e 's/^v//' -e 's/_/./g' -e 's/-/.r/' -e 's/-/./g'
-}
+pkgdesc="Download and manage Zig compilers"
+arch=(
+  'x86_64'
+)
+url="https://github.com/marler8997/${pkgname}"
+license=(
+  'MIT-0'
+)
+depends=(
+  'tar'
+)
+makedepends=(
+  "zig${_zig}-bin"
+)
+_pkgsrc="${pkgname}-${pkgver}"
+source=(
+  "${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
+)
+b2sums=('591049b72a891d027f7991c07f8d48687b1f712db466dee6830c2939e9a0da2f7a741b03f016b33bd53b9135ea7c9c9bae0a2e9a9de88fcc497c3265b2707b93')
 
 build() {
-  cd "$pkgname"
+  local zig_options=(
+    --summary all
+    --prefix /usr
+    --search-prefix /usr
+    --global-cache-dir "${srcdir}/zig-global-cache"
+    # --system "${srcdir}/zig-global-cache/p"
+    --verbose
+    -Dtarget=native-linux.6.15-gnu.2.42
+    -Dcpu=baseline
+    # -Doptimize=ReleaseSafe
+  )
 
-  zig build --release=fast
+  cd "${srcdir}/${_pkgsrc}"
+  DESTDIR="build" "zig${_zig}" build "${zig_options[@]}"
 }
 
 # check() {
-#   cd "$pkgname"
-#
-#   zig build test
+#   local zig_options=(
+#     --summary all
+#     --prefix /usr
+#     --search-prefix /usr
+#     --global-cache-dir "${srcdir}/zig-global-cache"
+#     # --system "${srcdir}/zig-global-cache/p"
+#     --verbose
+#     -Dtarget=native-linux.6.15-gnu.2.42
+#     -Dcpu=baseline
+#     # -Doptimize=ReleaseSafe
+#   )
+
+#   cd "${srcdir}/${_pkgsrc}"
+#   DESTDIR="check" "zig${_zig}" build test "${zig_options[@]}"
 # }
 
 package() {
-  cd "$pkgname"
+  cd "${srcdir}/${_pkgsrc}"
+  cp -vaT --no-preserve=ownership "build" "${pkgdir}"
 
-  # binary
-  install -vDm755 -t "$pkgdir/usr/bin" zig-out/bin/zigup
-
-  # documentation
-  install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
-
-  # license
-  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
