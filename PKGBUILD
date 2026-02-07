@@ -11,7 +11,7 @@ pkgver=2.5.5
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
 license=('AGPL-3.0-only')
-arch=(x86_64)
+arch=(x86_64 aarch64)
 # ts-node required for CLI
 makedepends=('git' 'pnpm' 'ts-node' 'mise')
 
