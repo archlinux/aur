@@ -3,7 +3,7 @@
 
 pkgname=python-habanero
 pkgver=2.3.0
-pkgrel=3
+pkgrel=4
 _name=${pkgname#python-}
 _name="${_name//-/_}"
 _src_folder="${_name}-${pkgver}"
@@ -13,7 +13,6 @@ depends=(
   'python'
   'python-httpx'
   'python-packaging'
-  'python-pyyaml'
   'python-tqdm'
   'python-urllib3'
 )
@@ -27,6 +26,7 @@ checkdepends=(
   # 'python-bibtexparser>=2.0.0b5'
   'python-pytest'
   'python-pytest-recording'
+  'python-pyyaml'
 )
 optdepends=(
   'python-bibtexparser: attempt to fix misformatted bibtex'
