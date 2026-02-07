@@ -1,6 +1,6 @@
 # Maintainer: el gato <gato.mega.mp3@gmail.com>
 pkgname=winamp-mpris
-pkgver=0.1.4.r0.g3cfc27d
+pkgver=0.1.4.r3.gdf8640d
 pkgrel=1
 pkgdesc="MPRIS bridge for Winamp running under Wine (exposes a playerctl-compatible MPRIS endpoint)"
 arch=('any')
@@ -31,13 +31,12 @@ package() {
   
   # Instalar el script principal (nombre correcto con guion bajo)
   install -Dm755 winamp_mpris.py "$pkgdir/usr/bin/winamp-mpris"
-  
   # Instalar el servicio de systemd
   install -Dm644 winamp-mpris.service "$pkgdir/usr/lib/systemd/user/winamp-mpris.service"
   
   # Instalar clamp.exe si existe
-  if [ -f "clamp.exe" ]; then
-    install -Dm644 clamp.exe "$pkgdir/usr/share/winamp-mpris/clamp.exe"
+  if [ -f "CLAmp.exe" ]; then
+    mkdir "$pkgdir/usr/share/" &&  install -Dm644 CLAmp.exe "$pkgdir/usr/share/winamp-mpris/CLAmp.exe"
   fi
   
   # Instalar LICENSE si existe
@@ -49,4 +48,7 @@ package() {
   if [ -f "README.md" ]; then
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   fi
+
+  echo -e "\033[0;31m please run systemctl --user enable winamp-mpris.service && systemctl --user start winamp-mpris.service after the installation"
+  
 }
