@@ -1,0 +1,39 @@
+diff -Naur asleap-2.2/asleap.c asleap-2.2-new/asleap.c
+--- asleap-2.2/asleap.c	2026-02-07 01:04:02.462366593 -0500
++++ asleap-2.2-new/asleap.c	2026-02-07 01:05:07.327626277 -0500
+@@ -72,7 +72,7 @@
+ 
+ /* prototypes */
+ void usage(char *message);
+-void cleanup();
++void cleanup(int signal);
+ void print_leapexch(struct asleap_data *asleap_ptr);
+ void print_hashlast2(struct asleap_data *asleap_ptr);
+ void print_leappw(struct asleap_data *asleap_ptr);
+@@ -252,7 +252,7 @@
+ 
+ }
+ 
+-void cleanup()
++void cleanup(int signal)
+ {
+ 
+ 	if (p != NULL) {
+@@ -805,7 +805,7 @@
+ 		} else if (n == 1) {
+ 			if (asleap_ptr->verbose)
+ 				printf("Reached EOF on pcapfile.\n");
+-			cleanup();	/* exits */
++			cleanup(-1);	/* exits */
+ 		}
+ 
+ 		if (packet == NULL) {
+@@ -1590,7 +1590,7 @@
+ 	default:
+ 		fprintf(stderr, "Unsupported pcap datalink type: (%d) "
+ 			"\n", pcap_datalink(p));
+-		cleanup();	/* Exits */
++		cleanup(-1);	/* Exits */
+ 	}
+ 
+ /*

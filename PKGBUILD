@@ -3,7 +3,7 @@
 
 pkgname=asleap
 pkgver=2.2
-pkgrel=7
+pkgrel=8
 pkgdesc="Actively recover LEAP/PPTP passwords."
 arch=("x86_64" "i686" "armv6h" "armv7h" "aarch64")
 url="https://www.willhackforsushi.com/?page_id=41"
@@ -11,12 +11,14 @@ license=("GPL")
 depends=("libpcap" "openssl")
 source=("https://www.willhackforsushi.com/code/$pkgname/$pkgver/$pkgname-$pkgver.tgz"
         "libxcrypt.patch"
-        "fixtimeout.patch")
+        "fixtimeout.patch"
+        "fixsignal.patch")
 noextract=("libxcrypt1.deb"
            "libxcrypt-dev.deb")
 md5sums=("a1d06729fb2addcc5b09bfc14f9b3173"
          "cb9cf76a3e7bee1e546ce9a982b0f912"
-         "e0041a0a74428051cd7d19e0a7c5c5d8")
+         "e0041a0a74428051cd7d19e0a7c5c5d8"
+         "667aaa95b76327cae3203944f2eb6771")
 
 # Dynamically generate sources and skip sums
 _arch=("amd64" "i386" "armel" "armhf" "arm64")
@@ -44,6 +46,7 @@ prepare() {
 	cd "$pkgname-$pkgver"
 	patch -Nup1 -i "$srcdir/libxcrypt.patch"
 	patch -Nup1 -i "$srcdir/fixtimeout.patch"
+	patch -Nup1 -i "$srcdir/fixsignal.patch"
 }
 
 build() {
