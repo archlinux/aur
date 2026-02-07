@@ -1,15 +1,14 @@
 # Maintainer: Alexis Maiquez <aur@almamu.com>
 pkgname=linux-wallpaperengine-git
 _pkgname=linux-wallpaperengine
-pkgver=r567.b6c1825
+pkgver=r568.6558998
 pkgrel=1
 pkgdesc="use steam's wallpaperengine on linux"
 arch=('x86_64')
 url="https://github.com/Almamu/linux-wallpaperengine"
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('lz4' 'ffmpeg' 'mpv' 'glfw' 'glew' 'freeglut' 'libpulse' 'libcups' 'at-spi2-core' 'nss' 'libxcomposite' 'libxdamage' 'nspr')
 makedepends=('git' 'cmake' 'sdl2' 'glm')
-makeopt=('wayland-protocols')
 provides=("linux-wallpaperengine")
 source=("${pkgname}::git+https://github.com/Almamu/linux-wallpaperengine.git#branch=main")
 sha512sums=('SKIP')
