@@ -1,0 +1,19 @@
+pkgbase = firedoc
+	pkgdesc = FireDoc: Minimalist PDF Viewer
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/ZeNx98/FireDoc
+	arch = x86_64
+	license = Apache
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = rust
+	makedepends = cargo
+	depends = gtk3
+	depends = webkit2gtk
+	depends = libayatana-appindicator
+	depends = librsvg
+	source = git+https://github.com/ZeNx98/FireDoc.git
+	sha256sums = SKIP
+
+pkgname = firedoc
