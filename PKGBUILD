@@ -1,12 +1,12 @@
 # Maintainer: ZeNx98 <zenx98x@gmail.com>
 pkgname=firedoc
-pkgver=3.1.0
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="FireDoc: Minimalist PDF Viewer"
 arch=('x86_64')
 url="https://github.com/ZeNx98/FireDoc"
 license=('Apache')
-depends=('gtk3' 'webkit2gtk' 'libayatana-appindicator' 'librsvg')
+depends=('gtk3' 'webkit2gtk-4.1' 'libayatana-appindicator' 'librsvg')
 makedepends=('nodejs' 'npm' 'rust' 'cargo')
 source=("git+${url}.git")
 sha256sums=('SKIP')
@@ -20,7 +20,7 @@ build() {
   cd "FireDoc"
   # tauri build handles asset bundling and cargo release build
   # Note: ensure tauri-cli is available, or use npx
-  npx tauri build --bundles none
+  npx tauri build --no-bundle
 }
 
 package() {
@@ -46,3 +46,4 @@ Categories=Office;Viewer;
 MimeType=application/pdf;
 EOF
 }
+
