@@ -1,5 +1,5 @@
 pkgname=traur
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Heuristic security scanner for AUR packages'
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('git' 'pacman')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('200c354bf013d95527a1fb4dbae938b1a674270f9ebf7ba9a228be497e9fd720')
+sha256sums=('0948476e3aa5fb0b06131c77e9c739354fe72f08d9b5c709836ed2de885bfdb4')
 backup=('etc/traur/config.toml')
 
 build() {
