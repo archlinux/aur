@@ -1,6 +1,6 @@
 pkgbase = python-cmake-bin
 	pkgdesc = Infrastructure for building CMake Python wheels
-	pkgver = 4.0.3
+	pkgver = 4.2.1
 	pkgrel = 1
 	url = https://github.com/scikit-build/cmake-python-distributions
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = python-cmake-bin
 	license = Apache-2.0
 	makedepends = python-installer
 	depends = python
-	provides = python-cmake=4.0.3
+	provides = python-cmake=4.2.1
 	conflicts = python-cmake
 	options = !strip
-	source_x86_64 = https://files.pythonhosted.org/packages/py3/c/cmake/cmake-4.0.3-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-	sha256sums_x86_64 = d840e780c48c5df1330879d50615176896e8e6eee554507d21ce8e2f1a5f0ff8
-	source_aarch64 = https://files.pythonhosted.org/packages/py3/c/cmake/cmake-4.0.3-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
-	sha256sums_aarch64 = 434f84fdf1e21578974876b8414dc47afeaea62027d9adc37a943a6bb08eb053
+	source_x86_64 = https://files.pythonhosted.org/packages/py3/c/cmake/cmake-4.2.1-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
+	sha256sums_x86_64 = 6333a2b16e1d55373419b9c1572a155b315bfb9d834fbdbba0f7d3428437c785
+	source_aarch64 = https://files.pythonhosted.org/packages/py3/c/cmake/cmake-4.2.1-py3-none-manylinux2014_aarch64.manylinux_2_17_aarch64.whl
+	sha256sums_aarch64 = c8bdf88f8d50b64c88ffc75fb671f3ab017d803f36589f21c3f1e9f3a1b236a7
 
 pkgname = python-cmake-bin
