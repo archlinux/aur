@@ -4,7 +4,7 @@
 
 _pkgname=dbeaver
 pkgname=dbeaver-ce-bin
-pkgver=25.2.5
+pkgver=25.3.4
 pkgrel=1
 pkgdesc="Free universal SQL Client for developers and database administrators (community edition)"
 arch=('x86_64' 'aarch64')
@@ -13,18 +13,18 @@ license=("Apache-2.0")
 depends=('java-runtime>=17' 'gtk3' 'gtk-update-icon-cache' 'libsecret')
 conflicts=('dbeaver')
 provides=('dbeaver')
-source=("${_pkgname}-${pkgver}.linux.gtk.${CARCH}-nojdk.tar.gz"::"https://github.com/dbeaver/dbeaver/releases/download/${pkgver}/dbeaver-ce-${pkgver}-linux.gtk.${CARCH}-nojdk.tar.gz"
+source=("${_pkgname}-${pkgver}.linux.gtk.${CARCH}.tar.gz"::"https://github.com/dbeaver/dbeaver/releases/download/${pkgver}/dbeaver-ce-${pkgver}-linux.gtk.${CARCH}.tar.gz"
         "io.dbeaver.DBeaver.desktop"
         "${pkgname}.sh"
         "${pkgname}.install")
-sha256sums=('00317bb855198f329a4d0140b6a1b43bcd5893c4af061f3a4acc883a24a9d5f6'
+sha256sums=('8aa6e9bd74a7d23b0735db27ebf0b5455dbc5dce78a365e7bed1bc5ae8e92451'
             '9480a7d08f680e10c399db070c5a04cbabf282442602a2ef83d1159fe7c3e88b'
             '406a2980806c394670e88b1ae70134900be376c2ea4a4216610591cc8b557526'
             '603f7aa912685b69ca558ca7586585b7a314ca1b743be574db7bcd7a31c2ea2d')
 install="${pkgname}.install"
 
 prepare() {
-  cd "dbeaver/plugins/com.sun.jna_5.17.0.v20250316-1700/com/sun/jna"
+  cd "dbeaver/plugins/com.sun.jna_5.18.1.v20251001-0800/com/sun/jna"
   for _dir in aix-ppc aix-ppc64 darwin-aarch64 darwin-x86-64 \
     dragonflybsd-x86-64 freebsd-aarch64 freebsd-x86 freebsd-x86-64 \
     linux-aarch64 linux-x86-64 linux-arm linux-armel linux-loongarch64 linux-mips64el \
