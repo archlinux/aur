@@ -2,7 +2,7 @@
 
 pkgname=python-underthesea-core
 _name=${pkgname#python-}
-pkgver=3.1.6
+pkgver=3.2.0
 pkgrel=1
 epoch=
 pkgdesc="Underthesea Core"
@@ -30,7 +30,7 @@ optdepends=()
 # options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('dd77f45c18e5f5c81bbf5e7c3f82512c19124f1b80877a23ac78c2bdba27758b')
+sha256sums=('cdcc377d8732f857de4636f3cfe2683901a7e03a8cb0df1aace43b10a2e99aa2')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
