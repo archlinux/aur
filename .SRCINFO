@@ -1,0 +1,36 @@
+pkgbase = linux-galaxyaudio-bin
+	pkgdesc = Linux kernel for Samsung Galaxy Book 4 with MAX98390 sound support (Binary Release)
+	pkgver = 6.18.7
+	pkgrel = 1
+	url = https://github.com/antpln/linux-galaxyaudio
+	arch = x86_64
+	license = GPL2
+	makedepends = tar
+	makedepends = zstd
+	noextract = linux-galaxyaudio-6.18.7-1-x86_64.pkg.tar.zst
+	noextract = linux-galaxyaudio-headers-6.18.7-1-x86_64.pkg.tar.zst
+	options = !strip
+	source = linux-galaxyaudio-6.18.7-1-x86_64.pkg.tar.zst::https://github.com/antpln/linux-galaxyaudio/releases/download/v6.18.7/linux-galaxyaudio-6.18.7-1-x86_64.pkg.tar.zst
+	source = linux-galaxyaudio-headers-6.18.7-1-x86_64.pkg.tar.zst::https://github.com/antpln/linux-galaxyaudio/releases/download/v6.18.7/linux-galaxyaudio-headers-6.18.7-1-x86_64.pkg.tar.zst
+	sha256sums = 965f0d208fc736a95d1115440f193c4626027b3bb4fc89018e962142e40e17ba
+	sha256sums = 63a436cc8742fb189310a2cd4b499f739e0b387e6fb91e89ca7414c9c0df2577
+
+pkgname = linux-galaxyaudio-bin
+	pkgdesc = The linux-galaxyaudio kernel and modules (Binary)
+	install = linux-galaxyaudio-bin.install
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = linux=6.18.7
+	provides = linux-galaxyaudio=6.18.7
+	conflicts = linux
+	conflicts = linux-galaxyaudio
+
+pkgname = linux-galaxyaudio-headers-bin
+	pkgdesc = Headers and scripts for building modules for the linux-galaxyaudio kernel (Binary)
+	depends = pahole
+	provides = linux-headers=6.18.7
+	provides = linux-galaxyaudio-headers=6.18.7
+	conflicts = linux-headers
+	conflicts = linux-galaxyaudio-headers
