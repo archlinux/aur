@@ -1,0 +1,15 @@
+pkgbase = hunspell-bn
+	pkgdesc = Bengali hunspell dictionaries
+	pkgver = 2026.02.07
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = hunspell
+	source = https://raw.github.com/LibreOffice/dictionaries/74b6ae2a2df22fd9d6e253f0391ac3a67cb7b3f8/bn_BD/COPYING
+	source = https://raw.github.com/LibreOffice/dictionaries/74b6ae2a2df22fd9d6e253f0391ac3a67cb7b3f8/bn_BD/bn_BD.aff
+	source = https://raw.github.com/LibreOffice/dictionaries/74b6ae2a2df22fd9d6e253f0391ac3a67cb7b3f8/bn_BD/bn_BD.dic
+	sha256sums = 204d8eff92f95aac4df6c8122bc1505f468f3a901e5a4cc08940e0ede1938994
+	sha256sums = 6beeacefab0f691cb415c9ab8de227091a3be65510c3d8c0479513b261e61b97
+	sha256sums = cfc78b361861a726d22f0654d7c4e0b47f843c4a9e8b605c4c99e91ea683e116
+
+pkgname = hunspell-bn
