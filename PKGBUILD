@@ -1,6 +1,6 @@
 # Maintainer: kofany <j@dabrowski.biz>
 pkgname=terx-bin
-pkgver=0.2.21
+pkgver=0.2.22
 pkgrel=1
 pkgdesc="Cross-platform SSH client with GPU-accelerated terminal rendering"
 arch=('x86_64')
@@ -25,7 +25,7 @@ provides=('terx')
 conflicts=('terx')
 options=('!strip' '!debug')
 source=("terx-bin-${pkgver}.pkg.tar.zst::https://github.com/OutrageLabs/terX/releases/download/v${pkgver}/terx-bin-${pkgver}-1-x86_64.pkg.tar.zst")
-sha256sums=('809f6a31f5bc9fa400408526b714b451bcd83afb95859ec53109f4d50f3a2c71')
+sha256sums=('2b08968df93aaa80288a91a5815e11808ba249548454c6f510b8e58b87206a9e')
 noextract=("terx-bin-${pkgver}.pkg.tar.zst")
 
 package() {
