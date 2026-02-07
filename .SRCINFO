@@ -1,19 +1,19 @@
 pkgbase = lean
 	pkgdesc = Lean 4 programming language and theorem prover
-	pkgver = 4.21.0
+	pkgver = 4.27.0
 	pkgrel = 1
 	url = https://github.com/leanprover/lean4
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = ccache
-	makedepends = clang19
+	makedepends = clang
 	makedepends = cmake
 	makedepends = git
 	depends = gmp
 	depends = libuv
-	depends = llvm19
+	depends = llvm
 	options = ccache
-	source = lean-4.21.0.tar.gz::https://github.com/leanprover/lean4/archive/refs/tags/v4.21.0.tar.gz
-	sha256sums = fb4a1b696fad43336267e9b2f70f3cfb97e4c7f9985af0eee655732312ed7d48
+	source = lean-4.27.0.tar.gz::https://github.com/leanprover/lean4/archive/refs/tags/v4.27.0.tar.gz
+	sha256sums = 6e81a8b5ffdd73bb0911ad7bdb0b14616137c4b54610036b8c1b50856fe0b550
 
 pkgname = lean
