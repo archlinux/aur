@@ -1,6 +1,6 @@
 # Maintainer: FrogSnot
 pkgname=hardbore
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="High-performance file manager for Linux"
 arch=('x86_64')
@@ -9,20 +9,14 @@ license=('AGPL-3.0-only')
 depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'librsvg' 'sqlite' 'dbus')
 makedepends=('npm' 'rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1cffe5a04b28410dd8723a8e156879598fbfd2185cc713b09d160abea0e4b751')
-
-prepare() {
-    cd "$srcdir/HardBore-$pkgver"
-    npm install
-}
+sha256sums=('9322b6d5771afa0c7fb2e2a7fc2a6e9a64dcaac738b70dce6c3e74ccee6558e6')
 
 build() {
     cd "$srcdir/HardBore-$pkgver"
     export CARGO_HOME="$srcdir/cargo-home"
-    npm run build
-    cd src-tauri
-    cargo build --release
-    cd ../portal
+    npm install
+    npx tauri build --no-bundle
+    cd portal
     cargo build --release
 }
 
