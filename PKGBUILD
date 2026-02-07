@@ -1,6 +1,6 @@
 # Maintainer: nomisge <nomisge @ live . de>
 pkgname=microblocks
-pkgver=2.0.64
+pkgver=2.0.88
 pkgrel=1
 pkgdesc="MicroBlocks is a free, blocks pogramming language for learning physical computing with educational microcontroller boards such as the micro:bit, Adafruit Circuit Playground Express, and many others."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MPL2')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("${pkgname}-${pkgver}-amd64.deb::https://microblocks.fun/downloads/v$pkgver/packages/ublocks-amd64.deb")
-sha512sums=('a93f4e9a5715dd1bc54752554f0d1b45a649bf05bdd00be9d84790ac9e4a7e5d5e1083982456ec52dfddcb215fdf22f3408a94bd7b361ad37f1aaad19205be7d')
+sha512sums=('e9a4f526b59e25fc3ffd645d1ecd607d8b5a73a25d966c8c9554a7e82ef0859e0b7662db9c229cf4d217a3a49973a1fd4afc7cff9a3c863c7813abf30a7a5cd8')
 
 package(){
 
