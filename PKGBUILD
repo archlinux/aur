@@ -9,8 +9,8 @@
 
 pkgbase=godot-double
 pkgname=(godot-double godot-double-mono)
-pkgver=4.5.1
-pkgrel=0
+pkgver=4.6
+pkgrel=1
 pkgdesc='Advanced cross-platform 2D and 3D game engine (double-precision build)'
 url='https://godotengine.org/'
 license=(MIT)
@@ -51,7 +51,7 @@ optdepends=(
   'pulse-native-provider: for audio support'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/godotengine/godot/archive/$pkgver-stable.tar.gz")
-b2sums=('657f675ebb39a97dd7ec1102b3650ee5a91feb9115634ee964efffcac01d957f9471e78f0169dae20d1c1cd58b99aad31c673ac5c4ed602a6c45266a581b05e0')
+b2sums=('086dc97858e066e1510a108c7751186f5072fe7b41fdbc658957ebd8a5540d6ad34b54f410363bbe12244b2503ce4fd1d02d25c9d0bb6ab701610902b9df8f5b')
 
 prepare() {
   cd "godot-$pkgver-stable"
@@ -82,6 +82,11 @@ prepare() {
   cp org.godotengine.Godot.xml org.godotengine.Godot-Double-mono.xml
 }
 
+case $CARCH in
+  x86_64*) _CARCH=x86_64;;
+  aarch64) _CARCH=arm64;;
+esac
+
 build() {
   cd "godot-$pkgver-stable"
 
@@ -92,7 +97,7 @@ build() {
     cflags="$CFLAGS -fPIC -Wl,-z,relro,-z,now -w"
     cxxflags="$CXXFLAGS -fPIC -Wl,-z,relro,-z,now -w"
     linkflags="$LDFLAGS"
-    arch="$CARCH"
+    arch="$_CARCH"
     builtin_brotli=no
     builtin_certs=no
     builtin_clipper2=yes
@@ -143,7 +148,7 @@ build() {
   scons "${_args[@]}"
 
   # Generate Mono glue using the double-precision Mono binary
-  bin/godot.linuxbsd.editor.double.$CARCH.mono --headless --generate-mono-glue modules/mono/glue
+  bin/godot.linuxbsd.editor.double.$_CARCH.mono --headless --generate-mono-glue modules/mono/glue
 
   # Build Mono assemblies (double-precision)
   modules/mono/build_scripts/build_assemblies.py \
@@ -157,7 +162,7 @@ package_godot-double() {
 
   # 1) Install the non-Mono double editor binary as /usr/bin/godot-double
   install -Dm755 \
-    "bin/godot.linuxbsd.editor.double.$CARCH" \
+    "bin/godot.linuxbsd.editor.double.$_CARCH" \
     "$pkgdir/usr/bin/$pkgname"
 
   # 2) Install its icon (godot-double.svg)
@@ -192,15 +197,15 @@ package_godot-double-mono() {
 
   # 2) Install the double-precision Mono binary under /usr/lib/godot-double-mono/
   install -Dm755 \
-    "bin/godot.linuxbsd.editor.double.$CARCH.mono" \
-    "$pkgdir/usr/lib/$pkgname/godot.linuxbsd.editor.double.$CARCH.mono"
+    "bin/godot.linuxbsd.editor.double.$_CARCH.mono" \
+    "$pkgdir/usr/lib/$pkgname/godot.linuxbsd.editor.double.$_CARCH.mono"
 
   # 3) Copy the generated C# assemblies
   cp -a bin/GodotSharp "$pkgdir/usr/lib/$pkgname/"
 
   # 4) Symlink the executable to /usr/bin/godot-double-mono
   install -d "$pkgdir/usr/bin"
-  ln -s "/usr/lib/$pkgname/godot.linuxbsd.editor.double.$CARCH.mono" \
+  ln -s "/usr/lib/$pkgname/godot.linuxbsd.editor.double.$_CARCH.mono" \
         "$pkgdir/usr/bin/$pkgname"
 
   # 5) Install its icon (godot-double-mono.svg)
