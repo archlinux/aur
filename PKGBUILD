@@ -2,7 +2,7 @@
 _pkgauthor=FrogSnot
 _pkgname=HardBore
 pkgname=hardbore-bin
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="High-performance file manager for Linux (prebuilt binary)"
 arch=('x86_64')
