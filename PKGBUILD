@@ -2,7 +2,7 @@
 
 pkgname=mediawarp
 _name=MediaWarp
-pkgver=0.1.8
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="EmbyServer API Optimization: Optimize playback of Strm files, customize the front-end style, customize the allowed access to the client, embedded scripts, work with Alist to realize Emby playback of web resources, recommended to use with AutoFilm."
 arch=($CARCH)
@@ -37,7 +37,7 @@ source=(
     "${pkgname}.tmpfiles"
     "${pkgname}.sysusers"
 )
-sha256sums=('bb6e1ba8865cecf08db4e0647fde629239f6250bfa14836c751e76e31296e5b4'
+sha256sums=('b192fb8ce278582086ce47401820dba65c2e9972e657d8e20b3b9d1c3aebc497'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -68,8 +68,8 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-    #     export GO111MODULE=on
-    #     export GOPROXY=https://goproxy.cn,direct
+    export GO111MODULE=on
+    export GOPROXY=https://goproxy.cn,direct
 
     #     go clean -modcache
     #     go mod init "${url#https://}"
