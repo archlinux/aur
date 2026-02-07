@@ -28,14 +28,20 @@ prepare() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR="$srcdir/target"
   
+  # Determine target triple
+  if [ "$CARCH" = "x86_64" ]; then
+    _target="x86_64-unknown-linux-gnu"
+  elif [ "$CARCH" = "aarch64" ]; then
+    _target="aarch64-unknown-linux-gnu"
+  else
+    _target="$CARCH-unknown-linux-gnu"
+  fi
+  
   # Create target directory structure
   mkdir -p "$srcdir/target"
   
-  # Fetch dependencies with target-specific optimization
-  cargo fetch --target "$CARCH-unknown-linux-gnu"
-  
-  # Ensure all features are available
-  cargo check --features="all-features" --target "$CARCH-unknown-linux-gnu"
+  # Update Cargo.lock if needed and fetch dependencies
+  cargo fetch --target "$_target"
 }
 
 
@@ -43,6 +49,15 @@ build() {
   cd "$srcdir/${pkgname}-${pkgver}"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
+  
+  # Determine target triple
+  if [ "$CARCH" = "x86_64" ]; then
+    _target="x86_64-unknown-linux-gnu"
+  elif [ "$CARCH" = "aarch64" ]; then
+    _target="aarch64-unknown-linux-gnu"
+  else
+    _target="$CARCH-unknown-linux-gnu"
+  fi
   
   # Optimized Rust compilation flags for AUR
   export CARGO_TARGET_DIR="$srcdir/target"
@@ -52,13 +67,13 @@ build() {
   export CXXFLAGS="${CXXFLAGS} -flto -march=native -mtune=native"
   
   # Build with all features enabled for maximum functionality
-  cargo build --release --frozen --features="all-features" --target "$CARCH-unknown-linux-gnu"
+  cargo build --release --features="all-features" --target "$_target"
   
   # Generate shell completions
   mkdir -p completions
-  ./target/$CARCH-unknown-linux-gnu/release/echomind --generate-completion bash > completions/echomind.bash
-  ./target/$CARCH-unknown-linux-gnu/release/echomind --generate-completion zsh > completions/_echomind
-  ./target/$CARCH-unknown-linux-gnu/release/echomind --generate-completion fish > completions/echomind.fish
+  ./target/$_target/release/echomind --generate-completion bash > completions/echomind.bash
+  ./target/$_target/release/echomind --generate-completion zsh > completions/_echomind
+  ./target/$_target/release/echomind --generate-completion fish > completions/echomind.fish
 }
 
 check() {
@@ -66,14 +81,33 @@ check() {
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR="$srcdir/target"
-  cargo test --release --frozen --features="all-features" --target "$CARCH-unknown-linux-gnu"
+  
+  # Determine target triple
+  if [ "$CARCH" = "x86_64" ]; then
+    _target="x86_64-unknown-linux-gnu"
+  elif [ "$CARCH" = "aarch64" ]; then
+    _target="aarch64-unknown-linux-gnu"
+  else
+    _target="$CARCH-unknown-linux-gnu"
+  fi
+  
+  cargo test --release --features="all-features" --target "$_target"
 }
 
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
   
+  # Determine target triple
+  if [ "$CARCH" = "x86_64" ]; then
+    _target="x86_64-unknown-linux-gnu"
+  elif [ "$CARCH" = "aarch64" ]; then
+    _target="aarch64-unknown-linux-gnu"
+  else
+    _target="$CARCH-unknown-linux-gnu"
+  fi
+  
   # Install binary
-  install -Dm755 target/$CARCH-unknown-linux-gnu/release/echomind "$pkgdir/usr/bin/echomind"
+  install -Dm755 target/$_target/release/echomind "$pkgdir/usr/bin/echomind"
   
   # Install documentation (use docs/ directory for actual files)
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
