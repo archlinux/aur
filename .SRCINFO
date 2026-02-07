@@ -1,6 +1,6 @@
 pkgbase = r-network
 	pkgdesc = Classes for Relational Data
-	pkgver = 1.19.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=network
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = r-network
 	optdepends = r-covr
 	optdepends = r-sna
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/network_1.19.0.tar.gz
-	sha256sums = fd12a007fb16411ef386102f3ebb582ffc5b6798a7eb83858cb8601e1a152012
+	source = https://cran.r-project.org/src/contrib/network_1.20.0.tar.gz
+	sha256sums = 55d956be5b4e0f56931fdf1f44ca66c7f1aaafd2b859a01901c2ff248cec851f
 
 pkgname = r-network
