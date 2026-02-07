@@ -1,7 +1,7 @@
 # Maintainer: Nissar Chababy <funilrys at outlook dot com>
 # Ex-Maintainer: K0n24d <konrad AT knauber DOT net>
 pkgname=urbackup2-client
-pkgver=2.5.28
+pkgver=2.5.29
 pkgrel=1
 pkgdesc="Client Server backup system"
 arch=('i686' 'x86_64' 'armv5' 'armv6h' 'armv6' 'armv7h' 'armv7' 'aarch64')
@@ -22,7 +22,7 @@ source=(
     'md5-bytes.patch'
     'uintptr_t.patch'
 )
-sha512sums=('9565ab61803fd0f7d892e3c039155ab52a7b0b7bde639697d2f41c248a97c29c5cb828ed9da5b53aa95aeef0c676d9f3d537bf21cce0d7719252201160678074'
+sha512sums=('b55abe15185971d7a1e3603f47960e16c632c7e43702b1690d1ad5f53e6d471ae936bc32dc07968a0992f2a6eff9e386768126fa06d351012c0251dec4e829a0'
             '416fb8f5f3687a3c369cc2b199d4c8b4170494f0a119566a91ac6a0c2f202dc5049804c10508b66ba657011b39be5ddd055091cd531a665b4398899f404086ca'
             '860021ce5b8d92ff58e8286991162c7bab45493c3b9c87577a43764f6b416397448bb99b8fcb850c4c5853927cb0a8637792b75ff53ee7ee257da3f5d29ae3a7'
             'fde5912b589a495dc03a26d174d7673ff746eed34d6b1ed64758b2dc2ec2ec53e02e6a28b04734a7112f16687b31d25123e99dbc69e9dcab48773675382ec582'
