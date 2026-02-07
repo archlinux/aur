@@ -1,14 +1,14 @@
 pkgname=traur
-pkgver=0.1.6
+pkgver=0.2.0
 pkgrel=1
-pkgdesc='Heuristic security scanner for AUR packages'
+pkgdesc='Pre-install trust scoring for AUR packages'
 arch=('x86_64')
 url='https://github.com/Sohimaster/traur'
 license=('MIT')
 depends=('git' 'pacman')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('53e74bdeb56e00888d90de925c3c14889e69d098aa3f4d961a6ba65e9fc1c410')
+sha256sums=('f1fcf80477adaf204ebd4975f1fd5ec500fd8026840f0eebddb526211e9b6d61')
 backup=('etc/traur/config.toml')
 
 build() {
