@@ -1,6 +1,6 @@
 # Maintainer: Guru <anjanaya@gmail.com>
 pkgname=ralph-tui
-pkgver=0.6.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="AI Agent Loop Orchestrator - terminal UI for automating task completion with AI coding agents"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/subsy/ralph-tui"
 license=('MIT')
 depends=('bun')
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-sha256sums=('25796e772a98585f8ff149303a6c68309673d611438ef7ae086cc4ea6b12a99e')
+sha256sums=('e4270c900a096bf88a998267f26d8ebfd36f1988e6dfcd3d41666d3bb054c823')
 noextract=("${pkgname}-${pkgver}.tgz")
 
 prepare() {
