@@ -1,16 +1,12 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 # Contributors:
-# Siavash Askari Nasr <ciavash@proton.me>
-# Vladimir Svyatski <vsvyatski@yandex.ru>
-# Dimitris Kiziridis <ragouel@outlook.com>
-# EatMyVenom <eat.my.venomm@gmail.com>
-# Uncle Hunto <unclehunto@yahoo.com>
-# Limao Luo <luolimao+AUR@gmail.com>
-# TuxSpirit <tuxspirit@archlinux.fr>
-# Jamesjon <universales@protonmail.com>
+# Siavash Askari Nasr <ciavash@proton.me> # Vladimir Svyatski <vsvyatski@yandex.ru>
+# EatMyVenom <eat.my.venomm@gmail.com>    # Dimitris Kiziridis <ragouel@outlook.com>
+# Uncle Hunto <unclehunto@yahoo.com>      # Limao Luo <luolimao+AUR@gmail.com>
+# TuxSpirit <tuxspirit@archlinux.fr>      # Jamesjon <universales@protonmail.com>
 
 pkgname=peazip-qt-bin
-pkgver=10.8.0
+pkgver=10.9.0
 pkgrel=1
 pkgdesc='PeaZip file manager and archiver (binary release)'
 url='https://github.com/peazip/PeaZip'
@@ -22,7 +18,7 @@ options=('!emptydirs')
 provides=("pea" "peazip")
 conflicts=("pea" "peazip")
 source=("$url/releases/download/$pkgver/peazip-$pkgver.LINUX.Qt6-1.x86_64.rpm")
-sha256sums=('08eee374384f5f416efc1ac29eb2653afb28474405fab81fcad93d0bef86cbb8')
+sha256sums=('3008e360fd302c52c6a0a7c8e2935a10941225c9058a3be6e32a158f38fcc7af')
 
 prepare() {
 # Cleanup
