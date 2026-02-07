@@ -1,0 +1,29 @@
+pkgbase = karp
+	pkgdesc = Simple PDF editor to arrange, merge and improve PDF file(s)
+	pkgver = 25.03.80
+	pkgrel = 1
+	url = https://apps.kde.org/karp/
+	arch = x86_64
+	license = GPL-2.0-only OR GPL-3.0-only
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = ninja
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = kconfig
+	depends = kcoreaddons
+	depends = kcrash
+	depends = ki18n
+	depends = kiconthemes
+	depends = kirigami
+	depends = kirigami-addons
+	depends = qpdf
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-webengine
+	source = git+https://invent.kde.org/graphics/karp.git#tag=v25.03.80
+	b2sums = 326423594893753e6ce49b19acc60e74850d4a8dc61f3bdafe480422d5d302d189f7e84a1d491031b55710f5b4856e0acd060ec16b40673b7d112a31add83a47
+
+pkgname = karp

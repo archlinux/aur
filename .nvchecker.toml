@@ -1,0 +1,4 @@
+[karp]
+source = "git"
+git = "https://invent.kde.org/graphics/karp"
+prefix = "v"
