@@ -3,17 +3,21 @@
 _rockname=cluacov
 pkgbase="lua-$_rockname"
 pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
-pkgver=0.1.4
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='C extensions for LuaCov'
-arch=('x86_64' 'i686')
+arch=(x86_64 i686)
 url="https://github.com/luarocks/$_rockname"
-license=('MIT')
-depends=('lua')
-_lua_deps=('luacov')
-makedepends=('lua' 'lua53' 'lua52' 'lua51' 'luarocks')
+license=(MIT)
+depends=(lua)
+_lua_deps=(luacov)
+makedepends=(lua
+             lua51
+             lua52
+             lua53
+             luarocks)
 source=("$_rockname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('6d96004bb17ef14c3569934d64651d7fd0d451c6e733f71590989a334a3a7ddb')
+sha256sums=('0d4683d195ec69b070ba6d37ccb07b4c428cba38a727b0e2c2f4ba77e90df4b6')
 
 _package_helper() {
   cd "$_rockname-$pkgver"
