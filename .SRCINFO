@@ -1,6 +1,6 @@
 pkgbase = connected-desktop-bin
 	pkgdesc = High-speed, offline, cross-platform ecosystem bridging devices (Binary)
-	pkgver = 2.1.7
+	pkgver = 2.2.8
 	pkgrel = 1
 	url = https://github.com/paterkleomenis/connected
 	arch = x86_64
@@ -14,10 +14,15 @@ pkgbase = connected-desktop-bin
 	provides = connected-desktop
 	conflicts = connected-desktop
 	conflicts = connected-desktop-git
-	source = https://github.com/paterkleomenis/connected/releases/download/2.1.7/connected-desktop
+	source = https://github.com/paterkleomenis/connected/releases/download/2.2.8/connected-desktop
 	source = https://raw.githubusercontent.com/paterkleomenis/connected/main/packaging/aur/connected-desktop.desktop
 	source = https://raw.githubusercontent.com/paterkleomenis/connected/main/android/app/src/main/ic_launcher-playstore.png
 	source = https://raw.githubusercontent.com/paterkleomenis/connected/main/LICENSE-MIT
 	source = https://raw.githubusercontent.com/paterkleomenis/connected/main/LICENSE-APACHE
+	sha256sums = ebfd1702f9a7bfc4616640c921a1db3011ecbae36c12fbad9ec36b65070c30eb
+	sha256sums = baf3b2e0d55d9fcb23630a7a6c0eff68eb9b708f8f0ce8e698dcf8ea611666ad
+	sha256sums = 9e0b561ca05d47281fe703e6d85cb2086781b3815b267c50e4f82b2186f59a90
+	sha256sums = fdc5b45803bf8f5d4435509da25399414072b3d95badd6b09b2e84c2f1f198d5
+	sha256sums = 6bbe4ace8a1818f89b96dfdda9f9d4b9a178bc047c3dc2511a3d93d51f86d7ae
 
 pkgname = connected-desktop-bin
