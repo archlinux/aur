@@ -1,6 +1,6 @@
 pkgbase = git-credential-manager
 	pkgdesc = A secure Git credential helper built on .NET that runs on Windows, macOS, and Linux
-	pkgver = 2.6.1
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://github.com/git-ecosystem/git-credential-manager
 	install = git-credential-manager.install
@@ -16,7 +16,7 @@ pkgbase = git-credential-manager
 	makedepends = zlib
 	options = !strip
 	options = !debug
-	source = git-credential-manager-2.6.1.tar.gz::https://github.com/git-ecosystem/git-credential-manager/archive/refs/tags/v2.6.1.tar.gz
+	source = git-credential-manager-2.7.0.tar.gz::https://github.com/git-ecosystem/git-credential-manager/archive/refs/tags/v2.7.0.tar.gz
 	source = trim-executables.diff
 	sha512sums = df08ffcfb9063fba6a8d178d558abf1919a72d5a4dde414e7af1e13304c59651901953fc45a773a5e9f484bb38959f5cf522f64e04baf51947e3b1d0abb5bd5f
 	sha512sums = e5253397233ef8aee547402c4c1e2430ed8bf87346896d7052ce5ef4967fb705431b3516d53c1508aee9eb1fbe3204500c614be04fe2af326851a8a7d2fefd6d
