@@ -1,6 +1,6 @@
 # Maintainer: Guru <anjanaya@gmail.com>
 pkgname=ttl-bin
-pkgver=0.15.3
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="Fast, modern traceroute with real-time TUI, per-hop stats, ASN/geo lookup, ECMP detection, and MPLS label parsing"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ conflicts=('ttl')
 install=ttl-bin.install
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/lance0/ttl/releases/download/v${pkgver}/ttl-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/lance0/ttl/releases/download/v${pkgver}/ttl-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('7bb9fa63e19f85403bb8403f9524b05a629d1e0722d8119f12b47d1c0d330451')
-sha256sums_aarch64=('8e721296322147b9756f0e737231067b5b667be26972b00c368ad68f9711010f')
+sha256sums_x86_64=('c5de2aeb975a6316b19a35b6be193ea73259a312d690c8a49de562d62d199dec')
+sha256sums_aarch64=('73f6a54f00e395642f588591ed5e7f338ee4369409f6cdca0eb9c6bc07725b7c')
 
 package() {
     install -Dm755 "${srcdir}/ttl" "${pkgdir}/usr/bin/ttl"
