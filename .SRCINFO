@@ -8,7 +8,6 @@ pkgbase = lianwall-gui-bin
 	depends = lianwalld-bin
 	depends = qt6-base
 	depends = qt6-declarative
-	depends = qt6-quickcontrols2
 	depends = ffmpeg
 	optdepends = lianwall-bin: CLI client for lianwalld
 	provides = lianwall-gui
