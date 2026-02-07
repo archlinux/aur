@@ -1,6 +1,6 @@
 # Maintainer: FrogSnot
 pkgname=hardbore
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="High-performance file manager for Linux"
 arch=('x86_64')
@@ -22,14 +22,15 @@ build() {
     npm run build
     cd src-tauri
     cargo build --release
-    cargo build --release --bin portal
+    cd ../portal
+    cargo build --release
 }
 
 package() {
     cd "$srcdir/HardBore-$pkgver"
 
     install -Dm755 "src-tauri/target/release/hardbore" "$pkgdir/usr/bin/hardbore"
-    install -Dm755 "src-tauri/target/release/portal" "$pkgdir/usr/local/bin/hardbore-portal"
+    install -Dm755 "portal/target/release/portal" "$pkgdir/usr/local/bin/hardbore-portal"
 
     install -Dm644 "hardbore.desktop" "$pkgdir/usr/share/applications/hardbore.desktop"
     install -Dm644 "src-tauri/icons/128x128.png" "$pkgdir/usr/share/pixmaps/hardbore.png"
