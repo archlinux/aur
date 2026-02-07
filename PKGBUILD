@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lvce-bin
-pkgver=0.72.0
+pkgver=0.72.2
 _electronversion=40
 pkgrel=1
 pkgdesc="VS Code inspired text editor that mostly runs in a webworker.(Prebuilt version.Use system-wide electron)"
@@ -30,9 +30,9 @@ source=(
 )
 sha256sums=('ada1a0303abece27be80372538645da5c5b4e9d60fcacc87b97da1c26b8931bc'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('55db9a109219fab150474ba1d9015db8d43e85d4bcdfc781247760b799c3d246')
-sha256sums_armv7h=('4f1fa8916a8217c0b43fae97d185bd53f24cb87e5da5df7a9e4f23e15b21efb5')
-sha256sums_x86_64=('f0dc2057dda56b618a2557ae8cd753e817d2ad08fa3f5ad508c1ac8c520a8ce5')
+sha256sums_aarch64=('b7b22c8f47f7eb0b51f09a3443ebec36dbd216fc186de94fcccb1044dff8f703')
+sha256sums_armv7h=('d6fdd72759e9457949985a38cb0b5c3aa374483d4ab69564a578f592e1d4aeef')
+sha256sums_x86_64=('6fadb140f8cab3865274b00b6d6d86d7ebc3c763c33976d3f82af5c45b7e9e91')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/usr/lib/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
