@@ -1,0 +1,4 @@
+[hepmc2]
+source = 'regex'
+url = 'https://hepmc.web.cern.ch/'
+regex = 'hepmc(2[\d.]+).tgz'
