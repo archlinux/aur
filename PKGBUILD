@@ -12,7 +12,7 @@ depends=('glibc')
 options=('!strip')
 
 source=(
-    "https://github.com/Rve27/RvKernel-Manager-Linux/releases/download/${pkgver}/rvkernel-manager_${pkgver}_amd64.deb"
+    "rvkernel-manager_${pkgver}_amd64.deb::https://github.com/Rve27/RvKernel-Manager-Linux/releases/download/${pkgver}/rvkernel-manager_${pkgver}_amd64.deb"
     "rvkernel-manager-LICENSE::https://raw.githubusercontent.com/Rve27/RvKernel-Manager-Linux/main/LICENSE"
 )
 
