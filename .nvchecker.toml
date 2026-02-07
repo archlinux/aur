@@ -1,0 +1,4 @@
+[squeak-vm]
+source = 'regex'
+url = 'http://squeakvm.org/unix/release/'
+regex = 'Squeak-([\d.]+)-linux'
