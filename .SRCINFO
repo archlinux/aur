@@ -1,7 +1,7 @@
 pkgbase = icu77
 	pkgdesc = International Components for Unicode library
 	pkgver = 77.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://icu.unicode.org
 	arch = x86_64
 	license = LicenseRef-Unicode-3.0
