@@ -1,6 +1,6 @@
 # Maintainer: FrogSnot
 pkgname=hardbore
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="High-performance file manager for Linux"
 arch=('x86_64')
@@ -9,11 +9,13 @@ license=('AGPL-3.0-only')
 depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'librsvg' 'sqlite' 'dbus')
 makedepends=('npm' 'rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6ee18a22793eaa1383a5b35a776ec5c0dfdeec822f953941962b910ccc140a2a')
+sha256sums=('0623895ca682af148cb1511db7a72930de6d99da9bb5fc67d5114b3b761a015b')
 
 build() {
     cd "$srcdir/HardBore-$pkgver"
     export CARGO_HOME="$srcdir/cargo-home"
+    # Arch's rust defaults to lld which mishandles bundled SQLite static linking
+    export RUSTFLAGS="${RUSTFLAGS:-} -C link-arg=-fuse-ld=bfd"
     npm install
     npx tauri build --no-bundle
     cd portal
