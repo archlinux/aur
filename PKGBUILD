@@ -1,0 +1,61 @@
+# Maintainer:
+pkgname=pudu-launcher-git
+pkgver=r12.d57587d
+pkgrel=1
+pkgdesc="Alternative game launcher for Unitystation"
+arch=('x86_64')
+url="https://github.com/corp-0/PuduLauncher"
+license=('MIT')
+depends=(
+  'cairo'
+  'desktop-file-utils'
+  'gdk-pixbuf2'
+  'glib2'
+  'gtk3'
+  'hicolor-icon-theme'
+  'libsoup3'
+  'openssl'
+  'pango'
+  'webkit2gtk-4.1'
+)
+makedepends=(
+  'clang'
+  'dotnet-sdk-9.0'
+  'git'
+  'libappindicator-gtk3'
+  'librsvg'
+  'nodejs'
+  'npm'
+  'patchelf'
+  'rust'
+  'zlib'
+)
+install=pudu-launcher.install
+provides=('pudu-launcher')
+conflicts=('pudu-launcher')
+source=("git+${url}.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd PuduLauncher
+  ( set -o pipefail
+    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  )
+}
+
+prepare() {
+  cd PuduLauncher
+  npm ci
+}
+
+build() {
+  cd PuduLauncher
+  export DOTNET_CLI_TELEMETRY_OPTOUT=1
+  npx tauri build -b deb
+}
+
+package() {
+  cd "${srcdir}/PuduLauncher/src-tauri/target/release/bundle/deb"
+  cp -a pudu-launcher_*/data/usr "${pkgdir}/"
+}
