@@ -2,7 +2,7 @@
 # Contributor: Michel Zou <xantares09@hotmail.com>
 _base=condastats
 pkgname=python-${_base}
-pkgver=0.3.0
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Conda package stats CLI"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(python-dask python-s3fs python-pyarrow)
 makedepends=(python-setuptools)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('3d2a859f4b1887f39376251fdfcd57ec07248508ca59e43e4b444097d381cc5a5089f5e3079a64f3f5daedc5eaa96e5f92c4476c0d0a7f8735dc1ad0d13bc84a')
+sha512sums=('de1c5410d3da89b9f22c27ab9d5402cb51052daaa5d7aee6c764d12e2f9678e323bc8abd137511b83d5cf2a99054757681909cb339be9e5e640c970faceabd29')
 
 build() {
   cd ${_base}-${pkgver}
