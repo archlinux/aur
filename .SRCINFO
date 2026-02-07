@@ -1,17 +1,17 @@
 pkgbase = flood-bin
 	pkgdesc = A modern web UI for various torrent clients with a Node.js backend and React frontend
-	pkgver = 4.11.0
+	pkgver = 4.12.2
 	pkgrel = 1
 	url = https://github.com/jesec/flood
 	arch = x86_64
 	license = GPL-3.0
 	provides = nodejs-flood
 	conflicts = nodejs-flood
-	source = https://github.com/jesec/flood/releases/download/v4.11.0/flood-linux-x64
-	source = https://raw.githubusercontent.com/jesec/flood/refs/tags/v4.11.0/distribution/shared/flood%40.service
-	sha256sums = ba36cd2d0f2638063e8daf252aafa29df7826390465c11c3ae9a83354e833e65
+	source = https://github.com/jesec/flood/releases/download/v4.12.2/flood-linux-x64
+	source = https://raw.githubusercontent.com/jesec/flood/refs/tags/v4.12.2/distribution/shared/flood%40.service
+	sha256sums = 5ba8168004a9b6eefc078b7635d1a7d562fa74705c9ed2d106d004206a6bc71f
 	sha256sums = 893a6b83de3b9dec9f0f131d16ba5b50806d57e435350d65d93fb4d39c13622a
-	sha512sums = 1d46e2b6de5968b472e5d750df0f18795e29ad44ad71ccb955afc33662fa54edf5016c1e59af1389c3ae14322b21f8165f9817a39a7522886a670a777ef5f8d3
+	sha512sums = 6450a527e2bddf4eaa4b2380a2a4b243349f4844cb9f6391e22acd811aad954078b5f579b427d67b35b11bc481b93e5d7370ee25d18696f166a1999b3955ff97
 	sha512sums = e875c515a6197064bcfc26d07bfab26adcd577c6cded879be2902a699840eb563f2376f373ba3c1fdf7af2eb32b4676b569429d1f0f53aba24617a5ae7045f0d
 
 pkgname = flood-bin
