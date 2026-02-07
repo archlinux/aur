@@ -1,0 +1,19 @@
+pkgbase = dotline
+	pkgdesc = A modern crosshair overlay
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/Parcoil/dotline
+	arch = x86_64
+	license = MIT
+	makedepends = pnpm
+	depends = nodejs
+	conflicts = dotline-bin
+	conflicts = dotline-git
+	source = dotline-0.3.1.tar.gz::https://github.com/Parcoil/dotline/archive/refs/tags/v0.3.1.tar.gz
+	source = dotline.sh
+	source = dotline.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = dotline
