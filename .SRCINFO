@@ -1,0 +1,16 @@
+pkgbase = rustky
+	pkgdesc = A modern conky-like system monitor for Wayland
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/pegasusheavy/rustky
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = wayland-protocols
+	depends = wayland
+	depends = ttf-dejavu
+	optdepends = python: Python scripting support (build with python-scripting feature)
+	source = rustky-0.1.0.tar.gz::https://github.com/pegasusheavy/rustky/archive/v0.1.0.tar.gz
+	sha256sums = e7c495a162d540aa2fdb0bb92a83b02ff2176cfa1ba6e4683c749c846cba93ef
+
+pkgname = rustky
