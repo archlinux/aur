@@ -1,11 +1,14 @@
 -------------------------------------------------------
  Changelog    : process-mem
- Tags         : 1.2.0 ➙ 1.5.0
-              : 2024-10-13 ➙ 2026-01-04
+ Tags         : 1.3.0 ➙ 1.6.0
+              : 2024-12-31 ➙ 2026-02-07
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-01-04   : 1.5.0
+ 2026-02-07   : 1.6.0
+              - Add check for bad regex and issue warning
+
+ 2026-01-04   : 1.5.0, origin/master
               - **1.5.0**
             
                 * Code Reorg
@@ -31,12 +34,4 @@
                 Add git signing key to Arch Package
                 Bump python vers
  2024-10-13   ⋯
-              - update Changelog and man page
-
- 2024-10-13   : 1.2.0
-              - Split up and use separate files to simplify.
-                Add new sort options (defaut is by process name)
-                  -sm, --sort-mem       Sort by resident memory use instead of process name
-                  -sr, --sort-rev       Sort in reverse order
- 2024-09-30   ⋯
               - update Changelog and man page
