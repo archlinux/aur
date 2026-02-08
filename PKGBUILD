@@ -15,24 +15,32 @@ pkgrel=1
 pkgdesc="Ente two-factor authenticator."
 arch=('x86_64')
 url="https://github.com/ente-io/ente/tree/main/auth"
-license=('AGPL-3.0')
+license=('AGPL-3.0-only')
 depends=('at-spi2-core' 'ayatana-ido' 'cairo' 'desktop-file-utils' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'harfbuzz' 'hicolor-icon-theme' 'libappindicator-gtk3' 'libayatana-appindicator' 'libsecret' 'libsodium' 'pango' 'sqlite' 'webkit2gtk')
 makedepends=('patchelf' 'clang' 'git' 'cmake' 'ninja' "jdk${_jdk_ver}-openjdk")
 options=('!strip' '!emptydirs')
-source_x86_64=("git+https://github.com/ente-io/auth.git"
-        "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${_FLUTTER_VERSION}-stable.tar.xz"
+source=("git+https://github.com/ente-io/auth.git"
         "fix-flutter.patch"
 )
-sha512sums_x86_64=('SKIP'
-                   'c46984bb59a3fb5337d1bd4dd7f41306ad66a8b0430c69a41c755c3d8d8ebe0a3b5be7c8fdc25ef202cfeab7faa31914ffb21bc4ad928f4eb7d352ca00248f3e'
-                   '00a812be226ae347d9bda689245a5af39b967e62e8d7d838ff02434e1d4735a79b4e60054ee1bf18f912c7e086c912d4d5c1fb5deb4be2b9edb12eb935c4f594')
+source_x86_64=("https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${_FLUTTER_VERSION}-stable.tar.xz")
+sha512sums=('SKIP'
+            '00a812be226ae347d9bda689245a5af39b967e62e8d7d838ff02434e1d4735a79b4e60054ee1bf18f912c7e086c912d4d5c1fb5deb4be2b9edb12eb935c4f594')
+sha512sums_x86_64=('c46984bb59a3fb5337d1bd4dd7f41306ad66a8b0430c69a41c755c3d8d8ebe0a3b5be7c8fdc25ef202cfeab7faa31914ffb21bc4ad928f4eb7d352ca00248f3e')
 provides=('ente-auth')
 conflicts=('ente-auth')
+
+export PATH_=$PATH
 
 pkgver() {
   cd "$srcdir/auth"
   # cutting off 'auth-v' prefix that presents in the git tag
   git describe --long --tags --abbrev=7 | sed 's/^auth-v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+set_env(){
+    export PUB_CACHE="${srcdir}/.pub-cache"
+    export PATH="$srcdir/flutter/bin":"$PATH_":"$PUB_CACHE/bin"
+    export JAVA_HOME="/usr/lib/jvm/java-${_jdk_ver}-openjdk"
 }
 
 prepare(){
@@ -57,23 +65,36 @@ prepare(){
     echo "✅ Updated $APPDATA_FILE with version ${VERSION_NAME}"
     echo "Release entry added:"
     echo "$NEW_RELEASE"
+
+    set_env
+    # Disable analytics
+    flutter --disable-analytics
+
+    # Ensure no build artifacts are cached
+    flutter clean
 }
 
 build() {
-    export PUB_CACHE="${srcdir}/.pub-cache"
-    export PATH="$srcdir/flutter/bin":"$PATH":"$PUB_CACHE/bin"
-    export JAVA_HOME="/usr/lib/jvm/java-${_jdk_ver}-openjdk"
+    set_env
     
     cd "${srcdir}/auth/mobile/packages/strings"
     flutter gen-l10n
     
     cd "$srcdir/auth/mobile/apps/auth/"
+    flutter config --no-analytics
+    dart --disable-analytics
     flutter pub get
     flutter config --enable-linux-desktop
     #flutter build linux --release
     
     dart pub global activate --source git https://github.com/ente-io/fastforgefork --git-ref develop --git-path packages/fastforge
     fastforge package --platform=linux --targets=pacman --skip-clean
+}
+
+check() {
+    cd "$srcdir/auth/mobile/apps/auth/"
+    set_env
+    flutter test
 }
 
 package(){
