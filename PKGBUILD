@@ -3,22 +3,25 @@
 
 pkgname=(backintime backintime-cli)
 _pkgname="backintime"
-pkgver=1.5.6
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 arch=(any)
 url="https://github.com/bit-team/backintime"
-license=(GPL)
-makedepends=(python)
+license=(GPL-1.0-or-later)
+makedepends=(asciidoctor man-db python-pyfakefs)
 #checkdepends=(openssh python-dbus rsync systemd python-pyfakefs oxygen-icons python-pylint)
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/bit-team/$_pkgname/archive/refs/tags/v$pkgver.tar.gz"
+  2401.patch::https://patch-diff.githubusercontent.com/raw/bit-team/backintime/pull/2401.patch
 backintime-backup-job.{service,timer})
-sha256sums=('42cdf3ecb37f692d42c78a89256e4678c8d6beb315fe49fe03d7248071f28391'
+sha256sums=('2c08945e9abc52b87cc3d70cd382e7b88a427eb0a45e4590d3895549da94e34f'
+            '8a04fadb0a589f4dd64d3b619cd41927407d5f3d3b4a6d50725e1114fc584d67'
             '8a3aa12434048d604836b709df18528fe51867de7c8d229190eb5b518fa6d918'
             '5f9346be71d16786cb547362fe35755c8af59095e985c27d28ac14dfe791b7c8')
 
-#prepare() {i
-#  cd "$_pkgname-$pkgver"
-#}
+prepare() {
+  cd "$_pkgname-$pkgver"
+  patch -p1 -i ../2401.patch
+}
 
 build() {
   cd "$_pkgname-$pkgver/common"
@@ -37,8 +40,10 @@ build() {
 
 package_backintime-cli() {
   pkgdesc="Simple backup system inspired from the Flyback Project and TimeVault. CLI version."
-  depends=(openssh python-dbus python-keyring rsync python-packaging)
-  optdepends=('backintime: Qt6 GUI version')
+  depends=(openssh python-dbus python-keyring python-packaging rsync sshfs)
+  optdepends=('backintime: Qt6 GUI version'
+    'encfs: encrypted filesystem in user-space'
+    'gocryptfs: encrypted overlay filesystem')
 
   cd "$_pkgname-$pkgver/common"
   make DESTDIR="$pkgdir" install
@@ -48,7 +53,7 @@ package_backintime-cli() {
 
 package_backintime() {
   pkgdesc="Simple backup system inspired from the Flyback Project and TimeVault. Qt6 GUI version."
-  depends=("backintime-cli=$pkgver" polkit python-dbus python-pyqt6 xorg-xdpyinfo sshfs)
+  depends=("backintime-cli=$pkgver" polkit python-pyqt6 python-secretstorage qt6-svg xorg-xdpyinfo)
   # note users can optionally install EITHER kompare OR meld but not both!
   optdepends=('cronie: to trigger automated backups'
   'kompare: diff/patch frontend'
