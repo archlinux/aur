@@ -9,7 +9,7 @@ pkgrel=1
 
 arch=("x86_64")
 url="https://github.com/CaffeeLake/bsky-electron"
-license=('GPL-3.0-only')
+license=('MPL-3.0')
 
 depends=('electron')
 makedepends=('pnpm' 'npm')
