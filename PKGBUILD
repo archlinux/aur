@@ -25,24 +25,28 @@ prepare() {
 }
 
 package() {
-  # The installer uses a temporary makefile which fails when run in parallel.
-  export MAKEFLAGS='-j1'
-
   install -d "${pkgdir}"/opt
 
   # The installer builds a folder in /tmp, then install the package from there, but
   # makepkg does not allow access to /tmp. So bubblewrap is used here instead as a
-  # mini container with a separate /tmp for the installer. LD_PRELOAD causes some
-  # issues with bwrap, though.
+  # mini container with a separate /tmp for the installer. That /tmp folder also
+  # has a makefile which fails when run in parallel, so -j1 is required.
+  #
+  # LD_PRELOAD causes some issues with bwrap, though, so it's removed from bwrap,
+  # but kept in the temporary installer.
   env -u LD_PRELOAD \
     bwrap --unshare-all --die-with-parent \
       --bind "${pkgdir}"/opt /opt \
       --bind "${srcdir}/sgx_linux_x64_sdk_${_pkgver}.bin" /sgx_linux_x64_sdk.bin \
+      --setenv MAKEFLAGS '-j1' \
+      --setenv LD_PRELOAD "${LD_PRELOAD}" \
+      --setenv LD_LIBRARY_PATH "${LD_LIBRARY_PATH}" \
       --dev /dev \
       --tmpfs /tmp \
+      --ro-bind /etc /etc \
       --ro-bind /usr /usr \
-      --ro-bind /lib /lib \
       --ro-bind /bin /bin \
+      --ro-bind /lib /lib \
       --ro-bind /lib64 /lib64 \
       /sgx_linux_x64_sdk.bin --prefix /opt/intel
 
