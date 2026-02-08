@@ -1,4 +1,4 @@
-pkgbase = scrapfetch-rs-bin
+pkgbase = scrapfetch-rs
 	pkgdesc = Small system info splash
 	pkgver = 0.1.4
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = scrapfetch-rs-bin
 	source = https://github.com/egevtech/scrapfetch-rs/releases/download/v0.1.4/scrapfetch-rs-0.1.4-x86_64.tar.gz
 	sha256sums = 1cb41ae8789dbad29ba1dd2b8b5f6a47ee341305e2fb52083bdccdda46263a05
 
-pkgname = scrapfetch-rs-bin
+pkgname = scrapfetch-rs
