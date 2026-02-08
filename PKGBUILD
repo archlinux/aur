@@ -29,7 +29,7 @@ TODO Server installation complete!
 To finish setup, run the following commands:
 
 1. Create a dedicated system user:
-   sudo useradd --system --no-create-home --shell /usr/bin/nologin todo
+   sudo useradd --system --shell /usr/bin/nologin todo
 
 2. Create runtime directories and set ownership:
    sudo mkdir -p /var/lib/todo-server
@@ -45,4 +45,5 @@ You can check the status with:
 Logs are located at: /var/log/todo-server.log
 ===================================================================
 EOF
+cat ${pkgdir}/usr/share/doc/${pkgname}/INSTALL.txt
 }
