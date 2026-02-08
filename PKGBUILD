@@ -48,12 +48,13 @@ _common_make_args=(
     ROOT_SBINDIR=/usr/bin
     LIBEXECDIR=/usr/lib
     INITRAMFS_DIR=/usr/lib/initcpio
+    CARGO_ARGS=--locked
 )
 
 pkgver() {
     cd "$_pkgname"
     git describe --long --abbrev=7 --tags 2>/dev/null \
-        | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' \
+        | sed 's/^v//;s/[^-]*-g/r&/;s/-/./g' \
     || printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -74,14 +75,14 @@ prepare() {
 
 build() {
     cd "$_pkgname"
-    local -a make_args=("${_common_make_args[@]}" "CARGO_ARGS=--locked")
+    local -a make_args=("${_common_make_args[@]}")
 
     make "${make_args[@]}" all
 }
 
 package() {
     cd "$_pkgname"
-    local -a make_args=("${_common_make_args[@]}" "CARGO_ARGS=--locked" "DESTDIR=$pkgdir")
+    local -a make_args=("${_common_make_args[@]}" "DESTDIR=$pkgdir")
 
     make "${make_args[@]}" install
 
@@ -95,10 +96,10 @@ package() {
     rm -rf "$pkgdir/usr/src"
 
     # Shell completions
-    install -dm755 "$pkgdir/usr/share/bash-completion/completions"
-    install -dm755 "$pkgdir/usr/share/fish/vendor_completions.d"
-    install -dm755 "$pkgdir/usr/share/zsh/site-functions"
-    "$pkgdir/usr/bin/bcachefs" completions bash > "$pkgdir/usr/share/bash-completion/completions/bcachefs"
-    "$pkgdir/usr/bin/bcachefs" completions fish > "$pkgdir/usr/share/fish/vendor_completions.d/bcachefs.fish"
-    "$pkgdir/usr/bin/bcachefs" completions zsh > "$pkgdir/usr/share/zsh/site-functions/_bcachefs"
+    "$pkgdir/usr/bin/bcachefs" completions bash \
+        | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/bcachefs"
+    "$pkgdir/usr/bin/bcachefs" completions fish \
+        | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_bcachefs"
+    "$pkgdir/usr/bin/bcachefs" completions zsh \
+        | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/bcachefs.fish"
 }
