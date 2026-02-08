@@ -5,12 +5,12 @@
 # Contributor: Sebastien Piccand <sebcactus gmail com>
 
 pkgname=asunder-svn
-pkgver=r463
+pkgver=r479
 pkgrel=1
 pkgdesc="a graphical CD ripper and encoder"
 arch=(x86_64)
 url="http://littlesvr.ca/asunder/"
-license=(GPL2)
+license=(GPL-2.0-only)
 depends=(gtk2 libcddb cdparanoia)
 makedepends=(subversion pkgconfig intltool gettext)
 optdepends=(

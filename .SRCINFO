@@ -1,10 +1,10 @@
 pkgbase = asunder-svn
 	pkgdesc = a graphical CD ripper and encoder
-	pkgver = r463
+	pkgver = r479
 	pkgrel = 1
 	url = http://littlesvr.ca/asunder/
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = subversion
 	makedepends = pkgconfig
 	makedepends = intltool
