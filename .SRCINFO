@@ -1,0 +1,13 @@
+pkgbase = yauri
+	pkgdesc = yauri, the gayest aur helper ever, all fitting into 1 file.
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = python3
+	depends = python-requests
+	depends = pacman-contrib
+	depends = git
+	depends = python-colorama
+
+pkgname = yauri
