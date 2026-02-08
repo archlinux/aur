@@ -1,7 +1,8 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=enpasscli
+_pkgname=enpass-cli
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Enpass commandline client"
 arch=('x86_64' 'aarch64')
 url="https://github.com/hazcod/enpass-cli"
@@ -12,7 +13,7 @@ source=("git+https://github.com/hazcod/enpass-cli.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 build() {
-  cd "$pkgname" || exit
+  cd "$_pkgname" || exit
   go build \
     -trimpath \
     -mod=readonly \
@@ -23,7 +24,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname" || exit
+  cd "$_pkgname" || exit
   install -Dm 755 $pkgname -t "$pkgdir/usr/bin"
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
