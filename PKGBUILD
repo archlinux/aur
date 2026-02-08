@@ -1,7 +1,7 @@
 # Maintainer: dbgbgtf <dudududumaxver@outlook.com>
 # Maintainer: RocketDev <ma2014119@outlook.com>
 pkgname=ceccomp
-pkgver=3.5
+pkgver=4.0
 pkgrel=1
 pkgdesc="A C-based seccomp analysis tool"
 arch=(x86_64)
@@ -18,9 +18,12 @@ makedepends=(
     util-linux # for flock to display a progress
     gettext # for i18n/l10n
 )
+checkdepends=(
+    python-pytest
+)
 
 source=("$pkgname"::git+https://github.com/dbgbgtf1/Ceccomp.git#tag=v${pkgver}?signed)
-b2sums=('59391f15cd86625044fd16ce51506f9a7c1d92ffacea86445d3f7f4a98586fc9941eb0e83ac802f4300b48dca19ac6fa4a0d2af5f669aa42e4f76d60077d77ec')
+b2sums=('178eaf32b6d1a17ed55ab00cc986ef3b7e7709fec86b3e1b17853f619a4ed9c37a5dba890ed4f33d95e102814c40465555ed0f7013eafe2e282d42edc3db8abe')
 
 validpgpkeys=(
     '0816A179BB09248F30468BD6542A0969B5CEDCDB' # dbgbgtf1 <dudududumaxver@outlook.com>
@@ -28,22 +31,24 @@ validpgpkeys=(
 )
 
 prepare() {
-    cd "$srcdir/$pkgname"
+    cd "$pkgname"
     ./configure --destdir="$pkgdir" --packager="AUR Helper"
+    touch include/config.h # work around for 95c4c0e
     make clean
 }
 
 build() {
-    cd "$srcdir/$pkgname"
+    cd "$pkgname"
     make
 }
 
-package() {
-    cd "$srcdir/$pkgname"
-    make install
+check() {
+    cd "$pkgname"
+    make test
+    python -m pytest test
 }
 
-check() {
-    cd "$srcdir/$pkgname"
-    ./scripts/check.sh --tolerant
+package() {
+    cd "$pkgname"
+    make install
 }
