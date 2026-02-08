@@ -7,8 +7,8 @@
 pkgname=python-torchaudio-rocm
 _pkgname=audio
 pkgver=2.10.0
-pkgrel=2
-pkgdesc="Data manipulation and transformation for audio signal processing, powered by PyTorch (with ROCM support)"
+pkgrel=3
+pkgdesc="Data manipulation and transformation for audio signal processing, powered by PyTorch (with ROCm/HIP support)"
 arch=('x86_64')
 url="https://github.com/pytorch/audio"
 license=('BSD')
