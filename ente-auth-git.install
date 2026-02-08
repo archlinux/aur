@@ -2,7 +2,7 @@ post_install() {
 	# ICON: added StartupWMClass to desktop file
 	# The Version field in the Desktop Entry indicates the specification version and is typically 1.0. The application version should be specified as X-Version.
 	local desktop_file="/usr/share/applications/enteauth.desktop"
-	sed -i '/^StartupWMClass=/d' "$desktop_file" && sed -i '/^StartupWMClass=/d; s/^Version=\(.*\)/X-Version=\1/; $a StartupWMClass=io.ente.auth' "$desktop_file"
+	sed -i '/^StartupWMClass=/d' "$desktop_file" && sed -i 's/^Version=\(.*\)/X-Version=\1/; $a StartupWMClass=io.ente.auth' "$desktop_file"
 
 	gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
 	ln -sf /usr/share/enteauth/enteauth /usr/bin/enteauth
