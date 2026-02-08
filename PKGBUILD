@@ -1,17 +1,17 @@
 # Maintainer: italoghost <eduprodive at posteo dot me>
 pkgname=duckstation-preview-latest-bin
-#_url="$(curl -s "$(curl -s "https://api.github.com/repos/stenzek/duckstation/releases" | jq -r '.[] | select(.tag_name == "preview") | .url')" | awk -F'"' '/browser_download_url.*DuckStation.*AppImage/ {print $4}')"
 _pkgname="duckstation-qt"
-_fullname=org.duckstation.DuckStation
-pkgver=0.1.9900
+_pkgid=org.duckstation.DuckStation
+pkgver=0.1.10827
 pkgrel=1
 pkgdesc="Fast PlayStation 1 emulator for PC and Android"
 arch=('x86_64')
 url='https://github.com/stenzek/duckstation'
 license=('CC BY-NC-ND 4.0')
+depends=('glibc' 'gcc-libs' 'gmp' 'bash' 'e2fsprogs' 'libgpg-error')
 makedepends=('yq')
 provides=("$_pkgname" 'duckstation')
-conflicts=('duckstation' 'duckstation-git' 'duckstation-qt-bin')
+conflicts=("$_pkgname" 'duckstation')
 options=('!strip')
 _appimage="DuckStation-x64.AppImage"
 noextract=("${_appimage}")
@@ -22,33 +22,35 @@ prepare() {
 	# Extract AppImage
     cd "${srcdir}"
     chmod +x "${_appimage}"
+
+    msg2 "Extracting AppImage content..."
     ./"${_appimage}" --appimage-extract
 
-	# Update script
+	# Patch AppRun to point to the fixed installation directory in /opt
+	# and adjust the Icon path in the .desktop
 	sed -Ei \
     's@^this_dir=".*\breadlink\b.*\bdirname\b.*"$@this_dir="/opt/duckstation-qt"@' \
-    "$srcdir/squashfs-root/AppRun"
+    "${srcdir}/squashfs-root/AppRun"
+    sed -i "s|Icon=${_pkgid}|Icon=${_pkgname}|" "${srcdir}/squashfs-root/${_pkgid}.desktop"
 }
 
 pkgver() {
+	# Extract the version from the metainfo file
 	xq -r '.component.releases.release["@version"]' < squashfs-root/usr/share/metainfo/org.duckstation.DuckStation.metainfo.xml | awk -F '[-]' -v OFS='.' '{print $1,$2}'
 }
 
 package() {
-	#Icon
-	install -Dm644 "squashfs-root/${_fullname}.png" -t "$pkgdir/usr/share/pixmaps"
-	
-	# Desktop file
-	install -Dm644 "squashfs-root/${_fullname}.desktop" -t "$pkgdir/usr/share/applications"
-	
-	# Main files
-	install -d "$pkgdir/opt"
-	cp -avR squashfs-root/ "$pkgdir/opt/$_pkgname"
-	
-	# Linking the script to the executable
-	install -dm755 "$pkgdir/usr/bin"
-	ln -sf "/opt/$_pkgname/AppRun" "$pkgdir/usr/bin/$_pkgname"
-	
-	# Permissions
-	find "$pkgdir/opt/$_pkgname" -type d -exec chmod 755 {} +
+	# Create directory structure
+    install -dm755 "${pkgdir}/opt/${_pkgname}"
+    install -dm755 "${pkgdir}/usr/bin"
+
+	# Move extracted content to /opt
+	cp -ar "${srcdir}/squashfs-root/." "${pkgdir}/opt/${_pkgname}/"
+
+    # Install the .desktop file and the icon
+    install -Dm644 "${srcdir}/squashfs-root/${_pkgid}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/${_pkgid}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+
+    # Create a symbolic link for the AppRun
+    ln -s "/opt/${_pkgname}/AppRun" "${pkgdir}/usr/bin/${_pkgname}"
 }
