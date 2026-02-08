@@ -1,7 +1,7 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=captain
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Captain - Convert your Git workflow to Docker :whale: containers"
 arch=('x86_64' 'aarch64')
 url="https://github.com/harbur/captain"
@@ -13,6 +13,8 @@ sha256sums=('SKIP')
 
 build() {
   cd "$pkgname" || exit
+  go mod init github.com/harbur/captain
+  go mod tidy
   go build \
     -trimpath \
     -ldflags='-s -w' \
