@@ -1,6 +1,6 @@
 pkgbase = dstp-git
 	pkgdesc = Run common networking tests against your site
-	pkgver = r119.51b3e84
+	pkgver = r120.6949fff
 	pkgrel = 1
 	url = https://github.com/ycd/dstp
 	arch = any

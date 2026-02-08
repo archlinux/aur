@@ -1,7 +1,7 @@
 # Maintainer: Amin Vakil <info AT aminvakil DOT com>
 
 pkgname=dstp-git
-pkgver=r119.51b3e84
+pkgver=r120.6949fff
 pkgrel=1
 pkgdesc="Run common networking tests against your site"
 arch=('any')
@@ -23,6 +23,8 @@ pkgver() {
 prepare(){
   cd "${pkgname/-git/}"
   mkdir -p build/
+  export GOPATH="${srcdir}"
+  go mod download -modcacherw
 }
 
 build() {
