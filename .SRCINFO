@@ -1,7 +1,7 @@
 pkgbase = eccodes
 	pkgdesc = ECMWF decoding library for GRIB, BUFR and GTS
 	pkgver = 2.45.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://confluence.ecmwf.int/display/ECC/ecCodes+Home
 	arch = i686
 	arch = x86_64
