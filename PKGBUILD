@@ -1,86 +1,58 @@
-# Maintainer: Carl Smedstad <carsme@archlinux.org>
+# Maintainer: Jason Go <jasongo@jasongo.net>
+# Contributor: Carl Smedstad <carsme@archlinux.org>
 # Contributor: Hao Long <aur@esd.cc>
 
 pkgname=archivebox
-_pkgname=ArchiveBox
 pkgver=0.7.3
-pkgrel=1
-pkgdesc="Open source self-hosted web archiving"
-arch=(any)
-url="https://github.com/ArchiveBox/ArchiveBox"
-license=(MIT)
+pkgrel=2
+pkgdesc='Open source self-hosted web archiving'
+arch=('x86_64' 'aarch64')
+url='https://github.com/ArchiveBox/ArchiveBox'
+license=('MIT')
 depends=(
-  chromium
-  curl
-  git
-  nodejs
-  postlight-parser
-  python
-  python-asgiref
-  python-chardet
-  python-dateparser
-  python-mypy_extensions
-  python-python-crontab
-  python-pytz
-  python-requests
-  python-sqlparse
-  python-urllib3
-  python-w3lib
-  readability-extractor
-  ripgrep
-  single-file
-  wget
-  yt-dlp
+  'chromium'
+  'curl'
+  'ffmpeg'
+  'nodejs'
+  'procps-ng'
+  'postlight-parser'
+  'readability-extractor'
+  'ripgrep'
+  'single-file-cli'
+  'wget'
+  'yt-dlp'
+
+  # Starting v0.7.3-2, this AUR package will use Python 3.11.x which is also available in the AUR.
+  # The dependencies of ArchiveBox such as Django and SQLite function calls are only compatible with Python 3.11.x.
+  # The upstream did not made further attempts to backport archivebox 0.7.x branch to the latest Python
+  # and instead proceeded with the 0.8.x dev branch and the soon to be released 0.9.x branch.
+  # All prior Python modules managed by pacman are dropped because those only work with latest Python.
+  # We will use pip to download the dependencies during installation.
+  # The caveat is you need to be online during installation.
+  'python311'
 )
-makedepends=(
-  python-build
-  python-installer
-  python-pdm-backend
-  python-setuptools
-  python-wheel
-)
-checkdepends=(
-  python-bottle
-  python-pytest
-)
-_django_version=3.1.14
-_django_extensions_version=3.1.5
+makedepends=('git')
+options=(!buildflags !debug !makeflags !strip)
 source=(
   "git+$url.git#tag=v$pkgver"
-  "git+https://github.com/jbittel/base32-crockford.git"
-  "git+https://github.com/jazzband/django-taggit.git"
-  "git+https://github.com/tapanpandita/pocket.git"
-  "git+https://github.com/untitaker/python-atomicwrites.git"
-  "django-$_django_version::https://github.com/django/django/archive/$_django_version.tar.gz"
-  "django-extensions-$_django_extensions_version::https://github.com/django-extensions/django-extensions/archive/$_django_extensions_version.tar.gz"
+  'archivebox-pre.hook'
+  'archivebox-post.hook'
 )
 sha256sums=(
   '5a530b3e86332db33b24b675e98d9b8b3d0bd9148095aa3025495952c1d16834'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'fe5a93c64d37f4dec49b7535ae405c0b87c1eb3d40979a33955a3631b5a6a00a'
-  'a29b022fb6728678ec5f769d78eff4d8b0c0f4beb15f9b8392726d4f0bda9031'
+  'dc6bfa6d11ac085d6871b7e6fb8641e945fd7ebef429b4f50c1d57ee9084d67b'
+  '8aec6b06fe483d080cc14b8ccb8b02b112c0524826db4c38fc7249df24dfbf7b'
 )
 
 prepare() {
-  cd "$_pkgname"
+  cd 'ArchiveBox'
+
   git submodule init
-  git config --remove-section submodule.docs
-  git config --remove-section submodule.deb_dist
   git config --remove-section submodule.brew_dist
-  git config --remove-section submodule.pip_dist
+  git config --remove-section submodule.deb_dist
   git config --remove-section submodule.docker
-  git config submodule.archivebox/vendor/base32-crockford.url "$srcdir/base32-crockford"
-  git config submodule.archivebox/vendor/pocket.url "$srcdir/pocket"
-  git config submodule.archivebox/vendor/django-taggit.url "$srcdir/django-taggit"
-  git config submodule.archivebox/vendor/python-atomicwrites.url "$srcdir/python-atomicwrites"
-  git -c protocol.file.allow=always submodule update -- \
-    archivebox/vendor/base32-crockford \
-    archivebox/vendor/pocket \
-    archivebox/vendor/django-taggit \
-    archivebox/vendor/python-atomicwrites
+  git config --remove-section submodule.pip_dist
+  git submodule update --init --recursive
 
   {
     echo '[tool.pdm.build]'
@@ -92,41 +64,85 @@ prepare() {
     echo ']'
   } >> pyproject.toml
 
-  rm -vrf venv
-  python -m venv --system-site-packages --without-pip venv
+  python3.11 -m venv venv
+  ./venv/bin/pip install --upgrade --no-compile --no-cache-dir pip build pdm-backend installer
+  ./venv/bin/pip install --upgrade --no-compile --no-cache-dir -r requirements.txt
 }
 
 build() {
-  cd "$_pkgname"
-  python -m build --wheel --no-isolation ../django-$_django_version
-  ./venv/bin/python -m installer ../django-$_django_version/dist/*.whl
-
-  python -m build --wheel --no-isolation ../django-extensions-$_django_extensions_version
-  ./venv/bin/python -m installer ../django-extensions-$_django_extensions_version/dist/*.whl
-
-  python -m build --wheel --no-isolation
+  cd 'ArchiveBox'
+  ./venv/bin/python -m build --wheel
   ./venv/bin/python -m installer dist/*.whl
 }
 
-check() {
-  cd "$_pkgname"
-  rm -vrf venv-test
-  cp -va venv venv-test
-  sed -i "s|#!/bin/python|#!$PWD/venv-test/bin/python|" venv-test/bin/archivebox
-  PATH="$PWD/venv-test/bin:$PATH" ./venv-test/bin/python -m pytest tests
-}
+# Starting v0.7.3-2, check function is disabled to speed up installation.
+# We may use this again if there's a compelling reason to do so.
+#
+# check() {
+#   cd 'ArchiveBox'
+#   ./venv/bin/pip install --upgrade --no-cache-dir pytest bottle
+#   PATH="$PWD/venv/bin:$PATH" ./venv/bin/python -m pytest tests
+#   ./venv/bin/pip uninstall --yes pytest bottle
+# }
 
 package() {
-  cd "$_pkgname"
-  install -vdm755 "$pkgdir/opt/archivebox"
-  cp -va -t "$pkgdir/opt/archivebox" venv/*
-  sed -i 's|#!/usr/bin/python|#!/opt/archivebox/bin/python|' "$pkgdir/opt/archivebox/bin/archivebox"
+  cd 'ArchiveBox'
 
-  install -vdm755 "$pkgdir/usr/bin"
-  ln -vs /opt/archivebox/bin/archivebox "$pkgdir/usr/bin/archivebox"
+  #############
+  # 1. CLEANUP
+  #############
 
-  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  # Remove build related Python modules
+  ./venv/bin/pip uninstall --yes build pdm-backend installer setuptools pip
+
+  # Remove bytecode cache remnants
+  find "$srcdir/ArchiveBox/venv" -type d -name "__pycache__" -exec rm -rf {} +
+
+  # Remove venv activate scripts as it may be executed by outside apps
+  find "$srcdir/ArchiveBox/venv/bin" -type f -iname "activate*" -delete
+
+  # Remove share docs and completions from other Python modules (yt_dlp)
+  rm -r "$srcdir/ArchiveBox/venv/share"
 
   # Silence namcap warning
-  rm -vr "$pkgdir/opt/archivebox/include"
+  rm -r "$srcdir/ArchiveBox/venv/include"
+
+
+  ################
+  # 2. COPY FILES
+  ################
+
+  # Copy to /opt/archivebox
+  install -dm755 "$pkgdir/opt/archivebox"
+  cp -a -t "$pkgdir/opt/archivebox" venv/*
+
+  # Copy license and docs
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -dm755 "$pkgdir/usr/share/doc/$pkgname"
+  rm docs/README.md # remove redundant symbolic link
+  cp -a -t "$pkgdir/usr/share/doc/$pkgname" ./etc ./docs/*.md ./*.md
+
+  # Install hook file that aborts upgrade/removal if archivebox is running
+  install -Dm644 "$srcdir/archivebox-pre.hook" "$pkgdir/usr/share/libalpm/hooks/archivebox-pre.hook"
+  install -Dm644 "$srcdir/archivebox-post.hook" "$pkgdir/usr/share/libalpm/hooks/archivebox-post.hook"
+
+
+  #################
+  # 3. LINK BINARY
+  #################
+  install -dm755 "$pkgdir/usr/bin"
+  ln -s /opt/archivebox/bin/archivebox "$pkgdir/usr/bin/archivebox"
+
+
+  ################
+  # 4. FIX PATHS
+  ################
+
+  # Fix shebangs and paths to point to /opt/archivebox
+  find "$pkgdir/opt/archivebox/bin" -type f -exec sed -i "s|$srcdir/ArchiveBox/venv|/opt/archivebox|g" {} +
+  sed -i "s|$srcdir/ArchiveBox/venv|/opt/archivebox|g" "$pkgdir/opt/archivebox/pyvenv.cfg"
+
+  # Fix binary paths of the sample config files
+  sed -i "s|/usr/local/bin/archivebox|/usr/bin/archivebox|g" "$pkgdir/usr/share/doc/$pkgname/etc/archivebox.service"
+  sed -i "s|/usr/local/bin/archivebox|/usr/bin/archivebox|g" "$pkgdir/usr/share/doc/$pkgname/etc/crontabs/archivebox"
 }
