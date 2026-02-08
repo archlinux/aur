@@ -1,6 +1,6 @@
 pkgbase = polytrack
 	pkgdesc = An Unofficial Community Made AUR Package
-	pkgver = Releases
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/SoupcanUBG/polytrack
 	arch = x86_64
