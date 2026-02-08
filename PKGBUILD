@@ -10,10 +10,10 @@ provides=('adwaita-network')
 conflicts=('adwaita-network')
 source=(
   "https://github.com/PlayRood32/adw-network/releases/download/v${pkgver}/adwaita-network-linux-x86_64.tar.gz"
-  "com.github.adw-network.desktop::https://raw.githubusercontent.com/PlayRood32/adw-network/v0.1.2/data/com.github.adw-network.desktop"
+  "com.github.adw-network.desktop::https://raw.githubusercontent.com/PlayRood32/adw-network/main/data/com.github.adw-network.desktop"
   "icon.png::https://raw.githubusercontent.com/PlayRood32/adw-network/main/data/icons/hicolor/scalable/apps/icon.png"
 )
-sha256sums=('59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2'
+sha256sums=('2a10ff177d57a525958007572787f61bb90f25a16bf4fa126dbd7cf11833c80b'
             '8ee3b310cbb8c01b66eea5d4270caa71246c907ea9e020efd9f8e398be9a7e56'
             '518a328abee19239ba5f20bcbfe3f15c474bc5c18b8adcb37c9793ecf7c640cc')
 
