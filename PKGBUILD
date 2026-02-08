@@ -20,10 +20,10 @@ _module_list=(
 # 'mpdule'               # not compatible with Enlightenment >= 0.19.99, adds dep on libmpd
   'net'
 # 'news'                 # not compatible with Enlightenment >= 0.19.0
-# 'penguins'		 # fails to compile
+  'penguins'		 
 # 'photo'                # not compatible with Enlightenment >= 0.18.0
 # 'share'                # not compatible with Enlightenment >= 0.19.0, adds dep on libbsd
-  'tclock'		# fails to compile (implicit-function-declaration)
+  'tclock'
 # 'wallpaper2'           # not compatible with Enlightenment < 0.19.99
 #  'wlan'		# fails to compile (implicit-function-declaration)
 )
@@ -36,7 +36,7 @@ containsElement () {
 
 pkgname=e-modules-extra-git
 pkgver=20260208
-pkgrel=1
+pkgrel=2
 pkgdesc="Enlightenment modules: Extra unsupported modules in Git not already packaged elsewhere"
 arch=('i686' 'x86_64')
 url="https://git.enlightenment.org/"
@@ -74,11 +74,19 @@ build() {
 
     msg2 "Building $_module"
 
-    ./autogen.sh \
-      --prefix=/usr \
-      --disable-static
+    case $_module in
+	penguins)
+	    /usr/bin/meson setup build
+	    ninja -C build
+	    ;;
+	*)
+	    ./autogen.sh \
+		--prefix=/usr \
+		--disable-static
+	    make CFLAGS+=-std=gnu17
+	    ;;
+    esac
 
-    make CFLAGS+=-std=gnu17
   done
 }
 
@@ -88,7 +96,15 @@ package() {
 
     msg2 "Installing $_module"
 
-    make DESTDIR="$pkgdir" install
+    case $_module in
+	penguins)
+	    # ninja -C build install
+	    /usr/bin/meson install -C build --destdir "$pkgdir"
+	    ;;
+	*)
+	    make DESTDIR="$pkgdir" install
+	    ;;
+    esac
 
 #   install text files
     [[ -e ChangeLog ]] && install -Dm644 ChangeLog "$pkgdir/usr/share/doc/${pkgname%-*}/$_module/ChangeLog" || true
