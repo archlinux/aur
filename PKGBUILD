@@ -45,8 +45,8 @@ prepare() {
 
 build() {
 	cd "$srcdir/${_pkgname}"
-	export JAVA_HOME="$srcdir/${_graalvm_version}"
-	export GRAALVM_HOME="$JAVA_HOME"
+	export GRAALVM_HOME="$srcdir/${_graalvm_version}"
+	export JAVA_HOME="${GRAALVM_HOME}"
 	/usr/bin/gradle clean nativeCompile -Dorg.gradle.java.home="${JAVA_HOME}"
 }
 
