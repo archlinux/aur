@@ -1,6 +1,6 @@
 # Maintainer: Keithsel <keithsel@disroot.org>
 pkgname=dekl
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Declarative Arch Linux system manager'
 arch=('x86_64')

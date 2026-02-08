@@ -1,6 +1,6 @@
 pkgbase = dekl
 	pkgdesc = Declarative Arch Linux system manager
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/Keithsel/dekl
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = dekl
 	provides = dekl
 	conflicts = dekl-git
 	options = !strip
-	source = dekl-0.1.0::https://github.com/Keithsel/dekl/releases/download/v0.1.0/dekl
+	source = dekl-0.2.0::https://github.com/Keithsel/dekl/releases/download/v0.2.0/dekl
 	sha256sums = SKIP
 
 pkgname = dekl
