@@ -1,18 +1,18 @@
 pkgbase = python-monkeytype
 	pkgdesc = Generating type annotations from sampled production types
 	pkgver = 23.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/instagram/MonkeyType
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
-	depends = python-retype
-	depends = python-typed-ast
+	depends = python-libcst
+	depends = python-mypy_extensions
 	source = https://files.pythonhosted.org/packages/source/M/MonkeyType/MonkeyType-23.3.0.tar.gz
 	sha256sums = f2595db34d57cdddbde5a990117a50a22f373dbb917a2a0fa91ffbe07dfe0313
 
 pkgname = python-monkeytype
 	depends = python
-	depends = python-retype
-	depends = python-typed-ast
+	depends = python-libcst
+	depends = python-mypy_extensions
