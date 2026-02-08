@@ -2,7 +2,7 @@
 
 pkgname=copperspice
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Libraries for developing cross platform software applications in C++'
 arch=('x86_64')
 url='https://www.copperspice.com/'
@@ -57,7 +57,7 @@ source=("https://github.com/copperspice/copperspice/archive/cs-${pkgver}/${pkgna
         '010-copperspice-fix-cmake-include-dirs.patch'
         '020-copperspice-fix-werror-format-security-without-wformat.patch')
 sha256sums=('4cbe8b96a1a97e4a172f57509d95080b6eedb3f66291c5f9d2c48bccea09935c'
-            '920425d9fe93d3cb445c7406c8e9217e757bd5415c5805e6835fa1b67e8c8409'
+            'db23a35f0651ac20d979d2b6e462f1cdc2d91a0315c60ccf513a33cc2ebdc1ed'
             '6190590c3ac496923ccbc80189a1d488531071392390e7bdd57c081c31d6eb16')
 
 prepare() {
