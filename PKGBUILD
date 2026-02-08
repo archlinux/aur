@@ -2,13 +2,13 @@
 # Contributor: Polis Minus <polisminus2247@tuta.io>
 
 pkgname=activate-linux-git
-pkgver=r349.75d0063
+pkgver=r376.347a579
 pkgrel=1
 pkgdesc="The 'Activate Windows' watermark ported to Linux with Xlib and cairo in C"
 arch=(x86_64)
 url="https://github.com/MrGlockenspiel/activate-linux"
-license=(GPL3)
-depends=(cairo libx11 libxfixes libxinerama libxrandr wayland libxext glibc)
+license=(GPL-3.0-only)
+depends=(cairo libx11 libxfixes libxinerama libxrandr wayland libxext glibc libconfig libconfig.so pango)
 makedepends=(git wayland-protocols)
 provides=(activate-linux)
 conflicts=(activate-linux)
