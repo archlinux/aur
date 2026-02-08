@@ -6,6 +6,7 @@
 
 # https://github.com/ente-io/ente/blob/main/.github/workflows/auth-release.yml
 _FLUTTER_VERSION=3.32.8
+_jdk_ver=17
 
 _pkgname=enteauth
 pkgname=ente-auth-git
@@ -16,7 +17,7 @@ arch=('x86_64')
 url="https://github.com/ente-io/ente/tree/main/auth"
 license=('AGPL-3.0')
 depends=('at-spi2-core' 'ayatana-ido' 'cairo' 'desktop-file-utils' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'harfbuzz' 'hicolor-icon-theme' 'libappindicator-gtk3' 'libayatana-appindicator' 'libsecret' 'libsodium' 'pango' 'sqlite' 'webkit2gtk')
-makedepends=('patchelf' 'clang' 'git' 'cmake' 'ninja' 'jdk17-openjdk')
+makedepends=('patchelf' 'clang' 'git' 'cmake' 'ninja' "jdk${_jdk_ver}-openjdk")
 options=('!strip' '!emptydirs')
 source_x86_64=("git+https://github.com/ente-io/auth.git"
         "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${_FLUTTER_VERSION}-stable.tar.xz"
@@ -61,7 +62,7 @@ prepare(){
 build() {
     export PUB_CACHE="${srcdir}/.pub-cache"
     export PATH="$srcdir/flutter/bin":"$PATH":"$PUB_CACHE/bin"
-    export JAVA_HOME="/usr/lib/jvm/java-17-openjdk"
+    export JAVA_HOME="/usr/lib/jvm/java-${_jdk_ver}-openjdk"
     
     cd "${srcdir}/auth/mobile/packages/strings"
     flutter gen-l10n
