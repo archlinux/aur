@@ -3,7 +3,7 @@
 pkgname=('simplebluez' 'simpleble' 'simpledbus' 'python-simplepyble')
 pkgbase=simpleble
 pkgver=0.10.4
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="The all-in-one Bluetooth library for MacOS, iOS, Windows, Linux and Android"
 arch=("x86_64")
@@ -23,7 +23,7 @@ install=
 changelog=
 source=("https://github.com/simpleble/simpleble/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('f770c0009f7abaec518e4c715e93fe36f6764a5d495dc6ae683f2695dfd5f9bc')
+sha256sums=('ef03efd60e10601e98adc730734ee345740bf032cbf744e63071e969898069a3')
 validpgpkeys=()
 
 build() {
