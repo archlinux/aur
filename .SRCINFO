@@ -1,0 +1,14 @@
+pkgbase = todo-cli
+	pkgdesc = The cli tool for the Todo Server
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/nldk/todoCLI
+	arch = any
+	license = MIT
+	depends = jre-openjdk
+	source = https://github.com/nldk/todoCLI/releases/download/todo-cli/todo-cli-1.0.0.jar
+	source = https://github.com/nldk/todoCLI/releases/download/todo-cli/todo
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = todo-cli
