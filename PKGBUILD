@@ -1,4 +1,5 @@
-# Maintainer: qexat <contact@qexat.com>
+# Maintainer: piotrdab <piotrsbk@gmail.com>
+# Contributor: lexa <contact@qexat.com>
 # Contributor: workonfire <kolucki62@gmail.com>
 
 pkgname=babi
@@ -16,13 +17,13 @@ source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$
 sha256sums=('9cbdf046eaab517bd34e37b8a944fcb1ff1a0dff6339aac6371e4551ff455d05')
 
 build() {
-	cd "${pkgname}-${pkgver}"
-	python -m build --wheel --no-isolation
+    cd "${pkgname}-${pkgver}"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "${pkgname}-${pkgver}"
-	# TODO: use pip?
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "${pkgname}-${pkgver}"
+    # TODO: use pip?
+    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
