@@ -1,7 +1,7 @@
 # Maintainer: rzhli <tayuebuliuhen@gmail.com>
 pkgname=dwsim-bin
 pkgver=9.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Chemical Process Simulator (binary release)"
 arch=('x86_64')
 url="https://dwsim.org"
@@ -31,6 +31,10 @@ package() {
     install -dm755 "${pkgdir}/usr/bin"
     cat > "${pkgdir}/usr/bin/dwsim" << 'EOF'
 #!/bin/sh
+# Force XWayland when running under Wayland to fix Eto.Forms drag-and-drop
+if [ -n "$WAYLAND_DISPLAY" ]; then
+    export GDK_BACKEND=x11
+fi
 export LD_LIBRARY_PATH=/opt/dwsim:/opt/dwsim/ThermoCS${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
 cd /opt/dwsim
 exec /usr/bin/dotnet DWSIM.UI.Desktop.exe "$@"
