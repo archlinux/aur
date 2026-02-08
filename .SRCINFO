@@ -1,6 +1,6 @@
 pkgbase = cinelerra-gg
 	pkgdesc = Professional video editing and compositing environment
-	pkgver = 2024.12
+	pkgver = 2026.02
 	pkgrel = 1
 	url = https://www.cinelerra-gg.org
 	arch = x86_64
@@ -66,7 +66,7 @@ pkgbase = cinelerra-gg
 	depends = gcc-libs
 	depends = libtiff
 	conflicts = cin
-	source = cinelerra-gg::git://git.cinelerra-gg.org/goodguy/cinelerra.git#tag=2024-12
-	sha256sums = 9da2ea499dcd987be197c7e08d8bcb8b2f26d8b4ff8306aa50e8eeaf00a4e5df
+	source = cinelerra-gg::git+https://git.cinelerra-gg.org/goodguy/cinelerra.git#tag=2026-02
+	sha256sums = adb639b90b0f38f0e9574e9690087b19a5b66ef6aeae03e0ba6faba140599f0a
 
 pkgname = cinelerra-gg
