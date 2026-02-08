@@ -1,10 +1,10 @@
 pkgbase = ansible-core-git
 	pkgdesc = Radically simple IT automation platform
-	pkgver = r55249.ce84d3157d7
+	pkgver = r55321.0a2bac10dad
 	pkgrel = 1
 	url = https://github.com/ansible/ansible
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = python-build
 	makedepends = python-docutils
 	makedepends = python-installer
