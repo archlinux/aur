@@ -2,7 +2,7 @@
 
 _pkgname=opkssh
 pkgname=opkssh-git
-pkgver=r222.e2a75ec
+pkgver=r436.d8bdd33
 pkgrel=1
 pkgdesc="opkssh (OpenPubkey SSH)"
 arch=('x86_64')
@@ -24,6 +24,8 @@ pkgver() {
 prepare(){
   cd "${pkgname/-git/}"
   mkdir -p build/
+  export GOPATH="${srcdir}"
+  go mod download -modcacherw
 }
 
 build() {
