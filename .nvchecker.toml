@@ -1,0 +1,5 @@
+[python-json-schema-to-pydantic]
+source = "github"
+github = "richard-gyiko/json-schema-to-pydantic"
+prefix = "v"
+use_latest_release = true
