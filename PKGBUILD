@@ -4,10 +4,10 @@
 
 gitname=mat2
 pkgname=${gitname}-git
-pkgver=0.13.5.10.g235403b
+pkgver=0.14.0.13.g4322f2d
 pkgrel=1
 pkgdesc='Metadata removal tool, supporting a wide range of commonly used file formats'
-url='https://github.com/jvoisin/mat2'
+url="https://github.com/jvoisin/${gitname}"
 arch=('any')
 license=('LGPL3')
 depends=('python' 'python-mutagen' 'python-cairo' 'python-gobject' 'gdk-pixbuf2' 'poppler-glib' 'librsvg' 'perl-image-exiftool' 'mailcap')
@@ -19,7 +19,7 @@ optdepends=(
 checkdepends=('ffmpeg')
 conflicts=(mat mat-git mat2)
 provides=(mat mat-git mat2)
-source=("git+https://0xacab.org/jvoisin/${gitname}.git")
+source=("git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {

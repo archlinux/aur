@@ -1,6 +1,6 @@
 pkgbase = mat2-git
 	pkgdesc = Metadata removal tool, supporting a wide range of commonly used file formats
-	pkgver = 0.13.5.10.g235403b
+	pkgver = 0.14.0.13.g4322f2d
 	pkgrel = 1
 	url = https://github.com/jvoisin/mat2
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = mat2-git
 	conflicts = mat
 	conflicts = mat-git
 	conflicts = mat2
-	source = git+https://0xacab.org/jvoisin/mat2.git
+	source = git+https://github.com/jvoisin/mat2.git
 	sha512sums = SKIP
 
 pkgname = mat2-git
