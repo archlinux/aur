@@ -20,12 +20,12 @@ package() {
   cd "$srcdir"
 
   install -d "$pkgdir/opt/$pkgname"
-  cp -r AniDesk chrome* lib* *.pak *.dat *.so* *.bin *.json locales resources version LICENSE* "$pkgdir/opt/$pkgname/" 2>/dev/null || true
-  chmod +x "$pkgdir/opt/$pkgname/AniDesk"
+  cp -r anidesk chrome* lib* *.pak *.dat *.so* *.bin *.json locales resources version LICENSE* "$pkgdir/opt/$pkgname/" 2>/dev/null || true
+  chmod +x "$pkgdir/opt/$pkgname/anidesk"
   chmod 4755 "$pkgdir/opt/$pkgname/chrome-sandbox"
 
   install -d "$pkgdir/usr/bin"
-  ln -s "/opt/$pkgname/AniDesk" "$pkgdir/usr/bin/anidesk"
+  ln -s "/opt/$pkgname/anidesk" "$pkgdir/usr/bin/anidesk"
 
   install -d "$pkgdir/usr/share/applications"
   install -m644 "$srcdir/anidesk-bin.desktop" "$pkgdir/usr/share/applications/"
