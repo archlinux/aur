@@ -1,0 +1,16 @@
+pkgbase = envyr
+	pkgdesc = Automagically package and run applications in sandboxed environments
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/tchaudhry91/envyr
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = git
+	optdepends = docker: for Docker executor
+	optdepends = podman: for Docker executor (alternative)
+	source = envyr-0.4.1.tar.gz::https://github.com/tchaudhry91/envyr/archive/v0.4.1.tar.gz
+	sha256sums = 1b36bc49f94e984b88913f04714b4c9f28f3afff6f86aa19b3dc46740ddafecc
+
+pkgname = envyr
