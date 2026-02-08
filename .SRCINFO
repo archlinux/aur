@@ -1,7 +1,7 @@
 pkgbase = eden-nightly-bin
 	pkgdesc = Nightly release of the Eden Nintendo Switch emulator (PGO optimized)
-	pkgver = v1770488659.71e035f83b
-	pkgrel = 2
+	pkgver = 1770488659.71e035f83b
+	pkgrel = 1
 	url = https://github.com/Eden-CI/Nightly
 	arch = x86_64
 	license = GPL-3.0-only

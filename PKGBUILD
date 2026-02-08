@@ -2,10 +2,13 @@
 # Contributor: mdmrk <mariodavo.20@gmail.com>
 _pkgname=Eden
 pkgname=eden-nightly-bin
+
+_tagstamp=1770488659
 _buildcommit=71e035f83b
-_tagver=v1770488659
-pkgver="${_tagver}.${_buildcommit}"
-pkgrel=2
+_upstream_tag="v${_tagstamp}.${_buildcommit}"
+
+pkgver="${_tagstamp}.${_buildcommit}"
+pkgrel=1
 pkgdesc="Nightly release of the Eden Nintendo Switch emulator (PGO optimized)"
 arch=('x86_64')
 url="https://github.com/Eden-CI/Nightly"
@@ -15,7 +18,7 @@ options=(!strip)
 provides=('eden')
 conflicts=('eden')
 _appimage="Eden-Linux-${_buildcommit}-amd64-clang-pgo.AppImage"
-source=("${_appimage}::https://github.com/Eden-CI/Nightly/releases/download/${pkgver}/${_appimage}")
+source=("${_appimage}::https://github.com/Eden-CI/Nightly/releases/download/${_upstream_tag}/${_appimage}")
 sha256sums=('4582064db4c9cd8c3c4b241eaa2a1946887dd73f2d6c634cd8db8b9aba10add4')
 
 prepare() {
