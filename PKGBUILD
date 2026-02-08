@@ -15,7 +15,6 @@ license=('AGPL-3.0')
 depends=('at-spi2-core' 'ayatana-ido' 'cairo' 'desktop-file-utils' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'harfbuzz' 'hicolor-icon-theme' 'libappindicator-gtk3' 'libayatana-appindicator' 'libsecret' 'libsodium' 'pango' 'sqlite' 'webkit2gtk')
 makedepends=('flutter' 'flutter-tool' 'patchelf')
 options=('!strip' '!emptydirs')
-install=${pkgname}.install
 source_x86_64=("git+https://github.com/ente-io/auth.git"
         fix-flutter.patch
 )
@@ -76,4 +75,13 @@ package(){
 
     # libsodium.so is needed by libflutter_linux_gtk.so.
     patchelf --add-needed libsodium.so ${pkgdir}/usr/share/${_pkgname}/lib/libflutter_linux_gtk.so
+
+    # ICON: added StartupWMClass to desktop file
+    # The Version field in the Desktop Entry indicates the specification version and is typically 1.0. The application version should be specified as X-Version.
+    local desktop_file="${pkgdir}/usr/share/applications/enteauth.desktop"
+    sed -i '/^StartupWMClass=/d' "$desktop_file" && sed -i 's/^Version=\(.*\)/X-Version=\1/; $a StartupWMClass=io.ente.auth' "$desktop_file"
+
+    mkdir -p ${pkgdir}/usr/bin
+    ln -sf "/usr/share/enteauth/enteauth" "${pkgdir}/usr/bin/enteauth"
+    chmod +x "${pkgdir}/usr/bin/enteauth"
 }

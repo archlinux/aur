@@ -3,7 +3,6 @@ pkgbase = ente-auth-git
 	pkgver = 4.4.17.r28.gfd27208e05
 	pkgrel = 1
 	url = https://github.com/ente-io/ente/tree/main/auth
-	install = ente-auth-git.install
 	arch = x86_64
 	license = AGPL-3.0
 	makedepends = flutter
