@@ -15,6 +15,8 @@ sha256sums=('228b2acc455e00866fbaf8dded3c3471da995385c5841390ea6010017195ee57')
 prepare(){
   cd "$pkgname-selfhosted-$pkgver/ddosify_engine/"
   mkdir -p build/
+  export GOPATH="${srcdir}"
+  go mod download -modcacherw
 }
 
 build() {
