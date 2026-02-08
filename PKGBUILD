@@ -1,7 +1,7 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=gh-markdown-preview
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GitHub CLI extension to preview Markdown looks like GitHub."
 arch=('x86_64' 'aarch64')
 url="https://github.com/yusukebe/gh-markdown-preview"
@@ -18,13 +18,13 @@ build() {
     -mod=readonly \
     -modcacherw \
     -ldflags='-s -w' \
-    -o $pkgname \
+    -o cmd/$pkgname \
     .
 }
 
 package() {
   cd "$pkgname" || exit
-  install -Dm 755 $pkgname -t "$pkgdir/usr/bin"
+  install -Dm 755 cmd/$pkgname -t "$pkgdir/usr/bin"
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
