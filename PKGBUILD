@@ -43,6 +43,6 @@ Categories=Game;
 EOF
 
 
-chmod +X "$pkgdir/usr/share/applications/$pkgname.desktop"
+chmod 644 "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
 
