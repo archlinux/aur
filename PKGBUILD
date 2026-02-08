@@ -2,10 +2,10 @@
 
 pkgname=docker-prune
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Remove unused docker data which has not been accessed in last 10 days"
 arch=('any')
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('docker')
 source=("docker-prune.service"
         "docker-prune.timer")
