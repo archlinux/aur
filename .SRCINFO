@@ -1,6 +1,6 @@
 pkgbase = octrafic-bin
 	pkgdesc = Test APIs naturally with AI - OpenAPI specs, natural language, intelligent responses
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://octrafic.com
 	license = MIT
@@ -8,12 +8,12 @@ pkgbase = octrafic-bin
 	provides = octrafic
 	arch = aarch64
 	source_aarch64 = https://github.com/Octrafic/octrafic-cli/releases/download/v${pkgver}/octrafic_Linux_arm64.tar.gz
-	sha256sums_aarch64 = fc4c33ad1558d27b29c118199d4da91f615a074b3ac388793ef10e7748a32018
+	sha256sums_aarch64 = b88c611b0a9df082ca95c4e6450c8a38a74498df3480fb050be83fd01578800a
 	arch = armv7h
 	source_armv7h = https://github.com/Octrafic/octrafic-cli/releases/download/v${pkgver}/octrafic_Linux_armv7.tar.gz
-	sha256sums_armv7h = 53811e55de624fbcca2a2446806569bb6503ce6ef64df54752f000a0d62909db
+	sha256sums_armv7h = ca20937f6604b7b6724772e8cc89cfae7f00f7d25da9525fac9a3fc29e99b1be
 	arch = x86_64
 	source_x86_64 = https://github.com/Octrafic/octrafic-cli/releases/download/v${pkgver}/octrafic_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = c1e89ea57ff56ba0ab7429fc235f6568dac4a1b9ebaf41f375089459bd1e18a7
+	sha256sums_x86_64 = 781b5db024b07bba70bc7ccf16a2fb0b419decf2b865d6691b3649775dd1f97b
 	
 pkgname = octrafic-bin
