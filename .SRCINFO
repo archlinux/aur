@@ -1,13 +1,13 @@
-pkgbase = scrapfetch-rs
+pkgbase = scrapfetch-rs-bin
 	pkgdesc = Small system info splash
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/egevtech/scrapfetch-rs
 	arch = x86_64
 	license = BSD3
 	provides = scrapfetch-rs
 	conflicts = scrapfetch-rs
-	source = https://github.com/egevtech/scrapfetch-rs/releases/download/v0.1.3/scrapfetch-rs-0.1.3-x86_64.tar.gz
-	sha256sums = 7c24236d0727afff6a62a5d8c619d53a6db692520c58094f24a41398b687af3a
+	source = https://github.com/egevtech/scrapfetch-rs/releases/download/v0.1.4/scrapfetch-rs-0.1.4-x86_64.tar.gz
+	sha256sums = 1cb41ae8789dbad29ba1dd2b8b5f6a47ee341305e2fb52083bdccdda46263a05
 
-pkgname = scrapfetch-rs
+pkgname = scrapfetch-rs-bin
