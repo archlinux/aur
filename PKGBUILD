@@ -2,7 +2,7 @@
 # Contributor: gilcu3
 
 pkgname=cariddi
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 pkgdesc='Take a list of domains, crawl urls and scan for endpoints, secrets, api keys, file extensions, tokens and more'
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/edoardottt/cariddi"
 license=('GPL-3.0')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('203d7f4d09ae9ba6e15ec0d6adde9c499ec280d521746de4a4b10775af9e1469')
+sha256sums=('b29bdb7e03d002b04abc13cc7cb40089aad22ba8315aefcb1d38af1b665097d0')
 
 prepare(){
   cd "$pkgname-$pkgver"
