@@ -1,21 +1,11 @@
 pkgbase = immuarch-git
 	pkgdesc = Immutable Archlinux setup with transactional & atomic updates
-	pkgver = 0.1.2.r227.a10a589
+	pkgver = 0.2.0.r271.6a4a7d0
 	pkgrel = 1
 	url = https://framagit.org/Brumaire/immuarch
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
-	depends = util-linux
-	depends = btrfs-progs
-	depends = grub
-	depends = bash
-	depends = grep
-	depends = sed
-	depends = mkinitcpio
-	optdepends = gzip: for immuarch-backup
-	optdepends = openssh: for immuarch-backup
-	optdepends = podman: import OCI images as immuarch root filesystem
 	source = git+https://framagit.org/Brumaire/immuarch
 	md5sums = SKIP
 
@@ -28,7 +18,9 @@ pkgname = immuarch-core-git
 	depends = grep
 	depends = sed
 	depends = mkinitcpio
-	depends = immuarch-utils-git=0.1.2.r227.a10a589
+	optdepends = gzip: for immuarch-backup
+	optdepends = openssh: for immuarch-backup
+	optdepends = podman: import OCI images as immuarch root filesystem
 	provides = immuarch-core
 	replaces = immuarch-git
 	options = emptydirs
@@ -39,3 +31,12 @@ pkgname = immuarch-core-git
 
 pkgname = immuarch-utils-git
 	provides = immuarch-utils
+
+pkgname = immuarch-verity-git
+	install = immuarch-verity.install
+	depends = immuarch-core
+	depends = aide
+	provides = immuarch-verity
+	options = emptydirs
+	backup = etc/aide-immuarch-root.conf
+	backup = etc/aide-immuarch-base.conf

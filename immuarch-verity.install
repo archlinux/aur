@@ -1,0 +1,23 @@
+pre_install() {
+  if ! mountpoint /immuarch ; then
+      echo "WARNING : /immuarch is not a mountpoint."
+      echo "If you have already bootstraped Immuarch, you're doing something wrong."
+      echo "To install properly this package, run immuarch-evolve -Nu, THEN install the package in interactive shell."
+  fi
+}
+
+pre_upgrade () {
+  if ! mountpoint /immuarch ; then
+      echo "ERROR : /immuarch is not a mountpoint, you're doing something wrong."
+      echo "To properly update this package, run immuarch-evolve -Nu, THEN install the package in interactive shell."
+      return 1
+  fi
+}
+
+post_install () {
+    echo "Initializing aide databases for verity checks"
+    aide --config /etc/aide-immuarch-root.conf --init &&
+    mv /var/lib/aide-immuarch-root/aide.db.new.gz /var/lib/aide-immuarch-root/aide.db.gz &&
+    aide --config /etc/aide-immuarch-base.conf --init &&
+    mv /var/lib/aide-immuarch-base/aide.db.new.gz /var/lib/aide-immuarch-base/aide.db.gz
+}

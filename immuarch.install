@@ -10,8 +10,14 @@ post_install () {
 }
 
 pre_upgrade () {
-    new_version=$(echo $1 | cut -d "." -f 1-3 )
-    old_version=$(echo $2 | cut -d "." -f 1-3 )
+    new_version=$(echo "$1" | cut -d "." -f 1-3 )
+    old_version=$(echo "$2" | cut -d "." -f 1-3 )
+
+    if ! mountpoint /immuarch ; then
+      echo "ERROR : /immuarch is not a mountpoint, you're doing something wrong !"
+      echo "To properly update this package, run immuarch-evolve -Nu, THEN install the package in interactive shell."
+      return 1
+    fi
 
     #rename config files
     if [[ "$old_version" < "0.1.1" ]] ; then
