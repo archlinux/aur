@@ -1,10 +1,11 @@
-# Maintainer: Chris Sutcliff <chris@sutcliff.me>
-pkgname=music-assistant-companion-git
-pkgver=0.0.1.r17.g23883a6
+# Maintainer: James Tucker <jftucker@gmail.com>
+# Contributor: Chris Sutcliff <chris@sutcliff.me>
+pkgname=music-assistant-desktop-git
+pkgver=0.3.3.r0.g0ddd331
 pkgrel=1
 pkgdesc="Music Assistant Companion - desktop app for Music Assistant (requires server 2.7.0+)"
 arch=('x86_64')
-url="https://github.com/music-assistant/desktop-companion"
+url="https://github.com/music-assistant/desktop-app"
 license=('Apache-2.0')
 depends=(
     'cairo'
@@ -32,14 +33,15 @@ makedepends=(
 optdepends=(
     'libappindicator-gtk3: system tray support'
 )
-conflicts=('music-assistant-desktop' 'music-assistant-desktop-bin')
+conflicts=('music-assistant-desktop' 'music-assistant-desktop-bin' 'music-assistant-companion-git' 'music-assistant-app-git' 'music-assistant-desktop-app-git')
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
+# ring + lto is failing: https://github.com/briansmith/ring/issues/2746
+options=('!lto')
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "0.1.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -56,8 +58,8 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR="$srcdir/target"
 
-    # Build frontend
-    yarn build:frontend
+    # We can use `export CARGO_PROFILE_RELEASE_TRIM_PATHS=true` once stable in cargo.
+    export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=$srcdir=/build"
 
     # Build the Tauri application with deb bundle for easy extraction
     cargo tauri build --bundles deb

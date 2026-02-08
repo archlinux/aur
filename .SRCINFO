@@ -1,8 +1,8 @@
-pkgbase = music-assistant-companion-git
+pkgbase = music-assistant-desktop-git
 	pkgdesc = Music Assistant Companion - desktop app for Music Assistant (requires server 2.7.0+)
-	pkgver = 0.0.1.r17.g23883a6
+	pkgver = 0.3.3.r0.g0ddd331
 	pkgrel = 1
-	url = https://github.com/music-assistant/desktop-companion
+	url = https://github.com/music-assistant/desktop-app
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cargo
@@ -27,7 +27,11 @@ pkgbase = music-assistant-companion-git
 	optdepends = libappindicator-gtk3: system tray support
 	conflicts = music-assistant-desktop
 	conflicts = music-assistant-desktop-bin
-	source = music-assistant-companion-git::git+https://github.com/music-assistant/desktop-companion.git
+	conflicts = music-assistant-companion-git
+	conflicts = music-assistant-app-git
+	conflicts = music-assistant-desktop-app-git
+	options = !lto
+	source = music-assistant-desktop-git::git+https://github.com/music-assistant/desktop-app.git
 	sha256sums = SKIP
 
-pkgname = music-assistant-companion-git
+pkgname = music-assistant-desktop-git
