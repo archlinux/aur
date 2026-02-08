@@ -4,7 +4,7 @@
 # Contributor: Bruno Filipe < gmail-com: bmilreu >
 
 pkgname=ffmpeg-amd-full-git
-pkgver=8.1.r122185.g0d7b8d8913
+pkgver=8.1.r122457.g805931dfc8
 pkgrel=1
 _svt_hevc_ver='ed80959ebb5586aa7763c91a397d44be1798587c'
 _obs_studio_ver='32.0.2'
@@ -75,7 +75,6 @@ depends=(
     'libssh'
     'libtheora'
     'libva'
-    'libvdpau'
     'libvorbis'
     'libvpx'
     'libx11'
@@ -389,7 +388,7 @@ build() {
         --disable-rkmpp \
         --enable-v4l2-m2m \
         --enable-vaapi \
-        --enable-vdpau
+        --disable-vdpau
     make
     make tools/qt-faststart
 }
