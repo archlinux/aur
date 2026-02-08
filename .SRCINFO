@@ -1,16 +1,17 @@
-pkgbase = g13-ak
+pkgbase = gg13
 	pkgdesc = Userspace Linux driver for the Logitech G13 gameboard
-	pkgver = 4
+	pkgver = 5
 	pkgrel = 1
-	url = https://github.com/achilleas-k/g13-ak
+	url = https://github.com/achilleas-k/gg13
 	arch = x86_64
 	license = Apache-2.0
 	checkdepends = go
 	makedepends = go
 	depends = libusb
-	source = g13-ak-4.tar.gz::https://github.com/achilleas-k/g13-ak/archive/refs/tags/v4.tar.gz
-	source = g13.service
-	sha256sums = be9a2afc8c7ae833a5627935530ce3d69775f9666487d6005fbb48ca1d581972
-	sha256sums = c7ab2fe541068452e4c605c7eb318930ece1ef664f0939360c576d5d60447c17
+	replaces = g13-ak
+	source = gg13-5.tar.gz::https://github.com/achilleas-k/gg13/archive/refs/tags/v5.tar.gz
+	source = gg13.service
+	sha256sums = cc6cbf83e1a60aebc5a1d7ee382b0d3bb485a94debb09a4b5a2d2d2a7c0fa032
+	sha256sums = 789fbf7a07bba75e1e8f7152830b98f7211c6abbfc1d9fbf46522c5869a56ae9
 
-pkgname = g13-ak
+pkgname = gg13

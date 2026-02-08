@@ -3,7 +3,7 @@ Description=Logitech G13 gameboard service
 After=graphical-session.target
 
 [Service]
-ExecStart=/usr/bin/g13-ak /usr/share/g13-ak/configs/default.json
+ExecStart=/usr/bin/gg13 /usr/share/gg13/configs/default.json
 
 [Install]
 WantedBy=graphical-session.target
