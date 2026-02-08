@@ -2,7 +2,7 @@
 # Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname="modsecurity-crs"
-pkgver=4.22.0
+pkgver=4.23.0
 pkgrel=1
 pkgdesc="OWASP ModSecurity Core Rule Set"
 url="https://github.com/coreruleset/coreruleset"
@@ -16,7 +16,7 @@ optdepends=("geoip-database: for coutry-based rules"
 source=("https://github.com/coreruleset/coreruleset/archive/refs/tags/v$pkgver.tar.gz"
         "https://raw.githubusercontent.com/owasp-modsecurity/ModSecurity/v3/master/modsecurity.conf-recommended"
         "https://raw.githubusercontent.com/owasp-modsecurity/ModSecurity/v3/master/unicode.mapping")
-b2sums=('3e82999a16b265ed4b03544a4fbb64a48c6fe98148ac581526083656895101395e5f0f85d3a5d6d97aee4a5b0f78c58312ff3d53100bd5873c3f5f201c9ca1a0'
+b2sums=('5155eacfd70cfe687c37f81b014f1d14f86c5a527fb7ef20f5272e653d2f71dce18af7f900db057f927b050b807c2f8c67b765f46b9b391ea4434a2c6c56e1f6'
         '378937cb32877e1bb22a2e08389da144be8004233e6d77c917c848ecfba5897cae85bd5c921e5a8eefb14a12b07050e6cd642c485351d25b6e9e8aef9ab84c1f'
         '81760f570952b472dcdd3a5b5a2214136e21d1a1cdf65b6d16c615ef4ac6df056b37eebe9ce1f175aa72c664fa7405b1e6edc57847e64511cc64d969ad4490e7')
 backup=("etc/modsecurity/modsecurity.conf"
