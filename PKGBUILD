@@ -7,7 +7,7 @@
 # Contributor: Michael Straube <straubem@gmx.de>
 
 pkgname=guayadeque
-pkgver=0.7.3
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="Lightweight music player"
 arch=(x86_64)
@@ -23,8 +23,8 @@ makedepends=(cmake)
 optdepends=('gst-libav: additional codecs'
             'gst-plugins-bad: additional codecs'
             'gst-plugins-ugly: additional codecs')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/thothix/guayadeque/archive/v${pkgver}.tar.gz")
-sha256sums=('fc176fd57ae490d24477b28fb50f7adffced472d88b7921747f3abc6e98673fe')
+source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/thothix/guayadeque/archive/v${pkgver}.tar.gz")
+sha256sums=('1b0fa2f95270bf3ae4e33ffd676266e78426105f18d2317772e4b108dc947363')
 
 build() {
   # buildtype None introduce problems
@@ -34,7 +34,7 @@ build() {
     -D_GUREVISION_:STRING="${pkgrel}"
   )
 
-  cmake -B build -S "guayadeque-${pkgver}" -Wno-dev \
+  cmake -B build -S "guayadeque" -Wno-dev \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     "${_flags[@]}"
