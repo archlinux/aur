@@ -1,9 +1,9 @@
 # Maintainer: Zesko
 _pkgname="limine-entry-tool"
 pkgname="limine-dracut-support"
-_pkgver=1.29.1
-_extver=1
-pkgver="${_pkgver}_${_extver}"
+_pkgver=1.30.0
+_extver="" #_extver="_1"
+pkgver="${_pkgver}${_extver}"
 pkgrel=1
 pkgdesc="Install kernels for the Limine bootloader."
 arch=('x86_64' 'aarch64')
@@ -28,7 +28,7 @@ optdepends=(
 	'journalctl-desktop-notification: Sends desktop notifications when errors occur'
 )
 makedepends=('git' 'gradle')
-sha256sums=('0f35e2be0043e98dc5727fe3317e936a0a82b77474ea9c5bf4bf546366c8e597')
+sha256sums=('0f00cafc78776e64aa69f6e7c0149f59b06e5faf10cc1f7a22484675578964c5')
 sha256sums_x86_64=('e0be791c8fda4d03b6b0a0cb824fef3149736170057b3a515252b44419606af0')
 sha256sums_aarch64=('b4580d9f223d0a4b3a1757e58b18ff4c1db950e67e105fc5cb741457d2384a71')
 backup=(etc/limine-entry-tool.conf)
