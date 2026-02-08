@@ -2,7 +2,7 @@
 pkgname=cosmic-ext-applet-drives-git
 pkgver=v0.1.0.r0.gc0d04fc
 pkgrel=1
-pkgdesc="Ani removable drives applet for the COSMIC™ desktop"
+pkgdesc="A removable drives applet for the COSMIC™ desktop"
 arch=('x86_64' 'aarch64')
 url="https://github.com/cosmic-utils/cosmic-ext-applet-drives"
 license=('GPL-3.0-or-later')
