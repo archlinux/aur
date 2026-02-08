@@ -2,7 +2,7 @@
 # Intended for staging git builds with experimental features
 
 pkgname=rvvm-git
-pkgver=v0.7.git.r2178.gecd433b
+pkgver=v0.7.git.r2590.g2d5ac0f
 pkgrel=1
 pkgdesc="The RISC-V Virtual Machine"
 arch=('x86_64' 'aarch64' 'riscv64' 'riscv' 'ppc' 'i386' 'i686' 'pentium4' 'arm' 'armv7h' 'armv6h')
