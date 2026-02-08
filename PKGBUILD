@@ -52,13 +52,18 @@ package() {
       ;;
   esac
 
-  install -Dm755 "${srcdir}/${_appimage}" \
-    "${pkgdir}/opt/codex-monitor/codex-monitor.AppImage"
+  chmod +x "${srcdir}/${_appimage}"
+  (
+    cd "${srcdir}"
+    "./${_appimage}" --appimage-extract >/dev/null
+  )
+
+  install -dm755 "${pkgdir}/opt/codex-monitor"
+  cp -a "${srcdir}/squashfs-root/." "${pkgdir}/opt/codex-monitor/"
 
   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/codex-monitor" <<'EOF'
 #!/bin/sh
-export APPIMAGE_EXTRACT_AND_RUN=1
-exec /opt/codex-monitor/codex-monitor.AppImage "$@"
+exec /opt/codex-monitor/AppRun "$@"
 EOF
 
   install -Dm644 "${srcdir}/codex-monitor.desktop" \
