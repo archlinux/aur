@@ -1,7 +1,7 @@
 # Maintainer: Mr.Zero88 <huesmann.mats+aur@gmail.com>
 
 pkgname=oyasumi
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 _oyasumiver=25.6.12
 pkgdesc="Oyasumi (VR Sleeping Utilities)"
@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/sofoxe1/OyasumiVR"
 license=('MIT')
 source=("$pkgname-$_oyasumiver-$pkgver.tar.gz::https://github.com/sofoxe1/OyasumiVR/releases/download/oyasumivr-v$_oyasumiver-linux-v$pkgver/oyasumi-linux.tar.zst")
-sha256sums=('b64257a84d5eb8a429c4c131413e11658821cd350154bc24a0b16bc301c89874')
+sha256sums=('c9738d52a80526e09513a0f5f222bea9f7aaa2f1f4a584f8605747acd925b8c9')
 
 prepare() {
   # Extract the source archive
