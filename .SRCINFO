@@ -1,0 +1,14 @@
+pkgbase = volume-knob-control-bin
+	pkgdesc = A lightweight volume knob controller with device switching.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/你的用户名/你的仓库名
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = pipewire
+	depends = libevdev
+	source_x86_64 = https://github.com/你的用户名/你的仓库名/releases/download/v1.0.0/volume-knob-control_v1.0.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = SKIP
+
+pkgname = volume-knob-control-bin
