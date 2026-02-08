@@ -6,12 +6,13 @@
 # Contributor: Eric Forgeot < http://ifiction.free.fr >
 
 pkgname=gargoyle
-pkgver=2023.1
-pkgrel=2
+pkgver=2026.1.1
+pkgrel=1
 pkgdesc="Interactive Fiction multi-interpreter that supports all major IF formats."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://ccxvii.net/gargoyle/"
-license=('Artistic-2.0 AND BSD-2-Clause AND BSD-3-Clause AND BSL-1.0 AND GPL-2.0-only AND GPL-3.0-only AND MIT AND OFL-1.1')
+license=('GPL-3.0-only AND Artistic-2.0 AND BSD-2-Clause AND BSD-3-Clause AND BSL-1.0 AND MIT AND OFL-1.1'
+         'GPL-2.0-only AND Artistic-2.0 AND BSD-2-Clause AND BSD-3-Clause AND BSL-1.0 AND MIT AND OFL-1.1')
 depends=('sdl2_mixer' 'sdl2' 'freetype2' 'qt6-base' 'fontconfig' 'libjpeg' 'libpng' 'zlib'
          'hicolor-icon-theme')
 makedepends=('cmake' 'pkgconfig' 'desktop-file-utils')
@@ -21,15 +22,8 @@ conflicts=('gargoyle-mod')
 replaces=('gargoyle-mod')
 backup=('etc/garglk.ini')
 #groups=(inform)
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/garglk/garglk/archive/${pkgver}.tar.gz"
-        "0001-include-cstdint-in-garglk.h.patch")
-sha512sums=('d8624f8a8492f64adfdb638811419ebef5b77457708a5d07a3891faf97966237839170914af4d416f42aca7e6d9d0643384ef60be30a2ba22ed52fee4938683a'
-            '0db975cdb44cd155e0962a4a141eba7b5990175ccb65bbb71b7f504bc140e29079da5a7f23bdd429dd68c75b6b2fff320f0ea5cb689aaa5c79dae1642d94cf4f')
-
-prepare() {
-	cd "${srcdir}/garglk-${pkgver}"
-	patch -Np1 -i "${srcdir}/0001-include-cstdint-in-garglk.h.patch"
-}
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/garglk/garglk/archive/${pkgver}.tar.gz")
+sha512sums=('b8aed7b45443d239e20073b45fe828d627207d4649baa83f07fe6c2f8c3fbc0ce778b28cae186dd3116c392007413acc677437cd0f6391f482c2a2afb8048a2b')
 
 build() {
 	cd "${srcdir}/garglk-${pkgver}"
@@ -42,7 +36,7 @@ build() {
 	cd build
 	# the Arch package guidelines say to use
 	# /usr/lib instead of /usr/libexec.
-	cmake .. -DWITH_QT6=true -DWITH_TTS=DYNAMIC -DCMAKE_INSTALL_LIBEXECDIR=lib -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+	cmake .. -DWITH_TTS=DYNAMIC -DCMAKE_INSTALL_LIBEXECDIR=lib -DCMAKE_INSTALL_PREFIX=/usr
 	make
 }
 
