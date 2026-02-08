@@ -1,10 +1,10 @@
-# Maintainer: Your Name <your@email.com>
+# Maintainer: AuroraNasa
 pkgname=volume-knob-control-bin
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="A lightweight volume knob controller with device switching."
 arch=('x86_64' 'aarch64')
-url="https://github.com/你的用户名/你的仓库名"
+url="https://github.com/Aurora-Nasa-1/volume-control"
 license=('MIT')
 depends=('pipewire' 'libevdev')
 source_x86_64=("$url/releases/download/v$pkgver/volume-knob-control_v${pkgver}_linux_amd64.tar.gz")
