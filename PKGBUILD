@@ -11,6 +11,12 @@ makedepends=("git" "go")
 source=("git+${url}.git#tag=v${pkgver//_/-}")
 sha256sums=('f459eedf608bb7662809f3bb317ad8715570c85984fbc8603a3dd82a51c0f254')
 
+prepare() {
+  cd "${srcdir}/${pkgname}"
+  export GOPATH="${srcdir}"
+  go mod download -modcacherw
+}
+
 build() {
   cd "${srcdir}/${pkgname}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
