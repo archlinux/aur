@@ -2,7 +2,7 @@
 
 _gemname='dry-types'
 pkgname="ruby-${_gemname}"
-pkgver=1.8.3
+pkgver=1.9.1
 pkgrel=1
 pkgdesc='Type system for Ruby supporting coercions, constraints and complex types like structs, value objects, enums etc'
 arch=('any')
@@ -29,14 +29,20 @@ checkdepends=(
 )
 options=('!emptydirs')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('aec3d2decae270715ab251feca1d598b2102850367c7fb5763ec3dd5bacfbb7edd3cd7b6f2e1b6511f1e5f5cf8ebd40626079b718ac395dbe3a63a219fd19505')
-b2sums=('ca316ede356c82928dbf49a20b80d294b1a96cb0a3d80c5b701375ab228c3ec5c77f6474c5ca85968734be39f34be8c1e8b3638c6195dc0124a7cdb5accba49d')
+sha512sums=('e704119e2eac927b39fc9d49938acdce3b9f288e2c660a5054ea292aa0220fca86edfce006815af3adffeeffc4118aa244e1b86cb9fb4e53241bbea61a4681aa')
+b2sums=('9c2ed18c2b82fafadcc0774c6e12a9d46399a9d43c4b431d62e3b358df63aaf324aa1aff0a6071d1ac77f55e9b3f0b198016ba8c94bb91d77c3f29ae24d7fcd6')
 
 prepare() {
   cd "${_gemname}-${pkgver}"
 
   # update gemspec/Gemfile to allow newer version of the dependencies
   sed --in-place --regexp-extended 's|~>|>=|g' "${_gemname}.gemspec"
+
+  sed --in-place --regexp-extended \
+    --expression '/lefthook/d' \
+    --expression '/group :tools/,/end/d' \
+    Gemfile \
+    Gemfile.devtools
 }
 
 build() {
@@ -87,10 +93,13 @@ check() {
 
   local _gemdir="$(gem env gemdir)"
 
-  # Exclude `module_spec`, which requires a circular
-  # checkdepends to `ruby-dry-monads`
+  # - Exclude `module_spec`, which requires a circular
+  #   checkdepends to `ruby-dry-monads`
+  # - Exclude `sum_spec`, which requires a circular
+  #   checkdepends to `ruby-dry-struct`
   GEM_HOME="tmp_install${_gemdir}" \
-    find spec/dry -name 'module_spec.rb' -prune -o \
+    find spec/dry \
+      -regex 'spec/dry/types/\(module\|sum\)_spec\.rb' -prune -o \
       -name '*_spec.rb' -exec rspec '{}' +
 }
 
