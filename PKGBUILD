@@ -6,9 +6,9 @@ _pkgname=vintagestory
 
 # _release is the version's release type, commonly "stable" for normal releases,
 # "unstable" for release candidates and "pre" for testing releases before big updates.
-_release=unstable
+_release=pre
 # _pkgver is separate to allow specifying pre-release versions such as "-rc.1".
-_pkgver=1.21.6-rc.1
+_pkgver=1.22.0-pre.2
 
 # makepkg doesn't support hyphens in pkgver, so we'll strip them as per `vercmp`.
 pkgver=${_pkgver//-/}
@@ -24,17 +24,17 @@ source=("https://cdn.vintagestory.at/gamefiles/$_release/vs_client_linux-x64_$_p
         "$_pkgname.desktop"
         "vsmodinstall-handler.desktop"
         "font.conf")
-md5sums=('e41e11b2a0c95f2d7e635969d8f51c48'
+md5sums=('fcc5c16226ac9b5c9ef6f892fef2d72f'
          '09b467a592b34410933b457c262df0f2'
          'f086616f754a92eb4c39889d43abffd5'
          '9912e111cef7077cab433290c9995b6f')
 
 prepare() {
 	# Remove install script provided by developers
-	rm "$_pkgname"/install.sh
+	rm vintagestory/install.sh
 	# Create symbolic links for any assets (excluding fonts) containing non-lowercase letters
 	# Some asset files might include uppercase letters, but the game expects them to be lowercase
-	find "$_pkgname"/assets/ -not -path "*/fonts/*" -regex ".*/.*[A-Z].*" | while read -r file; do
+	find vintagestory/assets/ -not -path "*/fonts/*" -regex ".*/.*[A-Z].*" | while read -r file; do
 		local filename="$(basename -- "$file")"
 		ln -sf "$filename" "${file%/*}"/"${filename,,}"
 	done
@@ -42,13 +42,13 @@ prepare() {
 
 package() {
 	# Copy application icon and .desktop files
-	install -Dm644 "$_pkgname"/assets/gameicon.xpm "$pkgdir"/usr/share/pixmaps/"$pkgname".xpm
-	install -Dm644 "$_pkgname".desktop "$pkgdir"/usr/share/applications/"$pkgname".desktop
+	install -Dm644 vintagestory/assets/gameicon.png "$pkgdir"/usr/share/pixmaps/"$pkgname".png
+	install -Dm644 vintagestory.desktop "$pkgdir"/usr/share/applications/"$pkgname".desktop
 	install -Dm644 vsmodinstall-handler.desktop "$pkgdir"/usr/share/applications/"$pkgname"-modinstall-handler.desktop
 
 	# Copy all other application files (`/opt` is the right place to dump this)
 	install -dm 755 "$pkgdir"/opt # Create directory first (required)
-	cp -r --preserve=mode "$_pkgname" "$pkgdir"/opt/"$pkgname"
+	cp -r --preserve=mode vintagestory "$pkgdir"/opt/"$pkgname"
 
 	# Override `font.conf` provided by the game, as it is useless
 	install -Dm644 font.conf "$pkgdir"/opt/"$pkgname"/font.conf
