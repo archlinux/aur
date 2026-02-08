@@ -5,16 +5,22 @@ pkgdesc='Trust scoring for AUR packages'
 arch=('x86_64')
 url='https://github.com/Sohimaster/traur'
 license=('MIT')
-depends=('git' 'pacman')
+depends=('git' 'pacman' 'gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('f953a444e0a09bfb8cd6ceea7e44eac3b276c7bd12549f01dfbca1dd81c191fb')
-backup=('etc/traur/config.toml')
+
+prepare() {
+    cd "$pkgname-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
 
 build() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    cargo build --locked --release
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release
 }
 
 package() {
