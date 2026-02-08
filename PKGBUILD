@@ -1,7 +1,7 @@
 # Maintainer: blekki <blekkiw at gmail dot com>
 pkgname=anidesk-bin
 pkgver=0.0.1.beta.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial desktop client for Anixart"
 arch=('x86_64')
 url="https://github.com/theDesConnet/AniDesk"

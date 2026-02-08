@@ -1,7 +1,7 @@
 pkgbase = anidesk-bin
 	pkgdesc = Unofficial desktop client for Anixart
 	pkgver = 0.0.1.beta.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/theDesConnet/AniDesk
 	arch = x86_64
 	license = GPL-2.0-only
