@@ -24,11 +24,11 @@ pkgver() {
 }
 
 package() {
-	install -dm644 "${pkgdir}/usr/share"
+	install -dm755 "${pkgdir}/usr/share"
 	cp -r "${srcdir}/${_pkgname}" "${pkgdir}/usr/share/${_pkgname}"
-	install -dm644 "${pkgdir}/usr/bin"
+	install -dm755 "${pkgdir}/usr/bin"
 	ln -sf "/usr/share/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-	install -dm644 "${pkgdir}/usr/share/zsh/site-functions"
+	install -dm755 "${pkgdir}/usr/share/zsh/site-functions"
 	ln -sf "/usr/share/${_pkgname}/data/completions/zsh/_kde-builder" "${pkgdir}/usr/share/zsh/site-functions/_kde-builder"
 	ln -sf "/usr/share/${_pkgname}/data/completions/zsh/_kde-builder_projects_and_groups" "${pkgdir}/usr/share/zsh/site-functions/_kde-builder_projects_and_groups"
 }
