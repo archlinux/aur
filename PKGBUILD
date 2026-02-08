@@ -1,8 +1,6 @@
 # Maintainer: Zesko
 pkgname="limine-entry-tool"
-_pkgver=1.29.1
-_extver=1
-pkgver="${_pkgver}_${_extver}"
+pkgver="1.30.0"
 pkgrel=1
 pkgdesc="Entry management for the Limine bootloader."
 arch=('x86_64' 'aarch64')
@@ -23,7 +21,7 @@ depends=(
 makedepends=('git' 'gradle')
 backup=(etc/limine-entry-tool.conf)
 conflicts=('limine-entry-tool')
-sha256sums=('0f35e2be0043e98dc5727fe3317e936a0a82b77474ea9c5bf4bf546366c8e597')
+sha256sums=('0f00cafc78776e64aa69f6e7c0149f59b06e5faf10cc1f7a22484675578964c5')
 sha256sums_x86_64=('e0be791c8fda4d03b6b0a0cb824fef3149736170057b3a515252b44419606af0')
 sha256sums_aarch64=('b4580d9f223d0a4b3a1757e58b18ff4c1db950e67e105fc5cb741457d2384a71')
 
