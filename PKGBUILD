@@ -5,7 +5,7 @@
 # Contributor: cdhotfire <cdhotfire@gmail.com>
 
 pkgname=python-eyed3
-pkgver=0.9.8
+pkgver=0.9.9
 pkgrel=1
 pkgdesc="A Python module and program for processing information about mp3 files"
 arch=('any')
@@ -16,7 +16,7 @@ depends=('python-deprecation' 'python-filetype' 'python-packaging' 'python-reque
 checkdepends=('python-factory-boy' 'python-pytest')
 source=("eyed3-${pkgver}.tar.gz::https://github.com/nicfit/eyeD3/archive/refs/tags/v${pkgver}.tar.gz"
         'https://eyed3.nicfit.net/releases/eyeD3-test-data.tgz')
-sha256sums=('10725471bbbb261a1d34ce83e68542f8829f06f075a790dfb7f84fbf7b6ccac0'
+sha256sums=('872d57edbde3f81748df4a581951c20f78c77f02384ee104a2ae8a283f3b084e'
             'b7cd2fe8d7114f597dbe1e06c11587af566cf92f640cef9af6408a824face37f')
 options=(!emptydirs)
 
