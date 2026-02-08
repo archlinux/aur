@@ -1,0 +1,94 @@
+diff --git a/ElementsKernel/CMakeLists.txt b/ElementsKernel/CMakeLists.txt
+index 581113b..cf38f7c 100644
+--- a/ElementsKernel/CMakeLists.txt
++++ b/ElementsKernel/CMakeLists.txt
+@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.5)
+ 
+ elements_subdir(ElementsKernel)
+ 
+-find_package(Boost REQUIRED COMPONENTS filesystem thread program_options system regex)
++find_package(Boost REQUIRED COMPONENTS filesystem thread program_options regex)
+ find_package(Log4CPP REQUIRED)
+ 
+ #---Libraries---------------------------------------------------------------
+diff --git a/ElementsKernel/tests/src/Auxiliary_test.cpp b/ElementsKernel/tests/src/Auxiliary_test.cpp
+index e2049d0..129c3a3 100644
+--- a/ElementsKernel/tests/src/Auxiliary_test.cpp
++++ b/ElementsKernel/tests/src/Auxiliary_test.cpp
+@@ -26,7 +26,7 @@
+ #include <string>     // for allocator, string
+ #include <vector>     // for vector
+ 
+-#include <boost/filesystem/operations.hpp>  // for exists, create_directory, is_regular
++#include <boost/filesystem/operations.hpp>  // for exists, create_directory, is_regular_file
+ #include <boost/filesystem/path.hpp>        // for operator/, path
+ #include <boost/test/unit_test.hpp>  // for BOOST_PP_IIF_1, BOOST_PP_IIF_0, BOOST_PP_EXPR_IIF_1, BOOST_PP_BOOL_1, BOOST_PP_BOOL_0, BOOST_PP_FOR_CHECK_BOOST_PP_NIL, BOOST_PP_TUPLE_ELEM_O_3, BOOST_PP_VARIADIC_ELEM_3, operator<<, BOOST_PP_SEQ_ELEM_0, BOOST_PP_DEC_1, BOOST_PP_BOOL_2, BOOST_PP_DEC_2, BOOST_PP_FOR_0, BOOST_PP_COMPL_0, BOOST_PP_SEQ_SIZE_BOOST_PP_SEQ_SIZE_4, BOOST_PP_DEC_4, BOOST_PP_BOOL_3, BOOST_PP_BOOL_4, BOOST_PP_NOT_EQUAL_1, BOOST_PP_NOT_EQUAL_CHECK_BOOST_PP_NOT_EQUAL_1, BOOST_AUTO_TEST_CASE, BOOST_PP_DEC_128, BOOST_PP_DEC_16, BOOST_PP_DEC_3, BOOST_PP_DEC_32, BOOST_PP_DEC_64, BOOST_PP_DEC_8, BOOST_PP_FOR_1, BOOST_PP_FOR_127, BOOST_PP_FOR_15, BOOST_PP_FOR_3, BOOST_PP_FOR_31, BOOST_PP_FOR_63, BOOST_PP_FOR_7, BOOST_PP_NODE_ENTRY_256, BOOST_CHECK_EQUAL_COLLECTIONS, BOOST_FIXTURE_TEST_CASE, BOOST_PP_DEC_5, BOOST_PP_NOT_EQUAL_2, BOOST_PP_NOT_EQUAL_CHECK_BOOST_PP_NOT_EQUAL_2, BOOST_PP_SEQ_ENUM_4, BOOST_PP_SEQ_SIZE_BOOST_PP_SEQ_SIZE_5, BOOST_TEST_TOOL_PASS_ARGS1, BOOST_TEST_TOOL_PASS_PRED1, BOOST_CHECK_EQUAL, BOOST_PP_SEQ_SIZE_BOOST_PP_SEQ_SIZE_2, BOOST_PP_SEQ_SIZE_BOOST_PP_SEQ_SIZE_3, BOOST_TEST_TOOL_PASS_ARGS0, BOOST_TEST_TOOL_PASS_ARGS2, BOOST_TEST_TOOL_PASS_PRED0, BOOST_TEST_TOOL_PASS_PRED2, BOOST_AUTO_TEST_SUITE, BOOST_AUTO_TEST_SUITE_END, BOOST_CHECK_THROW
+ 
+@@ -39,7 +39,7 @@ using std::string;
+ using std::vector;
+ 
+ using boost::filesystem::exists;
+-using boost::filesystem::is_regular;
++using boost::filesystem::is_regular_file;
+ 
+ namespace Elements {
+ 
+diff --git a/ElementsKernel/tests/src/Configuration_test.cpp b/ElementsKernel/tests/src/Configuration_test.cpp
+index 21d4c5a..808cb56 100644
+--- a/ElementsKernel/tests/src/Configuration_test.cpp
++++ b/ElementsKernel/tests/src/Configuration_test.cpp
+@@ -21,7 +21,7 @@
+ 
+ #include "ElementsKernel/Configuration.h"  // header to test
+ 
+-#include <boost/filesystem/operations.hpp>  // for exists, create_directory, is_regular
++#include <boost/filesystem/operations.hpp>  // for exists, create_directory, is_regular_file
+ #include <boost/filesystem/path.hpp>        // for operator/, path
+ #include <boost/test/unit_test.hpp>
+ 
+@@ -39,7 +39,7 @@ using std::string;
+ using std::vector;
+ 
+ using boost::filesystem::exists;
+-using boost::filesystem::is_regular;
++using boost::filesystem::is_regular_file;
+ 
+ namespace Elements {
+ 
+diff --git a/ElementsKernel/tests/src/Path_test.cpp b/ElementsKernel/tests/src/Path_test.cpp
+index d930025..7df5259 100644
+--- a/ElementsKernel/tests/src/Path_test.cpp
++++ b/ElementsKernel/tests/src/Path_test.cpp
+@@ -27,7 +27,7 @@
+ #include <vector>     // for vector, operator==
+ 
+ #include <boost/filesystem/fstream.hpp>
+-#include <boost/filesystem/operations.hpp>  // for exists, create_directory, is_regular_file, is_regular
++#include <boost/filesystem/operations.hpp>  // for exists, create_directory, is_regular_file
+ #include <boost/test/unit_test.hpp>
+ 
+ #include "ElementsKernel/Temporary.h"  // for TempDir, TempEnv
+@@ -36,7 +36,7 @@ using std::string;
+ using std::vector;
+ 
+ using boost::filesystem::exists;
+-using boost::filesystem::is_regular;
++using boost::filesystem::is_regular_file;
+ 
+ namespace Elements {
+ 
+diff --git a/cmake/ElementsLocations.cmake b/cmake/ElementsLocations.cmake
+index d2201c7..688bfa5 100644
+--- a/cmake/ElementsLocations.cmake
++++ b/cmake/ElementsLocations.cmake
+@@ -183,9 +183,8 @@ if(SQUEEZED_INSTALL)
+   find_package(PythonInterp ${PYTHON_EXPLICIT_VERSION})
+ 
+   execute_process(COMMAND "${PYTHON_EXECUTABLE}" "-c"
+-                  "from distutils.sysconfig import get_python_lib; print(get_python_lib(plat_specific=True, prefix='${CMAKE_INSTALL_PREFIX}').replace('${CMAKE_INSTALL_PREFIX}/',''))"
++                  "from sysconfig import get_path; print(get_path('platlib').replace(get_path('data') + '/',''))"
+                   OUTPUT_VARIABLE PYTHON_INSTALL_SUFFIX
+-                  ERROR_QUIET
+                   OUTPUT_STRIP_TRAILING_WHITESPACE)
+ 
+   set(PYTHON_DYNLIB_INSTALL_SUFFIX ${PYTHON_INSTALL_SUFFIX} CACHE STRING "Final suffix for the install directory of the python binary files" FORCE)

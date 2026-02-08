@@ -1,0 +1,22 @@
+diff --git a/ElementsKernel/scripts/squeezedInstall_test b/ElementsKernel/scripts/squeezedInstall_test
+index f9ecb87..0fa941f 100755
+--- a/ElementsKernel/scripts/squeezedInstall_test
++++ b/ElementsKernel/scripts/squeezedInstall_test
+@@ -16,7 +16,7 @@ tmploc=$(mktemp -dq -t temp.XXXXXX)
+ custom_prefix=${tmploc}/usr/local
+ mkdir -p ${custom_prefix}
+ 
+-cmake_full_cmd="cmake -DCMAKE_PREFIX_PATH=${custom_prefix} -DCMAKE_INSTALL_PREFIX=${custom_prefix}"
++cmake_full_cmd="cmake -DCMAKE_PREFIX_PATH=${custom_prefix} -DCMAKE_INSTALL_PREFIX=${custom_prefix} -DUSE_SPHINX=OFF -Wno-dev"
+ 
+ 
+ # prepare the environment
+@@ -31,6 +31,8 @@ unset ELEMENTSSERVICESROOT
+ unset ELEMENTS_NAMING_DB_URL
+ unset ELEMENTS_PROJECT_ROOT
+ unset User_area
++unset MAKEFLAGS
++unset MFLAGS
+ 
+ # Configure Elements
+ elements_build_dir=${tmploc}/ElementsBuild
