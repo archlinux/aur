@@ -1,11 +1,10 @@
 pkgbase = asunder
 	pkgdesc = a graphical CD ripper and encoder
-	pkgver = 3.0.1
-	pkgrel = 2
+	pkgver = 3.0.2
+	pkgrel = 1
 	url = http://littlesvr.ca/asunder/
 	arch = x86_64
-	license = GPL2
-	makedepends = pkgconfig
+	license = GPL-2.0-only
 	makedepends = intltool
 	makedepends = gettext
 	depends = gdk-pixbuf2
@@ -22,7 +21,7 @@ pkgbase = asunder
 	optdepends = wavpack: for wavpack support
 	optdepends = musepack-tools: for musepack support
 	optdepends = mac: for monkey audio support
-	source = http://littlesvr.ca/asunder/releases/asunder-3.0.1.tar.bz2
-	sha512sums = 07b4caa80c35b39f407952276237787561100e1f546637b64119741f75385afe8db43a991cce364fb152ed5d20b9a9ac99a972b6cbb9616073dada2e2d048b74
+	source = http://littlesvr.ca/asunder/releases/asunder-3.0.2.tar.bz2
+	sha512sums = 9f75a923b152a3c4ba2abb495eb06bbdc2ce8fc0ec120ebc92221ad7c165c994260b28ac3fa121b200998deb349bfdfc5386b72bdf8e3005197b02bf502f60b1
 
 pkgname = asunder
