@@ -2,7 +2,7 @@
 # Inspired from the PKGBUILD for vscodium.
 
 pkgname=vscodium-insiders-bin
-pkgver=1.108.00347
+pkgver=1.109.00954
 pkgrel=1
 pkgdesc="Binary releases of Code Insiders without branding/telemetry/licensing (binary release)"
 # arch=('x86_64' 'aarch64' 'armv7h')
@@ -46,8 +46,8 @@ source_aarch64=(
 )
 sha256sums=('99dbc0d75aec1dbda70655fe3d9769aa2728116ae885e8be20c4b4f13ae1e80e'
             'ccd83957fc14eaeeffc56762e864a8d313f99fa480c105eaecd832fb29d075ab')
-sha256sums_x86_64=('63eda40cf7812bb1807fb3f65c5c3fe300b3d84b3413844b29b07cf7b83fe13d')
-sha256sums_aarch64=('308904918faf0deafb7697fcafab640d334e386213e08dd76086115b8ba38aa4')
+sha256sums_x86_64=('f36ab4ae2d2697ea41e3f5cc65691d3aacd114cdb9e8bc742fdb2571a9be5caa')
+sha256sums_aarch64=('c4726a39e7e12565ac86f46264762d0d39e8f2ad22676f5ba34f2f2d60d73428')
 # sha256sums_armv7h=('b6e80175290e6857196140ac33c08e0e67c14778b659703c828b120fc62ea056')
 
 shopt -s extglob
