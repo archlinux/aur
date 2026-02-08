@@ -1,7 +1,7 @@
 pkgbase = zenscreen
 	pkgdesc = Digital Wellbeing for Linux (ZenScreen) - Screen Time Tracker
-	pkgver = 1.0.0
-	pkgrel = 4
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/Someshwar1006/Digital-Wellbeing-for-Linux
 	install = zenscreen.install
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = zenscreen
 	provides = zenscreen
 	conflicts = zenscreen-git
 	options = !emptydirs
-	source = zenscreen-1.0.0.tar.gz::https://github.com/Someshwar1006/Digital-Wellbeing-for-Linux/archive/v1.0.0.tar.gz
+	source = zenscreen-1.0.1.tar.gz::https://github.com/Someshwar1006/Digital-Wellbeing-for-Linux/archive/v1.0.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = zenscreen
