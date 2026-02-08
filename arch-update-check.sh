@@ -1,9 +1,9 @@
 #!/usr/bin/env zsh
 
-# Arch Update Readiness Checker v1.3.1
-# Fixes: Date-based news filtering and corrected Partial Upgrade detection.
+# Arch Update Readiness Checker v1.3.2
+# Fixes: Added AUR packages to the check and count.
 
-VERSION="1.3.1"
+VERSION="1.3.2"
 set -euo pipefail
 
 NEWS_RSS="https://archlinux.org/feeds/news/"
@@ -97,6 +97,8 @@ log "- Official Updates: $OFFICIAL_COUNT"
 log "- AUR Updates:      $AUR_COUNT"
 log "- Failed Services:  $FAILED_SERVICES"
 log "- Partial Upgrade:  $PARTIAL_UPGRADE"
+
+TOTAL_UPDATES=$(( OFFICIAL_COUNT + AUR_COUNT ))
 
 # 6. Recommendation Logic
 if [[ -n "$RELEVANT_NEWS" ]]; then
