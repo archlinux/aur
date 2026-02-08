@@ -1,7 +1,7 @@
 # Maintainer: Tobin <rn+aur@tlittle72.org>
 
 pkgname=wvkbd-deskintl
-pkgver=0.18
+pkgver=0.19.4
 pkgrel=1
 pkgdesc='On-screen keyboard for wlroots. Wvkbd requires desktop version to be configured at compile time, so this is to make that easier.'
 url='https://git.sr.ht/~proycon/wvkbd'
