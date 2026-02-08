@@ -7,7 +7,7 @@
 
 pkgname=insync
 pkgver=3.9.8.60034
-pkgrel=1
+pkgrel=2
 _dist=noble
 pkgdesc="An unofficial Dropbox, Google Drive, and OneDrive client that runs on Linux, with support for various desktops"
 url="https://www.insynchq.com/downloads"
@@ -47,4 +47,6 @@ package() {
    mv ${pkgdir}/usr/lib/insync/libstdc++.so.6{,.bak}
    echo "-> Patching https://forums.insynchq.com/t/workaround-for-libcrypt-so-1-issue-on-3-7-9-for-arch/18504"
    ln -s /usr/lib/libcrypt.so.2 ${pkgdir}/usr/lib/insync/libcrypt.so.1
+   echo "-> Patching https://forums.insynchq.com/t/no-window-decorations-on-gnome-using-wayland/34886/6"
+   sed -i 's/Exec=insync start/Exec=env QT_QPA_PLATFORM=xcb insync start/g' ${pkgdir}/usr/share/applications/insync.desktop
 }
