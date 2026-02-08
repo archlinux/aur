@@ -1,21 +1,20 @@
 pkgbase = fcitx5-hazkey-bin
 	pkgdesc = Japanese input method for fcitx5, powered by azooKey engine
-	pkgver = 0.2.0
-	pkgrel = 3
-	url = https://github.com/7ka-Hiira/fcitx5-hazkey
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://hazkey.hiira.dev/
 	arch = x86_64
 	license = MIT
 	depends = fcitx5>=5.0.4
 	depends = qt6-base
-	optdepends = hazkey-zenzai: Zenzai neural conversion support
 	provides = fcitx5-hazkey
 	provides = hazkey-server
+	provides = hazkey-settings
 	conflicts = fcitx5-hazkey
-	conflicts = fcitx5-hazkey-git
 	options = !debug
-	source = https://github.com/7ka-Hiira/fcitx5-hazkey/releases/download/0.2.0/fcitx5-hazkey-0.2.0-x86_64.tar.gz
+	source = https://github.com/7ka-Hiira/fcitx5-hazkey/releases/download/0.2.1/fcitx5-hazkey-0.2.1-x86_64.tar.gz
 	source = LICENSE
-	sha256sums = 5c863baf414adf6732f889b0c8f3ce931acae695ffacd1deb4a2f8307fcc3692
+	sha256sums = feed9fd0bd29f21fde2b7e3b55544692359937d743f4c301dc5c6ebfa777f55b
 	sha256sums = 36ae30a03484d88f0f90e1985750b0a3f43521bf0a5c8112354bec2de60e0c5b
 
 pkgname = fcitx5-hazkey-bin
