@@ -1,0 +1,15 @@
+diff --git a/SEMain/CMakeLists.txt b/SEMain/CMakeLists.txt
+index b904bc4..29d2096 100644
+--- a/SEMain/CMakeLists.txt
++++ b/SEMain/CMakeLists.txt
+@@ -63,8 +63,8 @@ elements_add_library(SEMain ${LIB_SRC}
+ elements_add_executable(sourcextractor++ src/program/SourceXtractor.cpp
+                      LINK_LIBRARIES SEMain SEUtils SEFramework SEImplementation)
+ 
+-elements_add_executable(TestImage src/program/TestImage.cpp
+-                     LINK_LIBRARIES SEMain SEUtils SEFramework SEImplementation)
++# elements_add_executable(TestImage src/program/TestImage.cpp
++#                      LINK_LIBRARIES SEMain SEUtils SEFramework SEImplementation)
+ 
+ #===============================================================================
+ # Declare the Boost tests here

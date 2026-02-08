@@ -1,0 +1,74 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e658ef8..5c68ef2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.5)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.5)
+ 
+ #---------------------------------------------------------------
+ # Load macros and functions for Elements-based projects
+diff --git a/SEBenchmarks/CMakeLists.txt b/SEBenchmarks/CMakeLists.txt
+index 8c45f20..bc10377 100644
+--- a/SEBenchmarks/CMakeLists.txt
++++ b/SEBenchmarks/CMakeLists.txt
+@@ -1,5 +1,3 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.5)
+-
+ #===============================================================================
+ # Load elements_subdir macro here
+ # Examples:
+diff --git a/SEFramework/CMakeLists.txt b/SEFramework/CMakeLists.txt
+index 7755525..fcf4a32 100644
+--- a/SEFramework/CMakeLists.txt
++++ b/SEFramework/CMakeLists.txt
+@@ -1,5 +1,3 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.5)
+-
+ #===============================================================================
+ # Load elements_subdir macro here
+ # Examples:
+diff --git a/SEImplementation/CMakeLists.txt b/SEImplementation/CMakeLists.txt
+index 1b52a93..75b0df5 100644
+--- a/SEImplementation/CMakeLists.txt
++++ b/SEImplementation/CMakeLists.txt
+@@ -1,5 +1,3 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.5)
+-
+ #===============================================================================
+ # Load elements_subdir macro here
+ # Examples:
+diff --git a/SEMain/CMakeLists.txt b/SEMain/CMakeLists.txt
+index 8fdb92a..b904bc4 100644
+--- a/SEMain/CMakeLists.txt
++++ b/SEMain/CMakeLists.txt
+@@ -1,5 +1,3 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.5)
+-
+ #===============================================================================
+ # Load elements_subdir macro here
+ # Examples:
+diff --git a/SEMain/src/lib/ProgressNCurses.cpp b/SEMain/src/lib/ProgressNCurses.cpp
+index 63492e8..f59fe77 100644
+--- a/SEMain/src/lib/ProgressNCurses.cpp
++++ b/SEMain/src/lib/ProgressNCurses.cpp
+@@ -27,6 +27,9 @@
+ #include <iostream>
+ #include <iomanip>
+ #include <mutex>
++#ifdef timeout
++#undef timeout
++#endif
+ #include <boost/algorithm/string/trim.hpp>
+ #include <boost/thread.hpp>
+ 
+diff --git a/SEUtils/CMakeLists.txt b/SEUtils/CMakeLists.txt
+index 9f3c453..42bc5ce 100644
+--- a/SEUtils/CMakeLists.txt
++++ b/SEUtils/CMakeLists.txt
+@@ -1,5 +1,3 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.5)
+-
+ #===============================================================================
+ # Load elements_subdir macro here
+ # Examples:

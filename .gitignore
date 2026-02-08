@@ -1,0 +1,8 @@
+*
+
+!/.gitignore
+
+!/.SRCINFO
+!/PKGBUILD
+!/0001-fix_build.patch
+!/0002-remove_TestImage.patch
