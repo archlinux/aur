@@ -2,21 +2,23 @@
 
 pkgname=bws-bin
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitwarden Secrets Manager CLI"
 arch=("aarch64" "x86_64")
 url="https://bitwarden.com/"
-_get_license="$(mkdir -p src && curl -sL "https://raw.githubusercontent.com/bitwarden/sdk-sm/master/LICENSE" -o src/LICENSE)"
 _shasums="$(curl -sL https://github.com/bitwarden/sdk-sm/releases/download/bws-v${pkgver//_/-}/bws-sha256-checksums-${pkgver//_/-}.txt)"
 license=("custom:BITWARDEN SOFTWARE DEVELOPMENT KIT LICENSE AGREEMENT")
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source_aarch64=("https://github.com/bitwarden/sdk-sm/releases/download/bws-v${pkgver//_/-}/bws-aarch64-unknown-linux-gnu-${pkgver}.zip")
 source_x86_64=("https://github.com/bitwarden/sdk-sm/releases/download/bws-v${pkgver//_/-}/bws-x86_64-unknown-linux-gnu-${pkgver}.zip")
-sha256sums_aarch64=($(echo "$_shasums"  | awk '{print $1,$2}' | grep bws-aarch64-unknown-linux-gnu-${pkgver}.zip | awk '{print $1}'))
+sha256sums_aarch64=($(echo "$_shasums" | awk '{print $1,$2}' | grep bws-aarch64-unknown-linux-gnu-${pkgver}.zip | awk '{print $1}'))
 sha256sums_x86_64=($(echo "$_shasums" | awk '{print $1,$2}' | grep bws-x86_64-unknown-linux-gnu-${pkgver}.zip | awk '{print $1}'))
+
+source=("https://raw.githubusercontent.com/bitwarden/sdk-sm/refs/tags/bws-v${pkgver//_/-}/LICENSE")
+sha256sums=("SKIP") # only skips the check for the license
 
 package() {
     install -Dm755 bws "${pkgdir}/usr/bin/bws"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
