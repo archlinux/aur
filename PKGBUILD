@@ -6,7 +6,7 @@ pkgname=(
   'cecli'
 )
 _gitpkgname=cecli
-pkgver=0.96.9
+pkgver=0.96.10
 pkgrel=1
 pkgdesc='AI pair programming in your terminal - dwash96 fork of AIDER with TUI and MCP support'
 arch=('any')
@@ -86,7 +86,7 @@ source=(
   'fix-build-from-tarball.patch'
 )
 
-sha512sums=('c2089ee5c3cfdcc3081c584749f7ca83c68c71522c3d9b7203c71a7e9a1f6868fd0797989798dbb80e29a324997574debbffbff39a6ab857ffcea7c097d5b6ac'
+sha512sums=('1bd8503ae6d4a87c54aee34e36c1a8d316ee48481f6cb1f7b172ce1b0940336c164211f603b511e9227dc22da2a00baa14eceeda58a96375020047f90e5aa283'
             'c37489522cf14ecf5808c7ef06a324b48bf5b979f27887ab47a28c68c9685dd60856596bb24000fc4676e57c249aa35e16cf6dc1524b993b16f8ab1c4589922b'
             '523aed2029146d079de44db15152833a385ff331ca6bb19230cbc92d5abed1a33e4a132a34150ead213a19c7eb715c564b480c8943fd03216400aa6954770d8c')
 
