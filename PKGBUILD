@@ -17,7 +17,7 @@ options=('!strip')
 _common_sources=(
   "app_icon.png::https://raw.githubusercontent.com/Kindness-Kismet/Stelliberty/v${pkgver}/linux/runner/resources/app_icon.png"
   "stelliberty.desktop::https://raw.githubusercontent.com/Kindness-Kismet/Stelliberty/v${pkgver}/linux/stelliberty.desktop"
-  "LICENSE::https://raw.githubusercontent.com/Kindness-Kismet/Stelliberty/v${pkgver}/LICENSE"
+  "LICENSE-v${pkgver}::https://raw.githubusercontent.com/Kindness-Kismet/Stelliberty/v${pkgver}/LICENSE"
 )
 
 source=("${_common_sources[@]}")
@@ -136,5 +136,5 @@ EOF
   sed -e 's/^Icon=.*/Icon=stelliberty/' -e 's/^Exec=.*/Exec=stelliberty/' -i "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
   install -Dm644 "${srcdir}/app_icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/stelliberty.png"
-  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/LICENSE-v${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
