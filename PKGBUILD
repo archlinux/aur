@@ -4,7 +4,7 @@
 
 pkgname=hunspell-bn
 pkgver=2026.02.07
-pkgrel=2
+pkgrel=3
 pkgdesc="Bengali hunspell dictionaries"
 arch=('any')
 license=('GPL')
@@ -20,10 +20,6 @@ sha256sums=(
     '6beeacefab0f691cb415c9ab8de227091a3be65510c3d8c0479513b261e61b97'
     'cfc78b361861a726d22f0654d7c4e0b47f843c4a9e8b605c4c99e91ea683e116'
 )
-
-pkgver() {
-    date -u +%Y.%m.%d
-}
 
 package() {
     install -vD -m644 bn_BD.dic bn_BD.aff -t "${pkgdir}/usr/share/hunspell"
