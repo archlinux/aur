@@ -1,6 +1,6 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=madonctl
-pkgver=2.3.1
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="CLI client for the Mastodon social network API"
 arch=('x86_64' 'aarch64')
