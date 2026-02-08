@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Bluesky Electron
+Exec=/usr/bin/bsky-electron %U
+Terminal=false
+Type=Application
+Icon=bsky-electron
+StartupWMClass=bsky-electron
+GenericName=Internet Messenger
+Categories=Network;
+Keywords=bsky;bluesky;electron;
+Comment=Bluesky Electron Client

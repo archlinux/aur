@@ -1,0 +1,24 @@
+pkgbase = bsky-electron
+	pkgdesc = Bluesky Electron Client using system provided electron.
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/CaffeeLake/bsky-electron
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = pnpm
+	makedepends = npm
+	depends = electron
+	optdepends = libnotify: Notifications
+	optdepends = xdg-utils: Open links, files, etc
+	provides = bsky-electron
+	conflicts = bsky-electron-bin
+	source = git+https://github.com/CaffeeLake/bsky-electron.git
+	source = bsky-electron.desktop
+	source = bsky-electron.sh
+	source = bsky-electron.svg
+	sha256sums = SKIP
+	sha256sums = 1a432aabb5daf1eacdc15829ea7194f92773ea8efc8a95f481d5b6937cdb56cf
+	sha256sums = a97c64a4e70020610d6834c09b5e350a4f1a436ea7004f2a73da362f5a595062
+	sha256sums = 8ea7df00d3801366edcabf7f7a34af7b8f5b7c2a79b86a40565ab38de55a364a
+
+pkgname = bsky-electron
