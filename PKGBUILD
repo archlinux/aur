@@ -395,6 +395,8 @@ package() {
   cd "${_lw_srcdir}"
   DESTDIR="$pkgdir" ./mach install
 
+  rm -f "${pkgdir}/usr/lib/pingsender"
+
   local vendorjs="$pkgdir/usr/lib/$__pkgname/browser/defaults/preferences/vendor.js"
 
   install -Dvm644 /dev/stdin "$vendorjs" <<END
