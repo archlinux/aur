@@ -1,8 +1,8 @@
 # Maintainer: Patrick Mang <aur at patrickmang dot de>
 
 pkgname=tidal-hifi-tidaluna
-pkgver=5.20.1
-_tidalunaver=1.7.2-beta
+pkgver=6.1.0
+_tidalunaver=1.10.0-beta
 pkgrel=5
 pkgdesc="The web version of Tidal running in electron with hifi support thanks to widevine (with TidaLuna client mod)."
 conflicts=("tidal-hifi")
@@ -13,20 +13,14 @@ depends=(libxss nss gtk3)
 makedepends=(nodejs npm libxcrypt-compat python unzip git)
 source=("tidal-hifi-${pkgver}.tar.gz::https://github.com/Mastermindzh/tidal-hifi/archive/refs/tags/${pkgver}.tar.gz"
         "luna-${_tidalunaver}.zip::https://github.com/Inrixia/TidaLuna/releases/download/${_tidalunaver}/luna.zip"
-        "https://patch-diff.githubusercontent.com/raw/Mastermindzh/tidal-hifi/pull/731.diff"
         "tidal-hifi-tidaluna.desktop")
 noextract=("luna-${_tidalunaver}.zip")
-sha256sums=('f0d21c54aae1ee5cb85a059abd4bfdca72dbe962796f6ca3e90a4b977d3814f4'
-            '22585bf1211380823727f8e98cedb602ad3ddea7cc9f1a1e939b2db286183499'
-            'b898da9e282536417d93efbc703d107f15818a9a0fd1c4ecac843dd226b63e35'
+sha256sums=('21eaf5d3d15f2af43f024ee24467c60b761585eb7c5c002d7c43634f494247dc'
+            '27b6cb8379d30d490044a4c2ab51755efbf880e03723852889ea7e525e4f2b8f'
             '8fe1352dae97c301bf63be9419e56c9775683e124b0218e118f020588d95565b')
 
 build() {
     cd "tidal-hifi-${pkgver}"
-
-    # fix: album and title information
-    GIT_CEILING_DIRECTORIES="$(dirname "$PWD")" \
-        git apply "../731.diff" --exclude "package-lock.json"
 
     npm install
     npm run build-unpacked
