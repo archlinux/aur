@@ -1,0 +1,27 @@
+pkgbase = continuwuity-bin
+	pkgdesc = Community driven continuation of conduwuit & Conduit, focusing on user experience and new features
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://forgejo.ellis.link/continuwuation/continuwuity
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = gcc-libs
+	depends = glibc
+	depends = liburing.so
+	provides = conduwuit
+	conflicts = conduwuit
+	options = !debug
+	backup = etc/conduwuit/conduwuit.toml
+	source = continuwuity-0.5.3-LICENSE::https://forgejo.ellis.link/continuwuation/continuwuity/raw/tag/v0.5.3/LICENSE
+	source = continuwuity-0.5.3-conduwuit.service::https://forgejo.ellis.link/continuwuation/continuwuity/raw/tag/v0.5.3/pkg/conduwuit.service
+	source = continuwuity-0.5.3-conduwuit-example.toml::https://forgejo.ellis.link/continuwuation/continuwuity/raw/tag/v0.5.3/conduwuit-example.toml
+	b2sums = 05c474bd372cbb4f52a93982812b2ff8d6a38df6168ad673c8c2a7662ae5a23932b666c0997efec85c13b8a622f2ea4817bc7dc1560f9ed48ff914403595cba7
+	b2sums = da2f5e3778d8c62023d694969b37ecfed754ad2d8dc43c7cba44218618bbb95bade515537b41d22cb3222adeec4ef9074c5e8fc3f101c364751f2f4868dba96f
+	b2sums = f023370df2acb507d50795625e7ca1ea4b46452e93c369e6eddd86514405e6b1d21c72b4b5c05ade2e1d84a5ce2a1827dbe92b6c248225fb598b61878a74863f
+	source_x86_64 = continuwuity-0.5.3-x86_64::https://forgejo.ellis.link/continuwuation/continuwuity/releases/download/v0.5.3/conduwuit-linux-amd64
+	b2sums_x86_64 = 97874f9cebac51278821a2e0242947bf54e63e283d7975737d7f55322f9fa26e0e40c50bc4d9b0162df8ef5dc93a139fae43c6ddf2ba70d5eaafeb289b529b38
+	source_aarch64 = continuwuity-0.5.3-aarch64::https://forgejo.ellis.link/continuwuation/continuwuity/releases/download/v0.5.3/conduwuit-linux-arm64
+	b2sums_aarch64 = fd7b0b2a03ae44ce6ea672fe1b9adc8209deb50e8ad50f2639be069f3f94ca1dd08eec71c6cd077e7465aa086765bc5364b4a52477e94a6cfe3990d29f82aaf3
+
+pkgname = continuwuity-bin

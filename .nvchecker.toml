@@ -1,0 +1,6 @@
+[continuwuity-bin]
+source = "gitea"
+gitea = "continuwuation/continuwuity"
+host = "forgejo.ellis.link"
+use_latest_release = "true"
+prefix = "v"
