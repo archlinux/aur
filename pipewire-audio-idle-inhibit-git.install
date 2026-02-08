@@ -1,0 +1,21 @@
+post_install() {
+  systemctl --user daemon-reload
+  echo "To enable the service, run:"
+  echo "  systemctl --user enable --now pipewire-audio-idle-inhibit.service"
+}
+
+post_upgrade() {
+  systemctl --user daemon-reload
+  if systemctl --user is-enabled pipewire-audio-idle-inhibit.service &>/dev/null; then
+    systemctl --user restart pipewire-audio-idle-inhibit.service
+  fi
+}
+
+pre_remove() {
+  systemctl --user stop pipewire-audio-idle-inhibit.service &>/dev/null || true
+  systemctl --user disable pipewire-audio-idle-inhibit.service &>/dev/null || true
+}
+
+post_remove() {
+  systemctl --user daemon-reload
+}

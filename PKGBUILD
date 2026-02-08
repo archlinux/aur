@@ -1,7 +1,7 @@
 # Maintainer: fEst <refer.nfs@gmail.com>
 pkgname=pipewire-audio-idle-inhibit-git
-_ver=0.3.3
-pkgver=$_ver.r75.eace6f4
+_ver=0.3.4
+pkgver=$_ver.r76.d08c56f
 pkgrel=1
 pkgdesc="Prevents the screen from sleeping while audio is actively playing or being recorded through Pipewire"
 _pkgfoldername=PipewireAudioIdleInhibit
@@ -13,6 +13,7 @@ arch=(
 )
 license=(GPL)
 depends=("systemd-libs" "libpipewire" "systemd")
+install=$pkgname.install
 makedepends=(gcc meson git)
 source=("git+$url")
 sha256sums=('SKIP')
