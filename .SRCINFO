@@ -1,0 +1,13 @@
+pkgbase = btrls
+	pkgdesc = A tabled ls command written in Rust with the option to get the details of a directory or file as JSON
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/sivaprakashkrp/btrls
+	arch = x86_64
+	license = GPL2.0
+	provides = btrls
+	conflicts = btrls
+	source = https://github.com/sivaprakashkrp/btrls/releases/download/v1.2.0/btrls-1.2.0-x86_64.tar.gz
+	sha256sums = 265a9fe26aa53712cb4c50a488850eb2833e4414e61e2e53d22691412c68a922
+
+pkgname = btrls
