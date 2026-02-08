@@ -1,8 +1,8 @@
 # Maintainer: NotRx <toby@soupcan.xyz>
 
 pkgname=polytrack
-pkgver=0.5.2
-pkgrel=2
+pkgver=Releases
+pkgrel=3
 pkgdesc="An Unofficial Community Made AUR Package"
 arch=('x86_64')
 url="https://github.com/SoupcanUBG/polytrack"
@@ -43,6 +43,6 @@ Categories=Game;
 EOF
 
 
-chown +x "$pkgdir/usr/share/applications/$pkgname.desktop"
+chmod +X "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
 
