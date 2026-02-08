@@ -2,8 +2,8 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 
 pkgname=cinelerra-gg-git
-pkgver=2024.12.r3.g83c3752b
-pkgrel=2
+pkgver=2026.02.r0.g3e6fc6d7
+pkgrel=1
 pkgdesc="Professional video editing and compositing environment"
 arch=(x86_64)
 url="https://www.cinelerra-gg.org"
@@ -21,7 +21,7 @@ makedepends=(cmake ctags git libxml2 nasm perl-xml-libxml
              xorg-mkfontscale yasm)
 provides=(cinelerra-gg)
 conflicts=(cinelerra-gg cin)
-source=("cinelerra-gg::git://git.cinelerra-gg.org/goodguy/cinelerra.git")
+source=("cinelerra-gg::git+https://git.cinelerra-gg.org/goodguy/cinelerra.git")
 sha256sums=('SKIP')
 
 pkgver() {
