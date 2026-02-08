@@ -1,0 +1,19 @@
+pkgbase = azd-cli
+	pkgdesc = A developer CLI for working with Azure resources to build and deploy AI applications
+	pkgver = 1.23.3
+	pkgrel = 1
+	url = https://github.com/Azure/azure-dev
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = azd
+	options = !strip
+	options = !emptydirs
+	source = LICENSE
+	sha256sums = 24341ac14899292f68659fbd52b6dd4453cd1b304f43ef9f9cc4e8aa77e81f51
+	source_x86_64 = https://github.com/azure/azure-dev/releases/download/azure-dev-cli_1.23.3/azd-linux-amd64.tar.gz
+	sha256sums_x86_64 = 3b43af79e7a6a814ae47e9b07edc2de45338c195036b69db6373ed0f905cbf99
+	source_aarch64 = https://github.com/azure/azure-dev/releases/download/azure-dev-cli_1.23.3/azd-linux-arm64.tar.gz
+	sha256sums_aarch64 = 7de3753b7ba9ecfdb6ba70859367303b70713088e63e7c530a3c48f8de508b24
+
+pkgname = azd-cli
