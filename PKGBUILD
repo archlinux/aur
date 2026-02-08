@@ -32,7 +32,7 @@ pkgver() {
 prepare(){
     cd "$srcdir/auth"
     git submodule update --init --recursive
-    patch -p1 -i ${srcdir}/fix-flutter.patch
+    patch -p1 -i "${srcdir}/fix-flutter.patch"
 
     # metainfo
     cd "$srcdir/auth/mobile/apps/auth/"
@@ -54,7 +54,7 @@ prepare(){
 }
 
 build() {
-    export PUB_CACHE=${srcdir}/.pub-cache
+    export PUB_CACHE="${srcdir}/.pub-cache"
     export PATH="$PATH":"$PUB_CACHE/bin"
     
     cd "${srcdir}/auth/mobile/packages/strings"
@@ -74,14 +74,14 @@ package(){
     tar xvf ./dist/*/ente_auth-*-linux.pacman --exclude="\.*" -C "$pkgdir"
 
     # libsodium.so is needed by libflutter_linux_gtk.so.
-    patchelf --add-needed libsodium.so ${pkgdir}/usr/share/${_pkgname}/lib/libflutter_linux_gtk.so
+    patchelf --add-needed libsodium.so "${pkgdir}/usr/share/${_pkgname}/lib/libflutter_linux_gtk.so"
 
     # ICON: added StartupWMClass to desktop file
     # The Version field in the Desktop Entry indicates the specification version and is typically 1.0. The application version should be specified as X-Version.
     local desktop_file="${pkgdir}/usr/share/applications/enteauth.desktop"
     sed -i '/^StartupWMClass=/d' "$desktop_file" && sed -i 's/^Version=\(.*\)/X-Version=\1/; $a StartupWMClass=io.ente.auth' "$desktop_file"
 
-    mkdir -p ${pkgdir}/usr/bin
+    mkdir -p "${pkgdir}/usr/bin"
     ln -sf "/usr/share/enteauth/enteauth" "${pkgdir}/usr/bin/enteauth"
     chmod +x "${pkgdir}/usr/bin/enteauth"
 }
