@@ -23,7 +23,7 @@ replaces=('gargoyle-mod')
 backup=('etc/garglk.ini')
 #groups=(inform)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/garglk/garglk/archive/${pkgver}.tar.gz")
-sha512sums=('b8aed7b45443d239e20073b45fe828d627207d4649baa83f07fe6c2f8c3fbc0ce778b28cae186dd3116c392007413acc677437cd0f6391f482c2a2afb8048a2b')
+sha256sums=('14e904d70d2968be3f6be298ffd14fd124a060d5176f5b0158749acbb90149f4')
 
 build() {
 	cd "${srcdir}/garglk-${pkgver}"
