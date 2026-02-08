@@ -1,6 +1,6 @@
 # Maintainer: Andy Kelk <andy@andykelk.net>
 pkgname=witr-bin
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="A Linux CLI tool that explains the causal chain behind running processes"
 arch=('x86_64' 'aarch64')
@@ -14,10 +14,10 @@ source_x86_64=("${pkgname}-${pkgver}-amd64::https://github.com/pranshuparmar/wit
 source_aarch64=("${pkgname}-${pkgver}-arm64::https://github.com/pranshuparmar/witr/releases/download/v${pkgver}/witr-linux-arm64"
                 "witr.1-${pkgver}::https://github.com/pranshuparmar/witr/releases/download/v${pkgver}/witr.1")
 
-sha256sums_x86_64=('0f8d6ed4419747bd30e2e5b0412e6d497e8cc9fd990d291b787f775d57625cbd'
-                   '35a333692a0ec183f60bde8300a5c25132e018e02ebc8b71b5810340e09c4355')
-sha256sums_aarch64=('7fc778da796c7470c548859a835ca8cddd439b7933bda1ad30363ef85980b353'
-                    '35a333692a0ec183f60bde8300a5c25132e018e02ebc8b71b5810340e09c4355')
+sha256sums_x86_64=('3715a6ae00dac820c76a1b6a952e0cb9e9fb111912c31c4bd283180c7c158425'
+                   '4cdfba9a0fb2228d784dc945563ecc510b21b23552816984b32e44718d34cae5')
+sha256sums_aarch64=('7b1dd3bebdf923caffbda9e94044fc9198e571eb9171a1b5154fd3f36a74dbe0'
+                    '4cdfba9a0fb2228d784dc945563ecc510b21b23552816984b32e44718d34cae5')
 
 package() {
     # Determine the binary name based on architecture
