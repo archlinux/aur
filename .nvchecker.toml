@@ -1,0 +1,5 @@
+[ruby-dry-inflector]
+source = "github"
+github = "dry-rb/dry-inflector"
+prefix = "v"
+use_latest_release = true

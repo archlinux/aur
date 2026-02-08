@@ -2,7 +2,7 @@
 
 _gemname='dry-inflector'
 pkgname="ruby-${_gemname}"
-pkgver=1.2.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='String inflections for dry-rb'
 arch=('any')
@@ -23,8 +23,8 @@ checkdepends=(
 )
 options=('!emptydirs')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('3345a66caf6b6dc62e6ce6ebc1704b4dc8377cbf203a54b34c4a47e7cdc40551fdcb68cbfb616dd9ed0ce635e52826f73fea83dc86b53e55618c772eafcebe0d')
-b2sums=('aa34171c2e059097da1f3e66b43a177e8a66abde488a8a1024991665ebb4fef1687382fdfd367ba71ba9fe1a44183aa58f82806a80d6fb8650008f84bac6c248')
+sha512sums=('0efdf00224189c0401b1fd5bc09506ed62adcd7ebb2316489f9706df3135d97c4b2ed22c5625270d2898d82c408fa4beb032b9cb6783cca500f1b487ba1a059f')
+b2sums=('878d59ae269bd515d559c41bb2ff8cc773a6055a7fda96747d36c22017f70bad64e27d77ec4f76b52057c379cdc4f757d32b6f4a7fd3fc4211c5f3eb907af9a3')
 
 prepare() {
   cd "${_gemname}-${pkgver}"
@@ -34,6 +34,7 @@ prepare() {
 
   sed --in-place --regexp-extended \
     --expression '/simplecov/d' \
+    --expression '/group :benchmarks/,/end/d' \
     --expression '/group :tools/,/end/d' \
     Gemfile \
     Gemfile.devtools
