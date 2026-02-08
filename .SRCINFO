@@ -1,7 +1,7 @@
 pkgbase = codex-monitor-bin
 	pkgdesc = Tauri desktop app for orchestrating Codex agents across local workspaces (prebuilt AppImage)
 	pkgver = 0.7.45
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/Dimillian/CodexMonitor
 	arch = x86_64
 	arch = aarch64

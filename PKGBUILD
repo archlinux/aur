@@ -1,6 +1,6 @@
 pkgname=codex-monitor-bin
 pkgver=0.7.45
-pkgrel=1
+pkgrel=3
 pkgdesc="Tauri desktop app for orchestrating Codex agents across local workspaces (prebuilt AppImage)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Dimillian/CodexMonitor"
@@ -62,8 +62,17 @@ package() {
   cp -a "${srcdir}/squashfs-root/." "${pkgdir}/opt/codex-monitor/"
   find "${pkgdir}/opt/codex-monitor" -type f -perm -u=x -exec chmod 755 {} +
 
+  local _gtk_hook="${pkgdir}/opt/codex-monitor/apprun-hooks/linuxdeploy-plugin-gtk.sh"
+  if [[ -f "${_gtk_hook}" ]]; then
+    sed -i 's|^export GDK_BACKEND=x11.*$|export GDK_BACKEND="${GDK_BACKEND:-x11}"|' "${_gtk_hook}"
+  fi
+
   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/codex-monitor" <<'EOF'
 #!/bin/sh
+if [ -z "${GDK_BACKEND:-}" ] && [ -n "${WAYLAND_DISPLAY:-}" ] && [ -z "${DISPLAY:-}" ]; then
+  export GDK_BACKEND=wayland
+  export WEBKIT_DISABLE_DMABUF_RENDERER=1
+fi
 exec /opt/codex-monitor/AppRun "$@"
 EOF
 
