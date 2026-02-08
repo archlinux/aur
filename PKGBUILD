@@ -1,47 +1,50 @@
-# Maintainer: Carl Smedstad <carsme@archlinux.org>
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
+# Contributor: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=qatlib
-pkgver=24.09.0
+pkgver=26.02.0
 pkgrel=1
-pkgdesc="User space library for Intel(R) QuickAssist Technology"
-url="https://github.com/intel/qatlib"
-license=(BSD-3-Clause)
-arch=(x86_64)
+pkgdesc='User space library for Intel(R) QuickAssist Technology'
+url='https://github.com/intel/qatlib/'
+license=('BSD-3-Clause')
+arch=('x86_64')
 depends=(
-  bash
-  glibc
-  libcrypto.so
-  numactl
-)
+    'bash'
+    'glibc'
+    'libcrypto.so'
+    'numactl')
 makedepends=(
-  nasm
-  systemd
-)
-source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
-  "qatlib.sysusers"
-)
-sha256sums=(
-  '303e547da0b9590f6641b8a71e65217acdf4771333eb060aed43bd904589e2d1'
-  '67ccaef8fc91484bf103ee6e321d03f820f633cc2a8d73926b568bd9a358bd8f'
-)
+    'autoconf-archive'
+    'nasm')
+source=("https://github.com/intel/qatlib/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
+        'qatlib.sysusers')
+sha256sums=('7c68bf05f196153b1b1669a7d17e5bfba6253e7cafb69f67d30a0d17e7facecb'
+            '39190c94d64d79120cf0b0dbb98b2e3a30acec3ae0f7312cc79369531c534792')
+
+prepare() {
+    cd "${pkgname}-${pkgver}"
+    ./autogen.sh
+}
 
 build() {
-  cd $pkgname-$pkgver
-  mkdir -p m4
-  ./autogen.sh
-  ./configure --prefix=/usr
-  make
+    # fix warning: "_FORTIFY_SOURCE" redefined
+    # note: upstream forces _FORTIFY_SOURCE=2
+    export CFLAGS="${CFLAGS/-Wp,-D_FORTIFY_SOURCE=?/}"
+    export CXXFLAGS="${CXXFLAGS/-Wp,-D_FORTIFY_SOURCE=?/}"
+    
+    cd "${pkgname}-${pkgver}"
+    ./configure --prefix='/usr'
+    make
 }
 
 package() {
-  cd $pkgname-$pkgver
-  make \
-    prefix="$pkgdir/usr" \
-    sbindir="$pkgdir/usr/bin" \
-    systemdsystemunitdir="$pkgdir/usr/lib/systemd/system" \
-    systemd_scriptsdir="$pkgdir/usr/bin" \
-    install
-  install -vDm644 "$srcdir/qatlib.sysusers" "$pkgdir/usr/lib/sysusers.d/qatlib.conf"
-  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+    make \
+        -C "${pkgname}-${pkgver}" \
+        prefix="${pkgdir}/usr" \
+        sbindir="${pkgdir}/usr/bin" \
+        systemdsystemunitdir="${pkgdir}/usr/lib/systemd/system" \
+        systemd_scriptsdir="${pkgdir}/usr/bin" \
+        install
+    install -D -m644 qatlib.sysusers "${pkgdir}/usr/lib/sysusers.d/qatlib.conf"
+    install -D -m644 "${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
