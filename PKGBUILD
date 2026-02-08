@@ -1,21 +1,22 @@
-# Maintainer: mdmrk <mariodavo.20@gmail.com>
+# Maintainer: Harsh Narayan Jha <harshnj at proton dot me>
+# Contributor: mdmrk <mariodavo.20@gmail.com>
 _pkgname=Eden
 pkgname=eden-nightly-bin
-pkgver=2026.01.24.28234
-_tagver=2026-01-24-28234
-_buildnum=28234
+_buildcommit=71e035f83b
+_tagver=v1770488659
+pkgver="${_tagver}.${_buildcommit}"
 pkgrel=1
 pkgdesc="Nightly release of the Eden Nintendo Switch emulator (PGO optimized)"
 arch=('x86_64')
-url="https://github.com/pflyly/eden-nightly"
+url="https://github.com/Eden-CI/Nightly"
 license=('GPL-3.0-only')
 depends=('zlib' 'hicolor-icon-theme')
 options=(!strip)
 provides=('eden')
 conflicts=('eden')
-_appimage="Eden-${_buildnum}-Common-PGO-x86_64.AppImage"
-source=("${_appimage}::https://github.com/pflyly/eden-nightly/releases/download/${_tagver}/${_appimage}")
-sha256sums=('SKIP')
+_appimage="Eden-Linux-${_buildcommit}-amd64-clang-pgo.AppImage"
+source=("${_appimage}::https://github.com/Eden-CI/Nightly/releases/download/${pkgver}/${_appimage}")
+sha256sums=('4582064db4c9cd8c3c4b241eaa2a1946887dd73f2d6c634cd8db8b9aba10add4')
 
 prepare() {
     chmod +x "${_appimage}"
@@ -35,7 +36,7 @@ package() {
     install -Dm755 "${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
     install -Dm644 squashfs-root/*.desktop \
         "${pkgdir}/usr/share/applications/eden-nightly.desktop"
-    
+
     # Install icon (SVG if available, fallback to PNG)
     if compgen -G "squashfs-root/*.svg" > /dev/null; then
         install -Dm644 squashfs-root/*.svg \
@@ -44,10 +45,10 @@ package() {
         install -Dm644 squashfs-root/*.png \
             "${pkgdir}/usr/share/pixmaps/eden.png"
     fi
-    
+
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/eden"
-    
+
     # Install MIME types
     cat > eden-nightly.xml << EOF
 <?xml version="1.0" encoding="UTF-8"?>
