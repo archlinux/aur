@@ -1,0 +1,19 @@
+pkgbase = libsitra
+	pkgdesc = A library to list, and manage online fonts on your system
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/sitraorg/libsitra
+	arch = aarch64
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = glib2
+	depends = json-glib
+	depends = libgee
+	depends = libsoup3
+	source = libsitra::git+https://github.com/sitraorg/libsitra.git#tag=v0.1.0
+	b2sums = f1cd7c519a569be2e87213d51f909095c60a8d9bec54de78ffa482619b3419438a0c79239ca9c086d3cf948728524ac10f1626f907268a000213dc3c6a9c5d44
+
+pkgname = libsitra
