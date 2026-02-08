@@ -1,6 +1,6 @@
 pkgbase = firedocs
 	pkgdesc = FireDocs: Minimalist PDF Viewer
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/ZeNx98/FireDocs
 	arch = x86_64

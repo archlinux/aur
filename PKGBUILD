@@ -1,6 +1,6 @@
 # Maintainer: ZeNx98 <zenx98x@gmail.com>
 pkgname=firedocs
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="FireDocs: Minimalist PDF Viewer"
 arch=('x86_64')
