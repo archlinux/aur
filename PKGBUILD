@@ -2,44 +2,66 @@
 # Contributor: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=parabolic
-pkgver=2025.11.1
+_name=org.nickvision.tubeconverter
+pkgver=2026.2.1
 pkgrel=1
 pkgdesc="Download web video and audio"
 arch=('x86_64')
 url="https://github.com/NickvisionApps/Parabolic"
 license=('MIT')
 depends=('aria2'
-         'bash'
-         'boost-libs'
-         'cpr'
-         'ffmpeg'
-         'gcc-libs'
-         'glib2'
-         'glibc'
-         'gtk4'
-         'hicolor-icon-theme'
-         'libadwaita'
-         'libsecret'
-         'libxml++-5.0'
-         'python'
-         'sqlcipher'
-         'yt-dlp')
-makedepends=('blueprint-compiler' 'boost' 'cmake' 'libmaddy' 'libnick' 'yelp-tools')
+    'bash'
+    'dotnet-runtime'
+    'ffmpeg'
+    'gcc-libs'
+    'glibc'
+    'gtk4'
+    'hicolor-icon-theme'
+    'libadwaita'
+    'python'
+    'yt-dlp')
+makedepends=('blueprint-compiler' 'dotnet-sdk')
 provides=('tube-converter')
 conflicts=('tube-converter')
 replaces=('tube-converter')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('bb70fc5cc1a8b26b493a10af32961424d26ace1a93aed51c6fa316420950fed5')
+sha256sums=('f0d1b07d0e2d4ed450def324a3a6fe9193bb2140c8536c36b4c95c537190a7d7')
+
+prepare() {
+    cd "${pkgname^}-${pkgver}/resources/linux"
+    for file in "${_name}"{,.desktop,.service}.in; do
+        sed -e "s|@APP_ID@|${_name}|g" \
+            -e "s|@LIB_DIR@|/usr/lib/${_name}|g" \
+            -e "s|@OUTPUT_NAME@|Nickvision.Parabolic.GNOME|g" \
+            -i "${file}"
+    done
+}
 
 build() {
-    cmake -B build -S "${pkgname^}-${pkgver}" \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -Wno-dev
-    cmake --build build
+    cd "${pkgname^}-${pkgver}"
+    dotnet publish \
+        --configuration Release \
+        --runtime linux-x64 \
+        -p:PublishReadyToRun=true \
+        -p:SelfContained=false \
+        Nickvision.Parabolic.GNOME/Nickvision.Parabolic.GNOME.csproj
 }
 
 package() {
-    DESTDIR="${pkgdir}" cmake --install build
-    install -Dm644 "${pkgname^}-${pkgver}/COPYING" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    cd "${pkgname^}-${pkgver}"
+    install -d "${pkgdir}/usr/lib"
+    cp -r Nickvision.Parabolic.GNOME/bin/Release/net*/linux-x64/publish "${pkgdir}/usr/lib/${_name}"
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
+    cd resources
+    install -Dm644 "${_name}.svg" -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
+    install -Dm644 "${_name}-devel.svg" -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
+    install -Dm644 "${_name}-symbolic.svg" -t "${pkgdir}/usr/share/icons/hicolor/symbolic/apps"
+
+    cd linux
+    install -Dm755 "${_name}.in" "${pkgdir}/usr/bin/${_name}"
+    install -Dm644 "${_name}.desktop.in" "${pkgdir}/usr/share/applications/${_name}.desktop"
+    install -Dm644 "${_name}.service.in" "${pkgdir}/usr/share/dbus-1/services/${_name}.service"
+    install -Dm644 "${_name}.metainfo.xml" -t "${pkgdir}/usr/share/metainfo"
+
 }
