@@ -2,7 +2,7 @@
 
 pkgname=polytrack
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An Unofficial Community Made AUR Package"
 arch=('x86_64')
 url="https://github.com/SoupcanUBG/polytrack"
@@ -35,11 +35,14 @@ install -d "$pkgdir/usr/share/applications"
 [Desktop Entry]
 Name=PolyTrack
 Comment=A Racing Game
-Exec=/usr/share/PolyTrack/PolyTrack
-Icon=/usr/share/PolyTrack/icon.png
+Exec=/usr/share/$pkgname/PolyTrack
+Icon=/usr/share/$pkgname/icon.png
 Terminal=false
 Type=Application
 Categories=Game;
 EOF
+
+
+chown +x "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
 
