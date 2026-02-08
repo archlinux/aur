@@ -2,12 +2,12 @@
 
 _pkgname=ddosify
 pkgname=anteon-git
-pkgver=r266.7658c83
+pkgver=r1297.0131056
 pkgrel=1
 pkgdesc="High-performance load testing tool"
 arch=('any')
 url="https://github.com/getanteon/anteon"
-license=('AGPL3')
+license=('AGPL-3.0-only')
 makedepends=('go' 'git')
 source=("git+${url}.git")
 provides=('anteon')

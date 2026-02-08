@@ -1,10 +1,10 @@
 pkgbase = anteon-git
 	pkgdesc = High-performance load testing tool
-	pkgver = r266.7658c83
+	pkgver = r1297.0131056
 	pkgrel = 1
 	url = https://github.com/getanteon/anteon
 	arch = any
-	license = AGPL3
+	license = AGPL-3.0-only
 	makedepends = go
 	makedepends = git
 	provides = anteon
