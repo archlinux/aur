@@ -1,7 +1,7 @@
 pkgbase = todoist-full-offline-backup
 	pkgdesc = Small, dependency-less Python script to make a backup of all Todoist tasks and attachments that is accessible offline
-	pkgver = 0.5.2
-	pkgrel = 3
+	pkgver = 0.5.3
+	pkgrel = 1
 	url = https://github.com/joanbm/full-offline-backup-for-todoist
 	arch = any
 	license = GPL-3.0-or-later
@@ -10,7 +10,7 @@ pkgbase = todoist-full-offline-backup
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = full-offline-backup-for-todoist-0.5.2.tar.gz::https://github.com/joanbm/full-offline-backup-for-todoist/archive/0.5.2.tar.gz
-	sha256sums = c0be336375af9ea1cbd3630925f30c2a770c1c141ac1877580ca95b75d2f6fb7
+	source = full-offline-backup-for-todoist-0.5.3.tar.gz::https://github.com/joanbm/full-offline-backup-for-todoist/archive/0.5.3.tar.gz
+	sha256sums = dd078600b353e488d078dc7bb340895739bea2001c5763da1850a54037a32939
 
 pkgname = full-offline-backup-for-todoist
