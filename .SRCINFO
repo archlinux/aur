@@ -18,6 +18,7 @@ pkgbase = plezy-git
 	depends = libkeybinder3
 	depends = alsa-lib
 	depends = glib2
+	depends = xdg-user-dirs
 	provides = plezy
 	conflicts = plezy
 	source = plezy::git+https://github.com/edde746/plezy.git
