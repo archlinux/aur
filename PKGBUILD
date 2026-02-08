@@ -1,7 +1,7 @@
 # Maintainer: Zesko
 pkgname="limine-dracut-support-git"
 _pkgname="limine-entry-tool"
-pkgver=r548.6827169
+pkgver=r560.f7a3b5f
 pkgrel=1
 pkgdesc="Install kernels for the Limine bootloader."
 arch=('x86_64' 'aarch64')
@@ -48,7 +48,9 @@ prepare() {
 
 build() {
 	cd "$srcdir/${_pkgname}"
-	JAVA_HOME="$srcdir/${_graalvm_version}" gradle clean nativeCompile
+	export GRAALVM_HOME="$srcdir/${_graalvm_version}"
+	export JAVA_HOME="${GRAALVM_HOME}"
+	/usr/bin/gradle clean nativeCompile -Dorg.gradle.java.home="${JAVA_HOME}"
 }
 
 package() {
