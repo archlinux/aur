@@ -25,6 +25,8 @@ pkgver() {
 prepare(){
   cd "${pkgname/-git/}/ddosify_engine"
   mkdir -p build/
+  export GOPATH="${srcdir}"
+  go mod download -modcacherw
 }
 
 build() {
