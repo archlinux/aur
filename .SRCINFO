@@ -1,6 +1,6 @@
 pkgbase = rocm-nightly-gfx110x-bin
 	pkgdesc = AMD ROCm Nightly Release (gfx110X) - Monolithic Install
-	pkgver = 7.12.0a20260206
+	pkgver = 7.12.0a20260207
 	pkgrel = 1
 	url = https://rocm.nightlies.amd.com
 	arch = x86_64
@@ -57,7 +57,7 @@ pkgbase = rocm-nightly-gfx110x-bin
 	provides = rocm-hip-runtime
 	provides = rocm-opencl-sdk
 	provides = rocm-ml-sdk
-	provides = rocm=7.12.0a20260206
+	provides = rocm=7.12.0a20260207
 	conflicts = rocm-core
 	conflicts = rocm-cmake
 	conflicts = rocm-llvm
@@ -108,7 +108,7 @@ pkgbase = rocm-nightly-gfx110x-bin
 	conflicts = rocm
 	options = !strip
 	options = !debug
-	source = https://rocm.nightlies.amd.com/tarball/therock-dist-linux-gfx110X-all-7.12.0a20260206.tar.gz
-	sha256sums = b181ddc194c345218e280e8f1728dec26cf50ca2c7cea37c4e612c4fcbd95294
+	source = https://rocm.nightlies.amd.com/tarball/therock-dist-linux-gfx110X-all-7.12.0a20260207.tar.gz
+	sha256sums = 3124d4867b5e1bc329d2c6a0b7e362245bbbe97ceb6e9041a731e071f1bf7ad6
 
 pkgname = rocm-nightly-gfx110x-bin
