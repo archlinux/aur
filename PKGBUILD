@@ -42,7 +42,9 @@ Type=Application
 Categories=Game;
 EOF
 
-
-chmod 644 "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 "$pkgdir/usr/share/applications/$pkgname.desktop" \
+    "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 "$pkgdir/usr/share/applications/$pkgname.desktop" \
+    "$pkgdir/usr/share/applications/$pkgname/icon.png"
 }
 
