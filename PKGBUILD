@@ -7,13 +7,13 @@
 : ${_widgets:=GTK2}
 
 [[ "$_widgets" == "GTK2" ]] \
-  && : ${_cksum=84eeba5c9efc5df79b4e38bd6533afaf959f17e25796f2be5d682b8f36d2ea56}
+  && : ${_cksum=97a24199b680a5f4cc75b3601bb977ac2978005a1ae2b8284730b66e36ec9b21}
 
 : ${_pkgtype:=-${_widgets,,}-bin}
 
 _pkgname="peazip"
 pkgname="$_pkgname${_pkgtype:?}"
-pkgver=10.8.0
+pkgver=10.9.0
 pkgrel=1
 pkgdesc="Cross-platform file and archive manager (${_widgets})"
 url="https://github.com/peazip/PeaZip"
@@ -41,7 +41,7 @@ case "${_widgets::1}" in
     ;;
 esac
 
-options=('!debug' '!emptydirs')
+options=('!debug' '!emptydirs' '!strip')
 
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$pkgname-debug")
@@ -49,7 +49,7 @@ conflicts=("$_pkgname" "$pkgname-debug")
 _pkgsrc_plugins="peazip-additional-formats-plugin.7.LINUX"
 source=(
   "$url/releases/download/$pkgver/peazip-$pkgver.LINUX.$_widgets-1.$CARCH.rpm"
-  "https://cyfuture.dl.sourceforge.net/project/peazip/Resources/PeaZip%20Additional%20Formats%20Plugin/$_pkgsrc_plugins.tar"
+  "https://gigenet.dl.sourceforge.net/project/peazip/Resources/PeaZip%20Additional%20Formats%20Plugin/peazip-additional-formats-plugin.7.LINUX.tar"
 )
 sha256sums=(
   "${_cksum:-SKIP}"
