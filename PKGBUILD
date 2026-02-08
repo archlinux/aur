@@ -1,4 +1,4 @@
-# Maintainer: someshwar <someshwar@example.com>
+# Maintainer: someshwar <someshwar1006@gmail.com>
 # Contributor: ZenScreen Team
 
 pkgname=zenscreen
