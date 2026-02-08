@@ -7,7 +7,7 @@ url="https://github.com/nldk/todoServer"
 license=('MIT')
 depends=('java-runtime')
 source=("https://github.com/nldk/todoServer/releases/download/todoServer/todo-server.jar"
-        "todo-server.service")
+        "https://github.com/nldk/todoServer/releases/download/todoServer/todo-server.service")
 sha256sums=('SKIP' 'SKIP')  # Replace with actual hashes
 
 package() {

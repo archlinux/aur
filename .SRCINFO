@@ -7,7 +7,7 @@ pkgbase = todo-server
 	license = MIT
 	depends = java-runtime
 	source = https://github.com/nldk/todoServer/releases/download/todoServer/todo-server.jar
-	source = todo-server.service
+	source = https://github.com/nldk/todoServer/releases/download/todoServer/todo-server.service
 	sha256sums = SKIP
 	sha256sums = SKIP
 
