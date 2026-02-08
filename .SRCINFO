@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-vulkan-icd-loader
 	pkgdesc = Vulkan Installable Client Driver (ICD) Loader (mingw-w64)
-	pkgver = 1.4.335
+	pkgver = 1.4.341
 	pkgrel = 1
 	url = https://www.khronos.org/vulkan/
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = mingw-w64-vulkan-icd-loader
 	options = !buildflags
 	options = staticlibs
 	options = !strip
-	source = vulkan-icd-loader-1.4.335.tar.gz::https://github.com/KhronosGroup/Vulkan-Loader/archive/v1.4.335.tar.gz
-	sha256sums = c82b85258fc6ca76bddb9d71f53237201991e932d9fc973ea9aa7ec2200b711f
+	source = vulkan-icd-loader-1.4.341.tar.gz::https://github.com/KhronosGroup/Vulkan-Loader/archive/v1.4.341.tar.gz
+	sha256sums = 9a8c6f1aace4a03641429a09bc823073f2375abf2d62ac5a4d38c46e732b2d85
 
 pkgname = mingw-w64-vulkan-icd-loader
