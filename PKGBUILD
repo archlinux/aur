@@ -1,6 +1,6 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=mx-snapshot
-pkgver=26.02.6arch
+pkgver=26.02.7arch
 pkgrel=1
 pkgdesc="A tool for creating live ISO images from running systems"
 arch=('x86_64' 'i686')
@@ -11,8 +11,8 @@ makedepends=('cmake' 'ninja' 'qt6-tools')
 conflicts=('mx-remaster-live-files')
 replaces=('mx-remaster-live-files')
 provides=('mx-remaster-live-files=1.0.0')
-source=("https://github.com/MX-Linux/mx-snapshot/archive/refs/tags/26.02.6arch.tar.gz")
-sha256sums=('11e23a0ca95be569e62567479573d58ae5a98d11a83510b0d2712a9a55b7245b')
+source=("https://github.com/MX-Linux/mx-snapshot/archive/refs/tags/26.02.7arch.tar.gz")
+sha256sums=('ed007ac3e2968d550e8baf66494d1085aaa5feb049f1d26ce5bcba6a98a55152')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -24,6 +24,7 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
+        -DGIT_TAG_VERSION=${pkgver} \
         -DARCH_BUILD=ON \
         -DBUILD_GUI=ON \
         -DBUILD_CLI=OFF
