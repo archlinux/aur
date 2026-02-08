@@ -1,7 +1,7 @@
 # Maintainer: Valentin Batz <valentin.batz+archlinux@posteo.de>
 
 pkgname=mdns-browser
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="A cross platform mDNS browsing app written in Rust using tauri and leptos"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('mdns-browser-bin')
 makedepends=('cargo' 'cargo-auditable' 'git' 'file' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'base-devel' 'curl' 'wget' 'rust' 'rust-wasm' 'trunk')
 options=('!strip' '!emptydirs')
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/hrzlgnm/$pkgname/archive/refs/tags/$pkgname-v$pkgver.tar.gz")
-sha256sums=('6fe54aa146c9b622950931f09f207a4fd906fc89f8be4f338657de512cd34201')
+sha256sums=('fa2d42abc7ea9138c6e8be1892e189321467893dc541329ac66e0703068f9a40')
 _builddir="$pkgname-$pkgname-v$pkgver"
 prepare() {
     cd "$srcdir/$_builddir" || exit 1
@@ -35,6 +35,7 @@ check() {
 }
 package() {
     install -Dm755 "${srcdir}/${_builddir}/target/release/mdns-browser" "$pkgdir"/usr/bin/mdns-browser
+    install -Dm644 "${srcdir}/${_builddir}/mdns-browser.1" "$pkgdir"/usr/share/man/man1/mdns-browser.1
     # Explicitly strip only the binary; !strip in options prevents makepkg's auto-strip phase which also generates 
     # a debug package, which is useless here, as the debug information only contains symbols and no debug info
     strip "$pkgdir"/usr/bin/mdns-browser
