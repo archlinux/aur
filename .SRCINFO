@@ -1,0 +1,13 @@
+pkgbase = heidr
+	pkgdesc = EVM blockchain CLI tool
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/pxlvre/heidr
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	provides = heidr
+	conflicts = heidr
+	source = heidr-0.0.5.tar.gz::https://github.com/pxlvre/heidr/releases/download/v0.0.5/heidr-linux-amd64.tar.gz
+	sha256sums = SKIP
+
+pkgname = heidr
