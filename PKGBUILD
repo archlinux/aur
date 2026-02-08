@@ -7,7 +7,7 @@ pkgname=(
 	wivrn-dashboard
 )
 pkgver=26.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
 url="https://github.com/WiVRn/WiVRn"
@@ -47,6 +47,7 @@ _depends_dashboard=(
 	"glibc"
 	"hicolor-icon-theme"
 	"ki18n"
+	"kcoreaddons"
 	"kiconthemes"
 	"kirigami"
 	"polkit"
