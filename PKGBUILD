@@ -1,6 +1,6 @@
 # Maintainer: terrorwolf <jan.jr03+aur@gmail.com>
 pkgname=opendeck-bin
-pkgver=2.8.2
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="A cross-platform desktop application that provides functionality for stream controller devices."
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
 	"https://github.com/nekename/OpenDeck/releases/download/v${pkgver}/opendeck_${pkgver}_amd64.deb"
 )
 
-sha256sums=('1a44687fcbe61611a85a93ef51a84984cc8eecc6c6832c0308775ec113eb726a')
+sha256sums=('a733ccc1510ea57faefbf32850e83f96863952deeb4be749b5f00c671813689b')
 
 package() {
 	bsdtar -xf "${srcdir}/opendeck_${pkgver}_amd64.deb" -C "${srcdir}"
