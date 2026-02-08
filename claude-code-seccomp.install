@@ -1,0 +1,17 @@
+post_install() {
+    echo '==> To use the installed seccomp files with Claude Code, add the'
+    echo '    following to ~/.claude/settings.json:'
+    echo ''
+    echo '    {'
+    echo '      "sandbox": {'
+    echo '        "seccomp": {'
+    echo '          "bpfPath": "/usr/lib/claude-code-seccomp/unix-block.bpf",'
+    echo '          "applyPath": "/usr/lib/claude-code-seccomp/apply-seccomp"'
+    echo '        }'
+    echo '      }'
+    echo '    }'
+}
+
+post_upgrade() {
+    post_install
+}

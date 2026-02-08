@@ -1,0 +1,19 @@
+pkgbase = claude-code-seccomp
+	pkgdesc = seccomp filter dependency for Claude Code /sandbox
+	pkgver = 0.0.35
+	pkgrel = 1
+	url = https://github.com/anthropic-experimental/sandbox-runtime
+	install = claude-code-seccomp.install
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	source_x86_64 = apply-seccomp-0.0.35::https://raw.githubusercontent.com/anthropic-experimental/sandbox-runtime/4fad8fa35db3f09958db1df401b30bd00402b611/vendor/seccomp/x64/apply-seccomp
+	source_x86_64 = unix-block-0.0.35.bpf::https://raw.githubusercontent.com/anthropic-experimental/sandbox-runtime/4fad8fa35db3f09958db1df401b30bd00402b611/vendor/seccomp/x64/unix-block.bpf
+	sha256sums_x86_64 = e70346b63797e7dbc9835da321e4f0f8aaee721fd1a58754f3d8a61bd80b98fd
+	sha256sums_x86_64 = c4d15960d54267934db13ab39bac3938cd5045d370ab8eee7023cd9a4e868807
+	source_aarch64 = apply-seccomp-0.0.35::https://raw.githubusercontent.com/anthropic-experimental/sandbox-runtime/4fad8fa35db3f09958db1df401b30bd00402b611/vendor/seccomp/arm64/apply-seccomp
+	source_aarch64 = unix-block-0.0.35.bpf::https://raw.githubusercontent.com/anthropic-experimental/sandbox-runtime/4fad8fa35db3f09958db1df401b30bd00402b611/vendor/seccomp/arm64/unix-block.bpf
+	sha256sums_aarch64 = 74ae36efaa06865de565f023b7c474668018d65715638e008f8b51bf95e1107d
+	sha256sums_aarch64 = 439626767f5e2159b0eb1351bd5c71ce95c0c88badf0a954a527acd9e796555c
+
+pkgname = claude-code-seccomp
