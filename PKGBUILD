@@ -14,6 +14,8 @@ sha256sums=('7b0180c8bda0df15c627a99a105e41f76d421c19a8f7f8f256da7eb2fec991b5')
 prepare(){
   cd "$pkgname-$pkgver"
   mkdir -p build/
+  export GOPATH="${srcdir}"
+  go mod download -modcacherw
 }
 
 build() {
