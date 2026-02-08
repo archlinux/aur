@@ -4,21 +4,26 @@
 #_tag=auth-v4.4.15
 #_commit=fd27208e058a75c3c951db0118329aab3b9cb1a4
 
+# https://github.com/ente-io/ente/blob/main/.github/workflows/auth-release.yml
+_FLUTTER_VERSION=3.32.8
+
 _pkgname=enteauth
 pkgname=ente-auth-git
-pkgver=4.4.17.r28.gfd27208e05
+pkgver=4.4.17.r28.gfd27208
 pkgrel=1
 pkgdesc="Ente two-factor authenticator."
 arch=('x86_64')
 url="https://github.com/ente-io/ente/tree/main/auth"
 license=('AGPL-3.0')
 depends=('at-spi2-core' 'ayatana-ido' 'cairo' 'desktop-file-utils' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'harfbuzz' 'hicolor-icon-theme' 'libappindicator-gtk3' 'libayatana-appindicator' 'libsecret' 'libsodium' 'pango' 'sqlite' 'webkit2gtk')
-makedepends=('flutter' 'flutter-tool' 'patchelf')
+makedepends=('patchelf' 'clang' 'git' 'cmake' 'ninja' 'jdk17-openjdk')
 options=('!strip' '!emptydirs')
 source_x86_64=("git+https://github.com/ente-io/auth.git"
-        fix-flutter.patch
+        "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${_FLUTTER_VERSION}-stable.tar.xz"
+        "fix-flutter.patch"
 )
 sha512sums_x86_64=('SKIP'
+                   'c46984bb59a3fb5337d1bd4dd7f41306ad66a8b0430c69a41c755c3d8d8ebe0a3b5be7c8fdc25ef202cfeab7faa31914ffb21bc4ad928f4eb7d352ca00248f3e'
                    '191c8d8246573ce1df5e501a6cc2ecbe102899b266c25684f13472d1f0de8db48835a25419607bb02fa62205ecbfa024cd19de315fe6a7762f711df6a23b2ac5')
 provides=('ente-auth')
 conflicts=('ente-auth')
@@ -26,7 +31,7 @@ conflicts=('ente-auth')
 pkgver() {
   cd "$srcdir/auth"
   # cutting off 'auth-v' prefix that presents in the git tag
-  git describe --long --tags | sed 's/^auth-v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^auth-v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare(){
@@ -55,7 +60,8 @@ prepare(){
 
 build() {
     export PUB_CACHE="${srcdir}/.pub-cache"
-    export PATH="$PATH":"$PUB_CACHE/bin"
+    export PATH="$srcdir/flutter/bin":"$PATH":"$PUB_CACHE/bin"
+    export JAVA_HOME="/usr/lib/jvm/java-17-openjdk"
     
     cd "${srcdir}/auth/mobile/packages/strings"
     flutter gen-l10n
