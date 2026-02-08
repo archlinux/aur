@@ -16,12 +16,13 @@ pkgdesc="Ente two-factor authenticator."
 arch=('x86_64')
 url="https://github.com/ente-io/ente/tree/main/auth"
 license=('AGPL-3.0-only')
-depends=('at-spi2-core' 'ayatana-ido' 'cairo' 'desktop-file-utils' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'harfbuzz' 'hicolor-icon-theme' 'libappindicator-gtk3' 'libayatana-appindicator' 'libsecret' 'libsodium' 'pango' 'sqlite' 'webkit2gtk')
-makedepends=('patchelf' 'clang' 'git' 'cmake' 'ninja' "jdk${_jdk_ver}-openjdk")
+depends=('at-spi2-core' 'gcc-libs' 'glib2' 'glibc' 'gtk3' 'hicolor-icon-theme' 'libayatana-appindicator' 'libsecret' 'pango')
+makedepends=('patchelf' 'clang' 'git' 'cmake' 'ninja' "jdk${_jdk_ver}-openjdk" 'mold')
 options=('!strip' '!emptydirs')
 source=("git+https://github.com/ente-io/auth.git"
         "fix-flutter.patch"
 )
+
 source_x86_64=("https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${_FLUTTER_VERSION}-stable.tar.xz")
 sha512sums=('SKIP'
             '00a812be226ae347d9bda689245a5af39b967e62e8d7d838ff02434e1d4735a79b4e60054ee1bf18f912c7e086c912d4d5c1fb5deb4be2b9edb12eb935c4f594')
@@ -30,6 +31,7 @@ provides=('ente-auth')
 conflicts=('ente-auth')
 
 export PATH_=$PATH
+export LD=ld.mold
 
 pkgver() {
   cd "$srcdir/auth"
