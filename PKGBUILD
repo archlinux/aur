@@ -1,7 +1,7 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=saw
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, multi-purpose tool for AWS CloudWatch Logs"
 arch=('x86_64' 'aarch64')
 url="https://github.com/TylerBrock/saw"
@@ -13,6 +13,8 @@ sha256sums=('SKIP')
 
 build() {
   cd "$pkgname" || exit
+  go mod init github.com/TylerBrock/saw
+  go mod tidy
   go build \
     -trimpath \
     -ldflags='-s -w' \
