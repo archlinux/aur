@@ -1,19 +1,25 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=diamond-editor
-pkgver=1.5.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Compact text editor designed for programmers'
 arch=('x86_64')
 url='https://www.copperspice.com/'
 license=('GPL-2.0-only')
-depends=('sh' 'copperspice' 'hunspell')
-makedepends=('cmake')
+depends=(
+    'copperspice'
+    'gcc-libs'
+    'glibc'
+    'hunspell'
+    'sh')
+makedepends=(
+    'cmake')
 source=("https://github.com/copperspice/diamond/archive/diamond-${pkgver}/${pkgname}-${pkgver}.tar.gz"
         '010-diamond-editor-do-not-copy-cs-libs.patch'
         'diamond-editor.desktop'
         'diamond-editor.sh')
-sha256sums=('3502ee9b82793e411fc17c178da212843be0db0e5a3335f1b0c710f019c81529'
+sha256sums=('2c6c9ba2cdbb5e3959bfed8e7a87d511682a4e8e37a0ce05c3cfcd70d24bfe2b'
             'a5c13e576e84922dd7508bb65721839be79f0e82c16729f82cb43a915cec0640'
             '1978034fc2878be60254b8b0dca5ed9c7661a60f825375014843b91ec40fc48d'
             '16f8c39d44c7dfcf9784a6b0414af4aa266a67de10e17bffb6fd5ea43a95e48a')
