@@ -5,7 +5,7 @@ diff -uNr ConvertWithMoss-15.0.0.orig/pom.xml ConvertWithMoss-15.0.0/pom.xml
  		<dependency>
  			<groupId>org.openjfx</groupId>
  			<artifactId>javafx-controls</artifactId>
--			<version>25.0.1</version>
+-			<version>25.0.2</version>
 +			<version>26-ea+17</version>
  		</dependency>
  		<dependency>
