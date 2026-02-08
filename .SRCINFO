@@ -1,0 +1,14 @@
+pkgbase = todo-server
+	pkgdesc = A simple Kotlin TODO server for CLI
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/nldk/todoServer
+	arch = x86_64
+	license = MIT
+	depends = java-runtime
+	source = https://github.com/nldk/todoServer/releases/download/todoServer/todo-server.jar
+	source = todo-server.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = todo-server
