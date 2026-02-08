@@ -1,7 +1,7 @@
 pkgbase = fifu
 	pkgdesc = A cross-platform TUI for downloading YouTube videos from channels
-	pkgver = 1.1.0
-	pkgrel = 3
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://github.com/Dawaman43/fifu
 	arch = any
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = fifu
 	depends = python-textual
 	depends = yt-dlp
 	depends = python-click
-	source = https://github.com/Dawaman43/fifu/archive/refs/tags/v1.1.0.tar.gz
+	source = https://github.com/Dawaman43/fifu/archive/refs/tags/v1.1.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = fifu
