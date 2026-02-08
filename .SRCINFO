@@ -1,0 +1,12 @@
+pkgbase = mediawiki-extension-archlinux
+	pkgdesc = An extension for MediaWiki that adds Arch Linux navigation and style
+	pkgver = 1.45.1
+	pkgrel = 1
+	url = https://gitlab.archlinux.org/archlinux/archwiki
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = git
+	source = mediawiki-extension-archlinux::git+https://gitlab.archlinux.org/archlinux/archwiki.git#tag=1.45.1-1
+	b2sums = b51f60936f26a0c95afaae894a74f911edbf46eb3de3ab95dd02516183270884c892b9244b8538194414c07a78e6ae35c524521e5432049a3930dee09690fa30
+
+pkgname = mediawiki-extension-archlinux
