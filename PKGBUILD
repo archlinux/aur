@@ -1,9 +1,10 @@
 # Maintainer: Tasin Farhan <tasinfarhan1016@gmail.com>
+
 pkgname=prismlauncher-offline-bin
-pkgver=9.4
+pkgver=10.0.2
 pkgrel=1
 pkgdesc="Prism Launcher fork with offline account support enabled"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/Diegiwg/PrismLauncher-Cracked"
 license=('GPL3')
 options=('!strip')
@@ -37,11 +38,18 @@ optdepends=(
 provides=('prismlauncher-offline')
 conflicts=('prismlauncher' 'prismlauncher-offline')
 
-source=("prism-portable.tar.gz::https://github.com/Diegiwg/PrismLauncher-Cracked/releases/download/${pkgver}/PrismLauncher-Linux-Qt6-Portable-${pkgver}.tar.gz")
-sha256sums=('SKIP')
+source_x86_64=(
+"prism-portable.tar.gz::https://github.com/Diegiwg/PrismLauncher-Cracked/releases/download/${pkgver}/PrismLauncher-Linux-Qt6-Portable-${pkgver}.tar.gz"
+)
+
+source_aarch64=(
+"prism-portable.tar.gz::https://github.com/Diegiwg/PrismLauncher-Cracked/releases/download/${pkgver}/PrismLauncher-Linux-aarch64-Qt6-Portable-${pkgver}.tar.gz"
+)
+
+sha256sums_x86_64=('SKIP')
+sha256sums_aarch64=('SKIP')
 
 prepare() { :; }
-
 build() { :; }
 
 package() {
