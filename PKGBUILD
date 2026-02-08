@@ -4,7 +4,7 @@
 pkgname=java-openjdk-ea-bin
 
 _majorver=26
-_buildver=33
+_buildver=34
 pkgver=${_majorver}b${_buildver}
 pkgrel=1
 
@@ -33,13 +33,14 @@ provides=(
   "java-runtime-headless=${_majorver}"
   "java-runtime-headless-openjdk=${_majorver}"
 )
-source=("https://download.java.net/java/early_access/jdk${_majorver}/${_buildver}/GPL/openjdk-${_majorver}-ea+${_buildver}_linux-${_JARCH}_bin.tar.gz")
+#source=("https://download.java.net/java/early_access/jdk${_majorver}/${_buildver}/GPL/openjdk-${_majorver}-ea+${_buildver}_linux-${_JARCH}_bin.tar.gz")
+source=("https://download.java.net/java/GA/jdk26/c3cc523845074aa0af4f5e1e1ed4151d/34/GPL/openjdk-26_linux-${_JARCH}_bin.tar.gz")
 
 
 if [[ $_JARCH == "x64" ]]; then
-sha256sums=('9491eba6266080ac690d5e31b7776f5c94188c3f8092874d9fd250660d51050e')
+sha256sums=('e7c907ec1036e5480609f8212e6f1e7f710310e029d097e4e1a9645c43676945')
 else
-sha256sums=('f9ebfe93a1ff1ebbc6d7b3a4348b1197797f1c57c9f7a69b2bed30014af4039e')
+sha256sums=('aeb9ccc00550a012197834334a9a6cbc03e7938774fcaf59dfa7ed158b66465f')
 fi
 
 
