@@ -1,8 +1,10 @@
 # Maintainer: Atif Chowdhury <iftakhar dot awal at gmail dot com>
 
+# shellcheck disable=SC2034,SC2154,SC2164
+
 pkgname=hunspell-bn
 pkgver=2026.02.07
-pkgrel=1
+pkgrel=2
 pkgdesc="Bengali hunspell dictionaries"
 arch=('any')
 license=('GPL')
@@ -26,18 +28,18 @@ pkgver() {
 package() {
     install -vD -m644 bn_BD.dic bn_BD.aff -t "${pkgdir}/usr/share/hunspell"
 
-    pushd "${pkgdir}/usr/share/hunspell" || return
+    pushd "${pkgdir}/usr/share/hunspell"
     ln -sv bn_BD.dic bn_IN.dic
     ln -sv bn_BD.aff bn_IN.aff
-    popd || return
+    popd
 
     install -vD -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     install -dm755 "${pkgdir}/usr/share/myspell/dicts"
 
-    pushd "${pkgdir}/usr/share/myspell/dicts" || return
+    pushd "${pkgdir}/usr/share/myspell/dicts"
     for file in "${pkgdir}"/usr/share/hunspell/bn_*; do
         ln -sv /usr/share/hunspell/"$(basename "$file")" .
     done
-    popd || return
+    popd
 }

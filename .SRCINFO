@@ -1,7 +1,7 @@
 pkgbase = hunspell-bn
 	pkgdesc = Bengali hunspell dictionaries
 	pkgver = 2026.02.07
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = GPL
 	depends = hunspell
