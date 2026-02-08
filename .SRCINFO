@@ -1,6 +1,6 @@
 pkgbase = shadps4
 	pkgdesc = Sony PlayStation 4 emulator
-	pkgver = 0.13.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/shadps4-emu/shadPS4
 	arch = aarch64
@@ -34,7 +34,7 @@ pkgbase = shadps4
 	depends = libz.so
 	depends = pugixml
 	options = !lto
-	source = shadps4::git+https://github.com/shadps4-emu/shadPS4.git#tag=v.0.13.0
-	sha256sums = 9b393334e548b445f643f6bb2f93a0d16c87159407d48e4c94904888efe84d13
+	source = shadps4::git+https://github.com/shadps4-emu/shadPS4.git#tag=v.0.14.0
+	sha256sums = c7c59ef5103dcc369940cb58ce2bd9b933a533a0d2f436a840f396724f6772d2
 
 pkgname = shadps4
