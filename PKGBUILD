@@ -2,50 +2,58 @@
 pkgname=shadps4-pre-release-bin
 _pkgname=shadPS4
 _pkgid=net.shadps4.shadPS4
-_url="$(curl -s "$(curl -s "https://api.github.com/repos/shadps4-emu/shadPS4/releases" | jq -r '.[] | select(.prerelease == true) | .url')" | awk -F'"' '/browser_download_url.*Pre-release-shadPS4.*linux-sdl.*zip/ {print $4}')"
-_date="$(echo $_url | awk -F '[-/]' -v OFS="-" '{print $12,$13,$14}')"
-_pkgver="$(echo $_url | awk -F '[-/]' '{print $15}')"
-_commit="$(echo $_url | awk -F '[-/]' '{print $22}' | sed 's/\.zip$//')"
-pkgver="$(echo $_url | awk -F '[-/]' -v OFS="" '{print $12,$13,$14,".",$22}' | sed 's/\.zip$//')"
+pkgver=20260208.c9a9cf2
 pkgrel=1
-pkgdesc="Sony PlayStation 4 emulator (Pre-release version)"
+pkgdesc="Sony PlayStation 4 emulator (Pre-release version - SDL)"
 arch=('x86_64')
 url="https://shadps4.net/"
 license=('GPL-2.0-only')
-makedepends=('yq')
-replaces=("${pkgname%-pre-release-bin}")
-provides=("${pkgname%-pre-release-bin}")
-conflicts=("${pkgname%-pre-release-bin}")
-options=('!strip')
-_appimage=Shadps4-sdl.AppImage
-source=("https://github.com/shadps4-emu/shadPS4/releases/download/Pre-release-shadPS4-${_date}-${_pkgver}/shadps4-linux-sdl-${_date}-${_commit}.zip")
+depends=('glibc' 'gcc-libs' 'bash' 'zlib' 'util-linux-libs')
+makedepends=('curl' 'jq' 'unzip')
+provides=("shadps4")
+conflicts=("shadps4")
+options=('!strip' '!zipman')
+source=("${pkgname}::https://api.github.com/repos/shadps4-emu/shadPS4/releases")
 sha256sums=('SKIP')
 
-prepare() {
-    # extract appimage
-    cd "${srcdir}"
-    chmod +x "${_appimage}"
-    ./"${_appimage}" --appimage-extract
+pkgver() {
+    # Fetches the latest pre-release tag and formats it for the pkgver variable
+    curl -s "https://api.github.com/repos/shadps4-emu/shadPS4/releases" | \
+    jq -r '. | map(select(.prerelease == true))[0].assets[] | select(.name | contains("linux-sdl")) | .name' | \
+    awk -F '[-/]' '{print $4""$5""$6"."$7}' | sed 's/\.zip$//'
+}
 
-    # update script
+prepare() {
+    # Dynamically find the latest release
+    _download_url=$(curl -s "https://api.github.com/repos/shadps4-emu/shadPS4/releases" | \
+                    jq -r '. | map(select(.prerelease == true))[0].assets[] | select(.name | contains("linux-sdl")) | .browser_download_url')
+
+    msg2 "Downloading AppImage ZIP..."
+    curl -L "$_download_url" -o "shadps4_core.zip"
+    unzip -o "shadps4_core.zip"
+
+    _appimage=$(ls *.AppImage)
+    chmod +x "$_appimage"
+
+    msg2 "Extracting AppImage content..."
+    ./"$_appimage" --appimage-extract
+}
+
+build() {
+    cd "${srcdir}/squashfs-root"
+
+    # Patch AppRun to point to the fixed installation directory in /opt,
     sed -i "s|appdir=\$(readlink -f \${APPDIR:-\$(dirname \"\$0\")})|appdir=\"/opt/${_pkgname}\"|" "$srcdir/squashfs-root/AppRun"
 }
 
 package() {
-    # main files
-    install -dm755 "$pkgdir/opt/${_pkgname}"
-    mv "$srcdir"/squashfs-root/* "$pkgdir/opt/${_pkgname}"
+    # Create directory structure
+    install -dm755 "${pkgdir}/opt/${_pkgname}"
+    install -dm755 "${pkgdir}/usr/bin"
 
-    # script
-    install -dm755 "$pkgdir/usr/bin"
-    ln -sf "/opt/${_pkgname}/AppRun" "$pkgdir/usr/bin/${pkgname%-pre-release-bin}"
+    # Move extracted content to /opt
+    cp -ar "${srcdir}/squashfs-root/." "${pkgdir}/opt/${_pkgname}/"
 
-    # icon
-    #install -Dm644 "$pkgdir/opt/${_pkgname}/${_pkgid}.svg" -t "$pkgdir/usr/share/pixmaps"
-
-    # launcher
-    #install -Dm644 "$pkgdir/opt/${_pkgname}/${_pkgid}.desktop" -t "$pkgdir/usr/share/applications"
-
-    # permissions
-    chmod -R u+rwX,go+rX,go-w "$pkgdir/"
+    # Create a symbolic link for the AppRun
+    ln -s "/opt/${_pkgname}/AppRun" "${pkgdir}/usr/bin/shadps4"
 }
