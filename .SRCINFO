@@ -1,0 +1,14 @@
+pkgbase = lazyrss
+	pkgdesc = A terminal-based RSS/Atom feed reader TUI inspired by lazygit
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/sujaltv/lazyrss
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = lazyrss-0.1.0.tar.gz::https://github.com/sujaltv/lazyrss/releases/download/v0.1.0/lazyrss-0.1.0.tar.gz
+	sha256sums = 82b71c026e0635a5d86ba742d7a90d8f2b84f5aff8d3ecddc53a878c64842aa9
+
+pkgname = lazyrss
