@@ -18,7 +18,14 @@ sha256sums=('2a10ff177d57a525958007572787f61bb90f25a16bf4fa126dbd7cf11833c80b'
             '518a328abee19239ba5f20bcbfe3f15c474bc5c18b8adcb37c9793ecf7c640cc')
 
 package() {
-  install -Dm755 "${srcdir}/adwaita-network" "${pkgdir}/usr/bin/adwaita-network"
+  # Upstream tarball layout has changed in the past; locate the binary robustly.
+  local bin
+  bin="$(find "${srcdir}" -maxdepth 2 -type f -name 'adwaita-network' -perm -u+x | head -n 1)"
+  if [[ -z "${bin}" ]]; then
+    printf 'error: adwaita-network binary not found in %s\n' "${srcdir}" >&2
+    return 1
+  fi
+  install -Dm755 "${bin}" "${pkgdir}/usr/bin/adwaita-network"
   install -Dm644 "${srcdir}/com.github.adw-network.desktop" \
     "${pkgdir}/usr/share/applications/com.github.adw-network.desktop"
   install -Dm644 "${srcdir}/icon.png" \
