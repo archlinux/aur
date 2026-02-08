@@ -5,7 +5,7 @@
 # Original: Daniel Bermond <dbermond@archlinux.org> https://aur.archlinux.org/packages/mpv-full-git
 
 pkgname=mpv-amd-full-git
-pkgver=0.41.0.r47.ga3350e2fbb
+pkgver=0.41.0.r734.g6444c05059
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs except Nvidia)'
 arch=('x86_64')
@@ -35,7 +35,6 @@ depends=(
     'libpulse'
     'libsixel'
     'libva'
-    'libvdpau'
     'libx11'
     'libxext'
     'libxfixes'
@@ -167,8 +166,8 @@ build() {
         -Dsixel='enabled' \
         -Dspirv-cross='disabled' \
         -Dplain-gl='enabled' \
-        -Dvdpau='enabled' \
-        -Dvdpau-gl-x11='enabled' \
+        -Dvdpau='disabled' \
+        -Dvdpau-gl-x11='disabled' \
         -Dvaapi='enabled' \
         -Dvaapi-drm='enabled' \
         -Dvaapi-wayland='enabled' \
