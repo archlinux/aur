@@ -1,6 +1,6 @@
 pkgbase = boosty-downloader
 	pkgdesc = Download any type of content from boosty.to
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/Glitchy-Sheep/boosty-downloader
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = boosty-downloader
 	provides = boosty_downloader
 	conflicts = boosty-downloader
 	conflicts = boosty_downloader
-	source = boosty-downloader-2.1.0.tar.gz::https://github.com/Glitchy-Sheep/boosty-downloader/archive/refs/tags/v2.1.0.tar.gz
-	sha256sums = 69bed5f80f1ca88958992cc77f85774e7b2395114fecd3d935372f8fca31e964
+	source = boosty-downloader-2.1.1.tar.gz::https://github.com/Glitchy-Sheep/boosty-downloader/archive/refs/tags/v2.1.1.tar.gz
+	sha256sums = d8dbf181a2d6a83d623045ff789c20ff5a7792ff10cb69b9e3564f2c3f8397fe
 
 pkgname = boosty-downloader
