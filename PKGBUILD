@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=luban-bin
 pkgver=0.2.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Localhost-only AI code editor built as a browser UI served by a local Rust server"
 arch=('x86_64')
 url="https://github.com/Xuanwo/luban"
@@ -28,7 +28,31 @@ package() {
     install -dm755 "${pkgdir}/usr/bin"
     cat > "${pkgdir}/usr/bin/luban" << 'EOF'
 #!/bin/bash
-exec /opt/luban/luban.AppImage "$@"
+set -euo pipefail
+
+appimage="/opt/luban/luban.AppImage"
+wayland_lib=""
+
+# Work around Tauri AppImage EGL issue on some Wayland setups by preloading
+# the system Wayland client library when available.
+if [[ "${XDG_SESSION_TYPE:-}" == "wayland" || -n "${WAYLAND_DISPLAY:-}" ]]; then
+    for candidate in /usr/lib/libwayland-client.so /usr/lib/libwayland-client.so.0; do
+        if [[ -r "${candidate}" ]]; then
+            wayland_lib="${candidate}"
+            break
+        fi
+    done
+fi
+
+if [[ -n "${wayland_lib}" ]]; then
+    if [[ -n "${LD_PRELOAD:-}" ]]; then
+        exec env LD_PRELOAD="${wayland_lib}:${LD_PRELOAD}" "${appimage}" "$@"
+    else
+        exec env LD_PRELOAD="${wayland_lib}" "${appimage}" "$@"
+    fi
+fi
+
+exec "${appimage}" "$@"
 EOF
     chmod 755 "${pkgdir}/usr/bin/luban"
 

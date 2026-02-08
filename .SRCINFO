@@ -1,7 +1,7 @@
 pkgbase = luban-bin
 	pkgdesc = Localhost-only AI code editor built as a browser UI served by a local Rust server
 	pkgver = 0.2.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Xuanwo/luban
 	arch = x86_64
 	license = unknown
