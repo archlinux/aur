@@ -14,11 +14,11 @@
 : ${_sccache:=}
 
 pkgname=niri-git
-pkgver=25.11.r94.gd7184a0
+pkgver=25.11.r108.g549148d
 pkgrel=2
 pkgdesc="Scrollable-tiling Wayland compositor"
 arch=(x86_64 aarch64)
-url="https://github.com/YaLTeR/${pkgname%-git}"
+url="https://github.com/niri-wm/${pkgname%-git}"
 license=(GPL-3.0-or-later)
 depends=(cairo glib2 libdisplay-info libinput libpipewire libxkbcommon mesa pango pixman seatd)
 makedepends=(clang rust git)
