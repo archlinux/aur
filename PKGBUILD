@@ -36,7 +36,7 @@ containsElement () {
 
 pkgname=e-modules-extra-git
 pkgver=20260208
-pkgrel=2
+pkgrel=3
 pkgdesc="Enlightenment modules: Extra unsupported modules in Git not already packaged elsewhere"
 arch=('i686' 'x86_64')
 url="https://git.enlightenment.org/"
@@ -49,6 +49,7 @@ depends=('enlightenment' 'efl' 'glibc')
   containsElement "everything-websearch" "${_module_list[@]}" && depends+=('e_dbus')
   containsElement "mpdule" "${_module_list[@]}" && depends+=('libmpd')
   containsElement "share" "${_module_list[@]}" && depends+=('libbsd')
+  containsElement "penguins" "${_module_list[@]}" && depends+=('meson' 'ninja')
 
 makedepends=('git')
 provides=("${pkgname%-*}")
