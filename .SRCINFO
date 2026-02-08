@@ -1,17 +1,16 @@
 pkgbase = gnome-shell-extension-tiling-assistant-git
-	pkgdesc = A GNOME Shell extension to expand GNOME's native 2 column design.
-	pkgver = 36.r0.g48b1f6e
+	pkgdesc = A GNOME Shell extension which adds a Windows-like snap assist to the GNOME desktop
+	pkgver = 54.r0.g1396caa
 	pkgrel = 1
 	url = https://github.com/Leleat/Tiling-Assistant
-	install = INSTALL
-	arch = x86_64
+	install = tiling-assistant.install
+	arch = any
 	license = GPL2
 	makedepends = git
 	depends = gnome-shell
 	provides = gnome-shell-extension-tiling-assistant
 	conflicts = gnome-shell-extension-tiling-assistant
-	noextract = *tiling-assistant@leleat-on-github*
 	source = git+https://github.com/Leleat/Tiling-Assistant.git
-	b2sums = SKIP
+	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-tiling-assistant-git
