@@ -11,8 +11,6 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'git') # 'bzr', 'git', 'mercurial' or 'subversion'
 source=('rsimg::git+https://github.com/kirchberger/rsimg.git')
 sha256sums=('SKIP')
-# Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
-# a description of each element in the source array.
 
 pkgver() {
 	cd "$_pkgname"
@@ -21,8 +19,9 @@ pkgver() {
 }
 
 prepare() {
-    export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target host-tuple
+	cd "$_pkgname"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
@@ -32,13 +31,6 @@ build() {
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release
 }
-
-#check() {
-	#cd "$pkgname"
-
-	#export RUSTUP_TOOLCHAIN=stable
-  #cargo test --frozen 
-#}
 
 package() {
 	cd "$_pkgname"
