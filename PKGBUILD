@@ -1,6 +1,6 @@
 pkgname=python-ocpsvg
 pkgdesc="Python library to convert between OCP and SVG"
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 arch=('any')
 url="https://github.com/snoyer/ocpsvg"
