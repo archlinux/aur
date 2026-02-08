@@ -3,7 +3,7 @@
 # Contributor: ninian <mcfadzean.org.uk ta linux>
 
 pkgname=vuescan-bin
-pkgver=9.8.49
+pkgver=9.8.51
 pkgrel=1
 pkgdesc="A powerful proprietary scanning tool developed by Hamrick Software"
 arch=(i686 x86_64 aarch64)
