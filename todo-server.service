@@ -1,0 +1,16 @@
+[Unit]
+Description=todo Server
+After=network.target
+
+[Service]
+Type=simple
+User=todo
+WorkingDirectory=/opt/todo-server
+ExecStart=/usr/bin/java -jar /opt/todo-server/todo-server.jar
+Restart=always
+RestartSec=5
+StandardOutput=append:/var/log/todo-server.log
+StandardError=append:/var/log/todo-server.log
+
+[Install]
+WantedBy=multi-user.target
