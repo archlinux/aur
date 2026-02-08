@@ -56,7 +56,6 @@ package() {
   cp dist/linux-*unpacked/resources/app.asar "$pkgdir/usr/lib/$_pkgname"
 
   install -Dm644 "$srcdir/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop" # Install desktop entry
-  install -Dm644 "LICENSE" "$_pkgdir/usr/share/licenses/$_pkgname/LICENSE" # Install license
   install -Dm644 "$srcdir/$_pkgname.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg" # Install icons
 
   install -Dm755 "$srcdir/$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname" # Start script
