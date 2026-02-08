@@ -60,6 +60,7 @@ package() {
 
   install -dm755 "${pkgdir}/opt/codex-monitor"
   cp -a "${srcdir}/squashfs-root/." "${pkgdir}/opt/codex-monitor/"
+  find "${pkgdir}/opt/codex-monitor" -type f -perm -u=x -exec chmod 755 {} +
 
   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/codex-monitor" <<'EOF'
 #!/bin/sh
