@@ -4,9 +4,9 @@
 # Contributor: JP-Ellis <josh@jpellis.me>
 
 pkgname=papis
-pkgver=0.14.1+PR1018+1077+1139
-_pkgver=0.14.1
-pkgrel=7
+pkgver=0.15.0
+_pkgver=0.15.0
+pkgrel=1
 pkgdesc='Command-line document and bibliography manager'
 arch=('any')
 url='https://github.com/papis/papis'
@@ -29,7 +29,6 @@ depends=('python'
     'python-pyparsing'
     'python-requests'
     'python-slugify'
-    'python-stevedore'
     'python-yaml'
 )
 optdepends=(
@@ -48,6 +47,7 @@ optdepends=(
     # see https://github.com/papis/papis/issues/946
     # 'pdfjs: pdf reader in the web app'
     'python-chardet: improved encoding autodetection when scraping'
+    'python-citeproc-py: exporting to CSL'
     'python-jinja: jinja formatting'
     'python-whoosh: whoosh database backend'
     'python-markdownify: convert zenodo imports to markdown'
@@ -78,31 +78,7 @@ checkdepends=(
 )
 
 source=("${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('592b9ad2296019062922ed7f573c8c70c02fcc3b92e518fea47a00088753f440'
-            'b3b5a97c7af2c9c6e3f0bd993a93e61c6b34f72f4774766612aec907277e4ad3'
-            '9851d49355d6cbd46e94f917a765897b07c690ea03f6085a4a81cecfaf6b662a'
-            'f525d2dff8263e0a7e8378585e543c4536fffd5680982541f598e121d8dca8b8')
-prs=(
-  1018 # Support python-click 8.2.0
-  1077 # Support python-click 8.3.0
-  1139 # Support Python 3.14
-)
-for pr in "${prs[@]}"; do
-    source+=("${pkgname}-PR$pr.patch")
-    # source+=("${pkgname}-PR$pr.patch::$url/pull/$pr.patch")
-done
-
-pkgver() {
-  echo "$_pkgver"+PR"$(export IFS=+; echo "${prs[*]}")"
-}
-
-prepare() {
-  cd "${pkgname}-${_pkgver}"
-
-  for pr in "${prs[@]}"; do
-    patch -p1 < "../${pkgname}-PR$pr.patch"
-  done
-}
+sha256sums=('40ffd77cde44c7af482ab4523a521754d7c5388d021b01a51eb3c908c6b3cef2')
 
 build() {
   cd "${pkgname}-${_pkgver}"
