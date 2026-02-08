@@ -2,7 +2,7 @@
 # URL: https://github.com/chenmozhijin/LDDC
 pkgname=lddc-bin
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 license=(GPL3)
 pkgdesc="简单易用的精准歌词(逐字歌词/卡拉OK歌词)下载匹配工具|A simple and user-friendly tool for downloading and matching precise lyrics (word-by-word lyrics/Karaoke lyrics)"
 url="https://github.com/chenmozhijin/LDDC"
@@ -15,17 +15,18 @@ package() {
     bsdtar -xpvf "${srcdir}/data.tar.zst"
     install -d "${pkgdir}/usr/share/applications/"
     install -d "${pkgdir}/usr/share/icons/"
-    install -d "${pkgdir}/opt/lddc-bin/"
+    install -d "${pkgdir}/usr/lib/LDDC/"
+    install -d "${pkgdir}/usr/bin/"
 
     # Program install 
-    mv ${srcdir}/usr/lib/LDDC/* ${pkgdir}/opt/lddc-bin/
-    chmod 755 "${pkgdir}/opt/lddc-bin/LDDC.bin"
+    mv ${srcdir}/usr/lib/LDDC/* ${pkgdir}/usr/lib/LDDC/
+    mv ${srcdir}/usr/bin/LDDC ${pkgdir}/usr/bin/
 
     # Desktop and icon install
     install -Dm644 "${srcdir}/usr/share/applications/LDDC.desktop" "${pkgdir}/usr/share/applications/LDDC.desktop"
-    install -Dm644 "${srcdir}/usr/share/icons/LDDC.ico" "${pkgdir}/usr/share/cons/LDDC.ico"
-
-    sed -i 's#/usr/bin/LDDC#/opt/lddc-bin/LDDC.bin#g' "${pkgdir}/usr/share/applications/LDDC.desktop"
+    install -Dm644 "${srcdir}/usr/share/icons/LDDC.ico" "${pkgdir}/usr/share/icons/LDDC.ico"
     
-    chown -R root:root "${pkgdir}/opt/lddc-bin/"
+    # Change owner
+    chown -R root:root "${pkgdir}/usr/lib/LDDC/"
+    chown root:root "${pkgdir}/usr/bin/LDDC"
 }
