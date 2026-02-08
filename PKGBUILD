@@ -1,7 +1,7 @@
 # Maintainer: NotRx <toby@soupcan.xyz>
 
 pkgname=polytrack
-pkgver=Releases
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="An Unofficial Community Made AUR Package"
 arch=('x86_64')
