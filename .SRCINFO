@@ -1,7 +1,7 @@
 pkgbase = wivrn-server
 	pkgdesc = A wireless Monado-based OpenXR runtime for standalone headsets.
-	pkgver = 25.12
-	pkgrel = 3
+	pkgver = 26.2
+	pkgrel = 1
 	url = https://github.com/WiVRn/WiVRn
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -53,8 +53,8 @@ pkgbase = wivrn-server
 	depends = qqc2-desktop-style
 	depends = qt6-base
 	depends = qt6-declarative
-	source = wivrn-server-25.12.tar.gz::https://github.com/WiVRn/WiVRn/archive/refs/tags/v25.12.tar.gz
-	sha256sums = f8490c3cd7ec28b8885539d20519f8ef6af55c1f8fc1b4b486b05639a7d8f4d5
+	source = wivrn-server-26.2.tar.gz::https://github.com/WiVRn/WiVRn/archive/refs/tags/v26.2.tar.gz
+	sha256sums = 8f965c3a024f7649a49573bf340d138cae898289df1b80734947262798f699fd
 
 pkgname = wivrn-server
 	install = wivrn-server.install
@@ -86,7 +86,7 @@ pkgname = lib32-wivrn-server
 	depends = lib32-glibc
 	depends = lib32-vulkan-icd-loader
 	depends = lib32-libglvnd
-	depends = wivrn-server=25.12-3
+	depends = wivrn-server=26.2-1
 	optdepends = lib32-xrizer: OpenVR to OpenXR translation layer
 	provides = lib32-openxr-runtime
 
@@ -102,4 +102,4 @@ pkgname = wivrn-dashboard
 	depends = qqc2-desktop-style
 	depends = qt6-base
 	depends = qt6-declarative
-	depends = wivrn-server=25.12-3
+	depends = wivrn-server=26.2-1

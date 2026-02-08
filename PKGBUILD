@@ -6,8 +6,8 @@ pkgname=(
 	lib32-wivrn-server
 	wivrn-dashboard
 )
-pkgver=25.12
-pkgrel=3
+pkgver=26.2
+pkgrel=1
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
 url="https://github.com/WiVRn/WiVRn"
@@ -81,7 +81,7 @@ makedepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/WiVRn/WiVRn/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f8490c3cd7ec28b8885539d20519f8ef6af55c1f8fc1b4b486b05639a7d8f4d5')
+sha256sums=('8f965c3a024f7649a49573bf340d138cae898289df1b80734947262798f699fd')
 
 build() {
 	cd "WiVRn-$pkgver"
@@ -102,6 +102,7 @@ build() {
 	-DOVR_COMPAT_SEARCH_PATH=/opt/xrizer:/opt/opencomposite \
 	-DWIVRN_FEATURE_STEAMVR_LIGHTHOUSE=ON \
 	-Wno-dev
+
 	# 32-bit build
 	PKG_CONFIG_PATH="/usr/lib32/pkgconfig" cmake -B build-server-32 -S . \
 	-G Ninja \
@@ -131,13 +132,12 @@ build() {
 	-DWIVRN_BUILD_DASHBOARD=ON \
 	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 	-DCMAKE_INSTALL_PREFIX="/usr" \
-	-DOVR_COMPAT_SEARCH_PATH=/opt/opencomposite:/opt/xrizer \
+	-DOVR_COMPAT_SEARCH_PATH=/opt/xrizer:/opt/opencomposite \
 	-DWIVRN_FEATURE_STEAMVR_LIGHTHOUSE=ON \
 	-Wno-dev
 
 	cmake --build build-server
 	cmake --build build-server-32
-
 	cmake --build build-dashboard
 }
 
