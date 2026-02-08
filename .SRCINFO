@@ -1,13 +1,14 @@
 pkgbase = cmdflow
-pkgname = cmdflow
 pkgver = 0.1.6
 pkgrel = 1
 pkgdesc = A colorful Fish command tracker with rainbow top visualization
-arch = x86_64
 url = https://github.com/voideez/cmdflow
+arch = x86_64
 license = MIT
-depends = bash
 makedepends = rust
 makedepends = cargo
 source = https://github.com/voideez/cmdflow/archive/refs/tags/0.1.6.tar.gz
 sha256sums = SKIP
+
+pkgname = cmdflow
+depends = bash
