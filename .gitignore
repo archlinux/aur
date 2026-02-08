@@ -1,0 +1,29 @@
+# Built packages
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.pkg.tar
+
+# Downloaded sources
+*.tar.gz
+*.tar.xz
+*.tar.bz2
+*.tar
+*.zip
+*.rar
+LICENSE-*
+
+# Build directories
+src/
+pkg/
+
+# Makepkg artifacts
+*.log
+*.sig
+
+# Other
+*.swp
+*~
+.DS_Store
+
+# Custom scripts
+update-aur.sh
