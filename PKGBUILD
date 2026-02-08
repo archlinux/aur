@@ -1,7 +1,9 @@
+# Maintainer: Deep-sea <3800907852@qq.com>
 # Maintainer: LuoTianyi_arm64 <2153585992@qq.com>
 pkgname=02engine-bin
 provides=('02engine')
-pkgver=1.1.1
+pkgver=1.2.0
+fullver=1.2.0-fe30866a
 pkgrel=1
 source=('.INSTALL::https://github.com/02engine/02engine-aur/releases/download/INSTALL/INSTALL')
 pkgdesc='Mod of Scratch with a compiler and more features.02Engine.Better Scratch.Made from Turbowarp.'
@@ -12,9 +14,6 @@ depends=('alsa-lib' 'at-spi2-atk' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'gcc-lib
 sha256sums=('2565e60d233d653206f33fc25b35c7b31b42d45c5fb1de7b28be966fae959d58')
 prepare(){
   cd "$srcdir"
-  curl -OL "https://github.com/02engine/02engine-aur/releases/download/version-match/version-match"
-  tag=`expr $(grep -n -x "${pkgver}" "version-match" | cut -d: -f1) + 1`
-  fullver=$(awk "NR==${tag}" "version-match")
   curl -Lo "02engine-${pkgver}.deb" "https://github.com/02engine/desktop/releases/download/v${fullver}/02Engine-linux-amd64-${pkgver}.deb"
 }
 build() {
