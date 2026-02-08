@@ -1,6 +1,6 @@
 pkgbase = cops-mikespub-org
 	pkgdesc = Lightweight Calibre OPDS (and HTML) PHP Server (mikespub.org fork)
-	pkgver = 4.0.2
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://github.com/mikespub-org/seblucas-cops
 	install = cops.install
@@ -17,7 +17,7 @@ pkgbase = cops-mikespub-org
 	provides = cops
 	conflicts = cops
 	backup = etc/webapps/cops/local.php
-	source = cops-mikespub-org_4.0.2.zip::https://github.com/mikespub-org/seblucas-cops/archive/refs/tags/4.0.2.zip
-	sha256sums = ac05055cfffa3ed27243d71c1a72a28dd7807915800dbc9d77c54e3cdf0cb523
+	source = cops-mikespub-org_4.1.0.zip::https://github.com/mikespub-org/seblucas-cops/archive/refs/tags/4.1.0.zip
+	sha256sums = 99a88f461253adaaba594203be0f73d349ce705d04d2e384af4e3cbe0f112ab5
 
 pkgname = cops-mikespub-org
