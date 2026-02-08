@@ -1,6 +1,11 @@
 post_install() {
-	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-	ln -s /usr/share/enteauth/enteauth /usr/bin/enteauth
+	# ICON: added StartupWMClass to desktop file
+	# The Version field in the Desktop Entry indicates the specification version and is typically 1.0. The application version should be specified as X-Version.
+	local desktop_file="/usr/share/applications/enteauth.desktop"
+	sed -i '/^StartupWMClass=/d' "$desktop_file" && sed -i '/^StartupWMClass=/d; s/^Version=\(.*\)/X-Version=\1/; $a StartupWMClass=io.ente.auth' "$desktop_file"
+
+	gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+	ln -sf /usr/share/enteauth/enteauth /usr/bin/enteauth
 	chmod +x /usr/bin/enteauth
 	update-desktop-database -q
 }
@@ -11,6 +16,6 @@ post_upgrade() {
 
 post_remove() {
 	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-	rm /usr/bin/enteauth
+	rm -f /usr/bin/enteauth
 	update-desktop-database -q
 }
