@@ -2,7 +2,7 @@
 
 # script based on https://aur.archlinux.org/packages/vesktop-electron
 _pkgname=bsky-electron
-pkgname=bsky-electron
+pkgname=bsky-electron-git
 pkgdesc="Bluesky Electron Client using system provided electron."
 pkgver=0.5.0
 pkgrel=1
@@ -50,14 +50,14 @@ package() {
   cd "$srcdir/$_pkgname"
 
   # Create necessary directories
-  install -d "$pkgdir/usr/lib/$pkgname"
+  install -d "$pkgdir/usr/lib/$_pkgname"
   install -d "$pkgdir/usr/bin"
 
-  cp dist/linux-*unpacked/resources/app.asar "$pkgdir/usr/lib/$pkgname"
+  cp dist/linux-*unpacked/resources/app.asar "$pkgdir/usr/lib/$_pkgname"
 
-  install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop" # Install desktop entry
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE" # Install license
-  install -Dm644 "$srcdir/$pkgname.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg" # Install icons
+  install -Dm644 "$srcdir/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop" # Install desktop entry
+  install -Dm644 "LICENSE" "$_pkgdir/usr/share/licenses/$_pkgname/LICENSE" # Install license
+  install -Dm644 "$srcdir/$_pkgname.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg" # Install icons
 
-  install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname" # Start script
+  install -Dm755 "$srcdir/$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname" # Start script
 }
