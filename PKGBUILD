@@ -1,6 +1,6 @@
 # Maintainer: Zeus-Deus
 pkgname=gazelle-tui
-pkgver=1.8.2
+pkgver=1.8.3
 pkgrel=1
 pkgdesc="Minimal NetworkManager TUI with complete 802.1X enterprise WiFi and WWAN support"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=(
     'modemmanager: WWAN/cellular modem support'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Zeus-Deus/gazelle-tui/archive/v$pkgver.tar.gz")
-sha256sums=('61bd1700d7096a2aa63ebe0de48e906b08e1b681a18dbbb1a46694a344f96b87')
+sha256sums=('fd469739df157feac702c5cc4dcfbae78c1f4c68399f578ce8606a22301a3241')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
