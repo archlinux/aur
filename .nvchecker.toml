@@ -1,0 +1,5 @@
+[perfetto]
+source = "github"
+github = "google/perfetto"
+use_max_tag = "true"
+prefix = "v"
