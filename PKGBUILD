@@ -2,8 +2,8 @@
 
 pkgname=python-xlsx2csv
 _gitpkgname=xlsx2csv
-pkgver=0.8.4
-pkgrel=2
+pkgver=0.8.6
+pkgrel=1
 pkgdesc="XSLX to CSV converter"
 arch=(any)
 url="https://github.com/dilshod/xlsx2csv"
@@ -20,7 +20,7 @@ source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/dilshod/xlsx2csv/archive/${pkgver}.tar.gz"
 )
 
-sha512sums=('26e4f92a78eeb599b6da5f7030691594cede1eb60cf0edf642b900e1653cdcf1a21d36bc3c31644e689b4dd3933ee8d5e9f9a93994482274a7b98c7c5cdc4ff5')
+sha512sums=('ab4ff1bfd681b6efe7e9c20818d502f6ce55c50eabf8131b072293247b5de40662bc127b5eda9d6af6f232c9ce9e0dfa34c2ac816ba12ab6a24c11afd68c81c9')
 
 prepare() {
   # Disable Python 2 tests
