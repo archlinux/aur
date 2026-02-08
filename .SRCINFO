@@ -1,0 +1,12 @@
+pkgbase = ttf-geist-pixel-font-git
+	pkgdesc = Pixel typeface designed to complement the Geist font family
+	pkgver = r1.bd5f6cc
+	pkgrel = 1
+	url = https://github.com/vercel/geist-pixel-font
+	arch = any
+	license = OFL-1.1
+	makedepends = git
+	source = ttf-geist-pixel-font-git::git+https://github.com/vercel/geist-pixel-font.git#branch=main
+	sha256sums = SKIP
+
+pkgname = ttf-geist-pixel-font-git
