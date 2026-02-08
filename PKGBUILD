@@ -3,11 +3,11 @@
 
 pkgname=ansible-cmdb
 pkgver=1.31
-pkgrel=3
+pkgrel=4
 pkgdesc="Generate host overview from ansible fact gathering output."
 arch=('any')
 url="https://github.com/fboender/ansible-cmdb"
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('python' 'python-mako' 'python-pyyaml' 'python-jsonxs')
 makedepends=('python-setuptools' 'git' 'python-build' 'python-installer' 'python-wheel')
 # source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::${url}/archive/${pkgver}.tar.gz")
