@@ -23,7 +23,7 @@ _module_list=(
 # 'penguins'		 # fails to compile
 # 'photo'                # not compatible with Enlightenment >= 0.18.0
 # 'share'                # not compatible with Enlightenment >= 0.19.0, adds dep on libbsd
-#  'tclock'		# fails to compile (implicit-function-declaration)
+  'tclock'		# fails to compile (implicit-function-declaration)
 # 'wallpaper2'           # not compatible with Enlightenment < 0.19.99
 #  'wlan'		# fails to compile (implicit-function-declaration)
 )
@@ -35,8 +35,8 @@ containsElement () {
 }
 
 pkgname=e-modules-extra-git
-pkgver=20251207
-pkgrel=2
+pkgver=20260208
+pkgrel=1
 pkgdesc="Enlightenment modules: Extra unsupported modules in Git not already packaged elsewhere"
 arch=('i686' 'x86_64')
 url="https://git.enlightenment.org/"
