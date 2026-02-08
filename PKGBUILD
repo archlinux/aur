@@ -12,7 +12,7 @@ pkgname='vrcx-nightly-bin'
 pkgdesc='Friendship management tool for VRChat (extracted AppImage version)'
 _pkgver='2026-02-06T15.13-8dd6036'
 pkgver=${_pkgver//-/.}
-pkgrel='2'
+pkgrel='3'
 arch=('x86_64')
 url='https://vrcx.app/'
 license=('MIT')
@@ -117,7 +117,7 @@ extract_appimage() (
 
 build() {
     mkdir opt
-    extract_appimage "VRCX_${pkgver}_x64.AppImage" opt/vrcx -no-xattrs
+    extract_appimage "VRCX_${_pkgver}_x64.AppImage" opt/vrcx -no-xattrs
     rm opt/vrcx/AppRun
     rm opt/vrcx/.DirIcon
     rm opt/vrcx/vrcx.desktop
