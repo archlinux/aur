@@ -1,3 +1,5 @@
-pycharm-community-*
-src
-pkg
+pkg/
+src/
+*.tar
+*.tar.*
+*.[gx]z
