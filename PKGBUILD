@@ -1,4 +1,4 @@
-pkgname=runa
+pkgname=runa-bin
 _pkgname=Runa
 pkgver=0.1.1
 pkgrel=1
