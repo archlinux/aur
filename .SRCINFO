@@ -1,7 +1,7 @@
 pkgbase = vrcx-nightly-bin
 	pkgdesc = Friendship management tool for VRChat (extracted AppImage version)
 	pkgver = 2026.02.06T15.13.8dd6036
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vrcx.app/
 	arch = x86_64
 	license = MIT
@@ -17,7 +17,7 @@ pkgbase = vrcx-nightly-bin
 	depends = libxtst
 	depends = libglvnd
 	depends = vulkan-icd-loader
-	depends = electron38
+	depends = electron39
 	provides = vrcx
 	conflicts = vrcx
 	source = https://github.com/Natsumi-sama/VRCX/releases/download/2026-02-06T15.13-8dd6036/VRCX_2026-02-06T15.13-8dd6036_x64.AppImage
