@@ -18,6 +18,7 @@ depends=(
     'libkeybinder3'
     'alsa-lib'
     'glib2'
+    'xdg-user-dirs'
 )
 makedepends=(
     'clang'
