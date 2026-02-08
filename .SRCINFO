@@ -1,4 +1,4 @@
-pkgbase = runa-bin
+pkgbase = runa-aur
 	pkgdesc = A graphical AUR package manager for Arch Linux
 	pkgver = 0.1.1
 	pkgrel = 1
@@ -14,7 +14,7 @@ pkgbase = runa-bin
 	depends = gtk3
 	depends = git
 	depends = pacman
-	source = runa-bin-0.1.1.tar.gz::https://github.com/Rune-Linux/Runa/archive/refs/tags/v0.1.1.tar.gz
+	source = runa-aur-0.1.1.tar.gz::https://github.com/Rune-Linux/Runa/archive/refs/tags/v0.1.1.tar.gz
 	sha256sums = 2af6bb4f7b592677516ba9ff701c7c44536aafcc1b99af6f0cb7d76a19b1a12b
 
-pkgname = runa-bin
+pkgname = runa-aur
