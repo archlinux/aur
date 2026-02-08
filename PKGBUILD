@@ -1,6 +1,6 @@
 # Maintainer: pxlvre.eth <https://github.com/pxlvre>
 pkgname=heidr
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="EVM blockchain CLI tool"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('AGPL-3.0-or-later')
 provides=('heidr')
 conflicts=('heidr')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pxlvre/heidr/releases/download/v${pkgver}/heidr-linux-amd64.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('246a5f002f7f3d3e94b55edae1f31b3fc0e18ba25403af72c56ec38d0aba22b4')
 
 package() {
     install -Dm755 "${srcdir}/heidr" "${pkgdir}/usr/bin/heidr"
