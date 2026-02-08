@@ -1,18 +1,18 @@
 # Maintainer: George Sofianos <george at sofianos dot dev>
 # Contributor Michele Balistreri <michele at bitgamma dot com>
 
-# Release notes https://github.com/lemonade-sdk/lemonade/releases/tag/v9.3.0
+# Release notes https://github.com/lemonade-sdk/lemonade/releases/tag/v9.3.1
 pkgname=lemonade-server
 pkgdesc="Lemonade: Local LLM Serving with GPU and NPU acceleration (Server)"
-pkgver=9.3.0
-pkgrel=2
+pkgver=9.3.1
+pkgrel=1
 arch=('x86_64')
 url='https://github.com/lemonade-sdk/lemonade/'
 license=('Apache-2.0')
 makedepends=('cmake' 'ninja' 'git' 'cli11' 'nlohmann-json' 'openssl')
 depends=('zstd')
 provides=('lemonade-server')
-backup=('etc/lemonade/lemonade.conf')
+backup=('etc/lemonade/lemonade.conf' 'etc/lemonade/secrets.conf')
 _httplibver=0.30.1
 
 source=(
@@ -24,7 +24,7 @@ tmpfiles.conf
 )
 
 sha256sums=(  
-'c6aee123bc4f5ca153bf3ab31db4f60c7471987cc94ac0c92242e36c1357e5c7'
+'a09a27e1ca5e8d1cc7e5d73f33cbd2836e1dd1e1a21cb614c11209926a836096'
 '2818b183757e29dd52b47a185f0cea9ef2d0fba377d8710b450a26328e51c2fe'
 '464336783e25081a04af8d204759ad617243724796da5b9f601ca83570c60fb2'
 '069d5612d570e83128d7eed7ffe4525943d75d22b9c84537d861833157e74b26'
