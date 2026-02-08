@@ -1,6 +1,6 @@
 # Maintainer: unicxrn
 pkgname=xerahs-git
-pkgver=r1093.06531df
+pkgver=r1161.803c2c7
 pkgrel=1
 pkgdesc="Cross-platform screen capture and file sharing tool (ShareX port) built with Avalonia UI"
 arch=('x86_64')
@@ -45,6 +45,11 @@ prepare() {
     # XerahS.Editor needs to be a sibling directory named XerahS.Editor
     # The solution references ../XerahS.Editor/src/XerahS.Editor/XerahS.Editor.csproj
     ln -sfn "$srcdir/xerahs-editor" "$srcdir/XerahS.Editor"
+
+    # Upstream submodule ref is stale - checkout the branch that has
+    # NavigateRequested and ShowMenuBar needed by XerahS.UI at HEAD
+    cd "$srcdir/xerahs-editor"
+    git checkout integrate/feature-jx-018-025-manual
 }
 
 build() {
