@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=OpenWork
+Comment=Open-source alternative to Claude Cowork
+Exec=openwork
+Icon=openwork
+Terminal=false
+Type=Application
+Categories=Utility;Development;
+StartupWMClass=OpenWork
