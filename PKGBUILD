@@ -12,6 +12,7 @@ url="https://github.com/huacnlee/autocorrect"
 license=("MIT")
 depends=("glibc" "gcc-libs")
 provides=("autocorrect")
+options=('!strip' '!debug')
 
 source=("https://raw.githubusercontent.com/huacnlee/autocorrect/044425faada4055ebf2629c544c3bc7231330826/LICENSE")
 source_x86_64=("$pkgname-x86_64::https://github.com/huacnlee/autocorrect/releases/download/v$pkgver/autocorrect-linux-amd64.tar.gz")
