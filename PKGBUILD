@@ -1,8 +1,8 @@
 # Maintainer: Amin Vakil <info AT aminvakil DOT com>
 
 pkgname=actionlint-git
-pkgver=r1464.0a5b35d
-pkgrel=2
+pkgver=r2303.35cab1d
+pkgrel=1
 pkgdesc="Static checker for GitHub Actions workflow files"
 arch=('any')
 url="https://github.com/rhysd/actionlint"
@@ -25,6 +25,8 @@ pkgver() {
 prepare(){
   cd "${pkgname/-git/}"
   mkdir -p build/
+  export GOPATH="${srcdir}"
+  go mod download -modcacherw
 }
 
 build() {
