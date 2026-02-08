@@ -14,6 +14,12 @@ optdepends=('tor: you need tor to use this package')
 source=("https://gitlab.com/yawning/obfs4/-/archive/obfs4proxy-${pkgver}/obfs4-obfs4proxy-${pkgver}.tar.bz2")
 sha512sums=('a720d45250140e3ba02b176d84fd80cca55304c09d5cebbd0fda45a3f5cfd7c2e8ffb6a2588a7b98a2ce03854969b0b1f949dca0405b16de29e90842861657c1')
 
+prepare() {
+  cd "${srcdir}/obfs4-obfs4proxy-${pkgver}"
+  export GOPATH="${srcdir}"
+  go mod download -modcacherw
+}
+
 build()	{
   export GOPATH="$srcdir"
   export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -23,7 +29,7 @@ build()	{
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   cd "${srcdir}/obfs4-obfs4proxy-${pkgver}"
-  GOPATH="${srcdir}/go" go build -o obfs4proxy/obfs4proxy ./obfs4proxy
+  go build -o obfs4proxy/obfs4proxy ./obfs4proxy
 }
 
 package()	{
