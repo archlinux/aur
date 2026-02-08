@@ -1,32 +1,73 @@
-# Maintainer: Jonathan Bangert <jonathan@bangert.dk>
-pkgname='music-assistant-desktop'
-pkgver=0.0.70
+# Maintainer: James Tucker <jftucker@gmail.com>
+# Contributor: Chris Sutcliff <chris@sutcliff.me>
+# Contributor: Jonathan Bangert <jonathan@bangert.dk>
+pkgname=music-assistant-desktop
+pkgver=0.3.3
 pkgrel=1
-pkgdesc="Music Assistant Companion app"
+pkgdesc="Music Assistant Companion - desktop app for Music Assistant (requires server 2.7.0+)"
 arch=('x86_64')
-url="https://github.com/music-assistant/companion"
-conflicts=(squeezelite music-assistant-desktop-bin)
-provides=(squeezelite music-assistant-desktop)
+url="https://github.com/music-assistant/desktop-app"
 license=('Apache-2.0')
-makedepends=(cargo git yarn rust webkit2gtk base-devel curl wget file openssl appmenu-gtk-module gtk3 libappindicator-gtk3 librsvg libvips)
-md5sums=('fd1a16dfc68ddddb9cc35bb0953913fb')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+depends=(
+    'cairo'
+    'gdk-pixbuf2'
+    'glib2'
+    'gtk3'
+    'hicolor-icon-theme'
+    'libsoup3'
+    'openssl'
+    'webkit2gtk-4.1'
+)
+makedepends=(
+    'cargo'
+    'cargo-tauri'
+    'curl'
+    'file'
+    'libappindicator-gtk3'
+    'librsvg'
+    'nodejs'
+    'rust'
+    'wget'
+    'yarn'
+)
+optdepends=(
+    'libappindicator-gtk3: system tray support'
+)
+conflicts=('music-assistant-desktop-git' 'music-assistant-desktop-bin' 'music-assistant-companion-git' 'music-assistant-app-git' 'music-assistant-desktop-app-git')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('bfeac50e5930e7e57ce37791f4e7cff91ef442826868b01e713ce72ce0e26679')
+# ring + lto is failing: https://github.com/briansmith/ring/issues/2746
+options=('!lto')
+
+prepare() {
+    cd "$srcdir/desktop-app-$pkgver"
+    export CARGO_HOME="$srcdir/cargo-home"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')" --manifest-path src-tauri/Cargo.toml
+    yarn install --frozen-lockfile
+}
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  git submodule update --init --recursive
-  yarn
-  cd frontend-source
-  git clone --branch tauri-app https://github.com/music-assistant/frontend .
-  yarn
-  cd ..
-  yarn run tauri build -b none
+    cd "$srcdir/desktop-app-$pkgver"
+    export CARGO_HOME="$srcdir/cargo-home"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR="$srcdir/target"
+
+    # We can use `export CARGO_PROFILE_RELEASE_TRIM_PATHS=true` once stable in cargo.
+    export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=$srcdir=/build"
+
+    # Build the Tauri application with deb bundle for easy extraction
+    cargo tauri build --bundles deb
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-	install -DCm644 ./musicassistant.desktop "$pkgdir/usr/share/applications/musicassistant.desktop"
-  install -DCm644 ./app-icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/musicassistant.png"
-  install -DCm0755 -t "$pkgdir/usr/bin/" ./src-tauri/target/release/music-assistant-companion
-  install -DCm0755 -t "$pkgdir/usr/bin/" ./src-tauri/target/release/squeezelite
+    cd "$srcdir/desktop-app-$pkgver"
+
+    # Copy from deb bundle data directory
+    cp -dR --preserve=mode,timestamps \
+        "$srcdir/target/release/bundle/deb"/*/data/usr \
+        -t "$pkgdir"
+
+    # Install license
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
