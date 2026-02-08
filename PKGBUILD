@@ -12,7 +12,7 @@ pkgname='vrcx-nightly-bin'
 pkgdesc='Friendship management tool for VRChat (extracted AppImage version)'
 _pkgver='2026-02-06T15.13-8dd6036'
 pkgver=${_pkgver//-/.}
-pkgrel='3'
+pkgrel='4'
 arch=('x86_64')
 url='https://vrcx.app/'
 license=('MIT')
@@ -216,7 +216,7 @@ build() {
         ln -s ../../../../../../usr/share/icons/hicolor/256x256/apps/vrcx.ico \
             opt/vrcx/resources/app.asar.unpacked/build/Electron/VRCX.ico
     fi
-    sed -i -e "s/^Version=.*/Version=$pkgver/" VRCX.desktop
+    sed -i -e "s/^Version=.*/Version=$_pkgver/" VRCX.desktop
 }
 
 package() {
@@ -233,7 +233,7 @@ package() {
     install -Dm644 VRCX.desktop -t "$pkgdir/usr/share/applications"
     install -d -Dm755 "$pkgdir/usr/share/licenses"
     install -d -Dm755 "$pkgdir/usr/share/licenses/$pkgname"
-    install -Dm644 "LICENSE-v$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "LICENSE-v$_pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 opt/vrcx/LICENSE.electron.txt -t "$pkgdir/usr/share/licenses/$pkgname"
     install -Dm644 opt/vrcx/LICENSES.chromium.html -t "$pkgdir/usr/share/licenses/$pkgname"
     rm -- "$pkgdir/opt/vrcx/LICENSE.electron.txt"
