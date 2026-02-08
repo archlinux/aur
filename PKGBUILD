@@ -25,4 +25,5 @@ build() {
 
 package() {
     python -m installer "${srcdir}/${_wheel}-${pkgver}-py3-none-any.whl" --destdir="${pkgdir}"
+    rm "${pkgdir}"/usr/lib/python*/site-packages/pyproject.toml
 }
