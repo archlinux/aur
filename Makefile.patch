@@ -1,0 +1,15 @@
+diff --git a/Makefile b/Makefile
+index 4f1de14..b45fe8b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -115,6 +115,10 @@ override CFLAGS := \
+ 	-DDATADIR=\"$(DATADIR)\" \
+ 	$(CFLAGS)
+ 
++override LDFLAGS := \
++  $(LDFLAGS) \
++  -Wl,--no-as-needed
++
+ # What if this is MacOSX
+ COCOA_LIBS=$(shell if [ "`uname -s`" = "Darwin" ]; then echo "-F/System/Library/Frameworks -framework Cocoa -framework IOKit"; fi)
+ 
