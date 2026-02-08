@@ -1,0 +1,17 @@
+pkgbase = s1500d
+	pkgdesc = Bespoke event daemon for the Fujitsu ScanSnap S1500
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/mmacpherson/s1500d
+	install = s1500d.install
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = libusb
+	depends = libusb
+	backup = etc/s1500d/config.toml
+	source = s1500d-0.3.0.tar.gz::https://github.com/mmacpherson/s1500d/archive/v0.3.0.tar.gz
+	sha256sums = af6cd27693f360ee3998f9b1b1c9862914c370cb4ec084f3ad7da955349f44a8
+
+pkgname = s1500d

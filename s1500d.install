@@ -1,0 +1,10 @@
+post_install() {
+    echo '==> s1500d installed.'
+    echo '    1. Edit /etc/s1500d/config.toml to set your handler path and profiles.'
+    echo '    2. Enable the service: systemctl enable --now s1500d'
+    echo '    See /usr/share/s1500d/ for example handler scripts.'
+}
+
+post_upgrade() {
+    echo '==> s1500d upgraded. Restart the service: systemctl restart s1500d'
+}
