@@ -1,6 +1,6 @@
 pkgbase = noorfetch
 	pkgdesc = Minimal and fast system information fetch tool written in Rust
-	pkgver = 0.5.8
+	pkgver = 1.6.10.r0.g27c210f
 	pkgrel = 1
 	url = https://codeberg.org/limforge/noorfetch
 	arch = x86_64

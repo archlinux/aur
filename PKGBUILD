@@ -1,7 +1,7 @@
 # Maintainer: limforge
 
 pkgname=noorfetch
-pkgver=0.5.8
+pkgver=1.6.10.r0.g27c210f
 pkgrel=1
 pkgdesc="Minimal and fast system information fetch tool written in Rust"
 arch=('x86_64')
