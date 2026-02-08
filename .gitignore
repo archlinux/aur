@@ -1,7 +1,3 @@
-src
-pkg
-*.tar.xz
-*.tar.gz
-*.log
-opengamepadui*
-OpenGamepadUI
+*
+!.SRCINFO
+!PKGBUILD
