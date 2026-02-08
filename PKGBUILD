@@ -1,8 +1,6 @@
-# Maintainer: vociferous <vociferous@fail.pm>
-# Contributor: Stetsed <aur.arch@stetsed.xyz>
 pkgname=caddy-multiplugins
 pkgver=2.10.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Caddy web server"
 arch=('any')
 url="https://github.com/caddyserver/caddy"
@@ -22,7 +20,15 @@ sha256sums=('9bca9b879484cd1e6c7191c83e077ba9c851c2c10c998333219179bfb0fb93f7'
             'c3119c98b285c4bf10c0581fba09b87df3999e0e5a335d94f074eae454a99e70')
 
 build() {
-  xcaddy build v${pkgver} --with github.com/greenpau/caddy-security --with github.com/techknowlogick/certmagic-s3 --with github.com/pberkel/caddy-storage-redis --with github.com/pteich/caddy-tlsconsul --with github.com/mholt/caddy-l4 --with github.com/caddy-dns/powerdns
+  xcaddy build v${pkgver} \
+	--with github.com/greenpau/caddy-security \
+	--with github.com/techknowlogick/certmagic-s3 \
+	--with github.com/pberkel/caddy-storage-redis \
+	--with github.com/pteich/caddy-tlsconsul \
+	--with github.com/mholt/caddy-l4 \
+	--with github.com/caddy-dns/powerdns \
+	--with github.com/tuzzmaniandevil/caddy-dynamic-clientip \
+	--with github.com/monobilisim/caddy-ip-list
 }
 
 package() {
