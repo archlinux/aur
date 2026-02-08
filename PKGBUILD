@@ -1,6 +1,6 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=gscript
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc=" framework to rapidly implement custom droppers for all three major operating systems"
 arch=('x86_64' 'aarch64')

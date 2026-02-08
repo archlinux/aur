@@ -1,6 +1,6 @@
 pkgbase = gscript
 	pkgdesc = framework to rapidly implement custom droppers for all three major operating systems
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/gen0cide/gscript
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = gscript
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/gen0cide/gscript.git#tag=v0.1.0
+	source = git+https://github.com/gen0cide/gscript.git#tag=v0.1.1
 	sha256sums = SKIP
 
 pkgname = gscript
