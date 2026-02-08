@@ -1,0 +1,39 @@
+post_install() {
+    echo ""
+    echo "==> you-tui installed successfully!"
+    echo ""
+    echo "==> To start using you-tui:"
+    echo "    1. Start the TUI client: you-tui"
+    echo "       (The daemon will start automatically)"
+    echo ""
+    echo "==> Optional: Enable auto-start on login"
+    echo "    systemctl --user enable you-tui-daemon"
+    echo "    systemctl --user start you-tui-daemon"
+    echo ""
+    echo "==> Check daemon status:"
+    echo "    you-tui-status"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "==> you-tui upgraded successfully!"
+    echo ""
+    echo "==> If the daemon is running, restart it:"
+    echo "    systemctl --user restart you-tui-daemon"
+    echo ""
+    echo "    Or use the TUI menu: you-tui -> Quit Daemon -> you-tui"
+    echo ""
+}
+
+post_remove() {
+    echo ""
+    echo "==> you-tui removed"
+    echo ""
+    echo "==> Your playlist history remains at:"
+    echo "    ~/.config/you-tui/history.json"
+    echo ""
+    echo "==> To remove it completely:"
+    echo "    rm -rf ~/.config/you-tui"
+    echo ""
+}

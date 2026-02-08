@@ -1,0 +1,17 @@
+pkgbase = you-tui
+	pkgdesc = YouTube Terminal Music Player with daemon/client architecture
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/santiagoalmeida/you-tui
+	install = you-tui.install
+	arch = x86_64
+	license = custom
+	makedepends = dotnet-sdk>=10.0
+	depends = mpv
+	depends = yt-dlp
+	depends = fzf
+	depends = socat
+	source = you-tui-0.1.0.tar.gz::https://github.com/santiagoalmeida/you-tui/archive/v0.1.0.tar.gz
+	sha256sums = dfd9020bd60c2d8ef1ab10bcf9eae22e545c8baf521d6829ada26d7991168279
+
+pkgname = you-tui
