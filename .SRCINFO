@@ -1,0 +1,12 @@
+pkgbase = mediawiki-extension-darkmode
+	pkgdesc = An extension for MediaWiki that adds a link to toggle a dark mode theme
+	pkgver = 1.44+r236+g23479bf
+	pkgrel = 1
+	url = https://www.mediawiki.org/wiki/Extension:DarkMode
+	arch = any
+	license = MIT
+	makedepends = git
+	source = git+https://gerrit.wikimedia.org/r/mediawiki/extensions/DarkMode.git#commit=23479bf7dccfbddf669516b956c32910c23a5f6e
+	b2sums = dad038cc63f45ac2f7b38d18297fa3f842ccb1c93aee21eeb7646fb7c281b2bd91a5c618904bd8b8ac48c94a7397417d65f22de1fbea5a9089a39d306c5c0e98
+
+pkgname = mediawiki-extension-darkmode
