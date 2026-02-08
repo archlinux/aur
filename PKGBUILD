@@ -2,8 +2,8 @@
 
 pkgname=python-playsound3
 _reponame=playsound3
-pkgver=3.3.0
-pkgrel=2
+pkgver=3.3.1
+pkgrel=1
 pkgdesc="Pure Python library for playing sounds"
 arch=('any')
 url="https://github.com/sjmikler/playsound3"
@@ -19,7 +19,7 @@ makedepends=(
 	'python-hatchling'
 	'python-wheel')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sjmikler/playsound3/archive/v${pkgver}.tar.gz")
-sha256sums=('a79481e35c155c772af0091e78b4c7ded87383b32145898f4914ffb01445767f')
+sha256sums=('da4190e9ba925224c8f9dad668c3992a6802767e77024684208c79cd5eeea2ee')
 
 build() {
 	cd "${_reponame}-${pkgver}"
