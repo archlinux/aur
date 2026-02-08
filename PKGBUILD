@@ -1,5 +1,5 @@
 pkgname=grabit
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Screenshot, screen recording, and file uploader with OCR support for Zipline and other services"
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   'spectacle: KDE screenshot and recording support'
 )
 source=("git+https://heliopolis.live/creations/grabit.git#tag=v${pkgver}")
-sha256sums=('f473de478ab4151b9d6f8b739d653fb636d44661c08719551de899750f37d944')
+sha256sums=('e0ec3058881cc0710e069f6d471260b0eb646ba7bd5fb419f85d73facb30310f')
 
 package() {
   install -dm755 "$pkgdir/usr/share/$pkgname"
