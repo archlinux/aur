@@ -3,8 +3,8 @@
 _pkgname=nanokvm-usb
 
 pkgname="${_pkgname}"-appimage
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.1.4
+pkgrel=1
 pkgdesc="NanoKVM USB Host Application (AppImage version)"
 arch=('x86_64')
 url="https://github.com/sipeed/NanoKVM-USB"
@@ -13,10 +13,10 @@ depends=('zlib' 'fuse2')
 options=(!strip)
 install=${pkgname}.install
 _appimage="${pkgname}-${pkgver}.AppImage"
-source_x86_64=("${_appimage}::https://github.com/sipeed/NanoKVM-USB/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
+source_x86_64=("${_appimage}::https://github.com/sipeed/NanoKVM-USB/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.AppImage"
                "https://raw.githubusercontent.com/sipeed/NanoKVM-USB/v${pkgver}/LICENSE")
 noextract=("${_appimage}")
-sha256sums_x86_64=('48e4643ea0a90ea2ced0c00029c7ad8f9631909307e3eb62a8cf5cb5f36e9526'
+sha256sums_x86_64=('d34313e14d9a7efd2ab77c455612ebd124a64b670baca06599fcea60416e6957'
                    '8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef')
 
 prepare() {
