@@ -5,7 +5,7 @@
 
 pkgname=ffmpeg-amd-full
 pkgver=8.0.1
-pkgrel=3
+pkgrel=4
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
 _svt_vp9_ver='290fb8c3662ed76a8887b587a9b8201878ba71ed'
 _whispercpp_ver='1.8.3'
@@ -75,7 +75,6 @@ depends=(
     'libssh'
     'libtheora'
     'libva'
-    'libvdpau'
     'libvorbis'
     'libvpl'
     'libvpx'
@@ -390,7 +389,7 @@ build() {
         --disable-rkmpp \
         --enable-v4l2-m2m \
         --enable-vaapi \
-        --enable-vdpau
+        --disable-vdpau
     make
     make tools/qt-faststart
 }
