@@ -1,12 +1,11 @@
 diff --git a/mobile/apps/auth/pubspec_overrides.yaml b/mobile/apps/auth/pubspec_overrides.yaml
-index 4176839872..9399a9193d 100644
+index 4176839872..5078e9d09f 100644
 --- a/mobile/apps/auth/pubspec_overrides.yaml
 +++ b/mobile/apps/auth/pubspec_overrides.yaml
-@@ -28,3 +28,7 @@ dependency_overrides:
+@@ -28,3 +28,6 @@ dependency_overrides:
      path: ../../packages/ui
    ente_utils:
      path: ../../packages/utils
 +
 +  flutter_secure_storage_linux: 3.0.0
 +  flutter_secure_storage_platform_interface: 2.0.1
-+

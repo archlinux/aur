@@ -24,7 +24,7 @@ source_x86_64=("git+https://github.com/ente-io/auth.git"
 )
 sha512sums_x86_64=('SKIP'
                    'c46984bb59a3fb5337d1bd4dd7f41306ad66a8b0430c69a41c755c3d8d8ebe0a3b5be7c8fdc25ef202cfeab7faa31914ffb21bc4ad928f4eb7d352ca00248f3e'
-                   '191c8d8246573ce1df5e501a6cc2ecbe102899b266c25684f13472d1f0de8db48835a25419607bb02fa62205ecbfa024cd19de315fe6a7762f711df6a23b2ac5')
+                   '00a812be226ae347d9bda689245a5af39b967e62e8d7d838ff02434e1d4735a79b4e60054ee1bf18f912c7e086c912d4d5c1fb5deb4be2b9edb12eb935c4f594')
 provides=('ente-auth')
 conflicts=('ente-auth')
 
