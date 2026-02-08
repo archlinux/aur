@@ -1,9 +1,12 @@
 post_install() {
     echo ""
-    echo "==> Hamr v1.0.0 installed successfully!"
+    echo "==> Hamr installed successfully!"
     echo ""
-    echo "    Start the daemon:  hamr-daemon"
-    echo "    Launch the UI:     hamr-gtk"
+    echo "    Run Hamr (no systemd):  hamr"
+    echo ""
+    echo "    Optional (recommended): systemd user services (opt-in)"
+    echo "      hamr install"
+    echo "      systemctl --user start hamr-gtk"
     echo ""
     echo "    Plugins are installed to: /usr/share/hamr/plugins/"
     echo "    User config location:     ~/.config/hamr/"
@@ -11,44 +14,9 @@ post_install() {
 }
 
 post_upgrade() {
-    if [[ "$(vercmp "$2" "1.0.0")" -lt 0 ]]; then
-        echo ""
-        echo "=========================================="
-        echo "  HAMR v1.0.0 - MAJOR VERSION UPGRADE"
-        echo "=========================================="
-        echo ""
-        echo "  Hamr has been completely rewritten in Rust!"
-        echo ""
-        echo "  BREAKING CHANGES:"
-        echo "  - License changed from GPL-3.0 to MIT"
-        echo "  - QML/Quickshell replaced with native GTK4"
-        echo "  - New plugin system with Python SDK"
-        echo "  - Different configuration format"
-        echo ""
-        echo "  CLEANUP (optional):"
-        echo "  Old QML files may remain at:"
-        echo "    /etc/xdg/quickshell/hamr/"
-        echo "    ~/.config/quickshell/"
-        echo ""
-        echo "  You can safely remove these if not using"
-        echo "  other Quickshell applications."
-        echo ""
-        echo "  NEW COMMANDS:"
-        echo "    hamr-daemon  - Background service"
-        echo "    hamr-gtk     - GTK4 launcher UI"
-        echo "    hamr-tui     - Terminal UI (optional)"
-        echo "    hamr         - CLI tools"
-        echo ""
-        echo "  For migration help, visit:"
-        echo "    https://github.com/Stewart86/hamr"
-        echo ""
-        echo "=========================================="
-        echo ""
-    else
-        echo ""
-        echo "==> Hamr upgraded to v$1"
-        echo ""
-    fi
+    echo ""
+    echo "==> Hamr upgraded to v$1"
+    echo ""
 }
 
 post_remove() {
