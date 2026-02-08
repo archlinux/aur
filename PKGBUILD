@@ -1,11 +1,12 @@
 # Maintainer: Zesko
 pkgname="limine-snapper-sync-git"
-pkgver=r575.4665d73
+_pkgname="limine-snapper-sync"
+pkgver=r588.3020580
 pkgrel=1
 pkgdesc="Automatically syncs Limine snapshot entries with Snapper snapshots."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/Zesko/limine-snapper-sync"
-source=("${pkgname%-git}::git+${url}.git")
+source=("${_pkgname}::git+${url}.git")
 source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-25.0.2/graalvm-community-jdk-25.0.2_linux-x64_bin.tar.gz")
 source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-25.0.2/graalvm-community-jdk-25.0.2_linux-aarch64_bin.tar.gz")
 license=("GPL3")
@@ -33,7 +34,7 @@ backup=(etc/limine-snapper-sync.conf)
 conflicts=('limine-snapper-sync')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/${_pkgname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -47,15 +48,17 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	JAVA_HOME="$srcdir/${_graalvm_version}" gradle clean nativeCompile
+	cd "$srcdir/${_pkgname}"
+	export GRAALVM_HOME="$srcdir/${_graalvm_version}"
+	export JAVA_HOME="${GRAALVM_HOME}"
+	/usr/bin/gradle clean nativeCompile -Dorg.gradle.java.home="${JAVA_HOME}"
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/${_pkgname}"
 	src_path="install/arch-linux/"
 	install -Dm 755 "build/native/nativeCompile/limine-snapper-sync" "$src_path/usr/lib/limine/"
-	install -dm 755 $src_path/usr/share/doc/${pkgname%-git}/
-	cp -r README.md CHANGELOG.md "$src_path/usr/share/doc/${pkgname%-git}/"
+	install -dm 755 $src_path/usr/share/doc/${_pkgname}/
+	cp -r README.md CHANGELOG.md "$src_path/usr/share/doc/${_pkgname}/"
 	cp -r "$src_path/usr" "$src_path/etc" "$pkgdir"
 }
