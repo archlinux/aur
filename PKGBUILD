@@ -2,7 +2,7 @@
 
 pkgname=python-slixmpp
 _pkgbase=slixmpp
-pkgver=1.13.0
+pkgver=1.13.2
 pkgrel=1
 pkgdesc="An XMPP library written for Python 3.7+ (SleekXMPP asyncio fork)"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ optdepends=('python-emoji: For compliant XEP-0444 support')
 options=(!emptydirs)
 
 source=("https://codeberg.org/poezio/${_pkgbase}/archive/slix-${pkgver}.tar.gz")
-sha512sums=('3ca5bd8c4e7cc8f7dec6f0c795ed4964436d38be167b28e054b1bfd78f5e64489273bbd4b70458ad62d34c151f5d5227da41c27dd3c7ad571c60783cdbdd506b')
+sha512sums=('5c23ed82c2942f00ae2d68c74432750544ba97d999d91dbac87569b0dadf0fb44715afd93d21991dd8e2ea16052fca8e5a586ee0b09fb050c5a3c00acd3dd613')
 
 build() {
     cd $_pkgbase
