@@ -16,12 +16,12 @@ source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname
 sha256sums=('9f90a27ba46bae001f5c5060e67d3082e6e037d5d5b80df43b84ff22ae2e245f')
 
 build() {
-	cd "${_pkgname}-${pkgver}"
-	python setup.py build
+    cd "${_pkgname}-${pkgver}"
+    python setup.py build
 }
 
 package() {
-	cd "${_pkgname}-${pkgver}"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "${_pkgname}-${pkgver}"
+    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
