@@ -1,10 +1,10 @@
-# Maintainer: ResRipper <resripper@connective.link>
+# Maintainer: ResRipper <resripper at connective dot link>
 
 # shellcheck disable=SC2034,SC2154,SC2148
 
 pkgname='jhentai-bin'
-_ver_main='8.0.10'
-_ver_sub='304'
+_ver_main='8.0.11'
+_ver_sub='306'
 pkgver=v${_ver_main}_${_ver_sub}
 pkgdesc='A manga app for E-Hentai, supporting Android & iOS & Windows & MacOS & Linux.'
 conflicts=('jhentai-git')
@@ -19,11 +19,11 @@ depends=(
     'zenity'
 )
 
-source_x86_64=("jhentai-${_ver_main}_${_ver_sub}.deb::https://github.com/jiangtian616/JHenTai/releases/download/v${_ver_main}+${_ver_sub}/JHenTai-${_ver_main}+${_ver_sub}-Linux-x64.deb")
-sha256sums_x86_64=('063a5ad3916d68766af458b01c3dfc46260e3a9b5c2cfc7f4668fe3f81fc3ae5')
+source_x86_64=("jhentai-${_ver_main}_${_ver_sub}.deb::${url}/releases/download/v${_ver_main}/JHenTai-${_ver_main}+${_ver_sub}-Linux-x64.deb")
+sha256sums_x86_64=('b63f053ed9bb4b6f863f07b401cc026325b8012ad4660eff5ef80c6e26bec934')
 
-source_aarch64=("jhentai-${_ver_main}_${_ver_sub}.deb::https://github.com/jiangtian616/JHenTai/releases/download/v${_ver_main}+${_ver_sub}/JHenTai-${_ver_main}+${_ver_sub}-Linux-arm64.deb")
-sha256sums_aarch64=('de1f1d8ecc53e22b81c62312ca3be9f2e1ceade357e0b311740d62b10080883d')
+source_aarch64=("jhentai-${_ver_main}_${_ver_sub}.deb::${url}/releases/download/v${_ver_main}/JHenTai-${_ver_main}+${_ver_sub}-Linux-arm64.deb")
+sha256sums_aarch64=('c19cd8798ca072054f968d854f471a86988deee9ab25b21028e9bb92eadeeed5')
 
 
 prepare() {
