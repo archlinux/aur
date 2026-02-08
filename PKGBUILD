@@ -1,8 +1,8 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=dmde
-pkgver=4.4.0.828
-pkgrel=5
+pkgver=4.4.4.842
+pkgrel=1
 pkgdesc="DM Disk Editor and Data Recovery Software"
 arch=('x86_64')
 url="https://dmde.com/"
@@ -15,7 +15,7 @@ options=('!strip' '!debug')
 source=("dmde-${pkgver}.zip::https://dmde.com/download/dmde-${pkgver//./-}-lin64-gui.zip"
         "dmde.desktop"
         "dmde.png")
-sha256sums=('dee19e2774f38052b65a46568f8f7c3c34dc638b4c6abe12913238b07e2a3fe0'
+sha256sums=('e7a33986a641ca5d8930a7f113fd4c6ff1a312b2ee38056fec795649b63b14a2'
             'c631d99b9da19d5fb15e294e8054ee6233b853a1526fcb7ee99c7d2b894ef2be'
             'f84d392bd8a60bbe2e8820f8d0f184d20ee6f8e9bd8be430f772b84c03beda12')
 noextract=("dmde-${pkgver}.zip")
