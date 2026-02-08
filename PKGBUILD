@@ -89,5 +89,4 @@ package(){
 
     mkdir -p "${pkgdir}/usr/bin"
     ln -sf "/usr/share/enteauth/enteauth" "${pkgdir}/usr/bin/enteauth"
-    chmod +x "${pkgdir}/usr/bin/enteauth"
 }
