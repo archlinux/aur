@@ -1,6 +1,6 @@
 pkgbase = trivy-git
 	pkgdesc = A Simple and Comprehensive Vulnerability Scanner for Containers, Suitable for CI
-	pkgver = r3924.47d3103c50
+	pkgver = r3946.0b735032ef
 	pkgrel = 1
 	url = https://github.com/aquasecurity/trivy
 	arch = x86_64

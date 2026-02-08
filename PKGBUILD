@@ -3,7 +3,7 @@
 
 _pkgname=trivy
 pkgname=trivy-git
-pkgver=r3924.47d3103c50
+pkgver=r3946.0b735032ef
 pkgrel=1
 pkgdesc="A Simple and Comprehensive Vulnerability Scanner for Containers, Suitable for CI"
 arch=("x86_64" "i686")
@@ -22,6 +22,12 @@ pkgver() {
 
   # Get the version number.
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "${srcdir}/${_pkgname}/cmd/trivy"
+  export GOPATH="${srcdir}"
+  go mod download -modcacherw
 }
 
 build() {
