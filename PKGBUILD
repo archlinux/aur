@@ -9,13 +9,13 @@ url="https://github.com/kirchberger/rsimg"
 license=('GPL')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'git') # 'bzr', 'git', 'mercurial' or 'subversion'
-source=('rsimg::https://github.com/kirchberger/rsimg.git')
+source=('rsimg::git+https://github.com/kirchberger/rsimg.git')
 sha256sums=('SKIP')
 # Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
 # a description of each element in the source array.
 
 pkgver() {
-#	cd "$pkgname"
+	cd "$_pkgname"
 # Git, no tags available
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
@@ -26,7 +26,7 @@ prepare() {
 }
 
 build() {
-#	cd "$pkgname"
+	cd "$_pkgname"
 
 	export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
@@ -41,7 +41,7 @@ build() {
 #}
 
 package() {
-#	cd "$pkgname"
+	cd "$_pkgname"
 
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"
 }

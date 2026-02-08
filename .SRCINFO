@@ -9,7 +9,7 @@ pkgbase = rsimg-git
 	makedepends = git
 	depends = gcc-libs
 	depends = glibc
-	source = rsimg::https://github.com/kirchberger/rsimg.git
+	source = rsimg::git+https://github.com/kirchberger/rsimg.git
 	sha256sums = SKIP
 
 pkgname = rsimg-git
