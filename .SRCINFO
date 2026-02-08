@@ -1,0 +1,19 @@
+pkgbase = pywayfire-git
+	pkgdesc = Python bindings for Wayfire (Master Branch)
+	pkgver = 3.2.r27.g4c8ed00
+	pkgrel = 1
+	url = https://github.com/WayfireWM/pywayfire
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = pywayfire-git
+	conflicts = python-wayfire
+	source = git+https://github.com/WayfireWM/pywayfire.git
+	sha256sums = SKIP
+
+pkgname = pywayfire-git
