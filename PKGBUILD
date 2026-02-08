@@ -1,25 +1,27 @@
-# Maintainer: sineptic <sineptic0@gmail.com>
-pkgname=sse-bin
-pkgver=15.0.8_1
-pkgrel=1
-pkgdesc="Paranoia Secret Space Encryptor File and Text desktop utilities from Paranoiaworks"
-arch=('x86_64')
-url="https://paranoiaworks.mobi"
-license=('custom')
-source=(
-    "$url/download/files/pfte_${pkgver//_/-}_amd64.deb"
-    "license.txt"
-)
-sha256sums=(
-    '31b3fae30d3e26804f5ed77bbd66920e824042a239c94720023dded78c571e3c'
-    'f23431d1e94d187fe3e0254b8a530a875d8615bbe451e9d3f564627835e7d527'
-)
+# Maintained by glacier54 on GitHub
+pkgver=0.1.2
+pkgname="goonfetch"
+pkgdesc="A fetch utility for fetching rule 34 images"
+pkgrel=2
+arch=('any')
+url="https://github.com/glacier54/goonfetch/"
+license=('MIT')
+depends=('poetry' 'python')
+source=("https://github.com/glacier54/goonfetch/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('353a62e6632b9da433c1b244f7eb6677ad2f48a69c60d72779405422ab2d41b5')
 
-options=('!strip')
+build() {
+    cd "$srcdir/$pkgname-$pkgver"
+    poetry install --no-root
+}
 
-package() {
-    bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}"
-    echo "Installing license and desktop file..."
-    install -Dm644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
-    install -Dm644 "${pkgdir}/opt/pfte/lib/pfte-Paranoia_File_and_Text_Encryption.desktop" "${pkgdir}/usr/share/applications/pfte-Paranoia_File_and_Text_Encryption.desktop"
+package () {
+    cd "$srcdir/$pkgname-$pkgver"
+    install -d  "$pkgdir/usr/lib/goonfetch"
+    cp -r . "$pkgdir/usr/lib/goonfetch/"
+    install -Dm755 /dev/stdin "$pkgdir/usr/bin/goonfetch" <<'EOF'
+#!/usr/bin/env bash
+cd /usr/lib/goonfetch || exit 1
+poetry run python main.py "$@"
+EOF
 }
