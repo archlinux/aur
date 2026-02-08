@@ -3,7 +3,7 @@
 pkgname=music-assistant-desktop-git
 pkgver=0.3.3.r0.g0ddd331
 pkgrel=1
-pkgdesc="Music Assistant Companion - desktop app for Music Assistant (requires server 2.7.0+)"
+pkgdesc="Music Assistant Desktop Companion App"
 arch=('x86_64')
 url="https://github.com/music-assistant/desktop-app"
 license=('Apache-2.0')
