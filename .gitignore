@@ -1,0 +1,7 @@
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+*.AppImage
+LICENSE
+codex-monitor.png
+/pkg/
+/src/
