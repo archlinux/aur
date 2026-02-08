@@ -2,7 +2,7 @@
 
 pkgname=polytrack
 pkgver=Releases
-pkgrel=4
+pkgrel=900
 pkgdesc="An Unofficial Community Made AUR Package"
 arch=('x86_64')
 url="https://github.com/SoupcanUBG/polytrack"
