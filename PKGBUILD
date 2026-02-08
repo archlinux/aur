@@ -17,7 +17,7 @@ pkgdesc="Uncompromising wilderness survival sandbox game (unstable branch)"
 arch=("x86_64")
 url="https://www.vintagestory.at/"
 license=("custom")
-depends=("dotnet-runtime-8.0" "opengl-driver" "openal" "glibc>=2.34")
+depends=("dotnet-runtime-10.0" "opengl-driver" "openal" "glibc>=2.34")
 options=("!strip" "!debug")
 source=("https://cdn.vintagestory.at/gamefiles/$_release/vs_client_linux-x64_$_pkgver.tar.gz"
 #       "https://account.vintagestory.at/files/$_release/vs_client_linux-x64_$_pkgver.tar.gz" (alternative source)

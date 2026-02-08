@@ -5,7 +5,7 @@ pkgbase = vintagestory-unstable
 	url = https://www.vintagestory.at/
 	arch = x86_64
 	license = custom
-	depends = dotnet-runtime-8.0
+	depends = dotnet-runtime-10.0
 	depends = opengl-driver
 	depends = openal
 	depends = glibc>=2.34
