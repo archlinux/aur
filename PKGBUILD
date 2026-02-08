@@ -7,7 +7,7 @@
 # Contributor: ahrs
 
 pkgname=mailspring
-pkgver=1.17.0
+pkgver=1.17.3
 pkgrel=1
 pkgdesc="A beautiful, fast and maintained fork of Nylas Mail by one of the original authors."
 arch=(x86_64)
@@ -18,7 +18,7 @@ makedepends=(git npm nodejs-lts-iron grunt-cli python chrpath)
 source=("git+https://github.com/Foundry376/Mailspring.git#tag=${pkgver}"
         "https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/mailspring_0001-linux-don-t-build-a-deb-or-rpm-please.patch"
         desktop.patch)
-sha256sums=('1373741f5e11cec645c203c94dd9816cc32df4d848e9e58e40d304eb9df1785f'
+sha256sums=('7724d1e6d6a8fc6a5c266549cd93a7c3e3564b9b234d807ce75f5b9ee9e33415'
             'fd2158e0e3d39df0fa498b2afbcfa55c30607018ae144656f9575a6ec9e3dc98'
             '406b34236f3d966989b347aad88dfe52b9c1681ae26296974dcd719171c9833e')
 
