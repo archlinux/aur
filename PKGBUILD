@@ -1,19 +1,20 @@
-pkgname=gamescope-session-opengamepadui
+pkgname=gamescope-session-opengamepadui-git
+_gitdir=gamescope-session-opengamepadui
 pkgver=r24.88087a0
 pkgrel=1
 pkgdesc="OpenGamepadUI Gamescope session"
 arch=('any')
-url="https://github.com/OpenGamingCollective/gamescope-session-opengamepadui"
+url="https://github.com/OpenGamingCollective/${_gitdir}"
 makedepends=('git')
-source=("git+https://github.com/OpenGamingCollective/gamescope-session-opengamepadui.git")
+source=("${_gitdir}::git+${url}.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname}"
+  cd "$srcdir/${_gitdir}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$srcdir/${pkgname}"
-  cp -rv ${srcdir}/${pkgname}/usr ${pkgdir}/usr
+  cd "$srcdir/${_gitdir}"
+  cp -rv ${srcdir}/${_gitdir}/usr ${pkgdir}/usr
 }

@@ -1,11 +1,11 @@
-pkgbase = gamescope-session-opengamepadui
+pkgbase = gamescope-session-opengamepadui-git
 	pkgdesc = OpenGamepadUI Gamescope session
 	pkgver = r24.88087a0
 	pkgrel = 1
 	url = https://github.com/OpenGamingCollective/gamescope-session-opengamepadui
 	arch = any
 	makedepends = git
-	source = git+https://github.com/OpenGamingCollective/gamescope-session-opengamepadui.git
+	source = gamescope-session-opengamepadui::git+https://github.com/OpenGamingCollective/gamescope-session-opengamepadui.git
 	md5sums = SKIP
 
-pkgname = gamescope-session-opengamepadui
+pkgname = gamescope-session-opengamepadui-git
