@@ -1,0 +1,3 @@
+#!/usr/bin/env python3
+import tidaler.gui
+tidaler.gui.gui_activate()
