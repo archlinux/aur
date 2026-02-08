@@ -1,6 +1,6 @@
 # Maintainer: srsxnsh <me@srsxnsh.xyz>
 pkgname=nimbsh
-pkgver=0.1.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A simple shell built in Nim"
 arch=('x86_64' 'aarch64')

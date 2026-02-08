@@ -1,6 +1,6 @@
 pkgbase = nimbsh
 	pkgdesc = A simple shell built in Nim
-	pkgver = 0.1.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/srsxnsh/nimbsh
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = nimbsh
 	license = GPL
 	makedepends = nim
 	makedepends = git
-	source = nimbsh-0.1.0::git+https://github.com/srsxnsh/nimbsh.git#tag=v0.1.0
+	source = nimbsh-1.0.0::git+https://github.com/srsxnsh/nimbsh.git#tag=v1.0.0
 	sha256sums = SKIP
 
 pkgname = nimbsh
