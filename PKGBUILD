@@ -7,7 +7,7 @@
 
 
 pkgname=oauth2-proxy
-pkgver=7.14.1
+pkgver=7.14.2
 pkgrel=1
 pkgdesc="A reverse proxy that provides authentication with Google, Keycloak, GitHub and other providers"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ depends=(glibc)
 makedepends=(go)
 backup=('etc/oauth2-proxy/oauth2-proxy.cfg')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/oauth2-proxy/oauth2-proxy/archive/v${pkgver}.tar.gz")
-sha256sums=('0c8267d6e79123421d8e1487a5a79168df79b27a73480f595ef40fe4ab779606')
+sha256sums=('e96c335299955043ca44d8b6e6c680acd5330c9265f0ab462a6d6de7d492134a')
 
 #prepare() {
 #	sed -i -e 's|/usr/local/bin/oauth2-proxy|/usr/bin/oauth2-proxy|' "${pkgname}-${pkgver}/contrib/${pkgname}.service.example"
