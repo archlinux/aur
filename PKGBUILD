@@ -2,51 +2,81 @@
 pkgname=shadps4-qtlauncher-pre-release-bin
 _pkgname=shadPS4QtLauncher
 _pkgid=net.shadps4.shadps4-qtlauncher
-_url="$(curl -s "$(curl -s "https://api.github.com/repos/shadps4-emu/shadps4-qtlauncher/releases" | jq -r '.[] | select(.prerelease == true) | .url')" | awk -F'"' '/browser_download_url.*shadPS4QtLauncher-linux-qt.*zip/ {print $4}')"
-_date="$(echo $_url | awk -F '[-/]' -v OFS="-" '{print $11,$12,$13}')"
-_pkgver="$(echo $_url | awk -F '[-/]' '{print $14}')"
-_commit="$(echo $_url | awk -F '[-/]' '{print $21}' | sed 's/\.zip$//')"
-pkgver="$(echo $_url | awk -F '[-/]' -v OFS="" '{print $11,$12,$13,".",$21}' | sed 's/\.zip$//')"
+pkgver=20260208.2f10920
 pkgrel=1
 pkgdesc="The official Qt launcher for shadps4 emulator (Pre-release version)"
 arch=('x86_64')
 url="https://github.com/shadps4-emu/shadps4-qtlauncher"
 license=('GPL-2.0-only')
-makedepends=('yq')
-provides=("${pkgname%-pre-release-bin}")
-conflicts=("${pkgname%-pre-release-bin}")
-options=('!strip')
-_appimage=shadPS4QtLauncher-qt.AppImage
-source=("https://github.com/shadps4-emu/shadps4-qtlauncher/releases/download/shadPS4QtLauncher-${_date}-${_pkgver}/shadPS4QtLauncher-linux-qt-${_date}-${_commit}.zip")
+depends=(
+  'libx11'
+  'libglvnd'
+  'wayland'
+  'libxcb'
+  'fontconfig'
+  'libdrm'
+  'freetype2'
+  'glibc'
+  'gcc-libs'
+  'zlib'
+  'bash'
+  'e2fsprogs'
+  'libgpg-error'
+)
+makedepends=('curl' 'jq' 'unzip')
+provides=('shadps4-qtlauncher')
+conflicts=('shadps4-qtlauncher')
+options=('!strip' '!zipman')
+source=("${pkgname}::https://api.github.com/repos/shadps4-emu/shadps4-qtlauncher/releases")
 sha256sums=('SKIP')
 
-prepare() {
-    # extract appimage
-    cd "${srcdir}"
-    chmod +x "${_appimage}"
-    ./"${_appimage}" --appimage-extract
+pkgver() {
+    # Fetches the latest pre-release tag and formats it for the pkgver variable
+    curl -s "https://api.github.com/repos/shadps4-emu/shadps4-qtlauncher/releases" | \
+    jq -r '. | map(select(.prerelease == true))[0].assets[0].browser_download_url' | \
+    awk -F '[-/]' '{print $11""$12""$13"."$21}' | sed 's/\.zip$//'
+}
 
-    # update script, desktop file and binary name
+prepare() {
+    # Dynamically find the latest release
+    _download_url=$(curl -s "https://api.github.com/repos/shadps4-emu/shadps4-qtlauncher/releases" | \
+                    jq -r '. | map(select(.prerelease == true))[0].assets[] | select(.name | contains("linux-qt")) | .browser_download_url')
+
+    msg2 "Downloading AppImage ZIP..."
+    curl -L "$_download_url" -o "launcher.zip"
+
+    unzip -o "launcher.zip"
+    _appimage=$(ls *.AppImage)
+    chmod +x "$_appimage"
+
+    msg2 "Extracting AppImage content..."
+    ./"$_appimage" --appimage-extract
+}
+
+build() {
+    cd "${srcdir}/squashfs-root"
+
+    # Patch AppRun to point to the fixed installation directory in /opt,
+    # adjust the Exec and Icon paths in the .desktop,
+    # and change the binary name
     sed -i "s|appdir=\$(readlink -f \${APPDIR:-\$(dirname \"\$0\")})|appdir=\"/opt/${_pkgname}\"|" "$srcdir/squashfs-root/AppRun"
-    sed -i "s|Exec=shadPS4QtLauncher|Exec=${pkgname%-pre-release-bin}|" "$srcdir/squashfs-root/${_pkgid}.desktop"
-    mv "$srcdir/squashfs-root/usr/bin/${_pkgname}" "$srcdir/squashfs-root/usr/bin/${pkgname%-pre-release-bin}"
+    sed -i "s|Exec=${_pkgname}|Exec=shadps4-qtlauncher|" "${_pkgid}.desktop"
+    sed -i "s|Icon=net.shadps4.shadPS4|Icon=shadps4-qtlauncher|" "${_pkgid}.desktop"
+    mv "${srcdir}/squashfs-root/usr/bin/${_pkgname}" "${srcdir}/squashfs-root/usr/bin/shadps4-qtlauncher"
 }
 
 package() {
-    # main files
-    install -dm755 "$pkgdir/opt/${_pkgname}"
-    mv "$srcdir"/squashfs-root/* "$pkgdir/opt/${_pkgname}"
+    # Create directory structure
+    install -dm755 "${pkgdir}/opt/${_pkgname}"
+    install -dm755 "${pkgdir}/usr/bin"
 
-    # script
-    install -dm755 "$pkgdir/usr/bin"
-    ln -sf "/opt/${_pkgname}/AppRun" "$pkgdir/usr/bin/${pkgname%-pre-release-bin}"
+    # Move extracted content to /opt
+    cp -ar "${srcdir}/squashfs-root/." "${pkgdir}/opt/${_pkgname}/"
 
-    # icon
-    install -Dm644 "$pkgdir/opt/${_pkgname}/net.shadps4.shadPS4.svg" -t "$pkgdir/usr/share/pixmaps"
+    # Install the .desktop file and the icon
+    install -Dm644 "${srcdir}/squashfs-root/${_pkgid}.desktop" "${pkgdir}/usr/share/applications/shadps4-qtlauncher.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/net.shadps4.shadPS4.svg" "${pkgdir}/usr/share/pixmaps/shadps4-qtlauncher.svg"
 
-    # launcher
-    install -Dm644 "$pkgdir/opt/${_pkgname}/${_pkgid}.desktop" -t "$pkgdir/usr/share/applications"
-
-    # permissions
-    chmod -R u+rwX,go+rX,go-w "$pkgdir/"
+    # Create a symbolic link for the AppRun
+    ln -s "/opt/${_pkgname}/AppRun" "${pkgdir}/usr/bin/shadps4-qtlauncher"
 }
