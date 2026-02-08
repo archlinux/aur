@@ -1,4 +1,5 @@
 # Maintainer: Patrick Mang <aur at patrickmang dot de>
+# Contributor: Ain Ruiz Dorado <maxain201 at gmail dot com>
 
 pkgname=tidal-hifi-tidaluna
 pkgver=6.1.0
