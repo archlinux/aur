@@ -1,6 +1,6 @@
 pkgbase = dune-common
 	pkgdesc = Infrastructure and foundation classes
-	pkgver = 2.10.0
+	pkgver = 2.11.0
 	pkgrel = 1
 	url = https://dune-project.org/modules/dune-common
 	arch = x86_64
@@ -38,10 +38,10 @@ pkgbase = dune-common
 	provides = dunepackaging.py
 	provides = duneproject
 	options = !emptydirs
-	source = https://dune-project.org/download/2.10.0/dune-common-2.10.0.tar.gz
-	source = https://dune-project.org/download/2.10.0/dune-common-2.10.0.tar.gz.asc
-	validpgpkeys = 703607A1FD9AF4205E735522B95BE0EFB19724A1
-	sha512sums = f29f78b8ac4dd9a7d6439f65b280391ff393d9f2e344416f934c541c025de2b4da6ab638a8a8f45013d15f7ab8cccea45cf27a5b980df1240f9dae1c9c9db480
+	source = https://dune-project.org/download/2.11.0/dune-common-2.11.0.tar.gz
+	source = https://dune-project.org/download/2.11.0/dune-common-2.11.0.tar.gz.asc
+	validpgpkeys = 378CA09AC1D2952D9412C787DC2EEB096E6099EA
+	sha512sums = 655253ea7e2061ce010a85d25584cfb2d332af7deb5a76d3eafb23b19d02cefd8276cbc260453630a997563744db13dadf5b5bdd2750b0ee3f37888448f89e47
 	sha512sums = SKIP
 
 pkgname = dune-common
