@@ -1,18 +1,19 @@
 # Maintained by glacier54 on GitHub
-pkgver=0.1.2
+pkgver=0.1.3
 pkgname="goonfetch"
 pkgdesc="A fetch utility for fetching rule 34 images"
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://github.com/glacier54/goonfetch/"
 license=('MIT')
-depends=('poetry' 'python')
+depends=('python')
+makedepends=('uv')
 source=("https://github.com/glacier54/goonfetch/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('353a62e6632b9da433c1b244f7eb6677ad2f48a69c60d72779405422ab2d41b5')
+sha256sums=('68170380a4a6567f1c6ac1e772fe68970f20419744147af1c79e444d3eb16b57')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    poetry install --no-root
+    uv sync
 }
 
 package () {
@@ -22,6 +23,6 @@ package () {
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/goonfetch" <<'EOF'
 #!/usr/bin/env bash
 cd /usr/lib/goonfetch || exit 1
-poetry run python main.py "$@"
+.venv/bin/python main.py "$@"
 EOF
 }
