@@ -2,7 +2,7 @@
 
 pkgname=com.qq.weixin.work.deepin
 pkgver=5.0.0.6008~spark2
-pkgrel=1
+pkgrel=2
 pkgdesc="Deepin Wine 版企业微信 | Deepin-wine Wecom"
 arch=('x86_64')
 url="https://mirrors.sdu.edu.cn/spark-store-repository/store/chat/com.qq.weixin.work.deepin/"
@@ -21,6 +21,7 @@ install="wecom.install"
 
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}/"
+    rm -rf "${pkgdir}/.lock"
     install -Dm644 "wqy-microhei.ttc" "${pkgdir}/usr/share/fonts/truetype/wqy/wqy-microhei.ttc"
     cp -rf ${pkgdir}/opt/apps/${pkgname}/entries/* "${pkgdir}/usr/share/"
 }
