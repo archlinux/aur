@@ -1,9 +1,10 @@
-# Maintainer: lexa <contact@qexat.com>
+# Maintainer: piotrdab <piotrsbk+arch@gmail.com>
+# Contributor: lexa <contact@qexat.com>
 # Contributor: workonfire <kolucki62@gmail.com>
 
 pkgname=babi-grammars
 _pkgname=babi_grammars
-pkgver=0.0.66
+pkgver=0.0.70
 pkgrel=1
 pkgdesc="Grammars for babi text editor"
 arch=('any')
@@ -12,7 +13,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('8599d521a63541521d92e7c9238c21ab42756e5fb128fd68c93f364973cfe17d')
+sha256sums=('9f90a27ba46bae001f5c5060e67d3082e6e037d5d5b80df43b84ff22ae2e245f')
 
 build() {
 	cd "${_pkgname}-${pkgver}"
