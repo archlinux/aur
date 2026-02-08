@@ -1,0 +1,13 @@
+pkgbase = polytrack
+	pkgdesc = An Unofficial Community Made AUR Package
+	pkgver = Releases
+	pkgrel = 1
+	url = https://github.com/SoupcanUBG/polytrack
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	provides = polytrack
+	source = git+https://github.com/SoupcanUBG/polytrack.git
+	sha256sums = SKIP
+
+pkgname = polytrack
