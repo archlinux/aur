@@ -2,8 +2,8 @@
 
 pkgname=python-lameenc
 _gitpkgname=lameenc
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.8.1
+pkgrel=1
 pkgdesc='Python bindings for the LAME encoding library'
 arch=('x86_64')
 url='https://github.com/chrisstaite/lameenc'
@@ -13,6 +13,7 @@ makedepends=(
   'python-build'
   'python-installer'
   'python-setuptools'
+  'python-setuptools-scm'
   'python-wheel'
 )
 
@@ -21,10 +22,8 @@ source=(
   'use-system-lame.patch'
 )
 
-sha512sums=(
-  '3c841bc141e2c38105d6ba0654f3084b19424aa38e5f983e504c8e341119c9e32d6c7e947876d93f4a580e98eb581f4d2db80a87d28b1b663d16fdb9dcc06c8b'
-  'd021e5f848c7419a7affa31e81ffe00eb1c9157816e99cc1d628f0e6847a2bdeb75ff5d68db71f5d9de7c65374325deb9b9e5e4d08c2de2be0c0bdc004d9ef3a'
-)
+sha512sums=('195fd9a7a1856a47d0b70101bfe0a4c8a1b81d7cde9d43e0981beb9cb5f1a46cea9c2a93702c9d9ce6f1817a1e60fe75e6fc574974f39774b40bff7423069b7c'
+            'd9b262a333afe1a00415a4b76257b9d966a08ce618b5dd5daade9cdfef03d986343ecfbdf0e21d218f9f10b1bae52fb6af2697ee6ee338b4c599127f4e8b62a2')
 
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
@@ -35,6 +34,7 @@ prepare() {
 build() {
   cd "${_gitpkgname}-${pkgver}"
   echo >&2 'Building wheel'
+  export SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}"
   python -m build --wheel --no-isolation
 }
 
