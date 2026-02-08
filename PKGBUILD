@@ -1,8 +1,8 @@
 # Maintainer: Joerg Weislogel <mutoroglin at posteo dot de>
 
 pkgname=waybar-cava
-pkgver=0.14.0
-pkgrel=3
+pkgver=0.15.0
+pkgrel=1
 pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors, with module cava (Cross-platform Audio Visualizer)'
 arch=('x86_64')
 url='https://github.com/Alexays/Waybar/'
@@ -50,41 +50,9 @@ optdepends=(
     'otf-font-awesome: Icons in the default configuration'
 )
 source=(
-    waybar-cava-0.14.0-3.patch
-    cava.hpp
-    cava_backend.hpp
-    cava.cpp
-    cava_backend.cpp
-    libcava.wrap
     "$pkgname-$pkgver.tar.gz::https://github.com/Alexays/Waybar/archive/$pkgver.tar.gz"
 )
-sha256sums=('fe9067643d4a0d1539910e288f059c66d5a9c4af8304a7d95102f2da99c54088'
-            '4e883e310119c20b2816d478634ecde4582e102142c08796f7bf39f1ceae61f4'
-            '1daf3766b87f42090cc04fa1c07aa129164df33bb123b39fcdfcf006e00c55af'
-            '347c547b73076c8ace8efeafabb6adf72527ae1b59ad80993c7774f77180fd71'
-            '3ec2e1d77a226bdab8a0c3d8efdbd90570392840bc9752dbb8a9650f6eeaeda3'
-            '2a2fee101c4cf06a6f9f328817923c20ceb99644d91a0a38c925891bd0bf283f'
-            '7f3859779bb3a5028a7215b2000c2e476c03453a52289164ba60a4bf1bb3772f')
-
-prepare() {
-    echo $(pwd)
-    cd "Waybar-$pkgver"
-
-    mkdir include/modules/cava
-    mkdir src/modules/cava
-
-    rm include/modules/cava.hpp
-    cp ../cava.hpp include/modules/cava
-    cp ../cava_backend.hpp include/modules/cava
-    rm src/modules/cava.cpp
-    cp ../cava.cpp src/modules/cava
-    cp ../cava_backend.cpp src/modules/cava
-    rm subprojects/cava.wrap
-    cp ../libcava.wrap subprojects/libcava.wrap
-
-    # patch -p1 -i ../waybar-cava-0.14.0-2.patch1
-    patch -p1 -i ../waybar-cava-0.14.0-3.patch
-}
+sha256sums=('21c2bbef88c40473c355003582f9331d2f9b8a01efdcce0935edfc5f6b023a3e')
 
 build() {
     cd "Waybar-${pkgver}"
