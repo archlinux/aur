@@ -1,0 +1,91 @@
+diff --git a/FilePool/CMakeLists.txt b/FilePool/CMakeLists.txt
+index 4c251c0..b21d3ed 100644
+--- a/FilePool/CMakeLists.txt
++++ b/FilePool/CMakeLists.txt
+@@ -1,5 +1,3 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.5)
+-
+ #===============================================================================
+ # Load elements_subdir macro here
+ # Examples:
+diff --git a/GridContainer/CMakeLists.txt b/GridContainer/CMakeLists.txt
+index 5d4b845..28d0fa3 100644
+--- a/GridContainer/CMakeLists.txt
++++ b/GridContainer/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ elements_subdir(GridContainer)
+ 
+ elements_depends_on_subdirs(ElementsKernel Table XYDataset)
+-find_package(Boost REQUIRED COMPONENTS system serialization filesystem)
++find_package(Boost REQUIRED COMPONENTS serialization filesystem)
+ find_package(CCfits)
+ 
+ #===== Libraries ===============================================================
+diff --git a/KdTree/CMakeLists.txt b/KdTree/CMakeLists.txt
+index 1eaed82..38853b5 100644
+--- a/KdTree/CMakeLists.txt
++++ b/KdTree/CMakeLists.txt
+@@ -1,5 +1,3 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.5)
+-
+ #===============================================================================
+ # Load elements_subdir macro here
+ # Examples:
+diff --git a/NdArray/tests/src/TestHelper.h b/NdArray/tests/src/TestHelper.h
+index aded0e1..4432464 100644
+--- a/NdArray/tests/src/TestHelper.h
++++ b/NdArray/tests/src/TestHelper.h
+@@ -21,7 +21,7 @@
+ 
+ #include "ElementsKernel/Temporary.h"
+ #include <boost/filesystem/path.hpp>
+-#include <boost/process.hpp>
++#include <boost/process/v1.hpp>
+ #include <boost/test/unit_test.hpp>
+ #include <sstream>
+ 
+@@ -29,7 +29,7 @@
+  * Run embedded Python code
+  */
+ static std::unique_ptr<std::stringstream> runPython(const char* code, const boost::filesystem::path& npy) {
+-  namespace bp = boost::process;
++  namespace bp = boost::process::v1;
+   Elements::TempFile code_file("npy_%%%%.py");
+   std::ofstream      out(code_file.path().native());
+   out << code;
+diff --git a/Pyston/CMakeLists.txt b/Pyston/CMakeLists.txt
+index cda5177..60dff35 100644
+--- a/Pyston/CMakeLists.txt
++++ b/Pyston/CMakeLists.txt
+@@ -1,5 +1,3 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.5)
+-
+ #===============================================================================
+ # Load elements_subdir macro here
+ # Examples:
+diff --git a/SourceCatalog/CMakeLists.txt b/SourceCatalog/CMakeLists.txt
+index 0414d5e..722d55c 100644
+--- a/SourceCatalog/CMakeLists.txt
++++ b/SourceCatalog/CMakeLists.txt
+@@ -5,7 +5,7 @@ elements_depends_on_subdirs(GridContainer)
+ 
+ elements_depends_on_subdirs(ElementsKernel)
+ 
+-find_package(Boost REQUIRED COMPONENTS filesystem thread system)
++find_package(Boost REQUIRED COMPONENTS filesystem thread)
+ 
+ 
+ #===== Libraries ===============================================================
+diff --git a/XYDataset/CMakeLists.txt b/XYDataset/CMakeLists.txt
+index 57e011b..885077c 100644
+--- a/XYDataset/CMakeLists.txt
++++ b/XYDataset/CMakeLists.txt
+@@ -2,7 +2,7 @@ elements_subdir(XYDataset)
+ elements_depends_on_subdirs(Table)
+ elements_depends_on_subdirs(ElementsKernel)
+ 
+-find_package(Boost REQUIRED COMPONENTS filesystem thread system)
++find_package(Boost REQUIRED COMPONENTS filesystem thread)
+ find_package(CCfits)
+ 
+ #===== Libraries ===============================================================
