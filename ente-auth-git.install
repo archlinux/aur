@@ -1,8 +1,8 @@
 post_install() {
-	ln -s /usr/share/ente_auth/ente_auth /usr/bin/ente_auth
-	chmod +x /usr/bin/ente_auth
-    ln -s /usr/share/ente_auth/data/flutter_assets/assets/icons/auth-icon.png /usr/share/icons/hicolor/256x256/apps/ente_auth.png
-    ln -s /usr/share/ente_auth/data/flutter_assets/assets/icons/auth-icon.png /usr/share/icons/hicolor/128x128/apps/ente_auth.png
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+	ln -s /usr/share/enteauth/enteauth /usr/bin/enteauth
+	chmod +x /usr/bin/enteauth
+	update-desktop-database -q
 }
 
 post_upgrade() {
@@ -10,7 +10,7 @@ post_upgrade() {
 }
 
 post_remove() {
-	rm /usr/bin/ente_auth
-	rm /usr/share/icons/hicolor/256x256/apps/ente_auth.png
-	rm /usr/share/icons/hicolor/128x128/apps/ente_auth.png
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+	rm /usr/bin/enteauth
+	update-desktop-database -q
 }
