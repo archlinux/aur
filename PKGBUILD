@@ -1,7 +1,7 @@
 # Maintainer: Álvaro De Quinta <blackcherry at danwin1210 dot de>
 # Contributor: Sapphire <imsapphire0 at gmail dot com>
 pkgname=wivrn-server-git
-pkgver=r2195.3702cc0
+pkgver=r2285.d81734f
 pkgrel=1
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
@@ -41,7 +41,6 @@ makedepends=(
   "nlohmann-json"
   "vulkan-headers"
   "ninja"
-  "qcoro"
 )
 
 optdepends=(
