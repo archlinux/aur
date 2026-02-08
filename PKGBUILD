@@ -3,11 +3,11 @@
 _pkgname=ddosify
 pkgname=anteon
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance load testing tool"
 arch=('any')
 url="https://github.com/getanteon/anteon"
-license=('AGPL3')
+license=('AGPL-3.0-only')
 makedepends=('go' 'git')
 source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::$url/archive/refs/tags/selfhosted-$pkgver.tar.gz")
 sha256sums=('228b2acc455e00866fbaf8dded3c3471da995385c5841390ea6010017195ee57')
