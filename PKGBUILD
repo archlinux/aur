@@ -1,14 +1,21 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=diamond-editor-git
-pkgver=1.5.1.r0.g0882d22
+pkgver=2.1.0.r0.g6de03ba
 pkgrel=1
 pkgdesc='Compact text editor designed for programmers (git version)'
 arch=('x86_64')
 url='https://www.copperspice.com/'
 license=('GPL-2.0-only')
-depends=('sh' 'copperspice' 'hunspell')
-makedepends=('git' 'cmake')
+depends=(
+    'copperspice'
+    'gcc-libs'
+    'glibc'
+    'hunspell'
+    'sh')
+makedepends=(
+    'cmake'
+    'git')
 provides=('diamond-editor')
 conflicts=('diamond-editor')
 source=('git+https://github.com/copperspice/diamond.git'
