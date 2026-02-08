@@ -64,6 +64,7 @@ build() {
     #flutter build linux --release
     
     dart pub global activate --source git https://github.com/ente-io/fastforgefork --git-ref develop --git-path packages/fastforge
+    export PATH="$PATH":"$HOME/.pub-cache/bin"
     fastforge package --platform=linux --targets=pacman --skip-clean
 }
 
