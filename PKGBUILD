@@ -1,4 +1,4 @@
-# Maintainer: cqzw555 < cqzw555@163.com >
+# Contributor: cqzw555 < cqzw555@163.com >
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
 # Contributor: Mark Merritt <mark@marktmerritt.com>
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
@@ -21,7 +21,7 @@ makedepends=(
   'python-setuptools'
   'python-wheel'
 )
-#checkdepends=('')
+checkdepends=('python-pytest')
 #optdepends=('')
 source=("https://files.pythonhosted.org/packages/source/i/$_name/$_name-$pkgver.tar.gz")
 b2sums=('4379a63e9635b13a4b82d66b18032286e51aa4bf479dd2121d3aa8231453bb595bea76a5646df2bc30fcd72b4ac451fec5b2d13fb9f3fa1e8ce5d7aac7410f22')

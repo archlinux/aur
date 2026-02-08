@@ -5,6 +5,7 @@ pkgbase = python-importlab
 	url = https://github.com/google/importlab
 	arch = any
 	license = Apache-2.0
+	checkdepends = python-pytest
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
