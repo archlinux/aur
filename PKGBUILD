@@ -1,4 +1,4 @@
-# Maintainer: piotrdab <piotrsbk+arch@gmail.com>
+# Maintainer: piotrdab <piotrsbk@gmail.com>
 # Contributor: lexa <contact@qexat.com>
 # Contributor: workonfire <kolucki62@gmail.com>
 
