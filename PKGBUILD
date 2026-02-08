@@ -10,7 +10,7 @@ arch=('any')
 url="https://github.com/asottile/babi"
 license=('MIT')
 depends=('python-onigurumacffi>=0.0.18' 'babi-grammars' 'python-identify')
-makedepends=('python-setuptools' 'python-build')
+makedepends=('python-build' 'python-installer' 'python-setuptools')
 provides=('babi')
 conflicts=('babi' 'babi-git')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
@@ -23,7 +23,6 @@ build() {
 
 package() {
     cd "${pkgname}-${pkgver}"
-    # TODO: use pip?
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

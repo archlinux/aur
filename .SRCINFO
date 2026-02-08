@@ -1,19 +1,20 @@
 pkgbase = babi
-pkgdesc = A text editor, eventually...
-pkgver = 1.6.1
-pkgrel = 1
-url = https://github.com/asottile/babi
-arch = any
-license = MIT
-makedepends = python-setuptools
-makedepends = python-build
-depends = python-onigurumacffi>=0.0.18
-depends = babi-grammars
-depends = python-identify
-provides = babi
-conflicts = babi
-conflicts = babi-git
-source = https://files.pythonhosted.org/packages/source/b/babi/babi-1.6.1.tar.gz
-sha256sums = 9cbdf046eaab517bd34e37b8a944fcb1ff1a0dff6339aac6371e4551ff455d05
+	pkgdesc = A text editor, eventually...
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://github.com/asottile/babi
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python-onigurumacffi>=0.0.18
+	depends = babi-grammars
+	depends = python-identify
+	provides = babi
+	conflicts = babi
+	conflicts = babi-git
+	source = https://files.pythonhosted.org/packages/source/b/babi/babi-1.6.1.tar.gz
+	sha256sums = 9cbdf046eaab517bd34e37b8a944fcb1ff1a0dff6339aac6371e4551ff455d05
 
 pkgname = babi
