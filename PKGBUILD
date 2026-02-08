@@ -9,7 +9,6 @@ pkgver=1.0.20251104
 pkgrel=1
 license=('GPLv2')
 depends=("dkms")
-makedepends=("linux-headers")
 provides=("amneziawg-dkms")
 conflicts=("amneziawg-dkms")
 source=("amneziawg-linux-kernel-module-$pkgver.tar.gz::https://github.com/amnezia-vpn/amneziawg-linux-kernel-module/archive/refs/tags/v${pkgver}.tar.gz")
