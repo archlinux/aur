@@ -1,3 +1,4 @@
+pkgbase = cmdflow
 pkgname = cmdflow
 pkgver = 0.1.6
 pkgrel = 1
