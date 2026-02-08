@@ -3,7 +3,7 @@ _pkgname=hermes
 pkgname=hermes-pm
 provides=('hermes')
 conflicts=('hermes')
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A beautiful TUI package manager for Arch Linux"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('pacman')
 makedepends=('rust' 'cargo')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6c2210334469b4a502a42f4f8f70c2a2923b1a31e0462eebc24042992b06e4c5')
+sha256sums=('05f794bb16c4e9981019833acacf0ede03aa7fe5d2c7cf4ae9749c58a9544e7f')
 
 build() {
     cd "$_pkgname-$pkgver/hermes_pm"
