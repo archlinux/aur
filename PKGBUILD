@@ -14,7 +14,7 @@ conflicts=("$pkgname")
 optdepends=('ffmpeg: needed for some encoders')
 source_x86_64=("$pkgname.zip::https://git.mylloon.fr/Anri/dsr/releases/download/$pkgver/dsr-linux-x64-$pkgver.zip"
                "https://git.mylloon.fr/Anri/dsr/raw/branch/main/image/icon.png")
-sha256sums_x86_64=('3e5d07b571c5cba94508db81bd65576c218a8b6d1bbd0fc8527cab122ea27fa5'
+sha256sums_x86_64=('35dbad6f89f97faa1a6e33a8f7f797afb0b4d8d51349abc2de020e9a3ef45304'
                    '4233e03f2fcfa583ccfe5358c8709b459f1f2e9048cad837bb93d69c92fba17f')
 
 package() {
