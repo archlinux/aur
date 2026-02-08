@@ -2,7 +2,7 @@
 # Contributor: Amirul Fitri <tounghacker@gmail.com>
 
 pkgname=playit
-pkgver=0.16.2
+pkgver=0.17.1
 pkgrel=1
 pkgdesc="A tunneling tool to host a game server without port forwarding or sharing public IP"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
   "systemd-service.patch"
   "tmpfiles.conf"
 )
-sha256sums=('3db7cd4b569b502bf0f725a545e6acb3344439cea11c04d202742d7680f82a15'
+sha256sums=('d8c937325d9415d2d73c91b3dda8da3919a5dedf3ea8d831716e00924d32d832'
             '27e70d8498049ab785e04076e4e0b8fea7ddb9639ad3bbef93241cc96adb6ad8'
             '91c4f8c54d07f5877de216263e586ac96a6cf33e29219f1436e8447adb62cf9d')
 options=(!lto)
