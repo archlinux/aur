@@ -1,15 +1,15 @@
 # Maintainer: Dawaman43 <github.com/Dawaman43>
 pkgname=fifu
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform TUI for downloading YouTube videos from channels"
 arch=('any')
 url="https://github.com/Dawaman43/fifu"
 license=('MIT')
 depends=('python' 'python-textual' 'yt-dlp' 'python-click')
 makedepends=('python-build' 'python-installer' 'python-hatchling')
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('SKIP') # Will be updated when PyPI is live
+source=("https://github.com/Dawaman43/fifu/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('SKIP')
 
 build() {
     cd "${pkgname}-${pkgver}"
