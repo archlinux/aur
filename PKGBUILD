@@ -4,7 +4,7 @@ pkgname="limine-dracut-support"
 _pkgver=1.30.0
 _extver="" #_extver="_1"
 pkgver="${_pkgver}${_extver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Install kernels for the Limine bootloader."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/Zesko/limine-entry-tool"
@@ -45,7 +45,9 @@ prepare() {
 
 build() {
 	cd "$srcdir/${_pkgname}"
-	JAVA_HOME="$srcdir/${_graalvm_version}" gradle clean nativeCompile
+	export JAVA_HOME="$srcdir/${_graalvm_version}"
+	export GRAALVM_HOME="$JAVA_HOME"
+	/usr/bin/gradle clean nativeCompile -Dorg.gradle.java.home="${JAVA_HOME}"
 }
 
 package() {
