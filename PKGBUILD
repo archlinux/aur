@@ -10,6 +10,7 @@ license=("Apache-2.0")
 arch=("any")
 depends=(
   'python'
+  'python-tenacity'
 )
 optdepends=(
   'zstd: compression'
