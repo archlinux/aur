@@ -1,5 +1,5 @@
 pkgbase = serve_md
-	pkgdesc = Serve a markdown file as an HTML web server
+	pkgdesc = Serve a markdown file as an HTML webpage
 	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/GhelloZ/serve_md
