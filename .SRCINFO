@@ -1,6 +1,6 @@
 pkgbase = klassy-bin
 	pkgdesc = Highly customizable binary Window Decoration, Application Style and Global Theme plugin for recent versions of the KDE Plasma desktop.
-	pkgver = 6.4.breeze6.4.0
+	pkgver = 6.5.2
 	pkgrel = 1
 	url = https://github.com/paulmcauley/klassy
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = klassy-bin
 	conflicts = klassy
 	replaces = classik
 	options = !debug
-	source = https://download.opensuse.org/repositories/home:/paul4us/Arch/x86_64/klassy-6.4.breeze6.4.0-1-x86_64.pkg.tar.zst
-	md5sums = SKIP
+	source = https://download.opensuse.org/repositories/home:/paulmcauley/Arch/x86_64/klassy-6.5.2-1-x86_64.pkg.tar.zst
+	sha256sums = 8d09248c7013e5e4a3c9c09794b3cfdb3aaede1d98e1c29acbb65e942f60a2e6
 
 pkgname = klassy-bin
