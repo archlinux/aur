@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=vgo
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple project scaffolder for Go, written in Go."
 arch=('x86_64' 'aarch64')
 url="https://github.com/vg006/vgo"
