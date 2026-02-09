@@ -1,6 +1,6 @@
 pkgbase = fcitx5-vmk-git
 	pkgdesc = VMK (Vietnamese Micro Key) for Fcitx5 - Bộ gõ tiếng Việt mô phỏng UniKey
-	pkgver = 0.9.4.r71.g72f03ef
+	pkgver = 0.9.4.r102.g2172246
 	pkgrel = 1
 	url = https://github.com/nhktmdzhg/VMK
 	install = fcitx5-vmk.install
@@ -21,7 +21,7 @@ pkgbase = fcitx5-vmk-git
 	provides = fcitx5-vmk
 	conflicts = fcitx5-vmk
 	source = git+https://github.com/nhktmdzhg/VMK.git#branch=dev
-	source = git+https://github.com/BambooEngine/bamboo-core.git
+	source = git+https://github.com/nhktmdzhg/bamboo-core.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 
