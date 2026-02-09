@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=cloud189
 pkgver=0.6.7
-pkgrel=1
+pkgrel=2
 pkgdesc="基于天翼云接口的go客户端"
 arch=('x86_64' 'aarch64')
 url="https://github.com/gowsp/cloud189"
-license=('unknown')
+license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/gowsp/cloud189.git#tag=v$pkgver")
