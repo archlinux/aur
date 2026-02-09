@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=gh-markdown-preview
 pkgver=1.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc="GitHub CLI extension to preview Markdown looks like GitHub."
 arch=('x86_64' 'aarch64')
 url="https://github.com/yusukebe/gh-markdown-preview"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/yusukebe/gh-markdown-preview.git#tag=v$pkgver")
