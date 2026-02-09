@@ -3,14 +3,14 @@
 
 _pkgbase=jan
 pkgname=${_pkgbase}
-pkgver=0.7.3
+pkgver=0.7.6
 pkgrel=1
 pkgdesc="An open source alternative to ChatGPT that runs 100% offline on your computer"
 url="https://jan.ai/"
 arch=('x86_64')
 license=('Apache-2.0')
 source=("$_pkgbase::git+https://github.com/menloresearch/jan.git#tag=v$pkgver")
-sha256sums=('401fceb4137185e29c0df15e7e344d6dc9e66f4ff77f213905d35d2d1ef0de66')
+sha256sums=('8b9184dcfe7247d33d518afdb880e98b66ddfc728923a95cd1c2891e2777cd19')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 options=(!lto)
