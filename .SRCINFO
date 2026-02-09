@@ -1,7 +1,7 @@
 pkgbase = wine-nvidia-libs-bin
 	pkgdesc = SveSop's NVIDIA CUDA/NVENC/OptiX Wine modules (binary release, fakedll layout)
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SveSop/nvidia-libs
 	arch = x86_64
 	license = LGPL-2.1-or-later
