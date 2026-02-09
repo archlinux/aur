@@ -7,8 +7,8 @@ _srcname='textual-fspicker'
 _pkgname="python-$_srcname"
 pkgname="$_pkgname-git"
 pkgdesc='A simple Textual filesystem picker dialog library (development version)'
-pkgver=0.6.0.r16.g68837e3
-pkgrel=1
+pkgver=0.6.0.r18.g2a231e8
+pkgrel=2
 arch=('any')
 url='https://github.com/davep/textual-fspicker'
 license=('MIT')  # SPDX-License-Identifier: MIT
@@ -39,8 +39,6 @@ prepare() {
   cd "$_srcname"
 
   git clean -dfx
-
-  sed -i 's/uv_build>=0.8.11,<0.9.0/uv_build/g' pyproject.toml
 }
 
 build() {
