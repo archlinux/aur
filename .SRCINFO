@@ -6,7 +6,7 @@ pkgbase = batti
 	install = batti.install
 	arch = any
 	license = GPL
-	depends = dbus-python
+	depends = python2-dbus
 	depends = pygtk
 	depends = gtk2
 	depends = upower
@@ -20,4 +20,3 @@ pkgbase = batti
 	md5sums = 237c98190cfd5725c9f5483c770a7763
 
 pkgname = batti
-
