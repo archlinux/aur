@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=otel-cli
 pkgver=0.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenTelemetry command-line tool for sending events from shell scripts & similar environments"
 arch=('x86_64' 'aarch64')
 url="https://github.com/equinix-labs/otel-cli"
-license=('unknown')
+license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/equinix-labs/otel-cli.git#tag=v$pkgver")
