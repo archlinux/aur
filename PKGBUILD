@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=gocognit
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Calculates cognitive complexities of functions (and methods) in Go source code. (Golang cognitive complexity)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/uudashr/gocognit"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/uudashr/gocognit.git#tag=v$pkgver")
