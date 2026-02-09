@@ -41,7 +41,7 @@ pkgver() {
         local count hash
         count=$(git rev-list --count HEAD 2>/dev/null || echo "0")
         hash=$(git rev-parse --short HEAD 2>/dev/null || echo "unknown")
-        echo "0.7.1.r${count}.g${hash}"
+        echo "0.7.4.r${count}.g${hash}"
     fi
 }
 
