@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=keymaker
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A central hub for managing all your SSH keys."
 arch=('x86_64')
@@ -27,7 +27,7 @@ makedepends=(
   'vala'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0d9e93c8f9223dbb539e0a802dc2e157f963e3eeb2ac00eb92977229d3affba7')
+sha256sums=('f01e74d63254c1b4c8f1c06faa9770371ab2dc44b2e22c43b4dc222898fe127f')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
