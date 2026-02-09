@@ -1,6 +1,6 @@
 pkgbase = fzp-bin
 	pkgdesc = Fuzzy project selector for git repositories
-	pkgver = 1.3.1
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://gitlab.com/socradev/fzp
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = fzp-bin
 	provides = findgit
 	conflicts = fzp
 	conflicts = fzp-git
-	source = fzp-1.3.1-1.pkg.tar.zst::https://gitlab.com/socradev/fzp/-/releases/1.3.1/downloads/packages/fzp-1.3.1-1-x86_64.pkg.tar.zst
-	sha256sums = b596ea7a615a1f4b604835746e2dd918192c6f79be2f043113681931771a01fa
+	source = fzp-1.3.2-1.pkg.tar.zst::https://gitlab.com/socradev/fzp/-/releases/1.3.2/downloads/packages/fzp-1.3.2-1-x86_64.pkg.tar.zst
+	sha256sums = 165e27a06947291aa2922c137bc67d0f17a1b0e6ed2211f47fbe7e0aed211ba4
 
 pkgname = fzp-bin
