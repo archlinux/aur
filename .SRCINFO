@@ -1,14 +1,41 @@
-pkgbase = pkgbase
-	pkgdesc = Paranoia Secret Space Encryptor File and Text desktop utilities from Paranoiaworks
-	pkgver = 15.0.8_1
+pkgbase = shortwave-mpris-git
+	pkgdesc = Shortwave-MPRIS is an enhanced version of the Shortwave internet radio player adding to the already existing rich feature set. This version provides more complete MPRIS (Media Player Remote Interfacing Specification) support, adds DLNA/UPnP streaming, improved Google Cast support and advanced FFmpeg proxy capabilities for both DNLA & Cast of incompatible streams, ensures maximum compatibility with devices on the local network. Port 8080 is used for the FFmpeg proxy access which should be allowed by most firewalls. Testing has been limited to devices availble on the author's network. Devices tested include: Google Home Speaker, Google Chromecast Ultra and Marantz-NR1504 DNLA device. Local play uses Gstreamer and PipeWire Audio. This is a work in progress and may not be compatible with all devices. Radio streams found to be working are AAC, MP3, FLAC, m3u8/HLS encoded streams. FFmpeg transcoding is used for all DNLA play and as a fallback for Cast device play for m3u8/HLS streams. Version 5.1.0 includes all features from upstream Shortwave 5.1.0.
+	pkgver = 5.1.0
 	pkgrel = 1
-	url = https://paranoiaworks.mobi
+	url = https://github.com/ixnewton/Shortwave-MPRIS
 	arch = x86_64
-	license = custom
-	options = !strip
-	source = https://paranoiaworks.mobi/download/files/pfte_15.0.8-1_amd64.deb
-	source = license.txt
-	sha256sums = 31b3fae30d3e26804f5ed77bbd66920e824042a239c94720023dded78c571e3c
-	sha256sums = f23431d1e94d187fe3e0254b8a530a875d8615bbe451e9d3f564627835e7d527
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	makedepends = pkgconf
+	makedepends = meson
+	makedepends = ninja
+	makedepends = blueprint-compiler
+	makedepends = desktop-file-utils
+	makedepends = appstream-glib
+	depends = gtk4>=4.18.0
+	depends = libadwaita>=1.8.0
+	depends = libshumate>=1.7.0
+	depends = gstreamer>=1.24.0
+	depends = gst-plugins-base-libs>=1.24.0
+	depends = gst-plugins-bad>=1.24.0
+	depends = gst-plugins-good
+	depends = gst-libav
+	depends = ffmpeg>=4.0.0
+	depends = sqlite>=3.20.0
+	depends = openssl>=1.0.0
+	depends = dbus
+	depends = glib2>=2.80.0
+	depends = lcms2>=2.12.0
+	depends = libseccomp>=2.5.0
+	provides = shortwave
+	provides = shortwave-mpris
+	conflicts = shortwave
+	conflicts = shortwave-mpris
+	options = !lto
+	source = git+https://github.com/ixnewton/Shortwave-MPRIS.git#branch=main
+	sha256sums = SKIP
 
-pkgname = sse-bin
+pkgname = shortwave-mpris-git
