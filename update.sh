@@ -5,3 +5,4 @@ sed -i "s/pkgver=.*/pkgver=${pkgver}/" PKGBUILD
 updpkgsums
 makepkg --printsrcinfo > .SRCINFO
 echo "Updated to $pkgver"
+git add PKGBUILD .SRCINFO
