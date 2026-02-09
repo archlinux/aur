@@ -4,20 +4,20 @@
 # Maintainer: Luciano Ciccariello <luciano.ciccariello@docker.com>
 
 pkgname=docker-desktop
-pkgver=4.59.0
-_revision=217644
+pkgver=4.60.0
+_revision=218231
 pkgrel=1
 pkgdesc="Docker Desktop is an easy-to-install application that enables you to locally build and share containerized applications and microservices."
 arch=('x86_64')
 url="https://www.docker.com/products/docker-desktop/"
 license=('custom: Docker Agreement')
-depends=('docker>=28.3.0' 'curl>=8.5.0' 'qemu>=8.0.4' 'libseccomp>=2.5.5' 'libcap-ng>=0.8.4' 'pass' 'desktop-file-utils' 'gtk3' 'libx11' 'shadow>=4.14.2')
+depends=('docker>=28.3.0' 'curl>=8.5.0' 'qemu>=8.0.4' 'qemu<10.2.0' 'libseccomp>=2.5.5' 'libcap-ng>=0.8.4' 'pass' 'desktop-file-utils' 'gtk3' 'libx11' 'shadow>=4.14.2')
 conflicts=('docker-compose' 'docker-buildx')
 provides=('docker-compose' 'docker-buildx')
 makedepends=('w3m')
 install='docker-desktop.install'
 source=("$pkgname-$pkgver-x86_64.tar.zst::https://desktop.docker.com/linux/main/amd64/$_revision/$pkgname-x86_64.pkg.tar.zst")
-sha256sums=('ef07039eb82f9162c45b10581f0a10ee1e4407ea9d95b72de7157bfe54114a94')
+sha256sums=('a6abe3cb456ab43c97d61a96d757eb3aeb6bda96674cb8a630df57205591d623')
 
 package() {
     install -d "${pkgdir}/usr/bin"
