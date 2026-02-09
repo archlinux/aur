@@ -1,7 +1,7 @@
 pkgbase = yamldiff
 	pkgdesc = A CLI tool to diff two YAML files.
 	pkgver = 1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sahilm/yamldiff
 	arch = x86_64
 	arch = aarch64

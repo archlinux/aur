@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=yamldiff
 pkgver=1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A CLI tool to diff two YAML files."
 arch=('x86_64' 'aarch64')
 url="https://github.com/sahilm/yamldiff"
