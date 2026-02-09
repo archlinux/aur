@@ -10,14 +10,14 @@ _jdk_ver=17
 
 _pkgname=enteauth
 pkgname=ente-auth-git
-pkgver=4.4.17.r28.gfd27208
+pkgver=4.4.17.r30.gbdcd7f0
 pkgrel=1
 pkgdesc="Ente two-factor authenticator."
 arch=('x86_64')
 url="https://github.com/ente-io/ente/tree/main/auth"
 license=('AGPL-3.0-only')
 depends=('at-spi2-core' 'gcc-libs' 'glib2' 'glibc' 'gtk3' 'hicolor-icon-theme' 'libayatana-appindicator' 'libsecret' 'pango' 'libepoxy' 'curl' 'fontconfig')
-makedepends=('patchelf' 'clang' 'git' 'cmake' 'ninja' "jdk${_jdk_ver}-openjdk" 'mold')
+makedepends=('patchelf' 'clang' 'git' 'cmake' 'ninja' "jdk${_jdk_ver}-openjdk")
 options=('!strip' '!emptydirs')
 source=("git+https://github.com/ente-io/auth.git"
         "fix-flutter.patch"
@@ -29,11 +29,10 @@ sha512sums=('SKIP'
 sha512sums_x86_64=('c46984bb59a3fb5337d1bd4dd7f41306ad66a8b0430c69a41c755c3d8d8ebe0a3b5be7c8fdc25ef202cfeab7faa31914ffb21bc4ad928f4eb7d352ca00248f3e')
 provides=('ente-auth')
 conflicts=('ente-auth')
+options=('strip')
 
 export PATH_=$PATH
-export LD=ld.mold
-export LDFLAGS="$LDFLAGS -Wl,-z,relro,-z,now"
-options=('strip')
+export LDFLAGS="$LDFLAGS"
 
 pkgver() {
   cd "$srcdir/auth"
@@ -92,7 +91,7 @@ build() {
     #flutter build linux --release
     
     dart pub global activate --source git https://github.com/ente-io/fastforgefork --git-ref develop --git-path packages/fastforge
-    fastforge package --platform=linux --targets=pacman --skip-clean
+    fastforge package --platform=linux --targets=pacman --skip-clean --flutter-build-args=release #--flutter-build-args=verbose
 }
 
 check() {
@@ -119,6 +118,7 @@ package(){
     mv "${pkgdir}/usr/share/enteauth/enteauth" "${pkgdir}/usr/lib/enteauth/"
     mv "${pkgdir}/usr/share/enteauth/lib" "${pkgdir}/usr/lib/enteauth"
     mv "${pkgdir}/usr/share/enteauth/data" "${pkgdir}/usr/lib/enteauth/"
+    rmdir "${pkgdir}/usr/share/enteauth"
 
     mkdir -p "${pkgdir}/usr/bin"
     ln -sf "/usr/lib/enteauth/enteauth" "${pkgdir}/usr/bin/enteauth"
