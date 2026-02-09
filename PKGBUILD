@@ -1,6 +1,6 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=gowsdl
-pkgver=0.3.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="WSDL2Go code generation as well as its SOAP proxy"
 arch=('x86_64' 'aarch64')

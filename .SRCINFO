@@ -1,6 +1,6 @@
 pkgbase = gowsdl
 	pkgdesc = WSDL2Go code generation as well as its SOAP proxy
-	pkgver = 0.3.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/hooklift/gowsdl
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = gowsdl
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/hooklift/gowsdl.git#tag=v0.3.1
+	source = git+https://github.com/hooklift/gowsdl.git#tag=v0.5.0
 	sha256sums = SKIP
 
 pkgname = gowsdl
