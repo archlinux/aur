@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=weakauras-companion-git
 _pkgname=WeakAuras-Companion
-pkgver=5.3.0.r0.gb0a4e02
-_electronversion=38
-_nodeversion=22
+pkgver=5.3.1.r4.g6eb266a
+_electronversion=40
+_nodeversion=24
 pkgrel=1
 pkgdesc="A cross-platform application built to provide the missing link between Wago.io and World of Warcraft.(Use system-wide electron)"
 arch=('any')
