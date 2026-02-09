@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=zkcli
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A interactive Zookeeper client."
 arch=('x86_64' 'aarch64')
 url="https://github.com/let-us-go/zkcli"
