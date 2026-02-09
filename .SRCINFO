@@ -1,0 +1,22 @@
+pkgbase = fvtt-desktop-client-bin
+	pkgdesc = Desktop client for Foundry VTT (JeidoUran Fork)
+	pkgver = 1.13.0
+	pkgrel = 1
+	url = https://github.com/JeidoUran/fvtt-player-client
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = fuse2
+	depends = alsa-lib
+	depends = nss
+	depends = atk
+	depends = libdrm
+	depends = libxcomposite
+	depends = libxrandr
+	depends = mesa
+	options = !strip
+	source = app.AppImage::https://github.com/JeidoUran/fvtt-player-client/releases/download/1.13.0/FVTT-Desktop-Client_1.13.0_linux-x86_64.AppImage
+	sha256sums = ace2e86fd85d579b1a1317ac8951b8e8f12ecbe016ec7bbc03d90b07d03fd556
+
+pkgname = fvtt-desktop-client-bin
