@@ -1,22 +1,23 @@
 pkgbase = qoder-bin
 	pkgdesc = Agent Programming Platform for Real Software.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.4.4
+	pkgver = 0.4.5
 	pkgrel = 1
 	url = https://qoder.com/
 	arch = x86_64
 	license = LicenseRef-custom
 	depends = electron37
+	depends = libxkbfile
 	optdepends = bash
 	optdepends = zsh
-	provides = qoder=0.4.4
+	provides = qoder=0.4.5
 	conflicts = qoder
 	options = !emptydirs
 	options = !strip
-	source = qoder-0.4.4.rpm::https://download.qoder.com/release/latest/qoder_x86_64.rpm
-	source = LICENSE-0.4.4::https://qoder.com/product-service
+	source = qoder-0.4.5.rpm::https://download.qoder.com/release/latest/qoder_x86_64.rpm
+	source = LICENSE-0.4.5::https://qoder.com/product-service
 	source = qoder.js
 	source = qoder.sh
-	sha256sums = 3042bc7c418deff719d776d076a5333ae32af2c81e45b316d0bb906e42015071
+	sha256sums = 1c012d97b7a68ed85f2cde144b6512dcbbebadd5b33e90ec286ee532416750be
 	sha256sums = b6b58ac794043209161729248d512cc1ac8e09703d0e9ebe2648b2732387561e
 	sha256sums = 51c4f53005bf6cbfb3740a04f9ede901e7bb84cc60ad6a2bbae77e8355b34ebc
 	sha256sums = e0ab2fe87491fabd9c7886f22c6929169edb508be832036a02698760b721f207
