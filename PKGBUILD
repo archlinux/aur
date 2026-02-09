@@ -2,14 +2,18 @@
 
 _pkgname=passless
 pkgname="${_pkgname}"
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Virtual FIDO2 device and client FIDO 2 utility. Passkeys made easy."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pando85/passless"
 license=('GPL')
 install=passless.install
-depends=('gcc-libs')
+depends=('gcc-libs'
+         'libgit2'
+         'hidapi'
+         'systemd-libs'
+         'zlib')
 makedepends=('cargo'
              'pkgconf'
              'git')
