@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=arf
-pkgver=0.1.1
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A modern R console"
 url="https://github.com/eitsupi/arf"
