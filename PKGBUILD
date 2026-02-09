@@ -3,11 +3,11 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-ddci2
 pkgver=1.0.5
-_vdrapi=9
-pkgrel=13
+_vdrapi=11
+pkgrel=14
 pkgdesc="Support for stand alone CI by Digital Devices for VDR 2.1.6 and higher."
 url="https://github.com/jasmin-j/vdr-plugin-ddci2"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 makedepends=('git')
