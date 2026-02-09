@@ -1,7 +1,7 @@
 pkgbase = gwc
 	pkgdesc = Gtk Wave Cleaner is a digital audio editor to denoise, dehiss and amplify audio files
-	pkgver = 0.22_06
-	pkgrel = 2
+	pkgver = 0.22_07
+	pkgrel = 1
 	url = http://gwc.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = gwc
 	optdepends = lame: for mp3 export
 	provides = gwc
 	conflicts = gwc
-	source = https://github.com/AlisterH/gwc/releases/download/0.22-06/gtk-wave-cleaner-0.22-06.tar.gz
-	sha256sums = 0c5e58c195ac2aff5822703796a136d1cff5fffd1e5d787eddbae98ebf179854
+	source = https://github.com/AlisterH/gwc/releases/download/0.22-07/gtk-wave-cleaner-0.22-07.tar.gz
+	sha256sums = 8efde942390231abd9c0d0991572b459b3610bbf80adb33d220f81031c03dccf
 
 pkgname = gwc
