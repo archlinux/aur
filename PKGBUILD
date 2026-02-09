@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=nirvana
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Golang Restful API Framework for Productivity"
 arch=('x86_64' 'aarch64')
 url="https://github.com/caicloud/nirvana"
