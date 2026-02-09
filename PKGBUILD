@@ -1,17 +1,18 @@
 # Maintainer: Cody Wyatt Neiman (xangelix) <neiman@cody.to>
+# Contributor : Lubosz Sarnecki <lubosz@gmail.com>
 
 _name=bitsandbytes
 pkgname=python-$_name-rocm-git
 pkgdesc="Lightweight wrapper around CUDA custom functions, in particular 8-bit optimizers, matrix multiplication (LLM.int8()), and quantization functions (official AMD ROCm branch)"
 license=("MIT")
 url="https://github.com/TimDettmers/$_name"
-pkgver=0.43.1.r228.g517eaf2
+pkgver=0.50.0.dev0.1115.925d83e4
 pkgrel=1
 arch=("x86_64")
 makedepends=("make" "cmake")
 depends=("hipblaslt" "hiprand" "hipsparse" "hipcub" "rocthrust" "python-setuptools" "python-pytest" "python-einops" "python-wheel" "python-scipy" "python-lion-pytorch" "python-pandas" "python-matplotlib")
 provides=("python-$_name")
-source=("$pkgname::git+$url.git#branch=multi-backend-refactor")
+source=("$pkgname::git+https://github.com/bitsandbytes-foundation/bitsandbytes.git")
 sha512sums=("SKIP")
 
 
