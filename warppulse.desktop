@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=WarpPulse
+Comment=Experience the pulse of the internet. The ultimate GUI for Cloudflare Warp.
+Exec=warppulse
+Icon=warppulse
+Terminal=false
+Categories=Network;
+X-GNOME-Autostart-enabled=true

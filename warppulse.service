@@ -1,0 +1,13 @@
+[Unit]
+Description=WarpPulse GUI - Cloudflare Warp Client
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/warppulse
+Restart=on-failure
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=%h/.Xauthority
+
+[Install]
+WantedBy=default.target

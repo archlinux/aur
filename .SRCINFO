@@ -1,0 +1,24 @@
+pkgbase = warppulse
+	pkgdesc = The ultimate premium GUI for Cloudflare Warp on Linux.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ZondaX63/Warp-CLI
+	arch = x86_64
+	license = MIT
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = rust
+	makedepends = cargo
+	depends = warp-cli
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libappindicator-gtk3
+	depends = librsvg
+	source = warppulse-0.1.0.tar.gz::https://github.com/ZondaX63/Warp-CLI/archive/refs/tags/v0.1.0.tar.gz
+	source = warppulse.desktop
+	source = warppulse.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = warppulse
