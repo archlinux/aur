@@ -1,13 +1,13 @@
 pkgbase = batz-converter
 	pkgdesc = Show and convert timezone in shell
-	pkgver = 2.7.0
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/chmouel/batzconverter
 	arch = any
 	groups = utils
 	license = Apache
 	depends = bash
-	source = batzconverter_2.7.0-1.tar.gz::https://github.com/chmouel/batzconverter/archive/refs/tags/2.7.0.tar.gz
-	sha512sums = 0ac5996f1a22ea24229465cc8950ca8a05f8c52f65bada613cb57059158f67b6e7c958d21af2435f3f4f17ab58a41374ff3c824abcea751ea2a6970fd562996a
+	source = batzconverter_2.8.0-1.tar.gz::https://github.com/chmouel/batzconverter/archive/refs/tags/2.8.0.tar.gz
+	sha512sums = 37d85794c3a1a70e7289928778e525031b8ff72e39b9050a513d66d5e6cfbd6baf5df6b4e0c43ef256529e7432d63070e864b5ce352d3e0aed911095563497c4
 
 pkgname = batz-converter
