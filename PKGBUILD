@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=cls3
 pkgver=0.32.4
-pkgrel=2
+pkgrel=3
 pkgdesc="The CLI tool \"cls3\" is to CLear S3 Buckets. It empties (so deletes all objects and versions/delete-markers in) S3 Buckets or deletes the buckets themselves."
 arch=('x86_64' 'aarch64')
 url="https://github.com/go-to-k/cls3"
