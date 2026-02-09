@@ -1,17 +1,22 @@
 pkgbase = google-messages-bin
-	pkgdesc = A "native-like" OS X, Windows, & Linux desktop app for Google Messages.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.4.2
-	pkgrel = 10
-	url = https://www.messagesfordesktop.com/
+	pkgdesc = Unnofficial messages desktop app for Google Messages.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.0.9_4
+	pkgrel = 1
+	url = https://gitlab.com/linuxbombay/googlemessages
+	arch = aarch64
+	arch = armv7h
 	arch = x86_64
-	license = MIT
-	makedepends = gendesk
-	depends = electron19
-	provides = google-messages=1.4.2
+	license = GPL-3.0-only
+	depends = electron39
+	provides = google-messages=1.0.9_4
 	conflicts = google-messages
-	source = google-messages-1.4.2.zip::https://github.com/kelyvin/Google-Messages-For-Desktop/releases/download/v1.4.2/google-messages-linux_v1.4.2.zip
 	source = google-messages.sh
-	sha256sums = 204112783720e2428ec0ad78ebd9f95f30bf9c77959d4ebd6232be30da98970a
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	source_aarch64 = google-messages-1.0.9_4-aarch64.AppImage::https://gitlab.com/linuxbombay/googlemessages/binaries/1.0.9-4/-/raw/main/GoogleMessages-arm64.AppImage
+	sha256sums_aarch64 = 723cbdf2b8c0fc3cc49d3d46576e8420c0fd92757588eb05c68321c3f7031683
+	source_armv7h = google-messages-1.0.9_4-armv7h.AppImage::https://gitlab.com/linuxbombay/googlemessages/binaries/1.0.9-4/-/raw/main/GoogleMessages-armv7l.AppImage
+	sha256sums_armv7h = 30d94ba8876a90eb771b4087444ac8b2cd261819dface96bbbeba200a5518c4a
+	source_x86_64 = google-messages-1.0.9_4-x86_64.AppImage::https://gitlab.com/linuxbombay/googlemessages/binaries/1.0.9-4/-/raw/main/GoogleMessages-x64.AppImage
+	sha256sums_x86_64 = e09004b7cca50c8467b61b125439e73f394aa4018a587d25a4a7f1681c1240e1
 
 pkgname = google-messages-bin
