@@ -1,7 +1,7 @@
 pkgbase = opsy
 	pkgdesc = Opsy - Your AI-Powered SRE Colleague
 	pkgver = 0.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/datolabs-io/opsy
 	arch = x86_64
 	arch = aarch64

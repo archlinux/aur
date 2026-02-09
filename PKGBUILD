@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=opsy
 pkgver=0.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Opsy - Your AI-Powered SRE Colleague"
 arch=('x86_64' 'aarch64')
 url="https://github.com/datolabs-io/opsy"
