@@ -1,0 +1,23 @@
+pkgbase = lazy-llm-bin
+	pkgdesc = Multi-LLM desktop interface built with Electron, Vue, and TypeScript.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/2725244134/lazy-llm
+	arch = x86_64
+	license = custom
+	depends = alsa-lib
+	depends = at-spi2-core
+	depends = gtk3
+	depends = libnotify
+	depends = libsecret
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	depends = xdg-utils
+	provides = lazy-llm
+	conflicts = lazy-llm
+	options = !strip
+	source_x86_64 = lazy-llm-bin-0.1.0-x86_64.deb::https://github.com/2725244134/lazy-llm/releases/download/v0.1.0/lazy-llm_0.1.0_amd64.deb
+	sha256sums_x86_64 = 30ed15dc36e6238514aba502d117249274f75258864cca679002289ff290af05
+
+pkgname = lazy-llm-bin
