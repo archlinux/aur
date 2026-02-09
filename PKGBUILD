@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=cert
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Cert is the Go tool to get TLS certificate information."
 arch=('x86_64' 'aarch64')
 url="https://github.com/genkiroid/cert"
