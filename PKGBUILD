@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=otel-cli
 pkgver=0.4.5
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenTelemetry command-line tool for sending events from shell scripts & similar environments"
 arch=('x86_64' 'aarch64')
 url="https://github.com/equinix-labs/otel-cli"

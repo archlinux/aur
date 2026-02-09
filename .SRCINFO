@@ -1,7 +1,7 @@
 pkgbase = otel-cli
 	pkgdesc = OpenTelemetry command-line tool for sending events from shell scripts & similar environments
 	pkgver = 0.4.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/equinix-labs/otel-cli
 	arch = x86_64
 	arch = aarch64
