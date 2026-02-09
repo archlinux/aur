@@ -1,7 +1,7 @@
 # Maintainer: Rolf Greger <Rolf_greger@web.de>
 pkgname=cachyos-service-manager
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 sha256sums=('cb964155bb83b70b7cd5def4fafed394e32317457db0c2d1af891c2b10d387ef')
 
 pkgdesc="Full-featured systemd service manager for CachyOS (Qt6 + GTK4 frontends)"
@@ -30,7 +30,7 @@ package() {
 
   # Install main Python files
   install -dm755 "${pkgdir}/usr/lib/${pkgname}"
-  cp -r src/* "${pkgdir}/usr/lib/${pkgname}/"
+  cp -r src "${pkgdir}/usr/lib/${pkgname}/"
   cp -r config "${pkgdir}/usr/lib/${pkgname}/"
   
   # Install main application launchers
