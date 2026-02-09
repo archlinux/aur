@@ -63,7 +63,9 @@ path = [
     "0010-platform-x86-asus-wmi-move-keyboard-control-firmware.patch",
     "asus-patch-series.patch",
     "0003-0-4-platform-x86-asus-armoury-ppt-fixes-and-new-models.patch",
-    "PATCH-v11-00-11-HID-asus-Fix-ASUS-ROG-Laptop-s-Keyboard-backlight-handling.patch"
+    "PATCH-v11-00-11-HID-asus-Fix-ASUS-ROG-Laptop-s-Keyboard-backlight-handling.patch",
+    "0001-bluetooth-btus-add-new-vid-pid.patch",
+    "ga403wr-fix-audio.patch"
 ]
 SPDX-FileCopyrightText = "upstream linux kernel contributors"
 SPDX-License-Identifier = "GPL-2.0-only"

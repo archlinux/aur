@@ -3,8 +3,8 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.18.7.arch1
-pkgrel=2
+pkgver=6.18.9.arch1
+pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/asus-linux/linux-g14"
 _url='https://github.com/archlinux/linux'
@@ -103,11 +103,11 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('b726a4d15cf9ae06219b56d87820776e34d89fbc137e55fb54a9b9c3015b8f1e'
+sha256sums=('030115ff8fb4cb536d8449dc40ebc3e314e86ba1b316a6ae21091a11cc930578'
             'SKIP'
-            '57c22879f2228398564091db2ec9b186acbd56dfb0e1072f83418bfdd3829aae'
+            '4815407239a6df15f8e0362ff652f9faf2e558fd774b08645e80ca664128e390'
             'SKIP'
-            '6fbacecde255d0b6d70fdc143b65cb72f455508df7ecfa4372cfc3a97ce698a0'
+            'b8b77f5939712dc0a33d564cb6e2a91957f5f07226c0b77230d13b776296f3b7'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             '11e570d8a355c2c6ccd413b7ecea9ae1f9b9801eb9a16249f8c4c5e6c80a1ead'
             '47d8cea0e2edb636ff86b4c331e91e71396302fc4bbf9610b6bf62b0f745f755'
