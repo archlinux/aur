@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=ktail
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to easily tail Kubernetes container logs"
 arch=('x86_64' 'aarch64')
 url="https://github.com/atombender/ktail"

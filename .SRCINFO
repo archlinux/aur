@@ -1,7 +1,7 @@
 pkgbase = ktail
 	pkgdesc = A tool to easily tail Kubernetes container logs
 	pkgver = 1.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/atombender/ktail
 	arch = x86_64
 	arch = aarch64
