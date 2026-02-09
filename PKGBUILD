@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=vgo
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple project scaffolder for Go, written in Go."
 arch=('x86_64' 'aarch64')
 url="https://github.com/vg006/vgo"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/vg006/vgo.git#tag=v$pkgver")

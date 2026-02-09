@@ -1,11 +1,11 @@
 pkgbase = vgo
 	pkgdesc = A simple project scaffolder for Go, written in Go.
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vg006/vgo
 	arch = x86_64
 	arch = aarch64
-	license = unknown
+	license = MIT
 	makedepends = go
 	makedepends = git
 	depends = glibc
