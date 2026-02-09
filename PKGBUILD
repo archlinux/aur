@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=go-carpet
 pkgver=1.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool for show test coverage in terminal for Go source files"
 arch=('x86_64' 'aarch64')
 url="https://github.com/msoap/go-carpet"

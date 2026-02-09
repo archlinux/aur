@@ -1,7 +1,7 @@
 pkgbase = go-carpet
 	pkgdesc = Tool for show test coverage in terminal for Go source files
 	pkgver = 1.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/msoap/go-carpet
 	arch = x86_64
 	arch = aarch64
