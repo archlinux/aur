@@ -1,4 +1,4 @@
-# Maintainer: rosetintedcheeks <oaks@rosetintedcheeks.com>
+# Contributor: rosetintedcheeks <oaks@rosetintedcheeks.com>
 # Contributor: GI_Jack <GI_Jack@hackermail.com>
 
 pkgname=python-json2html
@@ -10,7 +10,7 @@ url="https://pypi.org/project/json2html/"
 arch=('any')
 license=('MIT')
 depends=('python')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('8951a53662ae9cfd812685facdba693fc950ffc1c1fd1a8a2d3cf4c34600689c')
 
