@@ -1,7 +1,7 @@
 pkgbase = gojekyll
 	pkgdesc = A fast Go implementation of the Jekyll blogging engine
 	pkgver = 0.2.16
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/osteele/gojekyll
 	arch = x86_64
 	arch = aarch64

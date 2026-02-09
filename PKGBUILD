@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=gojekyll
 pkgver=0.2.16
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast Go implementation of the Jekyll blogging engine"
 arch=('x86_64' 'aarch64')
 url="https://github.com/osteele/gojekyll"
