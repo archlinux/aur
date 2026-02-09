@@ -3,12 +3,12 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-epgsearch
 pkgver=2.4.5
-pkgrel=1
-_vdrapi=9
+pkgrel=2
+_vdrapi=11
 epoch=1
 pkgdesc="Searchtimer and replacement of the VDR program menu"
 url="https://github.com/vdr-projects/vdr-plugin-epgsearch"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 optdepends=('msmtp: To send notification mails (Simpler replacement for sendmail)'
