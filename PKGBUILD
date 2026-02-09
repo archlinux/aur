@@ -3,11 +3,11 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-channellists
 pkgver=0.0.6
-_vdrapi=9
-pkgrel=12
+_vdrapi=11
+pkgrel=13
 pkgdesc="Plugin to manage your Channellists"
 url="https://github.com/vdr-projects/vdr-plugin-channellists"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 depends=("vdr-api=${_vdrapi}" "gcc-libs")
 _plugname=${pkgname//vdr-/}
