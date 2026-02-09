@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wj-markdown-editor-bin
-pkgver=2.12.1
+pkgver=2.12.2
 _electronversion=39
 pkgrel=1
 pkgdesc="An open-source desktop markup editor that supports webdav.(Prebuilt version.Use system-wide electron)一款支持webdav的开源桌面端markdown编辑器"
@@ -20,7 +20,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/nlbwqmz/wj-markdown-editor/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('57fde43187b7e4467cfd2797e6f390a0540a062fa2b79315d16386de6e70af0b'
+sha256sums=('22aa93d418cd351980a0f42a94471f5c9284bbe77856aa51f813ae33c208115e'
             '4db85f2bcfa2b60623a893393a61158a562fd907cf1244a06f41fd11eb6f8605'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
