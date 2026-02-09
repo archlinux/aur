@@ -1,6 +1,6 @@
 pkgbase = aniparser
 	pkgdesc = AniParser Electron application
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 4
 	url = https://github.com/Sinedka/aniparser
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = aniparser
 	makedepends = git
 	depends = electron
 	depends = nodejs
-	source = https://github.com/Sinedka/aniparser/releases/download/v0.3.3/dist-full.tar.gz
-	sha256sums = b91cf548b05b03e09313a9ad40c7097add2a56455a4f5c4331a435878a809720
+	source = https://github.com/Sinedka/aniparser/releases/download/v0.3.4/dist-full.tar.gz
+	sha256sums = 065f9e050b0fa47035484c23af44b67ee5aab01cb7db1856ee8c8f268b8fa9b0
 
 pkgname = aniparser
