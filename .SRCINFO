@@ -1,7 +1,7 @@
 pkgbase = vrcx-nightly-bin
 	pkgdesc = Friendship management tool for VRChat (extracted AppImage version)
 	pkgver = 2026.02.09T05.27.1198a39
-	pkgrel = 4
+	pkgrel = 1
 	url = https://vrcx.app/
 	arch = x86_64
 	license = MIT
