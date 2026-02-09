@@ -3,11 +3,11 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-pulsecontrol
 pkgver=0.2.1
-pkgrel=15
-_vdrapi=9
+pkgrel=16
+_vdrapi=11
 pkgdesc="For controlling some pulseaudio properties"
 url="https://github.com/flensrocker/vdr-plugin-pulsecontrol"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 depends=('libpulse' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
