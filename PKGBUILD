@@ -3,11 +3,11 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-tvguideng
 pkgver=0.3.7
-pkgrel=4
-_vdrapi=9
+pkgrel=5
+_vdrapi=11
 pkgdesc="highly customizable 2D EPG viewer plugin."
 url="https://gitlab.com/kamel5/tvguideng"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 depends=("vdr-api=$_vdrapi" 'vdr-skindesigner')
 _plugname=${pkgname//vdr-/}

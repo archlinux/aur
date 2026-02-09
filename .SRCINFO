@@ -1,15 +1,16 @@
 pkgbase = vdr-tvguideng
 	pkgdesc = highly customizable 2D EPG viewer plugin.
 	pkgver = 0.3.7
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gitlab.com/kamel5/tvguideng
 	arch = x86_64
 	arch = i686
 	arch = arm
 	arch = armv6h
 	arch = armv7h
+	arch = aarch64
 	license = GPL2
-	depends = vdr-api=9
+	depends = vdr-api=11
 	depends = vdr-skindesigner
 	backup = etc/vdr/conf.avail/50-tvguideng.conf
 	source = vdr-tvguideng-0.3.7.tar.bz2::https://gitlab.com/kamel5/tvguideng/-/archive/0.3.7/tvguideng-0.3.7.tar.bz2
