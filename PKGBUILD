@@ -2,7 +2,7 @@
 
 pkgname=intune-portal-bin
 _pkgname=intune-portal
-pkgver=1.2511.7
+pkgver=1.2511.11
 pkgrel=1
 pkgdesc="Enroll devices in Microsoft Azure Endpoint"
 arch=('x86_64')
@@ -33,7 +33,7 @@ depends=(
 install=$pkgname.install
 source=("https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/i/${_pkgname}/${_pkgname}_${pkgver}-noble_amd64.deb"
         "os-release")
-sha256sums=('307bc09a47a6c76f1935c565a05371274dd86f1ae054fbc1ece38c611e8eca8f'
+sha256sums=('30b56b3b53979156a9a4bcb3c9dc419de87586527dace44ef454cd72aebda7c4'
             'e76761955061bc82bc47ec0214c1053100b3256e1b93fabf279bb80e220c4046')
 
 prepare() {
