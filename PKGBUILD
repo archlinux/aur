@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=world-cup-2022-cli-dashboard
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Watch live World Cup 2022 matches in your terminal. ⚽🏆"
 arch=('x86_64' 'aarch64')
 url="https://github.com/cedricblondeau/world-cup-2022-cli-dashboard"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/cedricblondeau/world-cup-2022-cli-dashboard.git#tag=v$pkgver")
