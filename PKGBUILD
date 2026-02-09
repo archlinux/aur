@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=snipkit
 pkgver=1.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Snippet CLI manager for quickly generating and executing shell snippets without leaving the terminal."
 arch=('x86_64' 'aarch64')
 url="https://github.com/lemoony/snipkit"
