@@ -21,3 +21,17 @@ path = [
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "c23.patch"
+]
+SPDX-FileCopyrightText = "Linux Kernel contributors"
+SPDX-License-Identifier = "GPL-2.0-only"
+
+[[annotations]]
+path = [
+    "linux-hardened-v*-hardened*.patch"
+]
+SPDX-FileCopyrightText = "Linux Hardened Kernel contributors"
+SPDX-License-Identifier = "GPL-2.0-only"
