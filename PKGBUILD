@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=truss
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Truss helps you build go-kit microservices without having to worry about writing or maintaining boilerplate code."
 arch=('x86_64' 'aarch64')
 url="https://github.com/metaverse/truss"
