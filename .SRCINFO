@@ -1,11 +1,11 @@
 pkgbase = gotouch
 	pkgdesc = Language Agnostic Customizable Boilerplate Project Creator
 	pkgver = 1.16.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/denizgursoy/gotouch
 	arch = x86_64
 	arch = aarch64
-	license = unknown
+	license = MIT
 	makedepends = go
 	makedepends = git
 	depends = glibc

@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=gotouch
 pkgver=1.16.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Language Agnostic Customizable Boilerplate Project Creator"
 arch=('x86_64' 'aarch64')
 url="https://github.com/denizgursoy/gotouch"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/denizgursoy/gotouch.git#tag=v$pkgver")
