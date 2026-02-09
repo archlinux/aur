@@ -1,7 +1,7 @@
 pkgbase = gh-eco
 	pkgdesc = 🦎 gh cli extension to explore the ecosystem
 	pkgver = 0.1.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jrnxf/gh-eco
 	arch = x86_64
 	arch = aarch64
