@@ -1,11 +1,11 @@
 pkgbase = kure
 	pkgdesc = CLI password manager with sessions
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GGP1/kure
 	arch = x86_64
 	arch = aarch64
-	license = unknown
+	license = Apache-2.0
 	makedepends = go
 	makedepends = git
 	depends = glibc

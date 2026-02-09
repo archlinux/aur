@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=kure
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI password manager with sessions"
 arch=('x86_64' 'aarch64')
 url="https://github.com/GGP1/kure"
-license=('unknown')
+license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/GGP1/kure.git#tag=v$pkgver")
