@@ -5,10 +5,10 @@ pkgbase=xineliboutput
 pkgname=(vdr-xineliboutput xineliboutput-frontends xineliboutput-xineplug)
 pkgver=2.3.0
 _gitver=16af8504099ddfbcba75f191d9465130d6eeb56c
-_vdrapi=9
-pkgrel=5
+_vdrapi=11
+pkgrel=7
 url="https://www.sourceforge.net/projects/xineliboutput"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL-2.0-or-later')
 makedepends=('avahi' 'dbus-glib' 'git' 'glu' 'libcec' 'libextractor' 'libxrandr' 'mesa' "vdr-api=${_vdrapi}" 'xine-lib')
 source=("$pkgbase::git://git.code.sf.net/p/xineliboutput/git#commit=$_gitver"
