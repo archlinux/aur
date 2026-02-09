@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=n26
 pkgver=1.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="API and CLI to get information of your N26 account"
 arch=('x86_64' 'aarch64')
 url="https://github.com/guitmz/n26"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/guitmz/n26.git#tag=$pkgver")
