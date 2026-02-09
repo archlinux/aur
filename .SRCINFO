@@ -1,6 +1,6 @@
 pkgbase = noson-app
 	pkgdesc = The essential to control music from your SONOS devices on Linux platforms
-	pkgver = 5.6.13
+	pkgver = 5.6.15
 	pkgrel = 1
 	url = https://janbar.github.io/noson-app
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = noson-app
 	depends = qt5-svg
 	depends = libpulse
 	depends = flac
-	source = git+https://github.com/janbar/noson-app.git#tag=5.6.13
-	sha256sums = b799709f5c9cd7fb1a757f95241d48f85718adc90aeae79308a103d1c1482b64
+	source = git+https://github.com/janbar/noson-app.git#tag=5.6.15
+	sha256sums = 9621ab21a320f7d25e7e7e3b8fd6e3e3d96c4b5b18f216337f3ec20cc0f8d0e3
 
 pkgname = noson-app
