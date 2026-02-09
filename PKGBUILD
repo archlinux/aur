@@ -2,7 +2,7 @@
 _base=poethepoet
 pkgname=python-${_base}
 pkgdesc="A task runner that works well with poetry"
-pkgver=0.40.0
+pkgver=0.41.0
 pkgrel=1
 arch=(any)
 url="https://github.com/nat-n/${_base}"
@@ -11,7 +11,7 @@ depends=(python-pastel python-tomli python-yaml)
 makedepends=(python-build python-installer python-poetry-core python-wheel)
 optdepends=('python-poetry')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('9e0c3b01a2729304c773cf2fa2af65ee34252150b65dd06d8df48d2ba1d699c8955610620f44b828486dd2f3deddfe14c8f4e5597959b349335faf69b7dc3688')
+sha512sums=('bb75c928eeb0d2103084d4ca1276fff3e186b8f2bdb3c4b7c139914af1619e9293a5d3189d06be394bee90c734eb8d9b4363bf0ac9713d38cf62dc5ca3423f55')
 
 build() {
   cd ${_base}-${pkgver}
