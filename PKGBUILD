@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=gscript
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc=" framework to rapidly implement custom droppers for all three major operating systems"
 arch=('x86_64' 'aarch64')
 url="https://github.com/gen0cide/gscript"

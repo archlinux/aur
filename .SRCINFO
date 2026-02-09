@@ -1,7 +1,7 @@
 pkgbase = gscript
 	pkgdesc = framework to rapidly implement custom droppers for all three major operating systems
 	pkgver = 0.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/gen0cide/gscript
 	arch = x86_64
 	arch = aarch64
