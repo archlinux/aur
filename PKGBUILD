@@ -3,11 +3,11 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-remoteosd
 pkgver=1.0.1
-_vdrapi=9
-pkgrel=10
+_vdrapi=11
+pkgrel=11
 pkgdesc="Display the menu of a remote VDR as submenu item of your local VDR menu"
 url="https://github.com/vdr-projects/vdr-plugin-remoteosd"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}" 'vdr-svdrpservice')
 _plugname=${pkgname//vdr-/}
