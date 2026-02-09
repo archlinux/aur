@@ -1,7 +1,7 @@
 pkgbase = vdr-tvguide
 	pkgdesc = highly customizable 2D EPG viewer plugin.
 	pkgver = 1.3.11
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://gitlab.com/kamel5/tvguide
 	arch = x86_64
@@ -9,10 +9,11 @@ pkgbase = vdr-tvguide
 	arch = arm
 	arch = armv6h
 	arch = armv7h
+	arch = aarch64
 	license = GPL2
 	depends = graphicsmagick
 	depends = libpng
-	depends = vdr-api=9
+	depends = vdr-api=11
 	backup = etc/vdr/conf.avail/50-tvguide.conf
 	source = https://gitlab.com/kamel5/tvguide/-/archive/v1.3.11/tvguide-v1.3.11.tar.bz2
 	source = 50-tvguide.conf
