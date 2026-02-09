@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=gocovsh
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Go Coverage in your terminal: a tool for exploring Go Coverage reports from the command line 💻"
 arch=('x86_64' 'aarch64')
 url="https://github.com/orlangure/gocovsh"
-license=('unknown')
+license=('GPL-3.0')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/orlangure/gocovsh.git#tag=v$pkgver")
