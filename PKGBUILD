@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=madonctl
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI client for the Mastodon social network API"
 arch=('x86_64' 'aarch64')
 url="https://github.com/McKael/madonctl"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/McKael/madonctl.git#tag=v$pkgver")

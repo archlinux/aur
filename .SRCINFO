@@ -1,11 +1,11 @@
 pkgbase = madonctl
 	pkgdesc = CLI client for the Mastodon social network API
 	pkgver = 3.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/McKael/madonctl
 	arch = x86_64
 	arch = aarch64
-	license = unknown
+	license = MIT
 	makedepends = go
 	makedepends = git
 	depends = glibc
