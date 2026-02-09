@@ -1,11 +1,11 @@
 pkgbase = stree
 	pkgdesc = 📁Directory trees of AWS S3 Bucket
 	pkgver = 0.0.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/orangekame3/stree
 	arch = x86_64
 	arch = aarch64
-	license = unknown
+	license = MIT
 	makedepends = go
 	makedepends = git
 	depends = glibc

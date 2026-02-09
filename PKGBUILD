@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=stree
 pkgver=0.0.21
-pkgrel=1
+pkgrel=2
 pkgdesc="📁Directory trees of AWS S3 Bucket"
 arch=('x86_64' 'aarch64')
 url="https://github.com/orangekame3/stree"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/orangekame3/stree.git#tag=v$pkgver")
