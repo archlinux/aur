@@ -5,11 +5,11 @@
 pkgbase=vdr-streamdev
 pkgname=(vdr-streamdev-{client,server})
 pkgver=0.6.4
-_vdrapi=9
-pkgrel=4
+_vdrapi=11
+pkgrel=5
 pkgdesc="Implementation of the VTP (Video Transfer Protocol)"
 url="https://github.com/vdr-projects/vdr-plugin-streamdev"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 _plugname=${pkgbase//vdr-/}
