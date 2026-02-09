@@ -1,25 +1,24 @@
 pkgbase = deemix-fix-gui
-	pkgdesc = A GUI electron app for the deemix library
-	pkgver = r255.9de95fa42e
+	pkgdesc = A GUI electron app for the deemix library - download music from deezer
+	pkgver = 0.0.0
 	pkgrel = 1
-	url = https://gitlab.com/deeplydrumming/DeemixFix
+	url = https://gitlab.com/C0rn3j/DeemixFix
 	arch = x86_64
-	license = GPL3-or-later
+	license = GPL-3.0-or-later
 	makedepends = git
+	makedepends = python
+	makedepends = libxcrypt-compat
+	makedepends = npm
 	makedepends = pnpm
-	makedepends = unappimage-git
+	makedepends = cairo
+	makedepends = nodejs
 	depends = hicolor-icon-theme
 	depends = electron
 	provides = deemix
 	conflicts = deemix-gui-appimage
-	conflicts = deemix-gui-git
-	conflicts = deemix-fix-gui-appimage
-	options = !strip
-	source = git+https://gitlab.com/deeplydrumming/DeemixFix
-	source = packagefix.patch
+	source = git+https://gitlab.com/C0rn3j/DeemixFix.git#commit=d2bb3f59e968308d2a5c328fd05f74f643566e8c
 	source = deemix-gui.desktop
-	b2sums = SKIP
-	b2sums = 8544eeed4112f12417a6fdd6e22c90a4877d013bafeb009a594314c5f0f0fd612d995af1dfea74a6c24a7f98b782f021eed75d4a8eb2081d63e4b14804fcaafc
-	b2sums = 7d816fb57e0ee0d584ee1b0cfeee04d3e890bd87ca462656d97dc80e0f54999934a5e9879e74d20d6901cb959c92339fdbbef94aa05c58d6a02e9537d97313ec
+	sha256sums = SKIP
+	sha256sums = 7a2542aa9b3f37cd879a240d69fab5c3af71af44b5237bc61c5bf2017f4690b7
 
 pkgname = deemix-fix-gui

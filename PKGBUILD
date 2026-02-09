@@ -1,36 +1,46 @@
-# Maintainer: username227 <gfrank227 at gmail dot com> 
+# Maintainer: Martin Rys <https://rys.rs/contact>
 
 pkgname=deemix-fix-gui
-pkgver=r255.9de95fa42e
+pkgver=0.0.0
 pkgrel=1
-pkgdesc='A GUI electron app for the deemix library'
-url=https://gitlab.com/deeplydrumming/DeemixFix
-license=("GPL3-or-later")
+pkgdesc="A GUI electron app for the deemix library - download music from deezer"
+url=https://gitlab.com/C0rn3j/DeemixFix
+license=("GPL-3.0-or-later")
 arch=("x86_64")
 provides=('deemix')
-conflicts=('deemix-gui-appimage' 'deemix-gui-git' 'deemix-fix-gui-appimage')
+conflicts=('deemix-gui-appimage')
 depends=('hicolor-icon-theme' 'electron')
-makedepends=('git' 'pnpm' 'unappimage-git')
-source=('git+https://gitlab.com/deeplydrumming/DeemixFix' 'packagefix.patch' 'deemix-gui.desktop')
-b2sums=('SKIP'
-        '8544eeed4112f12417a6fdd6e22c90a4877d013bafeb009a594314c5f0f0fd612d995af1dfea74a6c24a7f98b782f021eed75d4a8eb2081d63e4b14804fcaafc'
-        '7d816fb57e0ee0d584ee1b0cfeee04d3e890bd87ca462656d97dc80e0f54999934a5e9879e74d20d6901cb959c92339fdbbef94aa05c58d6a02e9537d97313ec')
-options=('!strip')
+makedepends=('git' 'python' 'libxcrypt-compat' 'npm' 'pnpm' 'cairo' 'nodejs')
+source=(
+	"git+https://gitlab.com/C0rn3j/DeemixFix.git#commit=d2bb3f59e968308d2a5c328fd05f74f643566e8c"
+	'deemix-gui.desktop'
+)
+sha256sums=(
+	'SKIP'
+	'7a2542aa9b3f37cd879a240d69fab5c3af71af44b5237bc61c5bf2017f4690b7'
+)
+
 build() {
-	cd $srcdir/DeemixFix
-	pnpm i
-	patch package.json $srcdir/packagefix.patch
+	cd ${srcdir}/DeemixFix
+
+	pnpm install
+
+	cd server && npm install
+	cd ../webui && npm install
+	cd ../deemix && npm install
+	cd ../deezer-js && npm install
+	cd ../spotify-web-api-node && npm install
+	cd ..
+
 	pnpm dist
-	unappimage $srcdir/DeemixFix/dist/deemix-gui.AppImage
-}
-package(){
-	install -dm755 $pkgdir/opt/deemix-fix
-	install -dm644 $pkgdir/usr/share/icons
-	install -dm755 $pkgdir/usr/bin
-	cp -r $srcdir/DeemixFix/dist/linux-unpacked/* $pkgdir/opt/deemix-fix
-	mv $pkgdir/opt/deemix-fix $pkgdir/opt/deemix-gui
-	ln -s /opt/deemix-gui/deemix-fix $pkgdir/usr/bin/deemix-gui
-	cp -r $srcdir/DeemixFix/squashfs-root/usr/share/icons/hicolor $pkgdir/usr/share/icons/hicolor
-	install -Dm755 $srcdir/deemix-gui.desktop -t $pkgdir/usr/share/applications
 }
 
+package(){
+	install -dm755 ${pkgdir}/opt/deemix-fix
+	install -dm755 ${pkgdir}/usr/bin
+
+	cp -rf ${srcdir}/DeemixFix/dist/linux-unpacked/* ${pkgdir}/opt/deemix-fix
+	ln -s /opt/deemix-fix/deemix-fix ${pkgdir}/usr/bin/deemix-gui
+
+	install -Dm755 ${srcdir}/deemix-gui.desktop -t ${pkgdir}/usr/share/applications
+}
