@@ -1,0 +1,76 @@
+# shellcheck shell=bash
+# -*- mode: sh -*-
+
+#  Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+
+_pkgname='tooi'
+pkgname="$_pkgname-git"
+pkgdesc='Text-based user interface for Mastodon, Pleroma and friends (development version)'
+pkgver=0.20.0.r3.gdaa1933
+pkgrel=1
+url='https://codeberg.org/ihabunek/tooi'
+arch=('any')
+license=('LicenseRef-Tooi')
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-setuptools-scm'
+  'python-wheel'
+)
+depends=(
+  'python'
+  'python-aiodns'
+  'python-aiofiles'
+  'python-aiohttp'
+  'python-beautifulsoup4'
+  'python-click'
+  'python-html2text'
+  'python-pillow'
+  'python-platformdirs'
+  'python-pydantic'
+  'python-textual'
+  'python-textual-fspicker'
+  'python-textual-image'
+  'python-tomlkit'
+  'python-typing_extensions'
+)
+provides=('tooi')
+conflicts=("${provides[@]}")
+source=("$_pkgname::git+$url.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$_pkgname"
+
+  git describe --long --tags \
+  | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$_pkgname"
+
+  git clean -dfx
+}
+
+build() {
+  cd "$_pkgname"
+
+  python -m build --wheel --no-isolation
+}
+
+package() {
+  cd "$_pkgname"
+
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+
+  for _dir in doc licenses; do
+    cd "$pkgdir/usr/share/$_dir" && ln -srf "$pkgname" "$_pkgname"
+  done
+}
+
+# eof
