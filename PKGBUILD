@@ -2,6 +2,7 @@
 
 pkgname=polytrack-bin
 pkgver=0.5.2
+pkgrel=2
 pkgdesc="A competitive Racing Game Called PolyTrack"
 arch=('x86_64')
 url="https://github.com/SoupcanUBG/polytrack-bin"
@@ -20,7 +21,7 @@ tar -xzf "$srcdir/PolyTrack-linux-x64.tar.gz" -C "$pkgdir/usr/share/$pkgname"
 install -d "$pkgdir/usr/share/applications"
 
 
-install -Dm644 "$pkgdir/usr/share/$pkgname/$pkgname.desktop" \
+install -Dm644 "$pkgdir/usr/share/$pkgname/polytrack.desktop" \
     "$pkgdir/usr/share/applications/$pkgname.desktop"
 
 install -Dm644 "$pkgdir/usr/share/$pkgname/icon.png" \
