@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=ovpm
 pkgver=0.2.12
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenVPN Management Server - Effortless and free OpenVPN server administration tool"
 arch=('x86_64' 'aarch64')
 url="https://github.com/cad/ovpm"

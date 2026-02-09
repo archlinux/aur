@@ -1,7 +1,7 @@
 pkgbase = ovpm
 	pkgdesc = OpenVPN Management Server - Effortless and free OpenVPN server administration tool
 	pkgver = 0.2.12
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cad/ovpm
 	arch = x86_64
 	arch = aarch64
