@@ -2,7 +2,7 @@
 # Contributor: witt <1989161762 at qq dot com>
 
 pkgname=snipaste
-pkgver=2.11.2
+pkgver=2.11.3
 pkgrel=1
 pkgdesc="Snip & Paste!"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=()
 source_x86_64=(
 	"$pkgname-$pkgver.AppImage::https://download.snipaste.com/archives/Snipaste-$pkgver-x86_64.AppImage"
 )
-sha256sums_x86_64=('01a8ca993974c1ab6c99d029b7929834a77532acb9cf1cc8ec0f9dea90d7765b')
+sha256sums_x86_64=('e8046ff2045b668ba5fac6d773d83731313a4f00ba171147c6fa1a1385240334')
 
 noextract=("$pkgname-$pkgver.AppImage")
 
