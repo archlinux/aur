@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=redis_tui
 pkgver=0.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Redis terminal application"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mat2cc/redis_tui"

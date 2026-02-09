@@ -1,7 +1,7 @@
 pkgbase = redis_tui
 	pkgdesc = Redis terminal application
 	pkgver = 0.2.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mat2cc/redis_tui
 	arch = x86_64
 	arch = aarch64
