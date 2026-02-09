@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=gowsdl
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="WSDL2Go code generation as well as its SOAP proxy"
 arch=('x86_64' 'aarch64')
 url="https://github.com/hooklift/gowsdl"

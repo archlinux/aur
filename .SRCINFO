@@ -1,7 +1,7 @@
 pkgbase = gowsdl
 	pkgdesc = WSDL2Go code generation as well as its SOAP proxy
 	pkgver = 0.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hooklift/gowsdl
 	arch = x86_64
 	arch = aarch64
