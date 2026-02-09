@@ -2,7 +2,7 @@
 
 pkgname=tuack-ng-bin
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="重构后的 tuack 项目，旨在提供更加高效和轻量的出题体验。"
 url="https://github.com/tuack-ng/tuack-ng"
 license=("AGPL-3.0-or-later")
@@ -11,7 +11,8 @@ provides=("tuack-ng")
 conflicts=("tuack-ng")
 depends=("gcc-libs" "glibc")
 source=("https://github.com/tuack-ng/tuack-ng/releases/download/$pkgver/tuack-ng-$pkgver-x86_64.tar.gz")
-sha256sums=('98835c684152d66dc6692fbfc55c95166f0ae15707cc3dfa694977f88cb80831')
+sha256sums=('0a3547826a1d9ee40ec795c495faa553d919f1e4bd5f1c4e3034d1713436ff81')
+optdepends=('typst: Needed for rendering PDF')
 
 package() {
     install -Dm755 tuack-ng -t "$pkgdir/usr/bin"
@@ -21,4 +22,15 @@ package() {
     find . -type d -exec install -dm755 "$pkgdir/usr/share/tuack-ng/{}" \;
     find . -type f -exec install -Dm644 "{}" "$pkgdir/usr/share/tuack-ng/{}" \;
     find ./checkers -type f ! -name "*.*" -exec chmod 755 "$pkgdir/usr/share/tuack-ng/{}" \;
+
+    cd ..
+
+    mkdir -vp "$pkgdir/usr/share/zsh/site-functions"
+    ./tuack-ng gen complete zsh >"$pkgdir/usr/share/zsh/site-functions/_tuack-ng"
+
+    mkdir -vp "$pkgdir/usr/share/bash-completion/completions"
+    ./tuack-ng gen complete bash >"$pkgdir/usr/share/bash-completion/completions/tuack-ng"
+
+    mkdir -vp "$pkgdir/usr/share/fish/vendor_completions.d"
+    ./tuack-ng gen complete fish >"$pkgdir/usr/share/fish/vendor_completions.d/tuack-ng.fish"
 }
