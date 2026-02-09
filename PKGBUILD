@@ -3,13 +3,13 @@
 
 pkgname=zathura-ps-git
 pkgrel=1
-pkgver=0.2.8.r5.gae489aa
+pkgver=2026.02.03.r1.g78a58e4
 pkgdesc="PostScript support for zathura"
 arch=('x86_64')
 url="https://pwmt.org/projects/zathura-ps"
 license=('Zlib')
-depends=('zathura-git' 'libspectre' 'desktop-file-utils')
-makedepends=('git' 'meson' 'ninja' 'appstream' 'desktop-file-utils')
+depends=('cairo' 'girara-git' 'glib2' 'libspectre' 'zathura-git')
+makedepends=('git' 'meson' 'ninja')
 conflicts=('zathura-ps')
 provides=('zathura-ps')
 source=("$pkgname::git+https://github.com/pwmt/zathura-ps.git#branch=develop")
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-  arch-meson build
+  arch-meson build -Dtests=disabled
   ninja -C build
 }
 
