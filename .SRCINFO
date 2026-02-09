@@ -1,5 +1,5 @@
 pkgbase = shortwave-mpris-git
-	pkgdesc = Shortwave-MPRIS is an enhanced version of the Shortwave internet radio player adding to the already existing rich feature set. This version provides more complete MPRIS (Media Player Remote Interfacing Specification) support, adds DLNA/UPnP streaming, improved Google Cast support and advanced FFmpeg proxy capabilities for both DNLA & Cast of incompatible streams, ensures maximum compatibility with devices on the local network. Port 8080 is used for the FFmpeg proxy access which should be allowed by most firewalls. Testing has been limited to devices availble on the author's network. Devices tested include: Google Home Speaker, Google Chromecast Ultra and Marantz-NR1504 DNLA device. Local play uses Gstreamer and PipeWire Audio. This is a work in progress and may not be compatible with all devices. Radio streams found to be working are AAC, MP3, FLAC, m3u8/HLS encoded streams. FFmpeg transcoding is used for all DNLA play and as a fallback for Cast device play for m3u8/HLS streams. Version 5.1.0 includes all features from upstream Shortwave 5.1.0.
+	pkgdesc = Internet radio player with MPRIS support, DLNA/UPnP streaming, Google Cast, and FFmpeg proxy for incompatible streams
 	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://github.com/ixnewton/Shortwave-MPRIS
