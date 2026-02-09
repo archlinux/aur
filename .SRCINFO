@@ -1,7 +1,7 @@
 pkgbase = clive
 	pkgdesc = ⚡ Automates terminal operations.
 	pkgver = 0.12.16
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/koki-develop/clive
 	arch = x86_64
 	arch = aarch64

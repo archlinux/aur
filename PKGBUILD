@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=clive
 pkgver=0.12.16
-pkgrel=2
+pkgrel=3
 pkgdesc="⚡ Automates terminal operations."
 arch=('x86_64' 'aarch64')
 url="https://github.com/koki-develop/clive"
