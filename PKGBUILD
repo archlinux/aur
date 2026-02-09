@@ -1,5 +1,5 @@
 pkgname=inori
-pkgver=0.2.4
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="terminal mpd client with effective searching"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('GPL-3.0')
 depends=('mpd')
 makedepends=('rust')
 source=("inori-${pkgver}.tar.gz::https://github.com/eshrh/inori/archive/v${pkgver}.tar.gz")
-sha256sums=('0d2239e36f47c781a0fdfe09dd6538ae0470551f041363981d0692fa877986da')
+sha256sums=('6c3f655ebec52309c882346ed219c68a5fc4a80d0bef5822ec85ce383b145614')
 conflicts=()
 
 build() {
