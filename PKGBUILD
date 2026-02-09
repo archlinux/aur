@@ -4,12 +4,12 @@
 
 pkgname=harmonoid-bin
 pkgver=0.3.22
-pkgrel=1
+pkgrel=2
 pkgdesc="Plays & manages your music library. Looks beautiful & juicy. Playlists, visuals, synced lyrics, pitch shift, volume boost & more."
 arch=("x86_64" "aarch64")
 url="https://github.com/harmonoid/harmonoid"
 license=("LicenseRef-PolyForm-Strict-1.0.0")
-depends=('glibc' 'gcc-libs' 'mpv' 'gdk-pixbuf2' 'libepoxy' 'gtk3' 'pango' 'fontconfig' 'hicolor-icon-theme' 'zlib-ng-compat' 'glib2' 'harfbuzz' 'cairo' 'at-spi2-core')
+depends=('glibc' 'gcc-libs' 'mpv' 'gdk-pixbuf2' 'libepoxy' 'gtk3' 'pango' 'fontconfig' 'hicolor-icon-theme' 'zlib' 'glib2' 'harfbuzz' 'cairo' 'at-spi2-core')
 provides=(harmonoid)
 makedepends=('patchelf')
 conflicts=(harmonoid)
