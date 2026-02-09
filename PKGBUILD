@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=gh-s
 pkgver=0.0.12
-pkgrel=2
+pkgrel=3
 pkgdesc="🔎 search github repositories interactively"
 arch=('x86_64' 'aarch64')
 url="https://github.com/gennaro-tedesco/gh-s"
