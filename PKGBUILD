@@ -2,7 +2,7 @@
 
 pkgname=tdns-git
 _pkgname=tdns
-pkgver=v0.5.5.r0.d728041
+pkgver=v0.5.6.r0.8e835b5
 pkgrel=1
 
 pkgdesc="A powerful, lightweight CLI to manage Technitium DNS server via HTTP API endpoint"
@@ -10,10 +10,14 @@ arch=('x86_64')
 url='https://github.com/mbevc1/tdns'
 license=('MPL-2.0')
 makedepends=('make' 'coreutils' 'go' 'upx')
-provides=('tdns')
-conflicts=('tdns')
-source=("git+$url" "tdns-LICENSE::https://raw.githubusercontent.com/mbevc1/tdns/refs/heads/main/LICENSE")
-sha256sums=('SKIP' '1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=(
+    "git+$url"
+)
+sha256sums=(
+    'SKIP'
+)
 
 pkgver() {
   git -C "${_pkgname}" describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
@@ -26,10 +30,9 @@ build() {
 }
 
 package() {
-  install -Dm 644 tdns-LICENSE -T "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-  
   cd "${srcdir}/${_pkgname}"
   install -Dm 755 tdns -t "${pkgdir}/usr/bin/"
+  install -Dm 644 LICENSE -T "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
   ./tdns completion bash 2> /dev/null > tdns.bash
   install -Dm 644 tdns.bash -T "${pkgdir}/usr/share/bash-completion/completions/tdns"
