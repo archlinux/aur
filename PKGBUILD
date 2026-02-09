@@ -8,7 +8,7 @@ url="https://github.com/blob42/gosuki"
 license=('unknown')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/blob42/gosuki.git#tag=v$pkgver")
+source=("git+https://github.com/blob42/gosuki.git#tag=v$_pkgver")
 sha256sums=('SKIP')
 
 build() {
