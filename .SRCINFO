@@ -1,7 +1,7 @@
 pkgbase = go-test-report
 	pkgdesc = Captures go test output and parses it into a single self-contained HTML file.
 	pkgver = 0.9.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vakenbolt/go-test-report
 	arch = x86_64
 	arch = aarch64

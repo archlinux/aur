@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=go-test-report
 pkgver=0.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Captures go test output and parses it into a single self-contained HTML file."
 arch=('x86_64' 'aarch64')
 url="https://github.com/vakenbolt/go-test-report"
