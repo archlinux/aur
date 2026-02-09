@@ -1,0 +1,6 @@
+d /run/hyphanet           0750 hyphanet hyphanet
+d /opt/hyphanet           0750 hyphanet hyphanet
+d /opt/hyphanet/tmp       0700 hyphanet hyphanet
+d /opt/hyphanet/plugins   0750 hyphanet hyphanet
+d /opt/hyphanet/user      0750 hyphanet hyphanet
+d /opt/hyphanet/user/data 0750 hyphanet hyphanet

@@ -1,0 +1,29 @@
+post_install() {
+    getent passwd hyphanet &>/dev/null || {
+        echo -n "==> Creating hyphanet system user... "
+        useradd --system \
+                --user-group \
+                --home /opt/hyphanet \
+                hyphanet &&
+        echo "ok" || echo "fail"
+    }
+    cp -v /opt/hyphanet/conf/hyphanet.ini{.dist,}
+    chown -R hyphanet:hyphanet /opt/hyphanet
+    echo "==> Hyphanet will be slow during first startup while it discovers the network."
+    echo "==> You may see 'Data Not Found' or 'Route Not Found' errors, this is normal."
+    echo "==> For best performance Hyphanet should be run 24/7 as much as possible."
+    echo "==> Your node's configuration WebUI is located at http://127.0.0.1:8888/ "
+}
+
+post_upgrade() {
+    chown -R hyphanet:hyphanet /opt/hyphanet
+}
+
+pre_remove() {
+    getent passwd hyphanet &>/dev/null && {
+        echo -n "==> Removing hyphanet system user... "
+        userdel hyphanet &&
+        echo "ok" || echo "fail"
+    }
+    echo "==> Delete /opt/hyphanet if you wish to completely remove everything"
+}

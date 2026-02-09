@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 #-----------------------------------------------------------------------------
-_USER="freenet"
+_USER="hyphanet"
 WRAPPER_CMD="/usr/bin/java-service-wrapper"
-WRAPPER_CONF="/opt/freenet/wrapper.config"
-PIDFILE="/run/freenet/freenet.pid"
+WRAPPER_CONF="/opt/hyphanet/wrapper.config"
+PIDFILE="/run/hyphanet/hyphanet.pid"
 TIMEOUT=60
 #-----------------------------------------------------------------------------
 
@@ -28,14 +28,14 @@ init_vars() {
         fail "Unable to read \$WRAPPER_CONF: ${WRAPPER_CONF}"
     [[ ! -x "$WRAPPER_CMD" ]] &&
         fail "Unable to find or execute \$WRAPPER_CMD: ${WRAPPER_CMD}"
-    COMMAND_LINE="\"$WRAPPER_CMD\" \"$WRAPPER_CONF\" wrapper.syslog.ident=\"freenet\" wrapper.name=\"freenet\" TZ=UTC"
+    COMMAND_LINE="\"$WRAPPER_CMD\" \"$WRAPPER_CONF\" wrapper.syslog.ident=\"hyphanet\" wrapper.name=\"hyphanet\" TZ=UTC"
 }
 
 get_wrapper_pid() {
-    pgrep -u "$_USER" -f 'wrapper.name=freenet'
+    pgrep -u "$_USER" -f 'wrapper.name=hyphanet'
 }
 get_pid() {
-    pgrep -u "$_USER" -f 'jar.*freenet'
+    pgrep -u "$_USER" -f 'jar.*hyphanet'
 }
 
 check_if_running() {
@@ -62,13 +62,13 @@ _console() {
         trap '' INT QUIT
         eval "$COMMAND_LINE" || fail "Failed to launch the wrapper!"
     else
-        echo "Freenet is already running! (pid: $pid)"
+        echo "Hyphanet is already running! (pid: $pid)"
     fi
 }
 
 _start() {
     if [[ ! "$pid" ]]; then
-        echo -n "Starting Freenet..."
+        echo -n "Starting Hyphanet..."
         COMMAND_LINE+=" wrapper.daemonize=TRUE"
         eval "$COMMAND_LINE" || fail "Failed to launch the wrapper!"
         i=0
@@ -78,22 +78,26 @@ _start() {
             check_if_running
             ((i++))
         done
-        [[ $(get_pid) ]] &&
-            echo " ok" || fail "timeout: Failed to start wrapper!"
+
+        if [[ $(get_pid) ]]; then
+            echo " ok"
+        else
+            fail "timeout: Failed to start wrapper!"
+        fi
     else
-        echo "Freenet is already running! (pid: $pid)"
+        echo "Hyphanet is already running! (pid: $pid)"
     fi
 }
 
 _restart() {
     [[ "$pid" ]] &&
-        kill -USR1 "$(get_wrapper_pid)" || echo "Freenet is not running"
+        kill -USR1 "$(get_wrapper_pid)" || echo "Hyphanet is not running"
 }
 
 _stop() {
     if [[ "$pid" ]]; then
-        echo -n "Stopping Freenet, this could take a minute..."
-        kill -TERM "$(get_wrapper_pid)" || fail "Unable to stop Freenet: kill -TERM $pid"
+        echo -n "Stopping Hyphanet, this could take a minute..."
+        kill -TERM "$(get_wrapper_pid)" || fail "Unable to stop Hyphanet: kill -TERM $pid"
         i=0
         while [[ "$pid" || $i -gt $TIMEOUT ]]; do
             echo -n "."
@@ -104,22 +108,22 @@ _stop() {
         [[ "$pid" ]] &&
             fail "timeout: Failed to stop wrapper! (pid: $pid)" || echo " ok"
     else
-        echo "Freenet is not running"
+        echo "Hyphanet is not running"
     fi
 }
 
 _dump() {
     if [[ "$pid" ]]; then
-        kill -QUIT "$pid" || fail "Failed to dump Freenet Service"
+        kill -QUIT "$pid" || fail "Failed to dump Hyphanet Service"
         echo "Thread Dump is available in wrapper.log"
     else
-        echo "Freenet is not running"
+        echo "Hyphanet is not running"
     fi
 }
 #-----------------------------------------------------------------------------
 
 [[ "$1" != @(console|start|stop|restart|dump) ]] && {
-    echo "Usage: $(basename $0) <command>"
+    echo "Usage: $(basename "$0") <command>"
     echo "Commands:"
     echo "  console     Launch in the current console"
     echo "  start       Start in the background as a daemon process"

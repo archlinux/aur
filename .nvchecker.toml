@@ -1,0 +1,6 @@
+[hyphanet]
+source = "github"
+github = "hyphanet/fred"
+use_latest_release = true
+from_pattern = "build0(\\d+)"
+to_pattern = "0.7.5.\\1"

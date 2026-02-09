@@ -4,8 +4,8 @@ After=network.target time-sync.target
 
 [Service]
 Type=forking
-User=freenet
-PIDFile=/run/freenet/freenet.pid
+User=hyphanet
+PIDFile=/run/hyphanet/hyphanet.pid
 UMask=0027
 LimitNOFILE=4096
 
@@ -17,11 +17,11 @@ ProtectSystem=strict
 DeviceAllow=/dev/null rw
 DeviceAllow=/dev/urandom r
 ReadOnlyDirectories=/
-ReadWriteDirectories=-/run/freenet -/opt/freenet
+ReadWriteDirectories=-/run/hyphanet -/opt/hyphanet
 
-ExecStart=/usr/bin/java-service-wrapper /opt/freenet/wrapper.config \
-    wrapper.name=freenet \
-    wrapper.syslog.ident=freenet \
+ExecStart=/usr/bin/java-service-wrapper /opt/hyphanet/wrapper.config \
+    wrapper.name=hyphanet \
+    wrapper.syslog.ident=hyphanet \
     wrapper.daemonize=TRUE TZ=UTC
 ExecReload=/bin/kill -USR1 $MAINPID
 ExecStop=/bin/kill -TERM $MAINPID
