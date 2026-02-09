@@ -3,11 +3,11 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-epg2vdr
 pkgver=1.2.17
-pkgrel=2
-_vdrapi=9
+pkgrel=3
+_vdrapi=11
 pkgdesc="Used to retrieve EPG data into the VDR"
 url="https://github.com/horchi/vdr-plugin-epg2vdr"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL-2.0-or-later')
 depends=('jansson' 'libmariadbclient' 'libutil-linux' 'python' 'tinyxml2' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
