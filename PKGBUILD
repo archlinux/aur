@@ -6,7 +6,7 @@ pkgver=1.0.17
 pkgrel=1
 pkgdesc="w_scan fork (Small channel scan tool for vdr)"
 url="https://github.com/stefantalpalaru/w_scan2"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 depends=('gcc-libs' 'glibc')
 #gcc-libs is somehow needed on arm architecture
