@@ -1,0 +1,20 @@
+pkgbase = shorinclip-git
+	pkgdesc = A wayland clipboard TUI based on fzf wl-clipboard and cliphist (Git version)
+	pkgver = v1.1.0.r12.g292ea67
+	pkgrel = 1
+	url = https://github.com/SHORiN-KiWATA/shorinclip
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = fzf
+	depends = cliphist
+	depends = wl-clipboard
+	depends = ffmpegthumbnailer
+	depends = chafa
+	depends = bash
+	provides = shorinclip
+	conflicts = shorinclip
+	source = git+https://github.com/SHORiN-KiWATA/shorinclip.git
+	sha256sums = SKIP
+
+pkgname = shorinclip-git
