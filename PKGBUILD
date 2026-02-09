@@ -3,12 +3,12 @@
 # Maintainer: Alexander Grothe <seahawk1986[at]hotmail[dot]com>
 pkgname=vdr-restfulapi
 pkgver=0.2.6.8
-pkgrel=1
+pkgrel=2
 epoch=1
-_vdrapi=9
+_vdrapi=11
 pkgdesc="Restful-API Control for VDR"
 url="https://github.com/yavdr/vdr-plugin-restfulapi"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 depends=('cxxtools' 'graphicsmagick' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
