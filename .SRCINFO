@@ -1,6 +1,6 @@
 pkgbase = powerstation-bin
 	pkgdesc = Open source performance daemon with DBus interface
-	pkgver = v0.4.1
+	pkgver = v0.7.0
 	pkgrel = 1
 	url = https://github.com/ShadowBlip/PowerStation
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = powerstation-bin
 	depends = pciutils
 	provides = powerstation
 	conflicts = powerstation-git
-	source = powerstation-v0.4.1.tar.gz::https://github.com/ShadowBlip/PowerStation/releases/download/v0.4.1/powerstation.tar.gz
-	sha256sums = d7fd6634e892deb580a59f013db988a7b98b86578940375ad020dafb82a6f602
+	source = powerstation-v0.7.0-x86_64.tar.gz::https://github.com/ShadowBlip/PowerStation/releases/download/v0.7.0/powerstation-x86_64.tar.gz
+	sha256sums = dec7ac765f915f579a785d53b64422ac9859776c0ebc3a830125ca7c103c3d9d
 
 pkgname = powerstation-bin
