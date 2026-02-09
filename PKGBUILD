@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=tinyfeed
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate a static HTML page from a collection of feeds wtih a simple CLI tool"
 arch=('x86_64' 'aarch64')
 url="https://github.com/TheBigRoomXXL/tinyfeed"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/TheBigRoomXXL/tinyfeed.git#tag=v$pkgver")
