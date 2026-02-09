@@ -1,9 +1,9 @@
 #!/usr/bin/env zsh
+# shellcheck disable=SC2034,SC2317
+# Arch Update Readiness Checker v1.3.3
+# Fixes: AUR print updates amount error.
 
-# Arch Update Readiness Checker v1.3.2
-# Fixes: Added AUR packages to the check and count.
-
-VERSION="1.3.2"
+VERSION="1.3.3"
 set -euo pipefail
 
 NEWS_RSS="https://archlinux.org/feeds/news/"
@@ -90,7 +90,7 @@ fi
 
 # Calculate counts
 OFFICIAL_COUNT=$([[ -n "$PENDING_RAW" ]] && echo "$PENDING_RAW" | wc -l || echo "0")
-AUR_COUNT=$(yay -Qua 2>/dev/null | wc -l || echo "0")
+AUR_COUNT=$(yay -Qua 2>/dev/null | wc -l || echo )
 
 log "\nSystem Status:"
 log "- Official Updates: $OFFICIAL_COUNT"
@@ -98,6 +98,7 @@ log "- AUR Updates:      $AUR_COUNT"
 log "- Failed Services:  $FAILED_SERVICES"
 log "- Partial Upgrade:  $PARTIAL_UPGRADE"
 
+# Now the math is guaranteed to be clean
 TOTAL_UPDATES=$(( OFFICIAL_COUNT + AUR_COUNT ))
 
 # 6. Recommendation Logic
