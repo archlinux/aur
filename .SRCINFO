@@ -14,6 +14,6 @@ pkgbase = spent
 	depends = librsvg
 	depends = sqlite
 	source = spent-1.1.7.tar.gz::https://github.com/FrogSnot/Spent/archive/v1.1.7.tar.gz
-	sha256sums = b1f2767beccc93a5c6c0e07269d7c01455af164206b540ef397f04215b6ac3bd
+	sha256sums = 60e1aa02e5b5a9cfe7001d7d47b3feb95a94ed5b5122216ebbb6669b34f69bcd
 
 pkgname = spent
