@@ -1,6 +1,6 @@
 pkgbase = mpd-discord-rpc-git
 	pkgdesc = Displays metadata of currently playing song from MPD in Discord using Rich Presence
-	pkgver = 1.8.1.r1.ga5c3361
+	pkgver = 1.11.0.r5.g36eacd3
 	pkgrel = 1
 	url = https://github.com/JakeStanger/mpd-discord-rpc
 	arch = i686
@@ -13,8 +13,9 @@ pkgbase = mpd-discord-rpc-git
 	makedepends = rust
 	depends = gcc-libs
 	depends = openssl
-	provides = mpd-discord-rpc=1.8.1
+	provides = mpd-discord-rpc=1.11.0
 	conflicts = mpd-discord-rpc
+	options = !lto
 	source = mpd-discord-rpc::git+https://github.com/JakeStanger/mpd-discord-rpc.git
 	sha256sums = SKIP
 
