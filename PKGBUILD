@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=gosuki
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight, open-source, privacy-first bookmark manager that unifies your bookmarks across multiple browsers, syncs them in real time (locally or P2P), requires no extensions, and stores everything locally."
 arch=('x86_64' 'aarch64')
 url="https://github.com/blob42/gosuki"
-license=('unknown')
+license=('AGPL-3.0')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/blob42/gosuki.git#tag=v$_pkgver")
