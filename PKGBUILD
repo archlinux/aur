@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=saw
 pkgver=0.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast, multi-purpose tool for AWS CloudWatch Logs"
 arch=('x86_64' 'aarch64')
 url="https://github.com/TylerBrock/saw"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/TylerBrock/saw.git#tag=v$pkgver")
