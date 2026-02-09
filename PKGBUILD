@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=gojekyll
 pkgver=0.2.16
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast Go implementation of the Jekyll blogging engine"
 arch=('x86_64' 'aarch64')
 url="https://github.com/osteele/gojekyll"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/osteele/gojekyll.git#tag=v$pkgver")
