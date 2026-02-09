@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=agent-deck
 pkgver=0.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal session manager for AI coding agents. Built with Go + Bubble Tea."
 arch=('x86_64' 'aarch64')
 url="https://github.com/asheshgoplani/agent-deck"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/asheshgoplani/agent-deck.git#tag=v$pkgver")
