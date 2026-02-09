@@ -1,7 +1,7 @@
 pkgbase = dealve
 	pkgdesc = Delve into game deals from your terminal
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kurama/dealve-tui
 	arch = x86_64
 	arch = aarch64
