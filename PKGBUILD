@@ -1,7 +1,7 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 
 pkgbase=linux-flowx13
-pkgver=6.18.8.arch2
+pkgver=6.18.9.arch1
 pkgrel=1
 pkgdesc='Linux (with patches for the Asus Flow X13)'
 url='https://github.com/archlinux/linux'
@@ -46,17 +46,17 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('37f0c5d5c242c1d604e87d48f08795e861a5a85f725b4ca11d0a538f12ff8cff'
+sha256sums=('030115ff8fb4cb536d8449dc40ebc3e314e86ba1b316a6ae21091a11cc930578'
             'SKIP'
-            'aec3a380a435c2b25cfec077f7a74fb314f4d549ed4137617d478f45aefafbea'
+            '4815407239a6df15f8e0362ff652f9faf2e558fd774b08645e80ca664128e390'
             'SKIP'
-            '6b7606d8f3a14ed0f5b682827d8a9f1b0622b020042dd402bec9785daa6526fb'
+            '9fed188f89847418aaf6416b64457a30bee34dcd0fa42a84dbd0f4dfca063402'
             '5d1e64b4c8b3158169d6f19f9f2c2d0cb36c2108560e3c4d3a0b194e1ea80fdd')
-b2sums=('9434b32e65e42c8663233d6ca4a7fe4fcbcc8fe2f5b0ba1c3a0bf602c0156009ecce4aef8cb6ed9435bc9b4f14cb4f5be8b5b8ea80f64b1dc2c9d4ad0faf5b4e'
+b2sums=('9aed902e41583597cb7595efe77504630a621993d20f89365a93cf2ea4d9790a6361d93cbb7fd7603881a4f82b76394b7e12fb4e4a88c9fedb2d63d64a9d49d3'
         'SKIP'
-        '6ec5f6b428abc27cbaf595b9da1fe4f785b2fe604da3dd7296bd41fef79b14d38ed92f56c392b7848a84a8004c19e46508e9925f445475f9dd56a42431aa841c'
+        '0e9a6bbc9baf4e6706699257e811dcdb7d7e6c946a45f660ee56c564d907efaaac53387b29668ca3fc3082c5badc30ee082dac9d8de2bde72c79365af4050b47'
         'SKIP'
-        '46fc8b23f2251bc02601ecb84a392c902efb34b823bffdb587cbb8adf8169be13ac3105482eeacf328529cfd9adb83ec250dec0658899a208e289be2c591635f'
+        'bef3377ad86440af76e9dde4c29c9f4aaad42f5fe343f7d31f5eb537d6d358602f996f5d63986af275f2e92f94e71dc28c320edc8c03d05bd64dbd8ed23d75dc'
         '3709434e8acee63b62448c5901ce6fb90f985cbbd53dcb04451f8a194c5cf6f616c127d22417c825108fd00f47bd0acc8ee0df5f8609005e1c7dab27cd4b2277')
 
 
@@ -142,6 +142,7 @@ _package() {
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
   depends=(pahole)
+  provides=(LINUX-HEADERS)
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
