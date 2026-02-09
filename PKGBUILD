@@ -11,7 +11,7 @@ _satip_gitver=18b4cc1d4442251f7b6f0e9911af492d1556a399
 _vdr_gitver=591085812def02a827624a4cffc2cc3a2b984f8e
 
 pkgdesc="A dtv channel scanner based on VDR. Successor of w_scan"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.gen2vdr.de/wirbel/w_scan_cpp/index2.html"
 license=('GPL')
 depends=('freetype2' 'fontconfig' 'pugixml' 'librepfunc' 'libjpeg' 'curl')
