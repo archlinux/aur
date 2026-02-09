@@ -2,7 +2,7 @@
 
 pkgname=polytrack
 pkgver=Releases
-pkgrel=900
+pkgrel=901
 pkgdesc="An Unofficial Community Made AUR Package"
 arch=('x86_64')
 url="https://github.com/SoupcanUBG/polytrack"
@@ -12,10 +12,6 @@ provides=("$pkgname")
 source=("git+$url.git")
 sha256sums=('SKIP')
 
-pkgver() {
-  cd "$srcdir/$pkgname"
-  git describe --tags --always | sed 's/^v/ /'
-}
 
 
 
