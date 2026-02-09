@@ -4,7 +4,7 @@
 pkgname=classisland-preview
 _appname=cn.classisland.app
 pkgver=2.0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="适用于班级大屏的课表小工具（预览版）。Class schedule displaying tool for interactive whiteboards in classrooms (Preview)."
 arch=('x86_64' 'aarch64')
 url="https://github.com/ClassIsland/ClassIsland"
@@ -31,7 +31,7 @@ source=(
 sha256sums=(
     'SKIP'
     'SKIP'
-    '5342aed758213e2068c1a41c696b317b935fe491158fc750f454156686a35388'
+    'd95f964e3a9303c81510de2a536dd17989579cd42365dcd3cb556e32bb15d302'
 )
 options=('!debug')
 
