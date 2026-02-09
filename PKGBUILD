@@ -1,18 +1,16 @@
-# Maintainer: acedmicabhishek <acedmicabhishek@gmail.com>
-pkgname=kerneldrive
-pkgver=0.1.1
-pkgrel=3
-pkgdesc="Modular Linux system control application (Ghub, Armoury Crate, Ryzen Controller)"
+# Maintainer: ACE : acedmicabhishek@gmail.com
+
+pkgname=kernel-drive
+pkgver=0.1.2
+pkgrel=4
+pkgdesc="A high-performance modular system control app for Arch Linux"
 arch=('x86_64')
 url="https://github.com/acedmicabhishek/KernelDrive"
-license=('GPL3')
-depends=('gtk4' 'libadwaita' 'hidapi' 'libdrm' 'libx11' 'libxrandr' 'polkit')
-makedepends=('meson' 'ninja' 'git' 'gcc')
-optdepends=('ryzenadj: Ryzen CPU Power Control'
-            'stress-ng: CPU Stress Testing'
-            'gpu-burn-git: GPU Stress Testing')
-source=("git+$url")
-sha256sums=('SKIP')
+license=('MIT')
+depends=('gtk4' 'libadwaita' 'polkit')
+makedepends=('meson' 'git' 'gcc')
+source=("git+https://github.com/acedmicabhishek/KernelDrive.git")
+md5sums=('SKIP')
 
 build() {
     arch-meson KernelDrive build
