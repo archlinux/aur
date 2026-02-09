@@ -1,8 +1,9 @@
 post_install() {
-  # Make data writable by webserver
-  chown -R http:http /usr/share/webapps/cops
-  echo 'You can now configure your (PHP compatible) web server to run COPS'
-  echo 'Be sure to put your metadata.db inside /etc/webapps/cops if you have one'
+  echo 'You must now edit the configuration file at /etc/webapps/cops/local.php'
+  echo 'You must also configure a PHP-enabled webserver to serve COPS'
+  echo 'from, out of the folder: /usr/share/webapps/cops/.'
+  echo 'Remember to change permission of that folder as appropriate'
+  echo '(maybe something like: chown -R http:http /usr/share/webapps/cops)'
 }
 
 post_upgrade() {

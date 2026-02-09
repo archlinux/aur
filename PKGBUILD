@@ -7,7 +7,7 @@ _github_name="seblucas-cops"
 provides=('cops')
 conflicts=('cops')
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight Calibre OPDS (and HTML) PHP Server (mikespub.org fork)'
 arch=('any')
 url="https://github.com/mikespub-org/$_github_name"
@@ -19,11 +19,14 @@ depends=(
   'php-sqlite'
 )
 optdepends=(
-  'apache: Web server to run COPS'
-  'nginx: Web server to run COPS'
-  'cherokee: Web server to run COPS'
+  'apache: Web server to serve COPS with'
+  'nginx: Web server to serve COPS with'
+  'cherokee: Web server to serve COPS with'
 )
-makedepends=('composer')
+makedepends=(
+  'composer'
+  'libxml2' # for xmllint
+)
 backup=("etc/webapps/${_name}/local.php")
 install="${_name}.install"
 source=("${pkgname}_${pkgver}.zip::${url}/archive/refs/tags/${pkgver}.zip")
@@ -51,11 +54,17 @@ build () {
 
 package () {
     cd "${_github_name}-$pkgver"
+    xmllint --xpath "//project/target/zip/fileset/exclude/@name" "build.xml" | \
+        sed -e 's#^\s*name="##' -e 's#"$##' -e 's#/\*\*$##g' -e 's#\*\*#\*#g' | \
+        while read -r exclude; do 
+            echo "Removing $exclude"
+	    rm -R $exclude || echo "This one does not exist, passing.";
+        done
     install -d "$pkgdir/etc/webapps/${_name}/"
     install -d "$pkgdir/usr/share/webapps"
     cp -r ./ "$pkgdir/usr/share/webapps/${_name}"
     cp "$pkgdir/usr/share/webapps/${_name}/config/local.php.example" "$pkgdir/etc/webapps/${_name}/local.php"
     ln -s "/etc/webapps/${_name}/local.php" "$pkgdir/usr/share/webapps/${_name}/config/local.php"
-    rm -R "${pkgdir}/usr/share/webapps/${_name}/tests"
-    rm -R "${pkgdir}/usr/share/webapps/${_name}/tools"
+    rm -R "${pkgdir}/usr/share/webapps/${_name}/tests" || echo "No tests folder to remove"
+    rm -R "${pkgdir}/usr/share/webapps/${_name}/tools" || echo "No tools folder to remove"
 }
