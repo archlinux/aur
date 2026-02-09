@@ -1,11 +1,11 @@
 pkgbase = zkcli
 	pkgdesc = A interactive Zookeeper client.
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/let-us-go/zkcli
 	arch = x86_64
 	arch = aarch64
-	license = unknown
+	license = MIT
 	makedepends = go
 	makedepends = git
 	depends = glibc

@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=zkcli
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A interactive Zookeeper client."
 arch=('x86_64' 'aarch64')
 url="https://github.com/let-us-go/zkcli"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/let-us-go/zkcli.git#tag=v$pkgver")
