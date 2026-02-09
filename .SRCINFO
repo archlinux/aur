@@ -1,7 +1,7 @@
 pkgbase = my-token
 	pkgdesc = 📈Track token prices in your terminal
 	pkgver = 0.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/polyrabbit/my-token
 	arch = x86_64
 	arch = aarch64
