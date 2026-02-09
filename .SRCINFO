@@ -1,6 +1,6 @@
 pkgbase = shard-launcher-bin
 	pkgdesc = A minimal, content-addressed Minecraft launcher (Desktop App)
-	pkgver = 0.1.24
+	pkgver = 0.1.25
 	pkgrel = 1
 	url = https://shard.thomas.md
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = shard-launcher-bin
 	depends = libappindicator-gtk3
 	provides = shard-launcher
 	conflicts = shard-launcher
-	source = https://github.com/th0rgal/shard/releases/download/v0.1.24/shard-launcher-linux-x64.deb
-	sha256sums = 286d4634aba16acafa10bce94641f1b8daf923d4fb15df2dccc9125fbfe8e222
+	source = https://github.com/th0rgal/shard/releases/download/v0.1.25/shard-launcher-linux-x64.deb
+	sha256sums = ba34e791a1e64af91ef2d7862fc20eebf84ff442b2954175764dd58585a32045
 
 pkgname = shard-launcher-bin
