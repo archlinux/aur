@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=pep-ebook
 pkgver=1.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="📚自动下载带书签的电子书(人民教育教出版社)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/maogou/pep-ebook"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/maogou/pep-ebook.git#tag=v$pkgver")
