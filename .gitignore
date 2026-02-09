@@ -1,5 +1,6 @@
 *.pkg.tar*
 *.tar.gz
+*.zip
 *-manual-license.txt
 *-manual.pdf
 pkg/
