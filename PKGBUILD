@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=diny
 pkgver=0.5.4
-pkgrel=2
+pkgrel=3
 pkgdesc="generate ai git commit messages"
 arch=('x86_64' 'aarch64')
 url="https://github.com/dinoDanic/diny"
