@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=clive
 pkgver=0.12.16
-pkgrel=1
+pkgrel=2
 pkgdesc="⚡ Automates terminal operations."
 arch=('x86_64' 'aarch64')
 url="https://github.com/koki-develop/clive"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/koki-develop/clive.git#tag=v$pkgver")
