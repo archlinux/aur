@@ -2,7 +2,7 @@
 
 pkgname=polytrack
 pkgver=0.5.2
-pkgrel=6
+pkgrel=7
 pkgdesc="An Unofficial Community Made AUR Package"
 arch=('x86_64')
 url="https://github.com/SoupcanUBG/polytrack"
@@ -22,9 +22,8 @@ tar -xzf "$srcdir/PolyTrack-linux-x64.tar.gz" -C "$pkgdir/usr/share/$pkgname"
 
 install -d "$pkgdir/usr/share/applications"
 
-mv "$pkgdir/usr/share/$pkgname/$pkgname.deskop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 
-install -Dm644 "$pkgdir/usr/share/applications/$pkgname.desktop" \
+install -Dm644 "$pkgdir/usr/share/$pkgname/$pkgname.desktop" \
     "$pkgdir/usr/share/applications/$pkgname.desktop"
 
 install -Dm644 "$pkgdir/usr/share/$pkgname/icon.png" \
