@@ -2,7 +2,7 @@
 # Inspired from the PKGBUILD for vscodium.
 
 pkgname=vscodium-insiders
-pkgver=1.109.00954
+pkgver=1.109.00971
 pkgrel=1
 pkgdesc="Binary releases of Code Insiders without branding/telemetry/licensing (git build from latest release)"
 arch=('x86_64' 'aarch64' 'armv7h')
