@@ -3,11 +3,11 @@
 # Maintainer: Alexander Grothe <seahawk1986[at]hotmail[dot]com>
 pkgname=vdr-filebrowser
 pkgver=0.2.3
-_vdrapi=9
-pkgrel=11
+_vdrapi=11
+pkgrel=12
 pkgdesc="filebrowser with custom commands for vdr"
 url="https://github.com/vdr-projects/vdr-plugin-filebrowser"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL3')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
