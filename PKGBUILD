@@ -7,7 +7,7 @@ _vdrapi=6
 pkgrel=14
 pkgdesc="Plex plugin for Linux VDR"
 url="https://github.com/chriszero/vdr-plugin-plex"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 depends=('poco' 'pcre' "vdr-api=${_vdrapi}" 'vdr-skindesigner')
 _plugname=${pkgname//vdr-/}
