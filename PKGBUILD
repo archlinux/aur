@@ -3,11 +3,11 @@
 # Maintainer: Manuel Reimer <manuel.reimer@gmx.de>
 pkgname=vdr-robotv
 pkgver=0.15.0
-_vdrapi=9
-pkgrel=7
+_vdrapi=11
+pkgrel=8
 pkgdesc="VDR server plugin for roboTV"
 url="https://github.com/pipelka/vdr-plugin-robotv"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 depends=('zlib' 'gcc-libs' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
