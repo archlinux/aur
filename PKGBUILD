@@ -3,11 +3,11 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-devstatus
 pkgver=0.5.0
-_vdrapi=9
-pkgrel=13
+_vdrapi=11
+pkgrel=14
 pkgdesc="displays the status of all available dvb devices"
 url="https://gitlab.com/kamel5/devstatus"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
