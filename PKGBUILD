@@ -5,9 +5,9 @@
 _pkgname="art-rawconverter"
 pkgname="$_pkgname-bin"
 pkgver=1.26.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Raw image converter forked from RawTherapee with ease of use in mind"
-url="https://github.com/artpixls/ART"
+url="https://github.com/artraweditor/ART"
 license=('GPL-3.0-or-later')
 arch=('x86_64')
 
