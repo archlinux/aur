@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=talhelper
-pkgver=3.1.3
+pkgver=3.1.4
 pkgrel=1
 pkgdesc='A tool to help create Talos clusters in your GitOps repository'
 arch=(x86_64)
@@ -15,8 +15,8 @@ optdepends=(
 )
 options=('!lto')
 source=("$pkgname::git+https://github.com/budimanjojo/talhelper#tag=v$pkgver")
-sha512sums=('7948e26f3276657bfe5e71c206f0f17abe8ba6f3938cd0d8566428b362c6c1ce16d9208b7f32101e4ed8abef26522a112168a65c17e3dcea1be8bdf31eeb3e2f')
-b2sums=('e62829be7356885346e501cbdd4f30db717f6e3e34dec9f0897fa0d231144f25070e02daafa693f8982acebf760ea82f7eeeb667778d3792f6ae8b42dd9a0d9b')
+sha512sums=('fc07bf51e95de2a1e47f4784df7cfb98250cdbafab6ff53aa9da6f31dfbdb86a92e946feccdc29581ebf584f13e92d4ab902ef81a7d63ad43b03c0541185fc20')
+b2sums=('05933d28e8c1364ab83b3e86f6b0b653ddce42713a69baaf04ee9250abc2f8693f85ab010a5ac4e92dd2222a3e48c332f342776bf9f64a8a0d85b90eab257394')
 
 prepare() {
   cd "$pkgname"
