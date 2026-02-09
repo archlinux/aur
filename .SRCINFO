@@ -1,7 +1,7 @@
 pkgbase = lazyrss
 	pkgdesc = A terminal-based RSS/Atom feed reader TUI inspired by lazygit
 	pkgver = 0.1.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/sujaltv/lazyrss
 	arch = x86_64
 	arch = aarch64
