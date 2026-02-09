@@ -1,0 +1,19 @@
+pkgbase = cloudtolocalllm-appimage
+	pkgdesc = Privacy-first local AI workspace (AppImage version)
+	pkgver = 10.1.188
+	pkgrel = 1
+	url = https://github.com/CloudToLocalLLM-online/CloudToLocalLLM
+	arch = x86_64
+	license = MIT
+	depends = fuse2
+	depends = libayatana-appindicator
+	depends = gtk3
+	depends = libsecret
+	provides = cloudtolocalllm
+	conflicts = cloudtolocalllm-git
+	conflicts = cloudtolocalllm-bin
+	options = !strip
+	source = cloudtolocalllm-10.1.188-x86_64.AppImage::https://github.com/CloudToLocalLLM-online/CloudToLocalLLM/releases/download/v10.1.188/cloudtolocalllm-10.1.188-x86_64.AppImage
+	sha256sums = SKIP
+
+pkgname = cloudtolocalllm-appimage
