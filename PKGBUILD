@@ -1,5 +1,5 @@
 pkgname=cloudtolocalllm-appimage
-pkgver=10.1.188
+pkgver=10.1.189
 pkgrel=1
 pkgdesc="Privacy-first local AI workspace (AppImage version)"
 arch=('x86_64')
