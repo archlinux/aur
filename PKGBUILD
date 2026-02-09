@@ -2,12 +2,12 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-iptv
-pkgver=2.6.10
-_vdrapi=9
+pkgver=2.6.12
+_vdrapi=11
 pkgrel=1
 pkgdesc="Integrates multicast IPTV transport streams seamlessly into VDR"
 url="https://github.com/Zabrimus/vdr-plugin-iptv"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 depends=('curl' "vdr-api=${_vdrapi}")
 optdepends=('vlc: Needed for vlc2iptv')
@@ -34,7 +34,7 @@ backup=("etc/vdr/conf.avail/50-$_plugname.conf"
         'etc/vdr/plugins/iptv/vlcinput/zdf-iptv.conf'
         'etc/vdr/plugins/iptv/vlcinput/zdf_info-iptv.conf'
         'etc/vdr/plugins/iptv/vlcinput/zdf_kultur-iptv.conf')
-sha256sums=('20d4ba732773071981065b05d750b8292daa5015696b9ea6e61fec7d5f47f0c6'
+sha256sums=('3a00bac781d7a19ce804c472f6be2792952440a3dfa3de0fcd7840e8c2421f30'
             'd4a39fae860ce961b2aab8b721cef7f37e80640c50cc9c06d5f9d2b9c265379d'
             '9c8e99d0c82ef5af5141ff89ffd411e0feb3ee6ff2416fee03d9b09e2edb2a6c'
             'c5ead86e396eb0f2bbfced5913f381764131575379b2930bd0e86f6d2df3f774'
