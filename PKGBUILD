@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=gocovsh
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Go Coverage in your terminal: a tool for exploring Go Coverage reports from the command line 💻"
 arch=('x86_64' 'aarch64')
 url="https://github.com/orlangure/gocovsh"
