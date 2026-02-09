@@ -10,7 +10,7 @@ license=('GPL3')
 depends=(
     'gtk4>=4.18.0'
     'libadwaita>=1.8.0'
-    'libshumate>=1.7.0'
+    'libshumate>=1.3.0'
     'gstreamer>=1.24.0'
     'gst-plugins-base-libs>=1.24.0'
     'gst-plugins-bad>=1.24.0'
@@ -28,23 +28,23 @@ makedepends=('git' 'rust' 'cargo' 'pkgconf' 'meson' 'ninja' 'blueprint-compiler'
 provides=('shortwave' 'shortwave-mpris')
 conflicts=('shortwave' 'shortwave-mpris')
 options=('!lto')
-source=("git+$url.git#branch=main")
+source=("git+$url.git#branch=master")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "Shortwave"
+  cd "Shortwave-MPRIS"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "Shortwave"
+  cd "Shortwave-MPRIS"
   # Set up Rust toolchain
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  cd "Shortwave"
+  cd "Shortwave-MPRIS"
   
   # Set up Rust environment
   export RUSTUP_TOOLCHAIN=stable
@@ -59,13 +59,13 @@ build() {
 }
 
 check() {
-  cd "Shortwave"
+  cd "Shortwave-MPRIS"
   # Run tests if needed
   # meson test -C build --print-errorlogs
 }
 
 package() {
-  cd "Shortwave"
+  cd "Shortwave-MPRIS"
   DESTDIR="$pkgdir" meson install -C build
   
   # Install license

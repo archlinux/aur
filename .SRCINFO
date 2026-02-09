@@ -17,7 +17,7 @@ pkgbase = shortwave-mpris-git
 	makedepends = appstream-glib
 	depends = gtk4>=4.18.0
 	depends = libadwaita>=1.8.0
-	depends = libshumate>=1.7.0
+	depends = libshumate>=1.3.0
 	depends = gstreamer>=1.24.0
 	depends = gst-plugins-base-libs>=1.24.0
 	depends = gst-plugins-bad>=1.24.0
@@ -35,7 +35,7 @@ pkgbase = shortwave-mpris-git
 	conflicts = shortwave
 	conflicts = shortwave-mpris
 	options = !lto
-	source = git+https://github.com/ixnewton/Shortwave-MPRIS.git#branch=main
+	source = git+https://github.com/ixnewton/Shortwave-MPRIS.git#branch=master
 	sha256sums = SKIP
 
 pkgname = shortwave-mpris-git
