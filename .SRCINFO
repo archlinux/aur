@@ -1,14 +1,14 @@
 pkgbase = monitui
 	pkgdesc = A delightfully minimal TUI for wrangling Hyprland monitors
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
-	url = https://github.com/nathanielbd/monitui
+	url = https://github.com/nathaniel-fargo/monitui
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
 	depends = hyprland
-	source = monitui-0.2.2.tar.gz::https://static.crates.io/crates/monitui/monitui-0.2.2.crate
-	sha256sums = e6f35c3995332f1fdbd79b33008cfb9085129604e4119c1d604b3c0e74eb28ae
+	source = monitui-0.2.3.tar.gz::https://static.crates.io/crates/monitui/monitui-0.2.3.crate
+	sha256sums = 9e2730fdd590c12af227d6cbffc206a34e33d6f9aaa8c3cfeeb8c55b58d3262d
 
 pkgname = monitui

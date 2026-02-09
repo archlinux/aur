@@ -1,15 +1,15 @@
 # Maintainer: Nathaniel Fargo <nathaniel.fargo@gmail.com>
 pkgname=monitui
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="A delightfully minimal TUI for wrangling Hyprland monitors"
 arch=('x86_64')
-url="https://github.com/nathanielbd/monitui"
+url="https://github.com/nathaniel-fargo/monitui"
 license=('MIT')
 depends=('gcc-libs' 'hyprland')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('e6f35c3995332f1fdbd79b33008cfb9085129604e4119c1d604b3c0e74eb28ae')
+sha256sums=('9e2730fdd590c12af227d6cbffc206a34e33d6f9aaa8c3cfeeb8c55b58d3262d')
 
 prepare() {
     cd "$pkgname-$pkgver"
