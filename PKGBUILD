@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=blipgloss
 pkgver=0.4.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Style definitions for nice terminal layouts 👄"
 arch=('x86_64' 'aarch64')
 url="https://github.com/wobsoriano/blipgloss"

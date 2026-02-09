@@ -1,7 +1,7 @@
 pkgbase = blipgloss
 	pkgdesc = Style definitions for nice terminal layouts 👄
 	pkgver = 0.4.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/wobsoriano/blipgloss
 	arch = x86_64
 	arch = aarch64
