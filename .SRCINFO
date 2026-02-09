@@ -1,13 +1,13 @@
 pkgbase = python-publicsuffixlist
 	pkgdesc = publicsuffixlist for python
-	pkgver = 1.0.2.20260117
+	pkgver = 1.0.2.20260209
 	pkgrel = 1
 	url = https://github.com/ko-zu/psl
 	arch = any
 	license = MPL-2.0
 	makedepends = python-setuptools
 	depends = python
-	source = https://pypi.io/packages/source/p/publicsuffixlist/publicsuffixlist-1.0.2.20260117.tar.gz
-	sha256sums = 24e11230db4fe4d7e68bb43203f80bf527f614c0625a7dc2749d7b0444d858e5
+	source = https://pypi.io/packages/source/p/publicsuffixlist/publicsuffixlist-1.0.2.20260209.tar.gz
+	sha256sums = 00c7a250aa4f15aed0fdeca4d1de13c68c0b240819b570d0fba92479a4d01986
 
 pkgname = python-publicsuffixlist
