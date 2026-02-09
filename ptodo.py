@@ -230,7 +230,7 @@ def app():
 
         console.print(
             Align.center(
-                "\n    [1] [bold green]Add Task[/bold green]     [2] [bold blue]Complete Task[/bold blue]"
+                "\n     [1] [bold green]Add Task[/bold green]     [2] [bold blue]Complete Task[/bold blue]"
             )
         )
         console.print(
