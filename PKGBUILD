@@ -9,8 +9,6 @@ url='https://shellcheck.net'
 arch=('any')
 license=('GPL-3.0-or-later')
 makedepends=('pandoc')
-# this is a hard requirement, otherwise we would need to declare a conflict with
-# extra/shellcheck, which would then block 'shellcheck-bin'
 depends=('shellcheck-bin')
 provides=('shellcheck-doc')
 conflicts=('shellcheck-doc')
@@ -26,7 +24,6 @@ prepare() {
 
 build() {
   cd "${srcdir}"
-
   ./manpage
 }
 
