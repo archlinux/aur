@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=go-global-update
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A command to update globally installed go executables"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Gelio/go-global-update"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/Gelio/go-global-update.git#tag=v$pkgver")
