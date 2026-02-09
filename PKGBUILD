@@ -1,34 +1,29 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=jolt
-pkgver=1.1.3
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc='TUI-based battery and energy monitor.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/jordond/jolt'
 license=('MIT')
-makedepends=('cargo' 'patch')
+makedepends=('cargo')
 provides=('jolt')
 conflicts=('jolt-git' 'jolt-bin')
 options=(!lto)
 install='jolt.install'
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
-    '120-remove-daemon-install-and-uninstall-subcommands.patch'
     'jolt.install'
     "$pkgname-$pkgver.tar.gz.asc"
-    '120-remove-daemon-install-and-uninstall-subcommands.patch.asc'
     'jolt.install.asc')
-sha256sums=('9a2d5180b044bbb42e5cc948f403035371cd3a6ba824e292dfb619d4e045e8d3'
-            '3005da92266858200c5496f46fe6d87dabecd664e425eee1da269bb382a59f65'
+sha256sums=('c6756b84349a6f253d81eb9ad6074f9b94461043c053b1b7ce5f86c2e1bed04d'
             '08972ab4d23a67622d2177988338c7a4a4341b4f1557b359f30b7512fb277fff'
-            'SKIP'
             'SKIP'
             'SKIP')
 validpgpkeys=('EF4B4CB5DFB8822216A473B1597AB12E66262898')
 
 prepare() {
     cd "$pkgname-$pkgver"
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-    patch -p1 < ../120-remove-daemon-install-and-uninstall-subcommands.patch
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
@@ -43,6 +38,7 @@ package() {
     install -Dm0755 "target/release/$pkgname" "$pkgdir/usr/bin/jolt"
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
     install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
-    install -Dm644 -t "${pkgdir}/usr/lib/systemd/user/" jolt.service
+    install -Dm644 -t "${pkgdir}/usr/lib/systemd/user/" assets/jolt.service
 }
 
+# vim: ts=4 sw=4 et:
