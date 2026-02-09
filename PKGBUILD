@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=mufetch
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="neofetch-style music cli"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ashish0kumar/mufetch"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/ashish0kumar/mufetch.git#tag=v$pkgver")
