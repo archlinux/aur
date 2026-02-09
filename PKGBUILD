@@ -1,14 +1,14 @@
 pkgname=vigaphone-bin
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 options=('!strip' '!debug')
 groups=('pro-audio')
-pkgdesc="ViGAPhone is a MIDI Physical‑Modeling Synthesizer Lab, Instrument Tuner, Timbre Analyzer and more..."
+pkgdesc="ViGAPhone is a MIDI Physical‑Modeling Synthesizer Lab, Sound and Timbre Analyzer, Instrument Tuner and more..."
 arch=('x86_64')
 url="https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone"
 license=('custom')
 source=("https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone/releases/download/R${pkgver}/ViGAPhoneR_linux_amd64.tar.gz")
-sha256sums=('b6c124a062b497f2989511dcd571f9aa9ae6271805129d38f1a947f051493d59')
+sha256sums=('15b7db1df7a35a5ba6393b0e2aa86b8b521f54e1e58e5cddc5bd7318872196c3')
 
 depends=(
     'alsa-lib'
@@ -47,16 +47,18 @@ package() {
 	# metainfo & long Description
 	install -Dm644 "installOnLinuxUser/org.vigaworld.vigaphone.metainfo.xml" "$pkgdir/usr/share/metainfo/org.vigaworld.vigaphone.metainfo.xml"
 
-    # Données utilisateur
-    install -d "$pkgdir/usr/share/vigaphone"
-    #- cp -r configuration Instrument midi wav wavCapture run.vigaphone.tsv "$pkgdir/usr/share/vigaphone/"
-    cp -a ./ "$pkgdir/usr/share/vigaphone/"
-
-
     # Locales
     for lang in locale/*; do
         langname=$(basename "$lang")
         install -Dm644 "$lang/LC_MESSAGES/ViGAPhone.mo" "$pkgdir/usr/share/locale/$langname/LC_MESSAGES/ViGAPhone.mo"
     done
+
+    # Données utilisateur
+    #- install -d "$pkgdir/usr/share/vigaphone"
+    #- cp -r configuration Instrument midi wav wavCapture run.vigaphone.tsv "$pkgdir/usr/share/vigaphone/"
+	# Données utilisateur (tout sauf ce qui est déjà installé ailleurs)
+	# on garde installOnLinuxUser pour le script d'installation dans le $HOME
+	rsync -a --chmod=D755,F644 --exclude=ViGAPhone --exclude=locale $(SOURCE)/ $(PKGDIR)/usr/share/vigaphone/
+
 }
 
