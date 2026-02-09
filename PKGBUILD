@@ -3,7 +3,7 @@
 # Contributor: syntheit <daniel@matv.io>
 
 pkgname=tagspaces
-pkgver=6.8.1
+pkgver=6.9.0
 pkgrel=1
 pkgdesc="Offline file organizer and browser with tagging support"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('bash' "${_electron}" 'gcc-libs' 'glibc')
 makedepends=('gendesk' 'git' 'nvm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tagspaces/tagspaces/archive/v${pkgver}.tar.gz"
         "${pkgname}.sh")
-sha256sums=('cac4e0849da2fb0b8e37f0f2f1105373f7a22290f506b7743b2e2b629abebde5'
+sha256sums=('142c53ef8b1606756e731dab8a332558356cc3ec18f7b0f655c2ad1c63a81eee'
             '3ece307810a9e0acedb73bb422a58233b9d0933ebfd125db6064b5ea4723a60f')
 
 _ensure_local_nvm() {
