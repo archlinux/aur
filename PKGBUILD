@@ -1,4 +1,4 @@
-# Maintainer: Troughy <troughyofficial at proton dot me>
+# Maintainer: Ari43 <arirera43 [at] gmail [dot] co>
 
 pkgname=alvr-bin
 _pkgname=${pkgname%-bin}
@@ -13,7 +13,7 @@ depends=('vulkan-icd-loader' 'bash' 'hicolor-icon-theme' 'libpipewire')
 makedepends=('tar' 'imagemagick')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("https://github.com/alvr-org/ALVR/releases/download/v$pkgver/${_pkgname}_streamer_linux.tar.gz"
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/alvr-org/ALVR/releases/download/v$pkgver/${_pkgname}_streamer_linux.tar.gz"
 		"${_pkgname}.png"
 		"${_pkgname}.desktop")
 md5sums=('3f3a849db25d490be0ed73483151f713'
