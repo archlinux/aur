@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=json2struct
 pkgver=1.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool to convert JSON to struct type definitions"
 arch=('x86_64' 'aarch64')
 url="https://github.com/marhaupe/json2struct"
-license=('unknown')
+license=('GPL-3.0')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/marhaupe/json2struct.git#tag=v$pkgver")
