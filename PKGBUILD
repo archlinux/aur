@@ -8,7 +8,7 @@
 
 _pkgname="telegram-desktop"
 pkgname="$_pkgname-git"
-pkgver=6.3.1.r6.gc1769b9
+pkgver=6.5.1.r0.g6b0fc1b
 pkgrel=1
 pkgdesc='Official Telegram Desktop client'
 url="https://github.com/telegramdesktop/tdesktop"
@@ -64,7 +64,7 @@ optdepends=(
   'xdg-desktop-portal: desktop integration'
 )
 
-provides=("$_pkgname=${pkgver%%.r*}")
+provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 _source_telegram() {
@@ -212,7 +212,10 @@ fi
 
 prepare() {
   _prepare_telegram
-  [[ "${_build_tg_owt::1}" == "t" ]] && _prepare_tg_owt
+
+  if [[ "${_build_tg_owt::1}" == "t" ]]; then
+    _prepare_tg_owt
+  fi
 }
 
 pkgver() {
