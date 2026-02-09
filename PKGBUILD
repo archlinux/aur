@@ -1,8 +1,8 @@
 # Maintainer: Pulsar <Pulsar33550336@163.com>
 
-pkgname=tuack-ng-bin
+pkgname=tuack-ng-git
 pkgver=0.3.0
-pkgrel=2
+pkgrel=1
 pkgdesc="重构后的 tuack 项目，旨在提供更加高效和轻量的出题体验。"
 url="https://github.com/tuack-ng/tuack-ng"
 license=("AGPL-3.0-or-later")
@@ -10,15 +10,35 @@ arch=("x86_64")
 provides=("tuack-ng")
 conflicts=("tuack-ng")
 depends=("gcc-libs" "glibc")
-source=("https://github.com/tuack-ng/tuack-ng/releases/download/$pkgver/tuack-ng-linux-x86_64.zip")
-sha256sums=('e4143c85c7b396b94bb5c1cd3b57d6b69388361288c155c2df2ba2b21afdc7c0')
+source=("git+https://github.com/tuack-ng/tuack-ng.git")
+sha256sums=('SKIP')
+makedepends=(
+    'cargo'
+    'git'
+)
 optdepends=(
     'typst: Needed for rendering PDF'
     'git: Needed for lfs management'
 )
 
+prepare() {
+    cd tuack-ng
+    git submodule update --init --recursive
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target $(rustc --print host-tuple)
+}
+
+build() {
+    cd tuack-ng
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release
+}
+
 package() {
-    install -Dm755 tuack-ng -t "$pkgdir/usr/bin"
+    cd tuack-ng
+
+    install -Dm755 target/release/tuack-ng -t "$pkgdir/usr/bin"
 
     install -dm755 "$pkgdir/usr/share/tuack-ng/"
     cd assets
@@ -29,11 +49,11 @@ package() {
     cd ..
 
     mkdir -vp "$pkgdir/usr/share/zsh/site-functions"
-    ./tuack-ng gen complete zsh >"$pkgdir/usr/share/zsh/site-functions/_tuack-ng"
+    target/release/tuack-ng gen complete zsh >"$pkgdir/usr/share/zsh/site-functions/_tuack-ng"
 
     mkdir -vp "$pkgdir/usr/share/bash-completion/completions"
-    ./tuack-ng gen complete bash >"$pkgdir/usr/share/bash-completion/completions/tuack-ng"
+    target/release/tuack-ng gen complete bash >"$pkgdir/usr/share/bash-completion/completions/tuack-ng"
 
     mkdir -vp "$pkgdir/usr/share/fish/vendor_completions.d"
-    ./tuack-ng gen complete fish >"$pkgdir/usr/share/fish/vendor_completions.d/tuack-ng.fish"
+    target/release/tuack-ng gen complete fish >"$pkgdir/usr/share/fish/vendor_completions.d/tuack-ng.fish"
 }

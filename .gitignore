@@ -2,4 +2,5 @@ pkg/
 src/
 tuack-ng-*.tar.gz
 tuack-ng-*.zip
-tuack-ng-bin-*.pkg.*
+tuack-ng-git-*.pkg.*
+tuack-ng/
