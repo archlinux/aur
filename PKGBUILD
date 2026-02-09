@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=gowsdl
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="WSDL2Go code generation as well as its SOAP proxy"
 arch=('x86_64' 'aarch64')
 url="https://github.com/hooklift/gowsdl"
-license=('unknown')
+license=('MPL-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/hooklift/gowsdl.git#tag=v$pkgver")
