@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=go-perftuner
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Helper tool for manual Go code optimization."
 arch=('x86_64' 'aarch64')
 url="https://github.com/go-perf/go-perftuner"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/go-perf/go-perftuner.git#tag=v$pkgver")
