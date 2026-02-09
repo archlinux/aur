@@ -1,11 +1,11 @@
 pkgbase = hanime-hunter
 	pkgdesc = A CLI app to download HAnime. 用于下载里番的 CLI 工具
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/acgtools/hanime-hunter
 	arch = x86_64
 	arch = aarch64
-	license = unknown
+	license = GPL-3.0
 	makedepends = go
 	makedepends = git
 	depends = glibc

@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=hanime-hunter
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI app to download HAnime.  用于下载里番的 CLI 工具"
 arch=('x86_64' 'aarch64')
 url="https://github.com/acgtools/hanime-hunter"
-license=('unknown')
+license=('GPL-3.0')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/acgtools/hanime-hunter.git#tag=v$pkgver")
