@@ -5,7 +5,7 @@ pkgname="pkg2appimage"
 pkgdesc="Tool and recipes to convert existing deb packages to AppImage. (Upstream CI)"
 _pkgver=$(wget -q https://api.github.com/repos/AppImageCommunity/pkg2appimage/releases -O - | grep -iP '(?<=pkg2appimage-).*(?=-x86_64.AppImage)' -o | head -n 1)
 pkgver=${_pkgver}
-pkgrel=2
+pkgrel=3
 url="https://github.com/AppImageCommunity/pkg2appimage"
 license=("GPL-2.0-only")
 arch=("any")
@@ -20,7 +20,9 @@ noextract=("$pkgname.AppImage")
 
 package() {
     cd "$srcdir"
-    install -Dm755 $pkgname.AppImage $pkgdir/usr/share/$pkgname.AppImage
+    install -Dm755 $pkgname.AppImage $pkgdir/opt/pkg2appimage/$pkgname.AppImage
+
+    ln -sf /opt/pkg2appimage/$pkgname.AppImage /usr/bin/$pkgname
 }
 sha256sums=('6f74ec26ba14d2d8f1857d150704f9d585dae30b1ca30ce46f375c157b71d07d')
 sha384sums=('dc352cec7db6848126f7bebced61ee72a3f1b855ecff89b68a30613aafab3542027e173028a6a08dc8938cc0a5dce2f1')
