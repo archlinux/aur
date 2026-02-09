@@ -3,7 +3,7 @@
 _pkgbase=penpot
 pkgname=(penpot penpot-exporter penpot-frontend)
 pkgver=2.13.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The open-source design tool for design and code collaboration "
 arch=('x86_64')
 url="https://penpot.app"
@@ -62,6 +62,7 @@ build() {
   export CARGO_HOME=${srcdir}/.cargo
   export RUST_VERSION=1.91.0
   export JAVA_HOME=/usr/lib/jvm/$(archlinux-java status | grep -o "[^ ]*-$_jdkver-[^ ]*" | head -n 1 | tr -d '[:space:]')/
+  export PATH="$JAVA_HOME/bin/:$PATH"
 
   echo "==== BULDING FRONTEND"
   cd "${srcdir}/${_pkgbase}-${pkgver}/frontend"
