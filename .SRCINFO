@@ -1,0 +1,15 @@
+pkgbase = pinentry-dmenu-centered-git
+    pkgdesc = A pinentry program. Assumes a working dmenu installation with the password and center patches.
+    pkgver = 0.r21.g96fe15c
+    pkgrel = 1
+    url = https://github.com/danielml-mx/pinentry-dmenu.git
+    arch = i686
+    arch = x86_64
+    license = GPL
+    provides = pinentry-dmenu
+    conflicts = pinentry-dmenu-inco
+    conflicts = pinentry-dmenu
+    source = git+https://github.com/danielml-mx/pinentry-dmenu.git
+    sha256sums = SKIP
+
+pkgname = pinentry-dmenu-centered-git
