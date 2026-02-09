@@ -4,7 +4,7 @@
 
 pkgname=sdl3-git
 pkgver=3.4.0.r257.gf1a7a64eb4
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple Directmedia Layer (Version 3)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://www.libsdl.org"
@@ -36,6 +36,6 @@ build() {
 
 package() {
 	DESTDIR="${pkgdir}" cmake --install build
-	install -Dm644 SDL/LICENSE.txt -t "$pkgdir/usr/share/licenses/${pkgname}/"
+	mv "$pkgdir/usr/share/licenses/SDL3" "$pkgdir/usr/share/licenses/${pkgname}"
 }
 
