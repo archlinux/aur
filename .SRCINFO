@@ -1,16 +1,17 @@
 pkgbase = vdr-svdrpservice
 	pkgdesc = Offers SVDRP connections as a service to other plugins
 	pkgver = 1.0.0
-	pkgrel = 29
+	pkgrel = 30
 	url = https://github.com/vdr-projects/vdr-plugin-svdrpservice
 	arch = x86_64
 	arch = i686
 	arch = arm
 	arch = armv6h
 	arch = armv7h
+	arch = aarch64
 	license = GPL2
 	depends = gcc-libs
-	depends = vdr-api=9
+	depends = vdr-api=11
 	backup = etc/vdr/conf.avail/50-svdrpservice.conf
 	source = vdr-svdrpservice-1.0.0.tar.gz::https://github.com/vdr-projects/vdr-plugin-svdrpservice/archive/refs/tags/1.0.0.tar.gz
 	source = 50-svdrpservice.conf
