@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=nirvana
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Golang Restful API Framework for Productivity"
 arch=('x86_64' 'aarch64')
 url="https://github.com/caicloud/nirvana"
-license=('unknown')
+license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/caicloud/nirvana.git#tag=v$pkgver")
