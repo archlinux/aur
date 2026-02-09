@@ -3,11 +3,11 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-remote
 pkgver=0.7.0
-_vdrapi=9
-pkgrel=17
+_vdrapi=11
+pkgrel=18
 pkgdesc="Extends the remote control capabilities of vdr"
 url="http://www.escape-edv.de/endriss/vdr/"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
