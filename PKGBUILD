@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=htb-cli
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Interact with Hackthebox using your terminal - Be faster and more competitive !"
 arch=('x86_64' 'aarch64')
 url="https://github.com/GoToolSharing/htb-cli"
-license=('unknown')
+license=('GPL-3.0')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/GoToolSharing/htb-cli.git#tag=v$pkgver")
