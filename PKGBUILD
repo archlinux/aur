@@ -1,8 +1,8 @@
-# Maintainer: Onxy <onxy@example.com>
+# Maintainer: Onxy <mihalygyori05@gmail.com>
 pkgname=betterwallpaper-git
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
-pkgdesc="A modern, high-performance animated wallpaper manager for Linux"
+pkgdesc="A modern, high-performance animated wallpaper manager for Linux (hotfix: GUI no longer removes daemon wallpaper on launch)"
 arch=('x86_64')
 url="https://github.com/Misiix9/BetterWallpaper"
 license=('GPL3')
@@ -15,13 +15,12 @@ depends=(
     'wayland'
     'libayatana-appindicator'
     'glew'
+    'linux-wallpaperengine'
+    'swaybg'
+    'swww'
+    'hyprpaper'
 )
-optdepends=(
-    'linux-wallpaperengine: for Wallpaper Engine scene support'
-    'swaybg: alternative wallpaper backend'
-    'swww: alternative wallpaper backend with animations'
-    'hyprpaper: Hyprland native wallpaper support'
-)
+
 makedepends=('git' 'cmake' 'base-devel' 'wayland-protocols' 'nlohmann-json')
 provides=('betterwallpaper')
 conflicts=('betterwallpaper')
