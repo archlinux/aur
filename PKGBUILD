@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=checkip
 pkgver=0.49.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Get (security) info about IP addresses"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jreisinger/checkip"
