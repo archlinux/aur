@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=stree
 pkgver=0.0.21
-pkgrel=2
+pkgrel=3
 pkgdesc="📁Directory trees of AWS S3 Bucket"
 arch=('x86_64' 'aarch64')
 url="https://github.com/orangekame3/stree"
