@@ -4,7 +4,7 @@
 # shellcheck disable=SC2034,SC2154,SC2164
 
 pkgname='ttf-lxgw-neo-xihei-screen-full'
-pkgver=26.01.10
+pkgver=26.02.09
 pkgrel=1
 pkgdesc="霞鹜新晰黑屏幕阅读版Droid Sans Fallback打底补全版，更适合 PC 及 Android 手机屏幕显示。"
 arch=("any")
@@ -13,7 +13,7 @@ license=("IPA")
 source=("${pkgname}-${pkgver}-${pkgrel}.ttf::${url}/releases/download/${pkgver}/LXGWNeoXiHeiScreenFull.ttf"
         "LICENSE.md"
         "LICENSE_CHS.md")
-sha256sums=('67714cb75966b2e4d05923bc20bdf7594c6f2825b272d538f9b2ca7eabb2329c'
+sha256sums=('789d65336e4d968941710b8057aca18af0794f557b2f38cfaee56c400e627088'
             '1483c7de02dcf8b9c54b3b1aacabf7d6bdf32d412ca6724c0292ea68e862d8cf'
             'bdadacd0751cbb3c9f040d1314ab9b855c3ebf1b540fa6dcf44524cd49819fa1')
 
