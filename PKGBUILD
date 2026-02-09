@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=gtasks
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI client for Google Tasks, written in Go"
 arch=('x86_64' 'aarch64')
 url="https://github.com/BRO3886/gtasks"
-license=('unknown')
+license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/BRO3886/gtasks.git#tag=v$pkgver")
