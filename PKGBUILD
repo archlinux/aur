@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=hanime-hunter
 pkgver=0.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A CLI app to download HAnime.  用于下载里番的 CLI 工具"
 arch=('x86_64' 'aarch64')
 url="https://github.com/acgtools/hanime-hunter"
