@@ -18,15 +18,13 @@ sha256sums=('38dd77910d24c96436ce7c417eeff9701f98e9ada2a1cb3cf92918ab0f62ed1f')
 prepare() {
   cd "${pkgname}-${pkgver}"
 
-  export CI=true
-  bun install --frozen-lockfile
+  CI=true bun install --frozen-lockfile
 }
 
 build() {
   cd "${pkgname}-${pkgver}"
 
-  export PATCHY_VERSION="${pkgver}"
-  bun run build --single
+  PATCHY_VERSION="${pkgver}" bun run build --single
 }
 
 _arch() {
@@ -47,6 +45,7 @@ _arch() {
 package() {
   cd "${pkgname}-${pkgver}"
 
+  local pkg
   pkg="patchy-linux-$(_arch)"
   install -D -m755 -t "${pkgdir}"/usr/bin/ dist/"${pkg}"/bin/patchy
   install -D -m644 -t "${pkgdir}/usr/share/doc/${pkgname}"/ README.md docs/*
