@@ -1,6 +1,6 @@
 pkgname=aurora-gui-git
 pkgver=0.0.0.r0.g0000000
-pkgrel=1
+pkgrel=2
 pkgdesc="Wayland-first GTK4 GUI for Arch Linux package management (pacman + AUR via yay/paru)"
 arch=("x86_64")
 url="https://github.com/ahmoodio/aurora"
@@ -14,7 +14,8 @@ optdepends=(
   "flatpak: optional Flatpak management"
 )
 
-makedepends=('git' 'rust' 'cargo' 'pkgconf' 'clang' 'lld' 'perl')
+# NOTE: do NOT depend on lld here; we force bfd to avoid ring+lld link failures.
+makedepends=('git' 'rust' 'cargo' 'pkgconf' 'clang' 'perl')
 
 provides=("aurora-gui")
 conflicts=("aurora-gui" "aurora-pacman-gui-git")
@@ -38,7 +39,12 @@ pkgver() {
 
 build() {
   cd "$srcdir/aurora"
+
   export CARGO_TARGET_DIR="$srcdir/target"
+
+  # Force GNU bfd linker (prevents ring/rustls undefined symbols seen with lld on some systems)
+  export RUSTFLAGS="${RUSTFLAGS:-} -C link-arg=-fuse-ld=bfd"
+
   cargo build --release --locked
 }
 
