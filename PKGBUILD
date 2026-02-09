@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=protolock
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Protocol Buffer companion tool. Track your .proto files and prevent changes to messages and services which impact API compatibility."
 arch=('x86_64' 'aarch64')
 url="https://github.com/nilslice/protolock"
-license=('unknown')
+license=('BSD-3-Clause')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/nilslice/protolock.git#tag=v$pkgver")
