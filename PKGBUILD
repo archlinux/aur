@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=mufetch
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="neofetch-style music cli"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ashish0kumar/mufetch"

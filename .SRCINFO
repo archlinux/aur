@@ -1,7 +1,7 @@
 pkgbase = mufetch
 	pkgdesc = neofetch-style music cli
 	pkgver = 0.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ashish0kumar/mufetch
 	arch = x86_64
 	arch = aarch64
