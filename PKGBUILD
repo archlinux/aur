@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=captain
 pkgver=1.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Captain - Convert your Git workflow to Docker :whale: containers"
 arch=('x86_64' 'aarch64')
 url="https://github.com/harbur/captain"
