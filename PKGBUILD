@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=jaggr
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="JSON Aggregation CLI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rs/jaggr"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/rs/jaggr.git#tag=$pkgver")
