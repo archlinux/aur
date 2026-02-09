@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=gowebdav
 pkgver=0.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A golang WebDAV client library and command line tool."
 arch=('x86_64' 'aarch64')
 url="https://github.com/studio-b12/gowebdav"
