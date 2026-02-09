@@ -1,15 +1,19 @@
-From 2dce6c6d371e06d5575463e633b95dd44a274836 Mon Sep 17 00:00:00 2001
-From: Tiago de Paula <tiagodepalves@gmail.com>
-Date: Sat, 14 Jun 2025 22:29:34 -0300
-Subject: [PATCH] fix: replace alsa drain
+Author: Martin Stransky <stransky@redhat.com>
+Date: Mon, 11 Jun 2007 10:35:24 UTC
+Origin: https://src.fedoraproject.org/rpms/esound/blob/d66e2950ee74cb99bb8e929b3002699ae5eb2c81/f/esound-0.2.38-drain.patch
+Bug-Fedora: https://bugzilla.redhat.com/show_bug.cgi?id=238680
+Reviewed-by: Bastien Nocera <bnocera@redhat.com>
+Last-Update: 2026-02-09
+Reviewed-by: Tiago de Paula <tiagodepalves@gmail.com>
+Subject: [PATCH] esd hangs the session on sound events
 
 Drop playback instead of waiting for drain to complete.
 ---
- audio_alsa09.c | 2 +-
+ audio_alsa09.c |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/audio_alsa09.c b/audio_alsa09.c
-index 534e3db..d9450e6 100644
+Index: b/audio_alsa09.c
+===================================================================
 --- a/audio_alsa09.c
 +++ b/audio_alsa09.c
 @@ -506,7 +506,7 @@ void esd_audio_flush(void)
@@ -21,6 +25,3 @@ index 534e3db..d9450e6 100644
    
  	if (alsadbg) 
  		print_state();
--- 
-2.49.0
-
