@@ -1,7 +1,7 @@
 pkgbase = poutine
 	pkgdesc = boostsecurityio/poutine
 	pkgver = 1.0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/boostsecurityio/poutine
 	arch = x86_64
 	arch = aarch64

@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=poutine
 pkgver=1.0.7
-pkgrel=2
+pkgrel=3
 pkgdesc="boostsecurityio/poutine"
 arch=('x86_64' 'aarch64')
 url="https://github.com/boostsecurityio/poutine"
