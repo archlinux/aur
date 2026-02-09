@@ -8,6 +8,7 @@ pkgbase = tntdb
 	arch = arm
 	arch = armv6h
 	arch = armv7h
+	arch = aarch64
 	license = GPL2
 	depends = cxxtools
 	depends = sqlite
