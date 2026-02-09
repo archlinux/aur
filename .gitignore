@@ -1,0 +1,6 @@
+*.pkg.tar*
+*.tar.gz
+*-manual-license.txt
+*-manual.pdf
+pkg/
+src/
