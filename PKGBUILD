@@ -1,14 +1,14 @@
 # Maintainer: Xavier B
 pkgbase=reef
 pkgname=('reef' 'reef-tools')
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/ZStud/reef"
 license=('MIT')
 makedepends=('cargo')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/ZStud/reef/archive/v$pkgver.tar.gz")
-sha256sums=('06f9832fc092d007b2590de4c385cdb693b463a1b23131ed5547a3a143882427')
+sha256sums=('58068c9a6a7031a188841605ff2e3c36cccd6fcca4cad1e943388c63a6d84874')
 
 prepare() {
     cd "$pkgbase-$pkgver"
@@ -62,6 +62,9 @@ package_reef-tools() {
     install -Dm644 fish/functions/tools/du.fish "$pkgdir/usr/share/fish/vendor_functions.d/du.fish"
     install -Dm644 fish/functions/tools/ps.fish "$pkgdir/usr/share/fish/vendor_functions.d/ps.fish"
     install -Dm644 fish/functions/tools/ls.fish "$pkgdir/usr/share/fish/vendor_functions.d/ls.fish"
+
+    # conf.d (sources wrappers at startup to override fish builtins like grep.fish)
+    install -Dm644 fish/conf.d/reef-tools.fish "$pkgdir/usr/share/fish/vendor_conf.d/reef-tools.fish"
 
     # License
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/reef-tools/LICENSE"
