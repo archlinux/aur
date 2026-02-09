@@ -32,6 +32,8 @@ conflicts=('ente-auth')
 
 export PATH_=$PATH
 export LD=ld.mold
+export LDFLAGS="$LDFLAGS -Wl,-z,relro,-z,now"
+options=('strip')
 
 pkgver() {
   cd "$srcdir/auth"
@@ -112,6 +114,21 @@ package(){
     local desktop_file="${pkgdir}/usr/share/applications/enteauth.desktop"
     sed -i '/^StartupWMClass=/d' "$desktop_file" && sed -i 's/^Version=\(.*\)/X-Version=\1/; $a StartupWMClass=io.ente.auth' "$desktop_file"
 
+    # file layout: namcap check
+    mkdir -p "${pkgdir}/usr/lib/enteauth"
+    mv "${pkgdir}/usr/share/enteauth/enteauth" "${pkgdir}/usr/lib/enteauth/"
+    mv "${pkgdir}/usr/share/enteauth/lib" "${pkgdir}/usr/lib/enteauth"
+    mv "${pkgdir}/usr/share/enteauth/data" "${pkgdir}/usr/lib/enteauth/"
+
     mkdir -p "${pkgdir}/usr/bin"
-    ln -sf "/usr/share/enteauth/enteauth" "${pkgdir}/usr/bin/enteauth"
+    ln -sf "/usr/lib/enteauth/enteauth" "${pkgdir}/usr/bin/enteauth"
+
+    # remove insecure RUNPATH
+    for so_file in ${pkgdir}/usr/lib/enteauth/lib/*.so; do
+        while read -r rpath; do
+          if [[ "$rpath" == *"${srcdir}"* ]]; then
+              patchelf --remove-rpath "$so_file"
+          fi
+        done < <(patchelf --print-rpath "$so_file" | tr ':' '\n')
+    done
 }
