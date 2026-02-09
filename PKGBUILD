@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=weakauras-companion
 _pkgname=WeakAuras-Companion
-pkgver=5.3.0
-_electronversion=38
+pkgver=5.3.1
+_electronversion=40
 _nodeversion=22
-pkgrel=3
+pkgrel=1
 pkgdesc="Provide the missing link between Wago.io and World of Warcraft.(Use system-wide electron)"
 arch=('any')
 url="https://weakauras.wtf/"
-_ghurl="https://wget.la/https://github.com/WeakAuras/WeakAuras-Companion"
+_ghurl="https://github.com/WeakAuras/WeakAuras-Companion"
 license=('GPL-2.0-or-later')
 depends=(
     "electron${_electronversion}"
@@ -26,7 +26,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('c0bafb3681d0b60f16e15c30c35d6c202dc0780804c85a68936b1b4794382c3d'
+sha256sums=('1d0b8a966b00f87b41f7ced3cb6e25c5ac7edb9f7ae4df93026a6013d13de7ce'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
