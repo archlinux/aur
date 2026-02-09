@@ -1,6 +1,6 @@
 pkgbase = drawing-tablet
 	pkgdesc = Stream your desktop to an Android tablet and use it as a drawing tablet
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/lemonxah/drawing_tablet
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = drawing-tablet
 	optdepends = gst-plugins-bad: NVIDIA NVENC encoder support
 	optdepends = intel-media-driver: Intel VA-API support
 	optdepends = libva-mesa-driver: AMD VA-API support
-	source = drawing-tablet-0.1.0.tar.gz::https://github.com/lemonxah/drawing_tablet/archive/v0.1.0.tar.gz
+	source = drawing-tablet-0.1.1.tar.gz::https://github.com/lemonxah/drawing_tablet/archive/v0.1.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = drawing-tablet
