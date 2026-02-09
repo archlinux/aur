@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=madonctl
 pkgver=3.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="CLI client for the Mastodon social network API"
 arch=('x86_64' 'aarch64')
 url="https://github.com/McKael/madonctl"
