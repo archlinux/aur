@@ -3,11 +3,11 @@
 # Maintainer: Alexander Grothe <seahawk1986[at]hotmail[dot]com>
 pkgname=vdr-zappilot
 pkgver=0.0.6
-_vdrapi=9
-pkgrel=11
+_vdrapi=11
+pkgrel=12
 pkgdesc="Plugin for VDR forked from the plugin pilotskin to browse EPG in channel info"
 url="https://github.com/vdr-projects/vdr-plugin-zappilot"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
