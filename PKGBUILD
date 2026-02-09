@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=jenkins-cli
 pkgver=0.0.47
-pkgrel=2
+pkgrel=3
 pkgdesc="Jenkins CLI allows you to manage your Jenkins in an easy way. Jenkins 命令行客户端"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jenkins-zh/jenkins-cli"
