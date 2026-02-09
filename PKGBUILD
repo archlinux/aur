@@ -21,6 +21,7 @@ b2sums=('SKIP')
 pkgver() {
   cd "${srcdir}/${pkgname}"
 
+  local GIT_TAG
   GIT_TAG="$(git describe --long --tags)"
   echo "${GIT_TAG}" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
