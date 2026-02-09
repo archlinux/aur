@@ -1,7 +1,7 @@
 # Maintainer: Max Marze <max@marze.dev>
 pkgname=creature-desktop-bin
 pkgver=0.0.29
-pkgrel=1
+pkgrel=2
 pkgdesc="The Graphical Agent Interface - Build and share MCP Apps for humans and agents working together"
 arch=('x86_64')
 url="https://creature.run"
