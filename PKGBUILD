@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=brev-cli
 pkgver=0.6.316
-pkgrel=2
+pkgrel=3
 pkgdesc="Connect your laptop to cloud computers. Follow to stay updated about our product"
 arch=('x86_64' 'aarch64')
 url="https://github.com/brevdev/brev-cli"
