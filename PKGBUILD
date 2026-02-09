@@ -1,6 +1,6 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=ovpm
-pkgver=0.2.11
+pkgver=0.2.12
 pkgrel=1
 pkgdesc="OpenVPN Management Server - Effortless and free OpenVPN server administration tool"
 arch=('x86_64' 'aarch64')

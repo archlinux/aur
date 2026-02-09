@@ -1,6 +1,6 @@
 pkgbase = ovpm
 	pkgdesc = OpenVPN Management Server - Effortless and free OpenVPN server administration tool
-	pkgver = 0.2.11
+	pkgver = 0.2.12
 	pkgrel = 1
 	url = https://github.com/cad/ovpm
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ovpm
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/cad/ovpm.git#tag=v0.2.11
+	source = git+https://github.com/cad/ovpm.git#tag=v0.2.12
 	sha256sums = SKIP
 
 pkgname = ovpm
