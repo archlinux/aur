@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=brev-cli
 pkgver=0.6.316
-pkgrel=1
+pkgrel=2
 pkgdesc="Connect your laptop to cloud computers. Follow to stay updated about our product"
 arch=('x86_64' 'aarch64')
 url="https://github.com/brevdev/brev-cli"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/brevdev/brev-cli.git#tag=v$pkgver")
