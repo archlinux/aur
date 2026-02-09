@@ -1,14 +1,14 @@
 # Maintainer: Xavier B
 pkgbase=reef
 pkgname=('reef' 'reef-tools')
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/ZStud/reef"
 license=('MIT')
 makedepends=('cargo')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/ZStud/reef/archive/v$pkgver.tar.gz")
-sha256sums=('e45f80504837dad564f82c16c382d30fb95c1043d68da3968a4ab395e39a0a22')
+sha256sums=('a9cf7070d2a2875abdc983699b529491792407b6d11dd60afe4c76eec71b2829')
 
 prepare() {
     cd "$pkgbase-$pkgver"
@@ -50,8 +50,18 @@ package_reef() {
 }
 
 package_reef-tools() {
-    pkgdesc="Modern CLI tool wrappers for fish — grep→rg, find→fd, sed→sd, du→dust, ps→procs, ls→eza"
-    depends=('fish' 'ripgrep' 'fd' 'sd' 'dust' 'procs' 'eza')
+    pkgdesc="Modern CLI tool wrappers for fish — grep→rg, find→fd, sed→sd, du→dust, ps→procs, ls→eza, cat→bat, cd→zoxide"
+    depends=('fish')
+    optdepends=(
+        'ripgrep: grep → rg wrapper'
+        'fd: find → fd wrapper'
+        'sd: sed → sd wrapper'
+        'dust: du → dust wrapper'
+        'procs: ps → procs wrapper'
+        'eza: ls → eza wrapper'
+        'bat: cat → bat wrapper'
+        'zoxide: cd → zoxide smart directory jumping'
+    )
 
     cd "$pkgbase-$pkgver"
 
@@ -62,6 +72,7 @@ package_reef-tools() {
     install -Dm644 fish/functions/tools/du.fish "$pkgdir/usr/share/fish/vendor_functions.d/du.fish"
     install -Dm644 fish/functions/tools/ps.fish "$pkgdir/usr/share/fish/vendor_functions.d/ps.fish"
     install -Dm644 fish/functions/tools/ls.fish "$pkgdir/usr/share/fish/vendor_functions.d/ls.fish"
+    install -Dm644 fish/functions/tools/cat.fish "$pkgdir/usr/share/fish/vendor_functions.d/cat.fish"
 
     # conf.d (sources wrappers at startup to override fish builtins like grep.fish)
     install -Dm644 fish/conf.d/reef-tools.fish "$pkgdir/usr/share/fish/vendor_conf.d/reef-tools.fish"

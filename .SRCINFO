@@ -1,13 +1,13 @@
 pkgbase = reef
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/ZStud/reef
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = cargo
-	source = reef-0.1.1.tar.gz::https://github.com/ZStud/reef/archive/v0.1.1.tar.gz
-	sha256sums = e45f80504837dad564f82c16c382d30fb95c1043d68da3968a4ab395e39a0a22
+	source = reef-0.1.2.tar.gz::https://github.com/ZStud/reef/archive/v0.1.2.tar.gz
+	sha256sums = a9cf7070d2a2875abdc983699b529491792407b6d11dd60afe4c76eec71b2829
 
 pkgname = reef
 	pkgdesc = Bash compatibility layer for fish shell — paste bash, it just works
@@ -15,11 +15,13 @@ pkgname = reef
 	depends = bash
 
 pkgname = reef-tools
-	pkgdesc = Modern CLI tool wrappers for fish — grep→rg, find→fd, sed→sd, du→dust, ps→procs, ls→eza
+	pkgdesc = Modern CLI tool wrappers for fish — grep→rg, find→fd, sed→sd, du→dust, ps→procs, ls→eza, cat→bat, cd→zoxide
 	depends = fish
-	depends = ripgrep
-	depends = fd
-	depends = sd
-	depends = dust
-	depends = procs
-	depends = eza
+	optdepends = ripgrep: grep → rg wrapper
+	optdepends = fd: find → fd wrapper
+	optdepends = sd: sed → sd wrapper
+	optdepends = dust: du → dust wrapper
+	optdepends = procs: ps → procs wrapper
+	optdepends = eza: ls → eza wrapper
+	optdepends = bat: cat → bat wrapper
+	optdepends = zoxide: cd → zoxide smart directory jumping
