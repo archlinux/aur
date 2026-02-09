@@ -2,14 +2,14 @@
 # Contributor:
 pkgname=gosuki
 pkgver=1.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A lightweight, open-source, privacy-first bookmark manager that unifies your bookmarks across multiple browsers, syncs them in real time (locally or P2P), requires no extensions, and stores everything locally."
 arch=('x86_64' 'aarch64')
 url="https://github.com/blob42/gosuki"
 license=('AGPL-3.0')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/blob42/gosuki.git#tag=v$_pkgver")
+source=("git+https://github.com/blob42/gosuki.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 build() {
@@ -19,13 +19,13 @@ build() {
     -mod=readonly \
     -modcacherw \
     -ldflags='-s -w' \
-    -o $pkgname \
+    -o ./cmd/gosuki/$pkgname \
     ./cmd/gosuki
 }
 
 package() {
   cd "$pkgname" || exit
-  install -Dm 755 $pkgname -t "$pkgdir/usr/bin"
+  install -Dm 755 ./cmd/gosuki/$pkgname -t "$pkgdir/usr/bin"
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }

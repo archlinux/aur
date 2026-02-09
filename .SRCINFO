@@ -1,7 +1,7 @@
 pkgbase = gosuki
 	pkgdesc = A lightweight, open-source, privacy-first bookmark manager that unifies your bookmarks across multiple browsers, syncs them in real time (locally or P2P), requires no extensions, and stores everything locally.
 	pkgver = 1.3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/blob42/gosuki
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = gosuki
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/blob42/gosuki.git#tag=v
+	source = git+https://github.com/blob42/gosuki.git#tag=v1.3.0
 	sha256sums = SKIP
 
 pkgname = gosuki
