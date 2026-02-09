@@ -2,11 +2,11 @@
 pkgname=tecli
 pkgver=0.4.2
 _pkgver=$pkgver-alpha
-pkgrel=2
+pkgrel=3
 pkgdesc="In a world where everything is Terraform, teams use Terraform Cloud API to manage their workloads. TECLI increases teams productivity by facilitating such interaction and by providing easy commands that can be executed on a terminal or on CI/CD systems."
 arch=('x86_64' 'aarch64')
 url="https://github.com/awslabs/tecli"
-license=('unknown')
+license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/awslabs/tecli.git#tag=$_pkgver")
