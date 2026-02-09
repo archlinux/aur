@@ -5,11 +5,11 @@
 pkgbase=dfatmo
 pkgname=('dfatmo' 'vdr-dfatmo')
 pkgver=0.5.0
-_vdrapi=9
-pkgrel=18
+_vdrapi=11
+pkgrel=19
 epoch=1
 url="https://github.com/durchflieger/${pkgbase}"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 makedepends=('libusb' "vdr-api=${_vdrapi}" 'zip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/durchflieger/${pkgbase}/archive/v${pkgver}.tar.gz"
