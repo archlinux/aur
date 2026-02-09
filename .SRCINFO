@@ -1,0 +1,17 @@
+pkgbase = zsync2
+	pkgdesc = Rewrite of zsync-curl using modern C++
+	pkgver = 2.0.0.alpha.1.20250926
+	pkgrel = 1
+	url = https://github.com/AppImageCommunity/zsync2
+	arch = x86_64
+	license = Artistic-1.0-Perl
+	makedepends = args
+	makedepends = cmake
+	makedepends = gtest
+	depends = cpr
+	depends = curl
+	depends = libgcrypt
+	source = zsync2-2.0.0-alpha-1-20250926.tar.gz::https://github.com/AppImageCommunity/zsync2/archive/refs/tags/2.0.0-alpha-1-20250926.tar.gz
+	sha256sums = 7a24a9ce812e1ae10e8eb75cde576870412633da51c7df60124404f9b2f8254c
+
+pkgname = zsync2

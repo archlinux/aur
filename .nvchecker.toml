@@ -1,0 +1,3 @@
+[zsync2]
+source = "git"
+git = "https://github.com/AppImageCommunity/zsync2.git"
