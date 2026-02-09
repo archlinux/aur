@@ -9,9 +9,8 @@ arch=('i686' 'x86_64')
 url='https://www.makemkv.com'
 license=('LGPL' 'MPL' 'custom')
 depends=(
-  'ffmpeg'
-  'java-runtime'
-  'openssl-1.1'
+  ffmpeg
+  java-runtime
 )
 makedepends=(
   'less'

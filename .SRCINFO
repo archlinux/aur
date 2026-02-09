@@ -12,7 +12,6 @@ pkgbase = makemkv-cli
 	makedepends = less
 	depends = ffmpeg
 	depends = java-runtime
-	depends = openssl-1.1
 	provides = makemkv
 	conflicts = makemkv
 	source = https://www.makemkv.com/download/makemkv-bin-1.18.3.tar.gz
