@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=passwordsecure-bin
 _pkgname='Password Secure'
-pkgver=1.2025.11.14
+pkgver=1.2026.02.09
 pkgrel=1
 pkgdesc="A cross-platform password manager that uses strong AES-256 encryption.(Prebuilt version)"
 arch=(
@@ -31,15 +31,20 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/${pkgver}/${_pkgname// /}_Linux_x64.tar.gz")
 source=("${pkgname%-bin}.sh")
 sha256sums=('6aca7dfd3abf71dd91e7b5d6a6d78084c8d52cf5df2564d3889b07e6621940c4')
-sha256sums_aarch64=('30547191e5d783a634732507bd277dee2834713f944cd6831932124e04e23bc5')
-sha256sums_x86_64=('c9f2aa8515aa92f08875aec64692951c4571ef64c932b115f4904b78429035f4')
+sha256sums_aarch64=('f919588c1fa87c27ebee8be6665714dc3150305c16df99d73f6cbd9491655399')
+sha256sums_x86_64=('9792d3ec23ccb9de0266f58d12e3193ef93f27cbf8c1950103acafd9f1f791ee')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${_pkgname// /}/g
     " "${srcdir}/${pkgname%-bin}.sh"
     icotool -i 1 -x "${srcdir}/${_pkgname// /}_Linux_"*/ApplicationIcon.ico -o "${srcdir}/${pkgname%-bin}.png"
-    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-bin}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Utility" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
