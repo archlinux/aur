@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=cfnctl
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cfnctl brings the Terraform cli experience to AWS Cloudformation :cloud:   "
 arch=('x86_64' 'aarch64')
 url="https://github.com/rogerwelin/cfnctl"
-license=('unknown')
+license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/rogerwelin/cfnctl.git#tag=v$pkgver")
