@@ -1,7 +1,7 @@
 pkgbase = cachyos-service-manager
 	pkgdesc = Full-featured systemd service manager for CachyOS (Qt6 + GTK4 frontends)
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Goitonthefloor/cachyos-service-manager
 	arch = any
 	license = MIT
