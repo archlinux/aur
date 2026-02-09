@@ -1,0 +1,20 @@
+pkgbase = python-textual-fspicker-git
+	pkgdesc = A simple Textual filesystem picker dialog library (development version)
+	pkgver = 0.6.0.r16.g68837e3
+	pkgrel = 1
+	url = https://github.com/davep/textual-fspicker
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-uv-build
+	makedepends = python-wheel
+	depends = python
+	depends = python-textual
+	provides = python-textual-fspicker
+	conflicts = python-textual-fspicker
+	source = git+https://github.com/davep/textual-fspicker.git
+	sha256sums = SKIP
+
+pkgname = python-textual-fspicker-git
