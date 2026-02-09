@@ -7,7 +7,7 @@ pkgbase = reef
 	license = MIT
 	makedepends = cargo
 	source = reef-0.1.2.tar.gz::https://github.com/ZStud/reef/archive/v0.1.2.tar.gz
-	sha256sums = a9cf7070d2a2875abdc983699b529491792407b6d11dd60afe4c76eec71b2829
+	sha256sums = 7d6a73393c6d05f85a7f5134de1f759b8f91e42fbc90c3a59b05f8ddcdeed4b7
 
 pkgname = reef
 	pkgdesc = Bash compatibility layer for fish shell — paste bash, it just works
