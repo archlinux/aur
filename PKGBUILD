@@ -2,14 +2,14 @@
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=zathura-pdf-poppler-git
-pkgver=0.3.3.r6.g685b9e8
+pkgver=2026.02.03.r1.g971e0ca
 pkgrel=1
 pkgdesc="PDF support for zathura (poppler backend)"
 arch=('x86_64')
 url="https://pwmt.org/projects/zathura-pdf-poppler"
 license=('Zlib')
-depends=('zathura-git' 'poppler-glib')
-makedepends=('git' 'meson' 'ninja' 'appstream' 'desktop-file-utils')
+depends=('girara-git' 'glib2' 'zathura-git' 'poppler-glib')
+makedepends=('git' 'meson' 'ninja')
 conflicts=('zathura-pdf-poppler')
 provides=('zathura-pdf-poppler')
 source=("$pkgname::git+https://github.com/pwmt/zathura-pdf-poppler.git#branch=develop")
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-  arch-meson build
+  arch-meson build -Dtests=disabled
   ninja -C build
 }
 
