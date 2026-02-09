@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=rad
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern CLI scripts made easy."
 arch=('x86_64' 'aarch64')
 url="https://github.com/amterp/rad"
-license=('unknown')
+license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/amterp/rad.git#tag=v$pkgver")

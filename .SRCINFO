@@ -1,11 +1,11 @@
 pkgbase = rad
 	pkgdesc = Modern CLI scripts made easy.
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/amterp/rad
 	arch = x86_64
 	arch = aarch64
-	license = unknown
+	license = Apache-2.0
 	makedepends = go
 	makedepends = git
 	depends = glibc
