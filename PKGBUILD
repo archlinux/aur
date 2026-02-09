@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=prxy
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="🔌 Command-line reverse proxy for forwarding HTTP requests through an outbound proxy"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Madh93/prxy"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/Madh93/prxy.git#tag=v$pkgver")
