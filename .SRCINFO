@@ -1,0 +1,15 @@
+pkgbase = lazyports-git
+	pkgdesc = A terminal UI tool to visualize and manage network ports
+	pkgver = r28.0556f8a
+	pkgrel = 1
+	url = https://github.com/v9mirza/LazyPorts
+	arch = any
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = lazyports
+	conflicts = lazyports
+	source = git+https://github.com/v9mirza/LazyPorts.git
+	sha256sums = SKIP
+
+pkgname = lazyports-git
