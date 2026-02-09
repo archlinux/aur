@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=iftree
 pkgver=0.0.10
-pkgrel=2
+pkgrel=3
 pkgdesc="iftree help understand container networks by visualizing network interfaces( veth bridge lo ) relation , output in text, table, images and dot language."
 arch=('x86_64' 'aarch64')
 url="https://github.com/t1anz0ng/iftree"
