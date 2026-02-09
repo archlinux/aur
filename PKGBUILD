@@ -1,8 +1,7 @@
-# Maintainer: Alex Brinister <alex_brinister at yahoo dot com>
 # Contributor: Alex Brinister <alex_brinister at yahoo dot com>
 
 pkgname=rmtoo
-pkgver=25.0.1
+pkgver=26.0.2
 pkgrel=1
 pkgdesc="Free and Open Source Requirements Management Tool"
 arch=(any)
@@ -14,22 +13,16 @@ depends=('python'
   'python-scipy' 
   'gnuplot' 
   'python-odfpy' 
-  'python-numpy' 
   'python-stevedore'
   'python-yaml'
   'python-gitpython'
-  'python-gitdb'
-  'python-future'
-  'python-pylint'
-  'python-jinja')
-makedepends=('python' 'python-setuptools' 'python-wheel' 'git')
+  'python-jinja'
+  'python-setuptools') # distutils
 provides=('rmtoo')
 conflicts=('rmtoo')
 
-source=("https://github.com/florath/rmtoo/archive/${pkgver}.tar.gz")
-sha512sums=('5b6f7bc7fdb37553b9c1e25cd5d2f8c701e890be9f7f8ba2be7602a215d0c7f9a50426969dc078265ec60ce7617baa310dd1d96db14ce1998287cd3cb22d9b0b')
-#source=('rmtoo::git+https://github.com/alexbrinister/rmtoo.git')
-#md5sums=('SKIP')
+source=("https://github.com/florath/rmtoo/archive/v${pkgver}.tar.gz")
+sha512sums=('f72f185086bf238f85a91ad996a160f125b199ba39baeb7a4e202f3093c16ba8a05f4e2988affc021f541dee1abb01308b2ecfc37e163887f9be5f62a2676b1f')
 
 
 package() {
