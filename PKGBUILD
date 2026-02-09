@@ -1,8 +1,8 @@
 # Maintainer: NotRx <toby@soupcan.xyz>
 
 pkgname=polytrack
-pkgver=Releases
-pkgrel=901
+pkgver=0.5.2
+pkgrel=1
 pkgdesc="An Unofficial Community Made AUR Package"
 arch=('x86_64')
 url="https://github.com/SoupcanUBG/polytrack"
@@ -38,9 +38,14 @@ Type=Application
 Categories=Game;
 EOF
 
-  install -Dm644 "$pkgdir/usr/share/applications/$pkgname.desktop" \
-    "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm644 "$pkgdir/usr/share/applications/$pkgname.desktop" \
-    "$pkgdir/usr/share/applications/$pkgname/icon.png"
+package() {
+    install -Dm644 "$srcdir/$pkgname.desktop" \
+        "$pkgdir/usr/share/applications/$pkgname.desktop"
+
+    install -Dm644 "$srcdir/icon.png" \
+        "$pkgdir/usr/share/pixmaps/$pkgname.png"
+}
+ 
+
 }
 
