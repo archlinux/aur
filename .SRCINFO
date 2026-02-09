@@ -1,7 +1,7 @@
 pkgbase = go-perftuner
 	pkgdesc = Helper tool for manual Go code optimization.
 	pkgver = 0.6.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/go-perf/go-perftuner
 	arch = x86_64
 	arch = aarch64
