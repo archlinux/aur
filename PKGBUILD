@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=cls3
 pkgver=0.32.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The CLI tool \"cls3\" is to CLear S3 Buckets. It empties (so deletes all objects and versions/delete-markers in) S3 Buckets or deletes the buckets themselves."
 arch=('x86_64' 'aarch64')
 url="https://github.com/go-to-k/cls3"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/go-to-k/cls3.git#tag=v$pkgver")
