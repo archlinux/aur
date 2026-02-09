@@ -9,7 +9,7 @@ epoch=1
 _vdrapi=2.6.1
 pkgdesc="VDR plugin to create DVDs"
 url='https://github.com/FireFlyVDR/vdr-plugin-burn'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686')
 license=('GPL2')
 depends=('gd' 'boost' 'libcdio' 'imlib2' 'dvd+rw-tools' 'dvdauthor' 'mjpegtools' 'lxdvdrip' 'projectx' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
