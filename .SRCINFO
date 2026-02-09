@@ -1,7 +1,7 @@
 pkgbase = prxy
 	pkgdesc = 🔌 Command-line reverse proxy for forwarding HTTP requests through an outbound proxy
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Madh93/prxy
 	arch = x86_64
 	arch = aarch64
