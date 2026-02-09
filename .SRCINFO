@@ -1,11 +1,11 @@
 pkgbase = grpcmd
 	pkgdesc = A simple, easy-to-use, and developer-friendly CLI tool for gRPC.
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/grpcmd/grpcmd
 	arch = x86_64
 	arch = aarch64
-	license = unknown
+	license = MIT
 	makedepends = go
 	makedepends = git
 	depends = glibc
