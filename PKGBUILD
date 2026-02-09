@@ -2,7 +2,7 @@
 
 pkgname=python-jaxlib
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='XLA library for JAX'
 arch=('x86_64')
 url='https://github.com/jax-ml/jax'
@@ -19,6 +19,7 @@ makedepends=(
     'python-installer'
     'python-setuptools'
     'python-wheel'
+    'tinyxxd'
 )
 _bazel_ver=7.7.0
 _xla_sha='bb760b047bdbfeff962f0366ad5cc782c98657e0'
