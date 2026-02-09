@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=gotouch
 pkgver=1.16.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Language Agnostic Customizable Boilerplate Project Creator"
 arch=('x86_64' 'aarch64')
 url="https://github.com/denizgursoy/gotouch"
