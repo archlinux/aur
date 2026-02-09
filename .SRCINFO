@@ -1,6 +1,6 @@
 pkgbase = mod_python
 	pkgdesc = An Apache module that embeds the Python interpreter within the server
-	pkgver = 3.5.0.6
+	pkgver = 3.5.0.7
 	pkgrel = 1
 	url = https://www.modpython.org/
 	install = mod_python.install
@@ -13,7 +13,7 @@ pkgbase = mod_python
 	conflicts = mod_python2-legacy
 	conflicts = mod_python2
 	options = !strip
-	source = mod_python-52f8975829a0a3c467f089894e884d29c83e8a5e.zip::https://github.com/grisha/mod_python/archive/52f8975829a0a3c467f089894e884d29c83e8a5e.zip
-	md5sums = dfd28ac2dcc525307731d8cb1949078e
+	source = mod_python-a638e01b7eb50d0cf127ac14c3e1b64347ee682e.zip::https://github.com/grisha/mod_python/archive/a638e01b7eb50d0cf127ac14c3e1b64347ee682e.zip
+	md5sums = aa8a737b989c5d1b4c224d79f0be9bb1
 
 pkgname = mod_python
