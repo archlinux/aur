@@ -2,21 +2,20 @@
 # Maintainer: tee < teeaur at duck dot com >
 
 pkgname=grain-bin
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
-pkgdesc="A modern web staple. A new language that puts academic language features to work"
+pkgdesc='A modern web staple. A new language that puts academic language features to work'
 arch=('x86_64')
-url="https://github.com/grain-lang/grain"
+url='https://grain-lang.org'
+_git='https://github.com/grain-lang/grain'
 license=('LGPL-3.0-only')
 provides=('grain')
 conflicts=('grain')
 depends=('gcc-libs')
-source_x86_64=("grain-$pkgver::$url/releases/download/grain-v$pkgver/grain-linux-x64")
-sha256sums_x86_64=('5a6a8bbb59a0ad077b4b889fab2577d4cf12d026225cfa51e47c807329406880')
+source_x86_64=("grain-$pkgver::$_git/releases/download/grain-v$pkgver/grain-linux-x64")
+sha256sums_x86_64=('82658891d33f5431e7bd260f0c00b8e86c43eb9182c5327f41db25d60b54dadd')
 options=(!strip)
 
 package() {
-  cd "$srcdir"
-  install -Dm755 "grain-$pkgver" "$pkgdir/usr/bin/grain"
+  install -Dm755 "$srcdir/grain-$pkgver" "$pkgdir/usr/bin/grain"
 }
-# vim:set noet sts=0 sw=4 ts=4 ft=PKGBUILD:
