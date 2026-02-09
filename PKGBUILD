@@ -1,6 +1,6 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=mac-cleanup-go
-pkgver=1.3.10
+pkgver=1.3.11
 pkgrel=1
 pkgdesc="TUI macOS cleaner that scans caches/logs, shows sizes/paths, lets you select what to delete before Trash."
 arch=('x86_64' 'aarch64')
