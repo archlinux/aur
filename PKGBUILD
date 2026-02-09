@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=zeit
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Zeit, erfassen. A command line tool for tracking time. (https://codeberg.org/mrus/zeit)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mrusme/zeit"
