@@ -7,25 +7,11 @@ arch=('x86_64' 'aarch64')
 url='https://github.com/obselate/bntui'
 license=('MIT')
 depends=('gcc-libs')
-makedepends=('cargo' 'gcc' 'pkgconf' 'perl' 'nasm')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/obselate/bntui/archive/v$pkgver.tar.gz")
-sha256sums=('42160d9c70c0f1527470ede58cd1d1e6955ad83eb47fd980e1b9f0cffd4bb354')
-
-prepare() {
-    cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
-}
-
-build() {
-    cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo build --frozen --release
-}
+source_x86_64=("$pkgname-$pkgver-x86_64::https://github.com/obselate/bntui/releases/download/v$pkgver/bntui-linux-x86_64")
+source_aarch64=("$pkgname-$pkgver-aarch64::https://github.com/obselate/bntui/releases/download/v$pkgver/bntui-linux-aarch64")
+sha256sums_x86_64=('1fda63c6ccd081dbd95eed63475e48291c4840eb6949691e81a503f94aab65c1')
+sha256sums_aarch64=('c8a56e9682d8b1f18ee3ef8a73cfb841242cf3c00c9ea776379f906db337fbd7')
 
 package() {
-    cd "$pkgname-$pkgver"
-    install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm755 "$srcdir/$pkgname-$pkgver-$(uname -m)" "$pkgdir/usr/bin/$pkgname"
 }

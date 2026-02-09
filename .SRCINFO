@@ -6,13 +6,10 @@ pkgbase = bntui
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = cargo
-	makedepends = gcc
-	makedepends = pkgconf
-	makedepends = perl
-	makedepends = nasm
 	depends = gcc-libs
-	source = bntui-0.1.1.tar.gz::https://github.com/obselate/bntui/archive/v0.1.1.tar.gz
-	sha256sums = 42160d9c70c0f1527470ede58cd1d1e6955ad83eb47fd980e1b9f0cffd4bb354
+	source_x86_64 = bntui-0.1.1-x86_64::https://github.com/obselate/bntui/releases/download/v0.1.1/bntui-linux-x86_64
+	sha256sums_x86_64 = 1fda63c6ccd081dbd95eed63475e48291c4840eb6949691e81a503f94aab65c1
+	source_aarch64 = bntui-0.1.1-aarch64::https://github.com/obselate/bntui/releases/download/v0.1.1/bntui-linux-aarch64
+	sha256sums_aarch64 = c8a56e9682d8b1f18ee3ef8a73cfb841242cf3c00c9ea776379f906db337fbd7
 
 pkgname = bntui
