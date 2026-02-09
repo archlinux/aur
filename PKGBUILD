@@ -2,16 +2,16 @@
 # Contributor: Moritz Lipp <mlq at pwmt dot org>
 
 pkgname=libfiu
-pkgver=1.00
+pkgver=1.2
 pkgrel=1
 pkgdesc="userspace fault injection framework"
 arch=('i686' 'x86_64')
 url="https://blitiri.com.ar/p/libfiu/"
 license=('custom')
-depends=('sh')
+depends=('bash')
 makedepends=('python')
 source=("https://blitiri.com.ar/p/${pkgname}/files/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('0d9141d793154bb258be5eba0bba2303ee26d5abd92c3ee9baae7a6e03fdf3d3')
+sha256sums=('353ab3b50709cdd91522d7e4bb7ff800b27a97f72b989e22ce426c6de2669674')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
