@@ -3,11 +3,11 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-dbus2vdr
 pkgver=31
-pkgrel=16
-_vdrapi=9
+pkgrel=17
+_vdrapi=11
 pkgdesc="Expose some methods via DBus to control the vdr"
 url="https://github.com/flensrocker/vdr-plugin-dbus2vdr"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 depends=('dbus' 'gcc-libs' 'glib2' 'libpng' "vdr-api=${_vdrapi}")
 makedepends=('png++')
