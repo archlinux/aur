@@ -3,7 +3,7 @@
 # Contributor: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=python-acme
-pkgver=5.3.0
+pkgver=5.3.1
 pkgrel=1
 pkgdesc='ACME protocol implementation in Python'
 arch=(any)
@@ -32,8 +32,8 @@ checkdepends=(python-pytest)
 # hundred tarballs.
 _repo='github.com-certbot-certbot'
 source=("$_repo::git+https://github.com/certbot/certbot#tag=v$pkgver")
-sha512sums=('89dab355dc3bb6b86183dbcf573c761ae8ace52f4c925d69df4bfad3dbcb603579ad656588e1c22e4b3814ea874c2981322d57d79250fc9105f5085a0eea5b8e')
-b2sums=('1479869351cc9784738633f18af3731596227cdf0a0841257a903528f7d15bd6744e333cabd1061b0b9b4ed48428640ebbc6f13a2ca64d268416a1d1dce46d34')
+sha512sums=('dffae74b31d5c4f31112948c65d4503ac90021099aba0efc56c701c2deb846f29f19d1ea9e7509f79277e26c66d0df968e6b9bc6e72221c238566fc5c480d1a9')
+b2sums=('bd038c82b529f18ec964c9a4f640d1183a3dbf65ae8e9d4d39974d755a06e4ecc5385735d08e0793105b6267733f133b63480b2c9c7859f28a2cac56233ec639')
 
 build() {
   cd "$_repo/acme"
