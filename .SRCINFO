@@ -1,6 +1,6 @@
 pkgbase = vibe-bin
 	pkgdesc = Transcribe audio / video offline using OpenAI Whisper
-	pkgver = 3.0.7
+	pkgver = 3.0.8
 	pkgrel = 1
 	url = https://thewh1teagle.github.io/vibe/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = vibe-bin
 	depends = vulkan-icd-loader
 	depends = webkit2gtk-4.1
 	depends = gtk3
-	source = https://github.com/thewh1teagle/vibe/releases/download/v3.0.7/vibe_3.0.7_amd64.deb
-	sha256sums = d182b119e48050aa7987d220bf3c3331c6a0c82c3ecb42a422e6f660f8795f49
+	source = https://github.com/thewh1teagle/vibe/releases/download/v3.0.8/vibe_3.0.8_amd64.deb
+	sha256sums = cedde22f2d081463c5d25bff2dfd325d6a184cf7a6d237cd96efb010152148c2
 
 pkgname = vibe-bin
