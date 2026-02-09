@@ -1,6 +1,6 @@
 pkgbase = issurge
 	pkgdesc = Deal with your client's feedback efficiently by creating a bunch of issues in bulk from a text file.
-	pkgver = 1.0.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://pypi.org/project/issurge/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = issurge
 	makedepends = python-hatchling
 	optdepends = github-cli: for creating issues on GitHub
 	optdepends = glab: for creating issues on GitLab
-	source = https://files.pythonhosted.org/packages/42/60/e613d293771314640a7011ed785e05b21530bbfcb3130fb02d74a46193df/issurge-1.0.1.tar.gz
-	sha256sums = 18d1f5b150f0f01e418b068c2d39fb69b612a95c91ffc8341583a7b66052877c
+	source = https://files.pythonhosted.org/packages/79/cf/38130d1d63e3b81588d94c7f72e3d7be91341d449147e0257dfe7d3c13f1/issurge-1.0.0.tar.gz
+	sha256sums = 9e51a4d359c6b873cd19d080895c2412a22c7307b7d9b8ae61dac363ae572bfa
 
 pkgname = issurge
