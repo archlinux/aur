@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=yamldiff
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI tool to diff two YAML files."
 arch=('x86_64' 'aarch64')
 url="https://github.com/sahilm/yamldiff"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/sahilm/yamldiff.git#tag=$pkgver")
