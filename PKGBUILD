@@ -3,13 +3,13 @@
 # Maintainer: Manuel Reimer <manuel.reimer@gmx.de>
 pkgname=vdr-markad
 pkgver=4.2.17
-pkgrel=1
+pkgrel=2
 _logover=ea2e182ec798375f3830f8b794e7408576f139ad
 epoch=1
-_vdrapi=9
+_vdrapi=11
 pkgdesc="Plugin to mark advertisemets in recordings and optionally auto-cut"
 url="https://github.com/kfb77/vdr-plugin-markad"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL-2.0-or-later')
 depends=("vdr-api=${_vdrapi}" 'libavcodec.so' 'libavfilter.so' 'libavformat.so' 'libavutil.so' 'libswresample.so')
 _plugname=${pkgname//vdr-/}
