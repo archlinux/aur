@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=faas-cli
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Official CLI for OpenFaaS"
 arch=('x86_64' 'aarch64')
 url="https://github.com/openfaas/faas-cli"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/openfaas/faas-cli.git#tag=$pkgver")
