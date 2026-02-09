@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=poutine
 pkgver=1.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="boostsecurityio/poutine"
 arch=('x86_64' 'aarch64')
 url="https://github.com/boostsecurityio/poutine"
-license=('unknown')
+license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/boostsecurityio/poutine.git#tag=v$pkgver")
