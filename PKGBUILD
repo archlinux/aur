@@ -1,6 +1,6 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=aws-doctor
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Diagnose AWS costs, detect idle resources, and optimize cloud spending directly from your terminal. 🩺 ☁️"
 arch=('x86_64' 'aarch64')
