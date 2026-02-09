@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=sqsmover
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="AWS SQS Message mover"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mercury2269/sqsmover"

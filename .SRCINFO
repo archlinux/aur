@@ -1,7 +1,7 @@
 pkgbase = sqsmover
 	pkgdesc = AWS SQS Message mover
 	pkgver = 0.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mercury2269/sqsmover
 	arch = x86_64
 	arch = aarch64
