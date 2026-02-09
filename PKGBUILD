@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=kure
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="CLI password manager with sessions"
 arch=('x86_64' 'aarch64')
 url="https://github.com/GGP1/kure"

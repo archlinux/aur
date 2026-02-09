@@ -1,7 +1,7 @@
 pkgbase = kure
 	pkgdesc = CLI password manager with sessions
 	pkgver = 1.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/GGP1/kure
 	arch = x86_64
 	arch = aarch64
