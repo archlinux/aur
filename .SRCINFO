@@ -1,11 +1,11 @@
 pkgbase = gvm
 	pkgdesc = A programming language version manager 🚀 🚀
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/toodofun/gvm
 	arch = x86_64
 	arch = aarch64
-	license = unknown
+	license = Apache-2.0
 	makedepends = go
 	makedepends = git
 	depends = glibc

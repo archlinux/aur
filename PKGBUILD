@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=gvm
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A programming language version manager 🚀 🚀 "
 arch=('x86_64' 'aarch64')
 url="https://github.com/toodofun/gvm"
-license=('unknown')
+license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/toodofun/gvm.git#tag=v$pkgver")
