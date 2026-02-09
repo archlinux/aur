@@ -4,11 +4,11 @@
 pkgname=vdr-text2skin
 pkgver=1.3.4_11_g8f7954d
 _gitver=8f7954da2488ced734c30e7c2704b92a44e6e1ad
-_vdrapi=9
-pkgrel=15
+_vdrapi=11
+pkgrel=16
 pkgdesc="VDR Text2Skin Plugin"
 url='https://github.com/vdr-projects/vdr-plugin-text2skin'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 depends=('graphicsmagick' "vdr-api=${_vdrapi}")
 makedepends=('git')
