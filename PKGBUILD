@@ -16,7 +16,7 @@ pkgdesc="Ente two-factor authenticator."
 arch=('x86_64')
 url="https://github.com/ente-io/ente/tree/main/auth"
 license=('AGPL-3.0-only')
-depends=('at-spi2-core' 'gcc-libs' 'glib2' 'glibc' 'gtk3' 'hicolor-icon-theme' 'libayatana-appindicator' 'libsecret' 'pango')
+depends=('at-spi2-core' 'gcc-libs' 'glib2' 'glibc' 'gtk3' 'hicolor-icon-theme' 'libayatana-appindicator' 'libsecret' 'pango' 'libepoxy' 'curl' 'fontconfig')
 makedepends=('patchelf' 'clang' 'git' 'cmake' 'ninja' "jdk${_jdk_ver}-openjdk" 'mold')
 options=('!strip' '!emptydirs')
 source=("git+https://github.com/ente-io/auth.git"
@@ -101,7 +101,8 @@ check() {
 
 package(){
     cd "$srcdir/auth/mobile/apps/auth/"
-    tar xvf ./dist/*/ente_auth-*-linux.pacman --exclude="\.*" -C "$pkgdir"
+    # fakeroot environment
+    tar --no-same-owner --owner 0 --group 0 -xvf ./dist/*/ente_auth-*-linux.pacman --exclude="\.*" -C "$pkgdir"
 
     # libsodium.so is needed by libflutter_linux_gtk.so.
     patchelf --add-needed libsodium.so "${pkgdir}/usr/share/${_pkgname}/lib/libflutter_linux_gtk.so"
