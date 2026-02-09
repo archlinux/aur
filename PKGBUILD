@@ -11,7 +11,7 @@ url="https://verifpal.com"
 license=('GPL3' 'custom:cc-by-nc-nd-4.0')
 makedepends=('go')
 source=("https://github.com/symbolicsoft/verifpal/archive/refs/tags/v${pkgver}.tar.gz"
-        "$pkgname-$pkgver-manual.pdf::https://verifpal.com/res/pdf/manual.pdf"
+        "$pkgname-$pkgver-manual.pdf::https://static.verifpal.com/manual.pdf"
         "$pkgname-$pkgver-manual-license.txt::https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.txt")
 sha256sums=('2d0c4dd104600768ca40bb1887da944de02627bf08db62b8faa340038f8ae1c8'
             'SKIP'
