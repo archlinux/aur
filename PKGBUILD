@@ -17,14 +17,13 @@ makedepends=('git')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 pkgstem=${pkgname%-git}
-source=("${pkgstem}::git+${srcurl}#tag=${_tag}" "device_discovery-fix.patch")
-sha256sums=('SKIP' '3d8f8484af5953faf0ab57358b07ce02b014a880a346e11b5cc79812a31ca857')
+source=("${pkgstem}::git+${srcurl}#tag=${_tag}")
+sha256sums=('SKIP')
 
 
 prepare() {
     cd "$srcdir/$pkgstem"
     mkdir -p build
-    patch -Np1 < "$srcdir/device_discovery-fix.patch"
 }
 
 build() {
