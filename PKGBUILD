@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=go-carpet
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for show test coverage in terminal for Go source files"
 arch=('x86_64' 'aarch64')
 url="https://github.com/msoap/go-carpet"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/msoap/go-carpet.git#tag=v$pkgver")
