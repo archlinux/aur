@@ -1,7 +1,7 @@
 # Maintainer: Christopher Snowhill <kode54@gmail.com>
 pkgname=fooyin-kode54-plugins-git
 _pkgname=${pkgname%-git}
-pkgver=r30.bfada2f
+pkgver=r32.8b31f99
 pkgrel=1
 pkgdesc="A set of plugins for Fooyin (Git version)"
 url="https://github.com/kode54/fooyin-kode54-plugins"
@@ -18,8 +18,10 @@ source=('git+https://github.com/kode54/fooyin-kode54-plugins.git'
         'git+https://bitbucket.org/losnoco/highly_quixotic.git'
         'git+https://bitbucket.org/losnoco/vio2sf.git'
         'git+https://bitbucket.org/losnoco/lazyusf2.git'
-        'git+https://bitbucket.org/losnoco/sseqplayer.git')
+        'git+https://bitbucket.org/losnoco/sseqplayer.git'
+        'git+https://bitbucket.org/losnoco/libsnes9x.git')
 md5sums=('SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -45,6 +47,7 @@ prepare() {
   git config submodule.subprojects/vio2sf.url "$srcdir/vio2sf"
   git config submodule.subprojects/lazyusf2.url "$srcdir/lazyusf2"
   git config submodule.subprojects/sseqplayer.url "$srcdir/sseqplayer"
+  git config submodule.subprojects/libsnes9x.url "$srcdir/libsnes9x"
   git -c protocol.file.allow=always submodule update
 }
 
