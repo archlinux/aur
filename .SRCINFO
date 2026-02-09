@@ -1,7 +1,7 @@
 pkgbase = x50ng
 	pkgdesc = HP 50g hardware level emulator
 	pkgver = 2.5.9999
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/gwh/x50ng
 	install = x50ng.install
 	arch = any
