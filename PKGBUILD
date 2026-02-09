@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=opsy
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Opsy - Your AI-Powered SRE Colleague"
 arch=('x86_64' 'aarch64')
 url="https://github.com/datolabs-io/opsy"
-license=('unknown')
+license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/datolabs-io/opsy.git#tag=v$pkgver")
