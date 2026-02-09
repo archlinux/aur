@@ -1,6 +1,6 @@
 pkgbase = relic
 	pkgdesc = RELIC is an Efficient Library for Cryptography
-	pkgver = 0.5.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/relic-toolkit/relic
 	arch = x86_64
@@ -8,8 +8,7 @@ pkgbase = relic
 	license = GPL
 	makedepends = cmake
 	makedepends = doxygen
-	source = https://github.com/relic-toolkit/relic/archive/relic-toolkit-0.5.0.tar.gz
-	md5sums = b552761f949c2e18a92111a395a00f79
+	source = https://github.com/relic-toolkit/relic/archive/refs/tags/0.7.0.tar.gz
+	md5sums = ae6c60a3640fa851d6cd06e00308ad82
 
 pkgname = relic
-
