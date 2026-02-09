@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=gitcs
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="📈 Command line tool written in Go. It allows developers to scan their local Git repositories and generate a visual contributions graph."
 arch=('x86_64' 'aarch64')
 url="https://github.com/hrtsegv/gitcs"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/hrtsegv/gitcs.git#tag=v$pkgver")
