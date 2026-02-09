@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=go-test-report
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Captures go test output and parses it into a single self-contained HTML file."
 arch=('x86_64' 'aarch64')
 url="https://github.com/vakenbolt/go-test-report"
-license=('unknown')
+license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/vakenbolt/go-test-report.git#tag=v$pkgver")
