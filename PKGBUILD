@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=iftree
 pkgver=0.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="iftree help understand container networks by visualizing network interfaces( veth bridge lo ) relation , output in text, table, images and dot language."
 arch=('x86_64' 'aarch64')
 url="https://github.com/t1anz0ng/iftree"
-license=('unknown')
+license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/t1anz0ng/iftree.git#tag=v$pkgver")
