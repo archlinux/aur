@@ -3,11 +3,11 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-rssreader
 pkgver=2.4.0
-_vdrapi=9
-pkgrel=16
+_vdrapi=11
+pkgrel=17
 pkgdesc="Provides a simple OSD menu based user interface for reading user-defined RSS streams"
 url="https://github.com/rofafor/vdr-plugin-rssreader"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 depends=('curl' 'expat' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
