@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=htb-cli
 pkgver=1.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Interact with Hackthebox using your terminal - Be faster and more competitive !"
 arch=('x86_64' 'aarch64')
 url="https://github.com/GoToolSharing/htb-cli"
