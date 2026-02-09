@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pclink
 _app_id=xyz.bytedz.PCLink
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Desktop app for secure remote PC control and management"
 arch=('any')
@@ -50,8 +50,8 @@ optdepends=(
 )
 source=("PCLink-$pkgver.tar.gz::https://github.com/BYTEDz/PCLink/archive/refs/tags/v$pkgver.tar.gz"
          "$pkgname.1")
-sha256sums=('213ee394ef64e54d14c728cf125aeca1fb78348a16a80a169e5f017f64348369'
-            'a7d34dee7209e41a63e778e4de773a1b9699b170b5969d563b6eb8206eda91f9')
+sha256sums=('704cb3ca91936a310b88905135c2e5c8ad38667617d7033e0c497cf48837f3d2'
+            'd509f91850657e052267ae856d4e33597d6f2a9e83f9e022d14025f21fd6d7fd')
 
 build() {
   cd "PCLink-$pkgver"
