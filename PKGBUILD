@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=mac-cleanup-go
 pkgver=1.3.11
-pkgrel=1
+pkgrel=2
 pkgdesc="TUI macOS cleaner that scans caches/logs, shows sizes/paths, lets you select what to delete before Trash."
 arch=('x86_64' 'aarch64')
 url="https://github.com/2ykwang/mac-cleanup-go"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/2ykwang/mac-cleanup-go.git#tag=v$pkgver")
