@@ -1,7 +1,7 @@
 pkgbase = pep-ebook
 	pkgdesc = 📚自动下载带书签的电子书(人民教育教出版社)
 	pkgver = 1.0.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/maogou/pep-ebook
 	arch = x86_64
 	arch = aarch64
