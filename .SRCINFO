@@ -1,13 +1,13 @@
 pkgbase = polytrack
 	pkgdesc = An Unofficial Community Made AUR Package
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SoupcanUBG/polytrack
 	arch = x86_64
 	license = unknown
 	makedepends = git
 	provides = polytrack
-	source = git+https://github.com/SoupcanUBG/polytrack.git
+	source = https://github.com/SoupcanUBG/polytrack/releases/download/Releases/PolyTrack-linux-x64.tar.gz
 	sha256sums = SKIP
 
 pkgname = polytrack

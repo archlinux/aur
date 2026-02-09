@@ -2,14 +2,14 @@
 
 pkgname=polytrack
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An Unofficial Community Made AUR Package"
 arch=('x86_64')
 url="https://github.com/SoupcanUBG/polytrack"
 license=('unknown')
 makedepends=('git')
 provides=("$pkgname")
-source=("git+$url.git")
+source=("https://github.com/SoupcanUBG/$pkgname/releases/download/Releases/PolyTrack-linux-x64.tar.gz")
 sha256sums=('SKIP')
 
 
@@ -18,10 +18,10 @@ sha256sums=('SKIP')
 
 
 package() {
-cd "$srcdir/$pkgname"
 
 install -d "$pkgdir/usr/share/$pkgname"
-cp -r . "$pkgdir/usr/share/$pkgname"
+tar -xzf "$srcdir/PolyTrack-linux-x64.tar.gz" -C "$pkgdir/usr/share/$pkgname"
+
 
 
 install -d "$pkgdir/usr/share/applications"
@@ -38,14 +38,12 @@ Type=Application
 Categories=Game;
 EOF
 
-package() {
-    install -Dm644 "$srcdir/$pkgname.desktop" \
-        "$pkgdir/usr/share/applications/$pkgname.desktop"
+install -Dm644 "$pkgdir/usr/share/$pkgname/$pkgname.desktop" \
+    "$pkgdir/usr/share/applications/$pkgname.desktop"
 
-    install -Dm644 "$srcdir/icon.png" \
-        "$pkgdir/usr/share/pixmaps/$pkgname.png"
-}
- 
+install -Dm644 "$pkgdir/usr/share/$pkgname/icon.png" \
+    "$pkgdir/usr/share/pixmaps/$pkgname.png"
+
 
 }
 
