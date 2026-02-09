@@ -1,6 +1,6 @@
 # Maintainer: skyline69 <skyline@noreply.codeberg.org>
 pkgname=agcp-bin
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Lightweight Rust proxy translating Anthropic Claude API to Google Cloud Code API"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ source_aarch64=("${url}/releases/download/v${pkgver}/agcp-v${pkgver}-aarch64-unk
 source=("LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE")
 
 sha256sums=('6eaffa349d21c1c802daacce02659de6810f4cd06ab3af840815719112eba49e')
-sha256sums_x86_64=('391b47f5eaa55d35530daacfb15854c32b57575438ba8712634ddff63a1f2499')
-sha256sums_aarch64=('e49808230e6109e711ab7ee22cada6e0a60cc44f09934e64ed094b359840612f')
+sha256sums_x86_64=('27af967aaf5a71bed069d30fadaff9ee3c873bb50e62489afe466b0df3874c9c')
+sha256sums_aarch64=('fa62c4e89e7aaf175097ca130dd418bf6227666381cd93184661dec7754d023a')
 
 package() {
     install -Dm755 agcp "${pkgdir}/usr/bin/agcp"
