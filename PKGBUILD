@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=tinyfeed
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Generate a static HTML page from a collection of feeds wtih a simple CLI tool"
 arch=('x86_64' 'aarch64')
 url="https://github.com/TheBigRoomXXL/tinyfeed"

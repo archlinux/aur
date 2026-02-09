@@ -1,7 +1,7 @@
 pkgbase = tinyfeed
 	pkgdesc = Generate a static HTML page from a collection of feeds wtih a simple CLI tool
 	pkgver = 1.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/TheBigRoomXXL/tinyfeed
 	arch = x86_64
 	arch = aarch64
