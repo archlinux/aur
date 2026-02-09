@@ -1,0 +1,17 @@
+pkgbase = github-account-switch-git
+	pkgdesc = A fast, reliable cli tool for managing multiple GitHub accounts
+	pkgver = r55.bdc3962
+	pkgrel = 1
+	url = https://github.com/TheDevOpsBlueprint/github-account-switch-cli
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = git
+	depends = openssh
+	provides = gh-switch
+	conflicts = gh-switch
+	source = gh-switch::git+https://github.com/TheDevOpsBlueprint/github-account-switch-cli.git
+	sha256sums = SKIP
+
+pkgname = github-account-switch-git
