@@ -1,0 +1,14 @@
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+post_install() {
+    printf "${blue} => 感谢您使用 ClassIsland!${all_off}\n"
+    printf "    用户数据（档案、课程表等信息）默认保存在 ${yellow}~/.config/ClassIsland/Data/${all_off}。\n"
+    printf "    如果您的桌面使用 Wayland 平台，请在启动应用时设置 ${yellow}GTK_IM_MODULE${all_off} 环境变量以正常使用输入法（例如 GTK_IM_MODULE=fcitx5）。\n"
+}
+
+post_upgrade() {
+    post_install
+}
