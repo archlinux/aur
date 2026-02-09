@@ -12,6 +12,11 @@ pre_install() {
 
     # Remove legacy files
     rm -f /etc/systemd/system/coolerdash.service
+    rm -f /etc/systemd/system/coolerdash-helperd.service
+    rm -f /etc/systemd/system/multi-user.target.wants/coolerdash-helperd.service
+    rm -rf /etc/systemd/system/cc-plugin-coolerdash.service.d
+    rm -f /usr/lib/systemd/system/coolerdash-helperd.service
+    rm -f /usr/lib/udev/rules.d/99-coolerdash.rules
     rm -rf /opt/coolerdash
     rm -rf /etc/coolerdash
     rm -f /etc/coolercontrol/plugins/coolerdash/config.ini
@@ -100,6 +105,8 @@ pre_remove() {
     # Remove legacy files
     rm -f /etc/systemd/system/coolerdash-helperd.service
     rm -f /etc/systemd/system/coolerdash.service
+    rm -f /etc/systemd/system/multi-user.target.wants/coolerdash-helperd.service
+    rm -rf /etc/systemd/system/cc-plugin-coolerdash.service.d
     rm -f /etc/coolercontrol/plugins/coolerdash/config.ini
     rm -f /etc/coolercontrol/plugins/coolerdash/ui.html
     rm -f /etc/coolercontrol/plugins/coolerdash/LICENSE

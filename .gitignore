@@ -1,5 +1,7 @@
 *~
 .*
+coolerdash/
+*.pkg.tar.zst
 !PKGBUILD
 !.SRCINFO
 !coolerdash.install
