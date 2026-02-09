@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=docker-debug
 pkgver=0.7.11
-pkgrel=1
+pkgrel=2
 pkgdesc="use new container attach on already container go on debug"
 arch=('x86_64' 'aarch64')
 url="https://github.com/zeromake/docker-debug"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/zeromake/docker-debug.git#tag=v$pkgver")

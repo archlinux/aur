@@ -1,11 +1,11 @@
 pkgbase = docker-debug
 	pkgdesc = use new container attach on already container go on debug
 	pkgver = 0.7.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zeromake/docker-debug
 	arch = x86_64
 	arch = aarch64
-	license = unknown
+	license = MIT
 	makedepends = go
 	makedepends = git
 	depends = glibc
