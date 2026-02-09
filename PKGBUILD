@@ -7,7 +7,7 @@ arch=('x86_64' 'aarch64')
 url='https://github.com/obselate/bntui'
 license=('MIT')
 depends=('gcc-libs')
-makedepends=('cargo' 'gcc' 'pkgconf')
+makedepends=('cargo' 'gcc' 'pkgconf' 'perl' 'nasm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/obselate/bntui/archive/v$pkgver.tar.gz")
 sha256sums=('42160d9c70c0f1527470ede58cd1d1e6955ad83eb47fd980e1b9f0cffd4bb354')
 
