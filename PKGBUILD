@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=goben
 pkgver=1.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="goben is a golang tool to measure TCP/UDP transport layer throughput between hosts."
 arch=('x86_64' 'aarch64')
 url="https://github.com/udhos/goben"
