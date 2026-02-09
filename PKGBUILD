@@ -16,7 +16,7 @@ provides=("${_appname}=${pkgver}")
 conflicts=(
     "${_appname}"
     "${_appname}-bin"
-    "${_appname}-electron-bin"
+    "${_appname}-git"
 )
 depends=(
     "gtk3"
@@ -32,9 +32,6 @@ depends=(
 )
 optdepends=(
     "libappindicator-gtk3"
-)
-makedepends=(
-    'asar'
 )
 source=(
     "${pkgname%-bin}.sh"

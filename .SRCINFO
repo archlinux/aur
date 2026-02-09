@@ -5,7 +5,6 @@ pkgbase = freeshow-electron-bin
 	url = https://github.com/ChurchApps/FreeShow
 	arch = x86_64
 	license = GPL-3.0-only
-	makedepends = asar
 	depends = gtk3
 	depends = libnotify
 	depends = nss
@@ -20,7 +19,7 @@ pkgbase = freeshow-electron-bin
 	provides = freeshow=1.5.6
 	conflicts = freeshow
 	conflicts = freeshow-bin
-	conflicts = freeshow-electron-bin
+	conflicts = freeshow-git
 	source = freeshow-electron.sh
 	source = freeshow-electron-1.5.6-amd64.deb::https://github.com/ChurchApps/FreeShow/releases/download/v1.5.6/FreeShow-1.5.6-amd64.deb
 	sha256sums = e08b8699c47bfa38365f7194d2dce675b3f36ef36235be993579db8647a8b307
