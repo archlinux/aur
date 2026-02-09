@@ -42,6 +42,14 @@ prepare() {
 }
 
 package() {
+    # Detect the actual binary name (upstream changed from 'Creature' to 'creature' in 0.0.29)
+    local _bin
+    if [[ -f "${srcdir}/squashfs-root/usr/lib/creature-desktop-app/creature" ]]; then
+        _bin="creature"
+    else
+        _bin="Creature"
+    fi
+
     # Install the main application
     install -dm755 "${pkgdir}/opt/creature-desktop"
     cp -r "${srcdir}/squashfs-root/usr/lib/creature-desktop-app/"* "${pkgdir}/opt/creature-desktop/"
@@ -61,7 +69,7 @@ Version=1.5
 Type=Application
 Name=Creature
 Comment=The Graphical Agent Interface
-Exec=/opt/creature-desktop/Creature %U
+Exec=/opt/creature-desktop/${_bin} %U
 Icon=creature-desktop-app
 Categories=Development;Utility;
 StartupWMClass=Creature
@@ -73,7 +81,7 @@ EOF
 
     # Create symlink for the binary
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s /opt/creature-desktop/Creature "${pkgdir}/usr/bin/creature"
+    ln -s /opt/creature-desktop/${_bin} "${pkgdir}/usr/bin/creature"
 
     # Fix permissions for chrome-sandbox
     chmod 4755 "${pkgdir}/opt/creature-desktop/chrome-sandbox"
