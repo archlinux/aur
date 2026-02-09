@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=tfsort
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI utility to sort Terraform variables and outputs"
 arch=('x86_64' 'aarch64')
 url="https://github.com/AlexNabokikh/tfsort"
-license=('unknown')
+license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/AlexNabokikh/tfsort.git#tag=v$pkgver")
