@@ -1,0 +1,16 @@
+pkgbase = warp-terminal-autoup-bin
+	pkgdesc = Warp, the Rust-based terminal for developers and teams
+	pkgver = 0.2026.02.04.08.20.stable_03
+	pkgrel = 1
+	url = https://warp.dev
+	arch = x86_64
+	license = custom
+	provides = warp-terminal=0.2026.02.04.08.20.stable_03
+	conflicts = warp-terminal
+	noextract = warp-terminal-v0.2026.02.04.08.20.stable_03-1-x86_64.pkg.tar.zst
+	options = !strip
+	options = !debug
+	source = warp-terminal-v0.2026.02.04.08.20.stable_03-1-x86_64.pkg.tar.zst::https://releases.warp.dev/stable/v0.2026.02.04.08.20.stable_03/warp-terminal-v0.2026.02.04.08.20.stable_03-1-x86_64.pkg.tar.zst
+	sha256sums = ab69eb9786c8e11d93d2e94a72fd479908d882edf5b5b98bdb64e003ff89e573
+
+pkgname = warp-terminal-autoup-bin
