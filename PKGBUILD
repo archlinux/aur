@@ -1,6 +1,6 @@
 # Maintainer: Max Marze <max@marze.dev>
 pkgname=creature-desktop-bin
-pkgver=0.0.28
+pkgver=0.0.29
 pkgrel=1
 pkgdesc="The Graphical Agent Interface - Build and share MCP Apps for humans and agents working together"
 arch=('x86_64')
@@ -24,7 +24,7 @@ conflicts=('creature-desktop')
 install=${pkgname}.install
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.AppImage::https://releases.creature.run/desktop/linux/x64/Creature-${pkgver}-x64.AppImage")
-sha256sums=('d7096f8b642fd9dcd8bd791325b1b9ecaf44d637573bb424b8cfe54442fdf7a6')
+sha256sums=('5f3cda6c8a9a8ea8015d97a1f19de5dd1a92a8b6f4eba2041dc483d0abcd427a')
 noextract=("${pkgname}-${pkgver}.AppImage")
 
 makedepends=('imagemagick')
