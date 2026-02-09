@@ -1,8 +1,8 @@
 # Maintainer: Rolf Greger <Rolf_greger@web.de>
 pkgname=cachyos-service-manager
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
-sha256sums=('68bcf922a0366963b3d48a4523c8be0fc702d6e19ae5ac268aeb371d5a2312f9')
+sha256sums=('10b487dbf590d02756fd8ee6e9e59d8e9d855c9fad1e13dcefc5f2adc87e6f4a')
 
 pkgdesc="Full-featured systemd service manager for CachyOS (Qt6 + GTK4 frontends)"
 arch=('any')
