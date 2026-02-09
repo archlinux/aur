@@ -3,11 +3,11 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-zaphistory
 pkgver=0.9.7
-_vdrapi=9
-pkgrel=9
+_vdrapi=11
+pkgrel=10
 pkgdesc="History of the latest viewed channels"
 url='https://github.com/vdr-projects/vdr-plugin-zaphistory'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
