@@ -1,7 +1,7 @@
 pkgbase = gh-markdown-preview
 	pkgdesc = GitHub CLI extension to preview Markdown looks like GitHub.
 	pkgver = 1.11.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/yusukebe/gh-markdown-preview
 	arch = x86_64
 	arch = aarch64
