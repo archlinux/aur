@@ -1,6 +1,6 @@
 pkgbase = carapace-bin
 	pkgdesc = A multi-shell completion binary
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/carapace-sh/carapace-bin
 	license = MIT
@@ -9,12 +9,12 @@ pkgbase = carapace-bin
 	provides = carapace
 	arch = aarch64
 	source_aarch64 = https://github.com/carapace-sh/carapace-bin/releases/download/v${pkgver}/carapace-bin_${pkgver}_linux_arm64.tar.gz
-	sha256sums_aarch64 = 24ed2faba9152fff22757f0a826ee335aecafc44afca3eb9ee57f473011a5b34
+	sha256sums_aarch64 = 5eb10605b3fbfb4236a9f59d95b45bcedc54511910ad94b566a6eb36a80048cf
 	arch = i686
 	source_i686 = https://github.com/carapace-sh/carapace-bin/releases/download/v${pkgver}/carapace-bin_${pkgver}_linux_386.tar.gz
-	sha256sums_i686 = 4aede1296fdad57956d8afba906739e1bbc62235f0b4092f225c7ce636de7567
+	sha256sums_i686 = 6f79acfdc0188b4d954492d3834e2eb6c2495431a463eedeeffa9f03004644c3
 	arch = x86_64
 	source_x86_64 = https://github.com/carapace-sh/carapace-bin/releases/download/v${pkgver}/carapace-bin_${pkgver}_linux_amd64.tar.gz
-	sha256sums_x86_64 = 9a879fe75a387f8b0514d0e8591a272d08f433a69f9d04e1a0a2868d4c84b679
+	sha256sums_x86_64 = fdec431d3837210da8d190bb922c57bd16f4be75920dd11d23cc0cea6e7c4968
 	
 pkgname = carapace-bin
