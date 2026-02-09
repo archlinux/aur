@@ -16,13 +16,13 @@ sha256sums=('SKIP'
             'SKIP')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "Warp-CLI-$pkgver"
   npm install
-  npm run tauri build
+  npm run tauri build -- --no-bundle
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "Warp-CLI-$pkgver"
   
   # Install binary
   install -Dm755 "src-tauri/target/release/warppulse" "$pkgdir/usr/bin/warppulse"
