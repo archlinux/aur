@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=gosuki
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight, open-source, privacy-first bookmark manager that unifies your bookmarks across multiple browsers, syncs them in real time (locally or P2P), requires no extensions, and stores everything locally."
 arch=('x86_64' 'aarch64')
 url="https://github.com/blob42/gosuki"
