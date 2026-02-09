@@ -1,6 +1,6 @@
 # Maintainer: lemonxah <lemonxah@gmail.com>
 pkgname=drawing-tablet
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Stream your desktop to an Android tablet and use it as a drawing tablet"
 arch=('x86_64')
