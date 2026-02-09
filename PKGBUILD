@@ -39,14 +39,19 @@ pkgver() {
 
 build() {
   cd "$srcdir/aurora"
-
   export CARGO_TARGET_DIR="$srcdir/target"
 
-  # Force GNU bfd linker (prevents ring/rustls undefined symbols seen with lld on some systems)
+  # Remove lld if injected by makepkg.conf
+  export LDFLAGS="${LDFLAGS//-fuse-ld=lld/}"
+  export LDFLAGS="${LDFLAGS//-fuse-ld=gold/}"
+
+  # Force GNU bfd (ring + lld is broken on Arch)
   export RUSTFLAGS="${RUSTFLAGS:-} -C link-arg=-fuse-ld=bfd"
 
   cargo build --release --locked
 }
+
+
 
 package() {
   cd "$srcdir/aurora"
