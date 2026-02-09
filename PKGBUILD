@@ -1,23 +1,23 @@
 # This PKGBUILD is part of the VDR4Arch project [https://github.com/vdr4arch]
 pkgbase=vdr-softhdcuvid
 pkgname=(vdr-softhddrm)
-pkgver=3.34
+pkgver=3.35
 pkgrel=1
-_vdrapi=9
+_vdrapi=11
 pkgdesc="VDR output plugin with CUDA and Opengl"
 url="https://github.com/jojo61/vdr-plugin-softhdcuvid"
 arch=('x86_64' 'aarch64')
 license=('AGPL3')
 makedepends=('ffmpeg' 'freeglut' 'glew' 'mesa' "vdr-api=${_vdrapi}" 'xcb-util-wm' 'xorg-server' 'libplacebo>=3.120.0' 'glm' 'glu' 'vulkan-headers' 'ffnvcodec-headers' 'freetype2')
+makedepends_x86_64=( 'NVIDIA-MODULE' )
 _plugname=${pkgbase//vdr-/}
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/V${pkgver}.tar.gz"
         "50-$_plugname.conf")
-sha256sums=('40f1678276f0e4f339a4c36cb6ba4cb8611d1c006b16d764e3ad7eca8fc8d834'
+sha256sums=('58ef80bee0c87baf865c364c6f3617cab21a8d1594dc0e3a3b7e55e187816d44'
             'ad30dd72260a25663e8ea46ca941c4d55d11fef7b936791cdf51de4fd91cb3af')
 
 if [ "$CARCH" == "x86_64" ] ; then
   pkgname+=(vdr-softhdcuvid vdr-softhdvaapi)
-  makedepends+=( 'nvidia>=410.48' )
 fi
 
 prepare() {
@@ -43,10 +43,11 @@ build() {
 }
 
 package_vdr-softhdcuvid() {
-  depends=('freeglut' 'glew' 'mesa' "vdr-api=${_vdrapi}" 'xcb-util-wm' 'xorg-server' 'nvidia>=410.48' 'glu'
+  depends=('freeglut' 'glew' 'mesa' "vdr-api=${_vdrapi}" 'xcb-util-wm' 'xorg-server' 'NVIDIA-MODULE' 'glu'
            'libavcodec.so' 'libavutil.so' 'libplacebo.so' 'libswresample.so')
   optdepends=('vdr-xorg: Recommended way to start X.org server together with VDR')
   backup=("etc/vdr/conf.avail/50-$_plugname.conf")
+  arch=('x86_64')
 
   cd "${srcdir}/vdr-plugin-${_plugname}-${pkgver}"
   install -Dm755 "lib${pkgname}.so" "${pkgdir}$(pkg-config --variable=libdir vdr)/lib${pkgname}.so.$(pkg-config --variable=apiversion vdr)"
@@ -60,6 +61,7 @@ package_vdr-softhdvaapi() {
            'libavcodec.so' 'libavfilter.so' 'libavutil.so' 'libplacebo.so' 'libswresample.so')
   optdepends=('vdr-xorg: Recommended way to start X.org server together with VDR')
   backup=("etc/vdr/conf.avail/50-softhdvaapi.conf")
+  arch=('x86_64')
 
   cd "${srcdir}/vdr-plugin-${_plugname}-${pkgver}"
   install -Dm755 "lib${pkgname}.so" "${pkgdir}$(pkg-config --variable=libdir vdr)/lib${pkgname}.so.$(pkg-config --variable=apiversion vdr)"
@@ -74,6 +76,7 @@ package_vdr-softhddrm() {
            'libavcodec.so' 'libavfilter.so' 'libavutil.so' 'libswresample.so')
   conflicts=('vdr-xorg')
   backup=("etc/vdr/conf.avail/50-softhddrm.conf")
+  arch=('x86_64' 'aarch64')
 
   cd "${srcdir}/vdr-plugin-${_plugname}-${pkgver}"
   install -Dm755 "lib${pkgname}.so" "${pkgdir}$(pkg-config --variable=libdir vdr)/lib${pkgname}.so.$(pkg-config --variable=apiversion vdr)"
