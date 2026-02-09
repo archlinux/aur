@@ -3,12 +3,12 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-live
 pkgver=3.5.3
-pkgrel=1
-_vdrapi=9
+pkgrel=2
+_vdrapi=11
 epoch=1
 pkgdesc="Adds the possibility to control VDR and some of it's plugins by a web interface."
 url="https://github.com/MarkusEh/vdr-plugin-live"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 depends=('pcre2' 'tntnet' "vdr-api=${_vdrapi}")
 optdepends=('vdr-epgsearch: Manage searchtimers'
