@@ -3,7 +3,7 @@
 
 pkgname=classisland
 _appname=cn.classisland.app
-pkgver=2.0.1.0
+pkgver=2.0.0.2
 pkgrel=1
 pkgdesc="适用于班级大屏的课表小工具。Class schedule displaying tool for interactive whiteboards in classrooms."
 arch=('x86_64' 'aarch64')
@@ -42,10 +42,14 @@ prepare() {
 }
 build() {
     cd "${srcdir}/ClassIsland"
+    buildArch="x64"
+    if [ "$CARCH" == "aarch64" ]; then
+        buildArch="arm64"
+    fi
     ./build.sh PublishApp \
         --configuration Release \
         --os-name linux \
-        --arch x64 \
+        --arch $buildArch \
         --build-type full \
         --build-name app \
         --package folder \
