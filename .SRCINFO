@@ -1,11 +1,11 @@
 pkgbase = gowebdav
 	pkgdesc = A golang WebDAV client library and command line tool.
 	pkgver = 0.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/studio-b12/gowebdav
 	arch = x86_64
 	arch = aarch64
-	license = unknown
+	license = BSD-3-Clause
 	makedepends = go
 	makedepends = git
 	depends = glibc
