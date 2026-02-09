@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=redis_tui
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Redis terminal application"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mat2cc/redis_tui"
-license=('unknown')
+license=('GPL-3.0')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/mat2cc/redis_tui.git#tag=v$pkgver")
