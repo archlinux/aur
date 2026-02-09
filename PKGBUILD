@@ -3,11 +3,11 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-osdteletext
 pkgver=2.3.1
-_vdrapi=9
-pkgrel=8
+_vdrapi=11
+pkgrel=9
 pkgdesc="Displays teletext pages directly on VDR's OSD"
 url="https://github.com/vdr-projects/vdr-plugin-osdteletext"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 optdepends=('ttf-teletext2: rendering special graphic characters used in Teletext')
