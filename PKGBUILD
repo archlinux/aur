@@ -1,6 +1,6 @@
 pkgname=lazyrss
 pkgver=0.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A terminal-based RSS/Atom feed reader TUI inspired by lazygit"
 arch=('x86_64' 'aarch64')
 url="https://github.com/sujaltv/lazyrss"
@@ -11,11 +11,13 @@ source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${pkgname}
 sha256sums=('d6272482c13d1d49a3a26283fb34ba5fd61d0f2cbe07600839492ae7fbb2ec28')
 
 prepare() {
+    cd "${pkgname}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target host-tuple
 }
 
 build() {
+    cd "${pkgname}-${pkgver}"
     CFLAGS+=' -ffat-lto-objects'
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
@@ -23,6 +25,7 @@ build() {
 }
 
 check() {
+    cd "${pkgname}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen --all-features
 }
