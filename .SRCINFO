@@ -1,7 +1,7 @@
 pkgbase = faas-cli
 	pkgdesc = Official CLI for OpenFaaS
 	pkgver = 0.18.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/openfaas/faas-cli
 	arch = x86_64
 	arch = aarch64

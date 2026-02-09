@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=faas-cli
 pkgver=0.18.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Official CLI for OpenFaaS"
 arch=('x86_64' 'aarch64')
 url="https://github.com/openfaas/faas-cli"
