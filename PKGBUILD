@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=tabtoy
 pkgver=3.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="高性能表格数据导出器"
 arch=('x86_64' 'aarch64')
 url="https://github.com/davyxu/tabtoy"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/davyxu/tabtoy.git#tag=$pkgver")
