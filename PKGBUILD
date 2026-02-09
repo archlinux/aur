@@ -40,8 +40,9 @@ optdepends=(
   'ttf-dejavu: correct fonts for Greek characters and inline TeX'
   'libcups: printer support'
 )
-# dynamic source with the unstable signature parameter
-_source_url=$(
+# Source URL has an unstable signature parameter when not logged in, like with curl or wget.
+# E.g.: <a href="https://account.wolfram.com/dl/WolframApp?version=14.3&platform=Linux&downloadManager=false&signature=09d7f5...">
+_source_url="$(
   # shellcheck disable=SC2312
   curl -s 'https://www.wolfram.com/download-center/' \
     | grep 'account.wolfram.com/dl/WolframApp' \
@@ -50,11 +51,11 @@ _source_url=$(
     | grep -v 'includesDocumentation=false' \
     | sed -E 's/.*href="([^"]+)".*/\1/' \
     | uniq
-)
+)"
 source=("Wolfram_${pkgver}_LIN_Bndl.sh::${_source_url}"
         'wolfram-remove-xdg-scripts.patch')
 sha256sums=('16f7175e28c639cb91035505c95bcf23247561a2bfaab90ca4bc5ffa6cfe03f7'
-            'ed6509dfface8e05a5fa870350516a0795a1a3bf91cd1bed0f90fa1159378350')
+            '1ea85d8df27e875e8073832ff3a25c7594eeacc7d83add6b8fa8c4462e38a5fe')
 ## Symbol searching and stripping takes a long time, so they are disabled by default.
 ## Also, `debug` won't be of too much help here, since this is a binary distribution.
 ## Here's a quick comparison on my machine:
@@ -89,7 +90,7 @@ options=(!strip !debug)
 _installdir='/opt/Mathematica'
 
 prepare() {
-  warning "Mathematica takes around 26GiB of space for 'makepkg'."
+  warning "Mathematica takes around 26GiB of space with 'makepkg'."
   warning 'Building in a tmpfs (e.g. /tmp when mounted into RAM) may not work.'
 
   # shellcheck disable=SC2312 # echo won't trigger errors
@@ -110,8 +111,8 @@ prepare() {
 }
 
 package() {
+  local installdir desktop_file i mimetype
   installdir="$(realpath -m "${pkgdir}/${_installdir}")"
-  export installdir
 
   msg2 'Running Mathematica installer'
   # https://reference.wolfram.com/language/tutorial/InstallingWolfram.html#650929293
@@ -146,8 +147,8 @@ package() {
   install -D -m644 "${installdir}"/SystemFiles/Installation/*.xml -t "${pkgdir}"/usr/share/mime/packages
   rm -r "${installdir}"/SystemFiles/Installation
 
-  _fix_dekstop_file "${pkgdir}/usr/share/applications/${desktop_file}"
-  _fix_dekstop_file "${pkgdir}"/usr/share/desktop-directories/wolfram-wolfram.directory
+  _fix_desktop_file "${pkgdir}/usr/share/applications/${desktop_file}"
+  _fix_desktop_file "${pkgdir}"/usr/share/desktop-directories/wolfram-wolfram.directory
 
   msg2 'Copying icons'
   for i in 32 64 128; do
@@ -172,7 +173,7 @@ package() {
   _fix_permissions # namcap rule: permissions
 }
 
-_fix_dekstop_file() {
+_fix_desktop_file() {
   # Wolfram declares an invalid "Version=2.0". Most DEs just ignore it, but best to remove it.
   sed -E -i '/^\s*Version\s*=.*$/d' "$1"
   # encoding is outdated
@@ -195,6 +196,7 @@ EOF
 
 _fix_binary_symlinks() {
   msg2 'Fixing symbolic links'
+  local relative_installdir
   relative_installdir="$(realpath --relative-to="${pkgdir}/usr/bin" "${installdir}")"
 
   ln -sf ../SystemFiles/Kernel/Binaries/Linux-x86-64/wolframscript "${installdir}/Executables/"

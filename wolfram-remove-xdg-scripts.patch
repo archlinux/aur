@@ -1,6 +1,27 @@
+Author: Maxim Mikityanskiy <maxtram95@gmail.com>
+Date: Fri, 24 Feb 2023 08:42:55 GMT-3
+Origin: https://bitbucket.org/qt-max/mathematica/commits/e3959aee365e460a722d092275b5037b52840b9d
+Bug-AUR: https://aur.archlinux.org/packages/mathematica?O=40#comment-903497
+Last-Update: 2026-02-09
+Reviewed-by: Joshua Ellis <josh@jpellis.me>
+Reviewed-by: Tiago de Paula <tiagodepalves@gmail.com>
+Subject: [PATCH] Stop attempting to run xdg-* scripts
+
+The installation script (MathInstaller) runs embedded xdg-* scripts that
+cause modifications to the user's home directory or even to the system
+files when run as root. Makepkg always runs as non-root, however,
+pretending to be root by using fakeroot, which causes errors when
+attempting to run these scripts. Instead of relying on these
+assumptions, just stop calling the scripts that would fail.
+---
+ Unix/Installer/WolframInstaller |    2 ++
+ 1 file changed, 2 insertions(+)
+
+Index: b/Unix/Installer/WolframInstaller
+===================================================================
 --- a/Unix/Installer/WolframInstaller
 +++ b/Unix/Installer/WolframInstaller
-@@ -1869,6 +1869,8 @@
+@@ -1869,6 +1869,8 @@ InstallProduct() {
  			xdgScripts="${FullTargetDirectory}/SystemFiles/Installation"
  		fi
  
