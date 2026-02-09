@@ -1,0 +1,21 @@
+pkgbase = usb-link-speed-tray-git
+	pkgdesc = Tray app showing link speed of attached USB storage (e.g. 480 Mbps vs 5 Gbps) and mount points
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Gunther-Schulz/usb-link-speed-tray
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python>=3.10
+	depends = python-pillow
+	depends = python-gobject
+	depends = python-cairosvg
+	depends = libappindicator-gtk3
+	depends = gtk3
+	source = https://github.com/Gunther-Schulz/usb-link-speed-tray/archive/v0.1.0.tar.gz
+	sha256sums = eb5a61e2768fc881cb4dcbff9a8ee2405d706638eaac92415b4592a519c39a0a
+
+pkgname = usb-link-speed-tray-git
