@@ -7,10 +7,10 @@ _pkgname='tooi'
 pkgname="$_pkgname-git"
 pkgdesc='Text-based user interface for Mastodon, Pleroma and friends (development version)'
 pkgver=0.20.0.r3.gdaa1933
-pkgrel=1
+pkgrel=2
 url='https://codeberg.org/ihabunek/tooi'
 arch=('any')
-license=('LicenseRef-Tooi')
+license=('MIT')  # SPDX-License-Identifier: MIT
 makedepends=(
   'git'
   'python-build'
