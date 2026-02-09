@@ -1,11 +1,11 @@
 pkgbase = my-token
 	pkgdesc = 📈Track token prices in your terminal
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/polyrabbit/my-token
 	arch = x86_64
 	arch = aarch64
-	license = unknown
+	license = MIT
 	makedepends = go
 	makedepends = git
 	depends = glibc

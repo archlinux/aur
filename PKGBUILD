@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=my-token
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="📈Track token prices in your terminal"
 arch=('x86_64' 'aarch64')
 url="https://github.com/polyrabbit/my-token"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/polyrabbit/my-token.git#tag=v$pkgver")
