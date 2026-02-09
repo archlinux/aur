@@ -6,14 +6,7 @@ arch=("x86_64")
 url="https://github.com/ahmoodio/aurora"
 license=("MIT")
 
-depends=(
-  "gtk4"
-  "libadwaita"
-  "polkit"
-  "appstream"
-  "hicolor-icon-theme"
-  "pacman"
-)
+depends=('gtk4' 'libadwaita' 'vulkan-icd-loader' 'openssl' 'zlib' 'libssh2')
 
 optdepends=(
   "yay: AUR helper"
@@ -21,12 +14,7 @@ optdepends=(
   "flatpak: optional Flatpak management"
 )
 
-makedepends=(
-  "git"
-  "rust"
-  "cargo"
-  "pkgconf"
-)
+makedepends=('git' 'rust' 'cargo' 'pkgconf' 'clang' 'lld' 'perl')
 
 provides=("aurora-gui")
 conflicts=("aurora-gui" "aurora-pacman-gui-git")
