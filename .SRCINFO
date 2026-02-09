@@ -1,7 +1,7 @@
 pkgbase = dockerfilegraph
 	pkgdesc = Visualize your multi-stage Dockerfiles
 	pkgver = 0.19.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/patrickhoefler/dockerfilegraph
 	arch = x86_64
 	arch = aarch64

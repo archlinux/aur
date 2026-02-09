@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=dockerfilegraph
 pkgver=0.19.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Visualize your multi-stage Dockerfiles"
 arch=('x86_64' 'aarch64')
 url="https://github.com/patrickhoefler/dockerfilegraph"
