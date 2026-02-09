@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=annas-mcp
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="MCP server and CLI tool for searching and downloading documents from Anna's Archive"
 arch=('x86_64' 'aarch64')
 url="https://github.com/iosifache/annas-mcp"

@@ -1,7 +1,7 @@
 pkgbase = annas-mcp
 	pkgdesc = MCP server and CLI tool for searching and downloading documents from Anna's Archive
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iosifache/annas-mcp
 	arch = x86_64
 	arch = aarch64
