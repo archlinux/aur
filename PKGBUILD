@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=ktail
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to easily tail Kubernetes container logs"
 arch=('x86_64' 'aarch64')
 url="https://github.com/atombender/ktail"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/atombender/ktail.git#tag=v$pkgver")
