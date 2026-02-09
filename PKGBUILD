@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=go-global-update
 pkgver=0.2.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A command to update globally installed go executables"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Gelio/go-global-update"

@@ -1,7 +1,7 @@
 pkgbase = go-global-update
 	pkgdesc = A command to update globally installed go executables
 	pkgver = 0.2.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Gelio/go-global-update
 	arch = x86_64
 	arch = aarch64
