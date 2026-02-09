@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=diny
 pkgver=0.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="generate ai git commit messages"
 arch=('x86_64' 'aarch64')
 url="https://github.com/dinoDanic/diny"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/dinoDanic/diny.git#tag=v$pkgver")
