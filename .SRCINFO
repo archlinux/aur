@@ -1,7 +1,7 @@
 pkgbase = hashi-up
 	pkgdesc = bootstrap HashiCorp Consul, Nomad, or Vault over SSH < 1 minute
 	pkgver = 0.16.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jsiebens/hashi-up
 	arch = x86_64
 	arch = aarch64

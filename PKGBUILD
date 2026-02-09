@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=hashi-up
 pkgver=0.16.0
-pkgrel=2
+pkgrel=3
 pkgdesc="bootstrap HashiCorp Consul, Nomad, or Vault over SSH < 1 minute"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jsiebens/hashi-up"
