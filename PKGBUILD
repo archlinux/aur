@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=blipgloss
 pkgver=0.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Style definitions for nice terminal layouts 👄"
 arch=('x86_64' 'aarch64')
 url="https://github.com/wobsoriano/blipgloss"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/wobsoriano/blipgloss.git#tag=v$pkgver")

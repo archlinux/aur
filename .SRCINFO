@@ -1,11 +1,11 @@
 pkgbase = blipgloss
 	pkgdesc = Style definitions for nice terminal layouts 👄
 	pkgver = 0.4.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wobsoriano/blipgloss
 	arch = x86_64
 	arch = aarch64
-	license = unknown
+	license = MIT
 	makedepends = go
 	makedepends = git
 	depends = glibc
