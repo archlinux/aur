@@ -1,6 +1,6 @@
 # Maintainer: SoftExpert <softexpert at gmail dot com>
 pkgname=lightning-image-viewer-git
-pkgver=0.3.0.r0.g6674155
+pkgver=0.5.1.r0.gd1e216b
 pkgrel=1
 pkgdesc='Fast and lightweight desktop image viewer'
 arch=(aarch64 armv7h i686 pentium4 x86_64)
@@ -9,10 +9,12 @@ license=(GPL-3.0-only)
 depends=(
 	# As reported by namcap
 	glibc
-	libexif
+	gcc-libs
+	#libexif
+	libheif
 	hicolor-icon-theme
 	sdl3
-	sdl3_image
+	#sdl3_image
 )
 makedepends=(
 	gcc
@@ -46,7 +48,10 @@ build() {
 	#export CFLAGS='-L-zrelro -L-znow'
 
 	mkdir -p "${srcdir}/lightning-image-viewer/build/"
-	gcc -DWITH_LIBEXIF lightning-image-viewer/src/viewer.c -lSDL3 -lSDL3_image -lexif -lm -o lightning-image-viewer/build/lightning-image-viewer
+	cd "${srcdir}/lightning-image-viewer"
+	cargo build --release
+	cc -o build/lightning-image-viewer src/viewer.c target/release/libimage_rs_ffi.a -lm -lSDL3 -lheif
+	# gcc -DWITH_LIBEXIF lightning-image-viewer/src/viewer.c -lSDL3 -lSDL3_image -lexif -lm -o lightning-image-viewer/build/lightning-image-viewer
 }
 
 package() {
