@@ -1,7 +1,7 @@
 pkgbase = creature-desktop-bin
 	pkgdesc = The Graphical Agent Interface - Build and share MCP Apps for humans and agents working together
 	pkgver = 0.0.29
-	pkgrel = 2
+	pkgrel = 3
 	url = https://creature.run
 	install = creature-desktop-bin.install
 	arch = x86_64
