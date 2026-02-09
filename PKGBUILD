@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=tabtoy
 pkgver=3.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="高性能表格数据导出器"
 arch=('x86_64' 'aarch64')
 url="https://github.com/davyxu/tabtoy"

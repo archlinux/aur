@@ -1,7 +1,7 @@
 pkgbase = tabtoy
 	pkgdesc = 高性能表格数据导出器
 	pkgver = 3.1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/davyxu/tabtoy
 	arch = x86_64
 	arch = aarch64
