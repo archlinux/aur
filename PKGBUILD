@@ -1,13 +1,14 @@
 # Maintainer: Nanaka Hiira <hiira plus archlinux at hiira dot dev>
 pkgname=fcitx5-hazkey
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Japanese input method for fcitx5, powered by azooKey engine"
 arch=('x86_64')
 url="https://hazkey.hiira.dev/"
 license=('MIT')
 depends=('fcitx5>=5.0.4' 'qt6-base' 'libprotobuf-lite.so')
-makedepends=('cmake' 'ninja' 'swift-language' 'vulkan-headers')
+optdepends=('vulkan-icd-loader: Zenzai Vulkan Backend')
+makedepends=('cmake' 'ninja' 'swift-language' 'vulkan-headers' 'shaderc' 'git')
 provides=('hazkey-server' 'hazkey-settings')
 conflicts=('hazkey-server' 'hazkey-settings')
 _dictionaryversion=3.0.1
@@ -27,7 +28,7 @@ build() {
 
     cp -r ../azooKey_dictionary_storage-$_dictionaryversion/Dictionary ./hazkey-server/azooKey_dictionary_storage/
     cp -r ../azooKey_emoji_dictionary_storage-$_emojidictionaaryversion/EmojiDictionary ./hazkey-server/azooKey_emoji_dictionary_storage/
-    rmdir ./hazkey-server/llama.cpp
+    rm ./hazkey-server/llama.cpp -rf
     cp -r ../llama.cpp-$_llamacppversion ./hazkey-server/llama.cpp
 
     mkdir -p build && cd build

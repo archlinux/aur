@@ -1,7 +1,7 @@
 pkgbase = fcitx5-hazkey
 	pkgdesc = Japanese input method for fcitx5, powered by azooKey engine
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hazkey.hiira.dev/
 	arch = x86_64
 	license = MIT
@@ -9,9 +9,12 @@ pkgbase = fcitx5-hazkey
 	makedepends = ninja
 	makedepends = swift-language
 	makedepends = vulkan-headers
+	makedepends = shaderc
+	makedepends = git
 	depends = fcitx5>=5.0.4
 	depends = qt6-base
 	depends = libprotobuf-lite.so
+	optdepends = vulkan-icd-loader: Zenzai Vulkan Backend
 	provides = hazkey-server
 	provides = hazkey-settings
 	conflicts = hazkey-server
