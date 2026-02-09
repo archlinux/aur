@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=trice
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="🟢 super fast 🚀 tiny 🐥 𝘾 printf-look-and-feel ✍ trace code, in ⚡ interrupts ⚡ too ‼️, and real-time PC 💻 logging 👀"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rokath/trice"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/rokath/trice.git#tag=v$pkgver")
