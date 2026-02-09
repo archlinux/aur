@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=gtasks
 pkgver=0.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A CLI client for Google Tasks, written in Go"
 arch=('x86_64' 'aarch64')
 url="https://github.com/BRO3886/gtasks"
