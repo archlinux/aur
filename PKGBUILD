@@ -1,6 +1,6 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla .xyz>
 pkgname=mangowc
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="A Wayland compositor with smooth animation"
 url="https://github.com/DreamMaoMao/mangowc"
@@ -11,7 +11,7 @@ provides=('wayland-compositor')
 makedepends=('meson' 'ninja' 'wayland-protocols>=1.41')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DreamMaoMao/mangowc/archive/refs/tags/$pkgver.tar.gz")
-md5sums=('a01411c31297dd34e5b270ab8e3dfa5c')
+md5sums=('e2fdfab878b1d15322d90c562c8a3019')
 
 build() {
   cd "$pkgname-$pkgver"
