@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=grpcmd
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple, easy-to-use, and developer-friendly CLI tool for gRPC."
 arch=('x86_64' 'aarch64')
 url="https://github.com/grpcmd/grpcmd"
