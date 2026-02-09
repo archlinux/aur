@@ -7,6 +7,7 @@ pkgbase = vdr-epg-daemon
 	arch = arm
 	arch = armv6h
 	arch = armv7h
+	arch = aarch64
 	license = GPL2
 	makedepends = curl
 	makedepends = imlib2
