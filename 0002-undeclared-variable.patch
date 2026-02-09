@@ -1,0 +1,27 @@
+Author: Arttu Valo <arttuv69@gmail.com>
+Date: Wed, 26 Nov 2008 20:18:35 +0200
+Origin: https://bugs.gentoo.org/attachment.cgi?id=173496&action=edit
+Bug-Gentoo: https://bugs.gentoo.org/248821
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=516608
+Bug-GNOME: https://bugzilla.gnome.org/show_bug.cgi?id=562360
+Reviewed-by: Gilles Dartiguelongue <eva@gentoo.org>
+Reviewed-by: Josselin Mouette <joss@debian.org>
+Last-Update: 2026-02-09
+Reviewed-by: Tiago de Paula <tiagodepalves@gmail.com>
+Subject: [PATCH] 'addr' undeclared for debug builds
+---
+ clients.c |    2 ++
+ 1 file changed, 2 insertions(+)
+
+Index: b/clients.c
+===================================================================
+--- a/clients.c
++++ b/clients.c
+@@ -175,6 +175,8 @@ int get_new_clients( int listen )
+ 	    ESDBG_TRACE( 
+ 	    if (esd_use_tcpip) {
+ 
++		unsigned long addr;
++
+ 		port = ntohs( incoming.sin_port );
+ 		addr = ntohl( incoming.sin_addr.s_addr );
