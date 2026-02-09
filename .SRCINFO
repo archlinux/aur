@@ -1,7 +1,7 @@
 pkgbase = world-cup-2022-cli-dashboard
 	pkgdesc = Watch live World Cup 2022 matches in your terminal. ⚽🏆
 	pkgver = 1.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cedricblondeau/world-cup-2022-cli-dashboard
 	arch = x86_64
 	arch = aarch64

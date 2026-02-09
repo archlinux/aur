@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=world-cup-2022-cli-dashboard
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Watch live World Cup 2022 matches in your terminal. ⚽🏆"
 arch=('x86_64' 'aarch64')
 url="https://github.com/cedricblondeau/world-cup-2022-cli-dashboard"
