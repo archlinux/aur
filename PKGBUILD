@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=cfnctl
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Cfnctl brings the Terraform cli experience to AWS Cloudformation :cloud:   "
 arch=('x86_64' 'aarch64')
 url="https://github.com/rogerwelin/cfnctl"

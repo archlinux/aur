@@ -1,7 +1,7 @@
 pkgbase = cfnctl
 	pkgdesc = Cfnctl brings the Terraform cli experience to AWS Cloudformation :cloud:
 	pkgver = 0.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rogerwelin/cfnctl
 	arch = x86_64
 	arch = aarch64
