@@ -3,11 +3,11 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-vdrtva
 pkgver=0.3.8
-pkgrel=4
-_vdrapi=9
+pkgrel=5
+_vdrapi=11
 pkgdesc="Automatic 'series record' function. Written for UK Freeview"
 url='https://github.com/vdr-projects/vdr-plugin-vdrtva'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 makedepends=('git')
