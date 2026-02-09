@@ -3,13 +3,13 @@
 
 pkgname=zathura-pdf-mupdf-git
 pkgrel=1
-pkgver=0.4.5.r1.g50ae2a0
+pkgver=2026.02.03.r1.g6869e44
 pkgdesc="PDF support for zathura (mupdf backend) (Supports PDF, ePub, and OpenXPS)"
 arch=('x86_64')
 url="https://pwmt.org/projects/zathura-pdf-mupdf"
 license=('Zlib')
-depends=('cairo' 'gumbo-parser' 'jbig2dec' 'libjpeg-turbo' 'libmupdf' 'openjpeg2' 'openssl' 'zathura-git')
-makedepends=('git' 'meson' 'ninja' 'appstream' 'desktop-file-utils')
+depends=('cairo' 'girara-git' 'glib2' 'libmupdf' 'zathura-git')
+makedepends=('git' 'meson' 'ninja')
 conflicts=('zathura-pdf-mupdf' 'zathura-pdf-poppler' 'zathura-pdf-poppler-git')
 provides=('zathura-pdf-mupdf')
 source=("$pkgname::git+https://github.com/pwmt/zathura-pdf-mupdf.git#branch=develop")
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-  arch-meson build
+  arch-meson build -Dtests=disabled
   ninja -C build
 }
 
