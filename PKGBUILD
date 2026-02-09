@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=go-grip
 pkgver=0.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Preview Markdown files locally before committing them."
 arch=('x86_64' 'aarch64')
 url="https://github.com/chrishrb/go-grip"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/chrishrb/go-grip.git#tag=v$pkgver")
