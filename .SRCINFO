@@ -1,11 +1,11 @@
 pkgbase = vibecheck
 	pkgdesc = vibecheck is a lightweight, cross-platform command line AI-tool that automatically generates meaningful and consistent Git Commit Messages by analyzing your code changes — ship faster with vibecheck
 	pkgver = 1.7.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rshdhere/vibecheck
 	arch = x86_64
 	arch = aarch64
-	license = unknown
+	license = MIT
 	makedepends = go
 	makedepends = git
 	depends = glibc

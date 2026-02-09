@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=vibecheck
 pkgver=1.7.7
-pkgrel=1
+pkgrel=2
 pkgdesc="vibecheck is a lightweight, cross-platform command line AI-tool that automatically generates meaningful and consistent Git Commit Messages by analyzing your code changes — ship faster with vibecheck"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rshdhere/vibecheck"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/rshdhere/vibecheck.git#tag=v$pkgver")
