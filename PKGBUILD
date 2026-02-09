@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=mirrorbits
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Mirrorbits is a geographical download redirector written in Go for distributing files efficiently across a set of mirrors."
 arch=('x86_64' 'aarch64')
 url="https://github.com/etix/mirrorbits"

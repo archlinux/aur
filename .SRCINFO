@@ -1,7 +1,7 @@
 pkgbase = mirrorbits
 	pkgdesc = Mirrorbits is a geographical download redirector written in Go for distributing files efficiently across a set of mirrors.
 	pkgver = 0.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/etix/mirrorbits
 	arch = x86_64
 	arch = aarch64
