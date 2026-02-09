@@ -3,11 +3,11 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-skinflat
 pkgver=0.1.1
-_vdrapi=9
-pkgrel=37
+_vdrapi=11
+pkgrel=38
 pkgdesc="Simple and slim skin for VDR"
 url="https://github.com/vdr-projects/vdr-plugin-skinflat"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 depends=('graphicsmagick' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
