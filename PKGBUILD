@@ -1,7 +1,9 @@
 # Maintainer: Rolf Greger <Rolf_greger@web.de>
 pkgname=cachyos-service-manager
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
+sha256sums=('68bcf922a0366963b3d48a4523c8be0fc702d6e19ae5ac268aeb371d5a2312f9')
+
 pkgdesc="Full-featured systemd service manager for CachyOS (Qt6 + GTK4 frontends)"
 arch=('any')
 url="https://github.com/Goitonthefloor/cachyos-service-manager"
@@ -22,7 +24,6 @@ optdepends=(
   'python-pytest: for running tests'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('ad38fae376a17960212a61cc96567899433e49b3f219b4bcc759b0ebd7efcd2f')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
