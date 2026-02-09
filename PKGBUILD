@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=goben
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="goben is a golang tool to measure TCP/UDP transport layer throughput between hosts."
 arch=('x86_64' 'aarch64')
 url="https://github.com/udhos/goben"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/udhos/goben.git#tag=v$pkgver")
