@@ -1,23 +1,39 @@
-# Maintainer: loserMcloser <reebydobalina@gmail.com>
+# shellcheck shell=bash
+# -*- sh -*-
+
+# Contributor: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+# Contributor: loserMcloser <reebydobalina@gmail.com>
 
 pkgname=python-textual-image
 _pkgname=textual-image
-pkgver=0.8.2
+pkgver=0.8.5
 pkgrel=1
-pkgdesc="Render images in the terminal with Textual and rich"
+pkgdesc="Render images in the terminal with Textual and Rich"
 arch=('any')
 url="https://github.com/lnqs/textual-image"
-depends=('python' 'python-rich' 'python-pillow')
-makedepends=('python-build' 'python-installer' 'python-wheel')
-source=("https://github.com/lnqs/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+depends=(
+  'python'
+  'python-pillow'
+  'python-textual'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-wheel'
+)
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/lnqs/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
+license=('LGPL-3.0-only')
+sha256sums=('6081a6699406919bc398c6f1d5ed3955adeb5fd25cbe802adc4344ee6d20c8e1')
 
 build() {
-	cd "${_pkgname}-${pkgver}"
-	python -m build --wheel --no-isolation
+  cd "$_pkgname-$pkgver"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "${_pkgname}-${pkgver}"
-	python -m installer --destdir="$pkgdir" dist/*.whl
+  cd "$_pkgname-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
 }
-b2sums=('2aeb86aa41ac05955cecc35fc3abbcedde11bc3a627d3502c250001c0cbeeb0e73768ab9a2b3d5f6924fdb92e3542c711f32de761597593b27fe64f27614afa1')
+
+# eof
