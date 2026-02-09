@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=wacli
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="WhatsApp CLI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/steipete/wacli"
