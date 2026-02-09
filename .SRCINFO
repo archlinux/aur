@@ -1,21 +1,19 @@
 pkgbase = cloudtolocalllm
-	pkgdesc = Manage and run powerful Large Language Models locally, orchestrated via a cloud interface
+	pkgdesc = Privacy-first local AI workspace (AppImage version)
 	pkgver = 10.1.187
 	pkgrel = 1
 	url = https://github.com/CloudToLocalLLM-online/CloudToLocalLLM
 	arch = x86_64
 	license = MIT
+	depends = fuse2
 	depends = libayatana-appindicator
 	depends = gtk3
-	depends = glib2
 	depends = libsecret
-	depends = curl
-	depends = wmctrl
-	depends = xdg-utils
 	provides = cloudtolocalllm
 	conflicts = cloudtolocalllm-git
 	conflicts = cloudtolocalllm-bin
-	source = https://github.com/CloudToLocalLLM-online/CloudToLocalLLM/releases/download/v10.1.187/CloudToLocalLLM-Linux-x64.tar.gz
-	sha256sums = 5c2379fab3517158de094a25781280dc2c92eeec5b8fb0f859b9f55c8e1b9bf9
+	options = !strip
+	source = cloudtolocalllm-10.1.187-x86_64.AppImage::https://github.com/CloudToLocalLLM-online/CloudToLocalLLM/releases/download/v10.1.187/cloudtolocalllm-10.1.187-x86_64.AppImage
+	sha256sums = SKIP
 
 pkgname = cloudtolocalllm
