@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=gvm
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A programming language version manager 🚀 🚀 "
 arch=('x86_64' 'aarch64')
 url="https://github.com/toodofun/gvm"
