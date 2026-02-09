@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=gscript
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc=" framework to rapidly implement custom droppers for all three major operating systems"
 arch=('x86_64' 'aarch64')
 url="https://github.com/gen0cide/gscript"
-license=('unknown')
+license=('AGPL-3.0')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/gen0cide/gscript.git#tag=v$pkgver")
