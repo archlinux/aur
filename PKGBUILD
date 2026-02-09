@@ -15,7 +15,7 @@ _sub1urlarchive=${_sub1url}/archive/${_sub1archive}
 
 pkgname=${_repoproj}
 pkgver=${_pkgtagname}
-pkgrel=1
+pkgrel=2
 pkgdesc='HP 50g hardware level emulator'
 arch=('any')
 url=${_repourl}
@@ -35,13 +35,13 @@ prepare() {
     #patch -d "${_repoproj}" -Np1 -i ../"${_patch1}"
     cd "${_repoproj}/src"
     _sub1dir=${_sub1name}
-    [[ -z "$(ls -A \"${_sub1dir}\")" ]] && \
+    [ -d ${_sub1dir} -a -z "$(ls -A \"${_sub1dir}\")" ] && \
         ( rmdir ${_sub1dir} && ln -s ../../${_sub1name} . )
 }
 
 build() {
 	cd "${_repoproj}"
-	make distclean && make CFLAGS= INSTALL_PREFIX=/usr
+	make distclean && make CFLAGS= PREFIX=/usr
 }
 
 package() {
