@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=nomore403
 pkgver=1.1.8
-pkgrel=2
+pkgrel=3
 pkgdesc="🚫 Advanced tool for security researchers to bypass 403/40X restrictions through smart techniques and adaptive request manipulation. Fast. Precise. Effective."
 arch=('x86_64' 'aarch64')
 url="https://github.com/devploit/nomore403"
