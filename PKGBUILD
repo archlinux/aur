@@ -3,11 +3,11 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-lcdproc
 pkgver=1.0.0
-_vdrapi=9
-pkgrel=8
+_vdrapi=11
+pkgrel=9
 pkgdesc="Output to LCD modules that are supported by LCDproc"
 url='https://github.com/vdr-projects/vdr-plugin-lcdproc'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 optdepends=('lcdproc: to use local displays')
