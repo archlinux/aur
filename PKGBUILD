@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=go-grip
 pkgver=0.5.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Preview Markdown files locally before committing them."
 arch=('x86_64' 'aarch64')
 url="https://github.com/chrishrb/go-grip"
