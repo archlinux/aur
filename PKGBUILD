@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=docker-debug
 pkgver=0.7.11
-pkgrel=2
+pkgrel=3
 pkgdesc="use new container attach on already container go on debug"
 arch=('x86_64' 'aarch64')
 url="https://github.com/zeromake/docker-debug"

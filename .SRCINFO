@@ -1,7 +1,7 @@
 pkgbase = docker-debug
 	pkgdesc = use new container attach on already container go on debug
 	pkgver = 0.7.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/zeromake/docker-debug
 	arch = x86_64
 	arch = aarch64
