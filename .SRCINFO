@@ -1,6 +1,6 @@
 pkgbase = gog-hollow-knight
 	pkgdesc = Challenging 2D side-scrolling Metroidvania soulslike game
-	pkgver = 1.5.78.11833.51218
+	pkgver = 1.5.12459.88536
 	pkgrel = 1
 	epoch = 1
 	url = http://hollowknight.com/
@@ -8,9 +8,9 @@ pkgbase = gog-hollow-knight
 	license = custom
 	source = gog-hollow-knight
 	source = gog-hollow-knight.desktop
-	source = hollow_knight_1_5_78_11833_51218.sh::gogdownloader://hollow_knight/en3installer0
+	source = hollow_knight_1_5_12459_88536.sh::gogdownloader://hollow_knight/en3installer0
 	sha256sums = 987b0c0e32895d0a4214650d0afb2f3c2359b049212e13860dc9ae67553c48b4
 	sha256sums = 8860a0daf52181f78711c2b1099d7a09a30ba09331c68e8aae71182a996a0acd
-	sha256sums = ab20725edf1f539115062b0e61f42a13bab0ff843f3faf89df9af5499dcdda72
+	sha256sums = 0d101b033c08305fbeded72d69fbe9dc74b3960e04345799af1963de5be9dc8e
 
 pkgname = gog-hollow-knight

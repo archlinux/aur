@@ -2,7 +2,7 @@
 # Contributor: Dan Beste <dan.ray.beste@gmail.com>
 
 pkgname='gog-hollow-knight'
-pkgver=1.5.78.11833.51218
+pkgver=1.5.12459.88536
 pkgrel=1
 # Fix upstream versioning shenanigans:
 epoch=1
@@ -17,7 +17,7 @@ source=(
 )
 sha256sums=('987b0c0e32895d0a4214650d0afb2f3c2359b049212e13860dc9ae67553c48b4'
             '8860a0daf52181f78711c2b1099d7a09a30ba09331c68e8aae71182a996a0acd'
-            'ab20725edf1f539115062b0e61f42a13bab0ff843f3faf89df9af5499dcdda72')
+            '0d101b033c08305fbeded72d69fbe9dc74b3960e04345799af1963de5be9dc8e')
 
 DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
 
