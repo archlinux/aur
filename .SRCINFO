@@ -1,6 +1,6 @@
 pkgbase = python-libfiu
 	pkgdesc = userspace fault injection framework
-	pkgver = 1.00
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://blitiri.com.ar/p/libfiu/
 	arch = i686
@@ -10,8 +10,7 @@ pkgbase = python-libfiu
 	makedepends = gcc
 	depends = libfiu
 	depends = python
-	source = https://blitiri.com.ar/p/libfiu/files/1.00/libfiu-1.00.tar.gz
-	md5sums = faa9822b0ec346978531a089517cf500
+	source = https://blitiri.com.ar/p/libfiu/files/1.2/libfiu-1.2.tar.gz
+	md5sums = 037299b3c00b781dbcd861b60b0192f9
 
 pkgname = python-libfiu
-
