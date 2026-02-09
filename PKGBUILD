@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=gh-s
 pkgver=0.0.12
-pkgrel=1
+pkgrel=2
 pkgdesc="🔎 search github repositories interactively"
 arch=('x86_64' 'aarch64')
 url="https://github.com/gennaro-tedesco/gh-s"
-license=('unknown')
+license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/gennaro-tedesco/gh-s.git#tag=v$pkgver")
