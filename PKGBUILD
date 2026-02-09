@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=sqsmover
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AWS SQS Message mover"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mercury2269/sqsmover"
-license=('unknown')
+license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/mercury2269/sqsmover.git#tag=v$pkgver")
