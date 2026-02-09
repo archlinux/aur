@@ -4,11 +4,11 @@
 pkgname=vdr-imonlcd
 pkgver=1.0.3
 epoch=1
-_vdrapi=9
-pkgrel=11
+_vdrapi=11
+pkgrel=12
 pkgdesc="shows information about the current state of VDR on iMON LCD"
 url="https://github.com/vdr-projects/vdr-plugin-imonlcd"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL3')
 depends=('freetype2' 'gcc-libs' "vdr-api=$_vdrapi")
 _plugname=${pkgname//vdr-/}
