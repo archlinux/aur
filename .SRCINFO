@@ -1,6 +1,6 @@
 pkgbase = python-python-iso639
 	pkgdesc = Look-up utilities for ISO 639 language codes and names
-	pkgver = 2025.11.16
+	pkgver = 2026.1.31
 	pkgrel = 1
 	url = https://github.com/jacksonllee/iso639
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-python-iso639
 	makedepends = python-installer
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/jacksonllee/iso639/archive/refs/tags/v2025.11.16.tar.gz
-	sha256sums = 7e47d13955143d87e0ce976632dbbb8466dfc7c218bfab1d670705bd20f23fbf
+	source = https://github.com/jacksonllee/iso639/archive/refs/tags/v2026.1.31.tar.gz
+	sha256sums = b8bff8df30d221200c95b0a2087214abcac2e45be4aac4359fce6f9b8df7f400
 
 pkgname = python-python-iso639
 	depends = python
