@@ -1,6 +1,6 @@
 # Maintainer: kharec <sandro@cazzaniga.fr>
 pkgname=nixd
-pkgver=2.8.2
+pkgver=2.9.0
 pkgrel=1
 pkgdesc='Nix language server'
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('nix' 'llvm' 'boost' 'nlohmann-json')
 makedepends=('meson' 'ninja' 'pkgconf' 'gtest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nix-community/nixd/archive/refs/tags/$pkgver.tar.gz"
         "nixd-compat.patch")
-sha256sums=('846adb7d7cd6395bbb47d55b4862710ead2de09820224e0093688a096cb7146f'
+sha256sums=('d667ca3d0c0116962a08a221ede88f2ae360d9213508d2e7efde0827ca949732'
             'c82887fa1e3630cbea77b64a9c2803c3e8fe6fa0b91126b74052aedd6e02fd27')
 
 build() {
