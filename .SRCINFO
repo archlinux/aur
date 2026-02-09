@@ -1,0 +1,17 @@
+pkgbase = bashellit
+	pkgdesc = A Bash editor to help you write bash-scripts better
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/cbdefontenay/bashellit
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libnm
+	depends = hicolor-icon-theme
+	provides = bashellit
+	conflicts = bashellit
+	source_x86_64 = https://github.com/cbdefontenay/bashellit/releases/download/v-0.1.0/bashellit_0.1.0_amd64.deb
+	sha256sums_x86_64 = c60c3bd924fbb46219cf14d8aeba637eaf9f3d61b335207466a8cbd4f41042ac
+
+pkgname = bashellit

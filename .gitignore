@@ -1,0 +1,6 @@
+cat << 'EOF' > .gitignore
+pkg/
+src/
+*.pkg.tar.*
+*.deb
+EOF
