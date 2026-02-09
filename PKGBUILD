@@ -2,8 +2,8 @@
 # Maintainer:  Radu Potop <radu at wooptoo dot com>
 
 pkgname=(zoho-cliq zoho-cliq-upstream-electron)
-pkgver=1.8.0
-pkgrel=2
+pkgver=1.8.1
+pkgrel=1
 pkgdesc='Zoho Cliq communication software'
 arch=('x86_64')
 url="https://www.zoho.com/cliq/desktop/linux.html"
@@ -14,7 +14,7 @@ optdepends=('libappindicator-gtk3: Systray indicator support'
 source=(
     "https://downloads.zohocdn.com/chat-desktop/linux/cliq_${pkgver}_amd64.deb"
 )
-sha256sums=('96ad4f9df0c8733cf8233fdd076c74bab9ceae9dbd9e01f13222c1287cbfe0ae')
+sha256sums=('1b6c171a9fafcea38d22692ad3b1e883be0659787a3ee12062175ec1cfe7a553')
 
 package_zoho-cliq() {
     conflicts=('zoho-cliq-upstream-electron')
