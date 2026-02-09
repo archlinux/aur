@@ -1,5 +1,5 @@
 pkgname=cloudtolocalllm-appimage
-pkgver=10.1.189
+pkgver=10.1.201
 pkgrel=1
 pkgdesc="Privacy-first local AI workspace (AppImage version)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=('cloudtolocalllm-git' 'cloudtolocalllm-bin')
 options=(!strip)
 _appimage="cloudtolocalllm-${pkgver}-x86_64.AppImage"
 source=("${_appimage}::${url}/releases/download/v${pkgver}/${_appimage}")
-sha256sums=('1092921f4006f9c91087fac38f773c96b2864533c62b1b17b5e6d012199be751')
+sha256sums=('6e8796853d56671baf2495e43c9413ac25806c30c7ff7995ab99240aae96664a')
 
 package() {
     install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/usr/bin/cloudtolocalllm"
