@@ -1,16 +1,17 @@
 pkgbase = vdr-vompserver
 	pkgdesc = Server side of VOMP
 	pkgver = 0.5.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://www.loggytronic.com/vomp.php
 	arch = x86_64
 	arch = i686
 	arch = arm
 	arch = armv6h
 	arch = armv7h
+	arch = aarch64
 	license = GPL2
 	depends = gcc-libs
-	depends = vdr-api=9
+	depends = vdr-api=11
 	backup = etc/vdr/conf.avail/50-vompserver.conf
 	backup = var/lib/vdr/plugins/vompserver/vomp.conf
 	source = https://www.loggytronic.com/dl/vdr-vompserver-0.5.1.tgz
