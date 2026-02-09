@@ -8,7 +8,7 @@
 
 _pkgname="forkgram"
 pkgname="$_pkgname"
-pkgver=6.4.3
+pkgver=6.5.0
 pkgrel=1
 pkgdesc="Fork of the Telegram Desktop messaging app"
 url="https://github.com/Forkgram/tdesktop"
@@ -77,7 +77,7 @@ source=(
   "$_pkgsrc_tdlib"::"git+https://github.com/tdlib/td.git"
 )
 sha256sums=(
-  'd8ef28e54184b1146f94cc149b204e9e32d73ebbfb6f18c67c558c084efdb5fe'
+  'a96e398c4e6bcbcfcb55f5bc725e41a5c963417b018728fda2a35cdd9908eb48'
   'SKIP'
 )
 
@@ -166,8 +166,7 @@ package() {
   DESTDIR="$pkgdir" cmake --install build
 
   # remove unwanted files
-  find "$pkgdir/usr/share/icons" -name '*.png' -delete
-  find "$pkgdir/usr/share/icons" -name '*.svg' -delete
+  find "$pkgdir/usr/share/icons" \( -name '*.png' -o -name '*.svg' \) -delete
   rm "$pkgdir/usr/share/applications/org.telegram.desktop.desktop"
   rm "$pkgdir/usr/share/metainfo/org.telegram.desktop.metainfo.xml"
   rm "$pkgdir/usr/share/dbus-1/services/org.telegram.desktop.service"
@@ -176,7 +175,7 @@ package() {
   mv -v "$pkgdir"/usr/bin/{Telegram,"$_pkgname"}
 
   # icon
-  install -Dm644 "$srcdir/$_pkgsrc/Telegram/Resources/art/forkgram/logo_256.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+  install -Dm644 "$srcdir/$_pkgsrc/Telegram/Resources/art/forkgram/logo_256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
 
   # service
   install -Dm644 /dev/stdin "$pkgdir/usr/share/dbus-1/services/forkgram.service" << END
