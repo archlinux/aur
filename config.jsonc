@@ -1,0 +1,23 @@
+{
+  "ips": {
+    "this": "127.0.0.1", // replace with the IP of the remote PC you have install http-remote-pc-control
+  },
+  "combinations": [
+    {
+      "commands": [
+        {
+          "performOnRemote": "typeText",
+          "variables": {
+            "text": "Hello wolrd", // will literally type this text (press key by key)
+          },
+          "destination": "this",
+        },
+      ],
+      "name": "Type text",
+      // Note you need to have signal keys like alt, ctrl, shift, super (windows key) pressed.
+      // Since OS API usually requires them for a shortcut
+      // any OS shortcuts allowd (Alt+1, Ctrl+Shift+2, etc)
+      "shortCut": "Alt+1" // press this combination of keys to trigger keyPress + mouseMove
+    }
+  ]
+}

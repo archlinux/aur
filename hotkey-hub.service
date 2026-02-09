@@ -7,8 +7,8 @@ Type=simple
 ExecStart=/usr/bin/hotkey-hub \
   --cert-dir=%h/.local/share/hotkey-hub/certs \
   --variables-file=%h/.local/share/hotkey-hub/configs/variables.jsonc \
-  --macros-file=%h/.local/share/hotkey-hub/configs/macros.jsonc \
-  --config-file=%h/.local/share/hotkey-hub/configs/config.jsonc
+  --config-file=%h/.local/share/hotkey-hub/configs/config.jsonc \
+  --api-server
 Restart=on-failure
 RestartSec=2
 
