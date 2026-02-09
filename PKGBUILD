@@ -1,10 +1,11 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 # Maintainer: Filipe Nascimento <flipee at tuta dot io>
+# Maintainer: Noor Christensen <archlinux_AT_technopragmatics_DOT_org>
 # Contributor: Luca Cesari < luca AT cesari DOT me>
 
 pkgname=tmuxinator
 pkgver=3.3.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Manage complex tmux sessions easily"
 arch=(any)
 url="https://github.com/aziz/tmuxinator"
@@ -21,11 +22,14 @@ optdepends=('zsh-completions: for ZSH completion')
 options=('!emptydirs')
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+  "00-bump-gemspec-thor-dependency-to-1.5.0.patch"
 )
-sha256sums=('556756c17b8740af0d0bb3af58f3205ff25d00d515dbe6fc378653a28d14c4d8')
+sha256sums=('556756c17b8740af0d0bb3af58f3205ff25d00d515dbe6fc378653a28d14c4d8'
+            'df2131d084feb55a679353b1098ca3b326b569f000980b84632ddcd934023cc9')
 
 prepare() {
   cd ${pkgname}-${pkgver}
+  patch -p1 -N -i "${srcdir}/00-bump-gemspec-thor-dependency-to-1.5.0.patch"
 }
 
 build() {

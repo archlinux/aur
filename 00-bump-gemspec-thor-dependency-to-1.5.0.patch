@@ -1,0 +1,12 @@
+diff --color -aru tmuxinator-3.3.7.orig/tmuxinator.gemspec tmuxinator-3.3.7.new/tmuxinator.gemspec
+--- tmuxinator-3.3.7.orig/tmuxinator.gemspec	2025-12-06 16:38:28.000000000 +0100
++++ tmuxinator-3.3.7.new/tmuxinator.gemspec	2026-02-07 20:15:30.720848081 +0100
+@@ -41,7 +41,7 @@
+   s.required_ruby_version = ">= 2.7"
+ 
+   s.add_dependency "erubi", "~> 1.13"
+-  s.add_dependency "thor", "~> 1.4.0"
++  s.add_dependency "thor", "~> 1.5.0"
+ 
+   s.add_development_dependency "amazing_print", "~> 1.8"
+   s.add_development_dependency "bundler", ">= 1.3"
