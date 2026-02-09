@@ -2,7 +2,7 @@
 
 pkgname=discord-canary
 _pkgname=DiscordCanary
-pkgver=0.0.865
+pkgver=0.0.866
 pkgrel=1
 pkgdesc="All-in-one voice and text chat for gamers - alpha build"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('libpulse: Pulseaudio support'
 source=("https://dl-canary.discordapp.net/apps/linux/$pkgver/$pkgname-$pkgver.tar.gz"
         'LICENSE.html::https://discordapp.com/terms'
         'OSS-LICENSES.html::https://discordapp.com/licenses')
-sha512sums=('88d4b56e661173019e22ce79c2f4dea1199989ad643e7345a38e14b20072cf18d0322bec2ac7f857064fba438f693d313b4959ee0f63c65931c04d2473ee128d'
+sha512sums=('d1c37f927eaf4541c2c9ef25103ad59a9b7eb7f417c93f82f561994947bfdce8d76e48b20888f6400b062e90f9c370a2de834673e40d6dc528ba3a905cec32f8'
             'SKIP'
             'SKIP')
 
