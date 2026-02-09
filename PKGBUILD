@@ -3,11 +3,11 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-xmltv2vdr
 pkgver=0.2.4
-pkgrel=4
-_vdrapi=9
+pkgrel=5
+_vdrapi=11
 pkgdesc="Add epg info from epg sources into vdr"
 url='https://github.com/vdr-projects/vdr-plugin-xmltv2vdr'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 depends=('pcre' 'curl' 'enca' 'libxslt' 'libzip' 'sqlite' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
