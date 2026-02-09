@@ -1,0 +1,16 @@
+pkgbase = hyprvault
+	pkgdesc = Lightweight session manager for Hyprland
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Tunahanyrd/hyprvault
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.11
+	depends = hyprland
+	source = hyprvault-0.1.0.tar.gz::https://github.com/Tunahanyrd/hyprvault/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = hyprvault
