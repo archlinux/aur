@@ -1,7 +1,7 @@
 pkgbase = creature-desktop-bin
 	pkgdesc = The Graphical Agent Interface - Build and share MCP Apps for humans and agents working together
-	pkgver = 0.0.29
-	pkgrel = 3
+	pkgver = 0.0.32
+	pkgrel = 1
 	url = https://creature.run
 	install = creature-desktop-bin.install
 	arch = x86_64
@@ -18,10 +18,10 @@ pkgbase = creature-desktop-bin
 	optdepends = libnotify: for desktop notifications
 	provides = creature-desktop
 	conflicts = creature-desktop
-	noextract = creature-desktop-bin-0.0.29.AppImage
+	noextract = creature-desktop-bin-0.0.32.AppImage
 	options = !strip
 	options = !debug
-	source = creature-desktop-bin-0.0.29.AppImage::https://releases.creature.run/desktop/linux/x64/Creature-0.0.29-x64.AppImage
-	sha256sums = 5f3cda6c8a9a8ea8015d97a1f19de5dd1a92a8b6f4eba2041dc483d0abcd427a
+	source = creature-desktop-bin-0.0.32.AppImage::https://releases.creature.run/desktop/linux/x64/Creature-0.0.32-x64.AppImage
+	sha256sums = 0f89780d9183da006ef2852f08e10112fbb3e6dc0d2c9eb2ede347fcea595330
 
 pkgname = creature-desktop-bin
