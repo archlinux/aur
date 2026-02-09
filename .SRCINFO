@@ -1,35 +1,11 @@
 pkgbase = freenet
-	pkgdesc = A peer-to-peer platform for censorship-resistant communication and publishing
-	pkgver = 0.7.5.1497
+	pkgdesc = Deprecated package. Replaced by hyphanet, a.k.a Freenet from 1999-2023. This is NOT Locutus.
+	pkgver = 0.0.1
 	pkgrel = 1
-	url = https://freenetproject.org
-	install = freenet.install
-	arch = any
-	license = GPL2
-	makedepends = java-environment>=11
-	makedepends = ant
-	makedepends = git
-	makedepends = zip
-	depends = java-runtime>=11
-	depends = nss
-	depends = java-service-wrapper
-	backup = opt/freenet/wrapper.config
-	source = git+https://github.com/hyphanet/fred.git?signed#tag=build01497
-	source = git+https://github.com/hyphanet/plugin-WebOfTrust.git#branch=next
-	source = git+https://github.com/hyphanet/seedrefs.git
-	source = run.sh
-	source = wrapper.config
-	source = freenet.ini.dist
-	source = freenet.service
-	source = freenet.tmpfiles
-	validpgpkeys = B30C3D91069F81ECFEFED0B1B41A6047FD6C57F9
-	b2sums = SKIP
-	b2sums = SKIP
-	b2sums = SKIP
-	b2sums = 043589015aced4a9828518db5a7207382c782ff7f0f5bc2c5ad19ff559fc7f695bcd503e717bfb19bee8338abdf0b30f418a155e9c86f5016162ccad4870d82a
-	b2sums = 04924f7e411bf2a8470e001a80519e463ae78a12d090ff514931a9c9d1dae8a71aff003262e8827d08cbac6062df7775195827748eb98433e713268875387565
-	b2sums = dc0c468eb6a691868f17c1dc85e161cec30e318638f8aea14f46e7480943ee146058a546ee578d5d37e9ad74b9394a6ddbbaa5ac00c02553cdd8f790a2b5e2e0
-	b2sums = 63bf5cd76cea610b362144c207121f9de54febcccf8347c21aecc25382f564292493a8a3b4fd2c7af18ca6feb041978164241d81d77dd1542619482cd7cbadbb
-	b2sums = 54828750ac0283e4328635bb61d0edd695391d433d85a6612b2288520a58b40b312d5759b38487e093e150aedee3659e6bed3827d936171d2d252aea2cbced1d
+	epoch = 1
+	url = https://www.hyphanet.org/
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
 
 pkgname = freenet
