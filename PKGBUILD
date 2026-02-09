@@ -6,9 +6,9 @@ pkgver=1.0.1
 pkgrel=1
 pkgdesc="Helper binary to call kodi setwakeup.sh with root privileges"
 url="https://github.com/VDR4Arch/vdr4arch"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL3')
-depends=('kodi-standalone-service')
+depends_x86_64=('kodi-standalone-service')
 makedepends=()
 source=('kodi-setwakeup.c'
         'setwakeup.sh')
