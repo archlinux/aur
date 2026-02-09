@@ -3,7 +3,7 @@
 pkgname="serve_md"
 pkgver="1.2.0"
 pkgrel="1"
-pkgdesc="Serve a markdown file as an HTML web server"
+pkgdesc="Serve a markdown file as an HTML webpage"
 arch=('x86_64')
 url="https://github.com/GhelloZ/serve_md"
 license=('MIT')
