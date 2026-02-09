@@ -3,11 +3,11 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-weatherforecast
 pkgver=0.2.0
-_vdrapi=9
-pkgrel=16
+_vdrapi=11
+pkgrel=17
 pkgdesc="provides a weather forecast based on forecast.io data"
 url='https://github.com/vdr-projects/vdr-plugin-weatherforecast'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 depends=('curl' 'jansson' "vdr-api=$_vdrapi" 'vdr-skindesigner')
 _plugname=${pkgname//vdr-/}
