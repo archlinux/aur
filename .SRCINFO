@@ -4,6 +4,7 @@ pkgbase = tnftp6
 	pkgrel = 1
 	url = ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/
 	arch = x86_64
+	arch = i686
 	arch = arm
 	arch = armv6h
 	arch = armv7h
