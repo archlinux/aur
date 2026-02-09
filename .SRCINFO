@@ -1,6 +1,6 @@
 pkgbase = ente-auth-git
 	pkgdesc = Ente two-factor authenticator.
-	pkgver = 4.4.17.r30.gbdcd7f0
+	pkgver = 4.4.17.r33.gb48fdc5
 	pkgrel = 1
 	url = https://github.com/ente-io/ente/tree/main/auth
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = ente-auth-git
 	provides = ente-auth
 	conflicts = ente-auth
 	options = strip
-	source = git+https://github.com/ente-io/auth.git
+	source = git+https://github.com/ente-io/ente.git
 	source = fix-flutter.patch
 	sha512sums = SKIP
 	sha512sums = 00a812be226ae347d9bda689245a5af39b967e62e8d7d838ff02434e1d4735a79b4e60054ee1bf18f912c7e086c912d4d5c1fb5deb4be2b9edb12eb935c4f594

@@ -10,7 +10,7 @@ _jdk_ver=17
 
 _pkgname=enteauth
 pkgname=ente-auth-git
-pkgver=4.4.17.r30.gbdcd7f0
+pkgver=4.4.17.r33.gb48fdc5
 pkgrel=1
 pkgdesc="Ente two-factor authenticator."
 arch=('x86_64')
@@ -19,7 +19,7 @@ license=('AGPL-3.0-only')
 depends=('at-spi2-core' 'gcc-libs' 'glib2' 'glibc' 'gtk3' 'hicolor-icon-theme' 'libayatana-appindicator' 'libsecret' 'pango' 'libepoxy' 'curl' 'fontconfig')
 makedepends=('patchelf' 'clang' 'git' 'cmake' 'ninja' "jdk${_jdk_ver}-openjdk")
 options=('!strip' '!emptydirs')
-source=("git+https://github.com/ente-io/auth.git"
+source=("git+https://github.com/ente-io/ente.git"
         "fix-flutter.patch"
 )
 
@@ -35,9 +35,9 @@ export PATH_=$PATH
 export LDFLAGS="$LDFLAGS"
 
 pkgver() {
-  cd "$srcdir/auth"
+  cd "$srcdir/ente"
   # cutting off 'auth-v' prefix that presents in the git tag
-  git describe --long --tags --abbrev=7 | sed 's/^auth-v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 --match="auth-v*" | sed 's/^auth-v//; s/\([^-]*-g\)/r\1/; s/-/./g'
 }
 
 set_env(){
@@ -47,12 +47,12 @@ set_env(){
 }
 
 prepare(){
-    cd "$srcdir/auth"
+    cd "$srcdir/ente"
     git submodule update --init --recursive
     patch -p1 -i "${srcdir}/fix-flutter.patch"
 
     # metainfo
-    cd "$srcdir/auth/mobile/apps/auth/"
+    cd "$srcdir/ente/mobile/apps/auth/"
     APPDATA_FILE="linux/packaging/enteauth.appdata.xml"
     RELEASE_DATE=$(date -u +%Y-%m-%d)
 
@@ -80,10 +80,10 @@ prepare(){
 build() {
     set_env
     
-    cd "${srcdir}/auth/mobile/packages/strings"
+    cd "${srcdir}/ente/mobile/packages/strings"
     flutter gen-l10n
     
-    cd "$srcdir/auth/mobile/apps/auth/"
+    cd "$srcdir/ente/mobile/apps/auth/"
     flutter config --no-analytics
     dart --disable-analytics
     flutter pub get
@@ -95,13 +95,13 @@ build() {
 }
 
 check() {
-    cd "$srcdir/auth/mobile/apps/auth/"
+    cd "$srcdir/ente/mobile/apps/auth/"
     set_env
     flutter test
 }
 
 package(){
-    cd "$srcdir/auth/mobile/apps/auth/"
+    cd "$srcdir/ente/mobile/apps/auth/"
     # fakeroot environment
     tar --no-same-owner --owner 0 --group 0 -xvf ./dist/*/ente_auth-*-linux.pacman --exclude="\.*" -C "$pkgdir"
 
