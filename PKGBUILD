@@ -9,7 +9,7 @@ _vdrapi=2.4.1
 pkgrel=3
 pkgdesc="Brings the archive-hdd functionality to VDR."
 url='https://github.com/vdr-projects/vdr-plugin-hddarchive'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 depends=('bash' 'gcc-libs' "vdr-api=${_vdrapi}")
 makedepends=('git')
