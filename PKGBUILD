@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=checkip
 pkgver=0.49.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Get (security) info about IP addresses"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jreisinger/checkip"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/jreisinger/checkip.git#tag=v$pkgver")

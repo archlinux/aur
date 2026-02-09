@@ -1,11 +1,11 @@
 pkgbase = checkip
 	pkgdesc = Get (security) info about IP addresses
 	pkgver = 0.49.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jreisinger/checkip
 	arch = x86_64
 	arch = aarch64
-	license = unknown
+	license = MIT
 	makedepends = go
 	makedepends = git
 	depends = glibc
