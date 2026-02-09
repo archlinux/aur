@@ -1,7 +1,7 @@
 pkgbase = tfsort
 	pkgdesc = A CLI utility to sort Terraform variables and outputs
 	pkgver = 0.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AlexNabokikh/tfsort
 	arch = x86_64
 	arch = aarch64

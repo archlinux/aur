@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=tfsort
 pkgver=0.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A CLI utility to sort Terraform variables and outputs"
 arch=('x86_64' 'aarch64')
 url="https://github.com/AlexNabokikh/tfsort"
