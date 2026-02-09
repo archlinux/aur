@@ -16,13 +16,30 @@ FILENAME = "TODOLIST.json"
 PICKLE_FILE = "my_data.pkl"
 console = Console()
 
+# Priority Mapping for display and sorting
+PRIORITIES = {
+    "1": {"label": "[bold red]High[/bold red]", "sort": 1},
+    "2": {"label": "[bold yellow]Medium[/bold yellow]", "sort": 2},
+    "3": {"label": "[bold blue]Low[/bold blue]", "sort": 3},
+    "4": {"label": "[dim]None[/dim]", "sort": 4},
+}
+
 
 def load_todos():
     if os.path.exists(FILENAME):
         with open(FILENAME, "r") as f:
             data = json.load(f)
+            # Migration/Cleaning: Ensure all items have the "priority" key
+            for item in data:
+                if isinstance(item, dict) and "priority" not in item:
+                    item["priority"] = "4"
+
+            # Legacy support for old string-only lists
             if data and isinstance(data[0], str):
-                return [{"task": t, "done": False} for t in data]
+                return [{"task": t, "done": False, "priority": "4"} for t in data]
+
+            # Sort by priority (1 is highest) then by completion status
+            data.sort(key=lambda x: (x.get("done", False), x.get("priority", "4")))
             return data
     return []
 
@@ -35,6 +52,7 @@ def save_todos(todos):
 def get_task_table(todos):
     table = Table(show_header=True, header_style="bold magenta", expand=True)
     table.add_column("#", style="dim", width=4, justify="center")
+    table.add_column("Priority", justify="center", width=12)
     table.add_column("Task", style="cyan")
     table.add_column("Status", justify="right")
 
@@ -42,26 +60,29 @@ def get_task_table(todos):
         return Panel("No tasks found! Get to work!", style="red")
 
     for idx, item in enumerate(todos, 1):
-        # Check if done to change display
         task_text = item["task"]
+        prio_key = item.get("priority", "4")
+        prio_display = PRIORITIES.get(prio_key, PRIORITIES["4"])["label"]
+
         if item["done"]:
             status = "[bold green]✔ Done[/bold green]"
             display_task = f"[strike dim]{task_text}[/strike dim]"
+            prio_display = "[dim]-[/dim]"  # Dim priority if done
         else:
             status = "[yellow]Pending[/yellow]"
             display_task = task_text
 
-        table.add_row(str(idx), display_task, status)
+        table.add_row(str(idx), prio_display, display_task, status)
 
     return table
 
 
 logo = r"""
-[bold #cba6f7]___________________  ________    ________  .____    .___  _______________________[/bold #cba6f7]
-[bold #cba6f7]\__    ___/\_____  \ \______ \   \_____  \ |    |   |   |/      _____/\__    ___/[/bold #cba6f7]
-[bold #89b4fa]  |    |    /    |  \ |    |  \   /   |   \|    |   |   |\_____  \      |    |[/bold #89b4fa]
-[bold #89b4fa]  |    |   /     |   \|    `   \ /    |    \    |___|   |/        \     |    |[/bold #89b4fa]
-[bold #89b4fa]  |____|   \_________/_________/ \_________/________\___/_________/     |____|[/bold #89b4fa]
+[bold #cba6f7]    ___________________  ________    ________  .____    .___  _______________________[/bold #cba6f7]
+[bold #cba6f7]    \__    ___/\_____  \ \______ \   \_____  \ |    |   |   |/      _____/\__    ___/[/bold #cba6f7]
+[bold #89b4fa]      |    |    /    |  \ |    |  \   /   |   \|    |   |   |\_____  \      |    |[/bold #89b4fa]
+[bold #89b4fa]      |    |   /     |   \|    `   \ /    |    \    |___|   |/        \     |    |[/bold #89b4fa]
+[bold #89b4fa]      |____|   \_________/_________/ \_________/________\___/_________/     |____|[/bold #89b4fa]
 """
 
 
@@ -72,53 +93,25 @@ def colorscemes():
     console.print("[2] [bold orange]Dracula[/bold orange]")
     console.print("[3] [bold red]Gruvbox[/bold red]")
     console.print("[4] [bold blue]Nord[/bold blue]")
-    choice = Prompt.ask(
-        "\nChoose",
-        choices=[
-            "1",
-            "2",
-            "3",
-            "4",
-        ],
-    )
-    if choice == "1":
-        logo = inspect.cleandoc(r"""
-        [bold #cba6f7]___________________  ________    ________  .____    .___  ____________________[/bold #cba6f7]
-        [bold #cba6f7]\__    ___/\_____  \ \______ \   \_____  \ |    |   |   |/      _____/\__    ___/[/bold #cba6f7]
-        [bold #89b4fa]  |    |    /    |  \ |    |  \   /   |   \|    |   |   |\_____  \      |    |[/bold #89b4fa]
-        [bold #89b4fa]  |    |   /     |   \|    `   \ /    |    \    |___|   |/        \     |    |[/bold #89b4fa]
-        [bold #89b4fa]  |____|   \_________/_________/ \_________/________\___/_________/     |____|[/bold #89b4fa]
-        """)
-        print_header()
-        time.sleep(1)
-    elif choice == "2":
-        logo = inspect.cleandoc(r"""
-        [bold #ff79c6]___________________  ________    ________  .____    .___  ____________________[/bold #ff79c6]
-        [bold #ff79c6]\__    ___/\_____  \ \______ \   \_____  \ |    |   |   |/      _____/\__    ___/[/bold #ff79c6]
-        [bold #bd93f9]  |    |    /    |  \ |    |  \   /   |   \|    |   |   |\_____  \      |    |[/bold #bd93f9]
-        [bold #bd93f9]  |    |   /     |   \|    `   \ /    |    \    |___|   |/        \     |    |[/bold #bd93f9]
-        [bold #bd93f9]  |____|   \_________/_________/ \_________/________\___/_________/     |____|[/bold #bd93f9]
-        """)
-        print_header()
-        time.sleep(1)
-    elif choice == "3":
-        logo = inspect.cleandoc(r"""
-        [bold #fb4934]___________________  ________    ________  .____    .___  ____________________[/bold #fb4934]
-        [bold #fb4934]\__    ___/\_____  \ \______ \   \_____  \ |    |   |   |/      _____/\__    ___/[/bold #fb4934]
-        [bold #fabd2f]  |    |    /    |  \ |    |  \   /   |   \|    |   |   |\_____  \      |    |[/bold #fabd2f]
-        [bold #fabd2f]  |    |   /     |   \|    `   \ /    |    \    |___|   |/        \     |    |[/bold #fabd2f]
-        [bold #fabd2f]  |____|   \_________/_________/ \_________/________\___/_________/     |____|[/bold #fabd2f]
-        """)
-        print_header()
-        time.sleep(1)
-    elif choice == "4":
-        logo = inspect.cleandoc(r"""
-            [bold #88C0D0]___________________  ________    ________  .____    .___  ____________________[/bold #88C0D0]
-            [bold #88C0D0]\__    ___/\_____  \ \______ \   \_____  \ |    |   |   |/      _____/\__    ___/[/bold #88C0D0]
-            [bold #81A1C1]  |    |    /    |  \ |    |  \   /   |   \|    |   |   |\_____  \      |    |[/bold #81A1C1]
-            [bold #81A1C1]  |    |   /     |   \|    `   \ /    |    \    |___|   |/        \     |    |[/bold #81A1C1]
-            [bold #81A1C1]  |____|   \_________/_________/ \_________/________\___/_________/     |____|[/bold #81A1C1]
-            """)
+    choice = Prompt.ask("\nChoose", choices=["1", "2", "3", "4"])
+
+    themes = {
+        "1": ("[bold #cba6f7]", "[bold #89b4fa]"),
+        "2": ("[bold #ff79c6]", "[bold #bd93f9]"),
+        "3": ("[bold #fb4934]", "[bold #fabd2f]"),
+        "4": ("[bold #88C0D0]", "[bold #81A1C1]"),
+    }
+
+    c1, c2 = themes[choice]
+    logo = inspect.cleandoc(rf"""
+    {c1}    ___________________  ________    ________  .____    .___  _______________________{c1}
+    {c1}    \__    ___/\_____  \ \______ \   \_____  \ |    |   |   |/      _____/\__    ___/{c1}
+    {c2}      |    |    /    |  \ |    |  \   /   |   \|    |   |   |\_____  \      |    |{c1}
+    {c2}      |    |   /     |   \|    `   \ /    |    \    |___|   |/        \     |    |{c1}
+    {c2}      |____|   \_________/_________/ \_________/________\___/_________/     |____|{c1}
+    """)
+    print_header()
+    time.sleep(1)
 
 
 def print_header():
@@ -133,13 +126,17 @@ def add_mode(todos):
         task = Prompt.ask("\n[bold green]Add Task[/bold green] (or 'exit')")
         if task.lower() == "exit":
             break
-        if task == "":
+        if not task:
             console.print("Please enter something")
             time.sleep(1)
-        else:
-            todos.append({"task": task, "done": False})
-            save_todos(todos)
-            console.print(f"[green]Added:[/green] {task}")
+            continue
+
+        console.print("\n[1] High [2] Medium [3] Low [4] None")
+        prio = Prompt.ask("Set Priority", choices=["1", "2", "3", "4"], default="4")
+
+        todos.append({"task": task, "done": False, "priority": prio})
+        save_todos(todos)
+        console.print(f"[green]Added:[/green] {task}")
 
 
 def complete_mode(todos):
@@ -155,6 +152,35 @@ def complete_mode(todos):
                 todos[idx]["done"] = True
                 save_todos(todos)
                 console.print("[green]Task marked as done![/green]")
+            else:
+                console.print("[red]Invalid number![/red]")
+
+
+def edit_mode(todos):
+    while True:
+        print_header()
+        console.print(get_task_table(todos))
+        task_num = Prompt.ask("\n[bold yellow]Edit Number[/bold yellow] (or 'exit')")
+        if task_num.lower() == "exit":
+            break
+        if task_num.isdigit():
+            idx = int(task_num) - 1
+            if 0 <= idx < len(todos):
+                new_task = Prompt.ask(
+                    "Enter new task name (Leave blank to keep current)",
+                    default=todos[idx]["task"],
+                )
+                console.print("[1] High [2] Medium [3] Low [4] None")
+                new_prio = Prompt.ask(
+                    "Update Priority",
+                    choices=["1", "2", "3", "4"],
+                    default=todos[idx]["priority"],
+                )
+
+                todos[idx]["task"] = new_task
+                todos[idx]["priority"] = new_prio
+                save_todos(todos)
+                console.print("[yellow]Task updated![/yellow]")
             else:
                 console.print("[red]Invalid number![/red]")
 
@@ -177,39 +203,51 @@ def remove_mode(todos):
 
 
 def removeAll_mode(todos):
-    while True:
-        print_header()
-        console.print(get_task_table(todos))
-        task_1 = Prompt.ask(
-            "\n[bold red]ARE YOU SURE YOU WANT TO REMO0VE ALL TASKS?! Type 'YES' [/bold red] (or 'exit')"
-        )
-        if task_1.lower() == "exit":
-            break
-        elif task_1 == "YES":
+    print_header()
+    console.print(get_task_table(todos))
+    confirm = Prompt.ask(
+        "\n[bold red]ARE YOU SURE? Type 'YES' to delete everything[/bold red]",
+        default="no",
+    )
+    if confirm == "YES":
+        if os.path.exists(FILENAME):
             os.remove(FILENAME)
-            break
-        else:
-            console.print("[red]Invalid number![/red]")
+        todos.clear()
+        console.print("[red]All tasks deleted.[/red]")
+        time.sleep(1)
 
 
 def app():
     while True:
         todos = load_todos()
         print_header()
+        console.print("\n")
         console.print(
             Panel(
                 get_task_table(todos), title="Current To-Do List", border_style="blue"
             )
         )
 
-        console.print("\n[1] [bold green]Add Task[/bold green]")
-        console.print("[2] [bold blue1]Complete Task[/bold blue1]")
-        console.print("[3] [bold orange]Remove Task[/bold orange]")
-        console.print("[4] [bold red]Remove all[/bold red]")
-        console.print("[5] [bold white]Exit[/bold white]")
-        console.print("[6] [bold purple]Settings[/bold purple]")
+        console.print(
+            Align.center(
+                "\n    [1] [bold green]Add Task[/bold green]     [2] [bold blue]Complete Task[/bold blue]"
+            )
+        )
+        console.print(
+            Align.center(
+                " [3] [bold red]Remove Task[/bold red]  [4] [bold yellow]Edit Task[/bold yellow]"
+            )
+        )
+        console.print(
+            Align.center(
+                "[5] [bold white]Remove All[/bold white]   [6] [bold magenta]Settings[/bold magenta]"
+            )
+        )
+        console.print(Align.center(" [7] [bold dim]Exit[/bold dim]"))
 
-        choice = Prompt.ask("\nChoose", choices=["1", "2", "3", "4", "5", "exit", "6"])
+        choice = Prompt.ask(
+            "\nChoose", choices=["1", "2", "3", "4", "5", "6", "7", "exit"]
+        )
 
         if choice == "1":
             add_mode(todos)
@@ -218,15 +256,14 @@ def app():
         elif choice == "3":
             remove_mode(todos)
         elif choice == "4":
-            removeAll_mode(todos)
+            edit_mode(todos)
         elif choice == "5":
-            console.print("[bold yellow]Goodbye![/bold yellow]")
-            break
-        elif choice == "exit":
-            console.print("[bold yellow]Goodbye![/bold yellow]")
-            break
+            removeAll_mode(todos)
         elif choice == "6":
             colorscemes()
+        elif choice in ["7", "exit"]:
+            console.print("[bold yellow]Goodbye![/bold yellow]")
+            break
 
 
 def load_logo():

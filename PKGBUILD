@@ -1,12 +1,12 @@
 pkgname=ptodo
-pkgver=1.4
-pkgrel=4
-pkgdesc="a TUI todolist app written in python"
+pkgver=2.0
+pkgrel=5
+pkgdesc="a TUI todolist-app written in python"
 arch=('any')
 depends=('python' 'python-rich')
 url='https://github.com/NVitschDEV/ptodo'
 source=("ptodo.py")
-sha256sums=('58fcae97f81a17d7ce224cf42af1f28056395aed9e007bef33f90bcee30ef01c')
+sha256sums=('58fd4244de9ee26dbf1b488b906ab489520ba938ce18b92230044fda14253bd4')
 
 package() {
   # Installs the script to /usr/bin/ and makes it executable
