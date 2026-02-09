@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=nextpnr-all-nightly
-pkgver=20260208_nextpnr_0.9_62_g3c558d6e
+pkgver=20260209_nextpnr_0.9_63_g35f14336
 pkgrel=1
 epoch=1
 pkgdesc="nextpnr portable FPGA place and route tool - ice40, ecp5, machxo2, nexus, and generic"
@@ -38,7 +38,7 @@ provides=(
 	"nextpnr-nexus=$(cut -d _ -f 3 <<< "${pkgver}")"
 )
 source=(
-	"nextpnr::git+https://github.com/YosysHQ/nextpnr.git#commit=3c558d6e"
+	"nextpnr::git+https://github.com/YosysHQ/nextpnr.git#commit=35f14336"
 )
 sha256sums=(
 	"SKIP"
