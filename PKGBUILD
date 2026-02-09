@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=gh-eco
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="🦎 gh cli extension to explore the ecosystem"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jrnxf/gh-eco"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/jrnxf/gh-eco.git#tag=v$pkgver")
