@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=jaggr
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="JSON Aggregation CLI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rs/jaggr"
