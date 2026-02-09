@@ -1,11 +1,11 @@
 pkgbase = enpasscli
 	pkgdesc = Enpass commandline client
 	pkgver = 1.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hazcod/enpass-cli
 	arch = x86_64
 	arch = aarch64
-	license = unknown
+	license = MIT
 	makedepends = go
 	makedepends = git
 	depends = glibc
