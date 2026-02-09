@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=dockerfilegraph
 pkgver=0.19.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Visualize your multi-stage Dockerfiles"
 arch=('x86_64' 'aarch64')
 url="https://github.com/patrickhoefler/dockerfilegraph"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/patrickhoefler/dockerfilegraph.git#tag=v$pkgver")
