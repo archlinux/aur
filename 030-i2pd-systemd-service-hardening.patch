@@ -1,8 +1,8 @@
 --- a/contrib/i2pd.service
 +++ b/contrib/i2pd.service
-@@ -34,5 +34,31 @@ LimitNOFILE=8192
- # To enable write of coredump uncomment this
- #LimitCORE=infinity
+@@ -44,5 +44,31 @@ ReadWritePaths=-/var/lib/i2pd
+ ReadWritePaths=-/run/i2pd
+ ReadWritePaths=-/etc/i2pd
  
 +# Hardening options
 +PrivateTmp=true
