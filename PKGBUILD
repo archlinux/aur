@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=nomore403
 pkgver=1.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="🚫 Advanced tool for security researchers to bypass 403/40X restrictions through smart techniques and adaptive request manipulation. Fast. Precise. Effective."
 arch=('x86_64' 'aarch64')
 url="https://github.com/devploit/nomore403"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/devploit/nomore403.git#tag=v$pkgver")
