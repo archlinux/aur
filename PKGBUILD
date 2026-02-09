@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=hashi-up
 pkgver=0.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="bootstrap HashiCorp Consul, Nomad, or Vault over SSH < 1 minute"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jsiebens/hashi-up"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/jsiebens/hashi-up.git#tag=v$pkgver")
