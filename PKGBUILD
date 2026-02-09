@@ -7,8 +7,8 @@ _image_url_x86_64="https://capacities-desktop-app.fra1.cdn.digitaloceanspaces.co
 _image_url_aarch64="https://capacities-desktop-app.fra1.cdn.digitaloceanspaces.com/Capacities-${_version}-arm64.AppImage"
 
 pkgname="${_pkgname}"-appimage
-pkgver=1.58.38
-pkgrel=2
+pkgver=1.58.42
+pkgrel=1
 pkgdesc="Personal Knowledge Management app - A studio for your mind"
 arch=('x86_64' 'aarch64')
 url="https://capacities.io/"
@@ -19,8 +19,8 @@ provides=('capacities')
 
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.AppImage::${_image_url_x86_64}")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.AppImage::${_image_url_aarch64}")
-sha256sums_x86_64=('0566a7d7422d17f84a10c186fe6df64208f248b45ea899ebb6ae73d24f6861c0')
-sha256sums_aarch64=('a0d33ac4713247275fc82092a18a21f284919289265b8cf174818de5f6248fcd')
+sha256sums_x86_64=('d242bcede8418a12ed5f1bab0835713ce511bb3199284de9ba9023beecc3c8dc')
+sha256sums_aarch64=('1ed1359307bc0970de615ed61d467973030df56669a2fcc36e5bc6840f4ffa77')
 
 _appimage="${_pkgname}-${pkgver}-${CARCH}.AppImage"
 noextract=(
