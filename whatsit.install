@@ -1,0 +1,52 @@
+# whatsit.install
+# This script will remove the package installed to /usr/local. That was a mistake in the previous PKGBUILD.
+# Check AUR Package Guidelines for more information.
+
+clean_old_usr_local() {
+  echo "Checking for leftover files from old /usr/local install..."
+
+  remove_file() {
+    if [ -e "$1" ] || [ -L "$1" ]; then
+      echo "Removing leftover file: $1"
+      rm -f "$1"
+    fi
+  }
+
+  remove_dir_if_empty() {
+    if [ -d "$1" ]; then
+      rmdir "$1" 2>/dev/null && echo "Removed empty directory: $1"
+    fi
+  }
+
+  # binary
+  remove_file /usr/local/bin/whatsit
+
+  # desktop & notifyrc
+  remove_file /usr/local/share/applications/whatsit.desktop
+  remove_file /usr/local/share/knotifications6/whatsit.notifyrc
+
+  # icons
+  remove_file /usr/local/share/icons/hicolor/256x256/apps/whatsit.png
+  remove_file /usr/local/share/icons/hicolor/256x256/apps/whatsit_mono.png
+  remove_file /usr/local/share/icons/hicolor/256x256/apps/WhatsApp.png
+
+  # license folder
+  if [ -d /usr/local/share/licenses/whatsit ]; then
+    echo "Removing leftover directory: /usr/local/share/licenses/whatsit"
+    rm -rf /usr/local/share/licenses/whatsit
+  fi
+
+  # clean up empty folders
+  remove_dir_if_empty /usr/local/share/icons/hicolor/256x256/apps
+  remove_dir_if_empty /usr/local/share/icons/hicolor/256x256
+  remove_dir_if_empty /usr/local/share/icons/hicolor
+  remove_dir_if_empty /usr/local/share/icons
+}
+
+pre_install() {
+  clean_old_usr_local
+}
+
+pre_upgrade() {
+  clean_old_usr_local
+}

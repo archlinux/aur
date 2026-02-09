@@ -3,7 +3,7 @@
 
 pkgname=whatsit-git
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight (KDE) native Qt6 WhatsApp Web client"
 arch=('x86_64')
 url="https://github.com/devlinman/whatsit"
@@ -43,7 +43,8 @@ build() {
 
   cmake -B build -S . \
     -GNinja \
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr
 
   cmake --build build
 }
@@ -54,3 +55,5 @@ package() {
   DESTDIR="$pkgdir" cmake --install build
 
 }
+
+install=whatsit.install
