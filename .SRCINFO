@@ -5,6 +5,7 @@ pkgbase = freeshow-electron-bin
 	url = https://github.com/ChurchApps/FreeShow
 	arch = x86_64
 	license = GPL-3.0-only
+	makedepends = asar
 	depends = gtk3
 	depends = libnotify
 	depends = nss

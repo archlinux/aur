@@ -33,6 +33,9 @@ depends=(
 optdepends=(
     "libappindicator-gtk3"
 )
+makedepends=(
+    'asar'
+)
 source=(
     "${pkgname%-bin}.sh"
     "${pkgname%-bin}-${pkgver}-amd64.deb::${url}/releases/download/${_tag}/${_assetname}"
