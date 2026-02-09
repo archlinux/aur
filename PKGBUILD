@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=mirrorbits
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Mirrorbits is a geographical download redirector written in Go for distributing files efficiently across a set of mirrors."
 arch=('x86_64' 'aarch64')
 url="https://github.com/etix/mirrorbits"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/etix/mirrorbits.git#tag=v$pkgver")
