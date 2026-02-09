@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Oyasumi VR
+Comment=VR Sleeping Utilities
+Exec=oyasumivr
+Icon=oyasumivr
+Terminal=false
+Categories=Utility;X-WiVRn-VR;
+X-XR-Plugin=true
+X-XR-Plugin-Exec=oyasumivr

@@ -2,14 +2,22 @@
 
 pkgname=oyasumi
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 _oyasumiver=25.6.12
 pkgdesc="Oyasumi (VR Sleeping Utilities)"
 arch=('x86_64')
 url="https://github.com/sofoxe1/OyasumiVR"
 license=('MIT')
-source=("$pkgname-$_oyasumiver-$pkgver.tar.gz::https://github.com/sofoxe1/OyasumiVR/releases/download/oyasumivr-v$_oyasumiver-linux-v$pkgver/oyasumi-linux.tar.zst")
-sha256sums=('082e214c6c25f55bf3e6db3bfcbede8be82c43f32ba4e10dbe7ab650fb300a16')
+source=(
+  "$pkgname-$_oyasumiver-$pkgver.tar.gz::https://github.com/sofoxe1/OyasumiVR/releases/download/oyasumivr-v$_oyasumiver-linux-v$pkgver/oyasumi-linux.tar.zst"
+  'oyasumivr.desktop'
+  'oyasumivr@128x128.png'
+)
+sha256sums=(
+  '082e214c6c25f55bf3e6db3bfcbede8be82c43f32ba4e10dbe7ab650fb300a16'
+  '55b55fa249b95fca609073c22780c5eb0c3ced1f45717e872817e947a3897045'
+  '7925098c33d2ebb44f28ef96a3cc92590010acacbee4d6ea45f1af2b81a3ae2c'
+)
 
 prepare() {
   # Extract the source archive
@@ -25,4 +33,8 @@ package() {
   # Install resources in /usr/share/oyasumi
   install -d "$pkgdir/usr/share/oyasumi/"
   cp -r "$srcdir/Oyasumi/resources"/* "$pkgdir/usr/share/oyasumi/"
+
+  # Install desktop entry
+  install -Dm644 "$srcdir/oyasumivr.desktop" "$pkgdir/usr/share/applications/oyasumivr.desktop" 
+  install -Dm644 "$srcdir/oyasumivr@128x128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/oyasumivr.png"
 }
