@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=fil
 pkgver=0.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="😋 Unix file command written in Go"
 arch=('x86_64' 'aarch64')
 url="https://github.com/file-go/fil"

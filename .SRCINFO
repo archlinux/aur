@@ -1,7 +1,7 @@
 pkgbase = fil
 	pkgdesc = 😋 Unix file command written in Go
 	pkgver = 0.2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/file-go/fil
 	arch = x86_64
 	arch = aarch64
