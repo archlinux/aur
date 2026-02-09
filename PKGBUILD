@@ -20,4 +20,9 @@ package() {
     cd "$pkgname-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    
+    # Shell completions
+    install -Dm644 completions/hyprvault.fish "$pkgdir/usr/share/fish/vendor_completions.d/hyprvault.fish"
+    install -Dm644 completions/hyprvault.bash "$pkgdir/usr/share/bash-completion/completions/hyprvault"
+    install -Dm644 completions/_hyprvault "$pkgdir/usr/share/zsh/site-functions/_hyprvault"
 }
