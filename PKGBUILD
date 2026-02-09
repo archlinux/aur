@@ -1,6 +1,6 @@
 pkgname=bar_daemon
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Async status bar daemon for Linux. Uses event-driven updating of values"
 arch=('x86_64')
 url="https://github.com/tmforshaw/bar_daemon"
@@ -17,8 +17,7 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	install -Dm755 target/release/bar_daemon "$pkgdir/usr/bin/bar_daemon"
 
-	cd "$srcdir/$pkgname"
+	install -Dm755 target/release/bar_daemon "$pkgdir/usr/bin/bar_daemon"
     install -Dm644 default/config.toml "$pkgdir/etc/bar_daemon/config.toml"
 }
