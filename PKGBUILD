@@ -15,7 +15,6 @@ arch=('x86_64')
 url='https://github.com/Redemp/vkBasalt'
 license=('Zlib')
 _depends=('glibc' 'gcc-libs' 'libx11')
-depends=("${_depends[@]}" "${_depends[@]/#/lib32-}")
 makedepends=('git' 'glslang' 'meson' 'ninja' 'spirv-headers' 'vulkan-headers')
 optdepends=('reshade-shaders-git: collection of shaders to use with vkBasalt')
 source=("${pkgbase}-${pkgver//_/-}::git+${url}.git")
@@ -24,6 +23,7 @@ b2sums=('SKIP')
 pkgver() {
   cd "${srcdir}/${pkgbase}-${pkgver//_/-}"
 
+  local version commit
   version="$(git rev-list --count HEAD)"
   commit="$(git rev-parse --short=7 HEAD)"
 
@@ -42,7 +42,7 @@ _build_64-bit() {
   meson compile -C build
 }
 
-_build_32-bit() {
+_build_32-bit() (
   export ASFLAGS="${ASFLAGS} --32"
   export CFLAGS="${CFLAGS} -m32"
   export CXXFLAGS="${CXXFLAGS} -m32"
@@ -51,7 +51,7 @@ _build_32-bit() {
 
   arch-meson --libdir=lib32 --buildtype=release build32 -D b_lto=true
   meson compile -C build32
-}
+)
 
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver//_/-}"
