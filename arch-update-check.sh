@@ -3,7 +3,7 @@
 # Arch Update Readiness Checker v1.3.3
 # Fixes: AUR print updates amount error.
 
-VERSION="1.3.3"
+VERSION="1.3.4"
 set -euo pipefail
 
 NEWS_RSS="https://archlinux.org/feeds/news/"
