@@ -48,7 +48,7 @@ prepare() {
     _get_electron_version
     sed -i -e "
         s/AppRun --no-sandbox/${pkgname%-bin}/g
-        s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
+        s/Icon=${_appname}/Icon=${pkgname%-bin}/g
     " "${srcdir}/squashfs-root/${_appname}.desktop"
 }
 package() {
