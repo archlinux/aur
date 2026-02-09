@@ -1,7 +1,7 @@
 pkgbase = aws-doctor
 	pkgdesc = Diagnose AWS costs, detect idle resources, and optimize cloud spending directly from your terminal. 🩺 ☁️
 	pkgver = 1.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/elC0mpa/aws-doctor
 	arch = x86_64
 	arch = aarch64
