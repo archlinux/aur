@@ -3,11 +3,11 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-undelete
 pkgver=2.3.1_pre1
-_vdrapi=9
-pkgrel=16
+_vdrapi=11
+pkgrel=17
 pkgdesc="allows to undelete accidentally deleted VDR recordings"
 url="http://phivdr.dyndns.org/vdr/vdr-undelete/"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
