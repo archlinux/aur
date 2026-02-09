@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=protolock
 pkgver=0.17.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Protocol Buffer companion tool. Track your .proto files and prevent changes to messages and services which impact API compatibility."
 arch=('x86_64' 'aarch64')
 url="https://github.com/nilslice/protolock"

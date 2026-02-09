@@ -1,7 +1,7 @@
 pkgbase = protolock
 	pkgdesc = Protocol Buffer companion tool. Track your .proto files and prevent changes to messages and services which impact API compatibility.
 	pkgver = 0.17.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nilslice/protolock
 	arch = x86_64
 	arch = aarch64
