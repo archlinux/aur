@@ -1,7 +1,7 @@
 pkgbase = paclear
 	pkgdesc = 👾paclear is a clear command with PAC-MAN animation👾
 	pkgver = 0.0.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/orangekame3/paclear
 	arch = x86_64
 	arch = aarch64

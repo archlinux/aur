@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=paclear
 pkgver=0.0.13
-pkgrel=2
+pkgrel=3
 pkgdesc="👾paclear is a clear command with PAC-MAN animation👾"
 arch=('x86_64' 'aarch64')
 url="https://github.com/orangekame3/paclear"
