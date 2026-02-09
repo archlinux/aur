@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=ovpm
 pkgver=0.2.12
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenVPN Management Server - Effortless and free OpenVPN server administration tool"
 arch=('x86_64' 'aarch64')
 url="https://github.com/cad/ovpm"
-license=('unknown')
+license=('AGPL-3.0')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/cad/ovpm.git#tag=v$pkgver")
