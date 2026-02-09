@@ -17,6 +17,6 @@ pkgbase = cachyos-service-manager
 	optdepends = polkit: for privilege escalation
 	optdepends = python-pytest: for running tests
 	source = cachyos-service-manager-0.2.1.tar.gz::https://github.com/Goitonthefloor/cachyos-service-manager/archive/v0.2.1.tar.gz
-	sha256sums = 10b487dbf590d02756fd8ee6e9e59d8e9d855c9fad1e13dcefc5f2adc87e6f4a
+	sha256sums = cb964155bb83b70b7cd5def4fafed394e32317457db0c2d1af891c2b10d387ef
 
 pkgname = cachyos-service-manager

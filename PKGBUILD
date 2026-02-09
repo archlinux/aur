@@ -2,7 +2,7 @@
 pkgname=cachyos-service-manager
 pkgver=0.2.1
 pkgrel=1
-sha256sums=('10b487dbf590d02756fd8ee6e9e59d8e9d855c9fad1e13dcefc5f2adc87e6f4a')
+sha256sums=('cb964155bb83b70b7cd5def4fafed394e32317457db0c2d1af891c2b10d387ef')
 
 pkgdesc="Full-featured systemd service manager for CachyOS (Qt6 + GTK4 frontends)"
 arch=('any')
