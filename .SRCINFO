@@ -1,7 +1,7 @@
 pkgbase = ojosama
 	pkgdesc = テキストを壱百満天原サロメお嬢様風の口調に変換します
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jiro4989/ojosama
 	arch = x86_64
 	arch = aarch64

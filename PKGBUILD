@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=ojosama
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="テキストを壱百満天原サロメお嬢様風の口調に変換します"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jiro4989/ojosama"
