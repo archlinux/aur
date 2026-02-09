@@ -3,12 +3,12 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-skinenigmang
 pkgver=0.1.5
-pkgrel=8
-_vdrapi=9
+pkgrel=9
+_vdrapi=11
 epoch=1
 pkgdesc="skin based on the Enigma text2skin addon"
 url="https://github.com/vdr-projects/vdr-plugin-skinenigmang"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 depends=('freetype2' 'gcc-libs' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
