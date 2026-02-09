@@ -12,8 +12,8 @@
 #
 
 pkgname=aseprite-bin
-_pkgver=1.3.16.1-1
-pkgver=${_pkgver//-/.}
+pkgver=1.3.16.1
+_pkgver=${pkgver}-1
 pkgrel=1
 pkgdesc="Create animated sprites and pixel art"
 arch=('x86_64')
