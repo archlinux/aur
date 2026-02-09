@@ -1,8 +1,9 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=enpasscli
 _pkgname=enpass-cli
 pkgver=1.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Enpass commandline client"
 arch=('x86_64' 'aarch64')
 url="https://github.com/hazcod/enpass-cli"
