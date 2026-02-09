@@ -1,7 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=appmanager
+_app_id=com.github.AppManager
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="MacOS style AppImage installer and management application"
 arch=('x86_64')
 url="https://github.com/kem-a/AppManager"
@@ -30,6 +31,11 @@ build() {
     -Dbundle_zsync=false \
     -Dbundle_7z=false
   meson compile -C build
+}
+
+check() {
+  appstreamcli validate --no-net "AppManager-$pkgver/data/${_app_id}.metainfo.xml" || :
+  desktop-file-validate "build/data/${_app_id}.desktop"
 }
 
 package() {
