@@ -1,7 +1,7 @@
 # Maintainer: James Tucker <jftucker@gmail.com>
 # Contributor: Chris Sutcliff <chris@sutcliff.me>
 pkgname=music-assistant-desktop-git
-pkgver=0.3.3.r0.g0ddd331
+pkgver=0.3.4.r0.g912133f
 pkgrel=1
 pkgdesc="Music Assistant Desktop Companion App"
 arch=('x86_64')
