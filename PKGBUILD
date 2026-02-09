@@ -2,7 +2,7 @@
 # Contributer: David Mazieres (http://www.scs.stanford.edu/~dm/addr/)
 
 pkgname=droidcam-obs-plugin-git
-pkgver=2.4.2.r1.161cb95
+pkgver=2.4.3.r0.e873e48
 pkgrel=1
 pkgdesc="plugin for droidcam obs"
 arch=('x86_64' 'i686')
