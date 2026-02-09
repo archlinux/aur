@@ -3,11 +3,11 @@
 # Maintainer: Manuel Reimer <manuel.reimer@gmx.de>
 pkgbase=vdr
 pkgname=(vdr vdr-examples)
-pkgver=2.7.7
-_vdrapi=9
+pkgver=2.7.9
+_vdrapi=11
 pkgrel=1
 url="http://tvdr.de/"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL-2.0-or-later')
 makedepends=('fontconfig' 'libcap' 'libjpeg-turbo' 'libsystemd' 'perl' 'ttf-font' 'systemd' 'ncurses')
 source=("$pkgname-$pkgver.tar.bz2::http://git.tvdr.de/?p=vdr.git;a=snapshot;h=refs/tags/$pkgver;sf=tbz2"
@@ -20,9 +20,9 @@ source=("$pkgname-$pkgver.tar.bz2::http://git.tvdr.de/?p=vdr.git;a=snapshot;h=re
         'shutdown-wrapper.c'
         'vdr.service'
         'vdr.sysuser')
-sha256sums=('f0d8d30b6a8012f6838eaaf9c337b7352bfac67f1cea6342b9c685e8df88c856'
+sha256sums=('651d51a534fe13c53c4f3c824e8b7416268667666128c4c1247c33a8234c8cb6'
             '6d5a69501e65046b708841c38f066f4598baa7c4b52f382e70fe2f69c01a233f'
-            'c645bc73e9d18963fba1ce7e76033215e3c8daf02cfd1d68f515c932c7121a58'
+            'cb44edeed0c7a8c1110d5963934dd6c9a79f7e7618ecc1dafb38bbe05d982f7a'
             '86f2469f459e2aabfc0ab703fc8435e458e89c4879376e900160d083924097b3'
             '423656cb6ba39af52d379dee697c52e6f435c098daa8c2ba429c1247b757af50'
             '39f4c2886328dc947dbef70dbc37d42504dc5c9d6a2ad81bf0c41d26fa3a5d6a'
