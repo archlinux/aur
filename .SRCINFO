@@ -1,7 +1,7 @@
 pkgbase = codeowners
 	pkgdesc = 🔒 Command line tool and Go library for CODEOWNERS files
 	pkgver = 1.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hmarr/codeowners
 	arch = x86_64
 	arch = aarch64

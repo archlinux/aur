@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=codeowners
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="🔒 Command line tool and Go library for CODEOWNERS files"
 arch=('x86_64' 'aarch64')
 url="https://github.com/hmarr/codeowners"
