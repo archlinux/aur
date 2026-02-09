@@ -3,7 +3,7 @@
 pkgname=shortwave-mpris-git
 pkgver=5.1.0
 pkgrel=1
-pkgdesc="Internet radio player with MPRIS support, DLNA/UPnP streaming, Google Cast, and FFmpeg proxy for incompatible streams"
+pkgdesc="Internet radio player extended MPRIS support, device support for DLNA/UPnP & Google Cast with FFmpeg proxy for incompatible streams"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ixnewton/Shortwave-MPRIS"
 license=('GPL3')
