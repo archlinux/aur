@@ -1,11 +1,11 @@
 # Maintainer: gomanager <gomanager@generated>
 pkgname=codeowners
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="🔒 Command line tool and Go library for CODEOWNERS files"
 arch=('x86_64' 'aarch64')
 url="https://github.com/hmarr/codeowners"
-license=('unknown')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+https://github.com/hmarr/codeowners.git#tag=v$pkgver")
