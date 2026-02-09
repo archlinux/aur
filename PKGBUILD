@@ -1,7 +1,8 @@
-# Maintainer: gomanager <gomanager@generated>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 pkgname=json2struct
 pkgver=1.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc="CLI tool to convert JSON to struct type definitions"
 arch=('x86_64' 'aarch64')
 url="https://github.com/marhaupe/json2struct"
