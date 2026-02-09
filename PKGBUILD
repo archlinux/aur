@@ -4,22 +4,18 @@
 # Contributor: Christer Solskogen <christer.solskogen@gmail.com>
 
 pkgname=lib32-sdl3-git
-pkgver=3.4.0.r96.g5c15d74394
+pkgver=3.4.0.r258.g6f754e5c03
 pkgrel=1
 pkgdesc="Simple Directmedia Layer (Version 3)"
 arch=('x86_64' 'i686')
 url="https://www.libsdl.org"
 license=('Zlib')
-depends=('sdl3' 'lib32-glibc' 'lib32-libxext' 'lib32-libxrender' 'lib32-libx11' 'lib32-libgl' 'lib32-libxcursor' 'hidapi' 'lib32-libusb')
-makedepends=('lib32-alsa-lib' 'lib32-mesa' 'lib32-libpulse' 'lib32-libxrandr' 'lib32-libxinerama' 'lib32-wayland' 'lib32-libxkbcommon'
-             'wayland-protocols' 'lib32-libxss' 'cmake' 'lib32-jack' 'ninja' 'lib32-pipewire'
-	     'lib32-libdecor' 'git' 'lib32-sndio' 'vulkan-headers')
-optdepends=('lib32-alsa-lib: ALSA audio driver'
-            'lib32-libpulse: PulseAudio audio driver'
-            'lib32-jack: JACK audio driver'
-	    'lib32-pipewire: PipeWire audio driver'
-	    'lib32-sndio: MIDI audio driver'
-	    'lib32-libdecor: Wayland client decorations')
+depends=(sdl3 lib32-libdecor lib32-libglvnd lib32-libxtst lib32-libxkbcommon lib32-libthai lib32-libxi
+	 lib32-libpulse lib32-fribidi lib32-mesa lib32-libxrandr lib32-jack lib32-libxcursor lib32-sndio
+	 lib32-libxext lib32-libusb lib32-libpipewire lib32-libxss lib32-alsa-lib lib32-libxfixes
+	 lib32-glibc lib32-libx11 lib32-wayland lib32-libdrm)
+makedepends=('cmake' 'git' 'ninja' 'wayland-protocols' 'ibus' 'vulkan-headers')
+optdepends=('lib32-vulkan-driver: Vulkan Driver')
 source=("git+https://github.com/libsdl-org/SDL.git")
 provides=("lib32-sdl3=${pkgver%.r*}")
 conflicts=("lib32-sdl3")
@@ -43,7 +39,9 @@ build() {
 	-D SDL_STATIC=OFF \
 	-D SDL_TESTS=OFF \
 	-D SDL_TEST_LIBRARY=OFF \
-	-D SDL_RPATH=OFF
+	-D SDL_RPATH=OFF \
+	-D SDL_DEPS_SHARED=OFF
+
 	cmake --build build
 }
 
