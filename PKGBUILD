@@ -1,65 +1,69 @@
 # Maintainer: Card38753 <cccc38753@gmail.com>
 pkgname=lazytyper-bin
 _pkgname=LazyTyper
-pkgver=1.8.4
+pkgver=1.8.7_nightly.7
+_upstream_pkgver="${pkgver//_/-}"
 pkgrel=1
-pkgdesc="LazyTyper 桌面客户端（官方 AppImage 重打包，含内置依赖）"
+pkgdesc="LazyTyper desktop client for AI dictation and transcription (official DEB repack)"
 arch=('x86_64')
 url="https://lazytyper.com"
 _ghurl="https://github.com/oldcai/LazyTyper-releases"
 license=('proprietary')
-depends=()
+depends=('gtk3' 'webkit2gtk-4.1' 'libayatana-appindicator' 'alsa-lib' 'xdotool')
+makedepends=('patchelf')
 provides=("lazytyper=${pkgver}")
 conflicts=('lazytyper' 'lazytyper-git' 'lazytyper-appimage')
 options=(!strip)
-source=("${_pkgname}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}-linux/LazyTyper-x86_64.AppImage")
-sha256sums=('3407ba1def04dde0534e67c253a78f34b0ba3f738d10f43a17d04d3570fac7f5')
-
-build() {
-  cd "$srcdir"
-  rm -rf squashfs-root
-  chmod +x "${_pkgname}-${pkgver}.AppImage"
-  "./${_pkgname}-${pkgver}.AppImage" --appimage-extract
-}
+source_x86_64=(
+  "${_pkgname}-${_upstream_pkgver}-x86_64.deb::${_ghurl}/releases/download/v${_upstream_pkgver}-linux/LazyTyper_${_upstream_pkgver}_amd64.deb"
+)
+sha256sums_x86_64=('4c768e7f570fd1e4b97fb4b1c4ebee9822a2f22d468a6327b97c65667ba52534')
 
 package() {
-  cd "$srcdir"
+  local deb_file="${srcdir}/${_pkgname}-${_upstream_pkgver}-x86_64.deb"
+  local extract_dir="${srcdir}/deb-extract"
 
-  install -d "$pkgdir/opt/$pkgname"
-  cp -a squashfs-root/* "$pkgdir/opt/$pkgname/"
+  rm -rf "${extract_dir}"
+  install -d "${extract_dir}"
+  bsdtar -xf "${deb_file}" -C "${extract_dir}"
 
-  install -d "$pkgdir/usr/bin"
-  cat >"$pkgdir/usr/bin/lazytyper" <<'EOF'
+  local data_tar
+  data_tar="$(find "${extract_dir}" -maxdepth 1 -type f -name 'data.tar.*' | head -n1)"
+  if [[ -z "${data_tar}" ]]; then
+    echo "data.tar archive not found in ${deb_file}" >&2
+    return 1
+  fi
+  bsdtar -xf "${data_tar}" -C "${pkgdir}"
+  patchelf --replace-needed libxdo.so.3 libxdo.so.4 "${pkgdir}/usr/bin/LazyTyper"
+
+  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/lazytyper" <<'EOF'
 #!/usr/bin/env bash
-set -euo pipefail
-APPDIR="/opt/lazytyper-bin"
-export APPDIR
-export WEBKIT_EXEC_PATH="${APPDIR}/usr/lib/x86_64-linux-gnu/webkit2gtk-4.1"
-export LD_LIBRARY_PATH="${APPDIR}/usr/lib:${APPDIR}/usr/lib/x86_64-linux-gnu:${LD_LIBRARY_PATH:-}"
-exec "${APPDIR}/AppRun" "$@"
+export LD_LIBRARY_PATH="/usr/lib/LazyTyper${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}"
+
+# Arch uses /usr/lib/webkit2gtk-4.1, while some upstream binaries may probe
+# Debian multiarch paths first. Exporting WEBKIT_EXEC_PATH avoids runtime lookup issues.
+if [[ -d /usr/lib/webkit2gtk-4.1 ]]; then
+  export WEBKIT_EXEC_PATH="/usr/lib/webkit2gtk-4.1"
+elif [[ -d /usr/lib/x86_64-linux-gnu/webkit2gtk-4.1 ]]; then
+  export WEBKIT_EXEC_PATH="/usr/lib/x86_64-linux-gnu/webkit2gtk-4.1"
+fi
+
+exec /usr/bin/LazyTyper "$@"
 EOF
-  chmod 755 "$pkgdir/usr/bin/lazytyper"
 
-  install -Dm644 squashfs-root/usr/share/applications/LazyTyper.desktop \
-    "$pkgdir/usr/share/applications/lazytyper.desktop"
-  sed -i 's|^Exec=.*|Exec=/usr/bin/lazytyper|' \
-    "$pkgdir/usr/share/applications/lazytyper.desktop"
-  sed -i 's|^Icon=.*|Icon=lazytyper|' \
-    "$pkgdir/usr/share/applications/lazytyper.desktop"
-  if ! grep -q '^Categories=' "$pkgdir/usr/share/applications/lazytyper.desktop"; then
-    echo 'Categories=Utility;' >>"$pkgdir/usr/share/applications/lazytyper.desktop"
+  if [[ -f "${pkgdir}/usr/share/applications/LazyTyper.desktop" ]]; then
+    mv "${pkgdir}/usr/share/applications/LazyTyper.desktop" \
+      "${pkgdir}/usr/share/applications/lazytyper.desktop"
+    sed -i 's|^Exec=.*|Exec=/usr/bin/lazytyper|' \
+      "${pkgdir}/usr/share/applications/lazytyper.desktop"
+    sed -i 's|^Icon=.*|Icon=lazytyper|' \
+      "${pkgdir}/usr/share/applications/lazytyper.desktop"
   fi
 
-  if [ -f squashfs-root/usr/share/icons/hicolor/128x128/apps/LazyTyper.png ]; then
-    install -Dm644 squashfs-root/usr/share/icons/hicolor/128x128/apps/LazyTyper.png \
-      "$pkgdir/usr/share/icons/hicolor/128x128/apps/lazytyper.png"
-  fi
-  if [ -f squashfs-root/usr/share/icons/hicolor/256x256@2/apps/LazyTyper.png ]; then
-    install -Dm644 squashfs-root/usr/share/icons/hicolor/256x256@2/apps/LazyTyper.png \
-      "$pkgdir/usr/share/icons/hicolor/512x512/apps/lazytyper.png"
-  fi
-
-  install -d "$pkgdir/usr/lib/x86_64-linux-gnu"
-  ln -sf "/opt/$pkgname/usr/lib/x86_64-linux-gnu/webkit2gtk-4.1" \
-    "$pkgdir/usr/lib/x86_64-linux-gnu/webkit2gtk-4.1"
+  for size in 32x32 128x128 256x256@2; do
+    if [[ -f "${pkgdir}/usr/share/icons/hicolor/${size}/apps/LazyTyper.png" ]]; then
+      install -Dm644 "${pkgdir}/usr/share/icons/hicolor/${size}/apps/LazyTyper.png" \
+        "${pkgdir}/usr/share/icons/hicolor/${size}/apps/lazytyper.png"
+    fi
+  done
 }
