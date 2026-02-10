@@ -1,7 +1,6 @@
 # Maintainer: q234 rty <q23456yuiop at gmail dot com>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Eric Bélanger <eric@archlinux.org>
-# Deprecated, to be removed from AUR once 2.52.0 lands in extra
 
 pkgname=webkit2gtk-imgpaste
 pkgver=2.50.5
