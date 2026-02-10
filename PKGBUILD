@@ -12,7 +12,7 @@ optdepends=(
 )
 makedepends=('imagemagick')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/benjamimgois/omnicom/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('dfda010bda0a5bdc06c720dee3d9535b758ec283b33f981a30d9aaf7d8977030')
+sha256sums=('8a1d31364e95b697280cfbec68d5a2080c187b5ec795bd1fdd0609a1b9e7ea47')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -29,8 +29,10 @@ package() {
         magick assets/omnicom.png -resize ${size}x${size} "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/omnicom.png"
     done
 
-    # Install SVG arrow icon
-    install -Dm644 assets/icons/arrow_down.svg "${pkgdir}/usr/share/omnicom/arrow_down.svg"
+    # Install UI icons (sidebar and misc)
+    for icon in arrow_down.svg TFTP.svg serial-port-white.svg ssh_icon.svg; do
+        install -Dm644 "assets/icons/${icon}" "${pkgdir}/usr/share/omnicom/icons/${icon}"
+    done
 
     # Install vendor icons
     for vendor in generic cisco huawei juniper fortinet dlink h3c brocade datacom; do

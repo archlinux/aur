@@ -15,6 +15,6 @@ pkgbase = omnicom
 	depends = sudo
 	optdepends = python-standard-telnetlib: Telnet protocol support (Python 3.13+)
 	source = omnicom-1.2.tar.gz::https://github.com/benjamimgois/omnicom/archive/refs/tags/1.2.tar.gz
-	sha256sums = dfda010bda0a5bdc06c720dee3d9535b758ec283b33f981a30d9aaf7d8977030
+	sha256sums = 8a1d31364e95b697280cfbec68d5a2080c187b5ec795bd1fdd0609a1b9e7ea47
 
 pkgname = omnicom
