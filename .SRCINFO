@@ -1,7 +1,7 @@
 pkgbase = pinnacle-comp
 	pkgdesc = A Wayland compositor inspired by AwesomeWM
 	pkgver = 0.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pinnacle-comp/pinnacle
 	arch = x86_64
 	arch = aarch64
@@ -25,6 +25,7 @@ pkgbase = pinnacle-comp
 	depends = lua-posix
 	optdepends = xdg-desktop-portal-gtk: a suggested XDG desktop portal
 	optdepends = xdg-desktop-portal-wlr: for portal-based screencasting and screenshotting
+	provides = wayland-compositor
 	source = pinnacle-0.2.3.tar.gz::https://github.com/pinnacle-comp/pinnacle/archive/v0.2.3.tar.gz
 	source = https://github.com/pinnacle-comp/pinnacle/releases/download/v0.2.3/pinnacle-api-0.2.3-1.all.rock
 	sha256sums = 9b41576f0e3d4379b2c7845e2361ec29ab21510d11d8425bf825c43a3035b93a

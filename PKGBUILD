@@ -3,11 +3,12 @@
 pkgname=pinnacle-comp
 _pkgname=pinnacle
 pkgver=0.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A Wayland compositor inspired by AwesomeWM"
 arch=(x86_64 aarch64)
 url="https://github.com/pinnacle-comp/$_pkgname"
 license=("GPL-3.0-or-later")
+provides=(wayland-compositor)
 depends=(
     wayland
     libxkbcommon
