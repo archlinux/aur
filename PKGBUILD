@@ -5,7 +5,7 @@
 pkgname=ombi-develop-bin
 _pkgname="${pkgname%-bin}"
 __pkgname="_${pkgname%-develop}"
-pkgver=4.54.1
+pkgver=4.54.3
 pkgrel=1
 pkgdesc='A media request tool that automatically syncs with your media servers'
 arch=(x86_64 aarch64 armv7h)
@@ -45,9 +45,9 @@ sha256sums=('24f1dbe25589719e831d512624ceeb1289a7037002b74d9473719c8564a8950f'
             'd78dadc24ddb11e3ef07269a0a1c6dcf8ca8d32d39d152eaa9bffab6c32dba36'
             '71fe8ec1810d7ab91b30d8e07b9edc6f97827034935404124cc6e428bbc7c5bf'
             '9b1514478af3e13284214495066e6233318c25e44929947e66dcf299daa7c23c')
-sha256sums_x86_64=('9697d6c6bd6b5eb24c0368dddaa058508bcc621a1dc1f646bfa8e176113f8270')
-sha256sums_aarch64=('a4bcef332c45e3a4743ffe41bec41f450db652fd209c873c49c2023270fa45f6')
-sha256sums_armv7h=('2db8b13cda4035b6ebe9df7c158c3f9460b7270651fb201cb2580e57e7ab96b8')
+sha256sums_x86_64=('5dcd35a662791b10148095e28a4e5b9f3c5f5cc443a7aeedd35b291dc418dd68')
+sha256sums_aarch64=('5b210a1192eb1656787cee43dd6e82f4a0db72d635939337d26a5293c8c0146a')
+sha256sums_armv7h=('151c250de177558a44d2ef82e31c03da553567afeca693031f4ce5642cb8d88e')
 
 prepare() {
   mkdir -p "ombi"
