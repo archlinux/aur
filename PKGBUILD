@@ -3,15 +3,15 @@
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=libbass
-pkgver=2.4.18
-pkgrel=2
+pkgver=2.4.18.3
+pkgrel=1
 pkgdesc='BASS audio library'
 arch=(i686 x86_64 armv6h armv7h aarch64)
 url='https://www.un4seen.com/'
 license=(custom)
 depends=(alsa-lib)
 source=("$pkgname-$pkgver.zip::http://www.un4seen.com/files/bass24-linux.zip")
-sha256sums=('91fa6a4e63cc1218376ce67c38212c16601763963f80125595a2a069159fb814')
+sha256sums=('9bf723dbf750d665c14cfc099f96a056483dc35de6850d2df76af8b640435ca9')
 
 prepare() {
   grep Lic "$srcdir/bass.txt" -A62 > LICENSE.bass
