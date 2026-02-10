@@ -1,5 +1,5 @@
 pkgname=adw-network-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=2
 pkgdesc="Modern network management application for GNOME (prebuilt binary)"
 arch=('x86_64')
@@ -13,8 +13,8 @@ source=(
   "com.github.adw-network.desktop::https://raw.githubusercontent.com/PlayRood32/adw-network/main/data/com.github.adw-network.desktop"
   "icon.png::https://raw.githubusercontent.com/PlayRood32/adw-network/main/data/icons/hicolor/scalable/apps/icon.png"
 )
-sha256sums=('2a10ff177d57a525958007572787f61bb90f25a16bf4fa126dbd7cf11833c80b'
-            '8ee3b310cbb8c01b66eea5d4270caa71246c907ea9e020efd9f8e398be9a7e56'
+sha256sums=('80c46355a5cb460089fad7001fda21c529b2504ed610d6122f1de8d0dea6961e'
+            '87e22132167fdb6372cf4fbdf1a60a0449e8ef1e5889d1a156a8eb540c069038'
             '518a328abee19239ba5f20bcbfe3f15c474bc5c18b8adcb37c9793ecf7c640cc')
 
 package() {
@@ -31,3 +31,4 @@ package() {
   install -Dm644 "${srcdir}/icon.png" \
     "${pkgdir}/usr/share/icons/hicolor/scalable/apps/icon.png"
 }
+
