@@ -1,3 +1,4 @@
 qtbase
 src
 pkg
+*.tar.zst

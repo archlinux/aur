@@ -1,27 +1,20 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
-# Patches applied by: Lito Parra <lito.15@proton.me>
-
-# Change this value to an interval shorter than
-# your monitor's max refresh rate, perhaps
-# the floored result of 1000 / your_monitor_refresh_rate
-# 4 ms smooths up to 240 Hz animations, balanced default
-HIFPS_TARGET_TIMER_INTERVAL=4
 
 pkgbase=qt6-base-hifps
 pkgname=(qt6-base-hifps
          qt6-xcb-private-headers-hifps)
 _pkgver=6.10.2
 pkgver=${_pkgver/-/}
-pkgrel=1
-pkgdesc='A cross-platform application and UI framework - patched for high refresh rates for animations'
+pkgrel=3
 arch=(x86_64)
 url='https://www.qt.io'
 license=(GPL-3.0-only
          LGPL-3.0-only
          LicenseRef-Qt-Commercial
          Qt-GPL-exception-1.0)
+pkgdesc='A cross-platform application and UI framework'
 depends=(brotli
          dbus
          double-conversion
@@ -79,8 +72,6 @@ makedepends=(alsa-lib
              ninja
              postgresql
              renderdoc
-	     rsync
-	     sed
              unixodbc
              vulkan-headers
              xmlstarlet)
@@ -94,69 +85,30 @@ optdepends=('freetds: MS SQL driver'
             'postgresql-libs: PostgreSQL driver'
             'unixodbc: ODBC driver')
 groups=(qt6)
-_pkgfn=${pkgbase/6-/}
-_pkgfn=${_pkgfn/-hifps/}
-source=(git+https://code.qt.io/qt/$_pkgfn.git
-        sync_official.sh
+_pkgfn=qtbase
+source=(git+https://code.qt.io/qt/$_pkgfn#tag=v$_pkgver
+        qt6-base-cflags.patch
+        qt6-base-nostrip.patch
         0005-low-timer.patch)
-sha256sums=('SKIP'
-            '56510cbf9141185f6b2f6e8048c64ab0368e4288884fd538baf388555df29496'
-            'SKIP')
+sha256sums=('568e53ff276e8abe051c62269679886bb9efb56b6ac7949889ebe335e22e760f'
+            '5411edbe215c24b30448fac69bd0ba7c882f545e8cf05027b2b6e2227abc5e78'
+            '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094'
+            '12d836fdfafc221a93c2877d0537651e4cf8c200e4b2fdc1390165e2f3587109')
 
 prepare() {
-  echo ">>> Syncing official Arch qt6-base repo files..."
-  bash "$srcdir/sync_official.sh" "$PWD"
-
-  echo ">>> Checking out $pkgname source at tag v${pkgver}..."
-
-  pushd "$srcdir/$_pkgfn"
-
-  # Checkout exact tag
-  if git rev-parse "v${pkgver}" >/dev/null 2>&1; then
-    git checkout "v${pkgver}"
-  else
-    echo ">>> WARNING: tag v${pkgver} not found; using master branch as fallback."
-    git checkout master
-  fi
-
-  # sanity check
-  if [ ! -f CMakeLists.txt ]; then
-    echo ">>> ERROR: CMakeLists.txt not found after checkout!"
-    ls -la
-    return 1
-  fi
-
-  echo ">>> Applying default Arch patches..."
-  patch -Np1 -i "${srcdir}/qt6-base-cflags.patch"  # Use system CFLAGS
-  patch -Np1 -i "${srcdir}/qt6-base-nostrip.patch" # Don't strip binaries with qmake
-
-  echo ">>> Applying scroll fixing patches..."
-    # GG: fix scrolling in libreoffice on wayland
-  echo "Apply additional patches for optimizing scrolling ..."
-  git cherry-pick -n 095759818854e5a011aa8f859e566bbc6368ab76 # wayland: Compress high frequency mouse events
-  git cherry-pick -n 6f25f703fd37a900c139e14a33a4639502bfeae7 # wayland: Optimize scroll operation
-  git cherry-pick -n 9dd0d936d6691904a4bb212dcf48999a5228b84f # wayland: Enable event compression and fix scroll end event
-
-  echo ">>> Reducing Qt animation timer interval down to ${HIFPS_TARGET_TIMER_INTERVAL} ms to smooth out animations..."
-  tmpfile=$(mktemp)
-
-  sed -E "s|^\+#define DEFAULT_TIMER_INTERVAL .*|+#define DEFAULT_TIMER_INTERVAL ${HIFPS_TARGET_TIMER_INTERVAL}|" \
-  "$srcdir/0005-low-timer.patch" > "$tmpfile"
-
-  mv "$tmpfile" "$srcdir/0005-low-timer.patch"
-
-  patch -Np1 -i "${srcdir}/0005-low-timer.patch" # apply 1 ms timing patch to make animations smoother
-
-  echo ">>> Applying additional quality of life patches..."
-  git cherry-pick -n a374ab6ce9f01f1f559403ec377cde990a689890 # Fix yakuake
-
-  echo ">>> Patches applied"
-
-  popd
+  patch -d $_pkgfn -p1 < qt6-base-cflags.patch # Use system CFLAGS
+  patch -d $_pkgfn -p1 < qt6-base-nostrip.patch # Don't strip binaries with qmake
+  patch -d $_pkgfn -p1 < 0005-low-timer.patch # Reduce timer interval
 }
 
 build() {
-  cd "${srcdir}"
+  # Set no_direct_extern_access based on architecture
+  if [[ $CARCH == "aarch64" ]]; then
+    _no_direct_extern_access=OFF
+  else
+    _no_direct_extern_access=ON
+  fi
+
   cmake -B build -S $_pkgfn -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
@@ -174,20 +126,20 @@ build() {
     -DFEATURE_openssl_linked=ON \
     -DFEATURE_system_sqlite=ON \
     -DFEATURE_system_xcb_xinput=ON \
-    -DFEATURE_no_direct_extern_access=ON \
+    -DFEATURE_no_direct_extern_access=$_no_direct_extern_access \
     -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
     -DCMAKE_MESSAGE_LOG_LEVEL=STATUS
   cmake --build build
 }
 
 package_qt6-base-hifps() {
-  pkgdesc='A cross-platform application and UI framework - patched for high refresh rates for animations'
+  conflicts=(qt6-base)
+  provides=(qt6-base)
+  pkgdesc='A cross-platform application and UI framework'
   depends+=(qt6-translations)
-  conflicts=('qt6-base')
-  provides=('qt6-base')
   DESTDIR="$pkgdir" cmake --install build
 
-  install -Dm644 "$srcdir"/LICENSES/* -t "$pkgdir"/usr/share/licenses/$pkgbase
+  install -Dm644 $_pkgfn/LICENSES/* -t "$pkgdir"/usr/share/licenses/$pkgbase
 
 # Install symlinks for user-facing tools
   cd "$pkgdir"
@@ -198,15 +150,16 @@ package_qt6-base-hifps() {
 }
 
 package_qt6-xcb-private-headers-hifps() {
-  pkgdesc='Private headers for Qt6 Xcb - patched for high refresh rates for animations'
+  pkgdesc='Private headers for Qt6 Xcb'
 
   depends=("qt6-base-hifps=$pkgver")
   optdepends=()
   groups=()
-  conflicts=('qt6-xcb-private-headers')
-  provides=('qt6-xcb-private-headers')
 
-  cd "$srcdir/$_pkgfn"
+  conflicts=(qt6-xcb-private-headers)
+  provides=(qt6-xcb-private-headers)
+
+  cd $_pkgfn
   install -d -m755 "$pkgdir"/usr/include/qt6xcb-private/{gl_integrations,nativepainting}
   cp -r src/plugins/platforms/xcb/*.h "$pkgdir"/usr/include/qt6xcb-private/
   cp -r src/plugins/platforms/xcb/gl_integrations/*.h "$pkgdir"/usr/include/qt6xcb-private/gl_integrations/
