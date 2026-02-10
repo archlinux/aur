@@ -3,16 +3,16 @@
 
 pkgname=searxng-uwsgi
 _pkgname=searxng
-pkgver=r9156.3d88876
-pkgrel=2
+pkgver=r9209.b5bb27f
+pkgrel=1
 pkgdesc='A privacy-respecting, hackable metasearch engine'
 arch=('any')
 url='https://searxng.github.io/searxng/'
 license=('AGPL-3.0-or-later')
-makedepends=('openssl' 'git')
+makedepends=('git')
 depends=('uwsgi' 'uwsgi-plugin-python' 'valkey')
 provides=('searxng')
-conflicts=('searx' 'searx-git' 'searxng-git')
+conflicts=('searx' 'searx-git' 'searxng-git' 'searxng-uwsgi-novenv-git')
 backup=('etc/searxng/settings.yml' 'etc/uwsgi/searxng.ini')
 _giturl='https://github.com/searxng/searxng'
 source=("git+${_giturl}#branch=master"
