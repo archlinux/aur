@@ -15,7 +15,8 @@ provides=('searxng')
 conflicts=('searx' 'searx-git' 'searxng-git' 'searxng-uwsgi-novenv-git')
 backup=('etc/searxng/settings.yml' 'etc/uwsgi/searxng.ini')
 _giturl='https://github.com/searxng/searxng'
-source=("git+${_giturl}#branch=master"
+_gitbranch='master'
+source=("git+${_giturl}#branch=${_gitbranch}"
 		'nginx.example.conf'
         'uwsgi.ini'
         'sysusers.conf'
