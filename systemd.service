@@ -1,5 +1,8 @@
 [Unit]
 Description=The core component behind Piped, and other alternative frontends!
+Requires=postgresql.service
+Requires=network.target
+After=postgresql.service
 After=network.target
 
 [Service]

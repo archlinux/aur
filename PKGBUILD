@@ -3,28 +3,28 @@
 pkgname='piped-backend-git'
 _componentname="${pkgname%'-git'}"
 _componentnameshort="${_componentname#'piped-'}"
-pkgver=r1316.c5921f6
+pkgver=r1317.da5bcd7
 pkgrel=1
 pkgdesc='An alternative privacy-friendly YouTube frontend which is efficient by design. Backend/API component, for fetching Metadata'
 arch=('x86_64')
 url='https://github.com/TeamPiped/Piped-Backend'
 license=('AGPL-3.0')
 groups=('piped-git')
-depends=('java-runtime')
+depends=('java-runtime' 'postgresql')
 makedepends=('git' 'jdk-openjdk')
 backup=("etc/webapps/piped/${_componentnameshort}.properties")
-source=('git+https://github.com/TeamPiped/Piped-Backend.git'
+source=("git+${url}"
 		'piped-backend.sh'
+		'nginx.conf'
 		'sysusers.conf'
 		'tmpfiles.conf'
-		'nginx.conf'
 		'systemd.service')
 sha256sums=('SKIP'
             '3f62b54ab1567ee6f7a5e419f74422419c499a05f19a90fe946b3396b7c29624'
+            '75f078c3456e562ba97d2aef1f6fcba5c22a29bd73e269dd86311adbd5d99f7c'
             'eb122e1cf5149be5e89a2ebfb158f29f305427cb8b2061d6728c53ad1d1b89d4'
             'd4e3d538e0f3c40bb22ebd2893672eeafeeaacadccf53e46055450f99c96e12d'
-            '232a2353341b83060a5c3814e95553d9b476d65c7ae06147e7034b1c729814be'
-            '0e00f0e054687cbc76356d7fb0e860075a27fcf8366ce2b46cb94e92f00a4645')
+            '4af2b883bd63b7b9432570a710b6a2943ed73b5add01991caec86dac71725373')
 dest="/usr/share/webapps/piped/${_componentnameshort}"
 
 pkgver() {
@@ -42,20 +42,19 @@ prepare() {
 	sed -i "s|dependencies {|dependencies {\n    implementation 'com.kohlschutter.junixsocket:junixsocket-core:2.10.0'|" build.gradle
 }
 
+fix_from_orhtej2() { # https://github.com/TeamPiped/Piped/issues/4139#issuecomment-3840519632
+	sed -i "s|implementation 'com.github.FireMasterK:NewPipeExtractor:92809cedefd89ce68bc4de8763e9d5f2760f5899'|implementation 'com.github.TeamNewPipe:NewPipeExtractor:v0.25.1'|" build.gradle
+	sed -i "s|implementation 'com.github.FireMasterK:nanojson:a507525e549a836c3a8b6ab7090dca38e92942ef'|implementation 'com.github.TeamNewPipe:nanojson:c7a6c1c08d16b6d5ecded34758e6415e07be2166'|" build.gradle
+}
+
+fix_from_jollySleeper() { #https://github.com/TeamPiped/Piped-Backend/pull/885/commits/1b8c1c0b00336fbba0f10b30ef6487fc96a801b4
+	sed -i "s|implementation 'com.github.FireMasterK:NewPipeExtractor:92809cedefd89ce68bc4de8763e9d5f2760f5899'|implementation 'com.github.jollySleeper:NewPipeExtractor:4b7752bff41e7b8982af1fad9b167b0e719ba4da'|" build.gradle
+}
+
 build() {
 	cd Piped-Backend
-
-	# Fix for https://github.com/TeamPiped/Piped/issues/4139
-	git clone https://github.com/TeamNewPipe/NewPipeExtractor.git
-	cd NewPipeExtractor
-	git checkout 05e0e4ced7b6ff05f3d68d831efed8bdf588f9ac
-	git switch -c needs-to-be-reloaded-fix
-	git remote add AudricV https://github.com/AudricV/NewPipeExtractor.git
-	git fetch AudricV
-	git cherry-pick -n cfa985451eb11bbf812fecf57d74d9ed9da0eb3f
-	cd ..
-	echo 'includeBuild("NewPipeExtractor")' >> settings.gradle
-	sed -i "s|implementation 'com.github.FireMasterK:NewPipeExtractor:92809cedefd89ce68bc4de8763e9d5f2760f5899'|implementation 'com.github.TeamNewPipe:extractor:v0.24.8'|" build.gradle 
+	
+	fix_from_orhtej2
 
 	./gradlew shadowJar
 }
