@@ -1,12 +1,19 @@
 pkgbase = python-argopt
 	pkgdesc = doc to argparse driven by docopt
-	pkgver = 0.8.2
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/casperdcl/argopt
 	arch = any
-	license = MPL
+	license = MPL-2.0
+	checkdepends = python-nose
+	makedepends = git
+	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/py3/a/argopt/argopt-0.8.2-py3-none-any.whl
-	sha256sums = c613eac7f0712760340f0b67cd5ef4b7537319f92ad5ce48a83c9132d249f8a1
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python
+	source = python-argopt::git+https://github.com/casperdcl/argopt#tag=v0.9.1
+	sha256sums = 42a08f3467650252089e8abf4175bfdc7060328173b87c11bc154eec14afa7e9
 
 pkgname = python-argopt

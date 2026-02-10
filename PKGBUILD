@@ -1,20 +1,30 @@
-#!/usr/bin/env -S sh -c 'nvchecker -cnvchecker.toml --logger=json | jq -r '\''.version | sub("^v"; "") | split("-") | .[-1]'\'' | xargs -i{} sed -i "s/^\\(pkgver=\\).*/\\1{}/" $0'
-# shellcheck shell=bash disable=SC2034,SC2154
-# ex: nowrap
-_pkgname=argopt
-pkgname=python-$_pkgname
-pkgver=0.8.2
+# Maintainer: Riderius <riderius.help@gmail.com>
+# Previous maintainer: Wu Zhenyu <wuzhenyu@ustc.edu> (https://aur.archlinux.org/account/Freed)
+
+pkgname=python-argopt
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="doc to argparse driven by docopt"
 arch=(any)
 url=https://github.com/casperdcl/argopt
-makedepends=(python-installer)
-license=(MPL)
-_py=py3
-source=("https://files.pythonhosted.org/packages/$_py/${_pkgname:0:1}/$_pkgname/${_pkgname//-/_}-$pkgver-$_py-none-any.whl")
-sha256sums=('c613eac7f0712760340f0b67cd5ef4b7537319f92ad5ce48a83c9132d249f8a1')
+depends=(python)
+makedepends=(git python-build python-installer python-wheel python-setuptools python-setuptools-scm)
+checkdepends=(python-nose)
+license=(MPL-2.0)
+source=("$pkgname::git+$url#tag=v$pkgver")
+sha256sums=('42a08f3467650252089e8abf4175bfdc7060328173b87c11bc154eec14afa7e9')
+
+build() {
+    cd "$srcdir/$pkgname"
+    python -m build --wheel --no-isolation
+}
 
 package() {
-  cd "$srcdir" || return 1
-  python -m installer --destdir="$pkgdir" ./*.whl
+    cd "$srcdir/$pkgname"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+}
+
+check(){
+    cd "$srcdir/$pkgname"
+    nosetests
 }
