@@ -1,7 +1,7 @@
 pkgbase = qcm
 	pkgdesc = Qt client for netease cloud music
 	pkgver = 1.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hypengw/Qcm
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -29,16 +29,16 @@ pkgbase = qcm
 	depends = qmlmaterial
 	optdepends = qcm-ncm-plugin: Netease Cloud Music plugin
 	source = git+https://github.com/hypengw/Qcm.git#tag=v1.3.4
-	source = git+https://github.com/hypengw/rstd.git
-	source = git+https://github.com/hypengw/ncrequest.git
-	source = git+https://github.com/hypengw/kstore.git
-	source = git+https://github.com/ilqvya/random.git
+	source = git+https://github.com/hypengw/rstd.git#commit=7eb8b411258b4a886231b8b87f7b5a472b6712e1
+	source = git+https://github.com/hypengw/ncrequest.git#commit=b919f0ad9a85dc006392ebf8802eb4c7df7584a2
+	source = git+https://github.com/hypengw/kstore.git#commit=d6f32d1a04be01328e1e528c0539e37b359c87e3
+	source = git+https://github.com/ilqvya/random.git#commit=6983466aadd1173627b362ff1a297527d9842531
 	source = fix-kdsingleapplication.patch
 	sha256sums = 2f922f2a59099eecc84d843e24573efcd4d6bdf98919832bf4c0950ffd3301ba
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = b709892b52b12b505cc8e6d04b01c5673ea6a468fb4209adac10e7ae50d2530a
+	sha256sums = c4e8c54feeddee23f759c732c467e5a215b253a63c6ab3876b6078eda9682abf
+	sha256sums = 446da38faf1035aea96aef837923ee4c79c4d95a24c51c182d6d6d8edfb9e44a
+	sha256sums = d406c0f56460103047a15aab701e64993c0457e95ee61217f02effb5113db65e
 	sha256sums = 08a3aa14c098044dd4a129a292558df4ecfaf7bbeec0b295e5d8009c5939c422
 
 pkgname = qcm
