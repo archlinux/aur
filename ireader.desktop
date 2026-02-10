@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=IReader
+Comment=Open source novel reader for Android & Desktop
+Exec=ireader
+Icon=ireader
+Terminal=false
+Type=Application
+Categories=Office;Viewer;
+StartupWMClass=IReader
