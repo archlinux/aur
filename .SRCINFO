@@ -1,7 +1,7 @@
 pkgbase = ngspice-git
 	pkgdesc = Mixed-level/Mixed-signal circuit simulator based on Spice3f5, Ciber1b1, and Xspice.
 	pkgver = r9391.417c52ee5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ngspice.sourceforge.net
 	arch = i686
 	arch = x86_64

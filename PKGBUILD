@@ -6,7 +6,7 @@
 
 pkgname=ngspice-git
 pkgver=r9391.417c52ee5
-pkgrel=1
+pkgrel=2
 pkgdesc='Mixed-level/Mixed-signal circuit simulator based on Spice3f5, Ciber1b1, and Xspice.'
 url='http://ngspice.sourceforge.net'
 license=('BSD')
@@ -64,7 +64,11 @@ package() {
   install -D -m644  "$srcdir/manual.pdf" "$pkgdir/usr/share/doc/$pkgname/manual.pdf"
 
   install -D -m644 ngspice.pc "$pkgdir/usr/lib/pkgconfig/ngspice.pc"
-  install -Dm755 src/.libs/libngspice.so.* "$pkgdir/usr/lib/"
-  ln -s "libngspice.so.0*" "$pkgdir/usr/lib/libngspice.so.0"
-  ln -s "libngspice.so.0*" "$pkgdir/usr/lib/libngspice.so"
+
+  # Extract sover from the installed library
+  local _sover=$(ls src/.libs/libngspice.so.0.* | sed 's/.*\.so\.\([0-9.]*\).*/\1/')
+  install -vDm755 "src/.libs/libngspice.so.$_sover" "$pkgdir/usr/lib/libngspice.so.$_sover"
+
+  ln -s "libngspice.so.$_sover" "$pkgdir/usr/lib/libngspice.so.0"
+  ln -s "libngspice.so.$_sover" "$pkgdir/usr/lib/libngspice.so"
 }
