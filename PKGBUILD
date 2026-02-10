@@ -1,12 +1,12 @@
 # Maintainer: Stephen Seo <seo.disparate@gmail.com>
 pkgname=simplearchiver
-pkgver=2.5
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="An alternative to tar"
 arch=(x86_64)
 url="https://github.com/Stephen-Seo/SimpleArchiver"
 license=('ISC')
-depends=()
+depends=(libcap)
 makedepends=(git cmake)
 options=()
 install=
@@ -19,7 +19,8 @@ prepare() {
     cmake -S . -B BuildRel \
         -DCMAKE_BUILD_TYPE=Release \
         -DBUILD_WITH_DEBUGGING_INFO=On \
-        -DSDSA_OVERRIDE_VERSION_STRING="${pkgver}-${pkgrel} (AUR)"
+        -DSDSA_OVERRIDE_VERSION_STRING="${pkgver}-${pkgrel} (AUR)" \
+        -DENABLE_LIBCAP=On
 }
 
 build() {
