@@ -1,2 +1,6 @@
+Tue Feb 10 2026 Anton Samartsev <kycko@archlinux.org> - 0:1.006-2
+- Replaced otf fonts with ttf ones
+- Changed incorrect installation path /usr/share/fonts/ubuntu-sans-mono/ to /usr/share/fonts/ubuntu-sans/
+
 Mon Jan 19 2026 Anton Samartsev <kycko@archlinux.org> - 0:1.006-1
 - Init build

@@ -1,7 +1,7 @@
 pkgbase = ttf-ubuntu-sans
 	pkgdesc = Ubuntu Font Family, improved and expanded by the same author. This package provides only non-monospaced fonts. Ubuntu Sans Mono is available in the separate package.
 	pkgver = 1.006
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/canonical/Ubuntu-Sans-fonts
 	arch = any
 	license = Ubuntu-font-1.0

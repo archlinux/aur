@@ -5,7 +5,7 @@ _uname="Ubuntu-Sans-fonts"
 
 pkgname=ttf-ubuntu-sans
 pkgver=1.006
-pkgrel=1
+pkgrel=2
 pkgdesc="Ubuntu Font Family, improved and expanded by the same author. This package provides only non-monospaced fonts. Ubuntu Sans Mono is available in the separate package."
 
 arch=("any")
@@ -18,9 +18,9 @@ sha256sums=('20aa7af47beaa6d64327782f7bf60df375edeedbdee2fe407e0bf9721890fb83'
             '2f0015108d68627bd788d313f529c21ff4da2c2c42a5e1f3883acc83480f9002')
 
 package() {
-  pushd ${_cname}-${pkgver}/otf
-  for file in *.otf; do
-    install -Dm644 "$file" "${pkgdir}/usr/share/fonts/ubuntu-sans-mono/$file"
+  pushd ${_cname}-${pkgver}/ttf
+  for file in *.ttf; do
+    install -Dm644 "$file" "${pkgdir}/usr/share/fonts/ubuntu-sans/$file"
   done
   popd
 
