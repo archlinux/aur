@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=dealve
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Delve into game deals from your terminal'
 arch=('x86_64' 'aarch64')
 url='https://github.com/kurama/dealve-tui'
@@ -29,7 +29,7 @@ build() {
 
 package() {
     cd "dealve-tui-$pkgver"
-    install -Dm0755 'arget/release/dealve' "$pkgdir/usr/bin/dealve"
+    install -Dm0755 'target/release/dealve' "$pkgdir/usr/bin/dealve"
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE-MIT
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE-APACHE
     install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
