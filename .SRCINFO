@@ -1,0 +1,18 @@
+pkgbase = fht-compositor-ipc-qml-plugin-git
+	pkgdesc = QML plugin to integrate fht-compositor with Quickshell.
+	pkgver = r5.37c7cb1
+	pkgrel = 1
+	url = https://github.com/nferhat/fht-compositor-ipc-qml-plugin
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = pkgconf
+	makedepends = qt6-base
+	makedepends = qt6-declarative
+	depends = qt6-base
+	depends = qt6-declarative
+	optdepends = fht-compositor-git: A dynamic tiling Wayland compositor
+	source = git+https://github.com/nferhat/fht-compositor-ipc-qml-plugin.git
+	sha256sums = SKIP
+
+pkgname = fht-compositor-ipc-qml-plugin-git
