@@ -1,7 +1,7 @@
 # Maintainer: lazywalker <lazywalkerz@gmail.com>
 
 pkgname=rgrc
-pkgver=0.6.7.r0.gfd3b643
+pkgver=0.6.8.r0.g0f3bf6d
 pkgrel=1
 pkgdesc='Rusty Generic Colouriser - like grc but faster and with more features'
 arch=('x86_64' 'armv7h' 'aarch64')
