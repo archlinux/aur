@@ -3,11 +3,11 @@
 pkgname=python-tmpl
 _pkg=tmpl
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Template abstraction for using multiple template engine backends'
 arch=('any')
 url="https://github.com/20c/tmpl"
-license=('Apache')
+license=('Apache-2.0')
 depends=('python')
 makedepends=('python-poetry-core' 'python-build' 'python-installer')
 _checkdepends=('python-pytest' 'python-django' 'python-jinja')
