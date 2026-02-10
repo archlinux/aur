@@ -1,7 +1,7 @@
 pkgbase = supermicro-update-manager
 	pkgdesc = Supermicro Update Manager is used for managing and configuring the BIOS/BMC firmware
-	pkgver = 2.14.0
-	pkgrel = 2
+	pkgver = 2.15.0
+	pkgrel = 1
 	url = https://www.supermicro.com/en/solutions/management-software/supermicro-update-manager
 	arch = x86_64
 	arch = aarch64
@@ -9,9 +9,9 @@ pkgbase = supermicro-update-manager
 	depends = gcc-libs
 	depends = zlib
 	backup = etc/sumrc
-	source = https://www.supermicro.com/Bios/sw_download/698/sum_2.14.0_Linux_x86_64_20240215.tar.gz
-	source = https://www.supermicro.com/Bios/sw_download/692/sum_2.14.0_Linux_arm64_20240215.tar.gz
-	sha256sums = 79cf26203493bb6a5b64fc508d9696151f89e08b79120a582d337bd5aae6c0a1
-	sha256sums = 30fb55410cbb0d64bad8c61d54f40a3976bbe47c74d35db9db73bc5c0be5b091
+	source = https://www.supermicro.com/Bios/sw_download/1026/sum_2.15.0_Linux_x86_64_20251104.tar.gz
+	source = https://www.supermicro.com/Bios/sw_download/1020/sum_2.15.0_Linux_arm64_20251104.tar.gz
+	sha256sums = 6d19460eba5e69cfd23797807c3821e38739c3d26220a6c40dc6a243893483e2
+	sha256sums = bf49c20e44ee2ee32d84126d0d2848110f24ded69c82cc28620e1dac1348a390
 
 pkgname = supermicro-update-manager

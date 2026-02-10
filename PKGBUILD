@@ -3,11 +3,11 @@
 
 pkgname='supermicro-update-manager'
 _pkgname='sum'
-pkgver='2.14.0'
-_pkgver_aarch64='692'
-_pkgver_x86_64='698'
-_pkgdate='20240215'
-pkgrel='2'
+pkgver='2.15.0'
+_pkgver_aarch64='1020'
+_pkgver_x86_64='1026'
+_pkgdate='20251104'
+pkgrel='1'
 pkgdesc='Supermicro Update Manager is used for managing and configuring the BIOS/BMC firmware'
 arch=('x86_64' 'aarch64')
 depends=('gcc-libs' 'zlib')
@@ -16,8 +16,8 @@ url="${_uri}/en/solutions/management-software/${pkgname}"
 license=('custom: EULA')
 source=("${_uri}/Bios/sw_download/${_pkgver_x86_64}/${_pkgname}_${pkgver}_Linux_x86_64_${_pkgdate}.tar.gz"
 	"${_uri}/Bios/sw_download/${_pkgver_aarch64}/${_pkgname}_${pkgver}_Linux_arm64_${_pkgdate}.tar.gz")
-sha256sums=('79cf26203493bb6a5b64fc508d9696151f89e08b79120a582d337bd5aae6c0a1'
-            '30fb55410cbb0d64bad8c61d54f40a3976bbe47c74d35db9db73bc5c0be5b091')
+sha256sums=('6d19460eba5e69cfd23797807c3821e38739c3d26220a6c40dc6a243893483e2'
+            'bf49c20e44ee2ee32d84126d0d2848110f24ded69c82cc28620e1dac1348a390')
 backup=("etc/${_pkgname}rc")
 
 _archstr=$([[ "${CARCH}" == 'x86_64' ]] && echo -n "${CARCH}" || echo -n "arm64")
