@@ -1,6 +1,6 @@
 pkgbase = rofi-linear-git
 	pkgdesc = Rofi plugin for creating Linear issues
-	pkgver = 0.1.0.r1.c227e5a
+	pkgver = 0.1.0.r1.7cb5ad0
 	pkgrel = 1
 	url = https://github.com/mathix420/rofi-linear
 	arch = x86_64

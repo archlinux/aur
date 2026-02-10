@@ -1,6 +1,6 @@
 # Maintainer: Arnaud Gissinger <me@mathix.dev>
 pkgname=rofi-linear-git
-pkgver=0.1.0.r1.c227e5a
+pkgver=0.1.0.r1.7cb5ad0
 pkgrel=1
 pkgdesc="Rofi plugin for creating Linear issues"
 arch=('x86_64')
@@ -20,6 +20,8 @@ pkgver() {
 
 build() {
     cd rofi-linear
+    export CC=gcc
+    export CXX=g++
     cargo build --release --locked
 }
 
