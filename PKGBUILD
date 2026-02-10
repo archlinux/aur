@@ -1,6 +1,6 @@
 # Maintainer: Clément Foucher <cfoucher-pkg at outlook dot fr>
 pkgname=geteduroam
-pkgver=0.12
+pkgver=0.13
 pkgrel=1
 pkgdesc="Configure your Eduroam Wifi connection"
 arch=('x86_64')
@@ -8,13 +8,14 @@ url="https://get.eduroam.org/"
 license=('BSD-3-Clause')
 depends=('gtk4>=4.06'
          'libadwaita>=1.1'
+         'networkmanager'
         )
 optdepends=('libnotify: to be notified for certificate expiration')
 makedepends=('go>=1.18'
              'make'
             )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/$pkgname/linux-app/archive/$pkgver.tar.gz")
-sha256sums=('25b367d30efa3bba0ca414ff29b80f7e49cf2fa5f252d1e47ee49e59e9db5ff8')
+sha256sums=('ae173882d9da2e5b2d1a95d03646f82a74695b4bc1167ac7b7ed40494865a6eb')
 build() {
         mv "$srcdir/linux-app-$pkgver" "$srcdir/$pkgname-$pkgver"
         cd "$srcdir/$pkgname-$pkgver"
