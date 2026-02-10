@@ -2,7 +2,7 @@
 # Contributor: Evert Vorster <superchief@evertvorster.com>
 
 pkgname=oolite-git
-pkgver=1.91.0.7758.260127.8419256.r0.84192563c
+pkgver=1.93.0.7772.260209.316b37b.r0.316b37b68
 pkgrel=1
 pkgdesc="Open Source remake of Elite with many, many enhancements, git version"
 arch=('x86_64')
@@ -84,5 +84,4 @@ package() {
         >oolite-git.desktop
 
   install -D -m644 oolite-git.desktop "$pkgdir"/usr/share/applications/oolite-git.desktop
-  install -D -m644 Doc/AdviceForNewCommanders.pdf Doc/OoliteReadMe.pdf Doc/OoliteRS.pdf "$pkgdir"/usr/share/doc/oolite-git/
 }
