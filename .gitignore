@@ -4,3 +4,5 @@ tuack-ng-*.tar.gz
 tuack-ng-*.zip
 tuack-ng-git-*.pkg.*
 tuack-ng/
+templates/
+testlib/

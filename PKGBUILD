@@ -1,8 +1,8 @@
 # Maintainer: Pulsar <Pulsar33550336@163.com>
 
 pkgname=tuack-ng-git
-pkgver=0.3.0
-pkgrel=1
+pkgver=0.3.0.r8.gad60264
+pkgrel=2
 pkgdesc="重构后的 tuack 项目，旨在提供更加高效和轻量的出题体验。"
 url="https://github.com/tuack-ng/tuack-ng"
 license=("AGPL-3.0-or-later")
@@ -10,8 +10,16 @@ arch=("x86_64")
 provides=("tuack-ng")
 conflicts=("tuack-ng")
 depends=("gcc-libs" "glibc")
-source=("git+https://github.com/tuack-ng/tuack-ng.git")
-sha256sums=('SKIP')
+source=(
+    "git+https://github.com/tuack-ng/tuack-ng.git"
+    "git+https://github.com/tuack-ng/templates.git"
+    "git+https://github.com/MikeMirzayanov/testlib.git"
+)
+sha256sums=(
+    'SKIP'
+    'SKIP'
+    'SKIP'
+)
 makedepends=(
     'cargo'
     'git'
@@ -21,9 +29,18 @@ optdepends=(
     'git: Needed for lfs management'
 )
 
+pkgver() {
+    cd tuack-ng
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 prepare() {
     cd tuack-ng
-    git submodule update --init --recursive
+    git submodule init
+    git config submodule.assets/templates.url "$srcdir/templates"
+    git config submodule.vendor/testlib.url "$srcdir/testlib"
+    git -c protocol.file.allow=always submodule update
+
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target $(rustc --print host-tuple)
 }
