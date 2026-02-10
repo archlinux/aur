@@ -5,7 +5,7 @@
 # Contributor: Luis Henrique <lmello.009@gmail.com>
 
 pkgname=ngspice-git
-pkgver=r7276.598751eb8
+pkgver=r9391.417c52ee5
 pkgrel=1
 pkgdesc='Mixed-level/Mixed-signal circuit simulator based on Spice3f5, Ciber1b1, and Xspice.'
 url='http://ngspice.sourceforge.net'
@@ -17,7 +17,7 @@ source=("${pkgname}"::"git+https://git.code.sf.net/p/ngspice/ngspice#branch=mast
 conflicts=("ngspice")
 provides=("ngspice")
 sha256sums=('SKIP'
-            'SKIP')
+            '0033ae38b8eba11bdce7e7dd17b5ec340f63e4e2700bded3bd8d2b004c9641dd')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -64,7 +64,7 @@ package() {
   install -D -m644  "$srcdir/manual.pdf" "$pkgdir/usr/share/doc/$pkgname/manual.pdf"
 
   install -D -m644 ngspice.pc "$pkgdir/usr/lib/pkgconfig/ngspice.pc"
-  install -Dm755 src/.libs/libngspice.so.0.0.0 "$pkgdir/usr/lib/libngspice.so.0.0.0"
-  ln -s "libngspice.so.0.0.0" "$pkgdir/usr/lib/libngspice.so.0"
-  ln -s "libngspice.so.0.0.0" "$pkgdir/usr/lib/libngspice.so"
+  install -Dm755 src/.libs/libngspice.so.* "$pkgdir/usr/lib/"
+  ln -s "libngspice.so.0*" "$pkgdir/usr/lib/libngspice.so.0"
+  ln -s "libngspice.so.0*" "$pkgdir/usr/lib/libngspice.so"
 }
