@@ -1,0 +1,20 @@
+pkgbase = omnicom
+	pkgdesc = Modern graphical interface for serial communication with SSH and Telnet support
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/benjamimgois/omnicom
+	arch = any
+	license = MIT
+	makedepends = imagemagick
+	depends = python
+	depends = python-pyqt6
+	depends = python-pyte
+	depends = python-paramiko
+	depends = qt6-serialport
+	depends = picocom
+	depends = sudo
+	optdepends = python-standard-telnetlib: Telnet protocol support (Python 3.13+)
+	source = omnicom-1.2.tar.gz::https://github.com/benjamimgois/omnicom/archive/refs/tags/1.2.tar.gz
+	sha256sums = b48bc914299a7d14da0629063b3f922588a88330f817430f63582bd247231706
+
+pkgname = omnicom
