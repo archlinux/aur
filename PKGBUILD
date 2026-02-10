@@ -1,8 +1,8 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgname='pyload-ng'
 _pkgname=pyload_ng
-pkgver=0.5.0b3.dev94
-pkgrel=2
+pkgver=0.5.0b3.dev95
+pkgrel=1
 pkgdesc="Free and Open Source download manager written in Python"
 url="https://pyload.net/"
 license=('AGPL3')
@@ -44,7 +44,7 @@ optdepends=('apprise'
             'python-send2trash'
 	    'python-slixmpp')
 source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${_pkgname}-$pkgver.tar.gz")
-sha256sums=('d13f506f3ce02d5f9c4db750a7a29eb8b8584df8522c1e556dad0c20d086af2e')
+sha256sums=('1125702e6cc98204dae1a3cd579ea9fb8bb9015f92633693bb4d35d0fa381fdd')
 
 prepare() {
   cd "$srcdir/${_pkgname}-${pkgver}"
