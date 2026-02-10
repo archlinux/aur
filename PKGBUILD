@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-dllcopy
 pkgver=1.0
-pkgrel=0
+pkgrel=1
 pkgdesc='A simple helper to copy dlls'
 arch=(
     'x86_64'
