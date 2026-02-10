@@ -3,14 +3,14 @@
 _pkgbase=XRLinuxDriver
 pkgname="xr-driver-git"
 pkgver=2.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="XR Linux Driver"
 arch=('x86_64' 'aarch64')
 url="https://github.com/wheaney/XRLinuxDriver"
 license=('GPL-3.0')
 install=hooks.install
 makedepends=('cmake' 'make')
-depends=('openssl' 'libevdev' 'libusb' 'json-c' 'curl' 'hidapi' 'wayland' 'systemd-libs' 'python-yaml')
+depends=('openssl' 'libevdev' 'libusb' 'json-c' 'curl' 'hidapi' 'wayland' 'systemd-libs' 'python-yaml' 'rust')
 source=("git+${url}#commit=d36e2a96f733d9e08b0f6fdb6384d23109608025")
 md5sums=(SKIP)
 
