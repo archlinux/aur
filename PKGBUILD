@@ -25,7 +25,7 @@ sha256sums=('SKIP'
             '98ead0813c5fe2b0f97490eb979f34741bc35ebf5745801f63b5676c81bda7e3'
             'eb122e1cf5149be5e89a2ebfb158f29f305427cb8b2061d6728c53ad1d1b89d4'
             '881a3ce33e4327919721e61f707bb1097a77077125c8c68766b2145ee0eadc58'
-            'fa1327418e95a1cd7a2fe52f44dfb55689db947c3d15700b2f0cca8cb8853e71')
+            '0b301d64cf0d38ae336812764e9d5789855c3818e8232ec7e9783b3356e6b8a8')
 dest="/usr/share/webapps/piped/${_componentnameshort}"
 
 pkgver() {
