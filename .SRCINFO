@@ -1,0 +1,15 @@
+pkgbase = ronrunner
+	pkgdesc = Lightweight tournament scoring application for Mahjong
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Didictateur/RonRunner
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = tk
+	source = git+https://github.com/Didictateur/RonRunner.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = ronrunner
