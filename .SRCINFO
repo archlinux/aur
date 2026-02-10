@@ -14,6 +14,6 @@ pkgbase = visigrid-bin
 	conflicts = visigrid
 	conflicts = visigrid-git
 	source = https://github.com/VisiGrid/VisiGrid/releases/download/v0.6.5/VisiGrid-linux-x86_64.tar.gz
-	sha256sums = fa479ea8a3e6c6ac2ae5a3390215b84d0f0ca09f7323dda6c9349fbf1515d9a7
+	sha256sums = 16cfc03a39dd553498838099f39c2b238e4dc4395b2b7c36fe50aee903470371
 
 pkgname = visigrid-bin
