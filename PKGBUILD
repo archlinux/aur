@@ -1,62 +1,97 @@
-# Maintainer: Ivan Gabaldon <aur[at]inetol.net>
-# Maintainer: archlinuxbits <archlinuxbits at proton.me>
-pkgname=tradingview
-_pkgname=TradingView
-pkgver=2.13.0
-pkgrel=1
-pkgdesc='A charting platform for traders and investors'
+# Maintainer:
+# Contributor: Ivan Gabaldon <aur[at]inetol.net>
+# Contributor: archlinuxbits <archlinuxbits at proton.me>
+
+: ${_electron_version=38}
+
+_pkgname="tradingview"
+pkgname="$_pkgname"
+pkgver=3.0.0
+pkgrel=2
+pkgdesc='Charting platform for traders and investors'
 arch=('x86_64')
-url='https://www.tradingview.com/desktop/'
+url="https://www.tradingview.com/desktop/"
 license=('LicenseRef-TradingView')
-makedepends=('links')
-_electron=electron30
-source=("$pkgname-$pkgver.deb::https://tvd-packages.tradingview.com/ubuntu/stable/pool/multiverse/t/tradingview/jammy/$pkgname-$pkgver-1_amd64.deb"
-        "$pkgname.sh")
-b2sums=('a8ef5566c491bfa806584d7e38c5bf8912ac09bd5d84bdc93f5af1aba9b6483dce9aec9b2098e168a57b9159bd512c2203c753d6d7cd15e42d916dfcac0c1917'
-        '1c7aaed8c8a4dad5030dc2f5506915e29d3b5ce19a61455db8be6821bc156ce6b779f7f4c63fd3929a141232443a4f5979e49c8ba3a18424d2854ec684e2f037')
+
+depends=(
+  "electron${_electron_version}"
+  'libsecret'
+)
+makedepends=(
+  'html-xml-utils'
+  'sha3sum'
+  'squashfs-tools'
+  'w3m'
+)
+
+options=('!debug' '!strip')
+
+_terms_of_use="$_pkgname-eula"
+_pkgsrc="$_pkgname-$pkgver"
+source=(
+  "$_pkgsrc.snap"::"https://api.snapcraft.io/api/v1/snaps/download/nJdITJ6ZJxdvfu8Ch7n5kH5P99ClzBYV_69.snap"
+  "$_terms_of_use.html"::"https://www.tradingview.com/policies/"
+)
+sha256sums=(
+  '27f706e1ae40e80d7750b77a4893fc20bec2e4e9059e5985a29f78ae75563ce0'
+  'SKIP'
+)
 
 prepare() {
-    sed -i "s|@ELECTRON@|$_electron|" "$pkgname.sh"
+  hxextract .tv-policies "$_terms_of_use.html" \
+    1> "$_terms_of_use-2.html" \
+    2> /dev/null
 
-    mkdir -p "$pkgname-$pkgver/"
-    bsdtar -xpf 'data.tar.xz' -C "$pkgname-$pkgver/"
+  w3m -O UTF-8 -cols 80 -dump "$_terms_of_use-2.html" > "$_terms_of_use.txt"
 
-    # Convert
-    cd "$pkgname-$pkgver/"
-
-    links -width 80 -dump 'https://www.tradingview.com/policies/' | sed -n '/Terms of Use/,/TradingView may update these Rules at any time/p' > "opt/$_pkgname/resources/LICENSE"
-
-    cat "../$pkgname.sh" > "opt/$_pkgname/resources/$pkgname"
-
-    mv "usr/share/applications/$pkgname.desktop" "opt/$_pkgname/resources/$pkgname.desktop"
-    sed -i "s|Exec=.*|Exec=/usr/bin/$pkgname %U|" "opt/$_pkgname/resources/$pkgname.desktop"
-
-    mv "usr/share/icons/hicolor/512x512/apps/$pkgname.png" "opt/$_pkgname/resources/$pkgname.png"
+  # unpack
+  mkdir -p "$_pkgsrc"
+  unsquashfs -q -n -f -d "$_pkgsrc/" "$_pkgsrc.snap"
 }
 
 package() {
-    depends=("$_electron-bin"
-             'gcc-libs'
-             'glib2'
-             'glibc'
-             'libsecret')
+  # asar
+  mkdir -pm755 "$pkgdir/usr/lib/$_pkgname"
+  cp -r "$_pkgsrc/resources/"* "$pkgdir/usr/lib/$_pkgname/"
 
-    optdepends=('libappindicator-gtk3: Systray indicator support')
+  # launcher
+  sed -E -e '/^Comment=/d' \
+    -e 's&^(Icon)=.*$&\1='"$_pkgname&" \
+    -e 's&^(Categories)=(Finance;)$&\1=Office;\2&' \
+    -i "$_pkgsrc/meta/gui/$_pkgname.desktop"
 
-    install -d "$pkgdir/opt/$pkgname/"
-    cp -a "$pkgname-$pkgver/opt/$_pkgname/resources/." "$pkgdir/opt/$pkgname/"
+  install -Dm644 "$_pkgsrc/meta/gui/$_pkgname.desktop" -t "$pkgdir/usr/share/applications/"
 
-    chmod 755 "$pkgdir/opt/$pkgname/$pkgname"
+  # icon
+  install -Dm644 "$_pkgsrc/meta/gui/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
 
-    install -d "$pkgdir/usr/bin/"
-    ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  # license
+  install -Dm644 "$_terms_of_use.txt" -t "$pkgdir/usr/share/licenses/$pkgname/"
 
-    install -d "$pkgdir/usr/share/applications/"
-    ln -s "/opt/$pkgname/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  # script
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
+#!/usr/bin/env bash
 
-    install -d "$pkgdir/usr/share/icons/"
-    ln -s "/opt/$pkgname/$pkgname.png" "$pkgdir/usr/share/icons/$pkgname.png"
+name=$_pkgname
+flags_file="\${XDG_CONFIG_HOME:-\$HOME/.config}/\${name}-flags.conf"
 
-    install -d "$pkgdir/usr/share/licenses/$pkgname/"
-    ln -s "/opt/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+lines=()
+if [[ -f "\${flags_file}" ]]; then
+  mapfile -t lines < "\${flags_file}"
+fi
+
+flags=()
+for line in "\${lines[@]}"; do
+  if [[ ! "\${line}" =~ ^[[:space:]]*#.* ]] && [[ -n "\${line}" ]]; then
+    flags+=("\${line}")
+  fi
+done
+
+: \${ELECTRON_IS_DEV:=0}
+export ELECTRON_IS_DEV
+: \${ELECTRON_FORCE_IS_PACKAGED:=true}
+export ELECTRON_FORCE_IS_PACKAGED
+
+exec electron${_electron_version} "\${flags[@]}" "/usr/lib/$_pkgname/app.asar" "\$@"
+END
 }

@@ -1,0 +1,4 @@
+[tradingview]
+source = "regex"
+url = "https://snapcraft.io/tradingview"
+regex = '"version": "([0-9\.]+)"'
