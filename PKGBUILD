@@ -3,15 +3,15 @@
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=libbassopus
-pkgver=2.4.3
-pkgrel=3
+pkgver=2.4.3.1
+pkgrel=1
 pkgdesc='BASS audio library Opus plugin'
 arch=(i686 x86_64 armv6h armv7h aarch64)
 url='https://www.un4seen.com/'
 license=(custom)
 depends=(alsa-lib libbass)
 source=("$pkgname-$pkgver.zip::http://www.un4seen.com/files/bassopus24-linux.zip")
-sha256sums=('6040edfde70c8c10bfa99e4f109510d9fc2fb578c5149a1390d6f7da2eea50c0')
+sha256sums=('785aa0b148f2ca90aa5e88724820aae4e28f8a34c0f97ba5850cd0b0c9da5f51')
 
 prepare() {
   grep Lic "$srcdir/bassopus.txt" -A14 > LICENSE.bass
@@ -30,7 +30,7 @@ package() {
 	  ;;
   esac
 
-  install -D -m644 bassopus.h "$pkgdir/usr/include/bassopus.h"
+  install -D -m644 c/bassopus.h "$pkgdir/usr/include/bassopus.h"
   install -D -m644 bassopus.chm "$pkgdir/usr/share/doc/libbassopus/bassopus.chm"
   install -D -m644 LICENSE.bass "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
