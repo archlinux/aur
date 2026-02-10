@@ -1,4 +1,5 @@
-# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer:
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Bruno Ancona <brunoanconasala@gmail.com>
 # Contributor: Famiu Haque <famiuhaque@gmail.com>
 
