@@ -1,7 +1,7 @@
 # Maintainer: Keithsel <keithsel@disroot.org>
 # Original author: Gabriel Volpe (gvolpe)
 pkgname=niri-scratchpad
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc='Scratchpad support for Niri: a scrollable-tiling Wayland compositor'
 arch=('any')

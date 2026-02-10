@@ -1,6 +1,6 @@
 pkgbase = niri-scratchpad
 	pkgdesc = Scratchpad support for Niri: a scrollable-tiling Wayland compositor
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/gvolpe/niri-scratchpad
 	arch = any
