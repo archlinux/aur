@@ -1,6 +1,6 @@
 pkgbase = python-zxing-cpp-bin
 	pkgdesc = Python bindings for zxing-cpp
-	pkgver = 2.3.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/zxing-cpp/zxing-cpp
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = python-zxing-cpp-bin
 	depends = zxing-cpp
 	provides = python-zxing-cpp
 	conflicts = python-zxing-cpp
-	source = https://files.pythonhosted.org/packages/cp313/z/zxing_cpp/zxing_cpp-2.3.0-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
-	sha256sums = 7ba641ca5a0f19b97d7bc6a0212e61dab267a2b1a52a84946d02bdcd859ec318
+	source = https://files.pythonhosted.org/packages/cp314/z/zxing_cpp/zxing_cpp-3.0.0-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
+	sha256sums = 489fc0ab4af893e1b10b58b70c34db80fbbaf6e5c27c216e8f3f2367cf18a45d
 
 pkgname = python-zxing-cpp-bin
