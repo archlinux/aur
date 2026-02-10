@@ -1,6 +1,6 @@
 pkgbase = ulaa-browser
 	pkgdesc = The web browser from Zoho. Ulaa combines minimal design with sophisticated technology to make the web faster, safer, and easier.
-	pkgver = 2.39.2
+	pkgver = 2.39.4
 	pkgrel = 1
 	url = https://ulaa.com
 	changelog = Changelog
@@ -8,7 +8,7 @@ pkgbase = ulaa-browser
 	provides = ulaa-browser-stable
 	conflicts = ulaa-browser-stable
 	options = !debug
-	source_x86_64 = Ulaa-Browser-v2.39.2-1.deb::https://downloads.zohocdn.com/ulaa-browser/release/linux/stable/Ulaa-Browser-v2.39.2-amd64.deb
-	sha256sums_x86_64 = 0cf26726c10cd752f7206c505e471279d3be602dcb155c466fb5cd51ceac775f
+	source_x86_64 = Ulaa-Browser-v2.39.4-1.deb::https://downloads.zohocdn.com/ulaa-browser/release/linux/stable/Ulaa-Browser-v2.39.4-amd64.deb
+	sha256sums_x86_64 = 5a7ac4bedd0d7266ca44fa2e928aaf0d4ebd9fbe6dad5da0d4dd17b27576b4d0
 
 pkgname = ulaa-browser

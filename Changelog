@@ -1,3 +1,5 @@
-2.39.2-1 [2026-01-28]
-- [Desktop][BugFix] Added support for the --disable-features command-line flag. 
-- Updated with the latest security patches and performance enhancements. Chromium engine updated to 144.0.7559.110.
+2.39.4-1 [2026-02-06]
+- [Desktop][BugFix] Fixed a crash in Incognito mode triggered by copy-and-paste operations.
+- [iOS][New Feature] Introduced Site Sparks.
+- Chromium engine updated to 144.0.7559.134.
+
