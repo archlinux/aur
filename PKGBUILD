@@ -1,7 +1,7 @@
 # Maintainer: Antti <antti@antti.codes>
 
 pkgname=modrinth-app-bin
-pkgver=0.10.27
+pkgver=0.10.29
 pkgrel=1
 pkgdesc='An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'
 url='https://modrinth.com/app'
@@ -9,7 +9,7 @@ arch=('x86_64')
 license=('GPL-3.0-only')
 depends=(
     # tauri deps
-    'openssl-1.1' 'dbus' 'freetype2' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libsoup' 'webkit2gtk-4.1' 'gst-plugins-good'
+    'dbus' 'freetype2' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libsoup' 'webkit2gtk-4.1' 'gst-plugins-good'
     # minecraft deps
     'libgl' 'libpulse' 'libx11' 'libxcursor' 'libxext' 'libxxf86vm'
 )
@@ -23,7 +23,7 @@ source=(
     "modrinth-app"
     "modrinth-file-extensions.xml"
 )
-sha256sums=('293b1fe7ff26fb528d8e88fb8f913ebcb24df9d569d9e400bd1e0d00bee0a3e1'
+sha256sums=('f5303694c3b5b73e59afc7872faccff7d191cb09c5de908042966856a00a837b'
             'da70f89aae82e69625bfe920fa52961550c8f9d4825a0d11e620ac55db84e091'
             'e0b3eab49465709ed5053dc1fa4206071ab32657d25bd1f9c01850d696715cff')
 
