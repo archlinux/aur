@@ -1,0 +1,16 @@
+pkgbase = tree-sitter-gleam
+	pkgdesc = Gleam grammar for tree-sitter
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/gleam-lang/tree-sitter-gleam
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = Apache-2.0
+	makedepends = tree-sitter
+	makedepends = tree-sitter-cli
+	makedepends = npm
+	provides = libtree-sitter-gleam
+	source = tree-sitter-gleam-1.1.0.tar.gz::https://github.com/gleam-lang/tree-sitter-gleam/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 1e6f07141a154caf62dc344ede958f70d4f84cae516bb9274ffb53983d0146e0
+
+pkgname = tree-sitter-gleam
