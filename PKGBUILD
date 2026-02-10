@@ -8,6 +8,8 @@ pkgdesc="A free, open source, and extensible speech-to-text application that wor
 url="https://handy.computer/"
 license=("MIT")
 arch=("x86_64")
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
 depends=(
     "alsa-lib"
     "cairo"
