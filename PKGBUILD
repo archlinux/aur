@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd rofi-linear
-    git describe --long --tags 2>/dev/null | sed 's/^v//;s/-/.r/;s/-/./' || echo "0.1.0.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    printf "0.1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
