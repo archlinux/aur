@@ -1,0 +1,27 @@
+post_install() {
+  if command -v update-desktop-database >/dev/null 2>&1; then
+    update-desktop-database -q
+  fi
+  if command -v gtk-update-icon-cache >/dev/null 2>&1; then
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+  fi
+  if command -v kbuildsycoca5 >/dev/null 2>&1; then
+    kbuildsycoca5 >/dev/null 2>&1 || true
+  fi
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  if command -v update-desktop-database >/dev/null 2>&1; then
+    update-desktop-database -q
+  fi
+  if command -v gtk-update-icon-cache >/dev/null 2>&1; then
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+  fi
+  if command -v kbuildsycoca5 >/dev/null 2>&1; then
+    kbuildsycoca5 >/dev/null 2>&1 || true
+  fi
+}
