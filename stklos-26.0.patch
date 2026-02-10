@@ -1,29 +1,3 @@
-diff --git a/configure b/configure
-index c14c4610..b2bdfc40 100755
---- a/configure
-+++ b/configure
-@@ -2700,7 +2700,7 @@ ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $
- ac_compiler_gnu=$ac_cv_c_compiler_gnu
- 
-    # Set also VERSION_STATUS to stable when changing version
--VERSION_STATUS=stable      # and reset it to unstable after releasing
-+VERSION_STATUS=unstable    # and reset it to unstable after releasing
- 
- #
- # Grab configure options before it is too late
-diff --git a/configure.ac b/configure.ac
-index 84aa3835..a1c6cb84 100644
---- a/configure.ac
-+++ b/configure.ac
-@@ -5,7 +5,7 @@
- 
- AC_PREREQ([2.69])
- AC_INIT([stklos],[26.0])   # Set also VERSION_STATUS to stable when changing version
--VERSION_STATUS=stable      # and reset it to unstable after releasing
-+VERSION_STATUS=unstable    # and reset it to unstable after releasing
- 
- #
- # Grab configure options before it is too late
 diff --git a/extensions/curl/Makefile.in b/extensions/curl/Makefile.in
 index b9cc8d41..8d5f4272 100644
 --- a/extensions/curl/Makefile.in

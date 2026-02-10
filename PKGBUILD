@@ -3,7 +3,7 @@
 
 pkgname=stklos
 pkgver=26.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free R7RS Scheme system."
 arch=('i686' 'x86_64')
 url="http://www.stklos.net"
@@ -12,7 +12,7 @@ depends=('gmp' 'pcre2' 'libffi' 'gc')
 optdepends=('readline: line editing and history support')
 source=("http://www.stklos.net/download/$pkgname-$pkgver.tar.gz"
        "stklos-26.0.patch")
-md5sums=('1518d5f5d96a65d25e75bea603346273' '9ece49d4e3e79eb27763c57363632228')
+md5sums=('1518d5f5d96a65d25e75bea603346273' '51b4199861a56b342b68bf4161a88e8c')
 
 prepare() {
     cd "$pkgname-$pkgver"
