@@ -1,7 +1,7 @@
 pkgbase = konform-browser
 	pkgdesc = Firefox fork (LibreWolf-base) with increased customizability and security
 	pkgver = 140.7.0.108
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://codeberg.org/konform-browser/source
 	install = konform.install
