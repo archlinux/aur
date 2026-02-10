@@ -1,7 +1,7 @@
 pkgbase = mtkclient
 	pkgdesc = Unofficial MTK reverse engineering and flash tool
 	pkgver = 2.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bkerler/mtkclient
 	arch = any
 	license = GPL-3.0-only
@@ -19,7 +19,7 @@ pkgbase = mtkclient
 	depends = python-pycryptodomex
 	depends = python-pyserial
 	depends = python-pyusb
-	source = mtkclient::git+https://github.com/bkerler/mtkclient.git#commit=b54c0c2a03f7913db5dc5ae3b783dd34458db84a
+	source = mtkclient::git+https://github.com/bkerler/mtkclient.git#commit=094113b8d328187a2dc0e0712dc12d4f5677d9af
 	sha256sums = SKIP
 
 pkgname = mtkclient
