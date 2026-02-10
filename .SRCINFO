@@ -1,0 +1,18 @@
+pkgbase = superserver-automation-assistant
+	pkgdesc = SuperServer Automation Assistant is used for managing and configuring the BIOS/BMC firmware
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://www.supermicro.com/en/solutions/management-software/superserver-automation-assistant
+	arch = x86_64
+	arch = aarch64
+	license = custom: EULA
+	depends = gcc-libs
+	depends = zlib
+	depends = acpica
+	backup = etc/saarc
+	source = https://www.supermicro.com/Bios/sw_download/1007/saa_1.4.0_Linux_x86_64_20251022.tar.gz
+	source = https://www.supermicro.com/Bios/sw_download/1010/saa_1.4.0_Linux_arm64_20251022.tar.gz
+	sha256sums = fb047601c4d92c9046dd9db9ba3715d10d8fa8ec8ee73d97722dffefa459757c
+	sha256sums = b98c1e7ab9cf1b5422b2d858db56aa9d764bf79627477fcfcf73c6a364000f11
+
+pkgname = superserver-automation-assistant
