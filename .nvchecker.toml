@@ -1,3 +1,4 @@
 [mts-link-meetings]
-source = "cmd"
-cmd = '''wget -qO- https://apps.webinar.ru/desktop/latest-linux.yml | tee >(echo $(yq -r .releaseNotes) > mts-link-meetings.changelog) | yq -r .version'''
+source = "regex"
+url = "https://apps.webinar.ru/desktop/latest-linux.yml"
+regex = "^version:\\s*([0-9.]+)"
