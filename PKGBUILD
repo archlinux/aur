@@ -5,9 +5,9 @@ _name=modern_robotics
 pkgver=1.1.1
 pkgrel=1
 pkgdesc="Modern Robotics: Mechanics, Planning, and Control Code Library"
-url="https://github.com/chmarti1/PYroMat"
+url="https://github.com/NxRLab/ModernRobotics"
 arch=('any')
-license=('GPL-3.0-only')
+license=('MIT')
 depends=('python-numpy')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 
