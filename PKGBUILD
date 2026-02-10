@@ -7,7 +7,7 @@ pkgver=4.20.0
 pkgrel=1
 pkgdesc="Cendio ThinLinc Linux remote desktop server"
 arch=('x86_64')
-url="http://www.cendio.com/"
+url="https://cendio.com"
 license=('custom')
 install=${pkgname}.install
 
