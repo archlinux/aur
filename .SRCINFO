@@ -34,6 +34,6 @@ pkgbase = writers-suite
 	optdepends = xdg-desktop-portal-kde: KDE portal backend
 	optdepends = xdg-desktop-portal-wlr: wlroots portal backend
 	source = WriterSuite-src.tar.gz::https://softenough.com/download/aur/src/WriterSuite-src.tar.gz
-	sha256sums = 8ef2af944500eb85d4f4e7997d62a98d833b6764b7965a813bf9c38ff3db5a02
+	sha256sums = 3c10330dc224328153accc2224f5b066e2a5ec79cdc9ff3b13ac6cb7a7377f7b
 
 pkgname = writers-suite

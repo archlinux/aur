@@ -9,7 +9,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libxcomposite' 'libxdamage' 'libxfixe
 optdepends=('xdg-desktop-portal-gtk: GTK portal backend' 'xdg-desktop-portal-kde: KDE portal backend' 'xdg-desktop-portal-wlr: wlroots portal backend')
 makedepends=('dotnet-sdk')
 source=("WriterSuite-src.tar.gz::https://softenough.com/download/aur/src/WriterSuite-src.tar.gz")
-sha256sums=('8ef2af944500eb85d4f4e7997d62a98d833b6764b7965a813bf9c38ff3db5a02')
+sha256sums=('3c10330dc224328153accc2224f5b066e2a5ec79cdc9ff3b13ac6cb7a7377f7b')
 
 build() {
   cd "$srcdir"
@@ -31,7 +31,7 @@ Categories=Office;Utility;
 DESKTOP
   cat > "$pkgdir/usr/share/applications/writers-suite-mod-manager.desktop" <<DESKTOP
 [Desktop Entry]
-Name=Writer's Suite Mod Manager
+Name=WSMM
 Exec=/opt/writers-suite/mod-manager/WritersSuite.ModManager
 Icon=/opt/writers-suite/assets/icons/ws-icon-256.png
 Type=Application
