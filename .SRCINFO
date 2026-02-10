@@ -1,6 +1,6 @@
 pkgbase = clevo-drivers-dkms-git
 	pkgdesc = Unofficial modification of TUXEDO Computers kernel module drivers for keyboard, keyboard backlight & general hardware I/O using the SysFS interface, to allow it to run on other Clevo hardware. Use at your own risk.
-	pkgver = 4.17.0
+	pkgver = 4.20.1
 	pkgrel = 1
 	url = https://github.com/nick42d/clevo-drivers
 	arch = x86_64
@@ -25,11 +25,11 @@ pkgbase = clevo-drivers-dkms-git
 	conflicts = tuxedo-drivers-dkms
 	conflicts = tuxedo-keyboard-dkms
 	conflicts = tuxedo-keyboard-ite-dkms
-	source = git+https://gitlab.com/tuxedocomputers/development/packages/tuxedo-drivers.git#tag=v4.17.0
+	source = git+https://gitlab.com/tuxedocomputers/development/packages/tuxedo-drivers.git#tag=v4.20.1
 	source = patch.diff
-	sha256sums = 2a0569eadc9134de5e3c216d97ae96d9b83cfa32d0edae62804cea8266eaeec3
+	sha256sums = fed283066751aa0604f8b43eed3ce4cb571bc83fa8ac9917bbaa06a12317c824
 	sha256sums = d6bef54bcf39e5aa24b3f1148c4ffc65dd054a23ca3af44787a7d1010169b6b6
-	sha512sums = 4e483befcb371af3951312394f4c21a2f08a05159df4f39a50c3c9c6702ead855a9955bf396a4d31816b23465ba61e9f032ff9b00e387dca5ad3a17d36b307d1
+	sha512sums = 3a3f5e479958db64bb92056b86699612660db54ef077c6bc156ce9c778198df2921cb99392ffe5a021b11c3578772c666d0cfccd5ea0a347b9a8cb2d6ba4f4d7
 	sha512sums = bcaf2a67bdc37e388931c458cf08fcb0bb05de2c83de51770b700b9aba2cece578366aec90c0edfa18e71cf688b7c203684da4c69a3fae17e7e253f0082036dd
 
 pkgname = clevo-drivers-dkms-git
