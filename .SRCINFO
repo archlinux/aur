@@ -1,0 +1,13 @@
+pkgbase = mingw-w64-dllcopy
+	pkgdesc = A simple helper to copy dlls
+	pkgver = 1.0
+	pkgrel = 0
+	url = https://github.com/neoluxis/mingw-dllcopy
+	arch = x86_64
+	arch = aarch64
+	depends = bash
+	depends = git
+	source = git+https://github.com/neoluxis/mingw-dllcopy.git
+	sha256sums = SKIP
+
+pkgname = mingw-w64-dllcopy
