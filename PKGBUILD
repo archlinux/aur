@@ -2,7 +2,7 @@
 pkgname=seanime-denshi
 _pkgname=seanime-denshi
 pkgver=3.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A self-hosted server that seamlessly integrates with your local anime collection with anilist integration. (Denshi AppImage variant)"
 arch=(x86_64)
 url="https://github.com/5rahim/seanime"
@@ -14,10 +14,10 @@ sha256sums=('b267166f36ecfde6d3df1fd39d66209ee49b96ac61ea8a07adaf0e94e69ff937')
 
 package() {
   install -d "${pkgdir}/opt/${pkgname}"
-  install -dm755 "${pkgdir}/opt/${pkgname}/${_pkgname}-${pkgver}_Linux_x86_64.AppImage"
-  cp "${srcdir}/${_pkgname}-${pkgver}_Linux_x86_64.AppImage" "${pkgdir}/opt/${pkgname}/"
-  chmod +x "${pkgdir}/opt/${pkgname}/${_pkgname}-${pkgver}_Linux_x86_64.AppImage"
+  install -Dm755 "${srcdir}/${_pkgname}-${pkgver}_Linux_x86_64.AppImage" \
+    "${pkgdir}/opt/${pkgname}/${_pkgname}-${pkgver}_Linux_x86_64.AppImage"
 
+  install -d "${pkgdir}/usr/bin"
   ln -sf "/opt/${pkgname}/${_pkgname}-${pkgver}_Linux_x86_64.AppImage" "${pkgdir}/usr/bin/${pkgname}"
 
   local user=${USER:-root}
