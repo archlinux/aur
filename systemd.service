@@ -10,5 +10,30 @@ User=piped
 ExecStart=/usr/bin/piped-backend
 Restart=on-failure
 
+PrivateTmp=true
+NoNewPrivileges=true
+ProtectSystem=strict
+CapabilityBoundingSet=
+RestrictNamespaces=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+PrivateDevices=true
+RestrictSUIDSGID=true
+RemoveIPC=true
+ProtectClock=true
+ProtectKernelLogs=true
+SystemCallArchitectures=native
+ProtectHostname=true
+LockPersonality=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictRealtime=true
+ProtectHome=true
+ProtectProc=invisible
+ProcSubset=pid
+SystemCallFilter=~@swap @reboot @raw-io @privileged @obsolete @mount @module @debug @cpu-emulation @clock
+IPAddressDeny=link-local multicast
+UMask=0077
+
 [Install]
 WantedBy=multi-user.target
