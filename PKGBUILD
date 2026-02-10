@@ -1,6 +1,6 @@
 # Maintainer: Sohimaster
 pkgname=traur
-pkgver=0.2.6
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Trust scoring for AUR packages'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('git' 'pacman' 'gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('278ab6c791068f71029c713ff29b006a0eb92aa1baf1d13d387a5d8fd7d33717')
+sha256sums=('7a3edc1bb1e37aa391f097dee3835a55ea7f29d628a07f00999c1c09c3b0d2c9')
 
 prepare() {
     cd "$pkgname-$pkgver"
