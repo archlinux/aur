@@ -7,6 +7,7 @@ pkgbase = python-cron-descriptor
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
+	depends = python-typing_extensions
 	source = https://github.com/Salamek/cron-descriptor/archive/2.0.6.tar.gz
 	sha256sums = e89864b45eafae7d587701d8373bc6b0aaf8d1111257937877f8fd37e9fbcb2a
 
