@@ -10,6 +10,7 @@ arch=('x86_64')
 url="https://cendio.com"
 license=('custom')
 install=${pkgname}.install
+options=(!debug)
 
 depends=('gcc-libs' 'ghostscript' 'glibc' 'gtk3' 'iproute2' 'krb5' 'libx11'
          'libxcrypt-compat' 'msmtp-mta' 'nss' 'nspr' 'pam' 'procps-ng'
@@ -46,8 +47,7 @@ package() {
     cp -aR libs/libexec/* "$pkgdir"/opt/thinlinc/libexec
     cp -aR libs/modules/* "$pkgdir"/opt/thinlinc/modules
     cp -aR libs/share/* "$pkgdir"/opt/thinlinc/share
-    rm -rf "$pkgdir/usr/lib64/"
-    rm -rf "$pkgdir/usr/lib/.build-id"
+    rm -rf "$pkgdir/usr/lib64"
     ln -s "/opt/thinlinc/modules" "$pkgdir/usr/lib/$pkgname"
     chmod u+s "$pkgdir"/opt/thinlinc/libexec/tl-mount-personal
     
