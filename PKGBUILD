@@ -1,6 +1,6 @@
 pkgname=adw-network
-pkgver=0.1.0
-pkgrel=1
+pkgver=0.1.3
+pkgrel=3
 pkgdesc="Modern network management application for GNOME (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/PlayRood32/adw-network"
@@ -13,7 +13,9 @@ source=(
   "com.github.adw-network.desktop::https://raw.githubusercontent.com/PlayRood32/adw-network/v${pkgver}/data/com.github.adw-network.desktop"
   "icon.png::https://raw.githubusercontent.com/PlayRood32/adw-network/v${pkgver}/data/icons/hicolor/scalable/apps/icon.png"
 )
-sha256sums=('9ebd666da424396cd2f8f3aa19bcf8c2c57ec14592518b72201cdc8704eebe41' 'SKIP' '3eaf915ebb5bcbc0d49a5a7c22ecb8d5ff453d4583efcf9dc6b0f044e079f16a')
+sha256sums=('80c46355a5cb460089fad7001fda21c529b2504ed610d6122f1de8d0dea6961e'
+            '87e22132167fdb6372cf4fbdf1a60a0449e8ef1e5889d1a156a8eb540c069038'
+            '518a328abee19239ba5f20bcbfe3f15c474bc5c18b8adcb37c9793ecf7c640cc')
 
 package() {
   install -Dm755 "${srcdir}/adwaita-network" "${pkgdir}/usr/bin/adwaita-network"
