@@ -9,9 +9,9 @@ pkgbase = hpltt
 	depends = ncurses5-compat-libs
 	options = !strip
 	validpgpkeys = 57446EFDE098E5C934B69C7DC208ADDE26C2B797
-	source_x86_64 = https://downloads.hpe.com/pub/softlib2/software1/pubsw-generic/p1910951539/v241790/hpe_ltt65_linux_x86_64.tar
-	source_x86_64 = https://downloads.hpe.com/pub/softlib2/software1/pubsw-generic/p1910951539/v241790/hpe_ltt65_linux_x86_64.tar.sig
-	sha256sums_x86_64 = 6ebbb2a55f174f6be22ac687ca33fd6bd763298d386735e5ffceec90a9868d79
-	sha256sums_x86_64 = c601e3f1368aff542d36cdf733d9ce27dbe144f178d57de0139ab81a04d0b2d0
+	source_x86_64 = https://downloads.hpe.com/pub/softlib2/software1/pubsw-generic/p1910951539/v269121/hpe_ltt66_linux_x86_64.tar
+	source_x86_64 = https://downloads.hpe.com/pub/softlib2/software1/pubsw-generic/p1910951539/v269121/hpe_ltt66_linux_x86_64.tar.sig
+	sha256sums_x86_64 = 8588da0a69889fed427129bad8906f80c6e878473086ed35b9e83bf3e7bd4bb2
+	sha256sums_x86_64 = 709df142b5343ce7f1b89b314af30da450c131428dd97a6be0214d04cd388644
 
 pkgname = hpltt
