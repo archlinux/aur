@@ -1,6 +1,6 @@
 # Maintainer: AuroraNasa
 pkgname=volume-knob-control-bin
-pkgver=1.0.0
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="A lightweight volume knob controller with device switching."
 arch=('x86_64' 'aarch64')
