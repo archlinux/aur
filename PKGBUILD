@@ -1,7 +1,7 @@
 # Maintainer: containerscrew <info@containerscrew.com>
 
 pkgname=rsecure
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Secure file encryption CLI written in Rust"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=()
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('385dcb0796337c35e5041b474e4841a0ffc16dcf0936c475f971dea9e9004da4')
+sha256sums=('4cfa7bfeb535872fc95831d0bfc457e5313581c7fb67518caeb782b2004fa003')
 
 build() {
     cd "$pkgname-$pkgver"
