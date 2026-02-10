@@ -11,6 +11,6 @@ pkgbase = petbottle-bin
 	provides = petbottle
 	conflicts = petbottle
 	source = petbottle-bin-0.1.8.deb::https://github.com/Rumata01/Petbottle-public/releases/download/v0.1.8/petbottle_0.1.8_amd64.deb
-	sha256sums = b6610fdf5eb6ff756b385a12b36f9137d03c188d62751b170854b649d0fea0dd
+	sha256sums = d407fc2aa8350b4e5cc49ccda6c0994959328196693651eabab320adbb874738
 
 pkgname = petbottle-bin
