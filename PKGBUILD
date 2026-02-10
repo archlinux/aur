@@ -1,6 +1,6 @@
 # Maintainer: Arnaud Gissinger <me@mathix.dev>
 pkgname=rofi-linear-git
-pkgver=0.1.0
+pkgver=0.1.0.r1.c227e5a
 pkgrel=1
 pkgdesc="Rofi plugin for creating Linear issues"
 arch=('x86_64')
