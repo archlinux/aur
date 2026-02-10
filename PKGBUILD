@@ -4,7 +4,7 @@ pkgname=xrefactory
 pkgdesc="Professional refactoring tool for C/Java and Emacs"
 url="http://xrefactory.com"
 pkgver=1.6.10
-pkgrel=7
+pkgrel=9
 arch=('x86_64')
 license=(custom)
 source=(
@@ -44,9 +44,9 @@ source=(
     0038-Update-bootstrap-macro.patch
     0039-Fix-include_next-directive.patch
     0040-Fix-parsing-initializer-list-for-arrays.patch
-    0041-Fix-workMemory-overflowed-over-borne-with-Linux-kern.patch
     0042-Fix-build-for-Mingw-w64.patch
-    0043-Fix-detecting-GCC-include-files-and-predefined-macro.patch)
+    0043-Fix-detecting-GCC-include-files-and-predefined-macro.patch
+    0044-Fix-workMemory-overflowed-over-borne-with-Linux-kern.patch)
 md5sums=('63e10baa9a5dfce9165570e7c3897701'
          '4791f8a42e53a141ded3bd36e39b3a6d'
          'a00b17df920380afd6689369845acbc8'
@@ -83,9 +83,9 @@ md5sums=('63e10baa9a5dfce9165570e7c3897701'
          'e92ad6217bfa847f1ebc2aabe88bacf8'
          '8e5a1b177d5c74541facbfa98ff09e19'
 		 '20c7f661b6b8ce9bcbbd384fab2517a8'
-		 '1f25e46f2d826ba50078f4c61be4f13e'
 		 '651328ad9af97cbfcbb59c268eb89e37'
-		 'ab0c52ccdb4ed0127b33f23477abfd17')
+		 'ab0c52ccdb4ed0127b33f23477abfd17'
+		 '1b47c4a526e80c160419ff0ca6a23d1f')
 
 prepare() {
     cd "$srcdir/xref-any"
@@ -124,9 +124,9 @@ prepare() {
     patch --verbose -p1 -i "$srcdir/0038-Update-bootstrap-macro.patch"
 	patch --verbose -p1 -i "$srcdir/0039-Fix-include_next-directive.patch"
 	patch --verbose -p1 -i "$srcdir/0040-Fix-parsing-initializer-list-for-arrays.patch"
-	patch --verbose -p1 -i "$srcdir/0041-Fix-workMemory-overflowed-over-borne-with-Linux-kern.patch"
 	patch --verbose -p1 -i "$srcdir/0042-Fix-build-for-Mingw-w64.patch"
 	patch --verbose -p1 -i "$srcdir/0043-Fix-detecting-GCC-include-files-and-predefined-macro.patch"
+	patch --verbose -p1 -i "$srcdir/0044-Fix-workMemory-overflowed-over-borne-with-Linux-kern.patch"
 }
 
 build() {
