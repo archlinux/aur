@@ -1,5 +1,4 @@
-
-# Created by: damachin3 (damachine3 at proton dot me)
+# Maintainer: damachin3 (damachine3 at proton dot me)
 # Website: https://github.com/damachine/coolerdash
 
 pkgname=coolerdash-git
