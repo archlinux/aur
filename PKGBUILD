@@ -3,7 +3,7 @@
 
 _pkgname=Sparrow
 pkgname=sparrow-wallet
-pkgver=2.3.1
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Desktop Bitcoin Wallet focused on security and privacy. Free and open source"
 arch=('x86_64')
@@ -29,14 +29,14 @@ source=(
     "https://github.com/sparrowwallet/sparrow/releases/download/${pkgver}/sparrowwallet-${pkgver}-${CARCH}.tar.gz"
     "https://github.com/sparrowwallet/sparrow/releases/download/${pkgver}/sparrow-${pkgver}-manifest.txt"{,.asc}
     "https://raw.githubusercontent.com/sparrowwallet/sparrow/refs/tags/${pkgver}/src/main/deploy/package/linux/Sparrow.desktop"
-    "MimeInfo.xml"
+    "https://raw.githubusercontent.com/sparrowwallet/sparrow/refs/tags/${pkgver}/src/main/deploy/package/linux/sparrowwallet-Sparrow-MimeInfo.xml"
 )
 validpgpkeys=('D4D0D3202FC06849A257B38DE94618334C674B40')
-sha256sums=('01c1a348bc63bfd216b38588b80abfe91f0ae9cabbe74c2877dcbdaa16c15242'
-            '72afd7b567647518140bd1cf6117d27bdfd15ee3585ba0230207207dfe7b43e1'
+sha256sums=('f6b9324c48be2af143bcc09236479dc57f656193d9bc6c020a52f3f3b0d7aca7'
+            '84f8112b5a4c9e1a4039614ef9bc925e013b235ac97f5315ac0e4574891282ee'
             'SKIP'
             '71c5d812d7f84faff1898c2407454f230308e148052cde950ccf4ab9a0b2848c'
-            'd0ad5f5457005776fb5021752f9468a55f3a01f498a7984fc97ef652b44460c1')
+            '6d2d016f8a00f4da37891a0ba2aa58088bb99647e377ace7a89559118f120081')
 
 prepare() {
     sha256sum -c --ignore-missing sparrow-$pkgver-manifest.txt
@@ -59,6 +59,6 @@ EOF
         "${srcdir}/Sparrow.desktop" > \
         "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-    install -Dm644 "${srcdir}/MimeInfo.xml" \
+    install -Dm644 "${srcdir}/sparrowwallet-Sparrow-MimeInfo.xml" \
         "${pkgdir}/usr/share/mime/packages/${pkgname}.xml"
 }
