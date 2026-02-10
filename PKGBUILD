@@ -8,7 +8,7 @@
 pkgbase=nvidia-580xx-utils
 pkgname=('nvidia-580xx-utils' 'opencl-nvidia-580xx' 'nvidia-580xx-dkms')
 pkgver=580.126.09
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
@@ -23,6 +23,7 @@ source=('nvidia-drm-outputclass.conf'
         'nvidia-sleep.conf'
         "https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
         '0001-Enable-atomic-kernel-modesetting-by-default.patch'
+        '0002-Fix-compile-for-6.19.patch'
         'limit-vram-usage')
 
 sha256sums=(
@@ -34,6 +35,7 @@ sha256sums=(
     '12d31a5425aba66be9e9129012cde82755ad4d5b7ce9933df8fc398c4fa8d631'
     '4cac53e48f8adff661d47c8788ed24059a248c9fd8098ceafd088a498986ec26'
     '163c57160cc1033020680f638b44ebd94b496152dcd8951e87d5077d4d5c2009'
+    'fdfe224fa39b2707942a89a54e1c0d60c5eb7da20b7a3e1dfde294e5bdec237e'
     'b14f7a65359c05c373ddfc750cd4cf086a48e815489d93ad5cbe1dbf84bf8f5a'
 )
 
@@ -57,6 +59,9 @@ prepare() {
     # https://gitlab.archlinux.org/archlinux/packaging/packages/nvidia-utils/-/issues/14
     # https://github.com/rpmfusion/nvidia-kmod/blob/master/make_modeset_default.patch
     patch -Np1 -i "${srcdir}/0001-Enable-atomic-kernel-modesetting-by-default.patch" -d "${srcdir}/${_pkg}/kernel"
+
+    # Fix compilation for 6.19
+    patch -Np1 -i "${srcdir}/0002-Fix-compile-for-6.19.patch"
 
     shopt -s globstar
     for conf in "${srcdir}"/**/dkms.conf; do
