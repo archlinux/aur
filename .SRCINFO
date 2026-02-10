@@ -1,6 +1,6 @@
 pkgbase = volume-knob-control-bin
 	pkgdesc = A lightweight volume knob controller with device switching.
-	pkgver = 1.1.7
+	pkgver = 1.1.9
 	pkgrel = 1
 	url = https://github.com/Aurora-Nasa-1/volume-control
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = volume-knob-control-bin
 	license = MIT
 	depends = pipewire
 	depends = libevdev
-	source_x86_64 = https://github.com/Aurora-Nasa-1/volume-control/releases/download/v1.1.7/volume-knob-control_1.1.7_linux_amd64.tar.gz
+	source_x86_64 = https://github.com/Aurora-Nasa-1/volume-control/releases/download/v1.1.9/volume-knob-control_1.1.9_linux_amd64.tar.gz
 	sha256sums_x86_64 = SKIP
 
 pkgname = volume-knob-control-bin

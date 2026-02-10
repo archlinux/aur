@@ -1,6 +1,6 @@
 # Maintainer: AuroraNasa
 pkgname=volume-knob-control-bin
-pkgver=1.1.7
+pkgver=1.1.9
 pkgrel=1
 pkgdesc="A lightweight volume knob controller with device switching."
 arch=('x86_64' 'aarch64')
@@ -12,5 +12,4 @@ sha256sums_x86_64=('SKIP')
 
 package() {
     install -Dm755 "${srcdir}/volume-knob-control" "${pkgdir}/usr/bin/volume-knob-control"
-    install -Dm644 "${srcdir}/scripts/volume-control.service" "${pkgdir}/usr/lib/systemd/user/volume-control.service"
 }
