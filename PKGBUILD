@@ -2,7 +2,7 @@
 
 _pkgname=passless
 pkgname="${_pkgname}"
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="Virtual FIDO2 device and client FIDO 2 utility. Passkeys made easy."
 arch=('x86_64' 'aarch64')
@@ -40,7 +40,7 @@ build() {
     export LIBGIT2_NO_VENDOR=1
     export HIDAPI_SYS_USE_PKG_CONFIG=1
     export HIDAPI_LIBRARIES=hidapi-hidraw
-    export LD_LIBRARY_PATH="/usr/lib:$LD_LIBRARY_PATH"
+    export RUSTFLAGS="-C link-arg=-lhidapi-hidraw"
     cargo build --frozen --release --all-features
 }
 
