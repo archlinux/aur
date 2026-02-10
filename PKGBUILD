@@ -5,7 +5,7 @@
 
 _pkgname=phpunit
 pkgname=${_pkgname}-bin
-pkgver=12.4.0
+pkgver=13.0.2
 pkgrel=1
 pkgdesc="PHPUnit is a programmer-oriented testing framework for PHP."
 provides=('phpunit')
@@ -21,9 +21,9 @@ source=("https://phar.phpunit.de/phpunit-${pkgver}.phar"
 # To add the key use gpg
 #  gpg --keyserver pgp.uni-mainz.de --recv-keys 4AA394086372C20A
 validpgpkeys=('D8406D0D82947747293778314AA394086372C20A')
-sha256sums=('ebfebdf3ec895fa9692772105531047ad46c127c060fbe3ddf2ed2f259095e4f'
+sha256sums=('31663773ae7038565c8d4f586c4461fa72dcd6e82d5b8c3d2c36a02b89831a68'
             'SKIP'
-            '9b6785c0feb16684277fe650a56d359ce4ec139fb4ae50d3617238be281386e5')
+            '5aa383bf44a3951bb4a2214c740a96e7795e473e1a0abc8d5812e6a3c1dbfc1e')
 
 package() {
   install -D -m 644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
