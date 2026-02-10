@@ -15,11 +15,9 @@ source=("git+https://github.com/chmarti1/PYroMat#tag=v$pkgver")
 sha256sums=('7705459a33604dd1b567dae9df6caa5cfcb687c7aa3b735c6160486e4b62a79c')
 
 build() {
-    cd "$srcdir/PYroMat"
-    python -m build --wheel --no-isolation
+    python -m build -wno "$srcdir" "$srcdir/PYroMat"
 }
 
 package() {
-    cd "$srcdir/PYroMat"
-    python -m installer --destdir="$pkgdir" "$srcdir/PYroMat/dist/pyromat-$pkgver-py3-none-any.whl"
+    python -m installer -d "$pkgdir" "$srcdir/pyromat-$pkgver-py3-none-any.whl"
 }
