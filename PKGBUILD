@@ -4,7 +4,7 @@
 pkgname=python-flax
 _pkgname=${pkgname#python-}
 pkgver=0.12.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A neural network library and ecosystem for JAX designed for flexibility'
 arch=('any')
 url='https://github.com/google/flax'
@@ -16,6 +16,7 @@ depends=(
     'python-numpy'
     'python-optax'
     'python-orbax-checkpoint'
+    'python-orbax-export'
     'python-rich'
     'python-tensorstore'
     'python-treescope'

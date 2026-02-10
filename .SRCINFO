@@ -1,7 +1,7 @@
 pkgbase = python-flax
 	pkgdesc = A neural network library and ecosystem for JAX designed for flexibility
 	pkgver = 0.12.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/flax
 	arch = any
 	groups = jax
@@ -16,6 +16,7 @@ pkgbase = python-flax
 	depends = python-numpy
 	depends = python-optax
 	depends = python-orbax-checkpoint
+	depends = python-orbax-export
 	depends = python-rich
 	depends = python-tensorstore
 	depends = python-treescope
