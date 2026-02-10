@@ -1,8 +1,9 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
+
 pkgbase=python-ci_watson
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="CI helper for STScI Jenkins"
 arch=('any')
@@ -20,9 +21,10 @@ makedepends=('python-setuptools-scm'
              'python-pytest'
              'python-readchar'
              'python-colorama')  # wheel required by new setuptools
+# conftest.py
 checkdepends=('python-pytest-astropy-header') # crds already in makedepends
 source=("https://github.com/spacetelescope/${_pyname}/archive/${pkgver}.tar.gz")
-md5sums=('ee5eb6ee629bcb3824f684f15cca23ec')
+md5sums=('76a8006271b7452f03d6db9269f559f7')
 
 get_pyinfo() {
     [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
@@ -55,7 +57,11 @@ check() {
 }
 
 package_python-ci_watson() {
-    depends=('python>=3.9' 'python-pytest>=6' 'python-crds' 'python-readchar>=3.0' 'python-colorama>=0.4.1') # requests <- crds
+    depends=('python>=3.9'
+             'python-pytest>=6'
+             'python-crds'
+             'python-readchar>=3.0'
+             'python-colorama>=0.4.1') # requests <- crds
     optdepends=('python-astropy>=6'
                 'python-ci_watson-doc: Documentation for CI Watson')
     cd ${srcdir}/${_pyname}-${pkgver}
