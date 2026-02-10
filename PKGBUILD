@@ -3,7 +3,7 @@
 pkgname=python-pyromat
 _name=${pkgname#python-}
 pkgver=2.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Thermodynamic properties in Python"
 url="https://github.com/chmarti1/PYroMat"
 arch=('any')

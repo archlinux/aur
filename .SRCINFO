@@ -1,7 +1,7 @@
 pkgbase = python-pyromat
 	pkgdesc = Thermodynamic properties in Python
 	pkgver = 2.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chmarti1/PYroMat
 	arch = any
 	license = GPL-3.0-only
