@@ -1,0 +1,18 @@
+pkgbase = chainlink-git
+	pkgdesc = An issue tracker for agents (VCS version)
+	pkgver = chainlink.1.5.r11.g8abb364
+	pkgrel = 1
+	url = https://github.com/dollspace-gay/chainlink
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = gcc-libs
+	depends = sqlite
+	provides = chainlink
+	conflicts = chainlink
+	source = git+https://github.com/dollspace-gay/chainlink.git
+	sha256sums = SKIP
+
+pkgname = chainlink-git
