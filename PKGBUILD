@@ -1,6 +1,6 @@
 # Maintainer: Norbert Preining <norbert@preining.info>
 pkgname=cli-stash
-pkgver=0.2.9
+pkgver=0.2.10
 pkgrel=1
 pkgdesc="Terminal UI for saving and recalling shell commands"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/itcaat/$pkgname"
 license=('MIT')
 makedepends=('git' 'go')
 source=(git+${url}.git#tag=v${pkgver})
-sha256sums=('c51cc6893fbc924cf4babcd396042a9035e307ae344daf3e1371d51e777d32a2')
+sha256sums=('a21958d261b96c3762cac0020caffd4d71ca722e81959306fdcf974a04dde03e')
 
 prepare() {
     cd ${pkgname}
