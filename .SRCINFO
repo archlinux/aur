@@ -1,13 +1,13 @@
 pkgbase = reef
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/ZStud/reef
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = cargo
-	source = reef-0.1.2.tar.gz::https://github.com/ZStud/reef/archive/v0.1.2.tar.gz
-	sha256sums = a659bab7fa619f97b02ef729a024fc1839c2334dfba6c5980f01bb4ea2cd1650
+	source = reef-0.1.3.tar.gz::https://github.com/ZStud/reef/archive/v0.1.3.tar.gz
+	sha256sums = 8ce44564e4986650fb2ac3fbe85543dc6537cdb45044e66c288f501f08520b42
 
 pkgname = reef
 	pkgdesc = Bash compatibility layer for fish shell — paste bash, it just works
