@@ -1,0 +1,14 @@
+pkgbase = cat-cursors-git
+	pkgdesc = A Cat Cursor Theme. Created by Bilibili user 406949928 (HappyCadogt), ported by GitHub user Tseshongfeeshur (Ryan).
+	pkgver = 0.r1.g0000000
+	pkgrel = 1
+	url = https://github.com/Tseshongfeeshur/cat-cursors
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = imagemagick
+	makedepends = xorg-xcursorgen
+	source = git+https://github.com/Tseshongfeeshur/cat-cursors.git
+	sha256sums = SKIP
+
+pkgname = cat-cursors-git
