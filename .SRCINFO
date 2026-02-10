@@ -1,5 +1,5 @@
 pkgbase = backintime
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://github.com/bit-team/backintime
 	arch = any
@@ -7,19 +7,17 @@ pkgbase = backintime
 	makedepends = asciidoctor
 	makedepends = man-db
 	makedepends = python-pyfakefs
-	source = backintime-1.6.0.tar.gz::https://github.com/bit-team/backintime/archive/refs/tags/v1.6.0.tar.gz
-	source = 2401.patch::https://patch-diff.githubusercontent.com/raw/bit-team/backintime/pull/2401.patch
+	source = backintime-1.6.1.tar.gz::https://github.com/bit-team/backintime/archive/refs/tags/v1.6.1.tar.gz
 	source = backintime-backup-job.service
 	source = backintime-backup-job.timer
-	sha256sums = 2c08945e9abc52b87cc3d70cd382e7b88a427eb0a45e4590d3895549da94e34f
-	sha256sums = 8a04fadb0a589f4dd64d3b619cd41927407d5f3d3b4a6d50725e1114fc584d67
+	sha256sums = 3d959a902403f11d87865982a38d65d82292af3d54a5c93a710a91175922cfc4
 	sha256sums = 8a3aa12434048d604836b709df18528fe51867de7c8d229190eb5b518fa6d918
 	sha256sums = 5f9346be71d16786cb547362fe35755c8af59095e985c27d28ac14dfe791b7c8
 
 pkgname = backintime
 	pkgdesc = Simple backup system inspired from the Flyback Project and TimeVault. Qt6 GUI version.
 	install = backintime.install
-	depends = backintime-cli=1.6.0
+	depends = backintime-cli=1.6.1
 	depends = polkit
 	depends = python-pyqt6
 	depends = python-secretstorage

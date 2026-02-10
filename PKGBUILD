@@ -3,7 +3,7 @@
 
 pkgname=(backintime backintime-cli)
 _pkgname="backintime"
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 arch=(any)
 url="https://github.com/bit-team/backintime"
@@ -11,17 +11,14 @@ license=(GPL-1.0-or-later)
 makedepends=(asciidoctor man-db python-pyfakefs)
 #checkdepends=(openssh python-dbus rsync systemd python-pyfakefs oxygen-icons python-pylint)
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/bit-team/$_pkgname/archive/refs/tags/v$pkgver.tar.gz"
-  2401.patch::https://patch-diff.githubusercontent.com/raw/bit-team/backintime/pull/2401.patch
 backintime-backup-job.{service,timer})
-sha256sums=('2c08945e9abc52b87cc3d70cd382e7b88a427eb0a45e4590d3895549da94e34f'
-            '8a04fadb0a589f4dd64d3b619cd41927407d5f3d3b4a6d50725e1114fc584d67'
+sha256sums=('3d959a902403f11d87865982a38d65d82292af3d54a5c93a710a91175922cfc4'
             '8a3aa12434048d604836b709df18528fe51867de7c8d229190eb5b518fa6d918'
             '5f9346be71d16786cb547362fe35755c8af59095e985c27d28ac14dfe791b7c8')
 
-prepare() {
-  cd "$_pkgname-$pkgver"
-  patch -p1 -i ../2401.patch
-}
+#prepare() {
+#  cd "$_pkgname-$pkgver"
+#}
 
 build() {
   cd "$_pkgname-$pkgver/common"
