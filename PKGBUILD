@@ -1,6 +1,9 @@
-# Maintainer: 30p87 <30p87@30p87.de>
+# Maintainer: 30p87 <aur@30p87.de>
+
 pkgname='piped-proxy-git'
-pkgver=r306.79f27fb
+_componentname="${pkgname%'-git'}"
+_componentnameshort="${_componentname#'piped-'}"
+pkgver=r487.51f28b2
 pkgrel=1
 pkgdesc='A proxy for Piped written in Rust, meant to superseed http3-ytproxy'
 arch=('x86_64')
@@ -9,12 +12,17 @@ license=('AGPL-3.0')
 groups=('piped-git')
 makedepends=('git' 'cargo')
 options=('!lto')
-source=('git+https://github.com/TeamPiped/piped-proxy.git'
-		'systemd.service'
-		'sysusers.conf')
+source=("git+${url}"
+		'config.env'
+		'nginx.conf'
+		'sysusers.conf'
+		'systemd.service')
 sha256sums=('SKIP'
-            'c80505c894cef5d364bd79722487a68a836858ed6a79fb82326a2eb787edde77'
-            'f04ddc4d9bf5a114e302fec532e7874c7d3c9d58e81103f17649a0d0228bb096')
+            '770849963cdb08afbd105257a31705f0ed2f672ab0db505a3e1e92ea6b5703e1'
+            '901b0498701f09476fd41b1601eb6ef4e5933ddf131308c1dcda4c7afcbb99b5'
+            'eb122e1cf5149be5e89a2ebfb158f29f305427cb8b2061d6728c53ad1d1b89d4'
+            'e38a230ddfb461d20ea6734a43de2e94308357687d9ab2d2ff4fd8c73851b74b')
+dest="/usr/share/webapps/piped/${_componentnameshort}"
 
 pkgver() {
 	cd piped-proxy
@@ -24,7 +32,7 @@ pkgver() {
 prepare() {
 	cd piped-proxy
 	sed -i 's|use std::{env, io};|use std::{env, io, fs, os::unix::fs::PermissionsExt};|' src/main.rs
-	sed -i 's|server.run().await|if utils::get_env_bool("UDS") { fs::set_permissions(env::var("BIND_UNIX").unwrap_or_else(\|_\| "./socket/actix.sock".to_string()), fs::Permissions::from_mode(0o777)).unwrap(); }\n    server.run().await|' src/main.rs
+	sed -i 's|server.run().await|if utils::get_env_bool("UDS") { fs::set_permissions(env::var("BIND_UNIX").unwrap_or_else(\|_\| "./socket/actix.sock".to_string()), fs::Permissions::from_mode(0o660)).unwrap(); }\n    server.run().await|' src/main.rs
 }
 
 build() {
@@ -33,14 +41,13 @@ build() {
 }
 
 package() {
-	install -Dm644 "${srcdir}/sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/piped-proxy.conf"
-	install -Dm644 "${srcdir}/systemd.service" "${pkgdir}/usr/lib/systemd/system/piped-proxy.service"
+	install -Dm644 "${srcdir}/config.env" "${pkgdir}/etc/webapps/piped/${_componentnameshort}.env"
+
+	install -Dm644 "${srcdir}/sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${_componentname}.conf"
+	install -Dm644 "${srcdir}/systemd.service" "${pkgdir}/usr/lib/systemd/system/${_componentname}.service"
 
 	install -Dm644 "${srcdir}/piped-proxy/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "${srcdir}/nginx.conf" "${pkgdir}/usr/share/doc/piped/${_componentnameshort}/nginx.conf"
 
 	install -Dm755 "${srcdir}/piped-proxy/target/release/piped-proxy" "${pkgdir}/usr/bin/piped-proxy"
-
-#chown -R root:root "${pkgdir}${dest}"
-#chmod -R u+rw,g+r,o+r "${pkgdir}${dest}"
-#find "${pkgdir}${dest}" -type d -exec chmod u+x,g+x,o+x {} \;
 }

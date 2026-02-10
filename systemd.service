@@ -4,11 +4,20 @@ After=network.target
 
 [Service]
 User=piped
-Environment=UDS=1
-Environment=BIND_UNIX=/var/run/piped/proxy.sock
-RuntimeDirectory=piped
+EnvironmentFile=/etc/webapps/piped/proxy.env
 ExecStart=/usr/bin/piped-proxy
 Restart=on-failure
+
+PrivateTmp=yes
+NoNewPrivileges=true
+ProtectSystem=full
+CapabilityBoundingSet=
+RestrictNamespaces=uts ipc pid user cgroup
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+PrivateDevices=yes
+RestrictSUIDSGID=true
 
 [Install]
 WantedBy=multi-user.target

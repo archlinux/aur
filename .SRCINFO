@@ -1,0 +1,23 @@
+pkgbase = piped-proxy-git
+	pkgdesc = A proxy for Piped written in Rust, meant to superseed http3-ytproxy
+	pkgver = r487.51f28b2
+	pkgrel = 1
+	url = https://github.com/TeamPiped/piped-proxy
+	arch = x86_64
+	groups = piped-git
+	license = AGPL-3.0
+	makedepends = git
+	makedepends = cargo
+	options = !lto
+	source = git+https://github.com/TeamPiped/piped-proxy
+	source = config.env
+	source = nginx.conf
+	source = sysusers.conf
+	source = systemd.service
+	sha256sums = SKIP
+	sha256sums = 770849963cdb08afbd105257a31705f0ed2f672ab0db505a3e1e92ea6b5703e1
+	sha256sums = 901b0498701f09476fd41b1601eb6ef4e5933ddf131308c1dcda4c7afcbb99b5
+	sha256sums = eb122e1cf5149be5e89a2ebfb158f29f305427cb8b2061d6728c53ad1d1b89d4
+	sha256sums = e38a230ddfb461d20ea6734a43de2e94308357687d9ab2d2ff4fd8c73851b74b
+
+pkgname = piped-proxy-git
