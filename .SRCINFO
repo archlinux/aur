@@ -1,0 +1,14 @@
+pkgbase = niri-scratchpad
+	pkgdesc = Scratchpad support for Niri: a scrollable-tiling Wayland compositor
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/gvolpe/niri-scratchpad
+	arch = any
+	license = Apache-2.0
+	depends = python
+	source = nscratch::https://raw.githubusercontent.com/gvolpe/niri-scratchpad/v0.0.2/src/ns.py
+	source = LICENSE::https://raw.githubusercontent.com/gvolpe/niri-scratchpad/v0.0.2/LICENSE
+	sha256sums = 212709baf62081579190a20422908de76f922c206565816009782d91210d6b0c
+	sha256sums = a8ad31b1c3f40dca5a84119351b8fa8ddc868edd77fad8a8ebf6d8f2d16fa4ae
+
+pkgname = niri-scratchpad
