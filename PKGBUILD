@@ -1,7 +1,7 @@
 # Maintainer: Jasmin <theblazehen@gmail.com>
 # Contributor: amodi444 <amodiii444@gmail.com>
 pkgname=scrapfetch-git
-pkgver=r6.238880f
+pkgver=r9.9650db3
 pkgrel=1
 pkgdesc="A tool for fetching system information. Written in C for Linux."
 arch=('x86_64')
