@@ -6,7 +6,7 @@ pkgname=(
   'ndiff-git'
   'zenmap-git'
 )
-pkgver=7.98.r50.gf5c06c9
+pkgver=7.98.r65.g30f85c0
 pkgrel=1
 url="https://github.com/nmap/nmap"
 license=('LicenseRef-Nmap-Public-Source-License-Version-0.95')
@@ -17,6 +17,7 @@ makedepends=(
   'python-build'
   'python-installer'
   'python-setuptools'
+  'python-setuptools-gettext'
   'python-wheel'
 
   # nmap
@@ -31,7 +32,6 @@ makedepends=(
   'gtk3'
   'python-cairo'
   'python-gobject'
-  'python-setuptools-gettext'
 )
 
 options=('!debug')
@@ -71,15 +71,28 @@ prepare() {
     -e '/^ndiff = imp.load_source/d' \
     -e '/^unittest.main/d' \
     -i "ndiff/ndifftest.py"
+
+  # fix libdnet
+  sed -e '/strlcat/d' -i libdnet-stripped/acconfig.h
+
+  # fix liblinear
+  cat >> liblinear/Makefile << 'END'
+AR = ar
+RANLIB = ranlib
+liblinear.a: linear.o newton.o blas/blas.a
+	$(AR) rcv liblinear.a linear.o newton.o blas/*.o
+	$(RANLIB) liblinear.a
+END
 }
 
 build() {
   export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=?/_FORTIFY_SOURCE=2}"
   export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=?/_FORTIFY_SOURCE=2}"
 
-  echo "Building nmap..."
   cd "$_pkgsrc"
-  #autoreconf -fiv
+
+  echo "Building nmap..."
+  autoreconf -fiv -I /usr/share/gettext/m4
   ./configure \
     --prefix=/usr \
     --with-libpcap=/usr \
@@ -89,15 +102,14 @@ build() {
     --with-liblua=/usr \
     --without-ndiff \
     --without-zenmap
+
   make
 
   echo "Building ndiff..."
-  cd "ndiff"
-  python -m build --no-isolation --wheel
+  python -m build --no-isolation --wheel ndiff
 
   echo "Building zenmap..."
-  cd "../zenmap"
-  python -m build --no-isolation --wheel
+  python -m build --no-isolation --wheel zenmap
 }
 
 check() {
