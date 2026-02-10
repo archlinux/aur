@@ -2,7 +2,7 @@
 
 pkgname='netease-cloud-music-wine'
 pkgver=3.1.28.205001
-pkgrel=1
+pkgrel=2
 pkgdesc="NetEase Cloud Music Player. 使用wine运行网易云音乐windows官方包。"
 arch=('x86_64')
 license=('custom')
@@ -17,104 +17,17 @@ DLAGENTS=(
 )
 source=(
     "https://d8.music.126.net/dmusic2/NeteaseCloudMusic_Music_official_${pkgver}_64.exe"
+    "run.sh"
     "LICENSE"
 )
 sha256sums=(
     "2a90e0434dadc43d57975c9bf4386cdc5ef3abfd265b76b7dc4aa12d7a9ae603"
+    "fa83188f791ad97b631daed8e240d8af933f303864e19b7f5b694b3c2a5adbef"
     "e6fa7eb9853b955c49cba5f5fbd83bf8039235d5c0d3eeaac81c2e99b0b7ff81"
 )
 
 prepare() {
     cd "${srcdir}"
-    cat > install.sh << 'EOF'
-#!/bin/bash
-
-# prevent running by root/sudo
-# refer Wine official FAQ, do not run wine with sudo or root permission.
-if [[ $(id -u) -eq 0 ]];
-then
-    echo "ERROR: you should not use root/sudo to run this application."
-    echo "ERROR: prevent running by root/sudo"
-    exit 1
-fi
-
-if [[ -z "${WINEPREFIX}" ]];
-then
-    echo "\$WINEPREFIX not set." >&2
-    exit
-else
-    rm -rf "${WINEPREFIX}"
-fi
-mkdir -p "${WINEPREFIX}"
-
-# only setup wineprefix and do nothing
-wine cmd /C
-
-# not necessary to update WINEPREFIX automatically every time
-echo "disable" > "$WINEPREFIX/.update-timestamp"
-
-mkdir -p "${WINEPREFIX}/drive_c/NetEase"
-ln -sfn /opt/netease-cloud-music-wine/NetEase/CloudMusic "${WINEPREFIX}/drive_c/NetEase/CloudMusic"
-wine regedit "/opt/netease-cloud-music-wine/netease-cloud-music.reg"
-cp -f /opt/netease-cloud-music-wine/netease-cloud-music.version "${WINEPREFIX}"/netease-cloud-music.version
-
-EOF
-
-
-    cat > run.sh << 'EOF'
-#!/bin/bash
-
-# prevent running by root/sudo
-# refer Wine official FAQ, do not run wine with sudo or root permission.
-if [[ $(id -u) -eq 0 ]];
-then
-    echo "ERROR: you should not use root/sudo to run this application."
-    echo "ERROR: prevent running by root/sudo"
-    exit 1
-fi
-
-if [[ -n "${XDG_CACHE_HOME}" ]];
-then
-    SETUP_DIR="${XDG_CACHE_HOME}"/netease-cloud-music-wine
-else
-    SETUP_DIR="${HOME}"/.cache/netease-cloud-music-wine
-fi
-
-mkdir -p "${SETUP_DIR}"/prefix
-
-export WINEPREFIX="${SETUP_DIR}"/prefix
-
-# prevent wine setting up application menu
-# disable gecko override
-# disable mono override
-export WINEDLLOVERRIDES="winemenubuilder.exe=d;mshtml,mscoree="
-
-# prevent wine showing noisy debug message.
-if [[ -z "${WINEDEBUG}" ]];
-then
-    export WINEDEBUG=-all
-fi
-
-if [[ ! -f "${WINEPREFIX}/drive_c/NetEase/CloudMusic/cloudmusic.exe" ]];
-then
-    echo "First run, setup wineprefix."
-    /opt/netease-cloud-music-wine/install.sh
-fi
-
-version_package="$(cat /opt/netease-cloud-music-wine/netease-cloud-music.version 2>/dev/null)"
-version_local="$(cat "${WINEPREFIX}"/netease-cloud-music.version 2>/dev/null)"
-if [[ "${version_local}" != "${version_package}" ]];
-then
-    echo "Version updated, update wineprefix."
-    rm -f "${WINEPREFIX}"/*.reg
-    /opt/netease-cloud-music-wine/install.sh
-fi
-
-wine "C:\\Netease\\CloudMusic\\cloudmusic.exe" "$@"
-wineserver -k
-
-EOF
-
 
     cat > netease-cloud-music.desktop << 'EOF'
 [Desktop Entry]
@@ -127,7 +40,7 @@ Comment=NetEase Cloud Music
 Comment[zh_CN]=网易云音乐
 Comment[zh_TW]=網易雲音樂
 Icon=netease-cloud-music
-Exec=/usr/bin/cloudmusic %U
+Exec=/usr/bin/cloudmusic --force-device-scale-factor=1 %U
 Categories=AudioVideo;Player;
 Terminal=false
 StartupNotify=true
@@ -328,8 +241,6 @@ EOF
 
     echo "${pkgver}" > netease-cloud-music.version
 
-    chmod +x install.sh run.sh
-
 }
 
 package() {
@@ -362,7 +273,7 @@ package() {
     mkdir -p "${pkgdir}"/opt/netease-cloud-music-wine
     cd "${srcdir}"
     mv NetEase "${pkgdir}"/opt/netease-cloud-music-wine
-    mv install.sh run.sh "${pkgdir}"/opt/netease-cloud-music-wine
+    install -Dm755 run.sh "${pkgdir}"/opt/netease-cloud-music-wine/run.sh
     mv netease-cloud-music.reg "${pkgdir}"/opt/netease-cloud-music-wine
     mv netease-cloud-music.version "${pkgdir}"/opt/netease-cloud-music-wine
     mkdir -p "${pkgdir}"/usr/share/pixmaps
