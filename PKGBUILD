@@ -1,19 +1,17 @@
 # Maintainer: GrzegorzKozub <grzegorz.kozub@gmail.com>
+# shellcheck shell=bash disable=SC2034,SC2154,SC2155,SC2164
 
 pkgname=gnome-shell-extension-rounded-window-corners-reborn-git
-pkgdesc='A GNOME Shell extension that adds rounded corners for all windows'
-url='https://github.com/flexagoon/rounded-window-corners'
-license=('GPL-3.0-or-later')
-
-pkgver=r293.d75b2b4
+pkgver=r342.06e7874
 pkgrel=1
-
-arch=('any')
-depends=('gnome-shell')
-makedepends=('gettext' 'git' 'just' 'npm' 'zip')
-
-source=('git+https://github.com/flexagoon/rounded-window-corners.git')
-sha256sums=('SKIP')
+pkgdesc='A GNOME Shell extension that adds rounded corners for all windows'
+arch=(any)
+url=https://github.com/flexagoon/rounded-window-corners
+license=(GPL-3.0-or-later)
+depends=(gnome-shell)
+makedepends=(gettext git just npm zip)
+source=(git+https://github.com/flexagoon/rounded-window-corners.git)
+sha256sums=(SKIP)
 
 pkgver() {
   cd rounded-window-corners
@@ -28,17 +26,13 @@ build() {
 
 package() {
   cd rounded-window-corners
-
   local uuid=$(grep -Po '(?<="uuid": ")[^"]*' _build/metadata.json)
-  local extdir="${pkgdir}/usr/share/gnome-shell/extensions/${uuid}"
-
-  install -d ${extdir}
-  bsdtar -xvf "${uuid}.shell-extension.zip" -C ${extdir} --no-same-owner
-
-  mv "${extdir}/locale" "${pkgdir}/usr/share/"
-
+  local extdir="$pkgdir"/usr/share/gnome-shell/extensions/"$uuid"
+  install -d "$extdir"
+  bsdtar -xvf "$uuid".shell-extension.zip -C "$extdir" --no-same-owner
+  mv "$extdir"/locale "$pkgdir"/usr/share/
   install -Dm644 \
-    "${extdir}/schemas/org.gnome.shell.extensions.rounded-window-corners-reborn.gschema.xml" \
-    -t "${pkgdir}/usr/share/glib-2.0/schemas/"
-  rm -rf "${extdir}/schemas/"
+    "$extdir"/schemas/org.gnome.shell.extensions.rounded-window-corners-reborn.gschema.xml \
+    -t "$pkgdir"/usr/share/glib-2.0/schemas/
+  rm -rf "$extdir"/schemas/
 }
