@@ -1,6 +1,6 @@
 pkgbase = csong-git
 	pkgdesc = Lyrics viewer for MPD/ncmpcpp with terminal, X11, and Wayland backends
-	pkgver = r44.a883915
+	pkgver = r45.703b6ce
 	pkgrel = 1
 	url = https://github.com/yossefsabry/csong
 	arch = x86_64

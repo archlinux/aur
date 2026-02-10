@@ -1,6 +1,6 @@
 # Maintainer: Yossef Sabry <yossefsabry66@gmail.com>
 pkgname=csong-git
-pkgver=r44.a883915
+pkgver=r45.703b6ce
 pkgrel=1
 pkgdesc="Lyrics viewer for MPD/ncmpcpp with terminal, X11, and Wayland backends"
 arch=('x86_64')
@@ -15,12 +15,33 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/csong"
-	git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	local ver
+	local pkgext
+	local pkgdest
+	local pkgfile
+	ver=$(git describe --long --tags 2>/dev/null || true)
+	if [[ -n "$ver" ]]; then
+		ver=$(printf "%s" "$ver" | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
+	else
+		ver="r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	fi
+	pkgext="${PKGEXT:-.pkg.tar.zst}"
+	pkgdest="${PKGDEST:-$startdir}"
+	pkgfile="${pkgname}-${ver}-${pkgrel}-${arch}${pkgext}"
+	if [[ -f "$pkgdest/$pkgfile" ]]; then
+		rm -f "$pkgdest/$pkgfile"
+	fi
+	printf "%s" "$ver"
 }
 
 build() {
 	cd "$srcdir/csong"
+	local _cflags
+	local _ldflags
+	_cflags="-std=c11 -Wall -Wextra -O2 -Iinclude -Ivendor/toml -Ivendor/jsmn -Ivendor/wayland -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700"
+	_ldflags="-lmpdclient -lcurl -lfribidi -lm -lXft -lfontconfig -lfreetype -lXrender -lX11 -lXfixes -lXext -ldbus-1"
+	export CFLAGS="$CFLAGS $_cflags"
+	export LDFLAGS="$LDFLAGS $_ldflags"
 	make
 }
 
