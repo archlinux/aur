@@ -8,6 +8,7 @@ pkgbase = bsky-electron-git
 	makedepends = pnpm
 	makedepends = npm
 	depends = electron
+	depends = libxcrypt-compat
 	optdepends = libnotify: Notifications
 	optdepends = xdg-utils: Open links, files, etc
 	provides = bsky-electron

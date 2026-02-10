@@ -11,7 +11,7 @@ arch=("x86_64")
 url="https://github.com/CaffeeLake/bsky-electron"
 license=('MPL-3.0')
 
-depends=('electron')
+depends=('electron' 'libxcrypt-compat')
 makedepends=('pnpm' 'npm')
 optdepends=(
   'libnotify: Notifications'
