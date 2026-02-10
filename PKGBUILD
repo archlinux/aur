@@ -4,14 +4,14 @@ pkgname='piped-backend-git'
 _componentname="${pkgname%'-git'}"
 _componentnameshort="${_componentname#'piped-'}"
 pkgver=r1317.da5bcd7
-pkgrel=1
+pkgrel=2
 pkgdesc='An alternative privacy-friendly YouTube frontend which is efficient by design. Backend/API component, for fetching Metadata'
 arch=('x86_64')
 url='https://github.com/TeamPiped/Piped-Backend'
 license=('AGPL-3.0')
 groups=('piped-git')
 depends=('java-runtime' 'postgresql')
-makedepends=('git' 'jdk-openjdk')
+makedepends=('git' 'jdk21-openjdk')
 backup=("etc/webapps/piped/${_componentnameshort}.properties")
 source=("git+${url}"
 		'piped-backend.sh'
