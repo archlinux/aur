@@ -2,7 +2,7 @@
 
 pkgname="spritz-wine-bin"
 _pkgname=${pkgname%-bin}-tkg
-pkgver=11.1
+pkgver=11.2
 pkgrel=1
 buildrel=1
 pkgdesc="A compatibility layer for running Windows programs, with experimental custom patches for games (doesn't conflict with other Wine installations)"
@@ -23,7 +23,7 @@ depends=(
 )
 source=("https://github.com/NelloKudo/spritz-wine-aur/releases/download/${_pkgname}-${pkgver}-${buildrel}/${_pkgname}-staging-wow64-${pkgver}-${buildrel}-x86_64.tar.xz"
         "winestart.c")
-sha256sums=('8c00143555e4bc065348234c6a24eb36c4e8c2a8021b67eb5261bfb448e5afb4'
+sha256sums=('1b6c6eb33c38c00ded00114e35652bd6cf2669d8b81b17077f9d5289aae310b5'
             'ebe0fd2eb64c01c561fd9cba40f3488f2c8df3fbf60c819915491a7cad0bd237')
 
 package() {
