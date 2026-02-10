@@ -1,7 +1,7 @@
 # Maintainer: Jakob Hellermann <jakob.hellermann@protonmail.com>
 pkgname=uabea-next-git
 _pkgname=uabea-next
-pkgver=0.0.0.r100.da7c773
+pkgver=0.0.0.r146.f6a2143
 pkgrel=1
 pkgdesc='A research and modding tool for SerializedFiles and Asset Bundles'
 url='https://github.com/nesrak1/UABEANext'
@@ -11,9 +11,11 @@ arch=('x86_64' 'armv7h' 'aarch64')
 license=('MIT')
 source=(
     "$pkgname::git+https://github.com/nesrak1/UABEANext"
+    "git+https://github.com/nesrak1/AssetsTools.NET"
     "uabea.desktop"
 )
 sha1sums=('SKIP'
+          'SKIP'
           '053b63a171fbf04fba2c061ae83d997f7d913e79')
 
 
@@ -24,6 +26,13 @@ pkgver() {
   # echo "$tag.r$commits_since.$(git log --pretty=format:'%h' -n 1)"
   local commits=$(git rev-list HEAD --count)
   echo "0.0.0.r$commits.$(git log --pretty=format:'%h' -n 1)"
+}
+
+prepare() {
+    cd "$pkgname"
+    git submodule init
+    git config submodule.Libraries/AssetsTools.NET.url "$srcdir/AssetsTools.NET"
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {

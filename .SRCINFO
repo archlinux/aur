@@ -15,7 +15,9 @@ pkgbase = uabea-next-git
 	depends = fontconfig
 	depends = dotnet-runtime
 	source = uabea-next-git::git+https://github.com/nesrak1/UABEANext
+	source = git+https://github.com/nesrak1/AssetsTools.NET
 	source = uabea.desktop
+	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = 053b63a171fbf04fba2c061ae83d997f7d913e79
 
