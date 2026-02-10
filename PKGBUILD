@@ -1,10 +1,10 @@
 # Maintainer: Jakob Hellermann <jakob.hellermann@protonmail.com>
 pkgname=fsmexpress-git
-pkgver=0.0.0.r39.891fed1
+pkgver=0.0.0.r57.87d51a0
 pkgrel=1
 pkgdesc='PlayMaker FSM Viewer'
 url='https://github.com/nesrak1/FSMExpress'
-makedepends=('git' 'dotnet-sdk')
+makedepends=('git' 'dotnet-sdk' 'imagemagick')
 depends=('gcc-libs' 'glibc' 'fontconfig' 'dotnet-runtime')
 arch=('x86_64' 'armv7h' 'aarch64')
 license=('MIT')
@@ -13,7 +13,7 @@ source=(
     "fsmexpress.desktop"
 )
 sha1sums=('SKIP'
-          '0c34fa087ad9698f351ffac5cc9df5675a07ba5d')
+          '71459724f9d466f5bcc3ea4aeda6621cbe91597b')
 
 
 pkgver() {
@@ -41,14 +41,14 @@ package() {
     cp -r "$pkgname/FSMExpress/bin/Release/net8.0" "$pkgdir/usr/lib/FSMExpress"
 
     install -d "$pkgdir/usr/bin"
-    ln -sf "$pkgdir/usr/lib/FSMExpress/FSMExpress" "$pkgdir/usr/bin/FSMExpress"
+    ln -sf "/usr/lib/FSMExpress/FSMExpress" "$pkgdir/usr/bin/FSMExpress"
     # install -Dm644 "$pkgname/license" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    # mkdir -p "${pkgdir}/usr/share/icons/hicolor/"{'256x256/apps','48x48/apps','32x32/apps','16x16/apps'}
-    # convert "$pkgname/ui/assets/icon/icon.png" -resize 256x265 "${pkgdir}/usr/share/icons/hicolor/256x256/apps/atlas.png"
-    # convert "$pkgname/ui/assets/icon/icon.png" -resize 48x48 "${pkgdir}/usr/share/icons/hicolor/48x48/apps/atlas.png"
-    # convert "$pkgname/ui/assets/icon/icon.png" -resize 32x32 "${pkgdir}/usr/share/icons/hicolor/32x32/apps/atlas.png"
-    # convert "$pkgname/ui/assets/icon/icon.png" -resize 16x16 "${pkgdir}/usr/share/icons/hicolor/16x16/apps/atlas.png"
+    mkdir -p "${pkgdir}/usr/share/icons/hicolor/"{'256x256/apps','48x48/apps','32x32/apps','16x16/apps'}
+    magick "$pkgname/FSMExpress/Assets/icon.png" -resize 16x16 "${pkgdir}/usr/share/icons/hicolor/16x16/apps/fsmexpress.png"
+    magick "$pkgname/FSMExpress/Assets/icon.png" -resize 32x32 "${pkgdir}/usr/share/icons/hicolor/32x32/apps/fsmexpress.png"
+    magick "$pkgname/FSMExpress/Assets/icon.png" -resize 48x48 "${pkgdir}/usr/share/icons/hicolor/48x48/apps/fsmexpress.png"
+    magick "$pkgname/FSMExpress/Assets/icon.png" -resize 256x265 "${pkgdir}/usr/share/icons/hicolor/256x256/apps/fsmexpress.png"
 
     install -Dm 644 "fsmexpress.desktop" "${pkgdir}/usr/share/applications/fsmexpress.desktop"
 }
