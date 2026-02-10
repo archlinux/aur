@@ -1,6 +1,6 @@
 pkgname=lazyrss
-pkgver=0.1.0
-pkgrel=7
+pkgver=1.0.0
+pkgrel=0
 pkgdesc="A terminal-based RSS/Atom feed reader TUI inspired by lazygit"
 arch=('x86_64' 'aarch64')
 url="https://github.com/sujaltv/lazyrss"
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'gcc')
 source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${pkgname}/${pkgname}-${pkgver}.crate")
-sha256sums=('d6272482c13d1d49a3a26283fb34ba5fd61d0f2cbe07600839492ae7fbb2ec28')
+sha256sums=('8285cf31c72f43948e17dd23116582ee5a8a821e276d54b43f5ef4ef713d1c64')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
