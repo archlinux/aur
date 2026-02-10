@@ -3,12 +3,14 @@
 
 post_install() {
   cat <<__EOT__
-» Please notice that the opnk command has been renamed to openk.
+» The opnk command has been renamed to openk. It is still
+» available as a symlink, but it will be removed in a later
+» relase.
 »
-» In order to take advantage of the Full-Text RSS Site Config,
+» If you have opted to install the ull-Text RSS Site Config,
 » add the following line to your ~/.config/offpunk/offpunkrc:
 »
-» 	set ftr_site_config /usr/share/ftr-site-config
+»   set ftr_site_config /usr/share/ftr-site-config
 __EOT__
 }
 

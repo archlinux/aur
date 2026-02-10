@@ -7,8 +7,8 @@
 pkgname='offpunk-git'
 _pkgname='offpunk'
 pkgdesc='Command-line and offline-first smolnet browser/feed reader for Gemini, Gopher, Spartan and web (development version)'
-pkgver=3.0.r6.g742a590
-pkgrel=1
+pkgver=3.0.r7.gdfb16e3
+pkgrel=2
 epoch=6
 url='https://git.sr.ht/~lioploum/offpunk'
 install="$pkgname.install"
@@ -24,7 +24,6 @@ makedepends=(
 )
 depends=(
   'file'
-  'ftr-site-config'
   'less'
   'python'
   'python-beautifulsoup4'
@@ -36,11 +35,12 @@ depends=(
   'python-setproctitle'
 )
 optdepends=(
-  'chafa>=1.10: chafa and ansiwrap are required to render images in terminal'
-  'timg>1.3.2: view images and videos in the terminal'
+  'chafa: render images in terminal'
+  'ftr-site-config: Full-Text-RSS site-specific text extraction rules'
+  'timg: render images in terminal (alternative)'
   'wl-clipboard: copies text to the Wayland clipboard'
-  'xdg-utils: xdg-open opens a URL in the preferred application'
   'xclip: copies text to the X11 clipboard'
+  'xdg-utils: xdg-open opens a URL in the preferred application'
   'xsel: copies text to the X11 clipboard (alternative)'
 )
 provides=('offpunk')
@@ -74,7 +74,7 @@ package() {
   install -Dm0644 -t "$pkgdir/usr/share/man/man1" \
     man/*.1
 
-  cd "$pkgdir/usr/bin/"            && ln -srf openk opnk
+  cd "$pkgdir/usr/bin/"            && ln -srf openk   opnk
   cd "$pkgdir/usr/share/man/man1/" && ln -srf openk.1 opnk.1
   cd "$pkgdir/usr/share/doc/"      && ln -srf "$pkgname" "$_pkgname"
 }
