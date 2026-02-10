@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=aarty
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple CLI tool to convert the images to ASCII art'
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')
 url='https://github.com/0x61nas/aarty'
