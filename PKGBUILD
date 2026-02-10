@@ -1,6 +1,6 @@
 # Maintainer: li0shang <li0shang@163.com>
 pkgname="zed-cn"
-pkgver="20260208"
+pkgver="20260209"
 pkgrel=1
 pkgdesc=" zed-loc (Zed 汉化) github-TC999/zed-loc"
 arch=('x86_64')
@@ -8,8 +8,8 @@ license=("custom:Copyright (c) 2015 Abner Lee All Rights Reserved.")
 url="https://github.com/TC999/zed-loc"
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/TC999/zed-loc/releases/download/20260208/zed-linux-x86_64.tar.gz")
-sha512sums=('07cfcaf537f61e1b3312d7b58269432c67c5d4e2c10c80c59ae8ff68117049015f93ba5d3d41c8f018f63c6b566c91b7ca38e8c6ecba55ee378a9302cc4d097e')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/TC999/zed-loc/releases/download/20260209/zed-linux-x86_64.tar.gz")
+sha512sums=('748cf41d6ff06b0f70498450abee8719509a4d2d3ad2522fb8e12ad79eece72adb02017ae68db74a7cbbc9076cf2ea951acf70b84dd3198152020c904487b1fd')
 
 # 解压源码包
 prepare() {
