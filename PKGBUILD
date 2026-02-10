@@ -12,12 +12,12 @@ license=('AGPL-3.0')
 groups=('piped-git')
 makedepends=('git' 'pnpm')
 install=piped-frontend.install
-source=('git+https://github.com/TeamPiped/Piped.git'
-		'example-config.properties'
-		'configure-piped-frontend.sh')
+source=("git+${url}"
+		'configure-piped-frontend.sh'
+		'config.properties')
 sha256sums=('SKIP'
-            '7e310112487f7a77b5fe7b5721e6f077edaeda8009b3881f39dee2ee584e1922'
-            'ea0d3bb44c46223b8fbbfe06a5397ee103d77a74f6e29ed636d02bbfebe0f77a')
+            'ea0d3bb44c46223b8fbbfe06a5397ee103d77a74f6e29ed636d02bbfebe0f77a'
+            '7e310112487f7a77b5fe7b5721e6f077edaeda8009b3881f39dee2ee584e1922')
 dest="/usr/share/webapps/piped/${_componentnameshort}"
 
 pkgver() {
@@ -40,7 +40,7 @@ package() {
 
 	install -Dm644 "${srcdir}/Piped/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 "${srcdir}/Piped/docker/nginx.conf" "${pkgdir}/usr/share/doc/piped/${_componentnameshort}/nginx.conf"
-	install -Dm644 "${srcdir}/example-config.properties" "${pkgdir}/usr/share/doc/piped/${_componentnameshort}/example-config.properties"
+	install -Dm644 "${srcdir}/config.properties" "${pkgdir}/usr/share/doc/piped/${_componentnameshort}/config.properties"
 
 	install -dm755 "${pkgdir}${dest}"
 	cp -ra ${srcdir}/Piped/dist/* "${pkgdir}${dest}"
