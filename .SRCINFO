@@ -1,0 +1,20 @@
+pkgbase = rootchat-bin
+	pkgdesc = A community platform combining chat with task management, raid planning, and customizable apps
+	pkgver = 0.9.84
+	pkgrel = 1
+	url = https://rootapp.com
+	arch = x86_64
+	license = custom
+	depends = zlib
+	depends = gcc-libs
+	depends = glibc
+	depends = fuse2
+	provides = rootchat
+	conflicts = rootchat
+	noextract = Root-0.9.84.AppImage
+	options = !strip
+	options = !debug
+	source = Root-0.9.84.AppImage::https://installer.rootapp.com/installer/Linux/X64/Root.AppImage
+	sha256sums = 06a5564ccaaf38eab76f6a3a0e49cca2db822028a1d1a7be2dafd9a8f47bf4f9
+
+pkgname = rootchat-bin
