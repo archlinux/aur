@@ -2,7 +2,7 @@
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 _base=pywikibot
 pkgname=python-${_base}
-pkgver=10.7.6
+pkgver=11.0.0
 pkgrel=1
 pkgdesc="Python library that interfaces with the MediaWiki API"
 url="https://www.mediawiki.org/wiki/Manual:${_base}"
@@ -14,7 +14,7 @@ optdepends=('python-wikitextparser: parsing MediaWiki wikicode'
   'python-stdnum: cosmetic changes for numbers')
 # python-sseclient python-pydot python-google python-pymysql python-pillow python-mwoauth python-beautifulsoup4 python-fake-useragent flake8 python-darglint python-flake8-bugbear python-flake8-coding python-flake8-colors python-flake8-comprehensions python-flake8-docstrings python-flake8-future-import python-verve-flake8-mock python-flake8-print python-flake8-quotes python-flake8-string-format python-flake8-tuple python-flake8-no-u-prefixed-strings python-pep8-naming python-hacking
 source=(${_base}-${pkgver}.tar.gz::https://github.com/wikimedia/${_base}/archive/${pkgver}.tar.gz)
-sha512sums=('7500483b6814188b58588555a7be35c6f937336ef29ceab823cbddf7255602cb2a8639c5b21cf4b6f1b12fa44a7236d70d087429b458e8cc37cd3e24e1b7eb29')
+sha512sums=('d4c5970d9b594214d9b9ac83750f3d9d8da3168546166b625580a4cd01eddcb90ea0c58103b98356025d942722504f5ea0850c141a9fa2a1d2112495c4c138ec')
 
 build() {
   cd ${_base}-${pkgver}
