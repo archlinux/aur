@@ -1,6 +1,6 @@
 # Maintainer: Sohimaster
 pkgname=traur-bin
-pkgver=0.2.6
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Trust scoring for AUR packages (prebuilt)'
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('git' 'pacman' 'gcc-libs' 'glibc')
 provides=('traur')
 conflicts=('traur')
 source=("$url/releases/download/v$pkgver/traur-$pkgver-x86_64.tar.gz")
-sha256sums=('ef46f97615b276370efacc677c4ea7d0230decbdc33036fa08e7638053b0f6d1')
+sha256sums=('fde950b26a49bdb3a9d28574c6e7a92f4eb58a6e66c3fcac8f3d4eb44aac2b04')
 
 package() {
     install -Dm0755 traur "$pkgdir/usr/bin/traur"
