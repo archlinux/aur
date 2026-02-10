@@ -1,7 +1,7 @@
 pkgbase = stellar-mod-loader-bin
 	pkgdesc = Stellar is a mod manager for Windows and Linux that supports games including Fallout, Skyrim, and Starfield. Formerly known as Starfield Mod Loader
 	pkgver = 0.14.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/lVlyke/stellar-mod-loader
 	arch = x86_64
 	license = GPL3
