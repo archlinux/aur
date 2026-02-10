@@ -1,0 +1,5 @@
+[openttd-jgrpp]
+source = "github"
+github = "JGRennison/OpenTTD-patches"
+use_latest_release = true
+prefix = "jgrpp-"
