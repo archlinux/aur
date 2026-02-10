@@ -1,0 +1,66 @@
+diff --git a/configure b/configure
+index c14c4610..b2bdfc40 100755
+--- a/configure
++++ b/configure
+@@ -2700,7 +2700,7 @@ ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $
+ ac_compiler_gnu=$ac_cv_c_compiler_gnu
+ 
+    # Set also VERSION_STATUS to stable when changing version
+-VERSION_STATUS=stable      # and reset it to unstable after releasing
++VERSION_STATUS=unstable    # and reset it to unstable after releasing
+ 
+ #
+ # Grab configure options before it is too late
+diff --git a/configure.ac b/configure.ac
+index 84aa3835..a1c6cb84 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -5,7 +5,7 @@
+ 
+ AC_PREREQ([2.69])
+ AC_INIT([stklos],[26.0])   # Set also VERSION_STATUS to stable when changing version
+-VERSION_STATUS=stable      # and reset it to unstable after releasing
++VERSION_STATUS=unstable    # and reset it to unstable after releasing
+ 
+ #
+ # Grab configure options before it is too late
+diff --git a/extensions/curl/Makefile.in b/extensions/curl/Makefile.in
+index b9cc8d41..8d5f4272 100644
+--- a/extensions/curl/Makefile.in
++++ b/extensions/curl/Makefile.in
+@@ -161,7 +161,8 @@ am__define_uniq_tagged_files = \
+     if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
+   done | $(am__uniquify_input)`
+ DIST_SUBDIRS = $(SUBDIRS)
+-am__DIST_COMMON = $(srcdir)/Makefile.in $(top_srcdir)/mkinstalldirs
++am__DIST_COMMON = $(srcdir)/Makefile.in $(top_srcdir)/mkinstalldirs \
++	README.md
+ DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
+ am__relativize = \
+   dir0=`pwd`; \
+diff --git a/lib/scheme/Makefile.am b/lib/scheme/Makefile.am
+index c296f1a8..76b9d06a 100644
+--- a/lib/scheme/Makefile.am
++++ b/lib/scheme/Makefile.am
+@@ -113,7 +113,7 @@ LARGE_SHOBJ = list.$(SO)  ilist.$(SO) flonum.$(SO) sort.$(SO) vector.$(SO) bytev
+ #----------------------------------------------------------------------
+ SRC_STK     = $(R7_STK) $(LARGE_STK)   $(LARGE_C_STK)
+ SRC_C_STK   = $(LARGE_C_STK)
+-scheme_OBJS = $(R7_OBJS) $(LARGE_OBJS) $(LARGE_SHOBJ)
++scheme_OBJS = $(R7_OBJS) $(LARGE_OBJS) 
+ 
+ SOURCES = $(SRC_STK) $(LARGE_C)
+ 
+diff --git a/lib/scheme/Makefile.in b/lib/scheme/Makefile.in
+index a3dc6cc6..8a4897f6 100644
+--- a/lib/scheme/Makefile.in
++++ b/lib/scheme/Makefile.in
+@@ -485,7 +485,7 @@ LARGE_SHOBJ = list.$(SO)  ilist.$(SO) flonum.$(SO) sort.$(SO) vector.$(SO) bytev
+ #----------------------------------------------------------------------
+ SRC_STK = $(R7_STK) $(LARGE_STK)   $(LARGE_C_STK)
+ SRC_C_STK = $(LARGE_C_STK)
+-scheme_OBJS = $(R7_OBJS) $(LARGE_OBJS) $(LARGE_SHOBJ)
++scheme_OBJS = $(R7_OBJS) $(LARGE_OBJS) 
+ SOURCES = $(SRC_STK) $(LARGE_C)
+ 
+ #======================================================================

@@ -2,7 +2,7 @@
 # Contributor: Jorge Silva <j0rj@posteo.net>
 
 pkgname=stklos
-pkgver=2.10
+pkgver=26.0
 pkgrel=1
 pkgdesc="Free R7RS Scheme system."
 arch=('i686' 'x86_64')
@@ -10,16 +10,18 @@ url="http://www.stklos.net"
 license=('GPL-2.0-or-later')
 depends=('gmp' 'pcre2' 'libffi' 'gc')
 optdepends=('readline: line editing and history support')
-source=("http://www.stklos.net/download/$pkgname-$pkgver.tar.gz")
-md5sums=('15347ac3137b21a806a2da3ab899f17d')
+source=("http://www.stklos.net/download/$pkgname-$pkgver.tar.gz"
+       "stklos-26.0.patch")
+md5sums=('1518d5f5d96a65d25e75bea603346273' '9ece49d4e3e79eb27763c57363632228')
 
 prepare() {
-   cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
+    patch -p1 --input="${srcdir}/stklos-26.0.patch"
 }
 
 build() {
   cd "$pkgname-$pkgver"
-  CFLAGS="-O3 -Wall -Wextra" LDFLAGS="" ./configure --enable-threads --prefix=/usr 
+  CFLAGS="-O3 -Wall -Wextra -fhardened" LDFLAGS="-z relro -z now" ./configure --enable-threads --prefix=/usr 
   make
 }
 
