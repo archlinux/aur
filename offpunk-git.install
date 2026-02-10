@@ -3,9 +3,9 @@
 
 post_install() {
   cat <<__EOT__
-» The opnk command has been renamed to openk. It is still
+» The opnk command has been renamed to openk. This is still
 » available as a symlink, but it will be removed in a later
-» relase.
+» release.
 »
 » If you have opted to install the ull-Text RSS Site Config,
 » add the following line to your ~/.config/offpunk/offpunkrc:

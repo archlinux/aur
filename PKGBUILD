@@ -7,8 +7,8 @@
 pkgname='offpunk-git'
 _pkgname='offpunk'
 pkgdesc='Command-line and offline-first smolnet browser/feed reader for Gemini, Gopher, Spartan and web (development version)'
-pkgver=3.0.r7.gdfb16e3
-pkgrel=2
+pkgver=3.0.r12.g6c11a41
+pkgrel=1
 epoch=6
 url='https://git.sr.ht/~lioploum/offpunk'
 install="$pkgname.install"
