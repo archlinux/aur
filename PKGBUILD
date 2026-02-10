@@ -1,4 +1,5 @@
-# Maintainer: Markus Kitsinger (SwooshyCueb) <root@swooshalicio.us>
+# Maintainer: PureFallen <archlinux.snoring858@passmail.net>
+# Contributor: Markus Kitsinger (SwooshyCueb) <root@swooshalicio.us>
 # Contributor: Godeps <godeps@protonmail.com>
 # Contributor: Faaris Ansari <faaris.ansari@pm.me>
 # Contributor: Chris Severance <aur.severach@spamgourmet.com>
@@ -7,7 +8,7 @@
 _majorver=8
 _jvmdir=/usr/lib/jvm/java-${_majorver}-graalvm-ee/
 pkgname="jdk${_majorver}-graalvm-ee-bin"
-pkgver=21.3.11
+pkgver=21.3.17
 pkgrel=1
 pkgdesc="Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java ${_majorver} version"
 arch=('x86_64')
@@ -25,8 +26,8 @@ install="$pkgname.install"
 # tarball must be manually downloaded from https://www.oracle.com/downloads/graalvm-downloads.html
 source=("local://graalvm-ee-java${_majorver}-linux-amd64-${pkgver}.tar.gz"
         'graalvm-ee-rebuild-libpolyglot.hook')
-sha256sums=('d6543e19616752ffe8338e8531d7bada8da249fa944f8a16e94f03636e717b8b'
-            'SKIP')
+sha256sums=('e3cabdc8b5f2f48fcf4b676f961bfc1ba15a65465732af885c154abf764b4c73'
+            '7dc37bd3703ebebcd6efa39534e6bb6e3ec9c8ee0d97e46d6df5349739c7d2ca')
 
 package() {
 	# Grab all contents of tarball and extract to correct places
