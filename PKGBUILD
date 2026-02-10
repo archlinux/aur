@@ -6,7 +6,7 @@ _download_dotnet_version="$_dotnet_version"
 
 pkgname=watt-toolkit-git
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
-pkgver=3.0.0.rc16.r8.g64f60440a
+pkgver=3.0.0.rc16.r21.gc96c30fa4
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://steampp.net/"
@@ -48,14 +48,19 @@ source=(
     'git+https://github.com/BeyondDimension/WTTS.Public.git'
     'git+https://github.com/BeyondDimension/Facepunch.Steamworks.git'
     'git+https://github.com/BeyondDimension/appcenter-sdk-dotnet.git'
-    'git+https://github.com/reactiveui/Fusillade'
-    )
+    'git+https://github.com/reactiveui/Fusillade.git'
+    'git+https://github.com/BeyondDimension/Avalonia8.git'
+    'git+https://github.com/BeyondDimension/SteamKit.git'
+    'Protobufs::git+https://github.com/steamdatabase/protobufs.git')
 sha256sums=('SKIP'
             'SKIP'
             '971f095988215965ba7256158a2c23af8be27222ea4f50655acd6c3bf3c4a23a'
             'ee4c5a20eb3a44f9af37b67cc6b5f91e646ac8a35bb1b8be784413dad2ed34ea'
             '382f314cebeba3346c5d59344f72b0e05db6293e3a10185e3f5ceee0c73cbe81'
             'a822f7fb11aa94e7aed682f8f85272a820e20b3169c3856c9ddba6782e514743'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
