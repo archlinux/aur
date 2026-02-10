@@ -2,7 +2,7 @@
 
 pkgname=('psiphon-console-client' 'psiphon-server')
 pkgbase=psiphon-tunnel-core
-pkgver=2.0.35
+pkgver=2.0.36
 pkgrel=1
 pkgdesc="Psiphon Internet censorship circumvention system."
 arch=('i686' 'x86_64')
@@ -101,4 +101,4 @@ package_psiphon-server() {
 }
 
 # sums
-sha256sums=('afeeff4e59be61e49296b30cc7add11307eceb64b3751748cf50beecbfa446f9')
+sha256sums=('0c53066be93163c150434237b0dc21ecedba86d895faeb601aaa52e3ae3092ed')
