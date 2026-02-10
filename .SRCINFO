@@ -15,7 +15,6 @@ pkgbase = qt6-opcua
 	makedepends = ninja
 	makedepends = qt6-declarative
 	depends = qt6-base
-	depends = mbedtls
 	depends = openssl
 	source = https://github.com/qt/qtopcua/archive/refs/tags/v6.10.1.tar.gz
 	sha256sums = 15b70b358d7ffefe8693539505c8ef5b03641d3744d1d3ef728f6646119d0d58
