@@ -158,8 +158,9 @@ prepare() {
   mkdir -p mozbuild
   echo "${_lwrelver}" > release
   git submodule update --init --recursive
+  rm -rf "${_lw_srcdir}"
   mv "${srcdir}/firefox-${_ffsrcver}" "$_lw_srcdir"
-  mkdir "${_lw_srcdir}/lw"
+  mkdir -p "${_lw_srcdir}/lw"
   mv "../firefox-l10n-${_l10n_commit}" "${_lw_srcdir}/lw/l10n"
 
   python3 scripts/librewolf-patches.py "${_ffsrcver}" "${_lwrelver}"
