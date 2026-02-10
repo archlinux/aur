@@ -1,6 +1,6 @@
 pkgbase = hpltt
 	pkgdesc = HP Library & Tape Tools - diagnostics for HP tape drives
-	pkgver = 6.5
+	pkgver = 6.6
 	pkgrel = 1
 	url = https://buy.hpe.com/us/en/storage/storage-software/storage-device-management-software/storeever-tape-device-management-software/hpe-library-tape-tools/p/406729
 	arch = x86_64

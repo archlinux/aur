@@ -6,7 +6,7 @@
 #
 
 pkgname=hpltt
-pkgver=6.5
+pkgver=6.6
 pkgrel=1
 pkgdesc="HP Library & Tape Tools - diagnostics for HP tape drives"
 arch=('x86_64')
