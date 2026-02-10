@@ -1,0 +1,17 @@
+pkgbase = wg-tui-git
+	pkgdesc = A terminal user interface for managing WireGuard VPN tunnels.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/excoffierleonard/wg-tui
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = sudo
+	depends = wireguard-tools
+	provides = wg-tui
+	conflicts = wg-tui
+	source = wg-tui-git::git+https://github.com/excoffierleonard/wg-tui
+	sha1sums = SKIP
+
+pkgname = wg-tui-git
