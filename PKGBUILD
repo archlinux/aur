@@ -21,6 +21,7 @@ sha256sums=('SKIP') # SKIP for git repo source builds
 
 pkgver() {
     cd "${srcdir}/coolerdash"
+    # Fetch latest tags in git repo
     git fetch --tags
     git describe --tags --long --match "v*" | sed -E 's/^v//; s/-([0-9]+)-g/\.r\1.g/; s/-/./g'
 }
