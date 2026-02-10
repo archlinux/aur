@@ -2,8 +2,8 @@
 
 _pkgname="suil"
 pkgname="$_pkgname-optgui"
-pkgver=0.10.24
-pkgrel=2
+pkgver=0.10.26
+pkgrel=1
 pkgdesc="A lightweight C library for loading and wrapping LV2 plugin UIs"
 url="https://gitlab.com/lv2/suil"
 license=(
@@ -28,7 +28,7 @@ conflicts=("$_pkgname")
 _pkgsrc="$_pkgname-v$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgname-$pkgver.$_pkgext"::"$url/-/archive/v${pkgver}/suil-v${pkgver}.$_pkgext")
-sha256sums=('499be46a717164c140847d5ad0f328d1597e2fe72d9f5e0d051ded33d4ca9d56')
+sha256sums=('7087e6eb13d4a5ebfd5be6c59277ec068bbcfe60b90db3bb58e58d79c0f2d465')
 
 build() {
   local meson_options=(
