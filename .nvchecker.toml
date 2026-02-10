@@ -1,0 +1,5 @@
+[oxicord]
+source = "git"
+git = "https://github.com/linuxmobile/oxicord.git"
+use_max_tag = true
+prefix = "v"
