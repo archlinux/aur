@@ -1,6 +1,6 @@
 pkgbase = portfolio
 	pkgdesc = Track your portfolio performance (finance)
-	pkgver = 0.81.4
+	pkgver = 0.81.5
 	pkgrel = 1
 	url = https://github.com/portfolio-performance/portfolio
 	arch = i686
@@ -10,10 +10,10 @@ pkgbase = portfolio
 	depends = archlinux-java-run
 	depends = java-environment=21
 	depends = webkit2gtk
-	source = https://github.com/buchen/portfolio/archive/0.81.4.tar.gz
+	source = https://github.com/buchen/portfolio/archive/0.81.5.tar.gz
 	source = https://dlcdn.apache.org/maven/maven-3/3.9.12/binaries/apache-maven-3.9.12-bin.tar.gz
 	source = portfolio.sh
-	sha1sums = 62b3d75906ad1f1e47f29f64cc184c0a74f4b5fb
+	sha1sums = 271d3a72fc6caf04845d85ee93632b3b27e12c50
 	sha1sums = 3bdcdd002f5453b9d5bb417ee0d4d22a545c34b2
 	sha1sums = 044c48a939e20311b27a1bbbd98d4866ee3eff3c
 
