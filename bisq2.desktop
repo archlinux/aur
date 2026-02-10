@@ -7,3 +7,4 @@ Icon=bisq2
 Terminal=false
 Type=Application
 Categories=Utility;Finance;
+StartupWMClass=bisq.desktop_app.JavaFXApplication

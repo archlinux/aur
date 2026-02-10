@@ -3,7 +3,7 @@
 
 pkgname=bisq2
 pkgver=2.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="The Decentralized Trading Platform"
 arch=('x86_64')
 url="https://bisq.network"
@@ -15,7 +15,7 @@ source=("git+https://github.com/bisq-network/bisq2#tag=v$pkgver"
   "bisq2.desktop")
 sha256sums=('d62a6fdbfdabf25d46086be174262cb5657d25d2c5d77830934a54e61bb75377'
             'SKIP'
-            '5a7cbc21d30ebd7b9396f2dd012ccc9f79af76c5651586ec6c6bc6f2d514ac29')
+            '4168bef82a5330ddaaa7b5055b1107d6eb912cd6b071c29220262173a4b8d61f')
 
 _binname=Bisq2
 provides=("bisq2")

@@ -1,7 +1,7 @@
 pkgbase = bisq2
 	pkgdesc = The Decentralized Trading Platform
 	pkgver = 2.1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bisq.network
 	arch = x86_64
 	license = AGPL3
@@ -15,6 +15,6 @@ pkgbase = bisq2
 	source = bisq2.desktop
 	sha256sums = d62a6fdbfdabf25d46086be174262cb5657d25d2c5d77830934a54e61bb75377
 	sha256sums = SKIP
-	sha256sums = 5a7cbc21d30ebd7b9396f2dd012ccc9f79af76c5651586ec6c6bc6f2d514ac29
+	sha256sums = 4168bef82a5330ddaaa7b5055b1107d6eb912cd6b071c29220262173a4b8d61f
 
 pkgname = bisq2
