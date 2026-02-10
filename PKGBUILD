@@ -31,7 +31,7 @@ fi
 
 pkgname=${_pkgname}-dkms-staging-git
 pkgver=2.4.0.r46.g22b959d2e5
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel modules for the Zettabyte File System (release staging branch) with compatibility patches for latest stable kernel."
 arch=('any')
 url="https://zfsonlinux.org/"
@@ -41,10 +41,12 @@ provides=("ZFS-MODULE" "SPL-MODULE" "zfs-dkms" "zfs")
 conflicts=("zfs-dkms")
 makedepends=("git")
 source=("${_pkgname}::git+${_git_repo}#${_git_branch}"
+        "linux619-handle-werror-with-objtool-wrapper.patch::https://github.com/openzfs/zfs/commit/13601e2d24960c4503c69ff3efc159b3a2353c46.patch?full_index=1"
         "0001-only-build-the-module-in-dkms.conf.patch"
         "69-zfs-dkms-check.hook"
         "zfs-dkms-check")
 sha256sums=('SKIP'
+            '8a21fa1e42de9a249c059823e386a8cb01a8c737abdabfe6dcdb19184ba3433a'
             '8d5c31f883a906ab42776dcda79b6c89f904d8f356ade0dab5491578a6af55a5'
             '6c793cdbcf0c758b7bc78dcac85d116052b7a66416e4c54179cb0955687b3875'
             '59656435058e41620f15b5691ef1f753355fe81c01a562d92b7c8028aa527b1f')
