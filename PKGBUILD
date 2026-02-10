@@ -4,7 +4,7 @@
 pkgname=searxng-uwsgi
 _pkgname=searxng
 pkgver=r9209.b5bb27f
-pkgrel=2
+pkgrel=3
 pkgdesc='A privacy-respecting, hackable metasearch engine'
 arch=('any')
 url='https://searxng.github.io/searxng/'
@@ -55,7 +55,7 @@ package() {
   cd "${srcdir}/${_pkgname}"
   source venv/bin/activate
 
-  local _site_packages="$(python -c 'import site, os; print(os.path.relpath(site.getsitepackages()[0]))')"
+  local site_packages="$(python -c 'import site, os; print(os.path.relpath(site.getsitepackages()[0]))')"
 
   # Install package
   python -m installer dist/*.whl
@@ -77,7 +77,7 @@ package() {
   install -Dm640 "${srcdir}/settings.yml" "${pkgdir}/etc/searxng/settings.yml" 
   install -Dm640 "${srcdir}/searxng/searx/limiter.toml" "${pkgdir}/etc/searxng/limiter.toml"
   install -dm750 "${pkgdir}/var/lib/searxng"
-  install -Dm640 "${srcdir}/searxng/searx/version_frozen.py" "${pkgdir}/var/lib/searxng/${_site_packages}/searx/version_frozen.py"
+  install -Dm640 "${srcdir}/searxng/searx/version_frozen.py" "${pkgdir}/var/lib/searxng/${site_packages}/searx/version_frozen.py"
   install -Dm644 "${srcdir}/searxng/LICENSE" "${pkgdir}/usr/share/licenses/searxng/LICENSE"
   install -Dm644 "${srcdir}/nginx.example.conf" "${pkgdir}/usr/share/doc/searxng/nginx.example.conf"
 
