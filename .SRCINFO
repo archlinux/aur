@@ -1,6 +1,6 @@
 pkgbase = mtkclient-git
 	pkgdesc = Unofficial MTK reverse engineering and flash tool
-	pkgver = 2.1.2.r10.g91f996b
+	pkgver = 2.1.2.r17.gd14d139
 	pkgrel = 1
 	url = https://github.com/bkerler/mtkclient
 	arch = any
