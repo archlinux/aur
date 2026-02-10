@@ -1,6 +1,6 @@
 pkgname=airctl-bin
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="WiFi network manager GUI (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/pshycodr/airctl"
@@ -22,9 +22,9 @@ source=(
   "airctl.png"
 )
 
-sha256sums=('390a3f2a2360235b832ba9f85990fcab3fa4ade70333c6fcc7feb8ed0869f79c'
+sha256sums=('ac3af0f2b278a77052a4c17ebdaa33e4c172369a9540a7a735413cc2ceea078e'
             '6793e486bfb640f93e7456364172355bdee80b759502d638ecf7cc3fdc078a5b'
-            'd05d396e1e0550f7cd523be523728f1a48ed66db18f9488ddc4ec59dff0ee273')
+            '52a7739d4c5df047278af3d363ce6b0c6463d2afa151eeb0efda392b683dcb29')
 
 package() {
   install -Dm755 "$srcdir/airctl" \
