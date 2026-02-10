@@ -1,6 +1,6 @@
 pkgbase = clang-prefixed-release
 	pkgdesc = Up to date official clang releases installed at /opt/clang/latest to avoid system wide usage/impact
-	pkgver = 22.1.0rc2
+	pkgver = 22.1.0rc3
 	pkgrel = 1
 	url = https://llvm.org/
 	install = clang.install
@@ -24,7 +24,7 @@ pkgbase = clang-prefixed-release
 	makedepends = jsoncpp
 	makedepends = clang
 	makedepends = libunwind
-	source = https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-22.1.0-rc2.tar.gz
-	sha512sums = 85e3812d17e84f14b92a3d28347b480a19bb1ba91faf0cfcd6580654f663db759c179375f9686c153c8a746ed3164c7df26f87a5dffbc821c7adac695d55665f
+	source = https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-22.1.0-rc3.tar.gz
+	sha512sums = 38d08aa8765f7cfd7c86ea19c67a56e6b38147758329875c0375941c17ec984c7a2b9604f096f1218208ad439b31c27e3fa4d37fd6bca7a143147d9ae3e92a23
 
 pkgname = clang-prefixed-release
