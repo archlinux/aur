@@ -11,6 +11,8 @@ license=('LGPL' 'MPL' 'custom')
 depends=(
   ffmpeg
   java-runtime
+  openssl
+  zlib
 )
 makedepends=(
   'less'
