@@ -1,0 +1,43 @@
+pkgbase = far2l
+	pkgdesc = Linux port of FAR v2
+	pkgver = 2.7.0
+	pkgrel = 1
+	url = https://github.com/elfmz/far2l
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	makedepends = cmake
+	makedepends = wxwidgets-gtk3
+	makedepends = python-cffi
+	makedepends = libxi
+	depends = libxml2
+	depends = uchardet
+	optdepends = openssl: FTPS support in NetRocks
+	optdepends = libssh: SFTP support in NetRocks
+	optdepends = smbclient: SMB support in NetRocks
+	optdepends = libnfs: NFS support in NetRocks
+	optdepends = neon: WebDAV support in NetRocks
+	optdepends = aws-sdk-cpp: AWS S3 support in NetRocks
+	optdepends = libarchive: more archive type support in multiarc
+	source = far2l-2.7.0.tar.gz::https://github.com/elfmz/far2l/archive/refs/tags/v_2.7.0.tar.gz
+	sha256sums = 712ab8e5b40482ddd68e33f870e4c3d7e8f8c44b90fb9fe91288a00cb27dff48
+
+pkgname = far2l
+
+pkgname = far2l-ttyx
+	pkgdesc = Linux port of FAR v2 (TTY backend with X11/Xi support)
+	depends = far2l
+	depends = libxi
+	optdepends = 
+
+pkgname = far2l-gui
+	pkgdesc = Linux port of FAR v2 (WX/GTK GUI backend)
+	depends = far2l
+	depends = wxwidgets-gtk3
+	optdepends = 
+
+pkgname = far2l-python
+	pkgdesc = Linux port of FAR v2 - Python Plugin
+	depends = far2l
+	depends = python-cffi
+	optdepends = 
