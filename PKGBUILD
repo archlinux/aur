@@ -3,7 +3,7 @@
 
 pkgname=python-flax
 _pkgname=${pkgname#python-}
-pkgver=0.12.2
+pkgver=0.12.3
 pkgrel=1
 pkgdesc='A neural network library and ecosystem for JAX designed for flexibility'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
 )
 source=("flax-$pkgver.tar.gz::https://github.com/google/flax/archive/refs/tags/v${pkgver}.tar.gz"
         'python-flax.diff')
-sha256sums=('f79f7614f816dedaf26ab39ed4e818b29be56966d8fa90577511fe40ae1f11f9'
+sha256sums=('005d9b352373fe4a1c4f5fa61119a37d486fea20aac82b7cfd21622b5e84f0bf'
             'SKIP')
 
 prepare() {
