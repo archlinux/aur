@@ -171,6 +171,8 @@ prepare() {
 
   mv mozconfig ../mozconfig || true
 
+  export KONFORM_MOZ_BUILD_ID=20260106170501
+  export MOZ_BUILD_TIME=20260106170501
   cat >>../mozconfig <<END
 ##### main archlinux-firefox 136
 ac_add_options --enable-hardening
@@ -179,6 +181,19 @@ ac_add_options --allow-addon-sideload
 
 
 ##### Kon
+mk_add_options KONFORM_MOZ_BUILD_ID=${KONFORM_MOZ_BUILD_ID}
+export KONFORM_MOZ_BUILD_ID=${KONFORM_MOZ_BUILD_ID}
+export MOZ_BUILD_TIME=${MOZ_BUILD_TIME}
+export MOZ_REQUIRE_SIGNING=
+export MOZ_DATA_REPORTING=
+export MOZ_TELEMETRY_ON_BY_DEFAULT=
+
+mk_add_options MOZ_CRASHREPORTER=
+mk_add_options MOZ_DATA_REPORTING=
+mk_add_options MOZ_SERVICES_HEALTHREPORT=
+mk_add_options MOZ_TELEMETRY_REPORTING=
+mk_add_options MOZ_TELEMETRY_ON_BY_DEFAULT=
+
 mk_add_options MOZ_REQUIRE_SIGNING=
 
 #ac_add_options --enable-rust-simd
