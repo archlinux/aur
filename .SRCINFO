@@ -1,6 +1,6 @@
 pkgbase = crossover
 	pkgdesc = Run Windows Programs on Linux
-	pkgver = 25.1.0
+	pkgver = 26.0.0
 	pkgrel = 1
 	url = https://www.codeweavers.com/crossover
 	install = crossover.install
@@ -14,8 +14,8 @@ pkgbase = crossover
 	depends = vte3
 	depends = python-cairo
 	optdepends = unzip: required to install Guild Wars, automatic installer extraction
-	source = https://media.codeweavers.com/pub/crossover/cxlinux/demo/crossover_25.1.0-1.deb
-	sha256sums = e9a8fa09506fb53c10a943c890ffbd63c81f6f644a84631dbf8db35a61f37177
+	source = https://media.codeweavers.com/pub/crossover/cxlinux/demo/crossover_26.0.0-1.deb
+	sha256sums = d37db52466e2226f322e37e813e12196b14d56ff3129e3ba2a6bfc5abb0d9cb3
 	depends_i686 = glibc>=2.11
 	depends_i686 = libice
 	depends_i686 = libsm
