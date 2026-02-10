@@ -6,7 +6,7 @@ pkgname=(
   dsp56300-emulator-lv2
   dsp56300-emulator-vst3
 )
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='Emulates musical devices that used the Motorola 56300 DSPs'
 arch=(x86_64)
@@ -16,6 +16,7 @@ _common_depends=(
   glibc
   freetype2
   alsa-lib
+  libglvnd
 )
 makedepends=(
   "${_common_depends[@]}"
@@ -45,10 +46,10 @@ source=(
   'github.com-dsp56300-mc68k::git+https://github.com/dsp56300/mc68k'
   'github.com-dsp56300-RmlUi::git+https://github.com/dsp56300/RmlUi'
   'github.com-freetype-freetype::git+https://github.com/freetype/freetype'
-  'skip-cpack.patch'
-  'skip-tests.patch'
+  skip-cpack.patch
+  skip-tests.patch
 )
-sha512sums=('bde91f551cc310fbc00888b1c2c7307ebaa734d4891300b4f39c5314a3504fab0ccbe580b94a41a44b596900f8966a50fdc7fec6649ed601c0b8875c2d6fbfef'
+sha512sums=('59be34347642eb4aca8bd2ba3933d56344a7d74c23662a478e3e2f1c0b89517641072dcc4f62a1b80534923af1230d786f45abc7d9c209644f0333f9f1241d01'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -60,7 +61,7 @@ sha512sums=('bde91f551cc310fbc00888b1c2c7307ebaa734d4891300b4f39c5314a3504fab0cc
             'SKIP'
             'f4d862a6a46a1eec9be00fb6a48f80875e9ece1ff1a3deb6bb21c4a7a297dee1db178276f456eac21f1ffdea15b591b1bb8030731cebe081d3086aa12a2ffe37'
             '8107dbd04953146aac91f5cacae77837ec8e99bebde069e1672a18f171e71751fbfe3b8194620d7ba4926974fcc7fc36b6e0fd71544c7ee00dc103d1c06afedc')
-b2sums=('807ad2e663ec0e767e3ae808f8924c75909ff64f53bf87ec811fb360ecc6613bfe49dd0115cbe27810d3dc0a0673a0412e50e077faf1889437a466056b7ed4ce'
+b2sums=('dcf6d4221ac0bc498f1746a9b19de51d15e5f8a376eb9ed705ceebe9078b5062c43f9c2dbbc3dfd142d2fd977cabd908b2bdc05ac054fc49c4a04a804efa9d0e'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -113,10 +114,6 @@ prepare() {
 
   # skip tests (only useful for development, reduces compile time by a *lot*)
   patch -p1 -i "$srcdir/skip-tests.patch"
-
-  # FTBFS missing headers
-  # https://github.com/dsp56300/gearmulator/pull/251
-  git cherry-pick --no-commit d4f4c32ea32811f9ad3a3b4a13e955e39d8285dc
 }
 
 build() {
