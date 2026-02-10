@@ -1,7 +1,7 @@
 # Maintainer: Antony-hash512 <https://github.com/Antony-hash512>
 pkgname=zero-kelvin
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Cold storage utility for SquashFS-based data offloading with LUKS encryption support"
 arch=('x86_64')
 url="https://github.com/Antony-hash512/Zero-Kelvin"
@@ -21,7 +21,7 @@ checkdepends=('fish' 'bats')
 optdepends=(
     #'rclone: Stream SquashFS images directly to remote storage (NAS/cloud)' #(todo)
 )
-provides=('0k' '0k-core' '0k-safe-rm')
+provides=('0k' '0k-core' '0k-safe-rm' 'zero-kelvin-core' 'zero-kelvin-safe-rm')
 conflicts=('zero-kelvin-testing')
 source=("$pkgname::git+${url}.git#tag=v${pkgver}")
 sha256sums=('SKIP')

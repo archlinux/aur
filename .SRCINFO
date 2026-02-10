@@ -1,7 +1,7 @@
 pkgbase = zero-kelvin
 	pkgdesc = Cold storage utility for SquashFS-based data offloading with LUKS encryption support
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Antony-hash512/Zero-Kelvin
 	arch = x86_64
 	license = GPL3
@@ -20,6 +20,8 @@ pkgbase = zero-kelvin
 	provides = 0k
 	provides = 0k-core
 	provides = 0k-safe-rm
+	provides = zero-kelvin-core
+	provides = zero-kelvin-safe-rm
 	conflicts = zero-kelvin-testing
 	options = !debug
 	options = !lto
