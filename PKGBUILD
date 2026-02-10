@@ -118,9 +118,11 @@ pkgver() {
 }
 
 build() (
-  export CC CXX LDFLAGS
+  export CC CXX CFLAGS CXXFLAGS LDFLAGS
   CC=clang
   CXX=clang++
+  CFLAGS="${CFLAGS/auto/thin}"
+  CXXFLAGS="${CXXFLAGS/auto/thin}"
   LDFLAGS="$(sed -E -e 's&\S*fuse-ld\S*&&g' <<< "$LDFLAGS") -fuse-ld=lld"
 
   local _cmake_options _cmake_plutovg _cmake_plutosvg
