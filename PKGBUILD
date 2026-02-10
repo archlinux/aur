@@ -10,6 +10,7 @@ sha256sums=('e89864b45eafae7d587701d8373bc6b0aaf8d1111257937877f8fd37e9fbcb2a')
 makedepends=('python-setuptools')
 depends=(
     'python'
+    'python-typing_extensions'
 )
 
 prepare() {
