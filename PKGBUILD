@@ -6,7 +6,7 @@
 # maintained by Heftig for the 'linux' package in the Arch 'Core' repo. 
 
 pkgbase=linux-stub
-pkgver=6.18.7.arch1
+pkgver=6.18.8.arch2
 pkgrel=1
 #pkgdesc
   _oldpkgdesc='Linux'
@@ -50,16 +50,16 @@ validpgpkeys=(
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
 # https://gitlab.archlinux.org/packaging/packages/linux/blob/6.18.arch1-1/PKGBUILD
-sha256sums=('b726a4d15cf9ae06219b56d87820776e34d89fbc137e55fb54a9b9c3015b8f1e'
+sha256sums=('37f0c5d5c242c1d604e87d48f08795e861a5a85f725b4ca11d0a538f12ff8cff'
             'SKIP'
-            '57c22879f2228398564091db2ec9b186acbd56dfb0e1072f83418bfdd3829aae'
+            'aec3a380a435c2b25cfec077f7a74fb314f4d549ed4137617d478f45aefafbea'
             'SKIP'
-            '505d823490e964e66ebe5889a3701347b4e4e2faf1772b3964f0360a176eadf8')
-b2sums=('3ad31b9b36ea2c8f865c87e63c97a4e7b6684abee35ae71d5838026de9f476edb4c847adab315235293c5f37f8f3b90799ae2b3d41915716710eae63acbf6863'
+            '6b7606d8f3a14ed0f5b682827d8a9f1b0622b020042dd402bec9785daa6526fb')
+b2sums=('9434b32e65e42c8663233d6ca4a7fe4fcbcc8fe2f5b0ba1c3a0bf602c0156009ecce4aef8cb6ed9435bc9b4f14cb4f5be8b5b8ea80f64b1dc2c9d4ad0faf5b4e'
         'SKIP'
-        '8ece2f1b2fc6530cdd65e597141550c184089a206b9aa49cb9e46d61d2e7cf9c3f07f35ed523670d892aa7e62626644a5b1e98dd9c6acd824cb7ad3254c17665'
+        '6ec5f6b428abc27cbaf595b9da1fe4f785b2fe604da3dd7296bd41fef79b14d38ed92f56c392b7848a84a8004c19e46508e9925f445475f9dd56a42431aa841c'
         'SKIP'
-        'f31d83e1e10bb901d0d25c1db0ad2844584ff1014c8bf36f342fcf1999f41e5e2d5ddfa20a5a23d4626c6b35005c7e01ebe8ae7f3de3d4b61a189a49add3a158')
+        '46fc8b23f2251bc02601ecb84a392c902efb34b823bffdb587cbb8adf8169be13ac3105482eeacf328529cfd9adb83ec250dec0658899a208e289be2c591635f')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -150,6 +150,7 @@ _package() {
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $_oldpkgdesc kernel, $_newpkgdesc."
   depends=(pahole)
+  provides=(LINUX-HEADERS)
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
