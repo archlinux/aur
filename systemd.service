@@ -10,14 +10,30 @@ Restart=on-failure
 
 PrivateTmp=yes
 NoNewPrivileges=true
-ProtectSystem=full
+ProtectSystem=strict
 CapabilityBoundingSet=
-RestrictNamespaces=uts ipc pid user cgroup
+RestrictNamespaces=
 ProtectKernelTunables=yes
 ProtectKernelModules=yes
 ProtectControlGroups=yes
 PrivateDevices=yes
 RestrictSUIDSGID=true
+RemoveIPC=true
+ProtectClock=true
+ProtectKernelLogs=true
+SystemCallArchitectures=native
+MemoryDenyWriteExecute=true
+ProtectHostname=true
+LockPersonality=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictRealtime=true
+ProtectHome=true
+ProtectSystem=strict
+ProtectProc=invisible
+ProcSubset=pid
+SystemCallFilter=~@swap @resources @reboot @raw-io @privileged @obsolete @mount @module @debug @cpu-emulation @clock
+IPAddressDeny=localhost link-local multicast
+UMask=0777
 
 [Install]
 WantedBy=multi-user.target
