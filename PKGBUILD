@@ -11,10 +11,10 @@ _pkgname="${pkgname}"
 __pkgname=konform
 _ffsrcver=140.7.0
 _l10n_commit=c857bb7d5e043b8bd8658e1fafa54a4baa9d3f0e
-KONFORM_MOZ_BUILD_ID=20260106170501
+_moz_build_id=20260106170501
 _lwrelver=108
 pkgver="${_ffsrcver}.${_lwrelver}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Firefox fork (LibreWolf-base) with increased customizability and security"
 url="https://codeberg.org/konform-browser/source"
 arch=(x86_64 aarch64)
@@ -172,6 +172,7 @@ prepare() {
 
   mv mozconfig ../mozconfig || true
 
+  export KONFORM_MOZ_BUILD_ID="${_moz_build_id}"
   export MOZ_BUILD_DATE="${KONFORM_MOZ_BUILD_ID}"
   cat >>../mozconfig <<END
 ##### main archlinux-firefox 136
@@ -285,6 +286,7 @@ build() {
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   #hardcoded build time for additional fingerprint protection
+  export KONFORM_MOZ_BUILD_ID="${_moz_build_id}"
   export MOZ_BUILD_DATE="${KONFORM_MOZ_BUILD_ID}"
   #export MOZ_BUILD_DATE="$(date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%Y%m%d%H%M%S)"
   export MOZ_NOSPAM=1
