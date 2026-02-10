@@ -1,10 +1,10 @@
-# Maintainer: jpeggdev <https://github.com/jpeggdev>
+# Maintainer: jpeggdev <jeff.pegg@gmail.com>
 pkgname=api-dev-studio-bin
 pkgver=0.4.26
 pkgrel=1
 pkgdesc="All-in-one local API development tool - mock servers, proxy recording, request inspection"
 arch=('x86_64')
-url="https://apidevstudio.com"
+url="https://github.com/jpeggdev/api-dev-studio.git"
 license=('MIT')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1' 'libappindicator-gtk3' 'librsvg')
 provides=('api-dev-studio')
