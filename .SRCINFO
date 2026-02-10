@@ -1,6 +1,6 @@
 pkgbase = traur
 	pkgdesc = Trust scoring for AUR packages
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/Sohimaster/traur
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = traur
 	depends = pacman
 	depends = gcc-libs
 	depends = glibc
-	source = traur-0.2.5.tar.gz::https://github.com/Sohimaster/traur/archive/v0.2.5.tar.gz
-	sha256sums = 7a69447fccd122a14ae541b1e38dca827691019cea222313ef243cf45f8875e9
+	source = traur-0.2.6.tar.gz::https://github.com/Sohimaster/traur/archive/v0.2.6.tar.gz
+	sha256sums = 278ab6c791068f71029c713ff29b006a0eb92aa1baf1d13d387a5d8fd7d33717
 
 pkgname = traur
