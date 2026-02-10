@@ -10,7 +10,7 @@ pkgbase = google-tsunami-security-scanner
 	depends = java-runtime=21
 	conflicts = google-tsunami-security-scanner-git
 	source = google-tsunami-security-scanner-0.1.0.tar.gz::https://github.com/google/tsunami-security-scanner/archive/v0.1.0.tar.gz
-	source = https://github.com/google/tsunami-security-scanner/raw/master/tsunami.yaml
+	source = https://github.com/google/tsunami-security-scanner/raw/v0.1.0/tsunami.yaml
 	sha256sums = 70c192b8c79076e788164ac72cd7b344ec3af15ac201e4cb733d826b76330e5f
 	sha256sums = 633313cb332fcafb46a7200b1b22d691160c2d5b5677123c1677bf53749d100b
 

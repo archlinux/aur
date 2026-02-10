@@ -12,7 +12,7 @@ license=('Apache-2.0')
 depends=('nmap>=7.80' 'ncrack>=0.7' 'java-runtime=21')
 source=(
 	"${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-        "${url}/raw/master/tsunami.yaml"
+        "${url}/raw/v${pkgver}/tsunami.yaml"
 	)
 
 sha256sums=('70c192b8c79076e788164ac72cd7b344ec3af15ac201e4cb733d826b76330e5f'
