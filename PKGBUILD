@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rfastp
-_pkgver=1.20.1
+_pkgver=1.20.2
 pkgname=r-${_pkgname,,}
-pkgver=1.20.1
+pkgver=1.20.2
 pkgrel=1
 pkgdesc='An Ultra-Fast and All-in-One Fastq Preprocessor (Quality Control, Adapter, low quality and polyX trimming) and UMI Sequence Parsing).'
 arch=('x86_64')
@@ -27,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('11eade7d49bf7df2276bb672d09e75eb2b98e12e382eca09d68984db522a68e9')
+sha256sums=('13a4168c567b614f8b53f1c2d0a22b2f7296e451919450bf00d4621b9b1194a4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
