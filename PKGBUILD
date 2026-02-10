@@ -3,7 +3,7 @@
 
 _vkprefix=Vulkan-Tools-vulkan-sdk
 pkgname=lib32-vulkan-tools
-pkgver=1.4.335.0
+pkgver=1.4.341.0
 pkgrel=1
 arch=(x86_64)
 url="https://www.khronos.org/vulkan/"
@@ -12,7 +12,7 @@ license=('Apache-2.0')
 depends=('lib32-libx11' 'lib32-libxcb' 'lib32-wayland' 'lib32-vulkan-icd-loader')
 makedepends=('cmake' 'python' 'vulkan-headers' 'wayland-protocols' 'glslang' 'spirv-tools' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/KhronosGroup/Vulkan-Tools/archive/vulkan-sdk-${pkgver}.tar.gz")
-sha256sums=('85bf51a54271c87925711f7159ea66cc6c5abf6afd5f2bbf452d444fd7deccf3')
+sha256sums=('dc65f1ea97dd0b2155c2281a79e87d27183c0737fb96377744091a3c8460ae1e')
 
 build() {
   export CFLAGS="-m32 ${CFLAGS}"
