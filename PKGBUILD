@@ -19,5 +19,6 @@ build() {
     chmod +x "${srcdir}/${pkgname}/dllcopy/dllcopy"
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname}/dllcopy/dllcopy" "${pkgdir}/usr/bin/mingw-dllcopy"
+    install -Dm755 "${srcdir}/${pkgname}/dllcopy/dllcopy" "${pkgdir}/usr/bin/x86_64-w64-mingw32-dllcopy"
+    install -Dm755 "${srcdir}/${pkgname}/dllcopy/dllcopy" "${pkgdir}/usr/bin/i686-w64-mingw32-dllcopy"
 }
