@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=s-ui
-pkgver=1.3.8
+pkgver=1.3.9
 pkgrel=1
 _suifrontendcommit="2d0e1fd"
 pkgdesc="Advanced web panel, built for SagerNet/Sing-Box"
@@ -23,7 +23,7 @@ source=(
   $url/archive/v$pkgver/$pkgname-$pkgver.tar.gz
   git+$url-frontend.git
 )
-b2sums=('f92a0451460f07c4695745c900ea13464117e56482f40ce79d382ae5afeee1e1c231dee32ee5cdc82b3356c2274e2ca9d2acf9e7cee560575f6e36c21be9953c'
+b2sums=('28b24fdcb30fa75bc7d8139c86e34c914b7b8e65406b040c715a5edd53c480baf59a9de018e793691c9a078576c55534babd4eb36c8617e1ec7a8b2bed9be3a6'
         'SKIP')
 
 prepare() {
