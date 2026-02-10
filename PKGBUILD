@@ -2,7 +2,7 @@
 
 pkgbase=sherpa-onnx
 pkgname=("${pkgbase}" "python-${pkgbase}")
-pkgver=1.12.23
+pkgver=1.12.24
 pkgrel=1
 pkgdesc="Speech-to-text, text-to-speech, speaker diarization, and VAD using next-gen Kaldi with onnxruntime without Internet connection."
 arch=("x86_64" "aarch64" "arm" "riscv64")
@@ -15,7 +15,8 @@ source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "eigen-3.4.0.tar.gz::https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.gz"
         "espeak-ng-f6fed6c58b5e0998b8e68c6610125e2d07d595a7.zip::https://github.com/csukuangfj/espeak-ng/archive/f6fed6c58b5e0998b8e68c6610125e2d07d595a7.zip"
         "hclust-cpp-2024-09-29.tar.gz::https://github.com/csukuangfj/hclust-cpp/archive/refs/tags/2024-09-29.tar.gz"
-        "kaldi-decoder-0.2.10.tar.gz::https://github.com/k2-fsa/kaldi-decoder/archive/refs/tags/v0.2.10.tar.gz"
+        "json-3.12.0.tar.gz::https://github.com/nlohmann/json/archive/refs/tags/v3.12.0.tar.gz"
+        "kaldi-decoder-0.2.11.tar.gz::https://github.com/k2-fsa/kaldi-decoder/archive/refs/tags/v0.2.11.tar.gz"
         "kaldi-native-fbank-1.22.3.tar.gz::https://github.com/csukuangfj/kaldi-native-fbank/archive/refs/tags/v1.22.3.tar.gz"
         "kaldifst-1.7.17.tar.gz::https://github.com/k2-fsa/kaldifst/archive/refs/tags/v1.7.17.tar.gz"
         "openfst-sherpa-onnx-2024-06-19.tar.gz::https://github.com/csukuangfj/openfst/archive/refs/tags/sherpa-onnx-2024-06-19.tar.gz"
@@ -23,12 +24,13 @@ source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "pa_stable_v190700_20210406.tgz::http://files.portaudio.com/archives/pa_stable_v190700_20210406.tgz"
         "simple-sentencepiece-0.7.tar.gz::https://github.com/pkufool/simple-sentencepiece/archive/refs/tags/v0.7.tar.gz"
         "websocketpp-b9aeec6eaf3d5610503439b4fae3581d9aff08e8.zip::https://github.com/zaphoyd/websocketpp/archive/b9aeec6eaf3d5610503439b4fae3581d9aff08e8.zip")
-sha256sums=('f7c7b0cc8a547b6b5653a67d206ab5963ccd509790c85b8939267685e3855a8e'
+sha256sums=('15fe34acd7a339581cfdaa97b0a2091164adb0165e2c4c6f45b17403d21068f1'
             'cbcaaba0f66722787b1a7c33afe1befb3a012b5af3ad7da7ff0f6b8c9b7a8a5b'
             '8586084f71f9bde545ee7fa6d00288b264a2b7ac3607b974e54d13e7162c1c72'
             '70cbf4050e7a014aae19140b05e57249da4720f56128459fbe3a93beaf971ae6'
             'abab51448a3cb54272aae07522970306e0b2cc6479d59d7b19e7aee4d6cedd33'
-            'a3d602edc1f422acfe663153faf3f0a716305ec1f95b8fcf9d28d301d6827309'
+            '4b92eb0c06d10683f7447ce9406cb97cd4b453be18d7279320f7b2f025c10187'
+            '85ca462535592541eb5ba6d21843009cf34738f51b28b71f84882a3694b528bf'
             '9176cc66fc7ce1edf85cf355b06e320c57db6297df74277f575183468893cf61'
             'c4b701a23a400bda8032586b02c7e0d5e813a765832df60c23e6df9e62b010f4'
             '5c98e82cc509c5618502dde4860b8ea04d843850ed57e6d6b590b644b268853d'
