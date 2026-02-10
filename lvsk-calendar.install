@@ -10,7 +10,7 @@ post_install() {
 
     ─────────────────────────────────────────────────────────
 
-     lvsk-calendar v0.3.8
+     lvsk-calendar v0.3.9
      minimalist terminal calendar
 
     ─────────────────────────────────────────────────────────
@@ -51,7 +51,7 @@ post_upgrade() {
 
     ─────────────────────────────────────────────────────────
 
-     ✨ lvsk-calendar updated to v0.3.8
+     ✨ lvsk-calendar updated to v0.3.9
 
      💡 Tip: Check ~/.config/lvsk-calendar/config for new
         customization options!
