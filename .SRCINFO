@@ -1,6 +1,6 @@
 pkgbase = python-langchain
 	pkgdesc = Building applications with LLMs through composability
-	pkgver = 1.2.9
+	pkgver = 1.2.10
 	pkgrel = 1
 	url = https://github.com/langchain-ai/langchain/tree/master/libs/langchain
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-langchain
 	depends = python-langchain-core
 	depends = python-langchain-text-splitters
 	depends = python-pydantic
-	source = langchain-1.2.9.tar.gz::https://files.pythonhosted.org/packages/source/l/langchain/langchain-1.2.9.tar.gz
-	b2sums = cd23c566d454f745b8799e016cc08edbbae96202c9e35e601639dc9973557cdbe5c2e2bcf5c0ae697f87afe57ee7c572395f3e67036099acd8393b11911fcdbf
+	source = langchain-1.2.10.tar.gz::https://files.pythonhosted.org/packages/source/l/langchain/langchain-1.2.10.tar.gz
+	b2sums = 1af3784489ae265328db6fe28465c5b50e1f8415a2d0b14217716a6061512ce132d0862e208fe71a8eacfdd16e25d407268e7cbd1a04cbf0024019ffbb2773a4
 
 pkgname = python-langchain
