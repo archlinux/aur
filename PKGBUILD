@@ -2,7 +2,7 @@
 # Maintainer: jonahz <jonah.zuercher@adfinis.com>
 
 pkgname='adfinis-rclone-mgr-bin'
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='Configure and manage rclone mounts for Google Drive'
 url='https://github.com/adfinis/adfinis-rclone-mgr/'
@@ -10,13 +10,14 @@ arch=('x86_64')
 license=('GPL3')
 provides=('adfinis-rclone-mgr')
 conflicts=('adfinis-rclone-mgr')
-depends=('rclone' 'python-nautilus' 'zenity' 'python-httpx')
+depends=('rclone' 'zenity')
+optdepends=('nautilus-python: Nautilus integration' 'python-httpx: for the Nautilus extension to work')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/adfinis/adfinis-rclone-mgr/releases/download/v${pkgver}/adfinis-rclone-mgr-v${pkgver}-linux-amd64.tar.gz")
-sha256sums_x86_64=('e139879e804bc7494f47c6dfd20d5cf719b27a8025fba0959f8682513733667b')
+sha256sums_x86_64=('63fe6bd92c3d3216ad08cd826b96fb2e37bb671be39f8796984e0a6a17217496')
 
 package() {
-  cd ./adfinis-rclone-mgr-v2.3.0-linux-amd64
+  cd ./adfinis-rclone-mgr-v2.4.0-linux-amd64
   # bin
   install -Dm755 "./adfinis-rclone-mgr" "${pkgdir}/usr/bin/adfinis-rclone-mgr"
   # license
@@ -26,6 +27,8 @@ package() {
   install -Dm644 "./assets/rclone@.service" "${pkgdir}/usr/lib/systemd/user/rclone@.service"
   # nautilus extension
   install -Dm644 "./assets/google_drive_opener.py" "${pkgdir}/usr/share/nautilus-python/extensions/google_drive_opener.py"
+  # nemo extension
+  install -Dm644 "./assets/google_drive_opener.py" "${pkgdir}/usr/share/nemo-python/extensions/google_drive_opener.py"
   # desktop integration
   install -Dm644 "./assets/adfinis-rclone-mgr.desktop" "${pkgdir}/usr/share/applications/adfinis-rclone-mgr.desktop"
   install -Dm644 "./assets/adfinis-rclone-mgr.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/adfinis-rclone-mgr.png"
