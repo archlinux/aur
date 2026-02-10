@@ -1,0 +1,17 @@
+pkgbase = rofi-linear-git
+	pkgdesc = Rofi plugin for creating Linear issues
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mathix420/rofi-linear
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = rofi
+	provides = rofi-linear
+	conflicts = rofi-linear
+	source = git+https://github.com/mathix420/rofi-linear.git
+	sha256sums = SKIP
+
+pkgname = rofi-linear-git
