@@ -10,7 +10,7 @@ conflicts=('writers-suite')
 depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libxcomposite' 'libxdamage' 'libxfixes' 'libxrandr' 'libxkbcommon' 'libdrm' 'libxcb' 'libxshmfence' 'libx11' 'libxi' 'libxcursor' 'libxinerama' 'libxext' 'libxrender' 'libsm' 'libice' 'fontconfig' 'freetype2' 'mesa' 'xdg-desktop-portal')
 optdepends=('xdg-desktop-portal-gtk: GTK portal backend' 'xdg-desktop-portal-kde: KDE portal backend' 'xdg-desktop-portal-wlr: wlroots portal backend')
 source=("WriterSuite-bin.tar.gz::https://softenough.com/download/aur/bin/WriterSuite-bin.tar.gz")
-sha256sums=('02d90ed761a80254f57a90c84cc575ef58db3e22181b1cf28e4bf3382c2bdda6')
+sha256sums=('5058166173701ee0750c4b0f7205287e4cba85fe9b109bf552ceeb17cd2fd000')
 
 package() {
   install -d "$pkgdir/opt/writers-suite"
@@ -26,7 +26,7 @@ Categories=Office;Utility;
 DESKTOP
   cat > "$pkgdir/usr/share/applications/writers-suite-mod-manager.desktop" <<DESKTOP
 [Desktop Entry]
-Name=Writer's Suite Mod Manager
+Name=WSMM
 Exec=/opt/writers-suite/mod-manager/WritersSuite.ModManager
 Icon=/opt/writers-suite/assets/icons/ws-icon-256.png
 Type=Application

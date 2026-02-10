@@ -35,6 +35,6 @@ pkgbase = writers-suite-bin
 	provides = writers-suite
 	conflicts = writers-suite
 	source = WriterSuite-bin.tar.gz::https://softenough.com/download/aur/bin/WriterSuite-bin.tar.gz
-	sha256sums = 02d90ed761a80254f57a90c84cc575ef58db3e22181b1cf28e4bf3382c2bdda6
+	sha256sums = 5058166173701ee0750c4b0f7205287e4cba85fe9b109bf552ceeb17cd2fd000
 
 pkgname = writers-suite-bin
