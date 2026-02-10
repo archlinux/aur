@@ -1,8 +1,8 @@
 # Maintainer: tuxxx <nzb_tuxxx@proton.me>
 
 pkgname=sparrow-wallet-reproducible
-pkgver=2.3.1
-_jdkver=22.0.2_9
+pkgver=2.4.0
+_jdkver=25.0.2_10
 _jdkmajor="${_jdkver%%[^0-9]*}"
 pkgrel=1
 pkgdesc="Desktop Bitcoin Wallet focused on security and privacy (reproducible build)"
@@ -33,14 +33,12 @@ source=(
     "drongo::git+https://github.com/sparrowwallet/drongo.git"
     "lark::git+https://github.com/sparrowwallet/lark.git"
     "https://github.com/adoptium/temurin${_jdkmajor}-binaries/releases/download/jdk-${_jdkver/_/%2B}/OpenJDK${_jdkmajor}U-jdk_x64_linux_hotspot_${_jdkver}.tar.gz"
-    "MimeInfo.xml"
 )
-sha256sums=('f5502477c589965a61ba98fe6058f6578bc1542fe9a3145a91f97990c916cdea'
-            '01c1a348bc63bfd216b38588b80abfe91f0ae9cabbe74c2877dcbdaa16c15242'
+sha256sums=('22ce289d8b9bd1ad8ceb00b6d38c95f2bc0f5d0153f78d0c79bb39757e478b7f'
+            'f6b9324c48be2af143bcc09236479dc57f656193d9bc6c020a52f3f3b0d7aca7'
             'SKIP'
             'SKIP'
-            '05cd9359dacb1a1730f7c54f57e0fed47942a5292eb56a3a0ee6b13b87457a43'
-            'd0ad5f5457005776fb5021752f9468a55f3a01f498a7984fc97ef652b44460c1')
+            '987387933b64b9833846dee373b640440d3e1fd48a04804ec01a6dbf718e8ab8')
 
 prepare() {
     cd "$srcdir/sparrow"
@@ -51,7 +49,6 @@ prepare() {
 }
 
 build() {
-    # Setup Java build environment - only for build, not for runtime
     export JAVA_HOME="$srcdir/jdk-${_jdkver/_/+}"
     export PATH="$JAVA_HOME/bin:$PATH"
     
@@ -63,7 +60,7 @@ build() {
     ./gradlew jlink
     
     echo "Creating jpackage application image..."
-    ./gradlew jpackageImage
+    ./gradlew jpackageImage copyMimeInfo
 }
 
 check() {
@@ -111,6 +108,6 @@ EOF
         "src/main/deploy/package/linux/Sparrow.desktop" > \
         "${pkgdir}/usr/share/applications/${pkgname%-reproducible}.desktop"
 
-    install -Dm644 "${srcdir}/MimeInfo.xml" \
+    install -Dm644 "src/main/deploy/package/linux/sparrowwallet-Sparrow-MimeInfo.xml" \
         "${pkgdir}/usr/share/mime/packages/${pkgname%-reproducible}.xml"
 }
