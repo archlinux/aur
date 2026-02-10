@@ -1,6 +1,6 @@
 pkgbase = sotw
 	pkgdesc = Shadow Of The Wyrm by Julian Day - Development branch.
-	pkgver = 1.9.1
+	pkgver = 1.9.2
 	pkgrel = 1
 	url = http://www.shadowofthewyrm.org/
 	install = post.install
