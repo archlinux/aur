@@ -3,7 +3,7 @@
 pkgname=kitsune-kitowall
 _pkgname=kitsune
 pkgver=0.1.0.r0.g0000000
-pkgrel=1
+pkgrel=2
 pkgdesc='Visualizador de audio para Hyprland/Wayland (Rust + CAVA + mpvpaper/layer-shell)'
 arch=('x86_64')
 url='https://github.com/KitotsuMolina/kitsune'
@@ -54,6 +54,11 @@ package() {
     -e 's|\./target/release/kitsune|"${KITSUNE_BIN_DIR:-./bin}"/kitsune|g' \
     "${pkgdir}/usr/share/${_pkgname}/scripts/start.sh" \
     "${pkgdir}/usr/share/${_pkgname}/scripts/kitsune.sh"
+
+  # Avoid rebuilding from ~/.local/share/kitsune where Cargo.toml is absent in packaged installs.
+  sed -i \
+    -e '/^cargo build --release$/d' \
+    "${pkgdir}/usr/share/${_pkgname}/scripts/install.sh"
 
   # Global entrypoint: bootstrap a writable user workspace on first run.
   install -d "${pkgdir}/usr/bin"

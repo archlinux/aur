@@ -1,7 +1,7 @@
 pkgbase = kitsune-kitowall
 	pkgdesc = Visualizador de audio para Hyprland/Wayland (Rust + CAVA + mpvpaper/layer-shell)
 	pkgver = 0.1.0.r0.g0000000
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KitotsuMolina/kitsune
 	install = kitsune.install
 	arch = x86_64
