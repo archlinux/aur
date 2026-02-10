@@ -65,6 +65,12 @@ You can pass extra bubblewrap arguments via environment variable:
 openclaw-bwrap --help
 ```
 
+**Example**: executing a command in a similar (different temp) bwrap for executing like gateway/agent executes.
+
+```bash
+openclaw-brawp --exec /usr/bin/bash "echo 'test' > ~/log-in-bwrapped-home.log"
+```
+
 **Example**: using a custom bind mount
 
 ```bash
@@ -75,4 +81,10 @@ OPENCLAW_BWRAP_EXTRA_ARGS="--bind /mnt/data /mnt/data" openclaw-bwrap ...
 
 ```bash
 openclaw-bwrap --exec /home/user/.openclaw/workspace/report.py --daily
+```
+
+**Example**: Install openclaw bubblewrapped as systemd user service
+
+```bash
+openclaw-bwrap-install-as-systemd-user-service --help
 ```

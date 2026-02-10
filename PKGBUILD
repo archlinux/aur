@@ -1,6 +1,6 @@
 # Maintainer: Wuxxin <wuxxin@gmail.com>
 pkgname=openclaw-git
-pkgver=2026.1.30.r144.g7ee99af9f
+pkgver=2026.2.9.r83.g6ac56baf8e
 pkgrel=1
 pkgdesc="Personal AI assistant that runs on your own devices"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
     'git+https://github.com/openclaw/openclaw.git'
     'openclaw-bwrap'
     'openclaw-agent-bwrap'
-    'openclaw-install-systemd-user-service'
+    'openclaw-bwrap-install-as-systemd-user-service'
     'enable-npm-plugins.patch'
     'openclaw.install'
     'README.md'
@@ -24,10 +24,10 @@ install=openclaw.install
 sha256sums=('SKIP'
             '28568550c4674efc8b90a9b4ea5cf9dc024770275c089499a5cc5d7064d1bba8'
             '44b23035089628327dbb05b1aa7a6daf09f21b82c0172ca59ed4576d3aa7b9a5'
-            '5b50d5a4a4991fe95034d4da58e78e142e0bee8f1ba3c9850e2c86b27074805a'
+            '828733c8f4d0f25974463b48cd93e219015d872aecbeda1fdcabf72a181fc65b'
             '5e1f0836e1066c3676582b496f94eb77e00e57d047e3005300033020404f95a0'
             '72cf00f138984381e747bafe04d853d4f8dc3b6e2fa92f58e0739e881eda2799'
-            'df2b1158fd4e1b5e0c18202c00867be61eaf663fac38cb20826e3f8237caebca')
+            'd141bf464007efa0bfe424cc066564094fccd85f4d990f34522f0756c610fdf6')
 
 options=('!strip' '!debug')
 
@@ -47,7 +47,6 @@ prepare() {
     sed -i 's/pnpm.*exec/bun run/g' scripts/bundle-a2ui.sh
     # Also update packageManager field just in case
     sed -i 's/"packageManager": "pnpm@.*/"packageManager": "bun@1.2.0",/' package.json
-
     # Inject Bun support into scripts/ui.js
     sed -i '/function resolveRunner() {/a \  const bun = which("bun"); if (bun) return { cmd: bun, kind: "bun" };' scripts/ui.js
 
@@ -68,13 +67,20 @@ build() {
 package() {
     cd "$srcdir/openclaw"
 
-    # Install the package source to /usr/lib/openclaw
+    # Install the package to /usr/lib/openclaw
     install -d "$pkgdir/usr/lib/openclaw"
-    cp -r dist node_modules package.json openclaw.mjs scripts extensions assets skills patches docs git-hooks AGENTS.md README-header.png CHANGELOG.md "$pkgdir/usr/lib/openclaw/"
+    cp -r assets dist docs extensions git-hooks node_modules patches scripts skills "$pkgdir/usr/lib/openclaw/"
+    cp openclaw.mjs package.json AGENTS.md "$pkgdir/usr/lib/openclaw/"
 
     # Install documentation
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
     install -Dm644 "$srcdir/README.md" "$pkgdir/usr/share/doc/$pkgname/README-arch.md"
+
+    # Install examples
+    for i in docker-compose.yml Dockerfile Dockerfile.sandbox Dockerfile.sandbox-browser; do
+        install -Dm644 "$i" "$pkgdir/usr/share/doc/$pkgname/examples/$i"
+    done
 
     # Install binary wrapper
     install -d "$pkgdir/usr/bin"
@@ -89,7 +95,8 @@ EOF
     # Install bwrap scripts
     install -m755 "$srcdir/openclaw-bwrap" "$pkgdir/usr/bin/openclaw-bwrap"
     install -m755 "$srcdir/openclaw-agent-bwrap" "$pkgdir/usr/bin/openclaw-agent-bwrap"
-    install -m755 "$srcdir/openclaw-install-systemd-user-service" "$pkgdir/usr/bin/openclaw-install-systemd-user-service"
+    install -m755 "$srcdir/openclaw-bwrap-install-as-systemd-user-service" \
+        "$pkgdir/usr/bin/openclaw-bwrap-install-as-systemd-user-service"
 
     # Install license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

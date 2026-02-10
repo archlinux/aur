@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -e
 
 # Default values
@@ -9,10 +9,19 @@ REMOVE=false
 # Parse arguments
 while [[ "$#" -gt 0 ]]; do
     case $1 in
-        --profile) PROFILE="$2"; shift ;;
-        --openclaw-bin) BIN_PATH="$2"; shift ;;
-        --remove) REMOVE=true ;;
-        *) echo "Unknown parameter passed: $1"; exit 1 ;;
+    --profile)
+        PROFILE="$2"
+        shift
+        ;;
+    --openclaw-bin)
+        BIN_PATH="$2"
+        shift
+        ;;
+    --remove) REMOVE=true ;;
+    *)
+        echo "Unknown parameter passed: $1"
+        exit 1
+        ;;
     esac
     shift
 done
@@ -33,7 +42,7 @@ fi
 echo "Installing systemd user service $SERVICE_NAME..."
 mkdir -p "$HOME/.config/systemd/user"
 
-cat > "$UNIT_FILE" <<EOF
+cat >"$UNIT_FILE" <<EOF
 [Unit]
 Description=OpenClaw Gateway - $BIN_PATH ($PROFILE)
 After=network.target
