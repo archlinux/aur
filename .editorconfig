@@ -1,0 +1,15 @@
+root = true
+
+[*]
+charset = utf-8
+indent_size = 2
+indent_style = space
+insert_final_newline = true
+quote_type = single
+trim_trailing_whitespace = true
+
+[*.sh]
+# https://github.com/mvdan/sh
+keep_padding = true
+space_redirects = true
+
