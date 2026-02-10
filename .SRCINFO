@@ -1,13 +1,13 @@
 pkgbase = duckscript
 	pkgdesc = Simple, extendable and embeddable scripting language.
-	pkgver = 0.11.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://sagiegurari.github.io/duckscript/
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cargo
-	source = duckscript-0.11.0.tar.gz::https://github.com/sagiegurari/duckscript/archive/0.11.0.tar.gz
-	sha512sums = 4680be909c133fe5519e0d302f72e0251c877ded902ca76b71e5c6aa0eca5a74023bda84bcc96f2667f33814436bb681b3d322aefca7d1d8ee1adc4cfbc50454
-	b2sums = 2521b16e59e91214505d6a208cad2c76cb81942e7dbd80e4431ff52ec3739c1b361a6896eaec410d52c4576e1b60e7fe9d8fc0dafdcd24aa7332379682bdd62f
+	source = duckscript-0.11.1.tar.gz::https://github.com/sagiegurari/duckscript/archive/0.11.1.tar.gz
+	sha512sums = 1059e7f8169d1249a21e8d4a49c331b1ce402301ea784774ede882cfedf694120475de1c210b2e3a3de38d606a31afd13d73337958b5958aa228ecdf9344a04d
+	b2sums = aa1df83fcf98dc28ac3f7bfc8f1ed1eb720e7e6a29a13e8d13d569fa3c38bacda99fdcfa85d27358e0b6433224b650732bb73438154cda65b9a208c9622a9038
 
 pkgname = duckscript
