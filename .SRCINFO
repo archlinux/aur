@@ -1,6 +1,6 @@
 pkgbase = petbottle-bin
 	pkgdesc = Yerel not uygulamasi
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/Rumata01/Petbottle-public
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = petbottle-bin
 	depends = libappindicator-gtk3
 	provides = petbottle
 	conflicts = petbottle
-	source = petbottle-bin-0.1.7.deb::https://github.com/Rumata01/Petbottle-public/releases/download/v0.1.7/petbottle_0.1.7_amd64.deb
+	source = petbottle-bin-0.1.8.deb::https://github.com/Rumata01/Petbottle-public/releases/download/v0.1.8/petbottle_0.1.8_amd64.deb
 	sha256sums = b6610fdf5eb6ff756b385a12b36f9137d03c188d62751b170854b649d0fea0dd
 
 pkgname = petbottle-bin
