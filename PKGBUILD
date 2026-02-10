@@ -1,4 +1,5 @@
-# Maintainer: 30p87 <30p87@30p87.de>
+# Maintainer: 30p87 <aur@30p87.de>
+
 pkgname='piped-html-proxy-git'
 _componentname="${pkgname%'-git'}"
 _componentnameshort="${_componentname#'piped-'}"
@@ -12,14 +13,14 @@ groups=('piped-git')
 depends=('npm')
 backup=("etc/webapps/piped/${_componentnameshort}.env")
 source=("git+${url}"
-		'environment.env'
 		'unix-socket.patch'
+		'config.env'
 		'sysusers.conf'
 		'tmpfiles.conf'
 		'systemd.service')
 sha256sums=('SKIP'
-            'dfbc965ac0938ba4ebd43a35076a615df99979e12a293680b8d216d6446518bc'
             '55a19624e05ab2da61a8d505d195ec04558c87baa64e774ea4799107d632fbc4'
+            'dfbc965ac0938ba4ebd43a35076a615df99979e12a293680b8d216d6446518bc'
             'eb122e1cf5149be5e89a2ebfb158f29f305427cb8b2061d6728c53ad1d1b89d4'
             '881a3ce33e4327919721e61f707bb1097a77077125c8c68766b2145ee0eadc58'
             'bc64a45a88254363e931d24cb326530d2ea2c394c864f8b39d51295e775f1417')
@@ -41,14 +42,14 @@ build() {
 }
 
 package() {
-	install -dm755 "${pkgdir}/etc/webapps/piped"
-	install -dm755 "${pkgdir}${dest}"
+	install -Dm644 "${srcdir}/config.env" "${pkgdir}/etc/webapps/piped/${_componentnameshort}.env"
+
+	install -Dm644 "${srcdir}/piped-html-proxy/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 	install -Dm644 "${srcdir}/sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${_componentname}.conf"
 	install -Dm644 "${srcdir}/tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_componentname}.conf"
 	install -Dm644 "${srcdir}/systemd.service" "${pkgdir}/usr/lib/systemd/system/${_componentname}.service"
-	install -Dm644 "${srcdir}/environment.env" "${pkgdir}/etc/webapps/piped/${_componentnameshort}.env"
 
-	install -Dm644 "${srcdir}/piped-html-proxy/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -dm755 "${pkgdir}${dest}"
 	cp -r ${srcdir}/piped-html-proxy/{*.js{,on},node_modules} "${pkgdir}${dest}"
 }
