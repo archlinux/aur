@@ -4,7 +4,7 @@ pkgname='piped-backend-git'
 _componentname="${pkgname%'-git'}"
 _componentnameshort="${_componentname#'piped-'}"
 pkgver=r1317.da5bcd7
-pkgrel=2
+pkgrel=3
 pkgdesc='An alternative privacy-friendly YouTube frontend which is efficient by design. Backend/API component, for fetching Metadata'
 arch=('x86_64')
 url='https://github.com/TeamPiped/Piped-Backend'
@@ -56,7 +56,7 @@ build() {
 	
 	fix_from_orhtej2
 
-	./gradlew shadowJar
+	./gradlew shadowJar -Dorg.gradle.java.home=/usr/lib/jvm/java-21-openjdk
 }
 
 package() {
