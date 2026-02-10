@@ -12,7 +12,7 @@ optdepends=(
 )
 makedepends=('imagemagick')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/benjamimgois/omnicom/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('b48bc914299a7d14da0629063b3f922588a88330f817430f63582bd247231706')
+sha256sums=('dfda010bda0a5bdc06c720dee3d9535b758ec283b33f981a30d9aaf7d8977030')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
