@@ -1,6 +1,7 @@
 pkgname=firefox-extension-adguard
-pkgver=5.2.700.1
-_tag=v${pkgver%.*}+${pkgver##*.}.build.20251216080045
+pkgver=5.3.0.8
+#_tag=v${pkgver%.*}+${pkgver##*.}.build.20251216080045
+_tag=v$pkgver
 pkgrel=1
 pkgdesc="AdGuard browser extension."
 arch=("any")
@@ -9,7 +10,7 @@ license=("GPL-3.0-only")
 groups=("firefox-addons")
 makedepends=("pnpm" "git" "jq" "nodejs-lts-jod")
 source=("AdguardBrowserExtension-$pkgver.tar.gz::https://github.com/AdguardTeam/AdguardBrowserExtension/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('97bbf661e1b97f61ee0714319a72e6c2e7c3e5421a07831e2befa8f018315352')
+sha256sums=('86aab53b12b6149f58eac977be6cd3b3459e6c44e668ad66ff4315d179f2668f')
 _version=${_tag//+/-}
 _version=${_version#v}
 
@@ -19,7 +20,7 @@ prepare() {
 }
 build() {
     cd "$srcdir/AdguardBrowserExtension-${_version}"
-    pnpm run release firefox-standalone
+    pnpm run release firefox-amo --zip
 }
 check() {
     cd "$srcdir/AdguardBrowserExtension-${_version}"
@@ -29,7 +30,7 @@ package() {
     depends=("firefox")
 
     cd "$srcdir/AdguardBrowserExtension-${_version}"
-    id="$(jq -r .browser_specific_settings.gecko.id "./build/release/firefox-standalone/manifest.json")"
+    id="$(jq -r .browser_specific_settings.gecko.id "./build/release/firefox-amo/manifest.json")"
     echo "Found extension id: $id"
-    install -Dm644 "./build/release/firefox-standalone.zip" "$pkgdir/usr/lib/firefox/browser/extensions/$id.xpi"
+    install -Dm644 "./build/release/firefox-amo.zip" "$pkgdir/usr/lib/firefox/browser/extensions/$id.xpi"
 }
