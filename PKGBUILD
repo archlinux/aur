@@ -2,8 +2,8 @@
 # Contributor: Allison Smith <alyway@protonmail.com>
 
 pkgname=stellar-mod-loader-bin
-pkgver=0.13.4
-pkgrel=0
+pkgver=
+pkgrel=1
 pkgdesc="Stellar is a mod manager for Windows and Linux that supports games including Fallout, Skyrim, and Starfield. Formerly known as Starfield Mod Loader"
 arch=('x86_64')
 replaces=('starfield-mod-loader-bin')
