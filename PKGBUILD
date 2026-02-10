@@ -2,13 +2,13 @@
 
 pkgname=mingw-w64-dllcopy
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple helper to copy dlls'
 arch=(
     'x86_64'
     'aarch64'
 )
-url='https://github.com/neoluxis/mingw-dllcopy'
+url='https://github.com/neoluxis/mingw-w64-dllcopy'
 depends=(
     'bash'
     'git'
