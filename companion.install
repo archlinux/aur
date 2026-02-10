@@ -1,5 +1,10 @@
-#!/bin/bash
-
 post_install() {
-	echo "Please reboot to apply udev rules or disconnect devices and run 'sudo udevadm control --reload-rules'"
+    echo "Please reboot to apply udev rules or disconnect devices and run 'sudo udevadm control --reload-rules'"
+    echo "There is a new environment variable (SENTRY_DISABLE) available to disable sentry error reporting in companion."
+    echo "It's not enabled by default. You have to modify the desktop file or systemd unit to use it."
+}
+
+post_upgrade() {
+    echo "There is a new environment variable (SENTRY_DISABLE) available to disable sentry error reporting in companion."
+    echo "It's not enabled by default. You have to modify the desktop file or systemd unit to use it."
 }
