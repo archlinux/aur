@@ -2,8 +2,8 @@
 # Contributor: Allison Smith <alyway@protonmail.com>
 
 pkgname=stellar-mod-loader-bin
-pkgver=
-pkgrel=1
+pkgver=0.14.0
+pkgrel=0
 pkgdesc="Stellar is a mod manager for Windows and Linux that supports games including Fallout, Skyrim, and Starfield. Formerly known as Starfield Mod Loader"
 arch=('x86_64')
 replaces=('starfield-mod-loader-bin')
@@ -11,9 +11,9 @@ conflicts=('starfield-mod-loader-bin')
 url="https://github.com/lVlyke/stellar-mod-loader"
 license=('GPL3')
 depends=('nodejs' 'p7zip')
-source=("https://github.com/lVlyke/stellar-mod-loader/releases/download/v${pkgver}/stellar-mod-loader-linux-x64_0.13.4.7z"
+source=("https://github.com/lVlyke/stellar-mod-loader/releases/download/v${pkgver}/stellar-mod-loader-linux-x64_0.14.0.7z"
 				'stellar-mod-loader.sh')
-sha256sums=('176b4b5f93d62ed9fab6c46fc18b35c159d3cee0716f9d31ac57eb7b3dfd1eac'
+sha256sums=('23903c536a4e239dd5416bacd06e31b5c34bb49a9cbbf7ff8f2280cd97669cf2'
 				'7762cd7b97ada391230d5081568edbf4d194e0a304d36ac81e83b5c46d8fed42')
 
 package(){
@@ -21,7 +21,7 @@ package(){
 	mkdir -p "${pkgdir}/usr/bin"
 
 	# Extract package data
-	7z x "stellar-mod-loader-linux-x64_0.13.4.7z" -o"${pkgdir}/opt"
+	7z x "stellar-mod-loader-linux-x64_0.14.0.7z" -o"${pkgdir}/opt"
 
 	mv "${pkgdir}/opt/stellar-mod-loader-linux-x64/" "${pkgdir}/opt/${pkgname}/"
 
