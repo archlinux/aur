@@ -3,7 +3,7 @@
 pkgbase=python-echo
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}"-doc)
-pkgver=0.11.1
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Callback Properties in Python"
 arch=('any')
@@ -14,15 +14,17 @@ makedepends=('python-setuptools-scm'
              'python-installer'
              'python-sphinx-automodapi'
              'python-numpydoc'
-             'python-numpy')
+             'python-numpy'
+         )
+# echo/qt/tests/test_*connect*.py
 checkdepends=('python-pytest-xvfb'
-#             'python-pytest-xdist'
+#            'python-pytest-xdist'
               'xorg-server-xvfb'
               'python-qtpy'
               'python-pyqt6')  # numpy already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'fix_sphinx-doc_link.patch')
-md5sums=('3bfc9611a1376d2b8c821a796149d0cd'
+md5sums=('997ede2e7ff7dc3661c29850c3b0d522'
          'b6441be6fa18db4f59a7784b1fcc67a6')
 
 get_pyver() {
