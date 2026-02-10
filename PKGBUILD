@@ -11,6 +11,6 @@ source_x86_64=("$url/releases/download/v$pkgver/volume-knob-control_${pkgver}_li
 sha256sums_x86_64=('SKIP')
 
 package() {
-    install -Dm755 "${srcdir}/volume-control" "${pkgdir}/usr/bin/volume-control"
+    install -Dm755 "${srcdir}/volume-knob-control" "${pkgdir}/usr/bin/volume-knob-control"
     install -Dm644 "${srcdir}/scripts/volume-control.service" "${pkgdir}/usr/lib/systemd/user/volume-control.service"
 }
