@@ -1,0 +1,19 @@
+pkgbase = filetags-git
+	pkgdesc = Management of simple tags within file names
+	pkgver = 2025.11.16.1.r241.778a2de
+	pkgrel = 1
+	url = https://github.com/novoid/filetags
+	arch = any
+	license = GPLv3
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-colorama
+	depends = python-clint
+	provides = filetags
+	conflicts = filetags
+	source = git+https://github.com/novoid/filetags.git
+	sha512sums = SKIP
+
+pkgname = filetags-git
