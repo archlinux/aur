@@ -1,29 +1,32 @@
 # Maintainer: Knotrocket <knotrocket12 at gmail dot com>
 
-_pkgname=arf
-pkgname="${_pkgname}-git"
-pkgver=r96.0f05bcc
+_name=arf
+pkgname="${_name}-git"
+pkgver=r13.2cb27bd
 pkgrel=1
-pkgdesc="An experimental standalone fzf AUR helper"
+pkgdesc="An fzf Pacman wrapper and AUR helper"
 arch=('any')
 url="https://github.com/Samq64/arf"
 license=('MIT')
-depends=('bash' 'curl' 'fzf' 'git' 'jq' 'pacman' 'pyalpm' 'python' 'python-requests')
+depends=('fzf' 'git' 'pacman' 'pyalpm' 'python' 'python-requests' 'python-srcinfo')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=('sudo: default privilege elevation')
-provides=("$_pkgname")
-conflicts=("$_pkgname" 'fzur-git')
+provides=("$_name")
+conflicts=("$_name")
 source=('git+https://github.com/Samq64/arf.git')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
+    cd "$srcdir/$_name"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build() {
+    cd $_name
+    python -m build --wheel --no-isolation
+}
+
 package() {
-    cd "$srcdir/$_pkgname"
-    install -Dm 755 arf.sh "$pkgdir/usr/bin/$_pkgname"
-    install -Dm 755 pkg-preview.sh "$pkgdir/usr/lib/$_pkgname/pkg-preview.sh"
-    install -Dm 755 diff-preview.sh "$pkgdir/usr/lib/$_pkgname/diff-preview.sh"
-    install -Dm 755 resolve.py "$pkgdir/usr/lib/$_pkgname/resolve.py"
+    cd $_name
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
