@@ -4,7 +4,7 @@
 
 pkgname=thorium-browser-avx-bin
 pkgver=138.0.7204.300
-pkgrel=1
+pkgrel=2
 pkgdesc="Thorium browser AVX build (RPM binary) – Chromium fork focused on performance and security"
 arch=('x86_64')
 url="https://github.com/Alex313031/Thorium"
@@ -19,9 +19,9 @@ provides=('thorium-browser-avx')
 conflicts=('thorium-browser-bin' 'thorium-browser-avx2-bin')
 replaces=('thorium-browser-avx')
 
-source=("https://github.com/Alex313031/thorium/releases/download/${pkgver}/thorium-browser_${pkgver}_AVX.rpm")
+source=("https://github.com/Alex313031/thorium/releases/download/M${pkgver}/thorium-browser_${pkgver}_AVX.rpm")
 noextract=("thorium-browser_${pkgver}_AVX.rpm")
-sha256sums=('039159771e2f41d5799314320fe3e5d067250421b5e1c2e686521354f9a48b3b')
+sha256sums=('7d0132274ba72a5d714d42694ffc37f4810ff83de29368cf2d66fdea93deeb88')
 
 package() {
   cd "$srcdir"
