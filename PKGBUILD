@@ -2,7 +2,7 @@
 
 _name=bitstruct
 pkgname=python-${_name}
-pkgver=8.21.0
+pkgver=8.22.0
 pkgrel=1
 pkgdesc="This module performs conversions between Python values and C bit field structs represented as Python byte strings"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=(python-build python-installer python-wheel)
 depends=('python')
 source=(${_name}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha256sums=('bec3ed1aad90b4debb5b9a54859928667d1a49104d2dfa3fa829a4b92b026c45')
+sha256sums=('a090fad1a01481f553582ab4c5a1569922db0fb8875d7b86b39a2e46dd2eef39')
 
 build() {
     cd $_name-$pkgver
