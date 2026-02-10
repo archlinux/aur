@@ -1,0 +1,43 @@
+diff -ura container-toolkit-1.2.0.orig/Makefile container-toolkit-1.2.0.new/Makefile
+--- container-toolkit-1.2.0.orig/Makefile	2026-02-10 23:32:00.836224860 +0300
++++ container-toolkit-1.2.0.new/Makefile	2026-02-10 23:32:24.573259394 +0300
+@@ -71,9 +71,6 @@
+ docker-compile-deb:
+ 	docker run --rm -it --privileged \
+ 		--name ${CONTAINER_NAME} \
+-		-e "USER_NAME=$(shell whoami)" \
+-		-e "USER_UID=$(shell id -u)" \
+-		-e "USER_GID=$(shell id -g)" \
+ 		-e "GIT_COMMIT=${GIT_COMMIT}" \
+ 		-e "GIT_VERSION=${GIT_VERSION}" \
+ 		-e "BUILD_DATE=${BUILD_DATE}" \
+@@ -94,9 +91,6 @@
+ docker-compile-rpm:
+ 	docker run --rm -it --privileged \
+ 		--name ${RPM_CONTAINER_NAME} \
+-		-e "USER_NAME=$(shell whoami)" \
+-		-e "USER_UID=$(shell id -u)" \
+-		-e "USER_GID=$(shell id -g)" \
+ 		-e "GIT_COMMIT=${GIT_COMMIT}" \
+ 		-e "GIT_VERSION=${GIT_VERSION}" \
+ 		-e "BUILD_DATE=${BUILD_DATE}" \
+@@ -117,9 +111,6 @@
+ pkg-deb: pkg-deb-clean
+ 	docker run --rm -it --privileged \
+ 		--name ${CONTAINER_NAME} \
+-		-e "USER_NAME=$(shell whoami)" \
+-		-e "USER_UID=$(shell id -u)" \
+-		-e "USER_GID=$(shell id -g)" \
+ 		-e "GIT_COMMIT=${GIT_COMMIT}" \
+ 		-e "GIT_VERSION=${GIT_VERSION}" \
+ 		-e "BUILD_DATE=${BUILD_DATE}" \
+@@ -163,9 +154,6 @@
+ pkg-rpm: pkg-rpm-clean
+ 	docker run --rm -it --privileged \
+ 		--name ${RPM_CONTAINER_NAME} \
+-		-e "USER_NAME=$(shell whoami)" \
+-		-e "USER_UID=$(shell id -u)" \
+-		-e "USER_GID=$(shell id -g)" \
+ 		-e "GIT_COMMIT=${GIT_COMMIT}" \
+ 		-e "GIT_VERSION=${GIT_VERSION}" \
+ 		-e "BUILD_DATE=${BUILD_DATE}" \
