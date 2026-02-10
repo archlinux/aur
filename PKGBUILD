@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=bash-completion-git
-pkgver=2.11.r810.g5927d573
+pkgver=2.17.0.r105.gbc5dffff
 pkgrel=1
 pkgdesc="Programmable completion functions for bash"
 arch=('any')
 url="https://github.com/scop/bash-completion"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('bash')
 makedepends=('git')
 provides=("bash-completion=$pkgver")
@@ -40,6 +40,12 @@ package() {
   # bash-completion is sourced in /etc/bash.bashrc so that non-bash shell don't source it
   rm "$pkgdir/etc/profile.d/bash_completion.sh"
 
+  # checksec 3.1.0-2 ships its own
+  rm "$pkgdir/usr/share/bash-completion/completions-core/checksec.bash"
+
+  # patchutils 0.4.4-1 ships its own
+  rm "$pkgdir/usr/share/bash-completion/completions-fallback/interdiff.bash"
+
   # remove Slackware's makepkg completion
-  rm "$pkgdir/usr/share/bash-completion/completions/makepkg"
+  rm "$pkgdir/usr/share/bash-completion/completions-core/makepkg.bash"
 }
