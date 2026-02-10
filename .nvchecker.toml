@@ -1,0 +1,4 @@
+[java-service-wrapper-daemon]
+source = "aur"
+aur = "java-service-wrapper"
+strip_release = "true"

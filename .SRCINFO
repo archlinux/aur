@@ -1,0 +1,17 @@
+pkgbase = java-service-wrapper-daemon
+	pkgdesc = Java Service Wrapper sh script for creating daemon instances
+	pkgver = 3.5.59
+	pkgrel = 1
+	url = https://wrapper.tanukisoftware.com
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0
+	license = GPL-3.0
+	license = LicenseRef-Tanuki-CSLA1.3
+	depends = java-service-wrapper
+	provides = java-service-wrapper-daemon
+	provides = service-wrapper
+	source = https://wrapper.tanukisoftware.com/download/3.5.59/wrapper_3.5.59_src.tar.gz
+	sha256sums = 3b47e7facdd1208ae2570eac301da748a006b551744f3e8db3825bf4ea5c6e06
+
+pkgname = java-service-wrapper-daemon
