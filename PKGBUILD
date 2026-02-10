@@ -3,7 +3,7 @@ pkgver=10.1.201
 pkgrel=1
 pkgdesc="Privacy-first local AI workspace (AppImage version)"
 arch=('x86_64')
-url="https://github.com/chokesmaster/CloudToLocalLLM"
+url="https://github.com/rightguy/CloudToLocalLLM"
 license=('MIT')
 depends=('fuse2' 'libayatana-appindicator' 'gtk3' 'libsecret')
 optdepends=('fuse3: FUSE3 support for AppImage')
@@ -12,7 +12,7 @@ conflicts=('cloudtolocalllm-git' 'cloudtolocalllm-bin')
 options=(!strip)
 _appimage="cloudtolocalllm-${pkgver}-x86_64.AppImage"
 source=("${_appimage}::${url}/releases/download/v${pkgver}/${_appimage}")
-sha256sums=('117c04fe62cfa531feeb95a62d24c09f9c0ea68dab68b1045abb378ca3daaf59')
+sha256sums=('dffaa466edefb5e8a5ef4ec2c189a7b41674a9033f8c66970d2eacf7c434dd5e')
 
 package() {
     # Install AppImage to a proper location
