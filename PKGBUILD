@@ -2,9 +2,9 @@
 
 pkgbase=zrok
 pkgname=(zrok zrok-agent zrok-share)
-pkgver=1.1.10
-pkgrel=2
-pkgdesc="zrok is a next-generation sharing platform, designed to make sharing network and file resources simple and secure."
+pkgver=1.1.11
+pkgrel=1
+pkgdesc='zrok is a next-generation sharing platform, designed to make sharing network and file resources simple and secure.'
 arch=('x86_64')
 url='https://zrok.io'
 license=('Apache-2.0')
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('npm' 'go')
 
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/openziti/zrok/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1567de28d6e2c123f52069889fce8715263596b2eba9001b98f2a9f72d37ba53')
+sha256sums=('f54d6b4f7a08a6aee98d66eb216764d1d8524b90fb421ec007fbd2038e9fc327')
 
 prepare() {
     cd "$pkgbase-$pkgver"
@@ -58,7 +58,7 @@ package_zrok() {
 
 package_zrok-agent() {
     pkgdesc='This package provides zrok-agent.service.'
-    depends=('zrok')
+    depends=('zrok' 'bash')
 
     cd "$pkgbase-$pkgver"
     install -Dm0644 ./nfpm/zrok-agent.service -t "$pkgdir/usr/lib/systemd/user"
@@ -66,7 +66,7 @@ package_zrok-agent() {
 
 package_zrok-share() {
     pkgdesc='This package provides zrok-share.service.'
-    depends=('zrok')
+    depends=('zrok' 'bash' 'jq')
 
     cd "$pkgbase-$pkgver"
     install -Dm755 ./nfpm/zrok-enable.bash -t "$pkgdir/usr/bin"
@@ -75,6 +75,6 @@ package_zrok-share() {
     install -Dm644 ./nfpm/zrok-share.service -t "$pkgdir/usr/lib/systemd/system"
     install -Dm644 ./nfpm/zrok-share@.service -t "$pkgdir/usr/lib/systemd/user"
 
-    install -Dm0644 ./nfpm/zrok-share.env -t "$pkgdir/etc/zrok"
+    install -Dm0600 ./nfpm/zrok-share.env -t "$pkgdir/etc/zrok"
     install -Dm0644 ./etc/caddy/multiple_upstream.Caddyfile -t "$pkgdir/etc/zrok"
 }
