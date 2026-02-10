@@ -1,4 +1,4 @@
-pkgname=adw-network-bin
+pkgname=adw-network
 pkgver=0.1.3
 pkgrel=4
 pkgdesc="Modern network management application for GNOME (prebuilt binary)"
