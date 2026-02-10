@@ -1,6 +1,6 @@
 # Maintainer: Meir Kriheli <mkriheli@gmail.com>
 pkgname=rusmux
-pkgver=0.8.4
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="tmux automation tool"
 arch=("x86_64")
@@ -8,7 +8,7 @@ url="https://github.com/MeirKriheli/rusmux"
 license=("MIT")
 makedepends=("cargo")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('076d87dd109aeac6ebb8d0adaf71105d26a60ccbe7dce05dea78be7a81fb26ea')
+sha256sums=('d26685684e1f36c3aeb00f174c676f09ff9a9051149fdf424f9261dba4b672b3')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -28,6 +28,7 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm 0755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
+  install -Dm 0644 "man/rusmux.1" "$pkgdir/usr/share/man/man1/rusmux.1.gz" -Z
   install -Dm 0644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 0644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm 0644 "completions/rusmux.zsh" "${pkgdir}/usr/share/zsh/site-functions/_rusmux"
