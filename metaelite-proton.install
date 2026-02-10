@@ -4,5 +4,9 @@ post_upgrade() {
     echo -e "\033[1;37mLAUNCH ORDER:\033[0m"
     echo "    Always launch Elite Dangerous via Steam *BEFORE* launching MetaElite."
     echo "    (Steam may block the game from starting if MetaElite is already running)."
+    echo ""
+    echo -e "\033[1;37mUPDATES:\033[0m"
+    echo "   Avoid updating via MetaElite's built-in system. This will install MetaElite into the Proton Prefix" 
+    echo "   These installed files will be dead as metaelite-proton launches from files in /opt." 
     echo -e "\033[1;33m========================================================================\033[0m\n"
 }
