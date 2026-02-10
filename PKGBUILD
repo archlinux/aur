@@ -1,4 +1,4 @@
-# Maintainer: Martin Stark <martinstark@protonmail.com>
+# Maintainer: Martin Stark <m@ayu.im>
 pkgname=ralph
 pkgver=0.3.0
 pkgrel=1
