@@ -1,0 +1,14 @@
+[Unit]
+Description=A Linux status bar daemon which uses event-driven updating of values
+After=graphical-session.target
+wants=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/bar_daemon daemon
+Restart=on-failure
+Environment=HOME=%h
+WorkingDirectory=%h
+
+[Install]
+WantedBy=default.target
