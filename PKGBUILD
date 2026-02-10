@@ -27,29 +27,29 @@ pkgver() {
 
 build() {
     # Build inside the checked-out repository
-    cd "${srcdir}/coolerdash" || return 1
+    cd "${srcdir}/coolerdash"
 
     # Remove all previous tarball builds
-    rm -rf coolerdash-*.pkg.* || true
+    rm -rf coolerdash-*.pkg.*
 
     # Clean any previous builds if a Makefile exists
     if [[ -f Makefile || -f GNUmakefile ]]; then
-        make clean || true
+        make clean
     fi
 
-    # Build
-    make || return 1
+    # Build the project
+    make
 }
 
 check() {
     # Check in the checked-out repository
-    cd "${srcdir}/coolerdash" || return 1
+    cd "${srcdir}/coolerdash"
 
     # Verify that the binary was created successfully
     if [[ -f bin/coolerdash ]]; then
-        echo "Build successful - binary created"
+        msg "Build successful - binary created"
     else
-        echo "ERROR: Binary not found"
+        error "Build failed - binary not found"
         return 1
     fi
 }
