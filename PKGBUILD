@@ -2,7 +2,7 @@
 # Contributor: Gabriel Guldner <gabriel at guldner.eu>
 _pkgname=git-credential-manager
 pkgname=git-credential-manager-bin
-pkgver=2.6.1
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="Secure, cross-platform Git credential storage with authentication to GitHub, Azure Repos, and other popular Git hosting services."
 arch=('x86_64')
@@ -17,17 +17,17 @@ replaces=(git-credential-manager-core-bin)
 install=$_pkgname.install
 changelog=
 options=('!strip')
-source=("https://github.com/git-ecosystem/git-credential-manager/releases/download/v$pkgver/gcm-linux_amd64.$pkgver.tar.gz"
+source=("https://github.com/git-ecosystem/git-credential-manager/releases/download/v$pkgver/gcm-linux-x64-$pkgver.tar.gz"
 		"$_pkgname.install"
 		'https://raw.githubusercontent.com/git-ecosystem/git-credential-manager/main/LICENSE')
-noextract=("gcm-linux_amd64.$pkgver.tar.gz")
-sha256sums=('e01f84d3b362c3c52de6825d4e28228adb89246c9aee102b18a311f923f24115'
+noextract=("gcm-linux-x64-$pkgver.tar.gz")
+sha256sums=('61b7370ba82525fc812e0c86f3d41cc0dc0cb7388fe9e78e53af941d5c94c28f'
             '9c4dd73ab2e074a4fb828299c32600dd9409a873e064a1208567070dcc41a899'
             'b47f1a8a744ecdc7a3da35804f88552805d33f51a726b87a2105acdfae406b07')
 
 prepare() {
 	cd "$srcdir"
-	bsdtar xvf "gcm-linux_amd64.$pkgver.tar.gz"
+       bsdtar xvf "gcm-linux-x64-$pkgver.tar.gz"
 }
 
 package() {
