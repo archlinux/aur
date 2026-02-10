@@ -1,0 +1,16 @@
+pkgbase = vidiorec-git
+	pkgdesc = utilit for video recording
+	pkgver = r1.0
+	pkgrel = 1
+	url = https://github.com/Ghostoraner/vidiorec
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = ffmpeg
+	provides = vidiorec
+	conflicts = vidiorec
+	source = vidiorec::git+https://github.com/Ghostoraner/vidiorec.git
+	sha256sums = SKIP
+
+pkgname = vidiorec-git
