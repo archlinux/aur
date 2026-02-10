@@ -1,7 +1,0 @@
-*
-!.gitignore
-!.nvchecker.toml
-!PKGBUILD
-!.SRCINFO
-!*.patch
-!Cargo.lock

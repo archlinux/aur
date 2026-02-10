@@ -1,64 +1,39 @@
-# Maintainer: Edmund Lodewijks <echo "==gCt92YuwWah1WYlR3byBHQ4VnbpxGajJXY" | rev | base64 -d>
+# Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
+# Contributor: Edmund Lodewijks <echo "==gCt92YuwWah1WYlR3byBHQ4VnbpxGajJXY" | rev | base64 -d>
 
 pkgname=oniux
-pkgver=0.7.0
+pkgver=0.8.1
 pkgrel=1
-pkgdesc='Kernel-level Tor isolation for any Linux app'
-url='https://gitlab.torproject.org/tpo/core/oniux/'
-license=('MIT' 'Apache-2.0')
-options=('!lto')
-depends=(
-  'glibc'
-  'gcc-libs'
-)
-makedepends=(
-  'git'
-  'cargo'
-)
-arch=('x86_64') # I don't know if it builds on other archs, happy to add if so.
-source=("${url}-/archive/v${pkgver}/oniux-v${pkgver}.tar.gz"
-	"Cargo.lock")
-b2sums=('4078a8b811d6b8c3fd0f8866c863dd129d211e5bae46413c098b851f944cea4022691ab87ded6ef9ae7ff2ddc421f849ff19d3fc2b4b7f222597a01907590325'
-        '3e6dc054b9da68c22d06adb9abb9b6ffcf15a72612d15e04b33e9e13a638d1b13b49a616e815a444c940360acb0a6b54573a457d943e77a5dbfdde3a2a849afd')
+pkgdesc='Isolate applications over Tor using Linux namespaces'
+arch=(x86_64)
+url='https://gitlab.torproject.org/tpo/core/oniux'
+license=('MIT OR Apache-2.0')
+depends=(gcc-libs glibc)
+makedepends=(cargo git)
+options=(!lto)
+source=("git+$url.git#tag=v$pkgver?signed")
+validpgpkeys=('772628464C6E8F56DBB5ACEC4CBE96203A1A78A7')
+b2sums=('99116de8715d0ff0d84a2ccd3a0f13e63140378264d13844241e19f976c9dcc9fa97189bead63285329fe1c3f8e6d359d34b386e9aeae8ac250e84bcb17d00ee')
 
 prepare() {
-    cd ${pkgname}-v${pkgver}
-
+    cd oniux
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --locked --target host-tuple
 }
 
 build() {
-    cd ${pkgname}-v${pkgver}
-
-    # Use debug
-    export CARGO_PROFILE_RELEASE_DEBUG=2 CARGO_PROFILE_RELEASE_STRIP=false
-
-    # Use lto
-    export CARGO_PROFILE_RELEASE_LTO=thin
-
+    cd oniux
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export CARGO_PROFILE_RELEASE_DEBUG=true
     cargo build --frozen --release --all-features
 }
 
-check() {
-    cd ${pkgname}-v${pkgver}
-    export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features
-}
-
 package() {
-    cd ${pkgname}-v${pkgver}
-    
-    # Binary
-    install -Dm0755 -t "${pkgdir}/usr/bin/" "target/"${_target}"/release/${pkgname}"
+    cd oniux
+    install -Dm755 target/release/oniux -t "$pkgdir/usr/bin/"
 
-    # Documentation
-    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-
-    # Licenses
-    install -Dm644 LICENSE-MIT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
-    install -Dm644 LICENSE-APACHE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-APACHE"
+    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+    install -Dm644 CHANGELOG.md -t "$pkgdir/usr/share/doc/$pkgname"
+    install -Dm644 LICENSE-* -t "$pkgdir/usr/share/licenses/$pkgname"
 }
-

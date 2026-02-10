@@ -1,19 +1,17 @@
 pkgbase = oniux
-	pkgdesc = Kernel-level Tor isolation for any Linux app
-	pkgver = 0.7.0
+	pkgdesc = Isolate applications over Tor using Linux namespaces
+	pkgver = 0.8.1
 	pkgrel = 1
-	url = https://gitlab.torproject.org/tpo/core/oniux/
+	url = https://gitlab.torproject.org/tpo/core/oniux
 	arch = x86_64
-	license = MIT
-	license = Apache-2.0
-	makedepends = git
+	license = MIT OR Apache-2.0
 	makedepends = cargo
-	depends = glibc
+	makedepends = git
 	depends = gcc-libs
+	depends = glibc
 	options = !lto
-	source = https://gitlab.torproject.org/tpo/core/oniux/-/archive/v0.7.0/oniux-v0.7.0.tar.gz
-	source = Cargo.lock
-	b2sums = 4078a8b811d6b8c3fd0f8866c863dd129d211e5bae46413c098b851f944cea4022691ab87ded6ef9ae7ff2ddc421f849ff19d3fc2b4b7f222597a01907590325
-	b2sums = 3e6dc054b9da68c22d06adb9abb9b6ffcf15a72612d15e04b33e9e13a638d1b13b49a616e815a444c940360acb0a6b54573a457d943e77a5dbfdde3a2a849afd
+	source = git+https://gitlab.torproject.org/tpo/core/oniux.git#tag=v0.8.1?signed
+	validpgpkeys = 772628464C6E8F56DBB5ACEC4CBE96203A1A78A7
+	b2sums = 99116de8715d0ff0d84a2ccd3a0f13e63140378264d13844241e19f976c9dcc9fa97189bead63285329fe1c3f8e6d359d34b386e9aeae8ac250e84bcb17d00ee
 
 pkgname = oniux

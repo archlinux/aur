@@ -1,5 +1,6 @@
 [oniux]
-source = "git"
-git = "https://gitlab.torproject.org/tpo/core/oniux.git"
+source = "gitlab"
+gitlab = "tpo/core/oniux"
+host = "gitlab.torproject.org"
 use_max_tag = true
-
+prefix = "v"
