@@ -2,7 +2,7 @@
 # Maintainer: jonahz <jonah.zuercher@adfinis.com>
 
 pkgname='adfinis-rclone-mgr-bin'
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc='Configure and manage rclone mounts for Google Drive'
 url='https://github.com/adfinis/adfinis-rclone-mgr/'
@@ -14,10 +14,10 @@ depends=('rclone' 'zenity')
 optdepends=('nautilus-python: Nautilus integration' 'python-httpx: for the Nautilus extension to work')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/adfinis/adfinis-rclone-mgr/releases/download/v${pkgver}/adfinis-rclone-mgr-v${pkgver}-linux-amd64.tar.gz")
-sha256sums_x86_64=('63fe6bd92c3d3216ad08cd826b96fb2e37bb671be39f8796984e0a6a17217496')
+sha256sums_x86_64=('c054cffa44daaaa0affc66077888ac47b3adaf66aa1206435e797516a9bc9f84')
 
 package() {
-  cd ./adfinis-rclone-mgr-v2.4.0-linux-amd64
+  cd ./adfinis-rclone-mgr-v2.4.1-linux-amd64
   # bin
   install -Dm755 "./adfinis-rclone-mgr" "${pkgdir}/usr/bin/adfinis-rclone-mgr"
   # license
