@@ -8,9 +8,9 @@ pkgbase = wt-bin
 	provides = wt
 	arch = aarch64
 	source_aarch64 = https://github.com/timvw/wt/releases/download/v${pkgver}/wt_${pkgver}_linux_arm64.tar.gz
-	sha256sums_aarch64 = 6766967a3ef5ca5609c37d87c72e690eebc7fe8ae55d9c6c93e8a6efa081b0e5
+	sha256sums_aarch64 = c0196ed1835204197c325e955f68702942efc93af86af527c7417a584ae69c4e
 	arch = x86_64
 	source_x86_64 = https://github.com/timvw/wt/releases/download/v${pkgver}/wt_${pkgver}_linux_amd64.tar.gz
-	sha256sums_x86_64 = 74c41e8a63256f71f2ca68ad225db491961d6745b69e7a8d3cbd6e576f402b2c
+	sha256sums_x86_64 = e191effa917a901ae0e4a503f980288476ef326ecb90d1072c84b8e3296367b6
 	
 pkgname = wt-bin
