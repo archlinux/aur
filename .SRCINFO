@@ -1,15 +1,15 @@
 pkgbase = bntui
 	pkgdesc = Terminal block explorer for Blocknet privacy blockchain
-	pkgver = 0.1.1
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/obselate/bntui
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	depends = gcc-libs
-	source_x86_64 = bntui-0.1.1-x86_64::https://github.com/obselate/bntui/releases/download/v0.1.1/bntui-linux-x86_64
-	sha256sums_x86_64 = 1fda63c6ccd081dbd95eed63475e48291c4840eb6949691e81a503f94aab65c1
-	source_aarch64 = bntui-0.1.1-aarch64::https://github.com/obselate/bntui/releases/download/v0.1.1/bntui-linux-aarch64
-	sha256sums_aarch64 = c8a56e9682d8b1f18ee3ef8a73cfb841242cf3c00c9ea776379f906db337fbd7
+	source_x86_64 = bntui-0.1.3-x86_64::https://github.com/obselate/bntui/releases/download/v0.1.3/bntui-linux-x86_64
+	sha256sums_x86_64 = 879e3594f6e44e5198e2218c8f7cd74960afbe5f4961284bd5b0fe45f3cb05c6
+	source_aarch64 = bntui-0.1.3-aarch64::https://github.com/obselate/bntui/releases/download/v0.1.3/bntui-linux-aarch64
+	sha256sums_aarch64 = 5f94a1ec1ac9677df34aa0c239289379d582a171c899f6d8a94cf50108f93693
 
 pkgname = bntui
