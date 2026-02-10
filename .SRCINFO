@@ -8,7 +8,7 @@ pkgbase = volume-knob-control-bin
 	license = MIT
 	depends = pipewire
 	depends = libevdev
-	source_x86_64 = https://github.com/Aurora-Nasa-1/volume-control/releases/download/v1.1.4/volume-knob-control_v1.1.4_linux_amd64.tar.gz
+	source_x86_64 = https://github.com/Aurora-Nasa-1/volume-control/releases/download/v1.1.4/volume-knob-control_1.1.4_linux_amd64.tar.gz
 	sha256sums_x86_64 = SKIP
 
 pkgname = volume-knob-control-bin
