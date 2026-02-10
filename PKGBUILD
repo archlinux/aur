@@ -1,6 +1,6 @@
 # Maintainer: Cosmin Gabriel Georgescu <cosmingg2013@gmail.com>
 pkgname="duckscript"
-pkgver=0.9.4
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Simple, extendable and embeddable scripting language."
 
@@ -16,8 +16,8 @@ makedepends=("cargo")
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sagiegurari/duckscript/archive/$pkgver.tar.gz")
 
-sha512sums=('e7543fd81f1e07288c726f1bae7e0cc2985a2e2642639fda47c9a53f08cb25c77fd88e0048bd15decfcfa85bcbad4effbe693c1ec2339cbcad84805f1b77e936')
-b2sums=('1c7595c09cbcaded146a93e35fd17e24ac16ff61fe9afedb1060cbf4c6c74565931dca5242ca9e2a1971dbb350ea770ba14e3dc2434cc49d21e5f7f074aac0fd')
+sha512sums=('09944e1e64ee143b58b9914a7febf3a988a9148e56f5d799d68b887432a247bb20af5429ed1ed6cca40b14f09dc75491cb5827b01bd3caced9d011e5d14d0e8e')
+b2sums=('0e94d9159c6c2afaa21cfad577084bdd77bab30dcfa2dd7de87305abc223175022348acab455b53742c459fddffa026990dbd33ee15f2775b75c66b8af4711ce')
 
 
 prepare(){
