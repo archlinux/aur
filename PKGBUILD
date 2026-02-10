@@ -1,7 +1,9 @@
 # Maintainer: Leonardo Berbert <leo4berbert@gmail.com>
 
 pkgname=zashterminal
-pkgver=0.1.18
+# NOTE: CI updates this value automatically based on
+# locale/src/zashterminal/settings/config.py (APP_VERSION).
+pkgver=0.1.19
 pkgrel=1
 pkgdesc="A modern GTK4/Adwaita terminal emulator with advanced session management, SSH integration, and security features."
 arch=('any')
