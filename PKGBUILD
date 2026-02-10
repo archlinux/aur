@@ -5,10 +5,10 @@ _pkgname="${pkgname//-bin/""}"
 __pkgname=konform
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-pkgver=140.7.0_106
+pkgver=140.7.0_107
 _konformver="${pkgver%_*}"
 _konformrel="${pkgver#*_}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 url="https://codeberg.org/konform-browser"
 arch=(x86_64 aarch64)
@@ -84,12 +84,12 @@ source=(
 )
 source_aarch64=("${_uploadpath_aarch64}" "${_uploadpath_sig_aarch64}")
 source_x86_64=("${_uploadpath_x86_64}" "${_uploadpath_sig_x86_64}")
-sha256sums=('b19b7695445e979e1a305219f917ec0487650158d3dd21d5251a15156a047161'
+sha256sums=('1d962bf60a8736e0d4ea9746324b5b553daf2479b8734aa0cb88acae27954694'
             'b86ddfc0cec482f7900f296857cdd0f1b736ff5037e0a86712b258ae0092924b'
             '68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4')
-sha256sums_x86_64=('4ca48568b20becf208fdbf995be0852956b31efc5d38b6c6984c89b6e9be8c67'
+sha256sums_x86_64=('4b230273fa05dd33c2b8f7a8c8c280aa64cd8a8487d4e14c0855aa09545774b4'
                    'SKIP')
-sha256sums_aarch64=('635a5d541a58f319e46f89d519499c3b86c2c1056c89c0bf747c708b27fccb90'
+sha256sums_aarch64=('796023c24f2e62c04ae0580c127ad2cf4c265422c1655264ff182f963a6453a2'
                     'SKIP')
 
 package() {
