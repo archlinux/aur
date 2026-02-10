@@ -10,7 +10,7 @@ pkgname=(
   "vlc-git"
   "vlc-plugin-lua-git"
 )
-pkgver=4.0.0.r34890.gdf46fce
+pkgver=4.0.0.r35972.g9a63b3e
 pkgrel=1
 pkgdesc="Multi-platform MPEG, VCD/DVD, and DivX player"
 url="https://github.com/videolan/vlc"
@@ -305,7 +305,6 @@ package_vlc-git() {
       'libavformat.so' # ffmpeg
       'libavutil.so'   # ffmpeg
       'libswscale.so'  # ffmpeg
-      'libtiger.so'    # ffmpeg
       'libvpx.so'      # libvpx
       'libx264.so'     # x264
     )"

@@ -1,6 +1,6 @@
 pkgbase = vlc-git
 	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player
-	pkgver = 4.0.0.r34890.gdf46fce
+	pkgver = 4.0.0.r35972.g9a63b3e
 	pkgrel = 1
 	url = https://github.com/videolan/vlc
 	arch = i686
@@ -160,8 +160,8 @@ pkgname = vlc-git
 	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player (monolithic)
 	provides = libvlc.so
 	provides = libvlccore.so
-	provides = vlc=4.0.0.r34890
-	provides = libvlc=4.0.0.r34890
+	provides = vlc=4.0.0.r35972
+	provides = libvlc=4.0.0.r35972
 	provides = vlc-cli
 	provides = vlc-gui-ncurses
 	provides = vlc-gui-qt
