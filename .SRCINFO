@@ -1,15 +1,17 @@
 pkgbase = kapow
 	pkgdesc = Punch clock to track time spent on projects
-	pkgver = 1.6.4
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://gottcode.org/kapow/
 	arch = x86_64
 	license = GPL-3.0-or-later
+	makedepends = appstream
 	makedepends = cmake
 	makedepends = qt6-tools
 	depends = hicolor-icon-theme
 	depends = qt6-base
-	source = https://gottcode.org/kapow/kapow-1.6.4.tar.bz2
-	sha256sums = 591e040722c158490dd96ab41107c48b11be17bdec1ee3d2edec980eb903dfd5
+	depends = kdsingleapplication
+	source = https://gottcode.org/kapow/kapow-1.7.0.tar.bz2
+	sha256sums = ff86ff05c5b753cdf8c31c1e70fe37b251b53544a4a59a52bb2ef1c9d63af94c
 
 pkgname = kapow
