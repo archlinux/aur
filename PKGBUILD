@@ -1,5 +1,5 @@
 pkgname=qt-hearts
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Classic hearts card game"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('GPL-3.0-or-later')
 depends=('qt6-base' 'qt6-svg' 'qt6-multimedia' 'qt6-declarative')
 makedepends=('cmake' 'qt6-tools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('aa7603358d56b2e2bc84bf9d94690262d8bd34b04c20e6bc4b1d1777a91392f1')
+sha256sums=('ced1d3e88e105150b906525c2f8294d2d74528628a0677755e55cd179cc43660')
 
 build() {
     cd "$pkgname-$pkgver"
