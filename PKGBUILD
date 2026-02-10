@@ -1,24 +1,37 @@
-# Maintainer:  Marco Rubin <marco.rubin@protonmail.com>
+# Maintainer:
+# Contributor: Marco Rubin <marco.rubin@protonmail.com>
 
-_name=xmpppy
-pkgname=python-$_name
-pkgver=0.7.1
-pkgrel=2
-pkgdesc="Python 2/3 implementation of XMPP (RFC3920, RFC3921)."
-arch=('any')
+_module="xmpppy"
+_pkgname="python-$_module"
+pkgname="$_pkgname"
+pkgver=0.7.3
+pkgrel=1
+pkgdesc="Python implementation of XMPP (RFC3920, RFC3921)"
 url="https://github.com/xmpppy/xmpppy"
-license=('GPL3')
-depends=(python)
-makedepends=(python-build python-installer python-setuptools python-wheel)
-source=("$url/archive/$pkgver.tar.gz")
-b2sums=('483b287fa02898394272ae643536ff9eb16375b665d4e32d82912c0f1aacf30b90ef8cabedaabd9e15608b456e8b0354e365a346e7e674f68f28b58b21a82288')
+license=('GPL-3.0-only')
+arch=('any')
+
+depends=(
+  'python'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+
+_pkgsrc="$_module-$pkgver"
+_pkgext="tar.gz"
+source=("$_pkgsrc.$_pkgext"::"$url/archive/$pkgver.$_pkgext")
+sha256sums=('11b0359583be5c3e93824436af5c5a65766e6ff16bb04fcf0855a66f40e959c0')
 
 build() {
-    cd $_name-$pkgver
-    python -m build --wheel --no-isolation
+  cd "$_pkgsrc"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-    cd $_name-$pkgver
-    python -m installer --destdir="$pkgdir" dist/*.whl
+  cd "$_pkgsrc"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
