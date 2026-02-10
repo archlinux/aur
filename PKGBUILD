@@ -1,8 +1,8 @@
 # Maintainer: Mr.Zero88 <huesmann.mats+aur@gmail.com>
 
-pkgname=oyasumi
+pkgname=oyasumi-bin
 pkgver=0.5.2
-pkgrel=2
+pkgrel=3
 _oyasumiver=25.6.12
 pkgdesc="Oyasumi (VR Sleeping Utilities)"
 arch=('x86_64')
