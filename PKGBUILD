@@ -29,6 +29,7 @@ package() {
   tar -xzf hei-cursors.tar.gz
 
   install -dm755 "$pkgdir/usr/share/icons/hei_cursors"
+  cd hei_cursors
   cp -r ./* "$pkgdir/usr/share/icons/hei_cursors/"
 
   # 确保权限正确

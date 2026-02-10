@@ -1,0 +1,15 @@
+pkgbase = hei-cursors-bin
+	pkgdesc = Hei Cursor Theme. Created by Bilibili user 1013625945 (漓翎_cub), ported by GitHub user Tseshongfeeshur (Ryan).
+	pkgver = 2.0
+	pkgrel = 2
+	url = https://github.com/Tseshongfeeshur/hei-cursors
+	arch = any
+	license = MIT
+	makedepends = curl
+	makedepends = jq
+	provides = hei-cursors-bin
+	conflicts = hei-cursors-bin-git
+	source = hei-cursors.tar.gz::https://github.com/Tseshongfeeshur/hei-cursors/releases/latest/download/hei-cursors.tar.gz
+	sha256sums = SKIP
+
+pkgname = hei-cursors-bin
