@@ -7,7 +7,7 @@ _electron=electron39
 _nodejs="22.18.0"
 
 pkgname=${_pkgname}-electron
-pkgver=1.108.20787
+pkgver=1.109.01000
 pkgrel=2
 pkgdesc="VS Code without MS branding/telemetry/licensing. - System-wide Electron edition"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -38,7 +38,7 @@ source=(
 	"${_pkgname}.desktop"
 	"${_pkgname}-uri-handler.desktop"
 )
-sha256sums=('da7db2e411821307e0ff5991c1ef26700e11d390eb45023da4cefcb6a53d2ea5'
+sha256sums=('e64e718e1f3400c739d5c1724fd68139f1bad5997f635a54ed29ef1e286a357f'
             '263ab5c08072d3ff88dfc9eb5b1698a898e4550b1701d3283d1e18e811473cf4'
             '617591ac74e2ef1ab30425895a79be5580db3280e7e44cee56a7a809637d438f'
             '28a271ba5b2e50b11259abd794ad2ab083612c78bee2d617bb5a8702932c8f44'
