@@ -1,13 +1,13 @@
 pkgbase = goonfetch
 	pkgdesc = A fetch utility for fetching rule 34 images
-	pkgver = 0.1.3
-	pkgrel = 3
+	pkgver = 0.1.4
+	pkgrel = 1
 	url = https://github.com/glacier54/goonfetch/
 	arch = any
 	license = MIT
 	makedepends = uv
 	depends = python
-	source = https://github.com/glacier54/goonfetch/archive/refs/tags/v0.1.3.tar.gz
-	sha256sums = 68170380a4a6567f1c6ac1e772fe68970f20419744147af1c79e444d3eb16b57
+	source = https://github.com/glacier54/goonfetch/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = ae857e4fa6edfa5c1eca1b770bb99520e42c29d16335866525c28f9debd00450
 
 pkgname = goonfetch
