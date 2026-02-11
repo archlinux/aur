@@ -1,6 +1,6 @@
 # Maintainer: Larry Oates <your email at domain dot tld>
 pkgname=doomfire-wallpaper-bin
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Animated doom fire effect wallpaper for Wayland compositors'
 arch=('x86_64')
