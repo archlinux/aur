@@ -1,8 +1,8 @@
 pkgbase = droidcam-git
 	pkgdesc = A tool to turn your phone/tablet into a wireless/usb webcam
-	pkgver = v2.1.3.r4.g1d09ede
+	pkgver = v2.1.4.r4.76327712
 	pkgrel = 1
-	url = https://github.com/amfern/droidcam-linux-client
+	url = https://github.com/jensbin/droidcam-linux-client
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = alsa-lib
@@ -15,7 +15,7 @@ pkgbase = droidcam-git
 	makedepends = git
 	optdepends = android-tools: for Android USB connection
 	optdepends = usbmuxd: for iOS USB connection
-	source = git+https://github.com/amfern/droidcam-linux-client.git#branch=rename-to-timer_delete_sync
+	source = git+https://github.com/jensbin/droidcam-linux-client.git#branch=linux_6.18
 	source = dkms.conf
 	source = droidcam.conf
 	sha256sums = SKIP
