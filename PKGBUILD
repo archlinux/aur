@@ -3,7 +3,7 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=hostapd-git
-pkgver=2.11.r957.g4bc754d9c
+pkgver=2.11.r1437.g59ac3016a
 pkgrel=1
 pkgdesc="User space daemon for access point and authentication servers"
 arch=('i686' 'x86_64')
@@ -48,7 +48,7 @@ pkgver() {
   cd "hostap"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^hostap_[0-9_\.]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^hostap_//;s/_/./g'
 }
