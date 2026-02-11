@@ -1,7 +1,7 @@
 pkgbase = git-wizard
 	pkgdesc = A simple CLI tool to automate Git setup, GitHub repo creation, and SSH configuration
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/noufalkdlr/git-wizard
 	arch = any
 	license = GPL3
@@ -14,6 +14,7 @@ pkgbase = git-wizard
 	depends = python-rich
 	depends = python-inquirer
 	depends = git
+	depends = python-annotated-doc
 	optdepends = github-cli: Automatically detect GitHub username and protocol for connect command
 	source = git-wizard-0.2.0.tar.gz::https://github.com/noufalkdlr/git-wizard/archive/refs/tags/v0.2.0.tar.gz
 	sha256sums = 35f29796502ffd4e1f0bc48c651fee3e7785f2d091ea3ce67be7246cef6e2bd1
