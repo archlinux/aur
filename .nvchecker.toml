@@ -1,0 +1,4 @@
+[fastflix-bin]
+source = "github"
+github = "cdgriffith/FastFlix"
+use_latest_release = true
