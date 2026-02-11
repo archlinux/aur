@@ -2,7 +2,7 @@
 # Contributor: elephantum :https://github.com/elephantum/devpod-community-bin
 
 pkgname="devpod-community-bin"
-pkgver=0.12.8
+pkgver=0.12.10
 pkgrel=1
 pkgdesc="Codespaces but open-source, client-only, and unopinionated - community fork (prebuilt .deb version)"
 arch=("x86_64")
@@ -31,7 +31,7 @@ conflicts=("devpod" "devpod-bin" "devpod-cli-bin")
 source=(
   "${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/DevPod_linux_amd64.deb"
 )
-sha256sums=('e8cdc474f3ef4dd14677aa58a767529c99ec4c6c6a46d9d57eeefcf97f3deca9')
+sha256sums=('78c1539e75fe72ad709c0a76e3287c9ac3e4b5e3c7fa742ae29dd074c32b0051')
 
 # Naming convention as according to devpod-bin on the AUR: dev-pod-desktop
 package() {
