@@ -3,7 +3,7 @@
 
 _pkgbase=ocp
 pkgname=('ocp' 'ocp-sdl2')
-pkgver=3.1.2
+pkgver=3.1.3
 pkgrel=1
 pkgdesc="Open Cubic Player"
 arch=('i686' 'x86_64')
