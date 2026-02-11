@@ -1,3 +1,13 @@
+## [0.2.6] - 2026-02-10
+
+Improved stability and usability of the command parser.
+
+### What's Changed
+- Removed: wildcard feature for output by @Draver93 in #13
+- Allow args without description by @Draver93 in #14
+- upload AppImage by @torusJKL in #15
+- Added: quotes to handle paths with names by @Draver93 in #17
+
 ## [0.2.5] - 2025-01-14
 
 ### Bug Fixes & Improvements
