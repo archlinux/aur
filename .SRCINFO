@@ -1,5 +1,5 @@
 pkgbase = libdragon-git
-	pkgver = r833.7581432e0
+	pkgver = r1045.d4b5b0b93
 	pkgrel = 1
 	url = http://www.dragonminded.com/n64dev/libdragon
 	arch = x86_64
@@ -24,7 +24,6 @@ pkgname = libdragon-git
 
 pkgname = libdragon-tools-git
 	pkgdesc = Open source tools for Nintendo 64 development
-	arch = i686
 	arch = x86_64
 	depends = libpng
 	provides = libdragon-tools

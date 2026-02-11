@@ -1,7 +1,7 @@
 #Maintainer: Simon Eriksson <simon.eriksson.1187+aur AT gmail.com>
 
 pkgname=('libdragon-git' 'libdragon-tools-git')
-pkgver=r833.7581432e0
+pkgver=r1045.d4b5b0b93
 pkgrel=1
 url="http://www.dragonminded.com/n64dev/libdragon"
 arch=('x86_64')
@@ -49,7 +49,7 @@ package_libdragon-tools-git() {
   options=()
   provides=('libdragon-tools')
   conflicts=('libdragon-tools')
-  arch=('i686' 'x86_64')
+  arch=('x86_64')
   depends=('libpng')
 
   cd libdragon
