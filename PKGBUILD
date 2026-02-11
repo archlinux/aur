@@ -2,7 +2,7 @@
 
 _pkgname=dwproton
 pkgname=${_pkgname}-bin
-_srcver=10.0-16
+_srcver=10.0-17
 pkgver=${_srcver//-/_}
 pkgrel=1
 epoch=1
@@ -13,7 +13,7 @@ license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
 options=(!strip emptydirs)
 provides=('proton' 'dwproton')
 source=("${url}/releases/download/${_pkgname}-${_srcver}/${_pkgname}-${_srcver}-${CARCH}.tar.xz")
-sha256sums=('b74614291e1f68729db611abf04248f0b61a18c800fb725ebe226474a45cba67')
+sha256sums=('53e746f553d17ae1c7a515183002ff628ae08ed85105f07030c0bb73c47a8a80')
 depends=(
   bash
   coreutils
