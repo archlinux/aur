@@ -1,6 +1,6 @@
 # Maintainer: Tanmay Chaudhry <tanmay.chaudhry@gmail.com>
 pkgname=envyr-bin
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Automagically package and run applications in sandboxed environments"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ conflicts=('envyr')
 
 source_x86_64=("${url}/releases/download/v${pkgver}/envyr-x86_64-linux.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/envyr-aarch64-linux.tar.gz")
-sha256sums_x86_64=('21acfb5c41f6c5d8e54b3fbbc79637e0dee90265af4124ed1b891fff3c49e7d2')
-sha256sums_aarch64=('2dfc1933eb15ecdecd8f67aa2060953cdf6690956441e0c5871b5aa531594c91')
+sha256sums_x86_64=('212d27bbf7c8aa332cd2ddfd8dfaee36a2bd80e1d3d3bf622b41e77e958be9b0')
+sha256sums_aarch64=('5fa39307864057196b00c13f27a50733b1d23c7955baba83f519b365b37c5ba2')
 
 package() {
     if [ "$CARCH" = "x86_64" ]; then
