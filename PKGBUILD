@@ -30,7 +30,8 @@ build() {
 	cd "$srcdir/$_pkgname"
 
 	cmake -B build -DCMAKE_BUILD_TYPE=Release
-	cmake --build build
+	cmake --build build -- -j"$(nproc)"
+	# cmake --build build
 }
 
 package() {
