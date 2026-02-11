@@ -10,7 +10,7 @@ pkgname=(${_pkgname}-all-${_pkgsuffix} ${_pkgname}-${_pkgsuffix} $(for provider 
 
 _packages=(${pkgname[@]})
 
-pkgver=2.19.1
+pkgver=2.19.2
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -34,28 +34,28 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v
                $(for provider in ${_pkgproviders[@]}; do echo "${provider}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${provider}-linux-${_barch[0]}.tar.gz" ; done))
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '77c380f4172541442054e2c23c2c0c1d0184b453ee52a26e352c1460972b65f1')
-sha256sums_x86_64=('cee73e19e66041d4853cf5cc4a47dfd9190280c3d02f9030bd9d7eb9e5523c03'
-                   '2718982a369e4e9aa47192cdd48a069b8d4fc39cca2154dca0fe7b8add773ce0'
-                   '6e17831fad9b31e52f93948594700ac509d420a004d8dc618bde7a876238855a'
-                   '35112543f6765b30358fc4ef028f70a16a26f221d4d5eb364857abb4a9888a6b'
-                   'a90784b3cc96c9a202f04c0904ecb710c14041b1799b43d7e1229fa04959aa81'
-                   '3380d1dde9eaaab9d1fcb110a3e0fa19d2ee44c8613d9d9e7f054725cc80c2fb'
-                   '95fa04ee1cd9adb72bf566b6314b1ae453e68141354fc7f760785489de405a44'
-                   '2b7a64904d9bd11024f11bf313a70acd07a5bac43d81f1bbfc9fee1ba89bea38'
-                   '3f55e3f0af58a0340e4667889ef0f03b4e8a8f207fad34d897e87c162c3c6115'
-                   'ddd12e0fcd5226a1f875cacc3310c085323aa15da3c93142e8e31326aef1a9ba'
-                   '1503054efc9420dfd3409c6ed1ae20087fdeadf4970bef4f857258988b767106'
-                   'e3c316e2703b3d69d9c679f652eb722d108cd45e7b13d1ed50b2a328eb4d4527'
-                   'dff6d55f243ba9dee80ed54ed63810898f686b0cea04b8e4c9665a541384f84b'
-                   '720054cbb8c83426b534fbdb9dc3b9c931f22b62e18b052c0ed13d4fcf26ab24'
-                   '2cb9e8ef823c62e407a4fcbd0dad38c29cbf468de249ffb44b73355b8ebc3b78'
-                   'fd133080c67d5a13193779c0ae3cf7b11006cdd4a64376634d03c77edd8fd9b8'
-                   '98758be40df2c5ea4aa6eb82f0cb485fcadbaf6146da2ca3d346b944f712e0ba'
-                   'fae99858593bc575bd5cc89f5c44cc14b8ef000f270af60c476d8d9ebf435f4a'
-                   '4616e75615f896626841fb696497974f289c6d0fe3f9f0f5e9895eef09413d29'
-                   'c99a32a34c343cc5d266fa7fd7ea9844fd84fdffb1d5ac76e90e14fba6d68bc0'
-                   '45229a0170945d5073a3cc7a9d0c58e62a31c0b5875fa593530e4aec95b4b709'
-                   '7eb0e6d197629cfc6e1ca513fe69a6819679d8d8d345d5a4d64339976b6e10ce')
+sha256sums_x86_64=('ec93d01897e4914208be34d62a2944d8da01c17542bd4c1126f01c20e0971587'
+                   'd51dba72014fca35e9d262cb1b098e46d9f9afeacc25775716edd1c35d34500d'
+                   '5303bd2a9079ebc30587c39b857a4fe551d9431a1eb95e51eb6e4ccc76260c03'
+                   '2fe5155710c7d68f33c80b478872ebd112599189c10f2c4b7b4036fa5fee01f3'
+                   'faec31df5efcea68104bbfa7fa1c37289793625733e5048933357da9b30700b6'
+                   '5d0becd95968ac149f2821c86065bfc20aec58ab9de451488010ddc959c993e1'
+                   'ce063ab99e650e9604acdeaaa12f2718533e2016dc3ca69846b7a1d5df05f265'
+                   'c21878e105ed07d69992008911839eae10d1443b4e20ead982322490ceaf0e85'
+                   'cd7ee0ba9d69ebd21aa60f6fe47c817469e71505451cf63b76a46b2a3e27e285'
+                   '0fac332f96ecaf78316fdc2e869fd0ff2a7645a14d3c8a52c16b87548b668f4f'
+                   'c8eb040cc05475b8772ddc302455f358c1f77b05eda2a7b6d8e29f5838527549'
+                   'ea8a5b04c65c64c4fb811ca8292af41303b2c8b94c14d880d44fcbf1663d3044'
+                   '3dac415f48d7cc7fe2a5a906e61fd5d2a8c31a1e6d444bf2274086cfc4dc7ef1'
+                   'b19f9500e36d2524ea7ba5ef38f6c987da48dc7a4064556d93aff5793d94176f'
+                   'df823f811a3d72a2b7a90de9dff7b30c69d483b3b9c0a23bf7cd8af4e96ec6d0'
+                   '135b284c320c70334a769e9e755f21cb2c6acdc0a2363f6bd75843869eec2297'
+                   'dd6d97e4455c464c98898742806bb93b29e801cb0d72f2cfa1bd8d79ef888315'
+                   '6a16bf3c293456cdec4e6c0d26afcdc1f0b033964dff0dd0ebe31a449e4e1415'
+                   '0a7cb0db447df7ac03a30966463a0d3819c4456e67e6a6b472ba101b76b2d1a0'
+                   'e66611f0dec7c3297d0d31cceaa5aa9a1b2da54aede8646cac72bb378474b14a'
+                   '951b2e0647ec095f2f24b0bd5a764b1a7421f155e4522e7a12cead65ddd05eb7'
+                   '93932c87020dbec3c9f14f61d90a7eff14829c21a83bc397f8df03a40c6008df')
 
 case $CARCH in
     ${arch[0]})
