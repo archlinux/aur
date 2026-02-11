@@ -15,23 +15,24 @@ pkgname=(
   'dotnet-targeting-pack-preview-bin'
   'aspnet-targeting-pack-preview-bin'
  )
-pkgver=10.0.0.sdk100+rc.2
-_runtimever=10.0.0
-_sdkver=10.0.100
-_short_ver=10.0
+pkgver=11.0.0.sdk100
+_runtimever=11.0.0
+_sdkver=11.0.100
+_short_ver=11.0
+_fullver=11.0.0-preview.1.26104.118
 pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.microsoft.com/net/core'
 license=('MIT')
 options=('staticlibs')
 source=('dotnet.sh')
-source_armv7h=('https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.100-rc.2.25502.107/dotnet-sdk-10.0.100-rc.2.25502.107-linux-arm.tar.gz')
-source_aarch64=('https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.100-rc.2.25502.107/dotnet-sdk-10.0.100-rc.2.25502.107-linux-arm64.tar.gz')
-source_x86_64=('https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.100-rc.2.25502.107/dotnet-sdk-10.0.100-rc.2.25502.107-linux-x64.tar.gz')
+source_armv7h=('https://builds.dotnet.microsoft.com/dotnet/Sdk/11.0.100-preview.1.26104.118/dotnet-sdk-11.0.100-preview.1.26104.118-linux-arm.tar.gz')
+source_aarch64=('https://builds.dotnet.microsoft.com/dotnet/Sdk/11.0.100-preview.1.26104.118/dotnet-sdk-11.0.100-preview.1.26104.118-linux-arm64.tar.gz')
+source_x86_64=('https://builds.dotnet.microsoft.com/dotnet/Sdk/11.0.100-preview.1.26104.118/dotnet-sdk-11.0.100-preview.1.26104.118-linux-x64.tar.gz')
 sha512sums=('768151c7179fb6a126b3de9cae01e363e8894f6fab384b1e2c5066c2adca4578638983b1b62aea10dd18045e6d6e8f8ea13280481134de94f004a118919b2c06')
-sha512sums_armv7h=('7a2227728804b015d0b1ed0a26b90042b6ea711ea7c44300b00d2b796c0149a95f5fbf303cccc15d054a238e029bd00d7adc734af03614b006bfc78293c9a839')
-sha512sums_aarch64=('a4410459f057f7f8740cb1f7d696527bba48ba864b519e757b88c8622b4fc312ba645377463770f72d1ab252dde98f078bedf0cd59afde0c519b823aee28e6c3')
-sha512sums_x86_64=('1200ff33d7c2a834499590e05f46c065d0f7dc1f7520f35403b5d4fc1fb00bddfb7c4aae230280e8dc6890fe5fc5ca738dea4789056614ed02a84d1e86d068e9')
+sha512sums_armv7h=('29834fe199371ec6c601f1c7ac93d3cf9ff42968bb3d30b4bc03b8d8ee4fef9697bf4c2dcd3c22e5a875a949d7e3fc56044317abba1c9b66afd0920efb2694d2')
+sha512sums_aarch64=('6e799b43746af1e6f3b0b94e239147e8fe8809705e32d9023af87ba08f8ad64bb4b990da76bb012ccb56832c3e9b3f1c9b25a5d04913c1f67b818d753cfcb00d')
+sha512sums_x86_64=('6187f4a7e42479c4b2ce82eaf142220762ebf2456e4765721f951ff08d4c79b412dc93cb8d2522b09b7b62c9c6025aded201f16f0d53d3d5ef5b05c2eb90c448')
 
 package_dotnet-host-preview-bin() {
   pkgdesc='A generic driver for the .NET Core Command Line Interface (preview, binary)'
@@ -46,7 +47,7 @@ package_dotnet-host-preview-bin() {
   cp -dr --no-preserve='ownership' dotnet host "${pkgdir}"/usr/share/dotnet/
   cp -dr --no-preserve='ownership' LICENSE.txt ThirdPartyNotices.txt "${pkgdir}"/usr/share/licenses/dotnet-host
   ln -sf /usr/share/dotnet/dotnet "${pkgdir}"/usr/bin/dotnet
-  ln -sf /usr/share/dotnet/host/fxr/"${_runtimever}"/libhostfxr.so "${pkgdir}"/usr/lib/libhostfxr.so
+  ln -sf /usr/share/dotnet/host/fxr/"${_fullver}"/libhostfxr.so "${pkgdir}"/usr/lib/libhostfxr.so
   install -Dm 644 "${srcdir}"/dotnet.sh -t "${pkgdir}"/etc/profile.d/
 }
 
