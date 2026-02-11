@@ -2,7 +2,7 @@
 
 pkgname=nmon2rrd
 pkgver=17b
-pkgrel=1
+pkgrel=2
 pkgdesc="Filter to convert nmon output files to rrdtool format"
 arch=('i686' 'x86_64')
 url="https://github.com/jose1711/nmon2rrd"
@@ -13,8 +13,6 @@ md5sums=('eda33feb1290954a13ab2dfd9a739700')
 
 build() {
 cd $srcdir/nmon2rrd-nmon17b
-pwd
-ls
 gcc -onmon2rrd nmon2rrd_17.c
 }
 

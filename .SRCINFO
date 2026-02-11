@@ -1,7 +1,7 @@
 pkgbase = nmon2rrd
 	pkgdesc = Filter to convert nmon output files to rrdtool format
 	pkgver = 17b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jose1711/nmon2rrd
 	arch = i686
 	arch = x86_64
