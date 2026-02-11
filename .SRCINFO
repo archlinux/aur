@@ -1,4 +1,4 @@
-pkgbase = btsspsw
+pkgbase = btsspsw-bin
 	pkgdesc = Bluetooth Secure Simple Pairing (SSP) Switcher
 	pkgver = 1.0
 	pkgrel = 1
@@ -7,7 +7,7 @@ pkgbase = btsspsw
 	license = MIT
 	depends = bluez
 	depends = bluez-utils
-	source = btsspsw-1.0.tar.gz::https://github.com/VHSgunzo/btsspsw/archive/refs/tags/v1.0.tar.gz
+	source = btsspsw-bin-1.0.tar.gz::https://github.com/VHSgunzo/btsspsw/archive/refs/tags/v1.0.tar.gz
 	sha256sums = SKIP
 
-pkgname = btsspsw
+pkgname = btsspsw-bin
