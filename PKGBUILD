@@ -1,5 +1,5 @@
 pkgname=lazy-llm-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Multi-LLM desktop interface built with Electron, Vue, and TypeScript.'
 arch=('x86_64')
@@ -10,7 +10,7 @@ provides=('lazy-llm')
 conflicts=('lazy-llm')
 options=('!strip')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::https://github.com/2725244134/lazy-llm/releases/download/v${pkgver}/lazy-llm_${pkgver}_amd64.deb")
-sha256sums_x86_64=('30ed15dc36e6238514aba502d117249274f75258864cca679002289ff290af05')
+sha256sums_x86_64=('eb16ee826685e2423d72798a96ca6cfc225928d46d341497c06aedec99a2a065')
 
 package() {
   bsdtar -xf "${srcdir}/${pkgname}-${pkgver}-x86_64.deb" -C "${srcdir}"
