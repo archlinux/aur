@@ -1,3 +1,19 @@
+2026.02.08, v19.3.5
+
+feature:
+- fb40bd9c rm cssnano: has no sense for spinner, option disabled by default (https://svgo.dev/docs/plugins/convertPathData/)
+- 76125be9 cloudcmd: eslint v10.0.0
+
+2026.02.06, v19.3.4
+
+feature:
+- 66a08c7f cloudcmd: deepword v11.0.0
+
+2026.02.05, v19.3.3
+
+feature:
+- 4a5a56f4 cloudcmd: dword v16.0.0
+
 2026.02.04, v19.3.2
 
 fix:
