@@ -1,3 +1,4 @@
 [zathura-pdf-mupdf]
-source = "git"
-git = "https://github.com/pwmt/zathura-pdf-mupdf.git"
+source = "github"
+github = "pwmt/zathura-pdf-mupdf"
+use_max_tag = true
