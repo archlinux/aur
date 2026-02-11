@@ -17,6 +17,7 @@ build() {
     cmake -B build -S . \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DVERSION_TAG=${pkgver} \
         -GNinja
     cmake --build build
 }
@@ -24,14 +25,6 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     DESTDIR="${pkgdir}" cmake --install build
-    
-    # Install desktop file
-    install -Dm644 resources/discord-drawing-rpc.desktop \
-        "${pkgdir}/usr/share/applications/discord-drawing-rpc.desktop"
-    
-    # Install icon (512x512)
-    install -Dm644 icon.png \
-        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/discord-drawing-rpc.png"
     
     # Install license
     install -Dm644 LICENSE \
