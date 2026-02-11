@@ -66,8 +66,8 @@ build() {
   export CFLAGS="${CFLAGS} -flto -march=native -mtune=native"
   export CXXFLAGS="${CXXFLAGS} -flto -march=native -mtune=native"
   
-  # Build with default features
-  cargo build --release --target "$_target"
+  # Build with all features enabled
+  cargo build --release --all-features --target "$_target"
   
   # Generate shell completions
   mkdir -p completions
@@ -91,7 +91,7 @@ check() {
     _target="$CARCH-unknown-linux-gnu"
   fi
   
-  cargo test --release --target "$_target"
+  cargo test --release --all-features --target "$_target"
 }
 
 package() {
