@@ -1,8 +1,8 @@
 # Maintainer: Chau Van Loc <chauvanloc01 at gmail dot com>
 
 pkgname=hyprmon
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="TUI for Hyprland monitor configuration"
 arch=('x86_64')
 url="https://github.com/ChauVanLoc01/hyprmon"
