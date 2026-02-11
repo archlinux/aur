@@ -1,7 +1,7 @@
 _pkgname="steamvr-lighthouse-manager"
 pkgname="$_pkgname-git"
 pkgrel=1
-pkgver=1.1.main.r6.g173d2b9
+pkgver=1.1.main.r8.g24a59b6
 epoch=
 pkgdesc="App for managing SteamVR Base Stations 2.0."
 arch=("x86_64")
@@ -28,13 +28,23 @@ pkgver() {
   git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 prepare() {
-	cd "$pkgname"
-    go install github.com/wailsapp/wails/v2/cmd/wails@latest
+  cd "$pkgname"
+
+  # Install wails locally inside GOPATH (not system-wide)
+  export GOPATH="$srcdir/go"
+  export GOBIN="$GOPATH/bin"
+  mkdir -p "$GOBIN"
+
+  go install github.com/wailsapp/wails/v2/cmd/wails@latest
 }
 
 build() {
-	cd "$pkgname"
-    wails build
+  cd "$pkgname"
+
+  export GOPATH="$srcdir/go"
+  export PATH="$GOPATH/bin:$PATH"
+
+  "$GOPATH/bin/wails" build
 }
 
 check() {
