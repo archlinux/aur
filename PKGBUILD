@@ -2,7 +2,7 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname="cloudlist"
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Tool for listing Assets from multiple Cloud Providers"
 arch=(
@@ -26,7 +26,7 @@ _pkgsrc="${pkgname}-${pkgver}"
 source=(
   "${_url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
 )
-sha256sums=('4e44a8ae6f0b87731e8f411ef92521486b03535c3d83eb103c948a82382fdca8')
+sha256sums=('1a165e5dc6dd1f4950517efb569e1527a9d8462af2367917660711ebbdf5e5a6')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
