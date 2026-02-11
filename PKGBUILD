@@ -3,7 +3,7 @@
 _appname=code
 _pkgname="visual-studio-${_appname}"
 pkgname="${_pkgname}-electron-bin"
-pkgver=1.109.0
+pkgver=1.109.2
 _electronversion=39
 pkgrel=1
 pkgdesc="Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications.(Prebuilt and System-wide Electron edition)"
@@ -45,14 +45,14 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_dlurl}/${_appname}-${pkgver}-1770171923.el8.aarch64.rpm")
-source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${_dlurl}/${_appname}-${pkgver}-1770171809.el8.armv7hl.rpm")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_dlurl}/${_appname}-${pkgver}-1770171922.el8.x86_64.rpm")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_dlurl}/${_appname}-${pkgver}-1770755841.el8.aarch64.rpm")
+source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${_dlurl}/${_appname}-${pkgver}-1770755835.el8.armv7hl.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_dlurl}/${_appname}-${pkgver}-1770755856.el8.x86_64.rpm")
 sha256sums=('dc5406ddd35ed5e3be39fe0a5a460f061aff3d296dc70124fd3eface8444c947'
             'c418b7c5c17b3771f53541b46ed1eff461de5871e2c7c177546e2577d480594f')
-sha256sums_aarch64=('79827cff55b9b5a670275836bc630f674bfda982990fcbbd1c9fe0d3707e040e')
-sha256sums_armv7h=('4df4d72127a60f1070dcaef6b05864da3882fa7799171639baa554762a07c4ad')
-sha256sums_x86_64=('d14f531d1382a4ac9c2b5d73382450d1f5f1c88114eed384a2a30cbbd5d23a19')
+sha256sums_aarch64=('b8cc8ad495c30b9f796ea6b9842060219f2a66e474041ea2dae99684beb7dfed')
+sha256sums_armv7h=('893bfc0a85099d0293e807fcbffcbd5c8124d9cf0d11211a5c2fb2828f9967b2')
+sha256sums_x86_64=('ca1cd9a644459dba20430da52f1ea5741489921d07168f15383e9c93845c872b')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/usr/share/${_appname}/${_appname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
@@ -85,4 +85,5 @@ package() {
     install -Dm644 "${srcdir}/usr/share/pixmaps/vs${_appname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/usr/share/bash-completion/completions/${_appname}" -t "${pkgdir}/usr/share/bash-completion/completions"
     install -Dm644 "${srcdir}/usr/share/zsh/site-functions/_${_appname}" -t "${pkgdir}/usr/share/zsh/vendor-completions/"
+    install -Dm644 "${srcdir}/usr/share/${_appname}/resources/app/licenses/"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
