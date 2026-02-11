@@ -1,3 +1,9 @@
+v0.525:
+將 openTypeVheaVertTypoAscender 和 openTypeVheaVertTypoDescender 值分別調整爲 1024 和 -1024。
+
+v0.524:
+新增漢字：岃敚涚。
+
 v0.523:
 新增漢字：捝栿，且 CL 版「捝」「挩」共用一個字圖。
 
