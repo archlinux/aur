@@ -1,6 +1,6 @@
 pkgbase = jellyfin-desktop-cef-libcef-bin
 	pkgdesc = CEF SDK for jellyfin-desktop-cef
-	pkgver = 144.0.12
+	pkgver = 144.0.13
 	pkgrel = 1
 	url = https://bitbucket.org/chromiumembedded/cef
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = jellyfin-desktop-cef-libcef-bin
 	provides = jellyfin-desktop-cef-libcef
 	options = !debug
 	options = !strip
-	source = https://cef-builds.spotifycdn.com/cef_binary_144.0.12+g1a1008c+chromium-144.0.7559.110_linux64_minimal.tar.bz2
-	sha256sums = 0179617aeb361ca38df0189d39b2983a0f8fe8cad42b299e7e790251aa58b43b
+	source = https://cef-builds.spotifycdn.com/cef_binary_144.0.13+g9f739aa+chromium-144.0.7559.133_linux64_minimal.tar.bz2
+	sha256sums = 0b943bb26baed323cbb000ec21d905717d221df952dca23bbb2c6af6d21ba238
 
 pkgname = jellyfin-desktop-cef-libcef-bin
