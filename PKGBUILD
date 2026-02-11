@@ -1,5 +1,5 @@
 pkgname=bar_daemon
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="Async status bar daemon for Linux. Uses event-driven updating of values"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('wireplumber' 'brightnessctl' 'bluez' 'bluez-utils' 'acpi' 'asusctl' 'procps-ng')
 makedepends=('cargo' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e9ef715212a89d6ec006959b6f2f10aa98a5f66d084ae7f440084cfa5d446258')
+sha256sums=('6dadeca9a8f403112cbb4d599ad0cdf72dbaddc01511c49d32190af0aa437791')
 
 build() {
 	cd "$pkgname-$pkgver"
