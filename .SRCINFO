@@ -1,7 +1,7 @@
 pkgbase = gamescope-shaders-git
 	pkgdesc = Gamescope shaders for SteamOS
 	pkgver = 0.1.r2.g64d7a05
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/misyltoad/GamescopeShaders
 	arch = any
 	license = gplv3

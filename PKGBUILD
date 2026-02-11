@@ -2,7 +2,7 @@
 pkgname=gamescope-shaders-git
 _pkgname='gamescope-shaders-git'
 pkgver=0.1.r2.g64d7a05
-pkgrel=1
+pkgrel=2
 pkgdesc='Gamescope shaders for SteamOS'
 url='https://github.com/misyltoad/GamescopeShaders'
 arch=(any)
