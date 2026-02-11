@@ -10,8 +10,8 @@ arch=('x86_64')
 url='https://github.com/TeamPiped/Piped-Backend'
 license=('AGPL-3.0')
 groups=('piped-git')
-depends=('java-runtime' 'postgresql')
-makedepends=('git' 'jdk21-openjdk')
+depends=('java-runtime>=21' 'postgresql')
+makedepends=('git' 'java-environment=21')
 backup=("etc/webapps/piped/${_componentnameshort}.properties")
 source=("git+${url}"
 		'piped-backend.sh'

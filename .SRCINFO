@@ -7,8 +7,8 @@ pkgbase = piped-backend-git
 	groups = piped-git
 	license = AGPL-3.0
 	makedepends = git
-	makedepends = jdk21-openjdk
-	depends = java-runtime
+	makedepends = java-environment=21
+	depends = java-runtime>=21
 	depends = postgresql
 	backup = etc/webapps/piped/backend.properties
 	source = git+https://github.com/TeamPiped/Piped-Backend
