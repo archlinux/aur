@@ -62,12 +62,12 @@ build() {
   # Optimized Rust compilation flags for AUR
   export CARGO_TARGET_DIR="$srcdir/target"
   export CARGO_BUILD_JOBS=$(nproc)
-  export RUSTFLAGS="-C target-cpu=native -C opt-level=3 -C codegen-units=1 -C lto=fat -C panic=abort"
+  export RUSTFLAGS="-C target-cpu=native -C opt-level=3 -C codegen-units=1"
   export CFLAGS="${CFLAGS} -flto -march=native -mtune=native"
   export CXXFLAGS="${CXXFLAGS} -flto -march=native -mtune=native"
   
-  # Build with all features enabled for maximum functionality
-  cargo build --release --features="all-features" --target "$_target"
+  # Build with default features
+  cargo build --release --target "$_target"
   
   # Generate shell completions
   mkdir -p completions
@@ -91,7 +91,7 @@ check() {
     _target="$CARCH-unknown-linux-gnu"
   fi
   
-  cargo test --release --features="all-features" --target "$_target"
+  cargo test --release --target "$_target"
 }
 
 package() {
