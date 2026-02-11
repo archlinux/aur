@@ -1,6 +1,6 @@
 # Maintainer: Tiago Silva <tiagolsilva14 at gmail dot com>
 pkgname=discord-drawing-rpc
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Share your drawing activity on Discord through Rich Presence"
 arch=('x86_64')
