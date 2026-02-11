@@ -1,6 +1,6 @@
 pkgbase = python-pygltflib
 	pkgdesc = Module for reading and writing basic gltf files.
-	pkgver = 1.16.3
+	pkgver = 1.16.5
 	pkgrel = 1
 	url = https://gitlab.com/dodgyville/pygltflib
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-pygltflib
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python-dataclasses-json
-	source = pygltflib-1.16.3.tar.gz::https://gitlab.com/dodgyville/pygltflib/-/archive/v1.16.3/pygltflib-1.16.3.tar.gz
-	sha256sums = deaca01ef008facb55332d63dba1f87cf00fbaaec989e72c538b50ed4d83aefb
+	source = pygltflib-1.16.5.tar.gz::https://gitlab.com/dodgyville/pygltflib/-/archive/v1.16.5/pygltflib-1.16.5.tar.gz
+	sha256sums = ff56cb32dd523749ecce05f5c122754dce2a716ced0cf7dd1854350592659c8e
 
 pkgname = python-pygltflib

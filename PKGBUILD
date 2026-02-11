@@ -1,7 +1,7 @@
 # Maintainer: Sylvain POULAIN <sylvain.poulain at giscan dot com>
 pkgname=python-pygltflib
 _pkgname=pygltflib
-pkgver=1.16.3
+pkgver=1.16.5
 pkgrel=1
 pkgdesc="Module for reading and writing basic gltf files."
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python-dataclasses-json')
 makedepends=('git' 'python-setuptools')
 source=("$_pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/$_pkgname-$pkgver.tar.gz")
-sha256sums=('deaca01ef008facb55332d63dba1f87cf00fbaaec989e72c538b50ed4d83aefb')
+sha256sums=('ff56cb32dd523749ecce05f5c122754dce2a716ced0cf7dd1854350592659c8e')
 
 #build() {
 #  cd "$srcdir/$_pkgname-$pkgver"
