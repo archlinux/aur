@@ -1,0 +1,5 @@
+source: github_release
+repo: nkallen/plasticity
+prefix: v
+verify_commands:
+  - command -v plasticity
