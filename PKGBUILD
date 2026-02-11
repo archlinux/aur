@@ -1,5 +1,4 @@
 # Maintainer: KyvYang <kyvyang@foxmail.com>
-# Contributor: chenjunyu19 <1335546814@qq.com>
 
 pkgname=netease-cloud-music-dl-git
 pkgver=r53.bffe54d
