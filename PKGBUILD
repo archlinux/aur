@@ -1,16 +1,17 @@
 # Maintainer: Matthias R. Wiora <matthias@wiora.io>
 pkgname=tpm2-kira
-pkgver=0.0.12
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="TPM2-based TOTP authenticator with PCR policies"
 arch=('x86_64')
 url="https://github.com/mrwiora/tpm2-kira"
 license=('BSD-3-Clause')
-depends=('bash' 'tpm2-tools>=5.0' 'tpm2-tss>=3.0.0')
-makedepends=('go>=1.19' 'git')
+depends=('bash' 'tpm2-tss>=3.0.0' 'qrencode')
+makedepends=('go>=1.26' 'git')
 optdepends=('mkinitcpio: for early boot integration'
             'cryptsetup: for disk encryption integration'
-            'systemd: for systemd-based initramfs')
+            'systemd: for systemd-based initramfs'
+            'tpm2-tools: for debugging and integration testing')
 
 provides=('tpm2-kira')
 conflicts=('tpm2-kira-git')
@@ -94,6 +95,9 @@ package() {
 
     # Install systemd initramfs hooks
     install -Dm644 mkinitcpio/install/sd-tpm2-kira "$pkgdir/usr/lib/initcpio/install/sd-tpm2-kira"
+
+    # Install post-generation hook (runs 'tpm2-kira reseal' after initramfs rebuild)
+    install -Dm755 mkinitcpio/post/sd-tpm2-kira "$pkgdir/usr/lib/initcpio/post/sd-tpm2-kira"
 
     # Install example configuration
     install -Dm644 mkinitcpio/mkinitcpio.conf.example "$pkgdir/usr/share/doc/$pkgname/mkinitcpio.conf.example"
