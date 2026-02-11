@@ -3,18 +3,18 @@
 
 pkgname='arcconf'
 _pkgname='Arcconf'
-_pkgrel='27449'
-pkgver="4.26.00.${_pkgrel}"
-_rpmver="4.26-${_pkgrel}"
+_pkgrel='28200'
+pkgver="5.05.00.${_pkgrel}"
+_rpmver="5.05-${_pkgrel}"
 pkgrel='1'
 pkgdesc='Microsemi Adaptec command line interface utility'
 arch=('x86_64' 'aarch64')
 makedepends=('libarchive')
-url='https://storage.microsemi.com'
+url='https://microchip.com/en-us/adaptec'
 license=('custom')
-source=("${url}/raid/storage_manager/${pkgname}_B${_pkgrel}.zip"
-	"${url}/raid/storage_manager/${pkgname}_v3_07_23980.zip")
-sha256sums=('347b7b14211544dbd05985e7e7e7ee5d73cae1c9c332ad9249c5598487649f59'
+source=("${pkgname}_B${_pkgrel}.zip::https://microchip.com/bin/mchp/downloadeuladocument.json?path=%2FaemDocuments%2Fdocuments%2Fadaptec%2Fsoftware%2F${pkgname}_B${_pkgrel}.zip"
+	"${pkgname}_v3_07_23980.zip::https://microchip.com/bin/mchp/downloadeuladocument.json?path=%2FaemDocuments%2Fdocuments%2Fadaptec%2Fsoftware%2F${pkgname}_v3_07_23980.zip")
+sha256sums=('c39cedc54a53f7acaf9483004c1a4319c9722a9029be229a3d6dc6293a97e817'
             '7041ff8dad06dfb1ef3559af60227ac9f864183bbaf0dcbbe0c148293868b873')
 noextract=("${source[@]##*/}")
 
