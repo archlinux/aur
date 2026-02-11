@@ -1,23 +1,32 @@
-# Maintainer: Eran Sandler <eran@sandler.co.il>
+# Maintainer: Chau Van Loc <chauvanloc01 at gmail dot com>
+
 pkgname=hyprmon
-pkgver=0.0.6
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="A multi-monitor profile manager for Hyprland"
-arch=('x86_64' 'aarch64')
-url="https://github.com/erans/hyprmon"
-license=('Apache-2.0') 
-depends=('hyprland')
-source_x86_64=("${pkgname}-${pkgver}-linux-amd64::${url}/releases/download/v${pkgver}/${pkgname}-linux-amd64.tar.gz")
-source_aarch64=("${pkgname}-${pkgver}-linux-arm64::${url}/releases/download/v${pkgver}/${pkgname}-linux-arm64.tar.gz")
-sha256sums_x86_64=('e9f2e20159b41d55449628f67302dc578f545786c13a8687f3a787f9ce8e0482')  # Replace with actual checksum
-sha256sums_aarch64=('932ede35b03bfda8b9312e3b97f029255c297f617c246fe8259b0dfb86866be2')  # Replace with actual checksum
+pkgdesc="TUI for Hyprland monitor configuration"
+arch=('x86_64')
+url="https://github.com/ChauVanLoc01/hyprmon"
+license=('MIT')
+depends=('gcc-libs' 'glibc')
+makedepends=('cargo')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('SKIP')
+
+prepare() {
+    cd "$pkgname-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+    cd "$pkgname-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release --all-features
+}
 
 package() {
-    cd "$srcdir"
-
-    # Install the binary (tar.gz should extract just the binary)
-    install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
-
+    cd "$pkgname-$pkgver"
+    install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
