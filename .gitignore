@@ -1,12 +1,6 @@
-*.xz
-*.gz
-*.bz2
-*.tar
-*.lz4
-
 Vial/
-pkg2appimage.AppImage
-
+*.pkg.*
+*.src.*
 /linux-ck/config.last
 /linux-ck/*.pkg
 /linux-ck/*.sign
