@@ -56,3 +56,7 @@ DEST_MODULE_LOCATION[11]="/kernel/drivers/gpib"
 BUILT_MODULE_NAME[12]="hp82335"
 BUILT_MODULE_LOCATION[12]="drivers/gpib/hp_82335/"
 DEST_MODULE_LOCATION[12]="/kernel/drivers/gpib"
+
+BUILT_MODULE_NAME[13]="xyphro_ugc"
+BUILT_MODULE_LOCATION[13]="drivers/gpib/xyphro/"
+DEST_MODULE_LOCATION[13]="/kernel/drivers/gpib"
