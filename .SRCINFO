@@ -1,0 +1,15 @@
+pkgbase = deskreen-ce-git
+	pkgdesc = Screen sharing and present screen: Turn any device into a secondary screen for your computer
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/pavlobu/deskreen
+	arch = x86_64
+	license = AGPL-3.0
+	makedepends = pnpm
+	makedepends = fuse2
+	conflicts = deskreen
+	conflicts = deskreen-ce
+	source = deskreen-ce::git+https://github.com/pavlobu/deskreen.git
+	sha256sums = SKIP
+
+pkgname = deskreen-ce-git
