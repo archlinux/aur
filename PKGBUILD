@@ -3,7 +3,7 @@ pkgname=root-app-bin
 _pkgname=root-app
 pkgver=0.9.86
 pkgrel=1
-pkgdesc="Root - The Discord alternative for communities (AppImage)"
+pkgdesc="Root - The Discord alternative for communities"
 arch=('x86_64' 'aarch64')
 url="https://www.rootapp.com"
 license=('Proprietary')
@@ -16,7 +16,7 @@ options=('!strip')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.AppImage::https://installer.rootapp.com/installer/Linux/X64/Root.AppImage")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.AppImage::https://installer.rootapp.com/installer/Linux/Arm64/Root.AppImage")
 
-# CHECKSUMS - We use SKIP initially, but you should update these!
+# CHECKSUMS
 sha256sums_x86_64=('1fc2c73d77cc9b29a211bf202a1c59c12e3adca2d4aecaef27da54491fa6a5f5')
 sha256sums_aarch64=('fe0bba052d095666158a39ff90042046b3fb728f6c9b4170474e60239892cfcb')
 
@@ -41,15 +41,13 @@ package() {
     ln -s "/opt/$_pkgname/$_pkgname.AppImage" "$pkgdir/usr/bin/rootapp"
 
     # 4. Extract content to get Icon and Desktop file
-    # We run the AppImage with --appimage-extract to pull files out
     "$_appimage" --appimage-extract > /dev/null
 
-    # 5. Install Icon (Try to find the main one)
+    # 5. Install Icon
     install -Dm644 "squashfs-root/rootapp.png" \
         "$pkgdir/usr/share/icons/hicolor/256x256/apps/rootapp.png"
 
     # 6. Install Desktop File
-    # We use the one inside the AppImage but fix the Exec line
     install -Dm644 "squashfs-root/rootapp.desktop" \
         "$pkgdir/usr/share/applications/rootapp.desktop"
 
