@@ -2,7 +2,7 @@
 # Contributor: lmartinez-mirror
 pkgname=vim-pkgbuild-git
 _pkgname=${pkgname%-git}
-pkgver=r15.02a240d
+pkgver=r17.2469a0a
 pkgrel=1
 pkgdesc="Vim plugin to edit PKGBUILD files"
 arch=('any')
