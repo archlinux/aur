@@ -2,13 +2,13 @@
 
 pkgname=thorvg-examples-git
 _pkgname=thorvg-examples
-pkgver=r22.7174d46
+pkgver=r28.fae0c30
 pkgrel=1
 pkgdesc="examples for lightweight, and portable library designed for rendering vector-based scenes and animations, including SVG and Lottie formats"
 url="https://www.thorvg.org/"
 arch=('x86_64' 'aarch64' 'riscv32' 'riscv64' 'i386' 'i686' 'armv7h' 'armv6h' 'loong64' 'powerpc' 'powerpc64le' 'powerpc64')
 license=('MIT')
-depends=('libpng' 'libjpeg' 'libwebp' 'mesa' 'libx11' 'thorvg-git') # doesn"t work with it either: 'wgpu-native-git')
+depends=('libpng' 'libjpeg' 'libwebp' 'mesa' 'libx11' 'thorvg') # doesn"t work with it either: 'wgpu-native-git')
 makedepends=('meson' 'ninja')
 conflicts=('thorvg-examples')
 provides=('thorvg-examples')
