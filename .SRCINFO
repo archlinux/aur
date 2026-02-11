@@ -1,0 +1,23 @@
+pkgbase = qianxin-vpn-bin
+	pkgdesc = 奇安信VPN客户端
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://www.qianxin.com/
+	arch = x86_64
+	license = proprietary
+	depends = qt5-base
+	depends = qt5-svg
+	depends = qt5-multimedia
+	depends = krb5
+	depends = openssl
+	depends = libcurl-compat
+	depends = libglvnd
+	depends = glibc
+	depends = net-tools
+	conflicts = qianxin-vpn-bin
+	conflicts = qianxin-vpn-bin
+	backup = etc/vpn_client/Info.plist
+	source = https://appstore.qianxin.com/file/download/1276
+	sha256sums = 96c591154e555afaef0f37d227b3a333b5a6181c9b010ed2142ac369ec815609
+
+pkgname = qianxin-vpn-bin
