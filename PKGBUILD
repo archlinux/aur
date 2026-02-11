@@ -1,19 +1,19 @@
 # Maintainer: futpib <futpib@gmail.com>
 
-_pkgname=choomd
+_pkgname=divoom-ditoo-pro-controller
 pkgname="${_pkgname}-git"
-pkgver=0.1.2.r3.g981bac7
+pkgver=0.1.0.r0.g9b6a9db
 pkgrel=1
-pkgdesc="Adjust process OOM-killer scores based on process names and other attributes"
+pkgdesc="Divoom Ditoo Pro controller"
 arch=('x86_64')
-url="https://github.com/futpib/choomd"
-license=('GPL3')
-depends=()
-backup=('etc/choomd.toml')
-makedepends=('rust' 'cargo' 'git')
+url="https://github.com/futpib/divoom-ditoo-pro-controller"
+license=('MIT')
+depends=('dbus' 'fontconfig' 'bluez')
+optdepends=('bdf-creep: good dot matrix font')
+makedepends=('rust' 'cargo' 'git' 'pkg-config')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=('git+https://github.com/futpib/choomd.git')
+source=("git+https://github.com/futpib/divoom-ditoo-pro-controller.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -41,6 +41,4 @@ check() {
 package() {
   cd "${srcdir}/${_pkgname}"
   install -Dm755 -t "${pkgdir}/usr/bin/" "target/release/${_pkgname}"
-  install -Dm644 -t "${pkgdir}/usr/lib/systemd/system/" "etc/choomd.service"
-  install -Dm644 -t "${pkgdir}/etc" "etc/choomd.toml"
 }
