@@ -1,7 +1,7 @@
 pkgbase = typhoon
 	pkgdesc = A stylish weather app based on Stormcloud
 	pkgver = 1.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/archisman-panigrahi/typhoon
 	arch = any
 	license = GPL-3.0-or-later
