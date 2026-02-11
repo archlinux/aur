@@ -2,7 +2,7 @@
 pkgname=astrorama-sourcextractor++
 _pkgname=SourceXtractorPlusPlus
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The next generation SExtractor"
 url="https://github.com/astrorama/SourceXtractorPlusPlus"
 arch=('x86_64')

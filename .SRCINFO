@@ -1,7 +1,7 @@
 pkgbase = astrorama-sourcextractor++
 	pkgdesc = The next generation SExtractor
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/astrorama/SourceXtractorPlusPlus
 	arch = x86_64
 	license = LGPL-3.0-only
@@ -27,7 +27,7 @@ pkgbase = astrorama-sourcextractor++
 	source = 0001-fix_build.patch
 	source = 0002-remove_TestImage.patch
 	sha256sums = 29741e3e0034a70c0ba1b698113a89faef28a22f0a18910c4845e87ebbfb58cb
-	sha256sums = 639e269da6a7c72e2910782ae48eb9bd3efd62a8d1898f78fe6dc99825b92310
+	sha256sums = e4531d623147ad42e9d1bfb084edb6a2a984b87fa5717bd67d0ae64f5a573dfd
 	sha256sums = cee2bfc897aad09f4c18ed6baca21515ca01da569431e333c01887304ddd63b0
 
 pkgname = astrorama-sourcextractor++
