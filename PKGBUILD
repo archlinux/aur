@@ -6,7 +6,7 @@
 pkgname=python-scenedetect-git
 _pkgname="${pkgname%-git}"
 _pkg="${_pkgname#python-}"
-pkgver=0.6.1.release.r0.gcd1d1b6
+pkgver=0.6.7.1.release.r56.gd75833f
 pkgrel=1
 pkgdesc="Cross-platform, OpenCV-based video scene detection program and Python library."
 license=('BSD')
