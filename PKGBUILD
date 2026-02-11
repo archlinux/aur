@@ -3,7 +3,7 @@ pkgname=openbao
 pkgver=2.5.0
 # NOTE: this commit should match the commit of the release version
 _commit='a2bf51c891680240888f7363322ac5b2d080bb23'
-pkgrel=1
+pkgrel=2
 pkgdesc="solution to manage, store, and distribute sensitive data"
 arch=("x86_64")
 url="https://openbao.org"
@@ -12,7 +12,7 @@ depends=(glibc)
 # nodejs 23 and later don't work
 # See https://github.com/openbao/openbao/issues/731
 # If built without the ui, the nodejs dependency can be removed
-makedepends=(go go-tools yarn 'nodejs<23')
+makedepends=(go go-tools git yarn npm 'nodejs-lts-jod')
 optdepends=()
 options=()
 backup=(etc/openbao/openbao.hcl, etc/default/openbao)
@@ -37,7 +37,10 @@ prepare() {
 build() {
   cd "${srcdir}/$pkgname-$pkgver"
   pushd ui
-  yes ' ' | yarn install
+  # The 3.x version has some bugs due to changes to git
+  # that cause install to fail
+  yarn set version 4.x
+  yes ' ' | yarn install --network-timeout 20000
   yarn rebuild node-sass
   yarn run build
   popd
