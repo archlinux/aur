@@ -3,13 +3,19 @@
 
 pkgname=torrent-file-editor
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt based GUI tool designed to create and edit .torrent files'
 arch=('x86_64')
 url="https://${pkgname}.github.io/"
 license=('GPL-3.0-or-later')
 
-depends=('glibc')
+depends=(
+    'glibc'
+    'hicolor-icon-theme'
+    'libgcc'
+    'libstdc++'
+)
+
 makedepends=('cmake')
 _buildflags=()
 

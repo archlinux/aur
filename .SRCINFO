@@ -1,13 +1,16 @@
 pkgbase = torrent-file-editor
 	pkgdesc = Qt based GUI tool designed to create and edit .torrent files
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://torrent-file-editor.github.io/
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cmake
 	makedepends = qt6-tools
 	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libstdc++
 	depends = qt6-base
 	depends = qt6-5compat
 	source = https://github.com/torrent-file-editor/torrent-file-editor/releases/download/v1.0.0/torrent-file-editor-1.0.0.tar.gz
