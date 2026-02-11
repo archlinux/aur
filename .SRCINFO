@@ -1,8 +1,8 @@
 pkgbase = dmenustatus-git
 	pkgdesc = A statusbar for dmenu written in C.
-	pkgver = 0.10.1.beta.r3.f61ca35
+	pkgver = 0.10.2.r1.361eeda
 	pkgrel = 1
-	url = https://github.com/Quadsam/dmenu-statusbar
+	url = https://github.com/Quadsam/dmenustatus
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	makedepends = git
@@ -14,7 +14,7 @@ pkgbase = dmenustatus-git
 	provides = dmenustatus
 	conflicts = dmenustatus
 	options = !debug
-	source = dmenustatus::git+https://github.com/Quadsam/dmenu-statusbar
+	source = dmenustatus::git+https://github.com/Quadsam/dmenustatus
 	sha256sums = SKIP
 
 pkgname = dmenustatus-git
