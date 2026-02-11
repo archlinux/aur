@@ -1,6 +1,6 @@
 pkgname=adw-network-bin
-pkgver=0.1.3
-pkgrel=2
+pkgver=0.1.4
+pkgrel=4
 pkgdesc="Modern network management application for GNOME (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/PlayRood32/adw-network"
