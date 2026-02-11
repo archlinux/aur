@@ -2,7 +2,7 @@
 pkgname=dev-janitor-bin
 _pkgname=dev-janitor
 pkgver=2.2.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Dev Janitor - A developer tool management app (Binary release)"
 arch=('x86_64')
 url="https://github.com/cocojojo5213/Dev-Janitor"
