@@ -1,6 +1,6 @@
 pkgbase = feishin-electron-bin
 	pkgdesc = A modern self-hosted music player.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.4.2
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://feishin.vercel.app/
 	arch = aarch64
@@ -8,13 +8,13 @@ pkgbase = feishin-electron-bin
 	license = GPL-3.0-only
 	makedepends = asar
 	depends = electron39
-	provides = feishin=1.4.2
+	provides = feishin=1.5.0
 	conflicts = feishin
 	source = feishin-electron.sh
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = feishin-electron-1.4.2-aarch64.AppImage::https://github.com/jeffvli/feishin/releases/download/v1.4.2/Feishin-linux-arm64.AppImage
-	sha256sums_aarch64 = 6c96c5a1843ceb2d15acd60a11507feaef92d8badb08b87b79e8a9336bb64218
-	source_x86_64 = feishin-electron-1.4.2-x86_64.AppImage::https://github.com/jeffvli/feishin/releases/download/v1.4.2/Feishin-linux-x86_64.AppImage
-	sha256sums_x86_64 = e7d153b5de22586cb2e89030fe265ea02d15dae980226bc6fde6487763977998
+	source_aarch64 = feishin-electron-1.5.0-aarch64.AppImage::https://github.com/jeffvli/feishin/releases/download/v1.5.0/Feishin-linux-arm64.AppImage
+	sha256sums_aarch64 = 469a55e72bb06cb2d9cb3fb830bc6888b53bf61824f14693a9faa55e9fdb740f
+	source_x86_64 = feishin-electron-1.5.0-x86_64.AppImage::https://github.com/jeffvli/feishin/releases/download/v1.5.0/Feishin-linux-x86_64.AppImage
+	sha256sums_x86_64 = 8ffcc781ac471ac7cef3dfd987c95883ed99d695b545344f3b0d2df4614ee1ff
 
 pkgname = feishin-electron-bin
