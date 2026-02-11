@@ -1,17 +1,17 @@
 pkgbase = dtv-bin
 	pkgdesc = Lightweight Douyu Douyin Bilibili Tigertooth live streaming desktop client.(Prebuilt version.Use system-wide electron)抖音、b站、斗鱼、虎牙跨平台轻量化桌面客户端
-	pkgver = 2.4.4
-	pkgrel = 2
+	pkgver = 2.4.5
+	pkgrel = 1
 	url = https://github.com/chen-zeong/DTV
 	arch = x86_64
 	license = MIT
 	depends = gtk3
 	depends = webkit2gtk-4.1
-	provides = dtv=2.4.4
+	provides = dtv=2.4.5
 	conflicts = dtv
-	source = dtv-2.4.4.deb::https://github.com/chen-zeong/DTV/releases/download/v2.4.4/DTV_2.4.4_amd64.deb
-	source = LICENSE-2.4.4::https://raw.githubusercontent.com/chen-zeong/DTV/v2.4.4/LICENSE
-	sha256sums = 5e08b4acd93183f0e1d591626c94933cd4cb7c404f56a09dece7add2aa74e577
+	source = dtv-2.4.5.deb::https://github.com/chen-zeong/DTV/releases/download/v2.4.5/DTV_2.4.5_amd64.deb
+	source = LICENSE-2.4.5::https://raw.githubusercontent.com/chen-zeong/DTV/v2.4.5/LICENSE
+	sha256sums = 1e25db30834f7a15443723689e3aa592ea1dc43f7b45a9f2d8788465abfc9223
 	sha256sums = ca61883629a40325b21aa31860f834ebfee4c71cce39a519c80732183ac73315
 
 pkgname = dtv-bin
