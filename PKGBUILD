@@ -1,7 +1,8 @@
+# shellcheck shell=bash disable=SC2034,SC2154
 # Maintainer: Mikhail f. Shiryaev <mr dot felixoid at gmail dot com>
 
 pkgname=clickhouse-lts
-pkgver=25.8.10.7
+pkgver=25.8.16.34
 pkgrel=1
 pkgdesc='An open-source column-oriented database management system that allows generating analytical data reports in real time. LTS version'
 arch=('x86_64' 'aarch64')
@@ -22,14 +23,14 @@ source_aarch64=(
   "${_source_prefix}/clickhouse-server_${pkgver}_arm64.deb"
 )
 sha256sums_x86_64=(
-  6dde84d5f1313281c2e51b9220862ebff2241828624bcd3ae6cc8b825a646abe
-  491ba8eeeccce954894d49376682f91a32f015cf44b544f0ecf6e8ffe0c1bdcf
-  693958d0f35c5958b7142d402a195dedef2e4fc699df4e574c664cd279e417d1
+  7fe555f4956fc487734e6f5e311707131a00055fca0ca0a3278ca29791d6a1b8
+  7cf31038a1ff7859364225061367e38f943c0e202794b62dc033fda0547d1a15
+  f411dc31c168008440263cc37018a9aceb32cb5e2e2586638b0d6c5376189e35
 )
 sha256sums_aarch64=(
-  80834852b534258047ca6f1798b81f4c49e835977fbb2388b0cd9c7c464a5d7b
-  0632390707e59d3ffe9a23a011e3902f09dd1561665feabfdf7fe5b75771b129
-  fe443c7afddeaea635c7ed2f4324906ac23ba18b902f047f937e0fead71dc8e7
+  cc3a5f4e7d892742ee890816b02615f587cb33338e8728998a9710fb2d3e4ca4
+  7cb6caa5f371974f56f00bfaf7905a5429ba55f47b0af3adbed0843d3646e7e6
+  402bd28f550174d457d3da8e1541325b52d92d4a3473ccac303c97a5e4d8ca61
 )
 _noextract_x86_64=(
   clickhouse-client_"${pkgver}"_amd64.deb
@@ -55,13 +56,15 @@ provides=(clickhouse-client clickhouse-server clickhouse-keeper clickhouse-commo
 conflicts=(clickhouse-client clickhouse-server clickhouse-keeper clickhouse-common-static)
 
 get_sums() {
+  # usage: bash -c 'source PKGBUILD && get_sums'
   for CARCH in x86_64 aarch64; do
+    pkgver=$(grep '^pkgver=' PKGBUILD | cut -f2 -d=);
     CARCH=$CARCH makepkg --verifysource --nobuild --noextract;
   done
   for CARCH in x86_64 aarch64; do
-    [ "$CARCH" == aarch64 ] && arch=arm64 || arch=amd64;
+    [ "$CARCH" == aarch64 ] && pkg_arch=arm64 || pkg_arch=amd64;
     echo "sha256sums_${CARCH}=("
-    sha256sum clickhouse*"${pkgver}_${arch}.deb" | sed -r 's|(\w+).+|  \1|';
+    sha256sum clickhouse*"${pkgver}_${pkg_arch}.deb" | sed -r 's|(\w+).+|  \1|';
     echo ')'
   done
 }
