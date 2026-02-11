@@ -1,7 +1,7 @@
 pkgbase = ttf-andysevka
 	pkgdesc = A configured build of Iosevka (TTF, WOFF2; Spacings: Term, Proportional)
 	pkgver = 2026.01.05
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AndydeCleyre/archbuilder_iosevka/tree/andysevka
 	arch = any
 	license = custom:OFL

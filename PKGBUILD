@@ -11,7 +11,7 @@ _repo_url='https://github.com/AndydeCleyre/archbuilder_iosevka'
 _repo_branch='andysevka'
 
 pkgname="ttf-${_repo_branch}"
-pkgrel=1
+pkgrel=2
 pkgdesc='A configured build of Iosevka (TTF, WOFF2; Spacings: Term, Proportional)'
 arch=('any')
 url="${_repo_url}/tree/${_repo_branch}"
