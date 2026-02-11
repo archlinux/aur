@@ -1,0 +1,13 @@
+pkgbase = clocktemp
+	pkgdesc = A TUI clock inspired by tty-clock that displays the time, date, temperature and more.
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/arthur-dnts/ClockTemp
+	arch = any
+	license = GPL-3.0-or-later
+	depends = python
+	depends = python-requests
+	source = clocktemp-1.2.2.tar.gz::https://github.com/arthur-dnts/ClockTemp/archive/v1.2.2.tar.gz
+	sha256sums = 992bb4ea3736219a539bdf08cb08d176a6ba9548a0097b33493a8264a63fe3a4
+
+pkgname = clocktemp
