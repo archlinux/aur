@@ -1,7 +1,7 @@
 pkgbase = discord-drawing-rpc
 	pkgdesc = Share your drawing activity on Discord through Rich Presence
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TheGameratorT/discord-drawing-rpc
 	install = discord-drawing-rpc.install
 	arch = x86_64
