@@ -1,6 +1,6 @@
 pkgbase = trufflehog-bin
 	pkgdesc = Find, verify, and analyze leaked credentials
-	pkgver = 3.93.1
+	pkgver = 3.93.2
 	pkgrel = 1
 	url = https://github.com/trufflesecurity/trufflehog
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = trufflehog-bin
 	license = AGPL-3.0-only
 	provides = trufflehog
 	conflicts = trufflehog
-	source = https://raw.githubusercontent.com/trufflesecurity/trufflehog/v3.93.1/examples/generic.yml
-	source = https://raw.githubusercontent.com/trufflesecurity/trufflehog/v3.93.1/examples/generic_with_filters.yml
+	source = https://raw.githubusercontent.com/trufflesecurity/trufflehog/v3.93.2/examples/generic.yml
+	source = https://raw.githubusercontent.com/trufflesecurity/trufflehog/v3.93.2/examples/generic_with_filters.yml
 	sha256sums = 37e56a67543eea634967c9516831c823967fb2e2cbfedc036be25648f5d696d2
 	sha256sums = b1dc9104998919f161e89aa8512699ed20b50c601cfbcebc4ba630e69cf3e62e
-	source_x86_64 = https://github.com/trufflesecurity/trufflehog/releases/download/v3.93.1/trufflehog_3.93.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 2edf991c20fd8e6d2ec5f255b928289156bc1f0640618829c580c6e87e28ff57
-	source_aarch64 = https://github.com/trufflesecurity/trufflehog/releases/download/v3.93.1/trufflehog_3.93.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 6424e63e0397f7e1b63b880bed6657f76025783738b45868210b445aa5a27b5f
+	source_x86_64 = https://github.com/trufflesecurity/trufflehog/releases/download/v3.93.2/trufflehog_3.93.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = e29df410644554acca5d4a27b500f85fb4ab7fb30c1c604b5438b11796b6810c
+	source_aarch64 = https://github.com/trufflesecurity/trufflehog/releases/download/v3.93.2/trufflehog_3.93.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = b35f062a7fa4c8a5d3bb0c98a9c8c6e2764247a4218e88bc0f8707d0fb6d4aba
 
 pkgname = trufflehog-bin
