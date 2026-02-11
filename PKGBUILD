@@ -5,14 +5,14 @@ conflicts=(
     "protonmail-bridge"
     "protonmail-bridge-core"
 )
-pkgver=3.21.2
-pkgrel=2
+pkgver=3.22.0
+pkgrel=1
 pkgdesc="An IMAP/SMTP bridge to a ProtonMail account (patched, stores secrets in a file)"
 arch=("x86_64")
 url="https://protonmail.com/bridge/"
 license=("GPL3")
 depends=()
-makedepends=("go>=2:1.22.0")
+makedepends=("go>=2:1.24.4")
 options=("!strip")
 source=(
     "https://github.com/ProtonMail/proton-bridge/archive/refs/tags/v$pkgver.tar.gz"
@@ -20,8 +20,8 @@ source=(
     "protonmail-bridge.service"
 )
 sha256sums=(
-    "d6c373f219d7351b18277061faab24cd677c28ea4398de5c48f752e7a14f1c2a"
-    "8417bf590a731aa207b055d0b5ee47468cfde0183b7f87ea501919748e27616f"
+    "15c9daa5bbb9db6e61d9644f346dc9d4df3bda59ccd3d73ae4b889d64f4874cf"
+    "fe08ed8a40e14034d5509bd1c827991cc3c273dc313842451a4b3366e8cbfc70"
     "5ffaaa5acc030ebed82b3b13f1ddc2791b50851fb93964a5d6a20a11000c18c2"
 )
 
