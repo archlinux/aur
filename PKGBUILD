@@ -14,7 +14,7 @@ license=(custom)
 depends=(libpng
          perl)
 _archive="$pkgname-$pkgver"
-source=("$url/$_archive.tar.gz"
+source=("${url%/software}/$pkgname/$_archive.tar.gz"
         xcftools.patch
         fs70042.patch::https://github.com/j-jorge/xcftools/commit/59c38e3e45b9112c2bcb4392bccf56e297854f8a.patch)
 b2sums=('c603c35a82954107d73d1490b0fccf0944a90a52ab0ec08d816e7fc17651e7b022e7d60e53439eb346707a197cfee66bff677c850901ea981fbdb12c8aa4616d'
