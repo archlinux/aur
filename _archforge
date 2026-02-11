@@ -1,0 +1,85 @@
+#compdef archforge
+
+_archforge_commands() {
+    local commands
+    commands=(
+        'generate:Generate PKGBUILD from natural language'
+        'build:Build a package'
+        'search:Search AUR'
+        'info:Show package info'
+        'deploy:Deploy to AUR/Docker/Flatpak/Nix'
+        'interactive:Launch TUI'
+        'init:Initialize new project'
+        'swarm:Manage P2P network'
+        'status:Show status'
+        'cache:Manage cache'
+        'help:Show help'
+    )
+    _describe -t commands 'command' commands
+}
+
+_archforge_generate_opts() {
+    local opts
+    opts=(
+        '(-o --output)'{-o,--output}'[Output file]:file:_files'
+        '(-q --quiet)'{-q,--quiet}'[Quiet mode]'
+    )
+    _arguments -s $opts
+}
+
+_archforge_build_opts() {
+    local opts
+    opts=(
+        '(-s --skippgpcheck)'{-s,--skippgpcheck}'[Skip PGP check]'
+        '(-d --nodeps)'{-d,--nodeps}'[Skip dependencies]'
+        '(-n --nobuild)'{-n,--nobuild}'[Download only]'
+    )
+    _arguments -s $opts
+}
+
+_archforge_search_opts() {
+    local opts
+    opts=(
+        '(-s --short)'{-s,--short}'[Short output]'
+        '(--noresults)--noresults[Limit results]'
+    )
+    _arguments -s $opts
+}
+
+_archforge_deploy_targets() {
+    local targets
+    targets=('aur:AUR repository' 'docker:Docker image' 'flatpak:Flatpak bundle' 'nix:Nix flake')
+    _describe -t targets 'target' targets
+}
+
+_archforge_global_opts() {
+    local opts
+    opts=(
+        '(-v --verbose)'{-v,--verbose}'[Verbose output]'
+        '(-c --config)'{-c,--config}'[Config file]:file:_files'
+        '(-h --help)'{-h,--help}'[Show help]'
+        '(-V --version)'{-V,--version}'[Show version]'
+    )
+    _arguments -s $opts
+}
+
+_archforge() {
+    local state
+    _arguments -C \
+        '_archforge_global_opts' \
+        '1: :_archforge_commands' \
+        '*::arg:->args'
+
+    case $state in
+        args)
+            case ${words[1]} in
+                generate) _archforge_generate_opts ;;
+                build) _archforge_build_opts ;;
+                search) _archforge_search_opts ;;
+                deploy) _archforge_deploy_targets ;;
+            esac
+            ;;
+    esac
+}
+
+_archforge "$@"

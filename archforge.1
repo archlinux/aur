@@ -1,0 +1,94 @@
+.\" Man page for archforge
+.TH ARCHFORGE 1 "2024" "ArchForge v0.1.0" "User Commands"
+.SH NAME
+archforge \- AI-powered TUI for PKGBUILD generation and AUR management
+.SH SYNOPSIS
+.B archforge
+[\fIOPTIONS\fR] \fICOMMAND\fR [\fIARGS\fR...]
+.SH DESCRIPTION
+ArchForge is an AI-powered terminal user interface for generating PKGBUILD files
+from natural language descriptions and managing Arch User Repository packages.
+.SH COMMANDS
+.TP
+.B generate \fIDESCRIPTION\fR
+Generate a PKGBUILD from natural language description
+.TP
+.B build \fIPKGBUILD\fR
+Build a package using makepkg
+.TP
+.B search \fIQUERY\fR
+Search AUR for packages
+.TP
+.B info \fIPACKAGE\fR
+Show package information from AUR
+.TP
+.B deploy \fITARGET\fR
+Deploy package to AUR, Docker, Flatpak, or Nix
+.TP
+.B interactive
+Launch interactive TUI (default mode)
+.TP
+.B init \fINAME\fR
+Initialize a new project
+.TP
+.B swarm
+Manage P2P swarm network
+.TP
+.B status
+Show system status
+.TP
+.B cache
+Manage cache directories
+.SH OPTIONS
+.TP
+.B \-v, \-\-verbose
+Increase verbosity
+.TP
+.B \-c, \-\-config \fIFILE\fR
+Config file path (default: ~/.config/archforge/config.toml)
+.TP
+.B \-h, \-\-help
+Print help message
+.TP
+.B \-V, \-\-version
+Print version information
+.SH TUI KEYBINDINGS
+.TP
+.B h / j / k / l
+Navigate left / down / up / right
+.TP
+.B i
+Enter insert mode
+.TP
+.B :
+Enter command mode
+.TP
+.B /
+Search
+.TP
+.B ?
+Show help
+.TP
+.B q
+Quit
+.SH FILES
+.TP
+.B ~/.config/archforge/config.toml
+Configuration file
+.TP
+.B ~/.cache/archforge/
+Cache directory
+.SH EXAMPLES
+.TP
+Generate a PKGBUILD:
+.B archforge "simple hello world program in C"
+.TP
+Search for packages:
+.B archforge search neovim
+.TP
+Launch TUI:
+.B archforge
+.SH AUTHOR
+ArchForge Team
+.SH SEE ALSO
+.BR makepkg(8), pacman(8), aura(1), paru(1)
