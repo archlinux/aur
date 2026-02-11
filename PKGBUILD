@@ -10,7 +10,7 @@ depends=('gtk3' 'libxcb' 'libxkbcommon' 'libxkbcommon-x11' 'wayland')
 provides=('visigrid')
 conflicts=('visigrid' 'visigrid-git')
 source=("https://github.com/VisiGrid/VisiGrid/releases/download/v${pkgver}/VisiGrid-linux-x86_64.tar.gz")
-sha256sums=('fa479ea8a3e6c6ac2ae5a3390215b84d0f0ca09f7323dda6c9349fbf1515d9a7')
+sha256sums=('2dad3461b3c2952d22218cecd488d092dd98a744aa6d7bdee99ac6cab28aa882')
 
 package() {
     cd "$srcdir/VisiGrid-linux-x86_64"
