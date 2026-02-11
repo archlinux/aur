@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc="PulseSync integrates with Yandex Music and supports Discord RPC, themes and scripts."
 arch=('x86_64')
 url="https://pulsesync.dev/"
-license=('MIT')
+license=('https://github.com/PulseSync-LLC/PulseSync-client/blob/main/LICENSE')
 
 depends=(
     'glibc'
