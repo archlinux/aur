@@ -1,4 +1,5 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Nathaniel Chin <thegamingorangutans+aur at gmail.com>
 # Original: bitwave > https://aur.archlinux.org/packages/python-scenedetect/
 
