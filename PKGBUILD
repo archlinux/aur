@@ -1,6 +1,6 @@
 # Maintainer: DonutsDelivery <https://github.com/DonutsDelivery>
 pkgname=task-manager-linux
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A lightweight GTK4 + Rust system task manager for Linux'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gtk4' 'libadwaita')
 makedepends=('cargo' 'pkg-config')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DonutsDelivery/task-manager-linux/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4a97330783d38d98f189b02612c13eded7defe156418f952a77de0fa1ad0de4f')
+sha256sums=('c85a588617236c891beab9b7536b77fd2fed5fce5c8436ff10eb9e7afa63bd6c')
 
 prepare() {
     cd "$pkgname-$pkgver"
