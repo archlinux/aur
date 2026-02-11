@@ -2,8 +2,8 @@
 # Contributor: Evert Vorster <superchief@evertvorster.com>
 
 pkgname=oolite
-pkgver=1.92
-pkgrel=2
+pkgver=1.92.0.1
+pkgrel=1
 pkgdesc="Open Source remake of Elite with many, many enhancements, git version"
 arch=('x86_64')
 url="https://oolite.space/"
@@ -25,7 +25,7 @@ source=("oolite-$pkgver::git+https://github.com/OoliteProject/oolite#tag=$pkgver
         oolite
 )
 
-sha512sums=('adb10045983f6d827ff2653cecd5288e61697a8dacdfe83bbb2508c231aa32cff5208579f081eae97b7584a449a124ceb854874f438f952e2eef505d505eee70'
+sha512sums=('8775eba0d3cd9d0705f48b46fcc9a52844c63a2bd2e1bd6566725403afe5bee6ae39dba28fee6a21a727b746a69527831cdd8c3665d3384e23388c566b2d0625'
             'SKIP'
             'SKIP'
             'SKIP'

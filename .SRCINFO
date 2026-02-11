@@ -1,7 +1,7 @@
 pkgbase = oolite
 	pkgdesc = Open Source remake of Elite with many, many enhancements, git version
-	pkgver = 1.92
-	pkgrel = 2
+	pkgver = 1.92.0.1
+	pkgrel = 1
 	url = https://oolite.space/
 	arch = x86_64
 	groups = game
@@ -22,7 +22,7 @@ pkgbase = oolite
 	depends = sdl12-compat
 	depends = libvorbis
 	depends = libpng
-	source = oolite-1.92::git+https://github.com/OoliteProject/oolite#tag=1.92
+	source = oolite-1.92.0.1::git+https://github.com/OoliteProject/oolite#tag=1.92.0.1
 	source = git+https://github.com/OoliteProject/oolite-binary-resources.git
 	source = git+https://github.com/OoliteProject/oolite-mac-components
 	source = git+https://github.com/OoliteProject/oolite-linux-dependencies.git
@@ -33,7 +33,7 @@ pkgbase = oolite
 	source = git+https://github.com/OoliteProject/libvorbis-1.3.3.git
 	source = git+https://github.com/OoliteProject/oolite-windows-dependencies.git
 	source = oolite
-	sha512sums = adb10045983f6d827ff2653cecd5288e61697a8dacdfe83bbb2508c231aa32cff5208579f081eae97b7584a449a124ceb854874f438f952e2eef505d505eee70
+	sha512sums = 8775eba0d3cd9d0705f48b46fcc9a52844c63a2bd2e1bd6566725403afe5bee6ae39dba28fee6a21a727b746a69527831cdd8c3665d3384e23388c566b2d0625
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
