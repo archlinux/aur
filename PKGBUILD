@@ -11,11 +11,13 @@ arch=('i686' 'x86_64')
 url='https://busybox.net/~vda/unscd/'
 license=('GPL2')
 source=("https://busybox.net/~vda/unscd/nscd-$pkgver.c"
-        'unscd.service' 'unscd.conf' 'unscd.8')
-md5sums=('ddff52893cfc48d0e61035e2596f70d2'
-         'f66fcf467518d51880bdf3b85511c53a'
-         'cfbab3d1c5b0fe362a218ad15ad2d6e3'
-         '9069ba3a3a07673ab1a7cc70018b387e')
+        'unscd.service'
+        'unscd.conf'
+        'unscd.8')
+b2sums=('5c35fec2f4f3447c5d6500a7fc50c97347923d62d084134ced5c412307e8db6079e01302b16ac3e1940ee9194a31ebec464e3bd838fd8b6a650b8c0bdc66349d'
+        'a6fd4acb812c15b8077072a2f2ed2ad59866a7ba285f76d92c1443b82ff66f424844fcdef61a867c43cfb03d90a6b7ce8f3c538340ae3c75f5ed7fb4b133662e'
+        'd9789f8bb06a0a247f4e09fb28d0049427a413652dab22d8b45e229b99225795bb74e8daa8d9d1adf33d234ca52955ffecb99062b5f12565aa62bdb46fc638f5'
+        'b2bd0f67f18609c169ef0cb970a4d08ac669cbfa8b5618c23369a95fc53d198782c322d294a410b25d1ae5d039c7e118bbcfdc7067b124925cfbe39d249e2a81')
 
 prepare() {
   sed -i 's,/etc/nscd.conf,/etc/unscd.conf,g' "nscd-$pkgver.c"
