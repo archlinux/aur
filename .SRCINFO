@@ -1,6 +1,6 @@
 pkgbase = pandoc-eisvogel-template
 	pkgdesc = A clean pandoc LaTeX template to convert your markdown files to PDF or LaTeX.
-	pkgver = 3.3.0
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://github.com/Wandmalfarbe/pandoc-latex-template
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = pandoc-eisvogel-template
 	makedepends = tar
 	makedepends = zip
 	depends = pandoc
-	source = git+https://github.com/Wandmalfarbe/pandoc-latex-template#tag=v3.3.0
-	sha512sums = 756103b14aacd070eedea78bb9ed8cd0268fcd4eef2927d5d62e7a8324f28f2c5e43d4734baaf810f942f792fbb40cb9a8544e470265740891f83f910a557a09
+	source = git+https://github.com/Wandmalfarbe/pandoc-latex-template#tag=v3.4.0
+	sha512sums = 707045d3f54eaabf0ae2edad7efaf5c0cc85a22906c8519fc3b80bb5c025a8dee81abf30e2a10fe29f2b4ca88b0186742a51558b1642b7b6ca0dee7b93204ea1
 
 pkgname = pandoc-eisvogel-template
