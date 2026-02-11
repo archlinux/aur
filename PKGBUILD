@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vtf-thumbnailer
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Adds previews for VTF files in your file explorer of choice on Windows and Linux."
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("git+$url.git#tag=v${pkgver}"
 	"git+https://github.com/p-ranav/argparse.git"
 	"git+${url::-16}/sourcepp.git")
 noextract=()
-sha256sums=('434c6212043b6cc2062a81a2d7dbe671ef527f0cf390bc7c247b7f81b187c020'
+sha256sums=('0aad3bf10fbc3f11ddade1f03cd73a0b1c7e5f2348fb0f6bc92f6e63d2aa3059'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -49,4 +49,5 @@ package() {
 	sed -i 's/\/opt/\/usr\/lib/g' "$pkgdir/usr/share/thumbnailers/vtf-thumbnailer.thumbnailer"
 	install -dm755 "$pkgdir/usr/lib/$pkgname"
 	mv "$pkgdir/usr/$pkgname" "$pkgdir/usr/lib/$pkgname/$pkgname"
+	install -Dm644 "${pkgname}/LICENSE" -t "$pkgdir/usr/share/licenses/${pkgname}"
 }
