@@ -1,6 +1,6 @@
 _java_ver=25
 _jdkname="zulu-${_java_ver}"
-_zulu_build="${_java_ver}.32.17-ca"
+_zulu_build="${_java_ver}.32.21-ca"
 pkgname="${_jdkname}-bin"
 pkgver="${_java_ver}.0.2"
 pkgrel=10
@@ -23,7 +23,7 @@ provides=(
 )
 install="$pkgname.install"
 source_x86_64=("https://cdn.azul.com/zulu/bin/zulu${_zulu_build}-jdk${pkgver}-linux_x64.tar.gz")
-sha256sums_x86_64=('f1752d0051b6ca233625ddb2c18c9170edbe55c5ee6515bfefd8ea0197ee1c20')
+sha256sums_x86_64=('946ad9766d98fc6ab495a1a120072197db54997f6925fb96680f1ecd5591db4e')
 
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
