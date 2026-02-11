@@ -1,6 +1,6 @@
 pkgbase = ekphos
 	pkgdesc = A lightweight, fast, terminal-based markdown research tool inspired by Obsidian
-	pkgver = 0.20.5
+	pkgver = 0.20.10
 	pkgrel = 1
 	url = https://github.com/hanebox/ekphos
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ekphos
 	depends = glibc
 	depends = gcc-libs
 	provides = ekphos
-	source = ekphos-0.20.5.tgz::https://github.com/hanebox/ekphos/archive/refs/tags/v0.20.5.tar.gz
-	sha256sums = 176e455367d6ac361ee2802d7310f4595bc4a94c05781f3a95a74e6d68d8b0ba
+	source = ekphos-0.20.10.tgz::https://github.com/hanebox/ekphos/archive/refs/tags/v0.20.10.tar.gz
+	sha256sums = 536d19bc93c2404bcb031b595e68012a5f369e400157b0637824b9c8b443da5b
 
 pkgname = ekphos
