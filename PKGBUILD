@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=opencode-antigravity-auth
-pkgver=1.4.6
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Google Antigravity OAuth Plugin for opencode"
 arch=('any')
@@ -21,7 +21,7 @@ latestver() {
 }
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('241bfed66a222700f95966c67c9ad3fcd99863a29fe9301c717182b8a4dbd083')
+sha256sums=('f9eb7c208c12ffcfe658161d45544a895245bddbab9dcc5e0d9f3c953bf7c61d')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
