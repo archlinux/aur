@@ -38,7 +38,7 @@ build() {
 	# from incorrectly using a parent git checkout info.
 	# https://github.com/pypa/build/issues/384#issuecomment-947675975
 	GIT_CEILING_DIRECTORIES="${PWD}/.." \
-	NVCC_CCBIN='/usr/bin/g++-14' \
+	NVCC_CCBIN="${NVCC_CCBIN}" \
 	CFLAGS='-DGLOG_USE_GLOG_EXPORT' \
 	CCFLAGS='-DGLOG_USE_GLOG_EXPORT' \
 	NVCC_APPEND_FLAGS='-DGLOG_USE_GLOG_EXPORT' \
