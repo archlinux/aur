@@ -1,16 +1,16 @@
 pkgbase = libwasmvm
 	pkgdesc = Go bindings to the CosmWasm VM
-	pkgver = 3.0.2
+	pkgver = 3.0.3
 	pkgrel = 1
 	url = https://github.com/CosmWasm/wasmvm
 	arch = x86_64
 	arch = aarch64
 	license = Apache
-	source = https://github.com/CosmWasm/wasmvm/raw/v3.0.2/LICENSE
+	source = https://github.com/CosmWasm/wasmvm/raw/v3.0.3/LICENSE
 	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
-	source_x86_64 = https://github.com/CosmWasm/wasmvm/releases/download/v3.0.2/libwasmvm.x86_64.so
-	sha256sums_x86_64 = f2fab51ec2b393ffe6912ff31497c6f8a14c04ad2490a1a3a9fa11a37cb4ce33
-	source_aarch64 = https://github.com/CosmWasm/wasmvm/releases/download/v3.0.2/libwasmvm.aarch64.so
-	sha256sums_aarch64 = f82e608707be7b193a78f5a7f7c6163b633a94ca6a0017a7fa3501cc8e9fbff5
+	source_x86_64 = https://github.com/CosmWasm/wasmvm/releases/download/v3.0.3/libwasmvm.x86_64.so
+	sha256sums_x86_64 = 197fc239ae055087994ad32117da2ae34618b51ce169762f88a89493af6f3150
+	source_aarch64 = https://github.com/CosmWasm/wasmvm/releases/download/v3.0.3/libwasmvm.aarch64.so
+	sha256sums_aarch64 = 106a3d3beef0663b79403e86c8e51832a82104324297a35e765aa64bb0d6d25f
 
 pkgname = libwasmvm
