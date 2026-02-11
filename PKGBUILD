@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # -*- sh -*-
 
 # Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
@@ -5,9 +6,9 @@
 pkgname='python-valkey-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=6.1.1b2.r0.g46bb06e
-pkgrel=3
-pkgdesc='Valkey Python client based on a fork of redis-py (development version)'
+pkgver=6.2.0rc1.r0.g9a3b547
+pkgrel=2
+pkgdesc='Valkey python client based on a fork of redis-py (development version)'
 arch=('any')
 url='https://github.com/valkey-io/valkey-py'
 license=(
@@ -16,6 +17,7 @@ license=(
 makedepends=(
   'git'
   'python-build'
+  'python-hatchling'
   'python-installer'
   'python-wheel'
 )
@@ -53,8 +55,12 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
+
+  for _dir in doc licenses; do
+    cd "$pkgdir/usr/share/$_dir" && ln -srf "$pkgname" "$_pkgname"
+  done
 }
 
 # eof

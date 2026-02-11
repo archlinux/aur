@@ -1,12 +1,13 @@
 pkgbase = python-valkey-git
-	pkgdesc = Valkey Python client based on a fork of redis-py (development version)
-	pkgver = 6.1.1b2.r0.g46bb06e
-	pkgrel = 3
+	pkgdesc = Valkey python client based on a fork of redis-py (development version)
+	pkgver = 6.2.0rc1.r0.g9a3b547
+	pkgrel = 2
 	url = https://github.com/valkey-io/valkey-py
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = python-build
+	makedepends = python-hatchling
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python>=3.11.3
