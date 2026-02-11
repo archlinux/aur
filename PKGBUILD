@@ -5,7 +5,7 @@ _pkgname=dol
 pkgname=${_pkgname}-bin
 pkgdesc="Detect dark/light mode on the CLI"
 
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -22,8 +22,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('f32b1313f6f4aacc741335e1ec7042c79e7ac4e3d3578beaceeaf5c9727aa9a0')
-sha256sums_aarch64=('74a1623cfdf31da41ca4364585efb4d65efed9ff103353714ba516276412508f')
+sha256sums_x86_64=('58668f368d0f7548f50f6bb16f964e1227a7a2561f51b7170295ec57ed9e00c1')
+sha256sums_aarch64=('dbcfba9effd29c16f92620a5e4a91af5aa9df890a35e7285e464ba3fa8062109')
 
 
 package() {
