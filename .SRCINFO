@@ -1,7 +1,7 @@
 pkgbase = gkrellm
 	pkgdesc = System monitor package for GTK2
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gkrellm.srcbox.net/
 	arch = x86_64
 	license = GPL-3.0-or-later

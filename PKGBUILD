@@ -7,7 +7,7 @@
 
 pkgname=gkrellm
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="System monitor package for GTK2"
 arch=('x86_64')
 url="http://gkrellm.srcbox.net/"
@@ -28,7 +28,7 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   make DESTDIR="$pkgdir" \
-    SERVICE_DIR="$pkgdir"/usr/lib/systemd/system \
+    SERVICE_DIR=/usr/lib/systemd/system \
     CFGDIR=/etc \
     PREFIX=/usr install
 }
