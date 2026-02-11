@@ -1,11 +1,11 @@
 pkgbase = python-cld3-git
 	pkgdesc = Python bindings for cld3 (Compact Language Detector v3)
 	pkgver = 0.2.3.20200117
-	pkgrel = 11
+	pkgrel = 35
 	url = https://github.com/iamthebot/cld3
 	arch = i686
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = cython
