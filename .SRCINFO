@@ -1,0 +1,15 @@
+pkgbase = task-manager-linux
+	pkgdesc = A lightweight GTK4 + Rust system task manager for Linux
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/DonutsDelivery/task-manager-linux
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = pkg-config
+	depends = gtk4
+	depends = libadwaita
+	source = task-manager-linux-0.1.1.tar.gz::https://github.com/DonutsDelivery/task-manager-linux/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 4a97330783d38d98f189b02612c13eded7defe156418f952a77de0fa1ad0de4f
+
+pkgname = task-manager-linux
