@@ -1,0 +1,12 @@
+pkgbase = ttf-hind-siliguri
+	pkgdesc = Hind Siliguri, a Bangla typeface font family
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/bdeshi/Hind-Siliguri
+	arch = any
+	license = OFL
+	makedepends = unzip
+	source = fonts.zip::https://github.com/bdeshi/Hind-Siliguri/archive/247a09fb574ba113068300e7118baab0daa2ad21.zip
+	sha256sums = 1bc4f76d9715974c47cf73fbb00d6954c1ecbab1a7c9a752aa453bc00fb383bf
+
+pkgname = ttf-hind-siliguri
