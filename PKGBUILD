@@ -3,7 +3,7 @@
 
 pkgname='wdckit'
 _path="opt/wdc/${pkgname}"
-pkgver='3.2.0.0'
+pkgver='3.3.1.0'
 pkgrel='1'
 pkgdesc="Western Digital ATA/SCSI command line utility"
 url='https://westerndigital.com/'
@@ -11,9 +11,10 @@ license=('custom')
 arch=('x86_64' 'aarch64')
 makedepends=('libarchive')
 # Source file is covered with Cloudflare challenge
-# https://files.hddguru.com/index.php?action=downloadfile&filename=wdckit-3.2.0.0.zip&directory=Software/Western%20Digital&
+# https://files.hddguru.com/index.php?action=downloadfile&filename=wdckit-3.3.1.0.zip&directory=Software/Western%20Digital&
+
 source=("https://s3.e2e4.ru/k0ste/pkgbuild/${pkgname}-${pkgver}.zip")
-sha256sums=('3ae213e574e5a79397f2928195e84f7915569b30b5131d0e14c670d7cb699f58')
+sha256sums=('541c2ed48dd6e6ddc7e5a2c9dd292cb4108392bd02bca3d5be2ff6057b316e3a')
 
 _file_arch=$([[ "${CARCH}" == 'x86_64' ]] && echo -n "${pkgname}-${pkgver}-${CARCH}-rpm" || echo -n "${pkgname}-${pkgver}-${CARCH}_deb")
 _pkg_arch=$([[ "${CARCH}" == 'x86_64' ]] && echo -n "${pkgname}-${pkgver}.${CARCH}.rpm" || echo -n "${pkgname}_${pkgver}_${CARCH}.deb")
@@ -28,7 +29,7 @@ prepare() {
 
 build() {
   cd "${pkgname}-pkgsource"
-  # ported from original package
+  # trick ported from original package
   echo "1" > "${_path}/.${pkgname}_lic"
   touch "${_path}/.exit_codes.txt"
 }
