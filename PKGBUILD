@@ -8,7 +8,7 @@
 
 _pkgname=purl
 pkgname="$_pkgname"-git
-pkgver=0.1.0
+pkgver=0.1.0.r4.g0728456
 pkgrel=1
 pkgdesc="A curl-esque CLI for making HTTP requests that require payment. Designed for humans and agents alike."
 arch=('any')
