@@ -1,0 +1,11 @@
+pkgbase = ttf-andysevka-console
+	pkgdesc = A configured build of Iosevka (Fixed spacing), intended for conversion to bitmap font
+	pkgver = 2026.01.05
+	pkgrel = 1
+	url = https://github.com/AndydeCleyre/archbuilder_iosevka/tree/andysevka-console
+	arch = any
+	license = custom:OFL
+	source = https://github.com/AndydeCleyre/archbuilder_iosevka/releases/download/andysevka-console-2026.01.05/ttf-iosevka-fixed-custom-git-1767748971-1-any.pkg.tar.zst
+	sha256sums = bfd76443265e4d0d17875db76f47691efd0142043b9012eec6ebdc8e938a7fad
+
+pkgname = ttf-andysevka-console
