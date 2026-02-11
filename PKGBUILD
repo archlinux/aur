@@ -3,9 +3,8 @@
 # Contributor: Nathaniel Chin <thegamingorangutans+aur at gmail.com>
 # Original: bitwave > https://aur.archlinux.org/packages/python-scenedetect/
 
-pkgname=python-scenedetect-git
-_pkgname="${pkgname%-git}"
-_pkg="${_pkgname#python-}"
+_pkgname="python-scenedetect"
+pkgname="${_pkgname}-git"
 pkgver=0.6.7.1.release.r56.gd75833f
 pkgrel=1
 pkgdesc="Cross-platform, OpenCV-based video scene detection program and Python library."
