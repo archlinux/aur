@@ -1,0 +1,23 @@
+pkgbase = root-app-bin
+	pkgdesc = Root - The Discord alternative for communities (AppImage)
+	pkgver = 0.9.86
+	pkgrel = 1
+	url = https://www.rootapp.com
+	arch = x86_64
+	arch = aarch64
+	license = Proprietary
+	depends = fuse2
+	depends = gtk3
+	depends = nss
+	depends = libnotify
+	depends = zlib
+	depends = hicolor-icon-theme
+	provides = root-app
+	conflicts = root-app
+	options = !strip
+	source_x86_64 = root-app-bin-0.9.86-x86_64.AppImage::https://installer.rootapp.com/installer/Linux/X64/Root.AppImage
+	sha256sums_x86_64 = 1fc2c73d77cc9b29a211bf202a1c59c12e3adca2d4aecaef27da54491fa6a5f5
+	source_aarch64 = root-app-bin-0.9.86-aarch64.AppImage::https://installer.rootapp.com/installer/Linux/Arm64/Root.AppImage
+	sha256sums_aarch64 = fe0bba052d095666158a39ff90042046b3fb728f6c9b4170474e60239892cfcb
+
+pkgname = root-app-bin
