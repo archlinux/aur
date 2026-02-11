@@ -1,0 +1,4 @@
+[whosthere]
+source = "git"
+git = "https://github.com/ramonvermeulen/whosthere.git"
+prefix = "v"
