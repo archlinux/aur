@@ -1,0 +1,20 @@
+pkgbase = dmenustatus-git
+	pkgdesc = A statusbar for dmenu written in C.
+	pkgver = 0.10.1.beta.r3.f61ca35
+	pkgrel = 1
+	url = https://github.com/Quadsam/dmenu-statusbar
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = git
+	depends = dmenu
+	depends = libx11
+	depends = fontconfig
+	depends = alsa-lib
+	depends = glibc
+	provides = dmenustatus
+	conflicts = dmenustatus
+	options = !debug
+	source = dmenustatus::git+https://github.com/Quadsam/dmenu-statusbar
+	sha256sums = SKIP
+
+pkgname = dmenustatus-git
