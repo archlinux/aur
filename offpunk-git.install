@@ -7,7 +7,7 @@ post_install() {
 » available as a symlink, but it will be removed in a later
 » release.
 »
-» If you have opted to install the ull-Text RSS Site Config,
+» If you have opted to install the Full-Text RSS Site Config,
 » add the following line to your ~/.config/offpunk/offpunkrc:
 »
 »   set ftr_site_config /usr/share/ftr-site-config
