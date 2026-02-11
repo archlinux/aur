@@ -3,7 +3,7 @@
 
 _pkgname="clai"
 pkgname="${_pkgname}-bin"
-pkgver=1.9.6
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Command line artificial intelligence - Multi-vendor generation in your terminal"
 arch=('aarch64' 'i686' 'x86_64')
@@ -22,14 +22,14 @@ source=("${_pkgsrc}-README.md::${url}/raw/refs/tags/v${pkgver}/README.md"
 source_aarch64=("${_pkgsrc}-aarch64::${url}/releases/download/v${pkgver}/${_pkgname}_linux-arm64_v${pkgver}")
 source_i686=("${_pkgsrc}-i686::${url}/releases/download/v${pkgver}/${_pkgname}_linux-386_v${pkgver}")
 source_x86_64=("${_pkgsrc}-x86_64::${url}/releases/download/v${pkgver}/${_pkgname}_linux-amd64_v${pkgver}")
-sha256sums=('e413297179a48e0a4cc485cebe3e7f259f84d4f17b2ea086851210fc00cf1b23'
-            '666651e232585ef27d96bdef35a2f29aec6bc583a0e6cc82b47da18b962ce594'
+sha256sums=('5d2d7c17cd49bbecf42a147f99d9ca6ac85bf71ff1c1d24b51f6ba1119e33ba4'
+            '115dc11ca3e9a45f6f904af9e733128e4af724bacdf5e1d94012fa5497fefdb3'
             '81abc6b6ae091984b5defa45e236462099a0f95afd211b5a39c7b70c8926decb'
             '824075343fe6b2f0bda7a627bec99f826e86571fee6c393812315f265d82a741'
             'bc5378230a80daace8ac9ea68f538fb33997fd2abf0fa5d91905365b6b8924dc')
-sha256sums_aarch64=('eb1823694b43464bc9440b082f290684893dc4f666210b7419b78095e5ac6a8f')
-sha256sums_i686=('67e7c8a805105dd3ffdb94d6eed328d707300d258267e1088b7611525c4f1537')
-sha256sums_x86_64=('5f213c6f2521b1e3d34e089f36d457fa2a1a8f88fe89caa815049d9b064a4694')
+sha256sums_aarch64=('25eb7e0e75ce804d0162c8666bd159063ba9e7822019894283605fdc8dbb0369')
+sha256sums_i686=('73a35fcd626a92eeaa0f2c72893c5347d7933dc7b91d11c6d0f195bf1dcd1c4a')
+sha256sums_x86_64=('61d69191b7db15b8f0ed0297c1b7631444112d6acbf1c819bd524126c742a58f')
 
 package() {
   cd "${srcdir}"
