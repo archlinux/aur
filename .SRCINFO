@@ -1,0 +1,16 @@
+pkgbase = crtty-git
+	pkgdesc = Post-processing shader framework for kitty terminal via LD_PRELOAD
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/kosa/CRTty
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	provides = crtty
+	conflicts = crtty
+	source = git+https://github.com/kosa/CRTty.git
+	sha256sums = SKIP
+
+pkgname = crtty-git
