@@ -5,7 +5,7 @@ pkgname="pkg2appimage"
 pkgdesc="Tool and recipes to convert existing deb packages to AppImage. (Upstream CI)"
 _pkgver=$(wget -q https://api.github.com/repos/AppImageCommunity/pkg2appimage/releases -O - | grep -iP '(?<=pkg2appimage-).*(?=-x86_64.AppImage)' -o | head -n 1)
 pkgver=${_pkgver}
-pkgrel=4
+pkgrel=5
 url="https://github.com/AppImageCommunity/pkg2appimage"
 license=("GPL-2.0-only")
 arch=("any")
@@ -15,15 +15,15 @@ makedepends=(
     'grep'
 )
 pkg2appimage_url=$(wget -q https://api.github.com/repos/AppImageCommunity/pkg2appimage/releases -O - | grep 'pkg2appimage-.*-x86_64.AppImage' | grep browser_download_url | head -n 1 | cut -d '"' -f 4)
-source=("$pkgname.AppImage::$pkg2appimage_url")
-noextract=("$pkgname.AppImage")
+source=("${pkgname}.AppImage::${pkg2appimage_url}")
+noextract=("${pkgname}.AppImage")
+install="${pkgname}.install"
 
 package() {
-    cd "$srcdir"
+    cd "${srcdir}"
     install -Dm755 $pkgname.AppImage $pkgdir/opt/pkg2appimage/$pkgname.AppImage
-
-    ln -sf /opt/pkg2appimage/$pkgname.AppImage /usr/bin/$pkgname
 }
+
 sha256sums=('6f74ec26ba14d2d8f1857d150704f9d585dae30b1ca30ce46f375c157b71d07d')
 sha384sums=('dc352cec7db6848126f7bebced61ee72a3f1b855ecff89b68a30613aafab3542027e173028a6a08dc8938cc0a5dce2f1')
 sha512sums=('7e7954963b0d679cf550757cbb639be5f33dcc951b9894a5bec494e9cc49ad67a93c1b00350d04d191916860b442e6b307eb848a303fde20fb34254d164f092a')

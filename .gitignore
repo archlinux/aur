@@ -1,3 +1,4 @@
 pkg2appimage*
 src/
 pkg/
+!pkg2appimage.install
