@@ -1,12 +1,17 @@
 pkgbase = python-orgparse
 	pkgdesc = orgparse - Emacs org-mode parser in Python
-	pkgver = 0.3.2
+	pkgver = 0.4.20251020
 	pkgrel = 1
 	url = https://github.com/karlicoss/orgparse
 	arch = any
 	license = BSD
 	license = License
-	makedepends = python
-	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatch-vcs
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/o/orgparse/orgparse-0.4.20251020.tar.gz
+	sha256sums = 64415d0f889c90612e5a55db7f350a6ee04a353573489562bb9c479ef4cd100c
 
 pkgname = python-orgparse
