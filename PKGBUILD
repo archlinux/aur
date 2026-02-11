@@ -3,13 +3,13 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=nototools-git
-pkgver=0.2.13.r26.g1b452b0
+pkgver=0.3.2.r0.g4565240
 pkgrel=1
 epoch=1
 pkgdesc='Noto fonts support tools and scripts plus web site generation'
 url="https://github.com/googlefonts/${pkgname%-git}"
 arch=(any)
-license=(Apache)
+license=(BSD-3-Clause)
 _pydeps=(appdirs
          attrs
          black
@@ -34,7 +34,6 @@ _pydeps=(appdirs
          regex
          six
          toml
-         typed-ast
          ufolib2
          ufonormalizer
          ufoprocessor
