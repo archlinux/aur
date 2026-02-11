@@ -21,12 +21,12 @@ sha256sums_x86_64=('1fc2c73d77cc9b29a211bf202a1c59c12e3adca2d4aecaef27da54491fa6
 sha256sums_aarch64=('fe0bba052d095666158a39ff90042046b3fb728f6c9b4170474e60239892cfcb')
 
 prepare() {
-    # Make them executable
+    # Make them executable so we can extract them
     chmod +x "$srcdir"/*.AppImage
 }
 
 package() {
-    # 1. Determine which architecture
+    # 1. Select the correct AppImage for the current architecture
     if [ "$CARCH" = "x86_64" ]; then
         _appimage="$srcdir/${pkgname}-${pkgver}-x86_64.AppImage"
     else
@@ -40,20 +40,33 @@ package() {
     install -d "$pkgdir/usr/bin"
     ln -s "/opt/$_pkgname/$_pkgname.AppImage" "$pkgdir/usr/bin/rootapp"
 
-    # 4. Extract content to get Icon and Desktop file
+    # 4. Extract content to find Icon and Desktop file
     "$_appimage" --appimage-extract > /dev/null
 
-    # 5. Install Icon
-    install -Dm644 "squashfs-root/rootapp.png" \
-        "$pkgdir/usr/share/icons/hicolor/256x256/apps/rootapp.png"
+    # 5. ICON INSTALLATION
+    find "squashfs-root" -maxdepth 1 -type f -name '*.png' -exec install -Dm644 {} \
+        "$pkgdir/usr/share/icons/hicolor/256x256/apps/rootapp.png" \; -quit
 
-    # 6. Install Desktop File
-    install -Dm644 "squashfs-root/rootapp.desktop" \
-        "$pkgdir/usr/share/applications/rootapp.desktop"
+    # 6. DESKTOP FILE INSTALLATION
+    _desktop=$(find "squashfs-root" -maxdepth 1 -name "*.desktop" | head -n 1)
 
-    # Fix the 'Exec' line to point to the installed binary
-    sed -i "s|Exec=AppRun|Exec=rootapp|g" "$pkgdir/usr/share/applications/rootapp.desktop"
+    if [ -n "$_desktop" ]; then
+        install -Dm644 "$_desktop" "$pkgdir/usr/share/applications/rootapp.desktop"
+        
+        sed -i "s|^Exec=.*|Exec=rootapp|g" "$pkgdir/usr/share/applications/rootapp.desktop"
+        
+        sed -i "s|^Icon=.*|Icon=rootapp|g" "$pkgdir/usr/share/applications/rootapp.desktop"
+    else
+        # Create a desktop file
+        echo "[Desktop Entry]
+Name=Root
+Exec=rootapp
+Icon=rootapp
+Type=Application
+Categories=Network;" > "$pkgdir/usr/share/applications/rootapp.desktop"
+        chmod 644 "$pkgdir/usr/share/applications/rootapp.desktop"
+    fi
     
-    # Fix the 'Icon' line to match the icon name installed
-    sed -i "s|Icon=rootapp|Icon=rootapp|g" "$pkgdir/usr/share/applications/rootapp.desktop"
+    # Clean up extraction folder
+    rm -rf squashfs-root
 }
