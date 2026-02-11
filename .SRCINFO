@@ -1,6 +1,6 @@
 pkgbase = kiro-cli
 	pkgdesc = Prompt to code to deployment in your terminal
-	pkgver = 1.25.0
+	pkgver = 1.25.1
 	pkgrel = 1
 	url = https://kiro.dev/cli/
 	install = kiro-cli.install
@@ -17,11 +17,11 @@ pkgbase = kiro-cli
 	source = Kiro-LICENSE.txt
 	sha256sums = 771836b4e338ba240ef4add028a0276f084c9e1c22fb5bb7fdcd83b87576bf2e
 	b2sums = 4fee11387ffa92e8fba85ca53dcd51906efb5aa0d581002510a66e63916e439c836539de374db5e5b5a4470a1790b6dc0348e7ceb555a8de4dd5210b6c0f7a01
-	source_aarch64 = kiro-cli-1.25.0-aarch64.tar.zst::https://desktop-release.q.us-east-1.amazonaws.com/1.25.0/kirocli-aarch64-linux.tar.zst
-	sha256sums_aarch64 = b3c2cc374b32c403abc6b78786a4a218aa2ebacf10b1a8c08c185226148adada
-	b2sums_aarch64 = 0828a9d0c583c751e37d9d6f5d47286664e247a193d766686e1e1a428707c606b85a1bf0bc2901bfe7c91bb616d23b5c966cc3c525da51004e9dfe3fa0ca0092
-	source_x86_64 = kiro-cli-1.25.0-x86_64.tar.zst::https://desktop-release.q.us-east-1.amazonaws.com/1.25.0/kirocli-x86_64-linux.tar.zst
-	sha256sums_x86_64 = 9c24ed7b5c0831dda1b924e029c1ae458dc6ff69480e620d14e917ac1855ca98
-	b2sums_x86_64 = 33ac882ec8b57bf3a74b948396937e3ce6b5f397faf959d16a54179ac5b954ec1f85e8d102f912e02bf98dd2b6c0f962ea6b07b5ba4ec18a0f97d2db280b2a72
+	source_aarch64 = kiro-cli-1.25.1-aarch64.tar.zst::https://desktop-release.q.us-east-1.amazonaws.com/1.25.1/kirocli-aarch64-linux.tar.zst
+	sha256sums_aarch64 = e6106716b3605765646066568c7bd6e1bec216a44c57b0b8fdfe835e36f52229
+	b2sums_aarch64 = e78e27caac6f328eb7d41cd8968c09646c31afc5952a3fc95e5f3171636fc840c70ea5a88a5a6c33a1e213e25dd3132b81647c54f15d6d3fe484632c448ddedc
+	source_x86_64 = kiro-cli-1.25.1-x86_64.tar.zst::https://desktop-release.q.us-east-1.amazonaws.com/1.25.1/kirocli-x86_64-linux.tar.zst
+	sha256sums_x86_64 = 3b1e7161ae2c721e77915ec8fec379456158d2456b295c725cfdd8d026e5546d
+	b2sums_x86_64 = e87b446fe041193d3c8101f27af8fce7b60472fd5ab3114755c92b2a08e005e7c272706d022a211f9881e30fd0bb4968b4ba22e615ff5098b2461c6863439eb1
 
 pkgname = kiro-cli
