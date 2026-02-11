@@ -2,7 +2,7 @@
 
 pkgname=eez-studio-appimage
 pkgver=0.26.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform low-code GUI and automation"
 arch=('x86_64' 'aarch64')
 url="https://github.com/eez-open/studio/releases"
@@ -22,8 +22,7 @@ source=(
     "${pkgname}-${pkgver}.AppImage::https://github.com/eez-open/studio/releases/download/v${pkgver}/EEZ-Studio-${pkgver}.AppImage"
 )
 
-sha256sums=('95ab446678d7e2dcec728162c93767996f03d9879579d55a517647b0b70684ab'
-            '7019be3da97f345557fb38a581aabfd8a1d2e5324391a785213d8e5eb238aa90')
+sha256sums=('95ab446678d7e2dcec728162c93767996f03d9879579d55a517647b0b70684ab')
 
 prepare() {
     chmod +x "${srcdir}/${pkgname}-${pkgver}.AppImage"
