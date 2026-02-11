@@ -1,18 +1,17 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname=autosuspend
-pkgver=9.0.1
+pkgver=10.0.0
 pkgrel=1
 pkgdesc="A daemon to suspend and wake up a system based on configurable checks"
 arch=(any)
 url="https://github.com/languitar/autosuspend"
 license=('GPL-2.0-only')
-depends=('python' 'python-psutil' 'python-portalocker')
+depends=('python' 'python-psutil' 'python-dbus' 'python-gobject')
 optdepends=('python-dbus: logind session discovery and system timer checks'
   'python-mpd2: MPD playing status check'
   'python-requests: network-based checks'
   'python-lxml: XPath check'
-  'python-dbus: logind-based checks'
   'python-icalendar: iCalendar checks'
   'python-dateutil: iCalendar checks'
   'python-tzlocal: iCalendar checks'
@@ -31,7 +30,7 @@ makedepends=('python-setuptools'
   'python-sphinxcontrib-plantuml'
   'python-sphinx-autodoc-typehints')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/languitar/autosuspend/archive/v${pkgver}.tar.gz")
-sha256sums=('dca2923e43c012e44767b3c769069c3750916573958c9bc4446f03e57891ae00')
+sha256sums=('8cda5e20f87fbde17d45e99cbb3bcdc1923cd9126486355ae5371a9c20665207')
 backup=('etc/autosuspend.conf'
   'etc/autosuspend-logging.conf')
 
