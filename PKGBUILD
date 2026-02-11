@@ -1,8 +1,8 @@
 # Maintainer: Onxy <mihalygyori05@gmail.com>
 pkgname=betterwallpaper-git
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
-pkgdesc="A modern, high-performance animated wallpaper manager for Linux (hotfix: GUI no longer removes daemon wallpaper on launch)"
+pkgdesc="A modern, high-performance animated wallpaper manager for Linux"
 arch=('x86_64')
 url="https://github.com/Misiix9/BetterWallpaper"
 license=('GPL3')
