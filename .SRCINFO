@@ -1,0 +1,16 @@
+pkgbase = tidydots-git
+	pkgdesc = Cross-platform dotfile manager using symlinks, templates, and package management from a single YAML config
+	pkgver = r0.0000000
+	pkgrel = 1
+	url = https://github.com/AntoineGS/tidydots
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = tidydots
+	conflicts = tidydots
+	source = tidydots-git::git+https://github.com/AntoineGS/tidydots
+	sha256sums = SKIP
+
+pkgname = tidydots-git
