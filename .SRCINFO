@@ -1,6 +1,6 @@
 pkgbase = cloudtolocalllm
 	pkgdesc = Privacy-first local AI workspace (AppImage version)
-	pkgver = 10.1.187
+	pkgver = 10.1.201
 	pkgrel = 1
 	url = https://github.com/CloudToLocalLLM-online/CloudToLocalLLM
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = cloudtolocalllm
 	conflicts = cloudtolocalllm-git
 	conflicts = cloudtolocalllm-bin
 	options = !strip
-	source = cloudtolocalllm-10.1.187-x86_64.AppImage::https://github.com/CloudToLocalLLM-online/CloudToLocalLLM/releases/download/v10.1.187/cloudtolocalllm-10.1.187-x86_64.AppImage
-	sha256sums = SKIP
+	source = cloudtolocalllm-10.1.201-x86_64.AppImage::https://github.com/CloudToLocalLLM-online/CloudToLocalLLM/releases/download/v10.1.201/cloudtolocalllm-10.1.201-x86_64.AppImage
+	sha256sums = b0e769cefaad0dfde197b74f779ce5d06145fa1725fefc12a8f0bb9756bcf859
 
 pkgname = cloudtolocalllm
