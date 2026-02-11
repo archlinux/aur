@@ -1,6 +1,6 @@
 pkgbase = libgridxc
 	pkgdesc = A library for the computation of exchange and correlation energies and potentials in radial and 3D grids
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://gitlab.com/siesta-project/libraries/libgridxc
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = libgridxc
 	depends = libxc
 	depends = openmpi
 	options = staticlibs
-	source = https://gitlab.com/siesta-project/libraries/libgridxc/uploads/76e2ffbdf13c2149285fa0fad72fa1f5/libgridxc-2.0.1.tar.gz
-	sha256sums = decd56e4e84ccf29f3c71fb26bc1e084bc715e7b1b8d628ceada42ffc5629ab2
+	source = https://gitlab.com/siesta-project/libraries/libgridxc/-/archive/2.0.2/libgridxc-2.0.2.tar.gz
+	sha256sums = ce7e3de5b1232e63bc953a994f549411edb90c22b22f9b7749d8f2a79d3c1a98
 
 pkgname = libgridxc
