@@ -1,0 +1,291 @@
+END USER LICENSE AGREEMENT
+Last updated: April 11, 2025
+This End User License Agreement (“EULA”) is a legal agreement between the end user (as an individual 
+or entity, “End User”) and the applicable Licensor entity defined in Section 16.0 (“Licensor Party”), 
+which sets forth the rights and obligations governing software products defined in the licensing policy 
+(“Software”), limited support services, and associated documentation (“Documentation”). By installing, 
+using, or otherwise interacting with the Software or Documentation, delivering, or receiving services 
+involving the Software, the End User agrees to be bound by the terms of this EULA. If the End User does 
+not agree with the terms of this EULA, do not use or otherwise interact with the Software, 
+Documentation, or services.
+
+1. General Terms
+1.1. License Grant.  Licensor grants to End User a non-exclusive, non-transferable, non-sublicensable 
+right to install and use the Software in object code form and also the Documentation for End User’s 
+internal business purposes under the terms and conditions stated herein within the scope, type of use, 
+limitations on deployment or as otherwise set forth in the applicable ordering document and for which 
+End User has paid the applicable fees.
+1.2. The Software is to be used in accordance with the Documentation, the terms of this EULA, and the 
+Licensing Policy in which descriptions of the license(s) purchased can be found (“Licensing Policy”). 
+End User may only use the number of licenses or capacity that has been purchased or granted unless the 
+product specifically allows exceed usage. In the event End User exceeds the purchased or granted 
+capacity, the Software may not process additional workloads and Licensor shall not provide Maintenance 
+for such overage license use. 
+1.3. End User is permitted to make copies of the Software and Documentation for internal purposes in 
+accordance with this EULA and the Licensing Policy. Any copies or partial copies of the Software and 
+Documentation that End User makes shall remain Licensor’s intellectual property and must incorporate 
+all relevant patent, copyright and trademark notices.
+2. Prohibited Use. Without Licensor’s express prior written consent, End User may not (directly or 
+indirectly through any employee, contractor, consultant, agent or other representative): (a) resell, transfer, 
+share, or make the Software or license keys available to any third party (including, without limitation, 
+sharing license keys on any website, forum or social media); (b) process third-party data (as a service 
+provider), provide commercial hosting or support services, sublicense, rent or lease, in whole or in part, 
+the Software to another party, or otherwise use the Software on a service bureau basis, without purchasing 
+a specific license to do so; (c) decipher, decompile, disassemble, reverse assemble, reverse engineer, 
+modify, or otherwise attempt to derive source code, algorithms, tags, specifications, architectures, 
+structures or other elements of the Software, including any license keys, in whole or in part, for any 
+purpose or in any manner (except to the extent such prohibition is expressly prohibited by law); (d) write 
+or develop any derivative software or documentation or other software programs based upon the Software 
+or Documentation; (e) violate applicable laws or regulations through use of the Software; or (f) disclose, 
+transfer or otherwise make available to any third party the results of any performance, capacity or 
+functionality tests or any benchmark testing of the Software.
+3. Maintenance and Support. 
+3.1. Maintenance and support (collectively, “Maintenance”) for the Software is available in accordance 
+with the Licensing Policy and Licensor’s support policy (the “Support Policy”). If Maintenance is 
+included in End User’s plan purchased, it will commence upon the date the order is processed. End User 
+will receive support for the Software including any updates, enhancements, or improvements that are 
+included or defined in the Support Policy. Expired Maintenance plans are not eligible for Software 
+updates. Violating any material provision of this EULA and/or Licensing Policy (including exceeding the 
+purchased licensing capacity stated in Section 1.2) may result in postponement or rejection of Software 
+Maintenance. Licensor may use collected telemetry (as prescribed in Section 4 below) to provide 
+proactive Maintenance, including security update notifications and risk alerts.
+3.2. The Software may include an automatic update functionality (“Automatic Updates”) that, when 
+enabled, downloads and installs updates to the Software, including updates to third-party packages and 
+components. By using the Software, End User acknowledges and agrees to the following:
+a)	Automatic Updates may include modifications to the Software, updates to existing third-party 
+components and/or new third-party components.
+b)	End User agrees that by continuing to use the Software following any update, End User accepts 
+and are bound by the terms of the latest version of this EULA available 
+at https://www.veeam.com/legal/eula and the terms of any applicable third-party license terms 
+and conditions.
+c)	The Automatic Updates functionality can be controlled through the Software’s settings at any 
+time. However, changing the default settings of the Automatic Updates may impact the security 
+and functionality of the Software, and Licensor disclaims any liability arising from End User’s 
+decision to disable updates.
+4. Technical Information Collection.
+4.1. Licensor cannot access the Software installed in End User’s chosen environment(s) or any data that is 
+managed using the Software. Licensor cannot access any technical information pertaining to the 
+configuration or performance of the Software unless End User voluntarily provides it to Licensor by 
+uploading log files, sharing telemetry data, sharing screenshots, descriptions, reports, survey information, 
+etc., pertaining to the Software use or utilize the Assistant (as defined in Section 9.1 below). Additional 
+information and requirements regarding End User’s use of the Assistant are set forth in Section 9 below.
+4.2. Licensor products that support automatic license updates and telemetry generate and send license 
+usage statistics and telemetry data to Licensor. THIS FUNCTIONALITY IS TURNED ON BY 
+DEFAULT AND CAN BE DISABLED AT ANY TIME. However, the data collection is mandatory for 
+all Free and Community Edition licenses and cannot be disabled.
+4.3. Certain Licensor products require online licensing services accessibility for license activation and/or 
+usage reporting due to the protected platform’s requirements. THIS DATA COLLECTION IS ALWAYS 
+ON AND CANNOT BE DISABLED.
+5. Personal Information. In the event End User voluntarily provides personal data to Licensor in 
+connection with Maintenance or otherwise, End User’s personal information will be used and stored in 
+accordance with Licensor’s Privacy Notice. End User can always update preferences to adjust personal 
+information settings by visiting the customer portal in the Software tool.
+6. Intellectual Property Rights. The Software is LICENSED, NOT SOLD. The Software is protected by 
+patent, copyright, trademark, trade secret, and other laws, including, without limitation, international 
+treaties. A list of relevant patents and trademarks can be found here. All rights, title, and interest in and to 
+the Software, Documentation, and any other Licensor materials or information provided or made 
+available in connection with this EULA are retained solely by Licensor. End User hereby agrees that 
+Licensor shall have the unrestricted, worldwide, fully paid, royalty-free right and license to use any and 
+all ideas, feedback and suggestions made by End User to Licensor regarding the Software, 
+Documentation, and other materials or information (collectively, “Feedback”) including the right to use 
+all intellectual property rights in the Feedback. Third-party licensors, in addition to any other rights or 
+remedies available to them, are third-party beneficiaries of this EULA with regard to their respective 
+component(s).
+7. Open Source Software. 
+7.1. Licensor may include various open source software components in or with the Software (collectively, 
+“OSS”), each of which is owned by a third party and is subject to its own applicable license terms and 
+conditions. A current list of OSS components used by Licensor, along with their applicable license terms, 
+is included in a text file located in the folder where the Software files are installed (the “OSS License 
+File”).
+For informational purposes only, Licensor may also make available a list of OSS components and their 
+associated license terms on the special webpage. However, the definitive and governing list of OSS 
+components and their applicable licenses is contained within the OSS License File distributed with the 
+Software.
+7.2. As part of the Software’s functionality, Licensor may update, modify, or replace OSS components 
+included in the Software during the course of providing Automatic Updates. These updates may result in 
+changes to the applicable license terms of the OSS.
+7.3. By continuing to use the Software after an update that includes changes to OSS components, End 
+User acknowledges and agrees to comply with the updated license terms of such OSS, as provided in the 
+updated OSS License File included in the Software files.
+7.4. Any warranties, representations, or liabilities related to such OSS, if any, are governed solely by the 
+applicable OSS license terms. Nothing in this EULA is intended to modify, limit, or supersede the terms 
+of any OSS license. In the event of any conflict between this EULA and an applicable OSS license, the 
+terms of the OSS license shall control solely with respect to the applicable OSS component.
+8. Audit. 
+8.1. During the term of the EULA and for a period of one year thereafter, Licensor may, during normal 
+business hours and upon reasonable prior notice to End User, inspect files, computer processors, 
+equipment, and facilities to verify End User’s compliance with the terms and conditions of this EULA, 
+including but not limited to all license terms, policies, and quantities purchased via authorized Licensor 
+resellers or online marketplaces. The scope of the audit may encompass the verification of compliance 
+with this EULA as a whole, which by reference includes the Licensing Policy.
+8.2. Licensor may conduct such an audit no more than once per year unless there are reasonable grounds 
+for the audit, such as suspected breaches of the EULA. The audit may be conducted in any form, 
+including online requests for information (logs) or by inspecting End User’s infrastructure, by itself 
+and/or with the involvement of third parties at Licensor’s discretion. In case of such an audit, End User 
+must provide Licensor and/or any third party selected by Licensor the requested information (logs) and/or 
+access to End User’s infrastructure within thirty (30) days after receiving the Licensor’s notice and make 
+reasonable efforts to facilitate the audit.
+8.3. Any information received by Licensor as a result of the audit shall be treated as confidential and be 
+used solely for the purposes of performing the audit. Should the audit reveal that End User is in breach of 
+any terms of this EULA, the costs of the audit conducted by a third party will be borne by End User.
+9. AI-enabled Assistant.
+9.1. Some Software may contain an artificial intelligence (“AI”)-enabled assistant trained to provide End 
+User with assistance regarding use of the Software (the “Assistant”). Use of this feature is subject to 
+the AI Terms of Use. By using the Assistant, End User acknowledges and agrees that, in addition to the 
+terms of this Section 9, End User has read, understand and agrees to comply with the AI Terms of Use. 
+End User further agrees that Licensor is not responsible for the Assistant’s output or any information that 
+End User inputs into the Assistant. End User may not use the Assistant for any purpose other than to seek 
+information about the Software’s functionality. End User agrees that under no circumstances will End 
+User or any user in End User’s organization input to the Assistant information that is considered 
+“personal information” or “personal data” (as those or similar terms are defined under any laws applicable 
+to End User) or information that End User’s organization considers confidential or non-public. The 
+Assistant is based on Azure OpenAI Service from Microsoft Corporation. All input End User shares with 
+this Assistant will be processed in accordance with Microsoft’s Azure OpenAI Terms and this EULA. By 
+using the Assistant, End User acknowledges and agrees that End User has read, understands and agrees to 
+comply with those terms. Please review the documentation before using the Assistant. End User may not 
+use the Assistant if End User does not agree to those terms. In some Software, the Assistant may have two 
+modes: basic (“Basic Mode”), which only utilizes information End User inputs to the chat window, and 
+advanced (“Advanced Mode”), which utilizes information End User inputs to the chat window and 
+product data received from the Software (the combined information, “Mixed Input”). Basic Mode is 
+turned on by default. Advanced Mode is turned off by default, and End User needs to turn it on explicitly. 
+The Software also includes an option to completely disable the Assistant.
+9.2. Basic Mode. Licensor may store and review any input End User shares with the Assistant and the 
+Assistant’s output in order to improve the Assistant’s functionality or as otherwise necessary or useful for 
+Licensor to provide its services. Licensor will delete all stored input and output after 30 days from the 
+store date.
+9.3. Advanced Mode. Mixed Input is deleted immediately after End User closes the conversation session 
+or the session times out. Licensor may store and review the Assistant’s output (but not Mixed Input) in 
+order to improve the Assistant’s functionality or as otherwise necessary or useful for Licensor to provide 
+its services. Licensor will delete all stored output after 30 days from the store date.
+9.4. Licensor does not review all of the Assistant’s output; if the Assistant is unable to answer End User’s 
+question or if End User has any concerns regarding its output, End User may contact Licensor’s customer 
+support personnel.
+10. Indemnification. Licensor will defend or, at its option, settle any action, suit or proceeding against 
+End User that is based upon a claim that End User’s use of the Software infringes any patent, copyright or 
+other intellectual property right of a third party, and will indemnify End User against any amounts 
+awarded against End User as a result of the claim, suit or proceeding; provided that (a) Licensor is 
+promptly notified of the assertion of the claim, suit or proceeding, (b) Licensor has sole control of its 
+defense and/or settlement, and (c) End User provides reasonable assistance and cooperate in Licensor’s 
+defense and/or settlement, at Licensor’s expense. Licensor’s defense and indemnity obligations do not 
+apply, and End User shall be responsible for the defense and/or settlement of any claims where (1) End 
+User’s use of the Software or Documentation is beyond the scope of license granted in this EULA or 
+otherwise in violation of any of the terms or conditions set forth in this EULA or any terms, policies or 
+information referenced or to which a link has been provided in this EULA, (2) End User modified or 
+created derivative works from the Software or Documentation, (3) End User used an outdated and 
+infringing version of the Software or Documentation after release of a non-infringing version by Licensor, 
+(4) End User used or combined the Software with any technology, software or hardware not supplied by 
+Licensor, where the alleged infringement would not have occurred absent such use or combination, or (5) 
+End User’s use of the Evaluation Licenses or Free and Community Edition Licenses. In the event any 
+such infringement action, suit, or proceeding is brought or threatened, Licensor will, at its sole option and 
+expense: (i) procure for End User the right to continue the use of the Software or the allegedly infringing 
+part thereof; or (ii) modify or amend or replace the same with other software or material having 
+substantially similar functionality and performance.
+11. Limited Warranty and Limitations of Liability.
+11.1. The purchase of the Software license (perpetual or subscription) is non-returnable and non-
+refundable. Licensor warrants that the Software, in its unmodified form as initially delivered or made 
+available to End User, will perform substantially in accordance with the Documentation for such Software 
+for a warranty period of ninety (90) days from the date the Software is delivered to End User (the 
+“Warranty Period”). In the event the Software fails in a material respect to operate in accordance with the 
+Documentation during the Warranty Period and Licensor is unable to correct the defect, Licensor’s sole 
+and exclusive liability and End User’s sole and exclusive remedy shall be a refund of the license fees, if 
+any, paid by You for the Software. All claims must be raised within the Warranty Period. The foregoing 
+limited warranty will not apply to Evaluation Licenses or Free and Community Edition Licenses, that are 
+provided “as is”. In the event a reported problem with the Software is contributed to End User’s fault and 
+End User requests that Licensor works to resolve the problem, End User agrees to pay for such 
+remediation efforts in accordance with Licensor’s then-current rates.
+11.2. For any Evaluation Licenses and Free and Community Edition Licenses in no event will Licensor be 
+liable for any damages, for any claim or cause for any damages of any kind, including, without limitation, 
+any direct, indirect, special, incidental, exemplary, statutory, punitive or consequential damages 
+(including, without limitation, loss of profits, loss of use or data, damage to systems or equipment or 
+business interruption). End User is not entitled to any defense, indemnification, or warranty protection for 
+licenses granted pursuant to Section 11.1.
+11.3. EXCEPT FOR THE LIMITED WARRANTY SET FORTH IN SECTION 11.1, THE SOFTWARE 
+AND MAINTENANCE ARE PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, 
+EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTY 
+THAT THE SOFTWARE IS FREE OF DEFECTS, WILL BE UNINTERRUPTED, IS 
+MERCHANTABLE, OR FIT FOR A PARTICULAR PURPOSE. NO ORAL OR WRITTEN 
+INFORMATION OR ADVICE GIVEN BY LICENSOR OR ANY THIRD PARTY, INCLUDING, 
+WITHOUT LIMITATION, ANY LICENSOR DISTRIBUTORS OR RESELLERS, SHALL CREATE 
+ANY WARRANTY IN ADDITION TO, OR IN ANY WAY INCREASE THE SCOPE OF, THIS 
+LIMITED WARRANTY. WITHOUT LIMITING THE GENERALITY OF THE FOREGOING, ALL 
+USE OF THE ASSISTANT BY END USER OR ANY OF END USER’S PERSONNEL SHALL BE AT 
+END USER’S SOLE RISK.
+11.4. IN NO EVENT WILL LICENSOR OR ANY OF ITS AFFILIATES OR SUPPLIERS BE LIABLE 
+FOR ANY INDIRECT, SPECIAL, INCIDENTAL, EXEMPLARY, STATUTORY, PUNITIVE OR 
+CONSEQUENTIAL DAMAGES OF ANY KIND (INCLUDING, WITHOUT LIMITATION, LOSS OF 
+PROFITS, LOSS OF USE OR DATA, DAMAGE TO SYSTEMS OR EQUIPMENT, BUSINESS 
+INTERRUPTION OR COST OF COVER) IN CONNECTION WITH OR ARISING OUT OF THE 
+DELIVERY, PERFORMANCE OR USE OF THE SOFTWARE (INCLUDING THE ASSISTANT) OR 
+ANY OTHER MATERIALS OR MAINTENANCE PROVIDED BY LICENSOR UNDER THIS EULA, 
+WHETHER ALLEGED AS A BREACH OF CONTRACT CLAIM OR AS ANOTHER TYPE OF 
+CLAIM, INCLUDING, WITHOUT LIMITATION, CLAIMS FOR UNJUST ENRICHMENT, UNFAIR 
+COMPETITION OR BUSINESS PRACTICES, OR OTHER TORTIOUS CONDUCT, INCLUDING 
+NEGLIGENCE AND STRICT LIABILITY, EVEN IF LICENSOR HAS BEEN ADVISED OF THE 
+POSSIBILITY OF SUCH DAMAGES. LICENSOR’S MAXIMUM AGGREGATE LIABILITY 
+ARISING FROM OR RELATED TO THIS EULA, INCLUDING, WITHOUT LIMITATION, USE OF 
+THE SOFTWARE (INCLUDING THE ASSISTANT) OR ANY OTHER MATERIALS OR 
+MAINTENANCE PROVIDED BY LICENSOR UNDER THIS EULA, AND LICENSOR’S 
+RELATIONSHIP WITH END USER SHALL NOT, IN ANY EVENT, EXCEED THE FEES PAID BY 
+END USER FOR THE SOFTWARE DURING THE ONE (1) YEAR PERIOD PRIOR TO THE DATE 
+THE APPLICABLE CAUSE OF ACTION AROSE.
+11.5. NO ACTION ARISING OUT OF ANY ACTUAL OR ALLEGED BREACH OF THIS EULA OR 
+TRANSACTIONS CONTEMPLATED BY THIS EULA MAY BE BROUGHT BY EITHER PARTY 
+MORE THAN ONE (1) YEAR AFTER THE CAUSE OF ACTION HAS ACCRUED. FOR PURPOSES 
+OF THIS EULA, A CAUSE OF ACTION SHALL BE DEEMED TO HAVE ACCRUED WHEN A 
+PARTY KNEW OR REASONABLY SHOULD HAVE KNOWN OF THE BREACH OR CLAIMED 
+BREACH.
+12. Export Control: The parties will comply with all applicable export or import regulations and trade 
+sanctions imposed by various countries, including the U.S., E.U., U.K., and U.N.  Customer confirms that 
+it is not included on any sanctions-related list of designated persons and is not organized under the laws 
+of, resides in, or is controlled by any country or region subject to comprehensive sanctions or embargoes 
+(currently, Belarus, Cuba, Iran, North Korea, Russia, Syria, and the Crimea, Donetsk, Kherson, Luhansk, 
+and Zaporizhzhia regions of Ukraine). Without limiting the foregoing, Customer agrees that it will not 
+export, re-export, or otherwise transmit the Software: (i) to any country or region subject to an embargo 
+or comprehensive trade sanctions; (ii) to any individual or entity identified on any restricted party lists 
+(including the Consolidated Sanctions, Specially Designated Nationals, Denied Persons, Entity, or 
+Unverified Lists); or (iii) to any end user with knowledge or reason to know that the Software will be 
+used for any unlawful purpose. Veeam reserves the right to block access to the Software for violations of 
+this clause without prior notice.
+13. United States Government Users. The Software licensed under this EULA is “commercial computer 
+software” as that term is described in DFAR 252.227-7014(a)(1). If acquired by or on behalf of a civilian 
+agency, the U.S. Government acquires the Software and/or Documentation subject to the terms of this 
+EULA as specified in 48 C.F.R. 12.212 (Computer Software) and 12.211 (Technical Data) of the Federal 
+Acquisition Regulations (“FAR”) and its successors. If acquired by or on behalf of any agency within the 
+Department of Defense (“DOD”), the U.S. Government acquires the Software and Documentation subject 
+to the terms of this EULA as specified in 48 C.F.R. 227.7202 of the DOD FAR Supplement and its 
+successors.
+14. Confidentiality Each party agrees to maintain the confidentiality of all information disclosed by the 
+other party in relation to the provision and use of the Software, designated as confidential or reasonably 
+understood to be confidential due to the nature of the information and the circumstances of disclosure 
+(“Confidential Information”). Confidential Information shall be used solely to fulfil obligations under this 
+EULA and protected with no less diligence than that used for one’s own confidential information but no 
+less than reasonable care. This excludes information which is publicly known, received from third parties 
+without breach, or independently developed. If legally compelled to disclose Confidential Information, 
+the receiving party must notify the disclosing party promptly and cooperate with any effort to contest the 
+disclosure. Upon termination of this EULA, Confidential Information must be returned or destroyed as 
+directed by the disclosing party.
+15. General. This EULA, together with the terms, policies and information referenced herein, sets forth 
+Licensor’s entire obligation and End User’s exclusive rights as to the Software and Maintenance, and 
+supersedes any conflicting terms of any purchase order and any other communication regarding the same. 
+No failure of either party to exercise or enforce any of its rights hereunder will act as a waiver. 
+15.1. Severability. If any provision of this EULA is found illegal or unenforceable, it will be enforced to 
+the maximum extent permissible, and the legality and enforceability of the other provisions of this EULA 
+will not be affected. 
+15.2. Assignment. Neither party may assign or transfer this EULA, in whole or in part, without the other’s 
+prior written consent. Notwithstanding the foregoing, Licensor may, without End User’s consent, assign 
+the EULA to any of its affiliates, or to an entity who acquires all or substantially all of its business or 
+assets, or in connection with a change in control of Licensor (through merger, consolidation, 
+reorganization, operation of law or otherwise). Subject to the foregoing, this EULA is binding upon and 
+shall inure to the benefit of the parties and their respective successors and permitted assigns.
+16. Licensor Party.   Kasten Inc., USA, licenses Veeam Kasten for Kubernetes and Veeam Software 
+Group GmbH, Switzerland, licenses all other Software.
+17. Governing Law and Jurisdiction.
+17.1. End User agrees that if End User licenses the Software from either of the entities below, any claim 
+or dispute arising from or in connection with this EULA is governed by the corresponding laws without 
+regard to its conflict of law principles and excluding the U.N. Convention on Contracts for the 
+International Sale of Goods and the Uniform Computer Information Transactions Act and End User 
+consents to the exclusive jurisdiction of the specified courts:
+a.) Veeam Software Group GmbH- Switzerland; Canton of Zug, Switzerland;
+b.) Kasten Inc.- New York; federal or state courts of New York County, New York.
+
+

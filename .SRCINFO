@@ -1,0 +1,13 @@
+pkgbase = veeam-extract
+	pkgdesc = Veeam Extract Utility for Linux
+	pkgver = 13.0.1.180
+	pkgrel = 1
+	url = https://www.veeam.com/backup-replication-vcp-download.html?tab=extensions
+	arch = x86_64
+	license = custom
+	source = https://download2.veeam.com/VBR/v13/VeeamExtract_13.0.1.180.tar.gz
+	source = EULA
+	sha256sums = 4d7d75af3b34f230d94cee9f30b62a38912704921b82a873d10142c46c8627c8
+	sha256sums = 477ef0aa7b2a3c842a428e022e236356a719fb5ed2716b5438c7608ea1f24f5f
+
+pkgname = veeam-extract
