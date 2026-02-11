@@ -2,7 +2,7 @@
 pkgname=python-barcode-git
 _pkgname=python_barcode
 pkgver=v0.16.1.r18.g85acbda
-pkgrel=3
+pkgrel=4
 pkgdesc="Create standard barcodes with Python. No external modules needed. (git version)"
 arch=('any')
 license=('MIT')
@@ -31,8 +31,8 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
     if [ -d $pkgdir/usr/lib/python*/site-packages/docs ]; then
         install -dm755 $pkgdir/usr/share/doc/$pkgname
-        mv $pkgdir/usr/lib/python*/site-packages/docs
-        $pkgdir/usr/share/doc/$pkgname/
+        mv $pkgdir/usr/lib/python*/site-packages/docs/*.rst $pkgdir/usr/share/doc/$pkgname/
+        mv $pkgdir/usr/lib/python*/site-packages/docs/_static $pkgdir/usr/share/doc/$pkgname
     fi
     install -Dm644 LICENCE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
