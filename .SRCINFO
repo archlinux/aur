@@ -1,5 +1,5 @@
 pkgbase = python-scenedetect-git
-	pkgdesc = Cross-platform, OpenCV-based video scene detection program and Python library.
+	pkgdesc = 🎥 Python and OpenCV-based scene cut/transition detection program & library.
 	pkgver = 0.6.7.1.release.r56.gd75833f
 	pkgrel = 1
 	url = https://github.com/Breakthrough/PySceneDetect
