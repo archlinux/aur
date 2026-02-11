@@ -5,7 +5,7 @@
 
 _name=pytango
 pkgname=python-${_name}
-pkgver=10.1.2
+pkgver=10.1.3
 pkgrel=1
 pkgdesc="A python binding for the Tango control system"
 arch=("x86_64" "armv7h" "aarch64")
@@ -32,7 +32,7 @@ source=(
   "https://gitlab.com/tango-controls/${_name}/-/releases/v${pkgver}/downloads/${_name}-with-submodules-v${pkgver}.tar.gz"
 )
 sha256sums=(
-  "22ac3fedb9aa1aad9cad21666af1e59ecfa0f256703fecb48ef7ff6ff2a405aa"
+  "bcc1d58e38e73bf61e6c20382769649f7afcbebd1fb45ccbdfc9120d6bb221d2"
 )
 
 build() {
