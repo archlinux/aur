@@ -12,13 +12,15 @@
 # Contributor: Rustmilian <Rustmilian@proton.me>
 
 pkgname=depot-tools-git
-pkgver=r11145.58625e82c
+pkgver=r12048.6c6a6572eb
 pkgrel=1
 pkgdesc='Tools for working with Chromium development'
 arch=(any)
 url='https://chromium.googlesource.com/chromium/tools/depot_tools'
 license=(BSD-3-Clause)
 depends=(bash git python)
+provides=("${pkgname%-git}=$pkgver")
+conflicts=("${pkgname%-git}")
 install="$pkgname.install"
 source=("git+$url.git")
 sha512sums=('SKIP')
