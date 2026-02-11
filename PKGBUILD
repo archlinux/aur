@@ -2,7 +2,7 @@
 
 pkgname=hyprmon
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="TUI for Hyprland monitor configuration"
 arch=('x86_64')
 url="https://github.com/ChauVanLoc01/hyprmon"
