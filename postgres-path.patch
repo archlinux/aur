@@ -1,17 +1,17 @@
---- a/server/src/utils/database-backups.ts
-+++ b/server/src/utils/database-backupsn.ts
-@@ -149,7 +149,7 @@
-   }
+--- a/server/src/services/database-backup.service.ts
++++ b/server/src/services/database-backup.service.ts
+@@ -205,7 +205,7 @@
+     }
  
-   return {
--    bin: `/usr/lib/postgresql/${databaseMajorVersion}/bin/${bin}`,
-+    bin: `/usr/bin/${bin}`,
-     args,
-     databasePassword: isUrlConnection ? new URL(databaseConfig.url).password : databaseConfig.password,
-     databaseVersion,
---- a/server/src/services/backup.service.spec.ts
-+++ b/server/src/services/backup.service.specn.ts
-@@ -250,7 +250,7 @@
+     return {
+-      bin: `/usr/lib/postgresql/${databaseMajorVersion}/bin/${bin}`,
++      bin: `/usr/bin/${bin}`,
+       args,
+       databaseUsername,
+       databasePassword: isUrlConnection ? new URL(databaseConfig.url).password : databaseConfig.password,
+--- a/server/src/services/database-backup.service.spec.ts
++++ b/server/src/services/database-backup.service.spec.ts
+@@ -277,7 +277,7 @@
          mocks.database.getPostgresVersion.mockResolvedValue(postgresVersion);
          await sut.handleBackupDatabase();
          expect(mocks.process.spawnDuplexStream).toHaveBeenCalledWith(
