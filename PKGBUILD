@@ -2,7 +2,7 @@
 pkgname=adagate-bin
 _pkgname=AdaGate
 _shortname=agate
-pkgver=7.4.9
+pkgver=7.5.0
 pkgrel=1
 pkgdesc="A kid-friendly 3D dungeon escape game within a Stargate fantasy setting.(Prebuilt version)"
 arch=('x86_64')
@@ -19,11 +19,11 @@ makedepends=(
     'gendesk'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.7z::${url}/releases/download/v${pkgver}/ag10jan26.7z"
+    "${pkgname%-bin}-${pkgver}.7z::${url}/releases/download/v${pkgver}/ag11feb26.7z"
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/fastrgv/AdaGate/v${pkgver}/${pkgname%-bin}.jpg"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ebef84aadb320974d1b955095fb259e80142a482ddceecd4fd4f6d72a6192c5e'
+sha256sums=('32bfb29a85a949d9ffdb1db1d9377b290994e4441edf8f5eaf61831bfabbc740'
             'd7c362ed4529df6bfdde61b37fb17683719d13d566a7ce4d699ce0f6302b07a2'
             'f3a62692c81c18084bdaa42f52720002ff9cd2243ba38ed6f7d0981ebab01269')
 prepare() {
