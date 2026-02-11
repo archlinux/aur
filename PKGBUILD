@@ -1,13 +1,18 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="containerlab"
-pkgver=0.72.0
+pkgver=0.73.0
 pkgrel=1
 pkgdesc="Container-based networking labs"
-arch=('aarch64' 'x86_64')
+arch=(
+  'aarch64'
+  'x86_64'
+)
 url="https://containerlab.dev"
 _url="https://github.com/srl-labs/${pkgname}"
-license=('BSD-3-Clause')
+license=(
+  'BSD-3-Clause'
+)
 depends=(
   'glibc'
 )
@@ -16,14 +21,18 @@ makedepends=(
   'git'
 )
 _pkgsrc="${_url##*/}"
-source=("${_pkgsrc}::git+${_url}.git#tag=v${pkgver}")
-b2sums=('c32245e495fef36ec4c60e34121b724ffa8ae4cd19d70a09dd5cc069ba425579632737179faa29b308e4f476bb1837d52fb5dc5003b642d4d9833444dc9941a7')
+source=(
+  "${_pkgsrc}::git+${_url}.git#tag=v${pkgver}"
+  "${pkgname}.sysusers"
+)
+b2sums=('c05266b766fbde9d3a738808db4d6aade51cfb34fdc43f8ab0e09e470dfa8e06d2fa09cdce6ac9292484233b662a4c306d3967e04318aa8bca56654d7d70dd8e'
+        '7b0465b94085ad1a63e7a9a7fcf5598c68dd847de4151197fa850032bb4a1265575c8f08c66318fe062bea70a67465e8547a2f941bb628f1a6bf6bb4958540e4')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
 
   cd "${srcdir}/${_pkgsrc}"
-  go get -modcacherw -v ./...
+  go mod download -modcacherw -x
 
   mkdir -p "build" "completions"
 }
@@ -58,7 +67,10 @@ build() {
 # }
 
 package() {
-  cd "${srcdir}/${_pkgsrc}"
+  cd "${srcdir}"
+  install -vDm644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+
+  cd "${_pkgsrc}"
   install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
