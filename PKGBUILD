@@ -3,8 +3,8 @@
 pkgbase="linux-pf"
 _suffix=""
 pkgname=(${pkgbase}${_suffix} ${pkgbase}-headers${_suffix})
-_rev=382c49fb2059c76dc474bb42c81cc92d26a22481
-pkgver=6.18.pf6
+_rev=54eed6ecd6fb609f6f59c6ba4310c1b48dccd5df
+pkgver=6.19.pf1
 pkgrel=1
 pkgdesc="pf-kernel"
 arch=(x86_64)
@@ -15,7 +15,7 @@ options=(!debug !strip)
 source=(https://codeberg.org/pf-kernel/linux/archive/${_rev}.tar.gz
 		config)
 b2sums=(SKIP
-		'120b4501caddb5aa623dc21f73f583bfada6df5d3f51a28351224fa08258b85dbff360a0693d2a0c5c2f4a2d26be69d4c5ac4951fba74d38b3c605a5011901ee')
+		'e1f25b08d7b338f9f3b7bfa6893374c8ca07594e763d08e2455cbca033db52a58b77e490185c7987749ea9bebe580fd05443f391d43ba7e6228249d13372a671')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=${pkgbase}
@@ -54,9 +54,8 @@ _package() {
 	optdepends=('ksmbd-tools: userspace tools for the ksmbd kernel SMB server'
 				'linux-firmware: firmware images needed for some devices'
 				'scx-scheds: to use sched-ext schedulers'
-				'v4l2loopback-utils: v4l2-loopback device utilities'
 				'wireless-regdb: to set the correct wireless channels of your country')
-	provides=(linux-pf KSMBD-MODULE NTFS3-MODULE NTSYNC-MODULE OVPN-MODULE V4L2LOOPBACK-MODULE VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+	provides=(linux-pf KSMBD-MODULE NTSYNC-MODULE OVPN-MODULE VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
 	replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
 	cd linux
@@ -81,7 +80,7 @@ _package() {
 _package-headers() {
 	pkgdesc="Headers and scripts for building modules for the ${pkgdesc}"
 	depends=(pahole)
-	provides=(linux-pf-headers)
+	provides=(LINUX-HEADERS linux-pf-headers)
 
 	cd linux
 	local builddir="${pkgdir}"/usr/lib/modules/$(<version)/build
