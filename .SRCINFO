@@ -1,6 +1,6 @@
 pkgbase = libzathura-git
 	pkgdesc = A document library.
-	pkgver = 69efc7d
+	pkgver = 25ef21e
 	pkgrel = 1
 	url = http://pwmt.org/projects/libzathura
 	arch = i686
@@ -17,8 +17,7 @@ pkgbase = libzathura-git
 	depends = file
 	provides = libzathura
 	conflicts = libzathura
-	source = libzathura::git+https://git.pwmt.org/pwmt/libzathura.git#branch=develop
+	source = libzathura::git+https://github.com/pwmt/libzathura.git#branch=develop
 	md5sums = SKIP
 
 pkgname = libzathura-git
-
