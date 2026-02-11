@@ -1,11 +1,11 @@
 pkgbase = rtimelogger
 	pkgdesc = Rust program to track working hours and calculate surplus using SQLite
-	pkgver = 0.8.0
+	pkgver = 0.8.6
 	pkgrel = 1
 	url = https://github.com/umpire274/rtimelogger
 	arch = x86_64
 	license = MIT
-	source = rtimelogger-0.8.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/umpire274/rtimelogger/releases/download/v0.8.0/rtimelogger-0.8.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 443867ecb9f29fefc359729c593fd0a99ab707c41deba20c7b59be22b56d8103
+	source = rtimelogger-0.8.6-x86_64-unknown-linux-gnu.tar.gz::https://github.com/umpire274/rtimelogger/releases/download/v0.8.6/rtimelogger-0.8.6-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = bbb83c24fa549e2aaa8e532d146164e6f5331c41bffa66228d5e02d8bc86220a
 
 pkgname = rtimelogger
