@@ -1,6 +1,6 @@
 pkgbase = spotify-tray-wayland-git
 	pkgdesc = Native Wayland/Hyprland system tray for Spotify with scroll and middle-click controls
-	pkgver = r7.00dc93d
+	pkgver = r27.7733db4
 	pkgrel = 1
 	url = https://github.com/xander1421/spotify-tray-wayland
 	install = spotify-tray-wayland-git.install
