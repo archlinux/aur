@@ -1,10 +1,10 @@
-# Maintainer: kosa <kosa@users.noreply.github.com>
+# Maintainer: kosa12 <kosa12@users.noreply.github.com>
 pkgname=crtty-git
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="Post-processing shader framework for kitty terminal via LD_PRELOAD"
 arch=('x86_64')
-url="https://github.com/kosa/CRTty"
+url="https://github.com/kosa12/CRTty"
 license=('MIT')
 depends=('glibc')
 makedepends=('cargo' 'git')
