@@ -1,6 +1,6 @@
 pkgbase = app2unit
 	pkgdesc = Utility to launch commands as systemd user units
-	pkgver = 1.2.1
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/Vladimir-csp/app2unit
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = app2unit
 	provides = app2unit-term
 	provides = app2unit-term-scope
 	provides = app2unit-term-service
-	source = https://github.com/Vladimir-csp/app2unit/archive/refs/tags/v1.2.1.tar.gz
-	sha256sums = cb2ff757c27765d99a8311f350bd94f8bd0fc8f6792095064a92be8769dad026
+	source = https://github.com/Vladimir-csp/app2unit/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = a009c5dfff1bedb57cdce17d49f8ba12bd4988b9454663e01a3415563de4510a
 
 pkgname = app2unit
