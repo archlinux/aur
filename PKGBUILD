@@ -7,8 +7,8 @@ pkgdesc="AI-powered TUI for PKGBUILD generation and AUR management"
 arch=('x86_64' 'aarch64')
 url="https://github.com/archforge/archforge"
 license=('MIT')
-depends=('rust' 'cargo' 'git')
-makedepends=('cargo' 'git' 'openssl' 'pkgconf')
+depends=('rust' 'cargo')
+makedepends=('cargo' 'openssl' 'pkgconf')
 optdepends=(
     'makepkg: for building packages'
     'paru: AUR helper'
@@ -16,14 +16,16 @@ optdepends=(
 )
 provides=('archforge')
 conflicts=('archforge')
+source=("https://github.com/archforge/archforge/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('SKIP')
 
 build() {
-    cd "$pkgname"
+    cd "$pkgname-$pkgver"
     cargo build --release --locked --all-features
 }
 
 package() {
-    cd "$pkgname"
+    cd "$pkgname-$pkgver"
     install -Dm755 "target/release/archforge" "$pkgdir/usr/bin/archforge"
     install -Dm644 "archforge.1" "$pkgdir/usr/share/man/man1/archforge.1"
     install -Dm644 "completions/archforge.bash" "$pkgdir/usr/share/bash-completion/completions/archforge"
