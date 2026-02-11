@@ -1,5 +1,5 @@
 pkgbase = root-app-bin
-	pkgdesc = Root - The Discord alternative for communities (AppImage)
+	pkgdesc = Root - The Discord alternative for communities
 	pkgver = 0.9.86
 	pkgrel = 1
 	url = https://www.rootapp.com
