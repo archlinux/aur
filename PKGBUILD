@@ -3,7 +3,7 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=libtiff-lerc
-pkgver=4.7.0
+pkgver=4.7.1
 pkgrel=1
 pkgdesc='Library for manipulation of TIFF images'
 url='http://www.simplesystems.org/libtiff/'
@@ -15,7 +15,7 @@ otiffptdepends=('freeglut: for using tiffgt')
 provides=('libtiff=4.6.0' 'libtiff.so' 'libtiffxx.so')
 conflicts=('libtiff')
 source=(https://download.osgeo.org/libtiff/tiff-${pkgver}.tar.gz)
-b2sums=('156ad8a9058363885dc0607ab4538fba4cc802041c4b04ea1ac540191168c98c0caa8f2c5b07e6327d5b2ccec1bef3e08dbe70b6be7329738da8f93b76fb3994')
+b2sums=('d35725986053e0bacab9974271faacc03d86eb8c6a1595bcab82ac78fe182ba780b20281c1de29f5ff2bd559c6bdebeaf222b85e8bf462d6a9b476a9f5bb9be9')
 
 prepare() {
   cd tiff-${pkgver}
