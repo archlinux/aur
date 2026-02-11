@@ -1,7 +1,7 @@
 pkgbase = root-app-bin
 	pkgdesc = Root - The Discord alternative for communities
 	pkgver = 0.9.86
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.rootapp.com
 	arch = x86_64
 	arch = aarch64

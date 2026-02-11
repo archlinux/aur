@@ -2,7 +2,7 @@
 pkgname=root-app-bin
 _pkgname=root-app
 pkgver=0.9.86
-pkgrel=1
+pkgrel=2
 pkgdesc="Root - The Discord alternative for communities"
 arch=('x86_64' 'aarch64')
 url="https://www.rootapp.com"
