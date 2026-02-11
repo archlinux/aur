@@ -6,8 +6,8 @@ pkgname=(
 	lib32-wivrn-server
 	wivrn-dashboard
 )
-pkgver=26.2
-pkgrel=2
+pkgver=26.2.1
+pkgrel=1
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
 url="https://github.com/WiVRn/WiVRn"
@@ -82,7 +82,7 @@ makedepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/WiVRn/WiVRn/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8f965c3a024f7649a49573bf340d138cae898289df1b80734947262798f699fd')
+sha256sums=('bb2c7b71fe7f50f6eaabe8bf8fca6a4ed27439de6a3173576fadbab5ed5623fd')
 
 build() {
 	cd "WiVRn-$pkgver"
