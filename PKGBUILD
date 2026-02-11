@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname=pinit
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Pin portable apps to the launcher"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glibc' 'glib2' 'gtk4' 'dconf' 'libgee' 'libadwaita' 'hicolor-icon-them
 makedepends=('gettext' 'meson' 'vala' 'blueprint-compiler')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('c4ee73d22c9dd1fd136e0555969864024a4381ab907a53d43a668dd3d92e8499')
+sha256sums=('73b67a4acc37a15b8e135eb6494e83d8ec0f34ef5a6685a5de5db59860eb775a')
 
 
 build() {
