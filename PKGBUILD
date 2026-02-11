@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 
-_upstreamver='2.14.4'
+_upstreamver='2.14.5'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='fastmcp'
@@ -20,7 +20,7 @@ makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer
 optdepends=()
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
-sha256sums=('c01f19845c2adda0a70d59525c9193be64a6383014c8d40ce63345ac664053ff')
+sha256sums=('38944dc582c541d55357082bda2241cedb42cd3a78faea8a9d6a2662c62a42d7')
 
 
 build() {
