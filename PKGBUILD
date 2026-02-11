@@ -1,9 +1,10 @@
 # Maintainer: Exorcism
 # Contributor: Yauhen Kirylau <actionless DOT loveless PLUS aur AT gmail MF com>
+# Contributor: Lubosz Sarnecki <lubosz@gmail.com>
 
 _name=xformers
 pkgname=python-${_name}
-pkgver=0.0.33.post2
+pkgver=0.0.34
 pkgrel=1
 pkgdesc="Transformers building blocks, supporting a composable construction"
 arch=('any')
@@ -27,7 +28,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::https://pypi.io/packages/source/x/${_name}/${_name}-${pkgver}.tar.gz"
 )
 
-sha256sums=('647ddf26578d2b8643230467ef1f0fbfef0bbe556a546bd27a70d4855d3433e1')
+sha256sums=('716bd9ffe61f46c2cc0536abf8b8c43ec594bea47a49394ea5cfa417e9de6a6f')
 
 build() {
 	cd "${_name}-${pkgver}"
