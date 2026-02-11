@@ -12,12 +12,14 @@ pkgdesc="Cross-platform, OpenCV-based video scene detection program and Python l
 license=('BSD-3-Clause')
 arch=('any')
 url="https://github.com/Breakthrough/PySceneDetect"
-depends=('python-appdirs' 'python-click' 'python-opencv' 'python-numpy' 'python-tqdm')
+depends=('python' 'python-click' 'python-opencv' 'python-numpy' 'python-tqdm' 'python-platformdirs')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=("python-pytest")
 optdepends=('mkvtoolnix-cli: Splitting in copy mode.'
             'ffmpeg: Splitting in precise mode.'
-            'python-av')
+            'python-av: Additional video backend.'
+            'python-moviepy: Additional video backend.'
+            'python-onnxruntime: transnet_v2 detector.')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url")
