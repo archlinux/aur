@@ -4,7 +4,7 @@
 
 _pkgname="aelkey"
 pkgname="$_pkgname"
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Lua-based input remapping framework"
 url="https://github.com/xiota/aelkey"
@@ -39,7 +39,7 @@ source=(
   "$_pkgsrc_sol"::"git+https://github.com/Nerixyz/sol2.git"
 )
 sha256sums=(
-  '6bd524edd5d37964950d4c40a6ba8248d5d071987220a484daf5197a7ad206d2'
+  'ee780d7e3866440086d982e373341db187d55961424c4cfc849f513117cbcc3d'
   'SKIP'
 )
 
