@@ -6,7 +6,7 @@
 
 pkgname='qt6-wasm'
 
-_qtver=6.10.1
+_qtver=6.10.2
 _emsdkver=4.0.7
 _emsdk=4.0.7
 
@@ -32,25 +32,16 @@ groups=('qt-wasm' 'qt6-wasm')
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/single/${_qt}.tar.xz"
         "https://github.com/emscripten-core/emsdk/archive/refs/tags/${_emsdk}.tar.gz"
         'qtwasm_env.sh'
-        'fix-compile.patch'
 )
 
-sha256sums=('0ed08b079719394303cd2054b66b2dc0c5895ceeb88fb6131c18991c980bf00f'
+sha256sums=('c3df0f0e421130cc52ed81cb712358804471ce9bd2a41d97828f9f5b1bf7fed2'
             'b7262c64f4b5f0692f3bab063cafb09682495f98355677a3f1373d0520457bad'
             '9dba88f1628175272c2509a7d823155ae35021a45532240c19941fa681ebb865'
-            '67a13924a7662897702857300c0ceee957770cdb0276980b2268fdb166f740e2'
 )
 
 options=('!strip' 'staticlibs' '!buildflags' '!makeflags')
 
 _opt=/opt/qt6-wasm
-
-prepare () {
-  echo "${srcdir}/emsdk"
-  cd ${srcdir}/${_qt}
-
-  patch -p1 "qtbase/src/corelib/global/qcompilerdetection.h" < ${srcdir}/fix-compile.patch
-}
 
 build() {
   # emsdk
