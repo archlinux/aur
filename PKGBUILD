@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _npmname=cline
-_npmver=1.0.10
+_npmver=2.0.5
 
 pkgname=${_npmname}-cli
 pkgdesc="Autonomous coding agent CLI - capable of creating/editing files, running commands, using the browser, and more."
@@ -19,12 +19,13 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('7d791de03fb8f1c478dcc389a882b868dca49151f743282c82489a45574eedd83bedefb52f252916f07f46b09fbbbe4d32cdd1c823de7b5cdc3b201d8f81304c')
+b2sums=('ed5060dbfa380fcb21ced22494aa2354132eac56117264c83808e0f3839497edeba8e7ed0631541cd67a26dfa1f116cfb681893801c2f4325d95da9a7d90af17')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
 	# Install using Using npm
-	npm install -s -g \
+	export SHARP_IGNORE_GLOBAL_LIBVIPS=1
+	npm install -g \
 		--cache "${srcdir}/npm-cache" \
 		--prefix "${pkgdir}/usr" \
 		"${srcdir}/${pkgname}-${pkgver}.tgz"
@@ -48,9 +49,6 @@ package() {
 		mv "$tmppackage" "$pkgjson"
 		chmod 644 "$pkgjson"
 	done
-
-	# Install man page
-	install -Dm644 "${pkgdir}/usr/lib/node_modules/${_npmname}/man/${_npmname}.1" "${pkgdir}/usr/share/man/man1/${_npmname}.1"
 
 	# Install README file
 	install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/"
