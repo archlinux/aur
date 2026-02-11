@@ -9,7 +9,8 @@ pkgrel=1
 pkgdesc='Drop-in replacement for glibc nscd which is designed for simplicity and stability'
 arch=('i686' 'x86_64')
 url='https://busybox.net/~vda/unscd/'
-license=('GPL2')
+license=('GPL-2.0-only')
+depends=('glibc')
 source=("https://busybox.net/~vda/unscd/nscd-$pkgver.c"
         'unscd.service'
         'unscd.conf'
