@@ -5,7 +5,8 @@ pkgbase = gamescope-shaders-git
 	url = https://github.com/misyltoad/GamescopeShaders
 	arch = any
 	license = gplv3
-	depends = gamescope-session-git
+	optdepends = gamescope-session-git: ChimeraOS Gamescope Session
+	optdepends = gamescope-session-cachyos: CachyOS Gamescope Session
 	source = git+https://github.com/misyltoad/GamescopeShaders
 	md5sums = SKIP
 

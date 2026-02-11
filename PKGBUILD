@@ -6,7 +6,10 @@ pkgrel=1
 pkgdesc='Gamescope shaders for SteamOS'
 url='https://github.com/misyltoad/GamescopeShaders'
 arch=(any)
-depends=(gamescope-session-git)
+optdepends=(
+    'gamescope-session-git: ChimeraOS Gamescope Session'
+    'gamescope-session-cachyos: CachyOS Gamescope Session'
+)
 source=(git+https://github.com/misyltoad/GamescopeShaders)
 md5sums=('SKIP')
 license=('gplv3')
