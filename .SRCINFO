@@ -1,6 +1,6 @@
 pkgbase = python-stripe
 	pkgdesc = Stripe python bindings
-	pkgver = 13.0.1
+	pkgver = 14.3.0
 	pkgrel = 1
 	url = https://github.com/stripe/stripe-python
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = python-stripe
 	depends = python>=3.6
 	depends = python-requests
 	depends = python-typing_extensions
-	source = https://github.com/stripe/stripe-python/archive/refs/tags/v13.0.1.tar.gz
-	sha512sums = 689b3e5512ef7f1f79afed0c20dcbe8009f00483e99118c556cb83596651b767ee2e495af0e3cb900441b5ccfe5dc4f671dfd5506210c99306c1ec95ca274e59
-	b2sums = dbe60f4e892978e83bda6f81c99039733c4c42677d82a0845994b96ed31a76957a26e77f4d037db5db624363e5aa1728af1e0fba77037fbfdb761f92f3f63d92
+	source = https://github.com/stripe/stripe-python/archive/refs/tags/v14.3.0.tar.gz
+	sha512sums = 4e74a000c16a1de5b8d99ff344c1276bdc469d50b1a1779eabe063f7e443849d7049b3e2d8ca953116fb2ca781faf65c797b3e93dcd17ebc99bfd4db5c910b9f
+	b2sums = 41f541dea40a81ffeb24ec176e48c17557c56b1f2e69712de9b9c339efd18f71931532513cded4ce920d5c9256fc5f63605ba940a0ca95678fad9c19955c6fd6
 
 pkgname = python-stripe
