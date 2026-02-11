@@ -1,12 +1,13 @@
 pkgbase = keybox-bin
 	pkgdesc = A minimal, encrypted, local password manager.
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cruglet/keybox
 	arch = x86_64
 	license = MIT
+	makedepends = unzip
 	depends = vulkan-icd-loader
-	source = keybox-linux.x86_64::https://github.com/cruglet/keybox/releases/download/v1.2.1/keybox-linux.x86_64
+	source = keybox-linux.zip::https://github.com/cruglet/keybox/releases/download/v1.2.1/keybox-linux.zip
 	source = keybox.png::https://raw.githubusercontent.com/cruglet/keybox/main/meta/full-logo_256x.png
 	sha256sums = SKIP
 	sha256sums = SKIP
