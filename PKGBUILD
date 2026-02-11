@@ -1,6 +1,6 @@
 # Maintainer: Pinak Dhabu <thepinak503@duck.com>
 pkgname=echomind
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="AI-powered CLI tool with multiple provider support, streaming, and interactive mode"
 arch=('x86_64' 'aarch64')
