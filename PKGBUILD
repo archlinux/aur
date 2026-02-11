@@ -9,7 +9,7 @@ _pkg="${_pkgname#python-}"
 pkgver=0.6.7.1.release.r56.gd75833f
 pkgrel=1
 pkgdesc="Cross-platform, OpenCV-based video scene detection program and Python library."
-license=('BSD')
+license=('BSD-3-Clause')
 arch=('any')
 url="https://github.com/Breakthrough/PySceneDetect"
 depends=('python-appdirs' 'python-click' 'python-opencv' 'python-numpy' 'python-tqdm')
@@ -35,7 +35,5 @@ build() {
 package() {
 	cd "$_pkgname"
 	python -m installer --destdir="$pkgdir" dist/*.whl
-	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -sv "$_site/$_pkg-${pkgver/.r*/}.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}/
 }
