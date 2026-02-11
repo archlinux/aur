@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=poLCA
-_pkgver=1.6.0.1
+_pkgver=1.6.0.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Polytomous Variable Latent Class Analysis"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r-scatterplot3d
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1880d580c0b060ac7708458440462726')
-b2sums=('93d26d26a8d172f7d5ff6326f6feaa9c84ccc0282301aff190725b9c9b63ab2fafb98a55b5ee014339615f342c92c6ca251bd7e3dd76bdd93e08b24667e6a498')
+md5sums=('50ad379b144dad1e3c3734f2717e32c7')
+b2sums=('f27c15e59e384431f428b4e1f9e07236d77009b4825977d47e8764f568d15a397580bbe1b253b1d25c13164c1f42200b377416cea1ec6673bb9e041ca3639660')
 
 build() {
   mkdir build
