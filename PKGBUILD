@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=trust
-_pkgver=0.1-8
+_pkgver=0.1-9
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=10
+pkgrel=1
 pkgdesc="Trust Region Optimization"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0978e8fa147d244ba4dacfe8dfee2403')
-b2sums=('be563f0eb3c79953be2683809b906d2cf2faa9a9ae8aa931be4f628a57823f39ca02430facf5cdb69822c5dea460f2ba91cf654b0519b08ba50044b063453eee')
+md5sums=('86d07fa891b3c291b358cfc48f5c84ce')
+b2sums=('b0cd963f256545510e3a7b01e53c98d9d001aedf9fde79ca1d10c54201b9f38df939ae330bd7515b09d501c35f8ab58bed12b3165c9304f44f833f8510dba996')
 
 build() {
   mkdir build
