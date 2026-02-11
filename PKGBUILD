@@ -1,6 +1,6 @@
-# Maintainer: Your Name <ezrakhuzadi@gmail.com>
+# Maintainer: Ezra Khuzadi <ezrakhuzadi@gmail.com>
 pkgname=bluetooth-bitrate-manager
-pkgver=0.3.1
+pkgver=0.3.1.r2.gaf7d265
 pkgrel=1
 pkgdesc="GTK4 app and CLI that monitor PipeWire Bluetooth codecs with an optional high-bitpool SBC rebuild"
 arch=('any')
