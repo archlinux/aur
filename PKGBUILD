@@ -1,7 +1,7 @@
 # Maintainer: NiNjA <heinep@gmail.com>
 pkgname=freeserf.net
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Settlers 1 clone written in C# (requires original game file)'
 arch=('x86_64')
 url='https://github.com/Pyrdacor/freeserf.net'
@@ -30,7 +30,8 @@ build() {
 
 package() {
   local builddir="FreeserfNet/bin/LinuxRelease/linux-x64"
-  local targetdir="${pkgdir}"/usr/share/freeserf.net
+  local destinationdir="/usr/share/freeserf.net"
+  local targetdir="${pkgdir}"/"${destinationdir}"
 
   # Prepare directories
   mkdir -p "${targetdir}"
@@ -43,5 +44,5 @@ package() {
 
   # Install desktop and binary
   install -Dm644 "${srcdir}"/FreeserfNet.desktop "${pkgdir}"/usr/share/applications/FreeserfNet.desktop
-  ln -s "${targetdir}"/FreeserfNet "${pkgdir}"/usr/bin/FreeserfNet
+  ln -sf "${destinationdir}"/FreeserfNet "${pkgdir}"/usr/bin/FreeserfNet
 }
