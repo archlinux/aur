@@ -1,0 +1,11 @@
+post_upgrade() {
+	echo -e "\e[1;33m" # yellow
+
+	echo 'Attention:'
+	echo
+	echo 'If you used this package before, the program behind has been rewritten.'
+	echo 'If you expect the previous software for your setup please use the Linux-Arctis-Manager-Legacy package'
+
+	echo -e "\e[1;0m" # default
+
+}
