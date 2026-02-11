@@ -1,7 +1,7 @@
 pkgbase = linux-xanmod-rt
 	pkgdesc = Linux Xanmod real-time version
-	pkgver = 6.18.7
-	pkgrel = 2
+	pkgver = 6.18.10
+	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
 	license = GPL-2.0-only
@@ -20,13 +20,13 @@ pkgbase = linux-xanmod-rt
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.tar.sign
-	source = patch-6.18.7-rt-xanmod1.xz::https://sourceforge.net/projects/xanmod/files/releases/rt/6.18.7-rt-xanmod1/patch-6.18.7-rt-xanmod1.xz/download
+	source = patch-6.18.10-rt-xanmod1.xz::https://sourceforge.net/projects/xanmod/files/releases/rt/6.18.10-rt-xanmod1/patch-6.18.10-rt-xanmod1.xz/download
 	source = choose-gcc-optimization.sh
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 9106a4605da9e31ff17659d958782b815f9591ab308d03b0ee21aad6c7dced4b
 	sha256sums = SKIP
-	sha256sums = c6c893332308adee9a0e485de6528d991c70d6bfe5c6a473c10a9d416a696cd7
+	sha256sums = 7bef7c2a4f218cfe57ce84f6482586252cce37d53c68acc35c3a6b54b119fdb5
 	sha256sums = a8b38eb482eb685944757182c4886404abc12703e5e56ec39c7d61298d17d71f
 
 pkgname = linux-xanmod-rt
