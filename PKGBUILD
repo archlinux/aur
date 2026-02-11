@@ -8,7 +8,7 @@ pkgver=0.0.34
 pkgrel=1
 pkgdesc="Transformers building blocks, supporting a composable construction"
 arch=('any')
-url="https://pypi.org/project/${_name}"
+url="https://github.com/facebookresearch/${_name}"
 license=('BSD')
 depends=(
 	'python'
