@@ -1,0 +1,13 @@
+pkgbase = zlob-git
+	pkgdesc = A fast SIMD-accelerated glob pattern matcher
+	pkgver = 1.2.8.r0.g7d48ecc
+	pkgrel = 1
+	url = https://github.com/dmtrKovalenko/zlob
+	arch = x86_64
+	license = MIT
+	makedepends = zig
+	provides = zlob
+	source = zlob::git+https://github.com/dmtrKovalenko/zlob.git#branch=main
+	sha256sums = SKIP
+
+pkgname = zlob-git
