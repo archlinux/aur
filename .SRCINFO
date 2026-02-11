@@ -1,0 +1,13 @@
+pkgbase = isogeny-bin
+	pkgdesc = Template rendering and deployment CLI powered by Selmer
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/dcprevere/isogeny
+	arch = x86_64
+	license = LicenseRef-proprietary
+	provides = isogeny
+	conflicts = isogeny
+	source = isogeny-bin-4.0.0::https://github.com/dcprevere/isogeny/releases/download/v4.0.0/isogeny-linux-amd64
+	sha256sums = bdc959f8592e4056fcc3f2480c9fd55cde09fcc3f06a05c76712a385c8eb6b0d
+
+pkgname = isogeny-bin
