@@ -1,7 +1,7 @@
 pkgbase = eez-studio-appimage
 	pkgdesc = Cross-platform low-code GUI and automation
 	pkgver = 0.26.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/eez-open/studio/releases
 	arch = x86_64
 	arch = aarch64

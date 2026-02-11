@@ -2,7 +2,7 @@
 
 pkgname=eez-studio-appimage
 pkgver=0.26.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform low-code GUI and automation"
 arch=('x86_64' 'aarch64')
 url="https://github.com/eez-open/studio/releases"
@@ -56,6 +56,6 @@ package() {
     install -Dm755 "/dev/stdin" "${pkgdir}/usr/bin/${pkgname%-appimage}" <<EOF
 #!/bin/bash
 export PYTHONPATH=/opt/${pkgname}
-exec "/opt/${pkgname}/eezstudio" "$@"
+exec "/opt/${pkgname}/EEZ Studio" "$@"
 EOF
 }
