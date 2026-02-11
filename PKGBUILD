@@ -1,7 +1,7 @@
 # Maintainer: Matteo Bonora <bonora.matteo@gmail.com>
 
 pkgname=eez-studio-appimage
-pkgver=0.26.0
+pkgver=0.26.2
 pkgrel=1
 pkgdesc="Cross-platform low-code GUI and automation"
 arch=('x86_64' 'aarch64')
@@ -18,17 +18,11 @@ depends=(
     'python'
 )
 
-makedepends=(
-    #'python-pip'
-    #'python-setuptools'
-)
-
 source=(
     "${pkgname}-${pkgver}.AppImage::https://github.com/eez-open/studio/releases/download/v${pkgver}/EEZ-Studio-${pkgver}.AppImage"
-    "requirements.txt"
 )
 
-sha256sums=('ce6bab01e8d891e0db313d052efdabcddeee84d51b83b2a42d47f56dea6ae4df'
+sha256sums=('95ab446678d7e2dcec728162c93767996f03d9879579d55a517647b0b70684ab'
             '7019be3da97f345557fb38a581aabfd8a1d2e5324391a785213d8e5eb238aa90')
 
 prepare() {
@@ -39,7 +33,6 @@ prepare() {
 
 build() {
     sed -i "s|Exec=AppRun|Exec=${pkgname%-appimage}|" "${srcdir}/squashfs-root/EEZ Studio.desktop"
-    #pip install --target="${srcdir}/pydeps" -r "${srcdir}/requirements.txt"
 }
 
 package() {
@@ -49,9 +42,6 @@ package() {
     # Copy extracted AppImage contents to /opt/${pkgname}
     # The trailing dot in the source path ensures hidden files are copied
     cp -a "${srcdir}/squashfs-root/." "${pkgdir}/opt/${pkgname}/"
-
-    # Copy Python dependencies to /opt/${pkgname}
-    #cp -a "${srcdir}/pydeps/"* "${pkgdir}/opt/${pkgname}/"
 
     # Ensure all files in /opt/${pkgname} have correct permissions
     chmod -R 755 "${pkgdir}/opt/${pkgname}"
