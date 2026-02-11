@@ -6,7 +6,7 @@
 
 pkgname=pianoteq
 pkgver=9.1.2
-pkgrel=1
+pkgrel=2
 _name="Pianoteq ${pkgver%%.*}"
 pkgdesc='Physical modelling piano instrument standalone program, VST3 and LV2 plugin. STANDARD version'
 arch=(aarch64 armv7h x86_64)
@@ -23,7 +23,7 @@ optdepends=(
 conflicts=(pianoteq-stage pianoteq-trial-bin)
 source=("local://pianoteq_setup_v${pkgver//./}.tar.xz"
         'https://www.pianoteq.com/images/logo/pianoteq_icon_128.png')
-sha256sums=('94439574416d6d5f7e26f9bf021070823e48356f14e3cac98e00c1ee3fd9d559d829ccefb6ba65fc0694442ef602841c0c2d4d39d4db64e3e55931dda3e28eb7'
+sha256sums=('26f9bf021070823e48356f14e3cac98e00c1ee3fd9d559d829ccefb6ba65fc06'
             '94ee64cf6688a49d74f0bf70d811e7466abac103feeab17496a89f828afcc6d3')
 
 prepare() {
