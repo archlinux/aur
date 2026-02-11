@@ -1,14 +1,14 @@
 # Maintainer: Xavier B
 pkgbase=reef
 pkgname=('reef' 'reef-tools')
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/ZStud/reef"
 license=('MIT')
 makedepends=('cargo')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/ZStud/reef/archive/v$pkgver.tar.gz")
-sha256sums=('90118f9082b2529e24b8756dc8a9542f7135163d39b58492b8d5f231fdbcf1e3')
+sha256sums=('4da4ec0b73d674907df1f0cb9577271a224a4fc870d7673af5242c9d393ef14c')
 
 prepare() {
     cd "$pkgbase-$pkgver"
