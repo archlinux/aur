@@ -1,7 +1,7 @@
 pkgbase=qbittorrent-enhanced-ua
 pkgname=(qbittorrent-enhanced-ua qbittorrent-enhanced-ua-nox)
 pkgver=5.1.3.10
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar (Enhanced Edition with original user-agent)'
 arch=('x86_64')
 _repo='qBittorrent-Enhanced-Edition'
@@ -9,8 +9,9 @@ url="https://github.com/c0re100/${_repo}"
 license=('GPL-2.0-or-later' 'GPL-3.0-or-later')
 
 depends=(
-    'gcc-libs'
     'glibc'
+    'libgcc'
+    'libstdc++'
     'libtorrent-rasterbar'
     'openssl'
     'qt6-base'
