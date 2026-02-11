@@ -11,6 +11,7 @@ pkgdesc="pgAdmin 4 desktop (System Electron 34 + Venv libs) built from source"
 arch=('x86_64')
 url="https://www.pgadmin.org/"
 license=('PostgreSQL')
+options=(!strip !debug)
 
 depends=(
   'python'
