@@ -1,7 +1,7 @@
 pkgbase = libjxl
 	pkgdesc = JPEG XL image format reference implementation
-	pkgver = 0.11.1
-	pkgrel = 5
+	pkgver = 0.11.2
+	pkgrel = 1
 	url = https://jpeg.org/jpegxl/
 	arch = x86_64
 	license = BSD-3-Clause
@@ -21,13 +21,13 @@ pkgbase = libjxl
 	makedepends = libpng
 	makedepends = python
 	makedepends = xdg-utils
-	source = git+https://github.com/libjxl/libjxl.git#tag=v0.11.1
+	source = git+https://github.com/libjxl/libjxl.git#tag=v0.11.2
 	source = git+https://github.com/mm2/Little-CMS.git
 	source = git+https://github.com/webmproject/sjpeg.git
 	source = git+https://skia.googlesource.com/skcms.git
 	source = libjxl-testdata::git+https://github.com/libjxl/testdata.git
 	source = git+https://github.com/libjpeg-turbo/libjpeg-turbo.git
-	sha256sums = 6420adcb5ccd23547eed91feb38ac9d7bdaac77def7183776e00699880148e3e
+	sha256sums = 0d1a459ef8390a8d991f8e6501c0292cc5f443a7663aeedf0922df855a61f9a2
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
