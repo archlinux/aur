@@ -2,7 +2,7 @@
 
 pkgname=hyprmon
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="TUI for Hyprland monitor configuration"
 arch=('x86_64')
 url="https://github.com/ChauVanLoc01/hyprmon"
@@ -29,5 +29,17 @@ package() {
     cd "$pkgname-$pkgver"
     install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+    
+    # Desktop entry
+    install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop" <<EOF
+[Desktop Entry]
+Name=Hyprmon
+Comment=TUI for Hyprland monitor configuration
+Exec=hyprmon
+Icon=preferences-desktop-display
+Terminal=true
+Type=Application
+Categories=Settings;HardwareSettings;
+Keywords=monitor;display;screen;hyprland;
+EOF
 }
