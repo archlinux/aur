@@ -1,6 +1,6 @@
 # Maintainer: Larry Oates <leafman12345@gmail.com>
 pkgname=doomfire-wallpaper
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Animated doom fire effect wallpaper for Wayland compositors"
 arch=('x86_64')
