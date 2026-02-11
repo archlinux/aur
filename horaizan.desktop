@@ -1,0 +1,16 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Horaizan
+GenericName=Web Browser
+Comment=Chromium-based browser built with PySide6
+TryExec=/usr/bin/horaizan
+Exec=/usr/bin/horaizan %U
+Icon=horaizan
+Terminal=false
+Categories=Network;WebBrowser;
+StartupNotify=true
+StartupWMClass=Horaizan
+MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/pdf;application/x-pdf;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;x-scheme-handler/about;x-scheme-handler/unknown;
+Keywords=browser;web;internet;

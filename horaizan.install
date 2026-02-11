@@ -1,0 +1,17 @@
+post_install() {
+  command -v update-desktop-database >/dev/null && update-desktop-database -q /usr/share/applications
+  command -v update-mime-database >/dev/null && update-mime-database /usr/share/mime
+  echo "Horaizan installed."
+  echo "Run from terminal with: horaizan"
+  echo "Do not run /usr/share/applications/horaizan.desktop via ./file.desktop"
+  echo "Set default browser (optional): xdg-settings set default-web-browser horaizan.desktop"
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  command -v update-desktop-database >/dev/null && update-desktop-database -q /usr/share/applications
+  command -v update-mime-database >/dev/null && update-mime-database /usr/share/mime
+}
