@@ -5,7 +5,7 @@
 _pkgname=siyuan
 pkgname="${_pkgname}-note-bin"
 _appname=SiYuan
-pkgver=3.5.4
+pkgver=3.5.5
 _electronversion=39
 pkgrel=1
 pkgdesc="A local-first personal knowledge management system.(Prebuilt version.Use system-wide electron)"
@@ -30,8 +30,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux.deb")
 sha256sums=('2ae9a625561e5d5c8ab724331d04cc4230d27ad703c931a7f5de07a0b108e66e')
-sha256sums_aarch64=('7738cf290b2a2a6c3d6542b13bed07c3a3e3b42d586ae50b8b1de27ecbbb5cf1')
-sha256sums_x86_64=('39151c6be86ef318b999d10094797555c868a489532ff9d35937a27511738a91')
+sha256sums_aarch64=('8841e14195a10ee2ff31c0957476bb324b3c034b234f6ddd715d85d187761d6d')
+sha256sums_x86_64=('876ff7b65f47b25e71d16caa95e42dcebf6b2e5c22b9b56eed717b4717b0b4f3')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_appname}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
