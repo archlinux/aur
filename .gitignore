@@ -5,3 +5,5 @@ src/
 *.pkg.tar.xz
 *.pkg.tar.gz
 *.log
+pdf-metadata-editor_4.0.0-1_arm64.deb
+pdf-metadata-editor_4.0.0-1_amd64.deb
