@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-zxing-cpp
 _name=${pkgname#python-}
-pkgver=2.3.0
-pkgrel=4
+pkgver=3.0.0
+pkgrel=2
 pkgdesc="Python bindings for zxing-cpp"
 arch=('x86_64')
 url="https://github.com/zxing-cpp/zxing-cpp"
@@ -18,12 +18,11 @@ makedepends=(
   'python-build'
   'python-installer'
   'python-setuptools'
-  'python-setuptools-scm'
   'python-wheel'
 )
 source=("git+https://github.com/zxing-cpp/zxing-cpp.git#tag=v$pkgver"
         'git+https://github.com/zint/zint.git')
-sha256sums=('1042010b960c29e6d7c5cd99e8c2a887cf84febb918abeb0405bcf12aaf8543c'
+sha256sums=('072683b5dec4060f2abfb54f8b7da9db198406138895876831fc16dece6aee7a'
             'SKIP')
 
 prepare() {
@@ -42,7 +41,6 @@ prepare() {
 
 build() {
   cd "$_name/wrappers/python"
-  export SETUPTOOLS_SCM_PRETEND_VERSION="$pkgver"
   python -m build --wheel --no-isolation
 }
 
