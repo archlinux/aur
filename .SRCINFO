@@ -1,0 +1,20 @@
+pkgbase = chell-appimage
+	pkgdesc = Chell - An integrated workspace for managing AI coding agents (Claude Code, Codex, Gemini, etc.)
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/Cerulin/Chell
+	arch = x86_64
+	license = unknown
+	depends = fuse2
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	conflicts = chell
+	conflicts = chell-bin
+	conflicts = chell-appimage
+	provides = chell
+	options = !strip
+	source = chell-desktop-0.2.2-x86_64.AppImage::https://github.com/Cerulin/Chell/releases/download/v0.2.2/chell-desktop-x86_64.AppImage
+	sha256sums = a5141bee65242ed01c806d8bee09abc14c8d497ecc972533da465fcb69750f87
+
+pkgname = chell-appimage
