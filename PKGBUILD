@@ -4,8 +4,8 @@
 # BUILD INSTRUCTIONS:
 #
 # 1. Log in to xilinx.com
-# 2. Go to https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools.html
-# 3. Download "Xilinx Unified Installer SFD (TAR/GZIP)" - WARNING: This file is >110GB in size
+# 2. Go to https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis.html
+# 3. Download "AMD Unified Installer for FPGAs & Adaptive SoCs [...] SFD (TAR/GZIP)" - WARNING: This file is >100GB in size
 # 4. Place the .tar.gz in the same directory as the PKGBUILD
 # 5. Build!
 #
