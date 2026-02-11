@@ -1,6 +1,6 @@
 pkgbase = bableredit-bin
 	pkgdesc = A modern desktop translation editor for managing multi-language localization files
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/Bit-Barron/BablerEdit
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = bableredit-bin
 	depends = openssl
 	provides = bableredit
 	conflicts = bableredit
-	source = bableredit-bin-0.1.5.deb::https://github.com/Bit-Barron/BablerEdit/releases/download/v0.1.5/BablerEdit_0.1.5_amd64.deb
+	source = bableredit-bin-0.1.6.deb::https://github.com/Bit-Barron/BablerEdit/releases/download/v0.1.6/BablerEdit_0.1.6_amd64.deb
 	sha256sums = SKIP
 
 pkgname = bableredit-bin
