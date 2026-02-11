@@ -1,7 +1,7 @@
 #Maintainer: Simon Eriksson <simon.eriksson.1187+aur AT gmail.com>
 
 pkgname=('libdragon-unstable-git' 'libdragon-tools-unstable-git')
-pkgver=r3710.4cb25cda0
+pkgver=r4925.b68f57190
 pkgrel=1
 url="http://www.dragonminded.com/n64dev/libdragon"
 arch=('x86_64')
@@ -49,7 +49,7 @@ package_libdragon-tools-unstable-git() {
   options=()
   provides=('libdragon-tools')
   conflicts=('libdragon-tools')
-  arch=('i686' 'x86_64')
+  arch=('x86_64')
   depends=('libpng')
 
   cd libdragon

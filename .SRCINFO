@@ -1,5 +1,5 @@
 pkgbase = libdragon-unstable-git
-	pkgver = r3710.4cb25cda0
+	pkgver = r4925.b68f57190
 	pkgrel = 1
 	url = http://www.dragonminded.com/n64dev/libdragon
 	arch = x86_64
@@ -24,7 +24,6 @@ pkgname = libdragon-unstable-git
 
 pkgname = libdragon-tools-unstable-git
 	pkgdesc = Open source tools for Nintendo 64 development (unstable branch)
-	arch = i686
 	arch = x86_64
 	depends = libpng
 	provides = libdragon-tools
