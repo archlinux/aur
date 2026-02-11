@@ -1,11 +1,11 @@
 pkgname=otadump
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Extract partitions from Android OTA files'
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/crazystylus/${pkgname}"
 license=('MIT')
-depends=('glibc' 'gcc-libs' 'libbz2.so' 'liblzma.so')
+depends=('glibc' 'libgcc' 'libbz2.so' 'liblzma.so')
 makedepends=('cargo')
 
 _snapshot="${pkgname}-${pkgver}"
@@ -15,7 +15,7 @@ sha256sums=('0546b131bf1514e7ba527edff9f4c03018cdffba04898282ac9a531750aaf403')
 prepare() {
     cd "${_snapshot}"
     sed -i 's/"static"//' 'Cargo.toml'
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --locked --target host-tuple
 }
 
 build() {
