@@ -13,7 +13,7 @@ source=(
   "com.github.adw-network.desktop::https://raw.githubusercontent.com/PlayRood32/adw-network/main/data/com.github.adw-network.desktop"
   "icon.png::https://raw.githubusercontent.com/PlayRood32/adw-network/main/data/icons/hicolor/scalable/apps/icon.png"
 )
-sha256sums=('80c46355a5cb460089fad7001fda21c529b2504ed610d6122f1de8d0dea6961e'
+sha256sums=('f97708026986a6ed3de457904d5cbe086d3663deb31d56593042213445bbb2ee'
             '87e22132167fdb6372cf4fbdf1a60a0449e8ef1e5889d1a156a8eb540c069038'
             '518a328abee19239ba5f20bcbfe3f15c474bc5c18b8adcb37c9793ecf7c640cc')
 
