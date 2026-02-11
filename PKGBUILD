@@ -1,7 +1,7 @@
 # Maintainer: Axel McLaren <scm(at)axml(dot)uk>
 
 pkgname=gitmux
-pkgver=0.11.2
+pkgver=0.11.5
 pkgrel=1
 pkgdesc="Git in your tmux status bar"
 arch=('x86_64' 'i686' 'aarch64')
@@ -11,7 +11,7 @@ depends=('glibc' 'tmux')
 makedepends=('go')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/arl/gitmux/archive/v${pkgver}.tar.gz")
-sha256sums=('c62b180415c272743d01531b911091b9c35911be4ec4aae3e7bfceddf5094f6c')
+sha256sums=('c6a01faa5372a8c4ab24bc3a2c9665a9f430c45c79b175c1510388433637ca72')
 _goname="github.com/arl/gitmux"
 
 
