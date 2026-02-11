@@ -1,0 +1,19 @@
+pkgbase = object0-bin
+	pkgdesc = FOSS desktop S3 bucket manager built with Tauri
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/sayedhfatimi/object0
+	arch = x86_64
+	license = MIT
+	depends = cairo
+	depends = desktop-file-utils
+	depends = glib2
+	depends = hicolor-icon-theme
+	depends = libsoup3
+	depends = pango
+	depends = webkit2gtk-4.1
+	options = !strip
+	source_x86_64 = object0-1.1.0.deb::https://github.com/sayedhfatimi/object0/releases/download/v1.1.0/object0_1.1.0_linux_x64_installer.deb
+	sha256sums_x86_64 = SKIP
+
+pkgname = object0-bin
