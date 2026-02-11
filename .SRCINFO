@@ -1,6 +1,6 @@
 pkgbase = stderred-git
 	pkgdesc = LD_PRELOAD hack to color stderr output red
-	pkgver = v1.0.r51.g49e5537
+	pkgver = v1.0.r56.gf137fb3
 	pkgrel = 1
 	url = https://github.com/ku1ik/stderred
 	arch = i686

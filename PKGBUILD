@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Reuße <seb@wirrsal.net>
 pkgname=stderred-git
 _gitname=stderred
-pkgver=v1.0.r51.g49e5537
+pkgver=v1.0.r56.gf137fb3
 pkgrel=1
 pkgdesc="LD_PRELOAD hack to color stderr output red"
 arch=(i686 x86_64)
@@ -26,7 +26,7 @@ build() {
 
   [ -d build ] || mkdir build
   pushd build
-  cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -Wno-dev -DCMAKE_INSTALL_PREFIX=/usr -DLIBDIR=lib ../src
+  cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=/usr -DLIBDIR=lib ../src
   make
   popd
 }
