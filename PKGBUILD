@@ -1,15 +1,16 @@
 # Maintainer: Steven de Jong <steven@example.com>
 pkgname=pep
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Lightweight system tray keep-awake tool using systemd-inhibit"
 arch=('any')
 url="https://github.com/stevendejongnl/pep"
 license=('MIT')
+install=pep.install
 depends=('python' 'python-gobject' 'libayatana-appindicator')
 makedepends=('python-build' 'python-installer' 'python-hatchling')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('32833841a42b794d133b0af07a137bc38bb3a4d7559048f3a3ff7488409fdb0f')
+sha256sums=('e6ed91ceb41026fffafcbb9431d954c40bdb4a76ec8422b32b479c71f304b702')
 
 build() {
     cd "$pkgname-$pkgver"

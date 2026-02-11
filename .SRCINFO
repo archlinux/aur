@@ -1,8 +1,9 @@
 pkgbase = pep
 	pkgdesc = Lightweight system tray keep-awake tool using systemd-inhibit
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/stevendejongnl/pep
+	install = pep.install
 	arch = any
 	license = MIT
 	makedepends = python-build
@@ -11,7 +12,7 @@ pkgbase = pep
 	depends = python
 	depends = python-gobject
 	depends = libayatana-appindicator
-	source = pep-0.0.1.tar.gz::https://github.com/stevendejongnl/pep/archive/v0.0.1.tar.gz
-	sha256sums = 32833841a42b794d133b0af07a137bc38bb3a4d7559048f3a3ff7488409fdb0f
+	source = pep-0.0.2.tar.gz::https://github.com/stevendejongnl/pep/archive/v0.0.2.tar.gz
+	sha256sums = e6ed91ceb41026fffafcbb9431d954c40bdb4a76ec8422b32b479c71f304b702
 
 pkgname = pep

@@ -1,0 +1,25 @@
+_detect_helper() {
+    if command -v paru &>/dev/null; then
+        echo "paru"
+    elif command -v yay &>/dev/null; then
+        echo "yay"
+    elif command -v dcli &>/dev/null; then
+        echo "dcli"
+    else
+        echo "pacman"
+    fi
+}
+
+post_install() {
+    local helper=$(_detect_helper)
+    echo "==> Enable pep with: systemctl --user enable --now pep.service"
+    echo "==> To uninstall: $helper -R pep"
+}
+
+post_upgrade() {
+    echo "==> Restart pep with: systemctl --user restart pep.service"
+}
+
+post_remove() {
+    echo "==> Disable pep with: systemctl --user disable pep.service"
+}
