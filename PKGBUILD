@@ -1,6 +1,6 @@
 pkgname=airctl-bin
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="WiFi network manager GUI (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/pshycodr/airctl"
