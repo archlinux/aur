@@ -1,12 +1,12 @@
 pkgbase = vial-git
 	pkgdesc = Vial is an open-source cross-platform (Windows, Linux and Mac) GUI and a QMK fork for configuring your keyboard in real time.
-	pkgver = 0.5
-	pkgrel = 4
+	pkgver = v0.7.5.r8.g5cc9f89
+	pkgrel = 1
 	url = https://get.vial.today/
+	install = vial.install
 	arch = any
 	license = GPL-2.0-only
-	makedepends = docker
-	provides = vial=0.5
+	provides = vial=v0.7.5.r8.g5cc9f89
 	conflicts = vial-appimage
 	source = Vial::git+https://github.com/vial-kb/vial-gui
 	source = 59-vial.rules

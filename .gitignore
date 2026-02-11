@@ -1,13 +1,3 @@
 Vial/
-*.pkg.*
-*.src.*
-/linux-ck/config.last
-/linux-ck/*.pkg
-/linux-ck/*.sign
-
-/nvidia-ck/*.run
-
-/virtualbox-ext-oracle/*.vbox-extpack
-
-/tmp
-.idea
+src/
+pkg/

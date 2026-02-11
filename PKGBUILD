@@ -1,4 +1,4 @@
-# shellcheck disable=SC2034,SC2086,SC2128,SC2148,SC2154,SC2164
+# shellcheck disable=SC1091,SC2034,SC2086,SC2128,SC2148,SC2154,SC2164
 # Maintainer: Toria <ninetailedtori@uwu.gal>
 
 ### Set this variable to yes to enable the generalised via udev rule.
@@ -9,8 +9,8 @@ _pkgname="vial"
 _Pkgname="Vial"
 pkgname="${_pkgname}-git"
 pkgdesc="Vial is an open-source cross-platform (Windows, Linux and Mac) GUI and a QMK fork for configuring your keyboard in real time."
-pkgver=0.5
-pkgrel=4
+pkgver=v0.7.5.r8.g5cc9f89
+pkgrel=1
 url="https://get.vial.today/"
 license=("GPL-2.0-only")
 arch=("any")
@@ -20,9 +20,7 @@ source=("${_Pkgname}::git+https://github.com/vial-kb/vial-gui"
         '59-vial.rules'
         '92-viia.rules'
 )
-makedepends=(
-    'docker'
-)
+install=vial.install
 sha256sums=('SKIP'
             'a6af0820ee6960dccab9ce0df0a898ccd0a50fecd992e341656dd1af78680502'
             'f91d36792b315caf9faa380860ae093fb1ef0ee966dad46023f033ab2ba7f22e')
@@ -41,30 +39,48 @@ pkgver() {
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+    # Set our LD LIB PATH for our temp python prefix
+    export LD_LIBRARY_PATH=/vial-gui/util/python36/prefix/lib/
+
+    cd "${srcdir}/${_Pkgname}"
+
+    # Download python, and set it up in the correct temp spot!
+    eval "util/setup_python36.sh"
+
+    # Generate the venv!
+    ./util/python36/prefix/bin/python3 -m venv buildenv
+
+    # Activate the venv
+    . buildenv/bin/activate
+        # Install requirements within the venv
+        pip install -r requirements.txt
+    deactivate
+}
+
 build() {
     cd "${srcdir}/${_Pkgname}"
 
-    # Run the builder script!
-    eval "util/linux-builder/build-in-docker.sh"
+    . buildenv/bin/activate
+        # Finally, use fbs within our python3.6-specific venv to generate the final files.
+        fbs freeze
+        fbs installer
+    deactivate
 
-    # Extract the appimage to the squashfs-root!
-    eval "${_Pkgname}-*.AppImage --appimage-extract"
+    # Now we generate the AppImage for deployment into the system!
+    pkg2appimage misc/Vial.yml
 }
 
 package() {
     # AppImage
-    install -Dm755 ${srcdir}/${_Pkgname}/util/linux-builder/output/${_Pkgname}-*.AppImage "${pkgdir}/opt/$pkgname/${_pkgname}.AppImage"
+    install -Dm755 "${srcdir}/${_Pkgname}/out/${_Pkgname}-*.AppImage" "${pkgdir}/opt/${pkgname}/${_pkgname}.AppImage"
 
     # Desktop file
-    install -Dm644 "${srcdir}/${_Pkgname}/squashfs-root/${_Pkgname}.desktop" "${pkgdir}/usr/share/applications/${_Pkgname}.desktop"
+    install -Dm644 "${srcdir}/${_Pkgname}/${_Pkgname}.desktop" "${pkgdir}/usr/share/applications/${_Pkgname}.desktop"
 
     # Icon images
     install -dm755 "${pkgdir}/usr/share/"
     cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
-
-    # Symlink executable
-    install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/${_Pkgname}/${_Pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
 
     # Create Vial-specific udev rule: https://get.vial.today/manual/linux-udev.html#universal-vial-udev-rule
     install -Dm644 "${srcdir}/59-vial.rules" "${pkgdir}/usr/lib/udev/rules.d/59-vial.rules"
