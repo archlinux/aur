@@ -4,7 +4,7 @@ post_install() {
   /usr/bin/printf " (e.g. SPAE.PA, SPAF.PA, SPAD.PA, or SPAU.PA\n"
   /usr/bin/printf " depending on your version's language)\n"
   /usr/bin/printf " in the following directory:\n"
-  /usr/bin/printf "   /usr/share/freeserf.net/\n\n"
+  /usr/bin/printf "   ~/.local/share/freeserf.net\n\n"
   /usr/bin/printf " Start the game with FreeserfNet binary\n"
   /usr/bin/printf "-----------------------------------------------\n"
 }

@@ -1,0 +1,10 @@
+--- FreeserfNet/AssemblyInfo.cs.orig	2026-02-11 21:07:03.256191021 +0100
++++ FreeserfNet/AssemblyInfo.cs	2026-02-11 21:07:21.459158241 +0100
+@@ -14,5 +14,5 @@
+ 
+ [assembly: Guid("ea9340ab-cdd1-40ee-b242-f405c0e1f6f9")]
+ 
+-[assembly: AssemblyVersion("2.2.0.0")]
+-[assembly: AssemblyFileVersion("2.2.0.0")]
++[assembly: AssemblyVersion("2.2.3.0")]
++[assembly: AssemblyFileVersion("2.2.3.0")]

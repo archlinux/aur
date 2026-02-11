@@ -1,0 +1,12 @@
+--- FreeserfNet/Program.cs.orig	2026-02-11 20:24:39.730244613 +0100
++++ FreeserfNet/Program.cs	2026-02-11 20:24:44.641818271 +0100
+@@ -77,9 +77,6 @@
+             NativeLibrary.SetDllImportResolver(typeof(Audio.AudioFactory).Assembly, ResolveLibraries);
+ #endif
+ 
+-            // TODO: REMOVE
+-            Log.SetLogFilter((ErrorSystemType type, string _) => type == ErrorSystemType.Network);
+-
+             try
+             {                
+                 using var mainWindow = MainWindow.Create(args);
