@@ -3,7 +3,7 @@
 _sdk=10.0
 _Name="CSharpier"
 pkgname="${_Name,,}"
-pkgver=1.1.1
+pkgver=1.2.6
 pkgrel=1
 pkgdesc="An opinionated code formatter for C#"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=("dotnet-sdk-${_sdk}")
 options=('!strip' '!debug')
 _pkgsrc="${_url##*/}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('7909b77ee047d0ef64947434efb49c859a957b9cadf135cb5e70f9c601fdf6136a4bac927e3461d91d01e0957126d1fde480483c9d73a78154def5b1405fe697')
+b2sums=('2f5692b013f9b0acbfc8ed8a21f28e55c2e3371c223f9f505c8867f65d319731a95282e196750da9ee804c1858c938c63ce41e2cc7afada67a4d15238f024bce')
 
 if   [ "${CARCH}" = 'aarch64' ]; then _msarch=arm64;
 elif [ "${CARCH}" = 'armv7h'  ]; then _msarch=arm;
@@ -70,7 +70,7 @@ build() {
 #     --runtime "linux-${_msarch}"
 #     # --verbosity detailed
 #   )
-# 
+#
 #   cd "${srcdir}/${_pkgsrc}"
 #   dotnet test "${dotnet_options[@]}" ./"Src/${_Name}.Cli.Tests"
 #   dotnet build-server shutdown

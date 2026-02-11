@@ -1,5 +1,0 @@
-[csharpier]
-source = "git"
-git = "https://github.com/belav/csharpier.git"
-exclude_regex = ".*beta.*"
-prefix = "v"

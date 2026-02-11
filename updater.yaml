@@ -1,0 +1,5 @@
+source: github_release
+repo: belav/csharpier
+prefix: ""
+verify_commands:
+  - csharpier --version
