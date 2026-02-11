@@ -1,6 +1,6 @@
 # Maintainer: Dylan Marcano <nxusdev@protonmail.com>
 pkgname=goxe-bin
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Is a log reduction tool that normalizes, filters, and aggregates repeated messages to reduce noise and storage."
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ license=('Apache-2.0')
 source_x86_64=("https://github.com/DumbNoxx/goxe/releases/download/v${pkgver}/goxe_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("https://github.com/DumbNoxx/goxe/releases/download/v${pkgver}/goxe_${pkgver}_linux_arm64.tar.gz")
 
-sha256sums_x86_64=('68b577bd478af3403a29a7766dd620d1015fe73fe463233994f354a0a451ef68')
-sha256sums_aarch64=('ebd48067e956397f911c5dfe4aeb782071b0c76c063f8333b57a2dcd931d6e46')
+sha256sums_x86_64=('41afc601435045e94ccb61adad5d5bfba21d5fd808a8c46592e798ea336101e5')
+sha256sums_aarch64=('2b8181b60a893c42e108e92a3eb6ad26ab98ba624b4d1f3d1ac6a1c78029efa6')
 
 package() {
   install -Dm755 "${srcdir}/goxe" "${pkgdir}/usr/bin/goxe-bin"
