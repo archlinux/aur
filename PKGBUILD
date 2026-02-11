@@ -1,4 +1,5 @@
-# Maintainer: Spider.007 <aur@spider007.net>
+# Maintainer: Elven Inquisition <no.one.expects@faerie.me>
+# Contributor: Spider.007 <aur@spider007.net>
 # Contributor: asukaminato
 # Submitter:  Sébastien Luttringer <seblu@aur.archlinux.org>
 
@@ -7,9 +8,9 @@ pkgver=0.54
 pkgrel=1
 pkgdesc='Drop-in replacement for glibc nscd which is designed for simplicity and stability'
 arch=('i686' 'x86_64')
-url='http://busybox.net/~vda/unscd/'
+url='https://busybox.net/~vda/unscd/'
 license=('GPL2')
-source=("http://busybox.net/~vda/unscd/nscd-$pkgver.c"
+source=("https://busybox.net/~vda/unscd/nscd-$pkgver.c"
         'unscd.service' 'unscd.conf' 'unscd.8')
 md5sums=('ddff52893cfc48d0e61035e2596f70d2'
          'f66fcf467518d51880bdf3b85511c53a'
@@ -32,5 +33,3 @@ package() {
   install -D -m 644 unscd.8 -t "$pkgdir/usr/share/man/man8/"
   install -D -m 644 unscd.service -t "$pkgdir/usr/lib/systemd/system/"
 }
-
-# vim:set ts=2 sw=2 ft=sh et:
