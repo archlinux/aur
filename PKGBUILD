@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='ipt_ndpi'
-pkgver=1.2_4.9.0.4970.61f4d586c
+pkgver=1.2_5.1.0.6322.3c97f2c
 pkgrel=1
 pkgdesc='nDPI as netfilter extension.'
 arch=('any')
@@ -27,6 +27,7 @@ prepare() {
   cd "${pkgname}"
   git checkout flow_info-4
   ./autogen.sh
+  ./configure
 }
 
 build() {
