@@ -2,7 +2,7 @@
 
 _basename=OneKeePass
 pkgname=${_basename,,}-bin
-pkgver=0.16.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="A secure password manager for macOS,Linux and Windows platforms"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=("${_basename}")
 makedepends=('tar')
 depends=('libsoup3' 'pango' 'glib2' 'zlib' 'gtk3' 'gdk-pixbuf2' 'cairo' 'gcc-libs' 'webkit2gtk-4.1' 'glibc' 'hicolor-icon-theme')
 source_x86_64=("${url}/releases/download/v${pkgver}/${_basename}_${pkgver}_linux_${arch[0]}.deb")
-sha256sums_x86_64=('fe24616492305b2c5f7d86d3f7a64136ae8a03b30d9cf06a6260b7f6d038b2c1')
+sha256sums_x86_64=('2c61b939c57f19910f67d132b71656f6aa2329e11c4ecd75d649d579b088c4ae')
 
 package() {
     cd "${pkgdir}"

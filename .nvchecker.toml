@@ -1,0 +1,5 @@
+[onekeepass-bin]
+source = "github"
+github = "OneKeePass/desktop"
+use_latest_release = true
+prefix = "v"
