@@ -1,18 +1,19 @@
 _pkgname=kwin6-bismuth-decoration
 pkgname=${_pkgname}-git
 pkgver=r7.c2ba04d
-pkgrel=1
+pkgrel=2
 pkgdesc='Bismuth window decoration for Plasma 6'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/HanabishiRecca/${_pkgname}"
 license=('MIT')
 
 depends=(
-    'gcc-libs'
     'glibc'
     'kconfig'
     'kcoreaddons'
     'kdecoration'
+    'libgcc'
+    'libstdc++'
     'qt6-base'
 )
 makedepends=(
