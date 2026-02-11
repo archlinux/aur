@@ -1,6 +1,6 @@
 pkgname=keybox-bin
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A minimal, encrypted, local password manager."
 arch=('x86_64')
 url="https://github.com/cruglet/keybox"
@@ -14,7 +14,7 @@ source=(
 sha256sums=('SKIP' 'SKIP')
 package() {
   unzip -o "$srcdir/keybox-linux.zip" -d "$srcdir"
-  install -Dm755 "$srcdir/keybox_linux" "$pkgdir/usr/bin/keybox"
+  install -Dm755 "$srcdir/keybox-linux" "$pkgdir/usr/bin/keybox"
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/keybox.desktop" <<DESKTOP
 [Desktop Entry]
 Type=Application

@@ -1,7 +1,7 @@
 pkgbase = keybox-bin
 	pkgdesc = A minimal, encrypted, local password manager.
 	pkgver = 1.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cruglet/keybox
 	arch = x86_64
 	license = MIT
