@@ -1,6 +1,6 @@
 pkgbase = doomfire-wallpaper-bin
 	pkgdesc = Animated doom fire effect wallpaper for Wayland compositors
-	pkgver = 1.2.2
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/larry-oates/doomfire-wallpaper
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = doomfire-wallpaper-bin
 	provides = doomfire-wallpaper
 	conflicts = doomfire-wallpaper
 	options = !debug
-	source = doomfire-wallpaper-bin-1.2.2.tar.gz::https://github.com/larry-oates/doomfire-wallpaper/releases/download/v1.2.2/doomfire-wallpaper-v1.2.2-x86_64.tar.gz
+	source = doomfire-wallpaper-bin-1.3.0.tar.gz::https://github.com/larry-oates/doomfire-wallpaper/releases/download/v1.3.0/doomfire-wallpaper-v1.3.0-x86_64.tar.gz
 	sha256sums = SKIP
 
 pkgname = doomfire-wallpaper-bin
