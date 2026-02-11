@@ -1,12 +1,12 @@
 # Maintainer: Arnaud Gissinger <me@mathix.dev>
 pkgname=rofi-linear-git
-pkgver=0.1.0.r1.7cb5ad0
+pkgver=0.1.0.r1.eb17f26
 pkgrel=1
 pkgdesc="Rofi plugin for creating Linear issues"
 arch=('x86_64')
 url="https://github.com/mathix420/rofi-linear"
 license=('MIT')
-depends=('rofi')
+depends=('rofi' 'openssl')
 makedepends=('rust' 'cargo' 'git')
 provides=('rofi-linear')
 conflicts=('rofi-linear')
