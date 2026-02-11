@@ -72,3 +72,16 @@ index 9f3c453..42bc5ce 100644
  #===============================================================================
  # Load elements_subdir macro here
  # Examples:
+diff --git a/cmake/modules/FindLevmar.cmake b/cmake/modules/FindLevmar.cmake
+index a247883..7c9f4bb 100644
+--- a/cmake/modules/FindLevmar.cmake
++++ b/cmake/modules/FindLevmar.cmake
+@@ -12,7 +12,7 @@ if(NOT Levmar_FOUND)
+ 
+     find_path(LEVMAR_INCLUDE_DIR levmar.h
+             HINTS ENV LEVMAR_ROOT_DIR LEVMAR_INSTALL_DIR
+-            PATH_SUFFIXES include)
++            PATH_SUFFIXES include include/levmar)
+ 
+     find_library(LEVMAR_LIBRARY levmar
+             HINTS ENV LEVMAR_ROOT_DIR LEVMAR_INSTALL_DIR
