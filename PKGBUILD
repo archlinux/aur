@@ -2,14 +2,26 @@
 # Contributor: Bruce Zhang <zttt183525594<at>gmail.com>
 pkgname=inputactions-kwin
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Mouse and touchpad gestures for Plasma 6 Wayland"
 arch=('x86_64')
 url="https://github.com/taj-ny/InputActions"
 license=('GPL-3.0-or-later')
 install=$pkgname.install
 backup=("etc/$pkgname/reminder.conf")
-depends=('yaml-cpp' 'gcc-libs' 'qt6-base' 'glibc' 'libevdev' 'kwin' 'kcmutils' 'kcoreaddons' 'ki18n')
+depends=(
+  'yaml-cpp'
+  'bash'
+  'libgcc'
+  'libstdc++'
+  'qt6-base'
+  'glibc'
+  'libevdev'
+  'kwin'
+  'kcmutils'
+  'kcoreaddons'
+  'ki18n'
+)
 optdepends=('libnotify: to send a reminder when this package needs to be rebuild')
 checkdepends=('gtest' 'cmake')
 makedepends=('cmake' 'pkgconf' 'extra-cmake-modules')
