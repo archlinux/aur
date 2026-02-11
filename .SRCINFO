@@ -1,6 +1,6 @@
 pkgbase = guile-g-golf
 	pkgdesc = A library for developing modern applications (GTK) in Guile Scheme.
-	pkgver = 0.8.2
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://www.gnu.org/software/g-golf/learn.html
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = guile-g-golf
 	depends = guile-lib
 	optdepends = gtk4: For using GTK-4 bindings
 	optdepends = gtk3: For using GTK-3 bindings
-	source = http://ftp.gnu.org/gnu/g-golf/g-golf-0.8.2.tar.gz
+	source = http://ftp.gnu.org/gnu/g-golf/g-golf-0.8.3.tar.gz
 	validpgpkeys = 842265459B413377EEAC91DEF374FD93A3057AD7
-	sha256sums = 7973be45c1c57248cfa2e5f5ac886b96fef5d97d212d3c77b3eb919ec2cd1d03
+	sha256sums = 4bfa7f53e7dc52ed4e1be1daed7bf152ff475fdb00c3b992c336526eb20a6524
 
 pkgname = guile-g-golf
