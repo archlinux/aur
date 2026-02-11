@@ -2,13 +2,13 @@
 
 _pkgname=termdown
 pkgname=$_pkgname-git
-pkgver=1.18.0.r8.g4c6144c
-pkgrel=2
+pkgver=2.0.0.r0.g2ebf6fc
+pkgrel=1
 arch=('any')
 pkgdesc='Countdown timer and stopwatch in your terminal'
 url='https://github.com/trehn/termdown'
 license=('GPL3')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 depends=('python' 'python-pillow' 'python-art' 'python-dateutil')
 optdepends=('espeak: voice support for spoken countdowns')
 provides=($_pkgname)
@@ -21,7 +21,17 @@ pkgver() {
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+    cd $_pkgname
+    git clean -dfx
+}
+
+build() {
+    cd $_pkgname
+    python -m build --wheel --no-isolation
+}
+
 package() {
 	cd $_pkgname
-	python setup.py install --root="$pkgdir/"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
