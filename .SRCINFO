@@ -1,9 +1,10 @@
 pkgbase = crave
 	pkgdesc = Crave CLI - Binary Version
-	pkgver = 0.2.7191
+	pkgver = 0.2.7193
 	pkgrel = 1
 	url = https://github.com/accupara/crave
 	arch = x86_64
+	arch = aarch64
 	license = Proprietary
 	depends = glibc
 	depends = libxcrypt-compat
@@ -13,7 +14,9 @@ pkgbase = crave
 	provides = crave
 	provides = crave-bin
 	conflicts = crave-bin
-	source = crave-0.2-7191::https://github.com/accupara/crave/releases/download/0.2-7191/crave-0.2-7191-linux-amd64.bin
-	sha256sums = cee167462dc77ec61a928061daa4013c89106c290e2dab630c54c1f28fc6798a
+	source_x86_64 = crave-0.2-7193-x86_64::https://github.com/accupara/crave/releases/download/0.2-7193/crave-0.2-7193-linux-amd64.bin
+	sha256sums_x86_64 = eadbdffe00f44726b5cebf5ca1566b1685f11c66fd7c4eaa4ee0da50a81d444a
+	source_aarch64 = crave-0.2-7193-aarch64::https://github.com/accupara/crave/releases/download/0.2-7193/crave-0.2-7193-linux-aarch64.bin
+	sha256sums_aarch64 = 427989a7e74ba0c82418faf29e150ddc92e4a9f43bc95b050a06c5e0e3670b3a
 
 pkgname = crave
