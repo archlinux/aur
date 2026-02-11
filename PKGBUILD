@@ -1,6 +1,6 @@
 # Maintainer: Bit-Barron <https://github.com/Bit-Barron>
 pkgname=bableredit-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A modern desktop translation editor for managing multi-language localization files"
 arch=('x86_64')
