@@ -11,7 +11,8 @@
 _bldtype=Release
 _mozc_commit=5a1cb87dc2b73cc5899048f2e4a7606f421eee54
 _bcr_commit=6232ee8a8e1230de1e6522513e9a493cc18114ca
-_dict_to_mozc_commit=cad5cefbb541f4184547241fd35905eb8ba8a81c
+_dict_to_mozc_commit=f6e4045f0f4eebd156c4397efef525aecf4657a6
+_dict_to_mozc=v0.6.19
 _branch=fcitx
 # Sudachi Dictionary
 _sudachidict_date=20260116
@@ -43,7 +44,7 @@ source=("git+$url.git#commit=${_mozc_commit}"
         "git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git#commit=${_japanese_usage_dictionary_commit}"
         "git+https://github.com/protocolbuffers/protobuf.git#commit=${_protobuf_commit}"
         "git+https://github.com/microsoft/wil.git#commit=${_wil_commit}"
-        git+https://github.com/phoepsilonix/dict-to-mozc.git#commit=${_dict_to_mozc_commit}
+        git+https://github.com/phoepsilonix/dict-to-mozc.git#tag=${_dict_to_mozc}
         # https://github.com/WorksApplications/SudachiDict
         "http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/${_sudachidict_date}/small_lex.zip"
         "http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/${_sudachidict_date}/core_lex.zip"
@@ -67,7 +68,7 @@ sha512sums=('520bb8d4f38f2fa4c89c58c134253f562c1be3189342b1c4b6008be8060879b7e9a
             '91b878735e767ddf6f1fe3de61486c1e78936a0f683855e7c34a21c711f405899d3de369d2ff0a1910d65b1afc8c225d8d8b9398cf98d760f3afcfe42644fca2'
             '0efcb80ec3a1f04f0f2e53ccd629eace4f6b9a2cbe5dae4c1b82140f11e174f8d023b8e35855def7e19c35da838c5b4fcfaa54748ee3534886caf1d35f55cccb'
             '504066a457f77b510f492626c919b6fd7b61f77948bdddef0f7e43ae09bb4bf03cea7000fba91ae0123a94d3b39cac6dfac2010126849afe0a183727fe7b0fc1'
-            '3758e8a1a6085acd78bbff721601aafa37bdaabcc681223c66848e6e381aaf1a54e3e731fd937b008582bc621d6a3174392cd3155e666197e090a4169c861dfd'
+            '862abf3c6827f8cbeb104ced230f2187c21a049a68fdbba160708e2c15be957944c966c1059af906989c1ccdb55065e1823b56c7876e3fcde67aff5f1af26bba'
             '9a7850416dc3f45df659e50a36b1b333d7e0458a3519a4138fd165987cfe250d44c7708da2b8e4bc27f2d5e52f9a5131076b283e0ad769e3b7b8514c3fe7b36e'
             '2d5f835ca604a90c12ee3d1790ce953be95f8e615d3ebfb1416d54725b58563cea23017a384696d331366aa2f43eeb21dc3309d0c5e23dee3379796a1b7d6c5b'
             '71a3da3569df8de816cea968e82a8f01fb2f48d96c83ac82daad853d1cb70942fd4695130c2d41f1d06e5c83bdf618e351e5a20f17d8e2941614901bb34e3300'
