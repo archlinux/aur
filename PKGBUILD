@@ -5,13 +5,13 @@
 
 pkgname=ffdec
 pkgver=25.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Flash SWF decompiler and editor"
 arch=('any')
 url="https://github.com/jindrapetrik/jpexs-decompiler"
 license=('GPL-3.0-or-later')
 depends=('java-runtime>=8')
-makedepends=('ant')
+makedepends=('ant' 'java-environment>=8')
 source=("ffdec-$pkgver.tar.gz::https://github.com/jindrapetrik/jpexs-decompiler/archive/refs/tags/version$pkgver.tar.gz"
         'ffdec'
         'ffdec.desktop')
