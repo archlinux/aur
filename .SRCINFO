@@ -1,6 +1,6 @@
 pkgbase = python-meilisearch-sdk
 	pkgdesc = An async and sync Python client for the Meilisearch API
-	pkgver = 4.11.0
+	pkgver = 7.0.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/sanders41/meilisearch-python-sdk
@@ -19,7 +19,7 @@ pkgbase = python-meilisearch-sdk
 	depends = python-httpx
 	depends = python-pydantic
 	depends = python-pyjwt
-	source = python-meilisearch-sdk-4.11.0.tar.gz::https://github.com/sanders41/meilisearch-python-sdk/archive/v4.11.0.tar.gz
-	sha512sums = e95c2628118efeec6cdfa34a963fd64b75b60efe5c2ecdf21607abbcdee8f538b89b2be388f44cdf88a4b33c4889bcdf1b2572dcf39bf8cfd28a7e4d09961c95
+	source = python-meilisearch-sdk-7.0.0.tar.gz::https://github.com/sanders41/meilisearch-python-sdk/archive/v7.0.0.tar.gz
+	sha512sums = 0557082296a926924a5e2809112ed6abc960eb9a98d34de0336a1cc84040ee01c03f631cdd6332ec2a70da4cd47372d8545c3768b8a4ea44849955ef67f5e110
 
 pkgname = python-meilisearch-sdk

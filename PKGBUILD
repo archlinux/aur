@@ -1,7 +1,7 @@
 # Maintainer: Lukas Fleischer <lfleischer@archlinux.org>
 
 pkgname=python-meilisearch-sdk
-pkgver=4.11.0
+pkgver=7.0.0
 epoch=1
 pkgrel=1
 pkgdesc='An async and sync Python client for the Meilisearch API'
@@ -12,7 +12,7 @@ depends=(python python-aiofiles python-camel-converter python-httpx python-pydan
 makedepends=(python-setuptools python-build python-hatchling python-installer python-wheel)
 checkdepends=(python-pytest python-pytest-ordering)
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/sanders41/meilisearch-python-sdk/archive/v${pkgver}.tar.gz")
-sha512sums=('e95c2628118efeec6cdfa34a963fd64b75b60efe5c2ecdf21607abbcdee8f538b89b2be388f44cdf88a4b33c4889bcdf1b2572dcf39bf8cfd28a7e4d09961c95')
+sha512sums=('0557082296a926924a5e2809112ed6abc960eb9a98d34de0336a1cc84040ee01c03f631cdd6332ec2a70da4cd47372d8545c3768b8a4ea44849955ef67f5e110')
 
 build() {
 	cd "meilisearch-python-sdk-${pkgver}"
