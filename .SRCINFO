@@ -5,9 +5,6 @@ pkgbase = purl-bin
 	url = https://github.com/stripe/purl
 	arch = x86_64
 	license = MIT
-	checkdepends = rust
-	makedepends = rust
-	options = !lto
 	source_x86_64 = purl::https://github.com/stripe/purl/releases/download/v0.1.0/purl-linux-amd64
 	sha256sums_x86_64 = 21476a9bd0d455b86b75cd5292e6f28bf91694d94832c7b5059ea3f55881eea4
 
