@@ -1,6 +1,16 @@
+v1.061:
+将 openTypeVheaVertTypoAscender 和 openTypeVheaVertTypoDescender 值分别调整为
+1024 和 -1024，以修复某些环境下竖排行距过宽的问题。(参见 lxgw/LxgwWenKai#182)
+
+v1.060:
+调整「尐」的扁捺。
+
+v1.059:
+随下一版本「霞鹜文楷」新增扩 A 字：䛊。
+
 v1.058:
 随「霞鹜致宋」新增汉字：𥁫𥕦；
-删除 morx、feat、bsln 等多余的表，以免影响 OpenType 特性的充分发挥。
+删除 morx、feat、bsln 等多余的表，以免影响 OpenType 特性的充分发挥o。
 
 v1.057:
 Plus 修改以下汉字：㕔㦽䮧；
