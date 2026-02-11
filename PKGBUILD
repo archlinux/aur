@@ -2,13 +2,13 @@
 # Contributor: Sabit Maulana <sbtmul@gmail.com>
 # Maintainer: aliu <double-a, r-o-n to the 0-1-3-0 at ur gmail.com>
 pkgname=larksuite-bin
-pkgver=7.54.11
+pkgver=7.59.12
 _pkgtyp=stable
-pkgrel=5
+pkgrel=1
 pkgdesc="Collaboration suite service for office messaging, calendars, meetings, docs..."
 arch=('x86_64')
 url="https://www.larksuite.com"
-_licensever=1.2.1446
+_licensever=1.2.1464  # please don't change pkgrel when bumping this
 license=('LicenseRef-Lark-User-${_licensever}')
 depends=('gtk3' 'nspr' 'nss' 'libpulse' 'libmfx' 'alsa-lib')
 optdepends=('appmenu-gtk-module: Appmenu support')
@@ -20,8 +20,8 @@ source=(Lark-linux_x64-${pkgver}.deb::https://www.larksuite.com/api/package_info
 	LICENSE-${_licensever}.html::http://www.larksuite.com/en_us/user-terms-of-service)
 DLAGENTS=("https::/usr/bin/bash ${startdir}/dlagent-lark.sh %o %u"
 	"http::/usr/bin/bash ${startdir}/dlagent-license.sh %o %u")
-sha256sums=('aab402e6b30c25cf4e6e9d505e4431a4f902dbdbe4b4a6d2a143d599942a01d9'
-            '21f4a8f5cc42b83e3e3f77317ac6078ae54ec34b77f4e56625e17684d5bb3846')
+sha256sums=('39ae6d0a7da5e3327369fce8c4b7c06555eed335882cabfe0de589b1046c66d2'
+            'ac4705f0669d56670efa4b55e061f08904bc4e2b53eb553e796ad088446d6b23')
 
 package() {
 	# License
