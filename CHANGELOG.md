@@ -1,3 +1,37 @@
+# [v6.5.2](https://github.com/olets/zsh-abbr/compare/v6.5.1...v6.5.2) (2026-02-06)
+
+
+### Bug Fixes
+
+* **abbr-expand, abbr-expand-and-accept, abbr-expand-and-insert:** support empty LBUFFER ([2935213](https://github.com/olets/zsh-abbr/commit/2935213bce119b69e27eb273b352955ed3d383e0))
+
+
+
+# [v6.5.1](https://github.com/olets/zsh-abbr/compare/v6.5.0...v6.5.1) (2026-02-06)
+
+
+### Bug Fixes
+
+* **list-commands:** only global abbreviations have the '-g' flag [[#203](https://github.com/olets/zsh-abbr/issues/203)] ([e219ac0](https://github.com/olets/zsh-abbr/commit/e219ac085c8d4539a29b82ec40953f8cea2c2a8d))
+
+
+
+# [6.5.0](https://github.com/olets/zsh-abbr/compare/v6.4.0...v6.5.0) (2026-02-03)
+
+
+### Bug Fixes
+
+* **abbr-expand-and-accept:** do not push abbreviated line to history when zsh option hist_ignore_space is on ([5642230](https://github.com/olets/zsh-abbr/commit/5642230596443c54704f7a5e2a9e9437e2513c8d))
+* **init:** abbr-expand-and-accept respects ABBR_DEFAULT_BINDINGS ([d95b548](https://github.com/olets/zsh-abbr/commit/d95b548336eae34313a9b6811446569c0da800b0))
+
+
+### Features
+
+* Several **expansion**, **cursor placement**, and **history** features moved into their own testable functions `abbr-expand-line`, `abbr-set-line-cursor`, `_abbr_may_push_abbreviation_to_history`, and `_abbr_may_push_abbreviated_line_to_history` (many commits, merged by [a2391b7](https://github.com/olets/zsh-abbr/commit/a2391b7e4380ae740acd30eb46e6b9a6f901b7d1)). Learn more in [pull request #204](https://github.com/olets/zsh-abbr/pull/204) and in the [Extending documentation](https://zsh-abbr.olets.dev/extending.html)
+* **reminders:** move _abbr_get_available_abbreviation call to abbr-accept-line from abbr-expand-line... ([c169419](https://github.com/olets/zsh-abbr/commit/c1694194e81f78766aeaefba2451d60cbad90883))
+
+
+
 # [6.4.0](https://github.com/olets/zsh-abbr/compare/v6.3.3...v6.4.0) (2025-11-27)
 
 
