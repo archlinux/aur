@@ -66,4 +66,6 @@ package() {
   cd "$_pkgname-$pkgver"
 
   make -C build DESTDIR="$pkgdir" install
+  mkdir -p "$pkgdir/usr/bin"
+  ln -sf /opt/astrorama/bin/sourcextractor++ "$pkgdir/usr/bin/sourcextractor++"
 }
