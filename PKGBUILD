@@ -12,7 +12,7 @@ _pkgbase=gdal
 provides=('gdal')
 conflicts=('gdal')
 pkgname=(gdal-hdf4 python-gdal-hdf4)
-pkgver=3.12.1
+pkgver=3.12.2
 pkgrel=1
 pkgdesc="Translator library for raster and vector geospatial data formats"
 arch=(x86_64)
@@ -37,15 +37,8 @@ optdepends=('postgresql: when present while building, postgresql database suppor
 options=('!emptydirs')
 changelog=$pkgbase.changelog
 
-source=(https://github.com/OSGeo/${_pkgbase}/releases/download/v${pkgver}/${_pkgbase}-${pkgver}.tar.gz
-        fix_poppler_26.patch)
-md5sums=('c66c7958748d444a4a2359342fe406ee'
-         'SKIP')
-
-prepare() {
-  cd $_pkgbase-$pkgver
-  patch -Np1 -i ../fix_poppler_26.patch
-}
+source=(https://github.com/OSGeo/${_pkgbase}/releases/download/v${pkgver}/${_pkgbase}-${pkgver}.tar.gz)
+md5sums=('b66033f145e046414626ae879138f651')
 
 build() {
   export PATH="$(pwd)/build/apps:$PATH"
