@@ -1,6 +1,6 @@
 pkgbase = archforge-git
 	pkgdesc = AI-powered TUI for PKGBUILD generation and AUR management
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/Scqxd/archforge
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = archforge-git
 	optdepends = yay: AUR helper
 	provides = archforge
 	conflicts = archforge
-	source = https://github.com/Scqxd/archforge/archive/refs/tags/v0.2.0.tar.gz
+	source = https://github.com/Scqxd/archforge/archive/refs/tags/v0.2.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = archforge-git
