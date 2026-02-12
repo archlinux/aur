@@ -3,7 +3,7 @@
 # shellcheck disable=SC2164 # cd might fail
 # Maintainer: Štěpán Němec <stepnem@smrk.net>
 pkgname=bgpipe
-pkgver=0.17.0
+pkgver=0.17.1
 pkgrel=1
 pkgdesc='BGP reverse proxy and firewall'
 arch=(x86_64)
@@ -12,7 +12,7 @@ license=(MIT)
 depends=(glibc)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ec8d213c9529866215b275d9c695acc5cf63cce163d266b5750929a0561cad31')
+sha256sums=('09606476554d9edcfe9958c4c1c6ec17028e2aeba5b9efbf3961d559d2f17e65')
 
 build() {
   cd "$pkgname-$pkgver"
