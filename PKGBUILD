@@ -5,7 +5,7 @@
 
 pkgname=unscd
 pkgver=0.54
-pkgrel=2
+pkgrel=3
 pkgdesc='Drop-in replacement for glibc nscd which is designed for simplicity and stability'
 arch=('i686' 'x86_64')
 url='https://busybox.net/~vda/unscd'
@@ -23,6 +23,7 @@ b2sums=('5c35fec2f4f3447c5d6500a7fc50c97347923d62d084134ced5c412307e8db6079e0130
         '98397ff524a66713524dccbe897f4ab50f741e08984981e7ac97f7c3be227c661692f2f3c9b7c4c12eaaca359b2571543140918773b2fb5bbe078621cbc9553a')
 
 prepare() {
+  sed -i 's,/var/run/,/run/,g' "nscd-$pkgver.c"
   patch --follow-symlinks -N -i 'handle_nscd_excision.patch'
 }
 

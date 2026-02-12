@@ -1,7 +1,7 @@
 pkgbase = unscd
 	pkgdesc = Drop-in replacement for glibc nscd which is designed for simplicity and stability
 	pkgver = 0.54
-	pkgrel = 2
+	pkgrel = 3
 	url = https://busybox.net/~vda/unscd
 	arch = i686
 	arch = x86_64
