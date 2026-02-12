@@ -1,0 +1,22 @@
+pkgbase = punt
+	pkgdesc = Share terminal output instantly via punt.sh - quick, colorful, ephemeral.
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/dwmkerr/terminal-ai
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = bun
+	provides = punt
+	noextract = punt-0.5.1.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = punt-0.5.1.tgz::https://registry.npmjs.org/@lance0/punt/-/punt-0.5.1.tgz
+	source = LICENSE
+	b2sums = ff3cf7c0fd10a4c0829ed88fd2504b4655542db44b091afbfe8fb935479e8bd317f2840c0df2b8f46e30533e061bd940547a3147715402716bb10fea1ac03086
+	b2sums = a6be06b0de44522f0544e243c10d19051af0b3e1922ada7ebe236e00cfed39d9b560065fb229c85b5a59de8a449f3aead290bbd95a9cd204f2a9b9d75a0e0212
+
+pkgname = punt

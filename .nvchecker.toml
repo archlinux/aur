@@ -1,0 +1,3 @@
+[punt]
+source = "npm"
+npm = "@lance0/punt"
