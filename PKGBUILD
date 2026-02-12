@@ -12,7 +12,7 @@ pkgname=(
  aspnet-targeting-pack-9.0
  dotnet-source-built-artifacts-9.0
 )
-pkgver=9.0.11.sdk112
+pkgver=9.0.12.sdk113
 pkgrel=1
 arch=(x86_64)
 url=https://dotnet.microsoft.com
@@ -21,8 +21,8 @@ makedepends=(
   bash
   clang20
   cmake
-  #dotnet-sdk-9.0
-  #dotnet-source-built-artifacts-9.0
+  dotnet-sdk-9.0
+  dotnet-source-built-artifacts-9.0
   git
   icu
   krb5
@@ -42,9 +42,9 @@ options=(
   !lto
   staticlibs
 )
-_tag=191254d6485c508af3f6f8ff5f20e91fa63ee39c
+_tag=46e42120674fdd5fe1239797df142f8f6e7943b0
 source=(git+https://github.com/dotnet/dotnet.git#tag=${_tag})
-b2sums=('02b5f9181cd15f264762cf6bf6d96b38da593e3e03f88c15ce476a8015357e8ffc38fe6e682736d2f742152f75bff73f31a7656343773c89f931ed67c40ae009')
+b2sums=('aaa0f408a123fbfc67e94a2aa552a35c9fe6f10fd4266a362b8e2071e053c73e9286132418cc4ad892d5b374eb71967056bf57f35b48ef180abacc53586204ff')
 
 prepare() {
   cd dotnet
@@ -58,7 +58,6 @@ prepare() {
   if [[ $_bootstrapver == $_previousver ]]; then
     cp -r /usr/share/dotnet .dotnet
     ln -sf /usr/share/dotnet/source-built-artifacts/Private.SourceBuilt.Artifacts.*.tar.gz prereqs/packages/archive/
-#    ln -sf /usr/share/dotnet/source-built-artifacts/Private.SourceBuilt.Prebuilts.*.tar.gz prereqs/packages/archive/
   fi
   ./prep-source-build.sh
 }
