@@ -37,7 +37,7 @@ prepare()
 	cp -p -r resources/linux/icons-nightly/hicolor/* resources/linux/icons/hicolor/
 
 	# patch out `-Wmismatched-tags` from causing problems in the build
-	sed -i '/COMPILER_SUPPORTS_WMISMATCHED_TAGS/,+6d' cmake/Warnings.cmake
+	sed -i '/COMPILER_SUPPORTS_WMISMATCHED_TAGS/,+9d' cmake/Warnings.cmake
 }
 
 build()

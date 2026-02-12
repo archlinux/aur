@@ -2,7 +2,7 @@
 # Maintainer: Rafael Silva <perigoso@riseup.net>
 
 pkgname=kicad-nightly
-pkgver=10.0.0_rc1.1_10_g70b74f1d71
+pkgver=10.0.0_rc1.1_12_g5c866f54bb
 pkgrel=1
 pkgdesc='Electronic schematic and printed circuit board (PCB) design tools'
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=(
 )
 options=('!strip')
 source=(
-	"$pkgname::git+https://gitlab.com/kicad/code/kicad.git"#commit=70b74f1d71
+	"$pkgname::git+https://gitlab.com/kicad/code/kicad.git"#commit=5c866f54bb
 	'kicad-nightly-wrapper.sh'
 	'fix-version-string.patch'
 )
@@ -37,7 +37,7 @@ prepare()
 	cp -p -r resources/linux/icons-nightly/hicolor/* resources/linux/icons/hicolor/
 
 	# patch out `-Wmismatched-tags` from causing problems in the build
-	sed -i '/COMPILER_SUPPORTS_WMISMATCHED_TAGS/,+6d' cmake/Warnings.cmake
+	sed -i '/COMPILER_SUPPORTS_WMISMATCHED_TAGS/,+9d' cmake/Warnings.cmake
 }
 
 build()
