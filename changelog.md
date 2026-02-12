@@ -1,3 +1,56 @@
+2026.02.10, v9.0.4
+
+feature:
+- 00e92e2 gritty: client: get rid of mock-require
+
+2026.02.10, v9.0.3
+
+feature:
+- 01c6237 gritty: eslint v10.0.0
+- 880388e gritty: eslint-plugin-putout v30.0.2
+
+2026.01.04, v9.0.2
+
+feature:
+- 5e2a684 gritty: madrun v12.1.0
+- b4b1615 gritty: supertape v12.0.0
+
+2025.12.24, v9.0.1
+
+fix:
+- bb0fed1 package: node-pty (#microsoft/node-pty#845)
+
+feature:
+- 621b9c0 gritty: @xterm/addon-webgl v0.19.0
+- ccf2433 gritty: @xterm/addon-fit v0.11.0
+- 0e3522a gritty: @xterm/xterm v6.0.0
+
+2025.12.21, v9.0.0
+
+feature:
+- 20ba03c gritty: router v2.2.0
+- 2a54d00 gritty: @xterm/addon-webgl v0.18.0
+- 7f1891f gritty: @xterm/addon-fit v0.10.0
+- d11c1bb gritty: yargs-parser v22.0.0
+- 06d3424 gritty: babel-loader v10.0.0
+- e2e6e9d gritty: supertape v11.4.0
+- 3188b70 gritty: drop support of bode < 20
+- 2bfaf28 gritty: sendFile: add support of dot files (coderaiser/cloudcmd#452)
+- c0b0029 gritty: express v5.2.1
+- 788e728 gritty: madrun v11.0.4
+- 4ee84a0 gritty: eslint-plugin-putout v29.0.2
+- b23e5bf gritty: putout v41.0.8
+- 720e064 gritty: css-loader v7.1.2
+- acc2294 gritty: css-minimizer-webpack-plugin v7.0.0
+- 085687f gritty: socket.io v4.8.1
+- 096df5e gritty: style-loader v4.0.0
+- 630e6c2 gritty: webpack-cli v6.0.1
+- 57e7f44 gritty: eslint v9.19.0
+- a59c431 gritty: eslint-plugin-n v17.15.1
+- 3bc3d48 gritty: eslint-plugin-putout v24.0.0
+- e294d53 gritty: putout v38.0.6
+- 358f1a3 gritty: c8 v10.1.3
+
 2024.03.18, v8.1.2
 
 fix:
