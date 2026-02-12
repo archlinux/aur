@@ -21,7 +21,7 @@ pkgver() {
 build() {
     cd "$srcdir/OpenRGBVisualMapPlugin"
     git submodule update --init --recursive
-    qmake OpenRGBVisualMapPlugin.pro PREFIX=/usr/
+    qmake6 OpenRGBVisualMapPlugin.pro PREFIX=/usr/
     make
 }
 
