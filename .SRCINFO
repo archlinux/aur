@@ -1,6 +1,6 @@
 pkgbase = wazuh-indexer
 	pkgdesc = Wazuh Indexer for Arch Linux
-	pkgver = 4.14.2
+	pkgver = 4.14.3
 	pkgrel = 1
 	url = https://wazuh.com/
 	install = wazuh-indexer.install
@@ -8,11 +8,13 @@ pkgbase = wazuh-indexer
 	groups = wazuh-siem
 	license = gpl2
 	depends = coreutils
-	source = https://packages.wazuh.com/4.x/yum/wazuh-indexer-4.14.2-1.x86_64.rpm
+	source = https://packages.wazuh.com/4.x/yum/wazuh-indexer-4.14.3-1.x86_64.rpm
 	source = wazuh-passwords-tool.sh
 	source = wazuh-certs-tool.sh
-	sha512sums = 8e14b9720f82a9b1fed981b5845ad59788031ad387ecb2d138ff3e0387f0ee57f6c63f9f68f9afaba8ccaf69712bef850b3de211294dd8614e39267240b7805f
+	source = config.yml
+	sha512sums = 711a0aaa44772f9a1e638a2dec9b462a4542fd22059f5a8eec44b6c9c1b1c36cca66c57594dc980a97a08ab57f632bad4548320af262b22bfb02e462d658862c
 	sha512sums = e38bc65e55f51d639c9521090ab0370f8b1fc33fdcba4ec7eab49d0f065b4c744a215dd2380b2c6d57803bba4b865dcd2f82ec0ba67bad8831cbc531e957dae9
 	sha512sums = f6383d5a839ba740ccf9c3c17ea3a9c996a1469f7ab77c3ad6023c4e9398162d309ef7ddb299320f9b5f321ecb70a3b7b6e247fc754ef6d90c87cbb0312c40e2
+	sha512sums = 5d062026225f0befba836c176858cee040b27057c93f6ae791e042dbb015c5c3b462fd11a5d3cdc7a7172f33e090dd600919b08b391e15aa573e1739f0116db8
 
 pkgname = wazuh-indexer

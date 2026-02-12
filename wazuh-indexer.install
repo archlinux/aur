@@ -22,18 +22,68 @@ post_upgrade()
 
 post_install()
 {
-  echo "creating wazuh-indexer user and group"
+  echo "=== POST-INSTALL ==="
+
+  # Create user and group
+  echo "Creating wazuh-indexer user and group..."
   groupadd -f wazuh-indexer
-  usuario="wazuh-indexer" && id "$usuario" &>/dev/null || useradd --system -d /usr/share/wazuh-indexer -g wazuh-indexer -s /usr/bin/nologin wazuh-indexer
+  id "wazuh-indexer" &>/dev/null || useradd --system -d /usr/share/wazuh-indexer -g wazuh-indexer -s /usr/bin/nologin wazuh-indexer
+
+  # Set permissions
+  echo "Setting permissions..."
   chown -R wazuh-indexer:wazuh-indexer /usr/share/wazuh-indexer
   chown -R wazuh-indexer:wazuh-indexer /etc/wazuh-indexer
   chown -R wazuh-indexer:wazuh-indexer /var/log/wazuh-indexer
   chown -R wazuh-indexer:wazuh-indexer /var/lib/wazuh-indexer
-  echo "patching files"
-  rm /usr/share/wazuh-indexer/plugins/opensearch-security/tools/wazuh-passwords-tool.sh
-  rm /usr/share/wazuh-indexer/plugins/opensearch-security/tools/wazuh-certs-tool.sh
-  wget https://arashi.solutions/wazuh-passwords-tool.sh -O /usr/share/wazuh-indexer/plugins/opensearch-security/tools/wazuh-passwords-tool.sh
-  wget https://arashi.solutions/wazuh-certs-tool.sh -O /usr/share/wazuh-indexer/plugins/opensearch-security/tools/wazuh-certs-tool.sh
-  echo "Done!"
-  echo "Visit https://documentation.wazuh.com/current/installation-guide/wazuh-indexer/step-by-step.html and follow the configure instructions and Cluster initialization instructions"
+
+  # Ensure tools are executable
+  chmod +x /usr/share/wazuh-indexer/plugins/opensearch-security/tools/wazuh-passwords-tool.sh 2>/dev/null || true
+  chmod +x /usr/share/wazuh-indexer/plugins/opensearch-security/tools/wazuh-certs-tool.sh 2>/dev/null || true
+
+  echo ""
+  echo "=========================================="
+  echo "  WAZUH INDEXER INSTALLATION COMPLETE"
+  echo "=========================================="
+  echo ""
+  echo "=== STEP 1: GENERATE CERTIFICATES (only once per cluster) ==="
+  echo ""
+  echo "A template config.yml has been installed at:"
+  echo "  /usr/share/wazuh-indexer/plugins/opensearch-security/tools/config.yml"
+  echo ""
+  echo "Copy and edit it with your nodes info:"
+  echo "  cp /usr/share/wazuh-indexer/plugins/opensearch-security/tools/config.yml ."
+  echo "  nano config.yml  # Edit IP addresses and node names"
+  echo ""
+  echo "Then generate certificates:"
+  echo "  /usr/share/wazuh-indexer/plugins/opensearch-security/tools/wazuh-certs-tool.sh -A"
+  echo "  tar -cvf wazuh-certificates.tar -C wazuh-certificates/ ."
+  echo ""
+  echo "=== STEP 2: CONFIGURE OPENSEARCH ==="
+  echo ""
+  echo "Edit /etc/wazuh-indexer/opensearch.yml:"
+  echo "  - network.host: <YOUR_NODE_IP>"
+  echo "  - node.name: <YOUR_NODE_NAME>"
+  echo "  - cluster.initial_master_nodes: [\"<NODE_NAME>\"]"
+  echo ""
+  echo "=== STEP 3: DEPLOY CERTIFICATES ==="
+  echo ""
+  echo "  mkdir -p /etc/wazuh-indexer/certs"
+  echo "  tar -xf wazuh-certificates.tar -C /etc/wazuh-indexer/certs/ ./<NODE_NAME>.pem ./<NODE_NAME>-key.pem ./admin.pem ./admin-key.pem ./root-ca.pem --strip-components=1"
+  echo "  mv /etc/wazuh-indexer/certs/<NODE_NAME>.pem /etc/wazuh-indexer/certs/indexer.pem"
+  echo "  mv /etc/wazuh-indexer/certs/<NODE_NAME>-key.pem /etc/wazuh-indexer/certs/indexer-key.pem"
+  echo "  chmod 500 /etc/wazuh-indexer/certs && chmod 400 /etc/wazuh-indexer/certs/*"
+  echo "  chown -R wazuh-indexer:wazuh-indexer /etc/wazuh-indexer/certs"
+  echo ""
+  echo "=== STEP 4: START AND INITIALIZE ==="
+  echo ""
+  echo "  systemctl daemon-reload"
+  echo "  systemctl enable --now wazuh-indexer"
+  echo "  /usr/share/wazuh-indexer/bin/indexer-security-init.sh"
+  echo ""
+  echo "=== STEP 5: VERIFY ==="
+  echo ""
+  echo "  curl -k -u admin:admin https://<INDEXER_IP>:9200"
+  echo "  curl -k -u admin:admin https://<INDEXER_IP>:9200/_cat/nodes?v"
+  echo ""
+  echo "Documentation: https://documentation.wazuh.com/current/installation-guide/wazuh-indexer/step-by-step.html"
 }

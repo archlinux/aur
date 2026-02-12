@@ -1,0 +1,39 @@
+# Wazuh Certificates Configuration Template
+# Documentation: https://documentation.wazuh.com/current/installation-guide/wazuh-indexer/step-by-step.html
+#
+# INSTRUCTIONS:
+# 1. Copy this file to your working directory
+# 2. Edit the IP addresses and node names according to your environment
+# 3. Run: /usr/share/wazuh-indexer/plugins/opensearch-security/tools/wazuh-certs-tool.sh -A
+# 4. Distribute the generated certificates to each node
+#
+# For single-node installation, keep only one entry per section.
+# For multi-node cluster, add additional entries as needed.
+
+nodes:
+  # Wazuh Indexer nodes
+  # These store and index the security data
+  indexer:
+    - name: node-1
+      ip: "127.0.0.1"
+    # Add more indexer nodes for cluster setup:
+    # - name: node-2
+    #   ip: "192.168.1.11"
+    # - name: node-3
+    #   ip: "192.168.1.12"
+
+  # Wazuh Server nodes (Manager + Filebeat)
+  # These collect and analyze security data from agents
+  server:
+    - name: wazuh-1
+      ip: "127.0.0.1"
+    # Add more server nodes for cluster setup:
+    # - name: wazuh-2
+    #   ip: "192.168.1.21"
+    #   node_type: worker
+
+  # Wazuh Dashboard nodes
+  # Web interface for visualization and management
+  dashboard:
+    - name: dashboard
+      ip: "127.0.0.1"
