@@ -8,6 +8,8 @@ pkgbase = linux-arctis-manager
 	license = GPL-3.0-only
 	makedepends = python-pipenv
 	makedepends = uv
+	depends = python-pulsectl
+	depends = python-pyudev
 	source = git+https://github.com/elegos/Linux-Arctis-Manager
 	sha256sums = SKIP
 
