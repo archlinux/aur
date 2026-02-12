@@ -2,7 +2,7 @@
 
 _pkgname="hylauncher"
 pkgname="hylauncher-bin"
-pkgver="1.0.2"
+pkgver="1.0.3"
 pkgrel="1"
 pkgdesc="HyLauncher - unofficial Hytale Launcher for free to play gamers (binary version)"
 arch=("x86_64")
@@ -26,7 +26,7 @@ source=(
     "LICENSE"
 )
 sha256sums=(
-    "0b5cebfe08e260399b582ce9b688fef3f4271e2838a0312e161464168d24bc47"
+    "1e8b1dc9d922582e944ce43f62a5e47970aa6ec171f464e0228d9a86432a243a"
     "e9075ae8a20c6cee0f32e2775d3b004348e90aac88b42a8fe7e62d547ce4412f"
     "065e5283a7e30fd654e6d18706dd1ae586f193e4698f310614a0593f62285a3f"
     "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
