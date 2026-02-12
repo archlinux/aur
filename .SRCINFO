@@ -1,0 +1,23 @@
+pkgbase = xfr-bin
+	pkgdesc = Run multiple commands in parallel
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/lance0/xfr
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	license = MIT
+	provides = xfr
+	conflicts = xfr
+	source = README-0.7.0.md::https://raw.githubusercontent.com/lance0/xfr/v0.7.0/README.md
+	source = LICENSE-MIT-0.7.0::https://raw.githubusercontent.com/lance0/xfr/v0.7.0/LICENSE-MIT
+	source = LICENSE-APACHE-0.7.0::https://raw.githubusercontent.com/lance0/xfr/v0.7.0/LICENSE-APACHE
+	sha256sums = 0a51d67d655939600712a8a9a0911cd9b6b797c0960232daa10d730c21436161
+	sha256sums = a2b22ab13af7492f75197a7e5ce71ba8e0ae01f8f27154f8383c8e8ded29c9e0
+	sha256sums = b3699bdf3129bcb12f559d6dcfa597cfae1e3d2b793e90de297f90c4d25cdea0
+	source_x86_64 = xfr-x86_64-0.7.0.tgz::https://github.com/lance0/xfr/releases/download/v0.7.0/xfr-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = c8d33180cbd2ed31deb0a409309395c6425ed7cb5726e7d84e9c48bf5dbf3ad6
+	source_aarch64 = xfr-aarch64-0.7.0.tgz::https://github.com/lance0/xfr/releases/download/v0.7.0/xfr-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = c8d33180cbd2ed31deb0a409309395c6425ed7cb5726e7d84e9c48bf5dbf3ad6
+
+pkgname = xfr-bin
