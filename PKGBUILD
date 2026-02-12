@@ -2,7 +2,7 @@
 # Contributor: Kevin Muñoz (MrHacker) <kmunoz@condorbs.net><contacto@mrhacker.com.co>
 pkgname=wazuh-agent
 pkgver=4.14.3
-pkgrel=1
+pkgrel=2
 _remRevision=1
 _prodver=${pkgver}-${_remRevision}
 pkgdesc="Wazuh Agent actively protects Arch Linux systems with advanced threat prevention, detection, and response capabilities."

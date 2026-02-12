@@ -30,6 +30,12 @@ pre_upgrade() {
     echo "Backing up current ossec.conf..."
     cp -f "$_ossec_conf" "$_ossec_conf_bak"
   fi
+
+  # Eliminar archivos SCA no rastreados por pacman para evitar conflictos
+  local _sca_dir="/var/ossec/ruleset/sca"
+  if [ -d "$_sca_dir" ]; then
+    rm -f "$_sca_dir/cis_arch_linux.yml"
+  fi
 }
 
 post_upgrade() {
