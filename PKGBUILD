@@ -3,7 +3,7 @@
 _pkgauthor=mcandre
 _pkgname=factorio
 pkgname=${_pkgname}-bin
-pkgver=0.0.16
+pkgver=0.0.17
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="Go cross-compiler"
@@ -20,8 +20,8 @@ conflicts=("${_pkgname}"{,-git})
 source=("${_pkgname}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}.tgz"
         "README-${pkgver}.md::${_urlraw}/README.md"
         "LICENSE-${pkgver}::${_urlraw}/LICENSE.md")
-sha256sums=('2e492fc6fcc5e35335eb05c7f484ca1f834f21969c2d18bf7777f012b121cf0e'
-            'cb7f897be9efbc7ab7945b70ca7c55e8f3b97b85550a334c5d9a3e233ca84bc8'
+sha256sums=('2e7ffc0d82878836c6ef911e3399851d655c1d9558163bb5e58baca7f3e56a02'
+            'c2a0a2987682cddffdfad7a1795449d9f678494d24bc3faf9ad0844fdebf9df6'
             '6add2b3f8c452746c586f4462b3e969fd202382dd5c5bf3378cb9ccc6825e047')
 
 case ${CARCH} in

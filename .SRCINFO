@@ -1,6 +1,6 @@
 pkgbase = factorio-bin
 	pkgdesc = Go cross-compiler
-	pkgver = 0.0.16
+	pkgver = 0.0.17
 	pkgrel = 1
 	url = https://github.com/mcandre/factorio
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = factorio-bin
 	provides = factorio
 	conflicts = factorio
 	conflicts = factorio-git
-	source = factorio-0.0.16.tgz::https://github.com/mcandre/factorio/releases/download/v0.0.16/factorio-0.0.16.tgz
-	source = README-0.0.16.md::https://raw.githubusercontent.com/mcandre/factorio/v0.0.16/README.md
-	source = LICENSE-0.0.16::https://raw.githubusercontent.com/mcandre/factorio/v0.0.16/LICENSE.md
-	sha256sums = 2e492fc6fcc5e35335eb05c7f484ca1f834f21969c2d18bf7777f012b121cf0e
-	sha256sums = cb7f897be9efbc7ab7945b70ca7c55e8f3b97b85550a334c5d9a3e233ca84bc8
+	source = factorio-0.0.17.tgz::https://github.com/mcandre/factorio/releases/download/v0.0.17/factorio-0.0.17.tgz
+	source = README-0.0.17.md::https://raw.githubusercontent.com/mcandre/factorio/v0.0.17/README.md
+	source = LICENSE-0.0.17::https://raw.githubusercontent.com/mcandre/factorio/v0.0.17/LICENSE.md
+	sha256sums = 2e7ffc0d82878836c6ef911e3399851d655c1d9558163bb5e58baca7f3e56a02
+	sha256sums = c2a0a2987682cddffdfad7a1795449d9f678494d24bc3faf9ad0844fdebf9df6
 	sha256sums = 6add2b3f8c452746c586f4462b3e969fd202382dd5c5bf3378cb9ccc6825e047
 
 pkgname = factorio-bin
