@@ -1,8 +1,8 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname='python-xsdata'
 _pkgname='xsdata'
-pkgver=25.7
-pkgrel=2
+pkgver=26.1
+pkgrel=1
 pkgdesc='Naive XML bindings for python'
 url='https://xsdata.readthedocs.io'
 checkdepends=(python-pytest python-pytest-benchmark ruff)
@@ -21,15 +21,8 @@ makedepends=(python-build python-installer python-setuptools python-wheel)
 optdepends=(ruff)
 license=('MIT')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz"
-    "python3.14.patch::https://github.com/tefra/xsdata/commit/28f63e8ffe912341e5622dfb7c0973d920c1fd05.patch")
-sha256sums=('1291ef759f4663baadb86562be4c25ebfc0003ca0debae3042b0067663f0c548'
-            '5bd5592c4e87bd26c1bc2b329fd2fd8cf143251ea6a90c60a3791f2ae5e82bcc')
-
-prepare() {
-    cd "${_pkgname}-${pkgver}"
-    patch -f -p1 < ../python3.14.patch || return 0
-}
+source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha256sums=('dcae2c0e5f329f1b4e09a2d148c96941c9556616bb5e3418970a63c5eb2cd831')
 
 build() {
     cd "${_pkgname}-${pkgver}"
