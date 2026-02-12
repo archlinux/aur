@@ -1,8 +1,8 @@
 # Maintainer: Benoit Brummer (Trougnouf) <trougnouf@gmail.com>
 
 pkgname=darknet-hankai
-pkgver=5.1
-pkgrel=17
+pkgver=6.0
+pkgrel=1
 pkgdesc="An open source neural network framework written in C, C++, and CUDA"
 arch=('x86_64')
 url="https://github.com/hank-ai/darknet"
@@ -15,7 +15,7 @@ optdepends=('cuda: For NVIDIA GPU support'
             'lld: Required for ROCm/HIP builds')
 makedepends=('git')
 source=("git+https://codeberg.org/CCodeRun/darknet.git#tag=v${pkgver}")
-sha256sums=('f33743c9ef67a7a7a9109db2e2a29d291a0230ea9f67cb2d41c7f29da43e54c3')
+sha256sums=('b637e20e2290557d5007b09732efed7680104f19de153d7d16581ceb5b6e488d')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 
@@ -56,19 +56,33 @@ build() {
 
   # --- Build Configuration ---
 
-  if [[ "${build_mode}" == "rocm" ]]; then
+if [[ "${build_mode}" == "rocm" ]]; then
     msg "Configuring for AMD GPU (ROCm/HIP)..."
     
-    # Modern CMake/FindHIP requires driving clang++ directly, not the hipcc wrapper.
-    # We set the host compilers to clang and let CMake detect HIP support from there.
-    # We do NOT set CMAKE_HIP_COMPILER.
+    # Arch Linux usually places ROCm LLVM in /opt/rocm/llvm/bin/
+    local rocm_bin_path="/opt/rocm/llvm/bin"
     
+    # Fallback for different ROCm layouts
+    if [[ ! -x "${rocm_bin_path}/clang++" ]]; then
+        rocm_bin_path="/opt/rocm/bin"
+    fi
+
+    if [[ ! -x "${rocm_bin_path}/clang++" ]]; then
+        error "ROCm compiler not found in /opt/rocm/llvm/bin or /opt/rocm/bin"
+        return 1
+    fi
+
+    export CC="${rocm_bin_path}/clang"
+    export CXX="${rocm_bin_path}/clang++"
+    export HIP_PATH="/opt/rocm"
+
     local rocm_lib_path="/opt/rocm/lib"
     local linker_flags="-fuse-ld=lld -L${rocm_lib_path}"
 
     cmake_args+=(
-        -DCMAKE_C_COMPILER=clang
-        -DCMAKE_CXX_COMPILER=clang++
+        -DCMAKE_C_COMPILER="${rocm_bin_path}/clang"
+        -DCMAKE_CXX_COMPILER="${rocm_bin_path}/clang++"
+        -DCMAKE_HIP_COMPILER="${rocm_bin_path}/clang++"
         -DCMAKE_EXE_LINKER_FLAGS="${linker_flags}"
         -DCMAKE_SHARED_LINKER_FLAGS="${linker_flags}"
         -DCMAKE_MODULE_LINKER_FLAGS="${linker_flags}"
