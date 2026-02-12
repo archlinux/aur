@@ -3,7 +3,7 @@
 
 pkgname=photoqt
 pkgver=5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and highly configurable image viewer with a simple and nice interface."
 arch=('x86_64')
 url="http://photoqt.org/"
@@ -15,8 +15,10 @@ depends=('exiv2' 'imagemagick' 'qt6-imageformats' 'qt6-multimedia' 'qt6-svg' 'qt
 optdepends=('libqpsd-git: PSB/PSD support'
             'xcftools: XCF support')
 makedepends=('cmake' 'qt6-tools' 'extra-cmake-modules')
-source=(https://photoqt.org/downloads/source/$pkgname-$pkgver.tar.gz)
-sha256sums=('1904f4243ba1aed421f6ee51d830489585841ec489f1cbc3a77fb4b3a2348876')
+source=(https://photoqt.org/downloads/source/$pkgname-$pkgver.tar.gz
+        zxing3.patch)
+sha256sums=('1904f4243ba1aed421f6ee51d830489585841ec489f1cbc3a77fb4b3a2348876'
+            'd90af7d809387442f0c6b30b170a7b245255e8f4caff32d900df8bb9a6311ee1')
 
 # NOTE
 # To use GraphicsMagick instead of ImageMagick replace it in the depends array above and change
@@ -32,6 +34,8 @@ sha256sums=('1904f4243ba1aed421f6ee51d830489585841ec489f1cbc3a77fb4b3a2348876')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
+
+  patch -p1 < $srcdir/zxing3.patch
 
   cmake . -DCMAKE_INSTALL_PREFIX=/usr -DWITH_FREEIMAGE=OFF -DWITH_DEVIL=OFF -DWITH_POPPLER=OFF -DWITH_QTPDF=ON -DWITH_IMAGEMAGICK=ON -DWITH_GRAPHICSMAGICK=OFF -DWITH_LIBVIPS=OFF -DWITH_VIDEO_MPV=ON -DWITH_CHROMECAST=ON -DWITH_RESVG=ON -DWITH_ZXING=ON -DWITH_LCMS2=ON -DWITH_LIBSAI=OFF -DWITH_EXTENSIONS_SUPPORT=ON -DWITH_INCLUDED_EXTENSIONS=OFF -DCMAKE_BUILD_TYPE=Release -DWITH_PUGIXML=OFF
 

@@ -1,0 +1,60 @@
+From 1a0ac272e246c8b3ecfb6c29da6434a9e2f764e9 Mon Sep 17 00:00:00 2001
+From: Lukas Spies <Lukas@photoqt.org>
+Date: Wed, 11 Feb 2026 11:41:24 +0100
+Subject: [PATCH] [PQCScriptsImages] fix build with zxing 3+ (#392)
+
+Signed-off-by: Lukas Spies <Lukas@photoqt.org>
+---
+ .../singletons/scripts/pqc_scriptsimages.cpp   | 18 ++++++++----------
+ 1 file changed, 8 insertions(+), 10 deletions(-)
+
+diff --git a/cplusplus/singletons/scripts/pqc_scriptsimages.cpp b/cplusplus/singletons/scripts/pqc_scriptsimages.cpp
+index 53df2b19..34025886 100644
+--- a/cplusplus/singletons/scripts/pqc_scriptsimages.cpp
++++ b/cplusplus/singletons/scripts/pqc_scriptsimages.cpp
+@@ -69,9 +69,13 @@
+ #endif
+ 
+ #ifdef PQMZXING
++#if __has_include(<ZXing/WriteBarcode.h>)
++#include <ZXing/ZXingCpp.h>
++#else
+ #include <ZXing/ReadBarcode.h>
+ #include <ZXing/ZXVersion.h>
+ #endif
++#endif
+ 
+ #if defined(PQMIMAGEMAGICK) || defined(PQMGRAPHICSMAGICK)
+ #include <Magick++/Image.h>
+@@ -817,24 +821,18 @@ QVariantList PQCScriptsImages::getZXingData(QString path) {
+ #if ZXING_VERSION_MAJOR == 1 && ZXING_VERSION_MINOR <= 2
+ 
+     // Read any bar code
+-    const ZXing::DecodeHints hints = ZXing::DecodeHints().setFormats(ZXing::BarcodeFormat::Any);
+-    const ZXing::Result r = ZXing::ReadBarcode({img.bits(), img.width(), img.height(), ZXing::ImageFormat::Lum}, hints);
++    const ZXing::Result r = ZXing::ReadBarcode({img.bits(), img.width(), img.height(), ZXing::ImageFormat::Lum});
+ 
+ #elif (ZXING_VERSION_MAJOR == 2 && ZXING_VERSION_MINOR <= 1) || ZXING_VERSION_MAJOR == 1
+ 
+     // Read all bar codes
+-    const ZXing::DecodeHints hints = ZXing::DecodeHints().setFormats(ZXing::BarcodeFormat::Any);
+-    const std::vector<ZXing::Result> results = ZXing::ReadBarcodes({img.bits(), img.width(), img.height(), ZXing::ImageFormat::Lum}, hints);
++    const auto results = ZXing::ReadBarcodes({img.bits(), img.width(), img.height(), frmt, static_cast<int>(img.bytesPerLine())});
+ 
+ #else
+ 
+     // Read all bar codes
+-    auto hints = ZXing::ReaderOptions().setFormats(ZXing::BarcodeFormat::Any)
+-                                                             .setTryHarder(true)
+-                                                             .setTryInvert(true)
+-                                                             .setTextMode(ZXing::TextMode::HRI)
+-                                                             .setMaxNumberOfSymbols(10);
+-    auto results = ZXing::ReadBarcodes({img.bits(), img.width(), img.height(), frmt, static_cast<int>(img.bytesPerLine())}, hints);
++    auto options = ZXing::ReaderOptions().setMaxNumberOfSymbols(10);
++    auto results = ZXing::ReadBarcodes({img.bits(), img.width(), img.height(), frmt, static_cast<int>(img.bytesPerLine())}, options);
+ 
+ #endif
+ 
+-- 
+GitLab
+
