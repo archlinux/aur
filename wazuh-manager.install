@@ -1,36 +1,87 @@
 pre_upgrade()
 {
-  echo "check https://documentation.wazuh.com/current/upgrade-guide/upgrading-central-components.html#upgrading-the-wazuh-server"
-  systemctl stop wazuh-manager
-  cp /var/ossec/etc/ossec.conf /var/ossec/etc/ossec.conf.old
+  echo "=== PRE-UPGRADE ==="
+  echo "Check: https://documentation.wazuh.com/current/upgrade-guide/upgrading-central-components.html"
+  systemctl stop wazuh-manager 2>/dev/null || true
+  systemctl stop filebeat 2>/dev/null || true
+  cp /var/ossec/etc/ossec.conf /var/ossec/etc/ossec.conf.rpmsave 2>/dev/null || true
 }
 
 post_upgrade()
 {
-  cp /var/ossec/etc/ossec.conf /var/ossec/etc/ossec.conf.pacnew
-  cp /var/ossec/etc/ossec.conf.old /var/ossec/etc/ossec.conf
-  echo "/var/ossec/etc/ossec.conf created as /var/ossec/etc/ossec.conf.pacnew"
-  echo "manually run echo '<INDEXER_USERNAME>' | /var/ossec/bin/wazuh-keystore -f indexer -k username"
-  echo "manually run echo '<INDEXER_USERNAME>' | /var/ossec/bin/wazuh-keystore -f indexer -k password"
-  curl -so /etc/filebeat/wazuh-template.json https://raw.githubusercontent.com/wazuh/wazuh/v4.14.0/extensions/elasticsearch/7.x/wazuh-template.json
-  chmod go+r /etc/filebeat/wazuh-template.json
-  curl -s https://packages.wazuh.com/4.x/filebeat/wazuh-filebeat-0.4.tar.gz | tar -xvz -C /usr/share/filebeat/module
-  systemctl daemon-reload
-  systemctl start filebeat
-  systemctl start wazuh-manager
-  filebeat setup --pipelines
-  filebeat setup --index-management -E output.logstash.enabled=false
+  echo "=== POST-UPGRADE ==="
 
+  # Restore previous config
+  if [ -f /var/ossec/etc/ossec.conf.rpmsave ]; then
+    cp /var/ossec/etc/ossec.conf /var/ossec/etc/ossec.conf.rpmnew
+    cp /var/ossec/etc/ossec.conf.rpmsave /var/ossec/etc/ossec.conf
+    echo "Previous config restored. New config saved as /var/ossec/etc/ossec.conf.rpmnew"
+  fi
+
+  # Update filebeat wazuh module
+  echo "Updating filebeat wazuh module..."
+  curl -s https://packages.wazuh.com/4.x/filebeat/wazuh-filebeat-0.4.tar.gz | tar -xz -C /usr/share/filebeat/module 2>/dev/null || true
+
+  # Reload and restart services
+  systemctl daemon-reload
+  systemctl start wazuh-manager
+  systemctl start filebeat
+
+  echo ""
+  echo "=== MANUAL STEPS IF NEEDED ==="
+  echo "Update indexer credentials if changed:"
+  echo "  echo '<USERNAME>' | /var/ossec/bin/wazuh-keystore -f indexer -k username"
+  echo "  echo '<PASSWORD>' | /var/ossec/bin/wazuh-keystore -f indexer -k password"
 }
 
 post_install()
 {
-  echo "creating wazuh user and group"
+  echo "=== POST-INSTALL ==="
+
+  # Create user and group
+  echo "Creating wazuh user and group..."
   groupadd -f wazuh
-  usuario="wazuh" && id "$usuario" &>/dev/null || useradd --system -g wazuh -d /var/ossec -s /usr/bin/nologin wazuh
+  id "wazuh" &>/dev/null || useradd --system -g wazuh -d /var/ossec -s /usr/bin/nologin wazuh
+
+  # Set permissions
+  echo "Setting permissions..."
   chown -R wazuh:wazuh /var/ossec
-  echo "generating cert files for wazuh-authd to run properly"
-  ./var/ossec/bin/wazuh-authd -C 265 -B 2048 -K /var/ossec/etc/sslmanager.key -X /var/ossec/etc/sslmanager.cert -S "/C=US/ST=California/CN=wazuh/"
-  echo "Done!"
-  echo "Visit https://documentation.wazuh.com/current/installation-guide/wazuh-dashboard/step-by-step.html and follow the configure instructions"
+
+  # Generate SSL certificates for wazuh-authd (agent enrollment)
+  echo "Generating certificates for wazuh-authd..."
+  /var/ossec/bin/wazuh-authd -C 365 -B 2048 -K /var/ossec/etc/sslmanager.key -X /var/ossec/etc/sslmanager.cert -S "/C=US/ST=California/CN=wazuh/" 2>/dev/null || true
+
+  # Setup filebeat wazuh module
+  echo "Setting up filebeat wazuh module..."
+  curl -s https://packages.wazuh.com/4.x/filebeat/wazuh-filebeat-0.4.tar.gz | tar -xz -C /usr/share/filebeat/module 2>/dev/null || true
+
+  echo ""
+  echo "=========================================="
+  echo "  WAZUH MANAGER INSTALLATION COMPLETE"
+  echo "=========================================="
+  echo ""
+  echo "=== REQUIRED CONFIGURATION ==="
+  echo ""
+  echo "1. Deploy certificates to /etc/filebeat/certs/"
+  echo "   mkdir -p /etc/filebeat/certs"
+  echo "   tar -xf wazuh-certificates.tar -C /etc/filebeat/certs/ ./<SERVER_NODE_NAME>.pem ./<SERVER_NODE_NAME>-key.pem ./root-ca.pem --strip-components=1"
+  echo "   mv /etc/filebeat/certs/<SERVER_NODE_NAME>.pem /etc/filebeat/certs/filebeat.pem"
+  echo "   mv /etc/filebeat/certs/<SERVER_NODE_NAME>-key.pem /etc/filebeat/certs/filebeat-key.pem"
+  echo "   chmod 500 /etc/filebeat/certs && chmod 400 /etc/filebeat/certs/*"
+  echo ""
+  echo "2. Configure /etc/filebeat/filebeat.yml with your indexer hosts"
+  echo ""
+  echo "3. Configure indexer credentials:"
+  echo "   echo 'admin' | /var/ossec/bin/wazuh-keystore -f indexer -k username"
+  echo "   echo '<PASSWORD>' | /var/ossec/bin/wazuh-keystore -f indexer -k password"
+  echo ""
+  echo "4. Start services:"
+  echo "   systemctl daemon-reload"
+  echo "   systemctl enable --now wazuh-manager"
+  echo "   systemctl enable --now filebeat"
+  echo ""
+  echo "5. Test filebeat connection:"
+  echo "   filebeat test output"
+  echo ""
+  echo "Documentation: https://documentation.wazuh.com/current/installation-guide/wazuh-server/step-by-step.html"
 }

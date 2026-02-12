@@ -1,21 +1,22 @@
 # Maintainer: Jesus Martin Ortega Martinez (madara125) <martin.ortega.arashi@gmail.com><jortega@condorbs.net>
 # Contributor: Kevin Muñoz (MrHacker) <kmunoz@condorbs.net><david.munozm@proton.me>
 pkgname=wazuh-manager
-pkgver=4.14.2
+pkgver=4.14.3
+pkgrel=1
 _remRevision=1
 _prodver=${pkgver}-${_remRevision}
-pkgrel=1
 pkgdesc="Wazuh Manager for Arch Linux"
 arch=('x86_64')
 url="https://wazuh.com/"
 license=('gpl2')
 groups=("wazuh-siem")
 depends=(
-    'wazuh-filebeat'
-);
+  'wazuh-filebeat'
+  'curl'
+)
 
 optdepends=(
-);
+)
 
 validpgpkeys=(
 )
@@ -24,20 +25,20 @@ source=(
   "https://packages.wazuh.com/4.x/yum/${pkgname}-${_prodver}.x86_64.rpm"
 )
 
-sha512sums=('cb27b980cf193d1fdc6401645bd8c57fcd439c2434e0811f95a17d82c294479e572a7f1e25c0219339d98fd58e5e4939fa40874c385acdae17e32c0ccc6ae144')
+sha512sums=('987acc2e344586dba932a23f09d6ba2c98a5a860925436a65da9fdf1032e4f70c71b1b2fd499e3939c2f2ae9557e8e411ad94b7549a721cdf4e6d34f7efb80fd')
 
 install=$pkgname.install
 
 package() {
-    #change permissions
-    chmod -R +w "$srcdir/var/ossec"
-    chown -R wazuh:wazuh $srcdir/var
-    #Setup
-    cd $pkgdir
-    mv $srcdir/etc .
-    mv $srcdir/usr .
-    mv $srcdir/var .
+  #Setup
+  cd $pkgdir
+  mv $srcdir/etc .
+  mv $srcdir/usr .
+  mv $srcdir/var .
 
-    #Set systemd service file perms
-    chmod 644 $pkgdir/usr/lib/systemd/system/wazuh-manager.service
+  #change permissions (owner will be set in post_install when user exists)
+  chmod -R +w "$pkgdir/var/ossec"
+
+  #Set systemd service file perms
+  chmod 644 $pkgdir/usr/lib/systemd/system/wazuh-manager.service
 }
