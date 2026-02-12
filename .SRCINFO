@@ -1,7 +1,7 @@
 pkgbase = rocm-gfx1150-bin
 	pkgdesc = ROCm Core SDK and TheRock Build System - Ryzen AI
-	pkgver = 7.10.0pre
-	pkgrel = 2
+	pkgver = 7.11.0pre
+	pkgrel = 1
 	epoch = 0
 	url = http://www.amd.com
 	arch = x86_64
@@ -173,7 +173,7 @@ pkgbase = rocm-gfx1150-bin
 	conflicts = rocm-ml-sdk
 	conflicts = rpp
 	options = !strip
-	source = https://repo.amd.com/rocm/tarball/therock-dist-linux-gfx1150-7.10.0.tar.gz
-	sha256sums = 14ff3c2124c45bdb5b03668456b32d2c0584c1cd6fb6997aa7fc14861110235a
+	source = https://repo.amd.com/rocm/tarball/therock-dist-linux-gfx1150-7.11.0.tar.gz
+	sha256sums = 80151ac1efee383d2b63697aeea713eef6c02f5557a884784a2cb48862261feb
 
 pkgname = rocm-gfx1150-bin
