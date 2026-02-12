@@ -2,7 +2,7 @@
 
 pkgname=tuxedo-webfai-creator-bin
 _pkgname=tuxedo-webfai-creator
-pkgver=2.0.0+f8baa6c0
+pkgver=2.0.1+52192a09
 pkgrel=1
 pkgdesc="TUXEDO WebFAI Creator is the easiest way to prepare an USB pendrive for TUXEDO’s own Fully Automated Installation (WebFAI)"
 arch=(x86_64)
@@ -11,12 +11,12 @@ license=('apache')
 options=(!strip !debug)
 conflicts=('tuxedo-webfai-creator')
 
-depends=('alsa-lib' 'atk' 'at-spi2-atk' 'at-spi2-core' 'avahi' 'cairo' 'fontconfig' 'freetype2' 'fribidi' 'gdk-pixbuf2' 'graphite' 'gtk3' 'harfbuzz' 'libcups' 'libdatrie' 'libepoxy' 'libpng' 'libthai' 'libx11' 'libxau' 'libxcb' 'libxcomposite' 'libxcursor' 'libxdamage' 'libxdmcp' 'libxext' 'libxfixes' 'libxi' 'libxinerama' 'libxkbcommon' 'libxrandr' 'libxrender' 'libxss' 'libxtst' 'pango' 'pixman' 'wayland')
+depends=('alsa-lib' 'atk' 'at-spi2-atk' 'at-spi2-core' 'avahi' 'cairo' 'fontconfig' 'freetype2' 'fribidi' 'gdk-pixbuf2' 'graphite' 'gtk3' 'harfbuzz' 'libcups' 'libdatrie' 'libepoxy' 'libpng' 'libthai' 'libx11' 'libxau' 'libxcb' 'libxcomposite' 'libxcursor' 'libxdamage' 'libxdmcp' 'libxext' 'libxfixes' 'libxi' 'libxinerama' 'libxkbcommon' 'libxrandr' 'libxrender' 'libxss' 'libxtst' 'pango' 'pixman' 'wayland' 'ffmpeg' 'icu')
 makedepends=('bzip2')
 
 source=(http://deb.tuxedocomputers.com/ubuntu/pool/main/t/${_pkgname}/${_pkgname}_${pkgver}_amd64.deb)
-sha256sums=('cc12149232874cdf031f85e919c0baf30997f79056b341aa2bbdd618c4fd36d6')
-sha512sums=('33a84812b89dc5fa0d077f4342769b26d2077b1548878f8789319a4579565178772a15b80519233ded2f6e3681e00bb2b6bf5ef83b38ed10edfbd41eee8b9c5e')
+sha256sums=('d90af2ad3d42e205770d506a1b8a37f5353899ca0a203ed334fb33a5986ab714')
+sha512sums=('723cd90043e77000b91e8c1934149061d83b79bd02af562e3faf203fdc70483b1173d1979f2c6c9c9578f9af5b50a77bb67d95ff3dc7dc5c7354ac0ec5b2167f')
 
 build() {
   mkdir -p "${srcdir}/output"
