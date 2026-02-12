@@ -1,7 +1,7 @@
 # Maintainer: Wimpy <vvinn.py[AT]@gmail.com>
 pkgname=tunacode-cli
 _pkgname=tunacode-cli
-pkgver=0.1.61
+pkgver=0.1.62
 pkgrel=1
 pkgdesc="A terminal-based AI coding agent with a NeXTSTEP-inspired interface."
 provides=('tunacode')
