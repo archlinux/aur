@@ -5,13 +5,13 @@
 
 pkgname=unscd
 pkgver=0.54
-pkgrel=1
+pkgrel=2
 pkgdesc='Drop-in replacement for glibc nscd which is designed for simplicity and stability'
 arch=('i686' 'x86_64')
-url='https://busybox.net/~vda/unscd/'
+url='https://busybox.net/~vda/unscd'
 license=('GPL-2.0-only')
 depends=('glibc')
-source=("https://busybox.net/~vda/unscd/nscd-$pkgver.c"
+source=("${url}/nscd-${pkgver}.c"
         'nscd.service'
         'nscd.conf'
         'nscd.8'
