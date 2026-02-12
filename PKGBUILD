@@ -2,17 +2,17 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=crosswords-puzzle-sets-gnome
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc='Additional official English puzzles for the app Crosswords'
 arch=(any)
 url='https://gitlab.gnome.org/jrb/puzzle-sets-gnome'
-license=(GPL-3.0-or-later)
-depends=(crosswords)
-makedepends=(meson)
+license=('GPL-3.0-or-later')
+depends=('crosswords')
+makedepends=('meson')
 _srcdir="puzzle-sets-gnome-${pkgver}"
 source=("${url}/-/archive/${pkgver}/${_srcdir}.tar.gz")
-b2sums=('9a66e303f09a31b596417705a05ca742cb633309476b65f0a970d2b847811270cc3c86cf7bf4db22c7f29fd177ccb3e74b66869b7b7878b762e30998524090ec')
+b2sums=('c8923fa9155ca81be00d637fbdb2d4f7115ec4e12484f2efe4e30e34cdb44bd5d54e1b11a40db40593c67b450fea5b5529977d645a48e959e146033a8deec5b3')
 
 build() {
 	arch-meson "${_srcdir}" build
