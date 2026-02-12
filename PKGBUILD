@@ -2,7 +2,7 @@
 
 pkgname=python-astroquery-git
 _gitname=astroquery
-pkgver=0.4.11.r157.g067c6d2ce
+pkgver=0.4.11.r310.gc9f253895
 pkgrel=1
 pkgdesc="Set of tools for querying astronomical web forms and databases"
 arch=('any')
@@ -21,8 +21,8 @@ conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 makedepends=(
   'git'
-  'python-astropy-helpers'
   'python-setuptools'
+  'python-setuptools-scm'
   'python-build'
   'python-installer'
   'python-wheel'
@@ -38,11 +38,6 @@ md5sums=(SKIP)
 pkgver() {
   cd $_gitname
   git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./g'
-}
-
-prepare() {
-  cd $_gitname
-  sed -i '/ah_bootstrap/d' setup.py
 }
 
 build() {
