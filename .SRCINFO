@@ -1,0 +1,15 @@
+pkgbase = brother-mfcj1170dw-cups-bin
+	pkgdesc = Brother MFC-J1170DW printer driver for CUPS
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=mfcj1170dw_us
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	depends = cups
+	depends = perl
+	depends = ghostscript
+	source = https://download.brother.com/welcome/dlf105360/mfcj1170dwpdrv-3.5.0-1.i386.deb
+	sha256sums = c396746c909c6f3222ea1d549801f7f17a4bd6f8217b2c1d1f464929508c32a1
+
+pkgname = brother-mfcj1170dw-cups-bin
