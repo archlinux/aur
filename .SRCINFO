@@ -1,7 +1,7 @@
 pkgbase = got-vcs
 	pkgdesc = Game of Trees (Got) is a version control system which prioritizes ease of use and simplicity over flexibility.
 	pkgver = 0.122
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gameoftrees.org/
 	arch = x86_64
 	license = ISC
