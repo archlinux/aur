@@ -11,7 +11,7 @@ _replacesoldmodules=() # '%' gets replaced with kernel suffix
 
 pkgbase=linux-libre-hardened
 pkgver=6.17.13.hardened1
-pkgrel=1
+pkgrel=2
 pkgdesc='Security-Hardened Linux-libre'
 url='https://linux-libre.fsfla.org/'
 arch=(x86_64)

@@ -1,7 +1,7 @@
 pkgbase = linux-libre-hardened
 	pkgdesc = Security-Hardened Linux-libre
 	pkgver = 6.17.13.hardened1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://linux-libre.fsfla.org/
 	arch = x86_64
 	license = GPL-2.0-only
