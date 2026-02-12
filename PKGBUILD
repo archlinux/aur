@@ -1,10 +1,10 @@
 # Maintainer: George Sofianos <george at sofianos dot dev>
 
-# Release notes https://rocm.docs.amd.com/en/7.10.0-preview/about/release-notes.html
+# Release notes https://rocm.docs.amd.com/en/7.11.0-preview/about/release-notes.html
 pkgname=rocm-gfx1151-bin
 pkgdesc="ROCm Core SDK and TheRock Build System - Ryzen AI Max"
-pkgver=7.10.0pre
-pkgrel=2
+pkgver=7.11.0pre
+pkgrel=1
 epoch=0
 arch=('x86_64')
 url='http://www.amd.com'
@@ -22,27 +22,26 @@ optdepends=('clinfo')
 options=('!strip')
 
 source=(
-"https://repo.amd.com/rocm/tarball/therock-dist-linux-gfx1151-7.10.0.tar.gz"
+"https://repo.amd.com/rocm/tarball/therock-dist-linux-gfx1151-7.11.0.tar.gz"
 )
 
 sha256sums=(
-"35dbb3a4bdd3bca90c695c89833468fb88288675dabe0100ffb935204436d810"
+"cd8d75cba0531adf05138635400c5429e21e09e43a5b6ccdd0671c65285563c6"
 )
 
 package() {
 
     mkdir -p "${srcdir}/opt/rocm"
-    tar xf therock-dist-linux-gfx1151-7.10.0.tar.gz -C ${srcdir}/opt/rocm
+    tar xf therock-dist-linux-gfx1151-7.11.0.tar.gz -C ${srcdir}/opt/rocm
 
     mv "${srcdir}/opt/" "${pkgdir}/"
-    #mv "${pkgdir}/opt/rocm-7.1.1" "${pkgdir}/opt/rocm"
 
-    #mkdir -p "${pkgdir}/opt/amdgpu/share/libdrm"
-    #cd "${pkgdir}/opt/amdgpu/share/libdrm"
-    #ln -s /usr/share/libdrm/amdgpu.ids amdgpu.ids
+    mkdir -p "${pkgdir}/opt/amdgpu/share/libdrm"
+    cd "${pkgdir}/opt/amdgpu/share/libdrm"
+    ln -s /usr/share/libdrm/amdgpu.ids amdgpu.ids
 
     mkdir -p "${pkgdir}/etc/OpenCL/vendors"
-    echo libamdocl64.so > "${pkgdir}/etc/OpenCL/vendors/amdocl64.icd"
+    echo /opt/rocm/lib/opencl/libamdocl64.so > "${pkgdir}/etc/OpenCL/vendors/amdocl64.icd"
 
     mkdir -p "${pkgdir}/etc/ld.so.conf.d"
     echo /opt/rocm/lib >> "$pkgdir/etc/ld.so.conf.d/rocm-bin.conf"
