@@ -1,0 +1,7 @@
+What changed in V1.1.0
+	Added proper individual file viewing
+	Built binary is now todo-bbs - used to be TODO-Manager
+	Code improvements go brrrrrrrrrr
+	
+Plans for 1.2.0
+	Ability to cross off todo entries as opposed to just deletion
