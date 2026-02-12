@@ -2,3 +2,6 @@
 !PKGCONFIG
 !.SRCINFO
 !.pre-commit-config.yaml
+!REUSE.toml
+!LICENSE
+!LICENSES/0BSD.txt
