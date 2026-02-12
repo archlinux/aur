@@ -33,6 +33,7 @@ prepare() {
   git config submodule.ThirdParty/QtTesting/vtkqttesting.git "$srcdir"/qttesting
   git -c protocol.file.allow=always submodule update -f --init
 
+  # https://gitlab.kitware.com/cmake/cmake/-/issues/25079
   # undefined reference to absl::lts_20250814::log_internal::LogMessageFatal::LogMessageFatal(char const*, int, char const*)
   echo "target_link_libraries(vtkRemotingServerManager PRIVATE absl_log_internal_message)" >> Remoting/ServerManager/CMakeLists.txt
 }
