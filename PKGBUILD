@@ -1,7 +1,7 @@
 # Maintainer: Alexis Maiquez <aur@almamu.com>
 pkgname=linux-wallpaperengine-git
 _pkgname=linux-wallpaperengine
-pkgver=r568.6558998
+pkgver=r581.cf764a8
 pkgrel=1
 pkgdesc="use steam's wallpaperengine on linux"
 arch=('x86_64')
@@ -47,7 +47,7 @@ package() {
     cat > "${pkgdir}/usr/bin/${_pkgname}" << EOF
 #!/bin/bash
 export LD_LIBRARY_PATH="/opt/${_pkgname}/lib:\$LD_LIBRARY_PATH"
-cd /opt/${_pkgname}; ./${_pkgname} "\$@"
+cd /opt/${_pkgname}; exec ./${_pkgname} "\$@"
 EOF
     chmod +x ${pkgdir}/usr/bin/${_pkgname}
     chmod +x ${pkgdir}/opt/${_pkgname}/linux-wallpaperengine
