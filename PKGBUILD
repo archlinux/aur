@@ -1,6 +1,6 @@
 # Maintainer: ghsc maintainers
 pkgname=ghsc
-pkgver=0.0.10
+pkgver=0.0.16
 pkgrel=1
 pkgdesc="Ultra-short shortcuts for GitHub CLI workflows"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('git' 'github-cli')
 makedepends=('go')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hassanecoder/ghsc/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('59dcaf5fcd7e014934e2f2fb3a991021118eaa25bbf8f02a9f337143bb04aca3')
+sha256sums=('8908d71cb2e95aa0a591200b1e91b2583a0269e2d67ddbad86fb703d9b44fe7c')
 
 build() {
   cd "${srcdir}/ghsc-${pkgver}"
