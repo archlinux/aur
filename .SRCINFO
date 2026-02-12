@@ -1,6 +1,6 @@
 pkgbase = gitlogue-bin
 	pkgdesc = Turn your Git history into a living, animated story
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/unhappychoice/gitlogue
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = gitlogue-bin
 	depends = git
 	provides = gitlogue
 	conflicts = gitlogue
-	source = README-0.7.0.md::https://raw.githubusercontent.com/unhappychoice/gitlogue/v0.7.0/README.md
-	source = LICENSE-0.7.0::https://raw.githubusercontent.com/unhappychoice/gitlogue/v0.7.0/LICENSE
+	source = README-0.8.0.md::https://raw.githubusercontent.com/unhappychoice/gitlogue/v0.8.0/README.md
+	source = LICENSE-0.8.0::https://raw.githubusercontent.com/unhappychoice/gitlogue/v0.8.0/LICENSE
 	sha256sums = 1c9fdfeba2f0e88950a95f97ebf23c14f2a7056d637ebdb1441c85cd04df7591
 	sha256sums = 8f7d4feb676b3700f48611aa9a3c8e444b7877593efb52fc90235577f3148cc9
-	source_x86_64 = gitlogue-x86_64-0.7.0.tgz::https://github.com/unhappychoice/gitlogue/releases/download/v0.7.0/gitlogue-v0.7.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 2056664c14ea8b71e25c836a9d9021f0668d611f2d14db5fbb0de238ebf897ed
-	source_aarch64 = gitlogue-aarch64-0.7.0.tgz::https://github.com/unhappychoice/gitlogue/releases/download/v0.7.0/gitlogue-v0.7.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 2a045bd9283cd66edc574cf07074d83e123e09b9b7da9c0610ba86a296fdfbd9
+	source_x86_64 = gitlogue-x86_64-0.8.0.tgz::https://github.com/unhappychoice/gitlogue/releases/download/v0.8.0/gitlogue-v0.8.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = cfb3c43e55656fd69b73dd84f9e0ec647dd835a40163241ec589a5d4fc05482b
+	source_aarch64 = gitlogue-aarch64-0.8.0.tgz::https://github.com/unhappychoice/gitlogue/releases/download/v0.8.0/gitlogue-v0.8.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = f4941e749f63f4518bca5b7c524a934f51ec63a3bc7cfe506dacd8c7c5ff0ac0
 
 pkgname = gitlogue-bin
