@@ -1,6 +1,6 @@
 # Maintainer: xander1421 <alexpruteanu@hotmail.com>
 pkgname=spotify-tray-wayland-bin
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Native Wayland/Hyprland system tray for Spotify with scroll and middle-click controls"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ options=('!debug')
 install="${pkgname}.install"
 source_x86_64=("${pkgname}-${pkgver}-x86_64::https://github.com/xander1421/spotify-tray-wayland/releases/download/v${pkgver}/spotify-tray-wayland-linux-amd64")
 source_aarch64=("${pkgname}-${pkgver}-aarch64::https://github.com/xander1421/spotify-tray-wayland/releases/download/v${pkgver}/spotify-tray-wayland-linux-arm64")
-sha256sums_x86_64=('169f88177888980a44132b206ec83beae55e8416557c54ad706af8091cfbda42')
-sha256sums_aarch64=('c89bc50e38eedb50eb88b6646719eec1f28184175dfe8afbffc6aa587a184b09')
+sha256sums_x86_64=('0928d00fa66da463097ad875e43f6d41d7b341e1dea78fdf128618382163ed6d')
+sha256sums_aarch64=('ac6f9bb793ba937b54042460cfad02358d4970e044fd455f625b4a9cc89826a6')
 
 package() {
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/spotify-tray-wayland"
@@ -40,7 +40,7 @@ EOF
 # Smart close: minimize Spotify to tray, kill other windows
 class=$(hyprctl activewindow | grep "class:" | cut -d' ' -f2)
 if [[ "${class,,}" == "spotify" ]]; then
-    hyprctl dispatch movetoworkspacesilent special:minimized
+    hyprctl dispatch movetoworkspacesilent special:spotify
 else
     hyprctl dispatch killactive
 fi
@@ -89,13 +89,13 @@ cat > "$HYPR_DIR/conf.d/spotify.conf" << CONF
 unbind = $CLOSE_MOD, $CLOSE_KEY
 bind = $CLOSE_MOD, $CLOSE_KEY, exec, ~/.config/hypr/UserScripts/smart-close.sh
 
-bind = SUPER, M, movetoworkspacesilent, special:minimized
-bind = SUPER, grave, togglespecialworkspace, minimized
+bind = SUPER, M, movetoworkspacesilent, special:spotify
+bind = SUPER, grave, togglespecialworkspace, spotify
 CONF
 
-# Ensure spotify.conf is sourced
-if ! grep -q "source.*spotify.conf" "$HYPR_DIR/hyprland.conf" 2>/dev/null; then
-    echo "source = ~/.config/hypr/conf.d/spotify.conf" >> "$HYPR_DIR/hyprland.conf"
+# Ensure conf.d is sourced (don't add duplicate if wildcard already exists)
+if ! grep -q "source.*conf.d" "$HYPR_DIR/hyprland.conf" 2>/dev/null; then
+    echo "source = ~/.config/hypr/conf.d/*.conf" >> "$HYPR_DIR/hyprland.conf"
 fi
 
 # Reload Hyprland (find instance signature if not set)
