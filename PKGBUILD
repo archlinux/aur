@@ -1,10 +1,10 @@
 # Maintainer: George Sofianos <george at sofianos dot dev>
 
-# Release notes https://rocm.docs.amd.com/en/7.10.0-preview/about/release-notes.html
+# Release notes https://rocm.docs.amd.com/en/7.11.0-preview/about/release-notes.html
 pkgname=rocm-gfx110x-bin
 pkgdesc="ROCm Core SDK and TheRock Build System - RDNA3"
-pkgver=7.10.0pre
-pkgrel=2
+pkgver=7.11.0pre
+pkgrel=1
 epoch=0
 arch=('x86_64')
 url='http://www.amd.com'
@@ -22,27 +22,26 @@ optdepends=('clinfo')
 options=('!strip')
 
 source=(
-"https://repo.amd.com/rocm/tarball/therock-dist-linux-gfx110X-dgpu-7.10.0.tar.gz"
+"https://repo.amd.com/rocm/tarball/therock-dist-linux-gfx110X-all-7.11.0.tar.gz"
 )
 
 sha256sums=(
-"dbe0309f6ce6d5fc6b1ea79fbb12dc45317f87faf8e8d2facab61d8184ab9e0a"
+"c038c1248e6cbdde11a7e56a54c0e3f893f1c2b4e14e7b3f8eaff5561a3e46e1"
 )
 
 package() {
 
     mkdir -p "${srcdir}/opt/rocm"
-    tar xf therock-dist-linux-gfx110X-dgpu-7.10.0.tar.gz -C ${srcdir}/opt/rocm
+    tar xf therock-dist-linux-gfx110X-all-7.11.0.tar.gz -C ${srcdir}/opt/rocm
 
     mv "${srcdir}/opt/" "${pkgdir}/"
-    #mv "${pkgdir}/opt/rocm-7.1.1" "${pkgdir}/opt/rocm"
 
-    #mkdir -p "${pkgdir}/opt/amdgpu/share/libdrm"
-    #cd "${pkgdir}/opt/amdgpu/share/libdrm"
-    #ln -s /usr/share/libdrm/amdgpu.ids amdgpu.ids
+    mkdir -p "${pkgdir}/opt/amdgpu/share/libdrm"
+    cd "${pkgdir}/opt/amdgpu/share/libdrm"
+    ln -s /usr/share/libdrm/amdgpu.ids amdgpu.ids
 
     mkdir -p "${pkgdir}/etc/OpenCL/vendors"
-    echo libamdocl64.so > "${pkgdir}/etc/OpenCL/vendors/amdocl64.icd"
+    echo /opt/rocm/lib/opencl/libamdocl64.so > "${pkgdir}/etc/OpenCL/vendors/amdocl64.icd"
 
     mkdir -p "${pkgdir}/etc/ld.so.conf.d"
     echo /opt/rocm/lib >> "$pkgdir/etc/ld.so.conf.d/rocm-bin.conf"

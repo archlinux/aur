@@ -1,7 +1,7 @@
 pkgbase = rocm-gfx110x-bin
 	pkgdesc = ROCm Core SDK and TheRock Build System - RDNA3
-	pkgver = 7.10.0pre
-	pkgrel = 2
+	pkgver = 7.11.0pre
+	pkgrel = 1
 	epoch = 0
 	url = http://www.amd.com
 	arch = x86_64
@@ -173,7 +173,7 @@ pkgbase = rocm-gfx110x-bin
 	conflicts = rocm-ml-sdk
 	conflicts = rpp
 	options = !strip
-	source = https://repo.amd.com/rocm/tarball/therock-dist-linux-gfx110X-dgpu-7.10.0.tar.gz
-	sha256sums = dbe0309f6ce6d5fc6b1ea79fbb12dc45317f87faf8e8d2facab61d8184ab9e0a
+	source = https://repo.amd.com/rocm/tarball/therock-dist-linux-gfx110X-all-7.11.0.tar.gz
+	sha256sums = c038c1248e6cbdde11a7e56a54c0e3f893f1c2b4e14e7b3f8eaff5561a3e46e1
 
 pkgname = rocm-gfx110x-bin
