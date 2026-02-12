@@ -3,7 +3,7 @@
 pkgname=python-bitsandbytes
 _name=${pkgname#python-}
 pkgver=0.49.1
-pkgrel=2
+pkgrel=4
 epoch=
 pkgdesc="k-bit optimizers and matrix multiplication routines."
 arch=($CARCH)
@@ -14,18 +14,19 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 depends=(
     cuda
-    gcc-libs
     glibc
+    libgcc
+    libgomp
+    libstdc++
     python
     python-numpy
     python-scipy
     python-packaging
     python-pytorch
     python-triton
-    python-trove-classifiers
     python-typing_extensions
     # AUR
-    python-pynvml
+    python-nvidia-ml-py
 )
 makedepends=(
     cmake
@@ -36,6 +37,7 @@ makedepends=(
     python-installer
     python-wheel
     python-setuptools
+    python-trove-classifiers
 )
 optdepends=()
 options=('!strip')
