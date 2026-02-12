@@ -1,0 +1,15 @@
+pkgbase = todo-bbs
+	pkgdesc = A Retro-Styled Terminal TODO Manager
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Codiak540/TODO-Manager
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = GPL
+	makedepends = cmake
+	depends = gcc-libs
+	source = todo-bbs-1.0.0.tar.gz::https://github.com/Codiak540/TODO-Manager/archive/V1.0.0.tar.gz
+	sha256sums = 8cc809b9fe2424449e157545ea5958798b5cadf77f6953cbe9e9f3a806f3b943
+
+pkgname = todo-bbs
