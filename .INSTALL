@@ -1,11 +1,11 @@
 post_install() {
-	echo If you don\'t have\/install at least one of those display-managers listed below\, Then, The command won\'t work\.
-}
-
-pre_remove() {
-	sudo rm -rf /usr/bin/gui-cli-toggle*
-}
-
-post_remove() {
-	sudo rm -rf /usr/bin/gui-cli-toggle*
+        echo "+------------------------------------------------------------------------------+"
+        echo "| IF YOU ARE USING A TTY (FRAMEBUFFER CONSOLE OR TEXT MODE CONSOLE),           |"
+        echo "| AND/OR YOU ARE USING SOMETHING LIKE XINIT TO USE GUI,                        |"
+        echo "| THEN MAKE SURE TO RUN \"systemctl set-default multi-user.target\".             |"
+        echo "+------------------------------------------------------------------------------+"
+        echo "+------------------------------------------------------------------------------+"
+        echo "| IF YOU ARE USING GUI (WITH A SUPPORTED DISPLAY MANAGER BY gui-cli-toggle),   |"
+        echo "| THEN MAKE SURE TO RUN \"systemctl set-default graphical.target\".              |"
+        echo "+------------------------------------------------------------------------------+"
 }
