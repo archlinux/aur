@@ -1,0 +1,17 @@
+pkgbase = lunahr
+	pkgdesc = Polar H10 heart rate monitor app with OSC and logging
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/PetLucy/LunaHR-Linux
+	arch = x86_64
+	license = custom
+	depends = python
+	depends = pyside6
+	depends = python-pyqtgraph
+	depends = python-bleak
+	depends = python-osc
+	depends = python-colorama
+	source = https://github.com/PetLucy/LunaHR-Linux/archive/refs/tags/v2.1.1.tar.gz
+	sha256sums = e99d35f1ffef002cfac191aa960c2016c4c8ba8194885de0e0bff3b5f0fb56c2
+
+pkgname = lunahr
