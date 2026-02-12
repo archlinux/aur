@@ -1,7 +1,7 @@
 # Maintainer: D7OMDEV <hello@d7om.dev>
 pkgname=clipse-gui
-pkgver=0.3.2
-pkgrel=3
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="A simple clipboard manager with a GUI"
 arch=('x86_64')
 url="https://github.com/d7omdev/clipse-gui"
@@ -23,7 +23,7 @@ build() {
 
 	# Run Nuitka with maximum optimization for speed
 	python -m nuitka --standalone --clang --output-dir=build --remove-output \
-		--include-package=clipse-gui \
+		--include-package=clipse_gui \
 		--include-package=gi \
 		--include-module=gi._gi \
 		--include-module=gi._propertyhelper \
