@@ -1,6 +1,6 @@
 pkgbase = zulu-17-fx-bin
 	pkgdesc = Azul Zulu Builds of OpenJDK With OpenJFX are open source, TCK-tested and certified builds of OpenJDK.
-	pkgver = 17.0.17
+	pkgver = 17.0.18
 	pkgrel = 1
 	url = https://www.azul.com/downloads
 	install = zulu-17-fx-bin.install
@@ -28,7 +28,7 @@ pkgbase = zulu-17-fx-bin
 	backup = etc/zulu-17-fx/security/policy/unlimited/default_local.policy
 	backup = etc/zulu-17-fx/security/policy/unlimited/default_US_export.policy
 	backup = etc/zulu-17-fx/sound.properties
-	source = https://cdn.azul.com/zulu/bin/zulu17.62.17-ca-fx-jdk17.0.17-linux_x64.tar.gz
-	sha256sums = 1a16f93442ede69d3b1e69d78d0bcf99453971675c7ae147f9a4fe530c9a4fd9
+	source = https://cdn.azul.com/zulu/bin/zulu17.64.17-ca-fx-jdk17.0.18-linux_x64.tar.gz
+	sha256sums = 8d0d81c882ad8afa1cf6727f2cf3190a4b728dc7aa5d8f81e9adfab179b051b1
 
 pkgname = zulu-17-fx-bin
