@@ -1,27 +1,114 @@
 pre_upgrade()
 {
-  echo ""
-  systemctl stop wazuh-dashboard
-  cp /etc/wazuh-dashboard/opensearch_dashboards.yml /etc/wazuh-dashboard/opensearch_dashboards.yml.old
+  echo "=== PRE-UPGRADE ==="
+  systemctl stop wazuh-dashboard 2>/dev/null || true
+  cp /etc/wazuh-dashboard/opensearch_dashboards.yml /etc/wazuh-dashboard/opensearch_dashboards.yml.rpmsave 2>/dev/null || true
 }
 
 post_upgrade()
 {
-  cp /etc/wazuh-dashboard/opensearch_dashboards.yml /etc/wazuh-dashboard/opensearch_dashboards.yml.pacnew
-  cp /etc/wazuh-dashboard/opensearch_dashboards.yml.old /etc/wazuh-dashboard/opensearch_dashboards.yml
-  chown -R wazuh-dashboard:wazuh-dashboard /usr/share/wazuh-dashboard/*
-  chown -R wazuh-dashboard:wazuh-dashboard /etc/wazuh-dashboard/*
+  echo "=== POST-UPGRADE ==="
+
+  # Restore previous config
+  if [ -f /etc/wazuh-dashboard/opensearch_dashboards.yml.rpmsave ]; then
+    cp /etc/wazuh-dashboard/opensearch_dashboards.yml /etc/wazuh-dashboard/opensearch_dashboards.yml.rpmnew
+    cp /etc/wazuh-dashboard/opensearch_dashboards.yml.rpmsave /etc/wazuh-dashboard/opensearch_dashboards.yml
+    echo "Previous config restored. New config saved as opensearch_dashboards.yml.rpmnew"
+  fi
+
+  # Reapply permissions
+  _set_permissions
+
+  # Reapply setcap for privileged ports
+  _set_capabilities
+
   systemctl daemon-reload
   systemctl start wazuh-dashboard
 }
 
 post_install()
 {
-  echo "creating wazuh-indexer user and group"
+  echo "=== POST-INSTALL ==="
+
+  # Create user and group
+  echo "Creating wazuh-dashboard user and group..."
   groupadd -f wazuh-dashboard
-  usuario="wazuh-dashboard" && id "$usuario" &>/dev/null || useradd --system -d /usr/share/wazuh-dashboard -g wazuh-dashboard -s /usr/bin/nologin  wazuh-dashboard
+  id "wazuh-dashboard" &>/dev/null || useradd --system -d /usr/share/wazuh-dashboard -g wazuh-dashboard -s /usr/bin/nologin wazuh-dashboard
+
+  # Create required directories
+  echo "Creating required directories..."
+  mkdir -p /usr/share/wazuh-dashboard/data/wazuh/downloads
+  mkdir -p /usr/share/wazuh-dashboard/data/wazuh/config
+  mkdir -p /usr/share/wazuh-dashboard/data/wazuh/logs
+  mkdir -p /etc/wazuh-dashboard/certs
+  mkdir -p /var/log/wazuh-dashboard
+  mkdir -p /run/wazuh-dashboard
+
+  # Set permissions
+  _set_permissions
+
+  # Set capabilities for privileged port binding (443)
+  _set_capabilities
+
+  echo ""
+  echo "=========================================="
+  echo "  WAZUH DASHBOARD INSTALLATION COMPLETE"
+  echo "=========================================="
+  echo ""
+  echo "=== STEP 1: DEPLOY CERTIFICATES (REQUIRED) ==="
+  echo ""
+  echo "  cd /root"
+  echo "  tar -xf wazuh-certificates.tar -C /etc/wazuh-dashboard/certs/ ./dashboard.pem ./dashboard-key.pem ./root-ca.pem --strip-components=1"
+  echo "  chmod 500 /etc/wazuh-dashboard/certs && chmod 400 /etc/wazuh-dashboard/certs/*"
+  echo "  chown -R wazuh-dashboard:wazuh-dashboard /etc/wazuh-dashboard/certs"
+  echo ""
+  echo "=== STEP 2: CONFIGURE DASHBOARD ==="
+  echo ""
+  echo "Edit /etc/wazuh-dashboard/opensearch_dashboards.yml:"
+  echo "  - server.host: 0.0.0.0"
+  echo "  - server.port: 443"
+  echo "  - opensearch.hosts: https://<INDEXER_IP>:9200"
+  echo ""
+  echo "=== STEP 3: START SERVICE ==="
+  echo ""
+  echo "  systemctl daemon-reload"
+  echo "  systemctl enable --now wazuh-dashboard"
+  echo ""
+  echo "=== STEP 4: ACCESS ==="
+  echo ""
+  echo "  URL: https://<DASHBOARD_IP>:443"
+  echo "  Default credentials: admin / admin"
+  echo "  (Change password after first login!)"
+  echo ""
+  echo "Documentation: https://documentation.wazuh.com/current/installation-guide/wazuh-dashboard/step-by-step.html"
+}
+
+_set_permissions()
+{
+  echo "Setting permissions..."
+
+  # Main directories
   chown -R wazuh-dashboard:wazuh-dashboard /usr/share/wazuh-dashboard
   chown -R wazuh-dashboard:wazuh-dashboard /etc/wazuh-dashboard
-  echo "Done!"
-  echo "Visit https://documentation.wazuh.com/current/installation-guide/wazuh-dashboard/step-by-step.html and follow the configure instructions"
+  chown -R wazuh-dashboard:wazuh-dashboard /var/log/wazuh-dashboard 2>/dev/null || true
+  chown -R wazuh-dashboard:wazuh-dashboard /run/wazuh-dashboard 2>/dev/null || true
+
+  # Ensure data directories are writable
+  chmod -R 750 /usr/share/wazuh-dashboard/data 2>/dev/null || true
+
+  # Config directory
+  chmod 750 /etc/wazuh-dashboard
+}
+
+_set_capabilities()
+{
+  echo "Setting capabilities for privileged port binding (443)..."
+
+  # Allow node to bind to privileged ports (< 1024)
+  if [ -f /usr/share/wazuh-dashboard/node/bin/node ]; then
+    setcap 'cap_net_bind_service=+ep' /usr/share/wazuh-dashboard/node/bin/node
+    echo "  setcap applied to node binary"
+  else
+    echo "  WARNING: node binary not found, setcap not applied"
+  fi
 }
