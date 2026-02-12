@@ -1,17 +1,24 @@
 pkgbase = xfwm4-rounded-corners
-	pkgdesc = Patch for Xfwm4 that allows drawing windows with rounded corners
-	pkgver = 4.18.0
+	pkgdesc = xfwm4 with patch that allows drawing windows with rounded corners.
+	pkgver = 4.20.0
 	pkgrel = 1
-	url = https://github.com/wsdfhjxc/xfwm-rounded-corners-patch
+	url = https://docs.xfce.org/xfce/xfwm4/start
 	arch = x86_64
-	license = GPL2
+	groups = xfce4
+	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = xfce4-dev-tools
+	depends = libxfce4ui
+	depends = xfconf
+	depends = libwnck3
+	depends = libepoxy
+	depends = libxpresent
+	depends = hicolor-icon-theme
 	provides = xfwm4
 	conflicts = xfwm4
-	source = git+https://github.com/xfce-mirror/xfwm4.git
-	source = git+https://github.com/samueldy/xfce-patches.git
-	md5sums = SKIP
-	md5sums = SKIP
+	source = git+https://gitlab.xfce.org/xfce/xfwm4.git#tag=xfwm4-4.20.0
+	source = rounded-corners-4.20.patch
+	sha256sums = 68691593f06659f1ba1a0363be161b2cd50a84016612394c909bce1485a75cff
+	sha256sums = 1f57987fd3f5b455ec43cb914ff21548cac030c8140f85ec14043af253288bb7
 
 pkgname = xfwm4-rounded-corners

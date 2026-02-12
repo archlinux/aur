@@ -1,0 +1,10 @@
+*/src
+*/pkg
+src/*
+pkg/*
+*/*.log
+*/*.zst
+*/*.zst.sig
+*.zst
+*.zst.sig
+xfwm4/*
