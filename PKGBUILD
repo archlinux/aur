@@ -38,7 +38,7 @@ package() {
     install -Dm644 "examples/stasis.rune" "$pkgdir/usr/share/$pkgname/examples/stasis.rune"
 
     # Install systemd user service file
-    install -Dm644 "systemd/stasis.service" "$pkgdir/usr/lib/systemd/user/stasis.service"
+    install -Dm644 "packaging/systemd/stasis.service" "$pkgdir/usr/lib/systemd/user/stasis.service"
 
     # Install python script for Media Bridge
     install -Dm755 "scripts/media_bridge_host.py" "$pkgdir/usr/bin/media_bridge_host.py"
