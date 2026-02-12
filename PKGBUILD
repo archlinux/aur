@@ -90,11 +90,23 @@ pkgver() {
 }
 
 prepare() {
-  cd "${_pkgname}"
-  git reset --hard origin/master && git clean -fdd
+  pushd "sigfm" > /dev/null
+  git config user.email >&- || git config user.email "makepkg@local.com"
+  git config user.name >&- || git config user.name "makepkg"
+  git reset --hard origin/sigfm && git clean -fdd
+  rm -Rf ".gitlab-ci" && \
+    git add . && \
+    git commit -m "Remove .gitlab-ci" || true
+  popd
+
+  pushd "${_pkgname}" > /dev/null
   git config remote.sigfm.url >&- || git remote add sigfm $srcdir/sigfm
   git config user.email >&- || git config user.email "makepkg@local.com"
   git config user.name >&- || git config user.name "makepkg"
+  git reset --hard origin/master && git clean -fdd
+  rm -Rf ".gitlab-ci" && \
+    git add . && \
+    git commit -m "Remove .gitlab-ci" || true
   git fetch sigfm makepkg
   git merge sigfm/makepkg --no-edit
   # Revert "libfprint: Use fatal-warnings on g-i-scanner" to fix build
@@ -103,6 +115,7 @@ prepare() {
   for patch in $srcdir/*.patch; do
     git apply $patch
   done
+  popd
 }
 
 build() {
