@@ -1,5 +1,5 @@
 # Maintained by glacier54 on GitHub
-pkgver=0.1.4
+pkgver=0.1.5
 pkgname="goonfetch"
 pkgdesc="A fetch utility for fetching rule 34 images"
 pkgrel=1
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python')
 makedepends=('uv')
 source=("https://github.com/glacier54/goonfetch/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ae857e4fa6edfa5c1eca1b770bb99520e42c29d16335866525c28f9debd00450')
+sha256sums=('f173049a3c6e9a03a5de7bcc1a0dbf49a9e70e7888cad26f54d01df1fa835ea5')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
