@@ -3,7 +3,7 @@
 
 pkgname=chromium-snapshot-bin
 _pkgname=${pkgname/chromium/chromedriver}
-pkgver=146.0.7635.0.r1569334
+pkgver=147.0.7683.0.r1583537
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Latest Snapshot)"
 arch=('x86_64')
