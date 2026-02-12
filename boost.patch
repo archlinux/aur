@@ -1,0 +1,22 @@
+--- a/SConstruct
++++ b/SConstruct
+@@ -73,8 +73,7 @@
+       "boost_iostreams-mt",
+       "boost_filesystem-mt",
+       "boost_date_time-mt",
+-      "boost_thread-mt",
+-      "boost_system-mt"])
++      "boost_thread-mt"])
+ else:
+   env.Append(
+     LIBS = [
+@@ -83,8 +82,7 @@
+       "boost_iostreams",
+       "boost_filesystem",
+       "boost_date_time",
+-      "boost_thread",
+-      "boost_system"])
++      "boost_thread"])
+
+ if GetOption("fullstatic"):
+   env["FULL_STATIC_BUILD"] = True
