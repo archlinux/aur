@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=easyeditor-bin
 _pkgname=Easyeditor
-pkgver=1.6.3
+pkgver=1.6.4
 pkgrel=1
 pkgdesc="An easy markdown editor that allows you to write MarkDown (MD) and preview it in real-time. You can save, load .md files and export to PDF.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -20,7 +20,7 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/gcclinux/Easyedito
 #source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-1.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-1.x86_64.rpm")
 sha256sums=('2b94523fd0d3fd7553fcdd10250f68ed5c058749d5d60c8aae906f6f42ace489')
-sha256sums_x86_64=('ed1e87751a1e63bfeff62cf43411e21eb9a0ff8abc4dd338ba81f119191ac986')
+sha256sums_x86_64=('b2283d9b0321fb72211eb6d7d1e7c1274af0ad4349be223c778f02224ec872df')
 prepare() {
     sed -i "s/Name=${pkgname%-bin}/Name=${_pkgname}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
