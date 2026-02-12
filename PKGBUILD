@@ -6,14 +6,14 @@
 _name=pytango
 pkgname=python-${_name}
 pkgver=10.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A python binding for the Tango control system"
 arch=("x86_64" "armv7h" "aarch64")
 url="https://gitlab.com/tango-controls/${_name}"
 license=("LGPL-3.0-or-later" "PSF-2.0")
 groups=("tango-controls")
 depends=(
-  "tango-cpp>=10.0.0" "boost" "boost-libs" "python-numpy" "python-packaging" "python-psutil" "python-coverage" "pybind11>=3.0.1" "ruff" "python-ruff"
+  "tango-cpp>=10.0.0" "tango-cpp<10.3.0" "boost" "boost-libs" "python-numpy" "python-packaging" "python-psutil" "python-coverage" "pybind11>=3.0.1" "ruff" "python-ruff"
 )
 makedepends=(
   "cmake" "ninja"
