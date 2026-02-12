@@ -2,7 +2,7 @@
 # Previous Maintainer: Kubescape Maintainers <cncf hyphen kubescape hyphen maintainers at lists dot cncf dot io>
 
 pkgname=kubescape
-pkgver=3.0.48
+pkgver=4.0.0
 pkgrel=1
 epoch=0
 pkgdesc="An open-source Kubernetes security platform for your IDE, CI/CD pipelines, and clusters."
@@ -13,17 +13,18 @@ makedepends=('go>=2:1.20.0')
 provides=('kubescape')
 conflicts=('kubescape-bin')
 source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('94071f22c9ac37bca9331ac31f5a05b79fc618cb7d509ed6d1c84db2765ec9c065dd992b7d29a012dbf8dfb69e09689dcacd3dae93f443be01d7eb415b2b5d5e')
+sha512sums=('a9b946976bf62311f530af61282eac46f84f99ecff0da581dfb466a7adde0702c5c3eb5c4a8a43c83df343f9a3fd4f5800f208f0b50713b2a70d4ea056bd166d')
 
 build() {
   cd "${pkgname}-${pkgver}"
   mkdir -p ${PWD}/cache
-  go build -buildmode=pie -buildvcs=false -ldflags="-s -w -X github.com/${pkgname}/${pkgname}/v3/core/cautils.BuildNumber=v${pkgver}" -o ${pkgname}
+  BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+  go build -buildmode=pie -buildvcs=false -ldflags="-s -w -X main.version=v${pkgver} -X main.date=${BUILD_DATE} -X github.com/kubescape/backend/pkg/versioncheck.Client=release" -o ${pkgname}
 }
 
 check() {
   # check that binary includes pkgver and git enabled
-  if [ "$(./${pkgname}-${pkgver}/${pkgname} version)" != "Your current version is: v${pkgver}" ]; then
+  if [ "$(./${pkgname}-${pkgver}/${pkgname} version | head -n 1)" != "Your current version is: v${pkgver}" ]; then
     exit 1
   fi
 }
