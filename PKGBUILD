@@ -1,6 +1,6 @@
 pkgname=better-github-bin
-pkgver=4.4.0
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="better github desktop app (prebuilt appimage)"
 arch=('x86_64')
 url="https://github.com/krishkalaria12/better-github-desktop"
@@ -8,13 +8,11 @@ license=('MIT')
 depends=('fuse2')
 options=(!strip)
 source=(
-  "better-github.AppImage::https://github.com/krishkalaria12/better-github-desktop/releases/download/v${pkgver}/better-github_0.1.0_amd64.AppImage"
+  "better-github.AppImage::https://github.com/krishkalaria12/better-github-desktop/releases/download/v${pkgver}/better-github_1.0.0_amd64.AppImage"
   "better-github.png::https://raw.githubusercontent.com/krishkalaria12/better-github-desktop/v${pkgver}/apps/desktop/src-tauri/icons/128x128.png"
 )
-sha256sums=(
-  '4d8134c0c4587ee472e01cb70c948f75d148b5de7e45d06ddc4fd43e542faa3c'
-  'b0992f41bb799d686939d16e1eabbe83a03e7997fab3072266dd8398319a3ec6'
-)
+sha256sums=('016b378d9e83b6fa011780a23cbddaab88235a28da078e13d890aa56407db19d'
+            'b0992f41bb799d686939d16e1eabbe83a03e7997fab3072266dd8398319a3ec6')
 
 package() {
   install -Dm755 "${srcdir}/better-github.AppImage" "${pkgdir}/opt/better-github/better-github.AppImage"
