@@ -1,0 +1,21 @@
+pkgbase = sonicrust-bin
+	pkgdesc = A rust base TUI subsonic client
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/roceb/sonicrust
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = chafa
+	depends = alsa-lib
+	depends = glibc
+	depends = gcc-libs
+	provides = _binaryname
+	conflicts = _binaryname
+	options = strip
+	source_x86_64 = sonicrust_v0.1.2_linux_x86_64.tar.gz::https://github.com/roceb/sonicrust/releases/download/v0.1.2/sonicrust_v0.1.2_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 6e43747467a5b736cb16f728695c0d6517aa7f38735048311c9290a0984e4891
+	source_aarch64 = sonicrust_v0.1.2_linux_aarch64.tar.gz::https://github.com/roceb/sonicrust/releases/download/v0.1.2/sonicrust_v0.1.2_linux_aarch64.tar.gz
+	sha256sums_aarch64 = 25c2dc6e9f5b0e2cf2f0e040e92b10d25d25adf142caa97218fec0b5c37ddaba
+
+pkgname = sonicrust-bin
