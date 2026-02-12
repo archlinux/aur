@@ -1,6 +1,6 @@
 pkgbase = github-mcp-server-bin
 	pkgdesc = GitHub's official MCP server which connects AI tools directly to GitHub's platform
-	pkgver = 0.30.2
+	pkgver = 0.30.3
 	pkgrel = 1
 	url = https://github.com/github/github-mcp-server
 	arch = aarch64
@@ -9,11 +9,11 @@ pkgbase = github-mcp-server-bin
 	license = MIT
 	provides = github-mcp-server
 	conflicts = github-mcp-server
-	source_aarch64 = github-mcp-server-0.30.2-aarch64.tar.gz::https://github.com/github/github-mcp-server/releases/download/v0.30.2/github-mcp-server_Linux_arm64.tar.gz
-	sha256sums_aarch64 = bbed94926e1a8018e8eea63218fc365f84b1414586a71513d8c80da36292e103
-	source_i686 = github-mcp-server-0.30.2-i686.tar.gz::https://github.com/github/github-mcp-server/releases/download/v0.30.2/github-mcp-server_Linux_i386.tar.gz
-	sha256sums_i686 = be72a518f6ed66c8902f6ba835aa2958f951a86a1463ad9b0cd765fea458f30b
-	source_x86_64 = github-mcp-server-0.30.2-x86_64.tar.gz::https://github.com/github/github-mcp-server/releases/download/v0.30.2/github-mcp-server_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 1454730e96da4469c949d67a078ff0a6e4a5ebab667b9c112fe545c81d2505ad
+	source_aarch64 = github-mcp-server-0.30.3-aarch64.tar.gz::https://github.com/github/github-mcp-server/releases/download/v0.30.3/github-mcp-server_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 829c069408ed5e0b6694b21fcf74281c501c5dc621d0ec7dbfaaf80bd500ae8d
+	source_i686 = github-mcp-server-0.30.3-i686.tar.gz::https://github.com/github/github-mcp-server/releases/download/v0.30.3/github-mcp-server_Linux_i386.tar.gz
+	sha256sums_i686 = 99b92f36dee7acbb6b84e301e558b3b2f00f38d5d16ecbbae82dffa5d66a7bac
+	source_x86_64 = github-mcp-server-0.30.3-x86_64.tar.gz::https://github.com/github/github-mcp-server/releases/download/v0.30.3/github-mcp-server_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 9b067251bd713143910df68b155d889634605555004b7bee7937123c90914f0a
 
 pkgname = github-mcp-server-bin
