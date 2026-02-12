@@ -1,7 +1,7 @@
 pkgbase = stasis
 	pkgdesc = A modern Wayland idle manager designed for simplicity and effectiveness
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/saltnpepper97/stasis
 	arch = x86_64
 	license = MIT
