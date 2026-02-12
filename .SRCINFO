@@ -1,0 +1,14 @@
+pkgbase = checkout
+	pkgver = 0.1.0
+	pkgrel = 2
+	epoch = 1
+	arch = any
+	license = BSD3
+	makedepends = git
+	makedepends = xmake
+	provides = checkout
+	conflicts = checkout
+	source = git+https://github.com/egevtech/checkout.git
+	sha256sums = SKIP
+
+pkgname = checkout
