@@ -1,0 +1,30 @@
+pkgbase = openscq30-bin
+	pkgdesc = Cross platform application for controlling settings of Soundcore headphones
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://github.com/Oppzippy/OpenSCQ30
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = libdbus-1.so
+	depends = libsqlite3.so
+	depends = libsystemd.so
+	depends = cosmic-icon-theme
+	source = OpenSCQ30-2.4.0.tar.gz::https://github.com/Oppzippy/OpenSCQ30/archive/refs/tags/v2.4.0.tar.gz
+	source = openscq30-bin-cli-2.4.0::https://github.com/Oppzippy/OpenSCQ30/releases/download/v2.4.0/openscq30-cli-linux-x86_64
+	source = openscq30-bin-gui-2.4.0::https://github.com/Oppzippy/OpenSCQ30/releases/download/v2.4.0/openscq30-gui-linux-x86_64
+	sha256sums = cfdfbdebaeb0e3095cef6619f2569e6c7465cd1df7db8dc5c633bdd2bb4816b5
+	sha256sums = 4430d764fc36e2a3b2cb421d6f9b02b277c23ba7e2d7c8ec0a8748ad46844f7a
+	sha256sums = b37cf0cb18427f98d69b5bf43e8adfe0218b233d0ec1ae90dc50a99ce1862b1b
+
+pkgname = openscq30-cli-bin
+	pkgdesc = Cross platform application for controlling settings of Soundcore headphones - CLI application
+	depends = libdbus-1.so
+	depends = libsqlite3.so
+	depends = libsystemd.so
+	provides = openscq30-cli
+	conflicts = openscq30-cli
+
+pkgname = openscq30-gui-bin
+	pkgdesc = Cross platform application for controlling settings of Soundcore headphones - Cosmic GUI application
+	provides = openscq30-gui
+	conflicts = openscq30-gui
