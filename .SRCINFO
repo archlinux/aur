@@ -1,0 +1,43 @@
+pkgbase = xfce4-appmenu-plugin-git
+	pkgdesc = Application menu (global menu) plugin for Xfce4 [doesn't install 5 other DEs for build]
+	pkgver = 25.04.r8.gaea4ea3
+	pkgrel = 1
+	url = https://gitlab.com/vala-panel-project/vala-panel-appmenu
+	arch = i686
+	arch = x86_64
+	arch = pentium4
+	arch = powerpc64le
+	arch = aarch64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = riscv64
+	license = LGPL3
+	makedepends = meson
+	makedepends = vala
+	makedepends = gtk3
+	makedepends = libwnck3
+	makedepends = appmenu-glib-translator
+	makedepends = git
+	makedepends = glib2-devel
+	makedepends = xfce4-panel>=4.11.2
+	makedepends = xfconf
+	source = git+https://gitlab.com/vala-panel-project/vala-panel-appmenu.git
+	sha256sums = SKIP
+
+pkgname = xfce4-appmenu-plugin-git
+	pkgdesc = Application menu (global menu) plugin for Xfce4
+	depends = gtk3
+	depends = xfce4-panel>=4.11.2
+	depends = xfconf
+	depends = libwnck3
+	depends = appmenu-glib-translator
+	optdepends = appmenu-gtk-module: for gtk2/gtk3 menus
+	optdepends = vala-panel-appmenu-registrar: for DBusMenu registrar
+	optdepends = jayatana: for Java applications support
+	optdepends = appmenu-qt4: for qt4 menus
+	provides = xfce4-appmenu-plugin=25.04.r8.gaea4ea3
+	conflicts = vala-panel-appmenu-xfce
+	conflicts = vala-panel-appmenu-xfce-git
+	conflicts = vala-panel-appmenu-common
+	conflicts = vala-panel-appmenu-common-git
