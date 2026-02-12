@@ -1,0 +1,10 @@
+
+[Desktop Entry]
+Version=1.5
+Type=Application
+Name=Amsel Suite
+Exec=/opt/amsel/amsel-suite %U
+Categories=Game;Office;
+Type=Application
+StartupNotify=true
+Icon=amsel-suite

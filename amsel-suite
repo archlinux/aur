@@ -1,0 +1,3 @@
+#! /bin/sh
+
+XDG_DATA_HOME=/opt/amsel /opt/amsel/launcher/launcher $1
