@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=FlyPrint
+Comment=Local print agent for FlyPush label printing
+Exec=flyprint-gui
+Icon=flyprint
+Terminal=false
+Categories=Utility;Printing;HardwareSettings;
+Keywords=print;labels;drosophila;flypush;
+StartupNotify=false

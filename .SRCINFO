@@ -1,0 +1,24 @@
+pkgbase = flyprint-git
+	pkgdesc = Local print agent for FlyPush label printing (system tray + headless)
+	pkgver = 0.1.0.r4.g43eb4fb
+	pkgrel = 1
+	url = https://github.com/ggilestro/flyPrint
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python>=3.10
+	depends = python-click
+	depends = python-requests
+	depends = python-pystray
+	depends = python-pillow
+	depends = python-pycups
+	depends = tk
+	provides = flyprint
+	conflicts = flyprint
+	source = flyprint-git::git+https://github.com/ggilestro/flyPrint.git
+	sha256sums = SKIP
+
+pkgname = flyprint-git

@@ -1,0 +1,13 @@
+[Unit]
+Description=FlyPrint Label Printing Agent
+After=network-online.target cups.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/flyprint start
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target
