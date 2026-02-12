@@ -1,6 +1,6 @@
 pkgbase = anneal
 	pkgdesc = Proactive AUR rebuild management for Arch Linux
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/MarkWells-Dev/Anneal
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = anneal
 	optdepends = aura: AUR helper for rebuilding packages
 	optdepends = trizen: AUR helper for rebuilding packages
 	optdepends = rebuild-detector: detect packages needing rebuild via checkrebuild
-	source = anneal-0.2.2.tar.gz::https://github.com/MarkWells-Dev/Anneal/archive/v0.2.2.tar.gz
-	sha256sums = 2f3d921cc139caf1f5a2a41cbc10f472f6d3a81195be52b68a54def833c83ba0
+	source = anneal-0.2.3.tar.gz::https://github.com/MarkWells-Dev/Anneal/archive/v0.2.3.tar.gz
+	sha256sums = 7282dacd0fbe1d665324e4221cc9daa256b3718e2a2519411fbe84e56111de1d
 
 pkgname = anneal
