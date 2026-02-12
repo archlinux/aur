@@ -1,6 +1,6 @@
 # Maintainer: Codiak 540<Codiak540@bbs.4d2.org>
 pkgname=todo-bbs
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A Retro-Styled Terminal TODO Manager"
 arch=('x86_64' 'i686' 'aarch64')
