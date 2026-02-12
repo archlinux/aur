@@ -1,7 +1,8 @@
-# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="obsidian-cli"
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Interact with Obsidian in the terminal. Open, search, create, update and move notes!"
 arch=('aarch64' 'x86_64')
@@ -12,7 +13,7 @@ depends=('glibc')
 makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('06a5a516400d8e2cc22a07a1892f835fad67fc821bfc9886c72d5c4be37a6aa4')
+sha256sums=('3911370e9ba347373e3d16007c7e8404b2a3589e4cacf9db91e649d4b3d1992d')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
