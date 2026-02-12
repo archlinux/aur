@@ -2,7 +2,7 @@
 
 _pkgname=lutris-gamepad-ui
 pkgname=lutris-gamepad-ui-8bitdo-git
-pkgver=v0.1.29.r2.gb52ce41
+pkgver=v0.1.29.r3.g5058a30
 pkgrel=1
 pkgdesc="A simple, TV-friendly, gamepad-navigable frontend for Lutris (with 8bitdo dpad patch)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=("git+https://github.com/andrew-ld/lutris-gamepad-ui"
 sha256sums=('SKIP'
             '61cf30e80ec121eb5264348eae77cccff4a534a7c35fe88a1782879b1e3643a7'
             '7f21e37b1eb918ebd191b23de176e568e7b73e7ac82ddf89668e35908588238e'
-            '4fe52559489988be95ce8ee2b297bb4b899c37adfa729cb112421472aa7e2bbb')
+            'a9656794d79c9a24e2d4a28c515087e49f7f2d12bee3b675543dd341e8e46ef5')
 
 pkgver() {
     cd "$_pkgname"
