@@ -2,18 +2,18 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=dooble
-pkgver=2025.11.25
+pkgver=2026.02.09
 pkgrel=1
 pkgdesc="A minimal, scientific, and stable Web browser"
 arch=('x86_64')
 url="https://textbrowser.github.io/dooble"
 license=('BSD-3-Clause')
-depends=('bash' 'gcc-libs' 'glibc' 'gpgme' 'qt6-base' 'qt6-charts' 'qt6-declarative' 'qt6-webengine')
+depends=('bash' 'glibc' 'gpgme' 'libgcc' 'libstdc++' 'qt6-base' 'qt6-charts' 'qt6-declarative' 'qt6-webengine')
 makedepends=('git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/textbrowser/dooble/archive/${pkgver}.tar.gz"
         "git+https://github.com/textbrowser/dooble-dictionaries.git"
         "${pkgname}.sh")
-sha256sums=('213b75a0ae17a64c826f48cb9e2e4fe51fbb033cf43bcbc275681f0f4c611fea'
+sha256sums=('adbd6bb9c9c8f4ed7ac6d3b1facd66403f5c4f1f0c7be516f7fb5935c3ab696e'
             'SKIP'
             '39705af759145ffa3cb670353e8fe459228f92d70ae98aa16212006f0c239c1b')
 
