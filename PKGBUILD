@@ -2,7 +2,7 @@
 pkgname=python-zxing-cpp
 _name=${pkgname#python-}
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Python bindings for zxing-cpp"
 arch=('x86_64')
 url="https://github.com/zxing-cpp/zxing-cpp"
@@ -13,25 +13,17 @@ depends=(
 )
 makedepends=(
   'cmake'
-  'git'
   'pybind11'
   'python-build'
   'python-installer'
   'python-setuptools'
   'python-wheel'
 )
-source=("git+https://github.com/zxing-cpp/zxing-cpp.git#tag=v$pkgver"
-        'git+https://github.com/zint/zint.git')
-sha256sums=('072683b5dec4060f2abfb54f8b7da9db198406138895876831fc16dece6aee7a'
-            'SKIP')
+source=("https://github.com/zxing-cpp/zxing-cpp/releases/download/v$pkgver/$_name-$pkgver.tar.gz")
+sha256sums=('bfea8f8ebc8e04e5c4a57e5cbdc302d05c72b916d142564b6d14f01050bb93d4')
 
 prepare() {
-  cd "$_name"
-  git submodule init
-  git config submodule.zint.url "$srcdir/zint"
-  git -c protocol.file.allow=always submodule update
-
-  git -C wrappers/python clean -dfx
+  cd "$_name-$pkgver"
 
   # We really do have the dependencies, however
   # it can't find them...
@@ -40,11 +32,11 @@ prepare() {
 }
 
 build() {
-  cd "$_name/wrappers/python"
+  cd "$_name-$pkgver/wrappers/python"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$_name/wrappers/python"
+  cd "$_name-$pkgver/wrappers/python"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
