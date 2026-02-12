@@ -5,7 +5,7 @@ pkgver=0.1.0
 pkgrel=1
 pkgdesc="AI-powered TUI for PKGBUILD generation and AUR management"
 arch=('x86_64' 'aarch64')
-url="https://github.com/archforge/archforge"
+url="https://github.com/Scqxd/archforge"
 license=('MIT')
 depends=('rust' 'cargo')
 makedepends=('cargo' 'openssl' 'pkgconf')
@@ -16,7 +16,7 @@ optdepends=(
 )
 provides=('archforge')
 conflicts=('archforge')
-source=("https://github.com/archforge/archforge/archive/refs/tags/v${pkgver}.tar.gz")
+source=("https://github.com/Scqxd/archforge/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 build() {
