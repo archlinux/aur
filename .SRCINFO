@@ -4,7 +4,7 @@ pkgbase = pulsesync
 	pkgrel = beta
 	url = https://pulsesync.dev/
 	arch = x86_64
-	license = MIT
+	license = https://github.com/PulseSync-LLC/PulseSync-client/blob/main/LICENSE
 	depends = glibc
 	sha256sums = SKIP
 
