@@ -1,7 +1,7 @@
 pkgbase = modiva-launcher-bin
 	pkgdesc = The official Modiva launcher
-	pkgver = 1.4.0
-	pkgrel = 7
+	pkgver = 1.4.2
+	pkgrel = 1
 	url = https://modiva-launcher.xyz
 	arch = x86_64
 	license = proprietary
@@ -12,9 +12,9 @@ pkgbase = modiva-launcher-bin
 	provides = modiva-launcher
 	conflicts = modiva-launcher
 	options = !strip
-	source = modiva-launcher-1.4.0.AppImage::https://github.com/modiva-launchers/modiva-releases/releases/download/v1.4.0/Modiva.Launcher_1.4.0_amd64.AppImage
+	source = modiva-launcher-1.4.2.AppImage::https://github.com/modiva-launchers/modiva-releases/releases/download/v1.4.2/Modiva.Launcher_1.4.2_amd64.AppImage
 	source = icon.png
-	sha256sums = e78ad1778f89242e42074ab5e42abfd5e2f456354904d920c75965ff90d428cf
+	sha256sums = 567021f7e00b43c4882abd7442391d507916f7e0c5107eb7a52185b6ccc5d36a
 	sha256sums = 295812bdd6e56cdd816a1e4c7db8f3803be5da302569b397d662d4c92c81874b
 
 pkgname = modiva-launcher-bin
