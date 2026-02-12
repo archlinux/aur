@@ -2,7 +2,7 @@
 
 pkgname=zimage-ncnn-vulkan-git
 _pkgname=${pkgname%-git}
-pkgver=r18.86968b1
+pkgver=20260212.r0.g48673db
 pkgrel=1
 pkgdesc="ncnn implementation of Z-Image image generater"
 url="https://github.com/nihui/zimage-ncnn-vulkan"
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "${_pkgname}/"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
