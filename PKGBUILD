@@ -11,13 +11,13 @@
 shopt -s extglob
 
 pkgname=python-git
-pkgver=3.14.0a3.r78.gaeb9b65aa26
+pkgver=3.15.0a5.r181.g37c35542a9ca
 pkgrel=1
 pkgdesc="The Python programming language"
 arch=('x86_64')
 license=('PSF-2.0')
 url="https://www.python.org/"
-depends=('bzip2' 'expat' 'gdbm' 'libffi' 'libnsl' 'libxcrypt' 'openssl' 'zlib' 'tzdata' 'mpdecimal')
+depends=('bzip2' 'expat' 'gdbm' 'libffi' 'libnsl' 'libxcrypt' 'openssl' 'zlib' 'tzdata' 'mpdecimal' 'zstd')
 makedepends=('tk' 'sqlite' 'bluez-libs' 'git' 'llvm' 'gdb' 'xorg-server-xvfb' 'ttf-font')
 source=("git+https://github.com/python/cpython#branch=main")
 sha512sums=('SKIP')
