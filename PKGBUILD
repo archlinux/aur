@@ -1,6 +1,6 @@
 # Maintainer: dongdongbh <dongdongbhbh@gmail.com>
 pkgname=mindwtr-bin
-pkgver=0.6.13
+pkgver=0.6.14
 pkgrel=1
 pkgdesc="A complete Getting Things Done (GTD) productivity system - Mind Like Water"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('webkit2gtk-4.1' 'gtk3' 'libappindicator-gtk3')
 provides=('mindwtr')
 conflicts=('mindwtr')
 source_x86_64=("${url}/releases/download/v${pkgver}/mindwtr_${pkgver}_amd64.deb")
-sha256sums_x86_64=('eb109a540980285d6aaaac38f5bcd7b13f832a3f01bd1304724035540a02e7c5')
+sha256sums_x86_64=('c09e9cfa78b0caa22364181742d2121aa945d74e52db927646b80c3705a8262c')
 
 package() {
     tar -xf data.tar.zst -C "${pkgdir}" || tar -xf data.tar.gz -C "${pkgdir}"
