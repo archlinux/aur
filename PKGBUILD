@@ -1,6 +1,6 @@
 # Maintainer: Onxy <mihalygyori05@gmail.com>
 pkgname=betterwallpaper-git
-pkgver=0.5.8
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A modern, high-performance animated wallpaper manager for Linux"
 arch=('x86_64')
