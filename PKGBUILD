@@ -1,7 +1,7 @@
 # Maintainer: Treadful <mail at treadful dot dev>
 _base_pkgname="mollysocket"
 pkgname="${_base_pkgname}-bin"
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Service linking Signal notifications and UnifiedPush."
 arch=('x86_64' 'armv7h' 'arm64')
@@ -21,7 +21,7 @@ source=(
 	"${_base_pkgname}.tmpfiles"
 	# NOTE: service files improved since latest release tag.
 	# TODO: move these to release tag after next release
-	"https://raw.githubusercontent.com/mollyim/mollysocket/aaedd5b8afc2c08233d7a768694bd72eba4480b4/mollysocket.service"
+    "https://raw.githubusercontent.com/mollyim/mollysocket/6790b49c107218cbcc3c040ff431f97577065949/mollysocket.service"
 	"https://raw.githubusercontent.com/mollyim/mollysocket/aaedd5b8afc2c08233d7a768694bd72eba4480b4/mollysocket-vapid.service")
 source_x86_64=(
 	"${pkgname}-${pkgver}::https://github.com/mollyim/mollysocket/releases/download/${pkgver}/${_base_pkgname}-linux_amd64")
@@ -34,14 +34,14 @@ sha256sums=(
 	'75dc63e3072d89e1d3ba41926a7d0a686dcf81ac80c76eeb5451239ed058fb38'
 	'7d1d8a3102c6264c136cb22dbc5cafaaf5fc8db3757a5b3edef57c5a1b96149a'
 	'3e4d6157af3fa36253cd4a7df3614f8b785cc87a93416b2c1172598d30af2c1d'
-	'5579dab8879a856dc02450502ac9b246d869142e200c613688163a3d8888d5ce'
+	'9e3bbafb068e0c16f8f6f3c6542e54b6180d6d6ff4937568a7b9eb7c9fefb33a'
 	'4405930c9827de0806bf0c652c3413bc6457de50cd7b6870c1f44b587d5480ae')
 sha256sums_x86_64=(
-	'9045f76729db5defee0652d9be4a474526d8fae47e5b1785b44cb84cdc5b57a6')
+	'43549a4e3303b60a6cff1b8a9204fe6ffe195b66c70e5f8e0a08ec0f71011d0a')
 sha256sums_armv7h=(
-	'e724c0a30c1de2bd74f5e065f88e87973c0c40a683a596e24da83ca3d067dc5c')
+	'e2b51d5c615352ccc63dff093639a3a4b3cbca9d46e31e5e07a2c8ea543e4dad')
 sha256sums_arm64=(
-	'dfccec9802baaa80059018a7e90ff07f6e086c1ad45e05c54f718e428eb47d42')
+	'e8fa4b55993450ea292e12db8338cb54959818e65a80fbf43f374a8b0af893d0')
 validpgpkeys=()
 
 package() {
