@@ -1,0 +1,22 @@
+pkgbase = models-bin
+	pkgdesc = A fast CLI and TUI for browsing AI models and coding agents
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/arimxyer/models
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = models
+	conflicts = models
+	source = README-0.7.0.md::https://raw.githubusercontent.com/arimxyer/models/v0.7.0/README.md
+	source = LICENSE-0.7.0::https://raw.githubusercontent.com/arimxyer/models/v0.7.0/LICENSE
+	sha256sums = 76d019d9d1ffcc849f0828aacb9d1667c800612d574b993f49c6d4ed7fa38d08
+	sha256sums = 515175e700aadba7b5436688d6daa0e06ea17bfb657e377e14138f65866082a3
+	source_x86_64 = models-x86_64-0.7.0.tgz::https://github.com/arimxyer/models/releases/download/v0.7.0/models-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 6a86fa1ee32c9c8393f7ce2502c9d9cd507e290c3406ea23095a773856b690f8
+	source_aarch64 = models-aarch64-0.7.0.tgz::https://github.com/arimxyer/models/releases/download/v0.7.0/models-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 296c8f31fcd0dbdc2efc8e6d2fdd6c3604239d2ea463e7997fad19509c89865e
+
+pkgname = models-bin
