@@ -1,3 +1,19 @@
+2026.02.12, v10.0.2
+
+fix:
+- 5f111bf gritty: client: export default
+
+2026.02.12, v10.0.1
+
+feature:
+- ffdbfb7 gritty: default export
+
+2026.02.12, v10.0.0
+
+feature:
+- 7c4b076 gritty: migrate to ESM
+- 7cc62e0 gritty: get rid of mock-require
+
 2026.02.10, v9.0.4
 
 feature:
