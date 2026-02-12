@@ -1,6 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='2.3.0'
+_upstreamver='2.4.0'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='fts-tool'
@@ -26,7 +26,7 @@ depends=('python' 'python-textual' 'python-tqdm' 'python-psutil' 'python-cryptog
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
 source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('4d5d55d5a485e6fdaa4effae2d053135f7f4aeb504058234e064d31c881a2cbe')
+sha256sums=('b2d3c7f92d2d1012e8b0cf3e805135aa592154ca6ee96aabd1723c5bb1eacb7d')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}/"
