@@ -1,6 +1,6 @@
 # Maintainer: Emiliopg91 <ojosdeserbio@gmail.com>
 pkgname=rog-perf-tuner
-pkgver=4.11.5
+pkgver=4.11.6
 pkgrel=1
 pkgdesc="An utility to manage Asus Rog laptop performance and RGB lighting"
 arch=(
@@ -22,9 +22,8 @@ options=(
 )
 depends=(
   'asusctl'
-  'curl'
   'coreutils'
-  'cpp-httplib-compiled'
+  'cpp-httplib'
   'hicolor-icon-theme'
   'hidapi'
   'libusb'
@@ -39,6 +38,7 @@ depends=(
   'qtermwidget'
   'qtkeychain-qt6'
   'scx-scheds'
+  'openssl'
   'switcheroo-control'
   'upower'
 )
