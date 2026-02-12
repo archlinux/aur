@@ -1,6 +1,6 @@
 #Maintainer popolon <popolon @L popoulon dot org>
 
-pkgbase=jumpnbump
+_pkgname=jumpnbump
 pkgname=jumpnbump-git
 pkgver=1.60.r53.g25cc740
 pkgrel=1
@@ -16,19 +16,19 @@ source=(git+https://gitlab.com/LibreGames/jumpnbump/)
 sha256sums=(SKIP)
 
 pkgver() {
-  cd "${srcdir}/${pkgbase}/"
+  cd "${srcdir}/${_pkgname}/"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/${pkgbase}/"
+  cd "${srcdir}/${_pkgname}/"
   
   make PREFIX=/usr all
   make PREFIX=/usr -C menu
 }
 
 package() {
-  cd "${srcdir}/${pkgbase}"
+  cd "${srcdir}/${_pkgname}"
   make PREFIX="${pkgdir}/usr/" install
   make PREFIX="${pkgdir}/usr/" install -C menu
 }
