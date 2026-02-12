@@ -1,0 +1,18 @@
+pkgbase = irfanview
+	pkgdesc = Fast and compact image viewer/browser (Wine)
+	pkgver = 4.73
+	pkgrel = 1
+	url = https://www.irfanview.com/
+	arch = x86_64
+	license = custom:irfanview
+	makedepends = unzip
+	depends = wine
+	depends = sh
+	source = irfanview.sh
+	source = irfanview.desktop
+	source = irfanview.png
+	sha256sums = 07a46e369f1820c2f0baaf2acff3a8ddfea68e93478d739626b21cf902790d73
+	sha256sums = 0de99d6ba82fca4c2602cfb5a7e84d69fb183da63689e8f6b5fffe578c020ffe
+	sha256sums = d13e4f45b73c1560bcfc14c470548e2e844ed5e80e59e805d0ea0f8a9b2155b5
+
+pkgname = irfanview

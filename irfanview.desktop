@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=IrfanView
+Comment=Fast and compact image viewer/browser
+Exec=irfanview %F
+Icon=irfanview
+Terminal=false
+Type=Application
+Categories=Graphics;Viewer;
+StartupNotify=true
+MimeType=image/bmp;image/gif;image/jpeg;image/jpg;image/png;image/tiff;image/x-bmp;image/x-ico;image/x-png;image/x-tga;image/x-tif;
