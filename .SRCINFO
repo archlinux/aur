@@ -1,6 +1,6 @@
 pkgbase = r-np
 	pkgdesc = Nonparametric Kernel Smoothing Methods for Mixed Data Types
-	pkgver = 0.60.19
+	pkgver = 0.60.20
 	pkgrel = 1
 	url = https://cran.r-project.org/package=np
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = r-np
 	optdepends = r-ks
 	optdepends = r-logspline
 	optdepends = r-mass
-	source = https://cran.r-project.org/src/contrib/np_0.60-19.tar.gz
-	sha256sums = 433de4e2ecde0622d3db3663679d1cd5e3ada4d65edbe88bf8107a12de53f1a6
+	source = https://cran.r-project.org/src/contrib/np_0.60-20.tar.gz
+	sha256sums = ad8fb7d4d67d02e0356bd2a3eb683b2b76d814fc006b61ee0b7373f58eb9b1cb
 
 pkgname = r-np
