@@ -2,13 +2,13 @@
 
 _pkgname=lutris-gamepad-ui
 pkgname=lutris-gamepad-ui-8bitdo-git
-pkgver=v0.1.29.r1.g73368cd
+pkgver=v0.1.29.r2.gb52ce41
 pkgrel=1
 pkgdesc="A simple, TV-friendly, gamepad-navigable frontend for Lutris (with 8bitdo dpad patch)"
 arch=('x86_64')
 url="https://github.com/andrew-ld/lutris-gamepad-ui"
 license=('GPL3')
-depends=('electron37' 'lutris' 'pulse-native-provider' 'bluez' 'xdg-desktop-portal')
+depends=('electron' 'lutris' 'pulse-native-provider' 'bluez' 'xdg-desktop-portal')
 makedepends=('npm' 'git')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-git")

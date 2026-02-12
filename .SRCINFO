@@ -1,13 +1,13 @@
 pkgbase = lutris-gamepad-ui-8bitdo-git
 	pkgdesc = A simple, TV-friendly, gamepad-navigable frontend for Lutris (with 8bitdo dpad patch)
 	pkgver = v0.1.29.r1.g73368cd
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/andrew-ld/lutris-gamepad-ui
 	arch = x86_64
 	license = GPL3
 	makedepends = npm
 	makedepends = git
-	depends = electron37
+	depends = electron
 	depends = lutris
 	depends = pulse-native-provider
 	depends = bluez
