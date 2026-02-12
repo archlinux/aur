@@ -23,6 +23,7 @@ depends=(
   libass.so
   libffms2.so
   libgl
+  libportal-gtk3
   libpulse
   uchardet
   wxwidgets-common

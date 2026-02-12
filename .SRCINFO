@@ -23,6 +23,7 @@ pkgbase = aegisub-git
 	depends = libass.so
 	depends = libffms2.so
 	depends = libgl
+	depends = libportal-gtk3
 	depends = libpulse
 	depends = uchardet
 	depends = wxwidgets-common
