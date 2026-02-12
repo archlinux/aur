@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 
 build() {
     cd "archforge-$pkgver"
-    cargo build --release --locked --all-features
+    cargo build --release --all-features
 }
 
 package() {
