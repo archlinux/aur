@@ -2,7 +2,7 @@
 
 pkgname=hyprland-nox
 pkgver=0.53.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An independent, highly customizable, dynamic tiling Wayland compositor that doesn't sacrifice on its looks. (w/o XWayland support)"
 arch=('x86_64')
 url='https://github.com/hyprwm/Hyprland'
@@ -53,9 +53,11 @@ conflicts=("${pkgname%-nox}")
 replaces=()
 backup=()
 source=("$pkgname::git+$url#tag=v$pkgver"
-        "${pkgname}_udis86::git+https://github.com/canihavesomecoffee/udis86.git")
+        "${pkgname}_udis86::git+https://github.com/canihavesomecoffee/udis86.git"
+        "116537b494b84ef3aea241db657a8b4bdaf3da9d.patch")
 sha256sums=('b1caafacddf9fa796cf54b33cb85f1d9cc36357dcc93b5cdf929851f1fe01a72'
-            'SKIP')
+            'SKIP'
+            'e3b4874c8c88f4bef7b1f3182a031f27be50019774400ac02e80384b28e2d480')
 
 prepare() {
   cd "$srcdir/$pkgname"
@@ -65,6 +67,8 @@ prepare() {
   git submodule deinit subprojects/hyprland-protocols
   git config submodule.subprojects/udis86.url "$srcdir/${pkgname}_udis86"
   git -c protocol.file.allow=always submodule update
+
+  git apply "$srcdir/116537b494b84ef3aea241db657a8b4bdaf3da9d.patch"
 }
 
 build() {
@@ -77,6 +81,4 @@ package() {
   cd "$srcdir/$pkgname"
   cmake --install build --prefix "$pkgdir/usr"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  rm -rf "$pkgdir/usr/include/glaze/"
-  rm -rf "$pkgdir/usr/share/glaze/"
 }
