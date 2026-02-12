@@ -1,0 +1,12 @@
+pkgbase = tclvfs
+	pkgdesc = Virtual filesystem extension for Tcl
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://core.tcl-lang.org/tclvfs/
+	arch = x86_64
+	license = BSD-3-Clause
+	depends = tcl
+	source = https://core.tcl-lang.org/tclvfs/tarball/tclvfs-20230905112324-f082c47f9b.tar.gz
+	sha256sums = 0b0ec1020e16a32ce54ec46de25c8a5bed3a0179037db13b8eaca735c36e8157
+
+pkgname = tclvfs
