@@ -7,8 +7,8 @@
 _pkgname='tooi'
 pkgname="$_pkgname-git"
 pkgdesc='Text-based user interface for Mastodon, Pleroma and friends (development version)'
-pkgver=0.21.0.r0.gb43e56f
-pkgrel=2
+pkgver=0.21.1.r0.gc4df62b
+pkgrel=1
 url='https://codeberg.org/ihabunek/tooi'
 arch=('any')
 license=('MIT')  # SPDX-License-Identifier: MIT
