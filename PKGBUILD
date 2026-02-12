@@ -1,10 +1,10 @@
-# Maintainer:
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Bruno Ancona <brunoanconasala@gmail.com>
 # Contributor: Famiu Haque <famiuhaque@gmail.com>
 
-pkgname=goneovim-bin
-_pkgname="${pkgname%-bin}"
+_pkgname=goneovim
+pkgname=${_pkgname}-bin
 pkgver=0.6.17
 pkgrel=1
 pkgdesc='Neovim GUI written in Golang, using a Golang qt backend'
@@ -40,8 +40,8 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 _archive="${_pkgname}-v$pkgver-linux-$CARCH"
 source=("$url/releases/download/v$pkgver/$_archive.tar.bz2"
-        goneovim.desktop
-        goneovim.ico)
+        "goneovim.desktop"
+        "goneovim.ico")
 sha256sums=('223e9d867022a5f94ca5e2a5f96cdefece459ac81fabb388365ce6816f4bd443'
             'bb7dd036f10fe1e9132d2bbbf346e99234425b012fadf177bb212c472ac5fca0'
             '0a36211b6ada93d811575b5ca9b33511e405f61cca791858ea2fe1eb5d29279e')
@@ -49,6 +49,7 @@ sha256sums=('223e9d867022a5f94ca5e2a5f96cdefece459ac81fabb388365ce6816f4bd443'
 package() {
 	install -Dm0644 -t "$pkgdir/usr/share/pixmaps/" goneovim.ico
 	install -Dm0644 -t "$pkgdir/usr/share/applications/" goneovim.desktop
+
 	cd "$_archive"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "$_pkgname"
 	install -Dm0644 -t "$pkgdir/usr/share/nvim/runtime/doc/" "runtime/doc/$_pkgname.txt"
