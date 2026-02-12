@@ -1,29 +1,38 @@
-#Maintainer: Drake Strickland <drake.o.strickland at gmail dot com>
+# Maintainer: Drake Strickland <drake.o.strickland at gmail dot com>
 
 pkgname=banjorecomp-bin
 pkgver=1.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A static recompilation of Banjo-Kazooie"
 arch=("x86_64" "aarch64")
 url="https://github.com/BanjoRecomp/BanjoRecomp"
 _reponame=BanjoRecomp
 license=('GPLv3')
-depends=()
+depends=(
+    "sdl2"
+    "freetype2"
+    "gtk3"
+    "vulkan-driver"
+    )
 
 source_x86_64=(BanjoRecompiled-v${pkgver}.zip::https://github.com/${_reponame}/${_reponame}/releases/download/v${pkgver}/BanjoRecompiled-v${pkgver}-Linux-X64.zip)
+sha256sums_x86_64=(e315303c34f4e5fa54fa4b507a63fb19766182a257b5b50302bb8d7a7b1847a6)
+
 source_aarch64=(BanjoRecompiled-v${pkgver}.zip::https://github.com/${_reponame}/${_reponame}/releases/download/v${pkgver}/BanjoRecompiled-v${pkgver}-Linux-ARM64.zip)
+sha256sums_aarch64=(81be04f4027df8618e5788849789664a29086c6dc3409ebabf115a791d003faf)
+
 source=(
     "https://raw.githubusercontent.com/${_reponame}/${_reponame}/v${pkgver}/icons/app.png"
     "https://raw.githubusercontent.com/${_reponame}/${_reponame}/v${pkgver}/COPYING"
     "BanjoRecomp-bin.desktop"
+    "banjorecompiled" # A wrapper script
     )
 
-sha256sums_x86_64=(e315303c34f4e5fa54fa4b507a63fb19766182a257b5b50302bb8d7a7b1847a6)
-sha256sums_aarch64=(81be04f4027df8618e5788849789664a29086c6dc3409ebabf115a791d003faf)
 sha256sums=(
-    SKIP
-    SKIP
-    SKIP
+    991e10bb4ad6ef405e3027f91fee901db2fbc3ac795b9958b925bbdd68c417f5
+    3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+    c2b97d9fc823a8d80e833d48964fabc0c2b5a267ca7a7c901451385527b1e553
+    ace4d1ff74277a25d23d1a2d6b357577c8d0e1deafd5c8594a8e31f306b34925
     )
 
 prepare() {
@@ -40,4 +49,7 @@ package() {
 	
 	# Install .desktop file
 	install -Dm644 BanjoRecomp-bin.desktop "$pkgdir/usr/share/applications/BanjoRecomp-bin.desktop"
+	
+	# Install wrapper script to allow running from terminal using 'banjorecompiled'
+	install -Dm755 banjorecompiled "$pkgdir/usr/bin/banjorecompiled"
 }

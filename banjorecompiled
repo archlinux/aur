@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# This is a wrapper script to launch BanjoRecompiled
+# from AUR package: banjorecomp-bin
+
+cd /opt/BanjoRecomp-bin || exit 1
+exec /opt/BanjoRecomp-bin/BanjoRecompiled "$@"
