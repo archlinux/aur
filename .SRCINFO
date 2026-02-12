@@ -10,6 +10,7 @@ pkgbase = fastflix-bin
 	depends = zlib
 	depends = ffmpeg
 	optdepends = nvenc: hardware accelerated encoding on NVIDIA cards
+	optdepends = hdr10plus-tool: HDR10+ in HEVC files
 	optdepends = x265: encoding to H265/HEVC
 	optdepends = x264: encoding to H264/AVC
 	optdepends = libwebp: encoding to WebP

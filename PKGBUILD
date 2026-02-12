@@ -16,6 +16,7 @@ conflicts=("${_pkgname}")
 depends=('glibc' 'zlib' 'ffmpeg')
 makedepends=('icoutils')
 optdepends=('nvenc: hardware accelerated encoding on NVIDIA cards'
+			'hdr10plus-tool: HDR10+ in HEVC files'
 			'x265: encoding to H265/HEVC'
 			'x264: encoding to H264/AVC'
 			'libwebp: encoding to WebP'
