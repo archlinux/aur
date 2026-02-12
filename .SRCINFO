@@ -1,0 +1,14 @@
+pkgbase = todlog
+	pkgdesc = A beautiful terminal-based task and log manager with markdown storage
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeberg.org/byt3sage/todlog
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = go
+	source = todlog-0.1.0.tar.gz::https://codeberg.org/byt3sage/todlog/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = todlog
