@@ -1,6 +1,6 @@
 pkgbase = timr-bin
 	pkgdesc = A TUI to organize your time: Pomodoro, Countdown, Timer
-	pkgver = 1.7.0
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://github.com/sectore/timr-tui
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = timr-bin
 	makedepends = help2man
 	provides = timr
 	conflicts = timr
-	source = LICENSE-1.7.0::https://raw.githubusercontent.com/sectore/timr-tui/v1.7.0/LICENSE
-	source = README-1.7.0::https://raw.githubusercontent.com/sectore/timr-tui/v1.7.0/README.md
-	source = CHANGELOG-1.7.0::https://raw.githubusercontent.com/sectore/timr-tui/v1.7.0/CHANGELOG.md
+	source = LICENSE-1.7.1::https://raw.githubusercontent.com/sectore/timr-tui/v1.7.1/LICENSE
+	source = README-1.7.1::https://raw.githubusercontent.com/sectore/timr-tui/v1.7.1/README.md
+	source = CHANGELOG-1.7.1::https://raw.githubusercontent.com/sectore/timr-tui/v1.7.1/CHANGELOG.md
 	sha256sums = 5e7fe81a6c6ac0a3050262e875a98def21bd3ef20eaad1e760f22f7e41af6fb8
 	sha256sums = a3976ebb21c17fe1da9d592923bd5d47c3c9ccf40bcab14323dc5c11076422f6
-	sha256sums = cb0ff1cefb747841b2f0c8ec9fedae0bce6fdff234d0f6a33140f96b078ae355
-	source_x86_64 = https://github.com/sectore/timr-tui/releases/download/v1.7.0/timr-tui-1.7.0-linux_x86_64.tar.gz
-	sha256sums_x86_64 = 18265eda8c25258551af23bfa5bae5ac61957af4bb4cb82c3e53ec7cb65fa9a2
+	sha256sums = 719a60b738b1ae50c82871c2812b1cab38e4f7a7e6c3e168a29625585d1ff576
+	source_x86_64 = https://github.com/sectore/timr-tui/releases/download/v1.7.1/timr-tui-1.7.1-linux_x86_64.tar.gz
+	sha256sums_x86_64 = 037c886294d6b8704cb04f8422c340feb8bb44a0cf25af83b6e77027b9403d43
 
 pkgname = timr-bin
