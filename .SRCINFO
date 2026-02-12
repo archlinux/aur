@@ -1,0 +1,15 @@
+pkgbase = secrets-cli-bin
+	pkgdesc = CLI tool to manage project secrets locally and securely using GPG + pass
+	pkgver = 0.0.15
+	pkgrel = 1
+	url = https://github.com/NuevaNext/secrets-cli
+	arch = x86_64
+	license = MIT
+	depends = gnupg
+	depends = pass
+	provides = secrets-cli
+	conflicts = secrets-cli
+	source_x86_64 = secrets-cli-0.0.15::https://github.com/NuevaNext/secrets-cli/releases/download/v0.0.15/secrets-cli-linux-amd64
+	sha256sums_x86_64 = 3882532fcf260108dfbcda9b2a389f7a1a14b23ed12b2e95bbea57c039d9ff8c
+
+pkgname = secrets-cli-bin
