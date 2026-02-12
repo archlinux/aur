@@ -1,6 +1,6 @@
 pkgbase = marimo
 	pkgdesc = A reactive Python notebook that's reproducible, git-friendly, and deployable as scripts or apps
-	pkgver = 0.19.8
+	pkgver = 0.19.10
 	pkgrel = 1
 	url = https://github.com/marimo-team/marimo
 	arch = any
@@ -8,24 +8,23 @@ pkgbase = marimo
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = python-uv-build
-	depends = python
-	depends = python-click>=8.0
-	depends = python-jedi>=0.18.0
-	depends = python-markdown>=3.6
-	depends = python-pymdown-extensions>=10.15
-	depends = python-pygments>=2.19
-	depends = python-tomlkit>=0.12.0
-	depends = python-yaml>=6.0.1
-	depends = uvicorn>=0.22.0
-	depends = python-starlette>=0.37.2
-	depends = python-websockets>=14.2.0
-	depends = python-docutils>=0.16.0
-	depends = python-psutil>=5.0
-	depends = python-itsdangerous>=2.0.0
-	depends = python-narwhals>=2.0.0
+	depends = python-click
+	depends = python-jedi
+	depends = python-markdown
+	depends = python-pymdown-extensions
+	depends = python-pygments
+	depends = python-tomlkit
+	depends = python-yaml
+	depends = uvicorn
+	depends = python-starlette
+	depends = python-websockets
+	depends = python-docutils
+	depends = python-psutil
+	depends = python-itsdangerous
+	depends = python-narwhals
 	depends = python-packaging
-	depends = python-msgspec>=0.20.0
+	depends = python-msgspec
+	depends = python-openai
 	optdepends = python-lsp-server: LSP server
 	optdepends = python-lsp-ruff: LSP server
 	optdepends = python-pyzmq: IPC communication for sandbox kernels
@@ -38,7 +37,7 @@ pkgbase = marimo
 	optdepends = jupyter-nbformat: Export as IPYNB
 	optdepends = ruff: Formatting
 	options = !debug
-	source = https://files.pythonhosted.org/packages/source/m/marimo/marimo-0.19.8.tar.gz
-	sha512sums = 2b5702e2708bfe37a72ca4b7c49fde256451a6a08cfbdbaa511d659ad1873814c8390c1139b656f1cd836093410a7489c9bbc492252f068c1c3d3eb9e548a45f
+	source = https://files.pythonhosted.org/packages/source/m/marimo/marimo-0.19.10.tar.gz
+	sha256sums = a4fad325b8c5e7aef77c21d62764c20899c352dfa1afbc44c30760ae081d2b27
 
 pkgname = marimo
