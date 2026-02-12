@@ -1,6 +1,6 @@
 pkgbase = mailspring-bin
 	pkgdesc = A beautiful, fast and fully open source mail client.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.17.3
+	pkgver = 1.17.4
 	pkgrel = 1
 	url = https://getmailspring.com/
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = mailspring-bin
 	depends = krb5
 	depends = db5.3
 	depends = tidy
-	provides = mailspring=1.17.3
+	provides = mailspring=1.17.4
 	conflicts = mailspring
-	source = mailspring-1.17.3.rpm::https://github.com/Foundry376/Mailspring/releases/download/1.17.3/mailspring-1.17.3-0.1.x86_64.rpm
+	source = mailspring-1.17.4.rpm::https://github.com/Foundry376/Mailspring/releases/download/1.17.4/mailspring-1.17.4-0.1.x86_64.rpm
 	source = mailspring.sh
-	sha256sums = ec2cc076d0c9fce302b680d0644fe2fa6ac8b11ce5660c517117191c29fa898e
+	sha256sums = 756162bcfbea441b6c5843933cfa562ef0f577d1a7993fa5093c166dd35ea431
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = mailspring-bin
