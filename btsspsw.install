@@ -1,0 +1,34 @@
+## arg 1:  the new package version
+#pre_install() {
+#    do something here
+#}
+
+## arg 1:  the new package version
+post_install() {
+    if systemctl is-active --quiet btsspsw
+        then systemctl restart btsspsw
+        else systemctl enable --now btsspsw
+    fi
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+#pre_upgrade() {
+#     do something here
+#}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+    post_install
+}
+
+## arg 1:  the old package version
+#pre_remove() {
+#     do something here
+#}
+
+## arg 1:  the old package version
+post_remove() {
+    systemctl disable --now btsspsw
+}
