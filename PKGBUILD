@@ -11,58 +11,58 @@ depends=('gcc-libs' 'glibc' 'openssl' 'sqlite')
 provides=("${_base_pkgname}=${pkgver}")
 conflicts=("${_base_pkgname}=${pkgver}")
 backup=(
-	"etc/${_base_pkgname}/conf.toml"
-	"usr/lib/systemd/system/${_base_pkgname}.service"
-	"usr/lib/systemd/system/${_base_pkgname}-vapid.service"
+    "etc/${_base_pkgname}/conf.toml"
+    "usr/lib/systemd/system/${_base_pkgname}.service"
+    "usr/lib/systemd/system/${_base_pkgname}-vapid.service"
 )
 source=(
-	"conf.toml"
-	"${_base_pkgname}.sysusers"
-	"${_base_pkgname}.tmpfiles"
-	# NOTE: service files improved since latest release tag.
-	# TODO: move these to release tag after next release
+    "conf.toml"
+    "${_base_pkgname}.sysusers"
+    "${_base_pkgname}.tmpfiles"
+    # NOTE: service files improved since latest release tag.
+    # TODO: move these to release tag after next release
     "https://raw.githubusercontent.com/mollyim/mollysocket/6790b49c107218cbcc3c040ff431f97577065949/mollysocket.service"
-	"https://raw.githubusercontent.com/mollyim/mollysocket/aaedd5b8afc2c08233d7a768694bd72eba4480b4/mollysocket-vapid.service")
+    "https://raw.githubusercontent.com/mollyim/mollysocket/aaedd5b8afc2c08233d7a768694bd72eba4480b4/mollysocket-vapid.service")
 source_x86_64=(
-	"${pkgname}-${pkgver}::https://github.com/mollyim/mollysocket/releases/download/${pkgver}/${_base_pkgname}-linux_amd64")
+    "${pkgname}-${pkgver}::https://github.com/mollyim/mollysocket/releases/download/${pkgver}/${_base_pkgname}-linux_amd64")
 source_armv7h=(
-	"${pkgname}-${pkgver}::https://github.com/mollyim/mollysocket/releases/download/${pkgver}/${_base_pkgname}-linux_arm_v7")
+    "${pkgname}-${pkgver}::https://github.com/mollyim/mollysocket/releases/download/${pkgver}/${_base_pkgname}-linux_arm_v7")
 source_arm64=(
-	"${pkgname}-${pkgver}::https://github.com/mollyim/mollysocket/releases/download/${pkgver}/${_base_pkgname}-linux_arm64 ")
+    "${pkgname}-${pkgver}::https://github.com/mollyim/mollysocket/releases/download/${pkgver}/${_base_pkgname}-linux_arm64 ")
 noextract=()
 sha256sums=(
-	'75dc63e3072d89e1d3ba41926a7d0a686dcf81ac80c76eeb5451239ed058fb38'
-	'7d1d8a3102c6264c136cb22dbc5cafaaf5fc8db3757a5b3edef57c5a1b96149a'
-	'3e4d6157af3fa36253cd4a7df3614f8b785cc87a93416b2c1172598d30af2c1d'
-	'9e3bbafb068e0c16f8f6f3c6542e54b6180d6d6ff4937568a7b9eb7c9fefb33a'
-	'4405930c9827de0806bf0c652c3413bc6457de50cd7b6870c1f44b587d5480ae')
+    '75dc63e3072d89e1d3ba41926a7d0a686dcf81ac80c76eeb5451239ed058fb38'
+    '7d1d8a3102c6264c136cb22dbc5cafaaf5fc8db3757a5b3edef57c5a1b96149a'
+    '3e4d6157af3fa36253cd4a7df3614f8b785cc87a93416b2c1172598d30af2c1d'
+    '9e3bbafb068e0c16f8f6f3c6542e54b6180d6d6ff4937568a7b9eb7c9fefb33a'
+    '4405930c9827de0806bf0c652c3413bc6457de50cd7b6870c1f44b587d5480ae')
 sha256sums_x86_64=(
-	'43549a4e3303b60a6cff1b8a9204fe6ffe195b66c70e5f8e0a08ec0f71011d0a')
+    '43549a4e3303b60a6cff1b8a9204fe6ffe195b66c70e5f8e0a08ec0f71011d0a')
 sha256sums_armv7h=(
-	'e2b51d5c615352ccc63dff093639a3a4b3cbca9d46e31e5e07a2c8ea543e4dad')
+    'e2b51d5c615352ccc63dff093639a3a4b3cbca9d46e31e5e07a2c8ea543e4dad')
 sha256sums_arm64=(
-	'e8fa4b55993450ea292e12db8338cb54959818e65a80fbf43f374a8b0af893d0')
+    'e8fa4b55993450ea292e12db8338cb54959818e65a80fbf43f374a8b0af893d0')
 validpgpkeys=()
 
 package() {
-	# Systemd files
-	install -dm755 \
-		"${pkgdir}/usr/lib/systemd/system" \
-		"${pkgdir}/usr/lib/sysusers.d" \
-		"${pkgdir}/usr/lib/tmpfiles.d"
-	install -Dm644 "${srcdir}/${_base_pkgname}.sysusers" \
-		"${pkgdir}/usr/lib/sysusers.d/${_base_pkgname}.conf"
-	install -Dm644 "${srcdir}/${_base_pkgname}.tmpfiles" \
-		"${pkgdir}/usr/lib/tmpfiles.d/${_base_pkgname}.conf"
-	install -Dm644 mollysocket.service \
-		"$pkgdir/usr/lib/systemd/system/${_base_pkgname}.service"
-	install -Dm644 mollysocket-vapid.service \
-		"$pkgdir/usr/lib/systemd/system/${_base_pkgname}-vapid.service"
+    # Systemd files
+    install -dm755 \
+        "${pkgdir}/usr/lib/systemd/system" \
+        "${pkgdir}/usr/lib/sysusers.d" \
+        "${pkgdir}/usr/lib/tmpfiles.d"
+    install -Dm644 "${srcdir}/${_base_pkgname}.sysusers" \
+        "${pkgdir}/usr/lib/sysusers.d/${_base_pkgname}.conf"
+    install -Dm644 "${srcdir}/${_base_pkgname}.tmpfiles" \
+        "${pkgdir}/usr/lib/tmpfiles.d/${_base_pkgname}.conf"
+    install -Dm644 mollysocket.service \
+        "$pkgdir/usr/lib/systemd/system/${_base_pkgname}.service"
+    install -Dm644 mollysocket-vapid.service \
+        "$pkgdir/usr/lib/systemd/system/${_base_pkgname}-vapid.service"
 
 
-	# Mollysocket config and bin
-	install -Dm644 conf.toml "$pkgdir/etc/${_base_pkgname}/conf.toml"
-	install -Dm755 "${pkgname}-${pkgver}" \
-		"$pkgdir/usr/bin/ms"
+    # Mollysocket config and bin
+    install -Dm644 conf.toml "$pkgdir/etc/${_base_pkgname}/conf.toml"
+    install -Dm755 "${pkgname}-${pkgver}" \
+        "$pkgdir/usr/bin/ms"
 }
 
