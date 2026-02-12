@@ -2,16 +2,16 @@
 # Contributor: Chinmay Dalal <exu9qiu7p AT relay DOT firefox DOT com>
 
 pkgname=zuban
-pkgver=0.4.2
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A Mypy-compatible Python Language Server built in Rust"
 arch=('x86_64')
 url="https://zubanls.com"
 license=('AGPL-3.0-only')
-depends=('gcc-libs' 'glibc')
+depends=('glibc' 'libgcc')
 makedepends=('python-build' 'python-installer' 'python-maturin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zubanls/zuban/archive/v${pkgver}.tar.gz")
-sha256sums=('5dcbc18cc4c211a035987a5668cf176232392e83df610210e576dcd38e65ed04')
+sha256sums=('87fae0bf49f233375fe0be19a85677e7f770da122369d6d7a13f1d3a4a6e3285')
 
 build() {
     cd "${pkgname}-${pkgver}/deploy/pypi/zuban"
