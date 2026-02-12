@@ -3,7 +3,7 @@
 _pkgbase=librempeg
 pkgname=librempeg-git
 pkgver=r124983.f986adf
-pkgrel=5
+pkgrel=6
 pkgdesc='A complete, cross-platform solution to record, convert, filter and stream audio and video. '
 arch=('x86_64')
 url='https://github.com/librempeg/librempeg'
@@ -92,6 +92,7 @@ makedepends=(
   nasm
   opencl-headers
   vulkan-headers
+  perl # for pod2man
 )
 optdepends=(
   'avisynthplus: AviSynthPlus support'
