@@ -1,7 +1,7 @@
 # Maintainer: Mark Wells <contact@markwells.dev>
 pkgname=anneal
 _reponame=Anneal
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Proactive AUR rebuild management for Arch Linux"
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
     'rebuild-detector: detect packages needing rebuild via checkrebuild'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('7282dacd0fbe1d665324e4221cc9daa256b3718e2a2519411fbe84e56111de1d')
+sha256sums=('cd6422843b10559721fb7bf8933797ef8879b2637cfad642353be39397ce5121')
 
 prepare() {
     cd "$_reponame-$pkgver"
