@@ -1,8 +1,8 @@
-# Maintainer: gonsolo
+# Maintainer: Andreas Wendleder <gonsolo@gmail.com>
 pkgname=gonzales-git
 pkgver=0.2.0.r1100.g5e4d3c2
 pkgrel=1
-pkgdesc="High-performance Swift path tracer (Release Build)"
+pkgdesc="High-performance Swift path tracer"
 arch=('x86_64')
 url="https://github.com/gonsolo/gonzales"
 license=('GPL3')
@@ -15,15 +15,12 @@ md5sums=('SKIP')
 
 build() {
   cd "$srcdir/gonzales"
-  # Force release mode for the actual binary
   echo "--- Building Release Binary ---"
   make release
 }
 
 check() {
   cd "$srcdir/gonzales"
-  # IMPORTANT: We pass 'release' to the test target to avoid a debug rebuild
-  # and ensure the path tracer runs at full optimization.
   echo "--- Running Optimized Tests ---"
   make test_release || make test # Adjust based on your Makefile targets
 }
