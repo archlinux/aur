@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ytmdesktop
-pkgver=2.0.10
+pkgver=2.0.11
 pkgrel=1
-_nodeversion=22
+_nodeversion=24
 pkgdesc="A desktop app for YouTube Music"
 arch=('x86_64')
 url="https://ytmdesktop.github.io"
@@ -28,7 +28,7 @@ optdepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ytmdesktop/ytmdesktop/archive/refs/tags/v$pkgver.tar.gz"
         'youtube-music-desktop-app.desktop')
-sha256sums=('5ebf7577b5ff64c108a6afc70b32f4cf63d8d7836a4c8e83f150ff02302fdec0'
+sha256sums=('d05d6e4259e615d6b5f0cd7e13a0e4f35e02dee657cb31a160b2535224b755ec'
             '90db79917962cd630c223e54bddd6e4150ec2d399a6cf5e75ffd9f83e926703c')
 
 _ensure_local_nvm() {
