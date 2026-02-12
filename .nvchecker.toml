@@ -1,0 +1,5 @@
+[ahab-bin]
+source = "github"
+github = "lance0/ahab"
+use_latest_release = true
+prefix = "v"

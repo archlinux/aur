@@ -1,0 +1,20 @@
+pkgbase = ahab-bin
+	pkgdesc = A Docker cleanup TUI - hunt down and harpoon unused Docker resources
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = https://github.com/lance0/ahab
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = ahab
+	conflicts = ahab
+	source = README-0.3.5.md::https://raw.githubusercontent.com/lance0/ahab/v0.3.5/README.md
+	source = LICENSE-0.3.5::https://raw.githubusercontent.com/lance0/ahab/v0.3.5/LICENSE
+	sha256sums = 5cb4bd2742699125ef61af03304141eabf8a0f7b13fecbdab0baac9cb3b67cc7
+	sha256sums = d562492c8932ae3dda2c01d30d8b1c8db91f71217b719e25d4e45de73dce1b26
+	source_x86_64 = ahab-x86_64-0.3.5.tgz::https://github.com/lance0/ahab/releases/download/v0.3.5/ahab-linux-x86_64.tar.gz
+	sha256sums_x86_64 = a79c6c40deb397c9af10c904b9f631d62f9bbd1024efeffe15509ee6d87dc70b
+	source_aarch64 = ahab-aarch64-0.3.5.tgz::https://github.com/lance0/ahab/releases/download/v0.3.5/ahab-linux-x86_64.tar.gz
+	sha256sums_aarch64 = a79c6c40deb397c9af10c904b9f631d62f9bbd1024efeffe15509ee6d87dc70b
+
+pkgname = ahab-bin
