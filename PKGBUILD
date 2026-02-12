@@ -5,7 +5,7 @@ _pkgname=gohome
 pkgname=${_pkgname}-bin
 pkgdesc="A fast, configurable Git standup & activity reporting CLI written in Go"
 
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -22,8 +22,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('a6af14936f5cb2753a6ebe824840fa25360d3936d6b7831eff0b56976c61f4c5')
-sha256sums_aarch64=('4bb29a1615ce9bb02620ff31b0d903d29d11eac6d42a0f155bedb81cc79b14a9')
+sha256sums_x86_64=('fd8313f8bc72ad2413db15f499a40d06a19b988eb40554a6e2a6635516a5357e')
+sha256sums_aarch64=('be423f0ff43d6ac534ebb858953c89d170610bba73dafcf5241c848dde7e83bc')
 
 
 package() {
