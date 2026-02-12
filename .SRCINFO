@@ -11,7 +11,7 @@ pkgbase = verifpal
 	source = verifpal-0.31.2-manual.pdf::https://static.verifpal.com/manual.pdf
 	source = verifpal-0.31.2-manual-license.txt::https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.txt
 	sha256sums = 397c228dd932017697b20385c8b7ead4191ed7ecd7fb3d89521c04e0c0eb1c4d
-	sha256sums = 894b7e6b2368962e6788eeaa6feaa8a8af37f29f598a97a77b31b46edcb7b6c2
+	sha256sums = 5388cd680859cdb666eeb14c9f5e93d8f634070ece0b54806df89b63bfbd4e2b
 	sha256sums = 38762e3777f4ec00a6f769062a7c3f704fb78ce08303ecff88558da4c49cf9ea
 
 pkgname = verifpal
