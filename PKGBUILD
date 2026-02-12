@@ -1,16 +1,16 @@
 # Maintainer: Adam Honse <calcprogrammer10@gmail.com>
-pkgname=openrgb-plugin-scheduler-git
-pkgver=0.9.10.g358919d
+pkgname=openrgb-plugin-scheduler-next-git
+pkgver=0.9.26.g22b8551
 pkgrel=1
-pkgdesc="Scheduler plugin for OpenRGB"
+pkgdesc="Scheduler plugin for OpenRGB (next branch)"
 arch=('any')
 url="https://gitlab.com/OpenRGBDevelopers/OpenRGBSchedulerPlugin"
 license=('GPL-2.0-only')
-depends=('qt5-tools' 'openrgb')
+depends=('qt6-tools' 'openrgb')
 makedepends=('git')
 provides=('openrgb-plugin-scheduler')
 conflicts=('openrgb-plugin-scheduler')
-source=("git+https://gitlab.com/OpenRGBDevelopers/OpenRGBSchedulerPlugin.git")
+source=("git+https://gitlab.com/OpenRGBDevelopers/OpenRGBSchedulerPlugin.git#branch=next")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -21,7 +21,7 @@ pkgver() {
 build() {
     cd "$srcdir/OpenRGBSchedulerPlugin"
     git submodule update --init --recursive
-    qmake OpenRGBSchedulerPlugin.pro PREFIX=/usr/
+    qmake6 OpenRGBSchedulerPlugin.pro PREFIX=/usr/
     make
 }
 
