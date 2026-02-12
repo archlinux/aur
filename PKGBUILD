@@ -1,10 +1,10 @@
 pkgname=cmdcreate-git
 pkgver=r523.8f24cc4
 pkgrel=1
-pkgdesc="Create custom shell commands for your scripts"
+pkgdesc="Allows you to create custom commands for your custom scripts"
 arch=('any')
 url="https://github.com/owen-debiasio/cmdcreate"
-license=('GPL-2.0-only')
+license=('MIT')
 
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
