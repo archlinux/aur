@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 
 pkgname=grab-bin
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Asynchronous file downloader."
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ source_x86_64=("grab-x86_64::$url/releases/download/v$pkgver/grab-linux-x86_64")
 source_aarch64=("grab-aarch64::$url/releases/download/v$pkgver/grab-linux-aarch64")
 
 sha256sums=('184086b302ece79e686ac701ca404fe7a49499626c82f684dce1b820af59710c')
-sha256sums_x86_64=('e111bc2a0d8eddb63aa6762470b7719719e2283e4dd051423d186a71e1bb152a')
-sha256sums_aarch64=('2d3a4c04f4a92d72e65ec6efc8c5226d3178e35703c67f0f2c87ccffc827ad0f')
+sha256sums_x86_64=('0996cbc2fe6772a99718bf3c7bf564bb48165971cf4c4820ae96dd68156d1c36')
+sha256sums_aarch64=('8e395d13b31bfafee0b11009d49361851836b520ad1878bc0c53551d520cc915')
 
 package() {
   if [ "$CARCH" == "x86_64" ]; then
