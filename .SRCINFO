@@ -1,0 +1,19 @@
+pkgbase = ghsc-git
+	pkgdesc = Ultra-short shortcuts for GitHub CLI workflows (latest git)
+	pkgver = r1.0000000
+	pkgrel = 1
+	url = https://github.com/hassanecoder/ghsc
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = git
+	depends = github-cli
+	provides = ghsc
+	conflicts = ghsc
+	conflicts = ghsc-bin
+	options = !debug
+	source = git+https://github.com/hassanecoder/ghsc.git
+	sha256sums = SKIP
+
+pkgname = ghsc-git
