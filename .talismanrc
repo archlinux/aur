@@ -1,6 +1,6 @@
 fileignoreconfig:
 - filename: .SRCINFO
-  checksum: 9cf1330da932bc809a6ac191e377fd4bf245b1c5ef14a593a5fba846f9bd09fa
+  checksum: 1861fa4548a1ccae3d652f80d542b3cd8ec02cf587f72c816165d12c56ae0044
 - filename: PKGBUILD
-  checksum: fde3d09bbc99ff88909723a7fa9416dd965f622418df1ac3c84007b41e2abc71
+  checksum: d36cc0c3ed059b8c38bc275f7214031b3776b4e1a72dd8a1220d9297165b7728
 version: "1.0"

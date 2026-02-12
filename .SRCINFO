@@ -1,6 +1,6 @@
 pkgbase = ghsc-bin
 	pkgdesc = Ultra-short shortcuts for GitHub CLI workflows (prebuilt binaries)
-	pkgver = 0.0.16
+	pkgver = 0.0.17
 	pkgrel = 1
 	url = https://github.com/hassanecoder/ghsc
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = ghsc-bin
 	conflicts = ghsc
 	conflicts = ghsc-git
 	options = !debug
-	source_x86_64 = ghsc-0.0.16-linux-amd64.tar.gz::https://github.com/hassanecoder/ghsc/releases/download/v0.0.16/ghsc-v0.0.16-linux-amd64.tar.gz
-	sha256sums_x86_64 = fc39c8ef489895a8fb2cc7f46293915b9f41ba9618f109d9604826297ae4ff8f
-	source_aarch64 = ghsc-0.0.16-linux-arm64.tar.gz::https://github.com/hassanecoder/ghsc/releases/download/v0.0.16/ghsc-v0.0.16-linux-arm64.tar.gz
-	sha256sums_aarch64 = 25846245eacd600f8ed9f4c680feab6553f8a4509ee583435fc26f509a9f22cf
+	source_x86_64 = ghsc-0.0.17-linux-amd64.tar.gz::https://github.com/hassanecoder/ghsc/releases/download/v0.0.17/ghsc-v0.0.17-linux-amd64.tar.gz
+	sha256sums_x86_64 = f3e8e72c9424c6ddbbf5b62a24144868c7bfbdf644e23ced02122f76136a5ee2
+	source_aarch64 = ghsc-0.0.17-linux-arm64.tar.gz::https://github.com/hassanecoder/ghsc/releases/download/v0.0.17/ghsc-v0.0.17-linux-arm64.tar.gz
+	sha256sums_aarch64 = 9453f61b44b987d43128bbfa0b6f7f07431d1b7b5b00710ac41a6c1099032e5a
 
 pkgname = ghsc-bin
