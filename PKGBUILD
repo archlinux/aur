@@ -1,6 +1,6 @@
 # Maintainer: xander1421 <alexpruteanu@hotmail.com>
 pkgname=spotify-tray-wayland-bin
-pkgver=1.1.0
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Native Wayland/Hyprland system tray for Spotify with scroll and middle-click controls"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ options=('!debug')
 install="${pkgname}.install"
 source_x86_64=("${pkgname}-${pkgver}-x86_64::https://github.com/xander1421/spotify-tray-wayland/releases/download/v${pkgver}/spotify-tray-wayland-linux-amd64")
 source_aarch64=("${pkgname}-${pkgver}-aarch64::https://github.com/xander1421/spotify-tray-wayland/releases/download/v${pkgver}/spotify-tray-wayland-linux-arm64")
-sha256sums_x86_64=('1675246d26ac0519942234a44c39cde40b17c94c19038165249c231c09dd5cff')
-sha256sums_aarch64=('cf243e03f51827ee5ff12f2b9ee5a0aa9f77cb102b8b87c2944526798326deba')
+sha256sums_x86_64=('aa26684e1a01b4f925ac5c3d4ba2142fa29571d90d32c70a043b82ea92e700d9')
+sha256sums_aarch64=('4b56470ed1c30a3c9939e09e4ffecac55f31c828f792f19645a4da457196b966')
 
 package() {
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/spotify-tray-wayland"
