@@ -6,7 +6,7 @@ pkgname=(
     'python-slint'
     'slint-cpp'
     'slint-tools')
-pkgver=1.15.0
+pkgver=1.15.1
 pkgrel=1
 pkgdesc='Declarative GUI toolkit to build native user interfaces'
 license=('GPL-3.0-or-later OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0')
@@ -32,7 +32,7 @@ makedepends=(
     'wayland')
 source=("https://github.com/slint-ui/slint/archive/v${pkgver}/slint-${pkgver}.tar.gz"
         '010-slint-remove-jemalloc.patch')
-sha256sums=('0e171da6c39e45b7243d15a373128a3df53a3868bc1808e58fd9f4085bbf3913'
+sha256sums=('64e4e2fe7e5b475595b5f6591b853578706e434e9cd94200e61bba131ef9bc31'
             'fb4c238d6186c434b72e1aa6e24453bee57754466f3091e51095ea92dbc24d84')
 
 prepare () {
