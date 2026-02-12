@@ -2,13 +2,13 @@
 
 pkgname=danxi-git
 _pkgname=${pkgname%-git}
-pkgver=1.4.9.r23.gde18cdf
-pkgrel=2
+pkgver=1.5.0.r0.gf5c65ae
+pkgrel=1
 pkgdesc="Maybe the best all-rounded service app for Fudan University students | 可能是复旦学生最好的第三方校园服务 APP"
 url="https://github.com/DanXi-Dev/DanXi"
 license=('GPL-3.0-or-later')
 arch=('x86_64')
-depends=('gtk3' 'libsecret' 'gnome-keyring')
+depends=('gtk3' 'libsecret' 'gnome-keyring' 'wpewebkit')
 makedepends=('git' 'clang' 'cmake' 'ninja' 'fvm' 'imagemagick' 'patchelf')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
