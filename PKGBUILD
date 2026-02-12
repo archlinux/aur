@@ -1,5 +1,5 @@
 pkgname=goonget
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="CLI tool to fetch images/gifs/videos from Gelbooru and display them directly in terminal"
 arch=('any')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('python' 'python-requests' 'chafa')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a40b35bed01ffc891183ec642f6159401dd71d08fac2a76344c30b405672fd62')
+sha256sums=('fb7422c9b0d33a7cde78fd7ccacdfc3e4667161627db36b8f2c7042100b839db')
 
 build() {
     cd "$srcdir/GoonGet-$pkgver"
