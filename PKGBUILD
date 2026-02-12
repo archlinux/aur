@@ -12,6 +12,7 @@ url="https://www.eguidedog.net/ekho.php"
 license=('GPL-2.0-or-later')
 depends=('espeak-ng' 'libsndfile' 'libpulse' 'libsonic' 'mpg123')
 makedepends=('git' 'autoconf' 'make' 'utf8cpp')
+optdepends=('ekho-data-tibetan: Tibetan voice data for Ekho')
 source=("git+https://github.com/hgneng/ekho.git#tag=v${pkgver}")
 sha512sums=('26749e4eeeae0f40021bf1151f9c02f3c4133a81d24667cc4d85c8c4a53f4dbe5e319aec4cf7c184e05d07da366b208dc6394ea403b6b5c9ef5cbfcd0b163a4a')
 

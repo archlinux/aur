@@ -15,6 +15,7 @@ pkgbase = ekho
 	depends = libpulse
 	depends = libsonic
 	depends = mpg123
+	optdepends = ekho-data-tibetan: Tibetan voice data for Ekho
 	source = git+https://github.com/hgneng/ekho.git#tag=v9.0
 	sha512sums = 26749e4eeeae0f40021bf1151f9c02f3c4133a81d24667cc4d85c8c4a53f4dbe5e319aec4cf7c184e05d07da366b208dc6394ea403b6b5c9ef5cbfcd0b163a4a
 
