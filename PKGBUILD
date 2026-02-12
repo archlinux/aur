@@ -1,7 +1,7 @@
 # Maintainer: Scqxd <dimakuzmin245@gmail.com>
 
 pkgname=archforge-git
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="AI-powered TUI for PKGBUILD generation and AUR management"
 arch=('x86_64' 'aarch64')
