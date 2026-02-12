@@ -1,4 +1,4 @@
-# Maintainer: Ari43 <arirera43 [at] gmail [dot] co>
+# Maintainer: Ari43 <arirera43 [at] gmail [dot] com>
 
 pkgname=alvr-bin
 _pkgname=${pkgname%-bin}
