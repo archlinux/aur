@@ -6,7 +6,7 @@ _appname=${_pkgname%%-tui}
 pkgname=${_appname}-bin
 pkgdesc="A next-generation Git client that runs in your terminal. Built with Bun, OpenTUI, and React."
 
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -28,10 +28,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[1]}.tar.gz")
-sha256sums=('b23b36b0b9406fb4dc8fe11777d2ef011ba0a8d734980f2cfb6be2e496089bf7'
+sha256sums=('65f8ddfcff0065af378e3dbf1087377112160328004967c651ccd0ae363c13ec'
             '56e244cc2182806d882f77fe41d36159d3d676fe120edf561e1b6ec6073d6bbe')
-sha256sums_x86_64=('11add8a92c613b6fd04444c5c79359d5d62a315911fa622201d7c1451f3bf99d')
-sha256sums_aarch64=('c3a10c833e548ef9b8ce06d3879ac52a1ee31a7638421de4ec6bef9a2745e4ff')
+sha256sums_x86_64=('2dae4ade1eabd60ba373658db69d887a6cfc6af2869fb263a3681f7f9e238baa')
+sha256sums_aarch64=('1a518a71ce6a03006f1dc34b8ad3da67b2649de3b9be8b6610887925e449f19e')
 
 
 package() {
