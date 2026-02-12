@@ -5,7 +5,7 @@
 _pkgname=RcppParallel
 pkgname=r-${_pkgname,,}
 pkgdesc="Parallel Programming Tools for Rcpp"
-pkgver=5.1.9
+pkgver=5.1.11
 pkgrel=1
 url="https://cran.r-project.org/package=${_pkgname}"
 license=("GPL3")
@@ -24,10 +24,13 @@ optdepends=(
 makedepends=()
 
 source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${pkgver}.tar.gz")
-b2sums=("bb926b01de896d8f78511444a57767aeef3ecd29bc1c8a59f4adfaf26e1e6a023389bd1bccded23d95df2962a6b48527dc119b35bd91bd3395a464a97873f506")
+sha256sums=("04b6d979e38d120049cb1f788873972ac3e65033d4c6878de4a3ee11e3484536")
 
 build() {
-    R CMD INSTALL ${_pkgname}_${pkgver}.tar.gz -l "${srcdir}"
+    R CMD INSTALL ${_pkgname}_${pkgver}.tar.gz \
+    --library="${srcdir}" \
+    --no-byte-compile \
+    --no-test-load
 }
 
 package() {
