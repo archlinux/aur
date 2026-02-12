@@ -20,12 +20,12 @@ source=("https://github.com/Scqxd/archforge/archive/refs/tags/v${pkgver}.tar.gz"
 sha256sums=('SKIP')
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "archforge-$pkgver"
     cargo build --release --locked --all-features
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "archforge-$pkgver"
     install -Dm755 "target/release/archforge" "$pkgdir/usr/bin/archforge"
     install -Dm644 "archforge.1" "$pkgdir/usr/share/man/man1/archforge.1"
     install -Dm644 "completions/archforge.bash" "$pkgdir/usr/share/bash-completion/completions/archforge"
