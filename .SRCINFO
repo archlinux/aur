@@ -1,7 +1,7 @@
 pkgbase = tooi-git
 	pkgdesc = Text-based user interface for Mastodon, Pleroma and friends (development version)
 	pkgver = 0.21.0.r0.gb43e56f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/ihabunek/tooi
 	arch = any
 	license = MIT
