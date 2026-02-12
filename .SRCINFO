@@ -1,12 +1,12 @@
 pkgbase = libj2
 	pkgdesc = Double-max precision integers
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://codeberg.org/maandree/libj2
 	arch = i686
 	arch = x86_64
 	license = custom:ISC
-	source = libj2-1.1.tar.gz::https://codeberg.org/maandree/libj2/archive/1.1.tar.gz
-	sha256sums = 39e3b9776a324cc4b03704024e52ffa4797373405be5857e1eb1136c997be5fb
+	source = libj2-1.2.tar.gz::https://codeberg.org/maandree/libj2/archive/1.2.tar.gz
+	sha256sums = 2a069f2436d23d787284da509e67f8d34c9370bd9b7697e417997645b190394e
 
 pkgname = libj2
