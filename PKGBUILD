@@ -3,8 +3,8 @@
 # Release notes https://rocm.docs.amd.com/en/7.10.0-preview/about/release-notes.html
 pkgname=rocm-gfx120x-bin
 pkgdesc="ROCm Core SDK and TheRock Build System - RDNA4"
-pkgver=7.10.0pre
-pkgrel=2
+pkgver=7.11.0pre
+pkgrel=1
 epoch=0
 arch=('x86_64')
 url='http://www.amd.com'
@@ -22,27 +22,26 @@ optdepends=('clinfo')
 options=('!strip')
 
 source=(
-"https://repo.amd.com/rocm/tarball/therock-dist-linux-gfx120X-all-7.10.0.tar.gz"
+"https://repo.amd.com/rocm/tarball/therock-dist-linux-gfx120X-all-7.11.0.tar.gz"
 )
 
 sha256sums=(
-"2c0e20e1d50368d9661024ad346a545912ea4b70f1d0a7d3c92f8ea6f5a43f67"
+"fea83f36c33389c6c069ddfdfcbe413c1336ad561d99015d33969c291746b6a1"
 )
 
 package() {
 
     mkdir -p "${srcdir}/opt/rocm"
-    tar xf therock-dist-linux-gfx120X-all-7.10.0.tar.gz -C ${srcdir}/opt/rocm
+    tar xf therock-dist-linux-gfx120X-all-7.11.0.tar.gz -C ${srcdir}/opt/rocm
 
     mv "${srcdir}/opt/" "${pkgdir}/"
-    #mv "${pkgdir}/opt/rocm-7.1.1" "${pkgdir}/opt/rocm"
 
-    #mkdir -p "${pkgdir}/opt/amdgpu/share/libdrm"
-    #cd "${pkgdir}/opt/amdgpu/share/libdrm"
-    #ln -s /usr/share/libdrm/amdgpu.ids amdgpu.ids
+    mkdir -p "${pkgdir}/opt/amdgpu/share/libdrm"
+    cd "${pkgdir}/opt/amdgpu/share/libdrm"
+    ln -s /usr/share/libdrm/amdgpu.ids amdgpu.ids
 
     mkdir -p "${pkgdir}/etc/OpenCL/vendors"
-    echo libamdocl64.so > "${pkgdir}/etc/OpenCL/vendors/amdocl64.icd"
+    echo /opt/rocm/lib/opencl/libamdocl64.so > "${pkgdir}/etc/OpenCL/vendors/amdocl64.icd"
 
     mkdir -p "${pkgdir}/etc/ld.so.conf.d"
     echo /opt/rocm/lib >> "$pkgdir/etc/ld.so.conf.d/rocm-bin.conf"

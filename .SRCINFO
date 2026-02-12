@@ -1,7 +1,7 @@
 pkgbase = rocm-gfx120x-bin
 	pkgdesc = ROCm Core SDK and TheRock Build System - RDNA4
-	pkgver = 7.10.0pre
-	pkgrel = 2
+	pkgver = 7.11.0pre
+	pkgrel = 1
 	epoch = 0
 	url = http://www.amd.com
 	arch = x86_64
@@ -173,7 +173,7 @@ pkgbase = rocm-gfx120x-bin
 	conflicts = rocm-ml-sdk
 	conflicts = rpp
 	options = !strip
-	source = https://repo.amd.com/rocm/tarball/therock-dist-linux-gfx120X-all-7.10.0.tar.gz
-	sha256sums = 2c0e20e1d50368d9661024ad346a545912ea4b70f1d0a7d3c92f8ea6f5a43f67
+	source = https://repo.amd.com/rocm/tarball/therock-dist-linux-gfx120X-all-7.11.0.tar.gz
+	sha256sums = fea83f36c33389c6c069ddfdfcbe413c1336ad561d99015d33969c291746b6a1
 
 pkgname = rocm-gfx120x-bin
