@@ -1,7 +1,7 @@
 pkgbase = grab-bin
 	pkgdesc = Asynchronous file downloader.
-	pkgver = 2.1.3
-	pkgrel = 2
+	pkgver = 2.1.4
+	pkgrel = 1
 	url = https://github.com/skorotkiewicz/grab
 	arch = x86_64
 	arch = aarch64
@@ -13,9 +13,9 @@ pkgbase = grab-bin
 	options = !debug
 	source = LICENSE
 	sha256sums = 184086b302ece79e686ac701ca404fe7a49499626c82f684dce1b820af59710c
-	source_x86_64 = grab-x86_64-2.1.3-2::https://github.com/skorotkiewicz/grab/releases/download/v2.1.3/grab-linux-x86_64
-	sha256sums_x86_64 = 9d6a51d04bed2ca0873540701cb39ccdadc34c4e81c990a5bfbefdc53cab6123
-	source_aarch64 = grab-aarch64-2.1.3-2::https://github.com/skorotkiewicz/grab/releases/download/v2.1.3/grab-linux-aarch64
-	sha256sums_aarch64 = 61b32f720b50ff3734a46d566f43e1ec219a91e7b4ade3137cedb104cadb7d6f
+	source_x86_64 = grab-x86_64-2.1.4-1::https://github.com/skorotkiewicz/grab/releases/download/v2.1.4/grab-linux-x86_64
+	sha256sums_x86_64 = b68c4d347cbc437155c80e3240e02b0db47a82ebe4f99cc2b3f0a761e5e3610a
+	source_aarch64 = grab-aarch64-2.1.4-1::https://github.com/skorotkiewicz/grab/releases/download/v2.1.4/grab-linux-aarch64
+	sha256sums_aarch64 = 5a4e8bd4ce9d172b426a7709477a1af2a3c35d48af6f5f77a37ee3f413b9928e
 
 pkgname = grab-bin
