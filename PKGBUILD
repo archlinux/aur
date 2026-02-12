@@ -1,5 +1,5 @@
 pkgname=nettui
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="Unified TUI for Wi-Fi and Ethernet"
 arch=("x86_64")
@@ -8,7 +8,7 @@ license=("GPL-3.0-only")
 depends=("glibc" "gcc-libs")
 makedepends=("cargo")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("a89029229f8074489cafbcdde5db328071d51509e0dda370b310864bfa52435e")
+sha256sums=("21e0bc0dca9118c4d5038fc74d58e0f77c1651c29f5a34259d82d4ffeb1d1001")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
