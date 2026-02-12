@@ -4,16 +4,20 @@
 
 _name="mpm"
 pkgname="matlab-${_name}"
-_commit="557baa259149b0f8951d758e4fe971fa7613a77d"
-pkgver=2025.3+r135.g557baa2
+_commit="577e541e76f51d2973f19cf5aa77e103efb61170"
+pkgver=2026.1+r137.g577e541
 _pkgver="${pkgver%+*}"
 pkgrel=1
 epoch=1
 pkgdesc="MATLAB Package Manager"
-arch=('x86_64')
+arch=(
+  'x86_64' # glnxa64
+)
 url="https://www.mathworks.com/products/mpm.html"
 _url="https://github.com/mathworks-ref-arch/matlab-dockerfile"
-license=('custom:MATLAB EULA')
+license=(
+  'custom:MATLAB EULA'
+)
 depends=(
   'ca-certificates'
   'glibc'
@@ -32,8 +36,8 @@ source=(
 source_x86_64=(
   "${pkgname}-${_pkgver}-x86_64::https://ssd.mathworks.com/supportfiles/downloads/${_name}/${_pkgver}/glnxa64/${_name}"
 )
-sha256sums=('e79d64be550bedab50dde7fb02cdb58a1a36c41cfd74777bf9d3efd2cd107544')
-sha256sums_x86_64=('89a99356a33a6a957d33a655da3c60069fcbdbc16ac1a4bd0da18c076d6027dc')
+sha256sums=('97692dd8d42ef8c619c6b991a75f4bfac879937492e398573a12c601584ccc60')
+sha256sums_x86_64=('fabde725878ed1af771c48f63ba4e2d9d5094e6f0a46d5fec1e101256117dfd5')
 
 pkgver() {
   cd "${srcdir}/${_pkgsrc}"
