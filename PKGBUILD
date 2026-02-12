@@ -1,9 +1,10 @@
-# Maintainer (arch:firefox): Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Maintainer: whiteman808 <whiteman808@paraboletancza.org>
+# Contributor (arch:firefox): Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 # Contributor: Henry Jensen <hjensen@connochaetos.org>
-# Maintainer (archarm:firefox): Kevin Mihelich <kevin@archlinuxarm.org>
-# Maintainer (arch32:firefox): Andreas Baumann <mail@andreasbaumann.cc>
+# Contributor (archarm:firefox): Kevin Mihelich <kevin@archlinuxarm.org>
+# Contributor (arch32:firefox): Andreas Baumann <mail@andreasbaumann.cc>
 # Contributor: Erich Eckner <git@eckner.net>
 # Contributor: Andreas Grapentin <andreas@grapentin.org>
 # Contributor: Luke Shumaker <lukeshu@parabola.nu>
@@ -168,6 +169,7 @@ source=(
   org.mozilla.$pkgname.metainfo.xml
   0001-Install-under-remoting-name.patch
   0002-Bug-1995035-Allow-F_DUPFD_QUERY-in-the-Linux-sandbox.patch
+  glsl-optimizer-fix.patch
 )
 source=( ${source[*]/${pkgname}-symbolic.svg/} )  # branding over-ride
 source=( ${source[*]/org.mozilla./nu.parabola.} ) # branding over-ride
@@ -200,7 +202,8 @@ sha256sums=('08d4cae010abc31603ef74091a5d1f81da8e62d3b66c806690e70f03c422df16'
             '614f2ab3f7bbe783ca50b94f4c78081ee1f98605156ee8ff379e251191b61bdb'  # $pkgname.desktop
             'a6e4ab312203ae1df50537f4e6631417b84df46bac4cce2d51145751a405cd8f'  # nu.parabola.$pkgname.metainfo.xml
             '883ca2fa723a7572269d18559d5b82412782ad63e5dd3820eeb0540e3fe34314'
-            '3b8bae25a05e6075c7025be387ee8e1a2dc57c19d89d3028b457128530f6c24b')
+            '3b8bae25a05e6075c7025be387ee8e1a2dc57c19d89d3028b457128530f6c24b'
+            '1aa43df43b4f60b33265842e4475d82ea18b08ca786b129acfd8c1503ff4bd9a')
 sha256sums+=('86bd54db6026ff65bd24ac4f05d0679a645ff447e2f81b0ee44037c0c4285e06'  # vendor.js.in
              'c69dd93e92afcd78af7c84fd7c71b04f75686424d0b5115fd08da915bf5f6670') # zstandard-0.25.0.diff
 sha256sums_armv7h=('883ca2fa723a7572269d18559d5b82412782ad63e5dd3820eeb0540e3fe34314')
@@ -214,7 +217,8 @@ b2sums=('da28aeff1bdd88ad612127196497a37acbe6bc83944b08cf2ea9a1eb4122899326fbd90
         '49b4776b3ec8c70194a8f7c5a6467f71820c6a5d6e2033a519fe2742282c6dc141855c6213c67e34b4e0774227d3c15f9083e708c33e7cd6e4c3a982830fefdf'   # $pkgname.desktop
         '80cf1f7644f9b509fe374cd51fea288ffcca73f735c7d4c8e2a22be7543aa7e0f3c84a619315e5fb4b82967f1cc7b2b4282658af859be1a08d2f29c39f2815d7'   # nu.parabola.$pkgname.metainfo.xml
         '8a894b01e405b628877483e40e9b018647977cb053b6af02afc901ed24d6e1f767f3db8c321070e33aea4a05ba16f1eb47ae600e5299b5f9caad03d20ba38cf5'
-        'e97f22602666465d418cbbb260cf8de936ca101b2c800247b45a63444c36fadee2c0dc8b93ee203409e27fb99a82e24d8c7bd20a7e53eddc979cd21b7cdaedde')
+        'e97f22602666465d418cbbb260cf8de936ca101b2c800247b45a63444c36fadee2c0dc8b93ee203409e27fb99a82e24d8c7bd20a7e53eddc979cd21b7cdaedde'
+        'f062373fe6ae1f54e1a4538784d7e7a0fce5b00f89bce5abbbb816e5dff14f74f5e87e788e9574cce4843f42353d74829442dd94a305f9ae8051d45c534586ff')
 b2sums+=('f3f344196d03499f3f0392d5dfc5310e131d8c85772edd340faf1df3f04ebf2931eb1dda1b7fe6870d61d498618f4d8ae9f1dd446acbe83e0ce324e04b38f3f9'  # vendor.js.in
          '0520eda97ee321a369cab971cba42a56c71a3a56f84d0e77f13031a39738235655fa419b26ecae08f2841099bdc8fca4c2ffca8b1bd8f60b2f52da5f10959012') # zstandard-0.25.0.diff
 b2sums_armv7h=('8a894b01e405b628877483e40e9b018647977cb053b6af02afc901ed24d6e1f767f3db8c321070e33aea4a05ba16f1eb47ae600e5299b5f9caad03d20ba38cf5')
@@ -257,6 +261,7 @@ mksource=(       ${source[*]:      0:${_N_MKSOURCES}} )
 mksha256sums=(   ${sha256sums[*]:  0:${_N_MKSOURCES}} )
 mkb2sums=(       ${b2sums[*]:      0:${_N_MKSOURCES}} )
 mkvalidpgpkeys=( ${validpgpkeys[*]:0:${_N_MKKEYS}}    )
+mkdepends=( git python-jsonschema )
 mksource+=( https://repo.parabola.nu/other/iceweasel/${pkgname}_${_brandingver}-${_brandingrel}.branding.tar.xz{,.sig}
             9001-FSDG-sync-remote-settings-with-local-dump.patch
             9002-FSDG-preference-defaults.patch
@@ -563,6 +568,10 @@ prepare() {
 
   # Make different channels installable in parallel
   patch -Np1 -i ../0001-Install-under-remoting-name.patch
+  patch -Np1 -i ../glsl-optimizer-fix.patch
+  sed -i 's/f8ad2b69fa472e332b50572c1b2dcc1c8a0fa783a1199aad245398d3df421b4b/dfdde6b4d42603fd3fe087a96bc0e7258ed38891154132a55b1eeac504f6f3c6/g' third_party/rust/glslopt/.cargo-checksum.json
+  sed -i '/^#ifndef SYS_SECCOMP$/,/^#endif$/{ /^#ifndef SYS_SECCOMP$/d; /^#define SYS_SECCOMP/d; /^#endif$/d; }' \
+    security/sandbox/chromium/sandbox/linux/system_headers/linux_seccomp.h
 
   # Fix RDD crashes with Mesa 25.3
   patch -Np1 -i ../0002-Bug-1995035-Allow-F_DUPFD_QUERY-in-the-Linux-sandbox.patch

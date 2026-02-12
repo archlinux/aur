@@ -1,0 +1,30 @@
+diff --git a/third_party/rust/glslopt/glsl-optimizer/include/c11/threads_posix.h b/third_party/rust/glslopt/glsl-optimizer/include/c11/threads_posix.h
+index 45cb607..8b5cdce 100644
+--- a/third_party/rust/glslopt/glsl-optimizer/include/c11/threads_posix.h
++++ b/third_party/rust/glslopt/glsl-optimizer/include/c11/threads_posix.h
+@@ -66,8 +66,10 @@ typedef pthread_cond_t  cnd_t;
+ typedef pthread_t       thrd_t;
+ typedef pthread_key_t   tss_t;
+ typedef pthread_mutex_t mtx_t;
+-typedef pthread_once_t  once_flag;
+
++#if !defined(__GLIBC__) || !__GLIBC_PREREQ(2, 43)
++typedef pthread_once_t  once_flag;
++#endif
+
+ /*
+ Implementation limits:
+@@ -90,11 +92,13 @@ impl_thrd_routine(void *p)
+
+ /*--------------- 7.25.2 Initialization functions ---------------*/
+ // 7.25.2.1
++#if !defined(__GLIBC__) || !__GLIBC_PREREQ(2, 43)
+ static inline void
+ call_once(once_flag *flag, void (*func)(void))
+ {
+     pthread_once(flag, func);
+ }
++#endif
+
+
+ /*------------- 7.25.3 Condition variable functions -------------*/
