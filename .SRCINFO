@@ -1,18 +1,18 @@
 pkgbase = risor-bin
 	pkgdesc = Fast and flexible scripting for Go developers and DevOps.
-	pkgver = 1.8.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/risor-io/risor
 	arch = x86_64
 	arch = i386
 	arch = aarch64
 	license = Apache-2.0
-	options = !debug
-	source_x86_64 = risor-1.8.1_x86_64.tar.gz::https://github.com/risor-io/risor/releases/download/v1.8.1/risor_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 171ec1b0447e0726637f933737c7fe447d7cf1c88d4b5e7c1608e61bf5654fae
-	source_i386 = risor-1.8.1_i386.tar.gz::https://github.com/risor-io/risor/releases/download/v1.8.1/risor_Linux_i386.tar.gz
-	sha256sums_i386 = 91d581488a676e9f103a166e8f06abe93fdb690863ce21b4a4124d0b33db8817
-	source_aarch64 = risor-1.8.1_aarch64.tar.gz::https://github.com/risor-io/risor/releases/download/v1.8.1/risor_Linux_arm64.tar.gz
-	sha256sums_aarch64 = a6e2db89fe407371e030f9a6063fa839f1f63affbe8f5eb63b34666768ce3278
+	makedepends = go
+	source_x86_64 = risor-2.0.0_x86_64.tar.gz::https://github.com/risor-io/risor/releases/download/v2.0.0/risor_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = ef8739cc5cb1b57bcaa966be92cac9792f993f290409138d3272e98b32d90b0a
+	source_i386 = risor-2.0.0_i386.tar.gz::https://github.com/risor-io/risor/releases/download/v2.0.0/risor_Linux_i386.tar.gz
+	sha256sums_i386 = d4c2b903cca90e23b72b23961b5471b15cac63d5c69efbae4f2fea7cf7df1f48
+	source_aarch64 = risor-2.0.0_aarch64.tar.gz::https://github.com/risor-io/risor/releases/download/v2.0.0/risor_Linux_arm64.tar.gz
+	sha256sums_aarch64 = df1815deba0d632a8ebe829135b8a110b172d83074879cd96eb9cd39db3f83ae
 
 pkgname = risor-bin
