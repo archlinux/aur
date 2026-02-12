@@ -1,0 +1,16 @@
+diff -urN lru-dict-1.5.0-orig/pyproject.toml lru-dict-1.5.0/pyproject.toml
+--- lru-dict-1.5.0-orig/pyproject.toml	2026-02-12 16:33:33.686354752 -0500
++++ lru-dict-1.5.0/pyproject.toml	2026-02-12 16:34:25.826950769 -0500
+@@ -1,10 +1,10 @@
+ [build-system]
+-requires = ["setuptools==80.9.0"]
++requires = ["setuptools"]
+ build-backend = "setuptools.build_meta"
+ 
+ [project]
+ name = "lru-dict"
+-version = "1.4.1"
++version = "1.5.0"
+ description = "An Dict like LRU container."
+ authors = [
+     {name = "Amit Dev"},

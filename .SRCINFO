@@ -1,6 +1,6 @@
 pkgbase = python-lru-dict
 	pkgdesc = A dict like LRU container.
-	pkgver = 1.4.1
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/amitdev/lru-dict
 	arch = x86_64
@@ -10,7 +10,9 @@ pkgbase = python-lru-dict
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = lru_dict-1.4.1.tar.gz::https://files.pythonhosted.org/packages/source/l/lru_dict/lru_dict-1.4.1.tar.gz
-	sha256sums = cc518ff2d38cc7a8ab56f9a6ae557f91e2e1524b57ed8e598e97f45a2bd708fc
+	source = lru-dict-1.5.0.tar.gz::https://github.com/amitdev/lru-dict/archive/refs/tags/v1.5.0.tar.gz
+	source = build.patch
+	sha256sums = 831634fafa1055776d145b7dafb54da00f28fcf6fd1d75fc3fbb0018f1c3eda0
+	sha256sums = dc280c447bcfe9cf4b7fd23e1ca091abd479ea3ce0c97d223ba6455f4b1d8085
 
 pkgname = python-lru-dict
