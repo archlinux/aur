@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Veeam Extract Utility for Linux"
 arch=(x86_64)
 url=https://www.veeam.com/backup-replication-vcp-download.html?tab=extensions
-license=('custom')
+license=('LicenseRef-Veeam-EULA')
 depends=()
 source=("https://download2.veeam.com/VBR/v13/VeeamExtract_$pkgver.tar.gz"
     "EULA")

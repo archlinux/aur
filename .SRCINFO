@@ -4,7 +4,7 @@ pkgbase = veeam-extract
 	pkgrel = 1
 	url = https://www.veeam.com/backup-replication-vcp-download.html?tab=extensions
 	arch = x86_64
-	license = custom
+	license = LicenseRef-Veeam-EULA
 	source = https://download2.veeam.com/VBR/v13/VeeamExtract_13.0.1.180.tar.gz
 	source = EULA
 	sha256sums = 4d7d75af3b34f230d94cee9f30b62a38912704921b82a873d10142c46c8627c8
