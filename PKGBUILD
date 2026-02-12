@@ -1,6 +1,6 @@
 # Maintainer: xander1421 <alexpruteanu@hotmail.com>
 pkgname=spotify-tray-wayland-git
-pkgver=r27.7733db4
+pkgver=r35.ada97d6
 pkgrel=1
 pkgdesc="Native Wayland/Hyprland system tray for Spotify with scroll and middle-click controls"
 arch=('x86_64' 'aarch64')
@@ -51,7 +51,7 @@ EOF
 # Smart close: minimize Spotify to tray, kill other windows
 class=$(hyprctl activewindow | grep "class:" | cut -d' ' -f2)
 if [[ "${class,,}" == "spotify" ]]; then
-    hyprctl dispatch movetoworkspacesilent special:minimized
+    hyprctl dispatch movetoworkspacesilent special:spotify
 else
     hyprctl dispatch killactive
 fi
@@ -100,13 +100,13 @@ cat > "$HYPR_DIR/conf.d/spotify.conf" << CONF
 unbind = $CLOSE_MOD, $CLOSE_KEY
 bind = $CLOSE_MOD, $CLOSE_KEY, exec, ~/.config/hypr/UserScripts/smart-close.sh
 
-bind = SUPER, M, movetoworkspacesilent, special:minimized
-bind = SUPER, grave, togglespecialworkspace, minimized
+bind = SUPER, M, movetoworkspacesilent, special:spotify
+bind = SUPER, grave, togglespecialworkspace, spotify
 CONF
 
 # Ensure spotify.conf is sourced
-if ! grep -q "source.*spotify.conf" "$HYPR_DIR/hyprland.conf" 2>/dev/null; then
-    echo "source = ~/.config/hypr/conf.d/spotify.conf" >> "$HYPR_DIR/hyprland.conf"
+if ! grep -q "source.*conf.d" "$HYPR_DIR/hyprland.conf" 2>/dev/null; then
+    echo "source = ~/.config/hypr/conf.d/*.conf" >> "$HYPR_DIR/hyprland.conf"
 fi
 
 # Reload Hyprland (find instance signature if not set)
