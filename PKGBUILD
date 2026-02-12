@@ -15,7 +15,7 @@ _replacesoldkernels=() # '%' gets replaced with kernel suffix
 _replacesoldmodules=() # '%' gets replaced with kernel suffix
 
 pkgbase=linux-libre-lts
-pkgver=6.12.64
+pkgver=6.12.69
 pkgrel=1
 pkgdesc='LTS Linux-libre'
 url='https://linux-libre.fsfla.org/'
@@ -42,10 +42,9 @@ options=(
   !debug
   !strip
 )
-_srcname=linux-6.12.64
+_srcname="linux-${pkgver}"
 source=(
   "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_srcname##*-}-gnu/linux-libre-${_srcname##*-}-gnu.tar.xz"{,.sign}
-  # "https://linux-libre.fsfla.org/pub/linux-libre/releases/$pkgver-gnu/patch-${_srcname##*-}-gnu-$pkgver-gnu.xz"{,.sign}
   "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_"{clut224.ppm,vga16.ppm,mono.pbm}{,.sig}
   config.i686 config.x86_64 config.armv7h    # the main kernel config files
   linux-armv7h.preset                        # armv7h preset file for mkinitcpio ramdisk
@@ -71,7 +70,7 @@ validpgpkeys=(
   474402C8C582DAFBE389C427BCB7CF877E7D47A7 # Alexandre Oliva
   6DB9C4B4F0D8C0DC432CF6E4227CA7C556B2BA78 # David P.
 )
-sha256sums=('8acd0f457b8bda46ac5def19e00af2cca3bfdff0af770825e3eeb6fda3674320'
+sha256sums=('c57eb1d26a7cb50363588ae68fec7097a8d2df69a5c176b9bdfd1603192c4e46'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -89,7 +88,7 @@ sha256sums=('8acd0f457b8bda46ac5def19e00af2cca3bfdff0af770825e3eeb6fda3674320'
             '423b2c6fbc8d6df79997550bef1b1e4f6f402b668007d150013623a83a12b49e'
             '596f8e0aef1df72a84685e8f2b8a9dde7e33b513de555fae6069ba652cbd00c1')
 sha256sums_i686=('a044d2ed2ac13f0435e94e567f6fd5d8380b694f74e344857ca64ef0c9424a07')
-b2sums=('0929f834cef5adb4e1098ac932de34b2464ea6d1004eb66bc37784653ba1cce4469379d328e4199192313ebfc9d00854524a2e7e749604dbbd73aeac1910591a'
+b2sums=('ae4a8595b3ccfb57ab1190539ad96ea442ece0109babd8e66b00144bbb3cd1c9f6a8df442be96164ea2b7835c896eef7d3b7f3a7ff1eee392101cc4f1e7b0901'
         'SKIP'
         '73fee2ae5cb1ffd3e6584e56da86a8b1ff6c713aae54d77c0dab113890fc673dc5f300eb9ed93fb367b045ece8fa80304ff277fe61665eccf7b7ce24f0c045eb'
         'SKIP'
@@ -117,7 +116,7 @@ case "$CARCH" in
   armv7h) KARCH=arm;;
 esac
 
-export KBUILD_BUILD_HOST=parabola
+export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
