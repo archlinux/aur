@@ -1,6 +1,6 @@
 pkgbase = exfetch
 	pkgdesc = shell extensible fetching program written in Crystal
-	pkgver = 1.5
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://codeberg.org/Izder456/exfetch
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = exfetch
 	depends = pcre2
 	depends = gc
 	provides = exfetch
-	source = exfetch::git+https://codeberg.org/Izder456/exfetch.git#tag=1.5
+	source = exfetch::git+https://codeberg.org/Izder456/exfetch.git#tag=1.5.1
 	source = git+https://github.com/schovi/baked_file_system.git
-	sha256sums = c99f09944fd0ce3d2aa87c1b036ba8b96ce690b3023b8fe1b52244f2e68bd0a0
+	sha256sums = f14d8934591ef9b294162a834713526af073a7bdcb777b521606906d6239da0b
 	sha256sums = SKIP
 
 pkgname = exfetch
