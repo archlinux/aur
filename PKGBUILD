@@ -1,5 +1,5 @@
 pkgname=papis-zotero
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Zotero remote server for papis'
 arch=('any')
@@ -8,7 +8,7 @@ license=('GPL')
 depends=('python' 'papis')
 makedepends=(python-build python-installer python-wheel python-hatchling)
 source=("https://github.com/papis/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('a9df1c389c866a75a126a23673ddb911f77f30de68f6ebb264c131cfcfa50166')
+sha256sums=('aa189632e30113b10e74b19cee97a9811b1d7f6ed5536c222696060e8cdc64ce')
 
 _dirname="${pkgname}-${pkgver}"
 _basename="${pkgname}"

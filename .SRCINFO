@@ -1,6 +1,6 @@
 pkgbase = papis-zotero
 	pkgdesc = Zotero remote server for papis
-	pkgver = 0.2.2
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/papis/papis-zotero
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = papis-zotero
 	makedepends = python-hatchling
 	depends = python
 	depends = papis
-	source = https://github.com/papis/papis-zotero/archive/v0.2.2.tar.gz
-	sha256sums = a9df1c389c866a75a126a23673ddb911f77f30de68f6ebb264c131cfcfa50166
+	source = https://github.com/papis/papis-zotero/archive/v0.3.0.tar.gz
+	sha256sums = aa189632e30113b10e74b19cee97a9811b1d7f6ed5536c222696060e8cdc64ce
 
 pkgname = papis-zotero
