@@ -7,12 +7,18 @@ arch=('x86_64' 'aarch64')
 url='https://github.com/hassanecoder/ghsc'
 license=('MIT')
 depends=('git' 'github-cli')
-source_x86_64=("${pkgname}-${pkgver}-linux-amd64.tar.gz::https://github.com/hassanecoder/ghsc/releases/download/v0.0.10/ghsc-v0.0.10-linux-amd64.tar.gz")
-source_aarch64=("${pkgname}-${pkgver}-linux-arm64.tar.gz::https://github.com/hassanecoder/ghsc/releases/download/v0.0.10/ghsc-v0.0.10-linux-arm64.tar.gz")
-sha256sums_x86_64=('fe2f7075b1d40923d892cbfa1f16251c9b2feb5d475e59957f4fffb528ca4253')
-sha256sums_aarch64=('882261c14096474684938f672cc1e9449cde3fba9377f7a68da96a3b9c50d4fc')
+makedepends=('go')
+options=('!debug')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hassanecoder/ghsc/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('59dcaf5fcd7e014934e2f2fb3a991021118eaa25bbf8f02a9f337143bb04aca3')
+
+build() {
+  cd "${srcdir}/ghsc-${pkgver}"
+  CGO_ENABLED=0 go build -trimpath -ldflags "-s -w" -o ghsc ./cmd/ghsc
+}
 
 package() {
+  cd "${srcdir}/ghsc-${pkgver}"
   install -Dm755 ghsc "${pkgdir}/usr/bin/ghsc"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
