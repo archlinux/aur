@@ -1,0 +1,95 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 80503cb2..24759ff0 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -229,6 +229,11 @@ target_link_libraries(ss-manager m bloom cork ${LIBEV} ${LIBUDNS})
+ target_link_libraries(ss-local cork ipset ${DEPS})
+ target_link_libraries(ss-redir cork ipset ${DEPS})
+ target_link_libraries(shadowsocks-libev cork ipset ${DEPS})
++
++set_target_properties(ss-server ss-tunnel ss-manager ss-local ss-redir
++        PROPERTIES
++        RUNTIME_OUTPUT_DIRECTORY ${RUNTIME_SHARED_OUTPUT_DIRECTORY}
++        )
+ endif ()
+ 
+ # ------------------------------------------------------------------
+@@ -236,68 +241,6 @@ endif ()
+ # Shared target will have a `-shared' suffix
+ # All shared dependency also have `-shared' suffix
+ # For shared binary, we still use the same name as static, without `-shared', but will output to shared directory
+-add_executable(ss-server-shared ${SS_SERVER_SOURCE})
+-add_executable(ss-tunnel-shared ${SS_TUNNEL_SOURCE})
+-if (WITH_SS_MANAGER)
+-    add_executable(ss-manager-shared ${SS_MANAGER_SOURCE})
+-else ()
+-    add_executable(ss-manager-shared EXCLUDE_FROM_ALL ${SS_MANAGER_SOURCE})
+-endif ()
+-add_executable(ss-local-shared ${SS_LOCAL_SOURCE})
+-if (WITH_SS_REDIR)
+-    add_executable(ss-redir-shared ${SS_REDIR_SOURCE})
+-else ()
+-    add_executable(ss-redir-shared EXCLUDE_FROM_ALL ${SS_REDIR_SOURCE})
+-endif ()
+-add_library(shadowsocks-libev-shared SHARED ${LIBSHADOWSOCKS_LIBEV_SOURCE})
+-
+-target_compile_definitions(ss-server-shared PUBLIC -DMODULE_REMOTE)
+-target_compile_definitions(ss-tunnel-shared PUBLIC -DMODULE_TUNNEL)
+-target_compile_definitions(ss-manager-shared PUBLIC -DMODULE_MANAGER)
+-target_compile_definitions(ss-local-shared PUBLIC -DMODULE_LOCAL)
+-target_compile_definitions(ss-redir-shared PUBLIC -DMODULE_REDIR)
+-target_compile_definitions(shadowsocks-libev-shared PUBLIC -DMODULE_LOCAL -DLIB_ONLY)
+-
+-target_compile_options(ss-server-shared PRIVATE ${SS_WERROR_FLAGS})
+-target_compile_options(ss-tunnel-shared PRIVATE ${SS_WERROR_FLAGS})
+-target_compile_options(ss-manager-shared PRIVATE ${SS_WERROR_FLAGS})
+-target_compile_options(ss-local-shared PRIVATE ${SS_WERROR_FLAGS})
+-target_compile_options(ss-redir-shared PRIVATE ${SS_WERROR_FLAGS})
+-target_compile_options(shadowsocks-libev-shared PRIVATE ${SS_WERROR_FLAGS})
+-
+-# Connmarktos/nftables compile definitions for shared
+-if(ENABLE_CONNMARKTOS)
+-    target_compile_definitions(ss-server-shared PUBLIC -DUSE_NFCONNTRACK_TOS)
+-endif()
+-if(ENABLE_NFTABLES)
+-    target_compile_definitions(ss-server-shared PUBLIC -DUSE_NFTABLES)
+-endif()
+-
+-target_include_directories(shadowsocks-libev-shared PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+-
+-target_link_libraries(ss-server-shared ${DEPS_SHARED} ${DEPS_CONNMARKTOS} ${DEPS_NFTABLES})
+-target_link_libraries(ss-tunnel-shared ${DEPS_SHARED})
+-target_link_libraries(ss-manager-shared ${CMAKE_THREAD_LIBS_INIT} ${LIBEV_SHARED} ${LIBUDNS_SHARED} ${DEPS_SHARED})
+-target_link_libraries(ss-local-shared ${DEPS_SHARED})
+-target_link_libraries(ss-redir-shared ${DEPS_SHARED})
+-target_link_libraries(shadowsocks-libev-shared ${DEPS_SHARED})
+-
+-set_target_properties(ss-server-shared PROPERTIES OUTPUT_NAME ss-server)
+-set_target_properties(ss-tunnel-shared PROPERTIES OUTPUT_NAME ss-tunnel)
+-set_target_properties(ss-manager-shared PROPERTIES OUTPUT_NAME ss-manager)
+-set_target_properties(ss-local-shared PROPERTIES OUTPUT_NAME ss-local)
+-set_target_properties(ss-redir-shared PROPERTIES OUTPUT_NAME ss-redir)
+-
+-set_target_properties(ss-server-shared ss-tunnel-shared ss-manager-shared ss-local-shared ss-redir-shared
+-        PROPERTIES
+-        RUNTIME_OUTPUT_DIRECTORY ${RUNTIME_SHARED_OUTPUT_DIRECTORY}
+-        )
+-
+-set_target_properties(shadowsocks-libev-shared PROPERTIES OUTPUT_NAME shadowsocks-libev)
+-set_target_properties(shadowsocks-libev-shared PROPERTIES VERSION 2.0.0 SOVERSION 2)
+-target_compile_definitions(shadowsocks-libev-shared PUBLIC -DMODULE_LOCAL)
+-target_link_libraries(shadowsocks-libev-shared ${DEPS_SHARED})
+-
+ # ------------------------------------------------------------------
+ # Misc
+ # Recommend to install shared by default
+@@ -310,9 +253,6 @@ if (WITH_STATIC)
+         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ endif ()
+ 
+-install(TARGETS shadowsocks-libev-shared
+-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+-
+ install(FILES shadowsocks.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+ 
+ 
