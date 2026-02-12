@@ -1,6 +1,6 @@
 pkgbase = linux-libre-lts
 	pkgdesc = LTS Linux-libre
-	pkgver = 6.12.64
+	pkgver = 6.12.69
 	pkgrel = 1
 	url = https://linux-libre.fsfla.org/
 	arch = i686
@@ -22,8 +22,8 @@ pkgbase = linux-libre-lts
 	makedepends = texlive-latexextra
 	options = !debug
 	options = !strip
-	source = https://linux-libre.fsfla.org/pub/linux-libre/releases/6.12.64-gnu/linux-libre-6.12.64-gnu.tar.xz
-	source = https://linux-libre.fsfla.org/pub/linux-libre/releases/6.12.64-gnu/linux-libre-6.12.64-gnu.tar.xz.sign
+	source = https://linux-libre.fsfla.org/pub/linux-libre/releases/6.12.69-gnu/linux-libre-6.12.69-gnu.tar.xz
+	source = https://linux-libre.fsfla.org/pub/linux-libre/releases/6.12.69-gnu/linux-libre-6.12.69-gnu.tar.xz.sign
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm
@@ -41,7 +41,7 @@ pkgbase = linux-libre-lts
 	source = 0003-skip-simpledrm-if-nvidia-drm.modeset=1-is.patch
 	validpgpkeys = 474402C8C582DAFBE389C427BCB7CF877E7D47A7
 	validpgpkeys = 6DB9C4B4F0D8C0DC432CF6E4227CA7C556B2BA78
-	sha256sums = 8acd0f457b8bda46ac5def19e00af2cca3bfdff0af770825e3eeb6fda3674320
+	sha256sums = c57eb1d26a7cb50363588ae68fec7097a8d2df69a5c176b9bdfd1603192c4e46
 	sha256sums = SKIP
 	sha256sums = bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494
 	sha256sums = SKIP
@@ -58,7 +58,7 @@ pkgbase = linux-libre-lts
 	sha256sums = 3cf389ced2b40e6457421cb27892bf126b73032fbf1de895ecc37b13d981a17c
 	sha256sums = 423b2c6fbc8d6df79997550bef1b1e4f6f402b668007d150013623a83a12b49e
 	sha256sums = 596f8e0aef1df72a84685e8f2b8a9dde7e33b513de555fae6069ba652cbd00c1
-	b2sums = 0929f834cef5adb4e1098ac932de34b2464ea6d1004eb66bc37784653ba1cce4469379d328e4199192313ebfc9d00854524a2e7e749604dbbd73aeac1910591a
+	b2sums = ae4a8595b3ccfb57ab1190539ad96ea442ece0109babd8e66b00144bbb3cd1c9f6a8df442be96164ea2b7835c896eef7d3b7f3a7ff1eee392101cc4f1e7b0901
 	b2sums = SKIP
 	b2sums = 73fee2ae5cb1ffd3e6584e56da86a8b1ff6c713aae54d77c0dab113890fc673dc5f300eb9ed93fb367b045ece8fa80304ff277fe61665eccf7b7ce24f0c045eb
 	b2sums = SKIP
@@ -122,7 +122,7 @@ pkgname = linux-libre-lts
 	provides = KSMBD-MODULE
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
-	provides = LINUX-ABI_VERSION=6.12.64
+	provides = LINUX-ABI_VERSION=6.12.69
 	conflicts = linux-lts
 	replaces = wireguard-lts
 	optdepends_x86_64 = scx-scheds: to use sched-ext schedulers
