@@ -1,7 +1,7 @@
 # Maintainer: Piroro-hs
 
 pkgname=hyprland-nox
-pkgver=0.53.1
+pkgver=0.53.3
 pkgrel=1
 pkgdesc="An independent, highly customizable, dynamic tiling Wayland compositor that doesn't sacrifice on its looks. (w/o XWayland support)"
 arch=('x86_64')
@@ -10,7 +10,6 @@ license=('BSD-3-Clause')
 groups=()
 depends=('aquamarine'
          'cairo'
-         'gcc-libs'
          'glib2'
          'glibc'
          'hyprcursor'
@@ -20,8 +19,10 @@ depends=('aquamarine'
          'hyprutils'
          'hyprwire'
          'libdrm'
+         'libgcc'
          'libglvnd'
          'libinput'
+         'libstdc++'
          'libxcursor'
          'libxkbcommon'
          'mesa'
@@ -53,7 +54,7 @@ replaces=()
 backup=()
 source=("$pkgname::git+$url#tag=v$pkgver"
         "${pkgname}_udis86::git+https://github.com/canihavesomecoffee/udis86.git")
-sha256sums=('96f63e2513bf62cf8570d12e36b69b88ad2b04e700527be5dd0c4153eead5f59'
+sha256sums=('b1caafacddf9fa796cf54b33cb85f1d9cc36357dcc93b5cdf929851f1fe01a72'
             'SKIP')
 
 prepare() {
@@ -76,4 +77,6 @@ package() {
   cd "$srcdir/$pkgname"
   cmake --install build --prefix "$pkgdir/usr"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  rm -rf "$pkgdir/usr/include/glaze/"
+  rm -rf "$pkgdir/usr/share/glaze/"
 }
