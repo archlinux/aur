@@ -4,17 +4,27 @@
 
 pkgname=scrapfetch-rs
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
+
 pkgdesc="Small system info splash"
 url="https://github.com/egevtech/scrapfetch-rs"
 license=("BSD3")
 arch=("x86_64")
+
 provides=("scrapfetch-rs")
 conflicts=("scrapfetch-rs")
-source=("https://github.com/egevtech/scrapfetch-rs/releases/download/v$pkgver/scrapfetch-rs-$pkgver-x86_64.tar.gz")
-sha256sums=("1cb41ae8789dbad29ba1dd2b8b5f6a47ee341305e2fb52083bdccdda46263a05")
+source=("git+https://github.com/egevtech/scrapfetch-rs.git")
+sha256sums=("SKIP")
+
+makedepends=("git" "cargo" "rustup")
+
+build() {
+    cd "$srcdir/scrapfetch-rs"
+
+    cargo build --release
+}
 
 package() {
-    install -Dm755 scrapfetch-rs -t "$pkgdir/usr/bin"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "$srcdir/scrapfetch-rs/"
+    install -Dm755 target/release/scrapfetch-rs -t "$pkgdir/usr/bin"
 }
