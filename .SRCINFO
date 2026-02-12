@@ -1,6 +1,6 @@
 pkgbase = dm-note-bin
 	pkgdesc = Unofficial Linux Implementation for DM NOTE: A Fully Customizable Key Viewer Optimized for DJMAX RESPECT V, Ready for Any Games
-	pkgver = 1.5.0+linux.1
+	pkgver = 1.5.1+linux.1
 	pkgrel = 1
 	url = https://github.com/northernorca/DmNote
 	install = dm-note-bin.install
@@ -18,7 +18,7 @@ pkgbase = dm-note-bin
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/northernorca/DmNote/releases/download/v1.5.0+linux.1/DM.NOTE_1.5.0+linux.1_amd64.deb
+	source_x86_64 = https://github.com/northernorca/DmNote/releases/download/v1.5.1+linux.1/DM.NOTE_1.5.1+linux.1_amd64.deb
 	sha256sums_x86_64 = 556860bfbf6d3391dd2fe4c12079bd2ced3a6b59b03a5a2e41f488c55720adf9
 
 pkgname = dm-note-bin

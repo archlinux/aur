@@ -1,6 +1,6 @@
 # Maintainer: northernorca <sk-orcawhale@proton.me>
 pkgname=dm-note-bin
-pkgver=1.5.0+linux.1
+pkgver=1.5.1+linux.1
 pkgrel=1
 pkgdesc="Unofficial Linux Implementation for DM NOTE: A Fully Customizable Key Viewer Optimized for DJMAX RESPECT V, Ready for Any Games"
 arch=('x86_64')
