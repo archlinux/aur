@@ -1,0 +1,16 @@
+pkgbase = pane-patrol-bin
+	pkgdesc = ZFC-compliant terminal pane monitor for AI coding agents
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/timvw/pane-patrol
+	license = MIT
+	conflicts = pane-patrol
+	provides = pane-patrol
+	arch = aarch64
+	source_aarch64 = https://github.com/timvw/pane-patrol/releases/download/v${pkgver}/pane-patrol_${pkgver}_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9da130f40a6a3d07dd31fd79639c1cafccad499c4d3d9fab994939c932a2c10f
+	arch = x86_64
+	source_x86_64 = https://github.com/timvw/pane-patrol/releases/download/v${pkgver}/pane-patrol_${pkgver}_linux_amd64.tar.gz
+	sha256sums_x86_64 = 7298b2d0c10756a30849c46ea8b0f67864c42cbb185ed24bdae7bfee5209626e
+	
+pkgname = pane-patrol-bin
