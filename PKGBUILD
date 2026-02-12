@@ -1,6 +1,6 @@
 pkgname=nettui-bin
 pkgver=0.1.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Unified TUI for Wi-Fi and Ethernet"
 arch=("x86_64")
 url="https://github.com/skibidiandulka/nettui"
@@ -24,7 +24,13 @@ package() {
 
   install -Dm755 "${srcroot}/nettui" "${pkgdir}/usr/bin/nettui"
 
-  [[ -f "${srcroot}/README.md" ]] && install -Dm644 "${srcroot}/README.md" "${pkgdir}/usr/share/doc/nettui/README.md"
-  [[ -f "${srcroot}/LICENSE" ]] && install -Dm644 "${srcroot}/LICENSE" "${pkgdir}/usr/share/licenses/nettui/LICENSE"
-  [[ -f "${srcroot}/config/keybinds.toml.example" ]] && install -Dm644 "${srcroot}/config/keybinds.toml.example" "${pkgdir}/usr/share/doc/nettui/keybinds.toml.example"
+  if [[ -f "${srcroot}/README.md" ]]; then
+    install -Dm644 "${srcroot}/README.md" "${pkgdir}/usr/share/doc/nettui/README.md"
+  fi
+  if [[ -f "${srcroot}/LICENSE" ]]; then
+    install -Dm644 "${srcroot}/LICENSE" "${pkgdir}/usr/share/licenses/nettui/LICENSE"
+  fi
+  if [[ -f "${srcroot}/config/keybinds.toml.example" ]]; then
+    install -Dm644 "${srcroot}/config/keybinds.toml.example" "${pkgdir}/usr/share/doc/nettui/keybinds.toml.example"
+  fi
 }
