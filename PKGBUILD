@@ -2,12 +2,13 @@
 # -*- mode: sh -*-
 
 #  Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+# Contributor: Bart Libert <email hidden>
 
 _pkgname='tooi'
 pkgname="$_pkgname-git"
 pkgdesc='Text-based user interface for Mastodon, Pleroma and friends (development version)'
-pkgver=0.20.0.r3.gdaa1933
-pkgrel=2
+pkgver=0.21.0.r0.gb43e56f
+pkgrel=1
 url='https://codeberg.org/ihabunek/tooi'
 arch=('any')
 license=('MIT')  # SPDX-License-Identifier: MIT
@@ -27,6 +28,8 @@ depends=(
   'python-beautifulsoup4'
   'python-click'
   'python-html2text'
+  'python-linkify-it-py'
+  'python-markdown-it-py'
   'python-pillow'
   'python-platformdirs'
   'python-pydantic'
