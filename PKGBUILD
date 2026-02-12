@@ -3,7 +3,7 @@
 
 pkgname=stardrop
 _pkgname=Stardrop
-pkgver=1.8.2
+pkgver=1.8.3
 pkgrel=1
 pkgdesc='An open-source, cross-platform mod manager for Stardew Valley'
 url='https://github.com/Floogen/Stardrop'
@@ -17,7 +17,7 @@ source=(
     "stardrop.desktop"
 )
 sha256sums=(
-    '63c9ad1c7c90838d87dc111204545ba4abc636916cc26440f56fd567249035c2'
+    '4e01edbaee0f7a559f4f46f3dca627eda4f891a41608e367f42e1398fd37e370'
     'cfd312d94b81122a6faade6799ea195b52114e60574ca2d1706f94da00d27b17'
 )
 
