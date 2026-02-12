@@ -3,7 +3,7 @@
 _pkgauthor=lance0
 _pkgname=xfr
 pkgname=${_pkgname}-bin
-pkgdesc="Run multiple commands in parallel"
+pkgdesc="A modern iperf3 alternative with a live TUI, multi-client server, and QUIC support"
 
 pkgver=0.7.0
 pkgrel=1
