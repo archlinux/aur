@@ -2,7 +2,7 @@
 # Contributor: Kevin Muñoz (MrHacker) <kmunoz@condorbs.net><contacto@mrhacker.com.co>
 pkgname=wazuh-agent
 pkgver=4.14.3
-pkgrel=3
+pkgrel=4
 _remRevision=1
 _prodver=${pkgver}-${_remRevision}
 pkgdesc="Wazuh Agent actively protects Arch Linux systems with advanced threat prevention, detection, and response capabilities."
@@ -50,7 +50,7 @@ install=$pkgname.install
 
 prepare() {
   # Corregir permisos restrictivos del RPM para que makepkg pueda limpiar $srcdir
-  chmod -R +w "$srcdir/var/ossec"
+  chmod -R u+rwX "$srcdir/var/ossec"
 }
 
 package() {
