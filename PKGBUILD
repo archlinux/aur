@@ -2,11 +2,12 @@
 
 pkgname=paqet
 pkgver=1.0.0_alpha.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Ferries Packets Across Forbidden Boundaries"
 arch=("any")
 url="https://github.com/hanselime/paqet"
 license=("MIT")
+depends=("libpcap")
 makedepends=("git" "go")
 source=("git+${url}.git#tag=v${pkgver//_/-}")
 sha256sums=('f459eedf608bb7662809f3bb317ad8715570c85984fbc8603a3dd82a51c0f254')
