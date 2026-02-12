@@ -1,0 +1,16 @@
+pkgbase = bridge-core-bin
+	pkgdesc = bridge. The IDE for Minecraft Add-Ons. Light-weight, powerful, easy to use!
+	pkgver = 2.7.54
+	pkgrel = 1
+	url = https://bridge-core.app/
+	arch = x86_64
+	license = GPL3
+	depends = gtk3
+	depends = webkit2gtk
+	depends = libsoup
+	provides = bridge-core
+	options = !debug
+	source = https://github.com/bridge-core/editor/releases/download/v2.7.54/bridge_2.7.54_amd64.deb
+	sha256sums = 19f4bf03e66ed3797e9fc6b72cb08d3dd3175b797c4893850c8454d9fc486cfe
+
+pkgname = bridge-core-bin
