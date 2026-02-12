@@ -3,8 +3,8 @@
 # Contributor: gökçe aydos <aur-2023 aydos.de>
 
 pkgname=jupyterlab_code_formatter
-pkgver=3.0.2
-pkgrel=2
+pkgver=3.0.3
+pkgrel=1
 pkgdesc='A universal code formatter for JupyterLab.'
 arch=(any)
 url=https://jupyterlab-code-formatter.readthedocs.io/
@@ -56,7 +56,7 @@ optdepends=(
 )
 
 source=(https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('55adb8fa8b9bd58f0b39e7d3ead6c1e862e9ebc1444a66cdb4233d8dc6351d4b')
+sha256sums=('179e3c85cf6c0fc3c321c84bae446f3a2ad517e26606989c9485ce72e6c781c5')
 
 build() {
   cd $srcdir/$pkgname-$pkgver

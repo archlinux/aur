@@ -1,7 +1,7 @@
 pkgbase = jupyterlab_code_formatter
 	pkgdesc = A universal code formatter for JupyterLab.
-	pkgver = 3.0.2
-	pkgrel = 2
+	pkgver = 3.0.3
+	pkgrel = 1
 	url = https://jupyterlab-code-formatter.readthedocs.io/
 	arch = any
 	license = MIT
@@ -39,7 +39,7 @@ pkgbase = jupyterlab_code_formatter
 	optdepends = rust: formatting of Rust code
 	optdepends = scalafmt: Scala code formatting
 	optdepends = yapf: Python code formatting
-	source = https://files.pythonhosted.org/packages/source/j/jupyterlab_code_formatter/jupyterlab_code_formatter-3.0.2.tar.gz
-	sha256sums = 55adb8fa8b9bd58f0b39e7d3ead6c1e862e9ebc1444a66cdb4233d8dc6351d4b
+	source = https://files.pythonhosted.org/packages/source/j/jupyterlab_code_formatter/jupyterlab_code_formatter-3.0.3.tar.gz
+	sha256sums = 179e3c85cf6c0fc3c321c84bae446f3a2ad517e26606989c9485ce72e6c781c5
 
 pkgname = jupyterlab_code_formatter
