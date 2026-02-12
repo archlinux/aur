@@ -2,7 +2,7 @@
 # Contributor: Evert Vorster <superchief@evertvorster.com>
 
 pkgname=oolite
-pkgver=1.92.0.1
+pkgver=1.92.0.2
 pkgrel=1
 pkgdesc="Open Source remake of Elite with many, many enhancements, git version"
 arch=('x86_64')
@@ -12,7 +12,7 @@ groups=('game')
 depends=(bash gcc-libs libglvnd glibc zlib gnustep-base
           espeak-ng glu nspr openal sdl12-compat libvorbis libpng)
 makedepends=(gnustep-make gcc-objc git)
-source=("oolite-$pkgver::git+https://github.com/OoliteProject/oolite#tag=$pkgver"
+source=("oolite-$pkgver::git+https://github.com/OoliteProject/oolite#commit=ebb6b0a6217149a6986f030094956fd339816cec"
         git+https://github.com/OoliteProject/oolite-binary-resources.git
         git+https://github.com/OoliteProject/oolite-mac-components
         git+https://github.com/OoliteProject/oolite-linux-dependencies.git
@@ -25,7 +25,7 @@ source=("oolite-$pkgver::git+https://github.com/OoliteProject/oolite#tag=$pkgver
         oolite
 )
 
-sha512sums=('8775eba0d3cd9d0705f48b46fcc9a52844c63a2bd2e1bd6566725403afe5bee6ae39dba28fee6a21a727b746a69527831cdd8c3665d3384e23388c566b2d0625'
+sha512sums=('754a705c61523dad26155c70c3ee0bbc03ed76d9b77f601848a73f3e9111a77e716959f8a51e4c83eb70149c7bf152b15834631ac83c9eeca467b0a2b0739523'
             'SKIP'
             'SKIP'
             'SKIP'
