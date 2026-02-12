@@ -1,24 +1,30 @@
-# Maintainer: guoyizhang <myname at malacology dot net>
+# Maintainer: Yifan Zhu <fanzhuyifan[at]gmail[dot]com>
+# Contributor: guoyizhang <myname at malacology dot net>
 # Contributor: 0b100100 <0b100100 at protonmail dot ch>
 # Contributor: Denis Kasak <dkasak|AT|termina.org.uk>
 
 pkgname=ekho
-pkgver=8.9.3
+pkgver=9.0
 pkgrel=1
 pkgdesc="Multilingual text-to-speech (TTS) software for Cantonese, Mandarin, Toisanese, Zhaoan Hakka, Tibetan, Ngangien, Korean and English"
 arch=('i686' 'x86_64')
 url="https://www.eguidedog.net/ekho.php"
-license=('GPL')
-depends=('espeak-ng' 'lame')
+license=('GPL-2.0-or-later')
+depends=('espeak-ng' 'libsndfile' 'libpulse' 'libsonic' 'mpg123')
 makedepends=('git' 'autoconf' 'make' 'utf8cpp')
 source=("git+https://github.com/hgneng/ekho.git#tag=v${pkgver}")
-sha512sums=('SKIP')
+sha512sums=('26749e4eeeae0f40021bf1151f9c02f3c4133a81d24667cc4d85c8c4a53f4dbe5e319aec4cf7c184e05d07da366b208dc6394ea403b6b5c9ef5cbfcd0b163a4a')
+
+prepare() {
+  cd "$pkgname"
+  git submodule update --init --recursive
+}
 
 build() {
   cd "$pkgname"
   autoreconf --install
   CXXFLAGS="$CXXFLAGS -I/usr/include/utf8cpp/" \
-  ./configure --prefix=/usr --with-mp3lame
+  ./configure --prefix=/usr
   make
 }
 
