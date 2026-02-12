@@ -5,8 +5,8 @@
 
 pkgname=tango-cpp
 _pkgname=cppTango
-pkgver="10.1.2"
-pkgrel=2
+pkgver="10.3.0"
+pkgrel=1
 groups=("tango-controls")
 pkgdesc="TANGO distributed control system - shared library"
 arch=("x86_64" "armv7h")
@@ -22,7 +22,7 @@ source=(
 )
 
 sha256sums=(
-  "fa82453dc5d41deafa0c3c169d46290143a543f11141b948388545c211315e33"
+  "0d6bf7fc700148c2bd177cd5055573d481e50c1311e57d9f08ec4d805d652bee"
   "f83a617bda31176a0331189b2480f5a7cee867c2b53ce47698fdf4ce72768cc4"
 )
 
@@ -38,7 +38,7 @@ build() {
     _MMX=-DTANGO_JPEG_MMX=OFF
   fi
   cd "${_pkgname}-with-submodules-${pkgver}"
-  cmake -B build ${_MMX} -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/usr -DTANGO_USE_TELEMETRY=ON -DTANGO_TELEMETRY_EXPORTER_OPTION_NEW=ON
+  cmake -B build ${_MMX} -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/usr -DTANGO_USE_TELEMETRY=ON
   make -C build
 }
 
