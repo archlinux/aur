@@ -27,6 +27,10 @@ build() {
   make HARDENING=on
 }
 
+check() {
+  cd "${pkgname}"
+  make test
+}
 
 package() {
   cd "${pkgname}"
