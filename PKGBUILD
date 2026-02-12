@@ -3,7 +3,7 @@
 
 pkgname="recaf"
 pkgver=4.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A modern Java bytecode editor'
 url='https://github.com/Col-E/Recaf'
 license=('MIT')
@@ -30,7 +30,7 @@ sha256sums=('ef3dc4884802173816ac104d61f56e58ff86d2f094cf369385795a2e6d569478'
 build() {
   cd "$srcdir/Recaf-$pkgver-alpha"
 
-  export TARGET_VERSION=24
+  export TARGET_VERSION=25
 
   JAVA_HOME="/usr/lib/jvm/default-runtime" /usr/bin/gradle assemble -x compileTestJava -Dskip_jfx_bundle=true
 }
