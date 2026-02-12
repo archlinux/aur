@@ -1,16 +1,16 @@
 # Maintainer: Adam Honse <calcprogrammer10@gmail.com>
-pkgname=openrgb-plugin-visual-map-git
-pkgver=0.9.r6.g0eff188
+pkgname=openrgb-plugin-visual-map-next-git
+pkgver=1.0rc2.r5.ga57be3b
 pkgrel=1
-pkgdesc="Visual Map plugin for OpenRGB"
+pkgdesc="Visual Map plugin for OpenRGB (next branch)"
 arch=('any')
 url="https://gitlab.com/OpenRGBDevelopers/OpenRGBVisualMapPlugin"
 license=('GPL-2.0-only')
-depends=('qt5-tools' 'openrgb')
+depends=('qt6-tools' 'openrgb')
 makedepends=('git')
 provides=('openrgb-plugin-visual-map')
 conflicts=('openrgb-plugin-visual-map')
-source=("git+https://gitlab.com/OpenRGBDevelopers/OpenRGBVisualMapPlugin.git")
+source=("git+https://gitlab.com/OpenRGBDevelopers/OpenRGBVisualMapPlugin.git#branch=next")
 sha256sums=('SKIP')
 
 pkgver() {
