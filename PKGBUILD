@@ -3,29 +3,30 @@
 
 pkgname=parabolic
 _name=org.nickvision.tubeconverter
-pkgver=2026.2.1
+pkgver=2026.2.2
 pkgrel=1
 pkgdesc="Download web video and audio"
 arch=('x86_64')
 url="https://github.com/NickvisionApps/Parabolic"
 license=('MIT')
 depends=('aria2'
-    'bash'
-    'dotnet-runtime'
-    'ffmpeg'
-    'gcc-libs'
-    'glibc'
-    'gtk4'
-    'hicolor-icon-theme'
-    'libadwaita'
-    'python'
-    'yt-dlp')
+         'bash'
+         'dotnet-runtime'
+         'ffmpeg'
+         'glibc'
+         'gtk4'
+         'hicolor-icon-theme'
+         'libadwaita'
+         'libgcc'
+         'libstdc++'
+         'python'
+         'yt-dlp')
 makedepends=('blueprint-compiler' 'dotnet-sdk')
 provides=('tube-converter')
 conflicts=('tube-converter')
 replaces=('tube-converter')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('f0d1b07d0e2d4ed450def324a3a6fe9193bb2140c8536c36b4c95c537190a7d7')
+sha256sums=('7b0665978b87769c082dd36f2e00761c9041e949f0d2e23293495b18d31055be')
 
 prepare() {
     cd "${pkgname^}-${pkgver}/resources/linux"
