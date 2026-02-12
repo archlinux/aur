@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=beekeeper-studio-git
 _pkgname="Beekeeper Studio"
-pkgver=5.5.3.r36.g9f0c5a9
+pkgver=5.6.0.beta.2.r0.gfdb5fb6
 _electronversion=39
 _nodeversion=22
 pkgrel=1
@@ -81,7 +81,7 @@ prepare() {
             echo 'fetchRetries 3'
             echo 'fetchRetryTimeout 10000'
         } >> .yarnrc
-        cp .yarnrc "${srcdir}/${pkgname%-git}.git/apps/studio"
+        cp .yarnrc apps/studio
         find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
     fi
     _ensure_local_nvm
