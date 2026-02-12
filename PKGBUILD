@@ -1,16 +1,16 @@
 # Maintainer: Adam Honse <calcprogrammer10@gmail.com>
-pkgname=openrgb-plugin-http-hook-git
-pkgver=0.9.8.g349790f
+pkgname=openrgb-plugin-http-hook-next-git
+pkgver=0.9.22.g6b09a97
 pkgrel=1
-pkgdesc="HTTP Hook plugin for OpenRGB"
+pkgdesc="HTTP Hook plugin for OpenRGB (next branch)"
 arch=('any')
 url="https://gitlab.com/OpenRGBDevelopers/OpenRGBHttpHookPlugin"
 license=('GPL-2.0-only')
-depends=('qt5-tools' 'openrgb')
+depends=('qt6-tools' 'openrgb')
 makedepends=('git')
 provides=('openrgb-plugin-http-hook')
 conflicts=('openrgb-plugin-http-hook')
-source=("git+https://gitlab.com/OpenRGBDevelopers/OpenRGBHttpHookPlugin.git")
+source=("git+https://gitlab.com/OpenRGBDevelopers/OpenRGBHttpHookPlugin.git#branch=next")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -21,7 +21,7 @@ pkgver() {
 build() {
     cd "$srcdir/OpenRGBHttpHookPlugin"
     git submodule update --init --recursive
-    qmake OpenRGBHttpHookPlugin.pro PREFIX=/usr/
+    qmake6 OpenRGBHttpHookPlugin.pro PREFIX=/usr/
     make
 }
 
