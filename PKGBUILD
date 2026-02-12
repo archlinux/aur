@@ -1,5 +1,5 @@
 pkgname=mingw-w64-paraview-git
-pkgver=r84825.2e0520f4d2
+pkgver=r85727.d5e853fa7e
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
@@ -34,7 +34,7 @@ prepare() {
   git -c protocol.file.allow=always submodule update -f --init
 
   # undefined reference to absl::lts_20250814::log_internal::LogMessageFatal::LogMessageFatal(char const*, int, char const*)
-  echo "target_link_libraries(RemotingServerManager PRIVATE absl_log_internal_message)" >> Remoting/ServerManager/CMakeLists.txt
+  echo "target_link_libraries(vtkRemotingServerManager PRIVATE absl_log_internal_message)" >> Remoting/ServerManager/CMakeLists.txt
 }
 
 build() {
