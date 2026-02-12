@@ -8,8 +8,8 @@ pkgdesc='Electronic schematic and printed circuit board (PCB) design tools'
 arch=('x86_64')
 url='https://kicad.org/'
 license=('GPL-3.0-or-later')
-depends=('curl' 'glew' 'glm' 'ngspice' 'opencascade' 'python' 'python-wxpython' 'wxwidgets-gtk3' 'unixodbc' 'libgit2' 'boost-libs' 'nng' 'protobuf' 'libspnav' 'poppler' 'poppler-glib')
-makedepends=('git' 'cmake' 'ninja' 'mesa' 'boost' 'swig')
+depends=('wxwidgets-gtk3' 'python' 'boost-libs' 'glew' 'curl' 'glm' 'ngspice' 'opencascade' 'python-wxpython' 'unixodbc' 'libgit2' 'protobuf' 'nng' 'poppler' 'poppler-glib' 'libspnav')
+makedepends=('git' 'cmake' 'zlib' 'mesa' 'boost' 'swig' 'ninja' 'tar' 'gzip')
 optdepends=(
 	'kicad-library-nightly: for footprints and symbols'
 	'kicad-library-3d-nightly: for 3d models of components'
@@ -31,10 +31,13 @@ prepare()
 	cd "$pkgname"
 
 	# Prevent "dirty" suffix on version string
- 	patch -p1 -i "$srcdir/fix-version-string.patch"
+	patch -p1 -i "$srcdir/fix-version-string.patch"
 
 	# Override default icons with nightly ones
 	cp -p -r resources/linux/icons-nightly/hicolor/* resources/linux/icons/hicolor/
+
+	# patch out `-Wmismatched-tags` from causing problems in the build
+	sed -i '/COMPILER_SUPPORTS_WMISMATCHED_TAGS/,+6d' cmake/Warnings.cmake
 }
 
 build()
@@ -60,11 +63,11 @@ build()
 		-DKICAD_IPC_API=ON \
 		-DKICAD_SCRIPTING_WXPYTHON=ON \
 		-DKICAD_USE_EGL=ON \
-    	-DKICAD_USE_BUNDLED_GLEW=OFF \
+		-DKICAD_USE_BUNDLED_GLEW=OFF \
 		-DKICAD_BUILD_I18N=ON \
-    	-DKICAD_I18N_UNIX_STRICT_PATH=ON \
-    	-DKICAD_INSTALL_DEMOS=ON \
-    	-DKICAD_BUILD_QA_TESTS=OFF \
+		-DKICAD_I18N_UNIX_STRICT_PATH=ON \
+		-DKICAD_INSTALL_DEMOS=ON \
+		-DKICAD_BUILD_QA_TESTS=OFF \
 		-Wno-dev
 
 	cmake --build build
@@ -105,7 +108,7 @@ package()
 					mv "$icon_dir/apps/$icon" \
 					   "$dest_dir/apps/${icon%%.*}-nightly.${icon##*.}"
 				done
-        	ls -1 "$icon_dir/mimetypes" | grep 'kicad' | \
+			ls -1 "$icon_dir/mimetypes" | grep 'kicad' | \
 				while read icon; do
 					mv "$icon_dir/mimetypes/$icon" \
 					   "$dest_dir/mimetypes/${icon%%%%kicad*}kicad-nightly${icon#*kicad}"
@@ -119,7 +122,7 @@ package()
 			sed -i \
 				-e 's/weight="[0-9]*"/weight="0"/g' \
 				-e 's/priority="[0-9]*"/priority="0"/g' \
-	    		-e 's/application-x-kicad/application-x-kicad-nightly/g' \
+				-e 's/application-x-kicad/application-x-kicad-nightly/g' \
 				"$pkgdir/$_pkgdatadir/mime/packages/${mimefile}"
 			mv "$pkgdir/$_pkgdatadir/mime/packages/${mimefile}" \
 			   "$pkgdir/usr/share/mime/packages/${mimefile%%.*}-nightly.${mimefile##*.}"
@@ -128,7 +131,7 @@ package()
 	# Application launchers
 	mkdir -p "$pkgdir/usr/share/applications"
 	ls -1 "$pkgdir/$_pkgdatadir/applications/" | grep -F '.desktop' | \
-    	while read launcher; do
+		while read launcher; do
 			sed -i \
 				-e 's/^Name\(.*\)=\([^(]*\)$/Name\1=\2 nightly/g' \
 				-e 's/^Name\(.*\)=\(.*\)\( (.*\)$/Name\1=\2 nightly\3/g' \
@@ -138,7 +141,7 @@ package()
 				"$pkgdir/$_pkgdatadir/applications/$launcher"
 			mv "$pkgdir/$_pkgdatadir/applications/$launcher" \
 			   "$pkgdir/usr/share/applications/${launcher%.*}-nightly.desktop"
-    	done
+		done
 
 	# AppStream metainfo file
 	mkdir -p "$pkgdir/usr/share/metainfo"
