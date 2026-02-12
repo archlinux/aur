@@ -10,7 +10,8 @@ _Pkgname="Vial"
 pkgname="${_pkgname}-git"
 pkgdesc="Vial is an open-source cross-platform (Windows, Linux and Mac) GUI and a QMK fork for configuring your keyboard in real time."
 pkgver=v0.7.5.r8.g5cc9f89
-pkgrel=1
+pkgrel=2
+pyver=3.6.15
 url="https://get.vial.today/"
 license=("GPL-2.0-only")
 arch=("any")
@@ -19,6 +20,9 @@ conflicts=("${_pkgname}-appimage")
 source=("${_Pkgname}::git+https://github.com/vial-kb/vial-gui"
         '59-vial.rules'
         '92-viia.rules'
+)
+makedepends=(
+    'pyenv'
 )
 install=vial.install
 sha256sums=('SKIP'
@@ -40,16 +44,25 @@ pkgver() {
 }
 
 prepare() {
-    # Set our LD LIB PATH for our temp python prefix
-    export LD_LIBRARY_PATH=/vial-gui/util/python36/prefix/lib/
-
     cd "${srcdir}/${_Pkgname}"
 
-    # Download python, and set it up in the correct temp spot!
-    eval "util/setup_python36.sh"
+    # Use pyenv to install specific version.
+    pyenv install -s $pyver
 
-    # Generate the venv!
-    ./util/python36/prefix/bin/python3 -m venv buildenv
+    # Select ver. $pyver to use in the active shell.
+    pyenv shell $pyver
+
+    if [ "$(python --version)" != "Python ${pyver}" ]; then
+        echo "error(pyenv shell): Python version is not 3.6.15."
+        exit 1
+    fi
+
+    # Confirm existence of pip otherwise install and update.
+    python3.6 -m ensurepip
+    pip install --upgrade pip
+
+    # Set up the virtual env to build this in!
+    python3.6 -m venv buildenv
 
     # Activate the venv
     . buildenv/bin/activate
@@ -69,6 +82,13 @@ build() {
 
     # Now we generate the AppImage for deployment into the system!
     pkg2appimage misc/Vial.yml
+}
+
+check() {
+    . buildenv/bin/activate
+        pip install -r test-requirements.txt
+        fbs test
+    deactivate
 }
 
 package() {
