@@ -1,6 +1,6 @@
 pkgbase = python-ipspot
 	pkgdesc = A Python Tool to Fetch the System's IP Address
-	pkgver = 0.7
+	pkgver = 0.8
 	pkgrel = 1
 	url = https://github.com/bterwijn/invocation_tree
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-ipspot
 	depends = python-certifi
 	depends = python-charset-normalizer
 	depends = python-idna
-	source = https://files.pythonhosted.org/packages/source/i/ipspot/ipspot-0.7.tar.gz
-	sha256sums = 661969a53a7018e4720204897ee680f4ccedb98aeb0fdfac277e4fa4d38a5e89
+	source = https://files.pythonhosted.org/packages/source/i/ipspot/ipspot-0.8.tar.gz
+	sha256sums = bc1be6c9a89a9df2415e2dc393555288c1c2f5211391348820f69834437eed48
 
 pkgname = python-ipspot
