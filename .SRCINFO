@@ -1,0 +1,21 @@
+pkgbase = lenovo-legion-linux-toolkit-release
+	pkgdesc = Lenovo Legion Linux Toolkit - for Lenovo Legion laptops
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = git+https://github.com/bolekjar/lenovo-legion-linux-toolkit.git#tag=release/1.0.0
+	install = default.install
+	arch = x86_64
+	license = GPL3
+	depends = qt6-base
+	depends = qt6-5compat
+	depends = dkms
+	depends = make
+	depends = gcc
+	depends = qt6-charts
+	depends = protobuf
+	depends = cuda
+	depends = pkgconf
+	source = lenovo-legion-linux-toolkit-release-1.0.0::git+https://github.com/bolekjar/lenovo-legion-linux-toolkit.git#tag=release/1.0.0
+	sha256sums = SKIP
+
+pkgname = lenovo-legion-linux-toolkit-release

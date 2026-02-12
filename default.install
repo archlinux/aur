@@ -1,0 +1,12 @@
+post_install() {
+  echo "Please run 'systemctl enable lenovo-legion-daemon.service' to enable the service"
+  echo "Please run 'systemctl start lenovo-legion-daemon.service' to start the service"
+  echo "Please run 'systemctl status lenovo-legion-daemon.service' to check the status of the service"
+
+}
+
+post_upgrade() {
+  echo "Please run 'systemctl enable lenovo-legion-daemon.service' to enable the service"
+  echo "Please run 'systemctl start lenovo-legion-daemon.service' to start the service"
+  echo "Please run 'systemctl status lenovo-legion-daemon.service' to check the status of the service"
+}
