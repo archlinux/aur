@@ -1,6 +1,6 @@
-# Maintainer: YOUR_NAME <your_email@example.com>
+# Maintainer: tm4a
 pkgname=tuimer
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A minimal, beautiful terminal timer written in Go"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=('go' 'git')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 
-sha256sums=('dfd898006a6315375ea5ba36ac815ff67e6d5115e2db191506e4e2ef0ea2a782')
+sha256sums=('31b5a5bbf03ebf18220519eacfbe9909a73bbbb4140eb154de54d3dff0f06b15')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -24,7 +24,7 @@ build() {
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
-    go build -o tuimer .
+    go build -o tuimer ./cmd/tuimer
 }
 
 package() {
