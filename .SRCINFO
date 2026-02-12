@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-dllcopy
 	pkgdesc = A simple helper to copy dlls
-	pkgver = 1.0
-	pkgrel = 2
+	pkgver = 1.1
+	pkgrel = 0
 	url = https://github.com/neoluxis/mingw-w64-dllcopy
 	arch = x86_64
 	arch = aarch64

@@ -1,8 +1,8 @@
 # Maintainer: Neolux Lee <aur.neolux@neolux.cn.eu.org>
 
 pkgname=mingw-w64-dllcopy
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=0
 pkgdesc='A simple helper to copy dlls'
 arch=(
     'x86_64'
