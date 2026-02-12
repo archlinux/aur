@@ -1,14 +1,14 @@
 pkgbase = sqm-scripts
 	pkgdesc = SQM scripts traffic shaper
-	pkgver = 1.6.0
-	pkgrel = 2
+	pkgver = 1.7.0
+	pkgrel = 1
 	url = https://github.com/tohojo/sqm-scripts
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = systemd
 	depends = sh
 	depends = iproute2
-	source = sqm-scripts-1.6.0.tar.gz::https://github.com/tohojo/sqm-scripts/archive/v1.6.0.tar.gz
-	sha256sums = d30ee75067b857773df84d540e09dc578223a43afe30ec4887fd2f6ac493dc9c
+	source = sqm-scripts-1.7.0.tar.gz::https://github.com/tohojo/sqm-scripts/archive/v1.7.0.tar.gz
+	sha256sums = fae70c182c512cdd3ac6417f4384bf1b102266a8ee877fcccf3026328476fd16
 
 pkgname = sqm-scripts
