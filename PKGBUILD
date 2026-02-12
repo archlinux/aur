@@ -10,7 +10,7 @@ _Pkgname="Vial"
 pkgname="${_pkgname}-git"
 pkgdesc="Vial is an open-source cross-platform (Windows, Linux and Mac) GUI and a QMK fork for configuring your keyboard in real time."
 pkgver=v0.7.5.r8.g5cc9f89
-pkgrel=2
+pkgrel=3
 pyver=3.6.15
 url="https://get.vial.today/"
 license=("GPL-2.0-only")
@@ -22,6 +22,9 @@ source=("${_Pkgname}::git+https://github.com/vial-kb/vial-gui"
         '92-viia.rules'
 )
 makedepends=(
+    'pyenv'
+)
+checkdepends=(
     'pyenv'
 )
 install=vial.install
