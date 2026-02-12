@@ -1,6 +1,6 @@
 # Maintainer: ghsc maintainers
 pkgname=ghsc-bin
-pkgver=0.0.10
+pkgver=0.0.16
 pkgrel=1
 pkgdesc="Ultra-short shortcuts for GitHub CLI workflows (prebuilt binaries)"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ conflicts=('ghsc' 'ghsc-git')
 options=('!debug')
 source_x86_64=("ghsc-${pkgver}-linux-amd64.tar.gz::https://github.com/hassanecoder/ghsc/releases/download/v${pkgver}/ghsc-v${pkgver}-linux-amd64.tar.gz")
 source_aarch64=("ghsc-${pkgver}-linux-arm64.tar.gz::https://github.com/hassanecoder/ghsc/releases/download/v${pkgver}/ghsc-v${pkgver}-linux-arm64.tar.gz")
-sha256sums_x86_64=('fe2f7075b1d40923d892cbfa1f16251c9b2feb5d475e59957f4fffb528ca4253')
-sha256sums_aarch64=('882261c14096474684938f672cc1e9449cde3fba9377f7a68da96a3b9c50d4fc')
+sha256sums_x86_64=('fc39c8ef489895a8fb2cc7f46293915b9f41ba9618f109d9604826297ae4ff8f')
+sha256sums_aarch64=('25846245eacd600f8ed9f4c680feab6553f8a4509ee583435fc26f509a9f22cf')
 
 package() {
   install -Dm755 ghsc "${pkgdir}/usr/bin/ghsc"
