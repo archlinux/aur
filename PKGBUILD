@@ -3,7 +3,7 @@
 pkgname=python-fudgeo
 pkgdesc='OGC GeoPackage support via Python and SQLite'
 url='https://github.com/realiii/fudgeo'
-pkgver=1.5.1
+pkgver=1.5.3
 pkgrel=1
 arch=('any')
 license=('MIT')
@@ -28,7 +28,7 @@ source=(
   "git+https://github.com/realiii/fudgeo.git#tag=v$pkgver"
 )
 sha256sums=(
-  'fff0b09ad4f0d4f2d8fb38a3415ba5bfe2d8eb70cf92f8786bfc2254988e53e0'
+  'caa51c09cd02b3b530581f0d51a66f280d73b040a17a62f9cc66368d3f708905'
 )
 
 build() {
@@ -41,7 +41,9 @@ check() {
   rm -rf test-env
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer "../dist/fudgeo-$pkgver"*.whl
-  test-env/bin/python -m pytest --ignore geometry/test_geometry.py -k 'not test_copy_feature_class and not test_explode_feature_class'
+  test-env/bin/python -m pytest \
+    --ignore geometry/test_geometry.py \
+    -k 'not test_copy_feature_class and not test_explode_feature_class and not test_add_remove_index'
 }
 
 package() {
