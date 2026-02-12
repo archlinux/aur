@@ -12,7 +12,7 @@ _bldtype=Release
 _mozc_commit=800742dd3b340eaa431fdb06074f9bb366de3282
 _bcr_commit=7f65491a0c60e3aa60550b4ab025fb57a8cf8358
 _dict_to_mozc_commit=f6e4045f0f4eebd156c4397efef525aecf4657a6
-_dict_to_mozc=v0.6.19
+_dict_to_mozc=v0.6.21
 _branch=fcitx
 # Sudachi Dictionary
 _sudachidict_date=20260116
@@ -68,7 +68,7 @@ sha512sums=('27464bbe7d7e782d179d5d4aaf793c6c77a6e75a5e7db73ef07edac8f3a69417431
             '91b878735e767ddf6f1fe3de61486c1e78936a0f683855e7c34a21c711f405899d3de369d2ff0a1910d65b1afc8c225d8d8b9398cf98d760f3afcfe42644fca2'
             '0efcb80ec3a1f04f0f2e53ccd629eace4f6b9a2cbe5dae4c1b82140f11e174f8d023b8e35855def7e19c35da838c5b4fcfaa54748ee3534886caf1d35f55cccb'
             '504066a457f77b510f492626c919b6fd7b61f77948bdddef0f7e43ae09bb4bf03cea7000fba91ae0123a94d3b39cac6dfac2010126849afe0a183727fe7b0fc1'
-            '862abf3c6827f8cbeb104ced230f2187c21a049a68fdbba160708e2c15be957944c966c1059af906989c1ccdb55065e1823b56c7876e3fcde67aff5f1af26bba'
+            'ea3ccd573865e3daf611f202d9925c47c70a190693767da7cd2258fe3fd0a90dd7dffdd53dd793a27830f539037fad1736bfcf966d9174845c0bdc08535d7186'
             '9a7850416dc3f45df659e50a36b1b333d7e0458a3519a4138fd165987cfe250d44c7708da2b8e4bc27f2d5e52f9a5131076b283e0ad769e3b7b8514c3fe7b36e'
             '2d5f835ca604a90c12ee3d1790ce953be95f8e615d3ebfb1416d54725b58563cea23017a384696d331366aa2f43eeb21dc3309d0c5e23dee3379796a1b7d6c5b'
             '71a3da3569df8de816cea968e82a8f01fb2f48d96c83ac82daad853d1cb70942fd4695130c2d41f1d06e5c83bdf618e351e5a20f17d8e2941614901bb34e3300'
@@ -137,16 +137,18 @@ prepare() {
   : "${CC:=$(command -v clang || command -v gcc)}"
   # warning of mimalloc-rust-sys@1.7.9-source
   expr "$CC" : ".*gcc" >/dev/null && : "${CFLAGS_:=-std=c11 -Bmold -Wno-implicit-function-declaration -Wno-error=implicit-function-declaration}"
-  CC="$CC" CFLAGS="$CFLAGS_" RUSTFLAGS="-Clink-arg=-Bmold" cargo build --release --target $TARGET -F use-mimalloc-rs || cargo build --release --target $TARGET
+  CC="$CC" CFLAGS="$CFLAGS $CFLAGS_" RUSTFLAGS="-Clink-arg=-Bmold" cargo build --release --target $TARGET -F use-tcmalloc || \
+    CC="$CC" CFLAGS="$CFLAGS $CFLAGS_" RUSTFLAGS="-Clink-arg=-Bmold" cargo build --release --target $TARGET -F use-mimalloc-rs || \
+    CC="$CC" CFLAGS="$CFLAGS $CFLAGS_" RUSTFLAGS="-Clink-arg=-Bmold" cargo build --release --target $TARGET
   msg '2. Convert SudachiDict to Mozc System Dictionary format. It may take some time...'
   #cat "${srcdir}"/mozc/src/data/dictionary_oss/dictionary*.txt > all-dict.txt
   cat ${srcdir}/small_lex.csv ${srcdir}/core_lex.csv ${srcdir}/notcore_lex.csv > all.csv
   cp ${srcdir}/mozc/src/data/dictionary_oss/id.def ./
-  ./target/$TARGET/release/dict-to-mozc -s -i ./id.def -f all.csv > all-dict.txt
+  ./target/$TARGET/release/dict-to-mozc -D 1 -s -i ./id.def -f all.csv > all-dict.txt
   msg '3. Convert MeCab-unidic-Neologd to Mozc System Dictionary format. It may take some time...'
-  ./target/$TARGET/release/dict-to-mozc -n -i ./id.def -f ${srcdir}/mecab-unidic-user-dict-seed.20200910.csv >> all-dict.txt
+  ./target/$TARGET/release/dict-to-mozc -D 1 -n -i ./id.def -f ${srcdir}/mecab-unidic-user-dict-seed.20200910.csv >> all-dict.txt
   msg '4. Convert MeCab-ipadic-Neologd to Mozc System Dictionary format. It may take some time...'
-  ./target/$TARGET/release/dict-to-mozc -n -P 12 -N 10 -i ./id.def -f ${srcdir}/mecab-user-dict-seed.20200910.csv >> all-dict.txt
+  ./target/$TARGET/release/dict-to-mozc -D 1 -n -P 12 -N 10 -i ./id.def -f ${srcdir}/mecab-user-dict-seed.20200910.csv >> all-dict.txt
   msg '5. Duplicate data will be removed.'
 
   # 読み、表記による重複チェック。件数を抑制するために、品詞IDを無視し、読みと表記のみで重複チェック。
