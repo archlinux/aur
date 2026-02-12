@@ -3,7 +3,7 @@
 
 _pkgname=beaver-notes
 pkgname=$_pkgname-bin
-pkgver=4.2.0
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="Your Personal Note-Taking Haven for Privacy and Efficiency (binary release)"
 url="https://github.com/Daniele-rolli/Beaver-Notes"
@@ -15,8 +15,8 @@ source=("$url/raw/$pkgver/LICENSE")
 source_aarch64=("$url/releases/download/$pkgver/Beaver-notes-$pkgver.aarch64.rpm")
 source_x86_64=("$url/releases/download/$pkgver/Beaver-notes-$pkgver.x86_64.rpm")
 sha256sums=('593ed481f41652b46705e544226e0b58ffc046138f6a34777a0092e8d1f54b1d')
-sha256sums_x86_64=('8b7d8050b9b44b452c3952838fb205433771d533244ebbf1c9c57ecde107a054')
-sha256sums_aarch64=('8dea477355ed969cd24b90473fdf8a72ca334513589981472df846adb8a444f1')
+sha256sums_x86_64=('6cfebe706b91ce390d005e02c1cb5a0947ddee993b822360abc658d82efc0425')
+sha256sums_aarch64=('c82c201fe712467e6fc8adb49b3124fc5eed2db3272fc72860bea4dc9b3f0d6e')
 
 prepare() {
 # Edit the shortcut
@@ -35,5 +35,5 @@ package() {
     install -Dm644 "usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png" -t "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps"
   done
   install -Dm644 "$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
-  ln -s "/opt/Beaver-notes/$_pkgname" "$pkgdir/usr/bin"
+  ln -s "/opt/Beaver notes/$_pkgname" "$pkgdir/usr/bin"
 }
