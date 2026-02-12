@@ -2,7 +2,7 @@
 
 pkgname=pulsesync
 pkgver=2.10.2
-pkgrel=2
+pkgrel=beta
 pkgdesc="PulseSync integrates with Yandex Music and supports Discord RPC, themes and scripts."
 arch=('x86_64')
 url="https://pulsesync.dev/"

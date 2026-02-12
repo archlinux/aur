@@ -1,7 +1,7 @@
 pkgbase = pulsesync
 	pkgdesc = PulseSync is a project that integrates with Yandex Music. The program also supports Discord RPC status for Yandex Music, as well as custom themes and scripts.
 	pkgver = 2.10.2
-	pkgrel = 1
+	pkgrel = beta
 	url = https://pulsesync.dev/
 	arch = x86_64
 	license = MIT
