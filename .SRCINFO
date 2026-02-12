@@ -1,6 +1,6 @@
 pkgbase = extension-downloader-git
 	pkgdesc = Download browser extensions for Firefox and Chromium-based browsers
-	pkgver = v0.1.0.r70.gb67797d
+	pkgver = v0.2.0.r21.g982d002
 	pkgrel = 1
 	url = https://github.com/michaeladler/extension-downloader
 	arch = i686
@@ -10,6 +10,9 @@ pkgbase = extension-downloader-git
 	license = Apache
 	makedepends = git
 	makedepends = cargo
+	makedepends = pkgconf
+	makedepends = openssl
+	depends = openssl
 	provides = extension-downloader
 	conflicts = extension-downloader
 	source = extension-downloader::git+https://github.com/michaeladler/extension-downloader

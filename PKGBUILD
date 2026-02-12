@@ -2,14 +2,14 @@
 
 _pkgname=extension-downloader
 pkgname=${_pkgname}-git
-pkgver=v0.1.0.r70.gb67797d
+pkgver=v0.2.0.r21.g982d002
 pkgrel=1
 pkgdesc='Download browser extensions for Firefox and Chromium-based browsers'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://github.com/michaeladler/extension-downloader'
 license=('Apache')
-depends=()
-makedepends=('git' 'cargo')
+depends=('openssl')
+makedepends=('git' 'cargo' 'pkgconf' 'openssl')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("${pkgname%-*}::git+$url")
