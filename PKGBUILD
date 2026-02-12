@@ -93,7 +93,9 @@ prepare() {
         signaturefile="$srcdir/$_pkgname-manifest-$maintainer-v$_pkgver.txt.sig"
         curl -fLso "$signaturefile" \
             "https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-$maintainer-v$_pkgver.sig" \
-            || continue
+        || curl -fLso "$signaturefile" \
+            "https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-$maintainer-v$_pkgver.txt.sig" \
+        || continue
 
         echo "[32mFound signature from $maintainer[0m"
 
