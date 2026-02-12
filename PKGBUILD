@@ -3,7 +3,7 @@ pkgname=handy
 pkgver=0.7.5
 # git rev-parse "v$pkgver"
 _tag=36c29b66288e81099d35a1a712e586573c462cd4
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source and extensible speech-to-text application that works completely offline"
 arch=(x86_64 aarch64)
 url="https://github.com/cjpais/Handy"
@@ -35,6 +35,7 @@ makedepends=(
   pwgen
   shaderc
   vulkan-headers
+  gtk-layer-shell
 )
 options=('!lto')
 optdepends=(

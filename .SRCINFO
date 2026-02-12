@@ -1,7 +1,7 @@
 pkgbase = handy
 	pkgdesc = Open source and extensible speech-to-text application that works completely offline
 	pkgver = 0.7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cjpais/Handy
 	arch = x86_64
 	arch = aarch64
@@ -17,6 +17,7 @@ pkgbase = handy
 	makedepends = pwgen
 	makedepends = shaderc
 	makedepends = vulkan-headers
+	makedepends = gtk-layer-shell
 	depends = alsa-lib
 	depends = cairo
 	depends = gcc-libs
