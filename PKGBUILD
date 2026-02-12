@@ -1,6 +1,6 @@
 # Maintainer: Aptivi <ceo at aptivi dot anonaddy dot com>
-pkgname=nitrocid-28-lite
-pkgver=4.0.28.45+0.2.0.0
+pkgname=nitrocid-28-git
+pkgver=v0.1.2.r26.bac0d5fd3
 pkgrel=1
 pkgdesc="Simulates our future-planned kernel"
 arch=('x86_64' 'aarch64')
@@ -13,11 +13,16 @@ optdepends=('jack2: Jack support for BassBoom addon'
 			'openal: OpenAL support for BassBoom addon'
 			'sdl2: SDL support for BassBoom addon'
 			'libpulse: PulseAudio support for BassBoom addon')
-provides=("${pkgname}-git" "${pkgname%-lite}" "${pkgname%-lite}-git")
-conflicts=("${pkgname}-git" "${pkgname%-lite}" "${pkgname%-lite}-git")
+provides=("${pkgname%-git}" "${pkgname%-git}-lite" "${pkgname}-lite")
+conflicts=("${pkgname%-git}" "${pkgname%-git}-lite" "${pkgname}-lite")
 options=('!strip')
-source=("${pkgname}::git+https://github.com/Aptivi/Nitrocid#tag=v0.2.0")
+source=("${pkgname}::git+https://github.com/Aptivi/Nitrocid#branch=main")
 sha256sums=('SKIP')
+
+pkgver() {
+	cd "${pkgname}"
+	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+}
 
 prepare() {
 	cd "${pkgname}"
@@ -28,7 +33,7 @@ prepare() {
 
 build() {
 	cd "${pkgname}"
-	make all-offline BUILDARGS="-p:NKSLITE=true"
+	make all-offline
 }
 
 package() {
