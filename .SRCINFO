@@ -1,6 +1,6 @@
 pkgbase = anneal-bin
 	pkgdesc = Proactive AUR rebuild management for Arch Linux (prebuilt binary)
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/MarkWells-Dev/Anneal
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = anneal-bin
 	provides = anneal
 	conflicts = anneal
 	conflicts = anneal-git
-	source = anneal-0.2.4-x86_64::https://github.com/MarkWells-Dev/Anneal/releases/download/v0.2.4/anneal-x86_64-linux
-	source = anneal-trigger-0.2.4.hook::https://github.com/MarkWells-Dev/Anneal/releases/download/v0.2.4/anneal-trigger.hook
-	source = LICENSE-0.2.4::https://github.com/MarkWells-Dev/Anneal/raw/v0.2.4/LICENSE
-	sha256sums = 68ff79b9ccbfdd0f5654028730a75c5559ba420b29afd2da0057653977c63e4f
+	source = anneal-0.2.5-x86_64::https://github.com/MarkWells-Dev/Anneal/releases/download/v0.2.5/anneal-x86_64-linux
+	source = anneal-trigger-0.2.5.hook::https://github.com/MarkWells-Dev/Anneal/releases/download/v0.2.5/anneal-trigger.hook
+	source = LICENSE-0.2.5::https://github.com/MarkWells-Dev/Anneal/raw/v0.2.5/LICENSE
+	sha256sums = 3c99e753ca798dd429b1820f0e642f072f63ab6f06fc0bb1c39d6724463f5689
 	sha256sums = 10cfa2ed5510c7535437ac54097137262841131717ac73a221c5ebde3d050e88
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 
