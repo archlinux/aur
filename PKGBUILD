@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _npmname=nbb
-_npmver=1.3.205
+_npmver=1.4.206
 
 pkgname=${_npmname}
 pkgdesc="Scripting in Clojure on Node.js using SCI"
@@ -20,7 +20,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('570f982f07607b3b3a7fa3ef03ab8fb93122acb7a4f521ff9a7d397aed5b20a71d382141ec9ccdd33dad737b43fce17edca6619274a4941f4dd8ad5549c71efe')
+b2sums=('b92992f56c4a9397adaa695d7eaae87e9133f1bd16f04bdf9ed1c283ad56f80833efb458f38d62131d404922a061904c28ae04502730013309fac8b39bba6d56')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
