@@ -1,7 +1,7 @@
 # Maintainer: Setpill
 pkgname=lnd-bin
 _pkgname=lnd
-pkgver=0.20.0_beta
+pkgver=0.20.1_beta
 _pkgver="${pkgver//_/-}"
 __pkgver="${_pkgver//\./\\\.}"
 pkgrel=1
@@ -32,10 +32,10 @@ sha512sums=(
     '49de7041d5c7448a8f5cc387e4e820eca2a87c02b70d5a38aa3823354d960843e93ca12bd8b66a13708937539da85b90328bd4c32575792f0aa6755a011ba4bb'
 )
 sha512sums_x86_64=(
-    'f403f8d73e75506c536165a1c717d9fd6601d91ca29642ee714bfd99ae13010ab95b393744d000c4b34c91cab18c4292e013ab13077236744c3687fbec95e16c'
+    'f504ff6b080080fce827d38b1ab4d82370cb90dcba1d86cf851015fc66e061f8470aaaedbc7aac664b0db0e70a5629c9bf9bb3f12f45fb1c50c7def0a03f2638'
 )
 sha512sums_aarch64=(
-    '9b974590dcaa8018264de847678ddbbea70c42d54327694f32efa1426e49d51cf12726c46ac8f8d1c902e09336a8c51b674ceaabf2059052139be210a5657a8e'
+    'c7969e452a93bf40d07c640dfdc549989ae4d7007cb6f027ff1f08cecc74504abdcf48e58a33e512eeae66a4a142303fb8f9618283565914b2d6d870a26402bf'
 )
 
 # This is a binary package, build flags do not apply
