@@ -38,7 +38,7 @@ package() {
   # Fix per user cache not working
   mkdir -p "${pkgdir}/usr/lib/kotlin-native/klib/cache/linux_x64STATIC-pl"
   mkdir -p "${pkgdir}/usr/lib/kotlin-native/klib/cache/linux_x64STATIC"
-  mkdir -p "${pkgdir}/usr/lib/kotlin-native/klib/cache/linux_x64STATIC-system"  
+  mkdir -p "${pkgdir}/usr/lib/kotlin-native/klib/cache/linux_x64STATIC-system"
   # Fix global cache permissions
   chmod -R u+wr "${pkgdir}/usr/lib/kotlin-native/klib/cache/"
   mkdir -p "${pkgdir}/usr/lib/kotlin-native/klib/cache/linux_x64STATIC-user-pl"
