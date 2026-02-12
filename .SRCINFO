@@ -1,7 +1,7 @@
 pkgbase = grab-bin
 	pkgdesc = Asynchronous file downloader.
 	pkgver = 2.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/skorotkiewicz/grab
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,7 @@ pkgbase = grab-bin
 	depends = glibc
 	provides = grab
 	conflicts = grab
+	options = !debug
 	source = LICENSE
 	sha256sums = 184086b302ece79e686ac701ca404fe7a49499626c82f684dce1b820af59710c
 	source_x86_64 = grab-x86_64::https://github.com/skorotkiewicz/grab/releases/download/v2.1.2/grab-linux-x86_64

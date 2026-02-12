@@ -2,7 +2,7 @@
 
 pkgname=grab-bin
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Asynchronous file downloader."
 arch=('x86_64' 'aarch64')
 url="https://github.com/skorotkiewicz/grab"
@@ -10,6 +10,7 @@ license=('MIT')
 depends=('gcc-libs' 'glibc')
 provides=('grab')
 conflicts=('grab')
+options=('!debug')
 
 source=('LICENSE')
 source_x86_64=("grab-x86_64::$url/releases/download/v$pkgver/grab-linux-x86_64")
