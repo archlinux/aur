@@ -10,6 +10,7 @@ conflicts=()
 _pkgname="${pkgname}"
 __pkgname=konform
 _ffsrcver=140.7.0
+_ffbuild=0
 _l10n_commit=c857bb7d5e043b8bd8658e1fafa54a4baa9d3f0e
 _moz_build_id=20260106170501
 _lwrelver=108
@@ -17,6 +18,11 @@ pkgver="${_ffsrcver}.${_lwrelver}"
 pkgrel=3
 pkgdesc="Firefox fork (LibreWolf-base) with increased customizability and security"
 url="https://codeberg.org/konform-browser/source"
+if [[ "$_ffbuild" == "0" ]]; then
+  : "${_ffsrcurl:="https://archive.mozilla.org/pub/firefox/releases/${_ffsrcver}esr"}"
+else
+  : "${_ffsrcurl:="https://archive.mozilla.org/pub/firefox/candidates/${_ffsrcver}esr-candidates/build${_ffbuild}"}"
+fi
 arch=(x86_64 aarch64)
 license=(MPL-2.0)
 
@@ -131,8 +137,8 @@ _tag="${_ffsrcver}.${_lwrelver}"
 _ff_source_tarball="firefox-${_ffsrcver}esr.source.tar.xz"
 source=(
   "src"::"git+https://codeberg.org/konform-browser/source.git#tag=${_tag}"
-  "${_ff_source_tarball}"::"https://archive.mozilla.org/pub/firefox/releases/${_ffsrcver}esr/source/${_ff_source_tarball}"
-  "${_ff_source_tarball}.asc"::"https://archive.mozilla.org/pub/firefox/releases/${_ffsrcver}esr/source/${_ff_source_tarball}.asc"
+  "${_ff_source_tarball}"::"${_ffsrcurl}/source/${_ff_source_tarball}"
+  "${_ff_source_tarball}.asc"::"${_ffsrcurl}/source/${_ff_source_tarball}.asc"
   "firefox-l10n-${_l10n_commit}.tar.gz"::"https://github.com/mozilla-l10n/firefox-l10n/archive/$_l10n_commit.tar.gz"
   "${__pkgname}.desktop"
   "default192x192.png"
