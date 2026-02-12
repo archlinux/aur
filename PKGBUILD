@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=DeepEcho
 pkgname=python-${_base,,}
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Create sequential synthetic data of mixed types using a GAN"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(python-pytorch python-tqdm)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest python-tomli python-invoke)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('4f97e361d74b30a60123bc7e94ad600788f8b6419508ce7e1521973ff50556bd4352ecc0f589762ed2251a75f61aacb43d12fb2ac4dd0f7a98111aca38e8cabe')
+sha512sums=('bfecf9f9e6b9c30fb5dcb1d17343b483ba7dc772b9f0c4d576dea6ee023f031ac9f64dec4f2e1781781f1801978503537392b21284d9693a409ebc3f5e858641')
 
 build() {
   cd ${_base}-${pkgver}
