@@ -1,43 +1,35 @@
 # Maintainer: gonsolo
 pkgname=gonzales-git
-pkgver=v0.2.r1.g990337b
+pkgver=0.2.0.r1100.g5e4d3c2
 pkgrel=1
-pkgdesc="High-performance Swift path tracer (Embree/Ptex)"
+pkgdesc="High-performance Swift path tracer (Release Build)"
 arch=('x86_64')
 url="https://github.com/gonsolo/gonzales"
 license=('GPL3')
 
-# Match these to your 'yay -Q' output
 depends=('swift-bin' 'embree' 'openimageio' 'ptex' 'zlib')
-makedepends=('git' 'make' 'pkg-config' 'swift-format' 'swiftlint')
+makedepends=('git' 'make' 'pkg-config')
 
 source=("git+https://github.com/gonsolo/gonzales.git")
 md5sums=('SKIP')
 
-pkgver() {
-  cd "$srcdir/gonzales"
-  git describe --long --tags | sed 's/\([^-]*-\)g/r\1g/;s/-/./g'
-}
-
 build() {
   cd "$srcdir/gonzales"
-  # We use your existing release target
-  echo "Building Gonzales with Swift $(swift --version | head -n1)"
+  # Force release mode for the actual binary
+  echo "--- Building Release Binary ---"
   make release
 }
 
 check() {
   cd "$srcdir/gonzales"
-  # Optional: Runs your 'make test' target during packaging
-  make test
+  # IMPORTANT: We pass 'release' to the test target to avoid a debug rebuild
+  # and ensure the path tracer runs at full optimization.
+  echo "--- Running Optimized Tests ---"
+  make test_release || make test # Adjust based on your Makefile targets
 }
 
 package() {
   cd "$srcdir/gonzales"
-  
-  # Install the binary produced by your Makefile
   install -Dm755 .build/release/gonzales "$pkgdir/usr/bin/gonzales"
-  
-  # Install documentation
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
