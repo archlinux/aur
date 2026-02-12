@@ -41,13 +41,11 @@ build: PKGBUILD .buildenvid
 	$(BUILDENV) <<EOF
 	namcap PKGBUILD
 	makepkg --noconfirm -C -s -f
-	makepkg --noconfirm -i
 	makepkg --packagelist | xargs namcap
 	EOF
 
-test: .buildenvid
+test: .buildenvid build
 	$(BUILDENV) <<EOF
-	makepkg --packagelist | xargs namcap
 	makepkg --noconfirm -i
 	exfetch
 	EOF
