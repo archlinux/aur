@@ -1,6 +1,6 @@
 # Maintainer: Mark Wells <contact@markwells.dev>
 pkgname=anneal-bin
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="Proactive AUR rebuild management for Arch Linux (prebuilt binary)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
     "anneal-trigger-$pkgver.hook::$url/releases/download/v$pkgver/anneal-trigger.hook"
     "LICENSE-$pkgver::$url/raw/v$pkgver/LICENSE"
 )
-sha256sums=('3c99e753ca798dd429b1820f0e642f072f63ab6f06fc0bb1c39d6724463f5689'
+sha256sums=('9ebfe98840e044ccd7d3e036ad42b94c7b1260cd9fffa4248f04fc65d487a46a'
             '10cfa2ed5510c7535437ac54097137262841131717ac73a221c5ebde3d050e88'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
