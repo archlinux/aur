@@ -104,12 +104,14 @@ _replacesarchkernel=("${_replacesarchkernel[@]/\%/${pkgbase#linux-libre}}")
 _replacesoldkernels=("${_replacesoldkernels[@]/\%/${pkgbase#linux-libre}}")
 _replacesoldmodules=("${_replacesoldmodules[@]/\%/${pkgbase#linux-libre}}")
 
-export KBUILD_BUILD_HOST=parabola
+export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
   cd $_srcname
+
+  sed -i 's/\(override CFLAGS += \)-Werror\(.*\)/\1\2/g' tools/lib/bpf/Makefile
 
   if [ "${_srcname##*-}" != "${pkgver%.*}" ]; then
     echo "Applying upstream patch..."
@@ -157,7 +159,8 @@ build() {
   make htmldocs &
   local pid_docs=$!
 
-  make all
+  make HOSTCFLAGS+="-Wno-error=discarded-qualifiers" \
+    KCFLAGS+="-Wno-error=discarded-qualifiers" all
   make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
   wait "${pid_docs}"
 }
