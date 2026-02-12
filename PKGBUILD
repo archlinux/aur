@@ -1,4 +1,4 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 # Contributor: Wenxuan Zhang <wenxuangm at gmail dot com>
 # Contributor: éclairevoyant
 
@@ -8,14 +8,17 @@ pkgname=${_pkgname}-bin
 pkgver=1.3.4
 pkgrel=1
 pkgdesc='High performance CSV viewer with CJK/emoji support'
+
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
 arch=('x86_64' 'i686' 'aarch64')
 license=('Apache' 'MIT')
+
 depends=('glibc' 'gcc-libs')
 makedepends=('help2man')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
+
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-${arch[0]}-unknown-linux-gnu.tar.gz")
 source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-${arch[1]}-unknown-linux-gnu.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-${arch[2]}-unknown-linux-gnu.tar.gz")
