@@ -3,7 +3,7 @@
 _pkgbase=librempeg
 pkgname=librempeg-git
 pkgver=r124983.f986adf
-pkgrel=7
+pkgrel=8
 pkgdesc='A complete, cross-platform solution to record, convert, filter and stream audio and video. '
 arch=('x86_64')
 url='https://github.com/librempeg/librempeg'
@@ -124,6 +124,10 @@ pkgver() {
 
 build() {
   export PKG_CONFIG_PATH='/usr/lib/mbedtls2/pkgconfig'
+
+  # to find pod2man
+  export PATH=/usr/bin/core_perl:$PATH
+
   cd librempeg
   ./configure \
     --prefix=/usr \
