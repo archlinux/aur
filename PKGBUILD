@@ -1,5 +1,5 @@
 pkgname=nettui
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Unified TUI for Wi-Fi and Ethernet"
 arch=("x86_64")
@@ -8,7 +8,7 @@ license=("GPL-3.0-only")
 depends=("glibc" "gcc-libs")
 makedepends=("cargo")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("46956efc63d8ffbe968d06c4fa5a0178f9d7d0c32e83a92f41f563276fc0f2d0")
+sha256sums=("87efbbd87f5e3666cc7183b3e607a9510e83787a5a7ea46c59f810bd54e2e114")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -19,5 +19,6 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   install -Dm755 "target/release/nettui" "${pkgdir}/usr/bin/nettui"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/nettui/README.md"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/nettui/LICENSE"
   install -Dm644 "config/keybinds.toml.example" "${pkgdir}/usr/share/doc/nettui/keybinds.toml.example"
 }
