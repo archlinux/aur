@@ -5,7 +5,7 @@
 pkgname='fender-studio-pro-8'
 pkgver='8.0.1.110379'
 pkgrel='1'
-pkgdesc='Studio Pro is a digital audio workstation (DAW) application, used to create, record, mix and master music and other audio, with functionality also available for video.'
+pkgdesc='Digital audio workstation (DAW), used to create, record, mix and master music'
 arch=('x86_64')
 url='https://www.fender.com/redirects/studiopro_product_page'
 license=('custom')
