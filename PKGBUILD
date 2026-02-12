@@ -1,9 +1,9 @@
 # Maintainer: John Regan <john@jrjrtech.com>
 pkgname=fluux-messenger
-pkgver=0.12.1
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="A fast, modern, cross-platform XMPP client for communities and organizations."
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://www.process-one.net/fluux/"
 license=('AGPL-3.0-or-later')
 depends=(
@@ -30,7 +30,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/processone/fluux-messenger/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  '10be94e9df346e10473c2e8e895065bc953a0b31262961f7fb6276031e99d17e'
+  '4da490b4e1bd8c515d8647b4d7c5ba144624ced5e05e05e5ced014e48fd1a953'
 )
 
 prepare() {
@@ -59,7 +59,7 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
     install -Dm755 apps/fluux/src-tauri/target/release/fluux "$pkgdir"/usr/bin/fluux-messenger
-    install -Dm644 debian/fluux-messenger.desktop -t "$pkgdir"/usr/share/applications/
+    install -Dm644 packaging/debian/fluux-messenger.desktop -t "$pkgdir"/usr/share/applications/
     install -m755 -d "$pkgdir"/usr/share/icons/hicolor/512x512/apps
     rsvg-convert --width=512 --height=512 --keep-aspect-ratio assets/chat_icon.svg > "$pkgdir"/usr/share/icons/hicolor/512x512/apps/fluux-messenger.png
 }
