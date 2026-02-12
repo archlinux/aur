@@ -3,7 +3,7 @@
 _pkgauthor=Wilfred
 _pkgname=garden
 pkgname=${_pkgname}-bin
-pkgver=0.22.0
+pkgver=0.23.0
 pkgrel=1
 _pkgvername=${pkgver}
 pkgdesc="An interactive programming language"
@@ -21,7 +21,7 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${arch[0]}-unknown-linux-gnu.tar.gz")
 sha256sums=('56b326a30d59c674dcebc8ed4e3522972ea9cf9856270447c55e22145d772d9d'
             'd572b5bd48c0077a029b94d1c073e948b93599ba40d7df2b883ca4439f70f38b')
-sha256sums_x86_64=('21f5de59606699c519e1bc900eed2d6310b1baf4ddfe7c778fbcafd181f50673')
+sha256sums_x86_64=('0057e9b032f34bf353cddac22c7304b9d33fdc90d4b2a289f75d438e8e2a4ee4')
 
 
 package() {
