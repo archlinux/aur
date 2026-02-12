@@ -12,7 +12,7 @@ optdepends=(
 )
 makedepends=('imagemagick')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/benjamimgois/omnicom/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('42d5b681e4b8d60d55683597d35a0575f6a2ea1bc37d298898902b3b31196cbb')
+sha256sums=('baf2f04727719c70abe3b5717f3b3e8ccb992eebf40f027e3e3b0e495309c3dd')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -35,7 +35,7 @@ package() {
     done
 
     # Install vendor icons
-    for vendor in default generic cisco huawei juniper fortinet d-link h3c brocade datacom aruba linux mikrotik; do
+    for vendor in default cisco huawei juniper fortinet d-link h3c brocade datacom aruba linux mikrotik; do
         install -Dm644 "assets/vendors/${vendor}.svg" "${pkgdir}/usr/share/omnicom/vendors/${vendor}.svg"
     done
 
