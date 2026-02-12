@@ -3,7 +3,7 @@
 _pkgauthor=Fruchix
 _pkgname=star
 pkgname=${_pkgname}-bin
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="A Unix command line bookmark manager"
@@ -17,7 +17,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums_x86_64=('f477b43359d14df86ced45a072a4da19316195bba3d2cc9664a7e7d3468fccc5')
+sha256sums_x86_64=('adc1e56d83bc24ce776277bd268a0bc640ea5a9e532338f8aa26e8766f715dbe')
 
 build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}" || exit
