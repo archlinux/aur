@@ -1,0 +1,19 @@
+pkgbase = pageguard
+	pkgdesc = A tool for saving HTML-pages with all resources embedded
+	pkgver = 0.1.0
+	pkgrel = 0
+	url = https://gitlab.com/os-18/pageguard
+	arch = x86_64
+	license = BSL-1.0
+	makedepends = bash
+	makedepends = chrpath
+	makedepends = findutils
+	makedepends = glib2
+	makedepends = amalthea-ldc2
+	makedepends = ldc
+	depends = glib2
+	depends = amalthea-ldc2
+	source = pageguard-0.1.0.tar.gz::https://gitlab.com/os-18/pageguard/-/archive/v0.1.0/pageguard-v0.1.0.tar.gz
+	sha256sums = b7055909787cb313f29f9dc3865ade61d037ec3bfbd0f35e842db6bb9aa33930
+
+pkgname = pageguard
