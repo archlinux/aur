@@ -1,6 +1,6 @@
 pkgbase = i8kutils
 	pkgdesc = Fan control for Dell laptops
-	pkgver = 1.58
+	pkgver = 1.60
 	pkgrel = 1
 	url = https://github.com/Wer-Wolf/i8kutils
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = i8kutils
 	makedepends = meson
 	depends = tcl
 	depends = tcllib
-	optdepends = acpi: for i8kmon to read the battery status
+	depends = acpi
 	backup = etc/i8kutils/i8kmon.conf
 	backup = etc/modprobe.d/dell-smm-hwmon.conf
-	source = i8kutils-1.58.tar.gz::https://github.com/Wer-Wolf/i8kutils/archive/refs/tags/v1.58.tar.gz
-	sha256sums = 9ef28ca21a8f9ba41b74893143d25540cd3bba949a6b214563eda5740bab5be3
+	source = i8kutils-1.60.tar.gz::https://github.com/Wer-Wolf/i8kutils/archive/refs/tags/v1.60.tar.gz
+	sha256sums = a46d9083ed99f0e123805143959ed15f62ffcb37dfea20c21484071b2cfddff2
 
 pkgname = i8kutils
