@@ -1,0 +1,18 @@
+pkgbase = xytz-bin
+	pkgdesc = A Beautiful TUI YouTube Downloader app
+	pkgver = 0.7.7
+	pkgrel = 1
+	url = https://github.com/xdagiz/xytz
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = yt-dlp
+	depends = ffmpeg
+	provides = xytz
+	conflicts = xytz
+	source_x86_64 = xytz-x86_64-0.7.7.tgz::https://github.com/xdagiz/xytz/releases/download/v0.7.7/xytz-v0.7.7-linux-amd64.tar.gz
+	sha256sums_x86_64 = 8cff6ac83d7b71fe3f12ac810150294f029728893468ea6da08e1c41fc70894a
+	source_aarch64 = xytz-aarch64-0.7.7.tgz::https://github.com/xdagiz/xytz/releases/download/v0.7.7/xytz-v0.7.7-linux-arm64.tar.gz
+	sha256sums_aarch64 = 2fbfc6c35d041db1beb0dcb6240856141968d0bdf1710a6550402acff197c50d
+
+pkgname = xytz-bin

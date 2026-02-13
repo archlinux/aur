@@ -1,0 +1,5 @@
+[xytz-bin]
+source = "github"
+github = "xdagiz/xytz"
+use_latest_release = true
+prefix = "v"
