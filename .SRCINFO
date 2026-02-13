@@ -1,7 +1,7 @@
 pkgbase = packwitch-manager
 	pkgdesc = minecraft modpack management tool
 	pkgver = 0.1b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/packwitch/packwitch
 	arch = x86_64
 	license = LGPL-3.0-or-later
@@ -11,6 +11,6 @@ pkgbase = packwitch-manager
 	provides = packwitch-manager
 	conflicts = packwitch-manager
 	source = git+https://codeberg.org/packwitch/packwitch
-	sha256sums = 9c7f861ac83b554682141644fad38dbf4ac962162b4e9cb50774e323d22cdad2
+	sha256sums = SKIP
 
 pkgname = packwitch-manager

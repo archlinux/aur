@@ -2,7 +2,7 @@
 
 pkgname=packwitch-manager
 pkgver=0.1b
-pkgrel=1
+pkgrel=2
 pkgdesc="minecraft modpack management tool"
 arch=('x86_64')
 url="https://codeberg.org/packwitch/packwitch"
@@ -17,7 +17,7 @@ makedepends=(
 )
 
 source=("git+https://codeberg.org/packwitch/packwitch")
-sha256sums=('9c7f861ac83b554682141644fad38dbf4ac962162b4e9cb50774e323d22cdad2')
+sha256sums=('SKIP')
 
 build() {
     cd "$srcdir/packwitch"
