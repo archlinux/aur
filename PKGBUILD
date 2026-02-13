@@ -1,38 +1,55 @@
 # Maintainer: Renat Gorbushin <lis@lis314.ru>
+# Contributor: Lolle2000la
 pkgname=amd-container-toolkit
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Offers tools that streamline the use of AMD GPUs with containers."
 arch=('x86_64')
 url="https://github.com/ROCm/container-toolkit"
 license=('Apache-2.0')
 depends=('docker')
-checkdepends=('go')
+makedepends=('go' 'git')
 _srcname=container-toolkit
-source=("${pkgname}-${pkgver}.tar.gz"::https://github.com/ROCm/container-toolkit/archive/refs/tags/v${pkgver}.tar.gz,
-		'docker-rootless.patch')
-sha256sums=('1b4a07f4775aa4538db28c5340c1b917355d3ff3c4a427ddeb349368271e4cf1'
-            'a5e338acd28048cf3029ba83f737fc44ad1ad5e0bdc76109409169fa23ce06a6')
+source=("${pkgname}-${pkgver}.tar.gz"::https://github.com/ROCm/container-toolkit/archive/refs/tags/v${pkgver}.tar.gz)
+sha256sums=('1b4a07f4775aa4538db28c5340c1b917355d3ff3c4a427ddeb349368271e4cf1')
 
 prepare() {
-	if docker info -f "{{println .SecurityOptions}}" | grep rootless >/dev/null; then
-		echo "Docker is running in rootless mode, applying patch"
-		patch -d "${_srcname}-${pkgver}" -Np1 -i ../docker-rootless.patch
-	fi
+    mkdir -p "${srcdir}/${_srcname}-${pkgver}/bin/deb"
 }
 
 build() {
-	cd "${srcdir}/${_srcname}-${pkgver}"
-	make
+    cd "${srcdir}/${_srcname}-${pkgver}"
+
+    local _build_date=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+    local _ldflags="-X main.Version=${pkgver} -X main.GitCommit=v${pkgver} -X main.BuildDate=${_build_date}"
+
+    CGO_ENABLED=0 go build \
+        -trimpath \
+        -ldflags "-s -w ${_ldflags}" \
+        -o bin/deb/amd-container-runtime \
+        ./cmd/container-runtime
+
+    CGO_ENABLED=0 go build \
+        -trimpath \
+        -ldflags "-s -w ${_ldflags}" \
+        -o bin/deb/amd-ctk \
+        ./cmd/amd-ctk
 }
 
 check() {
-	cd "${_srcname}-${pkgver}"
-	make test
+    cd "${srcdir}/${_srcname}-${pkgver}"
+    # Required for cmd/amd-ctk integration tests
+    export AMD_CTK_PATH="${PWD}/bin/deb/amd-ctk"
+    go test ./...
 }
 
 package() {
-	cd "${_srcname}-${pkgver}"
-	install -Dm755 bin/deb/amd-container-runtime "${pkgdir}/usr/local/bin/amd-container-runtime"
-	install -Dm755 bin/deb/amd-ctk "${pkgdir}/usr/local/bin/amd-ctk"
+    cd "${srcdir}/${_srcname}-${pkgver}"
+
+    install -Dm755 bin/deb/amd-container-runtime "${pkgdir}/usr/local/bin/amd-container-runtime"
+    install -Dm755 bin/deb/amd-ctk "${pkgdir}/usr/local/bin/amd-ctk"
+
+    if [ -f LICENSE ]; then
+        install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    fi
 }
