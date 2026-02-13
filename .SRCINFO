@@ -1,13 +1,13 @@
 pkgbase = vex-tui-bin
 	pkgdesc = A beautiful, fast, and feature-rich terminal-based Excel and CSV viewer
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/CodeOne45/vex-tui
 	arch = x86_64
 	license = MIT
 	provides = vex-tui
 	conflicts = vex-tui
-	source = https://github.com/CodeOne45/vex-tui/releases/download/v2.0.1/vex-tui_2.0.1_linux_amd64.tar.gz
-	sha256sums = d83d411cd45b4081d170db6e77d38d46e3c341332fad3e59011167ebd2f50e41
+	source = https://github.com/CodeOne45/vex-tui/releases/download/v2.0.2/vex-tui_2.0.2_linux_amd64.tar.gz
+	sha256sums = c79bb2f5d18426372ef46bd5ecb23f8de74c50366a45da9cb4729d8946fcf819
 
 pkgname = vex-tui-bin
