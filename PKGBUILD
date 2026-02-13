@@ -1,7 +1,7 @@
 # Maintainer: Guoyi <kuoi@bioarchlinux.org>
 
 _pkgname=fillpattern
-_pkgver=1.0.2
+_pkgver=1.0.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//[:-]/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b52ba67e478a8d7d37c22f708fb6af31')
-b2sums=('b623e94d844c73484ed04c1a7fef0654b1a76c4fc62bab296d576bc81410048a3ce48ad0816873eb57484169460644c136f5f970fc11e40fcab34d82fce5f0e1')
+md5sums=('c0258b0c108644a2b1c76abcbb2fb498')
+b2sums=('250dd109b1601f22eb90f4383c039f9c6d2c2fb2d876939014dc729870b64cf519839e771bfa11cadaefdd4b174e82d03530cff5cea1b064392bce3daffb47c7')
 
 build() {
   mkdir build
