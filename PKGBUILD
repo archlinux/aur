@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='Sequel to the original Bugdom'
 arch=(x86_64)
 url='https://github.com/jorio/Bugdom2'
-license=('custom:CC-BY-NC-SA-4.0')
+license=(CC-BY-NC-SA-4.0)
 depends=(
   'glibc'
   'gcc-libs'
