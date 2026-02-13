@@ -1,5 +1,5 @@
 pkgbase = pacod
-	pkgdesc = Very simple script for optional list of Pacman dependencies.
+	pkgdesc = List optional dependencies (optdepends) of pacman packages and groups
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/elppans/pacod
