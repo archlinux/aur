@@ -5,13 +5,13 @@
 
 pkgname=mozc
 pkgver=3.33.6089
-pkgrel=1
+pkgrel=2
 pkgdesc='The Open Source edition of Google Japanese Input'
 arch=('x86_64')
 url='https://github.com/google/mozc'
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary')
 depends=('qt6-base')
-makedepends=('git' 'python')
+makedepends=('git' 'mold' 'python')
 optdepends=('fcitx5-mozc-ut: Fcitx5 integration'
             'ibus-mozc: IBus integration'
             'emacs-mozc: Emacs integration')
@@ -160,8 +160,7 @@ build() {
         --copt '-U_FORTIFY_SOURCE' \
         $(echo "${CFLAGS}"|xargs -n1 echo "--conlyopt") \
         $(echo "${CXXFLAGS}"|xargs -n1 echo "--cxxopt") \
-        --nostart_end_lib \
-        --linkopt '-fuse-ld=bfd' \
+        --linkopt '-fuse-ld=mold' \
         $(echo "${LDFLAGS}"|xargs -n1 echo "--linkopt") \
         --subcommands \
         --verbose_failures
