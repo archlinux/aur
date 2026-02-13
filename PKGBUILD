@@ -7,7 +7,7 @@ pkgdesc="Local-first markdown note-taking app built with Rust, Tauri, and Svelte
 arch=('x86_64')
 url="https://helixnotes.com"
 license=('AGPL-3.0-only')
-depends=('fuse2' 'gtk3' 'webkit2gtk-4.1')
+depends=('fuse2' 'gtk3')
 options=('!strip')
 source=("${_pkgname}_${pkgver}_amd64.AppImage::https://codeberg.org/ArkHost/HelixNotes/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.AppImage"
         "helixnotes.desktop")
