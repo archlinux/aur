@@ -1,5 +1,5 @@
 pkgbase = lambda-im-git
-	pkgdesc = Yet another XMPP client written in Go with GTK4
+	pkgdesc = Yet another XMPP client, written in Go with GTK4
 	pkgver = r36.713cb24
 	pkgrel = 1
 	url = https://forge.sunglocto.net/sunglocto/lambda
