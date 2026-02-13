@@ -1,6 +1,6 @@
 pkgbase = moc-mpris-bridge
 	pkgdesc = MPRIS bridge for Music On Console
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/azr4e1/moc-mpris-bridge
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = moc-mpris-bridge
 	license = MIT
 	makedepends = go
 	depends = moc-pulse
-	source = moc-mpris-bridge-0.2.1.tar.gz::https://github.com/azr4e1/moc-mpris-bridge/archive/v0.2.1.tar.gz
-	sha256sums = ccb9d824e76fa02107a08017fdf92d152092f9ca0ce84e297fbbd530c89423cb
+	source = moc-mpris-bridge-0.3.0.tar.gz::https://github.com/azr4e1/moc-mpris-bridge/archive/v0.3.0.tar.gz
+	sha256sums = ae957185d9664901d71c1498cf2976dc6aae3e64bd107ef859b05c344017c9c9
 
 pkgname = moc-mpris-bridge
