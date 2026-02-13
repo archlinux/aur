@@ -22,11 +22,13 @@ makedepends=(
 )
 source=(
 	"heartwood::git+https://seed.radicle.xyz/z3gqcJUoA1n9HaHKufZs5FCSGazv5.git"
+	"0001-build-work-around-sccache-do-not-read-SOURCE_DATE_EP.patch"
 	"radicle-node.system."{service,socket}
 	"radicle-node.user."{service,socket}
 	"radicle-node.dnssd"
 )
 b2sums=('SKIP'
+        'bd632d7337e8e5a8f8619c5ef872303b8c2b67bfb526e10b411776a7ffa16c92a0b9aad2f25c7d069133731d9b4520c66ec943ed4b6ba7b67167fc79722c2655'
         '14d3033ff232682b35d3f3a94436b86ad57f3be767e4681c18d1a8a4435968c31e0c36b5b617734035e75be144c99db7447be70741430962c614f0c17a59fecd'
         'ef60f99e65177accd1b34447dab134ad26b576050ff15c9bfd6483bacaef801106a6ff5694383b7446b366818b1545c6506ccd6d1b153532b99b15361ddd8e41'
         '18ade1de3d3195e8b4cfcb0c479d2f597b53cbb83bde559d69abd34587c8c45371c12e242621c92607c3202f2f4ee3fb21b462fc5150939f50744cc045baccff'
@@ -40,6 +42,9 @@ pkgver() {
 
 prepare() {
 	cd heartwood
+
+	# work around sccache brokenness around $SOURCE_DATE_EPOCH
+	git apply -3 "$srcdir/0001-build-work-around-sccache-do-not-read-SOURCE_DATE_EP.patch"
 
 	cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
