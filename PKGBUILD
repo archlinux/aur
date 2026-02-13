@@ -6,14 +6,13 @@ pkgname="hyperheadset-git"
 pkgver=1.3.0
 pkgrel=1
 pkgdesc="A CLI and tray application for monitoring and managing HyperX headsets."
-arch=(x86_64)
+arch=('x86_64')
 url="https://github.com/LennardKittner/HyperHeadset"
 license=('MIT')
 install=${pkgname}.install
 depends=(
   dbus
   systemd-libs
-  libcap
 )
 makedepends=(
   git
@@ -56,9 +55,9 @@ package() {
       -maxdepth 1 \
       -executable \
       -type f \
-      -exec install -Dm0755 -t "$pkgdir/usr/bin/" {} +
+      -exec install -Dm0755 -t "${pkgdir}/usr/bin/" {} +
 
-  install -Dm644 99-HyperHeadset.rules "$pkgdir/usr/lib/udev/rules.d/99-HyperHeadset.rules"
+  install -Dm644 99-HyperHeadset.rules "${pkgdir}/usr/lib/udev/rules.d/99-HyperHeadset.rules"
 
-  install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }

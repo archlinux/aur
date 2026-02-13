@@ -10,7 +10,6 @@ pkgbase = hyperheadset-git
 	makedepends = cargo
 	depends = dbus
 	depends = systemd-libs
-	depends = libcap
 	source = git+https://github.com/LennardKittner/HyperHeadset.git#tag=0ff337bcd9c21f304f1fa11356a342ee0a4543b8?signed
 	validpgpkeys = 87035141D0BA5A7191A6583C41BBCCE087366453
 	md5sums = SKIP
