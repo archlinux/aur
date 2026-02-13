@@ -3,7 +3,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-nightly
-pkgver=149.0a1+20260117.1+hbfc2d43a6ac5
+pkgver=149.0a1+20260213.1+h06d48ece4edf
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser (Nightly version)"
 url="https://www.mozilla.org/firefox/channel/desktop/#nightly"
@@ -86,6 +86,8 @@ source=(
   $pkgname.desktop
   org.mozilla.$pkgname.metainfo.xml
   0001-Install-under-remoting-name.patch
+  0002-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
+  0003-Fix-sandbox-to-build-with-glibc-2.43.patch
 )
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
@@ -96,12 +98,16 @@ sha256sums=('SKIP'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
             '4304902899987928ea51b7020fb1298b01fa77e327ef66ab00b061f767042b9f'
             '9649563e8703b4f4b43469029fe20e3bd0c1209dbaa4c2d664c00e089abd7fa0'
-            'ef63a12975f108f30b00bb3290d9ca76f311d8af9c1d5dfc0d8335ad57e8f77c')
+            'd5380f8d8b908654d7816eaffa4ffa954f438cecac23fe650a399345904c9af7'
+            '104eda1333911402a6426f34cb194626c4cc4a94d7e5f3ae9c1e7f9003c3316d'
+            '8d2182ae8660474ac567482fe6658af77f3b402314e361c846528ae171586245')
 b2sums=('SKIP'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
         '9c748d4c330d37d10862c73b3092c0d4308030fb62ca80da56ba9b3c3350ba4d779570308d1dd8e2c7d873f269654b72030702c5abc772aabfdfe7f39320a8b9'
         '561d6fd3b394eee3242c1db12c0520e865488b3e5c1943a398994857b1fcad520ed4387ea93bc9402356649a0b3db6911bcd3a9f8d388bbe88a58a2efec0aa14'
-        'ff0ba11844e99ab1b1fed91d70c6f45837198ba43e77313c8b9c48a621e40c459953fc35283b6b6eafb5641510a5ce1e18ebda4d7d076f8212810391c0a9234b')
+        '09a880c88104c19c1efaa44716a4e03c5ae3adf5f573a6e2e7ae8f369f712c46f56432570fba52ba22c99f943da3278ffc1f8a5940c04917eace2db284526de4'
+        'b79aed2808c88d05a46f8b48012b3d543ba6a96016cf462f6357bc528dbea424a81c03118ea9f6f20c35a640558ef00205fc8a28c358f1dc4a0613e79ed550d3'
+        '87e514cb3d5045489176a6d335f23ef82fa7b2805f689d8e4d9090dccf426c432e862a5dd537d91ceab6cc0a531fef9aa31fa2526666926224fcfdbd86c991a9')
 
 # Google API keys (see https://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -135,6 +141,12 @@ prepare() {
 
   # Make different channels installable in parallel
   patch -Np1 -i ../0001-Install-under-remoting-name.patch
+
+  # Fix build with glibc 2.43
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1999625
+  patch -Np1 -i ../0002-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=2016618
+  patch -Np1 -i ../0003-Fix-sandbox-to-build-with-glibc-2.43.patch
 
   echo -n "$_google_api_key" >google-api-key
 
