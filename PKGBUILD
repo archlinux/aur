@@ -30,38 +30,30 @@ package() {
   cd squashfs-root
 
   # Install the main binary
-  install -Dm755 usr/bin/freesmlauncher "$pkgdir/usr/bin/freesmlauncher"
+  install -Dm755 bin/freesmlauncher "$pkgdir/usr/bin/freesmlauncher"
 
   # Install desktop file
-  install -Dm644 usr/share/applications/org.freesmlauncher.FreesmLauncher.desktop \
-    "$pkgdir/usr/share/applications/org.freesmlauncher.FreesmLauncher.desktop"
+  install -Dm644 share/applications/org.freesmTeam.freesmlauncher.desktop \
+    "$pkgdir/usr/share/applications/org.freesmTeam.freesmlauncher.desktop"
 
   # Install icons
-  for size in 16 24 32 48 64 128 256; do
-    install -Dm644 "usr/share/icons/hicolor/${size}x${size}/apps/org.freesmlauncher.FreesmLauncher.png" \
-      "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/org.freesmlauncher.FreesmLauncher.png"
-  done
+  install -Dm644 share/icons/hicolor/256x256/apps/org.freesmTeam.freesmlauncher.png \
+    "$pkgdir/usr/share/icons/hicolor/256x256/apps/org.freesmTeam.freesmlauncher.png"
 
-  # Install scalable icon
-  install -Dm644 usr/share/icons/hicolor/scalable/apps/org.freesmlauncher.FreesmLauncher.svg \
-    "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.freesmlauncher.FreesmLauncher.svg"
+  install -Dm644 share/icons/hicolor/scalable/apps/org.freesmTeam.freesmlauncher.svg \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.freesmTeam.freesmlauncher.svg"
 
   # Install metainfo
-  install -Dm644 usr/share/metainfo/org.freesmlauncher.FreesmLauncher.metainfo.xml \
-    "$pkgdir/usr/share/metainfo/org.freesmlauncher.FreesmLauncher.metainfo.xml"
+  install -Dm644 share/metainfo/org.freesmTeam.freesmlauncher.metainfo.xml \
+    "$pkgdir/usr/share/metainfo/org.freesmTeam.freesmlauncher.metainfo.xml"
 
   # Install mime type file with renamed package
-  install -Dm644 usr/share/mime/packages/modrinth-mrpack-mime.xml \
+  install -Dm644 share/mime/packages/modrinth-mrpack-mime.xml \
     "$pkgdir/usr/share/mime/packages/$pkgname.xml"
-
-  # Install man pages if they exist
-  if [ -d usr/share/man ]; then
-    cp -r usr/share/man "$pkgdir/usr/share/"
-  fi
 
   # Install libraries
   install -dm755 "$pkgdir/usr/lib/freesmlauncher"
-  cp -r usr/lib/* "$pkgdir/usr/lib/freesmlauncher/"
+  cp -r shared/lib/* "$pkgdir/usr/lib/freesmlauncher/"
 }
 
 # vim:set ts=2 sw=2 et:
