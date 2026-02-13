@@ -1,62 +1,85 @@
-# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
-
-# All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
-
+# Maintainer: nardholio
 pkgname=muffin-git
-pkgver=4.4.2.r16.g653eca5
+pkgver=6.6.3.r11.gf378f68d
 pkgrel=1
-pkgdesc="A window manager for GNOME"
-arch=('i686' 'x86_64')
+pkgdesc="Cinnamon window manager and compositor forked from Mutter (git version)"
+arch=(x86_64)
 url="https://github.com/linuxmint/muffin"
-license=('GPL')
-depends=('cinnamon-desktop' 'gobject-introspection-runtime' 'libcanberra' 'libinput'
-         'libsm' 'libxkbcommon-x11' 'startup-notification' 'zenity')
-makedepends=('git' 'intltool' 'gobject-introspection' 'gtk-doc')
-provides=("${pkgname%-git}=${pkgver}")
-conflicts=("${pkgname%-git}"
-           "cinnamon<4.2.0")
-options=('!emptydirs')
-source=("git+${url}.git")
-sha512sums=('SKIP')
+license=(GPL-2.0-or-later)
+depends=(
+  at-spi2-atk
+  at-spi2-core
+  cairo
+  cjs
+  clutter
+  colord
+  dconf
+  gdk-pixbuf2
+  glib2
+  gnome-desktop
+  gnome-settings-daemon
+  gobject-introspection-runtime
+  graphene
+  gst-plugins-base
+  gstreamer
+  gtk3
+  json-glib
+  libcanberra
+  libgudev
+  libice
+  libinput
+  libpipewire
+  libsm
+  libx11
+  libxcomposite
+  libxcursor
+  libxdamage
+  libxext
+  libxfixes
+  libxi
+  libxkbcommon-x11
+  libxrandr
+  libxrender
+  pango
+  pipewire
+  startup-notification
+  wayland
+  xorg-xwayland
+)
+makedepends=(
+  git
+  gobject-introspection
+  meson
+  samurai
+  sysprof
+)
+provides=(muffin libmuffin-0)
+conflicts=(muffin)
+replaces=(muffin)
+options=(!emptydirs)
+source=("git+https://github.com/linuxmint/muffin.git")
+b2sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}"/${pkgname%-git}
-
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd muffin
+  git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' 2>/dev/null \
+    | sed 's/\([^-]*-g\)/r\1/;s/-/./g' \
+    || printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    cd "${srcdir}"/${pkgname%-git}
-
-    NOCONFIGURE=1 ./autogen.sh
+  cd muffin
+  # No patches needed
 }
 
 build() {
-    cd "${srcdir}"/${pkgname%-git}
-
-    ./configure --prefix=/usr \
-                --sysconfdir=/etc \
-                --libexecdir=/usr/lib/muffin \
-                --localstatedir=/var \
-                --disable-gtk-doc \
-                --disable-static \
-                --disable-schemas-compile \
-                --enable-compile-warnings=minimum
-
-    #https://bugzilla.gnome.org/show_bug.cgi?id=656231
-    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-
-    make
+  arch-meson muffin build \
+    --libexecdir lib/muffin \
+    -D introspection=true \
+    -D installed_tests=false
+  meson compile -C build
 }
 
 package() {
-    cd "${srcdir}"/${pkgname%-git}
-
-    make DESTDIR="${pkgdir}" install
-
-    # Remove unused stuff
-    make -C src DESTDIR="${pkgdir}" uninstall-binPROGRAMS uninstall-desktopfilesDATA
-    make -C src/tools DESTDIR="${pkgdir}" uninstall
-    make -C src/compositor/plugins DESTDIR="${pkgdir}" uninstall
-    make -C doc/man DESTDIR="${pkgdir}" uninstall
+  meson install -C build --destdir "$pkgdir"
 }
