@@ -68,6 +68,7 @@ build()
 		-DKICAD_I18N_UNIX_STRICT_PATH=ON \
 		-DKICAD_INSTALL_DEMOS=ON \
 		-DKICAD_BUILD_QA_TESTS=OFF \
+		-DKICAD_CLI=/usr/bin/kicad-cli-nightly \
 		-Wno-dev
 
 	cmake --build build
