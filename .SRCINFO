@@ -16,6 +16,6 @@ pkgbase = cosmic-ext-quake-terminal
 	depends = libxkbcommon
 	depends = wayland
 	source = cosmic-ext-quake-terminal-0.1.0.tar.gz::https://github.com/m0rf30/cosmic-ext-quake-terminal/archive/0.1.0.tar.gz
-	sha256sums = 966f28620c6f86aa0937704d696edffd9ab6b8c65603db76dda1ba3fbd7ae1c9
+	sha256sums = fdd290272112002a5fc5d402fc7988a78b8eb0ef5849cbf8386c235f5889699c
 
 pkgname = cosmic-ext-quake-terminal
