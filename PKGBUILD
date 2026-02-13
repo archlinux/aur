@@ -1,6 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='0.82.0'
+_upstreamver='0.82.1'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='agent-cli'
@@ -26,7 +26,7 @@ depends=('bash' 'python' 'uvicorn' 'python-onnxruntime' 'python-yaml' 'python-ri
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
 source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f5fde22d86ccc1576e1ab7458403dd9c28d1471bf25f6300a21d539d2a1352ad')
+sha256sums=('37328a7b714abc9dbb4ec5929ce34ec83df27799ad613b7025a154abb3c9a147')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${pkgver}/"
