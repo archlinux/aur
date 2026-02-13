@@ -2,7 +2,7 @@
 
 _pkgname="nob.h"
 pkgname="$_pkgname-git"
-pkgver=r127.45fa6ef
+pkgver=3.2.2.r6.gff33e88
 pkgrel=1
 pkgdesc="Header only library for writing build recipes in C"
 arch=('any')
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
