@@ -1,8 +1,8 @@
 # Maintainer: chris.imx <chris.imx.aur@online.de>
 
 pkgname=findmydeviceserver
-pkgver=0.13.0
-pkgrel=2
+pkgver=0.14.0
+pkgrel=1
 pkgdesc='Official server for the android app FindMyDevice (FMD) written in Go'
 arch=('x86_64' 'armv7h' 'aarch64')
 url=https://gitlab.com/fmd-foss/fmd-server
@@ -15,6 +15,8 @@ makedepends=(
   npm
   git
   go
+  nodejs
+  pnpm
 )
 source=(git+https://gitlab.com/fmd-foss/fmd-server.git#tag=v${pkgver}
         findmydeviceserver.service
@@ -22,7 +24,7 @@ source=(git+https://gitlab.com/fmd-foss/fmd-server.git#tag=v${pkgver}
         findmydeviceserver.tmpfiles
 	modify-defaults-db-and-unix-socket-path.patch
 )
-sha256sums=('55c62295d73983a5d486c98d99bb8eb3da6f1427e5ae3c6a2100bd92e4d7563d'
+sha256sums=('e19b93958c9a9ccf61e71ff76b3ff6318dc00602907108ff2430681887fd1925'
             'f3d973cee143e7ba182ad3f228f2d5f15f5847dd6eeb48ea0122aa7c298a3cd6'
             'd3f754171a12f8559de28b9c08699dd96f741abeb0f0e44dff9a912e9b381387'
             'cb1daf2913c9c76125b79a037bb0d1a7bd8f0224cf98abfd0af0886ff729073d'
@@ -36,7 +38,12 @@ prepare() {
 }
 
 build() {
-  cd fmd-server
+  # Build frontend
+  cd fmd-server/web
+  pnpm install
+  pnpm build
+  # Build backend
+  cd ..
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
