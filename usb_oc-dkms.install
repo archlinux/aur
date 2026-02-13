@@ -1,0 +1,8 @@
+post_install() {
+  echo "NOTE: The usb_oc kernel module needs manual setup."
+  echo "Please refer to https://github.com/p0358/usb_oc-dkms/blob/master/README.md for instructions."
+}
+
+post_remove() {
+  echo "The usb_oc kernel module will be removed on reboot. Alternatively, use rmmod to unload it immediately."
+}

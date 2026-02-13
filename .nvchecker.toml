@@ -1,0 +1,5 @@
+[rpc-bridge]
+source = "github"
+github = "p0358/usb_oc-dkms"
+prefix = "v"
+use_max_tag = true
