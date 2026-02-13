@@ -1,5 +1,5 @@
 pkgbase = meshlab-bin
-	pkgdesc = 3D triangular meshes processing and editing tool (pre-built binary version)
+	pkgdesc = System for processing and editing of unstructured 3D models arising in 3D scanning (pre-built binary version)
 	pkgver = 2025.07
 	pkgrel = 2
 	url = https://www.meshlab.net/

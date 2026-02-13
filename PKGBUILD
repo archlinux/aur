@@ -2,7 +2,7 @@
 pkgname=meshlab-bin
 pkgver=2025.07
 pkgrel=2
-pkgdesc="3D triangular meshes processing and editing tool (pre-built binary version)"
+pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (pre-built binary version)"
 arch=('x86_64' 'aarch64')
 url="https://www.meshlab.net/"
 license=('GPL')
