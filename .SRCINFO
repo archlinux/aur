@@ -1,7 +1,7 @@
 pkgbase = codex-desktop-bin
 	pkgdesc = OpenAI Codex Desktop (repacked from macOS DMG for Linux)
 	pkgver = 260210.1703
-	pkgrel = 2
+	pkgrel = 3
 	url = https://openai.com/codex
 	arch = x86_64
 	license = custom
@@ -29,7 +29,7 @@ pkgbase = codex-desktop-bin
 	depends = nspr
 	depends = nss
 	depends = pango
-	optdepends = openai-codex-bin: Codex CLI integration (sets CODEX_CLI_PATH automatically if installed)
+	depends = openai-codex-bin
 	provides = codex-desktop
 	conflicts = codex-desktop
 	options = !strip

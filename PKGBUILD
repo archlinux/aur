@@ -2,7 +2,7 @@
 
 pkgname=codex-desktop-bin
 pkgver=260210.1703
-pkgrel=2
+pkgrel=3
 pkgdesc='OpenAI Codex Desktop (repacked from macOS DMG for Linux)'
 arch=('x86_64')
 _electron_pkg='electron40-bin'
@@ -33,9 +33,7 @@ depends=(
   'nspr'
   'nss'
   'pango'
-)
-optdepends=(
-  'openai-codex-bin: Codex CLI integration (sets CODEX_CLI_PATH automatically if installed)'
+  'openai-codex-bin'
 )
 makedepends=('node-gyp' 'p7zip')
 provides=('codex-desktop')
