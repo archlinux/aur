@@ -9,7 +9,7 @@ license=('MIT')
 depends=('pacman' 'expac')
 provides=('pacod')
 conflicts=('pacod')
-pkgdesc="Very simple script for optional list of Pacman dependencies."
+pkgdesc="List optional dependencies (optdepends) of pacman packages and groups"
 url="https://github.com/elppans/${pkgname}"
 source=("git+${url}.git#branch=main")
 sha256sums=('SKIP')
