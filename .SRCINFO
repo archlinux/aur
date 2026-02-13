@@ -1,6 +1,6 @@
 pkgbase = rofi-git
 	pkgdesc = A window switcher, run dialog and dmenu replacement
-	pkgver = 1.7.9.1.r2.g4bcbe12c
+	pkgver = 2.0.0.r47.g89c768c1
 	pkgrel = 1
 	url = https://github.com/DaveDavenport/rofi/
 	arch = x86_64
@@ -27,6 +27,7 @@ pkgbase = rofi-git
 	depends = libxkbcommon-x11
 	depends = pango
 	depends = startup-notification
+	depends = wayland
 	depends = xcb-imdkit
 	depends = xcb-util
 	depends = xcb-util-cursor

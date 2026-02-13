@@ -32,6 +32,7 @@ depends=(
 	'libxkbcommon-x11'
 	'pango'
 	'startup-notification'
+	'wayland'
 	'xcb-imdkit'
 	'xcb-util'
 	'xcb-util-cursor'
