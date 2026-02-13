@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=opencode-antigravity-auth
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Google Antigravity OAuth Plugin for opencode"
 arch=('any')
 url="https://github.com/NoeFabris/opencode-antigravity-auth"
