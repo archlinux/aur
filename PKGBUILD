@@ -9,7 +9,7 @@ license=('GPL')
 depends=('gcc-libs')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/V$pkgver.tar.gz")
-sha256sums=('318d9f5fe0f7b9c61ae7ba4e7bf30ee78d358903543245d210e590f88a074338')
+sha256sums=('updpkgsums')
 
 build() {
     # It's cleaner to create a build directory
