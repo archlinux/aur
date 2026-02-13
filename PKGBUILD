@@ -1,6 +1,6 @@
 # Maintainer: you
 pkgname=cursor-appimage
-pkgver=2.4.35
+pkgver=2.4.36
 pkgrel=1
 pkgdesc="Cursor AI code editor (AppImage, extracted)"
 arch=('x86_64')
@@ -12,13 +12,13 @@ _watch=(
   'https://api2.cursor.sh/updates/download/golden/linux-x64/cursor/2.4' 'header' 'regex' 'Cursor-([0-9.]+)-x86_64.AppImage' 'pkgver'
   'https://api2.cursor.sh/updates/download/golden/linux-x64/cursor/2.4' 'header' 'regex' 'location:.*production/([a-f0-9]+)/' '_commit'
 )
-_commit="d2bf8ec12017b1049f304ad3a5c8867b117ed836"
+_commit="f9919bf991f247689f9ead605b5c5a3239a2a794"
 
 source=(
   "Cursor-${pkgver}.AppImage::https://downloads.cursor.com/production/${_commit}/linux/x64/Cursor-${pkgver}-x86_64.AppImage"
 )
 
-sha512sums=('b6e916353069cc3c286dcf568d9087752f8a980a06988cd390f26ece540ea8936f0b171396b5855af5c1d4508c1699fbeca1d4a7d24d1c23f94499ba4eea89e0')
+sha512sums=('ab58f8b46de1392c78af9aeb2b1208d93eb46d812d8219c52f1d3c57cc92570ff91c69cdfc71927e43703ca40438d6aacb3a39ee36a29834326fdcea6688ef36')
 
 prepare() {
   cd "${srcdir}"
