@@ -1,5 +1,5 @@
 pkgname=hyprspaces
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc="Paired workspace plugin and setup scripts for Hyprland"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('bash' 'hyprland' 'python')
 makedepends=('cmake' 'pkgconf')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e4a76f83610b5fd8f6784fbf046fac62a6f4f638f5132bc016b8b18e1bcf78ab')
+sha256sums=('d5d4b3bac62bc3b3577eeca1d8ef4c3e83c72821538711b409cdd4337a2d519d')
 
 build() {
   cmake -S "${srcdir}/${pkgname}-${pkgver}" -B "${srcdir}/${pkgname}-${pkgver}/build" -DCMAKE_BUILD_TYPE=Release
