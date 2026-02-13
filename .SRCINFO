@@ -1,6 +1,6 @@
 pkgbase = packwitch-manager
 	pkgdesc = minecraft modpack management tool
-	pkgver = 0.1c
+	pkgver = 0.1d
 	pkgrel = 2
 	url = https://codeberg.org/packwitch/packwitch
 	arch = x86_64
