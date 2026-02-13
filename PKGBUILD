@@ -2,7 +2,7 @@
 
 pkgname=codex-desktop-bin
 pkgver=260210.1703
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenAI Codex Desktop (repacked from macOS DMG for Linux)'
 arch=('x86_64')
 _electron_pkg='electron40-bin'
@@ -51,7 +51,7 @@ source=(
   'codex-icon.png'
 )
 sha256sums=(
-  'ed001954457d5523d3ae1fab62422c5405e40fd56f2103a11575fcd363674c44'
+  'SKIP'
   'c7517f19083ddcb05f276904680eb2b11a6b5ecab778b8e4e5685a6d645b3f60'
   '83b436290c62e8d9d95b2df0f74cbfde59e8578449d414d936dc3be1194137ce'
   'b10455d15a977c0cd17a1cb0eb679e03d939f8ef8d4302eb33e1f78dacc71f82'

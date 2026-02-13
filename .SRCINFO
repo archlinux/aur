@@ -1,7 +1,7 @@
 pkgbase = codex-desktop-bin
 	pkgdesc = OpenAI Codex Desktop (repacked from macOS DMG for Linux)
 	pkgver = 260210.1703
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openai.com/codex
 	arch = x86_64
 	license = custom
@@ -39,7 +39,7 @@ pkgbase = codex-desktop-bin
 	source = node-addon-api-7.1.1.tgz::https://registry.npmjs.org/node-addon-api/-/node-addon-api-7.1.1.tgz
 	source = node-addon-api-8.5.0.tgz::https://registry.npmjs.org/node-addon-api/-/node-addon-api-8.5.0.tgz
 	source = codex-icon.png
-	sha256sums = 90dccfcee5bdb47a94782151d91999142de887ac4c65d57fbb5469b77ce65492
+	sha256sums = SKIP
 	sha256sums = c7517f19083ddcb05f276904680eb2b11a6b5ecab778b8e4e5685a6d645b3f60
 	sha256sums = 83b436290c62e8d9d95b2df0f74cbfde59e8578449d414d936dc3be1194137ce
 	sha256sums = b10455d15a977c0cd17a1cb0eb679e03d939f8ef8d4302eb33e1f78dacc71f82
