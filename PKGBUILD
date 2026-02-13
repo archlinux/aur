@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=luban-bin
-pkgver=0.2.21
-pkgrel=2
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="Localhost-only AI code editor built as a browser UI served by a local Rust server"
 arch=('x86_64')
 url="https://github.com/Xuanwo/luban"
@@ -10,19 +10,19 @@ depends=('fuse2' 'hicolor-icon-theme')
 provides=('luban')
 conflicts=('luban')
 options=('!strip')
-source=("Luban_${pkgver}+20260208_linux-x86_64.AppImage::https://github.com/Xuanwo/luban/releases/download/v${pkgver}%2B20260208/Luban_${pkgver}%2B20260208_linux-x86_64.AppImage")
-sha256sums=('0a3c8ae98bd61f9926a62469cbd87d789afcd69e42a06884abe5b0b5deff7ee3')
-noextract=("Luban_${pkgver}+20260208_linux-x86_64.AppImage")
+source=("Luban_0.3.1+20260210_linux-x86_64.AppImage::https://github.com/Xuanwo/luban/releases/download/v0.3.1%2B20260210/Luban_0.3.1%2B20260210_linux-x86_64.AppImage")
+sha256sums=("970fde3ffacae79b726f7c0ada580b7ecdf5cbd6959ef1ca2c57af6e111bb079")
+noextract=("Luban_0.3.1+20260210_linux-x86_64.AppImage")
 
 prepare() {
-    chmod +x "Luban_${pkgver}+20260208_linux-x86_64.AppImage"
-    "./${pkgname%%-bin}_${pkgver}+20260208_linux-x86_64.AppImage" --appimage-extract 2>/dev/null || \
-    "./Luban_${pkgver}+20260208_linux-x86_64.AppImage" --appimage-extract
+    chmod +x "Luban_${pkgver}+20260210_linux-x86_64.AppImage"
+    "./${pkgname%%-bin}_${pkgver}+20260210_linux-x86_64.AppImage" --appimage-extract 2>/dev/null || \
+    "./Luban_${pkgver}+20260210_linux-x86_64.AppImage" --appimage-extract
 }
 
 package() {
     # Install the AppImage
-    install -Dm755 "Luban_${pkgver}+20260208_linux-x86_64.AppImage" "${pkgdir}/opt/luban/luban.AppImage"
+    install -Dm755 "Luban_${pkgver}+20260210_linux-x86_64.AppImage" "${pkgdir}/opt/luban/luban.AppImage"
 
     # Create launcher script
     install -dm755 "${pkgdir}/usr/bin"
