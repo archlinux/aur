@@ -2,19 +2,21 @@
 
 pkgname=nanosaur2
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Sequel to the original Nanosaur'
 arch=(x86_64 aarch64)
 url='https://github.com/jorio/Nanosaur2'
 license=(CC-BY-NC-SA-4.0)
 depends=(
-  'glibc'
-  'gcc-libs'
-  'libglvnd'
-  'sdl2'
-  'hicolor-icon-theme'
+  sh
+  glibc
+  libgcc
+  libstdc++
+  libglvnd
+  sdl2-compat
+  hicolor-icon-theme
 )
-makedepends=('git' 'cmake')
+makedepends=(git cmake)
 source=(
   "$pkgname::git+https://github.com/jorio/Nanosaur2.git#tag=v$pkgver"
   'github.com-jorio-Pomme::git+https://github.com/jorio/Pomme'
