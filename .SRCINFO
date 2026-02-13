@@ -1,0 +1,13 @@
+pkgbase = valentine-tui
+	pkgdesc = A playful terminal-based Valentine's Day proposal app
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Floranaras/funnyvalentine
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	source = valentine-tui-0.1.0.tar.gz::https://github.com/Floranaras/funnyvalentine/archive/v0.1.0.tar.gz
+	sha256sums = 085d93f86de8654b8abaed0cc92e8cb12bf0949c259d5ef31ebe0956f71fe262
+
+pkgname = valentine-tui
