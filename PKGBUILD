@@ -1,5 +1,5 @@
 pkgname=archtoys-bin
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="Archtoys (precompiled binary)"
 arch=("x86_64")
@@ -8,7 +8,7 @@ license=("MIT")
 provides=("archtoys")
 conflicts=("archtoys")
 source=("archtoys-linux-x86_64.tar.gz::https://github.com/Mujtaba1i/Archtoys/releases/download/v${pkgver}/archtoys-linux-x86_64.tar.gz")
-sha256sums=('9ae53e7cfa03f05c7944bcd6762afef3383412e0e19ca1e0f5878f750e966ded'
+sha256sums=('06740be56d4ec52564056882f7b452bcff0a90337349c32572f1b512b7f5f86d'
             '57caa2bef5a98bef17abeecb439e1ef7efab7826217b24ca1eaeac07c7720312'
             '5355e2b4f79c2bba7ac05a78dcc0e60f4f226f9222390204ef6a7a5294640f08'
             'e782f83cd1ba0f4179471251c56c15b7beae55285b3a6d55d2392fb81a4bc027'
