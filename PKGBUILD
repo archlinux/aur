@@ -11,6 +11,8 @@ arch=(any)
 license=(GPL)
 original_url="https://xyne.dev/projects/powerpill"
 url="https://github.com/EndlessEden/powerpill"
+provides=("${pkgname}"
+	  "${_pkgname}")
 
 # Dynamic Python Versioning (Major.Minor)
 # Capture the current version (e.g., 3.12) to lock this build to it.
