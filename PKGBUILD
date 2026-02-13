@@ -1,6 +1,6 @@
 # Maintainer: rustledger team <rustledger@users.noreply.github.com>
 pkgname=rustledger
-pkgver=0.1.0
+pkgver=0.8.6
 pkgrel=1
 pkgdesc="Fast, pure Rust implementation of Beancount double-entry accounting"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ _pkgver="${pkgver//_/-}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rustledger/rustledger/archive/refs/tags/v${_pkgver}.tar.gz")
 
 # Update this checksum when releasing new versions
-sha256sums=('336700a0dfc73fa57251b95e7fbb2870c715c7c35265be0aad773cfcfa19875f')
+sha256sums=('8a0f0e8b855045362374401bfc497ea2a21824bde41de91aeb9829979b336aa3')
 
 prepare() {
     cd "$pkgname-${_pkgver}"
