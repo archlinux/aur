@@ -1,6 +1,6 @@
 pkgbase = tev
 	pkgdesc = High dynamic range (HDR) image viewer for people who care about colors
-	pkgver = 2.6.3
+	pkgver = 2.8.2
 	pkgrel = 1
 	url = https://github.com/Tom94/tev
 	arch = i686
@@ -24,7 +24,8 @@ pkgbase = tev
 	depends = wayland
 	provides = tev
 	conflicts = tev
-	source = tev::git+https://github.com/Tom94/tev.git#tag=v2.6.3
+	options = !lto
+	source = tev::git+https://github.com/Tom94/tev.git#tag=v2.8.2
 	md5sums = SKIP
 
 pkgname = tev

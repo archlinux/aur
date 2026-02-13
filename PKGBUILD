@@ -4,7 +4,7 @@
 
 _pkgname=tev
 pkgname=${_pkgname}
-pkgver=2.6.3
+pkgver=2.8.2
 pkgrel=1
 pkgdesc="High dynamic range (HDR) image viewer for people who care about colors"
 arch=("i686" "x86_64" "arm")
@@ -16,7 +16,7 @@ provides=("tev")
 conflicts=("tev")
 source=("${_pkgname}::git+${url}.git#tag=v${pkgver}")
 md5sums=("SKIP")
-OPTIONS=(!lto)
+options=(!lto)
 
 prepare() {
   git -C "${_pkgname}" submodule update --init --recursive
