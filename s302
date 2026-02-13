@@ -1,0 +1,89 @@
+#!/bin/sh
+# ============================================================
+# Steamcommunity 302 启动器 - 使用 zenity 或 kdialog 提权
+# Modified by lingdianshiren
+# ============================================================
+
+SCRIPT_DIR="/opt/steamcommunity302"
+EXEC_FILE="$SCRIPT_DIR/Steamcommunity_302"
+
+CURRENT_DISPLAY="${DISPLAY:-:0}"
+CURRENT_XAUTHORITY="${XAUTHORITY:-$HOME/.Xauthority}"
+
+# xhost配置
+if command -v xhost &> /dev/null; then
+    if ! xhost | grep -q "SI:localuser:root"; then
+        xhost +SI:localuser:root >/dev/null 2>&1
+    fi
+fi
+
+# 检查主程序
+if [ ! -f "$EXEC_FILE" ]; then
+    if command -v zenity &> /dev/null; then
+        zenity --error --text="错误: 未找到主程序 Steamcommunity_302" --title="启动失败"
+    elif command -v kdialog &> /dev/null; then
+        kdialog --error "错误: 未找到主程序 Steamcommunity_302" --title "启动失败"
+    else
+        echo -e "\033[31m 错误: 未找到主程序 Steamcommunity_302 \033[0m" >&2
+    fi
+    exit 1
+fi
+
+# 已是 root
+if [ "$(id -u)" -eq 0 ]; then
+    export DISPLAY="$CURRENT_DISPLAY"
+    export XAUTHORITY="$CURRENT_XAUTHORITY"
+    exec "$EXEC_FILE"
+fi
+
+# 使用 zenity
+if command -v zenity &> /dev/null; then
+    # 临时文件存储密码，避免变量传递问题
+    TEMP_PASS=$(mktemp)
+    
+    # 使用 --entry --hide-text 代替 --password，更可靠
+    zenity --entry --title="Steamcommunity 302 - 需要管理员权限" --text="请输入您的密码：" --hide-text > "$TEMP_PASS" 2>/dev/null
+    ZENITY_EXIT=$?
+    
+    # 读取密码
+    PASSWORD=$(cat "$TEMP_PASS")
+    rm -f "$TEMP_PASS"
+    
+    # 调试输出（测试时取消注释）
+    # echo "Exit code: $ZENITY_EXIT" >&2
+    # echo "Password length: ${#PASSWORD}" >&2
+    
+    if [ $ZENITY_EXIT -ne 0 ]; then
+        exit 1
+    fi
+    
+    if [ -z "$PASSWORD" ]; then
+        zenity --error --text="密码不能为空" --title="错误"
+        exit 1
+    fi
+    
+    # 使用 sudo -S 传递密码
+    printf '%s\n' "$PASSWORD" | sudo -S -E bash -c "export DISPLAY='$CURRENT_DISPLAY'; export XAUTHORITY='$CURRENT_XAUTHORITY'; exec '$EXEC_FILE'"
+    exit $?
+fi
+
+# 使用 kdialog
+if command -v kdialog &> /dev/null; then
+    PASSWORD=$(kdialog --password "Steamcommunity 302 - 需要管理员权限")
+    KDIALOG_EXIT=$?
+    
+    if [ $KDIALOG_EXIT -ne 0 ]; then
+        exit 1
+    fi
+    
+    if [ -z "$PASSWORD" ]; then
+        kdialog --error "密码不能为空" --title "错误"
+        exit 1
+    fi
+    
+    printf '%s\n' "$PASSWORD" | sudo -S -E bash -c "export DISPLAY='$CURRENT_DISPLAY'; export XAUTHORITY='$CURRENT_XAUTHORITY'; exec '$EXEC_FILE'"
+    exit $?
+fi
+
+echo -e "\033[31m 错误: 未找到 zenity 或 kdialog \033[0m" >&2
+exit 1
