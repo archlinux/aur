@@ -1,6 +1,6 @@
 pkgbase = crtty-git
 	pkgdesc = Post-processing shader framework for kitty terminal via LD_PRELOAD
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/kosa12/CRTty
 	arch = x86_64
