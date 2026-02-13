@@ -2,7 +2,7 @@
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=harec
-pkgver=0.25.2
+pkgver=0.26.0
 pkgrel=1
 pkgdesc='The Hare programming language - bootstrapped compiler'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ url='https://harelang.org/'
 license=('GPL-3.0-only')
 depends=('glibc' 'qbe')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~sircmpwn/${pkgname}/archive/${pkgver}.tar.gz")
-b2sums=('9d6c1e208ef9ab35f56fa0974741f3eadae59b1f8ea1fbe42b012cde827adfd5c7a84336e3f0e94d4ad69cf975f02d930f3bc88c5f6584ad9334f6cfdb3fdd07')
+b2sums=('b6e1a0e5ff0ad1600deebe19c88373aa6d448aeac77f29ebc5eb5b560cd63ec3f928bf9844fb00a38bd7bf856a47efddcea1a9dcb54f06f36f958b2f492bdba8')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
