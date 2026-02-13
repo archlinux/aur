@@ -1,0 +1,10 @@
+# makepkg build artifacts
+pkg/
+src/
+*.tar.*
+*.log
+
+# Editor / misc
+*.swp
+*.bak
+*~
