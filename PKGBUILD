@@ -5,7 +5,7 @@ _pkgname=csvi
 pkgname=${_pkgname}-bin
 pkgdesc="Terminal CSV Editor"
 
-pkgver=1.21.2
+pkgver=1.22.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -24,8 +24,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.zip::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-linux-${_barch[0]}.zip")
 sha256sums=('3aae49b6287bf4a3177320ca7a67b00ffa13562db7e8d6ba9f2ac4984819eab0'
-            '8ad01992a5438366b12acc3810ad9178d04c041db12332e18f1c144100aad2c1')
-sha256sums_x86_64=('568c7af1339dc2a69c5169e5f4cab4c9cb1c08999b0c2dab773242c76bc7d9e5')
+            '0d66d23a23c3139d82ad86d7ec3a784d9c5f28a36f764f538ae915438c8e0a57')
+sha256sums_x86_64=('16c9663635ea331d7d1ea25e6122a2a9c234b9d7b3dce5262984fce781e44f12')
 
 
 package() {
