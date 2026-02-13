@@ -1,6 +1,6 @@
 # Maintainer: Keithsel <keithsel@disroot.org>
 pkgname=clocktemp
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="A TUI clock inspired by tty-clock that displays the time, date, temperature and more."
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/arthur-dnts/ClockTemp"
 license=('GPL-3.0-or-later')
 depends=('python' 'python-requests')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/arthur-dnts/ClockTemp/archive/v$pkgver.tar.gz")
-sha256sums=('992bb4ea3736219a539bdf08cb08d176a6ba9548a0097b33493a8264a63fe3a4')
+sha256sums=('63d28e02b6590efaf392c4bf9c4f40e66c16046a77f7b34c65645ea29f40b0f8')
 
 package() {
     cd "ClockTemp-$pkgver"
