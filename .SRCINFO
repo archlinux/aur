@@ -1,6 +1,6 @@
 pkgbase = mapwizard-git
 	pkgdesc = MapWizard - An open-source osu! mapping toolset (Git version)
-	pkgver = v2.0.0
+	pkgver = r188.g829f685
 	pkgrel = 1
 	url = https://github.com/maotovisk/MapWizard
 	arch = x86_64
