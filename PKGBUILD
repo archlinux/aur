@@ -9,7 +9,6 @@ url="https://codeberg.org/kachelaqa/$pkgname"
 license=('GPL2')
 depends=('pacman>=4.1' 'pacman<7.2' 'python>=3.2' 'python<3.15' 'python-pyqt6')
 makedepends=('python-setuptools')
-install="$pkgname.install"
 source=("https://codeberg.org/kachelaqa/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
 md5sums=('fb9402a978d8f122ce593afe0a4a885d')
 
