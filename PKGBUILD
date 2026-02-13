@@ -7,7 +7,7 @@
 
 pkgname=veeam
 pkgver=13.0.1.203
-pkgrel=1
+pkgrel=2
 pkgdesc="Veeam Agent for Linux"
 arch=(x86_64)
 url=https://www.veeam.com/products/downloads.html
