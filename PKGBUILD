@@ -10,7 +10,7 @@ depends=('gtk3')
 provides=('substitcher')
 conflicts=('substitcher')
 source=("https://github.com/mrfragger/substitcher/releases/download/v${pkgver}/substitcher-x64.AppImage")
-sha256sums=('8a8e899276f335419b3fe6f8643e6de6b8c622d2f620efb60adf1b69f2885fdc')
+sha256sums=('3096d278f778d96638876c9e70e78a84a248de0e1d190ebc97c39528ef17fdbf')
 
 package() {
     install -Dm755 "$srcdir/substitcher-x64.AppImage" "$pkgdir/opt/substitcher/substitcher.AppImage"
