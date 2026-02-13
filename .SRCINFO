@@ -1,0 +1,19 @@
+pkgbase = weathr-bin
+	pkgdesc = A terminal weather app with ascii animation
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/Veirt/weathr
+	arch = x86_64
+	license = GPL-3.0
+	depends = glibc
+	depends = gcc-libs
+	provides = weathr
+	conflicts = weathr
+	source = LICENSE-1.2.3::https://raw.githubusercontent.com/Veirt/weathr/v1.2.3/LICENSE
+	source = README-1.2.3.md::https://raw.githubusercontent.com/Veirt/weathr/v1.2.3/README.md
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	sha256sums = d3336a69755623f3d81e8e4149e406f55567b8fa94c1eb9a03f167825caa21df
+	source_x86_64 = weathr-x86_64-1.2.3::https://github.com/Veirt/weathr/releases/download/v1.2.3/weathr-linux-amd64
+	sha256sums_x86_64 = cdfb0e01dbe2545049179a1cfe829e27350aa9e6102c75a2ed889a0a80325d2d
+
+pkgname = weathr-bin

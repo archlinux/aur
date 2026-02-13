@@ -1,0 +1,5 @@
+[weathr-bin]
+source = "github"
+github = "Veirt/weathr"
+use_latest_release = true
+prefix = "v"
