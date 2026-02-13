@@ -1,6 +1,6 @@
 # Maintainer: Codiak 540<Codiak540@bbs.4d2.org>
 pkgname=the-shit
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A vastly improved version of The Fuck written in C++"
 arch=('x86_64' 'i686' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('gcc-libs')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/V$pkgver.tar.gz")
-sha256sums=('b5c7bdc345b32db6c1e0e6dee8b762bbe9789532937b265c2c8c7819a96c3a92')
+sha256sums=('4aa940f024174e773682f3d20f0d52a45ad5b438a2e5c320f6c3a8484c9eeefe')
 
 build() {
     # It's cleaner to create a build directory
