@@ -1,0 +1,4 @@
+[nanosaur]
+source = "git"
+git = "https://github.com/jorio/Nanosaur.git"
+prefix = "v"
