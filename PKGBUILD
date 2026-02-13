@@ -17,7 +17,7 @@ source=("$_srcname-$pkgver.tar.gz::https://github.com/tiann/$_srcname/archive/v$
         "android14-5.15_kernelsu_$pkgver.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/android14-5.15_kernelsu.ko"
         "android14-6.1_kernelsu_$pkgver.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/android14-6.1_kernelsu.ko"
         "android15-6.6_kernelsu_$pkgver.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/android15-6.6_kernelsu.ko"
-        "android16-6.12_kernelsu_$pkgvar.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/android16-6.12_kernelsu.ko"
+        "android16-6.12_kernelsu_$pkgver.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/android16-6.12_kernelsu.ko"
 )
 sha512sums=('decc536e3c01f32c0de3449a8de613d58ba8267b498dfd08b545ab52cebdffd675ad29c4cf34448f418524da3308a0c45cb88d2819bf6f64059a95790182d6ae'
             'ff8eac94baed4f40eac9441e1e407fb71587e0a02a80c6352f5b52cf88875829d44fe8c22f7a09f479446811fa3249c513a72c2a037ca41350369c0a8b24b654'
