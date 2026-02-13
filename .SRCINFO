@@ -1,0 +1,25 @@
+pkgbase = meshlab-bin
+	pkgdesc = 3D triangular meshes processing and editing tool (pre-built binary version)
+	pkgver = 2025.07
+	pkgrel = 4
+	url = https://www.meshlab.net/
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	depends = libx11
+	depends = libxcb
+	depends = libgl
+	depends = glu
+	depends = fontconfig
+	depends = hicolor-icon-theme
+	depends = shared-mime-info
+	provides = meshlab
+	conflicts = meshlab
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/cnr-isti-vclab/meshlab/releases/download/MeshLab-2025.07/MeshLab2025.07-linux_x86_64.tar.gz
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/cnr-isti-vclab/meshlab/releases/download/MeshLab-2025.07/MeshLab2025.07-linux_aarch64.tar.gz
+	sha256sums_aarch64 = SKIP
+
+pkgname = meshlab-bin
