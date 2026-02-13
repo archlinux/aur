@@ -2,7 +2,7 @@
 # Contributor: euler23 <jordanpaldino@gmail.com>
 
 pkgname=libipuz
-pkgver=0.5.2
+pkgver=0.5.4
 pkgrel=1
 pkgdesc='Library for parsing .ipuz puzzle files'
 arch=(x86_64 aarch64)
@@ -11,7 +11,7 @@ license=('LGPL-2.1-or-later OR MIT')
 depends=(json-glib)
 makedepends=(glib2-devel gi-docgen gobject-introspection meson rust)
 source=("${url}/-/archive/${pkgver}/libipuz-${pkgver}.tar.gz")
-sha256sums=('eb51c2e8bb161ead535f65e92a815a46c8b64f0b46b67f42ad90186cdb894491')
+sha256sums=('e40a557458505feeb814cb82a6ec72243ed03ab3515de8c3ae69d78f946885a2')
 
 build() {
     arch-meson "${pkgname}-${pkgver}" build --buildtype=release
