@@ -1,7 +1,7 @@
 pkgbase = obggcc-bin
 	pkgdesc = Linux C/C++ cross-compiler targeting older glibc versions
 	pkgver = 15.2.0
-	pkgrel = 20260211
+	pkgrel = 20260213
 	url = https://github.com/AmanoTeam/obggcc
 	arch = i686
 	arch = x86_64
@@ -13,12 +13,12 @@ pkgbase = obggcc-bin
 	options = !strip
 	options = staticlibs
 	source_i686 = https://github.com/AmanoTeam/obggcc/releases/download/gcc-15/i386-unknown-linux-gnu.tar.xz
-	sha256sums_i686 = ba9d853e7fe4774461fafeae25033f5a450995e465adcd765134a3354f1b90a7
+	sha256sums_i686 = 20dc5416fd3eae11e6166cd54a86bff9b2acca80d2511ef9b1b75e4143a3309e
 	source_x86_64 = https://github.com/AmanoTeam/obggcc/releases/download/gcc-15/x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 57eef3a23fc3c715a385a59e4b71bb29d24fa81b8c91aabd38905b9c680510c5
+	sha256sums_x86_64 = e00af5cdd7da2634daa768a35e4d72ce5fde439cee7b09476476d9a89112d2f1
 	source_aarch64 = https://github.com/AmanoTeam/obggcc/releases/download/gcc-15/aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = e95f91a301a652e942581f36857f5ab5661fa176cf571563d3837d47e817dd2f
+	sha256sums_aarch64 = 051eb1bbe760b6c7d4cc0779fac2aba3595faef6ab856fa3d95b05c75451ebf1
 	source_armv7h = https://github.com/AmanoTeam/obggcc/releases/download/gcc-15/arm-unknown-linux-gnueabihf.tar.xz
-	sha256sums_armv7h = bd29ff29975ec047bf63832eef7f57d06edba332bbf8abf53ac12ce5a4152b59
+	sha256sums_armv7h = 03793fe65c6c7e174a5dcea1fcdd9a02cbeb415d1e008805fe49855fa683bc70
 
 pkgname = obggcc-bin
