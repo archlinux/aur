@@ -1,6 +1,6 @@
 pkgbase = dasm-git
 	pkgdesc = A versatile macro assembler with support for several 8-bit microprocessors including 6502, 6507, 6803, HD6303, 68HC11, 68705, and F8 (git version)
-	pkgver = r343.c46737b
+	pkgver = r348.d8209fb
 	pkgrel = 1
 	url = https://dasm-assembler.github.io/
 	arch = x86_64
@@ -12,8 +12,6 @@ pkgbase = dasm-git
 	provides = ftohex
 	conflicts = dasm
 	source = git+https://github.com/dasm-assembler/dasm.git
-	source = fix-opdis.patch
 	sha256sums = SKIP
-	sha256sums = 99da37b7d881aa74a371fddb94972b79ec13fddda5065935cdd51b708f9c40b5
 
 pkgname = dasm-git
