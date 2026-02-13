@@ -18,9 +18,9 @@ sha256sums=('2b1b8d1c00a4bafcac4fad78cb84506224a843ccb54c440df7bac21e0cb638fe')
 package() {
     cd "$srcdir"
 
-    tar -xf manager-*.tar
+    tar -xf $pkgname-$pkgver.tar
 
-    cd manager-*/
+    cd $pkgname-$pkgver/
 
     mv bin/manager bin/packwitch
     rm bin/manager.bat
