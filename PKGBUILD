@@ -1,7 +1,7 @@
 # Maintainer: MiguVT <contacto@miguvt.com>
 pkgname=freesmlauncher-bin
 pkgver=2.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Minecraft launcher with offline accounts support (binary release)"
 arch=(x86_64 aarch64)
 url='https://freesmlauncher.org/'
@@ -31,7 +31,11 @@ package() {
 
   # Install the application to /opt
   install -dm755 "$pkgdir/opt/freesmlauncher"
-  cp -r bin shared "$pkgdir/opt/freesmlauncher/"
+  cp -r bin shared etc "$pkgdir/opt/freesmlauncher/"
+
+  # Install FreesmLauncher data files (JavaCheck.jar, etc.)
+  install -dm755 "$pkgdir/opt/freesmlauncher/share"
+  cp -r share/FreesmLauncher "$pkgdir/opt/freesmlauncher/share/"
 
   # Create wrapper script
   install -dm755 "$pkgdir/usr/bin"
