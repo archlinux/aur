@@ -2,24 +2,26 @@
 
 pkgname=bugdom2
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Sequel to the original Bugdom'
 arch=(x86_64)
 url='https://github.com/jorio/Bugdom2'
 license=(CC-BY-NC-SA-4.0)
 depends=(
-  'glibc'
-  'gcc-libs'
-  'libglvnd'
-  'sdl2'
-  'glu'
-  'hicolor-icon-theme'
+  sh
+  glibc
+  libgcc
+  libstdc++
+  libglvnd
+  sdl2-compat
+  glu
+  hicolor-icon-theme
 )
-makedepends=('cmake' 'git')
+makedepends=(cmake git)
 source=(
   "$pkgname::git+$url.git#tag=v$pkgver"
   'github.com-jorio-Pomme::git+https://github.com/jorio/Pomme'
-  'wrapper.sh'
+  wrapper.sh
 )
 b2sums=('ea8a0adc085b4bd10f258308be3b2a193f9f0a737c976147a44e0bb91892faff20625f7dc290e5c4038060739d79faab3ea5a21d59f06cd8879d3a14fc6390ca'
         'SKIP'
