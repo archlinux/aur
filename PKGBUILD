@@ -1,7 +1,7 @@
 # Maintainer: fEst <refer.nfs@gmail.com>
 pkgname=pipewire-audio-idle-inhibit-git
-_ver=0.4.1
-pkgver=$_ver.r83.f91a883
+_ver=0.4.2
+pkgver=$_ver.r84.fea38e4
 pkgrel=1
 pkgdesc="Prevents the screen from sleeping while audio is actively playing or being recorded through Pipewire"
 _pkgfoldername=PipewireAudioIdleInhibit
