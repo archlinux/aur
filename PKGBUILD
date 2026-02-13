@@ -1,7 +1,7 @@
 pkgname=goonget
 pkgver=0.2.0
 pkgrel=1
-pkgdesc="CLI tool to fetch images/gifs/videos from Gelbooru and display them directly in terminal"
+pkgdesc="CLI tool to fetch images/gifs/videos from rule34 and display them directly in terminal"
 arch=('any')
 url="https://github.com/LewdM3at/GoonGet"
 license=('MIT')
