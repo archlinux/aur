@@ -1,6 +1,6 @@
 # Maintainer: kosa12 <kosa12@users.noreply.github.com>
 pkgname=crtty-git
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Post-processing shader framework for kitty terminal via LD_PRELOAD"
 arch=('x86_64')
