@@ -4,7 +4,7 @@ post_install() {
   echo "=========================================================================="
   echo ""
   echo "To enable this plugin, add it to your opencode configuration file"
-  echo "(e.g., ~/.config/opencode/config.json):"
+  echo "(e.g., ~/.config/opencode/opencode.json):"
   echo ""
   echo "  {"
   echo "    \"plugin\": [\"file:///usr/lib/opencode/plugins/opencode-gemini-auth\"]"

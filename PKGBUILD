@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=opencode-gemini-auth
 pkgver=1.3.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Google Gemini OAuth Plugin for opencode"
 arch=('any')
 url="https://github.com/jenslys/opencode-gemini-auth"
