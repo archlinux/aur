@@ -20,7 +20,7 @@ source=("git+https://codeberg.org/packwitch/packwitch")
 sha256sums=('SKIP')
 
 build() {
-    git checkout cb44aa7aa4
+    git checkout bf12a6dff0
     cd "$srcdir/packwitch"
     $srcdir/packwitch/gradlew :manager:assembleDist
 }
