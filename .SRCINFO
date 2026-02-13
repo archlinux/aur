@@ -1,6 +1,6 @@
 pkgbase = intellij-idea-ue-eap
 	pkgdesc = Early access version of the upcoming version of Intellij Idea IDE (ultimate version)
-	pkgver = 2025.3.253.28294.325
+	pkgver = 2025.3.261.20362.25
 	pkgrel = 1
 	url = http://www.jetbrains.com/idea/nextversion
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = intellij-idea-ue-eap
 	depends = libdbusmenu-glib
 	options = !strip
 	options = !debug
-	source = https://download.jetbrains.com/idea/ideaIU-253.28294.325.tar.gz
+	source = https://download.jetbrains.com/idea/ideaIU-261.20362.25.tar.gz
 	source = intellij-idea-ue-eap.desktop
-	sha256sums = 53e7b4284d6932bba313528bbaeeefcc03bc9191c3bfa8c1c3cf408eb90d1a35
+	sha256sums = 547b1f3d8138d4c9b1539906fe72357d9fbf6146c94f543bb9880c2382ce3168
 	sha256sums = af5a9e49b921dbdc5b960dedc27e15b2510896ff6e58d983fca7de6a6fd18f38
 
 pkgname = intellij-idea-ue-eap
