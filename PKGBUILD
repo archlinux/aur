@@ -42,6 +42,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         chromium-138-nodejs-version-check.patch
         chromium-145-fix-missing-gn-functions.patch
+        chromium-145-fix-SYS_SECCOMP.patch
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         use-oauth2-client-switches-as-default.patch
@@ -53,6 +54,7 @@ sha256sums=('a7ce8bd85d36e6c01d382e71c9018b0d118553a848e32dd399aea2e437476be1'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e'
             '9cbd93af850642d48ff86da9ac82c6d0e1cc294b3cfdc324abe5b55afa9df3cb'
+            '4fc040a0656a0a524dd8ad090cd129fc5b6cb21adcc66be82080165789e8c13e'
             'ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             '9343afa1a4308a7cfb3317229f5aff7778688debcc03c4a74a85908aa1d0cc3a'
@@ -139,6 +141,9 @@ prepare() {
 
   # Fix gn missing some functions
   patch -Np1 -i ../chromium-145-fix-missing-gn-functions.patch
+
+  # https://crbug.com/456218403
+  patch -Np1 -i ../chromium-145-fix-SYS_SECCOMP.patch
 
   # Custom Patches
 
