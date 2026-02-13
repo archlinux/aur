@@ -5,7 +5,7 @@ _pkgname=surge
 pkgname=${_pkgname}-bin
 pkgdesc="An open-source terminal (TUI) download manager"
 
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -24,9 +24,9 @@ conflicts=("${_pkgname}")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[0]}.tar.gz")
 source_i686=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[1]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[2]}.tar.gz")
-sha256sums_x86_64=('8e068d216b32bb74a0eab84fe899091681e5fc9b8c9e9e374ba07f666ad615da')
-sha256sums_i686=('c811982cce97c780ff117962aa94ba0cf0e8c2cddc618cbfc2b50def7fd7483b')
-sha256sums_aarch64=('9dffb6be5a93399dbab8777d6b424e19693aee240f45dd3dcb789b17a105ec1d')
+sha256sums_x86_64=('8dfd67001fa8db3cc246de849e9f7af4af0e0dff828400f49b82aeac5979efa9')
+sha256sums_i686=('9a1fa159cd412b2f38bd87c475b12ced407cd84dd3075e8531d47eaebd9f6a3c')
+sha256sums_aarch64=('81e693d8d902046ea2cf386c4f5a1d5cc449166e15f00f0e2f28855765128056')
 
 
 package() {
