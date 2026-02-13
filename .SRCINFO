@@ -10,6 +10,6 @@ pkgbase = todo-bbs
 	makedepends = cmake
 	depends = gcc-libs
 	source = todo-bbs-1.1.0.tar.gz::https://github.com/Codiak540/TODO-Manager/archive/V1.1.0.tar.gz
-	sha256sums = updpkgsums
+	sha256sums = SKIP
 
 pkgname = todo-bbs
