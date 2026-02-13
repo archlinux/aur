@@ -1,7 +1,7 @@
 # Maintainer: artist for Artix Linux and XLibre
 
 pkgname=brow6el
-pkgver=0.3.2
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Terminal Web Browser with Sixel Support"
 arch=('x86_64')
@@ -55,5 +55,5 @@ package() {
   cp -r examples "${pkgdir}/usr/lib/${pkgname}/"
   install -Dm644 -t "$pkgdir/usr/share/${pkgname}" *.md
 }
-sha256sums=('8db5b7579937f05021f7c72950cbbce5771152d59f74a0cb0fae91151f1eee63')
+sha256sums=('505400ad00bfbf618a393b329b1d8d73475970e2a698bb5c345ac9a43018ec82')
 
