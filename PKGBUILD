@@ -13,7 +13,7 @@ conflicts=('packwitch-manager')
 
 
 source=("$pkgname-$pkgver.tar::https://codeberg.org/packwitch/packwitch/releases/download/$pkgver/manager-$pkgver.tar")
-sha256sums=('d2764d8cc416433ff0a549c1fbd43b8d2501a13f136364a8806837577739b1c4')
+sha256sums=('c4e845c84c5b525a70bf78db87d0bb7b6d7101b45fe141c9c4a46dc4bbebbbc2')
 
 package() {
     cd "$srcdir"
