@@ -15,7 +15,7 @@ optdepends=(
   'niri: Niri scrollable workspaces'
 )
 source=("hyprlax-v${pkgver}.tar.gz::https://github.com/sandwichfarm/hyprlax/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('daa4a1f4ffb727fc2348097e49c2fd49162a24a83f815e94361fb3b1ed107a83')
+sha256sums=('560e4af529c6800700b6d70672ec036f8ac29b91fb7de1eb3db52fb60034110c')
 
 build() {
   cd "${srcdir}/hyprlax-${pkgver}"
