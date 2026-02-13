@@ -1,0 +1,5 @@
+[tiny-rdm-bin]
+source = "github"
+github = "tiny-craft/tiny-rdm"
+use_latest_release = true
+prefix = "v"

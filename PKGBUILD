@@ -3,7 +3,7 @@
 
 _pkgname=tiny-rdm
 pkgname=${_pkgname}-bin
-pkgver=1.2.5
+pkgver=1.2.6
 pkgrel=1
 pkgdesc="A modern redis desktop manager. A better redis GUI client."
 
@@ -21,7 +21,7 @@ conflicts=("${_pkgname}" "${_pkgname}-git")
 replaces=()
 
 source=("${_pkgname}_${pkgver}-${arch}.deb::https://github.com/tiny-craft/tiny-rdm/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.deb")
-sha256sums=('96f3044ee43b38508d76e4fd1881a0accc06dfcc8835c8f8b2a0e41322bf4fbd')
+sha256sums=('bc32789de168256c5b81438799d7c3df52ba66149f203a6ab886982fc2df7e5f')
 
 prepare(){
     cd ${srcdir} || exit
