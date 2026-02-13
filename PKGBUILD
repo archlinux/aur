@@ -1,7 +1,7 @@
 # Maintainer: Sich <little_sich@tuta.io>
 
 pkgname=psi-plus-nowebengine
-pkgver=1.5.2127
+pkgver=1.5.2132
 pkgrel=1
 pkgdesc="Psi+ is a powerful XMPP client (Qt, C++) designed for the XMPP power users (with all plugins and basic chat support with no WebEngine)"
 url="https://psi-im.org"
@@ -12,7 +12,7 @@ depends=('qt6-multimedia' 'qca-qt6' 'qt6-svg' 'hunspell'
     'libusrsctp' 'libomemo-c' 'libb2')
 makedepends=('cmake' 'ninja')
 source=("https://github.com/psi-plus/psi-plus-snapshots/archive/${pkgver}.tar.gz")
-sha256sums=('f56e5374d7a6cf23f3a02827887cf3ec752043b67bf0404d536b9190c90deab8')
+sha256sums=('466fb31e167d6965b1bc0fda061474926bb1975b6ba93213a613c2501ffbe2a3')
 
 build() {
     cd psi-plus-snapshots-${pkgver}
