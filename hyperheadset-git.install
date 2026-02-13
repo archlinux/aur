@@ -1,0 +1,15 @@
+post_install() {
+  echo "Reloading udev rules..."
+  udevadm control --reload-rules
+  udevadm trigger
+  echo "You may need to replug your HyperX headset for the udev rules to take effect."
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  udevadm control --reload-rules
+  udevadm trigger
+}
