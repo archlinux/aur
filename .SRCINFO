@@ -1,16 +1,32 @@
 pkgbase = warp-terminal-autoup-bin
 	pkgdesc = Warp, the Rust-based terminal for developers and teams
-	pkgver = 0.2026.02.04.08.20.stable_03
+	pkgver = 0.2026.02.11.08.23.stable_01
 	pkgrel = 1
 	url = https://warp.dev
 	arch = x86_64
 	license = custom
-	provides = warp-terminal=0.2026.02.04.08.20.stable_03
+	depends = curl
+	depends = default-cursors
+	depends = fontconfig
+	depends = libegl
+	depends = libx11
+	depends = libxcb
+	depends = libxcursor
+	depends = libxi
+	depends = libxkbcommon-x11
+	depends = opengl-driver
+	depends = xdg-utils
+	depends = zlib
+	optdepends = adwaita-cursors: for if there is no default cursor installed
+	optdepends = zenity: for file dialogs in Gnome
+	optdepends = kdialog: for file dialogs in KDE
+	optdepends = org.freedesktop.secrets: for securely storing passwords
+	provides = warp-terminal=0.2026.02.11.08.23.stable_01
 	conflicts = warp-terminal
-	noextract = warp-terminal-v0.2026.02.04.08.20.stable_03-1-x86_64.pkg.tar.zst
+	noextract = warp-terminal-v0.2026.02.11.08.23.stable_01-1-x86_64.pkg.tar.zst
 	options = !strip
 	options = !debug
-	source = warp-terminal-v0.2026.02.04.08.20.stable_03-1-x86_64.pkg.tar.zst::https://releases.warp.dev/stable/v0.2026.02.04.08.20.stable_03/warp-terminal-v0.2026.02.04.08.20.stable_03-1-x86_64.pkg.tar.zst
-	sha256sums = ab69eb9786c8e11d93d2e94a72fd479908d882edf5b5b98bdb64e003ff89e573
+	source = warp-terminal-v0.2026.02.11.08.23.stable_01-1-x86_64.pkg.tar.zst::https://releases.warp.dev/stable/v0.2026.02.11.08.23.stable_01/warp-terminal-v0.2026.02.11.08.23.stable_01-1-x86_64.pkg.tar.zst
+	sha256sums = 2f3901c9889b0b025b5fd29a8a1a0b3aa5bba2ab6b8f2a232688e39ab43d635a
 
 pkgname = warp-terminal-autoup-bin

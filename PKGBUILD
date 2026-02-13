@@ -1,14 +1,30 @@
 pkgname=warp-terminal-autoup-bin
 _pkgname=warp-terminal
-pkgver=0.2026.02.04.08.20.stable_03
+pkgver=0.2026.02.11.08.23.stable_01
 pkgrel=1
 pkgdesc='Warp, the Rust-based terminal for developers and teams'
 arch=('x86_64')
 url='https://warp.dev'
 license=('custom')
 depends=(
+  'curl'
+  'default-cursors'
+  'fontconfig'
+  'libegl'
+  'libx11'
+  'libxcb'
+  'libxcursor'
+  'libxi'
+  'libxkbcommon-x11'
+  'opengl-driver'
+  'xdg-utils'
+  'zlib'
 )
 optdepends=(
+  'adwaita-cursors: for if there is no default cursor installed'
+  'zenity: for file dialogs in Gnome'
+  'kdialog: for file dialogs in KDE'
+  'org.freedesktop.secrets: for securely storing passwords'
 )
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
@@ -17,7 +33,7 @@ source=(
   "${_pkgname}-v${pkgver}-1-x86_64.pkg.tar.zst::https://releases.warp.dev/stable/v${pkgver}/${_pkgname}-v${pkgver}-1-x86_64.pkg.tar.zst"
 )
 noextract=("${_pkgname}-v${pkgver}-1-x86_64.pkg.tar.zst")
-sha256sums=('ab69eb9786c8e11d93d2e94a72fd479908d882edf5b5b98bdb64e003ff89e573')
+sha256sums=("2f3901c9889b0b025b5fd29a8a1a0b3aa5bba2ab6b8f2a232688e39ab43d635a")
 
 package() {
   local _upstream_pkg="${_pkgname}-v${pkgver}-1-x86_64.pkg.tar.zst"
