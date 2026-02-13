@@ -1,7 +1,7 @@
 # Maintainer: cheapl <cheapl@icloud.com>
 pkgname=meshlab-bin
 pkgver=2025.07
-pkgrel=4
+pkgrel=2
 pkgdesc="3D triangular meshes processing and editing tool (pre-built binary version)"
 arch=('x86_64' 'aarch64')
 url="https://www.meshlab.net/"
