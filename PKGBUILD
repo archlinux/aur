@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=minimon-applet-for-cosmic
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A System Monitor applet for COSMIC"
 arch=('x86_64' 'aarch64')
@@ -12,12 +12,12 @@ makedepends=(
   'just'
 )
 source=("minimon-applet-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('52bd4f94c4873b3d24c2cefbc93d725f92c997b00ed65eaaf7ebdb93deca6974')
+sha256sums=('976405fa474ea2cd0f206953102a6bc50d945fdd76663b36365c90c9f8f75cae')
 
 prepare() {
   cd "minimon-applet-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --target "$(rustc --print host-tuple)"
 }
 
 build() {
