@@ -86,6 +86,7 @@ makedepends=(
   # dependencies to build the docs:
   'docbook-utils'
   'lynx'
+  'texlive-bin'
   'texlive-core'
   'texlive-formatsextra'
 )

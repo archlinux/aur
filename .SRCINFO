@@ -27,6 +27,7 @@ pkgbase = claws-mail-protectedheaders-git
 	makedepends = poppler-glib
 	makedepends = docbook-utils
 	makedepends = lynx
+	makedepends = texlive-bin
 	makedepends = texlive-core
 	makedepends = texlive-formatsextra
 	makedepends = libsoup3
