@@ -1,23 +1,15 @@
 # Maintainer: limforge
-
 pkgname=noorfetch
-pkgver=1.6.10.r0.g27c210f
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Minimal and fast system information fetch tool written in Rust"
 arch=('x86_64')
 url="https://codeberg.org/limforge/noorfetch"
 license=('GPL-3.0-or-later')
-
-makedepends=('cargo' 'git')
+makedepends=('cargo')
 depends=('gcc-libs' 'glibc')
-
-source=("git+${url}.git")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "$pkgname"
-  git describe --long --tags --always | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('9af4b842ff487c7ad7b05cbc45d07b904b7056e22ba8f6c6daceda2ec739f054')
 
 prepare() {
   cd "$pkgname"

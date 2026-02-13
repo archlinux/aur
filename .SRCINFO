@@ -1,15 +1,14 @@
 pkgbase = noorfetch
 	pkgdesc = Minimal and fast system information fetch tool written in Rust
-	pkgver = 1.6.10.r0.g27c210f
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://codeberg.org/limforge/noorfetch
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cargo
-	makedepends = git
 	depends = gcc-libs
 	depends = glibc
-	source = git+https://codeberg.org/limforge/noorfetch.git
-	sha256sums = SKIP
+	source = noorfetch-2.0.0.tar.gz::https://codeberg.org/limforge/noorfetch/archive/v2.0.0.tar.gz
+	sha256sums = 9af4b842ff487c7ad7b05cbc45d07b904b7056e22ba8f6c6daceda2ec739f054
 
 pkgname = noorfetch
