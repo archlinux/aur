@@ -1,7 +1,7 @@
 # Maintainer: Leandro Vital Catarin <leavitals@gmail.com>
 
 pkgname=dasm-git
-pkgver=r343.c46737b
+pkgver=r348.d8209fb
 pkgrel=1
 pkgdesc="A versatile macro assembler with support for several 8-bit microprocessors including 6502, 6507, 6803, HD6303, 68HC11, 68705, and F8 (git version)"
 arch=('x86_64')
@@ -11,14 +11,11 @@ provides=('dasm' 'ftohex')
 conflicts=('dasm')
 depends=('glibc')
 makedepends=('git' 'gcc')
-source=("git+https://github.com/dasm-assembler/dasm.git"
-        "fix-opdis.patch")
-sha256sums=('SKIP'
-            '99da37b7d881aa74a371fddb94972b79ec13fddda5065935cdd51b708f9c40b5')
+source=("git+https://github.com/dasm-assembler/dasm.git")
+sha256sums=('SKIP')
 
 prepare() {
   cd "$srcdir/dasm"
-  patch -p1 -i "$srcdir/fix-opdis.patch"
 }
 
 pkgver() {
