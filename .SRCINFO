@@ -8,7 +8,7 @@ pkgbase = mill
 	makedepends = git
 	depends = bash
 	depends = java-environment
-	source = git+https://github.com/com-lihaoyi/mill.git#tag=1.1.2
-	sha512sums = d0bf02795bfe43d7b527aa880e2f874cbe223811e32662ff1735dbbcd64c3dcb8c3d55a12138414fc30d96b6dc3e4969466e7f10ece527f4d2b257a19cf8a875
+	source = mill-1.1.2.tar.gz::https://github.com/com-lihaoyi/mill/archive/refs/tags/1.1.2.tar.gz
+	sha512sums = 046200236a048705138f5f4b008670df18d1796d8e2074f7626960098df9a175850989f64983088921e35d898517be2190f84090b4317769493f0b06b962779a
 
 pkgname = mill
