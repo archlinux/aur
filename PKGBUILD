@@ -18,9 +18,9 @@ makedepends=(
   git
   cargo
 )
-source=("git+${url}.git#tag=${_tag}?signed")
+source=("git+${url}.git#tag=${_tag}")
 md5sums=("SKIP")
-validpgpkeys=(87035141D0BA5A7191A6583C41BBCCE087366453)
+validpgpkeys=()
 
 pkgver() {
   cd "${_sourceName}"
