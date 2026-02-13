@@ -1,13 +1,15 @@
 pkgbase = arduino-language-server-noclang-bin
 	pkgdesc = An Arduino Language Server based on Clangd to Arduino code autocompletion (Without using clang as a dependency, only clangd)
 	pkgver = 0.7.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/arduino/arduino-language-server
 	arch = x86_64
 	license = AGPL3
 	depends = glibc
 	depends = arduino-cli
 	depends = clangd
+	provides = arduino-language-server
+	conflicts = arduino-language-server
 	options = !debug
 	source = https://github.com/arduino/arduino-language-server/releases/download/0.7.7/arduino-language-server_0.7.7_Linux_64bit.tar.gz
 	sha512sums = ea4f8fb38b2eec7fe633841ab437606574292258c05d76d8eef80565097bf0694edcaac26a5b3931e3fb2f02194c42ca996d21c15487c5bae972249abc12675b
