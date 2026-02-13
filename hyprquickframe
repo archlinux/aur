@@ -9,14 +9,17 @@ usage() {
 Usage: hyprquickframe [OPTION]
 
 Options:
-  -e, --edit    Open editor after capture
   -h, --help    Show this help message
+
+Config:
+  You can edit the theme file at /etc/xdg/quickshell/HyprQuickFrame/theme.toml to customize the appearance of HyprQuickFrame.
 EOF
 }
 
 case "${1:-}" in
     -e|--edit)
-        HYPRQUICKFRAME_EDITOR=1 quickshell -c "$APP_NAME" -n
+        echo -e "\e[33mDepracated:\e[0m option --edit is no longer supported. Edit feature has been moved to the Quickshell UI layer\n"
+        quickshell -c "$APP_NAME" -n
         ;;
     -h|--help)
         usage

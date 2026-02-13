@@ -4,8 +4,8 @@
 # dependencies will cover those
 
 pkgname=hyprquickframe-git
-pkgver=r41.g0471d6e
-pkgrel=2
+pkgver=r29.g8e052c6
+pkgrel=3
 pkgdesc="Quickshell-based screenshot utility for Hyprland"
 arch=('any')
 url="https://github.com/Ronin-CK/HyprQuickFrame"
@@ -42,6 +42,10 @@ pkgver() {
         "$(git rev-parse --short HEAD)"
 }
 
+backup=(
+    etc/xdg/quickshell/HyprQuickFrame/theme.toml
+)
+
 package() {
     # Install license
     install -Dm644 HyprQuickFrame/LICENSE \
@@ -57,7 +61,13 @@ package() {
         HyprQuickFrame/FreezeScreen.qml \
         HyprQuickFrame/RegionSelector.qml \
         HyprQuickFrame/WindowSelector.qml \
+        HyprQuickFrame/Theme.qml \
+        HyprQuickFrame/QuickToggle.qml \
         HyprQuickFrame/shell.qml \
+        "$pkgdir/etc/xdg/quickshell/HyprQuickFrame/"
+
+    # Theme configuration
+    install -m644 HyprQuickFrame/theme.toml \
         "$pkgdir/etc/xdg/quickshell/HyprQuickFrame/"
 
     # Install wrapper script
