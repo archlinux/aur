@@ -1,6 +1,6 @@
 pkgbase = archtoys
 	pkgdesc = PowerToys-like color picker for Linux (Slint-based)
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/Mujtaba1i/Archtoys
 	install = archtoys.install
@@ -9,7 +9,7 @@ pkgbase = archtoys
 	makedepends = cargo
 	makedepends = git
 	depends = glibc
-	source = archtoys-0.1.8.tar.gz::https://github.com/Mujtaba1i/Archtoys/archive/refs/tags/v0.1.8.tar.gz
+	source = archtoys-0.1.9.tar.gz::https://github.com/Mujtaba1i/Archtoys/archive/refs/tags/v0.1.9.tar.gz
 	sha256sums = SKIP
 
 pkgname = archtoys
