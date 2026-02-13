@@ -1,0 +1,24 @@
+pkgbase = motomagx-gcc-cross-bin
+	pkgdesc = A GCC cross-compiler targeting MotoMAGX
+	pkgver = 15.2.0
+	pkgrel = 20260213
+	url = https://github.com/AmanoTeam/motomagx-gcc-cross
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = LGPL-3.0
+	provides = motomagx-gcc-cross
+	conflicts = motomagx-gcc-cross
+	options = !strip
+	options = staticlibs
+	source_i686 = https://github.com/AmanoTeam/motomagx-gcc-cross/releases/download/gcc-15/i386-unknown-linux-gnu.tar.xz
+	sha256sums_i686 = d17bf634d937ab0045d8c757223adc7a28e4458a2b055617610252fa302ff8bf
+	source_x86_64 = https://github.com/AmanoTeam/motomagx-gcc-cross/releases/download/gcc-15/x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = fe83b3d444ded19626b6c18b70c49af6dff121a793e5e7820925c10b59da5907
+	source_aarch64 = https://github.com/AmanoTeam/motomagx-gcc-cross/releases/download/gcc-15/aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 2ff022e95d79c15254696685dc276259bc337f276e9a56d5b4ffc2f85e51f8ce
+	source_armv7h = https://github.com/AmanoTeam/motomagx-gcc-cross/releases/download/gcc-15/arm-unknown-linux-gnueabihf.tar.xz
+	sha256sums_armv7h = 3e9590f7a1e4c43645c2bbbffeb6d3f6805cc43df902e994a5b819f1f9852052
+
+pkgname = motomagx-gcc-cross-bin
