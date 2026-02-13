@@ -2,7 +2,7 @@
 pkgname=steamcommunity302
 pkgver=14.0.02
 pkgdate=2026/02
-pkgrel=1
+pkgrel=2
 #epoch=
 pkgdesc="羽翼城制作的Steam、Github等反代加速工具,使用s302命令启动"
 url="https://www.dogfight360.com/blog/18682/"
