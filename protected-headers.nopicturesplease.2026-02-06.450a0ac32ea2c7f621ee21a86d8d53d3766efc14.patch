@@ -7,6 +7,69 @@ index 2c0c8c9a0..053812623 100644
  	Giacomo Tesio
  	Chris Billington
 +	Holger Smolinski
+diff --git a/protected-headers.450a0ac32ea2c7f621ee21a86d8d53d3766efc14.patch b/protected-headers.450a0ac32ea2c7f621ee21a86d8d53d3766efc14.patch
+new file mode 100644
+index 000000000..e69de29bb
+diff --git a/src/compose.c b/src/compose.c
+index 75ea25861..dd9a07be0 100644
+--- a/src/compose.c
++++ b/src/compose.c
+@@ -12381,9 +12381,11 @@ static void compose_reply_from_messageview_real(MessageView *msgview, GSList *ms
+ 	if (g_slist_length(msginfo_list) == 1 && !opening_multiple && msgview != NULL) {
+ 		MimeInfo *mimeinfo = messageview_get_selected_mime_part(msgview);
+ 		MsgInfo *orig_msginfo = (MsgInfo *)msginfo_list->data;
++		g_message("TODO: Composing reply to mimeinfo %p", mimeinfo);
+ 
+ 		if (mimeinfo != NULL && mimeinfo->type == MIMETYPE_MESSAGE && 
+ 		    !g_ascii_strcasecmp(mimeinfo->subtype, "rfc822")) {
++			g_message("TODO: cont. Composing reply to mimeinfo %p", mimeinfo);
+ 			tmp_msginfo = procmsg_msginfo_new_from_mimeinfo(
+ 						orig_msginfo, mimeinfo);
+ 			if (tmp_msginfo != NULL) {
+diff --git a/src/messageview.c b/src/messageview.c
+index f80c2bfb6..3d7a28a32 100644
+--- a/src/messageview.c
++++ b/src/messageview.c
+@@ -1415,6 +1415,14 @@ gint messageview_show(MessageView *messageview, MsgInfo *msginfo,
+ 			g_free(text);
+ 			break;
+ 		}
++		if (encinfo->protected_headers){
++			g_message("messageview_show: found extra headers after encryption");
++			for(gint i = 0; i < mimeinfo->protected_headers->len; i++) {
++				Header *hp = g_ptr_array_index(mimeinfo->protected_headers, i);
++				g_message("Extra Header %d - %s %s", i, hp->name, hp->body);
++				procmsg_msginfo_add_protected_header(msginfo, hp);
++			}
++	        }
+ 	}
+ 			
+ 	if (messageview->msginfo != msginfo) {
+@@ -1430,6 +1438,24 @@ gint messageview_show(MessageView *messageview, MsgInfo *msginfo,
+ 		messageview_set_menu_sensitive(messageview);
+ 		messageview->msginfo = msginfo;
+ 	}
++
++	// Extract a better subject from encrypted content
++	gchar *alt_subject = procmsg_extract_subject(mimeinfo);
++	g_message("Extracted ALT subject:'%s'", subject);
++	if (alt_subject) {
++		g_free(messageview->msginfo->subject);
++		messageview->msginfo->subject = alt_subject;
++
++		GtkCMCTreeNode *summary_node = summary_find_msg_by_msgnum(
++			messageview->mainwin->summaryview,
++			messageview->msginfo->msgnum);
++		GtkCMCTree *ctree = GTK_CMCTREE(messageview->mainwin->summaryview->ctree);
++
++		gtk_cmctree_node_set_pixtext(ctree, summary_node,
++			ctree->tree_column, alt_subject, 0, NULL);
++	}
++
++
+ 	if (prefs_common.display_header_pane)
+ 		headerview_show(messageview->headerview, messageview->msginfo);
+ 
 diff --git a/src/mimeview.c b/src/mimeview.c
 index 8d98bdd4e..b7b34156b 100644
 --- a/src/mimeview.c
@@ -21,7 +84,7 @@ index 8d98bdd4e..b7b34156b 100644
  		}
  		if (fp != NULL)
 diff --git a/src/plugins/pgpmime/pgpmime.c b/src/plugins/pgpmime/pgpmime.c
-index 6209ae3db..58bf4f086 100644
+index 6209ae3db..1db5efb85 100644
 --- a/src/plugins/pgpmime/pgpmime.c
 +++ b/src/plugins/pgpmime/pgpmime.c
 @@ -33,6 +33,7 @@
@@ -32,7 +95,7 @@ index 6209ae3db..58bf4f086 100644
  #include "plugin.h"
  
  #include "pgpmime.h"
-@@ -54,6 +55,71 @@ struct _PrivacyDataPGP
+@@ -54,6 +55,75 @@ struct _PrivacyDataPGP
  	gboolean	is_signed;
  };
  
@@ -70,6 +133,10 @@ index 6209ae3db..58bf4f086 100644
 +        MimeInfo *mimeinfo = (MimeInfo *)data;
 +
 +        if (!procheader_headername_equal(hdr->name,"Content-Type")) {
++               if ( g_hash_table_lookup(mimeinfo->typeparameters,"protected-headers"))
++                       g_message("Parser Found protected header: %s %s",hdr->name, hdr->body);
++               else
++                       g_message("Parser Found rfc822-header: %s %s",hdr->name, hdr->body);
 +                procmime_mimeinfo_add_extra_header(mimeinfo, hdr);
 +        }
 +}
@@ -104,31 +171,65 @@ index 6209ae3db..58bf4f086 100644
  static PrivacySystem pgpmime_system;
  
  static PrivacyDataPGP *pgpmime_new_privacydata()
-@@ -710,11 +776,13 @@ static PrivacySystem pgpmime_system = {
+@@ -322,9 +392,20 @@ static MimeInfo *pgpmime_decrypt(MimeInfo *mimeinfo)
+ 		privacy_set_error(_("Couldn't parse decrypted file parts."));
+ 		if (sig_data)
+ 			privacy_free_signature_data(sig_data);
++		procmime_mimeinfo_free_all(&parseinfo);
+ 		return NULL;
+ 	}
+ 
++       if (parseinfo->protected_headers != NULL) {
++               g_message("PGP Plugin: decrypted message has protected headers");
++	       for(int i = 0; i < parseinfo->protected_headers->len; i++) {
++	               Header *hp = g_ptr_array_index(parseinfo->protected_headers, i);
++		       g_message("Extra Header %d - %s %s", i, hp->name, hp->body);
++	       }
++               decinfo->protected_headers = parseinfo->protected_headers;
++               parseinfo->protected_headers = NULL;
++       }
++
+ 	g_node_unlink(decinfo->node);
+ 	procmime_mimeinfo_free_all(&parseinfo);
+ 
+@@ -710,11 +791,13 @@ static PrivacySystem pgpmime_system = {
  
  void pgpmime_init()
  {
-+        pgpmime_init_protected_headers_parser();
++	pgpmime_init_protected_headers_parser();
  	privacy_register_system(&pgpmime_system);
  }
  
  void pgpmime_done()
  {
-+        pgpmime_remove_protected_headers_parser();
++	pgpmime_remove_protected_headers_parser();
  	privacy_unregister_system(&pgpmime_system);
  }
  
 diff --git a/src/privacy.c b/src/privacy.c
-index 3b3e2e4e5..d741f3bfc 100644
+index 35b29c82c..06ce6b543 100644
 --- a/src/privacy.c
 +++ b/src/privacy.c
-@@ -366,6 +366,11 @@ static gint decrypt(MimeInfo *mimeinfo, PrivacySystem *system)
+@@ -25,6 +25,7 @@
+ #include "privacy.h"
+ #include "procmime.h"
+ #include "procmsg.h"
++#include "procheader.h"
+ 
+ static GSList *systems = NULL;
+ static gchar *privacy_last_error = NULL;
+@@ -366,6 +367,16 @@ static gint decrypt(MimeInfo *mimeinfo, PrivacySystem *system)
  	
  	procmime_mimeinfo_free_all(&mimeinfo);
  
 +	if (decryptedinfo->protected_headers) {
 +		parentinfo->protected_headers = decryptedinfo->protected_headers;
 +		decryptedinfo->protected_headers = NULL;
++
++                for(int i = 0; i < parentinfo->protected_headers->len; i++) {
++                              Header *hp = g_ptr_array_index(parentinfo->protected_headers, i);
++                              g_message("Extra Header %d - %s %s", i, hp->name, hp->body);
++                      }
 +	}
 +
  	g_node_insert(parentinfo->node, childnumber, decryptedinfo->node);
@@ -274,10 +375,18 @@ index a5c3201d0..01cdf545f 100644
  gint procheader_get_header_from_msginfo	(MsgInfo	*msginfo,
  					 gchar		**buf,
 diff --git a/src/procmime.c b/src/procmime.c
-index ffa29f5f7..f46234f80 100644
+index ffa29f5f7..99715b387 100644
 --- a/src/procmime.c
 +++ b/src/procmime.c
-@@ -149,6 +149,10 @@ static gboolean free_func(GNode *node, gpointer data)
+@@ -88,6 +88,7 @@ MimeInfo *procmime_mimeinfo_new(void)
+ 	return mimeinfo;
+ }
+ 
++
+ static gboolean procmime_mimeinfo_parameters_destroy(gpointer key, gpointer value, gpointer user_data)
+ {
+ 	g_free(key);
+@@ -149,6 +150,10 @@ static gboolean free_func(GNode *node, gpointer data)
  	if (mimeinfo->sig_data)
  		privacy_free_signature_data(mimeinfo->sig_data);
  
@@ -288,7 +397,7 @@ index ffa29f5f7..f46234f80 100644
  	g_free(mimeinfo);
  
  	return FALSE;
-@@ -289,6 +293,38 @@ const gchar *procmime_mimeinfo_get_parameter(MimeInfo *mimeinfo, const gchar *na
+@@ -289,6 +294,38 @@ const gchar *procmime_mimeinfo_get_parameter(MimeInfo *mimeinfo, const gchar *na
  	strcpy(lastline, buf);							\
  }
  
@@ -327,7 +436,7 @@ index ffa29f5f7..f46234f80 100644
  gboolean procmime_decode_content(MimeInfo *mimeinfo)
  {
  	gchar buf[BUFFSIZE];
-@@ -1422,6 +1458,22 @@ static int procmime_parse_mimepart(MimeInfo *parent,
+@@ -1422,6 +1459,22 @@ static int procmime_parse_mimepart(MimeInfo *parent,
  			     guint length,
  			     gboolean short_scan);
  
@@ -350,7 +459,7 @@ index ffa29f5f7..f46234f80 100644
  static void procmime_parse_message_rfc822(MimeInfo *mimeinfo, gboolean short_scan)
  {
  	HeaderEntry hentry[] = {{"Content-Type:",  NULL, TRUE},
-@@ -1448,6 +1500,8 @@ static void procmime_parse_message_rfc822(MimeInfo *mimeinfo, gboolean short_sca
+@@ -1448,6 +1501,8 @@ static void procmime_parse_message_rfc822(MimeInfo *mimeinfo, gboolean short_sca
          gchar *tmp;
  	glong len = 0;
  
@@ -359,7 +468,7 @@ index ffa29f5f7..f46234f80 100644
  	procmime_decode_content(mimeinfo);
  
  	fp = claws_fopen(mimeinfo->data.filename, "rb");
-@@ -1460,7 +1514,7 @@ static void procmime_parse_message_rfc822(MimeInfo *mimeinfo, gboolean short_sca
+@@ -1460,7 +1515,7 @@ static void procmime_parse_message_rfc822(MimeInfo *mimeinfo, gboolean short_sca
  		claws_fclose(fp);
  		return;
  	}
@@ -368,7 +477,7 @@ index ffa29f5f7..f46234f80 100644
  	if (hentry[0].body != NULL) {
  		tmp = conv_unmime_header(hentry[0].body, NULL, FALSE);
                  g_free(hentry[0].body);
-@@ -1498,14 +1552,25 @@ static void procmime_parse_message_rfc822(MimeInfo *mimeinfo, gboolean short_sca
+@@ -1498,14 +1553,26 @@ static void procmime_parse_message_rfc822(MimeInfo *mimeinfo, gboolean short_sca
  	len = mimeinfo->length - (content_start - mimeinfo->offset);
  	if (len < 0)
  		len = 0;
@@ -384,6 +493,7 @@ index ffa29f5f7..f46234f80 100644
 +				len);
 +
 +	if (g_hash_table_lookup(childinfo->typeparameters, "protected-headers")) {
++	        g_message("Found protected headers attribute %s",(gchar *)g_hash_table_lookup(childinfo->typeparameters, "protected-headers"));
 +		for (int i = 0; i < additional_headers->len; i ++ ) {
 +			Header *hdr = g_ptr_array_index(additional_headers,i);
 +			procmime_mimeinfo_add_extra_header(childinfo, hdr);
@@ -398,7 +508,7 @@ index ffa29f5f7..f46234f80 100644
  	for (i = 0; i < (sizeof hentry / sizeof hentry[0]); i++) {
  		g_free(hentry[i].body);
  		hentry[i].body = NULL;
-@@ -1588,8 +1653,8 @@ bail:
+@@ -1588,8 +1655,8 @@ bail:
  	}
  }
  
@@ -409,7 +519,7 @@ index ffa29f5f7..f46234f80 100644
          if (hentry[0].body != NULL) {				\
  		tmp = conv_unmime_header(hentry[0].body, NULL, FALSE);	\
                  g_free(hentry[0].body);				\
-@@ -1640,16 +1705,15 @@ static void procmime_parse_multipart(MimeInfo *mimeinfo, gboolean short_scan)
+@@ -1640,16 +1707,15 @@ static void procmime_parse_multipart(MimeInfo *mimeinfo, gboolean short_scan)
  				{"Disposition:",
  						   NULL, TRUE},
  				{NULL,		   NULL, FALSE}};
@@ -427,7 +537,7 @@ index ffa29f5f7..f46234f80 100644
  
  	boundary = g_hash_table_lookup(mimeinfo->typeparameters, "boundary");
  	if (!boundary)
-@@ -1675,22 +1739,36 @@ static void procmime_parse_multipart(MimeInfo *mimeinfo, gboolean short_scan)
+@@ -1675,22 +1741,36 @@ static void procmime_parse_multipart(MimeInfo *mimeinfo, gboolean short_scan)
  			break;
  
  		if (IS_BOUNDARY(buf, boundary, boundary_len)) {
@@ -469,7 +579,7 @@ index ffa29f5f7..f46234f80 100644
  			} 
  			
  			if (buf[2 + boundary_len]     == '-' &&
-@@ -1698,11 +1776,13 @@ static void procmime_parse_multipart(MimeInfo *mimeinfo, gboolean short_scan)
+@@ -1698,11 +1778,13 @@ static void procmime_parse_multipart(MimeInfo *mimeinfo, gboolean short_scan)
  			    	end_found = TRUE;
  				break;
  			}
@@ -487,7 +597,7 @@ index ffa29f5f7..f46234f80 100644
  			lastoffset = ftell(fp);
  		}
  	}
-@@ -1718,15 +1798,20 @@ static void procmime_parse_multipart(MimeInfo *mimeinfo, gboolean short_scan)
+@@ -1718,15 +1800,20 @@ static void procmime_parse_multipart(MimeInfo *mimeinfo, gboolean short_scan)
  					hentry[6].body, hentry[7].body,
  					mimeinfo->data.filename, lastoffset,
  					len, short_scan);
@@ -512,11 +622,14 @@ index ffa29f5f7..f46234f80 100644
  }
  
  static void parse_parameters(const gchar *parameters, GHashTable *table)
-@@ -2021,10 +2106,31 @@ static int procmime_parse_mimepart(MimeInfo *parent,
+@@ -2021,10 +2108,31 @@ static int procmime_parse_mimepart(MimeInfo *parent,
  			     guint length,
  			     gboolean short_scan)
  {
-+  	int result = 0;
+-	MimeInfo *mimeinfo;
+-	MimeParser *parser = NULL;
+-	gboolean parsed = FALSE;
+ 	int result = 0;
 +	MimeInfo *childinfo = procmime_parse_mimehdrs(parent,
 +			content_type, content_encoding,
 +			content_description, content_id,
@@ -529,34 +642,31 @@ index ffa29f5f7..f46234f80 100644
 +}
 +
 +static MimeInfo *procmime_parse_mimehdrs(MimeInfo *parent,
-+ 			     gchar *content_type,
-+ 			     gchar *content_encoding,
-+ 			     gchar *content_description,
-+ 			     gchar *content_id,
-+ 			     gchar *content_disposition,
-+ 			     gchar *content_location,
-+ 			     const gchar *filename,
-+ 			     guint offset,
++			     gchar *content_type,
++			     gchar *content_encoding,
++			     gchar *content_description,
++			     gchar *content_id,
++			     gchar *content_disposition,
++			     gchar *content_location,
++			     const gchar *filename,
++			     guint offset,
 +			     guint length)
 + {
 +
- 	MimeInfo *mimeinfo;
--	MimeParser *parser = NULL;
--	gboolean parsed = FALSE;
--	int result = 0;
++	MimeInfo *mimeinfo;
  
  	/* Create MimeInfo */
  	mimeinfo = procmime_mimeinfo_new();
-@@ -2037,7 +2143,7 @@ static int procmime_parse_mimepart(MimeInfo *parent,
+@@ -2037,7 +2145,7 @@ static int procmime_parse_mimepart(MimeInfo *parent,
  			 * with enormous messages
  			 */
  			procmime_mimeinfo_free_all(&mimeinfo);
 -			return -1;			
-+			return NULL;			
++			return NULL;
  		}
  		g_node_append(parent->node, mimeinfo->node);
  	}
-@@ -2088,6 +2194,17 @@ static int procmime_parse_mimepart(MimeInfo *parent,
+@@ -2088,6 +2196,17 @@ static int procmime_parse_mimepart(MimeInfo *parent,
  	} else
  		mimeinfo->disposition = DISPOSITIONTYPE_UNKNOWN;
  
@@ -574,7 +684,7 @@ index ffa29f5f7..f46234f80 100644
  	/* Call parser for mime type */
  	if ((parser = procmime_get_mimeparser_for_type(mimeinfo->type, mimeinfo->subtype)) != NULL) {
  		parsed = procmime_mimeparser_parse(parser, mimeinfo);
-@@ -2127,7 +2244,7 @@ static int procmime_parse_mimepart(MimeInfo *parent,
+@@ -2127,7 +2246,7 @@ static int procmime_parse_mimepart(MimeInfo *parent,
  		}
  	}
  
@@ -584,14 +694,14 @@ index ffa29f5f7..f46234f80 100644
  
  static gchar *typenames[] = {
 diff --git a/src/procmime.h b/src/procmime.h
-index dfc94fa44..85e5b9ab4 100644
+index dfc94fa44..27ac5e8c3 100644
 --- a/src/procmime.h
 +++ b/src/procmime.h
 @@ -155,6 +155,7 @@ struct _MimeInfo
  	GTask *last_sig_check_task;
  	SignatureData *sig_data;
  
-+	GPtrArray	*protected_headers; 
++	GPtrArray	*protected_headers;
  	gboolean	 broken;
  };
  
@@ -606,43 +716,250 @@ index dfc94fa44..85e5b9ab4 100644
  gboolean procmime_encode_content	(MimeInfo	*mimeinfo, EncodingType encoding);
  gint procmime_get_part			(const gchar	*outfile,
 diff --git a/src/procmsg.c b/src/procmsg.c
-index 36f5b2514..f8da29805 100644
+index 36f5b2514..f7983cd59 100644
 --- a/src/procmsg.c
 +++ b/src/procmsg.c
-@@ -865,6 +865,22 @@ MsgInfo *procmsg_get_msginfo_from_identifier(const gchar *id)
+@@ -865,6 +865,42 @@ MsgInfo *procmsg_get_msginfo_from_identifier(const gchar *id)
  	return msginfo;
  }
  
-+void helper (gpointer data, gpointer user_data) {
-+	MsgInfo * msginfo = (MsgInfo *)user_data;
-+	Header * header = (Header *)data;
-+	if ( procheader_headername_equal(header->name, "Subject") ) {
-+		g_message("Updating msginfo from protected header %s -> %s", header->name, header->body);
-+		if ( msginfo->subject )
-+			g_free(msginfo->subject);
-+		msginfo->subject=g_strdup(header->body);
-+	}
++GHashTable *procmsg_msginfo_get_protected_headers(MsgInfo *msginfo)
++{
++       if (!msginfo || !msginfo->extradata || !msginfo->extradata->protected_headers)
++               return NULL;
++
++       return msginfo->extradata->protected_headers;
 +}
 +
-+void procmsg_update_msginfo_headers(MsgInfo * msginfo, GPtrArray *protected_headers){
-+	g_ptr_array_foreach(protected_headers, helper, msginfo);
++GHashTable *procmsg_msginfo_add_protected_headers(MsgInfo *msginfo)
++{
++       if (!msginfo->extradata)
++               msginfo->extradata = g_new0(MsgInfoExtraData, 1);
++
++       if (msginfo->extradata->protected_headers) {
++               g_message("Found another instance of RFC822 headers,reusing it");
++               g_hash_table_remove_all(msginfo->extradata->protected_headers);
++       } else {
++               msginfo->extradata->protected_headers =
++                       g_hash_table_new(g_str_hash, g_str_equal);
++       }
++       return msginfo->extradata->protected_headers;
 +}
 +
++
++void procmsg_msginfo_add_protected_header(MsgInfo *msginfo, Header *header)
++{
++       GHashTable *msginfo_headers =
++                          procmsg_msginfo_get_protected_headers(msginfo);
++       if (msginfo_headers == NULL)
++               msginfo_headers = procmsg_msginfo_add_protected_headers(msginfo);
++       g_hash_table_ref(msginfo_headers);
++       g_message("Adding Header %s:%s",header->name, header->body);
++       g_hash_table_insert(msginfo_headers,header->name, strdup(header->body));
++       g_hash_table_unref(msginfo_headers);
++}
 +
  static GSList *procmsg_list_sort_by_account(FolderItem *queue, GSList *list)
  {
  	GSList *result = NULL;
+@@ -1455,6 +1491,10 @@ void procmsg_msginfo_free(MsgInfo **msginfo_ptr)
+ 		FREENULL(msginfo->extradata->account_server);
+ 		FREENULL(msginfo->extradata->account_login);
+ 		FREENULL(msginfo->extradata->resent_from);
++		              if (msginfo->extradata->protected_headers) {
++                       g_hash_table_unref(msginfo->extradata->protected_headers);
++                       msginfo->extradata->protected_headers = NULL;
++               }
+ 		FREENULL(msginfo->extradata);
+ 	}
+ 	slist_free_strings_full(msginfo->references);
+@@ -1539,6 +1579,8 @@ guint procmsg_msginfo_memusage(MsgInfo *msginfo)
+ 			memusage += strlen(msginfo->extradata->list_archive);
+ 		if (msginfo->extradata->list_owner)
+ 			memusage += strlen(msginfo->extradata->list_owner);
++		              if (msginfo->extradata->protected_headers)
++                       memusage += 0; // TODO: determine correct size of extradata
+ 	}
+ 	return memusage;
+ }
+@@ -2584,3 +2626,89 @@ void procmsg_msginfo_clear_tags(MsgInfo *msginfo)
+ 	folder_item_commit_tags(msginfo->folder, msginfo, NULL, unset);
+ 	g_slist_free(unset);
+ }
++
++static GPtrArray *extract_headers(FILE *fp)
++{
++	GPtrArray *headers, *external_headers;
++
++	cm_return_val_if_fail(fp != NULL, NULL);
++
++	headers = procheader_get_header_array(fp);
++
++	external_headers = g_ptr_array_new_with_free_func(procheader_header_free);
++
++	for (gint i = 0; i < headers->len; i++) {
++		Header *header = g_ptr_array_index(headers, i);
++		if (!procheader_header_is_internal(header->name)) {
++			Header *my_hdr = (Header *)g_ptr_array_steal_index(headers,i);
++			g_ptr_array_add(external_headers, my_hdr);
++		}
++	}
++
++	g_ptr_array_free(headers, TRUE);
++
++	return external_headers;
++}
++
++static gchar *extract_subject(MimeInfo *mimeinfo)
++{
++	FILE *fp;
++	gchar *subject = NULL;
++
++	if (mimeinfo->content == MIMECONTENT_MEM)
++		fp = str_open_as_stream(mimeinfo->data.mem);
++	else
++		fp = claws_fopen(mimeinfo->data.filename, "rb");
++	if (!fp) {
++		FILE_OP_ERROR(mimeinfo->data.filename, "claws_fopen");
++		return FALSE;
++	}
++	if (fseek(fp, mimeinfo->offset, SEEK_SET) < 0) {
++		FILE_OP_ERROR(mimeinfo->data.filename, "fseek");
++		claws_fclose(fp);
++		return FALSE;
++	}
++
++	GPtrArray *headers = extract_headers(fp);
++	if (headers) {
++		for (gint i = 0; i < headers->len; i++) {
++			Header *header = g_ptr_array_index(headers, i);
++			if (!strcmp(header->name, "Subject:")) {
++				subject = g_strdup(header->body);
++				break;
++			}
++		}
++		g_ptr_array_free(headers, TRUE);
++	}
++
++	claws_fclose(fp);
++
++	if(subject)
++		unfold_line(subject);
++
++	return subject;
++}
++
++gchar *procmsg_extract_subject(MimeInfo *mimeinfo)
++{
++	GNode *iter;
++	gchar *subject = extract_subject(mimeinfo);
++
++	g_message("extracting subject from mimeinfo %p", mimeinfo);
++	if(subject && strncmp(subject, "...", 3) != 0) {
++		g_message("extracted subject %s from mimeinfo %p", subject,mimeinfo);
++		return subject;
++	}
++	g_free(subject);
++
++	for (iter = g_node_first_child(mimeinfo->node) ; iter != NULL ;
++			iter = g_node_next_sibling(iter)) {
++		g_message("itrying next node: %p", iter->data);
++		subject = procmsg_extract_subject((MimeInfo *) iter->data);
++		if(subject && strncmp(subject, "...", 3) != 0)
++			return subject;
++		g_free(subject);
++	}
++
++	return NULL;
++}
+diff --git a/src/procmsg.h b/src/procmsg.h
+index efff0e8fc..2c00d05a2 100644
+--- a/src/procmsg.h
++++ b/src/procmsg.h
+@@ -255,6 +255,7 @@ struct _MsgInfoExtraData
+  	gchar *list_help;
+  	gchar *list_archive;
+  	gchar *list_owner;
++        GHashTable *protected_headers;
+ };
+ 
+ struct _MsgInfoAvatar
+@@ -343,6 +344,7 @@ MsgInfo *procmsg_msginfo_get_full_info_from_file
+ 					const gchar *file);
+ void	 procmsg_msginfo_free		(MsgInfo	**msginfo);
+ guint	 procmsg_msginfo_memusage	(MsgInfo	*msginfo);
++void     procmsg_msginfo_add_protected_header(MsgInfo *msginfo, Header *header);
+ 
+ gint procmsg_send_message_queue_with_lock(const gchar *file,
+ 					  gchar **errstr,
+@@ -404,4 +406,5 @@ gchar *procmsg_msginfo_get_identifier(MsgInfo *msginfo);
+ 
+ gchar *procmsg_msginfo_get_avatar(MsgInfo *msginfo, gint type);
+ void procmsg_msginfo_add_avatar(MsgInfo *msginfo, gint type, const gchar *data);
++gchar *procmsg_extract_subject(MimeInfo *mimeinfo);
+ #endif /* __PROCMSG_H__ */
+diff --git a/src/summaryview.c b/src/summaryview.c
+index 0863a62ca..2c1fa7ef3 100644
+--- a/src/summaryview.c
++++ b/src/summaryview.c
+@@ -150,10 +150,6 @@ static GtkCMCTreeNode *summary_find_next_flagged_msg
+ 					 MsgPermFlags	 flags,
+ 					 gboolean	 start_from_next);
+ 
+-static GtkCMCTreeNode *summary_find_msg_by_msgnum
+-					(SummaryView		*summaryview,
+-					 guint			 msgnum);
+-
+ static void summary_update_status	(SummaryView		*summaryview);
+ 
+ /* display functions */
+@@ -2479,7 +2475,7 @@ static GtkCMCTreeNode *summary_find_next_flagged_msg(SummaryView *summaryview,
+ 	return node;
+ }
+ 
+-static GtkCMCTreeNode *summary_find_msg_by_msgnum(SummaryView *summaryview,
++GtkCMCTreeNode *summary_find_msg_by_msgnum(SummaryView *summaryview,
+ 						guint msgnum)
+ {
+ 	GtkCMCTree *ctree = GTK_CMCTREE(summaryview->ctree);
+diff --git a/src/summaryview.h b/src/summaryview.h
+index 5239fbdf6..ea3cf30ee 100644
+--- a/src/summaryview.h
++++ b/src/summaryview.h
+@@ -340,4 +340,8 @@ gboolean summary_is_list(SummaryView *summaryview);
+ gboolean summaryview_search_root_progress(gpointer data, guint at, guint matched, guint total);
+ gboolean summary_is_opened_message_selected(SummaryView *summaryview);
+ gboolean summary_has_opened_message(SummaryView *summaryview);
++GtkCMCTreeNode *summary_find_msg_by_msgnum
++                    (SummaryView		*summaryview,
++                     guint			 msgnum);
++
+ #endif /* __SUMMARY_H__ */
 diff --git a/src/textview.c b/src/textview.c
-index 21ff15f82..cfde6817e 100644
+index c871bbda4..1a810a9ae 100644
 --- a/src/textview.c
 +++ b/src/textview.c
-@@ -167,7 +167,13 @@ static void textview_write_link		(TextView	*textview,
+@@ -71,6 +71,13 @@
+ #include "avatars.h"
+ #include "file-utils.h"
+ 
++static GdkRGBA header_bgcolors[3] = {
++       {1,   1, 1,   1},
++       {0.5, 1, 0.5, 1},
++       {1,   1, 0.5, 1}
++};
++
++
+ static GdkRGBA quote_colors[3] = {
+ 	{0, 0, 0, 1},
+ 	{0, 0, 0, 1},
+@@ -167,7 +174,13 @@ static void textview_write_link		(TextView	*textview,
  static GPtrArray *textview_scan_header	(TextView	*textview,
  					 FILE		*fp);
  static void textview_show_header	(TextView	*textview,
 -					 GPtrArray	*headers);
 +					 GPtrArray	*headers,
-+                                         GPtrArray	*protected_headers);
++					 GPtrArray      *protected_headers);
 +static void textview_append_single_header	(TextView *textview,
 +						 Header *header,
 +						 gint verified);
@@ -651,42 +968,145 @@ index 21ff15f82..cfde6817e 100644
  
  static void textview_zoom(GtkWidget *widget, gboolean zoom_in);
  static void textview_zoom_in(GtkWidget *widget, gpointer data);
-@@ -693,6 +699,12 @@ static void textview_add_part(TextView *textview, MimeInfo *mimeinfo)
- 		}
- 		headers = textview_scan_header(textview, fp);
- 		if (headers) {
-+			if (fseek(fp, mimeinfo->offset, SEEK_SET) < 0) {
-+				FILE_OP_ERROR(mimeinfo->data.filename, "fseek");
-+				claws_fclose(fp);
-+				END_TIMING();
-+				return;
-+			}
- 			if (textview->messageview->msginfo && textview->messageview->msginfo->folder)
- 				folder_item = textview->messageview->msginfo->folder;
- 			if (charcount > 0)
-@@ -702,8 +714,19 @@ static void textview_add_part(TextView *textview, MimeInfo *mimeinfo)
- 			    !prefs_common.display_header_pane &&
- 			    (folder_item && folder_item->prefs && folder_item->prefs->show_tags))
- 				textview_show_tags(textview);
+@@ -438,7 +451,29 @@ static void textview_create_tags(GtkTextView *text, TextView *textview)
+ 				   "font-desc", font_desc,
+ 				   "left-margin", 3,
+ 				   "left-margin-set", TRUE,
+-				   NULL);
++	                           "background-rgba", &header_bgcolors[0],
++                                  NULL);
++       gtk_text_buffer_create_tag(buffer, "header_verified",
++                                  "pixels-above-lines", 0,
++                                  "pixels-above-lines-set", TRUE,
++                                  "pixels-below-lines", 0,
++                                  "pixels-below-lines-set", TRUE,
++                                  "font-desc", font_desc,
++                                  "left-margin", 3,
++                                  "left-margin-set", TRUE,
++                                  "background-rgba", &header_bgcolors[1],
++                                  NULL);
++       gtk_text_buffer_create_tag(buffer, "header_modified",
++                                  "pixels-above-lines", 0,
++                                  "pixels-above-lines-set", TRUE,
++                                  "pixels-below-lines", 0,
++                                  "pixels-below-lines-set", TRUE,
++                                  "font-desc", font_desc,
++                                  "left-margin", 3,
++                                  "left-margin-set", TRUE,
++                                  "background-rgba", &header_bgcolors[2],
++                                   NULL);
++
+ 	gtk_text_buffer_create_tag(buffer, "header_title",
+ 				   "font-desc", bold_font_desc,
+ 				   NULL);
+@@ -636,6 +671,47 @@ void textview_show_part(TextView *textview, MimeInfo *mimeinfo, FILE *fp)
+ 	END_TIMING();
+ }
+ 
++static gboolean textview_process_headers(TextView *textview, MimeInfo *mimeinfo,
++					 gint charcount, GtkTextBuffer *buffer, GtkTextIter iter)
++{
++	GPtrArray *headers = NULL;
++	FILE *fp;
++	if (mimeinfo->content == MIMECONTENT_MEM)
++		fp = str_open_as_stream(mimeinfo->data.mem);
++	else
++		fp = claws_fopen(mimeinfo->data.filename, "rb");
++	if (!fp) {
++		FILE_OP_ERROR(mimeinfo->data.filename, "claws_fopen");
++		return FALSE;
++	}
++	if (fseek(fp, mimeinfo->offset, SEEK_SET) < 0) {
++		FILE_OP_ERROR(mimeinfo->data.filename, "fseek");
++		claws_fclose(fp);
++		return FALSE;
++	}
++	headers = textview_scan_header(textview, fp);
++	if (headers) {
++		if (charcount > 0)
++			gtk_text_buffer_insert(buffer, &iter, "\n", 1);
++
++		if (procmime_mimeinfo_parent(mimeinfo) == NULL &&
++			!prefs_common.display_header_pane)
++			textview_show_tags(textview);
++                        if (mimeinfo->protected_headers) {
++                                GPtrArray *protected_headers = g_ptr_array_new();
++                                textview_sort_headers(mimeinfo->protected_headers, protected_headers);
++                                textview_show_header(textview, headers, protected_headers);
++                                g_ptr_array_free(protected_headers, TRUE);
++                                g_ptr_array_free(mimeinfo->protected_headers, TRUE);
++                                mimeinfo->protected_headers = NULL;
++                        } else
++                                textview_show_header(textview, headers, NULL);
++	}
++	claws_fclose(fp);
++	return TRUE;
++}
++
++
+ static void textview_add_part(TextView *textview, MimeInfo *mimeinfo)
+ {
+ 	GtkAllocation allocation;
+@@ -643,11 +719,9 @@ static void textview_add_part(TextView *textview, MimeInfo *mimeinfo)
+ 	GtkTextBuffer *buffer;
+ 	GtkTextIter iter, start_iter;
+ 	gchar buf[BUFFSIZE];
+-	GPtrArray *headers = NULL;
+ 	const gchar *name;
+ 	gchar *content_type;
+ 	gint charcount;
+-	FolderItem *folder_item = NULL;
+ 
+ 	START_TIMING("");
+ 
+@@ -661,6 +735,7 @@ static void textview_add_part(TextView *textview, MimeInfo *mimeinfo)
+ 		return;
+ 	}
+ 	if (mimeinfo->type == MIMETYPE_MULTIPART) {
++		textview_process_headers(textview, mimeinfo, charcount, buffer, iter);
+ 		END_TIMING();
+ 		return;
+ 	}
+@@ -668,37 +743,7 @@ static void textview_add_part(TextView *textview, MimeInfo *mimeinfo)
+ 	textview->prev_quote_level = -1;
+ 
+ 	if ((mimeinfo->type == MIMETYPE_MESSAGE) && !g_ascii_strcasecmp(mimeinfo->subtype, "rfc822")) {
+-		FILE *fp;
+-		if (mimeinfo->content == MIMECONTENT_MEM)
+-			fp = str_open_as_stream(mimeinfo->data.mem);
+-		else
+-			fp = claws_fopen(mimeinfo->data.filename, "rb");
+-		if (!fp) {
+-			FILE_OP_ERROR(mimeinfo->data.filename, "claws_fopen");
+-			END_TIMING();
+-			return;
+-		}
+-		if (fseek(fp, mimeinfo->offset, SEEK_SET) < 0) {
+-			FILE_OP_ERROR(mimeinfo->data.filename, "fseek");
+-			claws_fclose(fp);
+-			END_TIMING();
+-			return;
+-		}
+-		headers = textview_scan_header(textview, fp);
+-		if (headers) {
+-			if (textview->messageview->msginfo && textview->messageview->msginfo->folder)
+-				folder_item = textview->messageview->msginfo->folder;
+-			if (charcount > 0)
+-				gtk_text_buffer_insert(buffer, &iter, "\n", 1);
+-			
+-			if (procmime_mimeinfo_parent(mimeinfo) == NULL &&
+-			    !prefs_common.display_header_pane &&
+-			    (folder_item && folder_item->prefs && folder_item->prefs->show_tags))
+-				textview_show_tags(textview);
 -			textview_show_header(textview, headers);
 -			procheader_header_array_destroy(headers);
-+
-+			if (mimeinfo->protected_headers) {
-+				MsgInfo * msginfo = textview->messageview->msginfo;
-+				GPtrArray *protected_headers = g_ptr_array_new();
-+				textview_sort_headers(mimeinfo->protected_headers, protected_headers);
-+				procmsg_update_msginfo_headers(msginfo, protected_headers);
-+				textview_show_header(textview, headers, protected_headers);
-+				g_ptr_array_free(protected_headers, TRUE);
-+				g_ptr_array_free(mimeinfo->protected_headers, TRUE);
-+				mimeinfo->protected_headers = NULL;
-+			} else
-+				textview_show_header(textview, headers, NULL);
-+			g_ptr_array_free(headers, TRUE);
- 		}
- 		claws_fclose(fp);
+-		}
+-		claws_fclose(fp);
++		textview_process_headers(textview, mimeinfo, charcount, buffer, iter);
  		END_TIMING();
-@@ -788,19 +811,21 @@ static void textview_add_part(TextView *textview, MimeInfo *mimeinfo)
+ 		return;
+ 	}
+@@ -781,19 +826,21 @@ static void textview_add_part(TextView *textview, MimeInfo *mimeinfo)
  			GTK_EVENTS_FLUSH();
  		}
  	} else if (mimeinfo->type == MIMETYPE_TEXT) {
@@ -718,18 +1138,19 @@ index 21ff15f82..cfde6817e 100644
  		}
  	}
  	END_TIMING();
-@@ -1933,31 +1958,24 @@ void textview_set_position(TextView *textview, gint pos)
+@@ -1926,31 +1973,25 @@ void textview_set_position(TextView *textview, gint pos)
  	gtkut_text_view_set_position(text, pos);
  }
  
 +static void textview_copy_headers_without_internal(GPtrArray *headers, GPtrArray *target) {
 +	while(headers->len) {
 +		Header *header = g_ptr_array_steal_index(headers, 0);
++		 unfold_line(header->body);
 +		if (!procheader_header_is_internal(header->name))
 +			g_ptr_array_add(target, header);
 +		else
 +			procheader_header_free(header);
-+ 	}
++	}
 +}
 +
  static GPtrArray *textview_scan_header(TextView *textview, FILE *fp)
@@ -739,10 +1160,9 @@ index 21ff15f82..cfde6817e 100644
 -	GSList *disphdr_list;
 -	Header *header;
 -	gint i;
--
-+ 
+ 
  	cm_return_val_if_fail(fp != NULL, NULL);
--
+ 
 -	if (prefs_common.show_all_headers) {
 -		headers = procheader_get_header_array(fp);
 -		sorted_headers = g_ptr_array_new();
@@ -757,13 +1177,12 @@ index 21ff15f82..cfde6817e 100644
 -		return sorted_headers;
 -	}
 -
-+ 
  	if (!prefs_common.display_header) {
 +		gchar buf[BUFFSIZE];
  		while (claws_fgets(buf, sizeof(buf), fp) != NULL)
  			if (buf[0] == '\r' || buf[0] == '\n') break;
  		return NULL;
-@@ -1965,46 +1983,43 @@ static GPtrArray *textview_scan_header(TextView *textview, FILE *fp)
+@@ -1958,46 +1999,40 @@ static GPtrArray *textview_scan_header(TextView *textview, FILE *fp)
  
  	headers = procheader_get_header_array(fp);
  
@@ -775,7 +1194,7 @@ index 21ff15f82..cfde6817e 100644
 +		textview_sort_headers(headers, sorted_headers);
 +
 +	g_ptr_array_free(headers, TRUE);
-+ 	return sorted_headers;
++	return sorted_headers;
 + }
 +
 +
@@ -787,10 +1206,9 @@ index 21ff15f82..cfde6817e 100644
  		DisplayHeaderProp *dp =
  			(DisplayHeaderProp *)disphdr_list->data;
 -
-+		gint i;
-+		
- 		for (i = 0; i < headers->len; i++) {
+-		for (i = 0; i < headers->len; i++) {
 -			header = g_ptr_array_index(headers, i);
++		for (gint i = 0; i < headers->len; i++) {
 +		        Header *header = g_ptr_array_index(headers, i);
  			if (procheader_headername_equal(header->name,
  							dp->name)) {
@@ -800,7 +1218,7 @@ index 21ff15f82..cfde6817e 100644
  					procheader_header_free(header);
  				else
  					g_ptr_array_add(sorted_headers, header);
- 
+-
 -				g_ptr_array_remove_index(headers, i);
  				i--;
  			}
@@ -829,11 +1247,17 @@ index 21ff15f82..cfde6817e 100644
  static void textview_show_avatar(TextView *textview)
  {
  	GtkAllocation allocation;
-@@ -2286,13 +2301,42 @@ static void textview_show_tags(TextView *textview)
+@@ -2279,93 +2314,163 @@ static void textview_show_tags(TextView *textview)
  		"header", "tags", NULL);
  }
  
 -static void textview_show_header(TextView *textview, GPtrArray *headers)
+-{
+-	GtkTextView *text = GTK_TEXT_VIEW(textview->text);
+-	GtkTextBuffer *buffer = gtk_text_view_get_buffer(text);
+-	GtkTextIter iter;
+-	Header *header;
+-	gint i;
 +#define HEADER_NOT_VERIFIABLE 0
 +#define HEADER_VERIFIED(i) ((i)+1)
 +#define HEADER_NOT_VERIFIED(i) (-HEADER_VERIFIED(i))
@@ -841,14 +1265,20 @@ index 21ff15f82..cfde6817e 100644
 +static gint textview_verify_protected_header(Header *header, GPtrArray *protected_headers)
 + {
 +	gint verified = HEADER_NOT_VERIFIABLE;
-+	gint i;
-+
++	const char * const ellipsis="...";
 +	if (protected_headers != NULL) {
-+		for (i=0; i<protected_headers->len; i++) {
++		for (gint i=0; i<protected_headers->len; i++) {
 +			Header *hdr = (Header *)g_ptr_array_index(protected_headers,i);
 +			if (!procheader_headername_equal(header->name, hdr->name))
 +				continue;
 +			verified = HEADER_NOT_VERIFIED(i);
++			if (procheader_headername_equal(header->name, "Subject")
++			    && g_ascii_strncasecmp(header->body,"...",
++						   strlen(ellipsis) < strlen(header->body) ?
++						   strlen(ellipsis) : strlen(header->body)) == 0) {
++				verified = HEADER_VERIFIED(i);
++				break;
++		        }
 +			if (g_ascii_strncasecmp(hdr->body,header->body,
 +						strlen(hdr->body) < strlen(header->body) ?
 +						strlen(hdr->body) : strlen(header->body)) == 0) {
@@ -861,21 +1291,33 @@ index 21ff15f82..cfde6817e 100644
 +	return verified;
 +}
 +
-+
-+static void textview_show_header(TextView *textview, GPtrArray *headers, GPtrArray *protected_headers)
- {
- 	GtkTextView *text = GTK_TEXT_VIEW(textview->text);
- 	GtkTextBuffer *buffer = gtk_text_view_get_buffer(text);
- 	GtkTextIter iter;
--	Header *header;
-+	Header *header, *phdr;
- 	gint i;
-+	gint verified;
  
++static void textview_show_header(TextView *textview, GPtrArray *headers, GPtrArray *protected_headers)
++{
  	cm_return_if_fail(headers != NULL);
  
-@@ -2300,79 +2344,111 @@ static void textview_show_header(TextView *textview, GPtrArray *headers)
- 		header = g_ptr_array_index(headers, i);
+-	for (i = 0; i < headers->len; i++) {
+-		header = g_ptr_array_index(headers, i);
++	/* First we look for protected_headers that are not regular headers */
++	if (protected_headers != NULL) {
++	       for (gint i=0; i<protected_headers->len; i++) {
++		      Header *header  = (Header *)g_ptr_array_index(protected_headers, i);
++		      gboolean found = FALSE;
++		      for (gint j = 0; j < headers->len; j++) {
++			     Header *hdr  = (Header *)g_ptr_array_index(headers, j);
++			     if (procheader_headername_equal(header->name, hdr->name)) {
++				     found = TRUE;
++				     break;
++			     }
++		      }
++		      if (!found) {
++			     textview_append_single_header(textview, header, HEADER_VERIFIED(i));
++		      }
++	       }
++	}
++	for (gint i = 0; i < headers->len; i++) {
++	        gint verified;
++		Header *header = (Header *)g_ptr_array_index(headers, i);
  		cm_return_if_fail(header->name != NULL);
  
 -		gtk_text_buffer_get_end_iter (buffer, &iter);
@@ -892,14 +1334,7 @@ index 21ff15f82..cfde6817e 100644
 -			gtk_text_buffer_insert_with_tags_by_name(buffer,
 -				&iter, header->name,
 -				-1, "header_title", "header", NULL);
-+		verified = textview_verify_protected_header(header, protected_headers);
-+		if (verified != HEADER_NOT_VERIFIABLE) {
-+			phdr = g_ptr_array_index(protected_headers, HEADER_NUMBER(verified));
-+			if (verified < 0)
-+				textview_append_single_header(textview,phdr,1);
-+			procheader_header_free(phdr);
-+			g_ptr_array_remove_index(protected_headers, HEADER_NUMBER(verified));
- 		}
+-		}
 -		if (header->name[strlen(header->name) - 1] != ' ')
 -		gtk_text_buffer_insert_with_tags_by_name
 -				(buffer, &iter, " ", 1,
@@ -933,7 +1368,12 @@ index 21ff15f82..cfde6817e 100644
 -			gtk_text_buffer_insert_with_tags_by_name
 -				(buffer, &iter, header->body, -1,
 -				 "header", "emphasis", NULL);
--		} else {
++		verified = textview_verify_protected_header(header, protected_headers);
++		g_message("Header %d%s verif%s %d",i, (verified > 0) ? "" : " NOT", (verified == 0) ? "yable" : "ied" ,verified);
++		if ( verified != HEADER_NOT_VERIFIABLE ) {
++		       Header *phdr = (Header *)g_ptr_array_index(protected_headers, HEADER_NUMBER(verified) );
++		       textview_append_single_header(textview, phdr, verified);
+ 		} else {
 -			gboolean hdr = 
 -			  procheader_headername_equal(header->name, "From") ||
 -			  procheader_headername_equal(header->name, "To") ||
@@ -946,13 +1386,7 @@ index 21ff15f82..cfde6817e 100644
 -			textview_make_clickable_parts(textview, "header", 
 -						      "hlink", header->body, 
 -						      hdr);
-+		textview_append_single_header(textview, header, verified);
-+	}
-+	if (protected_headers) {
-+		for (i = 0; i < protected_headers->len; i++) {
-+			textview_append_single_header(textview,
-+					g_ptr_array_index(protected_headers, i),
-+					i+1);
++		       textview_append_single_header(textview, header, HEADER_NOT_VERIFIABLE);
  		}
 -		gtk_text_buffer_get_end_iter (buffer, &iter);
 -		gtk_text_buffer_insert_with_tags_by_name(buffer, &iter, "\n", 1,

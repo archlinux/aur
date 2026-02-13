@@ -1,6 +1,6 @@
 pkgbase = claws-mail-protectedheaders-git
 	pkgdesc = A GTK based e-mail client. Latest git checkout, built against 'gtk3'. Patched to use charset supersets to decode titles and to display protected headers.
-	pkgver = 4.3.1+205.r13690.20260128.2d0967a41
+	pkgver = 4.3.1+206.r13691.20260203.450a0ac32
 	pkgrel = 1
 	epoch = 0
 	url = https://www.claws-mail.org/
@@ -93,13 +93,13 @@ pkgbase = claws-mail-protectedheaders-git
 	optdepends = libjavascriptcoregtk-4.1.so: for fancy webkit html viewer plugin.
 	optdepends = libwebkit2gtk-4.1.so: for fancy webkit html viewer plugin.
 	optdepends = libsoup3: for fancy webkit html viewer plugin.
-	provides = claws=4.3.1+205.r13690.20260128.2d0967a41
-	provides = claws-mail=4.3.1+205.r13690.20260128.2d0967a41
-	provides = claws-mail-gtk3=4.3.1+205.r13690.20260128.2d0967a41
-	provides = claws-mail-title-superset=4.3.1+205.r13690.20260128.2d0967a41
-	provides = claws-mail-protectedheaders=4.3.1+205.r13690.20260128.2d0967a41
+	provides = claws=4.3.1+206.r13691.20260203.450a0ac32
+	provides = claws-mail=4.3.1+206.r13691.20260203.450a0ac32
+	provides = claws-mail-gtk3=4.3.1+206.r13691.20260203.450a0ac32
+	provides = claws-mail-title-superset=4.3.1+206.r13691.20260203.450a0ac32
+	provides = claws-mail-protectedheaders=4.3.1+206.r13691.20260203.450a0ac32
 	provides = claws-mail-bash-completion
-	provides = claws-mail-extra-plugins=4.3.1+205.r13690.20260128.2d0967a41
+	provides = claws-mail-extra-plugins=4.3.1+206.r13691.20260203.450a0ac32
 	conflicts = claws
 	conflicts = claws-mail
 	conflicts = claws-mail-protectedheaders
@@ -110,9 +110,9 @@ pkgbase = claws-mail-protectedheaders-git
 	replaces = sylpheed-claws
 	source = claws-mail::git://git.claws-mail.org/claws.git#branch=master
 	source = 0000_encoding.diff::https://aur.archlinux.org/cgit/aur.git/plain/0001_encoding.diff?h=claws-mail-title-superset
-	source = protected-headers.nopicturesplease.2026-01-21.6500e351c6889502e15a0b7365dba516142c9d65.patch
+	source = protected-headers.nopicturesplease.2026-02-06.450a0ac32ea2c7f621ee21a86d8d53d3766efc14.patch
 	sha256sums = SKIP
 	sha256sums = 79e2b664d039f5cc0cf642359923e3d100ffc4ab070fc54c02d5792b624e26f6
-	sha256sums = cd5b5058701c988c8035eff19dc7de37a4ec86544a203bf2e76a2ecfd4937476
+	sha256sums = f802afc82887fc0601f819cb05196ed9cc2dae08e9d482d9a0456ed79a1230b4
 
 pkgname = claws-mail-protectedheaders-git

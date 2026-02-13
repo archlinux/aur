@@ -32,7 +32,7 @@ esac
 
 pkgname="${_pkgname}-${_pkgvariant}-git"
 epoch=0
-pkgver=4.3.1+205.r13690.20260128.2d0967a41
+pkgver=4.3.1+206.r13691.20260203.450a0ac32
 pkgrel=1
 pkgdesc="A GTK based e-mail client. Latest git checkout, built against '${_TOOLKIT}'. Patched to use charset supersets to decode titles and to display protected headers."
 arch=(
@@ -163,8 +163,9 @@ case "${_PROTECTEDHEADERSPATCHVARIANT}" in
   'nopicturesplease')
     #source+=("0002_protectedheaders.patch::http://web.archive.org/web/20240721164745/https://www.thewildbeast.co.uk/claws-mail/bugzilla/attachment.cgi?id=2331")
     #sha256sums+=('383f4ea03102ed2c8f19365b9bf2b757969d1617fcfd0a8375126f388cc60301')
-    source+=('protected-headers.nopicturesplease.2026-01-21.6500e351c6889502e15a0b7365dba516142c9d65.patch')
-    sha256sums+=('cd5b5058701c988c8035eff19dc7de37a4ec86544a203bf2e76a2ecfd4937476')
+    #source+=('protected-headers.nopicturesplease.2026-01-21.6500e351c6889502e15a0b7365dba516142c9d65.patch')
+    source+=('protected-headers.nopicturesplease.2026-02-06.450a0ac32ea2c7f621ee21a86d8d53d3766efc14.patch')
+    sha256sums+=('f802afc82887fc0601f819cb05196ed9cc2dae08e9d482d9a0456ed79a1230b4')
     if [ "${_TOOLKIT}" == "gtk2" ]; then
       source+=("protectedheaders.patch.for-gtk2.patch")
       sha256sums+=('3b1e568398950eb93d879353cfd6d49d81f7e1790c24972f36846f22ef4106cb')
@@ -230,7 +231,7 @@ prepare() {
 
   case "${_PROTECTEDHEADERSPATCHVARIANT}" in
    'nopicturesplease')
-     cp  "${srcdir}/protected-headers.nopicturesplease.2026-01-21.6500e351c6889502e15a0b7365dba516142c9d65.patch" "${srcdir}/0002_protectedheaders.patch"
+     cp  "${srcdir}/protected-headers.nopicturesplease.2026-02-06.450a0ac32ea2c7f621ee21a86d8d53d3766efc14.patch" "${srcdir}/0002_protectedheaders.patch"
      if [ "${_TOOLKIT}" == "gtk2" ]; then
        printf '%s\n' "   > Patching '0002_protectedheaders.patch' for GTK2 ..."
        patch -N --follow-symlinks -i "${srcdir}/protectedheaders.patch.for-gtk2.patch" -o "${srcdir}/0002_protectedheaders-${_TOOLKIT}.patch" "${srcdir}/0002_protectedheaders.patch"
