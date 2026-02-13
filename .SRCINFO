@@ -1,12 +1,12 @@
 pkgbase = timeprefix
 	pkgdesc = Prefix each line with the time it as written
-	pkgver = 3.1
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://codeberg.org/maandree/timeprefix
 	arch = i686
 	arch = x86_64
 	license = custom:ISC
-	source = timeprefix-3.1.tar.gz::https://codeberg.org/maandree/timeprefix/archive/3.1.tar.gz
-	sha256sums = fe17271ad25f7726e5737a013bcd7a8f24859ee54c97789385fede53ecd5eacd
+	source = timeprefix-3.1.1.tar.gz::https://codeberg.org/maandree/timeprefix/archive/3.1.1.tar.gz
+	sha256sums = 7aabd53c1f16817fb31b83dc166d35a0279f887dff3076096b3266083905f26f
 
 pkgname = timeprefix
