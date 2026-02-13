@@ -4,10 +4,10 @@
 # Contributor: Jaime Martínez Rincón <jaime@jamezrin.name>
 
 pkgname=notion-app-electron
-pkgver=7.0.0
-_bettersqlite3ver=12.4.0
+pkgver=7.4.0
+_bettersqlite3ver=12.6.2
 _bufferutilver=4.0.9
-_elecronver=136 # whenever update the bettersqlite, update this one by one to try the proper version.
+_elecronver=140 # whenever update the bettersqlite, update this one by one to try the proper version.
 pkgrel=1
 pkgdesc="Your connected workspace for wiki, docs & projects"
 arch=(x86_64)
@@ -18,7 +18,7 @@ depends=(
 	gcc-libs
 	glibc
 	hicolor-icon-theme
-	electron37
+	electron39
 )
 makedepends=(
 	p7zip
@@ -34,10 +34,10 @@ source=(
 	notion.desktop
 	notion.png
 )
-sha256sums=('0a121aa2204332420bb5dadd5247f165d568281df218e84a7c753fa92ce6df4c'
-            '97837974a8990e4f4df1f3921879ebefa18e691041392120255c3a99e3fef030'
+sha256sums=('1dc2592491962e4ce92f933a3ccff5013142594f65811cd1faab6d9d3a6ada22'
+            '5be42e5403bbba23ef38315b1c4e3ff08c154ed3c64a9952a0ad344f30fc6dc8'
             '2139aae79c5a4fd4d07467bd9b7872ea109483aa43b3dfd6c8d3725ccba009be'
-            'a97ec37e18a3bc5b2d863a58feb266fd4be309dbc2896c8d386e9490bc25491f'
+            '49e06007f51da9ae847954212504ff9746e35c13cc32ebbf072f5d03a0253303'
             '19a5f973f1e9291081aa05512e07c61447e8c30e1a43dd22d0cc1090837d1e19'
             'da801d659d8916320e0d76c8c62154e97a1d44f71762f2a18d1c8c185624d5be')
 
@@ -87,6 +87,7 @@ package() {
 	install -d "$lib"
 	cp "$srcdir/app.asar" "$lib"
 	cp "$srcdir/app.asar.unpacked" "$lib" -r
+	install -vDm644 "$srcdir/asar_patched/package.json" "$lib/package.json"
 	install -vDm755 notion-app -t "$usr/bin"
 	install -vDm644 "$srcdir/notion.desktop" -t "$share/applications"
 	install -vDm644 "$srcdir/notion.png" -t "$share/icons/hicolor/256x256/apps"
