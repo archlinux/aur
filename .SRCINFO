@@ -1,0 +1,16 @@
+pkgbase = bilibili-live-danmaku-cli-bin
+	pkgdesc = A CLI tool for monitoring danmaku and other live messages on Bilibili Live (prebuilt binary)
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://github.com/Isoheptane/bilibili-live-danmaku-cli
+	arch = x86_64
+	license = MIT
+	provides = bilibili-live-danmaku-cli
+	conflicts = bilibili-live-danmaku-cli
+	options = !strip
+	source = bilibili-live-danmaku-cli-0.2.7.x86_64_linux-musl::https://github.com/Isoheptane/bilibili-live-danmaku-cli/releases/download/0.2.7/bilibili-live-danmaku-cli-0.2.7.x86_64_linux-musl
+	source = source-0.2.7.tar.gz::https://github.com/Isoheptane/bilibili-live-danmaku-cli/archive/refs/tags/0.2.7.tar.gz
+	sha256sums = 647adf650d73d216b3eabaa74da05a27fc20df22420dc6f68444cb87d376cd7f
+	sha256sums = 27ac86da918163a15df47a7923ccba011704231eee3ad9045500b0a3cb0537f0
+
+pkgname = bilibili-live-danmaku-cli-bin
