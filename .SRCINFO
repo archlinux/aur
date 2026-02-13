@@ -8,6 +8,8 @@ pkgbase = packwitch-manager
 	makedepends = git
 	makedepends = jdk21-openjdk
 	depends = jdk21-openjdk
+	provides = packwitch-manager
+	conflicts = packwitch-manager
 	source = git+https://codeberg.org/packwitch/packwitch
 	sha256sums = SKIP
 
