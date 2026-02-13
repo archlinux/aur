@@ -1,4 +1,4 @@
-# Maintainer: Ikosse <andrelofgren@hotmail.co.uk>
+# Maintainer: Ikosse <andre.lofgren@mailbox.org>
 
 pkgname=harbour-amazfish-git
 pkgver=r849.34365e4
