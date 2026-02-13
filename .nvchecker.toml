@@ -1,0 +1,3 @@
+[plezy]
+source = "git"
+git = "https://github.com/edde746/plezy.git"

@@ -1,15 +1,9 @@
-# Build artifacts
-*.tar.gz
-*.tar.xz
-pkg/
-src/
+# Ignore everything
+/*
 
-# makepkg generated files
-*.pkg.tar.*
-*.log
-
-# Downloaded sources
-plezy-linux.tar.gz
-data/
-lib/
-plezy
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!.nvchecker.toml
+!LICENSE
