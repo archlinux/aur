@@ -8,7 +8,7 @@ url="https://codeberg.org/limforge/noorfetch"
 license=('GPL-3.0-or-later')
 makedepends=('cargo')
 depends=('gcc-libs' 'glibc')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+source=("https://codeberg.org/limforge/noorfetch/archive/2.0.0.tar.gz")
 sha256sums=('9af4b842ff487c7ad7b05cbc45d07b904b7056e22ba8f6c6daceda2ec739f054')
 
 prepare() {
