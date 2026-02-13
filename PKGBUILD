@@ -1,13 +1,13 @@
 # Maintainer: Sich <little_sich@tuta.io>
 pkgname=celestia-qt5-git
-pkgver=r7228.814c49354
+pkgver=r7341.1e8446d40
 pkgrel=1
 pkgdesc="Real-time space simulation (git version with Qt5 and video capture)"
 arch=(x86_64)
 license=(GPL-2.0-or-later)
 url="https://celestiaproject.space"
 depends=('mesa' 'libepoxy' 'fmt' 'eigen' 'freetype2' 'libjpeg-turbo' 'libpng' 'glu' 'qt5-base' 'qt5-tools' 'ffmpeg' 'luajit')
-makedepends=('git' 'cmake' 'make' 'boost' 'gperf')
+makedepends=('git' 'cmake' 'make' 'boost' 'gperf' 'imagemagick')
 provides=('celestia')
 conflicts=('celestia')
 source=(git+https://github.com/CelestiaProject/Celestia.git
