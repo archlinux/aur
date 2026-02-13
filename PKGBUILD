@@ -15,21 +15,20 @@ depends=(
   'hicolor-icon-theme'
 )
 makedepends=('git' 'cmake')
-_commit='3739005d3a505f6072b6b4e5b2d1874a4bd34acb'
 source=(
-  "$pkgname::git+https://github.com/jorio/Nanosaur2.git#commit=$_commit"
+  "$pkgname::git+https://github.com/jorio/Nanosaur2.git#tag=v$pkgver"
   'github.com-jorio-Pomme::git+https://github.com/jorio/Pomme'
   "$pkgname.desktop"
   "$pkgname.sh"
 )
-sha512sums=('SKIP'
+sha512sums=('30b28c110be5df2b43312fa8b5bff3b0314049b1e0a4861368bcfb481489b3f0aaa586217bd733a59b8fd9effa8871986226f19a766e73569ffbb27497849688'
             'SKIP'
             '1ce25c64507b08c6ca9075a56a75f93efc19f1aa9e1e86fbe9f5967940aae438bc4839e4b47326fc8c0f3ba6211ceecff32982582bae9896c5ef05bcdf8ab410'
-            '64f7eb3572774ad58608bf0de5e3a9994fe14ba6b2065225540f02e0b7f4ff5ff308d81a730970eaae97c17efc85904dc559ce4e84bc445b37a69e529ddc6696')
-b2sums=('SKIP'
+            'bc62ea6c0e4de2fa365eb60b89cb205cff803122fa8d174d6953fef27c469cd612ea2f98f371561ae98fecd100b013a4d7f52eba8eec59899c1d2665e8a1f5db')
+b2sums=('724e9ba55bd456879be2b77ffd924f4cda90584169795879e6bdc22521a4af52b87b359386ea30305db6883443b16ee88b86c95d574258dedd2b8a61353cfb04'
         'SKIP'
         'e41fd1bc5e7aa9af7f7bc5c13400f947c9837a54d716ea6cfcb1319a539ed20e7cc9775a6add851a6bc9670ebb34db2191576ebde240a49be23766e5274fe3f5'
-        'cfa74a2b52b6b45a10c9f30e7f0bc4e81add9eab68aa9c83ba58737fdfb2dd881151ab72e2bfe87abd1a302fbfce5a813d0c3c77781e6c164049d6bb3c7ab549')
+        'd862700903f51667999c254bd328f8a7bc9bd00db3a1e6c5b776b908dbfe0f0568b4662cc6ee70ca71421cec87c57c1e05de4c63264e1257fcb9d88ecdf3c1ad')
 
 pkgver() {
   cd "$pkgname"
