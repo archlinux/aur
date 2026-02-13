@@ -1,0 +1,5 @@
+[pj-bin]
+source = "github"
+github = "josephschmitt/pj"
+use_latest_release = true
+prefix = "v"
