@@ -2,7 +2,7 @@
 
 pkgname=packwitch-manager
 pkgver=0.1c
-pkgrel=1
+pkgrel=2
 pkgdesc="minecraft modpack management tool"
 arch=('x86_64')
 url="https://codeberg.org/packwitch/packwitch"
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 
 build() {
     cd "$srcdir/packwitch"
-    git checkout tags/0.1b
+    git checkout tags/$pkgver
     $srcdir/packwitch/gradlew :manager:assembleDist
 }
 
