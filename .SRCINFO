@@ -1,7 +1,7 @@
 pkgbase = python-flax
 	pkgdesc = A neural network library and ecosystem for JAX designed for flexibility
-	pkgver = 0.12.3
-	pkgrel = 2
+	pkgver = 0.12.4
+	pkgrel = 1
 	url = https://github.com/google/flax
 	arch = any
 	groups = jax
@@ -24,9 +24,9 @@ pkgbase = python-flax
 	depends = python-yaml
 	optdepends = python-matplotlib: Export to TensorBoard.
 	optdepends = tensorboard: TensorBoard visualization and logging.
-	source = flax-0.12.3.tar.gz::https://github.com/google/flax/archive/refs/tags/v0.12.3.tar.gz
+	source = flax-0.12.4.tar.gz::https://github.com/google/flax/archive/refs/tags/v0.12.4.tar.gz
 	source = python-flax.diff
-	sha256sums = 005d9b352373fe4a1c4f5fa61119a37d486fea20aac82b7cfd21622b5e84f0bf
+	sha256sums = 46dfdfeeb5a1af94b10a3d657baa72961c41ffdf921914f5b95065d602ee8eaa
 	sha256sums = SKIP
 
 pkgname = python-flax
