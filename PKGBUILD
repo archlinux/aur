@@ -1,6 +1,6 @@
 # Maintainer: Necromortis <necromortis@protonmail.com>
 pkgname=vultisig
-pkgver=1.0.49
+pkgver=1.0.50
 pkgrel=1
 pkgdesc="Vultisig Linux Application"
 arch=('x86_64')
@@ -25,8 +25,6 @@ package() {
     install -dm755 "${pkgdir}/usr/bin"
     cat > "${pkgdir}/usr/bin/vultisig" << 'EOF'
 #!/bin/bash
-mkdir -p "$HOME/.vultisig"
-export VULTISIG_DB_PATH=$HOME/.vultisig/
 exec /opt/vultisig/vultisig.AppImage "$@"
 EOF
     chmod 755 "${pkgdir}/usr/bin/vultisig"
