@@ -43,10 +43,4 @@ build() {
 package() {
   cd "$srcdir/BetterWallpaper"
   DESTDIR="$pkgdir" cmake --install build
-  
-  # Install desktop file
-  install -Dm644 betterwallpaper.desktop "$pkgdir/usr/share/applications/betterwallpaper.desktop"
-  
-  # Install systemd service
-  install -Dm644 packaging/betterwallpaper-daemon.service "$pkgdir/usr/lib/systemd/user/betterwallpaper-daemon.service"
 }
