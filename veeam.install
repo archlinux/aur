@@ -22,6 +22,9 @@ post_install() {
 
 post_upgrade() {
     echo "post upgrade"
+    openssl fipsinstall \
+        -out /opt/veeam/veeamagentforlinux/openssl3/3.0.0/ssl/fipsmodule.cnf \
+        -module /opt/veeam/veeamagentforlinux/openssl3/3.0.0/lib/ossl-modules/fips.so
     systemctl daemon-reload
     systemctl restart veeamservice.service
     echo "."
