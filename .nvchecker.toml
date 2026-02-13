@@ -1,0 +1,5 @@
+[geoclue-tz-bin]
+source = "github"
+github = "zquestz/geoclue-tz"
+use_latest_release = true
+prefix = "v"

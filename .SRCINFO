@@ -1,0 +1,21 @@
+pkgbase = geoclue-tz-bin
+	pkgdesc = Generate geoclue /etc/geolocation based on the current time zone.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/zquestz/geoclue-tz
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = geoclue-tz
+	conflicts = geoclue-tz
+	source_x86_64 = geoclue-tz-x86_64-1.0.0.zip::https://github.com/zquestz/geoclue-tz/releases/download/v1.0.0/geoclue-tz-linux_amd64.zip
+	sha256sums_x86_64 = a2f8dc400989eb0ed2c0b857d544d6fbe7004a5b3d446bb7d92d502e99107eaf
+	source_i686 = geoclue-tz-i686-1.0.0.zip::https://github.com/zquestz/geoclue-tz/releases/download/v1.0.0/geoclue-tz-linux_386.zip
+	sha256sums_i686 = 7152ede151bc4ad106044ccaee1ede9436962b6e89d5383dea6ee7cb3aeed8fa
+	source_aarch64 = geoclue-tz-aarch64-1.0.0.zip::https://github.com/zquestz/geoclue-tz/releases/download/v1.0.0/geoclue-tz-linux_arm.zip
+	sha256sums_aarch64 = 7679d1e86c43c73551ccd3135054e73be5ba88786173073c9cfd0b374ee6124c
+
+pkgname = geoclue-tz-bin
