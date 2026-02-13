@@ -1,6 +1,6 @@
 pkgbase = packwitch-manager-bin
 	pkgdesc = minecraft modpack management tool
-	pkgver = 0.1a
+	pkgver = 0.1b
 	pkgrel = 1
 	url = https://codeberg.org/packwitch/packwitch
 	arch = x86_64
@@ -10,6 +10,6 @@ pkgbase = packwitch-manager-bin
 	provides = packwitch-manager
 	conflicts = packwitch-manager
     source = packwitch-manager-bin-0.1a.tar::https://codeberg.org/packwitch/packwitch/releases/download/0.1a/manager-0.1a.tar
-	sha256sums = sha256sums=('2b1b8d1c00a4bafcac4fad78cb84506224a843ccb54c440df7bac21e0cb638fe')
+	sha256sums = 9c7f861ac83b554682141644fad38dbf4ac962162b4e9cb50774e323d22cdad2
 
 pkgname = packwitch-manager-bin

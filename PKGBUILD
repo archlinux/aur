@@ -1,7 +1,7 @@
 # Maintainer: nelle the@nelle.observer
 
 pkgname=packwitch-manager-bin
-pkgver=0.1a
+pkgver=0.1b
 pkgrel=1
 pkgdesc="minecraft modpack management tool"
 arch=('x86_64')
@@ -12,8 +12,8 @@ provides=('packwitch-manager')
 conflicts=('packwitch-manager')
 
 
-source=("$pkgname-$pkgver.tar::https://codeberg.org/packwitch/packwitch/releases/download/0.1a/manager-0.1a.tar")
-sha256sums=('2b1b8d1c00a4bafcac4fad78cb84506224a843ccb54c440df7bac21e0cb638fe')
+source=("$pkgname-$pkgver.tar::https://codeberg.org/packwitch/packwitch/releases/download/$pkgver/manager-$pkgver.tar")
+sha256sums=('9c7f861ac83b554682141644fad38dbf4ac962162b4e9cb50774e323d22cdad2')
 
 package() {
     cd "$srcdir"
