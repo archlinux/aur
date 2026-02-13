@@ -2,7 +2,7 @@
 
 pkgname=kalker-bin
 _pkgname=kalker
-pkgver=2.2.0
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="Kalker/kalk is a calculator with math syntax that supports user-defined variables and functions, complex numbers, and estimation of derivatives and integrals"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('kalker')
 conflicts=('kalker' 'kalker-git')
 options=(!strip)
 source=("$_pkgname-$pkgver::https://github.com/PaddiM8/kalker/releases/download/v$pkgver/$_pkgname-linux")
-sha256sums=('3c4fd1fceb917b334c7aa1bf6637dc837d7580bd44ddd7779eda13cf08420404')
+sha256sums=('f036bc3584d85408ad8d0ba29a5f05f931874024c5da05bb3f5ec7eb9857a57c')
 
 package() {
   # Install binary and launch script
