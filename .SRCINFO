@@ -1,0 +1,15 @@
+pkgbase = rnekod
+	pkgdesc = Simple random catgirl image CLI fetcher from NekosAPI
+	pkgver = 0.74
+	pkgrel = 1
+	url = https://github.com/SolynAcVersion/catgirl
+	arch = any
+	license = MIT
+	depends = python>=3.10
+	depends = python-requests
+	depends = python-pillow
+	depends = python-colorama
+	source = https://raw.githubusercontent.com/SolynAcVersion/catgirl/main/catgirl.py
+	sha256sums = SKIP
+
+pkgname = rnekod
