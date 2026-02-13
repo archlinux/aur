@@ -52,6 +52,7 @@ pkgbase = cinnamon-git
 	depends = nemo
 	depends = network-manager-applet
 	depends = pango
+	depends = papirus-icon-theme
 	depends = polkit
 	depends = python
 	depends = python-cairo

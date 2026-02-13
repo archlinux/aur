@@ -7,7 +7,7 @@
 
 pkgname=cinnamon-git
 pkgver=6.6.5.r36.g781e09a25
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux desktop which provides advanced innovative features and a traditional user experience (git version)"
 arch=(x86_64)
 url="https://github.com/linuxmint/cinnamon"
@@ -53,6 +53,7 @@ depends=(
   nemo
   network-manager-applet
   pango
+  papirus-icon-theme
   polkit
   python
   python-cairo
@@ -146,8 +147,6 @@ build() {
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
-
-  install -Dm644 30_org.archlinux.cinnamon.gschema.override \
-    "$pkgdir/usr/share/glib-2.0/schemas/30_org.archlinux.cinnamon.gschema.override"
+  meson install -C build --destdir="$pkgdir"
+  install -Dm644 -t "$pkgdir/usr/share/glib-2.0/schemas" 30_org.archlinux.cinnamon.gschema.override
 }
