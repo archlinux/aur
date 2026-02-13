@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc='Sequel to the original Nanosaur'
 arch=(x86_64 aarch64)
 url='https://github.com/jorio/Nanosaur2'
-license=('custom:CC-BY-NC-SA-4.0')
+license=(CC-BY-NC-SA-4.0)
 depends=(
   'glibc'
   'gcc-libs'
