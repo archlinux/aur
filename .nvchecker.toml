@@ -1,0 +1,3 @@
+[cro-mag-rally]
+source = "git"
+git = "https://github.com/jorio/CroMagRally.git"
