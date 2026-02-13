@@ -1,0 +1,15 @@
+pkgbase = task-manager
+	pkgdesc = A simple, lightweight, and powerful task manager for Linux. Inspired by the original taskmgr.exe
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Codiak540/Linux-Task-Manager
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = GPL
+	makedepends = cmake
+	depends = gcc-libs
+	source = task-manager-1.0.0.tar.gz::https://github.com/Codiak540/Linux-Task-Manager/archive/V1.0.0.tar.gz
+	sha256sums = 99d90772c5d95c2ea39e13b902d9704c899c1ef42336daaf88bdbf2d3c3647aa
+
+pkgname = task-manager
