@@ -5,7 +5,7 @@ _pkgname=tock
 pkgname=${_pkgname}-bin
 pkgdesc="A powerful time tracking tool for the command line"
 
-pkgver=1.7.3
+pkgver=1.7.4
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -24,8 +24,8 @@ conflicts=("${_pkgname}")
 #         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_Linux_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_Linux_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('ff4766716680686376a9b5c53f704d4a261f414f13cbecdb6fff2bca28a8938c')
-sha256sums_aarch64=('a970c28df1155df37fe12813c5d2df19bee48d85513c5bc1414db5a9fe9c49e0')
+sha256sums_x86_64=('9148891a978bb305ed4b1908a454845cdc9c55dce92876f28629598143e7e3e3')
+sha256sums_aarch64=('224c42a6141bebf3a54cbbba9bed3772cba9fbab09cd37497c915e96d041dd34')
 
 
 package() {
