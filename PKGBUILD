@@ -3,7 +3,7 @@
 
 pkgname=yt-dlp-nightly-bin
 _pkgname=yt-dlp
-pkgver=2026.02.09.233747
+pkgver=2026.02.12.233641
 pkgrel=1
 pkgdesc='A youtube-dl fork with additional features and fixes (Nightly binary build)'
 arch=('any')
@@ -38,7 +38,7 @@ optdepends=('ffmpeg: for video post-processing'
   'phantomjs: for extractors with javascript code (deprecated)')
 
 source=("$_pkgname-$pkgver::https://github.com/yt-dlp/yt-dlp-nightly-builds/releases/download/$pkgver/yt-dlp")
-sha256sums=('e7f42f1f7e7799382646025ec82f12b7210c116064b396c8ab39199723a2eca2')
+sha256sums=('8c5dbae4a3f67b6c338fab3fb1524d1ac5211ba9d96cc12774d519ce0ee3b74f')
 
 package() {
   install -Dm755 "$srcdir/$_pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
