@@ -1,6 +1,6 @@
 # Maintainer: Maiko Tan <maiko.tan.coding@gmail.com>
 pkgname=xc
-pkgver=0.8.6
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Markdown defined task runner."
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -11,7 +11,7 @@ makedepends=('go')
 provides=('xc')
 conflicts=('xc-bin' 'xc-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/joerdav/xc/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('142c28aafa454b461b2950d980f0a8a5d89b59fb9032bbe23ca1015472bff691')
+sha256sums=('afcb5e1fbd1be5f0b6dcb802e02c96527ac0e96ddeb47471b8ad4056f91ccc72')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
