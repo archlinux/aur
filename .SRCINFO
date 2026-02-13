@@ -1,6 +1,6 @@
 pkgbase = ultrastardx-git
 	pkgdesc = Free and open source karaoke game. (GIT)
-	pkgver = r1538.80adde2e
+	pkgver = r1962.a1a216e8
 	pkgrel = 1
 	url = http://usdx.eu/
 	arch = i686
@@ -30,6 +30,7 @@ pkgbase = ultrastardx-git
 	optdepends = ultrastardx-utility: Manage USDX songs
 	provides = ultrastardx
 	conflicts = ultrastardx
+	options = !strip
 	source = git+https://github.com/UltraStar-Deluxe/USDX.git
 	sha256sums = SKIP
 
