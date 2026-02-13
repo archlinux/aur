@@ -1,7 +1,7 @@
 pkgbase = unrpyc
 	pkgdesc = A ren'py script decompiler
-	pkgver = 2.0.2
-	pkgrel = 3
+	pkgver = 2.0.3
+	pkgrel = 1
 	epoch = 2
 	url = https://github.com/CensoredUsername/unrpyc
 	arch = any
