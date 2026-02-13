@@ -1,7 +1,7 @@
 pkgbase = powerpill-me
 	pkgdesc = Pacman wrapper for faster downloads.(mirrored)
 	pkgver = 2021.11
-	pkgrel = 17
+	pkgrel = 18
 	url = https://github.com/EndlessEden/powerpill
 	arch = any
 	license = GPL
@@ -19,7 +19,7 @@ pkgbase = powerpill-me
 	provides = powerpill-me
 	provides = powerpill
 	backup = etc/powerpill/powerpill.json
-	source = powerpill-me-2021.11.tar.gz::https://github.com/EndlessEden/powerpill/archive/refs/tags/2021.11.tar.gz
+	source = powerpill-2021.11.tar.gz::https://github.com/EndlessEden/powerpill/archive/refs/tags/2021.11.tar.gz
 	sha512sums = 24855dfd57469b09e50c67451e8638b9c0b5e762b17ae4464ef94a08ab1defa39f80df8b27a7c0e65347797936fa565516d41134d5b1b6c4ae24ed5bfe49f1a0
 
 pkgname = powerpill-me

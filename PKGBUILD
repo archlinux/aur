@@ -5,7 +5,7 @@
 _pkgname=powerpill
 pkgname=powerpill-me
 pkgver=2021.11
-pkgrel=17
+pkgrel=18
 pkgdesc='Pacman wrapper for faster downloads.(mirrored)'
 arch=(any)
 license=(GPL)
@@ -39,11 +39,11 @@ optdepends=(
 )
 backup=(etc/powerpill/powerpill.json)
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/EndlessEden/powerpill/archive/refs/tags/${pkgver}.tar.gz")
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/EndlessEden/powerpill/archive/refs/tags/${pkgver}.tar.gz")
 sha512sums=('24855dfd57469b09e50c67451e8638b9c0b5e762b17ae4464ef94a08ab1defa39f80df8b27a7c0e65347797936fa565516d41134d5b1b6c4ae24ed5bfe49f1a0')
 
 package () {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/${_pkgname}-$pkgver"
   python3 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
   install -Dm644 'powerpill.json' "$pkgdir/etc/powerpill/powerpill.json"
   install -Dm644 'man/powerpill.json.1.gz' "$pkgdir/usr/share/man/man1/powerpill.json.1.gz"
