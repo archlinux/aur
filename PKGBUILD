@@ -1,93 +1,57 @@
 # Maintainer: D7OMDEV <hello@d7om.dev>
 pkgname=clipse-gui
 pkgver=0.6.0
-pkgrel=1
-pkgdesc="A simple clipboard manager with a GUI"
+pkgrel=22
+pkgdesc="A GTK3 GUI for the clipse clipboard manager"
 arch=('x86_64')
 url="https://github.com/d7omdev/clipse-gui"
 license=('MIT')
-depends=('python' 'python-gobject' 'gtk3' 'wl-clipboard' 'wtype' 'xdotool')
-makedepends=('git' 'python-pip' 'python-wheel' 'python-setuptools' 'clang' 'patchelf')
+depends=('python-gobject' 'gtk3' 'wl-clipboard' 'wtype' 'xdotool')
+makedepends=('git' 'uv' 'gcc')
+options=('!strip')
 source=("git+https://github.com/d7omdev/clipse-gui.git")
 sha256sums=('SKIP')
 
 build() {
 	cd "$srcdir/$pkgname" || exit
-
-	# Create and activate virtual environment
-	python -m venv .venv
-	source .venv/bin/activate
-
-	# Install Nuitka and required dependencies
-	pip install nuitka pygobject
-
-	# Run Nuitka with maximum optimization for speed
-	python -m nuitka --standalone --clang --output-dir=build --remove-output \
+	rm -rf dist/
+	uv venv --python 3.13 .venv
+	uv pip install nuitka PyGObject --python .venv/bin/python
+	.venv/bin/python -m nuitka --onefile --output-dir=dist --remove-output \
 		--include-package=clipse_gui \
-		--include-package=gi \
-		--include-module=gi._gi \
-		--include-module=gi._propertyhelper \
-		--include-module=gi._constants \
-		--include-module=gi._signalhelper \
-		--include-module=gi._enum \
-		--include-module=gi._error \
-		--include-module=asyncio --jobs=$(nproc) clipse-gui.py
-
-	# Build complete
-	deactivate
+		--follow-imports --nofollow-import-to=*.tests --assume-yes-for-downloads \
+		"$pkgname.py"
+	mv dist/clipse-gui.bin dist/clipse-gui
 }
 
 package() {
 	cd "$srcdir/$pkgname" || exit
 
-	# Create necessary directories
-	install -d "$pkgdir/usr/bin"
-	install -d "$pkgdir/usr/share/$pkgname"
-	install -d "$pkgdir/usr/share/icons/hicolor/128x128/apps"
-	install -d "$pkgdir/usr/share/applications"
+	rm -rf "$pkgdir/opt/$pkgname"
+	mkdir -p "$pkgdir/opt/$pkgname"
+	cp dist/clipse-gui "$pkgdir/opt/$pkgname"
+	chmod +x "$pkgdir/opt/$pkgname/$pkgname"
 
-	# Check for the Nuitka binary and move it
-	if [ -f "build/clipse-gui.dist/clipse-gui.bin" ]; then
-		cp -r "build/clipse-gui.dist/." "$pkgdir/usr/share/$pkgname/"
-		mv "$pkgdir/usr/share/$pkgname/clipse-gui.bin" "$pkgdir/usr/share/$pkgname/clipse-gui"
-	else
-		echo "Error: Binary file not found in build/clipse-gui.dist/."
-		exit 1
-	fi
+	mkdir -p "$pkgdir/usr/bin"
+	ln -sf "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
-	# Create symlink in bin
-	ln -sf "/usr/share/$pkgname/clipse-gui" "$pkgdir/usr/bin/clipse-gui"
-
-	# Install icon if it exists
 	if [ -f "$pkgname.png" ]; then
-		echo "Installing icon..."
-		install -Dm644 "$pkgname.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/clipse-gui.png"
-	else
-		echo "Warning: Icon file '$pkgname.png' not found."
+		install -Dm644 "$pkgname.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname.png"
 	fi
 
-	# Create desktop file
-	echo "Creating .desktop file..."
-	cat >"$pkgdir/usr/share/applications/clipse-gui.desktop" <<EOF
+	mkdir -p "$pkgdir/usr/share/applications"
+	cat >"$pkgdir/usr/share/applications/$pkgname.desktop" <<EOF
 [Desktop Entry]
-Version=1.0
+Version=$pkgver
 Type=Application
 Name=Clipse GUI
 GenericName=Clipboard Manager
 Comment=GTK Clipboard Manager
-Exec=/usr/bin/clipse-gui
-Icon=clipse-gui
+Exec=/opt/$pkgname/$pkgname
+Icon=$pkgname
 Terminal=false
 Categories=Utility;GTK;
 StartupNotify=true
 StartupWMClass=org.d7om.ClipseGUI
 EOF
-
-	echo "$pkgname installation complete."
-}
-
-clean() {
-	cd "$srcdir/$pkgname" || exit
-	echo "Cleaning up..."
-	make clean
 }
