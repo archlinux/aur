@@ -2,13 +2,22 @@
 
 pkgname=cro-mag-rally
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The wildest racing game since man invented the wheel!'
 arch=(x86_64 aarch64)
 url='https://github.com/jorio/CroMagRally'
-license=('custom:CC-BY-NC-SA-4.0')
-depends=('sdl2' 'glu' 'hicolor-icon-theme')
-makedepends=('cmake' 'git')
+license=(CC-BY-NC-SA-4.0)
+depends=(
+  sh
+  libglvnd
+  libgcc
+  libstdc++
+  glibc
+  sdl2-compat
+  glu
+  hicolor-icon-theme
+)
+makedepends=(cmake git)
 source=(
   "$pkgname::git+$url.git#tag=$pkgver"
   'github.com-jorio-Pomme::git+https://github.com/jorio/Pomme'
@@ -18,11 +27,11 @@ source=(
 sha512sums=('8cbbc3d2b3d2f18a896cd2bde57ab2b11ba3b65dfe38667b80228a4547346e68f9c64c7600286d607debc4bdb05f4843a52d061085f973f59ff09c2e49ed8d38'
             'SKIP'
             '73c2b7fefea39b32c4b7b0b98a33e036fd939ef7a6190d297e2265c3aaeb74907b052db4be09cbd349ebb44588f6dc88dd97a053f8149271fe9740d5aedafcda'
-            '0be6bc00784a6a9b5c4ed83ac9be1b048ca9ba65b07b0c3510fca27161e0987ebb17dd1f1f2c5cd0a28478e5d45669fb2f477bbb9852ea7cd597b79d8021a510')
+            'f91d3950be53fd3544ad63863f998d7e91791e37a3bf310260d496629d9ee75b5767528bd1430e20b3b07b7b6050434a858235de16aa2c1d0a0338994316b69a')
 b2sums=('60bf0766365975f5e7f86bc0d010db4d96268a858267a14d195229df05f5825e39ff35bd2ef575f16c3a924d629c49f3ab470a810add57e0118766b7a308412a'
         'SKIP'
         '2395a1f207c58e1ffdfe9a6036b99ad7ea3a19f6ab7a0418ed7c256f8c32ccfedf69924bfa3af807dfb7db33457d237d55f5b89566fc1ba87e182d701947eca9'
-        'ca267b6b8f9a0d1a8202bd938abbfe641ca1d8dbcf6d645bc311303a5fa407096648e4abb18c39c8324b8174295840daef67dea82e39866d3a7d89f06edb9a3c')
+        '89f2b51cb0933745a72a8975f964b20ff6e71a785c17eb230407bc89ad184faeea5394d81a07287e15ce371da27d5d15af993d541b17191c9430d7b37a23952b')
 
 prepare() {
   cd "$pkgname"
