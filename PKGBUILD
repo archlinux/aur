@@ -7,6 +7,7 @@ arch=('x86_64')
 url='https://github.com/odpay/odzip'
 license=('MIT')
 depends=('glibc')
+provides=('odz')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/odpay/odzip/archive/v$pkgver.tar.gz")
 sha256sums=('255e7427932dae79cc938c3e876ec8386d079a6bda902c1cb6dcff3728a75131')

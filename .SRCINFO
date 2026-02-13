@@ -7,6 +7,7 @@ pkgbase = odzip
 	license = MIT
 	makedepends = cmake
 	depends = glibc
+	provides = odz
 	source = odzip-1.0.0.tar.gz::https://github.com/odpay/odzip/archive/v1.0.0.tar.gz
 	sha256sums = 255e7427932dae79cc938c3e876ec8386d079a6bda902c1cb6dcff3728a75131
 
