@@ -6,6 +6,7 @@ import os
 import pickle
 import time
 
+import questionary
 from rich.align import Align
 from rich.console import Console
 from rich.panel import Panel
@@ -29,16 +30,11 @@ def load_todos():
     if os.path.exists(FILENAME):
         with open(FILENAME, "r") as f:
             data = json.load(f)
-            # Migration/Cleaning: Ensure all items have the "priority" key
             for item in data:
                 if isinstance(item, dict) and "priority" not in item:
                     item["priority"] = "4"
-
-            # Legacy support for old string-only lists
             if data and isinstance(data[0], str):
                 return [{"task": t, "done": False, "priority": "4"} for t in data]
-
-            # Sort by priority (1 is highest) then by completion status
             data.sort(key=lambda x: (x.get("done", False), x.get("priority", "4")))
             return data
     return []
@@ -89,11 +85,20 @@ logo = r"""
 def colorscemes():
     global logo
     print_header()
-    console.print("\n[1] [bold pink]Catppuchin (Mocha)[/bold pink]")
-    console.print("[2] [bold orange]Dracula[/bold orange]")
-    console.print("[3] [bold red]Gruvbox[/bold red]")
-    console.print("[4] [bold blue]Nord[/bold blue]")
-    choice = Prompt.ask("\nChoose", choices=["1", "2", "3", "4"])
+
+    choice = questionary.select(
+        "Choose a Color Scheme:",
+        choices=[
+            questionary.Choice("Catppuchin (Mocha)", value="1"),
+            questionary.Choice("Dracula", value="2"),
+            questionary.Choice("Gruvbox", value="3"),
+            questionary.Choice("Nord", value="4"),
+            questionary.Choice("Cancel", value="cancel"),
+        ],
+    ).ask()
+
+    if choice == "cancel" or choice is None:
+        return
 
     themes = {
         "1": ("[bold #cba6f7]", "[bold #89b4fa]"),
@@ -133,27 +138,41 @@ def add_mode(todos):
 
         console.print("\n[1] High [2] Medium [3] Low [4] None")
         prio = Prompt.ask("Set Priority", choices=["1", "2", "3", "4"], default="4")
-
         todos.append({"task": task, "done": False, "priority": prio})
         save_todos(todos)
         console.print(f"[green]Added:[/green] {task}")
+        time.sleep(1)
 
 
 def complete_mode(todos):
     while True:
         print_header()
         console.print(get_task_table(todos))
-        task_num = Prompt.ask("\n[bold green]Complete Number[/bold green] (or 'exit')")
-        if task_num.lower() == "exit":
+
+        pending_tasks = [(i, t) for i, t in enumerate(todos) if not t["done"]]
+        if not pending_tasks:
+            console.print("\n[yellow]No pending tasks to complete![/yellow]")
+            time.sleep(1.5)
             break
-        if task_num.isdigit():
-            idx = int(task_num) - 1
-            if 0 <= idx < len(todos):
-                todos[idx]["done"] = True
-                save_todos(todos)
-                console.print("[green]Task marked as done![/green]")
-            else:
-                console.print("[red]Invalid number![/red]")
+
+        choices = [
+            questionary.Choice(f"Task {i + 1}: {t['task']}", value=str(i))
+            for i, t in pending_tasks
+        ]
+        choices.append(questionary.Choice("🔙 Back", value="exit"))
+
+        task_num = questionary.select(
+            "\nSelect a task to complete:", choices=choices
+        ).ask()
+
+        if task_num == "exit" or task_num is None:
+            break
+
+        idx = int(task_num)
+        todos[idx]["done"] = True
+        save_todos(todos)
+        console.print("[green]Task marked as done![/green]")
+        time.sleep(1)
 
 
 def edit_mode(todos):
@@ -189,17 +208,30 @@ def remove_mode(todos):
     while True:
         print_header()
         console.print(get_task_table(todos))
-        task_num = Prompt.ask("\n[bold red]Delete Number[/bold red] (or 'exit')")
-        if task_num.lower() == "exit":
+
+        if not todos:
+            console.print("\n[yellow]No tasks to remove![/yellow]")
+            time.sleep(1.5)
             break
-        if task_num.isdigit():
-            idx = int(task_num) - 1
-            if 0 <= idx < len(todos):
-                removed = todos.pop(idx)["task"]
-                save_todos(todos)
-                console.print(f"[red]Removed:[/red] {removed}")
-            else:
-                console.print("[red]Invalid number![/red]")
+
+        choices = [
+            questionary.Choice(f"Task {i + 1}: {t['task']}", value=str(i))
+            for i, t in enumerate(todos)
+        ]
+        choices.append(questionary.Choice("🔙 Back", value="exit"))
+
+        task_num = questionary.select(
+            "\nSelect a task to delete:", choices=choices
+        ).ask()
+
+        if task_num == "exit" or task_num is None:
+            break
+
+        idx = int(task_num)
+        removed = todos.pop(idx)["task"]
+        save_todos(todos)
+        console.print(f"[red]Removed:[/red] {removed}")
+        time.sleep(1)
 
 
 def removeAll_mode(todos):
