@@ -2,7 +2,7 @@
 # Contributor: Albert Sebastian <albertsebe2 at gmail dot com>
 
 pkgname=wstunnel
-pkgver=10.5.1
+pkgver=10.5.2
 pkgrel=1
 pkgdesc="tunnel all your traffic over Websocket or HTTP2"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -14,7 +14,7 @@ conflicts=('wstunnel-bin' 'nodejs-wstunnel' 'haskell-wstunnel-bin')
 depends=('glibc' 'gcc-libs')
 makedepends=('rust' 'git')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cf600e97ec15d243be6f32f5418ff48ab59f0714258f18f7dc7b95759847a9d7')
+sha256sums=('0e717c8330af19157e8a867bed782df460d80ba285530a9a17fabaf14e941d37')
 
 prepare() {
   cd $pkgname-$pkgver

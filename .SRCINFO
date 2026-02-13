@@ -1,6 +1,6 @@
 pkgbase = wstunnel
 	pkgdesc = tunnel all your traffic over Websocket or HTTP2
-	pkgver = 10.5.1
+	pkgver = 10.5.2
 	pkgrel = 1
 	url = https://github.com/erebe/wstunnel
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = wstunnel
 	conflicts = nodejs-wstunnel
 	conflicts = haskell-wstunnel-bin
 	options = !lto
-	source = https://github.com/erebe/wstunnel/archive/refs/tags/v10.5.1.tar.gz
-	sha256sums = cf600e97ec15d243be6f32f5418ff48ab59f0714258f18f7dc7b95759847a9d7
+	source = https://github.com/erebe/wstunnel/archive/refs/tags/v10.5.2.tar.gz
+	sha256sums = 0e717c8330af19157e8a867bed782df460d80ba285530a9a17fabaf14e941d37
 
 pkgname = wstunnel
