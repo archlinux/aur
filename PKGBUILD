@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=opencode-optimal-model-temps
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimal OpenCode plugin that hooks chat.params and nudges specific models to their preferred sampling temperature"
 arch=('any')
 url="https://github.com/Lyapsus/opencode-optimal-model-temps"
