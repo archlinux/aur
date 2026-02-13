@@ -41,8 +41,8 @@ source_x86_64=("${pkgname}-${_fullver}-x86_64.tar.gz::https://github.com/xpipe-i
 source_aarch64=("${pkgname}-${_fullver}-arm64.tar.gz::https://github.com/xpipe-io/${pkgname}/releases/download/${_fullver}/xpipe-portable-linux-arm64.tar.gz")
 noextract=()
 sha256sums=("3DBAE16D777F7AD7761252B1F429278333A1117A70632F4025DE713E5B0A86C8" "BCD42E2497807AE0069A4CCCAFEDC5B993EB24EB844C9BF0AE26ABABCEEAE348" "F7E26C2EBA1EC2AF909357475D3C3C6C55D1CF9E2BD7129276B89306298FBF9F")
-sha256sums_x86_64=("57f22914e845cb274f055abdac0f47f8bc1c4dc7c3976553c121589c5ca29988")
-sha256sums_aarch64=("57f22914e845cb274f055abdac0f47f8bc1c4dc7c3976553c121589c5ca29988")
+sha256sums_x86_64=("464d8a2277a6d1bf64c9c06f92f57dd9e01530615e94633ab6deb77bc32b2a5f")
+sha256sums_aarch64=("65967d6294c3e2d730eb89def3d43b0a077ca90be1b62e6da92f96acd8f6fb3d")
 
 package() {
 	install -dm0755 "$pkgdir/opt"
