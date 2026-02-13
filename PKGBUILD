@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=wnacg-downloader
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="绅士漫画 wnacg.com wnacg 的多线程下载器，带图形界面 支持导出 cbz 和 pdf"
 arch=($CARCH)
@@ -27,12 +27,13 @@ makedepends=(
     rust
     cargo-tauri
     pnpm
+    nodejs-lts
 )
 backup=()
 options=(!debug !strip !lto)
 #install=${pkgname}.install
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('a0c327b21f8ae3e84962f9f59dccc03e68ef8a675b631f50872b57b82e2380cb')
+sha256sums=('53cf0e41826a12ef8c68e24fd29f49afd03e2f458659266c752ccc16c9c2a854')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
@@ -57,7 +58,6 @@ build() {
 
     NODE_ENV=development pnpm install --force
     NODE_ENV=production pnpm tauri build -b deb
-
 }
 
 # check() {
