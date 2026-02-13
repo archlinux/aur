@@ -30,12 +30,6 @@ b2sums=('724e9ba55bd456879be2b77ffd924f4cda90584169795879e6bdc22521a4af52b87b359
         'e41fd1bc5e7aa9af7f7bc5c13400f947c9837a54d716ea6cfcb1319a539ed20e7cc9775a6add851a6bc9670ebb34db2191576ebde240a49be23766e5274fe3f5'
         'd862700903f51667999c254bd328f8a7bc9bd00db3a1e6c5b776b908dbfe0f0568b4662cc6ee70ca71421cec87c57c1e05de4c63264e1257fcb9d88ecdf3c1ad')
 
-pkgver() {
-  cd "$pkgname"
-
-  git describe --tags | sed 's/^v//'
-}
-
 prepare() {
   cd "$pkgname"
 
