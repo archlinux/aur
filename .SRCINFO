@@ -1,16 +1,22 @@
 pkgbase = python-textual-image
 	pkgdesc = Render images in the terminal with Textual and Rich
 	pkgver = 0.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lnqs/textual-image
 	arch = any
 	license = LGPL-3.0-only
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-syrupy
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python
 	depends = python-pillow
 	depends = python-textual
+	depends = python-rich
+	depends = python-typing_extensions
 	source = textual-image-0.8.5.tar.gz::https://github.com/lnqs/textual-image/archive/refs/tags/v0.8.5.tar.gz
 	sha256sums = 6081a6699406919bc398c6f1d5ed3955adeb5fd25cbe802adc4344ee6d20c8e1
 
