@@ -1,0 +1,33 @@
+[org.cinnamon]
+favorite-apps=[ 'org.gnome.Calculator.desktop', 'org.gnome.Calendar.desktop', 'org.x.editor.desktop', 'org.gnome.Software.desktop', 'cinnamon-settings.desktop' ]
+system-icon="/usr/share/pixmaps/archlinux-logo-text.svg"
+
+[org.cinnamon.desktop.background]
+picture-uri='file:///usr/share/backgrounds/gnome/adwaita-l.jxl'
+
+[org.cinnamon.desktop.interface]
+icon-theme='Papirus'
+font-name="Adwaita Sans 11"
+
+[org.cinnamon.desktop.screensaver]
+font-date="Adwaita Sans 24"
+font-message="Adwaita Sans 14"
+font-time="Adwaita Sans 64"
+
+[org.cinnamon.desktop.sound]
+volume-sound-enabled=true
+volume-sound-file="/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga"
+
+[org.cinnamon.desktop.wm.preferences]
+titlebar-font="Adwaita Sans Bold 11"
+titlebar-uses-system-font=true
+
+[org.cinnamon.settings-daemon.plugins.xsettings]
+buttons-have-icons=true
+menus-have-icons=true
+
+[org.cinnamon.theme]
+name='cinnamon'
+
+[org.nemo.desktop]
+font="Adwaita Sans 11"

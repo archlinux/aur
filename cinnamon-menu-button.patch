@@ -1,0 +1,22 @@
+From 4549078a7eff9b9e75a31400fc6aeb7b4244cf5d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Wed, 31 Dec 2025 23:29:12 +0100
+Subject: [PATCH] cs_windows.py: Add Traditional button layout option
+
+This is equal to the "Right" button layout plus a menu button on the left side.
+---
+ files/usr/share/cinnamon/cinnamon-settings/modules/cs_windows.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/files/usr/share/cinnamon/cinnamon-settings/modules/cs_windows.py b/files/usr/share/cinnamon/cinnamon-settings/modules/cs_windows.py
+index cf60c959b5..3159e9de50 100755
+--- a/files/usr/share/cinnamon/cinnamon-settings/modules/cs_windows.py
++++ b/files/usr/share/cinnamon/cinnamon-settings/modules/cs_windows.py
+@@ -45,6 +45,7 @@ def on_module_selected(self):
+             button_options.append([":close", _("Gnome")])
+             button_options.append(["close:", _("Gnome Left")])
+             button_options.append(["close:minimize,maximize", _("Classic Mac")])
++            button_options.append(["menu:minimize,maximize,close", _("Traditional")])
+ 
+             widget = GSettingsComboBox(_("Buttons layout"), "org.cinnamon.desktop.wm.preferences", "button-layout", button_options, size_group=size_group)
+             settings.add_row(widget)
