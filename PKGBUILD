@@ -1,17 +1,17 @@
 # Maintainer: Marcus Hoffmann <bubu@bubu1.eu>
 _pkgname=flask_limiter
 pkgname=python-flask-limiter
-pkgver=3.10.1
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="Rate limiting for flask applications"
 url="https://flask-limiter.readthedocs.org"
 depends=('python' 'python-flask' 'python-limits' 'python-ordered-set' 'python-rich' 'python-typing_extensions')
-makedepends=(python-setuptools python-build python-installer python-wheel)
+makedepends=(python-hatchling python-hatch-vcs python-build python-installer python-wheel)
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 
-sha256sums=('5ff8395f2acbc565ba6af43dc4b9c5b0a3665989681791d01dfaa6388bb332c6')
+sha256sums=('ca11608fc7eec43dcea606964ca07c3bd4ec1ae89043a0f67f717899a4f48106')
 
 # Depends on python-hiro, which isn't packaged
 # check() {
