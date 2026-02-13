@@ -159,7 +159,7 @@ def complete_mode(todos):
             questionary.Choice(f"Task {i + 1}: {t['task']}", value=str(i))
             for i, t in pending_tasks
         ]
-        choices.append(questionary.Choice("🔙 Back", value="exit"))
+        choices.append(questionary.Choice(" Back", value="exit"))
 
         task_num = questionary.select(
             "\nSelect a task to complete:", choices=choices
@@ -218,7 +218,7 @@ def remove_mode(todos):
             questionary.Choice(f"Task {i + 1}: {t['task']}", value=str(i))
             for i, t in enumerate(todos)
         ]
-        choices.append(questionary.Choice("🔙 Back", value="exit"))
+        choices.append(questionary.Choice(" Back", value="exit"))
 
         task_num = questionary.select(
             "\nSelect a task to delete:", choices=choices
