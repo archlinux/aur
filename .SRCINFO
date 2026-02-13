@@ -1,0 +1,17 @@
+pkgbase = auto-cpufreq-rust-git
+	pkgdesc = Automatic CPU speed & power optimizer (Rust port)
+	pkgver = r573.ff890e7
+	pkgrel = 1
+	url = https://github.com/Zamanhuseyinli/auto-cpufreq-rust
+	arch = any
+	license = LGPL-3.0
+	depends = dmidecode
+	depends = git
+	depends = curl
+	depends = gcc
+	depends = pkg-config
+	depends = openssl
+	source = git+https://github.com/Zamanhuseyinli/auto-cpufreq-rust.git
+	sha256sums = SKIP
+
+pkgname = auto-cpufreq-rust-git
