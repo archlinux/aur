@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=acceptarium-git
-pkgver=0.0.0.r5.g888ddcc
+pkgver=0.0.0.r8.g8706cc7
 pkgrel=1
 pkgdesc='CLI tool to facilitate digitized receipt handling in plain text accounting workflows'
 arch=(x86_64)
@@ -9,6 +9,7 @@ url="https://codeberg.org/plaintextaccounting/${pkgname%-git}"
 license=(AGPL-3.0-only)
 depends=(gcc-libs # libgcc_s.so
          git
+         git-annex
          glibc) # libc.so libm.so
 makedepends=(cargo
              jq)

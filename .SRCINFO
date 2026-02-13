@@ -1,6 +1,6 @@
 pkgbase = acceptarium-git
 	pkgdesc = CLI tool to facilitate digitized receipt handling in plain text accounting workflows
-	pkgver = 0.0.0.r5.g888ddcc
+	pkgver = 0.0.0.r8.g8706cc7
 	pkgrel = 1
 	url = https://codeberg.org/plaintextaccounting/acceptarium
 	arch = x86_64
@@ -9,8 +9,9 @@ pkgbase = acceptarium-git
 	makedepends = jq
 	depends = gcc-libs
 	depends = git
+	depends = git-annex
 	depends = glibc
-	provides = acceptarium=0.0.0.r5.g888ddcc
+	provides = acceptarium=0.0.0.r8.g8706cc7
 	conflicts = acceptarium
 	source = git+https://codeberg.org/plaintextaccounting/acceptarium.git
 	sha256sums = SKIP
