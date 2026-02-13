@@ -1,6 +1,6 @@
 # Maintainer: azr4e1
 pkgname=moc-mpris-bridge
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="MPRIS bridge for Music On Console"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('moc-pulse')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('2f923f0fdd957b176e50f8d7948d366037b4be6d1bc1d614f3fbe7c83b52ced3')
+sha256sums=('185e056969b0a2adc611882d8eed8d297673f88cc65660c762785a53fc7448a6')
 
 build() {
     cd "$pkgname-$pkgver"  # GitHub creates this directory
