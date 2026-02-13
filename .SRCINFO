@@ -1,6 +1,6 @@
 pkgbase = xlibre-xserver-git
 	pkgver = 25.1.0.r12.61a85df83
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/x11libre/xserver
 	arch = aarch64
 	arch = x86_64
@@ -80,7 +80,7 @@ pkgname = xlibre-xserver-git
 	depends = sh
 	depends = dbus
 	depends = xlibre-input-libinput
-	depends = xlibre-xserver-common-git=25.1.0.r12.61a85df83-1
+	depends = xlibre-xserver-common-git=25.1.0.r12.61a85df83-2
 	provides = xlibre-xserver=25.1.0
 	provides = X-ABI-VIDEODRV_VERSION=28.0
 	provides = X-ABI-XINPUT_VERSION=26.0
@@ -114,7 +114,7 @@ pkgname = xlibre-xserver-bootstrap-git
 	depends = nettle
 	depends = pixman>=0.27.2
 	depends = sh
-	depends = xlibre-xserver-common-git=25.1.0.r12.61a85df83-1
+	depends = xlibre-xserver-common-git=25.1.0.r12.61a85df83-2
 	provides = xlibre-xserver=25.1.0
 	provides = xlibre-xserver-bootstrap=25.1.0
 	provides = x-server
@@ -173,7 +173,7 @@ pkgname = xlibre-xserver-xephyr-git
 	depends = xcb-util-keysyms
 	depends = xcb-util-renderutil
 	depends = xcb-util-wm
-	depends = xlibre-xserver-common-git=25.1.0.r12.61a85df83-1
+	depends = xlibre-xserver-common-git=25.1.0.r12.61a85df83-2
 	provides = xlibre-xserver-xephyr=25.1.0
 	conflicts = xlibre-server-xephyr
 	conflicts = xorg-server-xephyr
@@ -192,7 +192,7 @@ pkgname = xlibre-xserver-xnest-git
 	depends = nettle
 	depends = pixman>=0.27.2
 	depends = dbus
-	depends = xlibre-xserver-common-git=25.1.0.r12.61a85df83-1
+	depends = xlibre-xserver-common-git=25.1.0.r12.61a85df83-2
 	provides = xlibre-xserver-xnest=25.1.0
 	conflicts = xlibre-server-xnest
 	conflicts = xorg-server-xnest
@@ -213,7 +213,7 @@ pkgname = xlibre-xserver-xvfb-git
 	depends = pixman
 	depends = sh
 	depends = dbus
-	depends = xlibre-xserver-common-git=25.1.0.r12.61a85df83-1
+	depends = xlibre-xserver-common-git=25.1.0.r12.61a85df83-2
 	depends = xorg-xauth
 	provides = xlibre-xserver-xvfb=25.1.0
 	conflicts = xlibre-server-xvfb
