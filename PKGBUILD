@@ -1,11 +1,7 @@
 # Maintainer: Mark <speedorama1 at gmail dot com>
 
 pkgname=koboldcpp-cuda-bin
-<<<<<<< HEAD
-pkgver=1.107.1
-=======
 pkgver=1.107.3
->>>>>>> 67e4da4 (bump to version 1.107.3)
 pkgrel=1
 pkgdesc="A simple one-file way to run various GGML and GGUF models with KoboldAI's UI, CUDA version"
 arch=('x86_64')
@@ -20,11 +16,7 @@ source=(
 	"koboldcpp.png"
 )
 sha256sums=(
-<<<<<<< HEAD
-  'a410d31d8fedb971d9504097454992640faa5d8854bfda89dd29b21738271f01'
-=======
   'b024b6a0d67476f7e3aa53b862577d016615ade9c63ea79ede0f9a8ff0bb8523'
->>>>>>> 67e4da4 (bump to version 1.107.3)
   'fcec7b843b908e1c03496fdc0605e6509f52526a855c43db16e287ef646503ef'
   'd244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54'
 )
