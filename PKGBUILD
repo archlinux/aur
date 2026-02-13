@@ -1,6 +1,6 @@
 # Maintainer: Roberto Alsina <roberto.alsina@gmail.com>
 pkgname=markterm
-pkgver=0.6.3
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A terminal markdown renderer."
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ makedepends=('crystal' 'shards')
 install=install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ralsina/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 optdepends=("timg: image support")
-sha256sums=('4489b324ee36737d7af283437a6f38a81505d2d62cb2d25330b29d7f4e13365f')
+sha256sums=('759d2794dc0a7c450714b3d7cb2ed31fe6b13ccd963e7d3f0ff063d86d865088')
 
 prepare() {
 	cd "$pkgname-$pkgver"
