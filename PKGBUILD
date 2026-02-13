@@ -16,21 +16,14 @@ depends=(
   'hicolor-icon-theme'
 )
 makedepends=('cmake' 'git')
-_commit='4050d6f97bf5d8b7ac9e91b1b7d4eacf3a4af87c'
 source=(
-  "$pkgname::git+$url.git#commit=$_commit"
+  "$pkgname::git+$url.git#tag=v$pkgver"
   'github.com-jorio-Pomme::git+https://github.com/jorio/Pomme'
   'wrapper.sh'
 )
-b2sums=('SKIP'
+b2sums=('ea8a0adc085b4bd10f258308be3b2a193f9f0a737c976147a44e0bb91892faff20625f7dc290e5c4038060739d79faab3ea5a21d59f06cd8879d3a14fc6390ca'
         'SKIP'
         '8c38b79234c0726f24411c622269a123a3a68519064b69dec3f9d859aafbd9d8fd96475ef06404ccde6a5162da2aa186183c28670e00f8a5f7d144c4f0ae440d')
-
-pkgver() {
-  cd "$pkgname"
-
-  git describe --tags | sed 's/^v//'
-}
 
 prepare() {
   cd "$pkgname"
