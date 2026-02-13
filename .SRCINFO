@@ -1,6 +1,6 @@
 pkgbase = spotify-tray-wayland-bin
 	pkgdesc = Native Wayland/Hyprland system tray for Spotify with scroll and middle-click controls
-	pkgver = 1.1.2
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://github.com/xander1421/spotify-tray-wayland
 	install = spotify-tray-wayland-bin.install
@@ -15,9 +15,9 @@ pkgbase = spotify-tray-wayland-bin
 	conflicts = spotify-tray-wayland
 	conflicts = spotify-tray-wayland-git
 	options = !debug
-	source_x86_64 = spotify-tray-wayland-bin-1.1.2-x86_64::https://github.com/xander1421/spotify-tray-wayland/releases/download/v1.1.2/spotify-tray-wayland-linux-amd64
-	sha256sums_x86_64 = aa26684e1a01b4f925ac5c3d4ba2142fa29571d90d32c70a043b82ea92e700d9
-	source_aarch64 = spotify-tray-wayland-bin-1.1.2-aarch64::https://github.com/xander1421/spotify-tray-wayland/releases/download/v1.1.2/spotify-tray-wayland-linux-arm64
-	sha256sums_aarch64 = 4b56470ed1c30a3c9939e09e4ffecac55f31c828f792f19645a4da457196b966
+	source_x86_64 = spotify-tray-wayland-bin-1.1.3-x86_64::https://github.com/xander1421/spotify-tray-wayland/releases/download/v1.1.3/spotify-tray-wayland-linux-amd64
+	sha256sums_x86_64 = 95663a8ded435c775c99da8549da5fe9e5e8567bedd204c299c3ca370df727e4
+	source_aarch64 = spotify-tray-wayland-bin-1.1.3-aarch64::https://github.com/xander1421/spotify-tray-wayland/releases/download/v1.1.3/spotify-tray-wayland-linux-arm64
+	sha256sums_aarch64 = 652f7866654ec64a26aa74958e9496c7fcc4a99374c3730fe34a8d88e3514684
 
 pkgname = spotify-tray-wayland-bin
