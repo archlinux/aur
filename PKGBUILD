@@ -1,73 +1,77 @@
-# Maintainer: XOX (milklikecomputer) <0c2c5a81-0f19-4c94-bf0b-a693e3ced027[at]slmails[dot]me>
-
-# modified from [valent-git](https://aur.archlinux.org/packages/valent-git)
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=valent
-pkgver=1.0.0.alpha.46
+pkgver=1.0.0.alpha.49
 pkgrel=1
-pkgdesc="A file sharing software, slogan 'Connect, control and sync devices'"
-arch=('aarch64' 'x86_64')
-url='https://valent.andyholmes.ca'
-license=('GPL-3.0-or-later')
+pkgdesc="Connect, control and sync devices"
+arch=('x86_64' 'aarch64')
+url="https://valent.andyholmes.ca"
+license=(
+  'CC0-1.0'
+  'CC-BY-SA-3.0'
+  'GPL-2.0-or-later'
+  'GPL-3.0-or-later'
+  'LGPL-2.1-or-later'
+)
 depends=(
   'evolution-data-server'
-  'gcc-libs'
-  'gdk-pixbuf2'
+  'glycin'
   'gnutls'
   'gstreamer'
+  'gtk4'
   'json-glib'
   'libadwaita'
   'libpeas-2'
   'libpipewire'
+  'libportal'
   'libportal-gtk4'
   'libpulse'
-  'libportal'
+  'python-dbus'
+  'python-gobject'
+  'tinysparql'
 )
 makedepends=(
 #  'gi-docgen'  ## -Ddocumentation=true
+  'git'
   'glib2-devel'
   'gobject-introspection'
   'meson'
   'vala'
-  'cmake'
 )
 checkdepends=(
-  'appstream'
-#  'walbottle'  ## -Dtests=true (for JSON tests)
+  'python-dbusmock'
+  'walbottle'
+  'xorg-server-xvfb'
 )
-optdepends=(
-  'dconf'
-  'glib2'
-  'graphene'
-  'gtk4'
-  'hicolor-icon-theme'
-  'pango'
-  'tinysparql'
-)
-provides=("${pkgname}" 'libvalent-1.so=1.0.0')
-conflicts=("${pkgname}")
-source=(
-        "https://github.com/andyholmes/valent/releases/download/v$pkgver/valent-$pkgver.tar.xz"
-        '1-solving-dependency-problem.patch'
-)
-sha256sums=(
-            'c7d822230b5559762c90e046226ef3329f144c6885005473f72cd1a81146166e'
-            '5f1671609c01b3c4181fd28362c97b030fba94096c8a60cf3f4e30e4e014dc0d'
-)
+optdepends=('bluez: BlueTooth networking')
+provides=("${pkgname%-git}" 'libvalent-1.so')
+conflicts=("${pkgname%-git}")
+source=("git+https://github.com/andyholmes/valent.git#tag=v$pkgver"
+        'git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git')
+sha256sums=('5d0026475397ddab363db694d671a6a3426614bb396b02ad6349677089a7a213'
+            'SKIP')
 
-# fix require "libportal<= 0.7.1" problem
 prepare() {
-  patch -p0 < 1-solving-dependency-problem.patch
+  cd "$pkgname"
+  git submodule init
+  git config submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
-  arch-meson "$pkgname-$pkgver" build
+  arch-meson "$pkgname" build \
+    -Dtests=true \
+    -Dfuzz_tests=false \
+    -Dinstalled_tests=false
   meson compile -C build
 }
 
 check() {
-  meson test -C build --print-errorlogs || :
+  dbus-run-session xvfb-run meson test -C build --no-rebuild --print-errorlogs || :
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
+
+  # No, really. Don't install the tests
+  rm -rfv "$pkgdir/usr/lib/installed-tests/"
 }

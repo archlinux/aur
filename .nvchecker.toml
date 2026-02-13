@@ -1,0 +1,4 @@
+[valent]
+source = "git"
+git = "https://github.com/andyholmes/valent.git"
+prefix = "v"
