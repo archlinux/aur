@@ -1,5 +1,5 @@
-2.39.4-1 [2026-02-06]
-- [Desktop][BugFix] Fixed a crash in Incognito mode triggered by copy-and-paste operations.
-- [iOS][New Feature] Introduced Site Sparks.
-- Chromium engine updated to 144.0.7559.134.
-
+2.40.0-1 [2026-02-12]
+- [Desktop][UI] Updated copyright year to 2026 on the About page in Preferences.
+- [Desktop][UI] Fixed profile opening issue on the Welcome page.
+- [Android][BackgroundPlay] Fixed issues with Background Play on certain websites. 
+- Updated with the latest security patches and performance enhancements. Chromium engine updated to 145.0.7632.45.
