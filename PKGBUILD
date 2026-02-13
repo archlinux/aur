@@ -1,7 +1,8 @@
-# Maintainer: David Čuček <observ33r@gmail.com>
+# Maintainer: Kaydax <kaydax@kaydax.xyz>
+# Contributor: David Čuček <observ33r@gmail.com>
 
 pkgname="code-translucent"
-pkgver=1.100.2
+pkgver=1.108.2
 pkgrel=1
 pkgdesc="The Open Source build of Visual Studio Code (vscode) editor with translucent window, official marketplace, unblocked proprietary features and wayland support!"
 
@@ -42,7 +43,7 @@ makedepends=(
 	"npm"
 	"pnpm"
 	"python"
-	"nodejs-lts-iron"
+	"nodejs-lts-jod"
 )
 
 source=(
@@ -56,7 +57,7 @@ source=(
 sha512sums=(
 	"SKIP"
 	"9de3f195e711814e1e457e8ccb6383c6000bc83ee707f2bc138fe66c3cf6c35a6e9c755594afb5fbf8c4f05c3c87f7f3b8714e7947b62094ead6f5f1b81f5b24"
-	"94045c480b6596e2f4bbf63833807262beff7396f97f17736dd4cbf91a69b140c81b4819487c0c58bf23594ee9636bff26213322f0ea4aa6f8ad18cb54caefcc"
+	"9deb0da4eb9fb989e892a5743b99c50acc64dddcd33d2a8517d0a48eb12476dac3a8c5238fa40b64c6c3e89fa3cc399135ebf1f795f9029871cf61d25418e2c6"
 	"fbb45add197dd780c97bdc41beaae1f27883d996e51b3f5ed03fc2e9c80dac5747397fe206a2891a4e9c07334e223bb55c01e6d57f7abab099ff6ccbe6ff0d5a"
 	"6234842d41d9cb6cdd27766e35804644c59a39b43a92f2243b18525dc69d954d1e9dcd4297538de3dfd26051c7035d1ebb04f849a69208afa8214e42160c18dd"
 )

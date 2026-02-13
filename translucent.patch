@@ -32,7 +32,7 @@ diff -Naur a/src/vs/platform/windows/electron-main/windows.ts b/src/vs/platform/
 @@ -124,6 +124,7 @@
  	const windowSettings = configurationService.getValue<IWindowSettings | undefined>('window');
  
- 	const options: electron.BrowserWindowConstructorOptions & { experimentalDarkMode: boolean } = {
+ 	const options: electron.BrowserWindowConstructorOptions & { experimentalDarkMode: boolean; accentColor?: boolean | string } = {
 +		transparent: true,
  		backgroundColor: themeMainService.getBackgroundColor(),
  		minWidth: WindowMinimumSize.WIDTH,
