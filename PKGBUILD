@@ -24,7 +24,7 @@ source=(
   'github.com-jorio-Pomme::git+https://github.com/jorio/Pomme'
   "$pkgname.desktop"
   "$pkgname.sh"
-  LICENSE
+  LICENSE.upstream
 )
 sha512sums=('62cb29bf923248736e76a9a91594631575de1b388ac1eec715bdc5594fa96bba86987b47739b2c81a467accc86280221db4c1016870c5c04f49d88e75d42ce31'
             'SKIP'
@@ -95,6 +95,8 @@ package() {
   # licenses
   install -vDm644 \
     -t "$pkgdir/usr/share/licenses/$pkgname" \
-    LICENSE \
     "$pkgname/LICENSE.md"
+  install -vDm644 \
+    LICENSE.upstream \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
