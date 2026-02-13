@@ -1,9 +1,8 @@
 pkgbase = usb_oc-dkms
 	pkgdesc = Kernel module for overclocking USB devices
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/p0358/usb_oc-dkms
-	install = usb_oc-dkms.install
 	arch = any
 	license = GPL-2.0-only
 	depends = dkms
