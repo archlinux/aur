@@ -1,65 +1,21 @@
 # Maintainer: Andreas Wendleder <gonsolo@gmail.com>
 
-_bootstrap=1
 pkgname=mill
 pkgver=1.1.2
-pkgrel=2
-pkgdesc="Your shiny new Java/Scala build tool"
+pkgrel=3
+pkgdesc="A shiny new build tool for Java and Scala, designed for performance and reliability"
 arch=('any')
 url="https://com-lihaoyi.github.io/mill/"
 license=('MIT')
 depends=('bash' 'java-environment')
-makedepends=('git')
 
-if [[ "$_bootstrap" -eq 0 ]]; then
-  makedepends+=('mill')
-fi
+source=("mill-binary::https://repo1.maven.org/maven2/com/lihaoyi/mill-dist/$pkgver/mill-dist-$pkgver-mill.sh")
+sha512sums=('41102495827e82a4ff2692acc6af176890e9e5d64c0c94cff4e8d2623bd273127a5cac06ce2bcd7e61e9138e1847a52bd02d5a4d2118095f0993dd2556357142')
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/com-lihaoyi/mill/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('6bca3c77ad93fb58821bbacf0ddf9bc8b61ecbe4996b4fe5a9c53a51c25a954a32890fd68b15bb3e8ef7d3e35cb78d01f97ce3ebdeded51186492733c8d6c6dc')
-
-build() {
-  cd "$pkgname-$pkgver"
-
-  # Version für den Build-Prozess setzen
-  echo "$pkgver" > .mill-version
-
-  local _mill_exec
-  if [[ "$_bootstrap" -eq 1 ]]; then
-    echo "Bootstrapping with bundled script..."
-    _mill_exec="./mill"
-    chmod +x "$_mill_exec"
-  else
-    _mill_exec="mill"
-  fi
-
-  # Shell-Präfixe entfernen
-  sed -i '/object gradle/a \ \ def prependShellScript = ""' libs/init/package.mill
-  sed -i '/object hilt/a \ \ def prependShellScript = ""' libs/androidlib/package.mill
-
-  "$_mill_exec" -i dist.assembly
+prepare() {
+  chmod +x "$srcdir/mill-binary"
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  
-  # 1. JAR installieren
-  install -Dm644 out/dist/assembly.dest/out.jar "$pkgdir"/usr/share/java/mill/mill.jar
-  
-  # 2. Das originale Skript patchen und als Launcher nutzen
-  # Wir ersetzen die Versionserkennung durch unsere fixe Version
-  # Und wir biegen den MILL_CLASSPATH auf unsere installierte JAR um
-  install -d "$pkgdir"/usr/bin
-  sed -e "s|^DEFAULT_MILL_VERSION=.*|DEFAULT_MILL_VERSION=$pkgver|" \
-      -e "s|^MILL_VERSION=.*|MILL_VERSION=$pkgver|" \
-      -e 's|#\!/usr/bin/env sh|#\!/usr/bin/bash|' \
-      mill > "$pkgdir"/usr/bin/mill
-  
-  # Füge einen Export hinzu, damit er die JAR findet und nicht neu lädt
-  sed -i "2i export MILL_CLASSPATH=/usr/share/java/mill/mill.jar" "$pkgdir"/usr/bin/mill
-  
-  chmod 755 "$pkgdir"/usr/bin/mill
-
-  # 3. Lizenz
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/mill/LICENSE
+  install -Dm755 "$srcdir/mill-binary" "$pkgdir"/usr/bin/mill
 }
