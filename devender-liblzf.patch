@@ -1,0 +1,14 @@
+--- a/setup.py	2025-12-25 17:48:53.000000000 +0800
++++ b/setup.py	2026-02-13 13:53:51.152182081 +0800
+@@ -20,8 +20,9 @@
+     ext_modules=[
+         Extension(
+             "lzf",
+-            ["lzf_module.c", "lzf_c.c", "lzf_d.c"],
+-            include_dirs=["."],
++            ["lzf_module.c"],
++            include_dirs=["/usr/include"],
++            libraries=['lzf'],
+             extra_compile_args=compile_args,
+         )
+     ],

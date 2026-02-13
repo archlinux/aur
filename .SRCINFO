@@ -1,0 +1,24 @@
+pkgbase = python-neo-lzf
+	pkgdesc = A fork of python-lzf with pre-built wheel files.
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = https://github.com/FledgeXu/python-neo-lzf
+	arch = i686
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = liblzf
+	source = https://files.pythonhosted.org/packages/source/p/python_neo_lzf/python_neo_lzf-0.3.5.tar.gz
+	source = 0.3.5-tests.py::https://github.com/FledgeXu/python-neo-lzf/raw/refs/tags/v0.3.5/tests.py
+	source = devender-liblzf.patch
+	md5sums = f6b7bad05e6e8d078627c829d9d25a20
+	md5sums = f16f68c6491d14316a0d40954505e695
+	md5sums = f9165145d88f1721451d2b957e452ffd
+
+pkgname = python-neo-lzf
+	depends = python>=3.7
+	depends = liblzf
+	provides = python-lzf
+	conflicts = python-lzf
