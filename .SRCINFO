@@ -1,0 +1,22 @@
+pkgbase = proc-bin
+	pkgdesc = A semantic CLI tool for process management
+	pkgver = 1.7.2
+	pkgrel = 1
+	url = https://github.com/yazeed/proc
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = proc
+	conflicts = proc
+	source = LICENSE-1.7.2::https://raw.githubusercontent.com/yazeed/proc/v1.7.2/LICENSE
+	source = README-1.7.2.md::https://raw.githubusercontent.com/yazeed/proc/v1.7.2/README.md
+	sha256sums = c7f9eb97a593a88e42431614564bf73d3b2177ffbc959a63cfe62856b4a10d1e
+	sha256sums = 4f74616794814fbd9e290769b86be35e41d7d3275d9f0d06031cc724f09ff52c
+	source_x86_64 = proc-x86_64-1.7.2.tgz::https://github.com/yazeed/proc/releases/download/v1.7.2/proc-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 09be960430209a097640669978059210d09530ab683c0a900b042aa8f266870e
+	source_aarch64 = proc-aarch64-1.7.2.tgz::https://github.com/yazeed/proc/releases/download/v1.7.2/proc-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 6e9cd604a8d4a65c8d812bf32101805aaa7be87efd4cfec263be6aad90f994e0
+
+pkgname = proc-bin

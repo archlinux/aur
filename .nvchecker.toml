@@ -1,0 +1,5 @@
+[proc-bin]
+source = "github"
+github = "yazeed/proc"
+use_latest_release = true
+prefix = "v"
