@@ -1,15 +1,14 @@
 pkgbase = mill
 	pkgdesc = Your shiny new Java/Scala build tool
-	pkgver = 0.11.0m0
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://com-lihaoyi.github.io/mill/
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = mill
 	depends = bash
 	depends = java-environment
-	source = git+https://github.com/lihaoyi/mill.git#commit=ea7227f68aa439d96f8d7f1369f2cb90714be932
-	sha512sums = SKIP
+	source = git+https://github.com/com-lihaoyi/mill.git#tag=1.1.2
+	sha512sums = d0bf02795bfe43d7b527aa880e2f874cbe223811e32662ff1735dbbcd64c3dcb8c3d55a12138414fc30d96b6dc3e4969466e7f10ece527f4d2b257a19cf8a875
 
 pkgname = mill
