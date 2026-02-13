@@ -1,7 +1,7 @@
 # Maintainer: MiguVT <contacto@miguvt.com>
 pkgname=freesmlauncher-bin
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Minecraft launcher with offline accounts support (binary release)"
 arch=(x86_64 aarch64)
 url='https://freesmlauncher.org/'
@@ -29,8 +29,18 @@ prepare() {
 package() {
   cd squashfs-root
 
-  # Install the main binary
-  install -Dm755 bin/freesmlauncher "$pkgdir/usr/bin/freesmlauncher"
+  # Install the application to /opt
+  install -dm755 "$pkgdir/opt/freesmlauncher"
+  cp -r bin shared "$pkgdir/opt/freesmlauncher/"
+
+  # Create wrapper script
+  install -dm755 "$pkgdir/usr/bin"
+  cat > "$pkgdir/usr/bin/freesmlauncher" <<'EOF'
+#!/bin/bash
+cd /opt/freesmlauncher
+exec ./bin/freesmlauncher "$@"
+EOF
+  chmod 755 "$pkgdir/usr/bin/freesmlauncher"
 
   # Install desktop file
   install -Dm644 share/applications/org.freesmTeam.freesmlauncher.desktop \
@@ -50,10 +60,6 @@ package() {
   # Install mime type file with renamed package
   install -Dm644 share/mime/packages/modrinth-mrpack-mime.xml \
     "$pkgdir/usr/share/mime/packages/$pkgname.xml"
-
-  # Install libraries
-  install -dm755 "$pkgdir/usr/lib/freesmlauncher"
-  cp -r shared/lib/* "$pkgdir/usr/lib/freesmlauncher/"
 }
 
 # vim:set ts=2 sw=2 et:
