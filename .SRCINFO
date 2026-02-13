@@ -19,8 +19,8 @@ pkgbase = qbz-bin
 	conflicts = qbz
 	options = !strip
 	source_x86_64 = qbz-bin-1.1.14-x86_64.tar.gz::https://github.com/vicrodh/qbz/releases/download/v1.1.14/qbz_1.1.14_amd64.tar.gz
-	sha256sums_x86_64 = 5c0733128b0c2c3df400a7b6f35be711122d4a4f1ca81f7a34ad838bd18981b8
+	sha256sums_x86_64 = 8bac22b7b9c43f83e8b8dfc7dfe39b92120bafe75224e51806559ba92de12a17
 	source_aarch64 = qbz-bin-1.1.14-aarch64.tar.gz::https://github.com/vicrodh/qbz/releases/download/v1.1.14/qbz_1.1.14_aarch64.tar.gz
-	sha256sums_aarch64 = 931669f58ecd797541fa181401f1d74059a71a0a037587e74de6a19ccca038af
+	sha256sums_aarch64 = a8d163eb32effc4e41d19d3dc4173a4e1aae475c742095517d4fefaeae93e96b
 
 pkgname = qbz-bin
