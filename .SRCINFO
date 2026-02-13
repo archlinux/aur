@@ -34,12 +34,11 @@ pkgbase = radicle-git
 	b2sums = 46872e0bd50bbf1528321de5522a9af95227fe43f7880db50968cfd1572a719bd55b874f56f55cd5d4e653565504799d1e54ac16cabe29f65a08089985fdaa27
 	b2sums = 0276bce489e05115e7a63454aa0fa508d7bffba2add4249d1fcd449137104bc75882f5ff06077216fec5cbede5f2a1f8699e82bbc3fda3bf3b2354dfcf5dd0ac
 
-pkgname = radicle-cli-git
-	pkgdesc = open source, peer-to-peer code collaboration stack built on Git - cli
-	provides = radicle-cli
-	conflicts = radicle-cli
-
 pkgname = radicle-node-git
-	pkgdesc = open source, peer-to-peer code collaboration stack built on Git - node
+	pkgdesc = open source, peer-to-peer code collaboration stack built on Git - node + cli
 	provides = radicle-node
+	provides = radicle-cli-git
+	provides = radicle-cli
 	conflicts = radicle-node
+	conflicts = radicle-cli-git
+	conflicts = radicle-cli

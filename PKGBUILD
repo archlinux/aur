@@ -1,7 +1,7 @@
 # Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgbase=radicle-git
-pkgname=(radicle-{cli,node}-git)
+pkgname=(radicle-node-git)
 pkgver=1.7.0rc0.r12.g03bbe5241
 pkgrel=1
 pkgdesc="open source, peer-to-peer code collaboration stack built on Git"
@@ -112,29 +112,6 @@ check() {
 	)
 }
 
-package_radicle-cli-git() {
-	pkgdesc+=" - cli"
-	provides=('radicle-cli')
-	conflicts=('radicle-cli')
-
-	cd heartwood
-
-	install -Dm755 \
-		target/dist/rad \
-		target/dist/git-remote-rad \
-		-t "$pkgdir/usr/bin"
-
-	install -Dm644 \
-		target/dist/man/rad.1 \
-		target/dist/man/rad-*.1 \
-		target/dist/man/git-remote-rad.1 \
-		-t "$pkgdir/usr/share/man/man1"
-
-	install -Dm644 \
-		LICENSE-MIT \
-		-t "$pkgdir/usr/share/licenses/$pkgname"
-}
-
 package_radicle-node-git() {
 	pkgdesc+=" - node"
 	provides=('radicle-node')
@@ -165,4 +142,21 @@ package_radicle-node-git() {
 		LICENSE-MIT \
 		LICENSE-APACHE \
 		-t "$pkgdir/usr/share/licenses/$pkgname"
+
+	# XXX: provisional package, split after merging with aur/radicle-cli-git
+
+	pkgdesc+=" + cli"
+	provides+=('radicle-cli-git' 'radicle-cli')
+	conflicts+=('radicle-cli-git' 'radicle-cli')
+
+	install -Dm755 \
+		target/dist/rad \
+		target/dist/git-remote-rad \
+		-t "$pkgdir/usr/bin"
+
+	install -Dm644 \
+		target/dist/man/rad.1 \
+		target/dist/man/rad-*.1 \
+		target/dist/man/git-remote-rad.1 \
+		-t "$pkgdir/usr/share/man/man1"
 }
