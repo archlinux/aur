@@ -8,6 +8,8 @@ arch=('x86_64')
 url="https://codeberg.org/packwitch/packwitch"
 license=('LGPL-3.0-or-later')
 depends=('jdk21-openjdk')
+provides=('packwitch-manager')
+conflicts=('packwitch-manager')
 makedepends=(
     'git'
     'tar'
