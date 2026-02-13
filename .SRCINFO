@@ -1,6 +1,6 @@
 pkgbase = valent-git
 	pkgdesc = Connect, control and sync devices
-	pkgver = 1.0.0.alpha.48.r119.g4774dcb
+	pkgver = 1.0.0.alpha.49.r34.gd880881
 	pkgrel = 1
 	url = https://valent.andyholmes.ca
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = valent-git
 	depends = tinysparql
 	optdepends = bluez: BlueTooth networking
 	provides = valent
-	provides = libvalent-1.so=0
+	provides = libvalent-1.so
 	conflicts = valent
 	source = git+https://github.com/andyholmes/valent.git
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git

@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=valent-git
-pkgver=1.0.0.alpha.48.r119.g4774dcb
+pkgver=1.0.0.alpha.49.r34.gd880881
 pkgrel=1
 pkgdesc="Connect, control and sync devices"
 arch=('x86_64' 'aarch64')
@@ -44,7 +44,7 @@ checkdepends=(
   'xorg-server-xvfb'
 )
 optdepends=('bluez: BlueTooth networking')
-provides=("${pkgname%-git}" 'libvalent-1.so=0')
+provides=("${pkgname%-git}" 'libvalent-1.so')
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/andyholmes/valent.git'
         'git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git')
