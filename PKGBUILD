@@ -1,14 +1,22 @@
 # Maintainer: Zheralix <zheralix356@gmail.com>
 
 pkgname=gui-cli-toggle
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A script to toggle between multi-user and graphical targets, Written in bash 5.3.9+"
 arch=(any)
 url="https://www.github.com/Zheralix/$pkgname"
-license=(unknown)
-depends=(systemd bash coreutils)
-makedepends=(make coreutils tar)
+license=("custom:$pkgname")
+depends=(
+    systemd
+    bash
+)
+makedepends=(
+    make
+    coreutils
+    tar
+    git
+)
 optdepends=(
     'gdm: GNOME Display Manager'
     'sddm: KDE Display Manager'
@@ -20,7 +28,7 @@ conflicts=("$pkgname")
 options=(!strip !docs !libtool !staticlibs !emptydirs !zipman !ccache !distcc !buildflags !makeflags !debug !lto)
 install=".INSTALL"
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=("27e44409fdf55c76e9606497942f7ce0752bdaf9bb1fb945739f868b9031c747")
+sha256sums=("c9da1ae3598dfa5e2f47cf86e168e0ec13ba8cb94efd6cc13624b771089859c7")
 _prefix="/usr"
 
 package() {
