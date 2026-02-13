@@ -2,13 +2,20 @@
 pkgname=steamcommunity302
 pkgver=14.0.02
 pkgdate=2026/02
-pkgrel=2
+pkgrel=3
 #epoch=
 pkgdesc="羽翼城制作的Steam、Github等反代加速工具,使用s302命令启动"
 url="https://www.dogfight360.com/blog/18682/"
 arch=('x86_64' 'aarch64')
 license=('CC-BY-NC-4.0')
-optdepends=('zenity' 'kdialog')
+optdepends=(
+  'zenity: Graphical password input for verifying administrator privileges.' 
+  'kdialog: Graphical password input for verifying administrator privileges.'
+  'iptables: Netfilter implementation for DNS redirection.'
+  'nftables: Netfilter implementation for DNS redirection.'
+  'firewalld: Netfilter implementation for DNS redirection.'
+  'ufw: Netfilter implementation for DNS redirection.'
+)
 depends=('nss' 'libnetfilter_queue' 'gtk3' 'glibc' 'gcc-libs' 'zlib' 'sudo' 'xorg-xhost' )
 source_x86_64=(
   "https://www.dogfight360.com/blog/wp-content/uploads/${pkgdate}/steamcommunity_302_Linux_AMD64_V${pkgver}.tar.gz"
