@@ -6,9 +6,9 @@
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 pkgname=extremetuxracer
 pkgver=0.8.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Downhill racing game starring Tux"
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url="https://sourceforge.net/projects/${pkgname}"
 license=(GPL-2.0-or-later)
 depends=(sfml glu freetype2)

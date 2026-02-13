@@ -1,9 +1,10 @@
 pkgbase = extremetuxracer
 	pkgdesc = Downhill racing game starring Tux
 	pkgver = 0.8.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sourceforge.net/projects/extremetuxracer
 	arch = x86_64
+	arch = aarch64
 	license = GPL-2.0-or-later
 	makedepends = csfml
 	depends = sfml
