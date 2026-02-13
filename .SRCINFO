@@ -1,6 +1,6 @@
 pkgbase = pmtiles
 	pkgdesc = Single-file executable tool for working with PMTiles archives
-	pkgver = 1.28.3
+	pkgver = 1.30.0
 	pkgrel = 1
 	url = https://github.com/protomaps/go-pmtiles/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = pmtiles
 	provides = go-pmtiles
 	conflicts = pmtiles
 	conflicts = go-pmtiles
-	source = https://github.com/protomaps/go-pmtiles/releases/download/v1.28.3/go-pmtiles_1.28.3_Linux_x86_64.tar.gz
-	b2sums = ddebbdfe1efd9902cb00b544fc8378dc3f2941aeb5ca58337fe826e9dd3fc3d6dcccda30431a04c68a469de96cb166bcc5c18077329bfb3e8a6566ab89e43da9
+	source = https://github.com/protomaps/go-pmtiles/releases/download/v1.30.0/go-pmtiles_1.30.0_Linux_x86_64.tar.gz
+	b2sums = a246327f97b0bf94b17b16a8caa7b3408e625afeffd0ab9b79753361857fadafeab19b47925b55eb43322f044f17566d1a299d29e916b8f3adcb722a0aac85c4
 
 pkgname = pmtiles
