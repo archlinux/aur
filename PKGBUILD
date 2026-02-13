@@ -1,6 +1,6 @@
 # Maintainer: nelle the@nelle.observer
 
-pkgname=packwitch-manager-git
+pkgname=packwitch-manager
 pkgver=0.1a
 pkgrel=1
 pkgdesc="minecraft modpack management tool"
@@ -17,12 +17,8 @@ makedepends=(
 source=("git+https://codeberg.org/packwitch/packwitch")
 sha256sums=('SKIP')
 
-pkgver() {
-    cd "$srcdir/packwitch"
-    git rev-parse --short HEAD || printf "$(git rev-parse --short HEAD)"
-}
-
 build() {
+    git checkout cb44aa7aa4
     cd "$srcdir/packwitch"
     $srcdir/packwitch/gradlew :manager:assembleDist
 }
