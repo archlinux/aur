@@ -1,6 +1,6 @@
 # Maintainer: rustledger team <rustledger@users.noreply.github.com>
 pkgname=rustledger-bin
-pkgver=0.1.0
+pkgver=0.8.6
 pkgrel=1
 pkgdesc="Fast, pure Rust implementation of Beancount double-entry accounting (pre-built binary)"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/rustled
 
 # Update these checksums when releasing new versions
 # Run: curl -sL <url> | sha256sum
-sha256sums_x86_64=('43058e026e221336587a95d0dd8576ce54757f376435f7a2eb25ae2b8186656e')
-sha256sums_aarch64=('fdeacb608b2bbc11b9ce5865bf79461e256235af451a01ce16edbf326790fb55')
+sha256sums_x86_64=('be300673dc4d5d4bfd65004a45b25390111c319d8023e5b880195e4076dc344f')
+sha256sums_aarch64=('759e74a36642d202d8f122c4b81cb3f7bc043c569a38e6c36d19bd6778b67a63')
 
 package() {
     cd "$srcdir"
