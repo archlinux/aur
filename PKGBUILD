@@ -2,27 +2,29 @@
 
 pkgname=nanosaur
 pkgver=1.4.4
-pkgrel=3
-pkgdesc="Play as a cybernetic dinosaur in this third-person shooter"
+pkgrel=4
+pkgdesc='Play as a cybernetic dinosaur in this third-person shooter'
 arch=(x86_64 aarch64)
-url="https://github.com/jorio/Nanosaur"
+url='https://github.com/jorio/Nanosaur'
 license=(LicenseRef-pangea CC-BY-NC-SA-4.0)
 # License sourced from http://www.pangeasoft.net/nano/nanosource.html
 # Decent guidelines for gaming packages: https://fedoraproject.org/wiki/SIGs/Games/Packaging
 depends=(
-  'glibc'
-  'gcc-libs'
-  'libglvnd'
-  'sdl2'
-  'hicolor-icon-theme'
+  sh
+  glibc
+  libgcc
+  libstdc++
+  libglvnd
+  sdl2-compat
+  hicolor-icon-theme
 )
-makedepends=('git' 'cmake')
+makedepends=(git cmake)
 source=(
   "$pkgname::git+https://github.com/jorio/Nanosaur.git#tag=v$pkgver"
   'github.com-jorio-Pomme::git+https://github.com/jorio/Pomme'
   "$pkgname.desktop"
   "$pkgname.sh"
-  'LICENSE'
+  LICENSE
 )
 sha512sums=('62cb29bf923248736e76a9a91594631575de1b388ac1eec715bdc5594fa96bba86987b47739b2c81a467accc86280221db4c1016870c5c04f49d88e75d42ce31'
             'SKIP'
