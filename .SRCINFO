@@ -34,7 +34,9 @@ pkgbase = rofi-git
 	depends = xcb-util-wm
 	depends = xcb-util-xrm
 	provides = rofi
+	provides = rofi-wayland
 	conflicts = rofi
+	replaces = rofi-wayland
 	source = git+https://github.com/DaveDavenport/rofi#branch=next
 	source = git+https://github.com/sardemff7/libgwater
 	source = git+https://github.com/sardemff7/libnkutils
