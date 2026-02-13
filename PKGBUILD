@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=the-honkers-railway-launcher
-pkgver=1.14.2
+pkgver=1.14.3
 pkgrel=1
 pkgdesc="The Honkers Railway launcher for Linux with automatic patching and telemetry disabling"
 arch=('x86_64')
@@ -14,12 +14,12 @@ optdepends=(
 	 'gamescope: Micro-Compositor'
 	 'gamemode: CPU Scaling Control')
 source=("$url/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('df5699f4a08d5e33efb13f6e4c8097238fd5e91ccabbcb574375fcf89a24ef3c')
+sha256sums=('ce8d256f817591a0de4d07401766ee34312d0bd2d130f356913ac3bbcf875da2')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
-    	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
