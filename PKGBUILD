@@ -3,14 +3,14 @@ pkgver=1.58
 pkgrel=1
 pkgdesc="Fan control for Dell laptops"
 arch=('any')
-url="https://github.com/Wer-Wolf"
+url="https://github.com/Wer-Wolf/$pkgname"
 license=('GPL3')
 depends=('tcl' 'tcllib')
 makedepends=('meson')
 optdepends=('acpi: for i8kmon to read the battery status')
 backup=("etc/$pkgname/i8kmon.conf"
         "etc/modprobe.d/dell-smm-hwmon.conf")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Wer-Wolf/i8kutils/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 
 sha256sums=('9ef28ca21a8f9ba41b74893143d25540cd3bba949a6b214563eda5740bab5be3')
 
