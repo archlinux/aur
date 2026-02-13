@@ -9,7 +9,7 @@ url="https://github.com/noctalia-dev/noctalia-shell"
 license=('MIT')
 makedepends=('git')
 depends=(
-  'quickshell'
+  'quickshell-git'
   'imagemagick'
   'brightnessctl'
   'ffmpeg'
