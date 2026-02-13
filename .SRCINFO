@@ -1,8 +1,8 @@
 pkgbase = flips-git
 	pkgdesc = A patcher for IPS and BPS files (Git version)
-	pkgver = r183.07162ca
+	pkgver = r201.e7459ca
 	pkgrel = 1
-	url = https://github.com/Alcaro/Flips
+	url = https://git.disroot.org/Sir_Walrus/Flips
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
@@ -17,7 +17,7 @@ pkgbase = flips-git
 	depends = hicolor-icon-theme
 	depends = pango
 	depends = zlib
-	source = git+https://github.com/Alcaro/Flips.git
+	source = git+https://git.disroot.org/Sir_Walrus/Flips.git
 	sha256sums = SKIP
 
 pkgname = flips-git

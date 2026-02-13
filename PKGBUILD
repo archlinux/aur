@@ -2,11 +2,11 @@
 # Contributor:  benutzer193 <registerbn+arch a_t gmail d_ot com>
 
 pkgname=flips-git
-pkgver=r183.07162ca
+pkgver=r201.e7459ca
 pkgrel=1
 pkgdesc="A patcher for IPS and BPS files (Git version)"
 arch=(x86_64)
-url="https://github.com/Alcaro/Flips"
+url="https://git.disroot.org/Sir_Walrus/Flips"
 license=(GPL-3.0-or-later)
 depends=(
   at-spi2-core
@@ -22,7 +22,7 @@ depends=(
   zlib
 )
 makedepends=(git)
-source=("git+https://github.com/Alcaro/Flips.git")
+source=("git+https://git.disroot.org/Sir_Walrus/Flips.git")
 sha256sums=(SKIP)
 
 pkgver() {
