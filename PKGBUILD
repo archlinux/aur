@@ -1,10 +1,11 @@
-# Maintainer: Deposite Pirate <dpirate at metalpunks dot info>
+# Maintainer: Sich <little_sich@tuta.io>
+# Contributor: Deposite Pirate <dpirate at metalpunks dot info>
 #
 # Upstream: https://git.metalpunks.info/arch-ports
 
 _pkgname=ncgopher
 pkgname=ncgopher-git
-pkgver=v0.4.0.r70.g12de57a
+pkgver=v0.8.0.r10.g671b360
 pkgrel=1
 pkgdesc='A gemini and gopher console client'
 arch=('i686' 'x86_64')
@@ -14,6 +15,7 @@ depends=('ncurses' 'openssl' 'sqlite')
 makedepends=('git' 'rust' 'cargo')
 source=("${_pkgname}::git+${url}")
 sha256sums=('SKIP')
+options=(!lto)
 
 pkgver() {
   cd "${_pkgname}"
