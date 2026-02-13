@@ -1,8 +1,8 @@
-# Maintainer: Sébastien Luttringer
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=quagga
 pkgver=1.2.4
-pkgrel=7
+pkgrel=10
 pkgdesc='BGP/OSPF/ISIS/RIP/RIPNG routing daemon suite'
 arch=('x86_64')
 url='https://www.quagga.net'
@@ -11,6 +11,7 @@ depends=('libcap' 'libnl' 'net-snmp' 'readline' 'ncurses' 'perl' 'c-ares' 'opens
 options=('!buildflags')
 validpgpkeys=('C1B5C3ED3000F2BFCD66F3B76FE57CA8C1A4AEA6') # Quagga Release Signing Key
 source=("https://github.com/Quagga/quagga/releases/download/quagga-$pkgver/quagga-$pkgver.tar.gz"{,.asc}
+        'fixes.patch'
         'quagga.sysusers'
         'quagga.tmpfiles'
         'bgpd.service'
@@ -23,6 +24,7 @@ source=("https://github.com/Quagga/quagga/releases/download/quagga-$pkgver/quagg
         'zebra.service')
 sha512sums=('3e72440bcccfd3c1a449a62b7ff8623441256399a2bee0a39fa0a19694a5a78ac909c5c2128a24735bc034ea8b0811827293b480a2584a3a4c8ae36be9cf1fcd'
             'SKIP'
+            '51cef74e6403ca414ecc2ed71a5101021541dcb04089f77a6f14d6544ce08e54cfa829c950246de575279c8d45cdd7d436911dcdf301980c13ca49f24ad917aa'
             '722ef24de4834ab80ebdace0de4aa50ea76d2d4ecc5c51092f1975fd08a9b187986058eeaa2242fe6f4a3967f08806cba8070f2e318bfc9193cb0e83b7464a43'
             '82938833f885985fdd3ecb2683e0b7dec853fbe1938f5778fcde0efb58dd329603f32b1e9ce53e6da8c1219c5ede74c0dbfbc98da150227cc6e1020a4e1ca556'
             '912215eaf757a2acb8fa55bac430805f98be0e9ed12b03a5eae71df8931bdf322d7ba26729bfc2d780de5399da1a43e9b5061ded0fbe1bfce8d8107fae9d4830'
@@ -41,7 +43,7 @@ prepare() {
   for filename in "${source[@]}"; do
     if [[ "$filename" =~ \.patch$ ]]; then
       msg2 "Applying patch ${filename##*/}"
-      patch -p1 -N -i "$srcdir/${filename##*/}"
+      patch -p2 -z .orig -N -i "$srcdir/${filename##*/}"
     fi
   done
   :
@@ -49,7 +51,7 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
-  CFLAGS+=' -fcommon' # https://wiki.gentoo.org/wiki/Gcc_10_porting_notes/fno_common
+  CFLAGS+=' -fcommon -Wno-error=declaration-after-statement' # https://wiki.gentoo.org/wiki/Gcc_10_porting_notes/fno_common
   ./configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
@@ -68,6 +70,8 @@ build() {
     --enable-group=quagga \
     --enable-configfile-mask=0640 \
     --enable-logfile-mask=0640
+  # Fight unused direct deps
+  sed -i -e "s| -shared | $LDFLAGS\0 |g" -e "s|    if test \"\$export_dynamic\" = yes && test -n \"\$export_dynamic_flag_spec\"; then|      func_append compile_command \" $LDFLAGS\"\n      func_append finalize_command \" $LDFLAGS\"\n\0|" libtool
   make
 }
 
