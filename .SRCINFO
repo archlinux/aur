@@ -1,15 +1,15 @@
 pkgbase = mailpit-bin
 	pkgdesc = Web and API based SMTP testing
-	pkgver = 1.29.0
+	pkgver = 1.29.1
 	pkgrel = 1
 	url = https://github.com/axllent/mailpit
 	arch = x86_64
 	license = MIT
 	optdepends = systemd
 	conflicts = mailpit
-	source = https://github.com/axllent/mailpit/releases/download/v1.29.0/mailpit-linux-amd64.tar.gz
+	source = https://github.com/axllent/mailpit/releases/download/v1.29.1/mailpit-linux-amd64.tar.gz
 	source = mailpit.service
-	sha256sums = 80cb7a6cc0287dca5426ab250e60a037f53bbec0f7e1dc1413ab03460172c9ac
+	sha256sums = e53c9f29c208877e9a8d27de7466ee4e325bf534727d080d5ef517f661d48907
 	sha256sums = 602494cc3d28d58fa430ec3c53fd66e694db9faa87e98e45effe00a844affc4b
 
 pkgname = mailpit-bin
