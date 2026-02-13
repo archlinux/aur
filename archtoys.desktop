@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Archtoys
+Comment=System-wide color picker
+Exec=archtoys
+Icon=archtoys
+Terminal=false
+StartupWMClass=archtoys-bin
+Categories=Graphics;Utility;
