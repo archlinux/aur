@@ -1,0 +1,21 @@
+pkgbase = python-pyqrcode-git
+	pkgdesc = Python 3 module to generate QR Codes
+	pkgver = 1.2.1.r265.674a77b
+	pkgrel = 6
+	url = https://github.com/mnooner256/pyqrcode
+	arch = any
+	license = BSD3
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-pip
+	makedepends = python-coverage
+	makedepends = python-wheel
+	makedepends = python-pypandoc
+	depends = bash
+	depends = python
+	provides = python-pyqrcode
+	conflicts = python-pyqrcode
+	source = git+https://github.com/mnooner256/pyqrcode.git
+	sha256sums = SKIP
+
+pkgname = python-pyqrcode-git
