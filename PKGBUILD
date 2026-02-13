@@ -7,7 +7,7 @@
 _pkgbase=gdal
 pkgbase=gdal-libkml-filegdb
 pkgname=(gdal-libkml-filegdb python-gdal-libkml-filegdb)
-pkgver=3.12.1
+pkgver=3.12.2
 pkgrel=1
 provides=("gdal=${pkgver}")
 pkgdesc="A translator library for raster and vector geospatial data formats (with libkml and filegdb support)"
@@ -24,10 +24,12 @@ makedepends=(cmake opencl-headers python-setuptools python-numpy
 # ogdi
 changelog=$_pkgbase.changelog
 source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz)
-b2sums=('5ab23a8d52411561d47cef8b987d0f06916047823380acb4c2993f69d0fccd3b0360809ff47b8a99132e912fc7ab312498e7ad4ac6be5db5ad3c0dcc540fc2a8')
+b2sums=('89d0bb90436777cd2a50a9604f34eeee2c02775a85f7dcc7fb276a87db49b5caa0e6f3893663be11ec7ba78eb5da5d29c560e9edf7caa911e04c7121fabb9bd2')
 
 build() {
+    alias python3=python3.14
   #-DCMAKE_CXX_STANDARD=20 \
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   cmake -B build -S $_pkgbase-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_IPO=ON \
@@ -82,6 +84,7 @@ build() {
 
 package_gdal-libkml-filegdb () {
   conflicts=('gdal')
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   depends=(proj blosc crypto++ curl libdeflate expat libfreexl geos libgeotiff
            giflib libjpeg-turbo json-c xz libxml2 lz4 unixodbc ocl-icd openssl
            pcre2 libpng qhull libspatialite sqlite libtiff xerces-c zlib zstd libaec libkml-git filegdb-api)
