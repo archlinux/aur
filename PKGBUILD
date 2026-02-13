@@ -1,7 +1,7 @@
 # Maintainer: Sheikh Limon <sheikhlimon404@gmail.com>
 
 pkgname=goose-desktop
-pkgver=1.23.2
+pkgver=1.24.0
 pkgrel=1
 pkgdesc="Goose Desktop (built from source) - an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM"
 arch=("x86_64")
@@ -15,24 +15,17 @@ makedepends=(
   "just"
 )
 
-# TODO: Remove tailwind-fix.patch when upstream releases include PR #6917
-
 # LTO is broken for dependency ring https://github.com/briansmith/ring/issues/1444
 options=("!lto" "!debug")
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/block/goose/archive/refs/tags/v${pkgver}.tar.gz"
-  "tailwind-fix.patch"
 )
-b2sums=('ea06c2292a60d820895bcc88bd93589f7e2f7ca5c0efddf12b00e374758bc9de98b459e9a7a298ad8eae25fee49f75e1183c5dd04aaef40a60b1f7b30a021edd'
-        '46d01b3c652405ccdbb79889c07e2efe5b50dca4bc930abbe192be2e0f7feb6eeb69b813905524507b7d6227d0da697c15d00cd54fcdee14d837a95de2d4d13b')
+b2sums=('a8d94653e2b931d5858119f4918ecc4bbabb1056fcd67056c492ffa84b499959f9347952309046839086078882a756a2c2d6953098b5934dcc195cb7001a5dce')
 conflicts=("goose-desktop-bin")
 provides=("goose-desktop")
 
 prepare() {
   cd "goose-${pkgver}"
-
-  # Fix Tailwind scan in tarball releases
-  patch -p1 < "../tailwind-fix.patch"
 
   # Hide menu bar on Linux
   sed -i '/useContentSize: true/a\    autoHideMenuBar: process.platform === '\''linux'\'',' \
@@ -47,7 +40,7 @@ build() {
   cd ui/desktop
 
   # Ignore husky prepare script
-  npm install --ignore-scripts --no-audit
+  npm install --quiet --ignore-scripts --no-audit
 
   npx electron-forge package
 }

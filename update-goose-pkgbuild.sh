@@ -31,7 +31,7 @@ CURRENT_VERSION=$(grep '^pkgver=' "$PKGBUILD_FILE" | cut -d'=' -f2)
 echo -e "${GREEN}Current version: ${YELLOW}${CURRENT_VERSION}${NC}"
 
 if [[ "$LATEST_VERSION" == "$CURRENT_VERSION" ]]; then
-    echo -e "${YELLOW}Already up to date! Refreshing checksums...${NC}"
+    echo -e "${YELLOW}Already up to date!${NC}"
 else
     echo -e "${YELLOW}Updating ${CURRENT_VERSION} → ${LATEST_VERSION}${NC}"
 fi
