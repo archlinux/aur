@@ -1,6 +1,6 @@
 pkgbase = odzip
 	pkgdesc = Minimal file compression using LZ77 hash-chain matching and Huffman coding
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/odpay/odzip
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = odzip
 	makedepends = cmake
 	depends = glibc
 	provides = odz
-	source = odzip-1.0.0.tar.gz::https://github.com/odpay/odzip/archive/v1.0.0.tar.gz
-	sha256sums = 255e7427932dae79cc938c3e876ec8386d079a6bda902c1cb6dcff3728a75131
+	source = odzip-1.0.1.tar.gz::https://github.com/odpay/odzip/archive/v1.0.1.tar.gz
+	sha256sums = 5dee83ba6471003a9843b69c8df4bb0631a508a5bbbd238825cb89e05138f230
 
 pkgname = odzip
