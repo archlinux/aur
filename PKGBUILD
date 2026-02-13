@@ -1,7 +1,7 @@
 # Maintainer: lazywalker <lazywalkerz@gmail.com>
 
 pkgname=rgrc
-pkgver=0.6.9.r0.g095292e
+pkgver=0.6.11.r0.g0567ff5
 pkgrel=1
 pkgdesc='Rusty Generic Colouriser - like grc but faster and with more features'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -15,7 +15,7 @@ makedepends=(
   cargo
   git
 )
-checkdepends=(cargo
+checkdepends=(cargo)
 source=("${pkgname}::git+${url}#branch=master")
 sha256sums=('SKIP')
 
@@ -62,7 +62,6 @@ package() {
 
   # Install binary and config files
   install -Dm 0755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin/"
-  install -Dm 0755 "target/release/rgrv" -t "${pkgdir}/usr/bin/"
 	install -Dm 0644 etc/rgrc.conf -t "${pkgdir}/etc/"
 	install -Dm 0644 share/conf.* -t "${pkgdir}/usr/share/${pkgname}/"
 
