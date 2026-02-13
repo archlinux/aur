@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=lpSolveAPI
-_pkgver=5.5.2.0-17.14
+_pkgver=5.5.2.0-17.15
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,9 +16,9 @@ depends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "system-libs.patch")
-md5sums=('d514d1b39b62abfae333ce94ce19d26b'
+md5sums=('70ff8cb98049cc5cffcf99a2691fd26d'
          'b05adde5cc4292eea42da677062a3c57')
-b2sums=('d64a919402158526851f4f3a676e380b521c0fdb164d4c393645aa24d2ba2cda696b1e25d18dcff3da9b436d95dcb6c63b380bef9e15971a13da64b38df06dec'
+b2sums=('f30df52f0a909d4b4723277ff60951350c147b96484afacf5ea35ae73bdb711db8a9a4557011862a554f7aa24b06e6ed99472ee586a106b3aa08a686cd66b885'
         'b50c98ff88ad664a9cad84c1ea8d8a277d193845b0677566d14d6b8b82522d15667c5b97e70ae1244d2ecd06a9691e924393c4d23da189bfb01224c81f0b7ed8')
 
 prepare() {
