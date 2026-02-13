@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/noctalia-dev/noctalia-shell"
 license=('MIT')
 depends=(
-  'quickshell'
+  'quickshell-git'
   'imagemagick'
   'brightnessctl'
   'ffmpeg'
