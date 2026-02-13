@@ -1,6 +1,6 @@
 pkgname=vigaphone-bin
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 options=('!strip' '!debug')
 groups=('pro-audio')
 pkgdesc="ViGAPhone is a MIDI Physical‑Modeling Synthesizer Lab, Sound and Timbre Analyzer, Instrument Tuner and more..."
@@ -58,7 +58,7 @@ package() {
     #- cp -r configuration Instrument midi wav wavCapture run.vigaphone.tsv "$pkgdir/usr/share/vigaphone/"
 	# Données utilisateur (tout sauf ce qui est déjà installé ailleurs)
 	# on garde installOnLinuxUser pour le script d'installation dans le $HOME
-	rsync -a --chmod=D755,F644 --exclude=ViGAPhone --exclude=locale $(SOURCE)/ $(PKGDIR)/usr/share/vigaphone/
+	rsync -a --chmod=D755,F644 --exclude=ViGAPhone --exclude=locale * $pkgdir/usr/share/vigaphone/
 
 }
 
