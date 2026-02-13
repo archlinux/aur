@@ -1,0 +1,11 @@
+post_install() {
+    systemctl reload dbus 2>/dev/null || true
+}
+
+post_upgrade() {
+    systemctl reload dbus 2>/dev/null || true
+}
+
+post_remove() {
+    systemctl reload dbus 2>/dev/null || true
+}
