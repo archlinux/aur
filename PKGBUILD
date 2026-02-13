@@ -6,7 +6,7 @@ _appname=${_pkgname}
 pkgname=${_pkgname}-bin
 pkgdesc="A Beautiful TUI YouTube Downloader app"
 
-pkgver=0.7.7
+pkgver=0.7.9
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -24,8 +24,8 @@ depends=('yt-dlp' 'ffmpeg')
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('8cff6ac83d7b71fe3f12ac810150294f029728893468ea6da08e1c41fc70894a')
-sha256sums_aarch64=('2fbfc6c35d041db1beb0dcb6240856141968d0bdf1710a6550402acff197c50d')
+sha256sums_x86_64=('42b7227c9a8d06087fc7aa15699081b51c7eef0af897604cd0bc2153011c646c')
+sha256sums_aarch64=('36fad8ce0acb5678dce52a79ac533137f3c823fdfff0724a5ad06d1efb6ec120')
 
 
 package() {
