@@ -51,12 +51,15 @@ prepare() {
 build() {
   cd "$pkgname"
 
-  cmake \
-    -S . \
-    -B build \
-    -D CMAKE_BUILD_TYPE=None \
-    -D CMAKE_INSTALL_PREFIX=/usr \
+  local cmake_options=(
+    -B build
+    -S .
     -W no-dev
+    -D CMAKE_BUILD_TYPE=None
+    -D CMAKE_INSTALL_PREFIX=/usr
+  )
+
+  cmake "${cmake_options[@]}"
 
   cmake --build build
 }
