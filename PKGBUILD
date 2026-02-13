@@ -2,7 +2,7 @@
 
 pkgname="museeks-bin"
 _pkgname="museeks"
-pkgver="0.23.1"
+pkgver="0.23.2"
 pkgrel="1"
 pkgdesc="A lightweight and cross-platform music player."
 arch=("x86_64")
@@ -12,9 +12,9 @@ depends=("gtk2" "cairo" "freetype2" "fontconfig" "nss" "alsa-lib" "ttf-font" "we
 provides=("museeks")
 conflicts=("museeks" "museeks-git")
 
-sha256sums=("ef7a246b4dc6165a50ce2e76d55467d1e0fdbef23218cc2ae9826c27f106d460")
+sha256sums=("c149bd80aa69ffda0137a48add61c2076e89232c54539f497d2f3eb32951e01a")
 
-source=("https://github.com/martpie/museeks/releases/download/0.23.1/Museeks-0.23.1-1.x86_64.rpm")
+source=("https://github.com/martpie/museeks/releases/download/0.23.2/Museeks-0.23.2-1.x86_64.rpm")
 
 package() {
   cp -a $srcdir/usr $pkgdir/
