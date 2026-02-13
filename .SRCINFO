@@ -10,11 +10,10 @@ pkgbase = tanin-git
 	depends = alsa-lib
 	depends = openssl
 	depends = gcc-libs
+	depends = opus
 	optdepends = yt-dlp: for downloading custom sounds from YouTube
 	provides = tanin
-	conflicts = tanin
-	conflicts = tanin-bin
-	source = git+https://github.com/AnonMiraj/Tanin.git
+	source = tanin-git::git+https://github.com/AnonMiraj/Tanin.git
 	sha256sums = SKIP
 
 pkgname = tanin-git
