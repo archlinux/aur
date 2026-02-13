@@ -1,7 +1,7 @@
 # Maintainer: Eddie Brunstedt <eddie.brunstedt@protonmail.com>
 
 pkgname=ord
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Process text through customizable LLM templates."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc' 'gcc-libs' 'openssl')
 makedepends=('git' 'rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/EddieBrunstedt/ord/-/archive/$pkgver/ord-$pkgver.tar.gz")
-sha256sums=('b681d8e62839ff7fc2723f3f913f0d47f65eadbe97e10c73c23e979b85aa9961')
+sha256sums=('7be9fa8571c3ba014593c5bc7770f59dbc9b7bc82d47dafc68e3f4a0e301677c')
 
 build() {
     cd "$pkgname-$pkgver"
