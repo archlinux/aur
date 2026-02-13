@@ -1,15 +1,27 @@
 pkgbase = ctrlr
-	pkgdesc = Control any midi enabled hardware: synthesizers, drum machines, samplers, effects. Create custom user interfaces. Host them as VST or AU plugins in your favorite daws.
-	pkgver = 5.4.16
-	pkgrel = 3
-	url = https://ctrlr.org
+	pkgdesc = Control any MIDI enabled hardware: synthesizers, drum machines, samplers, effects. Create custom user interfaces. Host them as VST3 plugins in your favorite DAWs.
+	pkgver = 5.7.1
+	pkgrel = 1
+	url = https://github.com/RomanKubiak/ctrlr
 	arch = x86_64
 	groups = pro-audio
 	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = webkit2gtk
+	makedepends = zlib
+	depends = alsa-lib
+	depends = freetype2
+	depends = libx11
+	depends = libxcursor
+	depends = libxinerama
+	depends = libxrandr
 	depends = binutils
+	depends = systemd-libs
 	provides = ctrlr
 	conflicts = ctrlr
-	source = Ctrlr-x86_64-5.4.16.sh::https://ctrlr.org/nightly/Ctrlr-x86_64-5.4.16.sh
-	sha256sums = 34d0786a8911650dd47e4c139fdcfd179d85167bb1f7307b418d0cbf8e63e087
+	source = ctrlr::git+https://github.com/RomanKubiak/ctrlr.git#commit=8aa00d82127acda42ad9ac9b7b479461e9436aa4
+	sha256sums = SKIP
 
 pkgname = ctrlr

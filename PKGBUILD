@@ -1,48 +1,62 @@
-# Maintainer: Nil Geisweiller <ngeiswei at the giant g>
+# Maintainer: Seth Pendergrass <seth at pendergrass dot dev>
+# Contributor: Nil Geisweiller <ngeiswei at the giant g>
 
 pkgname=ctrlr
-pkgver=5.4.16
-pkgrel=3
-epoch=
-pkgdesc="Control any midi enabled hardware: synthesizers, drum machines, samplers, effects.  Create custom user interfaces.  Host them as VST or AU plugins in your favorite daws."
+pkgver=5.7.1
+pkgrel=1
+pkgdesc="Control any MIDI enabled hardware: synthesizers, drum machines, samplers, effects. Create custom user interfaces. Host them as VST3 plugins in your favorite DAWs."
 arch=('x86_64')
-url="https://ctrlr.org"
+url="https://github.com/RomanKubiak/ctrlr"
 license=('BSD')
 groups=('pro-audio')
-depends=('binutils')
-makedepends=()
-checkdepends=()
-optdepends=()
+depends=('alsa-lib' 'freetype2' 'libx11' 'libxcursor' 'libxinerama' 'libxrandr' 'binutils' 'systemd-libs')
+makedepends=('git' 'cmake' 'gcc' 'webkit2gtk' 'zlib')
 provides=('ctrlr')
 conflicts=('ctrlr')
-source=("Ctrlr-${arch}-${pkgver}.sh"::"https://ctrlr.org/nightly/Ctrlr-${arch}-${pkgver}.sh")
-sha256sums=('34d0786a8911650dd47e4c139fdcfd179d85167bb1f7307b418d0cbf8e63e087')
-validpgpkeys=()
+source=("${pkgname}::git+https://github.com/RomanKubiak/ctrlr.git#commit=8aa00d82127acda42ad9ac9b7b479461e9436aa4")
+sha256sums=('SKIP')
 
 prepare() {
-	chmod a+x "Ctrlr-${arch}-${pkgver}.sh"
+	cd "${pkgname}"
+
+	# Initialize submodules (Panels)
+	git submodule update --init --recursive
+
+	# Extract bundled boost headers (shipped as zip)
+	cd Source/Misc/boost
+	unzip -qo boost.zip
+
+	cd "${srcdir}/${pkgname}"
+
+	# Remove VST2 SDK references (proprietary, unavailable)
+	sed -i '/juce_set_vst2_sdk_path/d' CMakeLists.txt
+	sed -i 's/FORMATS VST3 VST AU Standalone/FORMATS VST3 Standalone/' CMakeLists.txt
+
+	# Fix bfd_copy_private_section_data for binutils >= 2.44 (now requires 5 args)
+	sed -i 's/bfd_copy_private_section_data(ihandle, iscn, ohandle, oscn)/bfd_copy_private_section_data(ihandle, iscn, ohandle, oscn, NULL)/g' \
+		Source/Misc/libr-bfd.c
 }
 
 build() {
-	./"Ctrlr-${arch}-${pkgver}.sh"
+	cd "${pkgname}"
+	cmake -B build \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_CXX_FLAGS="-w"
+	cmake --build build -j2
 }
 
 package() {
-	PREFIX="${pkgdir}/usr"
-	BINPATH="${PREFIX}/bin"
-	LIBPATH="${PREFIX}/lib"
-	VSTPATH="${LIBPATH}/vst"
+	cd "${pkgname}"
 
-	# Create local folders and copy binaries
-	mkdir -p "${BINPATH}"
-	mkdir -p "${VSTPATH}"
-	cp "Ctrlr/Ctrlr-${arch}" "${BINPATH}/Ctrlr"
-	cp "Ctrlr/libCtrlr-VST-${arch}.so" "${VSTPATH}/Ctrlr.so"
+	# Standalone binary
+	install -Dm755 build/ctrlr_artefacts/Release/Standalone/ctrlr \
+		"${pkgdir}/usr/bin/ctrlr"
 
-	# Create symbolic link libbfd-2.24-system.so, used by Ctrlr,
-	# to the last version of libbfd.so
-	CTRLR_LIBBFD_LINK="libbfd-2.24-system.so"
-	LIBBFD_PATH=$(ls /usr/lib/libbfd-?.??*.so | sort -r | head -n1)
-	LIBBFD_NAME=$(basename ${LIBBFD_PATH})
-	ln -s "${LIBBFD_NAME}" "${LIBPATH}/${CTRLR_LIBBFD_LINK}"
+	# VST3 plugin
+	install -d "${pkgdir}/usr/lib/vst3"
+	cp -r build/ctrlr_artefacts/Release/VST3/ctrlr.vst3 \
+		"${pkgdir}/usr/lib/vst3/"
+
+	# License
+	install -Dm644 LICENSE-BSD "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
