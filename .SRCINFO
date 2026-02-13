@@ -1,0 +1,14 @@
+pkgbase = lingora
+	pkgdesc = localization management TUI to analyse fluent translation files
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/nigeleke/lingora
+	arch = x86_64
+	license = MIT
+	makedepends = cargo-nightly
+	depends = gcc-libs
+	depends = glibc
+	source = https://github.com/nigeleke/lingora/archive/v0.4.2/lingora-0.4.2.tar.gz
+	sha256sums = 02223c77d463c19696d994c0a925dd6cc7ab6d17ac8442fc616862437ebc6da8
+
+pkgname = lingora

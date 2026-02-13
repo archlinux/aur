@@ -1,0 +1,4 @@
+[lingora]
+source = "git"
+git = "https://github.com/nigeleke/lingora.git"
+prefix = "v"
