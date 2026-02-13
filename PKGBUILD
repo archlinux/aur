@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Wright <jon@than.io>
 
 pkgname=boundary-bin
-pkgver=0.21.0
+pkgver=0.21.1
 pkgrel=1
 pkgdesc="Network resources access controller"
 arch=('x86_64')
@@ -21,7 +21,7 @@ sha256sums=('7fed68123ae0ef4571e22968824ea4f6a9adf1585ef6804bb1023190c1527a9b'
             'd4616a93ee3bb1a503d34ad49a36ead7d7a070efb9ee9eb2ccbdd59d70c17cf2'
             '64864d13c5cbe2fc29ea6cb8311d43d20abf3080fa3d7fc6c57dd5375954d8d6'
             '367519191efd5764f25d8e170d9eebc880802f563f8347fc2688d9386f950222')
-sha256sums_x86_64=('434d569818622b77b2849f20fe64992240df7d3cffba97e65d6913560a0c960a')
+sha256sums_x86_64=('ab9f2b2a7624ecd351a9e6f3ef85e61e37eaa3665a6e38a4036b3486e925f8b4')
 options=("!strip")
 
 package() {
