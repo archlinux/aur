@@ -1,7 +1,7 @@
 # Maintainer: MiguVT <contacto@miguvt.com>
 pkgname=freesmlauncher-bin
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft launcher with offline accounts support (binary release)"
 arch=(x86_64 aarch64)
 url='https://freesmlauncher.org/'
