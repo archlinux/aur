@@ -3,7 +3,7 @@
 _gpuarch=gfx110X
 pkgname="rocm-nightly-${_gpuarch,,}-bin"
 pkgver=7.12.0a20260212
-pkgrel=1
+pkgrel=2
 pkgdesc="AMD ROCm Nightly Release (${_gpuarch}) - Monolithic Install"
 arch=('x86_64')
 url="https://rocm.nightlies.amd.com"
@@ -68,6 +68,7 @@ package() {
 export ROCM_PATH=/opt/rocm
 export ROCM_HOME=/opt/rocm
 export HIP_PATH=/opt/rocm
+export HIP_PLATFORM=amd
 export PATH=\$ROCM_PATH/bin:\$PATH
 export LD_LIBRARY_PATH=\$ROCM_PATH/lib:\$LD_LIBRARY_PATH
 EOF
