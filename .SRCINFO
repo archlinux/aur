@@ -1,19 +1,19 @@
 pkgbase = python-limits
 	pkgdesc = utilities to implement rate limiting
-	pkgver = 4.0.1
+	pkgver = 5.8.0
 	pkgrel = 1
 	url = https://github.com/alisaifee/limits/
 	arch = any
 	license = MIT
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python-deprecated
 	depends = python-typing_extensions
 	depends = python-packaging
-	depends = python-setuptools
-	depends = python-importlib-resources
-	source = https://files.pythonhosted.org/packages/source/l/limits/limits-4.0.1.tar.gz
-	sha256sums = a54f5c058dfc965319ae3ee78faf222294659e371b46d22cd7456761f7e46d5a
+	source = https://files.pythonhosted.org/packages/source/l/limits/limits-5.8.0.tar.gz
+	sha256sums = c9e0d74aed837e8f6f50d1fcebcf5fd8130957287206bc3799adaee5092655da
 
 pkgname = python-limits
