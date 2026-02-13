@@ -9,23 +9,16 @@ url='https://github.com/jorio/ottomatic'
 license=(CC-BY-NC-SA-4.0)
 depends=('sdl2' 'glu' 'hicolor-icon-theme')
 makedepends=('git' 'cmake')
-_commit='197b5d45869124c29a8161d863f186f27cf4db0f'
 source=(
-  "$pkgname::git+$url.git#commit=$_commit"
+  "$pkgname::git+$url.git#tag=$pkgver"
   'github.com-jorio-Pomme::git+https://github.com/jorio/Pomme'
   "$pkgname.desktop"
   "$pkgname.sh"
 )
-b2sums=('SKIP'
+b2sums=('4516ac177cf1bf53af369ad68d126e41c8ecb7f5372605603fca155402f8bc36904e3208b9bd52af86682fa60bfd45ec6aded36902f4a6e8eb34a2b579698ecd'
         'SKIP'
         'b3452a8f143877ab688212ca9bfe4cdcd174667298fedd7cdcba4d7b4a1c49bf86bca0e456bcd2c64039cc322c540a583f9ff2e820e3ef38c0ef15984c348ae8'
-        'c8f7a247ba04156ee8b07ddcdcadcd75946f24347cbdc82363a02f8267a64db1f5b2a1326a1019d8d31c6697a7e5da409bdc52d6c28a0ecca7f9b8372933050c')
-
-pkgver() {
-  cd "$pkgname"
-
-  git describe --tags | sed 's/^v//'
-}
+        '6b1657ade2b992fdd190daedd861e2579abfe6e1d6adfe5a77cbced22571363167a23088fd76acd5b0b9da7cb771d5712f64ce7c2f76f19b59818ff7cf272cac')
 
 prepare() {
   cd "$pkgname"
