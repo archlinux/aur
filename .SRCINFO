@@ -1,0 +1,16 @@
+pkgbase = mmdr
+	pkgdesc = Fast Mermaid diagram renderer written in Rust
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/1jehuang/mermaid-rs-renderer
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	depends = gcc-libs
+	depends = glibc
+	options = !debug
+	source = mmdr-0.2.0.tar.gz::https://github.com/1jehuang/mermaid-rs-renderer/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = b512e5e7f259a9efe1ba968a28acbbcf144adc6f0f1423758401636de64e807e
+
+pkgname = mmdr
