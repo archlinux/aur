@@ -1,6 +1,6 @@
 # Maintainer: unicxrn
 pkgname=xerahs-git
-pkgver=r1161.803c2c7
+pkgver=r1246.3196b02
 pkgrel=1
 pkgdesc="Cross-platform screen capture and file sharing tool (ShareX port) built with Avalonia UI"
 arch=('x86_64')
@@ -25,7 +25,7 @@ provides=('xerahs')
 conflicts=('xerahs')
 source=(
     "xerahs::git+https://github.com/ShareX/XerahS.git"
-    "xerahs-editor::git+https://github.com/ShareX/XerahS.Editor.git"
+    "xerahs-editor::git+https://github.com/ShareX/ImageEditor.git#branch=main"
     "xerahs.desktop"
     "xerahs.sh"
 )
@@ -42,14 +42,10 @@ pkgver() {
 }
 
 prepare() {
-    # XerahS.Editor needs to be a sibling directory named XerahS.Editor
-    # The solution references ../XerahS.Editor/src/XerahS.Editor/XerahS.Editor.csproj
-    ln -sfn "$srcdir/xerahs-editor" "$srcdir/XerahS.Editor"
-
-    # Upstream submodule ref is stale - checkout the branch that has
-    # NavigateRequested and ShowMenuBar needed by XerahS.UI at HEAD
-    cd "$srcdir/xerahs-editor"
-    git checkout integrate/feature-jx-018-025-manual
+    # ImageEditor is a submodule inside the XerahS tree; git clone creates an
+    # empty directory for it, so remove it first then symlink our separate clone
+    rm -rf "$srcdir/xerahs/ImageEditor"
+    ln -sfn "$srcdir/xerahs-editor" "$srcdir/xerahs/ImageEditor"
 }
 
 build() {
