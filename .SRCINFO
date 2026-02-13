@@ -10,6 +10,7 @@ pkgbase = packwitch-manager-bin
 	provides = packwitch-manager
 	conflicts = packwitch-manager
     source = packwitch-manager-bin-0.1a.tar::https://codeberg.org/packwitch/packwitch/releases/download/0.1a/manager-0.1a.tar
-	sha256sums = SKIP
+	sha256sums = sha256sums=('2b1b8d1c00a4bafcac4fad78cb84506224a843ccb54c440df7bac21e0cb638fe')
+
 
 pkgname = packwitch-manager-bin
