@@ -1,10 +1,10 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=system-monitoring-center
-pkgver=2.26.3
+pkgver=3.0.0
 pkgrel=1
-pkgdesc="Multi-featured system monitor."
+pkgdesc="Multi-featured system monitor"
 arch=('any')
-url="https://github.com/mamolinux/system-monitoring-center"
+url="https://github.com/hakandundar34coding/system-monitoring-center"
 license=('GPL-3.0-or-later')
 depends=(
   'dmidecode'
@@ -16,6 +16,8 @@ depends=(
   'procps-ng'
   'python-cairo'
   'python-gobject'
+  'python-pillow'
+  'python-sv-ttk'
   'util-linux'
 )
 makedepends=('meson')
@@ -24,8 +26,8 @@ optdepends=(
   'raspberrypi-utils: for physical RAM size, GPU frequency and video memory information on Raspberry Pi devices'
   'xorg-xrandr: for more accurate screen resolution and refresh rate detection'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('5d3c18cea0dd35ab87ee1464f3856f37378d107e3b1cb6a62f6b33c15625fe2b')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('03bbe26b50b62bbc55715ce10af7e426a80db0b1f3f36bb258f2be4f395a6ba0')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
@@ -34,8 +36,14 @@ build() {
 
 check() {
   meson test -C build --no-rebuild --print-errorlogs
+
+  appstreamcli validate --no-net \
+    "build/data/io.github.hakandundar34coding.$pkgname.appdata.xml" || :
 }
 
 package() {
   meson install -C build --no-rebuild --destdir "$pkgdir"
+
+  # Fix permissions
+  chmod 0755 "$pkgdir/usr/bin/$pkgname"
 }

@@ -1,8 +1,8 @@
 pkgbase = system-monitoring-center
-	pkgdesc = Multi-featured system monitor.
-	pkgver = 2.26.3
+	pkgdesc = Multi-featured system monitor
+	pkgver = 3.0.0
 	pkgrel = 1
-	url = https://github.com/mamolinux/system-monitoring-center
+	url = https://github.com/hakandundar34coding/system-monitoring-center
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = meson
@@ -15,11 +15,13 @@ pkgbase = system-monitoring-center
 	depends = procps-ng
 	depends = python-cairo
 	depends = python-gobject
+	depends = python-pillow
+	depends = python-sv-ttk
 	depends = util-linux
 	optdepends = amdgpu_top: for video engine load on GPU tab and per-process GPU usage, GPU memory columns on Processes tab
 	optdepends = raspberrypi-utils: for physical RAM size, GPU frequency and video memory information on Raspberry Pi devices
 	optdepends = xorg-xrandr: for more accurate screen resolution and refresh rate detection
-	source = system-monitoring-center-2.26.3.tar.gz::https://github.com/mamolinux/system-monitoring-center/archive/refs/tags/2.26.3.tar.gz
-	sha256sums = 5d3c18cea0dd35ab87ee1464f3856f37378d107e3b1cb6a62f6b33c15625fe2b
+	source = system-monitoring-center-3.0.0.tar.gz::https://github.com/hakandundar34coding/system-monitoring-center/archive/refs/tags/v3.0.0.tar.gz
+	sha256sums = 03bbe26b50b62bbc55715ce10af7e426a80db0b1f3f36bb258f2be4f395a6ba0
 
 pkgname = system-monitoring-center
