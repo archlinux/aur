@@ -2,7 +2,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=opencode-openai-codex-auth
 pkgver=4.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenAI ChatGPT OAuth Plugin for opencode"
 arch=('any')
 url="https://github.com/numman-ali/opencode-openai-codex-auth"
