@@ -18,7 +18,7 @@ _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgverna
 
 license=('MIT')
 
-provides=("${_pkgname}")
+provides=("${_appname}")
 conflicts=("${_pkgname}")
 depends=('glibc' 'libgcc')
 
@@ -44,7 +44,7 @@ esac
 package() {
 	cd "${srcdir}/" || exit
 
-	install -Dm755 "${_pkgname}-${_CARCH}" "${pkgdir}/usr/bin/${_pkgname}"
+	install -Dm755 "${_pkgname}-${_CARCH}" "${pkgdir}/usr/bin/${_appname}"
 
 	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
