@@ -1,0 +1,164 @@
+From fc3226244d7c571c7571233c70359295e8357582 Mon Sep 17 00:00:00 2001
+From: Stelios Tsampas <loathingkernel@gmail.com>
+Date: Fri, 13 Feb 2026 17:36:45 +0200
+Subject: [PATCH 1/2] libpcap: build: enable libpcap for wine
+
+---
+ Makefile.in | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Makefile.in b/Makefile.in
+index 89b4c264d..b07480ed1 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -1025,6 +1025,7 @@ WINE_AUTOCONF_ARGS += \
+   --with-wayland \
+   --with-gstreamer \
+   --with-ffmpeg \
++  --with-libpcap \
+   --without-oss \
+ 
+ WINE_x86_64_AUTOCONF_ARGS = \
+-- 
+2.53.0
+
+
+From 4987401805f5394123696efeb3cb16fc39792c87 Mon Sep 17 00:00:00 2001
+From: Stelios Tsampas <loathingkernel@gmail.com>
+Date: Fri, 13 Feb 2026 18:09:12 +0200
+Subject: [PATCH 2/2] build: make bundled wayland libs and libpcap optional
+
+---
+ Makefile.in  | 21 ++++++++++++++++++++-
+ configure.sh | 16 ++++++++++++++++
+ 2 files changed, 36 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index b07480ed1..08a0a7f1d 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -199,6 +199,8 @@ $(eval $(call rules-meson,dav1d,x86_64,unix))
+ $(eval $(call rules-meson,dav1d,aarch64,unix))
+ 
+ 
++ifneq ($(WITHOUT_BUNDLED_WAYLAND_LIBS),1)
++
+ ##
+ ## libxml2
+ ##
+@@ -244,6 +246,10 @@ WAYLAND_PROTOCOLS_MESON_ARGS := \
+ $(eval $(call rules-source,wayland-protocols,$(SRCDIR)/wayland-protocols))
+ $(eval $(call rules-meson,wayland-protocols,aarch64,unix))
+ 
++endif # WITHOUT_BUNDLED_WAYLAND_LIBS
++
++
++ifneq ($(WITHOUT_BUNDLED_LIBPCAP),1)
+ 
+ ##
+ ## libpcap
+@@ -265,6 +271,8 @@ $(eval $(call rules-configure,libpcap,i386,unix))
+ $(eval $(call rules-configure,libpcap,x86_64,unix))
+ $(eval $(call rules-configure,libpcap,aarch64,unix))
+ 
++endif # WITHOUT_BUNDLED_LIBPCAP
++
+ 
+ ##
+ ## gst-orc
+@@ -374,7 +382,9 @@ GST_BASE_MESON_ARGS += \
+ 
+ GST_BASE_LDFLAGS = -lm
+ GST_BASE_DEPENDS = gst_orc graphene gstreamer
++ifneq ($(WITHOUT_BUNDLED_WAYLAND_LIBS),1)
+ GST_BASE_aarch64_DEPENDS = wayland-protocols
++endif
+ GST_BASE_HOST_DEPENDS = gst_orc
+ 
+ $(eval $(call rules-source,gst_base,$(SRCDIR)/gstreamer/subprojects/gst-plugins-base))
+@@ -433,7 +443,9 @@ GST_GOOD_x86_64_MESON_ARGS = \
+ 	-Dspeex=enabled \
+ 
+ GST_GOOD_DEPENDS = gst_orc gstreamer gst_base
++ifneq ($(WITHOUT_BUNDLED_WAYLAND_LIBS),1)
+ GST_GOOD_DEPENDS += libxml2
++endif
+ GST_GOOD_HOST_DEPENDS = gst_orc
+ 
+ $(eval $(call rules-source,gst_good,$(SRCDIR)/gstreamer/subprojects/gst-plugins-good/))
+@@ -561,8 +573,10 @@ GST_BAD_x86_64_MESON_ARGS = \
+ 	-Dttml=enabled \
+ 
+ GST_BAD_DEPENDS = gst_orc gstreamer gst_base
++ifneq ($(WITHOUT_BUNDLED_WAYLAND_LIBS),1)
+ GST_BAD_DEPENDS += libxml2
+ GST_BAD_aarch64_DEPENDS = wayland-protocols
++endif
+ GST_BAD_HOST_DEPENDS = gst_orc
+ 
+ $(eval $(call rules-source,gst_bad,$(SRCDIR)/gstreamer/subprojects/gst-plugins-bad/))
+@@ -1055,7 +1069,12 @@ WINE_i386_DEPENDS = vkd3d
+ WINE_x86_64_DEPENDS = vkd3d
+ endif
+ 
+-WINE_DEPENDS += libxml2 libxkbcommon libpcap
++ifneq ($(WITHOUT_BUNDLED_WAYLAND_LIBS),1)
++WINE_DEPENDS += libxml2 libxkbcommon
++endif
++ifneq ($(WITHOUT_BUNDLED_LIBPCAP),1)
++WINE_DEPENDS += libpcap
++endif
+ 
+ WINE_i386_LIBDIR = $(WINE_i386_DST)/lib
+ WINE_x86_64_LIBDIR = $(WINE_x86_64_DST)/lib
+diff --git a/configure.sh b/configure.sh
+index c97a58a16..1aae2ce58 100755
+--- a/configure.sh
++++ b/configure.sh
+@@ -205,6 +205,12 @@ function configure() {
+     if [[ -n "$arg_without_gplasync" ]]; then
+       echo "WITHOUT_GPLASYNC := 1"
+     fi
++    if [[ -n "$arg_without_bundled_wayland_libs" ]]; then
++      echo "WITHOUT_BUNDLED_WAYLAND_LIBS := 1"
++    fi
++    if [[ -n "$arg_without_bundled_libpcap" ]]; then
++      echo "WITHOUT_BUNDLED_LIBPCAP := 1"
++    fi
+ 
+     echo "HOST_CFLAGS := ${CFLAGS:--O2 -march=nocona -mtune=core-avx2}"
+     echo "HOST_RUSTFLAGS := ${RUSTFLAGS:--Copt-level=3 -Ctarget-cpu=nocona}"
+@@ -236,6 +242,8 @@ arg_without_nvidia_libs=""
+ arg_without_sarek=""
+ arg_without_d7vk=""
+ arg_without_gplasync=""
++arg_without_bundled_wayland_libs=""
++arg_without_bundled_libpcap=""
+ arg_help=""
+ invalid_args=""
+ function parse_args() {
+@@ -297,6 +305,10 @@ function parse_args() {
+       arg_without_d7vk="1"
+     elif [[ $arg = --without-gplasync ]]; then
+       arg_without_gplasync="1"
++    elif [[ $arg = --without-bundled-wayland-libs ]]; then
++      arg_without_bundled_wayland_libs="1"
++    elif [[ $arg = --without-bundled-libpcap ]]; then
++      arg_without_bundled_libpcap="1"
+     elif [[ $arg = --proton-sdk-image ]]; then
+       val_used=1
+       arg_protonsdk_image="$val"
+@@ -366,6 +378,10 @@ usage() {
+   "$1" ""
+   "$1" "    --without-gplasync Disables dxvk-gplasync"
+   "$1" ""
++  "$1" "    --without-bundled-wayland-libs Disables bundling wayland libraries. Wine is still built with Wayland support (for native builds)"
++  "$1" ""
++  "$1" "    --without-bundled-libpcap Disables bundling libpcap. Wine is still built with libpcap support (for native builds)"
++  "$1" ""
+   "$1" "  Steam Runtime"
+   "$1" "    Proton builds that are to be installed & run under the steam client must be built with"
+   "$1" "    the Steam Runtime SDK to ensure compatibility.  See README.md for more information."
+-- 
+2.53.0
+
