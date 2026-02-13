@@ -1,16 +1,17 @@
 pkgbase = typedb-studio-bin
-	pkgdesc = TypeDB Studio - Graphical IDE for TypeDB
-	pkgver = 3.0.5
+	pkgdesc = TypeDB Studio: visual interactive environment for TypeDB databases (official binary)
+	pkgver = 3.8.1
 	pkgrel = 1
-	url = https://typedb.com/
+	url = https://github.com/typedb/typedb-studio
 	arch = x86_64
 	license = MPL-2.0
-	depends = java-runtime>=17
 	depends = gtk3
-	depends = libxtst
-	source = https://repo.typedb.com/public/public-release/raw/names/typedb-studio-linux-x86_64/versions/3.0.5/typedb-studio-linux-x86_64-3.0.5.tar.gz
-	source = typedb-studio.desktop
-	sha256sums = 6644f9027f3d3a943c9261719cf7a550a8e8181ee14825d29b6376b397906582
-	sha256sums = b23f94f31ae5ca7f8a72039630cd72f20e82e02b6f330988b34b4bc6f727de12
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	depends = libappindicator-gtk3
+	provides = typedb-studio
+	conflicts = typedb-studio
+	source = https://repo.typedb.com/public/public-release/raw/names/typedb-studio-linux-x86_64/versions/3.8.1/typedb-studio-linux-x86_64-3.8.1.deb
+	sha256sums = 373b7ebc7702773a71bc383607b1ccd8fbc7f7a1c7f82d7c57097d60cb638aba
 
 pkgname = typedb-studio-bin
