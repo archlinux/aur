@@ -1,0 +1,13 @@
+pkgbase = linux-fan-utility
+	pkgdesc = A Linux fan control daemon and TUI client using hwmon sysfs
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/pegasusheavy/linux-fan-utility
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = linux-fan-utility-0.1.0.tar.gz::https://github.com/pegasusheavy/linux-fan-utility/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = e1b2a746ea74bf106e487e29fdcd321368e83e14aafaee3a0c353a389827c98d
+
+pkgname = linux-fan-utility
