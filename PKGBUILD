@@ -4,7 +4,7 @@ pkgname=nanosaur
 pkgver=1.4.4
 pkgrel=3
 pkgdesc="Play as a cybernetic dinosaur in this third-person shooter"
-arch=('x86_64')
+arch=(x86_64 aarch64)
 url="https://github.com/jorio/Nanosaur"
 license=('custom:pangea' 'custom:CC-BY-NC-SA-4.0')
 # License sourced from http://www.pangeasoft.net/nano/nanosource.html
