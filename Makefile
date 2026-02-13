@@ -15,10 +15,11 @@ Available make targets:
   mrproper  Cleanup thoroughly, including downloaded files.
   pc        Prepare AUR commit.
   remove    Print command to uninstall $(NAME) and its orphaned dependencies.
+  verify    Verify file checksums.
 
 endef
 
-.PHONY:	clean help install janitor mrproper pc remove shc
+.PHONY:	build clean help install janitor mrproper pc remove shc verify
 
 help:
 	$(info $(usage))
@@ -33,10 +34,16 @@ mrproper:	clean
 .SRCINFO:	PKGBUILD
 	makepkg --printsrcinfo >$@
 
+verify:
+	@makepkg --verifysource || echo Remember to run '"updpkgsums"' if you changed or downloaded any files. >&2
+
 pc:
 	updpkgsums
 	shcare PKGBUILD
 	make .SRCINFO
+
+build:	PKGBUILD
+	$(BUILD)
 
 install:	PKGBUILD
 	$(BUILD) --install
