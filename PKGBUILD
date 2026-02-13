@@ -1,49 +1,24 @@
 # Maintainer: ariurn <admin@ariurn.com>
 
 pkgname=happ-desktop-bin
-pkgver=2.0.6
+pkgver=2.1.0
 pkgrel=1
-pkgdesc="A proxy client for secure and private internet access"
+pkgdesc="Happ — user-friendly GUI client for xray-core with TUN/VPN and anti-censorship"
 arch=('x86_64')
-url="https://github.com/Happ-proxy/happ-desktop"
-license=('custom')
-depends=('glibc' 'gcc-libs' 'hicolor-icon-theme')
-provides=('happ-desktop')
-conflicts=('happ-desktop')
+url="https://happ.su"
+license=('custom:Proprietary')
+depends=('glibc' 'openssl' 'libx11' 'libxkbcommon-x11' 'wayland' 'hicolor-icon-theme')
+optdepends=('polkit: privilege elevation for daemon operations')
+provides=('happ' 'happ-desktop')
+conflicts=('happ' 'happ-desktop')
 install="${pkgname}.install"
 options=('!strip')
-source=("${pkgname}-${pkgver}.deb::https://github.com/Happ-proxy/happ-desktop/releases/download/${pkgver}/Happ.linux.x64.deb")
-sha256sums=('06abf9fb0b508bfc86c07de5ee938c7cbe94b4bac9282a6794b4b3b2fbed0db8')
-_debfile="${pkgname}-${pkgver}.deb"
-
-prepare() {
-    # Extract deb package
-    bsdtar -xf "${_debfile}"
-    bsdtar -xf data.tar.zst
-}
+_archpkg="Happ.linux.x64.pkg.tar.zst"
+source=("${pkgname}-${pkgver}.pkg.tar.zst::https://github.com/Happ-proxy/happ-desktop/releases/download/${pkgver}/${_archpkg}")
+sha256sums=('c603ede07b3119a5f4004459688a4c4238e268774e57ee512eaf521bae314725')
+noextract=("${pkgname}-${pkgver}.pkg.tar.zst")
 
 package() {
-    # Copy extracted files from deb package
-    cp -a opt "${pkgdir}/"
-    cp -a usr "${pkgdir}/"
-    cp -a etc "${pkgdir}/"
-    
-    # Install wrapper script
-    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/happ" <<'EOF'
-#!/bin/bash
-# Clean up stale temporary files
-find /dev/shm /tmp -regextype posix-extended -regex '.*\=$' 2>/dev/null -delete
-
-# Force system OpenSSL instead of bundled old version
-export LD_LIBRARY_PATH="/usr/lib:$LD_LIBRARY_PATH"
-
-# Set Qt platform to XCB
-export QT_QPA_PLATFORM=xcb
-
-# Launch Happ
-exec /opt/happ/bin/Happ "$@"
-EOF
-
-    # Update desktop file to use wrapper
-    sed -i 's|Exec=/opt/happ/bin/Happ|Exec=/usr/bin/happ|' "${pkgdir}/usr/share/applications/Happ.desktop"
+    tar -xf "${srcdir}/${pkgname}-${pkgver}.pkg.tar.zst" -C "${pkgdir}" \
+        --exclude='.PKGINFO' --exclude='.MTREE' --exclude='.INSTALL'
 }

@@ -1,27 +1,93 @@
+## arg 1: new package version
 post_install() {
-    echo "Setting permissions for routing directory..."
-    chmod -R 1777 /opt/happ/bin/core/routing/
-    
-    echo "Enabling and starting happd service..."
-    systemctl daemon-reload
-    systemctl enable happd.service
-    systemctl start happd.service
-    echo "happd service has been enabled and started"
+    # Update MIME database
+    if command -v update-mime-database &>/dev/null; then
+        update-mime-database /usr/share/mime || true
+    fi
+
+    # Update desktop database
+    if command -v update-desktop-database &>/dev/null; then
+        update-desktop-database -q /usr/share/applications || true
+    fi
+
+    # Update icon cache
+    if command -v gtk-update-icon-cache &>/dev/null; then
+        gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor || true
+    fi
+
+    # Ensure all binaries are executable
+    chmod +x /opt/happ/bin/Happ 2>/dev/null || true
+    chmod +x /opt/happ/bin/happ-tcping 2>/dev/null || true
+    chmod +x /opt/happ/bin/happd 2>/dev/null || true
+    chmod +x /opt/happ/bin/core/xray 2>/dev/null || true
+    chmod +x /opt/happ/bin/tun/sing-box 2>/dev/null || true
+    chmod +x /opt/happ/bin/tun2/tun2proxy-bin 2>/dev/null || true
+    chmod +x /opt/happ/bin/antifilter/antifilter 2>/dev/null || true
+
+    # Enable and start happd daemon (runs as root — needed for TUN/VPN)
+    echo "Configuring happd daemon..."
+    if command -v systemctl &>/dev/null; then
+        systemctl daemon-reload || true
+        systemctl enable happd.service || true
+        systemctl start happd.service || true
+        echo "happd daemon enabled and started"
+    fi
+
+    echo ""
+    echo "========================================"
+    echo " Happ has been installed to /opt/happ"
+    echo " Run from the application menu or type 'happ' in the terminal."
+    echo "========================================"
 }
 
+## arg 1: new package version  arg 2: old package version
 post_upgrade() {
-    echo "Setting permissions for routing directory..."
-    chmod -R 1777 /opt/happ/bin/core/routing/
-    
-    echo "Restarting happd service..."
-    systemctl daemon-reload
-    systemctl restart happd.service
-    echo "happd service has been restarted"
+    post_install "$1"
 }
 
+## arg 1: old package version
 pre_remove() {
-    echo "Stopping and disabling happd service..."
-    systemctl stop happd.service
-    systemctl disable happd.service
-    echo "happd service has been stopped and disabled"
+    # Stop and disable happd daemon before files are removed
+    if command -v systemctl &>/dev/null; then
+        if systemctl list-unit-files happd.service &>/dev/null 2>&1; then
+            echo "Stopping and disabling happd daemon..."
+            systemctl stop happd.service 2>/dev/null || true
+            systemctl disable happd.service 2>/dev/null || true
+        fi
+    fi
+}
+
+## arg 1: old package version
+post_remove() {
+    # Reload systemd
+    if command -v systemctl &>/dev/null; then
+        systemctl daemon-reload || true
+    fi
+
+    # Update MIME database
+    if command -v update-mime-database &>/dev/null; then
+        update-mime-database /usr/share/mime || true
+    fi
+
+    # Update desktop database
+    if command -v update-desktop-database &>/dev/null; then
+        update-desktop-database -q /usr/share/applications || true
+    fi
+
+    # Update icon cache
+    if command -v gtk-update-icon-cache &>/dev/null; then
+        gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor || true
+    fi
+
+    # Remove runtime-generated routing directory
+    if [ -d /opt/happ/bin/core/routing ]; then
+        rm -rf /opt/happ/bin/core/routing || true
+    fi
+
+    # Remove daemon logs
+    rm -f /var/log/happd.log /var/log/happd.log.old 2>/dev/null || true
+
+    echo ""
+    echo "To remove user configuration and data files, run:"
+    echo "  rm -rf ~/.config/happ ~/.local/share/happ"
 }
