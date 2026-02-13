@@ -3,12 +3,13 @@
 
 pkgbase=kicad-library-nightly
 pkgname=('kicad-library-nightly' 'kicad-library-3d-nightly')
-pkgver=10.0.0_rc1.1_6_gdd4c5170c6
+pkgver=10.0.0_rc1.1_22_g790b415dad
 pkgrel=1
 pkgdesc='KiCAD component and footprint libraries'
 arch=('any')
 url='http://kicad.org/'
 license=('GPL')
+depends=('kicad-nightly')
 makedepends=('git' 'cmake' 'make')
 options=('!strip')
 source=(
@@ -23,7 +24,8 @@ build_package()
 	cd "$1"
 	cmake . \
 		-DCMAKE_INSTALL_PREFIX=/usr/lib/kicad-nightly \
-		-DKICAD_DATA=/usr/share/kicad-nightly
+		-DKICAD_DATA=/usr/share/kicad-nightly \
+		-DKICAD_CLI=/usr/bin/kicad-cli-nightly
 	make
 }
 

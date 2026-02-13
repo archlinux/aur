@@ -9,6 +9,7 @@ pkgdesc='KiCAD component and footprint libraries'
 arch=('any')
 url='http://kicad.org/'
 license=('GPL')
+depends=('kicad-nightly')
 makedepends=('git' 'cmake' 'make')
 options=('!strip')
 source=(
@@ -23,7 +24,8 @@ build_package()
 	cd "$1"
 	cmake . \
 		-DCMAKE_INSTALL_PREFIX=/usr/lib/kicad-nightly \
-		-DKICAD_DATA=/usr/share/kicad-nightly
+		-DKICAD_DATA=/usr/share/kicad-nightly \
+		-DKICAD_CLI=/usr/bin/kicad-cli-nightly
 	make
 }
 
