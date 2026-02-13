@@ -7,6 +7,12 @@ Certification Authorities (CA) certificates.
 The format is based on Keep a Changelog (see https://keepachangelog.com),
 and this project versioning is YYYYMMDD.
 
+## 20260204
+
+### Added
+
+- AC_Certisign_Multipla_G8.crt
+
 ## 20251201
 
 ### Added
