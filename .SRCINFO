@@ -1,0 +1,20 @@
+pkgbase = lambda-im-git
+	pkgdesc = Yet another XMPP client written in Go with GTK4
+	pkgver = r36.713cb24
+	pkgrel = 1
+	url = https://forge.sunglocto.net/sunglocto/lambda
+	arch = x86_64
+	arch = aarch64
+	license = unknown
+	makedepends = go
+	makedepends = git
+	makedepends = gcc
+	makedepends = pkg-config
+	depends = gtk4
+	depends = gdk-pixbuf2
+	provides = lambda-im
+	conflicts = lambda-im
+	source = lambda::git+https://forge.sunglocto.net/sunglocto/lambda.git
+	sha256sums = SKIP
+
+pkgname = lambda-im-git
