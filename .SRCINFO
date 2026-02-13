@@ -1,12 +1,12 @@
 pkgbase = xremap-x11-bin
 	pkgdesc = Dynamic key remapper for X11 and Wayland
-	pkgver = 0.14.13
+	pkgver = 0.14.14
 	pkgrel = 1
 	url = https://github.com/k0kubun/xremap
 	arch = x86_64
 	license = MIT
 	provides = xremap
-	source_x86_64 = xremap-x11-bin-0.14.13.zip::https://github.com/k0kubun/xremap/releases/download/v0.14.13/xremap-linux-x86_64-x11.zip
-	sha256sums_x86_64 = dfb534d3bd22079a88a70fed9f2383f98ab73625f6dd286c6ee4f34ec103af9c
+	source_x86_64 = xremap-x11-bin-0.14.14.zip::https://github.com/k0kubun/xremap/releases/download/v0.14.14/xremap-linux-x86_64-x11.zip
+	sha256sums_x86_64 = c89fb1fd8d42f1e3b5634bc8fc519c89a2b39ca167f0a4133eccb963658e0172
 
 pkgname = xremap-x11-bin
