@@ -1,6 +1,6 @@
 pkgbase = risemode-driver
 	pkgdesc = An experimental Rust driver for the Rise Mode Aura Ice Black water cooler
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/evozniak/risemode-driver
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = risemode-driver
 	makedepends = cargo
 	makedepends = git
 	depends = hidapi
-	source = risemode-driver-0.1.0.tar.gz::https://github.com/evozniak/risemode-driver/archive/v0.1.0.tar.gz
-	sha256sums = SKIP
+	source = risemode-driver-0.1.1.tar.gz::https://github.com/evozniak/risemode-driver/archive/v0.1.1.tar.gz
+	sha256sums = 5e82c6531a2ec649115d731daed7f44c69340c178f768ec3d7ec9baed78e6406
 
 pkgname = risemode-driver

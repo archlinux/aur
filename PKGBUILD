@@ -1,6 +1,6 @@
 # Maintainer: Eduardo Vozniak <evozniak@gmail.com>
 pkgname=risemode-driver
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="An experimental Rust driver for the Rise Mode Aura Ice Black water cooler"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('hidapi')
 makedepends=('cargo' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('5e82c6531a2ec649115d731daed7f44c69340c178f768ec3d7ec9baed78e6406')
 
 prepare() {
     cd "$pkgname-$pkgver"
