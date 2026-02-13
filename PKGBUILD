@@ -15,7 +15,7 @@
 # OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 pkgname=hnefatafl-copenhagen
-pkgver=5.0.1
+pkgver=5.1.0
 pkgrel=1
 real_pkgrel=1
 pkgdesc="Copenhagen Hnefatafl client. Discord: https://discord.gg/h56CAHEBXd"
@@ -27,7 +27,7 @@ conflicts=("hnefatafl-copenhagen")
 depends=("glibc" "gcc-libs" "hicolor-icon-theme" "alsa-lib" "openssl")
 makedepends=("base-devel" "clang" "llvm" "mold" "rustup")
 source=("https://github.com/dcampbell24/hnefatafl/archive/refs/tags/v$pkgver-$real_pkgrel.tar.gz")
-sha256sums=("28b7adf5964bd261898541925a62fcbb384786845145a5a0c46735ad20c40e11")
+sha256sums=("59b0c8d9f90652787f133a3a4852032c439a27d54444d12ad5118f45ea00d5f7")
 
 build() {
     tar -xvzf v$pkgver-$real_pkgrel.tar.gz
