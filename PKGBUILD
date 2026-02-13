@@ -1,7 +1,7 @@
 # Maintainer: munsternet <munsternet at ik dot me>
 _pkgname=trackaudio
 pkgname=trackaudio-git
-pkgver=1.3.0.beta.5.r3.g72f0323
+pkgver=1.4.0.beta.1.r3.g73dc576
 pkgrel=1
 pkgdesc="Next-generation cross-platform Audio-For-VATSIM ATC Client"
 arch=(x86_64 aarch64)
@@ -14,8 +14,9 @@ makedepends=(
     gcc
     git
     ninja
+    nodejs-lts-jod
     nodejs-cmake-js
-    npm
+    pnpm
     unzip
     zip)
 source=(
@@ -43,9 +44,12 @@ prepare() {
 
 build() {
   cd "$_pkgname"
-  npm run build:backend
-  npm install
-  npm run build:unpack
+  # Build backend first
+  export CMAKE_POLICY_VERSION_MINIMUM=3.5
+  pnpm build:backend
+
+  # Put together with electron
+  pnpm run build:unpack
 }
 
 package() {
