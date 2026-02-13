@@ -3,7 +3,7 @@
 pkgname=opencode-pty
 _pkgname=opencode-pty
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenCode plugin for interactive PTY management - run background processes, send input, read output with regex filtering"
 arch=('x86_64' 'aarch64')
 url="https://github.com/shekohex/opencode-pty"
