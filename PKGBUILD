@@ -2,13 +2,22 @@
 
 pkgname=bugdom
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Save Bugdom from Thorax's evil Fire Ants"
 arch=(x86_64 aarch64)
 url='https://github.com/jorio/Bugdom'
 license=(CC-BY-NC-SA-4.0)
-depends=('sdl2' 'glu' 'hicolor-icon-theme')
-makedepends=('cmake' 'git')
+depends=(
+  sh
+  libgcc
+  libstdc++
+  libglvnd
+  glibc
+  sdl2-compat
+  glu
+  hicolor-icon-theme
+)
+makedepends=(cmake git)
 source=(
   "$pkgname::git+$url.git#tag=$pkgver"
   'github.com-jorio-Pomme::git+https://github.com/jorio/Pomme'
@@ -18,11 +27,11 @@ source=(
 sha512sums=('36e64ce675ab8c7fe463c6eb2094a9aa6b1be91082e534932454511b3972c5daf214ab28d71d50caf03955d1e94dc2b17aa2b1668711019e7a7a419e48b2b663'
             'SKIP'
             '69dadaa4ceede2c89c2b3e52f28d1c20f8d5b6dc68260464002699ff5d13b4b737cc6963e90c7360af18cf13cab293c27f7526dd6dcad3a4ac37204803e720e1'
-            '10f2aa8d100d16c0a4bef0d42b15b5ac53d561baf6835e43f09f650c7e807259f8e5356f58fd126f0e2a6b631bc92844b4015b59a9e1c5c333d78c70722d628e')
+            '824d2b0f35093cdba225e4931b224c0207e34fb087fa91001d77ae2406d4c39f3230f4a35415075e0045566905fe19e08a59c9fd49f9fcd55801966b6c4d33d1')
 b2sums=('8f401a082b48977c931b73325574cbcc56ecb8993147cc4c982fc4a179a68148efc59ed3fe5e210833cc11d5ee63e19847a53c4492eb620282258e655c44ff98'
         'SKIP'
         'f8c230b4047950d3f5f733e795b6ea0082a59348bdf44716ed027f0b7ccd1472c5663f8c8dc19e4548a0cc628c17ffa1f52a5011eb6ee70a33afbeae4a2e9e8c'
-        '62176cb077576d5274818dfe1d297856ed2d284a7e137dda812682758655275a476c7449ec9d51929c6fbf804f1fea789e91d241ee7ffd14e9b02c418bc097ff')
+        '53e8f57336c4b5c7dc1eb344adf23c49db0a942da0a4c65a445a7f31a10843c67987910d7471e10f763ad6d0236333c931211c657a917ca6dd73bbfaec34d2eb')
 
 prepare() {
   cd "$pkgname"
