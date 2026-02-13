@@ -1,13 +1,26 @@
 pkgname=archtoys-bin
 pkgver=0.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Archtoys (precompiled binary)"
 arch=("x86_64")
 url="https://github.com/Mujtaba1i/Archtoys"
 license=("MIT")
 provides=("archtoys")
 conflicts=("archtoys")
-source=("archtoys-linux-x86_64.tar.gz::https://github.com/Mujtaba1i/Archtoys/releases/download/v${pkgver}/archtoys-linux-x86_64.tar.gz")
+source=(
+  "archtoys-linux-x86_64-v${pkgver}.tar.gz::https://github.com/Mujtaba1i/Archtoys/releases/download/v${pkgver}/archtoys-linux-x86_64.tar.gz"
+  "archtoys.desktop"
+  "archtoys.png"
+  "archtoys-16.png"
+  "archtoys-22.png"
+  "archtoys-24.png"
+  "archtoys-32.png"
+  "archtoys-48.png"
+  "archtoys-64.png"
+  "archtoys-128.png"
+  "archtoys-256.png"
+  "archtoys-512.png"
+)
 sha256sums=('06740be56d4ec52564056882f7b452bcff0a90337349c32572f1b512b7f5f86d'
             '57caa2bef5a98bef17abeecb439e1ef7efab7826217b24ca1eaeac07c7720312'
             '5355e2b4f79c2bba7ac05a78dcc0e60f4f226f9222390204ef6a7a5294640f08'
@@ -35,18 +48,3 @@ package() {
     install -Dm644 "${srcdir}/archtoys.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/archtoys.png"
   fi
 }
-
-source=(
-  "archtoys-linux-x86_64.tar.gz::https://github.com/Mujtaba1i/Archtoys/releases/download/v${pkgver}/archtoys-linux-x86_64.tar.gz"
-  "archtoys.desktop"
-  "archtoys.png"
-  "archtoys-16.png"
-  "archtoys-22.png"
-  "archtoys-24.png"
-  "archtoys-32.png"
-  "archtoys-48.png"
-  "archtoys-64.png"
-  "archtoys-128.png"
-  "archtoys-256.png"
-  "archtoys-512.png"
-)
