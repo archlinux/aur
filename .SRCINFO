@@ -1,0 +1,26 @@
+pkgbase = emdash-app
+	pkgdesc = Run multiple coding agents in parallel
+	pkgver = 0.4.9
+	pkgrel = 1
+	url = https://github.com/generalaction/emdash
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux
+	depends = libsecret
+	optdepends = libappindicator-gtk3: for system tray icon support
+	provides = emdash
+	conflicts = emdash
+	conflicts = emdash-bin
+	options = !strip
+	options = !debug
+	source = emdash-app-0.4.9.deb::https://github.com/generalaction/emdash/releases/download/v0.4.9/emdash-amd64.deb
+	sha256sums = e2b58d35d3fed717d6b312a4b9c3f5419cb08a12353ecca5499b4cfaeec05045
+
+pkgname = emdash-app
