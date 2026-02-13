@@ -1,6 +1,6 @@
 pkgname=archtoys-bin
-pkgver=0.1.9
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="Archtoys (precompiled binary)"
 arch=("x86_64")
 url="https://github.com/Mujtaba1i/Archtoys"
@@ -21,7 +21,7 @@ source=(
   "archtoys-256.png"
   "archtoys-512.png"
 )
-sha256sums=('06740be56d4ec52564056882f7b452bcff0a90337349c32572f1b512b7f5f86d'
+sha256sums=('8f9d571ca3d38fd4107bea1e48e39d11bd4ece1ef4cffd7a49d181d298c71dd4'
             '57caa2bef5a98bef17abeecb439e1ef7efab7826217b24ca1eaeac07c7720312'
             '5355e2b4f79c2bba7ac05a78dcc0e60f4f226f9222390204ef6a7a5294640f08'
             'e782f83cd1ba0f4179471251c56c15b7beae55285b3a6d55d2392fb81a4bc027'
