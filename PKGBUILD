@@ -6,6 +6,7 @@ arch=('x86_64')
 url="https://github.com/voideez/cmdflow"
 license=('MIT')
 depends=('bash')
+depends=('fish')
 makedepends=('rust')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/voideez/cmdflow/archive/refs/tags/${pkgver}.tar.gz")
