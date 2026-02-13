@@ -20,7 +20,7 @@ makedepends=(
   lld
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('31384b6fdb7dbdc848ee85363e7936ac0d16cbe284913a28d797fe93e8404220')
+sha256sums=('966f28620c6f86aa0937704d696edffd9ab6b8c65603db76dda1ba3fbd7ae1c9')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
