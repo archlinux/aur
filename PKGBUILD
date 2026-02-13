@@ -1,7 +1,7 @@
 # Maintainer: Guru <anjanaya@gmail.com>
 pkgname=agent-browser
-pkgver=0.9.1
-pkgrel=2
+pkgver=0.9.4
+pkgrel=1
 pkgdesc="Headless browser automation CLI for AI agents"
 arch=('any')
 url="https://github.com/vercel-labs/agent-browser"
@@ -10,7 +10,7 @@ depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=('53356c6ecb7cd5d253b828def43c1727d2f60a6f022c81b93ba29646fa20bc7b')
+sha256sums=('9c23e680fa9e5e0c979d2e1e9c78262d364ad5d3378eceba4a462b53bbe5b690')
 
 package() {
     /usr/bin/npm install -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
