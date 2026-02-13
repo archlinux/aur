@@ -4,7 +4,7 @@ _pkgname=qwen-code
 pkgname=${_pkgname}-bin
 _name=qwen
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source AI agent based on Gemini CLI by QwenLM"
 arch=('any')
 url="https://github.com/QwenLM/${_pkgname}"
@@ -13,11 +13,14 @@ depends=('nodejs')
 provides=("$_pkgname" "${_name}")
 conflicts=("$_pkgname" "${_name}")
 source=("${_pkgname}-${pkgver}.js::${url}/releases/download/v${pkgver}/cli.js"
-        "LICENSE::https://raw.githubusercontent.com/QwenLM/${_pkgname}/v${pkgver}/LICENSE")
+        "LICENSE::https://raw.githubusercontent.com/QwenLM/${_pkgname}/v${pkgver}/LICENSE"
+        "system-defaults.json")
 sha256sums=('c845dbaf37d9580d97d2a0536d5565b786ede42bf05743b88503880c38420859'
-            '55367b61ccd2a016a0159ad886bd66a3ee6cb5e873d0c75c803c897dd245b075')
+            '55367b61ccd2a016a0159ad886bd66a3ee6cb5e873d0c75c803c897dd245b075'
+            '6a813a4a219dc135b96f50290e3b4e785577f9d9cd6174039eeb3d4618cfd180')
 
 package() {
   install -Dm755 "${_pkgname}-${pkgver}.js" "${pkgdir}/usr/bin/${_name}"
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "system-defaults.json" "${pkgdir}/etc/qwen-code/system-defaults.json"
 }
