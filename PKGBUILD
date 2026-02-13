@@ -4,7 +4,7 @@
 pkgname=python-pytest-recording
 _pkgname=${pkgname#python-}
 pkgver=0.13.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Pytest plugin to record network interactions with VCR.py'
 arch=('any')
 url="https://pypi.org/project/${_pkgname//-/_}"
@@ -16,7 +16,6 @@ optdepends=(
     'python-pycurl: Block pycurl-based network connections'
 )
 checkdepends=(
-    python-coverage
     python-pytest
     python-pytest-httpbin
     python-pytest-mock
