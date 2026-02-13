@@ -1,6 +1,6 @@
 # Maintainer: John Regan <john@jrjrtech.com>
 pkgname=fluux-messenger
-pkgver=0.13.0
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="A fast, modern, cross-platform XMPP client for communities and organizations."
 arch=('x86_64' 'aarch64')
@@ -30,7 +30,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/processone/fluux-messenger/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  '4da490b4e1bd8c515d8647b4d7c5ba144624ced5e05e05e5ced014e48fd1a953'
+  '8b1eba9a59ca641ce4a334eb5e225bf7fdfb0fe3538d0b8cf2e8ebcc6bbb7ffd'
 )
 
 prepare() {
