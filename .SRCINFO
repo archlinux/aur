@@ -1,7 +1,7 @@
 pkgbase = limabean
 	pkgdesc = A new implementation of Beancount using Rust and Clojure and the Lima parser
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tesujimath/limabean
 	arch = x86_64
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = limabean
 	makedepends = cargo
 	makedepends = clojure
 	makedepends = git
+	depends = clojure
 	depends = gcc-libs
 	depends = glibc
 	source = https://github.com/tesujimath/limabean/archive/0.2.4/limabean-0.2.4.tar.gz
