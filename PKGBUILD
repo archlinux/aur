@@ -1,5 +1,5 @@
 pkgname=libelectron
-pkgver=2025.8
+pkgver=2026.1
 pkgrel=1
 arch=("x86_64" "aarch64")
 url="https://gitlab.com/linuxbombay/libelectron/libelectron"
@@ -8,7 +8,7 @@ depends=('npm' 'git' 'icu')
 pkgdesc="A meta package for electron and electron dependencies."
 makedepends=('unzip')
 source=("$url/-/archive/$pkgver/libelectron-$pkgver.tar.bz2")
-sha256sums=('1b43455353e4d8c6b6c181e9cedae4dee1a496b12b178c3e549921ebd5d6eed1')
+sha256sums=('9b1d77f876a767a2d0678d33b69b679d3ba5642e33c26f6736c027c140dbf20c')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
