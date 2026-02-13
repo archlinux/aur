@@ -4,7 +4,7 @@
 
 pkgname="automx2"
 pkgver="2026.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="Mail User Agent (email client) configuration made easy"
 backup=("etc/automx2/automx2.conf")
 install="install.sh"
@@ -14,7 +14,7 @@ depends=("python"
 	"python-flask-sqlalchemy>=3.1.1"
 	"python-ldap3"
 	"python-sqlalchemy>=2.0.31")
-makedepends=("python-build" "python-installer" "python-wheel")
+makedepends=("grep" "python-build" "python-installer")
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"
 	"automx2.conf"
 	"automx2.service")
