@@ -1,7 +1,7 @@
 pkgbase = meshlab-bin
 	pkgdesc = 3D triangular meshes processing and editing tool (pre-built binary version)
 	pkgver = 2025.07
-	pkgrel = 4
+	pkgrel = 2
 	url = https://www.meshlab.net/
 	arch = x86_64
 	arch = aarch64
