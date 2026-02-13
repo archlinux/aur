@@ -12,12 +12,12 @@
 
 pkgname=iacs
 pkgver=1.1.9.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Access Client Solutions is a Java based, platform-independent interface for IBM i systems."
 arch=('x86_64')
 url="https://www.ibm.com/support/pages/ibm-i-access-client-solutions"
 license=('LicenseRef-IBM-IPLA')
-depends=('glibc' 'gcc-libs' 'java-runtime>=8')
+depends=('glibc' 'java-runtime>=8' 'libgcc_s.so' 'libstdc++.so')
 backup=("opt/ibm/iAccessClientSolutions/AcsConfig.properties")
 options=('!debug')  # No reason to make this package, there's nothing debuggable here.
 source=("file://IBMiAccess_v1r1.zip")

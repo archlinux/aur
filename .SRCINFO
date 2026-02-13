@@ -1,13 +1,14 @@
 pkgbase = iacs
 	pkgdesc = Access Client Solutions is a Java based, platform-independent interface for IBM i systems.
 	pkgver = 1.1.9.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ibm.com/support/pages/ibm-i-access-client-solutions
 	arch = x86_64
 	license = LicenseRef-IBM-IPLA
 	depends = glibc
-	depends = gcc-libs
 	depends = java-runtime>=8
+	depends = libgcc_s.so
+	depends = libstdc++.so
 	options = !debug
 	backup = opt/ibm/iAccessClientSolutions/AcsConfig.properties
 	source = file://IBMiAccess_v1r1.zip
