@@ -1,14 +1,15 @@
-pkgbase = packwitch-manager-git
+pkgbase = packwitch-manager-bin
 	pkgdesc = minecraft modpack management tool
 	pkgver = 0.1a
 	pkgrel = 1
 	url = https://codeberg.org/packwitch/packwitch
 	arch = x86_64
-	license = LGPL 3.0+
-	makedepends = git
+	license =LGPL-3.0-or-later
 	makedepends = jdk21-openjdk
 	depends = jdk21-openjdk
-	source = git+https://codeberg.org/packwitch/packwitch
+	provides = packwitch-manager
+	conflicts = packwitch-manager
+    source = packwitch-manager-bin-0.1a.tar::https://codeberg.org/packwitch/packwitch/releases/download/0.1a/manager-0.1a.tar
 	sha256sums = SKIP
 
-pkgname = packwitch-manager-git
+pkgname = packwitch-manager-bin
