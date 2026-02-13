@@ -1,7 +1,7 @@
 # Maintainer: Yuri Karamian <yuri@arkhost.com>
 pkgname=helixnotes-appimage-bin
 _pkgname=HelixNotes
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="Local-first markdown note-taking app built with Rust, Tauri, and SvelteKit"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('fuse2' 'gtk3')
 options=('!strip')
 source=("${_pkgname}_${pkgver}_amd64.AppImage::https://codeberg.org/ArkHost/HelixNotes/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.AppImage"
         "helixnotes.desktop")
-sha256sums=('4e287e37eb202d698051af2668cac4a3ac53319a5d79be945acf1765fb8e9424'
+sha256sums=('b1a6ce76c5e206a2e9d432e5dc0bd71c9466de06b0d897a1b0488e062f8b66f1'
             '20dd14203d5bedca52933bd60065d013418bcba00cea6dfcec78b292b82900ba')
 noextract=("${_pkgname}_${pkgver}_amd64.AppImage")
 
