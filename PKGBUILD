@@ -5,7 +5,7 @@
 
 pkgname='wiki-go'
 pkgdesc='A modern, feature-rich, databaseless flat-file wiki platform'
-pkgver=1.8.4
+pkgver=1.8.5
 pkgrel=1
 url='https://github.com/leomoon-studios/wiki-go'
 arch=('aarch64' 'x86_64')
@@ -13,12 +13,12 @@ license=('GPL-3.0-or-later')  # SPDX-License-Identifier: GPL-3.0-or-later
 makedepends=('go')
 depends=('glibc')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('01ba64e1d59a909f6a01c246f23c94abd5369fbd6438e80a7960ea16e95bc683')
+sha256sums=('0369c1a5bff6fc73a91c476266871855b40ed240fabe2772e158382bfa76f4e2')
 
 prepare() {
   cd "$pkgname-$pkgver"
 
-  mkdir -vp build
+  mkdir -p build
   go mod tidy
 }
 
@@ -58,10 +58,10 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
 
-  install -vDm0755 -t "$pkgdir/usr/bin" build/wiki-go
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
+  install -Dm0755 -t "$pkgdir/usr/bin" build/wiki-go
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
 
-  cp -vfa demo-site-files "$pkgdir/usr/share/doc/$pkgname/"
+  cp -fa demo-site-files "$pkgdir/usr/share/doc/$pkgname/"
 }
 
 # eof
