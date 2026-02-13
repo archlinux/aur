@@ -1,8 +1,8 @@
 # Maintainer: nelle the@nelle.observer
 
 pkgname=packwitch-manager
-pkgver=0.1b
-pkgrel=2
+pkgver=0.1c
+pkgrel=1
 pkgdesc="minecraft modpack management tool"
 arch=('x86_64')
 url="https://codeberg.org/packwitch/packwitch"
