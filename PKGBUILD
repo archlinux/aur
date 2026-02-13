@@ -10,7 +10,7 @@ depends=('webkit2gtk')
 options=(!strip)
 source=("$pkgname-v$pkgver.AppImage::https://github.com/vultisig/vultisig-windows/releases/download/v$pkgver/$pkgname-v$pkgver.AppImage")
 noextract=("$pkgname-v$pkgver.AppImage")
-sha256sums=('f6055c1fe570758b1e66654eddc69b5c1269bcdf034bf713843ba9a72932df7d')
+sha256sums=('d306682c7d279f9f43eab10b60270d152237a6aae91bced86c2a5094259cbf2f')
 
 prepare() {
 	chmod +x "$pkgname-v$pkgver.AppImage"

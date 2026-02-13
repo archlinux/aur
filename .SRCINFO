@@ -9,6 +9,6 @@ pkgbase = vultisig
 	noextract = vultisig-v1.0.50.AppImage
 	options = !strip
 	source = vultisig-v1.0.50.AppImage::https://github.com/vultisig/vultisig-windows/releases/download/v1.0.50/vultisig-v1.0.50.AppImage
-	sha256sums = f6055c1fe570758b1e66654eddc69b5c1269bcdf034bf713843ba9a72932df7d
+	sha256sums = d306682c7d279f9f43eab10b60270d152237a6aae91bced86c2a5094259cbf2f
 
 pkgname = vultisig
