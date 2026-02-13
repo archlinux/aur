@@ -1,5 +1,5 @@
 pkgname=python-meshtastic
-pkgver=2.7.6
+pkgver=2.7.7
 pkgrel=1
 pkgdesc='The Python CLI and API for talking to Meshtastic devices'
 arch=(any)
@@ -28,7 +28,7 @@ makedepends=(
 )
 
 source=("https://github.com/meshtastic/python/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('53b8d0ee1bcebb0cf8a86d58ab9c74533a99ded21aeaa2e941dea00340ea196c5b623db631a2b9520ffdc96c1e8692a94b24e682598f215bf7e5e6427a7c28c6')
+b2sums=('95062b057341ff81384a8db06938f7baf7e05badecf2cc927ee149d56d65fc49f67991698cc158d76c60394df1a76193eaf49111f8c06b507d6270c601e5ce31')
 
 build() {
   cd "python-$pkgver"
