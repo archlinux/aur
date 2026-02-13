@@ -1,6 +1,6 @@
 pkgbase = the-shit
 	pkgdesc = A vastly improved version of The Fuck written in C++
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/Codiak540/the-shit
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = the-shit
 	license = GPL
 	makedepends = cmake
 	depends = gcc-libs
-	source = the-shit-1.0.2.tar.gz::https://github.com/Codiak540/the-shit/archive/V1.0.2.tar.gz
-	sha256sums = 4aa940f024174e773682f3d20f0d52a45ad5b438a2e5c320f6c3a8484c9eeefe
+	source = the-shit-1.0.3.tar.gz::https://github.com/Codiak540/the-shit/archive/V1.0.3.tar.gz
+	sha256sums = 67919d7329505491445bdbc60fd41b8ce0d0c450578281d0a77703c8d88d1c6b
 
 pkgname = the-shit
