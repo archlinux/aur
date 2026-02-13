@@ -1,6 +1,6 @@
 pkgbase = devchron
 	pkgdesc = A stunning TUI Pomodoro timer for Hyprland/Wayland
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/bhood239/DevChron
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = devchron
 	depends = dbus
 	optdepends = waybar: Status bar integration
 	optdepends = jq: JSON parsing for status bar scripts
-	source = devchron-0.1.0.tar.gz::https://github.com/bhood239/DevChron/archive/v0.1.0.tar.gz
-	sha256sums = 5707e59a00f4bfafb8a70a8a47fa22a221d01d9b0125d81cb51752cd724b516a
+	source = devchron-0.1.1.tar.gz::https://github.com/bhood239/DevChron/archive/v0.1.1.tar.gz
+	sha256sums = c01218b0de2ef3dae36a0d96ab213659b70c8892ef5af2b07de58928387088f9
 
 pkgname = devchron

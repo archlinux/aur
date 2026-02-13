@@ -1,6 +1,6 @@
 # Maintainer: Ben Hood <benhood97@btinternet.com>
 pkgname=devchron
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A stunning TUI Pomodoro timer for Hyprland/Wayland"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=(
     'jq: JSON parsing for status bar scripts'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5707e59a00f4bfafb8a70a8a47fa22a221d01d9b0125d81cb51752cd724b516a')
+sha256sums=('c01218b0de2ef3dae36a0d96ab213659b70c8892ef5af2b07de58928387088f9')
 
 build() {
     cd "DevChron-$pkgver"
