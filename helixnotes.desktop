@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=HelixNotes
+Comment=Local-first markdown note-taking app
+Exec=helixnotes %U
+Icon=helixnotes
+Terminal=false
+Categories=Office;TextEditor;
+Keywords=notes;markdown;editor;
+MimeType=text/markdown;text/plain;
+StartupWMClass=HelixNotes
