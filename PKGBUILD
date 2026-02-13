@@ -1,17 +1,17 @@
 # Maintainer: Thomas Hügel <thomas huegel -a-t- aquilenet fr>
 
 pkgname=typedb-all-bin
-pkgver=3.4.0
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="TypeDB server & console"
 arch=('x86_64')
 url="https://typedb.com/"
 license=('MPL-2.0')
-depends=('java-runtime>=17')
+# depends=('java-runtime>=17')
 source=("https://repo.typedb.com/public/public-release/raw/names/typedb-all-linux-x86_64/versions/$pkgver/typedb-all-linux-x86_64-$pkgver.tar.gz"
         "typedb.service"
         "typedb.sysusers")
-sha256sums=('a2d20beb45115bcbcb3c583c1fa634d3267bbc02e5ed6dfb41c1003f3b3e7cc5'
+sha256sums=('4e1dbb003b65e79ed772023c573489028af79433b82287e76b31fbdc10abbd64'
             'c1dad3f686e5127745a99ea27f454585955b672449f4cfc0c812cc5ca3521adc'
             '81456a9300c50ea1aa5ed82df653e0821438bed9a29fe97f44699861072667eb')
 
