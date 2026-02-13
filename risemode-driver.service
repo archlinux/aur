@@ -1,0 +1,22 @@
+[Unit]
+Description=Rise Mode Aura Ice Black Water Cooler Driver
+Documentation=https://github.com/evozniak/risemode-driver
+After=multi-user.target
+Wants=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/risemode-driver
+Restart=on-failure
+RestartSec=5s
+# Run as root to access hardware
+User=root
+# Limit privileges
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/sys/class/hwmon /sys/class/thermal
+
+[Install]
+WantedBy=multi-user.target
