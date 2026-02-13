@@ -1,6 +1,6 @@
 # Maintainer: Eduardo Vozniak <evozniak@gmail.com>
 pkgname=risemode-driver
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="An experimental Rust driver for the Rise Mode Aura Ice Black water cooler"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('hidapi')
 makedepends=('cargo' 'git' 'hidapi' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d51032779bad766cd038487c7718a15e3a5caabf91d1156c19a1512ca5abcb28')
+sha256sums=('fc0468f460f196b3c20ead7d46471ffb5e312aefa62ab3e4878a9f9e8b81e932')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -40,9 +40,5 @@ package() {
     install -Dm644 packaging/arch/risemode-driver.service "$pkgdir/usr/lib/systemd/system/risemode-driver.service"
     
     # Install udev rules for device permissions
-    install -Dm644 - "$pkgdir/usr/lib/udev/rules.d/99-risemode.rules" <<EOF
-# Rise Mode Aura Ice Black water cooler
-SUBSYSTEM=="usb", ATTRS{idVendor}=="0c45", ATTRS{idProduct}=="7698", MODE="0666", GROUP="users"
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="0c45", ATTRS{idProduct}=="7698", MODE="0666", GROUP="users"
-EOF
+    install -Dm644 packaging/arch/99-risemode.rules "$pkgdir/usr/lib/udev/rules.d/99-risemode.rules"
 }
