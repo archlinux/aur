@@ -5,7 +5,7 @@
 _pkgname=powerpill
 pkgname=powerpill-me
 pkgver=2021.11
-pkgrel=18
+pkgrel=19
 pkgdesc='Pacman wrapper for faster downloads.(mirrored)'
 arch=(any)
 license=(GPL)
@@ -13,6 +13,7 @@ original_url="https://xyne.dev/projects/powerpill"
 url="https://github.com/EndlessEden/powerpill"
 provides=("${pkgname}"
 	  "${_pkgname}")
+conflicts=("${_pkgname}")
 
 # Dynamic Python Versioning (Major.Minor)
 # Capture the current version (e.g., 3.12) to lock this build to it.
