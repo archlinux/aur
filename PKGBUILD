@@ -1,6 +1,6 @@
 # Maintainer: Cat2048
 pkgname=datcord-bin
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="An open-source discord client."
 arch=('x86_64' 'aarch64')
@@ -24,7 +24,7 @@ sha256sums=('SKIP'
 
 package() {
 	mkdir -p "$pkgdir"/usr/lib/datcord "$pkgdir"/usr/bin
-	cd "$srcdir/datcord-linux-x86_64"
+	cd "$srcdir/datcord-linux-$CARCH"
 	chmod +x launch-app
         cp -R  * "$pkgdir"/usr/lib/datcord
 	ln -s /usr/lib/datcord/launch-app "$pkgdir"/usr/bin/datcord
