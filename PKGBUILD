@@ -4,7 +4,7 @@ _pkgname=qwen-code
 pkgname=${_pkgname}-bin
 _name=qwen
 pkgver=0.10.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Open-source AI agent based on Gemini CLI by QwenLM"
 arch=('any')
 url="https://github.com/QwenLM/${_pkgname}"
@@ -17,7 +17,7 @@ source=("${_pkgname}-${pkgver}.js::${url}/releases/download/v${pkgver}/cli.js"
         "system-defaults.json")
 sha256sums=('c845dbaf37d9580d97d2a0536d5565b786ede42bf05743b88503880c38420859'
             '55367b61ccd2a016a0159ad886bd66a3ee6cb5e873d0c75c803c897dd245b075'
-            '6a813a4a219dc135b96f50290e3b4e785577f9d9cd6174039eeb3d4618cfd180')
+            '729be4baa7cd839aa383910df26d15111d2af1e4c5415f5bb01ff949881fe8cb')
 
 package() {
   install -Dm755 "${_pkgname}-${pkgver}.js" "${pkgdir}/usr/bin/${_name}"
