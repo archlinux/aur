@@ -1,7 +1,7 @@
 # Maintainer: Josephine Pfeiffer <jpfeiffe@redhat.com>
 
 pkgname=cherryctl
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='Cherry Servers CLI for managing cloud infrastructure'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('git' 'go')
 depends=('glibc')
 conflicts=('cherryctl-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a1cf076858086a238e0a288ea9d7b82a1149d83af7379e153bc7e7648cd05839')
+sha256sums=('a047a007e3559e7c45febe9d37e0803ecdb28ae74385ebb0568eec268ee64273')
 
 prepare(){
   cd "${pkgname}-${pkgver}"
