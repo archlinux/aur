@@ -4,7 +4,7 @@ pkgbase=python-astlib
 _pyname=${pkgbase#python-}
 #_pyname=astLib
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.13.1
+pkgver=0.13.2
 pkgrel=1
 pkgdesc="A set of Python modules that provides some tools for research astronomers"
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ checkdepends=('python-pytest'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'use_system_wcstools.patch'
         'fix-deprecated-imp.patch')
-sha256sums=('4fc5f10396cefe25886c71bf1d6e6d00e730c41b7d122ef56c13d457c094ce45'
+sha256sums=('f2f4f978cbf6518136be582f709ce18296029006a30330d17befe95ca659584d'
             'df8f7b7688db376b041c965727597b78e0911ab92ef467816a8bb7a3a62ffc1f'
             'ea99eedbe5d67ebed17f3383d6b1eaf7a8b1f38a2d3e009fa69a8a084487185b')
 
