@@ -2,12 +2,12 @@
 
 pkgname=dolphin-memory-engine
 pkgver=2026.01.24
-pkgrel=1
+pkgrel=2
 pkgdesc="Dolphin emulator memory searcher"
 arch=(x86_64)
 url="https://github.com/aldelaro5/dolphin-memory-engine"
 license=('MIT')
-depends=(bash gcc-libs glibc hicolor-icon-theme qt6-base qt6-svg)
+depends=(bash glibc hicolor-icon-theme libgcc_s.so libstdc++.so qt6-base qt6-svg)
 makedepends=(cmake git)
 optdepends=()
 install="${pkgname}.install"

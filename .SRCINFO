@@ -1,7 +1,7 @@
 pkgbase = dolphin-memory-engine
 	pkgdesc = Dolphin emulator memory searcher
 	pkgver = 2026.01.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aldelaro5/dolphin-memory-engine
 	install = dolphin-memory-engine.install
 	arch = x86_64
@@ -9,9 +9,10 @@ pkgbase = dolphin-memory-engine
 	makedepends = cmake
 	makedepends = git
 	depends = bash
-	depends = gcc-libs
 	depends = glibc
 	depends = hicolor-icon-theme
+	depends = libgcc_s.so
+	depends = libstdc++.so
 	depends = qt6-base
 	depends = qt6-svg
 	source = git+https://github.com/aldelaro5/dolphin-memory-engine.git#tag=2026.01.24
