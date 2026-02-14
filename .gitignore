@@ -3,4 +3,4 @@ pkg
 *.tar.zst
 *.zip
 *.log
-rackpeek*
+rackpeek-bin-*
