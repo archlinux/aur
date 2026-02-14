@@ -1,0 +1,20 @@
+pkgbase = qodercli-bin
+	pkgdesc = Qoder Agentic CLI - Advanced AI coding agent from Alibaba
+	pkgver = 0.1.28
+	pkgrel = 1
+	url = https://qoder.com/cli
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-Qoder-Product-Service
+	provides = qoder-cli
+	conflicts = qoder-cli
+	options = !strip
+	options = !debug
+	source = LICENSE::https://qoder.com/product-service
+	sha256sums = 5ef99067ca0a66509132e88eb4cf5b7f164174552fa0e3657c6278104811b021
+	source_x86_64 = qodercli_0.1.28_linux_amd64.tar.gz::https://download.qoder.com/qodercli/releases/0.1.28/qodercli_0.1.28_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6db49a8ad86687dbe6dd6c772780552ca1ca23541494f75ca59f53e52f8b0fe1
+	source_aarch64 = qodercli_0.1.28_linux_arm64.tar.gz::https://download.qoder.com/qodercli/releases/0.1.28/qodercli_0.1.28_linux_arm64.tar.gz
+	sha256sums_aarch64 = 2de57a3f30bdf38b71e5d775c0bb53ff6a1c596cae87bd197c3936c57651b8a2
+
+pkgname = qodercli-bin
