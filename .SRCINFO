@@ -1,7 +1,7 @@
 pkgbase = dictype
 	pkgdesc = real-time voice-to-text input on Linux
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Xinkai/dictype
 	arch = x86_64
 	license = MIT

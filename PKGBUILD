@@ -4,7 +4,7 @@
 pkgbase=dictype
 pkgname=(dictype dictype-fcitx)
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='real-time voice-to-text input on Linux'
 arch=('x86_64')
 url='https://github.com/Xinkai/dictype'
@@ -27,7 +27,7 @@ build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
 
   # dictyped
-  cargo build --release --frozen --package dictyped
+  cargo build --release --package dictyped
 
   # dictype-fcitx
   cmake \
