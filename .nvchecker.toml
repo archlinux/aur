@@ -1,0 +1,5 @@
+[steamfetch-bin]
+source = "github"
+github = "unhappychoice/steamfetch"
+use_latest_release = true
+prefix = "v"
