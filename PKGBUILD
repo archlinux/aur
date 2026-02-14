@@ -1,7 +1,7 @@
 # Maintainer: Rain Xelelo <rxelelo@outlook.com>
 
 pkgname=tclient-ddnet
-pkgver=10.8.1
+pkgver=10.8.4
 pkgrel=1
 pkgdesc="Extended DDNet Teeworlds client."
 arch=('x86_64')
@@ -10,11 +10,11 @@ license=()
 depends=('freetype2' 'opusfile' 'curl' 'glew' 'wavpack' 'ffmpeg' 'libnotify' 'miniupnpc' 'sqlite' 'mariadb-libs' 'vulkan-icd-loader')
 checkdepends=('gmock')
 optdepends=('ddnet-maps-git: All the maps used on the official DDNet Servers.'
-            'discord-game-sdk: Enable rich presence in Discord desktop client.')
+    'discord-game-sdk: Enable rich presence in Discord desktop client.')
 backup=('usr/share/ddnet/data/autoexec_server.cfg')
 install="tclient.install"
 source=("https://github.com/TaterClient/TClient/releases/download/V$pkgver/TClient-ubuntu.tar.xz" "tclient.png")
-sha256sums=('f7d515a3c1945e35bf92c82059ca3e3a759016ea263f69eb972f8ff8a311487c'
+sha256sums=('48933872be06deb45026af0b2e4943f31ab1da69db8b00681567faeab16189fa'
             '29ecb3376c3fe0a56af495f71754c72c54f3e7f97031446e23a355833b954b65')
 
 prepare() {
@@ -25,18 +25,17 @@ prepare() {
     chmod +x tclient/game/DDNet
 }
 
-
 package() {
     install -dm0755 "$pkgdir/opt"
     cp -a tclient "$pkgdir/opt/$pkgname"
     install -dm0755 "$pkgdir/usr/bin"
     install -dm0755 "$pkgdir/usr/share/applications/"
-    cat > "$pkgdir/usr/bin/tclient" << EOF
+    cat >"$pkgdir/usr/bin/tclient" <<EOF
 #!/bin/bash
 exec /opt/$pkgname/game/DDNet
 EOF
     chmod +x $pkgdir/usr/bin/tclient
-    cat > "$pkgdir/usr/share/applications/tclient.desktop" << EOF
+    cat >"$pkgdir/usr/share/applications/tclient.desktop" <<EOF
 [Desktop Entry]
 Version=$pkgver
 Name=Tater Client
