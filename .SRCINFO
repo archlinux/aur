@@ -1,16 +1,16 @@
 pkgbase = clutter-gtk
 	pkgdesc = Clutter integration with GTK+
 	pkgver = 1.8.4
-	pkgrel = 4
-	url = https://gitlab.gnome.org/GNOME/clutter-gtk
+	pkgrel = 5
+	url = https://gitlab.gnome.org/Archive/clutter-gtk
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.1
+	makedepends = git
 	makedepends = gobject-introspection
 	makedepends = gtk-doc
-	makedepends = git
 	makedepends = meson
 	depends = clutter
-	source = git+https://gitlab.gnome.org/GNOME/clutter-gtk.git#commit=77483ba46384adde76f6c4599eae77eeec852c56
-	sha256sums = SKIP
+	source = clutter-gtk-1.8.4::git+https://gitlab.gnome.org/Archive/clutter-gtk.git#commit=77483ba46384adde76f6c4599eae77eeec852c56
+	sha256sums = 31f1beba9da45d87c602e3241a630f6131bb3c7f9a8dc5d8af442271305b9013
 
 pkgname = clutter-gtk
