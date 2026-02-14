@@ -1,5 +1,5 @@
 pkgbase = omarchy-installers
-	pkgdesc = Fuzzy-finder installers for pacman and AUR packages (because clicking is too mainstream)
+	pkgdesc = A port of Omarchy's AUR and pacman package installers for Arch-based distros
 	pkgver = 1.0.0
 	pkgrel = 3
 	url = https://github.com/kantiankant/Omarchy_installers

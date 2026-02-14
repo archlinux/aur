@@ -2,7 +2,7 @@
 pkgname=omarchy-installers
 pkgver=1.0.0
 pkgrel=3
-pkgdesc="Fuzzy-finder installers for pacman and AUR packages (because clicking is too mainstream)"
+pkgdesc="A port of Omarchy's AUR and pacman package installers for Arch-based distros"
 arch=('any')
 url="https://github.com/kantiankant/Omarchy_installers"
 license=('GPL3')
