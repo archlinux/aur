@@ -1,11 +1,17 @@
 post_install() {
-  echo "Compiling GSettings schemas..."
-  glib-compile-schemas /usr/share/glib-2.0/schemas || echo "Warning: Schema compilation failed"
-  echo "Updating icon cache..."
-  gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
-  echo "Updating desktop database..."
-  update-desktop-database -q
-  echo "Post-install complete."
+  # Ensure GSettings schemas are compiled
+  # This is critical for app startup - force compilation even if hooks ran
+  if [ -d /usr/share/glib-2.0/schemas ]; then
+    glib-compile-schemas /usr/share/glib-2.0/schemas
+  fi
+  
+  # Update icon cache (redundant with pacman hooks but harmless)
+  if [ -d /usr/share/icons/hicolor ]; then
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
+  fi
+  
+  # Update desktop database (redundant with pacman hooks but harmless)
+  update-desktop-database -q 2>/dev/null || true
 }
 
 post_upgrade() {
@@ -13,7 +19,10 @@ post_upgrade() {
 }
 
 post_remove() {
-  glib-compile-schemas /usr/share/glib-2.0/schemas
-  gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
-  update-desktop-database -q
+  # Recompile schemas after removal to clean up
+  if [ -d /usr/share/glib-2.0/schemas ]; then
+    glib-compile-schemas /usr/share/glib-2.0/schemas 2>/dev/null || true
+  fi
+  gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
+  update-desktop-database -q 2>/dev/null || true
 }
