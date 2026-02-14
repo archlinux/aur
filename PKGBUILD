@@ -1,14 +1,14 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mullvad-ping
 pkgver=0.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Gets the list of Mullvad servers with the best latency according to ping"
 arch=('x86_64' 'aarch64')
 url="https://github.com/grant0417/mullvad-ping"
 license=('MIT')
 depends=(
-  'gcc-libs'
   'iputils'
+  'libgcc'
 )
 makedepends=(
   'deno'
