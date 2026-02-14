@@ -1,6 +1,6 @@
 pkgbase = kuro-git
 	pkgdesc = An elegant Microsoft ToDo desktop client for Linux (a fork of Ao).(Use system-wide electron)
-	pkgver = 9.1.0.r1.g30d091f
+	pkgver = 9.1.2.r1.g48df1e0
 	pkgrel = 1
 	url = https://github.com/davidsmorais/kuro
 	arch = x86_64
@@ -11,8 +11,9 @@ pkgbase = kuro-git
 	makedepends = nvm
 	makedepends = gendesk
 	makedepends = curl
+	makedepends = jq
 	depends = electron37
-	provides = kuro=9.1.0
+	provides = kuro=9.1.2
 	conflicts = kuro
 	source = kuro.git::git+https://github.com/davidsmorais/kuro.git
 	source = kuro.sh
