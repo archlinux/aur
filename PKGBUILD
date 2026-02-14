@@ -6,7 +6,7 @@ pkgname=(
 	lib32-wivrn-server
 	wivrn-dashboard
 )
-pkgver=26.2.1
+pkgver=26.2.2
 pkgrel=1
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
@@ -14,7 +14,6 @@ url="https://github.com/WiVRn/WiVRn"
 license=("GPL-3.0-or-later")
 
 _depends_server=(
-	"gcc-libs"
 	"glibc"
 	"avahi"
 	"cairo"
@@ -22,11 +21,13 @@ _depends_server=(
 	"glib2"
 	"libarchive"
 	"libbsd"
+	"libgcc"
 	"libgl"
 	"libnotify"
 	"libpipewire"
 	"libpng"
 	"librsvg"
+	"libstdc++"
 	"libx11"
 	"libxcb"
 	"openssl"
@@ -43,13 +44,15 @@ _depends_lib32_server=(
 )
 
 _depends_dashboard=(
-	"gcc-libs"
 	"glibc"
 	"hicolor-icon-theme"
 	"ki18n"
 	"kcoreaddons"
 	"kiconthemes"
 	"kirigami"
+	"kirigami-addons"
+	"libgcc"
+	"libstdc++"
 	"polkit"
 	"qcoro"
 	"qqc2-desktop-style"
@@ -77,12 +80,11 @@ makedepends=(
 
 	# Dashboard
 	"extra-cmake-modules"
-	"kcoreaddons"
 	"qt6-tools"
 )
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/WiVRn/WiVRn/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bb2c7b71fe7f50f6eaabe8bf8fca6a4ed27439de6a3173576fadbab5ed5623fd')
+sha256sums=('a1c1d3d85425be1be3102b8da61924b0103d5fa98551dac1a2b8e2932ccbc461')
 
 build() {
 	cd "WiVRn-$pkgver"
