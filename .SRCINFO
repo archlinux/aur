@@ -2,23 +2,23 @@ pkgbase = clutter-gst
 	pkgdesc = GStreamer bindings for clutter
 	pkgver = 3.0.27
 	pkgrel = 5
-	url = https://gitlab.gnome.org/GNOME/clutter-gst
+	url = https://gitlab.gnome.org/Archive/clutter-gst
 	arch = x86_64
-	license = LGPL
-	makedepends = gobject-introspection
-	makedepends = gtk-doc
+	license = LGPL-2.1
 	makedepends = git
-	makedepends = gst-plugins-good
 	makedepends = glib2-devel
+	makedepends = gobject-introspection
+	makedepends = gst-plugins-good
+	makedepends = gtk-doc
 	depends = clutter
-	depends = gst-plugins-base-libs
-	depends = libxdamage
-	depends = libgudev
 	depends = gdk-pixbuf2
+	depends = gst-plugins-base-libs
+	depends = libgudev
+	depends = libxdamage
 	optdepends = gst-plugins-good: Video camera capture
-	source = git+https://gitlab.gnome.org/GNOME/clutter-gst.git#commit=01a461da1bdb3b29edd2d198b877ec0765af1f39
+	source = clutter-gst-3.0.27::git+https://gitlab.gnome.org/Archive/clutter-gst.git#commit=01a461da1bdb3b29edd2d198b877ec0765af1f39
 	source = 0001-video-sink-Remove-RGBx-BGRx-support.patch
-	sha256sums = SKIP
+	sha256sums = ad670fdc9a1eb3f10eab5f8c9032a42ae436efde4cc253891dfff303c0a5a556
 	sha256sums = 818d20462b9ac623e036d205dc28c07e17045f913fa652a79f73996310be067a
 
 pkgname = clutter-gst
