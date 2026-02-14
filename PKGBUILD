@@ -4,11 +4,11 @@
 pkgname=shared-mime-info
 _commit=9a6d6b8e963935f145f3a1ef446552de6996dada # = master 2023-11-12 = v2.4
 pkgver=2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Freedesktop.org Shared MIME Info"
 arch=('x86_64')
 license=('GPL-2.0-or-later')
-depends=('libxml2' 'glib2' 'glibc' 'gcc-libs')
+depends=('libxml2' 'glib2' 'glibc' 'libstdc++' 'libgcc')
 makedepends=('gettext' 'xmlto' 'docbook-xsl' 'git' 'meson')
 install=shared-mime-info.install
 # https://gitlab.freedesktop.org/xdg/shared-mime-info

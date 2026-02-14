@@ -1,11 +1,11 @@
 pkgbase = shared-mime-info
 	pkgdesc = Freedesktop.org Shared MIME Info
 	pkgver = 2.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.freedesktop.org/wiki/Specifications/shared-mime-info-spec/
 	install = shared-mime-info.install
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = gettext
 	makedepends = xmlto
 	makedepends = docbook-xsl
@@ -14,7 +14,8 @@ pkgbase = shared-mime-info
 	depends = libxml2
 	depends = glib2
 	depends = glibc
-	depends = gcc-libs
+	depends = libstdc++
+	depends = libgcc
 	options = !makeflags
 	source = git+https://gitlab.freedesktop.org/xdg/shared-mime-info.git#commit=9a6d6b8e963935f145f3a1ef446552de6996dada
 	source = git+https://gitlab.freedesktop.org/xdg/xdgmime.git#commit=92f6a09fda2b23c2ab95cede8eb0612ca96bd0f7
