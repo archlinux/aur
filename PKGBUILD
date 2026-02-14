@@ -1,9 +1,9 @@
 # Maintainer: Fabian Bornschein <fabiscafe-at-mailbox-dot-org>
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-
+# from: git
 pkgname=libpeas138
-pkgver=1.38.0.alpha
-pkgrel=5
+pkgver=1.38.1
+pkgrel=1
 pkgdesc="GObject Plugin System"
 url="https://wiki.gnome.org/Projects/Libpeas"
 arch=(x86_64)
@@ -42,6 +42,10 @@ b2sums=('SKIP')
 
 prepare() {
   cd libpeas
+}
+
+pkgver() {
+  git -C libpeas describe --tags | sed 's/^.*-\([0-9]\.[0-9.]*\).*$/\1/g'
 }
 
 build() {

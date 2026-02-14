@@ -1,7 +1,7 @@
 pkgbase = libpeas138
 	pkgdesc = GObject Plugin System
-	pkgver = 1.38.0.alpha
-	pkgrel = 5
+	pkgver = 1.38.1
+	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/Libpeas
 	arch = x86_64
 	license = LGPL-2.1-or-later
@@ -24,7 +24,7 @@ pkgbase = libpeas138
 	optdepends = python-gobject: Python loader
 	provides = libpeas-1.0.so
 	provides = libpeas-gtk-1.0.so
-	provides = libpeas=1.38.0.alpha
+	provides = libpeas=1.38.1
 	conflicts = libpeas
 	source = git+https://gitlab.gnome.org/GNOME/libpeas.git#branch=1.38
 	b2sums = SKIP
