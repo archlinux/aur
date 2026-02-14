@@ -12,9 +12,13 @@ makedepends=("cmake")
 source=("https://github.com/y-256/libdivsufsort/archive/${pkgver}.tar.gz"
         "0001-update-cmake_minimum_required-to-VERSION-3.5.patch")
 
-build() {
+prepare() {
     cd "${pkgname}-${pkgver}"
     patch -p1 -i "${srcdir}/0001-update-cmake_minimum_required-to-VERSION-3.5.patch"
+}
+
+build() {
+    cd "${pkgname}-${pkgver}"
     cmake -S . -B . -DCMAKE_BUILD_TYPE="Release" -DCMAKE_INSTALL_PREFIX="/usr" \
           -DBUILD_DIVSUFSORT64=1
     make
