@@ -2,17 +2,17 @@
 # Maintainer: Rafael Silva (perigoso) <perigoso at riseup.net>
 
 pkgname='firefox-extension-canvasblocker-bin'
-pkgver=1.11
+pkgver=1.12
 pkgrel=2
 pkgdesc='Alters some JS APIs to prevent fingerprinting.'
 arch=('any')
 url='https://github.com/kkapsner/CanvasBlocker/'
 license=('MPL-2.0')
 depends=('firefox')
-_source_file_id=4413485
+_source_file_id=4691016
 source=('canvasblocker.xpi'::"https://addons.mozilla.org/firefox/downloads/file/${_source_file_id}/canvasblocker-${pkgver}.xpi")
 noextract=('canvasblocker.xpi')
-sha256sums=('0479b7315ce2c195fd2fbd519c50866030083abdb6d895c1b162d52762a676ec')
+sha256sums=('0698d92c4bd2d190b2f4025613bf4bd3dba40910d58ab4cf1b32f36637a244c9')
 
 package() {
   install -Dm644 'canvasblocker.xpi' "${pkgdir}/usr/lib/firefox/browser/extensions/CanvasBlocker@kkapsner.de.xpi"
