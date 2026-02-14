@@ -2,13 +2,21 @@
 
 pkgname=mightymike
 pkgver=3.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='High Powered Action Rescue in a Toy Store Gone Mad'
 arch=(x86_64 aarch64)
 url='https://github.com/jorio/mightymike'
 license=(CC-BY-NC-SA-4.0)
-depends=('sdl2' 'glu' 'hicolor-icon-theme')
-makedepends=('git' 'cmake')
+depends=(
+  sh
+  sdl2-compat
+  glibc
+  libgcc
+  libstdc++
+  libglvnd
+  hicolor-icon-theme
+)
+makedepends=(git cmake)
 source=(
   "$pkgname::git+$url#tag=v$pkgver"
   'github.com-jorio-Pomme::git+https://github.com/jorio/Pomme'
@@ -18,7 +26,7 @@ source=(
 b2sums=('0b5f2cee9aa77d233f76b2b61078de85ffe85cf28d6bea69163ebd127e75d34325d11f627ee89729b567b6c6b945e6ae8533d8a5146ee6325355ef75163941c2'
         'SKIP'
         '6cd424b2dc3628731e42ae22917cd51e2eb47178bb79ee5c77ae07f3cde10f9404b53c5bf4c2f444aac0ecb3363e5141fc9fd206307a1a2bf819315c5900dec8'
-        'f5a0b6aaf304db6e04e8487c84677f8dc1dc877ce384ef24faece43484c4872f2422f3c4dd016b3ec804d47d1635e6b289bc4f9d6d32a98e65063ef275792e34')
+        'f04603d5848e5ad8a9ee5621de23dae3a4babd7826d56ab6caacba290d4f912861511d129921831c2aa93a68ca3478f54966b671112f7cab7cd2a4dbc08bfabf')
 
 prepare() {
   cd "$pkgname"
