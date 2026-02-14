@@ -1,7 +1,7 @@
 pkgbase = omarchy-installers
 	pkgdesc = A port of Omarchy's AUR and pacman package installers for Arch-based distros
-	pkgver = 1.0.0
-	pkgrel = 3
+	pkgver = 1.0.2
+	pkgrel = 1
 	url = https://github.com/kantiankant/Omarchy_installers
 	arch = any
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = omarchy-installers
 	depends = pacman
 	optdepends = yay: for AUR package installation
 	optdepends = mlocate: for updating the locate database after installation
-	source = omarchy-installers-1.0.0.tar.gz::https://github.com/kantiankant/Omarchy_installers/archive/v1.0.0.tar.gz
-	sha256sums = bdd72b8b11cb69b072018ef037adfe878e8a6c7e4c1b0adfa28b208fc269bd04
+	source = omarchy-installers-1.0.2.tar.gz::https://github.com/kantiankant/Omarchy_installers/archive/v1.0.2.tar.gz
+	sha256sums = d9ec1752c7928c7b8211f7171ea2640e08cf2d0e4ca48347dbdb591e4ab44262
 
 pkgname = omarchy-installers
