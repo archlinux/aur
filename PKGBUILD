@@ -11,11 +11,16 @@ url="https://pypi.python.org/pypi/monotonic"
 license=('Apache-2.0')
 arch=('any')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/atdt/monotonic/archive/$pkgver.tar.gz")
 sha512sums=('9bb01f4b34ce10b90dee2e49dd70bc37462333e0da9490893bf642ceea9bed5f9bdbd8f59c58350609ac4c89809039d7375f1f1583ab8fbf9c13d4064849ea18')
 
+build() {
+  cd "$srcdir/$_pkgname-$pkgver"
+  python -m build --wheel --no-isolation
+}
+
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
