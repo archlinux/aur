@@ -1,0 +1,18 @@
+post_install() {
+    if [ ! -f /etc/X11/xorg.conf.d/99-coolbits.conf ]; then
+        mkdir -p /etc/X11/xorg.conf.d
+        printf 'Section "Device"\n  Identifier "Device0"\n  Driver "nvidia"\n  Option "Coolbits" "31"\nEndSection\n' > /etc/X11/xorg.conf.d/99-coolbits.conf
+    fi
+    echo ">>> install completed"
+    echo ">>> On first launch you'll be asked for your password once to set up permissions."
+}
+
+post_remove() {
+    rm -f /etc/sudoers.d/gpu-control
+    if systemctl is-enabled gpu-control.service > /dev/null 2>&1; then
+        systemctl disable gpu-control.service
+    fi
+    rm -f /etc/systemd/system/gpu-control.service
+    systemctl daemon-reload 2>/dev/null
+    echo ">>> GPU Control removed. Settings will return to defaults after reboot."
+}
