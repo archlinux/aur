@@ -1,6 +1,6 @@
 pkgbase = goonget
 	pkgdesc = CLI tool to fetch images/gifs/videos from rule34 and display them directly in terminal
-	pkgver = 0.2.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/LewdM3at/GoonGet
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = goonget
 	depends = python
 	depends = python-requests
 	depends = chafa
-	source = https://github.com/LewdM3at/GoonGet/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 25d9800d4062438b670762de8cfa62ab89b641e50fe39bc1c8a20a28161b598d
+	source = https://github.com/LewdM3at/GoonGet/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = 792077886e237ba9319521270f3f1ca037d509bb2977d3a05b923b7e1b1d351f
 
 pkgname = goonget
