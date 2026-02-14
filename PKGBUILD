@@ -1,9 +1,9 @@
 # Maintainer: Gustavo Sett <gustaavoribeeiro@hotmail.com>
 pkgname=win11-clipboard-history-bin
-pkgver=0.5.5
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Windows 11-style Clipboard History Manager for Linux"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/gustavosett/Windows-11-Clipboard-History-For-Linux"
 license=('MIT')
 depends=(
@@ -11,8 +11,10 @@ depends=(
     'gtk3'
     'libayatana-appindicator'
     'xclip'
+    'xdotool'
     'wl-clipboard'
     'acl'
+    'polkit'
 )
 optdepends=(
     'libappindicator-gtk3: Legacy tray icon support'
@@ -21,7 +23,9 @@ provides=('win11-clipboard-history')
 conflicts=('win11-clipboard-history')
 options=('!strip' '!debug')
 source_x86_64=("${url}/releases/download/v${pkgver}/win11-clipboard-history_${pkgver}_amd64.deb")
-sha256sums_x86_64=('5e8be91814773dff7f97c2510b75d6eeefcd330e45129eb7626df32de43b5b34')
+source_aarch64=("${url}/releases/download/v${pkgver}/win11-clipboard-history_${pkgver}_arm64.deb")
+sha256sums_x86_64=('15febeff122274d0857a310ff2774aae2cde07a5db792ed5695373162ad820c0')
+sha256sums_aarch64=('37790b7546e8a087e2d9fe49852ce3bca472bcffd9af97a59f2d681a55b3baaa')
 install="${pkgname}.install"
 
 package() {
