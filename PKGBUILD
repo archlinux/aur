@@ -15,10 +15,10 @@ optdepends=(
 source=("aur-installer.sh"
   "pacman-installer.sh")
 sha256sums=('4667454675d7a791e17d2f89c100405124247c3761c3918b43696543fd6d5d14'
-            '97a591b1301c9bcf262717fdbba14a3b510c19c763e0b5d3d4d27b35b1c08b5b')
+  '97a591b1301c9bcf262717fdbba14a3b510c19c763e0b5d3d4d27b35b1c08b5b')
 
 package() {
   # Install the scripts to /usr/bin
-  install -Dm755 "${srcdir}/aur-installer.sh" "${pkgdir}/usr/bin/aur-installer"
-  install -Dm755 "${srcdir}/pacman-installer.sh" "${pkgdir}/usr/bin/pacman-installer"
+  install -Dm755 "${srcdir}/aur-installer.sh" "${pkgdir}/usr/bin/aurfetch"
+  install -Dm755 "${srcdir}/pacman-installer.sh" "${pkgdir}/usr/bin/pacfetch"
 }
