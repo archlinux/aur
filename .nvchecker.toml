@@ -1,3 +1,4 @@
 [lib32-libsoup3]
 source = "git"
 git = "https://gitlab.gnome.org/GNOME/libsoup.git"
+include_regex = '\d+\.\d*[02468]\.\d+'
