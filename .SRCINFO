@@ -1,15 +1,16 @@
 pkgbase = lib32-libsquish
-	pkgdesc = DXT compression library
+	pkgdesc = DXT compression library (32-bit)
 	pkgver = 1.15
-	pkgrel = 2
-	url = https://sourceforge.net/projects/libsquish/
+	pkgrel = 3
+	url = https://sourceforge.net/projects/libsquish
 	arch = x86_64
 	license = MIT
-	makedepends = cmake
+	makedepends = setconf
+	depends = libsquish>=1.15
 	depends = lib32-gcc-libs
-	depends = libsquish
-	source = http://downloads.sourceforge.net/project/libsquish/libsquish-1.15.tgz
-	sha256sums = 628796eeba608866183a61d080d46967c9dda6723bc0a3ec52324c85d2147269
+	depends = lib32-glibc
+	noextract = libsquish-1.15.tgz
+	source = https://downloads.sourceforge.net/project/libsquish/libsquish-1.15.tgz
+	b2sums = d2cdf274baf9cf8890ee4c5c434448a34bc6d3d8967df6e2e9334fe1eff66ce5371597396c564c80a128709a8849f1f622d90aaf470eacc1ad67811cef38bd60
 
 pkgname = lib32-libsquish
-

@@ -1,37 +1,55 @@
-# Maintainer: Davorin Učakar <davorin.ucakar@gmail.com>
+# Maintainer: asyync1024 <asyync1024 at proton dot me>
+# Maintainer: Vitalii Kuzhdin <vitaliikuzhdin at gmail dot com>
+# Cotributor: Davorin Učakar <davorin dot ucakar at gmail dot com>
 
-pkgname=lib32-libsquish
+_pkgname="libsquish"
+pkgname="lib32-${_pkgname}"
 pkgver=1.15
-pkgrel=2
-pkgdesc='DXT compression library'
-depends=('lib32-gcc-libs' 'libsquish')
-makedepends=('cmake')
+pkgrel=3
+pkgdesc="DXT compression library (32-bit)"
 arch=('x86_64')
-url='https://sourceforge.net/projects/libsquish/'
+url="https://sourceforge.net/projects/libsquish"
 license=('MIT')
-source=("http://downloads.sourceforge.net/project/libsquish/libsquish-${pkgver}.tgz")
-sha256sums=('628796eeba608866183a61d080d46967c9dda6723bc0a3ec52324c85d2147269')
+depends=(
+    "${_pkgname}>=${pkgver}"
+    'lib32-gcc-libs'
+    'lib32-glibc'
+)
+makedepends=('setconf')
+_pkgsrc="${_pkgname}-${pkgver}"
+source=("https://downloads.sourceforge.net/project/${_pkgname}/${_pkgsrc}.tgz")
+noextract=("${_pkgsrc}.tgz")
+b2sums=('d2cdf274baf9cf8890ee4c5c434448a34bc6d3d8967df6e2e9334fe1eff66ce5371597396c564c80a128709a8849f1f622d90aaf470eacc1ad67811cef38bd60')
+
+prepare() {
+    mkdir -p "${_pkgsrc}"
+    bsdtar xzf "${_pkgsrc}.tgz" -C "${_pkgsrc}"
+
+    cd "${_pkgsrc}"
+    setconf config USE_OPENMP 0
+    setconf config USE_SHARED 1
+    setconf config USE_SSE 1
+    setconf libsquish.pc.in Version "${pkgver}"
+}
 
 build() {
-  rm -rf "$srcdir/build" && mkdir -p "$srcdir/build" && cd "$srcdir/build"
+    export CFLAGS+=" -m32"
+    export CXXFLAGS+=" -m32"
+    export LDFLAGS+=" -m32"
+    export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-  cmake \
-    -D CMAKE_BUILD_TYPE=Release \
-    -D CMAKE_INSTALL_PREFIX=/usr \
-    -D CMAKE_C_FLAGS="-march=i686 -m32 ${CFLAGS/-march=x86-64}" \
-    -D CMAKE_CXX_FLAGS="-march=i686 -m32 ${CXXFLAGS/-march=x86-64}" \
-    -D BUILD_SHARED_LIBS=ON \
-    ..
+    cd "${srcdir}/${_pkgsrc}"
 
-  make
+    make PREFIX='/usr' LIB_PATH='lib32'
 }
 
 package() {
-  cd "$srcdir/build"
+    cd "${srcdir}/${_pkgsrc}"
 
-  cmake -D CMAKE_INSTALL_PREFIX="$pkgdir/usr" -P cmake_install.cmake
-  mv "$pkgdir/usr/lib" "$pkgdir/usr/lib32"
-  rm -rf "$pkgdir/usr/include"
+    make INSTALL_DIR="${pkgdir}/usr" \
+        LIB_PATH='lib32' \
+        install
 
-  install -Dm 644 ../LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "${pkgdir}/usr"
+    rm -rf "bin" "include" "share"
 }
