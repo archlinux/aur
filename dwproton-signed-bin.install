@@ -1,7 +1,7 @@
 post_install() {
     echo ""
     echo "This AUR package is not officially maintained by Dawn Winery."
-    echo "Consider getting more information from their official website: https://dawn.wine/dawn-winery/dwproton"
+    echo "Consider getting more information from their official website: https://dawn.wine/dawn-winery/dawn-signed"
     echo ""
 }
 
