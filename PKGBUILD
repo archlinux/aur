@@ -1,7 +1,7 @@
 # Maintainer: Avenge Media LLC <avengemediallc at gmail dot com>
 pkgname=dms-shell-bin
 pkgver=1.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=(x86_64 aarch64)
 url='https://github.com/AvengeMedia/DankMaterialShell'
@@ -15,7 +15,8 @@ optdepends=('cava: Audio visualizer'
             'qt6-multimedia: Sound effect support'
             'power-profiles-daemon: Set power profile'
             'qt6ct: Qt6 application theming'
-            'wtype: Paste from clipboard history and plugins')
+            'wtype: Paste from clipboard history and plugins'
+            'cups-pk-helper: Printer Management')
 provides=(dms-shell)
 conflicts=(dms-shell-git dms-shell)
 
