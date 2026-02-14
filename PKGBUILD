@@ -9,10 +9,12 @@ url="https://github.com/y-256/libdivsufsort"
 license=("MIT")
 depends=("glibc")
 makedepends=("cmake")
-source=("https://github.com/y-256/libdivsufsort/archive/${pkgver}.tar.gz")
+source=("https://github.com/y-256/libdivsufsort/archive/${pkgver}.tar.gz"
+        "0001-update-cmake_minimum_required-to-VERSION-3.5.patch")
 
 build() {
     cd "${pkgname}-${pkgver}"
+    patch -p1 -i "${srcdir}/0001-update-cmake_minimum_required-to-VERSION-3.5.patch"
     cmake -S . -B . -DCMAKE_BUILD_TYPE="Release" -DCMAKE_INSTALL_PREFIX="/usr" \
           -DBUILD_DIVSUFSORT64=1
     make
@@ -26,4 +28,5 @@ package() {
     rm -f "${pkgdir}"/usr/lib/*.la
 }
 
-sha256sums=("9164cb6044dcb6e430555721e3318d5a8f38871c2da9fd9256665746a69351e0")
+sha256sums=("9164cb6044dcb6e430555721e3318d5a8f38871c2da9fd9256665746a69351e0"
+            "SKIP")

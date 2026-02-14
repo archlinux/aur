@@ -1,0 +1,23 @@
+From a1760172f70a313d0acdb77b0759db5450a3eb64 Mon Sep 17 00:00:00 2001
+From: Vee Satayamas <veerpub@pm.me>
+Date: Sat, 14 Feb 2026 08:16:35 +0700
+Subject: [PATCH] Update cmake_minimum_required to VERSION 3.5
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7ceace3..6a3b919 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ ### cmake file for building libdivsufsort Package ###
+-cmake_minimum_required(VERSION 2.4)
++cmake_minimum_required(VERSION 3.5)
+ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules")
+ include(AppendCompilerFlags)
+ 
+-- 
+2.53.0
+
