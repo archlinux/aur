@@ -3,7 +3,7 @@
 
 pkgname=ctrlr
 pkgver=5.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Control any MIDI enabled hardware: synthesizers, drum machines, samplers, effects. Create custom user interfaces. Host them as VST3 plugins in your favorite DAWs."
 arch=('x86_64')
 url="https://github.com/RomanKubiak/ctrlr"
@@ -35,6 +35,9 @@ prepare() {
 	# Fix bfd_copy_private_section_data for binutils >= 2.44 (now requires 5 args)
 	sed -i 's/bfd_copy_private_section_data(ihandle, iscn, ohandle, oscn)/bfd_copy_private_section_data(ihandle, iscn, ohandle, oscn, NULL)/g' \
 		Source/Misc/libr-bfd.c
+
+	# Disable JUCE_DEBUG (causes jassertfalse to abort on non-fatal assertions)
+	sed -i 's/JUCE_DEBUG=1/JUCE_DEBUG=0/' CMakeLists.txt
 }
 
 build() {
