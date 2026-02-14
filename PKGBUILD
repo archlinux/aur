@@ -6,12 +6,12 @@ conflicts=(
     "protonmail-bridge-core"
 )
 pkgver=3.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An IMAP/SMTP bridge to a ProtonMail account (patched, stores secrets in a file)"
 arch=("x86_64")
 url="https://protonmail.com/bridge/"
 license=("GPL3")
-depends=()
+depends=('libfido2')
 makedepends=("go>=2:1.24.4")
 options=("!strip")
 source=(

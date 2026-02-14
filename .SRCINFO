@@ -1,11 +1,12 @@
 pkgbase = protonmail-bridge-nokeychain
 	pkgdesc = An IMAP/SMTP bridge to a ProtonMail account (patched, stores secrets in a file)
 	pkgver = 3.22.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://protonmail.com/bridge/
 	arch = x86_64
 	license = GPL3
 	makedepends = go>=2:1.24.4
+	depends = libfido2
 	provides = protonmail-bridge
 	conflicts = protonmail-bridge
 	conflicts = protonmail-bridge-core
