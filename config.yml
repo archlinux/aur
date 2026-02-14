@@ -1,0 +1,32 @@
+# ./undead -C ./config.yml -p openrouter
+
+# Global
+UNDEAD_ENDPOINT: "https://openrouter.ai/api/v1"
+UNDEAD_MODEL: "x-ai/grok-4-fast"
+UNDEAD_API_KEY: ""
+UNDEAD_SYSTEM: ""
+UNDEAD_TEMPERATURE: ""
+UNDEAD_MAX_TOKENS: ""
+UNDEAD_WORKSPACE: ""
+UNDEAD_MCP: ""
+
+presets:
+   "mylocal":
+      UNDEAD_ENDPOINT: "http://192.168.0.124:8888/v1"
+      UNDEAD_MODEL: "local-model"
+      UNDEAD_API_KEY: ""
+      UNDEAD_SYSTEM: ""
+      UNDEAD_TEMPERATURE: ""
+      UNDEAD_MAX_TOKENS: ""
+      UNDEAD_WORKSPACE: ""
+      UNDEAD_MCP: ""
+
+   "openrouter":
+      UNDEAD_ENDPOINT: "https://openrouter.ai/api/v1"
+      UNDEAD_MODEL: "x-ai/grok-4-fast"
+      UNDEAD_API_KEY: ""
+      UNDEAD_SYSTEM: ""
+      UNDEAD_TEMPERATURE: ""
+      UNDEAD_MAX_TOKENS: ""
+      UNDEAD_WORKSPACE: ""
+      UNDEAD_MCP: ""
