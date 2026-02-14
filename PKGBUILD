@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=topgrade-git
-pkgver=16.1.1.r5.g294a90a
+pkgver=16.9.0.r29.g75f158c
 pkgrel=1
 pkgdesc="Upgrade all the things"
 arch=('x86_64' 'aarch64')
 url="https://topgrade-rs.github.io"
 license=('GPL-3.0-or-later')
-depends=('gcc-libs')
+depends=('libgcc')
 makedepends=(
   'cargo'
   'git'
@@ -25,7 +25,7 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {

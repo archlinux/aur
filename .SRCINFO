@@ -1,6 +1,6 @@
 pkgbase = topgrade-git
 	pkgdesc = Upgrade all the things
-	pkgver = 16.1.1.r5.g294a90a
+	pkgver = 16.9.0.r29.g75f158c
 	pkgrel = 1
 	url = https://topgrade-rs.github.io
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = topgrade-git
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	makedepends = git
-	depends = gcc-libs
+	depends = libgcc
 	provides = topgrade
 	conflicts = topgrade
 	source = git+https://github.com/topgrade-rs/topgrade.git
