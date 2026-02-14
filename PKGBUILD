@@ -3,8 +3,8 @@
 # Contributor: Robin Candau <antiz@archlinux.org>
 
 pkgname=mingw-w64-libplacebo
-pkgver=7.351.0
-pkgrel=2
+pkgver=7.360.0
+pkgrel=1
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives (mingw-w64)'
 url='https://github.com/haasn/libplacebo'
 arch=('any')
@@ -15,21 +15,15 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-meson' 'mingw-w64-wine' 'ninja' 'mingw-w
              'glad' 'nuklear' 'python' 'python-setuptools' 'python-mako' 'python-markupsafe' 'python-jinja')
 #provides=('libplacebo.so')
 source=(https://code.videolan.org/videolan/libplacebo/-/archive/v${pkgver}/libplacebo-v${pkgver}.tar.gz
-        vulkan-python-xml.patch
         skip-vulkan-test.patch)
-sha512sums=('325e14b783aafdd0120abc6125d3949d60e2336fba3cd8d9aefececf93005a8333e5e6c53d6e54bb4c19e4a29981c9014f303fb48b5b89383ca948f64e7e6449'
-            '2a58fa430f2422c1be18c19eefecd6e3a4faff1a44758a98335f66e1b7972f458dd2dd9433efd48be5179c29fc2b907e1ac16aafd59a922cff4ef5bee7c09d4f'
+sha512sums=('61dc54e673e2d454e761768f77a3f45eeaba6bc70d4f925fa880c63ba69c9ce70b0cc7006a96f59c4abcf26e998c91ee2e04eb66b87c39eba3d09fafda7a2117'
             '9828cf93bdc0502a2ace4d143058bfb85244573118a008ed3c768e13f2ac35a586e46668032656e7488a51416500515b1f0c0ae339cb93cc8ab8825bb74b835a')
-b2sums=('631b292b789b44e51a1b7352f07c6eb8010c372e3562af49b670b7bac3f41b1a1b0100bd6b15988626831ecfad5bc328cbca1fccae45cb053172417f29673a00'
-        '9b89a59ea124f25ca77edbeee67b13c786ea7855b912f441ba6835f5b07f43a25d0c90e2a4ac297981e43e0ba039b51d58bd2402d935f679bbb623eb2aee3bff'
+b2sums=('67504a5026e2646b53eb9e1eeb9b7925121fdb32bb7ca455fb1046802766ff0cb1f62c66e58c32cb53cc5fb8ed8b487000d430380210c6e534460c5e593f371d'
         '71e770824e4898b730b577f376c75dd29c6ef371fe8a388df5717fe539f19345bc77aff30e0bdaea8800785f553df36628b7b74b3da9a83d22d83e78fdfc8ac9')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/libplacebo-v${pkgver}"
-
-  # https://gitweb.gentoo.org/repo/gentoo.git/tree/media-libs/libplacebo/files/libplacebo-7.351.0-vulkan-python-xml.patch
-  patch -Np1 -i "${srcdir}/vulkan-python-xml.patch"
 
   # skip vulkan test as it fails with
   #   Unhandled exception: unimplemented function vulkan-1.dll.vkGetInstanceProcAddr@8 called in 32-bit code (0x7bd5bb78).
