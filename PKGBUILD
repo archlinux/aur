@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=145.0.7632.45
+pkgver=145.0.7632.75
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -30,16 +30,14 @@ options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver-lite.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         chromium-138-nodejs-version-check.patch
-        chromium-145-fix-missing-gn-functions.patch
         chromium-145-fix-SYS_SECCOMP.patch
         ungoogled-chromium-145-build-with-wasm-rollup.patch
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('a7ce8bd85d36e6c01d382e71c9018b0d118553a848e32dd399aea2e437476be1'
+sha256sums=('e9db10f2065fda0ee715c1f41fa110cccc4c800a2d7d9a5f8f355b2e210f377f'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e'
-            '9cbd93af850642d48ff86da9ac82c6d0e1cc294b3cfdc324abe5b55afa9df3cb'
             '4fc040a0656a0a524dd8ad090cd129fc5b6cb21adcc66be82080165789e8c13e'
             '45fa20cc27ef0aa00d654d0bac84bfaa8d8090b5f8aec49cc2e8d7249d3cd7ba'
             'ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863'
@@ -123,9 +121,6 @@ prepare() {
 
   # Increase _FORTIFY_SOURCE level to match Arch's default flags
   patch -Np1 -i ../increase-fortify-level.patch
-
-  # Fix gn missing some functions
-  patch -Np1 -i ../chromium-145-fix-missing-gn-functions.patch
 
   # Fix npm cannot find rollup
   patch -Np1 -i ../ungoogled-chromium-145-build-with-wasm-rollup.patch
