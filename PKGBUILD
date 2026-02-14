@@ -1,13 +1,14 @@
+# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=vaping
 pkgver=1.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A healthy alternative to SmokePing!'
 arch=('any')
 url="https://github.com/20c/vaping"
-license=('Apache')
+license=('Apache-2.0')
 depends=(
 	'python-pid'
 	'python-daemon'
