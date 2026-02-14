@@ -1,14 +1,13 @@
 pkgbase = wooting-profile-switcher-bin
 	pkgdesc = Automatically switch Wooting keyboard profiles based on focused window
-	pkgver = 2.3.5
-	pkgrel = 2
+	pkgver = 3.0.0
+	pkgrel = 1
 	url = https://github.com/ShayBox/wooting-profile-switcher
 	arch = x86_64
 	license = MIT
 	depends = libhidapi-hidraw.so
-	depends = libwebkit2gtk-4.1.so
-	depends = wootility-lekker
-	source = https://github.com/ShayBox/wooting-profile-switcher/releases/download/2.3.5/wooting-profile-switcher_2.3.5_amd64.deb
-	sha512sums = 2596f5ddcb20a418aebe27d914358878a5bcac48cdc92da08933485143ff6b6bd9f0a6e160a9b83ac8187a5eed4eac90fa0e732c4c30c5b6ef157c53863653c1
+	depends = wootility
+	source = https://github.com/ShayBox/wooting-profile-switcher/releases/download/3.0.0/wooting-profile-switcher_3.0.0_amd64.deb
+	sha512sums = c1bc96611d718c122981a37ecbeb3fd2c0aba536245e6a8e784173273f68cc5b929b462298d9e5864c0cad7ca1449398b5f7e267f6c9e0ed0075638ad9881f84
 
 pkgname = wooting-profile-switcher-bin
