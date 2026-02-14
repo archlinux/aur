@@ -10,12 +10,12 @@ pkgname=(netron)
 ##pkgname+=(netron-cli)
 pkgdesc='Visualizer for neural network, deep learning, and machine learning models'
 pkgver=8.5.5
-pkgrel=1
+pkgrel=2
 url='https://netron.app/'
 arch=(x86_64)
 license=(MIT)
-depends=(python)
-makedepends=(gendesk npm python-setuptools python-build python-installer python-wheel)
+depends=(python libxcrypt-compat)
+makedepends=(gendesk npm python-setuptools python-build python-installer python-wheel libxcrypt-compat)
 optdepends=(
   'python-onnx: serializing ONNX models'
   'python-pytorch: serializing PyTorch models'
@@ -35,6 +35,7 @@ prepare() {
 
 build() {
   cd "${pkgbase}-${pkgver}"
+  export ELECTRON_BUILDER_SKIP_DEFAULT_FPM=1
   npm run clean
   npm run build python
   npm run build electron
