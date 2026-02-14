@@ -1,0 +1,20 @@
+pkgbase = ttylag-bin
+	pkgdesc = Simulate laggy SSH, flaky 3G, or 9600 baud serial links for local terminal apps
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/cbrunnkvist/ttylag
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = ttylag
+	conflicts = ttylag
+	source = LICENSE-0.1.5::https://raw.githubusercontent.com/cbrunnkvist/ttylag/0.1.5/LICENSE
+	source = README-0.1.5.md::https://raw.githubusercontent.com/cbrunnkvist/ttylag/0.1.5/README.md
+	sha256sums = 75a42de1167a9423a25c67271322d6e7c501a4625c2e52974e33ac44451284d0
+	sha256sums = 0a0bd1ea5cd1c5d7ca7bdefa9b065569ba5a956334d90f7aa4e097f8cc023a03
+	source_x86_64 = ttylag-x86_64-0.1.5.tgz::https://github.com/cbrunnkvist/ttylag/releases/download/0.1.5/ttylag_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 1a0edb29318c7cebd32e882867c3d7879d52f40c95dda7c35c9eedd2c05d04c6
+	source_aarch64 = ttylag-aarch64-0.1.5.txz::https://github.com/cbrunnkvist/ttylag/releases/download/0.1.5/ttylag_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 6dd79e59395d4f669cf40f49aafe82027ec0505eafc315067a2dc21dc28e6573
+
+pkgname = ttylag-bin

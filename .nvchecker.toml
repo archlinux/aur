@@ -1,0 +1,4 @@
+[ttylag-bin]
+source = "github"
+github = "cbrunnkvist/ttylag"
+use_latest_release = true
