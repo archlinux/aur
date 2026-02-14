@@ -6,7 +6,7 @@ pkgname=(
   czkawka-gui
   krokiet
 )
-pkgver=10.0.0
+pkgver=11.0.0
 pkgrel=0.1
 pkgdesc='Multi functional app to find duplicates, empty folders, similar images etc.'
 url='https://github.com/qarmin/czkawka'
@@ -18,8 +18,7 @@ arch=(
 )
 license=('LicenseRef-MIT AND GPL-3.0-only AND CC-BY-4.0')
 depends=(
-  bzip2
-  gcc-libs
+  libgcc
   glibc
   libheif
 )
@@ -29,16 +28,14 @@ makedepends=(
   rust
 
   # GUI (GTK4)
-  cairo
   gdk-pixbuf2
   glib2
   gtk4
   hicolor-icon-theme
-  pango
 )
 checkdepends=(xorg-server-xvfb)
 source=("git+https://github.com/qarmin/czkawka.git#tag=$pkgver")
-b2sums=('637b2894ebcc54b9d6dfc064d9e131023a4434ccbbbe7d8e8bb1127e4e924f17391def98b06987b39cba166042064a6003aa48d53f0ffce0206210c622e31844')
+b2sums=('149e6cce8427c6a6a7184b29b598355892eefd95a0edbc64decc7d4e7a4d58d88264ad5810bddadf102d9d23b435d9b90a12de0f5986413fdf96118efe0951a7')
 
 build() {
   cd ${pkgbase}
@@ -75,12 +72,10 @@ package_czkawka-cli() {
 
 package_czkawka-gui() {
   depends+=(
-    cairo
     gdk-pixbuf2
     glib2
     gtk4
     hicolor-icon-theme
-    pango
   )
   license=('LicenseRef-MIT AND CC-BY-4.0')
   pkgdesc+=" (Desktop App)"
