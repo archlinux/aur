@@ -1,6 +1,6 @@
 # Maintainer: Tony Tan <qwerasdnoob@gmail.com>
 pkgname=omarchy-installers
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A port of Omarchy's AUR and pacman package installers for Arch-based distros"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=(
   'mlocate: for updating the locate database after installation'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kantiankant/Omarchy_installers/archive/v${pkgver}.tar.gz")
-sha256sums=('d9ec1752c7928c7b8211f7171ea2640e08cf2d0e4ca48347dbdb591e4ab44262')
+sha256sums=('251ef7d5897b066c94ef929510e3273f7740e6ea9bc4a73818e5d19d099bcda3')
 
 package() {
   cd "${srcdir}/Omarchy_installers-${pkgver}"
