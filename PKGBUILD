@@ -38,8 +38,8 @@ optdepends=(
     'pipewire-alsa: for audio support'
     'pulse-native-provider: for audio support'
 )
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/godotengine/godot/archive/${pkgver}-stable.tar.gz")
-b2sums=('086dc97858e066e1510a108c7751186f5072fe7b41fdbc658957ebd8a5540d6ad34b54f410363bbe12244b2503ce4fd1d02d25c9d0bb6ab701610902b9df8f5b')
+source=("${_pkgname}-${pkgver}.tar.xz::https://github.com/godotengine/${_pkgname}/releases/download/${pkgver}-stable/${_pkgname}-${pkgver}-stable.tar.xz")
+b2sums=('a3f40dc0ad08733fa0e5eb1044e0c8075df6147592493593e70d4742f36a9f2e22a70f655cbb083509ce45b7767008d8786f1f3d01c5ff5d35761b390134e8fd')
 
 prepare() {
     cd "${_pkgname}-${pkgver}-stable"
