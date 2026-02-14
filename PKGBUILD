@@ -5,8 +5,8 @@ _root_dir=/opt/barmer-ecare
 
 
 pkgname="barmer-ecare-bin"
-pkgver=25.6.4
-pkgrel=4
+pkgver=25.10.2
+pkgrel=1
 pkgdesc='Desktopanwendung für die Elektronische Patientenakte der BARMER extrahiert aus dem snap packet der BARMER'
 arch=('x86_64')
 url='https://www.barmer.de/unsere-leistungen/leistungen-a-z/online-services/ecare-elektronische-patientenakte/ecare-fuer-pc-laptop-1056418'
