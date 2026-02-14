@@ -7,11 +7,11 @@ pkgbase = qwen-code
 	license = Apache-2.0
 	makedepends = npm
 	depends = nodejs
-	noextract = qwen-code-0.9.1.tgz
+	noextract = qwen-code-0.10.2.tgz
 	options = !lto
 	options = !strip
 	options = !debug
-	source = https://registry.npmjs.org/@qwen-code/qwen-code/-/qwen-code-0.9.1.tgz
-	sha256sums = 74afb3ab7d50f5a6a2bc0d9172846eb87e2112addf034be18bdc03ed05fa16a9
+	source = https://registry.npmjs.org/@qwen-code/qwen-code/-/qwen-code-0.10.2.tgz
+	sha256sums = b644c58bc659c5ad22ee30ad63ff2e2dd73eb9df9ebdb76426050a31c2e3c580
 
 pkgname = qwen-code
