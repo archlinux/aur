@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=ZERONE AI
+Exec=zerone-ai
+Icon=zerone-ai
+Terminal=false
+Type=Application
+Categories=Utility;Network;ArtificialIntelligence;
+Comment=Intelligent Chat Interface for Desktop

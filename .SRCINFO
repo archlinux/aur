@@ -1,7 +1,7 @@
 pkgbase = zerone-ai-bin
-	pkgdesc = ZERONE AI Desktop Application
+	pkgdesc = ZERONE AI Desktop Application - Intelligent Chat Interface
 	pkgver = 1.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/b2-3c/ZERONE-AI
 	arch = x86_64
 	license = ISC
@@ -12,6 +12,10 @@ pkgbase = zerone-ai-bin
 	depends = fuse2
 	options = !strip
 	source = https://github.com/b2-3c/ZERONE-AI/releases/download/v1.0.0/ZERONE-AI-1.0.0.AppImage
+	source = zerone-ai.desktop
+	source = zerone-ai.png
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = zerone-ai-bin
