@@ -1,9 +1,9 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-_sdk=9.0
+_sdk=10.0
 _Name="YoutubeDownloader"
 pkgname="${_Name,,}"
-pkgver=1.15.2
+pkgver=1.15.3
 pkgrel=1
 pkgdesc="Downloads videos and playlists from YouTube"
 arch=(
@@ -30,14 +30,14 @@ options=(
 _pkgsrc="${url##*/}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
         "${pkgname}_xdg_settings.patch")
-b2sums=('ade36fe6ba9d461b5852faaa15b23f463f806cfe8ddf2972e21c4300cc6e46ee912abea3bc7a5f5c30f38cba91addc61a9d6f00cb7025aa1cb9132cac4c71448'
+b2sums=('9d3bccfad5d5deef7d8e58bb21e7a6c7b9822d80123f365f5631ba0dc4af2a7d89f0d201c76c02336fbe1d1fe78916d4c902b3900e91a3061b54dc49278fdb44'
         '422e82520465e646ddc1a0f2d0dbd0c624141df292a5e6a5ebd4cee9c4025769ae518e8c373d35632ee804148b68de109232d64ebd33c455eb81d6dbf3663817')
 
 if   [ "${CARCH}" = 'aarch64' ]; then _msarch=arm64;
 elif [ "${CARCH}" = 'armv7h'  ]; then _msarch=arm;
 elif [ "${CARCH}" = 'x86_64'  ]; then _msarch=x64; fi
 
-_srcenv() {
+_source() {
   export NUGET_PACKAGES="${srcdir}/.nuget"
   export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
   export DOTNET_NOLOGO=true
@@ -45,7 +45,7 @@ _srcenv() {
 }
 
 prepare() {
-  _srcenv
+  _source
   local dotnet_restore_options=(
     --runtime "linux-${_msarch}"
     --locked-mode
@@ -64,7 +64,7 @@ prepare() {
 }
 
 build() {
-  _srcenv
+  _source
     local dotnet_publish_options=(
     --configuration Release
     --framework "net${_sdk}"
