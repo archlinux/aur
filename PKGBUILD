@@ -1,6 +1,6 @@
 # Maintainer: Kotsasmin <kotsasmin@gmail.com>
 pkgname=modiva-launcher-bin
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="The official Modiva launcher"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=("modiva-launcher")
 conflicts=("modiva-launcher")
 source=("modiva-launcher-${pkgver}.AppImage::https://github.com/modiva-launchers/modiva-releases/releases/download/v${pkgver}/Modiva.Launcher_${pkgver}_amd64.AppImage"
         "icon.png")
-sha256sums=('567021f7e00b43c4882abd7442391d507916f7e0c5107eb7a52185b6ccc5d36a'
+sha256sums=('117071ac9756de403a7dbcfa9fd6247b87656880930721f700d9fe334a36d9f7'
             '295812bdd6e56cdd816a1e4c7db8f3803be5da302569b397d662d4c92c81874b')
 
 package() {
