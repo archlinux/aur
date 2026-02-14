@@ -1,3 +1,5 @@
+# Maintainer: Zaman Huseynli <zamanhuseynli23@gmail.com>
+# Backup contact: admin@azccriminal.space
 pkgname=auto-cpufreq-rust-git
 _pkgname=auto-cpufreq-rust
 pkgver=r579.1536aae
