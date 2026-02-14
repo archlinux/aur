@@ -9,23 +9,16 @@ url='https://github.com/jorio/BillyFrontier'
 license=(CC-BY-NC-SA-4.0)
 depends=('sdl2' 'glu' 'hicolor-icon-theme')
 makedepends=('cmake' 'git')
-_commit='337fa270b6d97b0384a2b5e1da84b6778223e556'
 source=(
-  "$pkgname::git+$url.git#commit=$_commit"
+  "$pkgname::git+$url.git#tag=v$pkgver"
   'github.com-jorio-Pomme::git+https://github.com/jorio/Pomme'
   "$pkgname.desktop"
   "$pkgname.sh"
 )
-b2sums=('SKIP'
+b2sums=('d8b7a380b9e36d2ac136e14f68b73930e13e205a462ca39e2516eca3b11fead6d4f8bd6b933a261e8b83407a0ba93a2fe7d039a9d2e9b5ee8b49cf807ae35dc0'
         'SKIP'
         '8701fe5a816b13d98fe014792eaf7ab06f7b3c551a2f1e75a5cad82fbb6eea901123dba0765d5b44bab77653dd9a5556acdb8aa77926baf7a5fef9f267f525e2'
-        '600b967e943c01377d6c1cc887d72ba45102e169194aa76f7ec44fc73560e3da648c9058793986eeacfc3c92573df0c5628aec69f0d35e5dd2df92048b3a6c0b')
-
-pkgver() {
-  cd "$pkgname"
-
-  git describe --tags | sed 's/^v//'
-}
+        '5e869bf7f7d0fcf646ae1652b71d032f28e7aac1edc62f0c99aa6285983500ba5f8f95d4d0f6af54b4d892edbd791a8fc7b5819c2f3877e1626ea46027ce20f0')
 
 prepare() {
   cd "$pkgname"
