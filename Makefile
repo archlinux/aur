@@ -25,4 +25,4 @@ all: poweroff.efi  reboot.efi
 %.efi: %.so
 	objcopy -j .text -j .sdata -j .data -j .dynamic \
 		-j .dynsym  -j .rel -j .rela -j .reloc \
-		--target=efi-app-$(ARCH) $^ $@
+		--output-target=efi-app-$(ARCH) $^ $@
