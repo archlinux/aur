@@ -8,7 +8,7 @@
 
 # Maintainer: Harry Roberts <harryroberts306@gmail.com>
 pkgname=nextdots-cli-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r6.0098923
+pkgver=r7.f022c22
 pkgrel=1
 pkgdesc="The CLI for my NEXTDOTS"
 arch=(any)
