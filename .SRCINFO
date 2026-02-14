@@ -1,0 +1,14 @@
+pkgbase = sql-tap
+	pkgdesc = Watch SQL traffic in real-time with a TUI
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/mickamy/sql-tap
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = sql-tap-0.0.5.tar.gz::https://github.com/mickamy/sql-tap/archive/v0.0.5.tar.gz
+	sha256sums = 31c421c7331516ef17d5edc232ea23ff1c5aad7d6c9c3db39b11e775509f600d
+
+pkgname = sql-tap
