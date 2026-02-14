@@ -1,7 +1,7 @@
 # Maintainer: Tymon3310 <aur@tymon3310.dev>
 pkgname=vortex-git
 pkgver=1.16.2.r10.g123abc
-pkgrel=1
+pkgrel=2
 pkgdesc="Nexus Mods' mod manager - native Linux build (Git Master)"
 arch=('x86_64')
 url="https://github.com/Nexus-Mods/Vortex"
