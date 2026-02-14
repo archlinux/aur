@@ -1,6 +1,6 @@
 # Maintainer: Wimpy <vvinn.py[AT]github.com>
 pkgname=iflow-cli
-pkgver=0.5.12
+pkgver=0.5.13
 pkgrel=1
 pkgdesc="iFlow AI Assistant CLI tool (@iflow-ai/iflow-cli)"
 arch=('any')
