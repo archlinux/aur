@@ -1,14 +1,14 @@
 pkgbase = batdoc
 	pkgdesc = cat(1) for doc, docx, xls, xlsx, pptx, and pdf -- renders to markdown with bat
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/daemonp/batdoc
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
-	source = batdoc-1.0.0.tar.gz::https://github.com/daemonp/batdoc/archive/v1.0.0.tar.gz
-	b2sums = 5a96d221dd3c305bad82838361a35b00ae86cf415fedd2934e71dbe8963e7392a5ab9e1791959db6d195717ea30c60b6ada1f4814ab887e061e7b29b72c48979
+	source = batdoc-1.0.1.tar.gz::https://github.com/daemonp/batdoc/archive/v1.0.1.tar.gz
+	b2sums = d8805869718e30acfd77b91222d0bc9e94226f0f2fc67ea61bd297c18fd9cb5cb7eb8697a6bf5ae063ce881b428cd96790b3d2b095c9079f5fb8823eb4b4927b
 
 pkgname = batdoc
