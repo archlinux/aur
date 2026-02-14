@@ -1,10 +1,11 @@
 pkgbase = localsend
 	pkgdesc = An open source cross-platform alternative to AirDrop
 	pkgver = 1.17.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/localsend/localsend
 	arch = x86_64
-	license = MIT
+	arch = aarch64
+	license = Apache-2.0
 	makedepends = clang
 	makedepends = cmake
 	makedepends = fvm
