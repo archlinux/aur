@@ -2,7 +2,7 @@
 
 pkgname=batdoc-bin
 pkgver=1.0.1
-pkgrel=2
+pkgrel=1
 pkgdesc='cat(1) for doc, docx, xls, xlsx, pptx, and pdf -- renders to markdown with bat. Pre-compiled.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/daemonp/batdoc'

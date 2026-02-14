@@ -1,7 +1,7 @@
 pkgbase = batdoc-bin
 	pkgdesc = cat(1) for doc, docx, xls, xlsx, pptx, and pdf -- renders to markdown with bat. Pre-compiled.
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/daemonp/batdoc
 	arch = x86_64
 	arch = aarch64
