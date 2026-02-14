@@ -1,7 +1,7 @@
 pkgbase = xyce-shylu
 	pkgdesc = Open-Source, SPICE-compatible, high-performance analog circuit simulator - ShyLU/OpenMP/Parallel support
 	pkgver = 7.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Xyce/xyce
 	install = xyce.install
 	arch = x86_64
@@ -9,18 +9,10 @@ pkgbase = xyce-shylu
 	makedepends = git
 	makedepends = cmake
 	makedepends = make
-	makedepends = gcc-fortran
-	depends = glibc
-	depends = gcc-libs
 	depends = adms
-	depends = fftw
-	depends = gklib
-	depends = openblas
-	depends = suitesparse
 	depends = openmpi
-	depends = fftw-openmpi
-	depends = parmetis
-	depends = metis
+	depends = fftw
+	depends = trilinos16
 	optdepends = bash: For compiling plugins using 'buildxyceplugin.sh'
 	optdepends = python: For use with the Python-Xyce interface
 	optdepends = texlive-binextra: latexmk used to compile documentation
@@ -28,14 +20,12 @@ pkgbase = xyce-shylu
 	conflicts = xyce
 	options = !debug
 	source = xyce-shylu::git+https://github.com/Xyce/xyce#tag=Release-7.10.0
-	source = trilinos::git+https://github.com/trilinos/Trilinos#tag=trilinos-release-16-1-0
-	source = 0001-epextra-openmp-linkage-workaround.patch
 	source = 0002-multiple-plugin-fix.patch
 	source = 0003-fix-latex-doc-build.patch
+	source = 0004-fix-buildxyceplugin-remove-DESTDIR.patch
 	b2sums = 6e51120fd8ba481bfd4a226f0a208eefc4511b4e666235a8715f1fa41d28329ce5ad467708d5081a93af2599b94eb4639dd0271dc8f8ecc34242f5bfaba57dc5
-	b2sums = ef9fe57c1aab698a38e8a35e070a9f8e23af1368cd162af065b0a7468a6bcf24cfc9277772b2f1aa86505e4ee7b9607620e44dfeb72ea83b494d4192d27443e8
-	b2sums = 76bcd57791866166387af5bd4b2984b9344c766f0a838fd5d0f32ae7670d181a17470efc429aef774b7e6feca68d1d407211bfdee885eaf8536f751b304c76d2
 	b2sums = 9651017d9f1548f27db0a73230a75aa404b3d2353cd229803056232cf9e3f985660553503cbf46de5435c129a40dac4ace38feb5e501ddb7c7f485edf2efea08
 	b2sums = 5e34211b9e43acfe25bad80fd8a70c624f49cd9802fe70b30977a02a75f00799c443eea21494b488e9f0ca777211bce88e9b3a981b4d1f992f984768a2b35bda
+	b2sums = 54f379684e29281d64bf414616a6e6d358d3c71736f2da992e252f2cb2b4795efa716e7e4a703c4739d37b550bf9185cf7d5ee6448def90dbd6531b4082406a6
 
 pkgname = xyce-shylu
