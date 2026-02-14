@@ -27,9 +27,9 @@ sha512sums=('SKIP'
 prepare() {
     cd "$srcdir/$pkgname"
     sed -i "s/PRIVATE -Wall -Werror/PRIVATE -Wno-error/g" ./linux/CMakeLists.txt
- 	rustup set profile minimal
- 	rustup toolchain install stable
- 	rustup override set stable
+    rustup set profile minimal
+    rustup toolchain install stable
+    rustup override set stable
     fvm use 3.38.9 --force
     fvm flutter config --enable-linux-desktop
 }
