@@ -1,6 +1,6 @@
 pkgname=codex-monitor-bin
-pkgver=0.7.45
-pkgrel=3
+pkgver=0.7.53
+pkgrel=1
 pkgdesc="Tauri desktop app for orchestrating Codex agents across local workspaces (prebuilt AppImage)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Dimillian/CodexMonitor"
@@ -31,10 +31,10 @@ sha256sums=(
   'df17aae89ce4705d0a6e5f7b46eeea3b9023967ecad948f8779b47039eb55a8b'
 )
 sha256sums_x86_64=(
-  'f3233f612ef8783c04662608838d62f680898b3446bf26827392d36517610a47'
+  '68e87a62bd3a1bf877c32be96b03c5a50cbeae00b0b77753378da3791d144e96'
 )
 sha256sums_aarch64=(
-  '3fbe7da8759f5dfd4c99d437db8f03f95f1708d7add3d33476d2bd98e5aa042d'
+  '9b033d810cfe7fd46afe7a37a5cab7121d7a9b9091117a4a25b19f3884040ef6'
 )
 
 package() {
