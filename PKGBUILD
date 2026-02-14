@@ -5,9 +5,9 @@
 _target=i686-elf
 pkgname=$_target-binutils
 pkgver=2.45
-pkgrel=1
+pkgrel=2
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the i686-elf target'
-arch=(i686 x86_64)
+arch=(i686 x86_64 aarch64)
 url='https://www.gnu.org/software/binutils/'
 license=('GPL')
 depends=(zlib libelf)
