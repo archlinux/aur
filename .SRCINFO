@@ -1,11 +1,12 @@
 pkgbase = perplexity
 	pkgdesc = Native Perplexity AI client for Linux
-	pkgver = 1.4.0
-	pkgrel = 2
+	pkgver = 1.5.1
+	pkgrel = 1
 	url = https://github.com/mazixs/perplexity
 	install = perplexity.install
 	arch = x86_64
-	license = Apache 2.0
+	license = custom:UNLICENSED-upstream
+	license = Apache-2.0
 	makedepends = git
 	makedepends = npm
 	depends = electron
@@ -13,7 +14,7 @@ pkgbase = perplexity
 	depends = xdg-utils
 	optdepends = libappindicator-gtk3: for tray icon support
 	provides = perplexity
-	source = git+https://github.com/mazixs/perplexity.git#commit=059b5e2989fb24109135607763e03453bebe1ea4
+	source = git+https://github.com/mazixs/perplexity.git#commit=4c6c5f694b760c455e336963072b31d4a1390e89
 	source = perplexity.desktop
 	source = perplexity.png
 	source = launcher.sh

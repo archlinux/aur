@@ -1,13 +1,13 @@
 # Maintainer: mazix <mazix@bk.ru>
 
 pkgname=perplexity
-pkgver=1.4.0
-pkgrel=2
-commit='059b5e2989fb24109135607763e03453bebe1ea4'
+pkgver=1.5.1
+pkgrel=1
+commit='4c6c5f694b760c455e336963072b31d4a1390e89'
 pkgdesc='Native Perplexity AI client for Linux'
 arch=('x86_64')
 url='https://github.com/mazixs/perplexity'
-license=('Apache 2.0')
+license=('custom:UNLICENSED-upstream' 'Apache-2.0')
 depends=('electron' 'desktop-file-utils' 'xdg-utils')
 makedepends=('git' 'npm')
 provides=('perplexity')
