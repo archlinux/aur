@@ -2,8 +2,8 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-epgsearch
-pkgver=2.4.5
-pkgrel=2
+pkgver=2.4.6
+pkgrel=1
 _vdrapi=11
 epoch=1
 pkgdesc="Searchtimer and replacement of the VDR program menu"
@@ -28,7 +28,7 @@ backup=("etc/vdr/conf.avail/50-conflictcheckonly.conf"
         'var/lib/vdr/plugins/epgsearch/epgsearchupdmail-html.templ'
         'var/lib/vdr/plugins/epgsearch/epgsearchupdmail.templ')
 options=('!emptydirs')
-sha256sums=('d9dabc5717524f7510da1b76ae83ff6e1b27f1ac6c42d72ac70972fb6f9bed47'
+sha256sums=('7bfb51ea6178d7b477e608fb78b18ee9db05676530d857758e22e4abe453a7c3'
             'f3f8c750a0313c01a4295d2249f030ee510b2e35137b1f2cdcaa39aa440a3a88')
 
 prepare() {
