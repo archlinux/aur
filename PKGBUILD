@@ -1,6 +1,6 @@
 # Maintainer: Red007Master <Red007Master@gmail.com>
 pkgname=redpoweroffinformer-git
-pkgver=r12.40e12dd
+pkgver=r13.d3cf801
 pkgrel=1
 pkgdesc="A tool to inform about power-off events"
 arch=('x86_64')
@@ -30,10 +30,11 @@ build() {
     # -p:EnableCompressionInSingleFile=true \
     # -p:IncludeNativeLibrariesForSelfExtract=true \
 
+    # -p:PublishTrimmed=true \
+    
     dotnet publish -c Release -r linux-x64 \
         --self-contained \
         -p:PublishSingleFile=true \
-        -p:PublishTrimmed=true \
         -p:PublishReadyToRun=true \
         -p:DebugType=None \
         -p:DebugSymbols=false \
