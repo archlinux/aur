@@ -3,7 +3,7 @@
 # Contributor: lxstig <lxst@tutamail.com>
 
 pkgname='7zkpxc'
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc='Secure 7-Zip wrapper with KeePassXC integration'
 url='https://github.com/lxstig/7zkpxc'
@@ -14,10 +14,10 @@ conflicts=('7zkpxc')
 depends=('glibc' '7zip' 'keepassxc')
 makedepends=('go')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/lxstig/7zkpxc/releases/download/v${pkgver}/7zkpxc_${pkgver}_src.tar.gz")
-sha256sums=('f412cd8071fe9708635ab3b08156dc3622ef3dc8aafa4b29cf7fb22205e11beb')
+sha256sums=('d130bbcad22ee431d518d6a4c88622df9ba5f310d9135eb9a048d513a21c4715')
 build() {
   export CGO_ENABLED=0
-  go build -trimpath -ldflags "-s -w -X main.version=0.1.6 -X main.commit=d98987be9807ea77609a7d746b72148b8e185bd0 -X main.date=2026-02-14T00:27:14Z" -o ./7zkpxc ./cmd/7zkpxc
+  go build -trimpath -ldflags "-s -w -X main.version=0.1.7 -X main.commit=9c9a282535fdaaca009a44d8f75e05fd7e23b841 -X main.date=2026-02-14T01:00:25Z" -o ./7zkpxc ./cmd/7zkpxc
 }
 package() {
   # Install binary
@@ -30,7 +30,9 @@ package() {
   mkdir -p completions
   ./7zkpxc completion zsh > completions/_7zkpxc
   ./7zkpxc completion bash > completions/7zkpxc.bash
+  ./7zkpxc completion fish > completions/7zkpxc.fish
 
   install -Dm644 completions/_7zkpxc "${pkgdir}/usr/share/zsh/site-functions/_7zkpxc"
   install -Dm644 completions/7zkpxc.bash "${pkgdir}/usr/share/bash-completion/completions/7zkpxc"
+  install -Dm644 completions/7zkpxc.fish "${pkgdir}/usr/share/fish/vendor_completions.d/7zkpxc.fish"
 }
