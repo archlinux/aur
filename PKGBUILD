@@ -2,7 +2,7 @@
 
 _binname="gsa"
 pkgname="go-size-analyzer"
-pkgver=1.10.2
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="A tool for analyzing the dependencies in compiled Golang binaries"
 arch=(
@@ -22,9 +22,9 @@ makedepends=(
 )
 _pkgsrc="${pkgname}-${pkgver}"
 source=(
-  "${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz"
+  "${_url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
 )
-b2sums=('8d92edd9751cd2d872faf24d91f1e0661abf6a4b96bc26eeea204831b4cbf390c1b678e05430bdcbf878900bc66f95daa5e061d05216db1b94277ea66a36077b')
+b2sums=('ca909d901de446c7851a61d30931db9b3b447ec4199773c5793bcd060ed22bbf203db1b68f56e095d70c8b78b65dfda043d500764ad76b83f381a4fb78b5be0a')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
@@ -60,10 +60,10 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  install -vDm755 "build/${_binname}" "${pkgdir}/usr/bin/${_binname}"
+  install -vDm755 "build/${_binname}" "${pkgdir}/usr/bin/${pkgname}"
   install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   # install -vDm644 "README_zh_CN.md" "${pkgdir}/usr/share/doc/${_pkgname}/README_zh_CN.md"
   install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  ln -vsf "${_binname}" "${pkgdir}/usr/bin/${pkgname}"
+  ln -vsf "${pkgname}" "${pkgdir}/usr/bin/${_binname}"
 }
