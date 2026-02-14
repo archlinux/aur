@@ -1,0 +1,14 @@
+diff --unified --recursive --text a/Makefile b/Makefile
+--- a/Makefile	2025-08-14 08:58:19.652818173 -0600
++++ b/Makefile	2026-02-14 10:57:54.979954629 -0700
+@@ -37,8 +37,8 @@
+ 
+ install-daemon: target/release/$(DAEMON)
+ 	install -D -m 0755 "target/release/$(DAEMON)" "$(DESTDIR)$(libdir)/$(PKG)/$(DAEMON)"
+-	install -D -m 0644 "data/$(DAEMON).conf" "$(DESTDIR)$(sysconfdir)/dbus-1/system.d/$(DAEMON).conf"
+-	install -D -m 0644 "debian/$(DAEMON).service" "$(DESTDIR)$(sysconfdir)/systemd/system/$(DAEMON).service"
++	install -D -m 0644 "data/$(DAEMON).conf" "$(DESTDIR)$(datadir)/dbus-1/system.d/$(DAEMON).conf"
++	install -D -m 0644 "debian/$(DAEMON).service" "$(DESTDIR)$(libdir)/systemd/system/$(DAEMON).service"
+ 
+ uninstall: uninstall-cli uninstall-daemon
+ 
