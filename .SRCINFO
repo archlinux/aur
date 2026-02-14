@@ -1,6 +1,6 @@
 pkgbase = yandex-music
 	pkgdesc = Official Yandex Music App for Linux
-	pkgver = 5.84.1
+	pkgver = 5.86.0
 	pkgrel = 1
 	url = https://music.yandex.ru/download/
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = yandex-music
 	depends = libsecret
 	optdepends = libappindicator-gtk3
 	options = !strip
-	source = https://music-desktop-application.s3.yandex.net/stable/Yandex_Music_amd64_5.84.1.deb
-	sha256sums = 8ceb1eae80a084526a83e04cedf8011bddb9721071b6af7a959df25f0f7d05a5
+	source = https://music-desktop-application.s3.yandex.net/stable/Yandex_Music_amd64_5.86.0.deb
+	sha256sums = 7298a75e9711bbf5a75b01ff92adb0cbb6ab89fcf38d7a3fa8cdf8da11c60c5e
 
 pkgname = yandex-music
