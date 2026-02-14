@@ -8,8 +8,8 @@
 # Contributor: Daniel Kozak <kozzi11@gmail.com>
 
 pkgname=(gcc14 gcc14-libs gcc14-fortran)
-pkgver=14.3.1+r420+g039a62bd2e0c
-_commit=039a62bd2e0c7e67a00e5f6a4727f6dc1999faaf
+pkgver=14.3.1+r516+g5998566829ee
+_commit=5998566829eed9f39a316be877a7ce61c7e710ed
 pkgrel=1
 pkgdesc='The GNU Compiler Collection (14.x.x)'
 arch=(x86_64)
@@ -18,6 +18,8 @@ url='https://gcc.gnu.org'
 makedepends=(
   binutils
   doxygen
+  gcc-ada
+  gcc-d
   git
   libisl
   libmpc
@@ -38,7 +40,7 @@ _libdir=usr/lib/gcc/$CHOST/${pkgver%%+*}
 source=("gcc14::git+https://github.com/gcc-mirror/gcc.git#commit=${_commit}"
         c89 c99
 )
-sha256sums=('e96d4e5a17479de8ea22ef6c6d7ceb70810cd45e0061b7d93f52d1fcbe965121'
+sha256sums=('8cb2055c05452126efd50ceb8aa3c6ae31fb70d0df63c0db41217f6378a61d50'
             '7b09ec947f90b98315397af675369a1e3dfc527fa70013062e6e85c4be0275ab'
             '44ea973558842f3f4bd666bdaf6e810fd7b7c7bd36b5cc4c69f93d2cd0124fc7')
 
@@ -79,7 +81,6 @@ build() {
       --enable-gnu-indirect-function
       --enable-gnu-unique-object
       --enable-libstdcxx-backtrace
-      --enable-link-serialization=1
       --enable-linker-build-id
       --enable-lto
       --disable-multilib
@@ -111,7 +112,8 @@ build() {
           BOOT_CFLAGS="$CFLAGS" \
           BOOT_LDFLAGS="$LDFLAGS" \
           LDFLAGS_FOR_TARGET="$LDFLAGS" \
-          bootstrap
+          bootstrap \
+          -j$(nproc)
 
   # make documentation
   make -O -C $CHOST/libstdc++-v3/doc doc-man-doxygen
