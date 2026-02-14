@@ -1,0 +1,4 @@
+[gh-enhance-bin]
+source = "git"
+git = "https://github.com/dlvhdr/gh-enhance.git"
+prefix = "v"
