@@ -4,7 +4,7 @@ _pkgname=dwproton
 pkgname=${_pkgname}-bin
 _srcver=10.0-17
 pkgver=${_srcver//-/_}
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Proton builds with the latest Dawn Winery fixes for gacha games, based on Proton-CachyOS"
 arch=('x86_64')
@@ -12,8 +12,9 @@ url="https://dawn.wine/dawn-winery/dwproton"
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
 options=(!strip emptydirs)
 provides=('proton' 'dwproton')
-source=("${url}/releases/download/${_pkgname}-${_srcver}/${_pkgname}-${_srcver}-${CARCH}.tar.xz")
-sha256sums=('53e746f553d17ae1c7a515183002ff628ae08ed85105f07030c0bb73c47a8a80')
+_srcdir="${_pkgname}-${_srcver}-${CARCH}"
+source=("${url}/releases/download/${_pkgname}-${_srcver}/${_srcdir}.tar.xz")
+sha512sums=($(curl "${url}/releases/download/${_pkgname}-${_srcver}/${_srcdir}.sha512sum" | cut -d ' ' -f 1))
 depends=(
   bash
   coreutils
@@ -69,8 +70,6 @@ optdepends=(
   umu-launcher
 )
 install=${pkgname}.install
-
-_srcdir="${_pkgname}-${_srcver}-${CARCH}"
 
 build() {
     sed -i -E 's/"dwproton-[^"]*"/"dwproton"/g' \
