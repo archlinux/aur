@@ -1,7 +1,7 @@
 pkgbase = chalkak
 	pkgdesc = Hyprland screenshot preview and editor utility
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bityoungjae/chalkak
 	arch = x86_64
 	arch = aarch64
