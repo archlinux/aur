@@ -1,6 +1,6 @@
 # Maintainer: hengtseChou <hankthedev@gmail.com>
 pkgname=lnk
-pkgver=0.7.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="🔗 Git-native dotfiles management that doesn't suck. "
 arch=('x86_64' 'aarch64')
