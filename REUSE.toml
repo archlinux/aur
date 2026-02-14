@@ -5,8 +5,7 @@ path = [
     "PKGBUILD",
     ".SRCINFO",
     ".nvchecker.toml",
-    "billy-frontier.desktop",
-    "billy-frontier.sh",
+    "wrapper.sh",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
