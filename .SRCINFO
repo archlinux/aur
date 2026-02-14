@@ -1,6 +1,6 @@
 pkgbase = pipewire-audio-idle-inhibit-git
 	pkgdesc = Prevents the screen from sleeping while audio is actively playing or being recorded through Pipewire
-	pkgver = 0.4.3.r85.54bb042
+	pkgver = 0.4.4.r86.0c0a328
 	pkgrel = 1
 	url = https://github.com/The1fEst/PipewireAudioIdleInhibit
 	install = pipewire-audio-idle-inhibit-git.install
