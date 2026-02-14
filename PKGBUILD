@@ -1,6 +1,6 @@
 # Maintainer: Ahmed <ahmedalwanmunshed@gmail.com>
 pkgname=zerone-ai-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=7
 pkgdesc="ZERONE AI Desktop Application - Intelligent Chat Interface"
 arch=('x86_64')
