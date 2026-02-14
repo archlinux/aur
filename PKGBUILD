@@ -2,7 +2,7 @@
 pkgname=plpgsql_check-git
 pkgbase=plpgsql_check
 _gitname=plpgsql_check
-pkgver=1.8.2.5.g5bd23ea
+pkgver=2.8.9.4.gc6cb7d5
 pkgrel=1
 epoch=2
 pkgdesc="linter for PostgreSQL's procedural language"

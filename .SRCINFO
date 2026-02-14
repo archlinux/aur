@@ -1,6 +1,6 @@
 pkgbase = plpgsql_check
 	pkgdesc = linter for PostgreSQL's procedural language
-	pkgver = 1.8.2.5.g5bd23ea
+	pkgver = 2.8.9.4.gc6cb7d5
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/okbob/plpgsql_check
@@ -18,4 +18,3 @@ pkgbase = plpgsql_check
 	md5sums = SKIP
 
 pkgname = plpgsql_check-git
-
