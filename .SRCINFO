@@ -1,11 +1,11 @@
 pkgbase = python-graphsrv
 	pkgdesc = Serve embeddable graphs
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/20c/graphsrv
 	changelog = CHANGELOG.md
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer

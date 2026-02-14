@@ -1,13 +1,14 @@
+# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-graphsrv
 _pkg=graphsrv
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Serve embeddable graphs'
 arch=('any')
 url="https://github.com/20c/graphsrv"
-license=('Apache')
+license=('Apache-2.0')
 depends=('python-flask' 'python-vodka')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 changelog=CHANGELOG.md
