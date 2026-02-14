@@ -2,7 +2,7 @@
 # Contributor: Felix Häcker <haeckerfelix@gnome.org>
 pkgname=shortwave-mpris-git
 pkgver=5.1.0.r6.gf0b48ba
-pkgrel=2
+pkgrel=3
 pkgdesc="Internet radio player with extended MPRIS support, device support for DLNA/UPnP & Google Cast + FFmpeg proxy for incompatible streams"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ixnewton/Shortwave-MPRIS"
