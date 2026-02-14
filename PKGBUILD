@@ -28,7 +28,7 @@ package() {
 	find squashfs-root/{resources,usr/share/icons}/ -type d -exec chmod 755 {} +
 
 	install -d "$pkgdir/opt/${pkgname%-bin}/"
-	cp -av squashfs-root/* "$pkgdir/opt/${pkgname%-bin}/"
+	cp -a squashfs-root/* "$pkgdir/opt/${pkgname%-bin}/"
 	rm -rf "$pkgdir/opt/${pkgname%-bin}/usr/"
 	rm -f "$pkgdir/opt/${pkgname%-bin}"/{OrcaSlicer.desktop,AppRun,OrcaSlicer.png}
 
