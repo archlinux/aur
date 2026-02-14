@@ -1,0 +1,5 @@
+[matcha-client-bin]
+source = "github"
+github = "floatpane/matcha"
+use_latest_release = true
+prefix = "v"
