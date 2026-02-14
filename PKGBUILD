@@ -6,7 +6,7 @@ _appname=${_pkgname}
 pkgname=${_pkgname}-bin
 pkgdesc="A terminal weather app with ascii animation"
 
-pkgver=1.2.3
+pkgver=1.3.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -26,8 +26,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[0]}")
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            'd3336a69755623f3d81e8e4149e406f55567b8fa94c1eb9a03f167825caa21df')
-sha256sums_x86_64=('cdfb0e01dbe2545049179a1cfe829e27350aa9e6102c75a2ed889a0a80325d2d')
+            '88645c46f28ccb693f4f397383fc51f7cf7a41e457e0a1b1f335014a8c9ae93b')
+sha256sums_x86_64=('a859d6e0969895abb89e736b398a07ee2df414df96228d5ac3b1754216bf0d00')
 
 
 package() {
