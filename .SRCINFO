@@ -1,0 +1,17 @@
+pkgbase = mdtoc
+	pkgdesc = Command line Markdown viewer/editor/toc generator.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/bfoersterling/mdtoc
+	arch = x86_64
+	license = GPL
+	checkdepends = check
+	makedepends = cmark
+	makedepends = readline
+	depends = cmark
+	depends = readline
+	provides = mdtoc
+	source = git+https://github.com/bfoersterling/mdtoc.git#tag=v0.1.1
+	cksums = SKIP
+
+pkgname = mdtoc

@@ -35,7 +35,7 @@ build() {
 	make
 }
 
-package_mdtoc() {
+package() {
 	declare binary
 	binary="${srcdir}/${pkgname}/${pkgname}"
 	declare dest_dir
