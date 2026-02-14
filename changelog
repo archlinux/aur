@@ -1,0 +1,4 @@
+What's new in v2.0.0:
+- Added Rclick menu for processes, including kill, terminate, set process priority, suspend, and resume
+- You can now enable, disable, and enable --now systemd services from the services right click menu
+- Clicking an element on the top bar (I.E: CPU% or Name) will sort the list based on that. Clicking it once will sort in ascending order, clicking again will switch to descending.
