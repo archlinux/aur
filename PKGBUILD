@@ -5,7 +5,7 @@
 # This prebuilt binary includes HEIF support.
 
 pkgname=czkawka-gui-bin
-pkgver=10.0.0
+pkgver=11.0.0
 pkgrel=1
 pkgdesc='Find and manage duplicate files, empty folders, similar images, and other "lint" (GUI, with HEIF support)'
 arch=('x86_64')
@@ -15,17 +15,18 @@ provides=('czkawka-gui')
 conflicts=('czkawka-gui')
 depends=('gtk4' 'libheif')
 makedepends=('gendesk')
+options=('!debug')
 source=("${pkgname}-${pkgver}::https://github.com/qarmin/czkawka/releases/download/${pkgver}/linux_${pkgname%-gui-bin}_gui_heif_raw_x86_64"
         "${pkgname}-${pkgver}.png::https://raw.githubusercontent.com/qarmin/czkawka/${pkgver}/${pkgname%-gui-bin}_gui/icons/icon_about.png"
         "LICENSE_CC_BY_4_ICONS-${pkgver}::https://github.com/qarmin/czkawka/raw/${pkgver}/${pkgname%-gui-bin}_gui/LICENSE_CC_BY_4_ICONS"
         "LICENSE_MIT_APP_CODE-${pkgver}::https://github.com/qarmin/czkawka/raw/${pkgver}/${pkgname%-gui-bin}_gui/LICENSE_MIT_APP_CODE"
         "LICENSE_MIT_WINDOWS_THEME-${pkgver}::https://github.com/qarmin/czkawka/raw/${pkgver}/${pkgname%-gui-bin}_gui/LICENSE_MIT_WINDOWS_THEME")
 
-sha256sums=('43d7fcb0adcff22454a4014ecf9716f946dc966498584abdccd20ce7b03da188'
+sha256sums=('1ab1c8abc0e7602574193ecbc70e948374d9a804ea909e3ef63b904e673df11c'
             'c727bb66ebf6114296a93384af8c2eaeb19eab06482cdd3176155f8f8eef501f'
-            'b2b2392d2ef0a1743ab1b0f14aa178a2269abe6d72a66b84f4891c4a21277fbf'
-            '85325b49534d038568a13c5f5d66e77f391b6c4bd274eac4fad3e13a325cce3e'
-            'bec0eaf1f5cfc1ac4d5f1e1f1dd7d9c1f1f575701e1deb1ae72e36b5a8ff56b1')
+            '30186bcd1236627113d89c4c6cbf85f1d3e4f992a5cdf443553be80b5f771916'
+            'fe124add5f02776eb9152b4e3c343539cf802babd06a09f9c5237448476d8d03'
+            '7e4b81c892b5c8b1743d710189cd73bc7d323feed05414036139dcad65ed4dc4')
 
 package() {
   install -Dm755 ${pkgname}-${pkgver} "${pkgdir}/usr/bin/${pkgname%-bin}"
