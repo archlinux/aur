@@ -3,7 +3,7 @@
 
 pkgbase=dictype
 pkgname=(dictype dictype-fcitx)
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc='real-time voice-to-text input on Linux'
 arch=('x86_64')
@@ -21,7 +21,7 @@ makedepends=(
   grpc
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('833ac5b8fcaa8cb69b9c4dd7ce8f52b5d4ee215303cdfa516814c22964d82f40d8b97252fc5f1f666e49916cf1881c04941cc8eecb956d7151935a93f864c400')
+sha512sums=('683853b4164981d08ccb13d8dca5b026f2208a2ea3df79c2048d593002edf060ee77c47cca2fc0dea38fb09d7b4a66ba8ec9dccd3cda8b23dd0d7d00e29a08b6')
 
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
