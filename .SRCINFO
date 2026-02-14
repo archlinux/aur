@@ -1,4 +1,4 @@
-pkgbase = fluxer
+pkgbase = fluxer-git
 	pkgdesc = A free and open source instant messaging and VoIP platform built for friends, groups, and communities.
 	pkgver = r92.aa4e5b0
 	pkgrel = 1
@@ -16,11 +16,13 @@ pkgbase = fluxer
 	depends = electron39
 	depends = bash
 	depends = hicolor-icon-theme
+	provides = fluxer
+	conflicts = fluxer
 	source = fluxer::git+https://github.com/fluxerapp/fluxer.git#branch=main
 	source = fluxer.sh.in
 	source = fluxer.desktop
 	sha256sums = SKIP
-	sha256sums = 5ad57b885d404b5fc7361ca0a59a537fd91ec0848f4bc06366574afbd7283ac7
+	sha256sums = 6e7f62aebf5d3ba3326a4b562724235657852786900b366b5d72e05d69e4c599
 	sha256sums = 54af8898c7d6674f803f4ae436da03e710a686d81f3915e14da61dcbea69e1dd
 
-pkgname = fluxer
+pkgname = fluxer-git
