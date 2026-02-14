@@ -1,9 +1,21 @@
 #!/bin/sh
 
+get_version() {
+    if [ -f "$1/ks-version.txt" ]; then
+        cat "$1/ks-version.txt"
+    else
+        # Version ID file is missing, assume 1.0.0 release
+        echo 1.0.0
+    fi
+}
+
 WDIR="$HOME/.local/share/kirastudio"
 
-if [ ! -d "$WDIR" ]; then
-    cp -r /usr/share/kirastudio $WDIR
+# KiraStudio must have its .exe location writeable
+# We make a copy of it in .local/share and run it from there
+# if the local version is missing or the system version is different from the local version
+if [ ! -d "$WDIR" ] || [ "$(get_version /usr/share/kirastudio)" != "$(get_version $WDIR)" ]; then
+    rsync -a /usr/share/kirastudio/ "$WDIR/"
 fi
 
 cd $WDIR
