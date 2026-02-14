@@ -1,11 +1,11 @@
 pkgbase = intiface-central
 	pkgdesc = Intiface Central (Buttplug Frontend) Application for Desktop and Mobile
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://intiface.com/central/
 	arch = x86_64
 	license = GPL-3.0-only
-	makedepends = rust
+	makedepends = rustup
 	makedepends = fvm
 	makedepends = cmake
 	makedepends = ninja
@@ -14,10 +14,11 @@ pkgbase = intiface-central
 	depends = openssl
 	depends = bash
 	depends = hicolor-icon-theme
-	source = buttplug::git+https://github.com/buttplugio/buttplug#commit=04a2516c0386436f65de9a3577fd2f02e4b86bf1
+	depends = libayatana-appindicator
+	source = buttplug::git+https://github.com/buttplugio/buttplug#commit=1c5dbb5c9c8e7f04afe57c67a4924d240be73890
 	source = buttplug_dart::git+https://github.com/buttplugio/buttplug_dart#commit=6d91665a3e5faa389e9a626c9b0bb79c6f126d57
-	source = intiface-central::git+https://github.com/intiface/intiface-central#tag=v3.0.0
-	source = intiface-engine-flutter-bridge-license.md::https://raw.githubusercontent.com/intiface/intiface-central/v3.0.0/intiface-engine-flutter-bridge/LICENSE.md
+	source = intiface-central::git+https://github.com/intiface/intiface-central#tag=v3.0.1+37
+	source = intiface-engine-flutter-bridge-license.md::https://raw.githubusercontent.com/intiface/intiface-central/v3.0.1/intiface-engine-flutter-bridge/LICENSE.md
 	source = intiface_central.desktop
 	source = run_intiface_central
 	sha512sums = SKIP

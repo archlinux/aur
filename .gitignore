@@ -1,2 +1,5 @@
-intiface-central-*.tar.gz
-intiface-central-*.pkg.tar.zst
+buttplug
+buttplug_dart
+intiface-central
+intiface-central-*.pkg.tar.*
+intiface-central-*.tar.*

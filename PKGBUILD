@@ -2,17 +2,17 @@
 # Contributor: fabillo <fabillo@archlinux.org>
 
 pkgname=intiface-central
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Intiface Central (Buttplug Frontend) Application for Desktop and Mobile "
 arch=('x86_64')
 url="https://intiface.com/central/"
 license=('GPL-3.0-only')
-depends=('gtk3' 'openssl' 'bash' 'hicolor-icon-theme')
-makedepends=('rust' 'fvm' 'cmake' 'ninja' 'unzip')
-source=("buttplug::git+https://github.com/buttplugio/buttplug#commit=04a2516c0386436f65de9a3577fd2f02e4b86bf1"
+depends=('gtk3' 'openssl' 'bash' 'hicolor-icon-theme' 'libayatana-appindicator')
+makedepends=('rustup' 'fvm' 'cmake' 'ninja' 'unzip')
+source=("buttplug::git+https://github.com/buttplugio/buttplug#commit=1c5dbb5c9c8e7f04afe57c67a4924d240be73890"
     "buttplug_dart::git+https://github.com/buttplugio/buttplug_dart#commit=6d91665a3e5faa389e9a626c9b0bb79c6f126d57"
-    "$pkgname::git+https://github.com/intiface/intiface-central#tag=v3.0.0"
+    "$pkgname::git+https://github.com/intiface/intiface-central#tag=v${pkgver}+37"
     "intiface-engine-flutter-bridge-license.md::https://raw.githubusercontent.com/intiface/$pkgname/v$pkgver/intiface-engine-flutter-bridge/LICENSE.md"
     'intiface_central.desktop'
     'run_intiface_central')
@@ -26,12 +26,29 @@ sha512sums=('SKIP'
 
 prepare() {
     cd "$srcdir/$pkgname"
+    # sed -i "s/PRIVATE -Wall -Werror/PRIVATE -Wall -Werror -Wno-unused-variable -Wnounused_assignment -Wnontrivial-memcall -Wnodead_code -Wnounused_import/g" linux/CMakeLists.txt
+    sed -i "s/PRIVATE -Wall -Werror/PRIVATE -Wno-error/g" ./linux/CMakeLists.txt
+#     sed -i "s/PRIVATE -Wall -Werror/PRIVATE -W/g" ./linux/CMakeLists.txt
+#     grep 'target_compile_options' linux/CMakeLists.txt
+#     for spec in ./pubspec.yaml ./rust_builder/pubspec.yaml ./rust_builder/cargokit/build_tool/pubspec.yaml; do
+# 		cat <<-pubspec >> $spec
+#
+# analyzer:
+#   warnings:
+#     todo: ignore
+# 		pubspec
+# 	done
+ 	rustup set profile minimal
+ 	rustup toolchain install stable
+ 	rustup override set stable
     fvm use 3.38.9 --force
     fvm flutter config --enable-linux-desktop
 }
 
 build() {
     cd "$srcdir/$pkgname"
+    # CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions -Wp,-D_FORTIFY_SOURCE=2 -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -g -ffile-prefix-map=$(pwd)=/usr/src/debug/${pkgname}" fvm flutter build linux --release
+    # CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -W" fvm flutter build linux --release
     fvm flutter build linux --release
 }
 
