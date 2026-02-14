@@ -1,7 +1,7 @@
 pkgbase = pcloudcc-lneely
 	pkgdesc = pcloudcc-lneely is a simple linux console client for pCloud cloud storage, forked from github.com/pcloudcom/console-client and independently maintained.
-	pkgver = 20250602T0828Z
-	pkgrel = 2
+	pkgver = 20260214T1908Z
+	pkgrel = 1
 	epoch = 0
 	url = https://github.com/lneely/pcloudcc-lneely
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = pcloudcc-lneely
 	depends = boost
 	provides = pcloudcc
 	conflicts = pcloudcc-git
-	source = pcloudcc-lneely-20250602T0828Z.tar.gz::https://codeload.github.com/lneely/pcloudcc-lneely/tar.gz/refs/tags/20250602T0828Z
-	sha256sums = b51580856a0ffe3b22dff7526d94e0e5f6f56d458be9ee5fca7d86f692330e33
+	source = pcloudcc-lneely-20260214T1908Z.tar.gz::https://codeload.github.com/lneely/pcloudcc-lneely/tar.gz/refs/tags/20260214T1908Z
+	sha256sums = db6f3c5fb1db8d7ee00ba097b2dfba96ddfbd93b61fecde6db6a40d73dbb505d
 
 pkgname = pcloudcc-lneely
