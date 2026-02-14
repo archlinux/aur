@@ -1,15 +1,15 @@
 # Maintainer: Codiak 540<Codiak540@bbs.4d2.org>
 pkgname=task-manager
-pkgver=2.0.0
+pkgver=3.0.0
 pkgrel=1
-pkgdesc="A simple, lightweight, and powerful task manager for Linux. Inspired by the original taskmgr.exe"
+pkgdesc="A simple, lightweight, and powerful task manager for Linux. Inspired by the original taskmgr.exe, Aims to have as much information (and control) relating to your system as possible."
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/Codiak540/Linux-Task-Manager"
 license=('GPL')
 depends=('gcc-libs')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('28a8fd6a5580127e0f05c3c8084c1f46de3693e3e2c4a8ad67cd61921a590998')
+sha256sums=('ee39c672547ccb47a69037082afa36e6db3d37eaa3d26a55d890d510f2f5ca8d')
 
 build() {
     # It's cleaner to create a build directory
