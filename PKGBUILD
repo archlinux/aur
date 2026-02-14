@@ -1,7 +1,7 @@
 # Maintainer: Damon Petta <d at disassemble dot net>
 
 pkgname=batdoc-bin
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='cat(1) for doc, docx, xls, xlsx, pptx, and pdf -- renders to markdown with bat. Pre-compiled.'
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ options=('!debug')
 source_x86_64=("${url}/releases/download/v${pkgver}/batdoc_${pkgver}_x86_64.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/batdoc_${pkgver}_aarch64.tar.gz")
 
-sha256sums_x86_64=('d7105ae6266bb54ddb0f58599b33b3349904ce5b9e9288437e1b6fcdafe300fd')
-sha256sums_aarch64=('8519598c6bab62de89822e5d1ee2d6b87e488e26b064073d4107045dfe4ede00')
+sha256sums_x86_64=('c2205b7f97742f33a110962481d94cbcd2724584ad07518e811c9245ae4f392c')
+sha256sums_aarch64=('df68c5ca65f7826b9895ce4cf7cf800fbd6bc32981eeb5950e1a7b531827fb42')
 
 package() {
     install -Dm755 "${srcdir}/batdoc_${pkgver}_${CARCH}/batdoc" "${pkgdir}/usr/bin/batdoc"
