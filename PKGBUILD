@@ -1,23 +1,25 @@
 # Contributor: Rafael Fontenelle <rafaelff@gnome.org>
 # Maintainer: Marko Semet <marko10_000@mailbox.org>
 pkgname=buildstream
-pkgver=2.2.1
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="A powerful and flexible software integration toolset"
 arch=(x86_64)
 url="https://buildstream.build"
 license=('Apache')
 depends=(
-    buildbox-common
+    buildbox
     python
     python-click
     python-dateutil
+    python-dulwich
     python-grpcio
     python-jinja
     python-pluginbase
     python-protobuf
     python-psutil
     python-pyroaring
+    python-requests
     python-ruamel-yaml
     python-ruamel.yaml.clib
     python-setuptools
@@ -31,7 +33,7 @@ optdepends=(
     "buildstream-plugins-experimental: Official experimental BuildStream plugins"
 )
 makedepends=(cython git python-packaging)
-source=("git+https://github.com/apache/buildstream.git#tag=${pkgver}&commit=aba6eff09b133e140fba961ede14a984b2e236c7")
+source=("git+https://github.com/apache/buildstream.git#tag=${pkgver}&commit=4c68517662e17cd68f579db0b2d5c5e5d4451335")
 sha256sums=('SKIP')
 
 build() {
