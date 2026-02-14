@@ -1,7 +1,7 @@
 # Maintainer: YOUR NAME <your@email>
 pkgname=papdieo
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Hyprland-compatible wallpaper management CLI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/xiaotinglian/papdieo"
@@ -23,12 +23,12 @@ sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/papdieo"
-  cargo build --release --locked
+  cargo build --release --frozen
 }
 
 check() {
   cd "$srcdir/papdieo"
-  cargo test --release --locked
+  cargo test --release --frozen
 }
 
 package() {
