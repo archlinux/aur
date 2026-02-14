@@ -1,4 +1,4 @@
-# Maintainer: gcb
+# Maintainer: gcb0
 pkgname=oo7-server
 pkgver=0.5.0
 pkgrel=1
