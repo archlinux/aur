@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Kyuzial <kyuzial@protonmail.com>
 pkgname=cosmic-term-git
-pkgver=1.0.0.alpha.7.r26.ga20d77f
+pkgver=1.0.6.r6.ga9c9d56
 pkgrel=1
 pkgdesc="COSMIC Terminal Emulator"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ url="https://github.com/pop-os/cosmic-term"
 license=('GPL-3.0-only')
 depends=(
   'cosmic-icons-git'
-  'gcc-libs'
+  'libgcc'
   'libxkbcommon'
 )
 makedepends=(
@@ -37,7 +37,7 @@ prepare() {
   patch -Np1 -i ../lto.patch
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {

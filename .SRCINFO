@@ -1,6 +1,6 @@
 pkgbase = cosmic-term-git
 	pkgdesc = COSMIC Terminal Emulator
-	pkgver = 1.0.0.alpha.7.r26.ga20d77f
+	pkgver = 1.0.6.r6.ga9c9d56
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-term
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = cosmic-term-git
 	makedepends = just
 	makedepends = mold
 	depends = cosmic-icons-git
-	depends = gcc-libs
+	depends = libgcc
 	depends = libxkbcommon
 	provides = cosmic-term
 	provides = cosmic-terminal
