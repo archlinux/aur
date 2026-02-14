@@ -1,7 +1,7 @@
 # Maintainer: Phil Ruffwind <rf@rufflewind.com>
 pkgname=slatec
 pkgver=4.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Common Mathematical Library"
 arch=(i686 x86_64)
 url=http://netlib.org/slatec

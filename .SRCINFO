@@ -1,7 +1,7 @@
 pkgbase = slatec
 	pkgdesc = Common Mathematical Library
 	pkgver = 4.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://netlib.org/slatec
 	arch = i686
 	arch = x86_64
