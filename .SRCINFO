@@ -4,6 +4,7 @@ pkgbase = archforge
 	pkgrel = 1
 	url = https://github.com/Scqxd/archforge
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = cargo
 	makedepends = rust
@@ -15,6 +16,6 @@ pkgbase = archforge
 	provides = pkgbuild-generator
 	conflicts = archforge-git
 	source = https://github.com/Scqxd/archforge/archive/refs/tags/v0.2.3.tar.gz
-	sha256sums = 6bdb4334e9be334e556e88bf4a646c22ff77b85c03a2872191d72edd608d1943
+	sha256sums = e7dfe769aaed1776eeb4bb471af3363c722c6c51314a95104340607b6a84e929
 
 pkgname = archforge
