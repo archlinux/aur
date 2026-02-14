@@ -7,6 +7,12 @@ Certification Authorities (CA) certificates.
 The format is based on Keep a Changelog (see https://keepachangelog.com),
 and this project versioning is YYYYMMDD.
 
+## 20260213
+
+### Added
+
+- AC_PLANO_DIGITAL_CD.crt
+
 ## 20260204
 
 ### Added
