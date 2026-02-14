@@ -1,5 +1,6 @@
-# Maintainer: Orestis Floros <orestisf1993@gmail.com>
-# Maintainer: Dan Beste <dan.ray.beste@gmail.com>
+# Maintainer: Louis Rannou <louis.rannou@semalibre.com>
+# Contributor: Orestis Floros <orestisf1993@gmail.com>
+# Contributor: Dan Beste <dan.ray.beste@gmail.com>
 # Contributor: Benjamin Chrétien <chretien+aur [at] lirmm [dot] fr>
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 # Contributor: Rasi <rasi@xssn.at>
