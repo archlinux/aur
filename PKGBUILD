@@ -21,6 +21,7 @@ depends=(
     'openssl>=1.0.0'
     'dbus'
     'glib2>=2.80.0'
+    'glycin-gtk4>=2.0.0'
     'lcms2>=2.12.0'
     'libseccomp>=2.5.0'
 )
