@@ -1,6 +1,6 @@
 pkgbase = ik-llama.cpp-cuda
 	pkgdesc = llama.cpp fork with additional SOTA quants and improved performance (CUDA Backend)
-	pkgver = r4193.102f77b7
+	pkgver = r4195.f5fe33b7
 	pkgrel = 1
 	url = https://github.com/ikawrakow/ik_llama.cpp
 	arch = x86_64
