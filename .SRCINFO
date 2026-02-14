@@ -1,7 +1,7 @@
 pkgbase = mozillavpn
 	pkgdesc = Fast, secure, and easy to use VPN from the makers of Firefox
 	pkgver = 2.33.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vpn.mozilla.org
 	install = mozillavpn.install
 	arch = x86_64

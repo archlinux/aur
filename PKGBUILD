@@ -10,7 +10,7 @@
 
 pkgname=mozillavpn
 pkgver=2.33.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, secure, and easy to use VPN from the makers of Firefox"
 arch=('x86_64')
 url="https://vpn.mozilla.org"
@@ -95,4 +95,5 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 "$srcdir/$_pkgsrc/linux/org.mozilla.vpn.rules-others" "$pkgdir/usr/share/polkit-1/rules.d/org.mozilla.vpn.rules"
 }
