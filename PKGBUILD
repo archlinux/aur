@@ -2,8 +2,8 @@
 
 pkgname=perplexity
 pkgver=1.5.1
-pkgrel=1
-commit='4c6c5f694b760c455e336963072b31d4a1390e89'
+pkgrel=2
+commit='10d55cad79da785cca88f0c855b0de6833bafeb3'
 pkgdesc='Native Perplexity AI client for Linux'
 arch=('x86_64')
 url='https://github.com/mazixs/perplexity'
@@ -27,7 +27,7 @@ sha256sums=('SKIP'
             '553ae2c5fecc8a5bab7aedcd07450d89f0220c46695fac488d4aa074330eb3c7'
             'd43b2da02e60f303e96a38e04a6e77117e9d84f527c9352f782caf50d5980006'
             '01692302be8137ce1f61e6a4c0f680818053bded7ebd8ea2ee3a47cc1d9f71af'
-            '85437de44f57ffe89c7c13aee24f891ee95e3e9f594e89f7de74e144e21eccf6')
+            '3bb9a191d3453a4683cba22c2bf9c0b79640855801f2756b79c1c1c751319f25')
 
 install=perplexity.install
 

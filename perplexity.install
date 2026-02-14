@@ -3,13 +3,6 @@ post_install() {
   if command -v update-desktop-database >/dev/null 2>&1; then
     update-desktop-database -q || true
   fi
-
-  # Best-effort: set default handler for custom URL scheme
-  # Note: running under root affects only root user; desktop environments
-  # typically pick up the handler from the desktop file + updated caches.
-  if command -v xdg-mime >/dev/null 2>&1; then
-    xdg-mime default perplexity.desktop x-scheme-handler/perplexity-app || true
-  fi
 }
 
 post_upgrade() {
