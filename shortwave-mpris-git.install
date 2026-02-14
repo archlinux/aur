@@ -1,7 +1,11 @@
 post_install() {
-  glib-compile-schemas /usr/share/glib-2.0/schemas
+  echo "Compiling GSettings schemas..."
+  glib-compile-schemas /usr/share/glib-2.0/schemas || echo "Warning: Schema compilation failed"
+  echo "Updating icon cache..."
   gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+  echo "Updating desktop database..."
   update-desktop-database -q
+  echo "Post-install complete."
 }
 
 post_upgrade() {
