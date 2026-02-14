@@ -2,8 +2,8 @@
 _appname=affine
 pkgname="${_appname}-canary-bin"
 _pkgname=AFFiNE-canary
-_pkgver=2026.2.4
-_subver=canary.914
+_pkgver=2026.2.13
+_subver=canary.916
 pkgver="${_pkgver}_${_subver}"
 _electronversion=39
 pkgrel=1
@@ -29,7 +29,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/toeverything/AFFiNE/v${_pkgver}-${_subver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ea27a66b000660b1dd65e95b52e9cba51c468c85fb0699ece9bdd8b5a0d9e8f3'
+sha256sums=('853bdeb1fc25ebe8f8ebb6e078f0448899e0263d6fb83bc2f7379b7c1a35b24a'
             '1cdeca52d4f740361f103926144eb8b3f265975b2337d4e27b3313f72465897f'
             'c107c8088fe42bce6def95d313cfe7b5984d3bb2c1608b67f855327da45f497b'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
