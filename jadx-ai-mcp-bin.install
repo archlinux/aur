@@ -1,0 +1,13 @@
+post_install() {
+  cat <<'EOF'
+To enable the JADX plugin for your user account, run:
+  install -Dm644 /usr/share/jadx-ai-mcp/jadx-ai-mcp.jar "$HOME/.local/share/jadx/plugins/dropins/jadx-ai-mcp.jar"
+
+Then configure your MCP client to start the server with:
+  jadx-ai-mcp-server
+EOF
+}
+
+post_upgrade() {
+  post_install
+}

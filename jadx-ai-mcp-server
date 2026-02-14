@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+exec python /usr/share/jadx-ai-mcp/jadx-mcp-server/jadx_mcp_server.py "$@"
