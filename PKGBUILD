@@ -36,6 +36,9 @@ exec /usr/bin/python3 /usr/lib/${pkgname%-git}/wallpaper_gui.py "\$@"
 EOF
     chmod 755 "$pkgdir/usr/bin/simple-wallpaper-engine"
 
+    # Install desktop entry
+    install -Dm644 simple-wallpaper-engine.desktop "$pkgdir/usr/share/applications/${pkgname%-git}.desktop"
+
     # Install documentation
     install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname%-git}/README.md"
 }
