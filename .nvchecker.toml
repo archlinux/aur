@@ -1,0 +1,4 @@
+[mightymike]
+source = "git"
+git = "https://github.com/jorio/mightymike.git"
+prefix = "v"
