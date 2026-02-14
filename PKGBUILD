@@ -1,7 +1,7 @@
 # Maintainer: Tom Zander
 
 pkgname=flowee-pay
-pkgver=2026.01.3
+pkgver=2026.02.1
 options=(!lto)
 pkgrel=1
 pkgdesc="Flowee Payment solution"
@@ -9,12 +9,14 @@ arch=('x86_64' 'aarch64')
 url="http://flowee.org/pay/"
 license=('GPL3')
 depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'qt6-shadertools' 'qt6-scxml' 'zxing-cpp' 'qt6-multimedia')
-makedepends=('boost' 'cmake' 'flowee>=2026.01.0' 'qt6-tools')
+makedepends=('boost' 'cmake' 'flowee>=2026.02.0' 'qt6-tools')
 provides=('flowee-pay')
 install=flowee-pay.install
 source=("https://codeberg.org/Flowee/pay/archive/$pkgver.tar.gz"
+    "0001-Fix-off-by-one-in-unit-test.patch"
     "https://flowee.org/products/pay/blockheaders-850000")
-sha256sums=('eb54271aa0fdf69f05ad4a72e0673c98918de5e957a12c9f1d8b7be30f1697d9'
+sha256sums=('a3a8443e6236498fa384478366c8b35dea5c7cec3b8b9b06d5b0ba9a835d2b95'
+    'f7e4bf13406b1836fb0e80b97f01d8f5098b3c4c9de230ac5463c009a5019316'
     '4a98c3b655cfd7520b4d4f682d95e3a82e0f03fda4fa687d28f2127205d66047')
 
 build() {
@@ -23,6 +25,11 @@ build() {
   cd build
   cmake -Dbuild_mobile_pay=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$pkgdir/usr/ ../pay
   make
+}
+
+prepare() {
+    cd "$srcdir/pay"
+    patch -Np1 -i ../0001-Fix-off-by-one-in-unit-test.patch
 }
 
 check() {
