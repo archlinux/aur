@@ -1,9 +1,12 @@
-diff -ruN lame-3.100/include/libmp3lame.sym patched/include/libmp3lame.sym
---- lame-3.100/include/libmp3lame.sym	2017-09-06 21:33:35.000000000 +0200
-+++ patched/include/libmp3lame.sym	2017-11-05 16:32:43.984255732 +0100
-@@ -1,5 +1,4 @@
- lame_init
--lame_init_old
- lame_set_num_samples
- lame_get_num_samples
- lame_set_in_samplerate
+--- lame/frontend/mp3rtp.c    2026-02-14 14:26:39.305799789 +0100
++++ lame/frontend/mp3rtp.c    2026-02-14 14:30:13.830738615 +0100
+@@ -56,7 +56,9 @@
+ #endif
+ 
+ #ifdef IPV6
++#if !defined( _WIN32 ) && !defined(__MINGW32__)
+ #include <netinet/in.h>
++#endif
+ # ifndef INET6_ADDRSTRLEN
+ #  define INET6_ADDRSTRLEN     46
+ # endif /* INET6_ADDRSTRLEN */

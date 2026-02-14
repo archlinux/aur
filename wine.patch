@@ -1,0 +1,40 @@
+--- lame/Makefile.am	2026-02-14 15:12:51.245682105 +0100
++++ lame/Makefile.am	2026-02-14 15:13:38.248422266 +0100
+@@ -39,7 +39,7 @@
+ # modified the source.
+ #
+ testcase.new.mp3: testcase.wav frontend/lame$(EXEEXT)
+-	time frontend/lame$(EXEEXT) --nores $(top_srcdir)/testcase.wav testcase.new.mp3 || $(RM_F) testcase.new.mp3
++	time ${WINE} frontend/lame$(EXEEXT) --nores $(top_srcdir)/testcase.wav testcase.new.mp3 || $(RM_F) testcase.new.mp3
+ 
+ test: testcase.mp3 testcase.new.mp3
+ 	@echo
+@@ -51,7 +51,7 @@
+ 	cp testcase.new.mp3 $(top_srcdir)/testcase.mp3
+ 
+ testg: frontend/mp3x$(EXEEXT) $(top_srcdir)/../test/castanets.wav
+-	frontend/mp3x$(EXEEXT) -h $(top_srcdir)/../test/castanets.wav
++	${WINE} frontend/mp3x$(EXEEXT) -h $(top_srcdir)/../test/castanets.wav
+ 
+ update:
+ 	cd $(top_srcdir) && svn update || true
+--- lame/Makefile.in	2026-02-14 15:20:27.968070038 +0100
++++ lame/Makefile.in	2026-02-14 15:20:58.343924572 +0100
+@@ -894,7 +894,7 @@
+ # modified the source.
+ #
+ testcase.new.mp3: testcase.wav frontend/lame$(EXEEXT)
+-	time frontend/lame$(EXEEXT) --nores $(top_srcdir)/testcase.wav testcase.new.mp3 || $(RM_F) testcase.new.mp3
++	time ${WINE} frontend/lame$(EXEEXT) --nores $(top_srcdir)/testcase.wav testcase.new.mp3 || $(RM_F) testcase.new.mp3
+ 
+ test: testcase.mp3 testcase.new.mp3
+ 	@echo
+@@ -906,7 +906,7 @@
+ 	cp testcase.new.mp3 $(top_srcdir)/testcase.mp3
+ 
+ testg: frontend/mp3x$(EXEEXT) $(top_srcdir)/../test/castanets.wav
+-	frontend/mp3x$(EXEEXT) -h $(top_srcdir)/../test/castanets.wav
++	${WINE} frontend/mp3x$(EXEEXT) -h $(top_srcdir)/../test/castanets.wav
+ 
+ update:
+ 	cd $(top_srcdir) && svn update || true

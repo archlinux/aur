@@ -1,54 +1,68 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
+# Contributor: Ray Rashif <schiv@archlinux.org>
+# Contributor:  Ionut Biru <ibiru@archlinux.org>
+# Contributor: Hugo Doria <hugo@archlinux.org>
 
 pkgname=mingw-w64-lame
-pkgver=3.100
-pkgrel=5
+pkgver=3.101.r6531
+pkgrel=1
 pkgdesc="A high quality MPEG Audio Layer III (MP3) encoder (mingw-w64)"
 arch=('any')
 url="http://lame.sourceforge.net/"
-depends=('mingw-w64-crt' 'mingw-w64-ncurses')
-options=('!strip' '!buildflags' '!libtool' 'staticlibs')
-makedepends=('mingw-w64-gcc' 'mingw-w64-configure' 'nasm')
-license=('LGPL')
-source=("http://downloads.sourceforge.net/lame/lame-$pkgver.tar.gz"
-        "lame.pc.in"
-        "mingw.patch"
-        "0007-revert-posix-code.patch"
-        "winsock2.patch")
-sha256sums=('ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e'
-            '3ec0c7126cdd39288cdf4d49edbd16b770e88cd1a96cf82eb69418637047c52d'
-            '3b90a1ea486b245c7a6ddc7e3c4a6b217afdcfdf918a1857633a4e509e274296'
-            '1e7f61456b15ceea613de8fd982b3f892340b851393d4ca4aff44395ae237ae9'
-            '340a3126c22d3a545034c726b81bba3808f0f0ded83a714336fca49a11f8a942')
-b2sums=('6954d30cfd3951ea07762ba5dd7ff27038b78455f423099a225ebf748abddf9970e444456ca5a6179bd381e2205b32293392cb757c203901674860710fe2c183'
-        '369c6aedb682613576429beb3790dcf1d00717a30f2ed8e7165b4a145bfb2e2787514089aed94b4bdfe4adc63f2b916926bb579102fbb6b3ae70c725b1a528db'
-        '2016a58f6ca3049ef93f603546e4cf07d6c55e17ea125c52085dc77299e2aa69d97f0110f4cf973d989d1634f37a569bc02e741e08f691f721b6a421328ec0be'
-        '679b392ce029ed3b2077c781131eddcfb112158a79f08ef00b1fc9bcc684a6bd0a6e98d7c7104abc0cf872027131fdb3fc72f9a9e20468a9fb1a8fd09a7969e2'
-        'bce89b4dd57ad25db1f1d8ef6a7bae9bab84e6b273258efeab33d11f0902469d309b2f12c6bb1687cadd6d557cfeb1d6250e53af8cdfb383b024ddd2f7e8c294')
+depends=(
+  mingw-w64-crt
+  mingw-w64-mpg123
+  mingw-w64-ncurses
+)
+options=('!strip' '!buildflags' '!libtool' 'staticlibs' '!debug')
+makedepends=(
+  mingw-w64-gcc
+  mingw-w64-configure
+  mingw-w64-wine
+  nasm
+  subversion)
+license=(LGPL-2.0-only)
+_revision=6531
+source=(
+  svn+https://svn.code.sf.net/p/lame/svn/trunk/lame#revision=6531
+  lame-symbols.patch
+  lame-cbr-abr-quality-settings-clamp.patch
+  mingw.patch
+  wine.patch
+  winsock2.patch
+)
+b2sums=('SKIP'
+        'c8cc00f560515231dba1bf9393d056ecb11c2268bafae4923e8c2594b92de473b94e6e5cbef1e52b4843ddd36bb4e06ea6b24ac4a18aa682b2ab7c5ef6deb73c'
+        '217cf6611f13cb91997856c3af9c30b7c23fa3744126d27f71768001b6799a4a100c9c0baec34beb656fee1c8c519c86b1a9c549e2ea6befe197eb930f70caaa'
+        'b96dda3836a85106cbe297ea896e9b86741f358764d34149c4f3901477f55bffe4e06a32753b9a183081c3d015ba321a4562572c0a2266e0a9b0b731a9980487'
+        'aadab9300aa62e35f447464d0e06326f26909375c3ada27ad42c042f62078319c469b59f321e4ef25062de1280012cebba58c683b81ba852a7a8f0136c370ed3'
+        '6bcc4e4605ad01bb2bc3b62904880e2ae298724769752f0fcf12ed5aef1e501e31bc535c4397dbc0befbbcb895a0f84cf7fc7c074c1a4d95842909d74cc364af')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
-  for _arch in ${_architectures}; do
-   sed -e "s/VERSION/$pkgver/" -e "s/ARCH/${_arch}/" lame.pc.in > lame-${_arch}.pc
-  done
+  cd ${srcdir}/lame
 
-   cd ${srcdir}/lame-${pkgver}
+  patch -Np1 -i "${srcdir}/lame-symbols.patch"
+  patch -Np1 -i "${srcdir}/lame-cbr-abr-quality-settings-clamp.patch"
+  patch -Np1 -i "${srcdir}/mingw.patch"
+  patch -Np1 -i "${srcdir}/wine.patch"
+  patch -Np1 -i "${srcdir}/winsock2.patch"
+}
 
-   patch -Np1 -i "${srcdir}/mingw.patch"
-   patch -Np1 -i "${srcdir}/0007-revert-posix-code.patch"
-   patch -Np1 -i "${srcdir}/winsock2.patch"
-
-   #autoreconf -iv
+pkgver() {
+  echo "3.101.r${_revision}"
 }
 
 build() {
   for _arch in ${_architectures}; do
-    mkdir -p ${srcdir}/lame-${pkgver}/build-${_arch} && cd ${srcdir}/lame-${pkgver}/build-${_arch}
+    mkdir -p ${srcdir}/lame/build-${_arch} && cd ${srcdir}/lame/build-${_arch}
 
     unset LDFLAGS CPPFLAGS
 
     export LIBS="-lncursesw"
     export CFLAGS="-msse"
+    export CFLAGS+=" -Wno-implicit-function-declaration -Wno-incompatible-pointer-types"
     export CPPFLAGS="-msse"
 
     ${_arch}-configure \
@@ -61,14 +75,13 @@ build() {
 
 check() {
   for _arch in ${_architectures}; do
-      cd ${srcdir}/lame-${pkgver}/build-${_arch}
-      make test
+      WINE=${_arch}-wine make test -C ${srcdir}/lame/build-${_arch}
   done
 }
 
 package() {
   for _arch in ${_architectures}; do
-    cd ${srcdir}/lame-${pkgver}/build-${_arch}
+    cd ${srcdir}/lame/build-${_arch}
 
     make DESTDIR="$pkgdir" install
 
@@ -77,8 +90,7 @@ package() {
     ${_arch}-strip -g ${pkgdir}/usr/${_arch}/lib/*.a
     rm -r $pkgdir/usr/${_arch}/share
 
-    cd ${srcdir}
-    install -vDm 644 lame-${_arch}.pc -t "$pkgdir/usr/${_arch}/lib/pkgconfig/lame.pc"
+    chmod 644 ${pkgdir}/usr/${_arch}/lib/*.dll.a
   done
 }
 
