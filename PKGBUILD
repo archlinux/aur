@@ -1,7 +1,7 @@
 # Maintainer: Damon Petta <d at disassemble dot net>
 
 pkgname=batdoc
-pkgver=1.0.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='cat(1) for doc, docx, xls, xlsx, pptx, and pdf -- renders to markdown with bat'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('d8805869718e30acfd77b91222d0bc9e94226f0f2fc67ea61bd297c18fd9cb5cb7eb8697a6bf5ae063ce881b428cd96790b3d2b095c9079f5fb8823eb4b4927b')
+b2sums=('99a459b77c8ac36f76df0fc2fc99aa352e2e0682a23748602235cdbc334004dc7e62edb244e8db83ddf69c4f57f4aec2b40e100fbdebd14fa350069aec5eba36')
 
 prepare() {
     cd "$pkgname-$pkgver"
