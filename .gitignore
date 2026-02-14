@@ -1,0 +1,6 @@
+src
+pkg
+*.tar.zst
+*.zip
+*.log
+rackpeek*
