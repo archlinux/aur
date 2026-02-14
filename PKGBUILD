@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=qwen-code
-pkgver=0.10.1
+pkgver=0.10.2
 _pkgver=0.9.1
 pkgrel=1
 pkgdesc="cli coding agent (fork of gemini-cli)"
