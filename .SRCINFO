@@ -1,7 +1,7 @@
 pkgbase = aider-chat
 	pkgdesc = AI pair programming in your terminal
 	pkgver = 0.86.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Aider-AI/aider
 	arch = any
 	license = Apache-2.0
@@ -111,3 +111,5 @@ pkgname = aider-chat
 	optdepends = python-babel: support for more locales
 	optdepends = python-playwright: for web scraping
 	optdepends = python-streamlit: for a graphical user interface
+
+pkgname = aider-chat-docs

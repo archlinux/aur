@@ -4,11 +4,11 @@
 pkgbase=aider-chat
 pkgname=(
   'aider-chat'
-  # 'aider-chat-docs'  # see `build()` for details
+  'aider-chat-docs'
 )
 _gitpkgname=aider
 pkgver=0.86.2
-pkgrel=1
+pkgrel=2
 pkgdesc='AI pair programming in your terminal'
 arch=('any')
 url='https://github.com/Aider-AI/aider'
@@ -141,10 +141,9 @@ build() {
 
   cd aider/website
 
-  # https://gitlab.archlinux.org/archlinux/packaging/packages/protobuf/-/issues/23
-  echo >&2 'Not building HTML documentation build due to packaging issue'
-  # export JEKYLL_ENV=production
-  # jekyll build --baseurl "file:///usr/share/doc/${pkgbase}/html/"
+  echo >&2 'Generating HTML documentation'
+  export JEKYLL_ENV=production
+  jekyll build --baseurl "file:///usr/share/doc/${pkgbase}/html/"
 }
 
 check() {
@@ -210,4 +209,21 @@ package_aider-chat() {
     'completions/bash/aider'
   install -D -m 644 -t "${pkgdir}/usr/share/zsh/site-functions" \
     'completions/zsh/_aider'
+}
+
+
+# shellcheck disable=SC2128
+package_aider-chat-docs() {
+  cd "${_gitpkgname}-${pkgver}"
+
+  echo >&2 'Packaging the documentation'
+  install -D -m 644 -t "${pkgdir}/usr/share/doc/${pkgbase}" \
+    README.md
+  mkdir "${pkgdir}/usr/share/doc/${pkgbase}/html"
+  cp -R --preserve=mode -t "${pkgdir}/usr/share/doc/${pkgbase}/html" \
+    aider/website/_site/{assets,docs,examples,HISTORY.html,index.html,share}
+
+  echo >&2 'Packaging the license'
+  install -D -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" \
+    LICENSE.txt
 }
