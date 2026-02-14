@@ -18,7 +18,7 @@ _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgverna
 license=('MIT')
 
 provides=("${_appname}")
-conflicts=("${_pkgname}")
+conflicts=("${_appname}")
 depends=('glibc' 'libgcc')
 
 source=("README-${_pkgvername}.md::${_urlraw}/README.md")
