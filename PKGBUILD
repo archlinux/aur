@@ -6,7 +6,7 @@ _appname=${_pkgname##go-}
 pkgname=${_appname}-bin
 pkgdesc="Interactive minimalist TUI to query JSON, CSV, and TSV using SQL"
 
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -23,8 +23,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}_${pkgver}_linux_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}_${pkgver}_linux_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('a532c822558a37a6cbb8f00337f3e8750879d592871c976bd3da8812e8ec2352')
-sha256sums_aarch64=('00e3ca1a06b235054fba9ce331f21e1cc655a2a6a9f2e0df44ee1b4a59b772b4')
+sha256sums_x86_64=('62a4d415fc15650546f32e68ce94c0ed9471bdc383a848dcc0cb955bf0624a9b')
+sha256sums_aarch64=('61b7b4bc302a89a5a6fc68167926cb5be5345d5a22ecf55ff22a936e248a5543')
 
 
 package() {
