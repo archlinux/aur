@@ -1,0 +1,19 @@
+pkgbase = human-detection-camera
+	pkgdesc = Cross-platform human detection camera app that triggers custom keybinds when humans are detected
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/YatoVoid/human-detection-keybind-system
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-opencv
+	depends = python-numpy
+	depends = python-pyqt5
+	depends = python-pynput
+	depends = xdotool
+	optdepends = v4l-utils: for camera detection and management
+	source = git+https://github.com/YatoVoid/human-detection-keybind-system.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = human-detection-camera

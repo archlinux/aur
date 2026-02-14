@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Human Detection Camera
+Comment=Detect humans via camera and trigger custom keybinds
+Exec=human-detection-camera
+Icon=human-detection-camera
+Terminal=false
+Categories=Utility;System;Security;
+Keywords=camera;detection;human;keybind;automation;privacy;
+StartupNotify=true
