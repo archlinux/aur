@@ -1,0 +1,20 @@
+pkgbase = python-py-key-value-aio
+	pkgdesc = Async key-value store with pluggable backends
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/chrisguidry/py-key-value-aio
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-uv-build
+	depends = python>=3.10
+	depends = python-beartype
+	depends = python-typing_extensions
+	optdepends = python-cachetools: memory backend support
+	optdepends = python-redis: redis backend support
+	source = https://files.pythonhosted.org/packages/d5/42/4397b26c564a7428fbb424c353fc416c5954609c149b6d629255f65e6dc9/py_key_value_aio-0.4.0.tar.gz
+	sha256sums = 55be4942bf5d5a40aa9d6eae443425096fe1bec6af7571502e54240ce3597189
+
+pkgname = python-py-key-value-aio
