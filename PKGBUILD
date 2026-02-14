@@ -26,7 +26,7 @@ optdepends=(
   'boundary: Boundary CLI'
   'cloudflared: Cloudflare CLI'
   'freerdp: RDP client'
-  'google-cloud-cli: '
+  'google-cloud-cli: Google Cloud CLI'
   'gtk-vnc: VNC Client'
   'keepassxc: Password storage method option'
   'libsecret: Fallback password storage method'
