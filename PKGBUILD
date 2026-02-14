@@ -3,7 +3,7 @@
 
 pkgname=python-glue-qt
 _pyname=glue_qt
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Multidimensional data visualization across files -- main Qt library of GUI"
 arch=('any')
@@ -20,7 +20,7 @@ makedepends=('python-setuptools-scm'
              'python-installer'
              'desktop-file-utils')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('9f41ec255b10517fb0cf808c40462a8993ac5890c46fe9f57d29813f2ad8091c')
+sha256sums=('a50a2641c0cfc23081e1e76e0267c73fa6ba2eccc6151c9143bc5e603f4c5423')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
