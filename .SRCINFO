@@ -1,8 +1,8 @@
 pkgbase = wizstr
 	pkgdesc = C++ string processing library
-	pkgver = 2025.10.1
+	pkgver = 2026.1.3
 	pkgrel = 1
-	url = https://github.com/libbylg/str
+	url = https://gitee.com/libbylg/str
 	arch = x86_64
 	arch = aarch64
 	license = MulanPSL-2.0
@@ -10,7 +10,7 @@ pkgbase = wizstr
 	depends = gcc-libs
 	conflicts = libstr-git
 	options = staticlibs
-	source = wizstr-2025.10.1.tar.gz::https://github.com/libbylg/str/archive/refs/tags/2025.10.1.tar.gz
-	sha256sums = 6ed6504d211670b5638a598298b825f6537ae40969b5fcb887b0e6e575bbe1ad
+	source = wizstr-2026.1.2.tar.gz::https://gitee.com/libbylg/str/archive/refs/tags/2026.1.2.tar.gz
+	sha256sums = 7d95987410b7fa23abdb82be192794917b7730eaa1adfae798c503f28c27d8ef
 
 pkgname = wizstr
