@@ -1,6 +1,6 @@
 pkgbase = vcvrack-autinn
 	pkgdesc = Autinn VCV Rack modules
-	pkgver = 2.6.20
+	pkgver = 2.6.21
 	pkgrel = 1
 	url = https://github.com/NikolaiVChr/Autinn
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = vcvrack-autinn
 	makedepends = zstd
 	depends = gcc-libs
 	depends = vcvrack
-	source = git+https://github.com/NikolaiVChr/Autinn#tag=v2.6.20
-	sha256sums = 8939e836b956dc994e39f4c2edfc7b6b9624ceb520b9db0843a13c75a1cfa62c
+	source = git+https://github.com/NikolaiVChr/Autinn#tag=v2.6.21
+	sha256sums = c60280fb92ede33d33660e0fc9675896dd642d1c408464a1b33707c49f38abb9
 
 pkgname = vcvrack-autinn
