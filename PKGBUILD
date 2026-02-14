@@ -1,9 +1,8 @@
 # Maintainer: Lennard Kittner <lennard@kittner.dev>
-_tag=0ff337bcd9c21f304f1fa11356a342ee0a4543b8
 _sourceName="HyperHeadset"
 
 pkgname="hyperheadset-git"
-pkgver=1.3.0
+pkgver=1.3.0.4.g867f031
 pkgrel=1
 pkgdesc="A CLI and tray application for monitoring and managing HyperX headsets."
 arch=('x86_64')
@@ -18,13 +17,13 @@ makedepends=(
   git
   cargo
 )
-source=("git+${url}.git#tag=${_tag}")
+source=("git+${url}.git#branch=main")
 md5sums=("SKIP")
 validpgpkeys=()
 
 pkgver() {
   cd "${_sourceName}"
-  git describe --tags | sed 's/^v//'
+  git describe --tags --long --always | sed 's/^v//; s/-/./g'
 }
 
 prepare() {
