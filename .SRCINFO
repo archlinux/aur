@@ -1,6 +1,6 @@
 pkgbase = dxde
 	pkgdesc = Program pro vedeni danove evidence (for czech tax records)
-	pkgver = 1.40.13
+	pkgver = 1.40.14
 	pkgrel = 1
 	url = https://dxde.dxsolutions.org
 	install = dxde.install
@@ -12,7 +12,7 @@ pkgbase = dxde
 	depends = openssl
 	depends = fontconfig
 	depends = curl
-	source = https://files.dxsolutions.org/dxde-1.40.13.tar.gz
-	md5sums = b4a82ef71c19535544888d417c07a57a
+	source = https://files.dxsolutions.org/dxde-1.40.14.tar.gz
+	md5sums = 91f3d786816676edcc9282acfa3ae332
 
 pkgname = dxde
