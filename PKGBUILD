@@ -2,15 +2,15 @@
 pkgname=fan-control
 _app_id="io.github.wiiznokes.$pkgname"
 pkgver=26.01
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Control your fans with different behaviors"
 arch=('x86_64')
 url="https://github.com/wiiznokes/fan-control"
 license=('MIT')
 depends=(
-  'gcc-libs'
   'hicolor-icon-theme'
+  'libgcc'
   'libxkbcommon'
   'lm_sensors'
 )
@@ -33,7 +33,7 @@ prepare() {
   git -c protocol.file.allow=always submodule update
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --target "$(rustc --print host-tuple)"
 
   # Don't run `git submodule update`
   sed -i '/submodule/d' justfile
