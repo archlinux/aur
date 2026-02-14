@@ -17,6 +17,8 @@ pkgbase = clingo
 	conflicts = clasp
 	options = !lto
 	source = git+https://github.com/potassco/clingo#tag=v5.8.0
+	source = fix-re2c-4.3-compat.patch
 	sha256sums = eb06af702e54d4bd7aefda2776b469e78dc5728a41b0f3867515c599625a0909
+	sha256sums = e4f1e150eb1bfaf9def1a315caa6297149f21e5ec0a8e68213a69426de45831c
 
 pkgname = clingo
