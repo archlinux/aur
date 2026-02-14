@@ -1,0 +1,23 @@
+pkgbase = python-torchao-rocm
+	pkgdesc = Package for applying ao techniques to GPU models (with ROCm/HIP support)
+	pkgver = 0.16.0
+	pkgrel = 1
+	url = https://pytorch.org/ao/stable/index.html
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	makedepends = rocm-hip-runtime
+	makedepends = hipblas
+	depends = python-pytorch-rocm
+	provides = python-torchao=0.16.0
+	conflicts = python-torchao
+	source = torchao-0.16.0::git+https://github.com/pytorch/ao.git#tag=v0.16.0
+	sha256sums = ae87182d472681ded40f59f8acef411f8b64560701319504c8486a094fc3e2d2
+
+pkgname = python-torchao-rocm
