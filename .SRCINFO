@@ -1,0 +1,27 @@
+pkgbase = rimg
+	pkgdesc = Minimal Wayland image viewer with vim keybindings
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/psic4t/rimg
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = rust
+	makedepends = cargo
+	makedepends = pkg-config
+	depends = wayland
+	depends = libxkbcommon
+	depends = libjpeg-turbo
+	depends = libpng
+	depends = giflib
+	depends = libwebp
+	depends = libtiff
+	depends = librsvg
+	depends = cairo
+	depends = glib2
+	depends = libavif
+	depends = libheif
+	depends = libjxl
+	source = rimg-1.0.0.tar.gz::https://github.com/psic4t/rimg/archive/v1.0.0.tar.gz
+	sha256sums = b795a2ac6955e5743f6903366dfe6dc5a9a16a9a2f89dfdb571e75f99c657ead
+
+pkgname = rimg
