@@ -46,6 +46,12 @@ package() {
         find "${pkgdir}/opt/Яндекс Музыка" -type f -exec chmod 755 {} \;
     fi
 
+    # yandex-music
+    if [[ -d "${pkgdir}/opt/yandex-music" ]]; then
+        find "${pkgdir}/opt/yandex-music" -type d -exec chmod 755 {} \;
+        find "${pkgdir}/opt/yandex-music" -type f -exec chmod 755 {} \;
+    fi
+
     # Launcher
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/pulsesync" << 'EOF'
 #!/bin/bash
