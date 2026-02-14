@@ -9,7 +9,7 @@ depends=()
 license=('MIT')
 makedepends=('git' 'cargo')
 source=("https://github.com/matheus-git/systemd-manager-tui/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('f586372815c447a2f0a26ae16cb53ef4a1ceeec5a022201a86a1246c3f54b004')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
@@ -22,4 +22,3 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
-

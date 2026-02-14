@@ -8,6 +8,6 @@ pkgbase = systemd-manager-tui
 	makedepends = git
 	makedepends = cargo
 	source = https://github.com/matheus-git/systemd-manager-tui/archive/refs/tags/v1.2.1.tar.gz
-	sha256sums = SKIP
+	sha256sums = f586372815c447a2f0a26ae16cb53ef4a1ceeec5a022201a86a1246c3f54b004
 
 pkgname = systemd-manager-tui
