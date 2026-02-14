@@ -1,0 +1,12 @@
+pkgbase = oo7-server
+	pkgdesc = D-Bus Secret Service provider
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/linux-credentials/oo7
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = https://github.com/linux-credentials/oo7/archive/refs/tags/0.5.0.tar.gz
+	sha256sums = 4f7f1a7acec1c2cf02719d2bf890313d5364446a6a3dc3984f4199b94f3506ee
+
+pkgname = oo7-server
