@@ -1,0 +1,25 @@
+pkgbase = papdieo-git
+	pkgdesc = Hyprland-compatible wallpaper management CLI
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/xiaotinglian/papdieo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	makedepends = rust
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = gst-plugins-ugly
+	depends = gst-libav
+	depends = wayland
+	depends = hyprland
+	provides = papdieo
+	conflicts = papdieo
+	source = git+https://github.com/xiaotinglian/papdieo.git
+	sha256sums = SKIP
+
+pkgname = papdieo-git
