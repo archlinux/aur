@@ -1,6 +1,6 @@
 pkgbase = stoat-desktop-git
 	pkgdesc = Stoat for Desktop.(Use system-wide electron)
-	pkgver = 1.1.12.r2.gdad885a
+	pkgver = 1.2.0.r0.gb765e84
 	pkgrel = 1
 	url = https://stoat.chat/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = stoat-desktop-git
 	makedepends = gendesk
 	makedepends = jq
 	depends = electron38
-	provides = stoat-desktop=1.1.12
+	provides = stoat-desktop=1.2.0
 	conflicts = stoat-desktop
 	source = stoat-desktop.git::git+https://github.com/stoatchat/for-desktop.git
 	source = stoat-desktop.sh

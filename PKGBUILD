@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=stoat-desktop-git
 _pkgname=Stoat
-pkgver=1.1.12.r2.gdad885a
+pkgver=1.2.0.r0.gb765e84
 _electronversion=38
 _nodeversion=22
 pkgrel=1
