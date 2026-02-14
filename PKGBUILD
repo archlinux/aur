@@ -1,6 +1,6 @@
 # Maintainer: Byson94 <byson94wastaken@gmail.com>
 pkgname=ewwii-bin
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Powerful and flexible widget system for Linux"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=()
 provides=('ewwii')
 conflicts=('ewwii' 'ewwii-git')
 source=("https://github.com/Ewwii-sh/ewwii/releases/download/v${pkgver}/ewwii")
-sha256sums=('49eff35932e5d364e9a8ade4375e2bf3cfb4702bea9bbda4a56202df8a4d18a3')
+sha256sums=('ac6b29f4b845d6ddb9d6d95dbe00170fcbdf128b35a4b1ff581e8b0237ff1b19')
 
 package() {
     install -Dm755 "$srcdir/ewwii" "$pkgdir/usr/bin/ewwii"
