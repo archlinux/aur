@@ -2,7 +2,7 @@
 pkgname=uabea-next-git
 _pkgname=uabea-next
 pkgver=0.0.0.r146.f6a2143
-pkgrel=1
+pkgrel=2
 pkgdesc='A research and modding tool for SerializedFiles and Asset Bundles'
 url='https://github.com/nesrak1/UABEANext'
 makedepends=('git' 'dotnet-sdk' 'imagemagick')

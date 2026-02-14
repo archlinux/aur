@@ -1,7 +1,7 @@
 pkgbase = uabea-next-git
 	pkgdesc = A research and modding tool for SerializedFiles and Asset Bundles
-	pkgver = 0.0.0.r100.da7c773
-	pkgrel = 1
+	pkgver = 0.0.0.r146.f6a2143
+	pkgrel = 2
 	url = https://github.com/nesrak1/UABEANext
 	arch = x86_64
 	arch = armv7h
