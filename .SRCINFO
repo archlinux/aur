@@ -1,6 +1,6 @@
 pkgbase = kvm-configurator
 	pkgdesc = Little helper for virsh‑install
-	pkgver = 1.0.9
+	pkgver = 1.0.9.1
 	pkgrel = 1
 	url = https://github.com/mrtoadie/kvm-configurator
 	arch = x86_64

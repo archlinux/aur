@@ -1,7 +1,7 @@
 # Maintainer: MrToadie <toadie@toadie.de>
 
 pkgname=kvm-configurator
-pkgver=1.0.9
+pkgver=1.0.9.1
 pkgrel=1
 pkgdesc="Little helper for virsh‑install"
 arch=('x86_64')
