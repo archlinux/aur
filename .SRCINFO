@@ -1,7 +1,7 @@
 pkgbase = rustconn
 	pkgdesc = Modern connection manager for Linux with GTK4/Wayland-native interface.
-	pkgver = 0.8.3
-	pkgrel = 2
+	pkgver = 0.8.4
+	pkgrel = 1
 	url = https://github.com/totoshko88/RustConn
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -32,7 +32,7 @@ pkgbase = rustconn
 	optdepends = teleport: Teleport CLI
 	optdepends = tigervnc
 	optdepends = virt-viewer
-	source = RustConn-0.8.3.tar.gz::https://github.com/totoshko88/RustConn/archive/refs/tags/v0.8.3.tar.gz
-	sha256sums = ee4ce4958fd58ab722653b6f821ee36deb7f937e0ce800155d3bcdafe3475300
+	source = RustConn-0.8.4.tar.gz::https://github.com/totoshko88/RustConn/archive/refs/tags/v0.8.4.tar.gz
+	sha256sums = b71b0d334e0ec125a7ac168a0095bcb198a678042bd0bac18273469537dbb18b
 
 pkgname = rustconn
