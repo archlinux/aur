@@ -22,7 +22,7 @@ package() {
   cd "$srcdir"
   sh ${_base}-$pkgver-Linux-${CARCH}.sh -e $(pwd)
 
-  cd "$srcdir"/COPASI-${pkgver}-Linux-${arch_flag}
+  cd "$srcdir"/COPASI-${pkgver}-Linux-64bit
   rm share/copasi/lib/libfreetype.so.6
   ln -s /usr/lib/libfreetype.so share/copasi/lib/
   ln -s /usr/lib/libfreetype.so.6 share/copasi/lib/
