@@ -1,7 +1,7 @@
 # Maintainer: pierspad <pierpaolospadafora@proton.me>
 pkgname=clingo
 pkgver=5.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Grounding tools for (disjunctive) logic programs'
 arch=('i686' 'x86_64' 'pentium4')
 url='https://potassco.org/'
