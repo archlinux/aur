@@ -1,0 +1,11 @@
+pre-commit:
+  commands:
+    update:
+      run: |
+        echo "Updating checksum"
+        updpkgsums
+        git add PKGBUILD
+
+        echo "Updating .SRCINFO"
+        makepkg --printsrcinfo > .SRCINFO
+        git add .SRCINFO
