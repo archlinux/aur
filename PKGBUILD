@@ -4,7 +4,7 @@
 
 _pkgname=pylzma
 pkgname=python-$_pkgname
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Platform independent python bindings for the LZMA compression library'
 url='https://www.joachim-bauch.de/projects/pylzma/'
@@ -15,7 +15,7 @@ makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel
 source=($_pkgname-$pkgver.tar.gz::https://github.com/fancycode/pylzma/archive/v$pkgver.tar.gz
         # testing data
         https://archive.org/download/stackexchange/ux.stackexchange.com.7z)
-sha256sums=('9ebaa893117f5579da3a81bf3315e4467d998bdd17f3d803f1f031f7d1f2b58a'
+sha256sums=('f223c639d0346b158ca0040440d7d3aa0f39c368f4476db718367d54096c505b'
             'SKIP')
 noextract=(ux.stackexchange.com.7z)
 
