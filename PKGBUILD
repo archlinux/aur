@@ -8,7 +8,7 @@ url="https://github.com/ZStud/reef"
 license=('MIT')
 makedepends=('cargo')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/ZStud/reef/archive/v$pkgver.tar.gz")
-sha256sums=('7950c72ec6b04ade327f3f6712019f3f5853fe8dd595b37ae7528d12af0a6aa8')
+sha256sums=('cebfc0c90f41a13b604cd7c8327266896a8847998e9aa6b2fb99041a5c215810')
 
 prepare() {
     cd "$pkgbase-$pkgver"
@@ -39,7 +39,6 @@ package_reef() {
     install -Dm644 fish/functions/local.fish "$pkgdir/usr/share/fish/vendor_functions.d/local.fish"
     install -Dm644 fish/functions/readonly.fish "$pkgdir/usr/share/fish/vendor_functions.d/readonly.fish"
     install -Dm644 fish/functions/shopt.fish "$pkgdir/usr/share/fish/vendor_functions.d/shopt.fish"
-    install -Dm644 fish/functions/source.fish "$pkgdir/usr/share/fish/vendor_functions.d/source.fish"
     install -Dm644 fish/functions/fish_command_not_found.fish "$pkgdir/usr/share/fish/vendor_functions.d/fish_command_not_found.fish"
 
     # conf.d (auto-loaded on fish startup)
