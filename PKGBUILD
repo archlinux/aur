@@ -12,7 +12,7 @@ makedepends=('git' 'go' 'base-devel')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
-install="${pkgname}.install"
+install="kvm-configurator.install"
 
 build() {
     cd "$srcdir/kvm-configurator/kvm-configurator/"

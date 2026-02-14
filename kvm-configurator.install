@@ -1,4 +1,5 @@
 # kvm-configurator.install
+#!/usr/bin/bash
 # Dieses Skript wird von pacman (als root) nach dem eigentlichen
 # Paket‑Installationsschritt ausgeführt.
 
