@@ -6,11 +6,11 @@
 # Contributor: Sean Pringle <sean.pringle@gmail.com>
 # Contributor: SanskritFritz (gmail)
 
-pkgname=rofi-git
+pkgname=rofi-nox-git
 pkgver=2.0.0.r47.g89c768c1
 pkgrel=1
-pkgdesc='A window switcher, run dialog and dmenu replacement'
-arch=('x86_64')
+pkgdesc='A window switcher, run dialog and dmenu replacement. A copy of rofi-git without X support.'
+arch=('any')
 url='https://github.com/DaveDavenport/rofi/'
 license=('MIT')
 depends=(
@@ -24,26 +24,16 @@ depends=(
 	'hicolor-icon-theme'
 	'libjpeg'
 	'librsvg'
-	'libx11'
-	'libxcb'
 	'libxdg-basedir'
-	'libxft'
 	'libxkbcommon'
-	'libxkbcommon-x11'
 	'pango'
 	'startup-notification'
 	'wayland'
-	'xcb-imdkit'
-	'xcb-util'
-	'xcb-util-cursor'
-	'xcb-util-keysyms'
-	'xcb-util-wm'
-	'xcb-util-xrm'
 )
 makedepends=('git' 'meson' 'wayland-protocols')
 checkdepends=('check')
-provides=("${pkgname/-git/}" 'rofi-wayland')
-conflicts=("${pkgname/-git/}")
+provides=("${pkgname/-nox-git/}" 'rofi-wayland')
+conflicts=("${pkgname/-nox-git/}")
 replaces=('rofi-wayland')
 source=(
 	'git+https://github.com/DaveDavenport/rofi#branch=next'
@@ -53,14 +43,14 @@ source=(
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
-	cd "${pkgname/-git/}"
+	cd "${pkgname/-nox-git/}"
 
 	git describe --long --tags |
 		sed 's/-/.r/;s/-/./'
 }
 
 prepare() {
-	cd "${pkgname/-git/}"
+	cd "${pkgname/-nox-git/}"
 	git submodule init
 	git config submodule.subprojects/libgwater.url "${srcdir}/libgwater"
 	git config submodule.subprojects/libnkutils.url "${srcdir}/libnkutils"
@@ -69,7 +59,7 @@ prepare() {
 }
 
 build() {
-	arch-meson "${pkgname/-git/}" --buildtype release --prefix /usr -Db_lto=true build
+	arch-meson "${pkgname/-nox-git/}" --buildtype release --prefix /usr -Db_lto=true -Dxcb=disabled build
 	meson compile -C build
 }
 
@@ -80,7 +70,7 @@ check() {
 package() {
 	meson install -C build --destdir "${pkgdir}"
 
-	cd "${pkgname/-git/}"
+	cd "${pkgname/-nox-git/}"
 	install -Dm 644 COPYING "${pkgdir}/usr/share/licenses/${pkgname/-git/}/COPYING"
 	install -Dm 755 Examples/*.sh -t "${pkgdir}/usr/share/doc/${pkgname/-git/}/examples"
 }
