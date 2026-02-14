@@ -1,6 +1,6 @@
 pkgbase = python-httpcore-request
 	pkgdesc = httpcore request extension.
-	pkgver = 0.0.6.4
+	pkgver = 0.0.7.1
 	pkgrel = 1
 	url = https://pypi.org/project/httpcore_request
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = python-httpcore-request
 	conflicts = python-httpcore-request
 	options = !strip
 	options = !debug
-	source = httpcore_request-0.0.6.4.tar.gz::https://files.pythonhosted.org/packages/source/h/httpcore_request/httpcore_request-0.0.6.4.tar.gz
-	sha256sums = b4a66b3d201648ebb71510167a3de70d0ff1f65cdcc5f0e13d2ec6dde0f4d158
+	source = httpcore_request-0.0.7.1.tar.gz::https://files.pythonhosted.org/packages/source/h/httpcore_request/httpcore_request-0.0.7.1.tar.gz
+	sha256sums = 5aa9db12f56a21b4ddec0e3f42a66b639061007774ce800ebee0c4956d144ab3
 
 pkgname = python-httpcore-request
