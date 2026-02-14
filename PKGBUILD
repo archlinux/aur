@@ -6,7 +6,7 @@ _pkgname=walker
 
 pkgname=${_pkgname}-bin
 
-pkgver=2.14.1
+pkgver=2.14.2
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -50,7 +50,7 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/downloa
 
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '08387c89b86a82db9d206fd960735f6ae859f62acc8a21dfe99b7558f1d689b4'
-            '9e37a832fa50dd44676216d5d4b4bfd3a0c16f32a1fe250e7b2cd164be25e0dd'
+            '12228b2fdbacaa326ee103eb77f5961e6fdba5f8f9fda3d6521002bac8faa5ad'
             'd6dac24c66c6e851e4a0f702154ccd92a1b0f64990beeff393b530ccd1089721'
             'e9613245a50e92f6da1e6f09bc84473fae716ee4c30b2536a4f0b285a1536c94'
             '1c08b011b1c28ca332c96888e4b8fc02f36ec1e057986acfca568dfa4cccf73f'
@@ -64,8 +64,8 @@ sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '1233d0b1a258dc1991fc7ad3abe764c40903e241312e994a3a17a75c985c13b7'
             '55106a1ce3b6a477fbaa04e50e7df367b0e242287f207f8fc7b6460f401dafd3'
             '073a912e3eee95249236af90ce50496a3b94bd840919b2d94e058054dbf3ca25'
-            'd57b8f791e3799f50e0a8bd207d1a408c9acafbc16b34dae85e5d5d0f1d0c342')
-sha256sums_x86_64=('a8692259377f2740579e1b3fd207d5373dc68b599db0b020028981fed5b3ed1a')
+            '8fd6507610cad6fe96a3db48dd4d523cc398fe3286d88ebc132dfe2e939b1f08')
+sha256sums_x86_64=('cd2c135b1178e7259061d4176b14d4bc12b741d1feb8189670fa836a3d331244')
 
 prepare() {
     cd "${srcdir}" || exit 1
