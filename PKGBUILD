@@ -2,7 +2,7 @@
 
 pkgname=libdivsufsort
 pkgver=2.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A lightweight suffix-sorting library"
 arch=("i686" "x86_64")
 url="https://github.com/y-256/libdivsufsort"
