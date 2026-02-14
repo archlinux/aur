@@ -2,7 +2,7 @@ pkgbase = hypr-game-mode
 	pkgdesc = TUI Gaming Dashboard for Hyprland: Scrcpy, Game Launcher, & Hardware Optimizer
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/Raj-Jagadeesh-A-P/hypr-game-mode.git
+	url = https://github.com/Raj-Jagadeesh-A-P/hypr-game-mode
 	arch = any
 	license = GPL3
 	depends = bash
@@ -13,7 +13,7 @@ pkgbase = hypr-game-mode
 	depends = libnotify
 	depends = mangohud
 	depends = gamemode
-	source = https://github.com/Raj-Jagadeesh-A-P/hypr-game-mode.git/archive/refs/tags/v1.0.0.tar.gz
+	source = https://github.com/Raj-Jagadeesh-A-P/hypr-game-mode/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = hypr-game-mode
