@@ -2,7 +2,7 @@
 pkgname=yuview
 _pkgname=YUView
 pkgver=2.14
-pkgrel=1
+pkgrel=2
 pkgdesc="The Free and Open Source Cross Platform YUV Viewer with an advanced analytics toolset"
 arch=('x86_64')
 url="https://github.com/IENT/${_pkgname}"
