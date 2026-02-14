@@ -4,14 +4,14 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=144.0.7559.132
+pkgver=145.0.7632.75
 pkgrel=1
 _manual_clone=0
 # The following error occures on Abseil 20250512.0:
 # Protoc has returned non-zero status: -4
 _system_abseil=0
 _system_clang=1
-# ninja: error: '../../third_party/libc++/src/include/string', needed by 'obj/third_party/protobuf/protoc_cpp/enum.o', missing and no known rule to make it
+# ../../net/cookies/cookie_util.cc:819:31: error: no viable conversion from 'const_iterator' (aka 'const char *') to 'std::string::const_iterator' (aka '__normal_iterator<const char *, std::basic_string<char, std::char_traits<char>, std::allocator<char>>>')
 _system_stdlib=
 pkgdesc="The networking stack of Chromium put into a library"
 arch=('x86_64')
@@ -27,14 +27,12 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         abseil-remove-unused-targets.patch
         disable-logging.patch
         fix-no-matching-strcat.patch
-        fix-numeric_limits.patch
         fix-trust-store-segfault.patch
-        fix-undeclared-isnan.patch
+        fix-undeclared-identifiers.patch
 )
-sha256sums=('41cc60391836575f4a40ffd576f647c0b9105219acb494e739c9ea2c66f5ddb9'
+sha256sums=('e9db10f2065fda0ee715c1f41fa110cccc4c800a2d7d9a5f8f355b2e210f377f'
             'ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
-            SKIP
             SKIP
             SKIP
             SKIP
@@ -204,9 +202,12 @@ prepare() {
   # Increase _FORTIFY_SOURCE level to match Arch's default flags
   patch -Np1 -i ../increase-fortify-level.patch
 
-  # Fixes the build crashing with the following error:
+  # Fixes the build crashing with the following errors:
+  # ../../base/debug/proc_maps_linux.cc:202:18: error: use of undeclared identifier 'strlen'
   # ../../components/cronet/native/engine.cc:155:8: error: use of undeclared identifier 'isnan'
-  patch -p0 -i ../fix-undeclared-isnan.patch
+  # implicit instantiation of undefined template 'std::numeric_limits<unsigned long>'
+  # ../../net/third_party/quiche/src/quiche/common/quiche_buffer_allocator.h:94:5: error: use of undeclared identifier 'memcpy'
+  patch -p0 -i ../fix-undeclared-identifiers.patch
 
   # Disables logging as it's unconfigurable, which is undesired in a library
   patch -p0 -i ../disable-logging.patch
@@ -216,9 +217,6 @@ prepare() {
     patch -p0 -i ../abseil-fix-missing-algorithm.patch
     patch -p0 -i ../abseil-remove-unused-targets.patch
   fi
-
-  # Fixes `implicit instantiation of undefined template 'std::numeric_limits<unsigned long>'` error
-  patch -p0 -i ../fix-numeric_limits.patch
 
   # Fixes the following error:
   # ../../net/third_party/quiche/src/quiche/web_transport/encapsulated/encapsulated_web_transport.cc:351:16: error: no matching function for call to 'StrCat'

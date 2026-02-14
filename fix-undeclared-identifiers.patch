@@ -1,0 +1,40 @@
+--- base/debug/proc_maps_linux.cc	2026-02-14 13:12:40.599655826 +0100
++++ base/debug/proc_maps_linux.cc	2026-02-14 13:15:28.248247386 +0100
+@@ -8,6 +8,7 @@
+ #include <stddef.h>
+ #include <unistd.h>
+
++#include <cstring>
+ #include <string_view>
+ #include <unordered_map>
+
+--- components/cronet/native/generated/cronet.idl_impl_struct.h	2023-11-22 16:42:03.764260025 +0100
++++ components/cronet/native/generated/cronet.idl_impl_struct.h	2023-11-22 16:42:08.007801119 +0100
+@@ -9,6 +9,7 @@
+
+ #include "components/cronet/native/generated/cronet.idl_c.h"
+
++#include <limits>
+ #include <memory>
+ #include <string>
+ #include <vector>
+--- components/cronet/native/engine.cc	2023-10-23 22:05:39.245941623 +0200
++++ components/cronet/native/engine.cc	2023-10-23 22:05:55.586781891 +0200
+@@ -4,6 +4,7 @@
+
+ #include "components/cronet/native/engine.h"
+
++#include <cmath>
+ #include <unordered_set>
+ #include <utility>
+
+--- net/third_party/quiche/src/quiche/common/quiche_buffer_allocator.h	2026-02-14 13:51:13.544021886 +0100
++++ net/third_party/quiche/src/quiche/common/quiche_buffer_allocator.h	2026-02-14 13:51:36.404710775 +0100
+@@ -7,6 +7,7 @@
+
+ #include <stddef.h>
+
++#include <cstring>
+ #include <memory>
+
+ #include "absl/strings/string_view.h"
