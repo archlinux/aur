@@ -1,0 +1,3 @@
+[nextcloud-app-oidc]
+source = "git"
+git = "https://github.com/H2CK/oidc.git"
