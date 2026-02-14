@@ -1,0 +1,41 @@
+diff '--exclude=.git' -ura --new-file ./actionswf-actionswf-1.161-0/src/Makefile actionswfnew/src/Makefile
+--- ./actionswf-actionswf-1.161-0/src/Makefile	2026-02-13 10:40:10.000000000 +0200
++++ actionswfnew/src/Makefile	2026-02-13 14:16:41.375596953 +0200
+@@ -89,7 +89,8 @@
+ endif
+ 
+ #same problems like ocompiler and arm #ATLDCOM = $(CC) ${linkerflags} ${eobs} -shared -e DllMain -o ${name} -lc -L. -l:${exte} -Wl,--exclude-libs ${exte}
+-ATLDCOM = $(LD) ${linkerflags} --dynamic-linker=/lib64/ld-linux-x86-64.so.2 ${eobs} -shared -e DllMain -o ${name} -l:libc.so.6 ${L} `pkg-config --libs zlib` -L. -l:${exte} --build-id --exclude-libs ${exte}
++ATLDCOM = $(LD) ${linkerflags} -z noexecstack --dynamic-linker=/lib64/ld-linux-x86-64.so.2 ${eobs} -shared -e DllMain -o ${name} -l:libc.so.6 ${L} `pkg-config --libs zlib` -L. -l:${exte} --build-id --exclude-libs ${exte}
++#noexecstack is for arch linux, and also for old apy test
+ #and pkg-config for -lc? is not in libc6-dev. where is?
+ #--build-id for rpm
+ ifeq (${nobits_virtual},1)
+diff '--exclude=.git' -ura --new-file ./actionswf-actionswf-1.161-0/src/actionutil.oc actionswfnew/src/actionutil.oc
+--- ./actionswf-actionswf-1.161-0/src/actionutil.oc	2026-02-13 10:40:10.000000000 +0200
++++ actionswfnew/src/actionutil.oc	2026-02-13 14:15:25.482981609 +0200
+@@ -10,10 +10,11 @@
+ value dcode#1
+ value format_file=NULL
+ 
++importx "_snprintf" snprintf
++
+ #win32 with _
+ importx "memcpy" memcpy
+ importx "sprintf" sprintf
+-importx "snprintf" snprintf
+ Importx "realloc" realloc
+ Importx "malloc" malloc
+ Importx "free" free
+diff '--exclude=.git' -ura --new-file ./actionswf-actionswf-1.161-0/tests/apy actionswfnew/tests/apy
+--- ./actionswf-actionswf-1.161-0/tests/apy	2026-02-13 10:40:10.000000000 +0200
++++ actionswfnew/tests/apy	2026-02-13 14:16:58.846209730 +0200
+@@ -4,7 +4,7 @@
+ if [ -n "${arm}" ]; then
+ #using: minimal lib stdlib libffi , problems with actionswf map? going to qemu
+ #	using: zlib1g libexpat1
+-#	libactionswf.so: cannot enable executable stack as shared object requires? launchpad_prelink execstack: execstack -c ./libactionswf.so
++#	libactionswf.so: cannot enable executable stack as shared object requires? launchpad_prelink execstack: execstack -c ./libactionswf.so # or as it is now at Makefile with -z noexecstack
+ 	export LD_LIBRARY_PATH=~/x86_64_lib:~/Desktop/python3.13/usr/lib/x86_64-linux-gnu
+ 	p="qq /home/bc/Desktop/python3.13/usr/bin/python3.13 ${p} a.py"
+ else

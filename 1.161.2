@@ -1,0 +1,13 @@
+diff '--exclude=.git' -ura --new-file ./actionswf-actionswf-1.161-0/tests/ffdec/as actionswfnew/tests/ffdec/as
+--- ./actionswf-actionswf-1.161-0/tests/ffdec/as	2026-02-13 10:40:10.000000000 +0200
++++ actionswfnew/tests/ffdec/as	2026-02-13 14:54:12.566413723 +0200
+@@ -2,7 +2,8 @@
+ if [ -z "${LD_LIBRARY_PATH}" ]; then LD_LIBRARY_PATH=../../src; fi
+ is_debug=x _L=../ ${RUN__SHELL} ../asv && \
+ extra=x is_debug=x _L=../ ${RUN__SHELL} ../asv && \
+-LD_LIBRARY_PATH=${LD_LIBRARY_PATH} expect_obfuscation=./q deobfuscator_launcher=python3 ${RUN__SHELL} ../../oaalternative.sh a.swf "./a.out x x" && cat a.swf.log
++#expect_obfuscation=./q   this is solved since ffdec_24.1.1_nightly3382
++LD_LIBRARY_PATH=${LD_LIBRARY_PATH} deobfuscator_launcher=python3 ${RUN__SHELL} ../../oaalternative.sh a.swf "./a.out x x" && cat a.swf.log
+ 
+ # ffdec=/home/bc/a/ffdec/bin/ffdec ./as
+ # ffdec=/home/bc/a/ffdec/j12/usr/bin/ffdec FFDEC_JARFILENAME=../../../../ffdec/j12/usr/share/java/ffdec/ffdec.jar ./as
