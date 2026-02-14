@@ -3,7 +3,7 @@
 
 pkgname=mindomo-bin
 _pkgname=mindomo
-pkgver=11.1.5
+pkgver=11.1.6
 pkgrel=1
 pkgdesc="Mindomo is an online collaborative mind mapping, concept mapping and outlining software for visualizing and organizing information"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('mindomo')
 depends=('fuse2')
 _app_image="Mindomo_v.${pkgver}_x64.AppImage"
 source_x86_64=("$url/download/${pkgver%.*}/${_app_image}")
-sha256sums_x86_64=('17f2d9be6712c367b8d9a63c346190d7395a88f288ef69a622ec40b97016461b')
+sha256sums_x86_64=('d8caa6eaa2461fd711287041f7739cb7281d2b63c978e199a4a4c262f3e352ab')
 options=(!strip)
 
 prepare() {
