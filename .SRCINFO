@@ -1,6 +1,6 @@
 pkgbase = pj-bin
 	pkgdesc = Project Finder CLI
-	pkgver = 1.12.0
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://github.com/josephschmitt/pj
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = pj-bin
 	license = MIT
 	provides = pj
 	conflicts = pj
-	source_x86_64 = pj-x86_64-1.12.0.tzst::https://github.com/josephschmitt/pj/releases/download/v1.12.0/pj_1.12.0_linux_amd64.pkg.tar.zst
-	sha256sums_x86_64 = 0ccb3dd0437b7578f15e7040edcd016f7d83bff0b7d693ab4364a0f52525220e
-	source_aarch64 = pj-aarch64-1.12.0.tzst::https://github.com/josephschmitt/pj/releases/download/v1.12.0/pj_1.12.0_linux_arm64.pkg.tar.zst
-	sha256sums_aarch64 = 3b5a1eba58c0689c3da60a6c57a48e07f279e3a60842795ed5dabe667405216f
+	source_x86_64 = pj-x86_64-1.13.0.tzst::https://github.com/josephschmitt/pj/releases/download/v1.13.0/pj_1.13.0_linux_amd64.pkg.tar.zst
+	sha256sums_x86_64 = 0d3c82a36d82f27d6ebb4284ed649ca0868fba0071316abdeba05984b77438c7
+	source_aarch64 = pj-aarch64-1.13.0.tzst::https://github.com/josephschmitt/pj/releases/download/v1.13.0/pj_1.13.0_linux_arm64.pkg.tar.zst
+	sha256sums_aarch64 = 4aa3d7228e391cc2d1c592e560cfd1bb441e60943448cd78cb3fab3d5f800dea
 
 pkgname = pj-bin
