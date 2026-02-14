@@ -1,36 +1,54 @@
 # kvm-configurator.install
-# Dieses Skript wird von pacman aufgerufen (als root) nach dem eigentlichen
-# Paket‑Installationsschritt.
+# Dieses Skript wird von pacman (als root) nach dem eigentlichen
+# Paket‑Installationsschritt ausgeführt.
 
-# -----------------------------------------------------------------
-# post_install – wird nach `pacman -U` ausgeführt
-# -----------------------------------------------------------------
+# -------------------------------------------------
+# Hilfsfunktion: den echten, nicht‑root‑User ermitteln
+# -------------------------------------------------
+get_real_user() {
+    # 1️⃣ Wenn das Paket via sudo installiert wurde, ist $SUDO_USER gesetzt.
+    # 2️⃣ Falls nicht (z. B. direkte root‑Login), greift logname.
+    # 3️⃣ Als letzter Ausweg: den ersten nicht‑root‑Eintrag aus /etc/passwd.
+    if [[ -n "$SUDO_USER" && "$SUDO_USER" != "root" ]]; then
+        echo "$SUDO_USER"
+    elif command -v logname >/dev/null; then
+        local u
+        u=$(logname 2>/dev/null) && [[ "$u" != "root" ]] && echo "$u"
+    else
+        # Fallback – nimmt den ersten UID ≥1000 (typischer normaler User)
+        awk -F: '$3>=1000 && $1!="nobody"{print $1; exit}' /etc/passwd
+    fi
+}
+
+# -------------------------------------------------
+# post_install – wird nach `pacman -U …` ausgeführt
+# -------------------------------------------------
 post_install() {
-    # Ziel‑Verzeichnis im Home‑Verzeichnis des **wirklichen** Users.
-    # Pacman läuft als root, also ist $HOME = /root. Wir müssen den
-    # echten User ermitteln – das ist meist $PKGDEST (der Ort, an dem
-    # pacman das Paket installiert hat) oder $SUDO_USER, falls das
-    # Paket via sudo installiert wurde.
-    #
-    # Für die meisten Desktop‑Nutzer ist $SUDO_USER gesetzt.
-    # Falls nicht, fallen wir zurück auf den ersten nicht‑root‑User im
-    # System (ein kleiner Hack, aber für ein persönliches Paket okay).
+    local real_user
+    real_user=$(get_real_user)
 
-    local real_user="${SUDO_USER:-$(logname)}"
+    # Wenn wir keinen plausiblen User finden, aborten wir höflich.
+    if [[ -z "$real_user" ]]; then
+        echo "⚠️  Konnte den Ziel‑User nicht bestimmen – nichts zu tun."
+        return 0
+    fi
+
     local target="/home/${real_user}/.config/kvm-configurator"
 
-    # 1️⃣ Verzeichnis anlegen, falls es noch nicht existiert
+    # 1️⃣ Verzeichnis anlegen (falls noch nicht vorhanden)
     if [[ ! -d "$target" ]]; then
         mkdir -p "$target"
         echo "📁 Erstes Konfig‑Verzeichnis für $real_user angelegt."
+    else
+        echo "ℹ️  $target existiert bereits – kein neuer Aufbau nötig."
     fi
 
     # 2️⃣ Dateien aus /usr/share/doc/... kopieren
     cp -a "/usr/share/doc/kvm-configurator/oslist.yaml" "$target/"
     cp -a "/usr/share/doc/kvm-configurator/README.md" "$target/"
 
-    # 3️⃣ Optional: ein Test‑File, um zu zeigen, dass wir hier waren
-    touch "$target/post_install_was_here.txt"
+    # 3️⃣ Kleiner Hinweis, dass das Hook wirklich lief (hilfreich beim Debuggen)
+    touch "$target/.post_install_ran"
 
     echo "✅ Konfiguration für $real_user nach $target kopiert."
 }
