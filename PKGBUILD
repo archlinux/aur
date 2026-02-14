@@ -1,6 +1,6 @@
 # Maintainer: Red007Master <Red007Master@gmail.com>
 pkgname=redpoweroffinformer-git
-pkgver=r10.40e96d4
+pkgver=r11.5d8b1f1
 pkgrel=1
 pkgdesc="A tool to inform about power-off events"
 arch=('x86_64')
