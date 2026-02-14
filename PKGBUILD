@@ -1,7 +1,7 @@
 # Maintainer: wingsummer <wing-summer@qq.com>
 
 pkgname=winghexexplorer2
-pkgver=2.3.3
+pkgver=2.3.4
 pkgrel=1
 pkgdesc='一个自由强大跨平台的十六进制编辑器 / A free, powerful, cross-platform hex editor'
 url="https://github.com/Wing-summer/WingHexExplorer2"
@@ -42,6 +42,7 @@ build() {
         -D WINGHEX_BUILD_TEST_PLUGIN=OFF
         -D WINGHEX_BUILD_SHARED_MEM_EXT=OFF
         -D WINGHEX_ANGEL_LSP=ON
+        -D WINGHEX_OPTIMIZE_FOR_NATIVE=ON
     )
     cmake -S . -B build "${_flags[@]}"
     cmake --build build -- -j"$(nproc)"
