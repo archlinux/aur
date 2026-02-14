@@ -3,9 +3,9 @@
 # Contributor: FlyInWind <2518509078@qq.com>
 pkgname=ynote-desktop-bin
 _zhsname='有道云笔记'
-pkgver=8.2.31
+pkgver=8.2.32
 _electronversion=22
-_reldate='%2F2026%2F01%2F23%2F1857afbf'
+_reldate='%2F2026%2F02%2F03%2Fe59cc78c'
 pkgrel=1
 pkgdesc="Netease Youdao Ynote for Linux.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=(
     "LICENSE.html::https://note.youdao.com/license.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('85c61bb944efc9cf0518d15df00d62103cab31afc4cc791409c637b87ea51586'
+sha256sums=('26d3a9b3a37373c6a000f3d46013e76965a7c1f11ef7b599a0660e9d2de4297d'
             'a8aec47c7cc6e6d838d525c89b58a962d650c84b0ebec09ecfb8955381fe6460'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
@@ -65,7 +65,13 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_zhsname}/resources/build" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    if find "${srcdir}/opt/${_zhsname}/resources" -mindepth 1 -maxdepth 1 -type d | read; then
+        for subdir in "${srcdir}/opt/${_zhsname}/resources/"*; do
+            if [ -d "${subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
+            fi
+        done
+    fi
     install -Dm644  "${srcdir}/opt/${_zhsname}/dll/scholar/client.so" -t "${pkgdir}/usr/lib/${pkgname%-bin}/dll/scholar"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     _icon_sizes=(16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)

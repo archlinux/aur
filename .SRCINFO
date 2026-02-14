@@ -1,6 +1,6 @@
 pkgbase = ynote-desktop-bin
 	pkgdesc = Netease Youdao Ynote for Linux.(Prebuilt version.Use system-wide electron)
-	pkgver = 8.2.31
+	pkgver = 8.2.32
 	pkgrel = 1
 	url = https://note.youdao.com/
 	arch = x86_64
@@ -8,14 +8,14 @@ pkgbase = ynote-desktop-bin
 	makedepends = asar
 	depends = electron22
 	depends = perl
-	provides = ynote-desktop=8.2.31
+	provides = ynote-desktop=8.2.32
 	conflicts = ynote-desktop
 	options = !strip
 	options = !emptydirs
-	source = ynote-desktop-8.2.31.deb::https://cowork-common-public-cdn.lx.netease.com/artifact%2F2026%2F01%2F23%2F1857afbf.deb
+	source = ynote-desktop-8.2.32.deb::https://cowork-common-public-cdn.lx.netease.com/artifact%2F2026%2F02%2F03%2Fe59cc78c.deb
 	source = LICENSE.html::https://note.youdao.com/license.html
 	source = ynote-desktop.sh
-	sha256sums = 85c61bb944efc9cf0518d15df00d62103cab31afc4cc791409c637b87ea51586
+	sha256sums = 26d3a9b3a37373c6a000f3d46013e76965a7c1f11ef7b599a0660e9d2de4297d
 	sha256sums = a8aec47c7cc6e6d838d525c89b58a962d650c84b0ebec09ecfb8955381fe6460
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
