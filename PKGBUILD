@@ -1,4 +1,4 @@
-# Maintainer: Zachary M <minein12@protonmail.com>
+# Maintainer: Zachary M <minein12 at protonmail dot com>
 
 pkgname=falcond-profiles
 pkgver=r23.a3e0e63
