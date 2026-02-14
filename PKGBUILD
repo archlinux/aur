@@ -1,34 +1,34 @@
+# Maintainer: willemw <willemw12@gmail.com>
 # Contributor: Patrick Northon <northon_patrick3@yahoo.ca>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=cogl
 pkgver=1.22.8
-pkgrel=3
-pkgdesc="An object oriented GL/GLES Abstraction/Utility Layer"
-url="https://blogs.gnome.org/clutter/"
+pkgrel=4
+pkgdesc='An object oriented GL/GLES Abstraction/Utility Layer'
+#url=https://blogs.gnome.org/clutter
+url=https://gitlab.gnome.org/Archive/cogl
 arch=(x86_64)
-license=(GPL2)
-depends=(mesa libdrm libxext libxdamage libxcomposite gdk-pixbuf2 pango
-         libxrandr)
-makedepends=(gobject-introspection git gtk-doc glib2-devel)
+license=(SGI-B-1.1)
+depends=(gdk-pixbuf2 libdrm libxcomposite libxdamage libxext libxrandr mesa pango)
+makedepends=(git glib2-devel gobject-introspection gtk-doc)
 provides=(libcogl.so libcogl-{gles2,pango,path}.so)
-_commit=c2e25cef6bd7b3f12c8625f82956388e419cd046  # tags/1.22.8^0
-source=("git+https://gitlab.gnome.org/GNOME/cogl.git#commit=$_commit")
+_commit=c2e25cef6bd7b3f12c8625f82956388e419cd046 # tags/1.22.8^0
+source=("$pkgname-$pkgver::git+$url.git#commit=$_commit")
 sha256sums=('6cf9974e735a8f7ce9d7af0c2e25e1dcac8b1728dece1e782c7e03bbd8556835')
 
 pkgver() {
-  cd cogl
-  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
+  git -C $pkgname-$pkgver describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
-  cd cogl
+  cd $pkgname-$pkgver
   NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd cogl
+  cd $pkgname-$pkgver
   export CFLAGS+=' -Wno-error=incompatible-pointer-types'
   ./configure --prefix=/usr \
     --enable-gles2 \
@@ -42,7 +42,7 @@ build() {
 }
 
 package() {
-  cd cogl
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 }
 
