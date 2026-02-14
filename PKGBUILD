@@ -1,7 +1,7 @@
 # Maintainer: MrToadie <toadie@toadie.de>
 
 pkgname=kvm-configurator
-pkgver=1.0.9.2
+pkgver=1.0.9.3
 pkgrel=1
 pkgdesc="Little helper for virsh‑install"
 arch=('x86_64')
@@ -10,37 +10,28 @@ license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go' 'base-devel')
 source=("git+${url}.git")
-sha256sums=('SKIP')   # VCS‑Quellen dürfen SKIP benutzen
+sha256sums=('SKIP')
 
-# --------------------------------------------------------------------
-# 1️⃣ Build‑Phase
-# --------------------------------------------------------------------
 build() {
-    # Die Arbeitskopie liegt in: $srcdir/kvm-configurator/kvm-configurator
     cd "$srcdir/kvm-configurator/kvm-configurator/"
-
-    # Falls das Projekt Go‑Modules nutzt (go.mod vorhanden):
-    go mod tidy                # sorgt dafür, dass alle Abhängigkeiten geladen werden
-    go build -v -o "$pkgname" # erzeugt ein Binary namens „kvm-configurator“
+    # if the project uses Go‑Modules (go.mod exists):
+    go mod tidy
+    go build -v -o "$pkgname"
 }
 
-# --------------------------------------------------------------------
-# 2️⃣ Package‑Phase
-# --------------------------------------------------------------------
 package() {
-    # Ziel‑Verzeichnisse innerhalb des Sandbox‑Root ($pkgdir) anlegen
+    # create target directories within the sandbox root ($pkgdir).
     install -dm755 "$pkgdir/usr/bin"
     install -dm755 "$pkgdir/usr/share/doc/$pkgname"
 
-    # Das tatsächlich gebaute Binary kopieren
+    # copy the actual built binary
     install -m755 "$srcdir/kvm-configurator/kvm-configurator/$pkgname" \
                    "$pkgdir/usr/bin/$pkgname"
 
-    # Optional: README, LICENSE, Beispiel‑Config etc. mitliefern
+    # copy README
     install -m644 "$srcdir/kvm-configurator/README.md" \
-                   "$pkgdir/usr/share/doc/$pkgname/README.md"
-    #install -m644 "$srcdir/kvm-configurator/kvm-configurator/oslist.yaml" \
-    #               "$pkgdir/etc/skel/.config/kvm-configurator/oslist.yaml"
+                   "$pkgdir/usr/share/doc/$pkgname/README.md"    
+    # create config dir and copy configuration file                   
     mkdir -p "$pkgdir/home/$USER/.config/kvm-configurator"
     install -m755 "$srcdir/kvm-configurator/kvm-configurator/oslist.yaml" "$pkgdir/home/$USER/.config/kvm-configurator"
 }
