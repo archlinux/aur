@@ -1,6 +1,6 @@
 # Maintainer: Romain Chardiny <romain.chardiny@gmail.com>
 pkgname=floc-git
-pkgver=0.2.2.r4.bc8b8b9
+pkgver=0.2.2.r42.175eee6
 pkgrel=1
 pkgdesc="Flo Compiler"
 arch=("any")
@@ -28,7 +28,7 @@ build() {
   cd "$srcdir/floc"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --release --locked --offline
+  cargo build --release --locked --offline --bin=floc
 }
 
 package() {
