@@ -8,7 +8,7 @@
 #     specify the library and include paths explicitly during configuration.
 
 pkgname=aws-lc
-pkgver=1.66.2
+pkgver=1.67.0
 pkgrel=1
 pkgdesc='general-purpose cryptographic library maintained by the AWS Cryptography team for AWS'
 url='https://github.com/aws/aws-lc'
@@ -32,8 +32,8 @@ optdepends=(
 )
 arch=('x86_64')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('eaffacbbd7fa04bd9d5ea09c94f83edcf89a171abe736a9b5146b381267300a34b3dc947e445365149857a77885ca97cd03faf5469c15a1365173d987aebf0a2')
-options=(!strip !lto)
+b2sums=('2fc94dca5ff6bd2bd387035270bd65674621bc62b4d33522134c881aa81e59131eeb99f3d3e9a72e74e3bbb03770e5c5f425ec28007b58fd28ecc6219693f60f')
+#options=(!strip !lto)
 
 build() {
     cd ${pkgname}-${pkgver}
@@ -59,7 +59,7 @@ build() {
           -DCMAKE_INSTALL_BINDIR:PATH=bin/aws-lc \
           -DCMAKE_INSTALL_LIBDIR:PATH=lib/aws-lc \
           -DCMAKE_INSTALL_INCLUDEDIR:PATH=include/aws-lc \
-          -DCMAKE_C_FLAGS="$CFLAGS" \
+          -DCMAKE_C_FLAGS="$CFLAGS -Wno-error=discarded-qualifiers" \
           -DCMAKE_CXX_FLAGS="$CXXFLAGS"
 
     ninja -C build -j $(nproc)
@@ -68,7 +68,7 @@ build() {
 check() {
     cd ${pkgname}-${pkgver}
 
-    ninja -C build run_tests
+    ninja -C build -j $(nproc) run_tests
 }
 
 package() {
