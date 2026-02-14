@@ -1,6 +1,6 @@
 pkgbase = electron40-bin
 	pkgdesc = Build cross platform desktop apps with web technologies — prebuilt
-	pkgver = 40.4.0
+	pkgver = 40.4.1
 	pkgrel = 1
 	url = https://electronjs.org
 	arch = aarch64
@@ -17,21 +17,21 @@ pkgbase = electron40-bin
 	optdepends = gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
-	provides = electron40=40.4.0
+	provides = electron40=40.4.1
 	conflicts = electron40
-	noextract = electron40-chromedriver-40.4.0-x86_64.zip
-	noextract = electron40-40.4.0-x86_64.zip
-	source_aarch64 = electron40-chromedriver-40.4.0-aarch64.zip::https://github.com/electron/electron/releases/download/v40.4.0/chromedriver-v40.4.0-linux-arm64.zip
-	source_aarch64 = electron40-40.4.0-aarch64.zip::https://github.com/electron/electron/releases/download/v40.4.0/electron-v40.4.0-linux-arm64.zip
-	sha256sums_aarch64 = 1b09398e8e001a4d4893482d4bb9b773655e561dea5a7de0a8fdcb3497d446ac
-	sha256sums_aarch64 = a0e38a4657c69a4ff488990b8f3575e1422a4f6aec6f0f67608c567aab77d112
-	source_armv7h = electron40-chromedriver-40.4.0-armv7h.zip::https://github.com/electron/electron/releases/download/v40.4.0/chromedriver-v40.4.0-linux-armv7l.zip
-	source_armv7h = electron40-40.4.0-armv7h.zip::https://github.com/electron/electron/releases/download/v40.4.0/electron-v40.4.0-linux-armv7l.zip
-	sha256sums_armv7h = 5145aea7253a1dd3fbfa4133910d54fdd6aebc1fb60a90129376841a68de0b13
-	sha256sums_armv7h = d85544fa935c1373c71d815633d3b0cd43213272c880fc423ea694a5ed25f333
-	source_x86_64 = electron40-chromedriver-40.4.0-x86_64.zip::https://github.com/electron/electron/releases/download/v40.4.0/chromedriver-v40.4.0-linux-x64.zip
-	source_x86_64 = electron40-40.4.0-x86_64.zip::https://github.com/electron/electron/releases/download/v40.4.0/electron-v40.4.0-linux-x64.zip
-	sha256sums_x86_64 = 30cb0f45d48c7b311e22a12d2abae35159ac43f7bb2cefce2a7ccef7d9254c38
-	sha256sums_x86_64 = 351e0b5df9bedf3ee30f32e4186f059699d3b60515398925213a61496fafd3c5
+	noextract = electron40-chromedriver-40.4.1-x86_64.zip
+	noextract = electron40-40.4.1-x86_64.zip
+	source_aarch64 = electron40-chromedriver-40.4.1-aarch64.zip::https://github.com/electron/electron/releases/download/v40.4.1/chromedriver-v40.4.1-linux-arm64.zip
+	source_aarch64 = electron40-40.4.1-aarch64.zip::https://github.com/electron/electron/releases/download/v40.4.1/electron-v40.4.1-linux-arm64.zip
+	sha256sums_aarch64 = c2aee82de3d073abd7229359e3e9b561191cfc471dbf904274244e22f8fd323e
+	sha256sums_aarch64 = 89db4186e629540be14ab187a4e2319a06c93056050d100339433a6083fd1431
+	source_armv7h = electron40-chromedriver-40.4.1-armv7h.zip::https://github.com/electron/electron/releases/download/v40.4.1/chromedriver-v40.4.1-linux-armv7l.zip
+	source_armv7h = electron40-40.4.1-armv7h.zip::https://github.com/electron/electron/releases/download/v40.4.1/electron-v40.4.1-linux-armv7l.zip
+	sha256sums_armv7h = 76949808b7d672bb10f7a0287c7664839b6b8451095019b8a902f2ac48cfb9ee
+	sha256sums_armv7h = 07669ec13949511b6dc06dab0dc42f46943d2b975dc601f99f45911ce9192408
+	source_x86_64 = electron40-chromedriver-40.4.1-x86_64.zip::https://github.com/electron/electron/releases/download/v40.4.1/chromedriver-v40.4.1-linux-x64.zip
+	source_x86_64 = electron40-40.4.1-x86_64.zip::https://github.com/electron/electron/releases/download/v40.4.1/electron-v40.4.1-linux-x64.zip
+	sha256sums_x86_64 = 4c68b6f221569951111c80c5c99717af37067bbde2934c17ca7cd4b23d438fd3
+	sha256sums_x86_64 = 254202d10a218d186d05bdc9cb15d509cbec6a10cfec6fa5db82945d849a2be3
 
 pkgname = electron40-bin
