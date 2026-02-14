@@ -1,3 +1,5 @@
 pkg
 src
 .nvchecker_update.json
+build_pkg.sh
+install_deps.sh
