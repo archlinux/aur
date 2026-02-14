@@ -2,10 +2,11 @@ pkgbase = kbd-us-intl-nodeadkeys
 	pkgdesc = US international keymap for Linux virtual console with AltGr accents.
 	pkgver = 1.0
 	pkgrel = 1
+	url = https://github.com/Poremski/us-intl-altgr
 	arch = any
 	license = Apache-2.0
 	depends = kbd
-	source = https://raw.githubusercontent.com/Poremski/us-intl-altgr/v1.0/us-altgr-intl-nodeadkeys.map
+	source = https://github.com/Poremski/us-intl-altgr/raw/refs/tags/v1.0-1/us-altgr-intl-nodeadkeys.map
 	sha256sums = bedb5df228ccd58de7df69c2fe5293ef55fe3fe4d5d13fc75d8e8b5ff5329fe3
 
 pkgname = kbd-us-intl-nodeadkeys

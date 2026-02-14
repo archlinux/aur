@@ -10,7 +10,8 @@ license=('Apache-2.0')
 source=("us-altgr-intl-nodeadkeys.map")
 sha256sums=('bedb5df228ccd58de7df69c2fe5293ef55fe3fe4d5d13fc75d8e8b5ff5329fe3')
 depends=('kbd')
-source=("https://raw.githubusercontent.com/Poremski/us-intl-altgr/v1.0/us-altgr-intl-nodeadkeys.map")
+url="https://github.com/Poremski/us-intl-altgr"
+source=("${url}/raw/refs/tags/v${pkgver}-${pkgrel}/us-altgr-intl-nodeadkeys.map")
 
 package() {
   gzip -f us-altgr-intl-nodeadkeys.map
