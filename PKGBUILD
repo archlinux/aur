@@ -3,11 +3,11 @@
 
 pkgname=vmware-host-modules-dkms-git
 _pkgname=vmware-host-modules
-pkgver=17.5.1.d20240112.083033.g2c6d66f
+pkgver=17.5.1.d20240112.073033.g2c6d66f
 _branch_version=17.5.1
 url='https://github.com/mkubecek/vmware-host-modules'
 pkgrel=1
-epoch=2
+epoch=3
 pkgdesc='VMware (Player and Workstation) host kernel modules with patches needed to build against recent kernels'
 arch=('x86_64' 'aarch64' 'i386')
 license=('GPL2')
@@ -24,7 +24,7 @@ sha256sums=('SKIP'
 
 pkgver(){
   cd ${srcdir}/${_pkgname}
-  git log -n1 --format="%at %h" | awk "{print \"${_branch_version}.d\" strftime(\"%Y%m%d.%H%M%S.g\",\$1) \$2}"
+  git log -n1 --format="%at %h" | TZ=UTC awk "{print \"${_branch_version}.d\" strftime(\"%Y%m%d.%H%M%S\",\$1) \".g\" \$2}"
 }
 
 package() {

@@ -1,8 +1,8 @@
 pkgbase = vmware-host-modules-dkms-git
 	pkgdesc = VMware (Player and Workstation) host kernel modules with patches needed to build against recent kernels
-	pkgver = 17.5.1.d20240112.083033.g2c6d66f
+	pkgver = 17.5.1.d20240112.073033.g2c6d66f
 	pkgrel = 1
-	epoch = 2
+	epoch = 3
 	url = https://github.com/mkubecek/vmware-host-modules
 	arch = x86_64
 	arch = aarch64
