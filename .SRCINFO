@@ -1,0 +1,15 @@
+pkgbase = ryzenadj-control
+	pkgdesc = PyQt6 GUI for ryzenadj
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/h4us0x/ryzenadj-control
+	arch = x86_64
+	license = MIT
+	depends = python
+	depends = python-pyqt6
+	depends = ryzenadj
+	depends = polkit
+	source = ryzenadj-control-0.1.1.tar.gz::https://github.com/h4us0x/ryzenadj-control/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = b28bea78994abc2d766426becefd47a573a401ae76453e59877d158f8418fd05
+
+pkgname = ryzenadj-control
