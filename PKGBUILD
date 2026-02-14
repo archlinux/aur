@@ -1,7 +1,7 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla .xyz>
 pkgname=winboat
 pkgver=0.9.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Run Windows apps on Linux with seamless integration"
 arch=('x86_64')
 url="https://www.winboat.app"
@@ -17,6 +17,7 @@ makedepends=(
   'npm'
   'go'
   'zip'
+  'imagemagick'
 )
 optdepends=('docker: To use docker as a container runtime' 'podman-compose: To use podman as a container runtime')
 options=('!strip')
