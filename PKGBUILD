@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ognibuild
 pkgver=0.2.7
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Detect and invoke build systems"
 arch=('x86_64')
@@ -9,8 +9,8 @@ url="https://github.com/jelmer/ognibuild"
 license=('GPL-2.0-or-later')
 depends=(
   'breezy'
-  'gcc-libs'
   'glibc'
+  'libgcc'
   'openssl'
   'python'
 )
