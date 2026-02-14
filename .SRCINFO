@@ -59,6 +59,6 @@ pkgbase = namida-bin
 	provides = namida
 	conflicts = namida
 	source = namida-v5.7.2-beta.linux.tar.gz::https://github.com/namidaco/namida-snapshots/releases/download/5.7.2-beta%2B260213222/namida-v5.7.2-beta.linux.tar.gz
-	sha256sums = ad54c4e7a6dd0c3f03159d5157498afd80303ad0439eb3e45e1d7602b9de7fac
+	sha256sums = ff861f1ab68861458176a47d18a09f21741744afe770d8d02f4e817c651b2e58
 
 pkgname = namida-bin
