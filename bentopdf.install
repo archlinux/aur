@@ -1,0 +1,11 @@
+#/usr/bin/env bash
+
+_pkgname="bentopdf"
+
+post_install() {
+    echo "Now, $_pkgname is installed in '/usr/share/webapps/$_pkgname'."
+}
+
+post_upgrade() {
+    post_install
+}
