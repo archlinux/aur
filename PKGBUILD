@@ -12,6 +12,8 @@ makedepends=('git' 'go' 'base-devel')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
+install="${pkgname}.install"
+
 build() {
     cd "$srcdir/kvm-configurator/kvm-configurator/"
     # if the project uses Go‑Modules (go.mod exists):
@@ -30,8 +32,17 @@ package() {
 
     # copy README
     install -m644 "$srcdir/kvm-configurator/README.md" \
-                   "$pkgdir/usr/share/doc/$pkgname/README.md"    
+                   "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -m644 "$srcdir/kvm-configurator/LICENSE" \
+                   "$pkgdir/usr/share/doc/$pkgname/LICENSE"
+
     # create config dir and copy configuration file                   
-    mkdir -p "$pkgdir/home/$USER/.config/kvm-configurator"
-    install -m755 "$srcdir/kvm-configurator/kvm-configurator/oslist.yaml" "$pkgdir/home/$USER/.config/kvm-configurator"
+    #mkdir -p "$pkgdir/home/$USER/.config/kvm-configurator"
+    #install -m755 "$srcdir/kvm-configurator/kvm-configurator/oslist.yaml" "$pkgdir/home/$USER/.config/kvm-configurator"
+
+    install -m644 "$srcdir/kvm-configurator/kvm-configurator/oslist.yaml" \
+                   "$pkgdir/usr/share/doc/$pkgname/oslist.yaml"
+
+install -m644 "$srcdir/kvm-configurator/kvm-configurator/oslist.yaml" \
+                   "$pkgdir/usr/share/doc/$pkgname/oslist_test.yaml"
 }

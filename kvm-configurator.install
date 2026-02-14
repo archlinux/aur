@@ -1,0 +1,36 @@
+# kvm-configurator.install
+# Dieses Skript wird von pacman aufgerufen (als root) nach dem eigentlichen
+# Paket‑Installationsschritt.
+
+# -----------------------------------------------------------------
+# post_install – wird nach `pacman -U` ausgeführt
+# -----------------------------------------------------------------
+post_install() {
+    # Ziel‑Verzeichnis im Home‑Verzeichnis des **wirklichen** Users.
+    # Pacman läuft als root, also ist $HOME = /root. Wir müssen den
+    # echten User ermitteln – das ist meist $PKGDEST (der Ort, an dem
+    # pacman das Paket installiert hat) oder $SUDO_USER, falls das
+    # Paket via sudo installiert wurde.
+    #
+    # Für die meisten Desktop‑Nutzer ist $SUDO_USER gesetzt.
+    # Falls nicht, fallen wir zurück auf den ersten nicht‑root‑User im
+    # System (ein kleiner Hack, aber für ein persönliches Paket okay).
+
+    local real_user="${SUDO_USER:-$(logname)}"
+    local target="/home/${real_user}/.config/kvm-configurator"
+
+    # 1️⃣ Verzeichnis anlegen, falls es noch nicht existiert
+    if [[ ! -d "$target" ]]; then
+        mkdir -p "$target"
+        echo "📁 Erstes Konfig‑Verzeichnis für $real_user angelegt."
+    fi
+
+    # 2️⃣ Dateien aus /usr/share/doc/... kopieren
+    cp -a "/usr/share/doc/kvm-configurator/oslist.yaml" "$target/"
+    cp -a "/usr/share/doc/kvm-configurator/README.md" "$target/"
+
+    # 3️⃣ Optional: ein Test‑File, um zu zeigen, dass wir hier waren
+    touch "$target/post_install_was_here.txt"
+
+    echo "✅ Konfiguration für $real_user nach $target kopiert."
+}

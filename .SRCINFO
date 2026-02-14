@@ -1,15 +1,1 @@
-pkgbase = kvm-configurator
-	pkgdesc = Little helper for virsh‑install
-	pkgver = 1.0.9.3
-	pkgrel = 1
-	url = https://github.com/mrtoadie/kvm-configurator
-	arch = x86_64
-	license = MIT
-	makedepends = git
-	makedepends = go
-	makedepends = base-devel
-	depends = glibc
-	source = git+https://github.com/mrtoadie/kvm-configurator.git
-	sha256sums = SKIP
-
-pkgname = kvm-configurator
+sha256sums=('SKIP')
