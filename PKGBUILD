@@ -3,10 +3,10 @@
 
 pkgname=an-anime-game-launcher-bin
 pkgver=3.18.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 url="https://github.com/an-anime-team/an-anime-game-launcher"
-conflicts=("an-anime-game-launcher-git" "an-anime-game-launcher")
+conflicts=("an-anime-game-launcher")
 provides=("an-anime-game-launcher")
 arch=("x86_64")
 license=("GPL3")
