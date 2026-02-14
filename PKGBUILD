@@ -1,62 +1,45 @@
-# Maintainer: rustledger team <rustledger@users.noreply.github.com>
+# Maintainer: Rob Cohen <rob@robcohen.dev>
 pkgname=rustledger
-pkgver=0.8.6
+pkgver=0.8.7
 pkgrel=1
 pkgdesc="Fast, pure Rust implementation of Beancount double-entry accounting"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rustledger/rustledger"
 license=('GPL-3.0-only')
-provides=('rledger-check' 'rledger-format' 'rledger-query' 'rledger-report' 'rledger-doctor' 'rledger-extract' 'rledger-price')
-conflicts=('rustledger-bin')
 depends=('gcc-libs')
-makedepends=('cargo')
-
-_pkgver="${pkgver//_/-}"
-
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rustledger/rustledger/archive/refs/tags/v${_pkgver}.tar.gz")
-
-# Update this checksum when releasing new versions
-sha256sums=('8a0f0e8b855045362374401bfc497ea2a21824bde41de91aeb9829979b336aa3')
-
-prepare() {
-    cd "$pkgname-${_pkgver}"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
-}
+makedepends=('cargo' 'rust>=1.89')
+provides=('rledger')
+conflicts=('rustledger-bin')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rustledger/rustledger/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('660e364f6435c19b78f9c7a01e8c32a634d16b3a75adb7f12b7d6e5238dbf070')
 
 build() {
-    cd "$pkgname-${_pkgver}"
+    cd "$srcdir/$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release
+    cargo build --release --locked --workspace
 }
 
 check() {
-    cd "$pkgname-${_pkgver}"
+    cd "$srcdir/$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --release
+    export CARGO_TARGET_DIR=target
+    cargo test --release --locked --workspace
 }
 
 package() {
-    cd "$pkgname-${_pkgver}"
+    cd "$srcdir/$pkgname-$pkgver"
 
     # Install main binaries
-    install -Dm755 target/release/rledger-check "$pkgdir/usr/bin/rledger-check"
-    install -Dm755 target/release/rledger-format "$pkgdir/usr/bin/rledger-format"
-    install -Dm755 target/release/rledger-query "$pkgdir/usr/bin/rledger-query"
-    install -Dm755 target/release/rledger-report "$pkgdir/usr/bin/rledger-report"
-    install -Dm755 target/release/rledger-doctor "$pkgdir/usr/bin/rledger-doctor"
-    install -Dm755 target/release/rledger-extract "$pkgdir/usr/bin/rledger-extract"
-    install -Dm755 target/release/rledger-price "$pkgdir/usr/bin/rledger-price"
+    install -Dm755 "target/release/rledger" "$pkgdir/usr/bin/rledger"
+    install -Dm755 "target/release/rledger-lsp" "$pkgdir/usr/bin/rledger-lsp"
 
-    # Install bean-* compatibility binaries
-    install -Dm755 target/release/bean-check "$pkgdir/usr/bin/bean-check"
-    install -Dm755 target/release/bean-format "$pkgdir/usr/bin/bean-format"
-    install -Dm755 target/release/bean-query "$pkgdir/usr/bin/bean-query"
-    install -Dm755 target/release/bean-report "$pkgdir/usr/bin/bean-report"
-    install -Dm755 target/release/bean-doctor "$pkgdir/usr/bin/bean-doctor"
-    install -Dm755 target/release/bean-extract "$pkgdir/usr/bin/bean-extract"
-    install -Dm755 target/release/bean-price "$pkgdir/usr/bin/bean-price"
+    # Install beancount compatibility binaries
+    for bin in bean-check bean-format bean-query bean-report bean-doctor bean-extract bean-price; do
+        if [[ -f "target/release/$bin" ]]; then
+            install -Dm755 "target/release/$bin" "$pkgdir/usr/bin/$bin"
+        fi
+    done
 
     # Install license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
