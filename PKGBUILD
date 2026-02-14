@@ -1,7 +1,7 @@
 # Maintainer: Wimpy <vvinn.py[AT]email.com>
 
 pkgname=codes-bin
-pkgver=0.3.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A powerful CLI tool for managing multiple Claude Code configurations with ease. Switch between different Claude API endpoints, manage authentication tokens, and streamline your AI-powered development workflow."
 arch=('x86_64' 'aarch64')
