@@ -27,8 +27,7 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/$_pkgname/auto-cpufreq"
-    cargo build --frozen --release --all-features
+    true
 }
 
 package() {
@@ -39,30 +38,32 @@ package() {
     mkdir -p "$pkgdir/usr/share/applications"
     mkdir -p "$pkgdir/usr/share/pixmaps"
     mkdir -p "$pkgdir/usr/share/polkit-1/actions"
+    mkdir -p "$pkgdir/usr/bin"
+    mkdir -p "$pkgdir/usr/share"
 
-    cd "auto-cpufreq/target/release"
-    install -m755 auto-cpufreq "$pkgdir/usr/local/bin/auto-cpufreq"
-    
-    [ -f auto-cpufreq-gtk ] && install -m755 auto-cpufreq-gtk "$pkgdir/usr/local/bin/auto-cpufreq-gtk"
-    [ -f auto-cpufreq-tray ] && install -m755 auto-cpufreq-tray "$pkgdir/usr/local/bin/auto-cpufreq-tray"
-
-    cd "$srcdir/$_pkgname"
     cp -r scripts "$pkgdir/usr/local/share/auto-cpufreq/"
     cp -r images "$pkgdir/usr/local/share/auto-cpufreq/"
 
+    [ -f scripts/auto-cpufreq-gtk.desktop ] && \
+        install -m644 scripts/auto-cpufreq-gtk.desktop "$pkgdir/usr/share/applications/"
+
     [ -f images/icon.png ] && install -m644 images/icon.png "$pkgdir/usr/share/pixmaps/auto-cpufreq.png"
+    
     [ -f scripts/org.auto-cpufreq.pkexec.policy ] && \
         install -m644 scripts/org.auto-cpufreq.pkexec.policy "$pkgdir/usr/share/polkit-1/actions/"
     
     [ -f scripts/cpufreqctl.sh ] && \
         install -m755 scripts/cpufreqctl.sh "$pkgdir/usr/local/bin/cpufreqctl.auto-cpufreq"
 
-    [ -f scripts/auto-cpufreq-gtk.desktop ] && \
-        install -m644 scripts/auto-cpufreq-gtk.desktop "$pkgdir/usr/share/applications/"
-    
-    mkdir -p "$pkgdir/usr/share"
     ln -sf /usr/local/share/auto-cpufreq "$pkgdir/usr/share/auto-cpufreq"
-
-    mkdir -p "$pkgdir/usr/bin"
     ln -sf /usr/local/bin/auto-cpufreq "$pkgdir/usr/bin/auto-cpufreq"
+
+    cd "$srcdir/$_pkgname/auto-cpufreq"
+    cargo build --frozen --release --all-features
+
+    cd target/release
+    install -m755 auto-cpufreq "$pkgdir/usr/local/bin/auto-cpufreq"
+    
+    [ -f auto-cpufreq-gtk ] && install -m755 auto-cpufreq-gtk "$pkgdir/usr/local/bin/auto-cpufreq-gtk"
+    [ -f auto-cpufreq-tray ] && install -m755 auto-cpufreq-tray "$pkgdir/usr/local/bin/auto-cpufreq-tray"
 }
