@@ -1,0 +1,13 @@
+pkgbase = ttf-chocolate-classical-sans
+	pkgdesc = A traditional Chinese font based on Source Han Sans, featuring inherited glyph forms
+	pkgver = 1.001
+	pkgrel = 1
+	url = https://github.com/MoonlitOwen/ChocolateSans
+	arch = any
+	license = OFL-1.1
+	source = https://github.com/MoonlitOwen/ChocolateSans/raw/da53f36e4d09712999369a0f62c698958e5f513c/fonts/ttf/ChocolateClassicalSans-Regular.ttf
+	source = https://github.com/MoonlitOwen/ChocolateSans/raw/da53f36e4d09712999369a0f62c698958e5f513c/license.md
+	sha256sums = 30c7934d8f91b6a10036d50c59c151060e0ce9804952dcf3346e3243b6ca16d3
+	sha256sums = 10468de6821b382bc3e968db376bfe65efbcbadc95b2320311e8023052a8da01
+
+pkgname = ttf-chocolate-classical-sans
