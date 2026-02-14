@@ -4,10 +4,10 @@
 # Contributor: BlackCatDevel0per
 pkgname=solana
 epoch=1
-pkgver=3.0.13
+pkgver=3.1.8
 # https://github.com/anza-xyz/agave/blob/v$pkgver/scripts/spl-token-cli-version.sh
-_splTokenCliVersion=5.4.0
-pkgrel=2
+_splTokenCliVersion=5.5.0
+pkgrel=1
 pkgdesc="A fast, secure, and censorship resistant blockchain."
 url="https://www.solana.com"
 arch=(x86_64)
@@ -20,15 +20,15 @@ source=(git+https://github.com/anza-xyz/agave.git#tag=v$pkgver
         $pkgname.sysusers
         $pkgname.tmpfiles
         $pkgname-sbf_sdk-path.patch)
-sha256sums=('8b835e34a461ce04cc4a121a72e1e4245b2ad21922ae6be43f5e836b8a06c652'
-            '1ba58902aa5e0bb707fb6315a2944d9ed72ca19f519b344ff31e32a52cc98197'
+sha256sums=('6d1e3ce03eb68d13db0a2409c2edfef51352870ac5699ba1a1e8c05c8f8b297b'
+            'a9a0f6e495f68a77e61ce44a39bed42608bd3afd6aa5ddf09e124b50e17d41a6'
             'bf7e015436e3d15e70fc67f323bbd04163f79a4de7d06a254a5409bd031227b0'
             'a0f9ee2a24ab97da977eed1dd68a92165c2f2e6d5467462fe83c762031f4e02b'
             'f2251e4057350ec795d6ea5402cffbaa5678883996e68ba8688c3f250cb9a173')
 install=$pkgname.install
 options=(!lto)
 
-# Core binaries (non-DCOU)
+# Core binaries (non-DCOU) #https://github.com/anza-xyz/agave/blob/v$pkgver/scripts/agave-build-lists.sh
 _MAIN_BINS=(
   cargo-build-sbf
   cargo-test-sbf
@@ -46,15 +46,10 @@ _MAIN_BINS=(
   agave-install-init
 )
 
-# DCOU/tainted binaries (benches, tools)
+# DCOU/tainted binaries
 _DCOU_BINS=(
-  agave-ledger-tool
   agave-store-histogram
-  agave-store-tool
   solana-accounts-cluster-bench
-  solana-banking-bench
-  solana-bench-tps
-  solana-dos
   solana-transaction-dos
   solana-vortexor
 )
@@ -86,6 +81,7 @@ prepare() {
 build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  export RUSTFLAGS="$RUSTFLAGS -W dangerous_implicit_autorefs"
   cd "$srcdir/agave"
   # Fix lints
   sed -i '/^\[workspace\.lints\.rust\]$/,+1d' Cargo.toml
