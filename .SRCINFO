@@ -1,10 +1,11 @@
 pkgbase = i686-elf-binutils
 	pkgdesc = A set of programs to assemble and manipulate binary and object files for the i686-elf target
 	pkgver = 2.45
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/binutils/
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	depends = zlib
 	depends = libelf
