@@ -1,7 +1,7 @@
 pkgbase = papdieo-git
 	pkgdesc = Hyprland-compatible wallpaper management CLI
 	pkgver = 0.1.0.r0.g0000000
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xiaotinglian/papdieo
 	arch = x86_64
 	arch = aarch64

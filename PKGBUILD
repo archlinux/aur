@@ -1,7 +1,7 @@
 # Maintainer: YOUR NAME <your@email>
 pkgname=papdieo-git
 pkgver=0.1.0.r0.g0000000
-pkgrel=1
+pkgrel=2
 pkgdesc="Hyprland-compatible wallpaper management CLI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/xiaotinglian/papdieo"
@@ -31,12 +31,12 @@ pkgver() {
 
 build() {
   cd "$srcdir/papdieo"
-  cargo build --release --locked
+  cargo build --release --frozen
 }
 
 check() {
   cd "$srcdir/papdieo"
-  cargo test --release --locked
+  cargo test --release --frozen
 }
 
 package() {
