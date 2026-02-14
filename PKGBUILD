@@ -1,11 +1,11 @@
-# Maintainer: envolution
+# Contributor: envolution
 # Contributor: Carl Smedstad <carsme@archlinux.org>
 # Contributor: AngrySoft - Sebastian Zwierzchowski
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=python-sse-starlette
 _pkgname=${pkgname#python-}
-pkgver=3.0.3
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Server Sent Events (SSE) for Starlette and FastAPI"
 arch=(any)
@@ -35,7 +35,7 @@ checkdepends=(
   python-portend
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a34f2242e83385f10288dbb0428c2b5b57e6d6a7c8eb953d477230c3fa2ebf4d')
+sha256sums=('2cf0b6ce6e102de040fcc0257511ffd62d2ed6c86f5c5083cce9860c025e8ed9')
 
 build() {
   cd "$_pkgname-$pkgver"
