@@ -1,0 +1,23 @@
+pkgbase = aurm
+	pkgdesc = Professional AUR maintainer helper with automation and GitHub sync
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/elppans/aurm
+	arch = any
+	license = MIT
+	depends = bash
+	depends = git
+	depends = openssh
+	depends = rsync
+	depends = gnupg
+	depends = pacman-contrib
+	optdepends = namcap: PKGBUILD linting
+	optdepends = wl-clipboard: copy SSH key automatically (Wayland)
+	optdepends = xclip: copy SSH key automatically (X11)
+	optdepends = xsel: alternative clipboard tool (X11)
+	provides = aurm
+	conflicts = aurm
+	source = git+https://github.com/elppans/aurm.git#branch=main
+	sha256sums = SKIP
+
+pkgname = aurm
