@@ -57,6 +57,8 @@ package() {
 
     ln -sf /usr/local/share/auto-cpufreq "$pkgdir/usr/share/auto-cpufreq"
     ln -sf /usr/local/bin/auto-cpufreq "$pkgdir/usr/bin/auto-cpufreq"
+    ln -sf /usr/local/bin/auto-cpufreq-gtk "$pkgdir/usr/bin/auto-cpufreq-gtk"
+    ln -sf /usr/local/bin/auto-cpufreq-tray "$pkgdir/usr/bin/auto-cpufreq-tray"
 
     cd "$srcdir/$_pkgname/auto-cpufreq"
     cargo build --frozen --release --all-features
