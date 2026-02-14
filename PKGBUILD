@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mawejs-bin
 _pkgname=MaweJS
-pkgver=0.20.0
-_electronversion=39
+pkgver=0.21.0
+_electronversion=40
 pkgrel=1
 pkgdesc="Story Editor for Plantsers.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -15,14 +15,13 @@ depends=(
 )
 makedepends=(
     'asar'
-    'fuse2'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.AppImage"
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/mkoskim/mawejs/v${pkgver}/LICENSE"
+    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}.AppImage"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/mkoskim/mawejs/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('3f16946a0d93015a5f3926a8afcc893f87cc22b9c9c3ebed0ecaf518798dc580'
+sha256sums=('2e7cb920b6b5c0d4ea402da3607571f7b354ef130c7a92f9720f14e5808516c2'
             'c06aed1315c117a4f121a7b45831e3df87c51948e2aff6e105dbb94a2fcb619d'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
@@ -56,7 +55,13 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/resources/"{app.asar.unpacked,examples} "${pkgdir}/usr/lib/${pkgname%-bin}"
+    if find "${srcdir}/squashfs-root/resources" -mindepth 1 -maxdepth 1 -type d | read; then
+        for subdir in "${srcdir}/squashfs-root/resources/"*; do
+            if [ -d "${subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
+            fi
+        done
+    fi
     _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
