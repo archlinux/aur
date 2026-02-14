@@ -6,7 +6,7 @@ _pyname=${pkgbase#python-}
 #_pyname=${_pname//-/_}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=1.0.6
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Run a command, print its output only if it fails."
 arch=('any')
@@ -25,7 +25,7 @@ checkdepends=('python-pytest-timeout'
               'mkdocstrings') # jinja <- mkdocs...
 #source=("https://github.com/oprypin/mkdocs-section-index/archive/refs/tags/v${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('f88e8e4764de43e15416ce96cfef1a8f24ff9bcc58b3e309a1ba7eccbc45ccaf')
+sha256sums=('2c16e134781a743e6ee1e4a3d7acf314faa132e5435a8b5a8b774e87a34dc694')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -45,7 +45,11 @@ check() {
 }
 
 package_python-failprint() {
-    depends=('python>=3.9' 'python-ansimarkup' 'python-jinja>=2.11' 'python-ptyprocess' 'python-typing_extensions')
+    depends=('python>=3.10'
+             'python-ansimarkup'
+             'python-jinja>=2.11'
+             'python-ptyprocess'
+             'python-typing_extensions')
 #   optdepends=('python-failprint-doc: Documentation for python failprint')
     cd ${srcdir}/${_pyname}-${pkgver}
 
