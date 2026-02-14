@@ -1,6 +1,6 @@
 pkgbase = python-httpx-request
 	pkgdesc = httpx request extension.
-	pkgver = 0.1.8.4
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://pypi.org/project/httpx_request
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-httpx-request
 	conflicts = python-httpx-request
 	options = !strip
 	options = !debug
-	source = httpx_request-0.1.8.4.tar.gz::https://files.pythonhosted.org/packages/source/h/httpx_request/httpx_request-0.1.8.4.tar.gz
-	sha256sums = 001c5d2f9d900d602d8986e0278f1958e9a8f36909748a3e2fd9301cdc1dda09
+	source = httpx_request-0.1.9.tar.gz::https://files.pythonhosted.org/packages/source/h/httpx_request/httpx_request-0.1.9.tar.gz
+	sha256sums = c42f83383535a5ed892a99a1d1ba2980eb88c1f175e194436bb50c732c6cbea7
 
 pkgname = python-httpx-request

@@ -3,7 +3,7 @@
 pkgname=python-httpx-request
 _name=${pkgname#python-}
 _name=${_name//-/_}
-pkgver=0.1.8.4
+pkgver=0.1.9
 pkgrel=1
 epoch=
 pkgdesc="httpx request extension."
@@ -28,7 +28,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('001c5d2f9d900d602d8986e0278f1958e9a8f36909748a3e2fd9301cdc1dda09')
+sha256sums=('c42f83383535a5ed892a99a1d1ba2980eb88c1f175e194436bb50c732c6cbea7')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
