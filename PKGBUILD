@@ -55,11 +55,6 @@ package() {
     [ -f scripts/cpufreqctl.sh ] && \
         install -m755 scripts/cpufreqctl.sh "$pkgdir/usr/local/bin/cpufreqctl.auto-cpufreq"
 
-    ln -sf /usr/local/share/auto-cpufreq "$pkgdir/usr/share/auto-cpufreq"
-    ln -sf /usr/local/bin/auto-cpufreq "$pkgdir/usr/bin/auto-cpufreq"
-    ln -sf /usr/local/bin/auto-cpufreq-gtk "$pkgdir/usr/bin/auto-cpufreq-gtk"
-    ln -sf /usr/local/bin/auto-cpufreq-tray "$pkgdir/usr/bin/auto-cpufreq-tray"
-
     cd "$srcdir/$_pkgname/auto-cpufreq"
     cargo build --frozen --release --all-features
 
@@ -68,4 +63,9 @@ package() {
     
     [ -f auto-cpufreq-gtk ] && install -m755 auto-cpufreq-gtk "$pkgdir/usr/local/bin/auto-cpufreq-gtk"
     [ -f auto-cpufreq-tray ] && install -m755 auto-cpufreq-tray "$pkgdir/usr/local/bin/auto-cpufreq-tray"
+
+    ln -sf /usr/local/share/auto-cpufreq "$pkgdir/usr/share/auto-cpufreq"
+    ln -sf /usr/local/bin/auto-cpufreq "$pkgdir/usr/bin/auto-cpufreq"
+    ln -sf /usr/local/bin/auto-cpufreq-gtk "$pkgdir/usr/bin/auto-cpufreq-gtk"
+    ln -sf /usr/local/bin/auto-cpufreq-tray "$pkgdir/usr/bin/auto-cpufreq-tray"
 }
