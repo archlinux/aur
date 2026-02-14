@@ -2,7 +2,7 @@
 pkgname=rustconn
 _app_id=io.github.totoshko88.RustConn
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern connection manager for Linux with GTK4/Wayland-native interface."
 arch=('x86_64')
 url="https://github.com/totoshko88/RustConn"
@@ -20,7 +20,7 @@ makedepends=('cargo')
 optdepends=(
   '1password-cli: Password storage method option'
   'aws-cli: AWS CLI'
-  'aws-ssm-tools: AWS SSM Plugin'
+  'aws-session-manager-plugin: AWS SSM Plugin'
   'azure-cli: Azure CLI'
   'bitwarden-cli: Password storage method option'
   'boundary: Boundary CLI'

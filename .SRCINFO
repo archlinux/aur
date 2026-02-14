@@ -1,7 +1,7 @@
 pkgbase = rustconn
 	pkgdesc = Modern connection manager for Linux with GTK4/Wayland-native interface.
 	pkgver = 0.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/totoshko88/RustConn
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -15,7 +15,7 @@ pkgbase = rustconn
 	depends = zstd
 	optdepends = 1password-cli: Password storage method option
 	optdepends = aws-cli: AWS CLI
-	optdepends = aws-ssm-tools: AWS SSM Plugin
+	optdepends = aws-session-manager-plugin: AWS SSM Plugin
 	optdepends = azure-cli: Azure CLI
 	optdepends = bitwarden-cli: Password storage method option
 	optdepends = boundary: Boundary CLI
