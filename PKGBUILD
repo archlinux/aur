@@ -2,12 +2,12 @@
 pkgname=eurus-tui-git
 _pkgname=eurus
 pkgver=r26.4dd6cd8  # This is a placeholder; makepkg updates it automatically
-pkgrel=4
+pkgrel=5
 pkgdesc="E2EE Terminal Chat Client (eurus)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/sricharanandra/eurus-tui"
 license=('MIT')
-depends=('gcc-libs' 'libxcb' 'dbus') # libxcb for clipboard, dbus for notifications
+depends=('gcc-libs' 'libxcb' 'dbus' 'alsa-lib' 'openssl') # libxcb for clipboard, dbus for notifications, alsa-lib for audio, openssl for TLS
 options=('!lto')
 makedepends=('cargo' 'git')
 provides=("$_pkgname")
