@@ -1,14 +1,14 @@
 pkgbase = git-wt
 	pkgdesc = A Git subcommand that makes `git worktree` simple
-	pkgver = 0.20.0
+	pkgver = 0.21.1
 	pkgrel = 1
 	url = https://github.com/k1LoW/git-wt
 	arch = aarch64
 	arch = x86_64
 	license = MIT
-	source_aarch64 = https://github.com/k1LoW/git-wt/releases/download/v0.20.0/git-wt_v0.20.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 6ffb9e34597fd6e95c30b9c38424a3df60779a036132b772cdc1fc0ee58af556
-	source_x86_64 = https://github.com/k1LoW/git-wt/releases/download/v0.20.0/git-wt_v0.20.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 8252b2781ee5b448d0c341db9cd7065275e5ea0e7a0c104c6518110b136c4ab2
+	source_aarch64 = https://github.com/k1LoW/git-wt/releases/download/v0.21.1/git-wt_v0.21.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = f58f48d8745e8aad1d26c8b496599bef1543f6c54cb4d15acb6b6237d02193df
+	source_x86_64 = https://github.com/k1LoW/git-wt/releases/download/v0.21.1/git-wt_v0.21.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 9ac14bebbfaddee71935ca54f8969d0c47ab2cc050d9bf4c0e7c6139f3fdd88d
 
 pkgname = git-wt
