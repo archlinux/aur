@@ -1,6 +1,6 @@
 pkgbase = tunacode-cli
 	pkgdesc = A terminal-based AI coding agent with a NeXTSTEP-inspired interface.
-	pkgver = 0.1.62
+	pkgver = 0.1.64
 	pkgrel = 1
 	url = https://tunacode.xyz
 	arch = any
