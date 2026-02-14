@@ -3,6 +3,7 @@ pkgbase = shortwave-mpris-git
 	pkgver = 5.1.0.r6.gf0b48ba
 	pkgrel = 2
 	url = https://github.com/ixnewton/Shortwave-MPRIS
+	install = shortwave-mpris-git.install
 	arch = x86_64
 	arch = aarch64
 	license = GPL3

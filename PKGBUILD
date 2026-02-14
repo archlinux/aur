@@ -29,6 +29,7 @@ makedepends=('git' 'rust>=1:1.82.0' 'cargo' 'pkgconf' 'meson' 'ninja' 'blueprint
 provides=('shortwave' 'shortwave-mpris')
 conflicts=('shortwave' 'shortwave-mpris')
 options=('!lto')
+install=shortwave-mpris-git.install
 source=("git+$url.git#branch=master")
 sha256sums=('SKIP')
 
