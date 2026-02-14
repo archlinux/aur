@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=folo
 _pkgname=Folo
-pkgver=1.2.6
+pkgver=1.3.0
 _electronversion=38
 _nodeversion=22
 pkgrel=1
@@ -21,12 +21,13 @@ makedepends=(
     'pnpm'
     'python-setuptools'
     'git'
+    'jq'
 )
 source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=desktop/v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('099f053223d71aa8d11a356066664bad51801a000725a6cf1d28153562ac9b86'
+sha256sums=('f6f21bca64624d30b5cbc731b274077c2eda96e37c5b5de8eb63de43ba3bf499'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
