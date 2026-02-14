@@ -1,13 +1,14 @@
 # Maintainer: Sean Pedersen
 pkgname=marko-git
 pkgver=4.20.0.r0.g9947f87
-pkgrel=4
+pkgrel=5
 pkgdesc="A Tauri-based markdown editor with WYSIWYG inline editing"
 arch=('x86_64' 'aarch64')
 url="https://github.com/SeanPedersen/Marko"
 license=('BSD-3-Clause')
 depends=(
     'cairo'
+    'dbus'
     'desktop-file-utils'
     'gdk-pixbuf2'
     'glib2'
@@ -19,6 +20,7 @@ depends=(
 )
 makedepends=(
     'cargo'
+    'dbus'
     'git'
     'libappindicator-gtk3'
     'librsvg'
