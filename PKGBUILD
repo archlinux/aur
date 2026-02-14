@@ -2,7 +2,7 @@
 # Contributor: Ciro Scognamiglio <ciro.scognamiglio88 at gmail dot com>
 
 pkgname='bzr-player'
-pkgver='2.0.88'
+pkgver='2.0.89'
 pkgrel='1'
 pkgdesc='Audio player supporting a wide array of multi-platform exotic file formats'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('hicolor-icon-theme' 'qt6-base' 'qt6-svg' 'qt-advanced-docking-system')
 makedepends=('cmake' 'dos2unix' 'gendesk' 'git' 'git-lfs' 'libglvnd' 'ninja' 'patchutils' 'qt6-declarative'
   'sdl2-compat' 'vulkan-headers')
 source=("git+https://github.com/aargirakis/BZRPlayer.git#tag=$pkgver")
-sha256sums=('a82e115434ce89f6c45f295e692533536e883ebdf41842d5ba817029d02e1969')
+sha256sums=('0a5026dbf5f234e0d353335ca2cbe730b3a9a482b777742c6a01b5db484a83ea')
 
 prepare() {
   cd BZRPlayer
@@ -58,7 +58,7 @@ package() {
 
   gendesk -n -f --pkgname "$pkgname" --pkgdesc "$pkgdesc" \
     --name="BZR Player 2" \
-    --genericname='Audio player' \
+    --genericname='Audio Player' \
     --exec="/usr/bin/$pkgname %U" \
     --icon="$pkgname" \
     --categories='AudioVideo;Audio;Music;Player' \
