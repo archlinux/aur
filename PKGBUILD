@@ -1,5 +1,5 @@
 pkgname=hyprhalt
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Python-based session exit tool for Hyprland built with Quickshell"
 arch=('any')
@@ -8,7 +8,7 @@ license=('Unlicense')
 depends=('quickshell')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('93d1fb0cc0ffc1d0cfa912660e9a9e41b82d540c442c9b65126ac6fab15a5b5a')
+sha256sums=('3df7d4e6a7addb35cec214363e990a673de86c9861de62f6616a348ed1598c0a')
 
 package() {
     cd "$pkgname-$pkgver"
