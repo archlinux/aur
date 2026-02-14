@@ -1,6 +1,6 @@
 # Maintainer: Marko Semet <marko10_000@mailbox.org>
 pkgname=buildstream-plugins
-pkgver=2.2.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="A collection of plugins for the BuildStream project."
 arch=(any)
@@ -18,7 +18,7 @@ depends=(
     # Sources “cargo” and “docker” seam to not nead any programmes
 )
 makedepends=(cython python-packaging python-setuptools)
-source=("git+https://github.com/apache/buildstream-plugins.git#tag=${pkgver}&commit=db71610b7ae9884f6d8cbe0d3cc5a1c657c19edb")
+source=("git+https://github.com/apache/buildstream-plugins.git#tag=${pkgver}&commit=79649529cffb695d0d22195ed9a4910c80ca6907")
 sha256sums=('SKIP')
 
 build() {
