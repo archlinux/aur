@@ -13,8 +13,8 @@
 pkgname=mongodb
 _pkgname=mongodb
 # #.<odd number>.# releases are unstable development/testing
-pkgver=8.2.4
-pkgrel=2
+pkgver=8.2.5
+pkgrel=1
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64" "aarch64")
 url="https://www.mongodb.com/"
@@ -30,9 +30,7 @@ optdepends=('mongodb-tools: mongoimport, mongodump, mongotop, etc'
 backup=("etc/mongodb.conf")
 provides=(mongodb="$pkgver")
 options=(!debug)
-# mongo forgot to tag 8.2.4 properly, temporarily use last 8.2.4 tag
-#source=("https://github.com/mongodb/mongo/archive/refs/tags/r$pkgver.tar.gz"
-source=("https://github.com/mongodb/mongo/archive/refs/tags/r$pkgver-alpha1.tar.gz"
+source=("https://github.com/mongodb/mongo/archive/refs/tags/r$pkgver.tar.gz"
         mongodb.sysusers
         mongodb.tmpfiles
         bazel-python-path.patch
@@ -41,7 +39,7 @@ source=("https://github.com/mongodb/mongo/archive/refs/tags/r$pkgver-alpha1.tar.
         bazel-version.patch
         bazelisk-url.patch
 )
-sha256sums=('fce69cbebe922e861b758ce0ff8a616de3baf66ad5f265825d67a13ec04b9d72'
+sha256sums=('9879a73ce5ea1c9aec70b14dfe696c3476b29957fa81295f578b3b9341a732be'
             '3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795'
             'b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39'
             '59a522f2a20a003799dbff2846a5b7a2e46eb1deab75b0bb3c3746cfe2b5446e'
@@ -52,7 +50,7 @@ sha256sums=('fce69cbebe922e861b758ce0ff8a616de3baf66ad5f265825d67a13ec04b9d72'
 )
 
 prepare() {
-  cd "${srcdir}/mongo-r${pkgver}-alpha1"
+  cd "${srcdir}/mongo-r${pkgver}"
 
   # Keep historical Arch dbPath
   sed -i 's|dbPath: /var/lib/mongo|dbPath: /var/lib/mongodb|' rpm/mongod.conf
@@ -80,7 +78,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/mongo-r${pkgver}-alpha1"
+  cd "${srcdir}/mongo-r${pkgver}"
   
   # Set gcc14 toolchain for Bazel to resolve C++ toolchain properly
   export CC="${CC:-gcc-14}"
@@ -143,7 +141,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/mongo-r${pkgver}-alpha1"
+  cd "${srcdir}/mongo-r${pkgver}"
 
   # Install binaries from Bazel install-core output
   # Built binaries are in bazel-bin/install-devcore/bin/ (symlinks to real outputs)
