@@ -2,110 +2,70 @@
 
 A colorful Fish command tracker with rainbow top visualization 🌈
 
-cmdflow — это утилита для Linux, которая подсчитывает ваши команды Fish, создаёт топ-N команд и выводит его в терминале с медалями для топ‑3 и мягкой радужной градиентной аллеей.
+cmdflow — это утилита для Linux, которая подсчитывает ваши команды Fish/Bash, создаёт топ-N команд и выводит его в терминал.
 
-Автокеширование команд при каждом запуске
-
-Поддержка старых и новых команд
-
-Топ-N с медалями и цветными барами
-
-Удобно для анализа вашей командной истории
+    Автокеширование команд при каждом запуске
+    Поддержка старых и новых команд
+    Топ-N с медалями и цветными барами
+    Удобно для анализа вашей командной истории
 
 🔹 Функционал
 
-Считает все введённые команды Fish, включая их повторы
+    Считает все введённые команды Fish и Bash, включая их повторы
+    Берёт только первые аргументы команд (например, cargo build → cargo)
+    Команды — радужная градиентная аллея
+    Автоматически обновляет лог при каждом запуске
 
-Берёт только первые аргументы команд (например, cargo build → cargo)
-
-Выводит топ-N команд с цветной визуализацией:
-
-🥇 1 место — золото
-
-🥈 2 место — серебро
-
-🥉 3 место — бронза
-
-Остальные команды — радужная градиентная аллея
-
-Автоматически обновляет лог при каждом запуске
-
-Топ 10 команд Fish:
-   15 │ cmdflow    ████████████████████
-    9 │ cargo      ████████████
-    9 │ ls         ████████████
-    6 │ set        ████████
-    6 │ echo       ████████
-    4 │ which      █████
-    4 │ pwd        █████
-    4 │ git        █████
-    3 │ nano       ████
-    2 │ sudo       ██
-
-    Предупреждение. Проект только на бете(0.1.4),
-и может местами работать неисправно. В большинстве
-случаев виной тому негибкость логов вашего терминала
+Пример вывода cmdflow --working 50:
 
 🔹 Установка
 
+Через GitHub:
 
-    1. Через GitHub
-    git clone https://github.com/voide/cmdflow.git
-    cd cmdflow
-    cargo build --release
-    mkdir -p ~/.local/bin
-    ln -sf "$(pwd)/target/release/cmdflow" ~/.local/bin/cmdflow
-    hash -r    # сброс кеша терминала
+git clone https://github.com/voideez/cmdflow.git
+cd cmdflow/cmdflow
+cargo build --release
+mkdir -p ~/.local/bin
+ln -sf "$(pwd)/target/release/cmdflow" ~/.local/bin/cmdflow
 
+Теперь команда cmdflow доступна в любом терминале:
 
-    Теперь команда cmdflow доступна в любом терминале:
+cmdflow          # top 10 (fish + bash)
+--fish           # только fish
+--bash           # только bash
+cmdflow 15       # top 15 (fish + bash)
+--fish 20        # top 20 (only fish)
+--working        # only working commands
+--broken         # only unworking commands
 
+Через AUR:
 
-    cmdflow        # топ 10 команд
-    cmdflow 50     # топ 50 команд
-    cmdflow 5      # топ 5 команд
+Если установлен yay:
 
+yay -S cmdflow
 
-    2. Через AUR(Релиз будет после 08/02/26)
-
-    Если установлен yay:
-
-
-    yay -S cmdflow
-
-
-    Будет собрана свежая версия проекта через Cargo.
-
-    При апдейтах проекта нужно обновлять тег версии на GitHub и PKGBUILD.
-
+Будет собрана свежая версия проекта через Cargo.
 🔹 Требования
 
-Rust и Cargo
-
-Fish shell
-
-Linux (для работы с путями и логами Fish)
+    Rust + Cargo
+    Fish shell
+    Bash shell
+    Linux-based distro
 
 🔹 Разработка
 
 Клонируем проект:
 
-
 git clone https://github.com/voide/cmdflow.git
-cd cmdflow
-
+cd cmdflow/cmdflow
 
 Сборка и запуск в режиме разработки:
-
 
 cargo build
 cargo run
 
-
 После изменений можно обновить команду в терминале:
-
 
 cargo build
 ln -sf "$(pwd)/target/debug/cmdflow" ~/.local/bin/cmdflow
-hash -r
 cmdflow 10

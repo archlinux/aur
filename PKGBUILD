@@ -1,5 +1,5 @@
 pkgname=cmdflow
-pkgver=0.2.6
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="A colorful Fish command tracker with rainbow top visualization"
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('bash')
 depends=('fish')
 makedepends=('rust')
 makedepends=('cargo')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/voideez/cmdflow/archive/refs/tags/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://codeload.github.com/voideez/cmdflow/tar.gz/${pkgver}")
 sha256sums=('SKIP')
 
 build() {
