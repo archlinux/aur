@@ -1,12 +1,16 @@
 # Maintainer: Vee Satayamas <veerpub@pm.me>
 pkgname=psascan
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Parallel external memory suffix array construction"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/dominikkempa/psascan"
 license=('MIT')
-depends=('libdivsufsort')
+depends=(
+    'libdivsufsort'
+    'libgomp'
+    'libstdc++'
+)
 makedepends=()
 optdepends=()
 backup=()

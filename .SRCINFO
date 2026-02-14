@@ -1,13 +1,18 @@
 pkgbase = psascan
 	pkgdesc = Parallel external memory suffix array construction
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dominikkempa/psascan
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = MIT
+	depends = libc
 	depends = libdivsufsort
+	depends = libgcc_s
+	depends = libgomp
+	depends = libm
+	depends = libstdc++
 	source = psascan-0.1.1.tar.gz::https://github.com/dominikkempa/psascan/archive/refs/tags/v0.1.1.tar.gz
 	sha256sums = d22e4e2d8533061e46990d5c7978f591681eaac2cc7904aa17841e409dd30507
 
