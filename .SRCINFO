@@ -1,0 +1,19 @@
+pkgbase = disk-spinner
+	pkgdesc = A burn-in tool for spinning rust HDDs
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/boinkor-net/disk-spinner
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = pkgconf
+	depends = glibc
+	depends = gcc-libs
+	depends = systemd-libs
+	options = !debug
+	source = git+https://github.com/boinkor-net/disk-spinner.git#tag=v0.2.0
+	sha256sums = SKIP
+
+pkgname = disk-spinner
