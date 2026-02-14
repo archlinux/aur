@@ -1,19 +1,20 @@
 pkgbase = stoat-desktop-bin
 	pkgdesc = Stoat for Desktop.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://stoat.chat/
 	arch = aarch64
 	arch = x86_64
 	license = AGPL-3.0-only
 	makedepends = gendesk
+	makedepends = git
 	depends = electron38
 	provides = stoat-desktop=1.2.0
 	conflicts = stoat-desktop
 	options = !emptydirs
-	source = stoat-desktop.png::https://raw.githubusercontent.com/stoatchat/assets/main/desktop/icon%403x.png
+	source = stoat-desktop-assets::git+https://github.com/stoatchat/assets
 	source = stoat-desktop.sh
-	sha256sums = 4acebba7ff06ee155151f4ee579e9951594e2fedbf8d5bb85b4190a660053045
+	sha256sums = SKIP
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 	source_aarch64 = stoat-desktop-1.2.0-aarch64.zip::https://github.com/stoatchat/for-desktop/releases/download/v1.2.0/Stoat-linux-arm64-1.2.0.zip
 	sha256sums_aarch64 = 8619fee1ec83a6969887814349139acedd5a8359410c4330a7eb40473711cb73

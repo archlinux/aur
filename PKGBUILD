@@ -3,7 +3,7 @@ pkgname=stoat-desktop-bin
 _pkgname=Stoat
 pkgver=1.2.0
 _electronversion=38
-pkgrel=1
+pkgrel=2
 pkgdesc="Stoat for Desktop.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -19,17 +19,18 @@ depends=(
 )
 makedepends=(
     'gendesk'
+    'git'
 )
 options=(
     '!emptydirs'
 )
 source=(
-    "${pkgname%-bin}.png::https://raw.githubusercontent.com/stoatchat/assets/main/desktop/icon%403x.png"
+    "${pkgname%-bin}-assets::git+https://github.com/stoatchat/assets"
     "${pkgname%-bin}.sh"
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-arm64-${pkgver}.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-x64-${pkgver}.zip")
-sha256sums=('4acebba7ff06ee155151f4ee579e9951594e2fedbf8d5bb85b4190a660053045'
+sha256sums=('SKIP'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 sha256sums_aarch64=('8619fee1ec83a6969887814349139acedd5a8359410c4330a7eb40473711cb73')
 sha256sums_x86_64=('067a2dcf73c3d1669f329e46c30716573028b38822ed31c0e487eed8a020fb5f')
@@ -63,6 +64,6 @@ package() {
             fi
         done
     fi
-    install -Dm644 "${srcdir}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/${pkgname%-bin}-assets/desktop/icon@3x.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
