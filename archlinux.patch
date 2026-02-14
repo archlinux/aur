@@ -1,8 +1,8 @@
 diff --git a/YUViewApp/YUViewApp.pro b/YUViewApp/YUViewApp.pro
-index 4e5c0d34..09afecd2 100644
+index 024fae08..67af39e9 100644
 --- a/YUViewApp/YUViewApp.pro
 +++ b/YUViewApp/YUViewApp.pro
-@@ -19,7 +19,7 @@ win32 {
+@@ -19,7 +19,7 @@ win32-msvc* {
  
  unix:!mac {
      isEmpty(PREFIX) {
@@ -11,4 +11,16 @@ index 4e5c0d34..09afecd2 100644
      }
      isEmpty(BINDIR) {
          BINDIR = bin
- 
+diff --git a/YUViewLib/src/decoder/decoderVVDec.cpp b/YUViewLib/src/decoder/decoderVVDec.cpp
+index 78b0fd8d..f7bfb173 100644
+--- a/YUViewLib/src/decoder/decoderVVDec.cpp
++++ b/YUViewLib/src/decoder/decoderVVDec.cpp
+@@ -171,6 +171,8 @@ QStringList decoderVVDec::getLibraryNames() const
+   // Since this has been compiled for linux it will fail and not even try to open the .dylib.
+   // On windows and linux ommitting the extension works
+   QStringList names;
++  if (is_Q_OS_LINUX)
++    names << "libvvdec";
+   if (is_Q_OS_LINUX)
+     names << "libvvdecLib";
+   if (is_Q_OS_MAC)

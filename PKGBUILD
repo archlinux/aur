@@ -17,7 +17,7 @@ source=("git+${url}.git#commit=22c1e305bef25b23850a2068dcef3fb165c3fd60"
         'archlinux.patch')
 noextract=()
 md5sums=('SKIP'
-         '1e5c1cfc4e3979aec828df29e26774e6')
+         '7bdbe1f4acc9bd1ef13b90b2e7e1dc72')
 install="$pkgname.install"
 
 prepare() {
