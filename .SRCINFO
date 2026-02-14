@@ -1,7 +1,7 @@
 pkgbase = certigo-bin
 	pkgdesc = A utility to examine and validate certificates in a variety of formats
 	pkgver = 1.17.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/square/certigo
 	arch = x86_64
 	license = Apache-2.0
