@@ -1,4 +1,4 @@
-pkgbase = sql-tap
+pkgbase = sql-tap-bin
 	pkgdesc = Watch SQL traffic in real-time with a TUI
 	pkgver = 0.0.5
 	pkgrel = 1
@@ -14,4 +14,4 @@ pkgbase = sql-tap
 	source_aarch64 = sql-tap-arm64-0.0.5.tar.gz::https://github.com/mickamy/sql-tap/releases/download/v0.0.5/sql-tap_0.0.5_linux_arm64.tar.gz
 	sha256sums_aarch64 = a7ca015495e6ae56a74c46f1a5ceb3d92411baeee75db226db021cf096f00213
 
-pkgname = sql-tap
+pkgname = sql-tap-bin

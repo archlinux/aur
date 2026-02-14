@@ -1,6 +1,6 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 #
-pkgname=sql-tap
+pkgname=sql-tap-bin
 pkgver=0.0.5
 pkgrel=1
 pkgdesc="Watch SQL traffic in real-time with a TUI"
