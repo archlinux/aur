@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=garden-tools
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Garden grows and cultivates collections of Git trees"
 arch=('x86_64')
 url="https://gitlab.com/garden-rs/garden"
 license=('MIT')
-depends=('gcc-libs')
+depends=('libgcc')
 makedepends=('cargo')
 source=("https://gitlab.com/garden-rs/garden/-/archive/v${pkgver}/garden-v${pkgver}.tar.gz")
 sha256sums=('330df7dfa27382b70157da6e13c9b31899c35537b7691ce800c0301ea26292a7')
@@ -24,9 +24,9 @@ build() {
   cargo build --release
 
   # completions
-  target/release/garden completion bash > garden.bash
-  target/release/garden completion fish > garden.fish
-  target/release/garden completion zsh > _garden
+  for shell in bash fish zsh; do
+    target/release/garden completion "${shell}" > "garden.${shell}"
+  done
 }
 
 package() {
@@ -38,8 +38,8 @@ package() {
     "$pkgdir/usr/share/bash-completion/completions/garden"
   install -Dm644 garden.fish -t \
     "$pkgdir/usr/share/fish/vendor_completions.d/"
-  install -Dm644 _garden -t \
-    "$pkgdir/usr/share/zsh/site-functions/"
+  install -Dm644 garden.zsh \
+    "$pkgdir/usr/share/zsh/site-functions/_garden"
 
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
