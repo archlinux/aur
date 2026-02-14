@@ -1,0 +1,13 @@
+pkgbase = libslz
+	pkgdesc = Stateless, zlib-compatible, and very fast compression library
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = http://www.libslz.org
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = libslz.so
+	source = libslz-1.2.1.tar.gz::https://github.com/wtarreau/libslz/archive/refs/tags/v1.2.1.tar.gz
+	sha256sums = c1fa88556e97541a550e59fd1f0fc8f6b4c02444b14c13eb553c9827123122c5
+
+pkgname = libslz
