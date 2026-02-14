@@ -1,9 +1,9 @@
 # Maintainer: SpeedyNote Team <info@speedynote.org>
 
 pkgname=speedynote
-pkgver=1.2.1.6
-_tagver=1.2.1-6
-pkgrel=2
+pkgver=1.2.2.2
+_tagver=1.2.2-2
+pkgrel=1
 pkgdesc="Fast note-taking app with PDF annotation, export, and multi-platform sync"
 arch=('x86_64' 'aarch64')
 url="https://github.com/alpha-liu-01/SpeedyNote"
@@ -12,6 +12,7 @@ license=('GPL-3.0-or-later')
 # Runtime dependencies
 depends=(
     'qt6-base'
+    'qt6-svg'
     'mupdf'            # PDF rendering and export
     'harfbuzz'
     'freetype2'
@@ -38,7 +39,7 @@ conflicts=('speedynote-bin' 'speedynote-git' 'speedynote-src')
 
 # Source from GitHub release
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${_tagver}.tar.gz")
-sha256sums=('9af2735fb40c82adbe7b342607081b4a0206abc08a5c192b375f6091b5cfe7ed')
+sha256sums=('9dbebd93585cc2a625c18db189e26727835bf3f2c678cbd55e008bf75ebc0901')
 
 build() {
     cd "SpeedyNote-${_tagver}"
@@ -58,26 +59,14 @@ package() {
     cd "SpeedyNote-${_tagver}"
     
     # Install binary
-    install -Dm755 "build/NoteApp" "$pkgdir/usr/bin/speedynote"
+    install -Dm755 "build/speedynote" "$pkgdir/usr/bin/speedynote"
     
-    # Install desktop file
-    install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/speedynote.desktop" << 'EOF'
-[Desktop Entry]
-Version=1.0
-Type=Application
-Name=SpeedyNote
-Comment=Fast note-taking app with PDF annotation support
-Exec=speedynote %F
-Icon=speedynote
-Terminal=false
-StartupNotify=true
-Categories=Office;Education;
-Keywords=notes;pdf;annotation;writing;
-MimeType=application/pdf;
-EOF
+    # Install desktop file (committed in repo)
+    install -Dm644 "data/org.speedynote.SpeedyNote.desktop" "$pkgdir/usr/share/applications/org.speedynote.SpeedyNote.desktop"
     
-    # Install icon
-    install -Dm644 "resources/icons/mainicon.png" "$pkgdir/usr/share/pixmaps/speedynote.png"
+    # Install SVG icon (scalable + pixmaps fallback, name matches Icon= in .desktop file)
+    install -Dm644 "resources/icons/mainicon.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.speedynote.SpeedyNote.svg"
+    install -Dm644 "resources/icons/mainicon.svg" "$pkgdir/usr/share/pixmaps/org.speedynote.SpeedyNote.svg"
     
     # Install documentation
     install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
@@ -91,4 +80,3 @@ EOF
     # Install license
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
