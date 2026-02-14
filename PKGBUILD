@@ -5,20 +5,20 @@ pkgname=(
   'libmanette-git'
   'libmanette-docs-git'
 )
-pkgver=0.2.11.r39.g9b1b45e
+pkgver=0.2.11.r40.g1dc2f9c
 pkgrel=1
 pkgdesc="Simple GObject game controller library"
 arch=('x86_64')
 url="https://gnome.pages.gitlab.gnome.org/libmanette"
 license=('LGPL-2.1-or-later')
 depends=(
-  'gcc-libs'
   'glib2'
   'glibc'
   'gtk4'
   'hidapi'
   'libadwaita'
   'libevdev'
+  'libgcc'
   'libgudev'
 )
 makedepends=(
