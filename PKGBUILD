@@ -4,7 +4,7 @@
 # Contributor: Benjamin Hedrich <kiwisauce (a) pagenotfound (dot) de>
 
 pkgname=tvheadend-git
-pkgver=4.3.r2550.gfa8011b
+pkgver=4.3.r2604.g9968e6f
 pkgrel=1
 pkgdesc='TV streaming server and DVR'
 #arch=(x86_64)
@@ -58,6 +58,8 @@ pkgver() {
 
 build() {
   cd $pkgname
+
+  export CFLAGS+=' -Wno-error=discarded-qualifiers'
 
   local libav_option
   libav_option="$(_print_libav_option)"
