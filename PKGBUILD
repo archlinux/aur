@@ -2,7 +2,7 @@
 
 pkgname=spaceshot
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A batteries-included screenshot tool for wlroots-compatible Wayland compositors"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Mabi19/spaceshot"
@@ -10,39 +10,20 @@ license=('MIT')
 depends=(
     'glibc'
     'glib2'
-    'gcc-libs'
     'cairo'
+    'libpng'
     'pango'
     'libxkbcommon'
     'wayland'
-    'wlr-protocols'
-    'vala'
-    'libpng'
-    'zlib-ng-compat'
-    'freetype2'
-    'libx11'
-    'libxext'
-    'libxrender'
-    'libxcb'
-    'pixman'
-    'fribidi'
-    'libthai'
-    'harfbuzz'
-    'libffi'
-    'expat'
-    'bzip2'
-    'brotli'
-    'libxau'
-    'libxdmcp'
-    'pcre2'
-    'util-linux-libs'
-    'graphite'
-    'libdatrie'
+    'dbus'
 )
 makedepends=(
     'meson'
     'python'
     'pkg-config'
+    'vala'
+    'wayland-protocols'
+    'wlr-protocols'
 )
 provides=("$pkgname")
 conflicts=("$pkgname")
@@ -51,26 +32,18 @@ sha512sums=('1f32f80059576914789b002d382eceb35530d2b7d6bb855425d7e30255f545dbd24
 
 build()
 {
-    cd "$pkgname-$pkgver"
-
     export CFLAGS="$CFLAGS -fvisibility=hidden"
 
     rm -rf build
-    meson setup build
+    arch-meson "$pkgname-$pkgver" build
     meson compile -C build
 }
 
 package()
 {
+    meson install -C build --destdir "$pkgdir"
+
     cd "$pkgname-$pkgver"
-
-    DESTDIR="$pkgdir" ninja -C build install
-
-    # Correct directories
-    mv "$pkgdir/usr/local/bin" "$pkgdir/usr/bin"
-    mv "$pkgdir/usr/local/share" "$pkgdir/usr/share"
-    rmdir "$pkgdir/usr/local"
-
     install -Dm644 -t"$pkgdir/usr/share/doc/$pkgname/" README.md
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
