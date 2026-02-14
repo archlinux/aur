@@ -1,14 +1,14 @@
 # Maintainer: MrToadie <toadie@toadie.de>
 
 pkgname=kvm-configurator
-pkgver=1.0.9.1
+pkgver=1.0.9.2
 pkgrel=1
 pkgdesc="Little helper for virsh‑install"
 arch=('x86_64')
 url="https://github.com/mrtoadie/kvm-configurator"
 license=('MIT')
 depends=('glibc')
-makedepends=('git' 'go')
+makedepends=('git' 'go' 'base-devel')
 source=("git+${url}.git")
 sha256sums=('SKIP')   # VCS‑Quellen dürfen SKIP benutzen
 
