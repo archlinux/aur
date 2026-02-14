@@ -1,7 +1,7 @@
 # Maintainer: Sean Pedersen
 pkgname=marko-git
 pkgver=4.20.0.r0.g9947f87
-pkgrel=2
+pkgrel=3
 pkgdesc="A Tauri-based markdown editor with WYSIWYG inline editing"
 arch=('x86_64' 'aarch64')
 url="https://github.com/SeanPedersen/Marko"
@@ -33,9 +33,15 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "%s.r%s.g%s" "$(grep '"version"' package.json | head -1 | sed 's/.*: *"\([^"]*\)".*/\1/')" \
-        "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    local ver
+    ver=$(git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')
+    if [[ -z "$ver" ]]; then
+        local pkg_ver=$(grep -Po '"version":\s*"\K[^"]+' package.json | head -1)
+        local rev_count=$(git rev-list --count HEAD)
+        local short_hash=$(git rev-parse --short=7 HEAD)
+        ver="${pkg_ver}.r${rev_count}.g${short_hash}"
+    fi
+    echo "$ver"
 }
 
 prepare() {
