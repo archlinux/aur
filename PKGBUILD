@@ -1,9 +1,9 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=qiskit-gym
 pkgname=python-${_pkgname}
-pkgver=0.3.0
+pkgver=0.4.1
 pkgrel=1
-pkgdesc="A collection of quantum information science problems formulated as reinforcement learning environments"
+pkgdesc="Quantum information science problems formulated as reinforcement learning environments"
 arch=(x86_64)
 url=https://github.com/AI4quantum/qiskit-gym
 license=(Apache-2.0)
@@ -19,7 +19,7 @@ makedepends=(
     python-maturin
 )
 source=($_pkgname::git+https://github.com/AI4quantum/$_pkgname#tag=$pkgver)
-b2sums=('a7631209753791dfadb549c6f6b13423b89c74ad2abb1e8eae8ba61960d87a066c1bed2b52bbfecdce45b77d04cd27ded0f4e23df58f9625fafe3755bca23870')
+b2sums=('6063c92c95a5fe1d9208c8e7dd17d96c022d31e60dab63d8c868310cbe3e4526dd6032696d6c61b99f9bc42b289cc95f4fb322df4a346d6545dfb59f13a8a97e')
 
 build() {
     cd $_pkgname
