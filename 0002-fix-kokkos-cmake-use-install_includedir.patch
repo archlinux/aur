@@ -1,0 +1,25 @@
+From 10de125ccd66f6c7a220d7344bf0cfa1e47d266c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Torleif=20Sk=C3=A5r?= <torleif.skaar@gmail.com>
+Date: Sun, 8 Feb 2026 05:52:22 +0100
+Subject: [PATCH] fix(kokkos/cmake): use install_includedir
+
+---
+ packages/kokkos/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/packages/kokkos/CMakeLists.txt b/packages/kokkos/CMakeLists.txt
+index 7ab16c2fbac..9191e915aad 100644
+--- a/packages/kokkos/CMakeLists.txt
++++ b/packages/kokkos/CMakeLists.txt
+@@ -234,7 +234,7 @@ set(KOKKOS_COMPONENT_LIBRARIES kokkoscore kokkoscontainers kokkosalgorithms kokk
+ set_property(GLOBAL PROPERTY KOKKOS_INT_LIBRARIES kokkos ${KOKKOS_COMPONENT_LIBRARIES})
+ 
+ if(HAS_PARENT)
+-  set(KOKKOS_HEADER_DIR "include/kokkos")
++  set(KOKKOS_HEADER_DIR "${CMAKE_INSTALL_INCLUDEDIR}/kokkos")
+   set(KOKKOS_IS_SUBDIRECTORY TRUE)
+ else()
+   set(KOKKOS_HEADER_DIR "${CMAKE_INSTALL_INCLUDEDIR}")
+-- 
+2.53.0
+

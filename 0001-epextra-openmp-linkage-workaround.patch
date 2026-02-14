@@ -1,0 +1,30 @@
+From 18d355eb5ef779f5e10d21a8c30b32849f2f84f7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Torleif=20Sk=C3=A5r?= <torleif.skaar@gmail.com>
+Date: Wed, 30 Jul 2025 15:36:39 +0200
+Subject: [PATCH] epextra openmp linkage workaround
+
+Suitesparse library correctly handles the extern C
+itself, hence there is no need for this.
+This avoids linkage issues on GCC 15.X
+
+---
+ packages/epetraext/src/transform/EpetraExt_AMD_CrsGraph.cpp | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/packages/epetraext/src/transform/EpetraExt_AMD_CrsGraph.cpp b/packages/epetraext/src/transform/EpetraExt_AMD_CrsGraph.cpp
+index fd693aab1d2..c7e050f9914 100644
+--- a/packages/epetraext/src/transform/EpetraExt_AMD_CrsGraph.cpp
++++ b/packages/epetraext/src/transform/EpetraExt_AMD_CrsGraph.cpp
+@@ -51,9 +51,7 @@
+ 
+ #include <vector>
+ 
+-extern "C" {
+ #include <amd.h>
+-}
+ 
+ namespace EpetraExt {
+ 
+-- 
+2.50.1
+

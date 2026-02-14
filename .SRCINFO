@@ -1,0 +1,32 @@
+pkgbase = trilinos16
+	pkgdesc = Algorithms and solutions of large-scale, complex multi-physics engineering and scientific problems - 16.X branch
+	pkgver = 16.2.0
+	pkgrel = 1
+	url = https://github.com/trilinos/Trilinos
+	arch = x86_64
+	license = BSD-3-Clause
+	license = LGPL-2.1-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = gcc-fortran
+	depends = glibc
+	depends = gklib
+	depends = openblas
+	depends = openmpi
+	depends = parmetis
+	depends = metis
+	depends = superlu_dist
+	depends = suitesparse
+	depends = libgfortran
+	depends = libstdc++
+	depends = libgomp
+	depends = libgcc
+	source = trilinos::git+https://github.com/trilinos/Trilinos#tag=trilinos-release-16-2-0
+	source = 0001-epextra-openmp-linkage-workaround.patch
+	source = 0002-fix-kokkos-cmake-use-install_includedir.patch
+	b2sums = 391163cccdb10e7c20373e7b6bd7eb5ecb109fac56eb9c46c5940bca2e16145a416e8451588d098c439dc4bbefa72e93e346c0f22d19203a5f333b06516b65a8
+	b2sums = 76bcd57791866166387af5bd4b2984b9344c766f0a838fd5d0f32ae7670d181a17470efc429aef774b7e6feca68d1d407211bfdee885eaf8536f751b304c76d2
+	b2sums = 3a11a4ebaf068da3f84e43ec475c7befd6fe3dfcc8b4705c9414218673055f8d2f856eff9e113a8759ffa18c22468e30e86be9b0391a4b546ed1a6e2f746df47
+
+pkgname = trilinos16
