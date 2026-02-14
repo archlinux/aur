@@ -9,7 +9,7 @@ post_install() {
 ▀   ▀  ▀▀▀   ▀▀▀  ▀   ▀ ▀▀▀▀  ▀▀▀▀▀   ▀   ▀     ▀
 
 EOF
-    echo "==> MoonBit installed successfully!"
+    echo "==> MoonBit v1.3.0 installed successfully!"
     echo ""
     echo "Usage:"
     echo "  moonbit                    # Interactive TUI"
@@ -17,12 +17,21 @@ EOF
     echo "  moonbit clean              # Clean files (deletes by default)"
     echo "  moonbit clean --dry-run    # Preview before cleaning"
     echo ""
-    echo "To enable automated cleaning:"
-    echo "  sudo systemctl enable --now moonbit-scan.timer   # Daily scans"
-    echo "  sudo systemctl enable --now moonbit-clean.timer  # Weekly cleaning"
+    echo "Automation (choose ONE mode):"
     echo ""
-    echo "Check timer status:"
+    echo "  Timer Mode (lightweight, periodic):"
+    echo "    sudo systemctl enable --now moonbit-scan.timer   # Daily scans"
+    echo "    sudo systemctl enable --now moonbit-clean.timer  # Weekly cleaning"
+    echo ""
+    echo "  Daemon Mode (long-running, continuous):"
+    echo "    sudo systemctl enable --now moonbit-daemon.service"
+    echo ""
+    echo "  NOTE: Timer and Daemon modes are mutually exclusive."
+    echo "        Do not enable both simultaneously."
+    echo ""
+    echo "Check status:"
     echo "  systemctl list-timers moonbit-*"
+    echo "  systemctl status moonbit-daemon.service"
     echo ""
 }
 
@@ -37,16 +46,21 @@ post_upgrade() {
 ▀   ▀  ▀▀▀   ▀▀▀  ▀   ▀ ▀▀▀▀  ▀▀▀▀▀   ▀   ▀     ▀
 
 EOF
-    echo "==> MoonBit upgraded successfully!"
+    echo "==> MoonBit upgraded to v1.3.0!"
+    echo ""
+    echo "New in v1.3.0: Daemon mode support"
+    echo "  sudo systemctl enable --now moonbit-daemon.service"
     echo ""
     echo "If you have enabled timers, they will continue running."
     echo "Check status: systemctl list-timers moonbit-*"
+    echo "              systemctl status moonbit-daemon.service"
     echo ""
 }
 
 pre_remove() {
-    echo "==> Disabling MoonBit timers..."
+    echo "==> Disabling MoonBit services..."
     systemctl disable --now moonbit-scan.timer 2>/dev/null || true
     systemctl disable --now moonbit-clean.timer 2>/dev/null || true
+    systemctl disable --now moonbit-daemon.service 2>/dev/null || true
     systemctl daemon-reload
 }

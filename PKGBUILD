@@ -1,6 +1,6 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=moonbit
-pkgver=1.2.4
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A modern system cleaner built in Go with a TUI and CLI"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ optdepends=(
 )
 makedepends=('go>=1.21')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Nomadcxx/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('f1c678581319e96f49c40d0e0ca5ea3710a2598d2e21ec1e1425f25fb469655f')
+sha256sums=('e018f32e3c12aabdf99dbd3bd8a4b2270577052a092e44947d61c28b22db8266')
 install=${pkgname}.install
 
 build() {
@@ -37,6 +37,10 @@ package() {
     install -Dm644 systemd/moonbit-scan.timer "${pkgdir}/etc/systemd/system/moonbit-scan.timer"
     install -Dm644 systemd/moonbit-clean.service "${pkgdir}/etc/systemd/system/moonbit-clean.service"
     install -Dm644 systemd/moonbit-clean.timer "${pkgdir}/etc/systemd/system/moonbit-clean.timer"
+    install -Dm644 systemd/moonbit-daemon.service "${pkgdir}/etc/systemd/system/moonbit-daemon.service"
+
+    # Create log and run directories
+    install -dm755 "${pkgdir}/var/log/moonbit"
 
     # Install README
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
