@@ -3,7 +3,7 @@
 pkgname=micyou-bin
 _pkgver=1.0.6hotfix-20260213-1447
 pkgver=1.0.6hotfix
-pkgrel=2
+pkgrel=3
 pkgdesc="Turn your Android device into a high-quality wireless microphone for your PC"
 arch=('x86_64')
 url="https://github.com/LanRhyme/MicYou"
@@ -30,6 +30,7 @@ package() {
     install -Dm644 "$pkgdir/opt/micyou/lib/MicYou.png" "$pkgdir/usr/share/pixmaps/micyou.png"
 
     # Create Symlink for command line execution
+    install -d "$pkgdir/usr/bin"
     ln -sf "$pkgdir/opt/micyou/bin/MicYou" "$pkgdir/usr/bin/MicYou"
     
 }
