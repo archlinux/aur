@@ -1,14 +1,14 @@
 # Maintainer: werdxz
 
 pkgname=portty-git
-pkgver=r16.8805a37
+pkgver=0.2.0.r0.gf3e17da
 pkgrel=1
 pkgdesc="XDG Desktop Portal backend for TTY environments"
 arch=('x86_64')
 url="https://github.com/werdxz/portty"
 license=('MIT')
 depends=('xdg-desktop-portal')
-makedepends=('cargo' 'git')
+makedepends=('rustup' 'git')
 provides=('portty')
 conflicts=('portty')
 source=("${pkgname}::git+https://github.com/werdxz/portty.git")
@@ -16,12 +16,12 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
     cd "$pkgname"
-    cargo build --release --locked
+    rustup run nightly cargo build --release --locked
 }
 
 package() {
