@@ -20,6 +20,7 @@ pkgname = mindustryx-git
 	conflicts = mindustryx
 
 pkgname = mindustryx-server-git
+	pkgdesc = Optimized mindustry server&client with more API - server
 	depends = alsa-lib
 	depends = hicolor-icon-theme
 	depends = java-runtime

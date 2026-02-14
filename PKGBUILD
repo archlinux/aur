@@ -7,7 +7,7 @@
 
 _pkgname="mindustryx"
 pkgbase="$_pkgname-git"
-pkgver=2025.12.X25.r26.gb924012
+pkgver=2026.02.X27.r7.gabde1c6
 pkgrel=1
 pkgdesc="Optimized mindustry server&client with more API"
 url="https://github.com/TinyLake/MindustryX"
@@ -63,11 +63,10 @@ build() {
   cd "$_pkgsrc/work"
 
 
-  JAVA_HOME="/usr/lib/jvm/java-${_java_ver}-openjdk" \
-    ./gradlew --warning-mode=all --no-daemon dist -Pbuildversion="${_build}" desktop:dist server:dist
+  ./gradlew clean
+    JAVA_HOME="/usr/lib/jvm/java-${_java_ver}-openjdk"\
+  ./gradlew  -Pbuildversion="${_build}" --parallel  desktop:dist server:dist
 
-  cd core/assets/icons
-  icns2png --extract icon.icns
 }
 
 _package_common() {
@@ -95,22 +94,19 @@ END
 exec /usr/bin/java -jar /usr/share/java/$_pkgname/${pkgname%$_pkgtype}.jar "\$@"
 END
 
-  cd "$_pkgsrc/work"
-  local icon_size
-  for icon_size in 256 512 1024; do
-    install -Dm644 "core/assets/icons/icon_${icon_size}x${icon_size}x32.png" \
-      "$pkgdir/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps/${pkgname%$_pkgtype}.png"
-  done
+  cd "$_pkgsrc"
+  install -Dm644 "assets/icon.png" \
+  "$pkgdir/usr/share/icons/hicolor/64x64/apps/${pkgname%$_pkgtype}.png"
 }
 
 _package_mindustryx() {
-  install -Dm755 "desktop/build/libs/Mindustry.jar" "$pkgdir/usr/share/java/$_pkgname/${pkgname%$_pkgtype}.jar"
+  install -Dm755 "work/desktop/build/libs/Mindustry.jar" "$pkgdir/usr/share/java/$_pkgname/${pkgname%$_pkgtype}.jar"
 }
 
 _package_mindustryx-server() {
   pkgdesc+=" - server"
 
-  install -Dm755 "server/build/libs/server-release.jar" "$pkgdir/usr/share/java/$_pkgname/${pkgname%$_pkgtype}.jar"
+  install -Dm755 "work/server/build/libs/server-release.jar" "$pkgdir/usr/share/java/$_pkgname/${pkgname%$_pkgtype}.jar"
 }
 
 _pkgtype=${pkgbase#$_pkgname}
