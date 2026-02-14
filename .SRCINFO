@@ -1,7 +1,7 @@
 pkgbase = hyprcursor-sync-git
 	pkgdesc = Automated cursor sync, So you dont need to log-in-n-out just to check if your cursor is changed or not :)
 	pkgver = r1.1
-	pkgrel = 3
+	pkgrel = 7
 	url = https://github.com/uvz0/hyprcursor-sync
 	install = hyprcursor-sync-git.install
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = hyprcursor-sync-git
 	depends = bash
 	depends = glib2
 	depends = gtk4
+	depends = nwg-look
 	source = git+https://github.com/uvz0/hyprcursor-sync.git
 	sha256sums = SKIP
 

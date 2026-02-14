@@ -2,12 +2,12 @@
 # Copyright (c) 2026 Author. All Rights Reserved.
 pkgname=hyprcursor-sync-git
 pkgver=r1.1
-pkgrel=3
+pkgrel=7
 pkgdesc="Automated cursor sync, So you dont need to log-in-n-out just to check if your cursor is changed or not :)"
 arch=('any')
 url="https://github.com/uvz0/hyprcursor-sync"
 license=('MIT')
-depends=('hyprland' 'bash' 'glib2' 'gtk4')
+depends=('hyprland' 'bash' 'glib2' 'gtk4' 'nwg-look')
 makedepends=('git')
 install=${pkgname}.install
 source=("git+https://github.com/uvz0/hyprcursor-sync.git")
