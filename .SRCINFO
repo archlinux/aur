@@ -1,17 +1,17 @@
 pkgbase = easyeditor-bin
 	pkgdesc = An easy markdown editor that allows you to write MarkDown (MD) and preview it in real-time. You can save, load .md files and export to PDF.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.6.4
+	pkgver = 1.6.5
 	pkgrel = 1
 	url = https://github.com/gcclinux/Easyeditor
 	arch = x86_64
 	license = MIT
 	depends = webkit2gtk-4.1
 	depends = gtk3
-	provides = easyeditor=1.6.4
+	provides = easyeditor=1.6.5
 	conflicts = easyeditor
-	source = LICENSE-1.6.4::https://raw.githubusercontent.com/gcclinux/Easyeditor/1.6.4/LICENSE
-	sha256sums = 2b94523fd0d3fd7553fcdd10250f68ed5c058749d5d60c8aae906f6f42ace489
-	source_x86_64 = easyeditor-1.6.4-x86_64.rpm::https://github.com/gcclinux/Easyeditor/releases/download/1.6.4/easyeditor-1.6.4-1.x86_64.rpm
-	sha256sums_x86_64 = b2283d9b0321fb72211eb6d7d1e7c1274af0ad4349be223c778f02224ec872df
+	source = LICENSE-1.6.5::https://raw.githubusercontent.com/gcclinux/Easyeditor/1.6.5/LICENSE
+	sha256sums = 32ad25534b23ad354be75f672733ad8bd50022c917c21023d8226bd653eb0dd7
+	source_x86_64 = easyeditor-1.6.5-x86_64.rpm::https://github.com/gcclinux/Easyeditor/releases/download/1.6.5/easyeditor-1.6.5-1.x86_64.rpm
+	sha256sums_x86_64 = e51ad52a62e93bba05bf933011b3d36af9cbafb7b6e6dfc3ff598e2447c040f3
 
 pkgname = easyeditor-bin
