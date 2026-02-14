@@ -1,6 +1,6 @@
 # Maintainer: rg-Sens Contributors
 pkgname=rg-sens-git
-pkgver=0.7.2.r8.gb36f1a9
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="A fast, customizable system monitoring dashboard for Linux (git version)"
 arch=('x86_64')
@@ -41,7 +41,7 @@ pkgver() {
         local count hash
         count=$(git rev-list --count HEAD 2>/dev/null || echo "0")
         hash=$(git rev-parse --short HEAD 2>/dev/null || echo "unknown")
-        echo "0.7.4.r${count}.g${hash}"
+        echo "0.7.5.r${count}.g${hash}"
     fi
 }
 
