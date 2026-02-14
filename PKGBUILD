@@ -1,18 +1,18 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="vtm"
-pkgver=2025.11.07
+pkgver=2026.02.06
 pkgrel=1
 pkgdesc="Terminal multiplexer with window manager and session sharing"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/directvt/${pkgname}"
 license=('MIT')
 depends=('gcc-libs' 'glibc' 'lua')
-makedepends=('cmake>=3.24')
+makedepends=('cmake>=3.24' 'freetype2' 'harfbuzz')
 # backup=("etc/${pkgname}/settings.xml")
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('949d51f334170623f1ee48b0632aaaa975bb7b7ddbfcfe50d7041ef21c9aa380580d6ab842e41b042255dfacebdda90f278ec66eed33d34d3decf5f9448506bf')
+b2sums=('7baf75f13c6a4a24d0ad41bc90709059d060f4e72d4aebdb119abe55937d794dfec1fc6f310571dc324d34d35c5c5db1ba403cebca1b405c7e8db289dad8a2cc')
 
 build() {
   local cmake_options=(
