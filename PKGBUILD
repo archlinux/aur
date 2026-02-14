@@ -1,7 +1,7 @@
 # Maintainer: Sean Pedersen
 pkgname=marko-git
 pkgver=4.20.0.r0.g9947f87
-pkgrel=5
+pkgrel=6
 pkgdesc="A Tauri-based markdown editor with WYSIWYG inline editing"
 arch=('x86_64' 'aarch64')
 url="https://github.com/SeanPedersen/Marko"
@@ -27,6 +27,7 @@ makedepends=(
     'nodejs'
     'npm'
     'openssl'
+    'pkgconf'
 )
 provides=('marko')
 conflicts=('marko')
@@ -49,7 +50,7 @@ prepare() {
     cd "$pkgname"
     npm ci
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')" --manifest-path src-tauri/Cargo.toml
+    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')" --manifest-path src-tauri/Cargo.toml
 }
 
 build() {
@@ -57,7 +58,7 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     npm run build
-    cargo build --release --locked --manifest-path src-tauri/Cargo.toml
+    cargo build --release --manifest-path src-tauri/Cargo.toml
 }
 
 package() {
