@@ -1,6 +1,6 @@
 pkgbase='simple-thumbnailers'
-pkgname=(simple-thumbnailer-{pdf,vid})
-pkgver=r4.6cbb699
+pkgname=(simple-thumbnailer-{pdf,vid,xcf})
+pkgver=r6.2ee7d7e
 pkgrel=1
 
 arch=('any')
@@ -34,4 +34,10 @@ package_simple-thumbnailer-vid() {
 	conflicts=('totem' 'ffmpegthumbnailer')
 	pkgdesc='Minimal video thumbnailer'
 	_package vid
+}
+
+package_simple-thumbnailer-xcf() {
+	depends=('gimp')
+	pkgdesc='Minimal XCF thumbnailer'
+	_package xcf
 }

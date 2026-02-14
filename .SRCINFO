@@ -1,5 +1,5 @@
 pkgbase = simple-thumbnailers
-	pkgver = r4.6cbb699
+	pkgver = r6.2ee7d7e
 	pkgrel = 1
 	url = https://gitlab.com/zoli111/simple-thumbnailers
 	arch = any
@@ -18,3 +18,7 @@ pkgname = simple-thumbnailer-vid
 	depends = ffmpeg
 	conflicts = totem
 	conflicts = ffmpegthumbnailer
+
+pkgname = simple-thumbnailer-xcf
+	pkgdesc = Minimal XCF thumbnailer
+	depends = gimp
