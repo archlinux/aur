@@ -26,18 +26,7 @@ sha512sums=('SKIP'
 
 prepare() {
     cd "$srcdir/$pkgname"
-    # sed -i "s/PRIVATE -Wall -Werror/PRIVATE -Wall -Werror -Wno-unused-variable -Wnounused_assignment -Wnontrivial-memcall -Wnodead_code -Wnounused_import/g" linux/CMakeLists.txt
     sed -i "s/PRIVATE -Wall -Werror/PRIVATE -Wno-error/g" ./linux/CMakeLists.txt
-#     sed -i "s/PRIVATE -Wall -Werror/PRIVATE -W/g" ./linux/CMakeLists.txt
-#     grep 'target_compile_options' linux/CMakeLists.txt
-#     for spec in ./pubspec.yaml ./rust_builder/pubspec.yaml ./rust_builder/cargokit/build_tool/pubspec.yaml; do
-# 		cat <<-pubspec >> $spec
-#
-# analyzer:
-#   warnings:
-#     todo: ignore
-# 		pubspec
-# 	done
  	rustup set profile minimal
  	rustup toolchain install stable
  	rustup override set stable
@@ -47,8 +36,6 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgname"
-    # CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions -Wp,-D_FORTIFY_SOURCE=2 -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -g -ffile-prefix-map=$(pwd)=/usr/src/debug/${pkgname}" fvm flutter build linux --release
-    # CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -W" fvm flutter build linux --release
     fvm flutter build linux --release
 }
 
