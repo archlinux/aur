@@ -1,10 +1,10 @@
 # Maintainer: Aseem Athale <athaleaseem@gmail.com>
 
-_py=cp38
+_py=cp310
 
 _name=primp
 pkgname=python-${_name}-bin
-pkgver=0.15.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='HTTP client that can impersonate web browsers, mimicking their headers and `TLS/JA3/JA4/HTTP2` fingerprints'
 arch=('x86_64')
@@ -16,8 +16,8 @@ provides=("python-primp")
 conflicts=("python-primp")
 source=(https://files.pythonhosted.org/packages/${_py}/${_name::1}/$_name/${_name//-/_}-$pkgver-$_py-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
               https://raw.githubusercontent.com/deedy5/primp/refs/tags/v${pkgver}/LICENSE)
-b2sums=('903c7f4e0faaeecdeba999caa27800552b8eb830b35d0cd0a45a9e07225594201dc95a6318715fd33d4e992dc1b69a791af739c15ade95a0891596542c1a84e0'
-        'a1800e74b6305e799d483a97b81a71c744fb94f344536aa16414dff2f96a9d9469d0adbc9e1cad69d76aca30a4390c81c825ab088f7d87dcfa3e73e437a7efcb')
+b2sums=('c03f490844238e444e407d1ef94d82ed1db15a918dbce4c5ebd403ff3118643c01ba63c58b62cd59a5f63c4495c8251b801f9e451d39a55653b476eabdb123b4'
+        'a29664104e1ee73ca0aee1d633e9095d92a57c92787f8d8740bdb7211ba3205782ed8677f539bdb8cae3dd75a3694be3132e185fa3fc4b3f401e1f88eb776101')
 
 package() {
   python -m installer --destdir="$pkgdir" ${_name}-${pkgver}-${_py}-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
