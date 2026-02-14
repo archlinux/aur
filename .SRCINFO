@@ -1,14 +1,15 @@
 pkgbase = zoxide
 	pkgdesc = A smarter cd command for your terminal
 	pkgver = 0.9.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ajeetdsouza/zoxide
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = git
-	depends = gcc-libs
 	depends = glibc
+	depends = libgcc
+	depends = libgcc_s.so
 	optdepends = fzf: for interactive selection
 	options = !lto
 	source = zoxide::git+https://github.com/ajeetdsouza/zoxide.git#tag=v0.9.9

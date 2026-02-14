@@ -4,16 +4,15 @@
 
 pkgname=zoxide
 pkgver=0.9.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A smarter cd command for your terminal'
 arch=('x86_64')
 url='https://github.com/ajeetdsouza/zoxide'
 license=('MIT')
-depends=('gcc-libs' 'glibc')
-makedepends=('cargo' 'git')
-optdepends=(
-  'fzf: for interactive selection'
-)
+depends=(glibc # libc.so libm.so
+         libgcc libgcc_s.so)
+makedepends=(cargo git)
+optdepends=('fzf: for interactive selection')
 options=('!lto')
 source=("$pkgname::git+$url.git#tag=v$pkgver")
 sha256sums=('a43bd37528b841bdf160a8b3d5f72afd5ba5b1caa22948d5b33097012d1cf9c2')
@@ -21,7 +20,7 @@ sha256sums=('a43bd37528b841bdf160a8b3d5f72afd5ba5b1caa22948d5b33097012d1cf9c2')
 prepare() {
   cd "$pkgname"
 
-  cargo fetch --locked --target "$(rustc --print host-tuple)"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
