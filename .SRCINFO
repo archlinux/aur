@@ -1,0 +1,27 @@
+pkgbase = lyra-git
+	pkgdesc = A modern music player for the COSMIC desktop
+	pkgver = 0.1.0.r31.gcc3793e
+	pkgrel = 1
+	url = https://github.com/m0rf30/lyra
+	arch = aarch64
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = git
+	makedepends = just
+	makedepends = mesa
+	makedepends = nasm
+	depends = cosmic-icon-theme
+	depends = gcc-libs
+	depends = glibc
+	depends = libgl
+	depends = libxkbcommon
+	depends = wayland
+	optdepends = projectm: visualizer presets
+	provides = lyra
+	conflicts = lyra
+	source = lyra::git+https://github.com/m0rf30/lyra.git
+	sha256sums = SKIP
+
+pkgname = lyra-git
