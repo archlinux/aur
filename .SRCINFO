@@ -1,13 +1,13 @@
 pkgbase = cosmic-ctl
 	pkgdesc = CLI for COSMIC Desktop configuration management
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cosmic-utils/cosmic-ctl
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = cargo
-	depends = gcc-libs
+	depends = libgcc
 	source = cosmic-ctl-1.5.0.tar.gz::https://github.com/cosmic-utils/cosmic-ctl/archive/refs/tags/v1.5.0.tar.gz
 	sha256sums = 6d0feb0179be9f96e32f2ba60e5c65905eee8b880f6c3254c6833fcb363111c8
 
