@@ -1,0 +1,4 @@
+[rustconn]
+source = "git"
+git = "https://github.com/totoshko88/RustConn.git"
+prefix = "v"
