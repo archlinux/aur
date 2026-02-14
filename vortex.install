@@ -1,0 +1,15 @@
+post_install() {
+  chmod 4755 '/opt/Vortex/chrome-sandbox' 2>/dev/null || true
+  update-desktop-database -q
+  update-mime-database /usr/share/mime
+  xdg-settings set default-url-scheme-handler "nxm" "vortex.desktop" || true
+  echo ">> Vortex installed. Use 'vortex' to launch."
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  xdg-settings set default-url-scheme-handler "nxm" "" || true
+}
