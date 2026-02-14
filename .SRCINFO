@@ -1,0 +1,29 @@
+pkgbase = python-pydocket
+	pkgdesc = A distributed background task system for Python functions
+	pkgver = 0.17.7
+	pkgrel = 1
+	url = https://github.com/chrisguidry/docket
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
+	depends = python>=3.10
+	depends = python-cloudpickle
+	depends = python-cachetools
+	depends = python-croniter
+	depends = python-fakeredis
+	depends = python-opentelemetry-api
+	depends = python-prometheus_client
+	depends = python-py-key-value-aio
+	depends = python-json-logger
+	depends = python-redis
+	depends = python-rich
+	depends = python-typer
+	depends = python-typing_extensions
+	source = https://files.pythonhosted.org/packages/cd/b2/5e12dbe2acf59e4499285e8eee66e8e81b6ba2f553696d2f4ccca0a7978c/pydocket-0.17.7.tar.gz
+	sha256sums = 5c77ec6731a167cdcb44174abf793fe63e7b6c1c1c8a799cc6ec7502b361ee77
+
+pkgname = python-pydocket
