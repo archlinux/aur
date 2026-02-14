@@ -13,11 +13,10 @@
 pkg/
 src/
 
-# makepkg metadata
+# makepkg metadata (build-time only)
 .BUILDINFO
 .PKGINFO
 .MTREE
-.SRCINFO
 .INSTALL
 
 # Temporary files
