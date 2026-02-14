@@ -2,16 +2,16 @@
 pkgname=ludusavi-bin
 _app_id="com.mtkennerly.${pkgname%-bin}"
 pkgver=0.30.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Backup tool for PC game saves"
 arch=('x86_64')
 url="https://github.com/mtkennerly/ludusavi"
 license=('MIT')
 depends=(
   'bzip2'
-  'gcc-libs'
   'gtk3'
   'hicolor-icon-theme'
+  'libgcc'
 )
 optdepends=('rclone: upload backups to the cloud')
 provides=("${pkgname%-bin}")
