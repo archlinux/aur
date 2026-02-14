@@ -2,12 +2,13 @@
 
 pkgname=rackpeek
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI tool to discover, manage, and document your IT infrastructure and home lab.'
 arch=(x86_64 aarch64)
 url='https://github.com/Timmoth/RackPeek'
 license=('AGPL-3.0-or-later')
 depends=(glibc libgcc libstdc++)
+makedepends=(dotnet-sdk)
 options=(!strip)
 source=(
   $pkgname.install
