@@ -1,6 +1,6 @@
 pkgbase = auto-cpufreq-rust-git
 	pkgdesc = Automatic CPU speed & power optimizer (Rust port)
-	pkgver = r573.ff890e7
+	pkgver = r579.1536aae
 	pkgrel = 1
 	url = https://github.com/Zamanhuseyinli/auto-cpufreq-rust
 	arch = x86_64
@@ -17,6 +17,8 @@ pkgbase = auto-cpufreq-rust-git
 	provides = auto-cpufreq
 	conflicts = auto-cpufreq
 	conflicts = auto-cpufreq-git
+	options = !strip
+	options = !debug
 	source = git+https://github.com/Zamanhuseyinli/auto-cpufreq-rust.git
 	sha256sums = SKIP
 
