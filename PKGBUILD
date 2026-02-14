@@ -4,7 +4,7 @@
 
 pkgname=krokiet-bin
 pkgver=11.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Find and manage duplicate files, empty folders, similar images, and other "lint" (Slint GUI of Czkawka, with HEIF support)'
 arch=('x86_64')
 url='https://github.com/qarmin/czkawka'
@@ -12,15 +12,15 @@ license=('GPL-3.0-only')
 provides=('krokiet')
 conflicts=('krokiet')
 makedepends=('gendesk')
-depends=('libheif')
+depends=('libheif' 'vulkan-icd-loader')
 options=('!debug')
-source=("${pkgname}-${pkgver}::https://github.com/qarmin/czkawka/releases/download/${pkgver}/linux_${pkgname%-bin}_heif_raw_x86_64"
+source=("${pkgname}-${pkgver}::https://github.com/qarmin/czkawka/releases/download/${pkgver}/linux_${pkgname%-bin}_heif_raw_skia_vulkan_x86_64"
         "${pkgname}-${pkgver}.svg::https://raw.githubusercontent.com/qarmin/czkawka/${pkgver}/${pkgname%-bin}/icons/${pkgname%-bin}_logo.svg"
         "LICENSE_CC_BY_4_ICONS-${pkgver}::https://github.com/qarmin/czkawka/raw/${pkgver}/${pkgname%-bin}/LICENSE_CC_BY_4_ICONS"
         "LICENSE_GPL_APP-${pkgver}::https://github.com/qarmin/czkawka/raw/${pkgver}/${pkgname%-bin}/LICENSE_GPL_APP"
         "LICENSE_MIT_CODE-${pkgver}::https://github.com/qarmin/czkawka/raw/${pkgver}/${pkgname%-bin}/LICENSE_MIT_CODE")
 
-sha256sums=('1277585d849ef061590d423c4cdd3fff1be397a48168f846302c21b299470b95'
+sha256sums=('dc92320035695cc240128e939987dc8e1a5b79f90387b7dbf1d8a431a8a498a9'
             '2e04d60cb940771a159669c3c0eec3812919c730f9fe5cd4a3391c797c8ed80f'
             'e41e4ba0db2f8423d2b7da6948eecc5378ef00ffc98fa01dee51b849ce754c1a'
             '1b685e3eae5ea925fbb2cf4e58fa30e99bed1d4f58c83dc666063e289be09d37'
