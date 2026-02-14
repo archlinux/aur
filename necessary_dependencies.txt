@@ -111,6 +111,7 @@ Module: sqlalchemy
     open_webui/migrations/versions/a5c220713937_add_reply_to_id_column_to_message.py
     open_webui/migrations/versions/af906e964978_add_feedback_table.py
     open_webui/migrations/versions/b10670c03dd5_update_user_table.py
+    open_webui/migrations/versions/b2c3d4e5f6a7_add_scim_column_to_user_table.py
     open_webui/migrations/versions/c0fbf31ca0db_update_file_table.py
     open_webui/migrations/versions/c29facfe716b_update_file_table_path.py
     open_webui/migrations/versions/c440947495f3_add_chat_file_table.py
@@ -597,6 +598,7 @@ Module: open_webui.config
     open_webui/routers/pipelines.py
     open_webui/routers/prompts.py
     open_webui/routers/retrieval.py
+    open_webui/routers/scim.py
     open_webui/routers/skills.py
     open_webui/routers/tasks.py
     open_webui/routers/tools.py
@@ -638,6 +640,7 @@ Module: open_webui.env
     open_webui/routers/openai.py
     open_webui/routers/pipelines.py
     open_webui/routers/retrieval.py
+    open_webui/routers/scim.py
     open_webui/routers/tools.py
     open_webui/routers/users.py
     open_webui/socket/main.py
@@ -948,6 +951,7 @@ Module: alembic
     open_webui/migrations/versions/a5c220713937_add_reply_to_id_column_to_message.py
     open_webui/migrations/versions/af906e964978_add_feedback_table.py
     open_webui/migrations/versions/b10670c03dd5_update_user_table.py
+    open_webui/migrations/versions/b2c3d4e5f6a7_add_scim_column_to_user_table.py
     open_webui/migrations/versions/c0fbf31ca0db_update_file_table.py
     open_webui/migrations/versions/c29facfe716b_update_file_table_path.py
     open_webui/migrations/versions/c440947495f3_add_chat_file_table.py
