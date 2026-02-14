@@ -1,0 +1,25 @@
+pkgbase = papdieo-bin
+	pkgdesc = Hyprland-compatible wallpaper management CLI (prebuilt binary)
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/xiaotinglian/papdieo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = gst-plugins-ugly
+	depends = gst-libav
+	depends = wayland
+	depends = hyprland
+	provides = papdieo
+	conflicts = papdieo
+	conflicts = papdieo-git
+	source_x86_64 = https://github.com/xiaotinglian/papdieo/releases/download/v0.1.2/papdieo-v0.1.2-linux-x86_64.tar.gz
+	sha256sums_x86_64 = e0b7ec734d4d2f68d567d3fa4151a25f364af77e9adcdcb8e0c9f9c9c58cc98f
+	source_aarch64 = https://github.com/xiaotinglian/papdieo/releases/download/v0.1.2/papdieo-v0.1.2-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 9768b6fec74c22efad4b733820382d941396b6c5b63ab035830437341da752ef
+
+pkgname = papdieo-bin
