@@ -1,0 +1,30 @@
+post_install() {
+    cat <<EOF
+
+==> Wavelog Installation Notes
+==> ============================
+1. DATABASE SETUP
+   Create Wavelog database and users in MySQL/MariaDB
+2. WEB SERVER CONFIGURATION
+   Examples:
+   /var/lib/wavelog/config/apache.example.conf
+   /var/lib/wavelog/config/nginx.example.conf
+3. PHP EXTENSIONS
+   REQUIRED extensions:
+   Edit /etc/php/php.ini and uncomment:
+     extension=mysqli
+     extension=gd
+     extension=zip
+   OPTIONAL caching extensions (for better performance):
+   $ sudo nano /etc/php/conf.d/igbinary.ini  # Uncomment: extension=igbinary.so
+   $ sudo nano /etc/php/conf.d/redis.ini     # Uncomment: extension=redis
+   $ sudo nano /etc/php/conf.d/apcu.ini      # Uncomment: extension=apcu.so
+   Restart web server after enabling extensions:
+   $ sudo systemctl restart httpd      # Apache
+   $ sudo systemctl restart php-fpm    # Nginx
+5. WEB-BASED INSTALLATION
+   Open your browser and navigate to: http://localhost/wavelog
+   Follow the Wavelog installer.
+EOF
+}
+

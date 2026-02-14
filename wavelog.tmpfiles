@@ -1,0 +1,21 @@
+# systemd-tmpfiles configuration for Wavelog
+# See tmpfiles.d(5) for details
+#
+# All runtime-writable directories must be in /var because PHP-FPM runs with
+# ProtectSystem=full, which makes /usr, /boot, /efi read-only for security.
+
+# Create writable directories for Wavelog web application
+# Type Path                          Mode User  Group Age Argument
+d     /var/lib/wavelog                0755 http  http  -   -
+d     /var/lib/wavelog/uploads        0755 http  http  -   -
+d     /var/lib/wavelog/backup         0755 http  http  -   -
+d     /var/lib/wavelog/userdata       0755 http  http  -   -
+d     /var/lib/wavelog/updates        0755 http  http  -   -
+d     /var/lib/wavelog/eqsl_card_images 0755 http  http  -   -
+d     /var/log/wavelog                0755 http  http  -   -
+d     /var/cache/wavelog              0755 http  http  -   -
+
+# Configuration directory - web installer generates config.php and database.php
+# MUST be in /var/lib (not /etc/webapps) because PHP-FPM's ProtectSystem=full
+# prevents writes to /etc, and Wavelog's installer creates files dynamically
+d     /var/lib/wavelog/config         0755 http  http  -   -
