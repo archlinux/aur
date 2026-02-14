@@ -1,6 +1,6 @@
 pkgbase = flow-control
 	pkgdesc = a programmer's text editor
-	pkgver = 0.7.0
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/neurocyte/flow
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = flow-control
 	optdepends = ripgrep: project-wide search
 	provides = flow-control
 	conflicts = flow-control
-	source = https://github.com/neurocyte/flow/archive/refs/tags/v0.7.0.tar.gz
-	sha256sums = d623259ba3c623df36b10b0d618a29588290b49ba8d69b48813c41495c6175b3
+	source = https://github.com/neurocyte/flow/archive/refs/tags/v0.7.2.tar.gz
+	sha256sums = f56313fd00a36ab04ee9a9ddb200aebf195df3882947a698c1d1760d4bbd1d4a
 
 pkgname = flow-control
