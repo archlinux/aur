@@ -2,7 +2,7 @@
 
 pkgname=ngp-git
 pkgver=1.3.r201.gc15dc44
-pkgrel=1
+pkgrel=2
 pkgdesc='Ncurses grep tool'
 arch=(x86_64)
 url=https://github.com/jonathanklee/ngp
@@ -18,7 +18,7 @@ pkgver() {
 }
 
 build() {
-  CFLAGS="$CFLAGS -Wno-error=stringop-truncation"
+  export CFLAGS+=' -Wno-error=stringop-truncation -Wno-error=discarded-qualifiers'
 
   cmake -B build -S $pkgname -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -Wno-dev
   make -C build
