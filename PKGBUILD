@@ -7,7 +7,7 @@ _archive_extension="tar.gz"
 
 pkgname=ipfs-desktop
 pkgver=0.47.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Desktop client for the InterPlanetary File System"
 arch=(x86_64)
@@ -25,10 +25,12 @@ source=(
 	"$pkgname-$pkgver.$_archive_extension::$url/archive/refs/tags/v$pkgver.$_archive_extension"
 	"$pkgname.desktop"
 	"$pkgname-startup.sh"
+	"$pkgname-autostart-system-electron.patch"
 )
 b2sums=('e32ddb5a86147e9fbeb45093a1d72d4f4e85a63c93a99c785d24f24f2f9c06229c1ea14c81f34f7560a5c1d022b5fe294e227f310f10e9832788c6d85f52dfd7'
         '849d57fd59653ed0c6eca01769ad12a01f37f6a5316f1a83c0bf7cae576074b978e3ca555d50a56114d177e5fe4817338106698716f054a3e18ae1c81d7a8785'
-        '2d7bfa3be33c0199cbe18889e477dc0c207c52d801f52a8b24ae09646f9bb3bf77046d1137dedc08d1481a6995071c4a480bf3884123d356fcd8af69fbfb554f')
+        '2d7bfa3be33c0199cbe18889e477dc0c207c52d801f52a8b24ae09646f9bb3bf77046d1137dedc08d1481a6995071c4a480bf3884123d356fcd8af69fbfb554f'
+        '4a5a2e649b88766c9ae2f26ae5c1373c4e3a6d980f000c271c0acc57fb46fe38d6313fded32675a2e8a645c5af1af89045644fdf3e74f5589160d2f5836ad1d8')
 
 _pkgsrc="$pkgname-$pkgver"
 
@@ -57,6 +59,10 @@ _warn_if_electron_outdated() {
 	fi
 }
 
+prepare() {
+	patch -d "$_pkgsrc" -Np1 -i "$srcdir/$pkgname-autostart-system-electron.patch"
+}
+
 build() {
 	_warn_if_electron_outdated
 	_electron_env
@@ -67,7 +73,8 @@ build() {
 	)
 
 	cd "$_pkgsrc"
-	npm ci --no-audit --no-fund
+	npm ci --no-audit --no-fund \
+		2> >(sed '/glob@11\.1\.0: Old versions of glob are not supported/d' >&2)
 	npm run build
 	npm exec -- electron-builder --linux --dir --publish never "${_builder_options[@]}"
 }
