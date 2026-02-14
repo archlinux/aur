@@ -1,11 +1,11 @@
 pkgbase = python-vodka
 	pkgdesc = plugin based real-time web service daemon
 	pkgver = 3.2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/20c/vodka
 	changelog = CHANGELOG.md
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	makedepends = python-poetry-core
 	makedepends = python-build
 	makedepends = python-installer

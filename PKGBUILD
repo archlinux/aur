@@ -1,13 +1,14 @@
+# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-vodka
 _pkg=vodka
 pkgver=3.2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='plugin based real-time web service daemon'
 arch=('any')
 url="https://github.com/20c/vodka"
-license=('Apache')
+license=('Apache-2.0')
 depends=('python-click' 'python-munge' 'python-pluginmgr' 'python-tmpl' 'python-setuptools')
 makedepends=('python-poetry-core' 'python-build' 'python-installer')
 _checkdepends=('python-pytest' 'python-flask' 'python-django')
