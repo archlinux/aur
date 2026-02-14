@@ -1,0 +1,19 @@
+pkgbase = novel-cli-git
+	pkgdesc = A terminal-based novel and webnovel reader with ncurses
+	pkgver = r20.bdcdb0d
+	pkgrel = 1
+	url = https://github.com/Rahaman146/novel-cli
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	depends = ncurses
+	depends = curl
+	depends = cjson
+	provides = novel-cli
+	conflicts = novel-cli
+	source = git+https://github.com/Rahaman146/novel-cli.git
+	md5sums = SKIP
+
+pkgname = novel-cli-git
