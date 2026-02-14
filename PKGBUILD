@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nerimity-desktop
 _pkgname=Nerimity
-pkgver=2.0.0
+pkgver=2.0.1
 _electronversion=40
 _nodeversion=22
 pkgrel=1
@@ -26,7 +26,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('a12825aef4e24508de482b283c1b430a0e7b85f6b5af24265140852c59192e28'
+sha256sums=('ecfd8b7e1b91a3d0c863a0e3357a979c6e6091189230be5a1e5501b028b98b31'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
