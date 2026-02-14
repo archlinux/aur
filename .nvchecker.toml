@@ -1,0 +1,5 @@
+[fitui-bin]
+source = "github"
+github = "ayanchavand/FiTui"
+use_latest_release = true
+prefix = "v"
