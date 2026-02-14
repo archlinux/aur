@@ -1,6 +1,6 @@
 # Maintainer: Wuxxin <wuxxin@gmail.com>
 pkgname=openclaw-git
-pkgver=2026.2.9.r83.g6ac56baf8e
+pkgver=2026.2.9.r84.g8933010e84
 pkgrel=1
 pkgdesc="Personal AI assistant that runs on your own devices"
 arch=('x86_64')
@@ -34,7 +34,7 @@ options=('!strip' '!debug')
 pkgver() {
     cd "$srcdir/openclaw"
     git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+        printf "head.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
