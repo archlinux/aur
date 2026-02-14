@@ -1,7 +1,7 @@
 # Maintainer: Vee Satayamas <veerpub@pm.me>
 pkgname=psascan
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Parallel external memory suffix array construction"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/dominikkempa/psascan"
