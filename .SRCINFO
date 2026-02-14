@@ -1,0 +1,17 @@
+pkgbase = hyprsummon-git
+	pkgdesc = Summon any app as a scratchpad overlay on Hyprland
+	pkgver = r1
+	pkgrel = 1
+	url = https://github.com/yeggis/hyprsummon
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = hyprland
+	depends = jq
+	depends = bash
+	provides = hyprsummon
+	conflicts = hyprsummon
+	source = git+https://github.com/yeggis/hyprsummon.git
+	sha256sums = SKIP
+
+pkgname = hyprsummon-git
