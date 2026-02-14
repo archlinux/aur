@@ -1,7 +1,7 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla .xyz>
 pkgname=winboat
 pkgver=0.9.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Run Windows apps on Linux with seamless integration"
 arch=('x86_64')
 url="https://www.winboat.app"
@@ -52,10 +52,10 @@ package() {
   ln -s "opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
   mkdir dist/.icon-set
   for i in 16 32 48 64 128 256 512; do
-    magick -background none icons/winboat_logo.svg -resize "${i}x${i}""dist/.icon-set/icon_${i}x${i}.png"
-    done
+    magick -background none icons/winboat_logo.svg -resize "${i}x${i}" "dist/.icon-set/icon_${i}x${i}.png"
     install -Dm644 dist/.icon-set/icon_${i}x${i}.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
+  done
 
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop" <<EOF
