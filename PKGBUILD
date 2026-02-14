@@ -1,6 +1,6 @@
 # Maintainer: YourName <your_email@example.com>
 pkgname=zerone-ai-bin
-pkgver=1.0.4
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="ZERONE AI Desktop Application - Intelligent Chat Interface"
 arch=('x64')
