@@ -1,7 +1,7 @@
 pkgbase = rackpeek-bin
 	pkgdesc = CLI tool to discover, manage, and document your IT infrastructure and home lab.
 	pkgver = 0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Timmoth/RackPeek
 	install = rackpeek-bin.install
 	arch = x86_64
