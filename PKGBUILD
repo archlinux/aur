@@ -3,7 +3,7 @@
 
 pkgname=libpeas138
 pkgver=1.38.0.alpha
-pkgrel=4
+pkgrel=5
 pkgdesc="GObject Plugin System"
 url="https://wiki.gnome.org/Projects/Libpeas"
 arch=(x86_64)
@@ -20,9 +20,6 @@ makedepends=(
   glade
   glib2-devel
   gobject-introspection
-  lua51
-  lua51-lgi
-  luajit
   meson
   vala
   python
@@ -51,6 +48,7 @@ build() {
   local meson_options=(
     -D gtk_doc=true
     -D vapi=true
+    -D lua51=false
   )
 
   arch-meson libpeas build "${meson_options[@]}"
