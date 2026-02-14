@@ -1,0 +1,90 @@
+# Maintainer: Sean Pedersen
+pkgname=marko-git
+pkgver=4.20.0.r0.g9947f87
+pkgrel=1
+pkgdesc="A Tauri-based markdown editor with WYSIWYG inline editing"
+arch=('x86_64' 'aarch64')
+url="https://github.com/SeanPedersen/Marko"
+license=('BSD-3-Clause')
+depends=(
+    'cairo'
+    'desktop-file-utils'
+    'gdk-pixbuf2'
+    'glib2'
+    'gtk3'
+    'hicolor-icon-theme'
+    'libsoup3'
+    'pango'
+    'webkit2gtk-4.1'
+)
+makedepends=(
+    'cargo'
+    'git'
+    'libappindicator-gtk3'
+    'librsvg'
+    'nodejs'
+    'npm'
+    'openssl'
+)
+provides=('marko')
+conflicts=('marko')
+source=("${pkgname}::git+https://github.com/SeanPedersen/Marko.git")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "$pkgname"
+    git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "%s.r%s.g%s" "$(grep '"version"' package.json | head -1 | sed 's/.*: *"\([^"]*\)".*/\1/')" \
+        "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare() {
+    cd "$pkgname"
+    npm ci
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+    cd "$pkgname"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    npm run build
+    cargo build --release --locked --manifest-path src-tauri/Cargo.toml
+}
+
+package() {
+    cd "$pkgname"
+
+    # Install binary
+    install -Dm755 "target/release/marko" "$pkgdir/usr/bin/marko"
+
+    # Install desktop file
+    install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/marko.desktop" <<EOF
+[Desktop Entry]
+Name=Marko
+Comment=Simple Markdown viewer and text editor
+Exec=marko %F
+Icon=marko
+Terminal=false
+Type=Application
+Categories=Office;TextEditor;
+MimeType=text/markdown;text/plain;
+StartupWMClass=marko
+EOF
+
+    # Install icons
+    install -Dm644 "src-tauri/icons/32x32.png" \
+        "$pkgdir/usr/share/icons/hicolor/32x32/apps/marko.png"
+    install -Dm644 "src-tauri/icons/64x64.png" \
+        "$pkgdir/usr/share/icons/hicolor/64x64/apps/marko.png"
+    install -Dm644 "src-tauri/icons/128x128.png" \
+        "$pkgdir/usr/share/icons/hicolor/128x128/apps/marko.png"
+    install -Dm644 "src-tauri/icons/128x128@2x.png" \
+        "$pkgdir/usr/share/icons/hicolor/256x256/apps/marko.png"
+    install -Dm644 "src-tauri/icons/icon.png" \
+        "$pkgdir/usr/share/icons/hicolor/512x512/apps/marko.png"
+
+    # Install license
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
