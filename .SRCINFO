@@ -1,11 +1,11 @@
 pkgbase = python-pluginmgr
 	pkgdesc = Lightweight Python plugin system supporting config inheritance
 	pkgver = 1.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/20c/pluginmgr
 	changelog = CHANGELOG.md
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	checkdepends = python-pytest
 	checkdepends = python-pytest-xdist
 	checkdepends = python-pytest-forked

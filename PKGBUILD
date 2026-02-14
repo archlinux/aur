@@ -1,13 +1,14 @@
+# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=python-pluginmgr
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight Python plugin system supporting config inheritance'
 arch=('any')
 url="https://github.com/20c/pluginmgr"
-license=('Apache')
+license=('Apache-2.0')
 depends=('python' 'python-munge' 'python-importlib-metadata')
 makedepends=('python-build' 'python-installer' 'python-hatchling')
 checkdepends=('python-pytest' 'python-pytest-xdist' 'python-pytest-forked')
