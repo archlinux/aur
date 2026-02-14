@@ -18,6 +18,7 @@ pkgbase = dms-shell-git
 	optdepends = power-profiles-daemon: Set power profile
 	optdepends = qt6ct: Qt6 application theming
 	optdepends = wtype: Paste from clipboard history and plugins
+	optdepends = cups-pk-helper: Printer Management
 	provides = dms-shell=1.2.0.r149.g122fb16
 	conflicts = dms-shell
 	source = git+https://github.com/AvengeMedia/DankMaterialShell.git
@@ -44,4 +45,5 @@ pkgname = dms-shell-git
 	optdepends = power-profiles-daemon: Set power profile
 	optdepends = qt6ct: Qt6 application theming
 	optdepends = wtype: Paste from clipboard history and plugins
+	optdepends = cups-pk-helper: Printer Management
 	optdepends = greetd-dms-greeter: DMS Greeter

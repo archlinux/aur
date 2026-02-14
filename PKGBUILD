@@ -4,7 +4,7 @@ pkgbase=dms-shell-git
 _pkgbase=${pkgbase%-git}
 _pkgname=DankMaterialShell
 pkgname=($_pkgbase-git)
-pkgver=1.2.0.r149.g122fb16
+pkgver=1.2.0.r307.g124106d
 pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=(x86_64 aarch64)
@@ -20,7 +20,7 @@ optdepends=('cava: Audio visualizer'
             'power-profiles-daemon: Set power profile'
             'qt6ct: Qt6 application theming'
             'wtype: Paste from clipboard history and plugins'
- )
+            'cups-pk-helper: Printer Management')
 makedepends=(git
              go)
 provides=("$_pkgbase=$pkgver")
