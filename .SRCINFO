@@ -1,6 +1,6 @@
 pkgbase = vibe-bin
 	pkgdesc = Transcribe audio / video offline using OpenAI Whisper
-	pkgver = 3.0.9
+	pkgver = 3.0.12
 	pkgrel = 1
 	url = https://thewh1teagle.github.io/vibe/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = vibe-bin
 	depends = webkit2gtk-4.1
 	depends = gtk3
 	depends = xdotool
-	source = https://github.com/thewh1teagle/vibe/releases/download/v3.0.9/vibe_3.0.9_amd64.deb
-	sha256sums = a41e3e7a2624914b6af3a89d29e9b4764d05e22728d6d5b0f27a9c311b56a8fe
+	source = https://github.com/thewh1teagle/vibe/releases/download/v3.0.12/vibe_3.0.12_amd64.deb
+	sha256sums = eaa462f0da239b5673d56da0f3ce2e888f55fd4d39cd45070ead760b85e0feea
 
 pkgname = vibe-bin
