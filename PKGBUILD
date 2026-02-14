@@ -3,7 +3,7 @@
 
 pkgname=simple-linux-wallpaperengine-gui-git
 pkgver=r10.456549c  # This will be automatically updated by pkgver()
-pkgrel=2
+pkgrel=3
 pkgdesc="A modern, universal GUI for linux-wallpaperengine"
 arch=('any')
 url="https://github.com/Maxnights/simple-linux-wallpaperengine-gui"
