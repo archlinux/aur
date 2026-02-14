@@ -1,6 +1,6 @@
 pkgbase = python-diwire
 	pkgdesc = A lightweight, type-safe dependency injection container with automatic wiring, scoped lifetimes, and zero dependencies
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/maksimzayats/diwire
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-diwire
 	depends = python-fastapi
 	depends = python-typing_extensions
 	depends = python-pytest
-	source = https://files.pythonhosted.org/packages/source/d/diwire/diwire-1.0.0.tar.gz
-	sha256sums = 2514af3bca831c48a721c017624ba8341daf651443b66e8ac2926928b594d639
+	source = https://files.pythonhosted.org/packages/source/d/diwire/diwire-1.0.1.tar.gz
+	sha256sums = 7b0225eea1ae6e5dfd08642ad26cfcd904e2177dd6a3bc5aad2057e62781cc84
 
 pkgname = python-diwire
