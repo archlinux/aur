@@ -1,0 +1,2 @@
+#Type    Name       ID    GECOS                                 Home directory              Shell
+u        zomboid    -     "Project Zomboid dedicated server"    /opt/project-zomboid-server

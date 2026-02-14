@@ -1,0 +1,30 @@
+pkgbase = project-zomboid-server-unstable
+	pkgdesc = Dedicated server for the game Project Zomboid (Build 42 unstable)
+	pkgver = 42.13.2
+	pkgrel = 1
+	url = https://projectzomboid.com
+	install = project-zomboid-server.install
+	arch = x86_64
+	license = custom:ProjectZomboid
+	makedepends = steamcmd
+	depends = jre-openjdk-headless>=25
+	depends = lib32-glibc
+	depends = libxext
+	depends = gcc-libs
+	depends = libsm
+	depends = rcon-cli
+	provides = project-zomboid-server
+	conflicts = project-zomboid-server
+	options = !strip
+	options = !debug
+	backup = etc/project-zomboid/server.conf
+	source = project-zomboid-server.service
+	source = project-zomboid-server.conf
+	source = project-zomboid-server.sysusers
+	source = project-zomboid-server.tmpfiles
+	sha256sums = 448325d636dfa825c8dd849303b6a92fa63eee628da57e2438dd173657b9b056
+	sha256sums = 1314a94efda4bfbef5df3e325e0f41afb46fe442c9a61466988251db6cfaedab
+	sha256sums = 561f21c7cc53dc4a14eae829c04050e917d668649a1fffab630647c62f94bb08
+	sha256sums = ecd0abe220d2fa7ad1c31d7a46aa086c74e92aa5801cb013c7943dc301f411a0
+
+pkgname = project-zomboid-server-unstable
