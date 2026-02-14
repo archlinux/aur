@@ -18,10 +18,6 @@ pkgbase = harbour-amazfish
 	depends = nemo-qml-plugin-dbus
 	depends = kirigami2
 	depends = bluez-qt5
-	provides = harbour-amazfish
-	provides = amazfish
-	conflicts = harbour-amazfish
-	conflicts = amazfish
 	source = https://github.com/piggz/harbour-amazfish/archive/refs/tags/2.8.0.tar.gz
 	sha512sums = 0040b3c59bdd912dd99340a5061f48ec9bc23d9eac06d030614a2d804f92b9246972f6e72984fddc2349dd03f3b5a68d41f4c8e4182cdb982e65ef2f00277dbf
 
