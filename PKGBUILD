@@ -3,16 +3,16 @@
 pkgname=ludusavi
 _app_id="com.mtkennerly.$pkgname"
 pkgver=0.30.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Backup tool for PC game saves"
 arch=('x86_64')
 url="https://github.com/mtkennerly/ludusavi"
 license=('MIT')
 depends=(
   'bzip2'
-  'gcc-libs'
   'gtk3'
   'hicolor-icon-theme'
+  'libgcc'
 )
 makedepends=(
   'cargo'
@@ -34,7 +34,7 @@ sha256sums=('3e819da8d6c6b2e673fb0dab2c64524d448e45b66b009ced7cb2a324f201dc6a'
 prepare() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
