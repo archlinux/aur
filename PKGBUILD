@@ -1,6 +1,6 @@
 # Maintainer: lxtshawn <lian1995226@gmail.com>
 pkgname=papdieo-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Hyprland-compatible wallpaper management CLI (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ conflicts=('papdieo' 'papdieo-git')
 
 source_x86_64=("$url/releases/download/v$pkgver/papdieo-v$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/papdieo-v$pkgver-linux-aarch64.tar.gz")
-sha256sums_x86_64=('e0b7ec734d4d2f68d567d3fa4151a25f364af77e9adcdcb8e0c9f9c9c58cc98f')
-sha256sums_aarch64=('9768b6fec74c22efad4b733820382d941396b6c5b63ab035830437341da752ef')
+sha256sums_x86_64=('ce8242389a08a9e4fd5babb67d969db9fb5677755ea8fe16da2e8bf2a9d27371')
+sha256sums_aarch64=('211e9787dfe871a6690af128e20823edcc0f34f92490dcd96a032f76b89c5fc6')
 
 package() {
   local dist_dir="papdieo-v$pkgver-linux-$CARCH"
