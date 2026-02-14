@@ -2,10 +2,10 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-vnsiserver
-pkgver=1.8.3
+pkgver=1.8.4
+pkgrel=1
 _vdrapi=11
 epoch=2
-pkgrel=9
 url="https://github.com/vdr-projects/vdr-plugin-vnsiserver"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/vdr-projects/vdr-plugin-vns
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf"
         'var/lib/vdr/plugins/vnsiserver/allowed_hosts.conf')
-sha256sums=('74b4339f7c7edfc5a218722503afea79259d11dd4b910d7acb43cbe173863d62'
+sha256sums=('c8fe885a979dd9b6ba1536b9141096fe228975a39e08077218d845e7f2f0a947'
             '0e03e0df28b8210e3813536c7945b94e4c13ac775eb2c8d25403f90aa8f3c74c')
 
 build() {
