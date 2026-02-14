@@ -1,0 +1,21 @@
+refresh_desktop_integration() {
+  update-desktop-database -q || true
+  update-mime-database /usr/share/mime || true
+  if command -v gtk-update-icon-cache >/dev/null 2>&1; then
+    gtk-update-icon-cache -qtf /usr/share/icons/hicolor || true
+  elif command -v gtk4-update-icon-cache >/dev/null 2>&1; then
+    gtk4-update-icon-cache -qtf /usr/share/icons/hicolor || true
+  fi
+}
+
+post_install() {
+  refresh_desktop_integration
+}
+
+post_upgrade() {
+  refresh_desktop_integration
+}
+
+post_remove() {
+  refresh_desktop_integration
+}

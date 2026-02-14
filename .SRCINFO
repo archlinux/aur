@@ -1,0 +1,21 @@
+pkgbase = notepad-plus-plus-linux-bin
+	pkgdesc = Linux-native Notepad++ fork for Arch Linux and derivatives (prebuilt binary)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/RossEngineering/notepad-plus-plus-linux
+	install = notepad-plus-plus-linux-bin.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = qt6-base
+	depends = qt6-5compat
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	provides = notepad-plus-plus-linux
+	conflicts = notepad-plus-plus-linux
+	source = notepad-plus-plus-linux-v1.0.0-x86_64.tar.xz::https://github.com/RossEngineering/notepad-plus-plus-linux/releases/download/v1.0.0/notepad-plus-plus-linux-v1.0.0-x86_64.tar.xz
+	source = LICENSE::https://raw.githubusercontent.com/RossEngineering/notepad-plus-plus-linux/v1.0.0/LICENSE
+	sha256sums = 074d898a7dad254e4b3e4bc6004273d4994f0991b454f208a49e9553c9f9cfb6
+	sha256sums = 2b94f58d89424af06d1a8e16775774757f1ecfb678203c3439af037a24f35dc6
+
+pkgname = notepad-plus-plus-linux-bin
