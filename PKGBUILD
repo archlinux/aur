@@ -1,14 +1,14 @@
-# Maintainer: Ikosse <andre.lofgren@mailbox.org>
+# Maintainer : MorsMortium <morsmortium@disroot.org>
+# Contributor: Ikosse <andre.lofgren@mailbox.org>
 
-pkgname=harbour-amazfish-git
-pkgver=r849.34365e4
-pkgrel=6
-epoch=
+_pkgname=harbour-amazfish
+pkgname=${_pkgname}-git
+pkgver=r2014.b37db67
+pkgrel=1
 pkgdesc="Companion application for Huami Devices and the Pinetime Infinitime"
-arch=(x86_64 aarch64)
-url="https://github.com/piggz/harbour-amazfish"
-license=('AGPL3')
-groups=()
+arch=('x86_64' 'aarch64')
+url="https://github.com/piggz/${_pkgname}"
+license=('GPL-3.0-only')
 depends=(
 	'qt5-base'
 	'karchive5'
@@ -21,39 +21,35 @@ depends=(
 	'kirigami2'
 	'bluez-qt5'
 )
-makedepends=('git')
-checkdepends=()
-optdepends=()
-provides=('amazfish')
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=(git+$url)
-noextract=()
-md5sums=('SKIP')
-validpgpkeys=()
+makedepends=('git' 'cmake')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("${pkgname}::git+${url}.git")
+sha512sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "${srcdir}/${pkgname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "${srcdir}/${pkgname}"
 	git submodule init
 	git submodule update
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	qmake FLAVOR=kirigami PREFIX=/usr
+	cd "${srcdir}/${pkgname}"
+	mkdir -p build
+	cd build
+	cmake -DFLAVOR=kirigami -DCMAKE_INSTALL_PREFIX=/usr ..
 	make
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	make INSTALL_ROOT="$pkgdir" install
+	cd "${srcdir}/${pkgname}/build"
+	cmake --install . --prefix "${pkgdir}/usr"
+
+	install -D -m644 "./daemon/harbour-amazfish.service" \
+		"${pkgdir}/usr/lib/systemd/user/harbour-amazfish.service"
 }
