@@ -4,7 +4,7 @@
 
 _gitname=pywal16
 pkgname=python-${_gitname}
-pkgver=3.8.13
+pkgver=3.8.14
 pkgrel=1
 epoch=1
 _dirname=${_gitname}-${pkgver}
@@ -51,7 +51,7 @@ conflicts=(
   'python-pywal'
 )
 source=("${_archive_name}::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('8086e3d11e69f35388b3fa7d01dc4fa6c7a7809f7cfeb8621092b4592601e2a9')
+sha256sums=('7f56a7d00b1c0b9c5b44b846d83d0f7ad0b2c6c0c4e6f628d9c7381031743294')
 
 prepare() {
   cd "$srcdir/${_dirname}"
