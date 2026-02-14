@@ -9,7 +9,7 @@ url="https://github.com/Rsplwe/bili-live-hime"
 license=('GPL2')
 depends=('webkit2gtk-4.1' 'gtk3' 'libnm' 'libappindicator-gtk3' 'openssl')
 makedepends=('nodejs' 'npm' 'rust' 'cargo')
-# 关键点：禁用 LTO 选项，防止链接错误
+
 options=('!lto')
 
 _tagname="LiveHime-v$pkgver"
@@ -27,9 +27,6 @@ build() {
 
   export CARGO_HOME="$srcdir/cargo-home"
   export NODE_ENV=production
-
-  # 如果依然报错，可以尝试通过环境变量禁用 Rust 的 LTO
-  # export CARGO_PROFILE_RELEASE_LTO=false
 
   npm run tauri build -- --no-bundle
 }
