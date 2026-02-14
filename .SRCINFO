@@ -1,7 +1,7 @@
 pkgbase = python-pdf2docx
 	pkgdesc = A Python library for converting pdf to docx
 	pkgver = 0.5.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/artifexsoftware/pdf2docx
 	arch = any
 	license = AGPL-3.0-only
@@ -17,8 +17,6 @@ pkgbase = python-pdf2docx
 	depends = python-opencv
 	depends = python-fire
 	source = python-pdf2docx-0.5.9.tar.gz::https://github.com/artifexsoftware/pdf2docx/archive/refs/tags/v0.5.9.tar.gz
-	source = drop-pip-requirement.patch
 	b2sums = 9789b4c6b3c8b002188c50682f43a7c306c7e1e2b29307c051076e07cb3cf445e3e2373bd52d1d60a1deed93ff8b90306c03e4178c1934a0cbcbb7a6a33587ad
-	b2sums = 5b9c379fff585d1b4a242fe3da34b83d647be3575f032e936d085b9d0eded1027a471ecd8e1674dca6917d13cf255a182deede577e121cb7b3140590f077e971
 
 pkgname = python-pdf2docx
