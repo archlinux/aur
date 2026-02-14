@@ -1,4 +1,5 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: uvz0 (rehanjayed01@gmail.com)
+# Copyright (c) 2026 Author. All Rights Reserved.
 pkgname=hyprcursor-sync-git
 pkgver=r1.1
 pkgrel=3
@@ -12,22 +13,6 @@ install=${pkgname}.install
 source=("git+https://github.com/uvz0/hyprcursor-sync.git")
 sha256sums=('SKIP')
 
-# The .install file now only handles GLOBAL setup to avoid the DBUS error
-echo "post_install() {
-    echo ':: Enabling cursor-update automation globally...'
-    echo ':: This will be active for all users upon their next login.'
-    systemctl --global enable cursor-update.path
-}
-
-post_upgrade() {
-    systemctl --global daemon-reload
-}
-
-pre_remove() {
-    echo ':: Disabling cursor-update automation...'
-    systemctl --global disable cursor-update.path
-}" >"${pkgname}.install"
-
 package() {
   cd "$srcdir/hyprcursor-sync"
 
@@ -38,4 +23,3 @@ package() {
   sed -i 's|%h/.config/systemd/user/cursor-update.sh|/usr/bin/cursor-update-script|g' \
     "$pkgdir/usr/lib/systemd/user/cursor-update.service"
 }
-sha256sums=('SKIP')
