@@ -3,8 +3,8 @@
 
 pkgname=saugns
 pkgver=0.5.5b
-pkgrel=1
-pkgdesc="Curses-based SAU parser, player, WAV file writer and signal generator - stable branch"
+pkgrel=2
+pkgdesc="Curses-based SAU parser, player, WAV file writer and signal generator"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://sau.frama.io/#saugns"
 license=('LGPL-3.0-or-later')
