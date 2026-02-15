@@ -1,12 +1,12 @@
 pkgbase = minesweeper
 	pkgdesc = A simple Minesweeper game
-	pkgver = 1.1
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/yu34567890/minesweeper-c
 	arch = x86_64
 	license = MIT
 	depends = gcc
 	source = https://raw.githubusercontent.com/yu34567890/minesweeper-c/main/main.c
-	sha256sums = 3ec72b582aec806c4ac59d0132a255e6ac063b3f0f7a23434d0598009e70126e
+	sha256sums = d4b2ea7d5f9044dc3825d48a670b9cb37becc284b67757e87855eca50d016e20
 
 pkgname = minesweeper
