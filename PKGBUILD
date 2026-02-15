@@ -8,8 +8,8 @@ pkgname=(
   mssqldef
   psqldef
 )
-pkgver=3.9.7
-pkgrel=2
+pkgver=3.9.8
+pkgrel=1
 pkgdesc='Idempotent schema management for MySQL, PostgreSQL, SQLite, and SQL Server'
 arch=(x86_64 aarch64)
 url='https://github.com/sqldef/sqldef'
@@ -19,12 +19,12 @@ depends=(glibc)
 makedepends=('go')
 options=(!lto)
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bab429db381179040c7bd18c11ed2871d5d80da4f1a0e6d0efb90d9d8db76b7d')
+sha256sums=('83ed993e8150dd8c74e5941fa26f9cb993a8789e20b8e91d8d19bcadfb03975e')
 
 prepare() {
   cd "$pkgbase-$pkgver"
   export GOPATH="${srcdir}/go"
-  go mod download
+  go mod download -modcacherw
 }
 
 build() {
