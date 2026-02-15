@@ -1,0 +1,7 @@
+update.sh
+README.md
+pkg/
+src/
+qrdv
+qrdv-*
+completions-*
