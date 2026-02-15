@@ -1,6 +1,6 @@
 pkgbase = apifox-appimage
 	pkgdesc = Apifox - API documentation, debugging, mocking, and testing tool (AppImage in Zip) API 文档、API 调试、API Mock、API 自动化测试
-	pkgver = 2.8.7
+	pkgver = 2.8.8
 	pkgrel = 1
 	url = https://apifox.com
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = apifox-appimage
 	conflicts = apifox-bin
 	conflicts = apifox-appimage
 	options = !strip
-	source = Apifox-linux-2.8.7.zip::https://file-assets.apifox.com/download/Apifox-linux-latest.zip
+	source = Apifox-linux-2.8.8.zip::https://file-assets.apifox.com/download/Apifox-linux-latest.zip
 	sha256sums = SKIP
 
 pkgname = apifox-appimage

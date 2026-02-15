@@ -1,6 +1,6 @@
 # Maintainer: DBeidachazi <a269502169@gmail.com>
 pkgname=apifox-appimage
-pkgver=2.8.7
+pkgver=2.8.8
 pkgrel=1
 pkgdesc="Apifox - API documentation, debugging, mocking, and testing tool (AppImage in Zip) API 文档、API 调试、API Mock、API 自动化测试"
 arch=('x86_64')
