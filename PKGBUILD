@@ -7,7 +7,8 @@ _commit=02dd0bc7bae8a2011729f95021690e694fd8e43e
 pkgdesc='A proxy to expose real tls handshake to the firewall.'
 arch=('x86_64')
 url='https://github.com/ihciah/shadow-tls'
-license=('MIT' 'Apache')
+license=('MIT' 'Apache-2.0')
+depends=('libgcc')
 makedepends=('cargo-nightly' 'git')
 #source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 source=("git+https://github.com/ihciah/shadow-tls.git#commit=${_commit}"
