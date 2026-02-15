@@ -1,7 +1,7 @@
 # Maintainer: CxOrg <clx.org@cloud-org.uk>
 # Contributor: Felix Häcker <haeckerfelix@gnome.org>
-pkgname=shortwave-mpris-git
-pkgver=5.1.0.r9.g9586a15
+pkgname=shortwave-mpris-bin
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="Internet radio player with extended MPRIS support, device support for DLNA/UPnP & Google Cast + FFmpeg proxy for incompatible streams"
 arch=('x86_64' 'aarch64')
@@ -25,51 +25,43 @@ depends=(
     'lcms2>=2.12.0'
     'libseccomp>=2.5.0'
 )
-makedepends=('git' 'rust>=1:1.82.0' 'cargo' 'pkgconf' 'meson' 'ninja' 'blueprint-compiler' 'desktop-file-utils' 'appstream-glib' 'glib2')
 provides=('shortwave' 'shortwave-mpris')
 conflicts=('shortwave' 'shortwave-mpris')
 options=('!lto')
-install=shortwave-mpris-git.install
-source=("git+$url.git#branch=master")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "Shortwave-MPRIS"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "Shortwave-MPRIS"
-  # Set up Rust toolchain
-  export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-}
-
-build() {
-  cd "Shortwave-MPRIS"
-  
-  # Set up Rust environment
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  
-  # Build with release profile
-  arch-meson . build \
-    --buildtype=release \
-    -Dprofile=default
-  
-  ninja -C build
-}
-
-check() {
-  cd "Shortwave-MPRIS"
-  # Run tests if needed
-  # meson test -C build --print-errorlogs
-}
+install=shortwave-mpris-bin.install
+source=("https://github.com/ixnewton/Shortwave-MPRIS/releases/download/v5.1.0/shortwave-mpris-5.1.0-linux-amd64.tar.gz")
+sha256sums=('c3e7a957cd3c023e354307c2ec531744f4d8beecd46d90d8550a1c32ab90f597')
 
 package() {
-  cd "Shortwave-MPRIS"
-  DESTDIR="$pkgdir" meson install -C build
+  # Install the binary
+  install -Dm755 "$srcdir/shortwave-mpris_5.1.0_linux-amd64" "$pkgdir/usr/bin/shortwave"
+  
+  # Install desktop file
+  install -Dm644 "$srcdir/de.haeckerfelix.Shortwave.desktop" \
+    "$pkgdir/usr/share/applications/de.haeckerfelix.Shortwave.desktop"
+  
+  # Install GSettings schema
+  install -Dm644 "$srcdir/de.haeckerfelix.Shortwave.gschema.xml" \
+    "$pkgdir/usr/share/glib-2.0/schemas/de.haeckerfelix.Shortwave.gschema.xml"
+  
+  # Install metainfo
+  install -Dm644 "$srcdir/de.haeckerfelix.Shortwave.metainfo.xml" \
+    "$pkgdir/usr/share/metainfo/de.haeckerfelix.Shortwave.metainfo.xml"
+  
+  # Install D-Bus service file
+  install -Dm644 "$srcdir/de.haeckerfelix.Shortwave.service" \
+    "$pkgdir/usr/share/dbus-1/services/de.haeckerfelix.Shortwave.service"
+  
+  # Install gresource file
+  install -Dm644 "$srcdir/de.haeckerfelix.Shortwave.gresource" \
+    "$pkgdir/usr/share/shortwave/de.haeckerfelix.Shortwave.gresource"
+  
+  # Install icons
+  install -Dm644 "$srcdir/de.haeckerfelix.Shortwave.svg" \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/de.haeckerfelix.Shortwave.svg"
+  install -Dm644 "$srcdir/de.haeckerfelix.Shortwave-symbolic.svg" \
+    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/de.haeckerfelix.Shortwave-symbolic.svg"
   
   # Install license
-  install -Dm644 COPYING.md "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -Dm644 "$srcdir/COPYING.md" "$pkgdir/usr/share/licenses/$pkgname/COPYING.md"
 }
