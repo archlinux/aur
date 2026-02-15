@@ -1,0 +1,19 @@
+pkgbase = wifi-manager-git
+	pkgdesc = A lightweight WiFi manager for Wayland compositors
+	pkgver = r8.b400e3a
+	pkgrel = 1
+	url = https://github.com/Vijay-papanaboina/wifi-manager
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = networkmanager
+	provides = wifi-manager
+	conflicts = wifi-manager
+	source = git+https://github.com/Vijay-papanaboina/wifi-manager.git
+	sha256sums = SKIP
+
+pkgname = wifi-manager-git
