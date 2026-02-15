@@ -1,0 +1,17 @@
+pkgbase = qtcalc-git
+	pkgdesc = Dead simple calculator written in C++ and Qt6
+	pkgver = 0.1a
+	pkgrel = 1
+	url = https://gitea.com/doccnova/qtcalc
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = qt6-base
+	provides = qtcalc-git
+	source = git+https://gitea.com/doccnova/qtcalc.git
+	sha256sums = SKIP
+
+pkgname = qtcalc-git
