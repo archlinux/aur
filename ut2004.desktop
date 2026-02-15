@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=UT2004
+Comment=Unreal Tournament 2004
+Exec=/usr/bin/ut2004
+Icon=ut2004
+Terminal=false
+Type=Application
+Categories=Application;Game;
+Keywords=Unreal;Tournament;Shooter;First Person;Arena;

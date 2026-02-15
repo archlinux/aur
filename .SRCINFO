@@ -1,0 +1,26 @@
+pkgbase = ut2004-bin
+	pkgdesc = Unreal Tournament 2004 ECE native binaries (OldUnreal)
+	pkgver = 3374
+	pkgrel = 1
+	url = https://github.com/OldUnreal/UT2004Patches
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = ut2004-data
+	depends = sdl3
+	depends = openal
+	depends = openmp
+	depends = gcc-libs
+	provides = ut2004
+	conflicts = ut2004-gog
+	conflicts = ut2004-steam
+	source = https://github.com/OldUnreal/UT2004Patches/releases/download/3374-preview-9/OldUnreal-UT2004Patch3374-Linux-60bd31b3.tar.bz2
+	source = ut2004.desktop
+	source = ut2004.png
+	source = ut2004.sh
+	sha256sums = 0d08e3114dd184e5404afbf751c071576f573f913b39818416559c33308aeaad
+	sha256sums = d5d57d91b4c01047861b989d79bccf45cc1f226cfe8378069cddaf6a8ee6826c
+	sha256sums = 9fd35b406dc32caa6a0700bda89ac72f561346b919c4764d943bf4198ec032fd
+	sha256sums = 9d70a3699572b986a53be92f715d546ed191f12960751f298439e7f54733d065
+
+pkgname = ut2004-bin
