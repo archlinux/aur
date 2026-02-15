@@ -1,0 +1,4 @@
+[haproxy]
+source = "git"
+git = "https://git.haproxy.org/git/haproxy-3.3.git"
+prefix = "v"

@@ -1,0 +1,39 @@
+diff --git a/admin/iprange/Makefile b/admin/iprange/Makefile
+index 13598d8b4..eb89fb953 100644
+--- a/admin/iprange/Makefile
++++ b/admin/iprange/Makefile
+@@ -7,7 +7,7 @@ OBJS     = iprange ip6range
+ all: $(OBJS)
+ 
+ %: %.c
+-	$(CC) $(LDFLAGS) $(OPTIMIZE) -o $@ $^
++	$(CC) $(OPTIMIZE) $(CFLAGS) $(LDFLAGS) -o $@ $^
+ 
+ clean:
+ 	rm -f $(OBJS) *.o *.a *~
+diff --git a/dev/poll/Makefile b/dev/poll/Makefile
+index 0247099ed..e413bcade 100644
+--- a/dev/poll/Makefile
++++ b/dev/poll/Makefile
+@@ -7,7 +7,7 @@ INCLUDE  =
+ OBJS     = poll
+ 
+ poll: poll.c
+-	$(cmd_CC) $(OPTIMIZE) $(DEFINE) $(INCLUDE) -o $@ $^
++	$(cmd_CC) $(OPTIMIZE) $(CFLAGS) $(LDFLAGS) $(DEFINE) $(INCLUDE) -o $@ $^
+ 
+ clean:
+ 	rm -f $(OBJS) *.[oas] *~
+diff --git a/dev/tcploop/Makefile b/dev/tcploop/Makefile
+index 6d0a0c259..14119b098 100644
+--- a/dev/tcploop/Makefile
++++ b/dev/tcploop/Makefile
+@@ -7,7 +7,7 @@ INCLUDE  =
+ OBJS     = tcploop
+ 
+ tcploop: tcploop.c
+-	$(cmd_CC) $(OPTIMIZE) $(DEFINE) $(INCLUDE) -o $@ $^
++	$(cmd_CC) $(OPTIMIZE) $(CFLAGS) $(LDFLAGS) $(DEFINE) $(INCLUDE) -o $@ $^
+ 
+ clean:
+ 	rm -f $(OBJS) *.[oas] *~

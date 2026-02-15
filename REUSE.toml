@@ -1,0 +1,31 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    "README.md",
+    "haproxy.cfg",
+    "keys/**",
+    ".SRCINFO",
+    ".nvchecker.toml",
+    "*.install",
+    "*.sysusers",
+    "*.tmpfiles",
+    "*.logrotate",
+    "*.pam",
+    "*.service",
+    "*.socket",
+    "*.timer",
+    "*.desktop",
+    "*.hook",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "0001-Use-CFLAGS-and-LDFLAGS-when-building-admin.patch",
+    "0002-MINOR-hlua-Add-support-for-lua-5.5.patch",
+]
+SPDX-FileCopyrightText = "haproxy contributors"
+SPDX-License-Identifier = "GPL-2.0-or-later"
