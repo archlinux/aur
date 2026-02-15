@@ -6,7 +6,7 @@ _appname=${_pkgname%%-cli}
 pkgname=${_appname}-bin
 pkgdesc="A Rust-based tree alternative that actually respects your sanity"
 
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -22,9 +22,9 @@ conflicts=("${_pkgname}")
 depends=('glibc' 'libgcc' 'zlib' 'openssl')
 
 source=("README-${pkgver}.md::${_urlraw}/README.md")
-source_x86_64=("${pkgname}-${pkgver}::${url}/releases/download/${_pkgvername}/${_appname}-linux")
-sha256sums=('01202df421c117c045abd6cd60143f43f16ff3239fe3aeec2364f35ab873ba68')
-sha256sums_x86_64=('440efbbc9c0c334f3f2aae23fbfb9509fffec01525323963f04271175e1b5ded')
+source_x86_64=("${pkgname}-${pkgver}::${url}/releases/download/${_pkgvername}/${_appname}")
+sha256sums=('d540f72df09609fa46b701927982e48daedc372a844903070c6aa778032bd73c')
+sha256sums_x86_64=('65db64b394f2053763dabfc614e3c2408573e0ad2142063630eeefbe6a67a915')
 
 package() {
 	cd "${srcdir}/" || exit
