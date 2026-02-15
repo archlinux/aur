@@ -55,11 +55,17 @@ source=("git+https://git.haproxy.org/git/haproxy-${pkgver%.*}.git#tag=v${pkgver}
         'haproxy.sysusers'
         '0001-Use-CFLAGS-and-LDFLAGS-when-building-admin.patch')
 
+# We don't really need to verify a signed git tag w/ checksum.
+# For source files within this repo: they are equally trustworthy
+# to this PKGBUILD (which is not verified by checksum). Besides,
+# I believe them being managed by git which is content-addressed
+# implies some sort of integrity check.
+#
+# However, I've already setup this repo to run updpkgsums easily...
 sha256sums=('9a899b1a3595e69689dc085a5c12707da93b575a3dd4b576b3096dce5e187f91'
-            'f6babef513b99a3fa0e50f2b144c73c980f1b78b119874ffa2580af1e651e7a9'
+            'b37d90a870e8c36b960847e586cb5af4583a028552df20663fae30bad27eb983'
             'c6e716ea59272a8e871af53703726dd2a75b56c82dacf097d4bf08ac5e841a0d'
             'a1e3a1c2923465081383eb431bae55ff9841d89909469311cdba4b394ec4a998')
-
 prepare() {
   cd "haproxy-${pkgver%.*}"
 
