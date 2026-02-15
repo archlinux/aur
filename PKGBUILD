@@ -1,7 +1,7 @@
 pkgname=minesweeper
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
-pkgdesc="A simple command-line Minesweeper game written in C"
+pkgdesc="A simple Minesweeper game"
 arch=('x86_64')
 url="https://github.com/yu34567890/minesweeper-c" 
 license=('MIT')  
