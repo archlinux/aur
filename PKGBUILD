@@ -2,15 +2,15 @@
 
 _pkgname=sdrpp-brown
 pkgname="$_pkgname-git"
-pkgver=v1.1709823358.r414.ec20cc23
-pkgrel=2
+pkgver=v1.1709823358.r476.f0feccfb
+pkgrel=1
 pkgdesc="SDR++Brown (fork), is not the original bloat-free SDR software"
 arch=(x86_64)
 url="https://github.com/sannysanoff/SDRPlusPlusBrown"
 license=(GPL-3.0-or-later)
 depends=(fftw glew glfw libvolk)
 _plugindeps=(airspy airspyhf-git bladerf codec2 hackrf libad9361 libiio libsdrplay limesuite rtaudio rtl-sdr portaudio soapysdr)
-makedepends=(cmake git "${_plugindeps[@]}")
+makedepends=(cmake git "${_plugindeps[@]}" unzip)
 optdepends=("${_plugindeps[@]}")
 provides=("$_pkgname" "sdrpp" "sdrpp-git")
 conflicts=("$_pkgname" "sdrpp" "sdrpp-git")
