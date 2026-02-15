@@ -2,8 +2,7 @@ post_install() {
   chmod 4755 '/opt/Vortex/chrome-sandbox' 2>/dev/null || true
   update-desktop-database -q
   update-mime-database /usr/share/mime
-  xdg-settings set default-url-scheme-handler "nxm" "vortex-handler.desktop" || true
-  echo "Set vortex to handle nxm links"
+  echo ":: To handle NXM links run: xdg-mime default vortex-handler.desktop x-scheme-handler/nxm"
 }
 
 post_upgrade() {
@@ -11,5 +10,6 @@ post_upgrade() {
 }
 
 post_remove() {
-  xdg-settings set default-url-scheme-handler "nxm" "" || true
+  update-desktop-database -q
+  update-mime-database /usr/share/mime
 }
