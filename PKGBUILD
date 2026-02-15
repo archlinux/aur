@@ -2,7 +2,7 @@
 # Submitter: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.37.r17986.68d2573344
+pkgver=0.0.39.r18774.c6f5abe59f
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=(x86_64 aarch64)
@@ -12,10 +12,6 @@ depends=(
   alsa-lib
   glew
   glu
-  # Use bundled FFMPEG for now since we use FFMPEG 5.1.2
-  #libavcodec.so
-  #libavutil.so
-  #libswscale.so
   libevdev
   libgl
   libice
@@ -34,9 +30,9 @@ depends=(
   zlib
   curl
   pugixml
-  flatbuffers
   llvm
   opencv
+  ffmpeg
 )
 optdepends=(
   vulkan-validation-layers
@@ -80,7 +76,7 @@ prepare() {
   git config submodule.3rdparty/glslang.url ../glslang
   
   SUBMODULES=($(git config --file .gitmodules --get-regexp path | \
-    awk '!/libpng/ && !/zlib/ && !/curl/ && !/llvm/ && !/glslang/ && !/pugixml/ && !/SDL/ && !/flatbuffers/ '))
+    awk '!/libpng/ && !/zlib/ && !/curl/ && !/llvm/ && !/glslang/ && !/pugixml/ && !/SDL/'))
 
   # We need to convert from a relative folder path to a https://github.com path
   for ((i=0;i<${#SUBMODULES[@]};i+=2))
@@ -111,11 +107,11 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_SKIP_RPATH=ON \
     -DUSE_NATIVE_INSTRUCTIONS=OFF \
-    -DUSE_SYSTEM_FFMPEG=OFF \
+    -DUSE_SYSTEM_FFMPEG=ON \
     -DUSE_SYSTEM_LIBPNG=ON \
     -DUSE_SYSTEM_ZLIB=ON \
     -DUSE_SYSTEM_CURL=ON \
-    -DUSE_SYSTEM_FLATBUFFERS=ON \
+    -DUSE_SYSTEM_PROTOBUF=OFF \
     -DUSE_SYSTEM_PUGIXML=ON \
     -DUSE_SYSTEM_OPENCV=ON \
     -DUSE_SDL=ON \
