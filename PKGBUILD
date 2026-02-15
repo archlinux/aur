@@ -3,7 +3,7 @@
 pkgname=ipinfo-cli
 _pkgname=${pkgname%-cli}
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Command Line Interface for the IPinfo API (IP geolocation and other types of IP data)"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://ipinfo.io"
@@ -28,7 +28,7 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=vendor -modcacherw"
   go build -v -o build "./${_pkgname}"
 
   # Clean module cache for makepkg -C

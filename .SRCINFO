@@ -1,7 +1,7 @@
 pkgbase = ipinfo-cli
 	pkgdesc = Official Command Line Interface for the IPinfo API (IP geolocation and other types of IP data)
 	pkgver = 3.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ipinfo.io
 	arch = x86_64
 	arch = armv7h
