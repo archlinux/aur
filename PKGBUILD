@@ -2,12 +2,12 @@
 
 pkgname=libtorrent-rasterbar-1_1-git
 pkgver=1.1.14.r4.g760f94862
-pkgrel=3
+pkgrel=4
 pkgdesc="A feature complete C++ bittorrent library (git branch RC_1_1)"
 arch=('i686' 'x86_64')
 url="https://www.libtorrent.org/"
 license=('BSD-3-Clause')
-depends=('boost-libs' 'openssl')
+depends=('glibc' 'libgcc' 'libstdc++' 'boost-libs' 'openssl')
 makedepends=('git' 'boost' 'cmake' 'python' 'python-setuptools')
 provides=("libtorrent-rasterbar=$pkgver")
 conflicts=('libtorrent-rasterbar')
@@ -20,7 +20,7 @@ pkgver() {
   cd "libtorrent"
 
   _tag=$(git tag -l --sort -creatordate | grep -E '^libtorrent-1_1_[0-9_]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^libtorrent-//;s/_/./g'
 }
