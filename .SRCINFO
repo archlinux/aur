@@ -1,0 +1,17 @@
+pkgbase = ut2004-data-gog
+	pkgdesc = Unreal Tournament 2004 ECE data from GOG
+	pkgver = 3369
+	pkgrel = 1
+	url = https://www.gog.com/game/unreal_tournament_2004_ece
+	arch = any
+	license = custom
+	makedepends = lgogdownloader
+	makedepends = innoextract
+	provides = ut2004-data
+	conflicts = ut2004-data
+	source = setup_unreal_tournament_2004_1.0_(18947).exe::gogdownloader://unreal_tournament_2004_ece/en1installer0
+	source = setup_unreal_tournament_2004_1.0_(18947)-1.bin::gogdownloader://unreal_tournament_2004_ece/en1installer1
+	sha256sums = 1f8712b4da90a22d822e4f2c2a4d841df2692be96d0f85f9064c6c77480c3b85
+	sha256sums = 81b6c1cf3931bf030d918461a134eff49921a0809cf215a6066639d0e6f0bf67
+
+pkgname = ut2004-data-gog
