@@ -4,7 +4,7 @@
 pkgname=disig-web-signer
 pkgver=2.5.2
 _upstream_pkgrel=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Slovak eID Web Signer by Disig"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -22,8 +22,9 @@ upstream_arch=
 
 package() {
 	depends=(
-		gcc-libs
 		glibc
+		libgcc
+		libstdc++
 		openssl-1.1
 		qt5-base
 		qt5-websockets
