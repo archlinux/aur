@@ -1,6 +1,6 @@
 pkgbase = crabdrop-bin
 	pkgdesc = A simple, fast file manager for S3-compatible storage
-	pkgver = 0.2.11
+	pkgver = 0.2.12
 	pkgrel = 1
 	url = https://github.com/alsofelix/crabdrop
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = crabdrop-bin
 	depends = openssl
 	provides = crabdrop
 	conflicts = crabdrop
-	source = https://github.com/alsofelix/crabdrop/releases/download/v0.2.11/crabdrop_0.2.11_amd64.deb
-	sha256sums = c05d80b9d8aaa3b753b279b24c071ee267ba3395c913b74cd3ff9b9e24da028f
+	source = https://github.com/alsofelix/crabdrop/releases/download/v0.2.12/crabdrop_0.2.12_amd64.deb
+	sha256sums = a52dfb95831ad95998899930423fdb8194b02c8fd5df533bb8da9145fd86d587
 
 pkgname = crabdrop-bin
