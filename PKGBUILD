@@ -2,8 +2,8 @@
 pkgname=rootchat
 _pkgname=rootchat
 pkgver=0.9.88
-pkgrel=2
-pkgdesc="A community platform combining chat with task management, raid planning, and customizable apps"
+pkgrel=3
+pkgdesc="Root App is a new Discord alternative, designed for gaming communities and large online groups"
 arch=('x86_64' 'aarch64')
 url="https://www.rootapp.com"
 license=('custom')

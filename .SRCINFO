@@ -1,7 +1,7 @@
 pkgbase = rootchat
-	pkgdesc = A community platform combining chat with task management, raid planning, and customizable apps
+	pkgdesc = Root App is a new Discord alternative, designed for gaming communities and large online groups
 	pkgver = 0.9.88
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.rootapp.com
 	arch = x86_64
 	arch = aarch64
