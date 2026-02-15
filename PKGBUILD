@@ -2,7 +2,7 @@
 pkgname=r-quick-share
 _pkgname=rquickshare
 pkgver=0.11.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Rust implementation of NearbyShare/QuickShare from Android for Linux."
 arch=('x86_64' 'aarch64')
 url="https://github.com/Martichou/rquickshare"
@@ -14,31 +14,32 @@ depends=(
 )
 makedepends=(
   'cargo'
+  'cargo-tauri'
   'pnpm'
   'protobuf'
 )
-source=("${_pkgname}-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6a82d63412703aa42c343619806cc0dec28ffcf164fb04c5b0bfd17b22257af3')
+source=("${_pkgname}-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+        "${_pkgname}.desktop")
+sha256sums=('6a82d63412703aa42c343619806cc0dec28ffcf164fb04c5b0bfd17b22257af3'
+            'e946b0ec6e081137d89931fa31f17a05496e751656d65c0483f1d705f5e391b7')
 
 prepare() {
   cd "${_pkgname}-$pkgver"
   export PNPM_HOME="$srcdir/pnpm-home"
   export RUSTUP_TOOLCHAIN=stable
 
-  pushd core_lib
-  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
-  popd
-
-  pushd app/main/src-tauri
-  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
-
-  # Don't bundle AppImage
-  sed -i 's/"targets": "all"/"targets": "deb"/g' tauri.conf.json
-  popd
+  for d in core_lib app/main/src-tauri; do
+    pushd "${d}"
+    cargo fetch --target "$(rustc --print host-tuple)"
+    popd
+  done
 
   pushd app/main
   pnpm install
   popd
+
+  # Don't bundle AppImage
+#  sed -i 's/"targets": "all"/"targets": "deb"/g' app/main/src-tauri/tauri.conf.json
 }
 
 build() {
@@ -50,7 +51,8 @@ build() {
   pnpm store prune
 
   pushd app/main
-  pnpm build
+  pnpm vite:build
+  cargo tauri build --no-bundle
   popd
 }
 
@@ -79,17 +81,5 @@ package() {
   install -Dm644 icons/icon.png \
     "$pkgdir/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
 
-  local deb_arch
-  if [ "$CARCH" = "x86_64" ]; then
-    deb_arch="amd64"
-  elif [ "$CARCH" = "aarch64" ]; then
-    deb_arch="arm64"
-  fi
-
-  install -Dm644 "target/release/bundle/deb/RQuickShare_${pkgver}_${deb_arch}/data/usr/share/applications/RQuickShare.desktop" -t \
-    "$pkgdir/usr/share/applications/"
-
-  # Set StartupWMClass
-  desktop-file-edit --set-key=StartupWMClass --set-value="${_pkgname}" \
-    "$pkgdir/usr/share/applications/RQuickShare.desktop"
+  install -Dm644 "$srcdir/${_pkgname}.desktop" -t "$pkgdir/usr/share/applications/"
 }
