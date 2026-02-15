@@ -2,13 +2,13 @@
 
 pkgname=pdfalto
 pkgver=0.4
-pkgrel=3
+pkgrel=4
 pkgdesc='PDF to XML ALTO file converter'
 arch=('x86_64')
 url='https://github.com/kermitt2/pdfalto'
 license=('GPL2')
 depends=('libtiff' 'freetype2' 'icu' 'libpng14' 'libxml2' 'zlib')
-makedepends=('cmake' 'gcc12')
+makedepends=('cmake' 'gcc12' 'git')
 source=("git+https://github.com/kermitt2/${pkgname}.git#tag=${pkgver}"
         "pdfalto-use-system-libs.patch"
         "pdfalto-compilation-fixes.patch"
@@ -48,7 +48,7 @@ build()
 	cd "$srcdir"/build
 	export CC=gcc-12
 	export CXX=g++-12
-	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr "$srcdir/$pkgname"
+	cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr "$srcdir/$pkgname"
 	make
 	cd ../..
 }
