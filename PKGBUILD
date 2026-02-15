@@ -10,7 +10,12 @@ license=('GPL-3.0-only' 'Apache-2.0 OR MIT')
 _node="seed.radicle.xyz"
 _rid="rad:z4V1sjrXqjvFdnCUbxPFqd5p4DtH5"
 url="https://app.radicle.xyz/nodes/$_node/$_rid"
-makedepends=('git' 'cargo' 'asciidoctor' 'pnpm')
+makedepends=(
+	'git'
+	'cargo'
+	'asciidoctor'
+	'pnpm'
+)
 source=(
 	"radicle-explorer::git+https://$_node/${_rid#rad:}.git"
 	"radicle-explorer.config.json"
@@ -88,6 +93,7 @@ check() {
 package_radicle-explorer-git() {
 	pkgdesc+=" - explorer (frontend)"
 	license=('GPL-3.0-only')
+	depends=()
 	optdepends=(
 		'radicle-httpd: local backend for radicle-explorer'
 	)
@@ -117,7 +123,12 @@ package_radicle-explorer-git() {
 package_radicle-httpd-git() {
 	pkgdesc+=" - explorer (backend)"
 	license=('Apache-2.0 OR MIT')
-	depends=('zlib' 'radicle-node')
+	depends=(
+		'glibc'
+		'gcc-libs'
+		'zlib'
+		'radicle-node'
+	)
 	provides=('radicle-httpd')
 	conflicts=('radicle-httpd')
 
