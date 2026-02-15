@@ -1,0 +1,20 @@
+pkgbase = coq-unimath
+	pkgdesc = Rocq library that formalizes mathematics from a univalent point of view.
+	pkgver = 20250923
+	pkgrel = 1
+	url = https://unimath.github.io/UniMath/
+	arch = any
+	license = MIT
+	makedepends = dune
+	makedepends = ocaml
+	makedepends = ocaml-compiler-libs
+	makedepends = ocaml-findlib
+	makedepends = ocaml-zarith
+	makedepends = pango
+	depends = rocq>=9.0
+	options = !debug
+	options = staticlibs
+	source = https://github.com/UniMath/UniMath/archive/refs/tags/v20250923.tar.gz
+	sha512sums = f3a4316841de6ccd711ab1f231e23c00fb9e83c9bb7d8e72b5b8cdef02655536c8901635f001a72fcdd7baad13dbe9093365b299ba65e13e4aac9bd36ce28904
+
+pkgname = coq-unimath
