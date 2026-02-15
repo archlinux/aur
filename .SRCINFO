@@ -27,6 +27,7 @@ pkgbase = shortwave-mpris-bin
 	provides = shortwave-mpris
 	conflicts = shortwave
 	conflicts = shortwave-mpris
+	conflicts = shortwave-mpris-git
 	options = !lto
 	source = https://github.com/ixnewton/Shortwave-MPRIS/releases/download/v5.1.0/shortwave-mpris-5.1.0-linux-amd64.tar.gz
 	sha256sums = c3e7a957cd3c023e354307c2ec531744f4d8beecd46d90d8550a1c32ab90f597

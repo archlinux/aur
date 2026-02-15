@@ -26,7 +26,7 @@ depends=(
     'libseccomp>=2.5.0'
 )
 provides=('shortwave' 'shortwave-mpris')
-conflicts=('shortwave' 'shortwave-mpris')
+conflicts=('shortwave' 'shortwave-mpris' 'shortwave-mpris-git')
 options=('!lto')
 install=shortwave-mpris-bin.install
 source=("https://github.com/ixnewton/Shortwave-MPRIS/releases/download/v5.1.0/shortwave-mpris-5.1.0-linux-amd64.tar.gz")
