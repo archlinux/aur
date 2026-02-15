@@ -1,7 +1,7 @@
 # Maintainer: minus <minus@mnus.de>
 
 pkgname=ktea
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Kafka TUI client "
 arch=('x86_64')
@@ -13,9 +13,7 @@ makedepends=(
 source=(
   "https://github.com/jonas-grgt/ktea/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=(
-  'c8d6c83c62da685754d94fb3e6c5fc59c540eb30e865a0a22e02ecb44233d21e'
-)
+sha256sums=('3c57e32ffd159975ddd745476966dd8e1d65450d309efc46f7f5ef3a8c38fc37')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
