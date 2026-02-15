@@ -1,6 +1,6 @@
 # Maintainer: Bill Sideris <bill88t@feline.gr>
 pkgname=gpmaster
-pkgver=1.4.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="GPG-backed lockbox for secrets management"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel')
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/bill88t/gpmaster/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('277f3803da2d85dee3dd8b13a11e7eb9989f8a49bf3443231adfa88246c63c96')
+sha256sums=('3bff2f897095eb07e2077df67482de49e5c9bc4feea87757ec5952b34234e2ab')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -23,8 +23,20 @@ package() {
     cd "$srcdir/$pkgname-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
 
-    install -Dm644 LICENSE \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 gpmaster-completion.bash
-        "$pkgdir/usr/share/bash-completion/completions/gpmaster"
+    # Install gpmaster-agent executable
+    install -Dm755 packaging/gpmaster-agent "$pkgdir/usr/bin/gpmaster-agent"
+
+    # Install systemd user unit
+    install -Dm644 packaging/gpmaster-agent.service "$pkgdir/usr/lib/systemd/user/gpmaster-agent.service"
+
+    # Install okc-gpg wrapper (filters out --no-tty)
+    install -Dm755 packaging/gpg-wrap "$pkgdir/usr/lib/gpmaster/gpg-wrap"
+
+    # Install bash completion
+    install -Dm644 gpmaster-completion.bash "$pkgdir/usr/share/bash-completion/completions/gpmaster"
+
+    # Install license if available
+    if [ -f LICENSE ]; then
+        install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    fi
 }

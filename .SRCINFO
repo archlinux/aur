@@ -1,6 +1,6 @@
 pkgbase = gpmaster
 	pkgdesc = GPG-backed lockbox for secrets management
-	pkgver = 1.4.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/bill88t/gpmaster
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = gpmaster
 	depends = gnupg
 	depends = python-cryptography
 	optdepends = python-pyotp
-	source = gpmaster-1.4.0.tar.gz::https://github.com/bill88t/gpmaster/archive/refs/tags/v1.4.0.tar.gz
-	sha256sums = 277f3803da2d85dee3dd8b13a11e7eb9989f8a49bf3443231adfa88246c63c96
+	source = gpmaster-1.5.1.tar.gz::https://github.com/bill88t/gpmaster/archive/refs/tags/v1.5.1.tar.gz
+	sha256sums = 3bff2f897095eb07e2077df67482de49e5c9bc4feea87757ec5952b34234e2ab
 
 pkgname = gpmaster
