@@ -1,6 +1,6 @@
 pkgbase = python-http-client-request
 	pkgdesc = http.client request extension.
-	pkgver = 0.1.2.1
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://pypi.org/project/http_client_request
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = python-http-client-request
 	conflicts = python-http-client-request
 	options = !strip
 	options = !debug
-	source = http_client_request-0.1.2.1.tar.gz::https://files.pythonhosted.org/packages/source/h/http_client_request/http_client_request-0.1.2.1.tar.gz
-	sha256sums = 5056f557a96beb17ff59ff9bda25cb8fd9edf3b2d995da5b50fdd2c6f6fd4b25
+	source = http_client_request-0.1.3.tar.gz::https://files.pythonhosted.org/packages/source/h/http_client_request/http_client_request-0.1.3.tar.gz
+	sha256sums = 5f5f1ced7430452087a954fcdadf50ff0f5f8429510f1d09eb338e756238076b
 
 pkgname = python-http-client-request
