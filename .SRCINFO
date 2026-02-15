@@ -1,6 +1,6 @@
 pkgbase = ahk_x11
 	pkgdesc = AutoHotkey for Linux (X11-based systems)
-	pkgver = 1.0.4
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://github.com/phil294/AHK_X11
 	arch = x86_64
@@ -9,15 +9,16 @@ pkgbase = ahk_x11
 	makedepends = crystal
 	makedepends = shards
 	makedepends = gcc
+	makedepends = gobject-introspection
 	depends = gtk3
 	depends = libnotify
 	depends = libxkbcommon
 	depends = libxinerama
 	depends = libxtst
 	depends = gc
-	source = AHK_X11-1.0.4.tar.gz::https://github.com/phil294/AHK_X11/archive/refs/tags/1.0.4.tar.gz
-	source = AHK_X11-1.0.4-xdotool-7b63eb46631815fd4a10e1fd78a37213250d1193.tar.gz::https://github.com/jordansissel/xdotool/archive/7b63eb46631815fd4a10e1fd78a37213250d1193.tar.gz
-	sha256sums = 9bf8f8d5e114550f699d75a5ed05befcacc3463618ff0d75ef5721a4824cd4e8
+	source = AHK_X11-1.0.7.tar.gz::https://github.com/phil294/AHK_X11/archive/refs/tags/1.0.7.tar.gz
+	source = AHK_X11-1.0.7-xdotool-7b63eb46631815fd4a10e1fd78a37213250d1193.tar.gz::https://github.com/jordansissel/xdotool/archive/7b63eb46631815fd4a10e1fd78a37213250d1193.tar.gz
+	sha256sums = 910e391bcf6918d9c2da1ccae95ff42185092e275400583a107ac6db1b4f2916
 	sha256sums = 0315b2d13a39c0c203e6685bb359006f74386f54ccda9e7b24ac2a7131d77827
 
 pkgname = ahk_x11

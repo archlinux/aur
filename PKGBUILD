@@ -4,7 +4,7 @@
 # Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
 _pkgname=AHK_X11
 pkgname="${_pkgname,,}"
-pkgver=1.0.4
+pkgver=1.0.7
 pkgrel=1
 pkgdesc='AutoHotkey for Linux (X11-based systems)'
 arch=('x86_64' 'x86_64_v3')
@@ -22,11 +22,12 @@ makedepends=(
     crystal
     shards
     gcc
+    gobject-introspection
 )
 _xdotool_commit='7b63eb46631815fd4a10e1fd78a37213250d1193'
 source=("$_pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
         "$_pkgname-$pkgver-xdotool-${_xdotool_commit}.tar.gz::https://github.com/jordansissel/xdotool/archive/${_xdotool_commit}.tar.gz")
-sha256sums=('9bf8f8d5e114550f699d75a5ed05befcacc3463618ff0d75ef5721a4824cd4e8'
+sha256sums=('910e391bcf6918d9c2da1ccae95ff42185092e275400583a107ac6db1b4f2916'
             '0315b2d13a39c0c203e6685bb359006f74386f54ccda9e7b24ac2a7131d77827')
 
 prepare() {
