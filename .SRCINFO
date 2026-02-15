@@ -37,6 +37,7 @@ pkgbase = shortwave-mpris-git
 	provides = shortwave-mpris
 	conflicts = shortwave
 	conflicts = shortwave-mpris
+	conflicts = shortwave-mpris-bin
 	options = !lto
 	source = git+https://github.com/ixnewton/Shortwave-MPRIS.git#branch=master
 	sha256sums = SKIP

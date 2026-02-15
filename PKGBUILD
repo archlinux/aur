@@ -27,7 +27,7 @@ depends=(
 )
 makedepends=('git' 'rust>=1:1.82.0' 'cargo' 'pkgconf' 'meson' 'ninja' 'blueprint-compiler' 'desktop-file-utils' 'appstream-glib' 'glib2')
 provides=('shortwave' 'shortwave-mpris')
-conflicts=('shortwave' 'shortwave-mpris')
+conflicts=('shortwave' 'shortwave-mpris' 'shortwave-mpris-bin')
 options=('!lto')
 install=shortwave-mpris-git.install
 source=("git+$url.git#branch=master")
