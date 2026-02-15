@@ -10,9 +10,14 @@ pkgbase = python-gguf
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	makedepends = python-poetry
+	makedepends = git
 	depends = python
 	depends = python-sentencepiece
-	source = https://files.pythonhosted.org/packages/source/g/gguf/gguf-0.17.1.tar.gz
-	sha256sums = 36ad71aad900a3e75fc94ebe96ea6029f03a4e44be7627ef7ad3d03e8c7bcb53
+	optdepends = python-numpy: for numerical operations
+	optdepends = python-tqdm: for progress bars
+	provides = python-gguf=0.17.1
+	conflicts = python-gguf
+	source = python-gguf::git+https://github.com/ggml-org/llama.cpp.git#branch=master
+	sha256sums = SKIP
 
 pkgname = python-gguf
