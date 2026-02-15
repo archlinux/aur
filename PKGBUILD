@@ -2,8 +2,8 @@
 
 pkgname=python-pillow-avif-plugin
 _pkgname=pillow-avif-plugin
-pkgver=1.5.2
-pkgrel=2
+pkgver=1.5.5
+pkgrel=1
 pkgdesc="A pillow plugin that adds avif support via libavif"
 arch=('x86_64')
 url="https://github.com/fdintino/pillow-avif-plugin"
@@ -22,21 +22,8 @@ makedepends=(
 checkdepends=(
   'python-pytest'
 )
-source=(
-  "$pkgname-$pkgver.tar.gz::https://github.com/fdintino/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
-  "fix-python313.patch"
-)
-sha256sums=(
-  'ca224a3ba77cc2ccc5a4e3a7e081c2c0914ea1481fdeb4c4c007e04d8675c5fe'
-  'f835db299dafcbdf2b4085a8f848ef469605273a6cde8575f940522223b46390'
-)
-
-prepare() {
-  cd "$_pkgname-$pkgver"
-
-  # Fix Python 3.13 compatibility
-  patch -Np1 -i "$srcdir/fix-python313.patch"
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/fdintino/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('717656ed7a357df8e1ff73fdc5054a0b89c51bc3029615fa01c7491e83b00270')
 
 build() {
   cd "$_pkgname-$pkgver"
@@ -46,8 +33,10 @@ build() {
 check() {
   cd "$_pkgname-$pkgver"
 
-  # Basic import test
-  PYTHONPATH="$PWD/src:$PYTHONPATH" python -c "import pillow_avif; print('pillow_avif imported successfully')" || \
+  # Basic import test (use build directory for compiled extension)
+  local _pyver=$(python -c 'import sys; print(f"{sys.version_info[0]}{sys.version_info[1]}")')
+  PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-$_pyver:$PYTHONPATH" \
+    python -c "import pillow_avif; print('pillow_avif imported successfully')" || \
     echo "Warning: Import test failed"
 }
 
