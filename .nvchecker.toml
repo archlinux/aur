@@ -1,0 +1,5 @@
+[struct-bin]
+source = "github"
+github = "caffienerd/struct-cli"
+use_latest_release = true
+prefix = "v"

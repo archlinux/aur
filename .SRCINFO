@@ -1,0 +1,19 @@
+pkgbase = struct-bin
+	pkgdesc = A Rust-based tree alternative that actually respects your sanity
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/caffienerd/struct-cli
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = zlib
+	depends = openssl
+	provides = struct
+	conflicts = struct-cli
+	source = README-0.3.1.md::https://raw.githubusercontent.com/caffienerd/struct-cli/v0.3.1/README.md
+	sha256sums = 01202df421c117c045abd6cd60143f43f16ff3239fe3aeec2364f35ab873ba68
+	source_x86_64 = struct-bin-0.3.1::https://github.com/caffienerd/struct-cli/releases/download/v0.3.1/struct-linux
+	sha256sums_x86_64 = 440efbbc9c0c334f3f2aae23fbfb9509fffec01525323963f04271175e1b5ded
+
+pkgname = struct-bin
