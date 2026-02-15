@@ -2,7 +2,7 @@
 
 _pkgname=wayvr
 pkgname="${_pkgname}-bin"
-pkgver=26.1.2
+pkgver=26.2.1
 pkgrel=1
 pkgdesc="OpenXR desktop overlay for Wayland compositors (binary release)"
 arch=('x86_64')
@@ -28,6 +28,12 @@ depends=(
   'wayland'
   'libdrm'
   'vulkan-icd-loader'
+  'fontconfig'
+  'freetype2'
+  'dbus'
+  'libpipewire'
+  'alsa-lib'
+  'openvr'
   'openxr'
 )
 

@@ -1,6 +1,6 @@
 pkgbase = wayvr-bin
 	pkgdesc = OpenXR desktop overlay for Wayland compositors (binary release)
-	pkgver = 26.1.2
+	pkgver = 26.2.1
 	pkgrel = 1
 	url = https://github.com/wlx-team/wayvr
 	arch = x86_64
@@ -14,11 +14,17 @@ pkgbase = wayvr-bin
 	depends = wayland
 	depends = libdrm
 	depends = vulkan-icd-loader
+	depends = fontconfig
+	depends = freetype2
+	depends = dbus
+	depends = libpipewire
+	depends = alsa-lib
+	depends = openvr
 	depends = openxr
 	provides = wayvr
 	conflicts = wayvr
 	options = !debug
-	source = https://github.com/wlx-team/wayvr/releases/download/v26.1.2/WayVR-v26.1.2-x86_64.AppImage
+	source = https://github.com/wlx-team/wayvr/releases/download/v26.2.1/WayVR-v26.2.1-x86_64.AppImage
 	sha256sums = 18b9e60cef27619da0be50422055e1816cbcaa15102c3c365c7912394977dbdf
 
 pkgname = wayvr-bin
