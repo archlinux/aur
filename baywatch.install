@@ -1,0 +1,9 @@
+post_install() {
+  setcap cap_net_bind_service=+ep /usr/bin/baywatch 2>/dev/null
+  echo ":: To enable as a user service: systemctl --user enable --now baywatch"
+  echo ":: Config: ~/.config/baywatch/config.yaml (fallback: /etc/baywatch/config.yaml)"
+}
+
+post_upgrade() {
+  post_install
+}
