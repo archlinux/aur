@@ -15,7 +15,7 @@
 pkgname=haproxy-awslc
 _pkgname=haproxy
 pkgver=3.3.3
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Reliable, high performance TCP/HTTP load balancer built with aws-lc'
 url='https://www.haproxy.org/'
@@ -115,7 +115,7 @@ check() {
   fi
 
   make \
-    REGTESTS_TYPES=default \
+    REGTESTS_TYPES=default,devel \
     VTEST_PROGRAM=/usr/bin/vtest \
     unit-tests reg-tests
 }

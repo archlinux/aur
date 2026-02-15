@@ -1,7 +1,7 @@
 pkgbase = haproxy-awslc
 	pkgdesc = Reliable, high performance TCP/HTTP load balancer built with aws-lc
 	pkgver = 3.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.haproxy.org/
 	install = haproxy.install
 	arch = x86_64
