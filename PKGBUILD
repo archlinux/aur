@@ -3,7 +3,7 @@
 pkgname=passcualito
 pkgbin=passc
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple Command-Line Password Manager for Linux"
 arch=('x86_64')
 url="https://github.com/javiorfo/passcualito"
