@@ -1,7 +1,7 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla .xyz>
 pkgname=winboat
 pkgver=0.9.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Run Windows apps on Linux with seamless integration"
 arch=('x86_64')
 url="https://www.winboat.app"
@@ -11,10 +11,10 @@ depends=(
   'freerdp'
   'gtk3'
   'nss'
-  'libxcrypt-compat'
 )
 makedepends=(
   'git'
+  'libxcrypt-compat'
   'npm'
   'go'
   'zip'
