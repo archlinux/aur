@@ -31,7 +31,7 @@ prepare() {
 
 build() {
   cd "$srcdir/libfprint"
-  meson setup builddir --prefix=/usr
+  meson setup builddir --prefix=/usr -Dinstalled-tests=false
   ninja -C builddir
 }
 
@@ -43,7 +43,4 @@ package() {
   install -Dm644 "$srcdir/goodix53x5-libfprint/91-goodix-fingerprint.rules" \
     "$pkgdir/etc/udev/rules.d/91-goodix-fingerprint.rules"
 
-  # Remove test files to avoid conflicts
-  rm -rf "$pkgdir/usr/libexec/installed-tests"
-  rm -rf "$pkgdir/usr/share/installed-tests"
 }
