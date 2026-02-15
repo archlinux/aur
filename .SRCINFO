@@ -1,6 +1,6 @@
 pkgbase = amneziawg-linux-hardened
 	pkgdesc = AmneziaWG is a contemporary version of the popular VPN protocol, WireGuard.
-	pkgver = 1.0.20251104
+	pkgver = 1.0.20260210
 	pkgrel = 1
 	url = https://github.com/amnezia-vpn/amneziawg-linux-kernel-module
 	install = amneziawg-linux-hardened.install
@@ -8,11 +8,11 @@ pkgbase = amneziawg-linux-hardened
 	license = GPLv2
 	makedepends = linux-hardened
 	makedepends = linux-hardened-headers
-	provides = AMNEZIAWG-MODULE=1.0.20251104
-	source = amneziawg-linux-hardened-1.0.20251104.tar.gz::https://github.com/amnezia-vpn/amneziawg-linux-kernel-module/archive/refs/tags/v1.0.20251104.tar.gz
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.16.12.tar.xz
-	sha512sums = 5a6962d6cf49b97facd0ffa724a7a15b8736f7774086e0cc260ceac86d728ad8d72b42f8e6df4912bdd64ec17bbc732ba0540592996bda10221dfa87b1414bc9
-	sha512sums = SKIP
+	provides = AMNEZIAWG-MODULE=1.0.20260210
+	source = amneziawg-linux-hardened-1.0.20260210.tar.gz::https://github.com/amnezia-vpn/amneziawg-linux-kernel-module/archive/refs/tags/v1.0.20260210.tar.gz
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.17.13.tar.xz
+	sha512sums = 705fbbb13e5d2f456fb321942ecd404420c5e54c75fbd28b7fd34583c9d6b0ca3b63e3eb18ddbb49f34354ffa0c042745fe2a0c97946a4dab65b52ebc864d5b5
+	sha512sums = 91450681e4d07ba20f8dfd5863748d5bb190615c17ab31f27b65e2b70f2785d70a1be4e565efc956f971bedc9806344f680c584560e2f132f3190c6c888ba981
 
 pkgname = amneziawg-linux-hardened
 	depends = linux-hardened
