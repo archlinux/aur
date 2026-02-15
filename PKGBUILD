@@ -42,9 +42,13 @@ package() {
     install -dm755 "${pkgdir}/opt/${pkgname}"
     
     cp -r "${srcdir}/squashfs-root/"* "${pkgdir}/opt/${pkgname}/"
+    
+    # Ensure AppRun is executable
+    chmod 755 "${pkgdir}/opt/${pkgname}/AppRun"
+    
     install -dm755 "${pkgdir}/usr/bin"
     
-    ln -s "/opt/${pkgname}/Root" "${pkgdir}/usr/bin/rootchat"
+    ln -s "/opt/${pkgname}/AppRun" "${pkgdir}/usr/bin/rootchat"
     
     install -Dm644 "${srcdir}/squashfs-root/Root.png" "${pkgdir}/usr/share/pixmaps/rootchat.png"
     install -Dm644 "${srcdir}/squashfs-root/Root.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/rootchat.png"
