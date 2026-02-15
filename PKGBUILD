@@ -2,19 +2,24 @@
 
 _Name="SkyEmu"
 pkgname="${_Name,,}"
-pkgver=4
+pkgver=5
 pkgrel=1
 pkgdesc="Game Boy Advance, Game Boy, Game Boy Color, and DS Emulator"
-arch=('x86_64')
+arch=(
+  'x86_64'
+)
 url="https://github.com/skylersaleh/${_Name}"
-license=('MIT')
+license=(
+  'MIT'
+)
 depends=(
   'alsa-lib'
   'curl'
-  'gcc-libs'
   'glibc'
   'hicolor-icon-theme'
+  'libgcc'
   'libgl'
+  'libstdc++'
   'libx11'
   'libxcursor'
   'libxi'
@@ -27,8 +32,10 @@ makedepends=(
   'git'
 )
 _pkgsrc="${url##*/}"
-source=("${_pkgsrc}::git+${url}.git#tag=v${pkgver}")
-b2sums=('a6d017f7627d770cf04b76b88d0465755e5931db36ac8d207ba39effa8e85545bec6db740b135faf3eba2df024b066b1facf93c8b5a3ba3e124e04ec0d8c5ef6')
+source=(
+  "${_pkgsrc}::git+${url}.git#tag=v${pkgver}"
+)
+b2sums=('a892b8340fa21c1f1e08d7c39c8ce075aa597645d55bcf1b49008017f4ee21792e6bfc37e7f2077586ac4667c5dec52ad099ac2ae901d75902511aef53db171a')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
@@ -40,8 +47,6 @@ prepare() {
 build() {
   local cmake_options=(
     -G 'Unix Makefiles'
-    -B "${_pkgsrc}/build"
-    -S "${_pkgsrc}"
     -W no-dev
     -D CMAKE_BUILD_TYPE:STRING='None'
     -D CMAKE_INSTALL_PREFIX:PATH='/usr'
@@ -51,7 +56,7 @@ build() {
   )
 
   cd "${srcdir}"
-  cmake "${cmake_options[@]}"
+  cmake -B "${_pkgsrc}/build" -S "${_pkgsrc}" "${cmake_options[@]}"
   cmake --build "${_pkgsrc}/build"
 
   gendesk -f -n \
