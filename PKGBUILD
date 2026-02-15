@@ -2,7 +2,7 @@
 # Maintainer: Ivan Wheeler <ivanwheeler90 at gmail dot com>
 
 pkgname=stabilitymatrix-bin
-pkgver=2.15.5
+pkgver=2.15.6
 pkgrel=1
 pkgdesc='Multi-Platform Package Manager for Stable Diffusion. Binary version.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=('!strip')
 provides=('stabilitymatrix')
 conflicts=('stabilitymatrix')
 source=("stabilitymatrix-${pkgver}.zip::https://github.com/LykosAI/StabilityMatrix/releases/download/v${pkgver}/StabilityMatrix-linux-x64.zip")
-sha256sums=('714decab807ab3bd1f53228af1b41b2a700a3338013b92c9afae7cb8cf471d9b')
+sha256sums=('7f317f8391179ff1707eb2b617bcdd2b1fcfb1da1c521b4b604cb845efa432ef')
 
 build() {
 	chmod +x "StabilityMatrix.AppImage"
