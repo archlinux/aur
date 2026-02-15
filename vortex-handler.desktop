@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Vortex Link Handler
+Exec=/opt/Vortex/vortex -d %u
+Type=Application
+Terminal=false
+MimeType=x-scheme-handler/nxm;x-scheme-handler/nxm-protocol;
+NoDisplay=true
