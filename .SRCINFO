@@ -1,18 +1,15 @@
 pkgbase = flux
-	pkgdesc = Lightweight scripting language for querying databases and working with data
-	pkgver = 0.149.0
+	pkgdesc = Search, monitor, and nuke processes with ease, with system resource tracking
+	pkgver = 0.2.0
 	pkgrel = 1
-	url = https://github.com/influxdata/flux
-	arch = i686
-	arch = x86_64
-	arch = arm64
+	url = https://github.com/VG-dev1/flux
+	arch = any
 	license = MIT
-	makedepends = git
-	makedepends = go
-	makedepends = cargo
-	makedepends = clang
+	makedepends = rust
+	depends = glibc
 	depends = gcc-libs
-	source = git+https://github.com/influxdata/flux#tag=v0.149.0
-	sha512sums = SKIP
+	provides = flux
+	source = flux-0.2.0.tar.gz::https://github.com/VG-dev1/flux/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = ca01a86c8f0563320162343686f90a8283e284924fbb5ca35fd56188b9a80e0e
 
 pkgname = flux

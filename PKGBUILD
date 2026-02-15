@@ -1,41 +1,40 @@
-# Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-pkgname=flux
-pkgver=0.149.0
+_cratesio_package='flux-cli'
+
+pkgname="${_cratesio_package%%-cli}"
+pkgver=0.2.0
 pkgrel=1
-pkgdesc='Lightweight scripting language for querying databases and working with data'
-arch=('i686' 'x86_64' 'arm64')
-url='https://github.com/influxdata/flux'
+pkgdesc="Search, monitor, and nuke processes with ease, with system resource tracking"
+
 license=('MIT')
-depends=('gcc-libs')
-makedepends=('git' 'go' 'cargo' 'clang')
-source=("git+https://github.com/influxdata/flux#tag=v$pkgver")
-sha512sums=('SKIP')
+arch=('any')
+
+_url_cratesio='https://crates.io/crates/flux-cli'
+_url_github='https://github.com/VG-dev1/flux'
+url="${_url_github}"
+
+provides=("${pkgname}")
+
+depends=('glibc' 'gcc-libs')
+makedepends=('rust')
+
+# source=("${pkgname}-${pkgver}.crate::https://crates.io/api/v1/crates/${_cratesio_package}/${pkgver}/download")
+source=("${pkgname}-${pkgver}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('ca01a86c8f0563320162343686f90a8283e284924fbb5ca35fd56188b9a80e0e')
 
 build() {
-    cd flux
+	cd ${srcdir}/${pkgname}-${pkgver} || exit 1
 
-    export CGO_CPPFLAGS="${CPPFLAGS}"
-    export CGO_CFLAGS="${CFLAGS}"
-    export CGO_CXXFLAGS="${CXXFLAGS}"
-    export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS='-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw'
-    export PKG_CONFIG=$PWD/pkg-config
-
-    go build -o pkg-config github.com/influxdata/pkg-config
-    go build ./cmd/flux
-
-    target=$(
-        eval $(rustc --print cfg | grep target)
-        echo $target_arch-$target_vendor-$target_os-$target_env
-    )
-    mv libflux/target/$target/release/libflux.so .
+	RUSTFLAGS="--remap-path-prefix=$(pwd)=/build/" cargo build --release --locked
 }
 
 package() {
-    cd flux
+	cd ${srcdir}/${pkgname}-${pkgver} || exit 1
 
-    install -Dm775 libflux.so -t "$pkgdir/usr/lib"
-    install -Dm775 flux -t "$pkgdir/usr/bin"
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/flux"
+	install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+
+	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+	install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

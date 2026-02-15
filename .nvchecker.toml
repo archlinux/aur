@@ -1,0 +1,3 @@
+[flux]
+source = "cratesio"
+cratesio = "flux-cli"
