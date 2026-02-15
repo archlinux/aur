@@ -2,7 +2,7 @@
 pkgname=rootchat
 _pkgname=rootchat
 pkgver=0.9.88
-pkgrel=1
+pkgrel=2
 pkgdesc="A community platform combining chat with task management, raid planning, and customizable apps"
 arch=('x86_64' 'aarch64')
 url="https://www.rootapp.com"

@@ -1,7 +1,7 @@
 pkgbase = rootchat
 	pkgdesc = A community platform combining chat with task management, raid planning, and customizable apps
 	pkgver = 0.9.88
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.rootapp.com
 	arch = x86_64
 	arch = aarch64
