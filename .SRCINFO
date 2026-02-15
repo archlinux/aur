@@ -1,6 +1,6 @@
 pkgbase = python-blacksheep-client-request
 	pkgdesc = blacksheep request extension.
-	pkgver = 0.1.2.1
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://pypi.org/project/blacksheep_client_request
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = python-blacksheep-client-request
 	conflicts = python-blacksheep-client-request
 	options = !strip
 	options = !debug
-	source = blacksheep_client_request-0.1.2.1.tar.gz::https://files.pythonhosted.org/packages/source/b/blacksheep_client_request/blacksheep_client_request-0.1.2.1.tar.gz
-	sha256sums = 4d0fd0751cd3e1a2fc4e7e974db05042f114ab3cfb6256d178f09dffba6eb122
+	source = blacksheep_client_request-0.1.3.tar.gz::https://files.pythonhosted.org/packages/source/b/blacksheep_client_request/blacksheep_client_request-0.1.3.tar.gz
+	sha256sums = 72473932c96f8a52699a215865d836dff3413a398253d842a7ca409df6ed40e9
 
 pkgname = python-blacksheep-client-request
