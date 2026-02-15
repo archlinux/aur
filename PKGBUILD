@@ -13,9 +13,9 @@ pkgname=(
   nm-cloud-setup-clat
   networkmanager-docs-clat
 )
-pkgver=1.57.1
-pkgrel=5
-commit=60873656b98db66b7d1c52419763deb99a4b4419
+pkgver=1.57.2
+pkgrel=1
+commit=b5410bb24a3fca5c594541e1f27fff1c26972081
 pkgdesc="Network connection manager and user applications, with CLAT support (MR !2107)"
 url="https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/merge_requests/2107"
 arch=(x86_64)
@@ -70,7 +70,7 @@ checkdepends=(
 source=(
   "git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=${commit}"
 )
-b2sums=('702a582a072b4771143eef91ad2597c9a607476c968b43970e7a0f9cff021b3cbdfa6441eb80d258c292fab6bdec99315e41a8f67b09e57775af5764ac4fa289')
+b2sums=('c6fbd48da4bdf8cca70050c0ad34d52c27bfbdbf3ea44398c43028fb6150d76a9c5bfefa398aa4008ada669f4022661591e36b15a7564df434383c36424b84ab')
 validpgpkeys=(
   3D10AD045AB4AAFF8E8F36AF9B980AC2FB874FEB # Ana Cabral <acabral@redhat.com>
   F07F7C1EABD382F81CBFBA3B998D4828CD7E1656 # Beniamino Galvani <bgalvani@redhat.com>
