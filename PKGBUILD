@@ -5,7 +5,7 @@
 
 pkgname=seerr
 pkgver=3.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Request management and media discovery tool for the Plex ecosystem'
 arch=(x86_64 aarch64)
 url='https://github.com/seerr-team/seerr'
@@ -75,18 +75,17 @@ package() {
   rm -rf "${pkgdir}/usr/lib/seerr/.next/cache"
 
   # Remove unneeded files
-  find "${pkgdir}/usr/lib/seerr"         -name "*musl*"                     -exec rm -rf "{}" +
-  find "${pkgdir}/usr/lib/seerr" -type f -name "*.map"                      -exec rm -rf "{}" +
-  find "${pkgdir}/usr/lib/seerr" -type f -name "*.md"                       -exec rm -rf "{}" +
-  find "${pkgdir}/usr/lib/seerr" -type d -name "*android*"                  -exec rm -rf "{}" +
-  find "${pkgdir}/usr/lib/seerr" -type d -name "win64-bin"                  -exec rm -rf "{}" +
-  find "${pkgdir}/usr/lib/seerr" -type d -name "typescript"                 -exec rm -rf "{}" +
-  find "${pkgdir}/usr/lib/seerr" -type d -name "@next+swc-linux-x64-gnu*"   -exec rm -rf "{}" +
-  find "${pkgdir}/usr/lib/seerr" -type d -name "@swc+core-linux-x64-gnu*"   -exec rm -rf "{}" +
-  find "${pkgdir}/usr/lib/seerr" -type d -name "react-devtools-core"        -exec rm -rf "{}" +
-  find "${pkgdir}/usr/lib/seerr" -type d -path \*/ace-builds/src            -exec rm -rf "{}" +
-  find "${pkgdir}/usr/lib/seerr" -type d -path \*/ace-builds/src-noconflict -exec rm -rf "{}" +
-  find "${pkgdir}/usr/lib/seerr" -type d -path \*/node_modules/react-native -exec rm -rf "{}" +
+  find "${pkgdir}/usr/lib/seerr"         -name "*musl*"                      -exec rm -rf "{}" +
+  find "${pkgdir}/usr/lib/seerr" -type f -name "*.map"                       -exec rm -rf "{}" +
+  find "${pkgdir}/usr/lib/seerr" -type f -name "*.md"                        -exec rm -rf "{}" +
+  find "${pkgdir}/usr/lib/seerr" -type d -name "*android*"                   -exec rm -rf "{}" +
+  find "${pkgdir}/usr/lib/seerr" -type d -name "win64-bin"                   -exec rm -rf "{}" +
+  find "${pkgdir}/usr/lib/seerr" -type d -name "@next+swc-linux-x64-gnu*"    -exec rm -rf "{}" +
+  find "${pkgdir}/usr/lib/seerr" -type d -name "@swc+core-linux-x64-gnu*"    -exec rm -rf "{}" +
+  find "${pkgdir}/usr/lib/seerr" -type d -name "react-devtools-core"         -exec rm -rf "{}" +
+  find "${pkgdir}/usr/lib/seerr" -type d -path "*/ace-builds/src"            -exec rm -rf "{}" +
+  find "${pkgdir}/usr/lib/seerr" -type d -path "*/ace-builds/src-noconflict" -exec rm -rf "{}" +
+  find "${pkgdir}/usr/lib/seerr" -type d -path "*/node_modules/react-native" -exec rm -rf "{}" +
 
   # Fix paths
   find "${pkgdir}/usr/lib/seerr/.next" -type f -print0 | xargs -0 sed -i "s^${srcdir}/${pkgname}-${pkgver}^/usr/lib/seerr^g"
