@@ -29,7 +29,7 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
-  export CFLAGS+=' -Wno-error=incompatible-pointer-types'
+  export CFLAGS+=' -Wno-error=incompatible-pointer-types -Wno-error=maybe-uninitialized'
   ./configure --prefix=/usr \
     --enable-gles2 \
     --enable-{kms,wayland}-egl-platform \
