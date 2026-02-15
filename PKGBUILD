@@ -34,6 +34,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         ungoogled-chromium-145-build-with-wasm-rollup.patch
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
+        enable-widevine-arm64.patch
         use-oauth2-client-switches-as-default.patch)
 sha256sums=('4b9460a4c852b824dbd3c6de00948fe97b760e89ac56c62b5e28f8581a5c1690'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
@@ -42,6 +43,7 @@ sha256sums=('4b9460a4c852b824dbd3c6de00948fe97b760e89ac56c62b5e28f8581a5c1690'
             '45fa20cc27ef0aa00d654d0bac84bfaa8d8090b5f8aec49cc2e8d7249d3cd7ba'
             'ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
+            'd7bffd47aefcd79a59282d613cad640695c5b50eaddd72ff617fdf3f4763134a'
             '9343afa1a4308a7cfb3317229f5aff7778688debcc03c4a74a85908aa1d0cc3a')
 
 if (( _manual_clone )); then
@@ -128,6 +130,9 @@ prepare() {
 
   # https://crbug.com/456218403
   patch -Np1 -i ../chromium-145-fix-SYS_SECCOMP.patch
+
+  # enable widevine for arm64
+  patch -Np1 -i ../enable-widevine-arm64.patch
 
   # Link to system tools required by the build
   mkdir -p third_party/node/linux/node-linux-x64/bin third_party/jdk/current/bin
