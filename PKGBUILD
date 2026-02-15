@@ -1,8 +1,8 @@
 # Maintainer: Rafael Silva <perigoso@riseup.net>
 
 pkgname='python-sphinxcontrib-confluencebuilder'
-pkgver='2.14'
-pkgrel='1'
+pkgver=3.0
+pkgrel=1
 pkgdesc="Sphinx extension to build Confluence® compatible markup format files and optionally publish them"
 arch=('any')
 url="https://github.com/sphinx-contrib/confluencebuilder"
@@ -19,7 +19,7 @@ makedepends=(
 )
 license=('BSD-2-Clause')
 source=("https://github.com/sphinx-contrib/confluencebuilder/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('75591d4f2fd4220310f5705346ac9713')
+md5sums=('b6a0cd61d5cb748f0844aad1a0826787')
 
 build() {
   cd "confluencebuilder-${pkgver}"
