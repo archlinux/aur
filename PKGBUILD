@@ -5,17 +5,12 @@
 
 pkgname=seerr
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Request management and media discovery tool for the Plex ecosystem'
 arch=(x86_64 aarch64)
 url='https://github.com/seerr-team/seerr'
 license=('MIT')
-depends=(
-  bash
-  gcc-libs
-  glibc
-  nodejs
-)
+depends=(nodejs)
 optdepends=(
   'jellyfin-server: The Free Software Media System'
   'plex-media-server: Plex Media Server'
@@ -32,31 +27,27 @@ options=(!strip !debug)
 install=seerr.install
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-  # "arch.patch::${url}/compare/develop...pnpm-10-for-arch-folks.patch"
-  arch.patch
   seerr.sysusers
   seerr.tmpfiles
   seerr.service
   seerr.conf.d
 )
 sha256sums=('c5dd29495a04d73b961c8dc4ba2e3e1dd8f042e34a22ff409e80a4e2e180c18d'
-            '8d4024798d173dd9e90e07edd5c0f3a0f556e14c5958bf72c1bc8fbd93f46bab'
             '1a4a8daf655c530ebf24d89d036458aa75d7ae2de21a99a2b10eb02c2df1ac81'
             '8e137d571603af4ad83dd55a79d743bf1360de84af2db05dfb9289ccf649973d'
             '34f139015c3537ced763080832f691f3fca012ee4c126c7c66d8e120085d5290'
-            '517a51fac3bbbd0149434f06f3be272c922299b1414396d4e3d66fe6b1082277')
+            '1945ff5b33dd57622d9450e19a323ac8b0d360d7ba248578dcd31a1f03cfe9e4')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
 
-  patch -Np1 -i "../arch.patch"
-
-  sed -i 's/husky install//' package.json
-
   echo "{\"commitTag\": \"${pkgver}\"}" > committag.json
 
+  # allow nodejs version mismatch
+  echo 'engineStrict: false' > pnpm-workspace.yaml
+
   export NEXT_TELEMETRY_DISABLED=1
-  pnpm update jwa
+  export HUSKY=0
   pnpm install --frozen-lockfile
 }
 
@@ -67,6 +58,7 @@ build() {
   export CYPRESS_INSTALL_BINARY=0
   # See: https://aur.archlinux.org/packages/jellyseerr#comment-998270
   export SHARP_IGNORE_GLOBAL_LIBVIPS=1
+  export COMMIT_TAG=${pkgver}
   pnpm build
   pnpm prune --prod --ignore-scripts
 }
@@ -77,10 +69,24 @@ package() {
 
   # Copy seerr
   cp -dr --no-preserve='ownership' ./{.next,dist,public,node_modules} "${pkgdir}/usr/lib/seerr"
-  cp -d --no-preserve='ownership' ./{package.json,jellyseerr-api.yml,next.config.js} "${pkgdir}/usr/lib/seerr"
+  cp -d --no-preserve='ownership' ./{package.json,seerr-api.yml,next.config.js,committag.json} "${pkgdir}/usr/lib/seerr"
 
   # Remove cache
   rm -rf "${pkgdir}/usr/lib/seerr/.next/cache"
+
+  # Remove unneeded files
+  find "${pkgdir}/usr/lib/seerr"         -name "*musl*"                     -exec rm -rf "{}" +
+  find "${pkgdir}/usr/lib/seerr" -type f -name "*.map"                      -exec rm -rf "{}" +
+  find "${pkgdir}/usr/lib/seerr" -type f -name "*.md"                       -exec rm -rf "{}" +
+  find "${pkgdir}/usr/lib/seerr" -type d -name "*android*"                  -exec rm -rf "{}" +
+  find "${pkgdir}/usr/lib/seerr" -type d -name "win64-bin"                  -exec rm -rf "{}" +
+  find "${pkgdir}/usr/lib/seerr" -type d -name "typescript"                 -exec rm -rf "{}" +
+  find "${pkgdir}/usr/lib/seerr" -type d -name "@next+swc-linux-x64-gnu*"   -exec rm -rf "{}" +
+  find "${pkgdir}/usr/lib/seerr" -type d -name "@swc+core-linux-x64-gnu*"   -exec rm -rf "{}" +
+  find "${pkgdir}/usr/lib/seerr" -type d -name "react-devtools-core"        -exec rm -rf "{}" +
+  find "${pkgdir}/usr/lib/seerr" -type d -path \*/ace-builds/src            -exec rm -rf "{}" +
+  find "${pkgdir}/usr/lib/seerr" -type d -path \*/ace-builds/src-noconflict -exec rm -rf "{}" +
+  find "${pkgdir}/usr/lib/seerr" -type d -path \*/node_modules/react-native -exec rm -rf "{}" +
 
   # Fix paths
   find "${pkgdir}/usr/lib/seerr/.next" -type f -print0 | xargs -0 sed -i "s^${srcdir}/${pkgname}-${pkgver}^/usr/lib/seerr^g"
