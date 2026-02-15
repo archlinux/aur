@@ -32,7 +32,7 @@ build() {
 
     cmake -G Ninja \
         -B build \
-        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
         -DPROJECT_VERSION_OVERRIDE="${pkgver}"
