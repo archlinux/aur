@@ -1,21 +1,20 @@
-# Maintainer: Arti Zirk <arti.zirk@gmail.com>
+# Maintainer: hendy643 <phenderson643@gmail.com>
 # Contributor: 1Conan <me@1conan.com>
-# Contributor: hendy643 <phenderson643@gmail.com>
 
 _target=aarch64-none-linux-gnu
 pkgname=${_target}-gcc-bin
-pkgver=14.2.rel1
+pkgver=15.2.rel1
 pkgrel=1
 pkgdesc="The GNU Compiler Collection - cross compiler for ARM64 Linux target"
 arch=('x86_64' 'aarch64')
 url="https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads"
 license=('GPL' 'LGPL')
 
-# https://developer.arm.com/-/media/Files/downloads/gnu/14.2.rel1/binrel/arm-gnu-toolchain-14.2.rel1-x86_64-aarch64-none-linux-gnu.tar.xz
+# https://developer.arm.com/-/media/Files/downloads/gnu/15.2.rel1/binrel/arm-gnu-toolchain-15.2.rel1-x86_64-aarch64-none-linux-gnu.tar.xz
 source_x86_64=(https://developer.arm.com/-/media/Files/downloads/gnu/${pkgver}/binrel/arm-gnu-toolchain-${pkgver}-${CARCH}-${_target}.tar.xz)
-sha256sums_x86_64=('47aeefc02b0ee39f6d4d1812110952975542d365872a7474b5306924bca4faa1')
+sha256sums_x86_64=('9a685b335bd709d683a8c782253c37e8c36c10e6924e59e39d4769b02132eb43')
 source_aarch64=(https://developer.arm.com/-/media/Files/downloads/gnu/${pkgver}/binrel/arm-gnu-toolchain-${pkgver}-${CARCH}-${_target}.tar.xz)
-sha256sums_aarch64=('299c56db1644c135670afabbf801b97a42e5ef6069d73157ab869458cbda2096')
+sha256sums_aarch64=('97e3f600c00413088bb21109475443f9a1c57b4f75336a6e820acd43b065f875')
 
 options=('!strip' '!debug' '!emptydirs' 'staticlibs')
 provides=(aarch64-none-linux-gnu-gcc aarch64-none-linux-gnu-gcc-binutils aarch64-none-linux-gnu-gdb)
