@@ -1,6 +1,6 @@
 pkgbase = nqp
 	pkgdesc = Lightweight Raku-like environment for virtual machines (MoarVM backend)
-	pkgver = 2025.10
+	pkgver = 2026.01
 	pkgrel = 1
 	url = https://github.com/Raku/nqp
 	arch = i686
@@ -8,9 +8,9 @@ pkgbase = nqp
 	arch = aarch64
 	license = PerlArtistic
 	makedepends = perl>=5.8
-	depends = moarvm>=2025.10
+	depends = moarvm>=2026.01
 	options = !makeflags
-	source = https://github.com/Raku/nqp/releases/download/2025.10/nqp-2025.10.tar.gz
-	b2sums = a77475cbf1821228c3b9330fd9c21cde6b5a3a04e939495b79f03a374ed7f13d1a9c2bfffbfb51536cc0d1f1c278308903a6767dc100ad9ae4685d02eb1db201
+	source = https://github.com/Raku/nqp/releases/download/2026.01/nqp-2026.01.tar.gz
+	b2sums = defd8bbba5f23206b118cf599a42ef3bbfebb78a54672a6479e36330ab2a1742be18d2bd13fdca74f269527902c5ced8be1ca3b4c8f9ef1d11afd8317363f88d
 
 pkgname = nqp
