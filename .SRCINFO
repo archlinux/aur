@@ -1,0 +1,11 @@
+pkgbase = imouto-cursor-theme
+	pkgdesc = Imouto animated cursor theme (XCursor)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/src-06/imouto-cursor-theme
+	arch = any
+	options = !strip
+	source = https://github.com/src-06/imouto-cursor-theme/archive/refs/tags/v1.0.tar.gz
+	sha256sums = 76bb70f0d00e23d7371fabd9eecfd230f307d7337ab516afa3d847e5c93ef81a
+
+pkgname = imouto-cursor-theme
