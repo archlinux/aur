@@ -1,6 +1,6 @@
 pkgbase = stown
 	pkgdesc = Manage file system object mapping via symlinks. Lightweight alternative to GNU Stow.
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://www.seichter.de/stown/
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = stown
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python>=3.9
-	source = stown-1.2.0.tar.gz::https://github.com/rseichter/stown/archive/refs/tags/1.2.0.tar.gz
-	source = stown-1.2.0.patch
-	sha256sums = ae3dac23240cbd92624da20883072891551d41b01145f098f289d44546ff70b6
+	source = stown-1.2.1.tar.gz::https://github.com/rseichter/stown/archive/refs/tags/1.2.1.tar.gz
+	source = stown-1.2.1.patch
+	sha256sums = be73ca2ad0a8f531820657ff19cdccc5c5eda81b74a3be667f3708cdc1275518
 	sha256sums = 278914f9d7d4a7607fd160007f91e284324051f83dd704bbb3ccd81d8b64ede1
 
 pkgname = stown
