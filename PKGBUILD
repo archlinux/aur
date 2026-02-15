@@ -8,7 +8,7 @@ pkgdesc="Simple Command-Line Password Manager for Linux"
 arch=('x86_64')
 url="https://github.com/javiorfo/passcualito"
 license=('MIT')
-depends=('rust' 'cargo')
+makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('7b3a4c729662e86fdb5d58998e6123d49dbe4aea5a15e0424a75413c83843df2')
 
