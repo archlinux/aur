@@ -1,6 +1,6 @@
 pkgbase = adw-network-bin
 	pkgdesc = Modern network management application for GNOME (prebuilt binary)
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 4
 	url = https://github.com/PlayRood32/adw-network
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = adw-network-bin
 	depends = networkmanager
 	provides = adwaita-network
 	conflicts = adwaita-network
-	source = https://github.com/PlayRood32/adw-network/releases/download/v0.1.4/adwaita-network-linux-x86_64.tar.gz
+	source = https://github.com/PlayRood32/adw-network/releases/download/v0.1.5/adwaita-network-linux-x86_64.tar.gz
 	source = com.github.adw-network.desktop::https://raw.githubusercontent.com/PlayRood32/adw-network/main/data/com.github.adw-network.desktop
 	source = icon.png::https://raw.githubusercontent.com/PlayRood32/adw-network/main/data/icons/hicolor/scalable/apps/icon.png
 	sha256sums = f97708026986a6ed3de457904d5cbe086d3663deb31d56593042213445bbb2ee
