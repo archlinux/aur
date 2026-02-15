@@ -3,8 +3,8 @@
 
 pkgbase=efibooteditor
 pkgname=(efibooteditor efibooteditor-qt5)
-pkgver=1.5.5
-pkgrel=0
+pkgver=1.5.6
+pkgrel=1
 pkgdesc="Boot Editor for (U)EFI based systems."
 arch=(x86_64 aarch64 armv7h)
 url="https://github.com/Neverous/efibooteditor"
@@ -12,7 +12,7 @@ license=(LGPL3)
 depends=(efivar zlib qt6-base qt5-base)
 makedepends=(cmake git qt6-tools qt5-tools)
 source=("${pkgbase}::git+${url}.git?signed#tag=v${pkgver}")
-b2sums=('4c125c5373b4264b0a335cfc604220ca19deab82a4507700db17f7fe78f35ca8bc88def5b653c94b8994e2272b14a937b966bb71c0cdcefd1f59f2dd483175fd')
+b2sums=('e1b2fcad747003063b16ac609e8654698e3e1bb2aa73e4e23fde7fc455351a30a200388e527b2e90eaea5793c551e437847fdd978dd5e96dc4724ff9b01d88ca')
 validpgpkeys=(
     "9E76A390AAF9772C8448DCCEE4F948F71FEE7375" # Maciej Szeptuch <neverous at neverous dot info>
 )
