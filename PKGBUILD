@@ -1,6 +1,6 @@
 pkgname=lianpkg-gui-bin
 pkgver=2.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Flutter GUI for LianPkg — Wallpaper Engine resource tool"
 keywords=('wallpaper-engine' 'pkg' 'unpacker' 'wallpaper' 'resource' 'tex' 'flutter' 'gui')
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gtk3' 'glibc')
 optdepends=('lianpkg-bin: CLI version')
 
 source=("lianpkg-gui-${pkgver}.tar.gz::https://github.com/Yueosa/lianpkg/releases/download/v${pkgver}/lianpkg-gui_${pkgver}_linux_x86_64.tar.gz")
-sha256sums=('d35ab37191e8fc7367e90baae15e8d4a172187cf5132d3486227ef362834b7f5')
+sha256sums=('0c561607e47115c10e63ae0aa9def9f3c5afac2b9bb7635bf4c8f6923c831d13')
 
 package() {
   # 安装 bundle 到 /opt/lianpkg-gui
