@@ -1,6 +1,6 @@
 pkgbase = kvm-configurator
-	pkgdesc = Little helper for virsh‑install
-	pkgver = 1.0.9.5
+	pkgdesc = Small helper program for virt-install to easily create virtual machines in the terminal
+	pkgver = 1.0.9.6
 	pkgrel = 1
 	url = https://github.com/mrtoadie/kvm-configurator
 	arch = x86_64

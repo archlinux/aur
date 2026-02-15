@@ -1,9 +1,9 @@
 # Maintainer: MrToadie <toadie@toadie.de>
 
 pkgname=kvm-configurator
-pkgver=1.0.9.5
+pkgver=1.0.9.6
 pkgrel=1
-pkgdesc="Little helper for virsh‑install"
+pkgdesc="Small helper program for virt-install to easily create virtual machines in the terminal"
 arch=('x86_64')
 url="https://github.com/mrtoadie/kvm-configurator"
 license=('MIT')
@@ -30,11 +30,6 @@ package() {
                    "$pkgdir/usr/bin/$pkgname"
 
     # copy config file
-    #install -m644 "$srcdir/kvm-configurator/README.md" \
-    #               "$pkgdir/usr/share/doc/$pkgname/README.md"
-    #install -m644 "$srcdir/kvm-configurator/LICENSE" \
-    #               "$pkgdir/usr/share/doc/$pkgname/LICENSE"
-
     install -m644 "$srcdir/kvm-configurator/kvm-configurator/oslist.yaml" \
                    "$pkgdir/usr/share/doc/$pkgname/oslist.yaml"
 }
