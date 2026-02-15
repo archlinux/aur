@@ -2,7 +2,7 @@
 # Contributor: Joost Bremmer <contact at madeofmagicandwires dot online>
 # Contributor: Bogdan <d0xi at inbox dot ru>
 pkgname=cheat
-pkgver=4.7.0
+pkgver=4.7.1
 pkgrel=1
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -21,7 +21,7 @@ _commit=36bdb99dcfadde210503d8c2dcf94b34ee950e1d
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         'conf.yml'
         "git+https://github.com/cheat/cheatsheets.git#commit=${_commit}")
-sha256sums=('61ce6b948d5e154b66535f6c77ea29b426e7a99c7c17d11169e6b8c4b2a600ac'
+sha256sums=('d56857cd777d3eaa9f048a69fc81e97800abd311b42cbac1c16d6f100c929384'
             'be2c76aea3937146b49ac6f81ae7f22a9521486d3d6e51414da3dafbcb01ea6e'
             'daed9ee395975c898ea392885960ac5c01d5695bafcdee220b153911b8c10318')
 
@@ -57,10 +57,9 @@ package() {
     "$pkgdir/usr/share/bash-completion/completions/$pkgname"
   install -Dm644 "scripts/$pkgname.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d/"
   install -Dm644 "scripts/$pkgname.zsh" "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
-  install -Dm644 "scripts/$pkgname.zsh" "$pkgdir/usr/share/doc/$pkgname/_$pkgname"
-
-  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/$pkgname-LICENSE"
   install -Dm644 "doc/$pkgname.1" -t "$pkgdir/usr/share/man/man1/"
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/$pkgname-LICENSE"
+  install -Dm644 "$srcdir/conf.yml" -t "$pkgdir/etc/$pkgname/"
 
   install -d "$pkgdir/usr/share/$pkgname/cheatsheets/community"
   find "$srcdir/cheatsheets" \
@@ -70,7 +69,7 @@ package() {
     -exec \
       install -m644 "{}" \
       "$pkgdir/usr/share/$pkgname/cheatsheets/community/" \;
-  install -Dm644 "$srcdir/conf.yml" -t "$pkgdir/etc/$pkgname/"
+
   install -Dm644 "$srcdir/cheatsheets/.github/LICENSE.txt" \
     "$pkgdir/usr/share/licenses/$pkgname/cheatsheets-LICENSE"
 }
