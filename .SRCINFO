@@ -1,13 +1,13 @@
 pkgbase = archtoys-bin
 	pkgdesc = Archtoys (precompiled binary)
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/Mujtaba1i/Archtoys
 	arch = x86_64
 	license = MIT
 	provides = archtoys
 	conflicts = archtoys
-	source = archtoys-linux-x86_64-v0.2.0.tar.gz::https://github.com/Mujtaba1i/Archtoys/releases/download/v0.2.0/archtoys-linux-x86_64.tar.gz
+	source = archtoys-linux-x86_64-v0.2.1.tar.gz::https://github.com/Mujtaba1i/Archtoys/releases/download/v0.2.1/archtoys-linux-x86_64.tar.gz
 	source = archtoys.desktop
 	source = archtoys.png
 	source = archtoys-16.png

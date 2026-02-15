@@ -1,5 +1,5 @@
 pkgname=archtoys-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Archtoys (precompiled binary)"
 arch=("x86_64")
