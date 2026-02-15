@@ -2,11 +2,11 @@
 
 pkgname=cavif-git
 pkgver=1.6.0.r7.ge9b4542
-pkgrel=1
+pkgrel=2
 pkgdesc="AVIF image creator in pure Rust"
 arch=('i686' 'x86_64')
 url="https://lib.rs/crates/cavif"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('glibc' 'libgcc')
 makedepends=('git' 'cargo' 'nasm')
 provides=("cavif=$pkgver")

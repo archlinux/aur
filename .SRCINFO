@@ -1,11 +1,11 @@
 pkgbase = cavif-git
 	pkgdesc = AVIF image creator in pure Rust
 	pkgver = 1.6.0.r7.ge9b4542
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lib.rs/crates/cavif
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = git
 	makedepends = cargo
 	makedepends = nasm
