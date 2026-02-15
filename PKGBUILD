@@ -1,6 +1,6 @@
 # Maintainer: Felix <felix.crabdrop@gmail.com>
 pkgname=crabdrop-bin
-pkgver=0.2.0
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="A simple, fast file manager for S3-compatible storage"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('webkit2gtk-4.1' 'gtk3' 'openssl')
 provides=('crabdrop')
 conflicts=('crabdrop')
 source=("${url}/releases/download/v${pkgver}/crabdrop_${pkgver}_amd64.deb")
-sha256sums=('43ec9d9764c688f3eda39a0f9ed9cef35e656220200d66a5e18771ea2c06dcfd')
+sha256sums=('b562607099e6717663edb8eb003763b13f77ffab97458c32e012829b8b47a77b')
 
 package() {
   bsdtar -xf data.tar.gz -C "${pkgdir}/"
