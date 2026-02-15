@@ -1,0 +1,16 @@
+pkgbase = pacviz
+	pkgdesc = TUI for managing Arch Linux pacman packages
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/sjsanc/pacviz
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = gcc
+	makedepends = pkg-config
+	depends = pacman
+	options = !debug
+	source = pacviz-0.1.0.tar.gz::https://github.com/sjsanc/pacviz/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = pacviz
