@@ -1,7 +1,7 @@
 # Maintainer: Cleboost <clement.balarot@gmail.com>
 
 pkgname=noctyra-meta-git
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Noctyra meta-package (git version)"
 arch=('any')
