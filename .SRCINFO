@@ -13,6 +13,6 @@ pkgbase = anicli-esp
 	depends = yt-dlp
 	depends = openssl
 	source = anicli-esp-1.2.1.tar.gz::https://github.com/Asempere123123/anicli-esp/archive/v1.2.1.tar.gz
-	sha256sums = 0fac0538fad62e2d23bdd96575b1764c9716a9ab36cf39a954ee098e6e729cc0
+	sha256sums = 0a2357aca45de511c63e198763ebf4db81a333e09876bcf5ed996509af608f69
 
 pkgname = anicli-esp

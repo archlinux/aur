@@ -14,6 +14,11 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Asempere123123/$pkgname/arc
 build() {
   cd "$pkgname-$pkgver"
 
+  unset CFLAGS
+  unset CXXFLAGS
+  unset LDFLAGS
+  export RUSTUP_TOOLCHAIN=stable
+
   cargo build --release
 }
 
@@ -25,4 +30,4 @@ package() {
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
-sha256sums=('0fac0538fad62e2d23bdd96575b1764c9716a9ab36cf39a954ee098e6e729cc0')
+sha256sums=('0a2357aca45de511c63e198763ebf4db81a333e09876bcf5ed996509af608f69')
