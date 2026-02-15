@@ -11,8 +11,8 @@ pkgbase = xytz-bin
 	provides = xytz
 	conflicts = xytz
 	source_x86_64 = xytz-x86_64-0.8.1.tgz::https://github.com/xdagiz/xytz/releases/download/v0.8.1/xytz-v0.8.1-linux-amd64.tar.gz
-	sha256sums_x86_64 = b121dd1b32aa57c52d618a0a3f6e8ea962aad3eb0296a7b120bd5a1d9f806c14
+	sha256sums_x86_64 = f5e3880b0ee6d57e1c21524063916f1a5a31d9e5548ec9cd821e0d318490f9a8
 	source_aarch64 = xytz-aarch64-0.8.1.tgz::https://github.com/xdagiz/xytz/releases/download/v0.8.1/xytz-v0.8.1-linux-arm64.tar.gz
-	sha256sums_aarch64 = 521675a30cbcb9609a57678c4a6ac7fad2bd989626992e5c642a01057ba44c54
+	sha256sums_aarch64 = 8fc728d016a95e30b5ec6d7c07e0cef285e39a7d7c4a1786fb881f3ece414fdb
 
 pkgname = xytz-bin

@@ -24,8 +24,8 @@ depends=('yt-dlp' 'ffmpeg')
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('b121dd1b32aa57c52d618a0a3f6e8ea962aad3eb0296a7b120bd5a1d9f806c14')
-sha256sums_aarch64=('521675a30cbcb9609a57678c4a6ac7fad2bd989626992e5c642a01057ba44c54')
+sha256sums_x86_64=('f5e3880b0ee6d57e1c21524063916f1a5a31d9e5548ec9cd821e0d318490f9a8')
+sha256sums_aarch64=('8fc728d016a95e30b5ec6d7c07e0cef285e39a7d7c4a1786fb881f3ece414fdb')
 
 
 package() {
