@@ -16,13 +16,13 @@ install="linux-arctis-manager.install"
 sha256sums=('de6bde08b7d51c34467c6217a94dc06833d78dc298e74a490f6f6c9ad7bb34c3')
 
 build() {
-	cd "$_pkgname"
-	uv build
+    # FIX: The folder extracted is Name-Version, not just Name
+    cd "${_pkgname}-${pkgver}"
+    uv build
 }
 
 package() {
-	cd "$_pkgname"
-	python -m installer --destdir="$pkgdir" dist/*.whl
-
+    # FIX: Same here
+    cd "${_pkgname}-${pkgver}"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
-
