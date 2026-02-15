@@ -21,7 +21,7 @@ source=(
   "archtoys-256.png"
   "archtoys-512.png"
 )
-sha256sums=('8f9d571ca3d38fd4107bea1e48e39d11bd4ece1ef4cffd7a49d181d298c71dd4'
+sha256sums=('b01d00b641320bbff7cabf78cbfc099d729158c6becaf9f2b56b7c116bbf397a'
             '57caa2bef5a98bef17abeecb439e1ef7efab7826217b24ca1eaeac07c7720312'
             '5355e2b4f79c2bba7ac05a78dcc0e60f4f226f9222390204ef6a7a5294640f08'
             'e782f83cd1ba0f4179471251c56c15b7beae55285b3a6d55d2392fb81a4bc027'
