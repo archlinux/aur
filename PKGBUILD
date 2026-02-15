@@ -3,13 +3,14 @@
 # NOTES from the packager:
 # 1.) Inital work is done on SONAMES since v1.57.0.
 #     Cf.: https://newreleases.io/project/github/aws/aws-lc/release/v1.57.0
-# 2.) This package installs to /usr/lib/boringssl and /usr/include/boringssl
-#     to avoid conflicts with system OpenSSL. To build software against BoringSSL,
+#     Note that this PKGBUILD does not build shared libraries by default (following upstream).
+# 2.) This package installs to /usr/lib/aws-lc and /usr/include/aws-lc
+#     to avoid conflicts with system OpenSSL. To build software against AWS-LC,
 #     specify the library and include paths explicitly during configuration.
 
 pkgname=aws-lc
 pkgver=1.67.0
-pkgrel=1
+pkgrel=2
 pkgdesc='general-purpose cryptographic library maintained by the AWS Cryptography team for AWS'
 url='https://github.com/aws/aws-lc'
 license=('MIT' 'ISC' 'Apache-2.0' 'OpenSSL')
@@ -28,12 +29,27 @@ makedepends=(
 )
 optdepends=(
   'libunwind: For extra tests'
-  'clang: Alternative for gcc (gcc preferred by upstream)'
+  'clang: alternative C/C++ compiler'
+  'llvm: LLVM toolchain utilities (ar, ranlib, etc.) for use with clang'
 )
 arch=('x86_64')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 b2sums=('2fc94dca5ff6bd2bd387035270bd65674621bc62b4d33522134c881aa81e59131eeb99f3d3e9a72e74e3bbb03770e5c5f425ec28007b58fd28ecc6219693f60f')
-#options=(!strip !lto)
+options=(!strip)
+
+# Temporary: testing with Clang/LLVM toolchain
+#_set_clang_toolchain() {
+#    export CC=clang CXX=clang++ AR=llvm-ar NM=llvm-nm RANLIB=llvm-ranlib
+#}
+
+prepare() {
+    cd ${pkgname}-${pkgver}
+
+    # Fix const qualifier warning in OPENSSL_memchr
+    # Reported upstream: https://github.com/aws/aws-lc/issues/2995
+    sed -i 's/return memchr(s, c, n);/return (void *)memchr(s, c, n);/' \
+    crypto/internal.h
+}
 
 build() {
     cd ${pkgname}-${pkgver}
@@ -45,12 +61,13 @@ build() {
     # There might be a better way to get rid of '-no-plt', but we're testing now.
 
     # Remove -no-plt flag from CFLAGS and CXXFLAGS for building with FIPS support:
-    CFLAGS="${CFLAGS//-fno-plt/}"
-    CXXFLAGS="${CXXFLAGS//-fno-plt/}"
+    #CFLAGS="${CFLAGS//-fno-plt/}"
+    #CXXFLAGS="${CXXFLAGS//-fno-plt/}"
+    #export CFLAGS CXXFLAGS
 
-    export CFLAGS CXXFLAGS
-
-    # CMake does not respect ASFLAGs set in /etc/makepkg.conf, so we have to set CMAKE_ASM_FLAGS here.
+    # Temporary: testing with Clang/LLVM toolchain
+    #_set_clang_toolchain
+    
     cmake -B build \
           -GNinja \
           -DCMAKE_BUILD_TYPE=RelWithAsserts \
@@ -58,15 +75,19 @@ build() {
           -DCMAKE_INSTALL_SBINDIR:PATH=bin/aws-lc \
           -DCMAKE_INSTALL_BINDIR:PATH=bin/aws-lc \
           -DCMAKE_INSTALL_LIBDIR:PATH=lib/aws-lc \
-          -DCMAKE_INSTALL_INCLUDEDIR:PATH=include/aws-lc \
-          -DCMAKE_C_FLAGS="$CFLAGS -Wno-error=discarded-qualifiers" \
-          -DCMAKE_CXX_FLAGS="$CXXFLAGS"
+          -DCMAKE_INSTALL_INCLUDEDIR:PATH=include/aws-lc
 
     ninja -C build -j $(nproc)
 }
 
 check() {
     cd ${pkgname}-${pkgver}
+
+    # Temporary: testing with Clang/LLVM toolchain
+    #_set_clang_toolchain
+
+    # ONLY FOR CLEAN-CHROOT: Skip OCSP integration tests - require external network connectivity
+    export GTEST_FILTER='-All/OCSPIntegrationTest.*'
 
     ninja -C build -j $(nproc) run_tests
 }
