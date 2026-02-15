@@ -7,8 +7,8 @@ export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 
 _pkgname="mozillavpn"
 pkgname="$_pkgname-git"
-pkgver=2.32.0.r123.g2ce4763
-pkgrel=1
+pkgver=2.33.0.r44.ga57cfe8
+pkgrel=2
 pkgdesc="Fast, secure, and easy to use VPN from the makers of Firefox"
 url="https://github.com/mozilla-mobile/mozilla-vpn-client"
 license=('MPL-2.0')
@@ -36,10 +36,10 @@ makedepends=(
   'python-lxml'
   'python-yaml'
   'qt6-tools'
-  'yamllint'
 )
 optdepends=(
   'qt6-wayland: for Wayland support'
+  'wayland-protocols: for Wayland support'
 )
 
 options=('!lto')
@@ -87,4 +87,5 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 "$srcdir/$_pkgsrc/linux/org.mozilla.vpn.rules-others" "$pkgdir/usr/share/polkit-1/rules.d/org.mozilla.vpn.rules"
 }
