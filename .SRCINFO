@@ -1,0 +1,15 @@
+pkgbase = ppqcheck-git
+	pkgdesc = CLI tool to check if mobileprovision files have PPQ entitlement
+	pkgver = r4.5cf45e5
+	pkgrel = 1
+	url = https://github.com/planeklm/ppqcheck
+	arch = x86_64
+	arch = aarch64
+	license = unknown
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	source = git+https://github.com/David31104455/ppqcheck.git#branch=feature/cli-improvements
+	sha256sums = SKIP
+
+pkgname = ppqcheck-git
