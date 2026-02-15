@@ -20,9 +20,14 @@ post_install() {
         grub-mkconfig -o /boot/grub/grub.cfg
     fi
     
-    # systemd-boot hint
-    if [ -d /boot/loader/entries ]; then
-        echo ":: systemd-boot detected. You may need to update your loader entries."
+    # systemd-boot / kernel-install
+    if [ -x /usr/bin/kernel-install ]; then
+        echo ":: calling kernel-install..."
+        # Find the version (directory name in /usr/lib/modules that matches our kernel)
+        KVER=$(ls /usr/lib/modules | grep "${KERNEL_NAME}" | sort -V | tail -n 1)
+        if [ -n "$KVER" ]; then
+            kernel-install add "$KVER" "/boot/vmlinuz-linux-${KERNEL_NAME}" "/boot/initramfs-linux-${KERNEL_NAME}.img" "/boot/initramfs-linux-${KERNEL_NAME}-fallback.img"
+        fi
     fi
     
     echo ""
@@ -45,5 +50,14 @@ post_remove() {
         grub-mkconfig -o /boot/grub/grub.cfg
     fi
     
+    # Remove kernel-install entry
+    if [ -x /usr/bin/kernel-install ]; then
+        echo ":: calling kernel-install remove..."
+        KVER=$(ls /usr/lib/modules | grep "${KERNEL_NAME}" | sort -V | tail -n 1)
+        if [ -n "$KVER" ]; then
+             kernel-install remove "$KVER"
+        fi
+    fi
+
     echo ":: linux-${KERNEL_NAME} removed. Please reboot to switch to your other kernel."
 }
