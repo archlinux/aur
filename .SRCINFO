@@ -1,11 +1,12 @@
 pkgbase = hisat2-bin
 	pkgdesc = A fast and sensitive alignment program for mapping sequencing reads
 	pkgver = 2.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://daehwankimlab.github.io/hisat2/
 	arch = x86_64
 	license = GPL-3.0-or-later
-	depends = gcc-libs
+	depends = libgcc
+	depends = libstdc++
 	depends = glibc
 	optdepends = perl
 	optdepends = python

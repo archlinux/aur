@@ -2,12 +2,12 @@
 
 pkgname=hisat2-bin
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast and sensitive alignment program for mapping sequencing reads"
 arch=('x86_64')
 url="https://daehwankimlab.github.io/hisat2/"
 license=('GPL-3.0-or-later')
-depends=('gcc-libs' 'glibc')
+depends=('libgcc' 'libstdc++' 'glibc')
 optdepends=('perl' 'python')
 provides=("hisat2=$pkgver")
 conflicts=('hisat2')
