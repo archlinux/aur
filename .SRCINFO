@@ -1,9 +1,10 @@
 pkgbase = tuxracer
 	pkgdesc = The Tux racing game - original version
 	pkgver = 0.61
-	pkgrel = 3
+	pkgrel = 4
 	url = http://tuxracer.sourceforge.net/
 	arch = x86_64
+	arch = aarch64
 	license = GPL2
 	depends = tcl
 	depends = libx11

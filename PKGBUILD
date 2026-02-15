@@ -1,9 +1,9 @@
 # Maintainer: Daniel Kamil Kozar <dkk089@gmail.com>
 pkgname=tuxracer
 pkgver=0.61
-pkgrel=3
+pkgrel=4
 pkgdesc="The Tux racing game - original version"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="http://tuxracer.sourceforge.net/"
 license=('GPL2')
 depends=('tcl' 'libx11' 'libxi' 'libxext' 'libxmu' 'libxt' 'mesa' 'glu'
