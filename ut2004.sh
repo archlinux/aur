@@ -8,6 +8,9 @@ if [ ! -d "$HOME"/.ut2004 ] ; then
    if [ -d "/opt/ut2004/User" ]; then
        cp /opt/ut2004/User/* "$HOME"/.ut2004/System/
    fi
+   if [ -d "/opt/ut2004/UserPatch" ]; then
+       cp /opt/ut2004/UserPatch/* "$HOME"/.ut2004/System/
+   fi
    
    # Handle GOG-specific CD key if present.
    if [ -f "/opt/ut2004/GOG/goggame-1207658691.script" ]; then

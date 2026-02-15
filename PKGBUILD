@@ -6,7 +6,7 @@
 
 pkgname=ut2004-bin
 pkgver=3374
-pkgrel=3
+pkgrel=4
 pkgdesc="Unreal Tournament 2004 ECE native binaries (OldUnreal)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/OldUnreal/UT2004Patches"
@@ -20,13 +20,12 @@ source=("https://github.com/OldUnreal/UT2004Patches/releases/download/${pkgver}-
         "ut2004.png"
         "ut2004.sh")
 sha256sums=('0d08e3114dd184e5404afbf751c071576f573f913b39818416559c33308aeaad'
-            'd5d57d91b4c01047861b989d79bccf45cc1f226cfe8378069cddaf6a8ee6826c'
+            '23aaf1232a36a479fd3ab5ee0045ec00d6e52b5c6e27bcf33a2c7386d3251882'
             '9fd35b406dc32caa6a0700bda89ac72f561346b919c4764d943bf4198ec032fd'
-            '9d70a3699572b986a53be92f715d546ed191f12960751f298439e7f54733d065')
+            '348caa8129c581df2e8eeeda2c53b4aa376ba7b4007bb18695e98dc574a32b8d')
 
 package() {
     # Making sure directories exist.
-    install -d "$pkgdir/usr/share/{applications,pixmaps,licenses}"
     install -d "$pkgdir/opt/ut2004"
     install -d "$pkgdir/opt/ut2004/System"
     install -d "$pkgdir/usr/bin/"
@@ -43,16 +42,28 @@ package() {
             if [ -L "$f" ] && [[ "$(readlink "$f")" == ../System/* ]]; then
                 continue
             fi
+
+            # https://github.com/OldUnreal/UT2004Patches/issues/250#issuecomment-3904913839
+            if [[ "$(basename "$f")" == "Default.ini" ]] || [[ "$(basename "$f")" == "DefUser.ini" ]]; then
+                continue
+            fi
+
             cp -R "$f" "$pkgdir/opt/ut2004/System/"
         done
     fi
-    
+
+    msg2 "Creating UserPatch folder from System defaults..."
+    install -d "$pkgdir/opt/ut2004/UserPatch"
+    for f in CacheRecords.ucl DefUnrealEd.ini DefUser.ini Default.ini User.ini; do
+        if [ -f "$pkgdir/opt/ut2004/System/$f" ]; then
+            cp "$pkgdir/opt/ut2004/System/$f" "$pkgdir/opt/ut2004/UserPatch/"
+        fi
+    done
+
     # Copy other folders (Textures, etc) if present in patch root
     for folder in "$srcdir/"*; do
         foldername=$(basename "$folder")
         if [ "$foldername" != "System" ] && [ "$foldername" != "SystemARM64" ] && [ -d "$folder" ]; then
-             # Skip pkg and src dirs if they appear
-             if [[ "$foldername" == "pkg" || "$foldername" == "src" ]]; then continue; fi
              cp -R "$folder" "$pkgdir/opt/ut2004/"
         fi
     done

@@ -1,7 +1,7 @@
 pkgbase = ut2004-bin
 	pkgdesc = Unreal Tournament 2004 ECE native binaries (OldUnreal)
 	pkgver = 3374
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/OldUnreal/UT2004Patches
 	arch = x86_64
 	arch = aarch64
@@ -19,8 +19,8 @@ pkgbase = ut2004-bin
 	source = ut2004.png
 	source = ut2004.sh
 	sha256sums = 0d08e3114dd184e5404afbf751c071576f573f913b39818416559c33308aeaad
-	sha256sums = d5d57d91b4c01047861b989d79bccf45cc1f226cfe8378069cddaf6a8ee6826c
+	sha256sums = 23aaf1232a36a479fd3ab5ee0045ec00d6e52b5c6e27bcf33a2c7386d3251882
 	sha256sums = 9fd35b406dc32caa6a0700bda89ac72f561346b919c4764d943bf4198ec032fd
-	sha256sums = 9d70a3699572b986a53be92f715d546ed191f12960751f298439e7f54733d065
+	sha256sums = 348caa8129c581df2e8eeeda2c53b4aa376ba7b4007bb18695e98dc574a32b8d
 
 pkgname = ut2004-bin
