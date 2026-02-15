@@ -1,9 +1,8 @@
-pkgbase = gcc43
+pkgbase = i686-linux-gnu-gcc43
 	pkgdesc = The GNU Compiler Collection (4.3.x)
 	pkgver = 4.3.6
 	pkgrel = 8
 	url = http://gcc.gnu.org
-	arch = i686
 	arch = x86_64
 	license = GPL-2.0-only
 	license = LGPL-2.1-only
@@ -14,6 +13,7 @@ pkgbase = gcc43
 	makedepends = setconf
 	makedepends = cloog
 	makedepends = elfutils
+	makedepends = gcc43
 	depends = glibc
 	depends = gcc-libs
 	depends = bash
@@ -50,4 +50,4 @@ pkgbase = gcc43
 	sha256sums = 24cb033fa363148952b5ed7cdff635fbee0ae55ecafe5dfa32206e97cb0c4af3
 	sha256sums = aa81059bc71f335c962db6bbb8c5857a5cc76e2eb33b82ce1ccd6cb536b2bc31
 
-pkgname = gcc43
+pkgname = i686-linux-gnu-gcc43
