@@ -5,7 +5,7 @@ _execname=fsel
 _pkgauthor=Mjoyufull
 _pkgname=fsel
 
-pkgname=${_pkgname}
+pkgname=${_pkgname,,}
 pkgver=3.0.0
 pkgrel=1
 pkgdesc="Fast TUI app launcher and fuzzy finder for GNU/Linux and *BSD"
