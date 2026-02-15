@@ -1,0 +1,22 @@
+pkgbase = loliashizuku-git
+	pkgdesc = Wails-powered third-party desktop client for Lolia FRP
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/Mxmilu666/LoliaShizuku
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go>=1.24
+	makedepends = bun
+	makedepends = patchelf
+	depends = gtk3
+	depends = webkit2gtk
+	depends = ca-certificates
+	depends = tzdata
+	provides = loliashizuku
+	conflicts = loliashizuku
+	source = loliashizuku-git::git+https://github.com/Mxmilu666/LoliaShizuku.git#tag=v0.0.2
+	sha256sums = SKIP
+
+pkgname = loliashizuku-git
