@@ -1,7 +1,7 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=mx-live-usb-maker
 pkgver=26.02.2arch
-pkgrel=2
+pkgrel=1
 pkgdesc="Graphical utility for creating bootable live USB drives"
 arch=('x86_64' 'i686')
 url="https://mxlinux.org"
