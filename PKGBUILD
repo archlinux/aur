@@ -7,6 +7,6 @@ pkgdesc="Noctyra meta-package"
 arch=('any')
 url="https://github.com/noctyra-dots/meta"
 license=('MIT')
-depends=('noctyra-dotfiles' 'noctyra-cli' 'quickshell' 'noctalia-shell' 'kitty' 'dolphin' 'gpu-screen-recorder')
+depends=('noctyra-dotfiles' 'noctyra-cli-git' 'quickshell' 'noctalia-shell' 'hyprland' 'kitty' 'dolphin' 'gpu-screen-recorder')
 provides=('noctyra-meta')
 conflicts=('noctyra-meta')
