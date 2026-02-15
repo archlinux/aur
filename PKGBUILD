@@ -13,9 +13,11 @@ source=("lianpkg-gui-${pkgver}.tar.gz::https://github.com/Yueosa/lianpkg/release
 sha256sums=('0c561607e47115c10e63ae0aa9def9f3c5afac2b9bb7635bf4c8f6923c831d13')
 
 package() {
+  local _bundle="$srcdir/lianpkg-gui_linux_x86_64"
+
   # 安装 bundle 到 /opt/lianpkg-gui
   install -d "$pkgdir/opt/lianpkg-gui"
-  cp -a "$srcdir"/{lianpkg-gui,lib,data} "$pkgdir/opt/lianpkg-gui/"
+  cp -a "$_bundle"/{lianpkg-gui,lib,data} "$pkgdir/opt/lianpkg-gui/"
   chmod 755 "$pkgdir/opt/lianpkg-gui/lianpkg-gui"
 
   # 创建 /usr/bin 符号链接
@@ -23,7 +25,7 @@ package() {
   ln -s /opt/lianpkg-gui/lianpkg-gui "$pkgdir/usr/bin/lianpkg-gui"
 
   # 安装图标
-  install -Dm644 "$srcdir/data/flutter_assets/assets/icon.png" \
+  install -Dm644 "$_bundle/data/flutter_assets/assets/icon.png" \
     "$pkgdir/usr/share/icons/hicolor/64x64/apps/lianpkg-gui.png"
 
   # 安装 .desktop 文件
