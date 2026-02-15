@@ -1,6 +1,6 @@
 # Maintainer: Marko Zivic <marko.b.zivic@gmail.com>
 pkgname=endcord-lite-git
-pkgver=1.2.0.r2.g4f48307
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Feature rich Discord TUI client. Lite version without terminal media player."
 arch=('any')
