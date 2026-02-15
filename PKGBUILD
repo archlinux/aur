@@ -1,7 +1,7 @@
 # Maintainer: Forest Ames <fox dot ames at smallfox dot io>
 pkgname=puzzletea
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="A collection of puzzle bubbles for BubbleTea"
 arch=('any')
 url="https://github.com/FelineStateMachine/puzzletea"
