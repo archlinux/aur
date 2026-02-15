@@ -115,8 +115,8 @@ build() {
       --with-system-zlib
       --with-tune='generic'
       --prefix='/usr'
-      CXX='g++-4.3 -Wno-implicit-function-declaration -Wno-incompatible-pointer-types'
-      CC='gcc-4.3 -Wno-implicit-function-declaration -Wno-incompatible-pointer-types'
+      CXX='g++-4.3'
+      CC='gcc-4.3'
     )
     ../configure "${_conf[@]}"
 
