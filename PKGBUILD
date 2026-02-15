@@ -5,7 +5,7 @@
 
 pkgname=cogl
 pkgver=1.22.8
-pkgrel=4
+pkgrel=5
 pkgdesc='An object oriented GL/GLES Abstraction/Utility Layer'
 #url=https://blogs.gnome.org/clutter
 url=https://gitlab.gnome.org/Archive/cogl
@@ -34,10 +34,6 @@ build() {
     --enable-gles2 \
     --enable-{kms,wayland}-egl-platform \
     --enable-wayland-egl-server
-
-  # https://bugzilla.gnome.org/show_bug.cgi?id=655517
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-
   make
 }
 
