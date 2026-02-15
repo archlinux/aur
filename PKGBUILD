@@ -1,6 +1,6 @@
 pkgname=lianpkg-gui-bin
 pkgver=2.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Flutter GUI for LianPkg — Wallpaper Engine resource tool"
 keywords=('wallpaper-engine' 'pkg' 'unpacker' 'wallpaper' 'resource' 'tex' 'flutter' 'gui')
 arch=('x86_64')
