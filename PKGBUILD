@@ -70,20 +70,6 @@ package() {
   cd "Shortwave-MPRIS"
   DESTDIR="$pkgdir" meson install -C build
   
-  # Force compilation of GSettings schemas to ensure they're properly compiled
-  echo "==> Force-compiling GSettings schemas in package..."
-  if [ -d "$pkgdir/usr/share/glib-2.0/schemas" ]; then
-    glib-compile-schemas "$pkgdir/usr/share/glib-2.0/schemas/"
-    echo "==> Schema compilation completed successfully"
-    
-    # Verify our key is in the compiled schema
-    if glib-compile-schemas --dry-run "$pkgdir/usr/share/glib-2.0/schemas/" 2>&1 | grep -q "playback-volume-local"; then
-      echo "==> Schema validation passed: playback-volume-local key found"
-    else
-      echo "==> WARNING: Schema validation failed"
-    fi
-  fi
-  
   # Install license
   install -Dm644 COPYING.md "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }

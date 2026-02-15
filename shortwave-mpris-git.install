@@ -1,33 +1,30 @@
 post_install() {
-  # Ensure GSettings schemas are compiled
-  # This is critical for app startup - force compilation even if hooks ran
+  # Remove stale local user schemas that override the system schema.
+  # These are left behind by previous 'meson install' to a local prefix
+  # and cause startup crashes because they lack newer keys like
+  # playback-volume-local, playback-volume-cast, playback-volume-dlna.
+  for userdir in /home/*/.local/share/glib-2.0/schemas; do
+    if [ -f "$userdir/de.haeckerfelix.Shortwave.gschema.xml" ]; then
+      echo "==> Removing stale local schema override in $userdir"
+      rm -f "$userdir/de.haeckerfelix.Shortwave.gschema.xml"
+      glib-compile-schemas "$userdir" 2>/dev/null || true
+    fi
+  done
+
+  # Ensure system GSettings schemas are compiled
   if [ -d /usr/share/glib-2.0/schemas ]; then
     echo "==> Compiling GSettings schemas..."
     glib-compile-schemas /usr/share/glib-2.0/schemas
     echo "==> Schema compilation complete"
-    
-    # Verify the schema contains the required key
-    if gsettings list-keys de.haeckerfelix.Shortwave | grep -q "playback-volume-local"; then
-      echo "==> Schema validation passed: playback-volume-local key found"
-    else
-      echo "==> WARNING: Schema validation failed - playback-volume-local key missing"
-      echo "==> This may cause Shortwave to crash on startup"
-    fi
   fi
   
-  # Update icon cache (redundant with pacman hooks but harmless)
+  # Update icon cache
   if [ -d /usr/share/icons/hicolor ]; then
     gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
   fi
   
-  # Update desktop database (redundant with pacman hooks but harmless)
+  # Update desktop database
   update-desktop-database -q 2>/dev/null || true
-  
-  echo ""
-  echo "==> Installation complete. If Shortwave crashes on startup,"
-  echo "==> run: sudo glib-compile-schemas /usr/share/glib-2.0/schemas/"
-  echo "==> and then log out and log back in to refresh the schema cache."
-  echo ""
 }
 
 post_upgrade() {
