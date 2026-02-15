@@ -1,0 +1,12 @@
+pkgbase = ut2004-data-steam
+	pkgdesc = Unreal Tournament 2004 ECE data from Steam
+	pkgver = 3369
+	pkgrel = 1
+	url = https://store.steampowered.com/app/13230/Unreal_Tournament_2004_Editors_Choice_Edition/
+	arch = any
+	license = custom
+	makedepends = steamcmd
+	provides = ut2004-data
+	conflicts = ut2004-data
+
+pkgname = ut2004-data-steam
