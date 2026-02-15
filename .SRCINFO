@@ -1,6 +1,6 @@
 pkgbase = python-scalene
 	pkgdesc = A high-resolution, low-overhead CPU, GPU, and memory profiler for Python with AI-powered optimization suggestions
-	pkgver = 2.1.3
+	pkgver = 2.1.4
 	pkgrel = 1
 	url = https://github.com/plasma-umass/scalene
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = python-scalene
 	depends = python-boto3
 	depends = python-astunparse
 	depends = python-nvidia-ml-py
-	source = https://files.pythonhosted.org/packages/source/s/scalene/scalene-2.1.3.tar.gz
-	sha256sums = 151a952b1dcf8c128c822d51f86bf951bb4216239cb6cd277824a61cee54961f
+	source = https://files.pythonhosted.org/packages/source/s/scalene/scalene-2.1.4.tar.gz
+	sha256sums = b712450203332f52e982db650e4f811956577fd29b7cca384a21dd4908e541c2
 
 pkgname = python-scalene
