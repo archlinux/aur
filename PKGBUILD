@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=emojimart
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern emoji picker popup for desktop"
 arch=('x86_64')
 url="https://github.com/vemonet/EmojiMart"
@@ -13,6 +13,7 @@ depends=(
 )
 makedepends=(
   'cargo'
+  'cargo-tauri'
   'npm'
 )
 optdepends=(
@@ -33,17 +34,15 @@ prepare() {
 
   cd src-tauri
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
-
-  # Don't bundle AppImage
-  sed -i 's/"targets": "all",/"targets": "deb",/g' tauri.conf.json
+  cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
   cd "EmojiMart-$pkgver"
   export npm_config_cache="$srcdir/npm_cache"
   export RUSTUP_TOOLCHAIN=stable
-  npm run tauri build
+  npm run build
+  cargo tauri build --no-bundle
 }
 
 package() {

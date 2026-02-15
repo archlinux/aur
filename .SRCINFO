@@ -1,11 +1,12 @@
 pkgbase = emojimart
 	pkgdesc = Modern emoji picker popup for desktop
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vemonet/EmojiMart
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
+	makedepends = cargo-tauri
 	makedepends = npm
 	depends = gtk3
 	depends = libsoup3
