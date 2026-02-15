@@ -1,6 +1,6 @@
 pkgbase = shortwave-mpris-git
 	pkgdesc = Internet radio player with extended MPRIS support, device support for DLNA/UPnP & Google Cast + FFmpeg proxy for incompatible streams
-	pkgver = 5.1.0.r9.g9586a15
+	pkgver = 5.1.0.r11.g81dee39
 	pkgrel = 1
 	url = https://github.com/ixnewton/Shortwave-MPRIS
 	install = shortwave-mpris-git.install
