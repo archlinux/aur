@@ -1,14 +1,16 @@
 pkgbase = bootstrap-dht-git
 	pkgdesc = Bittorrent DHT bootstrap server
 	pkgver = r131.g679c661
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bittorrent/bootstrap-dht
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = boost
-	depends = gcc-libs
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
 	depends = boost-libs
 	provides = bootstrap-dht=r131.g679c661
 	conflicts = bootstrap-dht

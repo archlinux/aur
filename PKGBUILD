@@ -2,12 +2,12 @@
 
 pkgname=bootstrap-dht-git
 pkgver=r131.g679c661
-pkgrel=2
+pkgrel=3
 pkgdesc="Bittorrent DHT bootstrap server"
 arch=('i686' 'x86_64')
 url="https://github.com/bittorrent/bootstrap-dht"
 license=('MIT')
-depends=('gcc-libs' 'boost-libs')
+depends=('glibc' 'libgcc' 'libstdc++' 'boost-libs')
 makedepends=('git' 'boost')
 provides=("bootstrap-dht=$pkgver")
 conflicts=('bootstrap-dht')
