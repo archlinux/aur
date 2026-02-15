@@ -2,8 +2,8 @@
 
 _pkgbase=digimend-kernel-drivers
 pkgname=digimend-kernel-drivers-dkms-git
-pkgver=10.r0.gec5c16d
-pkgrel=2
+pkgver=11.r42.gf3c7c7f
+pkgrel=1
 
 pkgdesc='Linux kernel modules (DKMS) for non-Wacom USB graphics tablets. Git version.'
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('git')
 conflicts=("$_pkgbase" "$_pkgbase"-dkms)
 provides=("$_pkgbase"-dkms)
 
-source=('git+https://github.com/DIGImend/digimend-kernel-drivers.git')
+source=('git+https://github.com/arkadesOrg/digimend-kernel-drivers.git#branch=hotfix')
 
 md5sums=('SKIP')
 
