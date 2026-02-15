@@ -9,6 +9,7 @@ pkgbase = noctyra-meta-git
 	depends = noctyra-cli-git
 	depends = quickshell-git
 	depends = noctalia-shell-git
+	depends = hyprland-git
 	depends = kitty
 	depends = dolphin
 	depends = gpu-screen-recorder
