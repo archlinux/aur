@@ -14,7 +14,7 @@ makedepends=('cargo-nightly' 'git')
 source=("git+https://github.com/ihciah/shadow-tls.git#commit=${_commit}"
 	"shadow-tls@.service")
 sha256sums=('d0d807583f66b8332f2732464471b3ec74924ad3474fc80b71a6262630ab077a'
-            '670a28a4eafc0617052bac6dfbf8160ddb31787cc59f6541ff399cabecbef627')
+            '075cb44a985e3674040ae682b4ba2f134876c160db966bf6fa044fd2b8091017')
 
 prepare() {
     cd "$pkgname"

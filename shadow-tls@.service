@@ -6,6 +6,10 @@ Wants=network.target
 [Service]
 Type=simple
 User=nobody
+
+#Environment=MONOIO_FORCE_LEGACY_DRIVER=1
+#Environment=RUST_LOG=trace
+
 ExecStart=/usr/bin/shadow-tls config -c /etc/shadow-tls/%I.json
 ProtectSystem=strict
 ProtectHome=true
