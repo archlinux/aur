@@ -3,7 +3,7 @@
 pkgbase=python-stcal
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.15.2
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="STScI tools and algorithms used in calibration pipelines"
 arch=('i686' 'x86_64')
@@ -14,17 +14,24 @@ makedepends=('python-setuptools-scm>=3.4'
              'python-build'
              'python-installer'
              'python-numpy>=2.0.0'
-             'python-sphinx-asdf'
+             'python-sphinx-automodapi'
+             'python-sphinx_rtd_theme'
+             'python-pytest-doctestplus'
              'python-drizzle'
              'python-scikit-image'
              'python-tweakwcs'
+             'python-shapely'
+             'python-pyarrow'
+             'python-astropy-healpix'
              'graphviz')  # wheel required by new setuptools; gwcs, spherical_geometry, stsci.. <- tweakwcs
-#checkdepends=('python-pytest-doctestplus'
+#checkdepends=('python-pytest'
+##            'python-pytest-doctestplus'
 #             'python-pytest-xdist'
-#              'python-opencv'
-#             )   # gwcs(requests <- .. <- scipy) <- tweakwcs drizzle skimage(requests) already in makedepends
+#             'python-pytest-timeout'
+##            'python-opencv'
+#            )   # gwcs(requests <- .. <- scipy), imagestat, spherical_geometry <- tweakwcs drizzle skimage(requests) shapely pyarrow healpix already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('a7f8317ff0a6582e6ececf508bbd0ec0')
+md5sums=('4365c0541e7630ab1a43fb34bd6268c6')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -42,19 +49,22 @@ build() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
 #    # Cost long time
 #    mv src/{,_}${_pyname}
-#    PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver)" pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4
+#    PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver)" pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 --timeout 300 #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4
 #}
 
 package_python-stcal() {
     depends=('python>=3.11'
-             'python-drizzle>=2.0.1'
-             'python-gwcs>=0.25.2'
+             'python-drizzle>=2.2.0'
+             'python-gwcs>=1.0.1'
              'python-requests>=2.22'
              'python-scipy>=1.14.1'
-             'python-scikit-image>=0.20.0'
+             'python-scikit-image>=0.21.0'
              'python-tweakwcs>=0.8.8'
-             'python-opencv>=4.6.0.66'
-             'python-spherical_geometry>=1.2.22')
+             'python-spherical_geometry>=1.2.22'
+             'python-stsci.imagestats>=1.8.3'
+             'python-shapely>=2.1.1'
+             'python-pyarrow>=10.0.1'
+             'python-astropy-healpix>=1.1.2')
     optdepends=('python-stcal-doc: Documentation for stcal')
     cd ${srcdir}/${_pyname}-${pkgver}
 

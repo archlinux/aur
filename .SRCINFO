@@ -1,6 +1,6 @@
 pkgbase = python-stcal
 	pkgdesc = STScI tools and algorithms used in calibration pipelines
-	pkgver = 1.15.2
+	pkgver = 1.17.0
 	pkgrel = 1
 	url = https://stcal.readthedocs.io
 	arch = i686
@@ -11,24 +11,32 @@ pkgbase = python-stcal
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-numpy>=2.0.0
-	makedepends = python-sphinx-asdf
+	makedepends = python-sphinx-automodapi
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-pytest-doctestplus
 	makedepends = python-drizzle
 	makedepends = python-scikit-image
 	makedepends = python-tweakwcs
+	makedepends = python-shapely
+	makedepends = python-pyarrow
+	makedepends = python-astropy-healpix
 	makedepends = graphviz
-	source = https://files.pythonhosted.org/packages/source/s/stcal/stcal-1.15.2.tar.gz
-	md5sums = a7f8317ff0a6582e6ececf508bbd0ec0
+	source = https://files.pythonhosted.org/packages/source/s/stcal/stcal-1.17.0.tar.gz
+	md5sums = 4365c0541e7630ab1a43fb34bd6268c6
 
 pkgname = python-stcal
 	depends = python>=3.11
-	depends = python-drizzle>=2.0.1
-	depends = python-gwcs>=0.25.2
+	depends = python-drizzle>=2.2.0
+	depends = python-gwcs>=1.0.1
 	depends = python-requests>=2.22
 	depends = python-scipy>=1.14.1
-	depends = python-scikit-image>=0.20.0
+	depends = python-scikit-image>=0.21.0
 	depends = python-tweakwcs>=0.8.8
-	depends = python-opencv>=4.6.0.66
 	depends = python-spherical_geometry>=1.2.22
+	depends = python-stsci.imagestats>=1.8.3
+	depends = python-shapely>=2.1.1
+	depends = python-pyarrow>=10.0.1
+	depends = python-astropy-healpix>=1.1.2
 	optdepends = python-stcal-doc: Documentation for stcal
 
 pkgname = python-stcal-doc
