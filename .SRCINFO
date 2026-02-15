@@ -1,7 +1,7 @@
 pkgbase = ut2004-bin
 	pkgdesc = Unreal Tournament 2004 ECE native binaries (OldUnreal)
 	pkgver = 3374
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/OldUnreal/UT2004Patches
 	arch = x86_64
 	arch = aarch64
@@ -11,6 +11,8 @@ pkgbase = ut2004-bin
 	depends = openal
 	depends = openmp
 	depends = gcc-libs
+	depends = alsa-lib
+	depends = libgl
 	provides = ut2004
 	conflicts = ut2004-gog
 	conflicts = ut2004-steam

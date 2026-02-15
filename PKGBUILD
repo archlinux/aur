@@ -6,12 +6,12 @@
 
 pkgname=ut2004-bin
 pkgver=3374
-pkgrel=4
+pkgrel=5
 pkgdesc="Unreal Tournament 2004 ECE native binaries (OldUnreal)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/OldUnreal/UT2004Patches"
 license=('custom')
-depends=('ut2004-data' 'sdl3' 'openal' 'openmp' 'gcc-libs')
+depends=('ut2004-data' 'sdl3' 'openal' 'openmp' 'gcc-libs' 'alsa-lib' 'libgl')
 makedepends=()
 provides=('ut2004')
 conflicts=('ut2004-gog' 'ut2004-steam')
