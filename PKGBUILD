@@ -3,9 +3,9 @@
 
 pkgname=iamb
 pkgver=0.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc='A Matrix client for Vim addicts'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/ulyssa/iamb"
 license=('Apache-2.0')
 depends=('gcc-libs')
