@@ -86,6 +86,38 @@ index 7294b9f..bcac7da 100755
 +  return 1
 +}
 +
++resolve_livewallpapers_install_cmd() {
++  local helper=""
++  local pkgs=(steamcmd linux-wallpaperengine)
++  local joined="${pkgs[*]}"
++  joined="${joined// / }"
++
++  if command -v yay >/dev/null 2>&1; then
++    helper="yay"
++  elif command -v paru >/dev/null 2>&1; then
++    helper="paru"
++  fi
++
++  if [[ -n "$helper" ]]; then
++    echo "$helper -S --needed $joined"
++    return 0
++  fi
++
++  if command -v pacman >/dev/null 2>&1; then
++    if pacman -Si steamcmd >/dev/null 2>&1 && pacman -Si linux-wallpaperengine >/dev/null 2>&1; then
++      echo "sudo pacman -S --needed $joined"
++      return 0
++    fi
++    if pacman -Si steamcmd >/dev/null 2>&1; then
++      echo "sudo pacman -S --needed steamcmd"
++      echo "# Luego instala linux-wallpaperengine con yay/paru: yay -S --needed linux-wallpaperengine"
++      return 0
++    fi
++  fi
++
++  return 1
++}
++
 +kitowall_status_payload() {
 +  local node_bin="$1"
 +  if command -v kitowall >/dev/null 2>&1; then
@@ -155,7 +187,7 @@ index 7294b9f..bcac7da 100755
 +      local dep
 +      local missing=()
 +      local required=(steamcmd kitowall node systemctl)
-+      local optional=(python3 ffmpeg)
++      local optional=(python3 ffmpeg linux-wallpaperengine)
 +      local node_bin
 +      local has_node=0
 +      local has_kitowall=0
@@ -193,9 +225,9 @@ index 7294b9f..bcac7da 100755
 +      if [[ "${#missing[@]}" -gt 0 ]]; then
 +        ok=0
 +      fi
-+      install_cmd="$(resolve_steamcmd_install_cmd || true)"
++      install_cmd="$(resolve_livewallpapers_install_cmd || true)"
 +      if [[ -z "$install_cmd" ]]; then
-+        install_cmd="install steamcmd manually (pacman/yay/paru)"
++        install_cmd="install steamcmd and linux-wallpaperengine manually (pacman/yay/paru)"
 +      fi
 +
 +      if [[ "$as_json" == "1" ]]; then
@@ -288,10 +320,10 @@ index 7294b9f..bcac7da 100755
 +        shift
 +      done
 +      local cmd_install
-+      cmd_install="$(resolve_steamcmd_install_cmd || true)"
++      cmd_install="$(resolve_livewallpapers_install_cmd || true)"
 +      if [[ -z "$cmd_install" ]]; then
 +        echo "[x] No se detecto gestor compatible automaticamente (pacman/yay/paru)"
-+        echo "[i] Instala steamcmd manualmente con tu gestor de paquetes."
++        echo "[i] Instala steamcmd y linux-wallpaperengine manualmente con tu gestor de paquetes."
 +        exit 1
 +      fi
 +      if [[ "$print_only" == "1" ]]; then
