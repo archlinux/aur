@@ -1,0 +1,17 @@
+pkgbase = noctyra-meta
+	pkgdesc = Noctyra meta-package
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/noctyra-dots/meta
+	arch = any
+	license = MIT
+	depends = noctyra-dotfiles
+	depends = noctyra-cli
+	depends = quickshell
+	depends = kitty
+	depends = dolphin
+	depends = gpu-screen-recorder
+	provides = noctyra-meta
+	conflicts = noctyra-meta
+
+pkgname = noctyra-meta
