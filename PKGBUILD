@@ -3,14 +3,14 @@
 pkgname=oopz
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="OOPZ desktop client - free online voice platform"
+pkgdesc="OOPZ desktop client - third-party Electron package for the free online voice platform"
 arch=('x86_64')
 url="https://git.pysio.online/pysio/linux_oopz"
 license=('LicenseRef-proprietary')
 depends=('electron39')
-_commit=74c8cb2f6f3a996bef239fafdcafa2ca16346773
+_commit=8da2a5a18d0db26db220e36234442c9d4f1a4249
 source=("$pkgname::git+https://git.pysio.online/pysio/linux_oopz.git#commit=$_commit")
-sha256sums=('61674b3f93b5c2a974000593c48b9fe1fe1b7ac9929ad25d38c65d1b618b5714')
+sha256sums=('ca8092bd281dca48cd5387fab2c887cbce11b3dd7d8dd82c56fc93c99882ee3b')
 
 package() {
   cd "$srcdir/$pkgname"
