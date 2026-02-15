@@ -25,6 +25,6 @@ pkgbase = wayvr-bin
 	conflicts = wayvr
 	options = !debug
 	source = https://github.com/wlx-team/wayvr/releases/download/v26.2.1/WayVR-v26.2.1-x86_64.AppImage
-	sha256sums = 18b9e60cef27619da0be50422055e1816cbcaa15102c3c365c7912394977dbdf
+	sha256sums = ef811255a0fb2cae5ad76021880d835829c00d9de6ddd6f416fa74820d5d518d
 
 pkgname = wayvr-bin

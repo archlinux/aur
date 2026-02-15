@@ -41,7 +41,7 @@ source=(
     "https://github.com/wlx-team/${_pkgname}/releases/download/v${pkgver}/WayVR-v${pkgver}-${CARCH}.AppImage"
 )
 
-sha256sums=('18b9e60cef27619da0be50422055e1816cbcaa15102c3c365c7912394977dbdf')
+sha256sums=('ef811255a0fb2cae5ad76021880d835829c00d9de6ddd6f416fa74820d5d518d')
 
 prepare() {
   cd "${srcdir}"
