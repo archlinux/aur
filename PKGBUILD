@@ -2,7 +2,7 @@
 
 pkgname=notepad-plus-plus-linux-bin
 _pkgname=notepad-plus-plus-linux
-pkgver=1.0.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Linux-native Notepad++ fork for Arch Linux and derivatives (prebuilt binary)'
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
   "LICENSE::https://raw.githubusercontent.com/RossEngineering/notepad-plus-plus-linux/v${pkgver}/LICENSE"
 )
 sha256sums=(
-  '074d898a7dad254e4b3e4bc6004273d4994f0991b454f208a49e9553c9f9cfb6'
+  '0127fe07a801f0c5f95698f2322cbbbd7e86c1e18ea56bd858b765c717a4a562'
   '2b94f58d89424af06d1a8e16775774757f1ecfb678203c3439af037a24f35dc6'
 )
 
