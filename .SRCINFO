@@ -1,7 +1,7 @@
 pkgbase = saugns
-	pkgdesc = Curses-based SAU parser, player, WAV file writer and signal generator - stable branch
+	pkgdesc = Curses-based SAU parser, player, WAV file writer and signal generator
 	pkgver = 0.5.5b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sau.frama.io/#saugns
 	arch = i686
 	arch = x86_64
