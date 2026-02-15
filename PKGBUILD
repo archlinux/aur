@@ -2,6 +2,7 @@ pkgname=mercusys-ma530-dkms
 pkgver=1.0
 pkgrel=1
 pkgdesc="DKMS module adding support for Mercusys MA530 (RTL8761B) Bluetooth adapter"
+url="https://github.com/ProgrammingRainbow/mercusys-ma530-dkms"
 arch=('any')
 license=('GPL2')
 depends=('dkms' 'linux-headers' 'curl' 'patch')
