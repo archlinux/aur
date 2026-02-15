@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=System;Utility;
+Comment=GPU-T is a modern desktop utility built with .NET and Avalonia UI designed to provide detailed information about your video card and GPU
+Exec=gpu-t
+Icon=gpu-t
+Name=GPU-T
+Terminal=false
+Type=Application

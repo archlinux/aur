@@ -1,0 +1,5 @@
+GPU-T/
+pkg/
+src/
+*.tar.zst
+*.log
