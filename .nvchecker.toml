@@ -1,0 +1,4 @@
+[terminalimageviewer]
+source = 'git'
+git = 'https://github.com/stefanhaustein/TerminalImageViewer.git'
+prefix = 'v'
