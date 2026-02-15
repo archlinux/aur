@@ -2,7 +2,7 @@
 # Contributor: Tales Mendonça <talesam@gmail.com>
 
 pkgname=tac-writer
-pkgdesc="Academic writing assistant using the Continuous Argumentation Technique (CAT)"
+pkgdesc="Academic writing assistant using the Continuous Argumentation Technique (TAC)"
 # Uncomment and edit the following lines as needed
 depends=(
     'gtk4'
