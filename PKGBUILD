@@ -4,7 +4,7 @@ pkgbase=openjph-git
 pkgname=(
     'openjph-git'
     'openjph-doc-git')
-pkgver=0.26.0.r0.g4d4f4e8
+pkgver=0.26.1.r0.g25940a1
 pkgrel=1
 pkgdesc='Open-source implementation of JPEG2000 Part-15 (git version)'
 arch=('x86_64')
@@ -48,11 +48,12 @@ check() {
 
 package_openjph-git() {
     depends=(
-        'gcc-libs'
         'glibc'
+        'libgcc'
+        'libstdc++'
         'libtiff')
     provides=('openjph')
-    conflicts=('openjph')
+    conflicts=('openexr' 'openjph')
     
     DESTDIR="$pkgdir" cmake --install build
     install -D -m644 OpenJPH/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
