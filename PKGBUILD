@@ -2,7 +2,7 @@
 
 pkgname=unreal-tournament-data-archiveorg
 pkgver=436
-pkgrel=2
+pkgrel=3
 pkgdesc="Unreal Tournament 99 (GOTY) data from Archive.org ISO"
 arch=('any')
 url="https://archive.org/details/ut-goty"
@@ -60,5 +60,6 @@ package() {
     done
 
     msg2 "Fixing permissions..."
-    find "$pkgdir/opt/unreal-tournament" -type d -exec chmod 755 {} +                                                       find "$pkgdir/opt/unreal-tournament" -type f -exec chmod 644 {} +
+    find "$pkgdir/opt/unreal-tournament" -type d -exec chmod 755 {} +
+    find "$pkgdir/opt/unreal-tournament" -type f -exec chmod 644 {} +
 }
