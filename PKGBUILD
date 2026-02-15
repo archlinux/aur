@@ -1,8 +1,8 @@
-# Maintainer: Pechin Mikhail <ahsima1 (at) gmail (dot) com>
+# Maintainer: Dominik Kummer <admin (at) arkades (dot) org>
 
 _pkgbase=digimend-kernel-drivers
 pkgname=digimend-kernel-drivers-dkms-git
-pkgver=11.r42.gf3c7c7f
+pkgver=13.p1.r0.g011686d
 pkgrel=1
 
 pkgdesc='Linux kernel modules (DKMS) for non-Wacom USB graphics tablets. Git version.'
