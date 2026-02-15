@@ -1,6 +1,6 @@
 # Maintainer: Gustavo Sett <gustaavoribeeiro@hotmail.com>
 pkgname=win11-clipboard-history-bin
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Windows 11-style Clipboard History Manager for Linux"
 arch=('x86_64' 'aarch64')
@@ -24,8 +24,8 @@ conflicts=('win11-clipboard-history')
 options=('!strip' '!debug')
 source_x86_64=("${url}/releases/download/v${pkgver}/win11-clipboard-history_${pkgver}_amd64.deb")
 source_aarch64=("${url}/releases/download/v${pkgver}/win11-clipboard-history_${pkgver}_arm64.deb")
-sha256sums_x86_64=('48d33b6e714ef5a9d4d9c9e6d40738c10499e556be0f6c2e5b4289b51aebd5c8')
-sha256sums_aarch64=('eaaf9550bfa0f9bd6758104f45c27b564eedc91dd39040beaec14f4a93c2ae55')
+sha256sums_x86_64=('25878caac243af998ee0cd7aed4098e743eb0c91d52e20de00bf2a11b52c9351')
+sha256sums_aarch64=('c886f84fd112ced68bdd89aafef8708c48031e0ed8421c397b0457f041d1e00e')
 install="${pkgname}.install"
 
 package() {
