@@ -1,7 +1,7 @@
 pkgbase = brutalchess
 	pkgdesc = Chess game inspired by 'Battle Chess'. Features full 3D graphics.
 	pkgver = 0.5.2
-	pkgrel = 8
+	pkgrel = 9
 	url = https://sourceforge.net/projects/brutalchess
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -11,6 +11,6 @@ pkgbase = brutalchess
 	depends = sdl12-compat
 	depends = sdl_image
 	source = https://downloads.sourceforge.net/brutalchess/brutalchess-alpha-0.5.2-src.tar.gz
-	md5sums = 370476b63091b8d82a9ea57c604dcbab
+	sha512sums = 9d28e880d8ec8790359ceb60c27933a275dd3fb0db7f824534c363c5ad4a08d86df5b9ce274841d277570fb8b19cc8e14333773507064b8b96507a523038d95e
 
 pkgname = brutalchess

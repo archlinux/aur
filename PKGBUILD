@@ -6,14 +6,14 @@
 
 pkgname=brutalchess
 pkgver=0.5.2
-pkgrel=8
+pkgrel=9
 pkgdesc="Chess game inspired by 'Battle Chess'. Features full 3D graphics."
 url="https://sourceforge.net/projects/$pkgname"
 license=('GPL-2.0-or-later')
 arch=('x86_64')
 depends=('freetype2' 'glu' 'libglvnd' 'sdl12-compat' 'sdl_image')
 source=("https://downloads.sourceforge.net/$pkgname/$pkgname-alpha-$pkgver-src.tar.gz")
-md5sums=('370476b63091b8d82a9ea57c604dcbab')
+sha512sums=('9d28e880d8ec8790359ceb60c27933a275dd3fb0db7f824534c363c5ad4a08d86df5b9ce274841d277570fb8b19cc8e14333773507064b8b96507a523038d95e')
 
 prepare() {
   cd $pkgname-$pkgver/src
