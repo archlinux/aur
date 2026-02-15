@@ -4,6 +4,7 @@ pkgrel=9
 pkgdesc="a TUI todolist-app written in python"
 arch=('any')
 depends=('python' 'python-rich' 'python-questionary')
+makedepends=('git')
 url='https://github.com/NVitschDEV/ptodo'
 source=("ptodo.py")
 sha256sums=('bcf96674874a1e83c2461876d5637d7b0663df5ac0747d63c7e29b0e3faeda0d')
