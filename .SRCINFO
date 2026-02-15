@@ -1,0 +1,12 @@
+pkgbase = unreal-tournament-data-steam
+	pkgdesc = Unreal Tournament 99 (GOTY) data from Steam
+	pkgver = 436
+	pkgrel = 1
+	url = https://store.steampowered.com/app/13240/Unreal_Tournament_GOTY/
+	arch = any
+	license = custom
+	makedepends = steamcmd
+	provides = unreal-tournament-data
+	conflicts = unreal-tournament-data
+
+pkgname = unreal-tournament-data-steam
