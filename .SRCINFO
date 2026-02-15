@@ -1,0 +1,17 @@
+pkgbase = saugns
+	pkgdesc = Curses-based SAU parser, player, WAV file writer and signal generator - stable branch
+	pkgver = 0.5.5b
+	pkgrel = 1
+	url = https://sau.frama.io/#saugns
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-3.0-or-later
+	depends = ncurses
+	depends = alsa-lib
+	provides = saugns
+	conflicts = saugns
+	source = saugns-0.5.5b.tar.gz::https://codeberg.org/sau/saugns/archive/v0.5.5b.tar.gz
+	sha256sums = 1e08bdc843859dccdb4d9dbda6672a601b058a3901f4e1ba7a478772540b99e4
+
+pkgname = saugns
