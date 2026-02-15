@@ -3,7 +3,7 @@
 pkgname=extreme-ultimate-bashrc
 pkgver=1.0.0
 pkgrel=1
-pkgdesc='A comprehensive 11,000+ line bash configuration framework with 107 functions and 113 aliases'
+pkgdesc='Feature-rich bash configuration framework with 107 functions, 113 aliases, auto-detection, and extensive documentation'
 arch=('any')
 url='https://sourceforge.net/projects/ultimate-bashrc/'
 license=('0BSD')
