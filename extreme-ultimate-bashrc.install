@@ -1,0 +1,31 @@
+post_install() {
+	echo ""
+	echo "  Extreme Ultimate .bashrc has been installed."
+	echo ""
+	echo "  To set up, run:"
+	echo "    setup-bashrc"
+	echo ""
+	echo "  Or: bash /opt/extreme-ultimate-bashrc/install.sh"
+	echo ""
+}
+
+post_upgrade() {
+	echo ""
+	echo "  Extreme Ultimate .bashrc has been updated."
+	echo "  Changes take effect in your next terminal session."
+	echo ""
+}
+
+pre_remove() {
+	echo ""
+	echo "  Extreme Ultimate .bashrc is being removed."
+	echo ""
+	echo "  Your ~/.bashrc is a thin wrapper that sources from /opt/."
+	echo "  After removal it will fail to load. To restore your original:"
+	echo ""
+	echo "    ls ~/.bashrc.backup.*"
+	echo "    mv ~/.bashrc.backup.YYYYMMDD ~/.bashrc"
+	echo ""
+	echo "  Or simply delete ~/.bashrc and create a new one."
+	echo ""
+}
