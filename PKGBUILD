@@ -7,6 +7,8 @@ pkgrel=1
 pkgdesc="open source, peer-to-peer code collaboration stack built on Git"
 arch=('x86_64')
 license=('Apache-2.0 OR MIT')
+_node="seed.radicle.xyz"
+_rid="rad:z3gqcJUoA1n9HaHKufZs5FCSGazv5"
 url="https://radicle.xyz"
 depends=(
 	'glibc'
@@ -21,7 +23,7 @@ makedepends=(
 	'asciidoctor'
 )
 source=(
-	"heartwood::git+https://seed.radicle.xyz/z3gqcJUoA1n9HaHKufZs5FCSGazv5.git"
+	"heartwood::git+https://$_node/${_rid#rad:}.git"
 	"0001-build-work-around-sccache-do-not-read-SOURCE_DATE_EP.patch"
 	"0002-git-ref-format-fix-macros-for-debug_assertions.patch"
 	"0003-git-ref-format-support-tests-with-debug_assertions.patch"
