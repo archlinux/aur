@@ -1,7 +1,7 @@
 pkgbase = unreal-tournament-data-archiveorg
 	pkgdesc = Unreal Tournament 99 (GOTY) data from Archive.org ISO
 	pkgver = 436
-	pkgrel = 1
+	pkgrel = 2
 	url = https://archive.org/details/ut-goty
 	arch = any
 	license = custom
