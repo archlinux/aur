@@ -5,11 +5,11 @@ pkgver=r53.ab5fc71
 pkgrel=1
 pkgdesc="iTerm2, kitty, and WezTerm shell integrations for Xonsh"
 arch=('any')
-url="https://github.com/jnoortheen/xontrib-term-integrations/"
+url="https://github.com/jnoortheen/xontrib-term-integrations"
 license=('MIT')
 source=("git+$url")
 depends=('xonsh' 'python')
-makedepends=('git' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-pdm-backend')
+makedepends=('git' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-pdm-pep517')
 provides=("xontrib-term-integrations")
 sha256sums=('SKIP')
 
