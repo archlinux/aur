@@ -3,7 +3,7 @@
 # Contributor: Valentijn V. <neko at catgirlsin dot space>
 pkgname=gb-studio-bin
 _pkgname=GB-Studio
-pkgver=4.1.3
+pkgver=4.2.1
 pkgrel=1
 pkgdesc="Visual retro game maker"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'util-linux' 't
 optdepends=('pulseaudio: sound support')
 options=('!strip' '!emptydirs')
 source=("$pkgname-$pkgver-$pkgrel.deb::https://github.com/chrismaltby/gb-studio/releases/download/v${pkgver}/gb-studio-linux-debian.deb")
-sha512sums=('ddc1d58e2b28c8ac5d78f75577436aeb8a6ef5ba56a3fbede7c53c54086a6067c5aa51d76628a40d81389f017e01aaa134bd7d4385ffe1630b0441d9119ff98c')
+sha512sums=('24eef6213d3c3d3260ab76ac2ee3c3c8359d0ac7720a0504340707ef3c3f974f51288fd0c778ce5db995374ee9d2a8fb8645e8cb91182ed0af6485ab626848f6')
 
 prepare(){
         bsdtar -xf ${pkgname}-${pkgver}-${pkgrel}.deb
