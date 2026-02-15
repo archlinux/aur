@@ -15,7 +15,7 @@
 pkgname=haproxy-awslc
 _pkgname=haproxy
 pkgver=3.3.3
-pkgrel=2
+pkgrel=3
 
 pkgdesc='Reliable, high performance TCP/HTTP load balancer built with aws-lc'
 url='https://www.haproxy.org/'
@@ -105,10 +105,17 @@ build() {
 check() {
   cd "haproxy-${pkgver%.*}"
 
-  # We need to make sure haproxy actually links to .so of aws-lc
+  # I'd like to make sure haproxy actually links to .so of aws-lc
   # A misconfigured build could fallback to linking openssl because aws-lc
   # doesn't change the soname.
-  ldd ./haproxy | grep -Fq /usr/lib/aws-lc/
+  #
+  # ldd ./haproxy | grep -Fq /usr/lib/aws-lc/
+  #
+  # However, aws-lc upstream doesn't promise ABI stability yet. The
+  # maintainer of AUR/aws-lc decides to go with staticlib for now.
+  # Good news for me: the build process of haproxy stays the same.
+  #
+  # Upstream issue: https://github.com/aws/aws-lc/issues/1098
   if [ $? = 1 ]; then
     echo "Executable \`haproxy' isn't linked to aws-lc libraries. Abort"
     return 1
