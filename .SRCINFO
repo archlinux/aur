@@ -1,6 +1,6 @@
 pkgbase = pz-mod-manager
 	pkgdesc = Desktop application for managing Project Zomboid server mod lists
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/skint007/project-zomboid-modid
 	arch = any
@@ -8,11 +8,12 @@ pkgbase = pz-mod-manager
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python>=3.11
 	depends = pyside6
 	depends = python-requests
-	source = pz-mod-manager-0.2.1.tar.gz::https://github.com/skint007/project-zomboid-modid/archive/refs/tags/v0.2.1.tar.gz
+	source = pz-mod-manager-0.2.2.tar.gz::https://github.com/skint007/project-zomboid-modid/archive/refs/tags/v0.2.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = pz-mod-manager
