@@ -1,0 +1,15 @@
+pkgbase = zenoh-cpp
+	pkgdesc = C++ API for Zenoh
+	pkgver = 1.7.2
+	pkgrel = 1
+	url = https://zenoh.io/
+	arch = any
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = ninja
+	depends = zenoh-c
+	options = !debug
+	source = https://github.com/eclipse-zenoh/zenoh-cpp/archive/1.7.2.tar.gz
+	sha256sums = 0d41a2696527fabf6e401b9ffe5641d3861da99cd1180e7850069f15c1ebb24c
+
+pkgname = zenoh-cpp
