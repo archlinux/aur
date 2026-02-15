@@ -3,7 +3,7 @@
 pkgbase=python-stwcs
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=1.7.5
+pkgver=1.7.6
 pkgrel=1
 pkgdesc="WCS based distortion models and coordinate transformation"
 arch=('any')
@@ -13,12 +13,15 @@ makedepends=('python-setuptools-scm'
              'python-build'
              'python-installer')  # wheel required by new setuptools
 checkdepends=('python-pytest'
+             'python-pytest-xdist'
+             'python-pytest-timeout'
               'python-stsci.tools'
-#             'python-matplotlib'
+##             'python-matplotlib'
               'python-lxml'
-              'python-requests')
+              'python-requests'
+          )
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('e4d810f0d3370619be445401fd8a7cdd')
+md5sums=('a8b336d68fae30af73484f449e7fa03a')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -29,7 +32,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count #
+    pytest -vv -l -ra --color=yes -o console_output_style=count # || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count #
 }
 
 package_python-stwcs() {
