@@ -2,12 +2,12 @@
 
 pkgname=uutils-diffutils
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Rust implementation of diffutils"
 arch=('i686' 'x86_64')
 url="https://github.com/uutils/diffutils"
 license=('Apache-2.0' 'MIT')
-depends=('gcc-libs' 'glibc')
+depends=('glibc' 'libgcc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/uutils/diffutils/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('4c05d236ebddef7738446980a59cd13521b6990ea02242db6b32321dd93853ca')
