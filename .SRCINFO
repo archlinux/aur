@@ -1,7 +1,7 @@
 pkgbase = mx-live-usb-maker
 	pkgdesc = Graphical utility for creating bootable live USB drives
 	pkgver = 26.02.2arch
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mxlinux.org
 	arch = x86_64
 	arch = i686

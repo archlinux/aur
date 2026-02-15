@@ -1,7 +1,7 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=mx-live-usb-maker
 pkgver=26.02.2arch
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical utility for creating bootable live USB drives"
 arch=('x86_64' 'i686')
 url="https://mxlinux.org"
@@ -68,6 +68,8 @@ package() {
     install -Dm644 mx-live-usb-maker.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/mx-live-usb-maker.png"
     install -Dm644 mx-live-usb-maker.png "${pkgdir}/usr/share/pixmaps/mx-live-usb-maker.png"
     install -Dm644 mx-live-usb-maker.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/mx-live-usb-maker.svg"
+
+    install -Dm644 docs/mx-live-usb-maker.1 "${pkgdir}/usr/share/man/man1/mx-live-usb-maker.1"
 
     install -dm755 "${pkgdir}/usr/share/doc/mx-live-usb-maker"
     install -Dm644 authors.txt "${pkgdir}/usr/share/doc/mx-live-usb-maker/authors.txt"
