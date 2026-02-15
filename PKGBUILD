@@ -3,7 +3,7 @@ _name=sentencepiece
 pkgbase="${_name}"
 pkgname=("${pkgbase}" "python-${pkgbase}")
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Unsupervised text tokenizer for Neural Network-based text generation"
 arch=('x86_64')
 url="https://github.com/google/sentencepiece"
@@ -12,21 +12,14 @@ makedepends=('git' 'cmake'
              'abseil-cpp' 'gperftools' 'protobuf'
              'python' 'python-build' 'python-setuptools' 'python-wheel' 'python-installer')
 checkdepends=('python-pytest')
-_tag='31646a467d2051eb904e0b45de3a73e91fe1c1e3' # git rev-parse "v${pkgver}"
 source=(
-  "${_name}::git+${url}.git#tag=${_tag}"
-  'fix-parse-command-line-flags-test.patch'
+  "${_name}::git+${url}.git#tag=v${pkgver}"
   'dont-include-data-files-in-python-pkg.patch'
 )
 sha512sums=(
-  'SKIP'
-  '7329caa5e824b873e931fd10134e07b8c6bbb0612e5355be0ddf8478677d2cd4e2d725485c51173142fcc35b6c12b869aecca6949291b869f537f4d6c048cc55'
+  'f9bfaf0183da4f1aa27f169b28fb0db95cdc1ff7e3e12f04cc64eae563c0ab5ed6a30e820659736509ca420363473ece1af27657975095080e772d841e5f3475'
   '86443111c23d1d0f7db27673d8bb34e1a5d7e49e301b0e0978bb32b29cde51a924ff95bd079923f993c8e1180400b4268c39fa500102c99925daaaffeefe90ff'
 )
-
-pkgver() {
-  git -C "${_name}" describe --tags | sed 's/^v//'
-}
 
 prepare() {
   cd "${_name}"
@@ -34,7 +27,7 @@ prepare() {
   git clean -dfx
 
   # https://github.com/google/sentencepiece/issues/1137
-  git apply --verbose ../fix-parse-command-line-flags-test.patch
+  git cherry-pick --no-commit 6dadda597b9e19ad3efb8890585f0b92266c7c0e
 
   # The base pkg includes data already
   git apply --verbose ../dont-include-data-files-in-python-pkg.patch
@@ -79,7 +72,7 @@ check() {
 }
 
 package_sentencepiece() {
-  depends=('gcc-libs' 'glibc' 'abseil-cpp' 'gperftools' 'protobuf')
+  depends=('libgcc' 'libstdc++' 'glibc' 'abseil-cpp' 'gperftools' 'protobuf')
   provides=('libsentencepiece.so' 'libsentencepiece_train.so')
 
   DESTDIR="${pkgdir}" cmake --install "${_name}/build"
@@ -87,7 +80,7 @@ package_sentencepiece() {
 
 package_python-sentencepiece() {
   pkgdesc="Python wrapper for SentencePiece"
-  depends=("${pkgbase}=${pkgver}-${pkgrel}" 'gcc-libs' 'glibc' 'python')
+  depends=("${pkgbase}=${pkgver}-${pkgrel}" 'libgcc' 'libstdc++' 'glibc' 'python')
   optdepends=('python-protobuf')
 
   cd "${_name}/python"
