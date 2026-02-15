@@ -1,7 +1,7 @@
 # Maintainer: Renato de Oliveira <renatoi at github>
 pkgname=azeron-software
 pkgver=1.5.6
-pkgrel=3
+pkgrel=4
 pkgdesc='Configuration tool for Azeron keypads (unofficial Linux repackage)'
 arch=('x86_64')
 url='https://github.com/renatoi/azeron-linux'
