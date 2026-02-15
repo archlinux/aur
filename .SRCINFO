@@ -1,19 +1,21 @@
 pkgbase = adw-network
 	pkgdesc = Modern network management application for GNOME (build from source)
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/PlayRood32/adw-network
 	arch = x86_64
 	license = GPL3
 	makedepends = rust
-	makedepends = base-devel
+	makedepends = cargo
 	depends = gtk4
 	depends = libadwaita
 	depends = gdk-pixbuf2
 	depends = networkmanager
 	provides = adw-network
 	conflicts = adw-network-bin
-	source = git+https://github.com/PlayRood32/adw-network.git
-	sha256sums = SKIP
+	options = !debug
+	options = strip
+	source = git+https://github.com/PlayRood32/adw-network.git#tag=v0.1.5
+	sha256sums = 7707c5179f0b4525525473d3923ac228ed2167a6710ed4f6c5a7ee6bf94b603c
 
 pkgname = adw-network
