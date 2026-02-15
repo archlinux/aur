@@ -2,7 +2,7 @@
 
 pkgname=unreal-tournament-data-gog
 pkgver=436
-pkgrel=1
+pkgrel=2
 pkgdesc="Unreal Tournament 99 (GOTY) data from GOG"
 arch=('any')
 url="https://www.gog.com/game/unreal_tournament_goty"
@@ -61,4 +61,7 @@ package() {
     rm -f "System/relics.u" "System/relicsbindings.u"
     rm -f "Textures/LadderFonts.utx" "Textures/UWindowFonts.utx"
     rm -rf "Web"
+
+    msg2 "Fixing permissions..."
+    find "$pkgdir/opt/unreal-tournament" -type d -exec chmod 755 {} +                                                       find "$pkgdir/opt/unreal-tournament" -type f -exec chmod 644 {} +
 }
