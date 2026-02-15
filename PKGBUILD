@@ -1,8 +1,8 @@
 # Maintainer: artist for Artix Linux and XLibre <artist@artixlinux.org>
 
 pkgname=xlibre-video-ati
-pkgver=25.0.0
-pkgrel=7
+pkgver=25.0.1
+pkgrel=1
 pkgdesc="XLibre fork of X.Org ati video driver"
 arch=(x86_64 aarch64)
 _pkgname="${pkgname//xlibre/xf86}"
@@ -64,4 +64,4 @@ package() {
   install -Dm644 "${srcdir}"/${_pkgname}-xlibre-${_pkgname}-${pkgver}/COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
 
-sha256sums=('597e9b3f9b1b4f5e40fd6d1706f4ffe6d31bbc2955d4f435d1e3014f2e089bde')
+sha256sums=('35c96222fdbce8112f3a44b63d098a8a59c5950265ccf400561e49b8010fb0f6')
