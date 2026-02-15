@@ -6,7 +6,7 @@
 # Maintainer: Cooky-12 cooky-12@qq.com
 pkg____=bluez
 pkgname=('bluez-ps3')
-pkgver=5.85
+pkgver=5.86
 pkgrel=1
 url="http://www.bluez.org/"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('dbus' 'libical' 'systemd' 'alsa-lib' 'json-c' 'ell' 'python-docuti
 source=(https://www.kernel.org/pub/linux/bluetooth/${pkg____}-${pkgver}.tar.xz fake-ps3.patch
         bluetooth.modprobe)
 # see https://www.kernel.org/pub/linux/bluetooth/sha256sums.asc
-sha256sums=('ad028e49254bc4551a13f08fe7904c63d02ba650d77be8ae15bb3b0a0ad94a6f'
+sha256sums=('99f144540c6070591e4c53bcb977eb42664c62b7b36cb35a29cf72ded339621d'
             '2eb8953fa0491315af34eaa940c77f7373cbd18d7f67acc780f460f3edb64ffb'
             '46c021be659c9a1c4e55afd04df0c059af1f3d98a96338236412e449bf7477b4')
 
@@ -52,6 +52,14 @@ build() {
   for files in `find tools/ -type f -perm -755`; do
     filename=$(basename $files)
     install -Dm755 "${srcdir}"/"${pkg____}"-${pkgver}/tools/$filename "${srcdir}/fakeinstall"/usr/bin/$filename
+  done
+
+  # add man pages for the above tools
+  # https://github.com/bluez/bluez/commit/44e3dd321e4be052bcde40939552b93b734538d3
+  for manfile in `find doc/ -type f -regex '.*\.[1-8]'`; do
+    section=$(echo $manfile | sed -E 's/.*\.([1-8])$/\1/')
+    filename=$(basename $manfile)
+    install -Dm644 "${srcdir}"/"${pkg____}"-${pkgver}/doc/$filename "${srcdir}/fakeinstall"/usr/share/man/man${section}/$filename
   done
 }
 
