@@ -2,12 +2,12 @@
 
 pkgname=dhcpcd8-git
 pkgver=8.1.9.r7.g9095f26a
-pkgrel=4
+pkgrel=5
 pkgdesc="A DHCP and DHCPv6 client (8.x releases)"
 arch=('i686' 'x86_64')
 url="https://roy.marples.name/projects/dhcpcd/"
 license=('BSD-2-Clause')
-depends=('gcc-libs' 'glibc' 'sh' 'systemd-libs')
+depends=('glibc' 'libgcc' 'sh' 'systemd-libs')
 makedepends=('git')
 optdepends=('openresolv: resolvconf support')
 provides=("dhcpcd=$pkgver" 'dhcp-client')
@@ -26,7 +26,7 @@ pkgver() {
   cd "dhcpcd"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^v8[0-9\.]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
