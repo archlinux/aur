@@ -1,3 +1,4 @@
+#!/bin/bash
 # shellcheck disable=SC1091,SC2034,SC2086,SC2128,SC2148,SC2154,SC2164
 # Maintainer: Toria <ninetailedtori@uwu.gal>
 
@@ -10,7 +11,7 @@ _Pkgname="Vial"
 pkgname="${_pkgname}-git"
 pkgdesc="Vial is an open-source cross-platform (Windows, Linux and Mac) GUI and a QMK fork for configuring your keyboard in real time."
 pkgver=v0.7.5.r8.g5cc9f89
-pkgrel=3
+pkgrel=4
 pyver=3.6.15
 url="https://get.vial.today/"
 license=("GPL-2.0-only")
@@ -27,7 +28,6 @@ makedepends=(
 checkdepends=(
     'pyenv'
 )
-install=vial.install
 sha256sums=('SKIP'
             'a6af0820ee6960dccab9ce0df0a898ccd0a50fecd992e341656dd1af78680502'
             'f91d36792b315caf9faa380860ae093fb1ef0ee966dad46023f033ab2ba7f22e')
@@ -48,6 +48,11 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${_Pkgname}"
+
+    # Initialise pyenv.
+    export PYENV_ROOT="$HOME/.pyenv"
+    [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init - bash)"
 
     # Use pyenv to install specific version.
     pyenv install -s $pyver
@@ -97,6 +102,9 @@ check() {
 package() {
     # AppImage
     install -Dm755 "${srcdir}/${_Pkgname}/out/${_Pkgname}-*.AppImage" "${pkgdir}/opt/${pkgname}/${_pkgname}.AppImage"
+
+    # Link AppImage to bindir.
+    ln -sfv /opt/${pkgname}/${_pkgname}.AppImage ${pkgdir}/usr/bin/${_pkgname}
 
     # Desktop file
     install -Dm644 "${srcdir}/${_Pkgname}/${_Pkgname}.desktop" "${pkgdir}/usr/share/applications/${_Pkgname}.desktop"
