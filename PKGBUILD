@@ -10,7 +10,7 @@ depends=()
 makedepends=('go')
 checkdepends=('just')
 source=("https://github.com/FelineStateMachine/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0a94bcb60317b7d788a9db5c2a7de27f6c8ab7862c0f9fa449f2c247687020a6')
+sha256sums=('29800679038977479ceaa2e60332b66ccee1aefe236f5860fd2fba8a2914b684')
 
 build() {
   cd "$pkgname-$pkgver"
