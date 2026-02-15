@@ -5,7 +5,7 @@
 
 pkgbase=luasql
 pkgname=(lua-sql-mysql lua-sql-postgres lua-sql-sqlite)
-pkgver=2.7.0
+pkgver=2.8.0
 pkgrel=1
 arch=(x86_64)
 url='https://keplerproject.github.io/luasql'
@@ -16,7 +16,7 @@ makedepends=(libmariadbclient
              sqlite)
 _archive="$pkgbase-$pkgver"
 source=("https://github.com/keplerproject/luasql/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('15de59f0ea1a2ab205a11e0115d760f8e0c3fee0d3fcc37f52e326a53236e0c7')
+sha256sums=('d568ef516f53ef28e21bf3008169c54ed301e476baadb47d61bfbe6f10de1129')
 
 build() {
 	cd "$_archive"
