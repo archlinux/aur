@@ -1,7 +1,7 @@
 # Maintainer: Mr.Zero88 <huesmann.mats+aur@gmail.com>
 
 pkgname=oyasumi-bin
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 _oyasumiver=25.6.12
 pkgdesc="Oyasumi (VR Sleeping Utilities)"
@@ -14,7 +14,7 @@ source=(
   'oyasumivr@128x128.png'
 )
 sha256sums=(
-  '19063294e1c81d7215e572904810e76be7d0fcbe20c1bea37c6938234fb12081'
+  'a05f3e24868336bae7d98f6ce7b5ba703e39f7107b151babf8d0645402081072'
   '55b55fa249b95fca609073c22780c5eb0c3ced1f45717e872817e947a3897045'
   '7925098c33d2ebb44f28ef96a3cc92590010acacbee4d6ea45f1af2b81a3ae2c'
 )
