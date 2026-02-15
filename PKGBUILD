@@ -2,8 +2,8 @@
 # Contributor: Jonas Witschel <diabonas@archlinux.org>
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
-pkgver=109.r8457
-pkgrel=3
+pkgver=110.r8696
+pkgrel=1
 pkgdesc="An event driven initramfs infrastructure"
 arch=('x86_64')
 url="https://github.com/dracut-ng/dracut"
@@ -94,10 +94,12 @@ pkgver() {
   cd "${pkgname%-git}"
 
   # populate DRACUT_VERSION from upstream source
-  source dracut-version.sh
+  versionline=$(cat dracut.sh | grep ^DRACUT_VERSION)
+  version="${versionline#*\"}"
+  version="${version%\"}"
 
   # use number of revisions since beginning of the history
-  printf "%s.r%s" "$DRACUT_VERSION" "$(git rev-list --count HEAD)"
+  printf "%s.r%s" "$version" "$(git rev-list --count HEAD)"
 }
 
 build() {

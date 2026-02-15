@@ -1,7 +1,7 @@
 pkgbase = dracut-git
 	pkgdesc = An event driven initramfs infrastructure
-	pkgver = 109.r8457
-	pkgrel = 3
+	pkgver = 110.r8696
+	pkgrel = 1
 	url = https://github.com/dracut-ng/dracut
 	arch = x86_64
 	license = GPL-2.0-or-later
