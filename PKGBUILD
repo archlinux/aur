@@ -2,12 +2,12 @@
 
 pkgname=buildcache-git
 pkgver=0.28.4.r2.g735eebb
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced compiler accelerator"
 arch=('i686' 'x86_64')
 url="https://github.com/mbitsnbites/buildcache"
 license=('Zlib')
-depends=('gcc-libs' 'openssl')
+depends=('glibc' 'libgcc' 'libstdc++' 'openssl')
 makedepends=('git' 'cmake')
 optdepends=('lua')
 provides=("buildcache=$pkgver")

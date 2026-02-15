@@ -1,14 +1,16 @@
 pkgbase = buildcache-git
 	pkgdesc = An advanced compiler accelerator
 	pkgver = 0.28.4.r2.g735eebb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mbitsnbites/buildcache
 	arch = i686
 	arch = x86_64
 	license = Zlib
 	makedepends = git
 	makedepends = cmake
-	depends = gcc-libs
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
 	depends = openssl
 	optdepends = lua
 	provides = buildcache=0.28.4.r2.g735eebb
