@@ -1,34 +1,54 @@
-# Maintainer: Godeps <Godeps@protonmail.com>
-# Based on nns's jdk17-graalvm-ee-bin AUR package
+# Maintainer: PureFallen <archlinux.snoring858@passmail.net>
+# Contributor: Godeps <Godeps@protonmail.com>
+# Previously based on nns's jdk17-graalvm-ee-bin AUR package
 
-java_=11
-pkgname="jdk${java_}-graalvm-ee-bin"
-pkgver=22.3.2
+_majorver=11
+_jvmdir=/usr/lib/jvm/java-${_majorver}-graalvm-ee/
+pkgname="jdk${_majorver}-graalvm-ee-bin"
+pkgver=21.3.17
 pkgrel=1
-pkgdesc="Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java ${java_} version"
+epoch=1
+pkgdesc="Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java ${_majorver} version"
 arch=('x86_64'
       'aarch64')
 url='https://www.graalvm.org/'
 license=('custom:OTN')
 depends=('java-runtime-common'
-         'java-environment-common')
+	 'java-environment-common'
+         'ca-certificates-utils')
 makedepends=()
-provides=("java-runtime=${java_}"
-          "java-environment=${java_}")
-options=('staticlibs')
+optdepends=("graal-nodejs-jdk${_majorver}-bin: Node.js component (used to be bundled with this package before the 21.1.0 release)")
+provides=("java-runtime=${_majorver}"
+	  "java-runtime-headless=${_majorver}"
+	  "java-environment=${_majorver}")
+options=('staticlibs'
+	 '!debug')
 install="$pkgname.install"
 source=('graalvm-ee-rebuild-libpolyglot.hook')
 sha256sums=('7dc37bd3703ebebcd6efa39534e6bb6e3ec9c8ee0d97e46d6df5349739c7d2ca')
-sha256sums_x86_64=('ae68313e87e6fba2295321066bab859a847b6a9a180f55f0d22f989e59c8abfc')
-sha256sums_aarch64=('1490bbb7f0b10f47fcb93cc7c4970cab426c8d9c16265c064d2dc026e2ea19b3')
-source_x86_64=("https://oca.opensource.oracle.com/gds/GRAALVM_EE_JAVA${java_}_${pkgver//./_}/graalvm-ee-java${java_}-linux-amd64-${pkgver}.tar.gz")
-source_aarch64=("https://oca.opensource.oracle.com/gds/GRAALVM_EE_JAVA${java_}_${pkgver//./_}/graalvm-ee-java${java_}-linux-aarch64-${pkgver}.tar.gz")
+# tarball must be manually downloaded from https://www.oracle.com/downloads/graalvm-downloads.html
+source_x86_64=("local://graalvm-ee-java${_majorver}-linux-amd64-${pkgver}.tar.gz")
+sha256sums_x86_64=('2d4a3cd5800806c300a201e8d55b34727a2907ba01686418efff6d393c2e8815')
+source_aarch64=("local://graalvm-ee-java${_majorver}-linux-aarch64-${pkgver}.tar.gz")
+sha256sums_aarch64=('9c98b94558c5c98f7123de298ec83a9ffeed0eec251873345d8c9b37426973bf')
 
 package() {
-    cd "graalvm-ee-java${java_}-${pkgver}"
-    mkdir -p "$pkgdir/usr/lib/jvm/java-${java_}-graalvm-ee/"
-    cp -a -t "$pkgdir/usr/lib/jvm/java-${java_}-graalvm-ee/" *
-    install -DTm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    sed "s/JAVA/${java_}/g" < "../graalvm-ee-rebuild-libpolyglot.hook" > "graalvm-ee-jdk${java_}-rebuild-libpolyglot.hook"
-    install -DTm644 "graalvm-ee-jdk${java_}-rebuild-libpolyglot.hook" "$pkgdir/usr/share/libalpm/hooks/graalvm-ee-jdk${java_}-rebuild-libpolyglot.hook"
+	# Grab all contents of tarball and extract to correct places
+	install -dm 755 "${pkgdir}${_jvmdir}"
+	cp -ar "${srcdir}/graalvm-ee-java${_majorver}-${pkgver}/." "${pkgdir}${_jvmdir}"
+
+	# License
+	cd "${srcdir}/graalvm-ee-java${_majorver}-${pkgver}"
+	install -DTm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+	# Man pages
+	cd "${pkgdir}${_jvmdir}"
+	for f in man/man1/*; do
+		install -DTm644 "${f}" "${pkgdir}/usr/share/${f/\.1/-graalvm-ee-java${_majorver}.1}"
+	done
+
+	# Polyglot hook
+	cd "${srcdir}"
+	sed "s/JAVA/${_majorver}/g" < "graalvm-ee-rebuild-libpolyglot.hook" > "graalvm-ee-jdk${_majorver}-rebuild-libpolyglot.hook"
+	install -DTm644 "graalvm-ee-jdk${_majorver}-rebuild-libpolyglot.hook" "${pkgdir}/usr/share/libalpm/hooks/graalvm-ee-jdk${_majorver}-rebuild-libpolyglot.hook"
 }
