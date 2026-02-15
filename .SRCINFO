@@ -1,6 +1,6 @@
 pkgbase = peek-cli
 	pkgdesc = A simple file viewer that opens files in the default web browser.
-	pkgver = 2.0.0
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/lyznne/peek
 	arch = x86_64
@@ -8,8 +8,10 @@ pkgbase = peek-cli
 	license = Apache-2.0
 	makedepends = cargo
 	makedepends = rust
+	makedepends = nodejs
+	makedepends = pnpm
 	depends = gcc-libs
-	source = peek-cli-2.0.0.tar.gz::https://github.com/lyznne/peek/archive/refs/tags/v2.0.0.tar.gz
-	sha256sums = 9ee004852f16f917c90378e9750cfe3bc69553177f726c682ca63bb91ca549ca
+	source = peek-cli-2.0.3.tar.gz::https://github.com/lyznne/peek/archive/v2.0.3.tar.gz
+	sha256sums = 5bc9a61998a60c0a0174b320a71bae2b1511ce2e184432eabc1955754182aeec
 
 pkgname = peek-cli
