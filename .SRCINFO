@@ -1,0 +1,15 @@
+pkgbase = noctyra-dotfiles-git
+	pkgdesc = Noctyra dotfiles (git) - stow packages installed system-wide
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/noctyra-dots/dotfiles
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = stow
+	provides = noctyra-dotfiles
+	conflicts = noctyra-dotfiles
+	source = dotfiles::git+https://github.com/noctyra-dots/dotfiles.git
+	sha256sums = SKIP
+
+pkgname = noctyra-dotfiles-git
