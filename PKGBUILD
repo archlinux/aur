@@ -17,25 +17,25 @@ provides=('gpu-t')
 conflicts=('gpu-t')
 
 pkgver() {
-	cd "$srcdir/$_pkgname"
-	git describe --tags --long --abbrev=7 --match 'v[0-9]*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$srcdir/$_pkgname"
+    git describe --tags --long --abbrev=7 --match 'v[0-9]*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd "$srcdir/$_pkgname"
+    cd "$srcdir/$_pkgname"
 
-	export DOTNET_NOLOGO=1
+    export DOTNET_NOLOGO=1
 
-	dotnet restore
+    dotnet restore
 }
 
 build() {
-	cd "$srcdir/$_pkgname"
-	dotnet build ${_pkgname}.csproj --configuration Release --no-restore
+    cd "$srcdir/$_pkgname"
+    dotnet build ${_pkgname}.csproj --configuration Release --no-restore
 }
 
 package() {
-	cd "$srcdir/$_pkgname"
+    cd "$srcdir/$_pkgname"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 "$srcdir/gpu-t.desktop" "$pkgdir/usr/share/applications/gpu-t.desktop"
     install -Dm644 "Assets/app_icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
@@ -50,14 +50,14 @@ package() {
 }
 
 post_install() {
-	gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
-	update-desktop-database -q
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+    update-desktop-database -q
 }
 
 post_upgrade() {
-	post_install
+    post_install
 }
 
 post_remove() {
-	post_install
+    post_install
 }
