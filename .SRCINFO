@@ -1,0 +1,12 @@
+pkgbase = oopz
+	pkgdesc = OOPZ desktop client - free online voice platform
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://git.pysio.online/pysio/linux_oopz
+	arch = x86_64
+	license = LicenseRef-proprietary
+	depends = electron39
+	source = oopz::git+https://git.pysio.online/pysio/linux_oopz.git#commit=74c8cb2f6f3a996bef239fafdcafa2ca16346773
+	sha256sums = SKIP
+
+pkgname = oopz
