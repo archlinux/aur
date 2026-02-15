@@ -3,8 +3,8 @@
 
 pkgbase=cutlass
 pkgname=('cutlass' 'python-cutlass')
-pkgver=4.3.2
-pkgrel=3
+pkgver=4.3.5
+pkgrel=1
 pkgdesc='CUDA Templates for Linear Algebra Subroutines'
 arch=('x86_64')
 url='https://github.com/NVIDIA/cutlass'
@@ -13,7 +13,7 @@ depends=('cuda' 'cudnn')
 makedepends=('cmake' 'git' 'ninja' 'pybind11' 'python-build'
              'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/NVIDIA/$pkgbase/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e84ccd6b0c749ca87a845fb57df3d8898257bda404c5bc93ad0fb51d6decf54d')
+sha256sums=('73d8c3914a6049ff5c43b7dfb9d70f26e44dc9e10e36049db5a999b9faf6dbf0')
 
 prepare() {
     cd "$pkgbase-$pkgver/python"
