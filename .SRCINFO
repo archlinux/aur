@@ -1,0 +1,14 @@
+pkgbase = unreal-tournament-data-archiveorg
+	pkgdesc = Unreal Tournament 99 (GOTY) data from Archive.org ISO
+	pkgver = 436
+	pkgrel = 1
+	url = https://archive.org/details/ut-goty
+	arch = any
+	license = custom
+	makedepends = p7zip
+	provides = unreal-tournament-data
+	conflicts = unreal-tournament-data
+	source = https://archive.org/download/ut-goty/UT_GOTY_CD1.iso
+	sha256sums = e184984ca88f001c5ddd52035d76cd64e266e26c74975161b5ed72366c74704f
+
+pkgname = unreal-tournament-data-archiveorg
