@@ -1,7 +1,7 @@
 # Maintainer: Asempere <asempere158@gmail.com>
 
 pkgname=anicli-esp
-pkgver=main
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Ver anime subtitulado en Español desde el terminal"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/Asempere123123/anicli-esp"
 license=('MIT')
 depends=('mpv' 'yt-dlp')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Asempere123123/$pkgname/archive/main.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Asempere123123/$pkgname/archive/v$pkgver.tar.gz")
 
 build() {
   cd "$pkgname-$pkgver"
@@ -25,4 +25,4 @@ package() {
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
-sha256sums=('37ae99c8a7446788f566dfbfe1df44e5f2f18fe1caf270cfa381c15e9b63e422')
+sha256sums=('4637ae61cf86c4e48b56ae204bb205f6c1a70b0fb62603a86b8eb02211be6112')
