@@ -2,7 +2,7 @@
 
 pkgname=uthenticode
 pkgver=2.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A cross-platform library for verifying Authenticode signatures"
 arch=('i686' 'x86_64')
 url="https://trailofbits.github.io/uthenticode/"
@@ -17,6 +17,8 @@ sha256sums=('74cf6c428469ecd3eb05fab94f9a0d5e42b2cdab54894b33c940ef33d81dc2ad')
 build() {
   cd "$pkgname-$pkgver"
 
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
+  CXXFLAGS="$CXXFLAGS -ffat-lto-objects" \
   cmake \
     -B "_build" \
     -DCMAKE_BUILD_TYPE=Release \
