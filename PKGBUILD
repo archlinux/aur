@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=simdutf-git
-pkgver=5.2.8.r4.g768494ee
+pkgver=8.0.0.r13.gfc5f05c7
 pkgrel=1
 pkgdesc="Unicode validation and transcoding at billions of characters per second"
 arch=('i686' 'x86_64')
 url="https://simdutf.github.io/simdutf/"
 license=('Apache-2.0' 'MIT')
-depends=('gcc-libs')
+depends=('glibc' 'libgcc' 'libstdc++')
 makedepends=('git' 'cmake')
-provides=("simdutf=$pkgver")
+provides=("simdutf=$pkgver" 'libsimdutf.so')
 conflicts=('simdutf')
 source=("git+https://github.com/simdutf/simdutf.git")
 sha256sums=('SKIP')
@@ -19,7 +19,7 @@ pkgver() {
   cd "simdutf"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }

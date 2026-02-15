@@ -1,6 +1,6 @@
 pkgbase = simdutf-git
 	pkgdesc = Unicode validation and transcoding at billions of characters per second
-	pkgver = 5.2.8.r4.g768494ee
+	pkgver = 8.0.0.r13.gfc5f05c7
 	pkgrel = 1
 	url = https://simdutf.github.io/simdutf/
 	arch = i686
@@ -9,8 +9,11 @@ pkgbase = simdutf-git
 	license = MIT
 	makedepends = git
 	makedepends = cmake
-	depends = gcc-libs
-	provides = simdutf=5.2.8.r4.g768494ee
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = simdutf=8.0.0.r13.gfc5f05c7
+	provides = libsimdutf.so
 	conflicts = simdutf
 	source = git+https://github.com/simdutf/simdutf.git
 	sha256sums = SKIP
