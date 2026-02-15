@@ -1,18 +1,19 @@
 pkgbase = libnest2d
 	pkgdesc = 2D irregular bin packaging and nesting library written in modern C++
 	pkgver = 0.4+r61+g663daa6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tamasmeszaros/libnest2d
 	arch = x86_64
 	license = LGPL-3.0-only
 	makedepends = boost>=1.58
 	makedepends = cmake>=3.1
-	depends = gcc-libs
 	depends = glibc
+	depends = libgcc
+	depends = libstdc++
 	depends = nlopt
 	depends = polyclipping
 	provides = libnest2d_clipper_nlopt.so
-	source = libnest2d-663daa69e1d7478669f714218e27681edbc96640.tar.gz::https://github.com/tamasmeszaros/libnest2d/archive/663daa69e1d7478669f714218e27681edbc96640.tar.gz
+	source = https://github.com/tamasmeszaros/libnest2d/archive/663daa69e1d7478669f714218e27681edbc96640/libnest2d-663daa69e1d7478669f714218e27681edbc96640.tar.gz
 	source = libnest2d_allow_disallowed_area.patch::https://github.com/tamasmeszaros/libnest2d/pull/18.patch?full_index=1
 	b2sums = 84423e658d0afd24036b45378baef5270e947939e5186e57cbf1c513a6c7629462291ce8707cba5fb0ee9e246301c17673cc1867e10ac3de888a775863fb2ae4
 	b2sums = f6b7cb5dac0e8073461dac71a156e6441fd7844cbd5b867713eb1422cf4c4d7b92f18bc1b81c49520ef0d45390de8e346ab9fee1081fb1ca9be87da6020896ed
