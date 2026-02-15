@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=bao-git
-pkgver=0.12.1.r6.ge5f01f8
+pkgver=0.13.1.r1.g3466bb3
 pkgrel=1
 pkgdesc="A verified streaming tool"
 arch=('i686' 'x86_64')
 url="https://github.com/oconnor663/bao"
 license=('Apache-2.0' 'CC0-1.0')
-depends=('gcc-libs')
-makedepends=('git' 'rust')
+depends=('glibc' 'libgcc')
+makedepends=('git' 'cargo')
 provides=("bao=$pkgver")
 conflicts=('bao')
 source=("git+https://github.com/oconnor663/bao")
@@ -30,7 +30,7 @@ pkgver() {
   cd "bao"
 
   _tag=$(git tag -l --sort -v:refname | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash"
 }
