@@ -2,13 +2,15 @@
 
 pkgname=xlibre-video-amdgpu
 pkgver=25.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="XLibre fork of X.Org amdgpu video driver"
 arch=(x86_64 aarch64)
 _pkgname="${pkgname//xlibre/xf86}"
 url="https://github.com/X11Libre/${_pkgname}"
-depends=("xlibre-xserver>=${pkgver%.*}" 'glibc')
-makedepends=("xlibre-xserver-devel>=${pkgver%.*}" 'xorgproto')
+#depends=("xlibre-xserver>=${pkgver%.*}" 'glibc')
+depends=("xlibre-xserver>=25.0" 'glibc')
+#makedepends=("xlibre-xserver-devel>=${pkgver%.*}" 'xorgproto')
+makedepends=("xlibre-xserver-devel>=25.0" 'xorgproto')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=("${url}/archive/refs/tags/xlibre-${_pkgname}-${pkgver}.tar.gz")
