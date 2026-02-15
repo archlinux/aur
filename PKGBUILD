@@ -2,7 +2,7 @@
 
 pkgname=linux-arctis-manager
 _pkgname=Linux-Arctis-Manager
-pkgver=r110.55b4cb9
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="A replacement for SteelSeries GG software, to manage your Arctis device on Linux!"
 arch=('x86_64')
