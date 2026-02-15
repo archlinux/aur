@@ -1,24 +1,28 @@
 pkgbase = python-onnxoptimizer
 	pkgdesc = ONNX model optimizer
-	pkgver = 0.3.19
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/onnx/optimizer
 	arch = x86_64
 	license = Apache-2.0
 	checkdepends = python-pytest
-	checkdepends = python-nbval
-	checkdepends = python-onnxruntime
-	checkdepends = python-torchvision
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	makedepends = cmake
-	makedepends = pybind11
 	makedepends = git
+	makedepends = protobuf
 	depends = python
 	depends = python-onnx
-	depends = python-setuptools
-	options = debug
-	source = onnx-optimizer::git+https://github.com/onnx/optimizer.git#tag=v0.3.19
-	source = onnx-daquexian::git+https://github.com/daquexian/onnx.git
+	depends = protobuf
+	depends = gcc-libs
+	source = onnx-optimizer::git+https://github.com/onnx/optimizer.git#tag=v0.4.2
+	source = onnx::git+https://github.com/onnx/onnx.git
+	source = nanobind::git+https://github.com/wjakob/nanobind.git
+	source = robin-map::git+https://github.com/Tessil/robin-map.git
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
