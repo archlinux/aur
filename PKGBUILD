@@ -14,22 +14,31 @@ makedepends=(
   python-installer
   python-wheel
   python-setuptools
-  python-poetry)
-source=("https://files.pythonhosted.org/packages/source/g/gguf/gguf-${pkgver}.tar.gz")
-sha256sums=('36ad71aad900a3e75fc94ebe96ea6029f03a4e44be7627ef7ad3d03e8c7bcb53')
+  python-poetry
+  git)
+optdepends=(
+  'python-numpy: for numerical operations'
+  'python-tqdm: for progress bars')
+provides=("${pkgname}=${pkgver}")
+conflicts=("${pkgname}")
+
+# Source from llama.cpp repository's gguf-py directory
+source=("${pkgname}::git+https://github.com/ggml-org/llama.cpp.git#branch=master")
+sha256sums=('SKIP')
 
 build() {
-  cd $_pkgname-$pkgver
+  cd "$pkgname/gguf-py"
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd $_pkgname-$pkgver
-  #python -m pytest -s -v tests # no tests
+  cd "$pkgname/gguf-py"
+  # Tests may require additional setup
+  # python -m pytest -s -v tests
 }
 
 package() {
-  cd $_pkgname-$pkgver
+  cd "$pkgname/gguf-py"
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
