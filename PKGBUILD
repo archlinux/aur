@@ -33,39 +33,55 @@ build() {
 package() {
     cd "$srcdir/$_pkgname"
 
-    mkdir -p "$pkgdir/usr/local/bin"
-    mkdir -p "$pkgdir/usr/local/share/auto-cpufreq"
-    mkdir -p "$pkgdir/usr/share/applications"
-    mkdir -p "$pkgdir/usr/share/pixmaps"
-    mkdir -p "$pkgdir/usr/share/polkit-1/actions"
-    mkdir -p "$pkgdir/usr/bin"
-    mkdir -p "$pkgdir/usr/share"
+    [ -d "$pkgdir/usr/local/bin" ] || mkdir -p "$pkgdir/usr/local/bin"
+    [ -d "$pkgdir/usr/local/share/auto-cpufreq" ] || mkdir -p "$pkgdir/usr/local/share/auto-cpufreq"
+    [ -d "$pkgdir/usr/share/applications" ] || mkdir -p "$pkgdir/usr/share/applications"
+    [ -d "$pkgdir/usr/share/pixmaps" ] || mkdir -p "$pkgdir/usr/share/pixmaps"
+    [ -d "$pkgdir/usr/share/polkit-1/actions" ] || mkdir -p "$pkgdir/usr/share/polkit-1/actions"
+    [ -d "$pkgdir/usr/bin" ] || mkdir -p "$pkgdir/usr/bin"
 
-    cp -r scripts "$pkgdir/usr/local/share/auto-cpufreq/"
-    cp -r images "$pkgdir/usr/local/share/auto-cpufreq/"
+    [ -d scripts ] && cp -ru scripts "$pkgdir/usr/local/share/auto-cpufreq/"
+    [ -d images ] && cp -ru images "$pkgdir/usr/local/share/auto-cpufreq/"
 
-    [ -f scripts/auto-cpufreq-gtk.desktop ] && \
-        install -m644 scripts/auto-cpufreq-gtk.desktop "$pkgdir/usr/share/applications/"
+    _install_custom() {
+        local src=$1 dest=$2 mode=$3
+        if [ -f "$src" ]; then
+            if [ ! -f "$dest" ] || ! cmp -s "$src" "$dest"; then
+                install -m"$mode" "$src" "$dest"
+            fi
+        fi
+    }
 
-    [ -f images/icon.png ] && install -m644 images/icon.png "$pkgdir/usr/share/pixmaps/auto-cpufreq.png"
-    
-    [ -f scripts/org.auto-cpufreq.pkexec.policy ] && \
-        install -m644 scripts/org.auto-cpufreq.pkexec.policy "$pkgdir/usr/share/polkit-1/actions/"
-    
-    [ -f scripts/cpufreqctl.sh ] && \
-        install -m755 scripts/cpufreqctl.sh "$pkgdir/usr/local/bin/cpufreqctl.auto-cpufreq"
+    _install_custom "scripts/auto-cpufreq-gtk.desktop" "$pkgdir/usr/share/applications/auto-cpufreq-gtk.desktop" 644
+    _install_custom "images/icon.png" "$pkgdir/usr/share/pixmaps/auto-cpufreq.png" 644
+    _install_custom "scripts/org.auto-cpufreq.pkexec.policy" "$pkgdir/usr/share/polkit-1/actions/org.auto-cpufreq.pkexec.policy" 644
+    _install_custom "scripts/cpufreqctl.sh" "$pkgdir/usr/local/bin/cpufreqctl.auto-cpufreq" 755
 
     cd "$srcdir/$_pkgname/auto-cpufreq"
     cargo build --frozen --release --all-features
 
     cd target/release
-    install -m755 auto-cpufreq "$pkgdir/usr/local/bin/auto-cpufreq"
-    
-    [ -f auto-cpufreq-gtk ] && install -m755 auto-cpufreq-gtk "$pkgdir/usr/local/bin/auto-cpufreq-gtk"
-    [ -f auto-cpufreq-tray ] && install -m755 auto-cpufreq-tray "$pkgdir/usr/local/bin/auto-cpufreq-tray"
+    for bin in auto-cpufreq auto-cpufreq-gtk auto-cpufreq-tray; do
+        if [ -f "$bin" ]; then
+            local dest_bin="$pkgdir/usr/local/bin/$bin"
+            local link_path="$pkgdir/usr/bin/$bin"
+            local target_in_sys="/usr/local/bin/$bin"
 
-    ln -sf /usr/local/share/auto-cpufreq "$pkgdir/usr/share/auto-cpufreq"
-    ln -sf /usr/local/bin/auto-cpufreq "$pkgdir/usr/bin/auto-cpufreq"
-    ln -sf /usr/local/bin/auto-cpufreq-gtk "$pkgdir/usr/bin/auto-cpufreq-gtk"
-    ln -sf /usr/local/bin/auto-cpufreq-tray "$pkgdir/usr/bin/auto-cpufreq-tray"
+            if [ ! -f "$dest_bin" ] || ! cmp -s "$bin" "$dest_bin"; then
+                install -m755 "$bin" "$dest_bin"
+            fi
+
+            if [ ! -L "$link_path" ] || [ "$(readlink "$link_path")" != "$target_in_sys" ]; then
+                ln -sf "$target_in_sys" "$link_path"
+            fi
+        fi
+    done
+
+    local share_link="$pkgdir/usr/share/auto-cpufreq"
+    local share_target="/usr/local/share/auto-cpufreq"
+    if [ -d "$pkgdir$share_target" ]; then
+        if [ ! -L "$share_link" ] || [ "$(readlink "$share_link")" != "$share_target" ]; then
+            ln -sf "$share_target" "$share_link"
+        fi
+    fi
 }
