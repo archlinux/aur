@@ -1,22 +1,22 @@
+# shellcheck shell=bash
 # -*- mode: sh -*-
 
-# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+# Contributor: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='json-bash-git'
 _pkgname="${pkgname/-git}"
 _srcname="${_pkgname/-/.}"
-pkgver=0.2.2.r17.g5aacc24
-pkgrel=3
-epoch=
 pkgdesc='Command-line tool and bash library that creates JSON (latest git commit)'
-arch=('any')
+pkgver=0.3.0.r0.g74686b6
+pkgrel=1
 url="https://github.com/h4l/$_srcname"
+arch=('any')
 license=('MIT')  # SPDX-License-Identifier: MIT
-depends=('bash')
+checkdepends=('shellcheck')
 makedepends=('git')
-#optdepends=('python: needed to run some of the documentation scripts')
+depends=('bash')
 provides=("$_pkgname" "$_srcname")
-conflicts=("$_pkgname" "$_srcname")
+conflicts=("${provides[@]}")
 source=("git+$url.git")
 sha256sums=('SKIP')
 
@@ -32,26 +32,41 @@ build() {
   ./json.bash --version
 }
 
+check() {
+  cd "$_srcname"
+
+  # This step currently fails.
+  # Somebody ought to report these errors upstream.
+  _scripts=(
+    json.bash
+    bin/jb-{cat,echo,stream}
+  )
+  for _script in "${_scripts[@]}"; do
+    printf '» checking %s\n' "$_script"
+    shellcheck "$_script"
+  done
+}
+
 package() {
   cd "$_srcname"
 
-  install -vDm0755 -t "$pkgdir/usr/bin" \
+  install -Dm0755 -t "$pkgdir/usr/bin" \
     "bin/$_srcname"
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
     CHANGELOG.md README.md
-  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
     LICENSE.md
 
-  cp -vfa examples hack "$pkgdir/usr/share/doc/$pkgname/"
+  cp -fa examples hack "$pkgdir/usr/share/doc/$pkgname/"
 
-  cd 'bin'
+  cd bin
 
   _sources=(
     'jb-cat'
     'jb-echo'
     'jb-stream'
   )
-  install -vDm0755 -t "$pkgdir/usr/bin" "${_sources[@]}"
+  install -Dm0755 -t "$pkgdir/usr/bin" "${_sources[@]}"
 
   cd "$pkgdir/usr/bin"
 
@@ -61,7 +76,11 @@ package() {
     'jb-object'
   )
   for _target in "${_symlinks[@]}"; do
-    ln -srvf "$_srcname" "$_target"
+    ln -srf "$_srcname" "$_target"
+  done
+
+  for _dir in doc licenses; do
+    cd "$pkgdir/usr/share/$_dir" && ln -srf "$pkgname" "$_pkgname"
   done
 }
 
