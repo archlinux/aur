@@ -13,7 +13,7 @@ _module_list=(
 # 'everything-places'    # fails to compile
 # 'everything-websearch' # fails to compile, adds dep on e_dbus
 #  'eweather'		# libeweather(?), not compatible with E >= 0.18.0
-# 'forecasts'            # not compatible with Enlightenment < 0.19.99
+  'forecasts'
 # 'mail'                 # not compatible with Enlightenment >= 0.19.0
   'mem'
 # 'moon'                 # not compatible with Enlightenment >= 0.19.0
@@ -35,8 +35,8 @@ containsElement () {
 }
 
 pkgname=e-modules-extra-git
-pkgver=20260208
-pkgrel=3
+pkgver=20260215
+pkgrel=1
 pkgdesc="Enlightenment modules: Extra unsupported modules in Git not already packaged elsewhere"
 arch=('i686' 'x86_64')
 url="https://git.enlightenment.org/"
@@ -80,6 +80,10 @@ build() {
 	    /usr/bin/meson setup build
 	    ninja -C build
 	    ;;
+	forecasts)
+	    /usr/bin/meson build
+	    ninja -C build
+	    ;;
 	*)
 	    ./autogen.sh \
 		--prefix=/usr \
@@ -99,6 +103,10 @@ package() {
 
     case $_module in
 	penguins)
+	    # ninja -C build install
+	    /usr/bin/meson install -C build --destdir "$pkgdir"
+	    ;;
+	forecasts)
 	    # ninja -C build install
 	    /usr/bin/meson install -C build --destdir "$pkgdir"
 	    ;;
