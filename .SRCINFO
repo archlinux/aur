@@ -1,6 +1,6 @@
 pkgbase = headsetstatus
 	pkgdesc = A fast Linux tray app for headset battery and connection status with desktop notifications
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/mewset/headsetstatus
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = headsetstatus
 	optdepends = dunst: notification daemon
 	optdepends = mako: notification daemon for Wayland
 	optdepends = swaync: notification daemon for Sway
-	source = headsetstatus-1.2.1.tar.gz::https://github.com/mewset/headsetstatus/archive/refs/tags/v1.2.1.tar.gz
-	sha256sums = 76db6fe1f8b472f7e97c26d70365bf38e4dc44d5d547c8f226575288086ab5bc
+	source = headsetstatus-1.2.2.tar.gz::https://github.com/mewset/headsetstatus/archive/refs/tags/v1.2.2.tar.gz
+	sha256sums = b6c41b61c980d9ba610c12c4e8dec5edbb78efdc29ad4841d5c243a66461f735
 
 pkgname = headsetstatus
