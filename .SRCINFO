@@ -1,0 +1,32 @@
+pkgbase = fknc-calculator-git
+	pkgdesc = 《蛋仔派对》™ 疯狂农场玩法果实价值计算器。
+	pkgver = r11.98da921
+	pkgrel = 1
+	url = https://github.com/mokurin000/fknc-calculator
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = cargo-tauri
+	makedepends = git
+	makedepends = git-lfs
+	makedepends = openssl
+	makedepends = appmenu-gtk-module
+	makedepends = libappindicator-gtk3
+	makedepends = librsvg
+	makedepends = jq
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = pango
+	depends = webkit2gtk-4.1
+	depends = hicolor-icon-theme
+	depends = libsoup
+	provides = fknc-calculator
+	conflicts = fknc-calculator
+	source = git+https://github.com/mokurin000/fknc-calculator.git#branch=main
+	sha256sums = SKIP
+
+pkgname = fknc-calculator-git
