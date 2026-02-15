@@ -2,12 +2,12 @@
 
 pkgname=procmon
 pkgver=2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Trace syscall activity tool"
 arch=('x86_64')
 url="https://github.com/microsoft/ProcMon-for-Linux"
 license=('MIT')
-depends=('gcc-libs' 'libedit' 'libelf' 'ncurses' 'sysinternalsebpf' 'zlib' 'zstd')
+depends=('glibc' 'libgcc' 'libstdc++' 'libedit' 'libelf' 'ncurses' 'sysinternalsebpf' 'zlib' 'zstd')
 makedepends=('cmake' 'clang' 'sqlite')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/microsoft/ProcMon-for-Linux/archive/refs/tags/$pkgver.0.0.tar.gz")
 sha256sums=('d3601fcbaa08199959054bb83f69874e6e8ce8b137b5724575c64da5cfecbf5b')
