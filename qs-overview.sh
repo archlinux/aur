@@ -5,7 +5,7 @@ MODULE_NAME="overview"
 
 show_help() {
     echo "Quickshell Overview CLI"
-    echo "Usage: qc-overview [command]"
+    echo "Usage: qs-overview [command]"
     echo ""
     echo "Commands:"
     echo "  start   Launch the overview service"
