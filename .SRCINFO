@@ -1,13 +1,15 @@
 pkgbase = buildcache
 	pkgdesc = An advanced compiler accelerator
 	pkgver = 0.31.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/bits-n-bites/buildcache
 	arch = i686
 	arch = x86_64
 	license = Zlib
 	makedepends = cmake
-	depends = gcc-libs
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
 	depends = openssl
 	optdepends = lua
 	source = buildcache-0.31.7.tar.gz::https://gitlab.com/bits-n-bites/buildcache/-/archive/v0.31.7/buildcache-v0.31.7.tar.gz
