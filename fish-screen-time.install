@@ -1,0 +1,21 @@
+post_install() {
+    echo ""
+    echo "==> fish-screen-time installed!"
+    echo ""
+    echo "==> To finish setup, run these two commands:"
+    echo ""
+    echo "    systemctl --user enable --now screen-time-tracker"
+    echo ""
+    echo "==> Then add this to your fish_greeting function:"
+    echo ""
+    echo "    function fish_greeting"
+    echo "        show_screen_time"
+    echo "    end"
+    echo ""
+    echo "==> Save it with:  funcsave fish_greeting"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}

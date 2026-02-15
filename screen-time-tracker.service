@@ -1,0 +1,12 @@
+[Unit]
+Description=Daily Screen Time Tracker
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/lib/fish-screen-time/screen_time_tracker.sh
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target
