@@ -1,5 +1,5 @@
 pkgname=archtoys
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="PowerToys-like color picker for Linux (Slint-based)"
 arch=('x86_64')
