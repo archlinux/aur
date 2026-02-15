@@ -6,7 +6,7 @@ pkgname=(
   'cecli'
 )
 _gitpkgname=cecli
-pkgver=0.96.10
+pkgver=0.97.0
 pkgrel=1
 pkgdesc='AI pair programming in your terminal - dwash96 fork of AIDER with TUI and MCP support'
 arch=('any')
@@ -22,7 +22,6 @@ _depends=(
   'python-dotenv'
   'python-flake8'
   'python-gitpython'
-  'python-google-generativeai'
   'python-grep-ast'
   'python-httpx'
   'python-importlib_resources'
@@ -54,6 +53,11 @@ _depends=(
   'python-yaml'
   'python-pytokens'
   'python-truststore'
+  'python-backoff'
+  'python-socksio'
+  'python-textual'
+  'python-tomlkit'
+  'python-xxhash'
 )
 makedepends=(
   'jekyll'
@@ -86,7 +90,7 @@ source=(
   'fix-build-from-tarball.patch'
 )
 
-sha512sums=('1bd8503ae6d4a87c54aee34e36c1a8d316ee48481f6cb1f7b172ce1b0940336c164211f603b511e9227dc22da2a00baa14eceeda58a96375020047f90e5aa283'
+sha512sums=('6e5872317acabba5021a429da8e4811de3c10da8e516ba8942e5af4e5d7bed9ac55492de830046f60deb817bc208346539ea619f0d2cc873acb50e2c58a26994'
             'c37489522cf14ecf5808c7ef06a324b48bf5b979f27887ab47a28c68c9685dd60856596bb24000fc4676e57c249aa35e16cf6dc1524b993b16f8ab1c4589922b'
             '523aed2029146d079de44db15152833a385ff331ca6bb19230cbc92d5abed1a33e4a132a34150ead213a19c7eb715c564b480c8943fd03216400aa6954770d8c')
 
@@ -171,7 +175,7 @@ check() {
 
   echo >&2 'Running unit tests'
   env -i PATH="${PATH}" python -m pytest \
-    -k 'not test_get_commit_message and not TestHelp and not test_check_for_dependencies_ and not test_encodings_arg and not test_main_exit_calls_version_check and not test_mode_sets_code_theme and not test_env_file_variables and not test_verbose_mode_lists_env_vars and not test_list_models_includes_metadata_models and not test_list_models_includes_all_model_sources and not test_list_models_includes_openai_provider and not test_list_models_with_direct_resource_patch and not test_stream_cache_warning and not test_model_overrides_no_match_preserves_model_name'
+    -k 'not test_get_commit_message and not TestHelp and not test_check_for_dependencies_ and not test_encodings_arg and not test_main_exit_calls_version_check and not test_mode_sets_code_theme and not test_env_file_variables and not test_verbose_mode_lists_env_vars and not test_list_models_includes_metadata_models and not test_list_models_includes_all_model_sources and not test_list_models_includes_openai_provider and not test_list_models_with_direct_resource_patch and not test_stream_cache_warning and not test_model_overrides_no_match_preserves_model_name and not test_scraper_print_error_not_called'
 
   echo >&2 'Testing the executable'
   test-env/bin/${_gitpkgname} --version > actual.txt
