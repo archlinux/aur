@@ -1,0 +1,15 @@
+pkgbase = unreal-tournament-data-gog
+	pkgdesc = Unreal Tournament 99 (GOTY) data from GOG
+	pkgver = 436
+	pkgrel = 1
+	url = https://www.gog.com/game/unreal_tournament_goty
+	arch = any
+	license = custom
+	makedepends = lgogdownloader
+	makedepends = innoextract
+	provides = unreal-tournament-data
+	conflicts = unreal-tournament-data
+	source = setup_unreal_tournament_goty_2.0.0.5.exe::gogdownloader://unreal_tournament_goty/en1installer0
+	sha256sums = SKIP
+
+pkgname = unreal-tournament-data-gog
