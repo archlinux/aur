@@ -58,17 +58,6 @@ build() {
     -Dprofile=default
   
   ninja -C build
-  
-  # Compile GSettings schemas during build to ensure they're available
-  echo "==> Compiling GSettings schemas during build..."
-  if [ -f build/data/de.haeckerfelix.Shortwave.gschema.xml ]; then
-    mkdir -p build/data/schemas
-    cp build/data/de.haeckerfelix.Shortwave.gschema.xml build/data/schemas/
-    glib-compile-schemas build/data/schemas/
-    echo "==> Schema compilation completed successfully"
-  else
-    echo "==> WARNING: Schema file not found at expected location"
-  fi
 }
 
 check() {
@@ -81,10 +70,18 @@ package() {
   cd "Shortwave-MPRIS"
   DESTDIR="$pkgdir" meson install -C build
   
-  # Ensure compiled schemas are included in the package
-  if [ -f build/data/schemas/gschemas.compiled ]; then
-    echo "==> Installing pre-compiled schemas..."
-    install -Dm644 build/data/schemas/gschemas.compiled "$pkgdir/usr/share/glib-2.0/schemas/gschemas.compiled"
+  # Force compilation of GSettings schemas to ensure they're properly compiled
+  echo "==> Force-compiling GSettings schemas in package..."
+  if [ -d "$pkgdir/usr/share/glib-2.0/schemas" ]; then
+    glib-compile-schemas "$pkgdir/usr/share/glib-2.0/schemas/"
+    echo "==> Schema compilation completed successfully"
+    
+    # Verify our key is in the compiled schema
+    if glib-compile-schemas --dry-run "$pkgdir/usr/share/glib-2.0/schemas/" 2>&1 | grep -q "playback-volume-local"; then
+      echo "==> Schema validation passed: playback-volume-local key found"
+    else
+      echo "==> WARNING: Schema validation failed"
+    fi
   fi
   
   # Install license
