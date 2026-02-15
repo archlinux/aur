@@ -1,0 +1,5 @@
+[nekot-bin]
+source = "github"
+github = "BalanceBalls/nekot"
+use_latest_release = true
+prefix = "v"
