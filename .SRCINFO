@@ -5,10 +5,9 @@ pkgbase = passcualito
 	url = https://github.com/javiorfo/passcualito
 	arch = x86_64
 	license = MIT
-	makedepends = go
-	makedepends = git
-	conflicts = passcualito
-	source = passcualito::git+https://github.com/javiorfo/passcualito.git#tag=v0.1.0
-	sha512sums = f18ccb0da6b8ab0c0b2393da9a44acf5d8b88e38f1d94e6a17dde7c6040facc94dcf0c868051220f0ac9fc94ef0ee2679d04b272f8d8ac3d14eb56e56c4a495a
+	depends = rust
+	depends = cargo
+	source = passcualito-0.1.0.tar.gz::https://github.com/javiorfo/passcualito/archive/refs/tags/0.1.0.tar.gz
+	sha256sums = 7b3a4c729662e86fdb5d58998e6123d49dbe4aea5a15e0424a75413c83843df2
 
 pkgname = passcualito
