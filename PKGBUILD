@@ -1,7 +1,7 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor:
 pkgname=aws-doctor
-pkgver=1.7.1
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Diagnose AWS costs, detect idle resources, and optimize cloud spending directly from your terminal. 🩺 ☁️"
 arch=('x86_64' 'aarch64')
