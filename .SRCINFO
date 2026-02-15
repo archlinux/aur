@@ -1,0 +1,16 @@
+pkgbase = kubert-bin
+	pkgdesc = A kubectx and kubens alternative with context isolation, multi-cluster execution and more.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/idebeijer/kubert
+	license = MIT
+	conflicts = kubert
+	provides = kubert
+	arch = aarch64
+	source_aarch64 = https://github.com/idebeijer/kubert/releases/download/v0.6.0/kubert_0.6.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = d3364684a7cfbe3f66d37d734fb1b495c5407f0214bb8c0bf931b7f7776e09c8
+	arch = x86_64
+	source_x86_64 = https://github.com/idebeijer/kubert/releases/download/v0.6.0/kubert_0.6.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 1b57b326281fa8fd9b2c18d854edca61f8918a0a411424c75604cc3315b17c14
+	
+pkgname = kubert-bin
