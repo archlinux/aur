@@ -1,5 +1,5 @@
 pkgname=v2ray-rs
-pkgver=0.3.10
+pkgver=0.3.11
 pkgrel=1
 pkgdesc="Linux desktop GUI for v2ray/xray/sing-box proxy management"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=(
 )
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b569bda9cf22776a2625891380628ccd0d394566b980d50502c0bf5a032b2b40')
+sha256sums=('566540816af8c4ad5d37630d10c4cde65f734046026ad94b80c6265e4383767b')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -32,10 +32,44 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
     install -Dm755 "target/release/v2ray-rs-ui" "$pkgdir/usr/bin/v2ray-rs"
-    install -Dm644 "assets/v2ray-rs.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.github.v2ray-rs.svg"
-    install -Dm644 "assets/v2ray-rs.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/com.github.v2ray-rs.png"
-    install -Dm644 "crates/ui/icons/hicolor/symbolic/apps/com.github.v2ray-rs-symbolic.svg" \
+    install_icon "assets/v2ray-rs.svg" \
+        "crates/ui/icons/hicolor/scalable/apps/com.github.v2ray-rs.svg" \
+        "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.github.v2ray-rs.svg"
+    install_optional "assets/v2ray-rs.png" \
+        "$pkgdir/usr/share/icons/hicolor/256x256/apps/com.github.v2ray-rs.png"
+    install_icon "crates/ui/icons/hicolor/symbolic/apps/com.github.v2ray-rs-symbolic.svg" \
+        "assets/v2ray-rs-symbolic.svg" \
         "$pkgdir/usr/share/icons/hicolor/symbolic/apps/com.github.v2ray-rs-symbolic.svg"
-    install -Dm644 "assets/com.github.v2ray-rs.desktop" "$pkgdir/usr/share/applications/com.github.v2ray-rs.desktop"
+    install_icon "assets/com.github.v2ray-rs.desktop" \
+        "crates/ui/assets/com.github.v2ray-rs.desktop" \
+        "$pkgdir/usr/share/applications/com.github.v2ray-rs.desktop"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+install_icon() {
+    local primary=$1
+    local fallback=$2
+    local dest=$3
+
+    if [[ -f "$primary" ]]; then
+        install -Dm644 "$primary" "$dest"
+        return
+    fi
+
+    if [[ -f "$fallback" ]]; then
+        install -Dm644 "$fallback" "$dest"
+        return
+    fi
+
+    echo "Missing icon asset: $primary or $fallback" >&2
+    return 1
+}
+
+install_optional() {
+    local src=$1
+    local dest=$2
+
+    if [[ -f "$src" ]]; then
+        install -Dm644 "$src" "$dest"
+    fi
 }
