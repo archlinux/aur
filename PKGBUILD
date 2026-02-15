@@ -2,8 +2,8 @@
 
 pkgname=dektec-avfifo-examples
 pkgver=2025.12
-pkgrel=1
-_sdkver=2025.12.0
+pkgrel=2
+_sdkver=2026.02.0
 pkgdesc='Code examples demonstrating the AvFifo API for receiving and transmitting SMPTE 2110 streams'
 arch=('x86_64')
 url="https://www.dektec.com/downloads/SDK/#linux"
@@ -17,7 +17,7 @@ depends=(
 makedepends=('make')
 source=("https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v${_sdkver}.tar.gz"
         "https://www.dektec.com/products/SDK/AvFifoExamples/downloads/avfifoexamples.tar.gz")
-sha256sums=('8173c420ec3c707164143588fd3e5c3ef98501a2c46e23a06440db8bb3059975'
+sha256sums=('38f93040201082ce9b5109c386b25785068e24db426f9206540a03724836b3a5'
             'd697bd5a17999d6f5aacef3cea607669ca6e1350a2238aee451c4415e2f60171')
 
 prepare() {
