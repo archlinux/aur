@@ -22,8 +22,10 @@ license=('MIT')
 provides=("${_appname}")
 conflicts=("${_pkgname}")
 
+source=("USAGE_GUIDE-${pkgver}.md::${_urlraw}/USAGE_GUIDE.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${pkgver}-${_barch[1]}.tar.gz")
+sha256sums=('9e342f077c0fe0e9d1cdd8919e26e897fc429e5b5b2268cdb8e9d4fd0fce0801')
 sha256sums_x86_64=('22891dcdc04fdcbf138b36615d034d985e8c7d4353c41ec64c998e8f48a0f9d7')
 sha256sums_aarch64=('4d9f40e8301c751c91d344f03c76d35b295eb9ee0fe19666fd671a2cedbaf241')
 
@@ -38,6 +40,7 @@ package() {
   install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
 
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "USAGE_GUIDE-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/USAGE_GUIDE.md"
 
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
