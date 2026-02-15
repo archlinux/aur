@@ -1,6 +1,6 @@
 pkgbase = hyprvoice-bin
 	pkgdesc = Voice-powered typing for Wayland/Hyprland
-	pkgver = v1.0.0
+	pkgver = v1.0.1
 	pkgrel = 1
 	url = https://github.com/leonardotrapani/hyprvoice
 	install = hyprvoice.install
@@ -18,9 +18,9 @@ pkgbase = hyprvoice-bin
 	optdepends = ydotool: Alternative text injection backend (recommended for Chromium apps)
 	provides = hyprvoice
 	conflicts = hyprvoice
-	source = hyprvoice-v1.0.0::https://github.com/leonardotrapani/hyprvoice/releases/download/v1.0.0/hyprvoice-linux-x86_64
+	source = hyprvoice-v1.0.1::https://github.com/leonardotrapani/hyprvoice/releases/download/v1.0.1/hyprvoice-linux-x86_64
 	source = hyprvoice.service
-	sha256sums = 0381ad6a0b416712fcea6b421fb340c515543f5099dcb50144c9e9ce0ad648bc
+	sha256sums = d0d1dc952fe374917e7598b36a7c228a4a5222dd1a68f4c859a46e87a1ee1613
 	sha256sums = 5631c957777882870e61934176d2142fab6c553bb650ffd8b3eb74b8dce955bd
 
 pkgname = hyprvoice-bin
