@@ -1,7 +1,7 @@
 pkgbase = chalkak
 	pkgdesc = Hyprland screenshot preview and editor utility
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/bityoungjae/chalkak
 	arch = x86_64
 	arch = aarch64
@@ -16,7 +16,7 @@ pkgbase = chalkak
 	depends = grim
 	depends = slurp
 	depends = wl-clipboard
-	source = chalkak-0.1.0.tar.gz::https://github.com/bityoungjae/chalkak/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 7644184f1f7de14f788d7ccebb0f8a8fe401f18779c3aedbee04adeae68c0d63
+	source = chalkak-0.2.0.tar.gz::https://github.com/bityoungjae/chalkak/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 9381ca12feb3c398f335f8afb33681ec2911a05249e244ece440afd65972d990
 
 pkgname = chalkak
