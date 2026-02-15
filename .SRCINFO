@@ -1,0 +1,18 @@
+pkgbase = quickshell-overview-git
+	pkgdesc = A standalone workspace overview module for Hyprland using Quickshell
+	pkgver = r18.272b4e7
+	pkgrel = 1
+	url = https://github.com/Shanu-Kumawat/quickshell-overview
+	arch = any
+	makedepends = git
+	depends = quickshell
+	optdepends = hyprland: The compositor this module is designed for
+	optdepends = matugen: For dynamic color generation based upon wallpaper
+	provides = qc-overview
+	conflicts = qc-overview
+	source = quickshell-overview-git::git+https://github.com/Shanu-Kumawat/quickshell-overview.git
+	source = qc-overview.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = quickshell-overview-git
