@@ -1,0 +1,4 @@
+[mindwtr]
+source = "git"
+git = "https://github.com/dongdongbh/Mindwtr.git"
+prefix = "v"
