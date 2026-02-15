@@ -17,7 +17,7 @@ show_help() {
 case "$1" in
     start)
         # Quickshell checks ~/.config/quickshell then /etc/xdg/quickshell
-        qs -c "$MODULE_NAME" &
+        qs -c "$MODULE_NAME"
         ;;
     toggle)
         qs ipc -c "$MODULE_NAME" call overview toggle

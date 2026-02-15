@@ -10,11 +10,11 @@ optdepends=(
     'matugen: For dynamic color generation based upon wallpaper'
 )
 makedepends=('git')
-provides=("qc-overview")
-conflicts=("qc-overview")
+provides=("qs-overview")
+conflicts=("qs-overview")
 source=(
     "${pkgname}::git+https://github.com/Shanu-Kumawat/quickshell-overview.git"
-    "qc-overview.sh"
+    "qs-overview.sh"
 )
 sha256sums=(
     'SKIP'
@@ -38,7 +38,7 @@ package() {
   # Remove git-related files from the package
   rm -rf "$_dest/.git"
 
- install -Dm755 "$srcdir/qc-overview.sh" "$pkgdir/usr/bin/qc-overview"
+ install -Dm755 "$srcdir/qs-overview.sh" "$pkgdir/usr/bin/qs-overview"
 
   # Install the license file if it exists (assuming MIT/LICENSE)
   # install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
