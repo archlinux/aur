@@ -2,12 +2,12 @@
 
 pkgname=static-web-server
 pkgver=2.40.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform, high-performance and asynchronous web server for static files-serving"
 arch=('i686' 'x86_64')
 url="https://static-web-server.net/"
 license=('Apache-2.0' 'MIT')
-depends=('gcc-libs' 'zlib')
+depends=('glibc' 'libgcc' 'zlib')
 makedepends=('cargo')
 backup=('etc/default/static-web-server')
 options=('!lto')

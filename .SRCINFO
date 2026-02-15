@@ -1,14 +1,15 @@
 pkgbase = static-web-server
 	pkgdesc = A cross-platform, high-performance and asynchronous web server for static files-serving
 	pkgver = 2.40.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://static-web-server.net/
 	arch = i686
 	arch = x86_64
 	license = Apache-2.0
 	license = MIT
 	makedepends = cargo
-	depends = gcc-libs
+	depends = glibc
+	depends = libgcc
 	depends = zlib
 	options = !lto
 	backup = etc/default/static-web-server
