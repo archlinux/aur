@@ -2,12 +2,12 @@
 
 pkgname=racon
 pkgver=1.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Ultrafast consensus module for raw de novo genome assembly"
 arch=('i686' 'x86_64')
 url="https://github.com/lbcb-sci/racon"
 license=('MIT')
-depends=('gcc-libs' 'zlib')
+depends=('glibc' 'libgcc' 'libstdc++' 'zlib')
 makedepends=('cmake')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/lbcb-sci/racon/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('41e362f71cc03b934f17d6e2c0d626e1b2997258261b14551586de006666424a')
@@ -21,6 +21,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
+    -DCMAKE_POLICY_VERSION_MINIMUM="3.5" \
     ./
   cmake --build "_build"
 }
