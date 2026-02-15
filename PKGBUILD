@@ -8,7 +8,6 @@ license=('GPL3')
 depends=('gtk4' 'libadwaita' 'gdk-pixbuf2' 'networkmanager')
 provides=('adwaita-network')
 conflicts=('adwaita-network')
-# הוספנו את השורה הזו כדי למנוע יצירת חבילת debug
 options=('!debug' 'strip')
 
 source=(
@@ -16,7 +15,7 @@ source=(
   "com.github.adw-network.desktop::https://raw.githubusercontent.com/PlayRood32/adw-network/main/data/com.github.adw-network.desktop"
   "icon.png::https://raw.githubusercontent.com/PlayRood32/adw-network/main/data/icons/hicolor/scalable/apps/icon.png"
 )
-sha256sums=('f97708026986a6ed3de457904d5cbe086d3663deb31d56593042213445bbb2ee'
+sha256sums=('88ca75c72b2c04e5d82a40439a4ed436bf60ce284c3d0ec73b37c4d0ed22829b'
             '87e22132167fdb6372cf4fbdf1a60a0449e8ef1e5889d1a156a8eb540c069038'
             '518a328abee19239ba5f20bcbfe3f15c474bc5c18b8adcb37c9793ecf7c640cc')
 
