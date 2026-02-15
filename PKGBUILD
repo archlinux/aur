@@ -3,13 +3,13 @@
 # Contributor: socke <github@socker.lepus.uberspace.de>
 
 pkgname=assimp-git
-pkgver=6.0.4.r2.g18798f150
+pkgver=6.0.4.r6.gb4c7912d2
 pkgrel=1
 pkgdesc="Open Asset Importer Library"
 arch=('i686' 'x86_64')
 url="https://www.assimp.org/"
 license=('BSD-3-Clause')
-depends=('gcc-libs' 'glibc' 'zlib')
+depends=('glibc' 'libgcc' 'libstdc++' 'zlib')
 makedepends=('git' 'cmake')
 provides=("assimp=$pkgver")
 conflicts=('assimp')
