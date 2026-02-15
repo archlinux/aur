@@ -1,7 +1,7 @@
 # Maintainer: Nikita Almakov <nikita.almakov@gmail.com>
 
 pkgname=rate-mirrors-bin
-pkgver=0.27.0
+pkgver=0.28.0
 pkgrel=1
 pkgdesc="Everyday-use client-side map-aware mirror ranking tool - pre-built with musl"
 url="https://github.com/westandskif/rate-mirrors"
@@ -27,5 +27,5 @@ package() {
 }
 
 #vim: syntax=sh
-sha256sums_x86_64=('2b074cd153865c513316d60c78f4076ea714924cbba75a70ae89d21e90d049ad')
-sha256sums_aarch64=('c40d2bc2148ae896d351529e2eaf64ccc668b1229401114697dcc4858a39b4db')
+sha256sums_x86_64=('a7c8a3955835206dd3cc6ab87dc8c57db2567ad795039f14b07feb12858f7abb')
+sha256sums_aarch64=('60ebce96b24a4b224c048d581ac6b8853797460e66609925795050278595bf19')
