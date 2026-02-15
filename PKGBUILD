@@ -13,8 +13,9 @@ provides=('vortex')
 conflicts=('vortex')
 install=vortex.install
 source=("git+https://github.com/Nexus-Mods/Vortex.git#branch=master"
-  "vortex.desktop")
-sha256sums=('SKIP' 'SKIP')
+  "vortex.desktop"
+  "vortex-handler.desktop")
+sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 options=('!strip' '!debug')
 
@@ -56,6 +57,8 @@ package() {
   ln -sf /opt/Vortex/vortex "$pkgdir/usr/bin/vortex"
 
   install -Dm644 "$srcdir/vortex.desktop" "$pkgdir/usr/share/applications/vortex.desktop"
+
+  install -Dm644 "$srcdir/vortex-handler.desktop" "$pkgdir/usr/share/applications/vortex-handler.desktop"
 
   install -Dm644 "$srcdir/Vortex/assets/images/vortex.png" "$pkgdir/usr/share/pixmaps/vortex.png"
 }

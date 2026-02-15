@@ -31,6 +31,8 @@ pkgbase = vortex-git
 	options = !debug
 	source = git+https://github.com/Nexus-Mods/Vortex.git#branch=master
 	source = vortex.desktop
+	source = vortex-handler.desktop
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
