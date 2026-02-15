@@ -1,6 +1,6 @@
 pkgbase = reels-bin
-	pkgdesc = TUI Instagram Reels viewer
-	pkgver = 1.1.4
+	pkgdesc = Instagram reels in the terminal
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://github.com/njyeung/reels
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = reels-bin
 	optdepends = brave-bin: browser backend
 	provides = reels
 	conflicts = reels
-	source = https://github.com/njyeung/reels/releases/download/v1.1.4/reels-linux-amd64
-	sha256sums = 238606b72ac3c355deb829b575f429b4e9ab995b9ee6a5447872718774f75697 
+	source = https://github.com/njyeung/reels/releases/download/v1.1.5/reels-linux-amd64
+	sha256sums = d65619159d79d3a217ad15554f7136a00a4cda86f70e69fd0e2597d2cf280839
 
 pkgname = reels-bin
