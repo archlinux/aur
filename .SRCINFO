@@ -1,7 +1,7 @@
 pkgbase = i686-linux-gnu-gcc43
 	pkgdesc = The GNU Compiler Collection (4.3.x)
 	pkgver = 4.3.6
-	pkgrel = 8
+	pkgrel = 1
 	url = http://gcc.gnu.org
 	arch = x86_64
 	license = GPL-2.0-only
