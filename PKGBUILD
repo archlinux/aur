@@ -2,7 +2,7 @@
 
 pkgname=sourcegit
 pkgver=2026.04
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI client for GIT users"
 arch=('x86_64')
 url='https://github.com/sourcegit-scm/sourcegit'
@@ -11,11 +11,10 @@ depends=('dotnet-runtime-10.0' 'git' 'xdg-utils')
 optdepends=('git-credential-manager: third-party authentication support')
 makedepends=('dotnet-sdk-10.0' 'desktop-file-utils')
 
-_avalonia_edit_commit=77f960a4e61fe3d73fd40a8f6d3b4d4f9ea12027
 source=("git+https://github.com/sourcegit-scm/$pkgname.git#tag=v$pkgver"
-        "git+https://github.com/love-linger/AvaloniaEdit.git#commit=$_avalonia_edit_commit")
+        "git+https://github.com/love-linger/AvaloniaEdit.git")
 sha256sums=('31de98179229e88561e5fd0bf9e0588a7b21ecb20f58b5298b14de25cb5d9ace'
-            'ca42ed8eee5b75b46aa7069c9e8b8dc9f627b8f2eaebbeae7677b57ec8f0f812')
+            'SKIP')
 
 prepare() {
     cd "$pkgname"
