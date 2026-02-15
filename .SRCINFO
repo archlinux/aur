@@ -1,6 +1,6 @@
 pkgbase = ungoogled-chromium-xdg
 	pkgdesc = A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory
-	pkgver = 145.0.7632.45
+	pkgver = 145.0.7632.75
 	pkgrel = 1
 	url = https://github.com/ungoogled-software/ungoogled-chromium
 	arch = x86_64
@@ -53,27 +53,25 @@ pkgbase = ungoogled-chromium-xdg
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
 	optdepends = upower: Battery Status API support
 	optdepends = chromium-extension-web-store: Web Store Functionality
-	provides = chromium=145.0.7632.45
-	provides = chromedriver=145.0.7632.45
+	provides = chromium=145.0.7632.75
+	provides = chromedriver=145.0.7632.75
 	conflicts = chromium
 	conflicts = chromedriver
 	options = !lto
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-145.0.7632.45-lite.tar.xz
-	source = ungoogled-chromium-145.0.7632.45-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/145.0.7632.45-1.tar.gz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-145.0.7632.75-lite.tar.xz
+	source = ungoogled-chromium-145.0.7632.75-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/145.0.7632.75-1.tar.gz
 	source = https://github.com/foutrelis/chromium-launcher/archive/v8/chromium-launcher-8.tar.gz
 	source = chromium-138-nodejs-version-check.patch
-	source = chromium-145-fix-missing-gn-functions.patch
 	source = chromium-145-fix-SYS_SECCOMP.patch
 	source = compiler-rt-adjust-paths.patch
 	source = increase-fortify-level.patch
 	source = use-oauth2-client-switches-as-default.patch
 	source = xdg-basedir.patch
 	source = no-omnibox-suggestion-autocomplete.patch
-	sha256sums = a7ce8bd85d36e6c01d382e71c9018b0d118553a848e32dd399aea2e437476be1
-	sha256sums = c8c8711621ab3d934ffbc12140ee3b20a6710f376333e028bcc4fa6621168163
+	sha256sums = e9db10f2065fda0ee715c1f41fa110cccc4c800a2d7d9a5f8f355b2e210f377f
+	sha256sums = ba956eb1779fcb76dd00f5bc63c0e2e9399270d7942e1f003765dbbbc61cb18d
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
 	sha256sums = 11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e
-	sha256sums = 9cbd93af850642d48ff86da9ac82c6d0e1cc294b3cfdc324abe5b55afa9df3cb
 	sha256sums = 4fc040a0656a0a524dd8ad090cd129fc5b6cb21adcc66be82080165789e8c13e
 	sha256sums = ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863
 	sha256sums = d634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342
