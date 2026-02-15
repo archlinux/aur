@@ -3,7 +3,7 @@ _pkgname=GPU-T
 pkgname=${_pkgname,,}-git
 pkgdesc='GPU-T is a modern desktop utility built with .NET and Avalonia UI designed to provide detailed information about your video card and GPU'
 pkgver=0.1.0.r0.g00107ad
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/lseurttyuu/${_pkgname}"
 license=('MIT')
@@ -38,7 +38,7 @@ package() {
     cd "$srcdir/$_pkgname"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 "$srcdir/gpu-t.desktop" "$pkgdir/usr/share/applications/gpu-t.desktop"
-    install -Dm644 "Assets/app_icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
+    install -Dm644 "Assets/app_icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/gpu-t.png"
 
     cd ./bin/Release/net9.0
     install -Dm755 GPU-T $pkgdir/usr/lib/$_pkgname/$_pkgname
