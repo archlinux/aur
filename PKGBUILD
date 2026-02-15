@@ -1,13 +1,14 @@
+# shellcheck shell=bash
 # -*- mode: sh -*-
 
-#  Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+# Contributor: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 # Contributor: Nicolas Stalder <n+archlinux@stalder.io>
 # Contributor: Shawn Nock <shawn@monadnock.ca>
 
 pkgname='littlefs-fuse'
+pkgdesc='A FUSE wrapper that puts the LittleFS in user-space'
 pkgver=2.7.14
-pkgrel=1
-pkgdesc='A FUSE wrapper that puts the littlefs in user-space'
+pkgrel=2
 url='https://github.com/littlefs-project/littlefs-fuse'
 arch=('aarch64' 'x86_64')
 license=('BSD-3-Clause')  # SPDX-License-Identifier: BSD-3-Clause
@@ -33,9 +34,9 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  install -vDm0755 lfs        -t "$pkgdir/usr/bin"
-  install -vDm0644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname"
-  install -vDm0644 README.md  -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm0755 lfs        -t "$pkgdir/usr/bin"
+  install -Dm0644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm0644 README.md  -t "$pkgdir/usr/share/doc/$pkgname"
 }
 
 sha256sums=(
