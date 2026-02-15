@@ -1,7 +1,7 @@
 pkgbase = petbottle-bin
 	pkgdesc = Yerel not uygulamasi
 	pkgver = 0.1.9
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/Rumata01/Petbottle-public
 	arch = x86_64
 	license = Apache-2.0

@@ -1,7 +1,7 @@
 # Maintainer: Rumata <Rumata01@github.com>
 pkgname=petbottle-bin
 pkgver=0.1.9
-pkgrel=2
+pkgrel=1
 pkgdesc="Yerel not uygulamasi"
 arch=('x86_64')
 url="https://github.com/Rumata01/Petbottle-public"
@@ -13,6 +13,16 @@ source=("${pkgname}-${pkgver}.deb::https://github.com/Rumata01/Petbottle-public/
 sha256sums=('c2509c7f800c4021958678b440c5db3551def0a5bd05fc612ec2fa1edbd7ade5')
 
 package() {
+    
     bsdtar -xf data.tar.* -C "${pkgdir}"
+  
+    mv "${pkgdir}/usr/bin/petbottle" "${pkgdir}/usr/bin/petbottle-bin"
+    
+    echo '#!/bin/sh' > "${pkgdir}/usr/bin/petbottle"
+    echo 'export WEBKIT_DISABLE_DMABUF_RENDERER=1' >> "${pkgdir}/usr/bin/petbottle"
+    echo 'exec /usr/bin/petbottle-bin "$@"' >> "${pkgdir}/usr/bin/petbottle"
+    
+    
     chmod 755 "${pkgdir}/usr/bin/petbottle"
+    chmod 755 "${pkgdir}/usr/bin/petbottle-bin"
 }
