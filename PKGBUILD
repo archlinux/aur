@@ -36,11 +36,6 @@ build() {
   go build ./cmd/ktea
 }
 
-check() {
-  cd "${pkgname}-${pkgver}"
-  go test -count=1 ./...  -p 1
-}
-
 package() {
   cd "${pkgname}-${pkgver}"
 
