@@ -4,7 +4,7 @@
 # dependencies will cover those
 
 pkgname=hyprquickframe-git
-pkgver=r29.g8e052c6
+pkgver=r40.g3cee77a
 pkgrel=3
 pkgdesc="Quickshell-based screenshot utility for Hyprland"
 arch=('any')
