@@ -1,0 +1,4 @@
+[setrixtui]
+source = "github"
+github = "Mjoyufull/Setrixtui"
+use_latest_release = true

@@ -1,0 +1,15 @@
+pkgbase = setrixtui
+	pkgdesc = Tetris Sand game in Ratatui
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/Mjoyufull/setrixtui
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = rust
+	depends = glibc
+	depends = libgcc
+	provides = setrixtui
+	source = setrixtui-0.4.0.tgz::https://github.com/Mjoyufull/setrixtui/archive/refs/tags/0.4.0.tar.gz
+	sha256sums = a21b771f1690ffd0415cd903c93d6909a185344190e3ee246dfb2cf8a4d21484
+
+pkgname = setrixtui
