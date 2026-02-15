@@ -22,7 +22,7 @@ source=("${pkgname}-${pkgver}.tgz::https://github.com/${_pkgauthor}/${pkgname}/a
 sha256sums=('060474a1d4ce2446c910acffd9d284bac09779851a1597d0c559ac7d2bf860f8')
 
 build() {
-	cd ${srcdir}/${pkgname}-${pkgver}/ || exit 1
+	cd ${srcdir}/${_pkgname}-${pkgver}/ || exit 1
 
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
@@ -30,7 +30,7 @@ build() {
 }
 
 package() {
-	cd ${srcdir}/${pkgname}-${pkgver}/ || exit 1
+	cd ${srcdir}/${_pkgname}-${pkgver}/ || exit 1
 
 	install -Dm755 "target/release/fsel" "$pkgdir/usr/bin/fsel"
 
