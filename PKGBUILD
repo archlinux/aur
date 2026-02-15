@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=astyle-git
-pkgver=3.2.1.r1.g2e9fe14
+pkgver=3.6.13.r7.g6aa257d0
 pkgrel=1
 pkgdesc="A free, fast, and small automatic code formatter"
 arch=('i686' 'x86_64')
 url="https://astyle.sourceforge.net/"
 license=('MIT')
-depends=('gcc-libs')
+depends=('glibc' 'libgcc' 'libstdc++')
 makedepends=('git')
 provides=("astyle=$pkgver")
 conflicts=('astyle')
@@ -20,7 +20,7 @@ pkgver() {
   cd "astyle"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
