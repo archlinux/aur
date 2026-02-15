@@ -2,13 +2,13 @@
 
 pkgbase=bubblewrap-git
 pkgname=('bubblewrap-git' 'bubblewrap-suid-git')
-pkgver=0.11.0.r2.gd6180f2
+pkgver=0.11.0.r8.g0c408e1
 pkgrel=1
 pkgdesc="Low-level unprivileged sandboxing tool"
 arch=('i686' 'x86_64')
 url="https://github.com/containers/bubblewrap"
 license=('LGPL-2.0-or-later')
-depends=('gcc-libs' 'glibc' 'libcap')
+depends=('glibc' 'libgcc' 'libcap')
 makedepends=('git' 'bash-completion' 'docbook-xsl' 'libxslt' 'meson')
 provides=("bubblewrap=$pkgver")
 conflicts=('bubblewrap')
@@ -21,7 +21,7 @@ pkgver() {
   cd "bubblewrap"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
