@@ -2,10 +2,10 @@
 
 _llvm=21
 _basename="zig"
-_prefix="-master"
-pkgname="${_basename}${_prefix}"
-pkgver=0.16.0dev.1484+d0ba6642b
-pkgrel=3
+_suffix="-master"
+pkgname="${_basename}${_suffix}"
+pkgver=0.16.0dev.2596+469bf6af0
+pkgrel=1
 pkgdesc="General-purpose programming language and toolchain for maintaining robust, optimal, and reusable software"
 arch=(
   # 'aarch64'     # 'aarch64'
@@ -23,7 +23,7 @@ license=(
   'MIT'
 )
 depends=(
-  'gcc-libs'
+  'libstdc++'
   'glibc'
 
   "clang>=${_llvm}"
@@ -58,7 +58,7 @@ sha256sums=('SKIP'
             'eb30e0eb00e6ced4c99383f0658a0351f42882e303300ed1828d162d27171cd0')
 
 prepare() {
-  local index_json="$(curl -s "${url}/download/index.json")"
+  local index_json="$(curl "${url}/download/index.json")"
   local zig_version="$(jq -r '."master"."version"' <<< "${index_json}")"
   local zig_commit="${zig_version##*+}"
   local cmake_options=(
@@ -99,6 +99,7 @@ build() {
   cmake --build "${_pkgsrc}/build"
 
   cd "${_pkgsrc}"
+  rm -rf "fakeinstal"
   DESTDIR="./fakeinstall" cmake --install build
 }
 

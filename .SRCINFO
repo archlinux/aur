@@ -1,7 +1,7 @@
 pkgbase = zig-master
 	pkgdesc = General-purpose programming language and toolchain for maintaining robust, optimal, and reusable software
-	pkgver = 0.16.0dev.1484+d0ba6642b
-	pkgrel = 3
+	pkgver = 0.16.0dev.2596+469bf6af0
+	pkgrel = 1
 	url = https://ziglang.org
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = zig-master
 	makedepends = git
 	makedepends = jq
 	makedepends = llvm>=21
-	depends = gcc-libs
+	depends = libstdc++
 	depends = glibc
 	depends = clang>=21
 	depends = lld>=21
