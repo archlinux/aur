@@ -9,6 +9,6 @@ pkgbase = fish-screen-time
 	depends = bash
 	depends = systemd
 	source = fish-screen-time-1.0.2.tar.gz::https://github.com/OlyAhamed/fish-screen-time/archive/v1.0.2.tar.gz
-	sha256sums = d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed
+	sha256sums = ab6f4b80011234de4f0ddfbf21d06b57ee0099b739c98525a9927c765be2763f
 
 pkgname = fish-screen-time

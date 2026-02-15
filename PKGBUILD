@@ -9,7 +9,7 @@ url="https://github.com/OlyAhamed/fish-screen-time"
 license=('MIT')
 depends=('fish' 'bash' 'systemd')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
+sha256sums=('ab6f4b80011234de4f0ddfbf21d06b57ee0099b739c98525a9927c765be2763f')
 
 package() {
     cd "$pkgname-$pkgver"
