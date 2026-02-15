@@ -8,7 +8,7 @@ pkgname=ut2004-data-gog
 _pkgvermaj=3369
 _pkgvermin=2
 pkgver=${_pkgvermaj}
-pkgrel=1
+pkgrel=2
 pkgdesc="Unreal Tournament 2004 ECE data from GOG"
 arch=('any')
 url="https://www.gog.com/game/unreal_tournament_2004_ece"
@@ -63,4 +63,8 @@ package() {
     msg2 "Removing conflicting Help files..."
     rm -f "$pkgdir/opt/ut2004/Help/DebuggerLogo.bmp"
     rm -f "$pkgdir/opt/ut2004/Help/InstallerLogo.bmp"
+
+    msg2 "Fixing permissions..."
+    find "$pkgdir/opt/ut2004" -type d -exec chmod 755 {} +
+    find "$pkgdir/opt/ut2004" -type f -exec chmod 644 {} +
 }

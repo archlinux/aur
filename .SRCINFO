@@ -1,7 +1,7 @@
 pkgbase = ut2004-data-gog
 	pkgdesc = Unreal Tournament 2004 ECE data from GOG
 	pkgver = 3369
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gog.com/game/unreal_tournament_2004_ece
 	arch = any
 	license = custom
