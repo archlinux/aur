@@ -11,9 +11,11 @@ pkgbase = digimend-kernel-drivers-dkms
 	depends = xf86-input-wacom
 	source = digimend-kernel-drivers-dkms-v13.tar.gz::https://github.com/DIGImend/digimend-kernel-drivers/archive/refs/tags/v13.tar.gz
 	source = digimend-kernel-drivers-dkms-update-to-linux-6.12.patch::https://patch-diff.githubusercontent.com/raw/DIGImend/digimend-kernel-drivers/pull/707.patch
+	source = digimend-kernel-drivers-dkms-update-to-linux-6.18.patch
 	source = Makefile
 	sha256sums = ee3fcd2eaa32bee4e5ce742c81e31d7290893772c3931d1888b32fe34ec0f3c8
 	sha256sums = 59d6438f5e6d19aa013d54014c4eefc7a6608ab9bc54de5f716d98a7e0d94b67
+	sha256sums = 2fe355a509a5cfbdbee815a34c6448b78fb38c0a0da6300d801e5053271f75b6
 	sha256sums = bacc8a6b0c5fdbc95b9ef6072c9db6afc56958c0f8e539d4338b8895377355fe
 
 pkgname = digimend-kernel-drivers-dkms
