@@ -3,7 +3,7 @@
 pkgname=privatebin-cli
 _binname=privatebin
 _bindate=$(date --rfc-3339=date)
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='A powerful CLI for creating and managing PrivateBin pastes with ease'
 arch=(x86_64 aarch64)
@@ -15,12 +15,12 @@ makedepends=('go' 'pandoc')
 options=(!lto)
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('eb143ed6d2ab88d66e615c5a98fb2c3f8b0ee5a8394590b68ddbf59bfb2c39d3')
+sha256sums=('1b03499608fca426ad6ecc2ea1c33af3f13fd8eaea40b05adc26d7f25ca8c350')
 
 prepare() {
   cd $_binname-$pkgver
-  export GOPATH="${srcdir}"
-  go mod download
+  export GOPATH="${srcdir}/go"
+  go mod download -modcacherw
 
   # Man
   pandoc --standalone --to man -M footer=$pkgver doc/privatebin.1.md -o privatebin.1
@@ -35,7 +35,6 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOPATH="${srcdir}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   go build \
@@ -43,6 +42,9 @@ build() {
         -X 'main.commit=$pkgrel'
         -X 'main.date=$_bindate'" \
     -o $_binname cmd/privatebin/main.go cmd/privatebin/cfg.go
+
+  # Make sure go path is writable so it can be cleaned up
+  chmod -R u+w "${srcdir}/go"
 }
 
 package() {
