@@ -5,14 +5,14 @@
 
 pkgname=beekeeper-qt
 pkgver=1.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Deduplicate redundant data in your disk and save space"
 url="https://github.com/techmanwalker/beekeeper-qt"
-depends=('qt6-base' 'qt6-tools' 'polkit-qt6' 'systemd' 'btrfs-progs' 'bees')
+depends=('qt6-base' 'qt6-tools' 'polkit-qt6' 'systemd' 'btrfs-progs' 'bees' 'util-linux')
 arch=('x86_64')
 license=('AGPL-3.0-or-later')
 makedepends=('git' 'cmake' 'pkgconf' 'ninja' 'cli11')
-optdepends=('util-linux' 'doxygen')
+optdepends=('doxygen')
 provides=('beekeeper')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 md5sums=('SKIP')
