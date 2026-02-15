@@ -32,7 +32,7 @@ build() {
 package() {
 	cd ${srcdir}/${_pkgname}-${pkgver}/ || exit 1
 
-	install -Dm755 "target/release/fsel" "$pkgdir/usr/bin/fsel"
+	install -Dm755 "target/release/${_execname}" "$pkgdir/usr/bin/${_execname}"
 
 	install -Dm644 "USAGE.md" "${pkgdir}/usr/share/doc/${pkgname}/USAGE.md"
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
