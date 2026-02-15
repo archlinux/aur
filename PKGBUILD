@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 pkgname=python-tueplots
 _pkgname=${pkgname#python-}
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='Extend matplotlib for scientific publications'
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('python-build' 'python-installer' 'python-setuptools')
 checkdepends=('python-pytest' 'python-pytest-cases')
 optdepends=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('52341822a421dd0655162e8c965d04ee20801a8f2dba56b5e760963ab050ea2b')
+sha256sums=('0d124133f841eea6153750111ed5f94613d9673c50e8045bfe42c3107cd0ce14')
 
 build() {
   export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver

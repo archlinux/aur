@@ -1,6 +1,6 @@
 pkgbase = python-tueplots
 	pkgdesc = Extend matplotlib for scientific publications
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/pnkraemer/tueplots
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-tueplots
 	makedepends = python-setuptools
 	depends = python-matplotlib
 	depends = python-numpy
-	source = python-tueplots-0.2.2.tar.gz::https://github.com/pnkraemer/tueplots/archive/refs/tags/v0.2.2.tar.gz
-	sha256sums = 52341822a421dd0655162e8c965d04ee20801a8f2dba56b5e760963ab050ea2b
+	source = python-tueplots-0.2.3.tar.gz::https://github.com/pnkraemer/tueplots/archive/refs/tags/v0.2.3.tar.gz
+	sha256sums = 0d124133f841eea6153750111ed5f94613d9673c50e8045bfe42c3107cd0ce14
 
 pkgname = python-tueplots
