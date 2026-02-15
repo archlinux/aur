@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 
 pkgname=qrdv
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Encode any data into QR code videos with optional encryption."
 arch=('x86_64' 'aarch64')
@@ -20,10 +20,10 @@ source_aarch64=("qrdv-aarch64-$pkgver-$pkgrel::$url/releases/download/v$pkgver/q
 
 sha256sums=('184086b302ece79e686ac701ca404fe7a49499626c82f684dce1b820af59710c'
             '305f920fdbdafb80aa1e64161589325e3f731157c9419a6b7fc0f6692fe1be87')
-sha256sums_x86_64=('e68fc77a3bf989c8f114ca15fa549024e9a4367e730ccc468c94139f8c310aca'
-                   '760df76ebebf5068bd30a076739a51c6970533c9f4bc6717aecd68163cadced9')
-sha256sums_aarch64=('cddf1f2f93db96802ed61a7384034eb7693baccedc1c28008f345fe3aa10a909'
-                    '760df76ebebf5068bd30a076739a51c6970533c9f4bc6717aecd68163cadced9')
+sha256sums_x86_64=('dc7f5c9f5d98aa4e33184dade814b482a783a3cb33a6a4a2aaab7752ea9595d8'
+                   '03e55a9da169887e416b2eb047d3d78488387ddea36d7d6fc7e09b56215d5d07')
+sha256sums_aarch64=('8102a6dc9385ac58608cec52f8499fe8c1058aa72f4ce4482706ad0fc141ef35'
+                    '03e55a9da169887e416b2eb047d3d78488387ddea36d7d6fc7e09b56215d5d07')
 
 prepare() {
   # Extract completions zip (contains man pages + shell completions)
