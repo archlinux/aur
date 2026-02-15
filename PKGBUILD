@@ -1,7 +1,7 @@
 # Maintainer: Álvaro De Quinta <blackcherry at danwin1210 dot de>
 # Contributor: Sapphire <imsapphire0 at gmail dot com>
 pkgname=wivrn-server-git
-pkgver=r2285.d81734f
+pkgver=r2325.b09af79
 pkgrel=1
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
