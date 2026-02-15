@@ -10,7 +10,7 @@
 
 pkgname=aws-lc
 pkgver=1.67.0
-pkgrel=2
+pkgrel=3
 pkgdesc='general-purpose cryptographic library maintained by the AWS Cryptography team for AWS'
 url='https://github.com/aws/aws-lc'
 license=('MIT' 'ISC' 'Apache-2.0' 'OpenSSL')
@@ -87,7 +87,7 @@ check() {
     #_set_clang_toolchain
 
     # ONLY FOR CLEAN-CHROOT: Skip OCSP integration tests - require external network connectivity
-    export GTEST_FILTER='-All/OCSPIntegrationTest.*'
+    #export GTEST_FILTER='-All/OCSPIntegrationTest.*'
 
     ninja -C build -j $(nproc) run_tests
 }
