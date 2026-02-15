@@ -1,11 +1,12 @@
 pkgbase = uutils-findutils-bin
 	pkgdesc = Rust implementation of findutils
 	pkgver = 0.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/uutils/findutils
 	arch = x86_64
 	license = MIT
-	depends = gcc-libs
+	depends = glibc
+	depends = libgcc
 	provides = uutils-findutils=0.8.0
 	conflicts = uutils-findutils
 	source_x86_64 = https://github.com/uutils/findutils/releases/download/0.8.0/findutils-x86_64-unknown-linux-gnu.tar.xz

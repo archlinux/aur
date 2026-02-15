@@ -2,12 +2,12 @@
 
 pkgname=uutils-findutils-bin
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Rust implementation of findutils"
 arch=('x86_64')
 url="https://github.com/uutils/findutils"
 license=('MIT')
-depends=('gcc-libs')
+depends=('glibc' 'libgcc')
 provides=("uutils-findutils=$pkgver")
 conflicts=('uutils-findutils')
 source_x86_64=("https://github.com/uutils/findutils/releases/download/$pkgver/findutils-x86_64-unknown-linux-gnu.tar.xz")
