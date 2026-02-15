@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=UT99 GOTY
+Comment=Unreal Tournament GOTY
+Exec=/usr/bin/unreal-tournament
+Icon=unreal-tournament
+Terminal=false
+Type=Application
+Categories=Application;Game;
+Keywords=Unreal;Tournament;Shooter;FPS;Arena;GOTY;
