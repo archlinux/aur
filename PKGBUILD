@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=cfnts-git
-pkgver=r205.g3d9c673
-pkgrel=2
+pkgver=r219.gfa53b98
+pkgrel=1
 pkgdesc="NTS protocol implementation written in Rust"
 arch=('i686' 'x86_64')
 url="https://blog.cloudflare.com/announcing-cfnts/"
-license=('BSD')
-depends=('gcc-libs')
-makedepends=('git' 'rust')
+license=('BSD-2-Clause')
+depends=('glibc' 'libgcc')
+makedepends=('git' 'cargo')
 provides=("cfnts=$pkgver")
 conflicts=('cfnts')
 source=("git+https://github.com/cloudflare/cfnts.git")
