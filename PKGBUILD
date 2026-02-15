@@ -6,7 +6,7 @@
 
 pkgname=ut2004-bin
 pkgver=3374
-pkgrel=2
+pkgrel=3
 pkgdesc="Unreal Tournament 2004 ECE native binaries (OldUnreal)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/OldUnreal/UT2004Patches"
@@ -39,7 +39,12 @@ package() {
     # If ARM64, overwrite with SystemARM64 contents
     if [ "$CARCH" == "aarch64" ]; then
         msg2 "Overwriting with ARM64 binaries..."
-        cp -R "$srcdir/SystemARM64/"* "$pkgdir/opt/ut2004/System/"
+        for f in "$srcdir/SystemARM64/"*; do
+            if [ -L "$f" ] && [[ "$(readlink "$f")" == ../System/* ]]; then
+                continue
+            fi
+            cp -R "$f" "$pkgdir/opt/ut2004/System/"
+        done
     fi
     
     # Copy other folders (Textures, etc) if present in patch root
