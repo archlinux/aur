@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Vortex Mod Manager
-Exec=/usr/bin/vortex -d %U
+Exec=/usr/bin/vortex %U
 Terminal=false
 Type=Application
 Icon=vortex
