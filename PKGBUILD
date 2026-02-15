@@ -1,29 +1,29 @@
+# shellcheck shell=bash
 # -*- sh -*-
 
-# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+# Contributor: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='python-ultraplot-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=1.60.2.r12.g6ab74347
-pkgrel=1
 pkgdesc='A succint python wrapper for matplotlib (development version)'
-arch=('any')
+pkgver=1.71.0.r115.ga591d9c4
+pkgrel=1
 url='https://github.com/Ultraplot/UltraPlot'
+arch=('any')
 license=('MIT')  # SPDX-License-Identifier: MIT (main package)
 makedepends=(
   'git'
   'python-build'
   'python-installer'
-  'python-setuptools'
+  'python-setuptools-scm'
   'python-wheel'
 )
 depends=(
-  'python>=3.12'
+  'python'
   'python-cycler'
   'python-matplotlib'
   'python-numpy'
-  'python-packaging'
 )
 optdepends=(
   'python-cartopy: matplotlib support for visualisation'
@@ -60,8 +60,12 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.{md,rst}
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.{md,rst}
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
+
+  for _dir in doc licenses; do
+    cd "$pkgdir/usr/share/$_dir" && ln -srf "$pkgname" "$_pkgname"
+  done
 }
 
 # eof
