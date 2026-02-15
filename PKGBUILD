@@ -10,6 +10,7 @@ depends=('libusb' 'libgusb' 'pixman' 'cairo' 'glib2' 'nss'
          'libjpeg-turbo' 'openssl' 'opencv')
 makedepends=('git' 'meson' 'ninja' 'gcc' 'pkgconf' 'gtk-doc'
              'gobject-introspection')
+optdepends=('fprintd: fingerprint authentication daemon')
 provides=('libfprint' 'libfprint-2' 'libfprint-2.so')
 conflicts=('libfprint' 'libfprint-2')
 options=(!debug)

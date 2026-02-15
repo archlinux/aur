@@ -21,6 +21,7 @@ pkgbase = libfprint-goodix53x5
 	depends = libjpeg-turbo
 	depends = openssl
 	depends = opencv
+	optdepends = fprintd: fingerprint authentication daemon
 	provides = libfprint
 	provides = libfprint-2
 	provides = libfprint-2.so
