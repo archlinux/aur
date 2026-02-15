@@ -1,7 +1,7 @@
 pkgbase = unreal-tournament-data-gog
 	pkgdesc = Unreal Tournament 99 (GOTY) data from GOG
 	pkgver = 436
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gog.com/game/unreal_tournament_goty
 	arch = any
 	license = custom
