@@ -10,7 +10,7 @@ provides=('petbottle')
 conflicts=('petbottle')
 depends=('gtk3' 'webkit2gtk' 'libappindicator-gtk3')
 source=("${pkgname}-${pkgver}.deb::https://github.com/Rumata01/Petbottle-public/releases/download/v${pkgver}/petbottle_${pkgver}_amd64.deb")
-sha256sums=('d407fc2aa8350b4e5cc49ccda6c0994959328196693651eabab320adbb874738')
+sha256sums=('c2509c7f800c4021958678b440c5db3551def0a5bd05fc612ec2fa1edbd7ade5')
 
 package() {
     bsdtar -xf data.tar.* -C "${pkgdir}"
