@@ -1,0 +1,13 @@
+diff --git a/config.go b/config.go
+index bb044dc..5712e79 100644
+--- a/config.go
++++ b/config.go
+@@ -284,7 +284,7 @@ func ValidateAndHandleFrameworkConfiguration() {
+ 	if len(config.BlocklistFileName) > 0 {
+ 		if config.BlocklistFileName == "-" {
+ 			// use the default location
+-			config.BlocklistFileName = os.Getenv("HOME") + "/.config/zgrab2/blocklist.conf"
++			config.BlocklistFileName = "/etc/zgrab2/blocklist.conf"
+ 		}
+ 		var err error
+ 		blocklist, err = readBlocklist(config.BlocklistFileName)
