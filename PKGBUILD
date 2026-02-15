@@ -1,6 +1,6 @@
 pkgname=lianpkg-gui-bin
 pkgver=2.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Flutter GUI for LianPkg — Wallpaper Engine resource tool"
 keywords=('wallpaper-engine' 'pkg' 'unpacker' 'wallpaper' 'resource' 'tex' 'flutter' 'gui')
 arch=('x86_64')
@@ -10,14 +10,12 @@ depends=('gtk3' 'glibc')
 optdepends=('lianpkg-bin: CLI version')
 
 source=("lianpkg-gui-${pkgver}.tar.gz::https://github.com/Yueosa/lianpkg/releases/download/v${pkgver}/lianpkg-gui_${pkgver}_linux_x86_64.tar.gz")
-sha256sums=('0c561607e47115c10e63ae0aa9def9f3c5afac2b9bb7635bf4c8f6923c831d13')
+sha256sums=('a36f884d85ba9baf196a9aefeb2d7c62a48eee8bb2018222583b33c71e0073ba')
 
 package() {
-  local _bundle="$srcdir/lianpkg-gui_linux_x86_64"
-
   # 安装 bundle 到 /opt/lianpkg-gui
   install -d "$pkgdir/opt/lianpkg-gui"
-  cp -a "$_bundle"/{lianpkg-gui,lib,data} "$pkgdir/opt/lianpkg-gui/"
+  cp -a "$srcdir"/{lianpkg-gui,lib,data} "$pkgdir/opt/lianpkg-gui/"
   chmod 755 "$pkgdir/opt/lianpkg-gui/lianpkg-gui"
 
   # 创建 /usr/bin 符号链接
@@ -25,7 +23,7 @@ package() {
   ln -s /opt/lianpkg-gui/lianpkg-gui "$pkgdir/usr/bin/lianpkg-gui"
 
   # 安装图标
-  install -Dm644 "$_bundle/data/flutter_assets/assets/icon.png" \
+  install -Dm644 "$srcdir/data/flutter_assets/assets/icon.png" \
     "$pkgdir/usr/share/icons/hicolor/64x64/apps/lianpkg-gui.png"
 
   # 安装 .desktop 文件
