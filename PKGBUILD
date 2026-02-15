@@ -9,7 +9,7 @@ pkgdesc="Manage file system object mapping via symlinks. Lightweight alternative
 arch=("any")
 depends=("python>=3.9")
 license=("GPL-3.0-or-later")
-makedepends=("python-build" "python-installer" "python-wheel")
+makedepends=("python-build" "python-installer")
 MYNAME="$pkgname-$pkgver"
 source=(
 	"$MYNAME.tar.gz::https://github.com/rseichter/stown/archive/refs/tags/${pkgver}.tar.gz"
