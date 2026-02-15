@@ -5,8 +5,7 @@ pkgbase = passcualito
 	url = https://github.com/javiorfo/passcualito
 	arch = x86_64
 	license = MIT
-	depends = rust
-	depends = cargo
+	makedepends = cargo
 	source = passcualito-0.1.0.tar.gz::https://github.com/javiorfo/passcualito/archive/refs/tags/0.1.0.tar.gz
 	sha256sums = 7b3a4c729662e86fdb5d58998e6123d49dbe4aea5a15e0424a75413c83843df2
 
