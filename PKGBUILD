@@ -2,7 +2,7 @@
 
 pkgname=luminance
 _pkgname=Luminance
-pkgver=1.4.5
+pkgver=1.4.6
 pkgrel=1
 pkgdesc="A simple GTK application to control brightness of displays including external displays supporting DDC/CI"
 arch=('x86_64')
