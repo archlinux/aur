@@ -26,6 +26,7 @@ pkgbase = libfprint-goodix53x5
 	provides = libfprint-2.so
 	conflicts = libfprint
 	conflicts = libfprint-2
+	options = !debug
 	source = git+https://gitlab.freedesktop.org/libfprint/libfprint.git#tag=v1.94.10
 	source = git+https://github.com/AndyHazz/goodix53x5-libfprint.git
 	sha256sums = SKIP

@@ -12,6 +12,7 @@ makedepends=('git' 'meson' 'ninja' 'gcc' 'pkgconf' 'gtk-doc'
              'gobject-introspection')
 provides=('libfprint' 'libfprint-2' 'libfprint-2.so')
 conflicts=('libfprint' 'libfprint-2')
+options=(!debug)
 source=("git+https://gitlab.freedesktop.org/libfprint/libfprint.git#tag=v${pkgver}"
         "git+https://github.com/AndyHazz/goodix53x5-libfprint.git")
 sha256sums=('SKIP'
