@@ -1,7 +1,7 @@
 pkgbase = lianpkg-gui-bin
 	pkgdesc = Flutter GUI for LianPkg — Wallpaper Engine resource tool
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Yueosa/lianpkg
 	arch = x86_64
 	license = GPL3
