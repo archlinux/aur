@@ -14,7 +14,6 @@ pkgbase = arf-git
 	depends = pacman
 	depends = pyalpm
 	depends = python
-	depends = python-requests
 	depends = python-srcinfo
 	optdepends = sudo: default privilege elevation
 	provides = arf
