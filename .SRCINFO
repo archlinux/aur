@@ -1,7 +1,7 @@
 pkgbase = unreal-tournament-bin
 	pkgdesc = Unreal Tournament 99 (GOTY) native binaries (OldUnreal)
 	pkgver = 469e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OldUnreal/UnrealTournamentPatches
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,8 @@ pkgbase = unreal-tournament-bin
 	depends = unreal-tournament-data
 	depends = sdl2
 	depends = openal
+	depends = alsa-lib
+	depends = libgl
 	provides = unreal-tournament
 	conflicts = unreal-tournament
 	source = unreal-tournament.sh

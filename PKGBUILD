@@ -2,12 +2,12 @@
 
 pkgname=unreal-tournament-bin
 pkgver=469e
-pkgrel=1
+pkgrel=2
 pkgdesc="Unreal Tournament 99 (GOTY) native binaries (OldUnreal)"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/OldUnreal/UnrealTournamentPatches"
 license=('custom')
-depends=('unreal-tournament-data' 'sdl2' 'openal')
+depends=('unreal-tournament-data' 'sdl2' 'openal' 'alsa-lib' 'libgl')
 makedepends=()
 provides=('unreal-tournament')
 conflicts=('unreal-tournament')
@@ -17,7 +17,7 @@ source_aarch64=("https://github.com/OldUnreal/UnrealTournamentPatches/releases/d
 source=("unreal-tournament.sh"
         "unreal-tournament.desktop"
         "unreal-tournament.png")
-sha256sums=('443b08d9cee5b1d6e6f2f7343b93e528375493308f9b1ba6429ba77d2f0a7a1c'
+sha256sums=('91d1698c2a90df28638d9bc258cd9b9ae7fa0616ec713d02bdab706eb52502dd'
             '944b95fc51c214e5bacf96d613a46fe95fdb6f99102cb8b83dacd76037540ffe'
             '69c9c5eb9ff8f6ee5cbfd9df5d16f68461d682fbb15c75a34627eaff2474190e')
 sha256sums_i686=('cbd6d8016efb30e3982757a582c688532803721ec1ec738fc28af9b3e15d3c14')
@@ -46,6 +46,14 @@ package() {
     else
         tar -xjf "OldUnreal-UTPatch${pkgver}-Linux-x86.tar.bz2" -C "$pkgdir/opt/unreal-tournament"
     fi
+
+    msg2 "Creating UserPatch folder from System defaults..."
+    install -d "$pkgdir/opt/unreal-tournament/UserPatch"
+    for f in CacheRecords.ucl DefUnrealEd.ini DefUser.ini Default.ini User.ini; do
+        if [ -f "$pkgdir/opt/unreal-tournament/System/$f" ]; then
+            cp "$pkgdir/opt/unreal-tournament/System/$f" "$pkgdir/opt/unreal-tournament/UserPatch/"
+        fi
+    done
 
     msg2 "Fixing permissions..."
     find "$pkgdir/opt/unreal-tournament" -type d -exec chmod 755 {} +

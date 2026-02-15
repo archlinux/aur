@@ -10,6 +10,9 @@ if [ ! -d "$UT_USER_PATH" ]; then
     if [ -d "$UT_DATA_PATH/User" ]; then
         cp "$UT_DATA_PATH/User/"* "$UT_USER_PATH/System/"
     fi
+    if [ -d "$UT_DATA_PATH/UserPatch" ]; then
+        cp "$UT_DATA_PATH/UserPatch/"* "$UT_USER_PATH/System/"
+    fi
 fi
 
 
