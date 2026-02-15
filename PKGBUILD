@@ -1,18 +1,19 @@
+# shellcheck shell=bash
 # -*- mode: sh -*-
 
-#  Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+# Contributor: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 # Contributor: Alessandro Bernardello <aleberna at erine dot eu>
 
 pkgname='zenta-git'
 _pkgname="${pkgname/-git}"
-pkgver=1.0.0.r0.g0538490
-pkgrel=3
 pkgdesc='Mindfulness for terminal users (development version)'
-arch=('aarch64' 'armv7h' 'i686' 'riscv64' 'x86_64')
+pkgver=1.1.0.r0.g4591320
+pkgrel=1
 url='https://github.com/e6a5/zenta'
+arch=('aarch64' 'armv7h' 'i686' 'riscv64' 'x86_64')
 license=('MIT')  # SPDX-License-Identifier: MIT
-depends=('glibc')
 makedepends=('git' 'go')
+depends=('glibc')
 source=("git+$url.git")
 provides=('zenta')
 conflicts=("${provides[@]}")
@@ -60,12 +61,16 @@ build() {
 package() {
   cd "$_pkgname"
 
-  install -vDm0755 -t "$pkgdir/usr/bin/" \
+  install -Dm0755 -t "$pkgdir/usr/bin/" \
     build/zenta
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
     ./*.md
-  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
     LICENSE
+
+  for _dir in doc licenses; do
+    cd "$pkgdir/usr/share/$_dir" && ln -srf "$pkgname" "$_pkgname"
+  done
 }
 
 # eof
