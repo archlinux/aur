@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=agate-git
-pkgver=3.3.0.r4.g4020791
-pkgrel=3
+pkgver=3.3.20.r4.g92093a8
+pkgrel=1
 pkgdesc="Very simple server for the Gemini hypertext protocol"
 arch=('i686' 'x86_64')
 url="https://github.com/mbrubeck/agate"
-license=('Apache' 'MIT')
-depends=('gcc-libs')
-makedepends=('git' 'rust')
+license=('Apache-2.0' 'MIT')
+depends=('glibc' 'libgcc')
+makedepends=('git' 'cargo')
 provides=("agate=$pkgver")
 conflicts=('agate')
 options=('staticlibs')
