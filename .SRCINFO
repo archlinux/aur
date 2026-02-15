@@ -1,13 +1,12 @@
 pkgbase = uthenticode
 	pkgdesc = A cross-platform library for verifying Authenticode signatures
 	pkgver = 2.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://trailofbits.github.io/uthenticode/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	depends = gcc-libs
 	depends = openssl
 	depends = pe-parse
 	options = staticlibs

@@ -2,12 +2,12 @@
 
 pkgname=uthenticode
 pkgver=2.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform library for verifying Authenticode signatures"
 arch=('i686' 'x86_64')
 url="https://trailofbits.github.io/uthenticode/"
 license=('MIT')
-depends=('gcc-libs' 'openssl' 'pe-parse')
+depends=('openssl' 'pe-parse')
 makedepends=('cmake')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/trailofbits/uthenticode/archive/refs/tags/v$pkgver.tar.gz")
