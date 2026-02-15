@@ -3,12 +3,12 @@
 
 pkgname=castor-git
 pkgver=0.9.0.r0.gec77c75
-pkgrel=1
+pkgrel=2
 pkgdesc="A Gemini, Gopher and Finger protocol client"
 arch=('i686' 'x86_64')
 url="https://git.sr.ht/~julienxx/castor"
 license=('MIT')
-depends=('gcc-libs' 'glibc' 'atk' 'cairo' 'gdk-pixbuf2' 'gtk3' 'openssl' 'pango')
+depends=('glibc' 'libgcc' 'atk' 'cairo' 'gdk-pixbuf2' 'gtk3' 'openssl' 'pango')
 makedepends=('git' 'cargo')
 provides=("castor=$pkgver")
 conflicts=('castor')
