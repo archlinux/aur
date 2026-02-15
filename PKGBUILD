@@ -3,7 +3,7 @@
 pkgbase=libjxl
 pkgname=('libjxl' 'libjxl-doc')
 pkgver=0.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc='JPEG XL image format reference implementation'
 arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
@@ -77,7 +77,7 @@ build() {
         -DJPEGXL_FORCE_SYSTEM_BROTLI:BOOL='true' \
         -DJPEGXL_FORCE_SYSTEM_GTEST:BOOL='true' \
         -DJPEGXL_FORCE_SYSTEM_HWY:BOOL='true' \
-        -DJPEGXL_INSTALL_JARDIR='/usr/share/java' \
+        -DJPEGXL_INSTALL_JARDIR:STRING='/usr/share/java' \
         -Wno-dev
     cmake --build build
     make -C build doc
@@ -90,13 +90,14 @@ check() {
 package_libjxl() {
     depends=(
         'brotli'
-        'gcc-libs'
         'giflib'
         'glibc'
         'gperftools'
+        'libgcc'
         'highway'
         'libjpeg-turbo'
-        'libpng')
+        'libpng'
+        'libstdc++')
     optdepends=(
         'java-runtime: for JNI bindings')
     provides=(
