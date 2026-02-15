@@ -1,7 +1,7 @@
 # Maintainer: Display-HDMI <wjr2009945@163.com>
 pkgname=ceru-music-appimage
 _pkgname=Ceru-Music               # 用于 .desktop 文件和内部引用
-pkgver=1.8.5                      # AppImage 版本号，请与 GitHub Release 保持一致
+pkgver=1.9.0                      # AppImage 版本号，请与 GitHub Release 保持一致
 pkgrel=1
 pkgdesc="Ceru Music 是一个跨平台音乐播放器，支持获取公开音乐信息和基于插件的播放功能。"
 arch=('x86_64')                   # AppImage 通常是 x86_64
@@ -20,7 +20,7 @@ source_x86_64=(
 
 # SHA256 校验和（建议填写真实值，“SKIP” 仅用于测试）
 # 获取方式：下载后运行 `sha256sum ceru-music-1.8.0-linux-x86_64.AppImage`
-sha256sums_x86_64=('80fd94f86e05df4881341c4798c816a2625aa260405e39ff8f05d183c7ccb7c4')        # 替换为真实 SHA256 值以通过校验
+sha256sums_x86_64=('12983b5d2991ecef8b5d3e85c0cf6b9806cd03a6bf9ba54a33d279f540569995')        # 替换为真实 SHA256 值以通过校验
 
 prepare() {
     # 赋予 AppImage 可执行权限
