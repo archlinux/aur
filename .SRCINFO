@@ -1,7 +1,7 @@
 pkgbase = ut2004-data-archiveorg
 	pkgdesc = Unreal Tournament 2004 ECE data from Archive.org ISO
 	pkgver = 3369
-	pkgrel = 1
+	pkgrel = 2
 	url = https://archive.org/details/ut-2004
 	arch = any
 	license = custom
