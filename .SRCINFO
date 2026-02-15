@@ -1,0 +1,15 @@
+pkgbase = rustormy-bin
+	pkgdesc = Minimal and neofetch-like weather CLI (precompiled binary)
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/Tairesh/rustormy
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = openssl
+	provides = rustormy
+	conflicts = rustormy
+	source = https://github.com/Tairesh/rustormy/releases/download/v0.4.1/rustormy-v0.4.1-Linux.tar.gz
+	sha256sums = SKIP
+
+pkgname = rustormy-bin
