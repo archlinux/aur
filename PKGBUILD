@@ -8,7 +8,7 @@ url="https://maplibre.org/martin/"
 
 _git_organisation=maplibre
 
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 _tag="martin-v${pkgver}"
 
@@ -36,7 +36,7 @@ source=(
     "martin-config.yaml"
 )
 b2sums=(
-    "cca682529ace93ca1e65dfb23247330bdb1ec2cea13aed6abee61e8e5d07d43c166e340154cba6ecdf6c96d7f87ccac48a848f544efa5dfb8dac48127f8ea994"
+    "330020e6ccd4e09113534cc6910157a93846e92850677d1aa19c89a0d319b540aa62675f186963152ef5f5b8fcf4514547049d0f1be98975c48c4f814d505efc"
     "cb5ba44d3653218aa76bc8b1d7c1d26b3a72dd35da7490d430a5dda727e9750015c28206d8d7e7c29701dd0c3d24198ff159f2566aff72f9f6edb1f493c0a968"
     "fc19c34e958648930a8d8cc56542ffd8eabdea36954d61e9e2f8c6b7f48bef66a61233c5097a5b4f40b79321bfb16b8ef445de0460af115413f7fd3dea825bc9"
     "c3b79402f4ae27fd46915e5aab9efb7722ccc2c1d37155119c32e59fce695b784b98bf83aa46e80f6a83756850b8794ee0752eaebd9a9001d48b0f4d5ae791ca"
@@ -114,4 +114,10 @@ package_martin-cp() {
     install -Dm 0755 \
         "target/release/martin-cp" \
         "${pkgdir}/usr/bin/martin-cp"
+    install -Dm 0644 \
+        "${pkgbase}-${pkgver}-LICENSE-APACHE" \
+        "${pkgdir}/usr/share/licenses/martin-cp/LICENSE-APACHE"
+    install -Dm 0644 \
+        "${pkgbase}-${pkgver}-LICENSE-MIT" \
+        "${pkgdir}/usr/share/licenses/martin-cp/LICENSE-MIT"
 }
