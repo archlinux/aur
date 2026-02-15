@@ -1,7 +1,7 @@
 pkgbase = vortex
 	pkgdesc = Nexus Mods' mod manager - native Linux build (Stable)
 	pkgver = 1.16.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Nexus-Mods/Vortex
 	install = vortex.install
 	arch = x86_64
@@ -30,6 +30,8 @@ pkgbase = vortex
 	options = !debug
 	source = git+https://github.com/Nexus-Mods/Vortex.git#tag=v1.16.2
 	source = vortex.desktop
+	source = vortex-handler.desktop
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
