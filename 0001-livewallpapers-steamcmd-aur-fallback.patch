@@ -1,0 +1,323 @@
+diff --git a/scripts/kitsune.sh b/scripts/kitsune.sh
+index 7294b9f..bcac7da 100755
+--- a/scripts/kitsune.sh
++++ b/scripts/kitsune.sh
+@@ -107,6 +107,8 @@ Sistema:
+   instances list
+   instances status <monitor>
+   instance-status <monitor>
++  livewallpapers status [--json]
++  livewallpapers install [--print]
+   autostart enable|disable|status [--monitor <name>]
+   autostart list
+   autostart list
+@@ -152,6 +154,14 @@ EOFH
+ kitsune instances list
+ kitsune instances status <monitor>
+ kitsune instance-status <monitor>
++EOFH
++      ;;
++    livewallpapers)
++      cat <<'EOFH'
++kitsune livewallpapers status [--json]
++kitsune livewallpapers install [--print]
++- status: valida dependencias requeridas para Workshop/SteamCMD.
++- install: intenta instalar dependencias minimas en Arch (steamcmd) o imprime el comando manual con --print.
+ EOFH
+       ;;
+     rotate)
+@@ -292,25 +302,98 @@ instance_monitor_from_cfg() {
+   awk -F= '$1 ~ "^[[:space:]]*monitor[[:space:]]*$" {gsub(/^[[:space:]]+|[[:space:]]+$/, "", $2); print $2; exit}' "$cfg" 2>/dev/null || true
+ }
+ 
++resolve_node_bin() {
++  if command -v node >/dev/null 2>&1; then
++    command -v node
++    return 0
++  fi
++  if command -v nodejs >/dev/null 2>&1; then
++    command -v nodejs
++    return 0
++  fi
++  if [[ -d "$HOME/.nvm/versions/node" ]]; then
++    local nbin
++    nbin="$(ls -1d "$HOME/.nvm/versions/node"/*/bin/node 2>/dev/null | sort -V | tail -n1 || true)"
++    if [[ -n "$nbin" && -x "$nbin" ]]; then
++      echo "$nbin"
++      return 0
++    fi
++  fi
++  return 1
++}
++
++resolve_kitowall_cli_path() {
++  local candidates=(
++    "$HOME/Programacion/Personal/Wallpaper/Kitowall/dist/cli.js"
++    "$HOME/Programacion/Personal/Wallpaper/hyprwall/dist/cli.js"
++    "$HOME/.local/share/kitowall/dist/cli.js"
++  )
++  local c
++  for c in "${candidates[@]}"; do
++    if [[ -f "$c" ]]; then
++      echo "$c"
++      return 0
++    fi
++  done
++  return 1
++}
++
++resolve_steamcmd_install_cmd() {
++  # Prefer official repos when available.
++  if command -v pacman >/dev/null 2>&1; then
++    if pacman -Si steamcmd >/dev/null 2>&1; then
++      echo "sudo pacman -S --needed steamcmd"
++      return 0
++    fi
++  fi
++  # Fallback to AUR helpers.
++  if command -v yay >/dev/null 2>&1; then
++    echo "yay -S --needed steamcmd"
++    return 0
++  fi
++  if command -v paru >/dev/null 2>&1; then
++    echo "paru -S --needed steamcmd"
++    return 0
++  fi
++  return 1
++}
++
++kitowall_status_payload() {
++  local node_bin="$1"
++  if command -v kitowall >/dev/null 2>&1; then
++    timeout 4 kitowall status 2>/dev/null
++    return $?
++  fi
++  local cli_path
++  cli_path="$(resolve_kitowall_cli_path || true)"
++  if [[ -n "$cli_path" ]]; then
++    timeout 4 "$node_bin" "$cli_path" status 2>/dev/null
++    return $?
++  fi
++  return 127
++}
++
+ kitowall_contract_check() {
+   local monitor="$1"
++  local node_bin
++  node_bin="$(resolve_node_bin || true)"
+ 
+-  if ! command -v kitowall >/dev/null 2>&1; then
+-    echo "[x] kitowall no esta en PATH"
++  if [[ -z "$node_bin" ]]; then
++    echo "[x] node no esta disponible (PATH ni nvm) para validar JSON de kitowall status"
+     return 1
+   fi
+-  if ! command -v node >/dev/null 2>&1; then
+-    echo "[x] node no esta en PATH (requerido para validar JSON de kitowall status)"
++  if ! command -v kitowall >/dev/null 2>&1 && ! resolve_kitowall_cli_path >/dev/null 2>&1; then
++    echo "[x] kitowall no esta en PATH y no se encontro dist/cli.js local"
+     return 1
+   fi
+ 
+   local payload
+-  if ! payload="$(timeout 4 kitowall status 2>/dev/null)"; then
++  if ! payload="$(kitowall_status_payload "$node_bin")"; then
+     echo "[x] kitowall status fallo (exit != 0)"
+     return 1
+   fi
+ 
+-  if ! printf '%s' "$payload" | node -e '
++  if ! printf '%s' "$payload" | "$node_bin" -e '
+     let s = "";
+     process.stdin.on("data", d => s += d);
+     process.stdin.on("end", () => {
+@@ -1161,6 +1244,179 @@ cmd_doctor() {
+   fi
+ }
+ 
++cmd_livewallpapers() {
++  local sub="${1:-status}"
++  shift || true
++  case "$sub" in
++    status)
++      local as_json=0
++      while [[ $# -gt 0 ]]; do
++        case "$1" in
++          --json) as_json=1 ;;
++          *)
++            echo "Uso: kitsune livewallpapers status [--json]"
++            exit 1
++            ;;
++        esac
++        shift
++      done
++
++      local dep
++      local missing=()
++      local required=(steamcmd kitowall node systemctl)
++      local optional=(python3 ffmpeg)
++      local node_bin
++      local has_node=0
++      local has_kitowall=0
++      local install_cmd
++
++      node_bin="$(resolve_node_bin || true)"
++      if [[ -n "$node_bin" ]]; then
++        has_node=1
++      fi
++      if command -v kitowall >/dev/null 2>&1 || resolve_kitowall_cli_path >/dev/null 2>&1; then
++        has_kitowall=1
++      fi
++
++      for dep in "${required[@]}"; do
++        case "$dep" in
++          node)
++            if [[ "$has_node" != "1" ]]; then
++              missing+=("$dep")
++            fi
++            ;;
++          kitowall)
++            if [[ "$has_kitowall" != "1" ]]; then
++              missing+=("$dep")
++            fi
++            ;;
++          *)
++            if ! command -v "$dep" >/dev/null 2>&1; then
++              missing+=("$dep")
++            fi
++            ;;
++        esac
++      done
++
++      local ok=1
++      if [[ "${#missing[@]}" -gt 0 ]]; then
++        ok=0
++      fi
++      install_cmd="$(resolve_steamcmd_install_cmd || true)"
++      if [[ -z "$install_cmd" ]]; then
++        install_cmd="install steamcmd manually (pacman/yay/paru)"
++      fi
++
++      if [[ "$as_json" == "1" ]]; then
++        local dep_json req opt miss
++        dep_json="{"
++        for dep in "${required[@]}"; do
++          case "$dep" in
++            node) dep_json+="\"$dep\":$([[ "$has_node" == "1" ]] && echo true || echo false)," ;;
++            kitowall) dep_json+="\"$dep\":$([[ "$has_kitowall" == "1" ]] && echo true || echo false)," ;;
++            *) dep_json+="\"$dep\":$(command -v "$dep" >/dev/null 2>&1 && echo true || echo false)," ;;
++          esac
++        done
++        for dep in "${optional[@]}"; do
++          if command -v "$dep" >/dev/null 2>&1; then
++            dep_json+="\"$dep\":true,"
++          else
++            dep_json+="\"$dep\":false,"
++          fi
++        done
++        dep_json="${dep_json%,}}"
++        miss="["
++        for dep in "${missing[@]}"; do
++          miss+="\"$dep\","
++        done
++        miss="${miss%,}]"
++        req="[\"${required[*]}\"]"
++        req="${req// /\",\"}"
++        opt="[\"${optional[*]}\"]"
++        opt="${opt// /\",\"}"
++        echo "{\"ok\":$([[ "$ok" == "1" ]] && echo true || echo false),\"required\":$req,\"optional\":$opt,\"deps\":$dep_json,\"missing\":$miss,\"install\":\"$install_cmd\"}"
++        return
++      fi
++
++      echo "[livewallpapers] Dependencias requeridas"
++      for dep in "${required[@]}"; do
++        case "$dep" in
++          node)
++            if [[ "$has_node" == "1" ]]; then
++              echo "  [ok] $dep ($node_bin)"
++            else
++              echo "  [x] $dep"
++            fi
++            ;;
++          kitowall)
++            if [[ "$has_kitowall" == "1" ]]; then
++              if command -v kitowall >/dev/null 2>&1; then
++                echo "  [ok] $dep ($(command -v kitowall))"
++              else
++                echo "  [ok] $dep ($(resolve_kitowall_cli_path || true))"
++              fi
++            else
++              echo "  [x] $dep"
++            fi
++            ;;
++          *)
++            if command -v "$dep" >/dev/null 2>&1; then
++              echo "  [ok] $dep"
++            else
++              echo "  [x] $dep"
++            fi
++            ;;
++        esac
++      done
++      echo "[livewallpapers] Dependencias opcionales"
++      for dep in "${optional[@]}"; do
++        if command -v "$dep" >/dev/null 2>&1; then
++          echo "  [ok] $dep"
++        else
++          echo "  [i] $dep (opcional)"
++        fi
++      done
++      if [[ "$ok" == "1" ]]; then
++        echo "[ok] Entorno listo para Workshop + SteamCMD"
++      else
++        echo "[x] Faltan dependencias: ${missing[*]}"
++        echo "[i] Instalar: $install_cmd"
++        exit 1
++      fi
++      ;;
++    install)
++      local print_only=0
++      while [[ $# -gt 0 ]]; do
++        case "$1" in
++          --print) print_only=1 ;;
++          *)
++            echo "Uso: kitsune livewallpapers install [--print]"
++            exit 1
++            ;;
++        esac
++        shift
++      done
++      local cmd_install
++      cmd_install="$(resolve_steamcmd_install_cmd || true)"
++      if [[ -z "$cmd_install" ]]; then
++        echo "[x] No se detecto gestor compatible automaticamente (pacman/yay/paru)"
++        echo "[i] Instala steamcmd manualmente con tu gestor de paquetes."
++        exit 1
++      fi
++      if [[ "$print_only" == "1" ]]; then
++        echo "$cmd_install"
++        return
++      fi
++      echo "[i] Ejecutando: $cmd_install"
++      bash -lc "$cmd_install"
++      ;;
++    *)
++      echo "Uso: kitsune livewallpapers <status|install> ..."
++      exit 1
++      ;;
++  esac
++}
++
+ cmd_config() {
+   local sub="${1:-}"
+   shift || true
+@@ -2265,6 +2521,9 @@ case "$cmd" in
+   instance-status)
+     cmd_instances status "$@"
+     ;;
++  livewallpapers)
++    cmd_livewallpapers "$@"
++    ;;
+   clean)
+     cmd_clean "$@"
+     ;;

@@ -3,7 +3,7 @@
 pkgname=kitsune-kitowall
 _pkgname=kitsune
 pkgver=0.1.0.r0.g0000000
-pkgrel=3
+pkgrel=4
 pkgdesc='Visualizador de audio para Hyprland/Wayland (Rust + CAVA + mpvpaper/layer-shell)'
 arch=('x86_64')
 url='https://github.com/KitotsuMolina/kitsune'
@@ -18,8 +18,19 @@ makedepends=('git' 'cargo' 'rust')
 provides=('kitsune')
 conflicts=('kitsune')
 install='kitsune.install'
-source=("${_pkgname}::git+${url}.git")
-sha256sums=('SKIP')
+source=(
+  "${_pkgname}::git+${url}.git"
+  "0001-livewallpapers-steamcmd-aur-fallback.patch"
+)
+sha256sums=(
+  'SKIP'
+  '910a152954de90e48f48e34ffc1d04258782f87ac5ba631416ecff39a2abf8ba'
+)
+
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+  patch -Np1 -i "${srcdir}/0001-livewallpapers-steamcmd-aur-fallback.patch"
+}
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
