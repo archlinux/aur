@@ -1,7 +1,7 @@
 pkgbase = nautilus-sendto
 	pkgdesc = Easily send files via mail
 	pkgver = 3.8.6+28+gc87aac4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.gnome.org/Archive/nautilus-sendto
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -11,6 +11,6 @@ pkgbase = nautilus-sendto
 	makedepends = appstream-glib
 	depends = glib2
 	source = git+https://gitlab.gnome.org/Archive/nautilus-sendto.git#commit=c87aac46c4893e09b1ced1cca8bb86b0a6823124
-	sha256sums = SKIP
+	sha256sums = e0798cfce848ba0979690273bdb636e26e6c6add42f6b12f018cc030ad1d96aa
 
 pkgname = nautilus-sendto

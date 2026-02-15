@@ -6,7 +6,7 @@
 
 pkgname=nautilus-sendto
 pkgver=3.8.6+28+gc87aac4
-pkgrel=3
+pkgrel=4
 pkgdesc="Easily send files via mail"
 url="https://gitlab.gnome.org/Archive/nautilus-sendto"
 arch=(x86_64)
@@ -15,7 +15,7 @@ depends=(glib2)
 makedepends=(gobject-introspection git meson appstream-glib)
 _commit=c87aac46c4893e09b1ced1cca8bb86b0a6823124  # master
 source=("git+https://gitlab.gnome.org/Archive/nautilus-sendto.git#commit=$_commit")
-sha256sums=('SKIP')
+sha256sums=('e0798cfce848ba0979690273bdb636e26e6c6add42f6b12f018cc030ad1d96aa')
 
 pkgver() {
   cd $pkgname
