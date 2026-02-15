@@ -2,7 +2,9 @@ post_install() {
   # Ensure GSettings schemas are compiled
   # This is critical for app startup - force compilation even if hooks ran
   if [ -d /usr/share/glib-2.0/schemas ]; then
+    echo "==> Compiling GSettings schemas..."
     glib-compile-schemas /usr/share/glib-2.0/schemas
+    echo "==> Schema compilation complete"
   fi
   
   # Update icon cache (redundant with pacman hooks but harmless)
@@ -12,6 +14,12 @@ post_install() {
   
   # Update desktop database (redundant with pacman hooks but harmless)
   update-desktop-database -q 2>/dev/null || true
+  
+  echo ""
+  echo "==> IMPORTANT: If Shortwave crashes on startup with a GSettings error,"
+  echo "==> run: sudo glib-compile-schemas /usr/share/glib-2.0/schemas/"
+  echo "==> or log out and log back in to refresh the schema cache."
+  echo ""
 }
 
 post_upgrade() {
