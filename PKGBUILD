@@ -60,11 +60,11 @@ prepare() {
   patch -Np1 -i "${srcdir}/${pkgname}_lib_res_path.patch"
 }
 
-pkgver() {
-  cd "${srcdir}/${_pkgsrc}"
-  # AC_INIT(epson-inkjet-printer-filter, ${pkgver}, epson@localdomain)
-  sed -n -E 's/AC_INIT\([^,]+,\s*([^,]+).*/\1/p' 'configure.ac'
-}
+# pkgver() {
+#   cd "${srcdir}/${_pkgsrc}"
+#   # AC_INIT(epson-inkjet-printer-filter, ${pkgver}, epson@localdomain)
+#   sed -n -E 's/AC_INIT\([^,]+,\s*([^,]+).*/\1/p' 'configure.ac'
+# }
 
 build() {
   # this will cause overlinking to 'libstdc++' and 'libjpeg'
@@ -77,8 +77,7 @@ build() {
   # knowing that the filter is called ahead of the libraries,
   # we overlink the required dependencies here to load them into memory
   # this trick is reportedly not needed for the newer models with newer libraries
-  # but is required for older 'LSB-dependent' drivers with 'lsb3.2' postfix
-  # these were released in ~2012, mostly at v1.0.0, and come from download.ebz.epson.net
+  # but is required for older 'LSB-dependent' drivers with the 'lsb3.2' suffix
   export LDFLAGS="${LDFLAGS//-Wl,--as-needed/} -Wl,--no-as-needed"
   local configure_options=(
     --prefix='/usr'
