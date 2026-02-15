@@ -1,6 +1,6 @@
 # Maintainer: mewset <@mewset github>
 pkgname=headsetstatus
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A fast Linux tray app for headset battery and connection status with desktop notifications"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('libnotify: desktop notifications'
             'swaync: notification daemon for Sway')
 makedepends=('cmake' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2d72f6c66286058697e5166de731eac966587d8dc42cef90a413fd365b427d43')
+sha256sums=('76db6fe1f8b472f7e97c26d70365bf38e4dc44d5d547c8f226575288086ab5bc')
 
 build() {
   cd "$srcdir/headsetstatus-$pkgver"
