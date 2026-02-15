@@ -3,7 +3,7 @@
 
 pkgbase=dictype
 pkgname=(dictype dictype-fcitx)
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc='real-time voice-to-text input on Linux'
 arch=('x86_64')
@@ -21,7 +21,7 @@ makedepends=(
   grpc
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('683853b4164981d08ccb13d8dca5b026f2208a2ea3df79c2048d593002edf060ee77c47cca2fc0dea38fb09d7b4a66ba8ec9dccd3cda8b23dd0d7d00e29a08b6')
+sha512sums=('d62d76b0d8ba9ab8fe1655f82b14a25af8e63e0f9945db0d53c166dfc58384f564a8ae083990796b4cb9a77fd6f6a6df40deadd267d020ae05c6fa7bb5a27bfe')
 
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
@@ -42,7 +42,7 @@ build() {
 
 package_dictype() {
   pkgdesc="dictype daemon"
-  depends=("${_depends_common[@]}")
+  depends=("${_depends_common[@]}" pulse-native-provider)
 
   cd "$srcdir/${pkgbase}-${pkgver}"
 

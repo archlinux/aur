@@ -1,6 +1,6 @@
 pkgbase = dictype
 	pkgdesc = real-time voice-to-text input on Linux
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/Xinkai/dictype
 	arch = x86_64
@@ -10,13 +10,14 @@ pkgbase = dictype
 	makedepends = cmake
 	makedepends = fcitx5
 	makedepends = grpc
-	source = dictype-0.0.3.tar.gz::https://github.com/Xinkai/dictype/archive/refs/tags/0.0.3.tar.gz
-	sha512sums = 683853b4164981d08ccb13d8dca5b026f2208a2ea3df79c2048d593002edf060ee77c47cca2fc0dea38fb09d7b4a66ba8ec9dccd3cda8b23dd0d7d00e29a08b6
+	source = dictype-0.0.4.tar.gz::https://github.com/Xinkai/dictype/archive/refs/tags/0.0.4.tar.gz
+	sha512sums = d62d76b0d8ba9ab8fe1655f82b14a25af8e63e0f9945db0d53c166dfc58384f564a8ae083990796b4cb9a77fd6f6a6df40deadd267d020ae05c6fa7bb5a27bfe
 
 pkgname = dictype
 	pkgdesc = dictype daemon
 	depends = libprotobuf.so=33.1.0-64
 	depends = libgrpc++.so=1.76-64
+	depends = pulse-native-provider
 
 pkgname = dictype-fcitx
 	pkgdesc = dictype integration with fcitx5

@@ -2,6 +2,7 @@ pre-commit:
   commands:
     update:
       run: |
+        set -eu
         echo "Updating checksum"
         updpkgsums
         git add PKGBUILD
