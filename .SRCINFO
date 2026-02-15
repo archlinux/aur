@@ -1,11 +1,11 @@
 pkgbase = hachimi-world-bin
 	pkgdesc = A community-driven open-source meme culture music community, bin version.
-	pkgver = 1.1.0
-	pkgrel = 6
+	pkgver = 1.1.1
+	pkgrel = 9
 	url = https://hachimi.world/
 	arch = x86_64
 	license = AGPL-3.0
 	depends = hicolor-icon-theme
-	source = https://storage.hachimi.world/distribution/linux/hachimi-world-1.1.0-6-g382d27c-169.deb
-	sha256sums = ab5ed1522bbc455c3e7983a797416e09c1368595a966d362894d59b95bb1e2eb
+	source = https://storage.hachimi.world/distribution/linux/hachimi-world-1.1.1-9-g9c71350-172.deb
+	sha256sums = a941dbf19d7b64592268faa2c052b290595d8030c77da32ff507935959fbc298
 pkgname = hachimi-world-bin
