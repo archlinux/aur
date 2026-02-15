@@ -1,6 +1,6 @@
 # Maintainer: Keiran <keircn@proton.me>
 pkgname=seanime
-pkgver=3.4.3
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="A self-hosted server that seamlessly integrates with your local anime collection with anilist integration."
 arch=(x86_64)
@@ -10,39 +10,39 @@ conflicts=(seanime-bin)
 depends=('systemd')
 makedepends=('go' 'npm' 'nodejs')
 source=("https://github.com/5rahim/seanime/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('905e778f6fa170d1314b2ab0e46df5da10234aed9ddffe24ad3a81a4b4fd507c')
+sha256sums=('e9d32d9bbb645d282ce8b9e28c41bf9265b3dd2beb9fb3bcc462f83e523bede9')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
-  cd seanime-web
-  npm install
-  npm run build
+    cd "${pkgname}-${pkgver}"
+    cd seanime-web
+    npm install
+    npm run build
 
-  mkdir -p ../web
-  cp -r out/* ../web/
-  cd ..
+    mkdir -p ../web
+    cp -r out/* ../web/
+    cd ..
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
+    cd "${pkgname}-${pkgver}"
 
-  export CGO_ENABLED=1
-  go build -o seanime -trimpath -ldflags="-s -w"
+    export CGO_ENABLED=1
+    go build -o seanime -trimpath -ldflags="-s -w"
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+    cd "${pkgname}-${pkgver}"
 
-  install -d "${pkgdir}/usr/bin/"
-  install -dm755 "${pkgdir}/opt/${pkgname}"
-  install -m 755 seanime -t "${pkgdir}/opt/${pkgname}/"
-  cp -r web "${pkgdir}/opt/${pkgname}/"
-  ln -s "/opt/${pkgname}/seanime" "${pkgdir}/usr/bin/"
+    install -d "${pkgdir}/usr/bin/"
+    install -dm755 "${pkgdir}/opt/${pkgname}"
+    install -m 755 seanime -t "${pkgdir}/opt/${pkgname}/"
+    cp -r web "${pkgdir}/opt/${pkgname}/"
+    ln -s "/opt/${pkgname}/seanime" "${pkgdir}/usr/bin/"
 
-  local user=${USER:-root}
-  local group=${USER:-root}
+    local user=${USER:-root}
+    local group=${USER:-root}
 
-  install -Dm644 /dev/stdin "${pkgdir}/usr/lib/systemd/system/seanime.service" <<EOF
+    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/systemd/system/seanime.service" <<EOF
 [Unit]
 Description=Seanime Service
 After=network.target
@@ -59,5 +59,5 @@ EOF
 }
 
 post_install() {
-  systemctl enable seanime --now
+    systemctl enable seanime --now
 }
