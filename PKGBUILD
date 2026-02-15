@@ -3,12 +3,12 @@
 
 pkgname=canu
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A fork of the Celera Assembler designed for high-noise single-molecule sequencing"
 arch=('i686' 'x86_64')
 url="https://canu.readthedocs.io/"
 license=('LicenseRef-canu')
-depends=('gcc-libs' 'java-runtime' 'perl')
+depends=('glibc' 'libgcc' 'libgomp' 'libstdc++' 'java-runtime' 'perl')
 optdepends=('gnuplot')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.xz::https://github.com/marbl/canu/releases/download/v$pkgver/canu-$pkgver.tar.xz")
@@ -27,7 +27,7 @@ package() {
   cd "$pkgname-$pkgver"
 
   install -Dm755 "build/bin"/* -t "$pkgdir/usr/bin"
-  install -Dm644 "build/lib/site_perl/canu"/*.pm -t "$pkgdir/usr/lib/site_perl/canu"
+  install -Dm644 "build/lib/perl5/site_perl/canu"/*.pm -t "$pkgdir/usr/share/perl5/vendor_perl/canu"
   install -Dm644 "build/share/java/classes"/*.jar -t "$pkgdir/usr/share/java/classes"
   install -Dm644 "build/lib"/*.a -t "$pkgdir/usr/lib"
 

@@ -1,12 +1,15 @@
 pkgbase = canu
 	pkgdesc = A fork of the Celera Assembler designed for high-noise single-molecule sequencing
 	pkgver = 2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://canu.readthedocs.io/
 	arch = i686
 	arch = x86_64
 	license = LicenseRef-canu
-	depends = gcc-libs
+	depends = glibc
+	depends = libgcc
+	depends = libgomp
+	depends = libstdc++
 	depends = java-runtime
 	depends = perl
 	optdepends = gnuplot
