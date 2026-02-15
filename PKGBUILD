@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.14.0.r2.gef5b40c
+pkgver=0.14.0.r33.g4a37051
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator (CLI)"
 arch=('aarch64' 'x86_64')
@@ -11,6 +11,7 @@ depends=(
 	'gcc-libs'
 	'glibc'
 	'glslang>=15'
+	'miniz>=3.1'
 	'pugixml>=1.14'
 	'sdl3>=3.3.5'
 	'sdl3_mixer'
@@ -25,6 +26,8 @@ makedepends=(
 	'half>=1.12'
 	'libpng>=1.6'
 	'magic_enum>=0.9.7'
+	'nlohmann-json>=3.12'
+	'openal'
 	'rapidjson'
 	'renderdoc'
 	'robin-map>=1.3'
@@ -57,11 +60,9 @@ source=(
 	"$_pkgname-sirit::git+https://github.com/shadps4-emu/sirit.git"
 	"$_pkgname-tracy::git+https://github.com/shadps4-emu/tracy.git"
 	"aac::git+https://android.googlesource.com/platform/external/aac.git"
-	"miniz::git+https://github.com/richgel999/miniz.git"
-	"nlohmann-json::git+https://github.com/nlohmann/json.git"
 	"zydis::git+https://github.com/zyantific/zydis.git"
 )
-b2sums=('SKIP'{,,,,,,,,,,,})
+b2sums=('SKIP'{,,,,,,,,,})
 
 pkgver() {
 	cd $_pkgname
@@ -75,9 +76,7 @@ prepare() {
 	git config submodule.externals/discord-rpc.url ../$_pkgname-discord-rpc
 	git config submodule.externals/ext-libusb.url ../$_pkgname-libusb
 	git config submodule.externals/hwinfo.url ../$_pkgname-hwinfo
-	git config submodule.externals/json.url ../nlohmann-json
 	git config submodule.externals/LibAtrac9.url ../$_pkgname-libatrac9
-	git config submodule.externals/miniz.url ../miniz
 	git config submodule.externals/sirit.url ../$_pkgname-sirit
 	git config submodule.externals/tracy.url ../$_pkgname-tracy
 	git config submodule.externals/zydis.url ../zydis
