@@ -4,16 +4,16 @@
 pkgname="pkg2appimage"
 pkgdesc="Tool and recipes to convert existing deb packages to AppImage. (Upstream CI)"
 pkgver=20250202.1eceb30
-pkgrel=1
+pkgrel=2
 url="https://github.com/AppImageCommunity/pkg2appimage"
 license=("GPL-2.0-only")
 arch=("any")
 provides=("$pkgname=$pkgver")
 makedepends=(
-    'wget'
+    'curl'
     'grep'
 )
-pkg2appimage_url=$(wget -q https://api.github.com/repos/AppImageCommunity/pkg2appimage/releases -O - | grep 'pkg2appimage-.*-x86_64.AppImage' | grep browser_download_url | head -n 1 | cut -d '"' -f 4)
+pkg2appimage_url=$(curl -s https://api.github.com/repos/AppImageCommunity/pkg2appimage/releases | grep 'pkg2appimage-.*-x86_64.AppImage' | grep browser_download_url | head -n 1 | cut -d '"' -f 4)
 source=("${pkgname}.AppImage::${pkg2appimage_url}")
 noextract=("${pkgname}.AppImage")
 sha256sums=('6f74ec26ba14d2d8f1857d150704f9d585dae30b1ca30ce46f375c157b71d07d')
@@ -23,9 +23,9 @@ b2sums=('891699f8362e463008f25c9b2211acffd301487bad62657cdc9dca9c26521a188682736
 
 pkgver() {
     local _pkgver
-    _pkgver=$(wget -q https://api.github.com/repos/AppImageCommunity/pkg2appimage/releases -O - | grep -iP '(?<=pkg2appimage-).*(?=-x86_64.AppImage)' -o | head -n 1)
-    # Print CI with date followed by CI hash.
-    printf "%(%Y%m%d)T.%s" -1 "${_pkgver}"
+    _pkgver=$(curl -s https://api.github.com/repos/AppImageCommunity/pkg2appimage/releases | grep target_commitish | head -n 1 | cut -d '"' -f 4)
+    # Print CI with date followed by short CI hash.
+    printf "%(%Y%m%d)T.%s" -1 "${_pkgver::7}"
 }
 
 package() {
