@@ -1,9 +1,9 @@
 pkgname=ptodo
 pkgver=2.4
-pkgrel=9
+pkgrel=10
 pkgdesc="a TUI todolist-app written in python"
 arch=('any')
-depends=('python' 'python-rich' 'python-questionary')
+depends=('python' 'python-rich')
 makedepends=('git')
 url='https://github.com/NVitschDEV/ptodo'
 source=("ptodo.py")
