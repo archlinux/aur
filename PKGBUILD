@@ -1,7 +1,7 @@
 # Maintainer: enos muthiani @lyznne <emuthiani26@gmail.com>
 pkgname=peek-cli
 project=peek
-pkgver=0.1.13
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A simple file viewer that opens files in the default web browser."
 arch=('x86_64')
@@ -10,12 +10,18 @@ license=('MIT' 'Apache-2.0')
 depends=('gcc-libs')
 makedepends=('cargo' 'rust')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lyznne/${project}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6051f3e6a379628024a0b2b976b609c2ea6a40f4d63422bc1bd441c76f85843c')
+sha256sums=('9ee004852f16f917c90378e9750cfe3bc69553177f726c682ca63bb91ca549ca')
 
 
 
 build() {
     cd "${srcdir}/${project}-${pkgver}"
+
+     cd frontend
+    pnpm install --frozen-lockfile
+    pnpm build
+    cd ..
+
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --release --locked
