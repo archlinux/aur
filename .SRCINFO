@@ -1,0 +1,19 @@
+pkgbase = binauralplayer
+	pkgdesc = BinauralPlayer combines traditional media playback with brainwave audio generation
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/alamahant/BinauralPlayer
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	makedepends = vulkan-headers
+	depends = qt6-base
+	depends = qt6-multimedia
+	depends = qt6-svg
+	provides = binauralplayer
+	source = binauralplayer-1.4.0.tar.gz::https://github.com/alamahant/BinauralPlayer/archive/refs/tags/v1.4.0.tar.gz
+	sha256sums = 096b9b6d22dd902ea51b91e7b46604c84738fe6886abb8355a8eab6a1c89f017
+
+pkgname = binauralplayer
