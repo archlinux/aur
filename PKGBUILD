@@ -8,6 +8,9 @@ license=('GPL3')
 depends=('gtk4' 'libadwaita' 'gdk-pixbuf2' 'networkmanager')
 provides=('adwaita-network')
 conflicts=('adwaita-network')
+# הוספנו את השורה הזו כדי למנוע יצירת חבילת debug
+options=('!debug' 'strip')
+
 source=(
   "https://github.com/PlayRood32/adw-network/releases/download/v${pkgver}/adwaita-network-linux-x86_64.tar.gz"
   "com.github.adw-network.desktop::https://raw.githubusercontent.com/PlayRood32/adw-network/main/data/com.github.adw-network.desktop"
@@ -18,7 +21,6 @@ sha256sums=('f97708026986a6ed3de457904d5cbe086d3663deb31d56593042213445bbb2ee'
             '518a328abee19239ba5f20bcbfe3f15c474bc5c18b8adcb37c9793ecf7c640cc')
 
 package() {
-  # Upstream tarball layout has changed in the past; locate the binary robustly.
   local bin
   bin="$(find "${srcdir}" -maxdepth 2 -type f -name 'adwaita-network' -perm -u+x | head -n 1)"
   if [[ -z "${bin}" ]]; then
@@ -31,4 +33,3 @@ package() {
   install -Dm644 "${srcdir}/icon.png" \
     "${pkgdir}/usr/share/icons/hicolor/scalable/apps/icon.png"
 }
-
