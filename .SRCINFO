@@ -1,4 +1,4 @@
-pkgbase = python-gguf
+pkgbase = python-gguf-git
 	pkgdesc = for writing binary files in the GGUF (GGML Universal File) format.
 	pkgver = 0.17.1
 	pkgrel = 1
@@ -15,9 +15,9 @@ pkgbase = python-gguf
 	depends = python-sentencepiece
 	optdepends = python-numpy: for numerical operations
 	optdepends = python-tqdm: for progress bars
-	provides = python-gguf=0.17.1
+	provides = python-gguf-git=0.17.1
 	conflicts = python-gguf
-	source = python-gguf::git+https://github.com/ggml-org/llama.cpp.git#branch=master
+	source = python-gguf-git::git+https://github.com/ggml-org/llama.cpp.git#branch=master
 	sha256sums = SKIP
 
-pkgname = python-gguf
+pkgname = python-gguf-git
