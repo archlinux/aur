@@ -1,15 +1,15 @@
 pkgbase = g3k
 	pkgdesc = A 3DUI widget toolkit
 	pkgver = 0.16.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.freedesktop.org/xrdesktop/g3k
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = meson
 	makedepends = vulkan-headers
-	depends = gcc-libs
 	depends = glibc
+	depends = libgcc
 	depends = gxr
 	depends = json-glib
 	depends = libcanberra
