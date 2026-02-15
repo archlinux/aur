@@ -1,7 +1,7 @@
 # Maintainer: Lehel Gyuro <lehel@freemail.hu>
 
 pkgname=libindi-ocs
-pkgver=2.1.8
+pkgver=2.1.9
 pkgrel=1
 pkgdesc="INDI driver for products manufactured by indi-ocs"
 url="http://www.indilib.org/index.php?title=Main_Page"
@@ -10,7 +10,7 @@ arch=(i686 x86_64 aarch64)
 depends=(glibc libindi=${pkgver})
 makedepends=(cmake)
 source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz")
-sha256sums=("3f9a42e6f07aa7cce4271c1842fef9bf62a2b1bcd1d1a0a6e7476b00be386da8")
+sha256sums=("4c9bbd6864175b1384c5aaf1bb21ca6ec3e95189ee900231b77e0a7b9c5cae16")
 
 prepare() {
   mkdir -p build
