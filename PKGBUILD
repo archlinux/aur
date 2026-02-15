@@ -2,7 +2,7 @@
 
 pkgname=privatebin-cli-bin
 _binname=privatebin
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc='A powerful CLI for creating and managing PrivateBin pastes with ease - binary package'
 arch=(x86_64 aarch64)
@@ -14,8 +14,8 @@ install="$pkgname.install"
 source_x86_64=("$pkgname-$pkgver-amd64.tar.gz::$url/releases/download/v${pkgver}/${_binname}_Linux_x86_64.tar.gz")
 source_aarch64=("$pkgname-$pkgver-arm64.tar.gz::$url/releases/download/v${pkgver}/${_binname}_Linux_arm64.tar.gz")
 
-sha256sums_x86_64=('9b44d2fb65bba65e9459cd60ae78b1678b11d505e8450f23c1551dd57b2c6562')
-sha256sums_aarch64=('f4afd229f4aff1e654755a17ed43c079c13b0e10e6163233a1097d6ec440b614')
+sha256sums_x86_64=('ad83bd5319317aee7c0682e1839da13d0ab7a2494323914103a842899c0ef1ad')
+sha256sums_aarch64=('7e87149da80b8d9ea9f6757b661126c36e86cb38c7a11aa1917dd23e19923ffc')
 
 package() {
   install -Dm755 $_binname "$pkgdir"/usr/bin/$_binname
