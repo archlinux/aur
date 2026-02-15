@@ -3,13 +3,13 @@
 # Contributor: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
 
 pkgname=blis-git
-pkgver=1.1.r54.g5097c599b
+pkgver=2.0.r55.gb5d57831a
 pkgrel=1
 pkgdesc="BLAS-like Library Instantiation Software Framework"
 arch=('i686' 'x86_64')
 url="https://github.com/flame/blis"
 license=('BSD-3-Clause')
-depends=('gcc-libs')
+depends=('glibc' 'libgcc' 'libgomp')
 makedepends=('git' 'python')
 provides=("blis=$pkgver" 'libblis.so')
 conflicts=('blis')
@@ -22,7 +22,7 @@ pkgver() {
   cd "blis"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
