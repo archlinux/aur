@@ -1,6 +1,6 @@
 pkgbase = libxo-git
 	pkgdesc = A library for generating Text, XML, JSON, and HTML output
-	pkgver = 1.7.5.r0.gfd5db1b
+	pkgver = 1.7.5.r0.gfd5db1b4
 	pkgrel = 1
 	url = https://github.com/juniper/libxo
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = libxo-git
 	depends = glibc
 	optdepends = perl
 	optdepends = sh
-	provides = libxo=1.7.5.r0.gfd5db1b
+	provides = libxo=1.7.5.r0.gfd5db1b4
 	provides = libxo.so
 	conflicts = libxo
 	options = staticlibs
