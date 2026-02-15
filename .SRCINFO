@@ -1,7 +1,7 @@
 pkgbase = ut2004-bin
 	pkgdesc = Unreal Tournament 2004 ECE native binaries (OldUnreal)
 	pkgver = 3374
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OldUnreal/UT2004Patches
 	arch = x86_64
 	arch = aarch64

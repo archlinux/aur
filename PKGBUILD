@@ -6,7 +6,7 @@
 
 pkgname=ut2004-bin
 pkgver=3374
-pkgrel=1
+pkgrel=2
 pkgdesc="Unreal Tournament 2004 ECE native binaries (OldUnreal)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/OldUnreal/UT2004Patches"
@@ -51,6 +51,11 @@ package() {
              cp -R "$folder" "$pkgdir/opt/ut2004/"
         fi
     done
+
+    msg2 "Fixing permissions..."
+    find "$pkgdir/opt/ut2004" -type d -exec chmod 755 {} +
+    find "$pkgdir/opt/ut2004" -type f -exec chmod 644 {} +
+    find "$pkgdir/opt/ut2004/System" -type f \( -name "UT2004" -o -name "UCC" -o -name "*.so" -o -name "*.so.*" \) -exec chmod 755 {} +
 
     # Install helper scripts.
     install -D -m 755 "$srcdir/ut2004.sh" \
