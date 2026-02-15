@@ -10,7 +10,7 @@ depends=('gtk3' 'glibc')
 optdepends=('lianpkg-bin: CLI version')
 
 source=("lianpkg-gui-${pkgver}.tar.gz::https://github.com/Yueosa/lianpkg/releases/download/v${pkgver}/lianpkg-gui_${pkgver}_linux_x86_64.tar.gz")
-sha256sums=('a36f884d85ba9baf196a9aefeb2d7c62a48eee8bb2018222583b33c71e0073ba')
+sha256sums=('280a23cadbff15308bdff3513a714e96cf547699f886e71a90900a17d371426a')
 
 package() {
   # 安装 bundle 到 /opt/lianpkg-gui
