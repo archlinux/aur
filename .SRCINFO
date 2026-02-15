@@ -1,6 +1,6 @@
 pkgbase = litra
 	pkgdesc = CLI and library to control Logitech Litra Glow, Beam and Beam LX lights
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/timrogers/litra-rs
 	install = litra.install
@@ -12,7 +12,8 @@ pkgbase = litra
 	depends = gcc-libs
 	depends = systemd-libs
 	depends = hidapi
-	source = litra-3.2.0.tar.gz::https://static.crates.io/crates/litra/litra-3.2.0.crate
-	sha256sums = aed8ec3431ad7ad9cd5a8ca8b6dacfc7d3c252d5d706e54f280159035bd22fdd
+	options = !lto
+	source = litra-3.3.0.tar.gz::https://static.crates.io/crates/litra/litra-3.3.0.crate
+	sha256sums = 849dec7670c99bc903edc120a1c64508b8af5cb38e683d8bc42dc99ae649d413
 
 pkgname = litra

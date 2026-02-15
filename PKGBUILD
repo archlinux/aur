@@ -2,12 +2,13 @@
 # Contributor: Jan Holthuis <jan.holthuis@ruhr-uni-bochum.de>
 
 pkgname=litra
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="CLI and library to control Logitech Litra Glow, Beam and Beam LX lights"
 arch=(x86_64 aarch64)
 url="https://github.com/timrogers/litra-rs"
 license=('MIT')
+options=(!lto)
 makedepends=(cargo)
 depends=(
   glibc
@@ -16,7 +17,7 @@ depends=(
   hidapi
 )
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('aed8ec3431ad7ad9cd5a8ca8b6dacfc7d3c252d5d706e54f280159035bd22fdd')
+sha256sums=('849dec7670c99bc903edc120a1c64508b8af5cb38e683d8bc42dc99ae649d413')
 install=litra.install
 
 prepare() {
