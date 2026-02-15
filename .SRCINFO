@@ -8,6 +8,7 @@ pkgbase = noctyra-meta
 	depends = noctyra-dotfiles
 	depends = noctyra-cli
 	depends = quickshell
+	depends = noctalia-shell
 	depends = kitty
 	depends = dolphin
 	depends = gpu-screen-recorder
