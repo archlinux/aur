@@ -1,9 +1,10 @@
 pkgbase = memex
 	pkgdesc = Claude Code & Codex CLI transcript search for both humans & agents
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nicosuave/memex
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs

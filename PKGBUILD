@@ -3,9 +3,9 @@
 
 pkgname=memex
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Claude Code & Codex CLI transcript search for both humans & agents"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/nicosuave/memex"
 license=('MIT')
 depends=('gcc-libs' 'openssl')
