@@ -1,12 +1,12 @@
 # Maintainer: Smoolak <smoolak [at] gmail.com>.
 
 pkgname=python-nvidia-modelopt
-_pkgname=TensorRT-Model-Optimizer
-pkgver=0.39.0
+_pkgname=Model-Optimizer
+pkgver=0.41.0
 pkgrel=1
-pkgdesc="NVIDIA TensorRT Model Optimizer: a unified model optimization and deployment toolkit"
+pkgdesc="NVIDIA Model Optimizer: a unified model optimization and deployment toolkit"
 arch=('any')
-url="https://github.com/NVIDIA/TensorRT-Model-Optimizer"
+url="https://github.com/NVIDIA/Model-Optimizer"
 license=('Apache-2.0')
 depends=(
   'python'
@@ -22,7 +22,6 @@ depends=(
   'python-regex'
   'python-safetensors'
   'python-pytorch'
-  'python-torchprofile'
 )
 makedepends=(
   'python-build'
@@ -33,6 +32,7 @@ makedepends=(
   'cython'
 )
 optdepends=(
+  'python-torchprofile: for FastNAS pruning on computer vision models'
   'python-accelerate: for Hugging Face integration'
   'python-transformers: for Hugging Face integration'
   'python-diffusers: for diffusion model optimization'
@@ -40,12 +40,12 @@ optdepends=(
   'python-onnxruntime: for ONNX runtime support'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/NVIDIA/$_pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('4137f1bcf5339fa4ecec6b8de95f36398724b142f958ec1b8f9912eb507323fe')
+sha256sums=('a97852c230231fccaa36fe9817646d6c8d062d8a85790547536508506f5d26fc')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python -m build --wheel --no-isolation
+  SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver python -m build --wheel --no-isolation
 }
 
 check() {
