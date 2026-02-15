@@ -1,0 +1,41 @@
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+
+_execname=fsel
+
+_pkgauthor=Mjoyufull
+_pkgname=fsel
+
+pkgname=${_pkgname}
+pkgver=3.0.0
+pkgrel=1
+pkgdesc="Fast TUI app launcher and fuzzy finder for GNU/Linux and *BSD"
+
+arch=('x86_64')
+license=('BSD-2-Clause')
+url="https://github.com/${_pkgauthor}/${pkgname}"
+
+depends=('glibc' 'libgcc')
+provides=("${_execname}")
+makedepends=('rust')
+
+source=("${pkgname}-${pkgver}.tgz::https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('060474a1d4ce2446c910acffd9d284bac09779851a1597d0c559ac7d2bf860f8')
+
+build() {
+	cd ${srcdir}/${pkgname}-${pkgver}/ || exit 1
+
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --release --locked
+}
+
+package() {
+	cd ${srcdir}/${pkgname}-${pkgver}/ || exit 1
+
+	install -Dm755 "target/release/fsel" "$pkgdir/usr/bin/fsel"
+
+	install -Dm644 "USAGE.md" "${pkgdir}/usr/share/doc/${pkgname}/USAGE.md"
+	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}

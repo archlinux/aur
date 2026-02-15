@@ -1,0 +1,15 @@
+pkgbase = fsel
+	pkgdesc = Fast TUI app launcher and fuzzy finder for GNU/Linux and *BSD
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/Mjoyufull/fsel
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = rust
+	depends = glibc
+	depends = libgcc
+	provides = fsel
+	source = fsel-3.0.0.tgz::https://github.com/Mjoyufull/fsel/archive/refs/tags/3.0.0.tar.gz
+	sha256sums = 060474a1d4ce2446c910acffd9d284bac09779851a1597d0c559ac7d2bf860f8
+
+pkgname = fsel
