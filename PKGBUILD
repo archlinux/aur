@@ -25,7 +25,7 @@ depends=(
     'lcms2>=2.12.0'
     'libseccomp>=2.5.0'
 )
-makedepends=('git' 'rust>=1:1.82.0' 'cargo' 'pkgconf' 'meson' 'ninja' 'blueprint-compiler' 'desktop-file-utils' 'appstream-glib')
+makedepends=('git' 'rust>=1:1.82.0' 'cargo' 'pkgconf' 'meson' 'ninja' 'blueprint-compiler' 'desktop-file-utils' 'appstream-glib' 'glib2')
 provides=('shortwave' 'shortwave-mpris')
 conflicts=('shortwave' 'shortwave-mpris')
 options=('!lto')
@@ -58,6 +58,17 @@ build() {
     -Dprofile=default
   
   ninja -C build
+  
+  # Compile GSettings schemas during build to ensure they're available
+  echo "==> Compiling GSettings schemas during build..."
+  if [ -f build/data/de.haeckerfelix.Shortwave.gschema.xml ]; then
+    mkdir -p build/data/schemas
+    cp build/data/de.haeckerfelix.Shortwave.gschema.xml build/data/schemas/
+    glib-compile-schemas build/data/schemas/
+    echo "==> Schema compilation completed successfully"
+  else
+    echo "==> WARNING: Schema file not found at expected location"
+  fi
 }
 
 check() {
@@ -69,6 +80,12 @@ check() {
 package() {
   cd "Shortwave-MPRIS"
   DESTDIR="$pkgdir" meson install -C build
+  
+  # Ensure compiled schemas are included in the package
+  if [ -f build/data/schemas/gschemas.compiled ]; then
+    echo "==> Installing pre-compiled schemas..."
+    install -Dm644 build/data/schemas/gschemas.compiled "$pkgdir/usr/share/glib-2.0/schemas/gschemas.compiled"
+  fi
   
   # Install license
   install -Dm644 COPYING.md "$pkgdir/usr/share/licenses/$pkgname/COPYING"

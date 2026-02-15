@@ -5,6 +5,14 @@ post_install() {
     echo "==> Compiling GSettings schemas..."
     glib-compile-schemas /usr/share/glib-2.0/schemas
     echo "==> Schema compilation complete"
+    
+    # Verify the schema contains the required key
+    if gsettings list-keys de.haeckerfelix.Shortwave | grep -q "playback-volume-local"; then
+      echo "==> Schema validation passed: playback-volume-local key found"
+    else
+      echo "==> WARNING: Schema validation failed - playback-volume-local key missing"
+      echo "==> This may cause Shortwave to crash on startup"
+    fi
   fi
   
   # Update icon cache (redundant with pacman hooks but harmless)
@@ -16,9 +24,9 @@ post_install() {
   update-desktop-database -q 2>/dev/null || true
   
   echo ""
-  echo "==> IMPORTANT: If Shortwave crashes on startup with a GSettings error,"
+  echo "==> Installation complete. If Shortwave crashes on startup,"
   echo "==> run: sudo glib-compile-schemas /usr/share/glib-2.0/schemas/"
-  echo "==> or log out and log back in to refresh the schema cache."
+  echo "==> and then log out and log back in to refresh the schema cache."
   echo ""
 }
 
