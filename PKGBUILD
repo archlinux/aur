@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=avm-git
-pkgver=r33583.gd5e8edbeb
+pkgver=r34738.gfe3aceb581
 pkgrel=1
 pkgdesc="The reference software for next codec from Alliance for Open Media"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/AOMediaCodec/avm"
 license=('BSD-3-Clause' 'LicenseRef-avm')
-depends=('gcc-libs' 'nasm')
+depends=('glibc' 'libgcc' 'libstdc++' 'nasm')
 makedepends=('git' 'cmake')
 provides=("avm=$pkgver")
 conflicts=('avm' 'aom')
@@ -32,6 +32,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
+    -DCMAKE_POLICY_VERSION_MINIMUM="3.5" \
     ./
   cmake --build "_build"
 }

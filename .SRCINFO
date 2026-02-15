@@ -1,6 +1,6 @@
 pkgbase = avm-git
 	pkgdesc = The reference software for next codec from Alliance for Open Media
-	pkgver = r33583.gd5e8edbeb
+	pkgver = r34738.gfe3aceb581
 	pkgrel = 1
 	url = https://gitlab.com/AOMediaCodec/avm
 	arch = i686
@@ -9,9 +9,11 @@ pkgbase = avm-git
 	license = LicenseRef-avm
 	makedepends = git
 	makedepends = cmake
-	depends = gcc-libs
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
 	depends = nasm
-	provides = avm=r33583.gd5e8edbeb
+	provides = avm=r34738.gfe3aceb581
 	conflicts = avm
 	conflicts = aom
 	options = staticlibs
