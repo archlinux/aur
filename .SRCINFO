@@ -1,6 +1,6 @@
 pkgbase = fish-screen-time
 	pkgdesc = Daily screen time tracker that shows in your Fish shell greeting
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/OlyAhamed/fish-screen-time
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = fish-screen-time
 	depends = fish
 	depends = bash
 	depends = systemd
-	source = fish-screen-time-1.0.0.tar.gz::https://github.com/OlyAhamed/fish-screen-time/archive/v1.0.0.tar.gz
-	sha256sums = 57fba0c5b225f207eac98ffc00afbbfd354ba830c4cc497b835cdccc75dd94a1
+	source = fish-screen-time-1.0.2.tar.gz::https://github.com/OlyAhamed/fish-screen-time/archive/v1.0.2.tar.gz
+	sha256sums = d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed
 
 pkgname = fish-screen-time

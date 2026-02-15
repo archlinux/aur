@@ -1,7 +1,7 @@
 # Maintainer: Oly Ahamed <apurbo1336@email.com>
 
 pkgname=fish-screen-time
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Daily screen time tracker that shows in your Fish shell greeting"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/OlyAhamed/fish-screen-time"
 license=('MIT')
 depends=('fish' 'bash' 'systemd')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('57fba0c5b225f207eac98ffc00afbbfd354ba830c4cc497b835cdccc75dd94a1')
+sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
 
 package() {
     cd "$pkgname-$pkgver"
