@@ -1,6 +1,6 @@
 # Maintainer: envolution
 # shellcheck shell=bash disable=SC2034,SC2154
-pkgname=python-gguf
+pkgname=python-gguf-git
 _pkgname=gguf
 pkgver=0.17.1
 pkgrel=1
@@ -20,7 +20,7 @@ optdepends=(
   'python-numpy: for numerical operations'
   'python-tqdm: for progress bars')
 provides=("${pkgname}=${pkgver}")
-conflicts=("${pkgname}")
+conflicts=('python-gguf')
 
 # Source from llama.cpp repository's gguf-py directory
 source=("${pkgname}::git+https://github.com/ggml-org/llama.cpp.git#branch=master")
