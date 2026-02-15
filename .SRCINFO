@@ -1,0 +1,16 @@
+pkgbase = bigsay
+	pkgdesc = A high-visibility GTK4 text display tool
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/sadneo/bigsay
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	makedepends = python-wheel
+	depends = python-gobject
+	source = bigsay-0.1.1.tar.gz::https://github.com/sadneo/bigsay/archive/v0.1.1.tar.gz
+	sha256sums = fb72aedda54e358461279db73d82478c9ca4251f176d85b62dcd7fe6add00207
+
+pkgname = bigsay
