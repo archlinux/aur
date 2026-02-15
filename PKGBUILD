@@ -4,13 +4,14 @@ _pkgname=libzathura
 
 pkgname=libzathura-git
 pkgver=25ef21e
-pkgrel=1
+pkgrel=2
 pkgdesc="A document library."
 arch=('i686' 'x86_64')
 url="http://pwmt.org/projects/libzathura"
 license=('custom')
 depends=('glib2>=2.28' 'intltool' 'file')
-makedepends=('git' 'python-sphinx' 'intltool' 'meson')
+makedepends=('git' 'python-sphinx' 'python-sphinx_rtd_theme'
+  'python-sphinx-hawkmoth' 'intltool' 'meson')
 checkdepends=('check' 'libfiu')
 conflicts=('libzathura')
 provides=('libzathura')
