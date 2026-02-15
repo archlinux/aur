@@ -2,12 +2,12 @@
 
 pkgname=optivorbis
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Application for lossless, format-preserving, two-pass optimization and repair of Vorbis data"
 arch=('i686' 'x86_64')
 url="https://optivorbis.github.io/OptiVorbis/"
 license=('AGPL-3.0-or-later' 'BSD-2-Clause')
-depends=('gcc-libs')
+depends=('glibc' 'libgcc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/OptiVorbis/OptiVorbis/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('f1069b35fa24c9b73abb9a28859b84ad0accf968b8892b7a7825decc6c316cd3')
