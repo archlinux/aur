@@ -2,9 +2,9 @@
 # Maintainer: Benedikt Zumtobel <benedikt at zumtobel dot dev>
 
 pkgname='yatto'
-pkgver=0.23.0
+pkgver=0.23.1
 pkgrel=1
-pkgdesc=' Interactive VCS-based todo-list for the command-line'
+pkgdesc='Interactive VCS-based todo-list for the command-line'
 url='https://github.com/handlebargh/yatto'
 arch=('aarch64' 'x86_64')
 license=('MIT')
@@ -13,7 +13,7 @@ conflicts=('yatto')
 depends=('git')
 makedepends=('go' 'git')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/handlebargh/yatto/releases/download/v${pkgver}/yatto-${pkgver}.tar.gz")
-sha256sums=('51d0fb37e4f0a58068fae687ec16d939a858a0c662e06f08a90dad89b7bf3038')
+sha256sums=('67971a549c2638e7622a82b7908799a25a0f60937fce1d33c5ed0350153c24c6')
 prepare() {
   go mod download
 }
@@ -21,16 +21,17 @@ build() {
   export CGO_ENABLED=0
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
   go build \
-  -ldflags "-s -w -extldflags=-zrelro -extldflags=-znow" \
+  -ldflags "-s -w -linkmode=external -extldflags=-Wl,-z,relro,-z,now -buildid=" \
   -o "${pkgname}"
+  chmod +x "${pkgname}"
   for shell in bash fish zsh; do
-  ./yatto completion "$shell" > "$shell-completion"
+  ./"${pkgname}" completion "$shell" > "${shell}-completion"
   done
 }
 package() {
-  install -Dm755 yatto "${pkgdir}/usr/bin/yatto"
-  install -Dm644 bash-completion "${pkgdir}/usr/share/bash-completion/completions/yatto"
-  install -Dm644 fish-completion "${pkgdir}/usr/share/fish/vendor_completions.d/yatto.fish"
-  install -Dm644 zsh-completion "${pkgdir}/usr/share/zsh/site-functions/_yatto"
+  install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 bash-completion "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+  install -Dm644 fish-completion "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+  install -Dm644 zsh-completion "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
