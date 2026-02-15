@@ -1,0 +1,16 @@
+pkgbase = tarotcaster
+	pkgdesc = Tarot Casting Application with AI Interpretation of Spreads
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/alamahant/TarotCaster
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = hicolor-icon-theme
+	source = tarotcaster-1.2.2.tar.gz::https://github.com/alamahant/TarotCaster/archive/refs/tags/v1.2.2.tar.gz
+	sha256sums = 50342ac543fc5b89c002cd4d36012e28f72e918c02934b79f56563e7dfb4f042
+
+pkgname = tarotcaster
