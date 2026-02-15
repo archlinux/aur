@@ -1,7 +1,7 @@
 pkgname=clash-nyanpasu-nightly-bin
 _pkgname=clash-nyanpasu
-pkgver=2.0.0_alpha+d82618f
-_pkgver=2.0.0-alpha+d82618f
+pkgver=2.0.0_alpha+58671ae
+_pkgver=2.0.0-alpha+58671ae
 pkgrel=1
 epoch=1
 pkgdesc="A Clash GUI based on tauri. Clash Nyanpasu! (∠・ω< )⌒☆​"
@@ -13,7 +13,7 @@ depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator')
 conflicts=('clash-nyanpasu-git' 'clash-nyanpasu-appimage' 'clash-nyanpasu' 'clash-nyanpasu-bin')
 
 source=("Clash.Nyanpasu_${_pkgver}_amd64.deb::https://github.com/LibNyanpasu/clash-nyanpasu/releases/download/pre-release/Clash.Nyanpasu_${_pkgver}_amd64.deb")
-sha256sums=('0b7de6b02b9b113c0b9ba65496241e580577bc17a9173005f7855fdffffc6a1d')
+sha256sums=('291ea4c3ddec9b8692dd450e91a88287ba5142ba1acc54f648ed13c0e137d944')
 
 package() {
   tar xpf data.tar.gz -C ${pkgdir}
