@@ -1,13 +1,13 @@
 pkgbase = uutils-diffutils-bin
 	pkgdesc = Rust implementation of diffutils
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/uutils/diffutils
 	arch = x86_64
 	license = Apache-2.0
 	license = MIT
-	depends = gcc-libs
 	depends = glibc
+	depends = libgcc
 	provides = uutils-diffutils=0.5.0
 	conflicts = uutils-diffutils
 	source_x86_64 = https://github.com/uutils/diffutils/releases/download/v0.5.0/diffutils-x86_64-unknown-linux-gnu.tar.xz

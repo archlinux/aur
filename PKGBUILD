@@ -2,12 +2,12 @@
 
 pkgname=uutils-diffutils-bin
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Rust implementation of diffutils"
 arch=('x86_64')
 url="https://github.com/uutils/diffutils"
 license=('Apache-2.0' 'MIT')
-depends=('gcc-libs' 'glibc')
+depends=('glibc' 'libgcc')
 provides=("uutils-diffutils=$pkgver")
 conflicts=('uutils-diffutils')
 source_x86_64=("https://github.com/uutils/diffutils/releases/download/v$pkgver/diffutils-x86_64-unknown-linux-gnu.tar.xz")
