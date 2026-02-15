@@ -1,12 +1,13 @@
 pkgbase = bowtie2-bin
 	pkgdesc = Tool for aligning sequencing reads to long reference sequences
 	pkgver = 2.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bowtie-bio.sourceforge.net/bowtie2/index.shtml
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
-	depends = gcc-libs
+	depends = glibc
+	depends = libgcc
 	depends = perl
 	optdepends = python
 	provides = bowtie2=2.5.4

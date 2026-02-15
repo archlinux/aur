@@ -2,12 +2,12 @@
 
 pkgname=bowtie2-bin
 pkgver=2.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for aligning sequencing reads to long reference sequences"
 arch=('x86_64' 'aarch64')
 url="https://bowtie-bio.sourceforge.net/bowtie2/index.shtml"
 license=('GPL-3.0-or-later')
-depends=('gcc-libs' 'perl')
+depends=('glibc' 'libgcc' 'perl')
 optdepends=('python')
 provides=("bowtie2=$pkgver")
 conflicts=('bowtie2')
