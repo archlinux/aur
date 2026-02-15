@@ -1,7 +1,7 @@
 pkgbase = azeron-software
 	pkgdesc = Configuration tool for Azeron keypads (unofficial Linux repackage)
 	pkgver = 1.5.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/renatoi/azeron-linux
 	arch = x86_64
 	license = custom:proprietary
@@ -13,6 +13,8 @@ pkgbase = azeron-software
 	depends = gtk3
 	depends = nss
 	depends = alsa-lib
+	depends = python
+	depends = usbutils
 	optdepends = dfu-util: firmware updates
 	noextract = electron-30.0.9.zip
 	options = !strip

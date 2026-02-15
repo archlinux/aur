@@ -1,12 +1,12 @@
 # Maintainer: Renato de Oliveira <renatoi at github>
 pkgname=azeron-software
 pkgver=1.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Configuration tool for Azeron keypads (unofficial Linux repackage)'
 arch=('x86_64')
 url='https://github.com/renatoi/azeron-linux'
 license=('custom:proprietary')
-depends=('hidapi' 'libusb' 'gtk3' 'nss' 'alsa-lib')
+depends=('hidapi' 'libusb' 'gtk3' 'nss' 'alsa-lib' 'python' 'usbutils')
 makedepends=('npm' 'nodejs' 'p7zip')
 optdepends=('dfu-util: firmware updates')
 options=('!strip')
