@@ -1,7 +1,7 @@
 # Maintainer: Mokurin000
 _pkgname=fknc-calculator
 pkgname=${_pkgname}-git
-pkgver=r11.98da921
+pkgver=r13.da08ad4
 pkgrel=1
 pkgdesc="《蛋仔派对》™ 疯狂农场玩法果实价值计算器。"
 arch=('x86_64' 'aarch64')
@@ -31,6 +31,7 @@ prepare() {
   cd "${srcdir}/${_pkgname}"
 
   git config --local lfs.url "${url}.git/info/lfs"
+  git lfs install --local
   git lfs pull
 }
 

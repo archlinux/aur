@@ -1,6 +1,6 @@
 pkgbase = fknc-calculator-git
 	pkgdesc = 《蛋仔派对》™ 疯狂农场玩法果实价值计算器。
-	pkgver = r11.98da921
+	pkgver = r13.da08ad4
 	pkgrel = 1
 	url = https://github.com/mokurin000/fknc-calculator
 	arch = x86_64
