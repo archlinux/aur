@@ -1,0 +1,5 @@
+[gonzo-bin]
+source = "github"
+github = "control-theory/gonzo"
+use_latest_release = true
+prefix = "v"

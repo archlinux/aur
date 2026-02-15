@@ -1,24 +1,44 @@
-# Maintainer: Gabriel M. Dutra <me@sizeofnull.xyz>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: Gabriel M. Dutra <me@sizeofnull.xyz>
 
-pkgname=gonzo-bin
-pkgver=0.2.1
+_pkgauthor=control-theory
+_pkgname=gonzo
+_appname=${_pkgname}
+pkgname=${_pkgname}-bin
+pkgdesc="TUI log analysis tool"
+
+pkgver=0.3.0
 pkgrel=1
-pkgdesc="The Go based TUI log analysis tool"
+_pkgvername=v${pkgver}
+
 arch=('x86_64' 'aarch64')
-url="https://github.com/control-theory/gonzo"
+_barch=('linux-amd64' 'linux-arm64')
+
+url="https://github.com/${_pkgauthor}/${_pkgname}"
+_urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
+
 license=('MIT')
-source_x86_64=("gonzo_${pkgver}_${CARCH}.gz::https://github.com/control-theory/gonzo/releases/download/v$pkgver/gonzo-$pkgver-linux-amd64.tar.gz")
-source_aarch64=("gonzo_${pkgver}_aarch64.gz::https://github.com/control-theory/gonzo/releases/download/v$pkgver/gonzo-$pkgver-linux-arm64.tar.gz")
-sha256sums_x86_64=('119f687d2c9a62aa21e2992f4db129a774e8251bc16851a9efc4a8ea3f45e394')
-sha256sums_aarch64=('732fe2549334ba410cd5c6af24135bfc4e497adb175efe3f9dc29fbb1612efa9')
+
+provides=("${_appname}")
+conflicts=("${_pkgname}")
+depends=('glibc' 'gcc-libs')
+
+source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
+source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${pkgver}-${_barch[1]}.tar.gz")
+sha256sums_x86_64=('22891dcdc04fdcbf138b36615d034d985e8c7d4353c41ec64c998e8f48a0f9d7')
+sha256sums_aarch64=('4d9f40e8301c751c91d344f03c76d35b295eb9ee0fe19666fd671a2cedbaf241')
 
 
 check() {
-  ./gonzo version
+  ./${_appname} version
 }
 
 package() {
-  cd "${srcdir}"
-  install -Dm755 "gonzo" "$pkgdir/usr/bin/gonzo"
-}
+  cd "${srcdir}/" || exit
 
+  install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
+
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
