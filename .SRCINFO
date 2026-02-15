@@ -1,0 +1,15 @@
+pkgbase = flare-floss-bin
+	pkgdesc = FLARE Obfuscated String Solver (Standalone Binary)
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = https://github.com/mandiant/flare-floss
+	arch = x86_64
+	license = Apache
+	depends = glibc
+	depends = zlib
+	provides = flare-floss
+	conflicts = flare-floss
+	source = floss-v3.1.1-linux.zip::https://github.com/mandiant/flare-floss/releases/download/v3.1.1/floss-v3.1.1-linux.zip
+	sha256sums = 40c05a869f34f7e2417b17ca290cc54bd3671ee1f0a2d9bd5103284c01a54666
+
+pkgname = flare-floss-bin
