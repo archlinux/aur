@@ -2,7 +2,7 @@
 
 pkgname=unreal-tournament-data-steam
 pkgver=436
-pkgrel=1
+pkgrel=2
 _steamid=13240
 pkgdesc="Unreal Tournament 99 (GOTY) data from Steam"
 arch=('any')
@@ -58,4 +58,7 @@ package() {
     rm -rf "$pkgdir/opt/unreal-tournament/common"
     rm -rf "$pkgdir/opt/unreal-tournament/directx9c"
     rm -f "$pkgdir/opt/unreal-tournament/installscript.vdf"
+
+    msg2 "Fixing permissions..."
+    find "$pkgdir/opt/unreal-tournament" -type d -exec chmod 755 {} +                                                       find "$pkgdir/opt/unreal-tournament" -type f -exec chmod 644 {} +
 }
