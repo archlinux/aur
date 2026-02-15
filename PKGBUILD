@@ -24,15 +24,15 @@ source=("${pkgname}-${pkgver}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver
 sha256sums=('bc368a3c491c382d68b7b3d2d0946f0c6b703fdbdcedaae22e7959e30f113ff2')
 
 build() {
-	cd ${srcdir}/${_cratesio_package}-${pkgver} || exit 1
+	cd ${srcdir}/${pkgname}-${pkgver} || exit 1
 
 	RUSTFLAGS="--remap-path-prefix=$(pwd)=/build/" cargo build --release --locked
 }
 
 package() {
-	cd ${srcdir}/${_cratesio_package}-${pkgver} || exit 1
+	cd ${srcdir}/${pkgname}-${pkgver} || exit 1
 
-	install -Dm755 "target/release/${_cratesio_package}" "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
