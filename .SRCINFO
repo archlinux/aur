@@ -1,0 +1,20 @@
+pkgbase = ralphex-bin
+	pkgdesc = CLI tool that orchestrates Claude Code to execute implementation plans autonomously
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://ralphex.com
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = git
+	optdepends = fzf: interactive plan selection
+	optdepends = ripgrep: used by review agents
+	provides = ralphex
+	conflicts = ralphex
+	options = !debug
+	source_x86_64 = ralphex-bin-0.12.0-x86_64.tar.gz::https://github.com/umputun/ralphex/releases/download/v0.12.0/ralphex_0.12.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = a7a2af9785cac483276e584719650c11b589d368b490a3fe97eb9d4cac1e3dab
+	source_aarch64 = ralphex-bin-0.12.0-aarch64.tar.gz::https://github.com/umputun/ralphex/releases/download/v0.12.0/ralphex_0.12.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 71a12db341aa11f1686f98337a801bebfb6b1dcbb77c4dc0c5a4a904559ef7a1
+
+pkgname = ralphex-bin
