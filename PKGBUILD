@@ -1,7 +1,7 @@
 # Maintainer: Axel Kappel <aur@kappel.dev>
 pkgname='simp'
-pkgver=3.10.2
-pkgrel=3
+pkgver=3.10.3
+pkgrel=1
 pkgdesc="A simple and fast image manipulation program"
 arch=('x86_64')
 url="https://github.com/Kl4rry/simp"
