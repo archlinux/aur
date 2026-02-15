@@ -5,7 +5,7 @@
 pkgname=kaggle-api
 _name=${pkgname%-api}
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Kaggle API CLI'
 arch=('any')
 url="https://github.com/Kaggle/kaggle-api"
@@ -13,8 +13,6 @@ license=('Apache')
 depends=(
   'python'
   'python-urllib3'
-  'python-six'
-  'python-certifi'
   'python-dateutil'
   'python-requests'
   'python-tqdm'
