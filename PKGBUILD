@@ -2,7 +2,7 @@
 
 pkgname=ros2-kilted-base
 pkgver=2025.07.28
-pkgrel=3
+pkgrel=4
 _rosdist="Kilted Kaiju"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -29,11 +29,11 @@ depends=(
     'python-yaml'
     'tinyxml2'
     'yaml-cpp'
+    'zenoh-cpp'
 )
 makedepends=(
   'python-rosinstall_generator'
   'python-vcs2l'
-  'rust'
 )
 conflicts=(
   "ros2-${_rosdist_short}"
@@ -44,16 +44,15 @@ source=(
     "fastdds.patch"
     "mcap_vendor_cstdint.patch"
     "rosidl_cstdint.patch"
+    "rmw_zenoh_908.patch::https://github.com/ros2/rmw_zenoh/pull/908.patch"
 )
 sha256sums=('b289c53e97d924209efb9ed9c6f30caafde965fa1c72a039e39a528fcc9045b3'
             '5089bf2dea8368020243d40a2b513405cd060aacc42de6fae2289c1a87f74f99'
             '42228a501fb2647c5c127906eed329145d4a1d81fe626e50e80c6a4cc53729e3'
             'f2ac0967f508f6a4f1fd4f278800e64052127859ee3e21cdf1b467b3ffe7563f'
-            '23718705092c81860e50182341c006e0addcbec61c6b87c7f744e9185740b21c')
+            '23718705092c81860e50182341c006e0addcbec61c6b87c7f744e9185740b21c'
+            '440eb230e94b7409b85e398ed43a460a4528f319fd26b3b53c6081f169651c32')
 
-# Uncomment this if zenoh/transport_tls is needed in zenoh_cpp_vendor
-# TODO: find a way to disable LTO for only the zenoh_cpp_vendor package
-#options=(!debug !lto)
 options=(!debug)
 
 prepare() {
@@ -80,11 +79,9 @@ prepare() {
     # https://github.com/ros2/orocos_kdl_vendor/pull/39
     git -C "$srcdir/ros2/src/ros2/orocos_kdl_vendor" cherry-pick -n d3a6fb0942138628027a0c4604e21bdb73ef500e
 
-    # Disable the zenoh/transport_tls feature (TLS/QUIC secure transports)
-    # This is because GCC LTO is incompatible with the LLVM LTO
-    # Disable LTO if you need this feature (see options comment above).
-    # https://github.com/ros2/rmw_zenoh/issues/624
-    sed -i 's/ zenoh\/transport_tls//' "$srcdir/ros2/src/ros2/rmw_zenoh/zenoh_cpp_vendor/CMakeLists.txt"
+    # https://github.com/ros2/rmw_zenoh/pull/908
+    git -C "$srcdir/ros2/src/ros2/rmw_zenoh" checkout kilted
+    git -C "$srcdir/ros2/src/ros2/rmw_zenoh" apply "$srcdir/rmw_zenoh_908.patch"
 }
 
 build() {
