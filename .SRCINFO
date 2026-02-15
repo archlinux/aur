@@ -1,6 +1,6 @@
 pkgbase = go-grip
 	pkgdesc = Preview Markdown files locally before committing them.
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/chrishrb/go-grip
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = go-grip
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/chrishrb/go-grip.git#tag=v0.7.0
+	source = git+https://github.com/chrishrb/go-grip.git#tag=v0.8.0
 	sha256sums = SKIP
 
 pkgname = go-grip
