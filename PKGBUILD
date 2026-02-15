@@ -1,7 +1,7 @@
 # Maintainer: MrToadie <toadie@toadie.de>
 
 pkgname=kvm-configurator
-pkgver=1.0.9.6
+pkgver=1.0.9.7
 pkgrel=1
 pkgdesc="Small helper program for virt-install to easily create virtual machines in the terminal"
 arch=('x86_64')
