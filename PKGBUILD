@@ -2,7 +2,7 @@
 # Maintainer: Benedikt Zumtobel <benedikt at zumtobel dot dev>
 
 pkgname='yatto'
-pkgver=0.23.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Interactive VCS-based todo-list for the command-line'
 url='https://github.com/handlebargh/yatto'
@@ -13,7 +13,7 @@ conflicts=('yatto')
 depends=('git')
 makedepends=('go' 'git')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/handlebargh/yatto/releases/download/v${pkgver}/yatto-${pkgver}.tar.gz")
-sha256sums=('67971a549c2638e7622a82b7908799a25a0f60937fce1d33c5ed0350153c24c6')
+sha256sums=('df71fe3e6971e500564c26105f976fb57b37dddf75de6861e61bfc55e78f6be0')
 prepare() {
   go mod download
 }
@@ -21,7 +21,7 @@ build() {
   export CGO_ENABLED=0
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
   go build \
-  -ldflags "-s -w -linkmode=external -extldflags=-Wl,-z,relro,-z,now -buildid=" \
+  -ldflags "-s -w -extldflags=-zrelro -extldflags=-znow -buildid=" \
   -o "${pkgname}"
   chmod +x "${pkgname}"
   for shell in bash fish zsh; do
