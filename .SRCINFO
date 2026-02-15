@@ -1,7 +1,7 @@
 pkgbase = xpipe-ptb
 	pkgdesc = XPipe Public Test Build releases
 	pkgver = 21.3
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://github.com/xpipe-io/xpipe-ptb
 	changelog = xpipe-ptb.changelog
@@ -30,9 +30,9 @@ pkgbase = xpipe-ptb
 	sha256sums = 3DBAE16D777F7AD7761252B1F429278333A1117A70632F4025DE713E5B0A86C8
 	sha256sums = BCD42E2497807AE0069A4CCCAFEDC5B993EB24EB844C9BF0AE26ABABCEEAE348
 	sha256sums = F7E26C2EBA1EC2AF909357475D3C3C6C55D1CF9E2BD7129276B89306298FBF9F
-	source_x86_64 = xpipe-ptb-21.3-3-x86_64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/21.3-3/xpipe-portable-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 4ac80938bbc390a4305755cb29a239718b9593218d89dafa53d2f2f0ea6297d4
-	source_aarch64 = xpipe-ptb-21.3-3-arm64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/21.3-3/xpipe-portable-linux-arm64.tar.gz
-	sha256sums_aarch64 = 4ac80938bbc390a4305755cb29a239718b9593218d89dafa53d2f2f0ea6297d4
+	source_x86_64 = xpipe-ptb-21.3-4-x86_64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/21.3-4/xpipe-portable-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 50049ff1f1fabffc787a8768bc70e2719dec4b1f94399be5e056508ce8226df7
+	source_aarch64 = xpipe-ptb-21.3-4-arm64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/21.3-4/xpipe-portable-linux-arm64.tar.gz
+	sha256sums_aarch64 = 50049ff1f1fabffc787a8768bc70e2719dec4b1f94399be5e056508ce8226df7
 
 pkgname = xpipe-ptb
