@@ -7,8 +7,8 @@ pkgname=(
   # 'aider-chat-docs'  # see `build()` for details
 )
 _gitpkgname=aider
-pkgver=0.86.1
-pkgrel=3
+pkgver=0.86.2
+pkgrel=1
 pkgdesc='AI pair programming in your terminal'
 arch=('any')
 url='https://github.com/Aider-AI/aider'
@@ -23,7 +23,6 @@ _depends=(
   'python-dotenv'
   'python-flake8'
   'python-gitpython'
-  'python-google-generativeai'
   'python-grep-ast'
   'python-httpx'
   'python-importlib_resources'
@@ -81,18 +80,12 @@ source=(
   'archlinux-use-system.patch'
   'aur-install-notice.patch'
   'fix-build-from-tarball.patch'
-  'fix-litellm-exception-list.patch'
-  'github-pr-4369.patch'
-  'github-pr-4748.patch'
 )
 
-sha512sums=('0a0c44b5d91db839611f21c8062c2700fe728a1937cf1485375a94aa85c4330e3029547f8e464f2282f3ca21d58d9e1b0e68bc7ffd8190ef93eda2b768697c7f'
+sha512sums=('304a7ed346ba397c21a7aa3a6563d2cffca9c95a8a67e98a93c14fdd9c86f24ff41224cdd31aebb7e3940a98ac07825ed3a7a6720143178116d9204f17021562'
             '18acc792128e0748c099e0daa7061c780a43fdb384251f980ff36424b5450cb35e885a8e84af4990923db76a1f30e39a2e1a178eaf88409c0818e4ee134f1644'
             '39466f05535330372d3f89a361b3984ef82bfdbf3e1b9f359cc0c039bbe098163c4253634155d74dd3971145131fa12afdfc9aff001f05b8cd0840b870a68555'
-            'd784c2dae03810cb69059bdc399c437d6a8a8d9d746d69fce2b2a4b3fb5536dbf437918799a57278ae74eeb491233ae4bf38e7f56533210ad89df92f9128deac'
-            'd89fa476f253c17675401693efce2bad8d3b7b525e95e3d655bf62c6f12ca39de1d36327fcdd37856dbbcca741a97535abd2f8cfb254eb211096f78dc08dd376'
-            'fe4e0a66b853ab00d35be6929d60d5e86463918f51bf9d60c36e3afb3a4ab8857daba8629a3b7c8e6b6e2891bdecfcce98b53ba5c2bbe49d47297b0f7fec3620'
-            '9b35d6a443ed0d750912776d19de6f003368a3bbb1355aa76fad01f21f2e17c9a25b0b0fca6efbd2edd8fccf7e0a5b3f31cf718c4ab97ce0801997c6a5513faa')
+            'd784c2dae03810cb69059bdc399c437d6a8a8d9d746d69fce2b2a4b3fb5536dbf437918799a57278ae74eeb491233ae4bf38e7f56533210ad89df92f9128deac')
 
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
@@ -103,21 +96,9 @@ prepare() {
   echo >&2 'Replacing auto-updater and optdepends installers with AUR notice'
   patch -p1 < ../aur-install-notice.patch
 
-  echo >&2 'Applying patches to fix the LiteLLM exception list'
-  # Remove the following two patches after the next stable upstream
-  # release drops (v0.86.2 or higher).
-  patch -p1 < ../fix-litellm-exception-list.patch
-  patch -p1 < ../github-pr-4748.patch
-
   # Needs to be upstreamed
   echo >&2 'Fixing incomplete build from source tarball'
   patch -p1 < ../fix-build-from-tarball.patch
-
-  # Remove this patch once the upstream author has merged PR #4369 and
-  # included it in a stable release.
-  # See also: https://github.com/Aider-AI/aider/pull/4369
-  echo >&2 'Applying patch to fix tree-sitter integration'
-  patch -p1 < ../github-pr-4369.patch
 
   # Update Gemfile to allow newer version of the dependencies,
   # add undeclared dependencies, and remove dependencies not
@@ -184,9 +165,13 @@ check() {
   #   not applicable because dependencies have been replaced with
   #   optdepends
   #
+  # - scraping tests that depend on specific responses from
+  #   third-party services, which proved to be flaky at times
+  #   (maybe due to rate limiting or other anti-scraping measures)
+  #
   echo >&2 'Running unit tests'
   env -i PATH="${PATH}" python -m pytest \
-    -k 'not test_get_commit_message and not TestHelp and not test_check_for_dependencies_'
+    -k 'not test_get_commit_message and not TestHelp and not test_check_for_dependencies_ and not test_scraper_print_error_not_called'
 
   echo >&2 'Testing the executable'
   test-env/bin/${_gitpkgname} --version > actual.txt
