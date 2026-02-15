@@ -1,5 +1,5 @@
 ---
-# The editor to use with 'cheat -e <sheet>'. Defaults to $EDITOR or $VISUAL.
+# The editor to use with 'cheat -e <sheet>'. Overridden by $VISUAL or $EDITOR.
 editor: EDITOR_PATH
 
 # Should 'cheat' always colorize output?
@@ -19,64 +19,51 @@ formatter: terminal256
 # 'more' is recommended on Windows
 pager: less -FRX
 
-# Cheatpaths are paths at which cheatsheets are available on your local
-# filesystem.
+# The paths at which cheatsheets are available. Tags associated with a cheatpath
+# are automatically attached to all cheatsheets residing on that path.
 #
-# It is useful to sort cheatsheets into different cheatpaths for organizational
-# purposes. For example, you might want one cheatpath for community
-# cheatsheets, one for personal cheatsheets, one for cheatsheets pertaining to
-# your day job, one for code snippets, etc.
+# Whenever cheatsheets share the same title (like 'tar'), the most local
+# cheatsheets (those which come later in this file) take precedence over the
+# less local sheets. This allows you to create your own "overides" for
+# "upstream" cheatsheets.
 #
-# Cheatpaths are scoped, such that more "local" cheatpaths take priority over
-# more "global" cheatpaths. (The most global cheatpath is listed first in this
-# file; the most local is listed last.) For example, if there is a 'tar'
-# cheatsheet on both global and local paths, you'll be presented with the local
-# one by default. ('cheat -p' can be used to view cheatsheets from alternative
-# cheatpaths.)
+# But what if you want to view the "upstream" cheatsheets instead of your own?
+# Cheatsheets may be filtered by 'tags' in combination with the '--tag' flag.
+# 
+# Example: 'cheat tar --tag=community' will display the 'tar' cheatsheet that
+# is tagged as 'community' rather than your own.
 #
-# Cheatpaths can also be tagged as "read only". This instructs cheat not to
-# automatically create cheatsheets on a read-only cheatpath. Instead, when you
-# would like to edit a read-only cheatsheet using 'cheat -e', cheat will
-# perform a copy-on-write of that cheatsheet from a read-only cheatpath to a
-# writeable cheatpath.
+# Paths that come earlier are considered to be the most "global", and paths
+# that come later are considered to be the most "local". The most "local" paths
+# take precedence.
 #
-# This is very useful when you would like to maintain, for example, a
-# "pristine" repository of community cheatsheets on one cheatpath, and an
-# editable personal reponsity of cheatsheets on another cheatpath.
-#
-# Cheatpaths can be also configured to automatically apply tags to cheatsheets
-# on certain paths, which can be useful for querying purposes.
-# Example: 'cheat -t work jenkins'.
-#
-# Community cheatsheets must be installed separately, though you may have
-# downloaded them automatically when installing 'cheat'. If not, you may
-# download them here:
-#
-# https://github.com/cheat/cheatsheets
+# See: https://github.com/cheat/cheat/blob/master/doc/cheat.1.md#cheatpaths
 cheatpaths:
-  # Cheatpath properties mean the following:
-  #   'name': the name of the cheatpath (view with 'cheat -d', filter with 'cheat -p')
-  #   'path': the filesystem path of the cheatsheet directory (view with 'cheat -d')
-  #   'tags': tags that should be automatically applied to sheets on this path
-  #   'readonly': shall user-created ('cheat -e') cheatsheets be saved here?
+
+  # Cheatsheets that are tagged "personal" are stored here by default:
+  - name: personal
+    path: $HOME/.config/cheat/cheatsheets/personal
+    tags: [ personal ]
+    readonly: false
+
+  # Cheatsheets that are tagged "work" are stored here by default:
+  - name: work
+    path: $HOME/.config/cheat/cheatsheets/work
+    tags: [ work ]
+    readonly: false
+
+  # Community cheatsheets (https://github.com/cheat/cheatsheets):
   - name: community
     path: /usr/share/cheat/cheatsheets/community
     tags: [ community ]
     readonly: true
 
-  # If you have personalized cheatsheets, list them last. They will take
-  # precedence over the more global cheatsheets.
-  #- name: personal
-  #  path: PERSONAL_PATH
-  #  tags: [ personal ]
-  #  readonly: false
-
-  # While it requires no configuration here, it's also worth noting that
-  # cheat will automatically append directories named '.cheat' within the
-  # current working directory to the 'cheatpath'. This can be very useful if
-  # you'd like to closely associate cheatsheets with, for example, a directory
-  # containing source code.
+  # You can also use glob patterns to automatically load cheatsheets from all
+  # directories that match.
   #
-  # Such "directory-scoped" cheatsheets will be treated as the most "local"
-  # cheatsheets, and will override less "local" cheatsheets. Similarly,
-  # directory-scoped cheatsheets will always be editable ('readonly: false').
+  # Example: overload cheatsheets for projects under ~/src/github.com/example/*/
+  #- name: example-projects
+  #  path: ~/src/github.com/example/**/.cheat
+  #  tags: [ example ]
+  #  readonly: true
+
