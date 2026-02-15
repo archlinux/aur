@@ -2,7 +2,7 @@
 
 pkgname=toxcore-c
 pkgver=0.2.22
-pkgrel=2
+pkgrel=3
 pkgdesc='C backend implementation of the Tox communication protocol'
 arch=('x86_64')
 url='https://tox.chat'
@@ -11,6 +11,7 @@ depends=('systemd' 'libconfig' 'libsodium' 'libvpx' 'opus')
 makedepends=('base-devel' 'cmake')
 checkdepends=('gtest')
 provides=('tox')
+conflicts=('tox')
 backup=('etc/tox-bootstrapd.conf')
 source=("https://github.com/TokTok/c-toxcore/releases/download/v${pkgver}/c-toxcore-v${pkgver}.tar.xz")
 sha512sums=('49dc04f187014619b3857b780321b6c45311eb73ebdbaef25c0f8cbf708a14d80c3a6f6b896c6ececcc593dc65b54b93a103f0af78a9b6a7bb2c821371450fc9')
