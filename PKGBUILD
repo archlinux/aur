@@ -2,12 +2,12 @@
 
 pkgname=google-lyra
 pkgver=1.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A very low-bitrate codec for speech compression"
 arch=('i686' 'x86_64')
 url="https://github.com/google/lyra"
 license=('Apache')
-depends=('gcc-libs')
+depends=('glibc' 'libgcc' 'libstdc++')
 makedepends=('bazel<6' 'python-numpy')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/google/lyra/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('03ab9de1651e84819f8fe37a510052cee9b22b3be9cfd4813c333651880170e4')
