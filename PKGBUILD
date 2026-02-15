@@ -32,7 +32,10 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
     install -Dm755 "target/release/v2ray-rs-ui" "$pkgdir/usr/bin/v2ray-rs"
-    install -Dm644 "assets/v2ray-rs.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/v2ray-rs.png"
-    install -Dm644 "assets/v2ray-rs.desktop" "$pkgdir/usr/share/applications/v2ray-rs.desktop"
+    install -Dm644 "assets/v2ray-rs.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.github.v2ray-rs.svg"
+    install -Dm644 "assets/v2ray-rs.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/com.github.v2ray-rs.png"
+    install -Dm644 "crates/ui/icons/hicolor/symbolic/apps/com.github.v2ray-rs-symbolic.svg" \
+        "$pkgdir/usr/share/icons/hicolor/symbolic/apps/com.github.v2ray-rs-symbolic.svg"
+    install -Dm644 "assets/com.github.v2ray-rs.desktop" "$pkgdir/usr/share/applications/com.github.v2ray-rs.desktop"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
