@@ -44,6 +44,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-145-fix-SYS_SECCOMP.patch
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
+        enable-widevine-arm64.patch
         use-oauth2-client-switches-as-default.patch
         # ungoogled-chromium-xdg patches
         xdg-basedir.patch
@@ -55,6 +56,7 @@ sha256sums=('4b9460a4c852b824dbd3c6de00948fe97b760e89ac56c62b5e28f8581a5c1690'
             '4fc040a0656a0a524dd8ad090cd129fc5b6cb21adcc66be82080165789e8c13e'
             'ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
+            'd7bffd47aefcd79a59282d613cad640695c5b50eaddd72ff617fdf3f4763134a'
             '9343afa1a4308a7cfb3317229f5aff7778688debcc03c4a74a85908aa1d0cc3a'
             '2848ccca54ec4a118471b833d20cf3a32fff7775d5b0fc881f9e1660dcd6ca23'
             'ff1591fa38e0ede7e883dc7494b813641b7a1a7cb1ded00d9baaee987c1dbea8')
@@ -140,6 +142,9 @@ prepare() {
 
   # https://crbug.com/456218403
   patch -Np1 -i ../chromium-145-fix-SYS_SECCOMP.patch
+
+  # enable widevine for arm64
+  patch -Np1 -i ../enable-widevine-arm64.patch
 
   # Custom Patches
 
