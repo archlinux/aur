@@ -1,0 +1,24 @@
+pkgbase = bili-live-hime-git
+	pkgdesc = bilibili官方直播姬的轻量化替代工具 (Tauri 版) - Git最新版
+	pkgver = 0.5.0.r0.g041b7ad
+	pkgrel = 1
+	url = https://github.com/Rsplwe/bili-live-hime
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-only
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libnm
+	depends = libayatana-appindicator
+	depends = openssl
+	provides = bili-live-hime
+	conflicts = bili-live-hime
+	source = bili-live-hime::git+https://github.com/Rsplwe/bili-live-hime.git
+	sha256sums = SKIP
+
+pkgname = bili-live-hime-git
