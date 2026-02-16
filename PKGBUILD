@@ -2,12 +2,12 @@
 
 pkgname=glog-git
 pkgver=0.7.1.r43.g53d58e4
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ implementation of the Google logging module"
 arch=('i686' 'x86_64')
 url="https://github.com/google/glog"
 license=('BSD-3-Clause')
-depends=('gcc-libs' 'gflags')
+depends=('glibc' 'libgcc' 'libstdc++' 'gflags')
 makedepends=('git' 'cmake')
 provides=("google-glog=$pkgver")
 conflicts=('google-glog')
@@ -19,7 +19,7 @@ pkgver() {
   cd "glog"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
@@ -47,6 +47,6 @@ package() {
   cd "glog"
 
   DESTDIR="$pkgdir" cmake --install "_build"
-  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/glog"
+  install -Dm644 "LICENSE.md" -t "$pkgdir/usr/share/licenses/glog"
 }
 
