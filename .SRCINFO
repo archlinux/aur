@@ -1,7 +1,7 @@
 pkgbase = advancely-bin
 	pkgdesc = A highly customizable and interactive tool to track Minecraft progress beyond just Advancements.
 	pkgver = 1.0.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DFA-G/Advancely
 	arch = x86_64
 	license = LicenseRef-Proprietary
@@ -16,7 +16,7 @@ pkgbase = advancely-bin
 	source = Advancely.zip::https://github.com/DFA-G/Advancely/releases/download/v1.0.15/Advancely-v1.0.15-Linux.zip
 	source = launcher::https://raw.githubusercontent.com/DFA-G/Advancely/refs/tags/v1.0.15/packaging/linux/launcher
 	source = advancely.png::https://raw.githubusercontent.com/DFA-G/Advancely/refs/tags/v1.0.15/packaging/linux/advancely.png
-	source = advancely.desktop
+	source = advancely.desktop::https://raw.githubusercontent.com/DFA-G/Advancely/refs/tags/v1.0.15/packaging/linux/advancely.desktop
 	source = LICENSE::https://raw.githubusercontent.com/DFA-G/Advancely/refs/tags/v1.0.15/LICENSES.txt
 	sha256sums = 0353df38514daf372fd24244d07c5b3925c302b7835f92181fde41ece4205a2c
 	sha256sums = 111527682cf029c30fd09250c494cee576b88b487e29fe0f6a179cc82d378133
