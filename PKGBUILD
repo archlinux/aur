@@ -3,15 +3,15 @@
 
 _pkgname=footage
 pkgname="$_pkgname-git"
-pkgver=r144.g41a7c77
+pkgver=r146.gb351d5c
 pkgrel=1
 pkgdesc="Polish your videos"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/adhami3310/Footage"
 license=('GPL-3.0-only')
-depends=('a52dec' 'fdkaac' 'ffmpeg' 'gst-editing-services' 'gst-plugin-gif' 'gst-plugin-gtk4'
-         'gst-plugins-bad' 'gst-plugins-ugly' 'gstreamer-svt-av1-git' 'gstreamer-vaapi'
-         'libadwaita' 'libmpeg2' 'svt-av1' 'vo-aacenc' 'x264' 'x265')
+depends=('a52dec' 'ffmpeg' 'gst-plugin-gtk4' 'gst-editing-services'
+         'gst-plugins-bad' 'gst-plugins-ugly' 'gstreamer-svt-av1-git' 'gst-plugin-va'
+         'libadwaita' 'libmpeg2' 'svt-av1' 'x264' 'x265')
 makedepends=('blueprint-compiler' 'cargo' 'git' 'meson')
 checkdepends=('appstream-glib')
 conflicts=(footage)
@@ -19,9 +19,7 @@ provides=(footage)
 source=(
   "git+$url.git"
 )
-sha256sums=(
-  'SKIP'
-)
+sha256sums=('SKIP')
 _srcdir="Footage"
 
 pkgver() {
