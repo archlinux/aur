@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=wild-git
-pkgver=0.5.0.r267.g8cb0bcc
+pkgver=0.8.0.r72.g5dae38e0
 pkgrel=1
 pkgdesc="A linker with the goal of being very fast for iterative development"
 arch=('i686' 'x86_64')
 url="https://github.com/davidlattimore/wild"
 license=('Apache-2.0' 'MIT')
-depends=('gcc-libs' 'glibc')
+depends=('glibc' 'libgcc')
 makedepends=('git' 'cargo')
 checkdepends=('clang' 'lld' 'rust-musl')
 provides=("wild=$pkgver")
@@ -32,7 +32,7 @@ pkgver() {
   cd "wild"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
