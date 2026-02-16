@@ -1,6 +1,6 @@
 pkgbase = ibus-m17n
 	pkgdesc = M17N engine for IBus
-	pkgver = 1.4.37
+	pkgver = 1.4.38
 	pkgrel = 1
 	url = https://github.com/ibus/ibus-m17n
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = ibus-m17n
 	depends = ibus
 	depends = m17n-db
 	depends = m17n-lib
-	source = ibus-m17n-1.4.37.tar.gz::https://github.com/ibus/ibus-m17n/archive/1.4.37.tar.gz
-	b2sums = 41eb11de34683131fb9836e94b66fcbfa86fec644f9f437158af90d99b1e2699f7280b0fff887f58ae2368a448f94cc57d5595a2051084c4b6de929cbce99c8f
+	source = ibus-m17n-1.4.38.tar.gz::https://github.com/ibus/ibus-m17n/archive/1.4.38.tar.gz
+	b2sums = 2bc145e0c6a3ea8e49a172e0fe39e7ecbc4f50ccd3c7a73c7df03b4fae1f82642fe94f3fd52a1e09e0111ffbfe704a4d26f27583a7677fb42b30085ae0092573
 
 pkgname = ibus-m17n
