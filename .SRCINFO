@@ -1,7 +1,7 @@
 pkgbase = cosmic-ext-applet-logomenu-git
 	pkgdesc = Logo Menu applet for the COSMIC™ desktop
-	pkgver = 0.6.11
-	pkgrel = 6
+	pkgver = v0.6.11.r7.g0cd4a39
+	pkgrel = 1
 	url = https://github.com/cosmic-utils/cosmic-ext-applet-logomenu
 	arch = x86_64
 	arch = aarch64
