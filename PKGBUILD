@@ -1,13 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=bitstream-git
-pkgver=1.4.r67.gba7576b
+pkgver=1.6.r18.g526a92f
 pkgrel=1
 pkgdesc="A set of C headers allowing a simpler access to binary structures such as specified by MPEG, DVB, IETF, SMPTE, IEEE, SCTE, etc"
 arch=('any')
 url="https://www.videolan.org/developers/bitstream.html"
 license=('MIT')
-depends=('glibc')
 makedepends=('git')
 provides=("bitstream=$pkgver")
 conflicts=('bitstream')
