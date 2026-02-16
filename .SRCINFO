@@ -1,11 +1,11 @@
 pkgbase = people-work
 	pkgdesc = Manage your most important professional relationships
-	pkgver = 1.4.10
+	pkgver = 1.4.11
 	pkgrel = 1
 	url = https://people-work.io
 	arch = x86_64
 	license = custom:people-work
-	source = people-work-1.4.10-x86_64.tar.gz::https://github.com/hedge-ops/people-work-releases/releases/download/v1.4.10/people-work-1.4.10-x86_64.tar.gz
+	source = people-work-1.4.11-x86_64.tar.gz::https://github.com/hedge-ops/people-work-releases/releases/download/v1.4.11/people-work-1.4.11-x86_64.tar.gz
 	sha256sums = SKIP
 
 pkgname = people-work
