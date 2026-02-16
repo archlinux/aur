@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -eu
+
+source ./PKGBUILD
+
+echo "## install start"
+pacman -U --noconfirm "${pkgname}-${pkgver}-${pkgrel}-$(uname -m).pkg.tar.xz"
+
+echo "## install completed"
+
+echo "## check installed files"
+
+echo
+echo "### check command help"
+
+${pkgname} --help
+
+echo
+echo "test OK"
