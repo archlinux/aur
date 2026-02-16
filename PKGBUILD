@@ -6,7 +6,7 @@ _originalpkgname=kChat
 
 pkgname="${_pkgname}"-appimage
 pkgver=3.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="kChat is an instant messaging service which enables you to discuss, share and coordinate your teams in complete security via your Internet browser, mobile phone, tablet or computer."
 arch=('x86_64')
 url="https://www.infomaniak.com/en/apps/download-kchat"
@@ -27,6 +27,9 @@ build() {
     # Adjust .desktop so it will work outside of AppImage container
     sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|"\
         "squashfs-root/${_pkgname}-desktop.desktop"
+    # Fix icon name in .desktop file
+    sed -i "s|Icon=.*|Icon=${_pkgname}-desktop|"\
+        "squashfs-root/${_pkgname}-desktop.desktop"
     # Fix permissions; .AppImage permissions are 700 for all directories
     chmod -R a-x+rX squashfs-root/usr
 }
@@ -39,9 +42,11 @@ package() {
     install -Dm644 "${srcdir}/squashfs-root/${_pkgname}-desktop.desktop"\
             "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
-    # Icon images
-    install -dm755 "${pkgdir}/usr/share/"
-    cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
+    # Icon images - manually install to 512x512 folder for proper GNOME recognition
+    install -dm755 "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
+    for icon in "${srcdir}/squashfs-root/usr/share/icons"/*/*/apps/*; do
+        [ -f "$icon" ] && install -Dm644 "$icon" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}-desktop.${icon##*.}"
+    done
 
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"

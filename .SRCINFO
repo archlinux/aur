@@ -1,7 +1,7 @@
 pkgbase = kchat-appimage
 	pkgdesc = kChat is an instant messaging service which enables you to discuss, share and coordinate your teams in complete security via your Internet browser, mobile phone, tablet or computer.
 	pkgver = 3.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.infomaniak.com/en/apps/download-kchat
 	arch = x86_64
 	license = custom:Unlicense
