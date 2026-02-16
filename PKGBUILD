@@ -6,7 +6,7 @@ pkgrel=1
 epoch=
 pkgdesc="Per-app firewall"
 arch=('x86_64' 'aarch64' 'loongarch64')
-url="https://github.com/Kimiblock/charcoal"
+url="https://github.com/Kimiblock/netsock"
 license=(GPL-3.0-or-later)
 provides=(netsock)
 groups=()
@@ -25,7 +25,7 @@ makedepends+=(
 
 checkdepends=()
 
-source=(source::git+https://github.com/Kimiblock/netsock.git#branch=dev)
+source=(source::git+https://github.com/Kimiblock/netsock.git)
 
 md5sums=('SKIP')
 
