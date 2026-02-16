@@ -1,0 +1,3 @@
+[lmod]
+source = "git"
+git = "https://github.com/TACC/Lmod.git"
