@@ -1,0 +1,4 @@
+[python-pssh]
+source = "git"
+git = "https://github.com/lilydjwg/pssh.git"
+prefix = "v"
