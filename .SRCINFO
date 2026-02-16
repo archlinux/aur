@@ -1,0 +1,18 @@
+pkgbase = opengl-cts
+	pkgver = 4.6.7.0
+	pkgrel = 1
+	url = https://github.com/KhronosGroup/VK-GL-CTS
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	makedepends = python
+	makedepends = cmake
+	makedepends = gcc
+	depends = opengl-driver
+	depends = zlib
+	depends = libpng
+	optdepends = wayland-protocols: DEQP_TARGET=default
+	source = https://github.com/KhronosGroup/VK-GL-CTS/archive/refs/tags/opengl-cts-4.6.7.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = opengl-cts
