@@ -3,9 +3,9 @@
 _pkgbase=vk-gl-cts
 pkgname='opengl-cts'
 pkgver=4.6.7.0
-pkgrel=1
+pkgrel=2
 arch=('any')
-desc='Khronos OpenGL and OpenGL ES Conformance Tests.'
+pkgdesc='Khronos OpenGL and OpenGL ES Conformance Tests.'
 url="https://github.com/KhronosGroup/VK-GL-CTS"
 license=('Apache-2.0')
 depends=(
@@ -52,4 +52,6 @@ EOF
 	install -D external/openglcts/modules/glcts ${pkgdir}/usr/lib/openglcts/glcts
 	cp -r external/openglcts/modules/gl* ${pkgdir}/usr/lib/openglcts/
 	rm -rf ${pkgdir}/usr/lib/openglcts/*/{CMakeFiles,*cmake,*.a,Makefile}
+	install -D ${srcdir}/external/openglcts/README.md ${pkgdir}/usr/share/openglcts/README.md
+	cp -r ${srcdir}/external/openglcts/docs/specs ${pkgdir}/usr/share/openglcts/
 }

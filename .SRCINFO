@@ -1,6 +1,7 @@
 pkgbase = opengl-cts
+	pkgdesc = Khronos OpenGL and OpenGL ES Conformance Tests.
 	pkgver = 4.6.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KhronosGroup/VK-GL-CTS
 	arch = any
 	license = Apache-2.0
