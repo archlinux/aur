@@ -2,7 +2,7 @@
 
 pkgdesc='A terminal user interface that extracts and displays tasks from notes files'
 pkgname=taskfinder
-pkgver=2.13.0
+pkgver=2.14.0
 pkgrel=1
 url="https://codeberg.org/kdwarn/$pkgname"
 arch=(x86_64)
@@ -11,11 +11,11 @@ depends=(gcc-libs
          glibc)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('34295315a06138102cacded5427153bc190cd330a2b679b1be70c17c5c684148')
+sha256sums=('3dfc951d060b131c3df12e05b2a2a21c58151708e049eeef8f3dac3503b9f23f')
 
 prepare() {
 	cd "$pkgname"
-	cargo fetch --locked --target "$(rustc --print host-tuple)"
+	cargo fetch --locked --target host-tuple
 }
 
 _srcenv() {
