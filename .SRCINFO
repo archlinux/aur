@@ -1,0 +1,13 @@
+pkgbase = mcsrlauncher
+	pkgdesc = Minecraft Launcher written in Kotlin. Made for MCSR Community and MCSR Ranked
+	pkgver = 0.7.1_beta
+	pkgrel = 1
+	url = https://github.com/MCSRLauncher/Launcher
+	arch = any
+	license = GPL-3.0-or-later
+	depends = java-runtime>=17
+	depends = hicolor-icon-theme
+	source = MCSRLauncher-0.7.1_beta.jar::https://github.com/MCSRLauncher/Launcher/releases/download/0.7.1-beta/MCSRLauncher.jar
+	sha256sums = 2f23783305ae1138a4c2a7ca41ea60e8041f80e1543eb62cbf5154369b46112c
+
+pkgname = mcsrlauncher
