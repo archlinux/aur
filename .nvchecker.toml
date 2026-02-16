@@ -1,0 +1,4 @@
+[mkdocs-include-markdown-plugin]
+source = "git"
+git = "https://github.com/mondeja/mkdocs-include-markdown-plugin.git"
+prefix = "v"
