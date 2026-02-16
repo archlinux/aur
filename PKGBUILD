@@ -1,7 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 pkgname=sdl3
 pkgver=3.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 3)"
 arch=('x86_64')
 url="https://www.libsdl.org"
@@ -53,7 +53,7 @@ build() {
   CFLAGS+=" -ffat-lto-objects"
   cmake -S SDL3-${pkgver} \
     -B build -G Ninja \
-  	-D CMAKE_BUILD_TYPE=None \
+    -D CMAKE_BUILD_TYPE=None \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D SDL_STATIC=OFF \
     -D SDL_RPATH=OFF
