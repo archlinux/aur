@@ -1,0 +1,318 @@
+diff --git a/package.json b/package.json
+index bef3ae67b3..24c76babc1 100644
+--- a/package.json
++++ b/package.json
+@@ -51,11 +51,11 @@
+     "android:install": "cd apps/android && ./gradlew :app:installDebug",
+     "android:run": "cd apps/android && ./gradlew :app:installDebug && adb shell am start -n ai.openclaw.android/.MainActivity",
+     "android:test": "cd apps/android && ./gradlew :app:testDebugUnitTest",
+-    "build": "pnpm canvas:a2ui:bundle && tsdown && pnpm build:plugin-sdk:dts && node --import tsx scripts/write-plugin-sdk-entry-dts.ts && node --import tsx scripts/canvas-a2ui-copy.ts && node --import tsx scripts/copy-hook-metadata.ts && node --import tsx scripts/write-build-info.ts && node --import tsx scripts/write-cli-compat.ts",
++    "build": "bun run canvas:a2ui:bundle && tsdown && bun run build:plugin-sdk:dts && node --import tsx scripts/write-plugin-sdk-entry-dts.ts && node --import tsx scripts/canvas-a2ui-copy.ts && node --import tsx scripts/copy-hook-metadata.ts && node --import tsx scripts/write-build-info.ts && node --import tsx scripts/write-cli-compat.ts",
+     "build:plugin-sdk:dts": "tsc -p tsconfig.plugin-sdk.dts.json",
+     "canvas:a2ui:bundle": "bash scripts/bundle-a2ui.sh",
+-    "check": "pnpm format:check && pnpm tsgo && pnpm lint",
+-    "check:docs": "pnpm format:docs:check && pnpm lint:docs && pnpm docs:check-links",
++    "check": "bun run format:check && bun run tsgo && bun run lint",
++    "check:docs": "bun run format:docs:check && bun run lint:docs && bun run docs:check-links",
+     "check:loc": "node --import tsx scripts/check-ts-max-loc.ts --max 500",
+     "dev": "node scripts/run-node.mjs",
+     "docs:bin": "node scripts/build-docs-list.mjs",
+@@ -63,7 +63,7 @@
+     "docs:dev": "cd docs && mint dev",
+     "docs:list": "node scripts/docs-list.js",
+     "format": "oxfmt --write",
+-    "format:all": "pnpm format && pnpm format:swift",
++    "format:all": "bun run format && bun run format:swift",
+     "format:check": "oxfmt --check",
+     "format:docs": "git ls-files 'docs/**/*.md' 'docs/**/*.mdx' 'README.md' | xargs oxfmt --write",
+     "format:docs:check": "git ls-files 'docs/**/*.md' 'docs/**/*.mdx' 'README.md' | xargs oxfmt --check",
+@@ -76,10 +76,10 @@
+     "ios:open": "cd apps/ios && xcodegen generate && open OpenClaw.xcodeproj",
+     "ios:run": "bash -lc 'cd apps/ios && xcodegen generate && xcodebuild -project OpenClaw.xcodeproj -scheme OpenClaw -destination \"${IOS_DEST:-platform=iOS Simulator,name=iPhone 17}\" -configuration Debug build && xcrun simctl boot \"${IOS_SIM:-iPhone 17}\" || true && xcrun simctl launch booted ai.openclaw.ios'",
+     "lint": "oxlint --type-aware",
+-    "lint:all": "pnpm lint && pnpm lint:swift",
+-    "lint:docs": "pnpm dlx markdownlint-cli2",
+-    "lint:docs:fix": "pnpm dlx markdownlint-cli2 --fix",
+-    "lint:fix": "oxlint --type-aware --fix && pnpm format",
++    "lint:all": "bun run lint && bun run lint:swift",
++    "lint:docs": "bun run dlx markdownlint-cli2",
++    "lint:docs:fix": "bun run dlx markdownlint-cli2 --fix",
++    "lint:fix": "oxlint --type-aware --fix && bun run format",
+     "lint:swift": "swiftlint lint --config .swiftlint.yml && (cd apps/ios && swiftlint lint --config .swiftlint.yml)",
+     "mac:open": "open dist/OpenClaw.app",
+     "mac:package": "bash scripts/package-mac-app.sh",
+@@ -88,17 +88,17 @@
+     "openclaw": "node scripts/run-node.mjs",
+     "openclaw:rpc": "node scripts/run-node.mjs agent --mode rpc --json",
+     "plugins:sync": "node --import tsx scripts/sync-plugin-versions.ts",
+-    "prepack": "pnpm build && pnpm ui:build",
++    "prepack": "bun run build && bun run ui:build",
+     "prepare": "command -v git >/dev/null 2>&1 && git rev-parse --is-inside-work-tree >/dev/null 2>&1 && git config core.hooksPath git-hooks || exit 0",
+-    "protocol:check": "pnpm protocol:gen && pnpm protocol:gen:swift && git diff --exit-code -- dist/protocol.schema.json apps/macos/Sources/OpenClawProtocol/GatewayModels.swift",
++    "protocol:check": "bun run protocol:gen && bun run protocol:gen:swift && git diff --exit-code -- dist/protocol.schema.json apps/macos/Sources/OpenClawProtocol/GatewayModels.swift",
+     "protocol:gen": "node --import tsx scripts/protocol-gen.ts",
+     "protocol:gen:swift": "node --import tsx scripts/protocol-gen-swift.ts",
+     "release:check": "node --import tsx scripts/release-check.ts",
+     "start": "node scripts/run-node.mjs",
+     "test": "node scripts/test-parallel.mjs",
+-    "test:all": "pnpm lint && pnpm build && pnpm test && pnpm test:e2e && pnpm test:live && pnpm test:docker:all",
++    "test:all": "bun run lint && bun run build && bun run test && bun run test:e2e && bun run test:live && bun run test:docker:all",
+     "test:coverage": "vitest run --config vitest.unit.config.ts --coverage",
+-    "test:docker:all": "pnpm test:docker:live-models && pnpm test:docker:live-gateway && pnpm test:docker:onboard && pnpm test:docker:gateway-network && pnpm test:docker:qr && pnpm test:docker:doctor-switch && pnpm test:docker:plugins && pnpm test:docker:cleanup",
++    "test:docker:all": "bun run test:docker:live-models && bun run test:docker:live-gateway && bun run test:docker:onboard && bun run test:docker:gateway-network && bun run test:docker:qr && bun run test:docker:doctor-switch && bun run test:docker:plugins && bun run test:docker:cleanup",
+     "test:docker:cleanup": "bash scripts/test-cleanup-docker.sh",
+     "test:docker:doctor-switch": "bash scripts/e2e/doctor-install-switch-docker.sh",
+     "test:docker:gateway-network": "bash scripts/e2e/gateway-network-docker.sh",
+@@ -116,7 +116,7 @@
+     "test:install:smoke": "bash scripts/test-install-sh-docker.sh",
+     "test:live": "OPENCLAW_LIVE_TEST=1 CLAWDBOT_LIVE_TEST=1 vitest run --config vitest.live.config.ts",
+     "test:macmini": "OPENCLAW_TEST_VM_FORKS=0 OPENCLAW_TEST_PROFILE=serial node scripts/test-parallel.mjs",
+-    "test:ui": "pnpm --dir ui test",
++    "test:ui": "bun run --dir ui test",
+     "test:watch": "vitest",
+     "tsgo:test": "tsgo -p tsconfig.test.json",
+     "tui": "node scripts/run-node.mjs tui",
+@@ -192,6 +192,7 @@
+     "@typescript/native-preview": "7.0.0-dev.20260215.1",
+     "@vitest/coverage-v8": "^4.0.18",
+     "lit": "^3.3.2",
++    "node-gyp": "^12.2.0",
+     "ollama": "^0.6.3",
+     "oxfmt": "0.32.0",
+     "oxlint": "^1.47.0",
+@@ -209,7 +210,7 @@
+   "engines": {
+     "node": ">=22.12.0"
+   },
+-  "packageManager": "pnpm@10.23.0",
++  "packageManager": "bun@1.2.0",
+   "pnpm": {
+     "minimumReleaseAge": 2880,
+     "overrides": {
+@@ -232,4 +233,4 @@
+       "sharp"
+     ]
+   }
+-}
++}
+\ No newline at end of file
+diff --git a/scripts/bundle-a2ui.sh b/scripts/bundle-a2ui.sh
+index aeade1b067..4b35e60b2d 100755
+--- a/scripts/bundle-a2ui.sh
++++ b/scripts/bundle-a2ui.sh
+@@ -85,7 +85,7 @@ if [[ -f "$HASH_FILE" ]]; then
+   fi
+ fi
+ 
+-pnpm -s exec tsc -p "$A2UI_RENDERER_DIR/tsconfig.json"
++bun run tsc -p "$A2UI_RENDERER_DIR/tsconfig.json"
+ rolldown -c "$A2UI_APP_DIR/rolldown.config.mjs"
+ 
+ echo "$current_hash" > "$HASH_FILE"
+diff --git a/scripts/ui.js b/scripts/ui.js
+index 5f6c753f4e..f72f99055b 100644
+--- a/scripts/ui.js
++++ b/scripts/ui.js
+@@ -43,6 +43,7 @@ function which(cmd) {
+ }
+ 
+ function resolveRunner() {
++  const bun = which("bun"); if (bun) return { cmd: bun, kind: "bun" };
+   const pnpm = which("pnpm");
+   if (pnpm) {
+     return { cmd: pnpm, kind: "pnpm" };
+diff --git a/src/agents/skills-install.ts b/src/agents/skills-install.ts
+index e6528202ca..c0d4b9d4cf 100644
+--- a/src/agents/skills-install.ts
++++ b/src/agents/skills-install.ts
+@@ -4,7 +4,7 @@ import type { OpenClawConfig } from "../config/config.js";
+ import { resolveBrewExecutable } from "../infra/brew.js";
+ import { runCommandWithTimeout, type CommandOptions } from "../process/exec.js";
+ import { scanDirectoryWithSummary } from "../security/skill-scanner.js";
+-import { resolveUserPath } from "../utils.js";
++import { resolveUserPath, CONFIG_DIR } from "../utils.js";
+ import { installDownloadSpec } from "./skills-install-download.js";
+ import {
+   hasBinary,
+@@ -408,6 +408,7 @@ async function executeInstallCommand(params: {
+   argv: string[] | null;
+   timeoutMs: number;
+   env?: NodeJS.ProcessEnv;
++  cwd?: string;
+ }): Promise<SkillInstallResult> {
+   if (!params.argv || params.argv.length === 0) {
+     return createInstallFailure({ message: "invalid install command" });
+@@ -416,6 +417,7 @@ async function executeInstallCommand(params: {
+   const result = await runCommandSafely(params.argv, {
+     timeoutMs: params.timeoutMs,
+     env: params.env,
++    cwd: params.cwd,
+   });
+   if (result.code === 0) {
+     return createInstallSuccess(result);
+@@ -463,6 +465,17 @@ export async function installSkill(params: SkillInstallRequest): Promise<SkillIn
+ 
+   const prefs = resolveSkillsInstallPreferences(params.config);
+   const command = buildInstallCommand(spec, prefs);
++
++
++  // Force installation into user config directory if package.json exists there or forced by env
++  const configPkgJson = path.join(CONFIG_DIR, "package.json");
++  const forceLocal = process.env.OPENCLAW_FORCE_LOCAL_SKILLS === "1";
++
++  if (spec.kind === "node" && command.argv && (forceLocal || fs.existsSync(configPkgJson))) {
++    // Remove global flags
++    command.argv = command.argv.filter(arg => arg !== "-g" && arg !== "global");
++  }
++
+   if (command.error) {
+     return withWarnings(
+       {
+@@ -504,5 +517,10 @@ export async function installSkill(params: SkillInstallRequest): Promise<SkillIn
+     }
+   }
+ 
+-  return withWarnings(await executeInstallCommand({ argv, timeoutMs, env }), warnings);
++  // Use CONFIG_DIR as cwd if we are installing locally (stripped globals)
++  const cwd = (spec.kind === "node" && (forceLocal || fs.existsSync(configPkgJson)))
++    ? CONFIG_DIR
++    : undefined;
++
++  return withWarnings(await executeInstallCommand({ argv, timeoutMs, env, cwd }), warnings);
+ }
+diff --git a/src/plugins/discovery.ts b/src/plugins/discovery.ts
+index fd9ca62c27..814cff6740 100644
+--- a/src/plugins/discovery.ts
++++ b/src/plugins/discovery.ts
+@@ -298,6 +298,75 @@ function discoverFromPath(params: {
+   }
+ }
+ 
++
++function discoverNpmPlugins(params: {
++  dir: string;
++  origin: PluginOrigin;
++  workspaceDir?: string;
++  candidates: PluginCandidate[];
++  diagnostics: PluginDiagnostic[];
++  seen: Set<string>;
++}) {
++  const nodeModules = path.join(params.dir, "node_modules");
++  if (!fs.existsSync(nodeModules)) {
++    return;
++  }
++
++  let entries: fs.Dirent[] = [];
++  try {
++    entries = fs.readdirSync(nodeModules, { withFileTypes: true });
++  } catch {
++    return;
++  }
++
++  for (const entry of entries) {
++    if (!entry.isDirectory()) continue;
++    
++    // Handle scoped packages
++    if (entry.name.startsWith("@")) {
++      const scopeDir = path.join(nodeModules, entry.name);
++      let scopeEntries: fs.Dirent[] = [];
++      try {
++        scopeEntries = fs.readdirSync(scopeDir, { withFileTypes: true });
++      } catch {
++        continue;
++      }
++      for (const scopeEntry of scopeEntries) {
++        if (!scopeEntry.isDirectory()) continue;
++        const fullPath = path.join(scopeDir, scopeEntry.name);
++        const manifest = readPackageManifest(fullPath);
++        if (!manifest || !getPackageManifestMetadata(manifest)) continue;
++        
++        // Use generic discovery but only because we confirmed manifest metadata exists
++        discoverInDirectory({
++          dir: fullPath,
++          origin: params.origin,
++          workspaceDir: params.workspaceDir,
++          candidates: params.candidates,
++          diagnostics: params.diagnostics,
++          seen: params.seen,
++        });
++      }
++      continue;
++    }
++
++    if (entry.name.startsWith(".")) continue;
++
++    const fullPath = path.join(nodeModules, entry.name);
++    const manifest = readPackageManifest(fullPath);
++    if (!manifest || !getPackageManifestMetadata(manifest)) continue;
++
++    discoverInDirectory({
++      dir: fullPath,
++      origin: params.origin,
++      workspaceDir: params.workspaceDir,
++      candidates: params.candidates,
++      diagnostics: params.diagnostics,
++      seen: params.seen,
++    });
++  }
++}
++
+ export function discoverOpenClawPlugins(params: {
+   workspaceDir?: string;
+   extraPaths?: string[];
+@@ -349,6 +418,15 @@ export function discoverOpenClawPlugins(params: {
+     seen,
+   });
+ 
++  // Discover NPM package plugins in config dir (e.g. ~/.openclaw/node_modules)
++  discoverNpmPlugins({
++    dir: resolveConfigDir(),
++    origin: "global",
++    candidates,
++    diagnostics,
++    seen,
++  });
++
+   const bundledDir = resolveBundledPluginsDir();
+   if (bundledDir) {
+     discoverInDirectory({
+diff --git a/src/plugins/install.ts b/src/plugins/install.ts
+index 97b8f597ed..214a24ac74 100644
+--- a/src/plugins/install.ts
++++ b/src/plugins/install.ts
+@@ -258,6 +258,35 @@ export async function installPluginFromArchive(params: {
+   dryRun?: boolean;
+   expectedPluginId?: string;
+ }): Promise<InstallPluginResult> {
++  // Force installation into user config directory if package.json exists there
++  const configPkgJson = path.join(CONFIG_DIR, "package.json");
++  if (await fileExists(configPkgJson)) {
++      const logger = params.logger ?? defaultLogger;
++      logger.info?.(`Installing ${params.spec} to ${CONFIG_DIR} using system package manager...`);
++
++      const hasPnpmLock = await fileExists(path.join(CONFIG_DIR, "pnpm-lock.yaml"));
++      const hasBunLock = await fileExists(path.join(CONFIG_DIR, "bun.lockb"));
++      const pm = hasBunLock ? "bun" : (hasPnpmLock ? "pnpm" : "npm");
++
++      await fs.mkdir(path.join(CONFIG_DIR, "node_modules"), { recursive: true });
++
++      const res = await runCommandWithTimeout([pm, "install", params.spec], {
++        cwd: CONFIG_DIR,
++        timeoutMs: params.timeoutMs ?? 300_000,
++      });
++
++      if (res.code !== 0) {
++         return { ok: false, error: `${pm} install failed: ${res.stderr || res.stdout}` };
++      }
++
++      return {
++        ok: true,
++        pluginId: params.spec,
++        targetDir: path.join(CONFIG_DIR, "node_modules", params.spec),
++        extensions: [],
++      };
++  }
++
+   const logger = params.logger ?? defaultLogger;
+   const timeoutMs = params.timeoutMs ?? 120_000;
+   const mode = params.mode ?? "install";

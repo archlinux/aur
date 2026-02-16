@@ -49,7 +49,7 @@ After=network.target
 
 [Service]
 ExecStart=$BIN_PATH gateway run
-Restart=on-failure
+Restart=always
 RestartPreventExitStatus=2
 RestartSec=10
 Environment=OPENCLAW_PROFILE=$PROFILE
@@ -60,4 +60,7 @@ EOF
 
 systemctl --user daemon-reload
 systemctl --user enable "$SERVICE_NAME"
-echo "Service installed. Start it with: systemctl --user start $SERVICE_NAME"
+systemctl --user start "$SERVICE_NAME"
+
+echo "Service $SERVICE_NAME installed and started"
+

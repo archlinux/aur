@@ -1,6 +1,6 @@
 # Maintainer: Wuxxin <wuxxin@gmail.com>
 pkgname=openclaw-git
-pkgver=2026.2.9.r84.g8933010e84
+pkgver=2026.2.15.beta.1.r221.gb2aa6e094d
 pkgrel=1
 pkgdesc="Personal AI assistant that runs on your own devices"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
     'openclaw-bwrap'
     'openclaw-agent-bwrap'
     'openclaw-bwrap-install-as-systemd-user-service'
-    'enable-npm-plugins.patch'
+    'bun-adjustments.patch'
     'openclaw.install'
     'README.md'
 )
@@ -24,8 +24,8 @@ install=openclaw.install
 sha256sums=('SKIP'
             '28568550c4674efc8b90a9b4ea5cf9dc024770275c089499a5cc5d7064d1bba8'
             '44b23035089628327dbb05b1aa7a6daf09f21b82c0172ca59ed4576d3aa7b9a5'
-            '828733c8f4d0f25974463b48cd93e219015d872aecbeda1fdcabf72a181fc65b'
-            '5e1f0836e1066c3676582b496f94eb77e00e57d047e3005300033020404f95a0'
+            '34fa95679d51f4d5be120e98714f8b580689e57bef6eb031dcf35c0b26948e7d'
+            '7298f03bf4ce26c6dcc934f92ba10cb1938fa9f3c7dd47aed3558fc487cbad82'
             '72cf00f138984381e747bafe04d853d4f8dc3b6e2fa92f58e0739e881eda2799'
             'd141bf464007efa0bfe424cc066564094fccd85f4d990f34522f0756c610fdf6')
 
@@ -34,21 +34,13 @@ options=('!strip' '!debug')
 pkgver() {
     cd "$srcdir/openclaw"
     git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "head.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
     cd "$srcdir/openclaw"
     # Apply patches
-    patch -p1 <"$srcdir/enable-npm-plugins.patch"
-
-    sed -i 's/pnpm /bun run /g' package.json
-    # Replace pnpm exec with bun run in bundle-a2ui.sh
-    sed -i 's/pnpm.*exec/bun run/g' scripts/bundle-a2ui.sh
-    # Also update packageManager field just in case
-    sed -i 's/"packageManager": "pnpm@.*/"packageManager": "bun@1.2.0",/' package.json
-    # Inject Bun support into scripts/ui.js
-    sed -i '/function resolveRunner() {/a \  const bun = which("bun"); if (bun) return { cmd: bun, kind: "bun" };' scripts/ui.js
+    patch -p1 <"$srcdir/bun-adjustments.patch"
 
     # Sharp needs node-gyp resolvable in node_modules when building from source
     bun add -d node-gyp
