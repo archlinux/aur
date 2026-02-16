@@ -12,7 +12,7 @@ depends=(gtk-engines)
 makedepends=(intltool git)
 options=('!emptydirs')
 _commit=45b1d457c63b1c7f6c8dcb7fe29b23ec7cd63a14  # master
-source=("git+https://gitlab.gnome.org/GNOME/gnome-themes-extra.git#commit=$_commit")
+source=("git+https://gitlab.gnome.org/Archive/gnome-themes-extra.git#commit=$_commit")
 sha256sums=('80722bc5cafa1e58b416f752d1cd03b04bc0a7b7f2b9a17f8486b6068f550d73')
 
 pkgver() {
