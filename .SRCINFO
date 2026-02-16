@@ -1,11 +1,12 @@
 pkgbase = python-onnxoptimizer
 	pkgdesc = ONNX model optimizer
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/onnx/optimizer
 	arch = x86_64
 	license = Apache-2.0
 	checkdepends = python-pytest
+	checkdepends = python-numpy
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel

@@ -5,13 +5,13 @@
 pkgname=python-onnxoptimizer
 pkgver=0.4.2
 pkgdesc='ONNX model optimizer'
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url='https://github.com/onnx/optimizer'
 license=(Apache-2.0)
 depends=(python python-onnx protobuf gcc-libs)
 makedepends=(python-build python-installer python-wheel python-setuptools cmake git protobuf)
-checkdepends=(python-pytest)
+checkdepends=(python-pytest python-numpy)
 source=("onnx-optimizer::git+https://github.com/onnx/optimizer.git#tag=v$pkgver"
         "onnx"::"git+https://github.com/onnx/onnx.git"
         "nanobind"::"git+https://github.com/wjakob/nanobind.git"
@@ -47,11 +47,16 @@ build() {
 check() {
   cd onnx-optimizer
 
-  # Basic import test
-  local _pyver=$(python -c 'import sys; print(f"{sys.version_info[0]}.{sys.version_info[1]}")')
-  PYTHONPATH="$PWD/.setuptools-cmake-build$_pyver:$PWD/build/lib:$PYTHONPATH" \
-    python -c "import onnxoptimizer; print(onnxoptimizer.__version__)" || \
-    echo "Warning: Import test failed"
+  # Install wheel to a temp dir so the C++ extension is importable
+  local _tmpdir=$(mktemp -d)
+  python -m installer --destdir="$_tmpdir" dist/*.whl
+  local _site=$(python -c "import site; print(site.getsitepackages()[0])")
+
+  # Run from tmpdir to avoid source tree shadowing the installed package
+  local _testdir="$PWD/onnxoptimizer/test"
+  cd "$_tmpdir"
+  PYTHONPATH="$_tmpdir$_site" python -m pytest "$_testdir" -o addopts=""
+  rm -rf "$_tmpdir"
 }
 
 package() {
