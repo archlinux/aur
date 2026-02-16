@@ -4,9 +4,9 @@
 _pkgname=yggoverlay-cni-plugin
 
 pkgname=yggoverlay
-pkgver=0.1
+pkgver=0.1.1
 
-pkgrel=2
+pkgrel=1
 pkgdesc='CNI plugin for containerd to manage yggdrasil overlay network for VPN connection between containers'
 
 arch=('any')
@@ -23,7 +23,7 @@ source=(
     40-man8br1.conflist 
 )
 
-sha256sums=('02674e225f9e6d36112711c66091766fccdf1dd167a926814f5fe8ec965b3857'
+sha256sums=('47fad8fb270f8d22b5340e09d5793df705b6c3870bae28724269f18eb90d303d'
             'ac9dd814ef5e6753fd11efbe0e3ad5569f8778a7605e2c09806d66d0f8aa51eb'
             'c89d902c56b7bf2b4b44b843781e1205811783ee8842e765b1ca708e0a7ddc38')
 
