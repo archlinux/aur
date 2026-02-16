@@ -1,0 +1,19 @@
+pkgbase = retro-prpl-git
+	pkgdesc = All the proprietary protocol plugins that were ever included in Gaim/Pidgin.
+	pkgver = 2026.02.16.2407927d3
+	pkgrel = 1
+	url = https://github.com/pidgin/retro-prpl
+	arch = x86
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = python
+	optdepends = meanwhile
+	provides = retro-prpl
+	conflicts = retro-prpl
+	source = retro-prpl::git+https://github.com/pidgin/retro-prpl
+	sha256sums = SKIP
+
+pkgname = retro-prpl-git
