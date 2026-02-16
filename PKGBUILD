@@ -1,7 +1,7 @@
 # Maintainer: Christian Schendel <doppelhelix@gmail.com>
 
 pkgname=gnome-shell-extension-compiz-windows-effect-git
-pkgver=r37.aa35f47
+pkgver=r39.2db7c88
 pkgrel=1
 pkgdesc="Compiz wobbly windows effect with libanimation engine."
 arch=('any')
@@ -19,10 +19,8 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(
     "${pkgname%-git}::git+${url}.git"
-    "gnome-shell-49.patch"
 )
-b2sums=('SKIP'
-        '6dac109cabdce871eb261d29609233528128cb14781894fb551a8e58c6d347248aead1f2a71de393af2033faa1cd507fe6f94bde3799a369004f5304a47801cf')
+b2sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
@@ -33,9 +31,7 @@ pkgver() {
             "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     )
 }
-prepare() {
-    patch -d "${srcdir}/${pkgname%-git}" -Np1 -i ../gnome-shell-49.patch
-}
+
 package() {
     cd "${srcdir}/${pkgname%-git}"
     local uuid

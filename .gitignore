@@ -6,7 +6,6 @@
 !PKGBUILD
 !.SRCINFO
 !LICENSE
-!chroot-build
 !.nvchecker.toml
 !/keys
 !/keys/pgp
