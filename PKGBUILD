@@ -4,16 +4,15 @@
 
 pkgname='monochrome'
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Monochrome is a lightweight, privacy-focused music streaming client designed for high-fidelity audio playback. Built with modern web technologies, it provides a clean, distraction-free listening experience."
 arch=('x86_64')
 url=https://github.com/SamidyFR/monochrome
 license=('HIPPOCRATIC LICENSE')
-depends=('gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'webkit2gtk-4.1' 'libayatana-appindicator')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source_x86_64=(
-  "$pkgname-$pkgver.zip::https://downloads.samidy.com/Monochrome-linux.zip"
+  "$pkgname-$pkgver.zip::https://downloads.samidy.com/out_delivery/monochrome-linux.zip"
   "icon.png::https://raw.githubusercontent.com/SamidyFR/monochrome/refs/heads/main/public/assets/96.png"
 )
 sha256sums_x86_64=("SKIP" "SKIP")
