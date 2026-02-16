@@ -3,7 +3,7 @@
 pkgbase=python-rad
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.29.1
+pkgver=0.30.0
 pkgrel=1
 pkgdesc="Nancy Grace Roman Space Telescope shared attributes for processing and archive"
 arch=('any')
@@ -24,7 +24,7 @@ checkdepends=('python-pytest-doctestplus'
 ##            'python-roman-datamodels>=0.22.0'
               'python-gitpython')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('133d4effaa8b2d5cc63eb904735db298')
+md5sums=('7c7557844d58cee24a8e871549ea08b2')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -46,7 +46,7 @@ check() {
 
 #   PYTHONPATH="build/lib" pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4
     PYTHONPATH="src" pytest \
-        --ignore=tests/test_versioning.py || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4
+        --ignore=tests/test_versioning.py || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
 #       --ignore=tests/test_latest.py \
 }
 
