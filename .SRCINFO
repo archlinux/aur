@@ -1,0 +1,19 @@
+pkgbase = netsock
+	pkgdesc = Per-app firewall
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Kimiblock/netsock
+	arch = x86_64
+	arch = aarch64
+	arch = loongarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = go
+	depends = nftables
+	depends = glibc
+	provides = netsock
+	conflicts = netsock
+	source = source::git+https://github.com/Kimiblock/netsock.git#tag=0.1
+	md5sums = SKIP
+
+pkgname = netsock
