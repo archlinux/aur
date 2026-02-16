@@ -2,8 +2,8 @@
 pkgname=kamaleon-git
 _pkgname=Kamaleon
 pkgver=2.4.0.r4.cee2da3
-pkgrel=1
-pkgdesc="Universal package manager wrapper written in Go (kml)"
+pkgrel=2
+pkgdesc="A universal package manager wrapper (CLI) for Arch, Manjaro, Debian and more. Written in Go."
 arch=('x86_64' 'aarch64')
 url="https://github.com/AnabasaSoft/Kamaleon"
 license=('MIT')
