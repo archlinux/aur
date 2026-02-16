@@ -1,0 +1,23 @@
+diff -rauN slimcc/platform/linux-glibc-generic.c slimcc-header-path-patch/platform/linux-glibc-generic.c
+--- slimcc/platform/linux-glibc-generic.c	2026-02-16 16:09:57.907489547 +0100
++++ slimcc-header-path-patch/platform/linux-glibc-generic.c	2026-02-16 16:18:05.647478756 +0100
+@@ -28,12 +28,16 @@
+   // the relative search path, please read:
+   // https://github.com/rui314/chibicc/issues/162
+   {
++	// required for tests, but optional when installed
+     char *hdr_dir = format("%s/slimcc_headers", dirname(strdup(argv0)));
+-    if (!file_exists(hdr_dir))
+-      error("can't find built-in headers");
+-
++    //~ if (!file_exists(hdr_dir))
++      //~ error("can't find built-in headers");
+     add_include_path(paths, format("%s/platform_fix/linux_glibc", hdr_dir));
+     add_include_path(paths, format("%s/include", hdr_dir));
++
++    // installed version
++    char *system_hdr_dir = format("/usr/lib/slimcc");
++    add_include_path(paths, format("%s/include", system_hdr_dir));
+   }
+ 
+   add_include_path(paths, "/usr/local/include");
