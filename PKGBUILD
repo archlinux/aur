@@ -1,7 +1,7 @@
 # Maintainer: Jared Van Bortel <cebtenzzre (AT) gmail (DOT) com>
 pkgname=pia-tools
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='PIA WireGuard/systemd-networkd integration suite'
 arch=('x86_64')
 url='https://github.com/jdelkins/pia-tools'

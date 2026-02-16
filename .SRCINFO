@@ -1,7 +1,7 @@
 pkgbase = pia-tools
 	pkgdesc = PIA WireGuard/systemd-networkd integration suite
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jdelkins/pia-tools
 	install = pia-tools.install
 	arch = x86_64
