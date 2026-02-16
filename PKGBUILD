@@ -4,7 +4,7 @@
 pkgname="pkg2appimage"
 pkgdesc="Tool and recipes to convert existing deb packages to AppImage. (Upstream CI)"
 pkgver=20250202.1eceb30
-pkgrel=3
+pkgrel=4
 url="https://github.com/AppImageCommunity/pkg2appimage"
 license=("GPL-2.0-only")
 arch=("any")
@@ -35,6 +35,7 @@ package() {
 
     # Make opt dir for package.
     mkdir -p $pkgdir/opt/$pkgname
+    mkdir -p $pkgdir/usr/bin
 
     # Install the appimage to opt dir.
     install -Dm755 $pkgname.AppImage $pkgdir/opt/$pkgname/$pkgname.AppImage
