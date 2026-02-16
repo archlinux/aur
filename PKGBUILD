@@ -2,11 +2,12 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts66
-pkgver=6.6.123
+pkgver=6.6.125
 pkgrel=1
 pkgdesc="LTS ${pkgver%.*} Linux"
 url='https://www.kernel.org'
 arch=(x86_64)
+license=('GPL-2.0-only')
 makedepends=(
   bc
   cpio
@@ -44,7 +45,7 @@ validpgpkeys=(
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
 md5sums=('452098d80ba925af3a4ab35998f3aef5'
          'SKIP'
-         '30f7449355973a99d4fbd144ac94bab3'
+         '48999ed0678e475e9a36a7f475537cb4'
          'cb32cb125ea45ac05782630dfc9fc951'
          'c99abef85da3185e66da920deb9897f3'
          'c308b5c13e18863919a366bd4a4f5159'
@@ -54,7 +55,7 @@ md5sums=('452098d80ba925af3a4ab35998f3aef5'
          '645c20da36fc5ac07eabc6ad025c660d')
 sha256sums=('d926a06c63dd8ac7df3f86ee1ffc2ce2a3b81a2d168484e76b5b389aba8e56d0'
             'SKIP'
-            '35ab7b27d359105e4bd52729a5d4cc22cfa3ef4981b02d5887886eb6cfca6b91'
+            '734d4cbaffbe2a2d19e35182121f914fc3b7e7788804e1bbffb78a2734087e36'
             '21195509fded29d0256abfce947b5a8ce336d0d3e192f3f8ea90bde9dd95a889'
             '2f23be91455e529d16aa2bbf5f2c7fe3d10812749828fc752240c21b2b845849'
             '6400a06e6eb3a24b650bc3b1bba9626622f132697987f718e7ed6a5b8c0317bc'
@@ -105,14 +106,14 @@ prepare() {
 
 build() {
   cd $_srcname
-  if ! :; then
+  if :; then
     export PATH="${PWD}:${PATH}"
     cat > 'gcc' << EOF
 #!/usr/bin/bash
 
 # gcc 15 changed the default to -std=gnu23.
 # This option is first so later -std will override it.
-exec /usr/bin/gcc -std='gnu17' "\$@"
+exec /usr/bin/gcc -std='gnu17' -Wno-error=discarded-qualifiers "\$@"
 EOF
     chmod 755 'gcc'
   fi
@@ -124,7 +125,7 @@ EOF
 
 _package() {
   pkgdesc="The $pkgdesc kernel and modules"
-  license=(
+  _license_disabled=(
     'Apache-2.0 OR MIT'
 
     'BSD-2-Clause OR GPL-2.0-or-later'
@@ -202,7 +203,7 @@ _package() {
 
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
-  license=(
+  _license_disabled=(
     BSD-3-Clause
     'BSD-3-Clause OR GPL-2.0-only'
 
@@ -341,7 +342,7 @@ _package-headers() {
 
 _package-docs() {
   pkgdesc="Documentation for the $pkgdesc kernel"
-  license=(
+  _license_disabled=(
     BSD-3-Clause
 
     GFDL-1.1-no-invariants-or-later
