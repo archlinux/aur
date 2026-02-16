@@ -1,6 +1,6 @@
 pkgbase = rudesktop
 	pkgdesc = Ru-Desktop client for home use
-	pkgver = 2.9.927
+	pkgver = 2.9.1069
 	pkgrel = 1
 	url = https://rudesktop.ru/downloads/
 	install = rudesktop.install
@@ -24,7 +24,7 @@ pkgbase = rudesktop
 	depends = python-xlib
 	depends = libpulse
 	options = !debug
-	source = https://storage.rudesktop.ru/download/rudesktop-2.9.927-x86_64.pkg.tar.zst
-	sha256sums = 4dc5a16a7a7c7e96a56ce2db2c3326f9178d4d323eebdc02388fb16ad8259b96
+	source = https://storage.rudesktop.ru/download/rudesktop-2.9.1069-x86_64.pkg.tar.zst
+	sha256sums = 6859b03c522effb9549587aafe0c10d157667f8299b9978d99cc6e7f3c6e97ee
 
 pkgname = rudesktop
