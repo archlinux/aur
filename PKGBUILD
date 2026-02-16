@@ -3,8 +3,8 @@
 # Contributor: Jonathan Steel <jsteel at archlinux.org>
 
 pkgname=naemon
-pkgver=1.4.4
-_commit=1e854668f5153aa465cecd95335338411f6aaf02
+pkgver=1.5.0
+_commit=e2a355048a108adb83f74fe7a618d9f29597d950
 pkgrel=1
 pkgdesc="Network Application and Event Monitor"
 arch=('i686' 'x86_64')
@@ -29,7 +29,8 @@ install=$pkgname.install
 
 build() {
   cd "$srcdir/$pkgname-git"
-
+  # https://github.com/naemon/naemon-core/issues/522
+  export CFLAGS="$CFLAGS -Wno-error=discarded-qualifiers"
   ./autogen.sh
   ./configure --prefix=/usr \
               --bindir=/usr/bin \

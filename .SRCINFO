@@ -1,6 +1,6 @@
 pkgbase = naemon
 	pkgdesc = Network Application and Event Monitor
-	pkgver = 1.4.4
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://www.naemon.io/
 	install = naemon.install
@@ -19,7 +19,7 @@ pkgbase = naemon
 	backup = etc/logrotate.d/naemon
 	backup = etc/naemon/naemon.cfg
 	backup = etc/naemon/resource.cfg
-	source = naemon-git::git+https://github.com/naemon/naemon-core.git#commit=1e854668f5153aa465cecd95335338411f6aaf02
+	source = naemon-git::git+https://github.com/naemon/naemon-core.git#commit=e2a355048a108adb83f74fe7a618d9f29597d950
 	source = naemon-tmpfiles.conf
 	source = naemon.service
 	sha512sums = SKIP
