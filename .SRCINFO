@@ -12,7 +12,7 @@ pkgbase = repak
 	makedepends = cargo
 	makedepends = git
 	depends = glibc
-	depends = gcc-libs
+	depends = libgcc
 	options = !lto
 	source = git+https://github.com/trumank/repak#tag=v0.2.3
 	sha256sums = 2ec9119bdc58cbdede7f2ebfcc1d0a8324c587918bbe3fdf880d5af252fd26cb

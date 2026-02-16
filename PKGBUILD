@@ -7,7 +7,7 @@ pkgdesc='Unreal Engine .pak file library and CLI in rust'
 url='https://github.com/trumank/repak'
 license=('Apache-2.0' 'MIT')
 makedepends=('cargo' git)
-depends=(glibc gcc-libs)
+depends=(glibc libgcc)
 options=(!lto)
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=(git+https://github.com/trumank/repak#tag=v$pkgver)
@@ -15,7 +15,7 @@ sha256sums=('2ec9119bdc58cbdede7f2ebfcc1d0a8324c587918bbe3fdf880d5af252fd26cb')
 
 prepare() {
 	cd $srcdir/repak
-    cargo fetch --locked --target "$(rustc --print host-tuple)"
+    cargo fetch --locked --target host-tuple
 
 }
 
