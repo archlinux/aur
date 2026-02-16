@@ -1,15 +1,14 @@
 # Maintainer: Tony, btw <tony@tonybtw.com>
 pkgname='oxwm-git'
 _pkgname='oxwm'
-pkgver=0.8.0.262.g1f89cc1
+pkgver=0.11.0.0.g783e466
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/tonybanters/oxwm"
 pkgdesc="X11 Window Manager Inspired by DWM, but with better sane defaults."
 license=('GPL-3.0-or-later')
-options=('!lto')
-depends=('libx11' 'libxft' 'libxcb' 'fontconfig' 'freetype2' 'libxrender' 'lua')
-makedepends=('cargo' 'git')
+depends=('freetype2' 'libx11' 'libxft' 'libxinerama' 'fontconfig' 'lua')
+makedepends=('zig' 'git')
 provides=('oxwm')
 conflicts=('oxwm')
 source=("$_pkgname::git+https://github.com/tonybanters/oxwm.git")
@@ -17,22 +16,22 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd $_pkgname
-    echo "$(grep '^version =' Cargo.toml | head -n1 | cut -d\" -f2).$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/^v//;s/-/./g'
 }
 
 build() {
     cd $_pkgname
-    unset CFLAGS CXXFLAGS LDFLAGS RUSTFLAGS
-    cargo build --release --locked
+    zig build --release=fast
 }
 
 check() {
-    echo true
+    cd $_pkgname
+    zig build test
 }
 
 package() {
     cd $_pkgname
-    install -Dm755 "target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+    install -Dm755 "zig-out/bin/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 resources/oxwm.desktop "$pkgdir/usr/share/xsessions/oxwm.desktop"
     install -Dm644 resources/oxwm.1 "$pkgdir/usr/share/man/man1/oxwm.1"
