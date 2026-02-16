@@ -5,15 +5,7 @@ pkgbase = dinit-edit-git
 	url = https://github.com/davmac314/dinit
 	arch = x86_64
 	arch = aarch64
-	license = DO
-	license = WHAT
-	license = THE
-	license = FUCK
-	license = YOU
-	license = WANT
-	license = TO
-	license = PUBLIC
-	license = LICENSE
+	license = DO-WHAT-THE-FUCK-YOU-WANT-TO-PUBLIC-LICENSE
 	makedepends = go
 	makedepends = git
 	provides = dinit-edit=v0.20.0.r46.g227df92
