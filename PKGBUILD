@@ -2,7 +2,7 @@
 
 pkgname=radio-scheduler-git
 pkgver=r19.6352443
-pkgrel=1
+pkgrel=2
 pkgdesc="Scheduling and automatic playback of Internet radio stations (with MPD)"
 arch=('any')
 url="https://github.com/Daszkan/radio-scheduler"
@@ -63,3 +63,4 @@ StartupNotify=true
 EOF
 
 }
+
