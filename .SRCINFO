@@ -1,7 +1,7 @@
 pkgbase = moonlight-qt-mainline-git
 	pkgdesc = GameStream client for PCs (Windows, Mac, Linux, and Steam Link) - Git version
 	pkgver = 0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/moonlight-stream/moonlight-qt
 	install = moonlight-qt-git.install
 	arch = x86_64
@@ -26,6 +26,7 @@ pkgbase = moonlight-qt-mainline-git
 	depends = wayland-protocols
 	depends = libdrm
 	depends = mesa
+	depends = vulkan-headers
 	optdepends = libplacebo: Vulkan renderer support (requires v7.349.0+)
 	provides = moonlight-qt
 	conflicts = moonlight-qt

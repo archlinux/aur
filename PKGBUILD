@@ -1,14 +1,14 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=moonlight-qt-mainline-git
 pkgver=0
-pkgrel=1
+pkgrel=2
 pkgdesc="GameStream client for PCs (Windows, Mac, Linux, and Steam Link) - Git version"
 arch=('x86_64' 'aarch64')
 url="https://github.com/moonlight-stream/moonlight-qt"
 license=('GPL-3.0-only')
 depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'qt6-wayland' 'sdl2' 'sdl2_ttf' 
          'ffmpeg' 'libva' 'libvdpau' 'opus' 'libopusenc' 'openssl' 'libxkbcommon' 
-         'wayland-protocols' 'libdrm' 'mesa')
+         'wayland-protocols' 'libdrm' 'mesa' 'vulkan-headers')
 makedepends=('git' 'qt6-tools' 'pkgconf')
 optdepends=('libplacebo: Vulkan renderer support (requires v7.349.0+)')
 provides=('moonlight-qt')
