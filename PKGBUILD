@@ -3,7 +3,7 @@
 pkgbase=python-astrocut
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Tools for making image cutouts from sets of TESS full frame images"
 arch=('any')
@@ -14,22 +14,21 @@ makedepends=('python-setuptools-scm'
              'python-installer'
              'python-sphinx-astropy'
              'python-sphinx_rtd_theme'
-#            'python-matplotlib'
+##           'python-matplotlib'
              'python-gwcs'
              'python-scipy'
              'python-s3fs'
              'python-s3path'
              'python-cachetools'
-             'python-spherical_geometry'
-             )  # wheel required by new setuptools
+             'python-spherical_geometry')  # wheel required by new setuptools
 # header: astrocut/conftest.py
-checkdepends=('python-pytest-astropy-header')
+checkdepends=('python-pytest-astropy-header'
 #             'python-pytest-xdist'
-#              'python-pytest-doctestplus'
-#              'python-pillow'
-#)   # gwcs, scipy, s3fs, s3path, cachetools, spherical_geometry already in makedepends
+              'python-pytest-doctestplus'
+              'python-pillow'
+              'python-stdatamodels>=4.1.0')   # gwcs, scipy, s3fs, s3path, cachetools, spherical_geometry already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('7fbe6bf29ba255edc035db676201a945')
+md5sums=('edda5c492874e92f81d3bd55bf94dac1')
 
 #get_pyver() {
 #    python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -85,7 +84,7 @@ package_python-astrocut() {
              'python-requests>=2.32.3'
              'python-scipy'
              'python-pillow'
-             'python-roman-datamodels>=0.19.0'
+#            'python-roman-datamodels>=0.19.0'
              'python-s3path>=0.5.7'
              'python-spherical_geometry>=1.3.0')
     optdepends=('python-astrocut-doc: Documentation for astrocut')
