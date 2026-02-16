@@ -1,31 +1,32 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=demoiccmax-git
-pkgver=r344.gdc78afc
+pkgver=2.3.1.4.r2.ge4ccd8e
 pkgrel=1
 pkgdesc="Demonstration Implementation for iccMAX color profiles"
 arch=('i686' 'x86_64')
 url="https://www.color.org/iccmax.xalter"
 license=('LicenseRef-demoiccmax')
-depends=('gcc-libs' 'libtiff' 'libxml2')
-makedepends=('git' 'cmake' 'nlohmann-json')
+depends=('glibc' 'libgcc' 'libstdc++' 'libtiff' 'libxml2' 'wxwidgets-gtk3')
+makedepends=('git' 'clang' 'cmake' 'nlohmann-json')
 provides=("demoiccmax=$pkgver")
 conflicts=('demoiccmax')
 options=('staticlibs')
-source=("git+https://github.com/InternationalColorConsortium/DemoIccMAX.git")
+source=("git+https://github.com/InternationalColorConsortium/iccDEV.git")
 sha256sums=('SKIP')
 
 
 pkgver() {
-  cd "DemoIccMAX"
+  cd "iccDEV"
 
-  _rev=$(git rev-list --count --all)
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "r%s.g%s" "$_rev" "$_hash"
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
-  cd "DemoIccMAX"
+  cd "iccDEV"
 
   CFLAGS="$CFLAGS -ffat-lto-objects" \
   CXXFLAGS="$CXXFLAGS -ffat-lto-objects" \
@@ -40,13 +41,13 @@ build() {
 }
 
 check() {
-  cd "DemoIccMAX"
+  cd "iccDEV"
 
   #cmake --build "_build" --target test
 }
 
 package() {
-  cd "DemoIccMAX"
+  cd "iccDEV"
 
   DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 "LICENSE.md" -t "$pkgdir/usr/share/licenses/demoiccmax"
