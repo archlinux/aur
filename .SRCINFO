@@ -1,11 +1,12 @@
 pkgbase = borse
 	pkgdesc = Practice braille, Morse, semaphore.
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vEnhance/borse
 	arch = any
 	license = MIT
 	depends = python
+	depends = python-tomli-w
 	source = https://files.pythonhosted.org/packages/source/b/borse/borse-0.3.0.tar.gz
 	source = LICENSE
 	sha256sums = 503e086e168bc3a8bed7b8d208430dbbc15042edc9097f446ba053c17d324d27
