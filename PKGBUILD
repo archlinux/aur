@@ -1,8 +1,8 @@
 # Maintainer: Shorin <2433516202@qq.com>
 pkgname=shorinclip-git
 _pkgname=shorinclip   
-pkgver=v1.2.0.r12.g292ea67
-pkgrel=1
+pkgver=v1.2.0.r34.gb2907c5
+pkgrel=2
 pkgdesc="A wayland clipboard TUI based on fzf and cliphist. Use chafa for image preview."
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorinclip"
