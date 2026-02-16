@@ -1,6 +1,6 @@
 # Maintainer: MLM-stuff <gfxoxinzh@mozmail.com>
 pkgname=pomodorot-bin
-pkgver=0.13.2
+pkgver=0.13.3
 pkgrel=1
 pkgdesc="A simple pomodoro timer application (binary release)"
 arch=('x86_64' 'aarch64')
@@ -13,11 +13,11 @@ provides=('pomodorot')
 conflicts=('pomodorot')
 options=('!strip')
 source=("https://raw.githubusercontent.com/mlm-games/pomodorot/main/icon.png")
-source_x86_64=("pomodorot-0.13.2-x64::https://github.com/mlm-games/pomodorot/releases/download/0.13.2/pomodorot.x86_64")
-source_aarch64=("pomodorot-0.13.2-arm64::https://github.com/mlm-games/pomodorot/releases/download/0.13.2/pomodorot.arm64")
+source_x86_64=("pomodorot-0.13.3-x64::https://github.com/mlm-games/pomodorot/releases/download/0.13.3/pomodorot.x86_64")
+source_aarch64=("pomodorot-0.13.3-arm64::https://github.com/mlm-games/pomodorot/releases/download/0.13.3/pomodorot.arm64")
 sha256sums=('SKIP')
-sha256sums_x86_64=('f4904c9a513e438b65bf1bb7aece4c41d12eb3a5137cd2645f9f51ea227aae15')
-sha256sums_aarch64=('9ec4b2a65f14a803f29667c013be91587cdcb33b65435aa1f4b1fbc6f612c4be')
+sha256sums_x86_64=('6fc970934427f2b22e6799e76216de0d112e6286f62f62d9d3db806c15e2cec5')
+sha256sums_aarch64=('910ed84f1e5d40661122a6800e12ec66b085c4e4aab706b9b5a72f5e824f8225')
 
 package() {
     install -d "${pkgdir}/usr/bin/"
@@ -26,9 +26,9 @@ package() {
     install -d "${pkgdir}/opt/${pkgname}/"
 
     if [[ $CARCH == "x86_64" ]]; then
-        install -Dm755 "$srcdir/pomodorot-0.13.2-x64" "${pkgdir}/opt/${pkgname}/pomodorot"
+        install -Dm755 "$srcdir/pomodorot-0.13.3-x64" "${pkgdir}/opt/${pkgname}/pomodorot"
     elif [[ $CARCH == "aarch64" ]]; then
-        install -Dm755 "$srcdir/pomodorot-0.13.2-arm64" "${pkgdir}/opt/${pkgname}/pomodorot"
+        install -Dm755 "$srcdir/pomodorot-0.13.3-arm64" "${pkgdir}/opt/${pkgname}/pomodorot"
     fi
 
     ln -s "/opt/${pkgname}/pomodorot" "${pkgdir}/usr/bin/pomodorot"
