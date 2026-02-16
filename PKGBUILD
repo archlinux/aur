@@ -2,8 +2,8 @@
 
 _pkgbase=librempeg
 pkgname=librempeg-git
-pkgver=r124983.f986adf
-pkgrel=8
+pkgver=r125015.7167113
+pkgrel=1
 pkgdesc='A complete, cross-platform solution to record, convert, filter and stream audio and video. '
 arch=('x86_64')
 url='https://github.com/librempeg/librempeg'
