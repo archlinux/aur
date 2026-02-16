@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=exhale-git
-pkgver=1.2.1.2.r2.gbffead0
+pkgver=1.2.2.r3.gc33cf75
 pkgrel=1
 pkgdesc="Open source xHE-AAC encoder"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/ecodis/exhale"
 license=('LicenseRef-exhale')
-depends=('gcc-libs')
+depends=('glibc' 'libgcc' 'libstdc++')
 makedepends=('git' 'cmake')
-provides=("exhale=$pkgver")
+provides=("exhale=$pkgver" 'libexhale.so')
 conflicts=('exhale')
 source=("git+https://gitlab.com/ecodis/exhale.git")
 sha256sums=('SKIP')
