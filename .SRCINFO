@@ -1,7 +1,7 @@
 pkgbase = radio-scheduler-git
 	pkgdesc = Scheduling and automatic playback of Internet radio stations (with MPD)
 	pkgver = r19.6352443
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Daszkan/radio-scheduler
 	install = radio-scheduler.install
 	arch = any
