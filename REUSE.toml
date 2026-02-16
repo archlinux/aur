@@ -21,10 +21,3 @@ path = [
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
-
-[[annotations]]
-path = [
-    "*.patch",
-]
-SPDX-FileCopyrightText = "bluejay contributors"
-SPDX-License-Identifier = "MPL-2.0"
