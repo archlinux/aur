@@ -14,7 +14,6 @@ pkgbase = timepad-git
 	depends = sdl3
 	provides = timepad
 	conflicts = timepad
-	conflicts = timepad-bin
 	source = timepad::git+https://github.com/agokule/timepad.git
 	source = git+https://github.com/ocornut/imgui.git
 	sha256sums = SKIP

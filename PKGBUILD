@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc' 'libgcc' 'libstdc++' 'sdl3')
 makedepends=('git' 'cmake' 'base-devel')
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}" "timepad-bin")
+conflicts=("${pkgname%-git}")
 install=
 source=(
 	'timepad::git+https://github.com/agokule/timepad.git'
