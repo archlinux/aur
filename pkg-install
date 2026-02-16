@@ -1,0 +1,58 @@
+#!/bin/bash
+set -e
+trap clear EXIT
+
+export DIALOG_MOUSE=1
+
+# ===== Backend location (installed by pacman) =====
+BACKEND_DIR="/usr/lib/pkg-install"
+
+PKG_INSTALL="$BACKEND_DIR/ionarch-pkg-install"
+PKG_AUR_INSTALL="$BACKEND_DIR/ionarch-pkg-aur-install"
+PKG_REMOVE="$BACKEND_DIR/ionarch-pkg-remove"
+# ===================================================
+
+MENU_TEXT="Choose an action:\n\n↑↓ Navigate   Enter Select   ESC Back"
+
+while true; do
+    CHOICE=$(dialog \
+        --clear \
+        --title "IonArch Package Manager" \
+        --menu "$MENU_TEXT" \
+        17 60 4 \
+        1 "Install Package" \
+        2 "Install AUR Package" \
+        3 "Remove Package" \
+        4 "Exit" \
+        2>&1 >/dev/tty)
+
+    STATUS=$?
+    clear
+
+    # If ESC or Cancel → redraw menu
+    if [[ $STATUS -ne 0 ]]; then
+        continue
+    fi
+
+    case "$CHOICE" in
+        1)
+            sudo ionarch-pkg-install || true
+            ;;
+        2)
+            if ! command -v yay &>/dev/null; then
+                dialog --title "Missing Dependency" \
+                       --msgbox "The AUR helper 'yay' is not installed.\n\nInstall it first to use this option." \
+                       9 55
+                clear
+                continue
+            fi
+            ionarch-pkg-aur-install || true
+            ;;
+        3)
+            ionarch-pkg-remove || true
+            ;;
+        4)
+            break
+            ;;
+    esac
+done
