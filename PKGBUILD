@@ -1,5 +1,5 @@
 pkgname=cmdflow
-pkgver=1.3.2
+pkgver=2.3.6
 pkgrel=1
 pkgdesc="A colorful Fish command tracker with rainbow top visualization"
 arch=('x86_64')
