@@ -11,6 +11,6 @@ pkgbase = python-mkl-fft
 	depends = intel-mkl
 	depends = python-numpy
 	source = git+https://github.com/IntelPython/mkl_fft#tag=2.1.2
-	md5sums = 1da9f5f3d066d58484adccef1ec1d950
+	md5sums = f8953fde609b8ac42ec45ac989b484f9
 
 pkgname = python-mkl-fft
