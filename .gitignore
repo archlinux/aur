@@ -13,3 +13,4 @@
 !/LICENSES
 !/LICENSES/*.txt
 !REUSE.toml
+!*.patch
