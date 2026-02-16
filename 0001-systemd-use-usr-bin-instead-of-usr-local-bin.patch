@@ -1,7 +1,7 @@
 From 82d0a836f1084741033c121f0fad23f3f53fb801 Mon Sep 17 00:00:00 2001
 From: Jared Van Bortel <cebtenzzre@gmail.com>
 Date: Sun, 15 Feb 2026 16:27:58 -0500
-Subject: [PATCH 1/5] systemd: use /usr/bin instead of /usr/local/bin
+Subject: [PATCH 1/6] systemd: use /usr/bin instead of /usr/local/bin
 
 Arch Linux packages install binaries to /usr/bin. The /usr/local
 hierarchy is reserved for locally compiled software and must not be

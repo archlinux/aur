@@ -1,7 +1,7 @@
 From c25b5baf564fed8b383c39789c7109dfa36ba474 Mon Sep 17 00:00:00 2001
 From: Jared Van Bortel <cebtenzzre@gmail.com>
 Date: Sun, 15 Feb 2026 22:05:48 -0500
-Subject: [PATCH 4/5] systemd: harden pia-pf-refresh service
+Subject: [PATCH 4/6] systemd: harden pia-pf-refresh service
 
 Add systemd security directives: filesystem protection, kernel
 lockdown, capability bounding, syscall filtering, and address

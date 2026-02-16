@@ -1,7 +1,7 @@
 From a96b8f414ad01865b585689e51e324c99ab4ad71 Mon Sep 17 00:00:00 2001
 From: Jared Van Bortel <cebtenzzre@gmail.com>
 Date: Sun, 15 Feb 2026 22:11:44 -0500
-Subject: [PATCH 5/5] systemd: drop sudo and harden pia-reset-tunnel service
+Subject: [PATCH 5/6] systemd: drop sudo and harden pia-reset-tunnel service
 
 Remove the sudo privilege drop (the service needs root to write
 networkd configs and manipulate interfaces). Add filesystem,

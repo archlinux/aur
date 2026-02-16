@@ -1,7 +1,7 @@
 From 30a85abc06a7a47cb57f743a5aff81caf6cd892b Mon Sep 17 00:00:00 2001
 From: Jared Van Bortel <cebtenzzre@gmail.com>
 Date: Sun, 15 Feb 2026 16:28:15 -0500
-Subject: [PATCH 2/5] systemd: load network templates from /etc/pia-tools
+Subject: [PATCH 2/6] systemd: load network templates from /etc/pia-tools
 
 Upstream defaults to /etc/systemd/network/ for the .tmpl files, but
 that pollutes a system-managed directory with non-standard files.

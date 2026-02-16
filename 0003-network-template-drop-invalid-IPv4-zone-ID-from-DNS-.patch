@@ -1,7 +1,7 @@
 From 8d54ace6ec688841b0f21ea8b6786e23aa7418ad Mon Sep 17 00:00:00 2001
 From: Jared Van Bortel <cebtenzzre@gmail.com>
 Date: Sun, 15 Feb 2026 18:18:46 -0500
-Subject: [PATCH 3/5] network template: drop invalid IPv4 zone ID from DNS
+Subject: [PATCH 3/6] network template: drop invalid IPv4 zone ID from DNS
  entries
 
 The %interface suffix (zone ID) is only valid for IPv6 link-local
