@@ -1,10 +1,11 @@
 pkgbase = arch-update-vai
-	pkgdesc = Script interativo para atualizar Arch Linux (pacman, AUR, Flatpak, Snap, fwupd)
-	pkgver = 0.6.0
+	pkgdesc = Script interativo para atualizar Arch Linux (pacman, AUR, Flatpak, Snap, fwupd) - git
+	pkgver = 0.0.0.r0.g0000000
 	pkgrel = 1
 	url = https://github.com/CapivaraVai/arch-update-script-vai
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
+	makedepends = git
 	depends = bash
 	optdepends = yay: suporte a AUR
 	optdepends = flatpak: suporte a Flatpak
@@ -13,7 +14,7 @@ pkgbase = arch-update-vai
 	optdepends = reflector: atualizar mirrorlist automaticamente
 	optdepends = python: checar pacotes pip
 	optdepends = python-pip: checar pacotes pip
-	source = arch-update-vai-0.6.0.tar.gz::https://github.com/CapivaraVai/arch-update-script-vai/archive/refs/tags/v0.6.0.tar.gz
+	source = git+https://github.com/CapivaraVai/arch-update-script-vai.git
 	sha256sums = SKIP
 
 pkgname = arch-update-vai
