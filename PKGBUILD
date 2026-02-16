@@ -16,8 +16,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  # Esto cuenta el número total de commits, muy común en paquetes -git
-  printf "2.4.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  # Esto extrae el último tag (v2.5.0) y le añade el número de commits desde entonces
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 build() {
