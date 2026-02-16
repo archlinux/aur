@@ -4,7 +4,7 @@
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cpr
-pkgver=1.14.1
+pkgver=1.14.2
 pkgrel=1
 pkgdesc='C++ Requests: Curl for People, a spiritual port of Python Requests.'
 arch=('x86_64')
@@ -13,14 +13,11 @@ license=('MIT')
 depends=('curl')
 makedepends=('cmake' 'git' 'gtest>=1.17') # gtest 1.17 fixes an issue that made this build fail
 provides=('libcpr.so=1-64')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
-        '0001-fix-tests.patch')
-sha256sums=('213ccc7c98683d2ca6304d9760005effa12ec51d664bababf114566cb2b1e23c'
-            'd45f8f1a1932cfa1ac49f75a84bebbbf490e5d03a118aca7b1f4a760c15577c9')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('b9b529b47083bfe80bba855ca5308d12d767ae7c7b629aef5ef018c4343cf62b')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
-	patch -p1 -i ../0001-fix-tests.patch
 }
 
 build() {
