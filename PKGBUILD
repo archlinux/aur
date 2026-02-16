@@ -5,7 +5,7 @@
 
 pkgname=firefox-vaapi
 _pkgname=firefox
-pkgver=147.0.3
+pkgver=147.0.4
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser (with VA-API patches)"
 url="https://www.mozilla.org/firefox/"
@@ -93,14 +93,14 @@ validpgpkeys=(
   # https://blog.mozilla.org/security/2025/04/01/updated-gpg-key-for-signing-firefox-releases-2/
   14F26682D0916CDD81E37B6D61B7B526D98F0353
 )
-sha256sums=('bfa38a16d51a88ff077dceeca5ac28c14635d24401de305e6c5e2291a64d9c18'
+sha256sums=('bc0742ac62b177987d3312352194d4a088396ccf7b02e94be88f8072d82e94f7'
             'SKIP'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
             '5985c41a64dde6df3d31769ac57ddb59b94b1626aadb309fb488cdf6f3aa7015'
             '58d78ce57b3ee936bc966458d6b20ab142d02a897bbe924b3f26717af0c5bee1'
             '06e30b49678a48f4b6d5eb74de91f743734c7d21efd442777c77aee8cf5dad85'
             'ef63a12975f108f30b00bb3290d9ca76f311d8af9c1d5dfc0d8335ad57e8f77c')
-b2sums=('d1dfb15a47dbbaf50081c61b7b03d712886ec4b3ae749abf7886c7adebeb7e03831c65e49706f09bd670a11359aa91be45921d1166003ba89cededf61e7a8c96'
+b2sums=('ede1c530139bffa5858c1146fee5fff1b2cddd7836be4f4a1dbcabebfa61ba5f29d9d9c104524ac6a6baf1c870eebddf921839eea65fa560b67c5bbac6bbb593'
         'SKIP'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
         'c993d2c86c3ae7d63721f2df3cad64485e53cfc6b3f45cbd53e96765e4dab4bfaa9581cf4e8e458d61e749ba3adce6e11487cfb18227bfe7d193c4dd911e63c3'
