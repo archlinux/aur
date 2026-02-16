@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ODA Drawings Explorer
+Comment=View and manage DWG/DXF files
+Exec=/usr/bin/odadrawingsexplorer
+Icon=odadrawingsexplorer
+Terminal=false
+Categories=Graphics;Viewer;Engineering;
+MimeType=application/vnd.dwg;application/vnd.dxf;
