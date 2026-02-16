@@ -2,7 +2,7 @@
 pkgname=reel
 _app_id=dev.arsfeld.Reel
 pkgver=0.7.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern GTK frontend for Plex and other media servers"
 arch=('x86_64')
 url="https://github.com/arsfeld/reel"
@@ -10,12 +10,12 @@ license=('GPL-3.0-or-later')
 depends=(
   'gst-libav'
   'gst-plugin-gtk4'
+  'gst-plugin-va'
   'gst-plugins-bad'
   'gst-plugins-base'
   'gst-plugins-good'
   'gst-plugins-ugly'
   'gstreamer'
-  'gstreamer-vaapi'
   'gtk4'
   'libadwaita'
   'libsecret'
@@ -36,7 +36,7 @@ sha256sums=('e8de74947f1dd20cfeb4d4a90d8eac4fef8c2b7322a8e9c24e40ffcf57bc4fd4')
 prepare() {
   cd "$pkgname"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target "$(rustc --print host-tuple)"
 
   # Set StartupWMClass
   desktop-file-edit --set-key=StartupWMClass --set-value="com.github.$pkgname" \
