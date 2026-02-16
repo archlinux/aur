@@ -1,11 +1,12 @@
 # Maintainer: detiam <dehe_tian at outlook dot com>
 # Contributor: Jakob Kreuze <jakob@memeware.net>
 # Contributor: Bader <Bad3r@unsigned.sh>
+# Contributor: p0358
 
 # shellcheck disable=SC1090,SC2207
 pkgname=pince
 pkgver=0.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linux reverse engineering tool inspired by Cheat Engine."
 arch=('any')
 url="https://github.com/korcankaraokcu/PINCE"
@@ -15,11 +16,15 @@ makedepends=('cmake' 'python-pip' 'qt6-tools' 'lsb-release' 'pkgconf' 'git' 'sed
 optdepends=(
 	'qt6-wayland: wayland support'
 )
-source=("$pkgname::git+$url.git#tag=v$pkgver" 'PINCE.desktop')
-install="note.install"
-sha1sums=('d805da72c8be7b284c2642d2d8c6c6513a3008e4'
-          '719d18d69abc299f739cc04041967e9d05a34104')
-_installpath='/usr/share/PINCE'
+source=("$pkgname::git+$url.git#tag=v$pkgver"
+		'pince.desktop'
+		'pince.sh'
+		'io.github.korcankaraokcu.PINCE.policy')
+sha256sums=('381dafd683fdad1b476fb4fbcf96fa91e613540f06ea4071020bc7e60cf1de5a'
+            'c3497150719bc7ed20d5a5ad882d7405f5fc2eab127fdc9a17798c9cc1342da7'
+            '58bbcddf4ef9415ea14a6b38221ea9d56523aa71d25f97ff8462e135a25ac464'
+            '528a66294cbf93e141b392c41b3e972973fe39a79161d0c91c09928b78406c42')
+_installpath='/usr/lib/pince'
 _installsh='install.sh'
 
 prepare() {
@@ -48,9 +53,9 @@ build() {
 }
 
 package() {
-	# Install desktop entity
-	install -d "$pkgdir"/usr/share/applications
-	install -Dm755 PINCE.desktop "$pkgdir/usr/share/applications"
+	install -Dm755 pince.sh "$pkgdir/usr/bin/pince"
+	install -Dm644 pince.desktop -t "$pkgdir/usr/share/applications/"
+	install -Dm644 io.github.korcankaraokcu.PINCE.policy -t "$pkgdir/usr/share/polkit-1/actions/"
 
 	pushd "$pkgname" || exit 1
 
@@ -89,37 +94,16 @@ package() {
 
 	depends=($(printf "%s\n" "${depends[@]}" | sort -u))
 
-	# Copy files
-	install -d "$pkgdir/usr/bin"
+	# Copy app files
 	install -d "$pkgdir/$_installpath/i18n"
-	install PINCE.sh PINCE.py \
-		COPYING COPYING.CC-BY AUTHORS THANKS "$pkgdir/$_installpath"
-	cp -r GUI libpince media tr "$pkgdir/$_installpath"
+	install -Dm755 PINCE.py -t "$pkgdir/$_installpath/"
+	cp -r GUI libpince media tr "$pkgdir/$_installpath/"
 	cp -r i18n/qm "$pkgdir/$_installpath/i18n"
 
-	# Create a start script
-	install -Dm755 /dev/stdin "$pkgdir/usr/bin/pince" <<- SHELL
-		#!/usr/bin/env bash
-
-		syncicon() {
-		    local logo_path iconpath destpath
-		    . <(grep '^logo_path=.*' "\${XDG_CONFIG_HOME:-"\$HOME/.config"}/PINCE/PINCE.conf")
-		    iconpath="/usr/share/PINCE/media/logo/\$logo_path"
-		    destpath="\${XDG_DATA_HOME:-"\$HOME/.local/share"}/icons/hicolor/256x256/apps/PINCE.png"
-		    mkdir -p "\$(dirname "\$destpath")"
-		    ln -sf "\$iconpath" "\$destpath"
-		    echo -e "\nDesktop icon updated: \$destpath"
-		    echo "If the setting of icon changed, Re-login for setting to take effect."
-		}
-
-		pushd "$_installpath" || exit 1
-		sh PINCE.sh "\$@"
-		syncicon
-		popd || exit 1
-
-		read -p "Press enter to exit..."
-
-	SHELL
+	# Copy system files
+	install -Dm644 COPYING COPYING.CC-BY -t "$pkgdir"/usr/share/licenses/$pkgname/
+	install -Dm644 README.md AUTHORS THANKS -t "$pkgdir"/usr/share/doc/$pkgname/
+	install -Dm644 media/logo/ozgurozbek/pince_small_transparent.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/pince.png
 
 	popd || exit 1
 
