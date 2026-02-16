@@ -1,7 +1,7 @@
 # Maintainer: karboncore
 
 pkgname=mealie
-pkgver=3.9.2
+pkgver=3.10.2
 pkgrel=1
 pkgdesc='A self hosted recipe manager'
 arch=(any)
@@ -16,7 +16,7 @@ source=(https://github.com/mealie-recipes/mealie/archive/refs/tags/v${pkgver}.ta
         mealie.sysusers
         mealie.tmpfiles
         mealie.conf)
-sha256sums=('b17bda083dd343c97fa060ab5caf6ed5eabc58fbecb0547c2567fd25cbdcafd4'
+sha256sums=('c6cb51adb4cf9b95f491dcb67209c2a68cb307797b6864c3a4047f7fbff6d7d9'
             '7d8f6ff8e146e20c545aa390662cdc167ec0311a83ab88a27283df2330e29b5b'
             '582e023c8a68117fb9c28a5bbb182173ba857819bd4118e7a07d25012bc02b6a'
             '1a6b434a125f6940e53f8ba6613426f50c8ca8d5e7a447a80efd57016b917208'
@@ -28,7 +28,7 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   uv sync --frozen --all-extras --no-dev --no-editable --no-progress --python 3.12 --no-managed-python
-  sed -i "1s|^#!${srcdir}/${pkgname}-${pkgver}/.venv|#!/opt/mealie/venv|" .venv/bin/*
+  sed -i "1s|^\#\!${srcdir}/${pkgname}-${pkgver}/\.venv|\#\!/opt/mealie/venv|" .venv/bin/*
 
   cd frontend
   yarn install \
