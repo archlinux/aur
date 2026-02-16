@@ -1,5 +1,5 @@
 pkgbase = steamfetch-git
-	pkgdesc = neofetch for Steam - Display your Steam stats in terminal with style.
+	pkgdesc = neofetch for Steam - Display your Steam stats in terminal with style. (git version)
 	pkgver = 0.5.2.3.g3d7b294
 	pkgrel = 1
 	url = https://github.com/unhappychoice/steamfetch
