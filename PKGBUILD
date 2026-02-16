@@ -1,16 +1,16 @@
 # Maintainer: Harry Youd <harry at youd dot family>
 pkgname=certbot-dns-hetzner-cloud
 pkgdesc="Certbot plugin enabling dns-01 challenge on the Hetzner Cloud API"
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 arch=("any")
 url="https://github.com/rolschewsky/certbot-dns-hetzner-cloud"
 license=("MIT")
 depends=("certbot" "python-tldextract" "python-hcloud")
 checkdepends=("python-pytest")
-makedepends=("python-setuptools-scm" "python-wheel")
+makedepends=("python-setuptools-scm" "python-wheel" "python-build")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('489b480eb535258b3a240540818cd0f28ed571135aaaee76453a3a1ca0e1eeb0')
+sha256sums=('885482853280751dfbab8dc8fd2914b33fdc27893d8326eba3c72770ea0dd9ca')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
