@@ -1,7 +1,7 @@
 # Maintainer: Kazuya Yokogawa <mapk0y at gmail.com>
 
 pkgname='git-wt'
-pkgver=0.21.1
+pkgver=0.22.0
 pkgrel=1
 pkgdesc='A Git subcommand that makes `git worktree` simple'
 url='https://github.com/k1LoW/git-wt'
@@ -12,8 +12,8 @@ depends=()
 conflicts=()
 source_aarch64=("${url}/releases/download/v${pkgver}/${pkgname}_v${pkgver}_linux_arm64.tar.gz")
 source_x86_64=("${url}/releases/download/v${pkgver}/${pkgname}_v${pkgver}_linux_amd64.tar.gz")
-sha256sums_aarch64=('f58f48d8745e8aad1d26c8b496599bef1543f6c54cb4d15acb6b6237d02193df')
-sha256sums_x86_64=('9ac14bebbfaddee71935ca54f8969d0c47ab2cc050d9bf4c0e7c6139f3fdd88d')
+sha256sums_aarch64=('2d823dd32844860df8928211e6b80317063c5d34fb6e8777792d5a710c3e4257')
+sha256sums_x86_64=('c94e4f11cd60782de6e5c651ec3f81f9701ec1ca127741211b7346239f5bbfcd')
 
 package() {
   install -Dm644 ${srcdir}/README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
