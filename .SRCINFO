@@ -1,13 +1,13 @@
 pkgbase = protomd
 	pkgdesc = Protobuf Markdown generator
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://forge.dnaka91.rocks/dnaka91/protomd
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	depends = gcc-libs
+	depends = libgcc
 	source = protomd-0.2.2.tar.gz::https://forge.dnaka91.rocks/dnaka91/protomd/archive/v0.2.2.tar.gz
 	b2sums = 4ac78de619f923ed0261178b5f4b015032b254ad08b92d429ab347a41dedfa167716460acda253ea0b0e0bbce5d23a59d888e1f0222a37dcc26def174d80b3d1
 

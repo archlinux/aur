@@ -3,12 +3,12 @@
 
 pkgname=protomd
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Protobuf Markdown generator"
 arch=('aarch64' 'x86_64')
 url="https://forge.dnaka91.rocks/dnaka91/$pkgname"
 license=('MIT')
-depends=('gcc-libs')
+depends=('libgcc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 b2sums=('4ac78de619f923ed0261178b5f4b015032b254ad08b92d429ab347a41dedfa167716460acda253ea0b0e0bbce5d23a59d888e1f0222a37dcc26def174d80b3d1')
