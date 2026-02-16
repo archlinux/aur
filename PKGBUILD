@@ -1,4 +1,4 @@
-# Maintainer: ResRipper <resripper@connective.link>
+# Maintainer: ResRipper <resripper at connective dot link>
 
 # shellcheck disable=SC2034,SC2148,SC2154
 
@@ -75,7 +75,7 @@ build() {
 }
 
 package() {
-    cd $pkgdir || exit
+    cd "$pkgdir" || exit
 
     # Icon
     install -dm0755 "$pkgdir/usr/share/icons/hicolor/256x256/apps/"
