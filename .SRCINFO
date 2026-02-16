@@ -1,17 +1,18 @@
 pkgbase = python-loro
 	pkgdesc = Python bindings for Loro CRDT
 	pkgver = 1.10.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/loro-dev/loro-py
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-hatch
 	makedepends = python-maturin
 	options = !debug
-	source = https://files.pythonhosted.org/packages/source/l/loro/loro-1.10.3.tar.gz
-	sha256sums = 68184ab1c2ab94af6ad4aaba416d22f579cabee0b26cbb09a1f67858207bbce8
+	source = python-loro-1.10.3.tar.gz::https://github.com/loro-dev/loro-py/archive/refs/tags/1.10.3.tar.gz
+	sha256sums = 9d1adfc3c6e678b3b1a3ec86c4e1f40d06e026bc9c9375ff3f94eb47fbacb319
 
 pkgname = python-loro
