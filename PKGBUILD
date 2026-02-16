@@ -5,14 +5,14 @@
 
 _pkgname=arnis
 pkgname=arnis-bin
-pkgver=2.4.1
+pkgver=2.5.0
 pkgrel=1
 pkgdesc='Generate any location from the real world in Minecraft (binary version)'
 arch=('x86_64')
 url="https://github.com/louis-e/${_pkgname}"
 license=('Apache-2.0')
-depends=('cairo' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'hicolor-icon-theme'
-         'libsoup3' 'openssl' 'wayland' 'webkit2gtk-4.1')
+depends=('cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'hicolor-icon-theme'
+         'libgcc' 'libsoup3' 'wayland' 'webkit2gtk-4.1')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}-linux-v${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-linux"
@@ -20,8 +20,8 @@ source=("${_pkgname}-linux-v${pkgver}::${url}/releases/download/v${pkgver}/${_pk
         "${_pkgname}-512x-v${pkgver}.png::${url}/raw/v${pkgver}/assets/icons/icon.png"
         "${_pkgname}-128x-v${pkgver}.png::${url}/raw/v${pkgver}/assets/icons/128x128.png"
         "${_pkgname}.desktop")
-sha256sums=('954d96f45e56b449f43dfc235f1dd6d3754d7eb532fa92a5ee069d9487e83232'
-            'ae94fa92825f349bc2badce755700e0dba1776cc49d7fdc60e7733504ad0032f'
+sha256sums=('9f2b09787f85a6439b69d7f23f3b3b36e7b1a693edb115481737ee510fd12f6e'
+            'fabad25f65efa4af7f2083d6b918b8fdcc28a7d60e12befff82b66dc45812d0d'
             '04e4f85dbd53dc824e93811b05a2fe567f53c66df5f473bc4b0b0fa16970b483'
             '2bb9a2312ff258bc762d435840c12daf2bdc5c95e0c179d2356b17dd9536de5b'
             '70eb77205fb1f39588a8296903919b05af7e77cfe2ab9c42849d81e7580fd231')
