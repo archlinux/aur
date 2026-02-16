@@ -1,0 +1,4 @@
+[bontmia]
+source = "git"
+git = "https://github.com/hcartiaux/bontmia.git"
+prefix = "v"
