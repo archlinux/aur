@@ -9,7 +9,7 @@
 # Contributor: zer0def <zer0def@github>
 
 pkgname=salt
-pkgver=3007.11
+pkgver=3007.13
 pkgrel=1
 pkgdesc='Portable, distributed, remote execution and configuration management system'
 arch=('any')
@@ -68,18 +68,14 @@ install=salt.install
 source=(
     "https://pypi.io/packages/source/s/salt/salt-$pkgver.tar.gz"
     salt.logrotate
-    contextvars.patch
-    rpmvercmp.patch
     urllib.patch
     utilspycrypto.patch
     httprequests.patch
     salt-68327.patch
     foudfou-codecs-open.patch
 )
-sha256sums=('10090ed3fd642925d19045cd1fa9891f39d491047402c4368a3b730abc140805'
+sha256sums=('c663a7386cbd47afe94a6d8b0b1af1fccdc35059ccec2b93310e7920705344fb'
             'abecc3c1be124c4afffaaeb3ba32b60dfee8ba6dc32189edfa2ad154ecb7a215'
-            '58996c1fcf6ca1b47e8ab7e9d51b79679abbe791ed180eafbad168fd5c5f5236'
-            'fd36d9c603e01d60b76b39e5ac6279d6e88ef3291a15afbb80d956bdf483930a'
             '65794b45a1eee65b83589d4900f50f500cf8cdc8177e8a1c826ca5452625cf47'
             '632dfb02dde6bbd00bcebd0b444ad2d1236042229ffdee0cad4f02e62fdcb8f8'
             'e8ad0830dc48325790b6d13e4128085a82b48396475233a6ab1ad22e5f3df0f9'
@@ -88,8 +84,11 @@ sha256sums=('10090ed3fd642925d19045cd1fa9891f39d491047402c4368a3b730abc140805'
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    for i in contextvars rpmvercmp urllib utilspycrypto httprequests salt-68327 foudfou-codecs-open; do
+    for i in urllib utilspycrypto httprequests salt-68327 foudfou-codecs-open; do
         patch -N -p1 -i "${srcdir}/${i}.patch"
+    done
+    for i in contextvars rpm-vercmp; do
+        sed -i -E "/^${i}[[:space:]]*([=><]|$)/d" "${srcdir}/${pkgname}-${pkgver}/requirements/base.txt"
     done
 }
 
