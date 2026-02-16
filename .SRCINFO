@@ -1,5 +1,5 @@
 pkgbase = steamfetch
-	pkgdesc = Display your Steam stats in terminal with style.
+	pkgdesc = neofetch for Steam - Display your Steam stats in terminal with style.
 	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/unhappychoice/steamfetch
