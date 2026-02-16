@@ -20,7 +20,7 @@ validpgpkeys=(
   EE898AFE83AF6C763093E1CA5E8C9301F384CC5E  # Mitchell Murphy <mitchell.murphy@defenseunicorns.com>
 )
 
-sha256sums_x86_64=('sha256:d271ee1fbb2588c39376f0cdd28a176759597880dd28eaa156af1b1b2223165f')
+sha256sums_x86_64=('d271ee1fbb2588c39376f0cdd28a176759597880dd28eaa156af1b1b2223165f')
 
 
 package() {

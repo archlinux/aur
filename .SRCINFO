@@ -9,6 +9,6 @@ pkgbase = zarf-bin
 	conflicts = zarf
 	validpgpkeys = EE898AFE83AF6C763093E1CA5E8C9301F384CC5E
 	source_x86_64 = zarf_v0.71.1_Linux_amd64::https://github.com/zarf-dev/zarf/releases/download/v0.71.1/zarf_v0.71.1_Linux_amd64
-	sha256sums_x86_64 = bb41628dda85fc83a5e3e9e4c0d83b3b98119f17e30ef14cb4788655d94229f7
+	sha256sums_x86_64 = d271ee1fbb2588c39376f0cdd28a176759597880dd28eaa156af1b1b2223165f
 
 pkgname = zarf-bin
