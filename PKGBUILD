@@ -1,9 +1,22 @@
 # Maintainer: Chizuru-Kagurazaka <chizuru-mtf@outlook.com>
 # Maintainer: bilibili_xiaok <the_xiaok@qq.com>
 # Maintainer: Volodia Kraplich <v1mkss.m@gmail.com>
-
+# Maintainer: PrismLinux Team
+#         ⢠⣦⡀⠘⠁⢀⣴⣾ ⢀⡄
+#       ⠛ ⣸⣿⣿⣄⢰⣿⣿⣿⡄⢀⣀⣀⣀⡀⢾⠆⠐⠂⢄
+#    ⠰⣤⣄⡀ ⢿⣿⣿⣿⣧⡹⣿⣿⡇⣿⣿⣿⡿⠁
+#     ⢻⣿⣿⣿⣶⣶⣭⣝⡻⠷⣌⢿⡇⢸⣿⡿⢁⣀
+#  ⠘⠛ ⠸⠿⠟⣛⣋⡭⠅     ⠻⢸⡿⢡⣿⣿⣿⣶⣤⠁
+#  ⠠⣤⣶⣶⣿⣿⡿⢋  Prism ⠸⣡⣿⣿⡿⠟⠉
+# ⢠ ⠈⠻⣿⡿⢋⣴⡟  Linux ⢰⠟⣋⣥⣾⣦⡀ ⠁
+# ⠈⠠⠊ ⢈⣴⣿⣿⣇⣧⢀    ⢀⣠⣴⣿⣿⣿⣿⣿⣷⡄
+#    ⣰⣿⣿⣿⣿⢹⣿⣆⢳⣦⣐⠶⣶⣦⣤⣬⣭⣭⠉⢉⠉⠉
+#⡀    ⠈⠉⠉⢉⢸⣿⣿⣆⢻⣿⣷⣮⡙⢿⣿⣿⣿ ⠉
+#  ⣀⣀ ⠄⠐⠈ ⣾⣿⣿⠿ ⣿⣿⣿⡿ ⠉⠻⢿
+#         ⠛⠉ ⢀⡀⠘⣿⠟ ⢠⡀
+#            ⠈⠁
 pkgname=xmcl-launcher
-pkgver=0.54.3
+pkgver=0.54.4
 pkgrel=1
 pkgdesc="X Minecraft Launcher - A modern, open-source Minecraft Launcher with modpack, resource, and instance management"
 arch=('x86_64' 'aarch64')
@@ -30,8 +43,8 @@ source_aarch64=("xmcl-${pkgver}-arm64.tar.xz::https://github.com/Voxelum/x-minec
 
 sha256sums=('01407037620c1f763c16c64006c5e5457b23d3e3734b212ed543cbe3bf576a2d'
             '312763b5fa502280a694a78fd1e55a400b345e7d571020ee863e67db8f1eaec4')
-sha256sums_x86_64=('8447c90b17e46cb194cb129e8186c63bc518c4c1a513d9a5f1d7d278b452ddba')
-sha256sums_aarch64=('4b5c0fd18bc667c2f4325c0f04b2377edec95c75222a7f83a4f15a58c05ffa7b')
+sha256sums_x86_64=('547fd1b91449c660fcb7716215e5e2448cb0e821ae78c6a042aa72793c29d27b')
+sha256sums_aarch64=('a598b8684f58e4be672292621b0d93632cacf1f6a0028b2f33a880712a17d80e')
 
 prepare() {
   # Extract the appropriate archive based on architecture
