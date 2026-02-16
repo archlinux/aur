@@ -1,7 +1,7 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=xdelta3-gui
-pkgver=26.01.3
-pkgrel=2
+pkgver=26.02
+pkgrel=1
 pkgdesc="GUI for xdelta3 application"
 arch=("x86_64")
 url="https://github.com/AdrianTM/xdelta3-gui"
@@ -9,8 +9,8 @@ license=("GPL")
 depends=("qt6-base" "qt6-svg" "xdelta3")
 makedepends=("cmake" "ninja" "qt6-tools")
 install=xdelta3-gui.install
-source=("https://github.com/AdrianTM/xdelta3-gui/archive/refs/tags/26.01.3.tar.gz")
-sha256sums=('9cc8e3040d63ce38b0850cc000eb7993a287ecf7372802cf799503dc8042e215')
+source=("https://github.com/AdrianTM/xdelta3-gui/archive/refs/tags/26.02.tar.gz")
+sha256sums=('f8a3cdf8bb224e976787214ddbc3c719b8aece565dfd59d161d77e6a6a76a80c')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
