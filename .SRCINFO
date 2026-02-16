@@ -1,7 +1,7 @@
 pkgbase = colm-git
 	pkgdesc = A programming language designed for the analysis and transformation of computer languages
-	pkgver = 0.14.7.r44.g28b6e0a0
-	pkgrel = 4
+	pkgver = 0.14.7.r133.gaecb8e8c
+	pkgrel = 1
 	url = https://www.colm.net/open-source/colm/
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,10 @@ pkgbase = colm-git
 	makedepends = git
 	makedepends = asciidoc
 	makedepends = fig2dev
-	depends = gcc-libs
-	provides = colm=0.14.7.r44.g28b6e0a0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = colm=0.14.7.r133.gaecb8e8c
 	conflicts = colm
 	options = staticlibs
 	source = git+https://github.com/adrian-thurston/colm.git
