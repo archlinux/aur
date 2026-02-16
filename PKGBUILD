@@ -8,12 +8,12 @@ url="https://github.com/syd711/vpin-studio"
 license=('MIT')
 depends=('zulu11-fx-bin')
 makedepends=('unzip' 'cmake')
-source=("${pkgname}-${pkgver}.zip::https://github.com/syd711/vpin-studio/releases/download/4.6.4/VPin-Studio-Client-linux-x64.zip"
+source=("${pkgname}-${pkgver}.zip::https://github.com/syd711/vpin-studio/releases/download/4.6.5/VPin-Studio-Client-linux-x64.zip"
 	      "vpin-studio-client.desktop"
 	      "vpin-studio.png"
   	    "launcher.sh"
         "license.txt")
-sha256sums=('8cf17acc5d71320acdf825877b79ccb3a635fd77fbc71c32926aae81b2334b61'
+sha256sums=('df60e9e08907963e626a7a983d1128e0b6fb87b1a9819f8da96448135267b1ae'
             'da677687ce26ee9c7da8c9282254f73a2756174047d6683357f3d9b2045aef89'
             '2561ca46d2104ca5bed1e52df71520b51b10e2467b436a5dc50a5a9b46edb879'
             '233136d6c651522ffa4ae591493916a1c8507d673e4d95204d86f31667901c5e'
