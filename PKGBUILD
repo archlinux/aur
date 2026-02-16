@@ -1,6 +1,6 @@
-# Maintainer: ResRipper <resripper@connective.link>
+# Maintainer: ResRipper <resripper at connective dot link>
 
-# shellcheck disable=SC2034,SC2148,SC2154
+# shellcheck shell=bash disable=SC2034,SC2148,SC2154,SC2164
 
 pkgname=xyce-serial-bin
 pkgver=7.10.0
@@ -8,7 +8,7 @@ _pkg_date=260108
 pkgrel=1
 pkgdesc="Open-source, SPICE-compatible, high-performance analog circuit simulator"
 arch=(x86_64)
-url='https://github.com/ResRipper/Xyce-Builder'
+url='https://github.com/Xyce/Xyce'
 license=('GPL-3.0-or-later')
 options=(!debug)
 
@@ -19,7 +19,6 @@ conflicts=(
 
 makedepends=(
     'tar'
-    'zstd'
 )
 
 depends=(
