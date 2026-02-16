@@ -52,6 +52,6 @@ EOF
 	install -D external/openglcts/modules/glcts ${pkgdir}/usr/lib/openglcts/glcts
 	cp -r external/openglcts/modules/gl* ${pkgdir}/usr/lib/openglcts/
 	rm -rf ${pkgdir}/usr/lib/openglcts/*/{CMakeFiles,*cmake,*.a,Makefile}
-	install -D ${srcdir}/external/openglcts/README.md ${pkgdir}/usr/share/openglcts/README.md
-	cp -r ${srcdir}/external/openglcts/docs/specs ${pkgdir}/usr/share/openglcts/
+	install -D ../external/openglcts/README.md ${pkgdir}/usr/share/openglcts/README.md
+	cp -r ../external/openglcts/docs/specs ${pkgdir}/usr/share/openglcts/
 }
