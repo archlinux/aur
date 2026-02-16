@@ -1,4 +1,4 @@
 [lyx]
 source = "regex"
 regex = "lyx-([0-9].[0-9].[0-9]+).tar.gz"
-url = "https://ftp.lip6.fr/pub/lyx/stable/2.4.x/"
+url = "https://ftp.lip6.fr/pub/lyx/stable/2.5.x/"
