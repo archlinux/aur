@@ -1,7 +1,7 @@
 pkgbase = lesstif
 	pkgdesc = LGPL'd re-implementation of Motif
 	pkgver = 0.95.2
-	pkgrel = 8
+	pkgrel = 9
 	url = http://sourceforge.net/projects/lesstif/
 	arch = i686
 	arch = x86_64
@@ -21,4 +21,3 @@ pkgbase = lesstif
 	md5sums = 30e2c0babc84696af089d55cb9cb2908
 
 pkgname = lesstif
-
