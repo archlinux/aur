@@ -1,15 +1,15 @@
 # Maintainer: Cyb3rKo <cyb3rko-aur [ät] pm [dot] me>
 
 pkgname=termirs
-pkgver=0.2.7
+pkgver=0.2.10
 pkgrel=1
 pkgdesc="A modern, async SSH terminal client"
 url="https://github.com/caelansar/termirs"
 license=(MIT)
 source=("$pkgname::git+$url.git#tag=v$pkgver")
-sha256sums=('0e0e45041cdbd6206d82b1e5f1642b02fef590e4037a1401a2389f17df3b49e8')
-sha512sums=('bb7f24fd3f111841e3a5fce600f2ec7d284c4a465acc4087238ad668de40abdb903d08a174d3554c4e9d1e6ad77e931d72e53bc7525c421bb34087578f7e8d07')
-b2sums=('8fe23f31749a078413d268fa526029c9559a3f154ff1d9f0f6a7849268fdbe9a7e8f5833a947cde2be38a316c174d134810b6ac35d3d6fc57a6c7805305fb139')
+sha256sums=('8970b46ea9ae5ea1782110aabd58fb088590b33d961f56e2e9c2927d7a677873')
+sha512sums=('03ad0171a0e16d9c582c292f4d57b99b10705bb1cb24bedde635aee79a7b724bc082bdf55167c2c1f7f0f209f962a8d3245871e7aacad35b3e1b033d2c9724d9')
+b2sums=('3ae0044525516f18a5f7f57334962ac2d39ae5817e1d3daa18084b22adbee22dbf3c56133bb8c8a5ce72888c32d6d1d35ef8106281389902af10e89a1b9ecd08')
 arch=(x86_64)
 makedepends=(git cargo)
 provides=("termirs=$pkgver")
