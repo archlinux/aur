@@ -14,6 +14,7 @@ pkgbase = deconz
 	depends = libpng
 	depends = libxcrypt-compat
 	depends = qt6-base
+	depends = qt6-5compat
 	depends = qt6-serialport
 	depends = qt6-declarative
 	depends = qt6-websockets
