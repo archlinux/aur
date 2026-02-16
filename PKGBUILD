@@ -1,6 +1,6 @@
 # Maintainer: BitYoungjae <bityoungjae@gmail.com>
 pkgname=chalkak
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Hyprland screenshot preview and editor utility"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT' 'Apache-2.0')
 depends=('gtk4' 'hyprland' 'grim' 'slurp' 'wl-clipboard')
 makedepends=('rust' 'cargo' 'pkgconf' 'gtk4')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('16eb2ca73485e55c64b6643459598ab1c827b02ff9e844b00b57beaa9caf7e8c')
+sha256sums=('5d9df4145a4f141549139f31c5620e4cbd951ec93224364cd9f46dbd85cb3a87')
 
 build() {
   cd "$_srcname-$pkgver"
