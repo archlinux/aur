@@ -1,0 +1,67 @@
+From 4c5df33346e9f2232da3936ed0026108409649b6 Mon Sep 17 00:00:00 2001
+From: Jared Van Bortel <cebtenzzre@gmail.com>
+Date: Sun, 15 Feb 2026 22:11:44 -0500
+Subject: [PATCH 5/5] systemd: drop sudo and harden pia-reset-tunnel service
+
+Remove the sudo privilege drop (the service needs root to write
+networkd configs and manipulate interfaces). Add filesystem,
+kernel, privilege, and syscall hardening directives.
+
+Co-authored-by: Cursor <cursoragent@cursor.com>
+---
+ systemd/system/pia-reset-tunnel@.service | 35 +++++++++++++++++++++++-
+ 1 file changed, 34 insertions(+), 1 deletion(-)
+
+diff --git a/systemd/system/pia-reset-tunnel@.service b/systemd/system/pia-reset-tunnel@.service
+index bd8ab7a..fbc6f4a 100644
+--- a/systemd/system/pia-reset-tunnel@.service
++++ b/systemd/system/pia-reset-tunnel@.service
+@@ -7,7 +7,7 @@ ConditionPathExists=/etc/pia.conf
+ [Service]
+ EnvironmentFile=/etc/pia.conf
+ Type=oneshot
+-ExecStart=/usr/bin/sudo -u pia /usr/bin/pia-setup-tunnel \
++ExecStart=/usr/bin/pia-setup-tunnel \
+     --netdev-template /etc/pia-tools/%I.netdev.tmpl \
+     --network-template /etc/pia-tools/%I.network.tmpl \
+     --region $PIA_REGION --username $PIA_USERNAME --password $PIA_PASSWORD --ifname %I
+@@ -18,3 +18,36 @@ ExecStartPost=/usr/bin/networkctl reconfigure %I
+ ExecStartPost=/usr/bin/networkctl up %I
+ ExecStartPost=/usr/bin/sleep 10
+ ExecStartPost=-/usr/bin/pia-portforward --ifname %I $RTORRENT $TRANSMISSION
++
++# Filesystem
++ProtectSystem=strict
++ReadWritePaths=/etc/systemd/network /var/cache/pia
++ProtectHome=true
++PrivateTmp=true
++PrivateDevices=true
++
++# Kernel
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++
++# Privileges
++NoNewPrivileges=true
++RestrictSUIDSGID=true
++LockPersonality=true
++RemoveIPC=true
++UMask=0077
++CapabilityBoundingSet=CAP_NET_ADMIN
++
++# Misc
++ProtectClock=true
++ProtectHostname=true
++ProtectProc=invisible
++ProcSubset=pid
++RestrictRealtime=true
++RestrictNamespaces=true
++MemoryDenyWriteExecute=true
++SystemCallArchitectures=native
++SystemCallFilter=~@clock @cpu-emulation @debug @module @mount @obsolete @raw-io @reboot @swap @resources
++RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX AF_NETLINK
+-- 
+2.53.0
+

@@ -1,0 +1,32 @@
+From 8d54ace6ec688841b0f21ea8b6786e23aa7418ad Mon Sep 17 00:00:00 2001
+From: Jared Van Bortel <cebtenzzre@gmail.com>
+Date: Sun, 15 Feb 2026 18:18:46 -0500
+Subject: [PATCH 3/5] network template: drop invalid IPv4 zone ID from DNS
+ entries
+
+The %interface suffix (zone ID) is only valid for IPv6 link-local
+addresses. Appending it to IPv4 DNS addresses like 10.0.0.243%pia
+causes systemd-networkd to reject them with "Failed to parse dns
+server address".
+
+Co-authored-by: Cursor <cursoragent@cursor.com>
+---
+ systemd/network/pia.network.tmpl | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/systemd/network/pia.network.tmpl b/systemd/network/pia.network.tmpl
+index cd6b228..a19f139 100644
+--- a/systemd/network/pia.network.tmpl
++++ b/systemd/network/pia.network.tmpl
+@@ -9,7 +9,7 @@ Name={{ $if }}
+ [Network]
+ Address={{ .PeerIp }}/32
+ {{- range .DnsServers }}
+-DNS={{ . }}%{{ $if }}
++DNS={{ . }}
+ {{- end }}
+ 
+ [Route]
+-- 
+2.53.0
+

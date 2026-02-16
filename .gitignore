@@ -1,4 +1,7 @@
-pkg/
-src/
-*pkg.tar.xz
-pia-tools-*.tar.gz
+/*.code-workspace
+/*.pkg.tar.*
+/*.tar.gz
+/.vscode/
+/pia-tools/
+/pkg/
+/src/

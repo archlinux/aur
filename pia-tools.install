@@ -1,10 +1,16 @@
 post_install() {
-    echo "Get started:"
-    echo "- run # pia-tools --setup"
-    echo "- start the service: # systemctl start pia@Sweden"
+	echo ":: Edit /etc/pia.conf with your PIA credentials and region."
+	echo ":: Network templates are in /etc/pia-tools/, not"
+	echo "   /etc/systemd/network/ as described in the upstream README."
+	echo "   Edit them to customize routing (e.g. split tunneling)."
+	echo ":: To bring up the tunnel:"
+	echo "   systemctl start pia-reset-tunnel@pia.service"
+	echo ":: To enable automatic refresh:"
+	echo "   systemctl enable --now pia-reset-tunnel@pia.timer"
+	echo "   systemctl enable --now pia-pf-refresh@pia.timer"
+	echo ":: See https://github.com/jdelkins/pia-tools for full documentation."
 }
 
-post_remove() {
-    echo "Removing /etc/openvpn/pia/"
-    rm -rf /etc/openvpn/pia
+post_upgrade() {
+	post_install
 }

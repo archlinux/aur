@@ -1,0 +1,61 @@
+From 82d0a836f1084741033c121f0fad23f3f53fb801 Mon Sep 17 00:00:00 2001
+From: Jared Van Bortel <cebtenzzre@gmail.com>
+Date: Sun, 15 Feb 2026 16:27:58 -0500
+Subject: [PATCH 1/5] systemd: use /usr/bin instead of /usr/local/bin
+
+Arch Linux packages install binaries to /usr/bin. The /usr/local
+hierarchy is reserved for locally compiled software and must not be
+used by packages.
+
+Co-authored-by: Cursor <cursoragent@cursor.com>
+---
+ systemd/system/pia-pf-refresh@.service   | 4 ++--
+ systemd/system/pia-reset-tunnel@.service | 6 +++---
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/systemd/system/pia-pf-refresh@.service b/systemd/system/pia-pf-refresh@.service
+index 9f5ba78..7f539ad 100644
+--- a/systemd/system/pia-pf-refresh@.service
++++ b/systemd/system/pia-pf-refresh@.service
+@@ -1,6 +1,6 @@
+ [Unit]
+ Description=Refresh PIA port forward assignment on %I
+-ConditionFileIsExecutable=/usr/local/bin/pia-portforward
++ConditionFileIsExecutable=/usr/bin/pia-portforward
+ ConditionFileNotEmpty=/var/cache/pia/%I.json
+ ConditionPathExists=/etc/pia.conf
+ 
+@@ -8,4 +8,4 @@ ConditionPathExists=/etc/pia.conf
+ User=pia
+ EnvironmentFile=/etc/pia.conf
+ Type=oneshot
+-ExecStart=/usr/local/bin/pia-portforward --ifname %I --username $PIA_USERNAME --password $PIA_PASSWORD --refresh $RTORRENT $TRANSMISSION
++ExecStart=/usr/bin/pia-portforward --ifname %I --username $PIA_USERNAME --password $PIA_PASSWORD --refresh $RTORRENT $TRANSMISSION
+diff --git a/systemd/system/pia-reset-tunnel@.service b/systemd/system/pia-reset-tunnel@.service
+index 87b49cf..091d2d3 100644
+--- a/systemd/system/pia-reset-tunnel@.service
++++ b/systemd/system/pia-reset-tunnel@.service
+@@ -1,17 +1,17 @@
+ [Unit]
+ Description=Reconfigure PIA VPN tunnel on %I
+-ConditionFileIsExecutable=/usr/local/bin/pia-setup-tunnel
++ConditionFileIsExecutable=/usr/bin/pia-setup-tunnel
+ ConditionPathIsDirectory=/var/cache/pia
+ ConditionPathExists=/etc/pia.conf
+ 
+ [Service]
+ EnvironmentFile=/etc/pia.conf
+ Type=oneshot
+-ExecStart=/usr/bin/sudo -u pia /usr/local/bin/pia-setup-tunnel --region $PIA_REGION --username $PIA_USERNAME --password $PIA_PASSWORD --ifname %I
++ExecStart=/usr/bin/sudo -u pia /usr/bin/pia-setup-tunnel --region $PIA_REGION --username $PIA_USERNAME --password $PIA_PASSWORD --ifname %I
+ ExecStartPost=-/usr/bin/ip link set down dev %I
+ ExecStartPost=-/usr/bin/ip link del %I
+ ExecStartPost=/usr/bin/networkctl reload
+ ExecStartPost=/usr/bin/networkctl reconfigure %I
+ ExecStartPost=/usr/bin/networkctl up %I
+ ExecStartPost=/usr/bin/sleep 10
+-ExecStartPost=-/usr/local/bin/pia-portforward --ifname %I $RTORRENT $TRANSMISSION
++ExecStartPost=-/usr/bin/pia-portforward --ifname %I $RTORRENT $TRANSMISSION
+-- 
+2.53.0
+

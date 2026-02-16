@@ -1,0 +1,59 @@
+From c25b5baf564fed8b383c39789c7109dfa36ba474 Mon Sep 17 00:00:00 2001
+From: Jared Van Bortel <cebtenzzre@gmail.com>
+Date: Sun, 15 Feb 2026 22:05:48 -0500
+Subject: [PATCH 4/5] systemd: harden pia-pf-refresh service
+
+Add systemd security directives: filesystem protection, kernel
+lockdown, capability bounding, syscall filtering, and address
+family restrictions. The service already runs as User=pia and only
+needs outbound HTTPS plus read/write to /var/cache/pia.
+
+Co-authored-by: Cursor <cursoragent@cursor.com>
+---
+ systemd/system/pia-pf-refresh@.service | 33 ++++++++++++++++++++++++++
+ 1 file changed, 33 insertions(+)
+
+diff --git a/systemd/system/pia-pf-refresh@.service b/systemd/system/pia-pf-refresh@.service
+index 7f539ad..2f58da6 100644
+--- a/systemd/system/pia-pf-refresh@.service
++++ b/systemd/system/pia-pf-refresh@.service
+@@ -9,3 +9,36 @@ User=pia
+ EnvironmentFile=/etc/pia.conf
+ Type=oneshot
+ ExecStart=/usr/bin/pia-portforward --ifname %I --username $PIA_USERNAME --password $PIA_PASSWORD --refresh $RTORRENT $TRANSMISSION
++
++# Filesystem
++ProtectSystem=strict
++ReadWritePaths=/var/cache/pia
++ProtectHome=true
++PrivateTmp=true
++PrivateDevices=true
++
++# Kernel
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++
++# Privileges
++NoNewPrivileges=true
++RestrictSUIDSGID=true
++LockPersonality=true
++RemoveIPC=true
++UMask=0077
++CapabilityBoundingSet=
++
++# Misc
++ProtectClock=true
++ProtectHostname=true
++ProtectProc=invisible
++ProcSubset=pid
++RestrictRealtime=true
++RestrictNamespaces=true
++MemoryDenyWriteExecute=true
++SystemCallArchitectures=native
++SystemCallFilter=~@clock @cpu-emulation @debug @module @mount @obsolete @privileged @raw-io @reboot @swap @resources
++RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+-- 
+2.53.0
+
