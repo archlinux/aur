@@ -1,13 +1,16 @@
 pkgbase = python-ci-info
 	pkgdesc = A Python implementation of watson/ci-info. Data on Continuous Integration environment.
-	pkgver = 0.3.0
-	pkgrel = 2
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://github.com/mgxd/ci-info
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
 	depends = python
-	source = ci-info-0.3.0.tar.gz::https://github.com/mgxd/ci-info/archive/0.3.0.tar.gz
-	md5sums = 8f7a197c94f02cdc2ac0054425cf4290
+	source = ci-info-0.4.0.tar.gz::https://github.com/mgxd/ci-info/archive/0.4.0.tar.gz
+	md5sums = 5953a0ab2e03b80ac7348c325c858d4c
 
 pkgname = python-ci-info
