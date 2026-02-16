@@ -1,6 +1,6 @@
 # Maintainer: Patrick Jaja <patrick.jaja@valantic.com>
 pkgname=claude-cowork-service
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Native Linux backend for Claude Desktop Cowork"
 arch=('x86_64')
