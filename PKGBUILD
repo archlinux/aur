@@ -1,7 +1,7 @@
 # Maintainer: Christopher Sieh (stelzo) <stelzo@steado.de>
 pkgname=minot-bin
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A versatile toolset for debugging and verifying stateful robot perception software."
 arch=('x86_64')
 url="https://github.com/uos/minot"
@@ -29,6 +29,7 @@ package() {
        -exec install -Dm644 "{}" "$pkgdir/usr/share/doc/minot/{}" \; )
 
   install -Dm644 "$srcdir/minot-$pkgver/README.md" "$pkgdir/usr/share/doc/minot/README.md"
+  install -Dm644 "$srcdir/minot-$pkgver/mt_rat/librat.pc" "$pkgdir/usr/lib/pkgconfig/librat.pc"
 
   "$pkgdir/usr/bin/minot" completions bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/minot"
   "$pkgdir/usr/bin/minot" completions zsh  | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_minot"
