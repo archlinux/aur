@@ -1,0 +1,16 @@
+pkgbase = tidydots-bin
+	pkgdesc = Cross-platform dotfile management tool
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/AntoineGS/tidydots
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = tidydots
+	conflicts = tidydots
+	source_x86_64 = https://github.com/AntoineGS/tidydots/releases/download/v0.1.0/tidyd ots_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/AntoineGS/tidydots/releases/download/v0.1.0/tidy dots_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = SKIP
+
+pkgname = tidydots-bin
