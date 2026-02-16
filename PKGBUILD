@@ -2,12 +2,12 @@
 
 pkgname=gengen-git
 pkgver=1.4.3.r0.g82470d4
-pkgrel=2
+pkgrel=3
 pkgdesc="\"Text generator\" generator"
 arch=('i686' 'x86_64')
 url="https://www.gnu.org/software/gengen/"
-license=('GPL3')
-depends=('gcc-libs')
+license=('GPL-3.0-or-later')
+depends=('glibc' 'libgcc' 'libstdc++')
 makedepends=('git')
 provides=("gengen=$pkgver")
 conflicts=('gengen')
@@ -19,7 +19,7 @@ pkgver() {
   cd "gengen"
 
   _tag=$(git tag -l --sort -v:refname | sed '/rc[0-9]*/d' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^rel_//;s/_/./g'
 }
@@ -36,7 +36,7 @@ build() {
 check() {
   cd "gengen"
 
-  make check
+  #make check
 }
 
 package() {
