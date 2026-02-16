@@ -1,7 +1,7 @@
 pkgbase = python-future
 	pkgdesc = Clean single-source support for Python 3 and 2
 	pkgver = 1.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://python-future.org/
 	install = future.install
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = python-future
 	makedepends = python-setuptools
 	depends = python
 	depends = python-fissix
+	depends = python-sndhdr
 	depends = python-uu
 	optdepends = python-setuptools: futurize and pasteurize scripts
 	provides = futurize

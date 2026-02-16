@@ -6,12 +6,17 @@
 
 pkgname=python-future
 pkgver=1.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Clean single-source support for Python 3 and 2"
 url="https://python-future.org/"
 arch=('any')
 license=('MIT')
-depends=('python' 'python-fissix' 'python-uu')
+depends=(
+'python'
+'python-fissix'
+'python-sndhdr'
+'python-uu'
+)
 provides=('futurize' 'pasteurize')
 checkdepends=('python-requests' 'python-pytest')
 makedepends=('python-build' 'python-installer' 'python-setuptools')
