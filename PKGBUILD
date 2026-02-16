@@ -1,4 +1,6 @@
-# Maintainer: Timo S. Prinz <t.prinz@coliza.de>
+# Maintainer: pisevren <aur@local>
+# Contributor: Timo S. Prinz <t.prinz@coliza.de>
+
 
 pkgname=librevna-gui
 pkgver=1.6.4
@@ -24,7 +26,14 @@ build() {
 
 package() {
   local _top="$srcdir/LibreVNA-${pkgver}/Software/PC_Application"
-  install -Dm755 "$_top/LibreVNA-GUI/LibreVNA-GUI" "$pkgdir/usr/bin/LibreVNA-GUI"
-  install -Dm644 "$_top/51-vna.rules" "$pkgdir/etc/udev/rules.d/51-vna.rules"
+
+  install -Dm755 \
+    "$_top/LibreVNA-GUI/LibreVNA-GUI" \
+    "$pkgdir/usr/bin/LibreVNA-GUI"
+
+  # Upstream name; easier troubleshooting/documentation consistency
+  install -Dm644 \
+    "$_top/51-vna.rules" \
+    "$pkgdir/etc/udev/rules.d/51-vna.rules"
 }
 
