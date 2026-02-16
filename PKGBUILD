@@ -28,7 +28,7 @@ noextract=(
 pkgdesc="A compatibility tool for Steam Play based on Wine and additional components, experimental branch with extra CachyOS flavour"
 url="https://github.com/CachyOS/proton-cachyos"
 arch=(x86_64 x86_64_v3)
-options=(!staticlibs !lto !debug emptydirs strip)
+options=(!staticlibs !lto !debug emptydirs pestrip)
 license=('custom')
 depends=(
   attr            lib32-attr
