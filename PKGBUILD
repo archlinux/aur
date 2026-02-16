@@ -4,13 +4,13 @@
 # Contributor: Dan Beste <dan.ray.beste@gmail.com>
 
 pkgname=fd-git
-pkgver=9.0.0.r41.g969316c
+pkgver=10.3.0.r122.g40d8eb3
 pkgrel=1
 pkgdesc="A simple, fast and user-friendly alternative to 'find'"
 arch=('i686' 'x86_64')
 url="https://github.com/sharkdp/fd"
 license=('Apache-2.0' 'MIT')
-depends=('gcc-libs')
+depends=('glibc' 'libgcc')
 makedepends=('git' 'cargo')
 provides=("fd=$pkgver")
 conflicts=('fd')
@@ -31,7 +31,7 @@ pkgver() {
   cd "fd"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
