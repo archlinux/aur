@@ -1,20 +1,22 @@
 pkgbase = wasmer-git
 	pkgdesc = Standalone JIT WebAssembly runtime
-	pkgver = 3.0.0.alpha.r0.ge08b8fd67
+	pkgver = 7.0.1.r24.gb5064acd2f2
 	pkgrel = 1
 	url = https://wasmer.io/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	makedepends = cargo
 	makedepends = cmake
 	makedepends = llvm
-	makedepends = rust
-	depends = gcc-libs
+	depends = glibc
+	depends = libgcc
 	depends = libffi
+	depends = llvm-libs
 	depends = ncurses
 	depends = zlib
-	provides = wasmer=3.0.0.alpha.r0.ge08b8fd67
+	provides = wasmer=7.0.1.r24.gb5064acd2f2
 	conflicts = wasmer
 	options = staticlibs
 	source = git+https://github.com/wasmerio/wasmer.git

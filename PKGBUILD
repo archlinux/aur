@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=wasmer-git
-pkgver=3.0.0.alpha.r0.ge08b8fd67
+pkgver=7.0.1.r24.gb5064acd2f2
 pkgrel=1
 pkgdesc="Standalone JIT WebAssembly runtime"
 arch=('i686' 'x86_64')
 url="https://wasmer.io/"
 license=('MIT')
-depends=('gcc-libs' 'libffi' 'ncurses' 'zlib')
-makedepends=('git' 'cmake' 'llvm' 'rust')
+depends=('glibc' 'libgcc' 'libffi' 'llvm-libs' 'ncurses' 'zlib')
+makedepends=('git' 'cargo' 'cmake' 'llvm')
 provides=("wasmer=$pkgver")
 conflicts=('wasmer')
 options=('staticlibs')
