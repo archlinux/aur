@@ -9,7 +9,7 @@ url="https://github.com/SinTan1729/$_pkgname-new-releases"
 license=("GPL3")
 provides=("jellyfin-autorefresh")
 source=("$_pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$_pkgname.tar.gz")
-sha256sums=('759e5a6d97c3c1412b3ed5c73f1ed04b6d6bdc7dbaef578941edcc4bf7094ef6')
+sha256sums=('cb8351b9dcd429367fed831d5262471892a2a6df78baed56bd8ea949630ee505')
 package() {
 	# binary
 	install -Dm755 ./$_pkgname "$pkgdir/usr/bin/$_pkgname"
