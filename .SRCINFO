@@ -1,7 +1,7 @@
 pkgbase = librempeg-git
 	pkgdesc = A complete, cross-platform solution to record, convert, filter and stream audio and video.
-	pkgver = r124983.f986adf
-	pkgrel = 8
+	pkgver = r125015.7167113
+	pkgrel = 1
 	url = https://github.com/librempeg/librempeg
 	arch = x86_64
 	license = AGPL-3.0-only
