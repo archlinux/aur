@@ -5,12 +5,12 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.19.r153.g35990f4
+pkgver=0.5.20.r0.gc45a98a
 pkgrel=1
 pkgdesc="Open Gaming Platform"
 arch=('any')
 url="https://lutris.net"
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-only')
 depends=(
   '7zip'
   'cabextract'
@@ -90,6 +90,8 @@ pkgver() {
 prepare() {
 
   # Regenerate protos to fix BattleNet plugin
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/lutris/-/issues/4
+  # https://github.com/lutris/lutris/issues/5659
   protoc --proto_path=galaxy_blizzard_plugin/src --python_out=. product_db.proto
   cp -f product_db_pb2.py "${pkgname%-git}/${pkgname%-git}/util/battlenet/product_db_pb2.py"
 }
