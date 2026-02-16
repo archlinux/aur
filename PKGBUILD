@@ -1,6 +1,6 @@
 # Maintainer: erdii <me at erdii dot engineering>
 pkgname=ocm-addons
-pkgver=0.7.20
+pkgver=0.8.0
 pkgrel=0
 pkgdesc="A plug-in for the ocm-cli which provides commands for working with add-ons for managed OpenShift."
 arch=("any")
@@ -11,10 +11,14 @@ license=("Apache")
 depends=()
 makedepends=("go" "goreleaser" "go-yq" "ginkgo-git" "lichen")
 source=("ocm-addons-${pkgver}::git+https://github.com/mt-sre/ocm-addons#tag=v${pkgver}")
-sha256sums=('b3c8c9801acb621f8eff993a85f186e91887dbff34324fd3b61a0a6349c2c929')
+sha256sums=('58d29c8f614c0c39c4943e6c0285e878d50af00f3755e8a4f40c57e944626e82')
 
 build() {
   cd "${srcdir}/ocm-addons-${pkgver}"
+
+  # fix git config
+  git config user.name local
+  git config user.email local@local.local
 
   # add goarch otherwise goreleaser --single-target can't find the build
   yq -i '.builds[].goarch = ["amd64", "arm64"]' .goreleaser.yaml
