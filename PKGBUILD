@@ -16,8 +16,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  # Esta línea es infalible: cuenta los commits y añade el hash corto
-  printf "2.5.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  # Usamos la variable $pkgver definida arriba y le añadimos el contador de Git
+  printf "%s.r%s.g%s" "$pkgver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
