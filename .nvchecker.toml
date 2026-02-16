@@ -1,0 +1,4 @@
+[clustershell]
+source = "git"
+git = "https://github.com/cea-hpc/clustershell.git"
+prefix = "v"
