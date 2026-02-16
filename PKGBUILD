@@ -1,7 +1,7 @@
 # Maintainer: fenuks
 
 pkgname=kanata
-pkgver=1.10.1
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="Bring the customizability of a QMK board to any keyboard near you"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=(cargo)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         'kanata.service'
 )
-sha256sums=('c61ea1405e2822ee7c2ab151d8b6160b9061d8bd89abf7ce6abf0da1ce91cea5'
+sha256sums=('42e71c76202ab1d39a4898851558deca277fc3619f11a7dcf0e376c5ffc287bb'
             '02f657a0d3e6c2621d74282b192c45bbfba868a26c35fe0f351cb77c3c666e55')
 
 prepare() {
