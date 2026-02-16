@@ -1,0 +1,27 @@
+diff --git a/dmenu.c b/dmenu.c
+--- a/dmenu.c
++++ b/dmenu.c
+@@ -519,12 +519,16 @@ insert:
+ 			calcoffsets();
+ 		}
+ 		break;
+-	case XK_Tab:
+-		if (!sel)
+-			return;
+-		cursor = strnlen(sel->text, sizeof text - 1);
+-		memcpy(text, sel->text, cursor);
+-		text[cursor] = '\0';
+-		match();
++	case XK_Tab:  /* Tab = navigate down */
++		if (sel && sel->right && (sel = sel->right) == next) {
++			curr = next;
++			calcoffsets();
++		}
++		break;
++	case XK_ISO_Left_Tab:  /* Shift+Tab = navigate up */
++		if (sel && sel->left && (sel = sel->left)->right == curr) {
++			curr = prev;
++			calcoffsets();
++		}
+ 		break;
+ 	}
