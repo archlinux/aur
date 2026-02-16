@@ -4,13 +4,13 @@
 _pkgbase=efibooteditor
 pkgbase=${_pkgbase}-git
 pkgname=(efibooteditor-git efibooteditor-qt5-git)
-pkgver=r338.b346c37
-pkgrel=2
+pkgver=r428.11bb3d2
+pkgrel=1
 pkgdesc="Boot Editor for (U)EFI based systems."
 arch=(x86_64 aarch64 armv7h)
 url="https://github.com/Neverous/efibooteditor"
 license=(LGPL3)
-depends=(efivar zlib qt6-base qt5-base)
+depends=(efivar zlib qt6-base qt5-base qt6-svg qt5-svg)
 makedepends=(cmake git qt6-tools qt5-tools)
 source=("${pkgbase}::git+${url}.git?signed")
 b2sums=("SKIP")
@@ -46,7 +46,7 @@ build() {
 
 package_efibooteditor-git() {
     pkgdesc="Boot Editor for (U)EFI based systems."
-    depends=(efivar zlib qt6-base)
+    depends=(efivar zlib qt6-base qt6-svg)
     provides=(efibooteditor)
     conflicts=(efibooteditor)
 
@@ -58,7 +58,7 @@ package_efibooteditor-git() {
 
 package_efibooteditor-qt5-git() {
     pkgdesc="Boot Editor for (U)EFI based systems (Qt5 version)."
-    depends=(efivar zlib qt5-base)
+    depends=(efivar zlib qt5-base qt5-svg)
     provides=(efibooteditor)
     conflicts=(efibooteditor)
 
