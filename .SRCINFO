@@ -1,6 +1,6 @@
 pkgbase = soar
 	pkgdesc = A fast, modern package manager for Static Binaries, Portable Formats (AppImage|AppBundle|FlatImage|Runimage) & More
-	pkgver = 0.9.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://soar.qaidvoid.dev
 	arch = aarch64
@@ -17,7 +17,7 @@ pkgbase = soar
 	conflicts = soar-bin
 	conflicts = soar-nightly-bin
 	options = !lto
-	source = soar-0.9.0.tar.gz::https://github.com/pkgforge/soar/archive/v0.9.0.tar.gz
-	sha256sums = c4c76caa9043d3bb1aa83f2cb815f86d8ff3f7880c602a4aa76fbb8c6382759d
+	source = soar-0.11.0.tar.gz::https://github.com/pkgforge/soar/archive/v0.11.0.tar.gz
+	sha256sums = ad5d8b11d53b0be18b7dd773febdaa1cdf83f997c5886ec6c22ad24e04c44692
 
 pkgname = soar
