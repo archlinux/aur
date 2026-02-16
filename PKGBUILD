@@ -10,7 +10,7 @@
 
 pkgname=aws-lc
 pkgver=1.67.0
-pkgrel=3
+pkgrel=4
 pkgdesc='general-purpose cryptographic library maintained by the AWS Cryptography team for AWS'
 url='https://github.com/aws/aws-lc'
 license=('MIT' 'ISC' 'Apache-2.0' 'OpenSSL')
@@ -35,9 +35,10 @@ optdepends=(
 arch=('x86_64')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 b2sums=('2fc94dca5ff6bd2bd387035270bd65674621bc62b4d33522134c881aa81e59131eeb99f3d3e9a72e74e3bbb03770e5c5f425ec28007b58fd28ecc6219693f60f')
-options=(!strip)
+options=(!lto)
 
 # Temporary: testing with Clang/LLVM toolchain
+# No need to disable lto in 'options' above when using Clang
 #_set_clang_toolchain() {
 #    export CC=clang CXX=clang++ AR=llvm-ar NM=llvm-nm RANLIB=llvm-ranlib
 #}
@@ -70,7 +71,7 @@ build() {
     
     cmake -B build \
           -GNinja \
-          -DCMAKE_BUILD_TYPE=RelWithAsserts \
+          -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_PREFIX=/usr \
           -DCMAKE_INSTALL_SBINDIR:PATH=bin/aws-lc \
           -DCMAKE_INSTALL_BINDIR:PATH=bin/aws-lc \
