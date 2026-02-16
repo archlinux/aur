@@ -15,6 +15,12 @@ depends=('fldigi')
 source=(https://www.w1hkj.org/files/$pkgname/$pkgname-$pkgver.tar.gz)
 sha256sums=('93340798d0f9ccafc7cb8d19d1146cb67279c79723c436b1d25da276399e0694')
 
+prepare() {
+  echo "Applying patch to src/widgets/font_browser.cxx to handle a missing #include"
+  cd $srcdir/$pkgname-$pkgver
+  patch -p1 < $srcdir/../missing_include.patch
+}
+
 build() {
   cd $pkgname-$pkgver
   ./configure --prefix=/usr --without-flxmlrpc

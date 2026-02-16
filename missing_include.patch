@@ -1,0 +1,10 @@
+--- a/src/widgets/font_browser.cxx	2024-01-07 13:53:32.000000000 -0500
++++ b/src/widgets/font_browser.cxx	2026-02-13 22:31:30.730965585 -0500
+@@ -33,6 +33,7 @@
+ #include <string>
+ #include <cstdio>
+ #include <stdint.h>
++#include <pthread.h>
+ 
+ #include <FL/Fl.H>
+ #include <FL/Fl_Color_Chooser.H>
