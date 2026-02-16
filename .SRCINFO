@@ -10,6 +10,6 @@ pkgbase = nacrypt
 	depends = libseccomp
 	depends = libcap
 	source = nacrypt-1.2.2.tar.gz::https://github.com/basicallygit/nacrypt/archive/1.2.2.tar.gz
-	sha256sums = 43f970eb66a648fd18c66744fe06d58ee732451e8b06ce368b9fac24e3743ec9
+	sha256sums = 9ad410e49ccd11e64cfa2cc0b36bd9b69d8b7823c3937f6b8593071fd5c3dd0a
 
 pkgname = nacrypt
