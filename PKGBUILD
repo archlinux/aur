@@ -2,7 +2,7 @@
 
 pkgname=codex-desktop-bin
 pkgver=260210.1703
-pkgrel=3
+pkgrel=4
 pkgdesc='OpenAI Codex Desktop (repacked from macOS DMG for Linux)'
 arch=('x86_64')
 _electron_pkg='electron40-bin'
@@ -72,48 +72,62 @@ prepare() {
   cp -a "$codex_resources/app.asar.unpacked" "$srcdir/codex-app/resources/"
 
   # Hide menu bar by default, but keep Alt behavior (autoHideMenuBar).
-  # Also auto-revert a previously hard-applied removeMenu() patch if present.
+  # Best-effort only: if upstream bundle changes, skip patching instead of failing.
   local asar_path="$srcdir/codex-app/resources/app.asar"
+  local patched_menu_bar=0
 
+  # Auto-revert a previously hard-applied removeMenu() patch if present.
   local hard_old='S.removeMenu()'
   local hard_new='S.on("show",N)'
   local hard_old_hits hard_new_hits hard_off
+
   hard_old_hits=$(LC_ALL=C grep -aobF -- "$hard_old" "$asar_path" | wc -l)
   hard_new_hits=$(LC_ALL=C grep -aobF -- "$hard_new" "$asar_path" | wc -l)
 
   if [[ "$hard_old_hits" -eq 1 && "$hard_new_hits" -eq 0 ]]; then
     hard_off=$(LC_ALL=C grep -aobF -- "$hard_old" "$asar_path" | cut -d: -f1)
     printf '%s' "$hard_new" | dd of="$asar_path" bs=1 seek="$hard_off" conv=notrunc status=none
-    echo "Reverted legacy hard menu patch"
+    echo "Reverted legacy hard menu patch anchor: $hard_old"
   elif [[ "$hard_old_hits" -gt 1 ]]; then
-    echo "ERROR: Unexpected removeMenu() anchor count: $hard_old_hits" >&2
-    return 1
+    echo "WARNING: Unexpected removeMenu() anchor count for '$hard_old': $hard_old_hits (skipping revert)" >&2
   fi
 
-  local old='S.isDestroyed()||S.setTitle(S.getTitle())'
-  local new='S.isDestroyed()||S.setAutoHideMenuBar(!0)'
+  local old new old_hits new_hits patch_off
+  for old in \
+    'S.isDestroyed()||S.setTitle(S.getTitle())' \
+    'E.isDestroyed()||E.setTitle(E.getTitle())'
+  do
+    if [[ "$old" == S* ]]; then
+      new='S.isDestroyed()||S.setAutoHideMenuBar(!0)'
+    else
+      new='E.isDestroyed()||E.setAutoHideMenuBar(!0)'
+    fi
 
-  if [[ ${#old} -ne ${#new} ]]; then
-    echo "ERROR: Menu-bar replacement must keep byte length" >&2
-    return 1
-  fi
+    if [[ ${#old} -ne ${#new} ]]; then
+      echo "WARNING: Menu-bar replacement size mismatch for '$old' -> '$new' (skipping)" >&2
+      continue
+    fi
 
-  local old_hits new_hits patch_off
-  old_hits=$(LC_ALL=C grep -aobF -- "$old" "$asar_path" | wc -l)
-  new_hits=$(LC_ALL=C grep -aobF -- "$new" "$asar_path" | wc -l)
+    old_hits=$(LC_ALL=C grep -aobF -- "$old" "$asar_path" | wc -l)
+    new_hits=$(LC_ALL=C grep -aobF -- "$new" "$asar_path" | wc -l)
 
-  if [[ "$old_hits" -eq 1 ]]; then
-    patch_off=$(LC_ALL=C grep -aobF -- "$old" "$asar_path" | cut -d: -f1)
-    printf '%s' "$new" | dd of="$asar_path" bs=1 seek="$patch_off" conv=notrunc status=none
-    echo "Patched app.asar: enabled autoHideMenuBar"
-  elif [[ "$old_hits" -eq 0 && "$new_hits" -eq 1 ]]; then
-    echo "app.asar already patched: autoHideMenuBar enabled"
-  elif [[ "$old_hits" -gt 1 ]]; then
-    echo "ERROR: Expected one menu-bar patch anchor, found $old_hits" >&2
-    return 1
-  else
-    echo "ERROR: Menu-bar patch anchor not found; upstream bundle may have changed" >&2
-    return 1
+    if [[ "$old_hits" -eq 1 ]]; then
+      patch_off=$(LC_ALL=C grep -aobF -- "$old" "$asar_path" | cut -d: -f1)
+      printf '%s' "$new" | dd of="$asar_path" bs=1 seek="$patch_off" conv=notrunc status=none
+      echo "Patched app.asar: enabled autoHideMenuBar ($old -> $new)"
+      patched_menu_bar=1
+      break
+    elif [[ "$old_hits" -eq 0 && "$new_hits" -eq 1 ]]; then
+      echo "app.asar already patched: autoHideMenuBar enabled"
+      patched_menu_bar=1
+      break
+    elif [[ "$old_hits" -gt 1 ]]; then
+      echo "WARNING: Expected one menu-bar patch anchor for '$old', found $old_hits (skipping)" >&2
+    fi
+  done
+
+  if [[ "$patched_menu_bar" -eq 0 ]]; then
+    echo "WARNING: Menu-bar patch anchor not found; skipping patch (upstream bundle likely changed)" >&2
   fi
 
   if [[ ! -f "$srcdir/nodepty-src/package.json" ]]; then
