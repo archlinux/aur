@@ -2,7 +2,7 @@
 
 pkgname=ros2-kilted-base
 pkgver=2025.07.28
-pkgrel=5
+pkgrel=6
 _rosdist="Kilted Kaiju"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -49,7 +49,7 @@ source=(
 )
 sha256sums=('b289c53e97d924209efb9ed9c6f30caafde965fa1c72a039e39a528fcc9045b3'
             '5089bf2dea8368020243d40a2b513405cd060aacc42de6fae2289c1a87f74f99'
-            'f39f6d9a5715495ad555ac1a163ba1d2f7a6eca5ac21310954603155e9677050'
+            'a88d6ea52c7c6d1785e84891658754ed965090f6de4cfbd023b6740ac236a5d9'
             '42228a501fb2647c5c127906eed329145d4a1d81fe626e50e80c6a4cc53729e3'
             'f2ac0967f508f6a4f1fd4f278800e64052127859ee3e21cdf1b467b3ffe7563f'
             '23718705092c81860e50182341c006e0addcbec61c6b87c7f744e9185740b21c'
