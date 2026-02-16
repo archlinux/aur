@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=dprint-git
-pkgver=0.47.2.r5.g523a443f
+pkgver=0.51.1.r13.g3269ae18
 pkgrel=1
 pkgdesc="A pluggable and configurable code formatting platform written in Rust"
 arch=('i686' 'x86_64')
 url="https://dprint.dev/"
 license=('MIT')
-depends=('gcc-libs' 'bzip2')
+depends=('glibc' 'libgcc' 'bzip2')
 makedepends=('git' 'cargo')
 provides=("dprint=$pkgver")
 conflicts=('dprint')
@@ -30,7 +30,7 @@ pkgver() {
   cd "dprint"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
