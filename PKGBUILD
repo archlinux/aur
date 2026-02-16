@@ -63,6 +63,7 @@ build() {
     -S "${_pkgname}"
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_HIP_FLAGS="-mllvm --amdgpu-unroll-threshold-local=600" # 修复 ROCm 性能问题
     -DBUILD_SHARED_LIBS=ON
     -DLLAMA_BUILD_TESTS=OFF
     -DLLAMA_USE_SYSTEM_GGML=OFF
