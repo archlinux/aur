@@ -52,7 +52,7 @@ function _parse_hr_subcommand() {
       validCommand=true
       ;;
     diff)
-      commands+=("diff" "upgrade" "--show-secrets" "--color" "--output=dyff")
+      commands+=("diff" "upgrade" "--show-secrets" "--output=dyff")
       ;;
     install)
       commands+=("install")
