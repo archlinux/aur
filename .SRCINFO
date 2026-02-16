@@ -1,7 +1,7 @@
 pkgbase = bluejay
 	pkgdesc = Bluetooth manager written in Qt
 	pkgver = 1.0.3
-	pkgrel = 16
+	pkgrel = 17
 	url = https://github.com/EbonJaeger/bluejay
 	arch = x86_64
 	license = CC0-1.0 AND CC-BY-SA-4.0 AND MPL-2.0

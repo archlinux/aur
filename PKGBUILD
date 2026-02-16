@@ -2,7 +2,7 @@
 
 pkgname=bluejay
 pkgver=1.0.3
-pkgrel=16
+pkgrel=17
 pkgdesc="Bluetooth manager written in Qt"
 arch=(x86_64)
 url="https://github.com/EbonJaeger/bluejay"
