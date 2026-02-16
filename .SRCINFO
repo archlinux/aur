@@ -19,6 +19,8 @@ pkgbase = caqtdm-git
 	depends = bash
 	depends = glibc
 	depends = gcc-libs
+	provides = caqtdm
+	conflicts = caqtdm
 	source = git+https://github.com/caqtdm/caqtdm.git
 	sha512sums = SKIP
 

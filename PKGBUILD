@@ -8,6 +8,8 @@ url="http://caqtdm.github.io/"
 license=('GPL-3.0-or-later')
 depends=('qt6-base' 'qt6-tools' 'qwt-qt6' 'epics-base' 'zeromq' 'python' 'bash' 'glibc' 'gcc-libs')
 makedepends=('patch' 'make' 'gcc' 'git' 'qt6-5compat')
+conflicts=('caqtdm')
+provides=('caqtdm')
 source=("git+https://github.com/caqtdm/caqtdm.git")
 sha512sums=('SKIP')
 
@@ -148,7 +150,6 @@ package() {
     cp $srcdir/caqtdm/caQtDM_QtControls/src/caShellCommand   $pkgdir/usr/include/caqtdm
     cp $srcdir/caqtdm/caQtDM_QtControls/src/caSlider   $pkgdir/usr/include/caqtdm
     cp $srcdir/caqtdm/caQtDM_QtControls/src/caCalc   $pkgdir/usr/include/caqtdm
-    cp $srcdir/caqtdm/caQtDM_QtControls/src/mdaLICENSE   $pkgdir/usr/include/caqtdm
     cp $srcdir/caqtdm/caQtDM_QtControls/src/caLineEdit   $pkgdir/usr/include/caqtdm
     cp $srcdir/caqtdm/caQtDM_QtControls/src/EGauge   $pkgdir/usr/include/caqtdm
     cp $srcdir/caqtdm/caQtDM_QtControls/src/ESimpleLabel   $pkgdir/usr/include/caqtdm
