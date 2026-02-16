@@ -1,19 +1,20 @@
 pkgbase = zvbi-git
 	pkgdesc = Library to capture and decode VBI data
-	pkgver = 0.2.42.r0.g3785481
+	pkgver = 0.2.44.r4.g41477c9
 	pkgrel = 1
 	url = https://github.com/zapping-vbi/zvbi
 	arch = i686
 	arch = x86_64
-	license = BSD
-	license = GPL2
-	license = LGPL2.1
+	license = BSD-2-Clause
+	license = GPL-2.0-or-later
+	license = LGPL-2.1-or-later
 	license = MIT
 	makedepends = git
-	depends = gcc-libs
+	depends = glibc
+	depends = libgcc
 	depends = libpng
 	depends = libx11
-	provides = zvbi=0.2.42.r0.g3785481
+	provides = zvbi=0.2.44.r4.g41477c9
 	conflicts = zvbi
 	options = staticlibs
 	source = git+https://github.com/zapping-vbi/zvbi.git
