@@ -1,25 +1,21 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=zerobrew
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.2
+pkgrel=1
 pkgdesc='A drop-in, 5-20x faster, experimental Homebrew alternative.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/lucasgelfond/zerobrew'
 license=('MIT' 'Apache-2.0')
+optdepends=('ruby: For building bottles from source')
 makedepends=('cargo' 'git')
 options=(!lto)
 provides=('zb' 'zbx')
 conflicts=('zerobrew-git' 'zerobrew-bin')
 install=zerobrew.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-    'zerobrew.install'
-    "$pkgname-$pkgver.tar.gz.asc"
-    'zerobrew.install.asc')
-sha256sums=('dbbddff4b22a264e993ab7b254e0eb87a958a559c8438671f4eac3fd5517868b'
-            '9092be5274ca2a0bf7193c58fb0cc63d7328bc8eb3d390db7aae3ab70ce02b39'
-            'SKIP'
-            'SKIP')
-validpgpkeys=('EF4B4CB5DFB8822216A473B1597AB12E66262898')
+    'zerobrew.install')
+sha256sums=('efab8d6171751bdea6ef17b028d9dafccad45ff1252874ab2f1e6f87b4c2bdc1'
+            '9092be5274ca2a0bf7193c58fb0cc63d7328bc8eb3d390db7aae3ab70ce02b39')
 
 prepare() {
     cd "$pkgname-$pkgver"
