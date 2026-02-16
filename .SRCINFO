@@ -1,0 +1,15 @@
+pkgbase = grap-git
+	pkgdesc = A language for typesetting graphs specified and first implemented by Brian Kernighan and Jon Bentley at Bell Labs.
+	pkgver = r366.bb899c8
+	pkgrel = 1
+	url = https://www.lunabase.org/~faber/Vault/software/grap/
+	arch = i686
+	arch = x86_64
+	license = custom:BSD-3-Clause
+	makedepends = git
+	provides = grap
+	conflicts = grap
+	source = grap-git::git+https://github.com/snorerot13/grap
+	sha256sums = SKIP
+
+pkgname = grap-git
