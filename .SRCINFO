@@ -1,6 +1,6 @@
 pkgbase = python-asyncer
 	pkgdesc = Asyncer, async and await, focused on developer experience.
-	pkgver = 0.0.13
+	pkgver = 0.0.14
 	pkgrel = 1
 	url = https://github.com/tiangolo/asyncer
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-asyncer
 	depends = python-anyio
 	depends = python-sniffio
 	depends = python-typing_extensions
-	source = asyncer-0.0.13.tar.gz::https://github.com/tiangolo/asyncer/archive/refs/tags/0.0.13.tar.gz
-	sha256sums = 438eaf691f082e6c30aaa60e3540f9e968ce6f01e0827d63241a1b2a92934235
+	source = asyncer-0.0.14.tar.gz::https://github.com/tiangolo/asyncer/archive/refs/tags/0.0.14.tar.gz
+	sha256sums = fd409f80e9ab8724b65d63be9c27653991d55b50ba8b351f2e67df4d69856516
 
 pkgname = python-asyncer

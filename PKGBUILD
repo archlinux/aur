@@ -5,7 +5,7 @@ _pkgname=asyncer
 pkgname=python-${_pkgname}
 pkgdesc="Asyncer, async and await, focused on developer experience."
 
-pkgver=0.0.13
+pkgver=0.0.14
 pkgrel=1
 
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-pdm-backen
 url="https://github.com/tiangolo/asyncer"
 
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('438eaf691f082e6c30aaa60e3540f9e968ce6f01e0827d63241a1b2a92934235')
+sha256sums=('fd409f80e9ab8724b65d63be9c27653991d55b50ba8b351f2e67df4d69856516')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
