@@ -1,7 +1,7 @@
 # Maintainer: abby <abby+aur@stellardrift.ca>
 # Contributor: Devin J. Pohly <djpohly+arch@gmail.com>
 pkgname=tksvg
-pkgver=0.9
+pkgver=0.16
 pkgrel=1
 pkgdesc="An extension for Tk to read SVG images based on nanosvg"
 url="https://github.com/oehhar/tksvg/"
@@ -9,7 +9,7 @@ arch=('x86_64')
 license=('custom')
 depends=('tk')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/oehhar/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('f185d3574b11eefbab58a78c0f563c0f09fe1e4f6271cf7c707de78ba4f09493b3dd055a60872ed5f30448cad8c10403c9c72532669868aa1a274386da885a1f')
+sha512sums=('c7eb7cfd8bbdbc08138a44b92e43ca29fdbe4e6c95abdcdbe7e6ce2b3a764fcaf62eb4541286236ebeab7d899480371473ade46aab54aec8528b23e312a78c89')
 
 build() {
   cd "$pkgname-$pkgver"
