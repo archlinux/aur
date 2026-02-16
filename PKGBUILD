@@ -1,6 +1,6 @@
 pkgname=deconz
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
-pkgver=2.31.2
+pkgver=2.32.5
 pkgrel=1
 pkgdesc="A generic ZigBee monitoring and control tool"
 url="https://www.dresden-elektronik.de"
@@ -10,10 +10,10 @@ depends=('hicolor-icon-theme'
          'libcap'
          'libpng'
 	 'libxcrypt-compat'
-         'qt5-base'
-         'qt5-serialport'
-	 'qt5-declarative'
-         'qt5-websockets'
+         'qt6-base'
+         'qt6-serialport'
+	 'qt6-declarative'
+         'qt6-websockets'
          'sqlite')
 makedepends=('xz')
 optdepends=()
@@ -30,18 +30,18 @@ source=(
   'deconz.sysusers'
   'deconz.tmpfiles'
 )
-source_x86_64=($pkgname-$pkgver-x86_64.deb::https://deconz.dresden-elektronik.de/ubuntu/stable/$pkgname-$pkgver-qt5.deb)
-source_armv6h=($pkgname-$pkgver-armv6h.deb::https://deconz.dresden-elektronik.de/raspbian/stable/$pkgname-$pkgver-qt5.deb)
-source_armv7h=($pkgname-$pkgver-armv7h.deb::https://deconz.dresden-elektronik.de/raspbian/stable/$pkgname-$pkgver-qt5.deb)
-source_aarch64=(${pkgname}_${pkgver}-debian-buster-stable_arm64.deb::https://deconz.dresden-elektronik.de/debian/stable/${pkgname}_${pkgver}-debian-buster-stable_arm64.deb)
+source_x86_64=(${pkgname}-qt6_${pkgver}_x86_64.deb::https://github.com/dresden-elektronik/deconz-rest-plugin/releases/download/v${pkgver}/${pkgname}-qt6_${pkgver}_amd64.deb)
+source_armv6h=(${pkgname}-qt6_${pkgver}-armv6h.deb::https://github.com/dresden-elektronik/deconz-rest-plugin/releases/download/v${pkgver}/${pkgname}-qt6_${pkgver}_armhf.deb)
+source_armv7h=(${pkgname}-qt6_${pkgver}-armv7h.deb::https://github.com/dresden-elektronik/deconz-rest-plugin/releases/download/v${pkgver}/${pkgname}-qt6_${pkgver}_armhf.deb)
+source_aarch64=(${pkgname}-qt6_${pkgver}-debian-buster-stable_arm64.deb::https://github.com/dresden-elektronik/deconz-rest-plugin/releases/download/v${pkgver}/${pkgname}-qt6_${pkgver}_arm64.deb)
 sha256sums=('568f0ff41fad18d6a26ef96a90181e6fac6b1dd6abd69d202de849d1caf76354'
             'b39ef78676141edfd148944a287aea4d20ee202abe37dff564a977c367d7b385'
             '4f4554238a3ee2ecd7af3510a3e4ff5a62259082f9b1672904da29c933c5e065'
             '5cb6ea540da8cfb4343b97792886952ee244fa272b3c00e6e5c7dcc1aa10eb1c')
-sha256sums_x86_64=('7f912bc41c0aa6d0c55d9d0762508c907643e51a048f082b9debb4b98a0e554d')
-sha256sums_armv6h=('8ec73427f8700152ed04019d661204783e64e951ede381827f0ef5d1daa5e9ce')
-sha256sums_armv7h=('8ec73427f8700152ed04019d661204783e64e951ede381827f0ef5d1daa5e9ce')
-sha256sums_aarch64=('c6b3177e5f902d63997b755a1425e3f5329e07d4edc719c60580a03150023cf3')
+sha256sums_x86_64=('a4bd04ce2f37e83768543424f89cd46e304dffea0e6e23efb7490773b0f3d73b')
+sha256sums_armv6h=('9e93a2033aaf149c93368fda468a88ad5bbbbc156a86fcd9e6df484157201485')
+sha256sums_armv7h=('9e93a2033aaf149c93368fda468a88ad5bbbbc156a86fcd9e6df484157201485')
+sha256sums_aarch64=('60e56462661bed669fd0779c6275608f8c9d481bcfddcdd22de4ddbf31c56073')
 noextract=()
 
 package() {
