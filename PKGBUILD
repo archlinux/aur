@@ -35,7 +35,7 @@ prepare() {
 
 build() {
 	cd "${srcdir}/yosys"
-	make PREFIX="${_PREFIX}"
+	UV_NO_MANAGED_PYTHON=1 make PREFIX="${_PREFIX}"
 }
 
 package() {
