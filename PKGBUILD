@@ -1,6 +1,6 @@
 pkgname="dibble"
-pkgver="0.1.2"
-pkgrel="2"
+pkgver="0.1.4"
+pkgrel="3"
 pkgdesc="A quick and local cli tool for word definitions"
 arch=(any)
 source=("https://github.com/moogoesmeow0/$pkgname/archive/refs/tags/$pkgver.tar.gz")
