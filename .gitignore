@@ -1,0 +1,7 @@
+# sources and intermediate state
+/src/
+/pkg/
+
+# outputs
+/*.tar.zst
+/*.tar.gz

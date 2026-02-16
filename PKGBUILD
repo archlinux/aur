@@ -1,4 +1,5 @@
-# Maintainer: Devin J. Pohly <djpohly+arch@gmail.com>
+# Maintainer: abby <abby+aur@stellardrift.ca>
+# Contributor: Devin J. Pohly <djpohly+arch@gmail.com>
 pkgname=tksvg
 pkgver=0.9
 pkgrel=1
