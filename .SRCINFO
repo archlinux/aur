@@ -1,0 +1,16 @@
+pkgbase = python-xer-reader
+	pkgdesc = Read the contents of a Primavera P6 XER file using Python.
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/jjCode01/xer-reader
+	arch = any
+	license = GPL-3.0-only
+	makedepends = python-poetry
+	depends = python
+	depends = python-openpyxl
+	provides = python-xer-reader
+	conflicts = python-xer-reader
+	source = https://files.pythonhosted.org/packages/source/x/xer_reader/xer_reader-0.4.1.tar.gz
+	sha256sums = 51d558ca3fc020a3c274b2648db5aaa6611831028e32b62a9c3f34909a3eb249
+
+pkgname = python-xer-reader
