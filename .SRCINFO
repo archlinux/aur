@@ -1,19 +1,17 @@
 pkgbase = librecal-gui
 	pkgdesc = GUI application for the LibreCAL, a 4-port eCal module
-	pkgver = 0.2.3
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/jankae/LibreCAL
 	arch = x86_64
-	arch = i686
 	license = GPL-3.0-only
+	makedepends = qt6-tools
 	depends = qt6-base
 	depends = qt6-charts
 	depends = qt6-svg
-	provides = librecal-gui
 	provides = librecal-udev
-	conflicts = librecal-gui
 	conflicts = librecal-udev
-	source = https://github.com/jankae/LibreCAL/archive/refs/tags/v0.2.3.tar.gz
-	sha256sums = a29d45be63fa4412f8c1775d6ceeec62ff97db2db64a50001ba44935e60c9e7d
+	source = https://github.com/jankae/LibreCAL/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 46a41f0eb8c75128232cef7e4ac2b3e622de824ec3b475441de0d06c465c7b40
 
 pkgname = librecal-gui
