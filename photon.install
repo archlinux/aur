@@ -2,7 +2,7 @@ post_install(){
  cat <<INFO
 If you want to download new graphhopper.com extracts periodically:
 
-Adjust the 'PHOTON_GRAPHHOPPER_EXTRACT' environment variable using 'systemctl edit photon-update' to select an extract to use.
+Adjust the region and country environment variables using 'systemctl edit photon-update' to select an extract to use.
 See '/usr/bin/photon-update' for available extracts.
 
 Run 'photon-update.service' for an initial download and enable 'photon-update.timer' for weekly updates of the database.

@@ -4,7 +4,9 @@ After=network.target
 
 [Service]
 # Override this with `systemctl edit photon-update` as needed
-Environment=PHOTON_GRAPHHOPPER_EXTRACT=de
+# See https://download1.graphhopper.com/public
+Environment=PHOTON_GRAPHHOPPER_REGION=europe
+Environment=PHOTON_GRAPHHOPPER_COUNTRY=germany
 
 User=photon
 Group=photon
