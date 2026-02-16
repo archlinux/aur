@@ -1,4 +1,4 @@
-# Maintainer: DesertYGL <superkoal at hotmail  dot com>
+# Maintainer: Ton Nom <email at domain dot tld>
 # PKGBUILD pour l'AUR - BarrelMCD Flutter
 # Source : tarball du tag GitHub (reproductible).
 # Dans le clone AUR : copier ce fichier comme PKGBUILD, puis :
@@ -7,7 +7,7 @@
 #   makepkg --printsrcinfo > .SRCINFO
 
 pkgname=barrelmcd-flutter
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Interface Flutter pour BarrelMCD - Modélisation conceptuelle de données (MCD)"
 arch=('x86_64')
