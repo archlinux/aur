@@ -2,13 +2,13 @@
 # Former maintainer: Aaron DeVore <aaron.devore@gmail.com>
 
 pkgname=xsv-git
-pkgver=0.13.0.r13.g4278b85
+pkgver=0.13.0.r14.gf430466
 pkgrel=1
 pkgdesc="A fast CSV command line toolkit written in Rust"
 arch=('i686' 'x86_64')
 url="https://github.com/BurntSushi/xsv"
-license=('custom' 'MIT')
-depends=('gcc-libs')
+license=('LicenseRef-xsv' 'MIT')
+depends=('glibc' 'libgcc')
 makedepends=('git' 'rust')
 provides=("xsv=$pkgver")
 conflicts=('xsv')
