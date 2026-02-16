@@ -1,0 +1,4 @@
+[solarized-sddm-theme]
+source = "git"
+git = "https://github.com/hcartiaux/solarized_sddm_theme.git"
+prefix = "v"
