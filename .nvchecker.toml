@@ -1,0 +1,4 @@
+[gitflow-cjs]
+source = "git"
+git = "https://github.com/CJ-Systems/gitflow-cjs.git"
+prefix = "v"
