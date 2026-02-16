@@ -2,12 +2,12 @@
 
 pkgname=godot-cpp
 pkgver=4.5
-pkgrel=1
+pkgrel=2
 pkgdesc='C++ bindings for the Godot script API'
 arch=('x86_64')
 url='https://godotengine.org'
 license=('MIT')
-makedepends=(cmake godot=$pkgver python)
+makedepends=(cmake godot python)
 source=(
   https://github.com/godotengine/$pkgname/archive/refs/tags/godot-$pkgver-stable.tar.gz
   godot-cpp.pc.in
