@@ -2,7 +2,7 @@
 # Maintainer: Xavier Portilla Edo <xavierportillaedo at gmail dot com>
 
 pkgname='voiceflow-bin'
-pkgver=1.31.1
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='The CLI for your Voiceflow projects'
 url='https://voiceflow.xavidop.me'
@@ -12,16 +12,16 @@ provides=('voiceflow-cli')
 conflicts=('voiceflow-cli')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/xavidop/voiceflow-cli/releases/download/v${pkgver}/voiceflow_Linux_arm64.tar.gz")
-sha256sums_aarch64=('03805d4bc4b2276af630de057c7a72749b6995699ad6df6b072d9c697e0b925c')
+sha256sums_aarch64=('936411557924433fc78971309c493276f274e69094125c5c9cf265e81ad2e154')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/xavidop/voiceflow-cli/releases/download/v${pkgver}/voiceflow_Linux_armv7.tar.gz")
-sha256sums_armv7h=('3cbe3ebadc78840078d125d40be019ce4b5c8342756b56bc34cee65757fcdbb1')
+sha256sums_armv7h=('86f56d225c7a6e6b94b61ac69514867ed4bbaa32a0e4c17f26b6e0593ce57ca9')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/xavidop/voiceflow-cli/releases/download/v${pkgver}/voiceflow_Linux_i386.tar.gz")
-sha256sums_i686=('706859dc79f33548358600120c624302df4da8ee38755a83cab90b9907228589')
+sha256sums_i686=('9f1c13d4ae5b96e2b09ae72645b398574db4f8617e7f268b1a39ac5bac17964e')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/xavidop/voiceflow-cli/releases/download/v${pkgver}/voiceflow_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('14b05ac630ada0c8e9c91c121d7c2504d24e89afa58b4e3effa39555b393e71c')
+sha256sums_x86_64=('d6e0077250f61318b96a2a3d3ce8932920d8fc67f830179d3b5ab076e411f7e2')
 
 package() {
   # bin
