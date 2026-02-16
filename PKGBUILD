@@ -16,7 +16,7 @@ license=('GPL3')
 depends=('gtk3' 'libgtk-3.so' 'gcc-libs')
 makedepends=('flutter' 'cmake' 'ninja' 'clang')
 source=("https://github.com/yglsan2/BarrelMCD-python/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('44e04e963ba1108bfbd9b8e892fd96ee380895ca1642ef93ccc017c5b6215482')
+sha256sums=('241ea85865182405f891e8b5d7f325df79af9d96f136fab799beff1dfaaef8f9')
 
 prepare() {
   cd "BarrelMCD-python-${pkgver}/barrelmcd_flutter"
