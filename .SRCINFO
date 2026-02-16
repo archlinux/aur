@@ -1,6 +1,6 @@
 pkgbase = git-igitt
 	pkgdesc = TUI with clear git graphs arranged for your branching model
-	pkgver = 0.1.20
+	pkgver = 0.1.21
 	pkgrel = 1
 	url = https://github.com/mlange-42/git-igitt
 	arch = x86_64
@@ -9,13 +9,14 @@ pkgbase = git-igitt
 	makedepends = cargo
 	makedepends = clang
 	depends = dbus
-	depends = gcc-libs
+	depends = libgcc
+	depends = libgcc_s.so
 	depends = glibc
 	depends = libgit2
 	depends = libgit2.so
 	depends = zlib
 	depends = libz.so
-	source = https://github.com/mlange-42/git-igitt/archive/v0.1.20/git-igitt-0.1.20.tar.gz
-	sha256sums = f7c482353cd97e460a5a0ba2535736c5256cf780ca9d38be538edd67d6a6156c
+	source = https://github.com/mlange-42/git-igitt/archive/v0.1.21/git-igitt-0.1.21.tar.gz
+	sha256sums = 9b5c236c09da75710c5b134f2c8b906244c8e225ac8646ae802abd5166a75738
 
 pkgname = git-igitt

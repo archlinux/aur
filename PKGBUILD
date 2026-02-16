@@ -1,14 +1,14 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=git-igitt
-pkgver=0.1.20
+pkgver=0.1.21
 pkgrel=1
 pkgdesc='TUI with clear git graphs arranged for your branching model'
 url="https://github.com/mlange-42/$pkgname"
 arch=(x86_64)
 license=(MIT)
 depends=(dbus
-         gcc-libs # libgcc_s.so
+         libgcc libgcc_s.so
          glibc # libc.so libm.so
          libgit2 libgit2.so
          zlib libz.so)
@@ -17,11 +17,11 @@ makedepends=(cargo
 checkdepends=(git)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('f7c482353cd97e460a5a0ba2535736c5256cf780ca9d38be538edd67d6a6156c')
+sha256sums=('9b5c236c09da75710c5b134f2c8b906244c8e225ac8646ae802abd5166a75738')
 
 prepare() {
 	cd "$_archive"
-	cargo fetch --locked --target "$(rustc --print host-tuple)"
+	cargo fetch --locked --target host-tuple
 }
 
 _srcenv() {
