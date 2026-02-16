@@ -1,7 +1,7 @@
 pkgbase = xsc
-	pkgdesc = XSC: the aaaaa-iest way to calculate stuff in the terminal
+	pkgdesc = XSC: the aaaaaa-iest way to calculate stuff in the terminal
 	pkgver = 3.5
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/jstmaxlol/xsc
 	arch = any
 	license = Unlicense
@@ -9,6 +9,7 @@ pkgbase = xsc
 	makedepends = gcc
 	depends = figlet
 	depends = lolcat
+	conflicts = sc-git
 	source = git+https://github.com/jstmaxlol/xsc
 	md5sums = SKIP
 
