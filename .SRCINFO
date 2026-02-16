@@ -1,12 +1,12 @@
 pkgbase = u-boot-qemu-bin
 	pkgdesc = U-Boot for qemu
 	pkgver = 2025.01
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.denx.de/wiki/U-Boot/
 	arch = any
 	license = GPL2
 	options = !strip
-	source = https://deb.debian.org/debian/pool/main/u/u-boot/u-boot-qemu_2025.01-2_all.deb
-	sha256sums = a4c325d1b534c81f3a154eca2ec89b818334207f36e959738475b69c61241838
+	source = https://deb.debian.org/debian/pool/main/u/u-boot/u-boot-qemu_2025.01-3_all.deb
+	sha256sums = f43cb84dbb23bca2853b5422e28bc03d7b174dd19f41030990fd1e5fdade5234
 
 pkgname = u-boot-qemu-bin
