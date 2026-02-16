@@ -21,7 +21,7 @@ source=("${pkgname}-installer-${pkgver}.exe::https://m1.ppy.sh/r/osu!install.exe
   "${pkgname}.sh"
   "${pkgname}.desktop"
   "${pkgname}.xml")
-sha256sums=('47c8718333183100051d4aacd6428d54ebfe0821d18dd707cedb073c01008674'
+sha256sums=('69f7cf0a210661d6a7888f14316508fd2e9d2e56b78bc09ba76e6c86aa5cf9d8'
             '0fc6b18923db85b82fa5da1cb40ccc8c0ffcaf65ee7e325af8969baa150a9fd2'
             'c96c4dc32356784f6100b201ec74d8f71b6959019624619177fb67790c7a8b2d'
             '3d98f5811539d652bf6378c2c76bff7b6d5ac82e6322942bb287ff9082f1715b'
