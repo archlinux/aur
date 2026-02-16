@@ -1,0 +1,18 @@
+pkgbase = kevedit
+	pkgdesc = ZZT world editor
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/cknave/kevedit
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = cdrtools
+	depends = sdl2
+	depends = libpng
+	optdepends = dosbox: in-game world testing support
+	options = debug
+	source = https://github.com/cknave/kevedit/releases/download/1.2.1/kevedit-1.2.1.tar.gz
+	sha256sums = 7eb3277b8642a508eb48506da2e135ffe1708a0dcc855e294ede465a6f118d65
+
+pkgname = kevedit
