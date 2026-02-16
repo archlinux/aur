@@ -2,7 +2,7 @@
 pkgname=lamco-rdp-server
 pkgver=1.3.1
 pkgrel=1
-pkgdesc="Native Wayland RDP server using xdg-desktop-portal for screen capture and input"
+pkgdesc="Native Wayland RDP server for GNOME, KDE, Sway, and Hyprland with H.264 encoding and VA-API acceleration"
 arch=('x86_64')
 url="https://github.com/lamco-admin/lamco-rdp-server"
 license=('BUSL-1.1')
@@ -24,11 +24,11 @@ makedepends=(
     'pkg-config'
 )
 optdepends=(
-    'libva: VAAPI hardware-accelerated video encoding'
-    'xdg-desktop-portal-gnome: portal backend for GNOME'
-    'xdg-desktop-portal-kde: portal backend for KDE Plasma'
-    'xdg-desktop-portal-wlr: portal backend for wlroots compositors'
-    'xdg-desktop-portal-hyprland: portal backend for Hyprland'
+    'libva: VA-API hardware-accelerated H.264 encoding'
+    'xdg-desktop-portal-gnome: screen capture and remote input for GNOME'
+    'xdg-desktop-portal-kde: screen capture and remote input for KDE Plasma'
+    'xdg-desktop-portal-wlr: screen capture for Sway and wlroots compositors'
+    'xdg-desktop-portal-hyprland: screen capture for Hyprland'
 )
 backup=('etc/dbus-1/system.d/io.lamco.RdpServer.System.conf')
 source=("$pkgname-$pkgver.tar.xz::https://github.com/lamco-admin/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
@@ -72,15 +72,19 @@ package() {
     install -Dm644 packaging/polkit/io.lamco.RdpServer.policy \
         "$pkgdir/usr/share/polkit-1/actions/io.lamco.RdpServer.policy"
 
+    # Desktop entry
+    install -Dm644 data/io.lamco.rdp-server.desktop \
+        "$pkgdir/usr/share/applications/io.lamco.rdp-server.desktop"
+
     # AppStream metainfo
-    install -Dm644 packaging/flatpak/io.lamco.rdp-server.metainfo.xml \
+    install -Dm644 data/io.lamco.rdp-server.metainfo.xml \
         "$pkgdir/usr/share/metainfo/io.lamco.rdp-server.metainfo.xml"
 
     # Icons
-    install -Dm644 assets/icons/io.lamco.rdp-server.svg \
+    install -Dm644 data/icons/io.lamco.rdp-server.svg \
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.lamco.rdp-server.svg"
     for size in 32 48 64 128 256; do
-        install -Dm644 "assets/icons/io.lamco.rdp-server-${size}.png" \
+        install -Dm644 "data/icons/io.lamco.rdp-server-${size}.png" \
             "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/io.lamco.rdp-server.png"
     done
 
