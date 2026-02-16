@@ -2,13 +2,13 @@
 # Previous maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=diffsitter-git
-pkgver=0.8.2.r4.g2484861
+pkgver=0.9.0.r42.ga466abf
 pkgrel=1
 pkgdesc="A tree-sitter based AST difftool to get meaningful semantic diffs"
 arch=('i686' 'x86_64')
 url="https://github.com/afnanenayet/diffsitter"
 license=('MIT')
-depends=('gcc-libs')
+depends=('glibc' 'libgcc')
 makedepends=('git' 'cargo')
 provides=("diffsitter=$pkgver")
 conflicts=('diffsitter')
@@ -29,7 +29,7 @@ pkgver() {
   cd "diffsitter"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
