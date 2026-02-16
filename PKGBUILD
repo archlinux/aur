@@ -1,6 +1,6 @@
 # Maintainer: Peter Jackson <pete@peteonrails.com>
 pkgname=voxtype-bin
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 pkgdesc="Push-to-talk voice-to-text for Linux (pre-built binaries)"
 arch=('x86_64')
@@ -51,14 +51,14 @@ source=(
 )
 sha256sums=(
     # Whisper binaries
-    '6cc5f2a7b6d1d7a74d1722545394507b599b00d9aefb68877ada5cd8a2c756be'  # voxtype-avx2
-    '8721044e2bdafa9ab33c52123a92f5f3bdfa300967710f8cd06133f3d5e40078'  # voxtype-avx512
-    'dce09bc586a026001c064708a1caeb0ac91e7bbdeeab969708e5293041c02096'  # voxtype-vulkan
+    'e381dba000b9965251398a7a7b362fd39821e82af2cb78e0f9a2c0c01aa5f3a3'  # voxtype-avx2
+    '033667acf0d7e3e4e4f8e55c85d20da5e97ce1e36c13d36e31055e0b2e6bf537'  # voxtype-avx512
+    '980632fca880579dc841299f4b7055ede6d9b21229e8f5f8a41bdb474ea92608'  # voxtype-vulkan
     # Parakeet binaries
-    'a34bc8b32ebdb0ffed57b32eabedde5d8fe77e91c2faea2e22e70070bf3d92a3'  # voxtype-parakeet-avx2
-    '0a4144fcc1e76a3abeb464401460f9f7aa35712a7c0496b3550e4940ede085ba'  # voxtype-parakeet-avx512
-    'a6a432a1538c23d1434df75bb731f55cbdfdbc6eab172377c7133a0f29bb90f2'  # voxtype-parakeet-cuda
-    '0745a3e4c4490e785e13b2494d020bd28c97076688c2ba6e003615512fd69374'  # voxtype-parakeet-rocm
+    '974c87f1879ffd02e83afebea1008bcfd6563a5ff7969cd808a44a44f809ca30'  # voxtype-parakeet-avx2
+    '506fd4809563062b9e15129ecc307fc52b47504f4c3988dfcefd39b3d14e9a21'  # voxtype-parakeet-avx512
+    'd091d50b4d530dfb4bef8caf1040db3b6e14e6637f665a045cb225167230e1ef'  # voxtype-parakeet-cuda
+    'de5884fa4a997c0128647534c4d3cbc247512a8358b8dbf8e28f7c9ea5aa58c3'  # voxtype-parakeet-rocm
     # Config and support files
     'SKIP'  # config.toml
     'SKIP'  # voxtype.service

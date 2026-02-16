@@ -80,7 +80,7 @@ post_install() {
 
 post_upgrade() {
     echo ""
-    echo "==> Voxtype upgraded to 0.5.5"
+    echo "==> Voxtype upgraded to 0.5.6"
     echo ""
 
     CPU_VARIANT=$(_detect_cpu)
@@ -89,10 +89,12 @@ post_upgrade() {
     _detect_gpu
 
     echo ""
-    echo "    New in 0.5.5:"
-    echo "      - New: eitype output driver for libei protocol (GNOME 46+, KDE 6.1+)"
-    echo "      - New: Media key names (MUTE, VOLUMEUP, etc.) for hotkey config"
-    echo "      - New: Numeric keycode support (e.g., key = 125 for Super key)"
+    echo "    New in 0.5.6:"
+    echo "      - New: Moonshine transcription backend (experimental, 200x faster than Whisper on CPU)"
+    echo "      - New: Voice activity detection filters silence before transcription"
+    echo "      - New: Eager input processing starts transcribing while recording"
+    echo "      - Fix: Top-level --model flag forwarded to daemon via record command"
+    echo "      - Fix: Recording timeout now transcribes audio instead of discarding it"
     echo ""
     echo "    Restart the daemon to apply updates:"
     echo "      systemctl --user restart voxtype"
