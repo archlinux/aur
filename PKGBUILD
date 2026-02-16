@@ -26,7 +26,7 @@ source=(
   'vendor.js'
 )
 source_x86_64=(
-  thunderbird-$pkgver-x86_64.tar.xz::https://archive.mozilla.org/pub/thunderbird/candidates/147.0.2-candidates/build1/linux-x86_64/en-US/thunderbird-147.0.2.tar.xz
+  thunderbird-$pkgver-x86_64.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/147.0.2/linux-x86_64/en-US/thunderbird-147.0.2.tar.xz
 #thunderbird-$pkgver-x86_64.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/releases/145.0/linux-x86_64/thunderbird-$pkgver.tar.xz.asc
 )
 
