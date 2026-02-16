@@ -3,7 +3,7 @@
 pkgname=golangci-lint-langserver-bin
 _pkgname=${pkgname%-bin}
 pkgver=0.0.11
-pkgrel=2
+pkgrel=3
 pkgdesc="golangci-lint language server"
 provides=("$_pkgname")
 conflicts=("$_pkgname")
