@@ -1,7 +1,7 @@
 # Maintainer: Hermann Höhne <hoehermann@gmx.de>
 pkgname=purple-gowhatsapp-git
 _pkgnam=${pkgname%-git}
-pkgver=1.21.0
+pkgver=1.21.0_396_20260216124546
 pkgrel=1
 pkgdesc="A libpurple/Pidgin plugin for WhatsApp, powered by whatsmeow"
 arch=('x86_64' 'i686')
