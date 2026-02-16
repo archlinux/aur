@@ -3,7 +3,6 @@ pkgbase = pince-git
 	pkgver = r1609.527ac61
 	pkgrel = 1
 	url = https://github.com/korcankaraokcu/PINCE
-	install = note.install
 	arch = any
 	license = GPL-3.0-or-later WITH CC-BY-3.0
 	makedepends = cmake

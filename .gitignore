@@ -3,4 +3,6 @@
 !PKGBUILD
 !.gitignore
 !PINCE.*
+!pince.*
+!*.policy
 !*.install
