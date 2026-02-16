@@ -1,0 +1,3 @@
+[python-gitchangelog]
+source = "git"
+git = "https://github.com/sarnold/gitchangelog.git"
