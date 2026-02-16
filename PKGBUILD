@@ -1,7 +1,7 @@
 # Maintainer: Diramix <39developer@diram1x.ru>
 
 pkgname=pulsesync
-pkgver=2.10.2
+pkgver=2.10.3
 pkgrel=1
 pkgdesc="PulseSync integrates with Yandex Music and supports Discord RPC, themes and scripts."
 arch=('x86_64')
