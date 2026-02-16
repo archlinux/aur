@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=moonlight-qt-mainline-git
 pkgver=0
-pkgrel=2
+pkgrel=1
 pkgdesc="GameStream client for PCs (Windows, Mac, Linux, and Steam Link) - Git version"
 arch=('x86_64' 'aarch64')
 url="https://github.com/moonlight-stream/moonlight-qt"
