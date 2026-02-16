@@ -1,0 +1,4 @@
+[cvmfs-config-eessi]
+source = "git"
+git = "https://github.com/EESSI/filesystem-layer.git"
+prefix = "v"
