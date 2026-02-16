@@ -2,20 +2,19 @@
 # Contributor: Wu Junyu <wu DOT junyu DOT aur AT outlook DOT com>
 
 pkgname=mopac
-pkgver=23.2.2
+pkgver=23.2.3
 pkgrel=1
 pkgdesc='Molecular Orbital PACkage'
 arch=(x86_64)
 url='https://github.com/openmopac/mopac'
 license=(Apache-2.0)
 depends=(blas lapack)
-makedepends=(gcc-fortran cmake)
-checkdepends=(python python-numpy)
+makedepends=(cmake gcc-fortran python python-numpy)
 provides=(mopac)
 replaces=(mopac7)
 conflicts=(mopac7)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d64525fa4ae709b214ecbd5981b7e8a2928e2f1a91d85a253e8dbd04616e14cd')
+sha256sums=('0ede4e0454ea605df3debeec0d01261fca63a04f5b113e98649296c7c08369e8')
 
 build(){
     cd "$pkgname-$pkgver"

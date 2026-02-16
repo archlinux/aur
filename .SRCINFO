@@ -1,20 +1,20 @@
 pkgbase = mopac
 	pkgdesc = Molecular Orbital PACkage
-	pkgver = 23.2.2
+	pkgver = 23.2.3
 	pkgrel = 1
 	url = https://github.com/openmopac/mopac
 	arch = x86_64
 	license = Apache-2.0
-	checkdepends = python
-	checkdepends = python-numpy
-	makedepends = gcc-fortran
 	makedepends = cmake
+	makedepends = gcc-fortran
+	makedepends = python
+	makedepends = python-numpy
 	depends = blas
 	depends = lapack
 	provides = mopac
 	conflicts = mopac7
 	replaces = mopac7
-	source = mopac-23.2.2.tar.gz::https://github.com/openmopac/mopac/archive/v23.2.2.tar.gz
-	sha256sums = d64525fa4ae709b214ecbd5981b7e8a2928e2f1a91d85a253e8dbd04616e14cd
+	source = mopac-23.2.3.tar.gz::https://github.com/openmopac/mopac/archive/v23.2.3.tar.gz
+	sha256sums = 0ede4e0454ea605df3debeec0d01261fca63a04f5b113e98649296c7c08369e8
 
 pkgname = mopac
