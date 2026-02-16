@@ -1,8 +1,8 @@
 # Maintainer: AnabasaSoft <anabasasoft@gmail.com>
 pkgname=kamaleon-git
 _pkgname=Kamaleon
-pkgver=2.4.0.r4.cee2da3
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="A universal package manager wrapper (CLI) for Arch, Manjaro, Debian and more. Written in Go."
 arch=('x86_64' 'aarch64')
 url="https://github.com/AnabasaSoft/Kamaleon"
