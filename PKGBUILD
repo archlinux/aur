@@ -2,12 +2,12 @@
 pkgname=vpinfe-git
 _pkgname=${pkgname%-git}
 _reponame=vpinfe
-pkgver=r259.986dcbc
+pkgver=r313.eb50f80
 pkgrel=1
 pkgdesc="A vpinball frontend for Linux, Mac, and Windows"
 arch=('any')
 url="https://github.com/superhac/vpinfe"
-depends=('git' 'python-pip' 'python313' 'gtk4' 'webkit2gtk')
+depends=('git' 'python-pip' 'gtk4' 'webkit2gtk')
 provides=('vpinfe')
 conflicts=('vpinfe')
 source=('git+https://github.com/superhac/vpinfe.git' 'vpinfe.desktop')
@@ -21,7 +21,7 @@ pkgver() {
 package() {
   # Create virtual environment and install dependencies
 	mkdir -p "$pkgdir/opt/$_pkgname/venv"
-  python3.13 -m venv "$pkgdir/opt/$_pkgname/venv"
+  python -m venv "$pkgdir/opt/$_pkgname/venv"
   source "$pkgdir/opt/$_pkgname/venv/bin/activate"
   cd "$srcdir/$_reponame"
   pip install -r requirements.txt
