@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pclink
 _app_id=xyz.bytedz.PCLink
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Desktop app for secure remote PC control and management"
 arch=('any')
@@ -25,7 +25,6 @@ depends=(
   'python-psutil'
   'python-pyautogui'
   'python-pydantic'
-  'python-pynput'
   'python-qrcode'
   'python-requests'
   'python-websockets'
@@ -43,6 +42,8 @@ makedepends=(
 optdepends=(
   'grim: Screenshot support for wlroots-based compositors'
   'python-aiofiles: Improves upload performance with async file I/O'
+  'python-pynput: Fallback for input control'
+  'python-evdev: Input control on Wayland'
   'python-pyperclip: Fallback for clipboard support'
   'python-pystray: Fallback for system tray'
   'spectacle: Screenshot support on KDE Plasma'
@@ -50,8 +51,8 @@ optdepends=(
 )
 source=("PCLink-$pkgver.tar.gz::https://github.com/BYTEDz/PCLink/archive/refs/tags/v$pkgver.tar.gz"
          "$pkgname.1")
-sha256sums=('704cb3ca91936a310b88905135c2e5c8ad38667617d7033e0c497cf48837f3d2'
-            'd509f91850657e052267ae856d4e33597d6f2a9e83f9e022d14025f21fd6d7fd')
+sha256sums=('640e516c241c49e41521533dd99da8ffd8b32d9b64bb6f9f1f885b7e5969d650'
+            '34fd09ea7b1bf2b80cb750a07d1601a232e5b0823a66cfdbdef2311fad2b3916')
 
 build() {
   cd "PCLink-$pkgver"
@@ -68,6 +69,7 @@ package() {
   install -m440 "scripts/linux/$pkgname-sudoers" "$pkgdir/etc/sudoers.d/$pkgname"
   install -Dm644 "scripts/linux/$pkgname.service.template" \
     "$pkgdir/usr/lib/systemd/user/$pkgname.service"
+  install -Dm644 scripts/linux/99-uinput.rules -t "$pkgdir/usr/lib/udev/rules.d/"
   install -Dm644 "assets/${pkgname}_icon.svg" \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/${_app_id}.svg"
   install -Dm644 "${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
