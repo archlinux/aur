@@ -3,7 +3,7 @@
 _pkgname=plannotator
 pkgname=plannotator-bin
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive review and annotation tool for AI coding agent plans with visual interface"
 arch=('x86_64')
 url="https://github.com/backnotprop/plannotator"
@@ -12,7 +12,7 @@ depends=()
 provides=('plannotator')
 conflicts=('plannotator' 'plannotator-git')
 options=('!strip')
-source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-linux-x64")
+source_x86_64=("${_pkgname}-linux-x64-v${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-linux-x64")
 sha256sums_x86_64=('a655c4577118c778492542003e86e104db53edd0c0d90f0a9eb1f1dc5ed1f1bd')
 
 latestver() {
@@ -21,7 +21,7 @@ latestver() {
 }
 
 package() {
-  install -Dm755 "${_pkgname}-linux-x64" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755 "${_pkgname}-linux-x64-v${pkgver}" "${pkgdir}/usr/bin/${_pkgname}"
 
   # Install slash commands for Claude Code
   install -Dm644 /dev/stdin "${pkgdir}/usr/share/${_pkgname}/claude-command.txt" << 'EOF'
