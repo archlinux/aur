@@ -1,6 +1,6 @@
 # Maintainer: unicxrn
 pkgname=xerahs-git
-pkgver=r1246.3196b02
+pkgver=r1323.9deedf9
 pkgrel=1
 pkgdesc="Cross-platform screen capture and file sharing tool (ShareX port) built with Avalonia UI"
 arch=('x86_64')
@@ -25,7 +25,7 @@ provides=('xerahs')
 conflicts=('xerahs')
 source=(
     "xerahs::git+https://github.com/ShareX/XerahS.git"
-    "xerahs-editor::git+https://github.com/ShareX/ImageEditor.git#branch=main"
+    "xerahs-editor::git+https://github.com/ShareX/ImageEditor.git#branch=develop"
     "xerahs.desktop"
     "xerahs.sh"
 )
@@ -59,6 +59,8 @@ build() {
         -r linux-x64 \
         --self-contained false \
         -p:PublishSingleFile=false \
+        -p:DebugType=none \
+        -p:DebugSymbols=false \
         -o "$srcdir/publish"
 }
 
