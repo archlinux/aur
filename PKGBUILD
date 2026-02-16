@@ -1,7 +1,7 @@
 # Maintainer: Ja4e <Jakie101@proton.me>
 pkgname=lyrus-git
-pkgver=1.0.1
-pkgrel=3
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="A Python curses lyrics player primarily for cmus, with playerctl as a fallback"
 arch=('any')
 url="https://github.com/Ja4e/Lyrus"
@@ -14,6 +14,7 @@ depends=(
     'python-wcwidth'
     'python-appdirs'
     'python-syncedlyrics'
+    'python-mutagen'
 )
 
 optdepends=(
