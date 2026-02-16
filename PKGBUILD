@@ -10,7 +10,7 @@ pkgname=(
          'nextcloud-app-socialsharing-twitter'
          'nextcloud-app-socialsharing-whatsapp'
 )
-pkgver=3.3.0
+pkgver=4.0.1
 pkgrel=1
 arch=("any")
 url="https://github.com/nextcloud/socialsharing"
@@ -19,7 +19,7 @@ makedepends=("npm" "composer" "yq")
 groups=('nextcloud-apps')
 source=("$_appname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgbase.patch")
-sha512sums=('2d7579bd8f3f553677d33dca4ee2404f9ae32def225a2356ce830a72629ff20eca0530df4f3aef02eadedae5fa88bed290d84ee63cfe181f6a4a5d114d3470b4'
+sha512sums=('3e809160a8cf73fdcce5a77a79a1eabd8eb0edb53ccfba0f691f0fde9b68b35554b78b3a00296d7a756e9b988893f772e7e64f7d974bd7d701b5a9e5de707878'
             'b9065297bc55390cb83ac5a9c07aa80321399a25fb6bd801a9e53b7e1395091f1eb35f1b493577e1d6b91d6977231ba15f3067117ce46ffa80fd41850124c85b')
 
 prepare() {
