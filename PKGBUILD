@@ -2,7 +2,7 @@
 # AUR PKGBUILD - downloads pre-built binary from GitHub releases
 
 pkgname=people-work
-pkgver=1.4.0
+pkgver=1.4.5
 pkgrel=1
 pkgdesc="Manage your most important professional relationships"
 arch=('x86_64')
