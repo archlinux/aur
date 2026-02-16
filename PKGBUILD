@@ -1,7 +1,7 @@
 # Maintainer: Andrew Koidan <deathangel908@gmail.com>
 pkgname=hotkey-hub
-pkgver=2.2.0
-tag=v2.2.0
+pkgver=3.0.0
+tag=v3.0.0
 pkgrel=1
 pkgdesc="Allows to control remote PC (mouse/windows/keyboard/processses) using hotkeys on this pc"
 arch=('x86_64')
@@ -27,10 +27,10 @@ source=(
   "hotkey-hub.install"
 )
 options=(!strip)
-sha256sums=('2bb194482b2e63c5e09ed907ff183ccfaa28d8c9dfcdae070ba395ae9e187b80'
-            '5a07b119f729f1b5f2643a9ee7bab24a405937684b9dd40594642cccc318814e'
-            '60d03ee4d9482468829de5ce0fcbbfbc6eb18c773d501bb421f850be75caf615'
-            '9f3a9e3ddc905cd46b31942b89199dea0f1493d9f7b825dfe6d5188a41f7f5db'
+sha256sums=('d79ab04b3cf6daa1949aa5563257adf126170e2ebccfdd07638c6da248a7a363'
+            'd95cfc19944287a67590922fabbc4e017b952ab22ee7d633947cc12bc19c7fd5'
+            '6d2bc1020bc397a7ae3d7573e5b591abd2f993b32d5c048456b91e7c8ee4c7cf'
+            '7c15292265d013dfc084c38cd1feabc282f26d55b21e1fdfb8d0485837b24d9d'
             'cd12426f68aaf21b9421ed3deace0808b5795fc1f843f030b5a24f039929c55e'
             '45614c48e71198124b5d7e63694abce3a4c8e4653f2c71038071d36fd05e1e50'
             '81a0dbd5847c0866c8dadfbb9d47d06e5763e70c9b935d7c0069186bee537061')
