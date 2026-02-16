@@ -1,7 +1,7 @@
 pkgbase = oranglauncher-bin
 	pkgdesc = Orange Launcher for Arch Linux
-	pkgver = 2.0.0
-	pkgrel = 2
+	pkgver = 3.0.0
+	pkgrel = 3
 	url = https://oranges.lt
 	arch = x86_64
 	license = MIT

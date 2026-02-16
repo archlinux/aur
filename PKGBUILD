@@ -1,6 +1,6 @@
 pkgname=oranglauncher-bin
-pkgver=2.0.0
-pkgrel=2
+pkgver=3.0.0
+pkgrel=3
 pkgdesc="Orange Launcher for Arch Linux"
 arch=(x86_64)
 url="https://oranges.lt"
