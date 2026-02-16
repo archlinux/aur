@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=geckodriver-git
-pkgver=138.0.3.r5880.g917c73cfe1a5
+pkgver=147.0.3.r9851.gcced10961b53
 pkgrel=1
 pkgdesc="WebDriver for Firefox"
 arch=('i686' 'x86_64')
 url="https://github.com/mozilla-firefox/firefox/tree/main/testing/geckodriver"
 license=('MPL-2.0')
-depends=('gcc-libs')
+depends=('glibc' 'libgcc')
 makedepends=('git' 'cargo')
 provides=("geckodriver=$pkgver")
 conflicts=('geckodriver')
@@ -28,7 +28,7 @@ pkgver() {
   cd "firefox/testing/geckodriver"
 
   _tag=$(git tag -l --sort -creatordate | grep -E '^FIREFOX_?[0-9_]+_RELEASE$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^FIREFOX_//;s/_RELEASE//;s/_/./g'
 }
