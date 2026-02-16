@@ -1,7 +1,7 @@
 pkgbase = clipsync-git
 	pkgdesc = Clipboard synchronization script for Wayland Compositor (X11 <--> Wayland)
-	pkgver = v1.1.0.r5.dcd639f
-	pkgrel = 1
+	pkgver = v1.1.0.r7.48ce557
+	pkgrel = 2
 	url = https://github.com/SHORiN-KiWATA/clipsync
 	arch = any
 	license = MIT
