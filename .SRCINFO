@@ -1,0 +1,19 @@
+pkgbase = ng-log-git
+	pkgdesc = C++ library for application-level logging
+	pkgver = 0.8.2.r28.g4f95db8
+	pkgrel = 1
+	url = https://ng-log.github.io/ng-log/stable/
+	arch = i686
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = ng-log=0.8.2.r28.g4f95db8
+	conflicts = ng-log
+	source = git+https://github.com/ng-log/ng-log.git
+	sha256sums = SKIP
+
+pkgname = ng-log-git
