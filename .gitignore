@@ -1,0 +1,7 @@
+*
+!/*.service
+!/PKGBUILD
+!/.SRCINFO
+!/.gitignore
+!/*.tmpfiles
+!/*.sysusers

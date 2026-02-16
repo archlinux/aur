@@ -1,0 +1,2 @@
+d /var/log/ipfs-cluster 0700 ipfs-cluster ipfs-cluster
+d /var/lib/ipfs-cluster 0700 ipfs-cluster ipfs-cluster

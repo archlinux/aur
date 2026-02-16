@@ -1,0 +1,19 @@
+[Unit]
+Description=ipfs-cluster-service
+After=network.target
+
+[Service]
+Type=simple
+User=ipfs-cluster
+Group=ipfs-cluster
+EnvironmentFile=-/etc/conf.d/ipfs-cluster
+EnvironmentFile=-/etc/conf.d/ipfs-cluster-service
+ExecStart=/usr/bin/ipfs-cluster-service daemon
+Restart=on-failure
+RestartSec=10
+TimeoutStartSec=60
+RuntimeDirectory=ipfs-cluster
+LimitNOFILE=infinity
+
+[Install]
+WantedBy=multi-user.target

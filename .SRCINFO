@@ -1,0 +1,21 @@
+pkgbase = ipfs-cluster
+	pkgdesc = ipfs-cluster
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://github.com/ipfs-cluster/ipfs-cluster
+	arch = x86_64
+	arch = aarch64
+	license = MIT AND Apache-2.0
+	makedepends = go
+	conflicts = ipfs-cluster-bin
+	conflicts = ipfs-cluster-git
+	source = https://github.com/ipfs-cluster/ipfs-cluster/archive/refs/tags/v1.1.5.tar.gz
+	source = ipfs-cluster.sysusers
+	source = ipfs-cluster.tmpfiles
+	source = ipfs-cluster-service.service
+	b2sums = 480a664aa5930b302f3ed8983991d43340f479a3f16e363ac870b02d2e85d171c019117c1ceb6765ff80569c9c5c7b6702df07ab627b970bc838bb8a3e3c8a42
+	b2sums = fb71aadc34ebcc037fc3e9032a943046555b7bbb264f648b6bed7aefc6cbdefcf5145e6e34d44f94c63e98e9d5c6376d82d0b67bf396f4ee97ead6080a9a9e34
+	b2sums = ccd8f9a42ee80b114e66b95d1330decb9790a0f706f0b37eaa6d97e0ccc77f00a46c24f4fafa6a4949520bc4324c09426c368a68f8c6d2d978c905c3e57d9acb
+	b2sums = edc9db6d1dd8a4a52cd5161c8003a00c5e95acf56b9d1bdbd076926e40b516f9091fbaf1c281ed7b99deefa519ca78fc648c113391907fd5a2f75ad4693184b4
+
+pkgname = ipfs-cluster
