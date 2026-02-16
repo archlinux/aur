@@ -1,18 +1,27 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=izpack-git
-pkgver=5.2.3.r1.g5a01d5af8
+pkgver=5.2.4.r110.g8da6fd55a
 pkgrel=1
 pkgdesc='Tool for packaging applications on the Java platform as cross-platform installers (git version)'
 arch=('any')
 url='http://izpack.org/'
 license=('Apache-2.0')
-depends=('sh' 'java-environment=11' 'hicolor-icon-theme')
-optdepends=('python: for wrapper utils'
-            'p7zip: for izpack2exe wrapper'
-            'upx: for izpack2exe wrapper')
-makedepends=('git' 'maven')
-checkdepends=('gtk2' 'gnome-themes-standard')
+depends=(
+    'hicolor-icon-theme'
+    'java-environment=11'
+    'sh')
+optdepends=(
+    'p7zip: for izpack2exe wrapper'
+    'python: for wrapper utils'
+    'python-setuptools: for wrapper utils'
+    'upx: for izpack2exe wrapper')
+makedepends=(
+    'git'
+    'maven')
+checkdepends=(
+    'gnome-themes-extra'
+    'gtk3')
 source=('git+https://github.com/izpack/izpack.git'
         '010-izpack-compile.patch')
 sha256sums=('SKIP'
@@ -40,11 +49,11 @@ check() {
 package() {
     # install
     local _ver
-    _ver="$(find izpack/izpack-dist/target -type f -name 'izpack-dist-*.jar' |
-        sort | head -n1 | sed 's/\.jar$//;s/-tests$//;s|.*/izpack-dist-||')"
+    _ver="$(find izpack/izpack-dist/target -type f -name 'izpack-dist-*-installer.jar' |
+        sed 's/-installer\.jar$//;s/-tests$//;s|.*/izpack-dist-||')"
     printf '%s\n' '0' '1' '1' '1' "${pkgdir}/opt/izpack" \
                   'O' '1' 'Y' '1' 'N' 'N' 'Y' "${pkgdir}/opt/izpack/auto-install.xml" |
-    java -jar "izpack/izpack-dist/target/izpack-dist-${_ver}.jar" -console
+    java -jar "izpack/izpack-dist/target/izpack-dist-${_ver}-installer.jar" -console
     
     # fix permissions
     chmod a+x "${pkgdir}/opt/izpack/utils/wrappers/izpack2app/izpack2app.py"
