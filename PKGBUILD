@@ -1,9 +1,9 @@
-# Maintainer: Jason Lenz <Jason at Lenzplace dot org>
+# Maintainer: sathariel <sathariel plus aur at disroot dot org>
 # Contributor: C. Dominik Bódi <dominik dot bodi at gmx dot de>
 # Contributor: Rafał Michalski <plum.michalski at gmail dot com>
 pkgname="burp-backup"
 _pkgname="burp"
-pkgver=2.4.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="A backup and restore program that uses librsync to reduce backup size."
 arch=('i686' 'x86_64' 'armv7h')
@@ -18,14 +18,12 @@ source=(
   "https://github.com/grke/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.bz2"
   "burp.install"
   "readme-archlinux.txt"
-  "https://github.com/grke/burp/commit/1d6c931af7c11f164cf7ad3479781e8f03413496.patch"
 )
 
 sha256sums=(
-  1f88d325f59c6191908d13ac764db5ee56b478fbea30244ae839383b9f9d2832 # burp-2.4.0.tar.bz2
+  3f5e057d40d2986fbfbebdf7a64570719c4c664882a3fd038ebac5a20326c5cf # burp-3.2.0.tar.bz2
   813b5c349f9d0ea1db2fb166531472b098a773aa3d2766d151f175ad17c40351 # burp.install
   e3e633f09d03efa3f2c1e769a2e31f514466ebd97cf6bb5f1ef0761e17abec67 # readme-archlinux.txt
-  SKIP
 )
 
 backup=(
@@ -34,11 +32,6 @@ backup=(
   "etc/burp/CA.cnf"
   "etc/logrotate.d/burp"
 )
-
-prepare() {
-  patch -d "$srcdir/$_pkgname-$pkgver" -p1 < 1d6c931af7c11f164cf7ad3479781e8f03413496.patch
-  cd "$srcdir/$_pkgname-$pkgver"
-}
 
 build() {
   cd "$_pkgname-$pkgver"

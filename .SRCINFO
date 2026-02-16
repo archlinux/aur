@@ -1,6 +1,6 @@
 pkgbase = burp-backup
 	pkgdesc = A backup and restore program that uses librsync to reduce backup size.
-	pkgver = 2.4.0
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://burp.grke.org/
 	install = burp.install
@@ -18,13 +18,11 @@ pkgbase = burp-backup
 	backup = etc/burp/burp-server.conf
 	backup = etc/burp/CA.cnf
 	backup = etc/logrotate.d/burp
-	source = https://github.com/grke/burp/releases/download/2.4.0/burp-2.4.0.tar.bz2
+	source = https://github.com/grke/burp/releases/download/3.2.0/burp-3.2.0.tar.bz2
 	source = burp.install
 	source = readme-archlinux.txt
-	source = https://github.com/grke/burp/commit/1d6c931af7c11f164cf7ad3479781e8f03413496.patch
-	sha256sums = 1f88d325f59c6191908d13ac764db5ee56b478fbea30244ae839383b9f9d2832
+	sha256sums = 3f5e057d40d2986fbfbebdf7a64570719c4c664882a3fd038ebac5a20326c5cf
 	sha256sums = 813b5c349f9d0ea1db2fb166531472b098a773aa3d2766d151f175ad17c40351
 	sha256sums = e3e633f09d03efa3f2c1e769a2e31f514466ebd97cf6bb5f1ef0761e17abec67
-	sha256sums = SKIP
 
 pkgname = burp-backup
