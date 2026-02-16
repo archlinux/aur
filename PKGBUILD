@@ -1,6 +1,6 @@
 # Maintainer: Pol Rivero <aur at polrivero dot com>
 pkgname=doot
-pkgver=0.6.6
+pkgver=0.6.7
 pkgrel=1
 pkgdesc="A fast, simple and intuitive dotfiles manager that just gets the job done"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ makedepends=('git' 'go' 'sed')
 optdepends=('diffutils: To display changes before overwriting a file')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pol-rivero/doot/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('6187beda399cfe3768a10f5fa455bb322f5eadf79120f192568920aa63b56daa')
+sha256sums=('60eabe8bd252f5239690002d6ba1817674769b27d014912194716b0966d6d3d5')
 
 build() {
     tar -xzf "${pkgname}-${pkgver}.tar.gz"
