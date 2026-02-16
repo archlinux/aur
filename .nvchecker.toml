@@ -1,0 +1,4 @@
+[netcalc]
+source = "git"
+git = "https://github.com/troglobit/netcalc.git"
+prefix = "v"
