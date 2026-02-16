@@ -2,7 +2,7 @@
 
 pkgname=repak
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Unreal Engine .pak file library and CLI in rust'
 url='https://github.com/trumank/repak'
 license=('Apache-2.0' 'MIT')
