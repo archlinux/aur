@@ -1,6 +1,6 @@
 pkgbase = vorbis-tools-git
 	pkgdesc = Command-line tools for creating and playing Ogg Vorbis files
-	pkgver = 1.4.3.r12.gcfc497a
+	pkgver = 1.4.3.r13.gabdfdfb
 	pkgrel = 1
 	url = https://xiph.org/vorbis/
 	arch = i686
@@ -11,14 +11,15 @@ pkgbase = vorbis-tools-git
 	makedepends = flac
 	makedepends = libao
 	makedepends = libvorbis
-	depends = gcc-libs
+	depends = glibc
+	depends = libgcc
 	depends = libao.so
 	depends = libcurl.so
 	depends = libFLAC.so
 	depends = libvorbis.so
 	depends = libvorbisenc.so
 	depends = libvorbisfile.so
-	provides = vorbis-tools=1.4.3.r12.gcfc497a
+	provides = vorbis-tools=1.4.3.r13.gabdfdfb
 	conflicts = vorbis-tools
 	source = git+https://gitlab.xiph.org/xiph/vorbis-tools.git
 	sha256sums = SKIP
