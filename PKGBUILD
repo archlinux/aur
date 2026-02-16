@@ -2,7 +2,7 @@
 # Contributor: Joost Bremmer <contact at madeofmagicandwires dot online>
 # Contributor: Bogdan <d0xi at inbox dot ru>
 pkgname=cheat
-pkgver=4.7.1
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -21,7 +21,7 @@ _commit=36bdb99dcfadde210503d8c2dcf94b34ee950e1d
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         'conf.yml'
         "git+https://github.com/cheat/cheatsheets.git#commit=${_commit}")
-sha256sums=('d56857cd777d3eaa9f048a69fc81e97800abd311b42cbac1c16d6f100c929384'
+sha256sums=('5ef8864dacb5b37268d7d26cd01f74b99a33b2e5eb5b290e4221358410c99db4'
             'be2c76aea3937146b49ac6f81ae7f22a9521486d3d6e51414da3dafbcb01ea6e'
             'daed9ee395975c898ea392885960ac5c01d5695bafcdee220b153911b8c10318')
 
@@ -46,6 +46,11 @@ build() {
   # Clean module cache for makepkg -C
   go clean -modcache
 
+  # Completions
+  for shell in bash fish zsh; do
+    ./build/"$pkgname" --completion "${shell}" > "$pkgname.${shell}"
+  done
+
   # Generate man page
   pandoc -s -t man "doc/$pkgname.1.md" -o "doc/$pkgname.1"
 }
@@ -53,10 +58,10 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 "build/$pkgname" -t "$pkgdir/usr/bin/"
-  install -Dm644 "scripts/$pkgname.bash" \
+  install -Dm644 "$pkgname.bash" \
     "$pkgdir/usr/share/bash-completion/completions/$pkgname"
-  install -Dm644 "scripts/$pkgname.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d/"
-  install -Dm644 "scripts/$pkgname.zsh" "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+  install -Dm644 "$pkgname.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d/"
+  install -Dm644 "$pkgname.zsh" "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
   install -Dm644 "doc/$pkgname.1" -t "$pkgdir/usr/share/man/man1/"
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/$pkgname-LICENSE"
   install -Dm644 "$srcdir/conf.yml" -t "$pkgdir/etc/$pkgname/"
