@@ -1,0 +1,25 @@
+pkgbase = dinit-edit-git
+	pkgdesc = List and edit dinit service files by name (no more scouring the folders)
+	pkgver = v0.20.0.r46.g227df92
+	pkgrel = 1
+	url = https://github.com/davmac314/dinit
+	arch = x86_64
+	arch = aarch64
+	license = DO
+	license = WHAT
+	license = THE
+	license = FUCK
+	license = YOU
+	license = WANT
+	license = TO
+	license = PUBLIC
+	license = LICENSE
+	makedepends = go
+	makedepends = git
+	provides = dinit-edit=v0.20.0.r46.g227df92
+	options = !debug
+	options = !strip
+	source = dinit::git+https://github.com/davmac314/dinit.git#branch=master
+	sha256sums = SKIP
+
+pkgname = dinit-edit-git
