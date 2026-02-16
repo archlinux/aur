@@ -1,0 +1,15 @@
+pkgbase = ncmpcpp-album-cover-git
+	pkgdesc = Simple script for displaying ncmpcpp album covers in a separate terminal using mpv
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/AVR-ochkarik/ncmpcpp-album-cover
+	arch = any
+	license = MIT
+	depends = mpd
+	depends = mpc
+	depends = mpv
+	depends = socat
+	source = git+https://github.com/AVR-ochkarik/ncmpcpp-album-cover
+	md5sums = SKIP
+
+pkgname = ncmpcpp-album-cover-git
