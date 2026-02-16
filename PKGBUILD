@@ -1,16 +1,17 @@
-# Maintainer: rainypixel <me@bobchenkov.ru>
+# Maintainer: denuvoless <jason@denuvoless.com>
 pkgname=hyprism-git
-pkgver=r92.c8ee552
+pkgver=r533.dd1ed9a
 pkgrel=1
-pkgdesc="A multiplatform Hytale launcher with mod manager"
+pkgdesc="A multiplatform Hytale launcher with mod manager and more!"
 arch=('x86_64')
-url="https://github.com/yyyumeniku/HyPrism"
-license=('MIT')
-depends=('webkit2gtk-4.1' 'gtk3')
-makedepends=('go' 'npm' 'git')
+url="https://github.com/HyPrismTeam/HyPrism"
+license=('GPL-3.0-only')
+depends=('gtk3' 'nss' 'alsa-lib')
+makedepends=('dotnet-sdk>=10' 'npm' 'nodejs' 'git')
 provides=('hyprism')
 conflicts=('hyprism' 'hyprism-bin')
-source=("${pkgname}::git+https://github.com/yyyumeniku/HyPrism.git")
+options=('!strip')
+source=("${pkgname}::git+https://github.com/HyPrismTeam/HyPrism.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -21,45 +22,53 @@ pkgver() {
 build() {
     cd "$pkgname"
 
-    # Install wails if not present
-    if ! command -v wails &> /dev/null; then
-        go install github.com/wailsapp/wails/v2/cmd/wails@latest
-    fi
-    export PATH="$PATH:$(go env GOPATH)/bin"
-
-    # Create pkg-config shim for webkit2gtk-4.1 -> 4.0 compatibility
-    mkdir -p "$srcdir/pkgconfig-compat"
-    cat > "$srcdir/pkgconfig-compat/webkit2gtk-4.0.pc" << 'EOF'
-prefix=/usr
-exec_prefix=${prefix}
-libdir=/usr/lib
-includedir=${prefix}/include
-
-Name: WebKitGTK
-Description: Web content engine for GTK (4.1 compat shim)
-URL: https://webkitgtk.org
-Version: 2.50.0
-Requires: glib-2.0 gtk+-3.0 libsoup-3.0 javascriptcoregtk-4.1
-Libs: -L${libdir} -lwebkit2gtk-4.1
-Cflags: -I${includedir}/webkitgtk-4.1
+    # Use "dir" target. Produces an unpacked app directory without
+    # needing flatpak/AppImage/deb tooling.
+    cat > Properties/electron-builder.json << 'EOF'
+{
+  "$schema": "https://raw.githubusercontent.com/electron-userland/electron-builder/refs/heads/master/packages/app-builder-lib/scheme.json",
+  "compression": "store",
+  "artifactName": "${productName}-${os}-${arch}-${version}.${ext}",
+  "directories": { "buildResources": "Build", "output": "dist" },
+  "linux": {
+    "target": ["dir"],
+    "executableArgs": ["--no-sandbox"],
+    "category": "Game",
+    "icon": "icons"
+  }
+}
 EOF
-    export PKG_CONFIG_PATH="$srcdir/pkgconfig-compat:$PKG_CONFIG_PATH"
-    export GOFLAGS="-trimpath"
 
-    wails build -ldflags "-s -w"
+    export DOTNET_CLI_TELEMETRY_OPTOUT=1
+    export DOTNET_NOLOGO=1
+    export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
+
+    dotnet publish \
+        -c Release \
+        -p:RuntimeIdentifier=linux-x64 \
+        -p:PublishReadyToRun=false
 }
 
 package() {
     cd "$pkgname"
 
-    install -Dm755 "build/bin/HyPrism" "$pkgdir/usr/bin/hyprism"
+    local _unpacked="bin/Release/net10.0/linux-x64/publish/linux-unpacked"
+
+    install -dm755 "$pkgdir/opt/hyprism"
+    cp -a "$_unpacked"/. "$pkgdir/opt/hyprism/"
+    chmod 755 "$pkgdir/opt/hyprism/HyPrism"
+
+    install -Dm755 /dev/stdin "$pkgdir/usr/bin/hyprism" << 'EOF'
+#!/bin/sh
+exec /opt/hyprism/HyPrism "$@"
+EOF
+
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    # Desktop entry
     install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/hyprism.desktop" << EOF
 [Desktop Entry]
 Name=HyPrism
-Comment=Hytale Launcher with mod manager
+Comment=A multiplatform Hytale launcher with mod manager and more!
 Exec=hyprism
 Icon=hyprism
 Terminal=false
@@ -67,10 +76,9 @@ Type=Application
 Categories=Game;
 EOF
 
-    # Icon (if exists)
-    if [[ -f "build/appicon.png" ]]; then
-        install -Dm644 "build/appicon.png" "$pkgdir/usr/share/pixmaps/hyprism.png"
-    elif [[ -f "appicon.png" ]]; then
-        install -Dm644 "appicon.png" "$pkgdir/usr/share/pixmaps/hyprism.png"
+    if [[ -f Frontend/public/icon.png ]]; then
+        install -Dm644 Frontend/public/icon.png "$pkgdir/usr/share/pixmaps/hyprism.png"
+    elif [[ -f Frontend/src/assets/images/appicon.png ]]; then
+        install -Dm644 Frontend/src/assets/images/appicon.png "$pkgdir/usr/share/pixmaps/hyprism.png"
     fi
 }
