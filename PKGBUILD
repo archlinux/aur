@@ -1,6 +1,6 @@
 # Maintainer: flammable_bunny <theflammablebunny@gmail.com>
 pkgname=mcsrlauncher
-pkgver=0.7.1_beta     # Must use underscore instead of hyphen due to AUR naming rules
+pkgver=0.7.2_beta     # Must use underscore instead of hyphen due to AUR naming rules
 pkgrel=1
 pkgdesc='Minecraft Launcher written in Kotlin. Made for MCSR Community and MCSR Ranked'
 arch=('any')
@@ -8,7 +8,7 @@ url='https://github.com/MCSRLauncher/Launcher'
 license=('GPL-3.0-or-later')
 depends=('java-runtime>=17' 'hicolor-icon-theme')
 source=("MCSRLauncher-${pkgver}.jar::https://github.com/MCSRLauncher/Launcher/releases/download/${pkgver//_/-}/MCSRLauncher.jar")
-sha256sums=('2f23783305ae1138a4c2a7ca41ea60e8041f80e1543eb62cbf5154369b46112c')
+sha256sums=('3486816d45b95fb26c97fb672d70c5a09481b74ce9824893f1463bbe145a78a1')
 
 package() {
     cd "$srcdir"
