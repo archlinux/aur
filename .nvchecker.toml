@@ -1,0 +1,4 @@
+[launcher-studio]
+source = "git"
+git = "https://github.com/MrArnaudMichel/launcher_studio.git"
+prefix = "v"
