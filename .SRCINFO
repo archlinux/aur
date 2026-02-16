@@ -1,6 +1,6 @@
 pkgbase = python-cryptoparser
 	pkgdesc = Cryptographic protocol parser
-	pkgver = 1.0.2
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://gitlab.com/coroner/CryptoParser
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-cryptoparser
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-cryptodatahub
-	source = https://gitlab.com/coroner/CryptoParser/-/archive/v1.0.2/cryptoparser-v1.0.2.tar.gz
-	sha512sums = 06698bf069fb3ea4acb0392523ee50b949a6a335837a42577c6656385a37ed68aaab0adecc0cca0444019261e30fb5cedd5ca7546affe439f8831611b7470eb1
+	source = https://gitlab.com/coroner/CryptoParser/-/archive/v1.1.0/cryptoparser-v1.1.0.tar.gz
+	sha512sums = 158e287318d69a1a95f506278af11cc5c5c5cf6d59a481c13a995ff1f28faf0d225c12cf9dd78dd1ac27ffbb06ae3df5971f7f4950d072c8de714ed92f55064b
 
 pkgname = python-cryptoparser
