@@ -2,7 +2,7 @@
 
 _pkgname=skl2onnx
 pkgname=python-skl2onnx
-pkgver=1.19.1
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Convert scikit-learn models to ONNX'
 arch=('any')
@@ -27,8 +27,8 @@ optdepends=(
     'python-pandas: for DataFrame type inference'
     'python-jinja: for ONNX operator code generation'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/onnx/sklearn-onnx/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9487611004ccd9510cd657fa3b7dc1dff299a202dd977efcd3c616c87aeae338')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/onnx/sklearn-onnx/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('80cfee91f8e545f2746c229855c5bf7c211aee374ad12b9584b6b64f38abfe1d')
 
 build() {
     cd "sklearn-onnx-$pkgver"
