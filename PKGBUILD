@@ -2,19 +2,19 @@
 # Co-maintainer: Carlos Galindo <arch -at- cgj.es>
 
 pkgname=yourls
-pkgver=1.10.0
+pkgver=1.10.3
 pkgrel=1
 pkgdesc="your own URL shortener"
 arch=('any')
 url="https://github.com/YOURLS/YOURLS"
-license=('GPL3')
+license=('MIT')
 depends=('php>=7.4')
 optdepends=('mysql>=5.0')
 conflicts=('yourls-svn')
 backup=('etc/webapps/yourls/config.php')
 install=$pkgname.install
 source=("yourls-${pkgver}.tar.gz::https://github.com/YOURLS/YOURLS/archive/${pkgver}.tar.gz")
-sha512sums=('43833037f069991e9df96d6b97d6a3ab731a7f7ee48b0ac90bad1cc921dc558d20463e397d021d448ada90fce006d791c244758da1448c2208ea60de82de1a40')
+sha512sums=('c822d92045ab4866cb3e0130d60bd798993d2bf222ebf9a3702ffa8305b907f213fbf918570f47901b529e636c2932117d11f0e40c17dadda538c0f04d0003fa')
 
 package() {
   cd "$srcdir/YOURLS-$pkgver"
