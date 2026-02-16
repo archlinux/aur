@@ -2,7 +2,7 @@
 
 pkgname=trayscale
 pkgver=0.18.7
-pkgrel=2
+pkgrel=3
 pkgdesc="An unofficial GUI wrapper for the Tailscale CLI client."
 arch=(i686 x86_64 aarch64)
 url="https://github.com/DeedleFake/trayscale"
@@ -18,15 +18,15 @@ _gover=go1.26.0
 
 build() {
   cd "$pkgname-$pkgver"
-
-  export GOTOOLCHAIN="$_gover+auto"
+  if [[ "$(go env GOTOOLCHAIN)" == "local" ]]; then
+    warning "GOTOOLCHAIN=local, which could cause the build to fail if the local version is out of date."
+    warning "If the build fails, try running again with GOTOOLCHAIN=auto."
+  fi
   ./dist.sh build "v$pkgver"
 }
 
 package() {
   cd "$pkgname-$pkgver"
-
-  export GOTOOLCHAIN="$_gover+auto"
   ./dist.sh install "$pkgdir/usr"
 }
 
