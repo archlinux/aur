@@ -1,11 +1,12 @@
 pkgbase = freenet
-	pkgdesc = Deprecated package. Replaced by hyphanet, a.k.a Freenet from 1999-2023. This is NOT Locutus.
+	pkgdesc = A peer-to-peer network for censorship-resistant and privacy-respecting publishing and communication, a.k.a The Original Freenet since 1999. This is NOT Locutus.
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.hyphanet.org/
 	arch = x86_64
 	arch = aarch64
 	license = GPL-2.0-or-later
+	depends = hyphanet
 
 pkgname = freenet

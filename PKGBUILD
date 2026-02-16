@@ -15,9 +15,10 @@
 
 pkgname=freenet
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 epoch=1
-pkgdesc='Deprecated package. Replaced by hyphanet, a.k.a Freenet from 1999-2023. This is NOT Locutus.'
+pkgdesc='A peer-to-peer network for censorship-resistant and privacy-respecting publishing and communication, a.k.a The Original Freenet since 1999. This is NOT Locutus.'
 arch=('x86_64' 'aarch64')
 url='https://www.hyphanet.org/'
 license=('GPL-2.0-or-later')
+depends=('hyphanet')
