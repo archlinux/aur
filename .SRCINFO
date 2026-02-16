@@ -1,11 +1,11 @@
 pkgbase = diffoci-bin
 	pkgdesc = diff for Docker and OCI container images
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/reproducible-containers/diffoci
 	arch = x86_64
 	license = Apache-2.0
-	source = diffoci-v0.1.7.linux-amd64::https://github.com/reproducible-containers/diffoci/releases/download/v0.1.7/diffoci-v0.1.7.linux-amd64
-	sha256sums = 7c8217cc622cfadf7ad86f116ef6e8d5e4a62fa5a57a0adcc5880044f13cfe3e
+	source = diffoci-v0.1.8.linux-amd64::https://github.com/reproducible-containers/diffoci/releases/download/v0.1.8/diffoci-v0.1.8.linux-amd64
+	sha256sums = 01e6b50c1568c9d61c758ef6da81869f2c26c852698d73dca961b3617effe949
 
 pkgname = diffoci-bin
