@@ -2,7 +2,7 @@
 # Maintainer: Mikołaj Badyl <contact@octrafic.com>
 
 pkgname='octrafic-bin'
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Test APIs naturally with AI - OpenAPI specs, natural language, intelligent responses'
 url='https://octrafic.com'
@@ -12,13 +12,13 @@ provides=('octrafic')
 conflicts=('octrafic')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Octrafic/octrafic-cli/releases/download/v${pkgver}/octrafic_Linux_arm64.tar.gz")
-sha256sums_aarch64=('a03189471d97ae05e10536704c5076b2a55062ca8e0850dcd142331c93f93c05')
+sha256sums_aarch64=('f35831f0c71a4d1a6361fd9f0b4ca91dcf019e9951c880480a8bdc7eab690092')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/Octrafic/octrafic-cli/releases/download/v${pkgver}/octrafic_Linux_armv7.tar.gz")
-sha256sums_armv7h=('4eb7dd33d5973821df768ad7c46079dc1cbe0c0bfcaa615934eeba02ca6abac9')
+sha256sums_armv7h=('8a87b15ab64bf4cd3379a8a51e933d823ca913ddf6d7ab74d3a0db8fca58884b')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Octrafic/octrafic-cli/releases/download/v${pkgver}/octrafic_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('1e3d0008999840690cb729d66871223fbc2b2325ee0027f35adddbc24af26b58')
+sha256sums_x86_64=('0e0f75ea862ded6415a6621a6d809b31c3c112927d8f86442022e4fd7ac7a308')
 
 package() {
   # bin
