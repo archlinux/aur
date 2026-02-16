@@ -1,0 +1,17 @@
+pkgbase = tpack-bin
+	pkgdesc = Tmux Plugin Manager
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/tmuxpack/tpack
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = tmux
+	provides = tpack
+	conflicts = tpack
+	source_x86_64 = https://github.com/tmuxpack/tpack/releases/download/v0.0.1/tpack_0.0.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/tmuxpack/tpack/releases/download/v0.0.1/tpack_0.0.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = SKIP
+
+pkgname = tpack-bin
