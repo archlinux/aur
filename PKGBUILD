@@ -14,9 +14,11 @@ provides=('flowee-pay')
 install=flowee-pay.install
 source=("https://codeberg.org/Flowee/pay/archive/$pkgver.tar.gz"
     "0001-Fix-off-by-one-in-unit-test.patch"
+    "0001-Port-to-new-ZXing-version-3.patch"
     "https://flowee.org/products/pay/blockheaders-850000")
 sha256sums=('a3a8443e6236498fa384478366c8b35dea5c7cec3b8b9b06d5b0ba9a835d2b95'
     'f7e4bf13406b1836fb0e80b97f01d8f5098b3c4c9de230ac5463c009a5019316'
+    '2a31e641e19432c77b467876fce30517378fd1dd646ad05e1d53d1476cf99ebf'
     '4a98c3b655cfd7520b4d4f682d95e3a82e0f03fda4fa687d28f2127205d66047')
 
 build() {
@@ -30,6 +32,7 @@ build() {
 prepare() {
     cd "$srcdir/pay"
     patch -Np1 -i ../0001-Fix-off-by-one-in-unit-test.patch
+    patch -Np1 -i ../0001-Port-to-new-ZXing-version-3.patch
 }
 
 check() {
