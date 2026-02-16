@@ -1,38 +1,42 @@
-# Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
+# Maintainer: ResRipper <resripper at connective dot link>
+# Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
+
+# shellcheck shell=bash disable=SC2034,SC2148,SC2154,SC2164
 
 _pkgname=migen
 pkgname=python-$_pkgname
 pkgver=0.9.2
-pkgrel=10
+pkgrel=11
 pkgdesc='A Python toolbox for building complex digital hardware'
 arch=('any')
-url='https://github.com/m-labs/migen'
+url='https://git.m-labs.hk/M-Labs/migen'
 license=('BSD')
 depends=('python-colorama')
 makedepends=('python-setuptools')
-source=("$_pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
-        "https://github.com/m-labs/migen/commit/0fb91737090fe45fd764ea3f71257a4c53c7a4ae.patch")
-sha512sums=('9ff39f9f9b7e99b7d933e39091eb7e98c413ec3e60b98722d813df30fe95484470a1a027ac08bdf065bf688f4bb53af2c4618d3bbc0f1086adab33e149dca98f'
-            '7fbeccacb93d4ba7b956f6136433b0381cb88ec11b6b4b9601da7b6ac60c552568fddd108b1022e4e0fa771c351018485b1d1b6c00ad872c936bf505a29f1c8f')
+source=(
+    "$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+    "$url/commit/0fb91737090fe45fd764ea3f71257a4c53c7a4ae.patch"
+)
+sha512sums=(
+    '7856cce7d8c509649291196aa8124df0a4a0a72d273bca7eb12ada92705574eb6fba945cdb8a2d6a5c069188a9fa30d08adf1fc823f3b628796be0fd058cd093'
+    'd6da45f3902eb21b93bd6bd07f2a97b4231bbbf273b6fc1068c99b53d5b50855d50f8868b7dd72c25cde722065a5c4d26f4aa35bb3d799b192fa0b3cc3e534cc'
+)
 
 prepare() {
-  cd $_pkgname-$pkgver
-  # fhdl/tracer: update to support python 3.11
-  patch -Np1 -i ../0fb91737090fe45fd764ea3f71257a4c53c7a4ae.patch
+    cd "$_pkgname"
+    # fhdl/tracer: update to support python 3.11
+    patch -Np1 -i ../0fb91737090fe45fd764ea3f71257a4c53c7a4ae.patch
 }
 
 build() {
-  cd $_pkgname-$pkgver
-
-  python setup.py build
+    cd "$_pkgname"
+    python setup.py build
 }
 
 package() {
-  cd $_pkgname-$pkgver
+    cd "$_pkgname"
 
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
-  install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-
-# vim:set ts=2 sw=2 et:
