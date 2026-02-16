@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034
 # Maintainer: Chmouel Boudjnah <chmouel@chmouel.com>
 pkgname=tmux-fingers
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="A fast and powerful way to navigate and copy text in tmux"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('tmux>=3.0' 'bash')
 makedepends=('crystal' 'shards')
 keywords=('tmux' 'plugin' 'fingers' 'productivity' 'crystal')
 source=("https://codeload.github.com/Morantron/${pkgname}/tar.gz/${pkgver}")
-sha256sums=('b4b2d4d75d32e5f6c0272cbc3e27a53a33aba6fea2f1addfb9885bdbf9010f6d')
+sha256sums=('457dba72bcc60c86661b1532c55d1a88e8442e2da836247607b359b4b584ff0a')
 
 build() {
   cd "${pkgname}-${pkgver}" || exit
