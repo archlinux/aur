@@ -1,0 +1,2 @@
+[mkdocs-exclude]
+source = "pypi"
