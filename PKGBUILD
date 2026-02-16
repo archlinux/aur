@@ -9,7 +9,7 @@
 
 pkgname=ffmpeg-libfdk_aac
 pkgver=8.0.1
-pkgrel=6
+pkgrel=7
 epoch=2
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=(x86_64)
@@ -72,6 +72,7 @@ depends=(
   rubberband
   sdl2
   snappy
+  sndio
   speex
   srt
   svt-av1
