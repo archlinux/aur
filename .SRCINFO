@@ -1,0 +1,16 @@
+pkgbase = knob-control
+	pkgdesc = A lightweight volume knob controller with device switching and brightness control.
+	pkgver = 3
+	pkgrel = 1
+	url = https://github.com/Aurora-Nasa-1/knob-control
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = pipewire
+	depends = libevdev
+	depends = ddcutil
+	source = knob-control-3.tar.gz::https://github.com/Aurora-Nasa-1/knob-control/archive/v3.tar.gz
+	sha256sums = 4413597c2d8ac09a8cf8ed9116af3ed9d0d6c770d5a9b1f688de6aabaf128b28
+
+pkgname = knob-control
