@@ -1,6 +1,6 @@
 pkgbase = plasmazones
 	pkgdesc = FancyZones-style window tiling for KDE Plasma
-	pkgver = 1.11.3
+	pkgver = 1.11.4
 	pkgrel = 1
 	url = https://github.com/fuddlesworth/PlasmaZones
 	install = plasmazones.install
@@ -26,7 +26,7 @@ pkgbase = plasmazones
 	optdepends = plasma-activities: activity-based layouts
 	conflicts = plasmazones-bin
 	conflicts = plasmazones-git
-	source = plasmazones-1.11.3.tar.gz::https://github.com/fuddlesworth/PlasmaZones/archive/refs/tags/v1.11.3.tar.gz
-	sha256sums = 7e4e64c80b6eac56fec13fd7d2a1885c7591cc6e071cba827cc8e7062b6db7eb
+	source = plasmazones-1.11.4.tar.gz::https://github.com/fuddlesworth/PlasmaZones/archive/refs/tags/v1.11.4.tar.gz
+	sha256sums = d6701086f732e784026f29c9d80311f897dbaea967b5895f4bae4662a86f37cb
 
 pkgname = plasmazones
