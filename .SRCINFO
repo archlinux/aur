@@ -1,13 +1,14 @@
 pkgbase = mpls-bin
 	pkgdesc = Markdown Preview Language Server
-	pkgver = 0.17.0
+	pkgver = 0.17.1
 	pkgrel = 1
 	url = https://github.com/mhersson/mpls
 	arch = x86_64
 	license = Apache-2.0
 	provides = mpls
 	conflicts = mpls
-	source = mpls-bin-0.17.0.tar.gz::https://github.com/mhersson/mpls/releases/download/v0.17.0/mpls_0.17.0_linux_amd64.tar.gz
-	sha256sums = 767387fa1a4bdecb67f2adf6c62f9dc7a2f526f7b966f19ca12901d22163c501
+	options = !strip
+	source = mpls-bin-0.17.1.tar.gz::https://github.com/mhersson/mpls/releases/download/v0.17.1/mpls_0.17.1_linux_amd64.tar.gz
+	sha256sums = 7d0e3d05b17c3fae938b378c7f4974ad702b8d2247c61c74f227d4087e78001d
 
 pkgname = mpls-bin
