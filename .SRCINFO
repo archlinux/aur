@@ -1,0 +1,16 @@
+pkgbase = netguardify
+	pkgdesc = Professional, open-source cybersecurity CLI tool for Linux
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/Bangkah/netguardify
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-psutil
+	depends = python-colorama
+	depends = python-autopep8
+	source = https://files.pythonhosted.org/packages/source/n/netguardify/netguardify-1.0.5.tar.gz
+	sha256sums = SKIP
+
+pkgname = netguardify
