@@ -1,7 +1,7 @@
 pkgbase = kamaleon-git
 	pkgdesc = A universal package manager wrapper (CLI) for Arch, Manjaro, Debian and more. Written in Go.
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AnabasaSoft/Kamaleon
 	arch = x86_64
 	arch = aarch64
