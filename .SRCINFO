@@ -1,12 +1,12 @@
 pkgbase = ascfix
 	pkgdesc = Automatic ASCII diagram repair tool for Markdown files
-	pkgver = 0.5.8
-	pkgrel = 2
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = https://github.com/evoludigit/ascfix
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = ascfix-0.5.8.tar.gz::https://static.crates.io/crates/ascfix/ascfix-0.5.8.crate
-	sha256sums = d9e594727e178a4aa25e76e84eae176468c3322a92a67fc601aac68b25f3d996
+	source = ascfix-0.6.0.tar.gz::https://crates.io/api/v1/crates/ascfix/0.6.0/download
+	sha256sums = 949fa350816926c7d1badd2f144e0dfb8ac26aec0c3f0c4b0dc459cca53ba893
 
 pkgname = ascfix
