@@ -1,14 +1,15 @@
 #!/bin/bash
-# Maintainer: jstmax! <jstmaxlol@disroot.org> & <maxwasmailed@proton.me>
+# Maintainer: czjstmax <jstmaxlol at disroot dot org>
 pkgname=xsc
 pkgver=3.5
-pkgrel=0
+pkgrel=1
 pkgdesc="XSC: the aaaaaa-iest way to calculate stuff in the terminal"
 arch=('any')
 url="https://github.com/jstmaxlol/xsc"
 license=('Unlicense')
 depends=('figlet' 'lolcat')
 makedepends=('git' 'gcc')
+conflicts=('sc-git')                    # pointed out by user bkb <pingo-power at hotmail dot fr>
 source=("git+https://github.com/jstmaxlol/xsc")
 md5sums=('SKIP')
 
