@@ -3,7 +3,6 @@ pkgbase = winbox
 	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://mikrotik.com/download
-	install = winbox.install
 	arch = x86_64
 	license = custom
 	depends = fontconfig

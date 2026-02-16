@@ -22,7 +22,6 @@ depends=('fontconfig'
          'zlib')
 source=("WinBox-${pkgver}.zip::https://download.mikrotik.com/routeros/winbox/${pkgver}/WinBox_Linux.zip"
         "${pkgname}.desktop")
-install=${pkgname}.install
 sha256sums=('8ec2d08929fd434c4b88881f3354bdf60b057ecd2fb54961dd912df57e326a70'
             '2880ba075a3a5d75113707bbf642bd6018f0eb40a2d725d6adfe8d5d2ee14425')
 

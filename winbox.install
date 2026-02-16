@@ -1,8 +1,0 @@
-#!/bin/sh
-
-post_upgrade() {
-    cat <<-EOM
-	:: This provides the shiny new and native WinBox 4 now!
-	   If you want the legacy WinBox 3.x with Wine install package 'winbox3'.
-	EOM
-}
