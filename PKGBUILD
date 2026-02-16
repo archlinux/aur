@@ -15,7 +15,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/zen0x00/abyssal-gtk-theme/a
 sha256sums=('SKIP')
 
 _palettes=(
-  abyssal
+  dark
   nord
   everforest
   gruvbox
