@@ -1,6 +1,6 @@
 pkgbase = albert
 	pkgdesc = A sophisticated standalone keyboard launcher
-	pkgver = 34.0.9
+	pkgver = 34.0.10
 	pkgrel = 1
 	url = https://github.com/albertlauncher
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = albert
 	optdepends = libarchive: documentation plugin
 	optdepends = libqalculate: calculator plugin
 	optdepends = python: python extension
-	source = https://github.com/albertlauncher/albert/releases/download/v34.0.9/v34.0.9.tar.gz
-	sha512sums = 6eac7e1c9058abf1d0cce3e505fabfd20fbbcf98b1696381f2950152890e5068c9105542a27c2c38e351fe6c6b386f586dce196e5e9085fd89d86804c2c4d807
+	source = https://github.com/albertlauncher/albert/releases/download/v34.0.10/v34.0.10.tar.gz
+	sha512sums = 3d359005fd84955310351f38773cf502f9095723c9e476e3ea268c7ac27cb897c6df14ca55dc78e0cd4cf673e28bdbecf610d9cb7a7b5f68f23af6c2d3bdba34
 
 pkgname = albert
