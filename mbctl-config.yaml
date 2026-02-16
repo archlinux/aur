@@ -1,0 +1,5 @@
+# mbctl configuration file example
+# Man8S-CTR container orchestration system configuration
+
+# Yggdrasil network address
+yggaddr: 200::
