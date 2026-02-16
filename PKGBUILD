@@ -4,7 +4,7 @@
 
 pkgname='monochrome'
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Monochrome is a lightweight, privacy-focused music streaming client designed for high-fidelity audio playback. Built with modern web technologies, it provides a clean, distraction-free listening experience."
 arch=('x86_64')
 url=https://github.com/SamidyFR/monochrome
@@ -18,9 +18,18 @@ source_x86_64=(
 sha256sums_x86_64=("SKIP" "SKIP")
 
 package() {
+  # Install full app to /opt
+  install -d "$pkgdir/opt/$pkgname"
+  cp -r "$srcdir"/* "$pkgdir/opt/$pkgname"
+
+  # Wrapper script
   install -d "$pkgdir/usr/bin"
-  cp "$srcdir/Monochrome" "$pkgdir/usr/bin/$pkgname"
-  install -Dm755 "$srcdir/Monochrome" "$pkgdir/usr/bin/$pkgname"
+  cat <<EOF > "$pkgdir/usr/bin/$pkgname"
+#!/bin/sh
+cd /opt/$pkgname
+./Monochrome
+EOF
+  chmod +x "$pkgdir/usr/bin/$pkgname"
 
   # Desktop entry
   install -Dm644 "$srcdir/icon.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
