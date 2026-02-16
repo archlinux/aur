@@ -4,7 +4,7 @@
 # Submitter: BxS <bxsbxs at gmail dot com>
 
 pkgname=microchip-mplabx-bin
-pkgver=6.25
+pkgver=6.30
 pkgrel=1
 pkgdesc="IDE for Microchip PIC and dsPIC development"
 arch=(x86_64)
@@ -34,7 +34,7 @@ source=("https://ww1.microchip.com/downloads/aemDocuments/documents/DEV/ProductD
         "LICENSE"
         "mplabx-override.conf")
 
-md5sums=('52ac9b64acec38c48907673b974d17b7'
+md5sums=('b26c0e1633519034f63cac079d1ab25a'
          'a34a85b2600a26f1c558bcd14c2444bd'
          'a476a71af625380a2fd52f82fb5d5492')
 
