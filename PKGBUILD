@@ -1,7 +1,7 @@
 # Maintainer: Folf <folf@folf.me>
 
 pkgname=osmium
-pkgver=0.0.7
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="A globally distributed community messaging and voice/video platform"
 arch=('x86_64')
@@ -13,10 +13,10 @@ optdepends=(
     'xdg-utils: Open files'
 )
 options=('!strip')
-_pkgver=0.0.7
+_pkgver=0.0.9
 _suffix=alpha
 source=("https://updater.osmium.chat/Osmium-${_pkgver}-${_suffix}-x64.tar.gz")
-sha512sums=('601a57ad61e992ec1c6eb2be02bfc3b0ebad557ea91fe2bd03419541c945d02f3f1c90d0ca0e51dccadaa0a3abda0ff53fc1feb2aa8d34625f2422bc30d2e74a')
+sha512sums=('989cf204e1a6d24ce2074ef8152087eeb624441eaacbd89620fd8fa823d15922a2558feb76bc8a876c35d4292fe8c8a3599ae4b531906a5418ae9348b84aab0d')
 
 prepare() {
     cd "Osmium-${_pkgver}-${_suffix}-x64"
