@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=rustconn
 _app_id=io.github.totoshko88.RustConn
-pkgver=0.8.4
-pkgrel=2
+pkgver=0.8.6
+pkgrel=1
 pkgdesc="Modern connection manager for Linux with GTK4/Wayland-native interface."
 arch=('x86_64')
 url="https://github.com/totoshko88/RustConn"
@@ -29,22 +29,26 @@ optdepends=(
   'freerdp: RDP client'
   'google-cloud-cli: Google Cloud CLI'
   'gtk-vnc: VNC Client option'
-  'inetutils: Telnet Client'
+  'inetutils: Telnet client'
   'keepassxc: Password storage method option'
-  'krdc: VNC Client option'
+  'krdc: VNC client option'
+  'kubectl: Shell access to Kubernetes pods'
+  'libappindicator: Display icon in system tray'
   'libsecret: Fallback password storage method'
+  'mc: SFTP via Midnight Commander FISH VFS'
   'oci-cli: OCI CLI'
   'passbolt-cli: Password storage method option'
-  'realvnc-vnc-viewer: VNC Client option'
-  'remmina: VNC Client option'
+  'picocom: Serial terminal client'
+  'realvnc-vnc-viewer: VNC client option'
+  'remmina: VNC client option'
 #  'spice-gtk: SPICE Client option'  ## not found, using embedded
   'tailscale: Tailscale CLI'
   'teleport: Teleport CLI'
-  'tigervnc: VNC Client option'
-  'virt-viewer: SPICE Client option'
+  'tigervnc: VNC client option'
+  'virt-viewer: SPICE client option'
 )
 source=("RustConn-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b71b0d334e0ec125a7ac168a0095bcb198a678042bd0bac18273469537dbb18b')
+sha256sums=('19bdb2ba42f0e968752a47fb94477f42c4f8599eb5c98231950d0b8700e24df8')
 
 prepare() {
   cd "RustConn-$pkgver"
