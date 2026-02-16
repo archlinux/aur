@@ -1,0 +1,21 @@
+diff --git a/db.1.85/db/db.c b/db.1.85/db/db.c
+index f9002c8..c677f4a 100644
+--- a/db.1.85/db/db.c
++++ b/db.1.85/db/db.c
+@@ -90,10 +90,10 @@ __dbpanic(dbp)
+ 	DB *dbp;
+ {
+ 	/* The only thing that can succeed is a close. */
+-	dbp->del = (int (*)())__dberr;
+-	dbp->fd = (int (*)())__dberr;
+-	dbp->get = (int (*)())__dberr;
+-	dbp->put = (int (*)())__dberr;
+-	dbp->seq = (int (*)())__dberr;
+-	dbp->sync = (int (*)())__dberr;
++	dbp->del = (int (*)(const DB *, const DBT *, u_int))__dberr;
++	dbp->fd = (int (*)(const DB *))__dberr;
++	dbp->get = (int (*)(const DB *, const DBT *, DBT *, u_int))__dberr;
++	dbp->put = (int (*)(const DB *, DBT *, const DBT *, u_int))__dberr;
++	dbp->seq = (int (*)(const DB *, DBT *, DBT *, u_int))__dberr;
++	dbp->sync = (int (*)(const DB *, u_int))__dberr;
+ }

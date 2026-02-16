@@ -1,0 +1,25 @@
+pkgbase = nvi-git
+	pkgdesc = 4BSD reimplementation of ex/vi (git snapshot)
+	pkgver = 1.81.6.r80.62f62832
+	pkgrel = 1
+	url = https://repo.or.cz/nvi.git
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = perl
+	makedepends = pkgconf
+	depends = ncurses
+	provides = nvi
+	provides = ex-vi-compat
+	conflicts = nvi
+	conflicts = ex-vi-compat
+	source = nvi::git+https://repo.or.cz/nvi.git
+	source = nvi-db-ansi.patch
+	sha256sums = SKIP
+	sha256sums = 68d50bf687e2180f567cabe83b8d254dd5bb30f2728bf45ec662af63aab48271
+
+pkgname = nvi-git
