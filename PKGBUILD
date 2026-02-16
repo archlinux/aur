@@ -11,11 +11,11 @@
 pkgname=python-nipype
 _name=${pkgname/python-/}
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Workflows and interfaces for neuroimaging packages'
 arch=('any')
 url='https://github.com/nipy/nipype'
-license=('Apache')
+license=('Apache-2.0')
 depends=('python-click' 'python-networkx' 'python-nibabel' 'python-numpy' 'python-packaging' 'python-prov' 'python-dateutil' 'python-scipy' 'python-simplejson' 'python-traits' 'python-filelock' 'python-etelemetry>=0.2.0' 'python-matplotlib' 'python-looseversion' 'python' 'python-setuptools' 'python-pandas')
 makedepends=('python-numpydoc' 'python-sphinx' 'python-pytest' 'python-mock')
 optdepends=('python-pybids' 'python-dipy' 'ants' '3dslicer' 'afni' 'freesurfer' 'fsl' 'spm12')
