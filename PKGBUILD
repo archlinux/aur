@@ -4,14 +4,14 @@
 
 pkgname='naemon-livestatus'
 pkgdesc="Naemon - Livestatus Eventbroker Module"
-pkgver=1.4.4
+pkgver=1.5.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.naemon.io/documentation/usersguide/livestatus.html"
 license=('GPL2')
 depends=('icu' 'naemon')
 makedepends=('git')
-source=("naemon-livestatus-git::git+https://github.com/naemon/naemon-livestatus.git#commit=73d41450ec878209aa01066d49be812eba7fabe6")
+source=("naemon-livestatus-git::git+https://github.com/naemon/naemon-livestatus.git#commit=50d129d7d4411f882f10c7cf2a987c9261abd775")
 sha512sums=('SKIP')
 backup=('etc/naemon/livestatus.cfg')
 
