@@ -1,6 +1,6 @@
 pkgbase = wasm-tools-git
 	pkgdesc = CLI for low-level manipulation of WebAssembly modules
-	pkgver = 1.235.0.r16.g7aee4a379
+	pkgver = 1.245.1.r0.g76927bf4b
 	pkgrel = 1
 	url = https://github.com/bytecodealliance/wasm-tools
 	arch = i686
@@ -9,8 +9,9 @@ pkgbase = wasm-tools-git
 	license = MIT
 	makedepends = git
 	makedepends = cargo
-	depends = gcc-libs
-	provides = wasm-tools=1.235.0.r16.g7aee4a379
+	depends = glibc
+	depends = libgcc
+	provides = wasm-tools=1.245.1.r0.g76927bf4b
 	conflicts = wasm-tools
 	source = git+https://github.com/bytecodealliance/wasm-tools.git
 	sha256sums = SKIP

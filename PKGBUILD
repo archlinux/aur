@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=wasm-tools-git
-pkgver=1.235.0.r16.g7aee4a379
+pkgver=1.245.1.r0.g76927bf4b
 pkgrel=1
 pkgdesc="CLI for low-level manipulation of WebAssembly modules"
 arch=('i686' 'x86_64')
 url="https://github.com/bytecodealliance/wasm-tools"
 license=('Apache-2.0' 'MIT')
-depends=('gcc-libs')
+depends=('glibc' 'libgcc')
 makedepends=('git' 'cargo')
 provides=("wasm-tools=$pkgver")
 conflicts=('wasm-tools')
@@ -28,7 +28,7 @@ pkgver() {
   cd "wasm-tools"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
