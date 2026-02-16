@@ -1,0 +1,19 @@
+pkgbase = samply-git
+	pkgdesc = A command line profiler for macOS and Linux
+	pkgver = 0.13.1.r325.g382a2f9
+	pkgrel = 1
+	url = https://github.com/mstange/samply
+	arch = x86_64
+	arch = aarch64
+	arch = loong64
+	license = Apache-2.0 OR MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	provides = samply
+	conflicts = samply
+	source = samply::git+https://github.com/mstange/samply.git
+	sha256sums = SKIP
+
+pkgname = samply-git
