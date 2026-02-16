@@ -1,0 +1,20 @@
+pkgbase = steamfetch-git
+	pkgdesc = Display your Steam stats in terminal with style.
+	pkgver = 0.5.2.3.g3d7b294
+	pkgrel = 1
+	url = https://github.com/unhappychoice/steamfetch
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = openssl
+	provides = steamfetch
+	conflicts = steamfetch
+	conflicts = steamfetch-bin
+	source = git+https://github.com/unhappychoice/steamfetch
+	sha256sums = SKIP
+
+pkgname = steamfetch-git
