@@ -1,7 +1,7 @@
 # Maintainer: zen0x (amanchaitany@proton.me)
 
 pkgname=abyssal-gtk-theme
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Abyssal dark GTK theme for GTK 3, GTK 4, and Libadwaita"
 arch=(any)
