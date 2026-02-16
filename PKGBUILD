@@ -4,13 +4,13 @@ pkgbase=python-stsci.skypac
 _pname=${pkgbase#python-}
 _pyname=${_pname//./_}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=1.0.11
+pkgver=1.0.12
 pkgrel=1
 pkgdesc="Sky matching for image mosaic"
 arch=('any')
 url="https://stsci-skypac.readthedocs.io"
 license=('BSD-3-Clause')
-makedepends=('python-setuptools-scm'
+makedepends=('python-setuptools-scm>=3.6'
              'python-build'
              'python-installer'
              'python-sphinx-automodapi'
@@ -22,14 +22,16 @@ makedepends=('python-setuptools-scm'
              'texlive-latexextra')  # latex.fmt: -latex; anyfontsize.sty: latexextra
 #            'python-pytest-runner'
 #            'python-sphinx_rtd_theme'
-checkdepends=('python-pytest-doctestplus')
+#checkdepends=(
+#    'python-pytest-doctestplus'
 #            'python-pytest-xdist'
-#            'python-sphinx'
+###            'python-sphinx'
+#)
 #source=("https://github.com/spacetelescope/stsci.skypac/archive/${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'fix-doc-underline-length.patch'
         'setup.cfg')
-md5sums=('5a460611a9bb30a2641d3cbfe3a095d5'
+md5sums=('95e2388e2922b4a98782f3ab98b567d9'
          '4f6d5bbf0720af0687f560e8ae97762b'
          'b9f7309fbf09f7a05455a1d176b9e492')
 
@@ -52,30 +54,36 @@ build() {
     python -m build --wheel --no-isolation
 
     msg "Building Docs"
-    ln -sf $(get_pyinfo site)/stsci/* stsci
-    PYTHONPATH="${PWD}" make -C docs html
+#   ln -sf $(get_pyinfo site)/stsci/* stsci
+#   PYTHONPATH="${PWD}" make -C docs html
+    PYTHONPATH="${PWD}/src" make -C docs html
 #   ln -sf $(get_pyinfo site)/stsci/* build/lib/stsci
 #   PYTHONPATH="../build/lib" make -C docs html
 }
 
-check() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
-    isdr=($(ls --ignore=skypac stsci))
-    ign=${isdr[@]/#/--ignore=stsci/}
-    pytest ${ign[@]} || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
-}
+#check() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#
+##   isdr=($(ls --ignore=skypac stsci))
+##   ign=${isdr[@]/#/--ignore=stsci/}
+##   pytest ${ign[@]} -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 # || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
+#    PYTHONPATH="${PWD}/src" pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 src/stsci/skypac/utils.py # || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
+#}
 
 package_python-stsci.skypac() {
-    depends=('python>=3.10' 'python-astropy>=5.0.4' 'python-spherical_geometry>=1.2.2' 'python-stwcs' 'python-stsci.imagestats' 'python-packaging>=21.1')
+    depends=('python>=3.10'
+             'python-astropy>=5.0.4'
+             'python-spherical_geometry>=1.2.2'
+             'python-stwcs'
+             'python-stsci.imagestats' 'python-packaging>=21.1')
     optdepends=('python-stsci.skypac-doc: Documentation for STScI skypac')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE.txt
     install -D -m644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
     python -m installer --destdir="${pkgdir}" dist/*.whl
-    rm "${pkgdir}/$(get_pyinfo site)/stsci/__init__.py"
-    rm "${pkgdir}/$(get_pyinfo site)/stsci/__pycache__"/*
+#   rm "${pkgdir}/$(get_pyinfo site)/stsci/__init__.py"
+#   rm "${pkgdir}/$(get_pyinfo site)/stsci/__pycache__"/*
 }
 
 package_python-stsci.skypac-doc() {

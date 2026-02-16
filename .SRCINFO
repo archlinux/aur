@@ -1,12 +1,11 @@
 pkgbase = python-stsci.skypac
 	pkgdesc = Sky matching for image mosaic
-	pkgver = 1.0.11
+	pkgver = 1.0.12
 	pkgrel = 1
 	url = https://stsci-skypac.readthedocs.io
 	arch = any
 	license = BSD-3-Clause
-	checkdepends = python-pytest-doctestplus
-	makedepends = python-setuptools-scm
+	makedepends = python-setuptools-scm>=3.6
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-sphinx-automodapi
@@ -16,10 +15,10 @@ pkgbase = python-stsci.skypac
 	makedepends = python-stsci.imagestats
 	makedepends = python-spherical_geometry>=1.2.2
 	makedepends = texlive-latexextra
-	source = https://files.pythonhosted.org/packages/source/s/stsci_skypac/stsci_skypac-1.0.11.tar.gz
+	source = https://files.pythonhosted.org/packages/source/s/stsci_skypac/stsci_skypac-1.0.12.tar.gz
 	source = fix-doc-underline-length.patch
 	source = setup.cfg
-	md5sums = 5a460611a9bb30a2641d3cbfe3a095d5
+	md5sums = 95e2388e2922b4a98782f3ab98b567d9
 	md5sums = 4f6d5bbf0720af0687f560e8ae97762b
 	md5sums = b9f7309fbf09f7a05455a1d176b9e492
 
