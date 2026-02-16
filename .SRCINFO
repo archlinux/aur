@@ -1,6 +1,6 @@
 pkgbase = zeromq-git
 	pkgdesc = Fast messaging system built on sockets. C and C++ bindings. aka 0MQ, ZMQ
-	pkgver = 4.3.5.r35.gc2fae814
+	pkgver = 4.3.5.r65.g51a5a9cb
 	pkgrel = 1
 	url = https://zeromq.org/
 	arch = i686
@@ -11,13 +11,15 @@ pkgbase = zeromq-git
 	makedepends = cmake
 	makedepends = pkgconf
 	makedepends = xmlto
-	depends = gcc-libs
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
 	depends = gnutls
 	depends = libpgm
 	depends = libsodium
 	depends = util-linux
 	optdepends = cppzmq: C++ binding for libzmq
-	provides = zeromq=4.3.5.r35.gc2fae814
+	provides = zeromq=4.3.5.r65.g51a5a9cb
 	provides = libzmq.so
 	conflicts = zeromq
 	options = staticlibs

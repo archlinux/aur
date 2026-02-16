@@ -5,13 +5,13 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=zeromq-git
-pkgver=4.3.5.r35.gc2fae814
+pkgver=4.3.5.r65.g51a5a9cb
 pkgrel=1
 pkgdesc="Fast messaging system built on sockets. C and C++ bindings. aka 0MQ, ZMQ"
 arch=('i686' 'x86_64')
 url="https://zeromq.org/"
 license=('MPL-2.0')
-depends=('gcc-libs' 'gnutls' 'libpgm' 'libsodium' 'util-linux')
+depends=('glibc' 'libgcc' 'libstdc++' 'gnutls' 'libpgm' 'libsodium' 'util-linux')
 makedepends=('git' 'asciidoc' 'cmake' 'pkgconf' 'xmlto')
 optdepends=('cppzmq: C++ binding for libzmq')
 provides=("zeromq=$pkgver" 'libzmq.so')
@@ -25,7 +25,7 @@ pkgver() {
   cd "libzmq"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
