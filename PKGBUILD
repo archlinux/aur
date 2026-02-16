@@ -1,6 +1,6 @@
 # Maintainer: Patrick Jaja <patrick.jaja@valantic.com>
 pkgname=claude-cowork-service
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Native Linux backend for Claude Desktop Cowork"
 arch=('x86_64')
@@ -9,6 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('go')
 provides=('claude-cowork-service')
+install=claude-cowork-service.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
