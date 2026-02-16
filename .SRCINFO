@@ -1,6 +1,6 @@
 pkgbase = nacrypt
 	pkgdesc = A simple & secure file encryption utility
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/basicallygit/nacrypt
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = nacrypt
 	depends = libsodium
 	depends = libseccomp
 	depends = libcap
-	source = nacrypt-1.2.1.tar.gz::https://github.com/basicallygit/nacrypt/archive/1.2.1.tar.gz
+	source = nacrypt-1.2.2.tar.gz::https://github.com/basicallygit/nacrypt/archive/1.2.2.tar.gz
 	sha256sums = eb3dcdf74586b283221f6b4fe63bad0d6238387cde224e6647e0f096f063e4b2
 
 pkgname = nacrypt
