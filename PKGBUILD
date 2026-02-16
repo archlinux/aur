@@ -2,7 +2,7 @@
 
 _pkgname=epoxy
 pkgname=$_pkgname-git
-pkgver=0.2.0.r1.g73ca667
+pkgver=0.2.0.r2.gf1a9652
 pkgrel=1
 pkgdesc='SmartBox-compatible open source tool for signing ePorezi tax forms'
 arch=('x86_64')
@@ -40,7 +40,7 @@ check() {
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo test --frozen --all-features
+    cargo test --frozen --release --all-features
 }
 
 package() {
