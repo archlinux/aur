@@ -1,0 +1,5 @@
+[libreoffice-extension-grammalecte-fr]
+source = "htmlparser"
+url = "https://www.grammalecte.net/"
+xpath = '//p[@id="version_num"]'
+is_xml = false
