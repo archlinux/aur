@@ -1,7 +1,7 @@
 pkgbase = tsh
 	pkgdesc = A Rust CLI tool that fetches a random hot post from r/twosentencehorror.
-	pkgver = 0.1.0
-	pkgrel = 4
+	pkgver = 0.1.1
+	pkgrel = 1
 	url = https://codeberg.org/i0f/tsh
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = tsh
 	depends = glibc
 	depends = openssl
 	depends = gcc-libs
-	source = tsh-0.1.0.tar.gz::https://codeberg.org/i0f/tsh/archive/v0.1.0.tar.gz
+	source = tsh-0.1.1.tar.gz::https://codeberg.org/i0f/tsh/archive/v0.1.1.tar.gz
 	sha512sums = 61e0a409438e3034aad8fab09b3a6e773425cb9ded4085c9d12712116ae119f01d04a027623a31b3f88cb3d496026bc464125520a8bf178f02f3de6b446d7b58
 
 pkgname = tsh
