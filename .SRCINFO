@@ -1,0 +1,23 @@
+pkgbase = timepad-git
+	pkgdesc = A minimal timer app for linux that mimicks the builtin windows clock app
+	pkgver = VERSION
+	pkgrel = 1
+	url = https://github.com/agokule/timepad
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = base-devel
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = sdl3
+	provides = timepad
+	conflicts = timepad
+	conflicts = timepad-bin
+	source = timepad::git+https://github.com/agokule/timepad.git
+	source = git+https://github.com/ocornut/imgui.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = timepad-git
