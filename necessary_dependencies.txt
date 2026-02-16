@@ -690,6 +690,13 @@ Module: open_webui.utils.middleware
   Imported in:
     open_webui/main.py
     open_webui/utils/actions.py
+Module: open_webui.utils.tools
+  Imported in:
+    open_webui/functions.py
+    open_webui/main.py
+    open_webui/routers/configs.py
+    open_webui/routers/tools.py
+    open_webui/utils/middleware.py
 Module: open_webui.utils.auth
   Imported in:
     open_webui/main.py
@@ -845,12 +852,6 @@ Module: torch
     open_webui/retrieval/models/colbert.py
     open_webui/routers/audio.py
     open_webui/routers/retrieval.py
-Module: open_webui.utils.tools
-  Imported in:
-    open_webui/functions.py
-    open_webui/routers/configs.py
-    open_webui/routers/tools.py
-    open_webui/utils/middleware.py
 Module: open_webui.utils.misc
   Imported in:
     open_webui/functions.py
