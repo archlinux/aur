@@ -1,14 +1,16 @@
 pkgbase = cryfa-git
 	pkgdesc = A secure encryption tool for genomic data
 	pkgver = 20.04.r63.g91c8b0a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cobilab/cryfa
 	arch = i686
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = cmake
-	depends = gcc-libs
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
 	provides = cryfa=20.04.r63.g91c8b0a
 	conflicts = cryfa
 	source = git+https://github.com/cobilab/cryfa.git

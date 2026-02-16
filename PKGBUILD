@@ -2,12 +2,12 @@
 
 pkgname=cryfa-git
 pkgver=20.04.r63.g91c8b0a
-pkgrel=1
+pkgrel=2
 pkgdesc="A secure encryption tool for genomic data"
 arch=('i686' 'x86_64')
 url="https://github.com/cobilab/cryfa"
 license=('GPL-3.0-or-later')
-depends=('gcc-libs')
+depends=('glibc' 'libgcc' 'libstdc++')
 makedepends=('git' 'cmake')
 provides=("cryfa=$pkgver")
 conflicts=('cryfa')
@@ -29,6 +29,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
+    -DCMAKE_POLICY_VERSION_MINIMUM="3.5" \
     ./
   cmake --build "_build"
 }
