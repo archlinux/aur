@@ -1,0 +1,15 @@
+pkgbase = waybar-ai-usage-go-bin
+	pkgdesc = Waybar module showing Claude and Codex AI usage
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/AntoineGS/waybar-ai-usage-go
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = waybar-ai-usage
+	conflicts = waybar-ai-usage
+	noextract = waybar-ai-usage-go-bin-0.0.1
+	source = waybar-ai-usage-go-bin-0.0.1::https://github.com/AntoineGS/waybar-ai-usage-go/releases/d ownload/v0.0.1/waybar-ai-usage-linux-amd64
+	sha256sums = SKIP
+
+pkgname = waybar-ai-usage-go-bin
