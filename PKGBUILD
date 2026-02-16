@@ -4,12 +4,12 @@
 pkgbase=alienfx
 pkgname=alienfx
 pkgver=2.4.3
-pkgrel=3
+pkgrel=4
 pkgdesc="CLI and GUI utility to control the lighting effects of your Alienware computer written in Python."
 arch=('any')
 url="https://github.com/trackmastersteve/alienfx"
 license=('GPLv3')
-depends=('python' 'python-pyusb' 'python-setuptools')
+depends=('python' 'python-pkg_resources' 'python-pyusb')
 optdepends=(
 'gtk3: gtkui'
 'python-cairo: gtkui'
@@ -17,6 +17,7 @@ optdepends=(
 'python-future: gtkui'
 'python-gobject: gtkui'
 )
+makedepends=('python-setuptools')
 source=("https://github.com/trackmastersteve/alienfx/archive/v$pkgver.tar.gz")
 sha256sums=('44cda16a00f8396043173fd939693a3a593811cf67c350b7035293b7d635c339')
 
