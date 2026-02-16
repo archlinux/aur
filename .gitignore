@@ -4,9 +4,7 @@
 # But not these files...
 !.gitignore
 !PKGBUILD
-!.SRCINFO
 !LICENSE
-!chroot-build
 !.nvchecker.toml
 !/keys
 !/keys/pgp

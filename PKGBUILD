@@ -1,7 +1,7 @@
 # Maintainer: Christian Schendel <doppelhelix@gmail.com>
 
 pkgname=bluejay-git
-pkgver=1.0.3.r4.g69052fc
+pkgver=1.0.3.r5.g4d6d4e6
 pkgrel=1
 pkgdesc="Bluetooth manager written in Qt"
 arch=(x86_64)
@@ -11,7 +11,6 @@ license=(
 )
 depends=(
     bluez-qt
-    gcc-libs
     glibc
     hicolor-icon-theme
     kcolorscheme
@@ -20,6 +19,7 @@ depends=(
     ki18n
     kirigami
     kirigami-addons
+    libstdc++
     qqc2-desktop-style
     qt6-base
     qt6-tools
