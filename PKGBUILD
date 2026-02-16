@@ -2,37 +2,64 @@
 
 pkgname=abyssal-gtk-theme
 pkgver=1.0.4
-pkgrel=1
-pkgdesc="Abyssal dark GTK theme for GTK 3, GTK 4, and Libadwaita"
+pkgrel=2
+pkgdesc="Abyssal GTK theme (multiple palettes)"
 arch=(any)
 url="https://github.com/zen0x00/abyssal-gtk-theme"
 license=(GPL-3.0-or-later)
 depends=(gtk3 gtk4 libadwaita)
 makedepends=(sassc)
 options=(!strip)
+
 source=("$pkgname-$pkgver.tar.gz::https://github.com/zen0x00/abyssal-gtk-theme/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
+
+_palettes=(
+  abyssal
+  nord
+  everforest
+  gruvbox
+  tokyonight
+  dracula
+  catppuccin-frappe
+  catppuccin-latte
+  catppuccin-macchiato
+  catppuccin-mocha
+)
 
 build() {
   cd "$srcdir/abyssal-gtk-theme-$pkgver"
 
-  sassc -M -t expanded src/main/gtk-3.0/gtk.scss gtk-3.0.css
-  sassc -M -t expanded src/main/gtk-4.0/gtk.scss gtk-4.0.css
-  sassc -M -t expanded src/main/libadwaita/libadwaita.scss libadwaita.css
+  for palette in "${_palettes[@]}"; do
+    echo "@import \"../palettes/${palette}\";" > src/sass/_palette.scss
+
+    sassc -M -t expanded src/main/gtk-3.0/gtk.scss "gtk-3.0-${palette}.css"
+    sassc -M -t expanded src/main/gtk-4.0/gtk.scss "gtk-4.0-${palette}.css"
+    sassc -M -t expanded src/main/libadwaita/libadwaita.scss "libadwaita-${palette}.css"
+  done
 }
 
 package() {
   cd "$srcdir/abyssal-gtk-theme-$pkgver"
 
-  install -d "$pkgdir/usr/share/themes/Abyssal"
+  for palette in "${_palettes[@]}"; do
+    theme_name="Abyssal-${palette}"
 
-  install -d "$pkgdir/usr/share/themes/Abyssal/gtk-3.0"
-  install -d "$pkgdir/usr/share/themes/Abyssal/gtk-4.0"
-  install -d "$pkgdir/usr/share/themes/Abyssal/libadwaita"
+    install -d "$pkgdir/usr/share/themes/${theme_name}"
+    install -d "$pkgdir/usr/share/themes/${theme_name}/gtk-3.0"
+    install -d "$pkgdir/usr/share/themes/${theme_name}/gtk-4.0"
+    install -d "$pkgdir/usr/share/themes/${theme_name}/libadwaita"
 
-  install -m644 gtk-3.0.css "$pkgdir/usr/share/themes/Abyssal/gtk-3.0/gtk.css"
-  install -m644 gtk-4.0.css "$pkgdir/usr/share/themes/Abyssal/gtk-4.0/gtk.css"
-  install -m644 libadwaita.css "$pkgdir/usr/share/themes/Abyssal/libadwaita/libadwaita.css"
+    install -m644 "gtk-3.0-${palette}.css" \
+      "$pkgdir/usr/share/themes/${theme_name}/gtk-3.0/gtk.css"
 
-  install -m644 index.theme "$pkgdir/usr/share/themes/Abyssal/index.theme"
+    install -m644 "gtk-4.0-${palette}.css" \
+      "$pkgdir/usr/share/themes/${theme_name}/gtk-4.0/gtk.css"
+
+    install -m644 "libadwaita-${palette}.css" \
+      "$pkgdir/usr/share/themes/${theme_name}/libadwaita/libadwaita.css"
+
+    install -m644 index.theme \
+      "$pkgdir/usr/share/themes/${theme_name}/index.theme"
+  done
 }
