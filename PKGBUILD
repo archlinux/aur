@@ -4,7 +4,7 @@
 _pkgname=samply
 pkgname="$_pkgname"-git
 pkgver=0.13.1.r325.g382a2f9
-pkgrel=1
+pkgrel=2
 pkgdesc='A command line profiler for macOS and Linux'
 arch=('x86_64' 'aarch64')
 url='https://github.com/mstange/samply'
@@ -15,6 +15,8 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname"::git+"$url".git)
 sha256sums=('SKIP')
+# FIXME https://github.com/briansmith/ring/issues/1444
+options=('!lto')
 
 pkgver() {
 	cd "$srcdir"/"$_pkgname"
