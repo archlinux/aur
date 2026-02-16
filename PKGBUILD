@@ -2,14 +2,14 @@
 # Previous maintainer: quininer kel <quininer@live.com>
 
 pkgname=watchexec-git
-pkgver=1.22.2.r1.g8e91d26
+pkgver=2.3.3.r5.g8aa4cb2a
 pkgrel=1
 pkgdesc="Executes commands in response to file modifications"
 arch=('i686' 'x86_64')
 url="https://watchexec.github.io/"
-license=('Apache')
-depends=('gcc-libs')
-makedepends=('git' 'rust')
+license=('Apache-2.0')
+depends=('glibc' 'libgcc')
+makedepends=('git' 'cargo')
 provides=("watchexec=$pkgver")
 conflicts=('watchexec')
 source=("git+https://github.com/watchexec/watchexec.git")
@@ -29,7 +29,7 @@ pkgver() {
   cd "watchexec"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
