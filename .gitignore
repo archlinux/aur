@@ -1,0 +1,13 @@
+# Cached git submodules
+h264bitstream
+libs
+moonlight-common-c
+moonlight-qt-mainline-git
+qmdnsengine
+SDL_GameControllerDB
+
+# Build artifacts
+src/
+pkg/
+*.pkg.tar.gz
+*.pkg.tar.zst
