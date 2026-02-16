@@ -1,0 +1,16 @@
+pkgbase = weathr
+	pkgdesc = a terminal weather app with ascii animation
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/Veirt/weathr
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = git+https://github.com/Veirt/weathr#commit=622d5cf47ae454964295cada10380db656d89de3
+	sha512sums = 8abe8546b3cb5611fe02555df273e647fb687325bf252c22fd81986ceb755c507934783c807b9bbb37edc2a99c7ce8fd6e11d43488484c85a07cd3e0f13491ab
+
+pkgname = weathr
