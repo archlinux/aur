@@ -2,7 +2,7 @@
 
 pkgname=ptt-fix
 pkgver=0.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A somewhat hacky workaround for push-to-talk in Discord and other apps in Wayland."
 arch=(i686 x86_64)
 url="https://github.com/DeedleFake/ptt-fix"
@@ -14,12 +14,12 @@ provides=()
 source=("https://github.com/DeedleFake/ptt-fix/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('7838d7bb7db37d5f03c63ad57cbdb37b197359612e4406f4945de844228f1b3f')
 
-_gover=go1.26.0
-
 build() {
   cd "$pkgname-$pkgver"
-
-  export GOTOOLCHAIN="$_gover+auto"
+  if [[ "$(go env GOTOOLCHAIN)" == "local" ]]; then
+    warning "GOTOOLCHAIN=local, which could cause the build to fail if the local version is out of date."
+    warning "If the build fails, try running again with GOTOOLCHAIN=auto."
+  fi
   go build -v -trimpath -o ptt-fix .
 }
 
