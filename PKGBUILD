@@ -1,6 +1,6 @@
 # Maintainer: Atharv Gokule <gokuleatharv06@gmail.com>
 pkgname='timepad-git'
-pkgver=r57.5f48963
+pkgver=0.1.0.alpha.r0.g5f48963
 pkgrel=1
 pkgdesc="A minimal timer app for linux that mimicks the builtin windows clock app"
 arch=('x86_64')
@@ -21,7 +21,7 @@ pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 
   ( set -o pipefail
-    git describe --long --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   )
 }
