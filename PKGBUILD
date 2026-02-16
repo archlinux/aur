@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=elfutils-git
-pkgver=0.194.r16.g4a5cf8be
+pkgver=0.194.r34.g9129bee5
 pkgrel=1
 pkgdesc="Utilities and libraries to handle ELF object files and DWARF debugging information"
 arch=('i686' 'x86_64')
 url="https://sourceware.org/elfutils/"
 license=('GPL-3.0-or-later')
-depends=('gcc-libs' 'glibc' 'json-c' 'libarchive.so' 'libbz2.so' 'libcurl.so' 'liblzma.so' 'libmicrohttpd.so' 'libsqlite3.so' 'libz.so' 'libzstd.so' 'sh')
+depends=('glibc' 'libgcc' 'libstdc++' 'json-c' 'libarchive.so' 'libbz2.so' 'libcurl.so' 'liblzma.so' 'libmicrohttpd.so' 'libsqlite3.so' 'libz.so' 'libzstd.so' 'sh')
 makedepends=('git' 'bzip2' 'curl' 'libarchive' 'libmicrohttpd' 'sqlite' 'xz' 'zlib' 'zstd')
 provides=("elfutils=$pkgver" "debuginfod=$pkgver" "libelf=$pkgver")
 conflicts=('elfutils' 'debuginfod' 'libelf')
