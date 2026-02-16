@@ -1,3 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cce24fe..4acfc8e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.6)
++cmake_minimum_required(VERSION 3.15)
+ 
+ project (ympd)
+ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake/")
 diff --git a/src/mpd_client.c b/src/mpd_client.c
 index 7271984..1f086e4 100644
 --- a/src/mpd_client.c
