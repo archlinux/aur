@@ -1,0 +1,26 @@
+pkgbase = bb-auth-git
+	pkgdesc = Unified polkit, keyring, and pinentry authentication daemon
+	pkgver = r43.fc40397
+	pkgrel = 1
+	url = https://github.com/anthonyhab/bb-auth
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = cmake
+	depends = qt6-base
+	depends = polkit-qt6
+	depends = polkit
+	depends = gcr-4
+	depends = json-glib
+	optdepends = gnome-keyring: GNOME Keyring integration
+	optdepends = fprintd: Fingerprint authentication support
+	optdepends = libfido2: FIDO2 device support
+	provides = bb-auth
+	conflicts = bb-auth
+	replaces = noctalia-auth-git
+	replaces = noctalia-polkit-git
+	replaces = noctalia-unofficial-auth-agent-git
+	source = bb-auth-git::git+https://github.com/anthonyhab/bb-auth.git
+	sha256sums = SKIP
+
+pkgname = bb-auth-git
