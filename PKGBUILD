@@ -1,12 +1,13 @@
 # Maintainer: Quadsam <sam@quadsam.com>
 pkgname='dmenustatus-git'
-pkgver=0.10.3.r0.a19dd93
+pkgver=0.10.4.r0.666d42b
 pkgrel=1
 pkgdesc="A statusbar for dmenu written in C."
 arch=('x86_64')
 url="https://github.com/Quadsam/${pkgname%-git}"
 license=('AGPL-3.0-or-later')
 depends=('dmenu' 'libx11' 'fontconfig' 'alsa-lib' 'glibc')
+optdepends=('dwm')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
