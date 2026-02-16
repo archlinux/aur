@@ -1,9 +1,9 @@
 # Maintainer: AnabasaSoft <anabasasoft@gmail.com>
 pkgname=kamaleon-git
 _pkgname=Kamaleon
-pkgver=2.5.0
+pkgver=2.5.0.r6.gd9b018f
 pkgrel=2
-pkgdesc="A universal package manager wrapper (CLI) for Arch, Manjaro, Debian and more. Written in Go."
+pkgdesc="Universal wrapper for: yay, paru, pacman, apt, dnf, zypper, apk (Alpine) and xbps (Void). Written in Go."
 arch=('x86_64' 'aarch64')
 url="https://github.com/AnabasaSoft/Kamaleon"
 license=('MIT')
@@ -15,9 +15,9 @@ source=("git+https://github.com/AnabasaSoft/Kamaleon.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
-  # Esto extrae el último tag (v2.5.0) y le añade el número de commits desde entonces
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
+  cd "$srcdir/$_pkgname"
+  # Esta línea es infalible: cuenta los commits y añade el hash corto
+  printf "2.5.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
