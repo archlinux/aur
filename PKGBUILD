@@ -2,11 +2,11 @@
 
 _pkgname=dwproton
 pkgname=${_pkgname}-bin
-_srcver=10.0-17
+_srcver=10.0-18
 pkgver=${_srcver//-/_}
-pkgrel=2
+pkgrel=1
 epoch=1
-pkgdesc="Proton builds with the latest Dawn Winery fixes for gacha games, based on Proton-CachyOS"
+pkgdesc="Proton builds with the latest Dawn Winery fixes for gacha games, based on Proton-CachyOS."
 arch=('x86_64')
 url="https://dawn.wine/dawn-winery/dwproton"
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
@@ -14,7 +14,7 @@ options=(!strip emptydirs)
 provides=('proton' 'dwproton')
 _srcdir="${_pkgname}-${_srcver}-${CARCH}"
 source=("${url}/releases/download/${_pkgname}-${_srcver}/${_srcdir}.tar.xz")
-sha512sums=($(curl "${url}/releases/download/${_pkgname}-${_srcver}/${_srcdir}.sha512sum" | cut -d ' ' -f 1))
+sha512sums=('Not')
 depends=(
   bash
   coreutils
