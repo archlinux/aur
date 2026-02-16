@@ -1,23 +1,24 @@
 pkgbase = dpkg-git
 	pkgdesc = Debian package management system
-	pkgver = 1.21.20.r208.gb118d11f7
+	pkgver = 1.23.5.r1.g3426f4c9d
 	pkgrel = 1
 	url = https://tracker.debian.org/pkg/dpkg
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = perl-io-string
 	makedepends = perl-timedate
-	depends = gcc-libs
 	depends = glibc
+	depends = libgcc
+	depends = libstdc++
 	depends = bzip2
 	depends = libmd
 	depends = perl
 	depends = xz
 	depends = zlib
 	depends = zstd
-	provides = dpkg=1.21.20.r208.gb118d11f7
+	provides = dpkg=1.23.5.r1.g3426f4c9d
 	conflicts = dpkg
 	options = staticlibs
 	source = git+https://git.dpkg.org/git/dpkg/dpkg.git

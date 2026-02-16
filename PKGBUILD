@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=dpkg-git
-pkgver=1.21.20.r208.gb118d11f7
+pkgver=1.23.5.r1.g3426f4c9d
 pkgrel=1
 pkgdesc="Debian package management system"
 arch=('i686' 'x86_64')
 url="https://tracker.debian.org/pkg/dpkg"
-license=('GPL')
-depends=('gcc-libs' 'glibc' 'bzip2' 'libmd' 'perl' 'xz' 'zlib' 'zstd')
+license=('GPL-2.0-or-later')
+depends=('glibc' 'libgcc' 'libstdc++' 'bzip2' 'libmd' 'perl' 'xz' 'zlib' 'zstd')
 makedepends=('git' 'perl-io-string' 'perl-timedate')
 provides=("dpkg=$pkgver")
 conflicts=('dpkg')
