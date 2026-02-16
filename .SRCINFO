@@ -1,11 +1,12 @@
 pkgbase = certbot-dns-hetzner-cloud
 	pkgdesc = Certbot plugin enabling dns-01 challenge on the Hetzner Cloud API
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rolschewsky/certbot-dns-hetzner-cloud
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
+	checkdepends = python-installer
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	makedepends = python-build
