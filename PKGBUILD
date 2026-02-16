@@ -2,7 +2,7 @@
 # Maintainer: Chmouel Boudjnah <chmouel@chmouel.com>
 
 pkgname='lazyworktree-bin'
-pkgver=1.35.0
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='lazyworktree - A TUI tool to manage git worktrees'
 url='https://github.com/chmouel/lazyworktree'
@@ -13,10 +13,10 @@ conflicts=('lazyworktree')
 depends=('git' 'git-delta' 'lazygit' 'less' 'tmux')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/chmouel/lazyworktree/releases/download/v${pkgver}/lazyworktree_Linux_arm64.tar.gz")
-sha256sums_aarch64=('dd8b7372e3798ecfc596655f671c8b7803fa1434cf2fad6582d8c16ae70a0462')
+sha256sums_aarch64=('d44ee9c840e9e88a7672af193a229d826b0a609283baf51a533ac5f83ec16a25')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chmouel/lazyworktree/releases/download/v${pkgver}/lazyworktree_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('61a9e99794c6f8aa20608c5a10df55ac4f389f5d760437989b23ca0ab881250e')
+sha256sums_x86_64=('590399184850b8f88a46919d98863e9fe95377f0ed74a354c455cf42d8be468b')
 
 package() {
   # bin
