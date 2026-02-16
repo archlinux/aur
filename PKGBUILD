@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 # Contributor: Maciej Dems <macdems@gmail.com>
 pkgname=unmined-gui
-pkgver=0.19.56
+pkgver=0.19.56.20260211
 pkgrel=1
 pkgdesc="An easy to use and fast Minecraft world viewer and mapper tool"
 arch=('x86_64')
@@ -15,9 +15,16 @@ source=("unmined-gui-dev_amd64.deb::https://unmined.net/download/unmined-gui-lin
 sha256sums=('34cf59d9fb3916af826ec1c17128483a7abed1b68c57655c7f8a3884a297efe7')
 
 latestver() {
-    curl -fsSL "https://unmined.net/downloads/" | \
-    grep -oP 'title="uNmINeD CLI.*\([0-9]+\.[0-9]+\.[0-9]+\)"' | \
-    head -n1 | sed -E 's/.*\(([0-9]+\.[0-9]+\.[0-9]+)\).*/\1/'
+    local page
+    page=$(curl -fsSL "https://unmined.net/downloads/")
+    local ver
+    ver=$(echo "$page" | grep -oP 'title="uNmINeD CLI.*\([0-9]+\.[0-9]+\.[0-9]+\)"' | \
+        head -n1 | sed -E 's/.*\(([0-9]+\.[0-9]+\.[0-9]+)\).*/\1/')
+    local tmstv
+    tmstv=$(echo "$page" | grep -oP 'tmstv=\K\d+' | head -n1)
+    local stamp
+    stamp=$(date -d "@$tmstv" +%Y%m%d 2>/dev/null)
+    echo "${ver}.${stamp}"
 }
 
 prepare() {
