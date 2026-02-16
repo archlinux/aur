@@ -1,0 +1,4 @@
+[python-flatdict]
+source = "github"
+github = "gmr/flatdict"
+use_latest_release = "true"
