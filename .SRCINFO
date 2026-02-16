@@ -1,0 +1,16 @@
+pkgbase = imx471-dkms-git
+	pkgdesc = IMX471 sensor driver via DKMS
+	pkgver = r5.a928f90
+	pkgrel = 1
+	url = https://github.com/BenBJD/imx471-dkms
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = linux-headers
+	depends = dkms
+	provides = imx471-dkms-dkms
+	conflicts = imx471-dkms-dkms
+	source = git+https://github.com/BenBJD/imx471-dkms.git
+	sha256sums = SKIP
+
+pkgname = imx471-dkms-git
