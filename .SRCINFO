@@ -1,10 +1,10 @@
 pkgbase = pkg-install
-	pkgdesc = IonArch terminal package manager frontend
+	pkgdesc = Terminal package manager inspired by Omarchys very simple package manager.
 	pkgver = 1.0.0
-	pkgrel = 1
-	url = https://example.com
+	pkgrel = 2
+	url = https://aur.archlinux.org/packages/pkg-install
 	arch = x86_64
-	license = custom
+	license = MIT
 	depends = bash
 	depends = dialog
 	depends = sudo

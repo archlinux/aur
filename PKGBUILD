@@ -1,10 +1,10 @@
 pkgname=pkg-install
 pkgver=1.0.0
-pkgrel=1
-pkgdesc="IonArch terminal package manager frontend"
+pkgrel=2
+pkgdesc="Terminal package manager inspired by Omarchys very simple package manager."
 arch=('x86_64')
-url="https://example.com"
-license=('custom')
+url="https://aur.archlinux.org/packages/pkg-install"
+license=('MIT')
 depends=('bash' 'dialog' 'sudo')
 optdepends=('yay: Required for AUR package installation')
 source=(
@@ -24,4 +24,3 @@ package() {
     install -Dm755 ionarch-pkg-aur-install "$pkgdir/usr/lib/pkg-install/ionarch-pkg-aur-install"
     install -Dm755 ionarch-pkg-remove "$pkgdir/usr/lib/pkg-install/ionarch-pkg-remove"
 }
-
