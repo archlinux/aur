@@ -1,6 +1,6 @@
 # Maintainer: Enos Muthiani @lyznne <emuthiani26@gmail.com>
 pkgname=peek-cli
-pkgver=2.0.6
+pkgver=2.0.7
 pkgrel=1
 pkgdesc="A simple, fast file viewer that opens files in your default web browser"
 arch=('x86_64')
@@ -11,5 +11,23 @@ conflicts=("${pkgname}-git")
 options=(!strip)
 
 
-source=("--linux-x86_64-musl.tar.gz::https://github.com/lyznne/peek/releases/download/v2.0.6/peek-linux-x86_64-musl.tar.gz")
-sha256sums=('4db6345f43eb8226eb3bd8d94ecbfb5d4cad3c156debe4e679b2a896e1f5ae80')
+source=("${pkgname}-${pkgver}-linux-x86_64-musl.tar.gz::https://github.com/lyznne/peek/releases/download/v${pkgver}/peek-linux-x86_64-musl.tar.gz")
+
+sha256sums=('SKIP')
+
+package() {
+  cd "$srcdir"
+
+  tar xzf "${pkgname}-${pkgver}-linux-x86_64-musl.tar.gz"
+
+  install -Dm755 "peek-cli"              "$pkgdir/usr/bin/peek-cli"
+
+  # Completions
+  install -Dm644 "completions/peek.bash" "$pkgdir/usr/share/bash-completion/completions/peek"
+  install -Dm644 "completions/peek.fish" "$pkgdir/usr/share/fish/vendor-completions.d/peek.fish"
+  install -Dm644 "completions/peek.zsh"  "$pkgdir/usr/share/zsh/site-functions/_peek"
+
+  # License & docs
+  install -Dm644 "LICENSE"     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "README.md"   "$pkgdir/usr/share/doc/$pkgname/README.md"
+}
