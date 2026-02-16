@@ -2,7 +2,7 @@
 
 pkgname=bluejay
 pkgver=1.0.3
-pkgrel=5
+pkgrel=16
 pkgdesc="Bluetooth manager written in Qt"
 arch=(x86_64)
 url="https://github.com/EbonJaeger/bluejay"
@@ -11,7 +11,6 @@ license=(
 )
 depends=(
     bluez-qt
-    gcc-libs
     glibc
     hicolor-icon-theme
     kcolorscheme
@@ -20,10 +19,11 @@ depends=(
     ki18n
     kirigami
     kirigami-addons
+    libstdc++
     qqc2-desktop-style
     qt6-base
-    qt6-tools
     qt6-declarative
+    qt6-tools
 )
 makedepends=(
     appstream
@@ -34,8 +34,14 @@ makedepends=(
 )
 source=(
     "$pkgname-$pkgver::git+$url.git#tag=v$pkgver"
+    "CMakeLists.txt.patch"
 )
-b2sums=('8315db4f7c807a956d7b0c7849cc2ff874332c4506b07d234749a9000ad094e09ad6073037d6acfa440310c1344dd5c362ab5074a84640c39a51d24178e800a2')
+b2sums=('8315db4f7c807a956d7b0c7849cc2ff874332c4506b07d234749a9000ad094e09ad6073037d6acfa440310c1344dd5c362ab5074a84640c39a51d24178e800a2'
+        '3791966f4b448c6ca4ea1b2c25179d9350fe8812efed160222f2a84a0617f62e167f0253958f6300f073dd59cbb8a996df6d45ff47e42c854b4344a0ee3c0130')
+
+prepare() {
+    patch -d $pkgname-$pkgver -Np1 -i ../CMakeLists.txt.patch
+}
 
 build() {
     local cmake_options=(
