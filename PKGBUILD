@@ -2,17 +2,16 @@
 # AUR PKGBUILD - downloads pre-built binary from GitHub releases
 
 pkgname=people-work
-pkgver=1.4.9
+pkgver=1.4.10
 pkgrel=1
 pkgdesc="Manage your most important professional relationships"
 arch=('x86_64')
 url="https://people-work.io"
 license=('custom:people-work')
 depends=()
-source=("${pkgname}-${pkgver}.pkg.tar.zst::https://github.com/hedge-ops/people-work-releases/releases/download/v${pkgver}/${pkgname}-${pkgver}-1-x86_64.pkg.tar.zst")
+source=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/hedge-ops/people-work-releases/releases/download/v${pkgver}/${pkgname}-${pkgver}-x86_64.tar.gz")
 sha256sums=('SKIP')
-noextract=("${pkgname}-${pkgver}.pkg.tar.zst")
 
 package() {
-    tar -xf "${srcdir}/${pkgname}-${pkgver}.pkg.tar.zst" -C "${pkgdir}"
+    install -Dm755 "${srcdir}/people" "${pkgdir}/usr/bin/people"
 }
