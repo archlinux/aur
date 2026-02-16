@@ -10,10 +10,10 @@ license=('MIT')  # Change if needed
 depends=('electron' 'gtk3' 'nss' 'alsa-lib' 'ffmpeg')
 makedepends=('nodejs' 'npm')
 source=("https://github.com/bjorkbjork/DrawboardPDF-Linux/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz") # Replace with your release source if hosting
-sha256sums=('d842fb19d1f148c91aa5971c91462f10757f25f93b7e855db195c9adf4256091')
+sha256sums=('f63a9cf2ae0a4f292ed17060ebdfcceb3fa6b7c514599ff5da3febd46dddd9ea')
 
 build() {
-  cd "$srcdir"
+  cd "$srcdir/src"
   npm ci
 }
 
