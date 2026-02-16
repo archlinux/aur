@@ -1,4 +1,4 @@
-# Maintainer: electron271 <electron271@allthingslinux.org>
+# Maintainer: electron271 <me@electron271.gay>
 # Contributor: Aang23 <aang23@altillimity.com>
 pkgname=satdump-git
 pkgver=r5718.d5d9391c
