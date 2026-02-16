@@ -1,15 +1,12 @@
 # Maintainer: Torge Matthies <openglfreak at googlemail dot com>
 
 _omit_libs=true
-_omit_dlls=false
 _electron_ver=39
-_dotnet_ver=9.0
-_runtime_ver=11
-_sdk_ver=112
+_dotnet_ver=10.0
 
 pkgname='vrcx-bin'
 pkgdesc='Friendship management tool for VRChat (extracted AppImage version)'
-pkgver='2026.01.28'
+pkgver='2026.02.11'
 pkgrel='1'
 arch=('x86_64')
 url='https://vrcx.app/'
@@ -22,16 +19,13 @@ source=("https://github.com/vrcx-team/VRCX/releases/download/v$pkgver/VRCX_${pkg
         "LICENSE-v$pkgver::https://raw.githubusercontent.com/vrcx-team/VRCX/refs/tags/v$pkgver/LICENSE"
         'vrcx'
         'VRCX.desktop')
-sha256sums=('20adc47f37bb72b9a99bbe4d31f6365009b2fea588890721fa1b96799cc39409'
+sha256sums=('20e39786beef93e5576c2522e2c30cb1ff3b4c5d425e858977cda1bc370c7399'
             'e51564d05fd8f98bba289b476815150c78d3bf8f4acd248d78986e0061bb7427'
             '464858e86b74bc4c49c8ec4b59aded48bcd8f0f57ab5366b1bbe77db1d868033'
             'bdf079d1d72c5a207ae8322303a8c0c7b61fbcbc0eff6bd4a42b461f50137ff3')
 
 if [ "$_omit_libs" = true ]; then
     depends+=('libglvnd' 'vulkan-icd-loader' "electron$_electron_ver")
-fi
-if [ "$_omit_dlls" = true ]; then
-    depends+=("dotnet-runtime-$_dotnet_ver=$_dotnet_ver.$_runtime_ver.sdk$_sdk_ver" "dotnet-sdk-$_dotnet_ver=$_dotnet_ver.$_runtime_ver.sdk$_sdk_ver")
 fi
 
 # AppImage related functions copied from https://gist.github.com/openglfreak/585b6f1ba965d183c6d0e2ee8778c204
@@ -143,7 +137,7 @@ build() {
             done
             for path in net*; do
                 case "$path" in
-                    net"$_dotnet_ver"|net"$_dotnet_ver".js) :;;
+                    net9.0|net9.0.js) :;;
                     *) rm -r -- "$path";;
                 esac
             done
@@ -164,22 +158,6 @@ build() {
                 error 'Unknown library: %s' "${lib#opt/vrcx/}"
             fi
         done
-    fi
-    if [ "$_omit_dlls" = true ]; then
-        stat "/usr/share/dotnet/shared/Microsoft.NETCore.App/$_dotnet_ver.$_runtime_ver" >/dev/null
-        stat "/usr/share/dotnet/sdk/$_dotnet_ver.$_sdk_ver/Roslyn/bincore" >/dev/null
-        (
-            CDPATH='' cd opt/vrcx/resources/app.asar.unpacked/build/Electron
-            for dll in *.dll; do
-                if [ -e "/usr/share/dotnet/shared/Microsoft.NETCore.App/$_dotnet_ver.$_runtime_ver/$dll" ]; then
-                    ln -sf "../../../../../../usr/share/dotnet/shared/Microsoft.NETCore.App/$_dotnet_ver.$_runtime_ver/$dll" "$dll"
-                elif [ -e "/usr/share/dotnet/sdk/$_dotnet_ver.$_sdk_ver/$dll" ]; then
-                    ln -sf "../../../../../../usr/share/dotnet/sdk/$_dotnet_ver.$_sdk_ver/$dll" "$dll"
-                elif [ -e "/usr/share/dotnet/sdk/$_dotnet_ver.$_sdk_ver/Roslyn/bincore/$dll" ]; then
-                    ln -sf "../../../../../../usr/share/dotnet/sdk/$_dotnet_ver.$_sdk_ver/Roslyn/bincore/$dll" "$dll"
-                fi
-            done
-        )
     fi
     rm -r opt/vrcx/usr/lib
     mv opt/vrcx/usr usr
