@@ -1,6 +1,6 @@
 pkgbase = fitui-bin
 	pkgdesc = Terminal-based personal finance tracker
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/ayanchavand/FiTui
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = fitui-bin
 	depends = libgcc
 	provides = fitui
 	conflicts = fitui
-	source = README-v0.1.4.md::https://raw.githubusercontent.com/ayanchavand/FiTui/v0.1.4/README.md
-	sha256sums = 4e6bf406935b39c018e40d354514286ee89abe1e096ea0ad4955a2ab16ce78ea
-	source_x86_64 = FiTui-v0.1.4::https://github.com/ayanchavand/FiTui/releases/download/v0.1.4/fitui
-	sha256sums_x86_64 = 261f0726e457b229d67f242c5e5176fc49247b5c8e7a0eabae9650654323f762
+	source = README-v0.1.5.md::https://raw.githubusercontent.com/ayanchavand/FiTui/v0.1.5/README.md
+	sha256sums = e3d855f7c75ae91c2029edc9f787a75d5dab9cc870f2dbab25fa5d9e0adfe6ff
+	source_x86_64 = FiTui-v0.1.5::https://github.com/ayanchavand/FiTui/releases/download/v0.1.5/fitui
+	sha256sums_x86_64 = 5125089324c19d3683c7920926fe5f300a486d4bc06ea221767920f5e9fdc7ff
 
 pkgname = fitui-bin
