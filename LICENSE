@@ -1,5 +1,5 @@
 
-Copyright (c) 2025 LNXSeus. All Rights Reserved.
+Copyright (c) 2026 LNXSeus. All Rights Reserved.
 
 This project is proprietary software. You are granted a license to use the software as-is. You may not copy, distribute, modify, reverse-engineer, or use this software or its source code in any way without the express written permission of the copyright holder.
 
@@ -7,7 +7,7 @@ This project is proprietary software. You are granted a license to use the softw
 
 This project uses the SDL3 library suite (SDL3, SDL3_image, SDL3_ttf)
 
-Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+Copyright (C) 1997-2026 Sam Lantinga <slouken@libsdl.org>
   
 This software is provided 'as-is', without any express or implied
 warranty.  In no event will the authors be held liable for any damages
@@ -84,7 +84,7 @@ This project uses the ImGui library.
 
 The MIT License (MIT)
 
-Copyright (c) 2014-2025 Omar Cornut
+Copyright (c) 2014-2026 Omar Cornut
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -110,7 +110,7 @@ This project uses curl.
 
 COPYRIGHT AND PERMISSION NOTICE
 
-Copyright (c) 1996 - 2025, Daniel Stenberg, daniel@haxx.se, and many contributors, see the THANKS file.
+Copyright (c) 1996 - 2026, Daniel Stenberg, daniel@haxx.se, and many contributors, see the THANKS file.
 
 All rights reserved.
 
