@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=moonlight-qt-mainline-git
-pkgver=r3174.33e0b086
+pkgver=r3181.efa67fec
 pkgrel=1
 pkgdesc="GameStream client for PCs (Windows, Mac, Linux, and Steam Link) - Git version"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,11 @@ conflicts=('moonlight-qt')
 install=moonlight-qt-git.install
 source=("${pkgname}::git+https://github.com/moonlight-stream/moonlight-qt.git"
         "moonlight-common-c::git+https://github.com/moonlight-stream/moonlight-common-c.git"
-        "qmdnsengine::git+https://github.com/nitroshare/qmdnsengine.git")
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+        "qmdnsengine::git+https://github.com/cgutman/qmdnsengine.git"
+        "SDL_GameControllerDB::git+https://github.com/gabomdq/SDL_GameControllerDB.git"
+        "h264bitstream::git+https://github.com/aizvorski/h264bitstream.git"
+        "libs::git+https://github.com/cgutman/moonlight-qt-prebuilts.git")
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
     cd "$pkgname"
@@ -27,8 +30,11 @@ pkgver() {
 prepare() {
     cd "$pkgname"
     git submodule init
-    git config submodule.moonlight-common-c.url "$srcdir/moonlight-common-c"
-    git config submodule.qmdnsengine.url "$srcdir/qmdnsengine"
+    git config submodule.app/SDL_GameControllerDB.url "$srcdir/SDL_GameControllerDB"
+    git config submodule.h264bitstream/h264bitstream.url "$srcdir/h264bitstream"
+    git config submodule.libs.url "$srcdir/libs"
+    git config submodule.moonlight-common-c/moonlight-common-c.url "$srcdir/moonlight-common-c"
+    git config submodule.qmdnsengine/qmdnsengine.url "$srcdir/qmdnsengine"
     git -c protocol.file.allow=always submodule update --init --recursive
 }
 
