@@ -7,7 +7,7 @@
 
 # Maintainer: patchouli
 
-pkgver=9.1.0
+pkgver=9.3.0
 pkgname="ida-pro"
 pkgrel=1
 pkgdesc="Hex-Rays IDA Pro"
@@ -24,13 +24,13 @@ depends=('libgl'
 	)
 options=('!strip')
 
-_installer='ida-pro_91_x64linux.run'
+_installer='ida-pro_93_x64linux.run'
 
 source=("file://${_installer}"
 		"${pkgname}.desktop"
 		"${pkgname}-teams.desktop")
 
-sha256sums=('8ff08022be3a0ef693a9e3ea01010d1356b26cfdcbbe7fdd68d01b3c9700f9e2'
+sha256sums=('2ed43ae4bb84d74dcae6f0099210dfa8d61bfea4952f5f9a07a9aae16cb70f82'
             '662478dbcb939db8a36f89170246c2187b1086bff840dd96bd4d8f72eac3cad5'
             '437fc36a8edd8dd6adadd773dd777966797640d93f499892bdd1217afaf1b636')
 
@@ -55,7 +55,11 @@ package() {
 
 	# the installer needlessly makes a lot of files executable
 	find "${pkgdir}"/opt/${pkgname} -type f -exec chmod -x {} \;
-	chmod +x "${pkgdir}"/opt/${pkgname}/{assistant,hv,hvui,ida,idapyswitch,idat,picture_decoder,qwingraph,upg32}
+	chmod +x "${pkgdir}"/opt/${pkgname}/{hv,ida,idapyswitch,idat,picture_decoder,upg32}
+
+	# 9.3 change docs permissions
+	find "${pkgdir}"/opt/${pkgname}/docs -type d -exec chmod 755 {} \;
+	find "${pkgdir}"/opt/${pkgname}/docs -type f -exec chmod 644 {} \;
 
 	rm "${pkgdir}"/opt/${pkgname}/{uninstall*,Uninstall*}
 

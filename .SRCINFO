@@ -1,8 +1,8 @@
 pkgbase = ida-pro
 	pkgdesc = Hex-Rays IDA Pro
-	pkgver = 9.1.0
+	pkgver = 9.3.0
 	pkgrel = 1
-	url = https://www.hex-rays.com/products/ida/9.1.0/index.shtml
+	url = https://www.hex-rays.com/products/ida/9.3.0/index.shtml
 	arch = x86_64
 	license = custom
 	makedepends = fakechroot
@@ -14,10 +14,10 @@ pkgbase = ida-pro
 	depends = qt5-base
 	depends = python-rpyc
 	options = !strip
-	source = file://ida-pro_91_x64linux.run
+	source = file://ida-pro_93_x64linux.run
 	source = ida-pro.desktop
 	source = ida-pro-teams.desktop
-	sha256sums = 8ff08022be3a0ef693a9e3ea01010d1356b26cfdcbbe7fdd68d01b3c9700f9e2
+	sha256sums = 2ed43ae4bb84d74dcae6f0099210dfa8d61bfea4952f5f9a07a9aae16cb70f82
 	sha256sums = 662478dbcb939db8a36f89170246c2187b1086bff840dd96bd4d8f72eac3cad5
 	sha256sums = 437fc36a8edd8dd6adadd773dd777966797640d93f499892bdd1217afaf1b636
 
