@@ -3,7 +3,7 @@
 pkgbase=python-romanisim
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Nancy Grace Roman Space Telescope WFI Simulator"
 arch=('i686' 'x86_64')
@@ -18,12 +18,13 @@ makedepends=('python-setuptools-scm>=3.4'
              'python-sphinx_rtd_theme'
              'python-numpydoc'
              'python-astropy-healpix'
-#            'python-astroquery'
+##           'python-astroquery'
              'python-galsim'
              'python-photutils'
              'python-roman-datamodels'
-             'graphviz')  # wheel required by new setuptools; latex.fmt: -latex; anyfontsize.sty: latexextra
+             'graphviz')  # wheel required by new setuptools; scipy <- photutils
 # takes long time and needs big data
+# @pytest.mark.bigdata: ci_watson
 #checkdepends=(
 #'python-ci_watson'
 #             'python-pytest-xdist'
@@ -35,7 +36,7 @@ makedepends=('python-setuptools-scm>=3.4'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #       "https://stsci.box.com/shared/static/kqfolg2bfzqc4mjkgmujo06d3iaymahv.gz"
 #   )
-md5sums=('9af939f039f78e4c2810977632ac0137')
+md5sums=('455db434151d160b3d098a097e73bd75')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
