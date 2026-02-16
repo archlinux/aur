@@ -7,7 +7,7 @@
 _pkgname='tooi'
 pkgname="$_pkgname-git"
 pkgdesc='Text-based user interface for Mastodon, Pleroma and friends (development version)'
-pkgver=0.21.1.r0.gc4df62b
+pkgver=0.21.2.r4.gd7a13e4
 pkgrel=2
 url='https://codeberg.org/ihabunek/tooi'
 arch=('any')
@@ -28,8 +28,6 @@ depends=(
   'python-beautifulsoup4'
   'python-click'
   'python-html2text'
-  'python-linkify-it-py'
-  'python-markdown-it-py'
   'python-pillow'
   'python-platformdirs'
   'python-pydantic'
