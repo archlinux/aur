@@ -1,0 +1,36 @@
+# Maintainer: DonutsDelivery
+pkgname=task-manager-linux-bin
+pkgver=0.3.0
+pkgrel=1
+pkgdesc="GTK4/libadwaita system task manager and performance monitor for Linux"
+arch=('x86_64')
+url="https://github.com/DonutsDelivery/task-manager-linux"
+license=('MIT')
+depends=('gtk4' 'libadwaita' 'dbus')
+optdepends=(
+    'nvidia-utils: NVIDIA GPU monitoring via NVML'
+    'lm_sensors: CPU temperature monitoring'
+)
+provides=('task-manager-linux')
+conflicts=('task-manager-linux')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/DonutsDelivery/task-manager-linux/releases/download/v${pkgver}/task-manager-linux-x86_64.tar.gz")
+sha256sums=('ab1224fa33686144b1e783b4ba87210e3f33286d1638d8d0569c4a6fb007fc1f')
+
+package() {
+    install -Dm755 "${srcdir}/task-manager-linux-x86_64" "${pkgdir}/usr/bin/task-manager-linux"
+
+    # Desktop entry
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/task-manager-linux.desktop" << DESKTOP
+[Desktop Entry]
+Type=Application
+Name=Task Manager
+GenericName=System Monitor
+Comment=System process manager and performance monitor
+Exec=task-manager-linux
+Icon=utilities-system-monitor
+Terminal=false
+Categories=System;Monitor;
+Keywords=task;process;system;monitor;cpu;memory;gpu;
+StartupNotify=true
+DESKTOP
+}
