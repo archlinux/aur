@@ -1,0 +1,13 @@
+pkgbase = rz-pm-bin
+	pkgdesc = Rizin package manager (pre-compiled binary)
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/rizinorg/rz-pm
+	arch = x86_64
+	license = LGPL3
+	provides = rz-pm
+	conflicts = rz-pm
+	source = https://github.com/rizinorg/rz-pm/releases/download/v0.3.3/rz-pm-linux-x86_64
+	sha256sums = 92ee648c5948a9363c9f0d297bbbdd42aeb648316953d491d19faffd35cf1308
+
+pkgname = rz-pm-bin
