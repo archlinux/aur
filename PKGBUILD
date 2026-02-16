@@ -1,6 +1,6 @@
 # Maintainer: skint007 <archlinux.repose742@passmail.net>
 pkgname=pz-mod-manager
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Desktop application for managing Project Zomboid server mod lists"
 arch=('any')
@@ -31,4 +31,6 @@ package() {
     cd "project-zomboid-modid-${pkgver}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 src/pz_mod_manager/resources/icon.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+    install -Dm644 "${srcdir}/../${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
