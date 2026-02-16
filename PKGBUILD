@@ -6,10 +6,11 @@ pkgrel=6
 pkgdesc='Expose the Online Accounts API to QML applications'
 url='https://gitlab.com/accounts-sso/accounts-qml-module'
 arch=(x86_64)
-license=(LGPL)
-depends=(gcc-libs
-         glibc
+license=(LGPL-2.1-only)
+depends=(glibc
          libaccounts-qt
+         libgcc
+         libstdc++
          qt6-base
          qt6-declarative
          signond)
