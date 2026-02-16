@@ -26,5 +26,5 @@ prepare() {
 package() {
   cd "${pkgname%-bin}-$pkgver"
   install -Dm755 "${pkgname%-bin}" -t "$pkgdir/usr/bin/"
-  install -Dm644 {README,CHANGELOG}.md -t "$pkgdir/usr/share/doc/${pkgname%-bin}/"
+  install -Dm644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-bin}/"
 }
