@@ -3,7 +3,7 @@
 _pkgname=moonscraper-chart-editor
 pkgname=${_pkgname}-bin
 pkgdesc="Moonscraper Chart Editor is a song editor for Guitar Hero style rhythm games."
-pkgver=1.5.12
+pkgver=1.5.13
 pkgrel=1
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -15,10 +15,10 @@ _commit="$pkgver"
 source=("moonscraper-$pkgver.tar.gz"::"https://github.com/FireFox2000000/Moonscraper-Chart-Editor/releases/download/$pkgver/Moonscraper.Chart.Editor.v$pkgver.Linux.Universal.tar.gz"
         "$_pkgname.desktop"::"https://raw.githubusercontent.com/FireFox2000000/Moonscraper-Chart-Editor/$_commit/aur/moonscraper-chart-editor.desktop"
         "LICENSE"::"https://raw.githubusercontent.com/FireFox2000000/Moonscraper-Chart-Editor/$_commit/LICENSE")
-sha1sums=('16b7225bb3daba923aef3b1145e69400132cf873'
+sha1sums=('1471ae036597a76d1995c5204699891928c035ac'
           'e4c64c84730ee05b26e521537fc09fa82925fe72'
           '2d61750d08d43082718a1548810f76be186a9030')
-b2sums=('29f22cb6eec0e8976453afea9be187cd027f90ea013d469e95892ae7bc11438538beb49ad5cf06293f1a58b7f5486293e5431b82b4ad449afc094d9391745957'
+b2sums=('375eef165335d0fd72834e77e9badddf9dd4e19c9a2e19449a1966d73dd202121bb80b2687fdcb3598fc337ad7b95c9a338bc10ae4c0526b44ea219b2d5a9271'
         '83253333bbc384026b0adc2ec7a489dccc1b22205eb190ed764e8604e2bb48f9d9dd882a395234ab618c84d33094ef74c5d124091c11757b078f4f722e04afa0'
         '2c77abcaab52025cd9813a4139463b891bcb6efd1b2728a6d4e4ee4512cc89e7908cf5108220379df6b532001086f303d4ac2e4614696459348cda92992eeb3e')
 options=(!strip)
