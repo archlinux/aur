@@ -2,10 +2,17 @@
 
 CONFIG_DIR="${HOME}/.local/share"
 ADVANCELY_CONFIG_DIRECTORY="${ADVANCELY_CONFIG_DIRECTORY-${CONFIG_DIR}/advancely}"
+APPLICATION_DIRECTORY="/usr/share/advancely"
 
-if [[ ! -d "${ADVANCELY_CONFIG_DIRECTORY}" ]]; then
-  mkdir -p "${ADVANCELY_CONFIG_DIRECTORY}/config"
+touch "${ADVANCELY_CONFIG_DIRECTORY}/version"
+
+if [ ! -d "${ADVANCELY_CONFIG_DIRECTORY}" ] || ! cmp "${ADVANCELY_CONFIG_DIRECTORY}/version" "/usr/share/advancely/version"; then
+  mkdir -p "${ADVANCELY_CONFIG_DIRECTORY}"
+
+  cp -r "${APPLICATION_DIRECTORY}/resources/"{notes,templates} "${ADVANCELY_CONFIG_DIRECTORY}/"
+  cp -rn "${APPLICATION_DIRECTORY}/resources/config" "${ADVANCELY_CONFIG_DIRECTORY}/"
+
+  cp "${APPLICATION_DIRECTORY}/version" "${ADVANCELY_CONFIG_DIRECTORY}/version"
 fi
 
-cd "${ADVANCELY_CONFIG_DIRECTORY}" || exit 1
-/usr/share/advancely/Advancely --disable-updater --settings-file "${ADVANCELY_CONFIG_DIRECTORY}/config/settings.json"
+/usr/share/advancely/Advancely --disable-updater --use-home-dir "$@"
