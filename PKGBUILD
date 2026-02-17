@@ -13,7 +13,7 @@
 
 pkgname=codelite-git
 _gitname=codelite
-pkgver=18.2.0.r1.g3a07c3025
+pkgver=18.2.0.r235.g224749a23
 pkgrel=1
 pkgdesc="Cross platform IDE for C, C++, Rust, Python, PHP and Node.js written in C++"
 arch=('i686' 'x86_64' 'aarch64')
@@ -29,6 +29,7 @@ depends=(
     'zlib'
     'mariadb-libs'
     'ncurses'
+    'patch'
     'uchardet'
     'hunspell'
     #'ctags'
