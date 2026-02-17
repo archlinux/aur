@@ -12,7 +12,7 @@ license=('GPL-3.0-or-later')
 depends=('java-runtime' 'sh')
 optdepends=('streamlink: for watching streams in a custom video player.'
             'livestreamer: for watching streams in a custom video player.')
-makedepends=('gradle' 'java-environment')
+makedepends=('gradle' 'java-environment>=23')
 conflicts=('chatty')
 source=("${_pkgname}-${_pkgver}.tar.gz::https://github.com/chatty/${_pkgname}/archive/v${_pkgver}.tar.gz"
         "${_pkgname}.desktop"
