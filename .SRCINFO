@@ -1,18 +1,18 @@
 pkgbase = vkrunner-git
 	pkgdesc = Shader script tester for Vulkan
-	pkgver = r372.1b4cc6b
+	pkgver = r649.b327697
 	pkgrel = 1
-	url = https://github.com/Igalia/vkrunner
+	url = https://gitlab.freedesktop.org/mesa/vkrunner
 	arch = x86_64
-	license = custom
-	makedepends = cmake
+	license = Apache-2.0
+	license = MIT
+	makedepends = cargo
 	makedepends = git
 	makedepends = vulkan-headers
 	depends = glslang
 	provides = vkrunner
 	conflicts = vkrunner
-	source = vkrunner-git::git+https://github.com/Igalia/vkrunner
+	source = vkrunner-git::git+https://gitlab.freedesktop.org/mesa/vkrunner.git
 	sha512sums = SKIP
 
 pkgname = vkrunner-git
-

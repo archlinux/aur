@@ -1,16 +1,16 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='Shader script tester for Vulkan'
 pkgname=vkrunner-git
-pkgver=r372.1b4cc6b
+pkgver=r649.b327697
 pkgrel=1
-url=https://github.com/Igalia/vkrunner
+url=https://gitlab.freedesktop.org/mesa/vkrunner
 arch=(x86_64)
-license=(custom)
+license=(Apache-2.0 MIT)
 conflicts=(vkrunner)
 provides=(vkrunner)
 depends=(glslang)
-makedepends=(cmake git vulkan-headers)
-source=("${pkgname}::git+${url}")
+makedepends=(cargo git vulkan-headers)
+source=("${pkgname}::git+${url}.git")
 sha512sums=(SKIP)
 
 pkgver () {
@@ -23,23 +23,26 @@ pkgver () {
 }
 
 prepare () {
-	mkdir -p _build
+	cd "$pkgname"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --target host-tuple
 }
 
 build () {
-	cd _build
-	cmake \
-		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=/usr/lib \
-		"../${pkgname}"
-	cmake --build .
+	cd "$pkgname"
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --offline --release --all-features
+}
+
+check () {
+	cd "$pkgname"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo test --offline --all-features
 }
 
 package () {
-	DESTDIR="${pkgdir}" cmake --build _build --target install
-	install -Dm644 "${pkgname}/COPYING" \
-		"${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
-	install -Dm644 "${pkgname}/README.md" \
-		"${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	cd "$pkgname"
+	install -Dm755 target/release/vkrunner "$pkgdir/usr/bin/vkrunner"
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
