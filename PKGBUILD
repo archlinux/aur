@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=dnsmasq-git
-pkgver=2.90.r9.g550c368
+pkgver=2.92.r28.ge4d0bb4
 pkgrel=1
 pkgdesc="Lightweight, easy to configure DNS forwarder and DHCP server"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ provides=("dnsmasq=$pkgver")
 conflicts=('dnsmasq')
 backup=('etc/dnsmasq.conf')
 source=("git+https://thekelleys.org.uk/git/dnsmasq.git"
-        "dnsmasq-sysusers.conf::https://gitlab.archlinux.org/archlinux/packaging/packages/dnsmasq/-/raw/main/dnsmasq-sysusers.conf"
+        "dnsmasq.sysusers::https://gitlab.archlinux.org/archlinux/packaging/packages/dnsmasq/-/raw/main/dnsmasq.sysusers"
         "dnsmasq.service::https://gitlab.archlinux.org/archlinux/packaging/packages/dnsmasq/-/raw/main/dnsmasq.service")
 sha256sums=('SKIP'
             'SKIP'
@@ -31,7 +31,7 @@ pkgver() {
   cd "dnsmasq"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
@@ -65,11 +65,9 @@ package() {
     install-i18n
 
   install -Dm644 "dnsmasq.conf.example" "$pkgdir/etc/dnsmasq.conf"
-
   install -Dm644 "dbus/dnsmasq.conf" -t "$pkgdir/usr/share/dbus-1/system.d"
-
   install -Dm644 "$srcdir/dnsmasq.service" -t "$pkgdir/usr/lib/systemd/system"
-  install -Dm644 "$srcdir/dnsmasq-sysusers.conf" "$pkgdir/usr/lib/sysusers.d/dnsmasq.conf"
+  install -Dm644 "$srcdir/dnsmasq.sysusers" "$pkgdir/usr/lib/sysusers.d/dnsmasq.conf"
 
   # DNSSEC setup
   sed -i 's,%%PREFIX%%,/usr,' "$pkgdir/etc/dnsmasq.conf"
