@@ -2,20 +2,20 @@
 # Contributor: Rax Garfield <admin at dvizho.ks.ua>
 
 pkgname=hunspell-uk
-pkgver=6.6.1
+pkgver=6.7.5
 pkgrel=1
 pkgdesc="Ukrainian spelling dictionary"
 arch=(any)
 url=https://github.com/brown-uk/dict_uk
 license=(GPL-3.0-or-later CC-BY-NC-SA-4.0)
 optdepends=('hunspell: the spell checking libraries and apps')
-makedepends=('java-environment<24' gradle qt5-webengine)
+makedepends=('java-environment>=21' gradle qt6-webengine)
 source=($pkgname-$pkgver.tar.gz::https://github.com/brown-uk/dict_uk/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('75b2bf919b1f78251a7cdb32052a88efebab6d197e87b9b476ff7fad7ef02ae7')
+sha256sums=('d91519e9ea5feb7809673b7e483a20d39297aaed177e240c7e805a8effe899e7')
 
 build() {
   cd "$srcdir/dict_uk-$pkgver"
-  gradle -b distr/hunspell/build.gradle hunspell --no-daemon --gradle-user-home "$srcdir"/gradle
+  gradle --project-dir=distr/hunspell hunspell --no-daemon --gradle-user-home "$srcdir"/gradle
 }
 
 package() {
@@ -32,10 +32,11 @@ package() {
   popd
 
   # Install webengine dictionaries
-  install -d "$pkgdir"/usr/share/qt/qtwebengine_dictionaries/
-  for _file in distr/hunspell/build/hunspell/*.dic; do
-    _filename="$(basename "$_file")"
+  install -d "$pkgdir"/usr/share/qt{,6}/qtwebengine_dictionaries/
+  for _file in "$pkgdir"/usr/share/hunspell/*.dic; do
+    _filename=$(basename $_file)
     sed -i '/^IGNORE/d' "${_file/\.dic/\.aff}"
-    qwebengine_convert_dict "$_file" "$pkgdir"/usr/share/qt/qtwebengine_dictionaries/"${_filename/\.dic/\.bdic}"
+    /usr/lib/qt6/qwebengine_convert_dict $_file "$pkgdir"/usr/share/qt6/qtwebengine_dictionaries/${_filename/\.dic/\.bdic}
+    ln -rs "$pkgdir"/usr/share/qt6/qtwebengine_dictionaries/${_filename/\.dic/\.bdic} "$pkgdir"/usr/share/qt/qtwebengine_dictionaries/
   done
 }
