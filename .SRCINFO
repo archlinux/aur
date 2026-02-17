@@ -16,7 +16,7 @@ pkgbase = hyprism-git
 	conflicts = hyprism
 	conflicts = hyprism-bin
 	options = !strip
-	source = hyprism-git::git+https://github.com/HyPrismTeam/HyPrism.git
+	source = hyprism-git::git+https://github.com/HyPrismTeam/HyPrism.git#branch=dev
 	sha256sums = SKIP
 
 pkgname = hyprism-git

@@ -1,4 +1,5 @@
 # Maintainer: denuvoless <jason@denuvoless.com>
+# Contributor: rainypixel <me@bobchenkov.ru>
 pkgname=hyprism-git
 pkgver=r533.dd1ed9a
 pkgrel=1
@@ -11,20 +12,20 @@ makedepends=('dotnet-sdk>=10' 'npm' 'nodejs' 'git')
 provides=('hyprism')
 conflicts=('hyprism' 'hyprism-bin')
 options=('!strip')
-source=("${pkgname}::git+https://github.com/HyPrismTeam/HyPrism.git")
+source=("${pkgname}::git+https://github.com/HyPrismTeam/HyPrism.git#branch=dev")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "$pkgname"
+  cd "$pkgname"
 
-    # Use "dir" target. Produces an unpacked app directory without
-    # needing flatpak/AppImage/deb tooling.
-    cat > Properties/electron-builder.json << 'EOF'
+  # Use "dir" target. Produces an unpacked app directory without
+  # needing flatpak/AppImage/deb tooling.
+  cat >Properties/electron-builder.json <<'EOF'
 {
   "$schema": "https://raw.githubusercontent.com/electron-userland/electron-builder/refs/heads/master/packages/app-builder-lib/scheme.json",
   "compression": "store",
@@ -39,33 +40,33 @@ build() {
 }
 EOF
 
-    export DOTNET_CLI_TELEMETRY_OPTOUT=1
-    export DOTNET_NOLOGO=1
-    export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
+  export DOTNET_CLI_TELEMETRY_OPTOUT=1
+  export DOTNET_NOLOGO=1
+  export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
 
-    dotnet publish \
-        -c Release \
-        -p:RuntimeIdentifier=linux-x64 \
-        -p:PublishReadyToRun=false
+  dotnet publish \
+    -c Release \
+    -p:RuntimeIdentifier=linux-x64 \
+    -p:PublishReadyToRun=false
 }
 
 package() {
-    cd "$pkgname"
+  cd "$pkgname"
 
-    local _unpacked="bin/Release/net10.0/linux-x64/publish/linux-unpacked"
+  local _unpacked="bin/Release/net10.0/linux-x64/publish/linux-unpacked"
 
-    install -dm755 "$pkgdir/opt/hyprism"
-    cp -a "$_unpacked"/. "$pkgdir/opt/hyprism/"
-    chmod 755 "$pkgdir/opt/hyprism/HyPrism"
+  install -dm755 "$pkgdir/opt/hyprism"
+  cp -a "$_unpacked"/. "$pkgdir/opt/hyprism/"
+  chmod 755 "$pkgdir/opt/hyprism/HyPrism"
 
-    install -Dm755 /dev/stdin "$pkgdir/usr/bin/hyprism" << 'EOF'
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/hyprism" <<'EOF'
 #!/bin/sh
 exec /opt/hyprism/HyPrism "$@"
 EOF
 
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/hyprism.desktop" << EOF
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/hyprism.desktop" <<EOF
 [Desktop Entry]
 Name=HyPrism
 Comment=A multiplatform Hytale launcher with mod manager and more!
@@ -76,9 +77,9 @@ Type=Application
 Categories=Game;
 EOF
 
-    if [[ -f Frontend/public/icon.png ]]; then
-        install -Dm644 Frontend/public/icon.png "$pkgdir/usr/share/pixmaps/hyprism.png"
-    elif [[ -f Frontend/src/assets/images/appicon.png ]]; then
-        install -Dm644 Frontend/src/assets/images/appicon.png "$pkgdir/usr/share/pixmaps/hyprism.png"
-    fi
+  if [[ -f Frontend/public/icon.png ]]; then
+    install -Dm644 Frontend/public/icon.png "$pkgdir/usr/share/pixmaps/hyprism.png"
+  elif [[ -f Frontend/src/assets/images/appicon.png ]]; then
+    install -Dm644 Frontend/src/assets/images/appicon.png "$pkgdir/usr/share/pixmaps/hyprism.png"
+  fi
 }
