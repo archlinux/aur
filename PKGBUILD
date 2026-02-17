@@ -2,7 +2,7 @@
 pkgname=stardial
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="A space-anime themed terminal clock (tty-clock superset)"
+pkgdesc="A space-anime themed terminal clock"
 arch=('x86_64')
 url="https://github.com/hisuic/stardial"
 license=('MIT')
