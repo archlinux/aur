@@ -25,9 +25,9 @@ package() {
 
     install -vDm 644 -t "${pkgdir}/usr/share/doc/${_pkg}" docs/config.example.toml
 
-    install -vDm 644 -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps/" docs/iamb.svg
-    install -vDm 644 -t "${pkgdir}/usr/share/metainfo/" docs/iamb.metainfo.xml
-    install -vDm 644 -t "${pkgdir}/usr/share/applications/" docs/iamb.desktop
+    install -vDm 644 -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps/" "docs/${_pkg}.svg"
+    install -vDm 644 -t "${pkgdir}/usr/share/metainfo/" "docs/${_pkg}.metainfo.xml"
+    install -vDm 644 -t "${pkgdir}/usr/share/applications/" "docs/${_pkg}.desktop"
 
-    install -vDm 755 -t "${pkgdir}/usr/bin" iamb
+    install -vDm 755 -t "${pkgdir}/usr/bin" "${_pkg}"
 }
