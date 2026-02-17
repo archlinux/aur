@@ -1,7 +1,7 @@
 pkgbase = disig-web-signer
 	pkgdesc = Slovak eID Web Signer by Disig
 	pkgver = 2.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://qesportal.sk/
 	arch = i686
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = disig-web-signer
 
 pkgname = disig-web-signer
 	depends = glibc
-	depends = libgcc
-	depends = libstdc++
+	depends = libgcc_s.so
+	depends = libstdc++.so
 	depends = openssl-1.1
 	depends = qt5-base
 	depends = qt5-websockets
