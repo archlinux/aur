@@ -15,8 +15,8 @@ depends=('python'
          'python-uharfbuzz')
 makedepends=('python-build'
              'python-installer'
-             'python-wheel'
-             'python-poetry-core')
+             'python-hatchling'
+             'python-wheel')
 checkdepends=('python-pytest'
               'python-pytest-asyncio')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
