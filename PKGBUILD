@@ -6,7 +6,7 @@ _pkgname=openssl
 _ver=1.1.1w
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
-pkgrel=7
+pkgrel=8
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('aarch64' 'x86_64')
 url='https://www.openssl.org'
@@ -33,11 +33,15 @@ source=(
 	CVE-2024-9143.patch
 	CVE-2024-13176.patch
 	CVE-2025-9230.patch
+	CVE-2025-69419-1.patch
+	CVE-2025-69419-2.patch
 )
 sha256sums=(
 	'cf3098950cb4d853ad95c0841f1f9c6d3dc102dccfcacd521d93925208b76ac8'
 	'SKIP'
 	'75aa8c2c638c8a3ebfd9fa146fc61c7ff878fc997dc6aa10d39e4b2415d669b2'
+	SKIP
+	SKIP
 	SKIP
 	SKIP
 	SKIP
@@ -84,6 +88,8 @@ prepare() {
 	patch -p1 -i "${srcdir}/CVE-2024-9143.patch"
 	patch -p1 -i "${srcdir}/CVE-2024-13176.patch"
 	patch -p1 -i "${srcdir}/CVE-2025-9230.patch"
+	patch -p1 -i "${srcdir}/CVE-2025-69419-1.patch"
+	patch -p1 -i "${srcdir}/CVE-2025-69419-2.patch"
 }
 
 build() {

@@ -49,3 +49,11 @@ path = [
 ]
 SPDX-FileCopyrightText = "Debian contributors"
 SPDX-License-Identifier = "TODO-Choose-a-license"
+
+[[annotations]]
+path = [
+    "CVE-2025-69419-1.patch",
+    "CVE-2025-69419-2.patch",
+]
+SPDX-FileCopyrightText = "RHEL contributors"
+SPDX-License-Identifier = "TODO-Choose-a-license"
