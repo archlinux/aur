@@ -21,6 +21,12 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-uv-build')
 source=("https://files.pythonhosted.org/packages/source/m/mutmut/mutmut-$pkgver.tar.gz")
 sha256sums=('b3b47e60828192c9f2e7737316469777f769a9163d0e384776129b80f7e8aa3e')
 
+prepare() {
+    cd "mutmut-$pkgver"
+    # Relax uv_build version constraint for compatibility with Arch's version
+    sed -i 's/uv_build>=0.9.5,<0.10.0/uv_build>=0.9.5/' pyproject.toml
+}
+
 build() {
     cd "mutmut-$pkgver"
     python -m build --wheel --no-isolation
