@@ -2,7 +2,7 @@
 pkgname=python-chws-tool
 _name=${pkgname#python-}
 _name=${_name//-/_}
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 pkgdesc="Utility for OpenType chws/vchw features"
 arch=('any')
@@ -12,13 +12,12 @@ depends=('python'
          'python-east-asian-spacing')
 makedepends=('python-build'
              'python-installer'
-             'python-setuptools'
-             'python-setuptools-scm'
+             'python-hatchling'
              'python-wheel')
 checkdepends=('python-pytest'
               'python-pytest-asyncio')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6f6731befe8798514f6c4374c6bf446fae071b2eafe6a60b5f578b389559a6da')
+sha256sums=('0ce6066488973046182b2a4316b3c10123cf09d18338e3cbc20999cf7e3e60d5')
 
 build() {
     cd $_name-$pkgver
