@@ -1,8 +1,8 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=manim-slides
 pkgname=python-${_base,,}
-pkgver=5.5.3
-pkgrel=4
+pkgver=5.5.4
+pkgrel=1
 pkgdesc="Tool for live presentations using manim"
 arch=(x86_64)
 url="https://github.com/jeertmans/${_base}"
@@ -14,7 +14,7 @@ makedepends=(python-build python-installer python-hatch-fancy-pypi-readme)
 checkdepends=(python-pytest-cov python-pytest-qt pyside6 python-pytest-missing-modules
   python-manimgl manim python-setuptools xorg-server-xvfb)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('9b2bb2867e6268b65dad432ce2b197ecd511280ec82c36b04cdc5742d558bcc05e6d8f13ca202efd20534aa78c276b1fd64670a121eab0c65a1453f535de8dc3')
+sha512sums=('d0d159b19d7c005616922ab340c96c9438742e8f3448803e0d5e1f5b52d1c3619a7d3b76a959d36a890f047d0db60729427960d9226c1e1061ce21673c4b7211')
 
 build() {
   cd ${_base}-${pkgver}
