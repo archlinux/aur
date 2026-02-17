@@ -1,7 +1,7 @@
 pkgbase = smpq
 	pkgdesc = StormLib MPQ archiving utility. Designed for full manipulating with Blizzard MPQ archives
-	pkgver = 1.6
-	pkgrel = 4
+	pkgver = 1.7
+	pkgrel = 1
 	url = https://launchpad.net/smpq
 	arch = i686
 	arch = x86_64
@@ -10,9 +10,7 @@ pkgbase = smpq
 	depends = bzip2
 	depends = stormlib
 	depends = zlib
-	source = https://launchpad.net/smpq/trunk/1.6/+download/smpq_1.6.orig.tar.gz
-	source = fix-smpq-compilation.patch
-	sha256sums = b5d2dc8a5de8629b71ee5d3612b6e84d88418b86c5cd39ba315e9eb0462f18cb
-	sha256sums = d44236b0dd48ff0d07a277d7c2cd5d8ba4c41903dd2c0de6beb814fa142d060a
+	source = https://launchpad.net/smpq/trunk/1.7/+download/smpq_1.7.orig.tar.gz
+	sha256sums = b9f99f13b31adaa792e320a02a405a322cb7669ad484781bf2fffeffbf749de2
 
 pkgname = smpq
