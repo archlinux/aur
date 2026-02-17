@@ -1,24 +1,25 @@
-# Maintainer: Anatol Pomozov anatol dot pomozov at g mail
-
+# Maintainer: Tommy Falkowski <tommy@byteowlz.com>
 pkgname=sldr
-pkgver=1.2
+pkgver=0.2.0
 pkgrel=1
-pkgdesc='Super Light Async DNS Resolver'
-arch=(i686 x86_64)
-license=(GPL2)
-depends=(glibc)
-url='https://github.com/CesiumComputer/sldr'
-source=(sldr-$pkgver.tar.gz::https://github.com/CesiumComputer/sldr/archive/$pkgver.tar.gz)
-sha1sums=('216950df11e0f600233e87aa9e7ca0a303637f60')
+pkgdesc="Modular markdown presentations powered by slidev"
+arch=('x86_64' 'aarch64')
+url="https://github.com/byteowlz/sldr"
+license=('MIT')
+provides=('sldr')
+conflicts=('sldr-bin')
+makedepends=('rust' 'cargo')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/byteowlz/sldr/archive/v${pkgver}.tar.gz")
+sha256sums=('SKIP')
 
 build() {
-  cd sldr-$pkgver
-  gcc -shared -fPIC $CFLAGS $LDFLAGS sldr.c -o libsldr.so
+    cd "${pkgname}-${pkgver}"
+    cargo build --release --locked
 }
 
 package() {
-  cd sldr-$pkgver
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -D -m755 libsldr.so "$pkgdir/usr/lib/libsldr.so"
-  install -D -m644 sldr.h "$pkgdir/usr/include/sldr.h"
+    cd "${pkgname}-${pkgver}"
+    install -Dm755 target/release/sldr "${pkgdir}/usr/bin/sldr"
+    install -Dm755 target/release/sldr-server "${pkgdir}/usr/bin/sldr-server"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
