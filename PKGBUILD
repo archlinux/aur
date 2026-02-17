@@ -1,6 +1,6 @@
 # Maintainer: Jeicob <tu-email>
 pkgname=spackit
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Utilidad de sistema para Arch Linux"
 arch=('any')
@@ -14,7 +14,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "setup_aliases.sh")
 
 # Saltamos la verificación por ahora para que no te dé error de hash
-sha256sums=('c79b8261d8c013b49940a1ad0619c3462f4ed9fb1ef67a3b0dd78412da564fa9'
+sha256sums=('7910228cf62c86634eb87ff762f758da5d841e1d8db355abd003723f4baaa926'
             '0db91cbd7396a71578f8b170b1d74713ab7a01eb7cdf605ac1cd4ff0ab0ca20d')
 
 build() {
