@@ -2,7 +2,7 @@
 
 pkgname=structurizr
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Software architecture models as code"
 arch=('any')
 url="https://structurizr.com/"
@@ -13,8 +13,8 @@ conflicts=('structurizr-git')
 options=('!strip')
 source=("git+https://github.com/structurizr/structurizr.git#tag=v$pkgver"
 	"structurizr.sh")
-sha256sums=('SKIP'
-            'becf35524c25e66b76a21f206b813b97afa6a223d3de61f4b202248957b250d4')
+sha256sums=('2c344145249600076e64a34ec927054dd5fbe50f04da45caf86fbff399c48d3f'
+            '72122d16c7cfe32cef4e63267e461fefb60c893b87349d539e016645b0403698')
 
 build() {
     cd structurizr
