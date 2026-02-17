@@ -1,7 +1,7 @@
 pkgbase = chalkak
 	pkgdesc = Hyprland screenshot preview and editor utility
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bityoungjae/chalkak
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,8 @@ pkgbase = chalkak
 	makedepends = pkgconf
 	makedepends = gtk4
 	makedepends = cmake
+	makedepends = clang
+	makedepends = git
 	depends = gtk4
 	depends = hyprland
 	depends = grim
