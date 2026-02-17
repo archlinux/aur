@@ -1,11 +1,12 @@
 pkgbase = ny-cli
-	pkgdesc = A beautiful terminal-based anime streaming client powered by nyanime.tech
+	pkgdesc = Terminal-based anime streaming client with self-hosted scraping via aniwatch
 	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/AnjishnuSengupta/ny-cli
 	arch = any
 	license = MIT
-	depends = curl
+	depends = nodejs>=18
+	depends = npm
 	depends = grep
 	depends = sed
 	optdepends = mpv: recommended video player
