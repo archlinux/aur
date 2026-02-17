@@ -2,10 +2,10 @@
 
 pkgname=python-cu2qu-git
 pkgver=1.6.7.post2.r0.g4cbc9b6
-pkgrel=9
+pkgrel=10
 pkgdesc='Cubic-to-quadratic bezier curve conversion'
 url='https://github.com/googlefonts/cu2qu'
-license=('Apache')
+license=('Apache-2.0')
 arch=(any)
 _pydeps=(defcon
     fonttools
