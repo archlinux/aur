@@ -1,0 +1,15 @@
+pkgbase = librush
+	pkgdesc = ibus module for pmim (a Chinese pinyin input method)
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://crates.io/crates/librush
+	arch = x86_64
+	license = LGPL-2.1-or-later OR GPL-3.0-or-later
+	makedepends = rust>=1:1.93
+	depends = ibus>=1.5.33
+	optdepends = flatpak: install pmim from flathub
+	conflicts = librush-bin
+	source = librush.tar.gz::https://crates.io/api/v1/crates/librush/0.2.2/download
+	sha256sums = 9524559a9867b98a36a14ee4e6e5f0f8842bb174edec9232d9313af049f71727
+
+pkgname = librush
