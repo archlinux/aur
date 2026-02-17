@@ -1,6 +1,6 @@
 pkgbase = r-broom.mixed
 	pkgdesc = Tidying Methods for Mixed Models
-	pkgver = 0.2.9.6
+	pkgver = 0.2.9.7
 	pkgrel = 1
 	url = https://cran.r-project.org/package=broom.mixed
 	arch = any
@@ -38,7 +38,7 @@ pkgbase = r-broom.mixed
 	optdepends = r-rstantools
 	optdepends = r-testthat
 	optdepends = r-tmb
-	source = https://cran.r-project.org/src/contrib/broom.mixed_0.2.9.6.tar.gz
-	sha256sums = f06bfd7ddec2db64ef53cfb02bcb2c0dc90ec3c27e41236c2930820a79e3988c
+	source = https://cran.r-project.org/src/contrib/broom.mixed_0.2.9.7.tar.gz
+	sha256sums = 21b8fa2352c3dd0ce46345a0cd1b5f9f9bbd74dd3e110c2c1a4a04926eba9641
 
 pkgname = r-broom.mixed
