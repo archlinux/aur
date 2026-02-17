@@ -15,13 +15,13 @@ _pkgname=neovim
 pkgname=neovim-later
 # commit is chosen kinda arbitarily. But I'd make sure to pick one
 # with all the CI checks passed.
-_commit=86c939ba91e97f0364bf5ba877a0fb4f45309c35
+_commit=05bd4398c50706945577ea9d620d8611471b847c
 # Make sure pkgver is less than .0 official release and neovim-git
 # e.g:
 # `vercmp 0.12.0 0.12.0.xlater.2512' must return 1
 # `vercmp 0.12.0.r1585.g70ea589d79-1 0.12.0.xlater.2512' must return 1
-pkgver=0.12.0.xlater.2601
-# Unfortunately I don't know how to pkgver or _commit into `nvim -v`
+pkgver=0.12.0.xlater.2602
+# Unfortunately I don't know how to put pkgver or _commit into `nvim -v`
 pkgrel=1
 pkgdesc='Following Neovim dev branch at least monthly'
 arch=(i686 x86_64 armv7h armv6h aarch64)
@@ -59,7 +59,7 @@ source=(
   "https://github.com/neovim/neovim/archive/$_commit.zip"
   nvimdoc{,.hook}
 )
-b2sums=('599c17f5efc1d0954eef39362ee83902e5f0921033f7c0688ebfdb456ddbc56a892970dce33126e96b55558c1a57da6fc59bd78397374f06a3715cdb1a69162b'
+b2sums=('33598ba9d912b1eed716f1357c05d1bf9614c6a9a444aa97c6cbadedbd98a64c10330d22584fc7b9522d0e6856d7199563f47cf34c20af4a19fea60fdbd69696'
         'd31cf81659e238fada8092755eb9be16f77c00a466107eb5770c6c9c32e043c91e6efada7ddb51663716a0e38ffa6e3d0093b3e6833aa961d845c7451a95491e'
         '26588b9da6459393076723bdfb8d2b16fed882070f2326bf7c35cd272dee9c18df603afb1ae2254cd0a59eff68189caf04828ef165d5de42c7a4222267604101')
 
