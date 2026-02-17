@@ -1,6 +1,6 @@
 pkgbase = hare-wayland
 	pkgdesc = Native Hare Wayland bindings
-	pkgver = 0.25.2.0
+	pkgver = 0.26.0.1
 	pkgrel = 1
 	url = https://git.sr.ht/~sircmpwn/hare-wayland
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = hare-wayland
 	makedepends = wayland
 	makedepends = wayland-protocols
 	depends = hare
-	source = hare-wayland-0.25.2.0.tar.gz::https://git.sr.ht/~sircmpwn/hare-wayland/archive/0.25.2.0.tar.gz
-	b2sums = bd2976bfb276b047b14946fe0820d7a0d8c610a2dbdd6492040a1e07fdfee7d5c76f7028bd35c82fab254a6f303b93a712a1dce0ea4546c2ac1b1f21e896540c
+	source = hare-wayland-0.26.0.1.tar.gz::https://git.sr.ht/~sircmpwn/hare-wayland/archive/0.26.0.1.tar.gz
+	b2sums = 4e439bf2d333f8e21acd8d3e23fdc66cc1cfbf9a0a0035adb72893cd080e17e37d2870844118f1835d4afdb9868b9c1264514570b93df5f3e2f1c35f600e2405
 
 pkgname = hare-wayland
