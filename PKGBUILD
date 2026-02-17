@@ -3,27 +3,30 @@
 # Contributor: Maxim Baz <archlinux at maximbaz dot com>
 
 pkgname=ttf-joypixels
-pkgver=9.0.0
+pkgver=10.0.0
 pkgrel=1
 pkgdesc='Emoji as a Service (formerly EmojiOne)'
-url='https://www.joypixels.com/download'
+url='https://joypixels.com/'
 arch=('any')
 license=('custom')
 provides=('emoji-font')
 conflicts=('ttf-emojione')
 replaces=('ttf-emojione')
 install="${pkgname}.install"
-source=("joypixels-linux-${pkgver}.ttf::https://cdn.joypixels.com/distributions/gentoo-linux/font/${pkgver}/joypixels-android.ttf"
-        "license-free-${pkgver}-${pkgrel}.pdf::https://cdn.joypixels.com/free-license.pdf"
-        "license-appendix-${pkgver}-${pkgrel}.pdf::https://cdn.joypixels.com/arch-linux/appendix/joypixels-license-appendix.pdf")
-sha256sums=('a661ac5606122bf7393a584e5e1365441b3f5e9a4c5e6b0771979298892e103e'
-            'b8572500ff2ff25387c9a1f51f2f122215a881ebcf723adddf09fa347b3e64e6'
-            '05084e4ddbbb0c241bb0ff4e307853a9e6236fa1c617b7cba44af31b6bfc5e2d')
+source=("joypixels-linux-${pkgver}.ttf::https://cdn.joypixels.com/distributions/arch-linux/10.0.0/joypixels-android.ttf"
+        "license-free-${pkgver}-${pkgrel}.txt::https://cdn.joypixels.com/distributions/arch-linux/10.0.0/free-license.txt"
+        "license-appendix-${pkgver}-${pkgrel}.txt::https://cdn.joypixels.com/distributions/arch-linux/10.0.0/joypixels-license-appendix.txt")
+sha256sums=('4f8bc13d37570f19c3ef69fe5ca7867b22a89951b6d944d194eca6a1bcea1efe'
+            '892ebed99cc1b280f814dd1c4428cf19ab80a83b1fad242936baf26dad8f127d'
+            '8e005ae09e09dd59bca0a9064ecca091d50740f6f98f194f260ec69e9aae0348')
 
 package() {
     install -Dm644 "joypixels-linux-${pkgver}.ttf" "${pkgdir}/usr/share/fonts/${pkgname#ttf-}/JoyPixels.ttf"
-    install -Dm644 "license-free-${pkgver}-${pkgrel}.pdf" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.pdf"
-    install -Dm644 "license-appendix-${pkgver}-${pkgrel}.pdf" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.appendix.pdf"
+
+    echo "Please read and accept the terms of the license installed with the package."
+    install -Dm644 "license-free-${pkgver}-${pkgrel}.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+    install -Dm644 "license-appendix-${pkgver}-${pkgrel}.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.appendix.txt"
+
 }
 
 # vim:set ts=4 sw=4 et:
