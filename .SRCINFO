@@ -1,7 +1,7 @@
 pkgbase = joymap
 	pkgdesc = A linux userspace device driver that allows joystick events to be remapped.
 	pkgver = 0.6.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sourceforge.net/projects/linuxjoymap
 	install = joymap.install
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = joymap
 	source = 90-joymap-uinput.rules
 	sha256sums = b0f32e74e728a785a8f6bdf484539290047c7f027c60ae1bf3b4032590c388ca
 	sha256sums = 427aae12107225ed8e47a2c9ec77539723cce98f340316a08d9d68b0514b78ec
-	sha256sums = fa6c5cf0a5104fffc5181db5a198554d86ddacc1230c481530ac197e798415e2
+	sha256sums = 8543dff52b03d856aab60727a747df517edc037ebb1c0f46c66c536928b84427
 	sha256sums = 1bbbbe0f795adcb11f7284d17b0e67dc6c3d8577f4509f83e64936d99e504fc7
 	sha256sums = 61068aaf6e67b8739acbdc93f44353f4666a00bfd3fae8b50c952a97b7a35ac6
 

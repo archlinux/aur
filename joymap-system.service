@@ -1,5 +1,7 @@
 [Unit]
 Description=Start joymap system service.
+Requires=modprobe@uinput.service
+After=modprobe@uinput.service
 
 [Service]
 Type=simple
