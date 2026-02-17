@@ -1,10 +1,10 @@
-# Maintainer: Matteo <matteo@localhost>
+# Maintainer: Matteo Turri <matteoturri89@gmail.com>
 pkgname=toshiba-satellite-u940-kbdlight-dkms
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Toshiba Satellite U940 keyboard backlight 3-mode cycling (OFF/AUTO/ON) via Fn+Z with GNOME OSD"
 arch=('any')
-url="https://github.com/placeholder/toshiba-satellite-u940-kbdlight-dkms"
+url="https://aur.archlinux.org/packages/toshiba-satellite-u940-kbdlight-dkms"
 license=('GPL-2.0-only')
 depends=('dkms')
 source=('dkms.conf'
