@@ -2,15 +2,15 @@
 
 pkgname=opencloud-desktop
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='opencloud desktop application'
 arch=('x86_64')
 url="https://github.com/opencloud-eu/desktop"
 license=('GPL-2.0-only')
-depends=(gcc-libs
-         glibc
+depends=(glibc
          kdsingleapplication
          libre-graph-api
+         libstdc++
          qt6-base
          qtkeychain-qt6
          sqlite
