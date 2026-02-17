@@ -1,10 +1,10 @@
 # Maintainer: srgooglo <srgooglo@ragestudio.net>
 pkgname=comty-desktop-bin
 
-_electronversion=38
+_electronversion=39
 
 pkgver="0.4.0"
-pkgrel=2
+pkgrel=3
 pkgdesc="Official Comty Desktop application bin"
 arch=("x86_64")
 url="https://github.com/ragestudio/comty"
