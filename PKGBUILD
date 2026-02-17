@@ -4,7 +4,7 @@
 
 pkgname=beautysh
 pkgver=6.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Bash beautifier for the masses"
 arch=(
 	any
@@ -14,8 +14,10 @@ license=(
 	MIT
 )
 depends=(
+	python
 	python-colorama
 	python-editorconfig
+	python-tomli
 )
 checkdepends=(
 	python-pytest
@@ -64,4 +66,6 @@ package() {
 	cd "beautysh-${pkgver}"
 
 	python -m installer --destdir "${pkgdir}" dist/beautysh-"${pkgver}"-*-none-any.whl
+
+	install -Dvm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
