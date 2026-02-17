@@ -4,7 +4,7 @@
 
 _pkgname=squeekboard
 pkgname=squeekboard-git
-pkgver=1.43.0.r11.g7ca47aab
+pkgver=1.43.0.r12.ge309beb7
 pkgrel=1
 pkgdesc='An on-screen-keyboard input method for Wayland'
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
@@ -14,12 +14,12 @@ depends=(
   cairo
   dconf
   feedbackd
-  gcc-libs
   gdk-pixbuf2
   glib2
   glibc
   gnome-desktop
   gtk3
+  libgcc
   libxkbcommon
   pango
   wayland
