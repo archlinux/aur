@@ -1,7 +1,7 @@
 # Maintainer: Tymon3310 <aur@tymon3310.dev>
 pkgname=vortex
-pkgver=1.16.2
-pkgrel=5
+pkgver=1.16.3
+pkgrel=1
 pkgdesc="Nexus Mods' mod manager - native Linux build (Stable)"
 arch=('x86_64')
 url="https://github.com/Nexus-Mods/Vortex"
@@ -34,6 +34,9 @@ build() {
   msg2 "Compiling Webpack bundles..."
   yarn run build_dist
 
+  cp assets/dotnetprobe app/assets/
+  chmod +x app/assets/dotnetprobe
+
   msg2 "Packaging Electron application..."
   ./node_modules/.bin/electron-builder --linux dir --x64 --config electron-builder-config.json
 }
@@ -43,6 +46,10 @@ package() {
 
   install -dm755 "$pkgdir/opt/Vortex"
   cp -a . "$pkgdir/opt/Vortex/"
+
+  install -dm755 "$pkgdir/opt/Vortex/resources/app.asar.unpacked/assets"
+  install -Dm755 "$srcdir/Vortex/assets/dotnetprobe" \
+    "$pkgdir/opt/Vortex/resources/app.asar.unpacked/assets/dotnetprobe"
 
   chmod 4755 "$pkgdir/opt/Vortex/chrome-sandbox"
 
