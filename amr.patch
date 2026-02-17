@@ -1,0 +1,1815 @@
+From b72a25a37dfe36293b1536bc0acf2913a1812525 Mon Sep 17 00:00:00 2001
+From: jwh <aur@zorins.us>
+Date: Tue, 17 Feb 2026 21:03:03 +0100
+Subject: [PATCH] amr
+
+---
+ build_tools/menuselect-deps.in   |   3 +
+ codecs/codec_amr.c               | 410 +++++++++++++++++++++++++
+ codecs/ex_amr.h                  |  49 +++
+ configure                        | 466 ++++++++++++++++++++++++++++-
+ configure.ac                     |   7 +
+ include/asterisk/amr.h           |  19 ++
+ include/asterisk/autoconfig.h.in |  12 +
+ include/asterisk/format_cache.h  |  10 +
+ main/codec_builtin.c             |  51 ++++
+ main/format_cache.c              |  17 ++
+ main/rtp_engine.c                |   6 +
+ makeopts.in                      |   7 +
+ res/res_format_attr_amr.c        | 494 +++++++++++++++++++++++++++++++
+ 13 files changed, 1541 insertions(+), 10 deletions(-)
+ create mode 100644 codecs/codec_amr.c
+ create mode 100644 codecs/ex_amr.h
+ create mode 100644 include/asterisk/amr.h
+ create mode 100644 res/res_format_attr_amr.c
+
+diff --git a/build_tools/menuselect-deps.in b/build_tools/menuselect-deps.in
+index 52c26e1..470d50a 100644
+--- a/build_tools/menuselect-deps.in
++++ b/build_tools/menuselect-deps.in
+@@ -1,4 +1,7 @@
+ BLUETOOTH=@PBX_BLUETOOTH@
++AMR_NB=@PBX_AMR_NB@
++AMR_WB_DECODER=@PBX_AMR_WB_DECODER@
++AMR_WB_ENCODER=@PBX_AMR_WB_ENCODER@
+ BEANSTALK=@PBX_BEANSTALK@
+ COROSYNC=@PBX_COROSYNC@
+ CRYPTO=@PBX_CRYPTO@
+diff --git a/codecs/codec_amr.c b/codecs/codec_amr.c
+new file mode 100644
+index 0000000..3fb8600
+--- /dev/null
++++ b/codecs/codec_amr.c
+@@ -0,0 +1,410 @@
++/*** MODULEINFO
++	 <depend>amr_nb</depend>
++	 <depend>amr_wb_decoder</depend>
++	 <depend>amr_wb_encoder</depend>
++***/
++
++#include "asterisk.h"
++
++/* version 1.0 */
++/* based on codecs/codec_opus.c */
++
++#include "asterisk/codec.h"             /* for AST_MEDIA_TYPE_AUDIO */
++#include "asterisk/format.h"            /* for ast_format_get_attribute_data */
++#include "asterisk/frame.h"             /* for ast_frame, etc */
++#include "asterisk/linkedlists.h"       /* for AST_LIST_NEXT, etc */
++#include "asterisk/logger.h"            /* for ast_log, ast_debug, etc */
++#include "asterisk/module.h"
++#include "asterisk/translate.h"         /* for ast_trans_pvt, etc */
++
++#include <opencore-amrnb/interf_dec.h>
++#include <opencore-amrnb/interf_enc.h>
++#include <opencore-amrwb/dec_if.h>
++#include <vo-amrwbenc/enc_if.h>
++
++#include "asterisk/amr.h"
++
++#define BUFFER_SAMPLES 16000 /* 1000 milliseconds */
++
++/* Sample frame data */
++#include "asterisk/slin.h"
++#include "ex_amr.h"
++
++struct amr_coder_pvt {
++	void *state; /* May be encoder or decoder */
++	unsigned int frames;
++	int16_t buf[BUFFER_SAMPLES];
++};
++
++static int lintoamr_new(struct ast_trans_pvt *pvt)
++{
++	struct amr_coder_pvt *apvt = pvt->pvt;
++	const unsigned int sample_rate = pvt->t->src_codec.sample_rate;
++
++	struct amr_attr *attr = pvt->explicit_dst ? ast_format_get_attribute_data(pvt->explicit_dst) : NULL;
++	const int dtx = attr ? attr->vad : 0;
++
++	if (8000 == sample_rate) {
++		apvt->state = Encoder_Interface_init(dtx);
++	} else if (16000 == sample_rate) {
++		apvt->state = E_IF_init();
++	}
++
++	if (!apvt->state) {
++		ast_log(LOG_ERROR, "Error creating the AMR encoder for %d\n", sample_rate);
++		return -1;
++	}
++
++	apvt->frames = 0;
++	ast_debug(3, "Created encoder (%d -> AMR) %p (Format %p)\n", sample_rate, apvt, pvt->explicit_dst);
++
++	return 0;
++}
++
++static int amrtolin_new(struct ast_trans_pvt *pvt)
++{
++	struct amr_coder_pvt *apvt = pvt->pvt;
++	const unsigned int sample_rate = pvt->t->dst_codec.sample_rate;
++
++	if (8000 == sample_rate) {
++		apvt->state = Decoder_Interface_init();
++	} else if (16000 == sample_rate) {
++		apvt->state = D_IF_init();
++	}
++
++	if (!apvt->state) {
++		ast_log(LOG_ERROR, "Error creating the AMR decoder for %d\n", sample_rate);
++		return -1;
++	}
++
++	apvt->frames = 0;
++	ast_debug(3, "Created decoder (AMR -> %d) %p\n", sample_rate, apvt);
++
++	return 0;
++}
++
++static int lintoamr_framein(struct ast_trans_pvt *pvt, struct ast_frame *f)
++{
++	struct amr_coder_pvt *apvt = pvt->pvt;
++
++	/* XXX We should look at how old the rest of our stream is, and if it
++	   is too old, then we should overwrite it entirely, otherwise we can
++	   get artifacts of earlier talk that do not belong */
++	memcpy(apvt->buf + pvt->samples, f->data.ptr, f->datalen);
++	pvt->samples += f->samples;
++
++	return 0;
++}
++
++static struct ast_frame *lintoamr_frameout(struct ast_trans_pvt *pvt)
++{
++	struct amr_coder_pvt *apvt = pvt->pvt;
++	const unsigned int sample_rate = pvt->t->src_codec.sample_rate;
++	const unsigned int frame_size = sample_rate / 50;
++	struct ast_frame *result = NULL;
++	struct ast_frame *last = NULL;
++	int samples = 0; /* output samples */
++
++	struct amr_attr *attr = ast_format_get_attribute_data(pvt->f.subclass.format);
++	const int dtx = attr ? attr->vad : 0;
++	const int mode = attr ? attr->mode_current : 0;
++	const int aligned = attr ? attr->octet_align : 0;
++
++	while (pvt->samples >= frame_size) {
++		struct ast_frame *current;
++		const int force_speech = 0; /* ignored by underlying API anyway */
++		const short *speech = apvt->buf + samples;
++		unsigned char *out = pvt->outbuf.uc + 1;
++		int status = -1; /* result value; either error or output bytes */
++
++		if (8000 == sample_rate) {
++			status = Encoder_Interface_Encode(apvt->state, mode, speech, out, force_speech);
++		} else if (16000 == sample_rate) {
++			status = E_IF_encode(apvt->state, mode, speech, out, dtx);
++		}
++
++		samples += frame_size;
++		pvt->samples -= frame_size;
++
++		if (status <= 0) {
++			ast_log(LOG_ERROR, "Error encoding the AMR frame\n");
++			current = NULL;
++		} else if (((out[0] >> 3) & 0x0f) == 15) { /* NO_DATA (FT=15) */
++			current = NULL; /* in case of silence do DTX */
++		} else if (aligned) {
++			pvt->outbuf.uc[0] = (15 << 4); /* Change-Mode Request (CMR): no */
++			/* add one byte, because we added the CMR byte */
++			current = ast_trans_frameout(pvt, status + 1, frame_size);
++		} else {
++			const int another = ((out[0] >> 7) & 0x01);
++			const int type    = ((out[0] >> 3) & 0x0f);
++			const int quality = ((out[0] >> 2) & 0x01);
++			unsigned int i;
++
++			/* to shift in place, clear bits beyond end and at start */
++			out[0] = 0;
++			out[status] = 0;
++			/* shift in place, 6 bits */
++			for (i = 0; i < status; i++) {
++				out[i] = ((out[i] << 6) | (out[i + 1] >> 2));
++			}
++			/* restore first two bytes: [ CMR |F| FT |Q] */
++			out[0] |= ((type << 7) | (quality << 6));
++			pvt->outbuf.uc[0] = ((15 << 4) | (another << 3) | (type >> 1)); /* CMR: no */
++
++			if (8000 == sample_rate) {
++				/* https://tools.ietf.org/html/rfc4867#section-3.6 */
++				const int octets[16] = { 14, 15, 16, 18, 20, 22, 27, 32, 7 };
++
++				status = octets[type];
++			} else if (16000 == sample_rate) {
++				/* 3GPP TS 26.201, Table A.1b, plus CMR (4 bits) and F (1 bit) / 8 */
++				const int octets[16] = { 18, 24, 33, 37, 41, 47, 51, 59, 61, 7 };
++
++				status = octets[type];
++			}
++
++			current = ast_trans_frameout(pvt, status, frame_size);
++		}
++
++		if (!current) {
++			continue;
++		} else if (last) {
++			AST_LIST_NEXT(last, frame_list) = current;
++		} else {
++			result = current;
++		}
++		last = current;
++	}
++
++	/* Move the data at the end of the buffer to the front */
++	if (samples) {
++		memmove(apvt->buf, apvt->buf + samples, pvt->samples * 2);
++	}
++
++	return result;
++}
++
++static int amrtolin_framein(struct ast_trans_pvt *pvt, struct ast_frame *f)
++{
++	struct amr_coder_pvt *apvt = pvt->pvt;
++	const unsigned int sample_rate = pvt->t->dst_codec.sample_rate;
++	const unsigned int frame_size = sample_rate / 50;
++
++	struct amr_attr *attr = ast_format_get_attribute_data(f->subclass.format);
++	const int aligned = attr ? attr->octet_align : 0;
++	const unsigned char mode_next = *(unsigned char *) f->data.ptr >> 4;
++	const int bad_frame = 0; /* ignored by underlying API anyway */
++	unsigned char temp[f->datalen];
++	unsigned char *in = f->data.ptr;
++
++	if (attr) {
++		if (8000 == sample_rate && mode_next <= 7) {
++			attr->mode_current = mode_next;
++		} else if (16000 == sample_rate && mode_next <= 8) {
++			attr->mode_current = mode_next;
++		}
++	}
++
++	/* 
++	 * Decoders expect the "MIME storage format" (RFC 4867 chapter 5) which is
++	 * octet aligned. On the other hand, the "RTP payload format" (chapter 4)
++	 * is prefixed with a change-mode request (CMR; 1 byte in octet-aligned
++	 * mode). Therefore, we do +1 to jump over the first byte.
++	 */
++
++	if (aligned) {
++		in++;
++	} else {
++		const int another = ((in[0] >> 3) & 0x01);
++		const int type    = ((in[0] << 1 | in[1] >> 7) & 0x0f);
++		const int quality = ((in[1] >> 6) & 0x01);
++		unsigned int i;
++
++		/* shift in place, 2 bits */
++		for (i = 1; i < (f->datalen - 1); i++) {
++			temp[i] = ((in[i] << 2) | (in[i + 1] >> 6));
++		}
++		temp[f->datalen - 1] = in[f->datalen - 1] << 2;
++		/* restore first byte: [F| FT |Q] */
++		temp[0] = ((another << 7) | (type << 3) | (quality << 2));
++		in = temp;
++	}
++
++	if ((apvt->frames == 0) && (in[0] & 0x80)) {
++		apvt->frames = 1;
++		ast_log(LOG_WARNING, "multiple frames per packet were not tested\n");
++	}
++
++	if (8000 == sample_rate) {
++		Decoder_Interface_Decode(apvt->state, in, pvt->outbuf.i16 + pvt->datalen, bad_frame);
++	} else if (16000 == sample_rate) {
++		D_IF_decode(apvt->state, in, pvt->outbuf.i16 + pvt->datalen, bad_frame);
++	}
++
++	pvt->samples += frame_size;
++	pvt->datalen += frame_size * 2;
++
++	return 0;
++}
++
++static void lintoamr_destroy(struct ast_trans_pvt *pvt)
++{
++	struct amr_coder_pvt *apvt = pvt->pvt;
++	const unsigned int sample_rate = pvt->t->src_codec.sample_rate;
++
++	if (!apvt || !apvt->state) {
++		return;
++	}
++
++	if (8000 == sample_rate) {
++		Encoder_Interface_exit(apvt->state);
++	} else if (16000 == sample_rate) {
++		E_IF_exit(apvt->state);
++	}
++	apvt->state = NULL;
++
++	ast_debug(3, "Destroyed encoder (%d -> AMR) %p\n", sample_rate, apvt);
++}
++
++static void amrtolin_destroy(struct ast_trans_pvt *pvt)
++{
++	struct amr_coder_pvt *apvt = pvt->pvt;
++	const unsigned int sample_rate = pvt->t->dst_codec.sample_rate;
++
++	if (!apvt || !apvt->state) {
++		return;
++	}
++
++	if (8000 == sample_rate) {
++		Decoder_Interface_exit(apvt->state);
++	} else if (16000 == sample_rate) {
++		D_IF_exit(apvt->state);
++	}
++	apvt->state = NULL;
++
++	ast_debug(3, "Destroyed decoder (AMR -> %d) %p\n", sample_rate, apvt);
++}
++
++static struct ast_translator amrtolin = {
++	.name = "amrtolin",
++	.src_codec = {
++		.name = "amr",
++		.type = AST_MEDIA_TYPE_AUDIO,
++		.sample_rate = 8000,
++	},
++	.dst_codec = {
++		.name = "slin",
++		.type = AST_MEDIA_TYPE_AUDIO,
++		.sample_rate = 8000,
++	},
++	.format = "slin",
++	.newpvt = amrtolin_new,
++	.framein = amrtolin_framein,
++	.destroy = amrtolin_destroy,
++	.sample = amr_sample,
++	.desc_size = sizeof(struct amr_coder_pvt),
++	.buffer_samples = BUFFER_SAMPLES / 2,
++	/* actually: 50 * channels[6] * redundancy[5] * (mode7[31] + CRC[1] + FT[1] + CMR[1]) */
++	.buf_size = BUFFER_SAMPLES,
++};
++
++static struct ast_translator lintoamr = {
++	.name = "lintoamr",
++	.src_codec = {
++		.name = "slin",
++		.type = AST_MEDIA_TYPE_AUDIO,
++		.sample_rate = 8000,
++	},
++	.dst_codec = {
++		.name = "amr",
++		.type = AST_MEDIA_TYPE_AUDIO,
++		.sample_rate = 8000,
++	},
++	.format = "amr",
++	.newpvt = lintoamr_new,
++	.framein = lintoamr_framein,
++	.frameout = lintoamr_frameout,
++	.destroy = lintoamr_destroy,
++	.sample = slin8_sample,
++	.desc_size = sizeof(struct amr_coder_pvt),
++	.buffer_samples = BUFFER_SAMPLES / 2,
++	.buf_size = BUFFER_SAMPLES,
++};
++
++static struct ast_translator amrtolin16 = {
++	.name = "amrtolin16",
++	.src_codec = {
++		.name = "amrwb",
++		.type = AST_MEDIA_TYPE_AUDIO,
++		.sample_rate = 16000,
++	},
++	.dst_codec = {
++		.name = "slin",
++		.type = AST_MEDIA_TYPE_AUDIO,
++		.sample_rate = 16000,
++	},
++	.format = "slin16",
++	.newpvt = amrtolin_new,
++	.framein = amrtolin_framein,
++	.destroy = amrtolin_destroy,
++	.sample = amrwb_sample,
++	.desc_size = sizeof(struct amr_coder_pvt),
++	.buffer_samples = BUFFER_SAMPLES,
++	/* actually: 50 * channels[6] * redundancy[5] * (mode8[60] + CRC[1] + FT[1] + CMR[1]) */
++	.buf_size = BUFFER_SAMPLES * 2,
++};
++
++static struct ast_translator lin16toamr = {
++	.name = "lin16toamr",
++	.src_codec = {
++		.name = "slin",
++		.type = AST_MEDIA_TYPE_AUDIO,
++		.sample_rate = 16000,
++	},
++	.dst_codec = {
++		.name = "amrwb",
++		.type = AST_MEDIA_TYPE_AUDIO,
++		.sample_rate = 16000,
++	},
++	.format = "amrwb",
++	.newpvt = lintoamr_new,
++	.framein = lintoamr_framein,
++	.frameout = lintoamr_frameout,
++	.destroy = lintoamr_destroy,
++	.sample = slin16_sample,
++	.desc_size = sizeof(struct amr_coder_pvt),
++	.buffer_samples = BUFFER_SAMPLES,
++	.buf_size = BUFFER_SAMPLES * 2,
++};
++
++static int unload_module(void)
++{
++	int res;
++
++	res = ast_unregister_translator(&amrtolin);
++	res |= ast_unregister_translator(&lintoamr);
++	res |= ast_unregister_translator(&amrtolin16);
++	res |= ast_unregister_translator(&lin16toamr);
++
++	return res;
++}
++
++static int load_module(void)
++{
++	int res;
++
++	res = ast_register_translator(&amrtolin);
++	res |= ast_register_translator(&lintoamr);
++	res |= ast_register_translator(&amrtolin16);
++	res |= ast_register_translator(&lin16toamr);
++
++	if (res) {
++		unload_module();
++		return AST_MODULE_LOAD_DECLINE;
++	}
++
++	return AST_MODULE_LOAD_SUCCESS;
++}
++
++AST_MODULE_INFO_STANDARD(ASTERISK_GPL_KEY, "AMR Coder/Decoder");
+diff --git a/codecs/ex_amr.h b/codecs/ex_amr.h
+new file mode 100644
+index 0000000..0045e53
+--- /dev/null
++++ b/codecs/ex_amr.h
+@@ -0,0 +1,49 @@
++#include "asterisk/format_cache.h"      /* for ast_format_amr(wb) */
++#include "asterisk/frame.h"             /* for ast_frame, etc */
++
++static uint8_t ex_amr[] = {
++	0xf0, 0x6d, 0x47, 0x8c, 0xc3, 0x0d, 0x03, 0xec,
++	0xe2, 0x18, 0x3e, 0x28, 0x20, 0x80
++};
++
++static struct ast_frame *amr_sample(void)
++{
++	static struct ast_frame f = {
++		.frametype = AST_FRAME_VOICE,
++		.datalen = sizeof(ex_amr),
++		.samples = 160,
++		.mallocd = 0,
++		.offset = 0,
++		.src = __PRETTY_FUNCTION__,
++		.data.ptr = ex_amr,
++	};
++
++	f.subclass.format = ast_format_amr;
++
++	return &f;
++}
++
++static uint8_t ex_amrwb[] = {
++	0xf1, 0x5e, 0x51, 0x98, 0xc5, 0x64, 0xc7, 0xc5,
++	0x0c, 0x6c, 0x82, 0x19, 0x16, 0x03, 0xf0, 0x0a,
++	0x0b, 0x57, 0x53, 0x51, 0x7f, 0x97, 0x97, 0x79,
++	0x31, 0xdd, 0x73, 0x1b, 0x92, 0x54, 0xf5, 0x79,
++	0x9a,
++};
++
++static struct ast_frame *amrwb_sample(void)
++{
++	static struct ast_frame f = {
++		.frametype = AST_FRAME_VOICE,
++		.datalen = sizeof(ex_amrwb),
++		.samples = 320,
++		.mallocd = 0,
++		.offset = 0,
++		.src = __PRETTY_FUNCTION__,
++		.data.ptr = ex_amrwb,
++	};
++
++	f.subclass.format = ast_format_amrwb;
++
++	return &f;
++}
+diff --git a/configure b/configure
+index db6d5bf..e557d6b 100755
+--- a/configure
++++ b/configure
+@@ -1239,6 +1239,18 @@ PTHREAD_LIBS
+ PTHREAD_CXX
+ PTHREAD_CC
+ ax_pthread_config
++PBX_AMR_WB_ENCODER
++AMR_WB_ENCODER_DIR
++AMR_WB_ENCODER_INCLUDE
++AMR_WB_ENCODER_LIB
++PBX_AMR_WB_DECODER
++AMR_WB_DECODER_DIR
++AMR_WB_DECODER_INCLUDE
++AMR_WB_DECODER_LIB
++PBX_AMR_NB
++AMR_NB_DIR
++AMR_NB_INCLUDE
++AMR_NB_LIB
+ MD5
+ SOXMIX
+ PBX_BASH
+@@ -1399,6 +1411,9 @@ ac_user_opts='
+ enable_option_checking
+ enable_latest_cxx_std
+ with_gnu_ld
++with_opencore_amrnb
++with_opencore_amrwb
++with_vo_amrwbenc
+ enable_binary_modules
+ enable_dev_mode
+ with_download_cache
+@@ -2172,6 +2187,14 @@ Optional Packages:
+   --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
+   --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)
+   --with-gnu-ld           assume the C compiler uses GNU ld [default=no]
++  --with-opencore-amrnb=PATH
++                          use AMR Audio Codec (Narrowband) Decoder/Encoder
++                          files in PATH
++  --with-opencore-amrwb=PATH
++                          use AMR-WB Audio Codec (Wideband) Decoder files in
++                          PATH
++  --with-vo-amrwbenc=PATH use AMR-WB Audio Codec (Wideband) Encoder files in
++                          PATH
+   --with-download-cache=PATH
+                           use cached sound AND external module tarfiles in
+                           PATH
+@@ -19528,6 +19551,9 @@ printf "%s\n" "no" >&6; }
+ 		PKG_CONFIG=""
+ 	fi
+ fi
++if test -z "$PKG_CONFIG"; then
++	as_fn_error $? "pkg-config not found" "$LINENO" 5
++fi
+ 
+ { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for bison that supports parse-param" >&5
+ printf %s "checking for bison that supports parse-param... " >&6; }
+@@ -19756,6 +19782,105 @@ fi
+ done
+ 
+ 
++    AMR_NB_DESCRIP="AMR Audio Codec (Narrowband) Decoder/Encoder"
++    AMR_NB_OPTION="opencore-amrnb"
++    PBX_AMR_NB=0
++
++# Check whether --with-opencore-amrnb was given.
++if test ${with_opencore_amrnb+y}
++then :
++  withval=$with_opencore_amrnb;
++	case ${withval} in
++	n|no)
++	USE_AMR_NB=no
++	# -1 is a magic value used by menuselect to know that the package
++	# was disabled, other than 'not found'
++	PBX_AMR_NB=-1
++	;;
++	y|ye|yes)
++	ac_mandatory_list="${ac_mandatory_list} AMR_NB"
++	;;
++	*)
++	AMR_NB_DIR="${withval}"
++	ac_mandatory_list="${ac_mandatory_list} AMR_NB"
++	;;
++	esac
++
++fi
++
++
++
++
++
++
++
++
++    AMR_WB_DECODER_DESCRIP="AMR-WB Audio Codec (Wideband) Decoder"
++    AMR_WB_DECODER_OPTION="opencore-amrwb"
++    PBX_AMR_WB_DECODER=0
++
++# Check whether --with-opencore-amrwb was given.
++if test ${with_opencore_amrwb+y}
++then :
++  withval=$with_opencore_amrwb;
++	case ${withval} in
++	n|no)
++	USE_AMR_WB_DECODER=no
++	# -1 is a magic value used by menuselect to know that the package
++	# was disabled, other than 'not found'
++	PBX_AMR_WB_DECODER=-1
++	;;
++	y|ye|yes)
++	ac_mandatory_list="${ac_mandatory_list} AMR_WB_DECODER"
++	;;
++	*)
++	AMR_WB_DECODER_DIR="${withval}"
++	ac_mandatory_list="${ac_mandatory_list} AMR_WB_DECODER"
++	;;
++	esac
++
++fi
++
++
++
++
++
++
++
++
++    AMR_WB_ENCODER_DESCRIP="AMR-WB Audio Codec (Wideband) Encoder"
++    AMR_WB_ENCODER_OPTION="vo-amrwbenc"
++    PBX_AMR_WB_ENCODER=0
++
++# Check whether --with-vo-amrwbenc was given.
++if test ${with_vo_amrwbenc+y}
++then :
++  withval=$with_vo_amrwbenc;
++	case ${withval} in
++	n|no)
++	USE_AMR_WB_ENCODER=no
++	# -1 is a magic value used by menuselect to know that the package
++	# was disabled, other than 'not found'
++	PBX_AMR_WB_ENCODER=-1
++	;;
++	y|ye|yes)
++	ac_mandatory_list="${ac_mandatory_list} AMR_WB_ENCODER"
++	;;
++	*)
++	AMR_WB_ENCODER_DIR="${withval}"
++	ac_mandatory_list="${ac_mandatory_list} AMR_WB_ENCODER"
++	;;
++	esac
++
++fi
++
++
++
++
++
++
++
++
+ if test "${MD5}" = "digest" ; then
+    MD5="${MD5} -a md5"
+ fi
+@@ -27576,18 +27701,18 @@ then :
+ fi
+ if test "$enable_largefile,$enable_year2038" != no,no
+ then :
+-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $CPPFLAGS option for large files" >&5
+-printf %s "checking for $CPPFLAGS option for large files... " >&6; }
++  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $CC option to enable large file support" >&5
++printf %s "checking for $CC option to enable large file support... " >&6; }
+ if test ${ac_cv_sys_largefile_opts+y}
+ then :
+   printf %s "(cached) " >&6
+ else case e in #(
+-  e) ac_save_CPPFLAGS=$CPPFLAGS
++  e) ac_save_CC="$CC"
+   ac_opt_found=no
+-  for ac_opt in "none needed" "-D_FILE_OFFSET_BITS=64" "-D_LARGE_FILES=1"; do
++  for ac_opt in "none needed" "-D_FILE_OFFSET_BITS=64" "-D_LARGE_FILES=1" "-n32"; do
+     if test x"$ac_opt" != x"none needed"
+ then :
+-  CPPFLAGS="$ac_save_CPPFLAGS $ac_opt"
++  CC="$ac_save_CC $ac_opt"
+ fi
+     cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+@@ -27616,12 +27741,12 @@ then :
+   if test x"$ac_opt" = x"none needed"
+ then :
+   # GNU/Linux s390x and alpha need _FILE_OFFSET_BITS=64 for wide ino_t.
+-	 CPPFLAGS="$CPPFLAGS -DFTYPE=ino_t"
++	 CC="$CC -DFTYPE=ino_t"
+ 	 if ac_fn_c_try_compile "$LINENO"
+ then :
+ 
+ else case e in #(
+-  e) CPPFLAGS="$CPPFLAGS -D_FILE_OFFSET_BITS=64"
++  e) CC="$CC -D_FILE_OFFSET_BITS=64"
+ 	    if ac_fn_c_try_compile "$LINENO"
+ then :
+   ac_opt='-D_FILE_OFFSET_BITS=64'
+@@ -27637,7 +27762,7 @@ fi
+ rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
+     test $ac_opt_found = no || break
+   done
+-  CPPFLAGS=$ac_save_CPPFLAGS
++  CC="$ac_save_CC"
+ 
+   test $ac_opt_found = yes || ac_cv_sys_largefile_opts="support not detected" ;;
+ esac
+@@ -27661,14 +27786,16 @@ printf "%s\n" "#define _FILE_OFFSET_BITS 64" >>confdefs.h
+ 
+ printf "%s\n" "#define _LARGE_FILES 1" >>confdefs.h
+  ;; #(
++  "-n32") :
++    CC="$CC -n32" ;; #(
+   *) :
+     as_fn_error $? "internal error: bad value for \$ac_cv_sys_largefile_opts" "$LINENO" 5 ;;
+ esac
+ 
+ if test "$enable_year2038" != no
+ then :
+-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $CPPFLAGS option for timestamps after 2038" >&5
+-printf %s "checking for $CPPFLAGS option for timestamps after 2038... " >&6; }
++  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $CC option for timestamps after 2038" >&5
++printf %s "checking for $CC option for timestamps after 2038... " >&6; }
+ if test ${ac_cv_sys_year2038_opts+y}
+ then :
+   printf %s "(cached) " >&6
+@@ -33413,6 +33540,325 @@ fi
+ # do the package library checks now
+ 
+ 
++if test "x${PBX_AMR_NB}" != "x1" -a "${USE_AMR_NB}" != "no"; then
++   pbxlibdir=""
++   # if --with-AMR_NB=DIR has been specified, use it.
++   if test "x${AMR_NB_DIR}" != "x"; then
++      if test -d ${AMR_NB_DIR}/lib; then
++         pbxlibdir="-L${AMR_NB_DIR}/lib"
++      else
++         pbxlibdir="-L${AMR_NB_DIR}"
++      fi
++   fi
++
++      ast_ext_lib_check_save_CFLAGS="${CFLAGS}"
++      CFLAGS="${CFLAGS} "
++      { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for Encoder_Interface_init in -lopencore-amrnb" >&5
++printf %s "checking for Encoder_Interface_init in -lopencore-amrnb... " >&6; }
++if test ${ac_cv_lib_opencore_amrnb_Encoder_Interface_init+y}
++then :
++  printf %s "(cached) " >&6
++else case e in #(
++  e) ac_check_lib_save_LIBS=$LIBS
++LIBS="-lopencore-amrnb ${pbxlibdir}  $LIBS"
++cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++/* end confdefs.h.  */
++
++/* Override any GCC internal prototype to avoid an error.
++   Use char because int might match the return type of a GCC
++   builtin and then its argument prototype would still apply.
++   The 'extern "C"' is for builds by C++ compilers;
++   although this is not generally supported in C code supporting it here
++   has little cost and some practical benefit (sr 110532).  */
++#ifdef __cplusplus
++extern "C"
++#endif
++char Encoder_Interface_init (void);
++int
++main (void)
++{
++return Encoder_Interface_init ();
++  ;
++  return 0;
++}
++_ACEOF
++if ac_fn_c_try_link "$LINENO"
++then :
++  ac_cv_lib_opencore_amrnb_Encoder_Interface_init=yes
++else case e in #(
++  e) ac_cv_lib_opencore_amrnb_Encoder_Interface_init=no ;;
++esac
++fi
++rm -f core conftest.err conftest.$ac_objext conftest.beam \
++    conftest$ac_exeext conftest.$ac_ext
++LIBS=$ac_check_lib_save_LIBS ;;
++esac
++fi
++{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_opencore_amrnb_Encoder_Interface_init" >&5
++printf "%s\n" "$ac_cv_lib_opencore_amrnb_Encoder_Interface_init" >&6; }
++if test "x$ac_cv_lib_opencore_amrnb_Encoder_Interface_init" = xyes
++then :
++  AST_AMR_NB_FOUND=yes
++else case e in #(
++  e) AST_AMR_NB_FOUND=no ;;
++esac
++fi
++
++      CFLAGS="${ast_ext_lib_check_save_CFLAGS}"
++
++
++   # now check for the header.
++   if test "${AST_AMR_NB_FOUND}" = "yes"; then
++      AMR_NB_LIB="${pbxlibdir} -lopencore-amrnb "
++      # if --with-AMR_NB=DIR has been specified, use it.
++      if test "x${AMR_NB_DIR}" != "x"; then
++         AMR_NB_INCLUDE="-I${AMR_NB_DIR}/include"
++      fi
++      AMR_NB_INCLUDE="${AMR_NB_INCLUDE} "
++
++         # check for the header
++         ast_ext_lib_check_saved_CPPFLAGS="${CPPFLAGS}"
++         CPPFLAGS="${CPPFLAGS} ${AMR_NB_INCLUDE}"
++         ac_fn_c_check_header_compile "$LINENO" "opencore-amrnb/interf_enc.h" "ac_cv_header_opencore_amrnb_interf_enc_h" "$ac_includes_default"
++if test "x$ac_cv_header_opencore_amrnb_interf_enc_h" = xyes
++then :
++  AMR_NB_HEADER_FOUND=1
++else case e in #(
++  e) AMR_NB_HEADER_FOUND=0 ;;
++esac
++fi
++
++         CPPFLAGS="${ast_ext_lib_check_saved_CPPFLAGS}"
++
++      if test "x${AMR_NB_HEADER_FOUND}" = "x0" ; then
++         AMR_NB_LIB=""
++         AMR_NB_INCLUDE=""
++      else
++
++         PBX_AMR_NB=1
++         cat >>confdefs.h <<_ACEOF
++#define HAVE_AMR_NB 1
++_ACEOF
++
++      fi
++   fi
++fi
++
++
++
++if test "x${PBX_AMR_WB_DECODER}" != "x1" -a "${USE_AMR_WB_DECODER}" != "no"; then
++   pbxlibdir=""
++   # if --with-AMR_WB_DECODER=DIR has been specified, use it.
++   if test "x${AMR_WB_DECODER_DIR}" != "x"; then
++      if test -d ${AMR_WB_DECODER_DIR}/lib; then
++         pbxlibdir="-L${AMR_WB_DECODER_DIR}/lib"
++      else
++         pbxlibdir="-L${AMR_WB_DECODER_DIR}"
++      fi
++   fi
++
++      ast_ext_lib_check_save_CFLAGS="${CFLAGS}"
++      CFLAGS="${CFLAGS} "
++      { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for D_IF_init in -lopencore-amrwb" >&5
++printf %s "checking for D_IF_init in -lopencore-amrwb... " >&6; }
++if test ${ac_cv_lib_opencore_amrwb_D_IF_init+y}
++then :
++  printf %s "(cached) " >&6
++else case e in #(
++  e) ac_check_lib_save_LIBS=$LIBS
++LIBS="-lopencore-amrwb ${pbxlibdir}  $LIBS"
++cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++/* end confdefs.h.  */
++
++/* Override any GCC internal prototype to avoid an error.
++   Use char because int might match the return type of a GCC
++   builtin and then its argument prototype would still apply.
++   The 'extern "C"' is for builds by C++ compilers;
++   although this is not generally supported in C code supporting it here
++   has little cost and some practical benefit (sr 110532).  */
++#ifdef __cplusplus
++extern "C"
++#endif
++char D_IF_init (void);
++int
++main (void)
++{
++return D_IF_init ();
++  ;
++  return 0;
++}
++_ACEOF
++if ac_fn_c_try_link "$LINENO"
++then :
++  ac_cv_lib_opencore_amrwb_D_IF_init=yes
++else case e in #(
++  e) ac_cv_lib_opencore_amrwb_D_IF_init=no ;;
++esac
++fi
++rm -f core conftest.err conftest.$ac_objext conftest.beam \
++    conftest$ac_exeext conftest.$ac_ext
++LIBS=$ac_check_lib_save_LIBS ;;
++esac
++fi
++{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_opencore_amrwb_D_IF_init" >&5
++printf "%s\n" "$ac_cv_lib_opencore_amrwb_D_IF_init" >&6; }
++if test "x$ac_cv_lib_opencore_amrwb_D_IF_init" = xyes
++then :
++  AST_AMR_WB_DECODER_FOUND=yes
++else case e in #(
++  e) AST_AMR_WB_DECODER_FOUND=no ;;
++esac
++fi
++
++      CFLAGS="${ast_ext_lib_check_save_CFLAGS}"
++
++
++   # now check for the header.
++   if test "${AST_AMR_WB_DECODER_FOUND}" = "yes"; then
++      AMR_WB_DECODER_LIB="${pbxlibdir} -lopencore-amrwb "
++      # if --with-AMR_WB_DECODER=DIR has been specified, use it.
++      if test "x${AMR_WB_DECODER_DIR}" != "x"; then
++         AMR_WB_DECODER_INCLUDE="-I${AMR_WB_DECODER_DIR}/include"
++      fi
++      AMR_WB_DECODER_INCLUDE="${AMR_WB_DECODER_INCLUDE} "
++
++         # check for the header
++         ast_ext_lib_check_saved_CPPFLAGS="${CPPFLAGS}"
++         CPPFLAGS="${CPPFLAGS} ${AMR_WB_DECODER_INCLUDE}"
++         ac_fn_c_check_header_compile "$LINENO" "opencore-amrwb/dec_if.h" "ac_cv_header_opencore_amrwb_dec_if_h" "$ac_includes_default"
++if test "x$ac_cv_header_opencore_amrwb_dec_if_h" = xyes
++then :
++  AMR_WB_DECODER_HEADER_FOUND=1
++else case e in #(
++  e) AMR_WB_DECODER_HEADER_FOUND=0 ;;
++esac
++fi
++
++         CPPFLAGS="${ast_ext_lib_check_saved_CPPFLAGS}"
++
++      if test "x${AMR_WB_DECODER_HEADER_FOUND}" = "x0" ; then
++         AMR_WB_DECODER_LIB=""
++         AMR_WB_DECODER_INCLUDE=""
++      else
++
++         PBX_AMR_WB_DECODER=1
++         cat >>confdefs.h <<_ACEOF
++#define HAVE_AMR_WB_DECODER 1
++_ACEOF
++
++      fi
++   fi
++fi
++
++
++
++if test "x${PBX_AMR_WB_ENCODER}" != "x1" -a "${USE_AMR_WB_ENCODER}" != "no"; then
++   pbxlibdir=""
++   # if --with-AMR_WB_ENCODER=DIR has been specified, use it.
++   if test "x${AMR_WB_ENCODER_DIR}" != "x"; then
++      if test -d ${AMR_WB_ENCODER_DIR}/lib; then
++         pbxlibdir="-L${AMR_WB_ENCODER_DIR}/lib"
++      else
++         pbxlibdir="-L${AMR_WB_ENCODER_DIR}"
++      fi
++   fi
++
++      ast_ext_lib_check_save_CFLAGS="${CFLAGS}"
++      CFLAGS="${CFLAGS} "
++      { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for E_IF_init in -lvo-amrwbenc" >&5
++printf %s "checking for E_IF_init in -lvo-amrwbenc... " >&6; }
++if test ${ac_cv_lib_vo_amrwbenc_E_IF_init+y}
++then :
++  printf %s "(cached) " >&6
++else case e in #(
++  e) ac_check_lib_save_LIBS=$LIBS
++LIBS="-lvo-amrwbenc ${pbxlibdir}  $LIBS"
++cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++/* end confdefs.h.  */
++
++/* Override any GCC internal prototype to avoid an error.
++   Use char because int might match the return type of a GCC
++   builtin and then its argument prototype would still apply.
++   The 'extern "C"' is for builds by C++ compilers;
++   although this is not generally supported in C code supporting it here
++   has little cost and some practical benefit (sr 110532).  */
++#ifdef __cplusplus
++extern "C"
++#endif
++char E_IF_init (void);
++int
++main (void)
++{
++return E_IF_init ();
++  ;
++  return 0;
++}
++_ACEOF
++if ac_fn_c_try_link "$LINENO"
++then :
++  ac_cv_lib_vo_amrwbenc_E_IF_init=yes
++else case e in #(
++  e) ac_cv_lib_vo_amrwbenc_E_IF_init=no ;;
++esac
++fi
++rm -f core conftest.err conftest.$ac_objext conftest.beam \
++    conftest$ac_exeext conftest.$ac_ext
++LIBS=$ac_check_lib_save_LIBS ;;
++esac
++fi
++{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_vo_amrwbenc_E_IF_init" >&5
++printf "%s\n" "$ac_cv_lib_vo_amrwbenc_E_IF_init" >&6; }
++if test "x$ac_cv_lib_vo_amrwbenc_E_IF_init" = xyes
++then :
++  AST_AMR_WB_ENCODER_FOUND=yes
++else case e in #(
++  e) AST_AMR_WB_ENCODER_FOUND=no ;;
++esac
++fi
++
++      CFLAGS="${ast_ext_lib_check_save_CFLAGS}"
++
++
++   # now check for the header.
++   if test "${AST_AMR_WB_ENCODER_FOUND}" = "yes"; then
++      AMR_WB_ENCODER_LIB="${pbxlibdir} -lvo-amrwbenc "
++      # if --with-AMR_WB_ENCODER=DIR has been specified, use it.
++      if test "x${AMR_WB_ENCODER_DIR}" != "x"; then
++         AMR_WB_ENCODER_INCLUDE="-I${AMR_WB_ENCODER_DIR}/include"
++      fi
++      AMR_WB_ENCODER_INCLUDE="${AMR_WB_ENCODER_INCLUDE} "
++
++         # check for the header
++         ast_ext_lib_check_saved_CPPFLAGS="${CPPFLAGS}"
++         CPPFLAGS="${CPPFLAGS} ${AMR_WB_ENCODER_INCLUDE}"
++         ac_fn_c_check_header_compile "$LINENO" "vo-amrwbenc/enc_if.h" "ac_cv_header_vo_amrwbenc_enc_if_h" "$ac_includes_default"
++if test "x$ac_cv_header_vo_amrwbenc_enc_if_h" = xyes
++then :
++  AMR_WB_ENCODER_HEADER_FOUND=1
++else case e in #(
++  e) AMR_WB_ENCODER_HEADER_FOUND=0 ;;
++esac
++fi
++
++         CPPFLAGS="${ast_ext_lib_check_saved_CPPFLAGS}"
++
++      if test "x${AMR_WB_ENCODER_HEADER_FOUND}" = "x0" ; then
++         AMR_WB_ENCODER_LIB=""
++         AMR_WB_ENCODER_INCLUDE=""
++      else
++
++         PBX_AMR_WB_ENCODER=1
++         cat >>confdefs.h <<_ACEOF
++#define HAVE_AMR_WB_ENCODER 1
++_ACEOF
++
++      fi
++   fi
++fi
++
++
++
++
+ if test "x${PBX_BFD}" != "x1" -a "${USE_BFD}" != "no"; then
+    pbxlibdir=""
+    # if --with-BFD=DIR has been specified, use it.
+diff --git a/configure.ac b/configure.ac
+index 6389bdd..08e7dc0 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -400,6 +400,9 @@ if test "x${SOXMIX}" != "x:"; then
+ fi
+ 
+ AC_CHECK_PROGS([MD5], [md5 md5sum gmd5sum digest])
++AST_EXT_LIB_SETUP([AMR_NB], [AMR Audio Codec (Narrowband) Decoder/Encoder], [opencore-amrnb])
++AST_EXT_LIB_SETUP([AMR_WB_DECODER], [AMR-WB Audio Codec (Wideband) Decoder], [opencore-amrwb])
++AST_EXT_LIB_SETUP([AMR_WB_ENCODER], [AMR-WB Audio Codec (Wideband) Encoder], [vo-amrwbenc])
+ 
+ if test "${MD5}" = "digest" ; then
+    MD5="${MD5} -a md5"
+@@ -1666,6 +1669,10 @@ fi
+ 
+ # do the package library checks now
+ 
++AST_EXT_LIB_CHECK([AMR_NB], [opencore-amrnb], [Encoder_Interface_init], [opencore-amrnb/interf_enc.h])
++AST_EXT_LIB_CHECK([AMR_WB_DECODER], [opencore-amrwb], [D_IF_init], [opencore-amrwb/dec_if.h])
++AST_EXT_LIB_CHECK([AMR_WB_ENCODER], [vo-amrwbenc], [E_IF_init], [vo-amrwbenc/enc_if.h])
++
+ AST_EXT_LIB_CHECK([BFD], [bfd], [bfd_openr], [bfd.h])
+ # Fedora/RedHat/CentOS require extra libraries
+ AST_EXT_LIB_CHECK([BFD], [bfd], [bfd_openr], [bfd.h], [-ldl -liberty])
+diff --git a/include/asterisk/amr.h b/include/asterisk/amr.h
+new file mode 100644
+index 0000000..80a8c9b
+--- /dev/null
++++ b/include/asterisk/amr.h
+@@ -0,0 +1,19 @@
++#ifndef _AST_FORMAT_AMR_H_
++#define _AST_FORMAT_AMR_H_
++
++struct amr_attr {
++	unsigned int octet_align;
++	unsigned int mode_set:9;
++	unsigned int mode_change_period;
++	unsigned int mode_change_capability;
++	unsigned int mode_change_neighbor;
++	unsigned int crc;
++	unsigned int robust_sorting;
++	unsigned int interleaving;
++	int max_red;
++	/* internal variables for transcoding module */
++	unsigned char mode_current; /* see amr_clone for default */
++	int vad;                    /* see amr_clone for default */
++};
++
++#endif /* _AST_FORMAT_AMR_H */
+diff --git a/include/asterisk/autoconfig.h.in b/include/asterisk/autoconfig.h.in
+index 6ba8622..0b73613 100644
+--- a/include/asterisk/autoconfig.h.in
++++ b/include/asterisk/autoconfig.h.in
+@@ -44,6 +44,18 @@
+ /* Define to 1 if <alloca.h> works. */
+ #undef HAVE_ALLOCA_H
+ 
++/* Define to 1 if you have the AMR Audio Codec (Narrowband) Decoder/Encoder
++   library. */
++#undef HAVE_AMR_NB
++
++/* Define to 1 if you have the AMR-WB Audio Codec (Wideband) Decoder library.
++   */
++#undef HAVE_AMR_WB_DECODER
++
++/* Define to 1 if you have the AMR-WB Audio Codec (Wideband) Encoder library.
++   */
++#undef HAVE_AMR_WB_ENCODER
++
+ /* Define to 1 if you have the <arpa/inet.h> header file. */
+ #undef HAVE_ARPA_INET_H
+ 
+diff --git a/include/asterisk/format_cache.h b/include/asterisk/format_cache.h
+index 20b9d3a..3a11279 100644
+--- a/include/asterisk/format_cache.h
++++ b/include/asterisk/format_cache.h
+@@ -246,6 +246,16 @@ extern struct ast_format *ast_format_silk12;
+ extern struct ast_format *ast_format_silk16;
+ extern struct ast_format *ast_format_silk24;
+ 
++/*!
++ * \brief Built-in cached AMR format.
++ */
++extern struct ast_format *ast_format_amr;
++
++/*!
++ * \brief Built-in cached AMR-WB format.
++ */
++extern struct ast_format *ast_format_amrwb;
++
+ /*!
+  * \brief Initialize format cache support within the core.
+  *
+diff --git a/main/codec_builtin.c b/main/codec_builtin.c
+index 0c02c65..8445820 100644
+--- a/main/codec_builtin.c
++++ b/main/codec_builtin.c
+@@ -925,6 +925,54 @@ static struct ast_codec silk24 = {
+ 	.samples_count = silk_samples
+ };
+ 
++static int amr_samples(struct ast_frame *frame)
++{
++	return 160;
++}
++
++static int amr_length(unsigned int samples)
++{
++	ast_log(LOG_NOTICE, "untested; please report failure or success: %u\n", samples); return samples / 8;
++}
++
++static struct ast_codec amr = {
++	.name = "amr",
++	.description = "AMR",
++	.type = AST_MEDIA_TYPE_AUDIO,
++	.sample_rate = 8000,
++	.minimum_ms = 20,
++	.maximum_ms = 20,
++	.default_ms = 20,
++	.minimum_bytes = 0, /* no smooth */
++	.samples_count = amr_samples,
++	.get_length = amr_length,
++	.smooth = 0,
++};
++
++static int amrwb_samples(struct ast_frame *frame)
++{
++	return 320;
++}
++
++static int amrwb_length(unsigned int samples)
++{
++	ast_log(LOG_NOTICE, "untested; please report failure or success: %u\n", samples); return samples / 16;
++}
++
++static struct ast_codec amrwb = {
++	.name = "amrwb",
++	.description = "AMR-WB",
++	.type = AST_MEDIA_TYPE_AUDIO,
++	.sample_rate = 16000,
++	.minimum_ms = 20,
++	.maximum_ms = 20,
++	.default_ms = 20,
++	.minimum_bytes = 0, /* no smooth */
++	.samples_count = amrwb_samples,
++	.get_length = amrwb_length,
++	.smooth = 0,
++};
++
+ #define CODEC_REGISTER_AND_CACHE(codec) \
+ 	({ \
+ 		int __res_ ## __LINE__ = 0; \
+@@ -957,6 +1005,9 @@ int ast_codec_builtin_init(void)
+ {
+ 	int res = 0;
+ 
++	res |= CODEC_REGISTER_AND_CACHE(amr);
++	res |= CODEC_REGISTER_AND_CACHE(amrwb);
++
+ 	res |= CODEC_REGISTER_AND_CACHE(codec2);
+ 	res |= CODEC_REGISTER_AND_CACHE(g723);
+ 	res |= CODEC_REGISTER_AND_CACHE(ulaw);
+diff --git a/main/format_cache.c b/main/format_cache.c
+index 74aa0fe..6f7fbdc 100644
+--- a/main/format_cache.c
++++ b/main/format_cache.c
+@@ -225,6 +225,16 @@ struct ast_format *ast_format_opus;
+  */
+ struct ast_format *ast_format_codec2;
+ 
++/*!
++ * \brief Built-in cached AMR format.
++ */
++struct ast_format *ast_format_amr;
++
++/*!
++ * \brief Built-in cached AMR-WB format.
++ */
++struct ast_format *ast_format_amrwb;
++
+ /*!
+  * \brief Built-in cached t140 format.
+  */
+@@ -313,6 +323,9 @@ static void format_cache_shutdown(void)
+ 	ao2_cleanup(formats);
+ 	formats = NULL;
+ 
++	ao2_replace(ast_format_amr, NULL);
++	ao2_replace(ast_format_amrwb, NULL);
++
+ 	ao2_replace(ast_format_g723, NULL);
+ 	ao2_replace(ast_format_ulaw, NULL);
+ 	ao2_replace(ast_format_alaw, NULL);
+@@ -432,6 +445,10 @@ static void set_cached_format(const char *name, struct ast_format *format)
+ 		ao2_replace(ast_format_g719, format);
+ 	} else if (!strcmp(name, "opus")) {
+ 		ao2_replace(ast_format_opus, format);
++	} else if (!strcmp(name, "amr")) {
++		ao2_replace(ast_format_amr, format);
++	} else if (!strcmp(name, "amrwb")) {
++		ao2_replace(ast_format_amrwb, format);
+ 	} else if (!strcmp(name, "jpeg")) {
+ 		ao2_replace(ast_format_jpeg, format);
+ 	} else if (!strcmp(name, "png")) {
+diff --git a/main/rtp_engine.c b/main/rtp_engine.c
+index 90198e0..848b482 100644
+--- a/main/rtp_engine.c
++++ b/main/rtp_engine.c
+@@ -3922,6 +3922,9 @@ int ast_rtp_engine_init(void)
+ 	set_next_mime_type(ast_format_vp8, 0,  "video", "VP8", 90000);
+ 	set_next_mime_type(ast_format_vp9, 0, "video", "VP9", 90000);
+ 
++	set_next_mime_type(ast_format_amr, 0,  "audio", "AMR", 8000);
++	set_next_mime_type(ast_format_amrwb, 0,  "audio", "AMR-WB", 16000);
++
+ 	/* Define the static rtp payload mappings */
+ 	add_static_payload(0, ast_format_ulaw, 0);
+ 	#ifdef USE_DEPRECATED_G726
+@@ -3965,6 +3968,9 @@ int ast_rtp_engine_init(void)
+ 	add_static_payload(109, ast_format_h265, 0);
+ 
+ 	add_static_payload(110, ast_format_speex, 0);
++
++	add_static_payload(-1, ast_format_amr, 0);
++	add_static_payload(-1, ast_format_amrwb, 0);
+ 	add_static_payload(111, ast_format_g726, 0);
+ 	add_static_payload(112, ast_format_g726_aal2, 0);
+ 
+diff --git a/makeopts.in b/makeopts.in
+index f7824f3..6abb1f8 100644
+--- a/makeopts.in
++++ b/makeopts.in
+@@ -130,6 +130,13 @@ C_COMPILER_FAMILY=@AST_C_COMPILER_FAMILY@
+ AST_RPATH=@AST_RPATH@
+ AST_FORTIFY_SOURCE=@AST_FORTIFY_SOURCE@
+ 
++AMR_NB_INCLUDE=@AMR_NB_INCLUDE@
++AMR_NB_LIB=@AMR_NB_LIB@
++AMR_WB_DECODER_INCLUDE=@AMR_WB_DECODER_INCLUDE@
++AMR_WB_DECODER_LIB=@AMR_WB_DECODER_LIB@
++AMR_WB_ENCODER_INCLUDE=@AMR_WB_ENCODER_INCLUDE@
++AMR_WB_ENCODER_LIB=@AMR_WB_ENCODER_LIB@
++
+ BFD_INCLUDE=@BFD_INCLUDE@
+ BFD_LIB=@BFD_LIB@
+ 
+diff --git a/res/res_format_attr_amr.c b/res/res_format_attr_amr.c
+new file mode 100644
+index 0000000..deab2db
+--- /dev/null
++++ b/res/res_format_attr_amr.c
+@@ -0,0 +1,494 @@
++#include "asterisk.h"
++
++/* version 4.0, compatiblity overview as of October 2015 */
++/* based on res/res_format_attr_silk.c */
++
++#include <ctype.h>                      /* for tolower */
++#include <math.h>                       /* for log10, floor */
++
++#include "asterisk/module.h"
++#include "asterisk/format.h"
++#include "asterisk/astobj2.h"           /* for ao2_bump */
++#include "asterisk/format_cache.h"      /* for ast_format_amr(wb) */
++#include "asterisk/logger.h"            /* for ast_debug, ast_log, etc */
++#include "asterisk/strings.h"           /* for ast_str_append */
++#include "asterisk/utils.h"             /* for MAX, ast_calloc, ast_free, etc */
++
++#include "asterisk/amr.h"
++
++/* Asterisk internal defaults; can differ from RFC defaults */ 
++static struct amr_attr default_amr_attr = {
++	.octet_align            =  0, /* bandwidth efficient */
++	.mode_set               =  0, /* all modes           */
++	.mode_change_period     =  0, /* not specified       */
++	.mode_change_capability =  0, /* not supported       */
++	.mode_change_neighbor   =  0, /* change to any       */
++	.crc                    =  0, /* off                 */
++	.robust_sorting         =  0, /* off                 */
++	.interleaving           =  0, /* off                 */
++	.max_red                = -1, /* no redundancy limit */
++};
++
++static void amr_destroy(struct ast_format *format)
++{
++	struct amr_attr *attr = ast_format_get_attribute_data(format);
++
++	ast_free(attr);
++}
++
++static int amr_clone(const struct ast_format *src, struct ast_format *dst)
++{
++	struct amr_attr *original = ast_format_get_attribute_data(src);
++	struct amr_attr *attr = ast_malloc(sizeof(*attr));
++
++	if (!attr) {
++		return -1;
++	}
++
++	if (original) {
++		*attr = *original;
++	} else {
++		*attr = default_amr_attr;
++		/* internal variables for transcoding module */
++		if (16000 == ast_format_get_sample_rate(src)) {
++			attr->mode_current = 8;
++			attr->vad = 0;
++		} else {
++			attr->mode_current = 7;
++			attr->vad = 1;
++		}
++	}
++
++	ast_format_set_attribute_data(dst, attr);
++
++	return 0;
++}
++
++static struct ast_format *amr_parse_sdp_fmtp(const struct ast_format *format, const char *attrib)
++{
++	struct ast_format *cloned;
++	struct amr_attr *attr;
++	unsigned int val;
++	char *attributes;
++	char *tmp;
++	const unsigned int size = 9; /* same as bit-field definition of mode_set */
++	int v[size];
++	/* init each slot as 'not specified' */
++	for (val = 0; val < size; val = val + 1) {
++		v[val] = -1;
++	}
++
++	cloned = ast_format_clone(format);
++	if (!cloned) {
++		return NULL;
++	}
++	attr = ast_format_get_attribute_data(cloned);
++
++	/* lower-case everything, so we are case-insensitive */
++	/* no implementation is known which is affected by this */
++	attributes = ast_strdupa(attrib);
++	for (tmp = attributes; *tmp; ++tmp) {
++		*tmp = tolower(*tmp);
++	} /* based on channels/chan_sip.c:process_a_sdp_image() */
++
++	attr->octet_align = 0;
++	tmp = strstr(attributes, "octet-align=");
++	if (tmp) {
++		if (sscanf(tmp, "octet-align=%30u", &val) == 1) {
++			attr->octet_align = val;
++		}
++	}
++
++	attr->mode_set = 0;
++	tmp = strstr(attributes, "mode-set=");
++	if (tmp) {
++		if (sscanf(tmp, "mode-set=%30u,%30u,%30u,%30u,%30u,%30u,%30u,%30u,%30u",
++				   &v[0], &v[1], &v[2], &v[3], &v[4], &v[5], &v[6], &v[7], &v[8]) > 0) {
++			for (val = 0; val < size; val = val + 1) {
++				if (0 <= v[val] && v[val] < size) {
++					attr->mode_set = (attr->mode_set | (1 << v[val]));
++				}
++			}
++		}
++	}
++	if (0 < attr->mode_set) {
++		attr->mode_current = floor(log10(attr->mode_set) / log10(2));
++	}
++
++	attr->mode_change_capability = 0;
++	tmp = strstr(attributes, "mode-change-capability=");
++	if (tmp) {
++		if (sscanf(tmp, "mode-change-capability=%30u", &val) == 1) {
++			attr->mode_change_capability = val;
++		}
++	}
++
++	attr->mode_change_period = 0;
++	tmp = strstr(attributes, "mode-change-period=");
++	if (tmp) {
++		if (sscanf(tmp, "mode-change-period=%30u", &val) == 1) {
++			attr->mode_change_period = val;
++		}
++	}
++
++	attr->mode_change_neighbor = 0;
++	tmp = strstr(attributes, "mode-change-neighbor=");
++	if (tmp) {
++		if (sscanf(tmp, "mode-change-neighbor=%30u", &val) == 1) {
++			attr->mode_change_neighbor = val;
++		}
++	}
++
++	attr->crc = 0;
++	tmp = strstr(attributes, "crc=");
++	if (tmp) {
++		if (sscanf(tmp, "crc=%30u", &val) == 1) {
++			attr->crc = val;
++			if (attr->crc) {
++				attr->octet_align = 1;
++			}
++		}
++	}
++
++	attr->robust_sorting = 0;
++	tmp = strstr(attributes, "robust-sorting=");
++	if (tmp) {
++		if (sscanf(tmp, "robust-sorting=%30u", &val) == 1) {
++			attr->robust_sorting = val;
++			if (attr->robust_sorting) {
++				attr->octet_align = 1;
++			}
++		}
++	}
++
++	attr->interleaving = 0;
++	tmp = strstr(attributes, "interleaving=");
++	if (tmp) {
++		if (sscanf(tmp, "interleaving=%30u", &val) == 1) {
++			attr->interleaving = val;
++			if (attr->interleaving) {
++				attr->octet_align = 1;
++			}
++		}
++	}
++
++	attr->max_red = -1;
++	tmp = strstr(attributes, "max-red=");
++	if (tmp) {
++		if (sscanf(tmp, "max-red=%30u", &val) == 1) {
++			attr->max_red = val;
++		}
++	}
++
++	return cloned;
++}
++
++static void amr_generate_sdp_fmtp(const struct ast_format *format, unsigned int payload, struct ast_str **str)
++{
++	int appended = 0;
++	int listed = 0;
++	struct amr_attr *attr = ast_format_get_attribute_data(format);
++
++	if (!attr) {
++		attr = &default_amr_attr;
++	}
++
++	if (0 != attr->octet_align) {
++		if (0 == appended) {
++			ast_str_append(str, 0, "a=fmtp:%d ", payload);
++		} else {
++			ast_str_append(str, 0, ";");
++		}
++		ast_str_append(str, 0, "octet-align=%d", attr->octet_align);
++		appended = appended + 1;
++	}
++	if (0 != attr->mode_set)
++	{
++		if (0 == appended) {
++			ast_str_append(str, 0, "a=fmtp:%d ", payload);
++		} else {
++			ast_str_append(str, 0, ";");
++		}
++		ast_str_append(str, 0, "mode-set=");
++		if (attr->mode_set & 0x01) {
++			if (0 == listed) {
++				ast_str_append(str, 0, "0");
++			} else {
++				ast_str_append(str, 0, ",0");
++			}
++			listed = listed + 1;
++		}
++		if (attr->mode_set & 0x02) {
++			if (0 == listed) {
++				ast_str_append(str, 0, "1");
++			} else {
++				ast_str_append(str, 0, ",1");
++			}
++			listed = listed + 1;
++		}
++		if (attr->mode_set & 0x04) {
++			if (0 == listed) {
++				ast_str_append(str, 0, "2");
++			} else {
++				ast_str_append(str, 0, ",2");
++			}
++			listed = listed + 1;
++		}
++		if (attr->mode_set & 0x08) {
++			if (0 == listed) {
++				ast_str_append(str, 0, "3");
++			} else {
++				ast_str_append(str, 0, ",3");
++			}
++			listed = listed + 1;
++		}
++		if (attr->mode_set & 0x10) {
++			if (0 == listed) {
++				ast_str_append(str, 0, "4");
++			} else {
++				ast_str_append(str, 0, ",4");
++			}
++			listed = listed + 1;
++		}
++		if (attr->mode_set & 0x20) {
++			if (0 == listed) {
++				ast_str_append(str, 0, "5");
++			} else {
++				ast_str_append(str, 0, ",5");
++			}
++			listed = listed + 1;
++		}
++		if (attr->mode_set & 0x40) {
++			if (0 == listed) {
++				ast_str_append(str, 0, "6");
++			} else {
++				ast_str_append(str, 0, ",6");
++			}
++			listed = listed + 1;
++		}
++		if (attr->mode_set & 0x80) {
++			if (0 == listed) {
++				ast_str_append(str, 0, "7");
++			} else {
++				ast_str_append(str, 0, ",7");
++			}
++			listed = listed + 1;
++		}
++		if (attr->mode_set & 0x100) {
++			if (0 == listed) {
++				ast_str_append(str, 0, "8");
++			} else {
++				ast_str_append(str, 0, ",8");
++			}
++			listed = listed + 1;
++		}
++		appended = appended + 1;
++	}
++	if (0 != attr->mode_change_capability) {
++		if (0 == appended) {
++			ast_str_append(str, 0, "a=fmtp:%d ", payload);
++		} else {
++			ast_str_append(str, 0, ";");
++		}
++		ast_str_append(str, 0, "mode-change-capability=%d", attr->mode_change_capability);
++		appended = appended + 1;
++	}
++	if (0 != attr->mode_change_period) {
++		if (0 == appended) {
++			ast_str_append(str, 0, "a=fmtp:%d ", payload);
++		} else {
++			ast_str_append(str, 0, ";");
++		}
++		ast_str_append(str, 0, "mode-change-period=%d", attr->mode_change_period);
++		appended = appended + 1;
++	}
++	if (0 != attr->mode_change_neighbor) {
++		if (0 == appended) {
++			ast_str_append(str, 0, "a=fmtp:%d ", payload);
++		} else {
++			ast_str_append(str, 0, ";");
++		}
++		ast_str_append(str, 0, "mode-change-neighbor=%d", attr->mode_change_neighbor);
++		appended = appended + 1;
++	}
++	if (0 != attr->crc) {
++		if (0 == appended) {
++			ast_str_append(str, 0, "a=fmtp:%d ", payload);
++		} else {
++			ast_str_append(str, 0, ";");
++		}
++		ast_str_append(str, 0, "crc=%d", attr->crc);
++		appended = appended + 1;
++	}
++	if (0 != attr->robust_sorting) {
++		if (0 == appended) {
++			ast_str_append(str, 0, "a=fmtp:%d ", payload);
++		} else {
++			ast_str_append(str, 0, ";");
++		}
++		ast_str_append(str, 0, "robust-sorting=%d", attr->robust_sorting);
++		appended = appended + 1;
++	}
++	if (0 != attr->interleaving) {
++		if (0 == appended) {
++			ast_str_append(str, 0, "a=fmtp:%d ", payload);
++		} else {
++			ast_str_append(str, 0, ";");
++		}
++		ast_str_append(str, 0, "interleaving=%d", attr->interleaving);
++		appended = appended + 1;
++	}
++	if (0 <= attr->max_red) {
++		if (0 == appended) {
++			ast_str_append(str, 0, "a=fmtp:%d ", payload);
++		} else {
++			ast_str_append(str, 0, ";");
++		}
++		ast_str_append(str, 0, "max-red=%d", attr->max_red);
++		appended = appended + 1;
++	}
++	if (0 != appended) {
++		ast_str_append(str, 0, "\r\n");
++	}
++	/* 
++	 * AMR-WB, GSM gateway compatible setting:
++	 * ast_str_append(str, 0, "a=fmtp:%d mode-set=0,1,2; mode-change-period=2; mode-change-neighbor=1\r\n", payload);
++	 * less than 25kb/s in SIP RTP which equals iLBC:30 in data traffic, and AMR-WB is a wide-band codec!
++	 */
++}
++
++/*
++ * Octet Alignment
++ *
++ * AMR and AMR-WB support 'octet-align=1' which does not stuff the
++ * header bits over octet borders and which is readable in
++ * Wireshark. This parameter is negotiated via SDP. Belledonne and
++ * CounterPath do not offer AMR, only AMR-WB. Android offers only AMR.
++ * 
++ * Nokia Symbian/S60: configurable via user-interface; default: off
++ * Nokia Series 40: configurable via OMA Client Provisioning (OMA CP); default: off
++ * Nokia Asha Software Platform: configurable via OMA CP; default: on
++ * CounterPath Bria (iOS): no setting known; off
++ * CounterPath Bria (Android): see iOS
++ * CounterPath Bria (BlackBerry 10): AMR/AMR-WB not available, as of version 1.3.1
++ *    Bug: since version 3.4, fmtp is missing = negotiating octet-aligned mode fails
++ * BeeHD (iOS): no setting known; on
++ *    Bug: Nokia Symbian/S60 calls BeeHD, no audio in BeeHD; AMR-WB works
++ * Belledonne Linphone 1.0.2 (Windows Phone 8): no setting known; on
++ *    Bug: ignores octet-align=0 in fmtp = distorted audio
++ * CSipSimple 1.02r2330 (Android): no setting known; off
++ *    Bug: CSipSimple calls a Nokia Symbian/S60, no audio in Nokia; AMR works
++ *    Bug: AMR-WB ignores octet-align=1 in fmtp = distorted audio; AMR works
++ *         fixed upstream with <https://trac.pjsip.org/repos/changeset/5122>
++ * Google Android 5: no setting known; off
++ * Join (iOS): no setting known; on
++ *    Bug: AMR-WB ignores octet-align=0 in fmtp = distorted audio; AMR works
++ * PortGo (iOS): no setting known; off (is able to change alignment through negotiation)
++ */
++static struct ast_format *amr_getjoint(const struct ast_format *format1, const struct ast_format *format2)
++{
++	struct amr_attr *attr1 = ast_format_get_attribute_data(format1);
++	struct amr_attr *attr2 = ast_format_get_attribute_data(format2);
++	struct amr_attr *attr_res;
++	struct ast_format *jointformat = NULL;
++
++	if (!attr1) {
++		attr1 = &default_amr_attr;
++	}
++
++	if (!attr2) {
++		attr2 = &default_amr_attr;
++	}
++
++	if (format1 == ast_format_amrwb || format1 == ast_format_amr) {
++		jointformat = (struct ast_format *) format2;
++	}
++	if (format2 == ast_format_amrwb || format2 == ast_format_amr) {
++		jointformat = (struct ast_format *) format1;
++	}
++	if (format1 == format2) {
++		if (!jointformat) {
++			ast_debug(3, "Both formats were not cached but the same.\n");
++			jointformat = (struct ast_format *) format1;
++		} else {
++			ast_debug(3, "Both formats were cached.\n");
++			jointformat = NULL;
++		}
++	}
++	if (!jointformat) {
++		ast_debug(3, "Which pointer shall be returned? Let us create a new one!\n");
++		jointformat = ast_format_clone(format1);
++	} else {
++		ao2_bump(jointformat);
++	}
++	if (!jointformat) {
++		return NULL;
++	}
++	attr_res = ast_format_get_attribute_data(jointformat);
++
++	if (0 == attr1->mode_set && 0 == attr2->mode_set) {
++		attr_res->mode_set = 0; /* both allowed all = 0 */
++	} else if (0 != attr1->mode_set && 0 == attr2->mode_set) {
++		attr_res->mode_set = attr1->mode_set; /* attr2 allowed all */
++	} else if (0 == attr1->mode_set && 0 != attr2->mode_set) {
++		attr_res->mode_set = attr2->mode_set; /* attr1 allowed all */
++	} else { /* both parties restrict, let us check if they match */
++		attr_res->mode_set = (attr1->mode_set & attr2->mode_set);
++		if (0 == attr_res->mode_set) {
++			/* not expected because everyone supports 0,1,2 */
++			ast_log(LOG_WARNING, "mode-set did not match\n");
++			return NULL;
++		}
++	}
++	attr_res->mode_change_period = MAX(attr1->mode_change_period, attr2->mode_change_period);
++	attr_res->mode_change_capability = MAX(attr1->mode_change_capability, attr2->mode_change_capability);
++	attr_res->mode_change_neighbor = MAX(attr1->mode_change_neighbor, attr2->mode_change_neighbor);
++	attr_res->crc = MAX(attr1->crc, attr2->crc);
++	attr_res->robust_sorting = MAX(attr1->robust_sorting, attr2->robust_sorting);
++	attr_res->interleaving = MAX(attr1->interleaving, attr2->interleaving);
++	attr_res->max_red = MAX(attr1->max_red, attr2->max_red);
++
++	/* internal variables for transcoding module */
++	/* starting point; later, changes with a change-mode request (CMR) */
++	if (0 < attr_res->mode_set) {
++		attr_res->mode_current = floor(log10(attr_res->mode_set) / log10(2));
++	}
++	attr_res->vad = MAX(attr1->vad, attr2->vad);
++
++	return jointformat;
++}
++
++static struct ast_format_interface amr_interface = {
++	.format_destroy = amr_destroy,
++	.format_clone = amr_clone,
++	.format_cmp = NULL,
++	.format_get_joint = amr_getjoint,
++	.format_attribute_set = NULL,
++	.format_parse_sdp_fmtp = amr_parse_sdp_fmtp,
++	.format_generate_sdp_fmtp = amr_generate_sdp_fmtp,
++};
++
++static int load_module(void)
++{
++	if (ast_format_interface_register("amr", &amr_interface)) {
++		return AST_MODULE_LOAD_DECLINE;
++	}
++
++	if (ast_format_interface_register("amrwb", &amr_interface)) {
++		return AST_MODULE_LOAD_DECLINE;
++	}
++
++	return AST_MODULE_LOAD_SUCCESS;
++}
++
++static int unload_module(void)
++{
++	return 0;
++}
++
++AST_MODULE_INFO(ASTERISK_GPL_KEY, AST_MODFLAG_LOAD_ORDER,
++	"AMR Format Attribute Module",
++	.load = load_module,
++	.unload = unload_module,
++	.load_pri = AST_MODPRI_CHANNEL_DEPEND,
++);
+-- 
+2.53.0
+

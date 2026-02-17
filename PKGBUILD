@@ -6,13 +6,16 @@
 # Contributor: Maik Broemme <mbroemme@libmpq.org>
 # Contributor: Denis 'GNUtoo' Carikli <GNUtoo@cyberdimension.org>
 
-pkgname=asterisk
+pkgname=asterisk-amr
+_pkgname=asterisk
 pkgver=23.2.2
 pkgrel=1
-pkgdesc='A complete PBX solution'
+pkgdesc='A complete PBX solution plus AMR'
 arch=(x86_64 i686 aarch64 armv7h)
 url=https://www.asterisk.org
 license=("GPL-2.0-only")
+conflicts=($_pkgname)
+provides=($_pkgname)
 depends=(alsa-lib
          curl
          jansson
@@ -20,9 +23,11 @@ depends=(alsa-lib
          libvorbis
          libxml2
          libxslt
+         opencore-amr
          opus
          popt
-         speex)
+         speex
+         vo-amrwbenc)
 makedepends=(gsm
              sqlite3)
 optdepends=(dahdi
@@ -140,18 +145,20 @@ _confs=(acl.conf
         voicemail.conf
         websocket_client.conf
         xmpp.conf)
-backup=("${_confs[@]/#/etc/$pkgname/}")
-_archive="$pkgname-$pkgver"
-source=("https://downloads.asterisk.org/pub/telephony/$pkgname/releases/$_archive.tar.gz"
-        "$pkgname.sysusers"
-        "$pkgname.logrotated"
-        "$pkgname.tmpfiles"
-        "fix-upnp.patch")
+backup=("${_confs[@]/#/etc/$_pkgname/}")
+_archive="$_pkgname-$pkgver"
+source=("https://downloads.asterisk.org/pub/telephony/$_pkgname/releases/$_archive.tar.gz"
+        "$_pkgname.sysusers"
+        "$_pkgname.logrotated"
+        "$_pkgname.tmpfiles"
+        "fix-upnp.patch"
+        "amr.patch")
 sha256sums=('dfba245e993d500a4a04a7e859e5e60d9623e769b403919254a140ec1d52aa71'
             '38a53911647fb2308482179cba605ebf12345df37eed23eb4ea67bf0bf041486'
             'b97dc10a262621c95e4b75e024834712efd58561267b59b9171c959ecd9f7164'
             '1b6b489d4f71015bfc56ce739d92df7e9abdb349aed6f5a47dd9c18d84546c1b'
-            '55798baa02698de3d81c4b6e11097b3dee73b20e9dfa1e08091a7037830ad6d8')
+            '55798baa02698de3d81c4b6e11097b3dee73b20e9dfa1e08091a7037830ad6d8'
+            '1a9792909d26b4637c3b72e8f24b78af31ce035ea4a00b656718abb50c54a486')
 
 prepare() {
 	cd "$_archive"
@@ -172,9 +179,10 @@ build() {
 		--prefix=/usr \
 		--sysconfdir=/etc \
 		--localstatedir=/var \
-		--sbindir=/usr/bin
+		--sbindir=/usr/bin \
+                --with-opencore-amrnb --with-opencore-amrwb --with-vo-amrwbenc
 
-	make MENUSELECT_CFLAGS= OPTIMIZE= DEBUG= ASTVARRUNDIR="/run/$pkgname" NOISY_BUILD=1
+	make MENUSELECT_CFLAGS= OPTIMIZE= DEBUG= ASTVARRUNDIR="/run/$_pkgname" NOISY_BUILD=1
 }
 
 package(){
@@ -188,7 +196,7 @@ package(){
 	# that our current meta data matches whatever just got packaged, else flunk
 	# with a helpful output of where the lists differ. We have to compare twice
 	# because cmp has a useful exit code, comm has a useful output, neither both
-	local _backs=($(cd "$pkgdir/etc/$pkgname" && echo *))
+	local _backs=($(cd "$pkgdir/etc/$_pkgname" && echo *))
 	cmp -s \
 		<(IFS=$'\n'; echo "${_confs[*]}" | sort) \
 		<(IFS=$'\n'; echo "${_backs[*]}" | sort) ||
@@ -197,8 +205,8 @@ package(){
 			<(IFS=$'\n'; echo "${_backs[*]}" | sort) &&
 		exit 1)
 
-	sed -i -e 's,/var/run,/run,' "$pkgdir/etc/$pkgname/asterisk.conf"
-	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/examples" "$pkgdir/etc/$pkgname/"*
+	sed -i -e 's,/var/run,/run,' "$pkgdir/etc/$_pkgname/asterisk.conf"
+	install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname/examples" "$pkgdir/etc/$_pkgname/"*
 
 	mv "$pkgdir/var/run" "$pkgdir"
 
@@ -206,9 +214,9 @@ package(){
 	install -Dm644 -t "$pkgdir/usr/lib/systemd/system/" "$pkname"*.{service,socket}
 
 	pushd "$srcdir"
-	install -Dm644 "$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-	install -Dm644 "$pkgname.logrotated" "$pkgdir/etc/logrotate.d/$pkgname"
-	install -Dm644 "$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+	install -Dm644 "$_pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
+	install -Dm644 "$_pkgname.logrotated" "$pkgdir/etc/logrotate.d/$_pkgname"
+	install -Dm644 "$_pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
 
-	chmod 0750 "$pkgdir"/{etc,run,var/{lib,log,spool}}/"$pkgname"
+	chmod 0750 "$pkgdir"/{etc,run,var/{lib,log,spool}}/"$_pkgname"
 }
