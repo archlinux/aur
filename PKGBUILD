@@ -5,7 +5,7 @@
 
 # shellcheck disable=SC1090,SC2207
 pkgname=pince-git
-pkgver=r1609.527ac61
+pkgver=r1675.09b44de
 pkgrel=1
 pkgdesc="A Linux reverse engineering tool inspired by Cheat Engine."
 arch=('any')
@@ -13,14 +13,18 @@ url="https://github.com/korcankaraokcu/PINCE"
 license=('GPL-3.0-or-later WITH CC-BY-3.0')
 provides=('pince')
 conflicts=('pince')
-depends=() # follow upstream, set this later
+depends=('polkit') # follow upstream, set this later
 makedepends=('cmake' 'python-pip' 'qt6-tools' 'lsb-release' 'pkgconf' 'git' 'sed')
 optdepends=(
 	'qt6-wayland: wayland support'
 )
-source=("$pkgname::git+$url.git" 'PINCE.desktop')
-sha1sums=('SKIP' '719d18d69abc299f739cc04041967e9d05a34104')
-_installpath='/usr/share/PINCE'
+source=("$pkgname::git+$url.git"
+		'pince.desktop'
+		'pince.sh')
+sha1sums=('SKIP'
+          '916ca418f86982ee96937da468e3fa2d7d04c9ae'
+          '4d9901d48437cf6870650d343d94774763e4916f')
+_installpath='/usr/lib/pince'
 _installsh='install.sh'
 
 pkgver() {
@@ -28,13 +32,6 @@ pkgver() {
 	printf "r%s.%s" \
 		"$(git rev-list --count HEAD)" \
 		"$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-	# Remove ".venv/PINCE" exist check
-	sed -e '/^if \[ ! -d .*.venv.* \]; /,/venv.*activate$/ s/^/# /' \
-		-e 's|[^ ]*python3|python3|' \
-		-i "./$pkgname/PINCE.sh"
 }
 
 build() {
@@ -57,8 +54,7 @@ build() {
 
 package() {
 	install -Dm755 pince.sh "$pkgdir/usr/bin/pince"
-	install -Dm644 pince.desktop -t "$pkgdir/usr/share/applications/"
-	install -Dm644 io.github.korcankaraokcu.PINCE.policy -t "$pkgdir/usr/share/polkit-1/actions/"
+	install -Dm644 pince.desktop -t "$pkgdir/usr/share/applications/io.github.korcankaraokcu.PINCE.desktop"
 
 	pushd "$pkgname" || exit 1
 
@@ -106,7 +102,7 @@ package() {
 	# Copy system files
 	install -Dm644 COPYING COPYING.CC-BY -t "$pkgdir"/usr/share/licenses/$pkgname/
 	install -Dm644 README.md AUTHORS THANKS -t "$pkgdir"/usr/share/doc/$pkgname/
-	install -Dm644 media/logo/ozgurozbek/pince_small_transparent.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/pince.png
+	install -Dm644 media/logo/ozgurozbek/pince_small_transparent.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/io.github.korcankaraokcu.PINCE.png
 
 	popd || exit 1
 
