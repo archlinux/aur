@@ -27,9 +27,7 @@ build() {
 check() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    export TMPDIR="$srcdir/tmp"
-    mkdir -p "$TMPDIR"
-    cargo test --frozen --all-features
+    cargo test --frozen --all-features --lib --bins --tests
 }
 
 package() {
