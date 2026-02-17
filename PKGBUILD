@@ -1,6 +1,6 @@
 # Maintainer: Dimitrije Randjelovic <m1z23r@gmail.com>
 pkgname=nikode
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="A modern API client for developers"
 arch=('x86_64')
@@ -29,8 +29,8 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
-    # Extract the built pacman package
-    tar -xf dist-electron/*.pacman -C "${pkgdir}"
+    # Extract the built pacman package (excluding pacman metadata files)
+    tar -xf dist-electron/*.pacman -C "${pkgdir}" --exclude='.PKGINFO' --exclude='.INSTALL' --exclude='.MTREE' --exclude='.BUILDINFO'
 
     # Fix permissions
     chmod -R g-w "${pkgdir}"
