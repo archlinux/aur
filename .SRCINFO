@@ -1,7 +1,7 @@
 pkgbase = iamb-bin
 	pkgdesc = A Matrix client for Vim addicts
 	pkgver = 0.0.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ulyssa/iamb
 	arch = x86_64
 	license = Apache-2.0
