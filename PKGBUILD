@@ -1,7 +1,7 @@
 # Maintainer: OpenLyst <https://openlyst.ink>
 # Version and download URL from Openlyst API: https://openlyst.ink/docs/api
 pkgname=opentorrent-bin
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="qBittorrent client"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=()
 provides=('opentorrent')
 conflicts=('opentorrent')
 options=('!strip')
-source=("opentorrent-bin-${pkgver}.zip::https://github.com/justacalico/Openlyst-more-builds/releases/download/build-1/opentorrent-1.0.0-2026-02-08-linux-x64.zip")
+source=("opentorrent-bin-${pkgver}.zip::https://github.com/justacalico/Openlyst-more-builds/releases/download/build-32/opentorrent-2.0.0-2026-02-17-linux-x64.zip")
 sha256sums=('SKIP')
 
 package() {
