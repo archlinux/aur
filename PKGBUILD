@@ -2,14 +2,14 @@
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=eddy
-pkgver=1.4.2
+pkgver=1.5.2
 pkgrel=1
 pkgdesc='Simple & fast CLI file encryption tool'
 arch=('x86_64')
 url="https://github.com/70sh1/$pkgname"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f073c927e1ca4157bfda6b10c7ab451214614923837e648abd22c5de0df632ba')
+sha256sums=('61d9a41fb1102b7890d7e1f6a6216c76a8addb36344749e318bc28729fce89e2')
 makedepends=('go')
 
 prepare() {
