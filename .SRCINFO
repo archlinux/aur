@@ -1,0 +1,13 @@
+pkgbase = sx-bin
+	pkgdesc = Multi-engine web search from the command line
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/byteowlz/sx
+	arch = x86_64
+	license = MIT
+	provides = sx
+	conflicts = sx
+	source = sx-2.1.0.tar.gz::https://github.com/byteowlz/sx/releases/download/v2.1.0/sx_Linux_x86_64.tar.gz
+	sha256sums = 848a7072f6825bf137b292079e21ceba6b27e1680e8a55a2420d0b7ddd6e2c42
+
+pkgname = sx-bin
