@@ -1,14 +1,14 @@
 pkgbase = atmos-bin
 	pkgdesc = Automated Terraform Management & Orchestration Software (ATMOS)
 	pkgver = 1.206.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cloudposse/atmos
 	arch = x86_64
 	license = Apache-2.0
 	optdepends = terraform
 	optdepends = opentofu
 	source = https://github.com/cloudposse/atmos/releases/download/v1.206.2/atmos_1.206.2_linux_amd64
-	sha512sums = 7407b7261bc4c099ad3979bb7c66853771f7e5a4da4e0b5022d12e242633257958653f835881cb78514a7024fd71072f8358585bc04806f817b5cfd4e5caf721
-	b2sums = 701160e3428b623b95d973d97201b77a529dbf34e7eebb32c66a4314ced8111059517add6e6391acf57ddd09ab02966941db4093cada145e0dea13ad2475da4d
+	sha512sums = 31851a102d2929e001d6f0f68a436e6c7e6d312879bd34d16025bc31194d159c3960de0f62f7e6de43af37bc80f66a9e70c3ca38a08b69ec9ee6715a411eb7cb
+	b2sums = a3f07ef80008049d79e5cdbad260c21a03518842f3bd981d81404cfe42372e62f5368ce21fac60b34e596d21040637908f63210f83ccb4a5b46bad3d128d4c54
 
 pkgname = atmos-bin
