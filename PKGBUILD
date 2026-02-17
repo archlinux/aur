@@ -79,7 +79,6 @@ depends=(
     "python-sqlalchemy"
     "python-tempora"
     "python-typer"
-    "python-typer-slim"
     "python-typing_extensions"
     "python-tzdata"
     "python-tzlocal"

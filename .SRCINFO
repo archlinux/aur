@@ -75,7 +75,6 @@ pkgbase = flexget
 	depends = python-sqlalchemy
 	depends = python-tempora
 	depends = python-typer
-	depends = python-typer-slim
 	depends = python-typing_extensions
 	depends = python-tzdata
 	depends = python-tzlocal

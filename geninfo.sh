@@ -17,6 +17,7 @@ depends=$(./geninfo.py "$pyreq" |
     sed 's|^|python-|' |
     sed 's|python-python-|python-|' |
     sed '/^python-python$/d' |
+    sed '/^python-typer-slim$/d' |
     sed 's|python-importlib-resources|python-importlib_resources|' |
     sed 's|python-jaraco-|python-jaraco.|' |
     sed 's|python-jinja2|python-jinja|' |
