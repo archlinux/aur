@@ -1,7 +1,7 @@
 pkgbase = far2l
 	pkgdesc = Linux port of FAR v2
 	pkgver = 2.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/elfmz/far2l
 	arch = x86_64
 	arch = aarch64
@@ -9,6 +9,7 @@ pkgbase = far2l
 	makedepends = cmake
 	makedepends = wxwidgets-gtk3
 	makedepends = python-cffi
+	makedepends = python-markdown
 	makedepends = libxi
 	depends = libxml2
 	depends = uchardet
