@@ -1,0 +1,17 @@
+pkgbase = selx-git
+	pkgdesc = Minimal X11 selection tool
+	pkgver = 1.2.0.r12.g436a948
+	pkgrel = 1
+	url = https://codeberg.org/NRK/selx
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = gcc
+	depends = libx11
+	depends = libxext
+	depends = libxrandr
+	provides = selx
+	source = selx::git+https://codeberg.org/NRK/selx.git#branch=master
+	sha256sums = SKIP
+
+pkgname = selx-git
