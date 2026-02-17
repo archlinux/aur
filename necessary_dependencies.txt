@@ -738,7 +738,6 @@ Module: open_webui.utils.plugin
     open_webui/routers/functions.py
     open_webui/routers/tools.py
     open_webui/utils/actions.py
-    open_webui/utils/chat.py
     open_webui/utils/filter.py
     open_webui/utils/middleware.py
     open_webui/utils/models.py
@@ -1078,6 +1077,11 @@ Module: open_webui.models.files
     open_webui/routers/retrieval.py
     open_webui/tools/builtin.py
     open_webui/utils/files.py
+Module: open_webui.routers.files
+  Imported in:
+    open_webui/routers/images.py
+    open_webui/tools/builtin.py
+    open_webui/utils/files.py
 Module: open_webui.routers.knowledge
   Imported in:
     open_webui/tools/builtin.py
@@ -1150,10 +1154,6 @@ Module: open_webui.storage.provider
     open_webui/routers/files.py
     open_webui/routers/knowledge.py
     open_webui/routers/retrieval.py
-    open_webui/utils/files.py
-Module: open_webui.routers.files
-  Imported in:
-    open_webui/routers/images.py
     open_webui/utils/files.py
 Module: open_webui.retrieval.web.utils
   Imported in:
