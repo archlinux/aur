@@ -4,7 +4,7 @@ pkgname=comty-desktop-bin
 _electronversion=39
 
 pkgver="0.5.2"
-pkgrel=0
+pkgrel=1
 pkgdesc="Official Comty Desktop application bin"
 arch=("x86_64")
 url="https://github.com/ragestudio/comty"
