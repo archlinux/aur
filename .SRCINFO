@@ -1,6 +1,6 @@
 pkgbase = flogo
 	pkgdesc = Create and run programs using flow charts
-	pkgver = 1.2.2.r245.1d1b611
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://fdossena.com?p=flogo/index.frag
 	arch = x86_64
@@ -10,16 +10,13 @@ pkgbase = flogo
 	arch = armv7h
 	arch = aarch64
 	license = AGPL-3.0-or-later
-	makedepends = git
-	makedepends = yarn
-	makedepends = npm
 	depends = electron
 	provides = flogo
-	source = git+https://github.com/adolfintel/flogo
+	source = https://downloads.fdossena.com/Projects/Flogo/Flogo-1.3.0-asar.tar.gz
 	source = flogo.desktop
 	source = flogo.sh
 	source = flogo-mime.xml
-	sha256sums = SKIP
+	sha256sums = 9573b1b75f55f695d3510092a529acb101afc118a390dbc25d7a907e40ca390e
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
