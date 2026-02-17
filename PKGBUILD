@@ -6,10 +6,10 @@ pkgrel=1
 pkgdesc="TigerVNC (Viewer only), forked from the VNC 4 branch of TightVNC."
 arch=('i686' 'x86_64')
 url="http://www.tigervnc.org"
-license=('GPL')
+license=('GPL-1.0-or-later')
 options=('strip')
-depends=('fltk1.3' 'gnutls' 'libjpeg-turbo')
-makedepends=('cmake')
+depends=('fltk1.3' 'gnutls' 'libjpeg-turbo' 'pixman' 'libx11' 'libxi')
+makedepends=('cmake' 'libxext')
 conflicts=('tigervnc' 'tightvnc')
 source=(tigervnc-${pkgver}.tar.gz::https://github.com/TigerVNC/tigervnc/archive/v${pkgver}.tar.gz
         vncviewer.desktop)
