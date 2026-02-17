@@ -1,7 +1,7 @@
 pkgbase = mdcat
 	pkgdesc = Sophisticated Markdown rendering for the terminal
 	pkgver = 2.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/swsnr/mdcat
 	arch = i686
 	arch = x86_64
@@ -14,6 +14,8 @@ pkgbase = mdcat
 	optdepends = less: for mdless
 	options = !lto
 	source = mdcat-2.7.1.tar.gz::https://github.com/swsnr/mdcat/archive/mdcat-2.7.1.tar.gz
+	source = mdcat-2.7.1-osc8list-dead-code.patch
 	sha256sums = 460024d9795eb578be09ec2284af243627721151aa001aae6ffb5589380b2ba1
+	sha256sums = 3c8c870932700ef78e1b924b00ae57835edc3ea4fabe5747e9a44aff1b72db05
 
 pkgname = mdcat

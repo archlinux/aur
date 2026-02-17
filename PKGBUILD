@@ -3,7 +3,7 @@
 # Contributor: Wesley Moore <wes@wezm.net>
 pkgname=mdcat
 pkgver=2.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Sophisticated Markdown rendering for the terminal'
 arch=('i686' 'x86_64')
 url="https://github.com/swsnr/mdcat"
@@ -13,12 +13,15 @@ depends=('gcc-libs' 'openssl' 'curl')
 makedepends=('asciidoctor'
              'cargo')
 optdepends=('less: for mdless')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-$pkgver.tar.gz")
-sha256sums=('460024d9795eb578be09ec2284af243627721151aa001aae6ffb5589380b2ba1')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-$pkgver.tar.gz"
+        "mdcat-2.7.1-osc8list-dead-code.patch")
+sha256sums=('460024d9795eb578be09ec2284af243627721151aa001aae6ffb5589380b2ba1'
+            '3c8c870932700ef78e1b924b00ae57835edc3ea4fabe5747e9a44aff1b72db05')
 
 prepare() {
   cd "${pkgname}-${pkgname}-${pkgver}"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  patch -Np1 < "${srcdir}/mdcat-2.7.1-osc8list-dead-code.patch"
 }
 
 build() {
