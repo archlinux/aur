@@ -1,7 +1,6 @@
-diff --git a/dmenu.c b/dmenu.c
---- a/dmenu.c
-+++ b/dmenu.c
-@@ -519,12 +519,16 @@ insert:
+--- a/dmenu.c	2026-02-16 20:24:20.161307172 -0400
++++ b/dmenu.c	2026-02-16 20:24:52.218345756 -0400
+@@ -514,13 +514,17 @@
  			calcoffsets();
  		}
  		break;
@@ -25,3 +24,4 @@ diff --git a/dmenu.c b/dmenu.c
 +		}
  		break;
  	}
+ 

@@ -21,17 +21,17 @@ source=(
   "https://dl.suckless.org/tools/dmenu-${pkgver}.tar.gz"
   "config.h"
   "dmenu-mousesupport-5.4.diff"
-  "dmenu-mousesupport-motion-5.2.diff"
-  "dmenu-password-5.0.diff"
+  "dmenu-mousesupport-motion-5.4.diff"
+  "dmenu-password-5.4.diff"
   "dmenu-tab-navigation-5.4.diff"
 )
 sha256sums=(
   '8fbace2a0847aa80fe861066b118252dcc7b4ca0a0a8f3a93af02da8fb6cd453'
   'f07a3461e3aef6e1b7541fe0ddec7017643178873a93866f4adebd7ca56d58a0'
   '52b2dd30efa52e38163baef428b41b01f6d4140c050436ba2bfcb68f2e89898d'
-  '3e891156c9795a9db5be7bbb2b5cbbc7b87f6a3bf9ccd7cdaa7fc2dc45168f59'
-  '38a8f4efc37246da6f626a9e44f2722fda4c4ca16aad3e2ad549f9c5398f1db7'
-  'e3281611f98af7cf0afe78b6ebacc3172b8048400865568acbc7d196291a681a'
+  '2610629d1c9a643bd15dc8d7057b6aa6c147780a1ab7c50b0df3d72660da0c0b'
+  'adaa9ede195c492663273cea7c5f96409992421bf420b3a2a8e0c89259310716'
+  '75c37cda26fb0ee98a6bad9751c878c8cb61f9e25f143cb0250a0152e6b67720'
 )
 
 prepare() {
@@ -42,8 +42,8 @@ prepare() {
 
   # Apply patches in order
   patch -Np1 -i "${srcdir}/dmenu-mousesupport-5.4.diff"
-  patch -Np1 -i "${srcdir}/dmenu-mousesupport-motion-5.2.diff"
-  patch -Np1 -i "${srcdir}/dmenu-password-5.0.diff"
+  patch -Np1 -i "${srcdir}/dmenu-mousesupport-motion-5.4.diff"
+  patch -Np1 -i "${srcdir}/dmenu-password-5.4.diff"
   patch -Np1 -i "${srcdir}/dmenu-tab-navigation-5.4.diff"
 }
 

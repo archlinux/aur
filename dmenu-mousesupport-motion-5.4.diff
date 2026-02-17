@@ -1,0 +1,49 @@
+--- a/dmenu.c	2026-02-16 20:04:45.831319089 -0400
++++ b/dmenu.c	2026-02-16 20:07:04.799525684 -0400
+@@ -641,6 +641,27 @@ buttonpress(XButtonEvent *ev)
+ }
+ 
+ static void
++motionevent(XEvent *ev)
++{
++	struct item *item;
++
++	if (ev->xbutton.window != win)
++		return;
++
++	int x = 0, w;
++
++	for (item = curr; item != next; item = item->right) {
++		x += w = TEXTW(item->text);
++		if (ev->xbutton.x >= x && ev->xbutton.x <= x + w) {
++			sel = item;
++			calcoffsets();
++			drawmenu();
++			return;
++		}
++	}
++}
++
++static void
+ paste(void)
+ {
+ 	char *p, *q;
+@@ -702,6 +723,9 @@ run(void)
+ 		case ButtonPress:
+ 			buttonpress(&ev);
+ 			break;
++		case MotionNotify:
++			motionevent(&ev);
++			break;
+ 		case Expose:
+ 			if (ev.xexpose.count == 0)
+ 				drw_map(drw, win, 0, 0, mw, mh);
+@@ -800,7 +824,7 @@ setup(void)
+ 	swa.override_redirect = True;
+ 	swa.background_pixel = scheme[SchemeNorm][ColBg].pixel;
+ 	swa.event_mask = ExposureMask | KeyPressMask | VisibilityChangeMask |
+-	                 ButtonPressMask;
++	                 ButtonPressMask | PointerMotionMask;
+ 
+ 	win = XCreateWindow(dpy, root, x, y, mw, mh, 0,
+ 	                    CopyFromParent, CopyFromParent, CopyFromParent,
