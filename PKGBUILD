@@ -4,7 +4,7 @@ _pkgname=Spent
 pkgname=${_pkgname,,}-bin
 pkgdesc="Minimalist personal finance tracker for Linux desktop"
 
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=2
 _pkgvername=v${pkgver}
 
@@ -21,10 +21,10 @@ depends=('glibc' 'gcc-libs' 'glib2' 'webkit2gtk-4.1' 'gtk3' 'gdk-pixbuf2' 'cairo
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
-source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.deb::${url}/releases/download/${_pkgvername}/Spent_1.1.7_amd64.deb")
+source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.deb::${url}/releases/download/${_pkgvername}/Spent_1.1.8_amd64.deb")
 sha256sums=('c4215762b499abb4cf9674a5653c08691bbed2fbcad74441971069d0364485fe'
             '653f11d1727ec10d03c4a80968189b49fe7d96e94db8d9b1df6376c3b29d9a16')
-sha256sums_x86_64=('f30a33544303081b62739c7697ce342f32ac5eb128433ce8dea3070b9c68d484')
+sha256sums_x86_64=('56db80840ef2c3f8975e7398a906119d1aa4075d6febf4bbefbc8e2da29994b4')
 
 
 package() {

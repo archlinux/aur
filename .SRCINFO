@@ -1,6 +1,6 @@
 pkgbase = spent-bin
 	pkgdesc = Minimalist personal finance tracker for Linux desktop
-	pkgver = 1.1.7
+	pkgver = 1.1.8
 	pkgrel = 2
 	url = https://github.com/FrogSnot/Spent
 	arch = x86_64
@@ -17,11 +17,11 @@ pkgbase = spent-bin
 	depends = libsoup3
 	depends = hicolor-icon-theme
 	provides = spent
-	source = LICENSE-1.1.7::https://raw.githubusercontent.com/FrogSnot/Spent/v1.1.7/LICENSE
-	source = README-1.1.7.md::https://raw.githubusercontent.com/FrogSnot/Spent/v1.1.7/README.md
+	source = LICENSE-1.1.8::https://raw.githubusercontent.com/FrogSnot/Spent/v1.1.8/LICENSE
+	source = README-1.1.8.md::https://raw.githubusercontent.com/FrogSnot/Spent/v1.1.8/README.md
 	sha256sums = c4215762b499abb4cf9674a5653c08691bbed2fbcad74441971069d0364485fe
 	sha256sums = 653f11d1727ec10d03c4a80968189b49fe7d96e94db8d9b1df6376c3b29d9a16
-	source_x86_64 = Spent-x86_64-1.1.7.deb::https://github.com/FrogSnot/Spent/releases/download/v1.1.7/Spent_1.1.7_amd64.deb
-	sha256sums_x86_64 = f30a33544303081b62739c7697ce342f32ac5eb128433ce8dea3070b9c68d484
+	source_x86_64 = Spent-x86_64-1.1.8.deb::https://github.com/FrogSnot/Spent/releases/download/v1.1.8/Spent_1.1.8_amd64.deb
+	sha256sums_x86_64 = 56db80840ef2c3f8975e7398a906119d1aa4075d6febf4bbefbc8e2da29994b4
 
 pkgname = spent-bin
