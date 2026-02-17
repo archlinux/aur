@@ -4,7 +4,7 @@ _pkgname=dwproton
 pkgname=${_pkgname}-signed-bin
 _srcver=10.0-14
 pkgver=${_srcver//-/_}
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Proton builds with the latest Dawn Winery fixes for gacha games, based on Proton-CachyOS. Signed build."
 arch=('x86_64')
@@ -71,7 +71,7 @@ optdepends=(
 )
 install=${pkgname}.install
 
-build() {
+prepare() {
     sed -i -E 's/"dwproton-[^"]*"/"dwproton-signed"/g' \
       "${srcdir}/${_srcdir}/compatibilitytool.vdf"
 }
