@@ -1,4 +1,4 @@
-# Maintainer: Gabriel Bjørnager Jensen <gabriel@achernar.io>
+# Maintainer: Gabriel Bjørnager Jensen <gabriel at achernar dot io>
 
 pkgname=setprof-git
 pkgver=1.0
