@@ -59,33 +59,40 @@ post_install() {
     echo "    4. Start voxtype:"
     echo "       systemctl --user enable --now voxtype"
     echo ""
-    # Check if Parakeet was built
-    if [ -f /usr/lib/voxtype/voxtype-parakeet ]; then
-        echo "    Parakeet engine available: voxtype setup parakeet --enable"
+    # Check if ONNX engines were built
+    if [ -f /usr/lib/voxtype/voxtype-onnx ] || [ -f /usr/lib/voxtype/voxtype-onnx-avx2 ]; then
+        echo "    ONNX engines available (SenseVoice, Parakeet, Moonshine, etc.)"
     else
-        echo "    For Parakeet support: install onnxruntime and rebuild"
+        echo "    For ONNX engines: install onnxruntime and rebuild"
     fi
     echo ""
 }
 
 post_upgrade() {
     echo ""
-    echo "==> Voxtype upgraded to 0.5.5"
+    echo "==> Voxtype upgraded to 0.6.0"
     echo ""
 
     _detect_gpu
 
     echo ""
-    echo "    New in 0.5.5:"
-    echo "      - New: eitype output driver for libei protocol (GNOME 46+, KDE 6.1+)"
-    echo "      - New: Media key names (MUTE, VOLUMEUP, etc.) for hotkey config"
-    echo "      - New: Numeric keycode support (e.g., key = 125 for Super key)"
+    echo "    New in 0.6.0:"
+    echo "      - New: Meeting mode with continuous transcription, speaker attribution, and export"
+    echo "      - New: AI meeting summarization via Ollama (local LLM)"
+    echo "      - New: SenseVoice engine (zh/en/ja/ko/yue, auto language detection)"
+    echo "      - New: Paraformer, Dolphin, Omnilingual engines"
+    echo "      - New: ML speaker diarization via ONNX embeddings"
     echo ""
-    # Check if Parakeet was built
-    if [ -f /usr/lib/voxtype/voxtype-parakeet ]; then
-        echo "    Parakeet engine available: voxtype setup parakeet --enable"
+    echo "    Meeting mode:"
+    echo "      voxtype meeting start --title \"My Meeting\""
+    echo "      voxtype meeting stop"
+    echo "      voxtype meeting export latest --format markdown"
+    echo ""
+    # Check if ONNX engines were built
+    if [ -f /usr/lib/voxtype/voxtype-onnx ] || [ -f /usr/lib/voxtype/voxtype-onnx-avx2 ]; then
+        echo "    ONNX engines available (SenseVoice, Parakeet, Moonshine, etc.)"
     else
-        echo "    For Parakeet support: install onnxruntime and rebuild"
+        echo "    For ONNX engines: install onnxruntime and rebuild"
     fi
     echo ""
 }

@@ -1,6 +1,6 @@
 # Maintainer: Peter Jackson <pete@peteonrails.com>
 pkgname=voxtype
-pkgver=0.5.6
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Push-to-talk voice-to-text for Linux (optimized for Wayland, works on X11)"
 arch=('x86_64' 'aarch64')
@@ -30,14 +30,16 @@ optdepends=(
     'pipewire-alsa: ALSA compatibility for PipeWire (required if using PipeWire)'
     'pulseaudio: audio server (alternative to PipeWire)'
     'vulkan-icd-loader: GPU acceleration via Vulkan for Whisper'
-    'onnxruntime: required for Parakeet engine (rebuild with onnxruntime installed)'
-    'cuda: GPU acceleration via CUDA for Parakeet (NVIDIA GPUs)'
-    'rocm-hip-runtime: GPU acceleration via ROCm for Parakeet (AMD GPUs)'
+    'onnxruntime: required for ONNX engines (rebuild with onnxruntime installed)'
+    'cuda: GPU acceleration via CUDA for ONNX engines (NVIDIA GPUs)'
+    'rocm-hip-runtime: GPU acceleration via ROCm for ONNX engines (AMD GPUs)'
+    'ollama: local AI summarization for meeting mode'
 )
 backup=('etc/voxtype/config.toml')
 install=voxtype.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/peteonrails/voxtype/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('43538f98b76c0636bf72e0dcdff9e702f928171735e3f81d0ac2d10b9e070da4')
+# TODO: Update checksum from final release tarball before deploying to AUR
+sha256sums=('SKIP')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -105,17 +107,18 @@ build() {
         --config 'profile.release.codegen-units=8'
     cp target/release/voxtype voxtype-vulkan
 
-    # Build Parakeet binary if onnxruntime is available
+    # Build ONNX engines binary if onnxruntime is available
     if pacman -Q onnxruntime &>/dev/null; then
-        echo "=== Building Parakeet binary (onnxruntime found) ==="
+        echo "=== Building ONNX engines binary (onnxruntime found) ==="
         export ORT_STRATEGY=system
         cargo clean
-        cargo build --frozen --release --features parakeet-load-dynamic \
+        cargo build --frozen --release \
+            --features parakeet-load-dynamic,moonshine,sensevoice,paraformer,dolphin,omnilingual \
             --config 'profile.release.lto=false' \
             --config 'profile.release.codegen-units=8'
-        cp target/release/voxtype voxtype-parakeet
+        cp target/release/voxtype voxtype-onnx
     else
-        echo "=== Skipping Parakeet (install onnxruntime and rebuild for Parakeet support) ==="
+        echo "=== Skipping ONNX engines (install onnxruntime and rebuild for Parakeet/SenseVoice/etc.) ==="
     fi
 }
 
@@ -139,9 +142,9 @@ package() {
     # Install Vulkan GPU binary to /usr/lib/voxtype/
     install -Dm755 "voxtype-vulkan" "$pkgdir/usr/lib/voxtype/voxtype-vulkan"
 
-    # Install Parakeet binary if it was built
-    if [[ -f "voxtype-parakeet" ]]; then
-        install -Dm755 "voxtype-parakeet" "$pkgdir/usr/lib/voxtype/voxtype-parakeet"
+    # Install ONNX engines binary if it was built
+    if [[ -f "voxtype-onnx" ]]; then
+        install -Dm755 "voxtype-onnx" "$pkgdir/usr/lib/voxtype/voxtype-onnx"
     fi
 
     # Create symlink at /usr/bin/voxtype -> /usr/lib/voxtype/voxtype-native
