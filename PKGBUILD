@@ -2,7 +2,7 @@
 pkgname=fff-bun
 _npmname=@ff-labs/fff-bun
 _npmver=0.1.0-nightly.044314f
-pkgver=0.1.0_nightly_044314f
+pkgver=0.1.0_nightly.044314f
 pkgrel=1
 pkgdesc="High-performance fuzzy file finder for Bun, powered by a Rust native library"
 arch=('x86_64' 'aarch64')
