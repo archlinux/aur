@@ -1,7 +1,7 @@
 pkgbase = zutui-git
 	pkgdesc = TUI for accessing edziekanat of ZUT university
 	pkgver = 1.0.0.r8.ceefa47
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/shv187/zutui
 	arch = any
 	license = MIT
