@@ -1,36 +1,55 @@
-# Maintainer: Wesley Moore <wes@wezm.net>
+# Maintainer: Daurnimator <daurnimator@archlinux.org>
+# Maintainer: Justin Kromlinger <hashworks@archlinux.org>
+# Contributor: Wesley Moore <wes@wezm.net>
 pkgname=mdcat
-pkgver=0.21.1
+pkgver=2.7.1
 pkgrel=1
 pkgdesc='Sophisticated Markdown rendering for the terminal'
 arch=('i686' 'x86_64')
-url="https://github.com/lunaryorn/mdcat"
-license=('MPL2')
-depends=('openssl')
-conflicts=('mdcat-git')
-makedepends=('cargo' 'jq')
+url="https://github.com/swsnr/mdcat"
+license=('MPL-2.0')
+options=(!lto)
+depends=('gcc-libs' 'openssl' 'curl')
+makedepends=('asciidoctor'
+             'cargo')
+optdepends=('less: for mdless')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-$pkgver.tar.gz")
-sha256sums=('243fb64d72f4eee2350ab0db62c807b0e5092a4d39fb76f6d566c10687b723f1')
+sha256sums=('460024d9795eb578be09ec2284af243627721151aa001aae6ffb5589380b2ba1')
+
+prepare() {
+  cd "${pkgname}-${pkgname}-${pkgver}"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
-  cd "$pkgname-$pkgname-$pkgver"
-  cargo build --release --locked
+  cd "${pkgname}-${pkgname}-${pkgver}"
+  cargo build --frozen --release --target-dir=target
+  asciidoctor -b manpage -a reproducible -o mdcat.1 mdcat.1.adoc
+}
+
+check() {
+  cd "${pkgname}-${pkgname}-${pkgver}"
+  cargo test --frozen
 }
 
 package() {
-  cd "$pkgname-$pkgname-$pkgver"
-
-  OUT_DIR="$(cargo build --release --locked --message-format=json-render-diagnostics | \
-    jq -r 'select(.out_dir) | select(.package_id | startswith("mdcat ")) | .out_dir')"
+  cd "${pkgname}-${pkgname}-${pkgver}"
 
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
-  # Hard link binary as mdless. When invoked as mdless mdcat will paginate
+  # Link binary as mdless. When invoked as mdless mdcat will paginate
   # output by default.
-  ( cd "$pkgdir/usr/bin" && ln "$pkgname" mdless )
-  install -Dm644 "$OUT_DIR/completions/_mdcat" \
-    "$pkgdir/usr/share/zsh/site-functions/_mdcat"
-  install -Dm644 "$OUT_DIR/completions/mdcat.bash" \
-    "$pkgdir/usr/share/bash-completion/completions/mdcat"
-  install -Dm644 "$OUT_DIR/completions/mdcat.fish" \
-    "$pkgdir/usr/share/fish/vendor_completions.d/mdcat.fish"
+  ln -sf mdcat "$pkgdir/usr/bin/mdless"
+
+  mkdir -p "$pkgdir/usr/share/bash-completion/completions" \
+    "$pkgdir/usr/share/zsh/site-functions/" \
+    "$pkgdir/usr/share/fish/vendor_completions.d/"
+  for binary in mdcat mdless; do
+    "$pkgdir/usr/bin/$binary" --completions bash > "$pkgdir/usr/share/bash-completion/completions/$binary"
+    "$pkgdir/usr/bin/$binary" --completions zsh > "$pkgdir/usr/share/zsh/site-functions/_$binary"
+    "$pkgdir/usr/bin/$binary" --completions fish > "$pkgdir/usr/share/fish/vendor_completions.d/$binary.fish"
+  done
+
+  gzip -n mdcat.1
+  install -Dm644 mdcat.1.gz "$pkgdir/usr/share/man/man1/mdcat.1.gz"
+  ln -sf mdcat.1.gz "$pkgdir/usr/share/man/man1/mdless.1.gz"
 }
