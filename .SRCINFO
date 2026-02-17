@@ -1,0 +1,11 @@
+pkgbase = chalkak-ocr-models
+	pkgdesc = PaddleOCR v5 model files for ChalKak OCR feature
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/bityoungjae/chalkak
+	arch = any
+	license = Apache-2.0
+	source = chalkak-ocr-models-v1.tar.gz::https://github.com/bityoungjae/chalkak/releases/download/ocr-models-v1/chalkak-ocr-models-v1.tar.gz
+	sha256sums = 279333931190e5b518d00f154762842a911b6aab3ac11c0173607eb82cc8ad74
+
+pkgname = chalkak-ocr-models
