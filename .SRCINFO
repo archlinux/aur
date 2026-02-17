@@ -1,6 +1,6 @@
 pkgbase = votetracker
 	pkgdesc = School grade management application (italian school system)
-	pkgver = 2.8.1
+	pkgver = 2.8.2
 	pkgrel = 1
 	url = https://github.com/mambucodev/votetracker
 	arch = any
@@ -10,11 +10,11 @@ pkgbase = votetracker
 	makedepends = python-wheel
 	depends = python
 	depends = pyside6
-	depends = qt6-svg
 	depends = python-reportlab
 	depends = python-requests
 	depends = python-installer
-	source = votetracker-2.8.1.tar.gz::https://github.com/mambucodev/votetracker/archive/refs/tags/v2.8.1.tar.gz
-	sha256sums = c8d4cf52a7712fc94754cdc6ccbff390d09bfbea50f0c798118ec75af1cafcd1
+	optdepends = python-lxml: Axios Italia electronic register integration
+	source = votetracker-2.8.2.tar.gz::https://github.com/mambucodev/votetracker/archive/refs/tags/v2.8.2.tar.gz
+	sha256sums = 9f9dc4b9653b6b921a26b69242e2485a998e422af5cc880d6290d04698d24790
 
 pkgname = votetracker
