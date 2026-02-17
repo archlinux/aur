@@ -5,13 +5,15 @@ pkgbase = wcmcommander
 	url = http://wcm.linderdaum.com/
 	arch = i686
 	arch = x86_64
-	license = GPL2
-	depends = libx11
+	arch = aarch64
+	license = MIT
+	depends = bash
 	depends = libssh2
+	depends = libstdc++
+	depends = libx11
 	depends = smbclient
 	depends = freetype2
-	source = https://github.com/corporateshark/wcmcommander/archive/release-0.20.0.tar.gz
-	sha1sums = 77f034f0da7f13b362b742b965ad9fb444892802
+	source = wcmcommander-0.20.0.tar.gz::https://github.com/sagpant/wcmcommander/archive/refs/tags/release-0.20.0.tar.gz
+	sha256sums = f166cfd0ff8511642402892cb8eee3b20c845f82c04ca4ca940996e611aa5aba
 
 pkgname = wcmcommander
-
