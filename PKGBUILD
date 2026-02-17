@@ -54,7 +54,7 @@ build() {
 
   OPTFLAGS='-O3 -march=native'
   CONFOPTS="--with-shared-libraries=1 \
-            --with-petsc4py=1 \
+            --with-petsc4py=0 \
             --with-mpi-f90module-visibility=0 \
             --with-bison=1 \
             --with-cmake=0 \
