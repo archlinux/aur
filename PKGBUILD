@@ -9,6 +9,10 @@ arch=('x86_64')
 url="https://github.com/LanRhyme/MicYou"
 license=('MIT')
 depends=('alsa-lib' 'fontconfig' 'freetype2' 'glibc' 'libappindicator' 'libgl' 'libx11' 'libxext' 'libxi' 'libxrender' 'libxtst' 'zlib')
+optdepends=(
+    'bluez-libs: Bluetooth connectivity support'
+    'xdg-utils: Open URLs in default browser'
+)
 provides=('micyou')
 conflicts=('micyou')
 options=('!strip')
