@@ -7,6 +7,14 @@ Exec=/usr/bin/sealantern
 Icon=sealantern
 Terminal=false
 Categories=Game;Utility;
-Keywords=minecraft;server;manager;
+Keywords=minecraft;server;manager;mc;服务器;管理;
 StartupWMClass=Sea Lantern
-MimeType=
+MimeType=application/x-minecraft-server;x-scheme-handler/minecraft;
+
+# 添加启动通知和 StartupWMClass 确保正确分组
+StartupNotify=true
+
+# 添加多语言支持
+Name[zh_CN]=SeaLantern
+GenericName[zh_CN]=Minecraft 服务器管理器
+Comment[zh_CN]=一个轻量化的 Minecraft 服务器管理工具

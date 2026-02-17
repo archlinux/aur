@@ -1,18 +1,27 @@
 # sealantern.install
 
-post_install() {
-    # 更新桌面数据库
+_update_desktop_database() {
     if command -v update-desktop-database >/dev/null 2>&1; then
         update-desktop-database -q 2>/dev/null || true
     fi
-    
-    # 更新图标缓存
+}
+
+_update_icon_cache() {
     if command -v gtk-update-icon-cache >/dev/null 2>&1; then
         gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
     fi
-    
+}
+
+_show_completion_message() {
     echo ":: SeaLantern 安装完成！"
     echo ":: 你可以通过应用程序菜单启动 SeaLantern"
+    echo ":: 或直接在终端执行 'sealantern' 命令"
+}
+
+post_install() {
+    _update_desktop_database
+    _update_icon_cache
+    _show_completion_message
 }
 
 pre_upgrade() {
@@ -20,16 +29,8 @@ pre_upgrade() {
 }
 
 post_upgrade() {
-    # 更新桌面数据库
-    if command -v update-desktop-database >/dev/null 2>&1; then
-        update-desktop-database -q 2>/dev/null || true
-    fi
-    
-    # 更新图标缓存
-    if command -v gtk-update-icon-cache >/dev/null 2>&1; then
-        gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
-    fi
-    
+    _update_desktop_database
+    _update_icon_cache
     echo ":: SeaLantern 升级完成！"
 }
 
@@ -38,13 +39,7 @@ pre_remove() {
 }
 
 post_remove() {
-    # 更新桌面数据库
-    if command -v update-desktop-database >/dev/null 2>&1; then
-        update-desktop-database -q 2>/dev/null || true
-    fi
-    
-    # 更新图标缓存
-    if command -v gtk-update-icon-cache >/dev/null 2>&1; then
-        gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
-    fi
+    _update_desktop_database
+    _update_icon_cache
+    echo ":: SeaLantern 已移除"
 }
