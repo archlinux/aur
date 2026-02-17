@@ -1,35 +1,29 @@
-# Maintainer: Jeicob <tu-email>
 pkgname=spackit
-pkgver=0.1.1
+pkgver=1.1
 pkgrel=1
-pkgdesc="Utilidad de sistema para Arch Linux"
+pkgdesc="Kit de herramientas y alias personalizados"
 arch=('any')
-url="https://github.com/Jeicobroot-jrt/spackit"
+url="https://github.com/Jeicobroot-jrt/Spackit"
 license=('MIT')
-depends=('python')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
-
-# Definimos las fuentes: el código de GitHub Y el archivo local de alias
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+depends=('python' 'bash' 'git')
+source=("git+${url}.git"
         "setup_aliases.sh")
-
-# Saltamos la verificación por ahora para que no te dé error de hash
-sha256sums=('7910228cf62c86634eb87ff762f758da5d841e1d8db355abd003723f4baaa926'
+sha256sums=('SKIP'
             '0db91cbd7396a71578f8b170b1d74713ab7a01eb7cdf605ac1cd4ff0ab0ca20d')
 
-build() {
-    # Intentamos entrar a la carpeta (manejando posibles diferencias de mayúsculas)
-    cd "${srcdir}/Spackit-${pkgver}" || cd "${srcdir}/spackit-${pkgver}"
-    python -m build --wheel --no-isolation
-}
-
 package() {
-    cd "${srcdir}/Spackit-${pkgver}" || cd "${srcdir}/spackit-${pkgver}"
-    
-    # 1. Instalar el paquete Python
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    # 1. Creamos la carpeta del programa en el sistema
+    install -d "${pkgdir}/usr/share/spackit"
 
-    # 2. Instalar el toolkit de alias
-    # Usamos "${srcdir}/setup_aliases.sh" porque ahí es donde makepkg pone las fuentes extras
-    install -Dm644 "${srcdir}/setup_aliases.sh" "${pkgdir}/usr/share/spackit/aliases.sh"
+    # 2. Copiamos Todos tus archivos .py a esa carpeta
+    cp -r "${srcdir}/Spackit/"* "${pkgdir}/usr/share/spackit/"
+
+    # 3. Creamos el ejecutable en /usr/bin que lanza tu programa
+    # Esto evita el error de "ModuleNotFoundError"
+    install -d "${pkgdir}/usr/bin"
+    echo -e "#!/bin/bash\npython /usr/share/spackit/main.py \"\$@\"" > "${pkgdir}/usr/bin/spackit"
+    chmod +x "${pkgdir}/usr/bin/spackit"
+
+    # 4. Instalamos los alias automáticos
+    install -Dm644 "${srcdir}/setup_aliases.sh" "${pkgdir}/etc/profile.d/spackit.sh"
 }
