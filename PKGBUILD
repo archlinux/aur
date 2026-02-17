@@ -1,7 +1,7 @@
 pkgname=cmdflow
 pkgver=2.3.6
 pkgrel=1
-pkgdesc="A colorful Fish command tracker with rainbow top visualization 🌈"
+pkgdesc="A colorful Fish command tracker with rainbow top visualization"
 arch=('x86_64')
 url="https://github.com/voideez/cmdflow"
 license=('MIT')
@@ -19,7 +19,9 @@ build() {
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}/cmdflow"
-    install -Dm755 target/release/cmdflow "${pkgdir}/usr/bin/cmdflow"
+    install -Dm755 "target/release/cmdflow" "${pkgdir}/usr/bin/cmdflow"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
 
 
