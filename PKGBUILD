@@ -1,6 +1,6 @@
 # Maintainer: fish4terrisa-MSDSM <fish4terrisa@fishinix.org>
 pkgname=urnetwork-provider-git
-pkgver=v2025.9.12.728916620.r0.g8f63359
+pkgver=v2026.2.14.863258010.r0.g7fb78eb
 pkgrel=1
 pkgdesc="A web-standards VPN marketplace with an emphasis on fast, secure internet everwhere."
 arch=("x86_64")
@@ -10,8 +10,10 @@ makedepends=("git" "go")
 depends=("glibc")
 provides=(urnetwork-provider)
 conflicts=(urnetwork-provider)
-source=("git+https://github.com/urnetwork/connect.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/urnetwork/connect.git"
+        "git+https://github.com/urnetwork/glog.git")
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
   cd "${srcdir}/connect"
@@ -30,6 +32,7 @@ build() {
 
     export GO_LDFLAGS="-linkmode=external" 
 
+    go get github.com/urnetwork/connect/provider
     go build -ldflags "$GO_LDFLAGS" 
 }
 
