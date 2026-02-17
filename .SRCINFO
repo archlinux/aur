@@ -1,0 +1,25 @@
+pkgbase = arf-helper-git
+	pkgdesc = An fzf Pacman wrapper and AUR helper
+	pkgver = r44.fb83765
+	pkgrel = 1
+	url = https://github.com/Samq64/arf
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = fzf
+	depends = git
+	depends = pacman
+	depends = pyalpm
+	depends = python
+	depends = python-srcinfo
+	optdepends = sudo: default privilege elevation
+	provides = arf-helper
+	conflicts = arf
+	conflicts = arf-helper
+	source = git+https://github.com/Samq64/arf.git
+	sha256sums = SKIP
+
+pkgname = arf-helper-git
