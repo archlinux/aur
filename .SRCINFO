@@ -1,0 +1,15 @@
+pkgbase = plural2bin-git
+	pkgdesc = Plural data recovery.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://mandelbrot.dk/bjoernager/plural2bin/
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = rustup
+	provides = plural2bin
+	conflicts = plural2bin
+	source = git+https://mandelbrot.dk/bjoernager/plural2bin.git
+	sha512sums = SKIP
+
+pkgname = plural2bin-git
