@@ -26,7 +26,23 @@ depends=(
   nspr
   nss
 )
-makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'rust' 'rust-bindgen' 'git' 'compiler-rt' 'libffi')
+makedepends=(
+  at-spi2-core
+  clang
+  compiler-rt
+  gn
+  gtk3
+  libcups
+  libffi
+  libva
+  libxkbcommon
+  lld
+  ninja
+  pango
+  python
+  rust
+  rust-bindgen
+)
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver-lite.tar.xz
         compiler-rt-adjust-paths.patch
@@ -51,7 +67,7 @@ sha256sums=('e9db10f2065fda0ee715c1f41fa110cccc4c800a2d7d9a5f8f355b2e210f377f'
 
 if (( _manual_clone )); then
   source[0]=fetch-chromium-release
-  makedepends+=('python-httplib2' 'python-pyparsing' 'python-six')
+  makedepends+=('git' 'python-httplib2' 'python-pyparsing' 'python-six')
 fi
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
