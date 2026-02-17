@@ -1,7 +1,7 @@
 pkgbase = mautrix-whatsapp-bin
 	pkgdesc = A Matrix-Whatsapp puppeting bridge (binary release)
 	pkgver = 0.2602.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mautrix/whatsapp
 	arch = x86_64
 	arch = armv7h
@@ -11,7 +11,7 @@ pkgbase = mautrix-whatsapp-bin
 	provides = mautrix-whatsapp
 	conflicts = mautrix-whatsapp
 	backup = etc/mautrix-whatsapp/mautrix-whatsapp.yaml
-	source = mautrix-whatsapp-0.2602.0::https://github.com/mautrix/whatsapp/archive/refs/tags/v0.2602.0.zip
+	source = mautrix-whatsapp-0.2602.0.zip::https://github.com/mautrix/whatsapp/archive/refs/tags/v0.2602.0.zip
 	source = sysusers-mautrix-whatsapp.conf
 	source = mautrix-whatsapp.tmpfiles
 	source = mautrix-whatsapp.service
