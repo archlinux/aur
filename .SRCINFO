@@ -1,12 +1,13 @@
 pkgbase = hunspell-pt_pt-preao
 	pkgdesc = Portuguese (European, pre-orthographic agreement) hunspell dictionaries
 	pkgver = 20251001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://natura.di.uminho.pt/download/sources/Dictionaries/hunspell/
 	arch = any
 	license = GPL
 	license = LGPL
 	license = MPL
+	makedepends = qt6-webengine
 	optdepends = hunspell: the spell checking libraries and apps
 	source = https://natura.di.uminho.pt/download/sources/Dictionaries/hunspell/hunspell-pt_PT-preao-20251001.tar.gz
 	sha256sums = 41cdcd83613fc70af2f129bae3b9d1919d40cf5cf2b3c4c87964e543323d00a7
