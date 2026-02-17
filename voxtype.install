@@ -70,23 +70,14 @@ post_install() {
 
 post_upgrade() {
     echo ""
-    echo "==> Voxtype upgraded to 0.6.0"
+    echo "==> Voxtype upgraded to 0.6.1"
     echo ""
 
     _detect_gpu
 
     echo ""
-    echo "    New in 0.6.0:"
-    echo "      - New: Meeting mode with continuous transcription, speaker attribution, and export"
-    echo "      - New: AI meeting summarization via Ollama (local LLM)"
-    echo "      - New: SenseVoice engine (zh/en/ja/ko/yue, auto language detection)"
-    echo "      - New: Paraformer, Dolphin, Omnilingual engines"
-    echo "      - New: ML speaker diarization via ONNX embeddings"
-    echo ""
-    echo "    Meeting mode:"
-    echo "      voxtype meeting start --title \"My Meeting\""
-    echo "      voxtype meeting stop"
-    echo "      voxtype meeting export latest --format markdown"
+    echo "    v0.6.1 fixes glibc compatibility for Arch-based distros."
+    echo "    No code changes from v0.6.0 (rebuild-only release)."
     echo ""
     # Check if ONNX engines were built
     if [ -f /usr/lib/voxtype/voxtype-onnx ] || [ -f /usr/lib/voxtype/voxtype-onnx-avx2 ]; then
