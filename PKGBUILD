@@ -2,16 +2,16 @@
 # Contributor: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=furtherance
-pkgver=26.1.1
+pkgver=26.7.0
 pkgrel=1
 pkgdesc="Track your time without being tracked"
 arch=('x86_64')
 url="https://github.com/unobserved-io/Furtherance"
 license=('GPL-3.0-or-later')
-depends=('fontconfig' 'freetype2' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'libx11' 'libxss' 'openssl')
+depends=('fontconfig' 'freetype2' 'glibc' 'hicolor-icon-theme' 'libgcc' 'libx11' 'libxss' 'openssl')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('cccecd04fd872c4afbf8c38b2081ff2b9dd7038c4df94945a795dd2af4ee3e5f')
+sha256sums=('dd34db4e4cbfeeb4dfa5dd1ba319aa57528a39fa59c752d4407d8d2af3b480e0')
 
 prepare() {
     cd "${pkgname^}-${pkgver}"
