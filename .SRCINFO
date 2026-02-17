@@ -1,7 +1,7 @@
 pkgbase = structurizr-git
 	pkgdesc = Software architecture models as code
-	pkgver = 6.0.0.r25.g36f530e
-	pkgrel = 1
+	pkgver = 6.0.0.r27.ge48b883
+	pkgrel = 2
 	url = https://structurizr.com/
 	arch = any
 	license = Apache-2.0
@@ -13,6 +13,6 @@ pkgbase = structurizr-git
 	source = git+https://github.com/structurizr/structurizr.git
 	source = structurizr.sh
 	sha256sums = SKIP
-	sha256sums = becf35524c25e66b76a21f206b813b97afa6a223d3de61f4b202248957b250d4
+	sha256sums = 72122d16c7cfe32cef4e63267e461fefb60c893b87349d539e016645b0403698
 
 pkgname = structurizr-git
