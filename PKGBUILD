@@ -2,12 +2,12 @@
 
 pkgname=limabean
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A new implementation of Beancount using Rust and Clojure and the Lima parser'
 arch=(x86_64 i686)
 url="https://github.com/tesujimath/$pkgname"
 license=(MIT Apache-2.0)
-depends=(clojure
+depends=(java-runtime
          gcc-libs # libgcc_s.so ld-linux-x86-64
          glibc) # libc.so libm.so
 makedepends=(cargo
