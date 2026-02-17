@@ -1,11 +1,11 @@
 pkgbase = ccl-git
 	pkgdesc = The Clozure Common Lisp implementation
 	pkgver = 1.13.21.gda7138ef
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = https://github.com/Clozure/ccl
 	arch = x86_64
-	license = APACHE
+	license = Apache-2.0
 	makedepends = git
 	depends = bash
 	depends = glibc

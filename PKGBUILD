@@ -4,10 +4,10 @@
 pkgname=ccl-git
 epoch=2
 pkgver=1.13.21.gda7138ef
-pkgrel=1
+pkgrel=2
 pkgdesc="The Clozure Common Lisp implementation"
 url="https://github.com/Clozure/ccl"
-license=('APACHE')
+license=('Apache-2.0')
 arch=('x86_64')
 depends=('bash' 'glibc')
 optdepends=('java-environment: for using example file jfli.jar')
