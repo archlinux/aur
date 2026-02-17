@@ -3,20 +3,21 @@
 # Contributor: Dagmawi Ali <xdagizjr2112 at gmail dot com>
 
 pkgname='xytz'
-pkgver=0.8.3
+pkgver=0.8.4_next
 pkgrel=1
-pkgdesc=''
+pkgdesc='a beautiful TUI YouTube Downloader'
 url='https://github.com/xdagiz/xytz'
 arch=('aarch64' 'x86_64')
 license=('MIT')
 provides=('xytz')
 conflicts=('xytz')
+depends=('yt-dlp' 'ffmpeg')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/xdagiz/xytz/releases/download/v0.8.3/xytz-v0.8.3-linux-arm64.tar.gz")
-sha256sums_aarch64=('d829b6ef8fc954d3bc005917c1f06661c73c65117fac6cda2eebfe7f58d70838')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/xdagiz/xytz/releases/download/v0.8.3/xytz-v0.8.4-next-linux-arm64.tar.gz")
+sha256sums_aarch64=('1cc8a7a1e458a7032b7ad1fbde9cc0d063e80f7c7b303e8652d449907e878f16')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/xdagiz/xytz/releases/download/v0.8.3/xytz-v0.8.3-linux-amd64.tar.gz")
-sha256sums_x86_64=('035d9095e9b2a80b464764645357b1181afe149d71296a51a64862cd911b8a9f')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/xdagiz/xytz/releases/download/v0.8.3/xytz-v0.8.4-next-linux-amd64.tar.gz")
+sha256sums_x86_64=('c6945e2864191751c0694f0906a2e9b91e3676ca3914412eb2d174316741817c')
 
 package() {
   install -Dm755 "./xytz" "${pkgdir}/usr/bin/xytz"
