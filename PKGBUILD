@@ -2,7 +2,7 @@
 
 pkgname=tgp
 pkgrel=1
-pkgver=0.9.12
+pkgver=0.9.13
 pkgdesc="tgp telegram proxy written in go"
 arch=('x86_64' 'aarch64' 'i686')
 url="https://github.com/geovex/tgp"
@@ -12,7 +12,7 @@ source=(
     tgp.service
     tgp.toml
 )
-sha256sums=('3e52c701048c3662d4bb6ed9fd0ebfe3046319c41e39d414340fe3037792f964'
+sha256sums=('66966ce9dfb8b1055c1b51eaf3a7245364efb5a2be634c4fc7495dff54bfe54e'
             '61a78cb68d8e86ffbcb5e8a4328bd3581548531cc6fe5b02f6058176c97566b2'
             '6db88fa41605a2bc1244e4110a33e0f71aa60598a7712d7f42525151ece60e23')
 
