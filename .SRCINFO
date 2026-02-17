@@ -1,6 +1,6 @@
 pkgbase = spent
 	pkgdesc = Minimalist personal finance tracker for Linux desktop
-	pkgver = 1.1.7
+	pkgver = 1.1.8
 	pkgrel = 1
 	url = https://github.com/FrogSnot/Spent
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = spent
 	depends = libayatana-appindicator
 	depends = librsvg
 	depends = sqlite
-	source = spent-1.1.7.tar.gz::https://github.com/FrogSnot/Spent/archive/v1.1.7.tar.gz
-	sha256sums = 5a31cb61005c64c65b0b4dad4bc30184b96669fe983fefaa566caf61a16d40f8
+	source = spent-1.1.8.tar.gz::https://github.com/FrogSnot/Spent/archive/v1.1.8.tar.gz
+	sha256sums = 3a4ac05f18f0b82072f5b2aa2b5b63fbbf50899be0b8bc1fc2a42d24e4ce2c65
 
 pkgname = spent
