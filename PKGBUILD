@@ -9,8 +9,6 @@ url="https://github.com/BenBJD/imx471-dkms"
 license=('GPL')
 depends=('dkms')
 makedepends=('git' 'linux-headers')
-provides=("$_pkgname-dkms")
-conflicts=("$_pkgname-dkms")
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
