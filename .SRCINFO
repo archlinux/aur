@@ -1,0 +1,18 @@
+pkgbase = pixie-sddm-git
+	pkgdesc = Material Design 3 inspired SDDM theme with dynamic color extraction
+	pkgver = r1.v2.0
+	pkgrel = 1
+	url = https://github.com/xCaptaiN09/pixie-sddm
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = sddm
+	depends = qt5-graphicaleffects
+	depends = qt5-quickcontrols2
+	depends = qt5-svg
+	provides = pixie-sddm
+	conflicts = pixie-sddm
+	source = git+https://github.com/xCaptaiN09/pixie-sddm.git
+	sha256sums = SKIP
+
+pkgname = pixie-sddm-git
