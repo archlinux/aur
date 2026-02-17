@@ -1,0 +1,3 @@
+[node-llama-cpp]
+source = "npm"
+npm = "node-llama-cpp"

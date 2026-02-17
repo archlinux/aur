@@ -1,0 +1,27 @@
+pkgbase = node-llama-cpp
+	pkgdesc = Run AI models locally on your machine with node.js bindings for llama.cpp
+	pkgver = 3.15.1
+	pkgrel = 1
+	url = https://github.com/withcatai/node-llama-cpp
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = glibc
+	depends = libgcc
+	depends = bash
+	depends = nodejs
+	depends = libstdc++
+	depends = vulkan-icd-loader
+	depends = cuda-toolkit
+	provides = node-llama-cpp
+	replaces = nodejs-node-llama-cpp
+	noextract = node-llama-cpp-3.15.1.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = node-llama-cpp-3.15.1.tgz::https://registry.npmjs.org/node-llama-cpp/-/node-llama-cpp-3.15.1.tgz
+	b2sums = 082fc0f6dfb738da0df22e9fb42dfe97e54ca28ea47e6177e9bbb194f670b5af1292016fbc1c0d6337848697d977d4a618479cb378e4db216d27ab810fc39dfc
+
+pkgname = node-llama-cpp
