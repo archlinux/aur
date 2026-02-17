@@ -1,0 +1,22 @@
+pkgbase = gsl-shell-bin
+	pkgdesc = GNU Scientific Library shell based on LuaJIT2
+	pkgver = 2.3.6
+	pkgrel = 1
+	url = https://franko.github.io/gsl-shell/
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = gsl
+	depends = agg
+	depends = luajit
+	depends = libx11
+	depends = fox
+	depends = freetype2
+	depends = lapack
+	depends = readline
+	provides = gsl-shell
+	conflicts = gsl-shell
+	conflicts = gsl-shell-git
+	source = https://github.com/franko/gsl-shell/releases/download/v2.3.6/gsl-shell-linux-x86-64.tar.gz
+	sha256sums = 9076f182f6e286056550e6a1b9adc5fd114f7e5d8bdcfc277c01f3a103f799e0
+
+pkgname = gsl-shell-bin
