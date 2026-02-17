@@ -10,7 +10,7 @@
 
 pkgname=ffmpeg-headless
 pkgver=8.0.1
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
 arch=(i686 x86_64 armv7h armv6h aarch64)
@@ -62,6 +62,7 @@ depends=(
   rav1e
   rubberband
   snappy
+  sndio
   speex
   srt
   svt-av1
