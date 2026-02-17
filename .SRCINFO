@@ -1,6 +1,6 @@
 pkgbase = lazy-llm-bin
 	pkgdesc = Multi-LLM desktop interface built with Electron, React, and TypeScript.
-	pkgver = 0.1.3
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/2725244134/lazy-llm
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = lazy-llm-bin
 	optdepends = trash-cli: move files to trash support
 	provides = lazy-llm
 	conflicts = lazy-llm
-	noextract = lazy-llm_0.1.3_amd64.deb
+	noextract = lazy-llm_0.2.0_amd64.deb
 	options = !strip
-	source = lazy-llm_0.1.3_amd64.deb::https://github.com/2725244134/lazy-llm/releases/download/v0.1.3/lazy-llm_0.1.3_amd64.deb
-	sha256sums = 2793e1aaa24a769009e851d803f75d45483672e7a3045b74055cbf08d2ce29d2
+	source = lazy-llm_0.2.0_amd64.deb::https://github.com/2725244134/lazy-llm/releases/download/v0.2.0/lazy-llm_0.2.0_amd64.deb
+	sha256sums = 2d3f5eb2dc853bb7be7b5ae4cd7b878abcf221119369616df840be0a87c4bc9f
 
 pkgname = lazy-llm-bin

@@ -1,7 +1,7 @@
 # Maintainer: LazyLLM Maintainer <cccc38753@gmail.com>
 
 pkgname=lazy-llm-bin
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Multi-LLM desktop interface built with Electron, React, and TypeScript.'
 arch=('x86_64')
@@ -28,7 +28,7 @@ options=('!strip')
 
 _debname="lazy-llm_${pkgver}_amd64.deb"
 source=("${_debname}::${url}/releases/download/v${pkgver}/${_debname}")
-sha256sums=('2793e1aaa24a769009e851d803f75d45483672e7a3045b74055cbf08d2ce29d2')
+sha256sums=('2d3f5eb2dc853bb7be7b5ae4cd7b878abcf221119369616df840be0a87c4bc9f')
 noextract=("${_debname}")
 
 package() {
