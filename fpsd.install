@@ -1,0 +1,23 @@
+post_install() {
+    echo ":: First-time setup:"
+    echo "::   mkdir -p ~/.config/fpsd ~/.local/share/fpsd/logs"
+    echo "::   cp /usr/share/doc/fpsd-git/fpsd.yml.example ~/.config/fpsd/fpsd.yml"
+    echo "::   Edit ~/.config/fpsd/fpsd.yml — set data_dir to ~/.local/share/fpsd"
+    echo ":: Enable the service: systemctl --user enable --now fpsd"
+    echo ":: Generate CA for MITM: fpsd generate-ca (safe — refuses to overwrite existing CA)"
+    echo ":: Transparent proxy setup: sudo fps-ctl install --transparent --interface <IF>"
+}
+
+post_upgrade() {
+    echo ":: Restart the service: systemctl --user restart fpsd"
+}
+
+pre_remove() {
+    # pacman hooks run as root, so systemctl --user targets root's session.
+    # Use --machine to target the actual user who owns the service.
+    if [ -n "$SUDO_USER" ]; then
+        systemctl --user --machine="$SUDO_USER@" stop fpsd.service 2>/dev/null || true
+        systemctl --user --machine="$SUDO_USER@" disable fpsd.service 2>/dev/null || true
+    fi
+    echo ":: If fpsd is still running: systemctl --user stop fpsd"
+}

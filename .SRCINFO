@@ -1,0 +1,19 @@
+pkgbase = fpsd-git
+	pkgdesc = Content-aware HTTPS interception proxy for ad blocking
+	pkgver = 1.1.2.r31.g8cb743b
+	pkgrel = 1
+	url = https://github.com/ushineko/face-puncher-supreme
+	install = fpsd.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	makedepends = npm
+	makedepends = nodejs
+	depends = glibc
+	provides = fpsd
+	conflicts = fpsd
+	source = face-puncher-supreme::git+https://github.com/ushineko/face-puncher-supreme.git
+	sha256sums = SKIP
+
+pkgname = fpsd-git
