@@ -5,6 +5,7 @@ _pkgname=splayer
 pkgname=splayer
 pkgver=3.0.0
 pkgrel=2
+epoch=1
 pkgdesc="Splayer | A minimalist music player"
 arch=('x86_64' 'aarch64')
 url="https://github.com/imsyy/SPlayer"
