@@ -1,6 +1,6 @@
 pkgbase = python-fenicsprecice
 	pkgdesc = FEniCS-preCICE adapter is a preCICE adapter for the open source computing platform FEniCS
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/precice/fenics-adapter
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-fenicsprecice
 	depends = python-pyprecice
 	depends = python-dolfin
 	depends = python-scipy
-	source = fenics-adapter-2.2.0.tar.gz::https://github.com/precice/fenics-adapter/archive/v2.2.0.tar.gz
-	sha512sums = e3f9d44f7c4a396928182a2ab751f01656f2804a13debde251c32248e5c1d2e9bba1164d9ec86d7258c70c7f874a6c3318b0db05a78e5590692b4f0b8a10c704
+	source = fenics-adapter-2.3.0.tar.gz::https://github.com/precice/fenics-adapter/archive/v2.3.0.tar.gz
+	sha512sums = 0e5d595a7e05e8abd8582a26b73f6b9cc0f6fdc97487f04981a7532fbe29afc34bda5a163faed4017f8545afb45a72130fe8d1928a860e8135edef8be8c18438
 
 pkgname = python-fenicsprecice

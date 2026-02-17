@@ -3,7 +3,7 @@
 _base=fenicsprecice
 pkgname=python-${_base}
 pkgdesc="FEniCS-preCICE adapter is a preCICE adapter for the open source computing platform FEniCS"
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 arch=(any)
 url="https://github.com/precice/${_base/precice/-adapter}"
@@ -12,7 +12,7 @@ depends=(python-pyprecice python-dolfin python-scipy)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(${_base/precice/-adapter}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('e3f9d44f7c4a396928182a2ab751f01656f2804a13debde251c32248e5c1d2e9bba1164d9ec86d7258c70c7f874a6c3318b0db05a78e5590692b4f0b8a10c704')
+sha512sums=('0e5d595a7e05e8abd8582a26b73f6b9cc0f6fdc97487f04981a7532fbe29afc34bda5a163faed4017f8545afb45a72130fe8d1928a860e8135edef8be8c18438')
 
 prepare() {
   sed -i 's/numpy>=1.13.3, <2/numpy/' ${_base/precice/-adapter}-${pkgver}/setup.py
