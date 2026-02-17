@@ -15,7 +15,7 @@ license=('custom')
 depends=('java-runtime-common>=3' 'java-environment-common' 'ca-certificates-utils' 'desktop-file-utils' 'libxrender' 'libxtst' 'alsa-lib')
 options=('!strip') # Disable stripping of binaries
 source=("https://github.com/adoptium/temurin8-binaries/releases/download/jdk${_jdkver}/OpenJDK${_majorver}U-jdk_x64_linux_hotspot_${pkgver}.tar.gz")
-sha256sums=('90ef35269563e629c48b794fe471778198a22991872b4279e720f8d08493248a')
+sha256sums=('e74becad56b4cc01f1556a671e578d3788789f5257f9499f6fbed84e63a55ecf')
 replaces=("jdk${_majorver}-adoptopenjdk")                              # Replaces the old 'jdk8-adoptopenjdk' package
 install=install_jdk${_majorver}-temurin.sh                             # Script to be executed after package installation
 provides=("java-environment=${_majorver}" "java-runtime=${_majorver}") # Provides the 'java-environment=8' and 'java-runtime=8' virtual packages
