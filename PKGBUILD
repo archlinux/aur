@@ -37,6 +37,11 @@ pkgver() {
 }
 
 prepare() {
+  # FIX: https://github.com/ctt-gob-es/clienteafirma/issues/479
+  cd "${_pkgname}"
+  git cherry-pick -n db069d9e38dc66a9558240bc90b0f737e4527726
+  cd ..
+  # FIX: end 479
   # FIX: https://github.com/ctt-gob-es/clienteafirma/issues/320
   export PATH="/usr/lib/jvm/java-17-openjdk/bin/:$PATH"
   # Build external libraries
@@ -48,7 +53,7 @@ prepare() {
   cd ..
   cd "Java-WebSocket"
   mvn clean install -Dmaven.test.skip=true
-  # FIX: end 223
+  # FIX: end 320
 }
 
 build() {
