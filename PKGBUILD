@@ -41,6 +41,9 @@ build() {
   msg2 "Compiling Webpack bundles..."
   yarn run build_dist
 
+  cp assets/dotnetprobe app/assets/
+  chmod +x app/assets/dotnetprobe
+
   msg2 "Packaging Electron application..."
   ./node_modules/.bin/electron-builder --linux dir --x64 --config electron-builder-config.json
 }
@@ -50,6 +53,10 @@ package() {
 
   install -dm755 "$pkgdir/opt/Vortex"
   cp -a . "$pkgdir/opt/Vortex/"
+
+  install -dm755 "$pkgdir/opt/Vortex/resources/app.asar.unpacked/assets"
+  install -Dm755 "$srcdir/Vortex/assets/dotnetprobe" \
+    "$pkgdir/opt/Vortex/resources/app.asar.unpacked/assets/dotnetprobe"
 
   chmod 4755 "$pkgdir/opt/Vortex/chrome-sandbox"
 
