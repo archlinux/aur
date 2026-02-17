@@ -30,6 +30,8 @@ if [[ "$JAVA_VER" -lt "$MIN_VERSION" ]]; then
             fi
         fi
     done
+else
+    JAVA_OK=1
 fi
 
 if [[ $JAVA_OK -eq 0 ]]; then
