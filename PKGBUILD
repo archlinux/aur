@@ -24,7 +24,6 @@ package() {
 
   install -Dm755 pacpac "$pkgdir/usr/bin/pacpac"
   install -Dm644 pacpac.yml "$pkgdir/usr/share/pacpac/pacpac.yml"
-  install -Dm644 all.yml "$pkgdir/usr/share/pacpac/all.yml"
   install -Dm644 ansible.cfg "$pkgdir/usr/share/pacpac/ansible.cfg"
   install -Dm644 inventory.ini "$pkgdir/usr/share/pacpac/inventory.ini"
   install -Dm644 -t "$pkgdir/usr/share/doc/pacpac/" README.md
