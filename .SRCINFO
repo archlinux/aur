@@ -1,6 +1,6 @@
 pkgbase = waybar-ai-usage-go-bin
 	pkgdesc = Waybar module showing Claude and Codex AI usage
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/AntoineGS/waybar-ai-usage-go
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = waybar-ai-usage-go-bin
 	depends = glibc
 	provides = waybar-ai-usage
 	conflicts = waybar-ai-usage
-	source = https://github.com/AntoineGS/waybar-ai-usage-go/releases/download/v0.1/waybar-ai-usage_0.1_linux_amd64.tar.gz
-	sha256sums = 42172ca84ff26f2f467125c8c337fb18f7969ff7fce1376e6b1e33bc0e818e97
+	source = https://github.com/AntoineGS/waybar-ai-usage-go/releases/download/v0.2/waybar-ai-usage_0.2_linux_amd64.tar.gz
+	sha256sums = 1bdc631ecc55fcb93cab9f329ecbb9004396e78615eb3d1edb6c43248c8b2330
 
 pkgname = waybar-ai-usage-go-bin
