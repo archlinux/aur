@@ -1,0 +1,15 @@
+pkgbase = xytz
+	pkgdesc =
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://github.com/xdagiz/xytz
+	conflicts = xytz
+	provides = xytz
+	arch = aarch64
+	source_aarch64 = https://github.com/xdagiz/xytz/releases/download/v0.8.3/xytz-v0.8.3-linux-arm64.tar.gz
+	sha256sums_aarch64 = d829b6ef8fc954d3bc005917c1f06661c73c65117fac6cda2eebfe7f58d70838
+	arch = x86_64
+	source_x86_64 = https://github.com/xdagiz/xytz/releases/download/v0.8.3/xytz-v0.8.3-linux-amd64.tar.gz
+	sha256sums_x86_64 = 035d9095e9b2a80b464764645357b1181afe149d71296a51a64862cd911b8a9f
+	
+pkgname = xytz
