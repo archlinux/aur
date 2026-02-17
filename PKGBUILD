@@ -7,12 +7,12 @@
 
 pkgname=polyclipping
 pkgver=6.4.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Polygon clipping library"
 arch=('x86_64')
 url="https://sourceforge.net/projects/polyclipping/"
 license=('BSL-1.0')
-depends=('gcc-libs' 'glibc')
+depends=('glibc' 'libgcc' 'libstdc++')
 makedepends=('cmake' 'dos2unix')
 source=("https://downloads.sourceforge.net/polyclipping/clipper_ver${pkgver}.zip"
         "cmake_min_version.patch")
