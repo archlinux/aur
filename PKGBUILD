@@ -2,7 +2,7 @@
 # Contributor: Dominik Schwaiger <mail@dominik-schwaiger.ch>
 
 pkgname=surrealdb
-pkgver=2.6.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A scalable, distributed, collaborative, document-graph database, for the realtime web"
 arch=('x86_64')
@@ -21,15 +21,15 @@ source=(
 )
 
 sha256sums=(
-	"dd98c688e54be8b85ad79e603f5112449b9789dfc031db94eb5c7dc843702aef"
-	"245567a873e6d3a35590b60811d503b3a778bfd200a8cc4c9e89f313d804d907"
+	"98a94ac615f88370865016487b436fa404560910bd329794ed7502277a94b805"
+	"786c31cb91a88fe1de857eb6604b52671a63b259747640cb0da45c49c31f47e7"
 	"c35407a2d41e0f6bc3b635c898a99d0fd56490218bd3d9e126d20ce341a79846"
 )
 
 prepare() {
 	cd "$pkgname-${pkgver//_/-}" || exit
-	rustup toolchain install 1.86.0
-	rustup override set 1.86.0
+	rustup toolchain install 1.91.0
+	rustup override set 1.91.0
 	rustup target add "$CARCH-unknown-linux-gnu"
 
 	# https://github.com/rust-rocksdb/rust-rocksdb/issues/995
