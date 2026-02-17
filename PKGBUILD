@@ -2,7 +2,7 @@
 
 pkgname=7k-ambition
 pkgver=3.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Seven Kingdoms: Ambition is a real-time game of epic strategy and empire building featuring economy management, warfare, and intrigue.  It is an updated and enhanced version of 7kaa (7K: Ancient Adversaries) featuring numerous fixes and improvements."
 url="https://seven-kingdoms-ambition.sourceforge.io/"
 arch=("i686" "x86_64")
@@ -10,7 +10,7 @@ license=("GPL-2.0-or-later")
 conflicts=("7k-ambition-data")
 provides=("7k-ambition-data")
 makedepends=("autoconf-archive")
-depends=("openal" "desktop-file-utils" "enet" "gcc-libs" "sdl2>=2.0.4" "boost>=1.74")
+depends=("openal" "desktop-file-utils" "enet" "libgcc" "libstdc++" "sdl2>=2.0.4" "boost>=1.74")
 optdepends=("7k-ambition-music>=3.0.0: for ingame music")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Infiltrator/7k-ambition/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.sh"
