@@ -5,7 +5,7 @@ _pname=${pkgbase#python-}
 _pyname=${_pname//-/_}
 pkgname=("python-${_pname}")
 # "python-${_pname}-doc")
-pkgver=0.2601.5
+pkgver=0.2602.2
 pkgrel=1
 pkgdesc="This package provides convenient utilities and data to write a sphinx config file."
 arch=('any')
@@ -14,12 +14,13 @@ license=('MIT')
 makedepends=('python-flit-core'
              'python-build'
              'python-installer')  # wheel required by new setuptools
-checkdepends=('python-pytest'
-#checkdepends=('python-pytest-xdist'
+#checkdepends=('python-pytest'
+checkdepends=('python-pytest-xdist'
+#             'python-pytest-timeout'
               'python-requests')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "${pkgver}-test_basic.py::https://github.com/Quansight-Labs/intersphinx_registry/raw/refs/tags/${pkgver}/tests/test_basic.py")
-md5sums=('32c8a4a9a09f0db2af2704b927ab136f'
+md5sums=('31218ead1eeb5350944267bcfbeb0448'
          'e1804023a00665247e2f5e2f4194c1fb')
 
 prepare() {
