@@ -17,8 +17,16 @@ pkgdesc="The networking stack of Chromium put into a library"
 arch=('x86_64')
 url="https://chromium.googlesource.com/chromium/src/+/refs/heads/main/components/cronet"
 license=('BSD-3-Clause')
-depends=('nss' 'libffi')
-makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'rust' 'rust-bindgen' 'git' 'compiler-rt')
+depends=(
+  glibc
+  libgcc_s.so
+  libgio-2.0.so
+  libglib-2.0.so
+  libgobject-2.0.so
+  nspr
+  nss
+)
+makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'rust' 'rust-bindgen' 'git' 'compiler-rt' 'libffi')
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver-lite.tar.xz
         compiler-rt-adjust-paths.patch
@@ -49,11 +57,11 @@ fi
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
-  [brotli]=brotli
+  [brotli]=libbrotlidec.so
   [double-conversion]=double-conversion
-  [icu]=icu
-  [zlib]=minizip
-  [zstd]=zstd
+  [icu]="libicui18n.so libicuuc.so"
+  [zlib]=libz.so
+  [zstd]=libzstd.so
 )
 declare -gA _system_make_libs=(
   [jsoncpp]=jsoncpp
@@ -155,9 +163,25 @@ if (( _system_abseil )); then
 fi
 
 case "${_system_stdlib}" in
+"")
+  ;;
+*)
+  _unwanted_bundled_libs+=(
+    third_party/libc++
+    third_party/libc++abi
+  )
+  ;;&
+libc++)
+  depends+=(
+    libc++
+  )
+  ;;
 libstdc++)
+  depends+=(
+    libstdc++.so
+  )
   _system_libs+=(
-    [re2]=re2
+    [re2]=libre2.so
   )
   _unwanted_bundled_libs+=(
     third_party/re2
@@ -167,20 +191,6 @@ esac
 
 depends+=(${_system_libs[@]})
 makedepends+=("${_system_make_libs[@]}")
-
-case "${_system_stdlib}" in
-libc++)
-  depends+=(
-    libc++
-  )
-  ;&
-libstdc++)
-  _unwanted_bundled_libs+=(
-    third_party/libc++
-    third_party/libc++abi
-  )
-  ;;
-esac
 
 prepare() {
   if (( _manual_clone )); then
