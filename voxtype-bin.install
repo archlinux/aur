@@ -41,10 +41,10 @@ _detect_gpu() {
         echo ""
         if [ "$GPU_VENDOR" = "nvidia" ]; then
             echo "    Whisper: requires vulkan-icd-loader"
-            echo "    Parakeet: requires cuda package"
+            echo "    ONNX engines: requires cuda package"
         elif [ "$GPU_VENDOR" = "amd" ]; then
             echo "    Whisper: requires vulkan-icd-loader"
-            echo "    Parakeet: requires rocm-hip-runtime"
+            echo "    ONNX engines: requires rocm-hip-runtime"
         else
             echo "    Requires: vulkan-icd-loader package"
         fi
@@ -67,14 +67,14 @@ post_install() {
     echo ""
     echo "    2. Log out and back in for group changes to take effect"
     echo ""
-    echo "    3. Download a model (Whisper or Parakeet):"
+    echo "    3. Download a model:"
     echo "       voxtype setup model"
     echo ""
     echo "    4. Start voxtype:"
     echo "       systemctl --user enable --now voxtype"
     echo ""
-    echo "    Optional: Switch to Parakeet engine (faster, lower memory):"
-    echo "       voxtype setup parakeet --enable"
+    echo "    Optional: Switch to an ONNX engine (Parakeet, SenseVoice, etc.):"
+    echo "       voxtype setup onnx --enable"
     echo ""
 }
 
