@@ -7,7 +7,7 @@
 _pkgname='dstask'
 pkgname="$_pkgname-git"
 pkgver=1.0.1.r2.g9a620e6
-pkgrel=2
+pkgrel=3
 pkgdesc='Git-powered terminal-based todo/note manager with full markdown note for each task (development version)'
 url='https://github.com/naggie/dstask'
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64' )
@@ -39,6 +39,13 @@ build() {
 
   _commit=$(git describe --always)
   _utcnow=$(printf '%(%FT%T%z)T')
+
+  case "Z${CARCH:-unknown}" in
+    'Zx86_64' | 'Zaarch64' )
+      # Fix “ELF file lacks GNU_PROPERTY_X86_FEATURE_1_SHSTK.”
+      export LDFLAGS="$LDFLAGS -Wl,-z,shstk"
+    ;;
+  esac
 
   export CGO_ENABLED=1
   export CGO_CPPFLAGS="$CPPFLAGS"
