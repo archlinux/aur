@@ -1,16 +1,19 @@
 pkgbase = doitlive
 	pkgdesc = Because sometimes you need to do it live
-	pkgver = 5.2.0
+	pkgver = 5.2.1
 	pkgrel = 1
 	url = https://github.com/sloria/doitlive
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-flit-core
 	depends = python
 	depends = python-click-didyoumean
 	depends = python-click-completion
 	depends = python-shellingham
-	source = https://github.com/sloria/doitlive/archive/5.2.0.tar.gz
-	sha512sums = 0087d21903d80ae16aa7b4dd782e1bc18504b145778340334b5c4131cbf78c35c056655300df4bf929e5d81861a18a0d2bf27d02efaea8e27f96eca26b119085
+	source = https://github.com/sloria/doitlive/archive/5.2.1.tar.gz
+	sha512sums = 78053e27c87011407707b87c1521a99af3517d52652af2d3858cf811f4d973b442447086feb47e34db39fed3fb6aab5a0e43ec94167541d80d38485961a1e516
 
 pkgname = doitlive
