@@ -1,8 +1,8 @@
 # Maintainer: Ackerman
 pkgname=rootchat
 _pkgname=rootchat
-pkgver=0.9.88
-pkgrel=3
+pkgver=0.9.92
+pkgrel=1
 pkgdesc="Root App is a new Discord alternative, designed for gaming communities and large online groups"
 arch=('x86_64' 'aarch64')
 url="https://www.rootapp.com"
@@ -21,8 +21,8 @@ options=('!strip' '!debug')
 source_x86_64=("Root-${pkgver}-x86_64.AppImage::https://installer.rootapp.com/installer/Linux/X64/Root.AppImage")
 source_aarch64=("Root-${pkgver}-aarch64.AppImage::https://installer.rootapp.com/installer/Linux/Arm64/Root.AppImage")
 
-sha256sums_x86_64=('1ca63f268c7bcc58b5b34a5308cd54cc550b94443f1254c5dba91ca5919ec6db')
-sha256sums_aarch64=('966d4a41e57363f3508d3f886da0a1a8355eeac95f23f788e1df35aeb89f8cda')
+sha256sums_x86_64=('aefb853667c3926b6057b57b7c2718447bd4032e371a433025f29233221d30d7')
+sha256sums_aarch64=('7d8f980275c3504364d97311db86428ac53760a68ccc497cd91bf508e252b5a8')
 
 noextract=("Root-${pkgver}-x86_64.AppImage" "Root-${pkgver}-aarch64.AppImage")
 
@@ -57,7 +57,7 @@ package() {
 [Desktop Entry]
 Type=Application
 Name=Root
-Comment=Community platform combining chat with task management and customizable apps
+Comment=Root App is a new Discord alternative, designed for gaming communities and large online groups
 Exec=env AVALONIA_PLATFORM=wayland rootchat
 Icon=rootchat
 Terminal=false
