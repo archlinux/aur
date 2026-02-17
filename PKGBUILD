@@ -1,10 +1,10 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=ffmpeg-full-git
-pkgver=8.1.r122140.g16f89d342e
+pkgver=8.1.r122774.gcb0f4de1f5
 pkgrel=1
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
-_whispercpp_ver='1.8.2'
+_whispercpp_ver='1.8.3'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac; git version)'
 arch=('x86_64')
 url='https://ffmpeg.org/'
@@ -86,6 +86,7 @@ depends=(
     'ocl-icd'
     'openal'
     'openapv'
+    'opencolorio'
     'opencore-amr'
     'opencv'
     'openh264'
@@ -173,12 +174,12 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
         'LICENSE')
 sha256sums=('SKIP'
             'SKIP'
-            'bcee25589bb8052d9e155369f6759a05729a2022d2a8085c1aa4345108523077'
-            'ec73ed3f3135ced7d24c7138d010789aed454b400bb39679098432cdef1df35d'
+            '870ba21409cdf66697dc4db15ebdb13bc67037d76c7cc63756c81471d8f1731a'
+            '076259dca1f02256e33aa4e064f6e8faa73678bb2542430c8ff4b94599a6479f'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
-            '513f33f06f07798f638a7a1d2603a8538914083d088de420dc066386cfcfcc84'
+            '21f28e9bf2e7f4085131aee25e316508eb0a2aa1bb9957e8544878a470b8a6ef'
             '1c4f328bfb0dfedf4478f7b3659bcd08c591823a389b9e9e4eb8c35b0b3e0356'
-            '7c43ac7abbe780367bbddff92216025f4fe9dd00b6b008274d4aefc4f6103f78'
+            '9eacf8e863ff5266cc808dedb9a4945d4ecd7434b9b0dadcbf87c33870f50424'
             '98b3d28cbd13bb575c602785f6b8cb0b66ea3128ab5a3a82fc1645822320c136'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
@@ -304,6 +305,7 @@ build() {
         --enable-libmp3lame \
         --enable-libmpeghdec \
         --enable-liboapv \
+        --enable-libopencolorio \
         --enable-libopencore-amrnb \
         --enable-libopencore-amrwb \
         --enable-libopencv \

@@ -1,6 +1,6 @@
 --- a/configure
 +++ b/configure
-@@ -345,6 +345,7 @@ External library support:
+@@ -346,6 +346,7 @@ External library support:
    --enable-whisper         enable whisper filter [no]
    --disable-xlib           disable xlib [autodetect]
    --disable-zlib           disable zlib [autodetect]
@@ -8,7 +8,7 @@
  
    The following libraries provide various hardware acceleration features:
    --disable-amf            disable AMF video encoding code [autodetect]
-@@ -2015,6 +2016,7 @@ EXTERNAL_LIBRARY_LIST="
+@@ -2087,6 +2088,7 @@ EXTERNAL_LIBRARY_LIST="
      libssh
      libsvtav1
      libsvtjpegxs
@@ -16,7 +16,7 @@
      libtensorflow
      libtesseract
      libtheora
-@@ -3746,6 +3748,7 @@ vapoursynth_demuxer_deps="vapoursynth"
+@@ -3829,6 +3831,7 @@ vapoursynth_demuxer_deps="vapoursynth"
  videotoolbox_suggest="coreservices"
  videotoolbox_deps="corefoundation coremedia corevideo VTDecompressionSessionDecodeFrame"
  videotoolbox_encoder_deps="videotoolbox VTCompressionSessionPrepareToEncodeFrames"
@@ -24,7 +24,7 @@
  
  # demuxers / muxers
  ac3_demuxer_select="ac3_parser"
-@@ -7261,6 +7264,7 @@ enabled libspeex          && require_pkg_config libspeex speex speex/speex.h spe
+@@ -7355,6 +7358,7 @@ enabled libspeex          && require_pkg_config libspeex speex speex/speex.h spe
  enabled libsrt            && require_pkg_config libsrt "srt >= 1.3.0" srt/srt.h srt_socket
  enabled libsvtav1         && require_pkg_config libsvtav1 "SvtAv1Enc >= 0.9.0" EbSvtAv1Enc.h svt_av1_enc_init_handle
  enabled libsvtjpegxs      && require_pkg_config libsvtjpegxs "SvtJpegxs >= 0.10.0" SvtJpegxsEnc.h svt_jpeg_xs_encoder_init
