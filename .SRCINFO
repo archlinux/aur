@@ -1,17 +1,15 @@
 pkgbase = doudou-bin
-	pkgdesc = Stream your music with ease and style. Source: https://gitlab.com/Openlyst/doudou
-	pkgver = 11.0.0
+	pkgdesc = Music player for self-hosted services
+	pkgver = 14.0.0
 	pkgrel = 1
-	url = https://gitlab.com/Openlyst/doudou
+	url = https://openlyst.ink
 	arch = x86_64
 	license = GPL3
-	depends = mpv
 	depends = gtk3
-	depends = libmpv.so
 	provides = doudou
 	conflicts = doudou
 	options = !strip
-	source = doudou-bin-11.0.0.zip::https://gitlab.com/Openlyst/doudou/-/jobs/12655232642/artifacts/raw/doudou-11.0.0-linux-x64.zip
+	source = doudou-bin-14.0.0.zip::https://github.com/justacalico/Openlyst-more-builds/releases/download/build-31/doudou-14.0.0-2026-02-16-linux-x64.zip
 	sha256sums = SKIP
 
 pkgname = doudou-bin

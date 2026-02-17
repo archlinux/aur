@@ -1,51 +1,42 @@
-# Maintainer: Zhenxi
+# Maintainer: OpenLyst <https://openlyst.ink>
+# Version and download URL from Openlyst API: https://openlyst.ink/docs/api
 pkgname=doudou-bin
-pkgver=12.0.0
+pkgver=14.0.0
 pkgrel=1
-pkgdesc="Stream your music with ease and style. Source: https://gitlab.com/Openlyst/doudou"
+pkgdesc="Music player for self-hosted services"
 arch=('x86_64')
-url="https://gitlab.com/Openlyst/doudou"
+url="https://openlyst.ink"
 license=('GPL3')
-depends=('mpv' 'gtk3' 'libmpv.so')
+depends=('gtk3')
 optdepends=()
 provides=('doudou')
 conflicts=('doudou')
 options=('!strip')
-source=("${pkgname}-${pkgver}.zip::https://github.com/HttpAnimation/Openlyst-more-builds/releases/download/build-45/doudou-12.0.0-2026-01-13-linux-x64.zip")
+source=("doudou-bin-${pkgver}.zip::https://github.com/justacalico/Openlyst-more-builds/releases/download/build-31/doudou-14.0.0-2026-02-16-linux-x64.zip")
 sha256sums=('SKIP')
 
 package() {
     cd "${srcdir}/bundle"
 
-    # Install the entire bundle to /opt/doudou (Flutter needs relative paths)
     install -d "${pkgdir}/opt/doudou"
-    
-    # Install main executable
     install -Dm755 "doudou" "${pkgdir}/opt/doudou/doudou"
-
-    # Install libraries (must be in lib/ relative to executable)
     install -d "${pkgdir}/opt/doudou/lib"
     install -Dm644 lib/*.so "${pkgdir}/opt/doudou/lib/"
-
-    # Install data files (must be in data/ relative to executable)
     cp -r data "${pkgdir}/opt/doudou/"
-
-    # Install desktop entry
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/doudou.desktop" <<EOF
 [Desktop Entry]
 Name=Doudou
-Comment=Stream your music with ease and style
+Comment=Music player for self-hosted services
 Exec=/opt/doudou/doudou
 Icon=doudou
 Type=Application
 Categories=Audio;Music;Player;
-Keywords=music;streaming;audio;player;
+Keywords=music;streaming;audio;player;;
 EOF
-
-    # Install icon
-    install -Dm644 "data/flutter_assets/assets/icons/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/doudou.png"
-
-    # Create symlink in /usr/bin for PATH access
+    if [ -f "data/flutter_assets/assets/icons/icon.png" ]; then
+        install -Dm644 "data/flutter_assets/assets/icons/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/doudou.png"
+    fi
     install -d "${pkgdir}/usr/bin"
     ln -s /opt/doudou/doudou "${pkgdir}/usr/bin/doudou"
 }
+
