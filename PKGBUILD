@@ -1,15 +1,16 @@
-# Maintainer: Eric Berquist <eric dot berquist at gmail dot com>
+# Maintainer: Eisuke Kawashima <e DOT kawaschima+arch AT gmail DOT com>
+# Contributor: Eric Berquist <eric dot berquist at gmail dot com>
 
-_name="basis_set_exchange"
+_name='basis_set_exchange'
 pkgname="python-${_name}"
 pkgver=0.8.12
 pkgrel=1
-pkgdesc="A repository for quantum chemistry basis sets"
-arch=("any")
-url="https://molssi-bse.github.io/basis_set_exchange/"
-license=("BSD-3-Clause")
-depends=("python-argcomplete" "python-graphviz" "python-jsonschema")
-makedepends=("python-setuptools")
+pkgdesc='A repository for quantum chemistry basis sets'
+arch=('any')
+url='https://molssi-bse.github.io/basis_set_exchange/'
+license=('BSD-3-Clause')
+depends=('python-argcomplete' 'python-graphviz' 'python-jsonschema')
+makedepends=('python-setuptools')
 source=("https://github.com/MolSSI-BSE/${_name}/archive/v${pkgver}.tar.gz")
 sha256sums=('41f0242e2c11392c511d3308c0345e14b0eb3344686d865bdfcb48257910fc0d')
 
