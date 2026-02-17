@@ -1,6 +1,6 @@
 # Maintainer: Emiliopg91 <ojosdeserbio@gmail.com>
 pkgname=rog-perf-tuner-git
-pkgver=4.12.0.r7.g464d6179
+pkgver=4.12.0.r8.g2e5478e6
 pkgrel=1
 pkgdesc="An utility to manage Asus Rog laptop performance and RGB lighting"
 arch=(
@@ -11,7 +11,7 @@ license=(
   'GPL2'
 )
 source=(
-  "git+$url.git#commit=464d6179"
+  "git+$url.git#commit=2e5478e6"
 )
 sha256sums=(
   'SKIP'
@@ -95,12 +95,14 @@ package() {
     cd "$srcdir/RogPerfTuner"
 
     install -Dm755 build/RogPerfTuner/RogPerfTuner "$pkgdir/usr/bin/rog-perf-tuner"
-    
     install -d "$pkgdir/usr/share/rog-perf-tuner"
+    install -Dm644 "$pkgdir/usr/share/rog-perf-tuner/OpenRGB/60-openrgb.rules" "$pkgdir/usr/lib/udev/rules.d/60-rog-perf-tuner.rules"
+    install -Dm755 resources/RogPerfTuner.desktop "$pkgdir/usr/share/applications/rog-perf-tuner.desktop"
+
     cp -r build/assets/* "$pkgdir/usr/share/rog-perf-tuner/"
     chmod -R 755 "$pkgdir/usr/share/rog-perf-tuner/"
-    install -Dm644 "$pkgdir/usr/share/rog-perf-tuner/OpenRGB/60-openrgb.rules" "$pkgdir/usr/lib/udev/rules.d/60-rog-perf-tuner.rules"
+    
     rm "$pkgdir/usr/share/rog-perf-tuner/OpenRGB/60-openrgb.rules"
+    rm "$pkgdir/usr/share/rog-perf-tuner/suggestions.yaml"
 
-    install -Dm755 resources/RogPerfTuner.desktop "$pkgdir/usr/share/applications/rog-perf-tuner.desktop"
 }
