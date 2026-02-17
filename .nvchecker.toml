@@ -1,0 +1,5 @@
+[tori-cli-bin]
+source = "github"
+github = "thobiasn/tori-cli"
+use_latest_release = true
+prefix = "v"

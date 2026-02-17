@@ -1,0 +1,2 @@
+d /var/lib/tori/ 0750 tori tori -
+d /run/tori/ 0755 tori tori -

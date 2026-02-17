@@ -1,0 +1,11 @@
+*
+!.nvchecker.toml
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!*.install
+!*.config
+!*.service
+!*.sysusers
+!*.tmpfiles
+

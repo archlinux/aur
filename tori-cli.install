@@ -1,0 +1,25 @@
+post_install() {
+  echo "
+Welcome to the tori!
+-----------------------------------------------------------------------------
+Default Config Path: /etc/tori/
+Default Data Path: /var/lib/tori/
+Default User & Group: tori:tori
+
+$ sudo systemctl start tori.service
+-----------------------------------------------------------------------------
+
+More: https://github.com/thobiasn/tori-cli
+"
+}
+
+post_remove() {
+  echo "You need to remove database and config by yourself.
+-----------------------------------------------------------------------------
+Default Config Path: /etc/tori/
+Default Data Path: /var/lib/tori/
+Default User & Group: tori:tori
+-----------------------------------------------------------------------------
+"
+}
+# vim: set ts=2 sw=2 et:
