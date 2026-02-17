@@ -4,12 +4,12 @@
 _pkgname=obs-vaapi
 pkgname=obs-vaapi-git
 pkgver=0.4.2.r8.g4e06e0c
-pkgrel=1
+pkgrel=2
 pkgdesc="OBS Studio VAAPI support via GStreamer (git version)"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/fzwoch/obs-vaapi"
 license=('GPL-2.0-only')
-depends=('obs-studio' 'gst-plugins-base-libs' 'gstreamer-vaapi' 'gst-plugin-va')
+depends=('obs-studio' 'gst-plugins-base-libs' 'gst-plugin-va')
 makedepends=('git' 'meson')
 conflicts=('obs-vaapi')
 provides=('obs-vaapi')

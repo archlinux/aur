@@ -1,7 +1,7 @@
 pkgbase = obs-vaapi-git
 	pkgdesc = OBS Studio VAAPI support via GStreamer (git version)
 	pkgver = 0.4.2.r8.g4e06e0c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fzwoch/obs-vaapi
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = obs-vaapi-git
 	makedepends = meson
 	depends = obs-studio
 	depends = gst-plugins-base-libs
-	depends = gstreamer-vaapi
 	depends = gst-plugin-va
 	provides = obs-vaapi
 	conflicts = obs-vaapi
