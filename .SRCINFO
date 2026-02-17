@@ -1,7 +1,7 @@
 pkgbase = fortran-fpm
 	pkgdesc = A Fortran package manager and build system
-	pkgver = 0.12.0
-	pkgrel = 5
+	pkgver = 0.13.0
+	pkgrel = 1
 	url = https://fpm.fortran-lang.org/
 	arch = any
 	license = MIT
@@ -10,9 +10,9 @@ pkgbase = fortran-fpm
 	provides = fortran-fpm
 	conflicts = fpm
 	conflicts = fortran-fpm-bin
-	source = https://github.com/fortran-lang/fpm/releases/download/v0.12.0/fpm-0.12.0.zip
-	source = https://github.com/fortran-lang/fpm/releases/download/v0.12.0/fpm-0.12.0.F90
-	sha256sums = b519b614c693dc26f553f0eb902fc707adab9d1759f17ff098412c14d6b290fe
-	sha256sums = 61567ac810d8ea8f8fc91fdb13700d34b91bf36e193b35d744fc6352d21146ad
+	source = https://github.com/fortran-lang/fpm/releases/download/v0.13.0/fpm-0.13.0.zip
+	source = https://github.com/fortran-lang/fpm/releases/download/v0.13.0/fpm-0.13.0.F90
+	sha256sums = 2c81b448efe9f6a93f4c3cfd7131a42249cd611121857f2bae15b8e2d69ff9a7
+	sha256sums = 001cff6cf1145f215baa0888ba27acc06cea30a89b79d1a8be97db3fffbc8cd2
 
 pkgname = fortran-fpm

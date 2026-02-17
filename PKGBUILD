@@ -1,8 +1,8 @@
 # Maintainer: banana-bred <j.forer@posteo.net>
 
 pkgname=fortran-fpm
-pkgver=0.12.0
-pkgrel=5
+pkgver=0.13.0
+pkgrel=1
 epoch=
 pkgdesc="A Fortran package manager and build system"
 arch=('any')
@@ -24,8 +24,8 @@ source=("https://github.com/fortran-lang/fpm/releases/download/v$pkgver/${pkgnam
         "https://github.com/fortran-lang/fpm/releases/download/v$pkgver/"${pkgname##*-}-$pkgver.F90)
 noextract=()
 sha256sums=(
-  b519b614c693dc26f553f0eb902fc707adab9d1759f17ff098412c14d6b290fe
-  61567ac810d8ea8f8fc91fdb13700d34b91bf36e193b35d744fc6352d21146ad
+  2c81b448efe9f6a93f4c3cfd7131a42249cd611121857f2bae15b8e2d69ff9a7
+  001cff6cf1145f215baa0888ba27acc06cea30a89b79d1a8be97db3fffbc8cd2
 )
 
 prepare() {
