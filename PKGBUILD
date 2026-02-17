@@ -1,7 +1,7 @@
 # Maintainer: Peter Jackson <pete@peteonrails.com>
 pkgname=voxtype-bin
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.6.1
+pkgrel=1
 pkgdesc="Push-to-talk voice-to-text for Linux (pre-built binaries)"
 arch=('x86_64')
 url="https://voxtype.io"
@@ -52,14 +52,14 @@ source=(
 )
 sha256sums=(
     # Whisper binaries
-    'c7d33e93fcf9c2ba0dbd945f8e5ca1eb4887a7f155c8be9b1217a56564860b1e'  # voxtype-avx2
-    'e71dc54bdec5f1410290d3af27db820c423c864fdab54cf5eac1133e3e87b9be'  # voxtype-avx512
-    '559624f8f4581cad15f4d4adb0a9c392f17f4947278d8c80dbfbb8a8415b2452'  # voxtype-vulkan
+    '748148db42e71ee3e49ca835f026e95d800306a24a0dda7c46fd888e7e1cc1f7'  # voxtype-avx2
+    '9a1153b3eb7cf61afb084f960125e5384cb6ca2ef7559138b7a6605dcb96b63c'  # voxtype-avx512
+    '2c19a82c44547cbe5298c6bf43ca69f68589f598803cee933edf04c9b4760445'  # voxtype-vulkan
     # ONNX binaries
-    'f5c07307cad254f68f02ced884a43926187d5cdb7dc9ec38ec1905b36e7268db'  # voxtype-onnx-avx2
-    '49f6db5b4b66f1c2464c43a8d8aa0da036c13c70e59b04e6470a5f18814ec3d8'  # voxtype-onnx-avx512
-    '00bd04bf29103233337b16f45b33063c1fb7a186828b92f302bbd01503b35ed1'  # voxtype-onnx-cuda
-    '13121d14a9bf75496062871664e8fd486fad133fed2cc21f68f3af7d3667e839'  # voxtype-onnx-rocm
+    '837bcabc3bcd2a7ac537f9a9fa0ecc30fe4fc587a4b2dc619c39358bd0466a47'  # voxtype-onnx-avx2
+    '86259996ddbe453c60be6f8b7d7dd42aa20545a89b473aaa9a7a8f674f04f51a'  # voxtype-onnx-avx512
+    '92d70fecdf18f78b8520483bcd9f19ae24db4cb3f861fa56f70ffccec79c9b51'  # voxtype-onnx-cuda
+    'f27256c64942b862e6afa8b479a665e0dfae2240643695615d7e3dbe2d4240c0'  # voxtype-onnx-rocm
     # Config and support files
     'SKIP'  # config.toml
     'SKIP'  # voxtype.service
