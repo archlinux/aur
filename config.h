@@ -4,9 +4,9 @@
 static int topbar = 1;                      /* -b  option; if 0, dmenu appears at bottom     */
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static const char *fonts[] = {
-    "Noto Color Emoji:pixelsize=16",
-    "Terminus:pixelsize=18",
+    "Terminus:pixelsize=20",
     "Noto Sans CJK JP:pixelsize=18:antialias=true:autohint=true",
+    "Noto Color Emoji:pixelsize=16",
     "monospace:pixelsize=14"
 };
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
