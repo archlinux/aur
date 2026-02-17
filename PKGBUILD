@@ -1,9 +1,9 @@
-# Maintainer:
-# Contributor:
+# Maintainer: xuezhajv <liaozecheng123@163.com>  qq群：293748695
+# Contributor: github.com/FPSZ <
 pkgname=sealantern
 pkgver=0.6.0
 pkgrel=1
-pkgdesc="一个轻量化的 Minecraft 服务器管理工具 ，基于 Tauri 2 + Rust + Vue 3"
+pkgdesc="A lightweight Minecraft server management tool based on Tauri 2 + Rust + Vue 3        一个轻量化的 Minecraft 服务器管理工具 ，基于 Tauri 2 + Rust + Vue 3"
 arch=('x86_64')
 url="https://github.com/FPSZ/SeaLantern"
 license=('GPL-3.0-or-later')
