@@ -1,7 +1,7 @@
 pkgbase = v4l-utils-git
 	pkgdesc = Userspace tools and conversion library for Video 4 Linux
-	pkgver = 1.28.1.r52.g363495b6
-	pkgrel = 2
+	pkgver = 1.32.0.r39.gbd0aabb9
+	pkgrel = 1
 	url = https://linuxtv.org/
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,9 @@ pkgbase = v4l-utils-git
 	makedepends = meson
 	makedepends = qt6-base
 	makedepends = qt6-5compat
-	depends = gcc-libs
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
 	depends = hicolor-icon-theme
 	depends = json-c
 	depends = libjpeg-turbo
@@ -24,7 +26,7 @@ pkgbase = v4l-utils-git
 	optdepends = libbpf: for ir-keytable
 	optdepends = qt6-base: for qv4l2 and qvidcap
 	optdepends = qt6-5compat: for qv4l2 and qvidcap
-	provides = v4l-utils=1.28.1.r52.g363495b6
+	provides = v4l-utils=1.32.0.r39.gbd0aabb9
 	provides = edid-decode
 	conflicts = v4l-utils
 	conflicts = edid-decode

@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=v4l-utils-git
-pkgver=1.28.1.r52.g363495b6
-pkgrel=2
+pkgver=1.32.0.r39.gbd0aabb9
+pkgrel=1
 pkgdesc="Userspace tools and conversion library for Video 4 Linux"
 arch=('i686' 'x86_64')
 url="https://linuxtv.org/"
 license=('GPL-2.0-or-later' 'LGPL-2.1-or-later')
-depends=('gcc-libs' 'hicolor-icon-theme' 'json-c' 'libjpeg-turbo' 'systemd-libs')
+depends=('glibc' 'libgcc' 'libstdc++' 'hicolor-icon-theme' 'json-c' 'libjpeg-turbo' 'systemd-libs')
 makedepends=('git' 'alsa-lib' 'clang' 'doxygen' 'libbpf' 'meson' 'qt6-base' 'qt6-5compat')
 optdepends=('alsa-lib: for qv4l2'
             'libbpf: for ir-keytable'
@@ -31,7 +31,7 @@ pkgver() {
   cd "v4l-utils"
 
   _tag=$(git tag -l --sort -v:refname | sed '/rc[0-9]*/d' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v4l-utils-//'
 }
