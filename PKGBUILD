@@ -1,8 +1,7 @@
 # Maintainer: robertfoster
 _name=mediapipe
-_py=cp312
-pkgname=python-mediapipe-bin
-pkgver=0.10.14
+pkgname=python-mediapipe-bin # renovate: datasource=github-tags depName=google-ai-edge/mediapipe
+pkgver=0.10.32
 pkgrel=1
 pkgdesc="A cross-platform, customizable ML solutions for live and streaming media"
 arch=('x86_64')
@@ -23,11 +22,10 @@ depends=('absl-py'
   'python-wheel'
 )
 makedepends=('python-installer' 'python-wheel')
-
-source=("https://files.pythonhosted.org/packages/11/73/07c6dcbb322f86e2b8526e0073456dbdd2813d5351f772f882123c985fda/${_name//-/_}-$pkgver-$_py-${_py}-manylinux_2_17_x86_64.manylinux2014_x86_64.whl")
+source=("https://files.pythonhosted.org/packages/e3/98/00cd8b2dcb563f2298655633e6611a791b2c1a7df1dae064b2b96084f1bf/${_name//-/_}-$pkgver-py3-none-manylinux_2_28_x86_64.whl")
 
 package() {
   python -m installer --destdir="$pkgdir" *.whl
 }
 
-sha256sums=('9b1e72d754cd9e1b4b88d80ec9ead2f1cbe8424b7f883d3bda53341b982a9f8b')
+sha256sums=('4b0941fbbbce41862f13cb1850c4878c13dbc62cd5e81e74880051b7a20ce3b6')
