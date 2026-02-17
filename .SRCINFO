@@ -1,13 +1,13 @@
 pkgbase = r-ada
 	pkgdesc = The R Package Ada for Stochastic Boosting
-	pkgver = 2.0.5
-	pkgrel = 7
+	pkgver = 2.0.5.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=ada
 	arch = any
 	license = GPL-2.0-or-later
 	depends = r
-	source = https://cran.r-project.org/src/contrib/ada_2.0-5.tar.gz
-	md5sums = 25ac0dc2650fba9e19f3d15c7c6721c1
-	b2sums = 4e92714b8467b2d1ac9599a337c861e12ce3aad051e438310ff17fc2f3e1d3f44eb05d43d146ae27e9806bd4cdcc1545b3e8d94e6c860f9b30b2a2fd27d26ee7
+	source = https://cran.r-project.org/src/contrib/ada_2.0-5.1.tar.gz
+	md5sums = 381b8cfc76ee35d9d60fdf78e3aa3314
+	b2sums = f7cc7313164ec5ccf45c388a9bb6b201eaf814b0127c3483d8082b7b93888ed5aecfd6efb3cce5cc86618b8b1ec139607ca38a10e758cc58bfbf379bd0d05ce4
 
 pkgname = r-ada
