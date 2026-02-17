@@ -1,6 +1,6 @@
 # Maintainer: Remi Gacogne <rgacogne-arch at archlinux dot org>
 pkgname=powerdns-recursor-git
-pkgver=5.4.0alpha1.r12.g226f721d9
+pkgver=5.5.0alpha0.r9.g8fc3e080d
 pkgrel=1
 pkgdesc='Resolving DNS server'
 arch=('x86_64')
@@ -11,7 +11,7 @@ source=("${pkgname}::git+https://github.com/PowerDNS/pdns"
 sha512sums=('SKIP'
             '63b3f0664d38fbbcb6b1c914cee050a27eca0a15550962973743580dd5d3ace2e68272ca2d856d53cc74001fe9246d61207ebbc74524c096736777ed08c88e72')
 makedepends=('boost' 'git' 'meson' 'pandoc' 'python' 'python-virtualenv' 'python-yaml' 'ragel' 'rust' 'systemd')
-depends=('gcc-libs' 'boost-libs' 'fstrm' 'gnutls' 'libboost_context.so' 'libcap' 'libcurl.so' 'libsodium' 'systemd-libs' 'luajit' 'net-snmp' 'openssl')
+depends=('boost-libs' 'fstrm' 'gnutls' 'libboost_context.so' 'libcap' 'libcurl.so' 'libgcc' 'libsodium' 'libstdc++' 'systemd-libs' 'luajit' 'net-snmp' 'openssl')
 provides=('powerdns-recursor')
 conflicts=('powerdns-recursor')
 backup=('etc/powerdns/recursor.conf')
