@@ -3,11 +3,11 @@
 pkgname=wifi-manager-git
 pkgver=1
 pkgrel=1
-pkgdesc="A lightweight WiFi manager for Wayland compositors"
+pkgdesc="A lightweight WiFi and Bluetooth manager for Wayland compositors"
 arch=('x86_64')
 url="https://github.com/Vijay-papanaboina/wifi-manager"
 license=('MIT')
-depends=('gtk4' 'gtk4-layer-shell' 'networkmanager')
+depends=('gtk4' 'gtk4-layer-shell' 'networkmanager' 'bluez')
 makedepends=('rust' 'cargo' 'git')
 provides=('wifi-manager')
 conflicts=('wifi-manager')

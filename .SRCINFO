@@ -1,5 +1,5 @@
 pkgbase = wifi-manager-git
-	pkgdesc = A lightweight WiFi manager for Wayland compositors
+	pkgdesc = A lightweight WiFi and Bluetooth manager for Wayland compositors
 	pkgver = 1
 	pkgrel = 1
 	url = https://github.com/Vijay-papanaboina/wifi-manager
@@ -11,6 +11,7 @@ pkgbase = wifi-manager-git
 	depends = gtk4
 	depends = gtk4-layer-shell
 	depends = networkmanager
+	depends = bluez
 	provides = wifi-manager
 	conflicts = wifi-manager
 	source = git+https://github.com/Vijay-papanaboina/wifi-manager.git
