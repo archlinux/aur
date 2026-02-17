@@ -18,16 +18,16 @@ b2sums=('087844c33c1a5b8a44fefb5a6cb7e8caae835805d49a6465a8c209339bb81e7fb5702d6
 package() {
     cd "${srcdir}/iamb-x86_64-unknown-linux-musl"
 
-	install -vDm 644 -t "${pkgdir}/usr/share/licenses/${_pkg}" LICENSE
+    install -vDm 644 -t "${pkgdir}/usr/share/licenses/${_pkg}" LICENSE
 
-	install -vDm 644 -t "${pkgdir}/usr/share/man/man1/" docs/${_pkg}.1
-	install -vDm 644 -t "${pkgdir}/usr/share/man/man5/" docs/${_pkg}.5
+    install -vDm 644 -t "${pkgdir}/usr/share/man/man1/" docs/${_pkg}.1
+    install -vDm 644 -t "${pkgdir}/usr/share/man/man5/" docs/${_pkg}.5
 
-	install -vDm 644 -t "${pkgdir}/usr/share/doc/${_pkg}" docs/config.example.toml
+    install -vDm 644 -t "${pkgdir}/usr/share/doc/${_pkg}" docs/config.example.toml
 
-	install -vDm 644 -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps/" docs/iamb.svg
-	install -vDm 644 -t "${pkgdir}/usr/share/metainfo/" docs/iamb.metainfo.xml
-	install -vDm 644 -t "${pkgdir}/usr/share/applications/" docs/iamb.desktop
+    install -vDm 644 -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps/" docs/iamb.svg
+    install -vDm 644 -t "${pkgdir}/usr/share/metainfo/" docs/iamb.metainfo.xml
+    install -vDm 644 -t "${pkgdir}/usr/share/applications/" docs/iamb.desktop
 
-	install -vDm 755 -t "${pkgdir}/usr/bin" iamb
+    install -vDm 755 -t "${pkgdir}/usr/bin" iamb
 }
