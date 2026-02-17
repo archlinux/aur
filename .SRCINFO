@@ -1,7 +1,7 @@
 pkgbase = aim-bin
 	pkgdesc = A command line download/upload tool with resume
-	pkgver = 1.8.7
-	pkgrel = 3
+	pkgver = 1.8.8
+	pkgrel = 1
 	url = https://github.com/mihaigalos/aim
 	arch = x86_64
 	arch = i686
@@ -12,11 +12,11 @@ pkgbase = aim-bin
 	depends = zlib
 	provides = aim
 	conflicts = aim
-	source_x86_64 = aim-x86_64-1.8.7.tgz::https://github.com/mihaigalos/aim/releases/download/1.8.7/aim-1.8.7-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 4f528d200eff45d37054d93324f3633b7813febbf39997e440cfdd246888f567
-	source_i686 = aim-i686-1.8.7.tgz::https://github.com/mihaigalos/aim/releases/download/1.8.7/aim-1.8.7-i686-unknown-linux-gnu.tar.gz
-	sha256sums_i686 = 54739486177cbef4ad98ed0f10f1c820c322c16b7b3d527f6b4a0c1080f40767
-	source_aarch64 = aim-aarch64-1.8.7.tgz::https://github.com/mihaigalos/aim/releases/download/1.8.7/aim-1.8.7-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 40b4f2bcd6f4fbf98be72f6ee594185753a6fa468e862c27c8c050ce6d4e9057
+	source_x86_64 = aim-x86_64-1.8.8.tgz::https://github.com/mihaigalos/aim/releases/download/1.8.8/aim-1.8.8-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 176ce87f5ec008df956738d7d1107be3bc878ef6c7c1c63387111546516d1e06
+	source_i686 = aim-i686-1.8.8.tgz::https://github.com/mihaigalos/aim/releases/download/1.8.8/aim-1.8.8-i686-unknown-linux-gnu.tar.gz
+	sha256sums_i686 = 3baf41bae1cb00af270968f3d8a9c13b7042949eb801c51d09d89387644eccd2
+	source_aarch64 = aim-aarch64-1.8.8.tgz::https://github.com/mihaigalos/aim/releases/download/1.8.8/aim-1.8.8-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = fca1d8b5fd4f4deaef0e7bb6bc77c40c2110ee595f2db6f89835eab7b4825778
 
 pkgname = aim-bin
