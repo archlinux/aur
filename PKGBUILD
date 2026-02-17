@@ -3,17 +3,18 @@
 
 _pkgname=loupe
 pkgname=loupe-git
-pkgver=48.0.r3.g89ae7b6
+pkgver=50.beta.r24.g21ed663
 pkgrel=1
 pkgdesc="simple image viewer for GNOME"
 arch=(x86_64 aarch64)
 url="https://gitlab.gnome.org/GNOME/loupe"
 license=('GPL-3.0-or-later')
 depends=(
+  bubblewrap
   cairo
   dconf
+  fontconfig
   gcc-libs
-  desktop-file-utils
   glib2
   glibc
   glycin
