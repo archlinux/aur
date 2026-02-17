@@ -1,14 +1,14 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=heroic-games-launcher-git
-pkgver=2.18.1.r18.gd827d7053
+pkgver=2.19.1.r11.g27e43eac1
 pkgrel=2
 pkgdesc="Native GOG, Epic Games and Amazon games launcher for Linux"
 arch=(x86_64)
 url="https://heroicgameslauncher.com/"
 license=(GPL-3.0-only)
-_electron=electron36
-depends=(which $_electron zlib gcc-libs glibc)
+_electron=electron39
+depends=(which $_electron zlib libgcc glibc)
 makedepends=(git pnpm npm python desktop-file-utils
 			 nodejs-lts-jod
 			 )
