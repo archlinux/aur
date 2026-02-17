@@ -1,20 +1,25 @@
-# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
-
+# Maintainer: Tommy Falkowski <tommy@byteowlz.com>
 pkgname=sx
-pkgver=3.0
+pkgver=2.1.0
 pkgrel=1
-pkgdesc="Simple alternative to startx(1) for starting an Xorg server."
-arch=('any')
-url="https://github.com/Earnestly/sx"
+pkgdesc="Multi-engine web search from the command line"
+arch=('x86_64' 'aarch64')
+url="https://github.com/byteowlz/sx"
 license=('MIT')
-depends=('xorg-server' 'xorg-xauth')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('69fd492e87f13a4d61565a0a9c42d1759dbd5f2eeb1ae9e460ab618a55878fae')
-b2sums=('4bfcfaab02617d45650f9ada137dc1c095334e40421e27fe2c43f3d7cb02238c18bdbea0c406428e37e440e50399a9b9cd5ba3fbf267dca44b04dce807ede5cc')
+provides=('sx')
+conflicts=('sx-bin')
+makedepends=('go')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/byteowlz/sx/archive/v${pkgver}.tar.gz")
+sha256sums=('SKIP')
+
+build() {
+    cd "${pkgname}-${pkgver}"
+    export CGO_ENABLED=0
+    go build -ldflags="-s -w" -o sx .
+}
 
 package() {
-    cd ${pkgname}-${pkgver}
-
-    make PREFIX=/usr DESTDIR="${pkgdir}" install
-    install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+    cd "${pkgname}-${pkgver}"
+    install -Dm755 sx "${pkgdir}/usr/bin/sx"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
