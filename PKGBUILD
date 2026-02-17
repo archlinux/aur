@@ -2,13 +2,12 @@
 pkgname=python-east-asian-spacing
 _name=${pkgname#python-}
 _name=${_name//-/_}
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 pkgdesc="East Asian Contextual Spacing Build Tools"
 arch=('any')
 url="https://github.com/kojiishi/east_asian_spacing"
 license=('Apache-2.0')
-groups=()
 depends=('python'
          'python-fonttools'
          'python-brotli'
@@ -21,7 +20,7 @@ makedepends=('python-build'
 checkdepends=('python-pytest'
               'python-pytest-asyncio')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0e28ef3d7b8a9d2469af44f479be82ced6eba3606c0076b091c9c46b344fcb97')
+sha256sums=('c46b23d885cb6555120858e4817b14d2a57d31a4628ca39475de43d24bb05f20')
 
 build() {
     cd $_name-$pkgver

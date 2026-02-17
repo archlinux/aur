@@ -1,6 +1,6 @@
 pkgbase = python-east-asian-spacing
 	pkgdesc = East Asian Contextual Spacing Build Tools
-	pkgver = 1.4.4
+	pkgver = 1.4.5
 	pkgrel = 1
 	url = https://github.com/kojiishi/east_asian_spacing
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-east-asian-spacing
 	depends = python-brotli
 	depends = python-zopfli
 	depends = python-uharfbuzz
-	source = python-east-asian-spacing-1.4.4.tar.gz::https://github.com/kojiishi/east_asian_spacing/archive/refs/tags/v1.4.4.tar.gz
-	sha256sums = 0e28ef3d7b8a9d2469af44f479be82ced6eba3606c0076b091c9c46b344fcb97
+	source = python-east-asian-spacing-1.4.5.tar.gz::https://github.com/kojiishi/east_asian_spacing/archive/refs/tags/v1.4.5.tar.gz
+	sha256sums = c46b23d885cb6555120858e4817b14d2a57d31a4628ca39475de43d24bb05f20
 
 pkgname = python-east-asian-spacing
