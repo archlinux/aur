@@ -1,43 +1,44 @@
 # Maintainer: Bouteiller a2n Alan <hi@a2n.dev>
 pkgname=conar-bin
-pkgver=0.25.0
+pkgver=0.27.3
 pkgrel=1
-pkgdesc="AI-powered tool for working with Postgres."
+pkgdesc="AI-powered tool for working with Postgres, MySQL, MSSQL and ClickHouse."
 arch=('x86_64')
 url="https://github.com/wannabespace/conar"
 license=('AGPL-3.0-or-later')
 depends=(
-  'gcc-libs'
   'alsa-lib'
-  'libxfixes'
-  'libx11'
-  'glib2'
-  'libxkbcommon'
-  'libxcb'
-  'glibc'
-  'nss'
-  'libxrandr'
-  'libxcomposite'
-  'libcups'
-  'mesa'
-  'pango'
-  'gtk3'
-  'systemd-libs'
-  'nspr'
-  'cairo'
-  'expat'
   'at-spi2-core'
+  'cairo'
+  'dbus'
+  'expat'
+  'gcc-libs'
+  'glib2'
+  'glibc'
+  'gtk3'
+  'hicolor-icon-theme'
+  'libcups'
+  'libx11'
+  'libxcb'
+  'libxcomposite'
   'libxdamage'
   'libxext'
-  'dbus'
-  'hicolor-icon-theme'
+  'libxfixes'
+  'libxkbcommon'
+  'libxrandr'
+  'mesa'
+  'nspr'
+  'nss'
+  'pango'
+  'systemd-libs'
 )
 options=('!strip' '!emptydirs')
-source_x86_64=("${url}/releases/download/v"${pkgver}"/Conar-Linux-"${pkgver}".deb")
-sha256sums_x86_64=('41bec1c9e0a6e03951cdfbb1df93b4d316f18aeabaaf274b69887dcd2d36304a')
+source_x86_64=("conar-${pkgver}.deb::https://download.conar.app/linux/deb/x64")
+sha256sums_x86_64=('b2a736572cf4fde0a3869c90a00dae1cfb500fd86d6ac20473a0d36d6bf0ba8c')
+
 package() {
   # Extract the .deb file
-  ar -x "${srcdir}/Conar-Linux-${pkgver}.deb"
+  ar -x "${srcdir}/conar-${pkgver}.deb"
 
   # Extract the data archive
   tar -xJ -f data.tar.xz -C "${pkgdir}"
