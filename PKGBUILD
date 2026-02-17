@@ -1,5 +1,5 @@
 # Maintainer: Andy <andy@andydekoning.nl>
-pkgname=keychain-arch-light-git
+pkgname=keychain-arch-light
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Minimalist SSH-agent manager for Arch Linux and Hyprland"

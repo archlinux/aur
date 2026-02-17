@@ -1,4 +1,4 @@
-pkgbase = keychain-arch-light-git
+pkgbase = keychain-arch-light
 	pkgdesc = Minimalist SSH-agent manager for Arch Linux and Hyprland
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -12,4 +12,4 @@ pkgbase = keychain-arch-light-git
 	source = git+https://github.com/andy-de-koning/keychain-arch-light.git
 	sha256sums = SKIP
 
-pkgname = keychain-arch-light-git
+pkgname = keychain-arch-light
