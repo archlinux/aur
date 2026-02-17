@@ -4,7 +4,7 @@
 _pkgname=eidklient
 pkgname="${_pkgname}-native"
 pkgver=5.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Slovak eID Client - uses system-provided libraries, supports Wayland, …"
 arch=('i686' 'x86_64')
 url="https://www.slovensko.sk/"
@@ -86,10 +86,11 @@ package() {
         binutils
         ccid
         glibc
-        libgcc
-        libstdc++
-        openssl
-        pcsclite
+        libcrypto.so
+        libgcc_s.so
+        libpcsclite.so
+        libssl.so
+        libstdc++.so
         qt6-base
     )
     optdepends=(
