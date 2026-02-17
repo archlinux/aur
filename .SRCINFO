@@ -1,7 +1,7 @@
 pkgbase = splayer
 	pkgdesc = Splayer | A minimalist music player
 	pkgver = 3.0.0
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/imsyy/SPlayer
 	arch = x86_64
