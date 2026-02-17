@@ -1,9 +1,9 @@
-# Maintainer: matteodev <me@matteodev.xyz>
+# Maintainer: stackallocator <me@stackallocator.dev>
 # shellcheck disable=all
 
 pkgname=jdk8-temurin
 _majorver=8
-_jdkver=8u472-b08
+_jdkver=8u482-b08
 _jvmdir=/usr/lib/jvm/java-${_majorver}-temurin
 _majorver=8
 pkgver=${_jdkver//-/}
