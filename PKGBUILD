@@ -33,6 +33,7 @@ check() {
     #these checks require specific locales
     PYTHONPATH="$PWD" pytest \
     --deselect tests/test_session.py::test_get_system_currency_mnemonic[fr_FR.UTF-8] \
+    --deselect tests/test_session.py::test_get_system_currency_mnemonic[en_US.UTF-8] \
     --deselect tests/test_ledger.py::test_out_write[options1]
 }
 
