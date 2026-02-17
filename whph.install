@@ -1,3 +1,12 @@
+post_install() {
+	update-desktop-database -q
+}
+
+post_upgrade() {
+	post_install
+}
+
 post_remove() {
 	rm -rf /opt/whph-bin
+	update-desktop-database -q
 }
