@@ -2,16 +2,16 @@
 
 _pkgname=opencloud-desktop
 pkgname=opencloud-desktop-git
-pkgver=3.0.0.r28.g97b181d
+pkgver=3.0.0.r88.g66ca48b
 pkgrel=1
 pkgdesc='opencloud desktop application - git checkout'
 arch=('x86_64')
 url="https://github.com/opencloud-eu/desktop"
 license=('GPL-2.0-only')
-depends=(gcc-libs
-         glibc
+depends=(glibc
          kdsingleapplication
          libre-graph-api
+         libstdc++
          qt6-base
          qtkeychain-qt6
          sqlite
