@@ -2,7 +2,7 @@
 pkgname=terx-bin
 pkgver=0.2.22
 pkgrel=1
-pkgdesc="Cross-platform SSH client with GPU-accelerated terminal rendering"
+pkgdesc="DEPRECATED: Use subterm-bin instead. Cross-platform SSH client with GPU-accelerated terminal rendering"
 arch=('x86_64')
 url="https://github.com/OutrageLabs/terX"
 license=('custom:proprietary')
