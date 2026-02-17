@@ -1,5 +1,5 @@
 pkgbase = whph-bin
-	pkgdesc = WHPH - Work Hard, Play Hard: Master Your Productivity.
+	pkgdesc = Productivity app for task management, habit tracking and time optimization
 	pkgver = 0.20.4
 	pkgrel = 1
 	url = https://github.com/ahmet-cetinkaya/whph
