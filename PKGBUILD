@@ -9,7 +9,7 @@
 pkgname=asterisk-amr
 _pkgname=asterisk
 pkgver=23.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A complete PBX solution plus AMR'
 arch=(x86_64 i686 aarch64 armv7h)
 url=https://www.asterisk.org
@@ -18,8 +18,12 @@ conflicts=($_pkgname)
 provides=($_pkgname)
 depends=(alsa-lib
          curl
+         gsm
+         libiksemel-git
          jansson
          libedit
+         libsrtp
+         libss7
          libvorbis
          libxml2
          libxslt
@@ -28,13 +32,9 @@ depends=(alsa-lib
          popt
          speex
          vo-amrwbenc)
-makedepends=(gsm
-             sqlite3)
+makedepends=(sqlite3)
 optdepends=(dahdi
-            gsm
             libpri
-            libsrtp
-            libss7
             lua51
             openr2
             postgresql
