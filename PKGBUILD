@@ -59,7 +59,6 @@ build() {
             --with-bison=1 \
             --with-cmake=0 \
             --with-mpi-dir=/usr \
-            --with-zfp=1 \
             --with-netcdf=1 \
             --with-libjpeg=1 \
             --with-yaml=1 \
@@ -73,6 +72,7 @@ build() {
             --with-pastix=1 \
             --with-ptscotch=1 --with-bison=1 --with-ptscotch-lib=[libesmumps.so,libptscotch.so,libptscotcherr.so,libscotch.so,libscotcherr.so] --with-ptscotch-include=/usr/include \
             --with-scalar-type=complex \
+            --without-zfp \
             $(sh ${srcdir}/test_optdepends.sh)"
 
   echo ${CONFOPTS}
