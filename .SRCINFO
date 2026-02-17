@@ -1,0 +1,15 @@
+pkgbase = pacpac-git
+	pkgdesc = Synchronize Arch packages across machines
+	pkgver = r111.e76558a
+	pkgrel = 1
+	url = https://github.com/da-kurlzzzzz/pacpac
+	arch = any
+	license = WTFPL
+	makedepends = git
+	depends = ansible
+	depends = yq
+	depends = sudo
+	source = pacpac::git+https://github.com/da-kurlzzzzz/pacpac.git
+	sha256sums = SKIP
+
+pkgname = pacpac-git
