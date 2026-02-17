@@ -8,8 +8,8 @@
 
 _pkgname="flycast"
 pkgname="$_pkgname-git"
-pkgver=2.6.r2.gf3ea74f
-pkgrel=2
+pkgver=2.6.r140.gba5b3c7
+pkgrel=1
 pkgdesc='Sega Dreamcast, Naomi, and Atomiswave emulator'
 url="https://github.com/flyinghead/flycast"
 license=('GPL-2.0-only')
@@ -59,6 +59,9 @@ prepare() {
   git rm -r core/deps/libjuice
   git rm -r core/deps/oboe
   git submodule update --init --depth=1
+
+  git -C core/deps/DreamPicoPort-API submodule update --init --depth=1
+  git -C core/deps/tinygettext submodule update --init --depth=1
 
   # use system vulkan-headers
   sed -E -e '/add_subdirectory/s&^.*Vulkan-Headers.*$&find_package(VulkanHeaders)&' -i CMakeLists.txt

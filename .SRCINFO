@@ -1,7 +1,7 @@
 pkgbase = flycast-git
 	pkgdesc = Sega Dreamcast, Naomi, and Atomiswave emulator
-	pkgver = 2.6.r2.gf3ea74f
-	pkgrel = 2
+	pkgver = 2.6.r140.gba5b3c7
+	pkgrel = 1
 	url = https://github.com/flyinghead/flycast
 	arch = x86_64
 	license = GPL-2.0-only
