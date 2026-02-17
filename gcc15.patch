@@ -1,0 +1,34 @@
+diff -u -r Magics-4.16.0-Source-orig/src/common/ObjectParser.cc Magics-4.16.0-Source/src/common/ObjectParser.cc
+--- Magics-4.16.0-Source-orig/src/common/ObjectParser.cc        2026-02-17 09:34:45.884176314 +0000
++++ Magics-4.16.0-Source/src/common/ObjectParser.cc     2026-02-17 09:36:34.235454433 +0000
+@@ -15,6 +15,7 @@
+
+ #include <codecvt>
+ #include <locale>
++#include <cstdint>
+
+ #include "ObjectParser.h"
+ #include "Translator.h"
+diff -u -r Magics-4.16.0-Source-orig/src/drivers/BaseDriverImages.h Magics-4.16.0-Source/src/drivers/BaseDriverImages.h
+--- Magics-4.16.0-Source-orig/src/drivers/BaseDriverImages.h    2026-02-17 09:34:45.932175989 +0000
++++ Magics-4.16.0-Source/src/drivers/BaseDriverImages.h 2026-02-17 09:46:04.039962701 +0000
+@@ -21,6 +21,8 @@
+
+ #include "magics.h"
+
++#include <cstdint>
++
+ #ifdef HAVE_CAIRO
+ #include <cairo.h>
+ #endif
+diff -u -r Magics-4.16.0-Source-orig/src/visualisers/SegmentJoiner.cc Magics-4.16.0-Source/src/visualisers/SegmentJoiner.cc
+--- Magics-4.16.0-Source-orig/src/visualisers/SegmentJoiner.cc  2026-02-17 09:34:45.940175934 +0000
++++ Magics-4.16.0-Source/src/visualisers/SegmentJoiner.cc       2026-02-17 09:38:50.418580735 +0000
+@@ -14,6 +14,7 @@
+ #include <algorithm>
+ #include <cmath>
+ #include <limits>
++#include <cstdint>
+ #include "MagException.h"
+ #include "Timer.h"
+

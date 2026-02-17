@@ -7,7 +7,7 @@ pkgname=magics++
 Pkgname=Magics
 pkgver=4.16.0
 _attnum=3473464
-pkgrel=1
+pkgrel=2
 pkgdesc="Magics is the latest generation of the ECMWF's Meteorological plotting software MAGICS."
 arch=('i686' 'x86_64')
 url="https://confluence.ecmwf.int/display/MAGP"
@@ -15,12 +15,18 @@ license=('Apache')
 depends=('eccodes>=2.19.0' libgeotiff qt6-base pango python)
 optdepends=(ksh libaec odb_api)
 makedepends=(cmake gcc-fortran python-jinja swig)
-source=(http://confluence.ecmwf.int/download/attachments/${_attnum}/${Pkgname}-${pkgver}-Source.tar.gz)
-sha256sums=('b5cf365e10e43abbb2e0b14db8e8d8db90486031f6c0de24b0b01c17a0197cf5')
+source=(
+  http://confluence.ecmwf.int/download/attachments/${_attnum}/${Pkgname}-${pkgver}-Source.tar.gz
+  gcc15.patch
+)
+sha256sums=(
+  'b5cf365e10e43abbb2e0b14db8e8d8db90486031f6c0de24b0b01c17a0197cf5'
+  'c7ec7027622f1f5e5dbc32b6016bec2b08033004b2912d8f0758b5ae5b498be0'
+)
 
 prepare() {
   cd "${Pkgname}-${pkgver}-Source"
-  # patch --forward --strip=1 --input=$srcdir/minizip.patch
+  patch --forward --strip=1 --input=$srcdir/gcc15.patch
 }
 
 build() {
