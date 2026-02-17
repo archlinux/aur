@@ -1,0 +1,18 @@
+pkgbase = velo-bin
+	pkgdesc = A blazing-fast, keyboard-first desktop email client
+	pkgver = 0.3.12
+	pkgrel = 1
+	url = https://github.com/avihaymenahem/velo
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = hicolor-icon-theme
+	provides = velo
+	conflicts = velo
+	options = !strip
+	source = velo-bin-0.3.12.deb::https://github.com/avihaymenahem/velo/releases/download/v0.3.12/Velo_0.3.12_amd64.deb
+	sha256sums = f6fdc3eac4b68c0d339cb25dc427284e7dca68728550a955fa427201a6527342
+
+pkgname = velo-bin
