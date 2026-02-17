@@ -14,7 +14,6 @@ depends=(
   cairo
   dconf
   fontconfig
-  gcc-libs
   glib2
   glibc
   glycin
@@ -23,6 +22,7 @@ depends=(
   hicolor-icon-theme
   lcms2
   libadwaita-git
+  libgcc
   libgweather-4
   libseccomp
 )
