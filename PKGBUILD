@@ -1,7 +1,7 @@
 # Maintainer: zsh-ncursed <zsh.ncursed@protonmail.com>
 pkgname=somafm_tui
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Terminal user interface for SomaFM internet radio"
 arch=('any')
 url="https://github.com/zsh-ncursed/somafm_tui"
@@ -21,7 +21,7 @@ import os
 import sys
 
 # Add system installation directory to PYTHONPATH
-sys.path.insert(0, '/usr/lib/somafm_tui')
+sys.path.insert(0, '/usr/lib')
 
 # Import and run application
 from somafm_tui.player import main
