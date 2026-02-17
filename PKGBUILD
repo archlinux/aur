@@ -1,6 +1,6 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=cellframe-node
-pkgver=5.7.19
+pkgver=5.7.20
 pkgrel=1
 pkgdesc='Cellframe blockchain node with a powerful SDK'
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ sha256sums=('SKIP'
             '23ac94f40a185dcd829bd71220056c0591cf50e640b787ec26bb832c3de6f055'
             '9b7be4cb912290ed1164dbc3c5f6714c5a9525cc41a4d7ba3115cdbe312a9320'
             'a6b504ce331ef5953f38db6f2b3c18c3d5ed796eed29381bbe76a931cf3f9fa5')
-source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=1f75c25b460b133bd5a06ba2c3d13b7ef9b39e5f
+source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=d17839c04bfe9704c15e628a6c3110e2b1285ffe
 		https://pub.cellframe.net/python/python-cellframe/pycfhelpers/master/pycfhelpers-1.0.11-py3-none-any.whl
 		https://pub.cellframe.net/python/python-cellframe/pycftools/master/pycftools-1.0.0-py3-none-any.whl
 		cellframe-node.logrotate
