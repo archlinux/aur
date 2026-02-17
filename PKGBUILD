@@ -1,7 +1,7 @@
 # Maintainer: Tony, btw <tony@tonybtw.com>
 pkgname='oxwm-git'
 _pkgname='oxwm'
-pkgver=0.11.0.8.g9fac3c6
+pkgver=0.11.0.9.gb84bff4
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/tonybanters/oxwm"
