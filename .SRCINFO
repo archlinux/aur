@@ -1,0 +1,27 @@
+pkgbase = subterm-bin
+	pkgdesc = Cross-platform SSH and SFTP client with GPU-accelerated terminal rendering
+	pkgver = 0.2.22
+	pkgrel = 1
+	url = https://github.com/OutrageLabs/Subterm
+	arch = x86_64
+	license = custom:proprietary
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = glib2
+	depends = gdk-pixbuf2
+	depends = cairo
+	depends = pango
+	depends = libsoup3
+	depends = openssl
+	depends = hicolor-icon-theme
+	optdepends = libappindicator-gtk3: system tray support
+	optdepends = gst-plugins-good: video/audio support
+	provides = subterm
+	conflicts = subterm
+	options = !strip
+	options = !debug
+	noextract = subterm-bin-0.2.22.pkg.tar.zst
+	source = subterm-bin-0.2.22.pkg.tar.zst::https://github.com/OutrageLabs/Subterm/releases/download/v0.2.22/subterm-bin-0.2.22-1-x86_64.pkg.tar.zst
+	sha256sums = SKIP
+
+pkgname = subterm-bin
