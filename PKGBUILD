@@ -36,7 +36,7 @@ package() {
 
 	# Desktop entry file
 	install -Dm644 "share/applications/${pkgname%-bin}.desktop" -vt "${pkgdir}/usr/share/applications"
-	
+
 	# symlink executable
 	install -dm755 "${pkgdir}/usr/bin/"
 	ln -s "/opt/$pkgname/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
