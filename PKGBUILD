@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=ralphex-bin
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="CLI tool that orchestrates Claude Code to execute implementation plans autonomously"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ options=('!debug')
 
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/umputun/ralphex/releases/download/v${pkgver}/ralphex_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/umputun/ralphex/releases/download/v${pkgver}/ralphex_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('83ee1bdc3f2eadb61e7c7b93de79d298758c5a9ecbe512a8e2ee293fc319765b')
-sha256sums_aarch64=('a411ab1b38cb19c120add25c50194d473fe1b0585614634f6d38d60ad9a3254e')
+sha256sums_x86_64=('55399266745db04c557976c6e496830da45910a19fdbfbf9227f41060f461801')
+sha256sums_aarch64=('228926d6c3401502f84d5ad721d6cbd6e50dd588fdad6c573c372dfb567eb442')
 
 latestver() {
     curl -fsSL "https://api.github.com/repos/umputun/ralphex/releases/latest" |
