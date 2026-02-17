@@ -4,13 +4,14 @@
 pkgname=fish-tide
 _pkgname=tide
 pkgver=6.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="🌊 The ultimate Fish prompt."
 arch=('any')
 url="https://github.com/IlanCosman/tide"
 license=('MIT')
 depends=('fish')
-optdepends=('ttf-meslo-nerd-font-powerlevel10k: recommended font')
+optdepends=('ttf-meslo-nerd-font-powerlevel10k: recommended font, install this if you only want Meslo LGS Nerd Font variants'
+            'ttf-meslo-nerd: recommended font, contains all Meslo Nerd Font variants')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('c5d229d9d918043739aac93581ac96f00b6f31185b7df1c9864401bcbb69f3bc')
