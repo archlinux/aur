@@ -1,6 +1,6 @@
 pkgbase = sparrow-wallet-reproducible
 	pkgdesc = Desktop Bitcoin Wallet focused on security and privacy (reproducible build)
-	pkgver = 2.4.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://sparrowwallet.com/
 	arch = x86_64
@@ -20,13 +20,13 @@ pkgbase = sparrow-wallet-reproducible
 	provides = sparrow-wallet
 	conflicts = sparrow-wallet
 	conflicts = sparrow-wallet-git
-	source = sparrow::git+https://github.com/sparrowwallet/sparrow.git#tag=2.4.0
-	source = sparrow-bin.tar.gz::https://github.com/sparrowwallet/sparrow/releases/download/2.4.0/sparrowwallet-2.4.0-x86_64.tar.gz
+	source = sparrow::git+https://github.com/sparrowwallet/sparrow.git#tag=2.4.1
+	source = sparrow-bin.tar.gz::https://github.com/sparrowwallet/sparrow/releases/download/2.4.1/sparrowwallet-2.4.1-x86_64.tar.gz
 	source = drongo::git+https://github.com/sparrowwallet/drongo.git
 	source = lark::git+https://github.com/sparrowwallet/lark.git
 	source = https://github.com/adoptium/temurin25-binaries/releases/download/jdk-25.0.2%2B10/OpenJDK25U-jdk_x64_linux_hotspot_25.0.2_10.tar.gz
-	sha256sums = 22ce289d8b9bd1ad8ceb00b6d38c95f2bc0f5d0153f78d0c79bb39757e478b7f
-	sha256sums = f6b9324c48be2af143bcc09236479dc57f656193d9bc6c020a52f3f3b0d7aca7
+	sha256sums = af40054223b0ffd6e244843433f4da4ada8fb89f96a54222183539a63963e2d4
+	sha256sums = 3ab31b1ba12fc9ff7a0f737e126bcf6482b5d365a86049a1c3cf84178ff84505
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 987387933b64b9833846dee373b640440d3e1fd48a04804ec01a6dbf718e8ab8
