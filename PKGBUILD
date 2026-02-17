@@ -3,9 +3,9 @@
 pkgbase=rime-flypy
 pkgname=('rime-flypy' 'fcitx5-flypy')
 pkgver=20251211
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
-url="http://flypy.com/"
+url="http://flypy.cc/"
 license=('unknown')
 makedepends=('libime' 'librime' 'python' 'rime-prelude')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/cubercsl/rime-flypy/archive/v$pkgver.tar.gz")
