@@ -1,6 +1,6 @@
 # Maintainer: byteowlz
 pkgname=mmry-cuda
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A lean, local-first memory management system for humans and AI agents (with CUDA support)"
 arch=('x86_64')

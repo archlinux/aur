@@ -1,6 +1,6 @@
 pkgbase = mmry-cuda
 	pkgdesc = A lean, local-first memory management system for humans and AI agents (with CUDA support)
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/byteowlz/mmry
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = mmry-cuda
 	optdepends = cudnn: for improved neural network performance
 	provides = mmry
 	conflicts = mmry
-	source = mmry-cuda-0.8.0.tar.gz::https://github.com/byteowlz/mmry/archive/refs/tags/v0.8.0.tar.gz
+	source = mmry-cuda-0.9.0.tar.gz::https://github.com/byteowlz/mmry/archive/refs/tags/v0.9.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = mmry-cuda
