@@ -1,12 +1,12 @@
 pkgbase = cnspec
 	pkgdesc = Cloud-Native Security and Policy Framework
-	pkgver = 12.22.0
+	pkgver = 12.23.0
 	pkgrel = 1
 	url = https://mondoo.com
 	arch = x86_64
 	license = BUSL-1.1
 	depends = cnquery
-	source = https://releases.mondoo.com/cnspec/12.22.0/cnspec_12.22.0_linux_amd64.tar.gz
-	sha256sums = 4888cdeb0ab3b13d3613779f5ab0c411bfa5d2f9601a65d97e3923203ba58efa
+	source = https://releases.mondoo.com/cnspec/12.23.0/cnspec_12.23.0_linux_amd64.tar.gz
+	sha256sums = 0fc44cbf55091995ce38a4099ba8a03e8b2564933643ab7ab9fb500af6326b1e
 
 pkgname = cnspec
