@@ -22,7 +22,6 @@ package() {
   install -d -m755 $pkgdir/usr/share
   install -d -m755 $pkgdir/usr/share/applications
   install -d -m755 $pkgdir/usr/share/icons
-  install -d -m755 $pkgdir/usr/share/icons/pixmaps
   
   #copy files from the binary (src) to the destination:
   cd "$srcdir/${_pkgname}"  
@@ -30,5 +29,5 @@ package() {
   cp ./bin/gsl-shell-gui  $pkgdir/usr/bin
   cp -r ./share/gsl-shell $pkgdir/usr/share
   cp ./gsl-shell.desktop  $pkgdir/usr/share/applications
-  cp ./gsl-shell.svg      $pkgdir/usr/share/icons/pixmaps
+  cp ./gsl-shell.svg      $pkgdir/usr/share/icons
 }
