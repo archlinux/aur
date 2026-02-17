@@ -1,6 +1,6 @@
 # Maintainer: Bjoern Foersterling <bjoern.foersterling@gmail.com>
 pkgname=mdtoc
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 epoch=
 pkgdesc="Command line Markdown viewer/editor/toc generator."
@@ -9,7 +9,6 @@ url="https://github.com/bfoersterling/mdtoc"
 license=('GPL')
 groups=()
 depends=('cmark' 'readline')
-makedepends=('cmark' 'readline')
 checkdepends=('check' 'valgrind')
 optdepends=()
 provides=('mdtoc')
