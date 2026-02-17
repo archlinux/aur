@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc=''
 url='https://github.com/xdagiz/xytz'
 arch=('aarch64' 'x86_64')
-license=('')
+license=('MIT')
 provides=('xytz')
 conflicts=('xytz')
 
