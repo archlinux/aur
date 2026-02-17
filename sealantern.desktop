@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=SeaLantern
+GenericName=Minecraft Server Manager
+Comment=一个轻量化的 Minecraft 服务器管理工具
+Exec=/usr/bin/sealantern
+Icon=sealantern
+Terminal=false
+Categories=Game;Utility;
+Keywords=minecraft;server;manager;
+StartupWMClass=Sea Lantern
+MimeType=

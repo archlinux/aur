@@ -1,0 +1,25 @@
+pkgbase = sealantern
+	pkgdesc = 一个轻量化的 Minecraft 服务器管理工具，基于 Tauri 2 + Rust + Vue 3 开发
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/FPSZ/SeaLantern
+	install = sealantern.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk-4.1
+	options = !strip
+	options = !emptydirs
+	source = sealantern.desktop
+	sha256sums = SKIP
+	source_x86_64 = https://github.com/FPSZ/SeaLantern/releases/download/sea-lantern-v0.6.0/Sea.Lantern_0.6.0_amd64.AppImage
+	sha256sums_x86_64 = SKIP
+
+pkgname = sealantern
