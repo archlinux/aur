@@ -3,12 +3,12 @@
 
 pkgname=openspecfun
 pkgver=0.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="collection of special mathematical functions"
 arch=('i686' 'x86_64')
 url="https://github.com/JuliaLang/openspecfun"
 license=('custom:Faddeeva' 'custom:Amos')
-depends=('gcc-libs')
+depends=('glibc' 'libgcc' 'libgfortran')
 makedepends=('gcc-fortran')
 options=('!emptydirs')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/JuliaLang/openspecfun/archive/v${pkgver}.tar.gz")
