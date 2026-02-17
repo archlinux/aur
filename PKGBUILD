@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="一个轻量化的 Minecraft 服务器管理工具 ，基于 Tauri 2 + Rust + Vue 3"
 arch=('x86_64')
 url="https://github.com/FPSZ/SeaLantern"
-license=('MIT')
+license=('GPL-3.0-or-later')
 depends=(
     # GTK 相关基础依赖
     'cairo'
