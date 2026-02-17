@@ -4,9 +4,7 @@
 pkgbase=netbird
 pkgname=(
   $pkgbase
-  $pkgbase-management
-  $pkgbase-signal
-  $pkgbase-relay
+  $pkgbase-server
   $pkgbase-ui
 )
 pkgver=0.65.1
@@ -23,8 +21,10 @@ _ui_depends=(
   libxxf86vm
 )
 makedepends=('go' "${_ui_depends[@]}")
-source=("$pkgbase-$pkgver.tar.gz::https://github.com/netbirdio/netbird/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0e2e8f01bf78552ecf670558c6382c673c1cccc94df848a751e175bd61f5c143')
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/netbirdio/netbird/archive/refs/tags/v$pkgver.tar.gz"
+        "netbird-server.service")
+sha256sums=('0e2e8f01bf78552ecf670558c6382c673c1cccc94df848a751e175bd61f5c143'
+            '6e42973058b2db1a167ac110692d02c57b93d29ce6f68d8d5f8b91babcd856c9')
 
 prepare() {
   cd "$srcdir/$pkgbase-$pkgver"
@@ -45,25 +45,18 @@ build() {
   go build \
     -o build \
     -ldflags "-s -w -linkmode=external -X github.com/netbirdio/netbird/version.version=$pkgver -extldflags \"$LDFLAGS\"" \
-    ./client ./signal ./management ./relay ./client/ui
+    ./client ./client/ui ./combined
 
-  # relay does not support completions
-  local bin shell
-  for bin in client signal management; do
-    for shell in bash fish zsh; do
-      ./build/$bin completion $shell >build/$bin.$shell
-    done
+  local shell
+  for shell in bash fish zsh; do
+    ./build/client completion $shell >build/client.$shell
   done
 }
 
 # upstream test suite requires root
 check() {
   cd "$srcdir/$pkgbase-$pkgver/build"
-
-  # relay does not support --version
   [[ "$(./client version)" == $pkgver ]]
-  [[ "$(./management --version)" == "$pkgbase-mgmt version $pkgver" ]]
-  [[ "$(./signal --version)" == "$pkgbase-signal version $pkgver" ]]
 }
 
 _completions() {
@@ -92,6 +85,21 @@ package_netbird() {
   install -Dm644 netbird@.service -t "$pkgdir/usr/lib/systemd/system/"
 }
 
+package_netbird-server() {
+  license=('AGPL-3.0-only')
+  backup=(etc/$pkgname/config.yaml)
+  depends=(glibc ca-certificates)
+  optdepends=('redis: IDP cache store')
+  pkgdesc='WireGuard-based overlay network: single-binary server'
+  replaces=($pkgbase-{management,signal,relay})
+
+  install -Dm644 $pkgname.service -t "$pkgdir/usr/lib/systemd/system/"
+
+  cd "$srcdir/$pkgbase-$pkgver"
+  install -Dm755 build/combined "$pkgdir/usr/bin/$pkgname"
+  install -Dm640 combined/config.yaml.example "$pkgdir/etc/$pkgname/config.yaml"
+}
+
 package_netbird-ui() {
   license=('BSD-3-Clause')
   pkgdesc='GUI for the Netbird client'
@@ -108,60 +116,4 @@ package_netbird-ui() {
   cd client/ui
   install -Dm644 assets/netbird.png "$pkgdir/usr/share/pixmaps/netbird.png"
   install -Dm644 build/netbird.desktop "$pkgdir/usr/share/applications/netbird.desktop"
-}
-
-package_netbird-management() {
-  license=('AGPL-3.0-only')
-  backup=(etc/default/$pkgname)
-  depends=(glibc ca-certificates)
-  optdepends=('redis: IDP cache store')
-  pkgdesc='WireGuard-based overlay network: management service'
-
-  install -dm755 "$pkgdir/etc/$pkgbase"
-
-  cd "$srcdir/$pkgbase-$pkgver"
-  install -Dm755 build/management "$pkgdir/usr/bin/$pkgbase-mgmt"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  _completions management "$pkgbase-mgmt"
-
-  cd release_files/systemd/
-  install -Dm644 env "$pkgdir/etc/default/$pkgname"
-  install -Dm644 $pkgname.service -t "$pkgdir/usr/lib/systemd/system/"
-}
-
-package_netbird-signal() {
-  license=('AGPL-3.0-only')
-  backup=(etc/default/$pkgname)
-  depends=(glibc)
-  pkgdesc='WireGuard-based overlay network: signal service'
-
-  cd "$srcdir/$pkgbase-$pkgver"
-  install -Dm755 build/signal "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  _completions signal "$pkgname"
-
-  cd release_files/systemd/
-  install -Dm644 env "$pkgdir/etc/default/$pkgname"
-  install -Dm644 $pkgname.service -t "$pkgdir/usr/lib/systemd/system/"
-}
-
-package_netbird-relay() {
-  license=('AGPL-3.0-only')
-  backup=(etc/default/$pkgname)
-  depends=(glibc)
-  pkgdesc='WireGuard-based overlay network: relay service'
-
-  cd "$srcdir/$pkgbase-$pkgver"
-  install -Dm755 build/relay "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  cd release_files/systemd/
-  if [[ ! -f $pkgname.service ]]; then
-    cp netbird-signal.service $pkgname.service
-    sed -i 's|Netbird Signal|Netbird Relay|' $pkgname.service
-    sed -i 's|netbird-signal|netbird-relay|' $pkgname.service
-    sed -i -E 's|^ExecStart=.+|ExecStart=/usr/bin/netbird-relay $FLAGS|' $pkgname.service
-  fi
-  install -Dm644 env "$pkgdir/etc/default/$pkgname"
-  install -Dm644 $pkgname.service -t "$pkgdir/usr/lib/systemd/system/"
 }

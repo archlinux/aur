@@ -19,7 +19,9 @@ pkgbase = netbird
 	makedepends = libxrandr
 	makedepends = libxxf86vm
 	source = netbird-0.65.1.tar.gz::https://github.com/netbirdio/netbird/archive/refs/tags/v0.65.1.tar.gz
+	source = netbird-server.service
 	sha256sums = 0e2e8f01bf78552ecf670558c6382c673c1cccc94df848a751e175bd61f5c143
+	sha256sums = 6e42973058b2db1a167ac110692d02c57b93d29ce6f68d8d5f8b91babcd856c9
 
 pkgname = netbird
 	pkgdesc = WireGuard-based overlay network: client
@@ -29,25 +31,16 @@ pkgname = netbird
 	replaces = wiretrustee
 	backup = etc/default/netbird
 
-pkgname = netbird-management
-	pkgdesc = WireGuard-based overlay network: management service
+pkgname = netbird-server
+	pkgdesc = WireGuard-based overlay network: single-binary server
 	license = AGPL-3.0-only
 	depends = glibc
 	depends = ca-certificates
 	optdepends = redis: IDP cache store
-	backup = etc/default/netbird-management
-
-pkgname = netbird-signal
-	pkgdesc = WireGuard-based overlay network: signal service
-	license = AGPL-3.0-only
-	depends = glibc
-	backup = etc/default/netbird-signal
-
-pkgname = netbird-relay
-	pkgdesc = WireGuard-based overlay network: relay service
-	license = AGPL-3.0-only
-	depends = glibc
-	backup = etc/default/netbird-relay
+	replaces = netbird-management
+	replaces = netbird-signal
+	replaces = netbird-relay
+	backup = etc/netbird-server/config.yaml
 
 pkgname = netbird-ui
 	pkgdesc = GUI for the Netbird client
