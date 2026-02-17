@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 
 pkgname=checkup
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Repository release tracker"
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ source_aarch64=("checkup-aarch64-$pkgver-$pkgrel::$url/releases/download/v$pkgve
 sha256sums=('184086b302ece79e686ac701ca404fe7a49499626c82f684dce1b820af59710c'
             '497a8322a8df697d6547bded2672aee9828fc0b372a5690c99f504b2cdb15027'
             '46f32d04d4a3a8a95c9be0eb68fb6faad63b21c34cca38c88b970f2136468959')
-sha256sums_x86_64=('0f3c814da2a8330e2b2bd90e1d9f18585b361fb1ef4fd90917d28e87cb1f7f50')
-sha256sums_aarch64=('a1e5644521ef6e14ebcffeab524d4073ca52e8aaaa9e18a46463b1fdbaa0f09a')
+sha256sums_x86_64=('093503118f91fd7273c5fec799514a63a573cd065b40e5fba4e6fadfdeb6cedb')
+sha256sums_aarch64=('2f06af33f93756523da6e37f13ed145f1b9666dedfbafe2959ac85830b7ca09a')
 
 package() {
   if [ "$CARCH" == "x86_64" ]; then
