@@ -2,7 +2,7 @@
 
 _pkgname=stevia
 pkgname=stevia-git
-pkgver=0.51.0.r0.g41a3630
+pkgver=0.53.0.r0.g9a8d1ee
 pkgrel=1
 pkgdesc='A user friendly on screen keyboard for Phosh'
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
@@ -12,13 +12,13 @@ depends=(
   cairo
   dconf
   feedbackd
-  gcc-libs
   glib2
   glibc
   gnome-desktop
   gtk3
   hunspell
   json-glib
+  libgcc
   libhandy
   pango
   systemd-libs
