@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=uutils-sed-git
-pkgver=r66.gae78f46
+pkgver=r725.g81e71bc
 pkgrel=1
 pkgdesc="Rust implementation of sed"
 arch=('i686' 'x86_64')
 url="https://github.com/uutils/sed"
 license=('MIT')
-depends=('gcc-libs')
+depends=('glibc' 'libgcc')
 makedepends=('git' 'cargo')
 provides=("uutils-sed=$pkgver")
 conflicts=('uutils-sed')
@@ -49,8 +49,8 @@ package() {
     --path .
 
   for path in "$pkgdir/usr/bin"/*; do
-    dir=$(dirname $path)
-    basename=$(basename $path)
+    dir=$(dirname "$path")
+    basename=$(basename "$path")
     mv "$dir/$basename" "$dir/uutils-$basename"
   done
 

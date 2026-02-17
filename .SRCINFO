@@ -1,6 +1,6 @@
 pkgbase = uutils-sed-git
 	pkgdesc = Rust implementation of sed
-	pkgver = r66.gae78f46
+	pkgver = r725.g81e71bc
 	pkgrel = 1
 	url = https://github.com/uutils/sed
 	arch = i686
@@ -8,8 +8,9 @@ pkgbase = uutils-sed-git
 	license = MIT
 	makedepends = git
 	makedepends = cargo
-	depends = gcc-libs
-	provides = uutils-sed=r66.gae78f46
+	depends = glibc
+	depends = libgcc
+	provides = uutils-sed=r725.g81e71bc
 	conflicts = uutils-sed
 	source = git+https://github.com/uutils/sed.git
 	sha256sums = SKIP
