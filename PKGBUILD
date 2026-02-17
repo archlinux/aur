@@ -3,8 +3,8 @@
 
 _pkgname=godot
 pkgname=${_pkgname}32
-pkgver=4.6
-pkgrel=6
+pkgver=4.6.1
+pkgrel=1
 pkgdesc='Advanced cross-platform 2D and 3D game engine (32-bit)'
 url='https://godotengine.org/'
 license=(MIT)
