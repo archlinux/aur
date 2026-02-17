@@ -1,4 +1,4 @@
-# Maintainer: system72 <system72@waifu.club>
+# Contributor: system72 <system72@waifu.club>
 # Contributor: Joshua Smith <smolsheep@opensuse.org>
 
 pkgname=iamb-bin
