@@ -4,7 +4,7 @@
 # Contributor: Michell Gailing <gailing.michell at gmail dot com>
 
 pkgname="pterodactyl-panel"
-pkgver=1.12.0
+pkgver=1.12.1
 pkgrel=1
 pkgdesc="An open-source game server management panel"
 url="https://pterodactyl.io/"
@@ -21,7 +21,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/pterodactyl/panel/releases/
         "pterodactyl-queue.service"
         "pterodactyl-scheduler.service"
         "pterodactyl-scheduler.timer")
-b2sums=('71d5aee98e5008bb5474b5818d6aa97e5df7f18d7d47be1a47c7c10adfc1976527eb766e1d5f6b29345bbec8b4f48c42dffa099550315f434665e9122df4b7c3'
+b2sums=('880c8f0e6da0a5f53fa64a7d6dea3ad00b9953bad4bec20817a7ac835874e30010b1e6068068f38562302816b8720ec4d3707a195e94763ba789c983cfcb381f'
         'c59cd8370e4360538038fa2a6daac10c327407c3c2e71b1d9b60b107c2f69ab5377f22d4d8e00c7e0cdc9c882aa0ae663531f4ee12e39cc58e20ef66d5e4d48e'
         '38fa485a2d71cb9e7b5d181ded53bc9e228628cafb854ca9bd7087895b42af78b735c636840e3f2f74abdad03fa4682cc81d5b34972498ddbaf41a6f784469a2'
         '8924479c22eaff27483d0d85ec2c2385193d754adac6b655e0ef986bec1ab871c4a269f511b8f4a2b98b5f89ee45d0ed300ce1f632a2d33a2e0260e8e4a66ad7')
