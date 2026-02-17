@@ -1,6 +1,6 @@
 pkgbase = uutils-util-linux-git
 	pkgdesc = Rust reimplementation of the util-linux project
-	pkgver = 0.0.1.r311.gdd76c2a
+	pkgver = 0.0.1.r937.g1c5ba77
 	pkgrel = 1
 	url = https://github.com/uutils/util-linux
 	arch = i686
@@ -8,8 +8,9 @@ pkgbase = uutils-util-linux-git
 	license = MIT
 	makedepends = git
 	makedepends = cargo
-	depends = gcc-libs
-	provides = uutils-util-linux=0.0.1.r311.gdd76c2a
+	depends = glibc
+	depends = libgcc
+	provides = uutils-util-linux=0.0.1.r937.g1c5ba77
 	conflicts = uutils-util-linux
 	source = git+https://github.com/uutils/util-linux.git
 	sha256sums = SKIP
