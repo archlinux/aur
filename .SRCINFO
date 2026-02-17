@@ -1,6 +1,6 @@
 pkgbase = mkinitcpio-autohooks
 	pkgdesc = Auto-manage mkinitcpio HOOKS based on mdraid/LUKS presence and rebuild initramfs
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	arch = any
 	license = GPL2
@@ -10,7 +10,7 @@ pkgbase = mkinitcpio-autohooks
 	depends = grep
 	depends = mkinitcpio
 	depends = util-linux
-	source = https://github.com/snuglinux/mkinitcpio-autohooks/archive/refs/tags/0.0.2.tar.gz
+	source = https://github.com/snuglinux/mkinitcpio-autohooks/archive/refs/tags/0.0.3.tar.gz
 	sha256sums = 7c82569b7895b886fd28b9f62f4a79539fb95828c9cfbab10d172b26ee25824f
 
 pkgname = mkinitcpio-autohooks
