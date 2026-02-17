@@ -1,6 +1,6 @@
-# Maintainer: Tommy Falkowski <tommy@byteowlz.com>
+# Maintainer: byteowlz <dev@byteowlz.com>
 pkgname=sldr
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Modular markdown presentations powered by slidev"
 arch=('x86_64' 'aarch64')
