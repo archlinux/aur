@@ -4,7 +4,7 @@
 pkgname=iamb-bin
 _pkg=iamb
 pkgver=0.0.11
-pkgrel=2
+pkgrel=3
 pkgdesc='A Matrix client for Vim addicts'
 url='https://github.com/ulyssa/iamb'
 arch=('x86_64')
