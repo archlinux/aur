@@ -1,7 +1,7 @@
 pkgbase = redpoweroffinformer-git
 	pkgdesc = A tool to inform about power-off events
-	pkgver = r24.63aa038
-	pkgrel = 1
+	pkgver = r25.23b47b2
+	pkgrel = 2
 	url = https://github.com/Red007Master/RedPowerOffInformer
 	arch = x86_64
 	license = GPL3
