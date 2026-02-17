@@ -5,7 +5,7 @@ After=graphical-session.target
 [Service]
 Type=simple
 ExecStartPre=/usr/bin/http-remote-pc-control --generate --if-missing
-ExecStart=/usr/bin/http-remote-pc-control --port=5000 --cli --cert-dir=%h/.local/share/http-remote-pc-control/certs
+ExecStart=/usr/bin/http-remote-pc-control --port=5000 --cert-dir=%h/.local/share/http-remote-pc-control/certs
 Restart=on-failure
 RestartSec=2
 

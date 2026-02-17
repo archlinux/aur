@@ -1,6 +1,6 @@
 pkgbase = http-remote-pc-control
 	pkgdesc = HTTP remote PC control tool
-	pkgver = 3.0.3
+	pkgver = 3.0.4
 	pkgrel = 1
 	url = https://github.com/akoidan/http-remote-pc-control
 	install = http-remote-pc-control.install
@@ -11,13 +11,13 @@ pkgbase = http-remote-pc-control
 	depends = dbus
 	optdepends = openssl: generate TLS certificates on first start
 	options = !strip
-	source = http-remote-pc-control-v3.0.3::https://github.com/akoidan/http-remote-pc-control/releases/download/v3.0.3/http-remote-pc-control.elf
-	source = openapi.json-v3.0.3::https://github.com/akoidan/http-remote-pc-control/releases/download/v3.0.3/openapi.json
+	source = http-remote-pc-control-v3.0.4::https://github.com/akoidan/http-remote-pc-control/releases/download/v3.0.4/http-remote-pc-control.elf
+	source = openapi.json-v3.0.4::https://github.com/akoidan/http-remote-pc-control/releases/download/v3.0.4/openapi.json
 	source = http-remote-pc-control.service
 	source = http-remote-pc-control.install
-	sha256sums = bb42642f21962ac6035a9c8163a832185a269c583e8e32fe65181d48e0010338
-	sha256sums = 928b9d28d09c2857b697a357933258ac787ddebd7a90f66303d385f001cf4cc6
-	sha256sums = f5b8e817f353a11cd41f8ca9832f19ee7a589d196c1bd70e02f66634337e1de3
+	sha256sums = ec2f9a2699c3e4be28088647b572586fab4d256c12af1ce18023e6d770379f45
+	sha256sums = 7a51ddba8ad85e773a0ce2a54f19f6e26ded1403de81c4302299a643c64f547e
+	sha256sums = 12974cfcc3f2dc167d0e2a003a0d23f4cc8f0a9fe60e40d832c0618ee781bedf
 	sha256sums = a75e2cf6c74cc74e82ffd8c83d4942967025b2853f4e3a146f8a1244426b0171
 
 pkgname = http-remote-pc-control
