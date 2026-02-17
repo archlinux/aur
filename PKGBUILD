@@ -1,26 +1,43 @@
 # Maintainer: Rob Cohen <rob@robcohen.dev>
-pkgname=rustledger-bin
-pkgver=0.8.8
+pkgbase=rustledger-bin
+pkgname=(rustledger-bin rustledger-bin-bean-compat)
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Fast, pure Rust implementation of Beancount double-entry accounting (pre-built binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rustledger/rustledger"
 license=('GPL-3.0-only')
-provides=('rustledger' 'rledger')
-conflicts=('rustledger')
+depends=('glibc' 'libgcc')
 source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/rustledger/rustledger/v${pkgver}/LICENSE")
-source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/rustledger/rustledger/releases/download/v${pkgver}/rustledger-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/rustledger/rustledger/releases/download/v${pkgver}/rustledger-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
+source_x86_64=("${pkgbase}-${pkgver}-x86_64.tar.gz::https://github.com/rustledger/rustledger/releases/download/v${pkgver}/rustledger-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
+source_aarch64=("${pkgbase}-${pkgver}-aarch64.tar.gz::https://github.com/rustledger/rustledger/releases/download/v${pkgver}/rustledger-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
 sha256sums=('SKIP')
-sha256sums_x86_64=('2f1503a1d05ba0638882a697ca567230a9aaac2df227c7e6244207a88b31abf4')
-sha256sums_aarch64=('d6062b9fbf2175fccb9c03e1b4d89000ca7ee68e013bd160dff369f3de799a89')
+sha256sums_x86_64=('2b6b571faa0c15c74f6d92afd49ca6fb302758cb622c00bdd951d0771778e15a')
+sha256sums_aarch64=('d8cfd95c742fc7c0fe333fd73b26b0ac4fc024eee5a2364d7535be60388ce227')
 
-package() {
-    cd "$srcdir"
+package_rustledger-bin() {
+    pkgdesc="Fast, pure Rust implementation of Beancount double-entry accounting (pre-built binary)"
+    provides=("rustledger=$pkgver")
+    conflicts=('rustledger')
 
     # Install main binaries
     install -Dm755 rledger "$pkgdir/usr/bin/rledger"
     install -Dm755 rledger-lsp "$pkgdir/usr/bin/rledger-lsp"
+
+    # Install shell completions
+    install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/rledger" < <(./rledger completions bash)
+    install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_rledger" < <(./rledger completions zsh)
+    install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/rledger.fish" < <(./rledger completions fish)
+
+    # Install license
+    install -Dm644 "LICENSE-${pkgver}" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+package_rustledger-bin-bean-compat() {
+    pkgdesc="Beancount-compatible bean-* commands for rustledger (drop-in replacement, pre-built binary)"
+    depends=('rustledger-bin')
+    conflicts=('beancount' 'rustledger-bean-compat')
+    provides=('beancount' 'rustledger-bean-compat')
 
     # Install beancount compatibility binaries
     for bin in bean-check bean-format bean-query bean-report bean-doctor bean-extract bean-price; do

@@ -1,19 +1,29 @@
 pkgbase = rustledger-bin
 	pkgdesc = Fast, pure Rust implementation of Beancount double-entry accounting (pre-built binary)
-	pkgver = 0.8.8
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/rustledger/rustledger
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-only
-	provides = rustledger
-	provides = rledger
-	conflicts = rustledger
-	source = LICENSE-0.8.8::https://raw.githubusercontent.com/rustledger/rustledger/v0.8.8/LICENSE
+	depends = glibc
+	depends = libgcc
+	source = LICENSE-0.9.0::https://raw.githubusercontent.com/rustledger/rustledger/v0.9.0/LICENSE
 	sha256sums = SKIP
-	source_x86_64 = rustledger-bin-0.8.8-x86_64.tar.gz::https://github.com/rustledger/rustledger/releases/download/v0.8.8/rustledger-v0.8.8-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 2f1503a1d05ba0638882a697ca567230a9aaac2df227c7e6244207a88b31abf4
-	source_aarch64 = rustledger-bin-0.8.8-aarch64.tar.gz::https://github.com/rustledger/rustledger/releases/download/v0.8.8/rustledger-v0.8.8-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = d6062b9fbf2175fccb9c03e1b4d89000ca7ee68e013bd160dff369f3de799a89
+	source_x86_64 = rustledger-bin-0.9.0-x86_64.tar.gz::https://github.com/rustledger/rustledger/releases/download/v0.9.0/rustledger-v0.9.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 2b6b571faa0c15c74f6d92afd49ca6fb302758cb622c00bdd951d0771778e15a
+	source_aarch64 = rustledger-bin-0.9.0-aarch64.tar.gz::https://github.com/rustledger/rustledger/releases/download/v0.9.0/rustledger-v0.9.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = d8cfd95c742fc7c0fe333fd73b26b0ac4fc024eee5a2364d7535be60388ce227
 
 pkgname = rustledger-bin
+	pkgdesc = Fast, pure Rust implementation of Beancount double-entry accounting (pre-built binary)
+	provides = rustledger=0.9.0
+	conflicts = rustledger
+
+pkgname = rustledger-bin-bean-compat
+	pkgdesc = Beancount-compatible bean-* commands for rustledger (drop-in replacement, pre-built binary)
+	depends = rustledger-bin
+	provides = beancount
+	provides = rustledger-bean-compat
+	conflicts = beancount
+	conflicts = rustledger-bean-compat
