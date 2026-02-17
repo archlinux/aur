@@ -2,7 +2,7 @@
 
 pkgname=stork
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Impossibly fast web search, made for static sites."
 arch=('x86_64')
 url="https://github.com/jameslittle230/stork"
@@ -13,8 +13,11 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 md5sums=('5ce2c63569dd4f484930ab026324088f')
 
 build() {
-  cd "$pkgname-$pkgver"
-  cargo build --release --locked
+    cd "$pkgname-$pkgver"/stork-wasm
+    sed -i '15 s/.6/.7/' Cargo.toml
+    sed -i '18 s/78/108/' Cargo.toml
+    cd ..
+    cargo build --release
 }
 
 check() {
