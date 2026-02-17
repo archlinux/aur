@@ -1,0 +1,3 @@
+post_install() {
+    echo ":: Read MIGRATION.md for more information on how to migrate your data from yakitrak/obsidian-cli."
+}
