@@ -1,7 +1,7 @@
 pkgbase = zenoh-c
 	pkgdesc = C API for Zenoh
 	pkgver = 1.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zenoh.io/
 	arch = any
 	license = Apache-2.0

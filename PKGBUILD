@@ -2,7 +2,7 @@
 
 pkgname=zenoh-c
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="C API for Zenoh"
 arch=('any')
 url="https://zenoh.io/"
@@ -19,9 +19,9 @@ options=(!debug)
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
   patch --strip=1 --input="$srcdir/static_init.patch"
-  cargo update
+  cargo update --package static_init
   cd "$srcdir/$pkgname-$pkgver/build-resources/opaque-types/"
-  cargo update
+  cargo update --package static_init
 }
 
 build() {
