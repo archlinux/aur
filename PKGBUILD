@@ -17,7 +17,7 @@ depends=(
     'python-textual'
     'python-toml'
 )
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-uv-build')
 source=("https://files.pythonhosted.org/packages/source/m/mutmut/mutmut-$pkgver.tar.gz")
 sha256sums=('b3b47e60828192c9f2e7737316469777f769a9163d0e384776129b80f7e8aa3e')
 
