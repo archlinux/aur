@@ -1,0 +1,4 @@
+/pkg/
+/src/
+/pacpac/
+*.pkg.tar.zst
