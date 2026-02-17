@@ -2,7 +2,7 @@
 _pkgname="zutui"
 pkgname="$_pkgname-git"
 pkgver="1.0.0.r8.ceefa47"
-pkgrel=2
+pkgrel=3
 pkgdesc="TUI for accessing edziekanat of ZUT university"
 arch=("any")
 url="https://github.com/shv187/zutui"
