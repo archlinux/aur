@@ -6,8 +6,8 @@ pkgbase = java-chatty
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = gradle
-	makedepends = java-environment>=23
-	depends = java-runtime
+	makedepends = java-environment<25
+	depends = java-runtime<25
 	depends = sh
 	optdepends = streamlink: for watching streams in a custom video player.
 	optdepends = livestreamer: for watching streams in a custom video player.
