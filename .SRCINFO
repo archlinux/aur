@@ -8,8 +8,6 @@ pkgbase = imx471-dkms-git
 	makedepends = git
 	makedepends = linux-headers
 	depends = dkms
-	provides = imx471-dkms-dkms
-	conflicts = imx471-dkms-dkms
 	source = git+https://github.com/BenBJD/imx471-dkms.git
 	sha256sums = SKIP
 
