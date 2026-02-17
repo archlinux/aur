@@ -3,12 +3,12 @@
 pkgname=micyou-bin
 _pkgver=1.1.0-20260216-1523
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Turn your Android device into a high-quality wireless microphone for your PC"
 arch=('x86_64')
 url="https://github.com/LanRhyme/MicYou"
 license=('MIT')
-depends=('alsa-lib' 'fontconfig' 'freetype2' 'glibc' 'libgl' 'libx11' 'libxext' 'libxi' 'libxrender' 'libxtst' 'zlib')
+depends=('alsa-lib' 'fontconfig' 'freetype2' 'glibc' 'libappindicator' 'libgl' 'libx11' 'libxext' 'libxi' 'libxrender' 'libxtst' 'zlib')
 provides=('micyou')
 conflicts=('micyou')
 options=('!strip')
