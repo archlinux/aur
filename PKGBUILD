@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mindwtr
 pkgver=0.6.16
-pkgrel=1
+pkgrel=2
 _nodeversion=20
 pkgdesc="Mind Like Water: A complete Getting Things Done (GTD) productivity system"
 arch=('x86_64')
@@ -26,7 +26,7 @@ makedepends=(
 )
 source=("git+https://github.com/dongdongbh/Mindwtr.git#tag=v$pkgver"
         "$pkgname.desktop")
-sha256sums=('337bf6697a4884dad4204a02f31cd95da2fdf61d7c1335b1fcc9196d94fef8e9'
+sha256sums=('0cbb991040356c88c5408a7aca03c993d403eb4eea4898dac46b13d4517a3f1a'
             'c283dc386b122df8db1157a2f74e7cfd780ab65133ab8fef6c74b2179f85161c')
 
 _ensure_local_nvm() {
