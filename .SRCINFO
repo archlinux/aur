@@ -1,13 +1,16 @@
 pkgbase = python-py-radix
 	pkgdesc = Implements the radix tree data structure
-	pkgver = 0.10.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/mjschultz/py-radix
+	arch = aarch64
 	arch = x86_64
-	license = BSD
+	license = BSD-4-Clause
+	license = ISC
+	makedepends = python-setuptools
+	depends = glibc
 	depends = python
-	source = python-py-radix-0.10.0.tar.gz::https://github.com/mjschultz/py-radix/archive/v0.10.0.tar.gz
-	sha256sums = 13eb2b0b228973c8fe79370db0d8c14ad74965ed8491d347483792cb20b8453b
+	source = python-py-radix-1.1.0.tar.gz::https://github.com/mjschultz/py-radix/archive/v1.1.0.tar.gz
+	sha256sums = 969a3bb057d298c9b4dd537d70ce15143089fc20cd896c9f91b044691985b143
 
 pkgname = python-py-radix
-
