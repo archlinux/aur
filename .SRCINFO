@@ -15,6 +15,7 @@ pkgbase = node-llama-cpp
 	depends = vulkan-icd-loader
 	depends = cuda-toolkit
 	provides = node-llama-cpp
+	provides = nlc
 	replaces = nodejs-node-llama-cpp
 	noextract = node-llama-cpp-3.15.1.tgz
 	options = !strip

@@ -11,10 +11,10 @@ arch=("x86_64")
 url="https://github.com/withcatai/node-llama-cpp"
 license=("MIT")
 
-replaces=("nodejs-${_npmname}")
 depends=('glibc' 'libgcc' 'bash' 'nodejs' 'libstdc++' 'vulkan-icd-loader' 'cuda-toolkit')
+replaces=("nodejs-${_npmname}")
+provides=("${_npmname}" "nlc")
 makedepends=("npm" "jq")
-provides=("${_npmname}")
 
 options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
