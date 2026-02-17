@@ -1,6 +1,6 @@
 pkgbase = declarch-bin
 	pkgdesc = Universal declarative package manager - unify AUR, flatpak, npm, cargo, pip, and custom backends (pre-built binary)
-	pkgver = 0.4.3
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/nixval/declarch
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = declarch-bin
 	provides = declarch
 	conflicts = declarch
 	conflicts = declarch-git
-	source = declarch-0.4.3-x86_64-unknown-linux-gnu.tar.gz::https://github.com/nixval/declarch/releases/download/v0.4.3/declarch-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = SKIP
+	source = declarch-0.8.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/nixval/declarch/releases/download/v0.8.1/declarch-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = d0868257e53b7ad4d6caf1761fcb5139a1e116c3340fd84f63f23071ff634f4d
 
 pkgname = declarch-bin
