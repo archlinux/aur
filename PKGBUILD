@@ -1,4 +1,4 @@
-# Maintainer: Gabriel Bjørnager Jensen <gabrielbjensen@icloud.com>
+# Maintainer: Gabriel Bjørnager Jensen <gabriel at achernar dot io>
 pkgname=u8c-git
 pkgver=29_30.a48610b
 pkgrel=1
