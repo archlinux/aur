@@ -1,0 +1,13 @@
+pkgbase = sldr-bin
+	pkgdesc = Modular markdown presentations powered by slidev
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/byteowlz/sldr
+	arch = x86_64
+	license = MIT
+	provides = sldr
+	conflicts = sldr
+	source = sldr-0.2.0.tar.gz::https://github.com/byteowlz/sldr/releases/download/v0.2.0/sldr-v0.2.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = a1cb4c8cfc172008cff9b58b2ff3dbe68f434999a7110005cd33267cfe23fce3
+
+pkgname = sldr-bin
