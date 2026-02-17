@@ -1,4 +1,4 @@
-# Maintainer: Gabriel Jensen <gabrielbjensen@icloud.com>
+# Maintainer: Gabriel Jensen <gabriel at achernar dot io>
 pkgname=zp-git
 pkgver=1.0.0_89.08e2884
 pkgrel=1
