@@ -1,14 +1,14 @@
 # Maintainer: David Mazieres (http://www.scs.stanford.edu/~dm/addr/)
 pkgname=nvi-git
 pkgver=1.81.6.r80.62f62832
-pkgrel=1
+pkgrel=2
 pkgdesc="4BSD reimplementation of ex/vi (git snapshot)"
 arch=('x86_64' 'aarch64')
 url='https://repo.or.cz/nvi.git'
 license=('custom')
 depends=('ncurses')
 makedepends=('git' 'autoconf' 'automake' 'libtool' 'perl' 'pkgconf')
-provides=('nvi' 'ex-vi-compat')
+provides=('ex' 'vi' 'view' 'nvi' 'ex-vi-compat')
 conflicts=('nvi' 'ex-vi-compat')
 source=('nvi::git+https://repo.or.cz/nvi.git' 'nvi-db-ansi.patch')
 sha256sums=('SKIP'
