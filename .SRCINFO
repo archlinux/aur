@@ -1,0 +1,16 @@
+pkgbase = gperiodic
+	pkgdesc = A small GTK+-based program which allows you to browse through a periodic table of chemical elements.
+	pkgver = 3.0.3
+	pkgrel = 1
+	url = https://sourceforge.net/projects/gperiodic
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	makedepends = intltool
+	depends = gtk2
+	depends = hicolor-icon-theme
+	source = gperiodic-3.0.3.tar.gz::https://sourceforge.net/projects/gperiodic/files/gperiodic-3.0.3.tar.gz/download
+	sha256sums = 5e70128f61a311bd6b4ad129bd726ccc0e3731573cb0050201293e2a5389b29a
+
+pkgname = gperiodic
