@@ -61,32 +61,40 @@ package() {
     install -dm755 "$pkgdir/usr/share/webapps/$pkgname"
     cp -r * "$pkgdir/usr/share/webapps/$pkgname/"
     
-    # Move writable directories from /usr/share to /var/lib
+    # Move writable directories from /usr/share to /var/lib, /var/log, /var/cache
     # PHP-FPM runs with ProtectSystem=full, preventing writes to /usr, /boot, /efi
-    # All runtime-generated files (config, uploads, cache) must be in /var
+    # All runtime-generated files (config, uploads, cache, logs) must be in /var
     _relocate_and_link \
         "$pkgdir/usr/share/webapps/$pkgname/application/config" \
         "$pkgdir/var/lib/$pkgname/config"
     
-    # Remove other writable directories (will be created via tmpfiles.d)
-    # Then symlink to runtime locations managed by systemd-tmpfiles
-    rm -rf "$pkgdir/usr/share/webapps/$pkgname/uploads"
-    rm -rf "$pkgdir/usr/share/webapps/$pkgname/backup"
-    rm -rf "$pkgdir/usr/share/webapps/$pkgname/userdata"
-    rm -rf "$pkgdir/usr/share/webapps/$pkgname/updates"
-    rm -rf "$pkgdir/usr/share/webapps/$pkgname/application/logs"
-    rm -rf "$pkgdir/usr/share/webapps/$pkgname/application/cache"
-    rm -rf "$pkgdir/usr/share/webapps/$pkgname/images/eqsl_card_images"
+    _relocate_and_link \
+        "$pkgdir/usr/share/webapps/$pkgname/uploads" \
+        "$pkgdir/var/lib/$pkgname/uploads"
     
-    # Symlink writable directories to /var/lib and /var/cache (created by tmpfiles.d)
-    # Note: actual directories will be created by systemd-tmpfiles on first boot/install
-    ln -s "/var/lib/$pkgname/uploads" "$pkgdir/usr/share/webapps/$pkgname/uploads"
-    ln -s "/var/lib/$pkgname/backup" "$pkgdir/usr/share/webapps/$pkgname/backup"
-    ln -s "/var/lib/$pkgname/userdata" "$pkgdir/usr/share/webapps/$pkgname/userdata"
-    ln -s "/var/lib/$pkgname/updates" "$pkgdir/usr/share/webapps/$pkgname/updates"
-    ln -s "/var/log/$pkgname" "$pkgdir/usr/share/webapps/$pkgname/application/logs"
-    ln -s "/var/cache/$pkgname" "$pkgdir/usr/share/webapps/$pkgname/application/cache"
-    ln -s "/var/lib/$pkgname/eqsl_card_images" "$pkgdir/usr/share/webapps/$pkgname/images/eqsl_card_images"
+    _relocate_and_link \
+        "$pkgdir/usr/share/webapps/$pkgname/backup" \
+        "$pkgdir/var/lib/$pkgname/backup"
+    
+    _relocate_and_link \
+        "$pkgdir/usr/share/webapps/$pkgname/userdata" \
+        "$pkgdir/var/lib/$pkgname/userdata"
+    
+    _relocate_and_link \
+        "$pkgdir/usr/share/webapps/$pkgname/updates" \
+        "$pkgdir/var/lib/$pkgname/updates"
+    
+    _relocate_and_link \
+        "$pkgdir/usr/share/webapps/$pkgname/application/logs" \
+        "$pkgdir/var/log/$pkgname"
+    
+    _relocate_and_link \
+        "$pkgdir/usr/share/webapps/$pkgname/application/cache" \
+        "$pkgdir/var/cache/$pkgname"
+    
+    _relocate_and_link \
+        "$pkgdir/usr/share/webapps/$pkgname/images/eqsl_card_images" \
+        "$pkgdir/var/lib/$pkgname/eqsl_card_images"
     
     # Note: config.php and database.php will be created by the web-based installer
     # Users should NOT manually copy sample configs before running the installer
