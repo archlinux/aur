@@ -1,6 +1,6 @@
 # Maintainer: ushineko <https://github.com/ushineko>
 pkgname=fpsd-git
-pkgver=1.1.2.r31.g8cb743b
+pkgver=1.2.3.r35.g5218dd6
 pkgrel=1
 pkgdesc="Content-aware HTTPS interception proxy for ad blocking"
 arch=('x86_64')
