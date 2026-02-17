@@ -1,0 +1,13 @@
+pkgbase = scrpr-bin
+	pkgdesc = A fast CLI for extracting main content from websites
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/byteowlz/scrpr
+	arch = x86_64
+	license = MIT
+	provides = scrpr
+	conflicts = scrpr
+	source = scrpr-1.1.0.tar.gz::https://github.com/byteowlz/scrpr/releases/download/v1.1.0/scrpr_Linux_x86_64.tar.gz
+	sha256sums = 3a90bee68451f69761921081200e27dbe38de127c7238097b6087127e7c3278b
+
+pkgname = scrpr-bin
