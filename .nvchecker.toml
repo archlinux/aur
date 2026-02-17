@@ -1,0 +1,5 @@
+[python-basis_set_exchange]
+source = "github"
+github = "MolSSI-BSE/basis_set_exchange"
+use_latest_release = true
+prefix = "v"
