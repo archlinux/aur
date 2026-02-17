@@ -1,6 +1,6 @@
 pkgbase = flux
 	pkgdesc = Search, monitor, and nuke processes with ease, with system resource tracking
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/VG-dev1/flux
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = flux
 	depends = glibc
 	depends = gcc-libs
 	provides = flux
-	source = flux-0.2.0.tar.gz::https://github.com/VG-dev1/flux/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = ca01a86c8f0563320162343686f90a8283e284924fbb5ca35fd56188b9a80e0e
+	source = flux-0.3.0.tar.gz::https://github.com/VG-dev1/flux/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 0c052f4a96c3438df65f4e8178276ffc08a80cad95c2eb55625b95ed9a65ad5e
 
 pkgname = flux
