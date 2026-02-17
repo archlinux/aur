@@ -1,0 +1,17 @@
+pkgbase = ai-robots-txt-git
+	pkgdesc = List of AI crawler user agents. (git version)
+	pkgver = 1.44.r45.g48bfefb
+	pkgrel = 1
+	url = https://github.com/ai-robots-txt/ai.robots.txt
+	arch = any
+	license = MIT
+	optdepends = nginx: nginx blocker config
+	optdepends = haproxy: haproxy blocker config
+	optdepends = apache: htaccess blocker config
+	optdepends = caddy: caddy blocker config
+	provides = ai-robots-txt
+	conflicts = ai-robots-txt
+	source = git+https://github.com/ai-robots-txt/ai.robots.txt.git
+	sha256sums = SKIP
+
+pkgname = ai-robots-txt-git
