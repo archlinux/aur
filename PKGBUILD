@@ -3,11 +3,11 @@
 _gemname=selenium-webdriver
 pkgname=ruby-$_gemname
 pkgver=4.40.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A browser automation framework and ecosystem"
 arch=(x86_64)
 url=https://github.com/SeleniumHQ/selenium
-license=(Apache)
+license=(Apache-2.0)
 depends=(
 ruby-base64
 ruby-logger

@@ -1,10 +1,10 @@
 pkgbase = ruby-selenium-webdriver
 	pkgdesc = A browser automation framework and ecosystem
 	pkgver = 4.40.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SeleniumHQ/selenium
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	depends = ruby-base64
 	depends = ruby-logger
 	depends = ruby-rexml
