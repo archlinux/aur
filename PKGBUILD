@@ -1,5 +1,5 @@
 # Maintainer: GianniPapetti <gianapapeta@gmail.com>
-# https://github.com/adamperkowski/PKGBUILDs
+#
 
 pkgname=eddy
 pkgver=1.5.2
