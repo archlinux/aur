@@ -45,4 +45,26 @@ Categories=Development;
 Keywords=elixir;notebook;code;
 Icon=utilities-terminal
 EOF
+    install -Dm755 "${escript_dir}/livebook" "${pkgdir}/usr/bin/livebook"
+
+    mkdir -p "${pkgdir}/usr/bin"
+    cat <<'EOF' > "${pkgdir}/usr/bin/livebook-desktop"
+#!/bin/sh
+set -eu
+exec /usr/bin/livebook server @home "$@"
+EOF
+    chmod 755 "${pkgdir}/usr/bin/livebook-desktop"
+
+    mkdir -p "${pkgdir}/usr/share/applications"
+    cat <<'EOF' > "${pkgdir}/usr/share/applications/livebook.desktop"
+[Desktop Entry]
+Name=Livebook
+Comment=Interactive Elixir notebooks
+Exec=/usr/bin/livebook-desktop
+Terminal=false
+Type=Application
+Categories=Development;
+Keywords=elixir;notebook;code;
+Icon=utilities-terminal
+EOF
 }
