@@ -2,7 +2,7 @@
 _pkgname=trustbuilder
 pkgname=trustbuilder-appimage
 pkgver=6.38.0.5319
-pkgrel=1
+pkgrel=2
 pkgdesc='Trustbuilder Authenticator / AppImage version'
 arch=(x86_64)
 url=https://www.trustbuilder.com/
@@ -10,6 +10,7 @@ license=(GPL)
 _appimage="Authenticator6-Linux.AppImage"
 noextract=("${_appimage}")
 provides=('trustbuilder')
+depends=('fuse2')
 conflicts=('trustbuilder')
 options=(!strip !debug)
 source=("${_appimage}::https://download.trustbuilder.com/wp-content/uploads/${_appimage}")
