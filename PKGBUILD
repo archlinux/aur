@@ -2,13 +2,13 @@
 
 pkgname=heroic-games-launcher
 pkgver=2.19.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Native GOG, Epic Games and Amazon games launcher for Linux"
 arch=(x86_64)
 url="https://heroicgameslauncher.com/"
 license=(GPL-3.0-only)
-_electron=electron36
-depends=(which $_electron zlib gcc-libs glibc)
+_electron=electron39
+depends=(which $_electron zlib libgcc glibc)
 makedepends=(git pnpm npm python desktop-file-utils
 			 nodejs-lts-jod
 			 )
