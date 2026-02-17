@@ -1,7 +1,7 @@
 # Maintainer: evoludigit <your-email@example.com>
 pkgname=ascfix
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic ASCII diagram repair tool for Markdown files"
 arch=('x86_64')
 url="https://github.com/evoludigit/ascfix"
@@ -27,7 +27,9 @@ build() {
 check() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen
+    export TMPDIR="$srcdir/tmp"
+    mkdir -p "$TMPDIR"
+    cargo test --frozen --all-features
 }
 
 package() {
