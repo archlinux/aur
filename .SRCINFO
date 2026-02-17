@@ -1,6 +1,6 @@
 pkgbase = mstflint
 	pkgdesc = Open source version of MFT (Mellanox Firmware Tools)
-	pkgver = 4.34.1.3
+	pkgver = 4.34.1.4
 	pkgrel = 1
 	url = https://github.com/Mellanox/mstflint
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = mstflint
 	depends = jsoncpp
 	depends = curl
 	depends = libnghttp2
-	source = https://github.com/Mellanox/mstflint/archive/v4.34.1-3/mstflint-4.34.1-3.tar.gz
-	sha256sums = a54a1709498dbc050958d1616715cc2931d7823eb35379c589c7ef8559388de9
+	source = https://github.com/Mellanox/mstflint/archive/v4.34.1-4/mstflint-4.34.1-4.tar.gz
+	sha256sums = 9ccf491b49ae3ef1d42c1659b7ede060fa45cc771b4c788c0c86c10c9fc1e3dc
 
 pkgname = mstflint
