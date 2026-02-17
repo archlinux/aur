@@ -13,15 +13,11 @@ source=("${pkgname}-${pkgver}.tar.gz::https://codeload.github.com/voideez/cmdflo
 sha256sums=('SKIP')
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}/cmdflow"   # заход в подпапку с Cargo.toml
+    cd "${srcdir}/${pkgname}-${pkgver}/cmdflow"
     cargo build --release
 }
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}/cmdflow"
     install -Dm755 "target/release/cmdflow" "${pkgdir}/usr/bin/cmdflow"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
-
-
