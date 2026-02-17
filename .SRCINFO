@@ -1,6 +1,6 @@
 pkgbase = uutils-procps-git
 	pkgdesc = Rust reimplementation of the procps project
-	pkgver = 0.0.1.r627.g575a5cd
+	pkgver = 0.0.1.r1344.gad3e29a
 	pkgrel = 1
 	url = https://github.com/uutils/procps
 	arch = i686
@@ -8,8 +8,9 @@ pkgbase = uutils-procps-git
 	license = MIT
 	makedepends = git
 	makedepends = cargo
-	depends = gcc-libs
-	provides = uutils-procps=0.0.1.r627.g575a5cd
+	depends = glibc
+	depends = libgcc
+	provides = uutils-procps=0.0.1.r1344.gad3e29a
 	conflicts = uutils-procps
 	source = git+https://github.com/uutils/procps.git
 	sha256sums = SKIP
