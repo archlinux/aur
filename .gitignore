@@ -1,3 +1,4 @@
+*.log
 *.pkg.tar
 *.pkg.tar.*
 *.tar.gz

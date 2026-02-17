@@ -4,7 +4,7 @@
 _pkgname=squawk
 pkgname="${_pkgname}-cli"
 pkgver=2.40.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Linter for PostgreSQL, focused on migrations"
 arch=(
 	x86_64
@@ -87,4 +87,6 @@ package() {
 	cd "${_pkgname}-${pkgver}"
 
 	install -Dm0755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+
+	install -Dm644 {.,"${pkgdir}/usr/share/licenses/${pkgname}"}/LICENSE-MIT
 }
