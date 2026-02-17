@@ -1,7 +1,7 @@
 pkgbase = somafm_tui
 	pkgdesc = Terminal user interface for SomaFM internet radio
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zsh-ncursed/somafm_tui
 	arch = any
 	license = MIT

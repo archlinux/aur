@@ -1,7 +1,7 @@
 # Maintainer: zsh-ncursed <zsh.ncursed@protonmail.com>
 pkgname=somafm_tui
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal user interface for SomaFM internet radio"
 arch=('any')
 url="https://github.com/zsh-ncursed/somafm_tui"
@@ -61,8 +61,8 @@ package() {
     # Install executable wrapper
     install -Dm755 somafm_tui "$pkgdir/usr/bin/somafm-tui"
 
-    # Install shell scripts
-    [[ -f somafm.sh ]] && install -Dm755 somafm.sh "$pkgdir/usr/bin/somafm"
+    # Install shell scripts - use wrapper script instead of somafm.sh for system installation
+    [[ -f somafm_tui ]] && install -Dm755 somafm_tui "$pkgdir/usr/bin/somafm"
     [[ -f somafm.bash ]] && install -Dm644 somafm.bash "$pkgdir/usr/share/bash-completion/completions/somafm"
     [[ -f somafm.fish ]] && install -Dm644 somafm.fish "$pkgdir/usr/share/fish/vendor_completions.d/somafm"
 
