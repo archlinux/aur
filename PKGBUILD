@@ -2,11 +2,11 @@
 pkgname=python-mmcif
 _name=mmcif
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="mmCIF Core Access Library"
 arch=(x86_64)
 url="https://mmcif.wwpdb.org"
-license=('Apache')
+license=('Apache-2.0')
 makedepends=(cmake python-build python-installer python-setuptools)
 depends=(python python-requests python-msgpack)
 checkdepends=()
