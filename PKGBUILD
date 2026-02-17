@@ -2,7 +2,7 @@
 
 _pkgname='gopher2600'
 pkgname="${_pkgname}-bin"
-pkgver=0.53.0
+pkgver=0.53.1
 pkgrel=1
 pkgdesc='Emulator for the Atari 2600 games console'
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
   'gopher2600.desktop'
   'icon256.png'
 )
-sha256sums=('3d8bd5efd157bd8b0530d5c6214633cec87c51b22a75ae391d00adadc591fab2'
+sha256sums=('85e8061546501d12f8da8b086aa87a2d5ef15c9a18beaa2cd28ea5494fa536c8'
             '5a7e3c60624007a1eb9d126097590ff869fdf66512348c5938cb53a1cccd353d'
             'a5aa462653391b3861d1c50181526830903e5c32414b62aa33ddc5675a7d713c')
 options=("!strip")

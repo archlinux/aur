@@ -1,0 +1,4 @@
+[gopher2600-bin]
+source = "jq"
+url = "https://api.github.com/repos/JetSetIlly/Gopher2600/releases/latest"
+filter = 'if any(.assets[]; .name == "gopher2600_linux_amd64") then .tag_name else empty end'
