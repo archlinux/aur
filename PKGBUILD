@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=dol
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Detect dark/light mode on the CLI'
 url='https://github.com/netmute/dol'
@@ -9,11 +9,8 @@ license=('MIT')
 makedepends=('go')
 provides=('dol')
 conflicts=('dol-git' 'dol-bin')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-    "$pkgname-$pkgver.tar.gz.asc")
-sha256sums=('c9f915413dc11f796f3c223e86d24c56878c6fc692919d58685631362d810c67'
-            'SKIP')
-validpgpkeys=('EF4B4CB5DFB8822216A473B1597AB12E66262898')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('ae9f26e680a1f229ee9896e8b29fc95b78a1b27e00f5442aebb6074d9c1c7461')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
