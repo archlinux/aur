@@ -4,16 +4,16 @@
 _pkgname=cro-mag-rally
 pkgname="${_pkgname}-net"
 pkgver=3.0.2
-pkgrel=3
+pkgrel=4
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 pkgdesc='The wildest racing game since man invented the wheel! Experimental LAN build.'
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/jm2/CroMagRally'
 license=('custom:CC-BY-NC-SA-4.0')
-depends=('sdl2' 'glu' 'hicolor-icon-theme')
+depends=('sdl3' 'glu' 'hicolor-icon-theme')
 makedepends=('cmake' 'git')
-_commit='b9cf68c00330071e71ee6f5a2395ad40a76ba0a1'
+_commit='1345101db55ab1879b2e5caf11948b2beefc95fa'
 source=(
   "$_pkgname::git+$url.git#commit=$_commit"
   'git+https://github.com/jm2/Pomme.git'
