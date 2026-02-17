@@ -1,18 +1,18 @@
 pkgbase = appimage-thumbnailer
 	pkgdesc = Generates AppImage thumbnails for Linux desktops
-	pkgver = 3.0.2
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/kem-a/appimage-thumbnailer
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = meson
-	depends = 7zip
 	depends = cairo
 	depends = glibc
 	depends = dwarfs
 	depends = librsvg
-	source = appimage-thumbnailer-3.0.2.tar.gz::https://github.com/kem-a/appimage-thumbnailer/archive/refs/tags/v3.0.2.tar.gz
-	sha256sums = 8ea3ee9f72fbcfdb3905109605ccb804b47cf14f4647cd598c9331c89fd5385c
+	depends = squashfs-tools
+	source = appimage-thumbnailer-4.0.0.tar.gz::https://github.com/kem-a/appimage-thumbnailer/archive/refs/tags/v4.0.0.tar.gz
+	sha256sums = 0fb77483ce4ed7a944a1ce886168db7ae6dea5f50d36f9d8c80688bcea28c287
 
 pkgname = appimage-thumbnailer
