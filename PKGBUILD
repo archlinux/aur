@@ -6,7 +6,7 @@ pkgname=${_pkgname}-bin
 pkgdesc="Lightweight Docker monitoring with alerting"
 _appname=${_pkgname%%-cli}
 
-pkgver=0.1.4
+pkgver=0.2.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -42,8 +42,8 @@ sha256sums=('f78b9605aa21dc3ab580818cc3901e939ac7d579d2d552308b1d9fb7349f8e52'
             '98357980142450ebe781b28be81964dc5e2651499f9f098bd13da32173f3f539'
             'adeab60faa35075ff8adf4e96afe6cad56a4bd801a7c1f776a2f4104c3d522d0'
             '57cd1949897e7280e98b50df088880af2ca5dfd984b5ff6016db355c2439b7a7')
-sha256sums_x86_64=('d4ef2d72ec2b3a1940a3c4d8c5c32b4fb60671156166442c8ea393b19f01bbe0')
-sha256sums_aarch64=('d8b4722883779d2d616c275980212ddfdd9d46147e8caee975789ee3bf64496d')
+sha256sums_x86_64=('3d7ff4d12c5a8c6a19dbdd8c831bfd0284ed5bb4fd0f5fc8a09e3b60d90fa262')
+sha256sums_aarch64=('101f1a23d67dc5398c80d67ba567038944dd62b5fc3c9f777b5c1bea8b7eea1d')
 
 
 package() {
