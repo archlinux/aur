@@ -1,6 +1,6 @@
 pkgbase = goimapnotify-git
 	pkgdesc = Execute scripts on IMAP mailbox changes (new/deleted/updated messages) using IDLE, golang version.
-	pkgver = 2.4.r2.gd3c5c6f
+	pkgver = 2.5.5.r6.gc34b09b
 	pkgrel = 1
 	url = https://gitlab.com/shackra/goimapnotify
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = goimapnotify-git
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	provides = goimapnotify=2.4
+	provides = goimapnotify=2.5.5
 	conflicts = goimapnotify
 	options = !lto
 	source = git+https://gitlab.com/shackra/goimapnotify#branch=master
