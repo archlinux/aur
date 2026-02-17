@@ -43,6 +43,20 @@ prepare() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     
+    # Helper function to relocate directories and create symlinks
+    # Usage: _relocate_and_link <source_path> <target_path>
+    # Moves directory from source to target, then symlinks target back to source location
+    _relocate_and_link() {
+        local _src="$1"
+        local _target="$2"
+        local _target_dir
+        
+        _target_dir="$(dirname "$_target")"
+        install -dm755 "$_target_dir"
+        mv "$_src" "$_target"
+        ln -s "$_target" "$_src"
+    }
+    
     # Install application files
     install -dm755 "$pkgdir/usr/share/webapps/$pkgname"
     cp -r * "$pkgdir/usr/share/webapps/$pkgname/"
@@ -50,11 +64,12 @@ package() {
     # Move writable directories from /usr/share to /var/lib
     # PHP-FPM runs with ProtectSystem=full, preventing writes to /usr, /boot, /efi
     # All runtime-generated files (config, uploads, cache) must be in /var
-    install -dm755 "$pkgdir/var/lib/$pkgname"
-    mv "$pkgdir/usr/share/webapps/$pkgname/application/config" "$pkgdir/var/lib/$pkgname/config"
+    _relocate_and_link \
+        "$pkgdir/usr/share/webapps/$pkgname/application/config" \
+        "$pkgdir/var/lib/$pkgname/config"
     
     # Remove other writable directories (will be created via tmpfiles.d)
-    
+    # Then symlink to runtime locations managed by systemd-tmpfiles
     rm -rf "$pkgdir/usr/share/webapps/$pkgname/uploads"
     rm -rf "$pkgdir/usr/share/webapps/$pkgname/backup"
     rm -rf "$pkgdir/usr/share/webapps/$pkgname/userdata"
@@ -72,11 +87,6 @@ package() {
     ln -s "/var/log/$pkgname" "$pkgdir/usr/share/webapps/$pkgname/application/logs"
     ln -s "/var/cache/$pkgname" "$pkgdir/usr/share/webapps/$pkgname/application/cache"
     ln -s "/var/lib/$pkgname/eqsl_card_images" "$pkgdir/usr/share/webapps/$pkgname/images/eqsl_card_images"
-    
-    # Create symlink from application/config to /var/lib/wavelog/config
-    # Config must be in /var/lib (not /etc/webapps) because PHP-FPM's ProtectSystem=full
-    # prevents writes to /etc, and the installer generates config files dynamically
-    ln -s "/var/lib/$pkgname/config" "$pkgdir/usr/share/webapps/$pkgname/application/config"
     
     # Note: config.php and database.php will be created by the web-based installer
     # Users should NOT manually copy sample configs before running the installer
