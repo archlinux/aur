@@ -1,0 +1,18 @@
+pkgbase = hstry
+	pkgdesc = Universal AI chat history database with full-text search
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/byteowlz/hstry
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	depends = sqlite
+	optdepends = bash: for shell completions
+	optdepends = zsh: for shell completions
+	source_x86_64 = hstry-0.4.4.tar.gz::https://github.com/byteowlz/hstry/releases/download/v0.4.4/hstry-v0.4.4-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 7c0502171f9124a52d6acaa03b2fc921b7f18ac5851569841d09a6ad82e0c3b0
+	source_aarch64 = hstry-0.4.4.tar.gz::https://github.com/byteowlz/hstry/releases/download/v0.4.4/hstry-v0.4.4-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 1fbe24744f4f94a01599f9548af1df98db9792224390e809647ada0c903bbf87
+
+pkgname = hstry
