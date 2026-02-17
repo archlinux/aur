@@ -1,12 +1,12 @@
 pkgbase = docker-rootless-extras
 	pkgdesc = Extras to run docker as non-root.
 	pkgver = 29.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.docker.com/engine/security/rootless/
 	install = docker-rootless-extras.install
-	arch = x86_64
-	arch = aarch64
-	license = Apache
+	arch = any
+	license = Apache-2.0
+	depends = bash
 	depends = docker
 	depends = rootlesskit
 	depends = slirp4netns
