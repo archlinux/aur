@@ -9,6 +9,7 @@ pkgbase = task-maker-rust-git
 	arch = aarch64
 	license = MPL2
 	makedepends = cargo
+	makedepends = clang
 	optdepends = texlive-core: for compiling tex statements
 	optdepends = gcc: for running C/C++ solutions
 	optdepends = mono: for running C# solutions

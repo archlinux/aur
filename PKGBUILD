@@ -8,7 +8,7 @@ arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/olimpiadi-informatica/task-maker-rust"
 license=('MPL2')
 depends=()
-makedepends=('cargo')
+makedepends=('cargo' 'clang')
 optdepends=('texlive-core: for compiling tex statements'
             'gcc: for running C/C++ solutions'
             'mono: for running C# solutions'
@@ -30,7 +30,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/task-maker-rust"
-    TM_DATA_DIR=/usr/share/task-maker-rust cargo build --release --bins
+    CXX=clang++ CC=clang TM_DATA_DIR=/usr/share/task-maker-rust cargo build --release --bins
     target/release/task-maker-tools gen-autocompletion
 }
 
