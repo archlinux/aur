@@ -1,3 +1,4 @@
+# Maintainer: Ahmet Cetinkaya <contact@ahmetcetinkaya.me>
 # Maintainer: Prasanna Venkadesh <prasmailme at gmail dot com>
 
 pkgname=whph-bin
