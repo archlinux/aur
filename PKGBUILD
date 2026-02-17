@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=forgejo-mcp
-pkgver=2.2.0 # renovate: datasource=forgejo-releases depName=goern/forgejo-mcp registryUrl=https://codeberg.org
+pkgver=2.10.1 # renovate: datasource=forgejo-releases depName=goern/forgejo-mcp registryUrl=https://codeberg.org
 pkgrel=1
 pkgdesc="Model Context Protocol (MCP) server for interacting with Forgejo REST API"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("https://codeberg.org/goern/forgejo-mcp/archive/v${pkgver}.tar.gz")
-sha256sums=('b301efa6be6232e5927be633c593ab1c61d08e8c1057f42bb6a98f84038ad4e8')
+sha256sums=('44770fca7634a48663e36d55668796163c5b4b380ef4de1747263e13733f56b0')
 
 prepare() {
   cd "${pkgname}"
