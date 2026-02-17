@@ -1,5 +1,7 @@
+# shellcheck shell=bash
 # Maintainer: Ahmet Cetinkaya <contact@ahmetcetinkaya.me>
 # Maintainer: Prasanna Venkadesh <prasmailme at gmail dot com>
+# shellcheck disable=SC2034,SC2154
 
 pkgname=whph-bin
 pkgver=0.20.4
