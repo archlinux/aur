@@ -2,7 +2,7 @@
 pkgname=toshiba-satellite-u940-kbdlight-dkms
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Toshiba Satellite U940 keyboard backlight 3-mode cycling (OFF/AUTO/ON) via Fn+Z with GNOME OSD"
+pkgdesc="Toshiba Satellite U940 keyboard backlight 3-mode cycling (OFF/AUTO/ON) via Fn+Z"
 arch=('any')
 url="https://aur.archlinux.org/packages/toshiba-satellite-u940-kbdlight-dkms"
 license=('GPL-2.0-only')

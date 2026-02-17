@@ -1,5 +1,5 @@
 pkgbase = toshiba-satellite-u940-kbdlight-dkms
-	pkgdesc = Toshiba Satellite U940 keyboard backlight 3-mode cycling (OFF/AUTO/ON) via Fn+Z with GNOME OSD
+	pkgdesc = Toshiba Satellite U940 keyboard backlight 3-mode cycling (OFF/AUTO/ON) via Fn+Z
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/toshiba-satellite-u940-kbdlight-dkms
