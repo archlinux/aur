@@ -1,6 +1,6 @@
 pkgbase = boringssl-git
 	pkgdesc = BoringSSL is a fork of OpenSSL that is designed to meet Google's needs
-	pkgver = 0.20251124.0.183.gdf08c3a55a
+	pkgver = 0.20260211.0.14.gc0da0e7623
 	pkgrel = 1
 	url = https://boringssl.googlesource.com/boringssl
 	arch = arm

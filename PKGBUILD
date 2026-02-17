@@ -7,7 +7,7 @@
 
 pkgname=boringssl-git
 _pkgname=boringssl
-pkgver=0.20251124.0.183.gdf08c3a55a
+pkgver=0.20260211.0.14.gc0da0e7623
 pkgrel=1
 pkgdesc="BoringSSL is a fork of OpenSSL that is designed to meet Google's needs"
 arch=(arm armv6h armv7h aarch64 x86_64 i686)
@@ -69,7 +69,6 @@ package() {
     install -Dm755 build/libssl.so "$pkgdir/usr/lib/$_pkgname/libssl.so"
     install -Dm755 build/libdecrepit.so "$pkgdir/usr/lib/$_pkgname/libdecrepit.so"
     install -Dm755 build/libpki.so "$pkgdir/usr/lib/$_pkgname/libpki.so"
-    install -Dm755 build/libboringssl_gtest.so "$pkgdir/usr/lib/$_pkgname/libboringssl_gtest.so"
 
     # Headers: Put them under /usr/include/boringssl/
     # BoringSSL uses include/openssl subdirectory for compatibility
