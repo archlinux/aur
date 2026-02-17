@@ -9,7 +9,7 @@ url="https://maplibre.org/martin/"
 _git_organisation=maplibre
 
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 _tag="martin-v${pkgver}"
 
 arch=("x86_64" "i686")
@@ -114,6 +114,8 @@ package_martin-cp() {
     install -Dm 0755 \
         "target/release/martin-cp" \
         "${pkgdir}/usr/bin/martin-cp"
+
+    cd "${srcdir}"
     install -Dm 0644 \
         "${pkgbase}-${pkgver}-LICENSE-APACHE" \
         "${pkgdir}/usr/share/licenses/martin-cp/LICENSE-APACHE"
