@@ -2,12 +2,12 @@
 
 pkgname=texel
 pkgver=1.12
-pkgrel=2
+pkgrel=3
 pkgdesc='Free UCI compliant open source chess engine developed by Peter Österlund'
 arch=('i686' 'x86_64')
 url='https://github.com/peterosterlund2/texel'
 license=('GPL')
-depends=('gcc-libs')
+depends=('libgcc' 'libstdc++')
 makedepends=(cmake)
 options=(!lto)
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/peterosterlund2/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
