@@ -3,11 +3,11 @@
 pkgname=python-finnhub-python
 _pkgname=${pkgname:7}
 pkgver=2.4.27
-pkgrel=1
+pkgrel=2
 pkgdesc="Finnhub API"
 arch=('any')
 url="https://pypi.org/project/${_pkgname}"
-license=('Apache')
+license=('Apache-2.0')
 makedepends=(python-build python-installer python-setuptools)
 depends=(python python-requests)
 source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/finnhub_python-$pkgver.tar.gz)
