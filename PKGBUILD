@@ -1,65 +1,46 @@
-# Maintainer: Milhan Hadjadji <xmoncocox@gmail.com>
+# Maintainer: Xmoncoco <ton-email@exemple.com>
 pkgname=palemachine
-pkgver=0.1.2
-pkgrel=2
-pkgdesc="a youtube downloader for servers"
-arch=('x86_64')
+pkgver=0.1.1
+pkgrel=1
+pkgdesc="YouTube downloader pour serveurs avec interface web (Rust + Python)"
+arch=('x86_64' 'aarch64')
 url="https://github.com/Xmoncoco/palemachine"
 license=('MIT')
-depends=('gcc-libs' 'sqlite' 'python' 'openssl' 'ffmpeg' 'yt-dlp' 'zstd')
-makedepends=('cargo' 'pkgconf')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-        "palemachine.service"
-        "palemachine.sysusers"
-        "palemachine.tmpfiles")
-sha256sums=('997d14e2e789c7bbc8474a00989794c36f893be1c7f5f0d52a631ebe2fd40c47'
-            '2c06540f3c60c44c858930d67ac22dfbef1a0ed4eb55044246f79f89d3e35fef'
-            '400e42fc588f97abb5dafd90440dcd6066091c891aaad506b9235859af6826f9'
-            '1c48f8dfa298a2224f09e9c8c5240f54162d2a7eecf7540221e2bb2f0303b7fb')
 
-prepare() {
-    cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-}
+# Dépendances nécessaires à l'exécution
+depends=('yt-dlp' 'ffmpeg' 'python')
+
+# Dépendances nécessaires pour compiler
+makedepends=('cargo' 'python-pip')
+
+# Source : on récupère le dépôt git
+source=("git+https://github.com/Xmoncoco/palemachine.git")
+sha256sums=('SKIP')
 
 build() {
-    cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    export ZSTD_SYS_USE_PKG_CONFIG=1
-    cargo build --frozen --release --all-features
+  cd "$srcdir/$pkgname"
+  
+  # On donne les droits d'exécution et on lance ton script
+  # Ton script va créer le dossier "package" à la racine du projet
+  chmod +x installation-script/build.sh
+  ./installation-script/build.sh
 }
 
 package() {
-    cd "$pkgname-$pkgver"
-    
-    # Install everything to /opt/palemachine to preserve relative paths
-    install -d "$pkgdir/opt/$pkgname"
-    
-    # Copy the binary
-    install -Dm755 "target/release/palemachine" "$pkgdir/opt/$pkgname/palemachine"
-    
-    # Copy assets
-    cp -r pages "$pkgdir/opt/$pkgname/"
-    install -Dm755 "downloader" "$pkgdir/opt/$pkgname/downloader"
-    install -Dm644 "requirement.txt" "$pkgdir/opt/$pkgname/requirement.txt"
-    install -Dm644 ".version" "$pkgdir/opt/$pkgname/.version"
-    install -Dm755 "bambam_morigatsu_chuapo.sh" "$pkgdir/opt/$pkgname/bambam_morigatsu_chuapo.sh"
-    install -Dm755 "update.sh" "$pkgdir/opt/$pkgname/update.sh"
+  cd "$srcdir/$pkgname"
 
-    # Create a wrapper script in /usr/bin
-    install -d "$pkgdir/usr/bin"
-    cat > "$pkgdir/usr/bin/$pkgname" <<EOF
-#!/bin/sh
-cd /opt/$pkgname
-exec ./palemachine "\$@"
-EOF
-    chmod 755 "$pkgdir/usr/bin/$pkgname"
+  # 1. Création du dossier de destination dans /opt
+  install -d "$pkgdir/opt/$pkgname"
 
-    # Install systemd service and configuration
-    cd "$srcdir"
-    install -Dm644 "palemachine.service" "$pkgdir/usr/lib/systemd/system/palemachine.service"
-    install -Dm644 "palemachine.sysusers" "$pkgdir/usr/lib/sysusers.d/palemachine.conf"
-    install -Dm644 "palemachine.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/palemachine.conf"
+  # 2. Copie de tout le contenu du dossier "package" généré par build.sh
+  # On utilise cp -a pour préserver les liens symboliques du venv
+  cp -a package/. "$pkgdir/opt/$pkgname/"
+
+  # 3. Création du lien symbolique pour l'accès global via le PATH
+  install -d "$pkgdir/usr/bin"
+  ln -s "/opt/$pkgname/palemachine" "$pkgdir/usr/bin/$pkgname"
+  
+  # 4. Gestion optionnelle du .env (pour ne pas écraser une config existante)
+  # On renomme le .env en exemple pour éviter les erreurs de permission au runtime
+  mv "$pkgdir/opt/$pkgname/.env" "$pkgdir/opt/$pkgname/.env.example"
 }
