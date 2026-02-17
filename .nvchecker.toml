@@ -1,0 +1,5 @@
+[localizationmanager]
+source = "github"
+github = "nickprotop/LocalizationManager"
+prefix = "v"
+use_latest_release = true
