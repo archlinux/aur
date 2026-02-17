@@ -1,0 +1,1725 @@
+{
+  "openapi": "3.1.0",
+  "paths": {
+    "/app/ping": {
+      "get": {
+        "operationId": "AppController_ping",
+        "parameters": [
+          {
+            "name": "x-request-id",
+            "in": "header",
+            "description": "Unique request identifier for tracking",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PingResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Pings this client to test whether it's working",
+        "tags": [
+          "App"
+        ]
+      }
+    },
+    "/keyboard/key-press": {
+      "post": {
+        "operationId": "KeyboardController_keyPress",
+        "parameters": [
+          {
+            "name": "x-request-id",
+            "in": "header",
+            "description": "Unique request identifier for tracking",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/KeyPressRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "summary": "Press one or more keys",
+        "tags": [
+          "Keyboard"
+        ]
+      }
+    },
+    "/keyboard/type-text": {
+      "post": {
+        "operationId": "KeyboardController_typeText",
+        "parameters": [
+          {
+            "name": "x-request-id",
+            "in": "header",
+            "description": "Unique request identifier for tracking",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TypeTextRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "summary": "Type text",
+        "tags": [
+          "Keyboard"
+        ]
+      }
+    },
+    "/keyboard/set-layout": {
+      "post": {
+        "operationId": "KeyboardController_setLayout",
+        "parameters": [
+          {
+            "name": "x-request-id",
+            "in": "header",
+            "description": "Unique request identifier for tracking",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetKeyboardLayoutRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "summary": "Change keyboard layout",
+        "tags": [
+          "Keyboard"
+        ]
+      }
+    },
+    "/mouse/position": {
+      "get": {
+        "operationId": "MouseController_getPosition",
+        "parameters": [
+          {
+            "name": "x-request-id",
+            "in": "header",
+            "description": "Unique request identifier for tracking",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MousePositionRRDto"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Returns X,Y of current mouse position, absolute to all monitors",
+        "tags": [
+          "Mouse"
+        ]
+      }
+    },
+    "/mouse/move-left-click": {
+      "post": {
+        "operationId": "MouseController_moveLeftClick",
+        "parameters": [
+          {
+            "name": "x-request-id",
+            "in": "header",
+            "description": "Unique request identifier for tracking",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MousePositionRRDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "summary": "Instantly moves mouse to the position and performs a left click there",
+        "tags": [
+          "Mouse"
+        ]
+      }
+    },
+    "/mouse/move": {
+      "post": {
+        "operationId": "MouseController_setMousePosition",
+        "parameters": [
+          {
+            "name": "x-request-id",
+            "in": "header",
+            "description": "Unique request identifier for tracking",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MousePositionRRDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "summary": "Mouse move to the point, absolute coordinate for all monitors",
+        "tags": [
+          "Mouse"
+        ]
+      }
+    },
+    "/mouse/move-human": {
+      "post": {
+        "operationId": "MouseController_mouseMoveHuman",
+        "parameters": [
+          {
+            "name": "x-request-id",
+            "in": "header",
+            "description": "Unique request identifier for tracking",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MouseMoveHumanRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "summary": "Moves mouse in a human pattern with time",
+        "tags": [
+          "Mouse"
+        ]
+      }
+    },
+    "/mouse/click": {
+      "post": {
+        "operationId": "MouseController_click",
+        "parameters": [
+          {
+            "name": "x-request-id",
+            "in": "header",
+            "description": "Unique request identifier for tracking",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MouseClickRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "summary": "Click mouse on the current position",
+        "tags": [
+          "Mouse"
+        ]
+      }
+    },
+    "/window/by-wid/{wid}": {
+      "get": {
+        "operationId": "WindowController_getWindowInfo",
+        "parameters": [
+          {
+            "name": "wid",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "x-request-id",
+            "in": "header",
+            "description": "Unique request identifier for tracking",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetWindowResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Gets window information about specified window",
+        "tags": [
+          "Window"
+        ]
+      },
+      "patch": {
+        "operationId": "WindowController_setWindowProperties",
+        "parameters": [
+          {
+            "name": "wid",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "x-request-id",
+            "in": "header",
+            "description": "Unique request identifier for tracking",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetWindowPropertiesRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "summary": "Set window properties",
+        "tags": [
+          "Window"
+        ]
+      }
+    },
+    "/window/active": {
+      "get": {
+        "operationId": "WindowController_getActiveWindowInfo",
+        "parameters": [
+          {
+            "name": "x-request-id",
+            "in": "header",
+            "description": "Unique request identifier for tracking",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetWindowResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Gets information about active window",
+        "tags": [
+          "Window"
+        ]
+      }
+    },
+    "/window/by-wid/{wid}/focus": {
+      "post": {
+        "operationId": "WindowController_setWindowActive",
+        "parameters": [
+          {
+            "name": "wid",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "x-request-id",
+            "in": "header",
+            "description": "Unique request identifier for tracking",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "summary": "Focuses (brings to foreground) a window by its id",
+        "tags": [
+          "Window"
+        ]
+      }
+    },
+    "/monitor": {
+      "get": {
+        "operationId": "MonitorController_getMonitors",
+        "parameters": [
+          {
+            "name": "x-request-id",
+            "in": "header",
+            "description": "Unique request identifier for tracking",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "List monitors",
+        "tags": [
+          "Monitor"
+        ]
+      }
+    },
+    "/monitor/{mid}/info": {
+      "get": {
+        "operationId": "MonitorController_getMonitorInfo",
+        "parameters": [
+          {
+            "name": "mid",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "x-request-id",
+            "in": "header",
+            "description": "Unique request identifier for tracking",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MonitorInfoResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get monitor info",
+        "tags": [
+          "Monitor"
+        ]
+      }
+    },
+    "/process/{pid}": {
+      "get": {
+        "operationId": "ProcessController_getProcessInfo",
+        "parameters": [
+          {
+            "name": "pid",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "x-request-id",
+            "in": "header",
+            "description": "Unique request identifier for tracking",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProcessResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Gets process information along with windows attached to it",
+        "tags": [
+          "Process"
+        ]
+      },
+      "delete": {
+        "operationId": "ProcessController_killExeByPid",
+        "parameters": [
+          {
+            "name": "pid",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "x-request-id",
+            "in": "header",
+            "description": "Unique request identifier for tracking",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "summary": "Kill process by PID",
+        "tags": [
+          "Process"
+        ]
+      }
+    },
+    "/process": {
+      "post": {
+        "operationId": "ProcessController_createProcess",
+        "parameters": [
+          {
+            "name": "x-request-id",
+            "in": "header",
+            "description": "Unique request identifier for tracking",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LaunchExeRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateProcessResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Launches an application",
+        "tags": [
+          "Process"
+        ]
+      },
+      "delete": {
+        "operationId": "ProcessController_killExeByName",
+        "parameters": [
+          {
+            "name": "name",
+            "required": true,
+            "in": "query",
+            "description": "Process name. Allows only specific symbols due to security reasons",
+            "schema": {
+              "pattern": "^[a-zA-Z0-9._ -]+$",
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-request-id",
+            "in": "header",
+            "description": "Unique request identifier for tracking",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "summary": "Kill process by name",
+        "tags": [
+          "Process"
+        ]
+      },
+      "get": {
+        "operationId": "ProcessController_findPidByName",
+        "parameters": [
+          {
+            "name": "name",
+            "required": true,
+            "in": "query",
+            "description": "Process name. Allows only specific symbols due to security reasons",
+            "schema": {
+              "pattern": "^[a-zA-Z0-9._ -]+$",
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-request-id",
+            "in": "header",
+            "description": "Unique request identifier for tracking",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "Searches procceses with specified executable name. Returns list of process ids",
+        "tags": [
+          "Process"
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "Http Remote PC Control API",
+    "description": "API Documentation for remote controlling a PC via HTTP",
+    "version": "3.0.3",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [
+    {
+      "url": "https://{host}:{port}",
+      "description": "Custom Server",
+      "variables": {
+        "host": {
+          "default": "localhost",
+          "description": "The host address of the server"
+        },
+        "port": {
+          "default": "5000",
+          "description": "The port the server is running on"
+        }
+      }
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "clientCertAuth": {
+        "type": "mutualTLS",
+        "description": "Client certificate authentication required for secure API communication"
+      }
+    },
+    "schemas": {
+      "PingResponseDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "ok"
+            ],
+            "description": "Ping status"
+          },
+          "version": {
+            "type": "string",
+            "description": "Application version"
+          }
+        },
+        "required": [
+          "status",
+          "version"
+        ],
+        "description": "Ping response"
+      },
+      "KeyPressRequestDto": {
+        "type": "object",
+        "properties": {
+          "keys": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "a",
+                "b",
+                "c",
+                "d",
+                "e",
+                "f",
+                "g",
+                "h",
+                "i",
+                "j",
+                "k",
+                "l",
+                "m",
+                "n",
+                "o",
+                "p",
+                "q",
+                "r",
+                "s",
+                "t",
+                "u",
+                "v",
+                "w",
+                "x",
+                "y",
+                "z",
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "f1",
+                "f2",
+                "f3",
+                "f4",
+                "f5",
+                "f6",
+                "f7",
+                "f8",
+                "f9",
+                "f10",
+                "f11",
+                "f12",
+                "f13",
+                "f14",
+                "f15",
+                "f16",
+                "f17",
+                "f18",
+                "f19",
+                "f20",
+                "f21",
+                "f22",
+                "f23",
+                "f24",
+                "backspace",
+                "delete",
+                "return",
+                "enter",
+                "tab",
+                "escape",
+                "space",
+                "insert",
+                "print_screen",
+                "home",
+                "end",
+                "page_up",
+                "page_down",
+                "up",
+                "down",
+                "left",
+                "right",
+                "caps_lock",
+                "num_lock",
+                "scroll_lock",
+                "add",
+                "subtract",
+                "multiply",
+                "divide",
+                "clear",
+                "numpad_0",
+                "numpad_1",
+                "numpad_2",
+                "numpad_3",
+                "numpad_4",
+                "numpad_5",
+                "numpad_6",
+                "numpad_7",
+                "numpad_8",
+                "numpad_9",
+                "numpad_decimal",
+                ",",
+                ".",
+                "/",
+                ";",
+                "'",
+                "[",
+                "]",
+                "\\",
+                "-",
+                "=",
+                "`",
+                "audio_mute",
+                "audio_vol_down",
+                "audio_vol_up",
+                "audio_play",
+                "audio_stop",
+                "audio_pause",
+                "audio_prev",
+                "audio_next",
+                "audio_rewind",
+                "audio_forward",
+                "audio_repeat",
+                "audio_random",
+                "lights_mon_up",
+                "lights_mon_down",
+                "lights_kbd_toggle",
+                "lights_kbd_up",
+                "lights_kbd_down",
+                "menu",
+                "pause",
+                "control",
+                "right_control",
+                "alt",
+                "right_alt",
+                "shift",
+                "right_shift",
+                "meta",
+                "right_meta",
+                "win",
+                "right_win",
+                "cmd",
+                "right_cmd",
+                "fn"
+              ],
+              "description": "A key to be sent."
+            },
+            "minItems": 1
+          },
+          "duration": {
+            "default": 50,
+            "type": "number",
+            "minimum": 50,
+            "description": "Duration of key beeing presssed"
+          },
+          "holdKeys": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "a",
+                "b",
+                "c",
+                "d",
+                "e",
+                "f",
+                "g",
+                "h",
+                "i",
+                "j",
+                "k",
+                "l",
+                "m",
+                "n",
+                "o",
+                "p",
+                "q",
+                "r",
+                "s",
+                "t",
+                "u",
+                "v",
+                "w",
+                "x",
+                "y",
+                "z",
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "f1",
+                "f2",
+                "f3",
+                "f4",
+                "f5",
+                "f6",
+                "f7",
+                "f8",
+                "f9",
+                "f10",
+                "f11",
+                "f12",
+                "f13",
+                "f14",
+                "f15",
+                "f16",
+                "f17",
+                "f18",
+                "f19",
+                "f20",
+                "f21",
+                "f22",
+                "f23",
+                "f24",
+                "backspace",
+                "delete",
+                "return",
+                "enter",
+                "tab",
+                "escape",
+                "space",
+                "insert",
+                "print_screen",
+                "home",
+                "end",
+                "page_up",
+                "page_down",
+                "up",
+                "down",
+                "left",
+                "right",
+                "caps_lock",
+                "num_lock",
+                "scroll_lock",
+                "add",
+                "subtract",
+                "multiply",
+                "divide",
+                "clear",
+                "numpad_0",
+                "numpad_1",
+                "numpad_2",
+                "numpad_3",
+                "numpad_4",
+                "numpad_5",
+                "numpad_6",
+                "numpad_7",
+                "numpad_8",
+                "numpad_9",
+                "numpad_decimal",
+                ",",
+                ".",
+                "/",
+                ";",
+                "'",
+                "[",
+                "]",
+                "\\",
+                "-",
+                "=",
+                "`",
+                "audio_mute",
+                "audio_vol_down",
+                "audio_vol_up",
+                "audio_play",
+                "audio_stop",
+                "audio_pause",
+                "audio_prev",
+                "audio_next",
+                "audio_rewind",
+                "audio_forward",
+                "audio_repeat",
+                "audio_random",
+                "lights_mon_up",
+                "lights_mon_down",
+                "lights_kbd_toggle",
+                "lights_kbd_up",
+                "lights_kbd_down",
+                "menu",
+                "pause",
+                "control",
+                "right_control",
+                "alt",
+                "right_alt",
+                "shift",
+                "right_shift",
+                "meta",
+                "right_meta",
+                "win",
+                "right_win",
+                "cmd",
+                "right_cmd",
+                "fn"
+              ],
+              "description": "A key to be sent."
+            }
+          }
+        },
+        "required": [
+          "keys"
+        ],
+        "additionalProperties": false
+      },
+      "TypeTextRequestDto": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "keyDelay": {
+            "default": 0,
+            "type": "number",
+            "description": "A delay between keystrokes in milliseconds. By default type as fast as possible"
+          },
+          "keyDelayDeviation": {
+            "default": 0,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "description": "Deviation for randomness of delay. Final delay = delay ± (delay * deviation). E.g if keyDelay = 100 and deviation = 0.2. Then value would be 80-120ms"
+          }
+        },
+        "required": [
+          "text"
+        ],
+        "additionalProperties": false
+      },
+      "SetKeyboardLayoutRequestDto": {
+        "type": "object",
+        "properties": {
+          "layout": {
+            "type": "string",
+            "enum": [
+              "us",
+              "en",
+              "gb",
+              "au",
+              "nz",
+              "ie",
+              "za",
+              "de",
+              "at",
+              "ch",
+              "li",
+              "fr",
+              "be",
+              "lu",
+              "mc",
+              "es",
+              "mx",
+              "cl",
+              "ve",
+              "pe",
+              "ec",
+              "uy",
+              "py",
+              "bo",
+              "it",
+              "sm",
+              "va",
+              "pt",
+              "nl",
+              "sr",
+              "no",
+              "dk",
+              "fi",
+              "is",
+              "pl",
+              "cz",
+              "sk",
+              "hu",
+              "hr",
+              "ba",
+              "rs",
+              "me",
+              "mk",
+              "bg",
+              "ro",
+              "md",
+              "ee",
+              "lv",
+              "lt",
+              "mt",
+              "tr",
+              "az",
+              "ru",
+              "by",
+              "ua",
+              "kz",
+              "kg",
+              "tj",
+              "uz",
+              "tm",
+              "mn",
+              "gr",
+              "ar",
+              "ae",
+              "bh",
+              "dz",
+              "eg",
+              "iq",
+              "jo",
+              "kw",
+              "ly",
+              "ma",
+              "om",
+              "qa",
+              "sa",
+              "sy",
+              "tn",
+              "ye",
+              "fa",
+              "ir",
+              "ur",
+              "pk",
+              "il",
+              "he",
+              "cn",
+              "zh",
+              "tw",
+              "hk",
+              "mo",
+              "jp",
+              "ja",
+              "kr",
+              "ko",
+              "th",
+              "vn",
+              "vi",
+              "kh",
+              "km",
+              "lo",
+              "my",
+              "ms",
+              "id",
+              "ph",
+              "tl",
+              "sg",
+              "bn",
+              "bd",
+              "hi",
+              "in",
+              "ta",
+              "te",
+              "ml",
+              "kn",
+              "gu",
+              "or",
+              "pa",
+              "as",
+              "ne",
+              "si",
+              "lk",
+              "mm",
+              "am",
+              "et",
+              "sw",
+              "ke",
+              "tz",
+              "zu",
+              "xh",
+              "af",
+              "ha",
+              "ng",
+              "sn",
+              "bf",
+              "ci",
+              "gn",
+              "td",
+              "cf",
+              "cm",
+              "cg",
+              "cd",
+              "mg",
+              "dj",
+              "eo",
+              "la",
+              "eu",
+              "ca",
+              "gl",
+              "cy",
+              "ga",
+              "gd",
+              "br",
+              "oc",
+              "co",
+              "sc",
+              "fur",
+              "rm",
+              "lb",
+              "fo",
+              "kl",
+              "se",
+              "smj",
+              "sma",
+              "smn",
+              "sms"
+            ],
+            "description": "Keyboard layout"
+          }
+        },
+        "required": [
+          "layout"
+        ],
+        "additionalProperties": false,
+        "description": "Request to change keyboard layout"
+      },
+      "MousePositionRRDto": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "number",
+            "description": "X coordinate to move mouse to"
+          },
+          "y": {
+            "type": "number",
+            "description": "Y coordinate to move mouse to"
+          }
+        },
+        "required": [
+          "x",
+          "y"
+        ],
+        "additionalProperties": false
+      },
+      "MouseMoveHumanRequestDto": {
+        "type": "object",
+        "properties": {
+          "destinationRandomX": {
+            "default": 0,
+            "type": "integer",
+            "minimum": 0,
+            "description": "Maximum random offset in pixels from the target X coordinate. Adds natural imprecision to final position."
+          },
+          "destinationRandomY": {
+            "default": 0,
+            "type": "integer",
+            "minimum": 0,
+            "description": "Maximum random offset in pixels from the target Y coordinate. Adds natural imprecision to final position."
+          },
+          "delayBetweenIterations": {
+            "default": 5,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 999,
+            "description": "Base delay between movements in milliseconds. Actual delay will vary randomly between 80% and 120% of this value."
+          },
+          "pixelsPerIteration": {
+            "default": 50,
+            "type": "integer",
+            "minimum": 5,
+            "maximum": 200,
+            "description": "Approximate number of pixels between movement updates. Lower values make movement smoother but slower."
+          },
+          "curveIntensity": {
+            "default": 0.3,
+            "type": "number",
+            "minimum": 0.1,
+            "maximum": 1,
+            "description": "Base intensity of the curve. 0.1 is nearly straight, 1.0 allows for significant curves."
+          },
+          "curveIntensityDeviation": {
+            "default": 0.2,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 0.5,
+            "description": "Amount of random variation in curve intensity. 0 = no variation, 0.5 = ±50% variation"
+          },
+          "x": {
+            "type": "number",
+            "description": "X coordinate to move mouse to"
+          },
+          "y": {
+            "type": "number",
+            "description": "Y coordinate to move mouse to"
+          }
+        },
+        "required": [
+          "x",
+          "y"
+        ],
+        "additionalProperties": false,
+        "description": "Request to move mouse with human-like movement. The movement follows a natural curved path with smooth acceleration and deceleration. The path includes subtle variations to mimic human motor control, with configurable curve intensity and movement variance."
+      },
+      "MouseClickRequestDto": {
+        "type": "object",
+        "properties": {
+          "button": {
+            "default": "LEFT",
+            "type": "string",
+            "enum": [
+              "LEFT",
+              "RIGHT",
+              "MIDDLE"
+            ],
+            "description": "Mouse button"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Request to perform a mouse button click"
+      },
+      "GetWindowResponseDto": {
+        "type": "object",
+        "properties": {
+          "bounds": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "number",
+                "description": "Left position in screen coordinates (pixels)"
+              },
+              "y": {
+                "type": "number",
+                "description": "Top position in screen coordinates (pixels)"
+              },
+              "width": {
+                "type": "number",
+                "description": "Window width in pixels"
+              },
+              "height": {
+                "type": "number",
+                "description": "Window height in pixels"
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "width",
+              "height"
+            ],
+            "additionalProperties": false,
+            "description": "Rectangle bounds for a window"
+          },
+          "wid": {
+            "type": "number",
+            "description": "Target window handle (HWND as number)"
+          },
+          "pid": {
+            "type": "number",
+            "description": "Process ID of the active window"
+          },
+          "path": {
+            "type": "string",
+            "description": "Absolute path to the process executable for the active window"
+          },
+          "parentWid": {
+            "type": "number",
+            "description": "Parent window id"
+          },
+          "opacity": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "description": "Opacity value in range 0..1 where 1 is fully opaque"
+          },
+          "title": {
+            "type": "string",
+            "description": "Window title"
+          }
+        },
+        "required": [
+          "bounds",
+          "wid",
+          "parentWid",
+          "opacity",
+          "title"
+        ]
+      },
+      "SetWindowPropertiesRequestDto": {
+        "type": "object",
+        "properties": {
+          "bounds": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "number",
+                "description": "Left position in screen coordinates (pixels)"
+              },
+              "y": {
+                "type": "number",
+                "description": "Top position in screen coordinates (pixels)"
+              },
+              "width": {
+                "type": "number",
+                "description": "Window width in pixels"
+              },
+              "height": {
+                "type": "number",
+                "description": "Window height in pixels"
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "width",
+              "height"
+            ],
+            "additionalProperties": false,
+            "description": "Rectangle bounds for a window"
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "show",
+              "hide",
+              "minimize",
+              "restore",
+              "maximize"
+            ],
+            "description": "Action to apply: show | hide | minimize | restore | maximize"
+          },
+          "opacity": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "description": "Opacity value in range 0..1 where 1 is fully opaque"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MonitorInfoResponseDto": {
+        "type": "object",
+        "properties": {
+          "bounds": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "number",
+                "description": "Left position in screen coordinates (pixels)"
+              },
+              "y": {
+                "type": "number",
+                "description": "Top position in screen coordinates (pixels)"
+              },
+              "width": {
+                "type": "number",
+                "description": "Monitor width in pixels"
+              },
+              "height": {
+                "type": "number",
+                "description": "Monitor height in pixels"
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "width",
+              "height"
+            ],
+            "description": "Full monitor bounds"
+          },
+          "workArea": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "number",
+                "description": "Left position in screen coordinates (pixels)"
+              },
+              "y": {
+                "type": "number",
+                "description": "Top position in screen coordinates (pixels)"
+              },
+              "width": {
+                "type": "number",
+                "description": "Monitor width in pixels"
+              },
+              "height": {
+                "type": "number",
+                "description": "Monitor height in pixels"
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "width",
+              "height"
+            ],
+            "description": "Usable desktop area excluding taskbar/docks"
+          },
+          "scale": {
+            "type": "number",
+            "description": "Monitor scale factor"
+          },
+          "isPrimary": {
+            "type": "boolean",
+            "description": "True if this is the primary display"
+          }
+        },
+        "required": [
+          "bounds",
+          "workArea",
+          "scale",
+          "isPrimary"
+        ],
+        "description": "Monitor information"
+      },
+      "ProcessResponseDto": {
+        "type": "object",
+        "properties": {
+          "pid": {
+            "type": "number",
+            "description": "Process ID"
+          },
+          "parentPid": {
+            "type": "number",
+            "description": "Parent process ID"
+          },
+          "path": {
+            "type": "string",
+            "description": "Executable file path"
+          },
+          "isElevated": {
+            "type": "boolean",
+            "description": "Whether proces has admin permissions"
+          },
+          "threadCount": {
+            "type": "number",
+            "description": "Total threads count created by this process"
+          },
+          "memory": {
+            "type": "object",
+            "properties": {
+              "workingSetSize": {
+                "type": "number",
+                "description": "Current amount of memory used by the process in Bytes. This is actual memory currently resident in RAM that belongs to this process"
+              },
+              "peakWorkingSetSize": {
+                "type": "number",
+                "description": "Maximum Amount of physical Ram the process has ever used"
+              },
+              "privateUsage": {
+                "type": "number",
+                "description": "Memory that is private to this process (not shareable with other processes). E.g. heap/stacks"
+              },
+              "pageFileUsage": {
+                "type": "number",
+                "description": "Total virtual memory used by the process (including paged to disk)"
+              }
+            },
+            "required": [
+              "workingSetSize",
+              "peakWorkingSetSize",
+              "privateUsage",
+              "pageFileUsage"
+            ],
+            "description": "Process information"
+          },
+          "times": {
+            "type": "object",
+            "properties": {
+              "creationTime": {
+                "type": "number",
+                "description": "100-nanoseconds since 1601-01-01 (Windows FILETIME format)"
+              },
+              "kernelTime": {
+                "type": "number",
+                "description": "Total time the process has spent executing in kernel mode (100-nanoseconds)"
+              },
+              "userTime": {
+                "type": "number",
+                "description": "Total time the process has spend executing in user mode"
+              }
+            },
+            "required": [
+              "creationTime",
+              "kernelTime",
+              "userTime"
+            ],
+            "description": "Process information. TotalCPU time = kernelTime + userTime"
+          },
+          "wids": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "description": "List of all windows id of the process"
+          }
+        },
+        "required": [
+          "pid",
+          "parentPid",
+          "path",
+          "isElevated",
+          "threadCount",
+          "memory",
+          "times",
+          "wids"
+        ],
+        "description": "Process information"
+      },
+      "LaunchExeRequestDto": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Path to executable"
+          },
+          "arguments": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Command line arguments"
+          },
+          "waitTillFinish": {
+            "default": false,
+            "type": "boolean",
+            "description": "If set to true, after this timeout if process not finished error will be thrown."
+          },
+          "waitTimeout": {
+            "default": 300,
+            "type": "number",
+            "description": "Blocks current request execution for this time in miliseconds. If waitTillFinish = false awaits this timeout before getting process id. If waitTillFinish = true awaits maximum of this timeout to allow process to finish. If process failed to finish before it, throws error."
+          }
+        },
+        "required": [
+          "path"
+        ]
+      },
+      "CreateProcessResponseDto": {
+        "type": "object",
+        "properties": {
+          "pid": {
+            "type": "number",
+            "description": "Process ID"
+          }
+        },
+        "required": [
+          "pid"
+        ],
+        "description": "Information about created process"
+      }
+    }
+  },
+  "security": [
+    {
+      "clientCertAuth": []
+    }
+  ]
+}
