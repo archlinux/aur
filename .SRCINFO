@@ -1,6 +1,6 @@
 pkgbase = wabt-git
 	pkgdesc = The WebAssembly binary toolkit
-	pkgver = 1.0.37.r27.ga55fb946
+	pkgver = 1.0.39.r16.g6ca912cf
 	pkgrel = 1
 	url = https://github.com/WebAssembly/wabt
 	arch = i686
@@ -10,9 +10,9 @@ pkgbase = wabt-git
 	makedepends = clang
 	makedepends = cmake
 	makedepends = gcc
-	depends = gcc-libs
 	depends = glibc
-	provides = wabt=1.0.37.r27.ga55fb946
+	depends = libstdc++
+	provides = wabt=1.0.39.r16.g6ca912cf
 	conflicts = wabt
 	options = staticlibs
 	source = git+https://github.com/WebAssembly/wabt.git
