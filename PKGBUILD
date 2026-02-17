@@ -4,11 +4,11 @@
 _pkgname=eidklient
 pkgname="${_pkgname}-native"
 pkgver=5.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Slovak eID Client - uses system-provided libraries, supports Wayland, …"
 arch=('i686' 'x86_64')
 url="https://www.slovensko.sk/"
-license=('custom')
+license=('LicenseRef-custom')
 _upstream_arch=
 [[ "$CARCH" == "x86_64" ]] && _upstream_arch="x86_64"
 [[ "$CARCH" == "i686" ]] && _upstream_arch="i386"
@@ -83,17 +83,20 @@ prepare() {
 
 package() {
     depends=(
+        bash
         binutils
-        ccid
         glibc
+        hicolor-icon-theme
         libcrypto.so
         libgcc_s.so
         libpcsclite.so
         libssl.so
         libstdc++.so
         qt6-base
+        xdg-utils
     )
     optdepends=(
+        "ccid: Generic USB Smart Card reader support"
         "disig-web-signer: online certificates update support"
     )
 
@@ -136,5 +139,12 @@ package() {
     done
 
     # Icons + desktop file
-    tar -x -C "${pkgdir}/usr" -f "${srcdir}/squashfs-root/share.tar"
+    tar \
+        --directory "${pkgdir}/usr" \
+        --extract \
+        --file "${srcdir}/squashfs-root/share.tar" \
+        --no-same-owner
+
+    mkdir -p "${pkgdir}/usr/share/licenses"
+    ln -s /opt/eidklient/Licenses "${pkgdir}/usr/share/licenses/${pkgname}"
 }
