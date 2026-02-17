@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cosmosR
-_pkgver=1.16.0
+_pkgver=1.18.1
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.18.1
 pkgrel=1
 pkgdesc='COSMOS (Causal Oriented Search of Multi-Omic Space)'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c841e72c624dacdaf4535aee214c3c305c05bf3f741f0d06c07d3f941a037cf1')
+sha256sums=('4cc67db9b5bd9f0dd82585374609f7967402972a1bac9b5b5b1038cfa64a88e3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
