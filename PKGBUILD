@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-gguf-git
 _pkgname=gguf
-pkgver=0.17.1
+pkgver=b8083.r2.2b089c7758
 pkgrel=1
 pkgdesc="for writing binary files in the GGUF (GGML Universal File) format."
 arch=('x86_64')
@@ -25,6 +25,12 @@ conflicts=('python-gguf')
 # Source from llama.cpp repository's gguf-py directory
 source=("${pkgname}::git+https://github.com/ggml-org/llama.cpp.git#branch=master")
 sha256sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname}" || exit
+  printf "%s" "$(git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+}
+
 
 build() {
   cd "$pkgname/gguf-py"
