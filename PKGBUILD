@@ -14,6 +14,6 @@ source=("${pkgname}-${pkgver}.pacman::${url}/releases/download/v${pkgver}/Nikode
 sha256sums=('SKIP')
 
 package() {
-    tar -xf "${srcdir}/${pkgname}-${pkgver}.pacman" -C "${pkgdir}"
+    tar -xf "${srcdir}/${pkgname}-${pkgver}.pacman" -C "${pkgdir}" --exclude='.PKGINFO' --exclude='.INSTALL' --exclude='.MTREE' --exclude='.BUILDINFO'
     chmod -R g-w "${pkgdir}"
 }
