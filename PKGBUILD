@@ -13,7 +13,7 @@ _fragment=${FRAGMENT:-#branch=main}
 _name=colmap
 #fragment="#commit=5bea89263bf5f3ed623b8e6e6a5f022a0ed9c1de"
 pkgname=${_name}-git
-pkgver=3.12.0.r228.gb61cfdd24
+pkgver=3.14.0.dev0.r300.ga6f539d4e
 pkgrel=1
 pkgdesc="General-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface."
 arch=('i686' 'x86_64')
@@ -39,7 +39,13 @@ sha256sums=('SKIP'
             'fb60f7ba8081ee5c278f03c62329a374d1b24136b374a49393b453db1529a8c6')
 
 pkgver() {
-  git -C "$pkgname" describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+# git -C "$pkgname" describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  _blame=$(git -C "$pkgname" blame CMakeLists.txt|grep COLMAP_VERSION)
+  _ver=$(grep -oP 'COLMAP_VERSION "\K.*(?=")' <<<"$_blame")
+  _commit=$(grep -oE "^\w+" <<<"$_blame")
+  _count=$(git -C "$pkgname" rev-list  $_commit.. --count)
+  _head=$(git -C "$pkgname" rev-parse --short HEAD)
+  printf  "%s.r%d.g%s" "$_ver" "$_count" "$_head"
 }
 
 prepare() {
