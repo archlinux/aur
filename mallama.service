@@ -1,0 +1,14 @@
+[Unit]
+Description=Ollama Web UI
+After=network.target ollama.service
+Requires=ollama.service
+
+[Service]
+Type=simple
+User=%i
+ExecStart=/usr/bin/mallama --host 127.0.0.1 --port 5000
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

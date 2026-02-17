@@ -1,6 +1,6 @@
 # Maintainer: Masoud Gholypour  Masoudgholypour2000@gmail.com
 pkgname=mallama
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="A beautiful web interface for Ollama with conversation management and markdown support"
 arch=('any')
