@@ -7,6 +7,7 @@ pkgdesc="Material Design 3 inspired SDDM theme with dynamic color extraction"
 arch=('any')
 url="https://github.com/xCaptaiN09/pixie-sddm"
 license=('MIT')
+install="pixie-sddm.install"
 depends=('sddm' 'qt5-graphicaleffects' 'qt5-quickcontrols2' 'qt5-svg')
 makedepends=('git')
 provides=("${_pkgname}")

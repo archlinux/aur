@@ -1,0 +1,16 @@
+post_install() {
+  echo -e "
+\e[1;32m==>\e[0m Pixie SDDM Theme installed successfully!"
+  echo -e "\e[1;34m==>\e[0m To apply the theme, run the following command:"
+  echo -e "\e[1;37m    sudo mkdir -p /etc/sddm.conf.d\e[0m"
+  echo -e "\e[1;37m    echo -e "[Theme]
+Current=pixie" | sudo tee /etc/sddm.conf.d/theme.conf\e[0m"
+  echo -e "
+\e[1;34m==>\e[0m You can test the theme without logging out using:"
+  echo -e "\e[1;37m    sddm-greeter --test-mode --theme /usr/share/sddm/themes/pixie\e[0m
+"
+}
+
+post_upgrade() {
+  post_install
+}
