@@ -1,6 +1,6 @@
 pkgbase = checkup
 	pkgdesc = Repository release tracker
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/skorotkiewicz/checkup
 	install = checkup.install
@@ -18,9 +18,9 @@ pkgbase = checkup
 	sha256sums = 184086b302ece79e686ac701ca404fe7a49499626c82f684dce1b820af59710c
 	sha256sums = 497a8322a8df697d6547bded2672aee9828fc0b372a5690c99f504b2cdb15027
 	sha256sums = 46f32d04d4a3a8a95c9be0eb68fb6faad63b21c34cca38c88b970f2136468959
-	source_x86_64 = checkup-x86_64-0.1.5-1::https://github.com/skorotkiewicz/checkup/releases/download/v0.1.5/checkup-linux-x86_64
-	sha256sums_x86_64 = 093503118f91fd7273c5fec799514a63a573cd065b40e5fba4e6fadfdeb6cedb
-	source_aarch64 = checkup-aarch64-0.1.5-1::https://github.com/skorotkiewicz/checkup/releases/download/v0.1.5/checkup-linux-aarch64
-	sha256sums_aarch64 = 2f06af33f93756523da6e37f13ed145f1b9666dedfbafe2959ac85830b7ca09a
+	source_x86_64 = checkup-x86_64-0.1.6-1::https://github.com/skorotkiewicz/checkup/releases/download/v0.1.6/checkup-linux-x86_64
+	sha256sums_x86_64 = 0dedfa141b169e522c419c3813457bc2061c3cf6871eb304abc554a7fa9a8852
+	source_aarch64 = checkup-aarch64-0.1.6-1::https://github.com/skorotkiewicz/checkup/releases/download/v0.1.6/checkup-linux-aarch64
+	sha256sums_aarch64 = 512ae65fef54b0cda85f5555b121543b5f7f8d29acc39b64df892454a8c64ac6
 
 pkgname = checkup
