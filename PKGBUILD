@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=limabean
-pkgver=0.2.4
-pkgrel=2
+pkgver=0.2.5
+pkgrel=1
 pkgdesc='A new implementation of Beancount using Rust and Clojure and the Lima parser'
 arch=(x86_64 i686)
 url="https://github.com/tesujimath/$pkgname"
@@ -15,7 +15,7 @@ makedepends=(cargo
              git)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('a8ff9e1125d87caea3ea02d23d6ac4b048ef78f7feb4681c209ff40c1f2fe69c')
+sha256sums=('0a1e2681b2aa4e0467640bc15c18354fbb56564e12b8da46a08ed501662963c9')
 
 prepare() {
 	cd "$_archive"
@@ -30,6 +30,7 @@ _srcenv() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	export CFLAGS+=' -ffat-lto-objects'
+	export LIMABEAN_UBERJAR="/usr/lib/$_archive-standalone.jar"
 }
 
 build() {
@@ -37,7 +38,7 @@ build() {
 	pushd rust
 	cargo build --frozen --release
 	pushd ../clj
-	clojure -T:build jar
+	clojure -T:build uber
 }
 
 check() {
@@ -52,6 +53,6 @@ check() {
 package () {
 	cd "$_archive"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "rust/target/release/$pkgname"{,-pod}
-	install -Dm0755 -t "$pkgdir/usr/lib/$pkgname/" "clj/target/$pkgname-$pkgver.jar"
+	install -Dm0755 -t "$pkgdir/usr/lib/" "clj/target/$_archive-standalone.jar"
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE-{APACHE,MIT}
 }
