@@ -1,0 +1,15 @@
+pkgbase = localizationmanager
+	pkgdesc = CLI tool and TUI editor for managing .NET .resx localization files.
+	pkgver = 0.7.9
+	pkgrel = 1
+	url = https://github.com/nickprotop/LocalizationManager
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk
+	makedepends = dotnet-targeting-pack-9.0
+	depends = dotnet-runtime-9.0
+	depends = aspnet-runtime-9.0
+	source = LocalizationManager-0.7.9.tar.gz::https://github.com/nickprotop/LocalizationManager/archive/refs/tags/v0.7.9.tar.gz
+	sha256sums = a2cad0faf5220f89c5e68f6e703a4a6e84aebcbe3d1c1ffa23ae5da58b0b17e6
+
+pkgname = localizationmanager
