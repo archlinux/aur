@@ -229,36 +229,7 @@ run_prepare() {
   out_sha="$(sha256sum "$out_pkg" | awk '{print $1}')"
 
   if [[ "$do_upload" -eq 1 ]]; then
-    need_cmd cn
-    need_cmd gpg
-
-    if [[ -z "$upload_file" ]]; then
-      upload_file="$out_pkg"
-    fi
-    [[ -f "$upload_file" ]] || die "upload file not found: $upload_file"
-
-    if [[ -z "$upload_signature" ]]; then
-      upload_signature="${upload_file}.sig"
-      echo "==> Generating signature: $upload_signature"
-      local gpg_cmd=(gpg --batch --yes --detach-sign --output "$upload_signature")
-      if [[ -n "$upload_gpg_key" ]]; then
-        gpg_cmd+=(--local-user "$upload_gpg_key")
-      fi
-      gpg_cmd+=("$upload_file")
-      "${gpg_cmd[@]}"
-    else
-      [[ -f "$upload_signature" ]] || die "upload signature not found: $upload_signature"
-    fi
-
-    echo "==> Uploading package with cn"
-    local upload_cmd=(
-      cn release upload "$upload_app" "$upload_version"
-      --public-platform "$upload_platform"
-      --file "$upload_file"
-      --signature "$upload_signature"
-      --channel "$upload_channel"
-    )
-    "${upload_cmd[@]}"
+    run_cn_upload "$upload_app" "$upload_version" "$upload_platform" "$upload_file" "$upload_signature" "$upload_gpg_key" "$upload_channel" "$out_pkg"
   fi
 
   echo
@@ -271,6 +242,48 @@ run_prepare() {
   echo "Next steps:"
   echo "  1) Upload $out_pkg to your CDN"
   echo "  2) Run: ./aur-release.sh finalize --zst-url <uploaded-url> --commit --push"
+}
+
+run_cn_upload() {
+  local upload_app="$1"
+  local upload_version="$2"
+  local upload_platform="$3"
+  local upload_file="$4"
+  local upload_signature="$5"
+  local upload_gpg_key="$6"
+  local upload_channel="$7"
+  local default_upload_file="$8"
+
+  need_cmd cn
+  need_cmd gpg
+
+  if [[ -z "$upload_file" ]]; then
+    upload_file="$default_upload_file"
+  fi
+  [[ -f "$upload_file" ]] || die "upload file not found: $upload_file"
+
+  if [[ -z "$upload_signature" ]]; then
+    upload_signature="${upload_file}.asc"
+    echo "==> Generating signature: $upload_signature"
+    local gpg_cmd=(gpg --batch --yes --armor --detach-sign --output "$upload_signature")
+    if [[ -n "$upload_gpg_key" ]]; then
+      gpg_cmd+=(--local-user "$upload_gpg_key")
+    fi
+    gpg_cmd+=("$upload_file")
+    "${gpg_cmd[@]}"
+  else
+    [[ -f "$upload_signature" ]] || die "upload signature not found: $upload_signature"
+  fi
+
+  echo "==> Uploading package with cn"
+  local upload_cmd=(
+    cn release upload "$upload_app" "$upload_version"
+    --public-platform "$upload_platform"
+    --file "$upload_file"
+    --signature "$upload_signature"
+    --channel "$upload_channel"
+  )
+  "${upload_cmd[@]}"
 }
 
 run_finalize() {
@@ -354,7 +367,7 @@ run_walkthrough() {
   need_cmd git
 
   local default_deb_url deb_url deb_ver current_pkgver current_pkgrel zst_url
-  local do_cn_upload=0 upload_channel="beta" upload_version="" upload_app="sapient-artifice/mage-lab"
+  local upload_channel="beta" upload_version="" upload_app="sapient-artifice/mage-lab"
   default_deb_url="$(read_pkg_var _magelab_deb_url | sed -e 's/^"//' -e 's/"$//')"
 
   read -r -p "Upstream .deb URL [${default_deb_url}]: " deb_url
@@ -391,8 +404,9 @@ run_walkthrough() {
   if ! confirm "Run prepare step now?" "Y"; then
     die "walkthrough stopped before prepare"
   fi
-  if confirm "Upload built pacman package to CrabNebula during prepare?" "Y"; then
-    do_cn_upload=1
+  run_prepare --deb-url "$deb_url"
+
+  if confirm "Upload built pacman package to CrabNebula now?" "Y"; then
     if confirm "Is this a beta release channel?" "Y"; then
       upload_channel="beta"
     else
@@ -407,12 +421,7 @@ run_walkthrough() {
     if [[ -n "${input_upload_version:-}" ]]; then
       upload_version="$input_upload_version"
     fi
-  fi
-
-  if [[ "$do_cn_upload" -eq 1 ]]; then
-    run_prepare --deb-url "$deb_url" --upload --upload-app "$upload_app" --upload-version "$upload_version" --upload-channel "$upload_channel"
-  else
-    run_prepare --deb-url "$deb_url"
+    run_cn_upload "$upload_app" "$upload_version" "pacman-x86_64" "" "" "" "$upload_channel" "$(pkg_filename)"
   fi
 
   echo
