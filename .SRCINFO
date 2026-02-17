@@ -1,0 +1,19 @@
+pkgbase = sherut-bin
+	pkgdesc = A lightweight tool that exposes shell commands as HTTP endpoints
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/petereon/sherut
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = sherut
+	conflicts = sherut
+	source = README-0.1.0.md::https://raw.githubusercontent.com/petereon/sherut/v0.1.0/README.md
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/petereon/sherut/v0.1.0/LICENSE
+	sha256sums = 5d7ac2cd83ac2e18486b474da1eee5a95da3b5dd2eca53d524333e24a5039cb4
+	sha256sums = 3b2920eba054c62cc3b33a046d5a2c8a13c56a83dbcda772ae2f6e665b4b737f
+	source_x86_64 = sherut-x86_64-0.1.0.tgz::https://github.com/petereon/sherut/releases/download/v0.1.0/sherut-linux-amd64.tar.gz
+	sha256sums_x86_64 = ac998b2340b33bca62be65c3cbb79ffc0265ed378cad5ce100ce64322d8e15b0
+
+pkgname = sherut-bin

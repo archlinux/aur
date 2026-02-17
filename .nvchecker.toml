@@ -1,0 +1,5 @@
+[sherut-bin]
+source = "github"
+github = "petereon/sherut"
+use_latest_release = true
+prefix = "v"
