@@ -3,11 +3,11 @@
 pkgname='python-pyjwkest'
 _name=${pkgname#python-}
 pkgver=1.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Implementation of JWT, JWS, JWE and JWK'
 arch=('any')
 url="https://github.com/rohe/${_name}"
-license=('Apache')
+license=('Apache-2.0')
 depends=(
   'python'
   'python-pycryptodomex'
