@@ -3,7 +3,7 @@
 
 
 pkgname=astrodmx-capture
-pkgver=2.15.1
+pkgver=2.16.4
 pkgrel=1
 pkgdesc="AstroDMx Capture Astronomical Imaging"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -44,9 +44,9 @@ depends=('glibc>=2.27'
 # can maintain a constant path the file. Hopefully this will allow us to continue installing older versions
 # without breakage after a new version is released. Thanks Nicola!
 source_x86_64=("https://www.astrodmx-capture.org.uk/downloads/astrodmx/current/linux-x86_64/astrodmx-capture_${pkgver}_x86-64-manual.tar.gz")
-sha256sums_x86_64=('1574cc698a1d0138a5eda34346f2dfe55f4e721c09ef722908bfd9d2b9ef22d9')
-sha256sums_aarch64=('096765f2a4fe60401bc2f6bbcf971c32de8d480ce95f5f0414ee6c8f00213cf0')
-sha256sums_armv7h=('28157a04c7e2e5c4a02336e5d56fbc3092911e52ec570057556d84b5a0a77ddd')
+sha256sums_x86_64=('a08fc998ffb22a1321ded473738e4d3ba04b03010e8bace355b0f51a4053fd83')
+sha256sums_aarch64=('0eb1914409fa99e744075e4c773fe84738c876f3bafa8a3a5da64cae6e7351a8')
+sha256sums_armv7h=('ddcf7b1b9650fda3f24e2f159098969927fbf4a47e81c1d554391219573ffd7d')
 source_aarch64=("https://www.astrodmx-capture.org.uk/downloads/astrodmx/current/linux-arm/astrodmx-glibc-2.28_${pkgver}_manual-aarch64.tar.gz")
 source_armv7h=("https://www.astrodmx-capture.org.uk/downloads/astrodmx/current/linux-arm//astrodmx-glibc-2.28_${pkgver}_manual-armhf.tar.gz")
 
