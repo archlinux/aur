@@ -13,4 +13,5 @@ post_upgrade() {
 * See release notes: https://git.sr.ht/~sircmpwn/himitsu/refs/0.4
 * 
 EOF
+	return 0
 }
