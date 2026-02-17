@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=uutils-hostname-git
-pkgver=r252.ge9be376
+pkgver=r487.gc047799
 pkgrel=1
 pkgdesc="Rust implementation of hostname"
 arch=('i686' 'x86_64')
 url="https://github.com/uutils/hostname"
 license=('MIT')
-depends=('gcc-libs')
+depends=('glibc' 'libgcc')
 makedepends=('git' 'cargo')
 provides=("uutils-hostname=$pkgver")
 conflicts=('uutils-hostname')
@@ -49,8 +49,8 @@ package() {
     --path .
 
   for path in "$pkgdir/usr/bin"/*; do
-    dir=$(dirname $path)
-    basename=$(basename $path)
+    dir=$(dirname "$path")
+    basename=$(basename "$path")
     mv "$dir/$basename" "$dir/uutils-$basename"
   done
 

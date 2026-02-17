@@ -1,6 +1,6 @@
 pkgbase = uutils-hostname-git
 	pkgdesc = Rust implementation of hostname
-	pkgver = r252.ge9be376
+	pkgver = r487.gc047799
 	pkgrel = 1
 	url = https://github.com/uutils/hostname
 	arch = i686
@@ -8,8 +8,9 @@ pkgbase = uutils-hostname-git
 	license = MIT
 	makedepends = git
 	makedepends = cargo
-	depends = gcc-libs
-	provides = uutils-hostname=r252.ge9be376
+	depends = glibc
+	depends = libgcc
+	provides = uutils-hostname=r487.gc047799
 	conflicts = uutils-hostname
 	source = git+https://github.com/uutils/hostname.git
 	sha256sums = SKIP
