@@ -1,6 +1,6 @@
 pkgbase = libticables-git
 	pkgdesc = TI Link Cable library
-	pkgver = 1.18.r119.g7c4858d8
+	pkgver = 1.18.r127.g791d2535
 	pkgrel = 1
 	url = http://lpg.ticalc.org/prj_tilp/
 	install = libticables-git.install
@@ -10,7 +10,7 @@ pkgbase = libticables-git
 	makedepends = git
 	depends = glibc
 	depends = glib2
-	depends = gcc-libs
+	depends = libusb
 	provides = libticables
 	conflicts = libticables
 	options = !libtool
