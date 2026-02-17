@@ -1,7 +1,7 @@
 # Contributor: Mario Ray Mahardhika <leledumbo_cool@yahoo.co.id>
 # Maintainer: tee < teeaur at duck dot com >
 pkgname=k6-bin
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="A modern load testing tool, using Go and JavaScript (precompiled)"
 provides=("k6={$pkgver}")
@@ -10,7 +10,7 @@ url='https://k6.io'
 license=('AGPL-3.0-or-later')
 options=(!emptydirs)
 source_x86_64=("https://github.com/k6io/k6/releases/download/v${pkgver}/k6-v${pkgver}-linux-$arch.tar.gz")
-sha256sums_x86_64=('365591ae4039b51b2843b4a117e2dde96fa20cc0c5df800a330790380eebb697')
+sha256sums_x86_64=('68df4958a1b089dc6f70a234e07c7ec818922f83b261ca24f3abf79882b13343')
 
 package() {
   cd "$srcdir/k6-v${pkgver}-linux-amd64"
