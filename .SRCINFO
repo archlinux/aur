@@ -1,11 +1,11 @@
 pkgbase = talm-bin
 	pkgdesc = Manage Talos Linux the GitOps Way!
-	pkgver = 0.22.1
+	pkgver = 0.22.3
 	pkgrel = 2
 	arch = x86_64
 	license = MPL-2.0
 	provides = talm
-	source = talm-bin-0.22.1.bin::https://github.com/aenix-io/talm/releases/download/v0.22.1/talm-linux-amd64.tar.gz
-	sha256sums = 95f8b0f3da0b35c90f7f0d9e5e093f9958d48390be72b3a0be558c36ece3ce99
+	source = talm-bin-0.22.3.bin::https://github.com/aenix-io/talm/releases/download/v0.22.3/talm-linux-amd64.tar.gz
+	sha256sums = 00b97b436b1b13c984564d5588f00664bf5805b9314c63daf2a6c8c2d627dc76
 
 pkgname = talm-bin
