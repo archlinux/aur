@@ -2,14 +2,14 @@
 # Adopted from: Félix Saparelli <aur@passcod.name>
 pkgname=sirikali-git
 _pkgname=${pkgname%-git}
-pkgver=1.6.0.r95.b3ac657
+pkgver=1.8.5.r2.0abe269
 pkgrel=1
 pkgdesc="A Qt/C++ GUI front end to sshfs, ecryptfs-simple, cryfs, gocryptfs, securefs, fscrypt and encfs"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://mhogomchungu.github.io/sirikali/"
 license=('GPL-3.0-only')
-depends=('qt6-base' 'libpwquality' 'hicolor-icon-theme' 'libsecret')
-makedepends=('git' 'cmake' 'libgcrypt' 'gcc-libs')
+depends=('qt6-base' 'libpwquality' 'hicolor-icon-theme' 'libgcc' 'libstdc++' 'libsecret')
+makedepends=('git' 'cmake' 'libgcrypt')
 optdepends=('kwallet: password storage (either via libsecret or discovered via dbus)'
             'cryfs: for CryFS backend'
             'ecryptfs-simple: for eCryptfs backend'
