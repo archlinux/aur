@@ -13,10 +13,10 @@ provides=('xytz')
 conflicts=('xytz')
 depends=('yt-dlp' 'ffmpeg')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/xdagiz/xytz/releases/download/v0.8.3/xytz-v0.8.4-next-linux-arm64.tar.gz")
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/xdagiz/xytz/releases/download/v0.8.3/xytz-v0.8.3-linux-arm64.tar.gz")
 sha256sums_aarch64=('1cc8a7a1e458a7032b7ad1fbde9cc0d063e80f7c7b303e8652d449907e878f16')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/xdagiz/xytz/releases/download/v0.8.3/xytz-v0.8.4-next-linux-amd64.tar.gz")
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/xdagiz/xytz/releases/download/v0.8.3/xytz-v0.8.3-linux-amd64.tar.gz")
 sha256sums_x86_64=('c6945e2864191751c0694f0906a2e9b91e3676ca3914412eb2d174316741817c')
 
 package() {
