@@ -1,0 +1,56 @@
+pkgbase = authentik-platform-git
+	pkgdesc = Authentik platform tools
+	pkgver = r879.4803fcac
+	pkgrel = 1
+	url = https://github.com/goauthentik/platform
+	arch = x86_64
+	license = AGPL3
+	makedepends = git
+	makedepends = go
+	makedepends = rust
+	options = !lto
+	source = platform::git+https://github.com/goauthentik/platform.git
+	source = authentik-nss.install
+	source = authentik-pam.install
+	source = authentik-sysd.install
+	b2sums = SKIP
+	b2sums = 6d51a800f7f20d69845a91d946925df143ca00c5d8f465c6d34e4ea617d9872c869e557086b6d0e38ebb3cbd5f61219e4f34dd03f58c586f6d32eb0cb37292ed
+	b2sums = a67cc07a0e5d60e9aa2c23f86bbc6a028d4a2134ba53ea2b8b08e2cc046b29dc42e9d18fa63b5cf1738590bcb3998c34b672361ee354ed6f3c5cc92e73fcf7cd
+	b2sums = a98da09ebfd7493d1dc42419508835a40c79306d636f05eac62cef51db235a4021d0a39755a71dc4621aa8b7922fe08c59c29f1866a289e06068aea07d3c48e8
+
+pkgname = authentik-cli-git
+	pkgdesc = authentik CLI
+	provides = authentik-cli
+	conflicts = authentik-cli
+
+pkgname = authentik-agent-git
+	depends = authentik-cli
+	provides = authentik-agent
+	conflicts = authentik-agent
+
+pkgname = authentik-sysd-git
+	depends = authentik-browser-support
+	depends = authentik-agent
+	optdepends = authentik-nss: Make the system aware of Authentik users
+	optdepends = authentik-pam: Allow logging in as an Authentik user
+	provides = authentik-sysd
+	conflicts = authentik-sysd
+	backup = etc/authentik/config.json
+
+pkgname = authentik-pam-git
+	pkgdesc = Authentik PAM module to enable logging in with Authentik credentials
+	install = authentik-pam.install
+	depends = authentik-sysd
+	provides = authentik-pam
+	conflicts = authentik-pam
+
+pkgname = authentik-nss-git
+	pkgdesc = Authentik nss module that makes the system aware of Authentik users
+	install = authentik-nss.install
+	depends = authentik-sysd
+	provides = authentik-nss
+	conflicts = authentik-nss
+
+pkgname = authentik-browser-support-git
+	provides = authentik-browser-support
+	conflicts = authentik-browser-support

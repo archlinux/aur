@@ -1,0 +1,12 @@
+
+post_install() {
+  cat << EOF
+  authentik-sysd installed, run the following command to enable the service:
+      sudo systemctl enable --now ak-sysd.service
+  
+  Note on headless systems ak-agent will not be started automatically.
+  To do that manually, run the following command:
+      systemctl --user enable --now ak-agent.service
+  
+EOF
+}
