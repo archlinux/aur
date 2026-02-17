@@ -1,0 +1,16 @@
+post_install() {
+  useradd --system --no-create-home --home-dir /var/lib/checkup \
+    --shell /usr/bin/nologin --comment "Checkup service" checkup || true
+  chown checkup:checkup /var/lib/checkup
+  systemctl daemon-reload
+}
+
+post_upgrade() {
+  systemctl daemon-reload
+}
+
+pre_remove() {
+  systemctl stop checkup || true
+  systemctl disable checkup || true
+  userdel checkup || true
+}

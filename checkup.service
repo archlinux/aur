@@ -1,0 +1,24 @@
+[Unit]
+Description=Checkup - Repository Release Tracker
+After=network.target
+
+[Service]
+Type=simple
+User=checkup
+Group=checkup
+WorkingDirectory=/var/lib/checkup
+ExecStart=/usr/bin/checkup --cache /var/lib/checkup --port 3000 --host 127.0.0.1
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/checkup
+PrivateTmp=true
+Environment=HOME=/var/lib/checkup
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=checkup
+
+[Install]
+WantedBy=multi-user.target
