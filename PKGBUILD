@@ -1,17 +1,20 @@
 # Maintainer: Zhenxi <shawndouglasyt@gmail.com>
+# Version and download URL are fetched from the Openlyst API: https://openlyst.ink/docs/api
 pkgname=finar-bin
-pkgver=1.0.0
+_openlyst_latest=$(curl -sL 'https://openlyst.ink/api/v1/apps/finar/latest')
+pkgver=$(echo "$_openlyst_latest" | jq -r '.data.version')
 pkgrel=1
-pkgdesc="A beautiful, modern multi-platform Jellyfin client built with Flutter. Source: https://gitlab.com/Openlyst/finar"
+pkgdesc="A beautiful, modern multi-platform Jellyfin client built with Flutter. Version from Openlyst API. Source: https://gitlab.com/Openlyst/finar"
 arch=('x86_64')
 url="https://gitlab.com/Openlyst/finar"
 license=('AGPL3')
+makedepends=('curl' 'jq')
 depends=('mpv' 'gtk3' 'libmpv.so')
 optdepends=()
 provides=('finar')
 conflicts=('finar')
 options=('!strip')
-source=("${pkgname}-${pkgver}.zip::https://gitlab.com/Openlyst/finar/-/jobs/12544240289/artifacts/raw/doudou-1.0.0-linux-x64.zip")
+source=("${pkgname}-${pkgver}.zip::$(echo "$_openlyst_latest" | jq -r '.data.downloads.Linux.zip.x86_64')")
 sha256sums=('SKIP')
 
 package() {
