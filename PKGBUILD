@@ -1,7 +1,7 @@
 # Maintainer: nixval <nicovaliantoku@gmail.com>
 
 pkgname=declarch
-pkgver=0.5.1
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Universal declarative package manager - unify AUR, flatpak, npm, cargo, pip, and custom backends"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=(
 )
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')  # Update after creating release tarball
+sha256sums=('cb4849c54eefa104c8096c929c5c89d86bd0a78edb7478e96e2a14513f930f9a')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -39,11 +39,13 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
 
-  # Strip binary to remove debug symbols and build paths
+  # Strip binaries to remove debug symbols and build paths
   strip --strip-all "target/release/$pkgname"
+  strip --strip-all "target/release/decl"
 
-  # Install binary
+  # Install binaries
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "target/release/decl" "$pkgdir/usr/bin/decl"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
