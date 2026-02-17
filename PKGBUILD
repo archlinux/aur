@@ -1,7 +1,7 @@
 pkgname=cmdflow
 pkgver=2.3.6
 pkgrel=1
-pkgdesc="A colorful Fish command tracker with rainbow top visualization"
+pkgdesc="A colorful Fish command tracker with rainbow top visualization 🌈"
 arch=('x86_64')
 url="https://github.com/voideez/cmdflow"
 license=('MIT')
