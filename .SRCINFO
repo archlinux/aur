@@ -1,0 +1,23 @@
+pkgbase = python-mutmut
+	pkgdesc = Mutation testing system for Python
+	pkgver = 3.4.0
+	pkgrel = 1
+	url = https://github.com/boxed/mutmut
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python>=3.10
+	depends = python-click
+	depends = python-coverage
+	depends = python-libcst
+	depends = python-pytest
+	depends = python-setproctitle
+	depends = python-textual
+	depends = python-toml
+	source = https://files.pythonhosted.org/packages/source/m/mutmut/mutmut-3.4.0.tar.gz
+	sha256sums = b3b47e60828192c9f2e7737316469777f769a9163d0e384776129b80f7e8aa3e
+
+pkgname = python-mutmut
