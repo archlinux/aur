@@ -1,0 +1,20 @@
+pkgbase = omarchy-cmd-ocr
+	pkgdesc = CleanShot X-style OCR text capture for Hyprland — select a region, get text in clipboard
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/emmgeede/omarchy-cmd-ocr
+	arch = any
+	license = MIT
+	depends = tesseract
+	depends = tesseract-data-eng
+	depends = grim
+	depends = slurp
+	depends = wayfreeze
+	depends = wl-clipboard
+	depends = jq
+	depends = libnotify
+	depends = hyprland
+	source = omarchy-cmd-ocr-1.0.0.tar.gz::https://github.com/emmgeede/omarchy-cmd-ocr/archive/v1.0.0.tar.gz
+	sha256sums = b2d589ae036f51b5225a4e20220312be8a897c85dd08ebbca239f347c30a13f2
+
+pkgname = omarchy-cmd-ocr
