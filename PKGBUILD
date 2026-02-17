@@ -2,7 +2,7 @@
 
 _pkgname="piglit"
 pkgname="${_pkgname}-git"
-pkgver=r12201.7a776c248
+pkgver=r12216.591119965
 pkgrel=1
 pkgdesc="OpenGL implementation testing suite. Provides a simple means to perform regression tests."
 arch=('i686' 'x86_64')
@@ -18,19 +18,12 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!emptydirs')
 install="${_pkgname}.install"
-source=("git+https://gitlab.freedesktop.org/mesa/piglit.git"
-        "numpy-newshape-shape.diff")
-sha256sums=('SKIP'
-            '7da8cd666f9439e34e97b0d0f8ad700fe3e5d41958705945313f49175b6c0b03')
+source=("git+https://gitlab.freedesktop.org/mesa/piglit.git")
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "${_pkgname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-	cd "${_pkgname}"
-	patch -p1 < "${srcdir}/numpy-newshape-shape.diff"
 }
 
 build() {
