@@ -6,13 +6,13 @@
 
 _name=tilibs
 pkgname=libtifiles-git
-pkgver=1.18.r119.g7c4858d8
+pkgver=1.18.r127.g791d2535
 pkgrel=1
 pkgdesc="TI File format library"
 arch=('i686' 'x86_64')
 url="http://lpg.ticalc.org/prj_tilp/"
 license=('GPL-2.0-only')
-depends=('glibc' 'glib2' 'gcc-libs' 'libarchive' 'libticonv-git')
+depends=('glibc' 'glib2' 'libarchive' 'libticonv-git')
 makedepends=('git')
 options=('!libtool')
 conflicts=('libtifiles')
