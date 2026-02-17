@@ -1,7 +1,7 @@
 # Maintainer: Diego Ernani (CapivaraVai) <dernani@gmail.com>
 
 pkgname=arch-update-vai
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Script interativo para atualizar Arch Linux (pacman, AUR, Flatpak, Snap, fwupd) - git"
 arch=('any')
