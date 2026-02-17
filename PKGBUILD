@@ -43,20 +43,6 @@ prepare() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     
-    # Helper function to relocate directories and create symlinks
-    # Usage: _relocate_and_link <source_path> <target_path>
-    # Moves directory from source to target, then symlinks target back to source location
-    _relocate_and_link() {
-        local _src="$1"
-        local _target="$2"
-        local _target_dir
-        
-        _target_dir="$(dirname "$_target")"
-        install -dm755 "$_target_dir"
-        mv "$_src" "$_target"
-        ln -s "$_target" "$_src"
-    }
-    
     # Install application files
     install -dm755 "$pkgdir/usr/share/webapps/$pkgname"
     cp -r * "$pkgdir/usr/share/webapps/$pkgname/"
@@ -64,37 +50,30 @@ package() {
     # Move writable directories from /usr/share to /var/lib, /var/log, /var/cache
     # PHP-FPM runs with ProtectSystem=full, preventing writes to /usr, /boot, /efi
     # All runtime-generated files (config, uploads, cache, logs) must be in /var
-    _relocate_and_link \
-        "$pkgdir/usr/share/webapps/$pkgname/application/config" \
-        "$pkgdir/var/lib/$pkgname/config"
     
-    _relocate_and_link \
-        "$pkgdir/usr/share/webapps/$pkgname/uploads" \
-        "$pkgdir/var/lib/$pkgname/uploads"
+    # Define directory relocations as "source:target" pairs
+    local _relocations=(
+        "application/config:var/lib/$pkgname/config"
+        "uploads:var/lib/$pkgname/uploads"
+        "backup:var/lib/$pkgname/backup"
+        "userdata:var/lib/$pkgname/userdata"
+        "updates:var/lib/$pkgname/updates"
+        "application/logs:var/log/$pkgname"
+        "application/cache:var/cache/$pkgname"
+        "images/eqsl_card_images:var/lib/$pkgname/eqsl_card_images"
+    )
     
-    _relocate_and_link \
-        "$pkgdir/usr/share/webapps/$pkgname/backup" \
-        "$pkgdir/var/lib/$pkgname/backup"
-    
-    _relocate_and_link \
-        "$pkgdir/usr/share/webapps/$pkgname/userdata" \
-        "$pkgdir/var/lib/$pkgname/userdata"
-    
-    _relocate_and_link \
-        "$pkgdir/usr/share/webapps/$pkgname/updates" \
-        "$pkgdir/var/lib/$pkgname/updates"
-    
-    _relocate_and_link \
-        "$pkgdir/usr/share/webapps/$pkgname/application/logs" \
-        "$pkgdir/var/log/$pkgname"
-    
-    _relocate_and_link \
-        "$pkgdir/usr/share/webapps/$pkgname/application/cache" \
-        "$pkgdir/var/cache/$pkgname"
-    
-    _relocate_and_link \
-        "$pkgdir/usr/share/webapps/$pkgname/images/eqsl_card_images" \
-        "$pkgdir/var/lib/$pkgname/eqsl_card_images"
+    # Process relocations
+    local _reloc _src _target _target_dir
+    for _reloc in "${_relocations[@]}"; do
+        _src="$pkgdir/usr/share/webapps/$pkgname/${_reloc%%:*}"
+        _target="$pkgdir/${_reloc##*:}"
+        _target_dir="$(dirname "$_target")"
+        
+        install -dm755 "$_target_dir"
+        mv "$_src" "$_target"
+        ln -s "/${_reloc##*:}" "$_src"
+    done
     
     # Note: config.php and database.php will be created by the web-based installer
     # Users should NOT manually copy sample configs before running the installer
