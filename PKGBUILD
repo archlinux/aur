@@ -3,7 +3,7 @@
 _pkgname=advancely
 pkgname=$_pkgname-git
 pkgver=r700.4a53bcc
-pkgrel=1
+pkgrel=2
 pkgdesc="A highly customizable and interactive tool to track Minecraft progress beyond just Advancements."
 arch=('x86_64')
 url="https://github.com/LNXSeus/Advancely"
@@ -26,6 +26,10 @@ sha256sums=('SKIP'
 pkgver() {
 	cd "$srcdir/Advancely"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  echo $pkgver > version
 }
 
 build() {
