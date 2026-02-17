@@ -1,6 +1,6 @@
-pkgbase = structurizr
+pkgbase = structurizr-git
 	pkgdesc = Software architecture models as code
-	pkgver = 6.0.0
+	pkgver = 6.0.0.r25.g36f530e
 	pkgrel = 1
 	url = https://structurizr.com/
 	arch = any
@@ -8,11 +8,11 @@ pkgbase = structurizr
 	makedepends = git
 	makedepends = maven
 	depends = java-runtime
-	conflicts = structurizr-git
+	conflicts = structurizr
 	options = !strip
-	source = git+https://github.com/structurizr/structurizr.git#tag=v6.0.0
+	source = git+https://github.com/structurizr/structurizr.git
 	source = structurizr.sh
 	sha256sums = SKIP
 	sha256sums = becf35524c25e66b76a21f206b813b97afa6a223d3de61f4b202248957b250d4
 
-pkgname = structurizr
+pkgname = structurizr-git
