@@ -3,8 +3,8 @@
 pkgbase='zl-compressor'
 pkgname=('zl-compressor-vst3' 'zl-compressor-lv2' 'zl-compressor')
 groups=('zl-audio' 'pro-audio')
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 options=()
 pkgdesc="Sidechain and oversample capable compressor plugin by ZL Audio"
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('git' 'cmake' 'clang')
 source=("git+https://github.com/ZL-Audio/ZLCompressor#tag=${pkgver}"
 		"git+https://github.com/ZL-Audio/kfr#tag=9a35250"
 		"git+https://github.com/ZL-Audio/JUCE#tag=6bd3353")
-sha256sums=('14f70a3b239afad93c510d3cf6d1db5d89ca5f0f2f602df67c8602ee42b7449b'
+sha256sums=('721bbbe371c81e73698976c7304e4c5486bb010686dd92a1b745a26165386b48'
             '7aaa927395bce6845b844e775786859e79b2e41dd857a0adee923b93dd183213'
             '2adccbf0b7e52a90a16956955dbbef14924af56086157cfbef7607ac83faf4e5')
 
