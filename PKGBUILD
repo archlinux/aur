@@ -8,7 +8,7 @@ url="https://github.com/Rve27/RvKernel-Manager-Linux"
 license=('GPL3')
 provides=('rvkernel-manager')
 conflicts=('rvkernel-manager')
-depends=('glibc')
+depends=('glibc' 'bash' 'sudo' 'systemd' 'pciutils' 'hicolor-icon-theme')
 options=('!strip')
 
 source=(
