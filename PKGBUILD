@@ -1,7 +1,7 @@
 # Maintainer: Card38753 <cccc38753@gmail.com>
 pkgname=lazytyper-bin
 _pkgname=LazyTyper
-pkgver=1.8.7_nightly.7
+pkgver=1.8.7
 _upstream_pkgver="${pkgver//_/-}"
 pkgrel=1
 pkgdesc="LazyTyper desktop client for AI dictation and transcription (official DEB repack)"
@@ -17,7 +17,7 @@ options=(!strip)
 source_x86_64=(
   "${_pkgname}-${_upstream_pkgver}-x86_64.deb::${_ghurl}/releases/download/v${_upstream_pkgver}-linux/LazyTyper_${_upstream_pkgver}_amd64.deb"
 )
-sha256sums_x86_64=('4c768e7f570fd1e4b97fb4b1c4ebee9822a2f22d468a6327b97c65667ba52534')
+sha256sums_x86_64=('321e02529e72cf54e83d5b04afd8c45ac91c9d9530bbc9f31bef114dca136878')
 
 package() {
   local deb_file="${srcdir}/${_pkgname}-${_upstream_pkgver}-x86_64.deb"
