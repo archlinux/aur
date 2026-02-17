@@ -1,16 +1,16 @@
 pkgbase = pmbs-bin
 	pkgdesc = Make btrfs snapshot (every minute), and auto clean
-	pkgver = 0.1.0a4
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/fm-elpac/pmbs
 	arch = x86_64
 	license = MIT
-	depends = btrfs-progs>=6.16
+	depends = btrfs-progs>=6.19
 	optdepends = rsync: send snapshot to remote machine
 	conflicts = pmbs
-	source = pmbs.tar.gz::https://crates.io/api/v1/crates/pmbs/0.1.0-a4/download
-	source = pmbs-x86_64.zip::https://github.com/fm-elpac/pmbs/releases/download/v0.1.0-a4/pmbs-x86_64.zip
-	sha256sums = 1714bbe8ce2b1065c871a2c92b6853c61cbca75f01251b26c5492a84faa2e4cc
-	sha256sums = 8db98fa314ba03b457eac15d8852a25feb5253997be0ee6b5fcc01ecb16c6948
+	source = pmbs.tar.gz::https://crates.io/api/v1/crates/pmbs/0.1.0/download
+	source = pmbs-x86_64.zip::https://github.com/fm-elpac/pmbs/releases/download/v0.1.0/pmbs-x86_64.zip
+	sha256sums = 7b1ff7a2dbc387810a07160ed305f022265746a7439106f82f77ec34b098f46d
+	sha256sums = 6b45df48e14930dee3a271e73229fae8b37f532537f11b7515b0669e61045a58
 
 pkgname = pmbs-bin
