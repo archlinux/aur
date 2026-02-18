@@ -35,9 +35,13 @@ package() {
     chmod 755 "${pkgdir}/opt/cyberlete/AppRun.wrapped"
     find "${pkgdir}/opt/cyberlete" -name '*.sh' -exec chmod 755 {} +
 
-    # Symlink binary
+    # Launcher script (not a symlink — AppRun uses dirname $0 to find its hooks)
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s /opt/cyberlete/AppRun "${pkgdir}/usr/bin/cyberlete"
+    cat > "${pkgdir}/usr/bin/cyberlete" << 'LAUNCHER'
+#!/bin/bash
+exec /opt/cyberlete/AppRun "$@"
+LAUNCHER
+    chmod 755 "${pkgdir}/usr/bin/cyberlete"
 
     # Desktop entry
     install -Dm644 "${srcdir}/cyberlete.desktop" \
