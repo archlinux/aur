@@ -13,8 +13,8 @@ conflicts=('vop')
 source_x86_64=("${url}/releases/download/v${pkgver}/vop-linux-amd64")
 source_aarch64=("${url}/releases/download/v${pkgver}/vop-linux-arm64")
 
-sha256sums_x86_64=('461a60c5dd2ec9592ae16dfcda9bf48b28295e68311fb613993d442d0c01dcea')
-sha256sums_aarch64=('d67840202b6a912c0ccef385ee3eb2668ee94081316e79e41a9f439eb827b7c0')
+sha256sums_x86_64=('c1be259606ba53bdee4157625201dee46ed040e90a35ea8186d89c6aa558edd2')
+sha256sums_aarch64=('53a28009e207f352ed9bc55f3b7a1ff79a2ab0bcab6aa553a28b35ed56b33e98')
 
 source+=("LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE")
 sha256sums+=('6a393bdfa6c20c218bf73d378cf2e5b0fbf0e95c2a9644baf5714dd9d330dc64')
