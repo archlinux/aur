@@ -18,7 +18,7 @@ optdepends=(
   r-flextable
   #r-lavaanplot
   r-diagrammersvg
-  r-rvsg
+  r-rsvg
   r-png
   r-webshot
   #r-tidysem
