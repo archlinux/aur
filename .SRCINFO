@@ -1,0 +1,21 @@
+pkgbase = suspiro
+	pkgdesc = Keyboard grab and re-inject via virtual keyboard
+	pkgver = 0.1.68
+	pkgrel = 1
+	url = https://gitlab.com/jorgeecardona/suspiro
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = gcc
+	makedepends = linux-api-headers
+	makedepends = alsa-lib
+	makedepends = whisper.cpp
+	makedepends = make
+	depends = glibc
+	depends = alsa-lib
+	depends = whisper.cpp
+	depends = curl
+	source = suspiro-0.1.68.tar.gz::https://gitlab.com/jorgeecardona/suspiro/-/archive/v0.1.68/suspiro-v0.1.68.tar.gz
+	sha256sums = SKIP
+
+pkgname = suspiro
