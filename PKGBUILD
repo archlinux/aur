@@ -4,7 +4,7 @@
 
 _name=x11docker
 pkgname=$_name
-pkgver=7.6.0
+pkgver=7.7.1
 _mainfolder=$pkgname-$pkgver
 pkgrel=1
 pkgdesc='Run GUI applications and desktops in Docker. Focus on security.'
@@ -29,7 +29,7 @@ optdepends=('cups: --printer support'
             'xorg-server: --xorg, --xdummy support')
 
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-sha256sums=('7a1c6d67a9ac39cbc800f3b4494c4f74c00c12e27f332b5fd73247f17982f06c')
+sha256sums=('978c30abff594139169b51f22b852edd5422f5da3eb91a36293a7eb766af4167')
 
 package() {
   cd "$srcdir/$_mainfolder"
