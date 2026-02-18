@@ -9,7 +9,8 @@ depends=('python' 'bash' 'git')
 source=("git+${url}.git"
         "setup_aliases.sh")
 sha256sums=('SKIP'
-            '570e91f52ed201807aaa5ea6fc3cf8cd25fb01df8e3d4c69629a80df1fb1d82a')
+            '0c03944cc02544ceeaecf068f5033ddafb97c28a3ec422c07e55053d3b21dcc6')
+install=spackit.install
 
 package() {
     # 1. Creamos las carpetas de destino
