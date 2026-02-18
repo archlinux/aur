@@ -80,7 +80,7 @@ post_install() {
 
 post_upgrade() {
     echo ""
-    echo "==> Voxtype upgraded to 0.6.1"
+    echo "==> Voxtype upgraded to 0.6.2"
     echo ""
 
     CPU_VARIANT=$(_detect_cpu)
@@ -89,8 +89,12 @@ post_upgrade() {
     _detect_gpu
 
     echo ""
-    echo "    v0.6.1 fixes glibc compatibility for Arch-based distros."
-    echo "    All binaries are now built in Docker to prevent host glibc leakage."
+    echo "    v0.6.2: Echo cancellation for meeting mode."
+    echo "    GTCRN neural speech enhancement removes speaker bleed-through"
+    echo "    from mic audio when loopback capture is active."
+    echo "    The model downloads automatically on first meeting start."
+    echo ""
+    echo "    Also fixes: meeting stop/pause/resume, orphaned meeting cleanup."
     echo ""
     echo "    Restart the daemon to apply updates:"
     echo "      systemctl --user restart voxtype"
