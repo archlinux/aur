@@ -1,22 +1,15 @@
 pkgbase = klit-unstable
-	pkgdesc = The successor to BaoBao. A modern, privacy-focused client for the e621 community (unstable/development version). Source: https://gitlab.com/Openlyst/klit
-	pkgver = 1.0.0
+	pkgdesc = E926 API client (unstable build from GitHub)
+	pkgver = 7.0.0
 	pkgrel = 1
-	url = https://gitlab.com/Openlyst/klit
+	url = https://openlyst.ink
 	arch = x86_64
-	license = AGPL3
-	makedepends = flutter
-	makedepends = git
-	makedepends = clang
-	makedepends = cmake
-	makedepends = ninja
-	makedepends = pkg-config
+	license = GPL3
 	depends = gtk3
-	depends = mpv
 	provides = klit
 	conflicts = klit
 	options = !strip
-	source = klit-unstable::git+https://gitlab.com/Openlyst/klit.git#branch=main
+	source = klit-unstable-7.0.0.zip::https://github.com/justacalico/Openlyst-more-builds/releases/download/build-33/klit-7.0.0-2026-02-18-linux-x64.zip
 	sha256sums = SKIP
 
 pkgname = klit-unstable
