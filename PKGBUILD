@@ -3,7 +3,7 @@
 pkgname=gawk-redis
 _project=gawkextlib
 pkgver=1.7.8
-pkgrel=4
+pkgrel=5
 pkgdesc="GAWK extension - interface to Redis via hiredis API"
 arch=('x86_64')
 url="https://sourceforge.net/projects/gawkextlib/"
