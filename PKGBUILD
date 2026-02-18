@@ -123,7 +123,7 @@ prepare() {
   if [ ! -v CUDA_ARCH ] && ((! DISABLE_CUDA)) && grep -q nvidia <(lsmod); then
     git -C "$srcdir/blender" apply -v "${srcdir}"/SelectCudaComputeArch.patch
   fi
-  [[ -v _git_revert ]] && git -C "${srcdir}"/blender revert --no-commit "${_git_revert[@]}"
+  [[ -v _git_revert ]] && git -C "${srcdir}"/blender revert --no-commit -Xtheirs "${_git_revert[@]}" || git -C "${srcdir}"/blender revert --abort
 # remove deprecated headers in rocm:7
 sed -e '/Geometry.h/d' -e '/Scene.h/d' -i "$srcdir"/blender/intern/cycles/kernel/CMakeLists.txt
 }
