@@ -1,0 +1,15 @@
+pkgbase = eavs
+	pkgdesc = Unified API gateway for LLM providers with virtual API keys and usage tracking
+	pkgver = 0.5.5
+	pkgrel = 1
+	url = https://github.com/byteowlz/eavs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	source_x86_64 = eavs-0.5.5.tar.gz::https://github.com/byteowlz/eavs/releases/download/v0.5.5/eavs-v0.5.5-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = b95ab31cc6c63128e933293f18f9d4783fa7887a8bf6d8f111c6a506a9800d60
+	source_aarch64 = eavs-0.5.5.tar.gz::https://github.com/byteowlz/eavs/releases/download/v0.5.5/eavs-v0.5.5-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 3f2c8dae9e4e300806f8620d2b62884e97ca65f46bd8b4b9970d603a989d372e
+
+pkgname = eavs
