@@ -1,0 +1,23 @@
+post_install() {
+    echo "==> Enable the systemd user services to start monitoring automatically:"
+    echo "    systemctl --user enable --now logitech-hidpp-monitor.service"
+    echo "    systemctl --user enable --now logitech-headset-monitor.service"
+    echo ""
+    echo "==> If you previously installed manually to ~/.local/bin, remove the old"
+    echo "    user-level service overrides to avoid conflicts:"
+    echo "    rm -f ~/.config/systemd/user/logitech-hidpp-monitor.service"
+    echo "    rm -f ~/.config/systemd/user/logitech-headset-monitor.service"
+    echo "    systemctl --user daemon-reload"
+}
+
+post_upgrade() {
+    echo "==> Reload and restart the systemd user services:"
+    echo "    systemctl --user daemon-reload"
+    echo "    systemctl --user restart logitech-hidpp-monitor.service"
+    echo "    systemctl --user restart logitech-headset-monitor.service"
+}
+
+post_remove() {
+    echo "==> If you had enabled the services, reload systemd:"
+    echo "    systemctl --user daemon-reload"
+}
