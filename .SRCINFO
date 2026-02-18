@@ -1,0 +1,15 @@
+pkgbase = pcalc-lts
+	pkgdesc = A command-line programmer's calculator handling HEX/DEC/OCT/BIN
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/jurassiclizard/pcalc-lts
+	arch = any
+	license = GPL
+	makedepends = cmake
+	depends = glibc
+	conflicts = pcalc
+	conflicts = pcalc-git
+	source = pcalc-lts-0.8.1.tar.gz::https://github.com/jurassiclizard/pcalc-lts/archive/refs/tags/v0.8.1.tar.gz
+	sha256sums = fe752f9f791245a34ad37147d19ac80cf5c9e2ac2c643dd1e15a2c47458bbd39
+
+pkgname = pcalc-lts
