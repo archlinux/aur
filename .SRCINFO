@@ -1,0 +1,19 @@
+pkgbase = aggregate6-git
+	pkgdesc = IPv4 and IPv6 prefix aggregation tool (development version)
+	pkgver = 1.0.14.r6.gff6d17f
+	pkgrel = 1
+	url = https://github.com/job/aggregate6
+	arch = any
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-py-radix
+	provides = aggregate6
+	conflicts = aggregate6
+	source = aggregate6::git+https://github.com/job/aggregate6.git
+	sha256sums = SKIP
+
+pkgname = aggregate6-git
