@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=relations
-_pkgver=0.6-15
+_pkgver=0.6-16
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -21,8 +21,8 @@ optdepends=(
   r-rsymphony
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a97dd6684b1c2779c7e4c8aafe1efdb3')
-b2sums=('af820547ac8404a27b5f023f2ad0da9e6d7c5800e04aad15304517cdfec62d401d5e537a40ef29a34a318898a505e4dc7df31301f987100a902285524b2b3a8c')
+md5sums=('db9a1fb7760d94c855cfeba0d16fe75c')
+b2sums=('84308bafaaeb2c51fb7be5124b5f80294240881968132b8174aa6091994b7d2f430ad422630cdb377b4eba9329d26fc095276766f2b2755483969376389d8efc')
 
 build() {
   mkdir build
