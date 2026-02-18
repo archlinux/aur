@@ -1,7 +1,5 @@
-*.log
-lc0-*.tar.gz
-lc0-*.pkg.tar.zst
-lczero-common-master.tar.gz
-weights_hanse-69722-vf2.gz
-pkg
-src
+/pkg/
+/src/
+*.pkg.tar.zst
+*.tar.gz
+*.pb.gz

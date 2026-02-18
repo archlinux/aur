@@ -1,28 +1,53 @@
 pkgbase = lc0
-	pkgdesc = UCI-compliant chess engine designed to play chess via neural network, specifically those of the LeelaChessZero project.
-	pkgver = 0.31.2
+	pkgver = 0.32.1
 	pkgrel = 1
 	url = https://lczero.org/
-	install = lc0.install
 	arch = x86_64
 	license = GPL-3.0-or-later
-	makedepends = git
 	makedepends = meson
 	makedepends = eigen
-	makedepends = clang
-	makedepends = opencl-headers
 	makedepends = blas-openblas
-	depends = ocl-icd
+	depends = glibc
+	depends = gcc-libs
 	depends = openblas
+	depends = zlib
+	depends = lc0-network
 	optdepends = blas-openblas: Backend for use with CPUs
 	optdepends = cudnn: Backend for use with nvidia GPUs
 	optdepends = opencl-driver: Backend for use with OpenCL
-	noextract = $_weights
-	source = lc0
-	source = lc0-0.31.2.tar.gz::https://github.com/LeelaChessZero/lc0/archive/v0.31.2.tar.gz
-	source = weights_hanse-69722-vf2.gz::https://storage.lczero.org/files/networks-contrib/hanse-69722-vf2.gz
-	sha256sums = cc9c40a508afd0aa2032a6eb309f69e8731a0a7d01f6601a653ae4e509772bd7
-	sha256sums = 6dea1e67e33ec0513853df4fef24d51318e47a6cf0f35c0491cce5c1547dc023
-	sha256sums = a519393981e68112628f739e261303987477058027f73c584c1e89302ec55b87
+	optdepends = cuda
+	noextract = t1-256x10-distilled-swa-2432500.pb.gz
+	noextract = t3-512x15x16h-distill-swa-2767500.pb.gz
+	noextract = BT3-768x15x24h-swa-2790000.pb.gz
+	noextract = BT4-1024x15x32h-swa-6147500-policytune-332.pb.gz
+	source = https://github.com/LeelaChessZero/lc0/archive/refs/tags/v0.32.1.tar.gz
+	source = https://github.com/LeelaChessZero/lczero-common/archive/c47d3683972d9ef293b0c0bc7675f7c2c5ce2274.tar.gz
+	source = t1-256x10-distilled-swa-2432500.pb.gz::https://storage.lczero.org/files/networks-contrib/t1-256x10-distilled-swa-2432500.pb.gz
+	source = t3-512x15x16h-distill-swa-2767500.pb.gz::https://storage.lczero.org/files/networks-contrib/t3-512x15x16h-distill-swa-2767500.pb.gz
+	source = BT3-768x15x24h-swa-2790000.pb.gz::https://storage.lczero.org/files/networks-contrib/BT3-768x15x24h-swa-2790000.pb.gz
+	source = BT4-1024x15x32h-swa-6147500-policytune-332.pb.gz::https://storage.lczero.org/files/networks-contrib/BT4-1024x15x32h-swa-6147500-policytune-332.pb.gz
+	sha256sums = 78b17e8e8d29da30492c86fdac69c519816f4a9d9c3b787dc41a6f9e8d20fde3
+	sha256sums = 266fc540242ad74dace306e0567ad90fece7879714b4a352fe726a76b6668f65
+	sha256sums = bc27a6cae8ad36f2b9a80a6ad9dabb0d6fda25b1e7f481a79bc359e14f563406
+	sha256sums = 78541c4abc0bc81e8145e1f9a4c35a934ebbefff70f11f33215751d55a886352
+	sha256sums = e3067757d1fc2dfc66947b21d15ace0cedf4c54254fc1de83d77c378a3e8b8e1
+	sha256sums = e6ada9d6c4a769bfab3aa0848d82caeb809aa45f83e6c605fc58a31d21bdd618
 
 pkgname = lc0
+	pkgdesc = UCI-compliant chess engine designed to play chess via neural network, specifically those of the LeelaChessZero project.
+
+pkgname = lc0-network-small
+	pkgdesc = Small network for lc0 chess engine, requires ~1.6 GB of memory, recommended for CPU usage.
+	provides = lc0-network
+
+pkgname = lc0-network-medium
+	pkgdesc = Medium network for lc0 chess engine, requires ~1.8 GB of memory, recommended for CPU usage.
+	provides = lc0-network
+
+pkgname = lc0-network-large
+	pkgdesc = Large network for lc0 chess engine, requires ~2.6 GB of memory, recommended for GPU usage.
+	provides = lc0-network
+
+pkgname = lc0-network-very-large
+	pkgdesc = Large network for lc0 chess engine, requires ~4 GB of memory, recommended for large GPUs. This is currently being sent to engine competitions like the TCEC and CCC.
+	provides = lc0-network

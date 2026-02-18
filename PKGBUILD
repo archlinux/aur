@@ -1,63 +1,106 @@
-# Maintainer: Ivan Marquesi Lerner <ivanmlerner@protonmail.com>
+# Maintainer: Emiliano Bovetti <emiliano.bovetti@gmail.com>
+# Original Maintainer: Ivan Marquesi Lerner <ivanmlerner@protonmail.com>
 
-pkgname=lc0
-pkgver=0.31.2
+pkgname=(lc0 lc0-network-small lc0-network-medium lc0-network-large lc0-network-very-large)
+pkgver=0.32.1
 pkgrel=1
-pkgdesc="UCI-compliant chess engine designed to play chess via neural network, \
-		       specifically those of the LeelaChessZero project."
-arch=('x86_64')
+arch=(x86_64)
 
 url="https://lczero.org/"
-license=('GPL-3.0-or-later')
+license=("GPL-3.0-or-later")
 
-depends=('ocl-icd' 'openblas')
-makedepends=('git' 'meson' 'eigen' 'clang' 'opencl-headers' 'blas-openblas')
-#checkdepends=('gtest')
+depends=(glibc gcc-libs openblas zlib lc0-network)
+makedepends=(meson eigen blas-openblas)
 optdepends=("blas-openblas: Backend for use with CPUs"
-	    "cudnn: Backend for use with nvidia GPUs"
-	    "opencl-driver: Backend for use with OpenCL")
+      "cudnn: Backend for use with nvidia GPUs"
+      "opencl-driver: Backend for use with OpenCL"
+      "cuda")
 
-_weights="weights_hanse-69722-vf2.gz"
-install=lc0.install
-source=("$pkgname"
-	"$pkgname-$pkgver.tar.gz::https://github.com/LeelaChessZero/$pkgname/archive/v$pkgver.tar.gz"
-	"$_weights::https://storage.lczero.org/files/networks-contrib/hanse-69722-vf2.gz")
-sha256sums=('cc9c40a508afd0aa2032a6eb309f69e8731a0a7d01f6601a653ae4e509772bd7'
-            '6dea1e67e33ec0513853df4fef24d51318e47a6cf0f35c0491cce5c1547dc023'
-            'a519393981e68112628f739e261303987477058027f73c584c1e89302ec55b87')
+# ref: https://github.com/LeelaChessZero/lc0/wiki/Networks
+# ref: https://lczero.org/play/networks/bestnets
+_url="https://storage.lczero.org/files/networks-contrib"
+_sm="t1-256x10-distilled-swa-2432500.pb.gz"
+_md="t3-512x15x16h-distill-swa-2767500.pb.gz"
+_lg="BT3-768x15x24h-swa-2790000.pb.gz"
+_xl="BT4-1024x15x32h-swa-6147500-policytune-332.pb.gz"
+_lczero_common_sha="c47d3683972d9ef293b0c0bc7675f7c2c5ce2274"
 
-noextract=('$_weights')
+source=("https://github.com/LeelaChessZero/lc0/archive/refs/tags/v${pkgver}.tar.gz"
+        "https://github.com/LeelaChessZero/lczero-common/archive/${_lczero_common_sha}.tar.gz"
+        "${_sm}::${_url}/${_sm}"
+        "${_md}::${_url}/${_md}"
+        "${_lg}::${_url}/${_lg}"
+        "${_xl}::${_url}/${_xl}")
 
-_common='55e1b38'
+noextract=("${_sm}" "${_md}" "${_lg}" "${_xl}")
+
+sha256sums=('78b17e8e8d29da30492c86fdac69c519816f4a9d9c3b787dc41a6f9e8d20fde3'
+            '266fc540242ad74dace306e0567ad90fece7879714b4a352fe726a76b6668f65'
+            'bc27a6cae8ad36f2b9a80a6ad9dabb0d6fda25b1e7f481a79bc359e14f563406'
+            '78541c4abc0bc81e8145e1f9a4c35a934ebbefff70f11f33215751d55a886352'
+            'e3067757d1fc2dfc66947b21d15ace0cedf4c54254fc1de83d77c378a3e8b8e1'
+            'e6ada9d6c4a769bfab3aa0848d82caeb809aa45f83e6c605fc58a31d21bdd618')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver/libs"
-  if [ -d ./lczero-common ]; then {
-    rm -rf lczero-common
-  }
-  fi
-  git clone https://github.com/LeelaChessZero/lczero-common.git
-  cd "lczero-common"
-  git checkout $_common
+  cp -r \
+    "${srcdir}/lczero-common-${_lczero_common_sha}/." \
+    "${srcdir}/lc0-${pkgver}/libs/lczero-common/"
+
+  meson setup \
+    "${srcdir}/lc0-${pkgver}/build/release" \
+    "${srcdir}/lc0-${pkgver}" \
+    -Dcpp_args=-I/usr/include/eigen3 \
+    --buildtype release \
+    --prefix /usr
 }
 
 build() {
-  cd "$pkgname-$pkgver"
-  ./build.sh 
+  meson compile -C "${srcdir}/lc0-${pkgver}/build/release"
 }
 
 check() {
-  cd "$pkgname-$pkgver/build/release"
-  ./chessboard_test
-  ./encoder_test
-  ./hashcat_test
-  ./optionsparser_test
-  ./position_test
-  ./syzygy_test
+  "${srcdir}/lc0-${pkgver}/build/release/chessboard_test"
+  "${srcdir}/lc0-${pkgver}/build/release/encoder_test"
+  "${srcdir}/lc0-${pkgver}/build/release/hashcat_test"
+  "${srcdir}/lc0-${pkgver}/build/release/optionsparser_test"
+  "${srcdir}/lc0-${pkgver}/build/release/position_test"
+  "${srcdir}/lc0-${pkgver}/build/release/syzygy_test"
 }
 
-package() {
-  install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
-  install -Dm755 "$srcdir/$pkgname-$pkgver/build/release/$pkgname" "$pkgdir/usr/lib/$pkgname/$pkgname"
-  install -Dm644 "$srcdir/${_weights}" "$pkgdir/usr/lib/$pkgname/${_weights}"
+package_lc0() {
+  pkgdesc="UCI-compliant chess engine designed to play chess via neural network, \
+           specifically those of the LeelaChessZero project."
+
+  install -Dm755 \
+    "${srcdir}/lc0-${pkgver}/build/release/lc0" \
+    "${pkgdir}/usr/bin/lc0"
+}
+
+package_lc0-network-small() {
+  provides=(lc0-network)
+  pkgdesc="Small network for lc0 chess engine, requires ~1.6 GB of memory, recommended for CPU usage."
+
+  install -Dm644 "${srcdir}/${_sm}" "${pkgdir}/usr/share/lc0/${_sm}"
+}
+
+package_lc0-network-medium() {
+  provides=(lc0-network)
+  pkgdesc="Medium network for lc0 chess engine, requires ~1.8 GB of memory, recommended for CPU usage."
+
+  install -Dm644 "${srcdir}/${_md}" "${pkgdir}/usr/share/lc0/${_md}"
+}
+
+package_lc0-network-large() {
+  provides=(lc0-network)
+  pkgdesc="Large network for lc0 chess engine, requires ~2.6 GB of memory, recommended for GPU usage."
+
+  install -Dm644 "${srcdir}/${_lg}" "${pkgdir}/usr/share/lc0/${_lg}"
+}
+
+package_lc0-network-very-large() {
+  provides=(lc0-network)
+  pkgdesc="Large network for lc0 chess engine, requires ~4 GB of memory, recommended for large GPUs. \
+    This is currently being sent to engine competitions like the TCEC and CCC."
+
+  install -Dm644 "${srcdir}/${_xl}" "${pkgdir}/usr/share/lc0/${_xl}"
 }
