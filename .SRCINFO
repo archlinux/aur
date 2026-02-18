@@ -1,0 +1,13 @@
+pkgbase = prompter-cli
+	pkgdesc = Prompt assembly tool for AI coding agents
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/imdevan/prompter
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	source = prompter-cli-2.0.0.tar.gz::https://github.com/imdevan/prompter/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 139265{sha256}
+
+pkgname = prompter-cli
