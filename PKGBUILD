@@ -50,6 +50,7 @@ makedepends=(
     'libmariadbclient'
     'libxml2'
     'lirc'
+    'nasm'
     'perl-dbd-mysql'
     'perl-io-socket-inet6'
     'perl-libwww'

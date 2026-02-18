@@ -12,6 +12,7 @@ pkgbase = mythtv-git
 	makedepends = libmariadbclient
 	makedepends = libxml2
 	makedepends = lirc
+	makedepends = nasm
 	makedepends = perl-dbd-mysql
 	makedepends = perl-io-socket-inet6
 	makedepends = perl-libwww
