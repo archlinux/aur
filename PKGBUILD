@@ -1,7 +1,7 @@
 # Maintainer: Gentrit Biba <gentritbiba@gmail.com>
 pkgname=cogpit
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Dashboard for browsing and inspecting Claude Code agent sessions"
 arch=('x86_64')
 url="https://github.com/gentritbiba/cogpit"
