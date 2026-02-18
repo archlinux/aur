@@ -1,7 +1,7 @@
 pkgbase = perl-regexp-debugger
 	pkgdesc = Visually debug regexes in-place
 	pkgver = 0.002007
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/pod/Regexp::Debugger
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later

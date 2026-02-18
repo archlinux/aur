@@ -4,7 +4,7 @@
 _dist=Regexp-Debugger
 pkgname=perl-regexp-debugger
 pkgver=0.002007
-pkgrel=1
+pkgrel=2
 pkgdesc='Visually debug regexes in-place'
 arch=('any')
 url='https://metacpan.org/pod/Regexp::Debugger'
@@ -21,8 +21,8 @@ build()
 {
     cd $_dist-$pkgver
 
-    unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-    export PERL_MM_USE_DEFAULT=1
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_OPT='NO_PACKLIST=1 NO_PERLLOCAL=1' PERL_MM_USE_DEFAULT=1
 
     /usr/bin/perl Makefile.PL
     make
@@ -33,8 +33,7 @@ check()
 {
     cd $_dist-$pkgver
 
-    unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-    export PERL_MM_USE_DEFAULT=1
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
 
     make test
 }
@@ -43,8 +42,7 @@ package()
 {
     cd $_dist-$pkgver
 
-    unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
 
     make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
-    find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
