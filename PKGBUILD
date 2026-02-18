@@ -2,7 +2,7 @@
 # Contributor: Neboer <rubinposter@gmail.com>
 
 pkgname=mbctl-git
-pkgver=0.7.1
+pkgver=0.8.2
 pkgver() {
     cd "$srcdir/Man8S-CTR"
     local v
@@ -39,9 +39,10 @@ build() {
 }
 
 package() {
+    cd "$srcdir"
     install -vDm644 mbctl-startup.service -t "$pkgdir/usr/lib/systemd/system/"
     install -vDm644 mbctl-config.yaml "$pkgdir/etc/mbctl/config.yaml"
 
     cd "$srcdir/Man8S-CTR"
-    python -m installer "--destdir=$pkgdir" dist/*.whl
+    python -m installer --destdir "$pkgdir" dist/*.whl
 }
