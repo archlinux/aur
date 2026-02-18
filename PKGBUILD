@@ -1,4 +1,4 @@
-# Contributor: Sam Whited <sam@samwhited.com>
+# Maintainer: Sam Whited <sam@samwhited.com>
 # Contributor: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=xml2rfc
