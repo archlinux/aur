@@ -43,6 +43,7 @@ build() {
   for _arch in ${_architectures}; do
     ${_arch}-cmake \
       -DCMAKE_BUILD_TYPE=Release \
+      -DPARAVIEW_BUILD_SHARED_LIBS=ON -UBUILD_SHARED_LIBS \
       -DPARAVIEW_USE_PYTHON=OFF \
       -DPARAVIEW_ENABLE_EMBEDDED_DOCUMENTATION=OFF \
       -DPARAVIEW_PLUGIN_DISABLE_XML_DOCUMENTATION=ON \
