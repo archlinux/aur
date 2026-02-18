@@ -1,7 +1,7 @@
 # Maintainer: Maria Nicolae <maria@marianicolae.com>
 
 pkgname=dochint
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='A macro processor for authoring HTML documents.'
 
@@ -17,7 +17,7 @@ makedepends=(python-build
              python-setuptools)
 
 source=("https://marianicolae.com/files/software/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('607f7975a7b4ecd48937c80e111c0d2a3c771abe83caa3511e1c9e32d20b9fd5')
+sha256sums=('91add7218f4f34894d469bd3735cf79c2be719433c7bab40b92c4f4b9e8c1522')
 
 build() {
     cd ${srcdir}
