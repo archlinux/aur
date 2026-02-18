@@ -1,0 +1,17 @@
+pkgbase = hyprwatch
+	pkgdesc = A lightweight time tracking daemon and TUI client for Hyprland window manager
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Farhan291/hyprwatch
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = git
+	depends = ncurses
+	depends = hyprland
+	source = hyprwatch-0.0.1.tar.gz::https://github.com/Farhan291/hyprwatch/archive/refs/tags/v0.0.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = hyprwatch
