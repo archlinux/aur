@@ -1,7 +1,7 @@
 # Maintainer: Gabriel Bjørnager Jensen <gabriel at achernar dot io>
 
 pkgname=plural2bin-git
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Plural data recovery."
 arch=("any")
@@ -10,7 +10,7 @@ license=("GPL-3.0-or-later")
 makedepends=("git" "rustup")
 provides=("plural2bin")
 conflicts=("plural2bin")
-source=("git+https://mandelbrot.dk/bjoernager/plural2bin.git")
+source=("git+https://codeberg.org/bjoernager/plural2bin.git")
 sha512sums=("SKIP")
 
 pkgver() {
