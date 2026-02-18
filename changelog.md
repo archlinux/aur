@@ -1,3 +1,30 @@
+2026.02.18, v19.5.1
+
+feature:
+- 6e1cf4ef cloudcmd: supermenu v5.0.0
+
+2026.02.18, v19.5.0
+
+feature:
+- b20539ef common: entity: encode {,}
+- 7ef134f4 cloudcmd: rendy v5.0.0
+
+2026.02.18, v19.4.1
+
+feature:
+- 1e18d513 cloudcmd: @cloudcmd/fileop v9.0.0
+
+2026.02.18, v19.4.0
+
+fix:
+- 45cf9baf menu: prefix (#456)
+
+feature:
+- 3e647290 cloudcmd: redlint v6.0.0
+- 800ed012 cloudcmd: putout v42.0.5
+- 525c17d4 cloudcmd: madrun v13.0.0
+- 44247499 cloudcmd: eslint-plugin-putout v31.0.0
+
 2026.02.15, v19.3.9
 
 feature:
