@@ -1,6 +1,6 @@
 # Maintainer: Daniel Baldwin <daniel@baldwin.io>
 pkgname=vop-bin
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="AWS credential management via 1Password"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ conflicts=('vop')
 source_x86_64=("${url}/releases/download/v${pkgver}/vop-linux-amd64")
 source_aarch64=("${url}/releases/download/v${pkgver}/vop-linux-arm64")
 
-sha256sums_x86_64=('757d828e0e0de54e9e9432dc9e83663480a596eda3577543e5ac790c3b9c94be')
-sha256sums_aarch64=('56ce9d0445a863ee3f85e9c89e55383719305b06a97312b1f695fa79fa391711')
+sha256sums_x86_64=('73d6eeb4099005d3d43cde76ad84995d685394006210e28c2201d013d5b16ddf')
+sha256sums_aarch64=('8d35996cb7947fea02d8504a7ee8f7dbddd87e680fb80871f3ba76b8fa0a4633')
 
 source+=("LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE")
 sha256sums+=('6a393bdfa6c20c218bf73d378cf2e5b0fbf0e95c2a9644baf5714dd9d330dc64')
