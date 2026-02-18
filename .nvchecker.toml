@@ -1,0 +1,5 @@
+[etcdotica-bin]
+source = "github"
+github = "senotrusov/etcdotica"
+use_latest_release = true
+prefix = "v"

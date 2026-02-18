@@ -1,0 +1,26 @@
+pkgbase = etcdotica-bin
+	pkgdesc = A lightweight, file-based overlay that synchronizes system configuration with a Git repository
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/senotrusov/etcdotica
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = Apache-2.0
+	license = MIT
+	provides = etcdotica
+	conflicts = etcdotica
+	source = README-0.2.0.md::https://raw.githubusercontent.com/senotrusov/etcdotica/v0.2.0/README.md
+	source = LICENSE-MIT-0.2.0::https://raw.githubusercontent.com/senotrusov/etcdotica/v0.2.0/LICENSE-MIT
+	source = LICENSE-APACHE-0.2.0::https://raw.githubusercontent.com/senotrusov/etcdotica/v0.2.0/LICENSE-APACHE
+	sha256sums = 12fae172ea98e46d3924a2136a094338fe04894611d26a3eb43e08d2f5852d92
+	sha256sums = bb7abdb4aa6b2dc7a5c3c8a5a6380734a97885e0a178403155c0e575d150b8b5
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	source_x86_64 = etcdotica-x86_64-0.2.0.zst::https://github.com/senotrusov/etcdotica/releases/download/v0.2.0/etcdotica-v0.2.0-linux-amd64.zst
+	sha256sums_x86_64 = defefdc585299dab6b408bbae804ba4698c69a77f9fd328d5a054026f2addb6a
+	source_i686 = etcdotica-i686-0.2.0.zst::https://github.com/senotrusov/etcdotica/releases/download/v0.2.0/etcdotica-v0.2.0-linux-386.zst
+	sha256sums_i686 = 8585488e1bd9587fb6e3f7c146ed7f2a97200c30e3e6ee2f022a8ec8267711d2
+	source_aarch64 = etcdotica-aarch64-0.2.0.zst::https://github.com/senotrusov/etcdotica/releases/download/v0.2.0/etcdotica-v0.2.0-linux-arm64.zst
+	sha256sums_aarch64 = 6f129f93f96e0ed13e0780e018eecc37fab8bbd57f603aeb83b3c133a650c345
+
+pkgname = etcdotica-bin
