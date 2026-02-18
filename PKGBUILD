@@ -26,7 +26,7 @@ provides=('nolio')
 conflicts=('nolio')
 
 source=(
-  "$pkgname-$pkgver.tar.gz::https://github.com/Grey-007/nolio/releases/download/v$pkgver/nolio-$pkgver-linux-x86_64.tar.gz"
+  "$pkgname-$pkgver.tar.gz::https://github.com/Grey-007/nolio/releases/download/v$pkgver/nolio-v$pkgver-linux-x86_64.tar.gz"
   "nolio.desktop"
   "nolio.png"
 )
