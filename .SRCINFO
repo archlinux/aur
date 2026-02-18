@@ -1,0 +1,24 @@
+pkgbase = untrunc-anthwlock-bin
+	pkgdesc = Restore a damaged (truncated) mp4, m4v, mov, 3gp video. Pre-built binary with bundled FFmpeg.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/fr0stb1rd/untrunc
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	license = GPL-2.0-only
+	provides = untrunc
+	conflicts = untrunc-anthwlock-cli-git
+	conflicts = untrunc-git
+	options = !strip
+	source_x86_64 = https://github.com/fr0stb1rd/untrunc/releases/download/v1.0.0/untrunc-linux-amd64
+	sha256sums_x86_64 = 266d56c11257becbdab60c60787f63a55ee07f04f1fb360d44d13f7d848eb4e8
+	source_aarch64 = https://github.com/fr0stb1rd/untrunc/releases/download/v1.0.0/untrunc-linux-arm64
+	sha256sums_aarch64 = 3dc64308ae2a9dc6962177ab25350fb8280421ab277d5fbd5c2885a109463f4d
+	source_armv7h = https://github.com/fr0stb1rd/untrunc/releases/download/v1.0.0/untrunc-linux-armv7
+	sha256sums_armv7h = bba67074a0d1901c4666dd0edbf25a0707d19cb0f05adbf119d9c6b7880303ad
+	source_i686 = https://github.com/fr0stb1rd/untrunc/releases/download/v1.0.0/untrunc-linux-i386
+	sha256sums_i686 = 67724adae7b2d8bc31d76d29b18a9b5c5d9151a9b16308dd241abf8021b9579e
+
+pkgname = untrunc-anthwlock-bin
