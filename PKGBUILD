@@ -37,7 +37,7 @@ prepare() {
 }
 
 build() {
-  cmake -B build -S "plasma-nano" \
+  cmake -B build -S "plasma-mobile" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_TESTING=OFF \
     -DLIB_INSTALL_DIR=lib \
