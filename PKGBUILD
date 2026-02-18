@@ -1,8 +1,10 @@
 # Maintainer: fuddlesworth <fuddlesworth at users dot noreply dot github dot com>
 # SPDX-License-Identifier: GPL-3.0-or-later
+#
+# Requires Plasma 6.6+ (KF6 6.6, Qt 6.6, LayerShellQt 6.6, KWin 6.6).
 
 pkgname=plasmazones
-pkgver=1.11.8
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='FancyZones-style window tiling for KDE Plasma'
 arch=('x86_64')
@@ -28,13 +30,14 @@ makedepends=(
     'cmake'
     'extra-cmake-modules'
     'qt6-tools'
+    'kwin'
 )
 optdepends=(
     'plasma-activities: activity-based layouts'
 )
 conflicts=('plasmazones-bin' 'plasmazones-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cfa211495205a477d4d6b5b649328240b03da8a2de24aec48f9966c4ddb4045b')
+sha256sums=('0b7f4ea60c5691345cd908f8e40c59e48fa2be4a75b2530bbe8c5d21feae034b')
 install=plasmazones.install
 
 build() {
