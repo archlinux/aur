@@ -1,8 +1,9 @@
 # Maintainer: Enos Muthiani @lyznne <emuthiani26@gmail.com>
 pkgname=peek-cli
-pkgver=2.0.7
+pkgver=2.0.9
 pkgrel=1
 pkgdesc="A simple, fast file viewer that opens files in your default web browser"
+keywords=('file viewer' 'browser' 'cli')
 arch=('x86_64')
 url="https://github.com/lyznne/peek"
 license=('MIT' 'Apache-2.0')
@@ -20,7 +21,7 @@ package() {
 
   tar xzf "${pkgname}-${pkgver}-linux-x86_64-musl.tar.gz"
 
-  install -Dm755 "peek-cli"              "$pkgdir/usr/bin/peek-cli"
+  install -Dm755 "peek"              "$pkgdir/usr/bin/peek"
 
   # Completions
   install -Dm644 "completions/peek.bash" "$pkgdir/usr/share/bash-completion/completions/peek"
