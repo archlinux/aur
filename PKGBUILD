@@ -11,6 +11,7 @@ depends=('qt5-base'
          'qt5-charts'
          'desktop-file-utils'
          'libde265')
+optdepends=('vvdec: support for VVC/H.266')
 provides=("$pkgname")
 conflicts=("$pkgname" "$_pkgname")
 source=("git+${url}.git#commit=22c1e305bef25b23850a2068dcef3fb165c3fd60"

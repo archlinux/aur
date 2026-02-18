@@ -13,6 +13,7 @@ pkgbase = yuview
 	provides = yuview
 	conflicts = yuview
 	conflicts = YUView
+	optdepends = vvdec: support for VVC/H.266
 	source = git+https://github.com/IENT/YUView.git#commit=a72b395f55f01fe162d549f4ab50222395e6cb3e
 	source = archlinux.patch
 	md5sums = SKIP
