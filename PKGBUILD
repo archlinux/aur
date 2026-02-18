@@ -2,11 +2,12 @@
 pkgname=tictactoe-git
 pkgver=r15.28bbe84
 pkgrel=1
-pkgdesc="The stupid terminal based tictactoe game"
+pkgdesc="Play tictactoe on terminal with a bot"
 arch=("x86_64")
 url="https://www.github.com/weebcyberpunk/tictactoe"
 license=('MIT')
 provides=(tictactoe)
+makedepends=('gcc' 'make')
 source=("git+$url")
 md5sums=('SKIP')
 
