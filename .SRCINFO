@@ -1,0 +1,18 @@
+pkgbase = golem-bin
+	pkgdesc = A clay body, animated by words. Rust AI agent with ReAct loop, pluggable tools, and SQLite memory.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/assapir/golem
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-only
+	depends = gcc-libs
+	depends = openssl
+	provides = golem
+	conflicts = golem
+	source_x86_64 = golem-0.1.0-x86_64::https://github.com/assapir/golem/releases/download/v0.1.0/golem-x86_64-linux
+	sha256sums_x86_64 = 8ef6f5168d137b7d075cbe70e4e29643488fedc7835061a02d8037c046c0d515
+	source_aarch64 = golem-0.1.0-aarch64::https://github.com/assapir/golem/releases/download/v0.1.0/golem-aarch64-linux
+	sha256sums_aarch64 = 55546bef66607bc16fea7917d0ca3d0ee55c319c4dd2eead79fd354bdeb8d3e5
+
+pkgname = golem-bin
