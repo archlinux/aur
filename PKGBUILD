@@ -4,7 +4,7 @@
 
 pkgname=pcloud-drive
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='pCloud drive. Electron edition.'
 arch=('x86_64')
 url='https://www.pcloud.com/'
@@ -38,7 +38,7 @@ package() {
     install -dm755 "${pkgdir}/usr/share/icons/hicolor"
 
     # Install AppImage
-    install -Dm755 "${_appimage}" "${pkgdir}/opt/${_shortname}/${pkgname}.AppImage"
+    install -Dm755 "${_appimage}" "${pkgdir}/opt/${_shortname}/${_shortname/c/C}.AppImage"
 
     # Install License
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
@@ -56,5 +56,5 @@ package() {
     install -Dm644 "squashfs-root/${_shortname}.desktop" -t "${pkgdir}/usr/share/applications/"
 
     # Symlink AppImage
-    ln -sf "/opt/${_shortname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_shortname}"
+    ln -sf "/opt/${_shortname}/${_shortname/c/C}.AppImage" "${pkgdir}/usr/bin/${_shortname}"
 }
