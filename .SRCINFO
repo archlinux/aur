@@ -1,0 +1,17 @@
+pkgbase = arch-remaster
+	pkgdesc = Tools for remastering Arch Linux live systems and updating live USB GRUB configs
+	pkgver = 26.02
+	pkgrel = 1
+	url = https://github.com/AdrianTM/arch-remaster
+	arch = any
+	license = GPL
+	depends = bash
+	depends = coreutils
+	depends = util-linux
+	depends = grep
+	depends = sed
+	optdepends = squashfs-tools: for live-remaster
+	source = https://github.com/AdrianTM/arch-remaster/archive/refs/tags/26.02.tar.gz
+	sha256sums = 1f2a15524bfb6c3335887bac0cb17e22003ed8aa4a932a1e6939d033b8d28921
+
+pkgname = arch-remaster
