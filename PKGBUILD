@@ -2,7 +2,7 @@
 
 pkgname=blender-lts-bin
 pkgdesc='LTS blender version'
-pkgver='4.5.6'
+pkgver='4.5.7'
 #Official Mirror(Direct Link)
 _mirror="https://download.blender.org"
 
@@ -19,7 +19,7 @@ license=('GPL')
 arch=('x86_64')
 url='https://www.blender.org'
 
-b2sums=('3999b70e32572995da6bbb4992e36bc8bc02f64e2fd9268fba90b113728c6423806ef999bb18739742d701cfe86fdd7ea8b200a305d8f08144c168cbf30502fa'
+b2sums=('f177a671ab2b7f7ae9df4489f2d1df26dbce70c421a5e722bdae4cb52d8b2e6cd679d186ee019aa927d37dd2fc9583c228369a547b751bdb7c212de1182fdf79'
 '7009d16d3afe2c59d3b906b32fdb5540ad70b221e84f308959986d58e4a5391cdcc49f78651c5039ea94f1cf305e6cf39b01c105e05fb0e76f6c3cc068e06bf4')
 
 _setvars() {
