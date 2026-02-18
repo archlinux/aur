@@ -2,20 +2,21 @@
 
 _pkgname=advancely
 pkgname=$_pkgname-bin
-pkgver=1.0.15
-pkgrel=2
+pkgver=1.0.34
+pkgrel=1
 pkgdesc="A highly customizable and interactive tool to track Minecraft progress beyond just Advancements."
 arch=('x86_64')
-url="https://github.com/DFA-G/Advancely"
+url="https://github.com/LNXSeus/Advancely"
 license=(LicenseRef-Proprietary)
 depends=(unzip sdl3 sdl3_image sdl3_ttf curl)
 provides=(advancely)
 conflicts=(advancely advancely-git)
-source=("Advancely.zip::$url/releases/download/v${pkgver}/Advancely-v${pkgver}-Linux.zip"
-        "launcher::https://raw.githubusercontent.com/DFA-G/Advancely/refs/tags/v${pkgver}/packaging/linux/launcher"
-        "advancely.png::https://raw.githubusercontent.com/DFA-G/Advancely/refs/tags/v${pkgver}/packaging/linux/advancely.png"
-        "advancely.desktop::https://raw.githubusercontent.com/DFA-G/Advancely/refs/tags/v${pkgver}/packaging/linux/advancely.desktop"
-        "LICENSE::https://raw.githubusercontent.com/DFA-G/Advancely/refs/tags/v${pkgver}/LICENSES.txt")
+# source=("Advancely.zip::$url/releases/download/v${pkgver}/Advancely-v${pkgver}-Linux.zip"
+source=("Advancely.zip::https://downloads.dfagaming.nl/Advancely-v${pkgver}-Linux.zip"
+        "launcher::https://raw.githubusercontent.com/LNXSeus/Advancely/refs/tags/v${pkgver}/packaging/linux/launcher"
+        "advancely.png::https://raw.githubusercontent.com/LNXSeus/Advancely/refs/tags/v${pkgver}/packaging/linux/advancely.png"
+        "advancely.desktop::https://raw.githubusercontent.com/LNXSeus/Advancely/refs/tags/v${pkgver}/packaging/linux/advancely.desktop"
+        "LICENSE::https://raw.githubusercontent.com/LNXSeus/Advancely/refs/tags/v${pkgver}/LICENSES.txt")
 sha256sums=('0353df38514daf372fd24244d07c5b3925c302b7835f92181fde41ece4205a2c'
             '111527682cf029c30fd09250c494cee576b88b487e29fe0f6a179cc82d378133'
             '0bb1507a70774b586b1c40783e48653df9fd715b624196b87a106dbd347fda3c'
@@ -29,7 +30,9 @@ prepare() {
 
 package() {
   mkdir -p "${pkgdir}/usr/share/${_pkgname}"
-  cp -r sources/* "${pkgdir}/usr/share/${_pkgname}/"
+  cp -r sources/resources "${pkgdir}/usr/share/${_pkgname}/"
+
+  install -D -m 755 "sources/Advancely" "${pkgdir}/usr/share/Advancely"
 
   install -D -m 755 "launcher" "${pkgdir}/usr/bin/advancely"
 
