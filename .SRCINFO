@@ -1,0 +1,15 @@
+pkgbase = ignr
+	pkgdesc = Auto-detect languages/tools and generate .gitignore files
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/byteowlz/ignr
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	source_x86_64 = ignr-0.1.1.tar.gz::https://github.com/byteowlz/ignr/releases/download/v0.1.1/ignr-v0.1.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 7d8207d253fe9d608287b3630af1f362886519045b4dc33654e514060620ffa5
+	source_aarch64 = ignr-0.1.1.tar.gz::https://github.com/byteowlz/ignr/releases/download/v0.1.1/ignr-v0.1.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 21a50ed2bd7077375e73fa42425920e0aa33ea85a17d69c114719a3ad5503ae4
+
+pkgname = ignr
