@@ -20,6 +20,7 @@ depends=(
     'libxi'
     'curl'
     'libwebsockets'
+    'glfw'
 )
 makedepends=('git' 'cmake' 'clang' 'gcc')
 
@@ -44,7 +45,7 @@ build() {
   CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=?/_FORTIFY_SOURCE=2}"
 
   cd "$srcdir/${pkgname%-git}"
-  cmake -S . -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo
+  cmake -S . -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo -DUSE_BUILTIN_GLFW=OFF
   cmake --build build -j$(nproc)
 }
 

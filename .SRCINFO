@@ -22,6 +22,7 @@ pkgbase = waechter-git
 	depends = libxi
 	depends = curl
 	depends = libwebsockets
+	depends = glfw
 	provides = waechter
 	conflicts = waechter
 	source = git+https://github.com/univrsal/waechter.git
