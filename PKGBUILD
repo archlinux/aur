@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=tree-sitter-cli-git
-pkgver=0.25.6.r109.g0fdf5695
+pkgver=0.26.5.r114.g256df9304
 pkgrel=1
 pkgdesc="CLI tool for developing, testing, and using Tree-sitter parsers"
 arch=('i686' 'x86_64')
 url="https://tree-sitter.github.io/tree-sitter/"
 license=('MIT')
-depends=('gcc-libs')
-makedepends=('git' 'cargo')
+depends=('glibc' 'libgcc')
+makedepends=('git' 'cargo' 'clang')
 provides=("tree-sitter-cli=$pkgver")
 conflicts=('tree-sitter-cli')
 options=('!lto')
@@ -31,7 +31,7 @@ pkgver() {
   cd "tree-sitter"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
