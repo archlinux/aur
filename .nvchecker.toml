@@ -1,0 +1,3 @@
+[perl-file-xdg]
+source = "cpan"
+cpan = "File-XDG"
