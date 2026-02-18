@@ -1,17 +1,19 @@
 pkgbase = qt6gtk2-git
 	pkgdesc = GTK+2.0 integration plugins for Qt6
-	pkgver = 0.4.r2.gd7c14be
+	pkgver = 0.7.r0.g38ce539
 	pkgrel = 1
 	url = https://www.opencode.net/trialuser/qt6gtk2
 	arch = i686
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = git
-	depends = gcc-libs
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
 	depends = gtk2
 	depends = libx11
 	depends = qt6-base
-	provides = qt6gtk2=0.4.r2.gd7c14be
+	provides = qt6gtk2=0.7.r0.g38ce539
 	conflicts = qt6gtk2
 	source = git+https://www.opencode.net/trialuser/qt6gtk2.git
 	sha256sums = SKIP
