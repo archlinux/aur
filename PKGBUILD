@@ -1,7 +1,7 @@
 # Maintainer: Grey-007 <https://github.com/Grey-007>
 
 pkgname=nolio-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Minimal calendar-based todo app built with Flutter (prebuilt binary)"
 arch=('x86_64')
@@ -9,19 +9,21 @@ url="https://github.com/Grey-007/nolio"
 license=('MIT')
 
 depends=(
-  'gtk3'
-  'libepoxy'
-  'libxkbcommon'
-  'libglvnd'
-  'mesa'
+  gtk3
+  glib2
+  libepoxy
+  libxkbcommon
+  libglvnd
+  mesa
+  gcc-libs
+  pango
+  cairo
+  gdk-pixbuf2
+  at-spi2-core
 )
-
-makedepends=('tar')
 
 provides=('nolio')
 conflicts=('nolio')
-
-options=(!strip !debug)
 
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/Grey-007/nolio/releases/download/v$pkgver/nolio-$pkgver-linux-x86_64.tar.gz"
@@ -35,37 +37,24 @@ sha256sums=(
   'SKIP'
 )
 
-prepare() {
-  cd "$srcdir"
-
-  # Find extracted directory automatically (future-proof)
-  _appdir=$(find . -maxdepth 1 -type d -name "nolio*" | head -n1)
-
-  if [[ -z "$_appdir" ]]; then
-    echo "Extraction failed: nolio directory not found"
-    exit 1
-  fi
-
-  chmod +x "$_appdir/nolio" || true
-}
-
 package() {
-  cd "$srcdir"
-  _appdir=$(find . -maxdepth 1 -type d -name "nolio*" | head -n1)
+  cd "$srcdir/nolio"
 
-  # Install app files
-  install -dm755 "$pkgdir/usr/lib/nolio"
-  cp -a "$_appdir/." "$pkgdir/usr/lib/nolio/"
+  # Install to /opt
+  install -dm755 "$pkgdir/opt/nolio"
+  cp -a . "$pkgdir/opt/nolio/"
+
+  chmod +x "$pkgdir/opt/nolio/nolio"
 
   # Symlink binary
   install -dm755 "$pkgdir/usr/bin"
-  ln -s /usr/lib/nolio/nolio "$pkgdir/usr/bin/nolio"
+  ln -s /opt/nolio/nolio "$pkgdir/usr/bin/nolio"
 
   # Desktop entry
-  install -Dm644 nolio.desktop \
+  install -Dm644 "$srcdir/nolio.desktop" \
     "$pkgdir/usr/share/applications/nolio.desktop"
 
   # Icon
-  install -Dm644 nolio.png \
+  install -Dm644 "$srcdir/nolio.png" \
     "$pkgdir/usr/share/icons/hicolor/256x256/apps/nolio.png"
 }
