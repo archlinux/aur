@@ -2,8 +2,8 @@
 
 _hkgname=filepath
 pkgname=haskell-filepath
-pkgver=1.5.4.0
-pkgrel=2
+pkgver=1.5.5.0
+pkgrel=1
 pkgdesc="Library for manipulating FilePaths in a cross platform way. (backport)"
 url="https://github.com/haskell/filepath"
 license=("BSD-3-Clause")
@@ -13,16 +13,13 @@ makedepends=('ghc'
              'haskell-generic-random' 'haskell-generic-deriving'
              'haskell-tasty' 'haskell-tasty-quickcheck' 'haskell-quickcheck-classes-base')
 source=("https://hackage.haskell.org/packages/archive/$_hkgname/$pkgver/$_hkgname-$pkgver.tar.gz")
-sha256sums=('54aa86c432f593273d7b9f607c5b5e0a1628c2674c6f4e3b5a54eb0c83db5caf')
+sha256sums=('87e6f50f43ffce293fd431184d321ff11a480d28369dde306aaae450ba4a7d1e')
 
 #-- Packager NOTE: this is a backport.
 #--
-#-- The `filepath` library is part of the "Haskell Platform" which means it's shipped with GHC.
-#-- However, the current 'ghc-libs' in [extra], 9.4.8, provides haskell-filepath=1.4.2.2 (from 2021)
+#-- The `filepath` library is part of the "Haskell Platform", which means it's shipped with GHC.
+#-- However, the current 'ghc-libs' in [extra], 9.6.6, provides haskell-filepath=1.4.300.1 (from 2024)
 #-- and there have been large additions to the library, now required by other dependees.
-#--
-#-- Thankfully, newer versions (>=1.4.100) build just fine on GHC 9.4.8 (which is technically EOL already),
-#-- and this is one such build.
 
 build() {
   cd $_hkgname-$pkgver
