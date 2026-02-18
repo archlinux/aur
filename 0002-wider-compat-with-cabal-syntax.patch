@@ -1,17 +1,19 @@
-From d4d3d8d60c451327555a8425f52100f1bdc295b3 Mon Sep 17 00:00:00 2001
+From 27177e86236c918e84dc6f7da4ca8eda120d45bb Mon Sep 17 00:00:00 2001
 From: Max Ulidtko <ulidtko@gmail.com>
 Date: Tue, 17 Jun 2025 19:41:15 +0200
-Subject: [PATCH] switch to Cabal-syntax & allow cabal [3.8 .. 3.14)
+Subject: [PATCH] allow cabal [3.10 .. 3.18)
 
-* Cabal-syntax is a smaller package than Cabal; reduce dependency footprint.
+* This widens compatibility range for the extensions -> cabal-syntax dependency,
+  enhancing reuse of versions of cabal-syntax (such as those already
+  installed within ghc-libs), which in turn can reduce compile times, binary sizes,
+  and disk space usage, depending on compilation environment.
 
-* Using Cabal-syntax requires Cabal >= 3.8.
+* In addition to GHC version checks (which guard case arms' _RHS's_), also guard
+  the _LHS patterns_, which may not exist depending on version of Cabal-syntax.
+  In general, version of Cabal-syntax is not necessarily tied 1-to-1 to GHC version.
 
-* In addition to GHC version checks (which guard case arms' RHS's), also guard
-  the LHS patterns, which may not exist depending on Cabal-syntax version.
-
-In all configurations, the entire case is exhaustive, and -Werror=incomplete-patterns
-(in extensions.cabal) guards that.
+  In all configurations, the entire case-match is exhaustive,
+  and -Werror=incomplete-patterns (in extensions.cabal) guards that.
 
 * cleanup: drop SymbolicPath #if's for old Cabal < 3.6.
 
@@ -20,14 +22,14 @@ In all configurations, the entire case is exhaustive, and -Werror=incomplete-pat
 See upstream issue https://github.com/kowainik/extensions/issues/111
 and rejected PR https://github.com/kowainik/extensions/pull/112
 
-Rebased on top of v0.1.0.3.
+Rebased on top of v0.1.1.0.
 ---
  extensions.cabal        | 12 ++---------
- src/Extensions/Cabal.hs | 48 +++++++++++++++++++++--------------------
- 2 files changed, 27 insertions(+), 33 deletions(-)
+ src/Extensions/Cabal.hs | 45 ++++++++++++++++++++++-------------------
+ 2 files changed, 26 insertions(+), 31 deletions(-)
 
 diff --git a/extensions.cabal b/extensions.cabal
-index b8a4b76..ac2b90f 100644
+index d2317cd..963120c 100644
 --- a/extensions.cabal
 +++ b/extensions.cabal
 @@ -85,16 +85,8 @@ library
@@ -35,29 +37,29 @@ index b8a4b76..ac2b90f 100644
  
    build-depends:       bytestring >= 0.10 && < 0.13
 -                       -- We need to pin a single major version of
--                       -- Cabal here because the main reason we use
--                       -- Cabal is for its list of extensions.  Later
+-                       -- Cabal-syntax here because the main reason we use
+-                       -- Cabal-syntax is for its list of extensions.  Later
 -                       -- versions have strictly more extensions, and
 -                       -- we'll have missing patterns if we try to
 -                       -- support more than one major version.  If
 -                       -- this causes problems in practice let's
 -                       -- revisit this decision and come up with
 -                       -- another approach.
--                     , Cabal ^>= 3.14
+-                     , Cabal-syntax >= 3.14 && < 3.18
 +                     -- NOTE: check Extensions.Cabal when bumping
-+                     , Cabal-syntax >= 3.8 && < 3.14
-                      , containers >= 0.6 && < 0.8
++                     , Cabal-syntax >= 3.10 && < 3.18
+                      , containers >= 0.6 && < 0.9
                       , directory ^>= 1.3
                       , filepath >= 1.4 && < 1.6
 diff --git a/src/Extensions/Cabal.hs b/src/Extensions/Cabal.hs
-index a0d1292..2f99826 100644
+index bcfd8f3..9d6645c 100644
 --- a/src/Extensions/Cabal.hs
 +++ b/src/Extensions/Cabal.hs
 @@ -41,9 +41,7 @@ import Distribution.Types.GenericPackageDescription (GenericPackageDescription (
  import Distribution.Types.Library (Library (..))
  import Distribution.Types.TestSuite (TestSuite (..))
  import Distribution.Types.TestSuiteInterface (TestSuiteInterface (..))
--#if MIN_VERSION_Cabal(3,6,0)
+-#if MIN_VERSION_Cabal_syntax(3,6,0)
  import Distribution.Utils.Path (getSymbolicPath)
 -#endif
  import GHC.LanguageExtensions.Type (Extension (..))
@@ -93,7 +95,7 @@ index a0d1292..2f99826 100644
  condTreeToExtensions extractModules extractBuildInfo condTree = do
      let comp = condTreeData condTree
      let buildInfo = extractBuildInfo comp
--#if MIN_VERSION_Cabal(3,6,0)
+-#if MIN_VERSION_Cabal_syntax(3,6,0)
 -    let srcDirs = getSymbolicPath <$> hsSourceDirs buildInfo
 -#else
 -    let srcDirs = hsSourceDirs buildInfo
@@ -102,7 +104,7 @@ index a0d1292..2f99826 100644
      let modules = extractModules comp ++
              map toModulePath (otherModules buildInfo ++ autogenModules buildInfo)
      let (safeExts, parsedExtensionsAll) = partitionEithers $ mapMaybe cabalToGhcExtension $ defaultExtensions buildInfo
-@@ -386,38 +380,46 @@ toGhcExtension = \case
+@@ -386,35 +380,44 @@ toGhcExtension = \case
      Cabal.AlternativeLayoutRuleTransitional -> Nothing
      Cabal.RelaxedLayout                     -> Nothing
  #endif
@@ -146,10 +148,6 @@ index a0d1292..2f99826 100644
 -#if __GLASGOW_HASKELL__ >= 912
 +#if MIN_VERSION_Cabal_syntax(3,14,0)
 +# if __GLASGOW_HASKELL__ >= 912
-     -- This branch cannot be satisfied yet but we're including it so
--    -- we don't forget to enable RequiredTypeArguments when it
--    -- becomes available.
-+    -- we don't forget to enable these when they become available.
      Cabal.NamedDefaults                     -> Just NamedDefaults
      Cabal.MultilineStrings                  -> Just MultilineStrings
      Cabal.OrPatterns                        -> Just OrPatterns
@@ -163,5 +161,5 @@ index a0d1292..2f99826 100644
      -- GHC extensions, parsed by both Cabal and GHC, but don't have an Extension constructor
      Cabal.Safe                              -> Nothing
 -- 
-2.49.0
+2.53.0
 
