@@ -3,7 +3,7 @@
 pkgname=('verovio' 'python-verovio')
 pkgbase=verovio
 pkgver=6.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A music notation engraving library"
 arch=(x86_64)
 url="https://www.verovio.org"
