@@ -1,6 +1,6 @@
 pkgbase = untrunc-anthwlock-bin
 	pkgdesc = Restore a damaged (truncated) mp4, m4v, mov, 3gp video. Pre-built binary with bundled FFmpeg.
-	pkgver = 1.0.0
+	pkgver = d286625
 	pkgrel = 1
 	url = https://github.com/fr0stb1rd/untrunc
 	arch = x86_64
