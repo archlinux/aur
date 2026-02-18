@@ -8,7 +8,7 @@ url="https://github.com/imdevan/prompter"
 license=('MIT')
 makedepends=('go')
 source=("prompter-cli-${pkgver}.tar.gz::https://github.com/imdevan/prompter/archive/refs/tags/v2.0.1.tar.gz")
-sha256sums=('156762{sha256}')
+sha256sums=('3057f848dfe19c9771aae293818addbd077a7ef38f6ec68692e7cfb98658e9f9')
 
 build() {
   cd "$srcdir/prompter-${pkgver}"
