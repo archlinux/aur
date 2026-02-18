@@ -1,0 +1,92 @@
+From bf0436845656e7c9819e3c834d155fe59f0f9a7d Mon Sep 17 00:00:00 2001
+From: Max Ulidtko <ulidtko@gmail.com>
+Date: Wed, 18 Feb 2026 22:48:46 +0100
+Subject: [PATCH] extend flag(os-string) handling to test-suites
+
+---
+ file-io.cabal | 19 ++++++++++++++-----
+ 1 file changed, 14 insertions(+), 5 deletions(-)
+
+diff --git a/file-io.cabal b/file-io.cabal
+index 4ed3abe..ef65955 100644
+--- a/file-io.cabal
++++ b/file-io.cabal
+@@ -34,7 +34,15 @@ flag long-paths
+   default: True
+   manual: True
+ 
++common filepath-dependency
++  if flag(os-string)
++    build-depends: filepath >= 1.5.0.0, os-string >= 2.0.0
++  else
++    build-depends: filepath >= 1.4.100.0 && < 1.5.0.0
++
+ library
++  import: filepath-dependency
++
+   default-language: Haskell2010
+ 
+   if os(windows)
+@@ -51,11 +59,6 @@ library
+     , bytestring  >=0.11.3.0 && <1
+     , deepseq     >=1        && <2
+ 
+-  if flag(os-string)
+-    build-depends: filepath >= 1.5.0.0, os-string >= 2.0.0
+-  else
+-    build-depends: filepath >= 1.4.100.0 && < 1.5.0.0
+-
+   if flag(long-paths)
+     cpp-options:   -DLONG_PATHS
+ 
+@@ -70,6 +73,7 @@ library
+   ghc-options:      -Wall
+ 
+ test-suite T15
++    import: filepath-dependency
+     hs-source-dirs: tests
+     main-is: T15.hs
+     type: exitcode-stdio-1.0
+@@ -80,6 +84,7 @@ test-suite T15
+       build-depends: Win32 >=2.13.3.0
+ 
+ test-suite T15Win
++    import: filepath-dependency
+     hs-source-dirs: tests
+     main-is: T15Win.hs
+     type: exitcode-stdio-1.0
+@@ -91,6 +96,7 @@ test-suite T15Win
+     ghc-options: -Wall -threaded -rtsopts "-with-rtsopts=-N10"
+ 
+ test-suite T14
++    import: filepath-dependency
+     hs-source-dirs: tests
+     main-is: T14.hs
+     type: exitcode-stdio-1.0
+@@ -99,6 +105,7 @@ test-suite T14
+     ghc-options: -Wall
+ 
+ test-suite T8
++    import: filepath-dependency
+     hs-source-dirs: tests
+     main-is: T8.hs
+     type: exitcode-stdio-1.0
+@@ -107,6 +114,7 @@ test-suite T8
+     ghc-options: -Wall -threaded
+ 
+ test-suite CLC237
++    import: filepath-dependency
+     hs-source-dirs: tests
+     main-is: CLC237.hs
+     type: exitcode-stdio-1.0
+@@ -115,6 +123,7 @@ test-suite CLC237
+     ghc-options: -Wall
+ 
+ test-suite Properties
++    import: filepath-dependency
+     hs-source-dirs: tests
+     main-is: Properties.hs
+     type: exitcode-stdio-1.0
+-- 
+2.53.0
+

@@ -1,0 +1,19 @@
+pkgbase = haskell-file-io
+	pkgdesc = Basic file IO operations via 'OsPath'
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/hasufell/file-io
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = ghc
+	makedepends = haskell-tasty-hunit
+	makedepends = haskell-temporary
+	depends = ghc-libs
+	source = https://hackage.haskell.org/packages/archive/file-io/0.2.0/file-io-0.2.0.tar.gz
+	source = Setup.hs
+	source = 0001-extend-flag-os-string-handling-to-test-suites.patch
+	sha256sums = 8e75f8905d7c9f114e6164779e7a19ff0e2968015ecf686934e38250575dabe7
+	sha256sums = 5066653559d4d6134b022d66a634a17fdcf8db35d28b447e581fec284afa4689
+	sha256sums = a245db54a12bc7bcb5d44a787a68b2a2a50b2982807eeaba8a5910fbf7eb8b02
+
+pkgname = haskell-file-io
