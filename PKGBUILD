@@ -27,4 +27,7 @@ package() {
     cd "$srcdir/openmeters"
     install -Dm755 target/release/openmeters "$pkgdir/usr/bin/openmeters"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    install -Dm644 misc/openmeters.desktop "$pkgdir/usr/share/applications/openmeters.desktop"
+    install -Dm644 misc/openmeters.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/openmeters.png"
 }
