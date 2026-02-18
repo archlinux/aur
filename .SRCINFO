@@ -1,6 +1,6 @@
 pkgbase = r-tm
 	pkgdesc = Text Mining Package
-	pkgver = 0.7.17
+	pkgver = 0.7.18
 	pkgrel = 1
 	url = https://cran.r-project.org/package=tm
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = r-tm
 	optdepends = r-snowballc
 	optdepends = r-testthat
 	optdepends = r-tm.lexicon.generalinquirer
-	source = https://cran.r-project.org/src/contrib/tm_0.7-17.tar.gz
-	sha256sums = fff391fd726ad2affacdf002c624a14aa466632cec114eeddb2cadb5fac044c7
+	source = https://cran.r-project.org/src/contrib/tm_0.7-18.tar.gz
+	sha256sums = c095035256328ad04fb9f7d49b0525b2f3e717a90ed2ec979db33cd1a9b660c6
 
 pkgname = r-tm
