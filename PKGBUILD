@@ -23,7 +23,5 @@ build() {
 
 package() {
     cd "tictactoe"
-    install -Dm755 tictactoe $pkgdir/usr/bin/tictactoe
-    install -Dm644 "help.txt" $pkgdir/usr/share/tictactoe/"help.txt"
-    install -Dm644 tictactoe.1 $pkgdir/usr/share/man/man1/tictactoe.1
+    install -Dm755 TicTacToe $pkgdir/usr/bin/ttt
 }
