@@ -3,7 +3,7 @@
 pkgname=gawk-abort
 _project=gawkextlib
 pkgver=1.0.1
-pkgrel=5
+pkgrel=6
 pkgdesc="GAWK extension - implements the abort API"
 arch=('x86_64')
 url="https://sourceforge.net/projects/gawkextlib/"
