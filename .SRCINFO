@@ -1,6 +1,6 @@
 pkgbase = rpi-imager-git
 	pkgdesc = Raspberry Pi imaging utility
-	pkgver = 1.9.6.r34.gf60a01d3
+	pkgver = 2.0.6.r29.gd68e5e26
 	pkgrel = 1
 	url = https://github.com/raspberrypi/rpi-imager
 	arch = i686
@@ -9,7 +9,9 @@ pkgbase = rpi-imager-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = qt6-tools
-	depends = gcc-libs
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
 	depends = curl
 	depends = gnutls
 	depends = hicolor-icon-theme
@@ -20,7 +22,7 @@ pkgbase = rpi-imager-git
 	depends = xz
 	optdepends = dosfstools: SD card bootloader support
 	optdepends = udisks2: Needed if you want to be able to run rpi-imager as a regular user
-	provides = rpi-imager=1.9.6.r34.gf60a01d3
+	provides = rpi-imager=2.0.6.r29.gd68e5e26
 	conflicts = rpi-imager
 	source = git+https://github.com/raspberrypi/rpi-imager.git
 	sha256sums = SKIP
