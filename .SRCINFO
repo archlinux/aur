@@ -1,0 +1,13 @@
+pkgbase = laravel
+	pkgdesc = The Laravel application installer. Allows you to run laravel new.
+	pkgver = 5.24.6
+	pkgrel = 1
+	url = https://github.com/laravel/installer
+	arch = any
+	license = MIT
+	depends = php
+	depends = composer
+	source = laravel-5.24.6.tar.gz::https://github.com/laravel/installer/archive/refs/tags/v5.24.6.tar.gz
+	b2sums = 65e57bea7906ab8cdc3c216c90fb9873a124342128d403a218f78ff6e92753236ad702f343e3f3d653545edff3974d68181791d47b686a91b57cc30188bc2a2d
+
+pkgname = laravel
