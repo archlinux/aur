@@ -1,6 +1,6 @@
 # Maintainer: kinker31 <dp223171@gmail.com>
 pkgname=nyan-doom
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="A cuddly fork of DSDA, with an emphasis on innovative and QoL features."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('fluidsynth' 'glu' 'libmad' 'sdl2_image' 'sdl2_mixer' 'sdl2_net' 'dumb' 'portmidi' 'libzip')
 makedepends=('cmake' 'imagemagick')
 source=("https://github.com/andrikpowell/nyan-doom/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ee7859c5d95335012a061f2d2da3020af93237c51d0561ba98b8c48efe0c3164')
+sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
 
 build() {
 	cd "${srcdir}/nyan-doom-${pkgver}/prboom2"  

@@ -1,6 +1,6 @@
 pkgbase = nyan-doom
 	pkgdesc = A cuddly fork of DSDA, with an emphasis on innovative and QoL features.
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/andrikpowell/nyan-doom
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = nyan-doom
 	depends = dumb
 	depends = portmidi
 	depends = libzip
-	source = https://github.com/andrikpowell/nyan-doom/archive/refs/tags/v1.4.1.tar.gz
-	sha256sums = ee7859c5d95335012a061f2d2da3020af93237c51d0561ba98b8c48efe0c3164
+	source = https://github.com/andrikpowell/nyan-doom/archive/refs/tags/v1.4.2.tar.gz
+	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 
 pkgname = nyan-doom
