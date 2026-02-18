@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=smhasher-git
-pkgver=r1406.g83fd13b
+pkgver=r1447.g1edbcfae
 pkgrel=1
 pkgdesc="Hash function quality and speed tests"
 arch=('i686' 'x86_64')
 url="https://rurban.github.io/smhasher/"
 license=('MIT')
-depends=('gcc-libs')
+depends=('glibc' 'libgcc' 'libstdc++')
 makedepends=('git' 'cmake')
 provides=("smhasher=$pkgver")
 conflicts=('smhasher')

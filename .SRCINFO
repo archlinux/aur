@@ -1,6 +1,6 @@
 pkgbase = smhasher-git
 	pkgdesc = Hash function quality and speed tests
-	pkgver = r1406.g83fd13b
+	pkgver = r1447.g1edbcfae
 	pkgrel = 1
 	url = https://rurban.github.io/smhasher/
 	arch = i686
@@ -8,8 +8,10 @@ pkgbase = smhasher-git
 	license = MIT
 	makedepends = git
 	makedepends = cmake
-	depends = gcc-libs
-	provides = smhasher=r1406.g83fd13b
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = smhasher=r1447.g1edbcfae
 	conflicts = smhasher
 	options = staticlibs
 	source = git+https://github.com/rurban/smhasher.git
