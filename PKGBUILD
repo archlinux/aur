@@ -1,7 +1,7 @@
 pkgname=imgui
 # On each update, keep up to date with latest sha in https://github.com/microsoft/vcpkg/commits/master/ports/imgui
 _vcpkg_sha=16601c6e7ee15aeccac771185916cd6f6fe1ba50
-pkgver=1.92.5
+pkgver=1.92.6
 pkgrel=1
 pkgdesc="Bloat-free Graphical User interface for C++"
 license=('MIT')
@@ -12,7 +12,7 @@ makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/ocornut/imgui/tar.gz/v${pkgver}"
         "CMakeLists.v${pkgver}-${pkgrel}.txt::https://raw.githubusercontent.com/microsoft/vcpkg/${_vcpkg_sha}/ports/imgui/CMakeLists.txt"
         "imgui-config.v${pkgver}-${pkgrel}.cmake.in::https://raw.githubusercontent.com/microsoft/vcpkg/${_vcpkg_sha}/ports/imgui/imgui-config.cmake.in")
-sha256sums=('0eb50fe9aeba1a51f96b5843c7f630a32ed2e9362d693c61b87e4fa870cf826d'
+sha256sums=('5b17c01f69545bde732b14936d89ce0f508adb83e8b56fa82448371845172bc3'
             '469172229e8a2e6ddb00105c4a764fa452ab143d21edd0b30cea589bf0b75191'
             '2a441c1709b0ec7c0de1f403944ba5b8d8c059c02adcea9f8550bf33303eb7bb')
 
