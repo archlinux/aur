@@ -1,12 +1,13 @@
 pkgbase = nubertctl-git
-	pkgdesc = Unofficial CLI to control Nubert X/XS/A series speakers via BLE
-	pkgver = r2.7c392d4
+	pkgdesc = Unofficial CLI and system volume sync for Nubert X/XS/A series speakers via BLE
+	pkgver = r4.7176136
 	pkgrel = 1
 	url = https://codeberg.org/trougnouf/nubertctl
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = python-bleak
+	depends = libpulse
 	provides = nubertctl
 	conflicts = nubertctl
 	source = git+https://codeberg.org/trougnouf/nubertctl.git
