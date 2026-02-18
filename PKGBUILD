@@ -1,7 +1,7 @@
 # Maintainer: piernov <piernov@piernov.org>
 
 pkgname=python-spikingjelly-git
-pkgver=r2253.75272ed9
+pkgver=r2290.3b8e9acb
 pkgrel=1
 pkgdesc="Deep learning framework for Spiking Neural Network (SNN) based on PyTorch."
 arch=('any')
@@ -9,7 +9,20 @@ url="https://github.com/fangwei123456/spikingjelly"
 license=('custom')
 conflicts=('python-spikingjelly')
 provides=('python-spikingjelly')
-depends=('python-pytorch' 'python-matplotlib' 'python-numpy' 'python-tqdm' 'python-torchvision' 'python-scipy')
+depends=(
+  'python-pytorch'
+  'python-torchvision'
+  'python-torchaudio'
+  'tensorboard'
+  'python-numpy'
+  'python-scipy'
+  'python-einops'
+  'python-tqdm'
+  'python-matplotlib'
+  'python-scienceplots'
+  'python-h5py'
+  'python-pydantic'
+)
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("git+https://github.com/fangwei123456/spikingjelly.git")
 md5sums=('SKIP')
