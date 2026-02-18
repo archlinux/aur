@@ -12,7 +12,7 @@ license=('0BSD')
 install="${pkgname}.install"
 source=('windsurf-next-marketplace.hook'
         'patch.py')
-sha256sums=('6dded2716ea268d86abcc768613e63bc37837264bf6ceb11aca9652f23564dfd'
+sha256sums=('4962b28571e3305196f082817db648010685f747097b7fc8d0170a157e6fa682'
             'cbb67095313282989b34c1ff41e3717c2136ff6c010479ac841dfddf7fd68441')
 
 package() {
