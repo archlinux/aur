@@ -1,15 +1,13 @@
-# Maintainer: yjun <jerrysteve1101 at gmail dot com>
-
 pkgname=squareline-studio
 _pkgname=SquareLine_Studio
-pkgver=1.5.3
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="Visual drag-and-drop UI editor to create beautiful Graphical User Interfaces quickly and easily"
 arch=('x86_64')
 url="https://squareline.io/"
 license=('custom')
 source=("https://static.squareline.io/downloads/${_pkgname}_Linux_v${pkgver//./_}.zip")
-sha256sums=('a5e3035e4d2ca1488184eae294292efa869f5eb3f8520ed68bd9c2ccf43fe7fd')
+sha256sums=('48b4c13bed407de8df724a57a750a51382f338cc83b46308c4a307be66e831ea')
 
 prepare() {
   # Packaging folder structure can change.
