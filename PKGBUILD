@@ -8,7 +8,7 @@
 # Contributor: dorphell <dorphell@archlinux.org>
 
 pkgname=mythtv-git
-pkgver=35.0.r44.g7e93f0d
+pkgver=36.0.r0.g1385cbf
 pkgrel=1
 pkgdesc="A Homebrew PVR project (Stable '-fixes' branch)"
 arch=('x86_64')
@@ -88,7 +88,7 @@ options=(!lto)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(
-    "git+https://github.com/MythTV/mythtv#branch=fixes/35"
+    "git+https://github.com/MythTV/mythtv#branch=fixes/36"
     'mythbackend.service'
     'mythtv.desktop'
     'mythtv.png'
