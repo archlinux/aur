@@ -1,0 +1,5 @@
+[tickit-sync-bin]
+source = "github"
+github = "ricardodantas/tickit-sync"
+use_latest_release = true
+prefix = "v"

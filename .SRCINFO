@@ -1,0 +1,22 @@
+pkgbase = tickit-sync-bin
+	pkgdesc = Self-hosted sync server for Tickit task manager
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/ricardodantas/tickit-sync
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	depends = glibc
+	depends = libgcc
+	provides = tickit-sync
+	conflicts = tickit-sync
+	source = README-0.2.1.md::https://raw.githubusercontent.com/ricardodantas/tickit-sync/v0.2.1/README.md
+	source = LICENSE-0.2.1::https://raw.githubusercontent.com/ricardodantas/tickit-sync/v0.2.1/LICENSE
+	sha256sums = 66b37db71f965da7cf00bb9dbae86ef69d7b11808d0ffbeb0a7292c232dd9306
+	sha256sums = 37f486ddcbd27bdb731f65cbc5cd488edbbc7af470388e19677be8e0a9c772c2
+	source_x86_64 = tickit-sync-x86_64-0.2.1.tgz::https://github.com/ricardodantas/tickit-sync/releases/download/v0.2.1/tickit-sync-0.2.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = d2823c0ed48c7b570d6be3cfdaa9e9803c589f05d305a433f6c2b37c0ec4726c
+	source_aarch64 = tickit-sync-aarch64-0.2.1.tgz::https://github.com/ricardodantas/tickit-sync/releases/download/v0.2.1/tickit-sync-0.2.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 5f055f6ca5b2f414ded7b82ea0ac968faad15c256abbf592e6b1cb9f2a754c08
+
+pkgname = tickit-sync-bin
