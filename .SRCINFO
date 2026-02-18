@@ -1,16 +1,16 @@
 pkgbase = perl-devel-overrideglobalrequire
 	pkgdesc = Override CORE::GLOBAL::require safely
 	pkgver = 0.001
-	pkgrel = 1
-	url = https://metacpan.org/release/Devel-OverrideGlobalRequire
+	pkgrel = 2
+	url = https://metacpan.org/dist/Devel-OverrideGlobalRequire
 	arch = any
-	license = PerlArtistic
-	license = GPL
-	depends = perl>=0
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-file-temp
+	checkdepends = perl-scalar-list-utils
+	checkdepends = perl-test-simple
+	depends = perl>=5.6
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/D/DA/DAGOLDEN/Devel-OverrideGlobalRequire-0.001.tar.gz
-	md5sums = 9cc9b7c3e39629d2f3ae22d347c29f1a
-	sha512sums = 33df90e5aa798d899acd73db72651be015c53cc2eaa041bb45d531a7023c32adb886ef63b2f064765a42a47b44eb0cfb80bf39f6c61cf78fa66de1581c41383e
+	source = http://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/Devel-OverrideGlobalRequire-0.001.tar.gz
+	sha256sums = 0791892de3ae292af4a94e382f21db1ee88210875031851e6ea82c3410785ef9
 
 pkgname = perl-devel-overrideglobalrequire
-
