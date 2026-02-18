@@ -1,0 +1,18 @@
+pkgbase = rvgl-arcade-tracks
+	pkgdesc = RVGL add-on for the additional tracks available in the arcade version of Re-Volt
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://re-volt.io/articles/arcade
+	arch = any
+	license = MIT
+	depends = rvgl-bin
+	source = https://files.re-volt.io/arcade/tracks/OVALTRACK.zip
+	source = https://files.re-volt.io/arcade/tracks/nhood0.zip
+	source = https://files.re-volt.io/arcade/tracks/ship0.zip
+	source = https://files.re-volt.io/arcade/tracks/venicearcade.zip
+	sha256sums = 937d1b17bbd8320cf8b55a069e736d454db7609e20a4d8b853e665020a542ee0
+	sha256sums = 2d5ab5385a86725e3aace3329cec1a16d2de2e5fe3ffe67dbef4f66589ccfc80
+	sha256sums = d86e82b05c93fe5390994af441192e8e6d80d9f06c976cd0d860b5f931e38279
+	sha256sums = 6383f29c5e352d16cbba700d5413066c9aba0f1466614ae94c9d0f8491632ec3
+
+pkgname = rvgl-arcade-tracks
