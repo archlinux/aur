@@ -1,16 +1,19 @@
 pkgbase = lian-bin
 	pkgdesc = TUI frontend for paru/yay/pacman with AI-powered operation analysis
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/Yueosa/lian
 	arch = x86_64
 	license = MIT
 	optdepends = paru: AUR helper support (preferred)
 	optdepends = yay: AUR helper support
+	optdepends = wl-clipboard: copy output to clipboard on Wayland (y key)
+	optdepends = xclip: copy output to clipboard on X11 (y key)
+	optdepends = xsel: copy output to clipboard on X11 (y key, fallback)
 	provides = lian
 	conflicts = lian
 	conflicts = lian-git
-	source = https://github.com/Yueosa/lian/releases/download/v2.0.2/lian_2.0.2_linux_x86_64
-	sha256sums = 9950d36e785c29880759662720f83e1486b7dffa5fed914bf0ac0e193ec2130c
+	source = https://github.com/Yueosa/lian/releases/download/v2.0.3/lian_2.0.3_linux_x86_64
+	sha256sums = 4ce55aca47c0d327730863ce60dca8d8b84cf04e16efa4e65db857379db5dbde
 
 pkgname = lian-bin
