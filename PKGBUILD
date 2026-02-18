@@ -14,7 +14,7 @@ pkgbase="${_pkgbase}-bin"
 pkgname=(
   "${_pkgname[@]/%/-bin}"
 )
-pkgver=1.3.0
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Protoc plugin to generate polyglot message validators"
 arch=(
@@ -36,9 +36,9 @@ source_i686=(
 source_x86_64=(
   "${url}/releases/download/v${pkgver}/${_pkgbase}_${pkgver}_linux_amd64.tar.gz"
 )
-sha256sums_aarch64=('9ead4932aefa8b9decb17486a8d2cfe04418f92a60d388dfc310615f4d7e6034')
-sha256sums_i686=('f3c45f268f0a352ba2af3fd33018cc1ace6d1865477f15f610079f69162cd203')
-sha256sums_x86_64=('a534bf56625065095dbd4448f16fd87e15852d61d4e8b162542fae591003989b')
+sha256sums_aarch64=('e34b7526405741d7fafbf6f1c68cdda429b9420190b180a0b023016651215190')
+sha256sums_i686=('a6b65da44ee87292d6c0839599a21fd0d06a0f1cde668cf61ef81f5c0551b4e7')
+sha256sums_x86_64=('6f851d3636b0c12a9fb5f99bf5c57651319f6a4c1d695f304269f1204dc9e13c')
 
 package_protoc-gen-validate-bin() {
   depends=(
