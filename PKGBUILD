@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-dgutils
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
-pkgdesc="GTK apps development easement"
+pkgdesc="A Python module with some universal classes and methods to provide shortcuts for some GTK operations"
 arch=('any')
 url="https://github.com/Dzheremi2/DGutils"
 license=('GPL-3.0-or-later')
@@ -18,7 +18,7 @@ makedepends=(
   'python-wheel'
 )
 source=("DGutils-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('32ff339725a4508dabd3d68398c760017edcf61a8e4fd4df65fddfd0ca76b955')
+sha256sums=('7e56b4b1869ec5e71610ac67611dba8e4850a5a67b5389f9be4ed2e8d49ccd2d')
 
 build() {
   cd "DGutils-$pkgver"

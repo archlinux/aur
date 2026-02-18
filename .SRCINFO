@@ -1,6 +1,6 @@
 pkgbase = python-dgutils
-	pkgdesc = GTK apps development easement
-	pkgver = 0.1
+	pkgdesc = A Python module with some universal classes and methods to provide shortcuts for some GTK operations
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/Dzheremi2/DGutils
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-dgutils
 	depends = gtk4
 	depends = python-gobject
 	depends = python-yaml
-	source = DGutils-0.1.tar.gz::https://github.com/Dzheremi2/DGutils/archive/refs/tags/v0.1.tar.gz
-	sha256sums = 32ff339725a4508dabd3d68398c760017edcf61a8e4fd4df65fddfd0ca76b955
+	source = DGutils-0.2.tar.gz::https://github.com/Dzheremi2/DGutils/archive/refs/tags/v0.2.tar.gz
+	sha256sums = 7e56b4b1869ec5e71610ac67611dba8e4850a5a67b5389f9be4ed2e8d49ccd2d
 
 pkgname = python-dgutils
