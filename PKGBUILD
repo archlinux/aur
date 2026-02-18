@@ -1,12 +1,12 @@
 # Maintainer: Gregory Anders <greg at gpanders dot com>
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: kaij <contact at kaij dot tech>
-# Maintainer (nightly-bin):
+# Maintainer (nightly-bin): jmp0
 
 pkgbase=ghostty-nightly-bin
 pkgname=(ghostty-nightly-bin ghostty-shell-integration-nightly-bin ghostty-terminfo-nightly-bin)
 pkgver=20260218.r14511.ga3aa9fa
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast, native, feature-rich terminal emulator pushing modern features"
 arch=(x86_64)
 url="https://github.com/ghostty-org/ghostty"
@@ -35,9 +35,9 @@ source=(
   "ghostty-shell-integration-nightly-bin-x86_64.tar.zst::https://github.com/jpenilla/ghostty-nightly-bin/releases/download/nightly/ghostty-shell-integration-nightly-bin-x86_64.tar.zst"
 )
 sha256sums=(
-  '730c6c0b6a7e9b98c2afa923a1d3cf4760d75b10309bd9ca60703c4e63e4753b'
-  '1aaf4b3c00fad70ddef6ffb5417164cb72889784ecf1988cb11685d1cce08693'
-  'ee7b80c708fe33eca9771340a13a850fd9f70f5f8641b01435be3fd3fe0cdc12'
+  'f26b6437422b5880eb2da486d5b2b0474d672c735a7bcaef9e5f43cfa3d338e8'
+  'eb2ce1b4a6494d6fd1ff4263271731d5d8aea36c609e7b8496f80e387523cdca'
+  '3b9e1dc605e8bfcbf849aad7f6390b6d8158f0c31573e7cda48cc7d704dfca6a'
 )
 
 package_ghostty-nightly-bin() {
