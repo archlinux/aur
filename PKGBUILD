@@ -1,6 +1,6 @@
 # Maintainer: Leonid Lednev <leonidledn at gmail dot com>
 pkgname=nuclei-git
-pkgver=3.6.2.r65.g8aa427a6e
+pkgver=3.6.2.r69.ga2dfb84b3
 pkgrel=1
 pkgdesc="Fast and customizable vulnerability scanner, git version"
 arch=(x86_64)
@@ -27,7 +27,6 @@ pkgver() {
 prepare() {
   cd nuclei
   export GOPATH="$srcdir"
-  mkdir -p build
   go mod download -modcacherw
 }
 

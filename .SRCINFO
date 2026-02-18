@@ -1,6 +1,6 @@
 pkgbase = nuclei-git
 	pkgdesc = Fast and customizable vulnerability scanner, git version
-	pkgver = 3.6.2.r65.g8aa427a6e
+	pkgver = 3.6.2.r69.ga2dfb84b3
 	pkgrel = 1
 	url = https://projectdiscovery.io/nuclei
 	arch = x86_64
