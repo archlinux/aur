@@ -8,7 +8,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/rustledger/rustledger"
 license=('GPL-3.0-only')
 depends=('glibc' 'libgcc')
-makedepends=('cargo')
+makedepends=('cargo' 'lld' 'clang')
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/rustledger/rustledger/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('c55eb9f5295451b80b4904200922e1aab1cf4814561ab23f10be10dca0056e72')
 
@@ -22,6 +22,8 @@ build() {
   cd "$pkgbase-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  # Use lld linker for faster builds and better compatibility
+  export RUSTFLAGS="-C link-arg=-fuse-ld=lld"
   cargo build --release --frozen --workspace
 }
 
@@ -29,6 +31,7 @@ check() {
   cd "$pkgbase-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  export RUSTFLAGS="-C link-arg=-fuse-ld=lld"
   export PATH="$PWD/target/release:$PATH"
   cargo test --release --frozen --workspace
 }
