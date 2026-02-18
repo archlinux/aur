@@ -1,6 +1,6 @@
 pkgbase = bifrost-go-git
 	pkgdesc = A beads-like agent task list framework (Go implementation)
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/devzeebo/bifrost
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = bifrost-go-git
 	provides = bifrost-server
 	conflicts = bf
 	conflicts = bifrost-server
+	backup = etc/bifrost/bifrost.env
 	source = bifrost::git+https://github.com/devzeebo/bifrost.git
 	sha256sums = SKIP
 
