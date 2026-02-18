@@ -1,0 +1,22 @@
+pkgbase = wlcontrol
+	pkgdesc = WiFi and Bluetooth control app, built with GTK4/libadwaita
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/neoden/wlcontrol
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = blueprint-compiler
+	makedepends = gcc
+	makedepends = pkgconf
+	depends = gtk4
+	depends = libadwaita
+	depends = dbus
+	optdepends = iwd: WiFi support
+	optdepends = bluez: Bluetooth support
+	conflicts = wlcontrol-git
+	options = !lto
+	source = wlcontrol-0.1.0.tar.gz::https://github.com/neoden/wlcontrol/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 9984139101d5601665b8a3cf1666eeb3295251b396712914a96570cd28ba0318
+
+pkgname = wlcontrol
