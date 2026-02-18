@@ -1,10 +1,10 @@
 # Maintainer: George Sofianos <george at sofianos dot dev>
 # Contributor Michele Balistreri <michele at bitgamma dot com>
 
-# Release notes https://github.com/lemonade-sdk/lemonade/releases/tag/v9.3.2
+# Release notes https://github.com/lemonade-sdk/lemonade/releases/tag/v9.3.4
 pkgname=lemonade-server
 pkgdesc="Lemonade: Local LLM Serving with GPU and NPU acceleration (Server)"
-pkgver=9.3.2
+pkgver=9.3.4
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/lemonade-sdk/lemonade/'
@@ -14,6 +14,7 @@ depends=('zstd')
 provides=('lemonade-server')
 backup=('etc/lemonade/lemonade.conf' 'etc/lemonade/secrets.conf')
 _httplibver=0.32.0
+_cores=8
 
 source=(
 "${pkgname}-${pkgver}.tar.gz::https://github.com/lemonade-sdk/lemonade/archive/refs/tags/v${pkgver}.tar.gz"
@@ -23,13 +24,20 @@ tmpfiles.conf
 )
 
 sha256sums=(  
-'cf7cde806dce492126a6ea7be612968e7c10e7b481ba5cc6b6e4e9ff7c36ed2c'
+'6e29db8bd712d56804b097a089c09c9db4b141e5440eff72da9dc56626e66b57'
 '360aac4b43a7caa87b3dfca7cbe9ecf6ff5f61e3e3d4b7ccf15c54db9afcf96f'
 '069d5612d570e83128d7eed7ffe4525943d75d22b9c84537d861833157e74b26'
 '6fbbdf843a4c74811e304d666b99b887c1b5bf94d04d924cf5c2136c0b3cc691'
 )
 
 build() {
+  # limit ninja memory consumption
+  if (( $(nproc) < 8 )) then
+    _cores=$(nproc)
+  fi
+
+  echo "Building with ${_cores} cores"
+
   local cmake_options=(
     -B build
     -G Ninja
@@ -41,7 +49,7 @@ build() {
     -D CMAKE_INSTALL_PREFIX=/usr
   )
   cmake "${cmake_options[@]}"
-  cmake --build build
+  cmake --build build --parallel ${_cores}
 }
 
 package() {
