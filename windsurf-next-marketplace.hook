@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = windsurf-next
+
+[Action]
+Description = [windsurf-next-marketplace] Patching product.json...
+Exec = /usr/share/windsurf-next/resources/app/patch.py
+When = PostTransaction
