@@ -1,6 +1,6 @@
 pkgbase = opencode-kanban
 	pkgdesc = Terminal kanban board for managing OpenCode tmux sessions and Git worktrees
-	pkgver = 0.0.9
+	pkgver = 0.0.10
 	pkgrel = 1
 	url = https://github.com/qrafty-ai/opencode-kanban
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = opencode-kanban
 	makedepends = rust
 	makedepends = cargo
 	depends = tmux
-	source = opencode-kanban-0.0.9.tar.gz::https://github.com/qrafty-ai/opencode-kanban/archive/refs/tags/v0.0.9.tar.gz
-	sha256sums = dd4e228da0b9ee3f453d3a63cc5d78c5269253ee2485a8841b39d9cd2376719d
+	source = opencode-kanban-0.0.10.tar.gz::https://github.com/qrafty-ai/opencode-kanban/archive/refs/tags/v0.0.10.tar.gz
+	sha256sums = 4f2bb68d23b8536c0ef4fa6d65826fd0be6ae081c704fdd1779ef23524edb7f0
 
 pkgname = opencode-kanban

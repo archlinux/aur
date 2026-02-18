@@ -1,15 +1,15 @@
 # Maintainer: qrafty-ai <contact@qrafty.ai>
 pkgname=opencode-kanban
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=1
 pkgdesc="Terminal kanban board for managing OpenCode tmux sessions and Git worktrees"
 arch=('x86_64' 'aarch64')
 url="https://github.com/qrafty-ai/opencode-kanban"
 license=('MIT')
-depends=('tmux')
-makedepends=('rust' 'cargo')
+depends=('tmux' 'sqlite')
+makedepends=('rust' 'cargo' 'cmake' 'nasm' 'perl' 'sqlite')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/qrafty-ai/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('dd4e228da0b9ee3f453d3a63cc5d78c5269253ee2485a8841b39d9cd2376719d')
+sha256sums=('4f2bb68d23b8536c0ef4fa6d65826fd0be6ae081c704fdd1779ef23524edb7f0')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -21,12 +21,16 @@ build() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features
+    export CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=gcc
+    export CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER=aarch64-linux-gnu-gcc
+    cargo build --frozen --release
 }
 
 check() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=gcc
+    export CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER=aarch64-linux-gnu-gcc
     cargo test --frozen --lib 2>/dev/null || true
 }
 
