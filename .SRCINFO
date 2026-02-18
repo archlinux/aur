@@ -26,6 +26,8 @@ pkgbase = blender-develop-git
 	depends = usd>=23.11
 	depends = materialx
 	depends = alembic
+	depends = ceres-solver
+	depends = eigen
 	depends = embree
 	depends = libgl
 	depends = python
