@@ -1,14 +1,14 @@
 pkgbase = perl-regexp-debugger
-	pkgdesc = Regexp::Debugger - Visually debug regexes in-place
-	pkgver = 0.002001
+	pkgdesc = Visually debug regexes in-place
+	pkgver = 0.002007
 	pkgrel = 1
 	url = https://metacpan.org/pod/Regexp::Debugger
 	arch = any
-	license = GPL
-	license = PerlArtistic
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	depends = perl-test-simple
 	depends = perl>=5.10.1
-	source = https://cpan.metacpan.org/authors/id/D/DC/DCONWAY/Regexp-Debugger-0.002001.tar.gz
-	sha256sums = 2b618fa60e4e9f78d982d2dd51087cdae1e75103b2239ccb16d2dc6a961a4fbd
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/D/DC/DCONWAY/Regexp-Debugger-0.002007.tar.gz
+	sha256sums = db096cf2e0e1e6127dacc40be6fbd526aa5ad41886a5bae00f4fe6a53a6c6ffb
 
 pkgname = perl-regexp-debugger
-

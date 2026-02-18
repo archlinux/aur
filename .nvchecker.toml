@@ -1,0 +1,3 @@
+[perl-regexp-debugger]
+source = "cpan"
+cpan = "Regexp-Debugger"
