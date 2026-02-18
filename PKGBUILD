@@ -8,7 +8,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/rustledger/rustledger"
 license=('GPL-3.0-only')
 depends=('glibc' 'libgcc')
-makedepends=('cargo' 'lld' 'clang')
+makedepends=('cargo' 'lld')
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/rustledger/rustledger/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('c55eb9f5295451b80b4904200922e1aab1cf4814561ab23f10be10dca0056e72')
 
