@@ -8,7 +8,7 @@ url="https://github.com/assapir/golem"
 license=('GPL-2.0-only')
 provides=('golem')
 conflicts=('golem')
-depends=('gcc-libs' 'openssl')
+depends=()
 
 source_x86_64=("golem-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/golem-x86_64-linux")
 source_aarch64=("golem-${pkgver}-aarch64::${url}/releases/download/v${pkgver}/golem-aarch64-linux")
