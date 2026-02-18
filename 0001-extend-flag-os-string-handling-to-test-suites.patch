@@ -1,0 +1,48 @@
+From f13c897b22190280cf5c77095a35ef5e4f22c9fa Mon Sep 17 00:00:00 2001
+From: Max Ulidtko <ulidtko@gmail.com>
+Date: Wed, 18 Feb 2026 23:38:19 +0100
+Subject: [PATCH] extend flag(os-string) handling to test-suites
+
+---
+ directory.cabal | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/directory.cabal b/directory.cabal
+index 6d99d69..69d532e 100644
+--- a/directory.cabal
++++ b/directory.cabal
+@@ -39,7 +39,15 @@ flag os-string
+   default: False
+   manual: False
+ 
++common filepath-dependency
++    if flag(os-string)
++      build-depends: filepath >= 1.5.0.0, os-string >= 2.0.0
++    else
++      build-depends: filepath >= 1.4.100.0 && < 1.5.0.0
++
+ Library
++    import: filepath-dependency
++
+     default-language: Haskell2010
+     other-extensions: CApiFFI, CPP
+ 
+@@ -66,14 +74,10 @@ Library
+     else
+         build-depends: unix >= 2.8.0 && < 2.9
+ 
+-    if flag(os-string)
+-      build-depends: filepath >= 1.5.0.0, os-string >= 2.0.0
+-    else
+-      build-depends: filepath >= 1.4.100.0 && < 1.5.0.0
+-
+     ghc-options: -Wall
+ 
+ test-suite test
++    import: filepath-dependency
+     default-language: Haskell2010
+     other-extensions: BangPatterns, CPP
+     default-extensions: OverloadedStrings
+-- 
+2.53.0
+
