@@ -1,0 +1,22 @@
+pkgbase = crabdrop
+	pkgdesc = A simple, fast file manager for S3-compatible storage
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/alsofelix/crabdrop
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = npm
+	makedepends = libappindicator-gtk3
+	makedepends = librsvg
+	makedepends = patchelf
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = openssl
+	provides = crabdrop
+	conflicts = crabdrop-bin
+	options = !lto
+	source = crabdrop-0.3.2.tar.gz::https://github.com/alsofelix/crabdrop/archive/v0.3.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = crabdrop
