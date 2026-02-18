@@ -1,6 +1,6 @@
 # Maintainer: Enos Muthiani @lyznne <emuthiani26@gmail.com>
 pkgname=peek-bin
-pkgver=2.0.11
+pkgver=2.0.12
 pkgrel=1
 pkgdesc="A simple, fast file viewer that opens files in your default web browser"
 keywords=('file viewer' 'browser' 'cli')
