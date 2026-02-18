@@ -1,6 +1,6 @@
 pkgbase = breezy-desktop-kwin-git
 	pkgdesc = Breezy KWin - XR desktop
-	pkgver = 2.8.2
+	pkgver = 2.8.4
 	pkgrel = 1
 	url = https://github.com/wheaney/breezy-desktop
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = breezy-desktop-kwin-git
 	depends = kxmlgui
 	depends = python
 	depends = xr-driver-git
-	source = git+https://github.com/wheaney/breezy-desktop#commit=eb0ad035fc725cf583b0ca52ac8f11984a5d139e
+	source = git+https://github.com/wheaney/breezy-desktop#commit=9bb523d2116545faeab842e3336ba6655638d238
 	md5sums = SKIP
 
 pkgname = breezy-desktop-kwin-git
