@@ -1,6 +1,6 @@
 pkgbase = vop-bin
 	pkgdesc = AWS credential management via 1Password
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/NodeSpy/vop
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = vop-bin
 	depends = 1password-cli
 	provides = vop
 	conflicts = vop
-	source = LICENSE-0.3.3::https://github.com/NodeSpy/vop/raw/v0.3.3/LICENSE
+	source = LICENSE-0.3.4::https://github.com/NodeSpy/vop/raw/v0.3.4/LICENSE
 	sha256sums = 6a393bdfa6c20c218bf73d378cf2e5b0fbf0e95c2a9644baf5714dd9d330dc64
-	source_x86_64 = https://github.com/NodeSpy/vop/releases/download/v0.3.3/vop-linux-amd64
-	sha256sums_x86_64 = d3c0bd9972833ab54a6f75c29b28377a4301e92cf2c47f3c49e260d630246e17
-	source_aarch64 = https://github.com/NodeSpy/vop/releases/download/v0.3.3/vop-linux-arm64
-	sha256sums_aarch64 = 567d57642f9a1dbde16c16c3da5e1a2455207c4014e233cbc008f1dcc970810a
+	source_x86_64 = https://github.com/NodeSpy/vop/releases/download/v0.3.4/vop-linux-amd64
+	sha256sums_x86_64 = 5e8012950fa995222ca8c329e13e0b2caf59bf694dd023f43681adf9277aa028
+	source_aarch64 = https://github.com/NodeSpy/vop/releases/download/v0.3.4/vop-linux-arm64
+	sha256sums_aarch64 = 8eb0eacc0fcee1f9e4d1748125fa679f8453d68f5836b875772b6991e0f7603d
 
 pkgname = vop-bin
