@@ -77,7 +77,7 @@ _git_revert=(49414a72f607ccd15f8b71b81edc9aff040d581e)
   _CMAKE_FLAGS+=( -DWITH_PYTHON_INSTALL=OFF )
 
 pkgname=blender-develop-git
-pkgver=5.1.r156713.g19891e0faa6
+pkgver=5.2.r158974.gd80e87858d3
 pkgrel=1
 pkgdesc="Development version of Blender (non-conflicting version)"
 changelog=blender.changelog

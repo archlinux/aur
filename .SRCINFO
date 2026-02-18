@@ -1,6 +1,6 @@
 pkgbase = blender-develop-git
 	pkgdesc = Development version of Blender (non-conflicting version)
-	pkgver = 5.1.r156712.g11a30444ec7
+	pkgver = 5.2.r158974.gd80e87858d3
 	pkgrel = 1
 	url = https://blender.org/
 	changelog = blender.changelog
@@ -56,8 +56,8 @@ pkgbase = blender-develop-git
 	depends = shaderc
 	depends = manifold
 	optdepends = cuda: CUDA support in Cycles
-	provides = blender=5.1
-	conflicts = blender=5.1
+	provides = blender=5.2
+	conflicts = blender=5.2
 	source = blender::git+https://github.com/blender/blender#branch=main
 	source = SelectCudaComputeArch.patch
 	sha256sums = SKIP
