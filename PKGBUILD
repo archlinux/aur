@@ -1,6 +1,6 @@
 # Maintainer: mpsijm
 pkgname=git-xet-bin
-pkgver=0.11.3
+pkgver=0.14.4
 pkgrel=1
 pkgdesc="git-xet client, a Git extension for interacting with XetHub repositories"
 arch=('x86_64')
