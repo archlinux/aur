@@ -1,6 +1,6 @@
 pkgbase = electronmail-bin
 	pkgdesc = Unofficial ProtonMail Desktop App
-	pkgver = 5.3.5
+	pkgver = 5.3.6
 	pkgrel = 1
 	url = https://github.com/vladimiry/ElectronMail
 	install = electronmail-bin.install
@@ -24,9 +24,9 @@ pkgbase = electronmail-bin
 	optdepends = gnome-keyring: for storing passwords in GNOME Keyring
 	provides = electronmail
 	conflicts = electronmail
-	source = https://github.com/vladimiry/ElectronMail/releases/download/v5.3.5/electron-mail-5.3.5-linux-x64.pacman
+	source = https://github.com/vladimiry/ElectronMail/releases/download/v5.3.6/electron-mail-5.3.6-linux-x64.pacman
 	source = LICENSE
-	sha256sums = 1144792fd569a22fb1df40c14906ffa9ce947555863e255cf2e9f7322ff18b87
+	sha256sums = 7577977173316d9afcd38e0262d65a572e6fa2c85fffd9b8f096bcc8479fd588
 	sha256sums = 1b3782ccad7b8614100cda30d3faf42fc39f2e97932908c543005053b654ca68
 
 pkgname = electronmail-bin
