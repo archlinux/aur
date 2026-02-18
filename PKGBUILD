@@ -1,7 +1,7 @@
 # Maintainer: Jeff <your@email.com>
 # https://sourceforge.net/projects/ultimate-bashrc/
 pkgname=extreme-ultimate-bashrc
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Feature-rich bash configuration framework with 107 functions, 113 aliases, auto-detection, and extensive documentation'
 arch=('any')
@@ -41,7 +41,7 @@ install="${pkgname}.install"
 # SourceForge release tarball
 # For local testing: run make-test-tarball.sh first, then makepkg -si
 source=("${pkgname}-${pkgver}.tar.gz::https://sourceforge.net/projects/ultimate-bashrc/files/aur/${pkgname}-${pkgver}.tar.gz/download")
-sha256sums=('fd4b7b5aba710e900c5c81c96193045b8b814477e9fff96241ecb3861b212554')
+sha256sums=('2fa06b10157f323a5383f0d1f70569cdf05e3e2990b8b97ab2c86027b9ab99b7')
 
 package() {
 	local INSTALL_ROOT="${pkgdir}/opt/${pkgname}"
