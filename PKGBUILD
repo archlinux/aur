@@ -1,28 +1,50 @@
-# Maintainer: Peven Phoon <iampeven@gmail.com> 
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: Peven Phoon <iampeven@gmail.com>
 
+_dist=Regexp-Debugger
 pkgname=perl-regexp-debugger
-pkgver=0.002001
+pkgver=0.002007
 pkgrel=1
-pkgdesc="Regexp::Debugger - Visually debug regexes in-place"
+pkgdesc='Visually debug regexes in-place'
 arch=('any')
-url="https://metacpan.org/pod/Regexp::Debugger"
-license=('GPL' 'PerlArtistic')
-depends=('perl>=5.10.1')
-source=("https://cpan.metacpan.org/authors/id/D/DC/DCONWAY/Regexp-Debugger-0.002001.tar.gz")
-sha256sums=('2b618fa60e4e9f78d982d2dd51087cdae1e75103b2239ccb16d2dc6a961a4fbd')
+url='https://metacpan.org/pod/Regexp::Debugger'
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl-test-simple'
+    'perl>=5.10.1'
+)
+options=('!emptydirs')
+source=("https://cpan.metacpan.org/authors/id/D/DC/DCONWAY/$_dist-$pkgver.tar.gz")
+sha256sums=('db096cf2e0e1e6127dacc40be6fbd526aa5ad41886a5bae00f4fe6a53a6c6ffb')
 
-build() {
-	cd "${srcdir}/Regexp-Debugger-${pkgver}"
-	/usr/bin/perl Makefile.PL
-	make
+build()
+{
+    cd $_dist-$pkgver
+
+    unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL
+    make
 }
 
-check() {	
-	cd "${srcdir}/Regexp-Debugger-${pkgver}"
-	make test	
+
+check()
+{
+    cd $_dist-$pkgver
+
+    unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    make test
 }
 
-package() {
-	cd "${srcdir}/Regexp-Debugger-${pkgver}"
-	make install DESTDIR="${pkgdir}"
+package()
+{
+    cd $_dist-$pkgver
+
+    unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+    find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
