@@ -1,7 +1,7 @@
 pkgbase = advancely-bin
 	pkgdesc = A highly customizable and interactive tool to track Minecraft progress beyond just Advancements.
 	pkgver = 1.0.34
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/LNXSeus/Advancely
 	arch = x86_64
 	license = LicenseRef-Proprietary
@@ -18,7 +18,7 @@ pkgbase = advancely-bin
 	source = advancely.png::https://raw.githubusercontent.com/LNXSeus/Advancely/refs/tags/v1.0.34/packaging/linux/advancely.png
 	source = advancely.desktop::https://raw.githubusercontent.com/LNXSeus/Advancely/refs/tags/v1.0.34/packaging/linux/advancely.desktop
 	source = LICENSE::https://raw.githubusercontent.com/LNXSeus/Advancely/refs/tags/v1.0.34/LICENSES.txt
-	sha256sums = 14b34d793000ec5d6c60320add3b0f34c09494f6879ede7a7ef6c2a61e320458
+	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 	sha256sums = 673543fe55a6aae685bb2b3814e4678365330621acab21b730b38042bab32426
 	sha256sums = 0bb1507a70774b586b1c40783e48653df9fd715b624196b87a106dbd347fda3c
 	sha256sums = 8bb22822a63455292196566532618d1aca55b929de1ec5405c5db2d08f83421e
