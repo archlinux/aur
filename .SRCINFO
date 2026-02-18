@@ -1,6 +1,6 @@
 pkgbase = omni-screen-bin
 	pkgdesc = Omni Screen - multi-platform stream and link viewer
-	pkgver = 1.15.0
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://github.com/NickMarcha/omni-screen
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = omni-screen-bin
 	depends = fuse2
 	depends = gtk3
 	options = !strip
-	source = omni-screen-1.15.0.AppImage::https://github.com/NickMarcha/omni-screen/releases/download/v1.15.0/Omni-Screen-Linux-1.15.0-x86_64.AppImage
+	source = omni-screen-1.16.0.AppImage::https://github.com/NickMarcha/omni-screen/releases/download/v1.16.0/Omni-Screen-Linux-1.16.0-x86_64.AppImage
 	source = omni-screen.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
