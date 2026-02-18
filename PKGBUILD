@@ -1,13 +1,13 @@
 # Maintainer: D7OMDEV <hello@d7om.dev>
 pkgname=clipse-gui
 pkgver=0.6.0
-pkgrel=22
+pkgrel=23
 pkgdesc="A GTK3 GUI for the clipse clipboard manager"
 arch=('x86_64')
 url="https://github.com/d7omdev/clipse-gui"
 license=('MIT')
-depends=('python-gobject' 'gtk3' 'wl-clipboard' 'wtype' 'xdotool')
-makedepends=('git' 'uv' 'gcc')
+depends=('python-gobject' 'gtk3' 'wl-clipboard' 'wtype' 'xdotool' 'clipse')
+makedepends=('git' 'uv' 'gcc' 'patchelf')
 options=('!strip')
 source=("git+https://github.com/d7omdev/clipse-gui.git")
 sha256sums=('SKIP')
@@ -38,6 +38,19 @@ package() {
 	if [ -f "$pkgname.png" ]; then
 		install -Dm644 "$pkgname.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname.png"
 	fi
+
+	install -Dm644 /dev/stdin "$pkgdir/usr/lib/systemd/user/clipse.service" <<EOF
+[Unit]
+Description=Clipse clipboard listener
+PartOf=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/clipse -listen
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target
+EOF
 
 	mkdir -p "$pkgdir/usr/share/applications"
 	cat >"$pkgdir/usr/share/applications/$pkgname.desktop" <<EOF
