@@ -1,6 +1,6 @@
 pkgbase = fpsd-git
 	pkgdesc = Content-aware HTTPS interception proxy for ad blocking
-	pkgver = 1.3.3
+	pkgver = 1.3.4
 	pkgrel = 1
 	url = https://github.com/ushineko/face-puncher-supreme
 	install = fpsd.install
