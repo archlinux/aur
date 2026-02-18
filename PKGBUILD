@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libx11-git
-pkgver=1.8.9.r22.g751fbc59
+pkgver=1.8.13.r0.g6c75545a
 pkgrel=1
 pkgdesc="Core X11 protocol client library"
 arch=('i686' 'x86_64')
 url="https://www.x.org/wiki/"
-license=('LicenseRef-custom')
+license=('LicenseRef-libx11')
 depends=('glibc' 'libxcb' 'xorgproto')
 makedepends=('git' 'xorg-util-macros' 'xtrans')
 provides=("libx11=$pkgver")
