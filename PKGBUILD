@@ -3,7 +3,7 @@
 
 pkgname=(lc0 lc0-network-sm lc0-network-md lc0-network-lg lc0-network-xl)
 pkgver=0.32.1
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 
 url="https://lczero.org/"
