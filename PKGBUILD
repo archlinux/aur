@@ -4,10 +4,10 @@
 
 pkgname='monochrome'
 pkgver=2.2.0
-pkgrel=4
-pkgdesc="Monochrome is a lightweight, privacy-focused music streaming client designed for high-fidelity audio playback. Built with modern web technologies, it provides a clean, distraction-free listening experience."
+pkgrel=5
+pkgdesc="Lossless music streaming"
 arch=('x86_64')
-url=https://github.com/SamidyFR/monochrome
+url=https://github.com/monochrome-music/monochrome
 license=('HIPPOCRATIC LICENSE')
 provides=("$pkgname")
 conflicts=("$pkgname")

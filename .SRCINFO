@@ -1,8 +1,8 @@
 pkgbase = monochrome
-	pkgdesc = Monochrome is a lightweight, privacy-focused music streaming client designed for high-fidelity audio playback. Built with modern web technologies, it provides a clean, distraction-free listening experience.
+	pkgdesc = Lossless music streaming
 	pkgver = 2.2.0
-	pkgrel = 4
-	url = https://github.com/SamidyFR/monochrome
+	pkgrel = 5
+	url = https://github.com/monochrome-music/monochrome
 	arch = x86_64
 	license = HIPPOCRATIC LICENSE
 	provides = monochrome
