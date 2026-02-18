@@ -1,0 +1,30 @@
+pkgbase = r-lavaanextra
+	pkgdesc = Convenience Functions for Package 'lavaan'
+	pkgver = 0.2.2
+	pkgrel = 9
+	url = https://cran.r-project.org/package=lavaanExtra
+	arch = any
+	license = MIT
+	depends = r-lavaan
+	depends = r-insight
+	optdepends = r-flextable
+	optdepends = r-diagrammersvg
+	optdepends = r-rvsg
+	optdepends = r-png
+	optdepends = r-webshot
+	optdepends = r-tmvnsim
+	optdepends = r-knitr
+	optdepends = r-tibble
+	optdepends = r-sjlabelled
+	optdepends = r-stringdist
+	optdepends = r-psych
+	optdepends = r-testthat
+	optdepends = r-rmarkdown
+	optdepends = r-markdown
+	optdepends = r-covr
+	optdepends = r-spelling
+	source = https://cran.r-project.org/src/contrib/lavaanExtra_0.2.2.tar.gz
+	md5sums = d518fe5c929b9c338f902fb2a3401a50
+	b2sums = 1629496ca63085763527a62235a4e61758742137a62c453ebdf932ed1b1d28b69afd8f0f8bc7d34e275cb9111ccd1dae3c157aee57f5122340d716db3664fa25
+
+pkgname = r-lavaanextra
