@@ -1,6 +1,6 @@
 pkgbase = trello-cli
 	pkgdesc = Trello CLI tool
-	pkgver = 1.2.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/mheap/trello-cli
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = trello-cli
 	depends = nodejs
 	depends = npm
 	provides = trello
-	noextract = trello-cli-1.2.0.tgz
-	source = https://registry.npmjs.org/trello-cli/-/trello-cli-1.2.0.tgz
-	sha512sums = f114d5948200137b031e7e18a300b4aeda17d3f70544480ab25e8f38c4cb5c29f4c2920ca34d2cbdc895ee92e7b3b099e7fd590f93a1a86d82e86f6997c224dc
+	noextract = trello-cli-1.4.0.tgz
+	source = https://registry.npmjs.org/trello-cli/-/trello-cli-1.4.0.tgz
+	sha512sums = a586381c38d06bd6ad93b21d7707a96dc6b87bcac4506a8fcf688d4ae4ea74057ca4fd5dfe13206cfebce252c45698527b8fccdf9e50eac4b8b57c84e8adadc0
 
 pkgname = trello-cli
