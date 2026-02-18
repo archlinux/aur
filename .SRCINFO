@@ -1,6 +1,6 @@
 pkgbase = rpm-tools-git
 	pkgdesc = RPM Package Manager
-	pkgver = 4.20.0.r536.gf9f124a67
+	pkgver = 6.0.1.r206.g9b439b2da
 	pkgrel = 1
 	url = https://rpm.org/
 	arch = i686
@@ -9,7 +9,11 @@ pkgbase = rpm-tools-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = python
-	depends = gcc-libs
+	makedepends = scdoc
+	depends = glibc
+	depends = libgcc
+	depends = libgomp
+	depends = libstdc++
 	depends = elfutils
 	depends = file
 	depends = libarchive
@@ -19,7 +23,7 @@ pkgbase = rpm-tools-git
 	depends = popt
 	depends = rpm-sequoia
 	depends = zstd
-	provides = rpm-tools=4.20.0.r536.gf9f124a67
+	provides = rpm-tools=6.0.1.r206.g9b439b2da
 	provides = rpmextract
 	conflicts = rpm-tools
 	conflicts = rpmextract
