@@ -9,6 +9,9 @@ license=('MIT')
 optdepends=(
     'paru: AUR helper support (preferred)'
     'yay: AUR helper support'
+    'wl-clipboard: copy output to clipboard on Wayland (y key)'
+    'xclip: copy output to clipboard on X11 (y key)'
+    'xsel: copy output to clipboard on X11 (y key, fallback)'
 )
 provides=('lian')
 conflicts=('lian' 'lian-git')
