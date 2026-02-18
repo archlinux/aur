@@ -1,11 +1,12 @@
 # Maintainer: Naatje80 <spekbukkem@gmail.com>
 pkgname=rvgl-arcade-tracks
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="RVGL add-on for the additional tracks available in the arcade version of Re-Volt"
 arch=('any')
 url="https://re-volt.io/articles/arcade"
 license=('MIT')
+makedepends=('ffmpeg')
 depends=('rvgl-basic')
 source=("https://files.re-volt.io/arcade/tracks/OVALTRACK.zip" "https://files.re-volt.io/arcade/tracks/nhood0.zip" "https://files.re-volt.io/arcade/tracks/ship0.zip" "https://files.re-volt.io/arcade/tracks/venicearcade.zip")
 build() {
@@ -31,6 +32,11 @@ build() {
 
   # Fix ovaltrack to use correct mp3 track (Overdrive as mentioned in the comments of the overtrack.inf config file)
   sed -i -e 's/REDBOOK\t\t10 10/REDBOOK\t\t8 8/' levels/ovaltrack/ovaltrack.inf 
+
+  # Fix crackeling mp3 soundtrack by reencoding the file to ogg in Toytanic Arcade track
+  ffmpeg -loglevel error -i music/suburbs.mp3 music/suburbs.ogg
+  rm -f music/suburbs.mp3
+  sed -i -e 's/MP3\t\t'"'"'music\\suburbs.mp3'"'"'/MP3\t\t'"'"'music\\suburbs.ogg'"'"'/' levels/ship0/ship0.inf
 }
 package(){
   cd "$srcdir/$_pkgname"
