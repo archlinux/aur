@@ -1,7 +1,7 @@
 pkgbase = windsurf-next-marketplace
 	pkgdesc = Enable vscode marketplace in windsurf-next
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://marketplace.visualstudio.com/vscode
 	install = windsurf-next-marketplace.install
 	arch = any
