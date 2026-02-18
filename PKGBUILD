@@ -79,7 +79,7 @@ optdepends=(
     'perl-xml-xpath: Perl bindings'
     'python-lxml: Python bindings'
     'python-mysqlclient: Python bindings'
-    'python-qt5-webengine: Python bindings'
+    'python-pyqt5-webengine: Python bindings'
     'python-requests: Python bindings'
     'python-requests-cache: Python bindings'
     'python-simplejson: Python bindings'
