@@ -1,7 +1,7 @@
-# Maintainer: nixval <nicovaliantoku@gmail.com>
+# Contact: nixval <nicovaliantoku@gmail.com>
 
 pkgname=declarch
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Universal declarative package manager - unify AUR, flatpak, npm, cargo, pip, and custom backends"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=(
 )
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cb4849c54eefa104c8096c929c5c89d86bd0a78edb7478e96e2a14513f930f9a')
+sha256sums=('529b71108a923582827d080a0032360be854e6ad9a7121615d98dbe18ce29c4e')
 
 prepare() {
   cd "$pkgname-$pkgver"

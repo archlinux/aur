@@ -1,6 +1,6 @@
 pkgbase = declarch
 	pkgdesc = Universal declarative package manager - unify AUR, flatpak, npm, cargo, pip, and custom backends
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/nixval/declarch
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = declarch
 	optdepends = paru: AUR backend for syncing
 	optdepends = yay: Alternative AUR helper
 	optdepends = flatpak: For managing Flatpak applications
-	source = declarch-0.8.1.tar.gz::https://github.com/nixval/declarch/archive/refs/tags/v0.8.1.tar.gz
-	sha256sums = cb4849c54eefa104c8096c929c5c89d86bd0a78edb7478e96e2a14513f930f9a
+	source = declarch-0.8.2.tar.gz::https://github.com/nixval/declarch/archive/refs/tags/v0.8.2.tar.gz
+	sha256sums = 529b71108a923582827d080a0032360be854e6ad9a7121615d98dbe18ce29c4e
 
 pkgname = declarch
