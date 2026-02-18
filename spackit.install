@@ -1,0 +1,23 @@
+post_install() {
+    echo "--> Configurando Spackit para el usuario..."
+    
+    # 1. Agregamos el source al .bashrc del usuario que está instalando
+    # Usamos $SUDO_USER porque pacman corre como root
+    if [ -n "$SUDO_USER" ]; then
+        local user_home=$(getent passwd "$SUDO_USER" | cut -d: -f6)
+        local bashrc="$user_home/.bashrc"
+        
+        if [ -f "$bashrc" ]; then
+            # Solo lo agregamos si no existe ya
+            if ! grep -q "spackit.sh" "$bashrc"; then
+                echo '[[ -f /etc/profile.d/spackit.sh ]] && source /etc/profile.d/spackit.sh' >> "$bashrc"
+                echo "--> Spackit ha sido añadido a $bashrc"
+            fi
+        fi
+    fi
+    echo "--> ¡Instalación completada! Abre una nueva terminal para ver el banner."
+}
+
+post_upgrade() {
+    post_install
+}
