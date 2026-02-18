@@ -1,5 +1,5 @@
 pkgname=bar_daemon
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Async status bar daemon for Linux. Uses event-driven updating of values"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('wireplumber' 'brightnessctl' 'bluez' 'bluez-utils' 'acpi' 'asusctl' 'procps-ng')
 makedepends=('cargo' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('697320531205ea71d14baeb46030e9996491044f7da8f4588177aea18ecd5b46')
+sha256sums=('9b867f5cfe17ba855af1abc22b4f4d4ca7bc4b1c07cb96f8827055ca229a7b02')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -23,7 +23,7 @@ package() {
 
 	# Install the default config file
     install -d "$pkgdir/etc/bar_daemon"
-    install -Dm644 default/config.toml "$pkgdir/etc/bar_daemon/config.toml"
+    install -Dm644 bar_daemon/default/config.toml "$pkgdir/etc/bar_daemon/config.toml"
 
     # Install the systemd user unit
     install -Dm644 packaging/bar_daemon.service "$pkgdir/usr/lib/systemd/user/bar_daemon.service"
