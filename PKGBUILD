@@ -1,6 +1,8 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Sam Whited <sam@samwhited.com>
+# Contributor: Brian Bidulock <bidulock@openss7.org>
+
 pkgname=xml2rfc
-pkgver=3.20.0
+pkgver=3.31.0
 pkgrel=1
 pkgdesc='generates RFCs and IETF drafts from XML according to the DTD in RFC 2629'
 url='https://pypi.python.org/pypi/xml2rfc'
@@ -8,14 +10,22 @@ arch=(any)
 depends=(python python-lxml python-requests python-platformdirs python-setuptools
 	 python-pyflakes python-pycountry python-kitchen python-intervaltree
 	 python-google-i18n-address python-html5lib python-six)
+makedepends=(
+	python-build
+	python-installer
+	python-wheel)
 license=(LicenseRef-BSD-3-Clause)
-source=("https://files.pythonhosted.org/packages/d2/1b/60ba1a6a9c7a02379b8cb3174254bf3092c74af5dbc1b9cbf73623729cc6/xml2rfc-3.20.0.tar.gz")
-sha512sums=('bb819dcd0d5a01c6f7958fc2090823e9d204ef8b79bc63f447acd2e666f8f80bbdcb35245a4008f1a2f169888683899e286d9727928b14ea82802b5b522d082c')
-validpgpkeys=('89F8DCE7EAE72F530905C6524E9B574B8FBB171A') # Henrik Levkowetz <FIRSTNAME@SURNAME.com>
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname//-/_}/${pkgname//-/_}-$pkgver.tar.gz")
+sha256sums=('0a1d4ccc4425aed39b5f0f833a8eb1e0f9e8f1897d3441c3a15877dee36cf484')
+
+build() {
+  cd "$pkgname-$pkgver"
+	python -m build --wheel --no-isolation
+}
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  python setup.py install --root="$pkgdir"
+  cd "$pkgname-$pkgver"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/xml2rfc/LICENSE"
 }
