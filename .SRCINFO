@@ -1,0 +1,17 @@
+pkgbase = peek-bin
+	pkgdesc = A simple, fast file viewer that opens files in your default web browser
+	pkgver = 2.0.11
+	pkgrel = 1
+	url = https://github.com/lyznne/peek
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	provides = peek-bin
+	conflicts = peek-bin-git
+	conflicts = peek
+	conflicts = peek-cli
+	options = !strip
+	source = peek-bin-2.0.11-linux-x86_64-musl.tar.gz::https://github.com/lyznne/peek/releases/download/v2.0.11/peek-linux-x86_64-musl.tar.gz
+	sha256sums = SKIP
+
+pkgname = peek-bin
