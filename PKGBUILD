@@ -3,7 +3,7 @@
 pkgname=gawk-reclen
 _project=gawkextlib
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GAWK extension - fixed-length record input parser"
 arch=('x86_64')
 url="https://sourceforge.net/projects/gawkextlib/"
