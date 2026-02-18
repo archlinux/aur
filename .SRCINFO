@@ -1,13 +1,14 @@
 pkgbase = python-google-i18n-address
 	pkgdesc = I18n address data packaged for Python
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/mirumee/google-i18n-address.git
 	arch = any
 	license = custom
 	makedepends = python-setuptools
+	makedepends = python-hatchling
 	depends = python
-	source = google-i18n-address-3.1.0.tar.gz::https://github.com/mirumee/google-i18n-address/archive/3.1.0.tar.gz
-	sha256sums = 96044d9a09fed1b7c5a289b4880bee23d7de26696a7908c4e6e7c07668f2b9af
+	source = google-i18n-address-3.1.1.tar.gz::https://github.com/mirumee/google-i18n-address/archive/3.1.1.tar.gz
+	sha256sums = 081a0b6b23c6846830debf3204d554d6312ba42f319f1d6395e5011b3527646c
 
 pkgname = python-google-i18n-address
