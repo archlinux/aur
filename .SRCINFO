@@ -1,7 +1,7 @@
 pkgbase = prs-scan
 	pkgdesc = Defensive-first web security scanner
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MOYARU/prs
 	arch = x86_64
 	arch = aarch64

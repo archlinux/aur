@@ -1,6 +1,6 @@
 pkgname=prs-scan
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Defensive-first web security scanner"
 arch=('x86_64' 'aarch64')
 url="https://github.com/MOYARU/prs"
