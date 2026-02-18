@@ -1,6 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='1.2.0.4'
+_upstreamver='1.3.0'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='user-scanner'
@@ -27,7 +27,7 @@ makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
 # source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b3f9a19fe26d2446ab8a27096c0d7c277eed103998a24c7c7fe52772bc620960')
+sha256sums=('6d97daff2c103f576fca14b67afb9611c64b44bacf8b2a76f3a82db779f218f6')
 
 build() {
     cd "${srcdir}/${_pypi_package//-/_}-${pkgver}/"
