@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=( )  
 conflicts=( 'eilmeldung' 'eilmeldung-git' )
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/eilmeldung-$arch-unknown-linux-musl-$pkgver.tar.gz")
-sha256sums=('0635c70e1ff341d8dbfb49856e80488150353b32738f4503c39e7a71447dda76')
+sha256sums=('71ae161183a854c994f73ea43d6db5203e82c3ab17702e0105837c0fc0c600a8')
 
 
 package() {
