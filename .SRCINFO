@@ -1,0 +1,19 @@
+pkgbase = kilocode-cli-bin
+	pkgdesc = The all-in-one agentic engineering platform.
+	pkgver = 1.0.23
+	pkgrel = 1
+	url = https://kilo.ai
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = kilo
+	options = !strip
+	source = LICENSE-1.0.23::https://github.com/Kilo-Org/kilo/raw/refs/tags/v1.0.23/LICENSE
+	sha256sums = 0d23876a7b5c9a875091466d03091524ebc2b3f48f9f5725cbb9eee9d6c6c2af
+	source_aarch64 = kilocode-aarch64-1.0.23.tar.gz::https://github.com/Kilo-Org/kilo/releases/download/v1.0.23/kilo-linux-arm64.tar.gz
+	sha256sums_aarch64 = 0062abd95e55bd28b4c11d71e6f0821fba9a2b267ab8eff4083188298618e039
+	source_x86_64 = kilocode-x86_64-1.0.23.tar.gz::https://github.com/Kilo-Org/kilo/releases/download/v1.0.23/kilo-linux-x64-baseline.tar.gz
+	sha256sums_x86_64 = 04947f8307bd777cd1e3468c8862930ebfae9903d441bc2cc3fb04b87bb41429
+
+pkgname = kilocode-cli-bin
