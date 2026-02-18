@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=rustconn
 _app_id=io.github.totoshko88.RustConn
-pkgver=0.8.6
+pkgver=0.8.7
 pkgrel=1
 pkgdesc="Modern connection manager for Linux with GTK4/Wayland-native interface."
 arch=('x86_64')
@@ -41,14 +41,14 @@ optdepends=(
   'picocom: Serial terminal client'
   'realvnc-vnc-viewer: VNC client option'
   'remmina: VNC client option'
-#  'spice-gtk: SPICE Client option'  ## not found, using embedded
+#  'spice-gtk: SPICE client option'  ## not found, using embedded
   'tailscale: Tailscale CLI'
   'teleport: Teleport CLI'
   'tigervnc: VNC client option'
   'virt-viewer: SPICE client option'
 )
 source=("RustConn-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('19bdb2ba42f0e968752a47fb94477f42c4f8599eb5c98231950d0b8700e24df8')
+sha256sums=('6577600c4eaf52aede82d41531ed3ec1268bc129e82f263b5fa463914d75a0d4')
 
 prepare() {
   cd "RustConn-$pkgver"
