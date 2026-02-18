@@ -1,9 +1,9 @@
 # Maintainer: 	ngdngdc <2959471117 at qq dot com>
 
 _npmname=whistle.script
-_npmver=1.2.10
+_npmver=1.3.0
 pkgname=nodejs-whistle-plugins-script # All lowercase
-pkgver=1.2.10
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="The plugin for the extension script for whistle"
 arch=(any)
@@ -13,7 +13,7 @@ depends=('nodejs-whistle')
 optdepends=()
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
 noextract=(${_npmname}-${_npmver}.tgz)
-sha1sums=('34711dc211e61165b4b63abb37b6365bc5632abe')
+sha1sums=('9b58007efc1c0931eeb5a5e06478b58a2f256448')
 
 package() {
   cd $srcdir
