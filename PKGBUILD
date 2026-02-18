@@ -1,7 +1,7 @@
 # Maintainer: Kotsasmin <kotsasmin@gmail.com>
 pkgname=modiva-launcher-bin
 pkgver=1.4.3
-pkgrel=2
+pkgrel=3
 pkgdesc="The official Modiva launcher"
 arch=('x86_64')
 url="https://modiva-launcher.xyz"
@@ -21,12 +21,14 @@ package() {
     
     install -m755 "modiva-launcher-${pkgver}.AppImage" "${pkgdir}/opt/${pkgname}/modiva-launcher.AppImage"
     
-    # --- CHANGED: Create a wrapper script ---
-    # We use --ozone-platform-hint=auto to let Electron detect Wayland properly
-    # This avoids the need for manual LD_PRELOAD injection which causes audio/performance issues
+    # --- CHANGED: Create a wrapper script instead of a symlink ---
+    # This sets LD_PRELOAD to force the app to use the system's wayland libraries ONLY on Wayland
     cat > "${pkgdir}/usr/bin/modiva-launcher" <<EOF
 #!/bin/sh
-exec /opt/${pkgname}/modiva-launcher.AppImage --ozone-platform-hint=auto "\$@"
+if [ -n "\$WAYLAND_DISPLAY" ]; then
+    export LD_PRELOAD="/usr/lib/libwayland-client.so /usr/lib/libwayland-egl.so"
+fi
+exec /opt/${pkgname}/modiva-launcher.AppImage "\$@"
 EOF
     
     # Make the wrapper executable
