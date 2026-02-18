@@ -1,16 +1,14 @@
 pkgbase = portprotonqt
 	pkgdesc = Modern GUI for managing and launching games from PortProton, Steam, and Epic Games Store
-	pkgver = 0.1.10
+	pkgver = 0.1.11
 	pkgrel = 1
 	url = https://git.linux-gaming.ru/Boria138/PortProtonQt
 	arch = any
 	license = GPL-3.0
-	makedepends = python-build
-	makedepends = python-installer
-	makedepends = python-setuptools
-	makedepends = python-wheel
+	makedepends = meson
+	makedepends = ninja
+	makedepends = vulkan-headers
 	depends = python-requests
-	depends = python-libarchive-c
 	depends = python-babel
 	depends = python-evdev
 	depends = python-pyudev
@@ -18,19 +16,23 @@ pkgbase = portprotonqt
 	depends = python-psutil
 	depends = python-tqdm
 	depends = python-vdf
+	depends = python-libarchive-c
 	depends = pyside6
 	depends = python-rapidfuzz
 	depends = icoextract
 	depends = python-pillow
 	depends = perl-image-exiftool
-	depends = xdg-utils
 	depends = python-beautifulsoup4
 	depends = python-websocket-client
 	depends = cabextract
 	depends = unzip
 	depends = curl
 	depends = unrar
-	source = git+https://git.linux-gaming.ru/Boria138/PortProtonQt#tag=v0.1.10
-	sha256sums = e6ca70da4b028cce85e1477063cf84e1a5bd16f4be14aad607fa7b2c4fc0a7fa
+	depends = qt6-svg
+	depends = pciutils
+	depends = mesa-utils
+	depends = vulkan-icd-loader
+	source = git+https://git.linux-gaming.ru/Boria138/PortProtonQt#tag=v0.1.11
+	sha256sums = 66cb620f94e223b101ad79b3cdeee018afd0c963c4b0cddb1983de9cf0b1be45
 
 pkgname = portprotonqt
