@@ -6,14 +6,14 @@ pkgbase = beads-git
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = go>=1.21
+	makedepends = go>=1.24
 	makedepends = git
 	depends = glibc
+	depends = icu
+	depends = zstd
 	provides = beads
 	provides = bd
 	conflicts = beads
 	conflicts = beads-bin
-	source = git+https://github.com/steveyegge/beads.git
-	sha256sums = SKIP
 
 pkgname = beads-git

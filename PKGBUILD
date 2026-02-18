@@ -7,21 +7,32 @@ pkgdesc="A memory upgrade for your coding agent (git version)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/steveyegge/beads"
 license=('MIT')
-depends=('glibc')
-makedepends=('go>=1.21' 'git')
+depends=('glibc' 'icu' 'zstd')
+makedepends=('go>=1.24' 'git')
 provides=('beads' 'bd')
 conflicts=('beads' 'beads-bin')
-source=("git+${url}.git")
-sha256sums=('SKIP')
+source=()
+sha256sums=()
+
+_giturl="https://github.com/steveyegge/beads.git"
 
 pkgver() {
   cd "$srcdir/beads"
-  printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  git describe --long --tags --abbrev=7 2>/dev/null \
+    | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' \
+    || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
+  cd "$srcdir"
+  if [ -d beads ]; then
+    cd beads
+    git fetch --filter=blob:none origin
+    git reset --hard origin/HEAD
+  else
+    git clone --filter=blob:none "$_giturl"
+  fi
   cd "$srcdir/beads"
-  # Download Go dependencies
   go mod download
 }
 
@@ -42,7 +53,6 @@ build() {
 
 check() {
   cd "$srcdir/beads"
-  # Run tests
   go test ./... || true
 }
 
