@@ -1,0 +1,20 @@
+pkgbase = cyberlete-bin
+	pkgdesc = Anti-cheat desktop client with Cyberlete Cloud node support
+	pkgver = 0.1.27
+	pkgrel = 1
+	url = https://cyberlete.com
+	arch = x86_64
+	license = LicenseRef-Cyberlete-Proprietary
+	depends = java-runtime>=17
+	optdepends = libappindicator-gtk3: system tray support
+	provides = cyberlete
+	conflicts = cyberlete
+	noextract = cyberlete-bin-0.1.27.AppImage
+	options = !strip
+	options = !debug
+	source = cyberlete-bin-0.1.27.AppImage::https://github.com/Cyberlete/cyberlete-releases/releases/download/v0.1.27/Cyberlete_0.1.27_amd64.AppImage
+	source = cyberlete.desktop
+	sha256sums = 39a52b2fd2380ad06e90d72123c118e1ff1ef418147b556eb963f469830f12d6
+	sha256sums = 25f99e380f634a176c7dc938b9c7a9f67918788c8273f191ac8cd47aa0ce7ec5
+
+pkgname = cyberlete-bin

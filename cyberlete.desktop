@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Cyberlete
+Comment=Anti-cheat desktop client with Cyberlete Cloud
+Exec=/usr/bin/cyberlete
+Icon=cyberlete
+Terminal=false
+Type=Application
+StartupWMClass=Cyberlete
+Categories=Game;Utility;
