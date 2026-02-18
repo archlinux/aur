@@ -1,8 +1,8 @@
 # Maintainer: Lncvrt <lncvrtreal@gmail.com>
 
 pkgname=berrydash
-pkgver=1.8.2
-pkgrel=2
+pkgver=26.1
+pkgrel=1
 pkgdesc="A simple game where you catch berries with a leaderboard system and more."
 arch=('x86_64')
 url="https://berrydash.lncvrt.xyz/"
@@ -16,9 +16,9 @@ source=(
   "berrydash.png"
 )
 sha256sums=(
-  'eb03cd562b4b0d1abb134f60ada51c07d5039f8bd597ce1e8e791c4f6f75eeec'
+  'd43ec9fd5acdfa210c674655a481343fdb9db7a60d0d0f3960ba44e433d768ca'
   'a27dae1b8f41d289c04ce9ede426e4938be5ba882cd51d57fee35718ecea2829'
-  'eac907c8d88390f89d7c1ed56532781c78b750faad07664e1967d8634593a383'
+  '79273f068c2ea02c96fb9ff095de6263bcea3ff0f7d3e5aa06efe2ccf5da027c'
 )
 
 prepare() {
