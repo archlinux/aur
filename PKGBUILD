@@ -4,7 +4,7 @@
 
 pkgname=windsurf-next-marketplace
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Enable vscode marketplace in windsurf-next'
 arch=('any')
 url='https://marketplace.visualstudio.com/vscode'
