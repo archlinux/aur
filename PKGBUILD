@@ -2,7 +2,7 @@
 
 _pkgname=timewall
 pkgname="${_pkgname}-bin"
-pkgver=2.0.2
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Apple dynamic HEIF wallpapers on GNU/Linux'
 url='https://github.com/bcyran/timewall'
@@ -12,7 +12,7 @@ depends=('libheif')
 license=('MIT')
 arch=('x86_64')
 source=("https://github.com/bcyran/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('3e5301fbdadffe965ed93ec980d45411eaaa774429e62d8b067379f77267af20')
+sha256sums=('b3ef6acaa6e35048a429d52a50d2703130a30010f23f6b43b2028b490e3350a3')
 
 package() {
     install -Dm 755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
