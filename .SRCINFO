@@ -1,8 +1,8 @@
 pkgbase = advancely
-	pkgdesc = A highly customizable and interactive tool to track Minecraft progress beyond just Advancements.
-	pkgver = 1.0.15
+	pkgdesc = A highly customizable and interactive tool to track Minecraft progress.
+	pkgver = 1.0.29
 	pkgrel = 1
-	url = https://github.com/DFA-G/Advancely
+	url = https://github.com/LNXSeus/Advancely
 	arch = x86_64
 	license = LicenseRef-Proprietary
 	makedepends = git
@@ -11,18 +11,11 @@ pkgbase = advancely
 	depends = sdl3_image
 	depends = sdl3_ttf
 	depends = curl
+	depends = hicolor-icon-theme
 	provides = advancely
 	conflicts = advancely-bin
 	conflicts = advancely-git
-	source = git+https://github.com/DFA-G/Advancely#tag=v1.0.15
-	source = launcher::https://raw.githubusercontent.com/DFA-G/Advancely/refs/tags/v1.0.15/packaging/linux/launcher
-	source = advancely.png::https://raw.githubusercontent.com/DFA-G/Advancely/refs/tags/v1.0.15/packaging/linux/advancely.png
-	source = advancely.desktop::https://raw.githubusercontent.com/DFA-G/Advancely/refs/tags/v1.0.15/packaging/linux/advancely.desktop
-	source = LICENSE::https://raw.githubusercontent.com/DFA-G/Advancely/refs/tags/v1.0.15/LICENSES.txt
-	sha256sums = 61feacc891b8b390dd13e74fcbadf087620c5a781c6113cf52aed3fef5b9b75f
-	sha256sums = 111527682cf029c30fd09250c494cee576b88b487e29fe0f6a179cc82d378133
-	sha256sums = 0bb1507a70774b586b1c40783e48653df9fd715b624196b87a106dbd347fda3c
-	sha256sums = 8bb22822a63455292196566532618d1aca55b929de1ec5405c5db2d08f83421e
-	sha256sums = f14cf9ae123aa2d5bd975b8766adba9dbe41ac736ff7022b27349cd795970140
+	source = git+https://github.com/LNXSeus/Advancely#tag=v1.0.29
+	sha256sums = SKIP
 
 pkgname = advancely
