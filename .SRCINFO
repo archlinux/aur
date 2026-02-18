@@ -1,12 +1,11 @@
 pkgbase = fluxer-git
 	pkgdesc = A free and open source instant messaging and VoIP platform built for friends, groups, and communities.
 	pkgver = r92.aa4e5b0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fluxer.app/
 	arch = x86_64
 	arch = aarch64
 	license = AGPL-3.0-or-later
-	makedepends = cargo
 	makedepends = git
 	makedepends = librsvg
 	makedepends = nodejs>=20

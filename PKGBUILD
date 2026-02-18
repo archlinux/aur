@@ -2,7 +2,7 @@
 pkgname=fluxer-git
 _pkgname=fluxer
 pkgver=r92.aa4e5b0
-pkgrel=1
+pkgrel=2
 pkgdesc="A free and open source instant messaging and VoIP platform built for friends, groups, and communities. "
 arch=('x86_64' 'aarch64')
 url="https://fluxer.app/"
@@ -17,7 +17,6 @@ depends=(
   hicolor-icon-theme
 )
 makedepends=(
-  'cargo'
   'git'
   'librsvg'
   "nodejs>=$_nodever"
@@ -43,12 +42,9 @@ pkgver() {
 }
 
 prepare() {
-    #export RUSTUP_TOOLCHAIN=stable
     sed "s/@ELECTRON@/electron$_electronver/" $_pkgname.sh.in > $_pkgname.sh
 
-	cd "$_pkgname/fluxer_app"
-    # TODO is there a way to set the store-dir via
-    # environment variable?
+    cd "$_pkgname/fluxer_app"
     echo "store-dir=${srcdir}/pnpm-store" > .npmrc
 
     for resolution in "${_resolutions[@]}" ; do
@@ -65,7 +61,7 @@ build() {
       -c.electronDist=/usr/lib/electron$_electronver
     )
 
-	cd "$_pkgname/fluxer_app"
+    cd "$_pkgname/fluxer_app"
     export NODE_ENV=production
     pnpm electron:compile
     pnpm exec electron-builder --config electron-builder.config.cjs ${electron_builder_options[@]}
