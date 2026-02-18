@@ -2,7 +2,7 @@ pkgbase = cyberlete-bin
 	pkgdesc = Anti-cheat desktop client with Cyberlete Cloud node support
 	pkgver = 0.1.27
 	pkgrel = 1
-	url = https://cyberlete.com
+	url = https://cyberlete.net
 	arch = x86_64
 	license = LicenseRef-Cyberlete-Proprietary
 	depends = java-runtime>=17

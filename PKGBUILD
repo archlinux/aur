@@ -4,7 +4,7 @@ pkgver=0.1.27
 pkgrel=1
 pkgdesc="Anti-cheat desktop client with Cyberlete Cloud node support"
 arch=('x86_64')
-url="https://cyberlete.com"
+url="https://cyberlete.net"
 license=('LicenseRef-Cyberlete-Proprietary')
 depends=('java-runtime>=17')
 optdepends=('libappindicator-gtk3: system tray support')
