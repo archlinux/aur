@@ -3,7 +3,7 @@
 pkgname=gawk-json
 _project=gawkextlib
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GAWK extension - interface to RapidJSON for reading/writing JSON"
 arch=('x86_64' 'aarch64')
 url="https://sourceforge.net/projects/gawkextlib/"
