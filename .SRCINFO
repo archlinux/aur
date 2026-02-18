@@ -1,0 +1,14 @@
+pkgbase = waybar-claude-usage
+	pkgdesc = Waybar widget displaying Claude AI subscription usage with colored progress bars
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/mryll/waybar-claude-usage
+	arch = any
+	license = MIT
+	depends = waybar
+	depends = curl
+	depends = jq
+	source = waybar-claude-usage-0.0.1.tar.gz::https://github.com/mryll/waybar-claude-usage/archive/refs/tags/v0.0.1.tar.gz
+	sha256sums = 7cac945c5e7458d6624718ffe149e17e177d2141bcd4bfe7fef41066f1469627
+
+pkgname = waybar-claude-usage
