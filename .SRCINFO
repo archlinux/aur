@@ -1,15 +1,17 @@
 pkgbase = tunsafe-git
 	pkgdesc = High performance and secure VPN client that uses the WireGuard protocol
 	pkgver = 1.4.r79.g85a871c
-	pkgrel = 2
+	pkgrel = 3
 	url = https://tunsafe.com/
 	arch = i686
 	arch = x86_64
-	license = AGPL-1.0
+	license = AGPL-1.0-or-later
 	license = BSD-3-Clause
 	license = OpenSSL
 	makedepends = git
-	depends = gcc-libs
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
 	provides = tunsafe=1.4.r79.g85a871c
 	conflicts = tunsafe
 	source = git+https://github.com/TunSafe/TunSafe.git
