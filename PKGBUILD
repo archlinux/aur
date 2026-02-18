@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=softhsm-git
-pkgver=2.6.1.r132.gf4661af
+pkgver=2.7.0.r0.g13e6e86
 pkgrel=1
 pkgdesc="Software PKCS#11 store"
 arch=('i686' 'x86_64')
 url="https://www.opendnssec.org/softhsm/"
-license=('BSD')
-depends=('gcc-libs' 'botan' 'openssl' 'p11-kit')
+license=('BSD-2-Clause')
+depends=('glibc' 'libgcc' 'libstdc++' 'botan' 'openssl' 'p11-kit')
 makedepends=('git' 'sqlite')
 checkdepends=('cppunit')
 provides=("softhsm=$pkgver")
@@ -22,7 +22,7 @@ pkgver() {
   cd "SoftHSMv2"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
