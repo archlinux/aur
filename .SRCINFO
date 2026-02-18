@@ -2,13 +2,13 @@ pkgbase = tictactoe-git
 	pkgdesc = Play tictactoe on terminal with a bot
 	pkgver = r15.28bbe84
 	pkgrel = 1
-	url = https://www.github.com/weebcyberpunk/tictactoe
+	url = https://github.com/weebcyberpunk/tictactoe
 	arch = x86_64
 	license = MIT
 	makedepends = gcc
 	makedepends = make
 	provides = tictactoe
-	source = git+https://www.github.com/weebcyberpunk/tictactoe
+	source = git+https://github.com/weebcyberpunk/tictactoe
 	md5sums = SKIP
 
 pkgname = tictactoe-git
