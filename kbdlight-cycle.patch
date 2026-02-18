@@ -1,0 +1,172 @@
+--- a/toshiba_acpi.c	2026-02-18 09:49:05.148235764 +0100
++++ b/toshiba_acpi.c	2026-02-17 23:40:37.221408563 +0100
+@@ -609,19 +609,21 @@
+ {
+ 	struct toshiba_acpi_dev *dev = container_of(cdev,
+ 			struct toshiba_acpi_dev, kbd_led);
+-	u32 result;
+-	u32 state;
++	u32 time;
+ 
+-	/* Check the keyboard backlight state */
+-	result = hci_read(dev, HCI_KBD_ILLUMINATION, &state);
+-	if (result == TOS_FAILURE) {
+-		pr_err("ACPI call to get the keyboard backlight failed\n");
++	/* Read the current keyboard backlight mode */
++	if (toshiba_kbd_illum_status_get(dev, &time) < 0)
+ 		return LED_OFF;
+-	} else if (result != TOS_SUCCESS) {
+-		return LED_OFF;
+-	}
+ 
+-	return state ? LED_FULL : LED_OFF;
++	switch (time & SCI_KBD_MODE_MASK) {
++	case SCI_KBD_MODE_ON:
++		return 2;
++	case SCI_KBD_MODE_AUTO:
++		return 1;
++	case SCI_KBD_MODE_OFF:
++	default:
++		return 0;
++	}
+ }
+ 
+ static void toshiba_kbd_backlight_set(struct led_classdev *cdev,
+@@ -629,14 +631,33 @@
+ {
+ 	struct toshiba_acpi_dev *dev = container_of(cdev,
+ 			struct toshiba_acpi_dev, kbd_led);
+-	u32 result;
+-	u32 state;
++	u32 time;
++	int mode;
+ 
+-	/* Set the keyboard backlight state */
+-	state = brightness ? 1 : 0;
+-	result = hci_write(dev, HCI_KBD_ILLUMINATION, state);
+-	if (result == TOS_FAILURE)
+-		pr_err("ACPI call to set KBD Illumination mode failed\n");
++	/* Map brightness level to keyboard backlight mode */
++	switch (brightness) {
++	case 2:
++		mode = SCI_KBD_MODE_ON;
++		break;
++	case 1:
++		mode = SCI_KBD_MODE_AUTO;
++		break;
++	case 0:
++	default:
++		mode = SCI_KBD_MODE_OFF;
++		break;
++	}
++
++	if (dev->kbd_mode == mode)
++		return;
++
++	time = dev->kbd_time << HCI_MISC_SHIFT;
++	time |= mode;
++
++	if (toshiba_kbd_illum_status_set(dev, time) == 0) {
++		dev->kbd_mode = mode;
++		toshiba_acpi->kbd_mode = mode;
++	}
+ }
+ 
+ /* TouchPad support */
+@@ -2496,11 +2517,10 @@
+ 		pr_err("Unable to update sysfs entries\n");
+ 
+ 	/* Notify LED subsystem about keyboard backlight change */
+-	if (toshiba_acpi->kbd_type == 2 &&
+-	    toshiba_acpi->kbd_mode != SCI_KBD_MODE_AUTO)
++	if (toshiba_acpi->kbd_type == 2)
+ 		led_classdev_notify_brightness_hw_changed(&toshiba_acpi->kbd_led,
+-				(toshiba_acpi->kbd_mode == SCI_KBD_MODE_ON) ?
+-				LED_FULL : LED_OFF);
++				(toshiba_acpi->kbd_mode == SCI_KBD_MODE_ON) ? 2 :
++				(toshiba_acpi->kbd_mode == SCI_KBD_MODE_AUTO) ? 1 : 0);
+ 
+ 	/* Emulate the keyboard backlight event */
+ 	acpi_bus_generate_netlink_event(toshiba_acpi->acpi_dev->pnp.device_class,
+@@ -2802,6 +2822,45 @@
+ 	return value;
+ }
+ 
++static void toshiba_kbd_backlight_cycle(struct toshiba_acpi_dev *dev)
++{
++	u32 time;
++	int new_mode, new_brightness;
++
++	/* Only for type 2 keyboards with illumination support */
++	if (!dev->kbd_illum_supported || dev->kbd_type != 2)
++		return;
++
++	/* Cycle: AUTO (0x2) -> ON (0x8) -> OFF (0x10) -> AUTO */
++	switch (dev->kbd_mode & SCI_KBD_MODE_MASK) {
++	case SCI_KBD_MODE_AUTO:
++		new_mode = SCI_KBD_MODE_ON;
++		new_brightness = 2;
++		break;
++	case SCI_KBD_MODE_ON:
++		new_mode = SCI_KBD_MODE_OFF;
++		new_brightness = 0;
++		break;
++	case SCI_KBD_MODE_OFF:
++	default:
++		new_mode = SCI_KBD_MODE_AUTO;
++		new_brightness = 1;
++		break;
++	}
++
++	time = dev->kbd_time << HCI_MISC_SHIFT;
++	time |= new_mode;
++
++	if (toshiba_kbd_illum_status_set(dev, time) == 0) {
++		dev->kbd_mode = new_mode;
++		toshiba_acpi->kbd_mode = new_mode;
++
++		/* Notify LED subsystem of hardware-initiated change */
++		led_classdev_notify_brightness_hw_changed(&dev->kbd_led,
++				new_brightness);
++	}
++}
++
+ static void toshiba_acpi_report_hotkey(struct toshiba_acpi_dev *dev,
+ 				       int scancode)
+ {
+@@ -2812,6 +2871,12 @@
+ 	if (scancode & 0x80)
+ 		return;
+ 
++	/* Intercept kbd backlight key: cycle modes instead of input event */
++	if (scancode == 0x12c) {
++		toshiba_kbd_backlight_cycle(dev);
++		return;
++	}
++
+ 	if (!sparse_keymap_report_event(dev->hotkey_dev, scancode, 1, true))
+ 		pr_info("Unknown key %x\n", scancode);
+ }
+@@ -3390,7 +3455,7 @@
+ 	    (dev->kbd_mode == SCI_KBD_MODE_FNZ || dev->kbd_type == 2)) {
+ 		dev->kbd_led.name = "toshiba::kbd_backlight";
+ 		dev->kbd_led.flags = LED_BRIGHT_HW_CHANGED;
+-		dev->kbd_led.max_brightness = 1;
++		dev->kbd_led.max_brightness = 2;
+ 		dev->kbd_led.brightness_set = toshiba_kbd_backlight_set;
+ 		dev->kbd_led.brightness_get = toshiba_kbd_backlight_get;
+ 		led_classdev_register(&dev->acpi_dev->dev, &dev->kbd_led);
+@@ -3533,10 +3598,10 @@
+ 				       &toshiba_attr_group))
+ 			pr_err("Unable to update sysfs entries\n");
+ 		/* Notify LED subsystem about keyboard backlight change */
+-		if (dev->kbd_type == 2 && dev->kbd_mode != SCI_KBD_MODE_AUTO)
++		if (dev->kbd_type == 2)
+ 			led_classdev_notify_brightness_hw_changed(&dev->kbd_led,
+-					(dev->kbd_mode == SCI_KBD_MODE_ON) ?
+-					LED_FULL : LED_OFF);
++					(dev->kbd_mode == SCI_KBD_MODE_ON) ? 2 :
++					(dev->kbd_mode == SCI_KBD_MODE_AUTO) ? 1 : 0);
+ 		break;
+ 	case 0x8e: /* Power button pressed */
+ 		break;
