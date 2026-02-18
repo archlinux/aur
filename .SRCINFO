@@ -1,18 +1,19 @@
 pkgbase = material-kwin-decoration-git
 	pkgdesc = Material-ish window decoration for KWin, with LIM (Locally Integrated Menu) support
 	pkgver = r215.38718de
-	pkgrel = 3.3
+	pkgrel = 3.4
 	url = https://github.com/guiodic/material-decoration
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	makedepends = git
-	makedepends = kwin
-	makedepends = kwin-x11
+	makedepends = kwin>=6.5.0
+	makedepends = kwin-x11>=6.5.0
 	depends = kcmutils
-	depends = kdecoration>=6.4.0
-	depends = kwin-x11>=6.4.0
+	depends = kdecoration>=6.5.0
+	depends = kwin>=6.5.0
+	depends = kwin-x11>=6.5.0
 	depends = plasma-x11-session
 	optdepends = appmenu-gtk-module: gtk app support
 	optdepends = kwin-minimize2tray-git: Minimize to tray on Close long press
