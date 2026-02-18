@@ -12,5 +12,5 @@ sha256sums=('cf2251ec59fd45797f80051c432513abf6cce04e8fa4b98ace61dd3aefef02ec')
 
 package() {
     cd "${srcdir}"
-    tar -xf "${pkgname}-${pkgver}.pacman" -C "${pkgdir}/"
+    tar -xf "${pkgname}-${pkgver}.pacman" -C "${pkgdir}/" --exclude='.MTREE' --exclude='.PKGINFO' --exclude='.INSTALL'
 }
