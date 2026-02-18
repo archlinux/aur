@@ -2,7 +2,7 @@
 _pkgbase=breezy-desktop
 pkgname="${_pkgbase}"-kwin-git
 pkgver=2.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Breezy KWin - XR desktop"
 arch=('x86_64' 'aarch64')
 url="https://github.com/wheaney/breezy-desktop"
@@ -38,7 +38,7 @@ depends=(
     'python'
     'xr-driver-git'
 )
-source=("git+${url}#commit=9bb523d2116545faeab842e3336ba6655638d238")
+source=("git+${url}#commit=e52b7f5bb0d932d2d65891588f022d1dc4775117")
 md5sums=(SKIP)
 
 pkgver() {
@@ -91,8 +91,4 @@ package() {
     cd "${srcdir}/${_pkgbase}/kwin"
     
     DESTDIR="${pkgdir}" cmake --install build
-    
-    # Install scripts
-    install -Dm755 "${srcdir}/${_pkgbase}/kwin/bin/breezy_kwin_uninstall" \
-        "${pkgdir}/usr/bin/breezy_kwin_uninstall"
 }
