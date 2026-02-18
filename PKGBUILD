@@ -1,7 +1,7 @@
 # Maintainer: Muhammad Dhiyaul Atha <mdhiyaulatha@gmail.com>
 
 pkgname=jadwal-shalat
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="CLI tool profesional untuk menampilkan jadwal shalat otomatis berdasarkan lokasi IP atau manual."
 arch=('any')

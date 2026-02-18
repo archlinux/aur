@@ -1,6 +1,6 @@
 pkgbase = jadwal-shalat
 	pkgdesc = CLI tool profesional untuk menampilkan jadwal shalat otomatis berdasarkan lokasi IP atau manual.
-	pkgver = 1.0.1
+	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://github.com/Bangkah/jadwal-shalat
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = jadwal-shalat
 	depends = python
 	depends = python-requests
 	optdepends = python-tzdata: timezone database support
-	source = jadwal-shalat-1.0.1.tar.gz::https://github.com/Bangkah/jadwal-shalat/archive/refs/tags/v1.0.1.tar.gz
+	source = jadwal-shalat-1.0.9.tar.gz::https://github.com/Bangkah/jadwal-shalat/archive/refs/tags/v1.0.9.tar.gz
 	sha256sums = SKIP
 
 pkgname = jadwal-shalat
