@@ -1,7 +1,7 @@
 # Maintainer: GG weebcyberpunk@gmail.com
 pkgname=tictactoe-git
-pkgver=1.0.1
-pkgrel=2
+pkgver=r15.28bbe84
+pkgrel=1
 pkgdesc="The stupid terminal based tictactoe game"
 arch=("x86_64")
 url="https://www.github.com/weebcyberpunk/tictactoe"
@@ -9,6 +9,11 @@ license=('MIT')
 provides=(tictactoe)
 source=("git+$url")
 md5sums=('SKIP')
+
+pkgver() {
+    cd "tictactoe"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
     cd "tictactoe"
