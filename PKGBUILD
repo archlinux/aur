@@ -12,7 +12,7 @@ optdepends=()
 provides=('docan')
 conflicts=('docan')
 options=('!strip')
-source=("docan-unstable-${pkgver}.zip::https://github.com/justacalico/Openlyst-more-builds/releases/download/build-33/docan-4.0.0-2026-02-18-linux-x64.zip")
+source=("docan-unstable-${pkgver}.zip::https://github.com/justacalico/Openlyst-more-builds/releases/download/build-35/docan-4.0.0-2026-02-18-linux-x64.zip")
 sha256sums=('SKIP')
 
 package() {
