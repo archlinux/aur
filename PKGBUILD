@@ -1,9 +1,10 @@
 # Maintainer: BitYoungjae <bityoungjae@gmail.com>
 pkgname=chalkak
-pkgver=0.3.1
-pkgrel=1
+pkgver=0.4.1
+pkgrel=2
 pkgdesc="Hyprland screenshot preview and editor utility"
 arch=('x86_64' 'aarch64')
+options=(!lto)
 url="https://github.com/bityoungjae/chalkak"
 _srcname="ChalKak"
 license=('MIT' 'Apache-2.0')
@@ -11,7 +12,7 @@ depends=('gtk4' 'hyprland' 'grim' 'slurp' 'wl-clipboard')
 makedepends=('rust' 'cargo' 'pkgconf' 'gtk4' 'cmake' 'clang' 'git')
 optdepends=('chalkak-ocr-models: OCR text recognition support')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5d9df4145a4f141549139f31c5620e4cbd951ec93224364cd9f46dbd85cb3a87')
+sha256sums=('a38d1f33b0c712bf11a5c44641f70dfdded212cda1c65cefcc52630ff914ccb8')
 
 build() {
   cd "$_srcname-$pkgver"
