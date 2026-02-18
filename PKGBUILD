@@ -20,7 +20,7 @@ depends=(
 )
 makedepends=(
   'clang'
-  'dotnet-sdk-9.0'
+  'dotnet-sdk-10.0'
   'git'
   'libappindicator-gtk3'
   'librsvg'
@@ -46,12 +46,18 @@ pkgver() {
 
 prepare() {
   cd PuduLauncher
+  git submodule update --init --recursive
+  # `generate-ts` runs `dotnet build -c Debug`; keep AOT/trim for release publish only.
+  sed -i "s|<PublishAot>true</PublishAot>|<PublishAot Condition=\"'\\\$(Configuration)' == 'Release'\">true</PublishAot>|" src-dotnet/PuduLauncher/PuduLauncher.csproj
+  sed -i "s|<PublishTrimmed>true</PublishTrimmed>|<PublishTrimmed Condition=\"'\\\$(Configuration)' == 'Release'\">true</PublishTrimmed>|" src-dotnet/PuduLauncher/PuduLauncher.csproj
   npm ci
 }
 
 build() {
   cd PuduLauncher
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
+  export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
+  export AllowMissingPrunePackageData=true
   npx tauri build -b deb
 }
 
