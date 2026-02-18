@@ -1,0 +1,22 @@
+From 9dd66da8c22f7d77e4ce3608f45c34ed81035b48 Mon Sep 17 00:00:00 2001
+From: Idesmi <kilgore.trout@idesmi.eu>
+Date: Wed, 18 Feb 2026 11:37:00 +0100
+Subject: [PATCH] Remove org.kde.plasma.private.appmenu
+
+Plasma 6.6 AppMenu has been ported to plasma_add_applet
+---
+ contents/ui/main.qml | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/contents/ui/main.qml b/contents/ui/main.qml
+index 3107699..fe66e03 100644
+--- a/contents/ui/main.qml
++++ b/contents/ui/main.qml
+@@ -9,7 +9,6 @@ import org.kde.taskmanager       as TaskManager
+ import org.kde.kirigami          as Kirigami
+ import org.kde.activities        as Activities
+ import "../tools/Tools.js"       as Tools
+-import org.kde.plasma.private.appmenu 1.0 as AppMenuPrivate
+ 
+ PlasmoidItem {
+     id: root
