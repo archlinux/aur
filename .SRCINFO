@@ -1,20 +1,23 @@
 pkgbase = haskell-directory-ospath-streaming
 	pkgdesc = Stream directory entries in constant memory in vanilla IO
-	pkgver = 0.2.2
-	pkgrel = 2
+	pkgver = 0.3
+	pkgrel = 1
 	url = https://github.com/sergv/directory-ospath-streaming
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = ghc
+	makedepends = haskell-random
+	makedepends = haskell-tasty-hunit
 	depends = ghc-libs
 	depends = haskell-filepath>=1.4.100
+	depends = haskell-filepath<1.5
 	depends = haskell-directory>=1.3.8
 	depends = haskell-unix>=2.8
-	depends = haskell-atomic-counter
+	depends = haskell-atomic-counter>=0.1.2
 	depends = haskell-os-string
-	source = https://hackage.haskell.org/packages/archive/directory-ospath-streaming/0.2.2/directory-ospath-streaming-0.2.2.tar.gz
+	source = https://hackage.haskell.org/packages/archive/directory-ospath-streaming/0.3/directory-ospath-streaming-0.3.tar.gz
 	source = Setup.hs
-	sha256sums = 1ade8fbee13db15e8d22a1ecdca54794617cabc69911b51d46a65e12f4554ef7
+	sha256sums = 7e86ee4f4d17c98f4943ea3e224448563870123e19a5d0d2ab4b874ef5f10f42
 	sha256sums = 5066653559d4d6134b022d66a634a17fdcf8db35d28b447e581fec284afa4689
 
 pkgname = haskell-directory-ospath-streaming

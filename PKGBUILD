@@ -2,22 +2,22 @@
 
 _hkgname=directory-ospath-streaming
 pkgname=haskell-directory-ospath-streaming
-pkgver=0.2.2
-pkgrel=2
+pkgver=0.3
+pkgrel=1
 pkgdesc="Stream directory entries in constant memory in vanilla IO"
 url="https://github.com/sergv/directory-ospath-streaming"
 license=("Apache-2.0")
 arch=('x86_64')
 depends=('ghc-libs'
-         'haskell-filepath>=1.4.100'
+         'haskell-filepath>=1.4.100' 'haskell-filepath<1.5'
          'haskell-directory>=1.3.8'
          'haskell-unix>=2.8'
-         'haskell-atomic-counter' 'haskell-os-string')
-#makedepends=('ghc' 'haskell-random' 'haskell-tasty' 'haskell-tasty-hunit')
-makedepends=('ghc')
+         'haskell-atomic-counter>=0.1.2' 'haskell-os-string')
+makedepends=(ghc
+             haskell-random haskell-tasty-hunit)
 source=("https://hackage.haskell.org/packages/archive/$_hkgname/$pkgver/$_hkgname-$pkgver.tar.gz"
        Setup.hs)
-sha256sums=('1ade8fbee13db15e8d22a1ecdca54794617cabc69911b51d46a65e12f4554ef7'
+sha256sums=('7e86ee4f4d17c98f4943ea3e224448563870123e19a5d0d2ab4b874ef5f10f42'
             '5066653559d4d6134b022d66a634a17fdcf8db35d28b447e581fec284afa4689')
 
 prepare() {
@@ -34,7 +34,7 @@ build() {
     --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid \
     --ghc-option=-optl-Wl\,-z\,relro\,-z\,now \
     --ghc-option='-pie' \
-    -fos-string
+    -f-os-string
 
   runhaskell Setup build
   runhaskell Setup register --gen-script
