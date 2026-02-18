@@ -1,24 +1,27 @@
 # Maintainer: Elia Elmas <eliaelmas at proton dot me>
 _pkgname=onthespot
 pkgname="$_pkgname-appimage"
-pkgver=1.2.1beta
+pkgver=1.2.2beta
 pkgrel=1
 pkgdesc="A GUI music downloader for Apple Music, Bandcamp, Deezer, Qobuz, Spotify, Tidal, and Youtube"
 arch=('x86_64')
 url="https://github.com/justin025/onthespot"
 license=('GPL-2.0-only')
-depends=('glibc' 'zlib' 'fuse2' 'hicolor-icon-theme')
+depends=('glibc' 'zlib' 'libarchive' 'fuse2' 'hicolor-icon-theme')
 options=(!strip)
 optdepends=()
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-_appimage="${pkgname}-${pkgver}.AppImage"
-source=("${_appimage}::https://github.com/justin025/onthespot/releases/download/v${pkgver}/OnTheSpot-x86_64.AppImage" "https://raw.githubusercontent.com/justin025/onthespot/refs/tags/v${pkgver}/LICENSE")
-noextract=("${_appimage}")
-md5sums=('e0e63b71488f0cc7c782f33215ea3a13' '267d14867132fa03d20ea4c695c31e8c')
+_appimagezip="${pkgname}-${pkgver}.AppImage.zip"
+_appimage="OnTheSpot-x86_64.AppImage"
+source=("${_appimagezip}::https://github.com/justin025/onthespot/releases/download/v${pkgver}/OnTheSpot-x86_64.AppImage.zip" "https://raw.githubusercontent.com/justin025/onthespot/refs/tags/v${pkgver}/LICENSE")
+noextract=("${_appimagezip}")
+md5sums=('2f230633ab3fc2dd43aa48841a588792' '267d14867132fa03d20ea4c695c31e8c')
 
 
 prepare() {
+    # Extract the AppImage
+    bsdtar -xf "${_appimagezip}"   
     # Make the AppImage executable
     chmod +x "${_appimage}"
     # Extract the relavent files for the build
