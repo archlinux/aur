@@ -2,7 +2,7 @@
 pkgname=suspiro
 pkgver=0.1.68
 pkgrel=1
-pkgdesc="Keyboard grab and re-inject via virtual keyboard"
+pkgdesc="Push-to-talk voice typing daemon"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/jorgeecardona/suspiro"
 license=('MIT')
