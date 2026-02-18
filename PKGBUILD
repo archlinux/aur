@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=upx-git
-pkgver=5.0.1.r20.ga7940fd1
+pkgver=5.1.0.r23.gc201a3bc
 pkgrel=1
 pkgdesc="A free, portable, extendable, high-performance executable packer for several executable formats"
 arch=('i686' 'x86_64')
 url="https://upx.github.io/"
 license=('GPL-2.0-or-later')
-depends=('gcc-libs')
+depends=('glibc' 'libgcc' 'libstdc++')
 makedepends=('git' 'cmake')
 provides=("upx=$pkgver")
 conflicts=('upx')
@@ -25,7 +25,7 @@ pkgver() {
   cd "upx"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
