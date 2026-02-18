@@ -2,7 +2,7 @@
 
 _npmname=web-shared-folder
 pkgname=nodejs-$_npmname
-pkgver=4.1.1
+pkgver=4.2.1
 pkgrel=1
 pkgdesc='HTTP server for sharing files and folders via a web interface'
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
-sha256sums=('64454bbef3a4a92d0e2545b76ad3746a632f2fa37f015d9608e8eb520986caf9')
+sha256sums=('b009c9439f2d2e273cda4f928637813ce614a60134a0b1589a5293f02a1eb949')
 noextract=("$_npmname-$pkgver.tgz")
 
 package() {
