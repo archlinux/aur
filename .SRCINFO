@@ -1,0 +1,14 @@
+pkgbase = liboprf
+	pkgdesc = library providing OPRF and Threshold OPRF based on libsodium
+	pkgver = 0.9.3
+	pkgrel = 1
+	arch = x86_64
+	license = LGPL-3.0-or-later
+	depends = libsodium
+	source = liboprf-0.9.3.tar.gz::https://github.com/stef/liboprf/archive/refs/tags/v0.9.3.tar.gz
+	source = https://github.com/stef/liboprf/releases/download/v0.9.3/liboprf-0.9.3.tar.gz.asc
+	validpgpkeys = AABDE16CB6AF5CD10A28DFF2970DEB6694D50988
+	b2sums = 628a6e9549ba688ade57b8b07a9cb488a3e750aabef0619141f16f98c7bf99d56185e0f9daa3b11ca55407e1549af9c932940518aa3dc6eb6020334aefcfdb25
+	b2sums = SKIP
+
+pkgname = liboprf
