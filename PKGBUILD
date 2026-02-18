@@ -2,10 +2,10 @@
 _appname=freeshow
 pkgname=freeshow-electron-bin
 _pkgname=FreeShow
-pkgver=1.5.6
-_tag=v1.5.6
-_assetver=1.5.6
-_assetname=FreeShow-1.5.6-amd64.deb
+pkgver=1.5.8
+_tag=v1.5.8
+_assetver=1.5.8
+_assetname=FreeShow-1.5.8-amd64.deb
 _electronversion=37
 pkgrel=1
 pkgdesc="FreeShow with system-wide Electron"
@@ -42,10 +42,18 @@ source=(
 )
 sha256sums=(
     'e08b8699c47bfa38365f7194d2dce675b3f36ef36235be993579db8647a8b307'
-    '1fa1607ce5ba5f4d7f272ce788ae92eddc76d424a5228310daba13b77a034d5e'
+    '00a5451cb53c986ca19b2551c2b5c910f99448c9d268cc249f4ba56dd5d57f09'
 )
 _get_electron_version() {
-    _elec_ver="$(strings "${srcdir}/opt/FreeShow/FreeShow" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    _binary_path="${srcdir}/opt/FreeShow/FreeShow"
+    if [[ ! -f "${_binary_path}" ]]; then
+        _binary_path="${srcdir}/opt/FreeShow/freeshow"
+    fi
+    if [[ ! -f "${_binary_path}" ]]; then
+        echo "Unable to find FreeShow binary to detect Electron version"
+        return 1
+    fi
+    _elec_ver="$(strings "${_binary_path}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 
