@@ -1,7 +1,7 @@
 # Maintainer: Lenar Imamutdinov <lenar dot imamutdinov at gmail dot com>
 _pkgname=wlcontrol
 pkgname=${_pkgname}-git
-pkgver=0.1.0.r2.g14bc315
+pkgver=0.1.0.r0.g530431e
 pkgrel=1
 pkgdesc="WiFi and Bluetooth control app, built with GTK4/libadwaita"
 arch=('x86_64')
