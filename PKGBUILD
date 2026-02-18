@@ -3,7 +3,7 @@
 # Version is substituted by .github/workflows/aur-publish.yml
 
 pkgname=omni-screen-bin
-pkgver=1.16.0
+pkgver=1.16.1
 pkgrel=1
 pkgdesc="Omni Screen - multi-platform stream and link viewer"
 arch=('x86_64')
