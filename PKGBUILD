@@ -3,7 +3,7 @@
 pkgbase=python-spherical_geometry
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.3.3
+pkgver=1.3.5
 pkgrel=1
 pkgdesc="Python based tools for spherical geometry"
 arch=('i686' 'x86_64')
@@ -13,16 +13,19 @@ makedepends=('python-setuptools-scm'
              'python-build'
              'python-installer'
              'qd>=2.3.24'
-             'python-numpy'
+             'python-numpy>=2.0.0'
              'python-sphinx-automodapi'
-             'python-numpydoc')  # wheel required by new setuptools
+             'python-numpydoc'
+             'python-astropy')  # wheel required by new setuptools
+# conftest.py
 checkdepends=('python-pytest-astropy-header'
-              'python-astropy')
+#             'python-pytest-xdist'
+              'python-gwcs')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'fix_typo.patch'
         'fix_doc_warning.patch'
         'revert-inside-png-path.patch')
-md5sums=('61d6418507c3dde2534fd3d71180d276'
+md5sums=('e62e462e4b61ff239ba67c493a9f7453'
          '376f76ebdf3c52048a113c386c091210'
          'fed5395d45a2275ccd5e0d63956ecddf'
          'ad61482f989d4df861753edc5af0f920')
@@ -52,7 +55,8 @@ check() {
 
 #   cp "build/lib.linux-${CARCH}-cpython-$(get_pyver)/${_pyname}/math_util.cpython-$(get_pyver)-${CARCH}-linux-gnu.so" "${_pyname}"
     mv {,_}${_pyname}
-    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count #
+    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
+#   PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver)" pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 # "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
 }
 
 package_python-spherical_geometry() {
