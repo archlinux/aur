@@ -1,7 +1,7 @@
 # Maintainer: phil-gru <gphilipp23@gmail.com>                                     
 # Contributor: elementh <hello@lucasmarino.me>
 pkgname=anytype-bin
-pkgver=0.54.1
+pkgver=0.54.2
 pkgrel=1
 pkgdesc="Operating environment for the new internet. Anytype is a next generation software that breaks down barriers between applications, gives back privacy and data ownership to users."
 arch=('x86_64')
@@ -20,8 +20,8 @@ source=(
     "anytype.png"
     )
 noextract=("${_appimage}")
-sha256sums=('4d65f1678798a3056334cbbb390079e89881d0265811c820c881ea1f4e7ba0be'
-            '50f7a0ac0943027dd49759a87b2c1c373b4b2037bb2ad1c5c865efe6286acd21'
+sha256sums=('8448b85bdd6363086c7a8556c3d4ca68a45322ee783b734e8cf268dc228d7d1f'
+            '917892e48961af8cf29fc0b23a73035ff3f4fca5a57cfb44424117979afa7630'
             '41dede6dc49b7fc9beebc92437f8d0257f209f149e909b570a877cc1d7463251')
 
 package() {
