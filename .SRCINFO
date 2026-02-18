@@ -1,15 +1,17 @@
 pkgbase = ragel-git
 	pkgdesc = Compile executable finite state machines from regular languages
-	pkgver = 7.0.4.r32.g65540b65
-	pkgrel = 2
+	pkgver = 7.0.4.r45.g1344a699
+	pkgrel = 1
 	url = https://www.colm.net/open-source/ragel/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	depends = gcc-libs
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
 	depends = colm
-	provides = ragel=7.0.4.r32.g65540b65
+	provides = ragel=7.0.4.r45.g1344a699
 	conflicts = ragel
 	options = staticlibs
 	source = git+https://github.com/adrian-thurston/ragel.git
