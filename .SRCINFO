@@ -12,8 +12,8 @@ pkgbase = vop-bin
 	source = LICENSE-0.2.5::https://github.com/NodeSpy/vop/raw/v0.2.5/LICENSE
 	sha256sums = 6a393bdfa6c20c218bf73d378cf2e5b0fbf0e95c2a9644baf5714dd9d330dc64
 	source_x86_64 = https://github.com/NodeSpy/vop/releases/download/v0.2.5/vop-linux-amd64
-	sha256sums_x86_64 = 735801511959617c0e5f3d980a6f705e44944a1d910de29f96c44703a166c9ce
+	sha256sums_x86_64 = 717898e4c8ec3e1b123dc0531e5743255d319709532fc67f1a2265865f37a1e5
 	source_aarch64 = https://github.com/NodeSpy/vop/releases/download/v0.2.5/vop-linux-arm64
-	sha256sums_aarch64 = 34981a318f9cc2214eeabbdc74749fa363afd5b2ab64eca20a8262b07eb7fa4a
+	sha256sums_aarch64 = 4d03d7c229d99976a123f311668f9e33a40bd93fbff1b4fbf8ee77c99b17891f
 
 pkgname = vop-bin
