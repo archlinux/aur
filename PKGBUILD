@@ -1,10 +1,10 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
+# Maintainer: Timofey Brukhanchik <asyncbtd@gmail.com>
 # Contributor: ssv1982 <ssv1982@gmail.com>
 
 pkgname=kerio-control-vpnclient
-pkgver=9.4.2.7290
+pkgver=9.4.5.8629
 pkgrel=1
-_pkgver_patch_level='-p1'
 pkgdesc="Kerio Control VPN client for corporate networks."
 arch=('x86_64')
 url="http://www.kerio.com/control"
@@ -12,14 +12,18 @@ license=('custom:EULA')
 options=(!strip)
 install="${pkgname}.install"
 depends=('procps' 'dialog' 'util-linux' 'libxcrypt-compat')
-source=("https://cdn.kerio.com/dwn/control/control-${pkgver%.*}-${pkgver##*.}/kerio-control-vpnclient-${pkgver%.*}-${pkgver##*.}${_pkgver_patch_level}-linux-amd64.deb"
-        "kvpnc"
-        "kvpnc.conf"
-        "kvpnc.service")
-sha256sums=('019e015b72196b5e16c26ff6f2b365b0ddefd158520fbbd0a30a738ca7061b41'
-            'a8729e2515e186f4ba4544cbd140b3bb1fc78c616694433f58944de9e4e72971'
-            '2f15a0d88c9fa915cd9150796638811daec911e6824b8ff5f96f131352d1e74a'
-            'bd8b1aabc31b9b24c4b63ce8099bef111dc84bd4923c77d42e05d3f1704d5c17')
+source=(
+  "https://cdn.kerio.com/dwn/control/control-${pkgver%.*}-${pkgver##*.}/kerio-control-vpnclient-${pkgver%.*}-${pkgver##*.}-linux-amd64.deb"
+  "kvpnc"
+  "kvpnc.conf"
+  "kvpnc.service"
+)
+sha256sums=(
+  'ad4e6d8a78f514ddb3f2eef0ec6115f686b6d6ff9e7a8f0e4175d69f2670f72b'
+  'a8729e2515e186f4ba4544cbd140b3bb1fc78c616694433f58944de9e4e72971'
+  '2f15a0d88c9fa915cd9150796638811daec911e6824b8ff5f96f131352d1e74a'
+  'bd8b1aabc31b9b24c4b63ce8099bef111dc84bd4923c77d42e05d3f1704d5c17'
+)
 
 build() {
   # Get binary sources.
