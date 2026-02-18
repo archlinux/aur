@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
-    printf "0.2.0.r%s.%s" "$(git rev-list --count HEAD 2>/dev/null || echo 0)" "$(git rev-parse --short HEAD 2>/dev/null || echo init)"
+    printf "%s.r%s.%s" "$(grep -m1 '^version' ../vcp-fd-rdd/Cargo.toml | cut -d'"' -f2)" "$(git rev-list --count HEAD 2>/dev/null || echo 0)" "$(git rev-parse --short HEAD 2>/dev/null || echo init)"
 }
 
 prepare() {
