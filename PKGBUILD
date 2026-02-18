@@ -1,12 +1,12 @@
 # Maintainer: Subhamoy Biswas <hey@neosubhamoy.com>
 pkgname=neodlp
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
-pkgdesc="Cross-platform Video/Audio Downloader Desktop App with Modern UI and Browser Integration"
+pkgdesc="Cross-platform Video/Audio Downloader Desktop App based on YT-DLP with Modern UI and Browser Integration"
 arch=('x86_64' 'aarch64')
 url="https://github.com/neosubhamoy/neodlp"
 license=('MIT')
-depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1' 'ffmpeg')
+depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1' 'libappindicator-gtk3' 'ffmpeg')
 makedepends=('curl' 'jq')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
