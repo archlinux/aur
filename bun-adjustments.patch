@@ -1,13 +1,13 @@
 diff --git a/package.json b/package.json
-index bef3ae67b3..24c76babc1 100644
+index 8d77375e8d..4420d1b69a 100644
 --- a/package.json
 +++ b/package.json
 @@ -51,11 +51,11 @@
      "android:install": "cd apps/android && ./gradlew :app:installDebug",
      "android:run": "cd apps/android && ./gradlew :app:installDebug && adb shell am start -n ai.openclaw.android/.MainActivity",
      "android:test": "cd apps/android && ./gradlew :app:testDebugUnitTest",
--    "build": "pnpm canvas:a2ui:bundle && tsdown && pnpm build:plugin-sdk:dts && node --import tsx scripts/write-plugin-sdk-entry-dts.ts && node --import tsx scripts/canvas-a2ui-copy.ts && node --import tsx scripts/copy-hook-metadata.ts && node --import tsx scripts/write-build-info.ts && node --import tsx scripts/write-cli-compat.ts",
-+    "build": "bun run canvas:a2ui:bundle && tsdown && bun run build:plugin-sdk:dts && node --import tsx scripts/write-plugin-sdk-entry-dts.ts && node --import tsx scripts/canvas-a2ui-copy.ts && node --import tsx scripts/copy-hook-metadata.ts && node --import tsx scripts/write-build-info.ts && node --import tsx scripts/write-cli-compat.ts",
+-    "build": "pnpm canvas:a2ui:bundle && tsdown && pnpm build:plugin-sdk:dts && node --import tsx scripts/write-plugin-sdk-entry-dts.ts && node --import tsx scripts/canvas-a2ui-copy.ts && node --import tsx scripts/copy-hook-metadata.ts && node --import tsx scripts/copy-export-html-templates.ts && node --import tsx scripts/write-build-info.ts && node --import tsx scripts/write-cli-compat.ts",
++    "build": "bun run canvas:a2ui:bundle && tsdown && bun run build:plugin-sdk:dts && node --import tsx scripts/write-plugin-sdk-entry-dts.ts && node --import tsx scripts/canvas-a2ui-copy.ts && node --import tsx scripts/copy-hook-metadata.ts && node --import tsx scripts/copy-export-html-templates.ts && node --import tsx scripts/write-build-info.ts && node --import tsx scripts/write-cli-compat.ts",
      "build:plugin-sdk:dts": "tsc -p tsconfig.plugin-sdk.dts.json",
      "canvas:a2ui:bundle": "bash scripts/bundle-a2ui.sh",
 -    "check": "pnpm format:check && pnpm tsgo && pnpm lint",
@@ -27,8 +27,8 @@ index bef3ae67b3..24c76babc1 100644
      "format:docs": "git ls-files 'docs/**/*.md' 'docs/**/*.mdx' 'README.md' | xargs oxfmt --write",
      "format:docs:check": "git ls-files 'docs/**/*.md' 'docs/**/*.mdx' 'README.md' | xargs oxfmt --check",
 @@ -76,10 +76,10 @@
-     "ios:open": "cd apps/ios && xcodegen generate && open OpenClaw.xcodeproj",
-     "ios:run": "bash -lc 'cd apps/ios && xcodegen generate && xcodebuild -project OpenClaw.xcodeproj -scheme OpenClaw -destination \"${IOS_DEST:-platform=iOS Simulator,name=iPhone 17}\" -configuration Debug build && xcrun simctl boot \"${IOS_SIM:-iPhone 17}\" || true && xcrun simctl launch booted ai.openclaw.ios'",
+     "ios:open": "bash -lc './scripts/ios-configure-signing.sh && cd apps/ios && xcodegen generate && open OpenClaw.xcodeproj'",
+     "ios:run": "bash -lc './scripts/ios-configure-signing.sh && cd apps/ios && xcodegen generate && xcodebuild -project OpenClaw.xcodeproj -scheme OpenClaw -destination \"${IOS_DEST:-platform=iOS Simulator,name=iPhone 17}\" -configuration Debug build && xcrun simctl boot \"${IOS_SIM:-iPhone 17}\" || true && xcrun simctl launch booted ai.openclaw.ios'",
      "lint": "oxlint --type-aware",
 -    "lint:all": "pnpm lint && pnpm lint:swift",
 -    "lint:docs": "pnpm dlx markdownlint-cli2",
@@ -69,17 +69,17 @@ index bef3ae67b3..24c76babc1 100644
      "test:macmini": "OPENCLAW_TEST_VM_FORKS=0 OPENCLAW_TEST_PROFILE=serial node scripts/test-parallel.mjs",
 -    "test:ui": "pnpm --dir ui test",
 +    "test:ui": "bun run --dir ui test",
+     "test:voicecall:closedloop": "vitest run extensions/voice-call/src/manager.test.ts extensions/voice-call/src/media-stream.test.ts src/plugins/voice-call.plugin.test.ts --maxWorkers=1",
      "test:watch": "vitest",
-     "tsgo:test": "tsgo -p tsconfig.test.json",
      "tui": "node scripts/run-node.mjs tui",
 @@ -192,6 +192,7 @@
-     "@typescript/native-preview": "7.0.0-dev.20260215.1",
+     "@typescript/native-preview": "7.0.0-dev.20260217.1",
      "@vitest/coverage-v8": "^4.0.18",
      "lit": "^3.3.2",
 +    "node-gyp": "^12.2.0",
      "ollama": "^0.6.3",
-     "oxfmt": "0.32.0",
-     "oxlint": "^1.47.0",
+     "oxfmt": "0.33.0",
+     "oxlint": "^1.48.0",
 @@ -209,7 +210,7 @@
    "engines": {
      "node": ">=22.12.0"
@@ -110,19 +110,31 @@ index aeade1b067..4b35e60b2d 100755
  
  echo "$current_hash" > "$HASH_FILE"
 diff --git a/scripts/ui.js b/scripts/ui.js
-index 5f6c753f4e..f72f99055b 100644
+index dbf624f6cd..5c2c6fc463 100644
 --- a/scripts/ui.js
 +++ b/scripts/ui.js
-@@ -43,6 +43,7 @@ function which(cmd) {
+@@ -46,6 +46,10 @@ function which(cmd) {
  }
  
  function resolveRunner() {
-+  const bun = which("bun"); if (bun) return { cmd: bun, kind: "bun" };
++  const bun = which("bun");
++  if (bun) {
++    return { cmd: bun, kind: "bun" };
++  }
    const pnpm = which("pnpm");
    if (pnpm) {
      return { cmd: pnpm, kind: "pnpm" };
+@@ -168,7 +172,7 @@ export function main(argv = process.argv.slice(2)) {
+ 
+   const runner = resolveRunner();
+   if (!runner) {
+-    process.stderr.write("Missing UI runner: install pnpm, then retry.\n");
++    process.stderr.write("Missing UI runner: install bun or pnpm, then retry.\n");
+     process.exit(1);
+   }
+ 
 diff --git a/src/agents/skills-install.ts b/src/agents/skills-install.ts
-index e6528202ca..c0d4b9d4cf 100644
+index 6bea6b75c7..cf72854038 100644
 --- a/src/agents/skills-install.ts
 +++ b/src/agents/skills-install.ts
 @@ -4,7 +4,7 @@ import type { OpenClawConfig } from "../config/config.js";
@@ -132,9 +144,9 @@ index e6528202ca..c0d4b9d4cf 100644
 -import { resolveUserPath } from "../utils.js";
 +import { resolveUserPath, CONFIG_DIR } from "../utils.js";
  import { installDownloadSpec } from "./skills-install-download.js";
+ import { formatInstallFailureMessage } from "./skills-install-output.js";
  import {
-   hasBinary,
-@@ -408,6 +408,7 @@ async function executeInstallCommand(params: {
+@@ -370,6 +370,7 @@ async function executeInstallCommand(params: {
    argv: string[] | null;
    timeoutMs: number;
    env?: NodeJS.ProcessEnv;
@@ -142,7 +154,7 @@ index e6528202ca..c0d4b9d4cf 100644
  }): Promise<SkillInstallResult> {
    if (!params.argv || params.argv.length === 0) {
      return createInstallFailure({ message: "invalid install command" });
-@@ -416,6 +417,7 @@ async function executeInstallCommand(params: {
+@@ -378,6 +379,7 @@ async function executeInstallCommand(params: {
    const result = await runCommandSafely(params.argv, {
      timeoutMs: params.timeoutMs,
      env: params.env,
@@ -150,25 +162,35 @@ index e6528202ca..c0d4b9d4cf 100644
    });
    if (result.code === 0) {
      return createInstallSuccess(result);
-@@ -463,6 +465,17 @@ export async function installSkill(params: SkillInstallRequest): Promise<SkillIn
+@@ -443,6 +445,10 @@ export async function installSkill(params: SkillInstallRequest): Promise<SkillIn
+     return withWarnings(resolveBrewMissingFailure(spec), warnings);
+   }
  
-   const prefs = resolveSkillsInstallPreferences(params.config);
-   const command = buildInstallCommand(spec, prefs);
-+
-+
 +  // Force installation into user config directory if package.json exists there or forced by env
 +  const configPkgJson = path.join(CONFIG_DIR, "package.json");
 +  const forceLocal = process.env.OPENCLAW_FORCE_LOCAL_SKILLS === "1";
 +
-+  if (spec.kind === "node" && command.argv && (forceLocal || fs.existsSync(configPkgJson))) {
+   const uvInstallFailure = await ensureUvInstalled({ spec, brewExe, timeoutMs });
+   if (uvInstallFailure) {
+     return withWarnings(uvInstallFailure, warnings);
+@@ -454,6 +460,16 @@ export async function installSkill(params: SkillInstallRequest): Promise<SkillIn
+   }
+ 
+   const argv = command.argv ? [...command.argv] : null;
++  if (spec.kind === "node" && argv && (forceLocal || fs.existsSync(configPkgJson))) {
 +    // Remove global flags
-+    command.argv = command.argv.filter(arg => arg !== "-g" && arg !== "global");
++    for (let i = 0; i < argv.length; i++) {
++      if (argv[i] === "-g" || argv[i] === "global") {
++        argv.splice(i, 1);
++        i--;
++      }
++    }
 +  }
 +
-   if (command.error) {
-     return withWarnings(
-       {
-@@ -504,5 +517,10 @@ export async function installSkill(params: SkillInstallRequest): Promise<SkillIn
+   if (spec.kind === "brew" && brewExe && argv?.[0] === "brew") {
+     argv[0] = brewExe;
+   }
+@@ -466,5 +482,10 @@ export async function installSkill(params: SkillInstallRequest): Promise<SkillIn
      }
    }
  
@@ -181,10 +203,10 @@ index e6528202ca..c0d4b9d4cf 100644
 +  return withWarnings(await executeInstallCommand({ argv, timeoutMs, env, cwd }), warnings);
  }
 diff --git a/src/plugins/discovery.ts b/src/plugins/discovery.ts
-index fd9ca62c27..814cff6740 100644
+index 02b10ade64..bc05605061 100644
 --- a/src/plugins/discovery.ts
 +++ b/src/plugins/discovery.ts
-@@ -298,6 +298,75 @@ function discoverFromPath(params: {
+@@ -200,6 +200,75 @@ function discoverInDirectory(params: {
    }
  }
  
@@ -211,7 +233,7 @@ index fd9ca62c27..814cff6740 100644
 +
 +  for (const entry of entries) {
 +    if (!entry.isDirectory()) continue;
-+    
++
 +    // Handle scoped packages
 +    if (entry.name.startsWith("@")) {
 +      const scopeDir = path.join(nodeModules, entry.name);
@@ -226,7 +248,7 @@ index fd9ca62c27..814cff6740 100644
 +        const fullPath = path.join(scopeDir, scopeEntry.name);
 +        const manifest = readPackageManifest(fullPath);
 +        if (!manifest || !getPackageManifestMetadata(manifest)) continue;
-+        
++
 +        // Use generic discovery but only because we confirmed manifest metadata exists
 +        discoverInDirectory({
 +          dir: fullPath,
@@ -257,9 +279,9 @@ index fd9ca62c27..814cff6740 100644
 +  }
 +}
 +
- export function discoverOpenClawPlugins(params: {
-   workspaceDir?: string;
-   extraPaths?: string[];
+ function discoverFromPath(params: {
+   rawPath: string;
+   origin: PluginOrigin;
 @@ -349,6 +418,15 @@ export function discoverOpenClawPlugins(params: {
      seen,
    });
@@ -277,40 +299,69 @@ index fd9ca62c27..814cff6740 100644
    if (bundledDir) {
      discoverInDirectory({
 diff --git a/src/plugins/install.ts b/src/plugins/install.ts
-index 97b8f597ed..214a24ac74 100644
+index 537ece54a2..bb23458f41 100644
 --- a/src/plugins/install.ts
 +++ b/src/plugins/install.ts
-@@ -258,6 +258,35 @@ export async function installPluginFromArchive(params: {
+@@ -22,6 +22,7 @@ import {
+ import { validateRegistryNpmSpec } from "../infra/npm-registry-spec.js";
+ import { extensionUsesSkippedScannerPath, isPathInside } from "../security/scan-paths.js";
+ import * as skillScanner from "../security/skill-scanner.js";
++import { runCommandWithTimeout } from "../process/exec.js";
+ import { CONFIG_DIR, resolveUserPath } from "../utils.js";
+ 
+ type PluginInstallLogger = {
+@@ -37,13 +38,13 @@ type PackageManifest = {
+ 
+ export type InstallPluginResult =
+   | {
+-      ok: true;
+-      pluginId: string;
+-      targetDir: string;
+-      manifestName?: string;
+-      version?: string;
+-      extensions: string[];
+-    }
++    ok: true;
++    pluginId: string;
++    targetDir: string;
++    manifestName?: string;
++    version?: string;
++    extensions: string[];
++  }
+   | { ok: false; error: string };
+ 
+ const defaultLogger: PluginInstallLogger = {};
+@@ -298,6 +299,35 @@ export async function installPluginFromArchive(params: {
    dryRun?: boolean;
    expectedPluginId?: string;
  }): Promise<InstallPluginResult> {
 +  // Force installation into user config directory if package.json exists there
 +  const configPkgJson = path.join(CONFIG_DIR, "package.json");
 +  if (await fileExists(configPkgJson)) {
-+      const logger = params.logger ?? defaultLogger;
-+      logger.info?.(`Installing ${params.spec} to ${CONFIG_DIR} using system package manager...`);
++    const logger = params.logger ?? defaultLogger;
++    logger.info?.(`Installing ${params.archivePath} to ${CONFIG_DIR} using system package manager...`);
 +
-+      const hasPnpmLock = await fileExists(path.join(CONFIG_DIR, "pnpm-lock.yaml"));
-+      const hasBunLock = await fileExists(path.join(CONFIG_DIR, "bun.lockb"));
-+      const pm = hasBunLock ? "bun" : (hasPnpmLock ? "pnpm" : "npm");
++    const hasPnpmLock = await fileExists(path.join(CONFIG_DIR, "pnpm-lock.yaml"));
++    const hasBunLock = await fileExists(path.join(CONFIG_DIR, "bun.lockb"));
++    const pm = hasBunLock ? "bun" : (hasPnpmLock ? "pnpm" : "npm");
 +
-+      await fs.mkdir(path.join(CONFIG_DIR, "node_modules"), { recursive: true });
++    await fs.mkdir(path.join(CONFIG_DIR, "node_modules"), { recursive: true });
 +
-+      const res = await runCommandWithTimeout([pm, "install", params.spec], {
-+        cwd: CONFIG_DIR,
-+        timeoutMs: params.timeoutMs ?? 300_000,
-+      });
++    const res = await runCommandWithTimeout([pm, "install", params.archivePath], {
++      cwd: CONFIG_DIR,
++      timeoutMs: params.timeoutMs ?? 300_000,
++    });
 +
-+      if (res.code !== 0) {
-+         return { ok: false, error: `${pm} install failed: ${res.stderr || res.stdout}` };
-+      }
++    if (res.code !== 0) {
++      return { ok: false, error: `${pm} install failed: ${res.stderr || res.stdout}` };
++    }
 +
-+      return {
-+        ok: true,
-+        pluginId: params.spec,
-+        targetDir: path.join(CONFIG_DIR, "node_modules", params.spec),
-+        extensions: [],
-+      };
++    return {
++      ok: true,
++      pluginId: params.archivePath,
++      targetDir: path.join(CONFIG_DIR, "node_modules", params.archivePath),
++      extensions: [],
++    };
 +  }
 +
    const logger = params.logger ?? defaultLogger;
