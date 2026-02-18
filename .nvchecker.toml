@@ -1,0 +1,5 @@
+[ytcui-bin]
+source = "github"
+github = "MilkmanAbi/ytcui"
+use_latest_release = true
+prefix = "v"
