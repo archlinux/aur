@@ -1,0 +1,6 @@
+pkg/
+src/
+fcitx5-lotus/
+bamboo-core/
+*.pkg.tar
+*.pkg.tar.zst

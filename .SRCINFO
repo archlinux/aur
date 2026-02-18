@@ -1,0 +1,29 @@
+pkgbase = fcitx5-lotus
+	pkgdesc = Vietnamese input method for fcitx5
+	pkgver = 0.12.2
+	pkgrel = 1
+	url = https://github.com/nhktmdzhg/fcitx5-lotus
+	install = fcitx5-lotus.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = go
+	makedepends = extra-cmake-modules
+	makedepends = gcc
+	makedepends = git
+	makedepends = libx11
+	depends = fcitx5
+	depends = libinput
+	depends = hicolor-icon-theme
+	depends = glibc
+	depends = libstdc++
+	depends = libgcc
+	depends = systemd-libs
+	provides = fcitx5-lotus
+	conflicts = fcitx5-lotus
+	source = git+https://github.com/nhktmdzhg/fcitx5-lotus.git#tag=v0.12.2
+	source = git+https://github.com/nhktmdzhg/bamboo-core.git
+	sha256sums = 187cdb13d3042a34306a14dfa2f404a603c0f579ca940eeca33a005e8ac00c95
+	sha256sums = SKIP
+
+pkgname = fcitx5-lotus
