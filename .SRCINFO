@@ -12,6 +12,7 @@ pkgbase = dolfinx
 	makedepends = texlive-plaingeneric
 	makedepends = texlive-fontsrecommended
 	makedepends = texlive-latexextra
+	makedepends = hdf5-openmpi
 	depends = adios2
 	depends = boost
 	depends = kahip
