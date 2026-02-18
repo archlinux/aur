@@ -2,7 +2,7 @@
 
 _hkgname=unix
 pkgname=haskell-unix
-pkgver=2.8.7.0
+pkgver=2.8.8.0
 pkgrel=1
 pkgdesc="POSIX functionality (backport)"
 url="https://github.com/haskell/unix"
@@ -11,9 +11,11 @@ arch=('x86_64')
 depends=(haskell-base haskell-bytestring
         'haskell-filepath>=1.4.100'
         haskell-os-string haskell-time)
-makedepends=('ghc')
+makedepends=('ghc'
+             haskell-tasty-hunit haskell-tasty-quickcheck)
+
 source=("https://hackage.haskell.org/packages/archive/$_hkgname/$pkgver/$_hkgname-$pkgver.tar.gz")
-sha256sums=('cbdd879d5aaf0755eeeedc95e3c4adde74edb8dbb7164aa1297b0b84d916fb83')
+sha256sums=('a128dea3bfeb731a562f22d376fa606e902154d95321363f7ec1ea6b787a5a3e')
 
 #-- Packager NOTE: this is a backport.
 
