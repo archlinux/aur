@@ -2,7 +2,7 @@
 pkgname=phasor-git
 PACKAGER="Daniel McGuire <danielmcguire2023@gmail.com>"
 pkgver=2.2.0.git
-pkgrel=5
+pkgrel=6
 pkgdesc="Phasor Programming Language Toolchain"
 arch=('x86_64')
 url="https://github.com/DanielLMcGuire/Phasor"
@@ -11,7 +11,7 @@ makedepends=('git' 'gcc' 'cmake' 'ninja')
 optdepends=('gcc: For building Phasor Native wrappers.')
 conflicts=('phasor' 'phasor-dev')
 options=(strip !debug)
-install=phasor.install
+install=scripts/phasor.install
 depends=()
 source=("git+https://github.com/DanielLMcGuire/Phasor.git")
 sha256sums=('SKIP')
