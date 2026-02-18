@@ -1,75 +1,42 @@
-# Maintainer: Zhenxi
+# Maintainer: OpenLyst <https://openlyst.ink>
+# Unstable build from GitHub releases: https://github.com/justacalico/Openlyst-more-builds/releases
 pkgname=doudou-unstable
-pkgver=1.0.0
+pkgver=15.0.0
 pkgrel=1
-pkgdesc="Stream your music with ease and style (unstable/development version). Source: https://gitlab.com/Openlyst/doudou"
+pkgdesc="Music player for self-hosted services (unstable build from GitHub)"
 arch=('x86_64')
-url="https://gitlab.com/Openlyst/doudou"
+url="https://openlyst.ink"
 license=('GPL3')
-depends=('mpv' 'gtk3' 'libmpv.so')
-makedepends=('git' 'flutter' 'clang' 'cmake' 'ninja' 'pkgconf')
+depends=('gtk3')
 optdepends=()
-provides=()
-conflicts=()
+provides=('doudou')
+conflicts=('doudou')
 options=('!strip')
-source=("${pkgname}::git+https://gitlab.com/Openlyst/doudou.git#branch=main")
+source=("doudou-unstable-${pkgver}.zip::https://github.com/justacalico/Openlyst-more-builds/releases/download/build-33/doudou-15.0.0-2026-02-18-linux-x64.zip")
 sha256sums=('SKIP')
 
-pkgver() {
-    cd "${srcdir}/${pkgname}"
-    # Fetch version from pubspec.yaml
-    grep '^version:' pubspec.yaml | sed 's/version: //g' | cut -d'+' -f1 | tr -d ' '
-}
-
-prepare() {
-    cd "${srcdir}/${pkgname}"
-    
-    # Get Flutter dependencies
-    flutter pub get
-    
-    # Generate localization files
-    flutter gen-l10n || true
-}
-
-build() {
-    cd "${srcdir}/${pkgname}"
-    
-    # Build the Linux release
-    flutter build linux --release
-}
-
 package() {
-    cd "${srcdir}/${pkgname}/build/linux/x64/release/bundle"
+    cd "${srcdir}/bundle"
 
-    # Install the entire bundle to /opt/doudou-unstable (Flutter needs relative paths)
-    install -d "${pkgdir}/opt/doudou-unstable"
-    
-    # Install main executable
-    install -Dm755 "doudou" "${pkgdir}/opt/doudou-unstable/doudou"
-
-    # Install libraries (must be in lib/ relative to executable)
-    install -d "${pkgdir}/opt/doudou-unstable/lib"
-    install -Dm644 lib/*.so "${pkgdir}/opt/doudou-unstable/lib/"
-
-    # Install data files (must be in data/ relative to executable)
-    cp -r data "${pkgdir}/opt/doudou-unstable/"
-
-    # Install desktop entry
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/doudou-unstable.desktop" <<EOF
+    install -d "${pkgdir}/opt/doudou"
+    install -Dm755 "doudou" "${pkgdir}/opt/doudou/doudou"
+    install -d "${pkgdir}/opt/doudou/lib"
+    install -Dm644 lib/*.so "${pkgdir}/opt/doudou/lib/"
+    cp -r data "${pkgdir}/opt/doudou/"
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/doudou.desktop" <<EOF
 [Desktop Entry]
-Name=Doudou (Unstable)
-Comment=Stream your music with ease and style (unstable/development version)
-Exec=/opt/doudou-unstable/doudou
-Icon=doudou-unstable
+Name=Doudou
+Comment=Music player for self-hosted services (unstable build from G
+Exec=/opt/doudou/doudou
+Icon=doudou
 Type=Application
 Categories=Audio;Music;Player;
-Keywords=music;streaming;audio;player;
+Keywords=music;streaming;audio;player;;
 EOF
-
-    # Install icon
-    install -Dm644 "data/flutter_assets/assets/icons/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/doudou-unstable.png"
-
-    # Create symlink in /usr/bin for PATH access
+    if [ -f "data/flutter_assets/assets/icons/icon.png" ]; then
+        install -Dm644 "data/flutter_assets/assets/icons/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/doudou.png"
+    fi
     install -d "${pkgdir}/usr/bin"
-    ln -s /opt/doudou-unstable/doudou "${pkgdir}/usr/bin/doudou-unstable"
+    ln -s /opt/doudou/doudou "${pkgdir}/usr/bin/doudou"
 }
+

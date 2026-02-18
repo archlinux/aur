@@ -1,21 +1,15 @@
 pkgbase = doudou-unstable
-	pkgdesc = Stream your music with ease and style (unstable/development version). Source: https://gitlab.com/Openlyst/doudou
-	pkgver = 1.0.0
+	pkgdesc = Music player for self-hosted services (unstable build from GitHub)
+	pkgver = 15.0.0
 	pkgrel = 1
-	url = https://gitlab.com/Openlyst/doudou
+	url = https://openlyst.ink
 	arch = x86_64
 	license = GPL3
-	makedepends = git
-	makedepends = flutter
-	makedepends = clang
-	makedepends = cmake
-	makedepends = ninja
-	makedepends = pkgconf
-	depends = mpv
 	depends = gtk3
-	depends = libmpv.so
+	provides = doudou
+	conflicts = doudou
 	options = !strip
-	source = doudou-unstable::git+https://gitlab.com/Openlyst/doudou.git#branch=main
+	source = doudou-unstable-15.0.0.zip::https://github.com/justacalico/Openlyst-more-builds/releases/download/build-33/doudou-15.0.0-2026-02-18-linux-x64.zip
 	sha256sums = SKIP
 
 pkgname = doudou-unstable
