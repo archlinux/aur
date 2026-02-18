@@ -1,14 +1,15 @@
-# Maintainer: Balló György <ballogyor+arch at gmail dot com>
+# Maintainer: Patrick Rogers <patrick at thewebzone dot net>
+# Contributor (former maintainer): Balló György <ballogyor+arch at gmail dot com>
 # Contributor: cyrant <cyrant at tuta dot io>
 
 pkgname=scenarist
 pkgver=0.7.2.rc15
-pkgrel=2
+pkgrel=3
 pkgdesc='Screenwriting software to create screenplays which oriented at international standards in the field of film production'
 arch=('x86_64')
 url='https://kitscenarist.ru/en/'
 license=('GPL3')
-depends=('hunspell' 'qt5-multimedia' 'qt5-svg' 'qt5-webengine')
+depends=('hunspell' 'qt5-multimedia' 'qt5-svg' 'qt5-webengine' 'icu76')
 makedepends=('git')
 _commit=70ebff68c67242ee4f9a5d1f6397f00d0dd471ff
 source=("git+https://github.com/dimkanovikov/KITScenarist.git#commit=$_commit"
