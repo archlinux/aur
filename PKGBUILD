@@ -6,7 +6,7 @@ pkgver=0.9.5
 pkgrel=1
 pkgdesc="A modern slicer built for precision and performance. "
 arch=('x86_64')
-url="https://github.com/prusa3d/PrusaSlicer"
+url="https://github.com/oozebot/preFlight"
 license=('AGPL-3.0-only')
 depends=('gtk3' 'webkit2gtk-4.1' 'mpfr' 'gmp' 'blosc' 'boost-libs' 'curl'
   'expat' 'libjpeg' 'nanosvg' 'nlopt' 'opencascade' 'opencsg'
