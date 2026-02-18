@@ -1,7 +1,7 @@
 # Maintainer: Gentrit Biba <gentritbiba@gmail.com>
 pkgname=cogpit
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Dashboard for browsing and inspecting Claude Code agent sessions"
 arch=('x86_64')
 url="https://github.com/gentritbiba/cogpit"
@@ -12,5 +12,9 @@ sha256sums=('cf2251ec59fd45797f80051c432513abf6cce04e8fa4b98ace61dd3aefef02ec')
 
 package() {
     cd "${srcdir}"
-    tar -xf "${pkgname}-${pkgver}.pacman" -C "${pkgdir}/" --exclude='.MTREE' --exclude='.PKGINFO' --exclude='.INSTALL'
+    tar -xf "${pkgname}-${pkgver}.pacman" -C "${pkgdir}/" \
+        --exclude='.MTREE' --exclude='.PKGINFO' --exclude='.INSTALL'
+
+    # chrome-sandbox requires suid for Chromium sandboxing
+    chmod 4755 "${pkgdir}/opt/Cogpit/chrome-sandbox"
 }
