@@ -1,11 +1,11 @@
 pkgbase = jumper
 	pkgdesc = Accurate and fast files/directories' jumper
-	pkgver = 1.0
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/homerours/jumper
 	arch = any
 	license = MIT
-	source = jumper-1.0.tar.gz::https://github.com/homerours/jumper/archive/refs/tags/v1.0.tar.gz
-	sha256sums = 201a4b23c4dfc0906782b757385b23c1e4cdf66b7c901b87aef8507e726d79e9
+	source = jumper-1.2.tar.gz::https://github.com/homerours/jumper/archive/refs/tags/v1.2.tar.gz
+	sha256sums = da597d498bcd90ba034d3990a0a6b244baec2d7fdb6690e03302241813acb8fe
 
 pkgname = jumper

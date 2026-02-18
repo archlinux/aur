@@ -1,12 +1,12 @@
 pkgname=jumper
-pkgver=1.0
+pkgver=1.2
 pkgrel=1
 pkgdesc="Accurate and fast files/directories' jumper"
 arch=('any')
 url="https://github.com/homerours/jumper"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/homerours/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('201a4b23c4dfc0906782b757385b23c1e4cdf66b7c901b87aef8507e726d79e9')
+sha256sums=('da597d498bcd90ba034d3990a0a6b244baec2d7fdb6690e03302241813acb8fe')
 
 build() {
 	cd $pkgname-$pkgver
