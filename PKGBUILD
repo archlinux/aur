@@ -4,7 +4,7 @@ _pkgname=lavaanExtra
 _pkgver=0.2.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=9
+pkgrel=1
 pkgdesc="Convenience Functions for Package 'lavaan'"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"

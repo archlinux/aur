@@ -1,7 +1,7 @@
 pkgbase = r-lavaanextra
 	pkgdesc = Convenience Functions for Package 'lavaan'
 	pkgver = 0.2.2
-	pkgrel = 9
+	pkgrel = 1
 	url = https://cran.r-project.org/package=lavaanExtra
 	arch = any
 	license = MIT
