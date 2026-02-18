@@ -1,6 +1,6 @@
 pkgbase = kuro-bin
 	pkgdesc = An Electron wrapper for Microsoft To-Do
-	pkgver = 9.1.1
+	pkgver = 9.1.2
 	pkgrel = 1
 	url = https://github.com/davidsmorais/kuro
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = kuro-bin
 	depends = libxss
 	provides = kuro
 	conflicts = kuro-appimage
-	source = https://github.com/davidsmorais/kuro/releases/download/v9.1.1/kuro-9.1.1.pacman
-	sha256sums = b6b42ec3dd9708ac320e57565d3b15887e8dda77eb29b6c457e61d17bcf8d15b
+	source = https://github.com/davidsmorais/kuro/releases/download/v9.1.2/kuro-9.1.2.pacman
+	sha256sums = e8de38a0f2c0a68c17e848bba83135616792176397d3802601a736b4368f7a99
 
 pkgname = kuro-bin
