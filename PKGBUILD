@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('fluidsynth' 'glu' 'libmad' 'sdl2_image' 'sdl2_mixer' 'sdl2_net' 'dumb' 'portmidi' 'libzip')
 makedepends=('cmake' 'imagemagick')
 source=("https://github.com/andrikpowell/nyan-doom/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+sha256sums=('430a394174b4fe43a953d4885a6c3318949dad6442c4e73d1a39943d17ae0d53')
 
 build() {
 	cd "${srcdir}/nyan-doom-${pkgver}/prboom2"  
