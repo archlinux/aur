@@ -1,7 +1,7 @@
 # Maintainer: Felix Kauselmann <licorn@gmail.com>
 
 pkgname=libpdfium-nojs
-pkgver=6998.r2.12f7715a63
+pkgver=7632.r1.004b476195
 pkgrel=1
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
@@ -47,7 +47,7 @@ prepare() {
   # Extract pdfium branch name used in stable channel from chrome version history and do
   # a checkout
   
-  chrome_version="$(curl https://versionhistory.googleapis.com/v1/chrome/platforms/linux/channels/stable/versions/all/releases | grep 'version' | head -1 | cut -d'.' -f 3)"
+   chrome_version="$(curl https://versionhistory.googleapis.com/v1/chrome/platforms/linux/channels/stable/versions/all/releases | grep 'version' | head -1 | cut -d'.' -f 3)"
   # chrome_version="$(curl https://versionhistory.googleapis.com/v1/chrome/platforms/linux/channels/beta/versions/all/releases | grep 'version' | head -1 | cut -d'.' -f 3)"
   # chrome_version="$(curl https://versionhistory.googleapis.com/v1/chrome/platforms/linux/channels/dev/versions/all/releases | grep 'version' | head -1 | cut -d'.' -f 3)"
 
@@ -88,6 +88,7 @@ prepare() {
   
   # Create fake gclient_args.gni file to satisfy include list for build/config/compiler/compiler.gni
   touch "$srcdir/build/config/gclient_args.gni"
+  echo "build_with_chromium = false" > "$srcdir/build/config/gclient_args.gni"
   
   # Exclude test fonts from build
   cd "$srcdir/pdfium/testing/"
