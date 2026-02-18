@@ -1,0 +1,5 @@
+[tickit-bin]
+source = "github"
+github = "ricardodantas/tickit"
+use_latest_release = true
+prefix = "v"

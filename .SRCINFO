@@ -1,0 +1,22 @@
+pkgbase = tickit-bin
+	pkgdesc = A stunning terminal-based task manager with CLI and TUI
+	pkgver = 0.5.8
+	pkgrel = 1
+	url = https://github.com/ricardodantas/tickit
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	depends = glibc
+	depends = libgcc
+	provides = tickit
+	conflicts = tickit
+	source = README-0.5.8.md::https://raw.githubusercontent.com/ricardodantas/tickit/v0.5.8/README.md
+	source = LICENSE-0.5.8::https://raw.githubusercontent.com/ricardodantas/tickit/v0.5.8/LICENSE
+	sha256sums = ba2bd40e5ada1613ca048c4d6be5222224d670af0d20c0802b70d18441ce780e
+	sha256sums = 670ff3dbdf83b81d06ef9bf176d45ee29e5346f65d58aa256316f917a967356f
+	source_x86_64 = tickit-x86_64-0.5.8.tgz::https://github.com/ricardodantas/tickit/releases/download/v0.5.8/tickit-0.5.8-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = c1792f767a5a0706b0d1599e950cb199da44c233a498d6da6bedf017be0fd3f7
+	source_aarch64 = tickit-aarch64-0.5.8.tgz::https://github.com/ricardodantas/tickit/releases/download/v0.5.8/tickit-0.5.8-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 606a37322ea9fad3677673eabf5859ccee60e505e33de8dd3ab68bebcd6e2eab
+
+pkgname = tickit-bin
