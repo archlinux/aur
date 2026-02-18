@@ -1,0 +1,11 @@
+pkgbase = violet-evergarden-grub-theme
+	pkgdesc = Violet Evergarden GRUB theme
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/src-06/violet-evergarden-grub-theme
+	arch = any
+	options = !strip
+	source = https://github.com/src-06/violet-evergarden-grub-theme/archive/refs/tags/v1.0.tar.gz
+	sha256sums = 9fc607441b071db1dfe5948f9e2865986276aa42946a63b70418baa1ff2a4b78
+
+pkgname = violet-evergarden-grub-theme
