@@ -3,7 +3,7 @@
 pkgname=gawk-aregex
 _project=gawkextlib
 pkgver=1.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="GAWK extension - approximate regex (fuzzy) matching"
 arch=('x86_64')
 url="https://sourceforge.net/projects/gawkextlib/"
