@@ -12,8 +12,8 @@ pkgname=${_base}-complex
 pkgver=3.24.4
 pkgrel=1
 _config=linux-c-opt
-# if --with-debugging=no is set then PETSC_ARCH is automatically set to
-#"linux-c-opt" for some things, so the _config should be changed too
+# if --with-debugging=yes is set then PETSC_ARCH is automatically set to
+#"linux-c-debug" for some things, so the _config should be changed too
 #_config=linux-c-debug
 pkgdesc="Portable, extensible toolkit for scientific computation (complex scalars)"
 arch=(i686 x86_64)
@@ -57,8 +57,8 @@ build() {
   # Apply patch to fix petsc4py build with setuptools 82+ (remove dry_run parameter)
   patch -Np1 -i "${srcdir}/fix-petsc4py-setuptools.patch"
 
-  OPTFLAGS='-O3 -g -march=native'
-  CONFOPTS="--with-debugging=no \
+  OPTFLAGS='-O3 -march=native'
+  CONFOPTS="
             --with-petsc4py=1 \
             --with-shared-libraries=1 \
             --with-mpi-f90module-visibility=0 \
