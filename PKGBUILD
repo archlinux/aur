@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=tinyxml2-git
-pkgver=11.0.0.r8.ge6caeae
+pkgver=11.0.0.r16.g3324d04
 pkgrel=1
 pkgdesc="Simple, small, efficient, C++ XML parser"
 arch=('i686' 'x86_64')
 url="https://leethomason.github.io/tinyxml2/"
 license=('Zlib')
-depends=('gcc-libs')
+depends=('glibc' 'libgcc' 'libstdc++')
 makedepends=('git' 'cmake')
 provides=("tinyxml2=$pkgver")
 conflicts=('tinyxml2')
