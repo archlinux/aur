@@ -171,12 +171,14 @@ void get_package_info(char* packages, size_t size) {
         pclose(fp);
     }
     
-    fp = popen("emerge -ep world 2>/dev/null | grep -c \"^\\[*\\]\"", "r");
+fp = popen("ls -d /var/db/pkg/*/* 2>/dev/null | wc -l", "r");
     if (fp) {
         if (fgets(packages, size, fp)) {
             packages[strcspn(packages, "\n")] = 0;
-            pclose(fp);
-            return;
+            if (strcmp(packages, "0") != 0) {
+                pclose(fp);
+                return;
+            }
         }
         pclose(fp);
     }
