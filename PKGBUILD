@@ -2,7 +2,7 @@
 
 pkgname=gpu-viewer
 _pkgname=GPU-Viewer
-pkgver=3.23
+pkgver=3.26
 pkgrel=1
 pkgdesc="A frontend to glxinfo and vulkaninfo."
 arch=('i686' 'x86_64' 'aarch64')
@@ -51,4 +51,4 @@ package() {
     DESTDIR="$pkgdir" ninja install
 }
 
-sha256sums=('848a00023cdfb1fee4887ae3f000c1767532e4b03368684ea31c6413ce6e11c4')
+sha256sums=('2189f68cb200d15929895834e41a3dbf19d15e8d8aca589a3ef28c01b911fc78')
