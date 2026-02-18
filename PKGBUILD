@@ -12,8 +12,8 @@ pkgname=${_base}-complex
 pkgver=3.24.4
 pkgrel=1
 _config=linux-c-opt
-# if --with-debugging=yes is set then PETSC_ARCH is automatically set to
-#"linux-c-debug" for some things, so the _config should be changed too
+# if --with-debugging=no is set then PETSC_ARCH is automatically set to
+#"linux-c-opt" for some things, so the _config should be changed too
 #_config=linux-c-debug
 pkgdesc="Portable, extensible toolkit for scientific computation (complex scalars)"
 arch=(i686 x86_64)
@@ -38,9 +38,11 @@ optdepends=('hypre: support for the hypre sparse system solver'
   'zoltan: support for zoltan')
 install=${_base}.install
 source=(https://web.cels.anl.gov/projects/${_base}/download/release-snapshots/${_base}-lite-${pkgver}.tar.gz
-  test_optdepends.sh)
+  test_optdepends.sh
+  fix-petsc4py-setuptools.patch)
 sha512sums=('6bc4bdfb4cbc70c7716caa5c363608eaa0ffbb94f93052f79e47928416c640a1f2ce2e1b345a93a0a494d2870f3e22a5deaabf2025922a4832202b39388f4b96'
-            'ecffd8038523be647d730d4148fc2edf68a7ac2681433ff1d8377ad65fc871c19b4de78e09796e3968d7589c506dd436c16a52927f8503bd6a44604c45ff30ce')
+            'ecffd8038523be647d730d4148fc2edf68a7ac2681433ff1d8377ad65fc871c19b4de78e09796e3968d7589c506dd436c16a52927f8503bd6a44604c45ff30ce'
+            '08938fce62ff0175a8caf90ffe532024f17970c92e168ec0aeb3a53fdfe7efb572a5ee43b0399cc0a1ac959cdf2615811321d39adef323d909f02e4f240c5eec')
 
 _install_dir=/opt/${_base}/${_config}
 _petsc_arch=arch-${_config}
@@ -52,9 +54,13 @@ build() {
   export PETSC_ARCH=${_petsc_arch}
   export PETSC_DIR=${_build_dir}
 
-  OPTFLAGS='-O3 -march=native'
-  CONFOPTS="--with-shared-libraries=1 \
-            --with-petsc4py=0 \
+  # Apply patch to fix petsc4py build with setuptools 82+ (remove dry_run parameter)
+  patch -Np1 -i "${srcdir}/fix-petsc4py-setuptools.patch"
+
+  OPTFLAGS='-O3 -g -march=native'
+  CONFOPTS="--with-debugging=no \
+            --with-petsc4py=1 \
+            --with-shared-libraries=1 \
             --with-mpi-f90module-visibility=0 \
             --with-bison=1 \
             --with-cmake=0 \
@@ -70,7 +76,7 @@ build() {
             --with-hdf5=1 --with-hdf5-fortran-bindings=1 \
             --with-hwloc=1 \
             --with-pastix=1 \
-            --with-ptscotch=1 --with-bison=1 --with-ptscotch-lib=[libesmumps.so,libptscotch.so,libptscotcherr.so,libscotch.so,libscotcherr.so] --with-ptscotch-include=/usr/include \
+            --with-ptscotch=1 --with-bison=1 --with-ptscotch-lib=[libesmumps.so,libptscotch.so,libptscotcherr.so,libscotch.so,libptscotcherr.so] --with-ptscotch-include=/usr/include \
             --with-scalar-type=complex \
             --without-zfp \
             $(sh ${srcdir}/test_optdepends.sh)"

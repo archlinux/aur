@@ -43,7 +43,9 @@ pkgbase = petsc-complex
 	options = staticlibs
 	source = https://web.cels.anl.gov/projects/petsc/download/release-snapshots/petsc-lite-3.24.4.tar.gz
 	source = test_optdepends.sh
+	source = fix-petsc4py-setuptools.patch
 	sha512sums = 6bc4bdfb4cbc70c7716caa5c363608eaa0ffbb94f93052f79e47928416c640a1f2ce2e1b345a93a0a494d2870f3e22a5deaabf2025922a4832202b39388f4b96
 	sha512sums = ecffd8038523be647d730d4148fc2edf68a7ac2681433ff1d8377ad65fc871c19b4de78e09796e3968d7589c506dd436c16a52927f8503bd6a44604c45ff30ce
+	sha512sums = 08938fce62ff0175a8caf90ffe532024f17970c92e168ec0aeb3a53fdfe7efb572a5ee43b0399cc0a1ac959cdf2615811321d39adef323d909f02e4f240c5eec
 
 pkgname = petsc-complex
