@@ -2,12 +2,12 @@
 
 pkgname=tinyxml-git
 pkgver=r1.g94b1760
-pkgrel=4
+pkgrel=5
 pkgdesc="A simple, small, efficient, C++ XML parser"
 arch=('i686' 'x86_64')
 url="http://www.grinninglizard.com/tinyxml/"
 license=('Zlib')
-depends=('gcc-libs' 'glibc')
+depends=('glibc' 'libgcc' 'libstdc++')
 makedepends=('git' 'setconf')
 provides=("tinyxml=$pkgver")
 conflicts=('tinyxml')
@@ -37,7 +37,7 @@ build() {
 
   make
   g++ "$CXXFLAGS" -fPIC -shared -o "libtinyxml.so" \
-    -Wl,-soname,"libtinyxml.so" $(ls ./*.o | grep -v xmltest)
+    -Wl,-soname,"libtinyxml.so" "$(printf '%s\n' *.o | grep -v xmltest)"
 }
 
 check() {
