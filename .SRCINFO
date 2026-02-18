@@ -1,5 +1,5 @@
 pkgbase = stardial
-	pkgdesc = A space-anime themed terminal clock (tty-clock superset)
+	pkgdesc = A space-anime themed terminal clock
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/hisuic/stardial
