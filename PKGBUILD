@@ -92,7 +92,7 @@ build ()
 		-W no-dev \
 		-D CMAKE_BUILD_TYPE=None \
 		-D BUILD_SHARED_LIBS=ON \
-		-D EVMONE_TESTING=ON \
+		-D EVMONE_TESTING=OFF \
 		-D EVMONE_FUZZING=OFF \
 		-D EVMC_INSTALL=OFF \
 		-D CMAKE_INSTALL_PREFIX=/usr/ \
@@ -118,11 +118,6 @@ package ()
 {
 	DESTDIR="${pkgdir}/" \
 		cmake --install build/
-
-	# Building with EVMONE_TESTING=ON produces a bunch of extra binaries meant for testing the package.
-	# Some of them are even install targets, but we don't want them in the package.
-	rm "${pkgdir}/usr/bin/evmone-bench"
-	rmdir "${pkgdir}/usr/bin/"
 
 	cd "${pkgname}-${pkgver}/"
 	install -D --mode 644 README.md --target-directory "${pkgdir}/usr/share/doc/${pkgname}/"
