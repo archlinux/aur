@@ -1,0 +1,46 @@
+From b4ad503a91caae922d42dc99da2e2f2cb4850169 Mon Sep 17 00:00:00 2001
+From: Celsiuss <liland@await.sh>
+Date: Wed, 18 Feb 2026 20:06:09 +0100
+Subject: [PATCH 1/2] fix building for arch
+
+---
+ CMakeLists.txt | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b003450..ddf4928 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -17,6 +17,9 @@ if(CMAKE_VERSION VERSION_GREATER_EQUAL "4.0")
+   set(CMAKE_POLICY_VERSION_MINIMUM 3.5)
+ endif()
+ 
++cmake_policy(SET CMP0175 OLD)
++cmake_policy(SET CMP0167 NEW)
++
+ project(preFlight)
+ 
+ include("version.inc")
+@@ -405,6 +408,10 @@ add_definitions(-DwxUSE_UNICODE -D_UNICODE -DUNICODE -DWXINTL_NO_GETTEXT_MACRO)
+ # Disable unsafe implicit wxString to const char* / std::string and vice versa. This implicit conversion breaks the UTF-8 encoding quite often.
+ add_definitions(-DwxNO_UNSAFE_WXSTRING_CONV)
+ 
++find_package(JPEG REQUIRED)
++add_library(libjpeg-turbo INTERFACE)
++target_link_libraries(libjpeg-turbo INTERFACE JPEG::JPEG)
++
+ # Find and configure boost
+ if(SLIC3R_STATIC)
+     # Use static boost libraries.
+@@ -417,7 +424,7 @@ endif()
+ # boost::process was introduced first in version 1.64.0,
+ # boost::beast::detail::base64 was introduced first in version 1.66.0
+ set(MINIMUM_BOOST_VERSION "1.83.0")
+-set(_boost_components "system;filesystem;thread;log;log_setup;locale;regex;chrono;atomic;date_time;iostreams;nowide;process")
++set(_boost_components "filesystem;thread;log;log_setup;locale;regex;chrono;atomic;date_time;iostreams;nowide;process")
+ find_package(Boost ${MINIMUM_BOOST_VERSION} REQUIRED COMPONENTS ${_boost_components})
+ 
+ find_package(Eigen3 3.3.7...<6.0 REQUIRED) # preFlight: accept Eigen 5.x (jumped from 3.x)
+-- 
+2.53.0
+

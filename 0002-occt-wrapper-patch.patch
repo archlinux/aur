@@ -1,0 +1,99 @@
+From 52d6322444c8dc80095147f5231bfbeff3351557 Mon Sep 17 00:00:00 2001
+From: Celsiuss <liland@await.sh>
+Date: Wed, 18 Feb 2026 23:13:55 +0100
+Subject: [PATCH 2/2] occt wrapper patch
+
+---
+ src/libslic3r/CMakeLists.txt    |  2 +-
+ src/libslic3r/Format/STEP.cpp   | 24 +++---------------------
+ src/occt_wrapper/CMakeLists.txt |  7 ++++---
+ 3 files changed, 8 insertions(+), 25 deletions(-)
+
+diff --git a/src/libslic3r/CMakeLists.txt b/src/libslic3r/CMakeLists.txt
+index 9207162..9398b9b 100644
+--- a/src/libslic3r/CMakeLists.txt
++++ b/src/libslic3r/CMakeLists.txt
+@@ -619,7 +619,7 @@ target_link_libraries(libslic3r PUBLIC
+     libseqarrange
+ )
+ 
+-if (APPLE)
++if (APPLE OR LINUX)
+     # TODO: we need to fix notarization with the separate shared library
+     target_link_libraries(libslic3r PUBLIC OCCTWrapper)
+ endif ()
+diff --git a/src/libslic3r/Format/STEP.cpp b/src/libslic3r/Format/STEP.cpp
+index 5eb23c7..f39816a 100644
+--- a/src/libslic3r/Format/STEP.cpp
++++ b/src/libslic3r/Format/STEP.cpp
+@@ -27,7 +27,7 @@
+ namespace Slic3r
+ {
+ 
+-#if __APPLE__
++#ifndef _WIN32
+ extern "C" bool load_step_internal(const char *path, OCCTResult *res,
+                                    std::optional<std::pair<double, double>> deflections /*= std::nullopt*/);
+ #endif
+@@ -39,7 +39,7 @@ LoadStepFn get_load_step_fn()
+ {
+     static LoadStepFn load_step_fn = nullptr;
+ 
+-#ifndef __APPLE__
++#ifdef _WIN32
+     constexpr const char *fn_name = "load_step_internal";
+ #endif
+ 
+@@ -68,26 +68,8 @@ LoadStepFn get_load_step_fn()
+             FreeLibrary(module);
+             throw;
+         }
+-#elif __APPLE__
+-        load_step_fn = &load_step_internal;
+ #else
+-        libpath /= "OCCTWrapper.so";
+-        void *plugin_ptr = dlopen(libpath.c_str(), RTLD_NOW | RTLD_GLOBAL);
+-
+-        if (plugin_ptr)
+-        {
+-            load_step_fn = reinterpret_cast<LoadStepFn>(dlsym(plugin_ptr, fn_name));
+-            if (!load_step_fn)
+-            {
+-                dlclose(plugin_ptr);
+-                throw Slic3r::RuntimeError(std::string("Cannot load function from OCCTWrapper.so: ") + fn_name +
+-                                           "\n\n" + dlerror());
+-            }
+-        }
+-        else
+-        {
+-            throw Slic3r::RuntimeError(std::string("Cannot load OCCTWrapper.so:\n\n") + dlerror());
+-        }
++        load_step_fn = &load_step_internal;
+ #endif
+     }
+ 
+diff --git a/src/occt_wrapper/CMakeLists.txt b/src/occt_wrapper/CMakeLists.txt
+index 10b59f3..5534161 100644
+--- a/src/occt_wrapper/CMakeLists.txt
++++ b/src/occt_wrapper/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ cmake_minimum_required(VERSION 3.13)
+ project(OCCTWrapper)
+ 
+-if (APPLE)
++if (APPLE OR LINUX)
+     # TODO: we need to fix notarization with the separate shared library
+     add_library(OCCTWrapper STATIC OCCTWrapper.cpp)
+ else ()
+@@ -74,5 +74,6 @@ target_link_libraries(OCCTWrapper libslic3r admesh)
+ 
+ include(GNUInstallDirs)
+ 
+-install(TARGETS OCCTWrapper DESTINATION "${CMAKE_INSTALL_BINDIR}")
+-
++if (NOT LINUX)
++    install(TARGETS OCCTWrapper DESTINATION "${CMAKE_INSTALL_BINDIR}")
++endif ()
+-- 
+2.53.0
+
