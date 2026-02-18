@@ -1,6 +1,6 @@
 pkgbase = 1code
 	pkgdesc = Best UI for Claude Code with local and remote agent execution
-	pkgver = 0.0.65
+	pkgver = 0.0.66
 	pkgrel = 1
 	url = https://github.com/21st-dev/1code
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = 1code
 	conflicts = 1code-bin
 	conflicts = 1code-git
 	options = !strip
-	source = 1code-0.0.65.tar.gz::https://github.com/21st-dev/1code/archive/refs/tags/v0.0.65.tar.gz
+	source = 1code-0.0.66.tar.gz::https://github.com/21st-dev/1code/archive/refs/tags/v0.0.66.tar.gz
 	source = 1code.desktop
-	sha256sums = 64cb31a368f1e67a317c229a3ad3a1c01b1350c1e37600d1e37810c5a86340a8
+	sha256sums = db93ae134cd90e26607d13acd27b71a73d42d0e8a4091a48cfa9f110ad78cab7
 	sha256sums = 3ef29244e4af479309b5c61185bf5274dd72d40ddab8ec2b85a632ba27a9195d
 
 pkgname = 1code
