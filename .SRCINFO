@@ -1,0 +1,16 @@
+pkgbase = vanta-bin
+	pkgdesc = Liquid Glass command palette for Linux (Tauri v2 + Svelte 5)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Misiix9/vanta
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libappindicator-gtk3
+	provides = vanta
+	conflicts = vanta
+	source = https://github.com/Misiix9/vanta/releases/download/v1.0.0/vanta_1.0.0_amd64.deb
+	sha256sums = d575f4472b2f85a4b5fe9544495f742c0db0923bb469b0ea92b25c0ea5036742
+
+pkgname = vanta-bin
