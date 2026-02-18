@@ -3,7 +3,7 @@
 pkgname=gawkextlib
 _project=$pkgname
 pkgver=1.0.4
-pkgrel=6
+pkgrel=7
 pkgdesc="Library containing APIs used by various GAWK extensions"
 arch=('x86_64' 'aarch64')
 url="https://sourceforge.net/projects/gawkextlib/"
