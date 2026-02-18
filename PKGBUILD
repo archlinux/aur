@@ -1,5 +1,5 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
-# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Sam Whited <sam@samwhited.com>
 
 pkgname=python-google-i18n-address
 _pkgname=google-i18n-address
