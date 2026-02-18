@@ -1,6 +1,6 @@
 # Maintainer: Ben H <bcherb2@users.noreply.github.com>
 pkgname=ffdash-bin
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="VP9 video encoder with live TUI dashboard and hardware acceleration"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/bcherb2/ffdash/v${pkgver}/LICENSE"
 )
 sha256sums=(
-    '59c7c32b0672eb2a775e1db998f86a66f34c2dd187f1ecdbb34fbb3ee94d24ca'
+    'b8b7c037133cabf531e0fef42cb8759891b0f242dce2b44d8826ee3afd956bd7'
     'SKIP'
 )
 

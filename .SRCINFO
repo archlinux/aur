@@ -1,6 +1,6 @@
 pkgbase = ffdash-bin
 	pkgdesc = VP9 video encoder with live TUI dashboard and hardware acceleration
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/bcherb2/ffdash
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = ffdash-bin
 	depends = ffmpeg
 	provides = ffdash
 	conflicts = ffdash
-	source = ffdash-0.3.1.tar.gz::https://github.com/bcherb2/ffdash/releases/download/v0.3.1/ffdash-linux-x86_64.tar.gz
-	source = LICENSE-0.3.1::https://raw.githubusercontent.com/bcherb2/ffdash/v0.3.1/LICENSE
-	sha256sums = 59c7c32b0672eb2a775e1db998f86a66f34c2dd187f1ecdbb34fbb3ee94d24ca
+	source = ffdash-0.3.2.tar.gz::https://github.com/bcherb2/ffdash/releases/download/v0.3.2/ffdash-linux-x86_64.tar.gz
+	source = LICENSE-0.3.2::https://raw.githubusercontent.com/bcherb2/ffdash/v0.3.2/LICENSE
+	sha256sums = b8b7c037133cabf531e0fef42cb8759891b0f242dce2b44d8826ee3afd956bd7
 	sha256sums = SKIP
 
 pkgname = ffdash-bin
