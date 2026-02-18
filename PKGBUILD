@@ -8,9 +8,11 @@ pkgdesc="Decode ELF and MachO binaries and print out which instruction set exten
 arch=('x86_64')
 url="https://github.com/pkgw/${_pkgname}"
 license=('MIT')
-options=('!lto')
-depends=('gcc-libs' 'glibc')
-makedepends=('cargo')
+options=('!lto') # With LTO, build fails in clean chroot.
+depends=('glibc' 'libgcc')
+makedepends=('cargo' 'git')
+provides=(${_pkgname})
+conflicts=(${_pkgname})
 source=("git+${url}.git")
 b2sums=('SKIP')
 
