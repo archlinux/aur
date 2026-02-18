@@ -18,6 +18,7 @@ pkgbase = nolio-bin
 	depends = at-spi2-core
 	provides = nolio
 	conflicts = nolio
+	options = !debug
 	source = nolio-bin-0.3.0.tar.gz::https://github.com/Grey-007/nolio/releases/download/v0.3.0/nolio-v0.3.0-linux-x86_64.tar.gz
 	source = nolio.desktop
 	source = nolio.png
