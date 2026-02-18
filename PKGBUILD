@@ -22,6 +22,8 @@ build() {
   cd "$pkgbase-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  # Required for ring crate to build with LTO enabled
+  CFLAGS+=' -ffat-lto-objects'
   cargo build --release --frozen --workspace
 }
 
