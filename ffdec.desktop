@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=JPEXS Free Flash Decompiler
+Comment=Decompiler and editor of Flash SWF files
+Exec=ffdec
+Icon=ffdec-git
+Terminal=false
+StartupNotify=false
+Categories=Development;Network;Utility;WebDevelopment;Java
+Keywords=FFdec;JPEXS

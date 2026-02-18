@@ -1,0 +1,21 @@
+pkgbase = ffdec-git
+	pkgdesc = Open Source Flash SWF decompiler and editor, git version
+	pkgver = 25.1.0.r2.g41f07a2e5
+	pkgrel = 1
+	url = https://github.com/jindrapetrik/jpexs-decompiler
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = ant
+	makedepends = java-environment>=8
+	makedepends = git
+	depends = java-runtime>=8
+	provides = ffdec
+	conflicts = ffdec
+	source = ffdec::git+https://github.com/jindrapetrik/jpexs-decompiler
+	source = ffdec.sh
+	source = ffdec.desktop
+	b2sums = SKIP
+	b2sums = 27677dbabd3cae97e88872c72d6f9f26a32026f4f05b895e0ce5ae9597d0298bbdb9cabf48d3d130500c5fb6a6a0c00aecd84896b04f03b1d105eeb234ee414e
+	b2sums = 2881f0e50d97e96119efe873a418232f3e2445d7540c3b07e635081b248812ebda31ea4cb76a7eabf57827e0530bf3b66fc358000651a5c108c732d8b4912f92
+
+pkgname = ffdec-git
