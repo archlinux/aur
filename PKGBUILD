@@ -3,7 +3,7 @@
 pkgname=gawk-gd
 _project=gawkextlib
 pkgver=1.0.3
-pkgrel=6
+pkgrel=7
 pkgdesc="GAWK extension - interface to the GD graphics library"
 arch=('x86_64')
 url="https://sourceforge.net/projects/gawkextlib/"
