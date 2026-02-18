@@ -1,20 +1,20 @@
 pkgbase = chalkak-bin
 	pkgdesc = Hyprland screenshot preview and editor utility (prebuilt binary)
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/bityoungjae/chalkak
 	arch = x86_64
 	license = MIT
 	license = Apache-2.0
-	provides = chalkak
-	conflicts = chalkak
 	depends = gtk4
 	depends = hyprland
 	depends = grim
 	depends = slurp
 	depends = wl-clipboard
 	optdepends = chalkak-ocr-models: OCR text recognition support
-	source = chalkak-bin-0.5.0-x86_64.tar.gz::https://github.com/bityoungjae/chalkak/releases/download/v0.5.0/chalkak-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = c4111cc5fb9f745d47ccb8315d7f33206a80a56f8252685790c7a46d27ed3ce1
+	provides = chalkak
+	conflicts = chalkak
+	source = chalkak-bin-0.5.1-x86_64.tar.gz::https://github.com/bityoungjae/chalkak/releases/download/v0.5.1/chalkak-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 13aea31dfa0d063ea86181bf0239fd3d2c300b74e67679cf269d51a948acf5fd
 
 pkgname = chalkak-bin
