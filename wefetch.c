@@ -200,6 +200,11 @@ int display_logo(const char* distro_name) {
     snprintf(logo_path, MAX_PATH, "%s/.config/wefetch/logos/%s.txt", getenv("HOME"), distro_lower);
     
     FILE *fp = fopen(logo_path, "r");
+    if (!fp) {
+        snprintf(logo_path, MAX_PATH, "/usr/share/wefetch/logos/%s.txt", distro_lower);
+        fp = fopen(logo_path, "r");
+    }
+    
     if (!fp) return 0;
     
     char line[256];

@@ -7,8 +7,14 @@ url="https://github.com/Nick-cpp/wefetch"
 license=('GPL')
 depends=('glibc')
 makedepends=('git' 'gcc')
-source=("wefetch.c")
-sha256sums=('SKIP')
+# Используем подстановку шелла для всех txt файлов
+source=("wefetch.c" 
+        "alpine.txt" "android.txt" "antix.txt" "arch.txt" "artix.txt" 
+        "debian.txt" "endeavouros.txt" "fedora.txt" "gentoo.txt" "kali.txt" 
+        "macos.txt" "mint.txt" "mxlinux.txt" "nixos.txt" "opensuse.txt" 
+        "slackware.txt" "tails.txt" "ubuntu.txt" "void.txt")
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+            'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 build() {
   gcc -o wefetch wefetch.c
@@ -16,4 +22,6 @@ build() {
 
 package() {
   install -Dm755 wefetch "$pkgdir/usr/bin/wefetch"
+  install -d "$pkgdir/usr/share/wefetch/logos"
+  cp *.txt "$pkgdir/usr/share/wefetch/logos/"
 }
