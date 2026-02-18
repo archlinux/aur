@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=GPU-T
+Comment=A lightweight GPU-Z clone for Linux
+Exec=gpu-t
+Terminal=false
+Icon=gpu-t
+Type=Application
+Categories=System;Utility;

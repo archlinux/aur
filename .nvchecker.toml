@@ -1,0 +1,4 @@
+[gpu-t]
+source = "git"
+git = "https://github.com/lseurttyuu/GPU-T.git"
+prefix = "v"
