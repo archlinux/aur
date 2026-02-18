@@ -2,7 +2,7 @@
 
 _hkgname=atomic-counter
 pkgname=haskell-atomic-counter
-pkgver=0.1.2.3
+pkgver=0.1.2.4
 pkgrel=1
 pkgdesc="Mutable counters that can be modified with atomic operatinos"
 url="https://github.com/sergv/atomic-counter"
@@ -13,7 +13,7 @@ makedepends=('ghc' 'haskell-quickcheck' 'haskell-async' 'haskell-tasty' 'haskell
 source=("https://hackage.haskell.org/packages/archive/$_hkgname/$pkgver/$_hkgname-$pkgver.tar.gz"
         Setup.hs
        )
-sha256sums=('ce4b63391b3c0d426cbe32af89f483222602a5b43aa5379aa720bf6f45f4cf04'
+sha256sums=('b101e8dedc66da051a16022287d9b05c2dcb2f54f973fb09298b3486cd63ec2f'
             '5066653559d4d6134b022d66a634a17fdcf8db35d28b447e581fec284afa4689')
 
 prepare() {
