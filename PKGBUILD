@@ -1,7 +1,7 @@
 
 # Maintainer: Rongbo <wurongbo2012@hotmail.com>
 pkgname=xmcl-electron-bin
-pkgver=0.54.3
+pkgver=0.54.4
 pkgrel=1
 pkgdesc="X Minecraft Launcher - An Open Source Minecraft Launcher with Modern UX. Provides a Disk Efficient way to manage all your Mods!"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ checkdepends=()
 optdepends=(
     'jre11-openjdk: Recommended for Minecraft 1.12(17w13a)-1.17(21w18a)'
     'jre17-openjdk: Recommended for Minecraft 1.17(21w19a)-1.20'
-    'jre21-openjdk: Recommended for Minecraft 1.21'
-    'jre25-openjdk'
+    'jre21-openjdk: Required for Minecraft 1.21'
+    'jre25-openjdk: Required for Minecraft 26'
 )
 provides=('xmcl')
 conflicts=()
@@ -25,8 +25,8 @@ source_x86_64=("xmcl_${pkgver}_x86_64.asar.gz::https://github.com/Voxelum/x-mine
 source_aarch64=("xmcl_${pkgver}_aarch64.asar.gz::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v${pkgver}/app-${pkgver}-linux-arm64.asar.gz")
 sha256sums=('cf229073fb478254b751a8198b23be961533101065ca712e323cf60cd15f3383'
             '2bec20067e7ef4c7265be764a06dc8b94d98fef53cf6c1ddca25f2f6814d7010')
-sha256sums_x86_64=('5327dbe66a04ea979f184a09ee6fb2f299c26b62e735f8ede9724e71e41a7d8a')
-sha256sums_aarch64=('e9c1fcba28090a0996bb5a652bba2f186da92a55e819c2a6188b1a24e2da3bad')
+sha256sums_x86_64=('f6fdc595b4aa91adf718a82b56bc6802d5c44772587f4e783f93e30a8bd30b68')
+sha256sums_aarch64=('f6fdc595b4aa91adf718a82b56bc6802d5c44772587f4e783f93e30a8bd30b68')
 
 prepare() {
     icns2png -x dark.icns
