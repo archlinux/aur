@@ -76,7 +76,7 @@ build() {
             --with-hdf5=1 --with-hdf5-fortran-bindings=1 \
             --with-hwloc=1 \
             --with-pastix=1 \
-            --with-ptscotch=1 --with-bison=1 --with-ptscotch-lib=[libesmumps.so,libptscotch.so,libptscotcherr.so,libscotch.so,libptscotcherr.so] --with-ptscotch-include=/usr/include \
+            --with-ptscotch=1 --with-bison=1 --with-ptscotch-lib=[libesmumps.so,libptscotch.so,libptscotcherr.so,libscotch.so,libscotcherr.so] --with-ptscotch-include=/usr/include \
             --with-scalar-type=complex \
             --without-zfp \
             $(sh ${srcdir}/test_optdepends.sh)"
