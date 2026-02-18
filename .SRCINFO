@@ -1,7 +1,7 @@
 pkgbase = windsurf-next-marketplace
 	pkgdesc = Enable vscode marketplace in windsurf-next
 	pkgver = 1.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://marketplace.visualstudio.com/vscode
 	install = windsurf-next-marketplace.install
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = windsurf-next-marketplace
 	source = windsurf-next-marketplace.hook
 	source = patch.py
 	sha256sums = 4962b28571e3305196f082817db648010685f747097b7fc8d0170a157e6fa682
-	sha256sums = cbb67095313282989b34c1ff41e3717c2136ff6c010479ac841dfddf7fd68441
+	sha256sums = db961a0fd3b38e31068f6aa4be6baf9c4a5159880f416fa229309d2523afa19f
 
 pkgname = windsurf-next-marketplace
 	depends = windsurf-next
