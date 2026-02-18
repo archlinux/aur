@@ -1,23 +1,30 @@
 pkgbase = nolio
 	pkgdesc = Minimal calendar-based todo app built with Flutter
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/Grey-007/nolio
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = flutter
+	makedepends = clang
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
 	depends = gtk3
+	depends = glib2
 	depends = libepoxy
 	depends = libxkbcommon
 	depends = libglvnd
 	depends = mesa
+	depends = pango
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = at-spi2-core
+	depends = gcc-libs
 	provides = nolio
 	conflicts = nolio-bin
-	source = nolio-0.2.0.tar.gz::https://github.com/Grey-007/nolio/archive/refs/tags/v0.2.0.tar.gz
-	source = nolio.desktop
-	source = nolio.png
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = git+https://github.com/Grey-007/nolio.git#tag=v0.3.0
 	sha256sums = SKIP
 
 pkgname = nolio

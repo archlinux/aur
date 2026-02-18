@@ -1,7 +1,7 @@
 # Maintainer: Grey-007 <https://github.com/Grey-007>
 
 pkgname=nolio
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Minimal calendar-based todo app built with Flutter"
 arch=('x86_64')
@@ -9,53 +9,60 @@ url="https://github.com/Grey-007/nolio"
 license=('MIT')
 
 depends=(
-  'gtk3'
-  'libepoxy'
-  'libxkbcommon'
-  'libglvnd'
-  'mesa'
+  gtk3
+  glib2
+  libepoxy
+  libxkbcommon
+  libglvnd
+  mesa
+  pango
+  cairo
+  gdk-pixbuf2
+  at-spi2-core
+  gcc-libs
 )
 
 makedepends=(
-  'flutter'
+  git
+  flutter
+  clang
+  cmake
+  ninja
+  pkgconf
 )
 
 provides=('nolio')
 conflicts=('nolio-bin')
 
-source=(
-  "nolio-$pkgver.tar.gz::https://github.com/Grey-007/nolio/archive/refs/tags/v$pkgver.tar.gz"
-  "nolio.desktop"
-  "nolio.png"
-)
+source=("git+https://github.com/Grey-007/nolio.git#tag=v$pkgver")
+sha256sums=('SKIP')
 
-sha256sums=(
-  'SKIP'
-  'SKIP'
-  'SKIP'
-)
+prepare() {
+  cd "$srcdir/$pkgname"
+  flutter pub get
+}
 
 build() {
-  cd "$srcdir/nolio-$pkgver"
-
-  flutter pub get
+  cd "$srcdir/$pkgname"
   flutter build linux --release
 }
 
 package() {
-  cd "$srcdir/nolio-$pkgver"
+  cd "$srcdir/$pkgname/build/linux/x64/release/bundle"
 
-  install -d "$pkgdir/usr/lib/nolio"
-  cp -r build/linux/x64/release/bundle/* "$pkgdir/usr/lib/nolio/"
+  install -dm755 "$pkgdir/usr/lib/nolio"
+  cp -a . "$pkgdir/usr/lib/nolio/"
 
-  install -d "$pkgdir/usr/bin"
+  chmod +x "$pkgdir/usr/lib/nolio/nolio"
+
+  install -dm755 "$pkgdir/usr/bin"
   ln -s /usr/lib/nolio/nolio "$pkgdir/usr/bin/nolio"
 
   install -Dm644 \
-    "$srcdir/nolio.desktop" \
-    "$pkgdir/usr/share/applications/nolio.desktop"
+    "$srcdir/$pkgname/linux/assets/icon.png" \
+    "$pkgdir/usr/share/icons/hicolor/256x256/apps/nolio.png"
 
   install -Dm644 \
-    "$srcdir/nolio.png" \
-    "$pkgdir/usr/share/icons/hicolor/256x256/apps/nolio.png"
+    "$srcdir/$pkgname/linux/nolio.desktop" \
+    "$pkgdir/usr/share/applications/nolio.desktop"
 }
