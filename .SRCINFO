@@ -1,6 +1,6 @@
 pkgbase = static-web-server-git
 	pkgdesc = A cross-platform, high-performance and asynchronous web server for static files-serving
-	pkgver = 2.33.0.r2.g30a6409
+	pkgver = 2.40.1.r14.g08900b36
 	pkgrel = 1
 	url = https://static-web-server.net/
 	arch = i686
@@ -9,9 +9,10 @@ pkgbase = static-web-server-git
 	license = MIT
 	makedepends = git
 	makedepends = cargo
-	depends = gcc-libs
+	depends = glibc
+	depends = libgcc
 	depends = zlib
-	provides = static-web-server=2.33.0.r2.g30a6409
+	provides = static-web-server=2.40.1.r14.g08900b36
 	conflicts = static-web-server
 	options = !lto
 	backup = etc/default/static-web-server
