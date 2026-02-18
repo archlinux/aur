@@ -1,6 +1,6 @@
 # Maintainer: qrafty-ai <contact@qrafty.ai>
 pkgname=opencode-kanban
-pkgver=0.1.11
+pkgver=0.1.12
 pkgrel=1
 pkgdesc="Terminal kanban board for managing OpenCode tmux sessions and Git worktrees"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('tmux' 'sqlite')
 makedepends=('rust' 'cargo' 'cmake' 'nasm' 'perl' 'sqlite')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/qrafty-ai/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('215ef76c20170b7c79e41e8702a52dd63b18a488bb5990dde555f8d3ea7e51f9')
+sha256sums=('7bbcfe110ba20517e79aff0271719b9a670c2ca99bd4fa4edb745d5030e78cca')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -21,24 +21,14 @@ build() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-<<<<<<< ci/aur
     unset CFLAGS CXXFLAGS LDFLAGS
-=======
-    export CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=gcc
-    export CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER=aarch64-linux-gnu-gcc
->>>>>>> main
     cargo build --frozen --release
 }
 
 check() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-<<<<<<< ci/aur
     unset CFLAGS CXXFLAGS LDFLAGS
-=======
-    export CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=gcc
-    export CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER=aarch64-linux-gnu-gcc
->>>>>>> main
     cargo test --frozen --lib 2>/dev/null || true
 }
 
