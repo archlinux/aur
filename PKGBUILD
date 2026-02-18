@@ -1,6 +1,6 @@
 # Maintainer: Anjishnu Sengupta <itsaemail@duck.com>
 pkgname=ny-cli
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Terminal-based anime streaming client with self-hosted scraping via aniwatch"
 arch=('any')
