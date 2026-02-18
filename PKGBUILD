@@ -1,7 +1,7 @@
 # Maintainer: Emiliano Bovetti <emiliano.bovetti@gmail.com>
 # Original Maintainer: Ivan Marquesi Lerner <ivanmlerner@protonmail.com>
 
-pkgname=(lc0 lc0-network-small lc0-network-medium lc0-network-large lc0-network-very-large)
+pkgname=(lc0 lc0-network-sm lc0-network-md lc0-network-lg lc0-network-xl)
 pkgver=0.32.1
 pkgrel=1
 arch=(x86_64)
@@ -9,7 +9,6 @@ arch=(x86_64)
 url="https://lczero.org/"
 license=("GPL-3.0-or-later")
 
-depends=(glibc gcc-libs openblas zlib lc0-network)
 makedepends=(meson eigen blas-openblas)
 optdepends=("blas-openblas: Backend for use with CPUs"
       "cudnn: Backend for use with nvidia GPUs"
@@ -68,6 +67,7 @@ check() {
 }
 
 package_lc0() {
+  depends=(openblas zlib lc0-network)
   pkgdesc="UCI-compliant chess engine designed to play chess via neural network, \
            specifically those of the LeelaChessZero project."
 
@@ -76,28 +76,28 @@ package_lc0() {
     "${pkgdir}/usr/bin/lc0"
 }
 
-package_lc0-network-small() {
+package_lc0-network-sm() {
   provides=(lc0-network)
   pkgdesc="Small network for lc0 chess engine, requires ~1.6 GB of memory, recommended for CPU usage."
 
   install -Dm644 "${srcdir}/${_sm}" "${pkgdir}/usr/share/lc0/${_sm}"
 }
 
-package_lc0-network-medium() {
+package_lc0-network-md() {
   provides=(lc0-network)
   pkgdesc="Medium network for lc0 chess engine, requires ~1.8 GB of memory, recommended for CPU usage."
 
   install -Dm644 "${srcdir}/${_md}" "${pkgdir}/usr/share/lc0/${_md}"
 }
 
-package_lc0-network-large() {
+package_lc0-network-lg() {
   provides=(lc0-network)
   pkgdesc="Large network for lc0 chess engine, requires ~2.6 GB of memory, recommended for GPU usage."
 
   install -Dm644 "${srcdir}/${_lg}" "${pkgdir}/usr/share/lc0/${_lg}"
 }
 
-package_lc0-network-very-large() {
+package_lc0-network-xl() {
   provides=(lc0-network)
   pkgdesc="Large network for lc0 chess engine, requires ~4 GB of memory, recommended for large GPUs. \
     This is currently being sent to engine competitions like the TCEC and CCC."

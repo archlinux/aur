@@ -7,11 +7,6 @@ pkgbase = lc0
 	makedepends = meson
 	makedepends = eigen
 	makedepends = blas-openblas
-	depends = glibc
-	depends = gcc-libs
-	depends = openblas
-	depends = zlib
-	depends = lc0-network
 	optdepends = blas-openblas: Backend for use with CPUs
 	optdepends = cudnn: Backend for use with nvidia GPUs
 	optdepends = opencl-driver: Backend for use with OpenCL
@@ -35,19 +30,22 @@ pkgbase = lc0
 
 pkgname = lc0
 	pkgdesc = UCI-compliant chess engine designed to play chess via neural network, specifically those of the LeelaChessZero project.
+	depends = openblas
+	depends = zlib
+	depends = lc0-network
 
-pkgname = lc0-network-small
+pkgname = lc0-network-sm
 	pkgdesc = Small network for lc0 chess engine, requires ~1.6 GB of memory, recommended for CPU usage.
 	provides = lc0-network
 
-pkgname = lc0-network-medium
+pkgname = lc0-network-md
 	pkgdesc = Medium network for lc0 chess engine, requires ~1.8 GB of memory, recommended for CPU usage.
 	provides = lc0-network
 
-pkgname = lc0-network-large
+pkgname = lc0-network-lg
 	pkgdesc = Large network for lc0 chess engine, requires ~2.6 GB of memory, recommended for GPU usage.
 	provides = lc0-network
 
-pkgname = lc0-network-very-large
+pkgname = lc0-network-xl
 	pkgdesc = Large network for lc0 chess engine, requires ~4 GB of memory, recommended for large GPUs. This is currently being sent to engine competitions like the TCEC and CCC.
 	provides = lc0-network
