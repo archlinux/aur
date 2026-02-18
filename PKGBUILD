@@ -10,7 +10,7 @@ conflicts=(librewolf)
 __pkgname=librewolf
 _pkgname=LibreWolf
 epoch=1
-pkgver=147.0.3_2
+pkgver=147.0.4_1
 _fixedfirefoxver="${pkgver%_*}" # Version of Firefox this LibreWolf version is based on, but the Firefox patch number is always included
 _librewolfver="${pkgver#*_}"
 _firefoxver="${_fixedfirefoxver%.0}" # Removes ".0" from the end. For "136.0.0" this will result in "136.0" but for "136.0.1" won't do anything.
@@ -29,7 +29,6 @@ depends=(
   ffmpeg
   fontconfig
   freetype2
-  gcc-libs
   gdk-pixbuf2
   glib2
   glibc
@@ -111,13 +110,17 @@ options=(
 install='librewolf.install'
 source=(
   https://codeberg.org/api/packages/librewolf/generic/librewolf-source/$_firefoxver-$_librewolfver/librewolf-$_firefoxver-$_librewolfver.source.tar.gz{,.sig}
+  https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/d82490f5db9d55f3e5e61b640c6618ab209aa06b/0003-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
+  https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/d82490f5db9d55f3e5e61b640c6618ab209aa06b/0004-Fix-sandbox-to-build-with-glibc-2.43.patch
   $__pkgname.desktop
   "default192x192.png"
   allow_dark.patch
 )
 
-sha256sums=('7c7bd5afb9f2fa8b9e8aeea28f0d07a42dd703a0b6a49ee76628047e9c30b574'
+sha256sums=('44f291b45211f50a5accfcd5d2a4a219ff3e4a7ad5e4115201c0a5ed5c80a45e'
 			'SKIP'
+			'c2aaff2a743c738edbf02d7be816c30fe3a5acb2d3dcb7a3906357a9f2ed438f'
+			'8d2182ae8660474ac567482fe6658af77f3b402314e361c846528ae171586245'
             '3d6ac59ae9d5ba4c9fe15f95c1338fa68214dec6119f8432336403e3be50f8ae'
             '959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1'
             '9ded0c9b89cbdcf8edc0494ded7c67afdbbc0442adc4a45839e628e180eab265')
@@ -196,7 +199,10 @@ fi
   export LDFLAGS+=" -Wl,--no-keep-memory"
 
   # upstream Arch fixes
-  #
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1999625
+  patch -Np1 -i ../0003-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=2016618
+  patch -Np1 -i ../0004-Fix-sandbox-to-build-with-glibc-2.43.patch
 }
 
 
