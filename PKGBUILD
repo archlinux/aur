@@ -1,11 +1,11 @@
 # Maintainer: srsxnsh <me@srsxnsh.xyz>
 pkgname=nimbsh
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A simple shell built in Nim"
 arch=('x86_64' 'aarch64')
 url="https://github.com/srsxnsh/nimbsh"
-license=('GPL')
+license=('GPL-3.0')
 depends=()
 makedepends=('nim' 'git')
 source=("${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}")
