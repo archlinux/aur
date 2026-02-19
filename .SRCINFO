@@ -9,7 +9,9 @@ pkgbase = onednn-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = doxygen
-	depends = gcc-libs
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
 	provides = onednn=3.9_pc.r389.g5f44f1ec49
 	conflicts = onednn
 	source = git+https://github.com/oneapi-src/oneDNN.git
