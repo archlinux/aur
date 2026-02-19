@@ -1,7 +1,7 @@
 pkgname=lunahr
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
-pkgdesc="Polar H10 heart rate monitor app with OSC and logging"
+pkgdesc="Heart rate monitor for VRChat OSC with Polar H10 (BLE) and Pulsoid support"
 arch=('x86_64')
 url="https://github.com/PetLucy/LunaHR-Linux"
 license=('custom')
@@ -13,10 +13,11 @@ depends=(
   'python-bleak'
   'python-osc'
   'python-colorama'
+  'python-websockets'
 )
 
 source=(https://github.com/PetLucy/LunaHR-Linux/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('e99d35f1ffef002cfac191aa960c2016c4c8ba8194885de0e0bff3b5f0fb56c2')
+sha256sums=('894c31f16bf3be6cd45a6af35a0bdf5835dde1eb1143025d2939302f879ecad1')
 
 package() {
   cd "$srcdir/LunaHR-Linux-${pkgver}"
