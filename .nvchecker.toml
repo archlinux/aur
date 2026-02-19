@@ -1,0 +1,5 @@
+[enseal-bin]
+source = "github"
+github = "FlerAlex/enseal"
+use_latest_release = true
+prefix = "v"
