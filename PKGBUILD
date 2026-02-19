@@ -2,13 +2,13 @@
 # Maintainer: Paulo Matias <matias@ufscar.br>
 
 pkgname=bluespec-git
-pkgver=r886.e9187c10
+pkgver=r970.9bd39e6f
 pkgrel=1
 pkgdesc='Bluespec Compiler (BSC)'
 arch=('x86_64')
 url='https://github.com/B-Lang-org/bsc'
 license=('BSD')
-depends=('haskell-old-time' 'haskell-syb' 'haskell-regex-compat' 'haskell-split')
+depends=('haskell-old-time' 'haskell-syb' 'haskell-regex-compat' 'haskell-split' 'haskell-strict-concurrency')
 makedepends=('git' 'gperf' 'ghc' 'tcl' 'texlive-latexextra' 'texlive-fontsextra')
 optdepends=('tcl: bluesim and bluetcl')
 source=("git+https://github.com/b-lang-org/bsc.git"
