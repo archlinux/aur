@@ -4,10 +4,10 @@
 _dist='Class-Refresh'
 pkgname='perl-class-refresh'
 pkgver=0.07
-pkgrel=2
+pkgrel=3
 pkgdesc='refresh your classes during runtime'
 arch=('any')
-url='https://metacpan.org/dist/Class-Refresh'
+url="https://metacpan.org/dist/$_dist"
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 depends=(
     'perl'
@@ -20,6 +20,8 @@ depends=(
 checkdepends=(
     'perl-exporter'
     'perl-file-temp'
+    'perl-io'
+    'perl-pathtools'
     'perl-test-fatal'
     'perl-test-requires'
     'perl-test-simple'
@@ -33,9 +35,9 @@ build()
     cd $_dist-$pkgver
 
     unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
-    export PERL_MM_OPT='NO_PACKLIST=1 NO_PERLLOCAL=1' PERL_MM_USE_DEFAULT=1
+    export PERL_MM_USE_DEFAULT=1
 
-    /usr/bin/perl Makefile.PL
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
 }
 
