@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BB
-_pkgver=2019.10-1
+_pkgver=2026.1.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=7
+pkgrel=1
 pkgdesc="Solving and Optimizing Large-Scale Nonlinear Systems"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -18,8 +18,8 @@ optdepends=(
   r-setrng
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('34607566d639cb346e1b979767945fef')
-b2sums=('58d45aaaaefe9d364b6960230fad8dc10d3d9d5d0b434df63856786ea0fd5d57f3a9ea93b9dde7394fe7dcb4237f576d46af618b9e86dea21c6dd93db6f4cd7d')
+md5sums=('7fa0019545d4f44ecd3466b242f5f51d')
+b2sums=('98dd510bfbc4db57f75b9722b18315958ffd1d77634ece053f00a695f49860bd48672901214fe2193f4a679c6a2805219d97f1e11d5bad89a56d225c1dbefc84')
 
 build() {
   mkdir build
