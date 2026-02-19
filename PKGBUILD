@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 
 pkgname=wlmaker
-pkgver=0.7
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='Wayland compositor inspired by WindowMaker'
 url=https://github.com/phkaeser/wlmaker
@@ -10,7 +10,7 @@ license=(Apache-2.0)
 makedepends=(cmake doxygen git wayland-protocols)
 depends=(bash cairo libxkbcommon libxdg-basedir wlroots0.19 xorg-xwayland)
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-b2sums=('7339a4c8f7b828d5f2d83753d2a70a0129deea181fbd7486ea2a379338a51843283d4b1808dedd9bc5ea33b9ed5851b4fbccf39a673582ec405a14a34ca42467')
+b2sums=('6479f7691f15ff749c3abd041b28ad634e8151fba0baec3acc2c766defc84b680721f5fba444f0b5bc15d7850f04ffa5a71d805b5f57e55adf3861779e7da4f4')
 
 prepare() {
 	for i in "$pkgname-$pkgver"{,/submodules/libbase}/CMakeLists.txt ; do
@@ -31,9 +31,7 @@ build() {
 }
 
 check() {
-	return 0
- 	# FIXME: Tests titlebar_title.title and primitives.window_title are failing.
-	# ctest --test-dir build --output-on-failure
+	ctest --test-dir build --output-on-failure
 }
 
 package() {
