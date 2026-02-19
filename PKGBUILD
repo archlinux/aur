@@ -1,3 +1,4 @@
+# Maintainer: Awalon <git at awalon dot de>
 # Maintainer: Bitals <me at bitals dot xyz>
 # Contributor: xeruf <27jf at pm dot me>
 # Contributor: Matthias De Bie <mattydebie@gmail.com>
@@ -5,7 +6,7 @@
 pkgname='invoiceninja-desktop'
 _repo='admin-portal'
 pkgdesc="Desktop client for Invoice Ninja"
-pkgver=5.0.172
+pkgver=5.0.183
 pkgrel=1
 url='https://invoiceninja.com/'
 source=("git+https://github.com/invoiceninja/${_repo}#tag=v${pkgver}" "invoiceninja-desktop.desktop" "invoiceninja")
@@ -18,14 +19,18 @@ depends=(gtk3
         glibc)
 arch=('i686' 'x86_64')
 license=('custom')
-sha512sums=('SKIP'
+sha512sums=('0199f6d17772eb3dd515ca297529d6f3809267703e7cef25f6487cc157772759fe8424700512e050e938bd9e2413c4a3d2fa83c22c12d7f25abd2acb64170076'
             '2465924fe1087c5980419841d17352f23fb2458a74bb1acda577d58f374e0dcd871e8bc1334c7ed151e6050b08e50eb400631a24b0b94007b5e938d875db6255'
             'bb7286a93b510c0c0b5fbb7b3889e4e264bb17108d43e981fdca1535764c02d99b1a8f4a3ee878c994730cff82ff736a0c56ca8089bdca26d82d66df12ef9a93')
 
 prepare() {
   cd "${srcdir}/${_repo}"
   cp lib/.env.dart.example lib/.env.dart
-  fvm use 3.19.6 --force
+  sed -i s#/superlistapp/#/Flutter-Bounty-Hunters/# pubspec.yaml
+  sed -i s#/superlistapp/#/Flutter-Bounty-Hunters/# pubspec.lock
+  sed -i s#/superlistapp/#/Flutter-Bounty-Hunters/# pubspec.foss.yaml
+  fvm use 3.35.5 --force
+  fvm flutter pub get
 }
 
 build() {
