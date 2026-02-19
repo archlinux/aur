@@ -1,6 +1,6 @@
 pkgbase = python-ray
 	pkgdesc = A fast and simple framework for building and running distributed applications
-	pkgver = 2.53.0
+	pkgver = 2.54.0
 	pkgrel = 1
 	url = https://github.com/ray-project/ray
 	arch = x86_64
@@ -46,7 +46,7 @@ pkgbase = python-ray
 	optdepends = python-scipy: for ray[rllib]
 	optdepends = python-typer: for ray[rllib]
 	optdepends = python-rich: for ray[rllib]
-	source = ray-ray-2.53.0.tar.gz::https://github.com/ray-project/ray/archive/ray-2.53.0.tar.gz
-	sha512sums = 5be44f91f5ad744f8c19d1e377be925f5fe5e1e8af8a6dd588831fc24f77145d628490fb8faa6142faf54f7c9d43debac01ad631155903dd74e1fe8cbf255da4
+	source = ray-ray-2.54.0.tar.gz::https://github.com/ray-project/ray/archive/ray-2.54.0.tar.gz
+	sha512sums = 83367aa36d7bb41d34dab53253a60acaf4efd1a42823ae761cd60b848b9b0387660e62aa87518df5be4135ff22a2ab9b2b69359c4e0abafe3327406c55f139ad
 
 pkgname = python-ray
