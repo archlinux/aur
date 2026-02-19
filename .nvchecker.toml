@@ -1,0 +1,3 @@
+[perl-poe-component-curl-multi]
+source = "cpan"
+cpan = "POE-Component-Curl-Multi"
