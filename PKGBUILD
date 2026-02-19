@@ -2,7 +2,7 @@
 
 pkgname=sanctum
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A small, reviewable, capable, pq-secure and fully privilege separated VPN daemon"
 arch=('x86_64')
 url="https://sanctorum.se"
