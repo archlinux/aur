@@ -1,9 +1,10 @@
 pkgbase = vulkan-terakan-git
-	pkgdesc = Triangl3's Mesa fork with amd_terascale Vulkan support (Terakan branch)
+	pkgdesc = Standalone Vulkan library for Triangl3's Terakan
 	pkgver = 26.0.0.r208349.g38146e0a9a8
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/Triang3l/mesa.git
 	arch = x86_64
+	arch = aarch64
 	license = custom
 	makedepends = meson
 	makedepends = ninja

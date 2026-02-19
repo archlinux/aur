@@ -3,16 +3,15 @@
 pkgname=vulkan-terakan-git
 pkgver=26.0.0.r208349.g38146e0a9a8
 pkgrel=1
-pkgdesc="Triangl3's Mesa fork with amd_terascale Vulkan support (Terakan branch)"
-arch=('x86_64')
+pkgdesc="Standalone Vulkan library for Triangl3's Terakan"
+arch=('x86_64' 'aarch64')
 url="https://gitlab.freedesktop.org/Triang3l/mesa.git"
 license=('custom')
 depends=(
   'libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
   'libunwind' 'libxml2' 'zstd' 'expat' 'lm_sensors'
   'libvdpau' 'libva' 'wayland' 'xorg-xwayland' 'libxrandr'
-  'libxinerama' 'zlib'
-)
+  'libxinerama' 'zlib')
 makedepends=(
   'meson' 'ninja' 'python-mako' 'libxrandr' 'wayland-protocols'
   'libx11' 'libxext' 'xorgproto' 'libomxil-bellagio'
@@ -61,5 +60,8 @@ package() {
   cd mesa
   DESTDIR="$pkgdir" ninja -C build install
   install -Dm644 docs/license.rst "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # This is already installed by MESA.
+  # We don't need it.
   rm -rf "$pkgdir"/usr/share/drirc.d
 }
