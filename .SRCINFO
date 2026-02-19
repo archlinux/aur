@@ -1,6 +1,6 @@
 pkgbase = scalingo-bin
 	pkgdesc = Command Line client for Scalingo PaaS
-	pkgver = 1.43.1
+	pkgver = 1.43.2
 	pkgrel = 1
 	url = https://github.com/Scalingo/cli
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = scalingo-bin
 	conflicts = scalingo
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/Scalingo/cli/releases/download/1.43.1/scalingo_1.43.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 8333297782b3d0d98761eadb091a43112f7989d868fe88675e07aec5df67a8ed
-	source_aarch64 = https://github.com/Scalingo/cli/releases/download/1.43.1/scalingo_1.43.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 5d0020480fe5b750e8d64a395c64bba4c63be9e34c74a338bb828b24a4733139
+	source_x86_64 = https://github.com/Scalingo/cli/releases/download/1.43.2/scalingo_1.43.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 963c2b612ab9588ac3ff2f2877bc2262db601356790f9f8cb1e86022583265bf
+	source_aarch64 = https://github.com/Scalingo/cli/releases/download/1.43.2/scalingo_1.43.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = a839cb407868d93cebe9070ae0f86c695472e650b872413dd61a940045afe5b4
 
 pkgname = scalingo-bin
