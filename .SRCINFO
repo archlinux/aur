@@ -1,0 +1,20 @@
+pkgbase = lehrfempp-git
+	pkgdesc = Simple C++ Finite Element Framework for research and education optimized for clarity and flexibility with some trade-off concerning performance.
+	pkgver = 0.9.3.r13.gd6f3e73
+	pkgrel = 1
+	url = https://github.com/craffael/lehrfempp
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	depends = boost
+	depends = eigen
+	depends = spdlog
+	depends = gtest
+	provides = lehrfempp
+	conflicts = lehrfempp
+	source = lehrfempp::git+https://github.com/craffael/lehrfempp.git
+	sha256sums = SKIP
+
+pkgname = lehrfempp-git
