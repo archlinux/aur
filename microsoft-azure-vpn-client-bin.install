@@ -11,6 +11,11 @@ VPN access to users that are in the "network" group.
 Run the following command to add users to that group:
 
 sudo usermod -aG network \$USERNAME
+
+Additionally, for Azure VPN to run, it requires a version to be defined in
+/etc/os-release. If you don't have it there, run the following as root:
+
+echo "VERSION=\"0\"" >> /etc/os-release
 EOF
 }
 
