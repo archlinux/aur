@@ -3,7 +3,7 @@
 _pkgauthor=tanciaku
 _pkgname=tmmpr
 pkgname=${_pkgname}-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Terminal mind mapper"
 
@@ -21,9 +21,9 @@ depends=('glibc' 'gcc-libs')
 source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${_pkgname}-linux-${arch[0]}.tar.gz")
-sha256sums=('76e2ec55f85c003295b0ed6c34b969dbf5c4d4cce5d2c08c2ba4856e5f9adfa1'
-            'bb44e66f655ab1e47cf0c847f6ba3ba542f8a21218c7c87b06bcb368516dabeb')
-sha256sums_x86_64=('cd1b42be6e25038bcd4e7904add36b9488929e5f760079b4f395cf87fab95347')
+sha256sums=('617a800bbebeb04eebaeec269ddcab8b7c0b64ad86b85ad48da547cca82645c5'
+            '0ddd6685935c91808519074735f2477929200fa208dc23c29f1a0bd088e63886')
+sha256sums_x86_64=('3fc24799c34f2ec58151fdf4b6e7927f05d867833e9404da5ee49f14886acaea')
 
 
 package() {
