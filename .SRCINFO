@@ -1,0 +1,15 @@
+pkgbase = othellotk
+	pkgdesc = Othello (aka reversi) is an Edax gui to play Othello against the Edax engine
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://johncheetham.com/projects/othellotk/index.html
+	arch = any
+	license = GPL-3.0-only
+	depends = python3
+	depends = tk
+	depends = python-setuptools
+	depends = edax-reversi
+	source = othelloTk-0.1.1.tar.gz::https://github.com/johncheetham/othellotk/archive/v0.1.1.tar.gz
+	sha256sums = c3e0634ccd705e074cb45802944a626deb8169df439ff0737e9c4bdd80391adb
+
+pkgname = othellotk
