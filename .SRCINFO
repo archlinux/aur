@@ -1,0 +1,19 @@
+pkgbase = hypr-dock-git
+	pkgdesc = Interactive Dock Panel for Hyprland
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/lotos-linux/hypr-dock
+	install = hypr-dock-git.install
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	makedepends = make
+	depends = gtk3
+	depends = gtk-layer-shell
+	provides = hypr-dock
+	conflicts = hypr-dock
+	source = hypr-dock::git+https://github.com/lotos-linux/hypr-dock
+	sha256sums = SKIP
+
+pkgname = hypr-dock-git
