@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=arti-git
-pkgver=1.1.12.r78.gf6304630e
+pkgver=2.0.0.r227.ge9850b65f
 pkgrel=1
 pkgdesc="An implementation of Tor in Rust"
 arch=('i686' 'x86_64')
 url="https://gitlab.torproject.org/tpo/core/arti"
-license=('Apache' 'MIT')
-depends=('glibc' 'liblzma.so' 'libsqlite3.so' 'libssl.so')
-makedepends=('git' 'rust')
+license=('Apache-2.0' 'MIT')
+depends=('glibc' 'libgcc' 'liblzma.so' 'libsqlite3.so' 'libssl.so')
+makedepends=('git' 'cargo')
 provides=("arti=$pkgver")
 conflicts=('arti')
 backup=('etc/arti.d/arti.toml')
@@ -29,7 +29,7 @@ pkgver() {
   cd "arti"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^arti-v[0-9\.]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^arti-v//'
 }
