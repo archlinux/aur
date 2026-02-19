@@ -34,27 +34,29 @@ optdepends=(
   # See https://github.com/preaction/Log-Any/commit/c2cc64c245f90068f7135895e3c3f642d587703c
   'perl-devel-stacktrace>=2.00: for Log::Any::Proxy::WithStackTrace'
 )
-options=(!emptydirs purge)
+options=(!emptydirs)
 source=("https://cpan.metacpan.org/authors/id/P/PR/PREACTION/Log-Any-${pkgver}.tar.gz")
 b2sums=('bbf9418026fbc301df7cec3c7a52027215fc7737e1c7678a6a0ae0040143398173e67b0b6c249359490956554e942458a3ae923b060c212b35de08e2cf1af256')
 
 build() {
   cd "${srcdir}/Log-Any-${pkgver}"
 
+  unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
-  perl Makefile.PL NO_PACKLIST=true NO_PERLLOCAL=true INSTALLDIRS=vendor
+  /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
   make
 }
 
 check() {
   cd "${srcdir}/Log-Any-${pkgver}"
 
-  export PERL_MM_USE_DEFAULT=1
+  unset PERL5LIB PERL_LOCAL_LIB_ROOT
   make test
 }
 
 package() {
   cd "${srcdir}/Log-Any-${pkgver}"
 
-  make install DESTDIR="${pkgdir}"
+  unset PERL5LIB PERL_LOCAL_LIB_ROOT
+  make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
 }
