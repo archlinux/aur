@@ -1,7 +1,7 @@
 # Maintainer: Roald Clark <roaldclark@gmail.com>
 
 pkgname=krita-ai-diffusion
-pkgver=1.36.0
+pkgver=1.47.0
 pkgrel=1
 pkgdesc="A plugin to use generative AI in image painting and editing workflows from within Krita"
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
 install=krita-ai-diffusion.install
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "add-regex-to-requirements.patch")
-sha256sums=('2e929b5e9454ed3f42e0a5e34c1a0a08b4b1411c5196ca097e65354f19e41df9'
+sha256sums=('41c157c1f3b781d49ab1b5a77f2b770be7c6bfa88b311967902fe9b705f347cf'
             '3cdb6f448e78ae8bcfe4427d6a7b44a732b375366aa52dd4aaceb11f328edaf0')
 
 # If `git lfs install` was run before, `makepkg` may error
