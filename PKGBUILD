@@ -119,4 +119,13 @@ package_krokiet() {
 
   install -Dm755 "${srcdir}/czkawka/target/release/krokiet" \
         "${pkgdir}/usr/bin/krokiet"
+
+  install -Dm644 "${srcdir}/czkawka/data/io.github.qarmin.krokiet.desktop" \
+        "${pkgdir}/usr/share/applications/io.github.qarmin.krokiet.desktop"
+
+  install -Dm644 "${srcdir}/czkawka/data/io.github.qarmin.krokiet.metainfo.xml" \
+        "${pkgdir}/usr/share/metainfo/io.github.qarmin.krokiet.metainfo.xml"
+
+  install -Dm644 "${srcdir}/czkawka/data/icons/io.github.qarmin.czkawka.krokiet.svg" \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/io.github.qarmin.czkawka.krokiet.svg"
 }
