@@ -1,6 +1,6 @@
 pkgname=sound_themer
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A program to play sounds from a selected sound theme."
 arch=('x86_64')
 url="https://github.com/tmforshaw/sound_themer"
@@ -19,7 +19,7 @@ package() {
 	cd "$pkgname-$pkgver"
 
 	# Install the binary
-	install -Dm755 target/release/sound_themer"$pkgdir/usr/bin/sound_themer"
+	install -Dm755 target/release/sound_themer "$pkgdir/usr/bin/sound_themer"
 
 	# Install the default config file
     install -d "$pkgdir/etc/sound_themer"
