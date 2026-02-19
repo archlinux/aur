@@ -1,14 +1,15 @@
-# Maintainer: Mike Pento <mpento@darkforge.net>
+# Maintainer: Mike Pento <mjpento@gmail.com>
 
 _python=python
 _pkgname=python-efl
 pkgname=$_python-efl-git
-pkgver=1.26.99a1261.gc8d7bdd
+pkgver=1.26.99.a1292.g8d23f65
 pkgrel=1
 pkgdesc="${_python^} bindings for the Enlightenment Foundation Libraries - Development Version"
 arch=('i686' 'x86_64')
-url="http://www.enlightenment.org"
-license=('LGPL3' 'GPL3')
+options+=('!debug')
+url="https://git.enlightenment.org/enlightenment/python-efl"
+license=('LGPL-3.0-only' 'GPL-3.0-only')
 depends=("efl>=${pkgver%a*.*}" "$_python-dbus")
 makedepends=('git' "${_python/p/c}")
 provides=("${pkgname%-*}=$pkgver")
