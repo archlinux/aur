@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=optivorbis-git
-pkgver=0.1.3.r3.g64b1151
-pkgrel=2
+pkgver=0.3.0.r552.g27c0f1b
+pkgrel=1
 pkgdesc="Application for lossless, format-preserving, two-pass optimization and repair of Vorbis data"
 arch=('i686' 'x86_64')
 url="https://optivorbis.github.io/OptiVorbis/"
-license=('AGPL3' 'BSD')
-depends=('gcc-libs')
-makedepends=('git' 'rust')
+license=('AGPL-3.0-or-later' 'BSD-3-Clause')
+depends=('glibc' 'libgcc')
+makedepends=('git' 'cargo')
 provides=("optivorbis=$pkgver")
 conflicts=('optivorbis')
 source=("git+https://github.com/OptiVorbis/OptiVorbis.git")
@@ -30,7 +30,7 @@ pkgver() {
   cd "OptiVorbis"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
