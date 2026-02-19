@@ -1,9 +1,9 @@
-# Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
+# Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 # Contributor: RogueGirl <3a33oxx40 at mozmail dot com>
 # Contributor: Laurent OF Fough
 
 pkgname=iptvnator-bin
-pkgver=0.18.0
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="Cross-platform IPTV player application with support for M3U/M3U8 playlists, EPG, favorites, TV archive and more."
 arch=('x86_64')
@@ -32,7 +32,7 @@ conflicts=('iptvnator')
 options=(!strip)
 
 source=("iptvnator-${pkgver}.pacman::https://github.com/4gray/iptvnator/releases/download/v${pkgver}/iptvnator-${pkgver}-linux-x64.pacman")
-sha256sums=('872dcb0f9316af50166460c471624720dff8ddb2067770faf99f070fcd9cdd60')
+sha256sums=('0e8eeac752d47614579ceb431300bebb02fdfdf73cd6a83761df5fadd283f99a')
 
 package() {
   bsdtar -xf "${srcdir}/iptvnator-${pkgver}.pacman" -C "${pkgdir}"
