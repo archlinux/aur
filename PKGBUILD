@@ -17,7 +17,7 @@
 #                                            
 pkgname=anytype-electron-bin
 pkgver=0.54.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Operating environment for the new internet. Anytype is a next generation software that breaks down barriers between applications, gives back privacy and data ownership to users."
 arch=('x86_64')
 url="https://anytype.io/"
@@ -47,6 +47,7 @@ package() {
 
 	install -Dm755 /dev/stdin "$pkgdir/opt/Anytype/anytype" <<-EOF
 	#! /bin/sh
+	export APPIMAGE=/opt/Anytype/anytype
 	exec $_electron_dep --gtk-version=3 /opt/Anytype/resources/app.asar "\$@"
 	EOF
 }
