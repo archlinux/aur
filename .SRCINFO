@@ -1,6 +1,6 @@
 pkgbase = openblas-git
 	pkgdesc = An optimized BLAS library based on GotoBLAS2 1.13 BSD
-	pkgver = 0.3.30.r3.g4e6da5ed3
+	pkgver = 0.3.31.r60.g1ef631999
 	pkgrel = 1
 	url = https://www.openmathlib.org/OpenBLAS/
 	arch = i686
@@ -10,8 +10,9 @@ pkgbase = openblas-git
 	makedepends = cmake
 	makedepends = gcc-fortran
 	makedepends = perl
-	depends = gcc-libs
-	provides = openblas=0.3.30.r3.g4e6da5ed3
+	depends = glibc
+	depends = libgcc
+	provides = openblas=0.3.31.r60.g1ef631999
 	conflicts = openblas
 	source = git+https://github.com/OpenMathLib/OpenBLAS.git
 	sha256sums = SKIP
@@ -28,7 +29,7 @@ pkgname = blas-openblas-git
 	provides = cblas
 	provides = lapack
 	provides = lapacke
-	provides = openblas-lapack=0.3.30.r3.g4e6da5ed3
+	provides = openblas-lapack=0.3.31.r60.g1ef631999
 	conflicts = blas
 	conflicts = cblas
 	conflicts = lapack
