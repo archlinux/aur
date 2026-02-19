@@ -1,6 +1,6 @@
 pkgname=aocl-blis
 pkgver=5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="BLAS-like Library Instantiation Software Framework, AOCL branding"
 arch=('x86_64')
 url="https://github.com/amd/blis"
@@ -22,6 +22,9 @@ export CXXFLAGS="${CXXFLAGS/-march=x86-64/}"
 prepare() {
     cd $srcdir/blis-$_tag_str
 
+    # remove _FORTIFY_SOURCE flag which conflicts with Arch's
+    sed -i 's/"-D_FORTIFY_SOURCE=.\+" //' -s CMakeLists.txt
+
     cmake . -G Ninja \
 	    -DCMAKE_INSTALL_PREFIX=/usr \
 	    -DENABLE_BLAS=ON \
@@ -39,6 +42,8 @@ build() {
 check() {
     cd $srcdir/blis-$_tag_str
 
+
+    DISTPATH="$CWD"
     cmake --build . --config Release --target checkblis-fast
 
 }
