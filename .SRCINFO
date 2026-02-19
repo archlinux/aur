@@ -1,4 +1,4 @@
-pkgbase = nxmc
+pkgbase = nxmc-bin
 	pkgdesc = Graphical console for NetXMS NMS based on Eclipse.
 	pkgver = 6.0.2
 	pkgrel = 1
@@ -15,4 +15,4 @@ pkgbase = nxmc
 	sha256sums_x86_64 = 71c258c332ab3da2dd473f042f92eded7e3d6e97f3bdeff19bbd4a09b9f9691b
 	sha256sums_x86_64 = 8fdad8913f6597c91e06ae1b215002bdbce59359cd8b864d7cd07b2e3c0a910f
 
-pkgname = nxmc
+pkgname = nxmc-bin
