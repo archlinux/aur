@@ -1,0 +1,6 @@
+post_install() {
+	echo -e "\nEnable the service with:
+	systemctl --user enable bar_daemon
+	systemctl --user start bar_daemon"
+}
+

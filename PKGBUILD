@@ -1,12 +1,13 @@
 pkgname=bar_daemon
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Async status bar daemon for Linux. Uses event-driven updating of values"
 arch=('x86_64')
 url="https://github.com/tmforshaw/bar_daemon"
 license=('MIT')
 depends=('wireplumber' 'brightnessctl' 'bluez' 'bluez-utils' 'acpi' 'asusctl' 'procps-ng')
 makedepends=('cargo' 'git')
+install=bar_daemon.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('9b867f5cfe17ba855af1abc22b4f4d4ca7bc4b1c07cb96f8827055ca229a7b02')
 
@@ -27,10 +28,4 @@ package() {
 
     # Install the systemd user unit
     install -Dm644 packaging/bar_daemon.service "$pkgdir/usr/lib/systemd/user/bar_daemon.service"
-}
-
-post_install() {
-	echo -e "\nEnable the service with:
-	systemctl --user enable bar_daemon
-	systemctl --user start bar_daemon"
 }

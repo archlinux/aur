@@ -1,8 +1,9 @@
 pkgbase = bar_daemon
 	pkgdesc = Async status bar daemon for Linux. Uses event-driven updating of values
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tmforshaw/bar_daemon
+	install = bar_daemon.install
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
