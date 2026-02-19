@@ -1,6 +1,6 @@
 # Maintainer: Levi Renato <levirenato at gmail dot com>
 pkgname=youtui-player
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="YouTube TUI player with playlist, thumbnails and Catppuccin themes"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('mpv' 'yt-dlp' 'socat')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('3b8dd36b6876cce29a28aabfcd00edcda1f1badf20942991a354232f726d86063a5df633072420e58f1b2883df42413257c4b00dd76de59b4d5dd2f45bd2ddd2')
+b2sums=('05a6c4a0e6e441214b4af14fc2b86f5e4804327bfc860f1cd207e10262d6f3552a2c9622650bc053c2bd5c40b451fbea18f1948999f05adc20f57ddd90da5b83')
 
 prepare() {
   cd "youtui-player-$pkgver"
