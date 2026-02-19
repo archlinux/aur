@@ -14,7 +14,7 @@ makedepends=('perl-extutils-makemaker>=6.3002')
 checkdepends=(
   'perl-test-simple' # "Test::More"
 )
-options=(!emptydirs purge)
+options=(!emptydirs)
 source=("https://cpan.metacpan.org/authors/id/E/EV/EVO/String-Escape-${pkgver}.tar.gz"
         'https://sources.debian.org/data/main/libs/libstring-escape-perl/2010.002-3/debian/patches/backslash.patch')
 b2sums=('d012323bdf10b9c8e47c90dfe1bbb064e09c7a0b00c469d9285d8a9a7ad1ee80b1d30b1fff1d5218d4491a36780174526273775dac790db2f22c0a22cc01fb14'
@@ -30,20 +30,22 @@ prepare() {
 build() {
   cd "${srcdir}/String-Escape-${pkgver}"
 
+  unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
-  perl Makefile.PL NO_PACKLIST=true NO_PERLLOCAL=true INSTALLDIRS=vendor
+  /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
   make
 }
 
 check() {
   cd "${srcdir}/String-Escape-${pkgver}"
 
-  export PERL_MM_USE_DEFAULT=1
+  unset PERL5LIB PERL_LOCAL_LIB_ROOT
   make test
 }
 
 package() {
   cd "${srcdir}/String-Escape-${pkgver}"
 
-  make install DESTDIR="${pkgdir}"
+  unset PERL5LIB PERL_LOCAL_LIB_ROOT
+  make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
 }
