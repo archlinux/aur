@@ -1,0 +1,4 @@
+firefox-slack-policy/
+firefox-slack-policy-*-*.pkg.tar.zst
+pkg/
+src/

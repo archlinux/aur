@@ -1,0 +1,8 @@
+pkgbase = firefox-slack-policy
+	pkgdesc = Teach Firefox how to deal with slack:// URLs
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = MPL-2.0
+
+pkgname = firefox-slack-policy
