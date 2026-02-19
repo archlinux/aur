@@ -1,7 +1,7 @@
 # Maintainer: James Liu <contact at no-bull dot sh>
 
 pkgname=reflector-rs
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='Retrieve and filter the latest Arch Linux mirror list (Rust implementation)'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('openssl')
 makedepends=('cargo' 'git' 'rust' 'gzip')
 backup=('etc/xdg/reflector/reflector.conf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ef1db14c3b52e7e9c68b9e10d8457a45762771d6a0f7cf837f5fcad9143ba29a')
+sha256sums=('f5673b7a20c2ceb93bb553b5e072688124f1e7e089ced89dae3f5b67c7998632')
 
 prepare() {
   cd "$pkgname-$pkgver"
