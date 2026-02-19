@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="INDI driver for products manufactured by ricohcamerasdk"
 url="http://www.indilib.org/index.php?title=Main_Page"
 license=(LGPL-2.1-or-later)
-arch=(i686 x86_64 aarch64)
+arch=(i686 x86_64)
 depends=(libusb gcc-libs )
 makedepends=(cmake)
 source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz")
