@@ -1,0 +1,3 @@
+[nginx-mainline-mod-cache_purge]
+source = "git"
+git = "https://github.com/nginx-modules/ngx_cache_purge.git"
