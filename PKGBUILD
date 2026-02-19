@@ -8,7 +8,7 @@ pkgdesc="Synchronize Arch packages across machines"
 arch=('any')
 url="https://github.com/da-kurlzzzzz/pacpac"
 license=('WTFPL')
-depends=('ansible' 'yq' 'sudo')
+depends=('ansible' 'yq' 'sudo' 'inetutils')
 makedepends=('git')
 
 pkgver() {

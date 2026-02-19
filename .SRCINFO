@@ -9,6 +9,7 @@ pkgbase = pacpac-git
 	depends = ansible
 	depends = yq
 	depends = sudo
+	depends = inetutils
 	source = pacpac::git+https://github.com/da-kurlzzzzz/pacpac.git
 	sha256sums = SKIP
 
