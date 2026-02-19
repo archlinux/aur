@@ -1,8 +1,8 @@
 pkgbase = perl-file-xdg
 	pkgdesc = Basic implementation of the XDG base directory specification
 	pkgver = 1.03
-	pkgrel = 2
-	url = https://metacpan.org/module/File::XDG
+	pkgrel = 3
+	url = https://metacpan.org/dist/File-XDG
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later
 	checkdepends = perl-file-path>=2.07

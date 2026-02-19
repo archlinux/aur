@@ -2,13 +2,13 @@
 # Contributor: Alad Wenter <alad@archlinux.org>
 # Contributor: Brian Bidulock <bidulock@openss7.org>
 
-_dist=File-XDG
-pkgname=perl-file-xdg
+_dist='File-XDG'
+pkgname='perl-file-xdg'
 pkgver=1.03
-pkgrel=2
+pkgrel=3
 pkgdesc='Basic implementation of the XDG base directory specification'
 arch=('any')
-url='https://metacpan.org/module/File::XDG'
+url="https://metacpan.org/dist/$_dist"
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 depends=(
     'perl-file-path>=2.07'
@@ -32,9 +32,9 @@ build()
     cd $_dist-$pkgver
 
     unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
-    export PERL_MM_OPT='NO_PACKLIST=1 NO_PERLLOCAL=1' PERL_MM_USE_DEFAULT=1
+    export PERL_MM_USE_DEFAULT=1
 
-    /usr/bin/perl Makefile.PL
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
 }
 
