@@ -1,5 +1,5 @@
 # Maintainer: Your Name <itharmarv@gmail.com>
-pkgname=branch-bin # Added -bin suffix as is standard for pre-compiled binaries
+pkgname=branch # Added -bin suffix as is standard for pre-compiled binaries
 pkgver=1.2.0
 pkgrel=1
 pkgdesc="File tree and code preview desktop application built with Tauri"
