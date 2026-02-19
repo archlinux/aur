@@ -1,0 +1,12 @@
+post_install() {
+    echo "verify-everything has been installed."
+    echo "Run 'vet' to get started."
+}
+
+post_upgrade() {
+    echo "verify-everything has been upgraded to version $1."
+}
+
+post_remove() {
+    echo "verify-everything has been removed."
+}

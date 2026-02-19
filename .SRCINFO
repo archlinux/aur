@@ -1,0 +1,14 @@
+pkgbase = verify-everything
+	pkgdesc = LLM-based code review tool that finds issues tests and linters miss
+	pkgver = 0.1.11
+	pkgrel = 1
+	url = https://github.com/imbue-ai/vet
+	install = verify-everything.install
+	arch = any
+	license = AGPL-3.0-only
+	depends = python>=3.11
+	depends = git
+	source = https://github.com/imbue-ai/vet/archive/refs/tags/v0.1.11.tar.gz
+	sha512sums = SKIP
+
+pkgname = verify-everything
