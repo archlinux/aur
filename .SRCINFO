@@ -1,6 +1,6 @@
 pkgbase = paqet
 	pkgdesc = Ferries Packets Across Forbidden Boundaries
-	pkgver = 1.0.0_alpha.16
+	pkgver = 1.0.0_alpha.17
 	pkgrel = 1
 	url = https://github.com/hanselime/paqet
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = paqet
 	makedepends = git
 	makedepends = go
 	depends = libpcap
-	source = git+https://github.com/hanselime/paqet.git#tag=v1.0.0-alpha.16
-	sha256sums = 7df7d6c38518a3066d60214d3e82ddc46348e05add49bc2f38351896dd4d5617
+	source = git+https://github.com/hanselime/paqet.git#tag=v1.0.0-alpha.17
+	sha256sums = 17b6ffbd6d497667ebfea008ac576ba6eec815fd412dd7cd0f63b2bb97b322d9
 
 pkgname = paqet
