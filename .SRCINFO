@@ -1,0 +1,16 @@
+pkgbase = viewmd
+	pkgdesc = Lightweight GTK3 markdown viewer
+	pkgver = 0.r3.g5f0cb22
+	pkgrel = 1
+	url = https://github.com/rabfulton/ViewMD
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	makedepends = pkgconf
+	depends = gtk3
+	source = viewmd::git+https://github.com/rabfulton/ViewMD.git
+	sha256sums = SKIP
+
+pkgname = viewmd
