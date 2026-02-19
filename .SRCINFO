@@ -1,0 +1,14 @@
+pkgbase = zarf
+	pkgdesc = Airgap CLI tool for Kubernetes
+	pkgver = 0.71.1
+	pkgrel = 1
+	url = https://github.com/zarf-dev/zarf
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = zarf=0.71.1
+	conflicts = zarf
+	source = https://github.com/zarf-dev/zarf/archive/refs/tags/v0.71.1.tar.gz
+	sha256sums = a82225b8da1141104193d86bc4e80eb84e04d846c05994b40296a5f9636a6a0c
+
+pkgname = zarf
