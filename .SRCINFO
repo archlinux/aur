@@ -1,0 +1,37 @@
+pkgbase = linuxwhisper-git
+	pkgdesc = Linux desktop voice dictation tool using local Whisper
+	pkgver = 0.1.0.r71.a01d1c0
+	pkgrel = 1
+	url = https://github.com/robindarlington/linuxwhisper
+	install = linuxwhisper.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python>=3.11
+	depends = python-click
+	depends = python-tomli-w
+	depends = python-xdg-base-dirs
+	depends = python-evdev
+	depends = python-sounddevice
+	depends = python-faster-whisper
+	depends = python-scipy
+	depends = python-gobject
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = portaudio
+	optdepends = ydotool: text injection on Wayland (recommended)
+	optdepends = wtype: alternative Wayland text injection for wlroots compositors
+	optdepends = xdotool: text injection on X11
+	optdepends = wl-clipboard: clipboard-based text injection fallback on Wayland
+	optdepends = xclip: clipboard-based text injection fallback on X11
+	provides = linuxwhisper
+	conflicts = linuxwhisper
+	source = linuxwhisper-git::git+https://github.com/robindarlington/linuxwhisper.git
+	sha256sums = SKIP
+
+pkgname = linuxwhisper-git
