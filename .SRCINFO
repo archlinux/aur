@@ -1,6 +1,6 @@
 pkgbase = aonsoku-bin
 	pkgdesc = A modern desktop client for Navidrome/Subsonic servers built with React and Electron
-	pkgver = 0.11.0
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/victoralvesf/aonsoku
 	install = aonsoku-bin.install
@@ -17,7 +17,7 @@ pkgbase = aonsoku-bin
 	depends = libappindicator
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/victoralvesf/aonsoku/releases/download/v0.11.0/Aonsoku-v0.11.0-linux-amd64.deb
-	sha256sums_x86_64 = d2d28fd0f9b92ff8ece9173ad629fb09ea027d754ac6c029233f22d256ed6be1
+	source_x86_64 = https://github.com/victoralvesf/aonsoku/releases/download/v0.12.0/Aonsoku-v0.12.0-linux-amd64.deb
+	sha256sums_x86_64 = d105137803fd1fc073a6c4a558f60d45d34682b808724948dccb740863892515
 
 pkgname = aonsoku-bin
