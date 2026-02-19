@@ -1,3 +1,17 @@
+Mullvad Browser 15.0.6 - February 17 2026
+ * All Platforms
+   * Updated Firefox to 140.7.1esr
+   * Updated NoScript to 13.5.13.1984
+   * Updated uBlock Origin to 1.69.0
+   * Bug 508: Rebase Mullvad Browser stable onto 140.7.1esr [mullvad-browser]
+   * Bug 44625: metamask.io won't load on Safer security level [tor-browser]
+   * Bug 44626: Propagate WASM blocking to workers [tor-browser]
+ * Build System
+   * All Platforms
+     * Bug 40338: Running `make release` multiple times fails [tor-browser-build]
+     * Bug 41708: relprep.py fails to update extensions when out/browser does not exist [tor-browser-build]
+     * Bug 41720: cp -l in release/build fails when crossing file systems [tor-browser-build]
+
 Mullvad Browser 15.0.4 - January 13 2025
  * All Platforms
    * Updated Firefox to 140.7.0esr
