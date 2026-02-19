@@ -1,0 +1,5 @@
+[folder-declutter-bin]
+source = "github"
+github = "ricardodantas/folder-declutter"
+use_latest_release = true
+prefix = "v"

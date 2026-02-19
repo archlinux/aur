@@ -1,0 +1,19 @@
+pkgbase = folder-declutter-bin
+	pkgdesc = A folder declutter program that delete files after some pre-defined time
+	pkgver = 0.4.14
+	pkgrel = 1
+	url = https://github.com/ricardodantas/folder-declutter
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = folder-declutter
+	conflicts = folder-declutter
+	source = README-0.4.14.md::https://raw.githubusercontent.com/ricardodantas/folder-declutter/v0.4.14/README.md
+	source = LICENSE-0.4.14::https://raw.githubusercontent.com/ricardodantas/folder-declutter/v0.4.14/LICENSE
+	sha256sums = 553a9c43fa788c665438b6cf17fd326ce1d63450bd37f06e3d39fcc7efcf5330
+	sha256sums = 8338830e0fe1d27c658bccf256c39181dcc134652f86098566989d58ec4731b1
+	source_x86_64 = folder-declutter-0.4.14::https://github.com/ricardodantas/folder-declutter/releases/download/v0.4.14/folder-declutter-linux-0.4.14
+	sha256sums_x86_64 = bdef4767ea3d56dae873800cb3c3446ed9dc075ce9c652fa3407ce0119a059c1
+
+pkgname = folder-declutter-bin
