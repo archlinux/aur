@@ -5,15 +5,14 @@
 
 pkgname=litellm
 pkgver=1.81.13
-pkgrel=1
+pkgrel=2
 pkgdesc='Library to easily interface with LLM API providers.'
 arch=(any)
 url='https://github.com/BerriAI/litellm'
 license=('MIT')
-depends=('python' 'python-fastuuid' 'python-httpx' 'python-openai' 'python-dotenv' 'python-tiktoken' 'python-importlib-metadata' 'python-tokenizers' 'python-click' 'python-rich' 'python-jinja' 'python-aiohttp' 'python-aioboto3' 'python-tenacity' 'python-pydantic' 'python-jsonschema' 'python-websockets')
+depends=('python' 'python-fastuuid' 'python-httpx' 'python-openai' 'python-dotenv' 'python-tiktoken' 'python-importlib-metadata' 'python-tokenizers' 'python-click' 'python-jinja' 'python-aiohttp' 'python-pydantic' 'python-jsonschema' 'python-grpcio')
 makedepends=('python-poetry-core' 'python-build' 'python-installer' 'python-wheel')
-optdepends=('python-anyio: proxy'
-            'gunicorn: proxy'
+optdepends=('gunicorn: proxy'
             'uvicorn: proxy'
             'python-uvloop: proxy'
             'python-fastapi: proxy'
@@ -21,42 +20,23 @@ optdepends=('python-anyio: proxy'
             'python-pyyaml: proxy'
             'python-rq: proxy'
             'python-orjson: proxy'
-            'python-mangum: proxy'
             'python-apscheduler: proxy'
             'python-fastapi-sso: proxy'
             'python-pyjwt: proxy'
             'python-python-multipart: proxy'
             'python-cryptography: proxy'
             'python-pynacl: proxy'
-            'python-google-cloud-aiplatform: proxy'
-            'python-anthropic: proxy'
-            'python-google-auth: proxy'
-            'python-requests: proxy'
-            'python-mcp: proxy'
-            'python-google-generativeai: proxy'
-            'python-async_generator: proxy'
-            'python-langfuse: proxy'
-            'python-prometheus_client: proxy'
-            'python-ddtrace: proxy'
-            'python-pillow: proxy'
-            'python-azure-ai-contentsafety: proxy'
-            'python-azure-keyvault: proxy'
-            'python-azure-storage-file-datalake: proxy'
-            'python-opentelemetry-api: proxy'
-            'python-opentelemetry-sdk: proxy'
-            'python-opentelemetry-exporter-otlp: proxy'
-            'python-sentry_sdk: proxy'
-            'python-detect-secrets: proxy'
-            'python-tzdata: proxy'
-            'python-google-genai: proxy'
+            'python-websockets: proxy'
             'python-boto3: proxy'
-            'python-redis: proxy'
             'python-azure-identity: proxy'
             'python-azure-storage-blob: proxy'
             'python-mcp: proxy'
             'litellm-proxy-extras: proxy'
             'litellm-enterprise: proxy'
+            'python-rich: proxy'
             'python-polars: proxy'
+            'python-soundfile: proxy'
+            'python-pyroscope-io: proxy'
             'python-prisma: extra_proxy'
             'python-azure-identity: extra_proxy'
             'python-azure-keyvault-secrets: extra_proxy'
@@ -64,11 +44,14 @@ optdepends=('python-anyio: proxy'
             'python-google-cloud-iam: extra_proxy'
             'python-resend: extra_proxy'
             'python-redisvl: extra_proxy'
+            'python-a2a-sdk: extra_proxy'
             'python-numpydoc: utils'
             'python-diskcache: caching'
             'python-semantic-router: semantic-router'
-            'python-mlflow: mlflow')
-provides=("${pkgname}" "${pkgname}-proxy")
+            'python-mlflow: mlflow'
+            'python-grpcio: grpc'
+            'python-google-cloud-aiplatform: google')
+provides=("python-$pkgname")
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=('083788d9c94e3371ff1c42e40e0e8198c497772643292a65b1bc91a3b3b537ea')
 
