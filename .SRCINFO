@@ -1,6 +1,6 @@
 pkgbase = python-textstat
 	pkgdesc = Python package to calculate readability statistics of a text object - paragraphs, sentences, articles.
-	pkgver = 0.7.12
+	pkgver = 0.7.13
 	pkgrel = 1
 	url = https://textstat.org
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-textstat
 	makedepends = python-wheel
 	depends = python-nltk
 	depends = python-pyphen
-	source = textstat-0.7.12.tar.gz::https://github.com/textstat/textstat/archive/refs/tags/0.7.12.tar.gz
-	sha256sums = 69c876c44fc415b00ae0500162485404182ae77351dc0b5fec8f757e8c15b644
+	source = textstat-0.7.13.tar.gz::https://github.com/textstat/textstat/archive/refs/tags/0.7.13.tar.gz
+	sha256sums = 7d82372feb2296284b1092f7baccceb2af4b5ce151275aa0b7dfd842d964d1af
 
 pkgname = python-textstat
