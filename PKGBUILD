@@ -4,7 +4,7 @@
 pkgname=pinnacle-comp-git
 _pkgname=pinnacle
 pkgver=0.1.0.r1547.1b165ca
-pkgrel=2
+pkgrel=3
 pkgdesc="A Wayland compositor inspired by AwesomeWM (git version)"
 arch=(x86_64 aarch64)
 url="https://github.com/pinnacle-comp/${_pkgname}"
@@ -31,7 +31,7 @@ optdepends=(
     "xdg-desktop-portal-gtk: a suggested XDG desktop portal"
     "xdg-desktop-portal-wlr: for portal-based screencasting and screenshotting"
 )
-provides=(pinnacle-comp)
+provides=(pinnacle-comp wayland-compositor)
 conflicts=(pinnacle-comp)
 source=("git+$url.git")
 sha256sums=("SKIP")
