@@ -1,6 +1,6 @@
 pkgbase = i3map
 	pkgdesc = Generate a table of i3wm keybindings from your config file
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/Hanashiko/i3map
 	install = i3map.install

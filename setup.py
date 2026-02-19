@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="i3map",
-    version="1.0.0",
+    version="1.0.1",
     description="Generate a table of i3wm keybindings from your config file",
     author="Hanashiko",
     author_email="hlichisper@gmail.com",
