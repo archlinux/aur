@@ -1,0 +1,16 @@
+pkgbase = python-discord-ext-voice-recv
+	pkgdesc = Experimental voice receive extension for discord.py
+	pkgver = 0.5.2a179
+	pkgrel = 1
+	url = https://github.com/imayhaveborkedit/discord-ext-voice-recv
+	arch = any
+	license = MIT
+	makedepends = python-installer
+	depends = python
+	depends = python-discord>=2.5
+	depends = python-pynacl
+	noextract = discord_ext_voice_recv-0.5.2a179-py3-none-any.whl
+	source = discord_ext_voice_recv-0.5.2a179-py3-none-any.whl::https://files.pythonhosted.org/packages/bc/65/d3a9d555cb2baaab6f8081d64d4d423688ba28ff7ae6608c374d06add3f6/discord_ext_voice_recv-0.5.2a179-py3-none-any.whl
+	sha256sums = f3fa65f2c1591bef2382aa39f3ebc25d6751b405aef5b5d113dfb452640f29fc
+
+pkgname = python-discord-ext-voice-recv
