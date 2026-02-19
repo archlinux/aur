@@ -1,0 +1,10 @@
+[Desktop Entry]
+Exec=/opt/nxmc/nxmc
+Icon=nxmc
+Terminal=false
+Type=Application
+Name=NetXMS Management Console
+Comment=NetXMS NMS graphical management console
+Categories=Utility;
+MimeType=text/plain;inode/directory;
+StartupNotify=true

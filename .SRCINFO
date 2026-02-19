@@ -1,0 +1,18 @@
+pkgbase = nxmc
+	pkgdesc = Graphical console for NetXMS NMS based on Eclipse.
+	pkgver = 6.0.2
+	pkgrel = 1
+	url = https://www.netxms.org/
+	arch = x86_64
+	license = custom
+	depends = java-environment
+	source_x86_64 = nxmc.desktop
+	source_x86_64 = nxmc
+	source_x86_64 = icon.png
+	source_x86_64 = https://netxms.com/download/releases/6.0/nxmc-6.0.2-standalone.jar
+	sha256sums_x86_64 = a8fd91020c07d78163bcc4988ab94ca192240bb01566138cc6ed531e3d183e9c
+	sha256sums_x86_64 = dbf059c5f1aaadba5a978c2f44c9f9b5af6885a54cf12b8741ee0caf7134b022
+	sha256sums_x86_64 = 71c258c332ab3da2dd473f042f92eded7e3d6e97f3bdeff19bbd4a09b9f9691b
+	sha256sums_x86_64 = 8fdad8913f6597c91e06ae1b215002bdbce59359cd8b864d7cd07b2e3c0a910f
+
+pkgname = nxmc
