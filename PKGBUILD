@@ -29,9 +29,17 @@ pkgver() {
   git describe --long --tags 2>/dev/null | sed 's/-/./g' | sed 's/^v//'
 }
 
+prepare() {
+  cd "$srcdir/steamfetch"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
 build() {
   cd "$srcdir/steamfetch"
-  cargo build --release --locked
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --release --frozen --all-features
 }
 
 package() {
