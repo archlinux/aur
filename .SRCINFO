@@ -1,0 +1,16 @@
+pkgbase = nmsurf
+	pkgdesc = Fast NetworkManager frontend using rofi or wofi
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/aayushkdev/nmsurf
+	arch = x86_64
+	license = MIT
+	depends = networkmanager
+	depends = wofi
+	provides = nmsurf
+	conflicts = nmsurf
+	options = !debug
+	source = nmsurf-1.0.0.tar.gz::https://github.com/aayushkdev/nmsurf/releases/download/v1.0.0/nmsurf-linux-amd64.tar.gz
+	sha256sums = SKIP
+
+pkgname = nmsurf
