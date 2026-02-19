@@ -1,6 +1,6 @@
 pkgbase = autotitle
 	pkgdesc = Automated media file renamer using online databases
-	pkgver = 1.7.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/mydehq/autotitle
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = autotitle
 	makedepends = mise
 	depends = glibc
 	backup = etc/autotitle/config.yml
-	source = autotitle-1.7.0.tar.gz::https://github.com/mydehq/autotitle/archive/v1.7.0.tar.gz
+	source = autotitle-1.8.0.tar.gz::https://github.com/mydehq/autotitle/archive/v1.8.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = autotitle
