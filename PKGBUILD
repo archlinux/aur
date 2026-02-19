@@ -2,12 +2,15 @@
 pkgname=python-sv-ttk
 _name=sv_ttk
 pkgver=2.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A gorgeous theme for ttk, based on Microsoft's Sun Valley visual styles"
 arch=('any')
 url="https://github.com/rdbende/Sun-Valley-ttk-theme"
 license=('MIT')
-depends=('python')
+depends=(
+  'python'
+  'tk'
+)
 makedepends=(
   'python-build'
   'python-installer'
