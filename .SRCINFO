@@ -1,6 +1,6 @@
 pkgbase = ungoogled-chromium
 	pkgdesc = A lightweight approach to removing Google web service dependency
-	pkgver = 145.0.7632.75
+	pkgver = 145.0.7632.109
 	pkgrel = 2
 	url = https://github.com/ungoogled-software/ungoogled-chromium
 	arch = x86_64
@@ -52,21 +52,21 @@ pkgbase = ungoogled-chromium
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
 	optdepends = upower: Battery Status API support
-	provides = chromium=145.0.7632.75
-	provides = chromedriver=145.0.7632.75
+	provides = chromium=145.0.7632.109
+	provides = chromedriver=145.0.7632.109
 	conflicts = chromium
 	conflicts = chromedriver
 	options = !lto
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-145.0.7632.75-lite.tar.xz
-	source = ungoogled-chromium-145.0.7632.75-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/145.0.7632.75-1.tar.gz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-145.0.7632.109-lite.tar.xz
+	source = ungoogled-chromium-145.0.7632.109-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/145.0.7632.109-1.tar.gz
 	source = https://github.com/foutrelis/chromium-launcher/archive/v8/chromium-launcher-8.tar.gz
 	source = chromium-138-nodejs-version-check.patch
 	source = chromium-145-fix-SYS_SECCOMP.patch
 	source = compiler-rt-adjust-paths.patch
 	source = increase-fortify-level.patch
 	source = use-oauth2-client-switches-as-default.patch
-	sha256sums = e9db10f2065fda0ee715c1f41fa110cccc4c800a2d7d9a5f8f355b2e210f377f
-	sha256sums = ba956eb1779fcb76dd00f5bc63c0e2e9399270d7942e1f003765dbbbc61cb18d
+	sha256sums = 4b9460a4c852b824dbd3c6de00948fe97b760e89ac56c62b5e28f8581a5c1690
+	sha256sums = 17b1909d1525020f6e7241dc11f8cbec591c8ac985e023846e74cb40a45c0aa0
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
 	sha256sums = 11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e
 	sha256sums = 4fc040a0656a0a524dd8ad090cd129fc5b6cb21adcc66be82080165789e8c13e
