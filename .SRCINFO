@@ -1,7 +1,7 @@
 pkgbase = mistral-vibe
 	pkgdesc = Minimal CLI coding agent by Mistral
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mistralai/mistral-vibe
 	arch = x86_64
 	license = Apache-2.0
@@ -26,6 +26,7 @@ pkgbase = mistral-vibe
 	depends = python-agent-client-protocol
 	depends = python-aiofiles
 	depends = python-dotenv
+	depends = python-google-auth
 	depends = python-httpx
 	depends = python-linkify-it-py
 	depends = python-mcp
