@@ -1,2 +1,4 @@
-2.40.2-1 [2026-02-15]
-- Updated with the latest security patches and performance enhancements. Chromium engine updated to 145.0.7632.75.
+2.40.3-1 [2026-02-19]
+- Added support for the United Arab Emirates (UAE) region in the browser.
+- [Desktop][Enterprise][Experiment] Introduced Secure Access feature.
+- Updated with the latest security patches and performance enhancements. Chromium engine updated to 145.0.7632.109.
