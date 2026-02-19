@@ -1,6 +1,6 @@
 pkgbase = sonic-win
 	pkgdesc = kwin-x11 with ports from kwin-wayland, bug fixes, and maybe other improvements, for XLibre
-	pkgver = 6.5.5
+	pkgver = 6.6.0
 	pkgrel = 1
 	url = https://github.com/Sonic-DE/sonic-win
 	install = sonic-win.install
@@ -53,7 +53,7 @@ pkgbase = sonic-win
 	depends = libxi
 	depends = libxkbcommon
 	depends = libxkbcommon-x11
-	depends = libplasma=6.5.5
+	depends = libplasma=6.6.0
 	depends = mesa
 	depends = plasma-x11-session
 	depends = qt6-5compat
@@ -71,7 +71,7 @@ pkgbase = sonic-win
 	provides = kwin-x11
 	conflicts = kwin-x11
 	options = !debug
-	source = git+https://github.com/Sonic-DE/sonic-win.git#tag=6.5.5
-	sha256sums = a77fb21faf11240af95160365f67f20538add7b77599da6d025150b4841898c8
+	source = git+https://github.com/Sonic-DE/sonic-win.git#tag=6.6.0
+	sha256sums = b590a511861d8e375cce4b5e118e8ed449c02ced70acd46c6fb8384d2c421d21
 
 pkgname = sonic-win

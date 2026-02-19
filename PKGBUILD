@@ -2,7 +2,7 @@
 
 pkgname=sonic-win
 _pkgname=kwin-x11
-pkgver=6.5.5
+pkgver=6.6.0
 _pkgver=$pkgver
 _pkgtag=$pkgver
 pkgrel=1
@@ -77,7 +77,7 @@ conflicts=($_pkgname)
 source=("git+${url}.git#tag=${_pkgtag}")
 install="$pkgname.install"
 options=(!debug)
-sha256sums=('a77fb21faf11240af95160365f67f20538add7b77599da6d025150b4841898c8')
+sha256sums=('b590a511861d8e375cce4b5e118e8ed449c02ced70acd46c6fb8384d2c421d21')
 
 build() {
   cmake -B build -S $pkgname \
