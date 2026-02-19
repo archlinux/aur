@@ -1,0 +1,17 @@
+pkgbase = lazyllama
+	pkgdesc = A lightweight TUI client for Ollama with markdown support and smart scrolling
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/Pommersche92/lazyllama
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	arch = armv7h
+	license = GPL-2.0-or-later
+	makedepends = cargo
+	provides = lazyllama
+	conflicts = lazyllama-bin
+	source = lazyllama-0.4.1.tar.gz::https://static.crates.io/crates/lazyllama/lazyllama-0.4.1.crate
+	sha256sums = a240f2f96dab8a57d778d2cd7bac880980a4ae3ad00c8aa3013d10d261a708b2
+
+pkgname = lazyllama
