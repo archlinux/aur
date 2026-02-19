@@ -1,4 +1,4 @@
-# Maintainer: Robin Darlington <robin@darlington.dev>
+# Maintainer: Robin Darlington <mail@robindarlington.com>
 pkgname=linuxwhisper-git
 pkgver=0.1.0.r72.1ca68fb
 pkgrel=1
