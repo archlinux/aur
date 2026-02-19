@@ -3,7 +3,7 @@
 _dist='TOML-Tiny'
 pkgname='perl-toml-tiny'
 pkgver=0.20
-pkgrel=2
+pkgrel=3
 pkgdesc='a minimal, pure perl TOML parser and serializer'
 arch=('any')
 url="https://metacpan.org/dist/$_dist"
@@ -20,6 +20,7 @@ checkdepends=(
     'perl-data-dumper'
     'perl-datetime-format-iso8601'
     'perl-datetime-format-rfc3339'
+    'perl-pathtools'
     'perl-test-pod'
     'perl-test-simple'
     'perl-toml-parser'
@@ -36,9 +37,9 @@ build()
     cd $_dist-$pkgver
 
     unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
-    export PERL_MM_OPT='NO_PACKLIST=1 NO_PERLLOCAL=1' PERL_MM_USE_DEFAULT=1
+    export PERL_MM_USE_DEFAULT=1
 
-    /usr/bin/perl Makefile.PL
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
 }
 
