@@ -1,0 +1,19 @@
+pkgbase = gshogi
+	pkgdesc = A program to play Shogi (Japanese Chess)
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://johncheetham.com/projects/gshogi/index.html
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = python3
+	depends = python-cairo
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = python-gobject
+	depends = python-setuptools
+	source = gshogi-0.5.1.tar.gz::https://github.com/johncheetham/gshogi/archive/v0.5.1.tar.gz
+	sha256sums = 6ac2bbb353edfd760938101a674480f42c6dd4b72c364a214417a83a6c9396d1
+
+pkgname = gshogi
