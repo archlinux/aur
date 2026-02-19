@@ -1,7 +1,7 @@
 pkgbase = jdk-android-studio
 	pkgdesc = Integrate android-studio provided JDK with archlinux-java
 	pkgver = 4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://developer.android.com/studio
 	install = jdk-android-studio.install
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = jdk-android-studio
 	depends = java-environment-common
 	depends = java-runtime-common
 	provides = java-runtime=21
-	provides = java-runtime-openjdk=21
+	provides = java-runtime-jetbrains=21
 	provides = java-environment=21
-	provides = java-environment-openjdk=21
+	provides = java-environment-jetbrains=21
 
 pkgname = jdk-android-studio
