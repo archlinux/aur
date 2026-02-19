@@ -1,0 +1,5 @@
+[nibble-bin]
+source = "github"
+github = "backendsystems/nibble"
+use_latest_release = true
+prefix = "v"
