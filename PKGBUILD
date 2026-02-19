@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=pugixml-git
-pkgver=1.15.r17.g5a1892b
+pkgver=1.15.r21.g7100520
 pkgrel=1
 pkgdesc="Light-weight, simple and fast XML parser for C++"
 arch=('i686' 'x86_64')
 url="https://pugixml.org/"
 license=('MIT')
-depends=('gcc-libs')
+depends=('glibc' 'libgcc' 'libstdc++')
 makedepends=('git' 'cmake')
 provides=("pugixml=$pkgver")
 conflicts=('pugixml')
@@ -19,7 +19,7 @@ pkgver() {
   cd "pugixml"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
