@@ -1,6 +1,6 @@
 pkgbase = velo-bin
 	pkgdesc = A blazing-fast, keyboard-first desktop email client
-	pkgver = 0.3.12
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/avihaymenahem/velo
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = velo-bin
 	provides = velo
 	conflicts = velo
 	options = !strip
-	source = velo-bin-0.3.12.deb::https://github.com/avihaymenahem/velo/releases/download/v0.3.12/Velo_0.3.12_amd64.deb
-	sha256sums = f6fdc3eac4b68c0d339cb25dc427284e7dca68728550a955fa427201a6527342
+	source = velo-bin-0.4.4.deb::https://github.com/avihaymenahem/velo/releases/download/v0.4.4/Velo_0.4.4_amd64.deb
+	sha256sums = f74a668a552048bde3a5240d9d1193fe3a13c5d41c44eb924159c414a209ae3d
 
 pkgname = velo-bin
