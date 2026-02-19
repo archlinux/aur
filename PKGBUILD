@@ -40,27 +40,29 @@ checkdepends=(
   'perl-test-simple>=1.302200' # "Test2::V0"
   'perl-test-without-module'
 )
-options=(!emptydirs purge)
+options=(!emptydirs)
 source=("https://cpan.metacpan.org/authors/id/J/JO/JONASS/String-License-v${pkgver}.tar.gz")
 b2sums=('733af1f8edfc3ba402f475ada43435ec698b0f227543927efcd0dbeff10401869da418b8770e517d3380509e3ac8f27892ac4c1269df33b8420d8445c87cc2ce')
 
 build() {
   cd "${srcdir}/String-License-v${pkgver}"
 
+  unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
-  perl Makefile.PL NO_PACKLIST=true NO_PERLLOCAL=true INSTALLDIRS=vendor
+  /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
   make
 }
 
 check() {
   cd "${srcdir}/String-License-v${pkgver}"
 
-  export PERL_MM_USE_DEFAULT=1
+  unset PERL5LIB PERL_LOCAL_LIB_ROOT
   make test
 }
 
 package() {
   cd "${srcdir}/String-License-v${pkgver}"
 
-  make install DESTDIR="${pkgdir}"
+  unset PERL5LIB PERL_LOCAL_LIB_ROOT
+  make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
 }
