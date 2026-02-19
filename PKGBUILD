@@ -7,7 +7,7 @@ pkgname=(
   krokiet
 )
 pkgver=11.0.0
-pkgrel=0.1
+pkgrel=0.2
 pkgdesc='Multi functional app to find duplicates, empty folders, similar images etc.'
 url='https://github.com/qarmin/czkawka'
 arch=(
