@@ -14,7 +14,7 @@ source=('https://download-center.epson.com/f/module/1316b6b0-77cd-438c-95e1-c71e
         'enable_velvet_fine_art_paper.patch')
 sha256sums=('8d28761d56f8f7409827f0be121d53e539a7045ee19819ac187b956e25931d0d'
             '57c7a32b7deac873d7e31f043a047e5d65b8e0a47c0d0c07c76c3e3bbd60430a'
-            'f4962e771bb4241990942b9c36fc9b6c8152fff0433e48bb36418ecb469102d6')
+            '84692c469fb18832344b2c5a31b46f10dd7f87691d0c63a8f14adbc06ade114a')
 
 prepare() {
   tar xvf "$pkgname-$pkgver-$pkgrel.tar.gz"

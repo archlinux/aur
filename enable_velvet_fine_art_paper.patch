@@ -1,5 +1,5 @@
---- /home/derfetzer/Downloads/epson-inkjet-printer-escpr2-1.2.35/src/optBase.h	2025-05-02 09:43:20.000000000 +0200
-+++ /home/derfetzer/src/epson-inkjet-printer-escpr2/src/epson-inkjet-printer-escpr2-1.2.35/src/optBase.h	2025-10-10 01:48:53.008709281 +0200
+--- a/src/optBase.h	2025-05-02 09:43:20.000000000 +0200
++++ b/src/optBase.h	2025-10-10 01:48:53.008709281 +0200
 @@ -150,8 +150,7 @@
      { PM_MTID_DSMATTE,       "DBSMATT",  N_("Double-Sided Matte Paper")},
      { PM_MTID_CLPHOTO,       "CLPP",     N_("ColorLife Photo Paper")},
