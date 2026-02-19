@@ -2,7 +2,7 @@
 # Contributor: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=mingw-w64-libgpg-error
-pkgver=1.58
+pkgver=1.59
 pkgrel=1
 pkgdesc="Support library for libgcrypt (mingw-w64)"
 arch=(any)
@@ -18,20 +18,20 @@ source=("https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-${pkgver}.ta
         "02-fix-symbollist-on.mingw.patch"
         "05-w32-gen.all.patch"
         "07-windows-build.patch")
-sha256sums=('f943aea9a830a8bd938e5124b579efaece24a3225ff4c3d27611a80ce1260c27'
+sha256sums=('a19bc5087fd97026d93cb4b45d51638d1a25202a5e1fbc3905799f424cfa6134'
             'SKIP'
             '364da17febff3f6eeffee5a5f1e3ed1b644adeb5ca48a972c5c4675c10238a91'
             '9ccdc567810d58526888fd11c5f7d01101627011840b7b75a91e96aa9e71f49d'
             'f62a8464414a65b1aac20820d4f4eeb0aa25e5c865aa4ba5914f1f10a41d336d')
-validpgpkeys=('6DAA6E64A76D2840571B4902528897B826403ADA'  # Werner Koch (dist signing 2020)
+validpgpkeys=('6DAA6E64A76D2840571B4902528897B826403ADA'   # Werner Koch (dist signing 2020)
               'AC8E115BF73E2D8D47FA9908E98E9B2D19C6C8BD')  # Niibe Yutaka (GnuPG Release Key)
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/libgpg-error-${pkgver}"
-  patch -p1 -i ${srcdir}/02-fix-symbollist-on.mingw.patch
-  patch -p1 -i ${srcdir}/05-w32-gen.all.patch
-  patch -p1 -i ${srcdir}/07-windows-build.patch
+  patch -p1 -i "${srcdir}/02-fix-symbollist-on.mingw.patch"
+  patch -p1 -i "${srcdir}/05-w32-gen.all.patch"
+  patch -p1 -i "${srcdir}/07-windows-build.patch"
   autoreconf -fiv
 }
 
