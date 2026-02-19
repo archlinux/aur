@@ -1,13 +1,14 @@
 pkgname=how-to-use-pvs-studio-free
 pkgver=7.41
-pkgrel=1
+pkgrel=2
 pkgdesc='An utility that adds special comments to a source code for analyzing the code by PVS-Studio for free'
 arch=('x86_64')
 url=https://github.com/viva64/$pkgname
 license=('Apache-2.0')
 depends=(
-  gcc-libs
   glibc
+  libgcc
+  libstdc++
 )
 makedepends=(cmake)
 source=(
