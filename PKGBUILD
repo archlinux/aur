@@ -1,26 +1,26 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=mercurial-stable-hg
-pkgver=r50865.0a4efb650b3e
+pkgver=r55194.d5fdd5a1dd0e
 pkgrel=1
 pkgdesc="Distributed source control management tool (development stable branch)"
 arch=('i686' 'x86_64')
 url="https://www.mercurial-scm.org/"
-license=('GPL2')
-depends=('glibc' 'python')
-makedepends=('mercurial' 'python-docutils' 'rust')
+license=('GPL-2.0-or-later')
+depends=('glibc' 'libgcc' 'python')
+makedepends=('mercurial' 'cargo' 'python-docutils' 'python-pip' 'python-setuptools-scm')
 optdepends=('tk: for the hgk GUI')
 provides=("mercurial=$pkgver")
 conflicts=('mercurial')
 backup=('etc/mercurial/hgrc')
-source=("hg+https://www.mercurial-scm.org/repo/hg#branch=stable"
+source=("hg+https://foss.heptapod.net/mercurial/mercurial-devel#branch=stable"
         "mercurial.profile::https://gitlab.archlinux.org/archlinux/packaging/packages/mercurial/-/raw/main/mercurial.profile")
 sha256sums=('SKIP'
             'SKIP')
 
 
 pkgver() {
-  cd "hg"
+  cd "mercurial-devel"
 
   _rev=$(hg identify -n)
   _hash=$(hg identify -i)
@@ -28,23 +28,21 @@ pkgver() {
 }
 
 build() {
-  cd "hg"
+  cd "mercurial-devel"
 
-  export PYTHONHASHSEED=0
   make \
     PURE="--rust" \
-    all
-  make -C "contrib/chg"
+    -C "contrib/chg"
 }
 
 check() {
-  cd "hg"
+  cd "mercurial-devel"
 
   #make tests
 }
 
 package() {
-  cd "hg"
+  cd "mercurial-devel"
 
   make \
     DESTDIR="$pkgdir" \
