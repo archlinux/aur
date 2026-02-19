@@ -1,6 +1,6 @@
 pkgname=arch-cache-cleaner-git
 pkgver=r0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Interactive cross-platform cache cleaner with configurable profiles (Linux/macOS/Windows)'
 arch=('any')
 url='https://github.com/MeIsGaming/arch-cache-cleaner'
