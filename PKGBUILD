@@ -20,9 +20,6 @@ prepare() {
 
     # Trust the mise.toml
     mise trust --yes
-    
-    # Install only the required Go compiler
-    mise install go
 }
 
 build() {
