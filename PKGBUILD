@@ -2,18 +2,18 @@
 # Contributor: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 
 pkgname=icann-rdap
-pkgver=0.0.26
+pkgver=0.0.27
 pkgrel=1
 pkgdesc='ICANN implementation of the Registry Data Access Protocol (RDAP)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/icann/icann-rdap'
 license=('Apache-2.0 OR MIT')  # SPDX-License-Identifier: Apache-2.0 OR MIT
-depends=('gcc-libs' 'glibc')
+depends=('glibc' 'libgcc')
 makedepends=('cargo')
 provides=('rdap')
 conflicts=('rdap')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('85150d97000e4457d1bc6b78c303bae4749a145eac5ded011e8b8af452ccb469')
+sha256sums=('2a675b661e5a5025e16db1375447d78868dc1273b90a8d806a2210746ebc9da0')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
