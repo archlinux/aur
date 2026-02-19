@@ -1,7 +1,7 @@
 # Maintainer: Insidious Fiddler <aur[at]codycody31[dot]dev>
 pkgname=1code
 pkgver=0.0.66
-pkgrel=1
+pkgrel=2
 pkgdesc="Best UI for Claude Code with local and remote agent execution"
 arch=('x86_64')
 url="https://github.com/21st-dev/1code"
@@ -13,7 +13,7 @@ options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop")
 sha256sums=('db93ae134cd90e26607d13acd27b71a73d42d0e8a4091a48cfa9f110ad78cab7'
-            '3ef29244e4af479309b5c61185bf5274dd72d40ddab8ec2b85a632ba27a9195d')
+            '44ecea6b700e7f097b4c22669d24ee19ae3d6b61967621eb0dd2eb478eaf47df')
 
 # ci/cd flag: gh repo for auto updates
 _ghrepo="21st-dev/1code"
@@ -22,6 +22,7 @@ prepare() {
     cd "$srcdir/$pkgname-$pkgver"
     bun install
     bun run claude:download
+    bun run codex:download
 }
 
 build() {
