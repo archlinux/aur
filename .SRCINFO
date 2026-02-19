@@ -1,0 +1,17 @@
+pkgbase = parmen
+	pkgdesc = 2D classic and 3D Star Trek Tridimensional Chess
+	pkgver = 2.98f
+	pkgrel = 1
+	url = http://www.parmen.com/
+	arch = x86_64
+	license = custom
+	depends = bash
+	depends = glu
+	depends = freeglut
+	depends = sdl2
+	source = parmen-2.98f.zip::http://www.parmen.com//parmenx.zip
+	source = 3dguide.doc::http://www.parmen.com//3dguide.doc
+	sha256sums = d98c1d220aa967df2ecc0b0d33fe8cf3f4257952c12fb398164b2800071078bf
+	sha256sums = 70bdac013f1662640625df11372698981ad7c68b08526a3290c524870370737c
+
+pkgname = parmen
