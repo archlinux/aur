@@ -22,6 +22,7 @@ pkgbase = vulkan-terakan-git
 	makedepends = vulkan-headers
 	makedepends = spirv-llvm-translator
 	makedepends = python-setuptools
+	makedepends = python-yaml
 	depends = libdrm
 	depends = libxxf86vm
 	depends = libxdamage
