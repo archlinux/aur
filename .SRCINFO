@@ -1,9 +1,10 @@
 pkgbase = wl-kbptr
 	pkgdesc = Control the mouse pointer with the keyboard on Wayland
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/moverest/wl-kbptr
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0
 	makedepends = meson
 	makedepends = wayland-protocols
