@@ -1,0 +1,22 @@
+pkgbase = feedo-bin
+	pkgdesc = A stunning terminal RSS reader
+	pkgver = 1.1.31
+	pkgrel = 1
+	url = https://github.com/ricardodantas/feedo
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	depends = glibc
+	depends = libgcc
+	provides = feedo
+	conflicts = feedo
+	source = README-1.1.31.md::https://raw.githubusercontent.com/ricardodantas/feedo/v1.1.31/README.md
+	source = LICENSE-1.1.31::https://raw.githubusercontent.com/ricardodantas/feedo/v1.1.31/LICENSE
+	sha256sums = 0ee47ab06bcd3a1c11f944a5f7bf4317d846f2925e5e0b5cbcd599c94d70d75a
+	sha256sums = 37f486ddcbd27bdb731f65cbc5cd488edbbc7af470388e19677be8e0a9c772c2
+	source_x86_64 = feedo-x86_64-1.1.31.tgz::https://github.com/ricardodantas/feedo/releases/download/v1.1.31/feedo-1.1.31-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 1a3d1479155d440c91a96143a7d5d365441ffb6fca46617fabab7f9ff4c1a9d8
+	source_aarch64 = feedo-aarch64-1.1.31.tgz::https://github.com/ricardodantas/feedo/releases/download/v1.1.31/feedo-1.1.31-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 8d2fa55d09d2e659131c21b8fb7377ff0268f4f71ad40e1e8cfa06f13ff4efea
+
+pkgname = feedo-bin

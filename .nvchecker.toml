@@ -1,0 +1,5 @@
+[feedo-bin]
+source = "github"
+github = "ricardodantas/feedo"
+use_latest_release = true
+prefix = "v"
