@@ -1,0 +1,16 @@
+pkgbase = cowtotext
+	pkgdesc = Real-time audio transcription and translation tool using Whisper and Argos Translate
+	pkgver = 1.0.0
+	pkgrel = 5
+	url = https://github.com/MeIsGaming/cow-to-text
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = python311
+	depends = ffmpeg
+	depends = libpulse
+	optdepends = cuda: For GPU acceleration
+	source = git+https://github.com/MeIsGaming/cow-to-text.git#branch=main
+	sha256sums = SKIP
+
+pkgname = cowtotext
