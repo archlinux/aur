@@ -1,0 +1,25 @@
+pkgbase = lsfg-manager-git
+	pkgdesc = Safe manager for LSFG-VK (Explicit mode with CLI flags)
+	pkgver = r2.0.0.dev
+	pkgrel = 1
+	url = https://github.com/rainy351/lsfg-manager
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	makedepends = rust
+	makedepends = vulkan-headers
+	depends = vulkan-icd-loader
+	depends = qt6-base
+	provides = lsfg-vk
+	conflicts = lsfg-vk-git
+	conflicts = lsfg-vk
+	source = lsfg-vk::git+https://github.com/PancakeTAS/lsfg-vk#branch=develop
+	source = lsfg_layer.json
+	source = main.rs
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = lsfg-manager-git

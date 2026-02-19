@@ -1,0 +1,22 @@
+{
+  "file_format_version": "1.1.0",
+  "layer": {
+    "name": "VK_LAYER_LSFGVK_frame_generation",
+    "description": "LS Frame Gen Layer (Isolated)",
+    "implementation_version": "2",
+    "library_path": "/usr/lib/liblsfg-vk-layer.so",
+    "type": "GLOBAL",
+    "api_version": "1.4.328",
+    "disable_environment": {
+      "DISABLE_LSFGVK": "1"
+    }
+  }
+}
+
+
+
+
+
+
+
+
