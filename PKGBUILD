@@ -9,7 +9,7 @@ pkgbase=clion
 pkgname=(clion clion-jre clion-cmake clion-gdb clion-lldb)
 _pkgname=clion
 _dlname=CLion
-pkgver=2025.3.2
+pkgver=2025.3.3
 pkgrel=1
 epoch=1
 pkgdesc="Cross-platform IDE for C and C++ from JetBrains."
@@ -22,8 +22,8 @@ source=("jetbrains-${pkgbase}.desktop")
 source_x86_64=("https://download.jetbrains.com/cpp/${_dlname}-${pkgver}.tar.gz")
 source_aarch64=("https://download.jetbrains.com/cpp/${_dlname}-${pkgver}-aarch64.tar.gz")
 sha256sums=('a7a3f9891f5d8e7e5650afe00819909413fa2ed911393dd0648fba91233974a2')
-sha256sums_x86_64=('73a0c57c19cc8a12abfd9ccc572d729a7004ddcee24b8e61dc639ce72647f04b')
-sha256sums_aarch64=('cdd5c9074ef20ee2bcb2716d18489a2027ce977ac3ef331e5fed590626a021a5')
+sha256sums_x86_64=('d091faaede323477bb7e2afa10ddeebbe546055ca1b1d64a4b6ad02701a1f15f')
+sha256sums_aarch64=('3804fd3422efd3e0fa62c2c6d4792b6a077ae00d40ad9df16ddd2bc81bf4640e')
 noextract=("${_dlname}-${pkgver}.tar.gz"
            "${_dlname}-${pkgver}-aarch64.tar.gz")
 
