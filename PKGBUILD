@@ -5,7 +5,7 @@
 
 _pkgname='icann-rdap'
 pkgname="$_pkgname-bin"
-pkgver=0.0.26
+pkgver=0.0.27
 pkgrel=1
 pkgdesc='ICANN implementation of the Registry Data Access Protocol [RDAP] (pre-compiled)'
 arch=('aarch64' 'x86_64')
@@ -35,36 +35,36 @@ _skip=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
   # Binaries
-  install -vDm0755 -t "$pkgdir/usr/bin" \
+  install -Dm0755 -t "$pkgdir/usr/bin" \
     rdap{,-srv{,-{data,store,test-data}},-test}
 
   # Docs (READMEs)
-  install -vDm0644 "README-$pkgver.md" \
+  install -Dm0644 "README-$pkgver.md" \
     "$pkgdir/usr/share/doc/$pkgname/README.md"
 
   for _xxx in cli srv; do
-    install -vDm0644 "README-$_xxx-$pkgver.md" \
+    install -Dm0644 "README-$_xxx-$pkgver.md" \
       "$pkgdir/usr/share/doc/$pkgname/README-$_xxx.md"
   done
 
   # Licenses (only the MIT license is actually required here)
-  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
     LICENSE-*
 
   for _dir in doc licenses; do
     cd "$pkgdir/usr/share/$_dir" && {
       test -d "$pkgname" || continue
-      ln -vsf "$pkgname" "$_pkgname"
+      ln -sf "$pkgname" "$_pkgname"
     }
   done
 }
 
 sha256sums_aarch64=(
-  'f08fcd140d18bf15a0a85ec269506dc254903dbcdb9a6b3865b52c8be95a83c9'
+  'a0bd388db320bf07e1b56aeee0be4f66c6da06dc43e0487923f03dd70a7eb381'
   "${_skip[@]}"
 )
 sha256sums_x86_64=(
-  '5ad5968dde0b6c69751a83267d543cc82ff64862edaaa8fe3e9e5f506279d1a0'
+  '403d5862f7fb85cf0f67febe46d8595313df214626b12e7efa718c62dc8bc63f'
   "${_skip[@]}"
 )
 
