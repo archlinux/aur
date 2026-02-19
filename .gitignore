@@ -1,0 +1,8 @@
+# Ignore
+/*
+
+# Don't ignore
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!min-ed-launcher.install
