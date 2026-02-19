@@ -1,6 +1,7 @@
-# Maintainer: DEX
+# Maintainer: crueter <crueter at crueter dot x y z>
+# Contributor: DEX
 pkgname=vulkan-terakan-git
-pkgver=24.1.0.r0.gTerakan
+pkgver=26.0.0.r208349.g38146e0a9a8
 pkgrel=1
 pkgdesc="Triangl3's Mesa fork with amd_terascale Vulkan support (Terakan branch)"
 arch=('x86_64')
@@ -10,20 +11,28 @@ depends=(
   'libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
   'libunwind' 'libxml2' 'zstd' 'expat' 'lm_sensors'
   'libvdpau' 'libva' 'wayland' 'xorg-xwayland' 'libxrandr'
-  'libxinerama' 'llvm-libs' 'libglvnd' 'zlib'
+  'libxinerama' 'zlib'
 )
 makedepends=(
   'meson' 'ninja' 'python-mako' 'libxrandr' 'wayland-protocols'
-  'libx11' 'libxext' 'spirv-llvm-translator' 'xorgproto' 'llvm' 'libomxil-bellagio'
-  'git' 'python-ply' 'glslang' 'libclc' 'spirv-tools' 'vulkan-headers')
+  'libx11' 'libxext' 'xorgproto' 'libomxil-bellagio'
+  'git' 'python-ply' 'glslang' 'libclc' 'spirv-tools' 'vulkan-headers'
+  'spirv-llvm-translator')
 provides=('mesa' 'vulkan-driver')
 conflicts=('mesa')
-source=("mesa::git+https://gitlab.freedesktop.org/Triang3l/mesa.git#branch=Terakan")
-sha256sums=('SKIP')
+source=("mesa::git+https://gitlab.freedesktop.org/Triang3l/mesa.git#branch=Terakan"
+    "0001-fix-c23.patch")
+sha256sums=('SKIP'
+            '73cfb3dedafe937996b171c55082d6317cf62e4371f6c1146c2d2a902cf7060b')
 
 pkgver() {
   cd mesa
-  echo "24.1.0.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  echo "26.0.0.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    cd mesa
+    patch -Np1 -i ../0001-fix-c23.patch
 }
 
 build() {
@@ -34,28 +43,14 @@ build() {
     --prefix=/usr \
     --libdir=lib \
     --buildtype=release \
-    -Dgallium-drivers=radeonsi,r600,swrast \
+    -Dgallium-drivers= \
     -Dvulkan-drivers=amd_terascale \
     -Dplatforms=x11,wayland \
-    -Ddri3=enabled \
-    -Degl=enabled \
-    -Dgbm=enabled \
-    -Dglx=dri \
-    -Dgles1=enabled \
-    -Dgles2=enabled \
-    -Dllvm=enabled \
-    -Dshared-llvm=enabled \
-    -Dgallium-va=enabled \
-    -Dgallium-vdpau=enabled \
-    -Dgallium-xa=disabled \
-    -Dgallium-nine=true \
-    -Dosmesa=true \
-    -Dshared-glapi=enabled \
+    -Dllvm=disabled \
     -Dvalgrind=disabled \
     -Dlmsensors=enabled \
     -Dzstd=enabled \
     -Dxlib-lease=enabled \
-    -Dglvnd=true \
     -Dshader-cache=enabled \
     -Dlibunwind=enabled
 
