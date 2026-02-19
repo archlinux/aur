@@ -1,6 +1,6 @@
 # Maintainer: skint007 <archlinux.repose742@passmail.net>
 pkgname=pz-mod-manager
-pkgver=0.2.4
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Desktop application for managing Project Zomboid server mod lists"
 arch=('any')
