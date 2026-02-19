@@ -2,11 +2,11 @@
 
 pkgname=kilocode-cli-bin
 pkgver=1.0.23 # datasource=npm depName=@kilocode/cli
-pkgrel=1
+pkgrel=2
 pkgdesc='The all-in-one agentic engineering platform.'
 arch=('aarch64' 'x86_64')
 depends=('glibc')
-url='https://kilo.ai'
+url='https://kilo.ai/cli'
 license=('MIT')
 options=('!strip')
 provides=('kilo')

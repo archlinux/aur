@@ -1,8 +1,8 @@
 pkgbase = kilocode-cli-bin
 	pkgdesc = The all-in-one agentic engineering platform.
 	pkgver = 1.0.23
-	pkgrel = 1
-	url = https://kilo.ai
+	pkgrel = 2
+	url = https://kilo.ai/cli
 	arch = aarch64
 	arch = x86_64
 	license = MIT
