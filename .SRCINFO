@@ -10,7 +10,6 @@ pkgbase = perl-feature-compat-class
 	depends = perl>=5.14
 	optdepends = perl-object-pad>=0.823: support for Perl versions older than 5.40
 	options = !emptydirs
-	options = purge
 	source = https://cpan.metacpan.org/authors/id/P/PE/PEVANS/Feature-Compat-Class-0.08.tar.gz
 	b2sums = 4b24a85e8a0f318b4561b59016dfbd9a434d2b3f04e451f2076fa42c1dc96375dd5ee033e7ad1d8990b2dd80efebd4a3bae0e5cba6e1a650dea1e153a0d91a1b
 
