@@ -4,14 +4,15 @@
 _dist='Devel-OverrideGlobalRequire'
 pkgname='perl-devel-overrideglobalrequire'
 pkgver=0.001
-pkgrel=2
+pkgrel=3
 pkgdesc='Override CORE::GLOBAL::require safely'
 arch=('any')
-url='https://metacpan.org/dist/Devel-OverrideGlobalRequire'
+url="https://metacpan.org/dist/$_dist"
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 depends=('perl>=5.6')
 checkdepends=(
     'perl-file-temp'
+    'perl-pathtools'
     'perl-scalar-list-utils'
     'perl-test-simple'
 )
@@ -24,9 +25,9 @@ build()
     cd $_dist-$pkgver
 
     unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
-    export PERL_MM_OPT='NO_PACKLIST=1 NO_PERLLOCAL=1' PERL_MM_USE_DEFAULT=1
+    export PERL_MM_USE_DEFAULT=1
 
-    /usr/bin/perl Makefile.PL
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
 }
 

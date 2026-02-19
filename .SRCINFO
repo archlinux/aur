@@ -1,11 +1,12 @@
 pkgbase = perl-devel-overrideglobalrequire
 	pkgdesc = Override CORE::GLOBAL::require safely
 	pkgver = 0.001
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/dist/Devel-OverrideGlobalRequire
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later
 	checkdepends = perl-file-temp
+	checkdepends = perl-pathtools
 	checkdepends = perl-scalar-list-utils
 	checkdepends = perl-test-simple
 	depends = perl>=5.6
