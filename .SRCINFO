@@ -1,6 +1,6 @@
 pkgbase = calculix-cgx
 	pkgdesc = CalculiX: 3D Structural Finite Element Program - Post Processor
-	pkgver = 2.22
+	pkgver = 2.23
 	pkgrel = 1
 	url = http://www.calculix.de/
 	arch = i686
@@ -16,9 +16,9 @@ pkgbase = calculix-cgx
 	depends = libxi
 	optdepends = calculix-doc: documentation and examples
 	options = !buildflags
-	source = http://www.dhondt.de/cgx_2.22.all.tar.bz2
-	source = calculix_cgx_2.22_archlinux.patch
-	sha256sums = c642431089560eec21b1a6a5d7f5a40bc23ea946115a296b8dd8cb8a596921d1
-	sha256sums = 10fb41e0d53457c100df59428f1ad9bb4cbb953fbf30297c89c6d1c4be673b63
+	source = http://www.dhondt.de/cgx_2.23.all.tar.bz2
+	source = calculix_cgx_2.23_archlinux.patch
+	sha256sums = 04abbe0d2bac6a7bff018238b409568c189ede25589880e8cdd947f56ebd67c7
+	sha256sums = 95d91be0aa1b50a598a9bd19eed6e08fb1016934f7d600248a987db07fe530b6
 
 pkgname = calculix-cgx

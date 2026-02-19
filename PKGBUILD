@@ -5,7 +5,7 @@
 # NOTE: !buildflags is needed in order to compile the code
 
 pkgname=calculix-cgx
-pkgver=2.22
+pkgver=2.23
 pkgrel=1
 pkgdesc="CalculiX: 3D Structural Finite Element Program - Post Processor"
 arch=('i686' 'x86_64')
@@ -20,8 +20,8 @@ checkdepends=('perl')
 source=("http://www.dhondt.de/cgx_${pkgver}.all.tar.bz2"
         "calculix_cgx_${pkgver}_archlinux.patch")
 
-sha256sums=('c642431089560eec21b1a6a5d7f5a40bc23ea946115a296b8dd8cb8a596921d1'
-            '10fb41e0d53457c100df59428f1ad9bb4cbb953fbf30297c89c6d1c4be673b63')
+sha256sums=('04abbe0d2bac6a7bff018238b409568c189ede25589880e8cdd947f56ebd67c7'
+            '95d91be0aa1b50a598a9bd19eed6e08fb1016934f7d600248a987db07fe530b6')
 
 prepare()
 {
@@ -36,7 +36,9 @@ prepare()
 build()
 {   
     cd "${srcdir}/CalculiX/cgx_${pkgver}/src"
-    make  CFLAGS="-O2 -Wall -Wno-narrowing -I./ -I/usr/include/libSNL -I../../glut-3.5/src" \
+    make  CFLAGS="-O2 -std=c11 -Wno-narrowing -Wno-old-style-definition \
+                  -Wno-implicit-function-declaration -Wno-int-conversion \
+                  -I./ -I/usr/include/libSNL -I../../glut-3.5/src" \
           LFLAGS="-lGL -lGLU -lX11 -lXi -lXmu -lXext -lXt -lSM -lICE -lSNL -lm -lpthread -lrt"
 }
 
