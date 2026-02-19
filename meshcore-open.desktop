@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=MeshCore Open
+Comment=Open-source Flutter client for MeshCore LoRa mesh networking devices.
+Exec=meshcore-open
+Icon=meshcore-open
+SingleMainWindow=true
+Terminal=false
+StartupNotify=false
+Categories=InstantMessaging;Chat;MeshCore;Bluetooth
+X-Purism-FormFactor=Workstation;Mobile;
