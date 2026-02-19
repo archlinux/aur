@@ -1,17 +1,41 @@
-# Maintainer: Dandraghas <dandraghas at proton dot me>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-pkgname=catwalk-bin
-pkgver=1.2.0
+_pkgauthor=charmbracelet
+_pkgname=catwalk
+pkgname=${_pkgname}-bin
+pkgdesc="🐈 A collection of LLM inference providers and models"
+
+pkgver=0.20.0
 pkgrel=1
-pkgdesc="A sweet program that takes in four showcase images and displays them all at once."
-url="https://github.com/catppuccin/toolbox"
-conflicts=('catwalk' 'catwalk-git')
-license=('MIT')
-arch=('x86_64')
+_pkgvername=v${pkgver}
 
-source=("${url}/releases/download/catwalk-v${pkgver}/catwalk-${arch}-unknown-linux-gnu")
-sha256sums=('413459bb5cd6bd937c49bf9a6c10ab164bd05b1a7c09c2a0c2dac9a841fb9b06')
+arch=('x86_64' 'aarch64')
+_barch=('linux_amd64' 'linux_arm64')
+
+url="https://github.com/${_pkgauthor}/${_pkgname}"
+_urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
+
+license=('MIT')
+
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+
+source=("README-${pkgver}.md::${_urlraw}/README.md"
+		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
+source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[0]}.tar.gz")
+source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[1]}.tar.gz")
+sha256sums=('d482c99d082bfcf086071f5756340de605a204731a07a43cada07e8b953a32d6'
+            '8a77c755a1d1fbdc932e86f0449549121820b6f4cc1234b12fcfc8d38013c1de')
+sha256sums_x86_64=('49d90d735fafd3d8563c28ce87f90fa1283307865957df429a441aebb7222a73')
+sha256sums_aarch64=('493b9090bbe73866cf77d49532d9ea5c4acadd7d14e65d2e11fc1a6b154c1663')
+
 
 package() {
-    install -Dm755 catwalk-${arch}-unknown-linux-gnu "${pkgdir}/usr/bin/catwalk"
+	cd "${srcdir}/" || exit
+
+	install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+
+	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

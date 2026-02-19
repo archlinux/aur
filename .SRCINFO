@@ -1,13 +1,20 @@
 pkgbase = catwalk-bin
-	pkgdesc = A sweet program that takes in four showcase images and displays them all at once.
-	pkgver = 1.2.0
+	pkgdesc = 🐈 A collection of LLM inference providers and models
+	pkgver = 0.20.0
 	pkgrel = 1
-	url = https://github.com/catppuccin/toolbox
+	url = https://github.com/charmbracelet/catwalk
 	arch = x86_64
+	arch = aarch64
 	license = MIT
+	provides = catwalk
 	conflicts = catwalk
-	conflicts = catwalk-git
-	source = https://github.com/catppuccin/toolbox/releases/download/catwalk-v1.2.0/catwalk-x86_64-unknown-linux-gnu
-	sha256sums = 413459bb5cd6bd937c49bf9a6c10ab164bd05b1a7c09c2a0c2dac9a841fb9b06
+	source = README-0.20.0.md::https://raw.githubusercontent.com/charmbracelet/catwalk/v0.20.0/README.md
+	source = LICENSE-0.20.0::https://raw.githubusercontent.com/charmbracelet/catwalk/v0.20.0/LICENSE
+	sha256sums = d482c99d082bfcf086071f5756340de605a204731a07a43cada07e8b953a32d6
+	sha256sums = 8a77c755a1d1fbdc932e86f0449549121820b6f4cc1234b12fcfc8d38013c1de
+	source_x86_64 = catwalk-x86_64-0.20.0.tgz::https://github.com/charmbracelet/catwalk/releases/download/v0.20.0/catwalk_0.20.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 49d90d735fafd3d8563c28ce87f90fa1283307865957df429a441aebb7222a73
+	source_aarch64 = catwalk-aarch64-0.20.0.tgz::https://github.com/charmbracelet/catwalk/releases/download/v0.20.0/catwalk_0.20.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 493b9090bbe73866cf77d49532d9ea5c4acadd7d14e65d2e11fc1a6b154c1663
 
 pkgname = catwalk-bin

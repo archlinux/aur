@@ -1,0 +1,5 @@
+[catwalk-bin]
+source = "github"
+github = "charmbracelet/catwalk"
+use_latest_release = true
+prefix = "v"
