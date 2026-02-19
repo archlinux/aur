@@ -1,0 +1,14 @@
+pkgbase = sound_themer
+	pkgdesc = A program to play sounds from a selected sound theme.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/tmforshaw/sound_themer
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = wireplumber
+	source = sound_themer-0.1.0.tar.gz::https://github.com/tmforshaw/sound_themer/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = bed43396bb985d6f1fd1b50bcab81c9383524214f6c9668cb3b29a8c3acf2c93
+
+pkgname = sound_themer
