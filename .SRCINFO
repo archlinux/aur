@@ -1,6 +1,6 @@
 pkgbase = nolio
 	pkgdesc = Minimal calendar-based todo app built with Flutter
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/Grey-007/nolio
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = nolio
 	depends = gcc-libs
 	provides = nolio
 	conflicts = nolio-bin
-	source = git+https://github.com/Grey-007/nolio.git#tag=v0.3.0
+	source = git+https://github.com/Grey-007/nolio.git#tag=v0.4.0
 	sha256sums = SKIP
 
 pkgname = nolio
