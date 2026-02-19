@@ -3,13 +3,13 @@
 
 pkgname=xsv-git
 pkgver=0.13.0.r14.gf430466
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast CSV command line toolkit written in Rust"
 arch=('i686' 'x86_64')
 url="https://github.com/BurntSushi/xsv"
 license=('LicenseRef-xsv' 'MIT')
 depends=('glibc' 'libgcc')
-makedepends=('git' 'rust')
+makedepends=('git' 'cargo')
 provides=("xsv=$pkgver")
 conflicts=('xsv')
 source=("git+https://github.com/BurntSushi/xsv.git")
