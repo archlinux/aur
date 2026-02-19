@@ -61,4 +61,5 @@ package() {
   cd mesa
   DESTDIR="$pkgdir" ninja -C build install
   install -Dm644 docs/license.rst "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  rm -rf "$pkgdir"/usr/share/drirc.d
 }
