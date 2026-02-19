@@ -2,7 +2,7 @@
 pkgname=vsrvrt-git
 _pkgname=vs-rvrt
 pkgver=1.0.0.r0.g57a5c5f
-pkgrel=1
+pkgrel=2
 pkgdesc="Vapoursynth plugin for RVRT (Recurrent Video Restoration Transformer) video restoration"
 arch=('x86_64')
 url="https://github.com/Lyra-Vhess/vs-rvrt"
