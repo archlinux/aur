@@ -23,6 +23,7 @@ depends=("${_pkgname}" 'lib32-bzip2' 'lib32-freetype2' 'lib32-giflib' 'lib32-lib
 optdepends=('lib32-libid3tag: ID3 loader'
             'lib32-librsvg: SVG loader'
             'lib32-libwebp: WEBP loader')
+provides=('libImlib2.so')
 source=("https://downloads.sourceforge.net/project/enlightenment/imlib2-src/$pkgver/$_pkgname-$pkgver.tar.xz")
 sha256sums=('250f9752f69dc522e529a81aaa9395705f7fc312ff2453e5de59ac2ba1f2858f')
 sha512sums=('e62b7e89f6d75fb6a649a589f06fea34d08bba696c68d9ece59ee9500558af874c1073ffecae2d1cadd6d603f1acf4d071a415dbf2ba73b505ccf11fe45eea62')
