@@ -2,14 +2,15 @@
 # Contributor: fanglingsu
 # Maintainer: <aksr at t-com dot me>
 pkgname=vimb-git
-pkgver=3.6.0.r1751.8b85f98
+pkgver=3.7.1.r1828.0801283
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='A Vim-like web browser that is inspired by Pentadactyl and Vimprobable.'
 url='https://github.com/fanglingsu/vimb'
 url='http://fanglingsu.github.io/vimb'
-license=('GPL3')
-depends=('webkit2gtk-4.1')
+license=('GPL-3.0')
+depends=('gtk4' 'webkitgtk-6.0')
+optdepends=('gst-plugins-good')
 makedepends=('git')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}" 'vimb2')
@@ -38,5 +39,5 @@ build() {
 package() {
 	cd "$srcdir/$pkgname"
 	make DEXTENSIONDIR=/usr/lib/vimb V=1 DESTDIR="$pkgdir" PREFIX="/usr" install
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
