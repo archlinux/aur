@@ -10,6 +10,7 @@ pkgbase = dcr
 	depends = gcc-libs
 	optdepends = gcc: build C/C++ projects with GCC
 	optdepends = clang: build C/C++ projects with Clang
+	options = !lto
 	source = dcr-0.2.1.tar.gz::https://github.com/dexoron/dcr/archive/refs/tags/v0.2.1.tar.gz
 	sha256sums = 30e334fa98cd51073c0fa84c80a982584b00156b57084311ad53419441ce6235
 

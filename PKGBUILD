@@ -7,6 +7,7 @@ url="https://github.com/dexoron/dcr"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
+options=('!lto')
 optdepends=(
   'gcc: build C/C++ projects with GCC'
   'clang: build C/C++ projects with Clang'
