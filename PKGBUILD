@@ -1,12 +1,13 @@
 # Maintainer: Danny Grove <aur@dannygrove.com>
 pkgname=zarf
 pkgver=0.71.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Airgap CLI tool for Kubernetes"
 url="https://github.com/zarf-dev/zarf"
 license=('Apache-2.0')
 provides=("${pkgname%}=${pkgver}")
 conflicts=("${pkgname%-bin}")
+makedepends=("go")
 depends=()
 optdepends=()
 arch=(
