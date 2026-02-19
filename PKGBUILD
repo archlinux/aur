@@ -1,44 +1,42 @@
-# Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
-pkgname=psi-git
-pkgver=1.3_dev_20180117
+# Maintainer: Sergej Pupykin <arch+pub@sergej.pp.ru>
+
+pkgname='psi-git'
+pkgver=1.5.r2132.g052ffe4a
 pkgrel=1
-pkgdesc="A jabber client. GIT version"
-arch=('i686' 'x86_64')
-url="http://psi-im.org/"
+pkgdesc="Powerful XMPP (Jabber) client (Qt, C++) designed for power users"
+url="https://psi-im.org"
 license=('GPL2')
-depends=('qca-qt5' 'qt5-x11extras' 'qt5-multimedia' 'qt5-svg' 'qt5-webkit' 'hunspell' 'aspell' 'libxss' 'minizip' 'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('git' 'cmake')
-replaces=('psi' 'psi-qt5-git')
-conflicts=('psi' 'psi-qt5-git')
-source=('git+https://github.com/psi-im/psi.git')
-md5sums=('SKIP')
+arch=('x86_64')
+depends=('hunspell' 'minizip' 'qca-qt5' 'qt5-svg' 'qt5-x11extras' 'libidn' 'libusrsctp' 'qtkeychain-qt5')
+makedepends=('cmake' 'qt5-multimedia')
+provides=("psi-nowebengine=$pkgver")
+conflicts=('psi-nowebengine')
+replaces=('psi-nowebengine')
+source=("git+https://github.com/psi-im/psi.git")
+md5sums=("SKIP")
 
 pkgver() {
-echo  1.3_dev_$(date +"%Y%m%d")
+  cd "$srcdir/psi"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-
-  cd $srcdir/psi
-
-  git submodule init
-  git submodule update
-
+  cd psi
+  git submodule update --init --recursive
 }
 
 build() {
-
-  cd $srcdir/psi
+  cd psi
   mkdir -p build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DENABLE_WEBKIT=OFF ..
   make
-
 }
 
 package() {
-  cd $srcdir/psi/build
-
+  cd psi/build
   make DESTDIR="$pkgdir" install
+  install -dm755 "$pkgdir/usr/include/psi/plugins"
+  install -m644 ../plugins/include/*.h "$pkgdir/usr/include/psi/plugins"
+  install -Dm644 ../linux/psi.appdata.xml "$pkgdir/usr/share/metainfo/$pkgname.appdata.xml"
 }
-
