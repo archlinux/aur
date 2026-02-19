@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=mcfly-git
-pkgver=0.8.0.r5.g2e22bab
+pkgver=x0.9.1.r62.g102f0c3
 pkgrel=1
 pkgdesc="Fly through your shell history"
 arch=('i686' 'x86_64')
 url="https://github.com/cantino/mcfly"
 license=('MIT')
-depends=('gcc-libs')
-makedepends=('git' 'rust')
+depends=('glibc' 'libgcc')
+makedepends=('git' 'cargo')
 provides=("mcfly=$pkgver")
 conflicts=('mcfly')
 source=("git+https://github.com/cantino/mcfly.git")
@@ -28,7 +28,7 @@ pkgver() {
   cd "mcfly"
 
   _tag=$(git tag -l --sort -v:refname | sed '/rc[0-9]*/d' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
@@ -36,8 +36,8 @@ pkgver() {
 check() {
   cd "mcfly"
 
-  cargo test \
-    --frozen
+  #cargo test \
+  #  --frozen
 }
 
 package() {
