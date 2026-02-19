@@ -1,0 +1,19 @@
+pkgbase = python-openseespy
+	pkgdesc = OpenSeesPy: Reliable Build for 3.14 (Fixed Dependencies)
+	pkgver = 0.2.0
+	pkgrel = 2
+	url = https://github.com/zhuminjie/OpenSeesPy
+	arch = x86_64
+	license = GPL
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-numpy
+	depends = openblas
+	depends = gcc6-libs
+	source = https://github.com/zhuminjie/OpenSeesPy/archive/refs/tags/0.2.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-openseespy
