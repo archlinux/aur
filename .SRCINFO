@@ -1,0 +1,24 @@
+pkgbase = pelorus-bin
+	pkgdesc = Highly efficient Lidar Inertial Odometry.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://codeberg.org/stelzo/pelorus
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	depends = libgcc
+	depends = glibc
+	depends = minot-bin
+	provides = pelorus
+	provides = libpelorus
+	noextract = pelorus-bin-0.0.1-bin.deb
+	noextract = pelorus-bin-0.0.1-bin-lib.deb
+	options = !lto
+	options = !strip
+	options = !debug
+	source = pelorus-bin-0.0.1-bin.deb::https://uos-robotics.codeberg.page/ppa/ubuntu/pool/main/noble/pelorus_0.0.1-1_amd64.deb
+	source = pelorus-bin-0.0.1-bin-lib.deb::https://uos-robotics.codeberg.page/ppa/ubuntu/pool/main/noble/libpelorus_0.0.1-1_amd64.deb
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = pelorus-bin
