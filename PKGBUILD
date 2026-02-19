@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=hyperfine-git
-pkgver=1.16.1.r4.g2763b41
-pkgrel=2
+pkgver=1.20.0.r1.g327d5f4
+pkgrel=1
 pkgdesc="A command-line benchmarking tool"
 arch=('i686' 'x86_64')
 url="https://github.com/sharkdp/hyperfine"
-license=('Apache' 'MIT')
-depends=('gcc-libs')
-makedepends=('git' 'rust')
+license=('Apache-2.0' 'MIT')
+depends=('glibc' 'libgcc')
+makedepends=('git' 'cargo')
 provides=("hyperfine=$pkgver")
 conflicts=('hyperfine')
 source=("git+https://github.com/sharkdp/hyperfine.git")
