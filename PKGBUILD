@@ -2,21 +2,22 @@
 # Maintainer: Angelo Theodorou <encelo@users.sourceforge.net>
 
 pkgname=dunelegacy
-pkgver=0.98.5
+pkgver=0.99.5
 pkgrel=1
 pkgdesc="Updated clone of Westood Studios' Dune2"
 arch=('i686' 'x86_64')
 url="http://dunelegacy.sourceforge.net"
 license=('GPL-2.0-or-later')
-depends=('sdl2_mixer' 'sdl2_ttf' 'xdg-utils' 'hicolor-icon-theme')
+depends=('sdl2_mixer' 'sdl2_ttf' 'xdg-utils' 'hicolor-icon-theme' 'miniupnpc' 'discord-rpc')
 makedepends=('git' 'cmake')
 changelog=dunelegacy.changelog
-source=($pkgname::git+https://git.code.sf.net/p/dunelegacy/code#commit=df3075e348413a3e7888125a86830517a966fd91 discord.patch)
-md5sums=('SKIP' 'fb0e143ffae552f5f8864b078e50ba64')
+source=($pkgname::git+https://git.code.sf.net/p/dunelegacy/code#tag=v0.99.5 'cmakelists.patch')
+md5sums=('9282adbbf5250216a1b99d381727f42d' '6925e452c785122e5abeea64df1b8d1f')
+
 
 prepare() {
   cd $pkgname
-  patch --forward --strip=1 --input="${srcdir}/discord.patch"
+  patch --forward --strip=1 --input="${srcdir}/cmakelists.patch"
 }
 
 build() {
