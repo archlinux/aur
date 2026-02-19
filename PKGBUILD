@@ -24,9 +24,17 @@ noextract=()
 sha256sums=('9f1b6a201ad3aa2aaa51270f068a109f05ad1d1d2e37c1cae3df88e5f4edf421')
 validpgpkeys=()
 
+prepare() {
+  cd "$srcdir/steamfetch-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
 build() {
   cd "$srcdir/steamfetch-$pkgver"
-  cargo build --release --locked
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --release --frozen --all-features
 }
 
 package() {
