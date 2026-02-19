@@ -23,30 +23,29 @@ makedepends=(
   ## configure_requires
   'perl-module-build>=0.4004'
 )
-options=(!emptydirs purge)
+options=(!emptydirs)
 source=("https://cpan.metacpan.org/authors/id/P/PE/PEVANS/Test-Future-IO-Impl-${pkgver}.tar.gz")
 b2sums=('d328423084a4de4f968d6a9665d55b720d4b22e17827c7f9745423de879ecb3b05dbe0ead2e1b6f165f9d26f844b23708e69498125e6372723d2fa2a4eae05d2')
 
 build() {
   cd "${srcdir}/Test-Future-IO-Impl-${pkgver}"
 
-  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  unset PERL_MB_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
-  perl Build.PL --installdirs=vendor --create_packlist=0
+  /usr/bin/perl Build.PL --create_packlist=0
   ./Build
 }
 
 check() {
   cd "${srcdir}/Test-Future-IO-Impl-${pkgver}"
 
-  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
-  export PERL_MM_USE_DEFAULT=1
+  unset PERL5LIB PERL_LOCAL_LIB_ROOT
   ./Build test
 }
 
 package() {
   cd "${srcdir}/Test-Future-IO-Impl-${pkgver}"
 
-  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
-  ./Build install --destdir="${pkgdir}"
+  unset PERL5LIB PERL_LOCAL_LIB_ROOT
+  ./Build install --installdirs=vendor --destdir="${pkgdir}"
 }
