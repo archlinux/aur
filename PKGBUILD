@@ -1,6 +1,6 @@
 # Maintainer: Felix <felix.crabdrop@gmail.com>
 pkgname=crabdrop
-pkgver=0.3.2
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="A simple, fast file manager for S3-compatible storage"
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=(!lto)
 provides=('crabdrop')
 conflicts=('crabdrop-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('b7802c5baec0f9255fc80f402a93abbe22bb9311d2ef21dcc6c572cfc6691d5e')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
