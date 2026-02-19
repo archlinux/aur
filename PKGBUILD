@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=piping-server-git
-pkgver=0.16.0.r20.g71a054d
+pkgver=0.18.0.r155.g7fff211
 pkgrel=1
 pkgdesc="Infinitely transfer between any device over pure HTTP"
 arch=('i686' 'x86_64')
 url="https://github.com/nwtgck/piping-server-rust"
 license=('MIT')
-depends=('gcc-libs')
-makedepends=('git' 'rust')
+depends=('glibc' 'libgcc')
+makedepends=('git' 'cargo')
 provides=("piping-server=$pkgver")
 conflicts=('piping-server')
 source=("git+https://github.com/nwtgck/piping-server-rust.git")
