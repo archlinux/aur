@@ -8,7 +8,7 @@ _pkgname='tooi'
 pkgname="$_pkgname-git"
 pkgdesc='Text-based user interface for Mastodon, Pleroma and friends (development version)'
 pkgver=0.21.2.r4.gd7a13e4
-pkgrel=2
+pkgrel=3
 url='https://codeberg.org/ihabunek/tooi'
 arch=('any')
 license=('MIT')  # SPDX-License-Identifier: MIT
@@ -22,13 +22,11 @@ makedepends=(
 )
 depends=(
   'python'
-  'python-aiodns'
-  'python-aiofiles'
+  'python-aiodns'   # For fast DNS resolving by aiohttp
   'python-aiohttp'
   'python-beautifulsoup4'
   'python-click'
   'python-html2text'
-  'python-pillow'
   'python-platformdirs'
   'python-pydantic'
   'python-textual'
