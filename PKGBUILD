@@ -1,13 +1,12 @@
 # Maintainer: Zesko
 pkgname=btrfs-desktop-notification-git
-pkgver=r49.ce13e98
+pkgver=r51.132c107
 pkgrel=1
 pkgdesc="Notifies you on the desktop when booting into a read-only system or when BTRFS warning/error messages appear in the dmesg log."
 arch=('any')
 url="https://gitlab.com/Zesko/btrfs-desktop-notification.git"
 license=('GPL3')
 depends=('libnotify' 'systemd')
-optdepends=('dunst')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "snapper-snapshot-notification-git")
