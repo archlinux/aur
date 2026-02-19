@@ -1,6 +1,6 @@
 pkgbase = nikode-bin
 	pkgdesc = A modern API client for developers
-	pkgver = 3.0.10
+	pkgver = 3.0.11
 	pkgrel = 1
 	url = https://github.com/m1z23r/nikode
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = nikode-bin
 	provides = nikode
 	conflicts = nikode
 	options = !strip
-	source = nikode-bin-3.0.10.pacman::https://github.com/m1z23r/nikode/releases/download/v3.0.10/Nikode-3.0.10.pacman
+	source = nikode-bin-3.0.11.pacman::https://github.com/m1z23r/nikode/releases/download/v3.0.11/Nikode-3.0.11.pacman
 	sha256sums = SKIP
 
 pkgname = nikode-bin
