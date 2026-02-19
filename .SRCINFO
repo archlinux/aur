@@ -1,0 +1,17 @@
+pkgbase = puzzletea-bin
+	pkgdesc = A collection of puzzle bubbles for BubbleTea
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/FelineStateMachine/puzzletea
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = puzzletea
+	conflicts = puzzletea
+	source_x86_64 = puzzletea-x86_64-1.5.0.tgz::https://github.com/FelineStateMachine/puzzletea/releases/download/v1.5.0/puzzletea_1.5.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 50ac0d7612cccc29825a6e19054dce25563cf5b908e0075b53432856e151251b
+	source_aarch64 = puzzletea-aarch64-1.5.0.tgz::https://github.com/FelineStateMachine/puzzletea/releases/download/v1.5.0/puzzletea_1.5.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = db0e5619ef8d4de6aec173f557483c3f9a6e500428bcdb2c55429fa9bd9a5f9e
+
+pkgname = puzzletea-bin
