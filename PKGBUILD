@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 _pkgname=libretro-core-info
 pkgname=$_pkgname-git
-pkgver=1.15.0.r1.g2bee2ae
+pkgver=1.22.2.r3.gbd81a0b
 pkgrel=1
 epoch=1
 pkgdesc="Libretro core info files"
@@ -18,7 +18,7 @@ b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/[^-]*-g/r&/;s/-/./g'
 }
 
 package() {

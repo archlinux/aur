@@ -1,6 +1,6 @@
 pkgbase = libretro-core-info-git
 	pkgdesc = Libretro core info files
-	pkgver = 1.15.0.r1.g2bee2ae
+	pkgver = 1.22.2.r3.gbd81a0b
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/libretro/libretro-core-info
@@ -8,7 +8,7 @@ pkgbase = libretro-core-info-git
 	groups = libretro
 	license = MIT
 	makedepends = git
-	provides = libretro-core-info=1.15.0.r1.g2bee2ae
+	provides = libretro-core-info=1.22.2.r3.gbd81a0b
 	conflicts = libretro-core-info
 	source = libretro-core-info::git+https://github.com/libretro/libretro-core-info.git
 	b2sums = SKIP
