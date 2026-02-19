@@ -1,14 +1,18 @@
 pkgbase = mathsat-5
-	pkgdesc = MathSAT 5 is an efficient SMT solver supporting a wide range of theories and functionalities
-	pkgver = 5.6.9
+	pkgdesc = An efficient SMT solver supporting a wide range of theories and functionalities
+	pkgver = 5.6.15
 	pkgrel = 1
-	url = http://mathsat.fbk.eu/
+	url = https://mathsat.fbk.eu/
 	arch = x86_64
-	license = GPL
-	license = LGPL
-	license = custom
+	arch = aarch64
+	license = custom:MathSAT5-non-commercial
+	makedepends = python-setuptools
+	depends = python
+	options = !debug
 	options = staticlibs
-	source = mathsat-5-5.6.9.tar.gz::http://mathsat.fbk.eu/download.php?file=mathsat-5.6.9-linux-x86_64.tar.gz
-	md5sums = 05287ac1cda85eac244e43899ea735c6
+	source_x86_64 = mathsat-5-5.6.15.tar.gz::https://mathsat.fbk.eu/release/mathsat-5.6.15-linux-x86_64.tar.gz
+	b2sums_x86_64 = 4e7b27ff54bede75e85d15e080a34906c958789655307c5658325e13b8b5d1ca5951ce1ea69fa9d81a109cd9318eccde1bf156c142edacd30b487210b65bc8ed
+	source_aarch64 = mathsat-5-5.6.15.tar.gz::https://mathsat.fbk.eu/release/mathsat-5.6.15-linux-aarch64.tar.gz
+	b2sums_aarch64 = c5a58153c8c5bdbfd6f2c3e3189ba5bea34eb0f99f09a417ed47d680ffdc6d0fa8a7043decda3c9d53e338fa675579268714f7a9038ce29d2ec97ba19c7073cf
 
 pkgname = mathsat-5
