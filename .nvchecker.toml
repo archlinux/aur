@@ -1,0 +1,3 @@
+[perl-cpan-listchanges]
+source = "cpan"
+cpan = "cpan-listchanges"
