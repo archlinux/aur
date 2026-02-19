@@ -5,10 +5,12 @@ pkgbase = glu-git
 	url = https://gitlab.freedesktop.org/mesa/glu
 	arch = i686
 	arch = x86_64
-	license = LGPL
+	license = SGI-B-1.1 AND SGI-B-2.0 AND MIT
 	makedepends = git
 	makedepends = meson
-	depends = gcc-libs
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
 	depends = libgl
 	provides = glu=9.0.3.r0.ga2b96c7
 	conflicts = glu

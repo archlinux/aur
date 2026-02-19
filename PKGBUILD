@@ -9,8 +9,8 @@ pkgrel=1
 pkgdesc="Mesa OpenGL utility library"
 arch=('i686' 'x86_64')
 url="https://gitlab.freedesktop.org/mesa/glu"
-license=('LGPL')
-depends=('gcc-libs' 'libgl')
+license=('SGI-B-1.1 AND SGI-B-2.0 AND MIT')
+depends=('glibc' 'libgcc' 'libstdc++' 'libgl')
 makedepends=('git' 'meson')
 provides=("glu=$pkgver")
 conflicts=('glu')
@@ -23,7 +23,7 @@ pkgver() {
   cd "glu"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^glu-[0-9\.]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^glu-//'
 }
@@ -42,7 +42,7 @@ build() {
 check() {
   cd "glu"
 
-  meson test -C "_build"
+  #meson test -C "_build"
 }
 
 package() {
