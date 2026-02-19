@@ -1,7 +1,7 @@
 pkgbase = procmon-git
 	pkgdesc = Trace syscall activity tool
-	pkgver = 2.1.0.0.r0.gc5f8271
-	pkgrel = 4
+	pkgver = 2.1.0.0.r1.g8d19776
+	pkgrel = 1
 	url = https://github.com/microsoft/ProcMon-for-Linux
 	arch = x86_64
 	license = MIT
@@ -9,14 +9,16 @@ pkgbase = procmon-git
 	makedepends = cmake
 	makedepends = clang
 	makedepends = sqlite
-	depends = gcc-libs
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
 	depends = libedit
 	depends = libelf
 	depends = ncurses
 	depends = sysinternalsebpf
 	depends = zlib
 	depends = zstd
-	provides = procmon=2.1.0.0.r0.gc5f8271
+	provides = procmon=2.1.0.0.r1.g8d19776
 	conflicts = procmon
 	source = git+https://github.com/microsoft/ProcMon-for-Linux.git
 	sha256sums = SKIP
