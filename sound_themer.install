@@ -1,0 +1,5 @@
+post_install() {
+	/usr/bin/sound_themer -t freedesktop -e oga play complete
+	echo -e "If you didn't just hear a completion sound, the installation is broken"
+}
+
