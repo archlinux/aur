@@ -1,0 +1,23 @@
+post_install() {
+    echo ""
+    echo "Orbit WiFi/Bluetooth Manager installed!"
+    echo ""
+    echo "Configuration:"
+    echo "  Config file: ~/.config/orbit/config.toml"
+    echo "  Theme file:  ~/.config/orbit/theme.toml"
+    echo ""
+    echo "Usage:"
+    echo "  orbit           - Launch GUI"
+    echo "  orbit daemon    - Run as background daemon"
+    echo "  orbit toggle    - Toggle daemon visibility"
+    echo "  orbit list      - List WiFi networks (CLI)"
+    echo ""
+    echo "Theme customization (~/.config/orbit/theme.toml):"
+    echo "  accent_primary = \"#8B5CF6\"    # Violet"
+    echo "  accent_secondary = \"#D97706\"  # Gold"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
