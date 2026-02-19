@@ -1,0 +1,14 @@
+pkgbase = haskell-strict-concurrency
+	pkgdesc = Strict concurrency abstractions
+	pkgver = 0.2.4.3
+	pkgrel = 1
+	url = https://github.com/ygale/strict-concurrency
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-deepseq
+	source = https://hackage.haskell.org/package/strict-concurrency-0.2.4.3/strict-concurrency-0.2.4.3.tar.gz
+	sha256sums = 02d934ec5053d3d42031798e5a3cd25547ccde5973d562f9fc943d635d9956c0
+
+pkgname = haskell-strict-concurrency
