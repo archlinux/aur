@@ -1,7 +1,7 @@
 # Maintainer: Grey-007 <https://github.com/Grey-007>
 
 pkgname=nolio-bin
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Minimal calendar-based todo app built with Flutter (prebuilt binary)"
 arch=('x86_64')
@@ -34,7 +34,7 @@ source=(
 )
 
 sha256sums=(
-  '7b88a1b911ec3d60dfcf90c410f4a0b89eac30e1e1536d4d366524251b4da5e5'
+  '67436e764139919467547299a05d1d30bc8e49adaa562cd9f5c149c5b51f631d'
   'SKIP'
   'SKIP'
 )

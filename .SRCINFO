@@ -1,6 +1,6 @@
 pkgbase = nolio-bin
 	pkgdesc = Minimal calendar-based todo app built with Flutter (prebuilt binary)
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/Grey-007/nolio
 	arch = x86_64
@@ -19,10 +19,10 @@ pkgbase = nolio-bin
 	provides = nolio
 	conflicts = nolio
 	options = !debug
-	source = nolio-bin-0.3.0.tar.gz::https://github.com/Grey-007/nolio/releases/download/v0.3.0/nolio-v0.3.0-linux-x86_64.tar.gz
+	source = nolio-bin-0.4.0.tar.gz::https://github.com/Grey-007/nolio/releases/download/v0.4.0/nolio-v0.4.0-linux-x86_64.tar.gz
 	source = nolio.desktop
 	source = nolio.png
-	sha256sums = 7b88a1b911ec3d60dfcf90c410f4a0b89eac30e1e1536d4d366524251b4da5e5
+	sha256sums = 67436e764139919467547299a05d1d30bc8e49adaa562cd9f5c149c5b51f631d
 	sha256sums = SKIP
 	sha256sums = SKIP
 
