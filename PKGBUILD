@@ -48,27 +48,29 @@ checkdepends=(
   'perl-test-simple>=1.302200' # "Test2::V0"
   'perl-test-without-module'
 )
-options=(!emptydirs purge)
+options=(!emptydirs)
 source=("https://cpan.metacpan.org/authors/id/J/JO/JONASS/App-Licensecheck-v${pkgver}.tar.gz")
 b2sums=('1d589a4eedc0cc11907cb9c5358ca1703f5f63abfb380a968196c6eca93cd42f3b9c96ccfbfc10d649ae9a1e28240e23f39e344ecb79acb63bc56ef607267119')
 
 build() {
   cd "${srcdir}/App-Licensecheck-v${pkgver}"
 
+  unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
-  perl Makefile.PL NO_PACKLIST=true NO_PERLLOCAL=true INSTALLDIRS=vendor
+  /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
   make
 }
 
 check() {
   cd "${srcdir}/App-Licensecheck-v${pkgver}"
 
-  export PERL_MM_USE_DEFAULT=1
+  unset PERL5LIB PERL_LOCAL_LIB_ROOT
   LC_ALL=C.UTF-8 make test
 }
 
 package() {
   cd "${srcdir}/App-Licensecheck-v${pkgver}"
 
-  make install DESTDIR="${pkgdir}"
+  unset PERL5LIB PERL_LOCAL_LIB_ROOT
+  make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
 }
