@@ -1,18 +1,19 @@
 pkgbase = xytz-bin
-	pkgdesc = A Beautiful TUI YouTube Downloader app
-	pkgver = 0.8.3
+	pkgdesc = a beautiful TUI YouTube Downloader
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://github.com/xdagiz/xytz
-	arch = x86_64
-	arch = aarch64
 	license = MIT
+	optdepends = mpv: for playing videos
 	depends = yt-dlp
 	depends = ffmpeg
-	provides = xytz
 	conflicts = xytz
-	source_x86_64 = xytz-x86_64-0.8.3.tgz::https://github.com/xdagiz/xytz/releases/download/v0.8.3/xytz-v0.8.3-linux-amd64.tar.gz
-	sha256sums_x86_64 = c8cda38d4f9164d2995f32a08764fb393fdcc4d4d96343d70fdf4120b1224ab3
-	source_aarch64 = xytz-aarch64-0.8.3.tgz::https://github.com/xdagiz/xytz/releases/download/v0.8.3/xytz-v0.8.3-linux-arm64.tar.gz
-	sha256sums_aarch64 = 0a105a9644a896ea1e5a1840911c84441f86b9bc60b48f309672f4cc717c34b4
-
+	provides = xytz
+	arch = aarch64
+	source_aarch64 = https://github.com/xdagiz/xytz/releases/download/v${pkgver}/xytz-v${pkgver}-linux-arm64.tar.gz
+	sha256sums_aarch64 = a3b482caae38231eef63474a5fcf9b478f7f63e5f603e87890dc51db40ea183c
+	arch = x86_64
+	source_x86_64 = https://github.com/xdagiz/xytz/releases/download/v${pkgver}/xytz-v${pkgver}-linux-amd64.tar.gz
+	sha256sums_x86_64 = 41765aa64c31c2ab3356cbe4f67a005068f8024be567ad5325e22304af782409
+	
 pkgname = xytz-bin
