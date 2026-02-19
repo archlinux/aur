@@ -32,29 +32,31 @@ checkdepends=(
   'perl-lib'
   'perl-parent'
 )
-options=(!emptydirs purge)
+options=(!emptydirs)
 source=("https://cpan.metacpan.org/authors/id/N/NE/NERDVANA/Tree-RB-XS-${pkgver}.tar.gz")
 b2sums=('6bd9918afb348b3e3b3fd2e32033837d0f4db25d8e89a9c91f262520b9f253cf7ad503726db3456a61f302e1b40d86bbe177e44098c4aeda8eedffbb809f0bdf')
 
 build() {
   cd "${srcdir}/Tree-RB-XS-${pkgver}"
 
+  unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
-  /usr/bin/perl Makefile.PL NO_PACKLIST=true NO_PERLLOCAL=true INSTALLDIRS=vendor
+  /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
   make
 }
 
 check() {
   cd "${srcdir}/Tree-RB-XS-${pkgver}"
 
-  export PERL_MM_USE_DEFAULT=1
+  unset PERL5LIB PERL_LOCAL_LIB_ROOT
   make test
 }
 
 package() {
   cd "${srcdir}/Tree-RB-XS-${pkgver}"
 
-  make install DESTDIR="${pkgdir}"
+  unset PERL5LIB PERL_LOCAL_LIB_ROOT
+  make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
 
   # makepkg won't strip binaries if they are not writable
   chmod -R u+w "${pkgdir}"

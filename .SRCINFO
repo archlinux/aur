@@ -26,7 +26,6 @@ pkgbase = perl-tree-rb-xs
 	depends = perl-xsloader
 	depends = perl
 	options = !emptydirs
-	options = purge
 	source = https://cpan.metacpan.org/authors/id/N/NE/NERDVANA/Tree-RB-XS-0.20.tar.gz
 	b2sums = 6bd9918afb348b3e3b3fd2e32033837d0f4db25d8e89a9c91f262520b9f253cf7ad503726db3456a61f302e1b40d86bbe177e44098c4aeda8eedffbb809f0bdf
 
