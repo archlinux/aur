@@ -1,6 +1,6 @@
 # Maintainer: Assaf Sapir <assapir@users.noreply.github.com>
 pkgname=golem-bin
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="A clay body, animated by words. Rust AI agent with ReAct loop, pluggable tools, and SQLite memory."
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ depends=()
 
 source_x86_64=("golem-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/golem-x86_64-linux")
 source_aarch64=("golem-${pkgver}-aarch64::${url}/releases/download/v${pkgver}/golem-aarch64-linux")
-sha256sums_x86_64=('16cd52aa63fcdb038a8e7ee031e1df36584c44672aa3ae617458e4592a06f93e')
-sha256sums_aarch64=('0cd45d30ab99339d7664862ed55c9ac5a8d5f54b018fe2017e914d937233e05b')
+sha256sums_x86_64=('be6fe02c1c92bfc79f5acd61a2b27d364206b160edca0c8d4d042094efab621d')
+sha256sums_aarch64=('3b530698c0b122e34511f69e0f4550ba3e7bfd750e7bcda97c5ec25f32234196')
 
 package() {
     install -Dm755 "golem-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/golem"
