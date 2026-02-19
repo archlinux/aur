@@ -1,6 +1,6 @@
 # Maintainer: DonutsDelivery <megusta52@proton.me>
 pkgname=monitor-remote-control
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Remote monitor control via DDC/CI with GUI interface for brightness, color, input switching and auto-brightness"
 arch=('any')
