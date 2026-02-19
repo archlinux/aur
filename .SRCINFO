@@ -1,0 +1,22 @@
+pkgbase = subdowner
+	pkgdesc = GTK4/Libadwaita subtitle search & download tool
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ii-shimul/subdowner
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = python-requests
+	optdepends = python-subliminal: secondary subtitle search backend
+	optdepends = python-chardet: automatic subtitle encoding detection
+	source = subdowner-1.0.0.tar.gz::https://github.com/ii-shimul/subdowner/archive/v1.0.0.tar.gz
+	sha256sums = acad1079eddaf028fba9239c24ac6258a600804913c231daea51c2dcdc092ea1
+
+pkgname = subdowner
