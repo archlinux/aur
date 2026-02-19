@@ -1,0 +1,5 @@
+[perch-bin]
+source = "github"
+github = "ricardodantas/perch"
+use_latest_release = true
+prefix = "v"

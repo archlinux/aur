@@ -1,0 +1,22 @@
+pkgbase = perch-bin
+	pkgdesc = A beautiful terminal social client for Mastodon and Bluesky
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/ricardodantas/perch
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	depends = glibc
+	depends = libgcc
+	provides = perch
+	conflicts = perch
+	source = README-0.3.1.md::https://raw.githubusercontent.com/ricardodantas/perch/v0.3.1/README.md
+	source = LICENSE-0.3.1::https://raw.githubusercontent.com/ricardodantas/perch/v0.3.1/LICENSE
+	sha256sums = 7e3daf8540e3ba7bab129fa295aea598afe8bfdd42674d0626559c8964118ea0
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	source_x86_64 = perch-x86_64-0.3.1.tgz::https://github.com/ricardodantas/perch/releases/download/v0.3.1/perch-0.3.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = d8c1f7bb675c3227f25427506c09cb170a3568479fa6d644cbf63c116161899f
+	source_aarch64 = perch-aarch64-0.3.1.tgz::https://github.com/ricardodantas/perch/releases/download/v0.3.1/perch-0.3.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 0e8b82c93bb206e381771061964e36d95528b70b23ee5d1c8efa312edcbdf5d3
+
+pkgname = perch-bin
