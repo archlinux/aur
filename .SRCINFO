@@ -1,0 +1,19 @@
+pkgbase = branch-bin
+	pkgdesc = File tree and code preview desktop application built with Tauri
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/butterman28/Dev-Section
+	arch = x86_64
+	license = AGPL
+	depends = gtk3
+	depends = webkit2gtk
+	depends = libappindicator-gtk3
+	depends = openssl
+	depends = icu
+	depends = zlib
+	provides = branch
+	conflicts = branch
+	source_x86_64 = branch-bin-1.2.0::https://github.com/butterman28/Dev-Section/releases/download/v1.2.0/branch-linux-x86_64
+	sha256sums_x86_64 = 136300dcc00724e8c5d62b5c5b29cd1b2f2f3e16b26520c6ef0447f428c534d9
+
+pkgname = branch-bin
