@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=tmmpr
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Terminal mind mapper"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0ee87ce84b580d22776b7c5edc23efcc739564ac4550274bf630256c6cc56237')
+sha256sums=('e15eb43872484147c2c9b54f618c8fb8a96d0d013e120d06e9d80a25ea0d42ec')
 
 prepare() {
   cd "$pkgname-$pkgver"
