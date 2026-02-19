@@ -1,6 +1,6 @@
 # Maintainer: dolphinoracle <dolphinoracle@gmail.com>
 pkgname=gazelle-installer
-pkgver=26.02.1
+pkgver=26.02.2
 pkgrel=1
 pkgdesc="Customizable GUI installer ported from MX Linux and antiX"
 arch=('x86_64' 'i686')
@@ -26,8 +26,8 @@ optdepends=(
     'partitionmanager: KDE partition manager'
     'cryptsetup: LUKS encryption support'
 )
-source=("https://github.com/gazelle-installer/gazelle-installer/archive/refs/tags/26.02.1.tar.gz")
-sha256sums=('8c803399ce281f96f8f152c910a30a98837678d5c5080cd3608e9fb556dec333')
+source=("https://github.com/gazelle-installer/gazelle-installer/archive/refs/tags/26.02.2.tar.gz")
+sha256sums=('5323816db52dd93598b384260e522aadf7c5179708f53bc5b57e8b7e830217e7')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -74,5 +74,5 @@ package() {
     # Install documentation
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/doc/gazelle-installer/LICENSE"
     install -Dm644 "NOTICE" "${pkgdir}/usr/share/doc/gazelle-installer/NOTICE"
-    install -Dm644 "debian/copyright" "${pkgdir}/usr/share/doc/gazelle-installer/copyright"
+
 }
