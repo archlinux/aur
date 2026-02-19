@@ -1,19 +1,22 @@
 # Maintainer: Sam Whited <sam@samwhited.com>
 
 _pkgname=idnits
-pkgname=ietf-${_pkgname}
-pkgver=2.16.04
+pkgname="ietf-${_pkgname}"
+pkgver=2.17.1
 pkgrel=1
 pkgdesc='Check internet-drafts for submission nits'
 arch=('any')
 url='https://tools.ietf.org/tools/idnits/'
 license=('GPL2')
-depends=('aspell'
-         'bash'
-         'languagetool')
+depends=(
+  'aspell'
+  'awk'
+  'bash'
+  'languagetool'
+)
 makedepends=()
-source=("https://tools.ietf.org/tools/${_pkgname}/${_pkgname}-${pkgver}.tgz")
-sha256sums=('1eef34b131d9c0b45090192f972db0b5dae15047271a7962959c8019dd8cc06b')
+source=("https://github.com/ietf-tools/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('195ed8c9bfd38fbaf1ecb674a894f98f43be774dfecc37da5ef953ccba99ce76')
 
 package() {
   cd "${_pkgname}-${pkgver}/"
