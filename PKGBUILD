@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=openexr-git
-pkgver=3.3.4.r123.g45ee1275
+pkgver=3.4.4.r83.g83449669
 pkgrel=1
 pkgdesc="Reference implementation of the EXR format"
 arch=('i686' 'x86_64')
 url="https://www.openexr.com/"
 license=('BSD-3-Clause')
-depends=('gcc-libs' 'zlib')
+depends=('glibc' 'libgcc' 'libstdc++' 'zlib')
 makedepends=('git' 'cmake' 'boost' 'chrpath' 'freeglut' 'python' 'python-numpy')
 optdepends=('boost-libs: python support'
             'python: python support')
@@ -21,7 +21,7 @@ pkgver() {
   cd "openexr"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
