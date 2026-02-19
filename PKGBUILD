@@ -13,7 +13,7 @@ license=("MIT")
 depends=("electron$_electronversion")
 source=(
     "comty.sh"
-    "comty.desktop"
+    "comty-desktop.desktop"
     "https://b2-cdn.ragestudio.net/file/rs-static/comty-desktop/releases/linux/comty-desktop_${pkgver}_amd64.deb"
 )
 sha256sums=(
@@ -34,5 +34,5 @@ package() {
 	install -Dm755 comty.sh "$pkgdir/usr/bin/comty"
 
     install -Dm644 data/usr/share/icons/hicolor/512x512/apps/comty-desktop.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/comty.png"
-	install -Dm644 comty.desktop "$pkgdir/usr/share/applications/comty.desktop"
+	install -Dm644 comty-desktop.desktop "$pkgdir/usr/share/applications/comty-desktop.desktop"
 }
