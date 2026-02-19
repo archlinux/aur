@@ -7,8 +7,8 @@ pkgdesc="Powerful XMPP (Jabber) client (Qt, C++) designed for power users"
 url="https://psi-im.org"
 license=('GPL2')
 arch=('x86_64')
-depends=('hunspell' 'minizip' 'qca-qt5' 'qt5-svg' 'qt5-x11extras' 'libidn' 'libusrsctp' 'qtkeychain-qt5')
-makedepends=('cmake' 'qt5-multimedia')
+depends=('hunspell' 'minizip' 'qca-qt6' 'qt6-svg' 'libidn' 'libusrsctp' 'qtkeychain-qt6' 'libxss')
+makedepends=('cmake' 'qt6-multimedia' 'git')
 provides=("psi-nowebengine=$pkgver")
 conflicts=('psi-nowebengine')
 replaces=('psi-nowebengine')
@@ -29,7 +29,7 @@ build() {
   cd psi
   mkdir -p build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DENABLE_WEBKIT=OFF ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DENABLE_WEBKIT=OFF -DQT_DEFAULT_MAJOR_VERSION=6 ..
   make
 }
 
