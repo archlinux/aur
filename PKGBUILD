@@ -1,6 +1,6 @@
 pkgname=sound_themer
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A program to play sounds from a selected sound theme."
 arch=('x86_64')
 url="https://github.com/tmforshaw/sound_themer"
@@ -27,6 +27,6 @@ package() {
 }
 
 post_install() {
-	sound_themer -t freedesktop -e oga play complete
+	/usr/bin/sound_themer -t freedesktop -e oga play complete
 	echo -e "If you didn't just hear a completion sound, the installation is broken"
 }
