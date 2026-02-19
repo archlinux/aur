@@ -78,7 +78,7 @@ pkgbase = sealantern
 	optdepends = noto-fonts-emoji: 表情符号支持
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/FPSZ/SeaLantern/releases/download/sea-lantern-v0.6.2/Sea.Lantern_0.6.2_amd64.deb
+	source = https://github.com/FPSZ/SeaLantern/releases/download/sea-lantern-v0.6.0/Sea.Lantern_0.6.0_amd64.deb
 	sha256sums = SKIP
 
 pkgname = sealantern
