@@ -4,6 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=waterfox-bin
+epoch=1
 pkgver=6.6.8
 pkgrel=1
 pkgdesc="Current/modern generation of customizable privacy-conscious web browser."
@@ -19,7 +20,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
   'speech-dispatcher: Text-to-Speech'
   'hunspell-en_US: Spell checking, American English')
 provides=("waterfox=${pkgver}")
-source=("waterfox-${pkgver}-${pkgrel}.tar.bz2::https://cdn1.waterfox.net/waterfox/releases/${pkgver}/Linux_x86_64/waterfox-${pkgver}.tar.bz2"
+source=("waterfox-${pkgver}-${pkgrel}.tar.bz2::https://cdn.waterfox.com/waterfox/releases/${pkgver}/Linux_x86_64/waterfox-${pkgver}.tar.bz2"
   "waterfox.desktop")
 
 package() {
