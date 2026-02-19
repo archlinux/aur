@@ -1,0 +1,27 @@
+pkgbase = vsrvrt-git
+	pkgdesc = Vapoursynth plugin for RVRT (Recurrent Video Restoration Transformer) video restoration
+	pkgver = 1.0.0.r0.g57a5c5f
+	pkgrel = 1
+	url = https://github.com/Lyra-Vhess/vs-rvrt
+	arch = x86_64
+	license = CC-BY-NC-4.0
+	makedepends = git
+	makedepends = git-lfs
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-einops
+	depends = python-torchvision
+	depends = python-numpy
+	depends = python-requests
+	depends = python-tqdm
+	depends = vapoursynth
+	depends = python-packaging
+	optdepends = cuda: For GPU acceleration
+	optdepends = ffmpeg: For video encoding/decoding
+	provides = vsrvrt
+	conflicts = vsrvrt
+	source = git+https://github.com/Lyra-Vhess/vs-rvrt.git
+	md5sums = SKIP
+
+pkgname = vsrvrt-git
