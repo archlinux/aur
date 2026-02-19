@@ -2,17 +2,19 @@
 
 _pkgname=scopebuddy
 pkgname=$_pkgname-git
-pkgver=1.2.6.r0.geeff77a
+pkgver=1.4.0.r1.g5b64e17
 pkgrel=1
 pkgdesc="gamescope helper script"
 arch=(any)
-url="https://github.com/HikariKnight/ScopeBuddy"
+url="https://github.com/OpenGamingCollective/ScopeBuddy"
 license=('Apache-2.0')
 depends=(
     'bash'
-    'procps-ng'
-    'perl'
     'coreutils'
+    'gawk'
+    'grep'
+    'perl'
+    'procps-ng'
     'sed'
 )
 makedepends=('git')
@@ -22,10 +24,11 @@ optdepends=(
     'libkscreen: Automatic display detection (Plasma)'
     'mutter: Automatic display detection (GNOME)'
     'gnome-randr-rust: Automatic display detection (GNOME fallback)'
+    'wlr-randr: Automatic display detection (wlroots)'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+https://github.com/HikariKnight/ScopeBuddy")
+source=("$_pkgname::git+https://github.com/OpenGamingCollective/ScopeBuddy.git")
 b2sums=('SKIP')
 pkgver() {
     cd $_pkgname
