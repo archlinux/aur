@@ -1,6 +1,6 @@
 _pkgname=xunused
 pkgname=${_pkgname}-git
-pkgver=r27.c098435
+pkgver=r46.b81e0ef
 pkgrel=1
 pkgdesc="Tool to find unused C/C++ functions and methods"
 arch=('x86_64')
@@ -8,8 +8,9 @@ url="https://github.com/mgehre/xunused"
 license=('Apache-2.0')
 depends=(
 	clang
-	gcc-libs
 	glibc
+	libgcc
+	libstdc++
 	llvm-libs
 )
 makedepends=(
