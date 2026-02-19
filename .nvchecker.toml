@@ -1,0 +1,3 @@
+[perl-poe-component-irc]
+source = "cpan"
+cpan = "POE-Component-IRC"
