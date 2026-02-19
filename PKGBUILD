@@ -1,22 +1,21 @@
-# Maintainer: Daniel Renninghoff <renninghoff AT archlinux DOT info>
-# Contributor: gucong <gucong43216@gmail.com>
-# Contributor: P. A. López-Valencia <palopezv AT gmail DOT com>
-# Contributor: wangjiezhe <wangjiezhe AT yandex DOT com>
+# Maintainer: PiterDeVries <https://aur.archlinux.org/account/PiterDeVries>
 
 pkgname=hoichess
+_pkgname=hoichess-debian
 pkgver=0.22.0
-pkgrel=2
+_pkgver=0.22.0-3
+pkgrel=1
 pkgdesc="Xboard compatible chess engine and xiangqi (Chinese chess) engine"
 arch=('x86_64')
-license=('GPL2')
+license=('GPL-2.0-only')
 url="http://www.hoicher.de/hoichess"
-depends=()
-makedepends=('wget')
-source=(${url}/download/${pkgname}-${pkgver}-gpl.tar.gz)
-md5sums=('a7165b2be2708069f204c20da5b3389e')
+depends=('glibc' 'libgcc' 'libstdc++' 'readline')
+makedepends=('bash' 'gcc' 'm4' 'perl')
+source=("https://salsa.debian.org/debian/hoichess/-/archive/debian/0.22.0-3/hoichess-debian-0.22.0-3.tar.gz")
+sha256sums=('ee7eeed3b3d0d02ca442918939353455df9e038958bcb21eab699c6c521742ec')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/${_pkgname}-${_pkgver}"
   sed -i 's/games$/bin/' Makefile
   sed -i 's/CXXFLAGS\ =/CXXFLAGS\ +=/' src/Makefile
   cd "book"
@@ -24,11 +23,11 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/${_pkgname}-${_pkgver}"
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/${_pkgname}-${_pkgver}"
   make DESTDIR="$pkgdir" install
 }
