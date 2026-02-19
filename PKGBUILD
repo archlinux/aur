@@ -1,7 +1,7 @@
 # Maintainer: Lehel Gyuro <lehel@freemail.hu>
 
 pkgname=libpigpiod
-pkgver=2.1.7
+pkgver=2.1.9
 pkgrel=1
 pkgdesc="INDI driver for products manufactured by pigpiod"
 url="http://www.indilib.org/index.php?title=Main_Page"
@@ -10,7 +10,7 @@ arch=(i686 x86_64 aarch64)
 depends=(glibc)
 makedepends=(cmake)
 source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz")
-sha256sums=("e9ab43d08d09555d2c9d3c658d1bcc3130c3465a3afe2300995fba0d6e737080")
+sha256sums=("4c9bbd6864175b1384c5aaf1bb21ca6ec3e95189ee900231b77e0a7b9c5cae16")
 
 prepare() {
   mkdir -p build
