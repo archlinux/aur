@@ -1,0 +1,15 @@
+pkgbase = ingress-missionday-wallpapers
+	pkgdesc = Ingress MissionDay Wallpapers (Ingress 任务天壁纸)
+	pkgver = r2.ad3ff09
+	pkgrel = 1
+	url = https://github.com/taotieren/ingress-missionday-wallpapers
+	arch = any
+	license = MIT
+	makedepends = git
+	optdepends = wallutils: support the simple timed wallpaper format
+	provides = ingress-missionday-wallpapers
+	conflicts = ingress-missionday-wallpapers
+	source = ingress-missionday-wallpapers::git+https://github.com/taotieren/ingress-missionday-wallpapers.git
+	sha256sums = SKIP
+
+pkgname = ingress-missionday-wallpapers
