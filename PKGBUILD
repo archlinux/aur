@@ -24,30 +24,29 @@ makedepends=(
   ## configure_requires
   'perl-module-build>=0.4004'
 )
-options=(!emptydirs purge)
+options=(!emptydirs)
 source=("https://cpan.metacpan.org/authors/id/P/PE/PEVANS/Feature-Compat-Try-${pkgver}.tar.gz")
 b2sums=('c713975d02fc5d0eaa439dfb8ab0c905589f4020eb5f8bb49e72a9e77f7fc65818c45e77604fca0a3c1ac09906007d9fa93e9d3d68ec4faa55bc27bde39c4d60')
 
 build() {
   cd "${srcdir}/Feature-Compat-Try-${pkgver}"
 
-  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  unset PERL_MB_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
-  perl Build.PL --installdirs=vendor --create_packlist=0
+  /usr/bin/perl Build.PL --create_packlist=0
   ./Build
 }
 
 check() {
   cd "${srcdir}/Feature-Compat-Try-${pkgver}"
 
-  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
-  export PERL_MM_USE_DEFAULT=1
+  unset PERL5LIB PERL_LOCAL_LIB_ROOT
   ./Build test
 }
 
 package() {
   cd "${srcdir}/Feature-Compat-Try-${pkgver}"
 
-  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
-  ./Build install --destdir="${pkgdir}"
+  unset PERL5LIB PERL_LOCAL_LIB_ROOT
+  ./Build install --installdirs=vendor --destdir="${pkgdir}"
 }
