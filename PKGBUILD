@@ -2,26 +2,25 @@
 
 _pkgname=idnits
 pkgname="ietf-${_pkgname}"
-pkgver=2.17.1
+pkgver='3.0.0'
+_alpharel=74
 pkgrel=1
 pkgdesc='Check internet-drafts for submission nits'
 arch=('any')
-url='https://tools.ietf.org/tools/idnits/'
-license=('GPL2')
-depends=(
-  'aspell'
-  'awk'
-  'bash'
-  'languagetool'
+url='https://author-tools.ietf.org/idnits3/'
+license=('BSD-3-Clause')
+depends=()
+makedepends=(
+  'npm'
+  'jq'
 )
-makedepends=()
-source=("https://github.com/ietf-tools/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('195ed8c9bfd38fbaf1ecb674a894f98f43be774dfecc37da5ef953ccba99ce76')
+
+source=("https://github.com/ietf-tools/${_pkgname}/archive/refs/tags/${pkgver}-alpha.${_alpharel}.tar.gz")
+sha256sums=('6d0f0c74585f15e3c8a8bb49908b44c4fa58f42bac9d4c6ab0824d6906e4b473')
+noextract=("${pkgver}-alpha.${_alpharel}.tar.gz")
 
 package() {
-  cd "${_pkgname}-${pkgver}/"
-  install -dm755 "${pkgdir}/usr/bin/"
-  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/"
+  npm install --cache "${srcdir}/npm-cache" -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgver}-alpha.${_alpharel}.tar.gz"
 }
 
 # vim: ts=2 sw=2 et:

@@ -1,15 +1,14 @@
 pkgbase = ietf-idnits
 	pkgdesc = Check internet-drafts for submission nits
-	pkgver = 2.17.1
+	pkgver = 3.0.0
 	pkgrel = 1
-	url = https://tools.ietf.org/tools/idnits/
+	url = https://author-tools.ietf.org/idnits3/
 	arch = any
-	license = GPL2
-	depends = aspell
-	depends = awk
-	depends = bash
-	depends = languagetool
-	source = https://github.com/ietf-tools/idnits/archive/refs/tags/2.17.1.tar.gz
-	sha256sums = 195ed8c9bfd38fbaf1ecb674a894f98f43be774dfecc37da5ef953ccba99ce76
+	license = BSD-3-Clause
+	makedepends = npm
+	makedepends = jq
+	noextract = 3.0.0-alpha.74.tar.gz
+	source = https://github.com/ietf-tools/idnits/archive/refs/tags/3.0.0-alpha.74.tar.gz
+	sha256sums = 6d0f0c74585f15e3c8a8bb49908b44c4fa58f42bac9d4c6ab0824d6906e4b473
 
 pkgname = ietf-idnits
