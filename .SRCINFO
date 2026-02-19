@@ -1,7 +1,7 @@
 pkgbase = python-contact
 	pkgdesc = A Console UI for Meshtastic
 	pkgver = 1.4.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pdxlocations/contact
 	arch = any
 	license = GPLv3
@@ -13,7 +13,7 @@ pkgbase = python-contact
 	makedepends = python-poetry
 	makedepends = python-poetry-core
 	depends = python>=3.10
-	depends = python-meshtastic
+	depends = meshtastic-python
 	depends = python-pyserial
 	source = https://github.com/pdxlocations/contact/releases/download/1.4.15/contact-1.4.15.tar.gz
 	sha256sums = 39467232f467d99dfeea6aba4b294f011d5ba60a1efde7f8d402b3d677218983
