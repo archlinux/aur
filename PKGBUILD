@@ -1,13 +1,13 @@
 # Maintainer: soymadip 
 pkgname=autotitle
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Automated media file renamer using online databases"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mydehq/autotitle"
 license=('GPL3')
 
-depends=('glibc')
+depends=('glibc' 'mkvtoolnix-cli' 'atomicparsley')
 makedepends=('mise')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
