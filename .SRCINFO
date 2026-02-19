@@ -1,0 +1,21 @@
+pkgbase = jcchess
+	pkgdesc = A chess GUI to play against chess engines
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://johncheetham.com/projects/jcchess/index.html
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	depends = python3
+	depends = python-cairo
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = python-gobject
+	depends = python-setuptools
+	optdepends = gnuchess: chess engine to play against
+	optdepends = stockfish: chess engine to play against
+	optdepends = fruit: chess engine to play against
+	source = git+https://github.com/johncheetham/jcchess.git
+	sha256sums = SKIP
+
+pkgname = jcchess
