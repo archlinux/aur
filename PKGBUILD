@@ -5,7 +5,7 @@ _pkgname=kwin-x11
 pkgver=6.6.0
 _pkgver=$pkgver
 _pkgtag=$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc='kwin-x11 with ports from kwin-wayland, bug fixes, and maybe other improvements, for XLibre'
 arch=(x86_64)
 url='https://github.com/Sonic-DE/sonic-win'
@@ -81,6 +81,7 @@ sha256sums=('b590a511861d8e375cce4b5e118e8ed449c02ced70acd46c6fb8384d2c421d21')
 
 build() {
   cmake -B build -S $pkgname \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF
   cmake --build build
