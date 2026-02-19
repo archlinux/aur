@@ -2,7 +2,7 @@
 pkgname=vsrvrt-git
 _pkgname=vs-rvrt
 pkgver=1.0.0.r0.g57a5c5f
-pkgrel=4
+pkgrel=5
 pkgdesc="Vapoursynth plugin for RVRT (Recurrent Video Restoration Transformer) video restoration"
 arch=('x86_64')
 url="https://github.com/Lyra-Vhess/vs-rvrt"
@@ -21,7 +21,7 @@ optdepends=(
     'cuda: For GPU acceleration'
     'ffmpeg: For video encoding/decoding'
 )
-makedepends=('git' 'git-lfs' 'python-setuptools' 'python-wheel')
+makedepends=('git' 'wget' 'python-setuptools' 'python-wheel')
 provides=('vsrvrt')
 conflicts=('vsrvrt')
 source=("git+https://github.com/Lyra-Vhess/vs-rvrt.git")
@@ -34,7 +34,14 @@ pkgver() {
 
 prepare() {
     cd "$_pkgname"
-    git lfs pull
+    mkdir -p vsrvrt/models
+    cd vsrvrt/models
+    wget -q --show-progress "https://github.com/JingyunLiang/RVRT/releases/download/v0.0/001_RVRT_videosr_bi_REDS_30frames.pth"
+    wget -q --show-progress "https://github.com/JingyunLiang/RVRT/releases/download/v0.0/002_RVRT_videosr_bi_Vimeo_14frames.pth"
+    wget -q --show-progress "https://github.com/JingyunLiang/RVRT/releases/download/v0.0/003_RVRT_videosr_bd_Vimeo_14frames.pth"
+    wget -q --show-progress "https://github.com/JingyunLiang/RVRT/releases/download/v0.0/004_RVRT_videodeblurring_DVD_16frames.pth"
+    wget -q --show-progress "https://github.com/JingyunLiang/RVRT/releases/download/v0.0/005_RVRT_videodeblurring_GoPro_16frames.pth"
+    wget -q --show-progress "https://github.com/JingyunLiang/RVRT/releases/download/v0.0/006_RVRT_videodenoising_DAVIS_16frames.pth"
 }
 
 build() {
