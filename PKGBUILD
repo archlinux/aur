@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=system-monitoring-center
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Multi-featured system monitor"
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   'xorg-xrandr: for more accurate screen resolution and refresh rate detection'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('03bbe26b50b62bbc55715ce10af7e426a80db0b1f3f36bb258f2be4f395a6ba0')
+sha256sums=('0ddede8e3bc08362057943b8f59adc5dfed8a1ff0796da0be7ac45ff5fe1800f')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
@@ -38,12 +38,9 @@ check() {
   meson test -C build --no-rebuild --print-errorlogs
 
   appstreamcli validate --no-net \
-    "build/data/io.github.hakandundar34coding.$pkgname.appdata.xml" || :
+    "build/data/io.github.hakandundar34coding.$pkgname.appdata.xml"
 }
 
 package() {
   meson install -C build --no-rebuild --destdir "$pkgdir"
-
-  # Fix permissions
-  chmod 0755 "$pkgdir/usr/bin/$pkgname"
 }
