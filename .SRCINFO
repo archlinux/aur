@@ -6,14 +6,13 @@ pkgbase = krita-ai-diffusion
 	install = krita-ai-diffusion.install
 	arch = any
 	license = GPL-3.0-or-later
-	checkdepends = openssl-1.1
+	checkdepends = openssl
 	makedepends = git
 	makedepends = git-lfs
+	makedepends = uv
 	depends = krita
 	depends = python-pyqt5
-	depends = python312
 	depends = qt5-imageformats
-	optdepends = python311: server.py will use python3.11 to create a virtual environment if python3.12 is not available
 	source = krita-ai-diffusion::git+https://github.com/Acly/krita-ai-diffusion.git#tag=v1.47.0
 	source = add-regex-to-requirements.patch
 	sha256sums = 41c157c1f3b781d49ab1b5a77f2b770be7c6bfa88b311967902fe9b705f347cf

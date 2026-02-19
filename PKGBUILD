@@ -1,4 +1,5 @@
-# Maintainer: Roald Clark <roaldclark@gmail.com>
+# Maintainer: Julian Reyes <contacto@julianreyes.co>
+# Contributor: Roald Clark <roaldclark@gmail.com>
 
 pkgname=krita-ai-diffusion
 pkgver=1.47.0
@@ -10,18 +11,15 @@ license=('GPL-3.0-or-later')
 depends=(
     'krita'
     'python-pyqt5'
-    'python312' # Required to create a virtual environment (for server.py)
     'qt5-imageformats'
 )
 makedepends=(
     'git'
     'git-lfs'
+    'uv'
 )
 checkdepends=(
-    'openssl-1.1'
-)
-optdepends=(
-    'python311: server.py will use python3.11 to create a virtual environment if python3.12 is not available'
+    'openssl'
 )
 install=krita-ai-diffusion.install
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
@@ -43,9 +41,9 @@ prepare() {
     git remote add network-origin "${url}.git"
     git lfs fetch network-origin
     git lfs checkout
-    python3.12 -m venv .venv
+    uv venv --python 3.12 .venv
     source .venv/bin/activate
-    pip install -r requirements.txt
+    uv pip install -r requirements.txt
 }
 
 build() {
