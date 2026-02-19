@@ -1,0 +1,15 @@
+pkgbase = edax-reversi
+	pkgdesc = Edax is a very strong othello (aka reversi) engine
+	pkgver = 4.6
+	pkgrel = 1
+	url = https://github.com/abulmo/edax-reversi
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = gcc
+	depends = sh
+	source = edax-reversi-4.6.tar.gz::https://github.com/abulmo/edax-reversi/archive/v4.6.tar.gz
+	source = edax-4.6-linux-x86.tar.gz::https://github.com/abulmo/edax-reversi/releases/download/v4.6/edax-4.6-linux-x86.tar.gz
+	sha256sums = fccb76cc1b09697fccb07cf50bcedf9566223e8ebb1916584e0af185d0d380de
+	sha256sums = 7ca52cb0ccf591ad9690e7d21861d4a6f04b900c686346db98ea26dd30cd966a
+
+pkgname = edax-reversi
