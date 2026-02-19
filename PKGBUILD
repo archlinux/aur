@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname=systemd-timer-notify
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=2
 pkgdesc="Notifies when systemd timers start services; auto-closes on finish."
 arch=('any')
@@ -13,7 +13,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 backup=("etc/${pkgname}.conf")
 source=("${pkgname}::git+${url}.git#tag=${pkgver}")
-sha256sums=('caddb676971b795d117e31ffaf59f31c59b71966e0d39f3bee263c5c513c6b78')
+sha256sums=('3668b9ff1bd8e04427f21e855408320ecbe457fe57f84b25003aaf5fa4093cb5')
 
 package() {
 	cd "$srcdir/${pkgname}"
