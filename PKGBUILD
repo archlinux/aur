@@ -16,25 +16,14 @@ optdepends=(
   'xterm: external terminal support'
   'ghostty: external terminal support'
 )
-source=(
-  "alarm-notify-linux"
-  "alarm-notify.png"
-  "alarm-notify.wav"
-  "README.md"
-  "LICENCE"
-)
-sha256sums=(
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/nikaakin/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('SKIP')
 
 package() {
-  install -Dm755 "$srcdir/alarm-notify-linux" "$pkgdir/usr/bin/alarm-notify"
-  install -Dm644 "$srcdir/alarm-notify.png" "$pkgdir/usr/share/alarm-notify/alarm-notify.png"
-  install -Dm644 "$srcdir/alarm-notify.wav" "$pkgdir/usr/share/alarm-notify/alarm-notify.wav"
-  install -Dm644 "$srcdir/README.md" "$pkgdir/usr/share/doc/alarm-notify/README.md"
-  install -Dm644 "$srcdir/LICENCE" "$pkgdir/usr/share/licenses/alarm-notify/LICENCE"
+  cd "$srcdir/$pkgname-$pkgver"
+  install -Dm755 alarm-notify-linux "$pkgdir/usr/bin/alarm-notify"
+  install -Dm644 alarm-notify.png "$pkgdir/usr/share/alarm-notify/alarm-notify.png"
+  install -Dm644 alarm-notify.wav "$pkgdir/usr/share/alarm-notify/alarm-notify.wav"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/alarm-notify/README.md"
+  install -Dm644 LICENCE "$pkgdir/usr/share/licenses/alarm-notify/LICENCE"
 }
