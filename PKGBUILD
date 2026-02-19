@@ -7,7 +7,7 @@ pkgname=(
   krokiet
 )
 pkgver=11.0.0
-pkgrel=0.2
+pkgrel=0.3
 pkgdesc='Multi functional app to find duplicates, empty folders, similar images etc.'
 url='https://github.com/qarmin/czkawka'
 arch=(
@@ -36,6 +36,14 @@ makedepends=(
 checkdepends=(xorg-server-xvfb)
 source=("git+https://github.com/qarmin/czkawka.git#tag=$pkgver")
 b2sums=('149e6cce8427c6a6a7184b29b598355892eefd95a0edbc64decc7d4e7a4d58d88264ad5810bddadf102d9d23b435d9b90a12de0f5986413fdf96118efe0951a7')
+
+prepare() {
+  cd ${pkgbase}
+
+  # https://github.com/qarmin/czkawka/pull/1797
+  ## Fix missing app icon
+  git cherry-pick -n 3e0b8c0714ed09ab336c6209ea298f0f74e729be
+}
 
 build() {
   cd ${pkgbase}
@@ -126,6 +134,6 @@ package_krokiet() {
   install -Dm644 "${srcdir}/czkawka/data/io.github.qarmin.krokiet.metainfo.xml" \
         "${pkgdir}/usr/share/metainfo/io.github.qarmin.krokiet.metainfo.xml"
 
-  install -Dm644 "${srcdir}/czkawka/data/icons/io.github.qarmin.czkawka.krokiet.svg" \
-        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/io.github.qarmin.czkawka.krokiet.svg"
+  install -Dm644 "${srcdir}/czkawka/data/icons/io.github.qarmin.krokiet.svg" \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/io.github.qarmin.krokiet.svg"
 }
