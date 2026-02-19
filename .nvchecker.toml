@@ -1,0 +1,4 @@
+[aocl-libflame]
+source = "git"
+git = "https://github.com/amd/libflame.git"
+prefix = "v"
