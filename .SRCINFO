@@ -1,0 +1,15 @@
+pkgbase = arch-cache-cleaner-git
+	pkgdesc = Interactive cross-platform cache cleaner with configurable profiles (Linux/macOS/Windows)
+	pkgver = r0.0
+	pkgrel = 1
+	url = https://github.com/MeIsGaming/arch-cache-cleaner
+	arch = any
+	license = MIT
+	depends = python
+	optdepends = sudo: remove root-owned cache entries
+	provides = arch-cache-cleaner
+	conflicts = arch-cache-cleaner
+	source = git+https://github.com/MeIsGaming/arch-cache-cleaner.git
+	sha256sums = SKIP
+
+pkgname = arch-cache-cleaner-git
