@@ -1,8 +1,8 @@
 # Maintainer: Ross Ceb aur@roceb.xyz
 pkgname=sonicrust
 _binaryname=sonicrust
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.1.3
+pkgrel=1
 pkgdesc="A rust base TUI subsonic client"
 arch=('x86_64' 'aarch64')
 url="https://github.com/roceb/sonicrust"
@@ -13,7 +13,7 @@ provides=("$_binaryname")
 # options=(!strip)
 conflicts=('sonicrust-bin' 'sonicrust-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1acc421a620ddc8d05e3389250bfa2463a6561b1a26c1c7e7b962629906b8432')
+sha256sums=('8983ce0aa8b931d2e4a203f1a03222158a403d1296816f352f9231e228272b2f')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

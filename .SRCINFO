@@ -1,7 +1,7 @@
 pkgbase = sonicrust
 	pkgdesc = A rust base TUI subsonic client
-	pkgver = 0.1.2
-	pkgrel = 2
+	pkgver = 0.1.3
+	pkgrel = 1
 	url = https://github.com/roceb/sonicrust
 	arch = x86_64
 	arch = aarch64
@@ -19,7 +19,7 @@ pkgbase = sonicrust
 	provides = sonicrust
 	conflicts = sonicrust-bin
 	conflicts = sonicrust-git
-	source = sonicrust-0.1.2.tar.gz::https://github.com/roceb/sonicrust/archive/refs/tags/v0.1.2.tar.gz
-	sha256sums = 1acc421a620ddc8d05e3389250bfa2463a6561b1a26c1c7e7b962629906b8432
+	source = sonicrust-0.1.3.tar.gz::https://github.com/roceb/sonicrust/archive/refs/tags/v0.1.3.tar.gz
+	sha256sums = 8983ce0aa8b931d2e4a203f1a03222158a403d1296816f352f9231e228272b2f
 
 pkgname = sonicrust
