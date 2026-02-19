@@ -4,7 +4,7 @@
 _slug=Autinn
 _name=Autinn
 pkgname=vcvrack-autinn
-pkgver=2.6.27
+pkgver=2.6.28
 pkgrel=1
 pkgdesc='Autinn VCV Rack modules'
 arch=(aarch64 x86_64)
@@ -14,7 +14,7 @@ groups=(pro-audio vcvrack-plugins)
 depends=(gcc-libs vcvrack)
 makedepends=(git simde zstd)
 source=("git+https://github.com/NikolaiVChr/$_name#tag=v$pkgver")
-sha256sums=('17a855f89e107e24789ca24e8aa57248afa4aa3ffeb1fd8ad56f1203fd25556e')
+sha256sums=('7a4fb718961430fb94349ad7a578fc592467aeaa099f0c5c4874c2b4298f684a')
 
 prepare() {
   cd $_name
