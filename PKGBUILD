@@ -7,8 +7,8 @@ pkgdesc=""
 arch=('x86_64')
 url="https://github.com/grafana/rustanka"
 license=('MIT')
-depends=()
-makedepends=('cargo' 'mimalloc')
+depends=('mimalloc')
+makedepends=('cargo' 'nasm' 'mold' 'mimalloc')
 source=("git+https://github.com/grafana/rustanka.git#branch=master")
 sha512sums=('SKIP')
 
@@ -23,12 +23,15 @@ pkgver() {
 build() {
     cd "$srcdir/rustanka"
 
+    # Force use of mold linker instead of lld to fix ring crate linking issues
+    export RUSTFLAGS="-C link-arg=-fuse-ld=mold -C link-arg=-lmimalloc"
     cargo build --release --locked --package rtk
 }
 
 check() {
     cd "$srcdir/rustanka"
 
+    export RUSTFLAGS="-C link-arg=-fuse-ld=mold -C link-arg=-lmimalloc"
     cargo test --release --locked --package rtk
 }
 

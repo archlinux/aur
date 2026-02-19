@@ -1,0 +1,17 @@
+pkgbase = rustanka-git
+	pkgver = v0.0.26.r4.g05885aa
+	pkgrel = 1
+	url = https://github.com/grafana/rustanka
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = nasm
+	makedepends = mold
+	makedepends = mimalloc
+	depends = mimalloc
+	provides = rustanka
+	conflicts = rustanka
+	source = git+https://github.com/grafana/rustanka.git#branch=master
+	sha512sums = SKIP
+
+pkgname = rustanka-git
