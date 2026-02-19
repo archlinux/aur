@@ -1,11 +1,12 @@
 # Maintainer: Lazy Seldi <dex0aur@gmail.com>
 pkgname=concord-git
-pkgver=v3.0.0.r30.g2498dd2e
 pkgrel=1
+pkgver=v3.0.0.r30.g2498dd2e
 pkgdesc="A Discord API wrapper library made in C (dev branch)"
 arch=('any')
 url="https://github.com/Cogmasters/concord"
 license=('MIT')
+options=('!lto')
 depends=('curl')
 makedepends=('git')
 source=("$pkgname"::git+https://github.com/Cogmasters/concord.git#branch=dev)
@@ -18,13 +19,13 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  make -j8
+  make
 }
 
 package() {
   cd "$srcdir/$pkgname"
 
-  # Patch the Makefile to respect DESTDIR
+  # Patching the Makefile to respect DESTDIR
   sed -i \
     -e 's|$(PREFIX)/include/concord|$(DESTDIR)$(PREFIX)/include/concord|g' \
     -e 's|$(PREFIX)/lib|$(DESTDIR)$(PREFIX)/lib|g' \

@@ -7,6 +7,7 @@ pkgbase = concord-git
 	license = MIT
 	makedepends = git
 	depends = curl
+	options = !lto
 	source = concord-git::git+https://github.com/Cogmasters/concord.git#branch=dev
 	md5sums = SKIP
 
