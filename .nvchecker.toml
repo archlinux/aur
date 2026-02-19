@@ -1,0 +1,3 @@
+[perl-toml-tiny]
+source = "cpan"
+cpan = "TOML-Tiny"
