@@ -2,7 +2,7 @@
 
 pkgbase=protobuf-git
 pkgname=('protobuf-git' 'python-protobuf-git')
-pkgver=33.4.r708.ged4f0ce13c
+pkgver=33.5.r882.gb94ac7d3f5
 pkgrel=1
 pkgdesc="Google's data interchange format"
 arch=('i686' 'x86_64')
@@ -64,7 +64,7 @@ check() {
 }
 
 package_protobuf-git() {
-  depends=('gcc-libs' 'abseil-cpp' 'zlib')
+  depends=('glibc' 'libgcc' 'libstdc++' 'abseil-cpp' 'zlib')
   provides=("protobuf=$pkgver" 'libprotoc.so' 'libprotobuf.so' 'libprotobuf-lite.so')
   conflicts=('protobuf')
 

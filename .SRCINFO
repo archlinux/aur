@@ -1,6 +1,6 @@
 pkgbase = protobuf-git
 	pkgdesc = Google's data interchange format
-	pkgver = 33.4.r708.ged4f0ce13c
+	pkgver = 33.5.r882.gb94ac7d3f5
 	pkgrel = 1
 	url = https://developers.google.com/protocol-buffers/
 	arch = i686
@@ -19,10 +19,12 @@ pkgbase = protobuf-git
 	sha256sums = SKIP
 
 pkgname = protobuf-git
-	depends = gcc-libs
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
 	depends = abseil-cpp
 	depends = zlib
-	provides = protobuf=33.4.r708.ged4f0ce13c
+	provides = protobuf=33.5.r882.gb94ac7d3f5
 	provides = libprotoc.so
 	provides = libprotobuf.so
 	provides = libprotobuf-lite.so
@@ -30,7 +32,7 @@ pkgname = protobuf-git
 
 pkgname = python-protobuf-git
 	pkgdesc = Python 3 bindings for Google Protocol Buffers
-	depends = protobuf-git=33.4.r708.ged4f0ce13c
+	depends = protobuf-git=33.5.r882.gb94ac7d3f5
 	depends = python
-	provides = python-protobuf=33.4.r708.ged4f0ce13c
+	provides = python-protobuf=33.5.r882.gb94ac7d3f5
 	conflicts = python-protobuf
