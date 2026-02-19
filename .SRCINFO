@@ -1,0 +1,23 @@
+pkgbase = perl-cpan-listchanges
+	pkgdesc = List changes for CPAN modules
+	pkgver = 0.08
+	pkgrel = 1
+	url = https://metacpan.org/dist/cpan-listchanges
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-test-requires
+	checkdepends = perl-test-simple
+	makedepends = perl-module-build
+	depends = perl-algorithm-diff
+	depends = perl-cpan-distnameinfo
+	depends = perl-libwww
+	depends = perl-module-metadata
+	depends = perl-pod-usage
+	depends = perl-try-tiny
+	depends = perl-yaml
+	depends = perl>=5.8.1
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/cpan-listchanges-0.08.tar.gz
+	sha256sums = 70d3b77bede25cbf4368a9abe3e78ae4e5bb3aebddd3cce4fd3539df76ebf9ea
+
+pkgname = perl-cpan-listchanges
