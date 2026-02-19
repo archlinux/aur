@@ -1,8 +1,8 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='BASIC language cross-compiler for ColecoVision/SG1000/MSX and other 8 bit computers'
 pkgname=cvbasic
-pkgver=0.9.0
-_commit=6f05ca6bcc944dbb391af47f6c4ce080a6c7aa9c
+pkgver=0.9.1
+_commit=abc5a7fdece3387fa5ef586e3de4dbf286b3e477
 pkgrel=1
 url=https://nanochess.org/cvbasic.html
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(glibc)
 makedepends=(git)
 optdepends=('gasm80: Assembler needed to build Z80/6502 binaries')
 source=("$pkgname-$pkgver::git+https://github.com/nanochess/CVBasic.git#commit=$_commit")
-b2sums=('d2a67805bb447b1a4d50fd0019effdd32607c9203f9c84f9309d4ee6ad1bd47d3b7ba1bb3fabdc1ba9762e004218814f722b4ea1e3000226f05517054332587d')
+b2sums=('6f4d44d79ae1917f8ea5e733e6999b775a9e76475b1e4140185dcfdde8716e9de20eca1af6c6e5b66d185bd906451c8b5515374feb30af389f6457d69ab9df3a')
 
 build () {
 	cd "$pkgname-$pkgver"
