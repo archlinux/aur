@@ -13,6 +13,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Options on description menu
 - Show interface on properties list
 
+
+## [2.13.1] - 2026-02-19
+
+### Added
+
+- Shortcuts on curated lists
+- Shortcut on save file
+
+### Fix
+
+- Flatpak compilation
+
 ## [2.13.0] - 2026-02-18
 
 ### Added
@@ -20,12 +32,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add curated lists switcher
 - Display list of Timers
 - Display list of Sockets
-- Display list of Unit Files
+- Display list of Unit files
 
 ### Changed
 
 - Chineese translation
 - Czech translation
+- Better unit fetching procedure
 
 ## [2.12.5] - 2026-02-05
 
