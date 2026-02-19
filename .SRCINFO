@@ -1,6 +1,6 @@
 pkgbase = python-basis_set_exchange
 	pkgdesc = A repository for quantum chemistry basis sets
-	pkgver = 0.11
+	pkgver = 0.12
 	pkgrel = 1
 	url = https://molssi-bse.github.io/basis_set_exchange/
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-basis_set_exchange
 	depends = python-numpy
 	depends = python-regex
 	depends = python-unidecode
-	source = git+https://github.com/MolSSI-BSE/basis_set_exchange.git#tag=v0.11
+	source = git+https://github.com/MolSSI-BSE/basis_set_exchange.git#tag=v0.12
 	sha256sums = SKIP
 
 pkgname = python-basis_set_exchange

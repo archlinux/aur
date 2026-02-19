@@ -3,7 +3,7 @@
 
 _name='basis_set_exchange'
 pkgname="python-${_name}"
-pkgver=0.11
+pkgver=0.12
 pkgrel=1
 pkgdesc='A repository for quantum chemistry basis sets'
 arch=('any')
