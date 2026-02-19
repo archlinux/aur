@@ -1,8 +1,8 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=xwayland-run
-pkgver=0.0.4
-pkgrel=4
+pkgver=0.0.5
+pkgrel=1
 pkgdesc="Set of small utilities revolving around running Xwayland"
 arch=(any)
 url="https://gitlab.freedesktop.org/ofourdan/$pkgname"
@@ -24,8 +24,8 @@ provides=(wlheadless-run xwfb-run)
 conflicts=(wlheadless-run xwfb-run)
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('280edfe833f8e298d48f3e35a7f0a35c2ab408eaaa7e5337464d9c55653cd3d2c4469431842338f4bd13ee545a5ea8092e26f45bebafd98f17eb4c4d5fef01ed')
-b2sums=('31eae9fbb1a4f8ce112400ccd2e00e28fa78cb880949ac9b291998dddbe1caeb4eb97dec249189ea6b6ba2cb9e87d9687766815bcba5a2cd4f4ea0fca8b27ca2')
+sha512sums=('ca2638c5beeb3efe37e974ae6e586251c30cf9151af27eb39b3a4646ae0ea615b0606d3ca1e1cb13d54a15f85beff2af6abfd7537574205436cc3cc82df86fe2')
+b2sums=('f5fdbb8df3a170288372977a9d4d4e6d08955901708caed06f5613f914b41c9a8c98a554ca9a3d68cf21e2e78ddb318b74d4720f40d623861f1503b1f634304f')
 
 build() {
   arch-meson $pkgbase-$pkgver build
