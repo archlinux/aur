@@ -1,5 +1,5 @@
 pkgname=hagrid-git
-pkgver=r906.94bf37a
+pkgver=r1004.7524add
 pkgver() {
 	cd "$srcdir/hagrid"
 #	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
@@ -22,7 +22,7 @@ sha512sums=('SKIP'
 
 prepare() {
   cd "hagrid"
-  export RUSTUP_TOOLCHAIN=1.86
+  export RUSTUP_TOOLCHAIN=1.91.1
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
@@ -30,14 +30,14 @@ build() {
   cd "hagrid"
   cp Rocket.toml.dist Rocket.toml
 
-  export RUSTUP_TOOLCHAIN=1.86
+  export RUSTUP_TOOLCHAIN=1.91.1
   cargo build --release
   (cd hagridctl && cargo build --release)
 }
 
 check() {
   cd "hagrid"
-  export RUSTUP_TOOLCHAIN=1.86
+  export RUSTUP_TOOLCHAIN=1.91.1
   cargo test --release
   (cd hagridctl && cargo test --release)
 }
