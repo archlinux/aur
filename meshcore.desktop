@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=MeshCore
+Comment=Closed source Flutter reference client for MeshCore LoRa mesh networking devices.
+Exec=MeshCore
+Icon=meshcore
+SingleMainWindow=true
+Terminal=false
+StartupNotify=false
+Categories=InstantMessaging;Chat;MeshCore
+X-Purism-FormFactor=Workstation;Mobile;
