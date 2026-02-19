@@ -1,15 +1,16 @@
 pkgbase = oxipng-git
 	pkgdesc = Multithreaded PNG optimizer
-	pkgver = 9.1.2.r0.ge8366882
+	pkgver = 10.1.0.r5.g854510a8
 	pkgrel = 1
 	url = https://github.com/shssoichiro/oxipng
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = rust
-	depends = gcc-libs
-	provides = oxipng=9.1.2.r0.ge8366882
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	provides = oxipng=10.1.0.r5.g854510a8
 	conflicts = oxipng
 	options = !lto
 	source = git+https://github.com/shssoichiro/oxipng.git
