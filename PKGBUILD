@@ -32,7 +32,7 @@ prepare() {
 
 build() {
   cd "$srcdir/libfprint"
-  meson setup builddir --prefix=/usr -Dinstalled-tests=false
+  meson setup builddir --prefix=/usr -Dinstalled-tests=false -Ddoc=false
   ninja -C builddir
 }
 
