@@ -1,9 +1,9 @@
 # Maintainer: rileyaft <riley.aft at outlook dot com>
 
 pkgname=librepods-git
-pkgver=nightly.d9469c2.r46.gecfbcd1
+pkgver=nightly.d9469c2.r72.gfd33528
 # additonally pulls from pkgver()
-pkgrel=2
+pkgrel=1
 pkgdesc="Apple exclusive AirPods Pro 2 features for Linux (unofficial package)"
 arch=('x86_64')
 url="https://github.com/kavishdevar/librepods"
@@ -13,6 +13,7 @@ depends=(
     'qt6-connectivity'
     'qt6-multimedia-ffmpeg'
     'qt6-multimedia'
+    'qt6-tools'
     'libpulse'
 )
 makedepends=(

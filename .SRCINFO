@@ -1,7 +1,7 @@
 pkgbase = librepods-git
 	pkgdesc = Apple exclusive AirPods Pro 2 features for Linux (unofficial package)
-	pkgver = nightly.d9469c2.r46.gecfbcd1
-	pkgrel = 2
+	pkgver = nightly.d9469c2.r72.gfd33528
+	pkgrel = 1
 	url = https://github.com/kavishdevar/librepods
 	install = librepods-git.install
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = librepods-git
 	depends = qt6-connectivity
 	depends = qt6-multimedia-ffmpeg
 	depends = qt6-multimedia
+	depends = qt6-tools
 	depends = libpulse
 	provides = librepods
 	conflicts = librepods
