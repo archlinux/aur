@@ -1,0 +1,16 @@
+pkgbase = vault-conductor-bin
+	pkgdesc = An SSH Agent that provides SSH keys stored in Bitwarden Secrets Manager
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/pirafrank/vault-conductor
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = vault-conductor
+	conflicts = vault-conductor
+	source_x86_64 = https://github.com/pirafrank/vault-conductor/releases/download/v0.3.0/vault-conductor-0.3.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = cea7b7d13f8d53d1c834751184c4c7e16499f0b64b7a887352055ca21c51a2ae
+	source_aarch64 = https://github.com/pirafrank/vault-conductor/releases/download/v0.3.0/vault-conductor-0.3.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 1b7f368911847da089c165359a5e1df5a486bfb2c4893c6023d5a6ae803b1b22
+
+pkgname = vault-conductor-bin
