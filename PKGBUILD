@@ -1,5 +1,5 @@
 pkgname=ardupilot-mission-planner
-pkgver=1.3.82
+pkgver=1.3.83
 epoch=2
 pkgrel=1
 pkgdesc="Full-featured ground station application for the ArduPilot open source autopilot project"
@@ -14,7 +14,7 @@ source=(
 )
 
 sha256sums=(
-  'e79e1f143c47328e23577cab3dd1a00d843a5de5be4d675520890640805dac24'
+  'ff3694f7a9038caf756545049dd7aef74e3d0d8fe3586e87aa881045704dd6f9'
   'e2b0bde2cf9dd598103c2d6babeeae82c72901cdff19b8db1fe579d176a6139f'
 )
 
