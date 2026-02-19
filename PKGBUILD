@@ -18,8 +18,7 @@ makedepends=(
   'libx11' 'libxext' 'xorgproto' 'libomxil-bellagio'
   'git' 'python-ply' 'glslang' 'libclc' 'spirv-tools' 'vulkan-headers'
   'spirv-llvm-translator' 'python-setuptools' 'python-yaml')
-provides=('mesa' 'vulkan-driver')
-conflicts=('mesa')
+provides=('vulkan-driver')
 source=("mesa::git+https://gitlab.freedesktop.org/Triang3l/mesa.git#branch=Terakan"
     "0001-fix-c23.patch")
 sha256sums=('SKIP'

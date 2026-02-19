@@ -40,9 +40,7 @@ pkgbase = vulkan-terakan-git
 	depends = libxrandr
 	depends = libxinerama
 	depends = zlib
-	provides = mesa
 	provides = vulkan-driver
-	conflicts = mesa
 	source = mesa::git+https://gitlab.freedesktop.org/Triang3l/mesa.git#branch=Terakan
 	source = 0001-fix-c23.patch
 	sha256sums = SKIP
