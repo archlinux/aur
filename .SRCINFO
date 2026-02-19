@@ -1,14 +1,16 @@
 pkgbase = pipetron
-	pkgdesc = Electron node manager for PipeWire
-	pkgver = 1.1.0
+	pkgdesc = A third-party daemon to fix Electron audio streams naming conflicts in PipeWire.
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://codeberg.org/ponleou/pipetron
 	install = pipetron.install
 	arch = x86_64
 	license = MIT
 	makedepends = meson
+	makedepends = systemd
 	depends = pipewire
-	source = pipetron-1.1.0.tar.gz::https://codeberg.org/ponleou/pipetron/archive/v1.1.0.tar.gz
+	depends = tomlplusplus
+	source = pipetron-1.2.0.tar.gz::https://codeberg.org/ponleou/pipetron/archive/v1.2.0.tar.gz
 	sha256sums = d82d31c02b7423c919cafc443d0393e952bb2219f51bb3d2d5446d8a46ad3586
 
 pkgname = pipetron
