@@ -1,0 +1,15 @@
+pkgbase = min-ed-launcher-git
+	pkgdesc = Minimal Elite Dangerous Launcher
+	pkgver = v0.12.2.r26.g9814c54
+	pkgrel = 1
+	url = https://github.com/rfvgyhn/min-ed-launcher
+	install = min-ed-launcher-git.install
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk-8.0-bin
+	makedepends = git
+	options = !strip
+	source = min-ed-launcher-git::git+https://github.com/rfvgyhn/min-ed-launcher.git
+	sha256sums = SKIP
+
+pkgname = min-ed-launcher-git
