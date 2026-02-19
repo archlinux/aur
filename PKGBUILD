@@ -1,6 +1,6 @@
 pkgname=dcr
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cargo-like utility to manage C/C++ projects"
 arch=('x86_64' 'aarch64')
 url="https://github.com/dexoron/dcr"
