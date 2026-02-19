@@ -1,7 +1,7 @@
 # Maintainer: Ross Ceb aur@roceb.xyz
 pkgname=sonicrust-bin
 _binaryname=sonicrust
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A rust base TUI subsonic client"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ options=(strip)
 conflicts=('_binaryname')
 source_x86_64=("${_binaryname}_v${pkgver}_linux_x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_binaryname}_v${pkgver}_linux_x86_64.tar.gz")
 source_aarch64=("${_binaryname}_v${pkgver}_linux_aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_binaryname}_v${pkgver}_linux_aarch64.tar.gz")
-sha256sums_aarch64=('25c2dc6e9f5b0e2cf2f0e040e92b10d25d25adf142caa97218fec0b5c37ddaba')
-sha256sums_x86_64=('6e43747467a5b736cb16f728695c0d6517aa7f38735048311c9290a0984e4891')
+sha256sums_x86_64=('088fab21e11ef34a3059ed2fdb9ba650f4dbc00709a3d439a88692b778773aeb')
+sha256sums_aarch64=('c0de75e0064d2cc146db9338e002a88e6925340f9233dd0496b16d748792af46')
 
 package() {
 if [ "$CARCH" = "x86_64" ]; then
