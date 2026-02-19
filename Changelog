@@ -1,9 +1,14 @@
 -------------------------------------------------------
  Changelog    : pyconcurrent
- Tags         : 2.10.1 ➙ 2.13.1
-              : 2026-01-03 ➙ 2026-01-06
+ Tags         : 2.11.0 ➙ 2.13.2
+              : 2026-01-03 ➙ 2026-02-19
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-02-19   : 2.13.2
+              - Fix typo in example-2 of docs. No code change.
+ 2026-01-06   ⋯
+              - update Docs/Changelogs
 
  2026-01-06   : 2.13.1
               - PKGBUILD small change
@@ -24,11 +29,4 @@
  2026-01-03   : 2.11.0
               - Actualy make the hatch to uv changes (oops)
                 Change license to GPL-2.0-or-later
-              - update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
-
- 2026-01-03   : 2.10.1
-              - Change packaging from hatch to uv
-                Some Doc updates
-                Arch package keep python version requirement at 3.13+ for now.
- 2025-06-26   ⋯
               - update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
