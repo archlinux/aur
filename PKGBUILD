@@ -8,7 +8,7 @@ url='https://github.com/zhuminjie/OpenSeesPy'
 license=('GPL')
 depends=('python' 'python-numpy' 'openblas' 'gcc6-libs')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-source=("https://github.com/zhuminjie/OpenSeesPy/archive/refs/tags/0.2.0.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/o/openseespy/openseespy-0.2.0.tar.gz")
 sha256sums=('SKIP')
 
 build() {
@@ -19,5 +19,4 @@ build() {
 package() {
   cd "$srcdir"/*/
   python -m installer --destdir="$pkgdir" dist/*.whl
-  # 这里不再写任何 ln -s，交给系统的 gcc6-libs 处理
 }
