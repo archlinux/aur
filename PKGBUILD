@@ -5,12 +5,12 @@
 
 pkgname=litellm
 pkgver=1.81.13
-pkgrel=2
+pkgrel=3
 pkgdesc='Library to easily interface with LLM API providers.'
 arch=(any)
 url='https://github.com/BerriAI/litellm'
 license=('MIT')
-depends=('python' 'python-fastuuid' 'python-httpx' 'python-openai' 'python-dotenv' 'python-tiktoken' 'python-importlib-metadata' 'python-tokenizers' 'python-click' 'python-jinja' 'python-aiohttp' 'python-pydantic' 'python-jsonschema' 'python-grpcio')
+depends=('python' 'python-fastuuid' 'python-httpx' 'python-openai' 'python-dotenv' 'python-tiktoken' 'python-importlib-metadata' 'python-tokenizers' 'python-click' 'python-jinja' 'python-aiohttp' 'python-pydantic' 'python-jsonschema')
 makedepends=('python-poetry-core' 'python-build' 'python-installer' 'python-wheel')
 optdepends=('gunicorn: proxy'
             'uvicorn: proxy'

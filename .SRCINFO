@@ -1,7 +1,7 @@
 pkgbase = litellm
 	pkgdesc = Library to easily interface with LLM API providers.
 	pkgver = 1.81.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/BerriAI/litellm
 	arch = any
 	license = MIT
@@ -22,7 +22,6 @@ pkgbase = litellm
 	depends = python-aiohttp
 	depends = python-pydantic
 	depends = python-jsonschema
-	depends = python-grpcio
 	optdepends = gunicorn: proxy
 	optdepends = uvicorn: proxy
 	optdepends = python-uvloop: proxy
