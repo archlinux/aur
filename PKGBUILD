@@ -7,7 +7,7 @@ pkgname=${_pkgname}-bin
 pkgdesc="A minimal CLI tool for managing and executing SQL queries across multiple databases"
 
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 _pkgvername=v${pkgver}-beta
 
 arch=('x86_64' 'aarch64')
