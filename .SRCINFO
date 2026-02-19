@@ -14,15 +14,7 @@ pkgbase = alarm-notify
 	optdepends = xfce4-terminal: external terminal support
 	optdepends = xterm: external terminal support
 	optdepends = ghostty: external terminal support
-	source = alarm-notify-linux
-	source = alarm-notify.png
-	source = alarm-notify.wav
-	source = README.md
-	source = LICENCE
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = alarm-notify-1.0.0.tar.gz::https://github.com/nikaakin/alarm-notify/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = alarm-notify
