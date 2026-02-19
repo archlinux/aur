@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=Game;
+Comment=A modern mod manager for Thunderstore
+Exec=gale
+StartupWMClass=gale
+Icon=gale
+Name=Gale
+Terminal=false
+Type=Application
+MimeType=application/zip;x-scheme-handler/ror2mm;x-scheme-handler/gale

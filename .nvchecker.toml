@@ -1,0 +1,3 @@
+[gale]
+source = "git"
+git = "https://github.com/Kesomannen/gale.git"
