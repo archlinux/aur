@@ -6,8 +6,8 @@
 _pkgname="qlcplus"
 pkgbase="$_pkgname-git"
 pkgname=("${_pkgname}5-git")
-pkgver=5.1.0.r112.g12d4745
-pkgrel=2
+pkgver=5.2.0.r43.ge4d8a4a
+pkgrel=1
 pkgdesc="Q Light Controller Plus to control professional DMX lighting fixtures"
 url="https://github.com/mcallegari/qlcplus"
 license=('Apache-2.0')
@@ -94,10 +94,6 @@ build() {
 
 package_qlcplus5-git() {
   DESTDIR="$pkgdir" cmake --install build5
-
-  # fix launcher
-  sed -E -e 's&^(Exec=qlcplus)$&\1-qml&' -i "$pkgdir"/usr/share/applications/qlcplus.desktop
-  mv "$pkgdir"/usr/share/applications/{qlcplus,qlcplus-qml}.desktop
 
   # unwanted
   rm "$pkgdir"/usr/lib/*.a

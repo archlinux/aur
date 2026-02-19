@@ -1,7 +1,7 @@
 pkgbase = qlcplus-git
 	pkgdesc = Q Light Controller Plus to control professional DMX lighting fixtures
-	pkgver = 5.1.0.r112.g12d4745
-	pkgrel = 2
+	pkgver = 5.2.0.r43.ge4d8a4a
+	pkgrel = 1
 	url = https://github.com/mcallegari/qlcplus
 	arch = x86_64
 	arch = i686
