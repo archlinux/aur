@@ -1,0 +1,18 @@
+{
+    "bind": "0.0.0.0",
+    "port": 9978,
+    "metrics_path": "/metrics",
+    "loop_interval": 180,
+    "recursive": true,
+    "max_depth": 1,
+    "exclude_root": true,
+    "folders": [
+        "/path/to/folder1",
+        "/path/to/folder2"
+    ],
+    "skip": [
+        "**/*test",
+        "**/lost+found",
+        "/path/to/folder2/skip_this"
+    ]
+}
