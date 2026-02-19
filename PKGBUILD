@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=numbat-git
-pkgver=1.10.1.r12.g1fbf8a0
+pkgver=1.23.0.r8.g1de35b62
 pkgrel=1
 pkgdesc="A statically typed programming language for scientific computations with first class support for physical dimensions and units"
 arch=('i686' 'x86_64')
 url="https://numbat.dev/"
 license=('Apache-2.0' 'MIT')
-depends=('gcc-libs')
+depends=('glibc' 'libgcc')
 makedepends=('git' 'cargo')
 provides=("numbat=$pkgver")
 conflicts=('numbat')
@@ -30,7 +30,7 @@ pkgver() {
   cd "numbat"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
