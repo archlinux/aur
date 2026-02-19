@@ -2,7 +2,7 @@
 
 pkgname='min-ed-launcher'
 pkgver=v0.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimal Elite Dangerous Launcher'
 url='https://github.com/rfvgyhn/min-ed-launcher'
 arch=('x86_64')
