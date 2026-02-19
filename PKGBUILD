@@ -26,12 +26,15 @@ optdepends=(
     'partitionmanager: KDE partition manager'
     'cryptsetup: LUKS encryption support'
 )
-source=("https://github.com/gazelle-installer/gazelle-installer/archive/refs/tags/26.02.tar.gz")
+source=("https://github.com/gazelle-installer/gazelle-installer/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('2f36b146b68dd5c80e1e1cba05faf7ed8a75fbc4f65e5a59fa82301290cd1493')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    cmake --preset arch -DUSE_ZXCVBN=OFF
+    cmake --preset arch \
+        -DUSE_ZXCVBN=OFF \
+        -DGAZELLE_VERSION_SOURCE=tag \
+        -DGAZELLE_VERSION_TAG="${pkgver}"
     cmake --build --preset arch
 }
 
