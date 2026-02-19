@@ -2,7 +2,7 @@ pkgbase = fcitx5-lotus-git
 	pkgdesc = Vietnamese input method for fcitx5
 	pkgver = 0.12.1.r193.g239a2d6
 	pkgrel = 1
-	url = https://github.com/nhktmdzhg/fcitx5-lotus
+	url = https://github.com/LotusInputMethod/fcitx5-lotus
 	install = fcitx5-lotus.install
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -21,8 +21,8 @@ pkgbase = fcitx5-lotus-git
 	depends = systemd-libs
 	provides = fcitx5-lotus
 	conflicts = fcitx5-lotus
-	source = git+https://github.com/nhktmdzhg/fcitx5-lotus.git#branch=dev
-	source = git+https://github.com/nhktmdzhg/bamboo-core.git
+	source = git+https://github.com/LotusInputMethod/fcitx5-lotus.git#branch=dev
+	source = git+https://github.com/LotusInputMethod/bamboo-core.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 
