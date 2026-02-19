@@ -1,0 +1,5 @@
+[ttime-bin]
+source = "github"
+github = "Techsmith404/ttime"
+use_latest_release = true
+prefix = "v"

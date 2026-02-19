@@ -1,0 +1,25 @@
+pkgbase = ttime-bin
+	pkgdesc = A working and customizable countdown timer in the terminal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Techsmith404/ttime
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = python-pip
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-rich
+	depends = python-pyfiglet
+	depends = python-playsound3
+	provides = ttime
+	noextract = ttime-1.0.0-py3-none-any.whl
+	options = !strip
+	source = https://github.com/Techsmith404/ttime/releases/download/v1.0.0/ttime-1.0.0-py3-none-any.whl
+	source = README-1.0.0.md::https://raw.githubusercontent.com/Techsmith404/ttime/v1.0.0/README.md
+	source = LICENSE-1.0.0::https://raw.githubusercontent.com/Techsmith404/ttime/v1.0.0/LICENSE
+	sha512sums = 1068184b1b30e420a96e72352eb16eec20d100e294bbc6bf49cdacc57cb16b99cdd8631c37f8ec2a21fe0d532d7cce4bbdd25870b691658c6ebf7718391e3432
+	sha512sums = 8079dd70374e182cc3110572af073f53a5fe1b0c044a31d959c0becdd0dbfeb3a939c5dd5f286aa3de859af981948a75b7001bf5425f2b70b2057271a228e08f
+	sha512sums = d361e5e8201481c6346ee6a886592c51265112be550d5224f1a7a6e116255c2f1ab8788df579d9b8372ed7bfd19bac4b6e70e00b472642966ab5b319b99a2686
+
+pkgname = ttime-bin
