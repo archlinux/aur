@@ -7,7 +7,7 @@
 pkgname='offpunk-git'
 _pkgname='offpunk'
 pkgdesc='Command-line and offline-first smolnet browser/feed reader for Gemini, Gopher, Spartan and web (development version)'
-pkgver=3.0.r12.g6c11a41
+pkgver=3.0.r34.g99f59ab
 pkgrel=2
 epoch=6
 url='https://git.sr.ht/~lioploum/offpunk'
@@ -37,7 +37,6 @@ depends=(
 optdepends=(
   'chafa: render images in terminal'
   'ftr-site-config: Full-Text-RSS site-specific text extraction rules'
-  'timg: render images in terminal (alternative)'
   'wl-clipboard: copies text to the Wayland clipboard'
   'xclip: copies text to the X11 clipboard'
   'xdg-utils: xdg-open opens a URL in the preferred application'
