@@ -1,13 +1,13 @@
 pkgbase = r-reader
 	pkgdesc = Suite of Functions to Flexibly Read Data from Files
-	pkgver = 1.0.6
-	pkgrel = 4
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=reader
 	arch = any
 	license = GPL
 	depends = r
 	depends = r-ncmisc
-	source = https://cran.r-project.org/src/contrib/reader_1.0.6.tar.gz
-	sha256sums = 905c7c5a1b035ac8213fc533fa26e511abfeea40bd22e3edfde42a49074e88f4
+	source = https://cran.r-project.org/src/contrib/reader_1.1.0.tar.gz
+	sha256sums = 0732aa5db0cbf737991b92e0de3498e8e02a2b9ca4c1fc56fe8273d378e0041f
 
 pkgname = r-reader

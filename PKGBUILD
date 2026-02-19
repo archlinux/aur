@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=reader
-_pkgver=1.0.6
+_pkgver=1.1.0
 pkgname=r-${_pkgname,,}
-pkgver=1.0.6
-pkgrel=4
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='Suite of Functions to Flexibly Read Data from Files'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -14,7 +14,7 @@ depends=(
   r-ncmisc
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('905c7c5a1b035ac8213fc533fa26e511abfeea40bd22e3edfde42a49074e88f4')
+sha256sums=('0732aa5db0cbf737991b92e0de3498e8e02a2b9ca4c1fc56fe8273d378e0041f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
