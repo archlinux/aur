@@ -18,6 +18,6 @@ pkgbase = monique
 	optdepends = sddm: login screen layout sync via Xsetup
 	optdepends = polkit: passwordless SDDM Xsetup writes
 	source = monique-0.2.0.tar.gz::https://github.com/ToRvaLDz/monique/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 5604512cefa68c1f56b7c561ac2d5dff054d00398991f885741b413c342715b5
+	sha256sums = 102479b0d9fc87ebd4173598d2bf0adc6675568ebc98327661293332b599a1af
 
 pkgname = monique
