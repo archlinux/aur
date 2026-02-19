@@ -1,6 +1,6 @@
 pkgbase = ffdec-git
 	pkgdesc = Open Source Flash SWF decompiler and editor, git version
-	pkgver = 25.1.0.r2.g41f07a2e5
+	pkgver = 25.1.1.r0.g938e03094
 	pkgrel = 1
 	url = https://github.com/jindrapetrik/jpexs-decompiler
 	arch = any

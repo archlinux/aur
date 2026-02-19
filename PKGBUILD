@@ -5,7 +5,7 @@
 # Contributor: Alexandre `Zopieux` Macabies <web+aur@zopieux.com>
 
 pkgname=ffdec-git
-pkgver=25.1.0.r2.g41f07a2e5
+pkgver=25.1.1.r0.g938e03094
 pkgrel=1
 pkgdesc="Open Source Flash SWF decompiler and editor, git version"
 arch=('any')
@@ -32,16 +32,6 @@ b2sums=(
   '2881f0e50d97e96119efe873a418232f3e2445d7540c3b07e635081b248812ebda31ea4cb76a7eabf57827e0530bf3b66fc358000651a5c108c732d8b4912f92'
 )
 
-prepare() {
-  cd "ffdec"
-
-  IFS='.' read -r major minor release revision commit <<< "$pkgver"
-  sed -Eie 's/(name="version.major" value=")0(")/\1'"$major"'\2/g'       build.xml
-  sed -Eie 's/(name="version.minor" value=")0(")/\1'"$minor"'\2/g'       build.xml
-  sed -Eie 's/(name="version.release" value=")0(")/\1'"$release"'\2/g'   build.xml
-  sed -Eie 's/(name="version.debug" value=")true(")/\1false\2/g'         build.xml
-}
-
 pkgver() {
   cd ffdec
   git describe --long --tags | sed 's/^version//;s/\([^-]*-g\)/r\1/;s/-/./g'
@@ -49,6 +39,11 @@ pkgver() {
 
 build() {
   cd ffdec
+  IFS='.' read -r major minor release revision commit <<< "$pkgver"
+  sed -Eie 's/(name="version.major" value=")0(")/\1'"$major"'\2/g'       build.xml
+  sed -Eie 's/(name="version.minor" value=")0(")/\1'"$minor"'\2/g'       build.xml
+  sed -Eie 's/(name="version.release" value=")0(")/\1'"$release"'\2/g'   build.xml
+  sed -Eie 's/(name="version.debug" value=")true(")/\1false\2/g'         build.xml
   ant build
 }
 
