@@ -9,9 +9,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Save unit file in runtime
+- Save unit file in runtime(done)
 - Options on description menu
 - Show interface on properties list
+
+## [2.13.0] - 2026-02-18
+
+### Added
+
+- Add curated lists switcher
+- Display list of Timers
+- Display list of Sockets
+- Display list of Unit Files
+
+### Changed
+
+- Chineese translation
+- Czech translation
 
 ## [2.12.5] - 2026-02-05
 
