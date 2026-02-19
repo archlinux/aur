@@ -1,13 +1,18 @@
 pkgname=fheroes2
 pkgver=1.1.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Recreation of the Heroes of Might and Magic II game engine"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://ihhub.github.io/fheroes2/"
 license=('GPL-2.0-or-later')
 depends=(
+  glibc
   hicolor-icon-theme
+  libgcc
+  libstdc++
+  sdl2
   sdl2_mixer
+  zlib
 )
 makedepends=(
   cmake
@@ -15,6 +20,7 @@ makedepends=(
   ninja
 )
 optdepends=(
+  'bash: download demo and extract game resources'
   'curl: download demo version files (alternative to wget)'
   'innoextract: extract game resources from installer package'
   'python: extract animation resources from GOG CD image'
