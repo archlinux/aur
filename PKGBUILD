@@ -5,7 +5,7 @@ _pkgname=hazelnut
 pkgname=${_pkgname}-bin
 pkgdesc="Terminal-based automated file organizer"
 
-pkgver=0.2.44
+pkgver=0.2.49
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,10 +25,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-${_barch[1]}.tar.gz")
-sha256sums=('ef8b229511b25e6707c203662a0984f6ec6d1b91822b0eca9e4965e9219b4c3a'
+sha256sums=('60a39bd1e1c2be87bc9f5d2e51f565a47c080bbad8cfd81431deafa75b3a8dd3'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-sha256sums_x86_64=('1b0b78b5e691d45f33a626728027909c95d9e2238b16007e3bfbc39461cb1c0f')
-sha256sums_aarch64=('152e27d373500d8f59074d45f7c760bc986407c8617156a081ff3cfd793eb115')
+sha256sums_x86_64=('e47c0086f879825435413b7d23b5d428f719520db4dda34bcfb72e7a547475e4')
+sha256sums_aarch64=('639fc59b45a53f7ad447c0dc7d3089530b1814e4e2996510ead545df85c71d4e')
 
 
 package() {
