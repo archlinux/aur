@@ -1,6 +1,6 @@
 pkgname=arch-cache-cleaner-git
 pkgver=r0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Interactive cross-platform cache cleaner with configurable profiles (Linux/macOS/Windows)'
 arch=('any')
 url='https://github.com/MeIsGaming/arch-cache-cleaner'
@@ -22,7 +22,6 @@ package() {
 
   install -Dm755 cache_cleaner.py "$pkgdir/usr/bin/arch-cache-cleaner"
   install -Dm644 cache_paths.json "$pkgdir/usr/share/arch-cache-cleaner/cache_paths.json"
-  install -Dm644 cache_paths.custom.json "$pkgdir/usr/share/arch-cache-cleaner/cache_paths.custom.json"
 
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
