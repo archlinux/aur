@@ -3,7 +3,7 @@
 _pkgauthor=FlerAlex
 _pkgname=certradar-cli
 pkgname=${_pkgname}-bin
-pkgdesc="Fast SSL/TLS security scanner with certificate transparency search, protocol analysis, and security grading"
+pkgdesc="Certificate transparency search and SSL/TLS security analysis CLI"
 
 pkgver=0.1.2
 pkgrel=1
