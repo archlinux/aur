@@ -2,7 +2,7 @@
 # Maintainer: tacheometrist <aur@tacheometrist.dev>
 
 pkgname=surrealist-bin
-pkgver=3.7.0
+pkgver=3.7.1
 pkgrel=1
 pkgdesc="Surrealist is the ultimate way to visually manage your SurrealDB database"
 arch=("x86_64")
@@ -14,7 +14,7 @@ provides=("surrealist")
 conflicts=("surrealist")
 _debname="Surrealist_${pkgver//_/-}_amd64.deb"
 source=("https://github.com/surrealdb/surrealist/releases/download/surrealist-v${pkgver//_/-}/${_debname}")
-sha256sums=('90a8b32d2eb05b7c07135d64eeb84aef8a59c3f75610f7b09eea2e3c3e4141d9')
+sha256sums=('73087c8ed69309bdf4b355d5082bc08d79c7c566726c3e6b6d155afdbed3f69b')
 
 package() {
 	bsdtar -O -xf "${_debname}" data.tar.gz | bsdtar -C "${pkgdir}" -xJf -
