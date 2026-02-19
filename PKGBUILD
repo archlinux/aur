@@ -23,7 +23,7 @@ depends=(
   libgio-2.0.so
   libgobject-2.0.so
 
-  # gtk2
+  # gtk3
   libgdk-3.so
   libgtk-3.so
 
