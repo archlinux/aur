@@ -93,6 +93,9 @@ package_czkawka-gui() {
   install -Dm644 "${srcdir}/czkawka/data/com.github.qarmin.czkawka.desktop" \
         "${pkgdir}/usr/share/applications/com.github.qarmin.czkawka.desktop"
 
+  install -Dm644 "${srcdir}/czkawka/data/com.github.qarmin.czkawka.metainfo.xml" \
+        "${pkgdir}/usr/share/metainfo/com.github.qarmin.czkawka.metainfo.xml"
+
   install -Dm644 "${srcdir}/czkawka/data/icons/com.github.qarmin.czkawka.svg" \
         "${pkgdir}/usr/share/icons/hicolor/scalable/apps/com.github.qarmin.czkawka.svg"
 
@@ -101,9 +104,6 @@ package_czkawka-gui() {
 
   install -Dm644 "${srcdir}/czkawka/data/icons/com.github.qarmin.czkawka-symbolic.svg" \
         "${pkgdir}/usr/share/icons/hicolor/symbolic/apps/com.github.qarmin.czkawka-symbolic.svg"
-
-  install -Dm644 "${srcdir}/czkawka/data/com.github.qarmin.czkawka.metainfo.xml" \
-        "${pkgdir}/usr/share/metainfo/com.github.qarmin.czkawka.metainfo.xml"
 }
 
 package_krokiet() {
