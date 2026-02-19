@@ -1,16 +1,19 @@
 post_upgrade() {
-    echo ">>> Restarting claude-cowork service for active users..."
-    # Restart the systemd user service for the user running the upgrade.
-    # loginctl is used to find active user sessions; we skip root.
-    if command -v loginctl &>/dev/null; then
-        loginctl list-users --no-legend 2>/dev/null | while read -r uid user _rest; do
-            [ "$uid" -ge 1000 ] || continue
-            if sudo -u "$user" XDG_RUNTIME_DIR="/run/user/$uid" \
-                systemctl --user is-active claude-cowork.service &>/dev/null; then
-                sudo -u "$user" XDG_RUNTIME_DIR="/run/user/$uid" \
-                    systemctl --user restart claude-cowork.service 2>/dev/null && \
-                    echo "    Restarted for user $user" || true
-            fi
-        done
+  echo ">>> Restarting claude-cowork service for active users..."
+
+  command -v loginctl >/dev/null 2>&1 || return 0
+  command -v runuser  >/dev/null 2>&1 || return 0
+
+  loginctl list-users --no-legend 2>/dev/null | while read -r uid user _rest; do
+    [ "$uid" -ge 1000 ] || continue
+
+    XDG_RUNTIME_DIR="/run/user/$uid"
+
+    if runuser -u "$user" -- env XDG_RUNTIME_DIR="$XDG_RUNTIME_DIR" \
+        systemctl --user is-active claude-cowork.service >/dev/null 2>&1; then
+      runuser -u "$user" -- env XDG_RUNTIME_DIR="$XDG_RUNTIME_DIR" \
+        systemctl --user restart claude-cowork.service >/dev/null 2>&1 \
+        && echo "  Restarted for user $user" || true
     fi
+  done
 }
