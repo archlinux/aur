@@ -1,6 +1,6 @@
 pkgbase = python-webdav4
 	pkgdesc = WebDAV client library with a fsspec-based filesystem and a CLI.
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://skshetry.github.io/webdav4
 	arch = any
@@ -19,9 +19,9 @@ pkgbase = python-webdav4
 	makedepends = python-dateutil
 	makedepends = python-httpx
 	makedepends = python-fsspec
-	source = https://files.pythonhosted.org/packages/source/w/webdav4/webdav4-0.10.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/w/webdav4/webdav4-0.11.0.tar.gz
 	source = Makefile
-	sha256sums = 387da6f0ee384e77149dddd9bcfd434afa155882f6c440a529a7cb458624407f
+	sha256sums = 7062c6640e0520bfbd49862bdd335db839e519bf2ca02cd4f89957069ed600ea
 	sha256sums = b416e28c94fa9e9353a9db80afc7ab0daf4aab6ee107755dd64af77765e65a07
 
 pkgname = python-webdav4

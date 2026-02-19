@@ -3,7 +3,7 @@
 pkgbase=python-webdav4
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='WebDAV client library with a fsspec-based filesystem and a CLI.'
 arch=('any')
@@ -25,7 +25,7 @@ checkdepends=('python-pytest-xdist'
               'python-wsgidav')   # dateutil httpx fsspec already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'Makefile')
-sha256sums=('387da6f0ee384e77149dddd9bcfd434afa155882f6c440a529a7cb458624407f'
+sha256sums=('7062c6640e0520bfbd49862bdd335db839e519bf2ca02cd4f89957069ed600ea'
             'b416e28c94fa9e9353a9db80afc7ab0daf4aab6ee107755dd64af77765e65a07')
 
 prepare() {
@@ -47,7 +47,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
+    PYTHONPATH="src" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
 }
 
 package_python-webdav4() {
