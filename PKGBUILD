@@ -1,6 +1,6 @@
 # Maintainer: Josef Zoller <josef@walterzollerpiano.com>
 pkgname=zed-preview-bin
-pkgver=0.224.4
+pkgver=0.225.1
 pkgrel=1
 pkgdesc="A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter"
 arch=('x86_64' 'aarch64')
@@ -27,13 +27,13 @@ provides=("${pkgname%-preview-bin}=$pkgver")
 conflicts=("${pkgname%-preview-bin}")
 source_x86_64=("$pkgname-$pkgver.tar.gz::$url/api/releases/preview/$pkgver/zed-linux-x86_64.tar.gz")
 source_aarch64=("$pkgname-$pkgver.tar.gz::$url/api/releases/preview/$pkgver/zed-linux-aarch64.tar.gz")
-sha256sums_x86_64=('a841fcdbcca0c815ab47044b67ae4edb791048415172d2bb83f9d38855c760be')
-sha256sums_aarch64=('e1572d994f69def91cefef64114b8e4c65293ec73c6d5bd382fbf9a1d50bbeaf')
+sha256sums_x86_64=('bb4c5e1143524318c413896ba91ecb313f154cb52aec7b5a17049194aa7f7114')
+sha256sums_aarch64=('aa125cfca960e5d02b54c12cf3798e689ff934f3a158193465e9f9ee3625f618')
 
 package() {
     cd zed-preview.app
 
-    desktop_file_path='share/applications/zed-preview.desktop'
+    desktop_file_path='share/applications/dev.zed.Zed-Preview.desktop'
 
     sed -i "s|Icon=zed|Icon=/usr/share/icons/${pkgname%-preview-bin}.png|g" "$desktop_file_path"
     sed -i "s|Exec=zed|Exec=/usr/bin/zeditor|g" "$desktop_file_path"
