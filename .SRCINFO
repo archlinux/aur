@@ -1,0 +1,16 @@
+pkgbase = youtui-player
+	pkgdesc = YouTube TUI player with playlist, thumbnails and Catppuccin themes
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/IvelOt/youtui-player
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = mpv
+	depends = yt-dlp
+	depends = socat
+	source = youtui-player-1.1.0.tar.gz::https://github.com/IvelOt/youtui-player/archive/refs/tags/v1.1.0.tar.gz
+	b2sums = 3b8dd36b6876cce29a28aabfcd00edcda1f1badf20942991a354232f726d86063a5df633072420e58f1b2883df42413257c4b00dd76de59b4d5dd2f45bd2ddd2
+
+pkgname = youtui-player
