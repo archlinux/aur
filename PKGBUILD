@@ -1,13 +1,13 @@
 # Maintainer: kausban <mail at kausban com>
 pkgname=openaudible-bin
-pkgver=4.7.2
+pkgver=4.7.3
 pkgrel=1
 pkgdesc="a cross-platform audiobook manager designed for Audible users. Manage all your audiobooks with this easy-to-use desktop application"
 arch=('x86_64')
 url="https://openaudible.org"
 license=('Apache')
 depends=("desktop-file-utils" "webkit2gtk")
-source=("https://github.com/openaudible/openaudible/releases/download/v4.7.2/OpenAudible_4.7.2_x86_64.deb")
+source=("https://github.com/openaudible/openaudible/releases/download/v4.7.3/OpenAudible_4.7.3_x86_64.deb")
 sha512sums=('_OA_SHA512SUM_')
 
 package(){
