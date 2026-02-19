@@ -1,0 +1,19 @@
+pkgbase = certradar-cli-bin
+	pkgdesc = Fast SSL/TLS security scanner with certificate transparency search, protocol analysis, and security grading
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/FlerAlex/certradar-cli
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = certradar-cli
+	conflicts = certradar-cli
+	source = README-0.1.2.md::https://raw.githubusercontent.com/FlerAlex/certradar-cli/v0.1.2/README.md
+	source = LICENSE-0.1.2::https://raw.githubusercontent.com/FlerAlex/certradar-cli/v0.1.2/LICENSE
+	sha256sums = cda8c5960a719e0bc5aac2e8d858bc05b2e028d889810ec716dd08d7b251e548
+	sha256sums = 04320b46c5ddec9c36bfb4450623ffd3041334930202272742bb52b58d67062a
+	source_x86_64 = certradar-cli-x86_64-0.1.2.tgz::https://github.com/FlerAlex/certradar-cli/releases/download/v0.1.2/certradar-cli-linux-x86_64.tar.gz
+	sha256sums_x86_64 = dd32adbb98ee40c054f72bd4b71b17a6461a2ceadec124f15ffde3a41346779e
+
+pkgname = certradar-cli-bin

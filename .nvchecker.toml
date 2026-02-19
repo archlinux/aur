@@ -1,0 +1,5 @@
+[certradar-cli-bin]
+source = "github"
+github = "FlerAlex/certradar-cli"
+use_latest_release = true
+prefix = "v"
