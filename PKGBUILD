@@ -6,7 +6,7 @@
 _pkgname="mindustry"
 pkgbase="$_pkgname"
 pkgver=155.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A sandbox tower defense game"
 url="https://github.com/Anuken/Mindustry"
 license=('GPL-3.0-only')
@@ -54,8 +54,8 @@ build() {
 
 _package_common() {
   depends+=(
+    "java-runtime>=$_java_ver"
     'hicolor-icon-theme'
-    'java-runtime'
   )
 
   install -Dm755 /dev/stdin "$pkgdir/usr/share/applications/${pkgname%$_pkgtype}.desktop" << END
