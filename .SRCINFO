@@ -1,6 +1,6 @@
 pkgbase = sos
 	pkgdesc = A unified tool for collecting system logs and other debug information
-	pkgver = 4.10.2
+	pkgver = 4.11.0
 	pkgrel = 1
 	url = https://github.com/sosreport/sos
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = sos
 	depends = python-setuptools
 	depends = python-selinux
 	optdepends = usbutils
-	source = sos-4.10.2.tar.gz::https://github.com/sosreport/sos/archive/4.10.2.tar.gz
-	sha256sums = 405af7494860505fcbb60ff131eb771233294ea4681717641cfc6138d2ea5387
+	source = sos-4.11.0.tar.gz::https://github.com/sosreport/sos/archive/4.11.0.tar.gz
+	sha256sums = f50e55e42dadcd89d502947c92a0e2ae0e787e9d4cc6f96680e9ae0f663c5558
 
 pkgname = sos
