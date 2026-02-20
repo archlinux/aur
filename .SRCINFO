@@ -9,6 +9,10 @@ pkgbase = bereiaverse-bin
 	provides = bereiaverse
 	conflicts = bereiaverse
 	source = bereiaverse-linux-v1.2.0.tar.gz::https://github.com/Instituto-Reformado-Santo-Evangelho/bereia-verse/releases/download/master/bereiaverse-linux-1.2.0.tar.gz
+	source = br.com.irse.verse.desktop
+	source = br.com.irse.verse.appdata.xml
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = bereiaverse-bin
