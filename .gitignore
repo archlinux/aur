@@ -1,0 +1,12 @@
+# Ignore package files
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.pkg.tar.gz
+
+# Ignore build directories
+pkg/
+src/
+zmosh/
+
+# Ignore log files
+*.log

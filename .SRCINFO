@@ -1,6 +1,6 @@
 pkgbase = zmosh-git
 	pkgdesc = Session persistence with auto-reconnect for terminal processes
-	pkgver = 0.4.0.r0.gabcdef
+	pkgver = 0.4.0.r237.g1dbff97
 	pkgrel = 1
 	url = https://github.com/mmonad/zmosh
 	arch = x86_64
