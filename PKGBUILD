@@ -2,7 +2,8 @@
 # Ex-Maintainer: Fabian Bornschein <fabiscafe@archlinux.org>
 # Contributor: Static_Rocket
 
-pkgbase=asusctl
+_pkgbase=asusctl
+pkgbase=${_pkgbase}-x11
 pkgname=(
   asusctl-x11
   rog-control-center-x11
@@ -30,7 +31,7 @@ source=("git+https://gitlab.com/asus-linux/asusctl.git#tag=$pkgver")
 b2sums=('4bf6b850e19551426c2011cfb75e880fad1f7161a6f3200748d4dafe9a26d038676c1ba3df8bc68d4b080146e1f78abca07984860c0034c15ce0b742fe34477c')
 
 prepare() {
-  cd "${pkgbase}"
+  cd "${_pkgbase}"
 
   # Keep rust/cargo build-dependency management inside the build directory
   export CARGO_HOME="${srcdir}/cargo"
@@ -42,7 +43,7 @@ prepare() {
 }
 
 build() {
-  cd "${pkgbase}"
+  cd "${_pkgbase}"
 
   # Keep rust/cargo build-dependency management inside the build directory
   export CARGO_HOME="${srcdir}/cargo"
@@ -74,7 +75,7 @@ package_asusctl-x11() {
     'supergfxctl: hybrid GPU control'
   )
 
-  cd "${pkgbase}"
+  cd "${_pkgbase}"
   export CARGO_HOME="${srcdir}/cargo"
   make DESTDIR="${pkgdir}" \
     install-asusctl \
@@ -103,7 +104,7 @@ package_rog-control-center-x11() {
   provides=(rog-control-center)
   conflicts=(rog-control-center)
 
-  cd "${pkgbase}"
+  cd "${_pkgbase}"
   export CARGO_HOME="${srcdir}/cargo"
   make DESTDIR="${pkgdir}" \
     install-data-rog_gui \
