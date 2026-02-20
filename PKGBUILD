@@ -1,6 +1,6 @@
 # Maintainer: Daniel Garcia <dgarcia@kabr.org>
 pkgname=kittenspaceagency-bin
-pkgver=2026.2.18.3622
+pkgver=2026.2.31.3640
 pkgrel=1
 epoch=
 pkgdesc="Kitten Space Agency - EXPERIMENTAL"
@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://ksa-linux.ahwoo.com"
 license=('custom')
 groups=()
-depends=('glibc' 'gcc-libs')
+depends=('glibc' 'gcc-libs' 'dotnet-runtime-10.0')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -19,7 +19,7 @@ backup=()
 options=(!strip)
 install=
 changelog=
-source=("setup_ksa_v${pkgver}.tar::$url/download?file=setup_ksa_v${pkgver}.tar"
+source=("setup_ksa_v${pkgver}.tar.gz::$url/download?file=setup_ksa_v${pkgver}.tar.gz"
 	"kittenspaceagency.png")
 noextract=()
 sha256sums=('SKIP'
@@ -30,7 +30,7 @@ package() {
     install -dm755 "$pkgdir/opt/kittenspaceagency"
 
     # Extract tarball
-    tar -xf "$srcdir/setup_ksa_v${pkgver}.tar" -C "$pkgdir/opt/kittenspaceagency"
+    tar -xf "$srcdir/setup_ksa_v${pkgver}.tar.gz" -C "$pkgdir/opt/kittenspaceagency"
 
     # Flatten linux-x64
     cp -a "$pkgdir/opt/kittenspaceagency/linux-x64/." "$pkgdir/opt/kittenspaceagency/"
