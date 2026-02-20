@@ -1,6 +1,6 @@
 # Maintainer: backmeupplz
 pkgname=farcaster-tui
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A terminal-based Farcaster client"
 arch=('x86_64')

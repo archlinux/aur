@@ -1,12 +1,12 @@
 pkgbase = farcaster-tui
 	pkgdesc = A terminal-based Farcaster client
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/backmeupplz/farcaster-tui
 	arch = x86_64
 	license = MIT
 	depends = bun-bin
-	source = farcaster-tui-0.2.0.tar.gz::https://github.com/backmeupplz/farcaster-tui/archive/v0.2.0.tar.gz
+	source = farcaster-tui-0.2.1.tar.gz::https://github.com/backmeupplz/farcaster-tui/archive/v0.2.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = farcaster-tui
