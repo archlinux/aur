@@ -1,4 +1,5 @@
 # Maintainer: Wuxxin <wuxxin@gmail.com>
+# Contributor: zer0def <zer0def@github>
 # Contributor: foudil - github.com/foudfou
 # Contributor: Johannes Larsen - github.com/johslarsen
 # Contributor: Johannes Löthberg <johannes@kyriasis.com>
@@ -6,7 +7,6 @@
 # Contributor: Sébastien Luttringer
 # Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
 # Contributor: Christer Edwards <christer.edwards@gmail.com>
-# Contributor: zer0def <zer0def@github>
 
 pkgname=salt
 pkgver=3007.13
@@ -75,12 +75,12 @@ source=(
     foudfou-codecs-open.patch
 )
 sha256sums=('c663a7386cbd47afe94a6d8b0b1af1fccdc35059ccec2b93310e7920705344fb'
-            'abecc3c1be124c4afffaaeb3ba32b60dfee8ba6dc32189edfa2ad154ecb7a215'
-            '65794b45a1eee65b83589d4900f50f500cf8cdc8177e8a1c826ca5452625cf47'
-            '632dfb02dde6bbd00bcebd0b444ad2d1236042229ffdee0cad4f02e62fdcb8f8'
-            'e8ad0830dc48325790b6d13e4128085a82b48396475233a6ab1ad22e5f3df0f9'
-            '9389b30aacd9117a1341ed1d67b951654f92b2a07a14f80eda5e368243947a06'
-            '2eb49808123f80c53db1a96a34c1cad2d66b3363110f8c800273f6a675763363')
+    'abecc3c1be124c4afffaaeb3ba32b60dfee8ba6dc32189edfa2ad154ecb7a215'
+    '65794b45a1eee65b83589d4900f50f500cf8cdc8177e8a1c826ca5452625cf47'
+    '632dfb02dde6bbd00bcebd0b444ad2d1236042229ffdee0cad4f02e62fdcb8f8'
+    'e8ad0830dc48325790b6d13e4128085a82b48396475233a6ab1ad22e5f3df0f9'
+    '9389b30aacd9117a1341ed1d67b951654f92b2a07a14f80eda5e368243947a06'
+    '2eb49808123f80c53db1a96a34c1cad2d66b3363110f8c800273f6a675763363')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
