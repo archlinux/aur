@@ -4,7 +4,7 @@
 # shellcheck disable=SC2034,SC2154
 
 pkgname=whph-bin
-pkgver=0.20.4
+pkgver=0.22.1
 pkgrel=1
 epoch=
 pkgdesc="A comprehensive productivity app designed to help you manage tasks, develop new habits, and optimize your time."
@@ -25,7 +25,7 @@ install="${pkgname%-bin}.install"
 changelog=
 source=("$url/releases/download/v$pkgver/${pkgname%-bin}-v$pkgver-linux.tar.gz")
 noextract=()
-sha256sums=('c70202acad38e3d61c4eecff257905fd1a69610f1b7f9eeaf887d93add9dca16')
+sha256sums=('d9403a42087691fba16151d70694ed63830dd9022d565fd22b3781c75a0b6958')
 validpgpkeys=()
 
 package() {
