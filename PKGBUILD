@@ -2,12 +2,12 @@
 
 _omit_libs=true
 _electron_ver=39
-_dotnet_ver=10.0
+_dotnet_ver=9.0
 
 pkgname='vrcx-bin'
 pkgdesc='Friendship management tool for VRChat (extracted AppImage version)'
 pkgver='2026.02.11'
-pkgrel='1'
+pkgrel='2'
 arch=('x86_64')
 url='https://vrcx.app/'
 license=('MIT')
@@ -137,7 +137,7 @@ build() {
             done
             for path in net*; do
                 case "$path" in
-                    net9.0|net9.0.js) :;;
+                    net"$_dotnet_ver"|net"$_dotnet_ver".js) :;;
                     *) rm -r -- "$path";;
                 esac
             done
