@@ -1,0 +1,22 @@
+pkgbase = tetro-tui-bin
+	pkgdesc = A cross-platform terminal game where tetrominos fall and stack
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/Strophox/tetro-tui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = tetro-tui
+	conflicts = tetro-tui
+	source = README-1.1.0.md::https://raw.githubusercontent.com/Strophox/tetro-tui/v1.1.0/README.md
+	source = LICENSE-1.1.0::https://raw.githubusercontent.com/Strophox/tetro-tui/v1.1.0/LICENSE
+	sha256sums = 3bf79b79cbc83a28a3fff90ff20932c7a9af06cba532f01b2c353d1c719ba824
+	sha256sums = b23d5471464616610a171c68ec3b23a127b52fc17c33a119c1eb997d1a00149b
+	source_x86_64 = tetro-tui-x86_64-1.1.0.zip::https://github.com/Strophox/tetro-tui/releases/download/v1.1.0/x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = 0e70248dcead25094bcc76a44f2b5a553ccd10b6247ae29949aa69ea72e0e248
+	source_aarch64 = tetro-tui-aarch64-1.1.0.zip::https://github.com/Strophox/tetro-tui/releases/download/v1.1.0/aarch64-unknown-linux-gnu.zip
+	sha256sums_aarch64 = 3566681ea0072e4a7ff13b47d4044af73dc2cf2da323c55f0f995e640ee6151a
+
+pkgname = tetro-tui-bin

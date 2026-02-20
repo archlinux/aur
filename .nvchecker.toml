@@ -1,0 +1,5 @@
+[tetro-tui-bin]
+source = "github"
+github = "Strophox/tetro-tui"
+use_latest_release = true
+prefix = "v"
