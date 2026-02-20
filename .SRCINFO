@@ -5,6 +5,7 @@ pkgbase = google-tsunami-security-scanner
 	url = https://github.com/google/tsunami-security-scanner
 	arch = any
 	license = Apache-2.0
+	makedepends = gradle
 	depends = nmap>=7.80
 	depends = ncrack>=0.7
 	depends = java-runtime=21

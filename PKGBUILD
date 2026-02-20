@@ -10,6 +10,7 @@ conflicts=('google-tsunami-security-scanner-git')
 url="https://github.com/google/tsunami-security-scanner"
 license=('Apache-2.0')
 depends=('nmap>=7.80' 'ncrack>=0.7' 'java-runtime=21')
+makedepends=("gradle")
 source=(
 	"${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${url}/raw/v${pkgver}/tsunami.yaml"
@@ -20,7 +21,7 @@ sha256sums=('34b69ced4f3137f801329fa2f522752639e8735c6dbc7590ce918545495b4613'
 
 build() {
     cd ${srcdir}/${_pkgname}-${pkgver}
-    ./gradlew shadowJar
+    gradle shadowJar
 }
 
 package() {
