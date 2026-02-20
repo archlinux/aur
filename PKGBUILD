@@ -3,12 +3,12 @@
 
 pkgname=gir-to-d
 pkgver=0.23.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Create D bindings from GObject introspection files'
 arch=('x86_64')
 url='https://github.com/gtkd-developers/gir-to-d'
 license=('LGPL-3.0-or-later')
-depends=('gcc-libs' 'liblphobos')
+depends=('liblphobos')
 makedepends=('meson' 'ldc')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"

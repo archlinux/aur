@@ -1,13 +1,12 @@
 pkgbase = gir-to-d
 	pkgdesc = Create D bindings from GObject introspection files
 	pkgver = 0.23.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/gtkd-developers/gir-to-d
 	arch = x86_64
 	license = LGPL-3.0-or-later
 	makedepends = meson
 	makedepends = ldc
-	depends = gcc-libs
 	depends = liblphobos
 	source = gir-to-d-0.23.4.tar.gz::https://github.com/gtkd-developers/gir-to-d/archive/refs/tags/0.23.4.tar.gz
 	source = add-main-context-pusher.patch::https://gitlab.alpinelinux.org/alpine/aports/-/raw/c461e10b77635f71803e52b3c681a5de91f9c78f/community/gir-to-d/add-main-context-pusher.patch
