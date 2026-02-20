@@ -1,0 +1,16 @@
+pkgbase = perl-perl-critic-policy-plicease-prohibitarrayassignaref
+	pkgdesc = Don't assign an anonymous arrayref to an array
+	pkgver = 100.00
+	pkgrel = 1
+	url = https://metacpan.org/dist/Perl-Critic-Policy-Plicease-ProhibitArrayAssignAref
+	arch = any
+	license = GPL-3.0-only
+	checkdepends = perl-perl-critic
+	checkdepends = perl-test-simple
+	depends = perl>=5.6.0
+	depends = perl-perl-critic
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/Perl-Critic-Policy-Plicease-ProhibitArrayAssignAref-100.00.tar.gz
+	sha256sums = d8b73230d2b8bf2b80104fc0a758c748b9ff37b08bf81baa73f8d709e20cfebe
+
+pkgname = perl-perl-critic-policy-plicease-prohibitarrayassignaref

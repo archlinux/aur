@@ -1,0 +1,3 @@
+[perl-perl-critic-policy-plicease-prohibitarrayassignaref]
+source = "cpan"
+cpan = "Perl-Critic-Policy-Plicease-ProhibitArrayAssignAref"
