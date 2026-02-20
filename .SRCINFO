@@ -1,6 +1,6 @@
 pkgbase = tlclient
 	pkgdesc = A remote desktop application
-	pkgver = 4.19.0
+	pkgver = 4.20.0
 	pkgrel = 0
 	url = https://www.cendio.com/thinlinc/download
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = tlclient
 	source = tlclient.png
 	sha256sums = caa7417fa2f6a530bef2c6ca05f4c8a219ec85add7884fbb7368c0bf18be2988
 	sha256sums = e0cd5d5b6d752672cc207ad098fe2882268d92c3958adf38d571481e1910c5ef
-	source_x86_64 = https://www.cendio.com/downloads/clients/tl-4.19.0-4005-client-linux-dynamic-x86_64.tar.gz
-	sha256sums_x86_64 = b21961bb49be4cf830de7751ef441d27a67403225d23fc661c9bfe65b155a241
-	source_armv7h = https://www.cendio.com/downloads/clients/tl-4.19.0-4005-client-linux-dynamic-armhf.tar.gz
-	sha256sums_armv7h = 263968914a61b87a0b7454d82659f14c59396a870d124c1c5cd304e1ca27a3f7
+	source_x86_64 = https://www.cendio.com/downloads/clients/tl-4.20.0-4284-client-linux-dynamic-x86_64.tar.gz
+	sha256sums_x86_64 = 8aad4e505c8c670616a84239ef34b08f5443879399f2a36ef249e97ba1db75ea
+	source_armv7h = https://www.cendio.com/downloads/clients/tl-4.20.0-4284-client-linux-dynamic-armhf.tar.gz
+	sha256sums_armv7h = c106e3af111d518cb93aed6e94ea35b248cc625b5cc536000d326bb39cdc5316
 
 pkgname = tlclient
