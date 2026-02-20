@@ -1,6 +1,6 @@
 pkgbase = zoekt-git
 	pkgdesc = Fast trigram based code search
-	pkgver = 90faf6de
+	pkgver = r1881.c747a3b
 	pkgrel = 1
 	url = https://github.com/sourcegraph/zoekt
 	arch = i686
@@ -12,6 +12,12 @@ pkgbase = zoekt-git
 	makedepends = go
 	makedepends = git
 	provides = zoekt
+	options = strip
+	options = docs
+	options = !libtool
+	options = !staticlibs
+	options = !lto
+	options = !debug
 	source = zoekt::git+https://github.com/sourcegraph/zoekt
 	sha256sums = SKIP
 

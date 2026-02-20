@@ -2,7 +2,7 @@
 _pkgname=zoekt
 pkgname=zoekt-git
 pkgbase=zoekt-git
-pkgver=90faf6de
+pkgver=r1881.c747a3b
 pkgrel=1
 pkgdesc='Fast trigram based code search'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -12,11 +12,11 @@ makedepends=('go' 'git')
 source=("$_pkgname::git+$url")
 sha256sums=('SKIP')
 provides=(zoekt)
-OPTIONS=(strip docs !libtool !staticlibs !lto)
+options=(strip docs !libtool !staticlibs !lto !debug)
 
 pkgver() {
   cd "$_pkgname"
-  git describe --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
@@ -36,7 +36,7 @@ build() {
 
 check() {
   cd "$_pkgname"
-  # go test ./...
+  go test -v ./...
 }
 
 package() {
