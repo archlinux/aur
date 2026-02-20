@@ -46,12 +46,12 @@ build() {
 	# This occurs when a user Python environment (like Conda) conflicts with system libraries.
 	# We force the use of system python for the build process.
 	export PYTHON="/usr/bin/python3"
-	export PYTHONPATH="/usr/lib/python3.14/site-packages"
+	export PYTHONPATH="$(/usr/bin/python3 -c 'import site; print(site.getsitepackages()[0])')"
 	export PATH="/usr/bin:$PATH"
 
 	# Patch meson.build to remove --offline flag for default profile
 	# (upstream uses offline for Flatpak builds with vendored deps)
-	sed -i "s/cargo_options += \[ '--release', '--offline' \]/cargo_options += [ '--release' ]/" meson.build
+	sed -i "s/'--release', '--offline'/'--release'/" meson.build
 
 	# Strip source paths from binary to avoid $srcdir references in panic messages
 	export RUSTFLAGS="--remap-path-prefix=$srcdir=/build"
