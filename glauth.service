@@ -20,3 +20,6 @@ ProtectKernelTunables=true
 ProtectKernelModules=true
 ProtectKernelLogs=true
 ProtectControlGroups=true
+
+[Install]
+WantedBy=default.target

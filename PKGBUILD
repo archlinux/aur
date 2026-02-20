@@ -1,7 +1,7 @@
 # Maintainer: Alex S <alex@lagomor.ph>
 
 pkgname=glauth-bin
-pkgver=2.2.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="LDAP authentication server for developers"
 arch=('x86_64')
@@ -28,7 +28,7 @@ package() {
     install -Dm644 "${srcdir}/glauth.service" "${pkgdir}/usr/lib/systemd/system/glauth.service"
     install -Dm644 "${srcdir}/glauth-user.conf" "${pkgdir}/usr/lib/sysusers.d/glauth.conf"
 }
-sha256sums=('546aa37ee96def22e24a93f77747bd16dccaa39dd09394e534beef89a5a7233c'
-            'c2a586d8b14725412885dde6aa306e8c76ae6dde1b65b36227249eac2d89239b'
-            'bedea8dd92cdd1713647ae962777151726e5999095a20aebd4ea4e2b25eeb2f8'
+sha256sums=('bb74391703486d9bea166b0add57993731526f8913f50483aa6a8da09c4108b4'
+            '0bb955b5274b013c964b1e53270e6443acf37431db0c6c81f268e1cf04ba08d8'
+            '8e567067a8f244371d6d626c2a771afed5dcc02252efa1a464b2adc6597e2726'
             '86f8117175cf268f049a2a7a16f38c00c241231f5c0db9aca994997bdfe2023d')
