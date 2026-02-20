@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=scope-tui
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="A simple oscilloscope/vectorscope/spectroscope for your terminal"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gcc-libs' 'libpulse' 'alsa-lib')
 makedepends=('cargo')
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('d1e069521081c021f15a6ee1a4e285b4c61cd37213a92f2a772243e223dd7303b8ff2f5207d56a4a9d4d29185cf268fd1cdd7a6ec3a98bd66404d83400fadb2c')
+sha512sums=('5f87d1e2addf3a6841d7f0158f88c4c73295c2f8944db4853939953b71ee5e5aac989aaf49e87b06e5b6f07e93064578f221c0c575899847910ee4c00a232291')
 
 prepare() {
   cd "$pkgname-$pkgver"
