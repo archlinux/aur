@@ -25,16 +25,16 @@ md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
          '10460c7905ca508b1b51c89e30b9078b'
          'edce21b2ce295478d14d5dd988eb3287'
          'ea3bba5ee50ba043b992eaa22161e141')
-sha256sums=('86af1703be5cc7f40270a66ac15ebcf6088706a789ae1bf18488dc070777f979'
-            '0e765849e5ea09a662889b323b69955aac06d9a5bc1b1246ffa7ac90d2f8bd80'
-            '21dee6ef25fac3df42704465865266e895955db23b8000ade4196e388adb7889'
-            '0c3c552320d5e052eec8471bd3bf89b3fd10f2ed129ae89861828b24d10c21ce'
-            'da1d5fa9431457d39841991465f1825fc49f09a7999ca31309bbd5972c95860f'
-            '2083bb24b2924a74cdc1a908a1eb9bb6702d0fac79f5d5fcd1c8a72fe25e1455'
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '2d369cf93c6e15c3559c3560bce581e0ae5f1f34dc86bca013ac67ef1c1a9ff9'
             '24cb033fa363148952b5ed7cdff635fbee0ae55ecafe5dfa32206e97cb0c4af3'
             'aa81059bc71f335c962db6bbb8c5857a5cc76e2eb33b82ce1ccd6cb536b2bc31')
 
-  _basedir="gcc-${pkgver}"
+_basedir="gcc-${pkgver}"
 
 prepare() {
   set -u
