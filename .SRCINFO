@@ -1,14 +1,13 @@
 pkgbase = nodejs-ramadan-cli
 	pkgdesc = CLI to check Sehar and Iftar times in Ramadan
 	pkgver = 6.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ahmadawais/ramadan-cli
 	arch = any
 	license = MIT
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
-	noextract = ramadan-cli-6.1.0.tgz
 	source = https://registry.npmjs.org/ramadan-cli/-/ramadan-cli-6.1.0.tgz
 	sha256sums = 08902ca02663d65151df86f910f5e83d59cb2b8a16d9579c1d5cf7dce8ae9051
 

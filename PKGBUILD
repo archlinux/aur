@@ -2,7 +2,7 @@
 pkgname=nodejs-ramadan-cli
 _pkgname=${pkgname#nodejs-}
 pkgver=6.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI to check Sehar and Iftar times in Ramadan"
 arch=('any')
 url="https://github.com/ahmadawais/ramadan-cli"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz")
-noextract=("${_pkgname}-${pkgver}.tgz")
+#noextract=("${_pkgname}-${pkgver}.tgz")
 sha256sums=('08902ca02663d65151df86f910f5e83d59cb2b8a16d9579c1d5cf7dce8ae9051')
 
 package() {
@@ -26,4 +26,5 @@ package() {
 	mv "$tmppackage" "$pkgjson"
 	chmod 644 "$pkgjson"
 
+	install -Dm644 "$srcdir/package/license" "$pkgdir/usr/share/licenses/$pkgname/license"
 }
