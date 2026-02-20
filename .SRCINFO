@@ -1,6 +1,6 @@
 pkgbase = mindustry-git
 	pkgdesc = A sandbox tower defense game
-	pkgver = 152.r2.gf8d86ac
+	pkgver = 155.4.r20.g6850704
 	pkgrel = 1
 	url = https://github.com/Anuken/Mindustry
 	arch = any
@@ -16,15 +16,15 @@ pkgbase = mindustry-git
 
 pkgname = mindustry-git
 	depends = alsa-lib
+	depends = java-runtime>=17
 	depends = hicolor-icon-theme
-	depends = java-runtime
 	provides = mindustry
 	conflicts = mindustry
 
 pkgname = mindustry-server-git
 	pkgdesc = A sandbox tower defense game - server
 	depends = alsa-lib
+	depends = java-runtime>=17
 	depends = hicolor-icon-theme
-	depends = java-runtime
 	provides = mindustry-server
 	conflicts = mindustry-server

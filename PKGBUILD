@@ -5,7 +5,7 @@
 
 _pkgname="mindustry"
 pkgbase="$_pkgname-git"
-pkgver=152.r2.gf8d86ac
+pkgver=155.4.r20.g6850704
 pkgrel=1
 pkgdesc="A sandbox tower defense game"
 url="https://github.com/Anuken/Mindustry"
@@ -52,14 +52,13 @@ build() {
   JAVA_HOME="/usr/lib/jvm/java-${_java_ver}-openjdk" \
     ./gradlew --warning-mode=all --no-daemon dist -Pbuildversion="${_build}" desktop:dist server:dist
 
-  cd core/assets/icons
-  icns2png --extract icon.icns
+  icns2png --extract core/assets/icons/icon.icns
 }
 
 _package_common() {
   depends+=(
+    "java-runtime>=$_java_ver"
     'hicolor-icon-theme'
-    'java-runtime'
   )
 
   provides=("${pkgname%$_pkgtype}")
@@ -84,7 +83,7 @@ END
   cd "$_pkgsrc"
   local icon_size
   for icon_size in 256 512 1024; do
-    install -Dm644 "core/assets/icons/icon_${icon_size}x${icon_size}x32.png" \
+    install -Dm644 "icon_${icon_size}x${icon_size}x32.png" \
       "$pkgdir/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps/${pkgname%$_pkgtype}.png"
   done
 }
