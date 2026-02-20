@@ -4,7 +4,7 @@
 pkgname=piliplus-git
 _srcname=PiliPlus
 _pkgname=piliplus
-pkgver=1.1.4.10.r0.g4cf1c25
+pkgver=1.1.6.r54.gd7d9655
 pkgrel=1
 pkgdesc="A third-party Bilibili client developed in Flutter"
 url="https://github.com/bggRGjQaUbCoE/${_srcname}"
@@ -56,5 +56,5 @@ package() {
 
 	cd assets
 	install -Dm644 images/logo/logo.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
-	install -Dm644 "linux/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
+	install -Dm644 "linux/com.example.${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
 }
