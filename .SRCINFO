@@ -15,7 +15,8 @@ pkgbase = mozc-with-jp-dict
 	makedepends = libibus
 	makedepends = rustup
 	makedepends = unzip
-	makedepends = gperftools
+	makedepends = xz
+	makedepends = libunwind
 	options = !lto
 	source = git+https://github.com/fcitx/mozc.git#commit=23e60227046494a962832989736bd5b4c6a580b7
 	source = bcr::git+https://github.com/bazelbuild/bazel-central-registry.git#commit=d79dfab702994f66c567b6b7384f14e3cd51c2f7

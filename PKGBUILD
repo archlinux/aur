@@ -34,7 +34,7 @@ pkgrel=2
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary')
-makedepends=('qt6-base' 'fcitx5' 'fcitx5-qt' 'bazelisk' 'git' 'python' 'mold' 'pkg-config' 'libibus' 'rustup' 'unzip' 'gperftools')
+makedepends=('qt6-base' 'fcitx5' 'fcitx5-qt' 'bazelisk' 'git' 'python' 'mold' 'pkg-config' 'libibus' 'rustup' 'unzip' 'xz' 'libunwind')
 options=(!lto)
 source=("git+$url.git#commit=${_mozc_commit}"
         "bcr::git+https://github.com/bazelbuild/bazel-central-registry.git#commit=${_bcr_commit}"
@@ -140,7 +140,7 @@ prepare() {
   expr "$CC" : ".*gcc" >/dev/null && : "${CFLAGS_:=-std=c11 -Bmold -Wno-implicit-function-declaration -Wno-error=implicit-function-declaration}"
   CC="$CC" CFLAGS="$CFLAGS $CFLAGS_" RUSTFLAGS="-Clink-arg=-Bmold" cargo build --release --target $TARGET -F use-tcmalloc-static || \
     CC="$CC" CFLAGS="$CFLAGS $CFLAGS_" RUSTFLAGS="-Clink-arg=-Bmold" cargo build --release --target $TARGET -F use-snmalloc || \
-    CC="$CC" CFLAGS="$CFLAGS $CFLAGS_" RUSTFLAGS="-Clink-arg=-Bmold" cargo build --release --target $TARGET -F use-mimalloc || \
+    CC="$CC" CFLAGS="$CFLAGS $CFLAGS_" RUSTFLAGS="-Clink-arg=-Bmold" cargo build --release --target $TARGET -F use-auto-allocator || \
     CC="$CC" CFLAGS="$CFLAGS $CFLAGS_" RUSTFLAGS="-Clink-arg=-Bmold" cargo build --release --target $TARGET
   msg '2. Convert SudachiDict to Mozc System Dictionary format. It may take some time...'
   #cat "${srcdir}"/mozc/src/data/dictionary_oss/dictionary*.txt > all-dict.txt
