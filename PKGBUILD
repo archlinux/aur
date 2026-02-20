@@ -12,14 +12,19 @@ depends=('java-runtime-openjdk>=21')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
-source=("${_pkgname}-linux-v${pkgver}.tar.gz::https://github.com/Instituto-Reformado-Santo-Evangelho/bereia-verse/releases/download/master/bereiaverse-linux-${pkgver}.tar.gz")
-sha256sums=('SKIP')
+source=("${_pkgname}-linux-v${pkgver}.tar.gz::https://github.com/Instituto-Reformado-Santo-Evangelho/bereia-verse/releases/download/master/bereiaverse-linux-${pkgver}.tar.gz"
+        "br.com.irse.verse.desktop"
+        "br.com.irse.verse.appdata.xml")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
 
 package() {
     # Cria os diretórios de destino
     install -d "${pkgdir}/opt/${_pkgname}"
     install -d "${pkgdir}/usr/bin"
     install -d "${pkgdir}/usr/share/applications"
+    install -d "${pkgdir}/usr/share/metainfo"
     install -d "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
 
     # Copia os arquivos da aplicação (Eles estão dentro da pasta bereiaverse no srcdir)
@@ -35,6 +40,7 @@ package() {
     # Instala o ícone (Está dentro de lib/ na estrutura do Compose)
     install -Dm644 "${srcdir}/bereiaverse/lib/bereiaverse.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/br.com.irse.verse.png"
     
-    # Instala o atalho do menu (Usa o arquivo da raiz do repositório)
-    install -Dm644 "${srcdir}/../../br.com.irse.verse.desktop" "${pkgdir}/usr/share/applications/br.com.irse.verse.desktop"
+    # Instala o atalho do menu e metadados (Agora eles são baixados como fonte pelo makepkg)
+    install -Dm644 "${srcdir}/br.com.irse.verse.desktop" "${pkgdir}/usr/share/applications/br.com.irse.verse.desktop"
+    install -Dm644 "${srcdir}/br.com.irse.verse.appdata.xml" "${pkgdir}/usr/share/metainfo/br.com.irse.verse.appdata.xml"
 }

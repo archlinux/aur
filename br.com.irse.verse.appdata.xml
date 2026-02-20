@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>br.com.irse.verse.desktop</id>
+  
+  <name>Bereia Versículos</name>
+  <summary>Leitor bíblico automático com anotações (ACF)</summary>
+  
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>CC-BY-NC-ND-4.0</project_license>
+  <developer_name>Instituto Reformado Santo Evangelho (IRSE)</developer_name>
+  
+  <description>
+    <p>
+      O Bereia Versículos é um projeto de código aberto do Instituto Reformado Santo Evangelho (IRSE) que visa facilitar o acesso e o estudo das Escrituras Sagradas.
+    </p>
+    <p>
+      Ele transforma automaticamente referências de versículos em texto legível, onde quer que você esteja: no seu desktop, navegando na web ou em seu site WordPress.
+    </p>
+    <ul>
+      <li>Leitura completa da tradução Almeida Corrigida Fiel (ACF).</li>
+      <li>Detecção automática de referências bíblicas.</li>
+      <li>Sistema de anotações pessoais.</li>
+      <li>Histórico de leitura.</li>
+      <li>Sincronização opcional com Google Drive.</li>
+    </ul>
+  </description>
+  
+  <launchable type="desktop-id">br.com.irse.verse.desktop</launchable>
+  
+  <releases>
+    <release version="1.3.0" date="2026-02-20"/>
+  </releases>
+
+  <content_rating type="oars-1.1" />
+
+</component>
