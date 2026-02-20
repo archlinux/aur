@@ -1,6 +1,6 @@
 # Maintainer: Tim Kicker <tim@kicker.dev>
 pkgname=podliner-bin
-pkgver=1.1.7
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Podliner: TUI podcast player (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ source_x86_64=("podliner-${pkgver}-linux-x64.tar.gz::https://github.com/timkicke
 source_aarch64=("podliner-${pkgver}-linux-arm64.tar.gz::https://github.com/timkicker/podliner/releases/download/v${pkgver}/podliner-linux-arm64.tar.gz")
 
 # Checksums v1.0.20
-sha256sums_x86_64=("39d5153459f6f61a88262e44bec07e8af42fd5f469e35eff015ad70e1f0862fe")
-sha256sums_aarch64=("572e569c977d244e6a0e4d711e67afe52daf26b26f673835a75baa4f1501c3c3")
+sha256sums_x86_64=("58262bb3058474848ac91312f296014b8b3e1c871f7dd69566728fa254720add")
+sha256sums_aarch64=("4d7742f80e43a33ed3fe5232fc0703f14c59509065f85ece95c699fc14fd8457")
 
 package() {
   install -d "${pkgdir}/usr/bin"
