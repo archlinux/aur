@@ -12,7 +12,7 @@ _bldtype=Release
 _mozc_commit=23e60227046494a962832989736bd5b4c6a580b7
 _bcr_commit=d79dfab702994f66c567b6b7384f14e3cd51c2f7
 _dict_to_mozc_commit=f6e4045f0f4eebd156c4397efef525aecf4657a6
-_dict_to_mozc=v0.6.26
+_dict_to_mozc=v0.6.27
 
 _branch=fcitx
 # Sudachi Dictionary
@@ -69,7 +69,7 @@ sha512sums=('48400ddb70b7ca971316ab28118daaa6985a7679028f41988c5188a72db1c20e390
             '91b878735e767ddf6f1fe3de61486c1e78936a0f683855e7c34a21c711f405899d3de369d2ff0a1910d65b1afc8c225d8d8b9398cf98d760f3afcfe42644fca2'
             '0efcb80ec3a1f04f0f2e53ccd629eace4f6b9a2cbe5dae4c1b82140f11e174f8d023b8e35855def7e19c35da838c5b4fcfaa54748ee3534886caf1d35f55cccb'
             '504066a457f77b510f492626c919b6fd7b61f77948bdddef0f7e43ae09bb4bf03cea7000fba91ae0123a94d3b39cac6dfac2010126849afe0a183727fe7b0fc1'
-            'ff11331f6fef1013b575b0b4adc4fc03b3a719bec4062f2121c7d1882c07d1f7509a2f4fb6853c0e99b4a863b82431b9154f1556dcbf10d20f2c258c83f12c58'
+            'a8205877f8161ee9e59f2c63e68175f8483333944a6e1244e3139c74a322b1048c6bcb9bdd9d25695922eb14994ec65a16d94de7c971c170cac91dc3ab106872'
             '9a7850416dc3f45df659e50a36b1b333d7e0458a3519a4138fd165987cfe250d44c7708da2b8e4bc27f2d5e52f9a5131076b283e0ad769e3b7b8514c3fe7b36e'
             '2d5f835ca604a90c12ee3d1790ce953be95f8e615d3ebfb1416d54725b58563cea23017a384696d331366aa2f43eeb21dc3309d0c5e23dee3379796a1b7d6c5b'
             '71a3da3569df8de816cea968e82a8f01fb2f48d96c83ac82daad853d1cb70942fd4695130c2d41f1d06e5c83bdf618e351e5a20f17d8e2941614901bb34e3300'
@@ -139,8 +139,8 @@ prepare() {
   # warning of mimalloc-rust-sys@1.7.9-source
   expr "$CC" : ".*gcc" >/dev/null && : "${CFLAGS_:=-std=c11 -Bmold -Wno-implicit-function-declaration -Wno-error=implicit-function-declaration}"
   CC="$CC" CFLAGS="$CFLAGS $CFLAGS_" RUSTFLAGS="-Clink-arg=-Bmold" cargo build --release --target $TARGET -F use-tcmalloc-static || \
-    CC="$CC" CFLAGS="$CFLAGS $CFLAGS_" RUSTFLAGS="-Clink-arg=-Bmold" cargo build --release --target $TARGET -F use-snmalloc || \
     CC="$CC" CFLAGS="$CFLAGS $CFLAGS_" RUSTFLAGS="-Clink-arg=-Bmold" cargo build --release --target $TARGET -F use-auto-allocator || \
+    CC="$CC" CFLAGS="$CFLAGS $CFLAGS_" RUSTFLAGS="-Clink-arg=-Bmold" cargo build --release --target $TARGET -F use-mimalloc || \
     CC="$CC" CFLAGS="$CFLAGS $CFLAGS_" RUSTFLAGS="-Clink-arg=-Bmold" cargo build --release --target $TARGET
   msg '2. Convert SudachiDict to Mozc System Dictionary format. It may take some time...'
   #cat "${srcdir}"/mozc/src/data/dictionary_oss/dictionary*.txt > all-dict.txt
