@@ -46,7 +46,7 @@ makedepends=('cmake'
 _tag='v1.30'
 source=("${pkgname}-${pkgver}::git+https://github.com/LordOfDragons/dragengine.git#tag=$_tag"
 	'custom.py')
-sha256sums=('41afe0ab47f986fb83b26313f28d7c8a8e0a5ab5a1e27380a0ec6db53c417b54'
+sha256sums=('56befe497383579164248035ebe0e103c3c0daad5eb43bf80d3d8c70d2bcac3e'
             '56514317d7df3031b7fba92904d9e50904ec708b227b6e2041ea398403577d94')
 # Roland Plüss (roland@dragondreams.ch)
 validpgpkeys=("E0ECD22F5F70777588450034446C9C667CFC1DF3")
