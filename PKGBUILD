@@ -1,6 +1,6 @@
 # Maintainer: ii-shimul <https://github.com/ii-shimul>
 pkgname=subdowner
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="GTK4/Libadwaita subtitle search & download tool"
 arch=('any')
@@ -12,10 +12,8 @@ depends=(
     'gtk4'
     'libadwaita'
     'python-requests'
-)
-optdepends=(
-    'python-subliminal: secondary subtitle search backend'
-    'python-chardet: automatic subtitle encoding detection'
+    'subliminal'
+    'python-chardet'
 )
 makedepends=(
     'python-build'
@@ -24,7 +22,7 @@ makedepends=(
     'python-wheel'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('acad1079eddaf028fba9239c24ac6258a600804913c231daea51c2dcdc092ea1')
+sha256sums=('821fdc95b02c1f926317b22b35519cef5020a538ec779337bae080e2a63c069c')
 
 build() {
     cd "$pkgname-$pkgver"
