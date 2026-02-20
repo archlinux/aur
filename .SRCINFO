@@ -1,0 +1,16 @@
+pkgbase = guiless-bing-search
+	pkgdesc = A tool for accessing Bing search results in GUI-less environments
+	pkgver = r3.20260220.804252c
+	pkgrel = 1
+	url = https://github.com/wszqkzqk/GUILessBingSearch
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = python
+	depends = pyside6
+	depends = qt6-webengine
+	backup = etc/guiless-bing-search.conf
+	source = guiless-bing-search::git+https://github.com/wszqkzqk/GUILessBingSearch.git
+	sha256sums = SKIP
+
+pkgname = guiless-bing-search
