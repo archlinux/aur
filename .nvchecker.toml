@@ -1,7 +1,6 @@
-[chromium-browser]
-source = "apt"
-mirror = "https://github.com/RobRich999/Chromium_Clang"
-pkg = "chromium-browser-unstable"
-suite = "unstable"
-repo = "main"
-strip_release = true
+[chromium-clang-avx2-bin]
+source = "github"
+github = "RobRich999/Chromium_Clang"
+use_latest_release = false
+use_max_tag = true
+prefix = "v"

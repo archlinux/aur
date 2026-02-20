@@ -23,7 +23,6 @@ depends=('alsa-lib' 'at-spi2-core' 'cairo' 'expat' 'glib2' 'gtk3' 'libdrm'
 provides=("chromium" "$_upstream_name")
 conflicts=("chromium" "$_upstream_name")
 
-# source=("https://github.com/RobRich999/Chromium_Clang/releases/download/v${pkgver}-${_commit}-linux64-rpm-avx2/${_upstream_name}-${pkgver}-1.x86_64.rpm")
 source=("https://github.com/RobRich999/Chromium_Clang/releases/download/v${pkgver}-${_commit}-linux64-rpm-avx2/${_upstream_name}-${pkgver}-1.${CARCH}.rpm")
 sha256sums=('95e05115de12ecc0a0bebb717859fe81ec0c81e087e6d447b37e96651f7b8a96')
 
