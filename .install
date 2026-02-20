@@ -14,7 +14,9 @@ post_upgrade() {
     #    systemctl restart clash-verge-service.service
     #fi
 
-    note 'After upgrading Clash Verge Rev, it is recommended to restart Clash Verge Rev, and run systemctl restart clash-verge-service.'
+    note 'After upgrading Clash Verge Rev, it is recommended to restart Clash Verge Rev, and run "systemctl restart clash-verge-service".'
+    note 'If there are some issues related to TUN mode after upgrading, please try to run "sudo clash-verge-service-uninstall",'
+    note '  then reinstall TUN service in app.'
 }
 
 pre_remove() {
