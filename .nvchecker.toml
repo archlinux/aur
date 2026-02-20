@@ -1,0 +1,3 @@
+[python-line-profiler]
+source = "pypi"
+pypi = "line-profiler"
