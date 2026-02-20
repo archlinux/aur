@@ -11,7 +11,7 @@ pkgname=(
   ${pkgbase}
   ${_langs[@]/#/${pkgbase}-}
 )
-pkgver=1.3.0
+pkgver=1.3.3
 pkgrel=1
 pkgdesc='Protoc plugin to generate polyglot message validators'
 arch=(
@@ -27,7 +27,7 @@ makedepends=(
 )
 options=(!debug)
 source=(${pkgbase}::git+${url}.git#tag=v${pkgver})
-sha256sums=('daa4c674c9c9c792a51f65646ddd410c414cb5d42f323cd1286fcdf2a812ae7f')
+sha256sums=('b2048d68a8cfac99bc7a7e54632632564eb6c649073663101aaffde33a87cbe5')
 
 
 prepare() {
@@ -104,10 +104,10 @@ package_${pkgbase}-${_lang}() {
   pkgdesc+=' - ${_lang} target'
   depends+=('${pkgbase}=${pkgver}')
 
-  cd '${pkgbase}'
+  cd \${pkgbase}
 
   install -Dm755 -t \"\${pkgdir}\"/usr/bin \
-    out/'${pkgbase}-${_lang}'
+    out/\${pkgbase}-\${_lang}
 }"
 done
 
