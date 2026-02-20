@@ -1,5 +1,5 @@
 pkgname=kitsune-livewallpaper
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Kitsune live wallpaper engine runtime for Wayland/Hyprland"
 arch=('x86_64' 'aarch64')
