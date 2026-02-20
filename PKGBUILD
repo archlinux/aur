@@ -1,7 +1,7 @@
 # Maintainer: Tony, btw <tony@tonybtw.com>
 pkgname='oxwm-git'
 _pkgname='oxwm'
-pkgver=0.11.0.9.gb84bff4
+pkgver=0.11.2.21.g0ac25c0
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/tonybanters/oxwm"
@@ -26,7 +26,7 @@ build() {
 
 check() {
     cd $_pkgname
-    zig build test
+    zig build test -Doptimize=ReleaseSmall
 }
 
 package() {
