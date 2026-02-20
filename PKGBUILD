@@ -1,6 +1,6 @@
 # Maintainer: tmuxpack <tmuxpack@users.noreply.github.com>
 pkgname=tpack-bin
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc="Tmux Plugin Manager"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ provides=('tpack')
 conflicts=('tpack')
 source_x86_64=("https://github.com/tmuxpack/tpack/releases/download/v${pkgver}/tpack_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("https://github.com/tmuxpack/tpack/releases/download/v${pkgver}/tpack_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('e39fa38fce381661d8b10a59131e038d0aabff29e2dd86bdba92b1ef5996de94')
-sha256sums_aarch64=('86db2a8a0729da36d4be4b201b084285a8fb94b6136104fa36456ba09344553a')
+sha256sums_x86_64=('92e153275d649a2b4b330020ce442011a2295f98f3a6038de71b916a76e34ac9')
+sha256sums_aarch64=('445dc1293773d8126c4aacb01b915b6a7c1f29bba5149dfe75931a89c25af45b')
 
 package() {
     install -Dm755 tpack "${pkgdir}/usr/bin/tpack"
