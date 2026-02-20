@@ -1,12 +1,13 @@
 pkgbase = fcitx5-osk-git
 	pkgdesc = An onscreen keyboard working with fcitx5
-	pkgver = 0.1.0.r1.gbf29d04
+	pkgver = 0.1.0.r38.g39580a6
 	pkgrel = 1
 	url = https://github.com/fortime/fcitx5-osk
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = git
+	makedepends = cmake
 	depends = fcitx5
 	depends = ttf-font-nerd
 	source = git+https://github.com/fortime/fcitx5-osk
