@@ -38,6 +38,8 @@ for i, line in enumerate(lines):
         line = f"pkgver={pkgver}\n"
     elif i and lines[i-1].strip() == "sha256sums=(":
         line = f"  '{sha256}'\n"
+    elif line.startswith("pkgrel=") and line.strip().split("=", 1)[1] != "1":
+        print("Warning! pkgrel is not 1")
     elif i+1 == len(lines) and line.strip() == "":
         continue
     lines2.append(line)
