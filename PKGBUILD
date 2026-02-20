@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=askalono
 pkgver=0.5.0
-pkgrel=2
-_lld_ver=3.27.0
+pkgrel=3
+_lld_ver=3.28.0
 pkgdesc="A tool & library to detect open source licenses from texts"
 arch=('x86_64')
 url="https://github.com/jpeddicord/askalono"
@@ -17,7 +17,7 @@ source=("git+https://github.com/jpeddicord/askalono.git#tag=$pkgver"
         "license-list-data-${_lld_ver}.tar.gz::https://github.com/spdx/license-list-data/archive/refs/tags/v${_lld_ver}.tar.gz")
 noextract=("license-list-data-${_lld_ver}.tar.gz")
 sha256sums=('4abdd5ee637f84b8a5b59afcfaba2e52c0814cdafe500dc875f1792cf46ed6db'
-            '7a1eade71449d2ff3ae42957452f6e3a660a3704b477d0e72afc2b43be94c907')
+            '52375a91b28b5f6f3142c4b3a555086482f1e09be68c4fa7fdbf377d37afa340')
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
