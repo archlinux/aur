@@ -1,32 +1,55 @@
-# Maintainer: Sergey Konoplev <gray.ru@gmail.com>
-# Maintainer: Maxim Polishchuck <mpolishchuck@gmail.com>
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: Sergey Konoplev <gray.ru@gmail.com>
+# Contributor: Maxim Polishchuck <mpolishchuck@gmail.com>
 
-_perlmod='App-FatPacker'
-pkgname=perl-app-fatpacker
-pkgver=0.010004
+_dist='App-FatPacker'
+pkgname='perl-app-fatpacker'
+pkgver=0.010008
 pkgrel=1
-pkgdesc="App::FatPacker - pack your dependencies onto your script file."
-url="http://search.cpan.org/perldoc?App::FatPacker"
-arch=('x86_64' 'i686')
-license=('GPLv2')
-depends=('perl')
-optdepends=()
-makedepends=()
-conflicts=()
-replaces=()
-backup=()
-source=("http://search.cpan.org/CPAN/authors/id/H/HA/HAARG/${_perlmod}-${pkgver}.tar.gz")
-md5sums=('892debf2862f09729fba46a5285958d8')
+pkgdesc='pack your dependencies onto your script file'
+arch=('any')
+url="https://metacpan.org/dist/$_dist"
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl-file-path'
+    'perl-getopt-long'
+    'perl-pathtools'
+    'perl>=5.8.0'
+)
+checkdepends=(
+    'perl-file-temp'
+    'perl-pathtools'
+    'perl-test-simple'
+)
+options=('!emptydirs')
+source=("http://cpan.metacpan.org/authors/id/M/MS/MSTROUT/$_dist-$pkgver.tar.gz")
+sha256sums=('129db36dc845661a582286810cfe2d5216eb2ce082bad40ae1fcdce0f45deccf')
 
-build() {
-  cd "${srcdir}/${_perlmod}-${pkgver}"
-  perl Makefile.PL
-  make
+build()
+{
+    cd $_dist-$pkgver
+
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
+    make
 }
 
-package() {
-  cd "${srcdir}/${_perlmod}-${pkgver}"
-  make DESTDIR="${pkgdir}" install
+check()
+{
+    cd $_dist-$pkgver
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make test
 }
 
-# vim:set ts=2 sw=2 et:
+package()
+{
+    cd $_dist-$pkgver
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+}

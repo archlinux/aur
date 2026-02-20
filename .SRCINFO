@@ -1,14 +1,19 @@
 pkgbase = perl-app-fatpacker
-	pkgdesc = App::FatPacker - pack your dependencies onto your script file.
-	pkgver = 0.010004
+	pkgdesc = pack your dependencies onto your script file
+	pkgver = 0.010008
 	pkgrel = 1
-	url = http://search.cpan.org/perldoc?App::FatPacker
-	arch = x86_64
-	arch = i686
-	license = GPLv2
-	depends = perl
-	source = http://search.cpan.org/CPAN/authors/id/H/HA/HAARG/App-FatPacker-0.010004.tar.gz
-	md5sums = 892debf2862f09729fba46a5285958d8
+	url = https://metacpan.org/dist/App-FatPacker
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-file-temp
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-simple
+	depends = perl-file-path
+	depends = perl-getopt-long
+	depends = perl-pathtools
+	depends = perl>=5.8.0
+	options = !emptydirs
+	source = http://cpan.metacpan.org/authors/id/M/MS/MSTROUT/App-FatPacker-0.010008.tar.gz
+	sha256sums = 129db36dc845661a582286810cfe2d5216eb2ce082bad40ae1fcdce0f45deccf
 
 pkgname = perl-app-fatpacker
-
