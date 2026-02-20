@@ -15,7 +15,7 @@ source=(
   "LICENSE::https://raw.githubusercontent.com/1jehuang/jcode/v${pkgver}/LICENSE"
 )
 sha256sums=(
-  '58b60fe476f91560a5f65753141609fba176ef082feb46a5605b96bf5f81bf4d'
+  '1c60f1b99137464e5ebbf422f360ba23fec7df0a84dfb22a1dd6e2f7666d3467'
   '720443eee2efeda8f9f93a7a6a6f62763c17171106f60df58a35b8ea638fdf60'
 )
 
