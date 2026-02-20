@@ -1,0 +1,12 @@
+post_install() {
+  echo "---------"
+  echo "To apply the theme, please run:"
+  echo "    sudo plymouth-set-default-theme prts"
+  echo ""
+  echo "For those who boots too fast to see the splash,"
+  echo "you can try:"
+  echo "    sudo plymouthd; sudo plymouth show-splash; sleep 5; sudo plymouth --quit"
+  echo ""
+  echo "Remember to regenerate your initramfs"
+  echo "---------"
+}
