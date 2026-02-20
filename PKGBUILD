@@ -34,7 +34,7 @@ optdepends=(
 )
 
 # Base URL
-_baseurl="https://get.geo.opera.com/pub/${pkgname}/${pkgver}/linux"
+_baseurl="https://get.opera.com/pub/${pkgname}/${pkgver}/linux"
 _debfile="${pkgname}_${pkgver}_amd64.deb"
 
 source=(
