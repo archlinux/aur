@@ -1,6 +1,6 @@
 pkgbase = chalkak
 	pkgdesc = Hyprland screenshot preview and editor utility
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/bityoungjae/chalkak
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = chalkak
 	depends = wl-clipboard
 	optdepends = chalkak-ocr-models: OCR text recognition support
 	options = !lto
-	source = chalkak-0.5.1.tar.gz::https://github.com/bityoungjae/chalkak/archive/refs/tags/v0.5.1.tar.gz
-	sha256sums = 8db34f43e8f546073064a8eb7618751c9cef5c52d17b7704c31a093cd2e048ff
+	source = chalkak-0.5.2.tar.gz::https://github.com/bityoungjae/chalkak/archive/refs/tags/v0.5.2.tar.gz
+	sha256sums = ca42b96039ad42497ee58692f330a8cebf53397667083e2a3501026ac217e941
 
 pkgname = chalkak
