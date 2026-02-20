@@ -2,20 +2,20 @@
 # Contributor: Tobias Brunner <tobias@tobru.ch>
 
 _npmname=cloudron
-_npmver=6.0.0
+_npmver=7.0.1
 pkgname=cloudron-cli
 pkgver=$_npmver
 pkgrel=1
 pkgdesc="Cloudron Commandline Tool"
 arch=('any')
-url="https://git.cloudron.io/cloudron/cloudron-cli"
+url="https://git.cloudron.io/platform/cloudron-cli"
 license=('MIT')
 depends=('nodejs')
 makedepends=('npm' 'jq')
 optdepends=()
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz")
 noextract=("$_npmname-$_npmver.tgz")
-sha256sums=('041356597acd29bdf55301d7c24d86821035d777bed390c936947b341bca860d')
+sha256sums=('627fea9905a0f353e3af1f814c14744bfcc4fd29ddefd60315ce276b012a6b43')
 
 package() {
 	npm install -g --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
