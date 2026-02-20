@@ -1,0 +1,36 @@
+╰─❮ cat .SRCINFO
+pkgbase = noctalia-qs-git
+	pkgdesc = Flexible toolkit for making desktop shells with QtQuick
+	pkgver = 0.0.1.r0.gb2c7d52
+	pkgrel = 1
+	url = https://github.com/noctalia-dev/noctalia-qs
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-3.0-only
+	makedepends = spirv-tools
+	makedepends = qt6-shadertools
+	makedepends = wayland
+	makedepends = wayland-protocols
+	makedepends = cli11
+	makedepends = ninja
+	makedepends = cmake
+	makedepends = git
+	depends = qt6-declarative
+	depends = qt6-base
+	depends = jemalloc
+	depends = qt6-svg
+	depends = libpipewire
+	depends = libxcb
+	depends = wayland
+	depends = libdrm
+	depends = mesa
+	depends = polkit
+	provides = noctalia-qs
+	conflicts = noctalia-qs
+	options = !debug
+	source = noctalia-qs::git+https://github.com/noctalia-dev/noctalia-qs.git
+	source = quickshell-check.hook
+	sha256sums = SKIP
+	sha256sums = 8543e21aeaaa5441b73a679160e7601a957f16c433e8d6bd9257e80bd0e94083
+
+pkgname = noctalia-qs-git
