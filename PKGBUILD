@@ -24,6 +24,7 @@ _releases=(
 )
 
 declare -Ag _depends=(
+  # archlinux                 # ubuntu24.04
   ['ca-certificates']=1       # ca-certificates
   ['gst-plugins-base-libs']=1 # gstreamer1.0-plugins-base
   ['gst-plugins-good']=1      # gstreamer1.0-plugins-good
@@ -83,6 +84,7 @@ declare -Ag _depends=(
 )
 
 declare -Ag _depends_r2025a=(
+  # archlinux                 # ubuntu24.04
   ['ca-certificates']=1       # ca-certificates
   ['gst-plugins-base-libs']=1 # gstreamer1.0-plugins-base
   ['gst-plugins-good']=1      # gstreamer1.0-plugins-good
@@ -142,6 +144,7 @@ declare -Ag _depends_r2025a=(
 )
 
 declare -Ag _depends_r2024b=(
+  # archlinux                 # ubuntu24.04
   ['ca-certificates']=1       # ca-certificates
   ['gst-plugins-base-libs']=1 # gstreamer1.0-plugins-base
   ['gst-plugins-good']=1      # gstreamer1.0-plugins-good
@@ -196,6 +199,7 @@ declare -Ag _depends_r2024b=(
 )
 
 declare -Ag _depends_r2024a=(
+  # archlinux                 # ubuntu22.04
   ['ca-certificates']=1       # ca-certificates
   ['gst-libav']=1             # gstreamer1.0-libav
   ['gst-plugins-base-libs']=1 # gstreamer1.0-plugins-base
@@ -247,6 +251,7 @@ declare -Ag _depends_r2024a=(
 )
 
 declare -Ag _depends_r2023b=(
+  # archlinux                 # ubuntu22.04
   ['ca-certificates']=1       # ca-certificates
   ['gst-libav']=1             # gstreamer1.0-libav
   ['gst-plugins-base-libs']=1 # gstreamer1.0-plugins-base
