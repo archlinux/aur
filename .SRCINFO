@@ -3,17 +3,15 @@ pkgbase = librcc
 	pkgver = 0.2.12
 	pkgrel = 1
 	url = http://rusxmms.sourceforge.net/
-	install = librcc.install
 	arch = x86_64
-	license = GPL
-	makedepends = patch
-	makedepends = gtk2
+	license = LGPL-2.1-only
 	depends = aspell
 	depends = enca
 	depends = libxml2
 	depends = librcd
-	source = http://darksoft.org/files/rusxmms/librcc-0.2.12.tar.bz2
-	md5sums = 930de6cd64e5daa33cabed58261634bb
+	depends = gtk2
+	depends = gtk3
+	source = https://salsa.debian.org/debian/librcc/-/archive/debian/0.2.12-0.1/librcc-debian-0.2.12-0.1.tar.gz
+	sha256sums = e2f1d7dae80ab8e943917085d978e3ce2d1d45abf4a9c0b2e06631648646166c
 
 pkgname = librcc
-

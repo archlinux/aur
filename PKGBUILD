@@ -1,29 +1,27 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: PiterDeVries <https://aur.archlinux.org/account/PiterDeVries>
+
 
 pkgname=librcc
+_pkgname=librcc-debian
 pkgver=0.2.12
+_pkgver=0.2.12-0.1
 pkgrel=1
 pkgdesc="Charset Conversion Library"
 arch=(x86_64)
 url="http://rusxmms.sourceforge.net/"
-license=('GPL')
-depends=('aspell' 'enca' 'libxml2' 'librcd')
-makedepends=('patch' 'gtk2')
-install=librcc.install
-#source=(http://downloads.sourceforge.net/rusxmms/${pkgname}-${pkgver}.tar.bz2)
-source=(http://darksoft.org/files/rusxmms/librcc-$pkgver.tar.bz2)
-md5sums=('930de6cd64e5daa33cabed58261634bb')
+license=('LGPL-2.1-only')
+depends=('aspell' 'enca' 'libxml2' 'librcd' 'gtk2' 'gtk3')
+source=("https://salsa.debian.org/debian/librcc/-/archive/debian/${_pkgver}/${_pkgname}-${_pkgver}.tar.gz")
+sha256sums=('e2f1d7dae80ab8e943917085d978e3ce2d1d45abf4a9c0b2e06631648646166c')
 
 build() {
-  cd "$srcdir"/$pkgname-${pkgver}
+  cd "$srcdir"/${_pkgname}-${_pkgver}
   ./configure --prefix=/usr --disable-bdb
   make
 }
 
 package() {
-  cd "$srcdir"/$pkgname-${pkgver}
-  mkdir -p "$pkgdir"/etc/rcc
+  cd "$srcdir"/${_pkgname}-${_pkgver}
   mkdir -p "$pkgdir"/usr/lib/rcc/engines
   mkdir -p "$pkgdir"/usr/bin
 
