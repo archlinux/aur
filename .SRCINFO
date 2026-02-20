@@ -1,0 +1,21 @@
+pkgbase = otranscribe
+	pkgdesc = Transcribe any audio or video via OpenAI STT. Supports diarisation and cleaned rendering.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/ineslino/otranscribe
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-requests
+	optdepends = python-openai-whisper: local engine
+	provides = otranscribe
+	conflicts = python-otranscribe
+	replaces = python-otranscribe
+	source = https://files.pythonhosted.org/packages/source/o/otranscribe/otranscribe-0.1.1.tar.gz
+	sha256sums = 4435c46b8a53f35db66604baa990bc0e9fa06dc6d13577f9a3fac994d9c73c10
+
+pkgname = otranscribe
