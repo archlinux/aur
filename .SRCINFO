@@ -1,0 +1,14 @@
+pkgbase = debcraft
+	pkgdesc = Easy, fast and secure way to build Debian packages
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://salsa.debian.org/debian/debcraft/
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = help2man
+	depends = bash
+	depends = docker
+	source = debcraft-0.8.1.tar.bz2::https://salsa.debian.org/debian/debcraft/-/archive/debian/0.8.1/debcraft-debian-0.8.1.tar.bz2?ref_type=tags
+	b2sums = 22350986e75bbffe47c957975f17411a8941e39a7e5ff66907f80172c3c2355c6e20527e667fda0cb69a9c4d9ca7bc47c2226ee2ce27db4255c694db4dd8b399
+
+pkgname = debcraft
