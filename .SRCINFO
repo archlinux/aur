@@ -1,0 +1,14 @@
+pkgbase = ttf-pragmasevka
+	pkgdesc = Pragmata Pro doppelgänger made of Iosevka SS08
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/shytikov/pragmasevka
+	arch = any
+	license = GPL
+	options = !strip
+	source = ttf-pragmasevka-1.7.0.tar.gz::https://github.com/shytikov/pragmasevka/releases/download/v1.7.0/Pragmasevka.zip
+	source = LICENSE::https://raw.githubusercontent.com/shytikov/pragmasevka/refs/tags/v1.7.0/LICENSE.md
+	md5sums = 24a907a51f01b85afa861a50d481aae7
+	md5sums = da37ff157518269aea972868cebfbc54
+
+pkgname = ttf-pragmasevka
