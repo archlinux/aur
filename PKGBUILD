@@ -1,8 +1,8 @@
 # Maintainer: Rodney van den Velden <rodney@dfagaming.nl>
 
 pkgname=advancely
-pkgver=1.0.34
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="A highly customizable and interactive tool to track Minecraft progress."
 arch=('x86_64')
 url="https://github.com/LNXSeus/Advancely"
