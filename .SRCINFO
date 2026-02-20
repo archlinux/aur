@@ -1,6 +1,6 @@
 pkgbase = sound_themer
 	pkgdesc = A program to play sounds from a selected sound theme.
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/tmforshaw/sound_themer
 	install = sound_themer.install
@@ -10,7 +10,7 @@ pkgbase = sound_themer
 	makedepends = git
 	depends = wireplumber
 	depends = sound-theme-freedesktop
-	source = sound_themer-0.2.0.tar.gz::https://github.com/tmforshaw/sound_themer/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 919fc8754468b9a9f19dbd0ac1cff25a99c1918edfc146c45de0fba157afdac5
+	source = sound_themer-0.3.0.tar.gz::https://github.com/tmforshaw/sound_themer/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 15187f21331ce7a87a27d7570f8280ef2eba2a597848c8d9022bc70e89ba1c59
 
 pkgname = sound_themer
