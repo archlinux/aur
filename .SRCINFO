@@ -1,15 +1,15 @@
 pkgbase = tunerstudio
 	pkgdesc = Graphical engine tuning and analysis software for Megasquirt ECUs
-	pkgver = 3.2.05
+	pkgver = 3.3.01
 	pkgrel = 1
 	arch = any
 	license = proprietary
-	makedepends = imagemagick
+	makedepends = imagemagick>=7
 	depends = java-runtime
-	source = http://www.tunerstudio.com/downloads2/TunerStudioMS_v3.2.05.tar.gz
+	source = http://www.tunerstudio.com/downloads2/TunerStudioMS_v3.3.01.tar.gz
 	source = tunerstudio.sh
 	source = tunerstudio.desktop
-	sha256sums = ac85af70b79ae1329fc2bb595edaa09f70eafe390decfc541f8afc48d3606e85
+	sha256sums = 4f4781a6ff90127ef36672cc43d3edc78c4f61ef682dca38a02f9e17e652517f
 	sha256sums = e787c1df189a86b54c16ce6a4e49fcecfe91dbf4f58ee0c3d7887de1ac1fe418
 	sha256sums = a493f95c6b311c9a3be3cdd6a06462f9bdd9c10905e73825a085339abd3eee6b
 

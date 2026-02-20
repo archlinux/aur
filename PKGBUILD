@@ -1,11 +1,11 @@
 # Maintainer: Dan Fuhry <dan@fuhry.com>
 pkgname=tunerstudio
-pkgver=3.2.05
+pkgver=3.3.01
 pkgrel=1
 pkgdesc="Graphical engine tuning and analysis software for Megasquirt ECUs"
 arch=(any)
 depends=(java-runtime)
-makedepends=(imagemagick)
+makedepends=('imagemagick>=7')
 license=(proprietary)
 source=(http://www.tunerstudio.com/downloads2/TunerStudioMS_v${pkgver}.tar.gz
 		tunerstudio.sh
@@ -14,7 +14,7 @@ source=(http://www.tunerstudio.com/downloads2/TunerStudioMS_v${pkgver}.tar.gz
 
 build()
 {
-	convert "${srcdir}/TunerStudioMS/TSicon.ico" -alpha set "${srcdir}/TunerStudioMS/tunerstudio.png"
+	magick "${srcdir}/TunerStudioMS/TSicon.ico" -alpha set "${srcdir}/TunerStudioMS/tunerstudio.png"
 }
 
 package()
@@ -34,6 +34,6 @@ package()
 	mkdir -p "${pkgdir}/usr/share/applications"
 	install -m644 "${srcdir}/tunerstudio.desktop" "${pkgdir}/usr/share/applications/tunerstudio.desktop"
 }
-sha256sums=('ac85af70b79ae1329fc2bb595edaa09f70eafe390decfc541f8afc48d3606e85'
+sha256sums=('4f4781a6ff90127ef36672cc43d3edc78c4f61ef682dca38a02f9e17e652517f'
             'e787c1df189a86b54c16ce6a4e49fcecfe91dbf4f58ee0c3d7887de1ac1fe418'
             'a493f95c6b311c9a3be3cdd6a06462f9bdd9c10905e73825a085339abd3eee6b')
