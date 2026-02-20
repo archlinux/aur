@@ -1,0 +1,10 @@
+pkgbase = nvidia-driver-fixer
+	pkgdesc = A systemd service unit to fix nvidia not loading correctly
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = WTFPL
+	source = nvidia-driver-fixer.service
+	sha256sums = 84ec5db5532ee2e218bc995ef1c04b7a4b9ebe4df198bba99fd031d6b9073796
+
+pkgname = nvidia-driver-fixer

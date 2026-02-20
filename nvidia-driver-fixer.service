@@ -1,0 +1,10 @@
+[Unit]
+Description=Fixes broken nvidia driver after boot. Mainly useful for docker
+Before=docker.service
+
+[Service]
+Type=oneshot
+ExecStart=nvidia-smi
+
+[Install]
+WantedBy=multi-user.target
