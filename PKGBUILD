@@ -1,26 +1,26 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
-# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: PiterDeVries <https://aur.archlinux.org/account/PiterDeVries>
 
 pkgname=librcd
+_pkgname=librcd-debian
 pkgver=0.1.14
-pkgrel=2
+_pkgver=0.1.14-2
+pkgrel=3
 pkgdesc="Charset Detection Library"
 arch=('x86_64')
 url='https://github.com/rusxmms/librcd'
-license=('LGPL2.1')
+license=('LGPL-2.1-only')
 depends=('glibc')
 provides=("$pkgname.so=$pkgver")
-source=("$pkgname-$pkgver.tar.bz2::https://darksoft.org/files/rusxmms/$pkgname-$pkgver.tar.bz2")
-sha256sums=('261db28bc864fd4b2d3ba88403b2e421944281e323c1e39c0e61f5160c16b664')
+source=("https://salsa.debian.org/debian/${pkgname}/-/archive/debian/${_pkgver}/${_pkgname}-${_pkgver}.tar.bz2")
+sha256sums=('407d72a6885f0655dc3bfa725c20f9924ac97791803239ab3e70e5cdda78b07d')
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$srcdir/${_pkgname}-${_pkgver}"
 	./configure --prefix=/usr
 	make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$srcdir/${_pkgname}-${_pkgver}"
 	make DESTDIR="$pkgdir" install
 }

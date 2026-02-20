@@ -1,13 +1,13 @@
 pkgbase = librcd
 	pkgdesc = Charset Detection Library
 	pkgver = 0.1.14
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rusxmms/librcd
 	arch = x86_64
-	license = LGPL2.1
+	license = LGPL-2.1-only
 	depends = glibc
 	provides = librcd.so=0.1.14
-	source = librcd-0.1.14.tar.bz2::https://darksoft.org/files/rusxmms/librcd-0.1.14.tar.bz2
-	sha256sums = 261db28bc864fd4b2d3ba88403b2e421944281e323c1e39c0e61f5160c16b664
+	source = https://salsa.debian.org/debian/librcd/-/archive/debian/0.1.14-2/librcd-debian-0.1.14-2.tar.bz2
+	sha256sums = 407d72a6885f0655dc3bfa725c20f9924ac97791803239ab3e70e5cdda78b07d
 
 pkgname = librcd
