@@ -1,11 +1,11 @@
 # Maintainer: Sebastian Ruziczka <aur@sebastianruziczka.de>
 pkgname=budgetbutlerweb-desktop
 _pkgnameshort=budgetbutlerweb
-pkgver=4.3.12
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="Simple and fast household book with offline and online functionality in German."
 arch=("x86_64")
-url="https://sebastianrzk.github.io/BudgetButlerWeb/"
+url="https://sebastianrzk.codeberg.page/budgetbutlerweb/"
 license=('AGPL-3.0-or-later')
 groups=()
 depends=(electron glibc bash gcc-libs openssl)
@@ -13,7 +13,7 @@ makedepends=(git nodejs-lts-jod npm cargo glibc bash gcc-libs openssl)
 checkdepends=(cargo  glibc bash gcc-libs openssl)
 provides=(budgetbutlerweb budgetbutlerweb-backend)
 changelog=
-source=("git+https://github.com/sebastianrzk/budgetbutlerweb#tag=v$pkgver")
+source=("git+https://codeberg.org/sebastianrzk/budgetbutlerweb#tag=v$pkgver")
 sha256sums=('SKIP')
 
 prepare() {

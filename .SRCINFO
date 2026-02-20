@@ -1,8 +1,8 @@
 pkgbase = budgetbutlerweb-desktop
 	pkgdesc = Simple and fast household book with offline and online functionality in German.
-	pkgver = 4.3.12
+	pkgver = 4.4.0
 	pkgrel = 1
-	url = https://sebastianrzk.github.io/BudgetButlerWeb/
+	url = https://sebastianrzk.codeberg.page/budgetbutlerweb/
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	checkdepends = cargo
@@ -25,7 +25,7 @@ pkgbase = budgetbutlerweb-desktop
 	depends = openssl
 	provides = budgetbutlerweb
 	provides = budgetbutlerweb-backend
-	source = git+https://github.com/sebastianrzk/budgetbutlerweb#tag=v4.3.12
+	source = git+https://codeberg.org/sebastianrzk/budgetbutlerweb#tag=v4.4.0
 	sha256sums = SKIP
 
 pkgname = budgetbutlerweb-desktop
