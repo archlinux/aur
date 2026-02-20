@@ -14,10 +14,10 @@
 # (why is it not called haproxy-pp though)
 pkgname=haproxy-awslc
 _pkgname=haproxy
-pkgver=3.3.3
-pkgrel=3
+pkgver=3.3.4
+pkgrel=1
 
-pkgdesc='Reliable, high performance TCP/HTTP load balancer built with aws-lc'
+pkgdesc='Reliable, high performance TCP/HTTP load balancer. Built with aws-lc'
 url='https://www.haproxy.org/'
 arch=('x86_64')
 license=('GPL-2.0-or-later')
@@ -41,8 +41,6 @@ conflicts=($_pkgname)
 
 backup=('etc/haproxy/haproxy.cfg')
 
-install=haproxy.install
-
 validpgpkeys=('0C9568FA554656551590C5E44E386D9C9C61702F'  # Willy Tarreau <w@1wt.eu>
               '07D5F18D201984D7D13FB7AAF5F936267AA4B280'  # Christopher Faulet <christopher.faulet@capflam.org>
               '692A51FE968BDB627C8C4B0E12F8CCEE5C19FD8D') # Amaury Denoyelle <adenoyelle@haproxy.com>
@@ -62,8 +60,8 @@ source=("git+https://git.haproxy.org/git/haproxy-${pkgver%.*}.git#tag=v${pkgver}
 # implies some sort of integrity check.
 #
 # However, I've already setup this repo to run updpkgsums easily...
-sha256sums=('9a899b1a3595e69689dc085a5c12707da93b575a3dd4b576b3096dce5e187f91'
-            'b37d90a870e8c36b960847e586cb5af4583a028552df20663fae30bad27eb983'
+sha256sums=('c1d15274f99564bfcba458995e836bfdb6bb02453a92d3c5a4587127d9194bc6'
+            'bd6ebf57fa417d42fe48340664e3620f08d4b40312d4be41dba51ef34bc0223c'
             'c6e716ea59272a8e871af53703726dd2a75b56c82dacf097d4bf08ac5e841a0d'
             'a1e3a1c2923465081383eb431bae55ff9841d89909469311cdba4b394ec4a998')
 prepare() {
