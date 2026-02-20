@@ -1,6 +1,6 @@
 pkgbase = kwin-effects-better-blur-dx-x11
 	pkgdesc = KWin Better Blur DX effect fork with window class force blur feature (X11)
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/xarblu/kwin-effects-better-blur-dx
 	install = kwin-effects-better-blur-dx-x11.install
@@ -18,7 +18,7 @@ pkgbase = kwin-effects-better-blur-dx-x11
 	depends = libepoxy
 	depends = kwin-x11
 	conflicts = kwin-effects-forceblur
-	source = kwin-effects-better-blur-dx-x11-2.1.0.tar.gz::https://github.com/xarblu/kwin-effects-better-blur-dx/archive/refs/tags/v2.1.0.tar.gz
-	sha256sums = 64949e7cbb972e9b346c55af310d2a57b90255e0136e4bf083edb3f502e83b92
+	source = kwin-effects-better-blur-dx-x11-2.2.0.tar.gz::https://github.com/xarblu/kwin-effects-better-blur-dx/archive/refs/tags/v2.2.0.tar.gz
+	sha256sums = f8b18ee87b9fb81f86ddb4ba7fd84e3d144935f65ac1b319e44c9d1fd461ebee
 
 pkgname = kwin-effects-better-blur-dx-x11
