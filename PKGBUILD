@@ -4,7 +4,7 @@
 _pkgname=qdrant-client
 _pipname="${_pkgname//-/_}"
 pkgname="python-${_pkgname}"
-pkgver=1.16.2
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="Client library for the Qdrant vector search engine"
 arch=('any')
@@ -14,7 +14,7 @@ depends=(python-grpcio python-grpcio-tools python-httpx python-numpy python-port
 makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
 optdepends=(python-fastembed python-fastembed-gpu)
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pipname}-${pkgver}.tar.gz")
-b2sums=('15009f17a7f54606b8e61d685c06cf7004778bc09a78487f241e0e291df382ce7c7c5f61c7ea1492264587304ccc8cd1a583617a8c6a1c9b41db33aca116ffc2')
+b2sums=('909e632ddf5c17e56ad8af60025b891c2fc11231dde23ab04a009fc52645b1207ba64bd427414325877c881c1692f1ee8133afb8a488bd878bd388503e76f736')
 
 build() {
     cd "${_pipname}-${pkgver}"
