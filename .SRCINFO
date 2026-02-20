@@ -1,0 +1,23 @@
+pkgbase = python-azure-functions-durable
+	pkgdesc = Durable Functions for Python
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/Azure/azure-functions-durable-python
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python
+	depends = python-azure-functions
+	depends = python-aiohttp
+	depends = python-requests
+	depends = python-dateutil
+	depends = python-furl
+	depends = python-opentelemetry-api
+	source = https://files.pythonhosted.org/packages/source/a/azure_functions_durable/azure_functions_durable-1.5.0.tar.gz
+	sha256sums = 131fbdf08fa1140d94dc3948fcf9000d8da58aaa5a0ffc4db0ea3be97d5551e2
+
+pkgname = python-azure-functions-durable
