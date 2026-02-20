@@ -14,7 +14,12 @@ license=('MIT')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-depends=('glibc' 'gcc-libs' 'libxcb' 'dbus' 'openssl' 'alsa-lib' 'xz' 'xdotool')
+depends=('glibc' 'gcc-libs' 'dbus' 'openssl' 'xz')
+optdepends=(
+  'libxcb: X11 backend (required for GUI integration)'
+  'alsa-lib: ALSA audio support'
+  'xdotool: keyboard/mouse automation support'
+)
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE.md"
         "README-${pkgver}::${_urlraw}/README.md"
