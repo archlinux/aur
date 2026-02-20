@@ -1,7 +1,7 @@
 # Maintainer: Jasmin <theblazehen@gmail.com>
 pkgname=openchamber
 _npmname=@openchamber/web
-pkgver=1.6.8
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="Desktop and web interface for OpenCode AI agent"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/@openchamber/web/-/web-${pkgver}.tgz")
 noextract=("web-${pkgver}.tgz")
-sha256sums=('2a148f338a37d3a28933b0472e86433f77d53b8e26928b351b159a514531d8bb')
+sha256sums=('3d2852c2f3bcb84203644c7f7d4ca20cb19f11375fa38f66c2386ad64ebc4bb0')
 
 package() {
     npm install -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" \
@@ -27,4 +27,18 @@ package() {
     jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
     mv "$tmppackage" "$pkgjson"
     chmod 644 "$pkgjson"
+
+    # Remove literal references to $srcdir and $pkgdir left in some upstream build files
+    find "$pkgdir/usr/lib/node_modules" -type f -exec sed -i 's|\$srcdir||g;s|\$pkgdir||g' {} +
+    rm -f "$pkgdir/usr/lib/node_modules/@openchamber/web/node_modules/node-pty/build/config.gypi" \
+          "$pkgdir/usr/lib/node_modules/@openchamber/web/node_modules/node-pty/build/Makefile"
+
+    # Install license file for namcap (search common license filenames)
+    license_files=( "$pkgdir/usr/lib/node_modules/@openchamber/web/LICENSE" "$pkgdir/usr/lib/node_modules/@openchamber/web/license" "$pkgdir/usr/lib/node_modules/@openchamber/web/LICENSE.md" )
+    for lf in "${license_files[@]}"; do
+      if [ -f "$lf" ]; then
+        install -Dm644 "$lf" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+        break
+      fi
+    done
 }
