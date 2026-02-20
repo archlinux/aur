@@ -4,7 +4,7 @@
 pkgname=openvpn-mbedtls
 _pkgname=openvpn
 crypto_library=mbedtls
-pkgver=2.6.19
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="An easy-to-use, robust and highly configurable VPN (Virtual Private Network), linked against the ${crypto_library} library for crypto support."
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -20,22 +20,14 @@ conflicts=("${_pkgname}")
 provides=("${_pkgname}=${pkgver}")
 license=('custom')
 source=("git+https://github.com/OpenVPN/openvpn.git#tag=v${pkgver}?signed"
-        '0001-unprivileged.patch'
         'sysusers.conf'
         'tmpfiles.conf')
-sha256sums=('60e7292cde9a5ca464b7f82df046e156de51b5c766f9475d7043d762f845de21'
-            'bb47b298b59300a4282fc4d0b69dcdd8dcfb72d2ff2f702f96ea369a8381456a'
+sha256sums=('19585f964378642a9c4f2d8f678dddc601e66138ef01c969ea85e8cda47d8434'
             '15669f82ac8b412eb3840ba9b39de20ca9b04bf082516c229577a5cb4e1a9610'
             'b1436f953a4f1be7083711d11928a9924993f940ff56ff92d288d6100df673fc')
 
 prepare() {
   cd "${srcdir}"/${_pkgname}
-
-  # https://www.mail-archive.com/openvpn-devel@lists.sourceforge.net/msg19302.html
-  sed -i '/^CONFIGURE_DEFINES=/s/set/env/g' configure.ac
-
-  # start with unprivileged user and keep granted privileges
-  patch -Np1 < ../0001-unprivileged.patch
 
   autoreconf --force --install
 }
