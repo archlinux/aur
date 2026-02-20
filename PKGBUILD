@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgbase=azahar
 pkgname=({,libretro-}"$_pkgbase-git")
-pkgver=2125.0.alpha1.r2.gd9b77cc
+pkgver=2125.0.alpha1.r4.gf3fb0b7
 pkgrel=1
 arch=('x86_64')
 url="https://azahar-emu.org/"
@@ -88,9 +88,6 @@ prepare() {
 	sed -i '/check_submodules_present()/d' ../../CMakeLists.txt
 	# use system spirv-tools
 	sed -i '/spirv-tools/d' ../../externals/CMakeLists.txt
-	# fix libretro build
-	sed -i 's/boost/Boost::&/g' ../../src/citra_libretro/CMakeLists.txt
-	sed -i 's/robin_map/tsl::&/g' ../../src/citra_libretro/CMakeLists.txt
 }
 
 build() {

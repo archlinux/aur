@@ -1,5 +1,5 @@
 pkgbase = azahar-git
-	pkgver = 2125.0.alpha1.r2.gd9b77cc
+	pkgver = 2125.0.alpha1.r4.gf3fb0b7
 	pkgrel = 1
 	url = https://azahar-emu.org/
 	arch = x86_64
@@ -87,7 +87,7 @@ pkgname = azahar-git
 	depends = qt6-base
 	depends = qt6-multimedia
 	depends = sdl2
-	provides = azahar=2125.0.alpha1.r2.gd9b77cc
+	provides = azahar=2125.0.alpha1.r4.gf3fb0b7
 	conflicts = azahar
 
 pkgname = libretro-azahar-git
@@ -106,5 +106,5 @@ pkgname = libretro-azahar-git
 	depends = libretro-core-info>=1.22.2.r3
 	depends = libssl.so
 	depends = libZydis.so
-	provides = libretro-azahar=2125.0.alpha1.r2.gd9b77cc
+	provides = libretro-azahar=2125.0.alpha1.r4.gf3fb0b7
 	conflicts = libretro-azahar
