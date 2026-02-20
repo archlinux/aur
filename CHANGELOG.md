@@ -13,6 +13,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Options on description menu
 - Show interface on properties list
 
+## [2.13.2] - 2026-02-20
+
+### Added
+
+- Display list of Paths
+
+### Changed
+
+- Fetching units is cancellable
+- Stopping the Sysd Proxy is only haapening when the proxy is running
 
 ## [2.13.1] - 2026-02-19
 
@@ -21,7 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Shortcuts on curated lists
 - Shortcut on save file
 
-### Fix
+### Fixed
 
 - Flatpak compilation
 
