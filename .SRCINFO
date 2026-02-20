@@ -12,7 +12,7 @@ pkgbase = 3dstool
 	depends = openssl
 	source = 3dstool-1.2.6::https://github.com/dnasdw/3dstool/archive/refs/tags/v1.2.6.tar.gz
 	source = 3dstool-paths.patch
-	sha256sums = 7f6118bfe7b8e1ba87aa547a8cb892c29c9cc45ad817ee822121fa2142044859
-	sha256sums = 5ac00e5b56182ffde04c7b9ab2a5151e6cf575400705f0b061ff832116757582
+	b2sums = cd250c0c9d1c203c61e3696e75f0776b704ee9826eb3d0cc8cf337a8ddc5053de9a78b493511dbb688387c5ebb191d6991be43fa3603116f46b02a683e49d486
+	b2sums = 226f75f5154d849aec1816064aa5d87db0e41c07d02edb85df5b2b397172a30b32603bccfdfa09a5431f9fbc12fcbbd9a5baccf6d82523d9253a430af0432108
 
 pkgname = 3dstool
