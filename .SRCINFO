@@ -1,6 +1,6 @@
 pkgbase = sonicrust
-	pkgdesc = A rust base TUI subsonic client
-	pkgver = 0.1.3
+	pkgdesc = A Terminal based music player for Subsonic-compatible servers, written in Rust.
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/roceb/sonicrust
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = sonicrust
 	provides = sonicrust
 	conflicts = sonicrust-bin
 	conflicts = sonicrust-git
-	source = sonicrust-0.1.3.tar.gz::https://github.com/roceb/sonicrust/archive/refs/tags/v0.1.3.tar.gz
-	sha256sums = 8983ce0aa8b931d2e4a203f1a03222158a403d1296816f352f9231e228272b2f
+	source = sonicrust-0.1.4.tar.gz::https://github.com/roceb/sonicrust/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = 900e442c8e02833ec35305ad0335b28158ab0c3a38ec721989a314d98fe8e50d
 
 pkgname = sonicrust
