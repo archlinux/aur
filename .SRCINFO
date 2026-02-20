@@ -1,6 +1,6 @@
 pkgbase = maya-usd-bin
 	pkgdesc = Autodesk Maya Universal Scene Description Plugin
-	pkgver = 0.34.5
+	pkgver = 0.35.0
 	pkgrel = 1
 	url = https://github.com/Autodesk/maya-usd
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = maya-usd-bin
 	provides = maya-usd
 	conflicts = maya-usd
 	options = !strip
-	source = https://github.com/Autodesk/maya-usd/releases/download/v0.34.5/MayaUSD_0.34.5_Maya2026_Linux.run
-	b2sums = 8004103feb3835d70e6a995c19fc5bc1db3f51abcfcbfe39f7380703d7b90758e823da9350cd0079b15223716a4c75ae8885e78fa909900d84cf05186b2a45bc
+	source = https://github.com/Autodesk/maya-usd/releases/download/v0.35.0/MayaUSD_0.35.0_Maya2026.3_Linux.run
+	b2sums = c5f498707e53b5e00b082bd5e8649f3df8bd3e73d1067ffec22253dc4dc10f2aa9c95749b8c81e16d5d50547e0e0b44f5bd8156eb24d2c03342e79cf150618e0
 
 pkgname = maya-usd-bin
