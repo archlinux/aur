@@ -17,8 +17,12 @@ makedepends=(
   git
   cargo
 )
-source=("git+${url}.git#branch=main")
-md5sums=("SKIP")
+source=(
+    "git+${url}.git#branch=main"
+    "git+https://github.com/ruabmbua/hidapi-rs.git"
+    "git+https://github.com/libusb/hidapi.git"
+)
+sha256sums=('SKIP' 'SKIP' 'SKIP')
 validpgpkeys=()
 
 pkgver() {
@@ -28,8 +32,17 @@ pkgver() {
 
 prepare() {
     cd "${_sourceName}"
+    git submodule init
+    git config submodule.vendor/hidapi.url "$srcdir/hidapi-rs"
+    git -c protocol.file.allow=always submodule update
+
+    cd "vendor/hidapi"
+    git submodule init
+    git config submodule.etc/hidapi.url "$srcdir/hidapi"
+    git -c protocol.file.allow=always submodule update
+
+    cd "../.."
     export RUSTUP_TOOLCHAIN=stable
-    git submodule update --init --recursive
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
