@@ -23,7 +23,7 @@ validpgpkeys=()
 
 pkgver() {
   cd "${_sourceName}"
-  git describe --tags --long --always | sed 's/^v//; s/-/./g'
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
