@@ -1,6 +1,6 @@
 pkgbase = difi
 	pkgdesc = Review and refine Git diffs before you push
-	pkgver = 0.1.0
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/oug-t/difi
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = difi
 	depends = glibc
 	depends = git
 	options = !lto
-	source = difi-0.1.0.tar.gz::https://github.com/oug-t/difi/archive/v0.1.0.tar.gz
-	sha256sums = 8c9d39002c2218d310cc505e4915c3f5210d664e1aa9c56bc603deb425af63fd
+	source = difi-0.1.7.tar.gz::https://github.com/oug-t/difi/archive/v0.1.7.tar.gz
+	sha256sums = 57f70ee446dacc1aedab6e4659528f6ceab894d1499b8e955a5b1b275997cc57
 
 pkgname = difi
