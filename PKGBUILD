@@ -1,14 +1,13 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=umu-launcher-git
-pkgver=1.3.0.r22.4ed61d10
+pkgver=1.3.0.r51.b039435e
 pkgrel=1
 pkgdesc="This is the Unified Launcher for Windows Games on Linux, to run Proton with fixes outside of Steam"
 arch=('x86_64')
 url="https://github.com/Open-Wine-Components/umu-launcher"
 license=('GPL-3.0-only')
 depends=(
-  # steam
   bash
   desktop-file-utils
   diffutils
@@ -32,7 +31,6 @@ depends=(
   libxcrypt
   libxcrypt-compat
   gcc-libs
-  # umu
   python-xlib
   python-xxhash
   python-pyzstd
@@ -71,8 +69,8 @@ conflicts=('umu-launcher')
 source=(
     "git+https://github.com/Open-Wine-Components/umu-launcher.git"
 )
-
 sha256sums=('SKIP')
+
 
 pkgver() {
   cd "$srcdir"/umu-launcher
