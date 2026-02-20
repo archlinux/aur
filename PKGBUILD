@@ -1,9 +1,8 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
-_pkgname=azahar
-pkgname=$_pkgname-git
-pkgver=2124.1.r14.gb0fea11
+_pkgbase=azahar
+pkgname=({,libretro-}"$_pkgbase-git")
+pkgver=2125.0.alpha1.r2.gd9b77cc
 pkgrel=1
-pkgdesc="Nintendo 3DS emulator based on Citra"
 arch=('x86_64')
 url="https://azahar-emu.org/"
 license=('GPL-2.0-or-later')
@@ -13,10 +12,6 @@ depends=(
 	'gcc-libs'
 	'glibc'
 	'glslang'
-	'hicolor-icon-theme'
-	'qt6-base'
-	'qt6-multimedia'
-	'sdl2'
 )
 makedepends=(
 	'boost'
@@ -33,26 +28,28 @@ makedepends=(
 	'nlohmann-json'
 	'openal'
 	'openssl'
+	'qt6-base'
+	'qt6-multimedia'
 	'qt6-tools'
 	'rapidjson'
 	'robin-map'
+	'sdl2'
 	'spirv-headers'
 	'vulkan-headers'
 	'vulkan-memory-allocator'
 	'zydis'
 )
-provides=("$_pkgname=$pkgver")
-conflicts=("$_pkgname")
 source=(
-	"$_pkgname::git+https://github.com/azahar-emu/azahar.git"
-	"$_pkgname-compatibility-list::git+https://github.com/azahar-emu/compatibility-list.git"
-	"$_pkgname-discord-rpc::git+https://github.com/azahar-emu/discord-rpc.git"
-	"$_pkgname-dynarmic::git+https://github.com/azahar-emu/dynarmic.git"
-	"$_pkgname-mcl::git+https://github.com/azahar-emu/mcl.git"
-	"$_pkgname-sirit::git+https://github.com/azahar-emu/sirit.git"
-	"$_pkgname-soundtouch::git+https://github.com/azahar-emu/soundtouch.git"
+	"$_pkgbase::git+https://github.com/azahar-emu/azahar.git"
+	"$_pkgbase-compatibility-list::git+https://github.com/azahar-emu/compatibility-list.git"
+	"$_pkgbase-discord-rpc::git+https://github.com/azahar-emu/discord-rpc.git"
+	"$_pkgbase-dynarmic::git+https://github.com/azahar-emu/dynarmic.git"
+	"$_pkgbase-mcl::git+https://github.com/azahar-emu/mcl.git"
+	"$_pkgbase-sirit::git+https://github.com/azahar-emu/sirit.git"
+	"$_pkgbase-soundtouch::git+https://github.com/azahar-emu/soundtouch.git"
 	"dds-ktx::git+https://github.com/septag/dds-ktx.git"
 	"faad2::git+https://github.com/knik0/faad2.git"
+	"libretro-common::git+https://github.com/libretro/libretro-common.git"
 	"lodepng::git+https://github.com/lvandeve/lodepng.git"
 	"nihstro::git+https://github.com/neobrain/nihstro.git"
 	"teakra::git+https://github.com/wwylele/teakra.git"
@@ -60,36 +57,40 @@ source=(
 	"xxhash::git+https://github.com/Cyan4973/xxHash.git"
 	"zstd::git+https://github.com/facebook/zstd.git"
 )
-b2sums=('SKIP'{,,,,,,,,,,,,,,})
+b2sums=('SKIP'{,,,,,,,,,,,,,,,})
 
 pkgver() {
-	cd $_pkgname
+	cd $_pkgbase
 	git describe --long --tags --abbrev=7 | sed 's/[^-]*-g/r&/;s/-/./g'
 }
 
 prepare() {
-	cd $_pkgname
-	git config submodule.compatibility-list.url ../$_pkgname-compatibility-list
+	cd $_pkgbase
+	git config submodule.compatibility-list.url ../$_pkgbase-compatibility-list
 	git config submodule.dds-ktx.url ../dds-ktx
-	git config submodule.discord-rpc.url ../$_pkgname-discord-rpc
-	git config submodule.dynarmic.url ../$_pkgname-dynarmic
+	git config submodule.discord-rpc.url ../$_pkgbase-discord-rpc
+	git config submodule.dynarmic.url ../$_pkgbase-dynarmic
+	git config submodule.externals/libretro-common.url ../libretro-common
 	git config submodule.externals/xxHash.url ../xxhash
 	git config submodule.faad2.url ../faad2
 	git config submodule.lodepng.url ../lodepng
 	git config submodule.nihstro.url ../nihstro
-	git config submodule.sirit.url ../$_pkgname-sirit
-	git config submodule.soundtouch.url ../$_pkgname-soundtouch
+	git config submodule.sirit.url ../$_pkgbase-sirit
+	git config submodule.soundtouch.url ../$_pkgbase-soundtouch
 	git config submodule.teakra.url ../teakra
 	git config submodule.xbyak.url ../xbyak
 	git config submodule.zstd.url ../zstd
 	git -c protocol.file.allow=always submodule update
 	cd externals/dynarmic
-	git config submodule.mcl.url ../../../$_pkgname-mcl
+	git config submodule.mcl.url ../../../$_pkgbase-mcl
 	git -c protocol.file.allow=always submodule update
 	# ignore unneeded missing submodules
 	sed -i '/check_submodules_present()/d' ../../CMakeLists.txt
 	# use system spirv-tools
 	sed -i '/spirv-tools/d' ../../externals/CMakeLists.txt
+	# fix libretro build
+	sed -i 's/boost/Boost::&/g' ../../src/citra_libretro/CMakeLists.txt
+	sed -i 's/robin_map/tsl::&/g' ../../src/citra_libretro/CMakeLists.txt
 }
 
 build() {
@@ -120,18 +121,27 @@ build() {
 	if ! g++ "${flags[@]}" -dM -E - < /dev/null | grep -q __SSE4_2__; then
 		options+=(-D ENABLE_SSE42=OFF)
 	fi
-	cd $_pkgname
+	cd $_pkgbase
 	cmake "${options[@]}" -B build
 	cmake --build build
+	options+=(
+		-D ENABLE_LIBRETRO=ON
+		-D ENABLE_QT_TRANSLATION=OFF
+		-D ENABLE_TESTS=OFF
+	)
+	cmake "${options[@]}" -B build-libretro
+	cmake --build build-libretro
 }
 
 check() {
-	cd $_pkgname
+	cd $_pkgbase
 	ctest --output-on-failure --test-dir build
 }
 
-package() {
+package_azahar-git() {
+	pkgdesc="Nintendo 3DS emulator based on Citra"
 	depends+=(
+		'hicolor-icon-theme'
 		'libbacktrace.so'
 		'libboost_iostreams.so'
 		'libboost_serialization.so'
@@ -142,8 +152,34 @@ package() {
 		'libssl.so'
 		'libusb-1.0.so'
 		'libZydis.so'
+		'qt6-base'
+		'qt6-multimedia'
+		'sdl2'
 	)
-	cd $_pkgname
+	provides=("$_pkgbase=$pkgver")
+	conflicts=("$_pkgbase")
+
+	cd $_pkgbase
 	# shellcheck disable=SC2154
 	DESTDIR="$pkgdir" cmake --install build
+}
+
+package_libretro-azahar-git() {
+	pkgdesc="Nintendo 3DS core based on Citra"
+	groups=('libretro')
+	depends+=(
+		'libbacktrace.so'
+		'libboost_iostreams.so'
+		'libboost_serialization.so'
+		'libcrypto.so'
+		'libfmt.so'
+		'libretro-core-info>=1.22.2.r3'
+		'libssl.so'
+		'libZydis.so'
+	)
+	provides=("libretro-$_pkgbase=$pkgver")
+	conflicts=("libretro-$_pkgbase")
+
+	cd $_pkgbase
+	install -D -t "$pkgdir"/usr/lib/libretro build-libretro/bin/Release/azahar_libretro.so
 }
