@@ -1,8 +1,8 @@
 # Maintainer: aliu <aaronliu 0 1 3 0  gmail com>
 # Contributor: pikl <me@pikl.uk>
 pkgname=immich-machine-learning
-pkgver=2.5.0
-pkgrel=1
+pkgver=2.5.6
+pkgrel=2
 pkgdesc="Machine learning server for the Immich photo management system"
 arch=(any)
 license=('AGPL-3.0-only')
@@ -41,8 +41,8 @@ optdepends=(
 )
 source=("immich-${pkgver}.tar.gz::https://github.com/immich-app/immich/archive/refs/tags/v${pkgver}.tar.gz"
 	"immich-machine-learning.service")
-sha256sums=('c02ef5c6c357e77932a12bbd39ac468c8e47751a3db55e8984b9b4e006200c25'
-            'f9215f428f5bd596a24c0cce90ccfa3724d8caf33d7b5811e73b2b5277c111cd')
+sha256sums=('01072d3125873ca1455ce0153f453017402308734fea9da45eb7ccd387d757ed'
+            'ff0042c8d8bac6f59b162abb40ddf4d816b194a2dc8817a0e4700884ae7ca7a9')
 
 build() {
     # from: ENV and RUN commands in machine-learning/Dockerfile

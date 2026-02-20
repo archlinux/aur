@@ -30,12 +30,17 @@ ExecStart=/usr/bin/gunicorn immich_ml.main:app \
 	-w 1 -b 0.0.0.0:3003 -t 120 \
 	--log-config-json immich_ml/log_conf.json
 
-PrivateDevices=true
 ProtectHome=true
 ProtectSystem=strict
 ProtectKernelTunables=yes
 ProtectKernelModules=yes
 ProtectControlGroups=yes
+# hardware transcoding access, based on hwaccel.ml.yml
+DeviceAllow=char-nvidia* rw
+DeviceAllow=char-drm rw
+DeviceAllow=char-kfd rw
+SupplementaryGroups=render video
+# if you use Rockchip you might want to just PrivateDevices=false
 
 RestrictNamespaces=yes
 
