@@ -1,7 +1,5 @@
 # Maintainer: Michael Lass <bevan@bi-co.net>
-
-# This PKGBUILD is maintained on github:
-# https://github.com/michaellass/AUR
+# Contributor: VStoiakin
 
 pkgname=meshtastic-python
 _name=python
