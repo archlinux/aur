@@ -1,0 +1,42 @@
+pkgbase = niri-wip-git
+	pkgdesc = Scrollable-tiling Wayland compositor (WIP branch)
+	pkgver = 25.11.126.g3d1cf38
+	pkgrel = 1
+	url = https://github.com/niri-wm/niri
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = clang
+	makedepends = rust
+	makedepends = git
+	depends = cairo
+	depends = glib2
+	depends = libdisplay-info
+	depends = libinput
+	depends = libpipewire
+	depends = libxkbcommon
+	depends = mesa
+	depends = pango
+	depends = pixman
+	depends = seatd
+	optdepends = fuzzel: application launcher similar to rofi drun mode
+	optdepends = waybar: highly customizable Wayland bar
+	optdepends = alacritty: a cross-platform OpenGL terminal emulator
+	optdepends = mako: notification daemon for Wayland
+	optdepends = swaybg: wallpaper tool for Wayland compositors
+	optdepends = swaylock: screen locker for Wayland
+	optdepends = xdg-desktop-portal-gtk: implements most of the basic functionality
+	optdepends = xdg-desktop-portal-gnome: screencasting support
+	optdepends = gnome-keyring: implements the secret portal, for certain apps to work
+	optdepends = polkit-gnome: when apps need to ask for root permissions
+	provides = niri=25.11.126.g3d1cf38
+	conflicts = niri
+	conflicts = niri-bin
+	conflicts = niri-git
+	options = !debug
+	options = !lto
+	options = !strip
+	source = niri::git+https://github.com/niri-wm/niri.git#branch=wip/branch
+	b2sums = SKIP
+
+pkgname = niri-wip-git
