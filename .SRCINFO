@@ -13,6 +13,7 @@ pkgbase = vigaphone-bin
 	depends = mesa
 	depends = freetype2
 	depends = fontconfig
+	depends = noto-fonts-emoji
 	options = !strip
 	options = !debug
 	source = https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone/releases/download/R1.0.5/ViGAPhoneR_linux_amd64.tar.gz

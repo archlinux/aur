@@ -17,6 +17,7 @@ depends=(
     'mesa'
     'freetype2'
     'fontconfig'
+    'noto-fonts-emoji'
 )
 
 makedepends=('rsync')
@@ -37,6 +38,7 @@ package() {
 
     # Icône
     install -Dm644 installOnLinuxUser/org.vigaworld.vigaphone.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/org.vigaworld.vigaphone.png"
+    install -Dm644 installOnLinuxUser/org.vigaworld.vigaphone.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/vigaphone.png"
 
     # Icône package manager
     install -Dm644 installOnLinuxUser/org.vigaworld.vigaphone.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.vigaworld.vigaphone.svg"
