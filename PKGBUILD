@@ -1,6 +1,6 @@
 pkgname=redpanda-connect
 _pkgname=connect
-pkgver=4.65.0
+pkgver=4.81.0
 pkgrel=1
 pkgdesc='Redpanda Connect is a declarative data streaming service'
 arch=('aarch64' 'armv5h' 'armv6h' 'armv7h' 'x86_64')
@@ -8,7 +8,7 @@ url="https://docs.redpanda.com/redpanda-connect/about/"
 license=('Apache-2.0')
 makedepends=('go')
 source=("https://github.com/redpanda-data/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1981f37b829a9a73669c4dfe586e1e426de911c259dc8d87ac0b2df3e7c41c7d')
+sha256sums=('a0001951cff0af03e38ce015c2be8c3a7d6d03194752fbe8a73ad759a6bee888')
 
 prepare(){
   cd "$_pkgname-$pkgver"
