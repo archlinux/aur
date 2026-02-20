@@ -1,0 +1,20 @@
+pkgbase = random-pics-bin
+	pkgdesc = Fast desktop local image viewer for gesture drawing practice
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/YukiYuziriha/random-pics
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	provides = random-pics
+	conflicts = random-pics
+	source = https://github.com/YukiYuziriha/random-pics/releases/download/v1.0.0/random-pics_1.0.0_amd64.AppImage
+	source = random-pics.desktop
+	source = random-pics.png
+	sha256sums = 7f09335fcd0636bd67517334dc843baa3b03dc4db07b7d79bbde1650db3467d3
+	sha256sums = 9b249bc89320a997036b154bff50af2a9d917ac39610db0a5d9ca7185319cb05
+	sha256sums = eeebf55d8ffe07348786b9057af253e3ca08c56b6a8f8893826381430e3c0b7b
+
+pkgname = random-pics-bin
