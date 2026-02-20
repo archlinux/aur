@@ -1,12 +1,12 @@
 # Maintainer: Terromur <terromuroz@proton.me>
 # Maintainer: 00ein00 <ein420@proton.me>
 pkgname=hytale-f2p-git
-_pkgname=Hytale-F2P
-pkgver=2.2.1.r300.g244fec0
+_pkgname=hytale-f2p
+pkgver=2.3.2.r468.ge7a0339
 pkgrel=1
 pkgdesc="Hytale-F2P - unofficial Hytale Launcher for free to play with multiplayer support"
 arch=('x86_64')
-url="https://github.com/amiayweb/Hytale-F2P"
+url="https://git.sanhost.net/sanasol/hytale-f2p"
 license=('custom')
 depends=('at-spi2-core' 'gtk3')
 makedepends=('npm' 'jq' 'git' 'libxcrypt-compat' 'nodejs' 'electron-builder')
@@ -34,6 +34,6 @@ build() {
 package() {
   mkdir -p "$pkgdir/opt/$_pkgname"
   cp -r "$_pkgname/dist/linux-unpacked/"* "$pkgdir/opt/$_pkgname"
-  install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  install -Dm644 "Hytale-F2P.desktop" "$pkgdir/usr/share/applications/Hytale-F2P.desktop"
   install -Dm644 "$_pkgname/GUI/icon.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
 }
