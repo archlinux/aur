@@ -1,0 +1,13 @@
+pkgbase = opennexus-bin
+	pkgdesc = Thin CLI client for the Nexus context-driven development system
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/Alpha-Innovation-Labs/opennexus
+	arch = x86_64
+	license = MIT
+	provides = opennexus
+	conflicts = opennexus
+	source = opennexus-x86_64-unknown-linux-gnu::https://github.com/Alpha-Innovation-Labs/opennexus/releases/download/v0.1.7/opennexus-x86_64-unknown-linux-gnu
+	sha256sums = a40d055ad1905b8a02b5366fa91dd41c6abe7b907247f5402f79221398f9db93
+
+pkgname = opennexus-bin
