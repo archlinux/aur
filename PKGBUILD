@@ -2,7 +2,7 @@
 
 pkgname=milton
 pkgver=1.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc='An infinite-canvas paint program'
 arch=('x86_64')
 url='https://github.com/serge-rgb/milton'
@@ -53,7 +53,7 @@ package() {
     cat > "$pkgdir/usr/bin/milton" <<'EOF'
 #!/bin/sh
 cd /usr/lib/milton
-exec ./Milton "$@"
+exec env SDL_VIDEODRIVER=x11 ./Milton "$@"
 EOF
     chmod 755 "$pkgdir/usr/bin/milton"
 
