@@ -8,7 +8,7 @@ license=('GPL-3.0-or-later')
 depends=('niri' 'waybar' 'gtk3')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/adelmonte/niri_window_buttons/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bc367354541398634c156faa297d380f657d4b54fa9e615595b45de9263896b3')
+sha256sums=('785779f48e7294564d30e8eda81ca4c0f918472532e354cb4a8c6792b36fe7c1')
 
 build() {
   cd "$srcdir/niri_window_buttons-$pkgver"
