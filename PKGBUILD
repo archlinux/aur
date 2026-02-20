@@ -1,4 +1,5 @@
-# Maintainer: xiretza <aur@xiretza.xyz>
+# Maintainer: Christian Cornelssen <$(base64 --decode <<<'cGtnQDF0ZWluLmRlCg==')>
+# Contributor: xiretza <aur@xiretza.xyz>
 # Contributor: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
 
 # BUILD INSTRUCTIONS:
