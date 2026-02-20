@@ -6,7 +6,7 @@
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
 pkgname="libvldmail"
-pkgver="1.2.1"
+pkgver="1.2.2"
 pkgrel="1"
 pkgdesc="Your friendly e-mail address validation library."
 arch=("x86_64")
@@ -16,7 +16,7 @@ depends=("glibc")
 makedepends=("cmake")
 checkdepends=("cmake")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/release-${pkgver}.tar.gz")
-sha512sums=("3e4f0c0573514553dfc147b326327bfc408cfcea9619f1812748b04efb63f778c8070db96749bbbdcdfbb9771812e12633bf31241d41020b011f93548b9cb915")
+sha512sums=("a772d32f65519ff40fd8ee72f9a4e72e2d5ffde895957f43218636a26645d1ebec1f732d4af772650495a6eb5b33a8029ed3074b0476fab5b4cfa84975211ff4")
 
 _compile()
 {
