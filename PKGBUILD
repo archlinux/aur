@@ -7,7 +7,7 @@
 
 pkgname=gcalcli
 pkgver=4.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Google calendar command line interface'
 arch=('any')
 url=https://github.com/insanum/gcalcli
@@ -23,6 +23,7 @@ makedepends=(
 depends=(
     'python-argcomplete'
     'python-babel'
+    'python-cryptography'
     'python-dateutil'
     'python-google-api-core'
     'python-google-api-python-client'
