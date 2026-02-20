@@ -1,0 +1,15 @@
+pkgbase = wewbo
+	pkgdesc = Interactive terminal application for streaming and downloading anime
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://github.com/upi-0/wewbo
+	arch = x86_64
+	license = GPL3
+	makedepends = curl
+	makedepends = git
+	depends = mpv
+	depends = ffmpeg
+	source = https://github.com/upi-0/wewbo/archive/refs/tags/0.9.3.tar.gz
+	sha256sums = SKIP
+
+pkgname = wewbo
