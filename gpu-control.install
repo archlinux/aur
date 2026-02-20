@@ -14,5 +14,21 @@ post_remove() {
     fi
     rm -f /etc/systemd/system/gpu-control.service
     systemctl daemon-reload 2>/dev/null
+    
+    # Clean up helper scripts from all user home directories
+    for user_home in /home/*; do
+        if [ -d "$user_home/.local/bin" ]; then
+            rm -f "$user_home/.local/bin/gpu-control-apply.sh"
+            rm -f "$user_home/.local/bin/gpu-control-setup.sh"
+            rm -f "$user_home/.local/bin/gpu-control-remove.sh"
+            rm -f "$user_home/.local/bin/gpu-control-startup.sh"
+        fi
+    done
+    # Also clean up root's home if applicable
+    rm -f /root/.local/bin/gpu-control-apply.sh
+    rm -f /root/.local/bin/gpu-control-setup.sh
+    rm -f /root/.local/bin/gpu-control-remove.sh
+    rm -f /root/.local/bin/gpu-control-startup.sh
+    
     echo ">>> GPU Control removed. Settings will return to defaults after reboot."
 }

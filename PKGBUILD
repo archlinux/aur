@@ -1,7 +1,7 @@
 # Maintainer: EightySix mail@eightysixk.org
 
 pkgname=gpu-control
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='nvidia gpu control software.'
 arch=('x86_64')
