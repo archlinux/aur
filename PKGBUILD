@@ -12,7 +12,7 @@ source=("https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/d
 noextract=("Heroic-2.19.1-linux-x64.pacman")
 sha256sums=(2035d47afa9c286900b3e781588903d6a57dcc8b0ad32aa27835fec53b43e5bc)
 options=(!strip)
-depends=(which)
+depends=(which gtk3)
 provides=(heroic-games-launcher)
 conflicts=(heroic-games-launcher)
 
