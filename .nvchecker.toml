@@ -1,0 +1,4 @@
+[rilua]
+source = "git"
+git = "https://github.com/wowemulation-dev/rilua.git"
+prefix = "v"

@@ -1,0 +1,17 @@
+pkgbase = rilua
+	pkgdesc = A zero-dependency Rust port of Lua 5.1.1
+	pkgver = 0.1.12
+	pkgrel = 1
+	url = https://github.com/wowemulation-dev/rilua
+	arch = x86_64
+	arch = i686
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	depends = libgcc_s.so
+	depends = glibc
+	source = https://github.com/wowemulation-dev/rilua/archive/v0.1.12/rilua-0.1.12.tar.gz
+	sha256sums = d7b63818ba376bdd8b5829447f62d281ff7a5e7a582538a55786567a81fee7f5
+
+pkgname = rilua
