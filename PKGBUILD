@@ -1,17 +1,20 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=pwndbg-git
-pkgver=2023.07.17.pkgs.r117.ge8f423a
+pkgver=2026.02.18.r1.g5eb91f4
 pkgrel=1
 pkgdesc='Makes debugging with GDB suck less'
 url='https://github.com/pwndbg/pwndbg'
-arch=('any')
-license=('MIT')
+arch=(any)
+license=(MIT)
 depends=(
   debuginfod
   gdb
+  ipython
   python
   python-capstone
+  python-capstone6pwndbg
+  python-niche-elf
   python-psutil
   python-pt
   python-ptrace
@@ -20,15 +23,20 @@ depends=(
   python-pyelftools
   python-pygments
   python-requests
+  python-rich
   python-setuptools
+  python-sortedcontainers
   python-tabulate
   python-typing_extensions
   python-unicorn
+  # TODO:
+  # decomp2dbg
   which
 )
 makedepends=(
   git
   python-build
+  python-hatchling
   python-installer
   python-poetry-core
   python-wheel
@@ -39,6 +47,7 @@ optdepends=(
   'ropgadget: ropgadget command support'
   'radare2: radare2 command support'
   'rizin: rizin command support'
+  'one_gadget: command to find ROP one_gadget'
 )
 provides=(pwndbg)
 conflicts=(pwndbg)
@@ -71,7 +80,7 @@ package() {
   cp -r *.py __pycache__ "${pkgdir}/usr/share/pwndbg"
   touch "${pkgdir}/usr/share/pwndbg/.skip-venv"
 
-  install -Dm 644 README.md FEATURES.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm 644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
