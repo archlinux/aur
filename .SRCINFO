@@ -1,6 +1,6 @@
 pkgbase = ultimate-doom-builder-git
 	pkgdesc = A level editor for Doom-engine games
-	pkgver = 3.0.0.4239.99086de
+	pkgver = 3.0.0.4298.ad1ddaf
 	pkgrel = 1
 	url = https://github.com/UltimateDoomBuilder/UltimateDoomBuilder
 	arch = x86_64

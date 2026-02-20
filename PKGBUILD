@@ -5,7 +5,7 @@
 
 _pkgname="ultimate-doom-builder"
 pkgname="$_pkgname-git"
-pkgver=3.0.0.4239.99086de
+pkgver=3.0.0.4298.ad1ddaf
 pkgrel=1
 pkgdesc="A level editor for Doom-engine games"
 url="https://github.com/UltimateDoomBuilder/UltimateDoomBuilder"
@@ -36,9 +36,9 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$_pkgsrc"
   local _file _regex _version _revision
-  _file="Source/Core/Properties/AssemblyInfo.cs"
-  _regex='^\[assembly: AssemblyVersion\("([0-9]+\.[0-9]+)(\.[0-9]+)(\.[0-9]+)"\)\].*$'
-  _version=$(grep -E "$_regex" "$_file" | sed -E "s@$_regex@\1\2@")
+  _file="Source/Core/Builder.csproj"
+  _regex='^\s*<FullVersion>\K([0-9]+\.[0-9]+\.[0-9]+)'
+  _version=$(grep -Pom1 "$_regex" "$_file")
   _revision=$(git rev-list --count HEAD)
   _hash=$(git rev-parse --short=7 HEAD)
 
@@ -48,19 +48,6 @@ pkgver() {
 
 build() {
   cd "$_pkgsrc"
-  local VNUMBER=$(git rev-list --count HEAD)
-  local VHASH=$(git rev-parse --short=7 HEAD)
-  local FILES=(
-    "Source/Core/Properties/AssemblyInfo.cs"
-    "Source/Plugins/BuilderModes/Properties/AssemblyInfo.cs"
-  )
-
-  for FILE in "${FILES[@]}"; do
-    echo 'Changing assembly info in "'${FILE}'" ...'
-    sed -b -i 's/\(\[assembly: AssemblyVersion(".*\.\)[0-9]*")\]/\1'${VNUMBER}'")\]/' $FILE
-    sed -b -i 's/\(\[assembly: AssemblyHash("\)[0-9a-zA-Z]*")\]/\1'${VHASH}'")\]/' $FILE
-  done
-
   make
 }
 
@@ -68,7 +55,7 @@ package() {
   cd "$_pkgsrc"
 
   # copy files
-  install -dm755 "$pkgdir/$_install_path/ultimate-doom-builder"
+  mkdir -pm755 "$pkgdir/$_install_path/ultimate-doom-builder"
   cp -a Build/* "$pkgdir/$_install_path/ultimate-doom-builder/"
 
   # script
@@ -80,7 +67,7 @@ exec mono "\$_builder_path/Builder.exe" "\$@"
 END
 
   # symlink
-  install -dm755 "$pkgdir/usr/bin"
+  mkdir -pm755 "$pkgdir/usr/bin"
   ln -sf "/$_install_path/ultimate-doom-builder/builder" "$pkgdir/usr/bin/ultimate-doom-builder"
 
   # launcher
@@ -98,7 +85,7 @@ Categories=Game;
 END
 
   # icon
-  install -dm755 "$pkgdir/usr/share/pixmaps"
+  mkdir -pm755 "$pkgdir/usr/share/pixmaps"
   magick "Source/Core/Resources/UDB2.ico[3]" "$pkgdir/usr/share/pixmaps/ultimate-doom-builder.png"
 
   # permissions
