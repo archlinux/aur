@@ -1,7 +1,7 @@
 # Maintainer: wjsoj <wjs@wjsphy.top>
 
 pkgname=ccuse-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A CLI tool to manage and switch between Claude Code profiles (pre-built binary)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('ccuse')
 conflicts=('ccuse')
 options=('!debug')
 source_x86_64=("ccuse-$pkgver::https://github.com/wjsoj/ccuse/releases/download/v$pkgver/ccuse-x86_64-unknown-linux-gnu")
-sha256sums_x86_64=('8c9db8d958b26090f3f2916a4fed9dd02fd39102aa7347c792018bcc98276f89')
+sha256sums_x86_64=('b7592e925cde45a3d06faae374e2774b252cffc832be7a040e3846ffc24eb7fc')
 
 package() {
   install -Dm755 "$srcdir/ccuse-$pkgver" "$pkgdir/usr/bin/ccuse"
