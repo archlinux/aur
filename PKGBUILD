@@ -1,6 +1,6 @@
 # Maintainer: Crstian <me@crstian.me>
 pkgname=aceplay-bin
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Modern CLI to play Ace Stream links - auto-starts acestream-engine (pre-built binary)"
 arch=('x86_64')
