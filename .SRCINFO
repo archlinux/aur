@@ -9,6 +9,6 @@ pkgbase = libvldmail
 	makedepends = cmake
 	depends = glibc
 	source = libvldmail-v1.2.1.tar.gz::https://github.com/Spixmaster/libvldmail/archive/refs/tags/release-1.2.1.tar.gz
-	sha512sums = eab13d64c37837ac367989db96131c77c2b36dfabf5493bfa85a22adb91d9d9143ad6864c956a7e6643a82e3898777b5c6a9311e1562c7791cb636cba5663d51
+	sha512sums = 3e4f0c0573514553dfc147b326327bfc408cfcea9619f1812748b04efb63f778c8070db96749bbbdcdfbb9771812e12633bf31241d41020b011f93548b9cb915
 
 pkgname = libvldmail
