@@ -1,0 +1,25 @@
+pkgbase = perl-perl-critic-community
+	pkgdesc = Community-inspired Perl::Critic policies
+	pkgver = 1.04
+	pkgrel = 1
+	url = https://metacpan.org/dist/Perl-Critic-Community
+	arch = any
+	license = Artistic-2.0
+	checkdepends = perl-module-metadata
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-simple
+	makedepends = perl-module-build-tiny>=0.034
+	depends = perl-carp
+	depends = perl-exporter
+	depends = perl-path-tiny>=0.101
+	depends = perl-perl-critic-policy-plicease-prohibitarrayassignaref>=100.00
+	depends = perl-perl-critic-policy-variables-prohibitlooponhash>=0.005
+	depends = perl-perl-critic>=1.126
+	depends = perl-ppi>=1.254
+	depends = perl-scalar-list-utils>=1.33
+	depends = perl>=5.10.1
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/D/DB/DBOOK/Perl-Critic-Community-v1.0.4.tar.gz
+	sha256sums = 3b31624ea0cf4392b8f4397a529515248814a2166697f1a453d58ab6f112d209
+
+pkgname = perl-perl-critic-community
