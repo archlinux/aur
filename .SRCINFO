@@ -1,0 +1,14 @@
+pkgbase = shelxle
+	pkgdesc = Graphical user interface for SHELXL and a viewer for crystal structures. SHELXL is required for refinement but must be obtained separately.
+	pkgver = 1.0.1805
+	pkgrel = 1
+	url = https://www.shelxle.org/
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = qt6-tools
+	depends = qt6-base
+	optdepends = shelxl: required for structure refinement calculations (not in Arch repos)
+	source = shelxle-1.0.1805.tar.bz2::https://sourceforge.net/projects/shelxle/files/code/shelxle-1.0.1805.tar.bz2/download
+	sha256sums = 2e0eb73eeb37911af13c6766ccd8fa8263c54dac4456a4c7ecb20e0d1b78c707
+
+pkgname = shelxle
