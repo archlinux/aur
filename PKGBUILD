@@ -24,6 +24,8 @@ source=(
 )
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 validpgpkeys=()
+provides=("hyperheadset")
+conflicts=("hyperheadset" "hyperheadset-bin")
 
 pkgver() {
   cd "${_sourceName}"
