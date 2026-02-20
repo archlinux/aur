@@ -1,0 +1,11 @@
+post_install() {
+    echo "=================================================="
+    echo "Lyrus has been installed successfully."
+    echo
+    echo "Cache and debug logs directory:"
+    echo "  ~/.cache/lyrus"
+    echo
+    echo "Cached synced lyrics directory:"
+    echo "  ~/.local/state/lyrus/synced_lyrics"
+    echo "=================================================="
+}

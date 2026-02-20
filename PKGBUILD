@@ -7,6 +7,8 @@ arch=('any')
 url="https://github.com/Ja4e/Lyrus"
 license=('AGPL-3.0')
 
+install=lyrus-git.install
+
 depends=(
     'python'
     'python-requests'
