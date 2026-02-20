@@ -2,7 +2,7 @@
 
 pkgname=photoqt-extensions-bin
 _pkgname=photoqt-extensions
-pkgver=5.1
+pkgver=5.2
 pkgrel=1
 pkgdesc="Extensions for PhotoQt image viewer"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('photoqt-extensions' 'photoqt-extensions-debug')
 provides=('photoqt-extensions-bin-debug')
 depends=('exiv2' 'imagemagick')
 source=(https://photoqt.org/downloads/bin/$_pkgname-$pkgver.tar.gz)
-sha256sums=('1868692f4cb7089c23c527f20b3f85559343b54204cce877ffb6a99bce292da0')
+sha256sums=('a2f8edabfc7517ff20cb6b1f12892eb4de94be709d096f61836584663c0df1ec')
 install="photoqt-extensions.install"
 
   # Extensions configured with:
