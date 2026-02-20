@@ -11,8 +11,8 @@ if [[ ! -d "$HOME/$data_dir/Assets" ]]; then
     cp -r /usr/share/supermodel/Assets "$HOME/$data_dir/"
 fi
 
-if [[ ! -d "$HOME/$data_dir/roms" ]]; then
-    zenity --error --text="ROM directory missing:\n~/$data_dir/roms"
+if [[ ! -d "$HOME/$data_dir/ROMs" ]]; then
+    zenity --error --text="ROM directory missing:\n~/$data_dir/ROMs"
     exit 1
 fi
 
