@@ -1,8 +1,8 @@
 # Maintainer: Crstian <me@crstian.me>
-pkgname=aceplay-bin
-pkgver=0.1.0
+pkgname=aceplay
+pkgver=0.1.1
 pkgrel=1
-pkgdesc="Modern CLI to play Ace Stream links - auto-starts acestream-engine, supports mpv/vlc (pre-built binary)"
+pkgdesc="Modern CLI to play Ace Stream links - auto-starts acestream-engine, supports mpv/vlc"
 arch=('x86_64')
 url="https://github.com/crstian19/aceplay"
 license=('MIT')
@@ -12,21 +12,18 @@ optdepends=(
     'vlc: alternative video player'
     'ffplay: alternative video player'
 )
-source=("https://github.com/crstian19/aceplay/releases/download/v${pkgver}/aceplay-linux-amd64"
-        "aceplay.desktop")
-sha256sums=('SKIP'
-            'SKIP')
+makedepends=('go')
+conflicts=('aceplay-bin')
+source=("https://github.com/crstian19/aceplay/archive/v${pkgver}.tar.gz")
+sha256sums=('SKIP')
 
-package() {
-    install -Dm755 "$srcdir/aceplay" "$pkgdir/usr/bin/aceplay"
-    install -Dm644 "$srcdir/aceplay.desktop" "$pkgdir/usr/share/applications/aceplay.desktop"
-}
-
-check() {
-    return 0
+build() {
+    cd "$pkgname-$pkgver"
+    go build -o aceplay -ldflags "-X main.version=$pkgver" ./cmd
 }
 
 package() {
-    install -Dm755 "$srcdir/aceplay" "$pkgdir/usr/bin/aceplay"
+    cd "$pkgname-$pkgver"
+    install -Dm755 aceplay "$pkgdir/usr/bin/aceplay"
     install -Dm644 "$srcdir/aceplay.desktop" "$pkgdir/usr/share/applications/aceplay.desktop"
 }
