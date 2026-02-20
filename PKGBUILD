@@ -1,7 +1,7 @@
 # Maintainer: Lukas Spies <lukas (at) photoqt _dot_ org>
 
 pkgname=photoqt-extensions
-pkgver=5.1
+pkgver=5.2
 pkgrel=1
 pkgdesc="Extensions for PhotoQt image viewer"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('photoqt-extensions-debug')
 depends=('exiv2' 'imagemagick')
 makedepends=('cmake' 'qt6-tools')
 source=(https://photoqt.org/downloads/extensions/$pkgname-$pkgver.tar.gz)
-sha256sums=('3d03546a304bd494e49aaac8748b73decac0bd19ebf8d66e049fb599af25d541')
+sha256sums=('9c594bda696e78a51e148a1c5920446bf99dcd1ed1f8de16fff0be9238660d46')
 install="photoqt-extensions.install"
 
 # NOTE
@@ -21,7 +21,7 @@ install="photoqt-extensions.install"
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
-  cmake . -DCMAKE_INSTALL_PREFIX=/usr/lib/PhotoQt/extensions -DWITH_IMAGEMAGICK=ON -DCMAKE_BUILD_TYPE=Release
+  cmake . -DCMAKE_INSTALL_PREFIX=/usr -DWITH_IMAGEMAGICK=ON -DCMAKE_BUILD_TYPE=Release
 }
 
 build() {
