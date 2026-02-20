@@ -7,7 +7,7 @@
 pkgname='offpunk-git'
 _pkgname='offpunk'
 pkgdesc='Command-line and offline-first smolnet browser/feed reader for Gemini, Gopher, Spartan and web (development version)'
-pkgver=3.0.r34.g99f59ab
+pkgver=3.0.r37.gddf44df
 pkgrel=2
 epoch=6
 url='https://git.sr.ht/~lioploum/offpunk'
@@ -42,9 +42,17 @@ optdepends=(
   'xdg-utils: xdg-open opens a URL in the preferred application'
   'xsel: copies text to the X11 clipboard (alternative)'
 )
-provides=('offpunk')
+provides=(
+  'ansicat'
+  'netcache'
+  'offpunk'
+  'openk'
+  'unmerdify'
+  'xkcdpunk'
+)
 conflicts=("${provides[@]}")
 noextract=("$_pkgname")
+options=('!strip')
 source=("git+$url")
 sha256sums=('SKIP')
 
