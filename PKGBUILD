@@ -30,7 +30,7 @@ prepare() {
     cd "${_sourceName}"
     export RUSTUP_TOOLCHAIN=stable
     git submodule update --init --recursive
-    cargo fetch --locked
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
