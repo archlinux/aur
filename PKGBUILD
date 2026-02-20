@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=lingora
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='localization management TUI to analyse fluent translation files'
 arch=(x86_64)
@@ -13,7 +13,7 @@ makedepends=(cargo-nightly)
 _toolchain=nightly-2026-02-02
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('02223c77d463c19696d994c0a925dd6cc7ab6d17ac8442fc616862437ebc6da8')
+sha256sums=('2053f5f0e3697625c2f32456615474ccf3308b85d607f755e00aa45d8fbc911a')
 
 prepare() {
 	_srcenv
