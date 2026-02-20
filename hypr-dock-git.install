@@ -12,7 +12,6 @@ post_install() {
   mkdir -p "$target"
   cp -rn /usr/share/hypr-dock/configs/* "$target"/ 2>/dev/null || true
   chown -R "$SUDO_USER":"$SUDO_USER" "$target" 2>/dev/null || true
-
   echo ">>> hypr-dock configs installed to $target"
 }
 

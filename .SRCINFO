@@ -12,6 +12,7 @@ pkgbase = hypr-dock-git
 	depends = gtk3
 	depends = gtk-layer-shell
 	provides = hypr-dock
+	provides = hypr-
 	conflicts = hypr-dock
 	source = hypr-dock::git+https://github.com/lotos-linux/hypr-dock
 	sha256sums = SKIP
