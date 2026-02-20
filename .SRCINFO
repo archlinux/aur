@@ -1,6 +1,6 @@
 pkgbase = thunderbird-esr-bin
 	pkgdesc = Standalone Mail/News reader - binary version
-	pkgver = 140.7.1
+	pkgver = 140.7.2
 	pkgrel = 1
 	url = https://www.mozilla.org/thunderbird
 	install = thunderbird-esr-bin.install
@@ -17,7 +17,7 @@ pkgbase = thunderbird-esr-bin
 	optdepends = hunspell: Spell checking
 	optdepends = hyphen: Hyphenation
 	optdepends = libcanberra: Sound support
-	provides = thunderbird=140.7.1
+	provides = thunderbird=140.7.2
 	conflicts = thunderbird
 	conflicts = thunderbird-bin
 	options = !strip
@@ -27,17 +27,17 @@ pkgbase = thunderbird-esr-bin
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
 	sha512sums = 6813e1dfd43c67ad7517714988ac27e7fdfe4857c8e6612c165a8aa89fa013c5ab4f270c13945010422d3bda82a7b7cd5496eaa5cb5524f6b2fa1732e59fd737
 	sha512sums = aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5
-	source_x86_64 = thunderbird-140.7.1esr-x86_64.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/140.7.1esr/linux-x86_64/en-US/thunderbird-140.7.1esr.tar.xz
-	source_x86_64 = thunderbird-140.7.1esr-x86_64.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/releases/140.7.1esr/linux-x86_64/en-US/thunderbird-140.7.1esr.tar.xz.asc
-	sha512sums_x86_64 = 517d716e8f4ba8e01f22da92b92fa37c1cf65992685174fc6ba77d33a4f7534e97e6d4bc3c7caa276fdc3b5cf21aa16c2927144a806eab7a5db83d2facbda34c
+	source_x86_64 = thunderbird-140.7.2esr-x86_64.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/140.7.2esr/linux-x86_64/en-US/thunderbird-140.7.2esr.tar.xz
+	source_x86_64 = thunderbird-140.7.2esr-x86_64.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/releases/140.7.2esr/linux-x86_64/en-US/thunderbird-140.7.2esr.tar.xz.asc
+	sha512sums_x86_64 = e869082d8d4b94083f70616ccbf50d32a529d379f091676182fc855890c239e58e82239ad8e21267cb7a8dd2d474ec2055108c42d9531dc2611e4de86ef142e5
 	sha512sums_x86_64 = SKIP
-	source_pentium4 = thunderbird-140.7.1esr-pentium4.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/140.7.1esr/linux-i686/en-US/thunderbird-140.7.1esr.tar.xz
-	source_pentium4 = thunderbird-140.7.1esr-pentium4.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/releases/140.7.1esr/linux-i686/en-US/thunderbird-140.7.1esr.tar.xz.asc
-	sha512sums_pentium4 = 81c3266ecd94812ecf2d765d2d156fb71e3fd10262b8b79ef1496ec7592398152c234b4a0ea8b1a85484772c9a00ee980a45ea461ed4348ddcc926cba0403a70
+	source_pentium4 = thunderbird-140.7.2esr-pentium4.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/140.7.2esr/linux-i686/en-US/thunderbird-140.7.2esr.tar.xz
+	source_pentium4 = thunderbird-140.7.2esr-pentium4.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/releases/140.7.2esr/linux-i686/en-US/thunderbird-140.7.2esr.tar.xz.asc
+	sha512sums_pentium4 = 4777c71f8a971e53a03dfc333357814b1049cb8c3f8df3672988dc52b3ca64dd46c8d337e4e8266486310814da0d1a56012d02478198f5fa183b5f0b3f9f6ea4
 	sha512sums_pentium4 = SKIP
-	source_i686 = thunderbird-140.7.1esr-i686.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/140.7.1esr/linux-i686/en-US/thunderbird-140.7.1esr.tar.xz
-	source_i686 = thunderbird-140.7.1esr-i686.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/releases/140.7.1esr/linux-i686/en-US/thunderbird-140.7.1esr.tar.xz.asc
-	sha512sums_i686 = 81c3266ecd94812ecf2d765d2d156fb71e3fd10262b8b79ef1496ec7592398152c234b4a0ea8b1a85484772c9a00ee980a45ea461ed4348ddcc926cba0403a70
+	source_i686 = thunderbird-140.7.2esr-i686.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/140.7.2esr/linux-i686/en-US/thunderbird-140.7.2esr.tar.xz
+	source_i686 = thunderbird-140.7.2esr-i686.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/releases/140.7.2esr/linux-i686/en-US/thunderbird-140.7.2esr.tar.xz.asc
+	sha512sums_i686 = 4777c71f8a971e53a03dfc333357814b1049cb8c3f8df3672988dc52b3ca64dd46c8d337e4e8266486310814da0d1a56012d02478198f5fa183b5f0b3f9f6ea4
 	sha512sums_i686 = SKIP
 
 pkgname = thunderbird-esr-bin
