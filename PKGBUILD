@@ -5,7 +5,7 @@
 _dist='POE-Component-IRC'
 pkgname='perl-poe-component-irc'
 pkgver=6.95
-pkgrel=1
+pkgrel=2
 pkgdesc='A fully event-driven IRC client module'
 arch=('any')
 url="https://metacpan.org/dist/$_dist"
