@@ -9,7 +9,7 @@ Wants=network-online.target systemd-networkd-wait-online.service
 Environment=port=":8886"
 Type=exec
 # ExecStartPre=/usr/bin/sleep 10
-ExecStartPre=/usr/bin/bash -c 'until nslookup relays.verysync.cn; do sleep 1; done'
+ExecStartPre=/usr/bin/bash -c 'until getent hosts relays.verysync.cn >/dev/null; do sleep 1; done'
 ExecStart=/usr/bin/verysync -gui-address ${port} -no-browser -no-restart -logflags=0 
 Restart=on-failure
 SuccessExitStatus=3 4
