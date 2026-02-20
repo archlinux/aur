@@ -17,9 +17,7 @@ pkgbase = psi-git
 	depends = qtkeychain-qt6
 	depends = libxss
 	depends = qt6-webengine
-	provides = psi-nowebengine=1.5.r2132.g052ffe4a
-	conflicts = psi-nowebengine
-	replaces = psi-nowebengine
+	conflicts = psi
 	source = git+https://github.com/psi-im/psi.git
 	md5sums = SKIP
 
