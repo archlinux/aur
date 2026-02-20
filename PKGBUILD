@@ -1,8 +1,8 @@
-# Maintainer: 
+# Maintainer: Agil Mammadov <mamadovagil@tutamail.com>
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-hwdata
 pkgver=2.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings to hwdata"
 arch=('any')
 url="https://github.com/xsuchy/python-hwdata"

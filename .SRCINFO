@@ -1,7 +1,7 @@
 pkgbase = python-hwdata
 	pkgdesc = Python bindings to hwdata
 	pkgver = 2.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xsuchy/python-hwdata
 	arch = any
 	license = GPL-2.0-or-later
