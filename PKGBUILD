@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=fuzzyjoin
-_pkgver=0.1.6.1
+_pkgver=0.1.8
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -36,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7100abbf42563ea0476f05488325c082')
-b2sums=('f3f22d13f1f26debdb4cffeee9ed06a8fd02eb22967009e4eedfc5bc9cdc0db4a94db353298ba2dc556465fc2b88643b9f0b2da67bb00a954a64557c4126736d')
+md5sums=('ac80274ea05f9711def3ff20b733c151')
+b2sums=('69e4fe4eee690f11dfbe33f57d376df5922b850f03e266ef9cbb3ab0a1382cb467741b10bec63ee9f34a449190eace7dd2fb095e74347049b5c398edd8bc2135')
 
 build() {
   mkdir build
