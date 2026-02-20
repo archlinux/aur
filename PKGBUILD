@@ -6,8 +6,8 @@
 
 pkgname=snx
 pkgdesc="Check Point SSL Network Extender (VPN Client)"
-pkgver=800010003
-pkgrel=5
+pkgver="800008409"
+pkgrel=1
 arch=('x86_64')
 url="https://supportcenter.checkpoint.com/supportcenter/portal/user/anon/page/default.psml/media-type/html?action=portlets.DCFileAction&eventSubmit_doGetdcdetails=&fileid=22824"
 license=('unknown')
@@ -19,18 +19,18 @@ depends=(
 install=snx.install
 
 source=(
-    'local://snx_install_linux30.sh'
+    'local://snx_install.sh'
 )
 
 sha256sums=(
-    20942e263f14e8d08e2e97dd6470f0c04018b06209645ae51bcc7269bb70bd58
+    1e34ec888fba9f27c7576c4beacb47a6221c6da56ffc9741f2e5181855fb5a25
 )
 
 prepare() {
     # ARCHIVE_OFFSET FROM snx_install.sh FILE
-    ARCHIVE_OFFSET=80
+    ARCHIVE_OFFSET=103
 
-    tail -n +$ARCHIVE_OFFSET "${srcdir}/snx_install_linux30.sh" > "${srcdir}/snx.tar.bz2"
+    tail -n +$ARCHIVE_OFFSET "${srcdir}/snx_install.sh" > "${srcdir}/snx.tar.bz2"
 
     cd "${srcdir}"
     tar -xvf ./snx.tar.bz2

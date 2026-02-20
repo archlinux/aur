@@ -1,7 +1,7 @@
 pkgbase = snx
 	pkgdesc = Check Point SSL Network Extender (VPN Client)
-	pkgver = 800010003
-	pkgrel = 5
+	pkgver = 800008409
+	pkgrel = 1
 	url = https://supportcenter.checkpoint.com/supportcenter/portal/user/anon/page/default.psml/media-type/html?action=portlets.DCFileAction&eventSubmit_doGetdcdetails=&fileid=22824
 	install = snx.install
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = snx
 	depends = lib32-pam
 	depends = lib32-libstdc++5
 	depends = lib32-libx11
-	source = local://snx_install_linux30.sh
-	sha256sums = 20942e263f14e8d08e2e97dd6470f0c04018b06209645ae51bcc7269bb70bd58
+	source = local://snx_install.sh
+	sha256sums = 1e34ec888fba9f27c7576c4beacb47a6221c6da56ffc9741f2e5181855fb5a25
 
 pkgname = snx
