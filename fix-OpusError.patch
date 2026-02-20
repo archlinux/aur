@@ -1,0 +1,15 @@
+diff --git a/discord/ext/voice_recv/router.py b/discord/ext/voice_recv/router.py
+index d52a733..ecc3b64 100644
+--- a/discord/ext/voice_recv/router.py
++++ b/discord/ext/voice_recv/router.py
+@@ -108,7 +108,10 @@ class PacketRouter(threading.Thread):
+             self.waiter.wait()
+             with self._lock:
+                 for decoder in self.waiter.items:
+-                    data = decoder.pop_data()
++                    try:
++                        data = decoder.pop_data()
++                    except Exception:
++                        continue
+                     if data is not None:
+                         self.sink.write(data.source, data)

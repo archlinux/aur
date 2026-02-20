@@ -11,8 +11,10 @@ depends=('python' 'python-discord>=2.5' 'python-pynacl')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 provides=("python-discord-ext-voice-recv")
 conflicts=("python-discord-ext-voice-recv")
-source=("git+https://github.com/imayhaveborkedit/discord-ext-voice-recv.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/imayhaveborkedit/discord-ext-voice-recv.git"
+        "fix-OpusError.patch")
+sha256sums=('SKIP'
+            '5e30bc15ef31a184eaef08861585b32c1107a21a3cf13bc32710489572bab06f')
 
 pkgver() {
     cd "$_pkgname"
@@ -23,6 +25,12 @@ pkgver() {
         # Fallback to commit count if no tags
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     fi
+}
+
+prepare() {
+    cd "$_pkgname"
+    # Apply patch to fix OpusError
+    patch -p1 -i "$srcdir/fix-OpusError.patch"
 }
 
 build() {

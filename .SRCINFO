@@ -1,6 +1,6 @@
 pkgbase = python-discord-ext-voice-recv-git
 	pkgdesc = Experimental voice receive extension for discord.py (Git version)
-	pkgver = 0.5.2.r179.gda4ef52
+	pkgver = r180.ac04ea7
 	pkgrel = 1
 	url = https://github.com/imayhaveborkedit/discord-ext-voice-recv
 	arch = any
@@ -16,6 +16,8 @@ pkgbase = python-discord-ext-voice-recv-git
 	provides = python-discord-ext-voice-recv
 	conflicts = python-discord-ext-voice-recv
 	source = git+https://github.com/imayhaveborkedit/discord-ext-voice-recv.git
+	source = fix-OpusError.patch
 	sha256sums = SKIP
+	sha256sums = 5e30bc15ef31a184eaef08861585b32c1107a21a3cf13bc32710489572bab06f
 
 pkgname = python-discord-ext-voice-recv-git
