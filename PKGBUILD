@@ -1,5 +1,5 @@
 pkgname=hdas
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Track which packages create files in your home directory using eBPF"
 arch=('x86_64')
@@ -10,7 +10,7 @@ makedepends=('rust' 'clang')
 options=(!lto)
 install=hdas.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4489edf23c1c0898ed8298867eef96934daa929e4fecce86bffee593f59e8586')
+sha256sums=('93231d41058c4c4f57e1390b2f0988cf52b347f33e919c97479a40e35d3c4be6')
 
 build() {
     cd "$pkgname-$pkgver"

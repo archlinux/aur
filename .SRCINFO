@@ -1,6 +1,6 @@
 pkgbase = hdas
 	pkgdesc = Track which packages create files in your home directory using eBPF
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/adelmonte/hdas
 	install = hdas.install
@@ -10,7 +10,7 @@ pkgbase = hdas
 	makedepends = clang
 	depends = libbpf
 	options = !lto
-	source = hdas-1.3.0.tar.gz::https://github.com/adelmonte/hdas/archive/refs/tags/v1.3.0.tar.gz
-	sha256sums = 4489edf23c1c0898ed8298867eef96934daa929e4fecce86bffee593f59e8586
+	source = hdas-1.3.1.tar.gz::https://github.com/adelmonte/hdas/archive/refs/tags/v1.3.1.tar.gz
+	sha256sums = 93231d41058c4c4f57e1390b2f0988cf52b347f33e919c97479a40e35d3c4be6
 
 pkgname = hdas
