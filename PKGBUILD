@@ -949,7 +949,7 @@ package_${pkgbase/matlab/"matlab-${_release,,}"}() {
 }
 
 package_${pkgbase/matlab/"matlab-${_release,,}"}-all() {
-  pkgdesc+=' (${_release}, runtime, meta, all)'
+  pkgdesc+=' (${_release}, meta, all)'
   depends=(
     '${pkgbase/matlab/"matlab-${_release,,}"}>=${pkgver}-${pkgrel}'
     ${_optdepends_resolved[@]}

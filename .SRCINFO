@@ -166,7 +166,7 @@ pkgname = matlab-r2019b-meta
 	optdepends = matlab-r2019b-gcc-fortran: supported GFortran
 
 pkgname = matlab-r2019b-meta-all
-	pkgdesc = A high-level language for numerical computation and visualization (R2019b, runtime, meta, all)
+	pkgdesc = A high-level language for numerical computation and visualization (R2019b, meta, all)
 	depends = matlab-r2019b-meta>=R2025b-3
 	depends = xorg-xkbevd
 	depends = cairo
@@ -248,7 +248,7 @@ pkgname = matlab-r2020a-meta
 	optdepends = matlab-r2020a-gcc-fortran: supported GFortran
 
 pkgname = matlab-r2020a-meta-all
-	pkgdesc = A high-level language for numerical computation and visualization (R2020a, runtime, meta, all)
+	pkgdesc = A high-level language for numerical computation and visualization (R2020a, meta, all)
 	depends = matlab-r2020a-meta>=R2025b-3
 	depends = xorg-xkbevd
 	depends = cairo
@@ -325,7 +325,7 @@ pkgname = matlab-r2020b-meta
 	optdepends = matlab-r2020b-gcc-fortran: supported GFortran
 
 pkgname = matlab-r2020b-meta-all
-	pkgdesc = A high-level language for numerical computation and visualization (R2020b, runtime, meta, all)
+	pkgdesc = A high-level language for numerical computation and visualization (R2020b, meta, all)
 	depends = matlab-r2020b-meta>=R2025b-3
 	depends = xorg-xkbevd
 	depends = cairo
@@ -405,7 +405,7 @@ pkgname = matlab-r2021a-meta
 	optdepends = matlab-r2021a-gcc-fortran: supported GFortran
 
 pkgname = matlab-r2021a-meta-all
-	pkgdesc = A high-level language for numerical computation and visualization (R2021a, runtime, meta, all)
+	pkgdesc = A high-level language for numerical computation and visualization (R2021a, meta, all)
 	depends = matlab-r2021a-meta>=R2025b-3
 	depends = xorg-xkbevd
 	depends = cairo
@@ -488,7 +488,7 @@ pkgname = matlab-r2021b-meta
 	optdepends = matlab-r2021b-gcc-fortran: supported GFortran
 
 pkgname = matlab-r2021b-meta-all
-	pkgdesc = A high-level language for numerical computation and visualization (R2021b, runtime, meta, all)
+	pkgdesc = A high-level language for numerical computation and visualization (R2021b, meta, all)
 	depends = matlab-r2021b-meta>=R2025b-3
 	depends = xorg-xkbevd
 	depends = cairo
@@ -572,7 +572,7 @@ pkgname = matlab-r2022a-meta
 	optdepends = matlab-r2022a-gcc-fortran: supported GFortran
 
 pkgname = matlab-r2022a-meta-all
-	pkgdesc = A high-level language for numerical computation and visualization (R2022a, runtime, meta, all)
+	pkgdesc = A high-level language for numerical computation and visualization (R2022a, meta, all)
 	depends = matlab-r2022a-meta>=R2025b-3
 	depends = xorg-xkbevd
 	depends = cairo
@@ -649,7 +649,7 @@ pkgname = matlab-r2022b-meta
 	optdepends = matlab-r2022b-gcc-fortran: supported GFortran
 
 pkgname = matlab-r2022b-meta-all
-	pkgdesc = A high-level language for numerical computation and visualization (R2022b, runtime, meta, all)
+	pkgdesc = A high-level language for numerical computation and visualization (R2022b, meta, all)
 	depends = matlab-r2022b-meta>=R2025b-3
 	depends = xorg-xkbevd
 	depends = cairo
@@ -727,7 +727,7 @@ pkgname = matlab-r2023a-meta
 	optdepends = matlab-r2023a-gcc-fortran: supported GFortran
 
 pkgname = matlab-r2023a-meta-all
-	pkgdesc = A high-level language for numerical computation and visualization (R2023a, runtime, meta, all)
+	pkgdesc = A high-level language for numerical computation and visualization (R2023a, meta, all)
 	depends = matlab-r2023a-meta>=R2025b-3
 	depends = xorg-xkbevd
 	depends = cairo
@@ -804,7 +804,7 @@ pkgname = matlab-r2023b-meta
 	optdepends = matlab-r2023b-gcc-fortran: supported GFortran
 
 pkgname = matlab-r2023b-meta-all
-	pkgdesc = A high-level language for numerical computation and visualization (R2023b, runtime, meta, all)
+	pkgdesc = A high-level language for numerical computation and visualization (R2023b, meta, all)
 	depends = matlab-r2023b-meta>=R2025b-3
 	depends = xorg-xkbevd
 	depends = cairo
@@ -884,7 +884,7 @@ pkgname = matlab-r2024a-meta
 	optdepends = matlab-r2024a-gcc-fortran: supported GFortran
 
 pkgname = matlab-r2024a-meta-all
-	pkgdesc = A high-level language for numerical computation and visualization (R2024a, runtime, meta, all)
+	pkgdesc = A high-level language for numerical computation and visualization (R2024a, meta, all)
 	depends = matlab-r2024a-meta>=R2025b-3
 	depends = xorg-xkbevd
 	depends = cairo
@@ -966,7 +966,7 @@ pkgname = matlab-r2024b-meta
 	optdepends = matlab-r2024b-gcc-fortran: supported GFortran
 
 pkgname = matlab-r2024b-meta-all
-	pkgdesc = A high-level language for numerical computation and visualization (R2024b, runtime, meta, all)
+	pkgdesc = A high-level language for numerical computation and visualization (R2024b, meta, all)
 	depends = matlab-r2024b-meta>=R2025b-3
 	depends = cairo
 	depends = net-tools
@@ -1053,7 +1053,7 @@ pkgname = matlab-r2025a-meta
 	optdepends = matlab-r2025a-gcc-fortran: supported GFortran
 
 pkgname = matlab-r2025a-meta-all
-	pkgdesc = A high-level language for numerical computation and visualization (R2025a, runtime, meta, all)
+	pkgdesc = A high-level language for numerical computation and visualization (R2025a, meta, all)
 	depends = matlab-r2025a-meta>=R2025b-3
 	depends = xorg-xkbevd
 	depends = cairo
