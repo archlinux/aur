@@ -139,6 +139,18 @@ ngpt --shell "list all files in the current directory"
 # Read from stdin and use the content in your prompt
 echo "What is this text about?" | ngpt --pipe "Analyze the following text: {}"
 
+# Use interactive multiline editor to enter a command description (when no argument is provided)
+ngpt -s
+
+# Use interactive multiline editor to enter code description (when no argument is provided)
+ngpt -c
+
+# Pipe a command description to shell mode
+echo "list all files" | ngpt -s
+
+# Pipe a code description to code mode
+echo "create a python request" | ngpt -c --language python
+
 # Using here-string (<<<) for quick single-line input 
 ngpt --pipe {} <<< "What is the best way to learn shell redirects?"
 
@@ -167,6 +179,9 @@ echo "your text" | ngpt -r
 
 # Rewrite text from a command-line argument
 ngpt -r "your text to rewrite"
+
+# Use interactive multiline editor if no argument is provided
+ngpt -r
 
 # Rewrite text from a file
 cat file.txt | ngpt -r
@@ -569,6 +584,9 @@ With the `--code` flag, nGPT gives you clean code without explanations or markdo
 ```bash
 # Let nGPT generate the correct command for your OS
 ngpt --shell "list all files in the current directory including hidden ones"
+
+# Or use the multiline editor if you have a complex request
+ngpt -s
 # On Linux/macOS: ls -la
 # On Windows: dir /a
 ```
