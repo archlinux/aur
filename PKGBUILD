@@ -1,23 +1,37 @@
 # Maintainer: Dory <dory@dory.moe>
 _pkgname=discord-ext-voice-recv
-_srcname=discord_ext_voice_recv
-pkgname=python-discord-ext-voice-recv
-pkgver=0.5.2a179
+pkgname=python-discord-ext-voice-recv-git
+pkgver=r180.ac04ea7 # This is a placeholder, pkgver() will update it
 pkgrel=1
-pkgdesc="Experimental voice receive extension for discord.py"
+pkgdesc="Experimental voice receive extension for discord.py (Git version)"
 arch=('any')
 url="https://github.com/imayhaveborkedit/discord-ext-voice-recv"
 license=('MIT')
 depends=('python' 'python-discord>=2.5' 'python-pynacl')
-makedepends=('python-installer')
-source=("${_srcname}-${pkgver}-py3-none-any.whl::https://files.pythonhosted.org/packages/bc/65/d3a9d555cb2baaab6f8081d64d4d423688ba28ff7ae6608c374d06add3f6/${_srcname}-${pkgver}-py3-none-any.whl")
-noextract=("${_srcname}-${pkgver}-py3-none-any.whl")
-sha256sums=('f3fa65f2c1591bef2382aa39f3ebc25d6751b405aef5b5d113dfb452640f29fc')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+provides=("python-discord-ext-voice-recv")
+conflicts=("python-discord-ext-voice-recv")
+source=("git+https://github.com/imayhaveborkedit/discord-ext-voice-recv.git")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "$_pkgname"
+    # Try to generate version from tags
+    if git describe --tags >/dev/null 2>&1; then
+        git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    else
+        # Fallback to commit count if no tags
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    fi
+}
+
+build() {
+    cd "$_pkgname"
+    python -m build --wheel --no-isolation
+}
 
 package() {
-    python -m installer --destdir="$pkgdir" "${_srcname}-${pkgver}-py3-none-any.whl"
-
-    # Extract license from wheel
-    bsdtar -xf "${_srcname}-${pkgver}-py3-none-any.whl" "${_srcname}-${pkgver}.dist-info/licenses/LICENSE"
-    install -Dm644 "${_srcname}-${pkgver}.dist-info/licenses/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "$_pkgname"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
