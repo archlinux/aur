@@ -8,7 +8,7 @@
 _pkgname=ffmpeg
 pkgname=${_pkgname}6.1
 pkgver=6.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video (legacy v6.1)'
 arch=(x86_64)
 url=https://ffmpeg.org
@@ -133,6 +133,10 @@ prepare() {
   git cherry-pick -n 43b417d516b0fabbec1f02120d948f636b8a018e
   # Fix svt-av1
   git cherry-pick -n d1ed5c06e3edc5f2b5f3664c80121fa55b0baa95
+  git cherry-pick -n a5d4c398b411a00ac09d8fe3b66117222323844c
+  # Fix vapoursynth
+  git cherry-pick -n eac611f1a4c494e5e3efe61e7867517e65706534
+  git cherry-pick -n d42cd5b75bd7eeeba8ef7f433edf61b31f6f2858
 }
 
 pkgver() {
