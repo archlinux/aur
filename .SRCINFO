@@ -15,6 +15,6 @@ pkgbase = fastcompmgr-git
 	provides = fastcompmgr
 	conflicts = fastcompmgr
 	source = git+https://github.com/tycho-kirchner/fastcompmgr.git
-	sha256sums = SKIP
+	b2sums = SKIP
 
 pkgname = fastcompmgr-git
