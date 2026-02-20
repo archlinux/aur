@@ -1,0 +1,17 @@
+pkgbase = python-azure-functions
+	pkgdesc = Azure Functions Python SDK
+	pkgver = 1.24.0
+	pkgrel = 1
+	url = https://github.com/Azure/azure-functions-python-library
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-werkzeug
+	source = https://files.pythonhosted.org/packages/source/a/azure_functions/azure_functions-1.24.0.tar.gz
+	sha256sums = 18ea1607c7a7268b7a1e1bd0cc28c5cc57a9db6baaacddb39ba0e9f865728187
+
+pkgname = python-azure-functions
