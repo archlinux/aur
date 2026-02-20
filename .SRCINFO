@@ -1,6 +1,6 @@
 pkgbase = seanime-git
 	pkgdesc = Open-source media server with a web interface and desktop app for anime and manga.
-	pkgver = v3.0.1.r0.g0d59b28
+	pkgver = v3.5.0.r3.g71b99cf
 	pkgrel = 1
 	url = https://github.com/5rahim/seanime
 	arch = x86_64
@@ -9,24 +9,20 @@ pkgbase = seanime-git
 	makedepends = git
 	makedepends = make
 	makedepends = npm
-	makedepends = go>=1.25.1
+	makedepends = go>=1.26
 	makedepends = gcc-libs
 	makedepends = glibc
 	makedepends = electron39
 	source = git+https://github.com/5rahim/seanime.git
-	source = seanime-denshi.desktop
+	source = app.seanime.seanime_denshi.desktop
 	source = seanime-denshi.sh.in
 	sha256sums = SKIP
-	sha256sums = 48a0fc259e347ad05575b594ca20e52e68c96fedcb04a157796ee15846959b1b
+	sha256sums = a95400bc0f4cc9a8fb15feb243ed2a05a5b1d93aa3e0522bd2bac1095b821d1e
 	sha256sums = 7f36f983c1313bba1b5d718865fe6115764429ffad3886a6863ec309f78cbb0c
 
 pkgname = seanime-server-git
-	depends = gcc-libs
-	depends = glibc
 
 pkgname = seanime-denshi-git
-	depends = gcc-libs
-	depends = glibc
 	depends = gtk3
 	depends = hicolor-icon-theme
-	depends = electron36
+	depends = electron39

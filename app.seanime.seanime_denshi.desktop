@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=Network;
+Comment=Open-source media server with a web interface and desktop app for anime and manga
+Name=Seanime Denshi
+Exec=seanime-denshi
+StartupNotify=true
+Icon=seanime-denshi
+Terminal=false
+SingleMainWindow=true
+Type=Application

@@ -1,9 +1,10 @@
 # Maintainer: Amro Emad <korialo001 at gmail dot com>
+
 pkgbase=seanime-git
 pkgname=('seanime-server-git' 'seanime-denshi-git')
 _pkgname=seanime
 _electronver=39
-pkgver=v3.3.0.r1.g31bfed7
+pkgver=v3.5.0.r3.g71b99cf
 pkgrel=1
 pkgdesc="Open-source media server with a web interface and desktop app for anime and manga."
 arch=('x86_64' 'aarch64')
@@ -12,16 +13,16 @@ license=('GPL-3.0-only')
 makedepends=('git'
              'make'
              'npm'
-             'go>=1.25.1'
+             'go>=1.26'
              'gcc-libs' 
              'glibc' 
              "electron$_electronver")
 source=("git+https://github.com/5rahim/seanime.git"
-        "seanime-denshi.desktop"
+        "app.seanime.seanime_denshi.desktop"
         "seanime-denshi.sh.in"
         )
 sha256sums=('SKIP'
-            '48a0fc259e347ad05575b594ca20e52e68c96fedcb04a157796ee15846959b1b'
+            'a95400bc0f4cc9a8fb15feb243ed2a05a5b1d93aa3e0522bd2bac1095b821d1e'
             '7f36f983c1313bba1b5d718865fe6115764429ffad3886a6863ec309f78cbb0c'
             )
 pkgver() {
@@ -41,25 +42,18 @@ build() {
     
     cd "${_pkgname}/seanime-web"
 
-    # Mirror the workflow, build order webapp > server > tauri app & denshi, start with webapp below
-    # Check for "npm ci" fix
-    
+    # Mirror the workflow, build order webapp > server > denshi, start with webapp below
+
     npm install
-    
-    # Prep for server and desktop (tauri)
-    
-    make build-web
-    
-    # Import web-denshi to seanime denshi
-    
-    cp -r ../web-denshi ../seanime-denshi/web-denshi
+    make build-all
+
+    # Prepare for server (go)
 
     cd "${srcdir}/${_pkgname}"
 
-    # Prepare for server
     mkdir -p binaries
 
-    # Server: Can be build for both (x64/arm64) try to conform with upstream
+    # Server: We can be build for both (x64/arm64) try to conform with upstream
 
     if [ "$CARCH" = aarch64 ]; then
     export GOARCH=arm64
@@ -70,9 +64,10 @@ build() {
     fi
 
     # https://wiki.archlinux.org/title/Go_package_guidelines#Flags_and_build_options
-    # (cgo) is required for linking
+    # (cgo) is required for linking and its enabled by default
 
-    export CGO_ENABLED=1
+    # Fail if we have to downlaod (go) from the internet
+    export GOTOOLCHAIN=path
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -81,7 +76,7 @@ build() {
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-    -ldflags "-s -w -linkmode external -extldflags \"${LDFLAGS}\"" \
+    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
     -o ./binaries/seanime-server-linux-${GOARCH} \
     .	
     
@@ -90,6 +85,7 @@ build() {
     cd "seanime-denshi/"
     
     # Prepare for binary
+
     mkdir -p binaries
 
     cp "${srcdir}/${_pkgname}/binaries/seanime-server-linux-${GOARCH}" ./binaries/
@@ -105,31 +101,30 @@ build() {
 }
 
 package_seanime-server-git() {
-    depends=('gcc-libs'
-             'glibc')
 
     install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${_pkgname}-server"
+    install -Dm644 "${_pkgname}/"*.md -t "${pkgdir}/usr/share/doc/${_pkgname}-server"  
 
     cd "${_pkgname}"
     
-    install -Dm755 "binaries/seanime-server-linux-${GOARCH}" "${pkgdir}/usr/bin/${_pkgname}-server"  
+    install -Dm755 "binaries/seanime-server-linux-${GOARCH}" "${pkgdir}/usr/bin/${_pkgname}-server"
 }
 
 package_seanime-denshi-git() {
-    depends=('gcc-libs'
-             'glibc'    
-             'gtk3'
+    depends=('gtk3'
              'hicolor-icon-theme' 
              "electron$_electronver")
 
-    install -Dm644 "seanime-denshi.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "app.seanime.seanime_denshi.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm755 "seanime-denshi.sh" "${pkgdir}/usr/bin/${_pkgname}-denshi"
     install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${_pkgname}-denshi"
+    install -Dm644 "${_pkgname}/"*.md -t "${pkgdir}/usr/share/doc/${_pkgname}-denshi"
 
     cd "${_pkgname}/seanime-denshi"
 
     install -Dm644 "dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${_pkgname}-denshi"
     install -Dm755 "dist/linux-unpacked/resources/binaries/seanime-server-linux-${GOARCH}" -t "${pkgdir}/usr/lib/electron$_electronver/resources/binaries"
+
     for icon in $(find assets -regex '.*/[0-9]+x[0-9]+\.png' | sort -n); do
     size=$(basename -s .png "$icon")
     install -Dm644 "assets/$size.png" "${pkgdir}/usr/share/icons/hicolor/${size}/apps/${_pkgname}-denshi.png"
