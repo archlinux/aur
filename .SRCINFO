@@ -1,18 +1,17 @@
 pkgbase = are
-	pkgdesc = Another Easy Editor - a simple, easy to use terminal-based screen oriented editor
+	pkgdesc = Another Rust Editor - A port of the aee terminal-based text editor to Rust
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://helltop.net/projects
+	url = https://github.com/anoraktrend/are
 	arch = x86_64
 	arch = i686
 	arch = aarch64
-	license = custom:Artistic
-	makedepends = git
+	license = custom:Artistic-2.0
 	makedepends = cargo
 	depends = rust
 	provides = aee
 	conflicts = aee
-	source = git+https://github.com/anoraktrend/are.git
+	source = https://github.com/anoraktrend/are/archive/refs/tags/1.0.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = are

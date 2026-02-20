@@ -2,37 +2,31 @@
 pkgname=are
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Another Easy Editor - a simple, easy to use terminal-based screen oriented editor"
+pkgdesc="Another Rust Editor - A port of the aee terminal-based text editor to Rust"
 arch=('x86_64' 'i686' 'aarch64')
-url="https://helltop.net/projects"
-license=('custom:Artistic')
+url="https://github.com/anoraktrend/are"
+license=('custom:Artistic-2.0')
 depends=('rust')
-makedepends=('git' 'cargo')
+makedepends=('cargo')
 provides=('aee')
 conflicts=('aee')
-source=("git+https://github.com/anoraktrend/are.git")
-sha256sums=('SKIP')
-
-pkgver() {
-    cd "$srcdir/aee"
-    printf "2.2.22.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+source=("https://github.com/anoraktrend/are/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('5b01e20db53bf03837e67af55022ed4fdaa7b21bb7dbecc17b705ee64205605e')
 
 build() {
-    cd "$srcdir/aee"
+    cd "$srcdir/are-${pkgver}"
     cargo build --release
 }
 
 package() {
-    cd "$srcdir/aee"
+    cd "$srcdir/are-${pkgver}"
 
     # Install the binary
-    install -Dm755 "target/release/aee" "$pkgdir/usr/bin/aee"
+    install -Dm755 "target/release/are" "$pkgdir/usr/bin/are"
 
     # Install license
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # Install documentation
     install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
-    install -Dm644 "aee.i18n.guide" "$pkgdir/usr/share/doc/$pkgname/aee.i18n.guide"
 }
