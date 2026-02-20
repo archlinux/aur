@@ -1,22 +1,26 @@
-# Maintainer: 
-# Contributor: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=thiefmd
-pkgver=0.2.7
-pkgrel=2
+_app_id="com.github.kmwallio.$pkgname"
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="The markdown editor worth stealing. Inspired by Ulysses, based on code from Quilter"
 arch=('x86_64' 'aarch64')
 url="https://thiefmd.com"
 license=('GPL-3.0-or-later')
 depends=(
-  'clutter'
   'discount'
-  'gtksourceview4'
-  'gtkspell3'
+  'gtk4'
+  'gtksourceview5'
+  'json-glib'
+  'libadwaita'
   'libarchive'
   'libgee'
+  'libsecret'
+  'libsoup3'
+  'libspelling'
+  'libxml2'
   'link-grammar'
-  'libhandy'
-  'webkit2gtk-4.1'
+  'webkitgtk-6.0'
 )
 makedepends=(
   'git'
@@ -35,7 +39,7 @@ source=("git+https://github.com/kmwallio/ThiefMD.git#tag=v$pkgver"
         'git+https://github.com/ThiefMD/medium-vala.git'
         'git+https://github.com/ThiefMD/forem-vala.git'
         'git+https://github.com/TwiRp/hashnode-vala.git')
-sha256sums=('59e0c234788e9001b372049e143f9a75a39a95a906fe241d014af9428b48c3c4'
+sha256sums=('4b059fb27b0908ceee6195f1b7c779171e1a74d11a99ffa7bf9a1dbcdfcecb79'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -63,6 +67,9 @@ prepare() {
   git config submodule.src/forem.url "$srcdir/forem-vala"
   git config submodule.src/hashnode.url "$srcdir/hashnode-vala"
   git -c protocol.file.allow=always submodule update
+
+  # Markdown3 compatibility layer
+  git cherry-pick -n 3752395ad6cf0dee4fc819adce03b8556c585f54
 }
 
 build() {
@@ -70,13 +77,14 @@ build() {
   meson compile -C build
 }
 
-# Requires build_tests=true
-#check() {
-#  meson test -C build --print-errorlogs
-#}
+check() {
+  cd ThiefMD
+  appstreamcli validate --no-net "data/${_app_id}.appdata.xml" || :
+  desktop-file-validate "data/${_app_id}.desktop"
+}
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 
   ln -s "/usr/bin/com.github.kmwallio.$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
