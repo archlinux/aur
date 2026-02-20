@@ -1,0 +1,20 @@
+pkgbase = kitsune-livewallpaper
+	pkgdesc = Kitsune live wallpaper engine runtime for Wayland/Hyprland
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/KitotsuMolina/kitsune-livewallpaper
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = ffmpeg
+	depends = mpvpaper
+	depends = pulseaudio-utils
+	depends = pipewire-pulse
+	depends = procps-ng
+	depends = pciutils
+	depends = systemd
+	source = kitsune-livewallpaper-0.2.0.tar.gz::https://github.com/KitotsuMolina/kitsune-livewallpaper/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 86be7a9c2de8f6c12daea39515b437e811d30743485ef27741adeaba9e34e891
+
+pkgname = kitsune-livewallpaper
