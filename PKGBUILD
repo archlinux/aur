@@ -6,7 +6,7 @@
 # Contributor: FSSlc
 pkgname=texlive-dummy
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Something to trick Arch into thinking it has its texlive packages installed."
 url="https://www.tug.org/texlive/"
 arch=('any')
@@ -15,8 +15,8 @@ depends=()
 optdepends=()
 makedepends=()
 replaces=()
-conflicts=($(pacman -Sgq texlive texlive-lang) texlive-doc biber)
-provides=($(pacman -Sgq texlive texlive-lang) texlive-doc biber)
+conflicts=($(pacman -Sgq texlive texlive-lang) texlive-bin texlive-doc luametatex biber)
+provides=($(pacman -Sgq texlive texlive-lang) texlive-bin texlive-doc luametatex biber)
 
 build() {
    echo "Nothing to build"
