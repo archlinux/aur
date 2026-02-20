@@ -1,8 +1,8 @@
 # Maintainer: Shorin <shorin@example.com>
 _pkgname=clipsync
 pkgname=clipsync-git
-pkgver=v1.1.0.r7.48ce557
-pkgrel=2
+pkgver=v1.1.0.r9.9bdda3f
+pkgrel=3
 pkgdesc="Clipboard synchronization script for Wayland Compositor (X11 <--> Wayland)"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/clipsync"
