@@ -1,6 +1,6 @@
 pkgbase = cogpit
 	pkgdesc = Dashboard for browsing and inspecting Claude Code agent sessions
-	pkgver = 0.0.6
+	pkgver = 0.0.7
 	pkgrel = 1
 	url = https://github.com/gentritbiba/cogpit
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = cogpit
 	depends = mesa
 	depends = nss
 	depends = alsa-lib
-	source = cogpit-0.0.6.pacman::https://github.com/gentritbiba/cogpit/releases/download/v0.0.6/cogpit-0.0.6.pacman
-	sha256sums = ebcaffd227df9138af7b63c49155ab15c9ba32d537f545964d8328379f2db516
+	source = cogpit-0.0.7.pacman::https://github.com/gentritbiba/cogpit/releases/download/v0.0.7/cogpit-0.0.7.pacman
+	sha256sums = 67213638c24a99189065268e1731530f9779f40736fee8622790be91c313fba6
 
 pkgname = cogpit
