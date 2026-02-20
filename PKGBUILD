@@ -7,9 +7,9 @@ _filetype="tar.gz" # Source code is also available in .zip file, so specify it
 
 # Main info
 pkgname="${_name}-dkms"
-pkgver=0.1.0
-pkgrel=3
-pkgdesc="For Acer laptops -- kernel module to set Battery Charge Limit to 80%."
+pkgver=0.2.0
+pkgrel=1
+pkgdesc="For Acer laptops - kernel module to set Battery Charge Limit to 80%."
 arch=('any')
 url="https://github.com/${_user}/${_name}"
 license=('GPL-2.0')
@@ -24,7 +24,7 @@ source=(
   "dkms.conf"
 )
 sha256sums=(
-  'eadee2d9daf257b34098d8b1f21b9be08270b89b6249725f701f1f790b6c76ba'
+  '0c59dea83952f9d7ff2e3792725075951b023f149303c3721ceaf9cbec846836'
   '35988ccdeee6343d66b9ec99a47ee9fe9577932fc48158083df241ca3b5b3096'
   'd62ec611940ae5bf1b67ee47634811b901bf6f569eba516dd6e43cd6680d7a90'
   )
