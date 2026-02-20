@@ -1,7 +1,7 @@
 # Maintainer: 1jehuang <jeremyhuang55555@gmail.com>
 
 pkgname=jcode-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="AI coding agent with TUI — multi-model (Claude, OpenAI, OpenRouter), swarm coordination, 30+ tools"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
   "LICENSE::https://raw.githubusercontent.com/1jehuang/jcode/v${pkgver}/LICENSE"
 )
 sha256sums=(
-  'b2d97b9c6850aa419f5f9e448bc4c5d17c479c65c8406ded3972ba133554a0fd'
+  '58b60fe476f91560a5f65753141609fba176ef082feb46a5605b96bf5f81bf4d'
   '720443eee2efeda8f9f93a7a6a6f62763c17171106f60df58a35b8ea638fdf60'
 )
 
