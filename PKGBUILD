@@ -6,7 +6,7 @@
 
 _pkgname="gitify"
 pkgname="$_pkgname-git"
-pkgver=6.8.0.r22.gea6c591
+pkgver=6.17.0.r36.g75e2e19
 pkgrel=1
 pkgdesc="GitHub tray icon and notifications"
 url="https://github.com/gitify-app/gitify"
@@ -14,7 +14,7 @@ license=('MIT')
 arch=("any")
 
 depends=(
-  'electron'
+  "electron${_electron_version:-}"
 )
 makedepends=(
   'git'
@@ -66,13 +66,12 @@ _nvm_env() {
 build() (
   _nvm_env
 
-  local _electron_version=$(cat /usr/lib/electron/version)
+  local _electron_version=$(cat /usr/lib/electron${_electron_version:-}/version)
   local _electron_builder_options=(
     --linux dir
     --publish never
     -c.electronDist="/usr/lib/electron${_electron_version%%.*}"
     -c.electronVersion="${_electron_version:?}"
-    --config ./config/electron-builder.js
   )
 
   sed -E -e 's#("electron"): "[^"]+",#\1: "'${_electron_version}'",#' \
@@ -87,8 +86,7 @@ build() (
 )
 
 package() {
-  local _electron_version=$(cat /usr/lib/electron/version)
-
+  local _electron_version=$(cat /usr/lib/electron${_electron_version:-}/version)
   depends=("electron${_electron_version%%.*}")
 
   mkdir -pm755 "$pkgdir/$_install_path/$_pkgname"
