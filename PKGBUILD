@@ -52,7 +52,7 @@ EOF
 [Desktop Entry]
 Name=Kitten Space Agency
 Comment=Experimental build of Kitten Space Agency
-Exec=kittenspaceagency
+Exec=env XDG_SESSION_TYPE=x11 kittenspaceagency
 Icon=kittenspaceagency
 Terminal=false
 Type=Application
