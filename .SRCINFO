@@ -1,7 +1,7 @@
 pkgbase = libexecinfo
 	pkgdesc = BSD-licensed clone of backtrace facility found in GNU libc
 	pkgver = 1.1.0.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fam007e/libexecinfo
 	arch = x86_64
 	arch = i686

@@ -1,7 +1,7 @@
 # Maintainer: fam007e <faisalmoshiur@gmail.com>
 pkgname=libexecinfo
 pkgver=1.1.0.19
-pkgrel=1
+pkgrel=2
 pkgdesc="BSD-licensed clone of backtrace facility found in GNU libc"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/fam007e/libexecinfo"
@@ -16,16 +16,16 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/fam007e/libexecinfo/release
 sha256sums=('4a44750572d27dcc1e8764cf9b6625d3231e8ac87000ae4c985e681fd1c96b68')
 
 prepare() {
-    cd "$srcdir"
-    # The tarball structure might vary slightly depending on how it was packed,
-    # but our workflow packs it as libexecinfo-<version>.
-    # We simply cd into it in build().
-    :
+    cd "$srcdir/$pkgname-$pkgver"
+    # Fix libexecinfo.pc generation to use absolute paths
+    sed -i 's/\$\${libdir}/$(LIBDIR)/g' Makefile
+    sed -i 's/\$\${includedir}/$(INCLUDEDIR)/g' Makefile
+    sed -i 's/\$\${prefix}/$(PREFIX)/g' Makefile
 }
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    make PREFIX=/usr libdir=/usr/lib includedir=/usr/include all
+    make PREFIX=/usr LIBDIR=/usr/lib INCLUDEDIR=/usr/include/libexecinfo all libexecinfo.pc
 }
 
 check() {
@@ -35,6 +35,6 @@ check() {
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    make install DESTDIR="$pkgdir" PREFIX=/usr libdir=/usr/lib includedir=/usr/include
+    make install DESTDIR="$pkgdir" PREFIX=/usr LIBDIR=/usr/lib INCLUDEDIR=/usr/include/libexecinfo
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
