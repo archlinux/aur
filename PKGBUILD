@@ -1,11 +1,11 @@
 # Maintainer: Sebastian Ruziczka <aur@sebastianruziczka.de>
 pkgname=looksyk-desktop
 _pkgnameshort=looksyk
-pkgver=1.20.2
+pkgver=1.20.3
 pkgrel=1
 pkgdesc="A markdown centric, fast and local personal knowledge platform"
 arch=("x86_64")
-url="https://sebastianrzk.github.io/Looksyk"
+url="https://sebastianrzk.codeberg.page/looksyk"
 license=('AGPL-3.0-or-later')
 groups=()
 depends=(electron glibc bash gcc-libs git fontconfig curl openssl)
@@ -13,7 +13,7 @@ makedepends=(git nodejs-lts-jod npm cargo glibc bash gcc-libs pkgconf gettext)
 checkdepends=(cargo glibc gcc-libs)
 provides=(looksyk looksyk-backend)
 changelog=
-source=("git+https://github.com/sebastianrzk/looksyk#tag=v$pkgver")
+source=("git+https://codeberg.org/sebastianrzk/looksyk#tag=v$pkgver")
 sha256sums=('SKIP')
 
 prepare() {
