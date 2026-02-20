@@ -1,12 +1,10 @@
 [Desktop Entry]
-Version=1.0
-Name=Milton
-TryExec=milton
-Exec=milton %f
-Comment=An infinite-canvas paint program
-GenericName=Canvas Painting Program
 Type=Application
+Name=Milton
+GenericName=Painting Application
+Comment=Infinite canvas painting app
+Exec=milton
 Icon=milton
-#StartupNotify=true
-Categories=Graphics;GTK;2DGraphics;VectorGraphics;Art;
 Terminal=false
+Categories=Graphics;2DGraphics;RasterGraphics;
+MimeType=application/x-mlt;
