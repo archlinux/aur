@@ -5,8 +5,7 @@
 declare srcdir pkgdir
 pkgname=ttf-pragmasevka
 pkgver=1.7.0
-pkgrel=1
-epoch=
+pkgrel=2
 pkgdesc="Pragmata Pro doppelgänger made of Iosevka SS08"
 arch=(any)
 url="https://github.com/shytikov/pragmasevka"
@@ -22,7 +21,7 @@ package() {
     install -vDm644 -t "$pkgdir/usr/share/fonts/TTF" "pragmasevka-bolditalic.ttf"
     install -vDm644 -t "$pkgdir/usr/share/fonts/TTF" "pragmasevka-italic.ttf"
     install -vDm644 -t "$pkgdir/usr/share/fonts/TTF" "pragmasevka-regular.ttf"
-    install -vDm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md" LICENSE
+    install -vDm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
 
 # vim:set ts=4 sw=4 et:
