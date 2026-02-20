@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=rustconn
 _app_id=io.github.totoshko88.RustConn
-pkgver=0.8.8
+pkgver=0.8.9
 pkgrel=1
 pkgdesc="Modern connection manager for Linux with GTK4/Wayland-native interface."
 arch=('x86_64')
@@ -48,7 +48,7 @@ optdepends=(
   'virt-viewer: SPICE client option'
 )
 source=("RustConn-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ba14b54dbe307433fd667a4efbea718f49a9b21c7734404813c80f05ad4534b7')
+sha256sums=('88b6d6e4bd4bf79a8bc2b877385498f4d09da585f6b9f9d662525520b46cb480')
 
 prepare() {
   cd "RustConn-$pkgver"
