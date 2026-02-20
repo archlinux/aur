@@ -1,0 +1,17 @@
+pkgbase = zmosh-git
+	pkgdesc = Session persistence with auto-reconnect for terminal processes
+	pkgver = 0.4.0.r0.gabcdef
+	pkgrel = 1
+	url = https://github.com/mmonad/zmosh
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = zig>=0.15.0
+	depends = glibc
+	provides = zmosh
+	conflicts = zmosh
+	source = git+https://github.com/mmonad/zmosh.git
+	sha256sums = SKIP
+
+pkgname = zmosh-git
