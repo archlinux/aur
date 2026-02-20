@@ -1,0 +1,1 @@
+ACTION=="add", SUBSYSTEM=="input", KERNEL=="event*", ENV{ID_INPUT_JOYSTICK}=="?*", TAG+="systemd", ENV{SYSTEMD_USER_WANTS}+="wljoywake.service"
