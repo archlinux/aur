@@ -1,6 +1,6 @@
 pkgbase = ghidra-mcp-git
 	pkgdesc = Production-ready Model Context Protocol server for Ghidra reverse engineering platform (latest git version)
-	pkgver = r199.439ea7c
+	pkgver = 2.0.2.r0.g439ea7c
 	pkgrel = 1
 	url = https://github.com/bethington/ghidra-mcp
 	install = ghidra-mcp.install

@@ -1,6 +1,6 @@
 # Maintainer: Steve Holvoet <linux@steho.be>
 pkgname=ghidra-mcp-git
-pkgver=r199.439ea7c
+pkgver=2.0.2.r0.g439ea7c
 pkgrel=1
 pkgdesc="Production-ready Model Context Protocol server for Ghidra reverse engineering platform (latest git version)"
 arch=('any')
@@ -16,7 +16,7 @@ install=ghidra-mcp.install
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
