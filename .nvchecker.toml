@@ -1,0 +1,4 @@
+[eqonomize]
+source = "git"
+git = "https://github.com/Eqonomize/eqonomize.git"
+prefix = "v"
