@@ -2,7 +2,7 @@
 
 pkgname=krunner-spotify-enhanced-git
 pkgver=r0.0000000
-pkgrel=4
+pkgrel=5
 pkgdesc="KRunner plugin to control Spotify with spe commands"
 arch=('any')
 url='https://github.com/MeIsGaming/krunner-spotify-enhanced'
