@@ -1,0 +1,11 @@
+[Unit]
+Description=Hister web history service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/hister listen
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
