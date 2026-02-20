@@ -1,7 +1,7 @@
 pkgbase = r-fauxpas
 	pkgdesc = HTTP Error Helpers
-	pkgver = 0.5.2
-	pkgrel = 2
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=fauxpas
 	arch = any
 	license = MIT
@@ -14,8 +14,8 @@ pkgbase = r-fauxpas
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/fauxpas_0.5.2.tar.gz
-	md5sums = 6ee52b2a7c648240502bbb8b57a2222e
-	b2sums = 5a2b89683e178871b7c41a492a0ee095cef2a8c457f8affa911de020628ee17f131ecbc480738d2e117f7735fdbdeef1f09d8b6d30ff5842bf61a7583302b7de
+	source = https://cran.r-project.org/src/contrib/fauxpas_0.6.0.tar.gz
+	md5sums = 3667a7b3f40b708a1012eb31ee71e6b9
+	b2sums = 99c60a03134a12aca205b324b0200d8ef13a898492391c89939e4ec51b153e037a5289f15448df24f5f6558c63ed7c3bf38bca32983ce38d434e85fea976baa6
 
 pkgname = r-fauxpas
