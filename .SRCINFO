@@ -1,0 +1,19 @@
+pkgbase = proart-meter-git
+	pkgdesc = LED temperature meter controller for ASUS ProArt AIOs
+	pkgver = r3.5b67298
+	pkgrel = 1
+	url = https://github.com/cagriekin/proart-meter
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	makedepends = libusb
+	depends = libusb
+	depends = lm_sensors
+	provides = proart-meter
+	conflicts = proart-meter
+	backup = etc/proart-meter/config.yaml
+	source = git+https://github.com/cagriekin/proart-meter.git
+	sha256sums = SKIP
+
+pkgname = proart-meter-git
