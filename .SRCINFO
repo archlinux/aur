@@ -1,0 +1,22 @@
+pkgbase = vsdview
+	pkgdesc = Read-only viewer for Microsoft Visio files (.vsdx/.vsd) — GTK4/libadwaita
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/yeager/vsdview
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = gettext
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = python-cairo
+	optdepends = libvisio: legacy .vsd file support
+	source = vsdview-0.4.0.tar.gz::https://github.com/yeager/vsdview/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 33d2da59b194f9ad132472f95677aa9fc4d12bb8486b6c626257cbcca1885f6a
+
+pkgname = vsdview
