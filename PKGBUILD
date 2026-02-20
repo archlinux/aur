@@ -2,7 +2,7 @@
 pkgname=vanta-bin
 pkgver=1.7.0
 pkgrel=1
-pkgdesc="A hyper-fast, scriptable command palette for Wayland"
+pkgdesc="A hyper-fast, scriptable application launcher and command palette for Wayland"
 arch=('x86_64')
 url="https://github.com/Misiix9/vanta"
 license=('MIT')

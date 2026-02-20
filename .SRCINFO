@@ -1,5 +1,5 @@
 pkgbase = vanta-bin
-	pkgdesc = A hyper-fast, scriptable command palette for Wayland
+	pkgdesc = A hyper-fast, scriptable application launcher and command palette for Wayland
 	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/Misiix9/vanta
