@@ -19,6 +19,7 @@ pkgbase = plasma-mobile-git
 	depends = kpipewire-git
 	depends = plasma-settings
 	depends = kwin-git
+	depends = plasma-keyboard-git
 	conflicts = plasma-mobile
 	source = git+https://invent.kde.org/plasma/plasma-mobile.git
 	md5sums = SKIP

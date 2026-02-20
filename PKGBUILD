@@ -20,6 +20,7 @@ depends=(
   kpipewire-git
   plasma-settings
   kwin-git
+  plasma-keyboard-git
 )
 makedepends=('cmake' 'extra-cmake-modules')
 conflicts=('plasma-mobile')
