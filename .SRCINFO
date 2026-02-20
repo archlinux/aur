@@ -1,6 +1,6 @@
 pkgbase = minot
 	pkgdesc = A versatile toolset for debugging and verifying stateful robot perception software.
-	pkgver = 0.5.2
+	pkgver = 0.5.3
 	pkgrel = 3
 	url = https://github.com/uos/minot
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = minot
 	provides = rat
 	options = !lto
 	options = !debug
-	source = minot-0.5.2.tar.gz::https://github.com/uos/minot/archive/v0.5.2.tar.gz
+	source = minot-0.5.3.tar.gz::https://github.com/uos/minot/archive/v0.5.3.tar.gz
 	sha256sums = SKIP
 
 pkgname = minot

@@ -1,6 +1,6 @@
 # Maintainer: Christopher Sieh (stelzo) <stelzo@steado.de>
 pkgname=minot
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=3
 pkgdesc="A versatile toolset for debugging and verifying stateful robot perception software."
 arch=('x86_64')
