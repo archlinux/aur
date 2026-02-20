@@ -1,4 +1,4 @@
-pkgbase = aceplay-bin
+pkgbase = aceplay
 	pkgdesc = Modern CLI to play Ace Stream links - auto-starts acestream-engine, supports mpv/vlc (pre-built binary)
 	pkgver = 0.1.0
 	pkgrel = 1
@@ -14,4 +14,4 @@ pkgbase = aceplay-bin
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = aceplay-bin
+pkgname = aceplay
