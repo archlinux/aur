@@ -1,7 +1,7 @@
 # Maintainer: Gunnar Bretthauer <taijian@posteo.de>
 
 pkgname=calcardbackup
-pkgver=11.0.0
+pkgver=11.0.1
 pkgrel=1
 pkgdesc="Bash script to backup calendars and addressbooks from a local Nextcloud installation"
 arch=('any')
@@ -14,7 +14,7 @@ backup=(etc/${pkgname}/${pkgname}.conf)
 source=("https://codeberg.org/BernieO/${pkgname}/archive/v${pkgver}.tar.gz"
         ${pkgname}.service
         ${pkgname}.timer)
-sha256sums=('a89750ef4d951894d9a9925296398348a14a7e5cadae163a9ae2fdf7b59c477d'
+sha256sums=('e655f972b9395ec172a8211ff85e01eb286ffcfa4dc30c706ac4866f174ae435'
             '2288a3c62b736c322e23c36ca3d7c07dd849e716a372e80662b86b6c4c1e5a4b'
             '9cdb10575f2ed260ac6a403ca522ab1c5e523d58acda7ece6c353ddfc16a2476')
 
