@@ -18,6 +18,7 @@ depends=(
 )
 makedepends=(
   'git'
+  'glibc-locales'
   'imagemagick'
   'libglvnd'
   'mono-msbuild'
@@ -48,7 +49,7 @@ pkgver() {
 
 build() {
   cd "$_pkgsrc"
-  make
+  msbuild /nologo /verbosity:minimal -p:Configuration=Release BuilderMono.sln
 }
 
 package() {
