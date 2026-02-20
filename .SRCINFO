@@ -1,0 +1,19 @@
+pkgbase = krunner-spotify-enhanced-git
+	pkgdesc = KRunner plugin to control Spotify with spe commands
+	pkgver = r0.0000000
+	pkgrel = 2
+	url = https://github.com/MeIsGaming/krunner-spotify
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	provides = krunner-spotify-enhanced
+	conflicts = krunner-spotify-enhanced
+	depends = python
+	depends = python-spotipy
+	depends = python-dbus
+	depends = python-gobject
+	depends = plasma-workspace
+	source = git+https://github.com/MeIsGaming/krunner-spotify.git#branch=main
+	sha256sums = SKIP
+
+pkgname = krunner-spotify-enhanced-git
