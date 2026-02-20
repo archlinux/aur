@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-settings-daemon-git
-pkgver=1.0.0.alpha.7.r31.g99a6adc
+pkgver=1.0.7.r1.gdefa9f7
 pkgrel=1
 pkgdesc="Cosmic settings daemon"
 arch=('x86_64' 'aarch64')
@@ -14,6 +14,8 @@ depends=(
   'openssl'
   'playerctl'
   'pop-sound-theme-git'
+  'qt5ct'
+  'qt6ct'
   'systemd'
   'wireplumber'
   'xdg-utils'
@@ -24,6 +26,7 @@ makedepends=(
   'libxkbcommon'
   'mold'
 )
+optdepends=('breeze-icons')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/pop-os/cosmic-settings-daemon.git'
