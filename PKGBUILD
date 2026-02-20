@@ -3,7 +3,7 @@
 
 pkgname=octrafic
 _pkgname=octrafic-cli
-pkgver=0.3.4
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='AI-powered CLI tool for API testing and exploration'
 url='https://github.com/octrafic/octrafic-cli'
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0c81dd8828491f1840d9f76af24606b02a7b3d1038a64465010ed4f07a9f19a8')
+sha256sums=('3bf1247dcdf0dd5a6395581eb4fa051c8d64b9c9a2321669d4bf60c64b678733')
 
 prepare() {
     cd "$_pkgname-$pkgver"
