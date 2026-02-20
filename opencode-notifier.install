@@ -1,0 +1,21 @@
+post_install() {
+  echo "=========================================================================="
+  echo "  Opencode Notifier Plugin Installed"
+  echo "=========================================================================="
+  echo ""
+  echo "To enable this plugin, add it to your opencode configuration file"
+  echo "(e.g., ~/.config/opencode/opencode.json):"
+  echo ""
+  echo "  {"
+  echo "    \"plugin\": [\"file:///usr/lib/opencode/plugins/opencode-notifier\"]"
+  echo "  }"
+  echo ""
+  echo "To configure this plugin, edit ~/.config/opencode/opencode-notifier.json"
+  echo "See https://github.com/mohak34/opencode-notifier for more info."
+  echo ""
+  echo "=========================================================================="
+}
+
+post_upgrade() {
+  post_install
+}
