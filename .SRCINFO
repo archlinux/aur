@@ -12,6 +12,7 @@ pkgbase = wifi-manager-git
 	depends = gtk4-layer-shell
 	depends = networkmanager
 	depends = bluez
+	depends = libpulse
 	provides = wifi-manager
 	conflicts = wifi-manager
 	source = git+https://github.com/Vijay-papanaboina/wifi-manager.git
