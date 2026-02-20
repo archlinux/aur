@@ -1,0 +1,23 @@
+# This file is auto-generated. Do NOT edit by hand.
+# Regenerate on an Arch Linux machine with:
+#   makepkg --printsrcinfo > .SRCINFO
+
+pkgbase = tobby
+	pkgdesc = The Terminal Obby — a modern IRC client for the terminal
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/OWNER/tobby
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	depends = bun-bin
+	provides = tobby
+	conflicts = tobby-bin
+	options = !strip
+	noextract = tobby-0.1.0.tgz
+	source = tobby-0.1.0.tgz::https://registry.npmjs.org/tobby/-/tobby-0.1.0.tgz
+	sha256sums = SKIP
+
+pkgname = tobby
