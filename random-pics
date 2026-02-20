@@ -1,3 +1,0 @@
-#!/bin/sh
-export APPIMAGE_EXTRACT_AND_RUN=1
-exec /opt/random-pics/random-pics.AppImage "$@"

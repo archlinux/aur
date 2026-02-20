@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Random Pics
-Comment=Fast desktop local image viewer for gesture drawing practice
-Exec=random-pics
-Icon=random-pics
-Terminal=false
-Type=Application
-Categories=Graphics;Viewer;
