@@ -3,7 +3,7 @@
 pkgname=aceplay
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="Play Ace Stream links directly from your browser - modern Go implementation"
+pkgdesc="Modern CLI to play Ace Stream links - auto-starts acestream-engine, supports mpv/vlc"
 arch=('x86_64' 'aarch64')
 url="https://github.com/crstian19/aceplay"
 license=('MIT')
