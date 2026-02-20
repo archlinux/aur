@@ -1,5 +1,5 @@
 pkgname=kitsune-livewallpaper
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Kitsune live wallpaper engine runtime for Wayland/Hyprland"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('ffmpeg' 'mpvpaper' 'pulseaudio-utils' 'pipewire-pulse' 'procps-ng' 'pciutils' 'systemd')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('86be7a9c2de8f6c12daea39515b437e811d30743485ef27741adeaba9e34e891')
+sha256sums=('c3c56246799b6d21ada6a7bde8600bbfdf78e540f73b2753420571e91881b016')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
