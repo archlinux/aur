@@ -1,1 +1,2 @@
-u  bitcoin  -  -  /var/lib/electrs
+u  electrs  -  -  /var/lib/electrs
+m  electrs  bitcoin

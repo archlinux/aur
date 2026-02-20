@@ -21,9 +21,9 @@ TimeoutStopSec=600
 # Directory creation and permissions
 ####################################
 
-# Run as bitcoin:bitcoin
-User=bitcoin
-Group=bitcoin
+# Run as electrs user
+User=electrs
+Group=electrs
 
 # /etc/electrs
 ConfigurationDirectory=electrs
