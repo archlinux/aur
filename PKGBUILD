@@ -22,9 +22,9 @@ provides=("${_pypi_package}")
 replaces=("python-${pkgname}")
 conflicts=("python-${pkgname}")
 
-makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
-optdepends=('python-openai-whisper: local engine')
 depends=('python' 'python-requests')
+makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
+optdepends=('python-openai-whisper: local engine' 'python-faster-whisper: local engine')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
 sha256sums=('4435c46b8a53f35db66604baa990bc0e9fa06dc6d13577f9a3fac994d9c73c10')

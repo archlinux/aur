@@ -12,6 +12,7 @@ pkgbase = otranscribe
 	depends = python
 	depends = python-requests
 	optdepends = python-openai-whisper: local engine
+	optdepends = python-faster-whisper: local engine
 	provides = otranscribe
 	conflicts = python-otranscribe
 	replaces = python-otranscribe
