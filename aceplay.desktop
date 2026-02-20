@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Aceplay
+Comment=Play Ace Stream content
+Exec=aceplay %u
+Type=Application
+Terminal=false
+Icon=video-x-generic
+Categories=AudioVideo;Video;Network;
+MimeType=x-scheme-handler/acestream;
+StartupNotify=true

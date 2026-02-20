@@ -1,0 +1,21 @@
+pkgbase = aceplay
+	pkgdesc = Play Ace Stream links directly from your browser - modern Go implementation
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/crstian19/aceplay
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = acestream-engine
+	optdepends = mpv: recommended video player
+	optdepends = vlc: alternative video player
+	optdepends = ffplay: alternative video player
+	conflicts = acestream-launcher
+	replaces = acestream-launcher
+	source = https://github.com/crstian19/aceplay/releases/download/v0.1.0/aceplay-linux-x86_64
+	source = aceplay.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = aceplay
