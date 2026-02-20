@@ -16,11 +16,11 @@ pkgbase = simavr-git
 pkgname = simavr-git
 	provides = simavr
 	conflicts = simavr
-	options = strip
 
 pkgname = simavr-git-examples
 	depends = simavr-git=1.7.x
 	depends = freeglut
 	depends = glu
-	provides = simavr-git-examples
+	provides = simavr-examples
+	conflicts = simavr-examples
 	options = !strip

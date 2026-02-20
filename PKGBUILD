@@ -37,16 +37,13 @@ prepare()
 build() {
 	cd $srcdir/$pkgbase
 
-	make AVR_ROOT=/usr/avr RELEASE=1 \
-		CFLAGS="-Wall -Wextra -fPIC -O2 -std=gnu99 -Wno-sign-compare -Wno-unused-parameter" \
-		build-simavr build-parts
+	make AVR_ROOT=/usr/avr RELEASE=1
 }
 
 eval 'package_'$pkgbase'() {
 	cd $srcdir/$pkgbase
 	provides=($_pkgname)
 	conflicts=($_pkgname)
-	options=(strip)
 
 	install -dm755 $pkgdir/usr/{bin,lib/pkgconfig}
 
@@ -56,7 +53,8 @@ eval 'package_'$pkgbase'() {
 
 eval 'package_'$pkgbase'-examples() {
 	depends=($pkgbase=$pkgver freeglut glu)
-	provides=($pkgbase-examples)
+	provides=($_pkgname-examples)
+	conflicts=($_pkgname-examples)
 	options=(!strip)
 
 	cd $srcdir/$pkgbase
