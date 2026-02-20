@@ -1,0 +1,3 @@
+[perl-app-fatpacker]
+source = "cpan"
+cpan = "App-FatPacker"
