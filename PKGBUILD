@@ -1,6 +1,6 @@
 # Maintainer: rg-Sens Contributors
 pkgname=rg-sens-git
-pkgver=0.7.6
+pkgver=0.7.7
 pkgrel=1
 pkgdesc="A fast, customizable system monitoring dashboard for Linux (git version)"
 arch=('x86_64')
@@ -41,7 +41,7 @@ pkgver() {
         local count hash
         count=$(git rev-list --count HEAD 2>/dev/null || echo "0")
         hash=$(git rev-parse --short HEAD 2>/dev/null || echo "unknown")
-        echo "0.7.6.r${count}.g${hash}"
+        echo "0.7.7.r${count}.g${hash}"
     fi
 }
 
@@ -78,6 +78,10 @@ package() {
         "$pkgdir/usr/share/rg-sens/examples/art_nouveau_panel.html"
     install -Dm644 "examples/art_nouveau_panel.css" \
         "$pkgdir/usr/share/rg-sens/examples/art_nouveau_panel.css"
+    install -Dm644 "examples/art_nouveau_panel_responsive.html" \
+        "$pkgdir/usr/share/rg-sens/examples/art_nouveau_panel_responsive.html"
+    install -Dm644 "examples/art_nouveau_panel_responsive.css" \
+        "$pkgdir/usr/share/rg-sens/examples/art_nouveau_panel_responsive.css"
     install -Dm644 "examples/css_template_example.html" \
         "$pkgdir/usr/share/rg-sens/examples/css_template_example.html"
     install -Dm644 "examples/css_template_example.css" \
