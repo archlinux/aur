@@ -3,9 +3,8 @@
 
 pkgname=photoqt-bin
 _pkgname=photoqt
-pkgver=5.1
-_pkgver=5.1.0.1
-pkgrel=2
+pkgver=5.2
+pkgrel=1
 pkgdesc="Fast and highly configurable image viewer with a simple and nice interface (binary release)"
 arch=('x86_64')
 url="http://photoqt.org/"
@@ -15,8 +14,8 @@ provides=('photoqt' 'photoqt-bin-debug')
 depends=('exiv2' 'imagemagick' 'qt6-imageformats' 'qt6-multimedia' 'qt6-svg' 'qt6-declarative' 'qt6-location' 'qt6-positioning' 'libraw' 'hicolor-icon-theme' 'libarchive' 'kimageformats' 'mpv' 'resvg' 'python-pychromecast' 'qt6-webengine' 'zxing-cpp' 'lcms2' 'devil' 'openmp' 'yaml-cpp' 'qca-qt6')
 optdepends=('libqpsd-git: PSB/PSD support'
             'xcftools: XCF support')
-source=(https://photoqt.org/downloads/bin/$_pkgname-$_pkgver.tar.gz)
-sha256sums=('d21cb7ef60c12d42ca9ac6e592285f9c95eac1032efe27e4e78bd1464d9bca1d')
+source=(https://photoqt.org/downloads/bin/$_pkgname-$pkgver.tar.gz)
+sha256sums=('03f50b753a0cee926a605fd138ced7c29d3ac4c4a9fd36d5c245e8045c0bce5f')
 install="photoqt.install"
 
   # PhotoQt configured with:
@@ -26,6 +25,7 @@ install="photoqt.install"
   #          -DWITH_LOCATION=ON -DWITH_MOTIONPHOTO=ON -DWITH_PHOTOSPHERE=ON -DWITH_QTPDF=ON
   #          -DWITH_RESVG=ON -DWITH_VIDEO_MPV=ON -DWITH_VIDEO_QT=ON -DWITH_ZXING=ON
   #          -DWITH_GRAPHICSMAGICK=OFF -DWITH_POPPLER=OFF -DCMAKE_BUILD_TYPE=Release
+  #          -DCMAKE_INSTALL_PREFIX=/usr
 
 package() {
 
