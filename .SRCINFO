@@ -1,0 +1,19 @@
+pkgbase = eigengdb-git
+	pkgdesc = Pretty printer for eigen types (with some support for stan-math types).
+	pkgver = r23.c741ede
+	pkgrel = 1
+	url = https://github.com/dmillard/eigengdb
+	install = eigengdb-git.install
+	arch = any
+	license = MPL-2.0
+	makedepends = git
+	makedepends = python-setuptools
+	depends = gdb
+	depends = python
+	depends = python-numpy
+	provides = eigengdb
+	conflicts = eigengdb
+	source = eigengdb::git+https://github.com/dmillard/eigengdb.git
+	sha256sums = SKIP
+
+pkgname = eigengdb-git
