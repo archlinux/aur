@@ -3,7 +3,7 @@
   <id>br.com.irse.verse.desktop</id>
   
   <name>Bereia Versículos</name>
-  <summary>Leitor bíblico automático com anotações (ACF)</summary>
+  <summary>Seu Assistente Bíblico Inteligente.</summary>
   
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>CC-BY-NC-ND-4.0</project_license>
@@ -11,24 +11,60 @@
   
   <description>
     <p>
-      O Bereia Versículos é um projeto de código aberto do Instituto Reformado Santo Evangelho (IRSE) que visa facilitar o acesso e o estudo das Escrituras Sagradas.
+      Copie uma referência, veja o versículo na hora. Leve, rápido e com notas integradas para seus estudos.
     </p>
     <p>
-      Ele transforma automaticamente referências de versículos em texto legível, onde quer que você esteja: no seu desktop, navegando na web ou em seu site WordPress.
+      Chega de alternar entre abas ou abrir programas pesados para consultar versículos. O Bereia Versículos traz a Bíblia até você: basta copiar a referência e o texto aparece de forma rápida e elegante.
     </p>
+    <p>
+      Seja preparando um sermão, estudando para a escola dominical ou pesquisando para trabalhos acadêmicos, o Bereia oferece acesso imediato às Escrituras, além de um sistema de notas integrado para registrar cada revelação ou insight.
+    </p>
+    <p>Destaques:</p>
     <ul>
-      <li>Leitura completa da tradução Almeida Corrigida Fiel (ACF).</li>
-      <li>Detecção automática de referências bíblicas.</li>
+      <li>Popup automático de referências bíblicas.</li>
       <li>Sistema de anotações pessoais.</li>
       <li>Histórico de leitura.</li>
+      <li>Screenshot de versículos e notas.</li>
       <li>Sincronização opcional com Google Drive.</li>
     </ul>
+    <p>Leve, rápido e intuitivo.</p>
   </description>
   
   <launchable type="desktop-id">br.com.irse.verse.desktop</launchable>
   
+  <screenshots>
+    <screenshot type="default">
+      <caption>Visualização de versículos</caption>
+      <image type="source">https://raw.githubusercontent.com/Instituto-Reformado-Santo-Evangelho/bereia-verse/master/docs/prints/2026-02-20-053444_hyprshot.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Visualização do histórico recente</caption>
+      <image type="source">https://raw.githubusercontent.com/Instituto-Reformado-Santo-Evangelho/bereia-verse/master/docs/prints/2026-02-20-053502_hyprshot.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Visualização das anotações</caption>
+      <image type="source">https://raw.githubusercontent.com/Instituto-Reformado-Santo-Evangelho/bereia-verse/master/docs/prints/2026-02-20-053512_hyprshot.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Configurações</caption>
+      <image type="source">https://raw.githubusercontent.com/Instituto-Reformado-Santo-Evangelho/bereia-verse/master/docs/prints/2026-02-20-053539_hyprshot.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Captura de versículos</caption>
+      <image type="source">https://raw.githubusercontent.com/Instituto-Reformado-Santo-Evangelho/bereia-verse/master/docs/prints/2026-02-20-055504_hyprshot.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Captura de notas</caption>
+      <image type="source">https://raw.githubusercontent.com/Instituto-Reformado-Santo-Evangelho/bereia-verse/master/docs/prints/2026-02-20-055547_hyprshot.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Popup de referência copiada</caption>
+      <image type="source">https://raw.githubusercontent.com/Instituto-Reformado-Santo-Evangelho/bereia-verse/master/docs/prints/2026-02-20-055833_hyprshot.png</image>
+    </screenshot>
+  </screenshots>
+  
   <releases>
-    <release version="1.3.0" date="2026-02-20"/>
+    <release version="1.2.0" date="2026-02-20"/>
   </releases>
 
   <content_rating type="oars-1.1" />
