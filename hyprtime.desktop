@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=hyprtime
+Comment=minimal screen time tracker for hyprland
+Exec=hyprtime
+Icon=hyprtime
+Terminal=false
+Type=Application
+Categories=Utility;
