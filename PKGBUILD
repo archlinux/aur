@@ -1,13 +1,13 @@
 pkgname=hypr-dock-git
 pkgver=v1.1.1.r51.g09f7802
 pkgrel=1
-pkgdesc="Interactive Dock Panel for Hyprland"
+pkgdesc="Interactive Dock Panel for Hyprland (does not provide hypr-alttab)"
 arch=('x86_64')
 url="https://github.com/lotos-linux/hypr-dock"
 license=('GPL3')
 depends=('gtk3' 'gtk-layer-shell')
 makedepends=('git' 'go' 'make')
-provides=("hypr-dock" "hypr-alttab")
+provides=("hypr-dock")
 conflicts=("hypr-dock")
 source=("hypr-dock::git+$url")
 sha256sums=('SKIP')
@@ -31,7 +31,6 @@ build() {
 package() {
 	cd hypr-dock
 	install -Dm755 "bin/hypr-dock" "$pkgdir/usr/bin/hypr-dock"
-	install -Dm755 "bin/hypr-alttab" "$pkgdir/usr/bin/hypr-alttab"
 
 	# package configs so .install script can access them later
 	install -d "$pkgdir/usr/share/hypr-dock/configs"

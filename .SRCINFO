@@ -1,5 +1,5 @@
 pkgbase = hypr-dock-git
-	pkgdesc = Interactive Dock Panel for Hyprland
+	pkgdesc = Interactive Dock Panel for Hyprland (does not provide hypr-alttab)
 	pkgver = v1.1.1.r51.g09f7802
 	pkgrel = 1
 	url = https://github.com/lotos-linux/hypr-dock
@@ -12,7 +12,6 @@ pkgbase = hypr-dock-git
 	depends = gtk3
 	depends = gtk-layer-shell
 	provides = hypr-dock
-	provides = hypr-alttab
 	conflicts = hypr-dock
 	source = hypr-dock::git+https://github.com/lotos-linux/hypr-dock
 	sha256sums = SKIP
