@@ -31,7 +31,11 @@ makedepends=(
   'git'
 )
 provides=("$_pkgname")
-conflicts=("$_pkgname")
+conflicts=(
+  "$_pkgname"
+  quickshell
+  quickshell-git
+)
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git"
   quickshell-check.hook)
