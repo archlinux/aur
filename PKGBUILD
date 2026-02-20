@@ -2,7 +2,7 @@
 
 pkgname=prismlauncher-offline-bin
 pkgver=10.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Prism Launcher fork with offline account support enabled"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Diegiwg/PrismLauncher-Cracked"
@@ -60,7 +60,15 @@ package() {
   tar -xaf "$srcdir/prism-portable.tar.gz" -C "$tmpdir"
 
   cp -r "$tmpdir/bin/"* "$pkgdir/usr/bin/"
-  cp -r "$tmpdir/share/"* "$pkgdir/usr/share/"
+  cp -r \
+  "$tmpdir/share/applications" \
+  "$tmpdir/share/icons" \
+  "$tmpdir/share/man" \
+  "$tmpdir/share/metainfo" \
+  "$tmpdir/share/mime" \
+  "$tmpdir/PrismLauncher" \
+  "$tmpdir/qlogging-categories6" \
+  "$pkgdir/usr/share/"
 
   rm -rf "$tmpdir"
 }
