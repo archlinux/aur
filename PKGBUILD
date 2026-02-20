@@ -1,6 +1,6 @@
 pkgname=redpanda-connect-bin
 _pkgname=redpanda-connect
-pkgver=4.65.0
+pkgver=4.81.0
 pkgrel=1
 pkgdesc='Redpanda Connect is a declarative data streaming service'
 arch=('aarch64' 'armv6h' 'armv7h' 'x86_64')
