@@ -3,7 +3,7 @@
 # Contributor: Static_Rocket
 
 _pkgbase=asusctl
-pkgbase=${_pkgbase}-x11
+pkgbase=asusctl-x11
 pkgname=(
   asusctl-x11
   rog-control-center-x11

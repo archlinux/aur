@@ -1,4 +1,4 @@
-pkgbase = asusctl
+pkgbase = asusctl-x11
 	pkgdesc = A control daemon, tools, and a collection of crates for interacting with ASUS ROG laptops
 	pkgver = 6.3.2
 	pkgrel = 0.1
