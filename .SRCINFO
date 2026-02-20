@@ -1,4 +1,3 @@
-╰─❮ cat .SRCINFO
 pkgbase = noctalia-qs-git
 	pkgdesc = Flexible toolkit for making desktop shells with QtQuick
 	pkgver = 0.0.1.r0.gb2c7d52
