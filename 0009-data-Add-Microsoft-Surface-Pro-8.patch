@@ -1,4 +1,4 @@
-From 55fdc6767d3053618deac68640db2bb24fedf3e0 Mon Sep 17 00:00:00 2001
+From 945a192ce9e5324528f5a0a6209ec3010ef758a6 Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Sun, 11 Jun 2023 21:29:52 +0200
 Subject: [PATCH 09/16] data: Add Microsoft Surface Pro 8
@@ -11,7 +11,7 @@ Based on https://github.com/linux-surface/libwacom-surface/issues/13
 
 diff --git a/data/surface-pro8.tablet b/data/surface-pro8.tablet
 new file mode 100644
-index 0000000..dcfef11
+index 00000000..dcfef119
 --- /dev/null
 +++ b/data/surface-pro8.tablet
 @@ -0,0 +1,14 @@
@@ -30,5 +30,5 @@ index 0000000..dcfef11
 +Touch=true
 +Buttons=0
 -- 
-2.46.0
+2.52.0
 

@@ -1,4 +1,4 @@
-From 5ac41e97ba92275f23b6f0b3228d0390f31f8c4d Mon Sep 17 00:00:00 2001
+From d3bf424a70e01a4ad670d7329e2ea42c3bf1ae77 Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Tue, 18 Aug 2020 20:19:07 +0200
 Subject: [PATCH 06/16] data: Add Microsoft Surface Pro 6
@@ -10,7 +10,7 @@ Subject: [PATCH 06/16] data: Add Microsoft Surface Pro 6
 
 diff --git a/data/surface-pro6.tablet b/data/surface-pro6.tablet
 new file mode 100644
-index 0000000..eb89df0
+index 00000000..eb89df02
 --- /dev/null
 +++ b/data/surface-pro6.tablet
 @@ -0,0 +1,14 @@
@@ -29,5 +29,5 @@ index 0000000..eb89df0
 +Touch=true
 +Buttons=0
 -- 
-2.46.0
+2.52.0
 
