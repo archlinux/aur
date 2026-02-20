@@ -1,0 +1,18 @@
+pkgbase = are
+	pkgdesc = Another Easy Editor - a simple, easy to use terminal-based screen oriented editor
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://helltop.net/projects
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = custom:Artistic
+	makedepends = git
+	makedepends = cargo
+	depends = rust
+	provides = aee
+	conflicts = aee
+	source = git+https://github.com/anoraktrend/are.git
+	sha256sums = SKIP
+
+pkgname = are
