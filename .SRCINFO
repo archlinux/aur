@@ -1,0 +1,10 @@
+pkgbase = helix-themes-cptpotato
+	pkgver = latest.r11.g1fca5dc
+	pkgrel = 1
+	url = https://github.com/CptPotato/helix-themes
+	arch = x86_64
+	makedepends = git
+	source = helix-themes-cptpotato::git+https://github.com/CptPotato/helix-themes.git
+	sha512sums = SKIP
+
+pkgname = helix-themes-cptpotato
