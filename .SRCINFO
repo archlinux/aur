@@ -1,6 +1,6 @@
 pkgbase = vanta-bin
 	pkgdesc = A hyper-fast, scriptable command palette for Wayland
-	pkgver = 1.5.1
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/Misiix9/vanta
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = vanta-bin
 	depends = libayatana-appindicator
 	provides = vanta
 	conflicts = vanta
-	source = vanta_1.5.1_amd64.deb::https://github.com/Misiix9/vanta/releases/download/v1.5.1/vanta_1.5.1_amd64.deb
-	sha256sums = 10f18d018dd252d028225bd3095f963652732e1a8fa76391f18badba5576bf9e
+	source = vanta_1.7.0_amd64.deb::https://github.com/Misiix9/vanta/releases/download/v1.7.0/vanta_1.7.0_amd64.deb
+	sha256sums = 5077e158228faac43fd74ca6bf2332daeba2ba70c6fd110f1a2bd4d37e4fef2c
 
 pkgname = vanta-bin
