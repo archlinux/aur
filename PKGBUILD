@@ -2,7 +2,7 @@
 # Contributor: Michael Schlapa <michael@schlapa.eu>
 
 pkgname=nextcloud-app-cookbook
-pkgver=0.11.5
+pkgver=0.11.6
 pkgrel=1
 pkgdesc="Cookbook for Nextcloud"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/nextcloud/cookbook"
 license=('AGPL3')
 depends=('nextcloud')
 source=("nextcloud-app-cookbook-${pkgver}.tar.gz::https://github.com/christianlupus-nextcloud/cookbook-releases/releases/download/v${pkgver}/Cookbook-${pkgver}.tar.gz")
-sha512sums=('bf41dc9adc7e40644e621aeb503ab65e7ef413858fc727845380a666011efec2d7df87f8b610b1ea786a3f2c9ce850b6125c4e88e3b1007f70ec61b0f89e19cd')
+sha512sums=('d83b2746835727046281167b53e28a1a3ff989adcc22e8158e50763ac671b99d61a09ca6e5e27754f25cc4a2aad7b974f65c71abbf49e3adb728563935cea0b4')
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
