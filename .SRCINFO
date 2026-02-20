@@ -1,12 +1,13 @@
 pkgbase = wallchemy-bin
 	pkgdesc = CLI tool for fetching wallpapers from wallhaven.cc
 	pkgver = 1.0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/davenicholson-xyz/wallchemy
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	depends = glibc
+	provides = wallchemy
 	conflicts = wallchemy
 	source = https://raw.githubusercontent.com/davenicholson-xyz/wallchemy/refs/heads/main/LICENSE
 	sha256sums = ddee4d347b66b481a33906f023475e07c4c590f2ac3a889df597b95f803af1d1
