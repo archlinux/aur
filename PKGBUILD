@@ -1,7 +1,7 @@
 # Maintainer:
 
 : ${_build_deps:=true}
-: ${_ver_plutovg:=1.3.1}
+: ${_ver_plutovg:=1.3.2}
 : ${_ver_plutosvg:=0.0.7}
 
 : ${_commit=bc8151d2a46d4aba039ea5580afbfc7bfcf6d730}
@@ -9,7 +9,7 @@
 _pkgname="pcsx2"
 pkgname="$_pkgname"
 pkgver=2.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc='PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
 license=('GPL-3.0-or-later')
@@ -24,7 +24,9 @@ depends=(
   libxi
   libxrandr
   qt6-base
+  qt6-svg
   sdl3
+  shaderc
 )
 makedepends=(
   ## compiler
@@ -40,7 +42,6 @@ makedepends=(
 
   ## pcsx2
   qt6-tools
-  shaderc
   vulkan-headers
 
   # cubeb, no sound if not present

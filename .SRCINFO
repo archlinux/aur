@@ -1,7 +1,7 @@
 pkgbase = pcsx2
 	pkgdesc = PlayStation 2 emulator
 	pkgver = 2.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PCSX2/pcsx2
 	install = pcsx2.install
 	arch = x86_64
@@ -14,7 +14,6 @@ pkgbase = pcsx2
 	makedepends = git
 	makedepends = ninja
 	makedepends = qt6-tools
-	makedepends = shaderc
 	makedepends = vulkan-headers
 	makedepends = alsa-lib
 	makedepends = jack
@@ -31,7 +30,9 @@ pkgbase = pcsx2
 	depends = libxi
 	depends = libxrandr
 	depends = qt6-base
+	depends = qt6-svg
 	depends = sdl3
+	depends = shaderc
 	depends = freetype2
 	optdepends = alsa-utils: Sound player for RetroAchievements
 	optdepends = gstreamer: Backup sound player for RetroAchievements
@@ -39,7 +40,7 @@ pkgbase = pcsx2
 	options = lto
 	source = pcsx2::git+https://github.com/PCSX2/pcsx2.git#commit=bc8151d2a46d4aba039ea5580afbfc7bfcf6d730
 	source = pcsx2_patches::git+https://github.com/PCSX2/pcsx2_patches.git
-	source = plutovg::git+https://github.com/sammycage/plutovg.git#tag=v1.3.1
+	source = plutovg::git+https://github.com/sammycage/plutovg.git#tag=v1.3.2
 	source = plutosvg::git+https://github.com/sammycage/plutosvg.git#tag=v0.0.7
 	sha256sums = SKIP
 	sha256sums = SKIP
