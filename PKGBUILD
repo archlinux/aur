@@ -11,7 +11,7 @@ depends=('dbus' 'openconnect' 'oathtool' 'python' 'python-keyring' 'python-pyqt6
 optdepends=('python-secretstorage: recommended keyring backend on Linux')
 install="${pkgname}.install"
 source=("vpn-tray-${pkgver}.tar.gz::https://github.com/RythenGlyth/vpn-tray/releases/download/v1.0.0/vpn-tray-1.0.0.tar.gz" "${pkgname}.install")
-sha256sums=('d60fb902620eb55c4983866481e2731a323f45934c868c3f60cf5d39d84360ed' '5f1668aaa8fe5962e518a9a746cf0eb24a3d398e38965e6947ae83e8aa86f365')
+sha256sums=('3ac1039541f028fae25c14dda60adb553d9005aa50e45133ead8822761ac7d7c' '5f1668aaa8fe5962e518a9a746cf0eb24a3d398e38965e6947ae83e8aa86f365')
 
 package() {
   cd "${srcdir}/vpn-tray-1.0.0"
