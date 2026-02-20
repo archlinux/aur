@@ -1,12 +1,12 @@
 pkgbase = amdisp4-dkms
 	pkgdesc = AMD ISP4 and camera subsystem driver (part of AMD Ryzen AI Max 300 Series), stripped patches for dkms
-	pkgver = 7
+	pkgver = 8
 	pkgrel = 1
 	url = https://github.com/idovitz/amdisp4
 	arch = x86_64
 	license = GPL2
 	depends = dkms
-	source = https://github.com/idovitz/amdisp4/archive/refs/tags/7.tar.gz
-	b2sums = 2dd2044ce507897414006465178ed3436de718a9fe9ff3046aecf8cfdc886c9c3d844fe7a61f6712e012266e0668995662b4c5b512e447ddacd5ccb14505b4fd
+	source = https://github.com/idovitz/amdisp4/archive/refs/tags/8.tar.gz
+	b2sums = bd6af2ffe0899fd6fb81726e3828265b6ca9bae8925848eceb5181c5e624214cf4584211762feff59fdd459726653e8953d44c04f1938c72178014004f82c978
 
 pkgname = amdisp4-dkms
