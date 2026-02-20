@@ -13,26 +13,23 @@ source=("$pkgname"::git+https://github.com/Cogmasters/concord.git#branch=dev)
 md5sums=(SKIP)
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$srcdir/$pkgname"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/$pkgname"
-  make
+    cd "$srcdir/$pkgname"
+    make shared
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+    cd "$srcdir/$pkgname"
 
-  # Patching the Makefile to respect DESTDIR
-  sed -i \
-    -e 's|$(PREFIX)/include/concord|$(DESTDIR)$(PREFIX)/include/concord|g' \
-    -e 's|$(PREFIX)/lib|$(DESTDIR)$(PREFIX)/lib|g' \
-    -e 's|$(SHAREDIR)/pkgconfig|$(DESTDIR)$(SHAREDIR)/pkgconfig|g' \
-    Makefile
+    make PREFIX=/usr \
+         DESTLIBDIR="$pkgdir/usr/lib" \
+         DESTINCLUDE_DIR="$pkgdir/usr/include/concord" \
+         PKGCONFIGDIR="$pkgdir/usr/lib/pkgconfig" \
+         install
 
-  make PREFIX=/usr DESTDIR="$pkgdir" install
-
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
