@@ -1,4 +1,0 @@
-[trufflehog-bin]
-source = "git"
-git = "https://github.com/trufflesecurity/trufflehog.git"
-prefix = "v"
