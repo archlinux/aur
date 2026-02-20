@@ -1,0 +1,14 @@
+pkgbase = nautilus-create-file
+	pkgdesc = Nautilus extension to create new files via right-click context menu
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ii-shimul/nautilus-create-file
+	arch = any
+	license = MIT
+	depends = nautilus
+	depends = python-nautilus
+	depends = libadwaita
+	source = nautilus-create-file-1.0.0.tar.gz::https://github.com/ii-shimul/nautilus-create-file/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = nautilus-create-file
