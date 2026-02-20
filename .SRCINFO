@@ -9,12 +9,12 @@ pkgbase = kitsune-livewallpaper
 	makedepends = cargo
 	depends = ffmpeg
 	depends = mpvpaper
-	depends = pulseaudio-utils
+	depends = libpulse
 	depends = pipewire-pulse
 	depends = procps-ng
 	depends = pciutils
 	depends = systemd
 	source = kitsune-livewallpaper-0.2.1.tar.gz::https://github.com/KitotsuMolina/kitsune-livewallpaper/archive/refs/tags/v0.2.1.tar.gz
-	sha256sums = c3c56246799b6d21ada6a7bde8600bbfdf78e540f73b2753420571e91881b016
+	sha256sums = SKIP
 
 pkgname = kitsune-livewallpaper
