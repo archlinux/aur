@@ -1,7 +1,7 @@
-# Maintainer: Nazar Vinnichuk <nazar.vinnichuk at tutanota dot com>
+# Maintainer: Nazar Vinnichuk <nazar at vinnich dot uk>
 pkgname=pacwall-git
 _pkgname=${pkgname%-git}
-pkgver=2.3.r3.gca02590
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="A live wallpaper that shows the dependency graph and status of installed packages."
 url="http://github.com/Kharacternyk/${_pkgname}"
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('graphviz' 'fakeroot' 'libconfig')
 makedepends=('git')
 conflicts=("${_pkgname}")
-source=("$_pkgname::git+https://github.com/Kharacternyk/$_pkgname.git#branch=master")
+source=("$_pkgname::git+https://github.com/Kharacternyk/$_pkgname.git#branch=main")
 sha256sums=(SKIP)
 
 pkgver() {
