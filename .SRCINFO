@@ -1,13 +1,13 @@
 pkgbase = archlinux-java-run
 	pkgdesc = Java Application Launcher for Arch Linux
-	pkgver = 11
+	pkgver = 12
 	pkgrel = 1
 	url = https://github.com/michaellass/archlinux-java-run
 	arch = any
 	license = MIT
 	depends = bash
 	depends = java-runtime-common
-	source = https://github.com/michaellass/archlinux-java-run/archive/v11.tar.gz
-	sha256sums = a6533fe22834891e7b401271281e7895438325ea6b030390d339d644e7d1096e
+	source = https://github.com/michaellass/archlinux-java-run/archive/v12.tar.gz
+	sha256sums = de935ee8aaae3e59d619c96deab6d126a11e994e498634760952b83a1b9da2dc
 
 pkgname = archlinux-java-run
