@@ -3,7 +3,7 @@
 
 pkgname='stanc'
 pkgdesc="A package for obtaining Bayesian inference using the No-U-Turn sampler, a variant of Hamiltonian Monte Carlo."
-pkgver=2.36.0
+pkgver=2.38.0
 pkgrel=1
 arch=('i686' 'x86_64' 'aarch64')
 url='https://mc-stan.org/'
@@ -26,13 +26,22 @@ source=("stanc-${pkgver}.tar.gz::https://github.com/stan-dev/cmdstan/archive/ref
   "stan-${pkgver}.tar.gz::https://github.com/stan-dev/stan/archive/refs/tags/v${pkgver}.tar.gz"
   cli11.patch
   local
+  "eigen.patch::https://github.com/stan-dev/stan/pull/3371.patch"
 )
-sha512sums=('66e5c24391786675a3ddde0042a8a09018141b4bae1706eb3bc05366287cb02f448bd15d83f7560be8f90d5a747045f7d9c40c8ebcbd92d7456e47cb0d649276'
-  'dc2ccb8aa077a9bdde2caa71796b0a3718b88abfe62ab881e5171d988f4c839573d5c89a51eec54e8907f03157bb68acbcc26d523735cd5d90c219b0111c53cb'
-  'c9ad30e8dcb9264315c7078f8f4495417e6937b0207b043776e1fab2acd10704d5518ae04aa535827d17178311014bbe1555692aec0833b7c039e9af1e6c5ad5'
-  'b0ed660067f8266adc4eff0c8ef50ef2da0bdb4c161a82e02b6898b84a81740ca6968ec686b4a13140102a57aee23f9b3df1208ca460120db9e3325e1903c7b4')
+sha512sums=('02a7469401465a6c2424e7b3781e0b85f0f064b4ce1251f6bad4b139ba4bbb360548135d85690c9effaf0ae973bd9b1dd187b73012eee5de90e2dbd28fb9925b'
+            '886b70f59a7b3e6fb3b161d54e67b17df184eb9e14171f8e67ab0c5eaa7c2145ec7df71e6388a4b27297262f53ab553f3acfa008f7242abae717b3a3c0cce472'
+            'c9ad30e8dcb9264315c7078f8f4495417e6937b0207b043776e1fab2acd10704d5518ae04aa535827d17178311014bbe1555692aec0833b7c039e9af1e6c5ad5'
+            'b0ed660067f8266adc4eff0c8ef50ef2da0bdb4c161a82e02b6898b84a81740ca6968ec686b4a13140102a57aee23f9b3df1208ca460120db9e3325e1903c7b4'
+            '3f769226cdb53730ed95fdc271c5f816d51a1483741d126c6fdc7e90d41dc478795a3f1500a48b5c3dd8fa43668c039be137f519477d7c7e096fe63bffacaeda')
 
+_apply_patch() {
+  cd "${srcdir}/stan-${pkgver/_/-}"
+  patch --strip=1 <${srcdir}/eigen.patch
+}
 prepare() {
+  (
+    _apply_patch
+  )
   cp -rf "${srcdir}/stan-${pkgver/_/-}"/* "${srcdir}/cmdstan-${pkgver/_/-}/stan/"
 
   cd "${srcdir}/cmdstan-${pkgver/_/-}"
