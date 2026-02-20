@@ -1,0 +1,11 @@
+--- a/internal/adaptors/application/parameter/defaultparameters/defaultparameters.go
++++ b/internal/adaptors/application/parameter/defaultparameters/defaultparameters.go
+@@ -35,7 +35,7 @@
+ 	return parameter.NewParameter(
+ 		"DisableTelemetry",
+ 		"disable-telemetry",
+-		false,
++		true,
+ 		"",
+ 		messages.CLIMessages_DisableTelemetryDescription,
+ 		false,
