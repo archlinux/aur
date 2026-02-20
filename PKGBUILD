@@ -1,6 +1,6 @@
 # Maintainer: Quadsam <sam@quadsam.com>
 pkgname='dmenustatus-git'
-pkgver=0.10.4.r0.666d42b
+pkgver=0.10.6.r0.cedbad0
 pkgrel=1
 pkgdesc="A statusbar for dmenu written in C."
 arch=('x86_64')
