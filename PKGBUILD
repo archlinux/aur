@@ -1,6 +1,6 @@
 # Maintainer: Austin Riba <austin@m51.io>
 pkgname=gelly
-pkgver=0.18.1
+pkgver=0.18.2
 pkgrel=1
 pkgdesc="A Jellyfin media server client focused on music."
 url="https://github.com/Fingel/gelly"
@@ -10,7 +10,7 @@ makedepends=("cargo")
 arch=("x86_64" "aarch64")
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Fingel/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=("405c4bf5fa81eb1bd90ea53ec5b48f0c446841c155e749d20f482d4bb916896e6dde30b5b60fb5de59edb197d72c70ed332619979e8defd2db904f0d12159684")
+sha512sums=("78d7447eba6436256254907efb61ed5a659db9f020edb39c097335671069285d85a5868167cc917b8b43848bc044a9b520e98ee8966e45d4e0f15a06e6aeeda6")
 
 prepare() {
     cd "$pkgname-$pkgver"
