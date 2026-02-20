@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index 8d77375e8d..4420d1b69a 100644
+index 790b3ffe6b..3b1208a3ba 100644
 --- a/package.json
 +++ b/package.json
 @@ -51,11 +51,11 @@
@@ -24,9 +24,9 @@ index 8d77375e8d..4420d1b69a 100644
 -    "format:all": "pnpm format && pnpm format:swift",
 +    "format:all": "bun run format && bun run format:swift",
      "format:check": "oxfmt --check",
+     "format:diff": "oxfmt --write && git --no-pager diff",
      "format:docs": "git ls-files 'docs/**/*.md' 'docs/**/*.mdx' 'README.md' | xargs oxfmt --write",
-     "format:docs:check": "git ls-files 'docs/**/*.md' 'docs/**/*.mdx' 'README.md' | xargs oxfmt --check",
-@@ -76,10 +76,10 @@
+@@ -78,10 +78,10 @@
      "ios:open": "bash -lc './scripts/ios-configure-signing.sh && cd apps/ios && xcodegen generate && open OpenClaw.xcodeproj'",
      "ios:run": "bash -lc './scripts/ios-configure-signing.sh && cd apps/ios && xcodegen generate && xcodebuild -project OpenClaw.xcodeproj -scheme OpenClaw -destination \"${IOS_DEST:-platform=iOS Simulator,name=iPhone 17}\" -configuration Debug build && xcrun simctl boot \"${IOS_SIM:-iPhone 17}\" || true && xcrun simctl launch booted ai.openclaw.ios'",
      "lint": "oxlint --type-aware",
@@ -41,7 +41,7 @@ index 8d77375e8d..4420d1b69a 100644
      "lint:swift": "swiftlint lint --config .swiftlint.yml && (cd apps/ios && swiftlint lint --config .swiftlint.yml)",
      "mac:open": "open dist/OpenClaw.app",
      "mac:package": "bash scripts/package-mac-app.sh",
-@@ -88,17 +88,17 @@
+@@ -90,17 +90,17 @@
      "openclaw": "node scripts/run-node.mjs",
      "openclaw:rpc": "node scripts/run-node.mjs agent --mode rpc --json",
      "plugins:sync": "node --import tsx scripts/sync-plugin-versions.ts",
@@ -63,7 +63,7 @@ index 8d77375e8d..4420d1b69a 100644
      "test:docker:cleanup": "bash scripts/test-cleanup-docker.sh",
      "test:docker:doctor-switch": "bash scripts/e2e/doctor-install-switch-docker.sh",
      "test:docker:gateway-network": "bash scripts/e2e/gateway-network-docker.sh",
-@@ -116,7 +116,7 @@
+@@ -118,7 +118,7 @@
      "test:install:smoke": "bash scripts/test-install-sh-docker.sh",
      "test:live": "OPENCLAW_LIVE_TEST=1 CLAWDBOT_LIVE_TEST=1 vitest run --config vitest.live.config.ts",
      "test:macmini": "OPENCLAW_TEST_VM_FORKS=0 OPENCLAW_TEST_PROFILE=serial node scripts/test-parallel.mjs",
@@ -72,15 +72,15 @@ index 8d77375e8d..4420d1b69a 100644
      "test:voicecall:closedloop": "vitest run extensions/voice-call/src/manager.test.ts extensions/voice-call/src/media-stream.test.ts src/plugins/voice-call.plugin.test.ts --maxWorkers=1",
      "test:watch": "vitest",
      "tui": "node scripts/run-node.mjs tui",
-@@ -192,6 +192,7 @@
-     "@typescript/native-preview": "7.0.0-dev.20260217.1",
+@@ -194,6 +194,7 @@
+     "@typescript/native-preview": "7.0.0-dev.20260219.1",
      "@vitest/coverage-v8": "^4.0.18",
      "lit": "^3.3.2",
 +    "node-gyp": "^12.2.0",
      "ollama": "^0.6.3",
      "oxfmt": "0.33.0",
      "oxlint": "^1.48.0",
-@@ -209,7 +210,7 @@
+@@ -211,7 +212,7 @@
    "engines": {
      "node": ">=22.12.0"
    },
@@ -89,7 +89,7 @@ index 8d77375e8d..4420d1b69a 100644
    "pnpm": {
      "minimumReleaseAge": 2880,
      "overrides": {
-@@ -232,4 +233,4 @@
+@@ -238,4 +239,4 @@
        "sharp"
      ]
    }
@@ -203,10 +203,10 @@ index 6bea6b75c7..cf72854038 100644
 +  return withWarnings(await executeInstallCommand({ argv, timeoutMs, env, cwd }), warnings);
  }
 diff --git a/src/plugins/discovery.ts b/src/plugins/discovery.ts
-index 02b10ade64..bc05605061 100644
+index 932602107e..1b4f5d43a7 100644
 --- a/src/plugins/discovery.ts
 +++ b/src/plugins/discovery.ts
-@@ -200,6 +200,75 @@ function discoverInDirectory(params: {
+@@ -420,6 +420,75 @@ function discoverInDirectory(params: {
    }
  }
  
@@ -282,7 +282,7 @@ index 02b10ade64..bc05605061 100644
  function discoverFromPath(params: {
    rawPath: string;
    origin: PluginOrigin;
-@@ -349,6 +418,15 @@ export function discoverOpenClawPlugins(params: {
+@@ -589,6 +658,15 @@ export function discoverOpenClawPlugins(params: {
      seen,
    });
  
@@ -299,10 +299,10 @@ index 02b10ade64..bc05605061 100644
    if (bundledDir) {
      discoverInDirectory({
 diff --git a/src/plugins/install.ts b/src/plugins/install.ts
-index 537ece54a2..bb23458f41 100644
+index 500162af70..772647dc93 100644
 --- a/src/plugins/install.ts
 +++ b/src/plugins/install.ts
-@@ -22,6 +22,7 @@ import {
+@@ -24,6 +24,7 @@ import { installFromNpmSpecArchive } from "../infra/npm-pack-install.js";
  import { validateRegistryNpmSpec } from "../infra/npm-registry-spec.js";
  import { extensionUsesSkippedScannerPath, isPathInside } from "../security/scan-paths.js";
  import * as skillScanner from "../security/skill-scanner.js";
@@ -310,28 +310,7 @@ index 537ece54a2..bb23458f41 100644
  import { CONFIG_DIR, resolveUserPath } from "../utils.js";
  
  type PluginInstallLogger = {
-@@ -37,13 +38,13 @@ type PackageManifest = {
- 
- export type InstallPluginResult =
-   | {
--      ok: true;
--      pluginId: string;
--      targetDir: string;
--      manifestName?: string;
--      version?: string;
--      extensions: string[];
--    }
-+    ok: true;
-+    pluginId: string;
-+    targetDir: string;
-+    manifestName?: string;
-+    version?: string;
-+    extensions: string[];
-+  }
-   | { ok: false; error: string };
- 
- const defaultLogger: PluginInstallLogger = {};
-@@ -298,6 +299,35 @@ export async function installPluginFromArchive(params: {
+@@ -309,6 +310,35 @@ export async function installPluginFromArchive(params: {
    dryRun?: boolean;
    expectedPluginId?: string;
  }): Promise<InstallPluginResult> {

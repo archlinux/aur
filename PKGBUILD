@@ -1,6 +1,6 @@
 # Maintainer: Wuxxin <wuxxin@gmail.com>
 pkgname=openclaw-git
-pkgver=2026.2.17.r65.g9c2b82362e
+pkgver=2026.2.19.r80.g72e937a591
 pkgrel=1
 pkgdesc="Personal AI assistant that runs on your own devices"
 arch=('x86_64')
@@ -25,7 +25,7 @@ sha256sums=('SKIP'
             '28568550c4674efc8b90a9b4ea5cf9dc024770275c089499a5cc5d7064d1bba8'
             '44b23035089628327dbb05b1aa7a6daf09f21b82c0172ca59ed4576d3aa7b9a5'
             '34fa95679d51f4d5be120e98714f8b580689e57bef6eb031dcf35c0b26948e7d'
-            '6d3adbb73a2372826e9395fa886c189cbd2cad8d6593a5b7ca74cb1baa6463a3'
+            '5496255ca69436f85bc046d9cf67928eb460bcedfaaa3fb6e43210506c1e2a3d'
             '72cf00f138984381e747bafe04d853d4f8dc3b6e2fa92f58e0739e881eda2799'
             '81083a3a0a6d38c2169a83d35597f045e969d75d8f9607040edb525b5d1188e3')
 
