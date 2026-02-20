@@ -1,6 +1,6 @@
 pkgbase = plasma-mobile
 	pkgdesc = Plasma Mobile shell components.
-	pkgver = 6.5.5
+	pkgver = 6.6.0
 	pkgrel = 1
 	url = https://invent.kde.org/plasma/plasma-mobile
 	arch = x86_64
@@ -27,11 +27,12 @@ pkgbase = plasma-mobile
 	depends = kpipewire
 	depends = plasma-settings
 	depends = kwin
+	depends = plasma-keyboard
 	optdepends = plasma-dialer: Phone application
 	optdepends = plasma-workspace-wallpapers: A large wallpaper selection for Plasma
 	optdepends = plasma-mobile-sounds: Plasma Mobile sound theme
 	conflicts = plasma-mobile-git
-	source = https://download.kde.org/stable/plasma/6.5.5/plasma-mobile-6.5.5.tar.xz
-	sha256sums = 847d7a670134c36d0f7b8ca33c41ac772c84a066c790c7500271739b76ff5480
+	source = https://download.kde.org/stable/plasma/6.6.0/plasma-mobile-6.6.0.tar.xz
+	sha256sums = 4542ffdacc6d8eea1d690cf53c0c5ad7dc5a561eb6da81c771c632ce46764613
 
 pkgname = plasma-mobile

@@ -1,6 +1,6 @@
 # Maintainer: Devin Lin <devin@kde.org>
 pkgname=plasma-mobile
-pkgver=6.5.5
+pkgver=6.6.0
 pkgrel=1
 pkgdesc="Plasma Mobile shell components."
 arch=(x86_64 i686 i486 pentium4 arm armv6h armv7h aarch64)
@@ -20,6 +20,7 @@ depends=(
   kpipewire
   plasma-settings
   kwin
+  plasma-keyboard
 )
 optdepends=(
   'plasma-dialer: Phone application'
@@ -29,7 +30,7 @@ optdepends=(
 conflicts=('plasma-mobile-git')
 makedepends=(cmake extra-cmake-modules plasma-wayland-protocols)
 source=("https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('847d7a670134c36d0f7b8ca33c41ac772c84a066c790c7500271739b76ff5480')
+sha256sums=('4542ffdacc6d8eea1d690cf53c0c5ad7dc5a561eb6da81c771c632ce46764613')
 
 prepare() {
   mkdir -p build
