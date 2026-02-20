@@ -1,7 +1,7 @@
 # Maintainer: Renato de Oliveira <renatoi at github>
 pkgname=azeron-software
 pkgver=1.5.6
-pkgrel=4
+pkgrel=5
 pkgdesc='Configuration tool for Azeron keypads (unofficial Linux repackage)'
 arch=('x86_64')
 url='https://github.com/renatoi/azeron-linux'
@@ -66,7 +66,7 @@ package() {
 [Desktop Entry]
 Name=Azeron Software
 Comment=Configuration tool for Azeron keypads
-Exec=/opt/${pkgname}/azeron-software-v1 --no-sandbox %U
+Exec=/opt/${pkgname}/azeron-software-v1 --ozone-platform=x11 --no-sandbox %U
 Icon=azeron-software
 Terminal=false
 Type=Application
