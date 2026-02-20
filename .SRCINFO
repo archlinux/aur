@@ -1,6 +1,6 @@
 pkgbase = rusticlone
 	pkgdesc = 3-2-1 backups using Rustic and RClone
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://github.com/AlphaJack/rusticlone
 	arch = any
@@ -12,10 +12,10 @@ pkgbase = rusticlone
 	depends = python
 	depends = rclone>=1.67.0
 	depends = rustic>=0.10.0
-	depends = rustic<0.11.0
+	depends = rustic<0.12.0
 	depends = python-importlib-metadata
 	depends = python-configargparse
-	source = rusticlone-1.6.0.tar.gz::https://github.com/AlphaJack/rusticlone/archive/refs/tags/v1.6.0.tar.gz
-	b2sums = c87ac32999468da775d6d5ae8ee33a2f3ea1d9007cfdcaba85cdde09d630a327e8db47ddd2183bce1687ef573d9f5cebdf8f658a1846cb5b5bd70c58ff3881b9
+	source = rusticlone-1.6.1.tar.gz::https://github.com/AlphaJack/rusticlone/archive/refs/tags/v1.6.1.tar.gz
+	b2sums = 6831712ee9799c6e712965050f86cb343bc2c4aa6ee2fba51790b23688b313681d46805c30dc60390fa41ebca35393f145c7a0fe3b07be53554353c1191c6daa
 
 pkgname = rusticlone

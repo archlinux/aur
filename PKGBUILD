@@ -1,16 +1,16 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="rusticlone"
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="3-2-1 backups using Rustic and RClone"
 url="https://github.com/AlphaJack/rusticlone"
 license=("GPL-3.0-or-later")
 arch=("any")
-depends=("python" "rclone>=1.67.0" "rustic>=0.10.0" "rustic<0.11.0" "python-importlib-metadata" "python-configargparse")
+depends=("python" "rclone>=1.67.0" "rustic>=0.10.0" "rustic<0.12.0" "python-importlib-metadata" "python-configargparse")
 makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools")
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('c87ac32999468da775d6d5ae8ee33a2f3ea1d9007cfdcaba85cdde09d630a327e8db47ddd2183bce1687ef573d9f5cebdf8f658a1846cb5b5bd70c58ff3881b9')
+b2sums=('6831712ee9799c6e712965050f86cb343bc2c4aa6ee2fba51790b23688b313681d46805c30dc60390fa41ebca35393f145c7a0fe3b07be53554353c1191c6daa')
 
 build(){
  cd "$pkgname-$pkgver"
