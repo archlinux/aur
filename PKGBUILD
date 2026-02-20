@@ -1,15 +1,15 @@
-# Maintainer: Tomasz Pakuła <forest10pl(at)gmail.com>
+# Maintainer: Michał Kopeć <michal@nozomi.space>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 # This PKGBUILD script and the config file are based on official Arch's linux package
 # Refer to config file to get the exact versions it's based on. Any changes to the config
 # will be on config.extra file.
 
-pkgbase=linux-lawstorant-git
+pkgbase=linux-mkopec-git
 pkgver=6.18.6.r17.1834061e103f
 pkgrel=1
-pkgdesc='Linux with curent work from Lawstorant'
-url='https://github.com/Lawstorant/linux#branch=vrr-fixing'
+pkgdesc='Linux with curent work from mkopec'
+url='https://github.com/mkopec/linux.git'
 arch=(x86_64)
 license=(GPL-2.0-only)
 _userconfig="/etc/${pkgbase}/config"
@@ -41,9 +41,9 @@ options=(
   !debug
   !strip
 )
-_srcname=linux-lawstorant
+_srcname=linux-mkopec
 source=(
-  "$_srcname::git+https://github.com/Lawstorant/linux#branch=vrr-fixing"
+  "$_srcname::git+https://github.com/mkopec/linux.git"
   config         # the main kernel config file
   config.extra   # additional configs
   config.user    # user custom config
