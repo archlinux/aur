@@ -1,0 +1,23 @@
+# This file is auto-generated. Do NOT edit by hand.
+# Regenerate on an Arch Linux machine with:
+#   makepkg --printsrcinfo > .SRCINFO
+
+pkgbase = tobby-bin
+	pkgdesc = The Terminal Obby — a modern IRC client for the terminal (pre-built binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/OWNER/tobby
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = tobby
+	conflicts = tobby
+	options = !strip
+	source = LICENSE::https://raw.githubusercontent.com/OWNER/tobby/v0.1.0/LICENSE
+	sha256sums = SKIP
+	source_x86_64 = tobby-0.1.0-x86_64::https://github.com/OWNER/tobby/releases/download/v0.1.0/tobby-x86_64-linux
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = tobby-0.1.0-aarch64::https://github.com/OWNER/tobby/releases/download/v0.1.0/tobby-aarch64-linux
+	sha256sums_aarch64 = SKIP
+
+pkgname = tobby-bin
