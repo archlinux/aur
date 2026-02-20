@@ -1,4 +1,4 @@
-# Maintainer: flaviofearn <flavioislima@gmail.com>
+# Maintainer: flaviofearn <heroicgameslauncher@protonmail.com>
 
 pkgname=heroic-games-launcher-bin
 pkgver=2.19.1
