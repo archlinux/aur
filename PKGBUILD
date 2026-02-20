@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc='A fully transactional graph database implemented in Java (binary package)'
 license=('GPL-3.0-only')
 arch=('any')
-url="https://github.com/neo4j/neo4j"
+url="https://neo4j.com/deployment-center/#panel7"
 _min_java_version=21
 depends=("java-runtime>=$_min_java_version" "psmisc")
 provides=("${_pkgname}" "${_pkgname}=${pkgver}")
