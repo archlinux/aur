@@ -1,7 +1,7 @@
 pkgbase = krunner-spotify-enhanced-git
 	pkgdesc = KRunner plugin to control Spotify with spe commands
 	pkgver = r0.0000000
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/MeIsGaming/krunner-spotify-enhanced
 	arch = any
 	license = GPL-3.0-only

@@ -2,7 +2,7 @@
 
 pkgname=krunner-spotify-enhanced-git
 pkgver=r0.0000000
-pkgrel=3
+pkgrel=4
 pkgdesc="KRunner plugin to control Spotify with spe commands"
 arch=('any')
 url='https://github.com/MeIsGaming/krunner-spotify-enhanced'
@@ -15,12 +15,12 @@ source=("git+${url}.git#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/krunner-spotify"
+  cd "${srcdir}/krunner-spotify-enhanced"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "${srcdir}/krunner-spotify"
+  cd "${srcdir}/krunner-spotify-enhanced"
 
   local module_dir="${pkgdir}/usr/lib/krunner-spotify-enhanced"
   install -d "${module_dir}"
