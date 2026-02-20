@@ -1,0 +1,21 @@
+pkgbase = python-smooth
+	pkgdesc = AI browser automation SDK and CLI - control browsers with natural language
+	pkgver = 0.4.1.post1
+	pkgrel = 1
+	url = https://github.com/circlemind-ai/smooth-sdk
+	arch = any
+	license = custom:proprietary
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	depends = python
+	depends = python-pydantic
+	depends = python-aiohttp
+	depends = python-aiohttp-retry
+	depends = python-deprecated
+	depends = python-nanoid
+	optdepends = python-fastmcp: MCP server support
+	source = https://files.pythonhosted.org/packages/source/s/smooth-py/smooth_py-0.4.1.post1.tar.gz
+	sha256sums = 389ee0e53f50544bfc3aee9fce5906466dfd9ff892f68ac9e03e2c4eca251d2f
+
+pkgname = python-smooth
