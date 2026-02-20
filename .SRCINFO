@@ -1,12 +1,12 @@
 pkgbase = org-cli-bin
 	pkgdesc = CLI for org-mode file manipulation and org-roam database management
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/dcprevere/org-cli
 	arch = x86_64
 	provides = org-cli
 	conflicts = org-cli
-	source = org-cli-bin-0.2.0.tar.gz::https://github.com/dcprevere/org-cli/releases/download/v0.2.0/org-linux-x64.tar.gz
-	sha256sums = c1413b0a607282f600e1720b733b0748873c77840e439afb8392921b2aee45e5
+	source = org-cli-bin-0.2.1.tar.gz::https://github.com/dcprevere/org-cli/releases/download/v0.2.1/org-linux-x64.tar.gz
+	sha256sums = f6219845c4cdc089b6e78472c96477eaa28a385a6149b89368b91b9fb2ac3576
 
 pkgname = org-cli-bin

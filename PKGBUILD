@@ -1,6 +1,6 @@
 # Maintainer: dcprevere
 pkgname=org-cli-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='CLI for org-mode file manipulation and org-roam database management'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url='https://github.com/dcprevere/org-cli'
 provides=('org-cli')
 conflicts=('org-cli')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/org-linux-x64.tar.gz")
-sha256sums=('c1413b0a607282f600e1720b733b0748873c77840e439afb8392921b2aee45e5')
+sha256sums=('f6219845c4cdc089b6e78472c96477eaa28a385a6149b89368b91b9fb2ac3576')
 
 package() {
     install -Dm755 "${srcdir}/org" "${pkgdir}/usr/bin/org"
