@@ -12,16 +12,17 @@ _pkgname=vision
 pkgbase=torchvision
 pkgname=(torchvision torchvision-cuda python-torchvision python-torchvision-cuda)
 pkgver=0.25.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Datasets, transforms, and models specific to computer vision'
 arch=(x86_64)
 url='https://github.com/pytorch/vision'
 license=(BSD-3-Clause)
 depends=(
   glibc
-  gcc-libs
+  libgcc
   libjpeg-turbo
   libpng
+  libstdc++
   libwebp
 )
 makedepends=(
@@ -69,6 +70,8 @@ build() {
     -DTORCH_CUDA_ARCH_LIST="${_CUDA_ARCH_LIST}"
     -DCUDA_ARCH_LIST="${_CUDA_ARCH_LIST}"
     -DCMAKE_CUDA_ARCHITECTURES="${_CUDA_ARCH_LIST_CMAKE}"
+    # unlike other formats, libwebp is disabled by default
+    -DWITH_WEBP=ON
   )
 
   echo "Building torchvision (CPU version)"
@@ -103,6 +106,7 @@ build() {
 
 package_python-torchvision() {
   depends+=(
+    python
     python-numpy
     python-pillow
     python-pytorch
@@ -121,6 +125,7 @@ package_python-torchvision() {
 package_python-torchvision-cuda() {
   pkgdesc='Datasets, transforms, and models specific to computer vision (with GPU support)'
   depends+=(
+    python
     python-numpy
     python-pillow
     python-pytorch-cuda
