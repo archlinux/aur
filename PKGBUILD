@@ -1,6 +1,6 @@
 # Maintainer: Divyaprakash Dhurandhar <divyaprakash.0426@gmail.com>
 pkgname=tidytui-git
-pkgver=0.1.0.r0.gGIT
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="A blazingly fast, terminal-based system cleaner written in Rust"
 arch=('x86_64')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/TidyTUI"
-  git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+  git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
