@@ -1,0 +1,15 @@
+pkgbase = rtk-ir-tools-git
+	pkgdesc = Tools and hooks to initialize Dell Realtek IR camera emitters
+	pkgver = r3.0f0eacd
+	pkgrel = 1
+	url = https://github.com/mrwinux/rtk-ir-tools
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = make
+	depends = pam
+	depends = glibc
+	source = rtk-ir-tools::git+https://github.com/mrwinux/rtk-ir-tools
+	sha256sums = SKIP
+
+pkgname = rtk-ir-tools-git
