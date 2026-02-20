@@ -1,53 +1,138 @@
-# Maintainer: rzhli <tayuebuliuhen@gmail.com>
+# Maintainer: rzhli
 pkgname=longbridge-bin
-pkgver=0.11.0
-pkgrel=2
+pkgver=0.12.5
+pkgrel=1
 pkgdesc="Longbridge Desktop trading platform"
 arch=("x86_64")
 url="https://longbridge.com/desktop/"
 license=("custom")
 depends=(
-  "glibc" "gtk3" "nss" "alsa-lib" "libxss" "libxtst" "xdg-utils" "libxcrypt-compat"
+    "glibc"
+    "gtk3"
+    "nss"
+    "alsa-lib"
+    "libxss"
+    "libxtst"
+    "xdg-utils"
+    "libxcrypt-compat"
 )
 provides=("longbridge")
 conflicts=("longbridge")
 options=('!strip')
-
 source=("${pkgname}-${pkgver}.deb::https://assets.lbctrl.com/github/release/longbridge-desktop/stable/longbridge-v${pkgver}-linux-x86_64.deb")
-sha256sums=('5b2c477867f7c0b4bdcfee64a10cdf4c918f8e367308694e279f728145ca501b')
+sha256sums=('6b6e44f01fb94fe715c2cb1d3af6925bb32a2abdcff008d77224494c40f0b227')
 
 prepare() {
-  # 每次构建前清理之前的解压残留，防止重复叠加
-  [ -d "data" ] && rm -rf data
-  mkdir -p data
-  # 预解压 data.tar 到专门的目录
-  bsdtar -xf data.tar.* -C data
+    cd "$srcdir"
+
+    # 清理并创建解压目录
+    rm -rf ext
+    mkdir -p ext
+
+    # 提取 deb 中的 data.tar.*
+    bsdtar -xf data.tar.* -C ext
+
+    # 调试:查看实际文件结构
+    echo "=== 检查 DEB 包结构 ==="
+    find ext -type f | head -20
 }
 
 package() {
-  # 1. 进入 prepare 阶段准备好的目录
-  cd "$srcdir/data"
+    cd "$srcdir/ext"
 
-  # 2. 修正路径并安装到 pkgdir
-  # 逻辑：如果存在 usr/local，将其内容整合到 usr
-  if [[ -d "usr/local" ]]; then
-    # 创建必要的目录结构
-    mkdir -p "$pkgdir/usr"
-    # 移动 local 下的所有子目录到 usr
-    cp -a usr/local/* "$pkgdir/usr/"
-  fi
+    # ========================================
+    # 1. 复制所有文件到标准位置
+    # ========================================
 
-  # 3. 处理可能不在 local 下的其他文件（如果有的话）
-  # 有些包会同时存在 usr/bin 和 usr/local/bin
-  if [[ -d "usr/share/applications" ]]; then
-    cp -a usr/share "$pkgdir/usr/"
-  fi
+    # 主要文件在 usr/ 下,直接复制整个目录
+    if [[ -d "usr" ]]; then
+        cp -a usr "$pkgdir/"
+    fi
 
-  # 4. 确保主程序可执行
-  chmod +x "$pkgdir/usr/bin/longbridge"
+    # 如果还有 usr/local,也迁移到 usr
+    if [[ -d "usr/local" ]]; then
+        mkdir -p "$pkgdir/usr"
+        cp -a usr/local/* "$pkgdir/usr/"
+    fi
 
-  # 5. 按照 Arch 规范安装许可证 (假设文件名为 LICENSE)
-  # 如果找不到具体文件，可以指向其官网说明或跳过
-  install -Dm644 "$pkgdir/usr/share/doc/longbridge/copyright" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE" || true
+    # ========================================
+    # 2. 修复桌面文件
+    # ========================================
+
+    local _desktop="$pkgdir/usr/share/applications/longbridge.desktop"
+
+    if [[ -f "$_desktop" ]]; then
+        # 修复 TryExec 为绝对路径
+        sed -i "s|^TryExec=.*|TryExec=/usr/bin/longbridge|g" "$_desktop"
+
+        # 修复 Exec - 不添加任何参数，让程序自己处理
+        sed -i "s|^Exec=.*|Exec=/usr/bin/longbridge %U|g" "$_desktop"
+
+        # 确保图标正确
+        sed -i "s|^Icon=.*|Icon=longbridge|g" "$_desktop"
+
+        # 修复类别 - 改为网络/互联网类别
+        if grep -q "^Categories=" "$_desktop"; then
+            sed -i "s|^Categories=.*|Categories=Network;Finance;|g" "$_desktop"
+        else
+            echo "Categories=Network;Finance;" >> "$_desktop"
+        fi
+
+        # 确保其他必需字段存在
+        if ! grep -q "^Terminal=" "$_desktop"; then
+            echo "Terminal=false" >> "$_desktop"
+        fi
+
+        if ! grep -q "^Type=" "$_desktop"; then
+            echo "Type=Application" >> "$_desktop"
+        fi
+
+        if ! grep -q "^StartupNotify=" "$_desktop"; then
+            sed -i "s|^StartupNotify=.*|StartupNotify=true|g" "$_desktop"
+        fi
+    else
+        error "桌面文件不存在: $_desktop"
+        return 1
+    fi
+
+    # ========================================
+    # 3. 确保主程序可执行
+    # ========================================
+
+    if [[ -f "$pkgdir/usr/bin/longbridge" ]]; then
+        chmod +x "$pkgdir/usr/bin/longbridge"
+    else
+        error "未找到主程序 /usr/bin/longbridge"
+        return 1
+    fi
+
+    # ========================================
+    # 4. 许可证文件
+    # ========================================
+
+    find . -name "copyright" -exec install -Dm644 {} "$pkgdir/usr/share/licenses/$pkgname/LICENSE" \; || true
+}
+
+post_install() {
+    echo "正在更新桌面数据库..."
+    update-desktop-database -q
+
+    echo "正在更新图标缓存..."
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor || true
+
+    echo ""
+    echo "Longbridge 安装完成!"
+    echo "如果图标未显示,请尝试:"
+    echo "  1. 注销并重新登录"
+    echo "  2. 运行: gtk-update-icon-cache -f /usr/share/icons/hicolor"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    update-desktop-database -q
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor || true
 }
