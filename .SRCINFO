@@ -1,0 +1,12 @@
+pkgbase = ali-instance-cli-bin
+	pkgdesc = Alibaba Cloud Session Manager CLI for connecting to ECS instances
+	pkgver = 1.2.0.81
+	pkgrel = 1
+	url = https://help.aliyun.com/document_detail/254415.html
+	arch = x86_64
+	license = custom
+	depends = glibc
+	source = https://aliyun-client-assist.oss-accelerate.aliyuncs.com/session-manager/linux/ali-instance-cli
+	sha256sums = SKIP
+
+pkgname = ali-instance-cli-bin

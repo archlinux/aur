@@ -1,0 +1,7 @@
+post_install() {
+  systemd-tmpfiles --create ali-instance-cli.conf
+}
+
+post_upgrade() {
+  systemd-tmpfiles --create ali-instance-cli.conf
+}

@@ -1,0 +1,5 @@
+[ali-instance-cli]
+source = "httpheader"
+url = "https://aliyun-client-assist.oss-accelerate.aliyuncs.com/session-manager/linux/ali-instance-cli"
+header = "ETag"
+regex = "(.+)"

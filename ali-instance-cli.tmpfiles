@@ -1,0 +1,5 @@
+# Create log directory with sticky bit for multi-user access
+d /var/log/ali-instance-cli 1777 root root -
+
+# Link binary's log directory to /var/log location
+L /opt/ali-instance-cli/log - - - - /var/log/ali-instance-cli

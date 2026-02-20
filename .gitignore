@@ -1,0 +1,8 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!nvchecker.toml
+!ali-instance-cli.install
+!ali-instance-cli.tmpfiles
+!.nvchecker.toml
