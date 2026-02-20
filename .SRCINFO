@@ -1,6 +1,6 @@
 pkgbase = mallama
 	pkgdesc = A beautiful web interface for Ollama with conversation management and markdown support
-	pkgver = 0.1.4
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/mesut2ooo/mallama
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = mallama
 	depends = python-requests
 	depends = ollama
 	depends = python-werkzeug
-	source = mallama-0.1.4.tar.gz::https://github.com/mesut2ooo/mallama/archive/v0.1.4.tar.gz
+	source = mallama-0.2.1.tar.gz::https://github.com/mesut2ooo/mallama/archive/v0.2.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = mallama
