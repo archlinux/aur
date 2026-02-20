@@ -15,7 +15,7 @@ pkgbase = 3dstool-git
 	conflicts = 3dstool
 	source = git+https://github.com/dnasdw/3dstool.git
 	source = 3dstool-paths.patch
-	sha256sums = SKIP
-	sha256sums = 5ac00e5b56182ffde04c7b9ab2a5151e6cf575400705f0b061ff832116757582
+	b2sums = SKIP
+	b2sums = 226f75f5154d849aec1816064aa5d87db0e41c07d02edb85df5b2b397172a30b32603bccfdfa09a5431f9fbc12fcbbd9a5baccf6d82523d9253a430af0432108
 
 pkgname = 3dstool-git

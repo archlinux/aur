@@ -1,61 +1,63 @@
 # Maintainer: asyync1024 <asyync1024 at proton dot me>
 # Contributor: yubimusubi <possum plus aur at possum dot cc>
 
-_pkgname=3dstool
-pkgname=${_pkgname}-git
+_reponame=3dstool
+pkgname=${_reponame}-git
 pkgver=1.2.6.r15.g3771ae96
 pkgrel=1
 epoch=1
 pkgdesc="An all-in-one tool for extracting/creating 3ds roms (git)"
 arch=('x86_64')
-url="https://github.com/dnasdw/${_pkgname}"
+url="https://github.com/dnasdw/${_reponame}"
 license=('MIT')
 depends=('glibc' 'curl' 'openssl')
 makedepends=('cmake' 'git')
 source=(
   "git+${url}.git"
-  "${_pkgname}-paths.patch"
+  "${_reponame}-paths.patch"
 )
-sha256sums=(
-  'SKIP'
-  '5ac00e5b56182ffde04c7b9ab2a5151e6cf575400705f0b061ff832116757582'
-)
-provides=(${_pkgname})
-conflicts=(${_pkgname})
+b2sums=('SKIP'
+  '226f75f5154d849aec1816064aa5d87db0e41c07d02edb85df5b2b397172a30b32603bccfdfa09a5431f9fbc12fcbbd9a5baccf6d82523d9253a430af0432108')
+provides=("${_reponame}")
+conflicts=("${_reponame}")
 
 pkgver() {
-  cd ${_pkgname}
+  cd "${_reponame}"
   git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//g'
 }
 
 prepare() {
-  cd ${_pkgname}
-  patch -Np1 -i ../${_pkgname}-paths.patch
+  cd "${_reponame}"
+  patch -Np1 -i "../${_reponame}-paths.patch"
 }
 
 build() {
-  cd ${_pkgname}
+  cd "${_reponame}"
 
-  cmake -B build \
-    -D CMAKE_BUILD_TYPE=Release \
-    -D BUILD64=ON \
-    -D USE_DEP=OFF \
-    -D CMAKE_SKIP_RPATH=ON \
+  local cmake_options=(
+    -B build
+    -D CMAKE_BUILD_TYPE='Release'
+    -D BUILD64=ON
+    -D USE_DEP=OFF
+    -D CMAKE_SKIP_RPATH=ON
     -D CMAKE_BUILD_WITH_INSTALL_RPATH=OFF
+  )
+
+  cmake "${cmake_options[@]}"
 
   cmake --build build
 }
 
 package() {
-  cd ${_pkgname}
+  cd "${_reponame}"
 
-  install -Dm755 bin/Release/${_pkgname} -t \
+  install -Dm755 "bin/Release/${_reponame}" -t \
     "${pkgdir}/usr/bin/"
 
-  install -Dm644 bin/ignore_${_pkgname}.txt -t \
-    "${pkgdir}/usr/share/${_pkgname}/"
+  install -Dm644 "bin/ignore_${_reponame}.txt" -t \
+    "${pkgdir}/usr/share/${_reponame}/"
 
-  install -Dm644 LICENSE -t \
+  install -Dm644 "LICENSE" -t \
     "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
