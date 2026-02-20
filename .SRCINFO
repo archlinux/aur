@@ -1,0 +1,12 @@
+pkgbase = firefox-extension-adnauseam-bin-amo
+	pkgdesc = This package contains latest version of AdNauseam from addon.mozilla.org (AMO). AdNauseam is a lightweight browser extension that blends software tool and artware intervention to actively fight back against tracking by advertising networks.
+	pkgver = 3.27.0
+	pkgrel = 1
+	url = https://adnauseam.io/
+	arch = any
+	license = GPL-3.0-only
+	optdepends = firefox
+	source = https://addons.mozilla.org/firefox/downloads/file/4634365/adnauseam-3.27.0.xpi
+	sha256sums = 629000b5412f7f18c2380444ff8d4bfcf6dc96be0dfa95d7b8da233fd5aa9948
+
+pkgname = firefox-extension-adnauseam-bin-amo
