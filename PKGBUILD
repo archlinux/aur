@@ -1,48 +1,48 @@
 # Maintainer: asyync1024 <asyync1024 at proton dot me>
-# Maintainer: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer: Vitalii Kuzhdin <vitaliikuzhdin at gmail dot com>
 
-_pkgname=godot
-pkgname=${_pkgname}32
+_reponame=godot
+pkgname=${_reponame}32
 pkgver=4.6.1
 pkgrel=2
 pkgdesc='Advanced cross-platform 2D and 3D game engine (32-bit)'
 url='https://godotengine.org/'
-license=(MIT)
-arch=(x86_64)
+license=('MIT')
+arch=('x86_64')
 makedepends=(
-    alsa-lib
-    pulse-native-provider
-    scons
-    setconf
-    yasm
+    'alsa-lib'
+    'pulse-native-provider'
+    'scons'
+    'setconf'
+    'yasm'
 )
 depends=(
-    ca-certificates
-    lib32-brotli
-    lib32-freetype2
-    lib32-graphite # AUR
-    lib32-libglvnd
-    lib32-miniupnpc # AUR
-    lib32-libsquish # AUR
-    lib32-libtheora
-    lib32-libvorbis
-    lib32-libwebp
-    lib32-libxcursor
-    lib32-libxi
-    lib32-libxinerama
-    lib32-libxrandr
-    lib32-openxr # AUR
-    lib32-pcre2
+    'ca-certificates'
+    'lib32-brotli'
+    'lib32-freetype2'
+    'lib32-graphite' # AUR
+    'lib32-libglvnd'
+    'lib32-miniupnpc' # AUR
+    'lib32-libsquish' # AUR
+    'lib32-libtheora'
+    'lib32-libvorbis'
+    'lib32-libwebp'
+    'lib32-libxcursor'
+    'lib32-libxi'
+    'lib32-libxinerama'
+    'lib32-libxrandr'
+    'lib32-openxr' # AUR
+    'lib32-pcre2'
 )
 optdepends=(
     'pipewire-alsa: for audio support'
     'pulse-native-provider: for audio support'
 )
-source=("${_pkgname}-${pkgver}.tar.xz::https://github.com/godotengine/${_pkgname}/releases/download/${pkgver}-stable/${_pkgname}-${pkgver}-stable.tar.xz")
+source=("${_reponame}-${pkgver}.tar.xz::https://github.com/godotengine/${_reponame}/releases/download/${pkgver}-stable/${_reponame}-${pkgver}-stable.tar.xz")
 b2sums=('8cfc477472d224579b525a36df98f5cc7616b66e9ba4fc943753351cc6093bd0c7f542916cc26ddb625bbbbb8de850015b72610af05df443ec8c0a3c2e03ff3f')
 
 prepare() {
-    cd "${_pkgname}-${pkgver}-stable"
+    cd "${_reponame}-${pkgver}-stable"
 
     # Patch for miniupnpc
     sed -i 's/addr, 16/addr, 16, nullptr, 0/g' modules/upnp/upnp.cpp
@@ -55,7 +55,7 @@ prepare() {
 }
 
 build() {
-    cd "${_pkgname}-${pkgver}-stable"
+    cd "${_reponame}-${pkgver}-stable"
 
     export BUILD_NAME=arch_linux
 
@@ -69,9 +69,9 @@ build() {
 
     _args=(
         -j$(nproc --all)
-        cflags="$CFLAGS -fPIC -Wl,-z,relro,-z,now -w"
-        cxxflags="$CXXFLAGS -fPIC -Wl,-z,relro,-z,now -w"
-        linkflags="$LDFLAGS"
+        cflags="${CFLAGS} -fPIC -Wl,-z,relro,-z,now -w"
+        cxxflags="${CXXFLAGS} -fPIC -Wl,-z,relro,-z,now -w"
+        linkflags="${LDFLAGS}"
         arch=${_godot_arch}
         bits=32 # Ensure 32-bit binary.
         builtin_brotli=no
@@ -109,7 +109,7 @@ build() {
         platform=linuxbsd
         production=yes
         pulseaudio=yes
-        system_certs_path=/etc/ssl/certs/ca-certificates.crt
+        system_certs_path='/etc/ssl/certs/ca-certificates.crt'
         target=editor
         use_llvm=no
         werror=no
@@ -120,7 +120,7 @@ build() {
 }
 
 package() {
-    cd "${_pkgname}-${pkgver}-stable"
+    cd "${_reponame}-${pkgver}-stable"
 
     install -Dm755 bin/godot.linuxbsd.editor.${_godot_arch} "${pkgdir}/usr/bin/godot32"
 
