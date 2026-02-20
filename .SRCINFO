@@ -8,7 +8,7 @@ pkgbase = vpn-tray
 	license = MIT
 	depends = dbus
 	depends = openconnect
-	depends = oathtool
+	depends = oath-toolkit
 	depends = python
 	depends = python-keyring
 	depends = python-pyqt6
@@ -17,7 +17,7 @@ pkgbase = vpn-tray
 	optdepends = python-secretstorage: recommended keyring backend on Linux
 	source = vpn-tray-1.0.0.tar.gz::https://github.com/RythenGlyth/vpn-tray/releases/download/v1.0.0/vpn-tray-1.0.0.tar.gz
 	source = vpn-tray.install
-	sha256sums = 3ac1039541f028fae25c14dda60adb553d9005aa50e45133ead8822761ac7d7c
+	sha256sums = d16471b0f788ff56d346b49cde02cbe82cc4efa34abb0dadaff0971e2a52658f
 	sha256sums = 5f1668aaa8fe5962e518a9a746cf0eb24a3d398e38965e6947ae83e8aa86f365
 
 pkgname = vpn-tray

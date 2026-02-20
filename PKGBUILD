@@ -7,11 +7,11 @@ pkgdesc='System tray app for OpenConnect VPN with least-privilege helper'
 arch=('any')
 url='https://github.com/RythenGlyth/vpn-tray'
 license=('MIT')
-depends=('dbus' 'openconnect' 'oathtool' 'python' 'python-keyring' 'python-pyqt6' 'sudo' 'systemd')
+depends=('dbus' 'openconnect' 'oath-toolkit' 'python' 'python-keyring' 'python-pyqt6' 'sudo' 'systemd')
 optdepends=('python-secretstorage: recommended keyring backend on Linux')
 install="${pkgname}.install"
 source=("vpn-tray-${pkgver}.tar.gz::https://github.com/RythenGlyth/vpn-tray/releases/download/v1.0.0/vpn-tray-1.0.0.tar.gz" "${pkgname}.install")
-sha256sums=('3ac1039541f028fae25c14dda60adb553d9005aa50e45133ead8822761ac7d7c' '5f1668aaa8fe5962e518a9a746cf0eb24a3d398e38965e6947ae83e8aa86f365')
+sha256sums=('d16471b0f788ff56d346b49cde02cbe82cc4efa34abb0dadaff0971e2a52658f' '5f1668aaa8fe5962e518a9a746cf0eb24a3d398e38965e6947ae83e8aa86f365')
 
 package() {
   cd "${srcdir}/vpn-tray-1.0.0"
