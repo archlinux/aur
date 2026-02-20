@@ -1,12 +1,14 @@
 pkgbase = prismlauncher-offline-bin
 	pkgdesc = Prism Launcher fork with offline account support enabled
 	pkgver = 10.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Diegiwg/PrismLauncher-Cracked
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
+	makedepends = patchelf
 	depends = cmark
+	depends = qrencode
 	depends = gcc-libs
 	depends = glibc
 	depends = hicolor-icon-theme

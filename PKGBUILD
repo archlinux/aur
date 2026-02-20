@@ -2,7 +2,7 @@
 
 pkgname=prismlauncher-offline-bin
 pkgver=10.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Prism Launcher fork with offline account support enabled"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Diegiwg/PrismLauncher-Cracked"
@@ -11,6 +11,7 @@ options=('!strip')
 
 depends=(
   'cmark'
+  'qrencode'
   'gcc-libs'
   'glibc'
   'hicolor-icon-theme'
@@ -26,6 +27,8 @@ depends=(
   'zlib'
 )
 
+makedepends=('patchelf')
+
 optdepends=(
   "flite: Minecraft voice narration"
   "glfw: use system GLFW libraries"
@@ -39,11 +42,11 @@ provides=('prismlauncher-offline')
 conflicts=('prismlauncher' 'prismlauncher-offline')
 
 source_x86_64=(
-"prism-portable.tar.gz::https://github.com/Diegiwg/PrismLauncher-Cracked/releases/download/${pkgver}/PrismLauncher-Linux-Qt6-Portable-${pkgver}.tar.gz"
+  "prism-portable.tar.gz::https://github.com/Diegiwg/PrismLauncher-Cracked/releases/download/${pkgver}/PrismLauncher-Linux-Qt6-Portable-${pkgver}.tar.gz"
 )
 
 source_aarch64=(
-"prism-portable.tar.gz::https://github.com/Diegiwg/PrismLauncher-Cracked/releases/download/${pkgver}/PrismLauncher-Linux-aarch64-Qt6-Portable-${pkgver}.tar.gz"
+  "prism-portable.tar.gz::https://github.com/Diegiwg/PrismLauncher-Cracked/releases/download/${pkgver}/PrismLauncher-Linux-aarch64-Qt6-Portable-${pkgver}.tar.gz"
 )
 
 sha256sums_x86_64=('SKIP')
@@ -59,16 +62,21 @@ package() {
   tmpdir=$(mktemp -d)
   tar -xaf "$srcdir/prism-portable.tar.gz" -C "$tmpdir"
 
-  cp -r "$tmpdir/bin/"* "$pkgdir/usr/bin/"
+  cp -r "$tmpdir/shared/bin/prismlauncher" "$pkgdir/usr/bin/"
+
+  if readelf -d "$pkgdir/usr/bin/prismlauncher" | grep -q "libcmark.so.0.30.2"; then
+    patchelf --replace-needed libcmark.so.0.30.2 libcmark.so.0.31.2 "$pkgdir/usr/bin/prismlauncher"
+  fi
+
   cp -r \
-  "$tmpdir/share/applications" \
-  "$tmpdir/share/icons" \
-  "$tmpdir/share/man" \
-  "$tmpdir/share/metainfo" \
-  "$tmpdir/share/mime" \
-  "$tmpdir/PrismLauncher" \
-  "$tmpdir/qlogging-categories6" \
-  "$pkgdir/usr/share/"
+    "$tmpdir/share/applications" \
+    "$tmpdir/share/icons" \
+    "$tmpdir/share/man" \
+    "$tmpdir/share/metainfo" \
+    "$tmpdir/share/mime" \
+    "$tmpdir/share/PrismLauncher" \
+    "$tmpdir/share/qlogging-categories6" \
+    "$pkgdir/usr/share/"
 
   rm -rf "$tmpdir"
 }
