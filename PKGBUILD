@@ -12,6 +12,7 @@ url="https://metacpan.org/dist/$_dist"
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 depends=(
     'perl-irc-utils>=0.12'
+    'perl-poe-component-client-dns'
     'perl-poe-component-syndicator'
     'perl-poe-filter-ircd>=2.42'
     'perl-poe>=1.311'
@@ -21,9 +22,6 @@ depends=(
 checkdepends=(
     'perl-test-differences>=0.61'
     'perl-test-simple'
-)
-optdepends=(
-    'perl-poe-component-client-dns: Resolver support'
 )
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/B/BI/BINGOS/$_dist-$pkgver.tar.gz")
