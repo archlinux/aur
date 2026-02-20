@@ -9,8 +9,8 @@ license=('Apache-2.0')
 provides=($_pkgname)
 source=("https://github.com/redpanda-data/connect/releases/download/v$pkgver/redpanda-connect_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("https://github.com/redpanda-data/connect/releases/download/v$pkgver/redpanda-connect_${pkgver}_linux_arm64.tar.gz")
-sha256sums=('d41caa85419e140cafaee97becebe400467744222d0b8051eb58c0626985234e')
-sha256sums_aarch64=('beb565bb6e4886c69e5565c4ff9656177fd123f4ce4c3a090e5d583f73b37246')
+sha256sums=('23f359c315d2e845076c50cf7c5a8d4f249002f198ac72fdca277af1f45b09b0')
+sha256sums_aarch64=('260a8a07cdc22dd2aee03d711478dd6ab1e073eb61e93ba4c89b42a72ebc4d73')
 
 package() {
   install -Dm755 $_pkgname "$pkgdir"/usr/bin/$_pkgname
