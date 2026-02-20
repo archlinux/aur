@@ -1,0 +1,14 @@
+pkgbase = bereiaverse-bin
+	pkgdesc = Leitor bíblico automático com anotações (ACF)
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/Instituto-Reformado-Santo-Evangelho/bereia-verse
+	arch = x86_64
+	license = custom:CC-BY-NC-ND-4.0
+	depends = java-runtime-openjdk>=21
+	provides = bereiaverse
+	conflicts = bereiaverse
+	source = bereiaverse-linux-v1.2.0.tar.gz::https://github.com/Instituto-Reformado-Santo-Evangelho/bereia-verse/releases/download/master/bereiaverse-linux-1.2.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = bereiaverse-bin
