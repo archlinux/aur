@@ -32,6 +32,10 @@ makedepends=(
     wayland-protocols
     git
 )
+conflicts=(
+    quickshell
+    quickshell-git
+)
 options=(!debug)
 _archive="$pkgname-$pkgver"
 source=("$_archive.tar.gz::$url/archive/v$pkgver.tar.gz")
