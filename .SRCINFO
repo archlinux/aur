@@ -1,6 +1,6 @@
 pkgbase = wine-tkg-staging-bin
 	pkgdesc = A compatibility layer for running Windows programs (with TkG-Staging patches and multilib support)
-	pkgver = 11.1
+	pkgver = 11.2
 	pkgrel = 1
 	url = https://github.com/Kron4ek/Wine-Builds
 	arch = x86_64
@@ -56,10 +56,10 @@ pkgbase = wine-tkg-staging-bin
 	depends = lib32-vulkan-icd-loader
 	depends = sdl2-compat
 	depends = lib32-sdl2-compat
-	provides = wine=11.1
-	provides = wine-staging=11.1
+	provides = wine=11.2
+	provides = wine-staging=11.2
 	conflicts = wine
-	source = https://github.com/Kron4ek/Wine-Builds/releases/download/11.1/wine-11.1-staging-tkg-amd64.tar.xz
-	sha256sums = 90ee4346052562208627dc288348216558dcd3cfd1139f487fe095b29e128138
+	source = https://github.com/Kron4ek/Wine-Builds/releases/download/11.2/wine-11.2-staging-tkg-amd64.tar.xz
+	sha256sums = 59db8009931425072f26deee190708f1db4756dc6e07fcb9444f6bd4dad47c52
 
 pkgname = wine-tkg-staging-bin
