@@ -22,9 +22,10 @@ build() {
 
 package() {
   cd "$srcdir"/${_pkgname}-${_pkgver}
+  mkdir -p "$pkgdir"/etc/rcc
   mkdir -p "$pkgdir"/usr/lib/rcc/engines
   mkdir -p "$pkgdir"/usr/bin
-
+    
   make DESTDIR="$pkgdir" install
 
   make -C examples
