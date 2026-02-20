@@ -2,7 +2,7 @@
 # Contributor: dougEfresh <dchimento@gmail.com>
 
 pkgname="github-mcp-server"
-pkgver=0.30.3
+pkgver=0.31.0
 pkgrel=1
 pkgdesc="GitHub's official MCP server which connects AI tools directly to GitHub's platform"
 arch=(
@@ -25,7 +25,7 @@ _pkgsrc="${url##*/}"
 source=(
   "${_pkgsrc}::git+${url}.git#tag=v${pkgver}"
 )
-sha256sums=('be26e55c17e56facec054919b42a2fa9b7fffcc34032f88c03e4dfd928ae7d0d')
+sha256sums=('75a3097b21761501675598e2fb8f7aa71cd354e7dc59f7c0426f596f5b6b3ff3')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
