@@ -1,0 +1,15 @@
+pkgbase = brother-hll2400dw
+	pkgdesc = LPR and CUPS driver for the Brother HL-L2400DW
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-hll2400dw.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother commercial license
+	depends = cups
+	source = https://download.brother.com/welcome/dlf105948/hll2400dwpdrv-4.1.0-1.i386.rpm
+	md5sums = 8bec5e537799859303aac4d374aafb2f
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-hll2400dw
