@@ -1,7 +1,7 @@
 pkgbase = micyou-bin
 	pkgdesc = Turn your Android device into a high-quality wireless microphone for your PC
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://github.com/LanRhyme/MicYou
 	arch = x86_64
 	license = MIT
@@ -21,9 +21,9 @@ pkgbase = micyou-bin
 	optdepends = xdg-utils: Open URLs in default browser
 	provides = micyou
 	conflicts = micyou
-	noextract = MicYou-Linux-1.1.0.deb
+	noextract = MicYou-Linux-1.1.1.deb
 	options = !strip
-	source = https://github.com/LanRhyme/MicYou/releases/download/v1.1.0-20260216-1523/MicYou-Linux-1.1.0.deb
-	sha256sums = 52170c76c8a4c325acebac794749f456332bebab5fa5e9525468132d3b028815
+	source = https://github.com/LanRhyme/MicYou/releases/download/v1.1.1-20260220-0620/MicYou-Linux-1.1.1.deb
+	sha256sums = c0c2456c43282d4f2d8d66c4c08b5274162345e194608b2baa39ae4b07e1c229
 
 pkgname = micyou-bin

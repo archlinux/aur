@@ -1,9 +1,9 @@
 # Maintainer: raindropqwq <raindropqwq@outlook.com>
 
 pkgname=micyou-bin
-_pkgver=1.1.0-20260216-1523
-pkgver=1.1.0
-pkgrel=2
+_pkgver=1.1.1-20260220-0620
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="Turn your Android device into a high-quality wireless microphone for your PC"
 arch=('x86_64')
 url="https://github.com/LanRhyme/MicYou"
@@ -17,7 +17,7 @@ provides=('micyou')
 conflicts=('micyou')
 options=('!strip')
 source=("https://github.com/LanRhyme/MicYou/releases/download/v${_pkgver}/MicYou-Linux-${pkgver}.deb")
-sha256sums=('52170c76c8a4c325acebac794749f456332bebab5fa5e9525468132d3b028815')
+sha256sums=('c0c2456c43282d4f2d8d66c4c08b5274162345e194608b2baa39ae4b07e1c229')
 noextract=("MicYou-Linux-${pkgver}.deb")
 
 package() {
