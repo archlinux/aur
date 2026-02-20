@@ -2,7 +2,7 @@
 _pkgauthor=chojs23
 _pkgname=ec
 pkgname=easy-conflict-bin
-pkgver=0.1.3
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='Terminal-native Git mergetool with 3-pane IntelliJ-like conflict resolver'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -17,9 +17,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64")
 source_aarch64=("${_pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-linux-arm64")
 sha256sums=('2b9594f469f8c9681fc312d9afeea94461ca929e5e109edc08f3b7e90bc34e98'
-            'd57fca0d8f2b9835142a2af637fcd973f028b1b7e683f08b8c5a65ea59146087')
-sha256sums_x86_64=('774209fcb4a0f9bc34da91cd4954a241864454b20ae670f4e5380310c41eefa5')
-sha256sums_aarch64=('774209fcb4a0f9bc34da91cd4954a241864454b20ae670f4e5380310c41eefa5')
+            'de443298e5ed05d1fb91cc2bfeca05c30f7e6e672c3582577f375d492fd16c89')
+sha256sums_x86_64=('809c3f6c5da54e3d5a0d454d64cc8e7c54c968ba090df88f67fd1d18e99aa375')
+sha256sums_aarch64=('809c3f6c5da54e3d5a0d454d64cc8e7c54c968ba090df88f67fd1d18e99aa375')
 
 package() {
   cd "$srcdir/" || exit
