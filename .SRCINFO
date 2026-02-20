@@ -1,7 +1,7 @@
 pkgbase = prts-plymouth
 	pkgdesc = Rhodes Island PRTS loading slash animation
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LS-KR/prts-plymouth
 	install = prts-plymouth.install
 	arch = x86_64
