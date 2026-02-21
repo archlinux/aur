@@ -1,7 +1,7 @@
 pkgbase = cutecom
 	pkgdesc = A graphical serial terminal
 	pkgver = 0.60.0_RC1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/cutecom/cutecom
 	arch = i686
 	arch = x86_64

@@ -4,7 +4,7 @@
 pkgname=cutecom
 _pkgver=0.60.0-RC1
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical serial terminal"
 arch=(i686 x86_64 aarch64)
 url="https://gitlab.com/cutecom/cutecom"
