@@ -3,49 +3,51 @@
 
 pkgname=nyrna
 pkgver=2.26.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Suspend games and applications at any time and resume whenever you wish'
 arch=('x86_64')
 url="https://github.com/Merrit/nyrna"
 license=('GPL3')
 depends=('glib2' 'gtk3' 'libkeybinder3' 'libappindicator-gtk3' 'util-linux' 'wmctrl' 'xdotool' 'xz')
-makedepends=('git' 'clang' 'cmake' 'ninja' 'unzip')
+makedepends=('git' 'clang' 'cmake' 'ninja' 'unzip' 'fvm')
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/Merrit/nyrna/archive/refs/tags/v$pkgver.tar.gz"
-    "flutter::git+https://github.com/flutter/flutter.git"
 )
-sha256sums=('f8557a977efc81b870cbe8c047f32f76c9ffb0ca9122be37b182dd8d9f6ec09a'
-            'SKIP')
+sha256sums=('f8557a977efc81b870cbe8c047f32f76c9ffb0ca9122be37b182dd8d9f6ec09a')
 
 _setpath() {
-    PATH="$PATH:$srcdir/flutter/bin:$HOME/.pub-cache/bin:$HOME/.cargo/bin"
+    export FVM_CACHE_PATH="$srcdir/.fvm-cache"
+    PATH="$PATH:$HOME/.pub-cache/bin:$HOME/.cargo/bin"
 }
 
 prepare() {
     _setpath
 
+    cd "$pkgname-$pkgver"
+
+    # Use latest stable Flutter via FVM
+    fvm use stable --pin --force --skip-pub-get
+
     # Enable desktop build
-    flutter --no-version-check channel stable
-    flutter --no-version-check config --no-analytics
-    flutter --no-version-check config --enable-linux-desktop
+    fvm flutter --no-version-check config --no-analytics
+    fvm flutter --no-version-check config --enable-linux-desktop
 
     # Get dependencies
-    cd "$pkgname-$pkgver"
-    flutter --no-version-check clean
-    flutter --no-version-check pub get
+    fvm flutter --no-version-check clean
+    fvm flutter --no-version-check pub get
 
     # Disable dart analytics
-    dart --disable-analytics
+    fvm dart --disable-analytics
 }
 
 build() {
     _setpath
 
     cd "$pkgname-$pkgver"
-    dart run build_runner build --delete-conflicting-outputs
+    fvm dart run build_runner build --delete-conflicting-outputs
     # Don't treat warnings as errors
     sed -i 's/\-Werror//g' linux/CMakeLists.txt
-    flutter --no-version-check build linux
+    fvm flutter --no-version-check build linux
 }
 
 package() {
