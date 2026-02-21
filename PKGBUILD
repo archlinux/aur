@@ -1,6 +1,6 @@
 # Maintainer: Josh Ellithorpe <quest@mac.com>
 pkgname=nexus-client
-pkgver=0.5.34
+pkgver=0.5.35
 pkgrel=1
 pkgdesc="Cross-platform BBS client with chat, file transfers, and news support"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('alsa-lib')
 makedepends=('cargo')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/zquestz/nexus/archive/v$pkgver.tar.gz")
-sha256sums=('17d2c083370319a453c2fa2076f388b29d4996911099b161ba5869b05d71b261')
+sha256sums=('0418c86229a578b7631e48567604a2e29886f0379286a010464bb9d28daef45e')
 
 prepare() {
     cd "nexus-$pkgver"
