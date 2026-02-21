@@ -14,11 +14,11 @@ optdepends=(
   'fakeroot: updates module'
 )
 source=(
-  "zig-waybar-contrib.zip::${url}/actions/runs/2504346/artifacts/zig-waybar-contrib-x86_64-linux-gnu"
-  "config.waybar.jsonc::${url}/raw/branch/0.16.x-staging/config.waybar.jsonc"
-  "LICENSE::${url}/raw/branch/0.16.x-staging/LICENSE"
+  "zig-waybar-contrib.zip::https://codeberg.org/erffy/zig-waybar-contrib/releases/download/26.02.21/zig-waybar-contrib-release-26.02.21.zip"
+  "config.waybar.jsonc::CONFIG_https://codeberg.org/erffy/zig-waybar-contrib/releases/download/26.02.21/zig-waybar-contrib-release-26.02.21.zip"
+  "LICENSE::LICENSE_https://codeberg.org/erffy/zig-waybar-contrib/releases/download/26.02.21/zig-waybar-contrib-release-26.02.21.zip"
 )
-md5sums=('e507b8b656b2199bdfacbb81cafd9840'
+md5sums=('c6902cdc289035892c6b2cb83290142a'
          '93ed2d07501c3e0ed7c0132d0265548b'
          'f1c10f726262b56101b2112a4ec181d2')
 

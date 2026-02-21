@@ -8,10 +8,10 @@ pkgbase = zig-waybar-contrib-beta-bin
 	optdepends = fakeroot: updates module
 	provides = zig-waybar-contrib=26.02.21
 	conflicts = zig-waybar-contrib
-	source = zig-waybar-contrib.zip::https://codeberg.org/erffy/zig-waybar-contrib/actions/runs/2504346/artifacts/zig-waybar-contrib-x86_64-linux-gnu
-	source = config.waybar.jsonc::https://codeberg.org/erffy/zig-waybar-contrib/raw/branch/0.16.x-staging/config.waybar.jsonc
-	source = LICENSE::https://codeberg.org/erffy/zig-waybar-contrib/raw/branch/0.16.x-staging/LICENSE
-	md5sums = e507b8b656b2199bdfacbb81cafd9840
+	source = zig-waybar-contrib.zip::https://codeberg.org/erffy/zig-waybar-contrib/releases/download/26.02.21/zig-waybar-contrib-release-26.02.21.zip
+	source = config.waybar.jsonc::CONFIG_https://codeberg.org/erffy/zig-waybar-contrib/releases/download/26.02.21/zig-waybar-contrib-release-26.02.21.zip
+	source = LICENSE::LICENSE_https://codeberg.org/erffy/zig-waybar-contrib/releases/download/26.02.21/zig-waybar-contrib-release-26.02.21.zip
+	md5sums = c6902cdc289035892c6b2cb83290142a
 	md5sums = 93ed2d07501c3e0ed7c0132d0265548b
 	md5sums = f1c10f726262b56101b2112a4ec181d2
 
