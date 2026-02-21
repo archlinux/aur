@@ -3,11 +3,11 @@
 pkgname=oberon-risc-emu-git
 _pkgname=oberon-risc-emu
 pkgver=2016.1.r28.g26c8ac5
-pkgrel=2
+pkgrel=3
 pkgdesc="Emulator for the Oberon RISC machine"
 arch=("x86_64")
 url="https://github.com/pdewacht/oberon-risc-emu"
-license=('GPL')
+license=('ISC')
 depends=('sdl2')
 makedepends=('git' 'python')
 optdepends=('rust: for some tools')
