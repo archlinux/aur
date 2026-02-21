@@ -1,4 +1,5 @@
 *
 !.gitignore
+!LICENSE
 !PKGBUILD
 !.SRCINFO
