@@ -1,0 +1,24 @@
+pkgbase = apache-tvm-ffi
+	pkgdesc = Open ABI and FFI for Machine Learning Systems
+	pkgver = 0.1.8.post2
+	pkgrel = 1
+	url = https://tvm.apache.org/ffi/
+	arch = any
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = gcc
+	makedepends = cython
+	makedepends = python-scikit-build-core
+	makedepends = python-installer
+	depends = libbacktrace
+	options = !strip
+	source = https://files.pythonhosted.org/packages/source/a/apache_tvm_ffi/apache_tvm_ffi-0.1.8.post2.tar.gz
+	source = libbacktrace.patch
+	sha256sums = 4513e38852894f290172ecfefcbc18d34e817fd29c16a0f1770e130c82b4067e
+	sha256sums = SKIP
+
+pkgname = tvm-ffi
+
+pkgname = python-tvm-ffi
+	depends = python

@@ -1,0 +1,23 @@
+31c31,32
+<   include(${CMAKE_CURRENT_LIST_DIR}/cmake/Utils/AddLibbacktrace.cmake)
+---
+>   find_package(PkgConfig)
+>   pkg_check_modules(Backtrace IMPORTED_TARGET libbacktrace)
+141,144c142,145
+< if (TARGET libbacktrace)
+<   target_link_libraries(tvm_ffi_objs PRIVATE libbacktrace)
+<   target_link_libraries(tvm_ffi_shared PRIVATE libbacktrace)
+<   target_link_libraries(tvm_ffi_static PRIVATE libbacktrace)
+---
+> if (TARGET PkgConfig::Backtrace)
+>   target_link_libraries(tvm_ffi_objs PRIVATE PkgConfig::Backtrace)
+>   target_link_libraries(tvm_ffi_shared PRIVATE PkgConfig::Backtrace)
+>   target_link_libraries(tvm_ffi_static PRIVATE PkgConfig::Backtrace)
+307,313d307
+<   install(
+<     DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/libbacktrace/
+<     DESTINATION 3rdparty/libbacktrace/
+<     PATTERN ".git" EXCLUDE
+<     PATTERN ".git*" EXCLUDE
+<     PATTERN "*.tmp" EXCLUDE
+<   )
