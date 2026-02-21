@@ -1,14 +1,15 @@
 pkgbase = luajit-git
 	pkgdesc = Just-In-Time (JIT) compiler for the Lua programming language
-	pkgver = 2.1.r140.gc525bcb9
+	pkgver = 2.1.r321.g1c3b5a4d
 	pkgrel = 1
 	url = https://luajit.org/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	depends = gcc-libs
-	provides = luajit=2.1.r140.gc525bcb9
+	depends = glibc
+	depends = libgcc
+	provides = luajit=2.1.r321.g1c3b5a4d
 	conflicts = luajit
 	options = staticlibs
 	source = git+https://luajit.org/git/luajit.git
