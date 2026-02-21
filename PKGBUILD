@@ -24,9 +24,9 @@
 : ${_build_limit_cores:=false}
 
 ## update
-_icver="140.7.0"
-_commit="c211e9c18a24310266543cb3c90256ef2660815c" # 140.7.0
-_ffsum="608a739071726f30236f7100ec5e30e1b8ec342d4e91e715948c287909cb1529"
+_icver="140.7.1"
+_commit="99b530e0e474acb69372a1efbf6139d2c976a1be" # 140.7.1
+_ffsum="e42d26aeabd17ab1e642656c7b1bc8cadf705ce2ac6751b103dd407f5af32827"
 
 ## package
 _pkgname="icecat"
@@ -131,6 +131,8 @@ source=(
   b68b1f93a6e31188486458f32fbe37811257604f.patch
   d4b3eb4f76e81f18c53863b1d55ee146d6ec7d10.patch
   dbf9702ed87ea5c88c2a1ee615998532ac8f10cc.patch
+  0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
+  0002-Fix-sandbox-to-build-with-glibc-2.43.patch
 )
 sha256sums=(
   'SKIP'
@@ -140,6 +142,8 @@ sha256sums=(
   '7b6f7c2906a4fb4b83c5f8e6be2cd873c3d99b1f1c4e6b98887364d26fee88de'
   '25c9af8395f4816b0874728d1f32b43b702a0ba2daa340da4945eb7c8ed74fe2'
   '37dbe762d88613d8d556dad53988fc45c7b3aa8947b4322e92ee5c9a763cbc2c'
+  '157976ec4be8d723cd6240988b310bc8e1779b2272a258d886bc08389ceba852'
+  '404e780b1488625989c6dd8e2234e50ed01401b7cb1e99e79dee87f4f4f584f8'
 )
 
 _make_icecat() (
@@ -348,6 +352,10 @@ build() (
   patch -Np1 -i ../b68b1f93a6e31188486458f32fbe37811257604f.patch
   patch -Np1 -i ../d4b3eb4f76e81f18c53863b1d55ee146d6ec7d10.patch
   patch -Np1 -i ../dbf9702ed87ea5c88c2a1ee615998532ac8f10cc.patch
+
+  # Fix build with glibc 2.43
+  patch -Np1 -i ../0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
+  patch -Np1 -i ../0002-Fix-sandbox-to-build-with-glibc-2.43.patch
 
   export RUSTUP_TOOLCHAIN=stable
 
