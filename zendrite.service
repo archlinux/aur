@@ -1,0 +1,54 @@
+[Unit]
+Description=A second-generation Matrix homeserver written in Go
+Documentation=https://zendrite.pat-s.me/
+Wants=network-online.target
+After=network-online.target
+After=postgresql.service
+After=nats-server.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/zendrite -config %d/zendrite.yaml
+WorkingDirectory=%S/zendrite
+ProtectProc=invisible
+User=zendrite
+Group=zendrite
+DynamicUser=true
+# Listening on port lower than 1024
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+RuntimeDirectory=zendrite
+StateDirectory=zendrite
+LogsDirectory=zendrite
+ConfigurationDirectory=zendrite
+# If you want to connect to postgresql with Unix Domain Socket...
+ReadWritePaths=-/var/run/postgresql
+ReadWritePaths=-/run/postgresql
+PrivateTmp=true
+PrivateDevices=true
+PrivateIPC=true
+PrivateUsers=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictNamespaces=true
+PrivateBPF=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+PrivateMounts=true
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged
+SystemCallFilter=~@resources
+SystemCallFilter=~@setuid
+SystemCallArchitectures=native
+LoadCredential=zendrite.yaml:%E/zendrite/zendrite.yaml
+
+[Install]
+WantedBy=default.target

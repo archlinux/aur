@@ -1,0 +1,6 @@
+[zendrite]
+source = "gitea"
+prefix = "v"
+host = "codefloe.com"
+gitea = "pat-s/zendrite"
+use_latest_release = true

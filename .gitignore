@@ -1,0 +1,7 @@
+*
+!zendrite.service
+!zendrite.install
+!PKGBUILD
+!.SRCINFO
+!.nvchecker.toml
+!.gitignore

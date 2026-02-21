@@ -1,0 +1,8 @@
+post_install() {
+    echo "Please create /etc/zendrite/zendrite.yaml manually from /usr/share/doc/zendrite/zendrite-sample.yaml."
+    echo "You may also need to use zendrite-generate-keys to generate private key required by zendrite."
+}
+
+post_upgrade() {
+    echo "You may consider upgrading /etc/zendrite/zendrite.yaml with zendrite-generate-config."
+}
