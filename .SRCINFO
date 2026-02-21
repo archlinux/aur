@@ -1,6 +1,6 @@
 pkgbase = ghla-lang
 	pkgdesc = GHLA is a language level higher than Assembly
-	pkgver = 3
+	pkgver = 4
 	pkgrel = 1
 	url = https://github.com/gorciu-official/ghla
 	arch = x86_64
