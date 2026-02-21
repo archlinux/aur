@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=AeroFTP
+GenericName=File Transfer Client
+Comment=Modern Multi-Protocol File Client with AI, Encryption and Cloud Storage
+Exec=aeroftp %u
+Icon=com.aeroftp.AeroFTP
+Terminal=false
+Type=Application
+Categories=Network;FileTransfer;
+Keywords=ftp;sftp;ftps;webdav;s3;transfer;file;sync;cloud;encryption;
+MimeType=x-scheme-handler/ftp;x-scheme-handler/ftps;x-scheme-handler/sftp;
+StartupNotify=true
+StartupWMClass=AeroFTP
