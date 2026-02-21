@@ -1,0 +1,3 @@
+[perl-http-browserdetect]
+source = "cpan"
+cpan = "HTTP-BrowserDetect"
