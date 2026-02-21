@@ -1,0 +1,17 @@
+pkgbase = palette-asyncat-bin
+	pkgdesc = A local-first color palette designer built with Tauri
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/theasyncat-mvp/palette
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = libappindicator-gtk3
+	depends = gtk3
+	provides = palette
+	conflicts = palette
+
+	source_x86_64 = palette-0.1.0.deb::https://github.com/theasyncat-mvp/palette/releases/download/v0.1.0/palette_0.1.0_amd64.deb
+	sha256sums_x86_64 = SKIP
+
+pkgname = palette-asyncat-bin
