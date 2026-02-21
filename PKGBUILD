@@ -1,23 +1,30 @@
 pkgname=ayaan
-pkgver=0.1.2
-pkgrel=3
-pkgdesc="AyaanScript+ runtime and ASPKG package manager"
+# Maintainer: Ayaan ayaanhassan511@gmail.com
+
+pkgname=ayaan
+pkgver=1.33.0
+pkgrel=1
+pkgdesc="AyaanScriptPlus runtime and ASPKG package manager"
 arch=('x86_64')
 url="https://github.com/ayaan511/AyaanScriptPlus"
 license=('MIT')
 
-makedepends=('rust' 'cargo')
-depends=('gcc-libs' 'openssl')
+depends=('gcc-libs')
+makedepends=('cargo')
 
-source=("https://github.com/ayaan511/AyaanScriptPlus/releases/download/nope/ayaanscript-0.1.0.tar.gz")
+source=("https://github.com/ayaan511/AyaanScriptPlus/releases/download/v$pkgver/AyaanScriptPlus-$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir"
-  cargo build --release --target-dir "$srcdir/target"
+  cd "$srcdir/AyaanScriptPlus-$pkgver"
+  cargo build --release
 }
 
 package() {
-  install -Dm755 "$srcdir/target/release/ayaan" "$pkgdir/usr/bin/ayaan"
-  install -Dm755 "$srcdir/target/release/aspkg" "$pkgdir/usr/bin/aspkg"
+  cd "$srcdir/AyaanScriptPlus-$pkgver"
+
+  install -Dm755 target/release/ayaan "$pkgdir/usr/bin/ayaan"
+  install -Dm755 target/release/aspkg "$pkgdir/usr/bin/aspkg"
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
