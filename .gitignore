@@ -1,0 +1,7 @@
+# ignore everything
+*
+
+# except for
+!.gitignore
+!PKGBUILD
+!.SRCINFO
