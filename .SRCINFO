@@ -4,7 +4,7 @@
 
 pkgbase = tobby
 	pkgdesc = The Terminal Obby — a modern IRC client for the terminal
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/ObsidianIRC/tobby
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = tobby
 	provides = tobby
 	conflicts = tobby-bin
 	options = !strip
-	noextract = mattfillipe-tobby-0.1.5.tgz
-	source = mattfillipe-tobby-0.1.5.tgz::https://registry.npmjs.org/@mattfillipe/tobby/-/tobby-0.1.5.tgz
-	sha256sums = b2d63b6d78bc2b2a1c97b4f81b9118df05efe448661559f4f07790a7d434af91
+	noextract = mattfillipe-tobby-0.1.6.tgz
+	source = mattfillipe-tobby-0.1.6.tgz::https://registry.npmjs.org/@mattfillipe/tobby/-/tobby-0.1.6.tgz
+	sha256sums = dffe1c471a28539159d4c275f15483330260a1bd45e11510b46d79800e116fd2
 
 pkgname = tobby
