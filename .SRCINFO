@@ -1,7 +1,7 @@
 pkgbase = adguardhome-bin
 	pkgdesc = Network-wide ads and trackers blocking DNS server
 	pkgver = 0.107.72
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AdguardTeam/AdGuardHome
 	arch = armv7h
 	arch = aarch64
@@ -15,6 +15,7 @@ pkgbase = adguardhome-bin
 	options = !debug
 	source = adguardhome.service
 	source = adguardhome.sysusers
+	validpgpkeys = 28645AC9776EC4C00BCE2AFC0FE641E7235E2EC6
 	sha256sums = b3763af1dae4d32645f3489cde5f07c919c7de9c76495a87268410347c67b873
 	sha256sums = cdbb882eb167461418ea7ea5cca65d32fd018a231ac1a8bb7f3e7140345c8cf1
 	source_armv7h = AdGuardHome-0.107.72-armv7h.tar.gz::https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.107.72/AdGuardHome_linux_armv7.tar.gz

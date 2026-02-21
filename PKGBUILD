@@ -4,7 +4,7 @@
 pkgname=adguardhome-bin
 _name=${pkgname%-bin}
 pkgver=0.107.72
-pkgrel=1
+pkgrel=2
 pkgdesc='Network-wide ads and trackers blocking DNS server'
 arch=(armv7h aarch64 pentium4 powerpc64le riscv64 x86_64)
 url='https://github.com/AdguardTeam/AdGuardHome'
@@ -27,9 +27,16 @@ sha256sums_pentium4=('f31965131fa586ac5903fa0d6da86b0533f9035d70f31996052726ff33
 sha256sums_powerpc64le=('ab7df0867cd331fe6059694612fbb0e37335ec2c4994a1e9d7b133bd85751359')
 sha256sums_riscv64=('4dfc47c2539100b364e0a709ceea527b2c30ea9289dbc9ffb7f2b653b524a256')
 sha256sums_x86_64=('cf25794597a2f5b6cd8cd3670439db6f548c59af4ace392e40055b90e80c9329')
+validpgpkeys=('28645AC9776EC4C00BCE2AFC0FE641E7235E2EC6')  # AdGuard <devteam@adguard.com>
+
+verify() {
+    cd AdGuardHome
+    gpg --verify AdGuardHome.sig AdGuardHome
+}
 
 package() {
     install -Dm755 AdGuardHome/AdGuardHome "$pkgdir/usr/bin/$_name"
+    install -Dm644 AdGuardHome/CHANGELOG.md -t "$pkgdir/usr/share/doc/$pkgname"
     install -Dm644 $_name.service -t "$pkgdir/usr/lib/systemd/system"
     install -Dm644 $_name.sysusers "$pkgdir/usr/lib/sysusers.d/$_name.conf"
     install -d "$pkgdir/etc"
