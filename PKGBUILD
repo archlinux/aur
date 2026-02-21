@@ -1,14 +1,12 @@
-# Maintainer: mazzetta86 <mazzetta86@gmail.com>
-# Maintainer: Archttila <linux.alucard@gmail.com>
+# Maintainer: Hajos Attila <linux[dot]alucard[at]gmail[dot]com>
 # Contributor: János Illés <ijanos@gmail.com>
-# Contributor: Borislav Lilov
 
 pkgname=hdsentinel
 pkgver=0.20
 pkgrel=0
 pkgdesc="A freeware, closed source, SMART analysis tool"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="http://www.hdsentinel.com/hdslin.php"
+url="https://www.hdsentinel.com/hard_disk_sentinel_linux.php"
 license=('unknown')
 depends=()
 source_i686=($pkgname-$pkgver.gz::https://www.hdsentinel.com/hdslin/hdsentinel-019b.gz)
