@@ -67,6 +67,7 @@ pkgbase = waytrogen
 	optdepends = swaybg: sway wallpaper setter
 	optdepends = mpvpaper: animated wallpapers using mpv
 	optdepends = swww: wallpaper setter with transitions
+	optdepends = gslapper: wallpaper utility for Wayland with video/image support and instant switching via RAM cache
 	conflicts = waytrogen-bin
 	options = !debug
 	source = waytrogen-0.9.0.tar.gz::https://github.com/nikolaizombie1/waytrogen/archive/refs/tags/0.9.0.tar.gz
