@@ -5,7 +5,7 @@
 _pkgname="thorium-browser"
 pkgname="$_pkgname-bin"
 pkgbase="$pkgname"
-pkgver=138.0.7204.300
+pkgver=138.0.7204.303
 pkgrel=1
 pkgdesc="Chromium fork focused on high performance and security"
 url="https://github.com/Alex313031/thorium"
@@ -21,7 +21,7 @@ _dl_filename="${_pkgname}_${pkgver}_SSE3.deb"
 noextract+=("$_dl_filename")
 
 source=("$_dl_url/$_dl_filename")
-sha256sums=('24ec07b74fb2f920fdca16b909f917131bcc6d2cec873546a92e5269ac838b58')
+sha256sums=('bacb67c4b8a4e685e505c09d46c7f55cdd5f66ed2e75b970fc3b63d59314563e')
 
 prepare() {
   install -Dm644 /dev/stdin "$_pkgname.sh" << END
