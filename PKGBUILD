@@ -2,12 +2,12 @@
 
 pkgname=libzen-git
 pkgver=0.4.41.r0.g894980d
-pkgrel=1
+pkgrel=2
 pkgdesc="Shared library for libmediainfo"
 arch=('i686' 'x86_64')
 url="https://github.com/MediaArea/ZenLib"
-license=('BSD')
-depends=('gcc-libs')
+license=('BSD-3-Clause')
+depends=('glibc' 'libgcc' 'libstdc++')
 makedepends=('git')
 provides=("libzen=$pkgver")
 conflicts=('libzen')
