@@ -3,12 +3,12 @@
 pkgname=waydroidsu
 _srcname=WaydroidSU
 pkgver=0.1.2
-pkgrel=1
+pkgrel=3
 pkgdesc="CLI Magisk manager and installer for Waydroid written in Rust"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/mistrmochov/${_srcname}"
 license=('GPL-3.0-or-later')
-depends=('gcc-libs' 'openssl' 'dbus' 'waydroid')
+depends=('gcc-libs' 'openssl' 'dbus' 'waydroid' 'zstd')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('bfc1341b7d2c9649ba1a87fd97472ab9c83edc711b3edd5c6733616bd09256ad')
@@ -23,6 +23,7 @@ build() {
 	cd "${_srcname}-${pkgver}/"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+	export ZSTD_SYS_USE_PKG_CONFIG=1
 	CFLAGS+=" -ffat-lto-objects" cargo build --frozen --release --all-features
 }
 

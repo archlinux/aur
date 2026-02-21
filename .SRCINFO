@@ -1,7 +1,7 @@
 pkgbase = waydroidsu
 	pkgdesc = CLI Magisk manager and installer for Waydroid written in Rust
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/mistrmochov/WaydroidSU
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,7 @@ pkgbase = waydroidsu
 	depends = openssl
 	depends = dbus
 	depends = waydroid
+	depends = zstd
 	source = waydroidsu-0.1.2.tar.gz::https://github.com/mistrmochov/WaydroidSU/archive/refs/tags/0.1.2.tar.gz
 	sha256sums = bfc1341b7d2c9649ba1a87fd97472ab9c83edc711b3edd5c6733616bd09256ad
 
