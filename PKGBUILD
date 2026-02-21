@@ -6,7 +6,7 @@ pkgdesc="FreeDesktop-compliant notification daemon with grouping, DnD, batching,
 arch=('x86_64')
 url="https://github.com/ctrl-q/notification-tray"
 license=('custom')
-depends=('qt5-base' 'qt5-multimedia' 'dbus' 'glib2' 'python')
+depends=('qt5-base' 'qt5-multimedia' 'qt5-declarative' 'dbus' 'glib2')
 makedepends=('cmake' 'gcc' 'make' 'git')
 optdepends=('gtest: for running tests'
             'lxqt-config: for LXQt theming configuration'
