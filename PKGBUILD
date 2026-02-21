@@ -1,7 +1,7 @@
 # Maintainer: sum01 <sum01@protonmail.com>
 pkgname=cpp-httplib-compiled
 _pkgname='cpp-httplib'
-pkgver=0.32.0
+pkgver=0.33.1
 pkgrel=1
 pkgdesc='A C++ HTTP/HTTPS server and client library (compiled version)'
 arch=('x86_64' 'i686')
@@ -12,8 +12,9 @@ conflicts=('cpp-httplib')
 depends=('openssl>=3' 'zlib' 'brotli' 'zstd')
 # Cmake minimum comes from module scan minimum, not the CMakeLists.txt
 makedepends=('cmake>=3.28' 'python>=3' 'ninja>=1.11')
+checkdepends=('gtest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yhirose/cpp-httplib/archive/v$pkgver.tar.gz")
-sha512sums=('09ab022b36ac6a7faf73863a504c460edb975669edfbf6323a4d42d3e4e38e4b6e63bc95ee39b29871730abf5205f9a3bd1ff9a04fc8ba921f1ecf6c357deef4')
+sha512sums=('62882cb9b4917ed197291f2b0b75c0a7b6a73b80ec152a0f91e0b0903da628b70f1385e043885b7522d297bb26bb5b323c30c13ecc9c341b251b963171fddb00')
 build() {
 	mkdir -p "$srcdir/$_pkgname-$pkgver/build"
 	cd "$srcdir/$_pkgname-$pkgver/build"
@@ -29,8 +30,13 @@ build() {
 		-DHTTPLIB_REQUIRE_BROTLI=ON \
 		-DHTTPLIB_REQUIRE_ZSTD=ON \
 		-DHTTPLIB_BUILD_MODULES=ON \
+		-DHTTPLIB_TEST=$CHECKFUNC \
 		-DCMAKE_INSTALL_PREFIX=/usr ..
 	cmake --build .
+}
+check() {
+	cd "$srcdir/$_pkgname-$pkgver/build"
+	ctest
 }
 package() {
 	cd "$srcdir/$_pkgname-$pkgver/build"
