@@ -292,13 +292,17 @@ EOF
 	# Not our problem.
 	sed -i 's/"-Werror",//' 'build/config/compiler/BUILD.gn'
 
-	cat > 'third_party/dart/build/dart/prebuilt_dart_sdk.gni' <<-EOF
-		import("../executable_suffix.gni")
-		_dart_root = rebase_path("../..")
-		#_prebuilt_dart_exe = ""
-		#_prebuilt_dart_exe_trial = ""
-		prebuilt_dart_exe_works = true
-EOF
+	if [[ -f 'third_party/dart/build/dart/prebuilt_dart_sdk.gni' ]]; then
+		cat > 'third_party/dart/build/dart/prebuilt_dart_sdk.gni' <<-EOF
+			import("../executable_suffix.gni")
+			_dart_root = rebase_path("../..")
+			#_prebuilt_dart_exe = ""
+			#_prebuilt_dart_exe_trial = ""
+			prebuilt_dart_exe_works = true
+		EOF
+	fi
+
+	sed -z -i 's|extern "C" {\n#include <atk/atk.h>\n}|#include <atk/atk.h>|' 'flutter/shell/platform/linux/fl_view_accessible.cc'
 
 	#_ln "${srcdir}/emsdk" 'buildtools/emsdk'
 	popd
@@ -381,8 +385,7 @@ _download()
 	if [[ ! -e "$cached_flutter_engine_dir/flutter" ]]; then
 		_git clone --origin=origin -s "$flutter_dir" "$cached_flutter_engine_dir/flutter"
 	fi
-	_git -C '.engine-src/flutter' checkout --force --no-track -B makepkg "$engine_version"
-
+	_git -C '.engine-src/flutter' -c 'core.hooksPath=/dev/null' checkout --force --no-track -B makepkg "$engine_version"
 	_clone_src "$ARCH_FLUTTER_DEPOT_TOOL_URL" "$fvm_cache_dir/depot_tools"
 	sed -i 's/import httplib2.socks/import socks/' '.engine-src/depot_tools/gerrit_util.py'
 }
