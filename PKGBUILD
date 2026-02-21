@@ -1,7 +1,7 @@
 # Maintainer: L.B.R. <lbr@mmonad.com>
 pkgname=zmosh-git
 _pkgname=zmosh
-pkgver=0.4.0.r237.g1dbff97 # This will be updated by pkgver()
+pkgver=0.5.1.r251.g9f5bd98 # This will be updated by pkgver()
 pkgrel=1
 pkgdesc="Session persistence with auto-reconnect for terminal processes"
 arch=('x86_64' 'aarch64')
