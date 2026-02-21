@@ -3,32 +3,35 @@
 
 pkgname=adguardhome-bin
 _name=${pkgname%-bin}
-_upstream_name=AdGuardHome
-pkgver=0.107.71
+pkgver=0.107.72
 pkgrel=1
 pkgdesc='Network-wide ads and trackers blocking DNS server'
-arch=('armv7h' 'aarch64' 'i686' 'riscv64' 'x86_64')
+arch=(armv7h aarch64 pentium4 powerpc64le riscv64 x86_64)
 url='https://github.com/AdguardTeam/AdGuardHome'
-license=('GPL-3.0-only')
-provides=("$_name")
-conflicts=("$_name")
-options=('!debug' '!strip')
-source=("$_name.service")
-source_armv7h=("$_upstream_name-${pkgver}_armv7h.tar.gz::$url/releases/download/v$pkgver/${_upstream_name}_linux_armv7.tar.gz")
-source_aarch64=("$_upstream_name-${pkgver}_aarch64.tar.gz::$url/releases/download/v$pkgver/${_upstream_name}_linux_arm64.tar.gz")
-source_i686=("$_upstream_name-${pkgver}_i686.tar.gz::$url/releases/download/v$pkgver/${_upstream_name}_linux_386.tar.gz")
-source_riscv64=("$_upstream_name-${pkgver}_riscv64::$url/releases/download/v$pkgver/${_upstream_name}_linux_riscv64.tar.gz")
-source_x86_64=("$_upstream_name-${pkgver}_x86_64::$url/releases/download/v$pkgver/${_upstream_name}_linux_amd64.tar.gz")
-sha256sums=('cd50ab7fa526078e30b8a3d0ff504cbf0aad713818ad922d99236b0a246ae204')
-sha256sums_armv7h=('901457506f571505836aa9767daef56d5fe750c50ee900ae4449b32dc43a9b0d')
-sha256sums_aarch64=('f5ea04e043994f63a1f2d240805398abeda877046db0cf943b976872562dfc3e')
-sha256sums_i686=('abbed72a497c27f06b456466bcbcd0c66809e42bbb4f2db26176b5aad547efc2')
-sha256sums_riscv64=('5ebfdac14a8035c0cc4da8ab399c22cb2200b32a7b3dcca7ac2a508666d9352e')
-sha256sums_x86_64=('b4b01a5da971a67bc2458ba0fc075de1b356cf6a37843e900177f329777cc5db')
+license=(GPL-3.0-only)
+provides=($_name)
+conflicts=($_name)
+options=(!debug)
+source=($_name.service $_name.sysusers)
+source_armv7h=("AdGuardHome-$pkgver-armv7h.tar.gz::$url/releases/download/v$pkgver/AdGuardHome_linux_armv7.tar.gz")
+source_aarch64=("AdGuardHome-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/AdGuardHome_linux_arm64.tar.gz")
+source_pentium4=("AdGuardHome-$pkgver-pentium4.tar.gz::$url/releases/download/v$pkgver/AdGuardHome_linux_386.tar.gz")
+source_powerpc64le=("AdGuardHome-$pkgver-powerpc64le.tar.gz::$url/releases/download/v$pkgver/AdGuardHome_linux_ppc64le.tar.gz")
+source_riscv64=("AdGuardHome-$pkgver-riscv64.tar.gz::$url/releases/download/v$pkgver/AdGuardHome_linux_riscv64.tar.gz")
+source_x86_64=("AdGuardHome-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/AdGuardHome_linux_amd64.tar.gz")
+sha256sums=('b3763af1dae4d32645f3489cde5f07c919c7de9c76495a87268410347c67b873'
+            'cdbb882eb167461418ea7ea5cca65d32fd018a231ac1a8bb7f3e7140345c8cf1')
+sha256sums_armv7h=('13704b5088f5c492e8a6e161636c8d3e2722c2eebc0c4306ffca1be9bfa25d55')
+sha256sums_aarch64=('5332366407f825b5929b492db953aab9ede99f9e75d6ecee1b9ea296d95a523e')
+sha256sums_pentium4=('f31965131fa586ac5903fa0d6da86b0533f9035d70f31996052726ff3366a473')
+sha256sums_powerpc64le=('ab7df0867cd331fe6059694612fbb0e37335ec2c4994a1e9d7b133bd85751359')
+sha256sums_riscv64=('4dfc47c2539100b364e0a709ceea527b2c30ea9289dbc9ffb7f2b653b524a256')
+sha256sums_x86_64=('cf25794597a2f5b6cd8cd3670439db6f548c59af4ace392e40055b90e80c9329')
 
 package() {
-    install -Dm755 "$_upstream_name/$_upstream_name" "$pkgdir/usr/bin/$_name"
-    install -Dm644 $_name.service "$pkgdir/usr/lib/systemd/system/$_name.service"
-    install -dm755 "$pkgdir/etc"
-    ln -s /var/lib/$_name/$_upstream_name.yaml "$pkgdir/etc/$_name.yaml"
+    install -Dm755 AdGuardHome/AdGuardHome "$pkgdir/usr/bin/$_name"
+    install -Dm644 $_name.service -t "$pkgdir/usr/lib/systemd/system"
+    install -Dm644 $_name.sysusers "$pkgdir/usr/lib/sysusers.d/$_name.conf"
+    install -d "$pkgdir/etc"
+    ln -s /var/lib/$_name/AdGuardHome.yaml "$pkgdir/etc/$_name.yaml"
 }
