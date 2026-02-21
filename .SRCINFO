@@ -1,14 +1,13 @@
 pkgbase = robotstxt
 	pkgdesc = Google's robots.txt parser and matcher as a C++ library (compliant to C++11).
-	pkgver = 0.0.0.102
+	pkgver = 0.0.0.118
 	pkgrel = 1
 	url = https://github.com/google/robotstxt
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
-	makedepends = git
-	depends = gcc-libs
-	source = robotstxt-0.0.0.102.tar.gz::https://github.com/google/robotstxt/archive/a732377373e8bbee9f720b52020e2a8d5dd19cf8.tar.gz
-	b2sums = cff58ea5b7c016d5aa69ccfd234041571eb692e64caf2b52044f32332b40bd0e084d201580f7374af94aae1a50c478567de795269ccb10684d0a275cb51a4ba7
+	depends = abseil-cpp
+	source = robotstxt-0.0.0.118.tar.gz::https://github.com/google/robotstxt/archive/ba8fa30e5be8b556e233782f91710919eb1f935f.tar.gz
+	b2sums = 70036ff8d9e08bd0b511438f571cc21d8fccd5a598eaa645c4f47e6373af73678e2f82c061094cfd561e7df80ba5d28e6bd7b5c395fc51dcd1a59fc659518ae8
 
 pkgname = robotstxt
