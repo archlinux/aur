@@ -2,12 +2,12 @@
 # Maintainer: Rongbo <wurongbo2012@hotmail.com>
 pkgname=xmcl-electron-bin
 pkgver=0.54.4
-pkgrel=1
+pkgrel=2
 pkgdesc="X Minecraft Launcher - An Open Source Minecraft Launcher with Modern UX. Provides a Disk Efficient way to manage all your Mods!"
 arch=('x86_64' 'aarch64')
 url="https://xmcl.app/"
 license=('MIT')
-depends=('electron37')
+depends=('electron38')
 makedepends=('libicns')
 checkdepends=()
 optdepends=(
@@ -39,6 +39,6 @@ package() {
     install -Dm 644 ${srcdir}/xmcl.desktop ${pkgdir}/usr/share/applications/xmcl.desktop
     install -Dm 755 /dev/stdin "${pkgdir}/usr/bin/xmcl" <<EOF
 #!/usr/bin/bash
-exec electron37 /usr/lib/xmcl/xmcl.asar "\$@"
+exec electron38 /usr/lib/xmcl/xmcl.asar "\$@"
 EOF
 }
