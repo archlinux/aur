@@ -1,6 +1,6 @@
 pkgbase = hugo-git
 	pkgdesc = A fast and flexible static site generator
-	pkgver = 0.145.0.r29.gc15ebce2f
+	pkgver = 0.156.0.r3.g3850881f2
 	pkgrel = 1
 	url = https://gohugo.io/
 	arch = i686
@@ -8,10 +8,12 @@ pkgbase = hugo-git
 	license = Apache-2.0
 	makedepends = git
 	makedepends = go
-	depends = gcc-libs
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
 	optdepends = dart-sass: required to transpile Sass to CSS
 	optdepends = python-docutils: required for reStructuredText support
-	provides = hugo=0.145.0.r29.gc15ebce2f
+	provides = hugo=0.156.0.r3.g3850881f2
 	conflicts = hugo
 	source = git+https://github.com/gohugoio/hugo.git
 	sha256sums = SKIP

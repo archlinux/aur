@@ -4,13 +4,13 @@
 # Contributor: Přemysl Janouch <p.janouch@gmail.com>
 
 pkgname=hugo-git
-pkgver=0.145.0.r29.gc15ebce2f
+pkgver=0.156.0.r3.g3850881f2
 pkgrel=1
 pkgdesc="A fast and flexible static site generator"
 arch=('i686' 'x86_64')
 url="https://gohugo.io/"
 license=('Apache-2.0')
-depends=('gcc-libs')
+depends=('glibc' 'libgcc' 'libstdc++')
 makedepends=('git' 'go')
 optdepends=('dart-sass: required to transpile Sass to CSS'
             'python-docutils: required for reStructuredText support')
@@ -30,7 +30,7 @@ pkgver() {
   cd "hugo"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
