@@ -1,0 +1,17 @@
+pkgbase = lib32-libwslay
+	pkgdesc = WebSocket library (32-bit)
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/tatsuhiro-t/wslay
+	arch = x86_64
+	license = MIT
+	makedepends = lib32-gcc-libs
+	depends = libwslay>=1.1.1
+	depends = lib32-glibc
+	provides = lib32-wslay
+	provides = libwslay.so
+	replaces = lib32-wslay
+	source = https://github.com/tatsuhiro-t/wslay/releases/download/release-1.1.1/wslay-release-1.1.1.tar.bz2
+	b2sums = e5b5e7435e1e3a82cef4407f2a5fbcf4168f2814546074d8ee5aa70f36acabc648bc58f14aaee53bc6be7ab7e18c39a4f8e16fba507dc85f19ee4f79a827be6e
+
+pkgname = lib32-libwslay
