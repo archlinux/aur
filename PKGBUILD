@@ -1,5 +1,5 @@
 pkgname=plasma6-applets-eventcalendar
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="KDE Plasma 6 plasmoid for a calendar+agenda with weather that syncs to Google Calendar"
 arch=('x86_64')
