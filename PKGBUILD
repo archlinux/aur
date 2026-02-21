@@ -1,6 +1,6 @@
 # Maintainer: Dominicentek <dominicentekgaming@gmail.com>
 pkgname=kirastudio-bin
-pkgver=1.0.1
+pkgver=1.0.2
 zipver=$(echo $pkgver | sed 's/\.//g')
 pkgrel=1
 pkgdesc="KiraStudio is a lightweight, cross-platform music studio built around clarity and automation."
