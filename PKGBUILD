@@ -3,7 +3,7 @@
 
 pkgbase=dictype
 pkgname=(dictype dictype-fcitx)
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc='real-time voice-to-text input on Linux'
 arch=('x86_64')
@@ -21,7 +21,7 @@ makedepends=(
   grpc
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('d62d76b0d8ba9ab8fe1655f82b14a25af8e63e0f9945db0d53c166dfc58384f564a8ae083990796b4cb9a77fd6f6a6df40deadd267d020ae05c6fa7bb5a27bfe')
+sha512sums=('7724891d5bce83077917c1a7ae027caec58122cdea1b81ee779f2a6c90a0cd199e17e9a78d41313af425115da22f1c355085c2e17e36f13c79e81c66ff8ed032')
 
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
@@ -34,6 +34,8 @@ build() {
       -S "${srcdir}/${pkgbase}-${pkgver}" \
       -B "build" \
       -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_C_COMPILER=clang \
+      -DCMAKE_CXX_COMPILER=clang++ \
       -DCMAKE_INSTALL_PREFIX="/usr" \
       -DCMAKE_SKIP_INSTALL_RPATH=ON \
       -DBUILD_TESTING=0
