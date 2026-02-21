@@ -1,0 +1,11 @@
+pkgname=bfree
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="A better free, human by default"
+arch=('x86_64')
+url="https://github.com/glexposito/bfree"
+license=('MIT')
+depends=('glibc')
+makedepends=('cargo')
+source=("https://github.com/glexposito/bfree/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('SKIP')
