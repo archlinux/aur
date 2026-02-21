@@ -1,9 +1,9 @@
 pkgname=kiraws
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Kira web server, a simple yet flexible and scalable web server written in python"
 arch=('x86_64' 'arm7h' 'aarch64')
-url="https://gitlab.com/coreybruce/kira"
+url="https://gitlab.com/linuxbombay/kira"
 license=('GPL')
 depends=('python')
 makedepends=('unzip')
