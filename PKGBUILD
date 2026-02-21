@@ -1,8 +1,9 @@
 # Maintainer: Rongbo <wurongbo2012@hotmail.com>
 
 pkgname=bodyslide
+_pkgname=BodySlide
 pkgver=5.7.1
-pkgrel=2
+pkgrel=4
 pkgdesc='BodySlide and Outfit Studio, a tool to convert, create, and customize outfits and bodies for Bethesda games.'
 arch=('x86_64')
 
@@ -19,21 +20,22 @@ makedepends=('cmake'
 	'fbx-sdk'
 )
 optdepends=('libxml2-legacy: for autodesk fbx')
-source=("bsos::https://github.com/ousnius/BodySlide-and-Outfit-Studio/archive/refs/tags/v${pkgver}.tar.gz"
+
+backup=("usr/share/${_pkgname}/Config.xml")
+source=("git+https://github.com/ousnius/BodySlide-and-Outfit-Studio.git#tag=v${pkgver}"
 	'git+https://github.com/ousnius/nifly.git'
 	'BodySlide.desktop'
 	'OutfitStudio.desktop'
 )
-sha256sums=('b74a966efc5c174f0b9ee1b2cc47e331a729d26bf18cf4d0c9858c6bd6c242e6'
+sha256sums=('SKIP'
             'SKIP'
-            '3a1491f4d63122061752cb7e365e9dc780fc2b6904d57fffd9c0bde3dcc1387a'
-            'd64d0e1a432f75fefa1d6fe819c02c2285ae754f62e92dab8469e8616e9a12ab')
+            '3b257e41b82ad9f596d1f7dabcf7eae2a258f042457e30f0a56fdd04d23f46df'
+            'e3188b423ad7d4fdc4d44813a2390ae8da9f7075c3820b423456726ea6d2473e')
 
 
 prepare() {
-	tar xzvf bsos
-	mv BodySlide-and-Outfit-Studio-${pkgver} ${pkgname}
-	cp -rf nifly ${pkgname}/lib/
+#	mv BodySlide-and-Outfit-Studio-${pkgver} ${pkgname}
+	ln -sf ${srcdir}/nifly ${pkgname}/lib/ #|| echo "nifly exist"
 }
 
 build() {
@@ -43,20 +45,21 @@ build() {
 }
 
 package() {
-	install -Dm755 ${pkgname}/build/BodySlide ${pkgdir}/usr/bin/${pkgname}
-	install -Dm755 ${pkgname}/build/OutfitStudio ${pkgdir}/usr/bin/outfitstudio
-	install -Dm644 BodySlide.desktop ${pkgdir}/usr/share/applications/bodyslide.desktop
-	install -Dm644 OutfitStudio.desktop ${pkgdir}/usr/share/applications/outfitstudio.desktop
-	install -Dm777 ${pkgname}/Config.xml ${pkgdir}/usr/share/${pkgname}/Config.xml
-        install -Dm777 ${pkgname}/BodySlide.xml ${pkgdir}/usr/share/${pkgname}/BodySlide.xml
-        install -Dm777 ${pkgname}/OutfitStudio.xml ${pkgdir}/usr/share/${pkgname}/OutfitStudio.xml
-	cp -r ${pkgname}/res ${pkgdir}/usr/share/${pkgname}/
-	cp -r ${pkgname}/lang ${pkgdir}/usr/share/${pkgname}/
+	install -Dm755 ${pkgname}/build/BodySlide ${pkgdir}/usr/bin/${_pkgname}
+	install -Dm755 ${pkgname}/build/OutfitStudio ${pkgdir}/usr/bin/OutfitStudio
+	install -Dm644 BodySlide.desktop ${pkgdir}/usr/share/applications/BodySlide.desktop
+	install -Dm644 OutfitStudio.desktop ${pkgdir}/usr/share/applications/OutfitStudio.desktop
+	install -Dm777 ${pkgname}/Config.xml ${pkgdir}/usr/share/${_pkgname}/Config.xml
+        install -Dm777 ${pkgname}/BodySlide.xml ${pkgdir}/usr/share/${_pkgname}/BodySlide.xml
+        install -Dm777 ${pkgname}/OutfitStudio.xml ${pkgdir}/usr/share/${_pkgname}/OutfitStudio.xml
+	cp -r ${pkgname}/res ${pkgdir}/usr/share/${_pkgname}/
+	cp -r ${pkgname}/lang ${pkgdir}/usr/share/${_pkgname}/
 	pushd ${pkgdir}/usr/share/
-	ln -s ${pkgname} outfitstudio
-	chmod 777 ${pkgname}
+	ln -s ${_pkgname} OutfitStudio
+	ln -s /usr/bin/OutfitStudio OutfitStudio/OutfitStudio
+	chmod 777 ${_pkgname}
 	popd
-
+#	install ${pkgname}/LICENSE ${pkgdir}/usr/share/licenses/bodyslide/LICENSE
 	install -Dm644 ${pkgname}/res/images/BodySlide.png ${pkgdir}/usr/share/icons/HighContrast/256x256/apps/BodySlide.png
 	install -Dm644 ${pkgname}/res/images/OutfitStudio.png ${pkgdir}/usr/share/icons/hicolor/256x256/apps/OutfitStudio.png
 	install -Dm644 ${pkgname}/assets/BodySlide.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/BodySlide.svg
