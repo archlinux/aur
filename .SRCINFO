@@ -1,0 +1,24 @@
+pkgbase = tinyfiledialogs
+	pkgdesc = tiny file dialogs: a cross platform (C, C++) file dialog opener
+	pkgver = 3.21.3
+	pkgrel = 1
+	url = http://tinyfiledialogs.sourceforge.net
+	arch = x86_64
+	license = Zlib
+	optdepends = applescript
+	optdepends = kdialog
+	optdepends = zenity
+	optdepends = matedialog
+	optdepends = shellemantary
+	optdepends = qarma
+	optdepends = shanty
+	optdepends = boxer
+	optdepends = yad
+	options = !strip
+	options = staticlibs
+	source = tinyfiledialogs.zip
+	source = LICENSE
+	sha256sums = a39627520b644df8f65a71394a6d5ddeb8ab6e413b254822aee750457d5e51c6
+	sha256sums = 4d9237e943cff030cdce71622c6f8b74cd06e2b30b7e5339b394a586d6d0bc7e
+
+pkgname = tinyfiledialogs
