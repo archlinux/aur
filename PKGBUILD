@@ -2,7 +2,7 @@
 
 pkgname=tnl-git
 _pkgname=tnl
-pkgver=r8168.9052a805a
+pkgver=r8232.3a6efda5b
 pkgrel=1
 pkgdesc="An efficient C++ library providing parallel algorithms and data structures for high-performance computing on GPUs, multicore CPUs and distributed clusters"
 arch=(x86_64)
@@ -10,8 +10,9 @@ url=https://tnl-project.org/
 license=(MIT)
 depends=(
   blas-openblas
-  gcc-libs
   glibc
+  libgcc
+  libstdc++
   metis
   onetbb
   openmpi
