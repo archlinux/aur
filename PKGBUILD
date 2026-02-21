@@ -1,6 +1,6 @@
 # Maintainer: Sidharth Arya <code@sidhartharya.com>
 pkgname=svcm
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Lightweight systemd service manager for Wayland"
 arch=('x86_64')
