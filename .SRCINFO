@@ -1,7 +1,7 @@
 pkgbase = smartgit
 	pkgdesc = Git client with Hg and SVN support.
 	pkgver = 25.1.110
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.smartgit.dev/
 	arch = any
 	license = LicenseRef-custom
@@ -13,7 +13,7 @@ pkgbase = smartgit
 	replaces = smartgithg
 	source = https://download.smartgit.dev/smartgit/smartgit-25_1_110-linux-amd64.tar.gz
 	source = smartgit.desktop
-	sha256sums = 2e227c2e45f62f15e0332308c2894f20dc6390e8c990950ef476c7187a696507
+	sha256sums = 90d6f72f55ee00cb2c5f781523d97fde5eb4b1adb8bb869f7fb3dc0b864e4fcb
 	sha256sums = bb5665e9c93640b311dbe8b633da65e3c72a712a3dc9655c3274a3542a688a32
 
 pkgname = smartgit

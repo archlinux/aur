@@ -4,7 +4,7 @@
 pkgname=smartgit
 pkgver=25.1.110
 _pkgver=$(echo "${pkgver//./_}" | cut -d_ -f -4)
-pkgrel=2
+pkgrel=3
 pkgdesc='Git client with Hg and SVN support.'
 arch=('any')
 url="https://www.smartgit.dev/"
@@ -14,7 +14,7 @@ optdepends=('mercurial: hg repositories support')
 replaces=('smartgithg')
 source=("https://download.smartgit.dev/${pkgname}/${pkgname}-${_pkgver}-linux-amd64.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('2e227c2e45f62f15e0332308c2894f20dc6390e8c990950ef476c7187a696507'
+sha256sums=('90d6f72f55ee00cb2c5f781523d97fde5eb4b1adb8bb869f7fb3dc0b864e4fcb'
             'bb5665e9c93640b311dbe8b633da65e3c72a712a3dc9655c3274a3542a688a32')
 
 package() {
