@@ -1,6 +1,6 @@
 pkgbase = binaryninja-personal
 	pkgdesc = An interactive decompiler, disassembler, debugger, and binary analysis platform. This package is for the Personal Edition and requires both an installer zip (x86 or ARM) and a license.
-	pkgver = 5.2.8614
+	pkgver = 5.2.8722
 	pkgrel = 1
 	url = https://binary.ninja
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = binaryninja-personal
 	depends = qt5-base
 	optdepends = gtk-update-icon-cache: icon support
 	provides = binaryninja
-	source = file://binaryninja_linux_5.2.8614_personal.zip
+	source = binaryninja_linux_5.2.8722_personal.zip
 	source = binaryninja.png
 	source = binaryninja.desktop
 	sha256sums = SKIP
