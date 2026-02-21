@@ -149,7 +149,7 @@ index a848876f4c..0ed3423c32 100644
  
                  menuItem = menu.newMenuItem(virtualDesktopsMenu);
 diff --git a/applets/taskmanager/qml/Task.qml b/applets/taskmanager/qml/Task.qml
-index dd688d02fc..cc947ca3ee 100644
+index 61d279d6fd..2ab8833706 100644
 --- a/applets/taskmanager/qml/Task.qml
 +++ b/applets/taskmanager/qml/Task.qml
 @@ -18,6 +18,8 @@ import org.kde.kirigami as Kirigami
@@ -161,7 +161,7 @@ index dd688d02fc..cc947ca3ee 100644
  PlasmaCore.ToolTipArea {
      id: task
  
-@@ -433,7 +435,7 @@ PlasmaCore.ToolTipArea {
+@@ -435,7 +437,7 @@ PlasmaCore.ToolTipArea {
                  } else if (Plasmoid.configuration.middleClickAction === TaskManagerApplet.Backend.ToggleGrouping) {
                      tasksModel.requestToggleGrouping(modelIndex());
                  } else if (Plasmoid.configuration.middleClickAction === TaskManagerApplet.Backend.BringToCurrentDesktop) {
@@ -171,7 +171,7 @@ index dd688d02fc..cc947ca3ee 100644
              } else if (button === Qt.BackButton || button === Qt.ForwardButton) {
                  const playerData = mpris2Source.playerForLauncherUrl(task.model.LauncherUrlWithoutIcon, task.model.AppPid);
 diff --git a/applets/taskmanager/qml/main.qml b/applets/taskmanager/qml/main.qml
-index da27bb09c1..2563d3e908 100644
+index da27bb09c1..4af6c81c7c 100644
 --- a/applets/taskmanager/qml/main.qml
 +++ b/applets/taskmanager/qml/main.qml
 @@ -154,11 +154,10 @@ PlasmoidItem {
@@ -183,12 +183,12 @@ index da27bb09c1..2563d3e908 100644
          activity: activityInfo.currentActivity
  
 -        filterByVirtualDesktop: Plasmoid.configuration.showOnlyCurrentDesktop
-+        filterByPerScreenVirtualDesktop: Plasmoid.configuration.showOnlyCurrentDesktop
++        filterByCurrentVirtualDesktop: Plasmoid.configuration.showOnlyCurrentDesktop
          filterByScreen: Plasmoid.configuration.showOnlyCurrentScreen
          filterByActivity: Plasmoid.configuration.showOnlyCurrentActivity
          filterNotMinimized: Plasmoid.configuration.showOnlyMinimized
 diff --git a/applets/window-list/main.qml b/applets/window-list/main.qml
-index fe4a25cd1b..4171437d85 100644
+index fe4a25cd1b..992f64c994 100644
 --- a/applets/window-list/main.qml
 +++ b/applets/window-list/main.qml
 @@ -37,14 +37,13 @@ PlasmoidItem {
@@ -203,12 +203,12 @@ index fe4a25cd1b..4171437d85 100644
          groupMode: TaskManager.TasksModel.GroupDisabled
  
 -        filterByVirtualDesktop: Plasmoid.configuration.showOnlyCurrentDesktop
-+        filterByPerScreenVirtualDesktop: Plasmoid.configuration.showOnlyCurrentDesktop
++        filterByCurrentVirtualDesktop: Plasmoid.configuration.showOnlyCurrentDesktop
          filterByScreen: Plasmoid.configuration.showOnlyCurrentScreen
          filterByActivity: Plasmoid.configuration.showOnlyCurrentActivity
          filterNotMinimized: Plasmoid.configuration.showOnlyMinimized
 diff --git a/desktoppackage/contents/views/Panel.qml b/desktoppackage/contents/views/Panel.qml
-index bd57d91729..2c2a8c675e 100644
+index bd57d91729..6dd16c111b 100644
 --- a/desktoppackage/contents/views/Panel.qml
 +++ b/desktoppackage/contents/views/Panel.qml
 @@ -102,7 +102,7 @@ Item {
@@ -216,7 +216,7 @@ index bd57d91729..2c2a8c675e 100644
      TaskManager.TasksModel {
          id: visibleWindowsModel
 -        filterByVirtualDesktop: true
-+        filterByPerScreenVirtualDesktop: true
++        filterByCurrentVirtualDesktop: true
          filterByActivity: true
          filterByScreen: false
          filterByRegion: TaskManager.RegionFilterMode.Intersect

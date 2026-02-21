@@ -103,6 +103,6 @@ pkgbase = plasma-desktop-povd
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
 	sha256sums = d713e3db18e7e8bdee76f8be21018e21f3e8408e1d919a1a263af00bda55fb51
 	sha256sums = SKIP
-	sha256sums = 312a24804045b0dfc33c80398858dd109a3b0b4ee8252eb0fdb732b01882dbea
+	sha256sums = ff724b7d4ef0c33ad5cb0fff2422fdfa112dcb7dffe336bace567bdfea0ea925
 
 pkgname = plasma-desktop-povd
