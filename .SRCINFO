@@ -16,6 +16,7 @@ pkgbase = hrmp-git
 	optdepends = pandoc
 	optdepends = texlive-basic
 	provides = hrmp
+	conflicts = hrmp
 	source = git+https://github.com/HighResMusicPlayer/hrmp.git
 	sha256sums = SKIP
 
