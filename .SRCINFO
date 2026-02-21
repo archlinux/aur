@@ -1,0 +1,19 @@
+pkgbase = probex-git
+	pkgdesc = Low-friction Linux profiler with integrated web viewer
+	pkgver = 0.1.17.r6.gab88e0b
+	pkgrel = 1
+	url = https://github.com/XiangpengHao/probex
+	arch = x86_64
+	license = (MIT OR Apache-2.0) AND (GPL-2.0-only OR MIT)
+	makedepends = git
+	makedepends = rustup
+	makedepends = clang
+	makedepends = bpf-linker
+	makedepends = dioxus-cli
+	depends = glibc
+	provides = probex
+	conflicts = probex
+	source = probex::git+https://github.com/XiangpengHao/probex.git
+	sha256sums = SKIP
+
+pkgname = probex-git
