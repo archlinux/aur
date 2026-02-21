@@ -2,7 +2,7 @@
 
 pkgname=zenoh-c
 pkgver=1.7.2
-pkgrel=2
+pkgrel=3
 pkgdesc="C API for Zenoh"
 arch=('any')
 url="https://zenoh.io/"
