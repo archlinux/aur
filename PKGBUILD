@@ -10,7 +10,7 @@ provides=('efisc2025')
 conflicts=('efisc2025')
 # Maintainer: stpaulifan <stpaulifan.y441j@simplelogin.com>
 
-source=("efisc2025_1.0.4-73_amd64.deb")
+source=("https://efisc.kttg.ch/update/eFisc/2025/efisc2025_1.0.4-73_amd64.deb")
 sha256sums=('SKIP')
 
 package() {

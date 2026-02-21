@@ -9,7 +9,7 @@ pkgbase = efisc2025-bin
 	depends = xdg-utils
 	provides = efisc2025
 	conflicts = efisc2025
-	source = efisc2025_1.0.4-73_amd64.deb
+	source = https://efisc.kttg.ch/update/eFisc/2025/efisc2025_1.0.4-73_amd64.deb
 	sha256sums = SKIP
 
 pkgname = efisc2025-bin
