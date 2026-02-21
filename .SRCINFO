@@ -1,0 +1,22 @@
+pkgbase = dae-kix-git
+	pkgdesc = 由 kix fork 的 dae 分支版本
+	pkgver = r4baacef
+	pkgrel = 1
+	url = https://github.com/olicesx/dae
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = go
+	makedepends = base-devel
+	makedepends = clang
+	makedepends = llvm
+	makedepends = libbpf
+	makedepends = linux-headers
+	makedepends = linux-api-headers
+	optdepends = v2ray-geoip: geoip database
+	optdepends = v2ray-domain-list-community: domain rules
+	options = !debug
+	source = dae-kix-git::git+https://github.com/olicesx/dae.git
+	sha256sums = SKIP
+
+pkgname = dae-kix-git
