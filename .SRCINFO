@@ -1,6 +1,6 @@
 pkgbase = rstudio-desktop
 	pkgdesc = A powerful and productive integrated development environment (IDE) for R programming language
-	pkgver = 2026.01.0.392
+	pkgver = 2026.01.1.403
 	pkgrel = 1
 	url = https://github.com/rstudio/rstudio
 	arch = x86_64
@@ -48,7 +48,7 @@ pkgbase = rstudio-desktop
 	options = !emptydirs
 	options = !debug
 	options = !strip
-	source = rstudio-2026.01.0.392-49fbea7.tar.gz::https://github.com/rstudio/rstudio/archive/49fbea7a09a468fc4d1993ca376fd5b971cb58e3.tar.gz
+	source = rstudio-2026.01.1.403-0e924ab.tar.gz::https://github.com/rstudio/rstudio/archive/0e924abb984501b0d66b204ea06b60fc7813275a.tar.gz
 	source = quarto::git+https://github.com/quarto-dev/quarto.git#branch=release/rstudio-cranberry-hibiscus
 	source = 0001-steady_timer.patch
 	source = https://rstudio-buildtools.s3.us-east-1.amazonaws.com/gwt/gwt-2.12.2.tar.gz
