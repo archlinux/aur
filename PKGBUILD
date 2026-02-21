@@ -1,3 +1,4 @@
+# Maintainer: schlndh <schlindenbuch.h@seznam.cz>
 _pkgname=plasma-desktop
 pkgname=$_pkgname-povd
 pkgver=6.6.0
