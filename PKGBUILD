@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/AzPepoze/linux-wallpaperengine-gui"
 license=('MIT')
 depends=('linux-wallpaperengine' 'gtk3' 'nss' 'libxss' 'alsa-lib')
-makedepends=('git' 'npm' 'go' 'python') 
+makedepends=('git' 'bun' 'go' 'python') 
 provides=("$_pkgname")
 conflicts=("$_pkgname" "${_pkgname}-bin")
 source=("git+${url}.git")
@@ -51,8 +51,8 @@ build() {
     export GOCACHE="$srcdir/go-build"
     export GOMODCACHE="$srcdir/go/pkg/mod"
     
-    npm install --verbose
-    npm run build
+    bun install
+    bun run build
 
     # Fix permissions for Go module cache to allow cleanup
     chmod -R u+w "$srcdir/go"
