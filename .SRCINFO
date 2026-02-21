@@ -1,0 +1,17 @@
+pkgbase = index-asyncat-bin
+	pkgdesc = A local-first note-taking and flashcard app built with Tauri
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Jeevash23/index
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = libappindicator-gtk3
+	depends = gtk3
+	provides = index-asyncat
+	conflicts = index-asyncat
+
+	source_x86_64 = index-0.1.0.deb::https://github.com/Jeevash23/index/releases/download/v0.1.0/index_0.1.0_amd64.deb
+	sha256sums_x86_64 = SKIP
+
+pkgname = index-asyncat-bin
