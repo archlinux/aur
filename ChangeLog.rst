@@ -1,3 +1,51 @@
+S3QL 5.4.2 (2025-12-28)
+=======================
+
+* There is a new s3qladm shrink-db command that reclaims unused space in the metadata database (both on disk and in the backend storage).
+
+S3QL 5.4.1 (2025-11-01)
+=======================
+
+* Running mount.s3ql with --metadata-backup-interval=0 no longer crashes.
+* Fixed an "AttributeError' crash when parsing error responses from Google Storage.
+
+
+S3QL 5.4.0 (2025-09-06)
+=======================
+
+* contrib/benchmark.py works again. It stopped working with S3QL 5.0.0.
+
+* S3QL is now compatible with Python 3.13 and newer OpenSSL versions. This makes S3QL compatible with e.g. Debian trixie.
+
+
+S3QL 5.3.0 (2025-05-10)
+=======================
+
+* Add --fast flag for fsck.s3ql. For now, this just skips the verification of metadata backups.
+
+
+S3QL 5.2.3 (2024-11-02)
+=======================
+
+* Make release tarballs compatible with Python 3.12 by using a newer Cython version to generate the necessary C++ extension.
+
+* Minor bugfixes and improvements
+
+
+S3QL 5.2.2 (2024-09-01)
+=======================
+
+* Make S3QL's HTTP client library more forgiving when HTTP servers do not behave according to HTTP/1.1 specification. This will make filesystems with OVHcloud's OpenStack Swift implementation more robust.
+
+* Fix a bug where, on a temporary network error, S3QL would immediately retry once and crash if not successful.
+
+S3QL 5.2.1 (2024-07-05)
+=======================
+
+* Fixed a crash with TypeError: CacheEntry.seek() takes 2 positional arguments  but 3 were given when using neither encryption nor compression.
+
+* Fixed a crash with s3ql.http.StateError: No pending requests.
+
 S3QL 5.2.0 (2024-04-19)
 =======================
 
