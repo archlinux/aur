@@ -8,8 +8,8 @@
 
 _pkgname=ffmpeg
 pkgname=${_pkgname}7.1
-pkgver=7.1.2
-pkgrel=2
+pkgver=7.1.3
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=(x86_64)
 url=https://ffmpeg.org
@@ -120,16 +120,18 @@ provides=(
 
 source=(
   git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=n${pkgver}
-  fix_build_with_v4l2_1.30.patch
-  0001-Add-av_stream_get_first_dts-for-Chromium.patch
-  0002-avcodec-libsvtav1-unbreak-build-with-latest-svtav1.patch
-  '0003-ffmpeg-glslang16-fix.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/f1e9032a2000b8b885cffd6fed8eacd47b37673f'
+  0010-fix_build_with_v4l2_1.30.patch
+  0020-Add-av_stream_get_first_dts-for-Chromium.patch
+  0030-avcodec-libsvtav1-unbreak-build-with-latest-svtav1.patch
+  '0040-ffmpeg-glslang16-fix.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/f1e9032a2000b8b885cffd6fed8eacd47b37673f'
+  '0050-ffmpeg-svt-av1-4.0-fix.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/a5d4c398b411a00ac09d8fe3b66117222323844c'
 )
-b2sums=('966f06bac6b3c703c58da8eaeeba70a1c93ee3e9773de2d1911ac10518cdea0af171333f0c1fd59f0e6eddc28a11d19d69ae136d386a57cb1ddf61e08fe76a04'
+b2sums=('edee2f8a03a8cc095eeb5fd884fd6a7cd33745b534ceb5d7d9c7b84c5d07231b4833f5a0cfe5994df89838ae6dcfdda2fa2b8eed1da1213f9e230e5527a6ad9b'
         'a713b3a4243cc5de3867f7c210172c094f50bd614c0c8be2c99d6161b06d43d9183ae9c442ac3056bfe06c28419e276d129b1235471466eedd340bf0c4780acb'
         'e5f7b79f7731be9ee5a7280a9221fb531ac5a2d9820fc5870b68b0eabea667dfbe8f39f41c1e1763a4c84982896afaa54c81ff57847d203b70afafd726689e5d'
         'a32aeff68032a78d661011654bbdba138002833f7d17d23bba6f95479ca22bef5697eb9e7e4cb9e0b5140fc23eab3aab16fc60962d62809c3c02f890599a8332'
-        '3e247ecf7c692d28fc226315d5807c8605c2b1926289b08182f1703eb888b7ca3f68e9cfe42a5897413eed05200206feed04aa37776efcc04aa39cd920cbff68')
+        '3e247ecf7c692d28fc226315d5807c8605c2b1926289b08182f1703eb888b7ca3f68e9cfe42a5897413eed05200206feed04aa37776efcc04aa39cd920cbff68'
+        'bccad8259721e6991e4da9d97ff748cfbc82ffffe4a4e20e5ec8593a50afc482c1c0764420bf12388829ed7da08cc2eac192b1ecbe51180d4427165863baa7c7')
 validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
 
 prepare() {
@@ -137,17 +139,20 @@ prepare() {
 
   # Fix build with v4l2 >= 1.30
   # https://trac.ffmpeg.org/ticket/11570
-  patch -Np1 -i "${srcdir}/fix_build_with_v4l2_1.30.patch"
+  patch -Np1 -i "${srcdir}/0010-fix_build_with_v4l2_1.30.patch"
 
   # https://crbug.com/1251779
-  git apply -3 ../0001-Add-av_stream_get_first_dts-for-Chromium.patch
+  git apply -3 ../0020-Add-av_stream_get_first_dts-for-Chromium.patch
 
   # Fix for svt-av1
   # Taken from https://github.com/FFmpeg/FFmpeg/commit/d1ed5c06e3edc5f2b5f3664c80121fa55b0baa95.patch
-  git apply -3 ../0002-avcodec-libsvtav1-unbreak-build-with-latest-svtav1.patch
+  git apply -3 ../0030-avcodec-libsvtav1-unbreak-build-with-latest-svtav1.patch
 
   # Fix build fail when compiling with glslang >= 16.0
-  patch -Np1 -i "${srcdir}/0003-ffmpeg-glslang16-fix.patch"
+  patch -Np1 -i "${srcdir}/0040-ffmpeg-glslang16-fix.patch"
+
+  # Fix build fail when compiling with libsvtav1 >= 4
+  patch -Np1 -i "${srcdir}/0050-ffmpeg-svt-av1-4.0-fix.patch"
   
   # VAAPI HEVC encode alignment fix
   git cherry-pick -n bcfbf2bac8f9eeeedc407b40596f5c7aaa0d5b47
