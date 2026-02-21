@@ -1,7 +1,7 @@
 # Maintainer: Radon Rosborough <radon@radian.codes>
 
 pkgname=signal-export
-pkgver=3.8.1
+pkgver=3.8.2
 pkgrel=1
 pkgdesc='Export your Signal chats to markdown files with attachments'
 arch=('any')
@@ -23,7 +23,7 @@ depends=(
 )
 makedepends=(python-build python-installer python-pdm-backend)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1d9335da3e0d78f9fa6028dfa7ce98ab0475d85f99f86c0c6b4fe0ce68da8fc9')
+sha256sums=('401f815c46c1f90e6ce24840a105d015439f7cbfd293cb434fd1c8afb0e51ea0')
 
 # No check() because upstream essentially has no tests
 
