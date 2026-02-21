@@ -17,7 +17,7 @@ source=(
 sha256sums=('bacc67f72dff9b334b5365cb2bcd106f2cd36738e740c7cc5eec58231d671d41'
             '79fc81ec097911ac3e971bc2ed0a3dddbcbdc0699e4da2d4a1997df312b21d65'
             '1eee93882484a32ee699f0c7a3f53353fc068db77b1e68acaa2e411d71d9ec3d'
-            '3c17b0266b2cc00751e56bc9bdf1767e2d26eb951f2cf834e8e4e5547cf44d1c')
+            '48cff7e7440082cfe63533cf9994f194e4010dc37847e5758386428eed4d7aaa')
 
 package() {
 	mkdir -p "$pkgdir/usr/bin"
