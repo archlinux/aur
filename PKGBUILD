@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=opencode-gemini-auth
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Google Gemini OAuth Plugin for opencode"
 arch=('any')
@@ -20,7 +20,7 @@ latestver() {
 }
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('60d3a670ca653551a3ca28a8429d37e693a0cb05ed750993a1fb4a5b30451345')
+sha256sums=('2cc9e38e172a18a721fa2e3f3a020f60f3b145825fb6e25632e74185c1398a56')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
