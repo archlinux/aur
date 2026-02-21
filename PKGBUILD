@@ -1,14 +1,18 @@
 # Maintainer: Martin Thierer <thierer@web.de>
 
 pkgname=unp64
-pkgver=2.39
+pkgver=2.41
 pkgrel=1
 pkgdesc='Generic C64 prg unpacker'
 url='http://iancoog.altervista.org/'
 license=('unknown')
 arch=('x86_64')
 source=("http://iancoog.altervista.org/C/unp64_${pkgver/./}.7z")
-md5sums=('c0fbc9885c770ec492a6c6b69fba75b3')
+md5sums=('109133f87383079d0a6e9558b424b57b')
+
+prepare() {
+  sed -Ei 's/\bCFLAGS = (.+)/CFLAGS = -std=c99 \1/' "${srcdir}/unp64_${pkgver/./}/src/Makefile"
+}
 
 build() {
   cd "${srcdir}/unp64_${pkgver/./}/src"
