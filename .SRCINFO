@@ -1,0 +1,22 @@
+pkgbase = hrmp-git
+	pkgdesc = High resolution music player for Linux
+	pkgver = 3d2f025
+	pkgrel = 1
+	url = https://github.com/HighResMusicPlayer/hrmp
+	arch = x86_64
+	license = GPLv3
+	makedepends = clang
+	makedepends = cmake
+	depends = libsndfile
+	depends = opus
+	depends = faad2
+	depends = gtk4
+	depends = ncurses
+	depends = python-docutils
+	optdepends = pandoc
+	optdepends = texlive-basic
+	provides = hrmp
+	source = git+https://github.com/HighResMusicPlayer/hrmp.git
+	sha256sums = SKIP
+
+pkgname = hrmp-git
