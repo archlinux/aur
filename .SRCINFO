@@ -1,0 +1,15 @@
+pkgbase = efisc2025-bin
+	pkgdesc = Beschreibung des Programms
+	pkgver = 1.0.4
+	pkgrel = 73
+	url = https://steuerverwaltung.tg.ch/hilfsmittel/efisc-steuererklaerungssoftware/download-efisc2025.html/17525
+	arch = x86_64
+	license = custom
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	provides = efisc2025
+	conflicts = efisc2025
+	source = efisc2025_1.0.4-73_amd64.deb
+	sha256sums = SKIP
+
+pkgname = efisc2025-bin
