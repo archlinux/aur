@@ -2,7 +2,7 @@
 
 _name=trezor-agent
 pkgname=python-trezor-agent-git
-pkgver=v0.14.7.r6.gba8a1ba
+pkgver=0.16.0.r0.g05298ad
 pkgrel=1
 pkgdesc="Hardware-based SSH/PGP agent (Trezor only)"
 arch=('any')
@@ -41,7 +41,7 @@ b2sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --tags --long --abbrev=7 --match 'libagent/[0-9]*' | sed 's|^libagent/||; s/\([^-]*-g\)/r\1/; s/-/./g'
 }
 
 build() {
@@ -53,12 +53,6 @@ build() {
     cd "$srcdir/$pkgname/agents/trezor"
     python setup.py build
     
-    #cd "$srcdir/$pkgname/agents/keepkey"
-    #python setup.py build
-    
-    #cd "$srcdir/$pkgname/agents/ledger"
-    #python setup.py build
-
     ## Note: needs onlykey (PyPi) ##
     #cd "$srcdir/$pkgname/agents/onlykey"
     #python setup.py build
@@ -76,12 +70,6 @@ package() {
     #comment or uncomment for agent selection
     cd "$srcdir/$pkgname/agents/trezor"
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-
-    #cd "$srcdir/$pkgname/agents/keepkey"
-    #python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-
-    #cd "$srcdir/$pkgname/agents/ledger"
-    #python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
     #cd "$srcdir/$pkgname/agents/onlykey"
     #python setup.py install --root="$pkgdir" --optimize=1 --skip-build
