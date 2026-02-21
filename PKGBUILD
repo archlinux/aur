@@ -3,7 +3,7 @@
 _pkgbase="zig-waybar-contrib"
 pkgname="${_pkgbase}-beta-bin"
 pkgver=26.02.21
-pkgrel=2
+pkgrel=3
 pkgdesc='High-performance Waybar modules written in Zig for efficient system monitoring (Beta binary version)'
 arch=('x86_64')
 url="https://codeberg.org/erffy/$_pkgbase"
@@ -18,7 +18,7 @@ source=(
   "config.waybar.jsonc::https://codeberg.org/erffy/zig-waybar-contrib/raw/tag/26.02.21/config.waybar.jsonc"
   "LICENSE::https://codeberg.org/erffy/zig-waybar-contrib/raw/tag/26.02.21/LICENSE"
 )
-md5sums=('639f4783755b088b8327699c14cf4c8f'
+md5sums=('06463ae5628394691c06b29b802b5982'
          '93ed2d07501c3e0ed7c0132d0265548b'
          'f1c10f726262b56101b2112a4ec181d2')
 
