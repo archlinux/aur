@@ -1,0 +1,13 @@
+pkgbase = musicwidget
+	pkgdesc = A music widget written in C because I thought it'd be funny
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/kantiankant/musicwidget
+	arch = x86_64
+	license = GPL
+	depends = wayland
+	depends = cairo
+	source = musicwidget-1.0.0.tar.gz::https://github.com/kantiankant/musicwidget/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 0be51dcab022d75234c1e8446a43670bac074ca134b9f423565ec0273ba763d6
+
+pkgname = musicwidget
