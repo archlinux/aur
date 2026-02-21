@@ -1,0 +1,11 @@
+pkgbase = ovhcloud-cli-bin
+	pkgdesc = ovhcloud is a single, unified command‑line interface for managing the full range of OVHcloud products and account resources directly from your terminal.
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/ovh/ovhcloud-cli
+	arch = x86_64
+	license = Apache-2.0
+	source = https://github.com/ovh/ovhcloud-cli/releases/download/v0.9.0/ovhcloud-cli_Linux_x86_64.tar.gz
+	sha512sums = a1e3d0ec55f3f437ebfa5c8a44619a59f78167dcc0d63214d5b0b9170a0116ed8e911310931ae4995ab0cf25634dc4dcef6fbe83e7b78856c29c86ad3c72edf3
+
+pkgname = ovhcloud-cli-bin
