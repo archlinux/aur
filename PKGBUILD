@@ -1,7 +1,7 @@
 # Maintainer: Alp Sahin <alp@sahin.club>
 
 pkgname=zenflow-bin
-pkgver=0.0.85
+pkgver=0.0.86
 pkgrel=1
 pkgdesc="Zenflow - AI-powered task management desktop application"
 arch=('x86_64')
