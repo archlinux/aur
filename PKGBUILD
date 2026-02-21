@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cargo-selector
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Cargo subcommand to select and execute binary/example targets"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('b959b281690ff9b86dc830d70939c5bbb64fe4e6317d9e19b47093cdefb7d16e1bdd050ee94b90fbce6dd47074713db326aa13bf640e64bd1e861281939c7051')
+sha512sums=('0fb82454c74e0ddddee805776b09b8154ddb9701893764d02510a3fd6a909518d5aac747a638e17e5ceb40c4b49fc38d10822e93d28ffab2c397db5ec35053e0')
 
 prepare() {
   cd "$pkgname-$pkgver"
