@@ -1,6 +1,6 @@
 pkgbase = objection
 	pkgdesc = Runtime mobile exploration toolkit powered by Frida
-	pkgver = 1.12.2
+	pkgver = 1.12.3
 	pkgrel = 1
 	url = https://github.com/sensepost/objection
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = objection
 	depends = python-semver>=2
 	depends = python-setuptools>=70.0.0
 	depends = python-tabulate>=0.9.0
-	source = objection-1.12.2.tar.gz::https://github.com/sensepost/objection/archive/1.12.2.tar.gz
-	sha256sums = 89b809b99cb10e05ab5a7f1855ab920ce98d491976ba5f52a79fb974a3ec8e92
+	source = objection-1.12.3.tar.gz::https://github.com/sensepost/objection/archive/1.12.3.tar.gz
+	sha256sums = 45da8861f2b0a0a54b8a00f1c73e23ac0cb8b0787be21ed1b2860bb8a9313c17
 
 pkgname = objection

@@ -1,7 +1,7 @@
 # Maintainer: Radon Rosborough <radon@radian.codes>
 
 pkgname=objection
-pkgver=1.12.2
+pkgver=1.12.3
 pkgrel=1
 pkgdesc='Runtime mobile exploration toolkit powered by Frida'
 arch=('any')
@@ -27,7 +27,7 @@ depends=(
 )
 makedepends=(python-build python-installer uv)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('89b809b99cb10e05ab5a7f1855ab920ce98d491976ba5f52a79fb974a3ec8e92')
+sha256sums=('45da8861f2b0a0a54b8a00f1c73e23ac0cb8b0787be21ed1b2860bb8a9313c17')
 
 # No check() because upstream tests do not pass
 # https://github.com/sensepost/objection/issues/780
