@@ -1,0 +1,17 @@
+pkgbase = otf-apple-sf-compact
+	pkgdesc = Apples San Francisco typeface family. watchOS system font.
+	pkgver = 17.0d12e1
+	pkgrel = 1
+	url = https://developer.apple.com/fonts/
+	arch = any
+	license = custom:apple-restricted-font
+	makedepends = texlive-bin
+	makedepends = p7zip
+	source = 17.0d12e1-SF-Compact.dmg::https://devimages-cdn.apple.com/design/resources/download/SF-Compact.dmg
+	source = license.awk
+	source = version.awk
+	sha256sums = 487647302a6a96b2c7ff77046c8727660e250d0625efae5b54edefd68d43ea18
+	sha256sums = cd45a6edaa3829837b090a5a18d3c906816931e7a779b33b6ada23b49b5a5889
+	sha256sums = 55a4e9e108e50b07481044fad445636e502f2d95d7e8964e1d4cda3e9618b198
+
+pkgname = otf-apple-sf-compact
