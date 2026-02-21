@@ -16,8 +16,8 @@ pkgbase = tobby
 	provides = tobby
 	conflicts = tobby-bin
 	options = !strip
-	noextract = tobby-0.1.0.tgz
-	source = tobby-0.1.0.tgz::https://registry.npmjs.org/tobby/-/tobby-0.1.0.tgz
+	noextract = mattfillipe-tobby-0.1.0.tgz
+	source = mattfillipe-tobby-0.1.0.tgz::https://registry.npmjs.org/@mattfillipe/tobby/-/tobby-0.1.0.tgz
 	sha256sums = SKIP
 
 pkgname = tobby

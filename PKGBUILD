@@ -1,6 +1,6 @@
 # Maintainer: YOUR NAME <your@email.com>
 
-_npmname=tobby
+_npmname=@mattfillipe/tobby
 
 pkgname=tobby
 pkgver=0.1.0
@@ -15,10 +15,9 @@ makedepends=('npm' 'jq')
 provides=('tobby')
 conflicts=('tobby-bin')
 # Fetch the tarball directly from the npm registry
-source=("${_npmname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz")
-# Prevent makepkg from trying to extract the tarball — npm handles it
-noextract=("${_npmname}-${pkgver}.tgz")
-# Run `makepkg -g` to get the real hash and replace SKIP
+# Scoped packages use %40 for @ in the URL path
+source=("mattfillipe-tobby-${pkgver}.tgz::https://registry.npmjs.org/@mattfillipe/tobby/-/tobby-${pkgver}.tgz")
+noextract=("mattfillipe-tobby-${pkgver}.tgz")
 sha256sums=('SKIP')
 options=('!strip')
 
@@ -26,7 +25,7 @@ package() {
     npm install -g \
         --prefix "${pkgdir}/usr" \
         --cache "${srcdir}/npm-cache" \
-        "${srcdir}/${_npmname}-${pkgver}.tgz"
+        "${srcdir}/mattfillipe-tobby-${pkgver}.tgz"
 
     # Fix directory permissions (npm sometimes creates 700 dirs)
     find "${pkgdir}/usr" -type d -exec chmod 755 {} +
@@ -34,7 +33,7 @@ package() {
     # Strip npm-embedded absolute build paths from package.json files
     find "${pkgdir}" -type f -name package.json -exec sed -i '/_where/d' {} +
 
-    local pkgjson="${pkgdir}/usr/lib/node_modules/${_npmname}/package.json"
+    local pkgjson="${pkgdir}/usr/lib/node_modules/@mattfillipe/tobby/package.json"
     local tmppackage
     tmppackage="$(mktemp)"
     jq '.|=with_entries(select(.key|test("_.+")|not))' \
