@@ -1,6 +1,6 @@
 pkgbase = python-langsmith
 	pkgdesc = Client library to connect to the LangSmith LLM Tracing and Evaluation Platform.
-	pkgver = 0.7.5
+	pkgver = 0.7.6
 	pkgrel = 1
 	url = https://smith.langchain.com/
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = python-langsmith
 	optdepends = python-pytest
 	optdepends = python-rich
 	optdepends = python-vcrpy
-	source = langsmith-0.7.5.tar.gz::https://files.pythonhosted.org/packages/source/l/langsmith/langsmith-0.7.5.tar.gz
-	b2sums = 8e864cd60eb2fff68a5293bca61e0ffcf01a5bba0945ac17614783dbb0adbcd847076ab02a7b35671d919de5faa2e8f749f93835157f632b7c134477c8b9d672
+	source = langsmith-0.7.6.tar.gz::https://files.pythonhosted.org/packages/source/l/langsmith/langsmith-0.7.6.tar.gz
+	b2sums = b678775ae3b52f3f41d75f8e2050c0bce20ea28a7de23cde9575c63b6ddb6e88a97dc0def412c03a5bc1e080ad82c6c4517c22cfbad284358d217ea9548a31c5
 
 pkgname = python-langsmith
