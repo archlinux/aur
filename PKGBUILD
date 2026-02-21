@@ -1,5 +1,5 @@
 _npmname=verdaccio
-_npmver=6.2.1
+_npmver=6.2.5
 
 pkgname=$_npmname
 pkgver=$_npmver
@@ -11,9 +11,11 @@ license=(MIT)
 depends=('nodejs' 'npm')
 optdepends=()
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz
+        config.yaml
         verdaccio.sysusers
         verdaccio.tmpfiles)
-sha256sums=('6315b8c9f7e0ef6d7257f47ee3dc7151c4d733dd6b230b19dbd66ffffb567e34'
+sha256sums=('cebf7e900c9b9c851d39798a46465458a8d48c80fdb170a3ee3e055a9e1b1df4'
+            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
             '75d544a5f25ca4c18743b1c879a8db0b9d9ae72ac41043a922733f19df394235'
             '833b7223a643a4e1550c8b85b23b7c9e7337c46bc9bf9daa0a0b33a627ddc990')
 
@@ -26,7 +28,7 @@ package() {
   cd $_npmdir
   npm install -g --registry https://registry.npmjs.org/ --prefix "$pkgdir/usr" $_npmname@$_npmver
   install -Dm644 "$srcdir"/package/systemd/verdaccio.service "$pkgdir"/usr/lib/systemd/system/verdaccio.service
-  install -Dm644 "$srcdir"/package/conf/default.yaml "$pkgdir"/etc/verdaccio/config.yaml
+  install -Dm644 "$srcdir"/config.yaml "$pkgdir"/etc/verdaccio/config.yaml
   install -Dm644 "$srcdir"/verdaccio.sysusers "$pkgdir"/usr/lib/sysusers.d/verdaccio.conf
   install -Dm644 "$srcdir"/verdaccio.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/verdaccio.conf
 }
