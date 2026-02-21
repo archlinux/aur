@@ -1,6 +1,6 @@
 pkgbase = gofarsi-live-bin
 	pkgdesc = Free Persian Go programming language book (Live version)
-	pkgver = 2026.02.21_195129_75d596e2c
+	pkgver = 2026.02.21_195914_56a599589
 	pkgrel = 1
 	url = https://github.com/GoFarsi/book
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = gofarsi-live-bin
 	provides = gofarsi-book
 	conflicts = gofarsi
 	conflicts = gofarsi-book
-	source = book_2026.02.21-195129-75d596e2c_linux_amd64.deb::https://github.com/GoFarsi/book/releases/download/v2026.02.21-195129-75d596e2c/book_2026.02.21-195129-75d596e2c_linux_amd64.deb
+	source = book_2026.02.21-195914-56a599589_linux_amd64.deb::https://github.com/GoFarsi/book/releases/download/v2026.02.21-195914-56a599589/book_2026.02.21-195914-56a599589_linux_amd64.deb
 	sha256sums = SKIP
 
 pkgname = gofarsi-live-bin
