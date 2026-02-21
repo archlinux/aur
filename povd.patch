@@ -1,12 +1,12 @@
 diff --git a/containmentactions/switchwindow/switch.cpp b/containmentactions/switchwindow/switch.cpp
-index 2e204d6cea..41ef539a59 100644
+index 2e204d6cea..62ffee88d8 100644
 --- a/containmentactions/switchwindow/switch.cpp
 +++ b/containmentactions/switchwindow/switch.cpp
 @@ -64,6 +64,7 @@ SwitchWindow::~SwitchWindow()
  void SwitchWindow::restore(const KConfigGroup &config)
  {
      m_mode = (MenuMode)config.readEntry("mode", (int)AllFlat);
-+    s_tasksModel->setFilterByPerScreenVirtualDesktop(m_mode == CurrentDesktop);
++    s_tasksModel->setFilterByCurrentVirtualDesktop(m_mode == CurrentDesktop);
  }
  
  QWidget *SwitchWindow::createConfigurationInterface(QWidget *parent)
@@ -15,7 +15,7 @@ index 2e204d6cea..41ef539a59 100644
          m_mode = CurrentDesktop;
      }
 +
-+    s_tasksModel->setFilterByPerScreenVirtualDesktop(m_mode == CurrentDesktop);
++    s_tasksModel->setFilterByCurrentVirtualDesktop(m_mode == CurrentDesktop);
  }
  
  void SwitchWindow::save(KConfigGroup &config)
@@ -69,7 +69,7 @@ index 2e204d6cea..41ef539a59 100644
          const QVariantList &desktopIds = m_virtualDesktopInfo->desktopIds();
          const QStringList &desktopNames = m_virtualDesktopInfo->desktopNames();
 diff --git a/libtaskmanager/taskfilterproxymodel.cpp b/libtaskmanager/taskfilterproxymodel.cpp
-index 8430fc33fe..4b84f022dd 100644
+index 8430fc33fe..b3b89b8ff1 100644
 --- a/libtaskmanager/taskfilterproxymodel.cpp
 +++ b/libtaskmanager/taskfilterproxymodel.cpp
 @@ -6,14 +6,16 @@
@@ -100,7 +100,7 @@ index 8430fc33fe..4b84f022dd 100644
      QString activity;
  
      bool filterByVirtualDesktop = false;
-+    bool filterByPerScreenVirtualDesktop = false;
++    bool filterByCurrentVirtualDesktop = false;
      bool filterByScreen = false;
      bool filterByActivity = false;
      RegionFilterMode::Mode filterByRegion = RegionFilterMode::Mode::Disabled;
@@ -128,13 +128,13 @@ index 8430fc33fe..4b84f022dd 100644
 +
 +        if (virtualDesktopInfoPtr != nullptr) {
 +            connect(virtualDesktopInfoPtr, &VirtualDesktopInfo::currentDesktopForScreenChanged, this, [this]() {
-+                if (d->filterByPerScreenVirtualDesktop) {
++                if (d->filterByCurrentVirtualDesktop) {
 +                    invalidateFilter();
 +                }
 +            });
 +        }
 +
-+        if (d->filterByPerScreenVirtualDesktop) {
++        if (d->filterByCurrentVirtualDesktop) {
 +            invalidateFilter();
 +        }
 +
@@ -149,19 +149,19 @@ index 8430fc33fe..4b84f022dd 100644
      }
  }
  
-+bool TaskFilterProxyModel::filterByPerScreenVirtualDesktop() const
++bool TaskFilterProxyModel::filterByCurrentVirtualDesktop() const
 +{
-+    return d->filterByPerScreenVirtualDesktop;
++    return d->filterByCurrentVirtualDesktop;
 +}
 +
-+void TaskFilterProxyModel::setFilterByPerScreenVirtualDesktop(bool filter)
++void TaskFilterProxyModel::setFilterByCurrentVirtualDesktop(bool filter)
 +{
-+    if (d->filterByPerScreenVirtualDesktop != filter) {
-+        d->filterByPerScreenVirtualDesktop = filter;
++    if (d->filterByCurrentVirtualDesktop != filter) {
++        d->filterByCurrentVirtualDesktop = filter;
 +
 +        invalidateFilter();
 +
-+        Q_EMIT filterByPerScreenVirtualDesktopChanged();
++        Q_EMIT filterByCurrentVirtualDesktopChanged();
 +    }
 +}
 +
@@ -173,7 +173,7 @@ index 8430fc33fe..4b84f022dd 100644
      }
  
 +    // Filter by per-screen virtual desktop.
-+    if (d->filterByPerScreenVirtualDesktop && !d->virtualDesktopInfo.isNull()) {
++    if (d->filterByCurrentVirtualDesktop && !d->virtualDesktopInfo.isNull()) {
 +        if (!sourceIdx.data(AbstractTasksModel::IsOnAllVirtualDesktops).toBool()
 +            && (!d->demandingAttentionSkipsFilters || !sourceIdx.data(AbstractTasksModel::IsDemandingAttention).toBool())) {
 +            const QVariantList &virtualDesktops = sourceIdx.data(AbstractTasksModel::VirtualDesktops).toList();
@@ -198,7 +198,7 @@ index 8430fc33fe..4b84f022dd 100644
      if (d->filterByScreen && d->screenGeometry.isValid()) {
          const QRect &screenGeometry = sourceIdx.data(AbstractTasksModel::ScreenGeometry).toRect();
 diff --git a/libtaskmanager/taskfilterproxymodel.h b/libtaskmanager/taskfilterproxymodel.h
-index 083b6fdc73..a61c04f81a 100644
+index 083b6fdc73..01de52e68a 100644
 --- a/libtaskmanager/taskfilterproxymodel.h
 +++ b/libtaskmanager/taskfilterproxymodel.h
 @@ -33,11 +33,14 @@ class TASKMANAGER_EXPORT TaskFilterProxyModel : public QSortFilterProxyModel, pu
@@ -211,8 +211,8 @@ index 083b6fdc73..a61c04f81a 100644
      Q_PROPERTY(QString activity READ activity WRITE setActivity NOTIFY activityChanged)
  
      Q_PROPERTY(bool filterByVirtualDesktop READ filterByVirtualDesktop WRITE setFilterByVirtualDesktop NOTIFY filterByVirtualDesktopChanged)
-+    Q_PROPERTY(bool filterByPerScreenVirtualDesktop READ filterByPerScreenVirtualDesktop WRITE setFilterByPerScreenVirtualDesktop NOTIFY
-+                   filterByPerScreenVirtualDesktopChanged)
++    Q_PROPERTY(bool filterByCurrentVirtualDesktop READ filterByCurrentVirtualDesktop WRITE setFilterByCurrentVirtualDesktop NOTIFY
++                   filterByCurrentVirtualDesktopChanged)
      Q_PROPERTY(bool filterByScreen READ filterByScreen WRITE setFilterByScreen NOTIFY filterByScreenChanged)
      Q_PROPERTY(bool filterByActivity READ filterByActivity WRITE setFilterByActivity NOTIFY filterByActivityChanged)
      Q_PROPERTY(RegionFilterMode::Mode filterByRegion READ filterByRegion WRITE setFilterByRegion NOTIFY filterByRegionChanged)
@@ -252,11 +252,11 @@ index 083b6fdc73..a61c04f81a 100644
 +     * Filtering by virtual desktop only happens if VirtualDesktopInfo
 +     * is set, even if this is set to @c true.
 +     *
-+     * @see setFilterByPerScreenVirtualDesktop
++     * @see setFilterByCurrentVirtualDesktop
 +     * @returns @c true if tasks should be filtered by their screen's
 +     * virtual desktops.
 +     **/
-+    bool filterByPerScreenVirtualDesktop() const;
++    bool filterByCurrentVirtualDesktop() const;
 +
 +    /**
 +     * Set whether tasks should be filtered by virtual desktop.
@@ -264,11 +264,11 @@ index 083b6fdc73..a61c04f81a 100644
 +     * Filtering by virtual desktop only happens if VirtualDesktopInfo
 +     * is set, even if this is set to @c true.
 +     *
-+     * @see filterByPerScreenVirtualDesktop
++     * @see filterByCurrentVirtualDesktop
 +     * @param filter Whether tasks should be filtered by their screen's
 +     * virtual desktop.
 +     **/
-+    void setFilterByPerScreenVirtualDesktop(bool filter);
++    void setFilterByCurrentVirtualDesktop(bool filter);
 +
      /**
       * Whether tasks should be filtered by screen. Defaults to @c false.
@@ -282,12 +282,12 @@ index 083b6fdc73..a61c04f81a 100644
      void regionGeometryChanged();
      void activityChanged() const;
      void filterByVirtualDesktopChanged() const;
-+    void filterByPerScreenVirtualDesktopChanged() const;
++    void filterByCurrentVirtualDesktopChanged() const;
      void filterByScreenChanged() const;
      void filterByActivityChanged() const;
      void filterByRegionChanged();
 diff --git a/libtaskmanager/tasksmodel.cpp b/libtaskmanager/tasksmodel.cpp
-index 1967846632..00c4514d6c 100644
+index 1967846632..511185b50b 100644
 --- a/libtaskmanager/tasksmodel.cpp
 +++ b/libtaskmanager/tasksmodel.cpp
 @@ -88,6 +88,7 @@ public:
@@ -302,7 +302,7 @@ index 1967846632..00c4514d6c 100644
      QObject::connect(filterProxyModel, &TaskFilterProxyModel::regionGeometryChanged, q, &TasksModel::regionGeometryChanged);
      QObject::connect(filterProxyModel, &TaskFilterProxyModel::activityChanged, q, &TasksModel::activityChanged);
      QObject::connect(filterProxyModel, &TaskFilterProxyModel::filterByVirtualDesktopChanged, q, &TasksModel::filterByVirtualDesktopChanged);
-+    QObject::connect(filterProxyModel, &TaskFilterProxyModel::filterByPerScreenVirtualDesktopChanged, q, &TasksModel::filterByPerScreenVirtualDesktopChanged);
++    QObject::connect(filterProxyModel, &TaskFilterProxyModel::filterByCurrentVirtualDesktopChanged, q, &TasksModel::filterByCurrentVirtualDesktopChanged);
      QObject::connect(filterProxyModel, &TaskFilterProxyModel::filterByScreenChanged, q, &TasksModel::filterByScreenChanged);
      QObject::connect(filterProxyModel, &TaskFilterProxyModel::filterByActivityChanged, q, &TasksModel::filterByActivityChanged);
      QObject::connect(filterProxyModel, &TaskFilterProxyModel::filterByRegionChanged, q, &TasksModel::filterByRegionChanged);
@@ -312,7 +312,7 @@ index 1967846632..00c4514d6c 100644
  
 +void TasksModel::Private::clearVirtualDesktopInfoIfNotNecessary()
 +{
-+    if (sortMode == SortVirtualDesktop || sortMode == SortWindowPositionHorizontal || filterProxyModel->filterByPerScreenVirtualDesktop()) {
++    if (sortMode == SortVirtualDesktop || sortMode == SortWindowPositionHorizontal || filterProxyModel->filterByCurrentVirtualDesktop()) {
 +        return;
 +    }
 +
@@ -327,14 +327,14 @@ index 1967846632..00c4514d6c 100644
      d->filterProxyModel->setFilterByVirtualDesktop(filter);
  }
  
-+bool TasksModel::filterByPerScreenVirtualDesktop() const
++bool TasksModel::filterByCurrentVirtualDesktop() const
 +{
-+    return d->filterProxyModel->filterByPerScreenVirtualDesktop();
++    return d->filterProxyModel->filterByCurrentVirtualDesktop();
 +}
 +
-+void TasksModel::setFilterByPerScreenVirtualDesktop(bool filter)
++void TasksModel::setFilterByCurrentVirtualDesktop(bool filter)
 +{
-+    d->filterProxyModel->setFilterByPerScreenVirtualDesktop(filter);
++    d->filterProxyModel->setFilterByCurrentVirtualDesktop(filter);
 +
 +    if (filter) {
 +        d->virtualDesktopInfo = virtualDesktopInfo();
@@ -364,15 +364,15 @@ index 1967846632..00c4514d6c 100644
          d->forceResort();
  
 diff --git a/libtaskmanager/tasksmodel.h b/libtaskmanager/tasksmodel.h
-index e933b3da03..b06d4c8282 100644
+index e933b3da03..b8e8709be5 100644
 --- a/libtaskmanager/tasksmodel.h
 +++ b/libtaskmanager/tasksmodel.h
 @@ -63,6 +63,8 @@ class TASKMANAGER_EXPORT TasksModel : public QSortFilterProxyModel, public Abstr
      Q_PROPERTY(QString activity READ activity WRITE setActivity NOTIFY activityChanged)
  
      Q_PROPERTY(bool filterByVirtualDesktop READ filterByVirtualDesktop WRITE setFilterByVirtualDesktop NOTIFY filterByVirtualDesktopChanged)
-+    Q_PROPERTY(bool filterByPerScreenVirtualDesktop READ filterByPerScreenVirtualDesktop WRITE setFilterByPerScreenVirtualDesktop NOTIFY
-+                   filterByPerScreenVirtualDesktopChanged)
++    Q_PROPERTY(bool filterByCurrentVirtualDesktop READ filterByCurrentVirtualDesktop WRITE setFilterByCurrentVirtualDesktop NOTIFY
++                   filterByCurrentVirtualDesktopChanged)
      Q_PROPERTY(bool filterByScreen READ filterByScreen WRITE setFilterByScreen NOTIFY filterByScreenChanged)
      Q_PROPERTY(bool filterByActivity READ filterByActivity WRITE setFilterByActivity NOTIFY filterByActivityChanged)
      Q_PROPERTY(RegionFilterMode::Mode filterByRegion READ filterByRegion WRITE setFilterByRegion NOTIFY filterByRegionChanged)
@@ -384,20 +384,20 @@ index e933b3da03..b06d4c8282 100644
 +     * Whether tasks should be filtered by its screen's virtual desktop.
 +     * Defaults to @c false.
 +     *
-+     * @see setFilterByPerScreenVirtualDesktop
++     * @see setFilterByCurrentVirtualDesktop
 +     * @returns @c true if tasks should be filtered by their screen's
 +     * virtual desktops.
 +     **/
-+    bool filterByPerScreenVirtualDesktop() const;
++    bool filterByCurrentVirtualDesktop() const;
 +
 +    /**
 +     * Set whether tasks should be filtered by virtual desktop.
 +     *
-+     * @see filterByPerScreenVirtualDesktop
++     * @see filterByCurrentVirtualDesktop
 +     * @param filter Whether tasks should be filtered by their screen's
 +     * virtual desktop.
 +     **/
-+    void setFilterByPerScreenVirtualDesktop(bool filter);
++    void setFilterByCurrentVirtualDesktop(bool filter);
 +
      /**
       * Whether tasks should be filtered by screen. Defaults to @c false.
@@ -406,7 +406,7 @@ index e933b3da03..b06d4c8282 100644
      void regionGeometryChanged();
      void activityChanged() const;
      void filterByVirtualDesktopChanged() const;
-+    void filterByPerScreenVirtualDesktopChanged() const;
++    void filterByCurrentVirtualDesktopChanged() const;
      void filterByScreenChanged() const;
      void filterByActivityChanged() const;
      void filterByRegionChanged();
@@ -711,7 +711,7 @@ index 867463816e..45a340ebb9 100644
      void desktopIdsChanged() const;
      void desktopNamesChanged() const;
 diff --git a/wallpapers/image/plugin/utils/maximizedwindowmonitor.cpp b/wallpapers/image/plugin/utils/maximizedwindowmonitor.cpp
-index 0385737ba8..247c7c8194 100644
+index 0385737ba8..4238f00123 100644
 --- a/wallpapers/image/plugin/utils/maximizedwindowmonitor.cpp
 +++ b/wallpapers/image/plugin/utils/maximizedwindowmonitor.cpp
 @@ -8,12 +8,10 @@
@@ -739,7 +739,7 @@ index 0385737ba8..247c7c8194 100644
      setFilterMinimized(true);
      setFilterByActivity(true);
 -    setFilterByVirtualDesktop(true);
-+    setFilterByPerScreenVirtualDesktop(true);
++    setFilterByCurrentVirtualDesktop(true);
      setFilterByRegion(RegionFilterMode::Mode::Intersect);
  }
  
