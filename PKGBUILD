@@ -4,20 +4,20 @@
 # 1.) Inital work is done on SONAMES since v1.57.0.
 #     Cf.: https://newreleases.io/project/github/aws/aws-lc/release/v1.57.0
 #     Note that this PKGBUILD does not build shared libraries by default (following upstream).
-# 2.) This package installs to /usr/lib/aws-lc and /usr/include/aws-lc
+# 2.) This PKGBUILD does NOT build aws-lc as an openssl replacement (upstream does). Instead,
+#     this package installs to /usr/lib/aws-lc and /usr/include/aws-lc
 #     to avoid conflicts with system OpenSSL. To build software against AWS-LC,
 #     specify the library and include paths explicitly during configuration.
 
 pkgname=aws-lc
 pkgver=1.68.0
-pkgrel=1
-pkgdesc='general-purpose cryptographic library maintained by the AWS Cryptography team for AWS'
+pkgrel=2
+pkgdesc='General-purpose cryptographic library maintained by the AWS Cryptography team for AWS'
 url='https://github.com/aws/aws-lc'
 license=('MIT' 'ISC' 'Apache-2.0' 'OpenSSL')
 options=()
 depends=(
   'glibc'
-  'bash'
   'gcc-libs'
 )
 makedepends=(
@@ -26,16 +26,16 @@ makedepends=(
   'ninja'
   'go'
   'perl'
+  'libunwind'
 )
 optdepends=(
-  'libunwind: For extra tests'
   'clang: alternative C/C++ compiler'
   'llvm: LLVM toolchain utilities (ar, ranlib, etc.) for use with clang'
 )
 arch=('x86_64')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 b2sums=('9fdb1c2bfc3f87f6bc849d4eb6a82b6628a6aad53db5361dcd9e1209c34edbeafe65195ecf6fcec70ed4ed9360885d0769fb3580d6c9d79b2637c63ce00a0246')
-options=(!lto)
+options=('!lto' 'staticlibs')
 
 # Temporary: testing with Clang/LLVM toolchain
 # No need to disable lto in 'options' above when using Clang
@@ -43,23 +43,13 @@ options=(!lto)
 #    export CC=clang CXX=clang++ AR=llvm-ar NM=llvm-nm RANLIB=llvm-ranlib
 #}
 
-prepare() {
-    cd ${pkgname}-${pkgver}
-
-    # Fix const qualifier warning in OPENSSL_memchr
-    # Reported upstream: https://github.com/aws/aws-lc/issues/2995
-    sed -i 's/return memchr(s, c, n);/return (void *)memchr(s, c, n);/' \
-    crypto/internal.h
-}
-
 build() {
-    cd ${pkgname}-${pkgver}
+    cd "$srcdir/${pkgname}-${pkgver}"
 
     # IF you want to build with FIPS support:
     #   1.) Add "-DFIPS=ON" to the "cmake -B build" options below;
     #   1.) Set '!lto' in 'options()' above; and
     #   2.) Enable the following 3 lines of Flags.
-    # There might be a better way to get rid of '-no-plt', but we're testing now.
 
     # Remove -no-plt flag from CFLAGS and CXXFLAGS for building with FIPS support:
     #CFLAGS="${CFLAGS//-fno-plt/}"
@@ -73,57 +63,44 @@ build() {
           -GNinja \
           -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_PREFIX=/usr \
-          -DCMAKE_INSTALL_SBINDIR:PATH=bin/aws-lc \
-          -DCMAKE_INSTALL_BINDIR:PATH=bin/aws-lc \
-          -DCMAKE_INSTALL_LIBDIR:PATH=lib/aws-lc \
-          -DCMAKE_INSTALL_INCLUDEDIR:PATH=include/aws-lc
+          -DCMAKE_INSTALL_SBINDIR:PATH=bin/${pkgname} \
+          -DCMAKE_INSTALL_BINDIR:PATH=bin/${pkgname} \
+          -DCMAKE_INSTALL_LIBDIR:PATH=lib/${pkgname} \
+          -DCMAKE_INSTALL_INCLUDEDIR:PATH=include/${pkgname}
 
-    ninja -C build -j $(nproc)
+    ninja -C build
 }
 
 check() {
-    cd ${pkgname}-${pkgver}
+    cd "$srcdir/${pkgname}-${pkgver}"
 
     # Temporary: testing with Clang/LLVM toolchain
     #_set_clang_toolchain
-
-    # ONLY FOR CLEAN-CHROOT: Skip OCSP integration tests - require external network connectivity
-    #export GTEST_FILTER='-All/OCSPIntegrationTest.*'
 
     ninja -C build -j $(nproc) run_tests
 }
 
 package() {
-    cd ${pkgname}-${pkgver}
-    
+    cd "$srcdir/${pkgname}-${pkgver}"
+
     DESTDIR="$pkgdir" ninja -C build install
 
-    # Clean up installation
-    mkdir -p "$pkgdir/usr/lib/pkgconfig"
+    # Ensure the parent directory exists
+    mkdir -p "$pkgdir/usr/lib"
 
-    # Rename with explicit mapping for clarity
-    if [ -f "$pkgdir/usr/lib/$pkgname/pkgconfig/openssl.pc" ]; then
-        mv "$pkgdir/usr/lib/$pkgname/pkgconfig/openssl.pc" \
-          "$pkgdir/usr/lib/pkgconfig/aws-lc.pc"
-    fi
+    # Move the whole folder and rename it in one go
+    mv "$pkgdir/usr/lib/$pkgname/pkgconfig" "$pkgdir/usr/lib/pkgconfig"
 
-    if [ -f "$pkgdir/usr/lib/$pkgname/pkgconfig/libssl.pc" ]; then
-        mv "$pkgdir/usr/lib/$pkgname/pkgconfig/libssl.pc" \
-          "$pkgdir/usr/lib/pkgconfig/aws-lc-libssl.pc"
-    fi
+    # Rename the individual pc-files to not conflict with local OpenSSL
+    mv "$pkgdir/usr/lib/pkgconfig/openssl.pc"   "$pkgdir/usr/lib/pkgconfig/$pkgname.pc"
+    mv "$pkgdir/usr/lib/pkgconfig/libssl.pc"    "$pkgdir/usr/lib/pkgconfig/$pkgname-libssl.pc"
+    mv "$pkgdir/usr/lib/pkgconfig/libcrypto.pc" "$pkgdir/usr/lib/pkgconfig/$pkgname-libcrypto.pc"
 
-    if [ -f "$pkgdir/usr/lib/$pkgname/pkgconfig/libcrypto.pc" ]; then
-        mv "$pkgdir/usr/lib/$pkgname/pkgconfig/libcrypto.pc" \
-          "$pkgdir/usr/lib/pkgconfig/aws-lc-libcrypto.pc"
-    fi
-
-    rm -rf "$pkgdir/usr/lib/$pkgname/pkgconfig"
-
-    # Fix internal references in the pkg-config files
+    # Update pkgconfig's "Requires" to our new locations
     sed -i 's/^Requires: libssl libcrypto/Requires: aws-lc-libssl aws-lc-libcrypto/' \
-        "$pkgdir/usr/lib/pkgconfig/aws-lc.pc" 2>/dev/null || true
+    "$pkgdir/usr/lib/pkgconfig/$pkgname.pc"
     sed -i 's/^Requires\.private: libcrypto/Requires.private: aws-lc-libcrypto/' \
-        "$pkgdir/usr/lib/pkgconfig/aws-lc-libssl.pc" 2>/dev/null || true
+    "$pkgdir/usr/lib/pkgconfig/$pkgname-libssl.pc"
 
     # Documentation
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
