@@ -3,7 +3,7 @@
 pkgname=figma-agent-linux-bin
 pkgver=0.4.3
 pkgrel=1
-pkgdesc="This service allows you to use your locally installed fonts on figma.com."
+pkgdesc="A lightweight local service that makes your locally installed fonts available on Figma."
 url="https://github.com/neetly/figma-agent-linux"
 license=(MIT)
 arch=(x86_64 aarch64)
