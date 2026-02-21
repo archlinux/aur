@@ -1,7 +1,7 @@
 # Maintainer: Lyra Vhess <auxilliary.email@protonmail.com>
 pkgname=vsrvrt-git
 _pkgname=vs-rvrt
-pkgver=1.1.0.r0.g57a5c5f
+pkgver=1.1.1.r0.8d94249
 pkgrel=1
 pkgdesc="Vapoursynth plugin for RVRT (Recurrent Video Restoration Transformer) video restoration"
 arch=('x86_64')
