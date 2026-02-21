@@ -1,0 +1,2 @@
+remote-store-address: localhost:7070
+remote-store-insecure: true

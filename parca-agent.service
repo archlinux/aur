@@ -1,0 +1,35 @@
+[Unit]
+Description=Parca agent service
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=parca-agent
+Group=parca-agent
+Restart=on-failure
+RestartSec=10
+WorkingDirectory=/var/lib/parca-agent
+ConfigurationDirectory=parca-agent
+StateDirectory=parca-agent
+EnvironmentFile=-/etc/conf.d/parca-agent
+ExecStart=/usr/bin/parca-agent --config-path=/etc/parca-agent/parca-agent.yaml $PARCA_AGENT_ARGS
+LimitNOFILE=65535
+NoNewPrivileges=true
+ProtectHome=true
+ProtectHostname=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+# /proc/kallsyms is needed
+ProtectKernelTunables=no
+LockPersonality=true
+RestrictRealtime=yes
+RestrictNamespaces=yes
+MemoryDenyWriteExecute=yes
+# For eBPF, CAP_DAC_READ_SEARCH for reading sysfs files owned by root
+LimitMEMLOCK=infinity
+CapabilityBoundingSet=CAP_SYS_ADMIN CAP_BPF CAP_PERFMON CAP_SYSLOG CAP_DAC_READ_SEARCH
+AmbientCapabilities=CAP_SYS_ADMIN CAP_BPF CAP_PERFMON CAP_SYSLOG CAP_DAC_READ_SEARCH
+
+[Install]
+WantedBy=multi-user.target
