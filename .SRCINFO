@@ -1,0 +1,17 @@
+pkgbase = bean-asyncat-bin
+	pkgdesc = A local-first personal finance tracker built with Tauri
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/theasyncat-mvp/bean
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = libappindicator-gtk3
+	depends = gtk3
+	provides = bean
+	conflicts = bean
+
+	source_x86_64 = bean-0.1.0.deb::https://github.com/theasyncat-mvp/bean/releases/download/v0.1.0/bean_0.1.0_amd64.deb
+	sha256sums_x86_64 = SKIP
+
+pkgname = bean-asyncat-bin
