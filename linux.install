@@ -1,30 +1,31 @@
 #!/usr/bin/env bash
 
-# Update changes
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+    local old_ver=$2
+    local new_ver=$1
+    echo ":: Upgrading linux-tachyon from $old_ver to $new_ver"
+    echo ":: BBRv3 Configuration Check"
 
-# Only kept for reference
-#function _5_2_9_6_changes() {
-#    echo ":: Update 5.2.9-6: Microcode is no longer builtin. See https://wiki.archlinux.org/index.php/Microcode"
-#}
+    # Recommended config for BBRv3
+    local qdisc cong_algo
+    qdisc=$(sysctl -n net.core.default_qdisc)
+    cong_algo=$(sysctl -n net.ipv4.tcp_congestion_control)
 
-
-# Standard methods
-function post_upgrade() {
-    local version upgrades=(
-#        "5.2.9-6"  # Only kept for reference
-    )
-    
-    for version in "${upgrades[@]}"; do
-        if [[ "$(vercmp "${version}" "$2")" -eq "1" ]]; then
-            "_${version//[.-]/_}_changes"
-        fi
-    done
+    if [ "$qdisc" != "fq" ] || [ "$cong_algo" != "bbr" ]; then
+        echo "It is recommended to reconfigure your TCP subsystem for BBR TCP algorithm:"
+        echo "Create a file called: /etc/sysctl.d/99-bbr_tachyon.conf"
+        echo "Add the following lines to it"
+        echo "net.core.default_qdisc = fq"
+        echo "net.ipv4.tcp_congestion_control = bbr"
+    else
+        echo "BBRv3 TCP algorithm is already configured."
+    fi
 }
 
-function post_install() {
-    echo ":: Tachyon Linux provides the following recommended command line:"
-    echo "   quiet console=tty0 console=ttyS0,115200n8 cryptomgr.notests initcall_debug"
-    echo "   intel_iommu=igfx_off kvm-intel.nested=1 no_timer_check noreplace-smp"
-    echo "   page_alloc.shuffle=1 rcupdate.rcu_expedited=1"
-    echo "   rootfstype=ext4,btrfs,xfs,f2fs tsc=reliable rw"
+# arg 1:  the new package version
+post_install() {
+    # Call post_upgrade, passing the new version ($1) and a placeholder old version
+    post_upgrade "$1" "none"
 }
