@@ -78,7 +78,7 @@ optdepends=('plasma-keyboard: virtual keyboard')
 groups=(plasma)
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=(https://download.kde.org/unstable/plasma/$_dirver/$_pkgname-$pkgver.tar.xz{,.sig}
+source=(https://download.kde.org/stable/plasma/$_dirver/$_pkgname-$pkgver.tar.xz{,.sig}
         povd.patch)
 sha256sums=('35134fcfb64d01904cdcd25aea8e90c68c37973a088971e4d678acfdc5020914'
             'SKIP'
