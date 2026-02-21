@@ -1,8 +1,7 @@
-# Maintainer: Potato_2565 <p3220928@gmail.com>
-# Original Maintainer: EEEntity <eeentity at 163 dot com>
+# Maintainer: EEEntity <eeentity at 163 dot com>
 
 pkgname='otf-apple-sf-pro-fixed'
-pkgver=21.0d6e2r2
+pkgver=21.0d6e2
 pkgrel=1
 pkgdesc='Apples San Francisco typeface family. System font.'
 arch=('any')
