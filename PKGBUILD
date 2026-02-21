@@ -1,10 +1,10 @@
 # Maintainer: akku <akkun11.open [at] gmail.com>
 pkgname=tascam-control-panel-git
 pkgver=r132.aefc02d715cc
-pkgrel=2
+pkgrel=3
 pkgdesc="Control Panel for TASCAM US-144MKII"
 arch=(x86_64)
-url="https://github.com/serifpersia/us144mkii"
+url="https://github.com/akku1139/us144mkii"
 license=('GPL-2.0-only')
 groups=()
 depends=(qt6-base alsa-lib)
