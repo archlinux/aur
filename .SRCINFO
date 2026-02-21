@@ -1,7 +1,7 @@
 pkgbase = simple-linux-wallpaperengine-gui-git
 	pkgdesc = A modern, universal GUI for linux-wallpaperengine
 	pkgver = r10.456549c
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Maxnights/simple-linux-wallpaperengine-gui
 	arch = any
 	license = GPL3

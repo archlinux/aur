@@ -3,12 +3,12 @@
 
 pkgname=simple-linux-wallpaperengine-gui-git
 pkgver=r10.456549c  # This will be automatically updated by pkgver()
-pkgrel=4
+pkgrel=5
 pkgdesc="A modern, universal GUI for linux-wallpaperengine"
 arch=('any')
 url="https://github.com/Maxnights/simple-linux-wallpaperengine-gui"
-license=('GPL3')
-depends=('python' 'python-pyqt6' 'python-pillow' 'python-watchdog' 'python-packaging' 'linux-wallpaperengine')
+license=('MIT')
+depends=('python' 'python-pyqt6' 'python-pillow' 'python-watchdog' 'linux-wallpaperengine')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -26,6 +26,7 @@ package() {
     # Install main script and locales
     install -d "$pkgdir/usr/lib/${pkgname%-git}"
     install -m755 wallpaper_gui.py "$pkgdir/usr/lib/${pkgname%-git}/wallpaper_gui.py"
+    install -m644 process_manager.py "$pkgdir/usr/lib/${pkgname%-git}/process_manager.py"
     cp -r locales "$pkgdir/usr/lib/${pkgname%-git}/"
 
     # Create launcher script in /usr/bin
@@ -36,12 +37,8 @@ exec /usr/bin/python3 /usr/lib/${pkgname%-git}/wallpaper_gui.py "\$@"
 EOF
     chmod 755 "$pkgdir/usr/bin/simple-wallpaper-engine"
 
-    # Install desktop entries
+    # Install desktop entry
     install -Dm644 simple-wallpaper-engine.desktop "$pkgdir/usr/share/applications/${pkgname%-git}.desktop"
-    install -Dm644 simple-wallpaper-engine-autostart.desktop "$pkgdir/usr/share/applications/simple-wallpaper-engine-autostart.desktop"
-
-    # Install license
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
 
     # Install documentation
     install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname%-git}/README.md"
