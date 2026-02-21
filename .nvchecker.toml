@@ -1,0 +1,3 @@
+[perl-cpan-mini]
+source = "cpan"
+cpan = "CPAN-Mini"
