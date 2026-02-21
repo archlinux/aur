@@ -13,6 +13,7 @@ source=("${pkgname}-${pkgver}.dmg::https://devimages-cdn.apple.com/design/resour
 sha256sums=('5b4b19922a41b6b76e227934a2871b1405d7d6acb467eca4db153215f0d6c78b'
             'cd45a6edaa3829837b090a5a18d3c906816931e7a779b33b6ada23b49b5a5889'
             '55a4e9e108e50b07481044fad445636e502f2d95d7e8964e1d4cda3e9618b198')
+conflicts=('otf-apple-sf-pro')
 makedepends=('texlive-bin' 'p7zip')
 options=(!debug)
 prepare() {
