@@ -2,7 +2,7 @@
 # Contributor: Henri Derycke <nheir.kim@gmail.com>
 
 pkgname=bluez-alsa-git
-pkgver=4.2.0.r17.g14670ed
+pkgver=4.3.1.r106.g0685e5d
 pkgrel=1
 pkgdesc="Bluetooth audio ALSA backend"
 arch=('x86_64'
@@ -21,9 +21,12 @@ makedepends=('git'
              'python-docutils')
 optdepends=('lame: build with mp3 support'
             'libbsd: build with hcitop tool'
-            'libopenaptx-git: build with libopenaptx for apt-X'
+            'libfreeaptx: build with libfreeaptx for apt-X'
+            'liblc3: build with Low Complexity Communication Codec library support'
+            'libldac: build with LDAC Bluetooth encoder library support'
             'mpg123: build with mpg123 decoding support'
             'ncurses: build with hcitop tool'
+            'opus: build with opus support'
             'readline: build with bluealsa-rfcomm tool'
             'spandsp: build mSBC codec support')
 source=("${pkgname}::git+https://github.com/Arkq/${pkgname%-git}.git")
@@ -44,11 +47,14 @@ build() {
   # https://github.com/Arkq/bluez-alsa/wiki/Installation-from-source#3-configure-the-build-directory
   # Table of additional dependencies:
   # https://github.com/Arkq/bluez-alsa/wiki/Installation-from-source#additional-dependencies
-  flags=(#--with-libopenaptx
+  flags=(#--with-libfreeaptx
+         #--enable-aptx
+         #--enable-aptx-hd
          #--enable-ldac
          #--enable-mp3lame
          #--enable-mpg123
          #--enable-msbc
+         #--enable-opus
          #--enable-ofono
          #--enable-a2dpconf
          #--enable-cli
