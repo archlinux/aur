@@ -1,14 +1,14 @@
 # Maintainer: futpib <futpib@gmail.com>
 _pipname=curl_cffi
 pkgname=python-${_pipname//_/-}-git
-pkgver=0.12.0b1.r2.g28c8871
+pkgver=0.15.0b3.r7.g91170ff
 pkgrel=1
 pkgdesc='Python FFI binding for curl-impersonate (git version)'
 arch=(x86_64)
 url='https://github.com/lexiforest/curl_cffi'
 license=(MIT)
 depends=(
-	libcurl-impersonate
+	curl-impersonate
 	python
 	python-certifi
 	python-cffi
@@ -51,10 +51,17 @@ prepare() {
 	sed -i 's/extra_objects=get_curl_archives()/extra_objects=[]/' scripts/build.py
 	sed -i 's/library_dirs=\[arch\["libdir"\]\]/library_dirs=[\"\/usr\/lib\"]/' scripts/build.py
 	sed -i 's/^download_libcurl()$/# download_libcurl()/' scripts/build.py
+	# Upstream bug: TemporaryDirectory object is dropped, deleting libdir too early.
+	sed -i 's/tmpdir = tempfile.TemporaryDirectory()/tmpdir = tempfile.mkdtemp()/' scripts/build.py
+	sed -i 's/arch\["libdir"\] = tmpdir.name/arch["libdir"] = tmpdir/' scripts/build.py
+	# Force dynamic linking against system libcurl-impersonate.
+	sed -i 's/is_static = link_type == "static"/is_static = False/' scripts/build.py
+	sed -i 's/is_dynamic = link_type == "dynamic"/is_dynamic = True/' scripts/build.py
 }
 
 build() {
 	cd $_pipname
+	rm -rf dist
 	python -m build --wheel --no-isolation
 }
 

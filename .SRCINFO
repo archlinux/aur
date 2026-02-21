@@ -1,6 +1,6 @@
 pkgbase = python-curl-cffi-git
 	pkgdesc = Python FFI binding for curl-impersonate (git version)
-	pkgver = 0.12.0b1.r2.g28c8871
+	pkgver = 0.15.0b3.r7.g91170ff
 	pkgrel = 1
 	url = https://github.com/lexiforest/curl_cffi
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = python-curl-cffi-git
 	makedepends = python-wheel
 	makedepends = python-python-multipart
 	makedepends = unzip
-	depends = libcurl-impersonate
+	depends = curl-impersonate
 	depends = python
 	depends = python-certifi
 	depends = python-cffi
