@@ -1,14 +1,16 @@
 pkgbase = iperf-git
 	pkgdesc = A tool to measure maximum TCP bandwidth
-	pkgver = r2963.g4d719f05
+	pkgver = r3819.g0fe3730e
 	pkgrel = 1
 	url = https://sourceforge.net/projects/iperf2/
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = LicenseRef-iperf
 	makedepends = git
-	depends = gcc-libs
-	provides = iperf=r2963.g4d719f05
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = iperf=r3819.g0fe3730e
 	conflicts = iperf
 	source = git+https://git.code.sf.net/p/iperf2/code
 	source = iperf-tcp.service::https://gitlab.archlinux.org/archlinux/packaging/packages/iperf/-/raw/main/iperf-tcp.service
