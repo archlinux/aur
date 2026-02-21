@@ -1,7 +1,7 @@
 # Maintainer: Oystein Sture <oysstu at gmail.com>
 
 pkgname=ros2-humble-base
-pkgver=2025.07.21
+pkgver=2026.02.20
 pkgrel=1
 _rosdist="Humble Hawksbill"
 _rosdist_short_upper=${_rosdist%% *}
@@ -40,7 +40,7 @@ source=(
     "mcap_vendor_cstdint.patch"
     "fastdds.patch"
 )
-sha256sums=('b82b15e9b186e9a0df2acb44c1a09d4bf2b24ded37a86e08115c32cefdecc89a'
+sha256sums=('c232f2231a3a7fe3486571c0b4284b0dfc1042ae871a045d27f01bc1757f2beb'
             'df17f20c0168f4553e40023b8e324d93bdcc1f39932df785cb1d55051076e3f6'
             'f2ac0967f508f6a4f1fd4f278800e64052127859ee3e21cdf1b467b3ffe7563f'
             'c3362474bb6965fdb72746cbb9aa50e9e6b0788def4818aa4756164e881257fd')
