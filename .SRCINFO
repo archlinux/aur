@@ -1,0 +1,20 @@
+pkgbase = mx-boot-options
+	pkgdesc = GUI for managing boot options and UEFI settings
+	pkgver = 26.02
+	pkgrel = 1
+	url = https://mxlinux.org
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = polkit
+	depends = xdg-utils
+	optdepends = grub: GRUB configuration support
+	optdepends = plymouth: bootsplash themes
+	source = https://github.com/MX-Linux/mx-boot-options/archive/refs/tags/26.02.tar.gz
+	sha256sums = 748c0e092b7b156a9374dfbd75457bb74a98118504eae5d654a0b4fee9687bc6
+
+pkgname = mx-boot-options
