@@ -1,5 +1,4 @@
-# Maintainer: Potato_2565 <p3220928@gmail.com>
-# Original Maintainer: Leonard Janis König <ljrk@ljrk.org>
+# Maintainer: Leonard Janis König <ljrk@ljrk.org>
 
 pkgname='otf-apple-sf-compact-fixed'
 pkgver=21.1d1e1
