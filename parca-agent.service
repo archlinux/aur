@@ -16,9 +16,7 @@ EnvironmentFile=-/etc/conf.d/parca-agent
 ExecStart=/usr/bin/parca-agent --config-path=/etc/parca-agent/parca-agent.yaml $PARCA_AGENT_ARGS
 LimitNOFILE=65535
 NoNewPrivileges=true
-ProtectHome=true
 ProtectHostname=true
-ProtectControlGroups=true
 ProtectKernelModules=true
 # /proc/kallsyms is needed
 ProtectKernelTunables=no
