@@ -1,6 +1,6 @@
 pkgbase = bentopdf
 	pkgdesc = A Privacy First PDF Toolkit
-	pkgver = 2.2.1
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://github.com/alam00000/bentopdf
 	install = bentopdf.install
@@ -10,7 +10,7 @@ pkgbase = bentopdf
 	optdepends = caddy: for serving bentopdf
 	optdepends = nginx: for serving bentopdf
 	optdepends = traefik: for serving bentopdf
-	source = bentopdf-2.2.1.tar.gz::https://github.com/alam00000/bentopdf/archive/refs/tags/v2.2.1.tar.gz
-	sha256sums = 8eb091ea27fc451f832999486ad6281eddafd17086197e3d2f8af09e0595a547
+	source = bentopdf-2.3.1.tar.gz::https://github.com/alam00000/bentopdf/archive/refs/tags/v2.3.1.tar.gz
+	sha256sums = a47c323305c8020a35ccd9653b89981136cf574c9c170ecee36fca178c1240d5
 
 pkgname = bentopdf
