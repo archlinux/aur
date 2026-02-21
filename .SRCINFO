@@ -1,6 +1,6 @@
 pkgbase = lektra-git
 	pkgdesc = High-performance PDF reader that prioritizes screen space and control
-	pkgver = 0.6.0.r28.gbda6a05
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://codeberg.org/lektra/lektra
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = lektra-git
 	provides = lektra
 	conflicts = lektra
 	source = lektra::git+https://codeberg.org/lektra/lektra.git
-	source = mupdf-1.27.0-source.tar.gz::https://mupdf.com/downloads/archive/mupdf-1.27.0-source.tar.gz
+	source = mupdf-1.27.2-source.tar.gz::https://mupdf.com/downloads/archive/mupdf-1.27.2-source.tar.gz
 	sha256sums = SKIP
-	sha256sums = ae2442416de499182d37a526c6fa2bacc7a3bed5a888d113ca04844484dfe7c6
+	sha256sums = 553867b135303dc4c25ab67c5f234d8e900a0e36e66e8484d99adc05fe1e8737
 
 pkgname = lektra-git

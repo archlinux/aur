@@ -1,21 +1,21 @@
 # Maintainer: Dheeraj Vittal Shenoy <dheerajshenoy22@gmail.com>
 pkgname=lektra-git
-pkgver=0.6.0.r28.gbda6a05
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="High-performance PDF reader that prioritizes screen space and control"
 arch=('x86_64')
 url="https://codeberg.org/lektra/lektra"
 license=('AGPL-3.0')
 depends=('qt6-base' 'curl' 'libsynctex')
-makedepends=('git' 'cmake' 'ninja' 'pkgconf') # 'bzr', 'git', 'mercurial' or 'subversion'
+makedepends=('git' 'cmake' 'ninja' 'pkgconf')
 provides=("lektra")
 conflicts=("lektra")
-_mupdf_ver=1.27.0
+_mupdf_ver=1.27.2
 source=(
     "lektra::git+https://codeberg.org/lektra/lektra.git"
     "mupdf-${_mupdf_ver}-source.tar.gz::https://mupdf.com/downloads/archive/mupdf-${_mupdf_ver}-source.tar.gz"
 )
-sha256sums=("SKIP" "ae2442416de499182d37a526c6fa2bacc7a3bed5a888d113ca04844484dfe7c6")
+sha256sums=("SKIP" "553867b135303dc4c25ab67c5f234d8e900a0e36e66e8484d99adc05fe1e8737")
 
 pkgver() {
     cd "$srcdir/lektra"
