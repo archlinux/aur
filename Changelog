@@ -1,9 +1,20 @@
 -------------------------------------------------------
  Changelog    : py-cidr
- Tags         : 3.7.0 ➙ 3.11.0
-              : 2025-07-17 ➙ 2026-01-04
+ Tags         : 3.8.0 ➙ 3.12.0
+              : 2025-07-17 ➙ 2026-02-21
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-02-21   : 3.12.0
+              - **3.12.0**
+            
+                * CidrMap : New .items() method provides an Iterator over the map.
+                  Each iteration yields a tuple[cidr: str, value: Any]
+            
+                * Add net_range_split/cidr_range_split:
+                  split one net/cidr into (first, mid,  last) ip addresses
+ 2026-01-04   ⋯
+              - update Docs/Changelogs
 
  2026-01-04   : 3.11.0
               - **3.11.0**
@@ -13,7 +24,7 @@
                 * Testing to confirm all working on python 3.14.2
                 * License GPL-2.0-or-later
 
- 2025-09-01   : 3.10.0, origin/master
+ 2025-09-01   : 3.10.0
               - update Docs/Changelogs Docs/_build/html Docs/py-cidr.pdf
               - Cidr.compact(): with  mixed ipv4/ipv6 - allow host bits in cidrs
  2025-08-31   ⋯
@@ -26,8 +37,3 @@
 
  2025-07-17   : 3.8.0
               - Cidr cache lockfile name use effective user id instead of username.
-
- 2025-07-17   : 3.7.0
-              - Cidr cache lockfile: remove getlogin() line accidently left in - reported by AUR user @piate
- 2025-07-16   ⋯
-              - update Docs/Changelogs Docs/_build/html Docs/py-cidr.pdf
