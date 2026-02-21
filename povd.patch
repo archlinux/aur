@@ -1,0 +1,755 @@
+diff --git a/containmentactions/switchwindow/switch.cpp b/containmentactions/switchwindow/switch.cpp
+index 2e204d6cea..41ef539a59 100644
+--- a/containmentactions/switchwindow/switch.cpp
++++ b/containmentactions/switchwindow/switch.cpp
+@@ -64,6 +64,7 @@ SwitchWindow::~SwitchWindow()
+ void SwitchWindow::restore(const KConfigGroup &config)
+ {
+     m_mode = (MenuMode)config.readEntry("mode", (int)AllFlat);
++    s_tasksModel->setFilterByPerScreenVirtualDesktop(m_mode == CurrentDesktop);
+ }
+ 
+ QWidget *SwitchWindow::createConfigurationInterface(QWidget *parent)
+@@ -94,6 +95,8 @@ void SwitchWindow::configurationAccepted()
+     } else {
+         m_mode = CurrentDesktop;
+     }
++
++    s_tasksModel->setFilterByPerScreenVirtualDesktop(m_mode == CurrentDesktop);
+ }
+ 
+ void SwitchWindow::save(KConfigGroup &config)
+@@ -112,6 +115,7 @@ void SwitchWindow::makeMenu()
+ 
+     QMultiMap<QString, QAction *> desktops;
+     QList<QAction *> allDesktops;
++    QList<QAction *> uniqueActions;
+ 
+     // Make all the window actions.
+     for (int i = 0; i < s_tasksModel->rowCount(); ++i) {
+@@ -130,6 +134,14 @@ void SwitchWindow::makeMenu()
+         auto *action = new QAction(name, this);
+         action->setIcon(idx.data(Qt::DecorationRole).value<QIcon>());
+         action->setData(idx.data(AbstractTasksModel::WinIdList).toList());
++        connect(action, &QAction::triggered, [=, this]() {
++            switchTo(action);
++        });
++
++        if (m_mode == CurrentDesktop) {
++            uniqueActions << action;
++            continue;
++        }
+ 
+         const QStringList &desktopList = idx.data(AbstractTasksModel::VirtualDesktops).toStringList();
+ 
+@@ -140,22 +152,17 @@ void SwitchWindow::makeMenu()
+         if (idx.data(AbstractTasksModel::IsOnAllVirtualDesktops).toBool()) {
+             allDesktops << action;
+         }
+-
+-        connect(action, &QAction::triggered, [=, this]() {
+-            switchTo(action);
+-        });
+     }
+ 
+     // Sort into menu(s).
+     if (m_mode == CurrentDesktop) {
+-        const QString &currentDesktop = m_virtualDesktopInfo->currentDesktop().toString();
+-
+         auto *a = new QAction(i18nc("plasma_containmentactions_switchwindow", "Windows"), this);
+         a->setSeparator(true);
+         m_actions << a;
+-        m_actions << desktops.values(currentDesktop);
+-        m_actions << allDesktops;
+ 
++        for (auto action : uniqueActions) {
++            m_actions << action;
++        }
+     } else {
+         const QVariantList &desktopIds = m_virtualDesktopInfo->desktopIds();
+         const QStringList &desktopNames = m_virtualDesktopInfo->desktopNames();
+diff --git a/libtaskmanager/taskfilterproxymodel.cpp b/libtaskmanager/taskfilterproxymodel.cpp
+index 8430fc33fe..4b84f022dd 100644
+--- a/libtaskmanager/taskfilterproxymodel.cpp
++++ b/libtaskmanager/taskfilterproxymodel.cpp
+@@ -6,14 +6,16 @@
+ 
+ #include "taskfilterproxymodel.h"
+ #include "abstracttasksmodel.h"
++#include "virtualdesktopinfo.h"
+ 
+ #include "launchertasksmodel_p.h"
+ 
+ #include "config-X11.h"
+-#if HAVE_X11
++
+ #include <QGuiApplication>
+ #include <QScreen>
+ 
++#if HAVE_X11
+ #include <KWindowSystem>
+ #endif
+ 
+@@ -27,11 +29,13 @@ public:
+     AbstractTasksModelIface *sourceTasksModel = nullptr;
+ 
+     QVariant virtualDesktop;
++    QVariant virtualDesktopInfo;
+     QRect screenGeometry;
+     QRect regionGeometry;
+     QString activity;
+ 
+     bool filterByVirtualDesktop = false;
++    bool filterByPerScreenVirtualDesktop = false;
+     bool filterByScreen = false;
+     bool filterByActivity = false;
+     RegionFilterMode::Mode filterByRegion = RegionFilterMode::Mode::Disabled;
+@@ -82,6 +86,40 @@ void TaskFilterProxyModel::setVirtualDesktop(const QVariant &desktop)
+     }
+ }
+ 
++QVariant TaskFilterProxyModel::virtualDesktopInfo() const
++{
++    return d->virtualDesktopInfo;
++}
++
++void TaskFilterProxyModel::setVirtualDesktopInfo(const QVariant &virtualDesktopInfo)
++{
++    if (d->virtualDesktopInfo != virtualDesktopInfo) {
++        auto prevVirtualDesktopInfoPtr = d->virtualDesktopInfo.value<VirtualDesktopInfo *>();
++
++        if (prevVirtualDesktopInfoPtr != nullptr) {
++            disconnect(prevVirtualDesktopInfoPtr, nullptr, this, nullptr);
++        }
++
++        d->virtualDesktopInfo = virtualDesktopInfo;
++
++        auto virtualDesktopInfoPtr = virtualDesktopInfo.value<VirtualDesktopInfo *>();
++
++        if (virtualDesktopInfoPtr != nullptr) {
++            connect(virtualDesktopInfoPtr, &VirtualDesktopInfo::currentDesktopForScreenChanged, this, [this]() {
++                if (d->filterByPerScreenVirtualDesktop) {
++                    invalidateFilter();
++                }
++            });
++        }
++
++        if (d->filterByPerScreenVirtualDesktop) {
++            invalidateFilter();
++        }
++
++        Q_EMIT virtualDesktopInfoChanged();
++    }
++}
++
+ QRect TaskFilterProxyModel::screenGeometry() const
+ {
+     return d->screenGeometry;
+@@ -153,6 +191,22 @@ void TaskFilterProxyModel::setFilterByVirtualDesktop(bool filter)
+     }
+ }
+ 
++bool TaskFilterProxyModel::filterByPerScreenVirtualDesktop() const
++{
++    return d->filterByPerScreenVirtualDesktop;
++}
++
++void TaskFilterProxyModel::setFilterByPerScreenVirtualDesktop(bool filter)
++{
++    if (d->filterByPerScreenVirtualDesktop != filter) {
++        d->filterByPerScreenVirtualDesktop = filter;
++
++        invalidateFilter();
++
++        Q_EMIT filterByPerScreenVirtualDesktopChanged();
++    }
++}
++
+ bool TaskFilterProxyModel::filterByScreen() const
+ {
+     return d->filterByScreen;
+@@ -349,6 +403,28 @@ bool TaskFilterProxyModel::acceptsRow(int sourceRow) const
+         }
+     }
+ 
++    // Filter by per-screen virtual desktop.
++    if (d->filterByPerScreenVirtualDesktop && !d->virtualDesktopInfo.isNull()) {
++        if (!sourceIdx.data(AbstractTasksModel::IsOnAllVirtualDesktops).toBool()
++            && (!d->demandingAttentionSkipsFilters || !sourceIdx.data(AbstractTasksModel::IsDemandingAttention).toBool())) {
++            const QVariantList &virtualDesktops = sourceIdx.data(AbstractTasksModel::VirtualDesktops).toList();
++            auto virtualDesktopInfo = d->virtualDesktopInfo.value<VirtualDesktopInfo *>();
++            const QRect &screenGeometry = sourceIdx.data(AbstractTasksModel::ScreenGeometry).toRect();
++
++            if (!virtualDesktops.isEmpty() && virtualDesktopInfo != nullptr && screenGeometry.isValid()) {
++                for (QScreen *screen : qGuiApp->screens()) {
++                    if (screen->geometry() != screenGeometry) {
++                        continue;
++                    }
++                    if (!virtualDesktops.contains(virtualDesktopInfo->currentDesktopByScreenName(screen->name()))) {
++                        return false;
++                    }
++                    break;
++                }
++            }
++        }
++    }
++
+     // Filter by screen.
+     if (d->filterByScreen && d->screenGeometry.isValid()) {
+         const QRect &screenGeometry = sourceIdx.data(AbstractTasksModel::ScreenGeometry).toRect();
+diff --git a/libtaskmanager/taskfilterproxymodel.h b/libtaskmanager/taskfilterproxymodel.h
+index 083b6fdc73..a61c04f81a 100644
+--- a/libtaskmanager/taskfilterproxymodel.h
++++ b/libtaskmanager/taskfilterproxymodel.h
+@@ -33,11 +33,14 @@ class TASKMANAGER_EXPORT TaskFilterProxyModel : public QSortFilterProxyModel, pu
+     Q_OBJECT
+ 
+     Q_PROPERTY(QVariant virtualDesktop READ virtualDesktop WRITE setVirtualDesktop NOTIFY virtualDesktopChanged)
++    Q_PROPERTY(QVariant virtualDesktopInfo READ virtualDesktopInfo WRITE setVirtualDesktopInfo NOTIFY virtualDesktopInfoChanged)
+     Q_PROPERTY(QRect screenGeometry READ screenGeometry WRITE setScreenGeometry NOTIFY screenGeometryChanged)
+     Q_PROPERTY(QRect regionGeometry READ regionGeometry WRITE setRegionGeometry NOTIFY regionGeometryChanged)
+     Q_PROPERTY(QString activity READ activity WRITE setActivity NOTIFY activityChanged)
+ 
+     Q_PROPERTY(bool filterByVirtualDesktop READ filterByVirtualDesktop WRITE setFilterByVirtualDesktop NOTIFY filterByVirtualDesktopChanged)
++    Q_PROPERTY(bool filterByPerScreenVirtualDesktop READ filterByPerScreenVirtualDesktop WRITE setFilterByPerScreenVirtualDesktop NOTIFY
++                   filterByPerScreenVirtualDesktopChanged)
+     Q_PROPERTY(bool filterByScreen READ filterByScreen WRITE setFilterByScreen NOTIFY filterByScreenChanged)
+     Q_PROPERTY(bool filterByActivity READ filterByActivity WRITE setFilterByActivity NOTIFY filterByActivityChanged)
+     Q_PROPERTY(RegionFilterMode::Mode filterByRegion READ filterByRegion WRITE setFilterByRegion NOTIFY filterByRegionChanged)
+@@ -78,6 +81,24 @@ public:
+      **/
+     void setVirtualDesktop(const QVariant &desktop = QVariant());
+ 
++    /**
++     * VirtualDesktopInfo used in filtering by per-screen virtual desktop.
++     * Defaults to empty.
++     *
++     * @see setVirtualDesktopInfo
++     **/
++    QVariant virtualDesktopInfo() const;
++
++    /**
++     * Set the VirtualDesktopInfo to use in filtering by per-screen virtual
++     * desktop.
++     *
++     * If set to a null pointer, filtering by virtual desktop is disabled.
++     *
++     * @see virtualDesktop
++     **/
++    void setVirtualDesktopInfo(const QVariant &virtualDesktopInfo = QVariant());
++
+     /**
+      * The geometry of the screen used in filtering by screen. Defaults
+      * to a null QRect.
+@@ -160,6 +181,31 @@ public:
+      **/
+     void setFilterByVirtualDesktop(bool filter);
+ 
++    /**
++     * Whether tasks should be filtered by its screen's virtual desktop.
++     * Defaults to @c false.
++     *
++     * Filtering by virtual desktop only happens if VirtualDesktopInfo
++     * is set, even if this is set to @c true.
++     *
++     * @see setFilterByPerScreenVirtualDesktop
++     * @returns @c true if tasks should be filtered by their screen's
++     * virtual desktops.
++     **/
++    bool filterByPerScreenVirtualDesktop() const;
++
++    /**
++     * Set whether tasks should be filtered by virtual desktop.
++     *
++     * Filtering by virtual desktop only happens if VirtualDesktopInfo
++     * is set, even if this is set to @c true.
++     *
++     * @see filterByPerScreenVirtualDesktop
++     * @param filter Whether tasks should be filtered by their screen's
++     * virtual desktop.
++     **/
++    void setFilterByPerScreenVirtualDesktop(bool filter);
++
+     /**
+      * Whether tasks should be filtered by screen. Defaults to @c false.
+      *
+@@ -375,10 +421,12 @@ public:
+ 
+ Q_SIGNALS:
+     void virtualDesktopChanged() const;
++    void virtualDesktopInfoChanged() const;
+     void screenGeometryChanged() const;
+     void regionGeometryChanged();
+     void activityChanged() const;
+     void filterByVirtualDesktopChanged() const;
++    void filterByPerScreenVirtualDesktopChanged() const;
+     void filterByScreenChanged() const;
+     void filterByActivityChanged() const;
+     void filterByRegionChanged();
+diff --git a/libtaskmanager/tasksmodel.cpp b/libtaskmanager/tasksmodel.cpp
+index 1967846632..00c4514d6c 100644
+--- a/libtaskmanager/tasksmodel.cpp
++++ b/libtaskmanager/tasksmodel.cpp
+@@ -88,6 +88,7 @@ public:
+     bool lessThan(const QModelIndex &left, const QModelIndex &right, bool sortOnlyLaunchers = false) const;
+     std::optional<bool> lessThanByVirtualDesktop(const QModelIndex &left, const QModelIndex &right) const;
+     static void modelTest(QAbstractItemModel *model);
++    void clearVirtualDesktopInfoIfNotNecessary();
+ 
+ private:
+     TasksModel *const q;
+@@ -282,6 +283,7 @@ void TasksModel::Private::initModels()
+     QObject::connect(filterProxyModel, &TaskFilterProxyModel::regionGeometryChanged, q, &TasksModel::regionGeometryChanged);
+     QObject::connect(filterProxyModel, &TaskFilterProxyModel::activityChanged, q, &TasksModel::activityChanged);
+     QObject::connect(filterProxyModel, &TaskFilterProxyModel::filterByVirtualDesktopChanged, q, &TasksModel::filterByVirtualDesktopChanged);
++    QObject::connect(filterProxyModel, &TaskFilterProxyModel::filterByPerScreenVirtualDesktopChanged, q, &TasksModel::filterByPerScreenVirtualDesktopChanged);
+     QObject::connect(filterProxyModel, &TaskFilterProxyModel::filterByScreenChanged, q, &TasksModel::filterByScreenChanged);
+     QObject::connect(filterProxyModel, &TaskFilterProxyModel::filterByActivityChanged, q, &TasksModel::filterByActivityChanged);
+     QObject::connect(filterProxyModel, &TaskFilterProxyModel::filterByRegionChanged, q, &TasksModel::filterByRegionChanged);
+@@ -824,6 +826,16 @@ std::optional<bool> TasksModel::Private::lessThanByVirtualDesktop(const QModelIn
+     return std::nullopt;
+ }
+ 
++void TasksModel::Private::clearVirtualDesktopInfoIfNotNecessary()
++{
++    if (sortMode == SortVirtualDesktop || sortMode == SortWindowPositionHorizontal || filterProxyModel->filterByPerScreenVirtualDesktop()) {
++        return;
++    }
++
++    virtualDesktopInfo = nullptr;
++    filterProxyModel->setVirtualDesktopInfo(QVariant());
++}
++
+ bool TasksModel::Private::lessThan(const QModelIndex &left, const QModelIndex &right, bool sortOnlyLaunchers) const
+ {
+     // Launcher tasks go first.
+@@ -1175,6 +1187,23 @@ void TasksModel::setFilterByVirtualDesktop(bool filter)
+     d->filterProxyModel->setFilterByVirtualDesktop(filter);
+ }
+ 
++bool TasksModel::filterByPerScreenVirtualDesktop() const
++{
++    return d->filterProxyModel->filterByPerScreenVirtualDesktop();
++}
++
++void TasksModel::setFilterByPerScreenVirtualDesktop(bool filter)
++{
++    d->filterProxyModel->setFilterByPerScreenVirtualDesktop(filter);
++
++    if (filter) {
++        d->virtualDesktopInfo = virtualDesktopInfo();
++        d->filterProxyModel->setVirtualDesktopInfo(QVariant::fromValue(d->virtualDesktopInfo.get()));
++    } else {
++        d->clearVirtualDesktopInfoIfNotNecessary();
++    }
++}
++
+ bool TasksModel::filterByScreen() const
+ {
+     return d->filterProxyModel->filterByScreen();
+@@ -1263,7 +1292,6 @@ void TasksModel::setSortMode(SortMode mode)
+             d->virtualDesktopInfo = virtualDesktopInfo();
+             setSortRole(AbstractTasksModel::VirtualDesktops);
+         } else if (d->sortMode == SortVirtualDesktop || d->sortMode == SortWindowPositionHorizontal) {
+-            d->virtualDesktopInfo = nullptr;
+             setSortRole(Qt::DisplayRole);
+         }
+ 
+@@ -1284,6 +1312,7 @@ void TasksModel::setSortMode(SortMode mode)
+         }
+ 
+         d->sortMode = mode;
++        d->clearVirtualDesktopInfoIfNotNecessary();
+ 
+         d->forceResort();
+ 
+diff --git a/libtaskmanager/tasksmodel.h b/libtaskmanager/tasksmodel.h
+index e933b3da03..b06d4c8282 100644
+--- a/libtaskmanager/tasksmodel.h
++++ b/libtaskmanager/tasksmodel.h
+@@ -63,6 +63,8 @@ class TASKMANAGER_EXPORT TasksModel : public QSortFilterProxyModel, public Abstr
+     Q_PROPERTY(QString activity READ activity WRITE setActivity NOTIFY activityChanged)
+ 
+     Q_PROPERTY(bool filterByVirtualDesktop READ filterByVirtualDesktop WRITE setFilterByVirtualDesktop NOTIFY filterByVirtualDesktopChanged)
++    Q_PROPERTY(bool filterByPerScreenVirtualDesktop READ filterByPerScreenVirtualDesktop WRITE setFilterByPerScreenVirtualDesktop NOTIFY
++                   filterByPerScreenVirtualDesktopChanged)
+     Q_PROPERTY(bool filterByScreen READ filterByScreen WRITE setFilterByScreen NOTIFY filterByScreenChanged)
+     Q_PROPERTY(bool filterByActivity READ filterByActivity WRITE setFilterByActivity NOTIFY filterByActivityChanged)
+     Q_PROPERTY(RegionFilterMode::Mode filterByRegion READ filterByRegion WRITE setFilterByRegion NOTIFY filterByRegionChanged)
+@@ -251,6 +253,25 @@ public:
+      **/
+     void setFilterByVirtualDesktop(bool filter);
+ 
++    /**
++     * Whether tasks should be filtered by its screen's virtual desktop.
++     * Defaults to @c false.
++     *
++     * @see setFilterByPerScreenVirtualDesktop
++     * @returns @c true if tasks should be filtered by their screen's
++     * virtual desktops.
++     **/
++    bool filterByPerScreenVirtualDesktop() const;
++
++    /**
++     * Set whether tasks should be filtered by virtual desktop.
++     *
++     * @see filterByPerScreenVirtualDesktop
++     * @param filter Whether tasks should be filtered by their screen's
++     * virtual desktop.
++     **/
++    void setFilterByPerScreenVirtualDesktop(bool filter);
++
+     /**
+      * Whether tasks should be filtered by screen. Defaults to @c false.
+      *
+@@ -1006,6 +1027,7 @@ Q_SIGNALS:
+     void regionGeometryChanged();
+     void activityChanged() const;
+     void filterByVirtualDesktopChanged() const;
++    void filterByPerScreenVirtualDesktopChanged() const;
+     void filterByScreenChanged() const;
+     void filterByActivityChanged() const;
+     void filterByRegionChanged();
+diff --git a/libtaskmanager/virtualdesktopinfo.cpp b/libtaskmanager/virtualdesktopinfo.cpp
+index 60c5f5a8ae..2faa2fe6fe 100644
+--- a/libtaskmanager/virtualdesktopinfo.cpp
++++ b/libtaskmanager/virtualdesktopinfo.cpp
+@@ -18,6 +18,7 @@
+ #include <QDBusPendingCallWatcher>
+ #include <QDBusPendingReply>
+ #include <QGuiApplication>
++#include <QScreen>
+ #include <QWaylandClientExtension>
+ #include <algorithm>
+ 
+@@ -53,6 +54,7 @@ public:
+ 
+     virtual void init() = 0;
+     virtual QVariant currentDesktop() const = 0;
++    virtual QVariant currentDesktopByScreenName(const QString &screenName) const = 0;
+     virtual int numberOfDesktops() const = 0;
+     virtual QVariantList desktopIds() const = 0;
+     virtual QStringList desktopNames() const = 0;
+@@ -64,6 +66,7 @@ public:
+ 
+ Q_SIGNALS:
+     void currentDesktopChanged() const;
++    void currentDesktopForScreenChanged(const QString &screenName) const;
+     void numberOfDesktopsChanged() const;
+     void desktopIdsChanged() const;
+     void desktopNamesChanged() const;
+@@ -126,6 +129,7 @@ public:
+ 
+     void init() override;
+     QVariant currentDesktop() const override;
++    QVariant currentDesktopByScreenName(const QString &screeName) const override;
+     int numberOfDesktops() const override;
+     QVariantList desktopIds() const override;
+     QStringList desktopNames() const override;
+@@ -144,7 +148,13 @@ VirtualDesktopInfo::XWindowPrivate::XWindowPrivate()
+ 
+ void VirtualDesktopInfo::XWindowPrivate::init()
+ {
+-    connect(KX11Extras::self(), &KX11Extras::currentDesktopChanged, this, &VirtualDesktopInfo::XWindowPrivate::currentDesktopChanged);
++    connect(KX11Extras::self(), &KX11Extras::currentDesktopChanged, this, [this]() {
++        for (const QScreen *screen : qGuiApp->screens()) {
++            Q_EMIT currentDesktopForScreenChanged(screen->name());
++        }
++
++        Q_EMIT currentDesktopChanged();
++    });
+ 
+     connect(KX11Extras::self(), &KX11Extras::numberOfDesktopsChanged, this, &VirtualDesktopInfo::XWindowPrivate::numberOfDesktopsChanged);
+ 
+@@ -164,6 +174,12 @@ QVariant VirtualDesktopInfo::XWindowPrivate::currentDesktop() const
+     return KX11Extras::currentDesktop();
+ }
+ 
++QVariant VirtualDesktopInfo::XWindowPrivate::currentDesktopByScreenName(const QString &) const
++{
++    // Per-screen virtual desktops are not supported on X11.
++    return currentDesktop();
++}
++
+ int VirtualDesktopInfo::XWindowPrivate::numberOfDesktops() const
+ {
+     return KX11Extras::numberOfDesktops();
+@@ -281,13 +297,61 @@ protected:
+     }
+ };
+ 
++class PlasmaOutputVirtualDesktop : public QObject, public QtWayland::org_kde_plasma_output_virtual_desktop
++{
++    Q_OBJECT
++public:
++    PlasmaOutputVirtualDesktop(struct ::org_kde_plasma_output_virtual_desktop *object)
++        : org_kde_plasma_output_virtual_desktop(object)
++    {
++    }
++    ~PlasmaOutputVirtualDesktop()
++    {
++        wl_proxy_destroy(reinterpret_cast<wl_proxy *>(object()));
++    }
++    QString uuid;
++    QString name;
++    QString activeDesktopId;
++Q_SIGNALS:
++    void done();
++    void removed();
++    void activeDesktopChanged(QString activeDesktopId);
++
++protected:
++    void org_kde_plasma_output_virtual_desktop_uuid(const QString &uuid) override
++    {
++        this->uuid = uuid;
++    }
++    void org_kde_plasma_output_virtual_desktop_name(const QString &name) override
++    {
++        this->name = name;
++    }
++    void org_kde_plasma_output_virtual_desktop_active_desktop_id(const QString &desktop_id) override
++    {
++        if (activeDesktopId == desktop_id) {
++            return;
++        }
++
++        this->activeDesktopId = desktop_id;
++        Q_EMIT activeDesktopChanged(desktop_id);
++    }
++    void org_kde_plasma_output_virtual_desktop_done() override
++    {
++        Q_EMIT done();
++    }
++    void org_kde_plasma_output_virtual_desktop_removed() override
++    {
++        Q_EMIT removed();
++    }
++};
++
+ class PlasmaVirtualDesktopManagement : public QWaylandClientExtensionTemplate<PlasmaVirtualDesktopManagement>,
+                                        public QtWayland::org_kde_plasma_virtual_desktop_management
+ {
+     Q_OBJECT
+ public:
+     PlasmaVirtualDesktopManagement()
+-        : QWaylandClientExtensionTemplate(3)
++        : QWaylandClientExtensionTemplate(4)
+     {
+         connect(this, &QWaylandClientExtension::activeChanged, this, [this] {
+             if (!isActive()) {
+@@ -301,10 +365,13 @@ public:
+             wl_proxy_destroy(reinterpret_cast<wl_proxy *>(object()));
+         }
+     }
++
++    std::vector<std::unique_ptr<PlasmaOutputVirtualDesktop>> outputs;
+ Q_SIGNALS:
+     void desktopCreated(const QString &id, quint32 position);
+     void desktopRemoved(const QString &id);
+     void rowsChanged(const quint32 rows);
++    void currentDesktopForScreenChanged(const QString &screenName);
+     void done();
+ 
+ protected:
+@@ -324,6 +391,31 @@ protected:
+     {
+         Q_EMIT done();
+     }
++    void org_kde_plasma_virtual_desktop_management_output_added(struct ::org_kde_plasma_output_virtual_desktop *output) override
++    {
++        auto outputVd = std::make_unique<PlasmaOutputVirtualDesktop>(output);
++        auto *outputVdPtr = outputVd.get();
++
++        connect(outputVdPtr, &PlasmaOutputVirtualDesktop::activeDesktopChanged, this, [this, outputVdPtr]() {
++            Q_EMIT currentDesktopForScreenChanged(outputVdPtr->name);
++        });
++
++        connect(
++            outputVd.get(),
++            &PlasmaOutputVirtualDesktop::done,
++            this,
++            [this, outputVdPtr]() {
++                QString uuid = outputVdPtr->uuid;
++                connect(outputVdPtr, &PlasmaOutputVirtualDesktop::removed, this, [this, uuid]() {
++                    std::erase_if(outputs, [uuid](const std::unique_ptr<PlasmaOutputVirtualDesktop> &outputVd) {
++                        return outputVd->uuid == uuid;
++                    });
++                });
++            },
++            Qt::SingleShotConnection);
++
++        outputs.push_back(std::move(outputVd));
++    }
+ };
+ 
+ class Q_DECL_HIDDEN VirtualDesktopInfo::WaylandPrivate : public VirtualDesktopInfo::Private
+@@ -342,6 +434,7 @@ public:
+     void init() override;
+     void addDesktop(const QString &id, quint32 position);
+     QVariant currentDesktop() const override;
++    QVariant currentDesktopByScreenName(const QString &screenName) const override;
+     int numberOfDesktops() const override;
+     QVariantList desktopIds() const override;
+     QStringList desktopNames() const override;
+@@ -378,6 +471,11 @@ void VirtualDesktopInfo::WaylandPrivate::init()
+             rows = 0;
+             virtualDesktops.clear();
+             currentVirtualDesktop.clear();
++
++            for (const auto &output : virtualDesktopManagement->outputs) {
++                Q_EMIT currentDesktopForScreenChanged(output->name);
++            }
++
+             Q_EMIT currentDesktopChanged();
+             Q_EMIT numberOfDesktopsChanged();
+             Q_EMIT navigationWrappingAroundChanged();
+@@ -428,6 +526,10 @@ void VirtualDesktopInfo::WaylandPrivate::init()
+             Q_EMIT desktopPositionsChanged();
+         }
+     });
++
++    connect(virtualDesktopManagement.get(), &PlasmaVirtualDesktopManagement::currentDesktopForScreenChanged, this, [this](const QString &screenName) {
++        Q_EMIT currentDesktopForScreenChanged(screenName);
++    });
+ }
+ 
+ void VirtualDesktopInfo::WaylandPrivate::addDesktop(const QString &id, quint32 position)
+@@ -461,6 +563,20 @@ QVariant VirtualDesktopInfo::WaylandPrivate::currentDesktop() const
+     return currentVirtualDesktop;
+ }
+ 
++QVariant VirtualDesktopInfo::WaylandPrivate::currentDesktopByScreenName(const QString &screenName) const
++{
++    const auto &outputs = virtualDesktopManagement->outputs;
++    auto result = std::ranges::find_if(outputs, [screenName](const std::unique_ptr<PlasmaOutputVirtualDesktop> &outputVd) {
++        return outputVd->name == screenName;
++    });
++
++    if (result == outputs.cend()) {
++        return currentDesktop();
++    }
++
++    return (*result)->activeDesktopId;
++}
++
+ int VirtualDesktopInfo::WaylandPrivate::numberOfDesktops() const
+ {
+     return virtualDesktops.size();
+@@ -562,6 +678,7 @@ VirtualDesktopInfo::VirtualDesktopInfo(QObject *parent)
+     }
+ 
+     connect(d, &VirtualDesktopInfo::Private::currentDesktopChanged, this, &VirtualDesktopInfo::currentDesktopChanged);
++    connect(d, &VirtualDesktopInfo::Private::currentDesktopForScreenChanged, this, &VirtualDesktopInfo::currentDesktopForScreenChanged);
+     connect(d, &VirtualDesktopInfo::Private::numberOfDesktopsChanged, this, &VirtualDesktopInfo::numberOfDesktopsChanged);
+     connect(d, &VirtualDesktopInfo::Private::desktopIdsChanged, this, &VirtualDesktopInfo::desktopIdsChanged);
+     connect(d, &VirtualDesktopInfo::Private::desktopNamesChanged, this, &VirtualDesktopInfo::desktopNamesChanged);
+@@ -583,6 +700,23 @@ QVariant VirtualDesktopInfo::currentDesktop() const
+     return d->currentDesktop();
+ }
+ 
++QVariant VirtualDesktopInfo::currentDesktopByScreenName(const QString &screenName) const
++{
++    return d->currentDesktopByScreenName(screenName);
++}
++
++QVariant VirtualDesktopInfo::currentDesktopByScreenGeometry(const QRect &screenGeometry) const
++{
++    for (QScreen *screen : qGuiApp->screens()) {
++        const QRect geometry = screen->geometry();
++
++        if (geometry == screenGeometry) {
++            return d->currentDesktopByScreenName(screen->name());
++        }
++    }
++    return d->currentDesktop();
++}
++
+ int VirtualDesktopInfo::numberOfDesktops() const
+ {
+     return d->numberOfDesktops();
+diff --git a/libtaskmanager/virtualdesktopinfo.h b/libtaskmanager/virtualdesktopinfo.h
+index 867463816e..45a340ebb9 100644
+--- a/libtaskmanager/virtualdesktopinfo.h
++++ b/libtaskmanager/virtualdesktopinfo.h
+@@ -40,13 +40,29 @@ public:
+     ~VirtualDesktopInfo() override;
+ 
+     /**
+-     * The currently active virtual desktop.
++     * The currently active virtual desktop on active screen.
+      *
+      * @returns the id of the currently active virtual desktop. QString on
+      * Wayland; uint >0 on X11.
+      **/
+     QVariant currentDesktop() const;
+ 
++    /**
++     * The currently active virtual desktop on given screen.
++     *
++     * @return the id of the currently active virtual desktop. QString on
++     * Wayland; uint >0 on X11.
++     */
++    Q_INVOKABLE QVariant currentDesktopByScreenName(const QString &screenName) const;
++
++    /**
++     * The currently active virtual desktop on given screen.
++     *
++     * @return the id of the currently active virtual desktop. QString on
++     * Wayland; uint >0 on X11.
++     */
++    Q_INVOKABLE QVariant currentDesktopByScreenGeometry(const QRect &screenGeometry) const;
++
+     /**
+      * The number of virtual desktops present in the session.
+      *
+@@ -126,6 +142,7 @@ public:
+ 
+ Q_SIGNALS:
+     void currentDesktopChanged() const;
++    void currentDesktopForScreenChanged(const QString &screenName) const;
+     void numberOfDesktopsChanged() const;
+     void desktopIdsChanged() const;
+     void desktopNamesChanged() const;
+diff --git a/wallpapers/image/plugin/utils/maximizedwindowmonitor.cpp b/wallpapers/image/plugin/utils/maximizedwindowmonitor.cpp
+index 0385737ba8..247c7c8194 100644
+--- a/wallpapers/image/plugin/utils/maximizedwindowmonitor.cpp
++++ b/wallpapers/image/plugin/utils/maximizedwindowmonitor.cpp
+@@ -8,12 +8,10 @@
+ 
+ #include "abstracttasksmodel.h" // For enums
+ #include "activityinfo.h"
+-#include "virtualdesktopinfo.h"
+ 
+ MaximizedWindowMonitor::MaximizedWindowMonitor(QObject *parent)
+     : TaskManager::TasksModel(parent)
+     , m_activityInfo(activityInfo())
+-    , m_virtualDesktopInfo(virtualDesktopInfo())
+ {
+     setSortMode(SortMode::SortActivity);
+     setGroupMode(GroupMode::GroupDisabled);
+@@ -23,14 +21,9 @@ MaximizedWindowMonitor::MaximizedWindowMonitor(QObject *parent)
+     setCurrentActivity();
+     connect(m_activityInfo.get(), &TaskManager::ActivityInfo::currentActivityChanged, this, setCurrentActivity);
+ 
+-    auto currentDesktop = std::bind(&TaskManager::VirtualDesktopInfo::currentDesktop, m_virtualDesktopInfo);
+-    auto setCurrentDesktop = std::bind(&TaskManager::TasksModel::setVirtualDesktop, this, currentDesktop);
+-    setCurrentDesktop();
+-    connect(m_virtualDesktopInfo.get(), &TaskManager::VirtualDesktopInfo::currentDesktopChanged, this, setCurrentDesktop);
+-
+     setFilterMinimized(true);
+     setFilterByActivity(true);
+-    setFilterByVirtualDesktop(true);
++    setFilterByPerScreenVirtualDesktop(true);
+     setFilterByRegion(RegionFilterMode::Mode::Intersect);
+ }
+ 
+diff --git a/wallpapers/image/plugin/utils/maximizedwindowmonitor.h b/wallpapers/image/plugin/utils/maximizedwindowmonitor.h
+index 4a924af815..0c9c5eccde 100644
+--- a/wallpapers/image/plugin/utils/maximizedwindowmonitor.h
++++ b/wallpapers/image/plugin/utils/maximizedwindowmonitor.h
+@@ -30,5 +30,4 @@ protected:
+ 
+ private:
+     std::shared_ptr<TaskManager::ActivityInfo> m_activityInfo;
+-    std::shared_ptr<TaskManager::VirtualDesktopInfo> m_virtualDesktopInfo;
+ };
