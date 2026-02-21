@@ -1,18 +1,18 @@
 # Maintainer: Zynix <crossmacro@zynix.net>
 pkgname=crossmacro
-pkgver=0.9.6
+pkgver=0.9.7
 pkgrel=1
 pkgdesc="Cross-platform mouse and keyboard macro automation tool"
 arch=('x86_64')
 url="https://github.com/alper-han/CrossMacro"
 license=('GPL-3.0')
 depends=('glibc' 'gcc-libs' 'zlib' 'openssl' 'fontconfig' 'libx11' 'libxcursor' 'libxrandr' 'polkit' 'libxtst' 'systemd-libs')
-makedepends=('dotnet-sdk>=10.0' 'git' 'clang' 'zlib')
+makedepends=('dotnet-sdk>=10.0' 'clang' 'zlib')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alper-han/CrossMacro/archive/v${pkgver}.tar.gz"
         "crossmacro.sysusers"
         "crossmacro-modules.conf")
-sha256sums=('d8f321944259fbff1186b421b9ac8683c001ac5be0b712679cb3a5e331b95192'
+sha256sums=('0fbca95461af82244892c123e6eb6f9b6da2878eb9a2e61109a2d0fe6860ea7c'
             'SKIP'
             'SKIP')  # sysusers and modules config checksums (local files)
 install=crossmacro.install
@@ -24,7 +24,7 @@ build() {
     dotnet restore -r linux-x64
     
     # Build UI
-    dotnet publish src/CrossMacro.UI/CrossMacro.UI.csproj \
+    dotnet publish src/CrossMacro.UI.Linux/CrossMacro.UI.Linux.csproj \
         -c Release \
         -r linux-x64 \
         --self-contained true \
