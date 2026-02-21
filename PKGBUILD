@@ -4,7 +4,7 @@
 # Maintainer: eomanis at web dot de
 
 pkgname='disk-test'
-_pkgverUpstream="0.3.0"
+_pkgverUpstream="0.4.1"
 pkgver="${_pkgverUpstream//-/.}"
 pkgrel=1
 pkgdesc="Block device read-write test utility written in bash"
@@ -13,10 +13,10 @@ url='https://www.eomanis.dedyn.io/permshare/disk-test/'
 license=('GPL-3.0-only')
 depends=('bash' 'coreutils' 'diffutils' 'grep' 'openssl' 'pv' 'sed' 'util-linux')
 source=("https://www.eomanis.dedyn.io/permshare/disk-test/disk-test-${_pkgverUpstream}.tar.gz")
-sha384sums=('f4a80af2fb8ea17283cf75e66ccadaa2fd67bf7cea8151bab1c7fc820bf4fad43d0dc346f6e2d8273bd730ff21abfc75')
+sha384sums=('6d63707c3aa1ceaa8c318c27af268e4af0acd30c64bdc632732d83b16d9a893b18e601d3aa3ae05a7b283f6f3aba0094')
 
 package() {
-    local srcRootDir="${srcdir}/${pkgname}-${_pkgverUpstream}"
+	local srcRootDir="${srcdir}/${pkgname}-${_pkgverUpstream}"
 
 	# Create a bunch of directories
 	install --mode=u=rwx,go=rx --directory \
