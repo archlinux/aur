@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=icu-git
-pkgver=78.2.r81.g4ebbe0c8280
+pkgver=78.2.r97.g7df0d91df7a
 pkgrel=1
 pkgdesc="International Components for Unicode library"
 arch=('i686' 'x86_64')
 url="https://icu.unicode.org/"
 license=('LicenseRef-icu')
-depends=('gcc-libs' 'glibc' 'sh')
+depends=('glibc' 'libgcc' 'libstdc++' 'sh')
 makedepends=('git')
 provides=("icu=$pkgver" libicu{data,i18n,io,test,tu,uc}.so)
 conflicts=('icu')
