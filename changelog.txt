@@ -1,2 +1,2 @@
-Bug Fixes
-    fix: “硒” (U+7852), “牺” (U+727A)
+Features
+    add 㹴 (U+3E74) (a9cc93d)
