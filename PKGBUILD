@@ -113,7 +113,7 @@ makedepends=(baloo
              plasma-wayland-protocols-povd
              qcoro)
 groups=(plasma)
-source=(https://download.kde.org/unstable/plasma/$_dirver/$_pkgname-$pkgver.tar.xz{,.sig}
+source=(https://download.kde.org/stable/plasma/$_dirver/$_pkgname-$pkgver.tar.xz{,.sig}
         povd.patch)
 sha256sums=('098e1fddb30600855248bea36e012c0f5ff12d1ba3381a1ce42005e4d2304d6e'
             'SKIP'
