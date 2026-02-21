@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Horizon (F-Chat) Electron client - development snapshot using system Electron runtime"
 arch=('any')
 url="https://github.com/Fchat-Horizon/Horizon"
-license=('GPL3')
+license=('MPL-2.0')
 
 depends=(
   electron
@@ -86,5 +86,5 @@ EOD
   install -d "${pkgdir}/usr/share/pixmaps"
   install -m644 build/icon.png "${pkgdir}/usr/share/pixmaps/fchat-horizon.png"
 
-  install -Dm644 "${srcdir}/${_pkgsrc}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/${_pkgsrc}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
