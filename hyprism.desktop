@@ -1,11 +1,11 @@
 [Desktop Entry]
 Categories=Game;Utility;
-Comment=A multiplatform Hytale launcher with mod manager
-Exec=hyprism
+Comment=A multiplatform Hytale launcher with mod manager and more!
+Exec=/usr/bin/hyprism %U
 Icon=hyprism
-Keywords=hytale;launcher;gaming;mods;
+Keywords=hytale;gaming;launcher;mods;
 Name=HyPrism
 StartupNotify=true
-StartupWMClass=hyprism
+StartupWMClass=HyPrism
 Terminal=false
 Type=Application

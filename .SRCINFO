@@ -1,8 +1,8 @@
 pkgbase = hyprism-bin
-	pkgdesc = A multiplatform Hytale launcher with mod manager (binary version)
+	pkgdesc = A multiplatform Hytale launcher with mod manager and more! (binary version)
 	pkgver = 2.0.3
-	pkgrel = 1
-	url = https://github.com/yyyumeniku/HyPrism
+	pkgrel = 2
+	url = https://github.com/HyPrismTeam/HyPrism
 	arch = x86_64
 	license = MIT
 	depends = gst-plugins-good
@@ -13,12 +13,12 @@ pkgbase = hyprism-bin
 	conflicts = hyprism
 	conflicts = hyprism-git
 	options = !strip
-	source = https://github.com/yyyumeniku/HyPrism/releases/download/v2.0.3/HyPrism-linux-x64.deb
+	source = hyprism-2.0.3.deb::https://github.com/HyPrismTeam/HyPrism/releases/download/v2.0.3/HyPrism-linux-x64.deb
 	source = hyprism.desktop
 	source = hyprism.png
 	source = LICENSE
 	sha256sums = 33aeca22eb3b74f8d59157c5bb732a275ad424831278885944d84606f1a20662
-	sha256sums = 5a8927e9d5b21d6d78bdb84ab5afdeb8f06371018a713147e71de1217756f880
+	sha256sums = 89837ddd1c7dba01d6ac9e22b686fd7311986f2a49c1cd98c82fe72060dda679
 	sha256sums = 9fce08649bf1f267eccc113dcb36665ac64b7fbea100763e84fd174b71ede949
 	sha256sums = acd0c57892db5a0f25a44bd29a10bedc61c2a12508af24e1a8037a1df7aeb710
 

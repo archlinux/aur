@@ -3,10 +3,10 @@
 _pkgname="hyprism"
 pkgname="hyprism-bin"
 pkgver="2.0.3"
-pkgrel="1"
-pkgdesc="A multiplatform Hytale launcher with mod manager (binary version)"
+pkgrel="2"
+pkgdesc="A multiplatform Hytale launcher with mod manager and more! (binary version)"
 arch=("x86_64")
-url="https://github.com/yyyumeniku/HyPrism"
+url="https://github.com/HyPrismTeam/HyPrism"
 license=("MIT")
 
 provides=("hyprism")
@@ -23,31 +23,31 @@ depends=(
 options=("!strip")
 
 source=(
-    "${url}/releases/download/v${pkgver}/HyPrism-linux-x64.deb"
+    "${_pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/HyPrism-linux-x64.deb"
     "${_pkgname}.desktop"
     "${_pkgname}.png"
     "LICENSE"
 )
 sha256sums=(
     "33aeca22eb3b74f8d59157c5bb732a275ad424831278885944d84606f1a20662"
-    "5a8927e9d5b21d6d78bdb84ab5afdeb8f06371018a713147e71de1217756f880"
+    "89837ddd1c7dba01d6ac9e22b686fd7311986f2a49c1cd98c82fe72060dda679"
     "9fce08649bf1f267eccc113dcb36665ac64b7fbea100763e84fd174b71ede949"
     "acd0c57892db5a0f25a44bd29a10bedc61c2a12508af24e1a8037a1df7aeb710"
 )
 
 prepare() {
-    tar -xf data.tar.gz
+    bsdtar -xf "${srcdir}/data.tar.gz"
 }
 
 package() {
-    install -d "${pkgdir}/opt/${_pkgname}"
-    cp -dr --no-preserve=ownership "opt/hyprism/." "${pkgdir}/opt/${_pkgname}/"
-    chmod +x "${pkgdir}/opt/${_pkgname}/HyPrism"
+    install -d "${pkgdir}/opt/${pkgname}"
+    cp -dr --no-preserve=ownership "${srcdir}/opt/hyprism/." "${pkgdir}/opt/${pkgname}/"
+    chmod +x "${pkgdir}/opt/${pkgname}/HyPrism"
 
     install -d "${pkgdir}/usr/bin"
-    ln -s "/opt/${_pkgname}/HyPrism" "${pkgdir}/usr/bin/${_pkgname}"
+    ln -s "/opt/${pkgname}/HyPrism" "${pkgdir}/usr/bin/${_pkgname}"
 
-    install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-    install -Dm644 "${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "${srcdir}/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
+    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
