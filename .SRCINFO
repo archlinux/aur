@@ -1,0 +1,21 @@
+pkgbase = susops
+	pkgdesc = System tray app for managing SusOps SSH SOCKS5 proxy and port forwards
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/mashb1t/susops-linux
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = go-yq
+	depends = autossh
+	depends = openbsd-netcat
+	source = susops::git+https://github.com/mashb1t/susops-linux.git
+	source = susops-cli::git+https://github.com/mashb1t/susops-cli.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = susops
