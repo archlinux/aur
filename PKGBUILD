@@ -1,7 +1,7 @@
 # Maintainer: gaogaoqwq <gaogaoqwq at gmail dot com>
 # Contributors: Ziqi Yang <mr.ziqiyang@gmail.com>
 pkgname='ttf-zpix'
-pkgver=3.1.9
+pkgver=3.1.10
 pkgrel=1
 pkgdesc="最像素ttf版本。支持英文、繁体中文、简体中文、日文。"
 arch=('any')
@@ -11,7 +11,7 @@ license=('custom')
 source=("${pkgname}-${pkgver}.ttf::${url}/releases/download/v${pkgver}/zpix.ttf"
         "LICENSE")
 conflicts=("ttf-zpix")
-sha256sums=('d8a830e19aacfe989b7d0de45f050657e83b1840ccbab0f8600a5352dbacf9e3'
+sha256sums=('4f5d731b71e389e757f7a2816b8d37470ff401ced2e96ab2a336db5ee41c03c7'
             'bb2760d6e1f31db7ddf1b085c6a063192ca499bb0e643dcb01a6b4a97884de3b')
 
 package() {
