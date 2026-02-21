@@ -1,8 +1,8 @@
 pkgbase = stratos-cli
 	pkgdesc = Multi-Agent Autonomous Coding System for Terminal
-	pkgver = 2.5.0
+	pkgver = 0.1
 	pkgrel = 1
-	url = https://github.com/SPTApyo/stratos
+	url = https://github.com/SPTApyo/stratos-cli
 	arch = any
 	license = MIT
 	makedepends = python-build
@@ -15,7 +15,7 @@ pkgbase = stratos-cli
 	depends = python-readchar
 	depends = python-google-generativeai
 	depends = python-duckduckgo-search
-	source = https://github.com/SPTApyo/stratos/archive/refs/tags/v2.5.0.tar.gz
+	source = https://github.com/SPTApyo/stratos-cli/archive/refs/tags/v0.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = stratos-cli
