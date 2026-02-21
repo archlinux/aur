@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=ncurses-git
-pkgver=6.5.20240601.r0.ga09f7429
+pkgver=6.6.20260214.r0.g17c09869
 pkgrel=1
 pkgdesc="Screen handling and optimization package"
 arch=('i686' 'x86_64')
 url="https://invisible-island.net/ncurses/ncurses.html"
 license=('MIT')
-depends=('gcc-libs')
+depends=('glibc' 'libgcc' 'libstdc++')
 makedepends=('git')
 provides=("ncurses=$pkgver" 'libncurses++w.so' 'libformw.so' 'libmenuw.so' 'libpanelw.so' 'libncursesw.so')
 conflicts=('ncurses')
