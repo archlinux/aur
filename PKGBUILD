@@ -1,6 +1,6 @@
 pkgname=hostman
 pkgver=1.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple file host manager for various image hosting services"
 arch=('x86_64')
 url="https://github.com/keircn/hostman"

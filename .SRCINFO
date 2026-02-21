@@ -1,7 +1,7 @@
 pkgbase = hostman
 	pkgdesc = A simple file host manager for various image hosting services
 	pkgver = 1.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/keircn/hostman
 	arch = x86_64
 	license = MIT
