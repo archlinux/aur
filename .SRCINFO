@@ -9,6 +9,7 @@ pkgbase = github-desktop-plus-git
 	makedepends = python-setuptools
 	makedepends = nodejs-lts-krypton
 	makedepends = npm
+	makedepends = util-linux
 	makedepends = xorg-server-xvfb
 	makedepends = yarn
 	depends = curl
