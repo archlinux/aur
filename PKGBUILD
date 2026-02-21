@@ -2,7 +2,7 @@
 
 pkgname=connman-resolvconf
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ConnMan integration with resolvconf(8)"
 arch=('x86_64')
 url="https://github.com/jirutka/connman-resolvconf"
@@ -24,7 +24,7 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 -t "$pkgdir"/usr/sbin target/release/connman-resolvconfd
+  install -Dm755 -t "$pkgdir"/usr/bin target/release/connman-resolvconfd
   install -Dm644 -t "$pkgdir"/usr/lib/systemd/system contrib/systemd/connman-resolvconf.service
   install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
 }
