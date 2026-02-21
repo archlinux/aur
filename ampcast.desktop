@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Ampcast
+Comment=A music player inspired by Winamp
+Exec=ampcast-app
+Icon=ampcast
+Terminal=false
+Type=Application
+Categories=Audio;Music;Player;
+StartupWMClass=Ampcast
