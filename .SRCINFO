@@ -1,0 +1,14 @@
+pkgbase = mementomori
+	pkgdesc = A command-line live death counter
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/naujan/mementomori
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-yaml
+	depends = python-dateutil
+	source = mementomori-0.1.1.tar.gz::https://github.com/naujan/mementomori/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = e9e8cc610a522e05494e80235441f236ecc35688a1f9607c7fbbd07bb3a3b3f0
+
+pkgname = mementomori
