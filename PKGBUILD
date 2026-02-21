@@ -104,4 +104,8 @@ package() {
 
     install -Dm644 "${sc}/README.md"  "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -Dm644 "${sc}/ChangeLog"  "${pkgdir}/usr/share/doc/${pkgname}/ChangeLog"
+
+    install -Dm644 "${srcdir}/../crccp.1"  "${pkgdir}/usr/share/man/man1/crccp.1"
+    install -Dm644 "${srcdir}/../crcmv.1"  "${pkgdir}/usr/share/man/man1/crcmv.1"
+    install -Dm644 "${srcdir}/../crcsum.1" "${pkgdir}/usr/share/man/man1/crcsum.1"
 }
