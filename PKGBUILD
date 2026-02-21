@@ -32,10 +32,10 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"/src
-	PREFIX=/usr make
+	make PREFIX=/usr
 }
 
 package() {
 	cd "$pkgname-$pkgver"/src
-	make DESTDIR="$pkgdir/" install
+	make PREFIX=/usr DESTDIR="$pkgdir/" install
 }
