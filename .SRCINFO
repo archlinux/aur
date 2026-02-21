@@ -1,14 +1,15 @@
 pkgbase = zlob
 	pkgdesc = A fast SIMD-accelerated glob pattern matcher
-	pkgver = 1.2.8
+	pkgver = 1.2.9
 	pkgrel = 1
 	url = https://github.com/dmtrKovalenko/zlob
 	arch = x86_64
 	license = MIT
 	makedepends = zig
 	provides = zlob
+	provides = libzlob.so
 	conflicts = zlob-git
-	source = zlob-1.2.8.tar.gz::https://github.com/dmtrKovalenko/zlob/archive/refs/tags/v1.2.8.tar.gz
-	sha256sums = 307c43b480b1ea03e67ba1f37b8b35f67c4707398b6fa08c68a15581fa069366
+	source = zlob-1.2.9.tar.gz::https://github.com/dmtrKovalenko/zlob/archive/refs/tags/v1.2.9.tar.gz
+	sha256sums = 5bb833431d829835cb90123d1ca158eb186ef6f413a327dbc53c5a73c736f67c
 
 pkgname = zlob
