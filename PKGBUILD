@@ -3,12 +3,12 @@
 
 pkgname=libb2-git
 pkgver=0.98.1.r22.g643decf
-pkgrel=1
+pkgrel=2
 pkgdesc="C library providing BLAKE2b, BLAKE2s, BLAKE2bp, BLAKE2sp"
 arch=('i686' 'x86_64')
 url="https://www.blake2.net/"
 license=('CC0-1.0')
-depends=('gcc-libs' 'glibc')
+depends=('glibc' 'libgcc' 'libgomp')
 makedepends=('git')
 provides=("libb2=$pkgver" 'libb2.so')
 conflicts=('libb2')

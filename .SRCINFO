@@ -1,14 +1,15 @@
 pkgbase = libb2-git
 	pkgdesc = C library providing BLAKE2b, BLAKE2s, BLAKE2bp, BLAKE2sp
 	pkgver = 0.98.1.r22.g643decf
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.blake2.net/
 	arch = i686
 	arch = x86_64
 	license = CC0-1.0
 	makedepends = git
-	depends = gcc-libs
 	depends = glibc
+	depends = libgcc
+	depends = libgomp
 	provides = libb2=0.98.1.r22.g643decf
 	provides = libb2.so
 	conflicts = libb2
