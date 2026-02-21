@@ -4,7 +4,7 @@
 
 _pkgname="iriunwebcam"
 pkgname="$_pkgname-bin"
-pkgver=2.9
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="Use your phone's camera as a wireless webcam in your PC"
 url="https://iriun.com/"
@@ -21,7 +21,7 @@ source=(
   "LICENSE.iriun.txt" # extracted from mac archive
 )
 sha256sums=(
-  '074aef02ff27e5efc83e707a614c0c3bff4c811b9c6a7fd4f2bae4ca269a844b'
+  'b25a53c9eb53f7ac1a47b5ef7174990dd97f66269c7388603395c2c57f160b84'
   'eb2ba875d0b419ab7d6327a933d619d1b9eed51f89d49e55ed789bf8f37f75be'
 )
 
