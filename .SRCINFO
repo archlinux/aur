@@ -1,0 +1,19 @@
+pkgbase = tl866-wine-git
+	pkgdesc = Wine USB wrapper for TL866xx Xgpro software (run official Windows software on Linux)
+	pkgver = r272.2ee9b87
+	pkgrel = 1
+	url = https://github.com/radiomanV/TL866
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = mingw-w64-gcc
+	makedepends = make
+	depends = wine
+	depends = libusb
+	provides = tl866-wine
+	conflicts = tl866-wine
+	options = !debug
+	source = git+https://github.com/radiomanV/TL866.git
+	sha256sums = SKIP
+
+pkgname = tl866-wine-git
