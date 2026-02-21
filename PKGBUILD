@@ -1,7 +1,4 @@
 # Maintainer: MojArch
-# Update:
-# 1) Bump pkgver
-# 2) Run `updpkgsums`
 pkgname=opera-gx-stable
 pkgver=127.0.5778.75
 pkgrel=1
