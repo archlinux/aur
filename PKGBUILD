@@ -218,6 +218,15 @@ package() {
     rm -f "${pkgdir}"/usr/include/tinyxml2.h
     rm -f "${pkgdir}"/usr/lib/cmake/tinyxml2/*
 
+    rm -rf "${pkgdir}"/usr/share/man
+    rm -f "${pkgdir}"/usr/lib/libarchive.a
+    rm -f "${pkgdir}"/usr/lib/libTinyEXIF.a
+    rm -f "${pkgdir}"/usr/lib/libtinyxml2.a
+    rm -f "${pkgdir}"/usr/include/archive.h
+    rm -f "${pkgdir}"/usr/include/archive_entry.h
+    rm -f "${pkgdir}"/usr/include/TinyEXIF.h
+    rm -f "${pkgdir}"/usr/bin/bsdunzip
+
     find "${pkgdir}" -type d -empty -delete
 
     cd "${srcdir}/${_pkgname}"
