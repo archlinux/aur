@@ -1,6 +1,6 @@
 pkgbase = sql-tap-bin
 	pkgdesc = Watch SQL traffic in real-time with a TUI
-	pkgver = 0.2.0
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/mickamy/sql-tap
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = sql-tap-bin
 	depends = glibc
 	provides = sql-tap
 	conflicts = sql-tap
-	source_x86_64 = sql-tap-amd64-0.2.0.tar.gz::https://github.com/mickamy/sql-tap/releases/download/v0.2.0/sql-tap_0.2.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 83f06293af00e47049fd32c5ca9331911b2cee9de9460977af93c90cd81906e9
-	source_aarch64 = sql-tap-arm64-0.2.0.tar.gz::https://github.com/mickamy/sql-tap/releases/download/v0.2.0/sql-tap_0.2.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 65f062afc3c130a82be59b65b3e2f617ba4dff98cb089b03eeef3d0e4ea0e991
+	source_x86_64 = sql-tap-amd64-0.2.3.tar.gz::https://github.com/mickamy/sql-tap/releases/download/v0.2.3/sql-tap_0.2.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = 9f7610600ebfa79183805cef0f8bd621366ab7447722ceb33ffd7694bae57ef0
+	source_aarch64 = sql-tap-arm64-0.2.3.tar.gz::https://github.com/mickamy/sql-tap/releases/download/v0.2.3/sql-tap_0.2.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = 902b848b96d8ac9af60ef89ecb8418f79ec92b72c8b85907d9ef803f53e72d8e
 
 pkgname = sql-tap-bin
