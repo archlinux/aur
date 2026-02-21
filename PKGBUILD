@@ -2,12 +2,12 @@
 
 pkgbase=gpgme-git
 pkgname=('gpgme-git' 'python-gpgme-git' 'qgpgme-qt5-git' 'qgpgme-qt6-git')
-pkgver=1.23.2.r27.g47f3d92b
+pkgver=2.0.1.r27.g021927f2
 pkgrel=1
 pkgdesc="GnuPG Made Easy"
 arch=('i686' 'x86_64')
 url="https://www.gnupg.org/related_software/gpgme/"
-license=('LGPL')
+license=('GPL-2.0-or-later' 'LGPL-2.1-or-later')
 makedepends=('git' 'gnupg' 'python' 'python-build' 'python-installer' 'python-setuptools'
              'python-wheel' 'qt5-base' 'qt6-base' 'swig')
 source=("git+https://dev.gnupg.org/source/gpgme.git")
@@ -67,7 +67,7 @@ check() {
 }
 
 package_gpgme-git() {
-  depends=('gcc-libs' 'gnupg' 'libgpg-error')
+  depends=('glibc' 'libgcc' 'libstd++' 'gnupg' 'libgpg-error')
   provides=("gpgme=$pkgver" 'libgpgme.so' 'libgpgmepp.so')
   conflicts=('gpgme')
 
