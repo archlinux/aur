@@ -1,0 +1,18 @@
+pkgbase = tmuzika
+	pkgdesc = Terminal music player with ncurses UI and GStreamer backend
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/ivanjeka/tmuzika.git
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = pkgconf
+	depends = gstreamer
+	depends = glib2
+	depends = ncurses
+	provides = tmuzika
+	conflicts = tmuzika
+	source = tmuzika-1.0.tar.gz::https://github.com/ivanjeka/tmuzika/archive/refs/tags/v1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = tmuzika
