@@ -1,13 +1,19 @@
 pkgname=nmsurf
 pkgver=1.0.1
 pkgrel=1
-pkgdesc="Fast NetworkManager frontend using rofi or wofi"
+pkgdesc="Fast NetworkManager frontend supports rofi, wofi, walker and fuzzel"
 arch=('x86_64')
 url="https://github.com/aayushkdev/nmsurf"
 license=('MIT')
 
-depends=('networkmanager' 'wofi')
+depends=('networkmanager')
 
+optdepends=(
+  'wofi'
+  'rofi'
+  'walker'
+  'fuzzel'
+)
 
 provides=('nmsurf')
 conflicts=('nmsurf')
