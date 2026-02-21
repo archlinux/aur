@@ -3,7 +3,7 @@
 
 pkgname=surrealist-bin
 pkgver=3.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Surrealist is the ultimate way to visually manage your SurrealDB database"
 arch=("x86_64")
 url="https://github.com/surrealdb/surrealist"
@@ -11,7 +11,8 @@ license=("MIT")
 groups=()
 depends=("webkit2gtk-4.1" "gtk3")
 provides=("surrealist")
-conflicts=("surrealist")
+conflicts=("surrealist" "surrealist-cef")
+optdepends=('surrealdb: non-sandboxed SurrealDB instance')
 _debname="Surrealist_${pkgver//_/-}_amd64.deb"
 source=("https://github.com/surrealdb/surrealist/releases/download/surrealist-v${pkgver//_/-}/${_debname}")
 sha256sums=('ff0548b1b79cbc20e3c7d935d1c7674e9886c47ffe87606429bd0638e7b7ea90')
