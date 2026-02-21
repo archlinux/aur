@@ -1,6 +1,6 @@
 pkgbase = plannotator-bin
 	pkgdesc = Interactive review and annotation tool for AI coding agent plans with visual interface
-	pkgver = 0.8.2
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://github.com/backnotprop/plannotator
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = plannotator-bin
 	conflicts = plannotator
 	conflicts = plannotator-git
 	options = !strip
-	source_x86_64 = plannotator-linux-x64-v0.8.2::https://github.com/backnotprop/plannotator/releases/download/v0.8.2/plannotator-linux-x64
-	sha256sums_x86_64 = 8dcc5dcef98cbc3e66f38d801263b12a1735c335615c4cd6bddf76d7cf29fb3a
+	source_x86_64 = plannotator-linux-x64-v0.8.3::https://github.com/backnotprop/plannotator/releases/download/v0.8.3/plannotator-linux-x64
+	sha256sums_x86_64 = 44baf6b66ce254e75b7d5517559038708448845bf2a16ebcfbe4dadf5b27e2e5
 
 pkgname = plannotator-bin
