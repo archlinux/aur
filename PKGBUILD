@@ -2,7 +2,7 @@
 # Original Maintainer: Leonard Janis König <ljrk@ljrk.org>
 
 pkgname='otf-apple-sf-compact-fixed'
-pkgver=17.0d12e1
+pkgver=21.1d1e1
 pkgrel=1
 pkgdesc='Apples San Francisco typeface family. watchOS system font.'
 arch=('any')
@@ -24,6 +24,7 @@ prepare() {
     # These are dmg images, xar and cpio archives.  Just use 7z.
     7z x -y "$_file"
     7z x -y 'SFCompactFonts/SF Compact Fonts.pkg'
+    7z x -y 'SFCompactFonts.pkg/Payload'
     7z x -y 'Payload~'
 
 
