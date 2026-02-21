@@ -25,6 +25,4 @@ package() {
 
   install -Dm755 target/release/ayaan "$pkgdir/usr/bin/ayaan"
   install -Dm755 target/release/aspkg "$pkgdir/usr/bin/aspkg"
-
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
