@@ -17,8 +17,8 @@ depends=(
 )
 makedepends=('git')
 source=(
-    "${pkgname}::git+https://github.com/mashb1t/susops-linux.git"
-    "susops-cli::git+https://github.com/mashb1t/susops-cli.git"
+    "build/${pkgname}::git+https://github.com/mashb1t/susops-linux.git"
+    "build/susops-cli::git+https://github.com/mashb1t/susops-cli.git"
 )
 sha256sums=('SKIP' 'SKIP')
 
@@ -33,7 +33,7 @@ package() {
     cd "${pkgname}"
 
     # App files
-    install -Dm644 susops_tray.py "$pkgdir/usr/lib/susops/susops_tray.py"
+    install -Dm644 susops.py "$pkgdir/usr/lib/susops/susops.py"
     install -Dm644 version.py     "$pkgdir/usr/lib/susops/version.py"
     install -Dm755 susops-cli/susops.sh "$pkgdir/usr/lib/susops/susops.sh"
     cp -r icons "$pkgdir/usr/lib/susops/icons"
@@ -45,18 +45,18 @@ package() {
         "$pkgdir/usr/lib/susops/icon.png"
 
     # Desktop entry
-    install -Dm644 susops-tray.desktop \
-        "$pkgdir/usr/share/applications/susops-tray.desktop"
+    install -Dm644 susops.desktop \
+        "$pkgdir/usr/share/applications/susops.desktop"
 
     # License
     install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # Launcher
     install -dm755 "$pkgdir/usr/bin"
-    cat > "$pkgdir/usr/bin/susops-tray" << 'EOF'
+    cat > "$pkgdir/usr/bin/susops" << 'EOF'
 #!/bin/bash
 export PYTHONPATH="/usr/lib/susops${PYTHONPATH:+:$PYTHONPATH}"
-exec /usr/bin/python3 /usr/lib/susops/susops_tray.py "$@"
+exec /usr/bin/python3 /usr/lib/susops/susops.py "$@"
 EOF
-    chmod 755 "$pkgdir/usr/bin/susops-tray"
+    chmod 755 "$pkgdir/usr/bin/susops"
 }
