@@ -1,20 +1,21 @@
 pkgbase = perl-moosex-nonmoose
 	pkgdesc = easy subclassing of non-Moose classes
-	pkgver = 0.26
+	pkgver = 0.27
 	pkgrel = 1
-	url = http://search.mcpan.org/dist/MooseX-NonMoose
+	url = https://metacpan.org/dist/MooseX-NonMoose
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-base
+	checkdepends = perl-moose
 	checkdepends = perl-test-fatal
-	depends = perl-list-moreutils
+	makedepends = perl-extutils-makemaker
 	depends = perl-module-runtime
-	depends = perl-moose
+	depends = perl-moose>=2.0
+	depends = perl-scalar-list-utils>=1.33
 	depends = perl-try-tiny
+	depends = perl>=5.8.0
 	options = !emptydirs
-	source = http://search.mcpan.org/CPAN/authors/id/D/DO/DOY/MooseX-NonMoose-0.26.tar.gz
-	md5sums = 8a226451ba312c21a27376741c302f47
-	sha512sums = 3f3bb494439af198a49e343df7c2e6ceae5a227c143cddd36e6f8f9f85c30108117ce2f12d9cea89713820790081b363a57f9798e660994568db11c9fb224612
+	source = http://cpan.metacpan.org/authors/id/P/PL/PLICEASE/MooseX-NonMoose-0.27.tar.gz
+	sha256sums = 6fc7893b47a7db812a3c1fe8bb90d9c235143c6937251e570e27bdbd0d844ece
 
 pkgname = perl-moosex-nonmoose
-
