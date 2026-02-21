@@ -12,7 +12,9 @@ _pack=video
 pkgname=octave-$_pack-tmp-patched
 pkgver=2.1.3
 pkgrel=1
-pkgdesc="A wrapper for ffmpeg's libavformat and libavcodec, implementing addframe, avifile, aviinfo and aviread."
+pkgdesc="A temporary patch package that fixes bugs caused by incompatibilities 
+with the current ffmpeg version in arch repos. It will be deleted after 
+upstream fixes this bug. Original package:  https://aur.archlinux.org/packages/octave-video"
 arch=(any)
 url="https://gnu-octave.github.io/packages/$_pack/"
 license=('GPL-3.0-or-later AND BSD-3-Clause')
