@@ -4,7 +4,7 @@
 
 pkgname=parca-agent
 pkgver=0.45.1
-pkgrel=1
+pkgrel=2
 
 pkgdesc='eBPF based always-on CPU/GPU profiler auto-discovering targets in Kubernetes and systemd, zero code changes or restarts needed!'
 url='https://parca.dev'
@@ -23,7 +23,7 @@ source=("parca-agent-v$pkgver.tar.gz::https://github.com/parca-dev/parca-agent/a
         parca-agent.yaml)
 
 sha256sums=('75e2254a70c9dcf3c85efddaa42c92e03cfb72a4b3f9e5e35caa4b728eba9d6e'
-            '996879fec015a4c06df2e466d009baf4e060dddb6cdec9481d6cb8d8be7c0db1'
+            'eb1de9a61d0df6b9ed7e9136e4a69a1b6a675c65a0cbd3f430cce2a55ddf37cb'
             'e5ebc9cee30544d4b955e87c3081587ddead973b0d5770dfb83307473a4e9c17'
             '14f002554d728223c0b72057eeba8fed25bd4701783a9e498fe9d42cfe921f84'
             'e4544cfb2723fea484946d3a07b3b2ac1292468adf887fe67bacab9c98e8e275'

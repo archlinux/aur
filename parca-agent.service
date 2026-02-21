@@ -24,7 +24,6 @@ ProtectKernelModules=true
 ProtectKernelTunables=no
 LockPersonality=true
 RestrictRealtime=yes
-RestrictNamespaces=yes
 MemoryDenyWriteExecute=yes
 # For eBPF, CAP_DAC_READ_SEARCH for reading sysfs files owned by root
 LimitMEMLOCK=infinity
