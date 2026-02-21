@@ -1,13 +1,13 @@
 pkgbase = seatools
 	pkgdesc = Seagate graphical user interface (GUI) tool for managing hard drives and SSDs on a system.
-	pkgver = 5.2.1
+	pkgver = 5.2.5
 	pkgrel = 1
 	url = http://www.seagate.com/support/downloads/seatools/
 	arch = x86_64
 	license = custom:Seagate EULA
 	makedepends = fakechroot
 	depends = gcc-libs
-	source = SeaTools-5.2.1-1.zip::https://www.seagate.com/content/dam/seagate/migrated-assets/www-content/support-content/downloads/seatools/_shared/downloads/SeaToolsLinuxX64Installer.zip
-	sha256sums = de37ea295a2ed30a2856866750a155e45dbea72edc6bd1aa25e8b62356d0648f
+	source = SeaTools-5.2.5-1.zip::https://www.seagate.com/content/dam/seagate/migrated-assets/www-content/support-content/downloads/seatools/_shared/downloads/SeaToolsLinuxX64Installer.zip
+	sha256sums = c4823485939a221d690a75430fdae22ca1796a451235c1c1b686019aa7f2325c
 
 pkgname = seatools
