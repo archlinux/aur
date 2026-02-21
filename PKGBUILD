@@ -2,7 +2,7 @@
 pkgname=mewline
 conflicts=('mewline-git')
 provides=('mewline-git')
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="😺 Elegant and extensible status bar for the meowrch distribution (stable)"
 arch=('any')
@@ -28,7 +28,7 @@ makedepends=(
 )
 options=('!debug')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('92e031f088037c2964ed94d545109c692199812d713a55153146ad54ab20389c')
+sha256sums=('16765e97e2a43153ea9e115bf46c7a14c02ecdf0d5b5492f25aa07a3a5ce9707')
 
 package() {
   cd "$srcdir/mewline-$pkgver"
