@@ -53,6 +53,7 @@ provides=('comm-tac-writer')
 replaces=('comm-tac-writer')
 pkgver=1.3.1.4
 pkgrel=1
+epoch=1
 arch=('any')
 license=('MIT')
 url="https://github.com/narayanls/${pkgname}"
