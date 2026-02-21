@@ -1,8 +1,8 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 pkgname=sf-down-git
-pkgver=r13.b938130
-pkgrel=2
+pkgver=r15.bfdab0c
+pkgrel=1
 pkgdesc="Allows you to download all of a SourceForge project's files"
 arch=(any)
 license=(unknown)
@@ -15,13 +15,13 @@ source=("${pkgname}::git+https://github.com/SpiritQuaddicted/sourceforge-file-do
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}"
 
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}"
 
-    install -Dm755 sourceforge-file-downloader.sh "${pkgdir}/usr/bin/sf-down"
+  install -Dm755 sourceforge-file-downloader.sh "${pkgdir}/usr/bin/sf-down"
 }
