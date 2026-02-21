@@ -1,3 +1,4 @@
+# Maintainer: schlndh <schlindenbuch.h@seznam.cz>
 _pkgname=plasma-wayland-protocols
 pkgname=$_pkgname-povd
 pkgver=1.20.0
