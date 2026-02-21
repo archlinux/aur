@@ -1,43 +1,41 @@
-# Maintainer: irmluity <45vw4yz8g@mozmail.com>
+# Maintainer: Javad <blackrouter@live.com>
 
 _pkgname=hiddify
 pkgname=${_pkgname}-bin
-pkgver=0.10.7.dev
+pkgver=4.0.4
 pkgrel=1
-pkgdesc="A multi-platform client based on Sing-box that serves as a universal proxy tool-chain"
-arch=(x86_64)
-url='https://github.com/hiddify/hiddify-next'
-license=('CCPL')
-depends=('hicolor-icon-theme' 'zlib' 'glibc' 'fuse2')
-optdepends=(
-    'gnome-shell-extension-appindicator: for system tray icon if you are using Gnome'
-)
-provides=("hiddify")
-options=(!strip)
-source=(
-    "https://github.com/hiddify/hiddify-next/releases/download/v${pkgver}/hiddify-linux-x64.zip"
-)
-sha256sums=(
-    "6f37942d72d8c52ee98062f2dcd3458e82b094d3044ba3cca0bbbddc07adbe28"
-)
-_install_path="/opt/$_pkgname"
+pkgdesc="Multi-platform auto-proxy client, supporting Sing-box, X-ray, TUIC, Hysteria, Reality, Trojan, SSH etc. It’s an open-source, secure and ad-free"
+arch=('x86_64')
+url='https://github.com/hiddify/hiddify-app'
+license=('GPL3')
+
+depends=('hicolor-icon-theme' 'libayatana-appindicator' 'at-spi2-core' 'fontconfig' 'pango' 'gtk3' 'glibc' 'gcc-libs' 'ayatana-ido' 'gdk-pixbuf2' 'libayatana-indicator' 'libdbusmenu-glib' 'cairo' 'harfbuzz' 'glib2' 'libepoxy')
+optdepends=('gnome-shell-extension-appindicator: for system tray icon if you are using Gnome')
+
+provides=('hiddify')
+conflicts=("${_pkgname}" "${_pkgname}-git" "${_pkgname}-appimage" "hiddify-next" "hiddify-next-bin")
+source=("${_pkgname}-${pkgver}.deb::https://github.com/hiddify/hiddify-app/releases/download/v${pkgver}/Hiddify-Debian-x64.deb")
+sha256sums=('42cf176c4cf48a27dd85138c5c892c324c707d56f0e721d5dae5dbccd659620a')
+_install_path="/opt/${_pkgname}"
 
 prepare() {
     cd "${srcdir}"
-    chmod a+x "hiddify-linux-x64.AppImage"
-    ./hiddify-linux-x64.AppImage --appimage-extract > /dev/null
-    sed -i 's/Exec=/Exec=env /' "${srcdir}/squashfs-root/${_pkgname}.desktop"
+    tar -xf data.tar.*
+    sed -i '/Version/d' "${srcdir}/usr/share/applications/hiddify.desktop"
 }
 
+
+
 package() {
-    install -Dm755 "${srcdir}/hiddify-linux-x64.AppImage" "${pkgdir}/${_install_path}/${_pkgname}.AppImage"
-    
-    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
-    
-    for _icons in 128x128 256x256;do
-        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/hiddify.png" "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/hiddify.png"
-    done
-    
+    cd "${srcdir}/usr/share/hiddify"
+    find . -type f -exec install -Dm 755 {} "$pkgdir/$_install_path"/{} \;
+
+    cd "${srcdir}/usr/share/icons"
+    find . -type f -exec install -Dm 644 {} "$pkgdir/usr/share/icons"/{} \;
+
+    cd "${srcdir}/usr/share/applications"
+    find . -type f -exec install -Dm 644 {} "$pkgdir/usr/share/applications"/{} \;
+
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/${_pkgname}/${_pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
+    ln -s "/opt/${_pkgname}/hiddify" "${pkgdir}/usr/bin/hiddify"
 }
