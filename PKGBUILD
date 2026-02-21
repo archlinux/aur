@@ -1,6 +1,6 @@
 # Maintainer: Jan Martin Reckel <jm.reckel@t-online.de>
 pkgname=cantara
-pkgver=2.6.0
+pkgver=2.7.0
 pkgrel=1
 epoch=
 pkgdesc="Song Presentation Software"
@@ -13,30 +13,29 @@ conflicts=('cantara-bin')
 makedepends=('lazarus' 'qt6pas')
 provides=("cantara")
 source=("https://github.com/reckel-jm/cantara/archive/refs/tags/v$pkgver.zip")
-md5sums=('413bf8eda77545602f3f24272131fc92')
+md5sums=('741bd861986bc540a1acc2a69abcc5e7')
 
 prepare() {
     cd "$pkgname-$pkgver"
 }
 
 build() {
-	cd "$pkgname-$pkgver"/src/
-	#make
-	lazbuild -B --bm="Release" Cantara.lpi --ws=qt6
+	cd "$pkgname-$pkgver"
+	make
 }
 
 package() {
 	mkdir -p $pkgdir/usr/bin/
 	cd "$pkgname-$pkgver"
-	install src/cantara $pkgdir/usr/bin/cantara
-	mkdir -p $pkgdir/usr/share/locale/de/LC_MESSAGES
-	install -D src/languages/de/cantara.mo $pkgdir/usr/share/locale/de/LC_MESSAGES/cantara.mo
-	install -D src/languages/zh/cantara.mo $pkgdir/usr/share/locale/zh/LC_MESSAGES/cantara.mo
-	install -D src/languages/it/cantara.mo $pkgdir/usr/share/locale/it/LC_MESSAGES/cantara.mo
-	install -D src/languages/es/cantara.mo $pkgdir/usr/share/locale/es/LC_MESSAGES/cantara.mo
-	install -D src/languages/nl/cantara.mo $pkgdir/usr/share/locale/nl/LC_MESSAGES/cantara.mo
+	install cantara $pkgdir/usr/bin/cantara
+	# Generic installation for all .mo files
+	# This looks into src/languages/[lang]/cantara.mo and moves it to the correct system path
+		for _mo in src/languages/*/cantara.mo; do
+		_lang=$(basename "$(dirname "$_mo")")
+		install -Dm644 "$_mo" "$pkgdir/usr/share/locale/$_lang/LC_MESSAGES/cantara.mo"
+	done
 	install -D app.cantara.Cantara.desktop $pkgdir/usr/share/applications/cantara.desktop
-    install -D app.cantara.Cantara.png $pkgdir/usr/share/icons/app.cantara.Cantara.png
-    mkdir -p $pkgdir/usr/share/cantara/
+        install -D app.cantara.Cantara.png $pkgdir/usr/share/icons/app.cantara.Cantara.png
+        mkdir -p $pkgdir/usr/share/cantara/
 	cp -r src/backgrounds $pkgdir/usr/share/cantara/
 }
