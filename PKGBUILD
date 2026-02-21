@@ -76,7 +76,7 @@ sha256sums=(
   '06b767d8592b98b6cff15231319d72dc98cfeb6ee29be5cfcdacc1a6220737a9'  # Binary software package.
   'e51108aa709bf6c8452ba45ddad6e899e7f0067127e087bf865b27e56258d66c'  # MeshCore_Quick_Start_Guide.pdf
   '3c212412360ca59e73a11af24b85db2d5414f2d5851f1a60267fca701077c921'  # meshcore.desktop
-  '7a02eac2c7a9f95913f0bb8af4dc5f92ced40f612d6ff408a194b54a2fa748db'  # license-info.md
+  '138cfaf059ef5c3fb860d3132291570179bf74cb77e1aaa7927fa766a93ad957'  # license-info.md
 )
 
 build() {
