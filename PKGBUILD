@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="High resolution music player for Linux"
 arch=(x86_64)
 url="https://github.com/HighResMusicPlayer/$_pkgname"
+conflicts=(hrmp)
 license=('GPLv3')
 depends=(libsndfile opus faad2 gtk4 ncurses python-docutils)
 makedepends=(clang cmake)
