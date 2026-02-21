@@ -1,7 +1,7 @@
 # Maintainer: odnmalau <odnmalau@gmail.com>
 
 pkgname=navicat17-premium-en
-pkgver=17.3.6
+pkgver=17.3.7
 pkgrel=1
 pkgdesc="Manage and Develop Your Databases"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ source_x86_64=("navicat17-premium-en-x86_64-${pkgver}.AppImage::https://dn.navic
 source_aarch64=("navicat17-premium-en-aarch64-${pkgver}.AppImage::https://dn.navicat.com/download/navicat17-premium-en-aarch64.AppImage")
 
 sha256sums=('7b0dbf7ce350724266cc4d4648abd0092a765b013f349aa98fd61d32fe8d8d3e')
-sha256sums_x86_64=('d47e584f378443e252236fea44f72e08691fbc8e7c82e7e3324b3cf4ca84381e')
-sha256sums_aarch64=('3cbecbd051375e3143e65ffbd82bb24defb2acdfc93b2f6abebc4d93407c14a7')
+sha256sums_x86_64=('6c822a0f085a8c4efe4bf331ee5527dc50b566f45b9399b0c58c2c9842c19517')
+sha256sums_aarch64=('d96392c1ece6feeb4768a524b6bb1601fa17cc254ccfe95f6b5c32c7436d5ccb')
 
 package() {
     _root_na_dir=opt/$pkgname
