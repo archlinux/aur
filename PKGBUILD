@@ -15,10 +15,10 @@ optdepends=(
 )
 source=(
   "zig-waybar-contrib.zip::https://codeberg.org/erffy/zig-waybar-contrib/releases/download/26.02.21/zig-waybar-contrib-release-26.02.21.zip"
-  "config.waybar.jsonc::CONFIG_https://codeberg.org/erffy/zig-waybar-contrib/releases/download/26.02.21/zig-waybar-contrib-release-26.02.21.zip"
-  "LICENSE::LICENSE_https://codeberg.org/erffy/zig-waybar-contrib/releases/download/26.02.21/zig-waybar-contrib-release-26.02.21.zip"
+  "config.waybar.jsonc::https://codeberg.org/erffy/zig-waybar-contrib/raw/tag/26.02.21/config.waybar.jsonc"
+  "LICENSE::https://codeberg.org/erffy/zig-waybar-contrib/raw/tag/26.02.21/LICENSE"
 )
-md5sums=('c6902cdc289035892c6b2cb83290142a'
+md5sums=('4fff824e0814a757120e80ee0a02171e'
          '93ed2d07501c3e0ed7c0132d0265548b'
          'f1c10f726262b56101b2112a4ec181d2')
 
