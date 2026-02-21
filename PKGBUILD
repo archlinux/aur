@@ -2,17 +2,20 @@
 
 _name=Patchance
 pkgname="${_name,,}"
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='A modern graphical patchbay for JACK'
 arch=(any)
 url='https://github.com/Houston4444/Patchance'
 license=(GPL-2.0-only)
-depends=(hicolor-icon-theme python-pyqt6 python-qtpy python-jack-client)
+depends=(hicolor-icon-theme python-pyqt6 python-qtpy python-jack-client python-pyliblo qt6-svg)
 makedepends=(qt6-tools)
+optdepends=(
+  'python-pyalsa: ALSA ports connection support'
+)
 groups=(pro-audio)
 source=("https://github.com/Houston4444/Patchance/releases/download/v$pkgver/$_name-$pkgver-source.tar.gz")
-sha256sums=('2df4604f5b87ebd78fbea3708465114b623173fb0b78f6f7a9c0e36418c4cdf3')
+sha256sums=('bbfd3c6c3509fea6da930372fe557681a8cf869714bc3bca2bf4f9606481a9c0')
 
 prepare() {
   cd $_name-$pkgver
