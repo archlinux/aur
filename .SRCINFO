@@ -14,6 +14,6 @@ pkgbase = atomic-upgrade
 	optdepends = lvm2: LVM support
 	backup = etc/atomic.conf
 	source = atomic-upgrade-0.0.6.tar.gz::https://gitlab.com/fkzys/atomic-upgrade/-/archive/v0.0.6/atomic-upgrade-v0.0.6.tar.gz
-	sha256sums = 6b805430e7c963d0b0f94160569966525e1cac1ad77bdd1540c82145ba7ac12a
+	sha256sums = e5a616577a0077a138faf5f33aa7b2d7e2a7efc493daab4116b25154ecd46213
 
 pkgname = atomic-upgrade
