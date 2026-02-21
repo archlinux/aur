@@ -2,7 +2,7 @@
 
 pkgname=python-simp-sexp
 _name=${pkgname#python-}
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 epoch=
 pkgdesc="A simple S-expression parser"
@@ -27,7 +27,7 @@ optdepends=()
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('9d0c57bd5f8400b9fe558ea36b7518067ddbe727a106b1498c7fa104b77c1ca1')
+sha256sums=('fe85fad291079ab5bca181c228282e25bc0df70741c0dee593a4216b87980b5a')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
