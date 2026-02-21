@@ -3,8 +3,8 @@
 
 _name=RaySession
 pkgname=${_name,,}
-pkgver=0.17.2
-pkgrel=2
+pkgver=0.17.3
+pkgrel=1
 pkgdesc="Session manager for audio programs using the Non Session Manager (NSM) API"
 arch=(any)
 url='https://github.com/Houston4444/RaySession'
@@ -19,7 +19,7 @@ optdepends=(
 groups=(pro-audio)
 source=("https://github.com/Houston4444/RaySession/releases/download/v$pkgver/$_name-$pkgver-source.tar.gz"
         'raysession-makefile-destdir.patch')
-sha256sums=('e94d18ebce455418544fa7da2d075f0de372762e9d21c9f6ccf49f62adcd0daa'
+sha256sums=('846a6a9d3730182e14cd95e6846a8b70d82af45d24e3591308f408e092e85545'
             'd551c1660bff9cbd1a45e6bdbfc5b81894cd118b78534340e5ec0bb274e527fa')
 
 prepare() {
@@ -35,11 +35,9 @@ build() {
 package() {
   cd $_name-$pkgver
   make -j 1 PREFIX=/usr DESTDIR="$pkgdir" install
-  # remove broken symlink
-  rm -f "$pkgdir"/usr/share/raysession/src/bin/ray-jackpatch-mon
   # client templates installed @ /etc/xdg/raysession & /usr/share/raysession
   # we need only one
-  rm -rf "$pkgdir"/usr/share/raysession/client_templates
-  install -Dm644 CHANGELOG README.md TODO TRANSLATORS plans.md \
+  rm -vrf "$pkgdir"/usr/share/raysession/client_templates
+  install -vDm644 CHANGELOG README.md TODO TRANSLATORS plans.md \
     -t "$pkgdir"/usr/share/doc/$pkgname
 }
