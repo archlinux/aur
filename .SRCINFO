@@ -1,11 +1,11 @@
 pkgbase = adguardhome-git
 	pkgdesc = Network-wide ads and trackers blocking DNS server
-	pkgver = 0.108.0.b.78.r3.gc4b4bd8
+	pkgver = 0.108.0.b.82.r8.g4c1dcfe
 	pkgrel = 1
 	url = https://github.com/AdguardTeam/AdGuardHome
 	arch = armv7h
 	arch = aarch64
-	arch = i686
+	arch = pentium4
 	arch = riscv64
 	arch = x86_64
 	license = GPL-3.0-only
@@ -16,9 +16,11 @@ pkgbase = adguardhome-git
 	depends = glibc
 	provides = adguardhome
 	conflicts = adguardhome
-	source = AdGuardHome::git+https://github.com/AdguardTeam/AdGuardHome.git
+	source = git+https://github.com/AdguardTeam/AdGuardHome.git
 	source = adguardhome.service
+	source = adguardhome.sysusers
 	b2sums = SKIP
-	b2sums = 161152f91e09fe491db631eb6ed603c0c975453b682467945fdade6091bf427ec932230f3a10e40e2f054dc01567930ecc27343c04882fb0e736b4f6becc96da
+	b2sums = b668bf969fddf94b28a5ece22f69dd5879b01ccac3ddf18dfebbcec94fefe6bfaeb43f74d11b575406a686a86587cab72ed9693d6f85f8f420ab16cafc975ab9
+	b2sums = 39c0caacf9261d1be4668086701b4b207ec63f40f575dd322bdb37b1e6796ab89d7bbc56806867ddf11a0c71bcac5f62629518a3065cbcb2eea340ab8272abb4
 
 pkgname = adguardhome-git

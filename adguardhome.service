@@ -3,8 +3,9 @@ Description=AdGuard Home: Network-level blocker
 After=syslog.target network-online.target
 
 [Service]
-DynamicUser=true
+User=adguardhome
 StateDirectory=adguardhome
+StateDirectoryMode=0750
 WorkingDirectory=/var/lib/adguardhome
 AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_NET_RAW
 CapabilityBoundingSet=CAP_NET_BIND_SERVICE CAP_NET_RAW
