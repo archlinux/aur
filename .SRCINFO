@@ -1,7 +1,7 @@
 pkgbase = securecopy
 	pkgdesc = GNU coreutils cp/mv with CRC64 xattr checksum verification, plus crcsum
 	pkgver = 9.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hansij66/securecopy
 	install = securecopy.install
 	arch = x86_64
