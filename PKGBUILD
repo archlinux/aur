@@ -68,6 +68,18 @@ prepare() {
     # coreutils compiles with -Isrc, so src/attr/xattr.h is found for #include <attr/xattr.h>
     mkdir -p "${cu}/src/attr"
     echo '#include <sys/xattr.h>' > "${cu}/src/attr/xattr.h"
+
+    # ── Pre-create stub man pages for crccp/crcmv/crcsum ─────────────────────
+    # help2man/dummy-man tries to run the binary to generate the man page, but
+    # the binary isn't built yet at that point. dummy-man will copy a pre-existing
+    # .1 file instead of running the binary if one is present.
+    for prog in crccp crcmv crcsum; do
+        printf '.TH "%s" 1 "GNU coreutils" "User Commands"\n' "${prog^^}" > "${cu}/man/${prog}.1"
+        printf '.SH NAME\n%s \\- a GNU coreutils program with CRC64 checksum verification\n' "${prog}" >> "${cu}/man/${prog}.1"
+        printf '.SH SYNOPSIS\n.B %s\n[\\fIOPTION\\fR]... \\fISOURCE\\fR... \\fIDEST\\fR\n' "${prog}" >> "${cu}/man/${prog}.1"
+        printf '.SH DESCRIPTION\nPart of the securecopy package. Run \\fB%s --help\\fR for usage information.\n' "${prog}" >> "${cu}/man/${prog}.1"
+        printf '.SH SEE ALSO\nFull documentation: <https://github.com/hansij66/securecopy>\n' >> "${cu}/man/${prog}.1"
+    done
 }
 
 build() {
