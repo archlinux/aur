@@ -1,5 +1,5 @@
 pkgname=bfree
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A better free, human by default"
 arch=('x86_64')
@@ -7,8 +7,8 @@ url="https://github.com/glexposito/bfree"
 license=('MIT')
 depends=('glibc')
 makedepends=('cargo')
-source=("https://github.com/glexposito/bfree/archive/refs/tags/v0.1.1.tar.gz")
-sha256sums=('28d532d855363179f92314aa0fbda1f2e1784f49058597efb940b483f562c3bb')
+source=("https://github.com/glexposito/bfree/archive/refs/tags/v0.1.2.tar.gz")
+sha256sums=('d5cb261ea7de2c8e32c6c3c707802a046f8b416a676504939e427faf0031d843')
 
 build() {
   cd "${srcdir}/bfree-${pkgver}"
