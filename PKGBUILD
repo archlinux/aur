@@ -3,7 +3,7 @@ _sourceName="HyperHeadset"
 
 pkgname="hyperheadset-git"
 pkgver=v1.4.2.r3.g029a579
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI and tray application for monitoring and managing HyperX headsets."
 arch=('x86_64')
 url="https://github.com/LennardKittner/HyperHeadset"
@@ -72,6 +72,8 @@ package() {
       -exec install -Dm0755 -t "${pkgdir}/usr/bin/" {} +
 
   install -Dm644 99-HyperHeadset.rules "${pkgdir}/usr/lib/udev/rules.d/99-HyperHeadset.rules"
+
+  install -Dm644 hyper-headset.desktop "${pkgdir}/usr/share/applications/hyper-headset.desktop"
 
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
