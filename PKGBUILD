@@ -1,6 +1,7 @@
-# Maintainer: Leonard Janis König <ljrk@ljrk.org>
+# Maintainer: Potato_2565 <p3220928@gmail.com>
+# Original Maintainer: Leonard Janis König <ljrk@ljrk.org>
 
-pkgname='otf-apple-sf-compact'
+pkgname='otf-apple-sf-compact-fixed'
 pkgver=17.0d12e1
 pkgrel=1
 pkgdesc='Apples San Francisco typeface family. watchOS system font.'
@@ -12,9 +13,10 @@ _file=${pkgver}-${_dlfile}
 source=("$_file::https://devimages-cdn.apple.com/design/resources/download/$_dlfile"
         'license.awk'
         'version.awk')
-sha256sums=('487647302a6a96b2c7ff77046c8727660e250d0625efae5b54edefd68d43ea18'
+sha256sums=('4567aae0616dd35afc34bad6bef547e72fd1e65845305a33973064518d1d5348'
             'cd45a6edaa3829837b090a5a18d3c906816931e7a779b33b6ada23b49b5a5889'
             '55a4e9e108e50b07481044fad445636e502f2d95d7e8964e1d4cda3e9618b198')
+conflicts=('otf-apple-sf-compact')
 makedepends=('texlive-bin' 'p7zip')
 
 prepare() {
@@ -23,6 +25,7 @@ prepare() {
     7z x -y "$_file"
     7z x -y 'SFCompactFonts/SF Compact Fonts.pkg'
     7z x -y 'Payload~'
+
 
     otfinfo -i Library/Fonts/SF-Compact-Display-Regular.otf | \
         awk -f license.awk > LICENSE
