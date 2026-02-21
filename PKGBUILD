@@ -61,7 +61,7 @@ pkgver() {
 
 prepare() {
   cd ${pkgname}
-  rm -rf caps profiling
+  rm -rf profiling
 }
 
 build() {
@@ -78,7 +78,6 @@ package() {
 
   install -d "${pkgdir}/usr/share/pwndbg"
   cp -r *.py __pycache__ "${pkgdir}/usr/share/pwndbg"
-  touch "${pkgdir}/usr/share/pwndbg/.skip-venv"
 
   install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm 644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
