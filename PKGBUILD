@@ -1,7 +1,7 @@
 # Maintainer: MojArch
 pkgname=opera-gx-stable
 pkgver=127.0.5778.75
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast, secure, easy-to-use web browser'
 arch=('x86_64')
 url='https://www.opera.com/browser/'
