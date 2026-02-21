@@ -7,35 +7,31 @@ Refer to the [official documentation](https://docs.openclaw.ai) for comprehensiv
 
 This repository contains the `PKGBUILD` and helper scripts for the Arch Linux package.
 
+This package is patched to use `bun` as the primary package manager. **Configure Bun** as your package manager in the OpenClaw settings to install additional plugins and skills via the GUI.
+
 > [!WARNING]
 > **Security Risks**: OpenClaw executes code and interacts with your system.
 > *   **Prompt Injection**: AI models can be tricked by malicious input (e.g., from a message in a connected chat) into performing unauthorized actions.
 > *   **External Exposure**: Connecting OpenClaw to public messaging channels exposes your internal agent to the outside world.
 
-## Bun Adjustments Patch
+## OpenClaw Patching
 
-The `bun-adjustments.patch` modifies the upstream source to support the **Bun** runtime and improve the plugin/skill management experience on Arch Linux.
+To adopt openclaw to archlinux, we need to patch the upstream source. Because the upstream source changes rapidly, the `openclaw-git` package uses a shell script (`openclaw-patch.sh`) to regenerate the patch file on request, but with manual review and approval.
 
 ### Key Modifications:
-- **Runtime Transition**: Replaces `pnpm` with `bun` across the entire build system and internal script runners.
-- **Dependency Fixes**: Adds `node-gyp` to `devDependencies` to ensure native modules like `sharp` build correctly from source.
+- **Runtime Transition**: Replaces `pnpm` with `bun run` across the `package.json` and internal script runners (e.g. `scripts/bundle-a2ui.sh`).
+- **Dependency & Build Fixes**: 
+    - Adds `node-gyp` to `devDependencies` to ensure native modules like `sharp` build correctly from source.
+    - Removes the optional `@discordjs/opus` dependency to prevent `node-gyp` build failures natively on Node 25, alongside an `any` typecast in `src/discord/voice/manager.ts` to bypass subsequent TypeScript errors.
 - **Improved UI Runner**: Updates `scripts/ui.js` to prioritize `bun` for managing the Control UI.
 - **User-Centric Plugin Discovery**:
-    - Adds support for discovering NPM-style plugins installed in the user's config directory (`~/.openclaw/node_modules`).
-    - Corrects handling of scoped NPM packages during discovery.
+    - Appends a new `discoverNpmPlugins` function to `src/plugins/discovery.ts` to discover NPM-style plugins installed locally in the user's config directory (`~/.openclaw/node_modules`), handling scoped packages correctly.
 - **Forced Local Installation**:
-    - Patches `src/agents/skills-install.ts` and `src/plugins/install.ts` to automatically strip global flags (`-g`) and install to `~/.openclaw` if a local `package.json` exists.
-    - Ensures your system package manager remains untouched by OpenClaw's internal plugin management.
-
-## Plugins & Skills
+    - Modifies `src/agents/skills-install.ts` and `src/plugins/install.ts` to automatically strip global flags (`-g`) and install plugins directly to `~/.openclaw` if a local `package.json` exists, keeping your system package manager untouched by OpenClaw.
 
 ### Local Plugins (Bun)
 
-This package is patched to use `bun` as the primary package manager. 
-
-**Configure Bun** as your package manager in the OpenClaw settings to install additional plugins and skills via the GUI.
-
-For manual installations, you can initialize a local workspace:
+For manual installations, you can also install plugins in `~/.openclaw` by initializing a local workspace:
 
 ```bash
 cd ~/.openclaw

@@ -1,7 +1,5 @@
-diff --git a/package.json b/package.json
-index 790b3ffe6b..3b1208a3ba 100644
---- a/package.json
-+++ b/package.json
+--- package.json.orig	2026-02-21 04:02:56.143843656 +0100
++++ package.json	2026-02-21 04:02:56.149843656 +0100
 @@ -51,11 +51,11 @@
      "android:install": "cd apps/android && ./gradlew :app:installDebug",
      "android:run": "cd apps/android && ./gradlew :app:installDebug && adb shell am start -n ai.openclaw.android/.MainActivity",
@@ -72,7 +70,15 @@ index 790b3ffe6b..3b1208a3ba 100644
      "test:voicecall:closedloop": "vitest run extensions/voice-call/src/manager.test.ts extensions/voice-call/src/media-stream.test.ts src/plugins/voice-call.plugin.test.ts --maxWorkers=1",
      "test:watch": "vitest",
      "tui": "node scripts/run-node.mjs tui",
-@@ -194,6 +194,7 @@
+@@ -132,7 +132,6 @@
+     "@aws-sdk/client-bedrock": "^3.993.0",
+     "@buape/carbon": "0.0.0-beta-20260216184201",
+     "@clack/prompts": "^1.0.1",
+-    "@discordjs/opus": "^0.9.0",
+     "@discordjs/voice": "^0.19.0",
+     "@grammyjs/runner": "^2.0.3",
+     "@grammyjs/transformer-throttler": "^1.2.1",
+@@ -198,6 +197,7 @@
      "@typescript/native-preview": "7.0.0-dev.20260219.1",
      "@vitest/coverage-v8": "^4.0.18",
      "lit": "^3.3.2",
@@ -80,7 +86,7 @@ index 790b3ffe6b..3b1208a3ba 100644
      "ollama": "^0.6.3",
      "oxfmt": "0.33.0",
      "oxlint": "^1.48.0",
-@@ -211,7 +212,7 @@
+@@ -215,7 +215,7 @@
    "engines": {
      "node": ">=22.12.0"
    },
@@ -89,18 +95,9 @@ index 790b3ffe6b..3b1208a3ba 100644
    "pnpm": {
      "minimumReleaseAge": 2880,
      "overrides": {
-@@ -238,4 +239,4 @@
-       "sharp"
-     ]
-   }
--}
-+}
-\ No newline at end of file
-diff --git a/scripts/bundle-a2ui.sh b/scripts/bundle-a2ui.sh
-index aeade1b067..4b35e60b2d 100755
---- a/scripts/bundle-a2ui.sh
-+++ b/scripts/bundle-a2ui.sh
-@@ -85,7 +85,7 @@ if [[ -f "$HASH_FILE" ]]; then
+--- scripts/bundle-a2ui.sh.orig	2026-02-21 04:02:56.150843656 +0100
++++ scripts/bundle-a2ui.sh	2026-02-21 04:02:56.151843657 +0100
+@@ -85,7 +85,7 @@
    fi
  fi
  
@@ -109,11 +106,9 @@ index aeade1b067..4b35e60b2d 100755
  rolldown -c "$A2UI_APP_DIR/rolldown.config.mjs"
  
  echo "$current_hash" > "$HASH_FILE"
-diff --git a/scripts/ui.js b/scripts/ui.js
-index dbf624f6cd..5c2c6fc463 100644
---- a/scripts/ui.js
-+++ b/scripts/ui.js
-@@ -46,6 +46,10 @@ function which(cmd) {
+--- scripts/ui.js.orig	2026-02-21 04:02:56.152843657 +0100
++++ scripts/ui.js	2026-02-21 04:02:56.154843657 +0100
+@@ -46,6 +46,10 @@
  }
  
  function resolveRunner() {
@@ -124,7 +119,7 @@ index dbf624f6cd..5c2c6fc463 100644
    const pnpm = which("pnpm");
    if (pnpm) {
      return { cmd: pnpm, kind: "pnpm" };
-@@ -168,7 +172,7 @@ export function main(argv = process.argv.slice(2)) {
+@@ -168,7 +172,7 @@
  
    const runner = resolveRunner();
    if (!runner) {
@@ -133,11 +128,20 @@ index dbf624f6cd..5c2c6fc463 100644
      process.exit(1);
    }
  
-diff --git a/src/agents/skills-install.ts b/src/agents/skills-install.ts
-index 6bea6b75c7..cf72854038 100644
---- a/src/agents/skills-install.ts
-+++ b/src/agents/skills-install.ts
-@@ -4,7 +4,7 @@ import type { OpenClawConfig } from "../config/config.js";
+--- src/discord/voice/manager.ts.orig	2026-02-21 04:02:56.155843657 +0100
++++ src/discord/voice/manager.ts	2026-02-21 04:02:56.156843657 +0100
+@@ -155,7 +155,7 @@
+     logger.warn(`discord voice: opusscript init failed: ${formatErrorMessage(err)}`);
+   }
+   try {
+-    const { OpusEncoder } = require("@discordjs/opus") as typeof import("@discordjs/opus");
++    const { OpusEncoder } = require("@discordjs/opus") as any;
+     const decoder = new OpusEncoder(SAMPLE_RATE, CHANNELS);
+     return { decoder, name: "@discordjs/opus" };
+   } catch (err) {
+--- src/agents/skills-install.ts.orig	2026-02-21 04:02:56.157843657 +0100
++++ src/agents/skills-install.ts	2026-02-21 04:02:56.164843658 +0100
+@@ -4,7 +4,7 @@
  import { resolveBrewExecutable } from "../infra/brew.js";
  import { runCommandWithTimeout, type CommandOptions } from "../process/exec.js";
  import { scanDirectoryWithSummary } from "../security/skill-scanner.js";
@@ -146,7 +150,7 @@ index 6bea6b75c7..cf72854038 100644
  import { installDownloadSpec } from "./skills-install-download.js";
  import { formatInstallFailureMessage } from "./skills-install-output.js";
  import {
-@@ -370,6 +370,7 @@ async function executeInstallCommand(params: {
+@@ -370,6 +370,7 @@
    argv: string[] | null;
    timeoutMs: number;
    env?: NodeJS.ProcessEnv;
@@ -154,7 +158,7 @@ index 6bea6b75c7..cf72854038 100644
  }): Promise<SkillInstallResult> {
    if (!params.argv || params.argv.length === 0) {
      return createInstallFailure({ message: "invalid install command" });
-@@ -378,6 +379,7 @@ async function executeInstallCommand(params: {
+@@ -378,6 +379,7 @@
    const result = await runCommandSafely(params.argv, {
      timeoutMs: params.timeoutMs,
      env: params.env,
@@ -162,7 +166,7 @@ index 6bea6b75c7..cf72854038 100644
    });
    if (result.code === 0) {
      return createInstallSuccess(result);
-@@ -443,6 +445,10 @@ export async function installSkill(params: SkillInstallRequest): Promise<SkillIn
+@@ -443,6 +445,10 @@
      return withWarnings(resolveBrewMissingFailure(spec), warnings);
    }
  
@@ -173,7 +177,7 @@ index 6bea6b75c7..cf72854038 100644
    const uvInstallFailure = await ensureUvInstalled({ spec, brewExe, timeoutMs });
    if (uvInstallFailure) {
      return withWarnings(uvInstallFailure, warnings);
-@@ -454,6 +460,16 @@ export async function installSkill(params: SkillInstallRequest): Promise<SkillIn
+@@ -454,6 +460,16 @@
    }
  
    const argv = command.argv ? [...command.argv] : null;
@@ -190,11 +194,12 @@ index 6bea6b75c7..cf72854038 100644
    if (spec.kind === "brew" && brewExe && argv?.[0] === "brew") {
      argv[0] = brewExe;
    }
-@@ -466,5 +482,10 @@ export async function installSkill(params: SkillInstallRequest): Promise<SkillIn
+@@ -466,5 +482,11 @@
      }
    }
  
 -  return withWarnings(await executeInstallCommand({ argv, timeoutMs, env }), warnings);
++  
 +  // Use CONFIG_DIR as cwd if we are installing locally (stripped globals)
 +  const cwd = (spec.kind === "node" && (forceLocal || fs.existsSync(configPkgJson)))
 +    ? CONFIG_DIR
@@ -202,14 +207,28 @@ index 6bea6b75c7..cf72854038 100644
 +
 +  return withWarnings(await executeInstallCommand({ argv, timeoutMs, env, cwd }), warnings);
  }
-diff --git a/src/plugins/discovery.ts b/src/plugins/discovery.ts
-index 932602107e..1b4f5d43a7 100644
---- a/src/plugins/discovery.ts
-+++ b/src/plugins/discovery.ts
-@@ -420,6 +420,75 @@ function discoverInDirectory(params: {
-   }
- }
+--- src/plugins/discovery.ts.orig	2026-02-21 04:02:56.165843658 +0100
++++ src/plugins/discovery.ts	2026-02-21 04:02:56.167843659 +0100
+@@ -589,6 +589,15 @@
+     seen,
+   });
  
++  // Discover NPM package plugins in config dir (e.g. ~/.openclaw/node_modules)
++  discoverNpmPlugins({
++    dir: resolveConfigDir(),
++    origin: "global",
++    candidates,
++    diagnostics,
++    seen,
++  });
++
+   const bundledDir = resolveBundledPluginsDir();
+   if (bundledDir) {
+     discoverInDirectory({
+@@ -603,3 +612,71 @@
+ 
+   return { candidates, diagnostics };
+ }
 +
 +function discoverNpmPlugins(params: {
 +  dir: string;
@@ -278,31 +297,9 @@ index 932602107e..1b4f5d43a7 100644
 +    });
 +  }
 +}
-+
- function discoverFromPath(params: {
-   rawPath: string;
-   origin: PluginOrigin;
-@@ -589,6 +658,15 @@ export function discoverOpenClawPlugins(params: {
-     seen,
-   });
- 
-+  // Discover NPM package plugins in config dir (e.g. ~/.openclaw/node_modules)
-+  discoverNpmPlugins({
-+    dir: resolveConfigDir(),
-+    origin: "global",
-+    candidates,
-+    diagnostics,
-+    seen,
-+  });
-+
-   const bundledDir = resolveBundledPluginsDir();
-   if (bundledDir) {
-     discoverInDirectory({
-diff --git a/src/plugins/install.ts b/src/plugins/install.ts
-index 500162af70..772647dc93 100644
---- a/src/plugins/install.ts
-+++ b/src/plugins/install.ts
-@@ -24,6 +24,7 @@ import { installFromNpmSpecArchive } from "../infra/npm-pack-install.js";
+--- src/plugins/install.ts.orig	2026-02-21 04:02:56.168843659 +0100
++++ src/plugins/install.ts	2026-02-21 04:02:56.170843659 +0100
+@@ -24,6 +24,7 @@
  import { validateRegistryNpmSpec } from "../infra/npm-registry-spec.js";
  import { extensionUsesSkippedScannerPath, isPathInside } from "../security/scan-paths.js";
  import * as skillScanner from "../security/skill-scanner.js";
@@ -310,7 +307,7 @@ index 500162af70..772647dc93 100644
  import { CONFIG_DIR, resolveUserPath } from "../utils.js";
  
  type PluginInstallLogger = {
-@@ -309,6 +310,35 @@ export async function installPluginFromArchive(params: {
+@@ -309,6 +310,34 @@
    dryRun?: boolean;
    expectedPluginId?: string;
  }): Promise<InstallPluginResult> {
@@ -342,7 +339,6 @@ index 500162af70..772647dc93 100644
 +      extensions: [],
 +    };
 +  }
-+
    const logger = params.logger ?? defaultLogger;
    const timeoutMs = params.timeoutMs ?? 120_000;
    const mode = params.mode ?? "install";
