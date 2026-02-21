@@ -1,6 +1,6 @@
 pkgbase = plasma-desktop-povd
 	pkgdesc = KDE Plasma Desktop (patched for per-output virtual desktops)
-	pkgver = 6.5.90
+	pkgver = 6.5.91
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
@@ -94,14 +94,14 @@ pkgbase = plasma-desktop-povd
 	optdepends = scim: kimpanel SCIM support
 	provides = plasma-desktop
 	conflicts = plasma-desktop
-	source = https://download.kde.org/unstable/plasma/6.5.90/plasma-desktop-6.5.90.tar.xz
-	source = https://download.kde.org/unstable/plasma/6.5.90/plasma-desktop-6.5.90.tar.xz.sig
+	source = https://download.kde.org/unstable/plasma/6.5.91/plasma-desktop-6.5.91.tar.xz
+	source = https://download.kde.org/unstable/plasma/6.5.91/plasma-desktop-6.5.91.tar.xz.sig
 	source = povd.patch
 	validpgpkeys = E0A3EB202F8E57528E13E72FD7574483BB57B18D
 	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
 	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
-	sha256sums = c592406a17c3bc0cba3de40068d40d6554e58cd1f9923d07eef5f8149776752c
+	sha256sums = d713e3db18e7e8bdee76f8be21018e21f3e8408e1d919a1a263af00bda55fb51
 	sha256sums = SKIP
 	sha256sums = 312a24804045b0dfc33c80398858dd109a3b0b4ee8252eb0fdb732b01882dbea
 
