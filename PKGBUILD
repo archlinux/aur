@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=na-tools-bin
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="NekroAI Tools - A collection of utilities for NekroAI (binary release)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('na-tools')
 
 # 使用 GitHub Releases 的最新版本
 source_x86_64=("na-tools-linux-amd64-${pkgver}::https://github.com/NekroAI/na-tools/releases/download/v${pkgver}/na-tools-linux-amd64")
-sha256sums_x86_64=('1d323175391fd6427dfeadfbc5ae1c0827037f81aa85e6376c733f6ddd7d56d8')
+sha256sums_x86_64=('b5178137e7f3600aa3ae5b88f8be44f74631d56eb442ba947a8777778f738c77')
 
 package() {
     # 安装二进制文件

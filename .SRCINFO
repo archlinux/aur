@@ -1,6 +1,6 @@
 pkgbase = na-tools-bin
 	pkgdesc = NekroAI Tools - A collection of utilities for NekroAI (binary release)
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/NekroAI/na-tools
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = na-tools-bin
 	depends = glibc
 	provides = na-tools
 	conflicts = na-tools
-	source_x86_64 = na-tools-linux-amd64-1.0.2::https://github.com/NekroAI/na-tools/releases/download/v1.0.2/na-tools-linux-amd64
-	sha256sums_x86_64 = 1d323175391fd6427dfeadfbc5ae1c0827037f81aa85e6376c733f6ddd7d56d8
+	source_x86_64 = na-tools-linux-amd64-1.0.3::https://github.com/NekroAI/na-tools/releases/download/v1.0.3/na-tools-linux-amd64
+	sha256sums_x86_64 = b5178137e7f3600aa3ae5b88f8be44f74631d56eb442ba947a8777778f738c77
 
 pkgname = na-tools-bin
