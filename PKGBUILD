@@ -1,3 +1,4 @@
+# Maintainer: schlndh <schlindenbuch.h@seznam.cz>
 _pkgname=kwin
 pkgname=$_pkgname-povd
 pkgver=6.6.0
