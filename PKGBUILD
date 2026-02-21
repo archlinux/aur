@@ -6,7 +6,7 @@
 
 pkgname=securecopy
 pkgver=9.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="GNU coreutils cp/mv with CRC64 xattr checksum verification, plus crcsum"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/hansij66/securecopy"
