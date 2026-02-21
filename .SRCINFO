@@ -1,4 +1,4 @@
-pkgbase = plasma-workspace
+pkgbase = plasma-workspace-povd
 	pkgdesc = KDE Plasma Workspace (patched for per-output virtual desktops)
 	pkgver = 6.6.0
 	pkgrel = 1

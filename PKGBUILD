@@ -1,5 +1,5 @@
 # Maintainer: schlndh <schlindenbuch.h@seznam.cz>
-pkgbase=plasma-workspace
+pkgbase=plasma-workspace-povd
 _pkgname=(plasma-workspace plasma-x11-session)
 pkgname=(plasma-workspace-povd plasma-x11-session-povd)
 pkgver=6.6.0
