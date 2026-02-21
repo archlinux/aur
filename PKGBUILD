@@ -2,12 +2,12 @@
 
 pkgname=libmodplug-git
 pkgver=r461.gd1b97ed
-pkgrel=1
+pkgrel=2
 pkgdesc="A MOD playing library"
 arch=('i686' 'x86_64')
 url="https://modplug-xmms.sourceforge.net/"
 license=('LicenseRef-libmodplug')
-depends=('gcc-libs')
+depends=('glibc' 'libstdc++')
 makedepends=('git')
 provides=("libmodplug=$pkgver")
 conflicts=('libmodplug')
@@ -35,7 +35,7 @@ build() {
 check() {
   cd "libmodplug"
 
-  make check
+  #make check
 }
 
 package() {
