@@ -34,8 +34,9 @@ pkgver() {
 
 build() {
     cd "$_pkgname"
+    rm -f vsrvrt-*.whl
     _pyver=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
-    pip download --no-deps --only-binary=:all: --python-version "${_pyver}" --implementation cp --abi none --platform "manylinux2014_x86_64" vsrvrt || {
+    pip download --no-cache-dir --no-deps --only-binary=:all: --python-version "${_pyver}" --implementation cp --abi none --platform "manylinux2014_x86_64" vsrvrt || {
         echo "ERROR: Pre-built wheel not found on PyPI for Python ${_pyver}"
         return 1
     }
@@ -43,7 +44,7 @@ build() {
 
 package() {
     cd "$_pkgname"
-    pip install --root="$pkgdir" --ignore-installed --no-deps vsrvrt-*.whl
+    pip install --no-cache-dir --root="$pkgdir" --ignore-installed --no-deps vsrvrt-*.whl
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
