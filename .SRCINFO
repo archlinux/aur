@@ -11,8 +11,10 @@ pkgbase = mp3rgain-bin
 	conflicts = mp3rgain
 	source = LICENSE-1.7.0::https://raw.githubusercontent.com/M-Igashi/mp3rgain/v1.7.0/LICENSE
 	source = README-1.7.0.md::https://raw.githubusercontent.com/M-Igashi/mp3rgain/v1.7.0/README.md
+	source = mp3rgain-1.7.0.1::https://raw.githubusercontent.com/M-Igashi/mp3rgain/v1.7.0//docs/man/mp3rgain.1
 	sha256sums = 8e557208f0bd83f91b38dcc81ccf914c4c84060ab6dbc5072dbf369791ffc135
 	sha256sums = c948256ac69649a685b15d627fe3792b20a055064ff1bea4b66ece23537de963
+	sha256sums = b28f2e6d7f013cc80d3a2e55721116b730ccefe80980b33ad93779e5c2f36d16
 	source_x86_64 = mp3rgain-x86_64-1.7.0.tgz::https://github.com/M-Igashi/mp3rgain/releases/download/v1.7.0/mp3rgain-v1.7.0-linux-x86_64.tar.gz
 	sha256sums_x86_64 = d72c73fc742dcfa1f28fd9d80b3d4514e79b5f78c42b97aa8b7d56b3e46d20d5
 
