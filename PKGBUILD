@@ -3,7 +3,7 @@
 pkgbase=gpgme-git
 pkgname=('gpgme-git' 'python-gpgme-git' 'qgpgme-qt5-git' 'qgpgme-qt6-git')
 pkgver=2.0.1.r27.g021927f2
-pkgrel=1
+pkgrel=2
 pkgdesc="GnuPG Made Easy"
 arch=('i686' 'x86_64')
 url="https://www.gnupg.org/related_software/gpgme/"
@@ -96,7 +96,7 @@ package_python-gpgme-git() {
 
 package_qgpgme-qt5-git() {
   pkgdesc="Qt5 bindings for GPGme"
-  depends=('gcc-libs' 'gpgme-git' 'qt5-base')
+  depends=('glibc' 'libgcc' 'libstd++' 'gpgme-git' 'qt5-base')
   provides=("qgpgme-qt5=$pkgver")
   conflicts=('qgpgme-qt5')
 
@@ -108,7 +108,7 @@ package_qgpgme-qt5-git() {
 
 package_qgpgme-qt6-git() {
   pkgdesc="Qt6 bindings for GPGme"
-  depends=('gcc-libs' 'gpgme-git' 'qt6-base')
+  depends=('glibc' 'libgcc' 'libstd++' 'gpgme-git' 'qt6-base')
   provides=("qgpgme-qt6=$pkgver" 'qgpgme')
   conflicts=('qgpgme-qt6')
 

@@ -1,7 +1,7 @@
 pkgbase = gpgme-git
 	pkgdesc = GnuPG Made Easy
 	pkgver = 2.0.1.r27.g021927f2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnupg.org/related_software/gpgme/
 	arch = i686
 	arch = x86_64
@@ -40,7 +40,9 @@ pkgname = python-gpgme-git
 
 pkgname = qgpgme-qt5-git
 	pkgdesc = Qt5 bindings for GPGme
-	depends = gcc-libs
+	depends = glibc
+	depends = libgcc
+	depends = libstd++
 	depends = gpgme-git
 	depends = qt5-base
 	provides = qgpgme-qt5=2.0.1.r27.g021927f2
@@ -48,7 +50,9 @@ pkgname = qgpgme-qt5-git
 
 pkgname = qgpgme-qt6-git
 	pkgdesc = Qt6 bindings for GPGme
-	depends = gcc-libs
+	depends = glibc
+	depends = libgcc
+	depends = libstd++
 	depends = gpgme-git
 	depends = qt6-base
 	provides = qgpgme-qt6=2.0.1.r27.g021927f2
