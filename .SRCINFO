@@ -1,11 +1,11 @@
 pkgbase = google-lyra
 	pkgdesc = A very low-bitrate codec for speech compression
 	pkgver = 1.3.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/google/lyra
 	arch = i686
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = bazel<6
 	makedepends = python-numpy
 	depends = glibc
