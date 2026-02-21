@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=wattage
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="An application designed for monitoring the health and status of your power devices."
 arch=('x86_64')
@@ -18,7 +18,7 @@ makedepends=(
   'vala'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('c015dd9cf18997cb8d3aa4b9f284686bae3d374e1f5e628cd458c7b9e9be54c6')
+sha256sums=('a358f824305b04890a9e21e8aeac8beefde33ef9e20e6641d9e9428d2c8117a2')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
