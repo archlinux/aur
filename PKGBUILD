@@ -1,7 +1,7 @@
 #Maintainer: Julian Xhokaxhiu <info at julianxhokaxhiu dot com>
 
 pkgname=ov-bin
-pkgver=0.50.2
+pkgver=0.51.1
 pkgrel=1
 pkgdesc="Feature-rich terminal-based text viewer. It is a so-called terminal pager."
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -17,9 +17,9 @@ source_armv7h=("$pkgname-$pkgver-armv7h.zip::https://github.com/noborus/ov/relea
 source_aarch64=("$pkgname-$pkgver-aarch64.zip::https://github.com/noborus/ov/releases/download/v$pkgver/ov_${pkgver}_linux_arm64.zip")
 url="https://github.com/noborus/ov"
 license=("MIT")
-sha256sums_x86_64=('390b2e878664edabb9fd76b1558ad1ba05852e7ed6e5876c6918d3168d0692fe')
-sha256sums_armv7h=('b5042129295a5dc5a6380f0fa38feffe99eb6fab7a24d1d3d4bdc44e850d5a5d')
-sha256sums_aarch64=('776ea5278d13284559c0e9106c84dc264291db6ae37255c2d0ae5cb32ab18c02')
+sha256sums_x86_64=('27bb0c8842e89f71ed389f57f6262f2ea1ec313e63c21564b3cca7e50c3558d2')
+sha256sums_armv7h=('641cf261f40f1decb84e1bcadc673601efc98f1bee0c00c7264b88247b185641')
+sha256sums_aarch64=('d72070119f2206f223b4de8c860a70e460338dacbe1b87eb3508905a7226e702')
 
 package() {
   # Unpack, flag as executable and move to the right directory
