@@ -603,13 +603,13 @@ _package() {
 
     # Install modules
     # We specify DEPMOD=/doesnt/exist here to suppress depmod
-    ZSTD_CLEVEL=19 make ${BUILD_FLAGS[*]} INSTALL_MOD_PATH="${pkgdir}/usr" \
+    # Silence this make call as it's just a compress + move operation
+    ZSTD_CLEVEL=3 make -s ${BUILD_FLAGS[*]} INSTALL_MOD_PATH="${pkgdir}/usr" \
         INSTALL_MOD_STRIP=1 DEPMOD=/doesnt/exist modules_install
 
     # Remove build directory
     rm -vrf "${__modulesdir}"/build
 }
-
 
 ## makepkg method; see https://wiki.archlinux.org/title/Creating_packages#package()
 _package-headers() {
@@ -689,19 +689,7 @@ _package-headers() {
     # Add symlink to build directory
     mkdir -p "${pkgdir}/usr/src"
     ln -sr "${__builddir}" "${pkgdir}/usr/src/${pkgbase}"
-
-    # Recommended config for BBRv3
-    local qdisc=$(sysctl -n net.core.default_qdisc)
-    local cong_algo=$(sysctl -n net.ipv4.tcp_congestion_control)
-
-    if [ "$qdisc" != "fq" ] || [ "$cong_algo" != "bbr" ]; then
-        _warning "It is recommended to reconfigure your TCP subsystem for BBR TCP algorithm:"
-        _info "Add the following lines to a file called: /etc/sysctl.d/99-bbr_tachyon.conf"
-        _info "net.core.default_qdisc = fq"
-        _info "net.ipv4.tcp_congestion_control = bbr"
-    fi
 }
-
 
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 for _package in "${pkgname[@]}"; do
