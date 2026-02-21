@@ -86,6 +86,6 @@ pkgbase = kwin-povd
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
 	sha256sums = 4c53d828e80989153db7309bce35e7e9e57902463d0f3d3bf14fc7e05f6646f1
 	sha256sums = SKIP
-	sha256sums = 690c983e64e0100e7828738d6745dc9273a1391b253b7d9c4abcbb44a5610750
+	sha256sums = a5303c9d7d764aa8bf0dc7d60e48c6f924a8e6249e920b590ce8c5337a61cede
 
 pkgname = kwin-povd

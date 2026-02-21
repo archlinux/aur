@@ -1,5 +1,5 @@
 diff --git a/autotests/integration/effects/desktop_switching_animation_test.cpp b/autotests/integration/effects/desktop_switching_animation_test.cpp
-index fa24c17b3c..ee60c8a1fb 100644
+index fa24c17b3c..9196fbba30 100644
 --- a/autotests/integration/effects/desktop_switching_animation_test.cpp
 +++ b/autotests/integration/effects/desktop_switching_animation_test.cpp
 @@ -33,6 +33,8 @@ private Q_SLOTS:
@@ -19,7 +19,7 @@ index fa24c17b3c..ee60c8a1fb 100644
  
      Test::destroyWaylandConnection();
  }
-@@ -135,5 +138,89 @@ void DesktopSwitchingAnimationTest::testSwitchDesktops()
+@@ -135,5 +138,74 @@ void DesktopSwitchingAnimationTest::testSwitchDesktops()
      QVERIFY(Test::waitForWindowClosed(window));
  }
  
@@ -47,27 +47,19 @@ index fa24c17b3c..ee60c8a1fb 100644
 +
 +    // The Fade Desktop effect will do nothing if there are no windows to fade,
 +    // so we have to create a dummy test windows.
-+    std::unique_ptr<KWayland::Client::Surface> surface1(Test::createSurface());
-+    QVERIFY(surface1 != nullptr);
-+    std::unique_ptr<Test::XdgToplevel> shellSurface1(Test::createXdgToplevelSurface(surface1.get()));
-+    QVERIFY(shellSurface1 != nullptr);
-+    Window *window1 = Test::renderAndWaitForShown(surface1.get(), QSize(100, 50), Qt::blue);
-+    QVERIFY(window1);
-+    window1->setOutput(output1);
-+    QCOMPARE(window1->desktops().count(), 1);
-+    QCOMPARE(window1->desktops().first(), VirtualDesktopManager::self()->desktops().first());
-+    QCOMPARE(window1->output(), output1);
++    Test::XdgToplevelWindow window1;
++    QVERIFY(window1.show());
++    window1.m_window->setOutput(output1);
++    QCOMPARE(window1.m_window->desktops().count(), 1);
++    QCOMPARE(window1.m_window->desktops().first(), VirtualDesktopManager::self()->desktops().first());
++    QCOMPARE(window1.m_window->output(), output1);
 +
-+    std::unique_ptr<KWayland::Client::Surface> surface2(Test::createSurface());
-+    QVERIFY(surface2 != nullptr);
-+    std::unique_ptr<Test::XdgToplevel> shellSurface2(Test::createXdgToplevelSurface(surface2.get()));
-+    QVERIFY(shellSurface2 != nullptr);
-+    Window *window2 = Test::renderAndWaitForShown(surface2.get(), QSize(100, 50), Qt::blue);
-+    QVERIFY(window2);
-+    window2->setOutput(output2);
-+    QCOMPARE(window2->desktops().count(), 1);
-+    QCOMPARE(window2->desktops().first(), VirtualDesktopManager::self()->desktops().first());
-+    QCOMPARE(window2->output(), output2);
++    Test::XdgToplevelWindow window2;
++    QVERIFY(window2.show());
++    window2.m_window->setOutput(output2);
++    QCOMPARE(window2.m_window->desktops().count(), 1);
++    QCOMPARE(window2.m_window->desktops().first(), VirtualDesktopManager::self()->desktops().first());
++    QCOMPARE(window2.m_window->output(), output2);
 +
 +    // Load effect that will be tested.
 +    QFETCH(QString, effectName);
@@ -98,19 +90,12 @@ index fa24c17b3c..ee60c8a1fb 100644
 +    // Eventually, the animation will be complete.
 +    QTRY_VERIFY(!effect->isActive());
 +    QTRY_COMPARE(effects->activeFullScreenEffect(), nullptr);
-+
-+    // Destroy the test windows.
-+    surface1.reset();
-+    QVERIFY(Test::waitForWindowClosed(window1));
-+
-+    surface2.reset();
-+    QVERIFY(Test::waitForWindowClosed(window2));
 +}
 +
  WAYLANDTEST_MAIN(DesktopSwitchingAnimationTest)
  #include "desktop_switching_animation_test.moc"
 diff --git a/autotests/integration/effects/scripted_effects_test.cpp b/autotests/integration/effects/scripted_effects_test.cpp
-index fb1dd2844a..5b89abda68 100644
+index fb1dd2844a..2cb306364d 100644
 --- a/autotests/integration/effects/scripted_effects_test.cpp
 +++ b/autotests/integration/effects/scripted_effects_test.cpp
 @@ -43,6 +43,7 @@ private Q_SLOTS:
@@ -164,10 +149,10 @@ index fb1dd2844a..5b89abda68 100644
 +
 +    // desktop management
 +    KWin::VirtualDesktopManager::self()->setCurrent(2, outputs[0]);
-+    waitFor("desktopChanged - 1 2 Virtual-0");
++    waitFor(QStringLiteral("desktopChanged - 1 2 %1").arg(outputs[0]->name()));
 +
 +    KWin::VirtualDesktopManager::self()->setCurrent(2, outputs[1]);
-+    waitFor("desktopChanged - 1 2 Virtual-1");
++    waitFor(QStringLiteral("desktopChanged - 1 2 %1").arg(outputs[1]->name()));
 +}
 +
  void ScriptedEffectsTest::testEffectsContext()
@@ -359,11 +344,242 @@ index 42e76a04a9..89cd18b970 100644
  void KeyboardLayoutTest::testWindowPolicy()
  {
      enum Layout {
+diff --git a/autotests/integration/move_resize_window_test.cpp b/autotests/integration/move_resize_window_test.cpp
+index 090f9a80a0..ae06a7d89d 100644
+--- a/autotests/integration/move_resize_window_test.cpp
++++ b/autotests/integration/move_resize_window_test.cpp
+@@ -13,6 +13,8 @@
+ #include "cursor.h"
+ #include "placement.h"
+ #include "pointer_input.h"
++#include "scene/windowitem.h"
++#include "virtualdesktops.h"
+ #include "wayland_server.h"
+ #include "window.h"
+ #include "workspace.h"
+@@ -65,6 +67,8 @@ private Q_SLOTS:
+     void testRestrictedMoveMultiMonitor();
+     void testRestrictedResizeUp();
+     void testRestrictedResizeRight();
++    void testMoveWithPerOutputVirtualDesktops();
++    void testDontUpdateDesktopDueToChangeOnAnotherOutput();
+ 
+ private:
+     std::tuple<Window *, std::unique_ptr<KWayland::Client::Surface>, std::unique_ptr<Test::XdgToplevel>> showWindow();
+@@ -97,6 +101,8 @@ void MoveResizeWindowTest::init()
+     m_compositor = Test::waylandCompositor();
+ 
+     workspace()->setActiveOutput(QPoint(640, 512));
++    VirtualDesktopManager::self()->setCount(1);
++    VirtualDesktopManager::self()->setPerOutputVirtualDesktops(false);
+ }
+ 
+ void MoveResizeWindowTest::cleanup()
+@@ -1255,6 +1261,199 @@ void MoveResizeWindowTest::testRestrictedResizeRight()
+     surface.reset();
+     QVERIFY(Test::waitForWindowClosed(window));
+ }
++
++void MoveResizeWindowTest::testMoveWithPerOutputVirtualDesktops()
++{
++    Test::setOutputConfig({
++        Rect(0, 0, 1280, 1024),
++        Rect(1280, 0, 1280, 1024),
++    });
++    const auto outputs = workspace()->outputs();
++    QCOMPARE(outputs.count(), 2);
++    VirtualDesktopManager::self()->setCount(3);
++    VirtualDesktopManager::self()->setPerOutputVirtualDesktops(true);
++    const auto desktops = VirtualDesktopManager::self()->desktops();
++    VirtualDesktopManager::self()->setCurrent(desktops[0], outputs[0]);
++    VirtualDesktopManager::self()->setCurrent(desktops[1], outputs[1]);
++
++    Test::XdgToplevelWindow window;
++    QVERIFY(window.show());
++
++    QVERIFY(window.m_window);
++    QCOMPARE(workspace()->activeWindow(), window.m_window);
++    QCOMPARE(window.m_window->frameGeometry(), RectF(0, 0, 100, 100));
++    QCOMPARE(window.m_window->output(), outputs[0]);
++    QCOMPARE(window.m_window->desktops(), {desktops[0]});
++    QSignalSpy interactiveMoveResizeStartedSpy(window.m_window, &Window::interactiveMoveResizeStarted);
++    QSignalSpy moveResizedChangedSpy(window.m_window, &Window::moveResizedChanged);
++    QSignalSpy interactiveMoveResizeSteppedSpy(window.m_window, &Window::interactiveMoveResizeStepped);
++    QSignalSpy interactiveMoveResizeFinishedSpy(window.m_window, &Window::interactiveMoveResizeFinished);
++
++    // begin move
++    QVERIFY(workspace()->moveResizeWindow() == nullptr);
++    QCOMPARE(window.m_window->isInteractiveMove(), false);
++    workspace()->slotWindowMove();
++    QCOMPARE(workspace()->moveResizeWindow(), window.m_window);
++    QCOMPARE(interactiveMoveResizeStartedSpy.count(), 1);
++    QCOMPARE(moveResizedChangedSpy.count(), 1);
++    QCOMPARE(window.m_window->isInteractiveMove(), true);
++    QCOMPARE(window.m_window->geometryRestore(), RectF());
++
++    // move to other output
++    const QPointF cursorPos = Cursors::self()->mouse()->pos();
++    for (int i = 0; i < 40; i++) {
++        window.m_window->keyPressEvent(Qt::Key_Right | Qt::ALT);
++        window.m_window->updateInteractiveMoveResize(Cursors::self()->mouse()->pos(), Qt::KeyboardModifiers());
++        QCOMPARE(window.m_window->isOnCurrentDesktop(), true);
++        QCOMPARE(window.m_window->windowItem()->isVisible(), true);
++        QCOMPARE(window.m_window->isActive(), true);
++    }
++
++    QCOMPARE(Cursors::self()->mouse()->pos(), cursorPos + QPoint(40 * 32, 0));
++    QCOMPARE(interactiveMoveResizeSteppedSpy.count(), 40);
++    QVERIFY(window.m_window->isActive());
++    QVERIFY(window.m_window->windowItem()->isVisible());
++    QCOMPARE(window.m_window->output(), outputs[1]);
++    // The window should change desktops as soon as it changes outputs
++    QCOMPARE(window.m_window->desktops(), {desktops[1]});
++    interactiveMoveResizeSteppedSpy.clear();
++
++    // let's end the move
++    QCOMPARE(interactiveMoveResizeFinishedSpy.count(), 0);
++    window.m_window->keyPressEvent(Qt::Key_Enter);
++    QCOMPARE(interactiveMoveResizeFinishedSpy.count(), 1);
++    QCOMPARE(moveResizedChangedSpy.count(), 2);
++    QCOMPARE(window.m_window->isInteractiveMove(), false);
++    QVERIFY(workspace()->moveResizeWindow() == nullptr);
++    QCOMPARE(window.m_window->desktops(), {desktops[1]});
++    QCOMPARE(window.m_window->output(), outputs[1]);
++    QCOMPARE(VirtualDesktopManager::self()->currentDesktop(outputs[1]), desktops[1]);
++    QCOMPARE(window.m_window->isOnCurrentDesktop(), true);
++    QCOMPARE(window.m_window->windowItem()->isVisible(), true);
++    QCOMPARE(window.m_window->isActive(), true);
++    interactiveMoveResizeStartedSpy.clear();
++    interactiveMoveResizeFinishedSpy.clear();
++    moveResizedChangedSpy.clear();
++
++    // start moving it back
++    workspace()->slotWindowMove();
++    QCOMPARE(workspace()->moveResizeWindow(), window.m_window);
++    QCOMPARE(interactiveMoveResizeStartedSpy.count(), 1);
++    QCOMPARE(moveResizedChangedSpy.count(), 1);
++    QCOMPARE(window.m_window->isInteractiveMove(), true);
++    QCOMPARE(window.m_window->geometryRestore(), RectF());
++
++    // move to other output
++    for (int i = 0; i < 40; i++) {
++        window.m_window->keyPressEvent(Qt::Key_Left | Qt::ALT);
++        window.m_window->updateInteractiveMoveResize(Cursors::self()->mouse()->pos(), Qt::KeyboardModifiers());
++        QCOMPARE(window.m_window->isOnCurrentDesktop(), true);
++        QCOMPARE(window.m_window->windowItem()->isVisible(), true);
++        QCOMPARE(window.m_window->isActive(), true);
++    }
++
++    // Change desktop on the window's starting output. This shouldn't affect it now, but only once the move is cancelled.
++    VirtualDesktopManager::self()->setCurrent(desktops[2], outputs[1]);
++    QCOMPARE(Cursors::self()->mouse()->pos(), cursorPos);
++    QCOMPARE(interactiveMoveResizeSteppedSpy.count(), 40);
++    QVERIFY(window.m_window->isActive());
++    QVERIFY(window.m_window->windowItem()->isVisible());
++    QCOMPARE(window.m_window->output(), outputs[0]);
++    // The window should change desktops as soon as it changes outputs
++    QCOMPARE(window.m_window->desktops(), {desktops[0]});
++    interactiveMoveResizeSteppedSpy.clear();
++
++    // cancel the move: it should return back to the second output and its current desktop even though it changed during the move
++    QCOMPARE(interactiveMoveResizeFinishedSpy.count(), 0);
++    window.m_window->keyPressEvent(Qt::Key_Escape);
++    QCOMPARE(interactiveMoveResizeFinishedSpy.count(), 1);
++    QCOMPARE(moveResizedChangedSpy.count(), 2);
++    QCOMPARE(window.m_window->isInteractiveMove(), false);
++    QVERIFY(workspace()->moveResizeWindow() == nullptr);
++    QCOMPARE(window.m_window->desktops(), {desktops[2]});
++    QCOMPARE(window.m_window->output(), outputs[1]);
++    QCOMPARE(VirtualDesktopManager::self()->currentDesktop(outputs[1]), desktops[2]);
++    QCOMPARE(window.m_window->isOnCurrentDesktop(), true);
++    QCOMPARE(window.m_window->windowItem()->isVisible(), true);
++    QCOMPARE(window.m_window->isActive(), true);
++    interactiveMoveResizeStartedSpy.clear();
++    interactiveMoveResizeFinishedSpy.clear();
++}
++
++void MoveResizeWindowTest::testDontUpdateDesktopDueToChangeOnAnotherOutput()
++{
++    Test::setOutputConfig({
++        Rect(0, 0, 1280, 1024),
++        Rect(1280, 0, 1280, 1024),
++    });
++    const auto outputs = workspace()->outputs();
++    QCOMPARE(outputs.count(), 2);
++    VirtualDesktopManager::self()->setCount(3);
++    VirtualDesktopManager::self()->setPerOutputVirtualDesktops(true);
++    const auto desktops = VirtualDesktopManager::self()->desktops();
++    VirtualDesktopManager::self()->setCurrent(desktops[0], outputs[0]);
++    VirtualDesktopManager::self()->setCurrent(desktops[1], outputs[1]);
++
++    Test::XdgToplevelWindow window;
++    QVERIFY(window.show());
++    QCOMPARE(workspace()->activeWindow(), window.m_window);
++    QCOMPARE(window.m_window->frameGeometry(), RectF(0, 0, 100, 100));
++    QCOMPARE(window.m_window->output(), outputs[0]);
++    QCOMPARE(window.m_window->desktops(), {desktops[0]});
++
++    // Move the window just on the edge of the first output
++    window.m_window->move(QPointF(1180, 0));
++    QCOMPARE(window.m_window->frameGeometry(), RectF(1180, 0, 100, 100));
++    QCOMPARE(window.m_window->output(), outputs[0]);
++    QCOMPARE(window.m_window->desktops(), {desktops[0]});
++
++    QSignalSpy interactiveMoveResizeStartedSpy(window.m_window, &Window::interactiveMoveResizeStarted);
++    QSignalSpy moveResizedChangedSpy(window.m_window, &Window::moveResizedChanged);
++    QSignalSpy interactiveMoveResizeSteppedSpy(window.m_window, &Window::interactiveMoveResizeStepped);
++    QSignalSpy interactiveMoveResizeFinishedSpy(window.m_window, &Window::interactiveMoveResizeFinished);
++
++    // begin move
++    QVERIFY(workspace()->moveResizeWindow() == nullptr);
++    QCOMPARE(window.m_window->isInteractiveMove(), false);
++    workspace()->slotWindowMove();
++    QCOMPARE(workspace()->moveResizeWindow(), window.m_window);
++    QCOMPARE(interactiveMoveResizeStartedSpy.count(), 1);
++    QCOMPARE(moveResizedChangedSpy.count(), 1);
++    QCOMPARE(window.m_window->isInteractiveMove(), true);
++    QCOMPARE(window.m_window->geometryRestore(), RectF());
++
++    // Move so that it slightly overlaps the other output
++    const QPointF cursorPos = Cursors::self()->mouse()->pos();
++    window.m_window->keyPressEvent(Qt::Key_Right | Qt::ALT);
++    window.m_window->updateInteractiveMoveResize(Cursors::self()->mouse()->pos(), Qt::KeyboardModifiers());
++    QCOMPARE(Cursors::self()->mouse()->pos(), cursorPos + QPoint(32, 0));
++    QCOMPARE(window.m_window->frameGeometry(), RectF(1180 + 32, 0, 100, 100));
++    QVERIFY(window.m_window->isOnOutput(outputs[1]));
++    QCOMPARE(window.m_window->output(), outputs[0]);
++    QCOMPARE(window.m_window->desktops(), {desktops[0]});
++
++    // Change desktop on the second output and make sure the window is not affected
++    VirtualDesktopManager::self()->setCurrent(desktops[2], outputs[1]);
++    QCOMPARE(window.m_window->desktops(), {desktops[0]});
++
++    // Make sure the window is still affected by desktop changes on its own output
++    VirtualDesktopManager::self()->setCurrent(desktops[1], outputs[0]);
++    QCOMPARE(window.m_window->desktops(), {desktops[1]});
++
++    // let's end
++    QCOMPARE(interactiveMoveResizeFinishedSpy.count(), 0);
++    window.m_window->keyPressEvent(Qt::Key_Enter);
++    QCOMPARE(interactiveMoveResizeFinishedSpy.count(), 1);
++    QCOMPARE(moveResizedChangedSpy.count(), 2);
++    QCOMPARE(window.m_window->isInteractiveMove(), false);
++    QVERIFY(workspace()->moveResizeWindow() == nullptr);
++    QCOMPARE(window.m_window->desktops(), {desktops[1]});
++    QCOMPARE(window.m_window->output(), outputs[0]);
++    QCOMPARE(VirtualDesktopManager::self()->currentDesktop(outputs[0]), desktops[1]);
++    QCOMPARE(window.m_window->isOnCurrentDesktop(), true);
++    QCOMPARE(window.m_window->windowItem()->isVisible(), true);
++    QCOMPARE(window.m_window->isActive(), true);
++}
+ }
+ 
+ WAYLANDTEST_MAIN(KWin::MoveResizeWindowTest)
 diff --git a/autotests/integration/outputchanges_test.cpp b/autotests/integration/outputchanges_test.cpp
-index 6bc88a9d4a..8a89f64915 100644
+index b189735424..ba51f59894 100644
 --- a/autotests/integration/outputchanges_test.cpp
 +++ b/autotests/integration/outputchanges_test.cpp
-@@ -146,6 +146,8 @@ private Q_SLOTS:
+@@ -149,6 +149,8 @@ private Q_SLOTS:
      void testMirroring();
  
      void testAutoBrightness();
@@ -372,7 +588,7 @@ index 6bc88a9d4a..8a89f64915 100644
  };
  
  void OutputChangesTest::initTestCase()
-@@ -181,6 +183,8 @@ void OutputChangesTest::init()
+@@ -188,6 +190,8 @@ void OutputChangesTest::init()
  void OutputChangesTest::cleanup()
  {
      Test::destroyWaylandConnection();
@@ -381,8 +597,8 @@ index 6bc88a9d4a..8a89f64915 100644
  }
  
  void OutputChangesTest::testWindowSticksToOutputAfterOutputIsDisabled()
-@@ -2232,6 +2236,56 @@ void OutputChangesTest::testAutoBrightness()
-     COMPARE_RANGE(curve.sample(50), 0.75, eta);
+@@ -2388,6 +2392,57 @@ void OutputChangesTest::testAutoBrightness()
+     COMPARE_RANGE(curve.sample(101), 0.4, laxEta);
  }
  
 +void OutputChangesTest::testPerOutputDesktopsOutputToggle()
@@ -391,22 +607,23 @@ index 6bc88a9d4a..8a89f64915 100644
 +
 +    const auto outputs = kwinApp()->outputBackend()->outputs();
 +    VirtualDesktopManager::self()->setPerOutputVirtualDesktops(true);
-+    VirtualDesktopManager::self()->setCount(2);
++    VirtualDesktopManager::self()->setCount(3);
 +    const auto desktops = VirtualDesktopManager::self()->desktops();
-+    VirtualDesktopManager::self()->setCurrent(desktops[0], workspace()->outputs()[0]);
-+    VirtualDesktopManager::self()->setCurrent(desktops[1], workspace()->outputs()[1]);
++    VirtualDesktopManager::self()->setCurrent(desktops[1], workspace()->outputs()[0]);
++    VirtualDesktopManager::self()->setCurrent(desktops[2], workspace()->outputs()[1]);
++    QCOMPARE(VirtualDesktopManager::self()->current(workspace()->outputs()[0]), desktops[1]->x11DesktopNumber());
++    QCOMPARE(VirtualDesktopManager::self()->current(workspace()->outputs()[1]), desktops[2]->x11DesktopNumber());
 +
 +    // Create a window.
-+    std::unique_ptr<KWayland::Client::Surface> surface(Test::createSurface());
-+    std::unique_ptr<Test::XdgToplevel> shellSurface(Test::createXdgToplevelSurface(surface.get()));
-+    auto window = Test::renderAndWaitForShown(surface.get(), QSize(100, 50), Qt::blue);
-+    QVERIFY(window);
++    Test::XdgToplevelWindow window;
++    QVERIFY(window.show());
 +
 +    // Move the window to the right output.
-+    window->move(QPointF(1280 + 50, 100));
-+    QCOMPARE(window->output()->backendOutput(), outputs[1]);
-+    QCOMPARE(window->frameGeometry(), RectF(1280 + 50, 100, 100, 50));
-+    QCOMPARE(window->desktops(), {desktops[1]});
++    window.m_window->move(QPointF(1280 + 50, 100));
++    window.m_window->setDesktops({desktops[2]});
++    QCOMPARE(window.m_window->output()->backendOutput(), outputs[1]);
++    QCOMPARE(window.m_window->frameGeometry(), RectF(1280 + 50, 100, 100, 100));
++    QCOMPARE(window.m_window->desktops(), {desktops[2]});
 +
 +    // Disable the right output.
 +    OutputConfiguration config1;
@@ -417,9 +634,9 @@ index 6bc88a9d4a..8a89f64915 100644
 +    workspace()->applyOutputConfiguration(config1);
 +
 +    // The window will be moved to the left monitor.
-+    QCOMPARE(window->output()->backendOutput(), outputs[0]);
-+    QCOMPARE(window->frameGeometry(), RectF(50, 100, 100, 50));
-+    QCOMPARE(window->desktops(), {desktops[1]});
++    QCOMPARE(window.m_window->output()->backendOutput(), outputs[0]);
++    QCOMPARE(window.m_window->frameGeometry(), RectF(50, 100, 100, 100));
++    QCOMPARE(window.m_window->desktops(), {desktops[2]});
 +
 +    // Enable the right monitor.
 +    OutputConfiguration config2;
@@ -430,16 +647,16 @@ index 6bc88a9d4a..8a89f64915 100644
 +    workspace()->applyOutputConfiguration(config2);
 +
 +    // The window will be moved back to the right monitor.
-+    QCOMPARE(window->output()->backendOutput(), outputs[1]);
-+    QCOMPARE(window->frameGeometry(), RectF(1280 + 50, 100, 100, 50));
-+    QCOMPARE(window->desktops(), {desktops[1]});
++    QCOMPARE(window.m_window->output()->backendOutput(), outputs[1]);
++    QCOMPARE(window.m_window->frameGeometry(), RectF(1280 + 50, 100, 100, 100));
++    QCOMPARE(window.m_window->desktops(), {desktops[2]});
 +}
 +
  } // namespace KWin
  
  WAYLANDTEST_MAIN(KWin::OutputChangesTest)
 diff --git a/autotests/integration/quick_tiling_test.cpp b/autotests/integration/quick_tiling_test.cpp
-index 1026bd3755..0394ce3b86 100644
+index 1026bd3755..5fec122be7 100644
 --- a/autotests/integration/quick_tiling_test.cpp
 +++ b/autotests/integration/quick_tiling_test.cpp
 @@ -119,6 +119,7 @@ private Q_SLOTS:
@@ -458,7 +675,7 @@ index 1026bd3755..0394ce3b86 100644
  }
  
  void QuickTilingTest::testQuickTiling_data()
-@@ -2304,6 +2306,84 @@ void QuickTilingTest::testScript()
+@@ -2304,6 +2306,83 @@ void QuickTilingTest::testScript()
      QCOMPARE(window->frameGeometry(), expectedGeometry);
  }
  
@@ -469,22 +686,21 @@ index 1026bd3755..0394ce3b86 100644
 +    const auto desktops = vds->desktops();
 +    const auto outputs = workspace()->outputs();
 +
-+    std::unique_ptr<KWayland::Client::Surface> surface(Test::createSurface());
-+    std::unique_ptr<Test::XdgToplevel> shellSurface(Test::createXdgToplevelSurface(surface.get()));
-+    auto window = Test::renderAndWaitForShown(surface.get(), QSize(100, 100), Qt::blue);
-+    window->setOnAllDesktops(true);
++    Test::XdgToplevelWindow window;
++    QVERIFY(window.show());
++    window.m_window->setOnAllDesktops(true);
 +
 +    // We have to receive a configure event when the window becomes active.
-+    QSignalSpy tileChangedSpy(window, &Window::tileChanged);
-+    QSignalSpy toplevelConfigureRequestedSpy(shellSurface.get(), &Test::XdgToplevel::configureRequested);
-+    QSignalSpy surfaceConfigureRequestedSpy(shellSurface->xdgSurface(), &Test::XdgSurface::configureRequested);
++    QSignalSpy tileChangedSpy(window.m_window, &Window::tileChanged);
++    QSignalSpy toplevelConfigureRequestedSpy(window.m_toplevel.get(), &Test::XdgToplevel::configureRequested);
++    QSignalSpy surfaceConfigureRequestedSpy(window.m_toplevel->xdgSurface(), &Test::XdgSurface::configureRequested);
 +    QVERIFY(surfaceConfigureRequestedSpy.wait());
 +    QCOMPARE(surfaceConfigureRequestedSpy.count(), 1);
 +
 +    auto ackConfigure = [&]() {
 +        QVERIFY(surfaceConfigureRequestedSpy.wait());
-+        shellSurface->xdgSurface()->ack_configure(surfaceConfigureRequestedSpy.last().at(0).value<quint32>());
-+        Test::render(surface.get(), toplevelConfigureRequestedSpy.last().at(0).toSize(), Qt::blue);
++        window.m_toplevel->xdgSurface()->ack_configure(surfaceConfigureRequestedSpy.last().at(0).value<quint32>());
++        Test::render(window.m_surface.get(), toplevelConfigureRequestedSpy.last().at(0).toSize(), Qt::blue);
 +        QVERIFY(tileChangedSpy.wait());
 +    };
 +
@@ -510,34 +726,34 @@ index 1026bd3755..0394ce3b86 100644
 +    VirtualDesktop *customTileDesktop = vds->desktopForX11Id(2);
 +    Tile *quickTile = workspace()->tileManager(tileOutput)->quickRootTile(quickTileDesktop)->tileForMode(QuickTileFlag::Left);
 +    Tile *customTile = workspace()->rootTile(tileOutput, customTileDesktop)->childTile(1);
-+    const RectF originalGeometry = window->frameGeometry();
++    const RectF originalGeometry = window.m_window->frameGeometry();
 +
 +    vds->setCurrent(quickTileDesktop, tileOutput);
-+    quickTile->manage(window);
-+    QCOMPARE(window->tile(), nullptr);
-+    QCOMPARE(window->requestedTile(), quickTile);
-+    QCOMPARE(window->frameGeometry(), originalGeometry);
++    quickTile->manage(window.m_window);
++    QCOMPARE(window.m_window->tile(), nullptr);
++    QCOMPARE(window.m_window->requestedTile(), quickTile);
++    QCOMPARE(window.m_window->frameGeometry(), originalGeometry);
 +    ackConfigure();
-+    QCOMPARE(window->tile(), quickTile);
-+    QCOMPARE(window->requestedTile(), quickTile);
-+    QCOMPARE(window->frameGeometry(), quickTile->windowGeometry());
++    QCOMPARE(window.m_window->tile(), quickTile);
++    QCOMPARE(window.m_window->requestedTile(), quickTile);
++    QCOMPARE(window.m_window->frameGeometry(), quickTile->windowGeometry());
 +
 +    vds->setCurrent(customTileDesktop, tileOutput);
-+    customTile->manage(window);
++    customTile->manage(window.m_window);
 +    ackConfigure();
-+    QCOMPARE(window->tile(), customTile);
-+    QCOMPARE(window->requestedTile(), customTile);
-+    QCOMPARE(window->frameGeometry(), customTile->windowGeometry());
++    QCOMPARE(window.m_window->tile(), customTile);
++    QCOMPARE(window.m_window->requestedTile(), customTile);
++    QCOMPARE(window.m_window->frameGeometry(), customTile->windowGeometry());
 +
 +    vds->setCurrent(customTileDesktop, otherOutput);
-+    QCOMPARE(window->tile(), customTile);
-+    QCOMPARE(window->requestedTile(), customTile);
-+    QCOMPARE(window->frameGeometry(), customTile->windowGeometry());
++    QCOMPARE(window.m_window->tile(), customTile);
++    QCOMPARE(window.m_window->requestedTile(), customTile);
++    QCOMPARE(window.m_window->frameGeometry(), customTile->windowGeometry());
 +
 +    vds->setCurrent(quickTileDesktop, otherOutput);
-+    QCOMPARE(window->tile(), customTile);
-+    QCOMPARE(window->requestedTile(), customTile);
-+    QCOMPARE(window->frameGeometry(), customTile->windowGeometry());
++    QCOMPARE(window.m_window->tile(), customTile);
++    QCOMPARE(window.m_window->requestedTile(), customTile);
++    QCOMPARE(window.m_window->frameGeometry(), customTile->windowGeometry());
 +}
 +
  void QuickTilingTest::testDontCrashWithMaximizeWindowRule()
@@ -1096,6 +1312,83 @@ index 28f827e119..00d6b528f8 100644
  void TestXdgShellWindowRules::testDesktopsApplyNow()
  {
      // We need at least two virtual desktop for this test.
+diff --git a/autotests/integration/xdgshellwindow_test.cpp b/autotests/integration/xdgshellwindow_test.cpp
+index 1ee7e5f115..d6eba05438 100644
+--- a/autotests/integration/xdgshellwindow_test.cpp
++++ b/autotests/integration/xdgshellwindow_test.cpp
+@@ -65,6 +65,7 @@ private Q_SLOTS:
+     void testFullscreen();
+     void testUserCanSetFullscreen();
+     void testSendFullScreenWindowToAnotherOutput();
++    void testFullscreenPerOutputVirtualDesktops();
+ 
+     void testMaximizeHorizontal();
+     void testMaximizeVertical();
+@@ -232,6 +233,8 @@ void TestXdgShellWindow::init()
+     workspace()->setActiveOutput(QPoint(640, 512));
+     // put mouse in the middle of screen one
+     KWin::input()->pointer()->warp(QPoint(640, 512));
++    VirtualDesktopManager::self()->setCount(1);
++    VirtualDesktopManager::self()->setPerOutputVirtualDesktops(false);
+ }
+ 
+ void TestXdgShellWindow::cleanup()
+@@ -505,6 +508,55 @@ void TestXdgShellWindow::testSendFullScreenWindowToAnotherOutput()
+     QCOMPARE(window->output(), outputs[1]);
+ }
+ 
++void TestXdgShellWindow::testFullscreenPerOutputVirtualDesktops()
++{
++    // This test verifies that opening a fullscreen window on inactive output doesn't cause it to switch the output's desktop
++
++    const auto outputs = workspace()->outputs();
++    VirtualDesktopManager::self()->setCount(2);
++    VirtualDesktopManager::self()->setPerOutputVirtualDesktops(true);
++    const auto desktops = VirtualDesktopManager::self()->desktops();
++    VirtualDesktopManager::self()->setCurrent(desktops[0], outputs[0]);
++    VirtualDesktopManager::self()->setCurrent(desktops[1], outputs[1]);
++
++    QCOMPARE(workspace()->activeOutput(), outputs[0]);
++    QCOMPARE(VirtualDesktopManager::self()->currentDesktop(outputs[0]), desktops[0]);
++    QCOMPARE(VirtualDesktopManager::self()->currentDesktop(outputs[1]), desktops[1]);
++
++    std::unique_ptr<KWayland::Client::Surface> surface(Test::createSurface());
++    std::unique_ptr<Test::XdgToplevel> shellSurface(Test::createXdgToplevelSurface(surface.get(), Test::CreationSetup::CreateOnly));
++
++    QSignalSpy windowAddedSpy(workspace(), &Workspace::windowAdded);
++    QSignalSpy configureRequestedSpy(shellSurface->xdgSurface(), &Test::XdgSurface::configureRequested);
++
++    shellSurface->set_fullscreen(*Test::waylandOutput(outputs[1]->name()));
++
++    // Tell the compositor that we want to map the surface.
++    surface->commit(KWayland::Client::Surface::CommitFlag::None);
++
++    // The compositor will respond with a configure event.
++    QVERIFY(configureRequestedSpy.wait());
++    QCOMPARE(configureRequestedSpy.count(), 1);
++    shellSurface->xdgSurface()->ack_configure(configureRequestedSpy.last().at(0).value<quint32>());
++
++    // Now we can attach a buffer with actual data to the surface.
++    Test::render(surface.get(), QSize(100, 50), Qt::blue);
++    QVERIFY(windowAddedSpy.wait());
++    QCOMPARE(windowAddedSpy.count(), 1);
++    Window *window = windowAddedSpy.last().first().value<Window *>();
++    QVERIFY(window);
++    QCOMPARE(window->readyForPainting(), true);
++    QCOMPARE(window->output(), outputs[1]);
++
++    // Make sure that the virtual desktop assignment didn't change
++    QCOMPARE(VirtualDesktopManager::self()->currentDesktop(outputs[0]), desktops[0]);
++    QCOMPARE(VirtualDesktopManager::self()->currentDesktop(outputs[1]), desktops[1]);
++
++    // Destroy the test window.
++    shellSurface.reset();
++    QVERIFY(Test::waitForWindowClosed(window));
++}
++
+ void TestXdgShellWindow::testMaximizedToFullscreen_data()
+ {
+     QTest::addColumn<Test::XdgToplevelDecorationV1::mode>("decoMode");
 diff --git a/autotests/test_virtual_desktops.cpp b/autotests/test_virtual_desktops.cpp
 index ec25c18246..4fc4283151 100644
 --- a/autotests/test_virtual_desktops.cpp
@@ -1410,10 +1703,10 @@ index ec25c18246..4fc4283151 100644
  {
      VirtualDesktopManager *vds = VirtualDesktopManager::self();
 diff --git a/src/activation.cpp b/src/activation.cpp
-index 5b01ddb5ee..a5f58fa378 100644
+index 1598ddd37e..d18611db67 100644
 --- a/src/activation.cpp
 +++ b/src/activation.cpp
-@@ -300,10 +300,10 @@ void Workspace::activateWindow(Window *window, bool force)
+@@ -302,10 +302,10 @@ void Workspace::activateWindow(Window *window, bool force)
          ++block_focus;
          switch (options->activationDesktopPolicy()) {
          case Options::ActivationDesktopPolicy::SwitchToOtherDesktop:
@@ -1426,7 +1719,7 @@ index 5b01ddb5ee..a5f58fa378 100644
              break;
          case Options::ActivationDesktopPolicy::DoNothing:
              break;
-@@ -315,7 +315,7 @@ void Workspace::activateWindow(Window *window, bool force)
+@@ -317,7 +317,7 @@ void Workspace::activateWindow(Window *window, bool force)
          ++block_focus;
          // DBUS!
          // first isn't necessarily best, but it's easiest
@@ -1435,7 +1728,7 @@ index 5b01ddb5ee..a5f58fa378 100644
          --block_focus;
      }
  #endif
-@@ -431,8 +431,8 @@ void Workspace::activateNextWindow(Window *window)
+@@ -433,8 +433,8 @@ void Workspace::activateNextWindow(Window *window)
      Window *focusCandidate = nullptr;
  
      if (options->focusPolicyIsReasonable()) {
@@ -1445,7 +1738,7 @@ index 5b01ddb5ee..a5f58fa378 100644
  
          if (!focusCandidate && showingDesktop()) {
              focusCandidate = findDesktop(desktop, output); // to not break the state
-@@ -481,7 +481,7 @@ void Workspace::switchToOutput(LogicalOutput *output)
+@@ -483,7 +483,7 @@ void Workspace::switchToOutput(LogicalOutput *output)
          return;
      }
      closeActivePopup();
@@ -1455,10 +1748,10 @@ index 5b01ddb5ee..a5f58fa378 100644
      if (get_focus == nullptr) {
          get_focus = findDesktop(desktop, output);
 diff --git a/src/activities.cpp b/src/activities.cpp
-index a68633ec4d..cdbb5e08fd 100644
+index a68633ec4d..d05607404a 100644
 --- a/src/activities.cpp
 +++ b/src/activities.cpp
-@@ -35,15 +35,18 @@ Activities::Activities()
+@@ -35,15 +35,20 @@ Activities::Activities()
      connect(m_controller, &KActivities::Controller::serviceStatusChanged, this, &Activities::slotServiceStatusChanged);
  
      m_config = KSharedConfig::openStateConfig();
@@ -1476,9 +1769,11 @@ index a68633ec4d..cdbb5e08fd 100644
 +    kwinApp()->config()->group("Activities").deleteGroup("LastVirtualDesktop");
 +    auto perOutputLastDesktopConfig = m_config->group("Activities").group("PerOutputLastVirtualDesktop");
 +
-+    for (const auto &activity : perOutputLastDesktopConfig.groupList()) {
++    const auto &activities = perOutputLastDesktopConfig.groupList();
++    for (const auto &activity : activities) {
 +        auto activityLastDesktopConfig = perOutputLastDesktopConfig.group(activity);
-+        for (const auto &outputUuid : activityLastDesktopConfig.keyList()) {
++        const auto &outputUuids = activityLastDesktopConfig.keyList();
++        for (const auto &outputUuid : outputUuids) {
 +            const QString desktop = activityLastDesktopConfig.readEntry(outputUuid);
 +            if (!desktop.isEmpty()) {
 +                m_lastVirtualDesktop[activity][outputUuid] = desktop;
@@ -1486,7 +1781,7 @@ index a68633ec4d..cdbb5e08fd 100644
          }
      }
  
-@@ -62,6 +65,24 @@ KActivities::Consumer::ServiceStatus Activities::serviceStatus() const
+@@ -62,6 +67,24 @@ KActivities::Consumer::ServiceStatus Activities::serviceStatus() const
      return m_controller->serviceStatus();
  }
  
@@ -1511,7 +1806,7 @@ index a68633ec4d..cdbb5e08fd 100644
  void Activities::slotServiceStatusChanged()
  {
      if (m_controller->serviceStatus() != KActivities::Consumer::Running) {
-@@ -79,19 +100,19 @@ void Activities::slotServiceStatusChanged()
+@@ -79,19 +102,19 @@ void Activities::slotServiceStatusChanged()
      }
  }
  
@@ -1538,7 +1833,7 @@ index a68633ec4d..cdbb5e08fd 100644
  }
  
  void Activities::slotCurrentChanged(const QString &newActivity)
-@@ -103,14 +124,17 @@ void Activities::slotCurrentChanged(const QString &newActivity)
+@@ -103,14 +126,18 @@ void Activities::slotCurrentChanged(const QString &newActivity)
      m_previous = m_current;
      m_current = newActivity;
  
@@ -1551,7 +1846,8 @@ index a68633ec4d..cdbb5e08fd 100644
 -        if (desktop) {
 -            VirtualDesktopManager::self()->setCurrent(desktop);
 +        const auto &outputDesktops = it->second;
-+        for (LogicalOutput *output : workspace()->outputs()) {
++        const auto outputs = workspace()->outputs();
++        for (LogicalOutput *output : outputs) {
 +            const auto outputDesktopIt = outputDesktops.find(output->uuid());
 +            if (outputDesktopIt != outputDesktops.end()) {
 +                VirtualDesktop *desktop = VirtualDesktopManager::self()->desktopForId(outputDesktopIt->second);
@@ -1562,7 +1858,7 @@ index a68633ec4d..cdbb5e08fd 100644
          }
      }
  
-@@ -131,7 +155,7 @@ void Activities::slotRemoved(const QString &activity)
+@@ -131,7 +158,7 @@ void Activities::slotRemoved(const QString &activity)
      }
  
      m_lastVirtualDesktop.erase(activity);
@@ -1620,10 +1916,10 @@ index cdaeda7e67..6dcfc53826 100644
  };
  
 diff --git a/src/dbusinterface.cpp b/src/dbusinterface.cpp
-index 177316459a..cdee5d09de 100644
+index 177316459a..ca9aa924a3 100644
 --- a/src/dbusinterface.cpp
 +++ b/src/dbusinterface.cpp
-@@ -298,8 +298,11 @@ VirtualDesktopManagerDBusInterface::VirtualDesktopManagerDBusInterface(VirtualDe
+@@ -298,8 +298,20 @@ VirtualDesktopManagerDBusInterface::VirtualDesktopManagerDBusInterface(VirtualDe
                                                   QStringLiteral("org.kde.KWin.VirtualDesktopManager"),
                                                   this);
  
@@ -1633,10 +1929,31 @@ index 177316459a..cdee5d09de 100644
 +        if (output != workspace()->activeOutput()) {
 +            return;
 +        }
-+        Q_EMIT currentChanged(newDesktop->id());
++        m_lastDesktopId = newDesktop->id();
++        Q_EMIT currentChanged(m_lastDesktopId);
++    });
++    connect(workspace(), &Workspace::activeOutputChanged, this, [this](LogicalOutput *output) {
++        QString newDesktopId = m_manager->currentDesktop(output)->id();
++        if (m_lastDesktopId == newDesktopId) {
++            return;
++        }
++        m_lastDesktopId = newDesktopId;
++        Q_EMIT currentChanged(m_lastDesktopId);
      });
  
      connect(m_manager, &VirtualDesktopManager::countChanged, this, [this](uint previousCount, uint newCount) {
+diff --git a/src/dbusinterface.h b/src/dbusinterface.h
+index b128e2270b..bba6478b9d 100644
+--- a/src/dbusinterface.h
++++ b/src/dbusinterface.h
+@@ -243,6 +243,7 @@ public Q_SLOTS:
+ 
+ private:
+     VirtualDesktopManager *m_manager;
++    QString m_lastDesktopId;
+ };
+ 
+ class PluginManagerDBusInterface : public QObject
 diff --git a/src/effect/effecthandler.cpp b/src/effect/effecthandler.cpp
 index 6f6142a820..5255f36ca1 100644
 --- a/src/effect/effecthandler.cpp
@@ -1750,6 +2067,89 @@ index 824fb44d9e..dd92be28a8 100644
  }
  
  bool EffectWindow::isOnDesktop(VirtualDesktop *desktop) const
+diff --git a/src/effect/quickeffect.cpp b/src/effect/quickeffect.cpp
+index b8e771f2c1..3c32646f37 100644
+--- a/src/effect/quickeffect.cpp
++++ b/src/effect/quickeffect.cpp
+@@ -7,6 +7,7 @@
+ #include "effect/quickeffect.h"
+ #include "core/output.h"
+ #include "effect/effecthandler.h"
++#include "virtualdesktops.h"
+ 
+ #include "logging_p.h"
+ 
+@@ -99,6 +100,13 @@ QuickSceneView::QuickSceneView(QuickSceneEffect *effect, LogicalOutput *screen)
+     connect(screen, &LogicalOutput::geometryChanged, this, [this, screen]() {
+         setGeometry(screen->geometry());
+     });
++    connect(VirtualDesktopManager::self(), &VirtualDesktopManager::currentChanged, this, [this](VirtualDesktop *, VirtualDesktop *newDesktop, LogicalOutput *screen) {
++        if (m_screen != screen) {
++            return;
++        }
++
++        Q_EMIT currentDesktopChanged(newDesktop);
++    });
+ 
+     s_views.insert(window(), this);
+ }
+@@ -158,6 +166,16 @@ void QuickSceneView::scheduleRepaint()
+     effects->addRepaint(geometry());
+ }
+ 
++VirtualDesktop *QuickSceneView::currentDesktop() const
++{
++    return VirtualDesktopManager::self()->currentDesktop(m_screen);
++}
++
++void QuickSceneView::setCurrentDesktop(VirtualDesktop *desktop)
++{
++    VirtualDesktopManager::self()->setCurrent(desktop, m_screen);
++}
++
+ QuickSceneView *QuickSceneView::findView(QQuickItem *item)
+ {
+     return s_views.value(item->window());
+diff --git a/src/effect/quickeffect.h b/src/effect/quickeffect.h
+index 0a6e976bf6..4c29ffd35a 100644
+--- a/src/effect/quickeffect.h
++++ b/src/effect/quickeffect.h
+@@ -17,6 +17,7 @@ namespace KWin
+ 
+ class QuickSceneEffect;
+ class QuickSceneEffectPrivate;
++class VirtualDesktop;
+ 
+ /**
+  * The QuickSceneView represents a QtQuick scene view on a particular screen.
+@@ -32,6 +33,7 @@ class KWIN_EXPORT QuickSceneView : public OffscreenQuickView
+     Q_PROPERTY(QuickSceneEffect *effect READ effect CONSTANT)
+     Q_PROPERTY(LogicalOutput *screen READ screen CONSTANT)
+     Q_PROPERTY(QQuickItem *rootItem READ rootItem CONSTANT)
++    Q_PROPERTY(VirtualDesktop *currentDesktop READ currentDesktop WRITE setCurrentDesktop NOTIFY currentDesktopChanged)
+ 
+ public:
+     explicit QuickSceneView(QuickSceneEffect *effect, LogicalOutput *screen);
+@@ -43,6 +45,9 @@ public:
+     QQuickItem *rootItem() const;
+     void setRootItem(QQuickItem *item);
+ 
++    VirtualDesktop *currentDesktop() const;
++    void setCurrentDesktop(VirtualDesktop *desktop);
++
+     bool isDirty() const;
+     void markDirty();
+     void resetDirty();
+@@ -53,6 +58,9 @@ public:
+ public Q_SLOTS:
+     void scheduleRepaint();
+ 
++Q_SIGNALS:
++    void currentDesktopChanged(VirtualDesktop *newDesktop);
++
+ private:
+     QuickSceneEffect *m_effect;
+     LogicalOutput *m_screen;
 diff --git a/src/focuschain.cpp b/src/focuschain.cpp
 index 857e3a053c..ade450f4e7 100644
 --- a/src/focuschain.cpp
@@ -1819,7 +2219,7 @@ index c988555ed6..f6baa471ea 100644
 -
  } // namespace
 diff --git a/src/internalwindow.cpp b/src/internalwindow.cpp
-index c03d03696b..d5008c3c4d 100644
+index c03d03696b..5f18098c1a 100644
 --- a/src/internalwindow.cpp
 +++ b/src/internalwindow.cpp
 @@ -445,7 +445,7 @@ void InternalWindow::commitGeometry(const RectF &rect)
@@ -1831,17 +2231,17 @@ index c03d03696b..d5008c3c4d 100644
  
      Q_EMIT frameGeometryAboutToChange();
  
-@@ -466,9 +466,7 @@ void InternalWindow::commitGeometry(const RectF &rect)
-     if (oldFrameGeometry != m_frameGeometry) {
-         Q_EMIT frameGeometryChanged(oldFrameGeometry);
+@@ -468,6 +468,10 @@ void InternalWindow::commitGeometry(const RectF &rect)
      }
--    if (oldOutput != m_output) {
--        Q_EMIT outputChanged();
--    }
-+    finishOutputChange(oldOutput);
+     if (oldOutput != m_output) {
+         Q_EMIT outputChanged();
++
++        if (isInteractiveMoveResize()) {
++            finishInteractiveOutputChange(oldOutput);
++        }
+     }
  }
  
- void InternalWindow::setCaption(const QString &caption)
 diff --git a/src/kcms/desktop/ui/main.qml b/src/kcms/desktop/ui/main.qml
 index 765c4aa2e7..469542e009 100644
 --- a/src/kcms/desktop/ui/main.qml
@@ -2242,10 +2642,10 @@ index b232fc01a4..9738d8b01b 100644
  }
  
 diff --git a/src/plugins/overview/overvieweffect.cpp b/src/plugins/overview/overvieweffect.cpp
-index 4310fdcb4c..fec157de87 100644
+index 4310fdcb4c..3336f1c156 100644
 --- a/src/plugins/overview/overvieweffect.cpp
 +++ b/src/plugins/overview/overvieweffect.cpp
-@@ -105,17 +105,24 @@ OverviewEffect::OverviewEffect()
+@@ -105,17 +105,25 @@ OverviewEffect::OverviewEffect()
      connect(m_gridState, &EffectTogglableState::inProgressChanged, this, &OverviewEffect::gridGestureInProgressChanged);
      connect(m_gridState, &EffectTogglableState::partialActivationFactorChanged, this, &OverviewEffect::gridPartialActivationFactorChanged);
  
@@ -2267,8 +2667,9 @@ index 4310fdcb4c..fec157de87 100644
 -        m_desktopOffset = QPointF(0, 0);
 -        Q_EMIT desktopOffsetChanged();
 +        m_screenDesktopOffsets.clear();
++        const auto screens = effects->screens();
 +
-+        for (LogicalOutput *output : effects->screens()) {
++        for (LogicalOutput *output : screens) {
 +            Q_EMIT desktopOffsetChanged(output);
 +        }
 +    });
@@ -2278,7 +2679,7 @@ index 4310fdcb4c..fec157de87 100644
      });
  
      m_shutdownTimer->setSingleShot(true);
-@@ -262,9 +269,9 @@ bool OverviewEffect::gridGestureInProgress() const
+@@ -262,9 +270,9 @@ bool OverviewEffect::gridGestureInProgress() const
      return m_gridState->inProgress();
  }
  
@@ -2329,37 +2730,55 @@ index 99fbf7719b..ed366fba7b 100644
      bool m_filterWindows = true;
      int m_animationDuration = 400;
  };
+diff --git a/src/plugins/overview/qml/DesktopBar.qml b/src/plugins/overview/qml/DesktopBar.qml
+index b36c693ed8..eef94818e7 100644
+--- a/src/plugins/overview/qml/DesktopBar.qml
++++ b/src/plugins/overview/qml/DesktopBar.qml
+@@ -75,10 +75,10 @@ Item {
+                     Keys.onRightPressed: nextItemInFocusChain(!LayoutMirroring.enabled).forceActiveFocus(Qt.TabFocusReason);
+ 
+                     function activate() {
+-                        if (KWinComponents.Workspace.currentDesktop === delegate.desktop) {
++                        if (KWinComponents.SceneView.currentDesktop === delegate.desktop) {
+                             effect.deactivate()
+                         } else {
+-                            KWinComponents.Workspace.currentDesktop = delegate.desktop;
++                            KWinComponents.SceneView.currentDesktop = delegate.desktop;
+                         }
+                     }
+ 
 diff --git a/src/plugins/overview/qml/Main.qml b/src/plugins/overview/qml/Main.qml
-index ce021afe95..db4b73b37a 100644
+index ce021afe95..90275f8741 100644
 --- a/src/plugins/overview/qml/Main.qml
 +++ b/src/plugins/overview/qml/Main.qml
-@@ -32,6 +32,7 @@ FocusScope {
+@@ -32,6 +32,8 @@ FocusScope {
      property bool organized: false
  
      property bool verticalDesktopBar: KWinComponents.Workspace.desktopGridHeight >= bar.desktopCount && KWinComponents.Workspace.desktopGridHeight != 1
-+    property QtObject currentDesktop: KWinComponents.Workspace.currentDesktopForScreen(targetScreen)
++    property QtObject currentDesktop: KWinComponents.SceneView.currentDesktop
++    property point targetScreenDesktopOffset: effect.desktopOffsetForScreen(targetScreen);
  
      // The values of overviewVal and gridVal might not be 0 on startup,
      // but we always want to animate from 0 to those values. So, we initially
-@@ -124,7 +125,7 @@ FocusScope {
+@@ -124,7 +126,7 @@ FocusScope {
      }
  
      function switchTo(desktop) {
 -        KWinComponents.Workspace.currentDesktop = desktop;
-+        KWinComponents.Workspace.setCurrentDesktopForScreen(desktop, targetScreen);
++        KWinComponents.SceneView.currentDesktop = desktop;
          effect.deactivate();
      }
  
-@@ -171,7 +172,7 @@ FocusScope {
+@@ -171,7 +173,7 @@ FocusScope {
          }
          let newIndex = y * container.columns + x;
  
 -        KWinComponents.Workspace.currentDesktop = allDesktopHeaps.itemAt(newIndex).desktop
-+        KWinComponents.Workspace.setCurrentDesktopForScreen(allDesktopHeaps.itemAt(newIndex).desktop, targetScreen);
++        KWinComponents.SceneView.currentDesktop = allDesktopHeaps.itemAt(newIndex).desktop;
          allDesktopHeaps.itemAt(newIndex).nestedHeap.focus = true
          allDesktopHeaps.itemAt(newIndex).selectLastItem(invertedDirection);
          return true;
-@@ -248,7 +249,7 @@ FocusScope {
+@@ -248,7 +250,7 @@ FocusScope {
          KWinComponents.DesktopBackground {
              id: backgroundItem
              activity: KWinComponents.Workspace.currentActivity
@@ -2368,7 +2787,7 @@ index ce021afe95..db4b73b37a 100644
              outputName: targetScreen.name
              visible: false
          }
-@@ -297,7 +298,7 @@ FocusScope {
+@@ -297,7 +299,7 @@ FocusScope {
              windowModel: stackModel
              desktopModel: desktopModel
              verticalDesktopBar: container.verticalDesktopBar
@@ -2377,7 +2796,7 @@ index ce021afe95..db4b73b37a 100644
              heap: allDesktopHeaps.currentHeap
          }
      }
-@@ -425,7 +426,7 @@ FocusScope {
+@@ -425,7 +427,7 @@ FocusScope {
  
                  required property QtObject desktop
                  required property int index
@@ -2386,7 +2805,7 @@ index ce021afe95..db4b73b37a 100644
                  readonly property bool nearCurrent: Math.abs(deltaColumn) <= 1 && Math.abs(deltaRow) <= 1
                  readonly property var nestedHeap: heap
  
-@@ -437,14 +438,14 @@ FocusScope {
+@@ -437,14 +439,14 @@ FocusScope {
                  property real column: index % columns
                  // deltaX and deltaY are used to move all the desktops together to 1:1 animate the
                  // switching between different desktops
@@ -2398,18 +2817,18 @@ index ce021afe95..db4b73b37a 100644
 -                                       row == 0 ? Math.max(0, effect.desktopOffset.y) :
 -                                       row == rows - 1 ? Math.min(0, effect.desktopOffset.y) :
 -                                       effect.desktopOffset.y)
-+                property real deltaX: (!current ? targetScreenDesktopOffset.desktopOffset.x :
-+                                       column == 0 ? Math.max(0, targetScreenDesktopOffset.desktopOffset.x) :
-+                                       column == columns - 1 ? Math.min(0, targetScreenDesktopOffset.desktopOffset.x) :
-+                                           targetScreenDesktopOffset.desktopOffset.x)
-+                property real deltaY: (!current ? targetScreenDesktopOffset.desktopOffset.y :
-+                                       row == 0 ? Math.max(0, targetScreenDesktopOffset.desktopOffset.y) :
-+                                       row == rows - 1 ? Math.min(0, targetScreenDesktopOffset.desktopOffset.y) :
-+                                           targetScreenDesktopOffset.desktopOffset.y)
++                property real deltaX: (!current ? targetScreenDesktopOffset.x :
++                                       column == 0 ? Math.max(0, targetScreenDesktopOffset.x) :
++                                       column == columns - 1 ? Math.min(0, targetScreenDesktopOffset.x) :
++                                           targetScreenDesktopOffset.x)
++                property real deltaY: (!current ? targetScreenDesktopOffset.y :
++                                       row == 0 ? Math.max(0, targetScreenDesktopOffset.y) :
++                                       row == rows - 1 ? Math.min(0, targetScreenDesktopOffset.y) :
++                                           targetScreenDesktopOffset.y)
                  // deltaColumn and deltaRows are the difference between the column/row of this desktop
                  // compared to the column/row of the active one
                  property real deltaColumn: column - allDesktopHeaps.currentBackgroundItem.column - deltaX
-@@ -517,7 +518,7 @@ FocusScope {
+@@ -517,7 +519,7 @@ FocusScope {
                          anchors.fill: parent
                          anchors.margins: gridVal !== 0 ? Math.round(mainBackground.current * gridVal * (1.5 / gridScale.xScale)) : 0
                          activity: KWinComponents.Workspace.currentActivity
@@ -2418,16 +2837,16 @@ index ce021afe95..db4b73b37a 100644
                          outputName: targetScreen.name
                          visible: false
                      }
-@@ -583,7 +584,7 @@ FocusScope {
+@@ -583,7 +585,7 @@ FocusScope {
                      TapHandler {
                          acceptedButtons: Qt.LeftButton
                          onTapped: {
 -                            KWinComponents.Workspace.currentDesktop = mainBackground.desktop;
-+                            KWinComponents.Workspace.setCurrentDesktopForScreen(mainBackground.desktop, container.targetScreen);
++                            container.KWinComponents.SceneView.currentDesktop = mainBackground.desktop;
                              container.effect.deactivate();
                          }
                      }
-@@ -763,7 +764,7 @@ FocusScope {
+@@ -763,7 +765,7 @@ FocusScope {
  
      Repeater {
          model: KWinComponents.WindowFilterModel {
@@ -2436,15 +2855,10 @@ index ce021afe95..db4b73b37a 100644
              screenName: targetScreen.name
              windowModel: stackModel
              windowType: KWinComponents.WindowFilterModel.Dock
-@@ -798,4 +799,31 @@ FocusScope {
+@@ -798,4 +800,15 @@ FocusScope {
          container.verticalDesktopBar = container.verticalDesktopBar
          organized = true
      }
-+
-+    Item {
-+        id: targetScreenDesktopOffset
-+        property point desktopOffset: effect.desktopOffsetForScreen(targetScreen)
-+    }
 +
 +    Connections {
 +        target: effect
@@ -2453,18 +2867,7 @@ index ce021afe95..db4b73b37a 100644
 +                return;
 +            }
 +
-+            targetScreenDesktopOffset.desktopOffset = effect.desktopOffsetForScreen(screen);
-+        }
-+    }
-+
-+    Connections {
-+        target: KWinComponents.Workspace
-+        onCurrentDesktopChanged: (previous, current, screen) => {
-+            if (screen !== container.targetScreen) {
-+                return;
-+            }
-+
-+            container.currentDesktop = current;
++            container.targetScreenDesktopOffset = effect.desktopOffsetForScreen(screen);
 +        }
 +    }
  }
@@ -2482,7 +2885,7 @@ index be06788927..313da18606 100644
      // Map the area to the output local coordinates.
      m_rect.translate(-m_screen->geometry().topLeft());
 diff --git a/src/plugins/slide/slide.cpp b/src/plugins/slide/slide.cpp
-index 9ee9066536..a2c5f62c29 100644
+index 9ee9066536..59d3205491 100644
 --- a/src/plugins/slide/slide.cpp
 +++ b/src/plugins/slide/slide.cpp
 @@ -22,6 +22,15 @@
@@ -2501,7 +2904,7 @@ index 9ee9066536..a2c5f62c29 100644
  
  SlideEffect::SlideEffect()
  {
-@@ -42,16 +51,24 @@ SlideEffect::SlideEffect()
+@@ -42,16 +51,25 @@ SlideEffect::SlideEffect()
              this, &SlideEffect::finishedSwitching);
      connect(effects, &EffectsHandler::desktopRemoved,
              this, &SlideEffect::finishedSwitching);
@@ -2510,7 +2913,7 @@ index 9ee9066536..a2c5f62c29 100644
 -    connect(effects, &EffectsHandler::screenRemoved,
 -            this, &SlideEffect::finishedSwitching);
 +    connect(effects, &EffectsHandler::screenAdded, this, [this](LogicalOutput *screen) {
-+        m_slideEffectScreens.tryEmplace(screen, this, screen);
++        m_slideEffectScreens.emplace(screen, this, screen);
 +        finishedSwitching();
 +    });
 +    connect(effects, &EffectsHandler::screenRemoved, this, [this](LogicalOutput *screen) {
@@ -2524,13 +2927,14 @@ index 9ee9066536..a2c5f62c29 100644
          m_switchingActivity = false;
      });
 +
-+    for (LogicalOutput *screen : effects->screens()) {
++    const auto screens = effects->screens();
++    for (LogicalOutput *screen : screens) {
 +        m_slideEffectScreens.emplace(screen, this, screen);
 +    }
  }
  
  SlideEffect::~SlideEffect()
-@@ -59,6 +76,11 @@ SlideEffect::~SlideEffect()
+@@ -59,6 +77,11 @@ SlideEffect::~SlideEffect()
      finishedSwitching();
  }
  
@@ -2542,7 +2946,7 @@ index 9ee9066536..a2c5f62c29 100644
  bool SlideEffect::supported()
  {
      return effects->animationsSupported();
-@@ -68,15 +90,22 @@ void SlideEffect::reconfigure(ReconfigureFlags)
+@@ -68,15 +91,22 @@ void SlideEffect::reconfigure(ReconfigureFlags)
  {
      SlideConfig::self()->read();
  
@@ -2569,12 +2973,12 @@ index 9ee9066536..a2c5f62c29 100644
  }
  
  inline Region buildClipRegion(const QPoint &pos, int w, int h)
-@@ -100,6 +129,18 @@ inline Region buildClipRegion(const QPoint &pos, int w, int h)
+@@ -100,6 +130,18 @@ inline Region buildClipRegion(const QPoint &pos, int w, int h)
  
  void SlideEffect::prePaintScreen(ScreenPrePaintData &data, std::chrono::milliseconds presentTime)
  {
 +    if (data.screen) {
-+        getOrCreateSlideEffectScreen(data.screen).prePaintScreen(data, presentTime);
++        getSlideEffectScreen(data.screen).prePaintScreen(data, presentTime);
 +    }
 +
 +    effects->prePaintScreen(data, presentTime);
@@ -2588,7 +2992,7 @@ index 9ee9066536..a2c5f62c29 100644
      const QList<VirtualDesktop *> desktops = effects->desktops();
      const int w = effects->desktopGridWidth();
      const int h = effects->desktopGridHeight();
-@@ -149,22 +190,25 @@ void SlideEffect::prePaintScreen(ScreenPrePaintData &data, std::chrono::millisec
+@@ -149,22 +191,25 @@ void SlideEffect::prePaintScreen(ScreenPrePaintData &data, std::chrono::millisec
          }
      }
  
@@ -2600,7 +3004,7 @@ index 9ee9066536..a2c5f62c29 100644
  
  void SlideEffect::paintScreen(const RenderTarget &renderTarget, const RenderViewport &viewport, int mask, const Region &deviceRegion, LogicalOutput *screen)
 +{
-+    getOrCreateSlideEffectScreen(screen).paintScreen(renderTarget, viewport, mask, deviceRegion);
++    getSlideEffectScreen(screen).paintScreen(renderTarget, viewport, mask, deviceRegion);
 +}
 +
 +void SlideEffectScreen::paintScreen(const RenderTarget &renderTarget, const RenderViewport &viewport, int mask, const Region &deviceRegion)
@@ -2621,7 +3025,7 @@ index 9ee9066536..a2c5f62c29 100644
      return c;
  }
  
-@@ -172,11 +216,14 @@ QPoint SlideEffect::getDrawCoords(QPointF pos, LogicalOutput *screen)
+@@ -172,11 +217,14 @@ QPoint SlideEffect::getDrawCoords(QPointF pos, LogicalOutput *screen)
   * Decide whether given window @p w should be transformed/translated.
   * @returns @c true if given window @p w should be transformed, otherwise @c false
   */
@@ -2638,7 +3042,7 @@ index 9ee9066536..a2c5f62c29 100644
          }
          return false;
      } else if (w == m_movingWindow) {
-@@ -188,8 +235,11 @@ bool SlideEffect::isTranslated(const EffectWindow *w) const
+@@ -188,8 +236,11 @@ bool SlideEffect::isTranslated(const EffectWindow *w) const
  /**
   * Will a window be painted during this frame?
   */
@@ -2651,19 +3055,19 @@ index 9ee9066536..a2c5f62c29 100644
      if (w->isOnAllDesktops()) {
          return true;
      }
-@@ -211,6 +261,11 @@ void SlideEffect::prePaintWindow(RenderView *view, EffectWindow *w, WindowPrePai
+@@ -211,6 +262,11 @@ void SlideEffect::prePaintWindow(RenderView *view, EffectWindow *w, WindowPrePai
  }
  
  void SlideEffect::paintWindow(const RenderTarget &renderTarget, const RenderViewport &viewport, EffectWindow *w, int mask, const Region &deviceGeometry, WindowPaintData &data)
 +{
-+    getOrCreateSlideEffectScreen(w->screen()).paintWindow(renderTarget, viewport, w, mask, deviceGeometry, data);
++    getSlideEffectScreen(w->screen()).paintWindow(renderTarget, viewport, w, mask, deviceGeometry, data);
 +}
 +
 +void SlideEffectScreen::paintWindow(const RenderTarget &renderTarget, const RenderViewport &viewport, EffectWindow *w, int mask, const Region &deviceGeometry, WindowPaintData &data)
  {
      if (!willBePainted(w)) {
          return;
-@@ -266,19 +321,35 @@ void SlideEffect::paintWindow(const RenderTarget &renderTarget, const RenderView
+@@ -266,19 +322,35 @@ void SlideEffect::paintWindow(const RenderTarget &renderTarget, const RenderView
  }
  
  void SlideEffect::postPaintScreen()
@@ -2702,7 +3106,7 @@ index 9ee9066536..a2c5f62c29 100644
  {
      if (p.x() < 0) {
          p.setX(p.x() + std::ceil(-p.x() / effects->desktopGridWidth()) * effects->desktopGridWidth());
-@@ -289,7 +360,7 @@ QPointF SlideEffect::forcePositivePosition(QPointF p) const
+@@ -289,7 +361,7 @@ QPointF SlideEffect::forcePositivePosition(QPointF p) const
      return p;
  }
  
@@ -2711,7 +3115,7 @@ index 9ee9066536..a2c5f62c29 100644
  {
      // Static docks(i.e. this effect doesn't slide docks) should be elevated
      // so they can properly animate themselves when an user enters or leaves
-@@ -302,7 +373,7 @@ bool SlideEffect::shouldElevate(const EffectWindow *w) const
+@@ -302,7 +374,7 @@ bool SlideEffect::shouldElevate(const EffectWindow *w) const
   * Called AFTER the gesture is released.
   * Sets up animation to round off to the new current desktop.
   */
@@ -2720,7 +3124,7 @@ index 9ee9066536..a2c5f62c29 100644
  {
      if (m_state == State::Inactive) {
          prepareSwitching();
-@@ -324,17 +395,20 @@ void SlideEffect::startAnimation(const QPointF &oldPos, VirtualDesktop *current,
+@@ -324,16 +396,18 @@ void SlideEffect::startAnimation(const QPointF &oldPos, VirtualDesktop *current,
      m_motionY.setPosition(m_startPos.y() * virtualSpaceSize.height());
      m_lastPresentTime = std::chrono::milliseconds::zero();
  
@@ -2740,10 +3144,8 @@ index 9ee9066536..a2c5f62c29 100644
 +            continue;
 +        }
          m_windowData[w] = WindowData{
-+            .deleteRef = EffectWindowDeletedRef(w),
              .visibilityRef = EffectWindowVisibleRef(w, EffectWindow::PAINT_DISABLED_BY_DESKTOP),
          };
- 
 @@ -348,12 +422,30 @@ void SlideEffect::prepareSwitching()
  }
  
@@ -2789,7 +3191,7 @@ index 9ee9066536..a2c5f62c29 100644
          return;
      }
  
-+    getOrCreateSlideEffectScreen(screen).desktopChanged(old, current, with);
++    getSlideEffectScreen(screen).desktopChanged(old, current, with);
 +    effects->setActiveFullScreenEffect(this);
 +}
 +
@@ -2809,7 +3211,7 @@ index 9ee9066536..a2c5f62c29 100644
          return;
      }
  
-+    getOrCreateSlideEffectScreen(output).desktopChanging(old, desktopOffset, with);
++    getSlideEffectScreen(output).desktopChanging(old, desktopOffset, with);
 +    effects->setActiveFullScreenEffect(this);
 +}
 +
@@ -2828,13 +3230,14 @@ index 9ee9066536..a2c5f62c29 100644
  }
  
  void SlideEffect::desktopChangingCancelled()
-@@ -428,11 +530,20 @@ void SlideEffect::desktopChangingCancelled()
+@@ -428,11 +530,21 @@ void SlideEffect::desktopChangingCancelled()
      // If the fingers have been lifted and the current desktop didn't change, start animation
      // to move back to the original virtual desktop.
      if (effects->activeFullScreenEffect() == this) {
 -        startAnimation(m_gesturePos, effects->currentDesktop(), nullptr);
-+        for (LogicalOutput *screen : effects->screens()) {
-+            getOrCreateSlideEffectScreen(screen).desktopChangingCancelled();
++        const auto screens = effects->screens();
++        for (LogicalOutput *screen : screens) {
++            getSlideEffectScreen(screen).desktopChangingCancelled();
 +        }
      }
  }
@@ -2851,37 +3254,29 @@ index 9ee9066536..a2c5f62c29 100644
  {
      if (p.x() < 0) {
          p.setX(0);
-@@ -450,6 +561,14 @@ QPointF SlideEffect::moveInsideDesktopGrid(QPointF p)
+@@ -450,6 +562,11 @@ QPointF SlideEffect::moveInsideDesktopGrid(QPointF p)
  }
  
  void SlideEffect::windowAdded(EffectWindow *w)
 +{
-+    if (!w) {
-+        return;
-+    }
-+    getOrCreateSlideEffectScreen(w->screen()).windowAdded(w);
++    getSlideEffectScreen(w->screen()).windowAdded(w);
 +}
 +
 +void SlideEffectScreen::windowAdded(EffectWindow *w)
  {
      if (m_state == State::Inactive) {
          return;
-@@ -462,11 +581,26 @@ void SlideEffect::windowAdded(EffectWindow *w)
-     w->setData(WindowForceBlurRole, QVariant(true));
- 
-     m_windowData[w] = WindowData{
-+        .deleteRef = EffectWindowDeletedRef(w),
-         .visibilityRef = EffectWindowVisibleRef(w, EffectWindow::PAINT_DISABLED_BY_DESKTOP),
-     };
+@@ -467,6 +584,21 @@ void SlideEffect::windowAdded(EffectWindow *w)
  }
  
  void SlideEffect::windowDeleted(EffectWindow *w)
 +{
++    // FIXME: effectWindow should never be nullptr
 +    if (!w) {
 +        return;
 +    }
 +
-+    // Don't use getOrCreateSlideEffectScreen: it could re-create SlideEffectScreen for removed screen.
++    // This cannot use getSlideEffectScreen, because the screen may be removed before the window.
 +    auto it = m_slideEffectScreens.find(w->screen());
 +    if (it == m_slideEffectScreens.end()) {
 +        return;
@@ -2893,18 +3288,7 @@ index 9ee9066536..a2c5f62c29 100644
  {
      if (m_state == State::Inactive) {
          return;
-@@ -474,8 +608,8 @@ void SlideEffect::windowDeleted(EffectWindow *w)
-     if (w == m_movingWindow) {
-         m_movingWindow = nullptr;
-     }
--    m_elevatedWindows.removeAll(w);
--    m_windowData.remove(w);
-+    // m_windowData holds a EffectWindowDeletedRef, so when this is called the window can no longer be in m_windowData.
-+    // m_elevatedWindows is a subset of m_windowData, therefore the window cannot be in m_elevatedWindows either.
- }
- 
- /*
-@@ -483,7 +617,7 @@ void SlideEffect::windowDeleted(EffectWindow *w)
+@@ -483,7 +615,7 @@ void SlideEffect::windowDeleted(EffectWindow *w)
   * This function decides when it's better to wrap around the grid or not.
   * Only call if wrapping is enabled.
   */
@@ -2913,7 +3297,7 @@ index 9ee9066536..a2c5f62c29 100644
  {
      int w = effects->desktopGridWidth();
      int h = effects->desktopGridHeight();
-@@ -543,13 +677,19 @@ void SlideEffect::optimizePath()
+@@ -543,13 +675,18 @@ void SlideEffect::optimizePath()
   * This function finds the true fastest path, regardless of which direction the animation is already going;
   * I was a little upset about this limitation until I realized that MacOS can't even wrap desktops :)
   */
@@ -2925,17 +3309,16 @@ index 9ee9066536..a2c5f62c29 100644
      return p;
  }
  
-+SlideEffectScreen &SlideEffect::getOrCreateSlideEffectScreen(LogicalOutput *screen)
++SlideEffectScreen &SlideEffect::getSlideEffectScreen(LogicalOutput *screen)
 +{
-+    auto result = m_slideEffectScreens.tryEmplace(screen, this, screen);
-+    return result.iterator.value();
++    return m_slideEffectScreens.find(screen).value();
 +}
 +
  } // namespace KWin
  
  #include "moc_slide.cpp"
 diff --git a/src/plugins/slide/slide.h b/src/plugins/slide/slide.h
-index ca184a0a53..fd1469243d 100644
+index ca184a0a53..ece88dbc8c 100644
 --- a/src/plugins/slide/slide.h
 +++ b/src/plugins/slide/slide.h
 @@ -43,41 +43,28 @@ namespace KWin
@@ -3006,14 +3389,7 @@ index ca184a0a53..fd1469243d 100644
      enum class State {
          Inactive,
          ActiveAnimation,
-@@ -127,12 +109,67 @@ private:
- 
-     struct WindowData
-     {
-+        EffectWindowDeletedRef deleteRef;
-         EffectWindowVisibleRef visibilityRef;
-     };
- 
+@@ -133,6 +115,60 @@ private:
      QList<EffectWindow *> m_elevatedWindows;
      QHash<EffectWindow *, WindowData> m_windowData;
      bool m_switchingActivity = false;
@@ -3059,7 +3435,7 @@ index ca184a0a53..fd1469243d 100644
 +
 +private:
 +    void finishedSwitching();
-+    SlideEffectScreen &getOrCreateSlideEffectScreen(LogicalOutput *screen);
++    SlideEffectScreen &getSlideEffectScreen(LogicalOutput *screen);
 +
 +private:
 +    int m_hGap;
@@ -3074,17 +3450,12 @@ index ca184a0a53..fd1469243d 100644
  };
  
  inline int SlideEffect::horizontalGap() const
-@@ -151,6 +188,16 @@ inline bool SlideEffect::slideBackground() const
+@@ -151,6 +187,11 @@ inline bool SlideEffect::slideBackground() const
  }
  
  inline bool SlideEffect::isActive() const
 +{
-+    for (const SlideEffectScreen &effectScreen : std::as_const(m_slideEffectScreens)) {
-+        if (effectScreen.isActive()) {
-+            return true;
-+        }
-+    }
-+    return false;
++    return std::ranges::any_of(m_slideEffectScreens, &SlideEffectScreen::isActive);
 +}
 +
 +inline bool SlideEffectScreen::isActive() const
@@ -3127,43 +3498,27 @@ index fb21971414..c6e9c96ba1 100644
      scale = std::min(scale, maxwidth / double(mwidth)); // don't be wider than maxwidth pixels
      int add = 0;
 diff --git a/src/plugins/tileseditor/qml/Main.qml b/src/plugins/tileseditor/qml/Main.qml
-index 5fcbc0e088..3f3162b4ec 100644
+index 5fcbc0e088..f8bfe6790b 100644
 --- a/src/plugins/tileseditor/qml/Main.qml
 +++ b/src/plugins/tileseditor/qml/Main.qml
-@@ -39,7 +39,8 @@ FocusScope {
+@@ -39,7 +39,7 @@ FocusScope {
  
      property bool active: false
  
 -    readonly property QtObject rootTile: KWinComponents.Workspace.rootTile(root.targetScreen, KWinComponents.Workspace.currentDesktop)
-+    property QtObject currentDesktop: KWinComponents.Workspace.currentDesktopForScreen(targetScreen)
-+    readonly property QtObject rootTile: KWinComponents.Workspace.rootTile(root.targetScreen, currentDesktop)
++    readonly property QtObject rootTile: KWinComponents.Workspace.rootTile(root.targetScreen, KWinComponents.SceneView.currentDesktop)
  
      Component.onCompleted: {
          root.active = true;
-@@ -61,7 +62,7 @@ FocusScope {
+@@ -61,7 +61,7 @@ FocusScope {
          Repeater {
              model: KWinComponents.WindowFilterModel {
                  activity: KWinComponents.Workspace.currentActivity
 -                desktop: KWinComponents.Workspace.currentDesktop
-+                desktop: root.currentDesktop
++                desktop: root.KWinComponents.SceneView.currentDesktop
                  screenName: targetScreen.name
                  windowModel: KWinComponents.WindowModel {}
              }
-@@ -272,4 +273,14 @@ FocusScope {
-             }
-         }
-     }
-+    Connections {
-+        target: KWinComponents.Workspace
-+        onCurrentDesktopChanged: (previous, current, screen) => {
-+            if (screen !== root.targetScreen) {
-+                return;
-+            }
-+
-+            root.currentDesktop = current;
-+        }
-+    }
- }
 diff --git a/src/plugins/translucency/package/contents/code/main.js b/src/plugins/translucency/package/contents/code/main.js
 index a743597e5b..3b73106c1b 100644
 --- a/src/plugins/translucency/package/contents/code/main.js
@@ -3184,69 +3539,54 @@ index a743597e5b..3b73106c1b 100644
              translucencyEffect.startAnimation(windows[i]);
              if (windows[i] !== effects.activeWindow) {
 diff --git a/src/plugins/windowview/qml/Main.qml b/src/plugins/windowview/qml/Main.qml
-index 175b380138..0038424b0b 100644
+index 175b380138..2d4373b19e 100644
 --- a/src/plugins/windowview/qml/Main.qml
 +++ b/src/plugins/windowview/qml/Main.qml
-@@ -19,6 +19,7 @@ Item {
- 
-     readonly property QtObject effect: KWinComponents.SceneView.effect
-     readonly property QtObject targetScreen: KWinComponents.SceneView.screen
-+    property QtObject currentDesktop: KWinComponents.Workspace.currentDesktopForScreen(targetScreen)
- 
-     property bool animationEnabled: false
-     property bool organized: false
-@@ -63,7 +64,7 @@ Item {
+@@ -63,7 +63,7 @@ Item {
  
      KWinComponents.DesktopBackground {
          activity: KWinComponents.Workspace.currentActivity
 -        desktop: KWinComponents.Workspace.currentDesktop
-+        desktop: currentDesktop
++        desktop: container.KWinComponents.SceneView.currentDesktop
          outputName: targetScreen.name
  
          layer.enabled: true
-@@ -185,7 +186,7 @@ Item {
+@@ -185,7 +185,7 @@ Item {
                      switch (container.effect.mode) {
                          case WindowView.ModeCurrentDesktop:
                          case WindowView.ModeWindowClassCurrentDesktop:
 -                            return KWinComponents.Workspace.currentDesktop;
-+                            return container.currentDesktop;
++                            return container.KWinComponents.SceneView.currentDesktop;
                          default:
                              return undefined;
                      }
-@@ -239,7 +240,7 @@ Item {
+@@ -239,7 +239,7 @@ Item {
          asynchronous: true
  
          model: KWinComponents.WindowFilterModel {
 -            desktop: KWinComponents.Workspace.currentDesktop
-+            desktop: currentDesktop
++            desktop: container.KWinComponents.SceneView.currentDesktop
              screenName: targetScreen.name
              windowModel: stackModel
              windowType: KWinComponents.WindowFilterModel.Dock
-@@ -269,4 +270,15 @@ Item {
-     }
- 
-     Component.onCompleted: start();
-+
-+    Connections {
-+        target: KWinComponents.Workspace
-+        onCurrentDesktopChanged: (previous, current, screen) => {
-+            if (screen !== container.targetScreen) {
-+                return;
-+            }
-+
-+            container.currentDesktop = current;
-+        }
-+    }
- }
 diff --git a/src/scene/windowitem.cpp b/src/scene/windowitem.cpp
-index 5451a2ffb3..beba237521 100644
+index 5451a2ffb3..de58350d84 100644
 --- a/src/scene/windowitem.cpp
 +++ b/src/scene/windowitem.cpp
-@@ -47,6 +47,7 @@ WindowItem::WindowItem(Window *window, Item *parent)
+@@ -47,6 +47,16 @@ WindowItem::WindowItem(Window *window, Item *parent)
      connect(window, &Window::activitiesChanged, this, &WindowItem::updateVisibility);
      connect(window, &Window::desktopsChanged, this, &WindowItem::updateVisibility);
      connect(window, &Window::offscreenRenderingChanged, this, &WindowItem::updateVisibility);
 +    connect(window, &Window::interactiveMoveResizeFinished, this, &WindowItem::updateVisibility);
++    connect(window, &Window::outputChanged, this, [this, window] {
++        // When window's output changes, its visibility may need to change as well, because of different virtual desktops between the previous and new output.
++        // However, the window must remain visible during interactive move/resize, even though it's not (yet) on the target desktop.
++        if (window->isInteractiveResize() || window->isInteractiveMove()) {
++            return;
++        }
++
++        updateVisibility();
++    });
      connect(waylandServer(), &WaylandServer::lockStateChanged, this, &WindowItem::updateVisibility);
      connect(workspace(), &Workspace::currentActivityChanged, this, &WindowItem::updateVisibility);
      connect(workspace(), &Workspace::currentDesktopChanged, this, &WindowItem::updateVisibility);
@@ -3410,7 +3750,7 @@ index a94e2005ce..18276f7fbf 100644
  
  bool Tile::supportsResizeGravity(Gravity gravity)
 diff --git a/src/tiles/tilemanager.cpp b/src/tiles/tilemanager.cpp
-index 873346143c..85432aa195 100644
+index a397525625..f2a3cd8a48 100644
 --- a/src/tiles/tilemanager.cpp
 +++ b/src/tiles/tilemanager.cpp
 @@ -29,7 +29,7 @@ namespace KWin
@@ -3512,7 +3852,7 @@ index 1c89c9705e..88b6ec40f7 100644
      // Center of the active window
      QPoint curPos(window->x() + window->width() / 2, window->y() + window->height() / 2);
 diff --git a/src/virtualdesktops.cpp b/src/virtualdesktops.cpp
-index 4041f7876d..d25fdb9a33 100644
+index ed8eead19c..cce56df65c 100644
 --- a/src/virtualdesktops.cpp
 +++ b/src/virtualdesktops.cpp
 @@ -8,8 +8,10 @@
@@ -3526,7 +3866,7 @@ index 4041f7876d..d25fdb9a33 100644
  // KDE
  #include <KConfigGroup>
  #include <KGlobalAccel>
-@@ -99,20 +101,46 @@ void VirtualDesktopManager::setVirtualDesktopManagement(PlasmaVirtualDesktopMana
+@@ -99,19 +101,42 @@ void VirtualDesktopManager::setVirtualDesktopManagement(PlasmaVirtualDesktopMana
          removeVirtualDesktop(id);
      });
  
@@ -3573,23 +3913,11 @@ index 4041f7876d..d25fdb9a33 100644
 +    });
  
      std::for_each(m_desktops.constBegin(), m_desktops.constEnd(), createPlasmaVirtualDesktop);
++    std::ranges::for_each(workspace()->outputs(), initNewOutput);
  
-+    for (LogicalOutput *output : workspace()->outputs()) {
-+        initNewOutput(output);
-+    }
-+
      m_virtualDesktopManagement->setRows(rows());
      m_virtualDesktopManagement->scheduleDone();
- }
-@@ -209,6 +237,7 @@ KWIN_SINGLETON_FACTORY_VARIABLE(VirtualDesktopManager, s_manager)
- VirtualDesktopManager::VirtualDesktopManager(QObject *parent)
-     : QObject(parent)
-     , m_navigationWrapsAround(false)
-+    , m_perOutputVirtualDesktops(false)
- #if KWIN_BUILD_X11
-     , m_rootInfo(nullptr)
- #endif
-@@ -277,9 +306,8 @@ void VirtualDesktopManager::moveTo(Direction direction, bool wrap)
+@@ -277,9 +302,8 @@ void VirtualDesktopManager::moveTo(Direction direction, bool wrap)
  
  VirtualDesktop *VirtualDesktopManager::above(VirtualDesktop *desktop, bool wrap) const
  {
@@ -3600,7 +3928,7 @@ index 4041f7876d..d25fdb9a33 100644
      }
      QPoint coords = m_grid.gridCoords(desktop);
      Q_ASSERT(coords.x() >= 0);
-@@ -301,9 +329,8 @@ VirtualDesktop *VirtualDesktopManager::above(VirtualDesktop *desktop, bool wrap)
+@@ -301,9 +325,8 @@ VirtualDesktop *VirtualDesktopManager::above(VirtualDesktop *desktop, bool wrap)
  
  VirtualDesktop *VirtualDesktopManager::toRight(VirtualDesktop *desktop, bool wrap) const
  {
@@ -3611,7 +3939,7 @@ index 4041f7876d..d25fdb9a33 100644
      }
      QPoint coords = m_grid.gridCoords(desktop);
      Q_ASSERT(coords.x() >= 0);
-@@ -325,9 +352,8 @@ VirtualDesktop *VirtualDesktopManager::toRight(VirtualDesktop *desktop, bool wra
+@@ -325,9 +348,8 @@ VirtualDesktop *VirtualDesktopManager::toRight(VirtualDesktop *desktop, bool wra
  
  VirtualDesktop *VirtualDesktopManager::below(VirtualDesktop *desktop, bool wrap) const
  {
@@ -3622,7 +3950,7 @@ index 4041f7876d..d25fdb9a33 100644
      }
      QPoint coords = m_grid.gridCoords(desktop);
      Q_ASSERT(coords.x() >= 0);
-@@ -350,9 +376,8 @@ VirtualDesktop *VirtualDesktopManager::below(VirtualDesktop *desktop, bool wrap)
+@@ -350,9 +372,8 @@ VirtualDesktop *VirtualDesktopManager::below(VirtualDesktop *desktop, bool wrap)
  
  VirtualDesktop *VirtualDesktopManager::toLeft(VirtualDesktop *desktop, bool wrap) const
  {
@@ -3633,7 +3961,7 @@ index 4041f7876d..d25fdb9a33 100644
      }
      QPoint coords = m_grid.gridCoords(desktop);
      Q_ASSERT(coords.x() >= 0);
-@@ -374,9 +399,8 @@ VirtualDesktop *VirtualDesktopManager::toLeft(VirtualDesktop *desktop, bool wrap
+@@ -374,9 +395,8 @@ VirtualDesktop *VirtualDesktopManager::toLeft(VirtualDesktop *desktop, bool wrap
  
  VirtualDesktop *VirtualDesktopManager::next(VirtualDesktop *desktop, bool wrap) const
  {
@@ -3644,7 +3972,7 @@ index 4041f7876d..d25fdb9a33 100644
      }
      auto it = std::find(m_desktops.begin(), m_desktops.end(), desktop);
      Q_ASSERT(it != m_desktops.end());
-@@ -393,9 +417,8 @@ VirtualDesktop *VirtualDesktopManager::next(VirtualDesktop *desktop, bool wrap)
+@@ -393,9 +413,8 @@ VirtualDesktop *VirtualDesktopManager::next(VirtualDesktop *desktop, bool wrap)
  
  VirtualDesktop *VirtualDesktopManager::previous(VirtualDesktop *desktop, bool wrap) const
  {
@@ -3655,7 +3983,7 @@ index 4041f7876d..d25fdb9a33 100644
      }
      auto it = std::find(m_desktops.begin(), m_desktops.end(), desktop);
      Q_ASSERT(it != m_desktops.end());
-@@ -519,9 +542,14 @@ void VirtualDesktopManager::removeVirtualDesktop(VirtualDesktop *desktop)
+@@ -519,9 +538,14 @@ void VirtualDesktopManager::removeVirtualDesktop(VirtualDesktop *desktop)
  #endif
      }
  
@@ -3664,16 +3992,16 @@ index 4041f7876d..d25fdb9a33 100644
 -        Q_EMIT currentChanged(desktop, m_current);
 +    VirtualDesktop *newDesktop = (i < m_desktops.count()) ? m_desktops.at(i) : m_desktops.constLast();
 +
-+    for (auto [key, value] : m_currentDesktops.asKeyValueRange()) {
-+        if (value != desktop) {
++    for (const auto &[output, currentDesktop] : m_currentDesktops.asKeyValueRange()) {
++        if (currentDesktop != desktop) {
 +            continue;
 +        }
-+        value = newDesktop;
-+        Q_EMIT currentChanged(desktop, newDesktop, key);
++        currentDesktop = newDesktop;
++        Q_EMIT currentChanged(desktop, newDesktop, output);
      }
  
      updateLayout();
-@@ -568,35 +596,55 @@ void VirtualDesktopManager::moveVirtualDesktop(VirtualDesktop *desktop, int posi
+@@ -568,35 +592,54 @@ void VirtualDesktopManager::moveVirtualDesktop(VirtualDesktop *desktop, int posi
      Q_EMIT desktopMoved(desktop, position);
  }
  
@@ -3692,9 +4020,8 @@ index 4041f7876d..d25fdb9a33 100644
 +    if (!output) {
 +        output = workspace()->activeOutput();
 +    }
-+    VirtualDesktop *result = m_currentDesktops[output];
 +    // Fallback is necessary because currentDesktop may be called before initialDesktopForNewOutput.
-+    return result ? result : initialDesktopForNewOutput();
++    return m_currentDesktops.value(output, initialDesktopForNewOutput());
  }
  
 -bool VirtualDesktopManager::setCurrent(uint newDesktop)
@@ -3730,18 +4057,18 @@ index 4041f7876d..d25fdb9a33 100644
 +        Q_EMIT currentChanged(oldDesktop, newDesktop, output);
 +        return true;
 +    }
-+    for (auto [key, value] : m_currentDesktops.asKeyValueRange()) {
-+        if (value == newDesktop) {
++    for (const auto &[otherOutput, otherDesktop] : m_currentDesktops.asKeyValueRange()) {
++        if (otherDesktop == newDesktop) {
 +            continue;
 +        }
-+        auto oldDesktop = value;
-+        value = newDesktop;
-+        Q_EMIT currentChanged(oldDesktop, newDesktop, key);
++        auto oldDesktop = otherDesktop;
++        otherDesktop = newDesktop;
++        Q_EMIT currentChanged(oldDesktop, newDesktop, otherOutput);
 +    }
      return true;
  }
  
-@@ -613,10 +661,13 @@ void VirtualDesktopManager::setCount(uint count)
+@@ -613,10 +656,13 @@ void VirtualDesktopManager::setCount(uint count)
      if ((uint)m_desktops.count() > count) {
          const auto desktopsToRemove = m_desktops.mid(count);
          m_desktops.resize(count);
@@ -3749,17 +4076,17 @@ index 4041f7876d..d25fdb9a33 100644
 -            VirtualDesktop *oldCurrent = m_current;
 -            m_current = m_desktops.last();
 -            Q_EMIT currentChanged(oldCurrent, m_current);
-+        for (auto [key, value] : m_currentDesktops.asKeyValueRange()) {
-+            if (!desktopsToRemove.contains(value)) {
++        for (const auto &[output, currentDesktop] : m_currentDesktops.asKeyValueRange()) {
++            if (!desktopsToRemove.contains(currentDesktop)) {
 +                continue;
 +            }
-+            VirtualDesktop *oldDesktop = value;
-+            value = m_desktops.last();
-+            Q_EMIT currentChanged(oldDesktop, value, key);
++            VirtualDesktop *oldDesktop = currentDesktop;
++            currentDesktop = m_desktops.last();
++            Q_EMIT currentChanged(oldDesktop, currentDesktop, output);
          }
          for (auto desktop : desktopsToRemove) {
              Q_EMIT desktopRemoved(desktop);
-@@ -648,10 +699,6 @@ void VirtualDesktopManager::setCount(uint count)
+@@ -648,10 +694,6 @@ void VirtualDesktopManager::setCount(uint count)
          }
      }
  
@@ -3770,7 +4097,7 @@ index 4041f7876d..d25fdb9a33 100644
      updateLayout();
      updateRootInfo();
  
-@@ -825,33 +872,43 @@ void VirtualDesktopManager::initShortcuts()
+@@ -825,33 +867,44 @@ void VirtualDesktopManager::initShortcuts()
      // These connections decide which desktop to end on after gesture ends
      connect(m_swipeGestureReleasedX.get(), &QAction::triggered, this, &VirtualDesktopManager::gestureReleasedX);
      connect(m_swipeGestureReleasedY.get(), &QAction::triggered, this, &VirtualDesktopManager::gestureReleasedY);
@@ -3779,7 +4106,8 @@ index 4041f7876d..d25fdb9a33 100644
 +            LogicalOutput *output = workspace()->activeOutput();
 +            Q_EMIT currentChanging(currentDesktop(output), m_currentDesktopOffset, output);
 +        } else {
-+            for (LogicalOutput *output : workspace()->outputs()) {
++            const auto outputs = workspace()->outputs();
++            for (LogicalOutput *output : outputs) {
 +                Q_EMIT currentChanging(currentDesktop(output), m_currentDesktopOffset, output);
 +            }
 +        }
@@ -3822,7 +4150,7 @@ index 4041f7876d..d25fdb9a33 100644
          }
      });
      input()->registerTouchscreenSwipeShortcut(SwipeDirection::Left, 3, m_swipeGestureReleasedX.get(), left);
-@@ -866,17 +923,18 @@ void VirtualDesktopManager::initShortcuts()
+@@ -866,17 +919,18 @@ void VirtualDesktopManager::initShortcuts()
  
  void VirtualDesktopManager::gestureReleasedY()
  {
@@ -3845,7 +4173,7 @@ index 4041f7876d..d25fdb9a33 100644
          setCurrent(target);
      } else {
          Q_EMIT currentChangingCancelled();
-@@ -888,15 +946,16 @@ void VirtualDesktopManager::gestureReleasedX()
+@@ -888,15 +942,16 @@ void VirtualDesktopManager::gestureReleasedX()
  {
      // Note that if desktop wrapping is disabled and there's no desktop to left or right,
      // toLeft() and toRight() will return the current desktop.
@@ -3866,7 +4194,7 @@ index 4041f7876d..d25fdb9a33 100644
          setCurrent(target);
      } else {
          Q_EMIT currentChangingCancelled();
-@@ -918,6 +977,18 @@ void VirtualDesktopManager::initSwitchToShortcuts()
+@@ -918,6 +973,18 @@ void VirtualDesktopManager::initSwitchToShortcuts()
      }
  }
  
@@ -3882,10 +4210,10 @@ index 4041f7876d..d25fdb9a33 100644
 +    }
 +}
 +
- QAction *VirtualDesktopManager::addAction(const QString &name, const KLocalizedString &label, uint value, const QKeySequence &key, void (VirtualDesktopManager::*slot)())
+ QAction *VirtualDesktopManager::addAction(const QString &name, const KLocalizedString &label, uint value, const QList<QKeySequence> &key, void (VirtualDesktopManager::*slot)())
  {
      QAction *a = new QAction(this);
-@@ -941,6 +1012,22 @@ QAction *VirtualDesktopManager::addAction(const QString &name, const QString &la
+@@ -953,6 +1020,22 @@ QAction *VirtualDesktopManager::addAction(const QString &name, const QString &la
      return a;
  }
  
@@ -3908,7 +4236,7 @@ index 4041f7876d..d25fdb9a33 100644
  void VirtualDesktopManager::slotSwitchTo()
  {
      QAction *act = qobject_cast<QAction *>(sender());
-@@ -964,6 +1051,21 @@ void VirtualDesktopManager::setNavigationWrappingAround(bool enabled)
+@@ -976,6 +1059,22 @@ void VirtualDesktopManager::setNavigationWrappingAround(bool enabled)
      Q_EMIT navigationWrappingAroundChanged();
  }
  
@@ -3920,7 +4248,8 @@ index 4041f7876d..d25fdb9a33 100644
 +    m_perOutputVirtualDesktops = enabled;
 +    if (!enabled) {
 +        VirtualDesktop *newDesktop = currentDesktop(workspace()->activeOutput());
-+        for (const auto output : workspace()->outputs()) {
++        const auto outputs = workspace()->outputs();
++        for (const auto output : outputs) {
 +            setCurrent(newDesktop, output);
 +        }
 +    }
@@ -3931,7 +4260,7 @@ index 4041f7876d..d25fdb9a33 100644
  {
      moveTo(Direction::Down, isNavigationWrappingAround());
 diff --git a/src/virtualdesktops.h b/src/virtualdesktops.h
-index 60a2421f22..158c4f1c15 100644
+index 73689827f5..ec5b3e87c6 100644
 --- a/src/virtualdesktops.h
 +++ b/src/virtualdesktops.h
 @@ -28,6 +28,7 @@ class QAction;
@@ -4083,31 +4412,19 @@ index 60a2421f22..158c4f1c15 100644
  private Q_SLOTS:
      /**
       * Common slot for all "Switch to Desktop n" shortcuts.
-@@ -501,6 +536,11 @@ private:
+@@ -500,6 +535,7 @@ private:
+      * Creates all the global keyboard shortcuts for "Switch To Desktop n" actions.
       */
      void initSwitchToShortcuts();
- 
-+    /**
-+     * Updates active status of plasma virtual desktops.
-+     */
 +    void updateLegacyPlasmaVirtualDesktops(VirtualDesktop *activeDesktop);
-+
+ 
      /**
       * Creates an action and connects it to the @p slot in this Manager. This method is
-      * meant to be used for the case that an additional information needs to be stored in
-@@ -523,10 +563,22 @@ private:
+@@ -528,10 +564,14 @@ private:
       */
      QAction *addAction(const QString &name, const QString &label, const QKeySequence &key, void (VirtualDesktopManager::*slot)());
  
-+    /**
-+     * Initializes current desktop for @p output.
-+     * @param output
-+     */
 +    void initCurrentDesktopForOutput(LogicalOutput *output);
-+
-+    /**
-+     * Returns the desktop used to initialize a new output.
-+     */
 +    VirtualDesktop *initialDesktopForNewOutput() const;
 +
      QList<VirtualDesktop *> m_desktops;
@@ -4115,11 +4432,11 @@ index 60a2421f22..158c4f1c15 100644
 +    QHash<LogicalOutput *, VirtualDesktop *> m_currentDesktops;
      quint32 m_rows = 2;
      bool m_navigationWrapsAround;
-+    bool m_perOutputVirtualDesktops;
++    bool m_perOutputVirtualDesktops = false;
      VirtualDesktopGrid m_grid;
      // TODO: QPointer
  #if KWIN_BUILD_X11
-@@ -572,6 +624,11 @@ inline bool VirtualDesktopManager::isNavigationWrappingAround() const
+@@ -577,6 +617,11 @@ inline bool VirtualDesktopManager::isNavigationWrappingAround() const
      return m_navigationWrapsAround;
  }
  
@@ -4354,7 +4671,7 @@ index 9c90574d0e..ba7a078d89 100644
  
  #include "moc_plasmavirtualdesktop.cpp"
 diff --git a/src/wayland/plasmavirtualdesktop.h b/src/wayland/plasmavirtualdesktop.h
-index 42da075edd..07ea7775c0 100644
+index 42da075edd..715c193614 100644
 --- a/src/wayland/plasmavirtualdesktop.h
 +++ b/src/wayland/plasmavirtualdesktop.h
 @@ -13,8 +13,11 @@
@@ -4369,29 +4686,18 @@ index 42da075edd..07ea7775c0 100644
  class PlasmaVirtualDesktopManagementInterfacePrivate;
  
  /**
-@@ -57,6 +60,21 @@ public:
+@@ -57,6 +60,10 @@ public:
       */
      void removeDesktop(const QString &id);
  
-+    /**
-+     * Adds output
-+     */
 +    PlasmaOutputVirtualDesktopInterface *addOutput(LogicalOutput *output, const QString &activeDesktopId);
-+
-+    /**
-+     * Change active desktop for output
-+     */
 +    void setActiveDesktopForOutput(LogicalOutput *output, const QString &activeDesktopId);
-+
-+    /**
-+     * Removes output
-+     */
 +    void removeOutput(LogicalOutput *output);
 +
      /**
       * @returns All the desktops present.
       */
-@@ -156,4 +174,50 @@ private:
+@@ -156,4 +163,39 @@ private:
      std::unique_ptr<PlasmaVirtualDesktopInterfacePrivate> d;
  };
  
@@ -4401,24 +4707,13 @@ index 42da075edd..07ea7775c0 100644
 +public:
 +    ~PlasmaOutputVirtualDesktopInterface() override;
 +
-+    /**
-+     * @returns the UUID for this output
-+     */
 +    QString uuid() const;
-+
-+    /**
-+     * @returns the name for this output
-+     */
 +    QString name() const;
 +
 +    /**
 +     * Set active desktop for this output. It may affect other outputs as well.
 +     */
 +    void setActiveDesktop(const QString &desktopId);
-+
-+    /**
-+     * @returns id of the desktop active on this output.
-+     */
 +    QString activeDesktop() const;
 +
 +    /**
@@ -4443,7 +4738,7 @@ index 42da075edd..07ea7775c0 100644
 +};
  }
 diff --git a/src/waylandwindow.cpp b/src/waylandwindow.cpp
-index c1627acafe..9ca073bf6c 100644
+index c1627acafe..3debad86bb 100644
 --- a/src/waylandwindow.cpp
 +++ b/src/waylandwindow.cpp
 @@ -215,7 +215,7 @@ void WaylandWindow::updateGeometry(const RectF &rect)
@@ -4455,33 +4750,22 @@ index c1627acafe..9ca073bf6c 100644
  
      m_clientGeometry = frameRectToClientRect(rect);
      m_frameGeometry = rect;
-@@ -249,9 +249,7 @@ void WaylandWindow::updateGeometry(const RectF &rect)
-     if (changedGeometries & WaylandGeometryFrame) {
-         Q_EMIT frameGeometryChanged(oldFrameGeometry);
+@@ -251,6 +251,10 @@ void WaylandWindow::updateGeometry(const RectF &rect)
      }
--    if (oldOutput != m_output) {
--        Q_EMIT outputChanged();
--    }
-+    finishOutputChange(oldOutput);
+     if (oldOutput != m_output) {
+         Q_EMIT outputChanged();
++
++        if (isInteractiveMoveResize()) {
++            finishInteractiveOutputChange(oldOutput);
++        }
+     }
  }
  
- void WaylandWindow::markAsMapped()
 diff --git a/src/window.cpp b/src/window.cpp
-index bba9a9e6e1..35809c0c21 100644
+index 882ac8399e..7389993c11 100644
 --- a/src/window.cpp
 +++ b/src/window.cpp
-@@ -234,8 +234,9 @@ LogicalOutput *Window::output() const
- void Window::setOutput(LogicalOutput *output)
- {
-     if (m_output != output) {
-+        LogicalOutput *oldOutput = m_output;
-         m_output = output;
--        Q_EMIT outputChanged();
-+        finishOutputChange(oldOutput);
-     }
- }
- 
-@@ -672,7 +673,7 @@ void Window::autoRaise()
+@@ -672,7 +672,7 @@ void Window::autoRaise()
  bool Window::isMostRecentlyRaised() const
  {
      // The last window in the unconstrained stacking order is the most recently raised one.
@@ -4490,7 +4774,7 @@ index bba9a9e6e1..35809c0c21 100644
  }
  
  bool Window::wantsTabFocus() const
-@@ -798,7 +799,7 @@ void Window::setOnAllDesktops(bool b)
+@@ -798,7 +798,7 @@ void Window::setOnAllDesktops(bool b)
      if (b) {
          setDesktops({});
      } else {
@@ -4499,7 +4783,7 @@ index bba9a9e6e1..35809c0c21 100644
      }
  }
  
-@@ -827,7 +828,7 @@ bool Window::isOnDesktop(VirtualDesktop *desktop) const
+@@ -827,7 +827,7 @@ bool Window::isOnDesktop(VirtualDesktop *desktop) const
  
  bool Window::isOnCurrentDesktop() const
  {
@@ -4508,7 +4792,23 @@ index bba9a9e6e1..35809c0c21 100644
  }
  
  Qt::Edge Window::titlebarPosition() const
-@@ -2871,7 +2872,7 @@ void Window::pointerEnterEvent(const QPointF &globalPos)
+@@ -1084,6 +1084,7 @@ bool Window::startInteractiveMoveResize()
+ 
+ void Window::finishInteractiveMoveResize(bool cancel)
+ {
++    LogicalOutput *origOutput = m_output;
+     const bool wasMove = isInteractiveMove();
+     leaveInteractiveMoveResize();
+ 
+@@ -1097,6 +1098,7 @@ void Window::finishInteractiveMoveResize(bool cancel)
+             setQuickTileMode(m_interactiveMoveResize.initialQuickTileMode, m_interactiveMoveResize.initialGeometry.center());
+             setGeometryRestore(m_interactiveMoveResize.initialGeometryRestore);
+         }
++        finishInteractiveOutputChange(origOutput);
+     } else if (moveResizeOutput()->uuid() != m_interactiveMoveResize.initialOutputId) {
+         sendToOutput(moveResizeOutput()); // checks rule validity
+         const RectF oldScreenArea = m_interactiveMoveResize.initialScreenArea;
+@@ -2871,7 +2873,7 @@ void Window::pointerEnterEvent(const QPointF &globalPos)
          return;
      }
  
@@ -4517,7 +4817,23 @@ index bba9a9e6e1..35809c0c21 100644
          startAutoRaise();
      }
  
-@@ -3973,7 +3974,7 @@ void Window::checkWorkspacePosition(RectF oldGeometry, const VirtualDesktop *old
+@@ -3930,6 +3932,7 @@ void Window::sendToOutput(LogicalOutput *newOutput)
+         return;
+     }
+ 
++    LogicalOutput *prevOutput = m_output;
+     const RectF oldGeom = moveResizeGeometry();
+     const RectF oldScreenArea = workspace()->clientArea(MaximizeArea, this, moveResizeOutput());
+     const RectF screenArea = workspace()->clientArea(MaximizeArea, this, newOutput);
+@@ -3955,6 +3958,7 @@ void Window::sendToOutput(LogicalOutput *newOutput)
+     for (auto it = tso.constBegin(), end = tso.constEnd(); it != end; ++it) {
+         (*it)->sendToOutput(newOutput);
+     }
++    finishInteractiveOutputChange(prevOutput);
+ }
+ 
+ void Window::checkWorkspacePosition(RectF oldGeometry, const VirtualDesktop *oldDesktop)
+@@ -3973,7 +3977,7 @@ void Window::checkWorkspacePosition(RectF oldGeometry, const VirtualDesktop *old
          oldGeometry = newGeom;
      }
  
@@ -4526,18 +4842,19 @@ index bba9a9e6e1..35809c0c21 100644
      if (!oldDesktop) {
          oldDesktop = desktop;
      }
-@@ -4701,6 +4702,36 @@ void Window::setDescription(const QString &description)
+@@ -4701,6 +4705,37 @@ void Window::setDescription(const QString &description)
      }
  }
  
-+void Window::finishOutputChange(LogicalOutput *prevOutput)
++void Window::finishInteractiveOutputChange(LogicalOutput *prevOutput)
 +{
-+    if (m_output == prevOutput) {
-+        return;
-+    }
-+
-+    Q_EMIT outputChanged();
-+
++    // We want to preserve the window being on current desktop during interactive output changes:
++    // - interactive move/resize
++    // - "Move to screen" user action
++    // - Move window to another screen via keyboard shortcut.
++    // ...
++    // On the other hand, this behavior doesn't make sense for non-interactive output changes (e.g. if the output is disabled and all the windows are placed
++    // on another output).
 +    if (!prevOutput || m_desktops.empty()) {
 +        return;
 +    }
@@ -4564,20 +4881,20 @@ index bba9a9e6e1..35809c0c21 100644
  {
      m_activationToken = token;
 diff --git a/src/window.h b/src/window.h
-index 4f7e151c94..94c8791c09 100644
+index 4f7e151c94..b04c83871d 100644
 --- a/src/window.h
 +++ b/src/window.h
 @@ -1806,6 +1806,8 @@ protected:
  
      void setDescription(const QString &description);
  
-+    void finishOutputChange(LogicalOutput *prevOutput);
++    void finishInteractiveOutputChange(LogicalOutput *prevOutput);
 +
      LogicalOutput *m_output = nullptr;
      RectF m_frameGeometry;
      RectF m_clientGeometry;
 diff --git a/src/workspace.cpp b/src/workspace.cpp
-index 6a4d046b08..c5a27d644d 100644
+index 2c3974841e..d8e7d5a6ab 100644
 --- a/src/workspace.cpp
 +++ b/src/workspace.cpp
 @@ -152,8 +152,8 @@ Workspace::Workspace()
@@ -4610,28 +4927,31 @@ index 6a4d046b08..c5a27d644d 100644
      vds->setConfig(config);
  
      // Now we know how many desktops we'll have, thus we initialize the positioning object
-@@ -362,6 +361,16 @@ void Workspace::init()
+@@ -362,6 +361,18 @@ void Workspace::init()
      connect(kwinApp()->outputBackend(), &OutputBackend::outputAdded, this, [this](BackendOutput *output) {
          connect(output, &BackendOutput::dpmsModeChanged, this, &Workspace::maybeUpdateDpmsState);
      });
 +
 +#if KWIN_BUILD_ACTIVITIES
 +    if (m_activities) {
++        // This needs QueuedConnection, because it triggers VirtualDesktopManager::currentChanged which includes the output as a parameter. Therefore, if it was
++        // run directly it might cause some objects to receive currentChanged before outputAdded and violate their expections (e.g. SlideEffect).
 +        connect(this, &Workspace::outputAdded, m_activities.get(), [this, vds](LogicalOutput *output) {
 +            if (vds->isPerOutputVirtualDesktops()) {
 +                m_activities->restoreDesktopForNewOutput(output);
 +            }
-+        });
++        }, Qt::QueuedConnection);
 +    }
 +#endif
  }
  
  QString Workspace::outputLayoutId() const
-@@ -693,6 +702,13 @@ void Workspace::setupWindowConnections(Window *window)
+@@ -694,6 +705,14 @@ void Workspace::setupWindowConnections(Window *window)
  {
      connect(window, &Window::minimizedChanged, this, std::bind(&Workspace::windowMinimizedChanged, this, window));
      connect(window, &Window::fullScreenChanged, m_screenEdges.get(), &ScreenEdges::checkBlocking);
 +    connect(window, &Window::interactiveMoveResizeFinished, this, [this, window]() {
++        // Activate another window if the resized/moved window "disappeared" (e.g. due to force desktop window rule).
 +        if (!window->isActive() || window->isOnCurrentDesktop()) {
 +            return;
 +        }
@@ -4641,7 +4961,7 @@ index 6a4d046b08..c5a27d644d 100644
  }
  
  void Workspace::constrain(Window *below, Window *above)
-@@ -1017,16 +1033,16 @@ void Workspace::slotReconfigure()
+@@ -1022,16 +1041,16 @@ void Workspace::slotReconfigure()
      }
  }
  
@@ -4663,7 +4983,7 @@ index 6a4d046b08..c5a27d644d 100644
  }
  
  void Workspace::slotCurrentDesktopChangingCancelled()
-@@ -1034,7 +1050,7 @@ void Workspace::slotCurrentDesktopChangingCancelled()
+@@ -1039,7 +1058,7 @@ void Workspace::slotCurrentDesktopChangingCancelled()
      Q_EMIT currentDesktopChangingCancelled();
  }
  
@@ -4672,7 +4992,7 @@ index 6a4d046b08..c5a27d644d 100644
  {
  #if KWIN_BUILD_X11
      for (auto it = stacking_order.constBegin(); it != stacking_order.constEnd(); ++it) {
-@@ -1042,13 +1058,13 @@ void Workspace::updateWindowVisibilityOnDesktopChange(VirtualDesktop *newDesktop
+@@ -1047,19 +1066,19 @@ void Workspace::updateWindowVisibilityOnDesktopChange(VirtualDesktop *newDesktop
          if (!c) {
              continue;
          }
@@ -4689,7 +5009,14 @@ index 6a4d046b08..c5a27d644d 100644
      }
  #endif
  
-@@ -1064,7 +1080,7 @@ void Workspace::updateWindowVisibilityOnDesktopChange(VirtualDesktop *newDesktop
+     // FIXME: Keep Move/Resize window across activities
+ 
+-    if (m_moveResizeWindow && !m_moveResizeWindow->isOnDesktop(newDesktop)) {
++    if (m_moveResizeWindow && m_moveResizeWindow->output() == output && !m_moveResizeWindow->isOnDesktop(newDesktop)) {
+         m_moveResizeWindow->setDesktops({newDesktop});
+     }
+ 
+@@ -1069,7 +1088,7 @@ void Workspace::updateWindowVisibilityOnDesktopChange(VirtualDesktop *newDesktop
          if (!c) {
              continue;
          }
@@ -4698,7 +5025,7 @@ index 6a4d046b08..c5a27d644d 100644
              c->updateVisibility();
          }
      }
-@@ -1074,22 +1090,22 @@ void Workspace::updateWindowVisibilityOnDesktopChange(VirtualDesktop *newDesktop
+@@ -1079,22 +1098,22 @@ void Workspace::updateWindowVisibilityOnDesktopChange(VirtualDesktop *newDesktop
      }
  }
  
@@ -4725,7 +5052,7 @@ index 6a4d046b08..c5a27d644d 100644
              if (Tile *candidate = manager->tileForWindow(window, newDesktop)) {
                  tile = candidate;
              }
-@@ -1098,7 +1114,9 @@ void Workspace::updateWindowVisibilityAndActivateOnDesktopChange(VirtualDesktop
+@@ -1103,7 +1122,9 @@ void Workspace::updateWindowVisibilityAndActivateOnDesktopChange(VirtualDesktop
          window->requestTile(tile);
      }
  
@@ -4736,7 +5063,7 @@ index 6a4d046b08..c5a27d644d 100644
  }
  
  void Workspace::activateWindowOnDesktop(VirtualDesktop *desktop)
-@@ -1171,7 +1189,9 @@ void Workspace::updateCurrentActivity(const QString &new_activity)
+@@ -1176,7 +1197,9 @@ void Workspace::updateCurrentActivity(const QString &new_activity)
          return;
      }
  
@@ -4747,7 +5074,7 @@ index 6a4d046b08..c5a27d644d 100644
  
      Q_EMIT currentActivityChanged();
  #endif
-@@ -1570,7 +1590,7 @@ void Workspace::sendWindowToDesktops(Window *window, const QList<VirtualDesktop
+@@ -1603,7 +1626,7 @@ void Workspace::sendWindowToDesktops(Window *window, const QList<VirtualDesktop
          raiseWindow(window);
          // but set a new active window on the current desktop
          if (wasActive) {
@@ -4756,7 +5083,7 @@ index 6a4d046b08..c5a27d644d 100644
          }
      }
  
-@@ -2451,7 +2471,7 @@ RectF Workspace::clientArea(clientAreaOption opt, const Window *window, const Lo
+@@ -2484,7 +2507,7 @@ RectF Workspace::clientArea(clientAreaOption opt, const Window *window, const Lo
  {
      const VirtualDesktop *desktop;
      if (window->isOnCurrentDesktop()) {
@@ -4765,7 +5092,7 @@ index 6a4d046b08..c5a27d644d 100644
      } else {
          desktop = window->desktops().constLast();
      }
-@@ -2567,7 +2587,11 @@ LogicalOutput *Workspace::activeOutput() const
+@@ -2600,7 +2623,11 @@ LogicalOutput *Workspace::activeOutput() const
  
  void Workspace::setActiveOutput(LogicalOutput *output)
  {
@@ -4777,7 +5104,7 @@ index 6a4d046b08..c5a27d644d 100644
  }
  
  void Workspace::setActiveOutput(const QPointF &pos)
-@@ -3067,7 +3091,7 @@ TileManager *Workspace::tileManager(LogicalOutput *output) const
+@@ -3100,7 +3127,7 @@ TileManager *Workspace::tileManager(LogicalOutput *output) const
  
  RootTile *Workspace::rootTile(LogicalOutput *output) const
  {
@@ -4832,10 +5159,10 @@ index 6ba2dd11b0..b920c2dc25 100644
      Window *findWindowToActivateOnDesktop(VirtualDesktop *desktop);
      void removeWindow(Window *window);
 diff --git a/src/x11window.cpp b/src/x11window.cpp
-index 277b76d363..537a590f34 100644
+index 2f951319d5..e04319d8fa 100644
 --- a/src/x11window.cpp
 +++ b/src/x11window.cpp
-@@ -515,7 +515,7 @@ bool X11Window::manage(xcb_window_t w, bool isMapped)
+@@ -516,7 +516,7 @@ bool X11Window::manage(xcb_window_t w, bool isMapped)
              if (on_all) {
                  initialDesktops = QList<VirtualDesktop *>{};
              } else if (on_current) {
@@ -4844,7 +5171,7 @@ index 277b76d363..537a590f34 100644
              } else if (maincl) {
                  initialDesktops = maincl->desktops();
              }
-@@ -562,7 +562,7 @@ bool X11Window::manage(xcb_window_t w, bool isMapped)
+@@ -563,7 +563,7 @@ bool X11Window::manage(xcb_window_t w, bool isMapped)
          if (isDesktop()) {
              initialDesktops = QList<VirtualDesktop *>{};
          } else {
@@ -4853,7 +5180,7 @@ index 277b76d363..537a590f34 100644
          }
      }
      setDesktops(rules()->checkDesktops(*initialDesktops, !isMapped));
-@@ -868,7 +868,7 @@ bool X11Window::manage(xcb_window_t w, bool isMapped)
+@@ -869,7 +869,7 @@ bool X11Window::manage(xcb_window_t w, bool isMapped)
          // If session saving, force showing new windows (i.e. "save file?" dialogs etc.)
          // also force if activation is allowed
          if (!isOnCurrentDesktop() && !isMapped && !session && (allow || isSessionSaving)) {
@@ -4862,7 +5189,7 @@ index 277b76d363..537a590f34 100644
          }
  
          // If the window is on an inactive activity during session saving, temporarily force it to show.
-@@ -3564,7 +3564,7 @@ void X11Window::moveResizeInternal(const RectF &rect, MoveResizeMode mode)
+@@ -3599,7 +3599,7 @@ void X11Window::moveResizeInternal(const RectF &rect, MoveResizeMode mode)
      const RectF oldBufferGeometry = m_bufferGeometry;
      const RectF oldFrameGeometry = m_frameGeometry;
      const RectF oldClientGeometry = m_clientGeometry;
@@ -4871,14 +5198,34 @@ index 277b76d363..537a590f34 100644
  
      m_frameGeometry = frameGeometry;
      m_clientGeometry = clientGeometry;
-@@ -3592,9 +3592,7 @@ void X11Window::moveResizeInternal(const RectF &rect, MoveResizeMode mode)
-     if (oldFrameGeometry != m_frameGeometry) {
-         Q_EMIT frameGeometryChanged(oldFrameGeometry);
+@@ -3629,6 +3629,10 @@ void X11Window::moveResizeInternal(const RectF &rect, MoveResizeMode mode)
      }
--    if (oldOutput != m_output) {
--        Q_EMIT outputChanged();
--    }
-+    finishOutputChange(oldOutput);
+     if (oldOutput != m_output) {
+         Q_EMIT outputChanged();
++
++        if (isInteractiveMoveResize()) {
++            finishInteractiveOutputChange(oldOutput);
++        }
+     }
      updateShapeRegion();
+ }
+diff --git a/src/xdgshellwindow.cpp b/src/xdgshellwindow.cpp
+index 14d7bbc619..0f293addff 100644
+--- a/src/xdgshellwindow.cpp
++++ b/src/xdgshellwindow.cpp
+@@ -1379,6 +1379,15 @@ QVector<VirtualDesktop *> XdgToplevelWindow::initialDesktops(const std::optional
+             }
+         }
+     }
++
++    // XdgToplevelWindow is first assigned to the current virtual desktop on the active output by the constructor.
++    // However, the application can request that the window is fullscreened on a particular output, which may have a different
++    // desktop. This caused the desktop to change on that output. This happened for Spectacle.
++    // On the other hand there's also installPlasmaShellSurface(), which can reassign it to all desktops before initialize().
++    if (moveResizeOutput() != output() && !desktops().isEmpty()) {
++        return {VirtualDesktopManager::self()->currentDesktop(moveResizeOutput())};
++    }
++
+     return desktops();
  }
  
