@@ -1,0 +1,12 @@
+# Downloaded tarballs and signatures
+*.tar.gz
+*.tar.gz.asc
+
+# Source tree
+src/
+
+# Sysroot for built package
+pkg/
+
+# Built packages
+*.pkg.tar.zst
