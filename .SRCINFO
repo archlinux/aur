@@ -1,0 +1,18 @@
+pkgbase = mobiusdrv
+	pkgdesc = Node.JS-based CUPS backend for MobilityPrint print servers
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/themirrazz/mobiusdrv
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	depends = nodejs>=23.0.0
+	depends = npm
+	options = !strip
+	options = !debug
+	source = mobiusdrv-main.zip::https://codeload.github.com/themirrazz/mobiusdrv/zip/refs/heads/main
+	source = node-sdk-main.zip::https://codeload.github.com/mobiuspr/node-sdk/zip/refs/heads/main
+	sha256sums = 7b2abebf4d2cd477bb15b7eca48be6e9d7ed39d73f244f6a310e43373cf9f512
+	sha256sums = 1c68d4bfc9afd8adcc07cc0040f665c96df2321d8da87b95cf67c9f45ad61627
+
+pkgname = mobiusdrv
