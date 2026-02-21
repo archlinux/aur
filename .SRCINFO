@@ -1,0 +1,15 @@
+pkgbase = efisc2024-bin
+	pkgdesc = Beschreibung des Programms
+	pkgver = .0.10
+	pkgrel = 69
+	url = https://steuerverwaltung.tg.ch/hilfsmittel/efisc-steuererklaerungssoftware/download-efisc2024.html/16453
+	arch = x86_64
+	license = custom
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	provides = efisc2024
+	conflicts = efisc2024
+	source = https://efisc.kttg.ch/update/eFisc/2024/efisc2024_1.0.10-69_amd64.deb
+	sha256sums = SKIP
+
+pkgname = efisc2024-bin
