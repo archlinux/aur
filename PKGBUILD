@@ -7,7 +7,7 @@ _appname=${_execname}-cli
 pkgname=${_pkgname}-bin
 pkgdesc="One command to run tasks across task runners"
 
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -28,9 +28,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.txz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[0]}-${_pkgvername}.tgz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.txz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[1]}-${_pkgvername}.tgz")
 sha256sums=('08a555dad3bc78b57a584f21fe995e94b2215f3d4628bda053fd332d532fa95b'
-            'e7c6b501c949397a40cea2d17a989bf9b1d06e2369990ee63ba0ff9fd7e449d5')
-sha256sums_x86_64=('2b302ad8d66ddeeb62d4308b8ef849abcb8771b94902ac4e1db287280a812484')
-sha256sums_aarch64=('3506941d686ff3f7e9b336d217f138504d97f1a44fa0caa4ec3bf881d8d4468f')
+            '4944e8f0eb88bf5f49cd9ce8eb41dfb7eb8e24784df43c7f2a369879eb26b894')
+sha256sums_x86_64=('6e8362bc1d10ddea0da024f5ca166676d89dacceb7a62cbb7c648e724b0f1bf0')
+sha256sums_aarch64=('a37ea3ca15dc590b9c34dc12190f4a6ed9c7652a7278dd7e61fa6ff9d54c86c8')
 
 
 case ${CARCH} in
