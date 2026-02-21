@@ -1,0 +1,17 @@
+pkgbase = postdad
+	pkgdesc = fast API client for your terminal
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/mega123-art/PostDad
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = cargo
+	depends = openssl
+	depends = oniguruma
+	source = https://github.com/mega123-art/PostDad/archive/refs/tags/v0.3.1.tar.gz
+	b2sums = 60c77de366be6116cc67b425ebe4fe031c51fa35788faecb99343f4123506a5200166657cc3712c5a3325576c5539a7758ae4f28e23799a0e6be189b6a2e14da
+
+pkgname = postdad
