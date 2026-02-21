@@ -7,11 +7,10 @@ _module_list=(
   'desksanity'
 # 'diskio'               # not compatible with EFL >= 1.13
   'eenvader.fractal'
-# 'elev8'                # adds dep on v8, not compatible with v8 >= 3.19.16
 # 'elfe'                 # not compatible with Enlightenemnt >= 0.19.0
 # 'empris'               # not compatible with Enlightenment >= 0.19.0, adds dep on e_dbus
-# 'everything-places'    # fails to compile
-# 'everything-websearch' # fails to compile, adds dep on e_dbus
+  'everything-places' 
+  'everything-websearch'
 #  'eweather'		# libeweather(?), not compatible with E >= 0.18.0
   'forecasts'
 # 'mail'                 # not compatible with Enlightenment >= 0.19.0
@@ -35,7 +34,7 @@ containsElement () {
 }
 
 pkgname=e-modules-extra-git
-pkgver=20260215
+pkgver=20260221
 pkgrel=1
 pkgdesc="Enlightenment modules: Extra unsupported modules in Git not already packaged elsewhere"
 arch=('i686' 'x86_64')
@@ -44,9 +43,6 @@ license=('GPL-1.0-or-later' 'MIT')
 options+=('!debug')
 
 depends=('enlightenment' 'efl' 'glibc')
-  containsElement "elev8" "${_module_list[@]}" && depends+=('v8<3.19.16')
-  containsElement "empris" "${_module_list[@]}" && depends+=('e_dbus')
-  containsElement "everything-websearch" "${_module_list[@]}" && depends+=('e_dbus')
   containsElement "mpdule" "${_module_list[@]}" && depends+=('libmpd')
   containsElement "share" "${_module_list[@]}" && depends+=('libbsd')
   containsElement "penguins" "${_module_list[@]}" && depends+=('meson' 'ninja')
