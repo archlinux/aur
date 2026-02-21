@@ -1,6 +1,6 @@
 _pkgname=plasma-desktop
 pkgname=$_pkgname-povd
-pkgver=6.5.91
+pkgver=6.6.0
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='KDE Plasma Desktop (patched for per-output virtual desktops)'
@@ -98,7 +98,7 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 source=(https://download.kde.org/unstable/plasma/$_dirver/$_pkgname-$pkgver.tar.xz{,.sig}
         povd.patch)
-sha256sums=('d713e3db18e7e8bdee76f8be21018e21f3e8408e1d919a1a263af00bda55fb51'
+sha256sums=('d91e4dd276ea1ad743e31ace859a36ec4dfb431495c81eb1a8eb32a49c73f342'
             'SKIP'
             'ff724b7d4ef0c33ad5cb0fff2422fdfa112dcb7dffe336bace567bdfea0ea925')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
