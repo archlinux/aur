@@ -3,7 +3,7 @@
 _dist='TOML-Tiny'
 pkgname='perl-toml-tiny'
 pkgver=0.20
-pkgrel=3
+pkgrel=4
 pkgdesc='a minimal, pure perl TOML parser and serializer'
 arch=('any')
 url="https://metacpan.org/dist/$_dist"
@@ -14,6 +14,7 @@ depends=(
     'perl-encode'
     'perl-exporter'
     'perl-math-bigint>=1.999718'
+    'perl-types-serialiser'
     'perl>=5.18'
 )
 checkdepends=(
@@ -24,9 +25,6 @@ checkdepends=(
     'perl-test-pod'
     'perl-test-simple'
     'perl-toml-parser'
-)
-optdepends=(
-    'perl-types-serialiser: boolean support'
 )
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/O/OA/OALDERS/$_dist-$pkgver.tar.gz")

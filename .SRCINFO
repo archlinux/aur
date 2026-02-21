@@ -1,7 +1,7 @@
 pkgbase = perl-toml-tiny
 	pkgdesc = a minimal, pure perl TOML parser and serializer
 	pkgver = 0.20
-	pkgrel = 3
+	pkgrel = 4
 	url = https://metacpan.org/dist/TOML-Tiny
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later
@@ -17,8 +17,8 @@ pkgbase = perl-toml-tiny
 	depends = perl-encode
 	depends = perl-exporter
 	depends = perl-math-bigint>=1.999718
+	depends = perl-types-serialiser
 	depends = perl>=5.18
-	optdepends = perl-types-serialiser: boolean support
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/O/OA/OALDERS/TOML-Tiny-0.20.tar.gz
 	sha256sums = 9ae765a96205b3d74fb5c4f222713cf8256592c9815139b7a5474c8a3dfa13bc
