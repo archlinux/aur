@@ -1,15 +1,21 @@
 pkgbase = python-whisper
 	pkgdesc = Fixed-size database that provides fast, reliable storage of numeric data over time.
 	pkgver = 1.1.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/graphite-project/whisper
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
+	depends = python-six
+	depends = python-configobj
+	optdepends = python-rrdtool: for rrd2whisper.py support
 	conflicts = python2-whisper
 	options = !emptydirs
 	source = python-whisper-1.1.10.tar.gz::https://github.com/graphite-project/whisper/archive/1.1.10.tar.gz
-	md5sums = a45cd7bc76df9e887674b1984f83f72f
+	sha256sums = f6535b4e73766ea745606f8a9b16080efa69e5756cda5f7b9d1457dd9515d99a
 
 pkgname = python-whisper
