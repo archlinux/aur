@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone"
 license=('custom')
 source=("https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone/releases/download/R${pkgver}/ViGAPhoneR_linux_amd64.tar.gz")
+	     https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone/releases/download/R1.1.0/ViGAPhoneR_linux_amd64.tar.gz
 sha256sums=('cd2c1930333f3c035310b997cccead1d5f7ebe01ca2ab03a302c68e01533afd8')
 
 depends=(
