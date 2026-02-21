@@ -2,12 +2,12 @@
 
 _pkgname="hyprism"
 pkgname="hyprism-bin"
-pkgver="2.0.3"
-pkgrel="2"
+pkgver="3.0.1"
+pkgrel="1"
 pkgdesc="A multiplatform Hytale launcher with mod manager and more! (binary version)"
 arch=("x86_64")
 url="https://github.com/HyPrismTeam/HyPrism"
-license=("MIT")
+license=("GPL-3.0-only")
 
 provides=("hyprism")
 conflicts=(
@@ -15,39 +15,48 @@ conflicts=(
     "hyprism-git"
 )
 depends=(
-    "gst-plugins-good"
+    "alsa-lib"
+    "dbus"
     "gtk3"
-    "libnotify"
-    "webkit2gtk-4.1"
+    "lttng-ust2.12"
+    "mesa"
+    "nss"
 )
 options=("!strip")
 
 source=(
-    "${_pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/HyPrism-linux-x64.deb"
+    "${_pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/HyPrism-linux-amd64-${pkgver}.deb"
     "${_pkgname}.desktop"
-    "${_pkgname}.png"
+    "${_pkgname}.sh"
     "LICENSE"
 )
 sha256sums=(
-    "33aeca22eb3b74f8d59157c5bb732a275ad424831278885944d84606f1a20662"
+    "caeabac88abc73b71c7b3233ae4b914e65a6cfc68b6603ebdc6dd44903bfefef"
     "89837ddd1c7dba01d6ac9e22b686fd7311986f2a49c1cd98c82fe72060dda679"
-    "9fce08649bf1f267eccc113dcb36665ac64b7fbea100763e84fd174b71ede949"
-    "acd0c57892db5a0f25a44bd29a10bedc61c2a12508af24e1a8037a1df7aeb710"
+    "da29f0d435a6f790eba5a635ace043404eff44cb726a627673d5d3830d4a615d"
+    "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
 )
 
 prepare() {
-    bsdtar -xf "${srcdir}/data.tar.gz"
+    # Create the source directory and extract the data archive from the .deb package into it
+    install -d "${srcdir}/${_pkgname}-${pkgver}"
+    bsdtar -xf "${srcdir}/${_pkgname}-${pkgver}.deb" --include "data.tar.*" -O | \
+        bsdtar -xf - -C "${srcdir}/${_pkgname}-${pkgver}"
 }
 
 package() {
+    # Install main application files to /opt
     install -d "${pkgdir}/opt/${pkgname}"
-    cp -dr --no-preserve=ownership "${srcdir}/opt/hyprism/." "${pkgdir}/opt/${pkgname}/"
-    chmod +x "${pkgdir}/opt/${pkgname}/HyPrism"
+    cp -dr --no-preserve=ownership "${srcdir}/${_pkgname}-${pkgver}/opt/HyPrism/." "${pkgdir}/opt/${pkgname}/"
 
-    install -d "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/HyPrism" "${pkgdir}/usr/bin/${_pkgname}"
+    # Install hicolor icons with lowercase filename
+    for size in "16x16" "24x24" "32x32" "48x48" "64x64" "128x128" "256x256" "512x512"; do
+        install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/usr/share/icons/hicolor/${size}/apps/HyPrism.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${size}/apps/${_pkgname}.png"
+    done
 
+    # Install launcher script, desktop entry, and license file
+    install -Dm755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-    install -Dm644 "${srcdir}/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
