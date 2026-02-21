@@ -1,0 +1,17 @@
+pkgbase = paperforge-bin
+	pkgdesc = A local-first PDF toolkit built with Tauri
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Jeevash23/paperforge
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = libappindicator-gtk3
+	depends = gtk3
+	provides = paperforge
+	conflicts = paperforge
+
+	source_x86_64 = paperforge-0.1.0.deb::https://github.com/Jeevash23/paperforge/releases/download/v0.1.0/Paperforge_0.1.0_amd64.deb
+	sha256sums_x86_64 = SKIP
+
+pkgname = paperforge-bin
