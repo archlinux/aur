@@ -4,9 +4,12 @@ pkgbase = wallpaper-generator-next-bin
 	pkgrel = 1
 	url = https://github.com/SRInternet-Studio/Wallpaper-generator
 	arch = x86_64
+	license = GPL-3.0-only
 	license = MIT
 	depends = glibc
 	depends = gcc-libs
+	depends = python>=3.12
+	depends = tk
 	provides = wallpaper-generator-next
 	conflicts = wallpaper-generator-next
 	source = https://github.com/SRInternet-Studio/Wallpaper-generator/releases/download/v5.1.0/wallpaper-generator-next-5.1.0-1-x86_64.pkg.tar.zst

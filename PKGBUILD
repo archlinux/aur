@@ -18,10 +18,10 @@ pkgver="5.1.0"
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/SRInternet-Studio/Wallpaper-generator"
-license=('MIT')
+license=('GPL-3.0-only' 'MIT')
 provides=('wallpaper-generator-next')
 conflicts=('wallpaper-generator-next')
-depends=('glibc' 'gcc-libs')
+depends=('glibc' 'gcc-libs' 'python>=3.12' 'tk')
 pkgdesc="个性化聚合图片生成平台"
 source=("https://github.com/SRInternet-Studio/Wallpaper-generator/releases/download/v${pkgver}/wallpaper-generator-next-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 sha256sums=('40410d3e344c17298089cfdbb8d77155df88ad2514cc66580dd1ad247944ccb0')
