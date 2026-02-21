@@ -20,9 +20,9 @@ options=(!debug !lto)
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
   patch --strip=1 --input="$srcdir/static_init.patch"
-  cargo update
+  cargo update --package static_init
   cd "$srcdir/$pkgname-$pkgver/build-resources/opaque-types/"
-  cargo update
+  cargo update --package static_init
 }
 
 build() {
