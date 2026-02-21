@@ -1,0 +1,12 @@
+pkgbase = equihash
+	pkgdesc = Equihash: memory-hard PoW with fast verification
+	pkgver = 1.0.10
+	pkgrel = 1
+	url = https://github.com/stef/liboprf
+	arch = x86_64
+	license = CC0-1.0
+	depends = libsodium
+	source = equihash-1.0.10.tar.gz::https://github.com/stef/equihash/archive/refs/tags/v1.0.10.tar.gz
+	b2sums = 4db437c14c5d79f6b42c20fc368a0fdac8f2c2828b3f0adcbf6a2c1b305259836aaf806aa9a0decda33199dd5db8599b32815ddefa9a24ede5cfe9548bf278b9
+
+pkgname = equihash
