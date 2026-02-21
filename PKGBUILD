@@ -3,14 +3,14 @@
 # Contributor: Jérôme de Courval <decje9@gmail.com>
 pkgname=tandoor-recipes
 pkgver=2.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Application for managing recipes, planning meals, building shopping lists and much much more."
 arch=('any')
 url="https://github.com/TandoorRecipes/recipes"
 license=('GPL')
 groups=()
-depends=('python-virtualenv' 'python-psycopg2')
-makedepends=('nodejs' 'yarn')
+depends=()
+makedepends=('python-virtualenv' 'postgresql' 'postgresql-libs' 'nodejs' 'yarn')
 provides=("tandoor-recipes")
 conflicts=("tandoor-recipes")
 replaces=()
