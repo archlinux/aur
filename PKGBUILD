@@ -2,7 +2,7 @@
 # Contributor: Sorah Fukumori <her@sorah.jp>
 
 pkgname=thanos
-pkgver=0.38.0
+pkgver=0.39.2
 pkgrel=1
 pkgdesc="Highly available Prometheus setup with long term storage capabilities"
 arch=('x86_64')
@@ -40,7 +40,7 @@ source=(
   "thanos-store.conf"
   "thanos.sysuser"
 )
-sha512sums=('4280aa5cf4c8e0832db66a7d24c5e2d06f6f12f5b1413262f308ef928dba0ca7640f56b84a7433b73ad18144fe32fc2546e04fbb833cfe3c9d676c6f726d81b5'
+sha512sums=('70f220ef94469300bf790d84fb18b45f29f33a77a9d217bcfdd424c4fdff1a7c9813c6708b9db48c6ce3e53011fc35232063813a2e8fd84a3f3bb65246316180'
             '1e5d8ed3e8a0ac50a014a364f8e297d7f0cbd1cafbd22ff4dc9a31b42e257aba6c7d66a2b875d0eda07cd2a88b029eebbcb9d71ae594f8dbccffd4ff68aa84f3'
             '4d5f34bc571efaba159e9cf3e21a43bf2c8b0fad2fc6908ae45162d2df0ed0aa65a405837a70121c961e0fb77b2863efbdae5540ab0ff79b9cf6684bef756baa'
             '8b99500bd2aee6f49993cdce2770e890cec5cbb2c18e104afbf9d95442a1cc011591f57c1e3b5a7d83e4e4104c52cdab1465976f3fa2f8c870091674fec443d6'
