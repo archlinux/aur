@@ -1,6 +1,6 @@
 pkgbase = konform-browser-bin
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
-	pkgver = 140.7.1_101
+	pkgver = 140.8.0_100
 	pkgrel = 1
 	epoch = 1
 	url = https://codeberg.org/konform-browser
@@ -60,20 +60,20 @@ pkgbase = konform-browser-bin
 	options = !emptydirs
 	backup = usr/lib/konform/librewolf.cfg
 	backup = usr/lib/konform/distribution/policies.json
-	source = git+https://codeberg.org/konform-browser/source.git#tag=140.7.1.101
+	source = git+https://codeberg.org/konform-browser/source.git#tag=140.8.0.100
 	source = default192x192.png
 	source = konform.desktop
 	validpgpkeys = 9511FD9BD64CCF171F0B28A72B6FD58B41A0E262
-	sha256sums = 7687a671d94fb739c63ccb240f3bbf9b9933a7e14b8f98df24f8d3ad4b00470a
+	sha256sums = 1455a0e535eb4a831cdf17110feb2feba2c07387727f511976919ed1cfa9df1d
 	sha256sums = b86ddfc0cec482f7900f296857cdd0f1b736ff5037e0a86712b258ae0092924b
 	sha256sums = 68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4
-	source_x86_64 = https://codeberg.org/api/packages/konform-browser/generic/konform-browser/140.7.1-101/konform-browser-140.7.1-101-linux-x86_64-package.tar.xz
-	source_x86_64 = https://codeberg.org/api/packages/konform-browser/generic/konform-browser/140.7.1-101/konform-browser-140.7.1-101-linux-x86_64-package.tar.xz.sig
-	sha256sums_x86_64 = 1b45ee893b886bdf343b5f786be4a30b7e90c6872ef3a7a31f91e69d1157a06d
+	source_x86_64 = https://codeberg.org/api/packages/konform-browser/generic/konform-browser/140.8.0-100/konform-browser-140.8.0-100-linux-x86_64-package.tar.xz
+	source_x86_64 = https://codeberg.org/api/packages/konform-browser/generic/konform-browser/140.8.0-100/konform-browser-140.8.0-100-linux-x86_64-package.tar.xz.sig
+	sha256sums_x86_64 = aa474f680d8bcb4ddaa25e3d1c575a0d4488991a4f8e928547754608bc60c306
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://codeberg.org/api/packages/konform-browser/generic/konform-browser/140.7.1-101/konform-browser-140.7.1-101-linux-arm64-package.tar.xz
-	source_aarch64 = https://codeberg.org/api/packages/konform-browser/generic/konform-browser/140.7.1-101/konform-browser-140.7.1-101-linux-arm64-package.tar.xz.sig
-	sha256sums_aarch64 = cc08266cab00ed1a082cd105dff68c14edcf0811bee589077ffaa349f3a95aeb
+	source_aarch64 = https://codeberg.org/api/packages/konform-browser/generic/konform-browser/140.8.0-100/konform-browser-140.8.0-100-linux-arm64-package.tar.xz
+	source_aarch64 = https://codeberg.org/api/packages/konform-browser/generic/konform-browser/140.8.0-100/konform-browser-140.8.0-100-linux-arm64-package.tar.xz.sig
+	sha256sums_aarch64 = 1ad755efcd671942af5fa707ce0710c05ba137a155a22def8e021ed214214b35
 	sha256sums_aarch64 = SKIP
 
 pkgname = konform-browser-bin
