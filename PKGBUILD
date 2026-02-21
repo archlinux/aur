@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 _pkgname=GeekbenchAI
 pkgname=geekbench-ai
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Geekbench AI is a cross-platform AI benchmark that uses real-world machine learning tasks to evaluate AI workload performance"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('patchelf')
 source=("https://cdn.geekbench.com/GeekbenchAI-${pkgver}-Linux.tar.gz"
 	LicenseRef-EULA-AI-V1.txt)
 install=$pkgname.install
-sha256sums=('6ba6a080bc8806f3c9f2082e5ca4b3a82c3f07028ff47ded5129b004e181c1f9'
+sha256sums=('062911d73c45f310e1f2cf3708fccdab371139c75b40e948c36f7863ce027443'
             '825511a88bcb55bf7554e00378c416d4df2de28d70f912a9dfc262f2bbc49050')
 
 package() {
