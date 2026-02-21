@@ -1,5 +1,5 @@
 pkgname=iscsi-util
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="GUI for an iSCSI initiator, a simple way to connect targets whitout write any command."
 

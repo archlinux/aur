@@ -1,6 +1,6 @@
 pkgbase = iscsi-util
 	pkgdesc = GUI for an iSCSI initiator, a simple way to connect targets whitout write any command.
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/mijocecr/Iniciador-iSCSI-GUI-Manjaro
 	arch = x86_64
