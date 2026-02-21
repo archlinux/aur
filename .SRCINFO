@@ -16,6 +16,7 @@ pkgbase = hrmp
 	optdepends = pandoc
 	optdepends = texlive-basic
 	provides = hrmp
+	conflicts = hrmp-git
 	source = https://github.com/HighResMusicPlayer/hrmp/releases/download/0.14.0/hrmp-0.14.0.tar.gz
 	sha256sums = 99428097f92203f25ccd295cc4bb86d79754f87406115bc847be0694ea2b98d1
 
