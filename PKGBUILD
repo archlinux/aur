@@ -3,12 +3,13 @@
 _pkgbase=pwndbg
 pkgname=$_pkgbase-bin
 pkgver=2026.02.18
-pkgrel=1
+pkgrel=2
 pkgdesc='Exploit Development and Reverse Engineering with GDB Made Easy (isolated install)'
 url='https://github.com/pwndbg/pwndbg'
 arch=(x86_64)
 license=(MIT)
 depends=()
+conflicts=(pwndbg)
 options=('!debug' '!strip' '!docs')
 source=("$url/releases/download/$pkgver/pwndbg_${pkgver}_x86_64-portable.tar.xz"
         LICENSE.md)
