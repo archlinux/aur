@@ -3,7 +3,7 @@
 pkgname=02engine-bin
 provides=('02engine')
 pkgver=1.2.2
-fullver=1.2.2-73c83029
+fullver=1.2.2-e5a6cd21
 pkgrel=1
 source=('.INSTALL::https://github.com/02engine/02engine-aur/releases/download/INSTALL/INSTALL')
 pkgdesc='Mod of Scratch with a compiler and more features.02Engine.Better Scratch.Made from Turbowarp.'
