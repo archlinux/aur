@@ -1,0 +1,27 @@
+pkgbase = mixtapes-git
+	pkgdesc = A modern, Linux-first YouTube Music player (formerly Muse)
+	pkgver = r24.3974062
+	pkgrel = 1
+	url = https://github.com/m-obeid/Muse
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = nodejs
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = gst-plugins-ugly
+	depends = yt-dlp
+	depends = yt-dlp-ejs
+	depends = python-requests
+	depends = python-ytmusicapi
+	provides = mixtapes
+	conflicts = mixtapes
+	source = mixtapes-git::git+https://github.com/m-obeid/Muse.git
+	sha256sums = SKIP
+
+pkgname = mixtapes-git
