@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=mp3rgui
+GenericName=Audio Volume Normalizer
+Comment=Lossless MP3 volume adjustment using ReplayGain
+Exec=mp3rgui
+Icon=mp3rgui
+Terminal=false
+Categories=AudioVideo;Audio;
+Keywords=mp3;audio;gain;volume;normalize;replaygain;
+MimeType=audio/mpeg;audio/mp4;audio/aac;

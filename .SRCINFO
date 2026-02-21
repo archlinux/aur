@@ -1,0 +1,17 @@
+pkgbase = mp3rgui
+	pkgdesc = GUI application for mp3rgain - lossless MP3 volume adjustment
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/M-Igashi/mp3rgain
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	depends = gtk3
+	optdepends = mp3rgain: CLI tool for batch processing
+	source = https://github.com/M-Igashi/mp3rgain/archive/v1.7.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = mp3rgui
