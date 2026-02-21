@@ -1,0 +1,17 @@
+pkgbase = tempo-asyncat-bin
+	pkgdesc = A Pomodoro focus timer built with Tauri
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/theasyncat-mvp/tempo
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = libappindicator-gtk3
+	depends = gtk3
+	provides = tempo
+	conflicts = tempo
+
+	source_x86_64 = tempo-0.1.0.deb::https://github.com/theasyncat-mvp/tempo/releases/download/v0.1.0/tempo_0.1.0_amd64.deb
+	sha256sums_x86_64 = SKIP
+
+pkgname = tempo-asyncat-bin
