@@ -25,8 +25,8 @@ RestrictRealtime=yes
 MemoryDenyWriteExecute=yes
 # For eBPF, CAP_DAC_READ_SEARCH for reading sysfs files owned by root
 LimitMEMLOCK=infinity
-CapabilityBoundingSet=CAP_SYS_ADMIN CAP_BPF CAP_PERFMON CAP_SYSLOG CAP_DAC_READ_SEARCH
-AmbientCapabilities=CAP_SYS_ADMIN CAP_BPF CAP_PERFMON CAP_SYSLOG CAP_DAC_READ_SEARCH
+CapabilityBoundingSet=CAP_SYS_ADMIN CAP_BPF CAP_PERFMON CAP_SYSLOG CAP_DAC_READ_SEARCH CAP_SYS_PTRACE
+AmbientCapabilities=CAP_SYS_ADMIN CAP_BPF CAP_PERFMON CAP_SYSLOG CAP_DAC_READ_SEARCH CAP_SYS_PTRACE
 
 [Install]
 WantedBy=multi-user.target
