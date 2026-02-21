@@ -1,6 +1,6 @@
 pkgbase = yt-dlp-ejs
 	pkgdesc = External JavaScript for yt-dlp supporting many runtimes
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/yt-dlp/ejs
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = yt-dlp-ejs
 	makedepends = python-installer
 	depends = deno
 	depends = python
-	source = git+https://github.com/yt-dlp/ejs#tag=0.4.0
-	sha256sums = 91131cd29b695f0f9f703d0aefccfa4f8a852b6a03cecae018b02467c2943761
+	source = git+https://github.com/yt-dlp/ejs#tag=0.5.0
+	sha256sums = 9bdd8da41a0bd3e975e313fb61d2f2aedaef0cc26b26edd5bfacf2842b933dc3
 
 pkgname = yt-dlp-ejs

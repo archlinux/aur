@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=yt-dlp-ejs
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='External JavaScript for yt-dlp supporting many runtimes'
 arch=(any)
@@ -17,7 +17,7 @@ makedepends=(git
              python-installer)
 checkdepends=(python-pytest)
 source=(git+https://github.com/yt-dlp/ejs#tag=$pkgver)
-sha256sums=('91131cd29b695f0f9f703d0aefccfa4f8a852b6a03cecae018b02467c2943761')
+sha256sums=('9bdd8da41a0bd3e975e313fb61d2f2aedaef0cc26b26edd5bfacf2842b933dc3')
 
 build() {
   cd ejs
