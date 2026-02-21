@@ -2,7 +2,7 @@
 
 _pkgname=slipstream
 pkgname=slipstream-git
-pkgver=r66.bc772dd
+pkgver=r71.b2192e5
 pkgrel=1
 pkgdesc="High-performance multi-path covert channel over DNS in Rust with vibe coding"
 url="https://github.com/Mygod/slipstream-rust"
