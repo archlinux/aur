@@ -6,8 +6,8 @@ pkgname=(
   czkawka-gui
   krokiet
 )
-pkgver=11.0.0
-pkgrel=0.3
+pkgver=11.0.1
+pkgrel=0.1
 pkgdesc='Multi functional app to find duplicates, empty folders, similar images etc.'
 url='https://github.com/qarmin/czkawka'
 arch=(
@@ -25,25 +25,17 @@ depends=(
 makedepends=(
   cargo
   git
+  hicolor-icon-theme
   rust
 
   # GUI (GTK4)
   gdk-pixbuf2
   glib2
   gtk4
-  hicolor-icon-theme
 )
 checkdepends=(xorg-server-xvfb)
 source=("git+https://github.com/qarmin/czkawka.git#tag=$pkgver")
-b2sums=('149e6cce8427c6a6a7184b29b598355892eefd95a0edbc64decc7d4e7a4d58d88264ad5810bddadf102d9d23b435d9b90a12de0f5986413fdf96118efe0951a7')
-
-prepare() {
-  cd ${pkgbase}
-
-  # https://github.com/qarmin/czkawka/pull/1797
-  ## Fix missing app icon
-  git cherry-pick -n 3e0b8c0714ed09ab336c6209ea298f0f74e729be
-}
+b2sums=('384aa06363a6f3edc7bee57daca4cebd5dc582498933f66f5a65625f346aad372c6a7ac685270f959d0684d052ce78d173b9d015f0606dd17ffc507d8ba9e7d9')
 
 build() {
   cd ${pkgbase}
@@ -115,6 +107,9 @@ package_czkawka-gui() {
 }
 
 package_krokiet() {
+  depends+=(
+    hicolor-icon-theme
+  )
   license=('LicenseRef-MIT AND GPL-3.0-only AND CC-BY-4.0')
   pkgdesc+=" (Desktop App, Slint frontend)"
 
