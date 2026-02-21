@@ -1,0 +1,15 @@
+pkgbase = wallpaper-generator-next-bin
+	pkgdesc = 个性化聚合图片生成平台
+	pkgver = 5.1.0
+	pkgrel = 1
+	url = https://github.com/SRInternet-Studio/Wallpaper-generator
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = wallpaper-generator-next
+	conflicts = wallpaper-generator-next
+	source = https://github.com/SRInternet-Studio/Wallpaper-generator/releases/download/v5.1.0/wallpaper-generator-next-5.1.0-1-x86_64.pkg.tar.zst
+	sha256sums = 40410d3e344c17298089cfdbb8d77155df88ad2514cc66580dd1ad247944ccb0
+
+pkgname = wallpaper-generator-next-bin
