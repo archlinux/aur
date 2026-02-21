@@ -14,7 +14,7 @@ source=(
 	"LICENSE"
 	"README.md"
 )
-sha256sums=('69eff0c71c6b50288a82c5d0f5a42ca84c012265fa7b2c020e9b1a85d3140f5c'
+sha256sums=('bacc67f72dff9b334b5365cb2bcd106f2cd36738e740c7cc5eec58231d671d41'
             '79fc81ec097911ac3e971bc2ed0a3dddbcbdc0699e4da2d4a1997df312b21d65'
             '1eee93882484a32ee699f0c7a3f53353fc068db77b1e68acaa2e411d71d9ec3d'
             '3c17b0266b2cc00751e56bc9bdf1767e2d26eb951f2cf834e8e4e5547cf44d1c')
@@ -27,4 +27,3 @@ package() {
 	install -Dm755 "${srcdir}/komander-tool.sh" "$pkgdir/usr/share/${pkgname}/komander-tool.sh"
 	ln -sf "/usr/share/${pkgname}/komander-tool.sh" "$pkgdir/usr/bin/komander"
 }
-

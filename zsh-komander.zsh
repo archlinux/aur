@@ -70,8 +70,15 @@ tgpwd() {
 
 # Переключатель видимости виртуального окружения #
 tgvnv() {
-	if [[ -n "$VIRTUAL_ENV" && -z "$vnv" ]]; then
-		vnv="($(basename $VIRTUAL_ENV)) "
+	VENV="null"
+	if [[ -n $VIRTUAL_ENV ]]; then
+		VENV=$VIRTUAL_ENV
+	else
+		VENV="null"
+	fi
+
+	if [[ -z "$vnv" ]]; then
+		vnv="($(basename $VENV)) "
 	else
 		vnv=""
 	fi
@@ -84,7 +91,7 @@ zle -N tgpwd
 zle -N tgusr
 zle -N tgvnv
 
-# Создание сочитаний клавишь  #
+# Создание сочитаний клавиш  #
 bindkey "\ez" tgusr
 bindkey "\ex" tgpc
 bindkey "\ec" tgpwd
