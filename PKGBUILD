@@ -1,6 +1,6 @@
 # Maintainer: Jan Martin Reckel <jm.reckel@t-online.de>
 pkgname=cantara-bin
-pkgver=2.6.0
+pkgver=2.7.0
 pkgrel=1
 epoch=
 pkgdesc="Song Presentation Software"
@@ -11,19 +11,21 @@ groups=()
 conflicts=('cantara')
 depends=('qt6pas')
 provides=("cantara")
-source=("https://github.com/reckel-jm/cantara/releases/download/v$pkgver/cantara-$pkgver-linux-x86_64_bin.tar.gz")
-md5sums=('1339e14042cb5d25b7133962aec1eded')
+source=("https://github.com/reckel-jm/cantara/releases/download/v$pkgver/cantara-v$pkgver-linux-x64.zip")
+md5sums=('da87d8289d93d61db517ddcd1a3be165')
 
 package() {
-	mkdir -p $pkgdir/usr/bin/
-	install -D cantara $pkgdir/usr/bin/cantara
-	install -D languages/de/cantara.mo $pkgdir/usr/share/locale/de/LC_MESSAGES/cantara.mo
-	install -D languages/zh/cantara.mo $pkgdir/usr/share/locale/zh/LC_MESSAGES/cantara.mo
-	install -D languages/it/cantara.mo $pkgdir/usr/share/locals/it/LC_MESSAGES/cantara.mo
-	install -D languages/es/cantara.mo $pkgdir/usr/share/locals/es/LC_MESSAGES/cantara.mo
-	install -D languages/nl/cantara.mo $pkgdir/usr/share/locals/nl/LC_MESSAGES/cantara.mo
-	install -D app.cantara.Cantara.desktop $pkgdir/usr/share/applications/cantara.desktop
-	install -D app.cantara.Cantara.png $pkgdir/usr/share/icons/app.cantara.Cantara.png
-	mkdir -p $pkgdir/usr/share/cantara/
-	cp -r backgrounds $pkgdir/usr/share/cantara/
+    # Install binary
+    install -Dm755 cantara "$pkgdir/usr/bin/cantara"
+
+    # Generic installation for all .mo files
+    # This looks into src/languages/[lang]/cantara.mo and moves it to the correct system path
+    for _mo in src/languages/*/cantara.mo; do
+        _lang=$(basename "$(dirname "$_mo")")
+        install -Dm644 "$_mo" "$pkgdir/usr/share/locale/$_lang/LC_MESSAGES/cantara.mo"
+    done
+
+    # Install Desktop entry and Icon
+    install -Dm644 app.cantara.Cantara.desktop "$pkgdir/usr/share/applications/cantara.desktop"
+    install -Dm644 app.cantara.Cantara.png "$pkgdir/usr/share/icons/app.cantara.Cantara.png"
 }
