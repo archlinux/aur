@@ -2,18 +2,18 @@
 pkgbase='podman_backup'
 pkgname=('podman_backup' 'podman_backup-debug')
 pkgdesc='A small dart tool to push regular backups of podman volumes to a remote.'
-pkgver='1.4.1'
+pkgver='1.4.2'
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/Skycoder42/podman_backup'
 license=('BSD')
 depends=('podman' 'xz' 'systemd')
-source=("sources.tar.gz::https://github.com/Skycoder42/podman_backup/archive/refs/tags/v1.4.1.tar.gz"
-        "bin.tar.xz::https://github.com/Skycoder42/podman_backup/releases/download/v1.4.1/binaries-linux.tar.xz"
-        "debug.tar.xz::https://github.com/Skycoder42/podman_backup/releases/download/v1.4.1/binaries-linux-debug-symbols.tar.xz")
-b2sums=('5eb9a4dfa166815455d8ee71780daf35261169ed4b79c1d5385d0be7840f460080c7b4788e7df2a646a1e25b532d044b9cd4b36191c3df377e31cae57e1d1a74'
-        'bebfa12ea634be64f2ace061f9d548e93b6c7e2f47b5dbd1a5c3d3ddd819c4e2bcfd1219859a0d21a49b017864c90325ac48bdc4be86dc2cd22d101bc17a2362'
-        '4dd6ade7b5dbcecc564689bae61c38817bf8fe76cfa496b5093cb845ea98c79e20458488d00530a0ef57a323571ca09203efe497d899783e12a20cfec12ed663')
+source=("sources.tar.gz::https://github.com/Skycoder42/podman_backup/archive/refs/tags/v1.4.2.tar.gz"
+        "bin.tar.xz::https://github.com/Skycoder42/podman_backup/releases/download/v1.4.2/binaries-linux.tar.xz"
+        "debug.tar.xz::https://github.com/Skycoder42/podman_backup/releases/download/v1.4.2/binaries-linux-debug-symbols.tar.xz")
+b2sums=('dc4e695f86b7666aa516fa5a9691d6c90669c321a45dda826cec7a9dd0d9a0e8e021b5e27d11e44874c8e609b20b00d0240cdd3959c7dce6dbccad0f90cc2512'
+        'c7e057c2bc29c007986b433c2881b5f152d7ab7dfb55a465fe70a816629b4a6c3acef47076cbed771dff2bf55a8254cc99355758d52c5e49a6895b087c785555'
+        '86a87413e5859032fa49b55e46f09f3fddfa08be227846aba173cfd5c18f5967c57d2c21b9c1d03a5d78d6885acff5b4e6b35c4bc6a6c20a6dbb93ca3ca8c348')
 changelog='CHANGELOG.md'
 options=('!strip')
 _pkgdir="$pkgbase-$pkgver"
