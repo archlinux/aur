@@ -2,13 +2,13 @@
 
 pkgbase=lapack-git
 pkgname=('lapack-git' 'blas-git' 'lapacke-git')
-pkgver=3.12.1.r53.gefbd2fdf4
+pkgver=3.12.1.r141.gc0c64400d
 pkgrel=1
 pkgdesc="Linear Algebra PACKage"
 arch=('i686' 'x86_64')
 url="https://www.netlib.org/lapack/"
 license=('LicenseRef-lapack')
-makedepends=('git' 'gcc-fortran' 'cmake' 'python' 'doxygen')
+makedepends=('git' 'gcc-fortran' 'cmake' 'python')
 source=("git+https://github.com/Reference-LAPACK/lapack.git")
 sha256sums=('SKIP')
 
@@ -21,8 +21,6 @@ pkgver() {
 
 build() {
   cd "lapack"
-
-  doxygen "DOCS/Doxyfile_man"
 
   cmake \
     -B "_build" \
@@ -39,7 +37,7 @@ build() {
 }
 
 package_lapack-git() {
-  depends=('gcc-libs' 'blas')
+  depends=('glibc' 'libgcc' 'libgfortran' 'blas')
   provides=("lapack=$pkgver" 'lapack-manpages')
   conflicts=('lapack' 'lapack-manpages')
 
@@ -51,16 +49,13 @@ package_lapack-git() {
   rm -r "$pkgdir/usr/lib/cmake"/{cblas*,lapacke*}
   rm -r "$pkgdir/usr/lib/pkgconfig"/{blas.*,cblas.*,lapacke.*}
 
-  install -dm755 "$pkgdir/usr/share"
-  cp -r "DOCS/man" "$pkgdir/usr/share"
-
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/lapack"
 }
 
 package_blas-git() {
   pkgdesc="Basic linear algebra subprograms"
   url="https://www.netlib.org/blas/"
-  depends=('gcc-libs')
+  depends=('glibc' 'libgfortran')
   provides=("blas=$pkgver" "cblas=$pkgver")
   conflicts=('blas' 'cblas')
 
