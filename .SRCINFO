@@ -1,6 +1,6 @@
 pkgbase = python-gguf-git
 	pkgdesc = for writing binary files in the GGUF (GGML Universal File) format.
-	pkgver = b8083.r2.2b089c7758
+	pkgver = b8118.r1.ba3b9c8844
 	pkgrel = 1
 	url = https://ggml.ai/
 	arch = x86_64
@@ -15,7 +15,8 @@ pkgbase = python-gguf-git
 	depends = python-sentencepiece
 	optdepends = python-numpy: for numerical operations
 	optdepends = python-tqdm: for progress bars
-	provides = python-gguf-git=b8083.r2.2b089c7758
+	optdepends = python-mkl: for convert_hf_to_gguf.py
+	provides = python-gguf-git=b8118.r1.ba3b9c8844
 	conflicts = python-gguf
 	source = python-gguf-git::git+https://github.com/ggml-org/llama.cpp.git#branch=master
 	sha256sums = SKIP

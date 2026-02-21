@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-gguf-git
 _pkgname=gguf
-pkgver=b8083.r2.2b089c7758
+pkgver=b8118.r1.ba3b9c8844
 pkgrel=1
 pkgdesc="for writing binary files in the GGUF (GGML Universal File) format."
 arch=('x86_64')
@@ -18,7 +18,8 @@ makedepends=(
   git)
 optdepends=(
   'python-numpy: for numerical operations'
-  'python-tqdm: for progress bars')
+  'python-tqdm: for progress bars'
+  'python-mkl: for convert_hf_to_gguf.py')
 provides=("${pkgname}=${pkgver}")
 conflicts=('python-gguf')
 
