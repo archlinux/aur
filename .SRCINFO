@@ -1,7 +1,7 @@
 pkgbase = connman-resolvconf
 	pkgdesc = ConnMan integration with resolvconf(8)
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jirutka/connman-resolvconf
 	arch = x86_64
 	license = MIT
