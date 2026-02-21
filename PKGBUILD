@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libproxy-git
-pkgver=0.5.0.r89.gca277f4
+pkgver=0.5.0.r92.g736a3e1
 pkgrel=1
 pkgdesc="A library that provides automatic proxy configuration management"
 arch=('i686' 'x86_64')
 url="https://libproxy.github.io/libproxy/"
 license=('LGPL-2.1-or-later')
-depends=('gcc-libs' 'glibc' 'duktape' 'glib2')
+depends=('glibc' 'libgcc' 'glib2' 'libduktape.so')
 makedepends=('git' 'gi-docgen' 'gobject-introspection' 'meson' 'python' 'vala')
 provides=("libproxy=$pkgver" 'libproxy.so')
 conflicts=('libproxy')
