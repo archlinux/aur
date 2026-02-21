@@ -1,13 +1,13 @@
 # Maintainer: xCaptaiN09 <https://github.com/xCaptaiN09>
 pkgname=glyph-sddm-git
-pkgver=r1.1af789c
+pkgver=r11.e1c404d
 pkgrel=1
 pkgdesc="A high-end Nothing Phone inspired SDDM theme with adaptive typography and obsidian glass aesthetics (Qt6/Universal)"
 arch=('any')
 url="https://github.com/xCaptaiN09/glyph-sddm"
 license=('MIT')
 install=glyph-sddm-git.install
-depends=('sddm' 'qt6-declarative' 'qt6-svg' 'qt6-quickcontrols2')
+depends=('sddm' 'qt6-declarative' 'qt6-svg')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

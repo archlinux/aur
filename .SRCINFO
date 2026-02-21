@@ -10,7 +10,6 @@ pkgbase = glyph-sddm-git
 	depends = sddm
 	depends = qt6-declarative
 	depends = qt6-svg
-	depends = qt6-quickcontrols2
 	provides = glyph-sddm
 	conflicts = glyph-sddm
 	source = glyph-sddm::git+https://github.com/xCaptaiN09/glyph-sddm.git
