@@ -1,6 +1,6 @@
 # Maintainer: soymadip 
 pkgname=autotitle
-pkgver=1.10.2
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="Automated media file renamer using online databases"
 arch=('x86_64' 'aarch64')
