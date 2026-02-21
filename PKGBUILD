@@ -2,7 +2,7 @@
 
 pkgname=zenoh-c
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="C API for Zenoh"
 arch=('any')
 url="https://zenoh.io/"
@@ -14,7 +14,8 @@ source=("https://github.com/eclipse-zenoh/zenoh-c/archive/$pkgver.tar.gz"
 sha256sums=('5d5adc694ea47b67626a5dfcb1f41f342b9e156864f9162b77a430711962594c'
             '118eb4399eb1c9df3bbe1011cabd5ad49762d203846e8184e84c6fed2f32f370')
 
-options=(!debug)
+# Disable LTO: https://github.com/briansmith/ring/issues/1444
+options=(!debug !lto)
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
