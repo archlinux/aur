@@ -1,6 +1,5 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-#https://github.com/roniel-rhack/rip-go/releases/download/v0.2.2/rip-go-linux-amd64.tar.gz
 _pkgauthor=roniel-rhack
 _pkgname=rip-go
 pkgname=${_pkgname}-bin
