@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Surrealist
+Comment=Surrealist is the ultimate way to visually manage your SurrealDB database
+Exec=/usr/bin/surrealist -- %u
+Icon=Surrealist
+Type=Application
+StartupWMClass=Surrealist
+Categories=Development;Utility;
+StartupNotify=true
+Terminal=false
+X-MultipleArgs=false

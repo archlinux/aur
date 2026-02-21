@@ -1,0 +1,2 @@
+#!/usr/bin/sh
+LD_PRELOAD="/usr/lib/cef-surrealist/libcef.so" exec /usr/share/surrealist "$@"
