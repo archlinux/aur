@@ -1,6 +1,6 @@
 pkgbase = libvarlink-git
 	pkgdesc = Varlink C library and command line tool
-	pkgver = 23.r10.ga1a34ce
+	pkgver = 24.0.1.r0.g2ad4ec7
 	pkgrel = 1
 	url = https://varlink.org/
 	arch = i686
@@ -8,8 +8,9 @@ pkgbase = libvarlink-git
 	license = Apache-2.0
 	makedepends = git
 	makedepends = meson
-	depends = gcc-libs
-	provides = libvarlink=23.r10.ga1a34ce
+	depends = glibc
+	depends = libgcc
+	provides = libvarlink=24.0.1.r0.g2ad4ec7
 	conflicts = libvarlink
 	source = git+https://github.com/varlink/libvarlink.git
 	sha256sums = SKIP

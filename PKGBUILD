@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libvarlink-git
-pkgver=23.r10.ga1a34ce
+pkgver=24.0.1.r0.g2ad4ec7
 pkgrel=1
 pkgdesc="Varlink C library and command line tool"
 arch=('i686' 'x86_64')
 url="https://varlink.org/"
 license=('Apache-2.0')
-depends=('gcc-libs')
+depends=('glibc' 'libgcc')
 makedepends=('git' 'meson')
 provides=("libvarlink=$pkgver")
 conflicts=('libvarlink')
@@ -19,7 +19,7 @@ pkgver() {
   cd "libvarlink"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
