@@ -2,8 +2,8 @@
 
 _base=uuid-utils
 pkgname=python-${_base}
-pkgver=0.14.0
-pkgrel=2
+pkgver=0.14.1
+pkgrel=1
 pkgdesc="Drop-in replacement for Python UUID with bindings in Rust"
 arch=('x86_64')
 url="https://github.com/aminalaee/${_base}"
@@ -12,7 +12,7 @@ depends=('python' 'python-typing_extensions')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-maturin')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz"::${url}/archive/refs/tags/${pkgver}.tar.gz)
-b2sums=('49cd33b5515a45b295f913e905ae01f0d72f2e3f6b29d24905b87216713c5446bbb62c8e2cd21daab5b1fdaeac2ee3585a8c5b4476f93970b5e267aa06294aaa')
+b2sums=('73d3cf2d0c982e7ff35a02eb25282d324ad87984a95ca226cb6c60dcdb4af283dbda772d8179ecceed1472ea02a05f561c54e3b059808de448c740986dbe2307')
 
 build() {
   cd "${_base}-${pkgver}"
