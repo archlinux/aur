@@ -1,6 +1,6 @@
 pkgbase = efisc2024-bin
 	pkgdesc = Beschreibung des Programms
-	pkgver = .0.10
+	pkgver = 1.0.10
 	pkgrel = 69
 	url = https://steuerverwaltung.tg.ch/hilfsmittel/efisc-steuererklaerungssoftware/download-efisc2024.html/16453
 	arch = x86_64

@@ -1,5 +1,5 @@
 pkgname=efisc2024-bin
-pkgver=.0.10
+pkgver=1.0.10
 pkgrel=69
 pkgdesc="Beschreibung des Programms"
 arch=('x86_64')
