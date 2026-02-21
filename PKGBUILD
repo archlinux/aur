@@ -1,6 +1,6 @@
 # Maintainer: Bobee <bogdan.mosteanu@hey.com>
 pkgname=mounty
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A Linux GTK4 application for managing network shares with fstab integration"
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
     'polkit'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/xndbogdan/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('56085c46dfd3e5fdb367aa1a9e4f5ed514fc0fb098a032c4ecd86ee989253bb2')
 
 package() {
     cd "$pkgname-$pkgver"

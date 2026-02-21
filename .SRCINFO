@@ -1,6 +1,6 @@
 pkgbase = mounty
 	pkgdesc = A Linux GTK4 application for managing network shares with fstab integration
-	pkgver = 1.0.2
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/xndbogdan/mounty
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = mounty
 	depends = smbclient
 	depends = cifs-utils
 	depends = polkit
-	source = mounty-1.0.2.tar.gz::https://github.com/xndbogdan/mounty/archive/v1.0.2.tar.gz
-	sha256sums = SKIP
+	source = mounty-1.1.0.tar.gz::https://github.com/xndbogdan/mounty/archive/v1.1.0.tar.gz
+	sha256sums = 56085c46dfd3e5fdb367aa1a9e4f5ed514fc0fb098a032c4ecd86ee989253bb2
 
 pkgname = mounty
