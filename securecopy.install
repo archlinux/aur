@@ -1,95 +1,25 @@
-# Maintainer: Your Name <your@email.com>
-# Upstream:   hansij66 <https://github.com/hansij66/securecopy>
-#
-# Patches GNU coreutils cp/mv to add CRC64 xattr checksum verification.
-# Provides crccp, crcmv, crcsum.
-
-pkgname=securecopy
-pkgver=9.7.0
-pkgrel=1
-pkgdesc="GNU coreutils cp/mv with CRC64 xattr checksum verification, plus crcsum"
-arch=('x86_64' 'aarch64' 'armv7h')
-url="https://github.com/hansij66/securecopy"
-license=('GPL-3.0-or-later')
-depends=('attr' 'glibc')
-makedepends=('gcc' 'make' 'autoconf' 'automake' 'gettext' 'texinfo' 'perl' 'gperf' 'attr' 'libcap')
-provides=("${pkgname}")
-install=securecopy.install
-
-_coreutils_ver="9.7"
-
-source=(
-    "securecopy-${pkgver}.tar.gz::https://github.com/hansij66/securecopy/archive/refs/tags/v${pkgver}.tar.gz"
-    "https://ftp.gnu.org/gnu/coreutils/coreutils-${_coreutils_ver}.tar.xz"
-)
-sha256sums=(
-    '8c207742834dc79ad6f2af0e3f62d5543f57d374e06a0ca7ac30621c9c2fa180'
-    'e8bb26ad0293f9b5a1fc43fb42ba970e312c66ce92c1b0b16713d7500db251bf'
-)
-
-prepare() {
-    local sc="${srcdir}/securecopy-${pkgver}"
-    local cu="${srcdir}/coreutils-${_coreutils_ver}"
-
-    # ── Copy securecopy source files into coreutils tree ─────────────────────
-    cp "${sc}/src/crc64.c"      "${cu}/src/"
-    cp "${sc}/src/crc64.h"      "${cu}/src/"
-    cp "${sc}/src/crcsum.c"     "${cu}/src/"
-    cp "${sc}/src/crcsum.h"     "${cu}/src/"
-    cp "${sc}/src/crcsum_cli.c" "${cu}/src/"
-    cp "${sc}/src/crccp.x"      "${cu}/man/"
-    cp "${sc}/src/crcmv.x"      "${cu}/man/"
-    cp "${sc}/src/crcsum.x"     "${cu}/man/"
-
-    # ── Create crccp.c and crcmv.c from cp.c/mv.c before patching ────────────
-    cp "${cu}/src/cp.c" "${cu}/src/crccp.c"
-    cp "${cu}/src/mv.c" "${cu}/src/crcmv.c"
-
-    # ── Apply patches — 'patch FILE PATCHFILE' ignores absolute path headers ─
-    cd "${cu}/src"
-    patch copy.c      "${sc}/src/copy.c.patch"
-    patch copy.h      "${sc}/src/copy.h.patch"
-    patch crccp.c     "${sc}/src/crccp.c.patch"
-    patch crcmv.c     "${sc}/src/crcmv.c.patch"
-    patch cu-progs.mk "${sc}/src/cu-progs.mk.patch"
-    patch local.mk    "${sc}/src/local.mk.patch"
-
-    cd "${cu}/m4"
-    patch cu-progs.m4 "${sc}/src/cu-progs.m4.patch"
-
-    # ── Clean out pre-built Makefile so configure regenerates it fresh ────────
-    # ACLOCAL/AUTOMAKE exported so the system versions are used, not aclocal-1.16
-    cd "${cu}"
-    export ACLOCAL=aclocal
-    export AUTOMAKE=automake
-    make distclean || true
-
-    # ── Compat header for attr/xattr.h (Arch: sys/xattr.h, Debian: attr/xattr.h) ─
-    # coreutils compiles with -Isrc, so src/attr/xattr.h is found for #include <attr/xattr.h>
-    mkdir -p "${cu}/src/attr"
-    echo '#include <sys/xattr.h>' > "${cu}/src/attr/xattr.h"
+post_install() {
+    echo ""
+    echo "╔══════════════════════════════════════════════════════╗"
+    echo "║               securecopy installed!                  ║"
+    echo "╠══════════════════════════════════════════════════════╣"
+    echo "║  Binaries: crccp  crcmv  crcsum                      ║"
+    echo "║                                                      ║"
+    echo "║  To use as drop-in replacements, add to your shell:  ║"
+    echo "║                                                      ║"
+    echo "║    alias cp='crccp'                                  ║"
+    echo "║    alias mv='crcmv'                                  ║"
+    echo "║                                                      ║"
+    echo "║  Key flags:                                          ║"
+    echo "║    -c   verify CRC after copy/move                   ║"
+    echo "║    -cx  verify + store CRC in xattr                  ║"
+    echo "║    -v   verbose (shows CRC values)                   ║"
+    echo "║                                                      ║"
+    echo "║  Docs: /usr/share/doc/securecopy/                    ║"
+    echo "╚══════════════════════════════════════════════════════╝"
+    echo ""
 }
 
-build() {
-    local cu="${srcdir}/coreutils-${_coreutils_ver}"
-    cd "${cu}"
-
-    export ACLOCAL=aclocal
-    export AUTOMAKE=automake
-
-    ./configure --prefix=/usr --disable-nls
-
-    make
-}
-
-package() {
-    local sc="${srcdir}/securecopy-${pkgver}"
-    local cu="${srcdir}/coreutils-${_coreutils_ver}"
-
-    install -Dm755 "${cu}/src/crccp"  "${pkgdir}/usr/bin/crccp"
-    install -Dm755 "${cu}/src/crcmv"  "${pkgdir}/usr/bin/crcmv"
-    install -Dm755 "${cu}/src/crcsum" "${pkgdir}/usr/bin/crcsum"
-
-    install -Dm644 "${sc}/README.md"  "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-    install -Dm644 "${sc}/ChangeLog"  "${pkgdir}/usr/share/doc/${pkgname}/ChangeLog"
+post_upgrade() {
+    post_install
 }
