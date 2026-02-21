@@ -19,8 +19,10 @@ backup=()
 options=()
 install=
 changelog=
-source=("nml-${pkgver}.tar.gz::https://github.com/OpenTTD/nml/archive/${pkgver}.tar.gz")
-sha256sums=("d8d3efac1396e61d8a3a5e8b39b2015c8742fddd96b76689ab898062022d72b0")
+source=("nml-${pkgver}.tar.gz::https://github.com/OpenTTD/nml/archive/${pkgver}.tar.gz"
+	"nml-0.8.1-set-version.patch")
+sha256sums=("d8d3efac1396e61d8a3a5e8b39b2015c8742fddd96b76689ab898062022d72b0"
+	"afe75ee57633026972a2617c2f8023e0a364eab57b5df3f1079af149dee4112d")
 noextract=()
 md5sums=()
 validpgpkeys=()
@@ -28,7 +30,7 @@ validpgpkeys=()
 prepare()
 {
 	cd "${pkgname}-${pkgver}"
-	patch -p1 -i "${startdir}/nml-0.8.1-set-version.patch"
+	patch -p1 -i ../nml-0.8.1-set-version.patch
 }
 
 build()
