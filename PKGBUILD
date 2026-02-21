@@ -7,7 +7,7 @@
 
 pkgname=binaryninja-personal
 _pkgname=binaryninja
-pkgver=5.2.8614
+pkgver=5.2.8722
 pkgrel=1
 pkgdesc="An interactive decompiler, disassembler, debugger, and binary analysis platform. This package is for the Personal Edition and requires both an installer zip (x86 or ARM) and a license."
 arch=('x86_64' 'arm')
