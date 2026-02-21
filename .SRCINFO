@@ -1,0 +1,19 @@
+pkgbase = brother-dcpt530dw
+	pkgdesc = Driver for the Brother DCP-T530DW wifi multifuncional printer
+	pkgver = 3.6.1
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=br&lang=pt&prod=dcpt530dw_us_eu_as
+	arch = i686
+	arch = x86_64
+	license = custom: Brother License
+	license = EULA
+	license = GPL
+	depends = cups
+	depends = ghostscript
+	optdepends = sane: scanning support
+	optdepends = brscan5: making dcpt530dw scanner available to sane
+	optdepends = brscan-skey: scankey support if connected via usb
+	source = https://download.brother.com/welcome/dlf106519/dcpt530dwpdrv-3.6.1-1.amd64.deb
+	sha256sums = 5dcd7064194015b3aa7be114bf1c79e84350d4370b75ec93cfd83b4a615597d8
+
+pkgname = brother-dcpt530dw
