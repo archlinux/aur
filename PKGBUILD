@@ -1,7 +1,7 @@
 # Maintainer: Leonie Ain <me@koyu.space>
 pkgname=input
-pkgver=0.8.2
-pkgrel=2
+pkgver=0.13.2
+pkgrel=1
 pkgdesc="Unofficial community-developed port of the Input application for Work Louder devices on Linux"
 arch=('x86_64')
 url="https://github.com/worklouder/input-linux"
@@ -9,7 +9,7 @@ license=('custom')
 depends=('libusb')
 makedepends=('curl' 'p7zip' 'npm' 'asar' 'python311' 'git')
 source=(
-    "input4linux-${pkgver}.sh::https://raw.githubusercontent.com/worklouder/input-linux/main/input4linux-${pkgver}.sh"
+    "input4linux-0.8.2.sh::https://raw.githubusercontent.com/worklouder/input-linux/main/input4linux-0.8.2.sh"
     "install-udev-worklouder.sh::https://raw.githubusercontent.com/worklouder/input-linux/main/patch/dist-electron/scripts/install-udev-worklouder.sh"
     "appicon.png::https://raw.githubusercontent.com/worklouder/input-linux/main/patch/dist/assets/appicon.png"
     "input.desktop"
@@ -23,7 +23,7 @@ sha256sums=('4cffd8b8183dbfec4d5f773bafb96b488f5b0f4de0c0e5965ce633a243e61052'
 
 prepare() {
     cd "$srcdir"
-    chmod +x input4linux-${pkgver}.sh
+    chmod +x input4linux-0.8.2.sh
     chmod +x install-udev-worklouder.sh
 }
 
@@ -34,7 +34,7 @@ build() {
     export TEST_MODE=false
     
     # Run the build script
-    bash input4linux-${pkgver}.sh
+    bash input4linux-0.8.2.sh
 }
 
 package() {
