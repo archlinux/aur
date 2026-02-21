@@ -2,9 +2,9 @@
 
 pkgname=zen-twilight-bin
 _pkgname=zen-twilight
-_realpkgver=twilight
+_realpkgver=twilight-1
 _desktopname=zen-twilight
-pkgver=1.19t.2026.02.20
+pkgver=1.19t.2026.02.21
 pkgrel=1
 pkgdesc="Unstable Nightly release of the Performance oriented Firefox-based web browser"
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ options=(!strip)
 provides=("zen-twilight=$pkgver")
 conflicts=('zen-twilight')
 
-source_x86_64=("zen-browser-$_realpkgver-$pkgver-$pkgrel-x86_64.tar.xz::https://github.com/zen-browser/desktop/releases/download/$_realpkgver/zen.linux-x86_64.tar.xz")
-source_aarch64=("zen-browser-$_realpkgver-$pkgver-$pkgrel-aarch64.tar.xz::https://github.com/zen-browser/desktop/releases/download/$_realpkgver/zen.linux-aarch64.tar.xz")
+source_x86_64=("zen-browser-twilight-$pkgver-$pkgrel-x86_64.tar.xz::https://github.com/zen-browser/desktop/releases/download/$_realpkgver/zen.linux-x86_64.tar.xz")
+source_aarch64=("zen-browser-twilight-$pkgver-$pkgrel-aarch64.tar.xz::https://github.com/zen-browser/desktop/releases/download/$_realpkgver/zen.linux-aarch64.tar.xz")
 
 source=("$_pkgname.sh"
         "$_desktopname.desktop"
