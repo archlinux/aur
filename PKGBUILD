@@ -9,8 +9,8 @@ pkgdesc="The Terminal Obby — a modern IRC client for the terminal"
 arch=('any')
 url="https://github.com/ObsidianIRC/tobby"
 license=('MIT')
-# nodejs runs the bin/tobby.js shim; bun-bin runs the actual bundled app
-depends=('nodejs' 'bun-bin')
+# nodejs runs the bin/tobby.js shim; bun runs the actual bundled app
+depends=('nodejs' 'bun')
 makedepends=('npm' 'jq')
 provides=('tobby')
 conflicts=('tobby-bin')
