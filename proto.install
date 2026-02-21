@@ -1,0 +1,12 @@
+post_install() {
+    echo "Copy /etc/contactinfo.example to /etc/contactinfo and adjust it to your preferences."
+    echo "You must update /etc/mkinitcpio.conf"
+    echo "Add 'contactinfo' to the HOOKS array"
+    echo "Run: mkinitcpio -P"
+}
+
+pre_remove() {
+    echo "You must update /etc/mkinitcpio.conf"
+    echo "Remove 'contactinfo' from the HOOKS array"
+    echo "Run: mkinitcpio -P"
+}

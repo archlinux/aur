@@ -1,0 +1,16 @@
+pkgbase = mkinitcpio-contactinfo
+	pkgdesc = initcpio hook to show contact information before encrypt your disk
+	pkgver = 0.0.1
+	pkgrel = 1
+	install = proto.install
+	arch = any
+	license = unknown
+	depends = mkinitcpio
+	source = example_message
+	source = contactinfo_install
+	source = contactinfo_hook
+	sha256sums = 78487248ebbf2d04c9e744ba8818c0e2beb0c9d0074d571ca8c2bfc4a31ce86b
+	sha256sums = 97255373c81843640ddbfe9d081887b0e9b1300456bca70b5dfd6f4fc137a3c4
+	sha256sums = 4febe98499d31b066388030566f33b75cbb919dcbf89f7621aee4be719a40edb
+
+pkgname = mkinitcpio-contactinfo

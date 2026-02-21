@@ -1,0 +1,15 @@
+#!/bin/sh
+
+build() {
+    add_dir "/etc/"
+    cat /etc/contactinfo > "${BUILDROOT}"/etc/contactinfo
+    #cp /etc/contactinfo "${BUILDROOT}"/etc/contactinfo
+    add_runscript
+}
+
+help ()
+{
+    cat<<HELPEOF
+    Copy /etc/contactinfo.example to /etc/contactinfo and adjust it to your preferences.
+HELPEOF
+}
