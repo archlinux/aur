@@ -1,0 +1,28 @@
+--- src/cap_ffmpeg_impl_ov.hpp	2025-04-15 13:25:24.665459478 +0300
++++ ../video-2.1.3_new/src/cap_ffmpeg_impl_ov.hpp	2026-02-19 22:17:24.170591304 +0300
+@@ -652,7 +652,7 @@
+ 
+     if( video_st )
+     {
+-        avcodec_close( context );
++        avcodec_free_context( &context );
+         video_st = NULL;
+     }
+ 
+@@ -1500,6 +1500,8 @@
+ 
+ void CvCapture_FFMPEG::get_rotation_angle()
+ {
++    // Pass
++    /*
+     rotation_angle = 0;
+     const uint8_t *data = 0;
+     data = av_stream_get_side_data(video_st, AV_PKT_DATA_DISPLAYMATRIX, NULL);
+@@ -1509,6 +1511,7 @@
+         if (rotation_angle < 0)
+             rotation_angle += 360;
+     }
++    */
+ }
+ 
+ void CvCapture_FFMPEG::seek(int64_t _frame_number)
