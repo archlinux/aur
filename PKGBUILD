@@ -12,7 +12,8 @@ makedepends=('meson' 'ninja' 'unzip' )
 optdepends=('hyprpaper: hyprland wallpaper setter'
 	    'swaybg: sway wallpaper setter'
 	    'mpvpaper: animated wallpapers using mpv'
-	    'swww: wallpaper setter with transitions')
+	    'swww: wallpaper setter with transitions'
+        'gslapper: wallpaper utility for Wayland with video/image support and instant switching via RAM cache')
 arch=('x86_64')
 license=('Unlicence')
 sha256sums=('SKIP' 'SKIP')
