@@ -96,7 +96,7 @@ makedepends=(extra-cmake-modules
 groups=(plasma)
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=(https://download.kde.org/unstable/plasma/$_dirver/$_pkgname-$pkgver.tar.xz{,.sig}
+source=(https://download.kde.org/stable/plasma/$_dirver/$_pkgname-$pkgver.tar.xz{,.sig}
         povd.patch)
 sha256sums=('d91e4dd276ea1ad743e31ace859a36ec4dfb431495c81eb1a8eb32a49c73f342'
             'SKIP'
