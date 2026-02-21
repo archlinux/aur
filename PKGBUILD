@@ -489,7 +489,7 @@ _update_defconfig() {
     case ${_subarch} in
         "")
             # Ask for subarch if none provided
-            make "${BUILD_FLAGS[@]}" oldconfig
+            timeout -fk 45 30 make "${BUILD_FLAGS[@]}" oldconfig
             ;;
         "1" | "GENERIC_CPU")
             # Set x86-64 microarch
