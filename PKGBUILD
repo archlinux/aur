@@ -8,7 +8,7 @@
 pkgbase=nvidia-580xx-utils
 pkgname=('nvidia-580xx-utils' 'opencl-nvidia-580xx' 'nvidia-580xx-dkms')
 pkgver=580.126.18
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
@@ -57,9 +57,6 @@ prepare() {
     # https://gitlab.archlinux.org/archlinux/packaging/packages/nvidia-utils/-/issues/14
     # https://github.com/rpmfusion/nvidia-kmod/blob/master/make_modeset_default.patch
     patch -Np1 -i "${srcdir}/0001-Enable-atomic-kernel-modesetting-by-default.patch" -d "${srcdir}/${_pkg}/kernel"
-
-    # Fix compilation for 6.19
-    patch -Np1 -i "${srcdir}/0002-Fix-compile-for-6.19.patch"
 
     shopt -s globstar
     for conf in "${srcdir}"/**/dkms.conf; do

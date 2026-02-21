@@ -1,6 +1,6 @@
 pkgbase = nvidia-580xx-utils
 	pkgver = 580.126.18
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nvidia.com/
 	arch = x86_64
 	license = custom
