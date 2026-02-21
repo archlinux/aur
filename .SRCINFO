@@ -1,7 +1,7 @@
 pkgbase = surrealist-cef
 	pkgdesc = Surrealist is the ultimate way to visually manage your SurrealDB database (Experimental CEF runtime)
 	pkgver = 3.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/surrealdb/surrealist
 	arch = x86_64
 	arch = aarch64
@@ -34,13 +34,16 @@ pkgbase = surrealist-cef
 	depends = openssl
 	depends = pango
 	depends = wayland
+	optdepends = surrealdb: non-sandboxed SurrealDB instance
 	provides = surrealist
 	conflicts = surrealist
 	conflicts = surrealist-bin
 	source = https://github.com/surrealdb/surrealist/archive/refs/tags/surrealist-v3.7.2.tar.gz
+	source = cef-runtime.patch
 	source = surrealist
 	source = Surrealist.desktop
 	sha256sums = 51d6ae88a746a4a5cbce6b19aaf6778acffd990f7b26e5e9ca8e20348c88f729
+	sha256sums = 1790c8fdaec8750844c69d6d1798b41236504461313764c6f740dad0a56376a7
 	sha256sums = 9f2c7374511c39bb98cb8a41f85908b76f90052904edb88b17a1523e40942fb1
 	sha256sums = 94f0619847e1136a07c7386c9bf20fec15ff29c69c4dede523958beeaed28427
 

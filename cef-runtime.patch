@@ -1,0 +1,139 @@
+--- src-tauri/src/window.rs	2026-02-20 18:44:14.000000000 -0700
++++ src-tauri/src/window.rs	2026-02-21 14:17:51.023565937 -0700
+@@ -5,7 +5,7 @@
+ static LAST_FOCUSED_WINDOW: OnceLock<Mutex<Option<String>>> = OnceLock::new();
+ 
+ #[tauri::command]
+-pub fn toggle_devtools(window: tauri::WebviewWindow) {
++pub fn toggle_devtools(window: tauri::WebviewWindow<tauri::Cef>) {
+     if window.is_devtools_open() {
+         window.close_devtools();
+     } else {
+@@ -14,11 +14,11 @@
+ }
+ 
+ #[tauri::command]
+-pub async fn new_window(app: AppHandle) {
++pub async fn new_window(app: AppHandle<tauri::Cef>) {
+     open_new_window(&app).await;
+ }
+ 
+-pub async fn open_new_window(app: &AppHandle) {
++pub async fn open_new_window(app: &AppHandle<tauri::Cef>) {
+     let window_label = format!("surrealist-{}", Uuid::new_v4());
+ 
+     #[allow(unused_mut)]
+@@ -57,7 +57,7 @@
+     *last = Some(label.to_string());
+ }
+ 
+-pub fn get_last_focused_window(app: &AppHandle) -> tauri::WebviewWindow {
++pub fn get_last_focused_window(app: &AppHandle<tauri::Cef>) -> tauri::WebviewWindow<tauri::Cef> {
+     let storage = LAST_FOCUSED_WINDOW.get_or_init(|| Mutex::new(None));
+     let last = storage.lock().unwrap();
+     if let Some(label) = last.as_ref() {
+@@ -74,7 +74,7 @@
+         .clone()
+ }
+ 
+-pub fn emit_last(app: &AppHandle, event: &str, payload: impl serde::Serialize + Clone) {
++pub fn emit_last(app: &AppHandle<tauri::Cef>, event: &str, payload: impl serde::Serialize + Clone) {
+     let last_window = get_last_focused_window(app);
+ 
+     app.emit_to(last_window.label(), event, payload)
+--- src-tauri/src/open.rs	2026-02-20 18:44:14.000000000 -0700
++++ src-tauri/src/open.rs	2026-02-21 14:17:51.023690749 -0700
+@@ -16,7 +16,7 @@
+ /// The state holding resources requested for opening
+ pub struct OpenResourceState(pub Mutex<Vec<url::Url>>);
+ 
+-pub fn store_resources<T: IntoIterator<Item = String>>(app: &AppHandle, args: T) {
++pub fn store_resources<T: IntoIterator<Item = String>>(app: &AppHandle<tauri::Cef>, args: T) {
+     let mut urls = Vec::new();
+ 
+     for arg in args.into_iter().skip(1) {
+@@ -141,7 +141,7 @@
+ }
+ 
+ #[tauri::command]
+-pub async fn open_query_file(app: AppHandle, window: Window) {
++pub async fn open_query_file(app: AppHandle<tauri::Cef>, window: Window<tauri::Cef>) {
+     let mut dialog = app.dialog().file();
+ 
+     #[cfg(desktop)]
+--- src-tauri/src/database/mod.rs	2026-02-20 18:44:14.000000000 -0700
++++ src-tauri/src/database/mod.rs	2026-02-21 14:17:51.022772510 -0700
+@@ -15,7 +15,7 @@
+ #[allow(clippy::too_many_arguments)]
+ #[tauri::command]
+ pub fn start_database(
+-    window: tauri::Window,
++    window: tauri::Window<tauri::Cef>,
+     state: tauri::State<DatabaseState>,
+     username: &str,
+     password: &str,
+--- src-tauri/src/main.rs	2026-02-20 18:44:14.000000000 -0700
++++ src-tauri/src/main.rs	2026-02-21 14:17:51.023760980 -0700
+@@ -22,13 +22,13 @@
+ mod whitelist;
+ pub mod window;
+ 
+-static APP_HANDLE: OnceLock<AppHandle> = OnceLock::new();
++static APP_HANDLE: OnceLock<AppHandle<tauri::Cef>> = OnceLock::new();
+ 
+-fn set_app_handle(app: AppHandle) {
++fn set_app_handle(app: AppHandle<tauri::Cef>) {
+     APP_HANDLE.set(app).expect("App handle already set");
+ }
+ 
+-pub fn get_app_handle() -> &'static AppHandle {
++pub fn get_app_handle() -> &'static AppHandle<tauri::Cef> {
+     APP_HANDLE.get().expect("App handle not set")
+ }
+ 
+--- src-tauri/Cargo.toml	2026-02-20 18:44:14.000000000 -0700
++++ src-tauri/Cargo.toml	2026-02-21 14:17:51.025265660 -0700
+@@ -9,7 +9,7 @@
+ publish = false
+ 
+ [dependencies]
+-tauri = { version = "2.4.0", features = ["devtools"] }
++tauri = { version = "2.4.0", default-features = false, features = ["cef", "devtools"] }
+ tauri-plugin-fs = "2.2.0"
+ tauri-plugin-os = "2.2.1"
+ tauri-plugin-log = "2.3.1"
+@@ -30,7 +30,7 @@
+ url = "2"
+ showfile = "0.1.1"
+ reqwest = "0.12"
+-uuid = "1.17.0"
++uuid = { version = "1", features = ["v4"] }
+ 
+ [target.'cfg(target_os = "macos")'.dependencies]
+ cocoa = "0.26.1"
+@@ -41,3 +41,25 @@
+ 
+ [build-dependencies]
+ tauri-build = { version = "2.1.0" }
++
++[patch.crates-io]
++tauri = { git = "https://github.com/tauri-apps/tauri", branch = "feat/cef" }
++tauri-build = { git = "https://github.com/tauri-apps/tauri", branch = "feat/cef" }
++tauri-utils = { git = "https://github.com/tauri-apps/tauri", branch = "feat/cef" }
++tauri-runtime = { git = "https://github.com/tauri-apps/tauri", branch = "feat/cef" }
++tauri-runtime-wry = { git = "https://github.com/tauri-apps/tauri", branch = "feat/cef" }
++tauri-runtime-cef = { git = "https://github.com/tauri-apps/tauri", branch = "feat/cef" }
++tauri-macros = { git = "https://github.com/tauri-apps/tauri", branch = "feat/cef" }
++tauri-plugin = { git = "https://github.com/tauri-apps/tauri", branch = "feat/cef" }
++tauri-codegen = { git = "https://github.com/tauri-apps/tauri", branch = "feat/cef" }
++tauri-plugin-fs = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "feat/cef" }
++tauri-plugin-os = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "feat/cef" }
++tauri-plugin-log = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "feat/cef" }
++tauri-plugin-http = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "feat/cef" }
++tauri-plugin-shell = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "feat/cef" }
++tauri-plugin-dialog = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "feat/cef" }
++tauri-plugin-process = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "feat/cef" }
++tauri-plugin-updater = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "feat/cef" }
++tauri-plugin-deep-link = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "feat/cef" }
++tauri-plugin-localhost = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "feat/cef" }
++tauri-plugin-single-instance = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "feat/cef" }
