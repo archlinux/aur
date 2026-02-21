@@ -7,7 +7,7 @@ pkgname=(
     "${pkgbase}-nmh-manifest"
     "${pkgbase}-pcsc-driver"
 )
-pkgver=1.3.1.100
+pkgver=1.3.1.101
 pkgrel=1
 pkgdesc="IIT End User CA-1. Sign (web)"
 url="https://iit.com.ua"
@@ -16,11 +16,11 @@ arch=('i686' 'x86_64')
 makedepends=('execstack')
 
 if [[ $CARCH = i686 ]]; then
-    _src_md5sum='1ea5840e5737a4d0e0a2e9f88ba4c702'
+    _src_md5sum='5838333df6d3c73ad8b2746c60d5c906'
     _srcuri_filename='euswi.tar'
     _src_filename="eusw_${pkgver}_i386.tar"
 else
-    _src_md5sum='3ff073c6b269e292ac77764da22a4afb'
+    _src_md5sum='170a3802ae1d816f694ee0505d0d3e6b'
     _srcuri_filename='euswi.64.tar'
     _src_filename="eusw_${pkgver}_amd64.tar"
 fi
