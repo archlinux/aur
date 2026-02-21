@@ -2,7 +2,7 @@
 # Maintainer: Floyd Göttsch <floyd.goettsch1@gmail.com>
 
 pkgname='bm-bin'
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Your command-line sidekick for teleporting to files, folders, and URLs in one hop.'
 url='https://github.com/Shu-AFK/bm'
@@ -12,10 +12,10 @@ provides=('bm')
 conflicts=('bm')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Shu-AFK/bm/releases/download/v${pkgver}/bm_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('c8c5c257724242078a67452cc567642fb45ecd34af20ed198f04b6dca84654ae')
+sha256sums_aarch64=('a7e057f9ce9070e1ce34b3a38ec677a88e93bf74f7cfdc2871f2aa9d20dcd3bc')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Shu-AFK/bm/releases/download/v${pkgver}/bm_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('2cfe2fabe61b7f6e5543d965f8da540bf8619c6cf15ddecd1d6d3b9440e6fa87')
+sha256sums_x86_64=('32038ed3ac48d10f749ac8315fd0db52cb923b0d938826b1b857e5b6323a5370')
 
 package() {
   install -Dm755 "./bm" "${pkgdir}/usr/bin/bm"
