@@ -1,8 +1,9 @@
 # Maintainer: Ahmet Arda Kavakcı <ahmetardakavakci@gmail.com>
 
 pkgname=ungoogled-chromium-widevine-bin
-pkgver=145.0.7632.75
+pkgver=145.0.7632.109
 pkgrel=2
+_upstream_rel=1
 pkgdesc="A lightweight approach to removing Google web service dependency (with Widevine)"
 arch=('x86_64')
 url="https://github.com/ungoogled-software/ungoogled-chromium"
@@ -19,12 +20,12 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
 provides=("chromium=$pkgver" "chromedriver=$pkgver")
 conflicts=('chromium' 'chromedriver')
 source=(
-  "https://github.com/ungoogled-software/ungoogled-chromium-archlinux/releases/download/$pkgver-$pkgrel/ungoogled-chromium-$pkgver-$pkgrel-$arch.pkg.tar.zst"
+  "https://github.com/ungoogled-software/ungoogled-chromium-archlinux/releases/download/$pkgver-$_upstream_rel/ungoogled-chromium-$pkgver-$pkgrel-$arch.pkg.tar.zst"
   "google-chrome-stable_${pkgver}-1_amd64.deb::https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${pkgver}-1_amd64.deb"
 )
 noextract=("google-chrome-stable_${pkgver}-1_amd64.deb")
-sha256sums=('b6c566315f458be5aaec06b02df06e3b03041a030d202db36d660b87efa38776'
-            'e21163461914451ab535774050f7ac4b7dadfcdc86f5e6fbf38fec5bbe439425')
+sha256sums=('59247652dc3f55c581b7de71b75fb9283f5d1dd5fab6aa38845f0bb3c3d84296'
+            '54dbf1ff79778338fc1e379e2b7bff1e3d3913db763efb223fca6720eab50040')
 
 declare -gA _system_libs=(
   [brotli]=brotli
