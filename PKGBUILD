@@ -117,7 +117,7 @@ EOF
     # instead of the locked crates.io versions which don't have the cef feature
     rm -f src-tauri/Cargo.lock
 
-	# Patch Surrealist source for CEF branch API changes
+    # Patch Surrealist source for CEF branch API changes
     sed -i \
         -e '/^use /!s/tauri::Window\b/tauri::Window<tauri::Cef>/g' \
         -e '/^use /!s/tauri::WebviewWindow\b/tauri::WebviewWindow<tauri::Cef>/g' \
