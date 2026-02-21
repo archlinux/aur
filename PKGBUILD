@@ -1,7 +1,7 @@
 # Maintainer: Grafcube <grafcube at disroot dot org>
 
 pkgname=keepassxc-unlock
-pkgver=1.0.9
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Passwordless unlocking of KeePassXC after login and screen unlock'
 arch=('x86_64')
@@ -9,8 +9,8 @@ url="https://github.com/sumwale/${pkgname}"
 license=('MIT')
 depends=()
 makedepends=()
-source=("${pkgname}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3b98c6c3ec5a698d30829e0adacd6cfd7181fbcc005d4d3712087651b93614eb')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('cade15507eb6dc6a62554644bb084ce94b900f5954297d81e95a1575d7f4c168')
 
 build() {
 	cd "${pkgname}-${pkgver}"
