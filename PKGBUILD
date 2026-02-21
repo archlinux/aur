@@ -54,6 +54,7 @@ depends=(aurorae
          libxcvt
          libxkbcommon
          mesa
+         milou
          pipewire-session-manager
          libplasma
          qt6-5compat
