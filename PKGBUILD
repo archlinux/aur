@@ -2,13 +2,13 @@
 # Former maintainer: fatalis <fatalis@fatalis.pw>
 
 pkgname=lzbench-git
-pkgver=1.8.1.r56.g609d783
+pkgver=2.2.r21.g2710664
 pkgrel=1
 pkgdesc="An in-memory benchmark of open-source compressors"
 arch=('i686' 'x86_64')
 url="https://github.com/inikep/lzbench"
-license=('GPL3')
-depends=('gcc-libs')
+license=('GPL-2.0-or-later')
+depends=('glibc' 'libgcc' 'libgomp' 'libstdc++')
 makedepends=('git')
 provides=("lzbench=$pkgver")
 conflicts=('lzbench')
