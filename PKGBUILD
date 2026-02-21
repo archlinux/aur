@@ -5,7 +5,7 @@
 pkgname=visual-studio-code-live-bin
 _pkgname=visual-studio-code
 pkgver=1.109.5
-pkgrel=0
+pkgrel=1
 pkgdesc="Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications (live binary version)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://code.visualstudio.com/"
@@ -16,10 +16,7 @@ conflicts=('code')
 options=(!strip)
 install=$pkgname.install
 depends=(libxkbfile gnupg gtk3 libsecret nss gcc-libs libnotify libxss glibc lsof shared-mime-info xdg-utils alsa-lib)
-optdepends=('glib2: Needed for move to trash functionality'
-            'libdbusmenu-glib: Needed for KDE global menu'
-            'org.freedesktop.secrets: Needed for settings sync'
-            'icu69: Needed for live share' )
+optdepends=('glib2: Needed for move to trash functionality')
 source=(code-${pkgver}.desktop.in::https://raw.githubusercontent.com/microsoft/vscode/${pkgver}/resources/linux/code.desktop
         code-${pkgver}-url-handler.desktop.in::https://raw.githubusercontent.com/microsoft/vscode/${pkgver}/resources/linux/code-url-handler.desktop
         code-${pkgver}-workspace.xml.in::https://raw.githubusercontent.com/microsoft/vscode/${pkgver}/resources/linux/code-workspace.xml
@@ -69,7 +66,7 @@ package() {
   cp -r "${srcdir}/$(_pkg)/"* "${pkgdir}/opt/${_pkgname}"
 
   # Launcher
-	install -m755 "${srcdir}/${_pkgname}-bin.sh" "${pkgdir}/usr/bin/code"
+	install -m755 "${srcdir}/${_pkgname}-live-bin.sh" "${pkgdir}/usr/bin/code"
 }
 
 sha256sums=('2f1782b30c4e040efff655fd9cf477930c5a0c81ddae27749b0cbb922c1d248e'
