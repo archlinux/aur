@@ -1,0 +1,230 @@
+diff --git a/applets/pager/pagermodel.cpp b/applets/pager/pagermodel.cpp
+index 5685b38d21..d959c07fc2 100644
+--- a/applets/pager/pagermodel.cpp
++++ b/applets/pager/pagermodel.cpp
+@@ -20,6 +20,7 @@
+ #include <QDBusPendingCall>
+ #include <QGuiApplication>
+ #include <QMetaEnum>
++#include <QPointer>
+ #include <QScreen>
+ #include <QUuid>
+ 
+@@ -47,6 +48,7 @@ public:
+ 
+     bool showOnlyCurrentScreen = false;
+     QRect screenGeometry;
++    QPointer<QScreen> screen;
+     QRect virtualGeometry;
+ 
+     WindowTasksModel *tasksModel = nullptr;
+@@ -59,6 +61,7 @@ public:
+     QMetaObject::Connection virtualDesktopNumberConn;
+     QMetaObject::Connection virtualDesktopNamesConn;
+     QMetaObject::Connection virtualDesktopPositionsConn;
++    QMetaObject::Connection virtualDesktopCurrentConn;
+ 
+     QList<WindowModel *> windowModels;
+ 
+@@ -138,7 +141,12 @@ void PagerModel::Private::refreshDataSource()
+         QObject::disconnect(activityNamesConn);
+ 
+         QObject::disconnect(activityInfo, &ActivityInfo::currentActivityChanged, q, &PagerModel::currentPageChanged);
+-        QObject::connect(virtualDesktopInfo, &VirtualDesktopInfo::currentDesktopChanged, q, &PagerModel::currentPageChanged, Qt::UniqueConnection);
++        QObject::disconnect(virtualDesktopCurrentConn);
++        virtualDesktopCurrentConn = QObject::connect(virtualDesktopInfo,
++                                                     &VirtualDesktopInfo::currentDesktopForScreenChanged,
++                                                     q,
++                                                     &PagerModel::slotCurrentDesktopForScreenChanged,
++                                                     Qt::UniqueConnection);
+     } else {
+         QObject::disconnect(activityNumberConn);
+         activityNumberConn = QObject::connect(activityInfo, &ActivityInfo::numberOfRunningActivitiesChanged, q, [this]() {
+@@ -153,8 +161,8 @@ void PagerModel::Private::refreshDataSource()
+         QObject::disconnect(virtualDesktopNumberConn);
+         QObject::disconnect(virtualDesktopNamesConn);
+         QObject::disconnect(virtualDesktopPositionsConn);
++        QObject::disconnect(virtualDesktopCurrentConn);
+ 
+-        QObject::disconnect(virtualDesktopInfo, &VirtualDesktopInfo::currentDesktopChanged, q, &PagerModel::currentPageChanged);
+         QObject::connect(activityInfo, &ActivityInfo::currentActivityChanged, q, &PagerModel::currentPageChanged, Qt::UniqueConnection);
+     }
+ 
+@@ -250,7 +258,9 @@ bool PagerModel::enabled() const
+ void PagerModel::setEnabled(bool enabled)
+ {
+     if (enabled && !d->enabled) {
++        refreshScreen();
+         refresh();
++
+         d->enabled = true;
+         Q_EMIT enabledChanged();
+     } else if (!enabled && d->enabled) {
+@@ -261,6 +271,7 @@ void PagerModel::setEnabled(bool enabled)
+         disconnect(d->virtualDesktopNumberConn);
+         disconnect(d->virtualDesktopNamesConn);
+         disconnect(d->virtualDesktopPositionsConn);
++        disconnect(d->virtualDesktopCurrentConn);
+ 
+         qDeleteAll(d->windowModels);
+         d->windowModels.clear();
+@@ -322,11 +333,11 @@ void PagerModel::setScreenGeometry(const QRect &geometry)
+ {
+     if (d->screenGeometry != geometry) {
+         d->screenGeometry = geometry;
++        refreshScreen();
++        refresh();
+ 
+         if (d->showOnlyCurrentScreen) {
+             Q_EMIT pagerItemSizeChanged();
+-
+-            refresh();
+         }
+ 
+         Q_EMIT showOnlyCurrentScreenChanged();
+@@ -336,7 +347,8 @@ void PagerModel::setScreenGeometry(const QRect &geometry)
+ int PagerModel::currentPage() const
+ {
+     if (d->pagerType == VirtualDesktops) {
+-        return d->virtualDesktopInfo->desktopIds().indexOf(d->virtualDesktopInfo->currentDesktop());
++        QVariant desktopId = d->screen ? d->virtualDesktopInfo->currentDesktopByScreenName(d->screen->name()) : d->virtualDesktopInfo->currentDesktop();
++        return d->virtualDesktopInfo->desktopIds().indexOf(desktopId);
+     } else {
+         return d->activityInfo->runningActivities().indexOf(d->activityInfo->currentActivity());
+     }
+@@ -613,4 +625,25 @@ void PagerModel::computePagerItemSize()
+     }
+ }
+ 
++void PagerModel::slotCurrentDesktopForScreenChanged(const QString &screenName)
++{
++    if (!d->screen || d->screen->name() == screenName) {
++        Q_EMIT currentPageChanged();
++    }
++}
++
++void PagerModel::refreshScreen()
++{
++    d->screen = nullptr;
++
++    for (const auto screens = qGuiApp->screens(); auto screen : screens) {
++        const QRect screenGeometry = screen->geometry();
++
++        if (screenGeometry == d->screenGeometry) {
++            d->screen = screen;
++            break;
++        }
++    }
++}
++
+ #include "moc_pagermodel.cpp"
+diff --git a/applets/pager/pagermodel.h b/applets/pager/pagermodel.h
+index 7fee46aa8d..8f70a20cf4 100644
+--- a/applets/pager/pagermodel.h
++++ b/applets/pager/pagermodel.h
+@@ -106,6 +106,8 @@ Q_SIGNALS:
+ 
+ private Q_SLOTS:
+     void computePagerItemSize();
++    void slotCurrentDesktopForScreenChanged(const QString &screenName);
++    void refreshScreen();
+ 
+ private:
+     class Private;
+diff --git a/applets/taskmanager/qml/ContextMenu.qml b/applets/taskmanager/qml/ContextMenu.qml
+index a848876f4c..0ed3423c32 100644
+--- a/applets/taskmanager/qml/ContextMenu.qml
++++ b/applets/taskmanager/qml/ContextMenu.qml
+@@ -322,10 +322,10 @@ PlasmaExtras.Menu {
+                 let menuItem = menu.newMenuItem(virtualDesktopsMenu);
+                 menuItem.text = i18nc("action:inmenu", "Move &To Current Desktop");
+                 menuItem.enabled = Qt.binding(() => {
+-                    return menu.visualParent && menu.get(TaskManager.AbstractTasksModel.VirtualDesktops).indexOf(virtualDesktopInfo.currentDesktop) === -1;
++                    return menu.visualParent && menu.get(TaskManager.AbstractTasksModel.VirtualDesktops).indexOf(virtualDesktopInfo.currentDesktopByScreenGeometry(menu.get(TaskManager.AbstractTasksModel.ScreenGeometry))) === -1;
+                 });
+                 menuItem.clicked.connect(() => {
+-                    tasksModel.requestVirtualDesktops(menu.modelIndex, [virtualDesktopInfo.currentDesktop]);
++                    tasksModel.requestVirtualDesktops(menu.modelIndex, [virtualDesktopInfo.currentDesktopByScreenGeometry(menu.get(TaskManager.AbstractTasksModel.ScreenGeometry))]);
+                 });
+ 
+                 menuItem = menu.newMenuItem(virtualDesktopsMenu);
+diff --git a/applets/taskmanager/qml/Task.qml b/applets/taskmanager/qml/Task.qml
+index dd688d02fc..cc947ca3ee 100644
+--- a/applets/taskmanager/qml/Task.qml
++++ b/applets/taskmanager/qml/Task.qml
+@@ -18,6 +18,8 @@ import org.kde.kirigami as Kirigami
+ import plasma.applet.org.kde.plasma.taskmanager as TaskManagerApplet
+ import org.kde.plasma.plasmoid
+ 
++import org.kde.taskmanager as TaskManager
++
+ PlasmaCore.ToolTipArea {
+     id: task
+ 
+@@ -433,7 +435,7 @@ PlasmaCore.ToolTipArea {
+                 } else if (Plasmoid.configuration.middleClickAction === TaskManagerApplet.Backend.ToggleGrouping) {
+                     tasksModel.requestToggleGrouping(modelIndex());
+                 } else if (Plasmoid.configuration.middleClickAction === TaskManagerApplet.Backend.BringToCurrentDesktop) {
+-                    tasksModel.requestVirtualDesktops(modelIndex(), [virtualDesktopInfo.currentDesktop]);
++                    tasksModel.requestVirtualDesktops(modelIndex(), [virtualDesktopInfo.currentDesktopByScreenGeometry(tasksModel.data(modelIndex(), TaskManager.AbstractTasksModel.ScreenGeometry))]);
+                 }
+             } else if (button === Qt.BackButton || button === Qt.ForwardButton) {
+                 const playerData = mpris2Source.playerForLauncherUrl(task.model.LauncherUrlWithoutIcon, task.model.AppPid);
+diff --git a/applets/taskmanager/qml/main.qml b/applets/taskmanager/qml/main.qml
+index da27bb09c1..2563d3e908 100644
+--- a/applets/taskmanager/qml/main.qml
++++ b/applets/taskmanager/qml/main.qml
+@@ -154,11 +154,10 @@ PlasmoidItem {
+             return launcherCount + startupsWithLaunchers;
+         }
+ 
+-        virtualDesktop: virtualDesktopInfo.currentDesktop
+         screenGeometry: Plasmoid.containment.screenGeometry
+         activity: activityInfo.currentActivity
+ 
+-        filterByVirtualDesktop: Plasmoid.configuration.showOnlyCurrentDesktop
++        filterByPerScreenVirtualDesktop: Plasmoid.configuration.showOnlyCurrentDesktop
+         filterByScreen: Plasmoid.configuration.showOnlyCurrentScreen
+         filterByActivity: Plasmoid.configuration.showOnlyCurrentActivity
+         filterNotMinimized: Plasmoid.configuration.showOnlyMinimized
+diff --git a/applets/window-list/main.qml b/applets/window-list/main.qml
+index fe4a25cd1b..4171437d85 100644
+--- a/applets/window-list/main.qml
++++ b/applets/window-list/main.qml
+@@ -37,14 +37,13 @@ PlasmoidItem {
+     TaskManager.TasksModel {
+         id: tasksModel
+ 
+-        virtualDesktop: virtualDesktopInfo.currentDesktop
+         screenGeometry: Plasmoid.containment.screenGeometry
+         activity: activityInfo.currentActivity
+ 
+         sortMode: TaskManager.TasksModel.SortVirtualDesktop
+         groupMode: TaskManager.TasksModel.GroupDisabled
+ 
+-        filterByVirtualDesktop: Plasmoid.configuration.showOnlyCurrentDesktop
++        filterByPerScreenVirtualDesktop: Plasmoid.configuration.showOnlyCurrentDesktop
+         filterByScreen: Plasmoid.configuration.showOnlyCurrentScreen
+         filterByActivity: Plasmoid.configuration.showOnlyCurrentActivity
+         filterNotMinimized: Plasmoid.configuration.showOnlyMinimized
+diff --git a/desktoppackage/contents/views/Panel.qml b/desktoppackage/contents/views/Panel.qml
+index bd57d91729..2c2a8c675e 100644
+--- a/desktoppackage/contents/views/Panel.qml
++++ b/desktoppackage/contents/views/Panel.qml
+@@ -102,7 +102,7 @@ Item {
+ 
+     TaskManager.TasksModel {
+         id: visibleWindowsModel
+-        filterByVirtualDesktop: true
++        filterByPerScreenVirtualDesktop: true
+         filterByActivity: true
+         filterByScreen: false
+         filterByRegion: TaskManager.RegionFilterMode.Intersect
+@@ -110,7 +110,6 @@ Item {
+         filterMinimized: true
+ 
+         screenGeometry: panel.screenGeometry
+-        virtualDesktop: virtualDesktopInfo.currentDesktop
+         activity: activityInfo.currentActivity
+ 
+         groupMode: TaskManager.TasksModel.GroupDisabled
