@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=acceptarium-git
-pkgver=0.0.0.r8.g8706cc7
+pkgver=0.0.0.r36.g595eefd
 pkgrel=1
 pkgdesc='CLI tool to facilitate digitized receipt handling in plain text accounting workflows'
 arch=(x86_64)
@@ -10,7 +10,8 @@ license=(AGPL-3.0-only)
 depends=(gcc-libs # libgcc_s.so
          git
          git-annex
-         glibc) # libc.so libm.so
+         glibc # libc.so libm.so
+         zlib libz.so)
 makedepends=(cargo
              jq)
 provides=("${pkgname%-git}=$pkgver")
