@@ -2,7 +2,7 @@
 
 _pypiname=molmass
 pkgname=python-${_pypiname,,}
-pkgver=2025.4.14
+pkgver=2026.1.8
 pkgrel=1
 pkgdesc="Molecular mass calculations"
 arch=(any)
@@ -11,7 +11,7 @@ license=(BSD-3-Clause)
 depends=('python>=3.8')
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${_pypiname::1}/${_pypiname//-/_}/${_pypiname//-/_}-${pkgver}.tar.gz")
-sha256sums=('cb9c15f482b09ed8ad484315ccdf14b4eb3059d57538cdab2d1e1962f5f80e50')
+sha256sums=('6f677940148f876a6690149956598841f068111cb8ff3c63cf831833e88a5247')
 
 build() {
   cd "${srcdir}/${_pypiname}-${pkgver}"
