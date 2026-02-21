@@ -1,50 +1,61 @@
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.29
 
+_dist='CPAN-Mini'
 pkgname='perl-cpan-mini'
-pkgver='1.111016'
-pkgrel='1'
-pkgdesc="create a minimal mirror of CPAN"
+pkgver=1.111017
+pkgrel=1
+pkgdesc='create a minimal mirror of CPAN'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+url="https://metacpan.org/dist/$_dist"
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl-carp'
+    'perl-file-homedir>=0.57'
+    'perl-file-path>=2.04'
+    'perl-file-temp'
+    'perl-getopt-long'
+    'perl-io-compress>=1.20'
+    'perl-libwww>=5'
+    'perl-pathtools'
+    'perl-pod-usage>=1.00'
+    'perl-uri>=1'
+    'perl>=5.12.0'
+)
+makedepends=('perl-extutils-makemaker>=6.78')
+checkdepends=(
+    'perl-pathtools'
+    'perl-test-simple'
+)
 options=('!emptydirs')
-depends=('perl-file-homedir>=0.57' 'perl-uri' 'perl-libwww')
-makedepends=()
-url='http://search.mcpan.org/dist/CPAN-Mini'
-source=('http://search.mcpan.org/CPAN/authors/id/R/RJ/RJBS/CPAN-Mini-1.111016.tar.gz')
-md5sums=('1a6bb8f056f63266e1d6aeb7991b88ff')
-sha512sums=('c5bc365efe95fb22c7e003246f8d1c508e57f8560f2293068b27b564ed246c5bd588733ddba1a994584102da695219c58d6589b366d782bcd7a7f6da194e538a')
-_distdir="CPAN-Mini-1.111016"
+source=("http://cpan.metacpan.org/authors/id/R/RJ/RJBS/$_dist-$pkgver.tar.gz")
+sha256sums=('f204293be26ac841acc87044a188db0f591e80881316c7a288aec0eece306155')
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd $_dist-$pkgver
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd $_dist-$pkgver
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  make install
+package()
+{
+    cd $_dist-$pkgver
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
