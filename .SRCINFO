@@ -1,0 +1,23 @@
+pkgbase = securecopy
+	pkgdesc = GNU coreutils cp/mv with CRC64 xattr checksum verification, plus crcsum
+	pkgver = 9.7.0
+	pkgrel = 1
+	url = https://github.com/hansij66/securecopy
+	install = securecopy.install
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = GPL-3.0-or-later
+	makedepends = gettext
+	makedepends = texinfo
+	makedepends = perl
+	makedepends = gperf
+	makedepends = libcap
+	depends = attr
+	provides = securecopy
+	source = securecopy-9.7.0.tar.gz::https://github.com/hansij66/securecopy/archive/refs/tags/v9.7.0.tar.gz
+	source = https://ftp.gnu.org/gnu/coreutils/coreutils-9.7.tar.xz
+	sha256sums = 8c207742834dc79ad6f2af0e3f62d5543f57d374e06a0ca7ac30621c9c2fa180
+	sha256sums = e8bb26ad0293f9b5a1fc43fb42ba970e312c66ce92c1b0b16713d7500db251bf
+
+pkgname = securecopy
