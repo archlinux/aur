@@ -1,7 +1,7 @@
-# Maintainer: Javad <blackrouter@live.com>
+# Maintainer: Javad <ja7ad@live.com>
 
 _pkgname=hiddify
-pkgname=${_pkgname}-bin
+pkgname=${_pkgname}-live-bin
 pkgver=4.0.4
 pkgrel=1
 pkgdesc="Multi-platform auto-proxy client, supporting Sing-box, X-ray, TUIC, Hysteria, Reality, Trojan, SSH etc. It’s an open-source, secure and ad-free"

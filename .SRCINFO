@@ -1,4 +1,4 @@
-pkgbase = hiddify-bin
+pkgbase = hiddify-live-bin
 	pkgdesc = Multi-platform auto-proxy client, supporting Sing-box, X-ray, TUIC, Hysteria, Reality, Trojan, SSH etc. It’s an open-source, secure and ad-free
 	pkgver = 4.0.4
 	pkgrel = 1
@@ -31,4 +31,4 @@ pkgbase = hiddify-bin
 	source = hiddify-4.0.4.deb::https://github.com/hiddify/hiddify-app/releases/download/v4.0.4/Hiddify-Debian-x64.deb
 	sha256sums = 42cf176c4cf48a27dd85138c5c892c324c707d56f0e721d5dae5dbccd659620a
 
-pkgname = hiddify-bin
+pkgname = hiddify-live-bin
