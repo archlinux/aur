@@ -2,7 +2,7 @@
 pkgname=vsrvrt-git
 _pkgname=vs-rvrt
 pkgver=1.1.0.r0.g57a5c5f
-pkgrel=1
+pkgrel=2
 pkgdesc="Vapoursynth plugin for RVRT (Recurrent Video Restoration Transformer) video restoration"
 arch=('x86_64')
 url="https://github.com/Lyra-Vhess/vs-rvrt"
@@ -34,8 +34,8 @@ pkgver() {
 
 build() {
     cd "$_pkgname"
-    _pyver=$(python -c "import sys; print(f'cp{sys.version_info.major}{sys.version_info.minor}')")
-    pip download --only-binary=:all: --implementation cp --python-tag "${_pyver}" --abi none --platform "manylinux2014_x86_64" vsrvrt || {
+    _pyver=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
+    pip download --only-binary=:all: --python-version "${_pyver}" --implementation cp --abi none --platform "manylinux2014_x86_64" vsrvrt || {
         echo "ERROR: Pre-built wheel not found on PyPI for Python ${_pyver}"
         return 1
     }
