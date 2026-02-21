@@ -2,7 +2,7 @@
 
 pkgname=serial-studio
 _pkgname=Serial-Studio
-pkgver=3.2.2
+pkgver=3.2.4
 pkgrel=1
 pkgdesc="Multi-purpose serial data visualization & processing program"
 arch=($CARCH)
@@ -83,7 +83,7 @@ backup=()
 options=()
 install=
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('13ddd67d2a593dca4275121551705bde36d48f1488f896772d82a3552c79f21e')
+sha256sums=('1b09f0f4e80109687881a2c159bb08d9a7e4720b33f6fac56d8c055a455f57f1')
 noextract=()
 
 build() {
