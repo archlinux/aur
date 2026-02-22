@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 install="$pkgname.install"
-source=("$pkgname-$pkgver.tar.gz::https://api.github.com/repos/Rejzi-dich/rushfetch/tarball/v$pkgver")
+source=("$pkgname-$pkgver.tar.gz::https://api.github.com/repos/Rejzi-dich/rushfetch/tarball/$pkgver")
 sha256sums=('96d3c87a6ed0a6c4b7650f74c999573049ad54ef11cb7a4d21fd669ee945be76')
 
 build() {

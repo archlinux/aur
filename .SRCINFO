@@ -11,7 +11,7 @@ pkgbase = rushfetch
 	makedepends = rust
 	makedepends = cargo
 	depends = gcc-libs
-	source = rushfetch-1.1.0.tar.gz::https://api.github.com/repos/Rejzi-dich/rushfetch/tarball/v1.1.0
+	source = rushfetch-1.1.0.tar.gz::https://api.github.com/repos/Rejzi-dich/rushfetch/tarball/1.1.0
 	sha256sums = 96d3c87a6ed0a6c4b7650f74c999573049ad54ef11cb7a4d21fd669ee945be76
 
 pkgname = rushfetch
