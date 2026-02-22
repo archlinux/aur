@@ -1,4 +1,5 @@
 [ccase-bin]
-source = "git"
-git = "https://github.com/rutrum/ccase.git"
+source = "github"
+github = "rutrum/ccase"
+use_latest_release = true
 prefix = "v"
