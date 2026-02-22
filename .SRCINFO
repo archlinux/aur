@@ -1,6 +1,6 @@
 pkgbase = librepcb-appimage
 	pkgdesc = A free EDA software to develop printed circuit boards (binary AppImage version)
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://librepcb.org/
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = librepcb-appimage
 	depends = hicolor-icon-theme
 	provides = librepcb
 	conflicts = librepcb
-	noextract = librepcb-2.0.0-linux-x86_64.AppImage
+	noextract = librepcb-2.0.1-linux-x86_64.AppImage
 	options = !strip
 	options = !emptydirs
-	source = https://download.librepcb.org/releases/2.0.0/librepcb-2.0.0-linux-x86_64.AppImage
-	source = https://download.librepcb.org/releases/2.0.0/librepcb-2.0.0-linux-x86_64.AppImage.asc
+	source = https://download.librepcb.org/releases/2.0.1/librepcb-2.0.1-linux-x86_64.AppImage
+	source = https://download.librepcb.org/releases/2.0.1/librepcb-2.0.1-linux-x86_64.AppImage.asc
 	validpgpkeys = D6F9AF572228C5BCD6B538407EF3061F5C8D5E25
-	sha256sums = 6358c275de8f2f63caee25318eac5b7014c0f9ac2d048afa5e24aff80e0be2d3
+	sha256sums = 46181952c1eaea47f15656ff48ffdc51d1ed7102f0065d73d0b2f7895f108016
 	sha256sums = SKIP
 
 pkgname = librepcb-appimage
