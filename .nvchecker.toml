@@ -1,0 +1,5 @@
+[climp-bin]
+source = "github"
+github = "olivier-w/climp"
+use_latest_release = true
+prefix = "v"

@@ -1,0 +1,22 @@
+pkgbase = climp-bin
+	pkgdesc = CLI Media Player
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/olivier-w/climp
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = alsa-lib
+	provides = climp
+	conflicts = climp
+	source = README-0.2.3.md::https://raw.githubusercontent.com/olivier-w/climp/v0.2.3/README.md
+	source = LICENSE-0.2.3::https://raw.githubusercontent.com/olivier-w/climp/v0.2.3/LICENSE
+	sha256sums = 68238e4722a20f24f2989725bd4027314887264328b4e0f60e333965823b71ea
+	sha256sums = 52be0de46b2ed866c6c6b02f7d2ed1e0f13a92e49b8e426b6f87fe308a064b37
+	source_x86_64 = climp-x86_64-0.2.3.tgz::https://github.com/olivier-w/climp/releases/download/v0.2.3/climp_v0.2.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = a93a15c1e5bf3cb2645279e2af4ccc08d228c43d04b288c910e5024dae79f777
+	source_aarch64 = climp-aarch64-0.2.3.tgz::https://github.com/olivier-w/climp/releases/download/v0.2.3/climp_v0.2.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = b9e053e974c6b382bc5e92ea1d3d0f53ae8e3e3bf8c3d44faf4488c534b32857
+
+pkgname = climp-bin
