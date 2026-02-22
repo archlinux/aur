@@ -1,7 +1,7 @@
 pkgbase = rexglue-sdk-git
 	pkgdesc = Static recompilation runtime SDK for Xbox 360
 	pkgver = 0.1.2.r0.g6ab3cfa
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rexglue/rexglue-sdk
 	arch = any
 	license = Custom

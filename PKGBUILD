@@ -1,7 +1,7 @@
 # Maintainer: Sterophonick
 pkgname=rexglue-sdk-git
 pkgver=0.1.2.r0.g6ab3cfa
-pkgrel=1
+pkgrel=2
 pkgdesc='Static recompilation runtime SDK for Xbox 360'
 url='https://github.com/rexglue/rexglue-sdk'
 arch=(any)
@@ -27,4 +27,7 @@ package() {
   
   mkdir -p $pkgdir/opt/rexglue-sdk
   cp -r $srcdir/rexglue-sdk/out/install/linux-amd64/* $pkgdir/opt/rexglue-sdk
+  
+  # RexGlue literally doesn't work unless the SDK is user-readable. Whoops
+  chmod -R 777 $pkgdir/opt/rexglue-sdk
 }
