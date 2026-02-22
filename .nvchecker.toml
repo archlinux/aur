@@ -1,0 +1,3 @@
+[perl-graph-easy-as_svg]
+source = "cpan"
+cpan = "Graph-Easy-As_svg"

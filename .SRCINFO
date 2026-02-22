@@ -1,0 +1,21 @@
+pkgbase = perl-graph-easy-as_svg
+	pkgdesc = Output a Graph::Easy as Scalable Vector Graphics (SVG)
+	pkgver = 0.28
+	pkgrel = 1
+	url = https://metacpan.org/dist/Graph-Easy-As_svg
+	arch = any
+	license = GPL-2.0-only
+	checkdepends = perl-io
+	checkdepends = perl-lib
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-simple
+	makedepends = perl-module-build>=0.28
+	makedepends = perl-test-simple
+	depends = perl-graph-easy>=0.63
+	depends = perl-image-info>1.28
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/Graph-Easy-As_svg-0.28.tar.gz
+	sha256sums = cd9a5fac44442f34b3379081e86c2f714004e539246006c98141116cbf3e2778
+
+pkgname = perl-graph-easy-as_svg
