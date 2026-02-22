@@ -1,7 +1,7 @@
 pkgbase = proxybridge-git
 	pkgdesc = Proxifier Alternative to redirect any TCP and UDP traffic to HTTP/Socks5 proxy (Unofficial PKGBUILD)
 	pkgver = r290.51d9b17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/InterceptSuite/ProxyBridge.git
 	arch = x86_64
 	license = MIT

@@ -3,6 +3,8 @@
 ##
 
 _gitname=proxybridge
+_outputname=ProxyBridge
+
 # shellcheck disable=SC2034
 pkgname=proxybridge-git
 # shellcheck disable=SC2034
@@ -10,7 +12,7 @@ pkgdesc="Proxifier Alternative to redirect any TCP and UDP traffic to HTTP/Socks
 # shellcheck disable=SC2034
 pkgver=r290.51d9b17
 # shellcheck disable=SC2034
-pkgrel=1
+pkgrel=2
 # shellcheck disable=SC2034
 arch=('x86_64')
 # shellcheck disable=SC2034
@@ -68,22 +70,27 @@ package() {
 
   # Script
   # shellcheck disable=SC2154
-  install -D --mode=755 output/ProxyBridge "${pkgdir}/usr/bin/ProxyBridge"
+  install -D --mode=755 "output/${_outputname}" "${pkgdir}/usr/bin/${_outputname}"
 
   # symlink to an easier cli name
-  ln -s ProxyBridge "${pkgdir}/usr/bin/proxybridge"
+  ln -s "${_outputname}" "${pkgdir}/usr/bin/${_gitname}"
 
   # GUI
   # shellcheck disable=SC2154
-  install -D --mode=755 output/ProxyBridgeGUI "${pkgdir}/usr/bin/ProxyBridgeGUI"
+  install -D --mode=755 "output/${_outputname}GUI" "${pkgdir}/usr/bin/${_outputname}GUI"
 
   # symlink to an easier cli name
-  ln -s ProxyBridgeGUI "${pkgdir}/usr/bin/proxybridge-gui"
+  ln -s "${_outputname}GUI" "${pkgdir}/usr/bin/${_gitname}-gui"
 
   # Libfile
-  install -D --mode=755 output/libproxybridge.so "${pkgdir}/usr/lib/libproxybridge.so"
+  install -D --mode=755 "output/lib${_gitname}.so" "${pkgdir}/usr/lib/lib${_gitname}.so"
 
   # Create configuration directory (empty by default)
   mkdir -p "${pkgdir}/etc"
-  mkdir --mode=755 "${pkgdir}/etc/proxybridge"
+  mkdir --mode=755 "${pkgdir}/etc/${_gitname}"
+
+  # Documentation
+  install -D --mode=644 README.md "${pkgdir}/usr/share/doc/${_gitname}/README.md"
+  install -D --mode=644 LICENSE "${pkgdir}/usr/share/doc/${_gitname}/LICENSE"
+
 }
