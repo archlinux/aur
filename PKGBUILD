@@ -87,6 +87,14 @@ prepare() {
 }
 
 package() {
+  if [ -f "${srcdir}/data.tar.zst" ]; then
+    bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}/"
+  elif [ -f "${srcdir}/data.tar.xz" ]; then
+    bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}/"
+  else
+    bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}/"
+  fi
+
   install -dm755 "${pkgdir}/usr/bin"
   mv "${pkgdir}/usr/games/lutris" "${pkgdir}/usr/bin/lutris"
   rm -rf "${pkgdir}/usr/games"
