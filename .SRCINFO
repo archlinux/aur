@@ -1,6 +1,6 @@
 pkgbase = onset-git
 	pkgdesc = Lightweight GTK4 autostart manager for Linux
-	pkgver = 1.0.2.r0.g8ef8186
+	pkgver = 1.0.2.r2.g21bfcf0
 	pkgrel = 1
 	url = https://github.com/xPathin/onset
 	arch = x86_64
