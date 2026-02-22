@@ -1,12 +1,12 @@
 pkgbase = read-quickly
 	pkgdesc = Read plain-text files in blazing speed
-	pkgver = 2.0
-	pkgrel = 2
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = https://codeberg.org/maandree/read-quickly
 	arch = i686
 	arch = x86_64
 	license = custom:ISC
-	source = read-quickly-2.0.tar.gz::https://codeberg.org/maandree/read-quickly/archive/2.0.tar.gz
-	sha256sums = 94fa8a112ecb56f3a041bea6ddb145878a35dd0ae24446a3d93b72d65ca97762
+	source = read-quickly-2.0.1.tar.gz::https://codeberg.org/maandree/read-quickly/archive/2.0.1.tar.gz
+	sha256sums = 90cbb457dc6419e3b4fdc3dae72ec02b577530b8be147ca7455668218186bdcb
 
 pkgname = read-quickly
