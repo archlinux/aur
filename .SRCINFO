@@ -1,7 +1,7 @@
 pkgbase = perl-app-fatpacker
 	pkgdesc = pack your dependencies onto your script file
 	pkgver = 0.010008
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/dist/App-FatPacker
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later

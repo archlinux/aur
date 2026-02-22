@@ -1,11 +1,12 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: Sergey Konoplev <gray.ru@gmail.com>
 # Contributor: Maxim Polishchuck <mpolishchuck@gmail.com>
+# Contributor: Paul N. Maxwell <msg.maxwel@gmail.com>
 
 _dist='App-FatPacker'
 pkgname='perl-app-fatpacker'
 pkgver=0.010008
-pkgrel=2
+pkgrel=3
 pkgdesc='pack your dependencies onto your script file'
 arch=('any')
 url="https://metacpan.org/dist/$_dist"
