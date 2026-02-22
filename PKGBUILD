@@ -57,6 +57,10 @@ package() {
     return 1
   }
 
+  # Install license file to documentation location
+  # shellcheck disable=SC2154
+  install -D --mode=644 LICENSE "${pkgdir}/usr/share/doc/${_gitname}/LICENSE"
+
   cd "Linux" || {
     msg "Failed to cd into Linux srcdir"
     return 1
@@ -69,7 +73,6 @@ package() {
   }
 
   # Script
-  # shellcheck disable=SC2154
   install -D --mode=755 "output/${_outputname}" "${pkgdir}/usr/bin/${_outputname}"
 
   # symlink to an easier cli name
@@ -89,8 +92,6 @@ package() {
   mkdir -p "${pkgdir}/etc"
   mkdir --mode=755 "${pkgdir}/etc/${_gitname}"
 
-  # Documentation
+  # Save Linux README to documentation
   install -D --mode=644 README.md "${pkgdir}/usr/share/doc/${_gitname}/README.md"
-  install -D --mode=644 LICENSE "${pkgdir}/usr/share/doc/${_gitname}/LICENSE"
-
 }
