@@ -4,8 +4,8 @@
 
 basename='rq'
 pkgname='python-rq'
-pkgver=2.6.1
-pkgrel=2
+pkgver=2.7
+pkgrel=1
 pkgdesc="Simple job queues for Python"
 arch=(any)
 license=("BSD-2-Clause")
@@ -13,7 +13,7 @@ url="https://github.com/rq/rq"
 makedepends=("python-hatch" "python-installer")
 depends=('python' 'python-click' 'python-redis')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('60fbefacfaf54de5df6ea0ddad663ecbf62fca6af319d5e5e020c543dd76b059')
+sha256sums=('a79f7e04970150092ee8065fb74f76a0a5062ff9a22917791a1f810d86a24b84')
 
 build() {
     cd "$srcdir/$basename-$pkgver"

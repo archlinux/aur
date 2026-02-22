@@ -1,7 +1,7 @@
 pkgbase = python-rq
 	pkgdesc = Simple job queues for Python
-	pkgver = 2.6.1
-	pkgrel = 2
+	pkgver = 2.7
+	pkgrel = 1
 	url = https://github.com/rq/rq
 	arch = any
 	license = BSD-2-Clause
@@ -10,7 +10,7 @@ pkgbase = python-rq
 	depends = python
 	depends = python-click
 	depends = python-redis
-	source = https://github.com/rq/rq/archive/refs/tags/v2.6.1.tar.gz
-	sha256sums = 60fbefacfaf54de5df6ea0ddad663ecbf62fca6af319d5e5e020c543dd76b059
+	source = https://github.com/rq/rq/archive/refs/tags/v2.7.tar.gz
+	sha256sums = a79f7e04970150092ee8065fb74f76a0a5062ff9a22917791a1f810d86a24b84
 
 pkgname = python-rq
