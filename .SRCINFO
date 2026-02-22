@@ -1,0 +1,13 @@
+pkgbase = adw-maia-gtk-theme
+	pkgdesc = Manjaro variation of Adw GTK theme
+	pkgver = 6.4
+	pkgrel = 1
+	url = https://github.com/PrincParshia/adw-maia-gtk-theme
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	conflicts = xdg-desktop-portal-gnome
+	source = git+https://github.com/PrincParshia/adw-maia-gtk-theme
+	sha256sums = SKIP
+
+pkgname = adw-maia-gtk-theme
