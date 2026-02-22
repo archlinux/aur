@@ -1,16 +1,20 @@
 pkgbase = calibre-bin
 	pkgdesc = Official binary version Calibre
 	pkgver = 9.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://download.calibre-ebook.com
 	arch = x86_64
 	license = GPL3
+	makedepends = python-sphinx
+	depends = libglvnd
 	conflicts = calibre
 	conflicts = calibre-git
 	options = !strip
 	source = share.tar.xz
 	source = https://download.calibre-ebook.com/9.3.1/calibre-9.3.1-x86_64.txz
+	source = calibre-9.3.1.tar.gz::https://github.com/kovidgoyal/calibre/archive/refs/tags/v9.3.1.tar.gz
 	sha256sums = c7aae61afba19c9cceed8bbafd2b39b5c4d6d683de0ccfc9c1fe2651857f757a
 	sha256sums = a04416984260925357f4c8636704300b1fcb47fd532ee09b4db9c218ef63c282
+	sha256sums = 1582205916555c2b97792279d6b4eba8e857ee9ec3aed10d66fbd0ec0416d360
 
 pkgname = calibre-bin

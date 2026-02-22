@@ -2,13 +2,13 @@
 
 pkgname=calibre-bin
 pkgver=9.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Official binary version Calibre"
 arch=(x86_64)
 url="https://download.calibre-ebook.com"
 license=(GPL3)
-depends=()
-makedepends=()
+depends=(libglvnd)
+makedepends=(python-sphinx)
 optdepends=()
 conflicts=(calibre calibre-git)
 provides=()
@@ -21,6 +21,7 @@ options=('!strip')
 source=(
 	share.tar.xz
 	$url/${pkgver}/calibre-${pkgver}-x86_64.txz
+	"calibre-${pkgver}.tar.gz::https://github.com/kovidgoyal/calibre/archive/refs/tags/v${pkgver}.tar.gz"
 )
 
 prepare() {
@@ -30,11 +31,73 @@ prepare() {
             rm "$srcdir/$src"
         fi
     done
+
+    # Move the extracted binary release into its own directory
+    # (the txz extracts directly into $srcdir)
+    mkdir -p "$srcdir/calibre-release"
+    mv "$srcdir"/bin "$srcdir"/lib "$srcdir"/libexec \
+       "$srcdir"/resources "$srcdir"/plugins "$srcdir"/translations \
+       "$srcdir/calibre-release/" 2>/dev/null || true
+    # Move executable files (calibre, calibre-debug, ebook-convert, etc.)
+    find "$srcdir" -maxdepth 1 -type f -executable \
+        -exec mv {} "$srcdir/calibre-release/" \;
 }
 
 # Checksums
 sha256sums=('c7aae61afba19c9cceed8bbafd2b39b5c4d6d683de0ccfc9c1fe2651857f757a'
-            'a04416984260925357f4c8636704300b1fcb47fd532ee09b4db9c218ef63c282')
+            'a04416984260925357f4c8636704300b1fcb47fd532ee09b4db9c218ef63c282'
+            '1582205916555c2b97792279d6b4eba8e857ee9ec3aed10d66fbd0ec0416d360')
+
+_build_man_pages() {
+    msg2 "Building man pages using calibre-debug + sphinx..."
+    cat > "$srcdir/_build_man.py" << 'BUILDEOF'
+import sys, os, types
+
+# Stub out calibre.utils.img to avoid Qt dependency at import time
+class _StubModule(types.ModuleType):
+    def __getattr__(self, name):
+        def stub(*args, **kwargs):
+            return None
+        return stub
+sys.modules['calibre.utils.img'] = _StubModule('calibre.utils.img')
+
+# Add system sphinx to path
+for p in sorted(__import__('glob').glob('/usr/lib/python3.*/site-packages')):
+    sys.path.insert(0, p)
+
+calibre_src = os.environ['CALIBRE_SRC']
+manual_dir = os.path.join(calibre_src, 'manual')
+output_dir = os.environ['MAN_OUTPUT']
+
+sys.path.insert(0, calibre_src)
+
+os.environ['CALIBRE_OVERRIDE_LANG'] = 'en'
+os.environ['ALL_USER_MANUAL_LANGUAGES'] = 'en'
+os.environ['CALIBRE_BUILD_MAN_PAGES'] = '1'
+os.chdir(manual_dir)
+
+from sphinx.application import Sphinx
+
+destdir = os.path.join(output_dir, 'en')
+doctreedir = os.path.join(output_dir, 'doctrees')
+os.makedirs(destdir, exist_ok=True)
+os.makedirs(doctreedir, exist_ok=True)
+
+app = Sphinx(srcdir=manual_dir, confdir=manual_dir, outdir=destdir,
+             doctreedir=doctreedir, buildername='man', freshenv=True,
+             confoverrides={'language': 'en'})
+app.build()
+BUILDEOF
+
+    QT_QPA_PLATFORM=offscreen \
+    CALIBRE_SRC="$srcdir/calibre-${pkgver}" \
+    MAN_OUTPUT="$srcdir/man-pages" \
+        "$srcdir/calibre-release/calibre-debug" "$srcdir/_build_man.py"
+}
+
+build() {
+    _build_man_pages
+}
 
 package() {
 	# Creating needed directories
@@ -42,14 +105,21 @@ package() {
 	install -dm755 "$pkgdir/opt/calibre"
 
 	# Package calibre
-	cp -af "$srcdir/"* "$pkgdir/opt/calibre"
-	mv -f "$pkgdir/opt/calibre/share" "$pkgdir/usr"
+	cp -af "$srcdir/calibre-release/"* "$pkgdir/opt/calibre"
+	mv -f "$pkgdir/opt/calibre/share" "$pkgdir/usr" 2>/dev/null || true
+	cp -af "$srcdir/share" "$pkgdir/usr/"
 	# espeak-ng-data used by calibre
 	install -dm755 "$pkgdir/opt/calibre/share"
-	mv -f "$pkgdir/usr/share/espeak-ng-data" "$pkgdir/opt/calibre/share"
+	mv -f "$pkgdir/usr/share/espeak-ng-data" "$pkgdir/opt/calibre/share" 2>/dev/null || true
 
 	# Create symlinks in /usr/bin
-	for f in `find "$pkgdir/opt/calibre" -maxdepth 1 -type f -printf "%f\n"`; do
+	for f in $(find "$pkgdir/opt/calibre" -maxdepth 1 -type f -printf "%f\n"); do
 		ln -s "/opt/calibre/$f" "$pkgdir/usr/bin/$f"
 	done
+
+	# Install man pages
+	if [[ -d "$srcdir/man-pages/en" ]]; then
+		install -dm755 "$pkgdir/usr/share/man/man1"
+		install -m644 "$srcdir/man-pages/en/"*.1 "$pkgdir/usr/share/man/man1/"
+	fi
 }
