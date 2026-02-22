@@ -1,0 +1,15 @@
+diff --unified --recursive --text a/meson.build b/meson.build
+--- a/meson.build	2024-07-04 08:59:00.954465993 -0600
++++ b/meson.build	2024-07-04 09:02:06.762382876 -0600
+@@ -41,11 +41,5 @@
+     install_dir: schemadir
+ )
+ 
+-# Compile schema
+-meson.add_install_script(
+-  'scripts/compile-schema.sh',
+-  join_paths(prefix, schemadir)
+-)
+-
+ # Build completion message
+ message('Project version: @0@'.format(meson.project_version()))

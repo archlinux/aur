@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-gamemode-git
 	pkgdesc = GameMode Status Indicator for GNOME Shell
-	pkgver = 12.0.r2.g4ef8d2e
+	pkgver = 17.0.r2.g6848872
 	pkgrel = 1
 	url = https://github.com/trsnaqe/gamemode-shell-extension
 	arch = any
@@ -12,6 +12,8 @@ pkgbase = gnome-shell-extension-gamemode-git
 	provides = gnome-shell-extension-gamemode
 	conflicts = gnome-shell-extension-gamemode
 	source = git+https://github.com/trsnaqe/gamemode-shell-extension.git
+	source = schema.patch
 	sha256sums = SKIP
+	sha256sums = 1534366a331b7821243b8dfff7494ec9a1d1ede98de1a186e6f77990bc79dc49
 
 pkgname = gnome-shell-extension-gamemode-git
