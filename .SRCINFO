@@ -1,13 +1,13 @@
 pkgbase = bfree
   pkgdesc = A better free, human by default
-  pkgver = 0.1.2
+  pkgver = 0.1.3
   pkgrel = 1
   url = https://github.com/glexposito/bfree
   arch = x86_64
   license = MIT
   makedepends = cargo
   depends = glibc
-  source = https://github.com/glexposito/bfree/archive/refs/tags/v0.1.2.tar.gz
-  sha256sums = d5cb261ea7de2c8e32c6c3c707802a046f8b416a676504939e427faf0031d843
+  source = https://github.com/glexposito/bfree/archive/refs/tags/v0.1.3.tar.gz
+  sha256sums = d9615a7230367bcae9f697ceae205f2181561303bb542e09cbc2a3c06d87bc8b
 
 pkgname = bfree
