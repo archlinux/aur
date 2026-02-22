@@ -12,7 +12,7 @@ _bldtype=Release
 _mozc_commit=23e60227046494a962832989736bd5b4c6a580b7
 _bcr_commit=d79dfab702994f66c567b6b7384f14e3cd51c2f7
 _dict_to_mozc_commit=f6e4045f0f4eebd156c4397efef525aecf4657a6
-_dict_to_mozc=v0.6.28
+_dict_to_mozc=v0.6.29
 
 _branch=fcitx
 # Sudachi Dictionary
@@ -69,7 +69,7 @@ sha512sums=('48400ddb70b7ca971316ab28118daaa6985a7679028f41988c5188a72db1c20e390
             '91b878735e767ddf6f1fe3de61486c1e78936a0f683855e7c34a21c711f405899d3de369d2ff0a1910d65b1afc8c225d8d8b9398cf98d760f3afcfe42644fca2'
             '0efcb80ec3a1f04f0f2e53ccd629eace4f6b9a2cbe5dae4c1b82140f11e174f8d023b8e35855def7e19c35da838c5b4fcfaa54748ee3534886caf1d35f55cccb'
             '504066a457f77b510f492626c919b6fd7b61f77948bdddef0f7e43ae09bb4bf03cea7000fba91ae0123a94d3b39cac6dfac2010126849afe0a183727fe7b0fc1'
-            'f886fad549a49c0113fd962a1a151ec58f9db535658b638b4f53bb481631c4bca40fdaea855bdb77c3da7a0e4217bddd25455da187f511b85433fff5a549591a'
+            '031d9f3131cade8b03a0d647963c3e25f12eb29fff66cb712eb51cbf395fb1c0d336d4ab70e53b319b7c8f63e0eab2852f442dfd186a28b25dbf8fcc6d519c46'
             '9a7850416dc3f45df659e50a36b1b333d7e0458a3519a4138fd165987cfe250d44c7708da2b8e4bc27f2d5e52f9a5131076b283e0ad769e3b7b8514c3fe7b36e'
             '2d5f835ca604a90c12ee3d1790ce953be95f8e615d3ebfb1416d54725b58563cea23017a384696d331366aa2f43eeb21dc3309d0c5e23dee3379796a1b7d6c5b'
             '71a3da3569df8de816cea968e82a8f01fb2f48d96c83ac82daad853d1cb70942fd4695130c2d41f1d06e5c83bdf618e351e5a20f17d8e2941614901bb34e3300'
@@ -138,7 +138,7 @@ prepare() {
   : "${CC:=$(command -v clang || command -v gcc)}"
   # warning of mimalloc-rust-sys@1.7.9-source
   expr "$CC" : ".*gcc" >/dev/null && : "${CFLAGS_:=-std=c11 -Bmold -Wno-implicit-function-declaration -Wno-error=implicit-function-declaration}"
-  CC="$CC" CFLAGS="$CFLAGS $CFLAGS_" RUSTFLAGS="-Clink-arg=-Bmold" cargo build --release --target $TARGET -F use-tcmalloc-static || \
+  CC="$CC" CFLAGS="$CFLAGS $CFLAGS_" RUSTFLAGS="-Clink-arg=-Bmold" cargo build --release --target $TARGET -F use-snmalloc || \
     CC="$CC" CFLAGS="$CFLAGS $CFLAGS_" RUSTFLAGS="-Clink-arg=-Bmold" cargo build --release --target $TARGET -F use-auto-allocator || \
     CC="$CC" CFLAGS="$CFLAGS $CFLAGS_" RUSTFLAGS="-Clink-arg=-Bmold" cargo build --release --target $TARGET -F use-mimalloc || \
     CC="$CC" CFLAGS="$CFLAGS $CFLAGS_" RUSTFLAGS="-Clink-arg=-Bmold" cargo build --release --target $TARGET
