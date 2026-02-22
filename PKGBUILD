@@ -1,7 +1,7 @@
 # Maintainer: Jeff <your@email.com>
 # https://sourceforge.net/projects/ultimate-bashrc/
 pkgname=extreme-ultimate-bashrc
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Feature-rich bash configuration framework with 107 functions, 113 aliases, auto-detection, and extensive documentation'
 arch=('any')
@@ -9,6 +9,7 @@ url='https://sourceforge.net/projects/ultimate-bashrc/'
 license=('0BSD')
 depends=('bash')
 optdepends=(
+	'atuin: magical shell history with SQLite database'
 	'bat: syntax-highlighted file previews'
 	'btm: system resource monitor'
 	'colordiff: colorized diff output'
@@ -27,7 +28,6 @@ optdepends=(
 	'lazygit: terminal UI for git'
 	'lsd: ls with colors and icons'
 	'meld: graphical diff and merge tool'
-	'neofetch: system information display with ASCII art'
 	'ranger: terminal file manager'
 	'ripgrep: fast recursive search tool'
 	'starship: cross-shell prompt'
@@ -41,7 +41,7 @@ install="${pkgname}.install"
 # SourceForge release tarball
 # For local testing: run make-test-tarball.sh first, then makepkg -si
 source=("${pkgname}-${pkgver}.tar.gz::https://sourceforge.net/projects/ultimate-bashrc/files/aur/${pkgname}-${pkgver}.tar.gz/download")
-sha256sums=('2fa06b10157f323a5383f0d1f70569cdf05e3e2990b8b97ab2c86027b9ab99b7')
+sha256sums=('f47e83a4907e72a3af247c526fd05282206cb190c9d255a48a24013a8232c662')
 
 package() {
 	local INSTALL_ROOT="${pkgdir}/opt/${pkgname}"
