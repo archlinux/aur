@@ -1,8 +1,8 @@
 pkgbase = xlibre-input-wacom-bin
 	pkgdesc = XLibre Official Easy Install Drop in Replacement fork of X.Org Wacom tablet driver (binary release)
-	pkgver = 1.2.3.1
-	pkgrel = 2
-	url = https://github.com/X11Libre
+	pkgver = 1.2.3.3
+	pkgrel = 4
+	url = https://x11libre.net/repo/arch_based/x86_64
 	arch = x86_64
 	groups = xlibre-drivers
 	license = GPL-2.0-or-later
@@ -17,9 +17,9 @@ pkgbase = xlibre-input-wacom-bin
 	conflicts = xlibre-input-wacom
 	conflicts = X-ABI-XINPUT_VERSION<26
 	conflicts = X-ABI-XINPUT_VERSION>=27
-	noextract = xlibre-xf86-input-wacom-1.2.3.1-2-x86_64.pkg.tar.zst
+	noextract = xlibre-xf86-input-wacom-1.2.3.3-4-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/xlibre-xf86-input-wacom-1.2.3.1-2-x86_64.pkg.tar.zst
-	sha256sums = f7610d8999f93b7a91ca437ba838491d155cc0f7ff1f57e01edc591b22333b0c
+	source = https://x11libre.net/repo/arch_based/x86_64/xlibre-input-wacom-1.2.3.3-4-x86_64.pkg.tar.zst
+	sha256sums = da789703eb5cbb7fd0616771e6d864f22a9fc68903dde58d01c608a578caad68
 
 pkgname = xlibre-input-wacom-bin
