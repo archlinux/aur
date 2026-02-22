@@ -4,7 +4,7 @@
 _pkgname=nitrolaunch
 pkgname=$_pkgname-cli
 pkgver=0.29.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, extensible, and powerful Minecraft launcher (CLI Version)"
 arch=(x86_64 aarch64)
 url="https://github.com/Nitrolaunch/nitrolaunch"
@@ -37,4 +37,5 @@ check() {
 package() {
 	cd "$_pkgname-$pkgver"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/fast_release/nitro"
+	install -Dm0644 -t "$pkgdir/usr/share/zsh/site-functions" "plugins/plugins/completions/zsh/_nitro"
 }
