@@ -1,4 +1,4 @@
-/src
-/pkg
-*.pkg*
-*.tar.gz
+pkg/
+reform-tools-*.pkg.tar.zst
+reform-tools/
+src/

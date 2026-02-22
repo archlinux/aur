@@ -1,0 +1,7 @@
+post_install() {
+  ln -sf /etc/motd-full /etc/motd
+}
+
+post_upgrade() {
+  ln -sf /etc/motd-full /etc/motd
+}
