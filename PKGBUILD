@@ -3,7 +3,7 @@
 pkgname='linux-firmware-gaokun3'
 _tag=200.0.10.0
 pkgver=2.10.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Firmware files for HUAWEI MateBook E Go (sc8280xp)'
 license=('custom')
 arch=('any')
@@ -13,16 +13,17 @@ options=(
     !strip
 )
 
+_linux_fw='https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git'
+
 source=(
     "https://github.com/matebook-e-go/uup-drivers-sc8280xp/releases/download/${_tag}/${_tag}.zip"
-    'https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/plain/qcom/sc8280xp/LENOVO/21BX/audioreach-tplg.bin'
+    "git+${_linux_fw}"
 )
 sha256sums=(
     'a1240497f44145c1445110522820c7ad8d4d4995403b399ee6323743f30e67b9'
     'SKIP'
 )
 
-_linux_fw='https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git'
 _fw_dir='/usr/lib/firmware'
 _gaokun_dir="${_fw_dir}/qcom/sc8280xp/HUAWEI/gaokun3"
 
@@ -60,7 +61,7 @@ prepare() {
         bsdtar -xf ${item}
     done
 
-    git clone ${_linux_fw} --depth=1
+    mv linux-firmware/qcom/sc8280xp/LENOVO/21BX/audioreach-tplg.bin .
 }
 
 package() {
@@ -74,6 +75,7 @@ package() {
     done
 
     for item in "${_fw_list[@]}"; do
-        install -Dm644 linux-firmware/${item} -t "${pkgdir}/${_fw_dir}/$(dirname ${item})"
+        # || : fix ath11k copy
+        install -Dm644 linux-firmware/${item} -t "${pkgdir}/${_fw_dir}/$(dirname ${item})" || :
     done
 }
