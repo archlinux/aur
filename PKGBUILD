@@ -3,7 +3,7 @@
 # Upstream: Bitwig GmbH <support@bitwig.com>
 
 pkgname='bitwig-studio-earlyaccess'
-_pkgver='6.0b13'
+_pkgver='6.0b15'
 pkgver=${_pkgver}
 pkgrel='1'
 pkgdesc='Digital audio workstation for music production, remixing and live performance - early access version'
@@ -16,11 +16,11 @@ provides=('clap-host' 'vst-host' 'vst3-host')
 replaces=()
 conflicts=('bitwig-studio-legacy' 'bitwig-8-track' 'bitwig-studio')
 options=(!strip)
-source=("bitwig-studio-6.0-beta-13.deb::https://www.bitwig.com/dl/Bitwig%20Studio/6.0%20Beta%2013/installer_linux/")
+source=("bitwig-studio-6.0-beta-15.deb::https://www.bitwig.com/dl/Bitwig%20Studio/6.0%20Beta%2015/installer_linux/")
 #source=("bitwig-studio-${_pkgver}.deb::https://www.bitwig.com/dl/Bitwig%20Studio/${_pkgver}/installer_linux/")
 
 
-sha256sums=('aa2c26fbea86ad82074a9ab1f36e15b55a7f384ff52518c685f90e05170b8c1e')
+sha256sums=('73fda564b8f3de6b3982acd8f7f00565d39079ed794789669d2e63b8d07edc70')
 
 package() {
   # Unpack package contents
