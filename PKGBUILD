@@ -2,7 +2,7 @@
 
 pkgname=calibre-bin
 pkgver=9.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Official binary version Calibre"
 arch=(x86_64)
 url="https://download.calibre-ebook.com"
@@ -71,9 +71,6 @@ output_dir = os.environ['MAN_OUTPUT']
 
 sys.path.insert(0, calibre_src)
 
-os.environ['CALIBRE_OVERRIDE_LANG'] = 'en'
-os.environ['ALL_USER_MANUAL_LANGUAGES'] = 'en'
-os.environ['CALIBRE_BUILD_MAN_PAGES'] = '1'
 os.chdir(manual_dir)
 
 from sphinx.application import Sphinx
@@ -90,6 +87,9 @@ app.build()
 BUILDEOF
 
     QT_QPA_PLATFORM=offscreen \
+    CALIBRE_OVERRIDE_LANG=en \
+    ALL_USER_MANUAL_LANGUAGES=en \
+    CALIBRE_BUILD_MAN_PAGES=1 \
     CALIBRE_SRC="$srcdir/calibre-${pkgver}" \
     MAN_OUTPUT="$srcdir/man-pages" \
         "$srcdir/calibre-release/calibre-debug" "$srcdir/_build_man.py"
