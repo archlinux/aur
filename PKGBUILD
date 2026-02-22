@@ -3,20 +3,20 @@
 pkgname=xlibre-input-libinput-bin
 _pkgname=xlibre-xf86-input-libinput
 pkgver=1.5.1.0
-pkgrel=1
+pkgrel=9.2
 pkgdesc="XLibre Official Easy Install Drop in Replacement fork of X.Org generic input driver for the xorg server based on libinput (binary release)"
 arch=(x86_64)
-url="https://github.com/X11Libre"
+url=https://x11libre.net/repo/arch_based/x86_64
 license=('MIT')
 groups=('xlibre-drivers')
 options=(!strip)
-source=("https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
+source=(https://x11libre.net/repo/arch_based/x86_64/xlibre-input-libinput-1.5.1.0-9.2-x86_64.pkg.tar.zst)
 noextract=("${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 depends=('libinput' 'glibc')
 provides=('xf86-input-libinput' 'xlibre-input-libinput')
 conflicts=('xf86-input-libinput' 'xlibre-input-libinput' 'xorg-server-common<25.0.0.0' 'X-ABI-XINPUT_VERSION<26' 'X-ABI-XINPUT_VERSION>=27')
 
-sha256sums=('971a53e745fff2deb921b4ea99682d6a049ac6392e2b48600413c957980dc04c')
+sha256sums=('9b3362d3872ee19c0975cea28c766fe4c738b4ea9ca8000582bb039659b292e5')
 
 package() {
   tar -xf "${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" -C "${pkgdir}" usr
