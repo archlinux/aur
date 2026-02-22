@@ -3,7 +3,7 @@
 _dist='Perl-Critic-Policy-Plicease-ProhibitArrayAssignAref'
 pkgname='perl-perl-critic-policy-plicease-prohibitarrayassignaref'
 pkgver=100.00
-pkgrel=1
+pkgrel=2
 pkgdesc="Don't assign an anonymous arrayref to an array"
 arch=('any')
 url="https://metacpan.org/dist/$_dist"
@@ -12,6 +12,7 @@ depends=(
     'perl>=5.6.0'
     'perl-perl-critic'
 )
+makedepends=('perl-extutils-makemaker')
 checkdepends=(
     'perl-perl-critic'
     'perl-test-simple'
