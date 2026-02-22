@@ -1,12 +1,12 @@
 pkgbase = liberror-backtrace
 	pkgdesc = Backtrace support for liberror
-	pkgver = 1.0.0.1
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://codeberg.org/maandree/liberror-backtrace
 	arch = i686
 	arch = x86_64
-	license = ISC
-	source = liberror-backtrace-1.0.0.1.tar.gz::https://codeberg.org/maandree/liberror-backtrace/archive/1.0.0.1.tar.gz
-	sha256sums = 6076c2870f51f744478e11335b46bf1f76e3130ca6766fa415b978a790772195
+	license = custom:ISC
+	source = liberror-backtrace-1.0.1.tar.gz::https://codeberg.org/maandree/liberror-backtrace/archive/1.0.1.tar.gz
+	sha256sums = 81b3360e9d48534ca3ea3fcf2a782efb7aabc1414669d6617f3efd81f580926b
 
 pkgname = liberror-backtrace
