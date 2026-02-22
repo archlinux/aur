@@ -1,14 +1,14 @@
 pkgbase = cg-tools
 	pkgdesc = Cooperative gamma tools
-	pkgver = 1.4.2.1
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://codeberg.org/maandree/cg-tools
 	arch = any
-	license = ISC
+	license = custom:ISC
 	makedepends = libcoopgamma
 	makedepends = libclut
 	depends = libcoopgamma
-	source = cg-tools-1.4.2.1.tar.gz::https://codeberg.org/maandree/cg-tools/archive/1.4.2.1.tar.gz
-	sha256sums = b2de586443079262ddddae01b19437a8241758d0076553f8417b48c1aeaf65d3
+	source = cg-tools-1.4.3.tar.gz::https://codeberg.org/maandree/cg-tools/archive/1.4.3.tar.gz
+	sha256sums = 623989407b053cba86e221786dff456c11027b47780d792c847447b23c97af65
 
 pkgname = cg-tools
