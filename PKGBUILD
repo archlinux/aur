@@ -3,7 +3,7 @@
 _cratesio_package='flux-cli'
 
 pkgname="${_cratesio_package%%-cli}"
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Search, monitor, and nuke processes with ease, with system resource tracking"
 
@@ -21,7 +21,7 @@ makedepends=('rust')
 
 # source=("${pkgname}-${pkgver}.crate::https://crates.io/api/v1/crates/${_cratesio_package}/${pkgver}/download")
 source=("${pkgname}-${pkgver}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0c052f4a96c3438df65f4e8178276ffc08a80cad95c2eb55625b95ed9a65ad5e')
+sha256sums=('18ecefa807819a6cc6ff7ded39046e0247ec33f7c7ed572c198486c501e4ed55')
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver} || exit 1
