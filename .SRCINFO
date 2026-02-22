@@ -1,0 +1,15 @@
+pkgbase = obs-livesplit-one-bin
+	pkgdesc = A plugin for OBS Studio that allows adding LiveSplit One as a source.
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/LiveSplit/obs-livesplit-one
+	arch = x86_64
+	groups = obs-plugins
+	license = MIT AND Apache-2.0
+	depends = obs-studio
+	provides = obs-livesplit-one
+	conflicts = obs-livesplit-one
+	source = https://github.com/LiveSplit/obs-livesplit-one/releases/download/v0.4.2/obs-livesplit-one-v0.4.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = f50b46495635c1838efa8ade8d2d20aed16cc8f9e8003f4adbbae6b148db62ee
+
+pkgname = obs-livesplit-one-bin

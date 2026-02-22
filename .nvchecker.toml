@@ -1,0 +1,4 @@
+[obs-livesplit-one-bin]
+source = "git"
+git = "https://github.com/LiveSplit/obs-livesplit-one.git"
+prefix = "v"
