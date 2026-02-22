@@ -1,6 +1,6 @@
 # Maintainer: Lian <yichengxin7@gmail.com>
 pkgname=lian-bin
-pkgver=2.0.4
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="TUI frontend for paru/yay/pacman with AI-powered operation analysis"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=(
 provides=('lian')
 conflicts=('lian' 'lian-git')
 source=("https://github.com/Yueosa/lian/releases/download/v${pkgver}/lian_${pkgver}_linux_x86_64")
-sha256sums=('d04dcee53aad0103c4af8c10f53c4e628a1480c56a1dd3e2a27bb84e6690dec9')
+sha256sums=('78bbdcabc2d9a3b9885ab476e6fa0bee94363942712dc7059e86a9bbafa0d332')
 
 package() {
     install -Dm755 "lian_${pkgver}_linux_x86_64" "$pkgdir/usr/bin/lian"
