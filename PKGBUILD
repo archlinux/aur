@@ -1,25 +1,62 @@
-# Maintainer: sineptic <sineptic0@gmail.com>
-pkgname=sse-bin
-pkgver=15.0.8_1
+#  Maintainer: Skyler <sm+aur@skym.fi> 
+pkgname=discrakt-bin
+pkgver=3.4.2
 pkgrel=1
-pkgdesc="Paranoia Secret Space Encryptor File and Text desktop utilities from Paranoiaworks"
-arch=('x86_64')
-url="https://paranoiaworks.mobi"
-license=('custom')
-source=(
-    "$url/download/files/pfte_${pkgver//_/-}_amd64.deb"
-    "license.txt"
-)
-sha256sums=(
-    '31b3fae30d3e26804f5ed77bbd66920e824042a239c94720023dded78c571e3c'
-    'f23431d1e94d187fe3e0254b8a530a875d8615bbe451e9d3f564627835e7d527'
-)
+pkgdesc="The Trakt/Plex Discord Rich Presence that you didn't know you needed"
+arch=('x86_64' 'aarch64')
+url="https://github.com/afonsojramos/discrakt"
+license=('MIT')
+depends=('gcc-libs' 'glibc')
+optdepends=('discord: Required to display Rich Presence')
+provides=('discrakt')
+conflicts=('discrakt' 'discrakt-git')
 
-options=('!strip')
+source_x86_64=("${pkgname}-${pkgver}-amd64.deb::https://github.com/afonsojramos/discrakt/releases/download/v${pkgver}/discrakt_${pkgver}_amd64.deb")
+source_aarch64=("${pkgname}-${pkgver}-arm64.deb::https://github.com/afonsojramos/discrakt/releases/download/v${pkgver}/discrakt_${pkgver}_arm64.deb")
+
+sha256sums_x86_64=('4a85e1e337edd494a70258e4e807ca4963eba03805d0b265425e0aa10c65834a')
+sha256sums_aarch64=('1e5f8749fd5bc464be27439c9ec5fae258cf9f5479ba1f1bb6e5daac4bf633a1')
 
 package() {
-    bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}"
-    echo "Installing license and desktop file..."
-    install -Dm644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
-    install -Dm644 "${pkgdir}/opt/pfte/lib/pfte-Paranoia_File_and_Text_Encryption.desktop" "${pkgdir}/usr/share/applications/pfte-Paranoia_File_and_Text_Encryption.desktop"
+    cd "${srcdir}"
+
+    # Determine which .deb was downloaded
+    local debfile
+    if [ "${CARCH}" = "x86_64" ]; then
+        debfile="${pkgname}-${pkgver}-amd64.deb"
+    else
+        debfile="${pkgname}-${pkgver}-arm64.deb"
+    fi
+
+    # Extract the .deb archive
+    ar x "${debfile}"
+
+    # Extract the data tarball (may be .tar.xz, .tar.zst, or .tar.gz)
+    if [ -f data.tar.xz ]; then
+        tar xf data.tar.xz
+    elif [ -f data.tar.zst ]; then
+        tar xf data.tar.zst
+    elif [ -f data.tar.gz ]; then
+        tar xf data.tar.gz
+    fi
+
+    # Install binary
+    install -Dm755 usr/bin/discrakt "${pkgdir}/usr/bin/discrakt"
+
+    # Install desktop entry if present
+    if [ -f usr/share/applications/discrakt.desktop ]; then
+        install -Dm644 usr/share/applications/discrakt.desktop \
+            "${pkgdir}/usr/share/applications/discrakt.desktop"
+    fi
+
+    # Install icons if present
+    if [ -d usr/share/icons ]; then
+        cp -r usr/share/icons "${pkgdir}/usr/share/"
+    fi
+
+    # Install license
+    if [ -f usr/share/doc/discrakt/copyright ]; then
+        install -Dm644 usr/share/doc/discrakt/copyright \
+            "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    fi
 }
