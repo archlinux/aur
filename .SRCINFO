@@ -1,6 +1,6 @@
 pkgbase = key2root
 	pkgdesc = Authenticate with keyfile and run a process as root
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://codeberg.org/maandree/key2root
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = key2root
 	depends = libar2
 	depends = libblake
 	depends = libenv
-	source = key2root-1.0.2.tar.gz::https://codeberg.org/maandree/key2root/archive/1.0.2.tar.gz
-	sha256sums = d7d30b4e5128a41703664e83817f5e34c5784ccc0a9be80f2f287082ff3e435f
+	source = key2root-1.0.3.tar.gz::https://codeberg.org/maandree/key2root/archive/1.0.3.tar.gz
+	sha256sums = f1218e2ec94c073a3a8f925a2fc19689e69c9fb4516e5e270cc44758d0e9a33b
 
 pkgname = key2root
