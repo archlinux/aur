@@ -25,22 +25,15 @@ check() {
 
     cd "${srcdir}/SpiceyPy-${pkgver}"
 
-    python -m installer --destdir="$PWD/testroot" dist/*.whl
+    python -m installer --destdir="${PWD}/testroot" dist/*.whl
 
-    # Compute site-packages path inside the destdir (purelib is fine for spiceypy;
-    # platform-specific bits will still be present under the same prefix).
     local site_packages
     site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
 
-    # Run tests via import-based discovery like upstream CI:
-    #       pytest --pyargs spiceypy
-    #
-    # Arch check() should not access the network, but upstream notes some tests
-    # download SPICE kernels. Skip anything marked as requiring download/network
-    # if present, and also disable benchmarks (upstream does).
-    PYTHONPATH="$PWD/testroot/$site_packages" \
+    PYTHONPATH="${PWD}/testroot/${site_packages}" \
         python -m pytest -q --pyargs spiceypy --benchmark-disable \
             -k 'not download and not internet and not network'
+
 }
 
 package() {
