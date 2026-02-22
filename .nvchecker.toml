@@ -1,0 +1,3 @@
+[perl-test-portability-files]
+source = "cpan"
+cpan = "Test-Portability-Files"
