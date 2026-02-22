@@ -1,40 +1,67 @@
-# Maintainer: Maarten Baert <maarten-baert@hotmail.com>
+# Maintainer:
+# Contributor: Maarten Baert <maarten-baert@hotmail.com>
 
-pkgname=simplescreenrecorder-git
-pkgver=0.4.2.r11.g7f26bc7
+_pkgname="simplescreenrecorder"
+pkgname="$_pkgname-git"
+pkgver=0.4.4.r76.gd790385
 pkgrel=1
-pkgdesc="A simple but powerful recording tool for X11, OpenGL and V4L2. (Git version)"
+pkgdesc="A feature-rich screen recorder that supports X11 and OpenGL"
+url="https://github.com/MaartenBaert/ssr"
+license=("GPL-3.0-or-later")
 arch=("x86_64")
-url="https://www.maartenbaert.be/simplescreenrecorder/"
-license=("GPL3")
-depends=("qt5-base" "qt5-x11extras"
-    "ffmpeg" "alsa-lib" "libpulse" "jack" "libgl" "glu" "v4l-utils"
-    "libx11" "libxext" "libxfixes" "libxi" "libxinerama"
-    "desktop-file-utils" "gtk-update-icon-cache")
-optdepends=("lib32-simplescreenrecorder-git: OpenGL recording of 32-bit applications")
-makedepends=("git" "cmake" "qt5-tools")
-source=("git+https://github.com/MaartenBaert/ssr.git")
-md5sums=("SKIP")
-conflicts=("simplescreenrecorder")
-provides=("simplescreenrecorder")
 
-install=simplescreenrecorder-git.install
+depends=(
+  'alsa-lib'
+  'ffmpeg'
+  'glu'
+  'jack'
+  'libgl'
+  'libpipewire'
+  'libpulse'
+  'libx11'
+  'libxext'
+  'libxfixes'
+  'libxi'
+  'libxinerama'
+  'qt6-base'
+  'v4l-utils'
+)
+makedepends=(
+  'git'
+  'cmake'
+  'ninja'
+  'qt6-tools'
+)
+
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd ssr
-	# Use the tag of the last commit
-	git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
-prepare() {
-	cd ssr
-	mkdir -p build
-}
+
 build() {
-	cd ssr/build
-	cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_INSTALL_LIBDIR="lib" -DCMAKE_BUILD_TYPE=Release -DWITH_QT5=TRUE ..
-	make
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DWITH_QT6=ON
+    -DBUILD_TESTING=OFF
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
+
 package() {
-	cd ssr/build
-	make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
