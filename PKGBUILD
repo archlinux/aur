@@ -1,6 +1,6 @@
 # Maintainer: Ilya Zlobintsev <ilya.zl@protonmail.com>
 pkgname=lact-git
-pkgver=r779.4082728
+pkgver=r1061.d39b963c
 pkgrel=1
 license=("MIT")
 pkgdesc="AMDGPU Controller application (git version)"
@@ -30,6 +30,8 @@ prepare() {
 
 build() {
   cd "LACT"
+  CFLAGS+=' -ffat-lto-objects'
+
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
