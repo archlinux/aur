@@ -1,7 +1,7 @@
 # Maintainer: kinker31<dp223171@gmail.com>
 # Maintainer: JustinWayland<justintwayland@gmail.com>
 pkgname=helion
-pkgver=0.9.9.0
+pkgver=0.9.9.1
 pkgrel=1
 pkgdesc="A modern Doom FPS engine, made with C# and GPU usage in mind"
 arch=('x86_64')
@@ -9,10 +9,9 @@ url="https://github.com/Helion-Engine/Helion"
 license=(' GPL-3.0-or-later')
 # Might be a good idea investigating if we can ignore most of the dependencies or not.
 depends=('libsndfile' 'mpg123' 'gcc-libs' 'alsa-lib' 'glibc' 'glib2')
-#dotnet-sdk-10.0-bin is a temporary mesure until Arch updates Dotnet.
 makedepends=('dotnet-sdk>=10.0' 'clang')
 source=("https://github.com/Helion-Engine/Helion/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('07d4d46d180b7ad469f275bc8dbd74531e12676edda56dba6f8cddd3c41297f2')
+sha256sums=('6dcad9c8651cb852b37f9078c783360f05e9aa8c6f2b78857b05ead1cf71665a')
 build() {
 	cd "Helion-${pkgver}/Client"
 	dotnet publish -c Release -r linux-x64 -p:AOT=true
