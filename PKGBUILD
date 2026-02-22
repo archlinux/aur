@@ -1,7 +1,7 @@
 # Maintainer: D7OMDEV <hello@d7om.dev>
 pkgname=clipse-gui
-pkgver=0.6.0
-pkgrel=23
+pkgver=0.7.0
+pkgrel=24
 pkgdesc="A GTK3 GUI for the clipse clipboard manager"
 arch=('x86_64')
 url="https://github.com/d7omdev/clipse-gui"
