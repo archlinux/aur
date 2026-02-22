@@ -1,0 +1,5 @@
+[xsos]
+source = "github"
+github = "ryran/xsos"
+use_latest_release = true
+prefix = "v"
