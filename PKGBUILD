@@ -4,7 +4,7 @@
 _dist='Class-Refresh'
 pkgname='perl-class-refresh'
 pkgver=0.07
-pkgrel=3
+pkgrel=4
 pkgdesc='refresh your classes during runtime'
 arch=('any')
 url="https://metacpan.org/dist/$_dist"
@@ -17,17 +17,19 @@ depends=(
     'perl-devel-overrideglobalrequire'
     'perl-try-tiny'
 )
+makedepends=('perl-extutils-makemaker>=6.30')
 checkdepends=(
     'perl-exporter'
     'perl-file-temp'
     'perl-io'
+    'perl-lib'
     'perl-pathtools'
     'perl-test-fatal'
     'perl-test-requires'
     'perl-test-simple'
 )
 options=('!emptydirs')
-source=("http://cpan.metacpan.org/authors/id/D/DO/DOY/$_dist-$pkgver.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/D/DO/DOY/$_dist-$pkgver.tar.gz")
 sha256sums=('e3b0035355cbb35a2aee3f223688d578946a7a7c570acd398b28cddb1fd4beb3')
 
 build()

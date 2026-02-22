@@ -1,17 +1,19 @@
 pkgbase = perl-class-refresh
 	pkgdesc = refresh your classes during runtime
 	pkgver = 0.07
-	pkgrel = 3
+	pkgrel = 4
 	url = https://metacpan.org/dist/Class-Refresh
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later
 	checkdepends = perl-exporter
 	checkdepends = perl-file-temp
 	checkdepends = perl-io
+	checkdepends = perl-lib
 	checkdepends = perl-pathtools
 	checkdepends = perl-test-fatal
 	checkdepends = perl-test-requires
 	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker>=6.30
 	depends = perl
 	depends = perl-carp
 	depends = perl-class-load
@@ -19,7 +21,7 @@ pkgbase = perl-class-refresh
 	depends = perl-devel-overrideglobalrequire
 	depends = perl-try-tiny
 	options = !emptydirs
-	source = http://cpan.metacpan.org/authors/id/D/DO/DOY/Class-Refresh-0.07.tar.gz
+	source = https://cpan.metacpan.org/authors/id/D/DO/DOY/Class-Refresh-0.07.tar.gz
 	sha256sums = e3b0035355cbb35a2aee3f223688d578946a7a7c570acd398b28cddb1fd4beb3
 
 pkgname = perl-class-refresh
