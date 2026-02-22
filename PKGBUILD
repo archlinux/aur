@@ -2,7 +2,7 @@
 
 pkgname=hdrecover
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to encourage hard disks to reallocate bad sectors allowing data recovery"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/hdrecover/"
@@ -11,8 +11,8 @@ depends=('glibc')
 makedepends=('make')
 #install=${pkgname}.install
 #changelog=$pkgname.changelog
-source=("http://netcologne.dl.sourceforge.net/project/$pkgname/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=(1cbe15f790fe383a20375b97aa3e5d04)
+source=("https://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
+md5sums=('1cbe15f790fe383a20375b97aa3e5d04')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
