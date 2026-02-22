@@ -1,7 +1,7 @@
 pkgbase = perl-cpan-mini
 	pkgdesc = create a minimal mirror of CPAN
 	pkgver = 1.111017
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/dist/CPAN-Mini
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later

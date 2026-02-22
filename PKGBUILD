@@ -1,10 +1,11 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Contributor: Caleb Cushing <xenoterracide@gmail.com>
 
 _dist='CPAN-Mini'
 pkgname='perl-cpan-mini'
 pkgver=1.111017
-pkgrel=2
+pkgrel=3
 pkgdesc='create a minimal mirror of CPAN'
 arch=('any')
 url="https://metacpan.org/dist/$_dist"
