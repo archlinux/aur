@@ -2,8 +2,8 @@
 
 pkgname='linux-firmware-gaokun3'
 _tag=200.0.10.0
-pkgver=1.10.0
-pkgrel=3
+pkgver=2.10.0
+pkgrel=1
 pkgdesc='Firmware files for HUAWEI MateBook E Go (sc8280xp)'
 license=('custom')
 arch=('any')
@@ -22,7 +22,16 @@ sha256sums=(
     'ee911c748deadc0191af50074b26ad177c8a2e78ff00e9578504b71d5d27b08a'
 )
 
-_dir='/usr/lib/firmware/qcom/sc8280xp/HUAWEI/gaokun3'
+_linux_fw='https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git'
+_fw_dir='/usr/lib/firmware'
+_gaokun_dir="${_fw_dir}/qcom/sc8280xp/HUAWEI/gaokun3"
+
+_fw_list=(
+'qcom/a660_gmu.bin'
+'qcom/a660_sqe.fw'
+'ath11k/WCN6855/hw2.0/*'    # wifi firmware
+'qca/hp*'                   # bluetooth firmware
+)
 
 _archive_list=(
 'qcdx8280.cab' # gpu
@@ -31,7 +40,7 @@ _archive_list=(
 'qcsubsys_ext_scss8280.cab' # sdsp/slpi
 )
 
-_file_list=(
+_gaokun_list=(
 'adspr.jsn'
 'adspua.jsn'
 'battmgr.jsn'
@@ -50,16 +59,21 @@ prepare() {
     for item in "${_archive_list[@]}"; do
         bsdtar -xf ${item}
     done
+
+    git clone ${_linux_fw} --depth=1
 }
 
 package() {
-    mkdir -p "${pkgdir}/${_dir}"
-    install -Dm644 'audioreach-tplg.bin' -t "${pkgdir}/${_dir}"
-    cd "${pkgdir}/${_dir}/../.."
+    install -Dm644 'audioreach-tplg.bin' -t "${pkgdir}/${_gaokun_dir}"
+    cd "${pkgdir}/${_gaokun_dir}/../.."
     ln -s 'HUAWEI/gaokun3/audioreach-tplg.bin' 'SC8280XP-HUAWEI-GAOKUN3-tplg.bin'
 
     cd "${srcdir}"
-    for item in "${_file_list[@]}"; do
-        install -Dm644 "${item}" -t "${pkgdir}/${_dir}"
+    for item in "${_gaokun_list[@]}"; do
+        install -Dm644 "${item}" -t "${pkgdir}/${_gaokun_dir}"
+    done
+
+    for item in "${_fw_list[@]}"; do
+        install -Dm644 "linux-firmware/${item}" -t "${pkgdir}/${_fw_dir}/$(dirname ${item})"
     done
 }
