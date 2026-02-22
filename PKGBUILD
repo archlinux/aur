@@ -1,5 +1,5 @@
 pkgname=codex-monitor-bin
-pkgver=0.7.55
+pkgver=0.7.56
 pkgrel=1
 pkgdesc="Tauri desktop app for orchestrating Codex agents across local workspaces (prebuilt RPM)"
 arch=('x86_64' 'aarch64')
@@ -28,16 +28,10 @@ source_x86_64=(
 source_aarch64=(
   "Codex.Monitor-${pkgver}-1.aarch64.rpm::https://github.com/Dimillian/CodexMonitor/releases/download/v${pkgver}/Codex.Monitor-${pkgver}-1.aarch64.rpm"
 )
-sha256sums=(
-  'a57166e03775a7e875c7f79f89635083b38e0deacae46861297e9ac269b33b4b'
-  'df17aae89ce4705d0a6e5f7b46eeea3b9023967ecad948f8779b47039eb55a8b'
-)
-sha256sums_x86_64=(
-  '7b7aed999bd57dc3a5c24372bb10dc2f26032389d4b90e1c880b60dbc87b76d0'
-)
-sha256sums_aarch64=(
-  'c7dc7fab0c49570dc3528f61d33a1b05c425a887790386cdde53ada2cd168588'
-)
+sha256sums=('a57166e03775a7e875c7f79f89635083b38e0deacae46861297e9ac269b33b4b'
+            'df17aae89ce4705d0a6e5f7b46eeea3b9023967ecad948f8779b47039eb55a8b')
+sha256sums_x86_64=('e63a5bda9978a2e69e791f7de131a7b86fced9ad9bc7c2623e8526cbb4efef05')
+sha256sums_aarch64=('77460b1aadb06248ccabc405377c7e664e3a6c9793a93f4ef825c79910ff9700')
 
 package() {
   local _rpm
