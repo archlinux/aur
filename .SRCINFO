@@ -1,0 +1,12 @@
+pkgbase = manu-hello-test
+	pkgdesc = Test hello world package by Manu
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://example.com
+	arch = any
+	license = MIT
+	depends = bash
+	source = hello.sh
+	sha256sums = SKIP
+
+pkgname = manu-hello-test
