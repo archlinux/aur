@@ -2,7 +2,7 @@
 
 _pkgname=clipp
 pkgname="$_pkgname-git"
-pkgver=1.2.3_6_g2c32
+pkgver=2023.10.12_25_gddf6
 pkgrel=1
 pkgdesc="Modern C++ header only library to parse cmd arguments"
 license=(MIT)
