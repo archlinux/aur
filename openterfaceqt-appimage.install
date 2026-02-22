@@ -1,3 +1,0 @@
-post_install() {
-  echo "==> Make sure your user is added to the uucp group!"
-}
