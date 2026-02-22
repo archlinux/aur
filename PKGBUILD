@@ -7,7 +7,7 @@
 pkgname=kwin-screencast-api
 pkgver=6.6.0
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=2
+pkgrel=3
 pkgdesc='KWin with D-Bus API for screencast stream introspection'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -87,7 +87,7 @@ source=(https://download.kde.org/stable/plasma/$_dirver/kwin-$pkgver.tar.xz{,.si
         screencast-dbus-api.patch)
 sha256sums=('35134fcfb64d01904cdcd25aea8e90c68c37973a088971e4d678acfdc5020914'
             'SKIP'
-            '45a405ce73530a70aaca94eaa8a41947e86171a258bad50192a77a828f527d05')
+            '460d0d5b11876f593249b1096d29fc12cfb3c12732961e8c909213c4bf83f934')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>

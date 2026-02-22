@@ -1,7 +1,7 @@
 pkgbase = kwin-screencast-api
 	pkgdesc = KWin with D-Bus API for screencast stream introspection
 	pkgver = 6.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
 	groups = plasma
@@ -86,6 +86,6 @@ pkgbase = kwin-screencast-api
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
 	sha256sums = 35134fcfb64d01904cdcd25aea8e90c68c37973a088971e4d678acfdc5020914
 	sha256sums = SKIP
-	sha256sums = 45a405ce73530a70aaca94eaa8a41947e86171a258bad50192a77a828f527d05
+	sha256sums = 460d0d5b11876f593249b1096d29fc12cfb3c12732961e8c909213c4bf83f934
 
 pkgname = kwin-screencast-api
