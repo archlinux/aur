@@ -4,7 +4,7 @@ _pkgname=QIDIStudio
 
 pkgname=qidi-studio-appimage
 pkgver=2.04.01.11
-pkgrel=1
+pkgrel=2
 pkgdesc="QIDIStudio is a professional 3D printer slicing software for QiDi 3D printers (AppImage version)"
 arch=('x86_64')
 url="https://github.com/QIDITECH/QIDIStudio"

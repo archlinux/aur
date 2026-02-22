@@ -1,7 +1,7 @@
 pkgbase = qidi-studio-appimage
 	pkgdesc = QIDIStudio is a professional 3D printer slicing software for QiDi 3D printers (AppImage version)
 	pkgver = 2.04.01.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/QIDITECH/QIDIStudio
 	arch = x86_64
 	license = GPL-3.0-only
