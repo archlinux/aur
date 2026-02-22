@@ -35,18 +35,15 @@ pkgver() {
 package() {
   cd "$srcdir/$pkgname"
 
-  # Install main scripts to /usr/bin
-  for f in .local/bin/*; do
-    [[ -f "$f" ]] && install -Dm755 "$f" "$pkgdir/usr/bin/$(basename "$f")"
+  for f in .local/bin/* .local/bin/statusbar/*; do
+	  if [ -f "${f}" ] && [ -x "${f}" ]; then
+		  install -Dm755 "${f}" "${pkgdir}/usr/bin/$(basename "${f}")"
+	  fi
   done
-
-  # Install statusbar scripts to /usr/bin
-  for f in .local/bin/statusbar/*; do
-    [[ -f "$f" ]] && install -Dm755 "$f" "$pkgdir/usr/bin/$(basename "$f")"
-  done
-
   # Install cron scripts to /usr/lib/voidrice-cron
   for f in .local/bin/cron/*; do
-    [[ -f "$f" && "$f" != *.md ]] && install -Dm755 "$f" "$pkgdir/usr/lib/voidrice-cron/$(basename "$f")"
+	  if [ -f "${f}" ] && [ -x "${f}" ]; then
+		  install -Dm755 "${f}"  "$pkgdir/usr/lib/voidrice-cron/$(basename "$f")"
+	  fi
   done
 }
