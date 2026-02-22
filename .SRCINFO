@@ -1,12 +1,12 @@
 pkgbase = alarm
 	pkgdesc = Schedule an alarm for a program when starting it
-	pkgver = 1.2.3
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://codeberg.org/maandree/alarm
 	arch = i686
 	arch = x86_64
 	license = custom:ISC
-	source = alarm-1.2.3.tar.gz::https://codeberg.org/maandree/alarm/archive/1.2.3.tar.gz
-	sha256sums = 11dd4d8032794a61f32ac10ae772ece9b1f185ea323169140220c0e33a3e4907
+	source = alarm-1.2.4.tar.gz::https://codeberg.org/maandree/alarm/archive/1.2.4.tar.gz
+	sha256sums = 33630fa2a0eb3c3d43962c1defac25af31333c507c8f7d103be75ea79e41ae96
 
 pkgname = alarm
