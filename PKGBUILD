@@ -4,7 +4,7 @@
 _dist='Regexp-Debugger'
 pkgname='perl-regexp-debugger'
 pkgver=0.002007
-pkgrel=3
+pkgrel=4
 pkgdesc='Visually debug regexes in-place'
 arch=('any')
 url="https://metacpan.org/dist/$_dist"
@@ -13,6 +13,7 @@ depends=(
     'perl-test-simple'
     'perl>=5.10.1'
 )
+makedepends=('perl-extutils-makemaker')
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/D/DC/DCONWAY/$_dist-$pkgver.tar.gz")
 sha256sums=('db096cf2e0e1e6127dacc40be6fbd526aa5ad41886a5bae00f4fe6a53a6c6ffb')
