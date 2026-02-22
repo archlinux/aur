@@ -1,0 +1,15 @@
+pkgbase = python-securestring
+	pkgdesc = Clears the contents of strings containing cryptographic material
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/SecureString
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/S/SecureString/SecureString-0.2.tar.gz
+	b2sums = c77f0d6ae7980865120f268cc1cbe73fdd58afd87a9aa7727f7dcc9ee2bb4760bea4a8889c746e4c796b1e39c35cad4016ccd3760e0f19effd45c767016f9198
+
+pkgname = python-securestring
