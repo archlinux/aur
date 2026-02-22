@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>
 
 pkgname=file2key-libpassphrase
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=2
 pkgdesc="A simple command that generates a key from a file and a passphrase, libpassphrase version"
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ provides=(file2key)
 depends=(libkeccak libpassphrase)
 makedepends=(libkeccak libpassphrase)
 source=(file2key-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(4b3d9ea6b35eab38a76dac7f3560abe95ae271045104d2b96f568931b2b0a8aa)
+sha256sums=(e9b79bdbdbf92be34b031b90708130aa80af14df64261a0eab2b880810b55944)
 
 prepare() {
   cd "${srcdir}/file2key"
