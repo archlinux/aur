@@ -1,6 +1,6 @@
 pkgbase = onset
 	pkgdesc = Lightweight GTK4 autostart manager for Linux
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/xPathin/onset
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = onset
 	depends = libadwaita
 	provides = onset
 	conflicts = onset-git
-	source = onset-1.0.2.tar.gz::https://github.com/xPathin/onset/archive/v1.0.2.tar.gz
+	source = onset-1.0.3.tar.gz::https://github.com/xPathin/onset/archive/v1.0.3.tar.gz
 	sha256sums = SKIP
 
 pkgname = onset
