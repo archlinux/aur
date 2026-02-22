@@ -3,7 +3,7 @@
 pkgname=masterpdfeditor-qt_include
 _pkgname=${pkgname%-qt_include}
 pkgver=5.9.96
-pkgrel=1
+pkgrel=2
 pkgdesc='A complete solution for viewing, creating and editing PDF files. Built upstream with qt libraries included!'
 url='https://code-industry.net/free-pdf-editor/'
 _checksum="$(curl https://code-industry.net/checksum-information/ | grep master-pdf-editor-${pkgver}-qt5.x86_64-qt_include.tar.gz)"
@@ -26,12 +26,12 @@ source_x86_64=("https://code-industry.net/public/master-pdf-editor-${pkgver}-qt5
 sha1sums_x86_64=("${_checksum% *}")
 
 package() {
-  install -d "${pkgdir}"${/opt/,/usr/bin/}
-  cp -a --no-preserve=ownership master-pdf-editor-${pkgver%%.*} "${pkgdir}/opt/"
+    install -d ${pkgdir}{/opt/,/usr/bin/}
+    cp -a --no-preserve=ownership master-pdf-editor-${pkgver%%.*} "${pkgdir}/opt/"
 
-  cd "${pkgdir}/opt/master-pdf-editor-${pkgver%%.*}"
-  ln -sr masterpdfeditor${pkgver%%.*} -t "${pkgdir}/usr/bin/"
-  install -Dm644 masterpdfeditor${pkgver%%.*}.desktop -t "${pkgdir}/usr/share/applications/"
-  install -Dm644 license_en.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-  patchelf --remove-rpath masterpdfeditor${pkgver%%.*}
+    cd "${pkgdir}/opt/master-pdf-editor-${pkgver%%.*}"
+    ln -sr masterpdfeditor${pkgver%%.*} -t "${pkgdir}/usr/bin/"
+    install -Dm644 masterpdfeditor${pkgver%%.*}.desktop -t "${pkgdir}/usr/share/applications/"
+    install -Dm644 license_en.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    patchelf --remove-rpath masterpdfeditor${pkgver%%.*}
 }
