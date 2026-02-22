@@ -11,7 +11,7 @@ options=('!strip' '!debug')
 depends=('cups' 'ghostscript' 'cups-filters')
 provides=('epson-inkjet-printer-201215w')
 conflicts=('epson-inkjet-printer-201215w')
-source=("epson-inkjet-printer-201215w_${pkgver}-1_amd64.deb")
+source=("https://download-center.epson.com/f/module/5e7bd6ce-e857-486c-ab78-d4387d665759/epson-inkjet-printer-201215w_${pkgver}-1_amd64.deb")
 sha256sums=('f764f04e580024bba9a5ce04e685e23d4911cb05a3f99762d35ff4d7507ee5c3')
 
 package() {

@@ -12,7 +12,7 @@ pkgbase = epson-inkjet-printer-m105
 	conflicts = epson-inkjet-printer-201215w
 	options = !strip
 	options = !debug
-	source = epson-inkjet-printer-201215w_1.0.1-1_amd64.deb
+	source = https://download-center.epson.com/f/module/5e7bd6ce-e857-486c-ab78-d4387d665759/epson-inkjet-printer-201215w_1.0.1-1_amd64.deb
 	sha256sums = f764f04e580024bba9a5ce04e685e23d4911cb05a3f99762d35ff4d7507ee5c3
 
 pkgname = epson-inkjet-printer-m105
