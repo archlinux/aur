@@ -1,0 +1,3 @@
+[perl-net-ssh-perl]
+source = "cpan"
+cpan = "Net-SSH-Perl"

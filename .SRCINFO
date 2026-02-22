@@ -1,26 +1,27 @@
 pkgbase = perl-net-ssh-perl
 	pkgdesc = Perl client interface to SSH
-	pkgver = 1.35
+	pkgver = 2.144
 	pkgrel = 1
-	url = http://search.cpan.org/dist/Net-SSH-Perl
+	url = https://metacpan.org/dist/Net-SSH-Perl
 	arch = any
-	license = PerlArtistic
-	license = GPL
-	depends = perl-convert-pem>=0.05
-	depends = perl-crypt-dh>=0.01
-	depends = perl-crypt-dsa>=0.11
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker>=6.64
+	makedepends = perl-pathtools
+	depends = perl-crypt-curve25519>=0.05
 	depends = perl-crypt-idea
-	depends = perl-crypt-rsa>=1.37
-	depends = perl-digest-bubblebabble>=0.01
-	depends = perl-digest-hmac
-	depends = perl-digest-sha1>=2.10
+	depends = perl-cryptx>=0.032
+	depends = perl-digest-md5
+	depends = perl-file-homedir
+	depends = perl-io
 	depends = perl-math-gmp>=1.04
-	depends = perl-math-pari>=2.001804
+	depends = perl-pathtools
+	depends = perl-scalar-list-utils
 	depends = perl-string-crc32>=1.2
+	depends = perl>=5.10.0
+	optdepends = perl-digest-bubblebabble: create bubble-babble fingerprints
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/S/SC/SCHWIGON/Net-SSH-Perl-1.35.tar.gz
-	md5sums = 6d199022878582990c7d027123c43312
-	sha512sums = 5b934b63111ea23fa62228192482d84811fbe6be80701b5a67a486ae84795f5bc031ceb0e7b31f1bc1b031aaf26f5f90d6bab1fdd355949de2d5f423041dd06d
+	source = https://cpan.metacpan.org/authors/id/B/BD/BDFOY/Net-SSH-Perl-2.144.tar.gz
+	sha256sums = 2b547bba3336ae324a6a23c4a265e01b9b0d6eeaf7a457205c605387d713e93e
 
 pkgname = perl-net-ssh-perl
-
