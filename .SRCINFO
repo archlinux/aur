@@ -1,0 +1,16 @@
+pkgbase = python-pyequihash
+	pkgdesc = Python bindings for the libequihash library
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://pypi.org/project/pyequihash/
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = equihash
+	source = https://files.pythonhosted.org/packages/source/p/pyequihash/pyequihash-0.2.tar.gz
+	b2sums = 3995f81936197f9c3351f2f9c843a1b0a3418b5e89f9d805c4f846010a885bfc2cff04f0eec537bf6e2d391b5ca0e0716262527222ed32b7a5b19b3f274dcb12
+
+pkgname = python-pyequihash
