@@ -1,6 +1,6 @@
 pkgbase = fb2converter-bin
 	pkgdesc = Unified converter of FB2 files into epub2, kepub, mobi and azw3 formats.
-	pkgver = 1.78.4
+	pkgver = 1.78.5
 	pkgrel = 1
 	url = https://github.com/rupor-github/fb2converter
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = fb2converter-bin
 	provides = fb2c
 	provides = kindlegen
 	conflicts = kindlegen
-	source = https://github.com/rupor-github/fb2converter/releases/download/v1.78.4/fb2c-linux-amd64.zip
-	sha512sums = 615d2ee4b4829f2454c8ccc6174cc22d0b698d112bf81db3086ce6b2df376a12bb5149a9cc5923f473fdc1b24420cd9ed22cd410ac9cebc0e6acb67213fa7f54
+	source = https://github.com/rupor-github/fb2converter/releases/download/v1.78.5/fb2c-linux-amd64.zip
+	sha512sums = 364a5944385b0aac2f16b0bdafe56a82e16b46a6897977002b47c30fc53f982c8df556815a6494fe6135c37073b119cb4a51bf8ba739704579f4b72bd9df9eed
 
 pkgname = fb2converter-bin
