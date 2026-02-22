@@ -4,7 +4,7 @@
 _dist='CPAN-Mini'
 pkgname='perl-cpan-mini'
 pkgver=1.111017
-pkgrel=1
+pkgrel=2
 pkgdesc='create a minimal mirror of CPAN'
 arch=('any')
 url="https://metacpan.org/dist/$_dist"
@@ -28,7 +28,7 @@ checkdepends=(
     'perl-test-simple'
 )
 options=('!emptydirs')
-source=("http://cpan.metacpan.org/authors/id/R/RJ/RJBS/$_dist-$pkgver.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/R/RJ/RJBS/$_dist-$pkgver.tar.gz")
 sha256sums=('f204293be26ac841acc87044a188db0f591e80881316c7a288aec0eece306155')
 
 build()
