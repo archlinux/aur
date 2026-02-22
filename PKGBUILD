@@ -72,7 +72,7 @@ package() {
   install -Dm640 "install/empty.dae" "${pkgdir}/etc/dae/config.dae"
 
   # Install geoip.dat and geosite.dat to /usr/share/dae/
-  kdir -p "${pkgdir}/usr/share/dae/"
+  mkdir -p "${pkgdir}/usr/share/dae/"
   cp ../geoip.dat "${pkgdir}/usr/share/dae/geoip.dat"
   cp ../geosite.dat "${pkgdir}/usr/share/dae/geosite.dat"
 }
