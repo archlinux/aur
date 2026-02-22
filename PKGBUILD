@@ -1,6 +1,6 @@
 # Maintainer: Patrick Fischer <aur at pathin dot me>
 pkgname=onset-git
-pkgver=1.0.0.r8.g2e92db9
+pkgver=1.0.0.r9.g10cec04
 pkgrel=1
 pkgdesc="Lightweight GTK4 autostart manager for Linux"
 arch=('x86_64' 'aarch64')
