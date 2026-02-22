@@ -7,7 +7,7 @@ arch=("x86_64")
 url="https://github.com/RgeditV1/yt-dlp-linux-gui"
 license=('MIT')
 depends=('python' 'python-customtkinter' 'python-pillow' 'python-plyer' 'yt-dlp')
-makedepends=('git' 'cx_freeze')
+makedepends=('git')
 source=("git+https://github.com/RgeditV1/yt-dlp-linux-gui.git""yt-dlp-gui.desktop")
 sha256sums=('SKIP')
 
