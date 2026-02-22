@@ -1,8 +1,8 @@
-# Maintainer: Alexandros McCray <runa-dev at proton dot me>
+# Maintainer: Alexandros McCray <alexandros dot mc at proton dot me>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=runa
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A fast and lightweight terminal file manager written in Rust"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('MIT' 'Apache-2.0')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('8442574cf5e9eff3da02c6b14390759b8157f73e60d7e350f11c8ac55e267ace')
+sha256sums=('a33388de071737d0e345027db6bab312ea86180fab19bf57a350bfc100c4406a')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
@@ -35,7 +35,6 @@ check() {
 package() {
     cd "$pkgname-$pkgver"
     install -Dm755 target/release/rn -t "$pkgdir/usr/bin/"
-    install -Dm644 LICENSE-MIT -t "$pkgdir/usr/share/licenses/$pkgname/"
-    install -Dm644 LICENSE-APACHE -t "$pkgdir/usr/share/licenses/$pkgname/"
+    install -Dm644 LICENSE-{MIT,APACHE} -t "$pkgdir/usr/share/licenses/$pkgname/"
     install -Dm644 docs/configuration.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
