@@ -4,3 +4,8 @@
 /LICENSE-*
 /*.part
 /src/*
+/pkg/*
+/src/*
+.BUILDINFO
+.MTREE
+.PKGINFO

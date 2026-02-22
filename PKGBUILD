@@ -2,15 +2,12 @@
 # Contribuitor: Torge Matthies <openglfreak at googlemail dot com>
 
 _omit_libs=true
-_omit_dlls=false
 _electron_ver=39
 _dotnet_ver=9.0
-_runtime_ver=12
-_sdk_ver=113
 
 pkgname='vrcx-nightly-bin'
 pkgdesc='Friendship management tool for VRChat (extracted AppImage version)'
-_pkgver='2026-02-14T12.47-075a135'
+_pkgver='2026-02-21T12.31-ec8a818'
 pkgver=${_pkgver//-/.}
 pkgrel='1'
 arch=('x86_64')
@@ -24,16 +21,13 @@ source=("https://github.com/Natsumi-sama/VRCX/releases/download/${_pkgver}/VRCX_
         "LICENSE-v$_pkgver::https://raw.githubusercontent.com/Natsumi-sama/VRCX/refs/tags/$_pkgver/LICENSE"
         'vrcx'
         'VRCX.desktop')
-sha256sums=('877ad663b397c65c21550941d2f2e235fcd439146e0371eb889b4fc937f15ef2'
+sha256sums=('92b37c5cb978437fcd1356b225cd369eead6f622feabcb9f003dfe28c961bbc4'
             'e51564d05fd8f98bba289b476815150c78d3bf8f4acd248d78986e0061bb7427'
             'f7b1a299fe162337a9a3b066478b38a1cb524dae7a7e55669d3c6f02dc5f361b'
             '7582adf143859d66d1b75fd13f4d5be6041fb99bc949764f247ba8c3d790e76c')
 
 if [ "$_omit_libs" = true ]; then
     depends+=('libglvnd' 'vulkan-icd-loader' "electron$_electron_ver")
-fi
-if [ "$_omit_dlls" = true ]; then
-    depends+=("dotnet-runtime=$_dotnet_ver.$_runtime_ver.sdk$_sdk_ver" "dotnet-sdk=$_dotnet_ver.$_runtime_ver.sdk$_sdk_ver")
 fi
 
 # AppImage related functions copied from https://gist.github.com/openglfreak/585b6f1ba965d183c6d0e2ee8778c204
@@ -167,22 +161,6 @@ build() {
                 error 'Unknown library: %s' "${lib#opt/vrcx/}"
             fi
         done
-    fi
-    if [ "$_omit_dlls" = true ]; then
-        stat "/usr/share/dotnet/shared/Microsoft.NETCore.App/$_dotnet_ver.$_runtime_ver" >/dev/null
-        stat "/usr/share/dotnet/sdk/$_dotnet_ver.$_sdk_ver/Roslyn/bincore" >/dev/null
-        (
-            CDPATH='' cd opt/vrcx/resources/app.asar.unpacked/build/Electron
-            for dll in *.dll; do
-                if [ -e "/usr/share/dotnet/shared/Microsoft.NETCore.App/$_dotnet_ver.$_runtime_ver/$dll" ]; then
-                    ln -sf "../../../../../../usr/share/dotnet/shared/Microsoft.NETCore.App/$_dotnet_ver.$_runtime_ver/$dll" "$dll"
-                elif [ -e "/usr/share/dotnet/sdk/$_dotnet_ver.$_sdk_ver/$dll" ]; then
-                    ln -sf "../../../../../../usr/share/dotnet/sdk/$_dotnet_ver.$_sdk_ver/$dll" "$dll"
-                elif [ -e "/usr/share/dotnet/sdk/$_dotnet_ver.$_sdk_ver/Roslyn/bincore/$dll" ]; then
-                    ln -sf "../../../../../../usr/share/dotnet/sdk/$_dotnet_ver.$_sdk_ver/Roslyn/bincore/$dll" "$dll"
-                fi
-            done
-        )
     fi
     rm -r opt/vrcx/usr/lib
     mv opt/vrcx/usr usr
