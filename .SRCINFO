@@ -1,6 +1,6 @@
 pkgbase = onset-git
 	pkgdesc = Lightweight XDG autostart manager for Linux
-	pkgver = 1.0.0.r0.ga65f5af
+	pkgver = 1.0.0.r0.g218b576
 	pkgrel = 1
 	url = https://github.com/xPathin/onset
 	arch = x86_64
