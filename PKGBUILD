@@ -1,6 +1,6 @@
 # Maintainer: Kitotsu Molina <kitotsumolina@users.noreply.github.com>
 pkgname=kitsune-rendercore
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Wayland live wallpaper renderer with per-monitor video mapping and hot reload"
 arch=('x86_64')
