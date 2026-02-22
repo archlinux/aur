@@ -1,0 +1,17 @@
+pkgbase = hyprquotes
+	pkgdesc = Floating programming quote overlay for Hyprland
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Inknyto/hyprquotes
+	arch = x86_64
+	license = GPL-2.0-only
+	depends = python
+	depends = python-gobject
+	depends = python-cairo
+	depends = gtk3
+	depends = wl-clipboard
+	depends = hyprland
+	source = hyprquotes-1.0.0.tar.gz::https://github.com/Inknyto/hyprquotes/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = fab8d198e7cc08a71bed3f1573ec3b4ff6bd41af5a0881c279d70029c1902b0e
+
+pkgname = hyprquotes
