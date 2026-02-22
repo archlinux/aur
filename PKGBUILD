@@ -99,6 +99,23 @@ build() {
     _build_man_pages
 }
 
+check() {
+    msg2 "Verifying calibre-debug starts..."
+    QT_QPA_PLATFORM=offscreen \
+        "$srcdir/calibre-release/calibre-debug" -c \
+        "from calibre.constants import __version__; print(f'calibre {__version__} OK')"
+
+    msg2 "Verifying ebook-convert is functional..."
+    QT_QPA_PLATFORM=offscreen \
+        "$srcdir/calibre-release/ebook-convert" --version
+
+    msg2 "Verifying man pages were generated..."
+    test -f "$srcdir/man-pages/en/calibre.1"
+    local count=$(find "$srcdir/man-pages/en" -name '*.1' | wc -l)
+    msg2 "Found $count man pages"
+    (( count >= 10 ))
+}
+
 package() {
 	# Creating needed directories
 	install -dm755 "$pkgdir/usr/bin"
