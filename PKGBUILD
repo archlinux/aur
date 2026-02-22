@@ -6,7 +6,7 @@
 pkgname=firefox-vaapi
 _pkgname=firefox
 pkgver=147.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, Private & Safe Web Browser (with VA-API patches)"
 url="https://www.mozilla.org/firefox/"
 arch=(x86_64)
@@ -20,13 +20,14 @@ depends=(
   ffmpeg
   fontconfig
   freetype2
-  gcc-libs
   gdk-pixbuf2
   glib2
   glibc
   gtk3
   hicolor-icon-theme
+  libgcc
   libpulse
+  libstdc++
   libx11
   libxcb
   libxcomposite
@@ -85,8 +86,11 @@ source=(
   $_pkgname-symbolic.svg
   $_pkgname.desktop
   org.mozilla.$_pkgname.metainfo.xml
-  0001-remove-nvidia-blocklist.patch
-  0002-Install-under-remoting-name.patch
+  0000-remove-nvidia-blocklist.patch
+  0001-Install-under-remoting-name.patch
+  0002-Bug-2012006-WebRTC-backport-PipeWire-capture-clear-e.patch
+  0003-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
+  0004-Fix-sandbox-to-build-with-glibc-2.43.patch
 )
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
@@ -99,14 +103,20 @@ sha256sums=('bc0742ac62b177987d3312352194d4a088396ccf7b02e94be88f8072d82e94f7'
             '5985c41a64dde6df3d31769ac57ddb59b94b1626aadb309fb488cdf6f3aa7015'
             '58d78ce57b3ee936bc966458d6b20ab142d02a897bbe924b3f26717af0c5bee1'
             '06e30b49678a48f4b6d5eb74de91f743734c7d21efd442777c77aee8cf5dad85'
-            'ef63a12975f108f30b00bb3290d9ca76f311d8af9c1d5dfc0d8335ad57e8f77c')
+            'ef63a12975f108f30b00bb3290d9ca76f311d8af9c1d5dfc0d8335ad57e8f77c'
+            'eaa1e9c177f83ae9f20009b77eab8f97a8ad7ed5e4502999211d4eab57835774'
+            'c2aaff2a743c738edbf02d7be816c30fe3a5acb2d3dcb7a3906357a9f2ed438f'
+            '8d2182ae8660474ac567482fe6658af77f3b402314e361c846528ae171586245')
 b2sums=('ede1c530139bffa5858c1146fee5fff1b2cddd7836be4f4a1dbcabebfa61ba5f29d9d9c104524ac6a6baf1c870eebddf921839eea65fa560b67c5bbac6bbb593'
         'SKIP'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
         'c993d2c86c3ae7d63721f2df3cad64485e53cfc6b3f45cbd53e96765e4dab4bfaa9581cf4e8e458d61e749ba3adce6e11487cfb18227bfe7d193c4dd911e63c3'
         '2ce33432f8a73a4f1a412b7a065d3c124e1ca9f6bdf3fad0407e897efc0840f8ef43eeeb1b9bef4a102d9fac0b2c4a2ef205726b817f83fe9c3742d076778b14'
         'a59a736b1176ce523ec61357bc918b5792e7e35db0239e6776179d1e5942fd69640735ebf19e0824b71ddbdb3bd96a836e89cd2dced498a32374ebd7308db778'
-        'ff0ba11844e99ab1b1fed91d70c6f45837198ba43e77313c8b9c48a621e40c459953fc35283b6b6eafb5641510a5ce1e18ebda4d7d076f8212810391c0a9234b')
+        'ff0ba11844e99ab1b1fed91d70c6f45837198ba43e77313c8b9c48a621e40c459953fc35283b6b6eafb5641510a5ce1e18ebda4d7d076f8212810391c0a9234b'
+        '512a387e28b64743f9086019860c649d7b08cf69aa10f256b39790fb9ab403ddad7693900684dfeb59206036940f7a273cede822b1395c947dd482f617f13729'
+        '1e6f24c3515c5bc66c33a0e0fcf33455622aa2138293f743c1e7df8327d76ecb47f4d516707f60f576d1ec6d64ee6bcdeffa49f53fd3d3188a0ac4a1cd3f561f'
+        '87e514cb3d5045489176a6d335f23ef82fa7b2805f689d8e4d9090dccf426c432e862a5dd537d91ceab6cc0a531fef9aa31fa2526666926224fcfdbd86c991a9')
 
 # Google API keys (see https://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -119,10 +129,21 @@ prepare() {
 
   # Disable NVIDIA blocklists, to make it function with libva-nvidia-driver-git AUR package
   msg2 "Patching Nvidia blocklist"
-  patch -Np1 -i ../0001-remove-nvidia-blocklist.patch
+  patch -Np1 -i ../0000-remove-nvidia-blocklist.patch
 
   # Make different channels installable in parallel
-  patch -Np1 -i ../0002-Install-under-remoting-name.patch
+  patch -Np1 -i ../0001-Install-under-remoting-name.patch
+
+  # Prevent WebRTC crash
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/issues/27
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=2012006
+  patch -Np1 -i ../0002-Bug-2012006-WebRTC-backport-PipeWire-capture-clear-e.patch
+
+  # Fix build with glibc 2.43
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1999625
+  patch -Np1 -i ../0003-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=2016618
+  patch -Np1 -i ../0004-Fix-sandbox-to-build-with-glibc-2.43.patch
 
   echo -n "$_google_api_key" >google-api-key
 
