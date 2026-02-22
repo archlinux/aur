@@ -1,8 +1,8 @@
 pkgbase = xlibre-video-qxl-bin
 	pkgdesc = XLibre Official Easy Install Drop in Replacement fork of X.Org qxl video driver (binary release)
-	pkgver = 0.1.6.1
+	pkgver = 0.1.6.3
 	pkgrel = 2
-	url = https://github.com/X11Libre
+	url = https://x11libre.net/repo/arch_based/x86_64
 	arch = x86_64
 	groups = xlibre-drivers
 	license = MIT
@@ -16,9 +16,9 @@ pkgbase = xlibre-video-qxl-bin
 	conflicts = xlibre-video-qxl
 	conflicts = X-ABI-VIDEODRV_VERSION<28
 	conflicts = X-ABI-VIDEODRV_VERSION>=29
-	noextract = xlibre-xf86-video-qxl-0.1.6.1-2-x86_64.pkg.tar.zst
+	noextract = xlibre-xf86-video-qxl-0.1.6.3-2-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/xlibre-xf86-video-qxl-0.1.6.1-2-x86_64.pkg.tar.zst
-	sha256sums = 5e310688fa6abfc42ad100091d6d43288cafdf205e97c8cbe55d59ae04f45073
+	source = https://x11libre.net/repo/arch_based/x86_64/xlibre-video-qxl-0.1.6.3-2-x86_64.pkg.tar.zst
+	sha256sums = 3396dead1d96345b690d989ed84d2d5f29ea0c93ae2b1dd3c0eb57619a0d5f9e
 
 pkgname = xlibre-video-qxl-bin
