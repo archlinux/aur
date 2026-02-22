@@ -1,6 +1,7 @@
 # Maintainer: Azur84 <Azur84@outlook.fr>
 pkgname=pandora-launcher-bin
-pkgver=2.7.3
+_pkgname=PandoraLauncher-Linux
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A modern Minecraft launcher that balances ease-of-use with powerful instance management features."
 arch=('x86_64')
@@ -26,20 +27,22 @@ optdepends=(
   'mangohud: mangohud support'
 )
 source=(
-  "pandora-launcher-$pkgver-$pkgrel::https://github.com/Moulberry/PandoraLauncher/releases/download/v$pkgver/PandoraLauncher-Linux-$pkgver-x86_64-Portable"
+  "pandora-launcher-$pkgver.deb::https://github.com/Moulberry/PandoraLauncher/releases/download/v$pkgver/PandoraLauncher-Linux_${pkgver}_amd64.deb"
   "LICENSE::https://raw.githubusercontent.com/Moulberry/PandoraLauncher/refs/tags/v$pkgver/LICENSE"
   "icon.svg::https://raw.githubusercontent.com/Moulberry/PandoraLauncher/refs/tags/v$pkgver/package/windows.svg"
   "$pkgname.desktop"
 )
-sha256sums=('e933c1cd808ed249d9bf79f1e4cbdfb09932441a921c717061d727341ce60e04'
+sha256sums=('1be9cec87331c6d52cb212eba8298c1281fb3a2076f62cfc6224da1f7966056a'
             'a416ff7bf8fca263a47d8256c154c4405df3502506520613500bed0cb6eb86a8'
             '8c045dbd40e52ee10f439e90f368ef4a12c0f3f830f252b2fefd2e862bc76fc5'
             '8ae5fa2476e937d0fdc1e53bacb62d8a5ac333d98f17da987d13b25e1a1afe31')
 
 package() {
+  install -d "pandora-launcher-$pkgver"
+  bsdtar -xf "data.tar.gz" -C "pandora-launcher-$pkgver"
   install -d "$pkgdir/usr/"{bin,share/{pixmaps,applications}}
 
-  install -Dm755 pandora-launcher-$pkgver-$pkgrel "$pkgdir/usr/bin/${pkgname::-4}"
+  install -Dm755 pandora-launcher-$pkgver/usr/bin/$_pkgname "$pkgdir/usr/bin/${pkgname::-4}"
   install -Dm644 "icon.svg" "$pkgdir/usr/share/pixmaps/${pkgname::-4}.svg"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname::-4}/LICENSE"
   install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/${pkgname::-4}.desktop"
