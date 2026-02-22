@@ -5,9 +5,9 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwin-screencast-api
-pkgver=6.5.5
+pkgver=6.6.0
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=1
+pkgrel=2
 pkgdesc='KWin with D-Bus API for screencast stream introspection'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -53,6 +53,7 @@ depends=(aurorae
          libdrm
          libei
          libepoxy
+         libevdev
          libinput
          libpipewire
          libqaccessibilityclient-qt6
@@ -60,6 +61,7 @@ depends=(aurorae
          libxcvt
          libxkbcommon
          mesa
+         milou
          pipewire-session-manager
          libplasma
          qt6-5compat
@@ -83,10 +85,9 @@ optdepends=('plasma-keyboard: virtual keyboard')
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/kwin-$pkgver.tar.xz{,.sig}
         screencast-dbus-api.patch)
-install=kwin.install
-sha256sums=('fbad845044231174ca7aad45572d1713d1b6f65289d94cac24776a103f051e46'
+sha256sums=('35134fcfb64d01904cdcd25aea8e90c68c37973a088971e4d678acfdc5020914'
             'SKIP'
-            '552aca84b36a206ff76583bb619760e14483a4d2bf1bb6d175ad32cbcdf64843')
+            '45a405ce73530a70aaca94eaa8a41947e86171a258bad50192a77a828f527d05')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
@@ -107,4 +108,5 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+  setcap CAP_SYS_NICE=+ep "$pkgdir"/usr/bin/kwin_wayland
 }
