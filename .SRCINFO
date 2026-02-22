@@ -1,15 +1,15 @@
 pkgbase = python-bus
 	pkgdesc = Python 3 module for bus
-	pkgver = 3.1.4
+	pkgver = 3.1.5
 	pkgrel = 1
 	url = https://codeberg.org/maandree/python-bus
 	arch = i686
 	arch = x86_64
-	license = ISC
+	license = custom:ISC
 	makedepends = cython
 	depends = bus
 	depends = python
-	source = python-bus-3.1.4.tar.gz::https://codeberg.org/maandree/python-bus/archive/3.1.4.tar.gz
-	sha256sums = 6cedd1d73336f839cbb0cdde4f6550f5dd61271a65224a5e738b23882b1fe5d1
+	source = python-bus-3.1.5.tar.gz::https://codeberg.org/maandree/python-bus/archive/3.1.5.tar.gz
+	sha256sums = 749dbef6f09424469879ff966a0ed9189f4d5b1a779f85e6101bcd78e730d25f
 
 pkgname = python-bus
