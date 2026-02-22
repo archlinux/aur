@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>
 
 pkgname=libparsepcf
-pkgver=2.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="C library for interpreting PCF (Portable Compiled Format) font files"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=('custom:ISC')
 depends=()
 makedepends=()
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(84d20a5e3d7d34a9789001d6c47584f3e15c6e6bf6f8c2eb6712b4f6c9986e6a)
+sha256sums=(678d821835a2bd77d751b3cf5ca390eb39fb2044286daf02edd1bb8359de77ef)
 
 build() {
   cd "$srcdir/$pkgname"
