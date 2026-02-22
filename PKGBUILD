@@ -1,6 +1,6 @@
 pkgname=tailscaledesktop
 _pkgname=TailscaleDesktop
-pkgver=1.0.7.aur.1
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Unnofficial Tailscale desktop application"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('libelectron-electron-meta' 'libelectron>=2025.1' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('eab1bac1ab7b57195c5b55498e8651e355a189cf1b8f29f1c5dbe6f986c44ae9')
+sha256sums=('761da85b497a2064464cc909c8f3ea7ae9fefb5f98ac4cd3814a9cb1ed28d292')
 
 package() {
     install -dm755 "$pkgdir/opt/$_pkgname"
