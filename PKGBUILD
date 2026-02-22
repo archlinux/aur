@@ -3,7 +3,7 @@
 _dist='POE-Component-Curl-Multi'
 pkgname='perl-poe-component-curl-multi'
 pkgver=1.02
-pkgrel=1
+pkgrel=2
 pkgdesc='a fast HTTP POE component'
 arch=('any')
 url="https://metacpan.org/dist/$_dist"
@@ -15,6 +15,7 @@ depends=(
     'perl-uri>=1.37'
     'perl>=5.8.1'
 )
+makedepends=('perl-extutils-makemaker')
 checkdepends=(
     'perl-io'
     'perl-pathtools'
