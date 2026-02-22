@@ -8,7 +8,7 @@ license=('MIT')
 depends=('bash' 'hyprland' 'python')
 makedepends=('cmake' 'pkgconf')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a29c422004daa94337b4d073b4cdf152a9e1a7c579d252a8f8ad65f6e49003da')
+sha256sums=('02abd579adeaac9dfe656a7ca186663ff43c12b9c2430d7ec75e4b1a7fca38bb')
 
 build() {
   cmake -S "${srcdir}/${pkgname}-${pkgver}" -B "${srcdir}/${pkgname}-${pkgver}/build" -DCMAKE_BUILD_TYPE=Release
