@@ -3,7 +3,7 @@
 _npmname=@mattfillipe/tobby
 
 pkgname=tobby
-pkgver=0.1.6
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="The Terminal Obby — a modern IRC client for the terminal"
 arch=('any')
@@ -18,7 +18,7 @@ conflicts=('tobby-bin')
 # Scoped packages use %40 for @ in the URL path
 source=("mattfillipe-tobby-${pkgver}.tgz::https://registry.npmjs.org/@mattfillipe/tobby/-/tobby-${pkgver}.tgz")
 noextract=("mattfillipe-tobby-${pkgver}.tgz")
-sha256sums=('dffe1c471a28539159d4c275f15483330260a1bd45e11510b46d79800e116fd2')
+sha256sums=('419d3e69931470c430bf1f044de47c928c48c1051b5bd6ade02375e2f6bf32f0')
 options=('!strip')
 
 package() {
