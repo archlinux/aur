@@ -1,7 +1,7 @@
 pkgbase = perl-devel-checkbin
 	pkgdesc = check that a command is available
 	pkgver = 0.04
-	pkgrel = 12
+	pkgrel = 13
 	url = https://metacpan.org/dist/Devel-CheckBin
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later

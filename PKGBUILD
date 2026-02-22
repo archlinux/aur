@@ -1,10 +1,14 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: T.J. Townsend <blakkheim@archlinux.org>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Evangelos Foutras <foutrelis@archlinux.org>
 # Contributor: Florian Pritz <bluewind@xinu.at>
 
 _dist='Devel-CheckBin'
 pkgname='perl-devel-checkbin'
 pkgver=0.04
-pkgrel=12
+pkgrel=13
 pkgdesc='check that a command is available'
 arch=('any')
 url="https://metacpan.org/dist/$_dist"
