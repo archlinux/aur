@@ -14,6 +14,7 @@ pkgbase = filestash-git
 	depends = libpng
 	depends = giflib
 	depends = brotli
+	depends = libraw
 	provides = filestash
 	conflicts = filestash
 	source = filestash::git+https://github.com/mickael-kerjean/filestash.git
