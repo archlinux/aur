@@ -1,0 +1,19 @@
+pkgbase = proxybridge-git
+	pkgdesc = Proxifier Alternative to redirect any TCP and UDP traffic to HTTP/Socks5 proxy (Unofficial PKGBUILD)
+	pkgver = r290.51d9b17
+	pkgrel = 1
+	url = https://github.com/InterceptSuite/ProxyBridge.git
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libnetfilter_queue
+	depends = libnfnetlink
+	depends = gtk3
+	depends = pkg-config
+	provides = proxybridge
+	conflicts = proxybridge
+	backup = etc/proxybridge
+	source = proxybridge::git+https://github.com/InterceptSuite/ProxyBridge.git#branch=master
+	sha256sums = SKIP
+
+pkgname = proxybridge-git
