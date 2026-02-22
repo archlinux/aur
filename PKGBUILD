@@ -1,7 +1,7 @@
 # Maintainer: Luis Manuel Rivero <riveroluismanuel9@gmail.com>
 pkgname=static-git
-pkgver=1.0
-pkgrel=4
+pkgver=2.0
+pkgrel=0
 epoch=0
 pkgdesc="A static HTML site generator inspired by React"
 arch=('any')
