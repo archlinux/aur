@@ -1,15 +1,21 @@
 # Maintainer: nelle the@nelle.observer
 
 pkgname=packwitch-manager-git
-pkgver=0.1c
+pkgver=0.1e
 pkgrel=1
 pkgdesc="minecraft modpack management tool"
 arch=('x86_64')
 url="https://codeberg.org/packwitch/packwitch"
 license=('LGPL-3.0-or-later')
 depends=('jdk21-openjdk')
-provides=('packwitch-manager')
-conflicts=('packwitch-manager')
+provides=(
+    'packwitch-manager'
+    'packwitch'
+)
+conflicts=(
+    'packwitch-manager'
+    'packwitch'
+)
 makedepends=(
     'git'
     'tar'

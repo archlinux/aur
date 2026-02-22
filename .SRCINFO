@@ -1,6 +1,6 @@
 pkgbase = packwitch-manager-git
 	pkgdesc = minecraft modpack management tool
-	pkgver = 0.1c
+	pkgver = 0.1e
 	pkgrel = 1
 	url = https://codeberg.org/packwitch/packwitch
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = packwitch-manager-git
 	makedepends = git
 	makedepends = jdk21-openjdk
 	depends = jdk21-openjdk
-	provides = packwitch-manager
-	conflicts = packwitch-manager
+	provides = packwitch-manager, packwitch
+	conflicts = packwitch-manager, packwitch
 	source = git+https://codeberg.org/packwitch/packwitch
 	sha256sums = SKIP
 
