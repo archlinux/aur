@@ -1,7 +1,7 @@
 # Maintainer: BarbUk <julien.virey@gmail.com>
 
 pkgname=cleanuparr-bin
-pkgver=2.6.4
+pkgver=2.7.0
 pkgrel=1
 pkgdesc='Tool for automating the cleanup of unwanted or blocked files in Sonarr, Radarr, and supported download clients like qBittorrent, Deluge and Transmission.'
 arch=(x86_64 aarch64)
@@ -28,8 +28,8 @@ sha256sums=('e64633347d71185ef886314a74881f81ea70cbb896f285547dfd7739ecbe0188'
             '4606d163398bbfa37f8f6b8967c0bee7c950823f766983699194828f0f8b008e'
             '9a16872bfaeb80898641efc70a92a559c49f3893b792b2ce9be9a4cf7143dbe4'
             '19f295bd0b4d3bb046a4e1bef2808277cdf033297aace97b9e719eec4d2c045e')
-sha256sums_x86_64=('7d631e9532321cfe3c219f79a583af15c3f246d0e830dd7db6e94aab4b97437e')
-sha256sums_aarch64=('06ca65ed707814f9021bffb6f0f2aa016da7d29ad49cba2cbb4570a52bbee8b0')
+sha256sums_x86_64=('a2ff46c20af3d6361d00a291cb98499bda0bfcaf7c8eecb087ce4065ac6f610a')
+sha256sums_aarch64=('1a9da9ad685b054158d0e02ee6accd4aefe320b4ec5578ab04149e3433fad71f')
 
 package() {
   install -dm755 "${pkgdir}/usr/lib/cleanuparr"
