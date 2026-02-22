@@ -1,5 +1,5 @@
 pkgname=salopbar
-pkgver=r14.fbe06c8
+pkgver=0.0.1
 pkgrel=1
 pkgdesc="Uma barra de navegação simples para usar com Hyprland"
 url="https://github.com/HelenoSalgado/salopbar"
@@ -12,12 +12,12 @@ depends=(
   'gtk4-layer-shell' 
   'libadwaita'
   'libastal-4-git'
-  'astal-hyprland-git'
-  'astal-mpris-git'
-  'astal-network-git'
-  'astal-notifd-git'
-  'astal-wireplumber-git'
-  'astal-apps-git'
+  'astal-hyprland'
+  'astal-mpris'
+  'astal-network'
+  'astal-notifd'
+  'astal-wireplumber'
+  'astal-apps'
 )
 makedepends=('git' 'meson' 'esbuild' 'npm' 'typescript')
 source=("git+$url.git")
