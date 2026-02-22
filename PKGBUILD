@@ -7,7 +7,7 @@
 _pkgbase=tuned
 pkgbase="${_pkgbase}-git"
 pkgname=("${_pkgbase}-git" "${_pkgbase}-ppd-git")
-pkgver=2.26.0.r0.g181472a
+pkgver=2.27.0.r0.g38d4414
 pkgrel=1
 pkgdesc='Daemon that performs monitoring and adaptive configuration of devices in the system'
 arch=('any')
