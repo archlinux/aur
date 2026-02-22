@@ -1,7 +1,7 @@
 # Maintainer: kylon
 pkgbase="powertuner"
 pkgname="powertuner"
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="The first multi-platform client-daemon tuning app for desktop and handheld devices"
 url="https://github.com/PowerTuner"
@@ -21,7 +21,7 @@ source=(
     "https://github.com/PowerTuner/PowerTuner-releases/releases/download/${pkgver}/PowerTunerArchLinux-${pkgver}.tar.gz"
 )
 sha256sums=(
-    '0c496939ebcef2166d1ea62b9bdd3b856aba152157a320fed14ed8c8b18be39f'
+    'cd16ffbc90aadab14a609b8c7efd78768da4246629cdc726173ed20856c6739f'
 )
 
 prepare() {
