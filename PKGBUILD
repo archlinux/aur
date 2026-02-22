@@ -3,7 +3,7 @@
 pkgname='linux-firmware-gaokun3'
 _tag=200.0.10.0
 pkgver=2.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Firmware files for HUAWEI MateBook E Go (sc8280xp)'
 license=('custom')
 arch=('any')
@@ -74,6 +74,6 @@ package() {
     done
 
     for item in "${_fw_list[@]}"; do
-        install -Dm644 "linux-firmware/${item}" -t "${pkgdir}/${_fw_dir}/$(dirname ${item})"
+        install -Dm644 linux-firmware/${item} -t "${pkgdir}/${_fw_dir}/$(dirname ${item})"
     done
 }
