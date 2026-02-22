@@ -2,7 +2,7 @@
 pkgname=sonicrust-bin
 _binaryname=sonicrust
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A Terminal based music player for Subsonic-compatible servers, written in Rust."
 arch=('x86_64' 'aarch64')
 url="https://github.com/roceb/sonicrust"
@@ -27,7 +27,7 @@ cat > "$pkgdir"/usr/share/applications/"$_binaryname".desktop << EOF
 [Desktop Entry]
 Name=Sonicrust
 Comment=${pkgdesc}
-Exec=/usr/bin/"$_binaryname" %u
+Exec=$_binaryname %u
 Terminal=true
 Type=Application
 Icon=${_binaryname}
