@@ -1,0 +1,5 @@
+[goose-bin]
+source = "github"
+github = "pressly/goose"
+use_latest_release = true
+prefix = "v"

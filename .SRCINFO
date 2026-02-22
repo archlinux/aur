@@ -1,11 +1,22 @@
 pkgbase = goose-bin
 	pkgdesc = Goose is a database migration tool. Manage your database schema by creating incremental SQL changes or Go functions.
-	pkgver = 3.21.1
+	pkgver = 3.27.0
 	pkgrel = 1
 	url = https://github.com/pressly/goose
 	arch = x86_64
+	arch = aarch64
 	license = MIT
-	source = https://github.com/pressly/goose/releases/download/v3.21.1/goose_linux_x86_64
-	sha256sums = 5773946fdc67e6255379d6031d16d9ef0501608ab2a7bbbb9938ae6a2bc7251c
+	depends = glibc
+	depends = gcc-libs
+	provides = goose
+	conflicts = goose
+	source = README-3.27.0.md::https://raw.githubusercontent.com/pressly/goose/v3.27.0/README.md
+	source = LICENSE-3.27.0::https://raw.githubusercontent.com/pressly/goose/v3.27.0/LICENSE
+	sha256sums = c176aa89390dac99947682abdd6d3772ecb996910c2099dde986c0d5a98bc800
+	sha256sums = f23985556a879c0e68bb4e136ee4b88a550d26fa33db77a65d76b721c93093ef
+	source_x86_64 = goose-x86_64-3.27.0::https://github.com/pressly/goose/releases/download/v3.27.0/goose_linux_x86_64
+	sha256sums_x86_64 = ad487c23744ae5de5dbdf5a81d4e6fac05fdfbe74f02379f9e498cf2070a9ef8
+	source_aarch64 = goose-aarch64-3.27.0::https://github.com/pressly/goose/releases/download/v3.27.0/goose_linux_arm64
+	sha256sums_aarch64 = 55f65caa1ee94d4b66f1bdf7091df3bdf72578cf8d44a817b2d6cd6f96af8b02
 
 pkgname = goose-bin
