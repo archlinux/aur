@@ -1,0 +1,18 @@
+pkgbase = rats-search-qt6-git
+	pkgdesc = BitTorrent P2P multi-platform search engine with integrated torrent client
+	pkgver = 2.0.21.r4.g2872fbd
+	pkgrel = 1
+	url = https://github.com/DEgITx/rats-search
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = qt6-websockets
+	provides = rats-search
+	conflicts = rats-search
+	source = rats-search::git+https://github.com/DEgITx/rats-search.git
+	sha256sums = SKIP
+
+pkgname = rats-search-qt6-git
