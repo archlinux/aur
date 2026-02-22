@@ -1,7 +1,7 @@
 pkgbase = sonicrust-bin
 	pkgdesc = A Terminal based music player for Subsonic-compatible servers, written in Rust.
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/roceb/sonicrust
 	arch = x86_64
 	arch = aarch64
