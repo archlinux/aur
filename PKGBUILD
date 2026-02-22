@@ -13,17 +13,17 @@ source=("$pkgname-$pkgver.tar.gz::https://api.github.com/repos/Rejzi-dich/rushfe
 sha256sums=('96d3c87a6ed0a6c4b7650f74c999573049ad54ef11cb7a4d21fd669ee945be76')
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "Rejzi-dich-$pkgname-"*
     cargo build --release
 }
 
 check() {
-    cd "$pkgname-$pkgver"
+    cd "Rejzi-dich-$pkgname-"*
     cargo test --release
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "Rejzi-dich-$pkgname-"*
 
     # Install binary
     install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
