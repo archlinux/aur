@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=rustconn
 _app_id=io.github.totoshko88.RustConn
-pkgver=0.8.9
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Modern connection manager for Linux with GTK4/Wayland-native interface."
 arch=('x86_64')
@@ -48,7 +48,7 @@ optdepends=(
   'virt-viewer: SPICE client option'
 )
 source=("RustConn-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('88b6d6e4bd4bf79a8bc2b877385498f4d09da585f6b9f9d662525520b46cb480')
+sha256sums=('90753a39aa65a0aeb480b290bac3ca00212e6a82e867ab0c19e3853001f34448')
 
 prepare() {
   cd "RustConn-$pkgver"
@@ -83,7 +83,7 @@ package() {
   install -Dm644 "$pkgname/assets/icons/hicolor/scalable/apps/${_app_id}.svg" -t \
       "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
 
-  for i in 48 64 128 256; do
+  for i in 128 256; do
     install -Dm644 "$pkgname/assets/icons/hicolor/${i}x${i}/apps/${_app_id}.png" -t \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/"
   done
