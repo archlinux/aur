@@ -1,10 +1,10 @@
 pkgbase = perl-perl-critic-policy-plicease-prohibitarrayassignaref
 	pkgdesc = Don't assign an anonymous arrayref to an array
 	pkgver = 100.00
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/dist/Perl-Critic-Policy-Plicease-ProhibitArrayAssignAref
 	arch = any
-	license = GPL-3.0-only
+	license = GPL-3.0-or-later
 	checkdepends = perl-perl-critic
 	checkdepends = perl-test-simple
 	makedepends = perl-extutils-makemaker
