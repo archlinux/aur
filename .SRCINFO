@@ -1,6 +1,6 @@
 pkgbase = jlibgamma
 	pkgdesc = Display server abstraction layer for gamma ramps and Java
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://codeberg.org/maandree/jlibgamma
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = jlibgamma
 	makedepends = libgamma>=0.7.4
 	depends = java-runtime-headless>=1.5
 	depends = libgamma>=0.7.4
-	source = jlibgamma-1.0.3.tar.gz::https://codeberg.org/maandree/jlibgamma/archive/1.0.3.tar.gz
-	sha256sums = 0f0eee2293d2fd0ca3f79090f1590d3c680734b636c5699acad831a6fa93c0d7
+	source = jlibgamma-1.0.4.tar.gz::https://codeberg.org/maandree/jlibgamma/archive/1.0.4.tar.gz
+	sha256sums = dbf66b55be176928d2301cf709e301540f54086f0ea6d7e141785415eb3f3355
 
 pkgname = jlibgamma
