@@ -2,21 +2,21 @@
 # Contributor: Antony Ho <ntonyworkshop@gmail.com>
 
 pkgname=session-desktop
-pkgver=1.17.8
+pkgver=1.17.10
 pkgrel=1
 pkgdesc="A Decentralized, Onion Routed, Private Messenger"
 arch=('x86_64')
 url="https://getsession.org"
 license=('GPL-3.0-only')
 _electron=electron39
-depends=('bash' "${_electron}" 'fmt' 'gcc-libs' 'glib2' 'glibc' 'hicolor-icon-theme' 'libvips' 'nodejs' 'python' 'spdlog')
-makedepends=('chrpath' 'cmake' 'git' 'nvm' 'python' 'yarn')
+depends=('bash' "${_electron}" 'glib2' 'glibc' 'hicolor-icon-theme' 'libgcc' 'libstdc++' 'libvips' 'python')
+makedepends=('cmake' 'git' 'nvm' 'pnpm')
 source=("git+https://github.com/session-foundation/session-desktop.git#tag=v${pkgver}"
         "git+https://github.com/session-foundation/session-localization.git"
         "git+https://github.com/session-foundation/session-desktop-dynamic-assets.git"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('9f0d9a47f6acf065eae5c5b64c77f053ed5029ebf60f907f5db48669048d9626'
+sha256sums=('931ea0f8cdb2f0c605d2af0660eb51511ad58314140c7956693cdc4fc436f579'
             'SKIP'
             'SKIP'
             '267d772a94ba49b19e799e7ecee25c0077ded4dd9c853c073ec386a8ab6a7e5c'
@@ -48,15 +48,14 @@ build() {
 
     cd "${pkgname}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SHARP_FORCE_GLOBAL_LIBVIPS=1
-    yarn add node-addon-api node-gyp
-    yarn install --frozen-lockfile
     export NODE_ENV=production
-    yarn build
-    yarn electron-builder --linux --dir \
-        -c.extraMetadata.environment=production \
-        -c.electronDist="/usr/lib/${_electron}" \
-        -c.electronVersion="$(cat /usr/lib/${_electron}/version)"
+    export SHARP_FORCE_GLOBAL_LIBVIPS=1
+    pnpm install --frozen-lockfile
+    pnpm run build
+    pnpm electron-builder --linux --dir \
+        --config.extraMetadata.environment=production \
+        --config.electronDist="/usr/lib/${_electron}" \
+        --config.electronVersion="$(cat /usr/lib/${_electron}/version)"
 }
 
 package() {
@@ -69,7 +68,4 @@ package() {
     done
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-
-    # Remove insecure RPATH
-    chrpath --delete "${pkgdir}/usr/lib/${pkgname}/app.asar.unpacked/node_modules"{,/sharp/node_modules}/@img/sharp-linux*/lib/sharp-linux*.node
 }
