@@ -86,6 +86,7 @@ check() {
 
 package() {
   optdepends=('slicer-udev: 3D printer connection rules')
+  rm -r "${pkgdir}"/usr/lib/udev/
 
   DESTDIR="$pkgdir" ninja -C build_${pkgver} install
 }
