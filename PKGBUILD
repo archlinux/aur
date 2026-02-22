@@ -2,7 +2,7 @@
 
 _pkgname="fchat-horizon"
 pkgname="${_pkgname}-git"
-pkgver=1.34.0.beta.1.r8.gbd055e8
+pkgver=1.36.0.beta.1.r2.g869907f
 _pkgsrc="Horizon"
 pkgrel=1
 pkgdesc="Horizon (F-Chat) Electron client - development snapshot using system Electron runtime"
