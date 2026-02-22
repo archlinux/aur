@@ -41,6 +41,7 @@ depends=(
 )
 makedepends=(
   cmake
+  doxygen
   git
   gtest
   ninja

@@ -8,6 +8,7 @@ pkgbase = deskflow-git
 	arch = aarch64
 	license = LicenseRef-GPL-2.0-only-WITH-OpenSSL-Exception
 	makedepends = cmake
+	makedepends = doxygen
 	makedepends = git
 	makedepends = gtest
 	makedepends = ninja
