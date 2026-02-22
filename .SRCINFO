@@ -1,6 +1,6 @@
 pkgbase = amber-pm-store
 	pkgdesc = Get apps and run in Amber-PM container
-	pkgver = 1.0.4
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/elysia-best/apm-app-store
 	install = amber-pm-store.install
@@ -18,9 +18,9 @@ pkgbase = amber-pm-store
 	depends = util-linux
 	depends = libsecret
 	depends = shared-mime-info
-	source_x86_64 = amber-pm-store-1.0.4.deb::https://github.com/elysia-best/apm-app-store/releases/download/v1.0.4/apm-store_1.0.4_linux_amd64.deb
-	sha256sums_x86_64 = 30d9877d5198020d1d1739bfe090af41bfa3e4af983704df063f4f7ae758f744
-	source_aarch64 = amber-pm-store-1.0.4.deb::https://github.com/elysia-best/apm-app-store/releases/download/v1.0.4/apm-store_1.0.4_linux_arm64.deb
-	sha256sums_aarch64 = 30d9877d5198020d1d1739bfe090af41bfa3e4af983704df063f4f7ae758f744
+	source_x86_64 = https://github.com/elysia-best/apm-app-store/releases/download/v1.1.1/apm-store_1.1.1_linux_amd64.deb
+	sha256sums_x86_64 = 02c3284ab13cd61cf55b3dfce11b2a43be8e08d9ccc2959c4a58f835be45228e
+	source_aarch64 = https://github.com/elysia-best/apm-app-store/releases/download/v1.1.1/apm-store_1.1.1_linux_arm64.deb
+	sha256sums_aarch64 = e83951d246d6005b391c7d0eda5a9e471f8a728f922756202b44439a9d8928a9
 
 pkgname = amber-pm-store
