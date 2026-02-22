@@ -1,12 +1,12 @@
 pkgbase = yt-dlp-gui
 	pkgdesc = A GUI for yt-dlp written in Python with customtkinter
 	pkgver = 1.0
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/RgeditV1/yt-dlp-linux-gui
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = python-build
+	makedepends = python-cx-freeze
 	depends = python
 	depends = python-customtkinter
 	depends = python-pillow
