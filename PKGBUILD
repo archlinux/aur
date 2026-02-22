@@ -9,7 +9,7 @@ license=('MIT')
 depends=('portaudio')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/SteveMCWin/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c4684e1f09d572fc13bb0fc98e4bd6d5502f10c8516504e3c6c597f710277921')
+sha256sums=('a57aacf7e0dd842b5022d40318455f2dc466ffae6dd0f810ae6dbb6ab2426258')
 
 build() {
     cd "$pkgname-$pkgver"
