@@ -1,6 +1,6 @@
 pkgbase = alarm-notify
 	pkgdesc = Simple timer notifications with sound and custom messages
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/nikaakin/alarm-notify
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = alarm-notify
 	optdepends = xfce4-terminal: external terminal support
 	optdepends = xterm: external terminal support
 	optdepends = ghostty: external terminal support
-	source = alarm-notify-1.1.1.tar.gz::https://github.com/nikaakin/alarm-notify/archive/refs/tags/v1.1.1.tar.gz
+	source = alarm-notify-1.1.2.tar.gz::https://github.com/nikaakin/alarm-notify/archive/refs/tags/v1.1.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = alarm-notify
