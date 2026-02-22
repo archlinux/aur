@@ -1,0 +1,20 @@
+pkgbase = tmq-bin
+	pkgdesc = A lightweight, portable, cross-platform, and fully featured command-line TOML processor
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/azolfagharj/tmq
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = tmq
+	conflicts = tmq
+	source = README-1.0.3.md::https://raw.githubusercontent.com/azolfagharj/tmq/1.0.3/README.md
+	source = LICENSE-1.0.3::https://raw.githubusercontent.com/azolfagharj/tmq/1.0.3/LICENSE
+	sha256sums = 293e98e652c95260c1856cef0b21ae00f5f3190c574ddaa6928a5cb5e8d295d4
+	sha256sums = d0306106bb50851eac276094fc4982f923a30eef68aa191666281f51e30992f3
+	source_x86_64 = tmq-x86_64-1.0.3::https://github.com/azolfagharj/tmq/releases/download/1.0.3/tmq-linux-amd64
+	sha256sums_x86_64 = 0e1c7ea808b491bd2f92091320e2f472cb33b003fdc7fbdfec8e21cdaa5a323f
+	source_aarch64 = tmq-aarch64-1.0.3::https://github.com/azolfagharj/tmq/releases/download/1.0.3/tmq-linux-arm64
+	sha256sums_aarch64 = 48da2e4eae0fdd56c5b502c7228c0ea1fc6fb1510f931343d1dd8a203f05c9b4
+
+pkgname = tmq-bin

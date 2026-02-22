@@ -1,0 +1,4 @@
+[tmq-bin]
+source = "github"
+github = "azolfagharj/tmq"
+use_latest_release = true
