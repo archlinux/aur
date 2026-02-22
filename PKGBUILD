@@ -1,18 +1,15 @@
 # Maintainer: Benjamim Gois <benjamimgois@gmail.com>
 pkgname=omnicom
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
-pkgdesc="Modern graphical interface for serial communication with SSH and Telnet support"
+pkgdesc="Modern graphical interface for network device management with Serial, SSH, Telnet, IP Scanner and SNMP support"
 arch=('any')
 url="https://github.com/benjamimgois/omnicom"
 license=('MIT')
-depends=('python' 'python-pyqt6' 'python-pyte' 'python-paramiko' 'qt6-serialport' 'picocom' 'sudo')
-optdepends=(
-    'python-standard-telnetlib: Telnet protocol support (Python 3.13+)'
-)
+depends=('python' 'python-pyqt6' 'python-pyte' 'python-paramiko' 'python-pysnmp' 'python-standard-telnetlib' 'qt6-serialport' 'picocom' 'sudo')
 makedepends=('imagemagick')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/benjamimgois/omnicom/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('baf2f04727719c70abe3b5717f3b3e8ccb992eebf40f027e3e3b0e495309c3dd')
+sha256sums=('0854ee54178a72fb29fd33a9d2e35b4c68b208a4f74246192ac832f41f7f5d29')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -30,7 +27,7 @@ package() {
     done
 
     # Install UI icons (sidebar and misc)
-    for icon in arrow_down.svg TFTP.svg serial-port-white.svg ssh_icon.svg; do
+    for icon in arrow_down.svg TFTP.svg serial-port-white.svg ssh_icon.svg ipscan.svg snmp.svg; do
         install -Dm644 "assets/icons/${icon}" "${pkgdir}/usr/share/omnicom/icons/${icon}"
     done
 
