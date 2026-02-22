@@ -1,7 +1,7 @@
 # Maintainer: MojArch
 pkgname=opera-gx-stable
 pkgver=127.0.5778.75
-pkgrel=2
+pkgrel=3
 pkgdesc='Fast, secure, easy-to-use web browser'
 arch=('x86_64')
 url='https://www.opera.com/browser/'
@@ -76,6 +76,9 @@ package() {
 
     rm -f "$pkgdir/usr/bin/$pkgname"
     install -Dm755 "$srcdir/opera" "$pkgdir/usr/bin/$pkgname"
+    # The .deb ships a symlink to the old multiarch path, fix it so desktop
+    # entries with TryExec=opera-gx are not hidden.
+    ln -sf "$pkgname" "$pkgdir/usr/bin/opera-gx"
 
     install -Dm644 \
         "$pkgdir/usr/share/doc/$pkgname/copyright" \
