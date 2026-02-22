@@ -1,6 +1,6 @@
 # Maintainer: Crstian <me@crstian.me>
 pkgname=aceplay-bin
-pkgver=0.1.11
+pkgver=0.1.12
 pkgrel=1
 pkgdesc="Modern CLI to play Ace Stream links - auto-starts acestream-engine (pre-built binary)"
 arch=('x86_64')
@@ -12,13 +12,13 @@ optdepends=(
     'vlc: alternative video player'
     'ffplay: alternative video player'
 )
-source=("https://github.com/crstian19/aceplay/releases/download/v${pkgver}/aceplay-linux-amd64"
+source=("aceplay-linux-amd64-${pkgver}::https://github.com/crstian19/aceplay/releases/download/v${pkgver}/aceplay-linux-amd64"
         "aceplay.desktop")
-noextract=('aceplay-linux-amd64')
+noextract=("aceplay-linux-amd64-${pkgver}")
 sha256sums=('SKIP'
             'SKIP')
 
 package() {
-    install -Dm755 "$srcdir/aceplay-linux-amd64" "$pkgdir/usr/bin/aceplay"
+    install -Dm755 "$srcdir/aceplay-linux-amd64-${pkgver}" "$pkgdir/usr/bin/aceplay"
     install -Dm644 "$srcdir/aceplay.desktop" "$pkgdir/usr/share/applications/aceplay.desktop"
 }
