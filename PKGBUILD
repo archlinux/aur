@@ -4,20 +4,22 @@
 _dist='Devel-OverrideGlobalRequire'
 pkgname='perl-devel-overrideglobalrequire'
 pkgver=0.001
-pkgrel=3
+pkgrel=4
 pkgdesc='Override CORE::GLOBAL::require safely'
 arch=('any')
 url="https://metacpan.org/dist/$_dist"
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 depends=('perl>=5.6')
+makedepends=('perl-extutils-makemaker>=6.30')
 checkdepends=(
+    'perl-extutils-makemaker'
     'perl-file-temp'
     'perl-pathtools'
     'perl-scalar-list-utils'
     'perl-test-simple'
 )
 options=('!emptydirs')
-source=("http://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/$_dist-$pkgver.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/$_dist-$pkgver.tar.gz")
 sha256sums=('0791892de3ae292af4a94e382f21db1ee88210875031851e6ea82c3410785ef9')
 
 build()
