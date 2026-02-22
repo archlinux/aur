@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWUK).se>
 
 pkgname=nightshift
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="A terminal user interface for redshift"
 arch=(any)
@@ -9,8 +9,8 @@ url="https://codeberg.org/maandree/nightshift"
 license=('custom:ISC')
 depends=(python3 redshift)
 makedepends=(zip auto-auto-complete)
-source=($url/archive/$pkgver.tar.gz)
-sha256sums=(a5721ec588dc4e42cddfa7bafd0571393edf18c2ff31f63f9e8eb84d177410f3)
+source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
+sha256sums=(59db76e8bd7486bb548626f1644377475fec73c0b2f1370380349cc9ccadf614)
 
 
 build() {
