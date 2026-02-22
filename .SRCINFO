@@ -1,0 +1,16 @@
+pkgbase = python-garak
+	pkgdesc = The LLM Vulnerability Scanner - Generative AI Red-teaming & Assessment Kit
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://github.com/NVIDIA/garak
+	arch = any
+	license = Apache-2.0
+	makedepends = python-pip
+	makedepends = python-virtualenv
+	depends = python
+	options = !strip
+	options = !zipman
+	source = https://files.pythonhosted.org/packages/source/g/garak/garak-0.14.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-garak
