@@ -1,5 +1,7 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: Jiachen Yang <farseerfc@gmail.com>
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Contributor: eyecreate <eyecreate@gmail.com>
 
 _dist='Graph-Easy'
 pkgname='perl-graph-easy'
