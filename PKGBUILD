@@ -1,10 +1,11 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Contributor: Minimalist <stefanguen@gmail.com>
 
 _dist='HTTP-BrowserDetect'
 pkgname='perl-http-browserdetect'
 pkgver=3.45
-pkgrel=2
+pkgrel=3
 pkgdesc='Determine Web browser, version, and platform from an HTTP user agent string'
 arch=('any')
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')

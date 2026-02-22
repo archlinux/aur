@@ -1,7 +1,7 @@
 pkgbase = perl-http-browserdetect
 	pkgdesc = Determine Web browser, version, and platform from an HTTP user agent string
 	pkgver = 3.45
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/dist/HTTP-BrowserDetect
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later
