@@ -1,0 +1,11 @@
+d /var/lib/filestash 0750 filestash filestash -
+d /var/lib/filestash/state 0750 filestash filestash -
+d /var/lib/filestash/state/config 0750 filestash filestash -
+d /var/lib/filestash/state/db 0750 filestash filestash -
+d /var/lib/filestash/state/search 0750 filestash filestash -
+d /var/lib/filestash/state/certs 0750 filestash filestash -
+d /var/lib/filestash/state/plugins 0750 filestash filestash -
+d /var/cache/filestash 0750 filestash filestash -
+d /var/cache/filestash/video 0750 filestash filestash -
+d /var/cache/filestash/video-thumbnail 0750 filestash filestash -
+d /var/log/filestash 0750 filestash filestash -

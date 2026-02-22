@@ -1,0 +1,35 @@
+[Unit]
+Description=Filestash - Universal File Management Platform
+Documentation=https://www.filestash.app/docs/
+After=network.target
+
+[Service]
+Type=simple
+User=filestash
+Group=filestash
+WorkingDirectory=/var/lib/filestash
+ExecStart=/usr/bin/filestash
+Restart=on-failure
+RestartSec=10
+
+# Security hardening
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/var/lib/filestash /var/log/filestash /var/cache/filestash
+NoNewPrivileges=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+PrivateMounts=yes
+LockPersonality=yes
+
+# Environment - FHS-compliant directory layout
+Environment="FILESTASH_PATH=/var/lib/filestash"
+Environment="FILESTASH_LOG_PATH=/var/log/filestash"
+Environment="FILESTASH_CACHE_PATH=/var/cache/filestash"
+
+[Install]
+WantedBy=multi-user.target

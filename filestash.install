@@ -1,0 +1,29 @@
+## Post-installation notes
+
+### Run
+Filestash can be run in two ways:
+1. System Service (traditional)
+Run as dedicated 'filestash' system user:
+```bash
+sudo systemctl enable --now filestash.service
+```
+
+2. User Service (recommended for personal use)
+Run as your own user with systemctl --user:
+```bash
+systemctl --user enable --now filestash.service
+```
+
+### Locations
+**Data locations (system service):**
+- Data: /var/lib/filestash
+- Cache: /var/cache/filestash
+- Logs: /var/log/filestash
+
+**Data locations (user service):**
+- Data: ~/.local/share/filestash
+- Cache: ~/.cache/filestash
+- Logs: ~/.local/state/filestash/log
+
+### Access
+Access at: http://localhost:8334

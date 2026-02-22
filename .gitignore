@@ -1,0 +1,9 @@
+# Build artifacts
+*.pkg.tar.zst
+pkg/
+src/
+filestash/
+
+# Temporary files
+*.tmp
+*.log

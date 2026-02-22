@@ -1,0 +1,41 @@
+[Unit]
+Description=Filestash - Universal File Management Platform
+Documentation=https://www.filestash.app/docs/
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/filestash
+
+# XDG Base Directory Specification paths
+# %h = user's home directory when running as user service
+# Data: persistent state (databases, user data, plugins)
+Environment="FILESTASH_PATH=%h/.local/share/filestash"
+# Cache: regenerable data (video thumbnails, transcoded files)
+Environment="FILESTASH_CACHE_PATH=%h/.cache/filestash"
+# Logs: application logs
+Environment="FILESTASH_LOG_PATH=%h/.local/state/filestash/log"
+
+# Working directory - user's home
+WorkingDirectory=%h
+
+# Security hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+# Note: ProtectHome NOT set - filestash needs full home directory access as a file manager
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+PrivateMounts=yes
+LockPersonality=yes
+
+# Restart policy
+Restart=on-failure
+RestartSec=10s
+
+[Install]
+WantedBy=default.target
