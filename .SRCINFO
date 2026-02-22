@@ -1,8 +1,8 @@
 pkgbase = fortls
-	pkgdesc = A modern Language Server for Fortran.
+	pkgdesc = Language Server for Fortran providing code completion, diagnostics, hovering and more.
 	pkgver = 3.2.2
 	pkgrel = 1
-	url = https://github.com/gnikit/fortls
+	url = https://fortls.fortran-lang.org/
 	arch = any
 	license = MIT
 	makedepends = python-build

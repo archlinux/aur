@@ -1,11 +1,15 @@
-# Maintainer: Colin Woodbury <colin@fosskers.ca>
+# Maintainer: Michael Lass <bevan@bi-co.net>
+# Contributor: Colin Woodbury <colin@fosskers.ca>
+
+# This PKGBUILD is maintained on github:
+# https://github.com/michaellass/AUR
 
 pkgname=fortls
 pkgver=3.2.2
 pkgrel=1
-pkgdesc="A modern Language Server for Fortran."
+pkgdesc="Language Server for Fortran providing code completion, diagnostics, hovering and more."
 arch=(any)
-url="https://github.com/gnikit/fortls"
+url="https://fortls.fortran-lang.org/"
 license=("MIT")
 depends=("python-json5")
 makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools-scm")
