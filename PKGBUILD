@@ -7,15 +7,32 @@
 # mupen64plus component receives a new commit.
 
 pkgname=mupen64plus-git
-pkgver=2.6.0.r0.gb0d68c20.20240715.010852
+pkgver=2.6.0.r78.g6acd180e.20260220.023352
 pkgrel=1
 pkgdesc='Nintendo64 Emulator (git version)'
 arch=('x86_64')
 url='https://www.mupen64plus.org/'
 license=('GPL-2.0-or-later')
-depends=('freetype2' 'glu' 'hicolor-icon-theme' 'libgl' 'libpng' 'libsamplerate'
-         'minizip' 'sdl2' 'sdl2_net' 'speexdsp' 'vulkan-icd-loader' 'zlib')
-makedepends=('git' 'nasm' 'vulkan-headers')
+depends=(
+    'freetype2'
+    'glibc'
+    'glu'
+    'hicolor-icon-theme'
+    'libgcc'
+    'libgl'
+    'libpng'
+    'libsamplerate'
+    'libstdc++'
+    'minizip'
+    'sdl2'
+    'sdl2_net'
+    'speexdsp'
+    'vulkan-icd-loader'
+    'zlib')
+makedepends=(
+    'git'
+    'nasm'
+    'vulkan-headers')
 provides=('mupen64plus')
 conflicts=('mupen64plus')
 source=('git+https://github.com/mupen64plus/mupen64plus-core.git'
@@ -57,7 +74,6 @@ pkgver() {
     _tag="$(git -C mupen64plus-core tag --list --sort='-v:refname' '[[:digit:]]*' | head -n1)"
     printf "${_tag}.r%s.g%s.${_latest_date}" "$(git -C mupen64plus-core rev-list --count "${_tag}..HEAD")" \
                                              "$(git -C mupen64plus-core rev-parse --short HEAD)"
-    
 }
 
 build() {
@@ -66,7 +82,12 @@ build() {
     do
         printf '%s\n' "  -> Building component '${_component}'..."
         make -C "mupen64plus-${_component}/projects/unix" clean
-        make -C "mupen64plus-${_component}/projects/unix" PREFIX='/usr' NETPLAY='1' all
+        make -C "mupen64plus-${_component}/projects/unix" \
+            PREFIX='/usr' \
+            MINIZIP_CFLAGS='-isystem/usr/include/minizip' \
+            MINIZIP_LDLIBS="$(pkg-config --libs minizip)" \
+            NETPLAY='1' \
+            all
     done
 }
 
