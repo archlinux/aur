@@ -21,7 +21,7 @@ source=("https://github.com/aaddrick/claude-desktop-debian/releases/download/v${
 noextract=("${_appimage_name}")
 
 # File checksums
-sha256sums=('6ea2becfb422a9c1ca942a5929a390870677ac02314630d4428a27e37d960c06'
+sha256sums=('767888b541d6c5ace760118ce62318b9ef36b469f7402ac8eee42274e7ee161c'
             'ab0469e2e127050193ca556f87af8914d93bbde8f31d673a2f279aedbc944f3d')
 
 prepare() {
