@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>
 
 pkgname=gluhncheck
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Check number with Luhn's algorithm"
 url='https://codeberg.org/maandree/gluhncheck'
@@ -10,7 +10,7 @@ license=('custom:ISC')
 depends=(gtk2)
 makedepends=(libsimple)
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(06ccf4a7eaa0f8def9567234ade1b56c0e8f4fca1ad3c4e6d1941e9b85a9ca75)
+sha256sums=(1f621bc7cc6529da5260ffb3cf41f8ccfbe027549917478043775e9d51ea0faf)
 
 build () {
 	cd "$srcdir/gluhncheck"
