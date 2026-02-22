@@ -1,7 +1,7 @@
 # Maintainer: Lennard Hofmann <lennard dot hofmann at web dot de>
 pkgname=radius2-git
 _reponame=radius2
-pkgver=r170.15e1b79
+pkgver=r195.782737b
 pkgrel=1
 pkgdesc='fast binary emulation and symbolic execution framework using radare2'
 arch=('x86_64')
@@ -38,6 +38,13 @@ build() {
 	export CARGO_TARGET_DIR=target
 	cargo build --frozen --release
 }
+
+check() {
+	cd "$srcdir/$_reponame"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo test --frozen --all-features --workspace
+}
+
 
 package() {
 	cd "$srcdir/$_reponame"

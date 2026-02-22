@@ -1,6 +1,6 @@
 pkgbase = radius2-git
 	pkgdesc = fast binary emulation and symbolic execution framework using radare2
-	pkgver = r170.15e1b79
+	pkgver = r195.782737b
 	pkgrel = 1
 	url = https://github.com/radareorg/radius2
 	arch = x86_64
