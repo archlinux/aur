@@ -1,0 +1,15 @@
+pkgbase = diskord
+	pkgdesc = A fast, intuitive, and universal TUI storage manager for Omarchy (Arch Linux + Hyprland)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Zeus-Deus/diskord
+	arch = x86_64
+	license = GPL
+	makedepends = cargo
+	depends = hyprland
+	depends = xdg-terminal-exec
+	depends = polkit
+	source = diskord-1.0.0.tar.gz::https://github.com/Zeus-Deus/diskord/archive/v1.0.0.tar.gz
+	sha256sums = c874afb75722d88c6f6cc4af4927bd11284fdc6b7ec9597d54fe091dd63eb1d3
+
+pkgname = diskord
