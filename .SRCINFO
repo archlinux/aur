@@ -1,8 +1,8 @@
 pkgbase = springlobby-git
-	pkgdesc = A free cross-platform lobby client for the Spring RTS project, development version.
-	pkgver = 0.274.4.g290f1fa73
-	pkgrel = 4
-	url = https://springlobby.springrts.com/
+	pkgdesc = A free cross-platform lobby client for the Spring RTS project, development version with patches from Tech Annihilation community.
+	pkgver = v1.0.0.0.g9e5685a86
+	pkgrel = 1
+	url = https://techa-rts.com/
 	arch = i686
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -26,8 +26,8 @@ pkgbase = springlobby-git
 	depends = alure
 	provides = springlobby
 	conflicts = springlobby
-	source = git+https://github.com/springlobby/springlobby.git
-	source = git+https://github.com/spring/pr-downloader.git
+	source = git+https://github.com/techannihilation/springlobby.git
+	source = git+https://github.com/techannihilation/pr-downloader.git
 	md5sums = SKIP
 	md5sums = SKIP
 

@@ -1,21 +1,21 @@
-# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Maintainer: Tiziano Bacocco <tizbac2@gmail.com>
 # Contributor: cleanrock (AT gmail DOT com)
 # Contributor: Erdbeerkaese (erdbeerkaese AT gawab DOT com)
 # Contributor: DuGi <dugi@irc.pl>
 
 pkgname=springlobby-git
-pkgver=0.274.4.g290f1fa73
-pkgrel=4
-pkgdesc="A free cross-platform lobby client for the Spring RTS project, development version."
+pkgver=v1.0.0.0.g9e5685a86
+pkgrel=1
+pkgdesc="A free cross-platform lobby client for the Spring RTS project, development version with patches from Tech Annihilation community."
 arch=('i686' 'x86_64')
-url="https://springlobby.springrts.com/"
+url="https://techa-rts.com/"
 license=('GPL-2.0-or-later')
 depends=('libx11' 'gcc-libs' 'hicolor-icon-theme' 'zlib' 'minizip' 'libpng' 'openal' 'curl' 'glibc' 'libnotify' 'wxwidgets-gtk3' 'wxwidgets-common' 'glib2' 'openssl' 'alure')
 makedepends=('boost' 'cmake' 'git')
 conflicts=('springlobby')
 provides=('springlobby')
-source=('git+https://github.com/springlobby/springlobby.git'
-        'git+https://github.com/spring/pr-downloader.git')
+source=('git+https://github.com/techannihilation/springlobby.git'
+        'git+https://github.com/techannihilation/pr-downloader.git')
 noextract=()
 md5sums=('SKIP' 'SKIP')
 # options=('!strip' 'debug' '!buildflags')
@@ -25,7 +25,7 @@ _gitname="springlobby"
 pkgver() {
   cd "$srcdir/$_gitname"
   # package version is Tag.CommitsSinceTag.CommitId, e.g 0.171.205.g86a3481
-  git describe --long | sed 's|-|.|g'
+  git describe --long --tags | sed 's|-|.|g'
 }
 
 prepare() {
