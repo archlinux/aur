@@ -1,6 +1,6 @@
 # Maintainer: Patrick Fischer <aur at pathin dot me>
 pkgname=onset-git
-pkgver=r13.385c1a8
+pkgver=1.0.0.r0.ga65f5af
 pkgrel=1
 pkgdesc="Lightweight XDG autostart manager for Linux"
 arch=('x86_64' 'aarch64')
