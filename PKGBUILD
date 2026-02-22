@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>
 
 pkgname=krandom
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="Keccak-based userspace pseudorandom number generator"
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ license=('custom:ISC')
 depends=()
 makedepends=(libkeccak)
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha512sums=(6dca1fd6767a20e2a7ae97d62c10790c76337c190223ca714fd3145f96d2dd0e4e45832168c1dd796b204200df0cdafad4caeaaafb0b73d32deb6e332375024d)
+sha256sums=(39e8d1501240f1dd7acb89cc5de7dc6250aa9e3374cb9e917694a4a9d33f4e71)
 
 build() {
     cd "$srcdir/$pkgname"
