@@ -1,7 +1,7 @@
 pkgbase = perl-git-wrapper
 	pkgdesc = Wrap git(7) command-line interface
 	pkgver = 0.048
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/dist/Git-Wrapper
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later
@@ -15,6 +15,7 @@ pkgbase = perl-git-wrapper
 	checkdepends = perl-test-exception
 	checkdepends = perl-test-simple
 	makedepends = perl-devel-checkbin
+	makedepends = perl-extutils-makemaker
 	makedepends = perl-pathtools
 	depends = git
 	depends = perl-file-chdir

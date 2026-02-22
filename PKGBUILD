@@ -3,8 +3,8 @@
 
 _dist='Git-Wrapper'
 pkgname='perl-git-wrapper'
-pkgver='0.048'
-pkgrel='2'
+pkgver=0.048
+pkgrel=3
 pkgdesc='Wrap git(7) command-line interface'
 arch=('any')
 url="https://metacpan.org/dist/$_dist"
@@ -20,6 +20,7 @@ depends=(
 )
 makedepends=(
     'perl-devel-checkbin'
+    'perl-extutils-makemaker'
     'perl-pathtools'
 )
 checkdepends=(
