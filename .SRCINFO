@@ -1,7 +1,7 @@
 pkgbase = perl-http-browserdetect
 	pkgdesc = Determine Web browser, version, and platform from an HTTP user agent string
 	pkgver = 3.45
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/dist/HTTP-BrowserDetect
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later
@@ -17,7 +17,7 @@ pkgbase = perl-http-browserdetect
 	makedepends = perl-extutils-makemaker
 	depends = perl>=5.6.0
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/O/OA/OALDERS/HTTP-BrowserDetect-2.05.tar.gz
+	source = https://cpan.metacpan.org/authors/id/O/OA/OALDERS/HTTP-BrowserDetect-3.45.tar.gz
 	sha256sums = d4dbfddd9df6e9c35d151c9b00544211b38cb8c3aee4350a540bddaa75203669
 
 pkgname = perl-http-browserdetect

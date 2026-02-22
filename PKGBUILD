@@ -4,7 +4,7 @@
 _dist='HTTP-BrowserDetect'
 pkgname='perl-http-browserdetect'
 pkgver=3.45
-pkgrel=1
+pkgrel=2
 pkgdesc='Determine Web browser, version, and platform from an HTTP user agent string'
 arch=('any')
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
@@ -23,7 +23,7 @@ checkdepends=(
     'perl-test-warnings'
 )
 options=('!emptydirs')
-source=("http://search.cpan.org/CPAN/authors/id/O/OA/OALDERS/$_dist-$pkgver.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/O/OA/OALDERS/$_dist-$pkgver.tar.gz")
 sha256sums=('d4dbfddd9df6e9c35d151c9b00544211b38cb8c3aee4350a540bddaa75203669')
 
 build()
