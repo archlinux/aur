@@ -8,7 +8,6 @@ arch=(x86_64)
 url="https://github.com/PrincParshia/adw-maia-gtk-theme"
 license=('LGPL')
 makedepends=('git')
-conflicts=('xdg-desktop-portal-gnome')
 source=("git+$url")
 sha256sums=('SKIP')
 
