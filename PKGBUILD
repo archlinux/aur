@@ -12,13 +12,19 @@ proxy="https://gh-proxy.org/"
 license=('AGPL-3.0-or-later')
 backup=("etc/dae/config.dae")
 
-depends=('v2ray-geoip' 'v2ray-domain-list-community')
+depends=()
 makedepends=('git' 'go' 'base-devel' 'clang' 'llvm' 'libbpf' 'linux-headers' 'linux-api-headers') 
 
-source=("${pkgname}::git+${proxy}/${url}.git")
+source=(
+        "${pkgname}::git+${proxy}/${url}.git"
+        "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat"
+        "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat"
+        )
 
 sha256sums=(
 	"SKIP"
+  "SKIP"
+  "SKIP"
 )
 
 # Disable debug package generation
@@ -66,8 +72,8 @@ package() {
   # Install empty configuration file
   install -Dm640 "install/empty.dae" "${pkgdir}/etc/dae/config.dae"
 
-  # Create symbolic links for geoip.dat & geosite.dat
-	install -d "${pkgdir}/usr/share/${_pkgname}/"
-	ln -vs /usr/share/v2ray/geoip.dat "${pkgdir}/usr/share/${_pkgname}/geoip.dat"
-	ln -vs /usr/share/v2ray/geosite.dat "${pkgdir}/usr/share/${_pkgname}/geosite.dat"
+  # Install geoip.dat and geosite.dat to /usr/share/dae/
+  mkdir -p "${pkgdir}/usr/share/dae/"
+	cp ../geoip.dat "${pkgdir}/usr/share/dae/geoip.dat"
+	cp ../geosite.dat "${pkgdir}/usr/share/dae/geosite.dat"
 }
