@@ -1,0 +1,5 @@
+[noorfetch]
+host = "codeberg.org"
+source = "gitea"
+gitea = "limforge/noorfetch"
+use_max_tag = true
