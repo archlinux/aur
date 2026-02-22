@@ -24,6 +24,6 @@ pkgbase = greetd-retro95
 	depends = systemd
 	depends = systemd-libs
 	source = https://gitlab.com/lumi200/retro95-greeter/-/archive/1.0.0/retro95-greeter-1.0.0.tar.gz
-	b2sums = e17475e269c2af60a14f449f988e36731e8fa185b0fd58166a27fa9763033e4106b59e2503999f7d791d8ff1501c7d105be76ca477eb0405796925fc10305b50
+	b2sums = 567e79cbcaac3664b4147fbc59a076e5e344fb70ba660681899953f1dddc311f5fd2f92fe629243ed5c9fe7e453d563e00154e33537ebad3669f49890daaacbf
 
 pkgname = greetd-retro95
