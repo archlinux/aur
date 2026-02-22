@@ -1,14 +1,14 @@
 # Maintainer: Jan Pawłowicz <jpawlowiczbusiness@gmail.com>
 pkgname='mementomori'
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A command-line live death counter"
 arch=('any')
 url="https://github.com/naujan/mementomori"
 license=('MIT')
-depends=('python' 'python-yaml' 'python-dateutil')
+depends=('python' 'python-yaml' 'python-dateutil' 'python-rich')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2521de6793747e34f946ce9eca134fcf0a86eeae1d71eed76f8cc68a30168f7f')
+sha256sums=('942f7acca757fd7dbe3d2691936ef7d1c957932300d3341b10d428c28cd3ac83')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
