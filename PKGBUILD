@@ -7,7 +7,7 @@ pkgname=(
     'openvino-intel-npu-plugin'
     'python-openvino')
 pkgver=2025.4.1
-pkgrel=1
+pkgrel=2
 _commit=82bbf0292c5bd490bc25a383e63d6461d3ee05c5
 pkgdesc='A toolkit for optimizing and deploying deep learning models'
 arch=('x86_64')
@@ -23,7 +23,6 @@ makedepends=(
     'opencv'
     'patchelf'
     'pugixml'
-    'pybind11'
     'python'
     'python-build'
     'python-installer'
@@ -41,6 +40,7 @@ source=("git+https://github.com/openvinotoolkit/openvino.git#commit=${_commit}?s
         'git+https://github.com/KhronosGroup/OpenCL-CLHPP.git'
         'git+https://github.com/onnx/onnx.git'
         'git+https://github.com/protocolbuffers/protobuf.git'
+        'git+https://github.com/pybind/pybind11.git'
         'git+https://github.com/intel/ittapi.git'
         'git+https://github.com/nithinn/ncc.git'
         'git+https://github.com/oneapi-src/oneDNN.git'
@@ -58,6 +58,7 @@ source=("git+https://github.com/openvinotoolkit/openvino.git#commit=${_commit}?s
         '010-openvino-change-install-paths.patch'
         '020-openvino-disable-werror.patch')
 sha256sums=('bdd6b8c7f36bd72886d5ea69676f4bc5bcbc04ce6aa310710d4f1e0cbff3af53'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -103,7 +104,7 @@ prepare() {
     git -C openvino config --local submodule.thirdparty/ocl/clhpp_headers.url "${srcdir}/OpenCL-CLHPP"
     git -C openvino config --local submodule.thirdparty/onnx.url "${srcdir}/onnx"
     git -C openvino config --local submodule.thirdparty/protobuf.url "${srcdir}/protobuf"
-    git -C openvino config --local submodule.src/bindings/python/thirdparty/pybind11.update none
+    git -C openvino config --local submodule.src/bindings/python/thirdparty/pybind11.url "${srcdir}/pybind11"
     git -C openvino config --local submodule.thirdparty/ittapi/ittapi.url "${srcdir}/ittapi"
     git -C openvino config --local submodule.ncc.url "${srcdir}/ncc"
     git -C openvino config --local submodule.thirdparty/onednn_gpu.url "${srcdir}/oneDNN"
@@ -139,7 +140,6 @@ build() {
     export CXXFLAGS+=" -isystem${srcdir}/openvino/thirdparty/ocl/clhpp_headers/include"
     
     # note: does not accept 'None' build type
-    # note: protopipe currently requires opencv 4.13.0, still unreleased at the time of writing
     cmake -B build -S openvino \
         -G 'Unix Makefiles' \
         -DBUILD_TESTING:BOOL='OFF' \
@@ -153,7 +153,7 @@ build() {
         -DENABLE_CLANG_FORMAT:BOOL='OFF' \
         -DENABLE_CPPLINT:BOOL='OFF' \
         -DENABLE_INTEL_NPU:BOOL='ON' \
-        -DENABLE_INTEL_NPU_PROTOPIPE:BOOL='OFF' \
+        -DENABLE_INTEL_NPU_PROTOPIPE:BOOL='ON' \
         -DENABLE_NCC_STYLE:BOOL='OFF' \
         -DENABLE_PLUGINS_XML:BOOL='ON' \
         -DENABLE_PYTHON:BOOL='ON' \
@@ -177,8 +177,9 @@ build() {
 
 package_openvino() {
     depends=(
-        'gcc-libs'
         'glibc'
+        'libgcc'
+        'libstdc++'
         'onetbb'
         'pugixml'
         'snappy')
@@ -196,9 +197,9 @@ package_openvino() {
     
     mv "${pkgdir}/usr/lib/openvino"/libopenvino_intel_gpu_plugin.so intel-gpu-plugin/usr/lib/openvino
     mv "${pkgdir}/usr/lib/openvino"/libopenvino_intel_npu_plugin.so intel-npu-plugin/usr/lib/openvino
-    #mv "${pkgdir}/usr/bin/ov-protopipe" intel-npu-plugin/usr/bin
+    mv "${pkgdir}/usr/bin/ov-protopipe" intel-npu-plugin/usr/bin
     mv "${pkgdir}/usr/bin"/ov-{compile_tool,single-image-test} intel-npu-plugin/usr/bin
-    #mv "${pkgdir}/usr/share/doc/openvino/README-protopipe.md" intel-npu-plugin/usr/share/doc/openvino
+    mv "${pkgdir}/usr/share/doc/openvino/README-protopipe.md" intel-npu-plugin/usr/share/doc/openvino
     mv "${pkgdir}/usr/share/doc/openvino"/README-{compile_tool,single-image-test}.md intel-npu-plugin/usr/share/doc/openvino
     
     local _pyver
@@ -211,9 +212,10 @@ package_openvino() {
 package_openvino-intel-gpu-plugin() {
     pkgdesc='Intel GPU plugin for OpenVINO'
     depends=(
-        'gcc-libs'
         'glibc'
         'intel-compute-runtime'
+        'libgcc'
+        'libstdc++'
         'ocl-icd'
         'onetbb'
         "openvino=${pkgver}"
@@ -226,10 +228,11 @@ package_openvino-intel-gpu-plugin() {
 package_openvino-intel-npu-plugin() {
     pkgdesc='Intel NPU plugin for OpenVINO'
     depends=(
-        'gcc-libs'
         'glibc'
         'intel-npu-compiler'
         'intel-npu-driver'
+        'libgcc'
+        'libstdc++'
         'onetbb'
         'opencv'
         "openvino=${pkgver}"
@@ -242,8 +245,9 @@ package_openvino-intel-npu-plugin() {
 package_python-openvino() {
     pkgdesc='Python bindings for OpenVINO'
     depends=(
-        'gcc-libs'
         'glibc'
+        'libgcc'
+        'libstdc++'
         "openvino=${pkgver}"
         'python'
         'python-numpy'
@@ -268,7 +272,7 @@ package_python-openvino() {
     mv "python${_pyver}" "${pkgdir}/usr/lib"
     rm "${pkgdir}${_site_pkgs}/requirements.txt"
     
-    export WHEEL_VERSION="$pkgver"
+    local -x WHEEL_VERSION="$pkgver"
     python openvino/setup.py dist_info -o "${pkgdir}${_site_pkgs}"
     
     install -D -m644 licenses/* -t "${pkgdir}/usr/share/licenses/${pkgname}"
