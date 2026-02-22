@@ -15,7 +15,7 @@ conflicts=('Hytale-F2P-git')
 replaces=('Hytale-F2P-git')
 source=("git+$url.git" "Hytale-F2P.desktop")
 sha256sums=('SKIP'
-            '52a973004b19f713b198d5f51ab140f95df4747dc9dd536b89cade535c32bcd9')
+            'f1856d4d02f2c66b565e8980dae540c864d7b32d5a1d94c89dc785795b724797')
 
 pkgver() {
   cd "$_pkgname"
