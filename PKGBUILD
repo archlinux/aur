@@ -51,7 +51,7 @@ build() {
 
 	# Patch meson.build to remove --offline flag for default profile
 	# (upstream uses offline for Flatpak builds with vendored deps)
-	sed -i "s/'--release', '--offline'/'--release'/" meson.build
+	sed -i "s/, '--offline'//" meson.build
 
 	# Strip source paths from binary to avoid $srcdir references in panic messages
 	export RUSTFLAGS="--remap-path-prefix=$srcdir=/build"
