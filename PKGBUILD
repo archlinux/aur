@@ -4,7 +4,7 @@ _dist='Perl-Critic-Community'
 _pkgver='v1.0.4'
 pkgname='perl-perl-critic-community'
 pkgver=1.04
-pkgrel=1
+pkgrel=2
 pkgdesc='Community-inspired Perl::Critic policies'
 arch=('any')
 url="https://metacpan.org/dist/$_dist"
@@ -12,6 +12,7 @@ license=('Artistic-2.0')
 depends=(
     'perl-carp'
     'perl-exporter'
+    'perl-parent'
     'perl-path-tiny>=0.101'
     'perl-perl-critic-policy-plicease-prohibitarrayassignaref>=100.00'
     'perl-perl-critic-policy-variables-prohibitlooponhash>=0.005'
