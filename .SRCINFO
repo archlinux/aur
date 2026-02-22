@@ -1,7 +1,7 @@
 pkgbase = perl-file-xdg
 	pkgdesc = Basic implementation of the XDG base directory specification
 	pkgver = 1.03
-	pkgrel = 3
+	pkgrel = 4
 	url = https://metacpan.org/dist/File-XDG
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later
@@ -9,6 +9,7 @@ pkgbase = perl-file-xdg
 	checkdepends = perl-file-temp
 	checkdepends = perl-path-class>=0.26
 	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker
 	depends = perl-file-path>=2.07
 	depends = perl-path-class
 	depends = perl-path-tiny

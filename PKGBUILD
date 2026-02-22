@@ -5,7 +5,7 @@
 _dist='File-XDG'
 pkgname='perl-file-xdg'
 pkgver=1.03
-pkgrel=3
+pkgrel=4
 pkgdesc='Basic implementation of the XDG base directory specification'
 arch=('any')
 url="https://metacpan.org/dist/$_dist"
@@ -17,6 +17,7 @@ depends=(
     'perl-ref-util'
     'perl>=5.6.0'
 )
+makedepends=('perl-extutils-makemaker')
 checkdepends=(
     'perl-file-path>=2.07'
     'perl-file-temp'
