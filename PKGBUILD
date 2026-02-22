@@ -5,11 +5,11 @@ pkgname=(serverstatus-git
     serverstatus-clients-linux-git
     serverstatus-clients-psutil-git
     serverstatus-server-git)
-pkgver=1.1.6.r3.g68a1d37
+pkgver=1.1.7.r6.g6552959
 pkgrel=1
 groups=()
 pkgdesc="云探针、多服务器探针、云监控、多服务器云监控"
-arch=(any)
+arch=($CARCH)
 url="https://github.com/cppla/ServerStatus"
 license=('MIT')
 provides=(${pkgbase%-git})
