@@ -113,12 +113,16 @@ source=(
   "$_pkgname-runtime-${_runtime_commit::7}.$_pkgext"::"https://github.com/Floorp-Projects/Floorp-Runtime/archive/$_runtime_commit.$_pkgext"
   "floorp-projects.floorp-core"::"git+https://github.com/Floorp-Projects/Floorp-core.git"
   "$_pkgname.desktop"
+  '0003-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch'
+  '0004-Fix-sandbox-to-build-with-glibc-2.43.patch'
 )
 sha256sums=(
   '8b00ea771e50ddc68c013c6f99cc9707907c2294bf99e73fc872c0eb740e9c8c'
   'SKIP'
   'SKIP'
   '8b38d000950cddd5fa0e1598540590af21f1aae1d30212fb11197c8526662604'
+  'c2aaff2a743c738edbf02d7be816c30fe3a5acb2d3dcb7a3906357a9f2ed438f'
+  '8d2182ae8660474ac567482fe6658af77f3b402314e361c846528ae171586245'
 )
 
 _deno() {
@@ -254,6 +258,18 @@ END
   else
     printf '\nFree RAM: %s\nCores: %s\nUsing: auto\n\n' "$((_mem / (1024 * 1024)))" "$_nproc"
   fi
+
+  # apply patches
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    src="${src%.zst}"
+    if [[ $src == *.patch ]]; then
+      printf '\nApplying patch: %s\n' "$src"
+      patch -d "$_pkgsrc_runtime" -Np1 -F100 -f -i "${srcdir:?}/$src"
+    fi
+  done
 )
 
 build() (

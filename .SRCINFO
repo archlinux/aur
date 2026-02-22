@@ -61,9 +61,13 @@ pkgbase = floorp
 	source = floorp-runtime-766fc44.tar.gz::https://github.com/Floorp-Projects/Floorp-Runtime/archive/766fc44b704f8cb9d480d19456dc58964752f35a.tar.gz
 	source = floorp-projects.floorp-core::git+https://github.com/Floorp-Projects/Floorp-core.git
 	source = floorp.desktop
+	source = 0003-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
+	source = 0004-Fix-sandbox-to-build-with-glibc-2.43.patch
 	sha256sums = 8b00ea771e50ddc68c013c6f99cc9707907c2294bf99e73fc872c0eb740e9c8c
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 8b38d000950cddd5fa0e1598540590af21f1aae1d30212fb11197c8526662604
+	sha256sums = c2aaff2a743c738edbf02d7be816c30fe3a5acb2d3dcb7a3906357a9f2ed438f
+	sha256sums = 8d2182ae8660474ac567482fe6658af77f3b402314e361c846528ae171586245
 
 pkgname = floorp
