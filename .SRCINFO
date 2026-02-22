@@ -1,0 +1,18 @@
+pkgbase = perl-crypt-curve25519
+	pkgdesc = Generate shared secret using elliptic-curve Diffie-Hellman function
+	pkgver = 0.08
+	pkgrel = 1
+	url = https://metacpan.org/dist/Crypt-Curve25519
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker
+	depends = perl
+	depends = perl-carp
+	depends = perl-exporter
+	depends = perl-xsloader
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/K/KA/KARASIK/Crypt-Curve25519-0.08.tar.gz
+	sha256sums = 42eb902b44e434abcdc636435739c4e439fd083fdd561fb005cfc5772c2d179e
+
+pkgname = perl-crypt-curve25519
