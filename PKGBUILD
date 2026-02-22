@@ -1,6 +1,6 @@
 # Maintainer: Rve27 <rve27github@gmail.com>
 pkgname=rvkernel-manager-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Linux Kernel Manager with Material 3 Expressive Design"
 arch=('x86_64')
@@ -12,11 +12,11 @@ depends=('glibc' 'bash' 'sudo' 'systemd' 'pciutils' 'hicolor-icon-theme')
 options=('!strip')
 
 source=(
-    "rvkernel-manager_${pkgver}_amd64.deb::https://github.com/Rve27/RvKernel-Manager-Linux/releases/download/${pkgver}/rvkernel-manager_${pkgver}_amd64.deb"
+    https://github.com/Rve27/RvKernel-Manager-Linux/releases/download/${pkgver}/rvkernel-manager_${pkgver}_amd64.deb
     "rvkernel-manager-LICENSE::https://raw.githubusercontent.com/Rve27/RvKernel-Manager-Linux/main/LICENSE"
 )
 
-sha256sums=('af288196fbfcd664db3caa2c3cc4a63682023dfcc0a56b3dd7327fd3193b8f32'
+sha256sums=('fb59b0f49ed6bd7bcbb805f313717662f8e4795aa8175963648933142c33ca81'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 package() {
@@ -33,7 +33,7 @@ package() {
     mkdir -p "${pkgdir}/usr/share/applications"
     cat > "${pkgdir}/usr/share/applications/rvkernel-manager.desktop" <<EOF
 [Desktop Entry]
-Version=1.0.0
+Version=${pkgver}
 Type=Application
 Name=RvKernel Manager
 Comment=Linux Kernel Manager with Material 3 Expressive Design
