@@ -1,7 +1,7 @@
 # Maintainer: werdxz
 
 pkgname=portty-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="XDG Desktop Portal backend for TTY environments (prebuilt binaries)"
 arch=('x86_64')
@@ -12,23 +12,23 @@ provides=('portty')
 conflicts=('portty' 'portty-git')
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/WERDXZ/portty/archive/refs/tags/v${pkgver}.tar.gz"
-    "portty::https://github.com/WERDXZ/portty/releases/download/v${pkgver}/portty"
-    "porttyd::https://github.com/WERDXZ/portty/releases/download/v${pkgver}/porttyd"
+    "portty-${pkgver}::https://github.com/WERDXZ/portty/releases/download/v${pkgver}/portty"
+    "porttyd-${pkgver}::https://github.com/WERDXZ/portty/releases/download/v${pkgver}/porttyd"
 )
 sha256sums=(
-    'a2556b52268db2f14ac8616b08b1d70b570d62cb43cb5c468d68504be4c71abb'
-    'e20d9950340bfbde995664f1358b611f5d83fb598158fb74aa9215b70ac597e0'
-    '43c91ea396af9ddec1e55f6ec449ac01f297a1eae5250c798ff360ca7b9e4be0'
+    '351e0c12a57e182b1cbf0669085288502ef541334d6c2992645ed0b103fc711c'
+    '80a0865ed3a8542c06d2ab7dc6d0d06336e85fa38623c9fcb49a493473c19541'
+    'e8b591674e42c07a65d4703f269f902c28155da20842bf3fd3d507970689e406'
 )
 
 package() {
     cd "portty-${pkgver}"
 
     # Install daemon
-    install -Dm755 "$srcdir/porttyd" "$pkgdir/usr/lib/portty/porttyd"
+    install -Dm755 "$srcdir/porttyd-${pkgver}" "$pkgdir/usr/lib/portty/porttyd"
 
     # Install CLI
-    install -Dm755 "$srcdir/portty" "$pkgdir/usr/bin/portty"
+    install -Dm755 "$srcdir/portty-${pkgver}" "$pkgdir/usr/bin/portty"
 
     # Install portal file
     install -Dm644 "misc/tty.portal" "$pkgdir/usr/share/xdg-desktop-portal/portals/tty.portal"

@@ -1,6 +1,6 @@
 pkgbase = portty-bin
 	pkgdesc = XDG Desktop Portal backend for TTY environments (prebuilt binaries)
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/werdxz/portty
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = portty-bin
 	provides = portty
 	conflicts = portty
 	conflicts = portty-git
-	source = portty-bin-0.2.0.tar.gz::https://github.com/WERDXZ/portty/archive/refs/tags/v0.2.0.tar.gz
-	source = portty::https://github.com/WERDXZ/portty/releases/download/v0.2.0/portty
-	source = porttyd::https://github.com/WERDXZ/portty/releases/download/v0.2.0/porttyd
-	sha256sums = a2556b52268db2f14ac8616b08b1d70b570d62cb43cb5c468d68504be4c71abb
-	sha256sums = e20d9950340bfbde995664f1358b611f5d83fb598158fb74aa9215b70ac597e0
-	sha256sums = 43c91ea396af9ddec1e55f6ec449ac01f297a1eae5250c798ff360ca7b9e4be0
+	source = portty-bin-0.2.1.tar.gz::https://github.com/WERDXZ/portty/archive/refs/tags/v0.2.1.tar.gz
+	source = portty-0.2.1::https://github.com/WERDXZ/portty/releases/download/v0.2.1/portty
+	source = porttyd-0.2.1::https://github.com/WERDXZ/portty/releases/download/v0.2.1/porttyd
+	sha256sums = 351e0c12a57e182b1cbf0669085288502ef541334d6c2992645ed0b103fc711c
+	sha256sums = 80a0865ed3a8542c06d2ab7dc6d0d06336e85fa38623c9fcb49a493473c19541
+	sha256sums = e8b591674e42c07a65d4703f269f902c28155da20842bf3fd3d507970689e406
 
 pkgname = portty-bin
