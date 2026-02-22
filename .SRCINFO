@@ -1,0 +1,20 @@
+pkgbase = perl-alien-gmp
+	pkgdesc = Alien package for the GNU Multiple Precision library
+	pkgver = 1.16
+	pkgrel = 1
+	url = https://metacpan.org/dist/Alien-GMP
+	arch = any
+	license = LGPL-3.0-only
+	checkdepends = perl-alien-build
+	checkdepends = perl-test-simple
+	makedepends = perl-alien-build>=0.32
+	makedepends = perl-devel-checklib
+	makedepends = perl-extutils-cbuilder
+	makedepends = perl-extutils-makemaker>=6.52
+	depends = perl-alien-build>=1.46
+	depends = perl>=5.6.0
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/Alien-GMP-1.16.tar.gz
+	sha256sums = 090cd48ee535bf62f178895617a851783ae11aa4c6006a1fd4d84a432f113da5
+
+pkgname = perl-alien-gmp

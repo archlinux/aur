@@ -1,0 +1,3 @@
+[perl-alien-gmp]
+source = "cpan"
+cpan = "Alien-GMP"
