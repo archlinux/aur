@@ -1,12 +1,12 @@
 # Maintainer: RgeditV1 <angelmiguelparedes@gmail.com>
 pkgname=yt-dlp-gui
 pkgver=1.0
-pkgrel=7
+pkgrel=8
 pkgdesc="A GUI for yt-dlp written in Python with customtkinter"
 arch=("x86_64")
 url="https://github.com/RgeditV1/yt-dlp-linux-gui"
 license=('MIT')
-depends=('python' 'python-cx-freeze' 'python-customtkinter' 'python-pillow' 'python-plyer' 'yt-dlp')
+depends=('python' 'python-customtkinter' 'python-pillow' 'python-plyer' 'yt-dlp')
 makedepends=('git' 'python-build')
 source=("git+https://github.com/RgeditV1/yt-dlp-linux-gui.git#branch=main"
         "yt-dlp-gui.desktop")
@@ -14,6 +14,7 @@ sha256sums=('SKIP' 'SKIP')
 
 build() {
   cd "${srcdir}/yt-dlp-linux-gui"
+  pip install cx_freeze
   python setup.py build
 }
 
