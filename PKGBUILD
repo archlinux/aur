@@ -3,7 +3,7 @@
 pkgname='linux-firmware-gaokun3'
 _tag=200.0.10.0
 pkgver=2.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Firmware files for HUAWEI MateBook E Go (sc8280xp)'
 license=('custom')
 arch=('any')
@@ -19,7 +19,7 @@ source=(
 )
 sha256sums=(
     'a1240497f44145c1445110522820c7ad8d4d4995403b399ee6323743f30e67b9'
-    'ee911c748deadc0191af50074b26ad177c8a2e78ff00e9578504b71d5d27b08a'
+    'SKIP'
 )
 
 _linux_fw='https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git'
