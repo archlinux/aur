@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://codeberg.org/limforge/${pkgname}"
 license=('GPL-3.0-or-later')
 makedepends=('cargo')
-depends=('gcc-libs' 'glibc')
+depends=('glibc' 'libgcc')
 source=("https://codeberg.org/limforge/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('b2ade672f29545880815377478e83dc0651333089f8dd00d8cc17a066e5bed34')
 
