@@ -4,7 +4,7 @@
 _dist='Test-Mojibake'
 pkgname='perl-test-mojibake'
 pkgver=1.3
-pkgrel=2
+pkgrel=3
 pkgdesc='check your source for encoding misbehavior'
 arch=('any')
 url="https://metacpan.org/dist/$_dist"
@@ -13,7 +13,6 @@ depends=(
     'perl-pathtools'
     'perl-pod-usage'
     'perl-test-simple'
-    'perl-unicode-checkutf8'
     'perl-unicode-checkutf8'
     'perl>=5.6.0'
 )
