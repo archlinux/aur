@@ -3,7 +3,7 @@
 
 pkgname=quran-companion
 _pkgname=quran-companion
-pkgver=1.3.3
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Free and open-source desktop Quran reader and player (binary release)"
 url="https://github.com/0xzer0x/quran-companion"
@@ -14,7 +14,7 @@ makedepends=()
 provides=(quran-companion)
 conflicts=(quran-companion-git)
 source=("https://github.com/0xzer0x/quran-companion/releases/download/v${pkgver}/Quran_Companion-${pkgver}-x86_64.AppImage")
-b2sums=("d1683c2f1bcf1ad334409eb184286a63a175277d7370eeea8223335e7ed01e0868a3138ec4cb9892ddc1660745c6f83d7520fe3c13ba635bc7b16f42e24d2b57")
+b2sums=("640e70a39bb15b9eba620184e63d5567f0711e7db32658c283f483b4e8aabb35dbea986a548ee3b353f9ebe4374dcf30d269aec9cd4174a74d362334148ef26d")
 options=(!strip)
 options=(!strip !debug)
 
