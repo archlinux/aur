@@ -2,24 +2,25 @@
 # Maintainer: Marco Realacci <marco@marcorealacci.me>
 
 pkgname='conservation-daemon-bin'
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Battery conservation mode daemon for Lenovo Yoga/IdeaPad'
 url='https://git.marcorealacci.me/marcorealacci/conservation-daemon'
 arch=('x86_64')
 license=('MIT')
-provides=('conservation-daemon' 'conservationd' 'conservationctl')
+provides=('conservation-daemon' 'conservationd' 'conservationctl' 'conservation-tray')
 conflicts=('conservation-daemon')
-depends=('upower')
+depends=('upower' 'gtk3' 'libayatana-appindicator' 'zenity')
 install=conservation-daemon.install
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://git.marcorealacci.me/marcorealacci/conservation-daemon/releases/download/v${pkgver}/conservation-daemon_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('0a2c2e30260146792cc48ce1a9c164c98d8f91efeb57fa8d3a836847d87a223b')
+sha256sums_x86_64=('11a4217632def457b159954ee2b1a08e3dc73e19e6c6abee8d8364f55b3ce547')
 
 package() {
   install -Dm755 "./conservationd" "${pkgdir}/usr/bin/conservationd"
   install -Dm755 "./conservationctl" "${pkgdir}/usr/bin/conservationctl"
-  # Write systemd unit file
+  install -Dm755 "./conservation-tray" "${pkgdir}/usr/bin/conservation-tray"
+  # System-level daemon service
   install -d "${pkgdir}/usr/lib/systemd/system"
   printf '%s\n' \
   '[Unit]' \
@@ -33,10 +34,29 @@ package() {
   'Restart=on-failure' \
   'RestartSec=5s' \
   'RuntimeDirectory=conservationd' \
+  'StateDirectory=conservationd' \
   'Group=conservationd' \
   'RuntimeDirectoryMode=0770' \
+  'StateDirectoryMode=0755' \
   '' \
   '[Install]' \
   'WantedBy=multi-user.target' \
   > "${pkgdir}/usr/lib/systemd/system/conservationd.service"
+  # User-level tray service
+  install -d "${pkgdir}/usr/lib/systemd/user"
+  printf '%s\n' \
+  '[Unit]' \
+  'Description=Battery Conservation Tray Icon' \
+  'After=graphical-session.target' \
+  'PartOf=graphical-session.target' \
+  '' \
+  '[Service]' \
+  'Type=simple' \
+  'ExecStart=/usr/bin/conservation-tray' \
+  'Restart=on-failure' \
+  'RestartSec=5s' \
+  '' \
+  '[Install]' \
+  'WantedBy=graphical-session.target' \
+  > "${pkgdir}/usr/lib/systemd/user/conservation-tray.service"
 }
