@@ -1,11 +1,11 @@
 pkgname=typhoon
-pkgver=1.6.0
-pkgrel=2
+pkgver=1.7.0
+pkgrel=1
 pkgdesc="A stylish weather app based on Stormcloud"
 arch=('any')
 url="https://github.com/archisman-panigrahi/typhoon"
 license=('GPL-3.0-or-later')
-depends=('gtk3' 'webkit2gtk' 'python' 'imagemagick' 'python-dbus' 'libportal' 'python-cairosvg')
+depends=('python' 'python-pyqt6' 'python-pyqt6-webengine' 'python-dbus' 'python-gobject' 'libportal' 'python-cairosvg')
 makedepends=('git' 'meson' 'ninja')
 source=("git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
