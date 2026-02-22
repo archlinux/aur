@@ -10,19 +10,18 @@ provides=($_name)
 url="https://github.com/olicesx/dae"
 proxy="https://gh-proxy.org/"
 license=('AGPL-3.0-or-later')
-backup=("etc/dae/config.dae")
 
 depends=()
 makedepends=('git' 'go' 'base-devel' 'clang' 'llvm' 'libbpf' 'linux-headers' 'linux-api-headers') 
 
 source=(
-        "${pkgname}::git+${proxy}/${url}.git"
-        "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat"
-        "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat"
+  "${pkgname}::git+${proxy}/${url}.git"
+  "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat"
+  "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat"
         )
 
 sha256sums=(
-	"SKIP"
+  "SKIP"
   "SKIP"
   "SKIP"
 )
@@ -73,7 +72,10 @@ package() {
   install -Dm640 "install/empty.dae" "${pkgdir}/etc/dae/config.dae"
 
   # Install geoip.dat and geosite.dat to /usr/share/dae/
-  mkdir -p "${pkgdir}/usr/share/dae/"
-	cp ../geoip.dat "${pkgdir}/usr/share/dae/geoip.dat"
-	cp ../geosite.dat "${pkgdir}/usr/share/dae/geosite.dat"
+  kdir -p "${pkgdir}/usr/share/dae/"
+  cp ../geoip.dat "${pkgdir}/usr/share/dae/geoip.dat"
+  cp ../geosite.dat "${pkgdir}/usr/share/dae/geosite.dat"
 }
+
+backup=("etc/dae/config.dae")
+
