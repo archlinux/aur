@@ -1,0 +1,3 @@
+[perl-graph-easy]
+source = "cpan"
+cpan = "Graph-Easy"
