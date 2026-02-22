@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>
 
 pkgname=libred
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Solar elevation and blackbody colour calculation library for C"
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ license=('custom:ISC')
 depends=()
 makedepends=(sed)
 source=(libred-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(45991dcd3cc30a7650a8149ba0af9ddf1c6d3b489ae847940465245abc994ed1)
+sha256sums=(f27665720ade37a0b949f59a821e9af55aa7e7751559e837590d3d54d4d049ea)
 
 
 build() {
