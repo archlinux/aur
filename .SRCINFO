@@ -1,13 +1,13 @@
 pkgbase = libcoopgamma
 	pkgdesc = Cooperative gamma library
-	pkgver = 1.2.4
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://codeberg.org/maandree/libcoopgamma
 	arch = i686
 	arch = x86_64
-	license = ISC
+	license = custom:ISC
 	depends = coopgammad
-	source = libcoopgamma-1.2.4.tar.gz::https://codeberg.org/maandree/libcoopgamma/archive/1.2.4.tar.gz
-	sha512sums = c20eb2c8d453b8ae29b612c04c58d61312fc78fc078f287b57cc01cd7b0a83512ec4b30d16daaf4222e144ad472e7b705365bf4d1a16098a7d6cad3f9c074cf4
+	source = libcoopgamma-1.2.5.tar.gz::https://codeberg.org/maandree/libcoopgamma/archive/1.2.5.tar.gz
+	sha256sums = c74e1d65ea85257954c6b41804d59b5226ca850b3f74fc4bcdf4d9b0df8ca788
 
 pkgname = libcoopgamma
