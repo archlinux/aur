@@ -1,7 +1,7 @@
 pkgbase = monochrome
 	pkgdesc = Lossless music streaming
 	pkgver = 2.2.0.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/monochrome-music/monochrome
 	arch = x86_64
 	license = HIPPOCRATIC LICENSE

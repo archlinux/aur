@@ -4,7 +4,7 @@
 
 pkgname='monochrome'
 pkgver=2.2.0.1 # first 3 are real version, last is updated by an external workflow on source change
-pkgrel=6
+pkgrel=7
 pkgdesc="Lossless music streaming"
 arch=('x86_64')
 url=https://github.com/monochrome-music/monochrome
@@ -20,7 +20,7 @@ sha256sums_x86_64=("f3d6406a87a64bdda31f16f8c4c58305ab7025866f9926a8167698a6a14c
 package() {
   # Install full app to /opt
   install -d "$pkgdir/opt/$pkgname"
-  rsync -a --no-links "$srcdir"/* "$pkgdir/opt/$pkgname"
+  find "$srcdir"/* ! -type l -exec cp -r -t "$pkgdir/opt/$pkgname" {} +
 
   # Wrapper script
   install -d "$pkgdir/usr/bin"
