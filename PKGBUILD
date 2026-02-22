@@ -6,7 +6,7 @@
 
 _pkgname="legcord"
 pkgname="$_pkgname"
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Discord client with builtin client mod and theme support"
 url="https://github.com/Legcord/Legcord"
@@ -28,15 +28,12 @@ optdepends=(
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git#tag=v$pkgver")
-sha256sums=('b5626ed8acd129b61c48591826ba157ebb24686b8752e8f76b2111edc929ecf9')
+sha256sums=('32680040c1a55767524a6e2990918be88f7e466cea43bd3d1151793c7dfd7853')
 
 build() (
   # avoid cluttering user home
   export HOME="$srcdir/tmp_home"
-  export XDG_CACHE_HOME="$srcdir/tmp_cache"
-  export XDG_CONFIG_HOME="$srcdir/tmp_config"
-  export XDG_DATA_HOME="$srcdir/tmp_data"
-  export XDG_STATE_HOME="$srcdir/tmp_state"
+  export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 
   local _electron_version=$(cat /usr/lib/electron/version)
 
