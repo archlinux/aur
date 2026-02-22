@@ -1,6 +1,6 @@
 pkgbase = python-polyfactory
 	pkgdesc = Simple and powerful factories for mock data generation
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/litestar-org/polyfactory
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-polyfactory
 	depends = python-pytest
 	depends = python-sqlalchemy
 	depends = python-typing_extensions
-	source = python-polyfactory-3.2.0.tar.gz::https://github.com/litestar-org/polyfactory/archive/v3.2.0.tar.gz
-	sha256sums = ff4d28f62cdba442a9c0918b970fadf9f83e4b8b141a40d5b9bbb6ef04c056d9
+	source = python-polyfactory-3.3.0.tar.gz::https://github.com/litestar-org/polyfactory/archive/v3.3.0.tar.gz
+	sha256sums = 84fcc7d92f782e2a2e50e6c164d5199716ddc34fd8a1e72ebe4d56faec131da8
 
 pkgname = python-polyfactory
