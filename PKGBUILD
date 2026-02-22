@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>
 
 pkgname=xpybar
-pkgver=1.20.2
+pkgver=1.20.3
 pkgrel=1
 pkgdesc="A highly extensible minimalistic dock panel configured in Python 3"
 arch=(any)
@@ -28,7 +28,7 @@ optdepends=("alarm: for limiting the time of a file search in locks"
 makedepends=(make coreutils sed zip auto-auto-complete texinfo)
 install=xpybar.install
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(77a0a04199c7cce72613c8c361891dab2b4158f06fac1e197dcd06ed6f249298)
+sha256sums=(e2dafbe8af82fade57c53acfc56fb09ca95a547f82d08e1300e8ae25aea93150)
 
 
 build() {
