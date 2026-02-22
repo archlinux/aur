@@ -1,7 +1,7 @@
 pkgbase = portty
 	pkgdesc = XDG Desktop Portal backend for TTY environments
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = https://github.com/werdxz/portty
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = portty
 	depends = xdg-desktop-portal
 	provides = portty
 	conflicts = portty-git
-	source = portty-0.2.0.tar.gz::https://github.com/WERDXZ/portty/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = a2556b52268db2f14ac8616b08b1d70b570d62cb43cb5c468d68504be4c71abb
+	source = portty-0.2.1.tar.gz::https://github.com/WERDXZ/portty/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 351e0c12a57e182b1cbf0669085288502ef541334d6c2992645ed0b103fc711c
 
 pkgname = portty
