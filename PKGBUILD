@@ -3,11 +3,11 @@
 
 pkgname=zola
 pkgver=0.22.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An opinionated static site generator"
 arch=('x86_64')
 url="https://github.com/getzola/zola"
-depends=('gcc-libs' 'oniguruma')
+depends=('libgcc' 'glibc' 'oniguruma')
 makedepends=('cargo')
 license=('MIT')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/getzola/zola/archive/v${pkgver}.tar.gz")
