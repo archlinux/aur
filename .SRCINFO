@@ -1,0 +1,13 @@
+pkgbase = arch-autoupdater
+	pkgdesc = Auto background updater for Arch Linux with popup notifications
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/codmasterhem-sudo/arch-autoupdater
+	arch = any
+	license = MIT
+	depends = python
+	depends = zenity
+	source = https://raw.githubusercontent.com/codmasterhem-sudo/arch-autoupdater/main/arch-autoupdater.py
+	sha256sums = SKIP
+
+pkgname = arch-autoupdater
