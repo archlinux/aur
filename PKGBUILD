@@ -1,25 +1,20 @@
 # Maintainer: ava1ar <mail at ava1ar dot me>
 
-_pkgname=openterfaceqt
+_pkgname=QIDIStudio
 
-pkgname="${_pkgname}"-appimage
-pkgver=0.5.13
+pkgname=qidi-studio-appimage
+pkgver=2.04.01.11
 pkgrel=1
-pkgdesc="Openterface Mini-KVM Host Application (AppImage version)"
+pkgdesc="QIDIStudio is a professional 3D printer slicing software for QiDi 3D printers (AppImage version)"
 arch=('x86_64')
-url="https://github.com/TechxArtisanStudio/Openterface_QT"
+url="https://github.com/QIDITECH/QIDIStudio"
 license=('GPL-3.0-only')
-depends=('zlib' 'fuse2')
+depends=('zlib' 'fuse2' 'webkit2gtk-4.1')
 options=(!strip)
-install=${pkgname}.install
 _appimage="${pkgname}-${pkgver}.AppImage"
-source_x86_64=("${_appimage}::https://github.com/TechxArtisanStudio/Openterface_QT/releases/download/${pkgver}/openterfaceQT_linux_amd64.AppImage"
-               "https://raw.githubusercontent.com/TechxArtisanStudio/Openterface_QT/${pkgver}/LICENSE"
-               "51-openterface.rules")
+source_x86_64=("${_appimage}::https://github.com/QIDITECH/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_v0${pkgver}_Ubuntu22.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('ed4469aefca0fb591981a29b76c813b3d93125b246a52175ad9f606a4bbfc0dc'
-                   '8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef'
-                   'c2b3f7e0ad8456d3e6f85931986f4b624687bf15309eaba0c6ab1685cf75d89d')
+sha256sums_x86_64=('f948f44b804e012493fb732a70535d5b574141e331342e5bb4c522355c45b378')
 
 prepare() {
     chmod +x "${_appimage}"
@@ -36,7 +31,6 @@ build() {
 package() {
     # AppImage
     install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
-    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/opt/${pkgname}/LICENSE"
 
     # Desktop file
     install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
@@ -52,7 +46,4 @@ package() {
     # Symlink license
     install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
     ln -s "/opt/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname"
-
-    # Udev rules
-    install -Dm644 "${srcdir}/51-openterface.rules" "${pkgdir}/usr/lib/udev/rules.d/51-openterface.rules"
 }
