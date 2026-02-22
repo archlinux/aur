@@ -1,6 +1,6 @@
 pkgbase = librepcb
 	pkgdesc = A free EDA software to develop printed circuit boards
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://librepcb.org/
 	arch = x86_64
@@ -20,10 +20,11 @@ pkgbase = librepcb
 	depends = polyclipping
 	depends = qt6-base
 	depends = qt6-svg
-	source = https://download.librepcb.org/releases/2.0.0/librepcb-2.0.0-source.zip
-	source = https://download.librepcb.org/releases/2.0.0/librepcb-2.0.0-source.zip.asc
+	options = !lto
+	source = https://download.librepcb.org/releases/2.0.1/librepcb-2.0.1-source.zip
+	source = https://download.librepcb.org/releases/2.0.1/librepcb-2.0.1-source.zip.asc
 	validpgpkeys = D6F9AF572228C5BCD6B538407EF3061F5C8D5E25
-	sha256sums = 9a56db252991ae2ce69bf9009364e3e4a3d1f91f1295b855a54793a2f2371748
+	sha256sums = 62a19cd187034dfe0d52f5aad4972062d4fc30647c4ba30505fa6e5418779bcc
 	sha256sums = SKIP
 
 pkgname = librepcb
