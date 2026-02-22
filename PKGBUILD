@@ -2,7 +2,7 @@
 
 pkgname=aliasx
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Alias extended - task, alias and build handles'
 url='https://github.com/hansbinderup/aliasx'
 license=('Apache-2.0')
@@ -23,6 +23,6 @@ build() {
 
 package() {
     pushd "$srcdir/aliasx-$pkgver" > /dev/null
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+    install -Dm0755 "target/release/aliasx-cli" "$pkgdir/usr/bin/aliasx"
     popd > /dev/null
 }
