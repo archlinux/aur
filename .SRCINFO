@@ -1,6 +1,6 @@
 pkgbase = en-croissant-bin
 	pkgdesc = The Ultimate Chess Toolkit
-	pkgver = 0.13.0
+	pkgver = 0.14.1
 	pkgrel = 1
 	url = https://github.com/franciscoBSalgueiro/en-croissant
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = en-croissant-bin
 	depends = gdk-pixbuf2
 	depends = glibc
 	conflicts = en-croissant
-	source_x86_64 = https://github.com/franciscoBSalgueiro/en-croissant/releases/download/v0.13.0/en-croissant_0.13.0_amd64.deb
-	sha256sums_x86_64 = c5e28a0da345f41fbc92a5082bfe3623d8f236ddeca8897bb9f9537f48e98a97
+	source_x86_64 = https://github.com/franciscoBSalgueiro/en-croissant/releases/download/v0.14.1/en-croissant_0.14.1_amd64.deb
+	sha256sums_x86_64 = c55fbd6ade61e527125da584309f6c49052587daac337aad68a2bae0fbc9e33c
 
 pkgname = en-croissant-bin
