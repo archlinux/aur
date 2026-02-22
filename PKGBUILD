@@ -2,8 +2,8 @@
 # Contributor: Polarian <polarian@polarian.dev>
 
 pkgname=saber
-pkgver=1.29.3
-_flutter_ver=3.38.2
+pkgver=1.31.1
+_flutter_ver=3.41.1
 pkgrel=1
 pkgdesc="The cross-platform notes app built for handwriting"
 arch=('x86_64')
@@ -14,24 +14,25 @@ depends=('at-spi2-core'
          'cairo'
          'curl'
          'fontconfig'
-         'gcc-libs'
          'glib2'
          'glibc'
          'gstreamer'
          'gtk3'
          'hicolor-icon-theme'
          'libepoxy'
+         'libgcc'
          'libsecret'
+         'libstdc++'
          'libx11'
          'libxmu'
          'pango'
          'webkit2gtk-4.1'
          'zenity'
          'zlib')
-makedepends=('clang' 'cmake' 'fvm' 'gst-plugins-base-libs' 'java-environment' 'ninja')
+makedepends=('clang' 'cmake' 'fvm' 'gst-plugins-base-libs' 'java-environment' 'ninja' 'patchelf')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-        "saber.sh")
-sha256sums=('104dbe888fa5faea47cbcd09423dde681d56a1d8f88c362d4dc1f890e56d13cc'
+        "${pkgname}.sh")
+sha256sums=('61de2f9c6b1f736a372fad76c376eaf5ebf175f2e4ebbf49fa07ddacbb8a959b'
             '2429585c739f6da2d2068fd44d5868bb9a0ef6657d8117ca32fd8e0b78942a10')
 
 prepare() {
@@ -39,16 +40,19 @@ prepare() {
     fvm install "${_flutter_ver}"
     fvm global "${_flutter_ver}"
 
-    sed -i 's/dart/fvm dart/' ./patches/remove_dev_dependencies.sh
+    sed -i 's/dart/fvm dart/' ./patches/post/remove_wasm_libs.sh
 
     # Disable analytics
     fvm flutter config --no-analytics
 
+    ./patches/pre/remove_dev_dependencies.sh
+    ./patches/pre/remove_proprietary_dependencies.sh
+
     # Pull dependencies within prepare, allowing for offline builds later on
     fvm flutter pub get
 
-    ./patches/remove_proprietary_dependencies.sh
-    ./patches/remove_dev_dependencies.sh
+    ./patches/post/patch_rust_versions.sh
+    ./patches/post/remove_wasm_libs.sh
 }
 
 build() {
@@ -68,4 +72,6 @@ package() {
 
     # Copy wrapper script to /usr/bin
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+
+    patchelf --remove-rpath "${pkgdir}/opt/${pkgname}/lib/"lib*_plugin.so
 }
