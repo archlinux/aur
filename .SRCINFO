@@ -1,13 +1,13 @@
 pkgbase = sleeping-getty
 	pkgdesc = Do not start a fullblown getty before it is necessary
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://codeberg.org/maandree/sleeping-getty
 	arch = i686
 	arch = x86_64
 	license = custom:ISC
 	makedepends = linux-api-headers
-	source = sleeping-getty-1.2.1.tar.gz::https://codeberg.org/maandree/sleeping-getty/archive/1.2.1.tar.gz
-	sha256sums = e30f2c9b1c4681cc53cfda79866282fc8d5735406ec5df7f2cc00fe4f1ddb919
+	source = sleeping-getty-1.2.2.tar.gz::https://codeberg.org/maandree/sleeping-getty/archive/1.2.2.tar.gz
+	sha256sums = 28350c39045721483b0f86dae91973ea251588194614d1d3ef1d7995c1a353fe
 
 pkgname = sleeping-getty
