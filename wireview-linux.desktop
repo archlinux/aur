@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=WireView
+Comment=Unofficial Linux port of the Thermal Grizzly WireView Pro II desktop app
+Exec=wireview-linux
+Icon=wireview-linux
+Terminal=false
+Type=Application
+Categories=Utility;HardwareSettings;

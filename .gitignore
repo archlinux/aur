@@ -1,0 +1,15 @@
+# Downloaded source files and git clones
+*.tar.gz
+*.tar.xz
+*.zip
+wireview-linux/
+
+# makepkg build directories
+pkg/
+src/
+
+# Compiled Arch packages
+*.pkg.tar.*
+
+# .NET specific build output directories
+out/
