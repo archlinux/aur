@@ -2,7 +2,7 @@
 
 pkgname=portty-git
 pkgver=0.2.0.r0.gf3e17da
-pkgrel=1
+pkgrel=2
 pkgdesc="XDG Desktop Portal backend for TTY environments"
 arch=('x86_64')
 url="https://github.com/werdxz/portty"
@@ -19,9 +19,13 @@ pkgver() {
     git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
+prepare() {
+    rustup toolchain install --profile minimal --no-self-update nightly
+}
+
 build() {
     cd "$pkgname"
-    rustup run nightly cargo build --release --locked
+    cargo +nightly build --release --locked
 }
 
 package() {
