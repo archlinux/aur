@@ -1,5 +1,5 @@
 # Maintainer: OpenLyst <https://openlyst.ink>
-# Unstable build from GitHub releases: https://github.com/justacalico/Openlyst-more-builds/releases
+# Unstable build from GitHub releases: https://github.com/openlyst/builds/releases
 pkgname=opentorrent-unstable
 pkgver=2.0.0
 pkgrel=1
@@ -12,7 +12,7 @@ optdepends=()
 provides=('opentorrent')
 conflicts=('opentorrent')
 options=('!strip')
-source=("opentorrent-unstable-${pkgver}.zip::https://github.com/justacalico/Openlyst-more-builds/releases/download/build-35/opentorrent-2.0.0-2026-02-18-linux-x64.zip")
+source=("opentorrent-unstable-${pkgver}.zip::https://github.com/openlyst/builds/releases/download/build-1/opentorrent-2.0.0-2026-02-22-linux-x64.zip")
 sha256sums=('SKIP')
 
 package() {
