@@ -1,25 +1,21 @@
-# Maintainer: sineptic <sineptic0@gmail.com>
-pkgname=sse-bin
-pkgver=15.0.8_1
+# Maintainer: CosmicPredator <cosmicpredator@proton.me>
+pkgname=chibi-cli
+pkgver=1.2.0
 pkgrel=1
-pkgdesc="Paranoia Secret Space Encryptor File and Text desktop utilities from Paranoiaworks"
+pkgdesc="Chibi for AniList - A lightweight anime & manga tracker CLI app powered by AniList."
 arch=('x86_64')
-url="https://paranoiaworks.mobi"
-license=('custom')
+url="https://chibi-cli.pages.dev/"
+license=('GPL3')
 source=(
-    "$url/download/files/pfte_${pkgver//_/-}_amd64.deb"
-    "license.txt"
+    "https://github.com/CosmicPredator/chibi-cli/releases/download/${pkgver}/chibi_${pkgver}_amd64.deb"
 )
 sha256sums=(
-    '31b3fae30d3e26804f5ed77bbd66920e824042a239c94720023dded78c571e3c'
-    'f23431d1e94d187fe3e0254b8a530a875d8615bbe451e9d3f564627835e7d527'
+    '5e7d7383774a0a8ab72b4d20ac522e4303c9a55f8aa3f97489f0a8f4fd55bfe3'
 )
 
-options=('!strip')
-
 package() {
-    bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}"
-    echo "Installing license and desktop file..."
-    install -Dm644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
-    install -Dm644 "${pkgdir}/opt/pfte/lib/pfte-Paranoia_File_and_Text_Encryption.desktop" "${pkgdir}/usr/share/applications/pfte-Paranoia_File_and_Text_Encryption.desktop"
+    bsdtar -xf "$srcdir/chibi_${pkgver}_amd64.deb"
+    bsdtar -xf data.tar.*
+    
+    install -Dm755 usr/local/bin/chibi "$pkgdir/usr/bin/chibi"
 }
