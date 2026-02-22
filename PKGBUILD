@@ -2,7 +2,7 @@
 _pkgname=corona
 pkgname=solar2d-git
 pkgver=3728.r0.ab736b71
-pkgrel=1
+pkgrel=2
 pkgdesc="Solar2D (formerly Corona SDK) cross-platform game engine"
 arch=('x86_64')
 url="https://github.com/coronalabs/corona"
@@ -50,4 +50,5 @@ build() {
 package() {
   # Use DESTDIR to redirect installation to the package directory
   DESTDIR="$pkgdir" cmake --install build
+  ln -s /usr/bin/Solar2D/Solar2D "${pkgdir}/usr/bin/solar2d"
 }
