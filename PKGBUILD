@@ -4,7 +4,7 @@
 pkgname=postman-live-bin
 pkgver=11.85.1
 pkgrel=1
-pkgdesc="Build, test, and document your APIs faster"
+pkgdesc="Build, test, and document your APIs faster (Live version)"
 provides=('postman')
 conflicts=('postman')
 arch=('x86_64' 'aarch64')
