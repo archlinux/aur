@@ -1,12 +1,12 @@
 pkgbase = liberror
 	pkgdesc = Library for custom errors
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://codeberg.org/maandree/liberror
 	arch = i686
 	arch = x86_64
-	license = ISC
-	source = liberror-1.1.1.tar.gz::https://codeberg.org/maandree/liberror/archive/1.1.1.tar.gz
-	sha256sums = 3af9a50b44b086c37698b6df097edba29a9208aa36b28e38ae1b470e77348e27
+	license = custom:ISC
+	source = liberror-1.1.2.tar.gz::https://codeberg.org/maandree/liberror/archive/1.1.2.tar.gz
+	sha256sums = f73e04e6690946e814f19e4da834d16806b47ec2f442c29ce6ef646b1b949c4a
 
 pkgname = liberror
