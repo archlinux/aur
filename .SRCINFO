@@ -1,12 +1,12 @@
 pkgbase = setpgrp
 	pkgdesc = Commands providing access to the setpgrp and getpgrp system calls
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://codeberg.org/maandree/setpgrp
 	arch = i686
 	arch = x86_64
 	license = custom:ISC
-	source = setpgrp-2.1.1.tar.gz::https://codeberg.org/maandree/setpgrp/archive/2.1.1.tar.gz
-	sha256sums = 8a781dbe2abcd52c5fb1c13bd6798d2be0d58df12b8bfec6badd96f5790f554f
+	source = setpgrp-2.1.2.tar.gz::https://codeberg.org/maandree/setpgrp/archive/2.1.2.tar.gz
+	sha256sums = 89b3a80407c94598fb6941225aacaa33c47f9e8f233c644c201ba17eace82a50
 
 pkgname = setpgrp

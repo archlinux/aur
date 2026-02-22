@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>
 
 pkgname=setpgrp
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Commands providing access to the setpgrp and getpgrp system calls"
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ license=('custom:ISC')
 depends=()
 makedepends=()
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(8a781dbe2abcd52c5fb1c13bd6798d2be0d58df12b8bfec6badd96f5790f554f)
+sha256sums=(89b3a80407c94598fb6941225aacaa33c47f9e8f233c644c201ba17eace82a50)
 
 build() {
     cd "$srcdir/$pkgname"
