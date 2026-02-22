@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=YT-DLP GUI
+Comment=Graphical interface for yt-dlp
+Exec=yt-dlp-gui
+Icon=yt-dlp-gui
+Terminal=false
+Type=Application
+Categories=AudioVideo;Network;
