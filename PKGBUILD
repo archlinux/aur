@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>
 
 pkgname=galsause
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Set default ALSA PCM device"
 url='https://codeberg.org/maandree/galsause'
@@ -10,7 +10,7 @@ license=('custom:ISC')
 depends=(libsimple libasound.so gtk2 alsause)
 makedepends=(libsimple libasound.so gtk2)
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(4b07c2ea672a8700f19690234c417dc4642ddb1e0fc7297b5b0087ae07c5b638)
+sha256sums=(b771dd33922fadc3da1da4cd7ea12c4cd0dbcb026a91194f334b6de8503f538f)
 
 build () {
 	cd "$srcdir/galsause"

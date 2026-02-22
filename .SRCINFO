@@ -1,6 +1,6 @@
 pkgbase = galsause
 	pkgdesc = Set default ALSA PCM device
-	pkgver = 1.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://codeberg.org/maandree/galsause
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = galsause
 	depends = libasound.so
 	depends = gtk2
 	depends = alsause
-	source = galsause-1.0.tar.gz::https://codeberg.org/maandree/galsause/archive/1.0.tar.gz
-	sha256sums = 4b07c2ea672a8700f19690234c417dc4642ddb1e0fc7297b5b0087ae07c5b638
+	source = galsause-1.0.1.tar.gz::https://codeberg.org/maandree/galsause/archive/1.0.1.tar.gz
+	sha256sums = b771dd33922fadc3da1da4cd7ea12c4cd0dbcb026a91194f334b6de8503f538f
 
 pkgname = galsause
