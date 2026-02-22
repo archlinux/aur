@@ -1,46 +1,54 @@
-# Maintainer: Florian Pritz <bluewind@xinu.at>
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: Florian Pritz <bluewind@xinu.at>
 
-pkgname=perl-devel-checkbin
+_dist='Devel-CheckBin'
+pkgname='perl-devel-checkbin'
 pkgver=0.04
-pkgrel=11
+pkgrel=12
 pkgdesc='check that a command is available'
-arch=(any)
-license=(PerlArtistic GPL)
-options=(!emptydirs)
-depends=('perl>=5.8.1')
+arch=('any')
+url="https://metacpan.org/dist/$_dist"
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl-exporter'
+    'perl-extutils-makemaker>=6.52'
+    'perl-parent'
+    'perl>=5.8.1'
+)
 makedepends=('perl-extutils-makemaker>=6.64')
-url=https://metacpan.org/release/Devel-CheckBin
-source=("https://search.cpan.org/CPAN/authors/id/T/TO/TOKUHIROM/Devel-CheckBin-$pkgver.tar.gz")
-md5sums=(042b68e48d9b53de7d3ef4c726d57cb2)
-sha512sums=(7b28092fa2e6309ddc09976dcfadabbad9be678352c5b97a7938bf7e73944454e5c3c198aaf1a39939f24544e436ec4323925e77fa91e8d92e3986702c840f44)
-_ddir="Devel-CheckBin-$pkgver"
+checkdepends=(
+    'perl-file-temp'
+    'perl-test-simple'
+)
+options=('!emptydirs')
+source=("https://cpan.metacpan.org/authors/id/T/TO/TOKUHIROM/$_dist-$pkgver.tar.gz")
+sha256sums=('157f3db59c29ed1d49133a469cee772c885ad4ee64e8692a91b3ebfdbe2fe3e4')
 
 build()
-(
-  cd "$srcdir/$_ddir"
-  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
-  unset PERL5LIB PERL_MM_OPT
-  /usr/bin/perl Makefile.PL
-  make
-)
+{
+    cd $_dist-$pkgver
+
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
+    make
+}
 
 check()
-(
-  cd "$srcdir/$_ddir"
-  export PERL_MM_USE_DEFAULT=1
-  unset PERL5LIB
-  make test
-)
+{
+    cd $_dist-$pkgver
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make test
+}
 
 package()
-(
-  cd "$srcdir/$_ddir"
-  make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
-)
+{
+    cd $_dist-$pkgver
 
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+}
