@@ -6,7 +6,7 @@ pkgname=(
     'openvino-intel-gpu-plugin-git'
     'openvino-intel-npu-plugin-git'
     'python-openvino-git')
-pkgver=2025.4.1.r336.ge4b65a0ab6c
+pkgver=2026.0.1.r193.gb7f9dbfa794
 pkgrel=1
 pkgdesc='A toolkit for optimizing and deploying deep learning models (git version)'
 arch=('x86_64')
@@ -22,7 +22,6 @@ makedepends=(
     'opencv'
     'patchelf'
     'pugixml'
-    'pybind11'
     'python'
     'python-build'
     'python-installer'
@@ -40,6 +39,7 @@ source=('git+https://github.com/openvinotoolkit/openvino.git'
         'git+https://github.com/KhronosGroup/OpenCL-CLHPP.git'
         'git+https://github.com/onnx/onnx.git'
         'git+https://github.com/protocolbuffers/protobuf.git'
+        'git+https://github.com/pybind/pybind11.git'
         'git+https://github.com/intel/ittapi.git'
         'git+https://github.com/nithinn/ncc.git'
         'git+https://github.com/oneapi-src/oneDNN.git'
@@ -51,7 +51,6 @@ source=('git+https://github.com/openvinotoolkit/openvino.git'
         'git+https://github.com/jbeder/yaml-cpp.git'
         'git+https://github.com/openvinotoolkit/telemetry.git'
         'git+https://github.com/libxsmm/libxsmm.git'
-        'git+https://github.com/openvinotoolkit/shl.git'
         'git+https://github.com/ARM-software/kleidiai.git'
         'git+https://github.com/herumi/xbyak_riscv.git'
         '010-openvino-change-install-paths.patch'
@@ -80,7 +79,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'dbe7ae07bfa341f7defa15ebf9843ca7c49cceabf34db45b1253dff28c7cbead'
+            'c5ed3a23fc153a082e97841c892b83685426a431a1a32a40f120d91633943e53'
             'd5ff4b19ca9daf2b052650d2d7f60297239091c68e57fd7d5637508be0ef0e52')
 
 export GIT_LFS_SKIP_SMUDGE='1'
@@ -101,7 +100,7 @@ prepare() {
     git -C openvino config --local submodule.thirdparty/ocl/clhpp_headers.url "${srcdir}/OpenCL-CLHPP"
     git -C openvino config --local submodule.thirdparty/onnx.url "${srcdir}/onnx"
     git -C openvino config --local submodule.thirdparty/protobuf.url "${srcdir}/protobuf"
-    git -C openvino config --local submodule.src/bindings/python/thirdparty/pybind11.update none
+    git -C openvino config --local submodule.src/bindings/python/thirdparty/pybind11.url "${srcdir}/pybind11"
     git -C openvino config --local submodule.thirdparty/ittapi/ittapi.url "${srcdir}/ittapi"
     git -C openvino config --local submodule.ncc.url "${srcdir}/ncc"
     git -C openvino config --local submodule.thirdparty/onednn_gpu.url "${srcdir}/oneDNN"
@@ -115,7 +114,6 @@ prepare() {
     git -C openvino config --local submodule.src/plugins/intel_npu/thirdparty/yaml-cpp.url "${srcdir}/yaml-cpp"
     git -C openvino config --local submodule.thirdparty/telemetry.url "${srcdir}/telemetry"
     git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/libxsmm.url "${srcdir}/libxsmm"
-    git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/shl.url "${srcdir}/shl"
     git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/kleidiai.url "${srcdir}/kleidiai"
     git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/xbyak_riscv.url "${srcdir}/xbyak_riscv"
     git -C openvino -c protocol.file.allow='always' submodule update
@@ -145,7 +143,6 @@ build() {
     export CXXFLAGS+=" -isystem${srcdir}/openvino/thirdparty/ocl/clhpp_headers/include"
     
     # note: does not accept 'None' build type
-    # note: protopipe currently requires opencv 4.13.0, still unreleased at the time of writing
     cmake -B build -S openvino \
         -G 'Unix Makefiles' \
         -DBUILD_TESTING:BOOL='OFF' \
@@ -158,7 +155,7 @@ build() {
         -DENABLE_AVX512F:BOOL='OFF' \
         -DENABLE_CLANG_FORMAT:BOOL='OFF' \
         -DENABLE_INTEL_NPU:BOOL='ON' \
-        -DENABLE_INTEL_NPU_PROTOPIPE:BOOL='OFF' \
+        -DENABLE_INTEL_NPU_PROTOPIPE:BOOL='ON' \
         -DENABLE_NCC_STYLE:BOOL='OFF' \
         -DENABLE_PLUGINS_XML:BOOL='ON' \
         -DENABLE_PYTHON:BOOL='ON' \
@@ -182,8 +179,9 @@ build() {
 
 package_openvino-git() {
     depends=(
-        'gcc-libs'
         'glibc'
+        'libgcc'
+        'libstdc++'
         'onetbb'
         'pugixml'
         'snappy')
@@ -201,9 +199,9 @@ package_openvino-git() {
     
     mv "${pkgdir}/usr/lib/openvino"/libopenvino_intel_gpu_plugin.so intel-gpu-plugin/usr/lib/openvino
     mv "${pkgdir}/usr/lib/openvino"/libopenvino_intel_npu_plugin.so intel-npu-plugin/usr/lib/openvino
-    #mv "${pkgdir}/usr/bin/ov-protopipe" intel-npu-plugin/usr/bin
+    mv "${pkgdir}/usr/bin/ov-protopipe" intel-npu-plugin/usr/bin
     mv "${pkgdir}/usr/bin"/ov-{compile_tool,single-image-test} intel-npu-plugin/usr/bin
-    #mv "${pkgdir}/usr/share/doc/openvino/README-protopipe.md" intel-npu-plugin/usr/share/doc/openvino
+    mv "${pkgdir}/usr/share/doc/openvino/README-protopipe.md" intel-npu-plugin/usr/share/doc/openvino
     mv "${pkgdir}/usr/share/doc/openvino"/README-{compile_tool,single-image-test}.md intel-npu-plugin/usr/share/doc/openvino
     
     local _pyver
@@ -217,9 +215,10 @@ package_openvino-git() {
 package_openvino-intel-gpu-plugin-git() {
     pkgdesc='Intel GPU plugin for OpenVINO (git version)'
     depends=(
-        'gcc-libs'
         'glibc'
         'intel-compute-runtime'
+        'libgcc'
+        'libstdc++'
         'ocl-icd'
         'onetbb'
         "openvino=${pkgver}"
@@ -234,10 +233,11 @@ package_openvino-intel-gpu-plugin-git() {
 package_openvino-intel-npu-plugin-git() {
     pkgdesc='Intel NPU plugin for OpenVINO (git version)'
     depends=(
-        'gcc-libs'
         'glibc'
         'intel-npu-compiler'
         'intel-npu-driver'
+        'libgcc'
+        'libstdc++'
         'onetbb'
         'opencv'
         "openvino=${pkgver}"
@@ -252,8 +252,9 @@ package_openvino-intel-npu-plugin-git() {
 package_python-openvino-git() {
     pkgdesc='Python bindings for OpenVINO (git version)'
     depends=(
-        'gcc-libs'
         'glibc'
+        'libgcc'
+        'libstdc++'
         "openvino=${pkgver}"
         'python'
         'python-numpy'
@@ -281,7 +282,7 @@ package_python-openvino-git() {
     rm "${pkgdir}${_site_pkgs}/requirements.txt"
     
     local -x WHEEL_VERSION
-    WHEEL_VERSION="$(grep -oE '[0-9]+\.[0-9]+(|\.[0-9]+)' <<< "$pkgver")"
+    WHEEL_VERSION="$(grep -oE '^[0-9]+\.[0-9]+(|\.[0-9]+)' <<< "$pkgver")"
     
     python openvino/setup.py dist_info -o "${pkgdir}${_site_pkgs}"
     

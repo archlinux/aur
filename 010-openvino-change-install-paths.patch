@@ -64,8 +64,8 @@
      # symbolic links
 --- a/src/common/util/src/file_util.cpp
 +++ b/src/common/util/src/file_util.cpp
-@@ -394,7 +394,7 @@ std::filesystem::path ov::util::get_compiled_plugin_path(const std::filesystem::
-     const auto ov_library_path = make_path(get_ov_lib_path());
+@@ -212,7 +212,7 @@ std::filesystem::path ov::util::get_compiled_plugin_path(const std::filesystem::
+     const auto ov_library_path = get_ov_lib_path();
  
      // plugin can be found either:
 -    const std::filesystem::path sub_folder_path{std::string("openvino-") + OpenVINO_VERSION};
