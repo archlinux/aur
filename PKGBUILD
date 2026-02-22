@@ -1,4 +1,4 @@
-# Maintainer: Santiago Lo Coco <mail at slococo dot com dot ar>
+# Maintainer: None
 
 pkgname=imgur.sh
 pkgver=10.1
