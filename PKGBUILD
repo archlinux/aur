@@ -19,7 +19,7 @@ sha256sums_x86_64=('da733457b590e9d746afdd6f89c1e68e79339518314fb0eb41ad38562526
 sha256sums_aarch64=('293bafb5a817564ce626ebf95cca63aa32cb2b4baf59becfd6ce0039e05f4fa9')
 
 package() {
-    cd "runa-linux-$CARCH"
+    cd "runa-linux-$CARCH-gnu"
     install -Dm755 rn -t "$pkgdir/usr/bin/"
     install -Dm644 LICENSE-{MIT,APACHE} -t "$pkgdir/usr/share/licenses/$pkgname/"
     install -Dm644 README.md docs/configuration.md -t "$pkgdir/usr/share/doc/$pkgname/"
