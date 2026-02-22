@@ -8,7 +8,7 @@ url="https://github.com/gtinikita203/linux-unpacked-slav"
 license=('MIT')
 depends=('gtk3' 'libnotify' 'libxtst' 'nss' 'xdg-utils' 'libxss' 'dbus' 'at-spi2-atk')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gtinikita203/linux-unpacked-slav/releases/download/$pkgver/slavweb-electron-$pkgver-linux-unpacked.tar.gz")
-sha256sums=('85cea451eec057fa7e734548ca3ba6d779ed5836a3f9de14b8394575ef0d7d8e')
+sha256sums=('732e5ef78e29239cefc4a11185aa85bc3ea85586e3715e63eb49983f4babb9db')
 
 package() {
     cd "$srcdir"
