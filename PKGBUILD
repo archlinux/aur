@@ -33,7 +33,7 @@ build() {
     sets # katawa-shoujo
   )
   for i in ${_extra[@]}; do
-    cp --reflink=auto -a "$_pkgsrc_python/Lib/$i.py" "$_pkgsrc/lib/pythonlib2.7/"
+    cp -a "$_pkgsrc_python/Lib/$i.py" "$_pkgsrc/lib/pythonlib2.7/"
     "$_pkgsrc/lib/linux-x86_64/python" -EO -c "import $i"
     rm -f "$_pkgsrc/lib/pythonlib2.7/$i.py"
   done
@@ -49,14 +49,14 @@ package() {
   )
 
   # main files
-  install -dm755 "$pkgdir/usr/lib/$_pkgname"
-  cp --reflink=auto -a "$_pkgsrc/renpy" "$_pkgsrc/renpy.py" "$_pkgsrc/renpy.sh" "$pkgdir/usr/lib/$_pkgname/"
+  mkdir -pm755 "$pkgdir/usr/lib/$_pkgname"
+  cp -a "$_pkgsrc/renpy" "$_pkgsrc/renpy.py" "$_pkgsrc/renpy.sh" "$pkgdir/usr/lib/$_pkgname/"
 
-  install -dm755 "$pkgdir/usr/lib/$_pkgname/lib"
-  cp --reflink=auto -a "$_pkgsrc/lib/linux-x86_64" "$_pkgsrc/lib/pythonlib2.7" "$pkgdir/usr/lib/$_pkgname/lib/"
+  mkdir -pm755 "$pkgdir/usr/lib/$_pkgname/lib"
+  cp -a "$_pkgsrc/lib/linux-x86_64" "$_pkgsrc/lib/pythonlib2.7" "$pkgdir/usr/lib/$_pkgname/lib/"
 
   # symlink
-  install -dm755 "$pkgdir/usr/bin"
+  mkdir -pm755 "$pkgdir/usr/bin"
   ln -sf "/usr/lib/$_pkgname/renpy.sh" "$pkgdir/usr/bin/$_pkgname"
 
   # license
