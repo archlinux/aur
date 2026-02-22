@@ -39,7 +39,7 @@ conflicts=(
 options=(!debug)
 _archive="$pkgname-$pkgver"
 source=("$_archive.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('bdad7e4ed329d9a373e58c9cd97ff61e9d294a644fff9a8e11bb316dda7f4eea')
+sha256sums=('4b92cd8a0f082bf553066db46e95675391db568df8586f9ae801118d1f6ac901')
 
 build() {
     cd "$_archive"
