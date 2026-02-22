@@ -1,7 +1,7 @@
 # Maintainer: Ben Alex <ben.alex@acegi.com.au>
 _pkgbase=openhab5
 pkgname=${_pkgbase}-addons
-pkgver=5.1.2
+pkgver=5.1.3
 pkgrel=1
 pkgdesc="addons for openhab5 open source home automation software"
 arch=("any")
@@ -12,7 +12,7 @@ depends=("openhab5")
 conflicts=("openhab5-snapshot-addons")
 
 source=("openhab-addons-${pkgver}.kar::https://openhab.jfrog.io/artifactory/libs-release/org/openhab/distro/openhab-addons/${pkgver}/openhab-addons-${pkgver}.kar")
-sha256sums=('00cf4d15684ab52290c4b26fbcc22cf4b0fec15613785b9e2e6e3b17a92fc147')
+sha256sums=('c532003033529a1e7e37021d10ac05a662cca9d36715bf13e7b9cfad043eeae6')
 
 package() {
     mkdir -p "${pkgdir}/usr/share/${_pkgbase}/addons"
