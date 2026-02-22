@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Categories=Game;
+Name=Cubyz
+Comment=An open-world adventure game where creativity knows no bounds!
+Icon=cubyz
+Exec=/usr/bin/cubyz
+Path=/usr/lib/cubyz
+NoDisplay=false
+Terminal=false
+StartupNotify=false
