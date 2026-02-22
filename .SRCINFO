@@ -6,7 +6,6 @@ pkgbase = yt-dlp-gui
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = cx_freeze
 	depends = python
 	depends = python-customtkinter
 	depends = python-pillow
