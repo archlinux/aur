@@ -1,13 +1,13 @@
 pkgbase = perl-cpan-listchanges
 	pkgdesc = List changes for CPAN modules
 	pkgver = 0.08
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/dist/cpan-listchanges
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later
 	checkdepends = perl-test-requires
 	checkdepends = perl-test-simple
-	makedepends = perl-module-build
+	makedepends = perl-module-build>=0.28
 	depends = perl-algorithm-diff
 	depends = perl-cpan-distnameinfo
 	depends = perl-libwww

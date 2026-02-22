@@ -3,7 +3,7 @@
 _dist='cpan-listchanges'
 pkgname='perl-cpan-listchanges'
 pkgver=0.08
-pkgrel=1
+pkgrel=2
 pkgdesc='List changes for CPAN modules'
 arch=('any')
 url="https://metacpan.org/dist/$_dist"
@@ -18,7 +18,7 @@ depends=(
     'perl-yaml'
     'perl>=5.8.1'
 )
-makedepends=('perl-module-build')
+makedepends=('perl-module-build>=0.28')
 checkdepends=(
     'perl-test-requires'
     'perl-test-simple'
