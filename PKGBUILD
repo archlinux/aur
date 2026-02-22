@@ -5,7 +5,7 @@
 
 _pkgname=picard
 pkgname="${_pkgname}3"
-pkgver=3.0.0a1
+pkgver=3.0.0a2
 pkgrel=1
 pkgdesc="Official MusicBrainz tagger"
 arch=(x86_64)
@@ -23,7 +23,7 @@ depends=(
   python-markdown
   python-mutagen
   python-pyjwt
-  python-pyqt5
+  python-pyqt6
   python-yaml
 )
 makedepends=(
@@ -38,9 +38,9 @@ optdepends=(
   'qt6-multimedia: media player toolbar'
   'qt6-translations: full UI translation'
 )
-source=(http://data.musicbrainz.org/pub/musicbrainz/picard/picard-3.0.0a1.tar.gz)
-sha256sums=('c42f12f52b50706fd151d9b3d9fcdf2a330d6506a1f02cbfd3a8690bc9979b29')
-b2sums=('70958176a7bd8662accef5ab0b3034aa903649075bb4400714ecc2d0e3eeb72977f751df7b663fa97cc6bb1c6cbfdeaa57e94adeae69306dcda0dfd2b2787c4f')
+source=("http://data.musicbrainz.org/pub/musicbrainz/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('c581e17a2be2cff54e115b9f7a977c22adc18410c2023a8410ae107cb63f55e3')
+b2sums=('bf2b17a09eea84c0364b341d6643e32b4d2fa594c669fa92bcc82c34f6ab382700a8c32120c96035b371690cb9b215d0e2df95f33ef7465707284f8db3a96e3a')
 
 build() {
   cd $_pkgname-$pkgver
