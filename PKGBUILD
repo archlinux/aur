@@ -1,8 +1,8 @@
 # Maintainer: quietvoid <tcChlisop0@gmail.com>
 
 pkgname="bscpylgtv"
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.5.1
+pkgrel=1
 pkgdesc="Library to control webOS based LG TV devices"
 _rootdir="${pkgname}-${pkgver}"
 url="https://github.com/chros73/bscpylgtv"
@@ -11,7 +11,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel')
 license=('MIT')
 arch=('x86_64')
 source=("${_rootdir}.tar.gz::https://github.com/chros73/bscpylgtv/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('c809a5be3dabcbdb6509006bb0c7f7106b4c4d7b0c0cd0e3135e23146cb65a5b3d287f4244e196e13896ae012f991a7f0f787aaa213caaccd7acf4fe1a8540df')
+b2sums=('6ff653fddaf90821ea192d56fff46f6dabfde72c88e5a8a23a75c76f64a4e478702181f0745809b116d78c4cceb66be2edc65aa8ef5c3aa369e87eebbda477b5')
 
 build() {
     cd "${_rootdir}"
