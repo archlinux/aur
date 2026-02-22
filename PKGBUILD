@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>
 
 pkgname=libparsepsf
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="C library for interpreting PSF (PC Screen Font) files"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=('custom:ISC')
 depends=('libgrapheme>=1.0')
 makedepends=('libgrapheme>=1.0')
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(310c077d709c494bc9f9befc87d59e21b0de0fff5a19c0bf8a75a6d3d27cd003)
+sha256sums=(cda288bd17be50cd7ec9425c0d80af4a2a8ef3a9868621872d83fb0fe7c4eddf)
 
 build() {
   cd "$srcdir/$pkgname"
