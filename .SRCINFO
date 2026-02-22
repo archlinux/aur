@@ -1,0 +1,25 @@
+pkgbase = systemdgenie-git
+	pkgdesc = Systemd managment utility
+	pkgver = 0.99.0.r410.g153ece4
+	pkgrel = 1
+	url = https://invent.kde.org/system/systemdgenie
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = vulkan-headers
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = kauth
+	depends = kcoreaddons
+	depends = kcrash
+	depends = ki18n
+	depends = ktexteditor
+	depends = kio
+	provides = systemdgenie
+	conflicts = systemdgenie
+	source = git+https://invent.kde.org/system/systemdgenie.git
+	sha256sums = SKIP
+
+pkgname = systemdgenie-git
