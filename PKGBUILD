@@ -20,7 +20,7 @@ package() {
     install -d "$pkgdir/usr/share/icons/hicolor/512x512/apps"
     
     # Копируем все файлы приложения
-    cp -r "$srcdir/$pkgname-$pkgver-linux-unpacked/"* "$pkgdir/opt/$pkgname/"
+    cp -r "$srcdir/linux-unpacked/"* "$pkgdir/opt/$pkgname/"
     
     # Создаём симлинк на исполняемый файл
     ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
@@ -31,18 +31,9 @@ package() {
 Name=SlavWEB Electron
 Comment=Кроссплатформенное десктопное приложение на Electron для SlavWEB
 Exec=/opt/$pkgname/$pkgname %U
-Icon=$pkgname
+Icon=preferences-desktop-theme
 Type=Application
 Categories=Network;WebBrowser;
 StartupNotify=true
 EOF
-    
-    # Копируем иконку
-    if [ -f "$pkgdir/opt/$pkgname/resources/app/assets/icon.png" ]; then
-        install -Dm644 "$pkgdir/opt/$pkgname/resources/app/assets/icon.png" \
-                       "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
-    elif [ -f "$pkgdir/opt/$pkgname/icon.png" ]; then
-        install -Dm644 "$pkgdir/opt/$pkgname/icon.png" \
-                       "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
-    fi
 }
