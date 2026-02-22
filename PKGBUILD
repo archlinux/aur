@@ -7,7 +7,7 @@ pkgver=25.0.0.20
 pkgrel=1
 pkgdesc="XLibre Official Easy Install Drop in Replacement fork of X.Org X server (binary release)"
 arch=(x86_64)
-url="https://x11libre.net"
+url=https://x11libre.net/repo/arch_based/x86_64
 license=('LicenseRef-Adobe-Display-PostScript'
          'BSD-3-Clause'
          'LicenseRef-DEC-3-Clause'
@@ -25,7 +25,7 @@ license=('LicenseRef-Adobe-Display-PostScript'
          'X11-distribute-modifications-variant')
 groups=('xlibre')
 options=(!strip)
-source=("$url/repo/arch_based/x86_64/$_orgpkgname-$pkgver-$pkgrel-x86_64.pkg.tar.zst")
+source=(https://x11libre.net/repo/arch_based/x86_64/xlibre-xserver-25.0.0.20-1-x86_64.pkg.tar.zst)
 noextract=("${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 depends=(xlibre-server-common-bin xlibre-input-libinput-bin libepoxy libxfont2 pixman libunwind
          dbus libgl nettle libxdmcp sh glibc libxau libtirpc libmd libbsd
