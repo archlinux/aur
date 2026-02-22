@@ -1,6 +1,6 @@
 pkgbase = gw-tools
 	pkgdesc = Git worktree manager - Streamline your multi-branch development workflow
-	pkgver = 0.20.11
+	pkgver = 0.20.12
 	pkgrel = 1
 	url = https://github.com/mthines/gw-tools
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = gw-tools
 	license = MIT
 	provides = gw
 	conflicts = gw
-	source_x86_64 = gw-tools-0.20.11-x64::https://github.com/mthines/gw-tools/releases/download/v0.20.11/gw-linux-x64
-	sha256sums_x86_64 = 421d8ee1fb12b72b55e3b4550709337c0c6e771e812df9ecc2e417e473847689
-	source_aarch64 = gw-tools-0.20.11-arm64::https://github.com/mthines/gw-tools/releases/download/v0.20.11/gw-linux-arm64
-	sha256sums_aarch64 = 41dc50231bb94321c1fcb80f033402254a56a9463f33fc7f7b4a3f2910768478
+	source_x86_64 = gw-tools-0.20.12-x64::https://github.com/mthines/gw-tools/releases/download/v0.20.12/gw-linux-x64
+	sha256sums_x86_64 = 992cc9863d905580f7eea05f34aaa10c7027c82800c605431cfd4abb2e5122fa
+	source_aarch64 = gw-tools-0.20.12-arm64::https://github.com/mthines/gw-tools/releases/download/v0.20.12/gw-linux-arm64
+	sha256sums_aarch64 = 151eab6612e5b52c25726411b5c7eba1565698bce8f7420ffd96a7b84ec0cd5b
 
 pkgname = gw-tools
