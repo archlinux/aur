@@ -1,10 +1,11 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Contributor: Harley Pig <archlinux@harleypig.com>
 
 _dist='MooseX-NonMoose'
 pkgname='perl-moosex-nonmoose'
 pkgver=0.27
-pkgrel=2
+pkgrel=3
 pkgdesc='easy subclassing of non-Moose classes'
 arch=('any')
 url="https://metacpan.org/dist/$_dist"

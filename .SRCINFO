@@ -1,7 +1,7 @@
 pkgbase = perl-moosex-nonmoose
 	pkgdesc = easy subclassing of non-Moose classes
 	pkgver = 0.27
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/dist/MooseX-NonMoose
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later
