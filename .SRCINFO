@@ -1,0 +1,16 @@
+pkgbase = slimevr-cli
+	pkgdesc = CLI tool for sending reset commands to a SlimeVR server
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/lemonxah/slimevr-cli
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = alsa-lib
+	source = git+https://github.com/lemonxah/slimevr-cli.git
+	sha256sums = SKIP
+
+pkgname = slimevr-cli
