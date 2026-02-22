@@ -2,7 +2,7 @@
 _name=dae
 pkgname=${_name}-kix-git
 pkgver=r4baacef
-pkgrel=2
+pkgrel=3
 pkgdesc="由 kix fork 的 dae 分支版本"
 arch=('x86_64' 'aarch64')
 conflicts=($_name)

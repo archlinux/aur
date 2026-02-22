@@ -1,7 +1,7 @@
 pkgbase = dae-kix-git
 	pkgdesc = 由 kix fork 的 dae 分支版本
 	pkgver = r4baacef
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/olicesx/dae
 	arch = x86_64
 	arch = aarch64
