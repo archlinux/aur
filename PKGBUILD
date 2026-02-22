@@ -4,7 +4,7 @@
 _dist='Graph-Easy'
 pkgname='perl-graph-easy'
 pkgver=0.76
-pkgrel=2
+pkgrel=3
 pkgdesc='Convert or render graphs (as ASCII, HTML, SVG or via Graphviz)'
 arch=('any')
 url="https://metacpan.org/dist/$_dist"
@@ -18,6 +18,7 @@ makedepends=(
     'perl-module-build>=0.36'
     'perl-test-simple'
 )
+optdepends=('graphviz: Graphviz support')
 source=("https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/$_dist-$pkgver.tar.gz")
 options=('!emptydirs')
 sha256sums=('d4a2c10aebef663b598ea37f3aa3e3b752acf1fbbb961232c3dbe1155008d1fa')
