@@ -4,7 +4,7 @@
 _dist='MooseX-NonMoose'
 pkgname='perl-moosex-nonmoose'
 pkgver=0.27
-pkgrel=1
+pkgrel=2
 pkgdesc='easy subclassing of non-Moose classes'
 arch=('any')
 url="https://metacpan.org/dist/$_dist"
@@ -23,7 +23,7 @@ checkdepends=(
     'perl-test-fatal'
 )
 options=('!emptydirs')
-source=("http://cpan.metacpan.org/authors/id/P/PL/PLICEASE/$_dist-$pkgver.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/$_dist-$pkgver.tar.gz")
 sha256sums=('6fc7893b47a7db812a3c1fe8bb90d9c235143c6937251e570e27bdbd0d844ece')
 
 build()
