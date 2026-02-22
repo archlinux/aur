@@ -3,7 +3,7 @@
 _pkgauthor=Merrit
 _pkgname=Nyrna
 pkgname=${_pkgname,,}-bin
-pkgver=2.25.0
+pkgver=2.26.0
 pkgrel=1
 pkgdesc='Suspend games and applications at any time and resume whenever you wish'
 url="https://github.com/${_pkgauthor}/${_pkgname,,}"
@@ -23,7 +23,7 @@ sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '9b7df10497c04c32109da509ea9f844037a8b660e09c27f734a9031d3ee4db08'
             '28472abdbc7fbc4a19cfe4a808fb8eb69604621981c2e17a6b95bd22d08f7554'
             '7e4aa2e0d19bc204813521afa7dc16c5b69798a92484379666849ba351066f4e')
-sha256sums_x86_64=('5a9eb824b908d252764d5cb1a2978f31d54f6b244f6c7e86c2da5ad598e69d7b')
+sha256sums_x86_64=('07afecd28a7b1a950293caf79b52505bc8a680457c8702f81de9a9ca4632b576')
 
 prepare() {
   cd "${srcdir}/"

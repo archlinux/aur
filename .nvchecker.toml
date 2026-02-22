@@ -1,0 +1,5 @@
+[nyrna-bin]
+source = "github"
+github = "Merrit/nyrna"
+use_latest_release = true
+prefix = "v"
