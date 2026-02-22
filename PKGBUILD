@@ -3,7 +3,7 @@
 pkgname=drawio-live-bin
 pkgver=29.2.9
 pkgrel=1
-pkgdesc="Diagram drawing application built on web technology (Live version)"
+pkgdesc="Diagram drawing application desktop built on web technology (Live version)"
 arch=('x86_64' 'aarch64')
 url="https://www.drawio.com"
 license=('Apache-2.0')
@@ -38,7 +38,7 @@ prepare() {
     rm -r "usr/share/doc"
     mv usr/share/applications/drawio.desktop usr/share/applications/drawio-desktop.desktop
     sed -i "s|Exec=/opt/drawio/drawio %U|Exec=/opt/${pkgname%-bin}/drawio %U|g" usr/share/applications/drawio-desktop.desktop
-    sed -i "s|Name=drawio|Name=${pkgname%-bin}|g" usr/share/applications/drawio-desktop.desktop
+    sed -i "s|Name=drawio|Name=Drawio|g" usr/share/applications/drawio-desktop.desktop
 }
 
 package() {
