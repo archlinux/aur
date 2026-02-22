@@ -1,14 +1,14 @@
 # Maintainer: KevinCrrl
 
 pkgname=kpa
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="KevinCrrl Python AUR Helper"
 arch=('any')
 url="https://github.com/KevinCrrl/kpa"
 license=('GPL3-or-later')
 source=("${url}/archive/refs/tags/${pkgver}/${pkgver}.tar.gz")
-sha512sums=("e880ff3e2ad47bdfc74f6fcddd9289540d968c4b2790bbbadf3a89671a36015e95ab31272a60f6f823b60fe21962daf93be816a134400412fd8d0fd7a53685bb")
+sha512sums=("1311f539fc13ea033f107b71566c4c337b9d43021897c416cb82e52625fd11513fb1cd90063fc73049f2ad496cd14298f7341153afad95527c363fc58d394b0c")
 conflicts=('kpa-bin')
 depends=(
     'python'
@@ -27,7 +27,7 @@ makedepends=(
     'python-wheel'
 )
 optdepends=(
-    'sudo'
+    'sudo: ejecutar comandos como root'
 )
 
 build() {
