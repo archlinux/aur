@@ -1,0 +1,17 @@
+pkgbase = wallity-git
+	pkgdesc = A desktop wallpaper manager built with Rust and Iced for Wayland/Hyprland
+	pkgver = r1.0000000
+	pkgrel = 1
+	url = https://github.com/asce4s/wallity-iced
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = wayland
+	depends = gcc-libs
+	provides = wallity
+	conflicts = wallity
+	source = wallity-git::git+https://github.com/asce4s/wallity-iced.git
+	sha256sums = SKIP
+
+pkgname = wallity-git
