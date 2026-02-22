@@ -3,7 +3,7 @@
 _dist='TOML-Tiny'
 pkgname='perl-toml-tiny'
 pkgver=0.20
-pkgrel=4
+pkgrel=5
 pkgdesc='a minimal, pure perl TOML parser and serializer'
 arch=('any')
 url="https://metacpan.org/dist/$_dist"
@@ -15,12 +15,14 @@ depends=(
     'perl-exporter'
     'perl-math-bigint>=1.999718'
     'perl-types-serialiser'
-    'perl>=5.18'
+    'perl>=5.18.0'
 )
+makedepends=('perl-extutils-makemaker')
 checkdepends=(
     'perl-data-dumper'
     'perl-datetime-format-iso8601'
     'perl-datetime-format-rfc3339'
+    'perl-extutils-makemaker'
     'perl-pathtools'
     'perl-test-pod'
     'perl-test-simple'
