@@ -1,0 +1,18 @@
+pkgbase = electerm-live-bin
+	pkgdesc = An electron-based SSH/SFTP Connection manager and terminal (Live version)
+	pkgver = 2.8.16
+	pkgrel = 1
+	url = https://electerm.html5beta.com
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	provides = electerm
+	conflicts = electerm
+	conflicts = electerm-git
+	source = LICENSE::https://raw.githubusercontent.com/electerm/electerm/master/LICENSE
+	source = electerm-2.8.16-linux-amd64.deb::https://github.com/electerm/electerm/releases/download/v2.8.16/electerm-2.8.16-linux-amd64.deb
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = electerm-live-bin
