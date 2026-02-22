@@ -1,0 +1,16 @@
+pkgbase = strace-tui-git
+	pkgdesc = A terminal user interface (TUI) for visualizing and exploring strace output
+	pkgver = r67.16e1815
+	pkgrel = 1
+	url = https://github.com/Rodrigodd/strace-tui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = APACHE
+	makedepends = cargo
+	makedepends = git
+	provides = strace-tui
+	source = strace-tui::git+https://github.com/Rodrigodd/strace-tui.git#branch=master
+	sha256sums = SKIP
+
+pkgname = strace-tui-git
