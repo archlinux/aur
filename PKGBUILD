@@ -1,8 +1,8 @@
 # Maintainer: Patrick Fischer <aur at pathin dot me>
 pkgname=onset-git
-pkgver=1.0.0.r2.g7ada8b5
+pkgver=1.0.0.r8.g2e92db9
 pkgrel=1
-pkgdesc="Lightweight XDG autostart manager for Linux"
+pkgdesc="Lightweight GTK4 autostart manager for Linux"
 arch=('x86_64' 'aarch64')
 url="https://github.com/xPathin/onset"
 license=('MIT')
