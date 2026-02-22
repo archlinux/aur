@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=neomod (BASS)
+Icon=/usr/share/pixmaps/neomod.png
+Comment=Third-party McOsu fork, with additional features
+Exec=/usr/bin/neomod -sound bass %u
+Categories=Game;
+MimeType=x-scheme-handler/neomod;
