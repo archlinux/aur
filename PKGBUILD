@@ -83,7 +83,7 @@ prepare() {
     sed -i -e "
         s|Exec=.*|Exec=${pkgname%-bin} %U|g
         s|Icon=.*|Icon=${pkgname%-bin}|g
-    " "${srcdir}/usr/share/applications/FreeShow.desktop"
+    " "${srcdir}/usr/share/applications/freeshow.desktop"
 
     asar e "${srcdir}/opt/FreeShow/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked" -type f -exec sed -i "s/process.resourcesPath/'\/usr\/lib\/${pkgname%-bin}'/g" {} +
@@ -101,13 +101,13 @@ package() {
         cp -Pr --no-preserve=ownership "${srcdir}/opt/FreeShow/resources/slideshow" \
             "${pkgdir}/usr/lib/${pkgname%-bin}/slideshow"
     fi
-    install -Dm644 "${srcdir}/usr/share/applications/FreeShow.desktop" \
+    install -Dm644 "${srcdir}/usr/share/applications/freeshow.desktop" \
         "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 
     _icon_sizes=(16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512)
     for _icons in "${_icon_sizes[@]}"; do
-        if [[ -f "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/FreeShow.png" ]]; then
-            install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/FreeShow.png" \
+        if [[ -f "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/freeshow.png" ]]; then
+            install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/freeshow.png" \
                 "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
         fi
     done
