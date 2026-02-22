@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=openlist-desktop-bin
-_pkgname=OpenList.Desktop
-pkgver=0.8.0
+_pkgname=OpenList-Desktop
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A desktop application for OpenList"
 arch=('x86_64')
@@ -27,15 +27,15 @@ depends=(
 makedepends=('libarchive')
 backup=()
 options=('!strip' '!debug')
-source=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64_linux.deb")
-sha256sums=('743196e4d0218ea86eb0e0261b8ca95aafee77a811d4b03d4f12d09034883044')
-noextract=("${_pkgname}_${pkgver}_amd64.deb")
+source=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
+sha256sums=('0aa00426c4ed4c8b046e8c945ffff6f70d8926b27ed1cf5ccb3e4ba93b47a35f')
+noextract=("${_pkgname}_${pkgver}.deb")
 
 package() {
     cd "$srcdir"/
-    mkdir -pv ${_pkgname}_${pkgver}_amd64_linux
-    bsdtar -xf ${_pkgname}_${pkgver}_amd64_linux.deb -C ${_pkgname}_${pkgver}_amd64_linux
-    cd ${_pkgname}_${pkgver}_amd64_linux
+    mkdir -pv ${_pkgname}_${pkgver}_amd64
+    bsdtar -xf ${_pkgname}_${pkgver}_amd64.deb -C ${_pkgname}_${pkgver}_amd64
+    cd ${_pkgname}_${pkgver}_amd64
     bsdtar -xf data.tar.gz --numeric-owner -C ${pkgdir}/
     chown -R root:root ${pkgdir}
     rm -rf ${pkgdir}/usr/bin/{openlist,rclone}

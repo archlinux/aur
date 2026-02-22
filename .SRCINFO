@@ -1,6 +1,6 @@
 pkgbase = openlist-desktop-bin
 	pkgdesc = A desktop application for OpenList
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/OpenListTeam/OpenList-Desktop
 	arch = x86_64
@@ -20,10 +20,10 @@ pkgbase = openlist-desktop-bin
 	depends = openlist
 	provides = openlist-desktop
 	conflicts = openlist-desktop
-	noextract = OpenList.Desktop_0.8.0_amd64.deb
+	noextract = OpenList-Desktop_0.9.0.deb
 	options = !strip
 	options = !debug
-	source = https://github.com/OpenListTeam/OpenList-Desktop/releases/download/v0.8.0/OpenList.Desktop_0.8.0_amd64_linux.deb
-	sha256sums = 743196e4d0218ea86eb0e0261b8ca95aafee77a811d4b03d4f12d09034883044
+	source = https://github.com/OpenListTeam/OpenList-Desktop/releases/download/v0.9.0/OpenList-Desktop_0.9.0_amd64.deb
+	sha256sums = 0aa00426c4ed4c8b046e8c945ffff6f70d8926b27ed1cf5ccb3e4ba93b47a35f
 
 pkgname = openlist-desktop-bin
