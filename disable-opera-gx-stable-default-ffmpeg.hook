@@ -1,0 +1,11 @@
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Type=Package
+Target=opera-gx-stable-ffmpeg-codecs-bin
+Target=opera-gx-stable
+
+[Action]
+Description=Disabling default opera-gx-stable libffmpeg.so...
+When=PostTransaction
+Exec=/usr/bin/bash -c 'chmod a-r /usr/lib/opera-gx-stable/libffmpeg.so 2>/dev/null||:'
