@@ -1,4 +1,4 @@
-# Mainterner: Exorcism, AutoUpdateBot
+# Maintainer: Exorcism, AutoUpdateBot
 # Contributor: envolution
 # Contributor: hawkeye116477 <hawkeye116477 at gmail dot com>
 # shellcheck shell=bash disable=SC2034,SC2154
