@@ -1,5 +1,5 @@
 pkgname=hyprspaces
-pkgver=1.1.6
+pkgver=1.1.7
 pkgrel=1
 pkgdesc="Paired workspace plugin and setup scripts for Hyprland"
 arch=('x86_64')
@@ -8,11 +8,15 @@ license=('MIT')
 depends=('bash' 'hyprland' 'python')
 makedepends=('cmake' 'pkgconf')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d5d4b3bac62bc3b3577eeca1d8ef4c3e83c72821538711b409cdd4337a2d519d')
+sha256sums=('a29c422004daa94337b4d073b4cdf152a9e1a7c579d252a8f8ad65f6e49003da')
 
 build() {
   cmake -S "${srcdir}/${pkgname}-${pkgver}" -B "${srcdir}/${pkgname}-${pkgver}/build" -DCMAKE_BUILD_TYPE=Release
   cmake --build "${srcdir}/${pkgname}-${pkgver}/build"
+}
+
+check() {
+    ctest --test-dir "${srcdir}/${pkgname}-${pkgver}/build" --output-on-failure
 }
 
 package() {
@@ -20,13 +24,15 @@ package() {
 
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  install -Dm755 "build/hyprspaces.so" "${pkgdir}/usr/lib/hyprspaces/hyprspaces.so"
+  install -Dm644 "build/hyprspaces.so" "${pkgdir}/usr/lib/hyprspaces/hyprspaces.so"
 
   install -Dm755 "scripts/hyprspaces-install" "${pkgdir}/usr/lib/hyprspaces/scripts/hyprspaces-install"
   install -Dm755 "scripts/hyprspaces-uninstall" "${pkgdir}/usr/lib/hyprspaces/scripts/hyprspaces-uninstall"
   install -Dm755 "scripts/hyprspaces-waybar-restart" "${pkgdir}/usr/lib/hyprspaces/scripts/hyprspaces-waybar-restart"
   install -Dm755 "scripts/hyprspaces-waybar-use-fork" "${pkgdir}/usr/lib/hyprspaces/scripts/hyprspaces-waybar-use-fork"
   install -Dm755 "scripts/hyprspaces-waybar-use-stock" "${pkgdir}/usr/lib/hyprspaces/scripts/hyprspaces-waybar-use-stock"
+  install -Dm644 "scripts/hyprspaces-lib.sh" "${pkgdir}/usr/lib/hyprspaces/scripts/hyprspaces-lib.sh"
+  install -Dm755 "scripts/waybar_jsonc.py" "${pkgdir}/usr/lib/hyprspaces/scripts/waybar_jsonc.py"
 
   install -Dm644 "config/hyprspaces-plugin.conf" "${pkgdir}/usr/share/hyprspaces/config/hyprspaces-plugin.conf"
   install -Dm644 "config/hyprspaces-bindings.conf" "${pkgdir}/usr/share/hyprspaces/config/hyprspaces-bindings.conf"
