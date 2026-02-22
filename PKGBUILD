@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>
 pkgbase=sshexec
 pkgname=($pkgbase $pkgbase-sshcd)
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="SSH wrapper that makes it easy to run commands directly in the SSH command"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://codeberg.org/maandree/sshexec"
 license=('custom:ISC')
 depends=()
 source=(sshexec-$pkgver.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha256sums=(91d4ea005e02362d6ca05369288d147e7875176722a730fab34a3d2f98d2208b)
+sha256sums=(ef82d1f1c5dfb5ad1d2dc89149d9bffdb657867e14d34e1eb9bd8b811ed6cfff)
 
 build() {
   cd "${srcdir}/sshexec"
