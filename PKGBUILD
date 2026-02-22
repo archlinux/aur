@@ -3,7 +3,7 @@
 pkgname=serial-studio
 _pkgname=Serial-Studio
 pkgver=3.2.4
-pkgrel=1
+pkgrel=3
 pkgdesc="Multi-purpose serial data visualization & processing program"
 arch=($CARCH)
 url="https://github.com/Serial-Studio/Serial-Studio"
@@ -17,17 +17,17 @@ depends=(
     e2fsprogs
     expat
     duktape
-    gcc-libs
     glib2
     glibc
     graphite
     freetype2
     icu
-    libcap
     libdrm
     libevdev
     libffi
+    libgcc
     libglvnd
+    libgomp
     libgudev
     libice
     libpng
@@ -35,6 +35,8 @@ depends=(
     libidn2
     libnghttp2
     libnghttp3
+    libngtcp2
+    libstdc++
     libssh2
     libunistring
     libwacom
@@ -43,15 +45,18 @@ depends=(
     libxcb
     libxdmcp
     libxkbcommon
+    lua
     keyutils
     krb5
     systemd-libs
     mtdev
     $_qt-base
+    $_qt-5compat
     $_qt-declarative
     $_qt-connectivity
     $_qt-graphs
     $_qt-serialport
+    $_qt-svg
     openssl
     pcre2
     util-linux-libs
@@ -65,14 +70,12 @@ makedepends=(
     cmake
     git
     ninja
-    $_qt-5compat
     $_qt-charts
     $_qt-location
     $_qt-shadertools
     $_qt-quick3d
     $_qt-quickeffectmaker
     $_qt-positioning
-    $_qt-svg
     $_qt-translations
     $_qt-tools
 )
@@ -102,5 +105,13 @@ build() {
 
 package() {
     DESTDIR="$pkgdir" cmake --install "${srcdir}"/${pkgname}/build
+    install -Dm644 "${srcdir}/${pkgname}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -Dm0644 -d ${pkgdir}/usr/share/applications/ \
+        ${pkgdir}/usr/share/metainfo/ \
+        ${pkgdir}/usr/share/pixmaps/
+
+    ln -sf /usr/share/serial-studio/share/applications/serial-studio-gpl3.desktop "${pkgdir}"/usr/share/applications/serial-studio-gpl3.desktop
+    ln -sf /usr/share/serial-studio/share/metainfo/serial-studio.metainfo.xml "${pkgdir}"/usr/share/metainfo/serial-studio.metainfo.xml
+    ln -sf /usr/share/serial-studio/share/pixmaps/serial-studio-gpl3.svg "${pkgdir}"/usr/share/pixmaps/serial-studio-gpl3.svg
 }
 
