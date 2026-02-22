@@ -1,0 +1,19 @@
+pkgbase = nordvpn-live-bin
+	pkgdesc = NordVPN CLI/GUI tool for Linux (Live version)
+	pkgver = 4.4.0
+	pkgrel = 1
+	url = https://nordvpn.com/download/linux/
+	install = nordvpn-bin.install
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	arch = armeabi
+	license = GPL3
+	optdepends = nordvpn-gui: Graphical Interface for NordVPN
+	provides = nordvpn
+	conflicts = openvpn-nordvpn
+	source = https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn/nordvpn_4.4.0_amd64.deb
+	sha256sums = SKIP
+
+pkgname = nordvpn-live-bin
