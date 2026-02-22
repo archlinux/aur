@@ -1,0 +1,23 @@
+pkgbase = typhoon-git
+	pkgdesc = Older, gtk3 version of Typhoon: A stylish weather app based on Stormcloud
+	pkgver = v1.6.0
+	pkgrel = 1
+	url = https://github.com/archisman-panigrahi/typhoon
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = python
+	depends = python-pyqt6
+	depends = python-pyqt6-webengine
+	depends = python-dbus
+	depends = python-gobject
+	depends = libportal
+	depends = python-cairosvg
+	provides = typhoon
+	conflicts = typhoon
+	source = git+https://github.com/archisman-panigrahi/typhoon#branch=gtk3
+	sha256sums = SKIP
+
+pkgname = typhoon-git
