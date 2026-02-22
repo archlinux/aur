@@ -1,6 +1,6 @@
 pkgbase = sleep-until
 	pkgdesc = Sleep until a specified time
-	pkgver = 2
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://codeberg.org/maandree/sleep-until
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = sleep-until
 	makedepends = auto-auto-complete
 	depends = linux>=2.6.25
 	depends = glibc>=2.8
-	source = sleep-until-2.tar.gz::https://codeberg.org/maandree/sleep-until/archive/2.tar.gz
-	sha256sums = c3a7d9983bd4968ad28f4c3604fa90603cc5409fda5946303a167a25c9b7d086
+	source = sleep-until-2.0.1.tar.gz::https://codeberg.org/maandree/sleep-until/archive/2.0.1.tar.gz
+	sha256sums = bc5195c7a295c7ea44117a6e46da508301d75fed66b6d3e3823bc83321896cf9
 
 pkgname = sleep-until
