@@ -1,15 +1,20 @@
 pkgbase = perl-test-portability-files
-	pkgdesc = Test-Portability-Files - Check file names portability
+	pkgdesc = Check file names portability
 	pkgver = 0.10
-	pkgrel = 1
-	url = http://search.cpan.org/dist/Test-Portability-Files/
+	pkgrel = 2
+	url = https://metacpan.org/dist/Test-Portability-Files
 	arch = any
-	license = GPL
-	license = PerlArtistic
-	checkdepends = perl-test-mojibake
-	depends = perl
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-file-temp>=0.2304
+	checkdepends = perl-io
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker
+	depends = perl-pathtools
+	depends = perl-test-simple
+	depends = perl>=5.8.0
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/A/AB/ABRAXXA/Test-Portability-Files-0.10.tar.gz
+	source = https://cpan.metacpan.org/authors/id/A/AB/ABRAXXA/Test-Portability-Files-0.10.tar.gz
 	sha256sums = 08e4b432492dc1b44b55d5db57952eb76379c7f434ee8f16aca64d491f401a16
 
 pkgname = perl-test-portability-files
