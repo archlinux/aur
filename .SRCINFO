@@ -9,6 +9,7 @@ pkgbase = salopbar
 	makedepends = meson
 	makedepends = esbuild
 	makedepends = npm
+	makedepends = typescript
 	depends = gjs
 	depends = gtk4
 	depends = gtk4-layer-shell

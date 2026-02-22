@@ -19,7 +19,7 @@ depends=(
   'astal-wireplumber'
   'astal-apps'
 )
-makedepends=('git' 'meson' 'esbuild' 'npm')
+makedepends=('git' 'meson' 'esbuild' 'npm' 'typescript')
 source=("git+$url.git")
 provides=("$pkgname")
 options=('!debug')
