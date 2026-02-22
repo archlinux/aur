@@ -12,7 +12,7 @@ options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alper-han/CrossMacro/archive/v${pkgver}.tar.gz"
         "crossmacro.sysusers"
         "crossmacro-modules.conf")
-sha256sums=('0fbca95461af82244892c123e6eb6f9b6da2878eb9a2e61109a2d0fe6860ea7c'
+sha256sums=('40f291b9bbaf1e36644acb039772a6ccfed2e94ed6bf26d03b0976f26cac2614'
             'SKIP'
             'SKIP')  # sysusers and modules config checksums (local files)
 install=crossmacro.install
@@ -78,8 +78,8 @@ package() {
         "$pkgdir/usr/lib/udev/rules.d/99-crossmacro.rules"
         
     # Install Polkit Policy
-    install -Dm644 "scripts/assets/org.crossmacro.policy" \
-        "$pkgdir/usr/share/polkit-1/actions/org.crossmacro.policy"
+    install -Dm644 "scripts/assets/io.github.alper_han.crossmacro.policy" \
+        "$pkgdir/usr/share/polkit-1/actions/io.github.alper_han.crossmacro.policy"
         
     # Install Polkit Rules
     install -dm755 "$pkgdir/usr/share/polkit-1/rules.d"
