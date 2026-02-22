@@ -1,0 +1,20 @@
+pkgbase = rednotebook-pwd-mod
+	pkgdesc = A modern desktop diary and personal journal with true AES-256-GCM encryption.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ProgrammerGnome/rednotebook-pwd-mod
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	depends = python-gobject
+	depends = python-yaml
+	depends = gtk3
+	depends = python-cryptography
+	provides = rednotebook
+	conflicts = rednotebook
+	replaces = rednotebook
+	source = rednotebook-pwd-mod-1.0.0.tar.gz::https://github.com/ProgrammerGnome/rednotebook-pwd-mod/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = rednotebook-pwd-mod
