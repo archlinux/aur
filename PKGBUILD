@@ -5,7 +5,7 @@
 _dist='App-FatPacker'
 pkgname='perl-app-fatpacker'
 pkgver=0.010008
-pkgrel=1
+pkgrel=2
 pkgdesc='pack your dependencies onto your script file'
 arch=('any')
 url="https://metacpan.org/dist/$_dist"
@@ -16,13 +16,14 @@ depends=(
     'perl-pathtools'
     'perl>=5.8.0'
 )
+makedepends=('perl-extutils-makemaker')
 checkdepends=(
     'perl-file-temp'
     'perl-pathtools'
     'perl-test-simple'
 )
 options=('!emptydirs')
-source=("http://cpan.metacpan.org/authors/id/M/MS/MSTROUT/$_dist-$pkgver.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/M/MS/MSTROUT/$_dist-$pkgver.tar.gz")
 sha256sums=('129db36dc845661a582286810cfe2d5216eb2ce082bad40ae1fcdce0f45deccf')
 
 build()
