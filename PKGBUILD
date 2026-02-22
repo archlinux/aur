@@ -1,5 +1,5 @@
 pkgname=kangaroo
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Pollard's Kangaroo ECDLP solver for secp256k1 using Vulkan/Metal/DX12 compute"
 arch=('x86_64')
