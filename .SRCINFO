@@ -1,0 +1,18 @@
+pkgbase = oac-git
+	pkgdesc = Reference implementation of the Open Audio Codec (OAC)
+	pkgver = 0.0.0.r24.gbc9317c6
+	pkgrel = 1
+	url = https://github.com/AOMediaCodec/oac
+	arch = i686
+	arch = x86_64
+	license = BSD-3-Clause-Clear
+	makedepends = git
+	depends = glibc
+	provides = oac=0.0.0.r24.gbc9317c6
+	provides = liboac.so
+	conflicts = oac
+	options = staticlibs
+	source = git+https://github.com/AOMediaCodec/oac.git
+	sha256sums = SKIP
+
+pkgname = oac-git
