@@ -32,6 +32,6 @@ pkgbase = noctalia-qs
 	conflicts = quickshell-git
 	options = !debug
 	source = noctalia-qs-0.0.2.tar.gz::https://github.com/noctalia-dev/noctalia-qs/archive/v0.0.2.tar.gz
-	sha256sums = 0789f5e6df803db2c4f198681a03bcab665d955c893aebaf87655a6ef92cc867
+	sha256sums = 7d0d218ad3fa477debe365e170f1315e290653a8057208eaf3dfffe0540c8c2e
 
 pkgname = noctalia-qs
