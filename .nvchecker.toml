@@ -1,0 +1,3 @@
+[perl-data-dump-streamer]
+source = "cpan"
+cpan = "Data-Dump-Streamer"

@@ -1,18 +1,32 @@
 pkgbase = perl-data-dump-streamer
-	pkgdesc = Accurately serialize a data structure as Perl code.
+	pkgdesc = Accurately serialize a data structure as Perl code
 	pkgver = 2.42
-	pkgrel = 1
-	url = https://metacpan.org/release/Data-Dump-Streamer
-	arch = i686
-	arch = x86_64
-	license = PerlArtistic
-	license = GPL
+	pkgrel = 2
+	url = https://metacpan.org/dist/Data-Dump-Streamer
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-base
+	makedepends = perl-carp
+	makedepends = perl-data-dumper
+	makedepends = perl-extutils-cbuilder
+	makedepends = perl-extutils-depends
 	makedepends = perl-module-build
-	depends = perl
-	depends = perl-b-utils>=0
+	makedepends = perl-test-simple
+	makedepends = perl-text-abbrev
+	makedepends = perl>=5.6.0
+	depends = perl-algorithm-diff
+	depends = perl-b-utils
+	depends = perl-cpanel-json-xs
+	depends = perl-data-dumper
+	depends = perl-exporter
+	depends = perl-io
+	depends = perl-io-compress
+	depends = perl-mime-base64
+	depends = perl-padwalker>=0.99
+	depends = perl-text-abbrev
+	depends = perl-text-balanced
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/Y/YV/YVES/Data-Dump-Streamer-2.42.tar.gz
-	md5sums = e10e06a372a259e16eec791e82cbee60
-	sha512sums = 481cc12f8111d83bc97695226531c7eb4ebdbb16ac540de90d8a0c8b1f30cd3dbc62f5def737b9eb08e6c1294fb290d9f347dd90869a7a7278d71ce436787f7d
+	sha256sums = 47f6e51fb45ce7be561e01481add0c2e1c0cd85df4b9e212f3923cd3064d1cad
 
 pkgname = perl-data-dump-streamer
