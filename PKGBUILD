@@ -2,7 +2,7 @@
 _pkgname=cc-map-editor
 pkgname="${_pkgname}-bin"
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Map Editor for the game CrossCode"
 arch=('any')
 url='https://github.com/CCDirectLink/crosscode-map-editor'
@@ -19,7 +19,7 @@ source=("https://github.com/CCDirectLink/crosscode-map-editor/releases/download/
 noextract=("${_appimage_file}")
 sha256sums=('077e077c9914c6ff866e332cf7f6bab968606e4b1f3eb3b6293b7923d482d804'
             'a406579cd136771c705c521db86ca7d60a6f3de7c9b5460e6193a2df27861bde'
-            '11fde0a67b346874dabb8241393ead51723f3b4e9b75174c52a4b32e79ea9ccd')
+            '6c19448297e3b0bda71785f694be60dd44006791b0a30cf85799011ef79bdfd7')
 
 prepare() {
   mkdir -p "${pkgname}-${pkgver}"

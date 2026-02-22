@@ -5,8 +5,8 @@
  const path = require('path');
  const url = require('url');
 -const {autoUpdater} = require('electron-updater');
- const contextMenu = require('electron-context-menu');
- const {IPC} = require('node-ipc');
+ const contextMenu = require('electron-context-menu').default;
+ const IPC = require("@achrinza/node-ipc").default;
  
 @@ -59,11 +58,6 @@
  			});
