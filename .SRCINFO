@@ -11,6 +11,6 @@ pkgbase = qidi-studio-appimage
 	noextract = qidi-studio-appimage-2.04.01.11.AppImage
 	options = !strip
 	source_x86_64 = qidi-studio-appimage-2.04.01.11.AppImage::https://github.com/QIDITECH/QIDIStudio/releases/download/v2.04.01.11/QIDIStudio_v02.04.01.11_Ubuntu22.AppImage
-	sha256sums_x86_64 = f948f44b804e012493fb732a70535d5b574141e331342e5bb4c522355c45b378
+	sha256sums_x86_64 = 076b608355fd427ea197f35800aef9dc731652f3a34cdf8249dce793712c8784
 
 pkgname = qidi-studio-appimage
