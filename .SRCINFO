@@ -1,12 +1,13 @@
 pkgbase = perl-poe-component-irc
 	pkgdesc = A fully event-driven IRC client module
 	pkgver = 6.95
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/dist/POE-Component-IRC
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later
 	checkdepends = perl-test-differences>=0.61
 	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker
 	depends = perl-irc-utils>=0.12
 	depends = perl-poe-component-client-dns
 	depends = perl-poe-component-syndicator
