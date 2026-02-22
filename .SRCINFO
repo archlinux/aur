@@ -1,0 +1,22 @@
+pkgbase = waybardynamictheme-git
+	pkgdesc = Dynamic Waybar theme based on wallpaper tones with Zero-Loss layout switching
+	pkgver = 4.0.r1.g4b53406
+	pkgrel = 1
+	url = https://github.com/JADRT22/WaybarDynamicTheme
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = swww
+	depends = rofi-wayland
+	depends = waybar
+	depends = wallust
+	depends = swaync
+	depends = cava
+	depends = hyprland
+	depends = bash
+	provides = waybardynamictheme
+	conflicts = waybardynamictheme
+	source = git+https://github.com/JADRT22/WaybarDynamicTheme.git
+	sha256sums = SKIP
+
+pkgname = waybardynamictheme-git
