@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="An opinionated static site generator"
 arch=('x86_64')
 url="https://github.com/getzola/zola"
-depends=('gcc-libs')
+depends=('gcc-libs' 'oniguruma')
 makedepends=('cargo')
 license=('MIT')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/getzola/zola/archive/v${pkgver}.tar.gz")
@@ -21,12 +21,12 @@ prepare() {
 build() {
   cd zola-$pkgver
   CFLAGS+=' -ffat-lto-objects'
-  cargo build --frozen --release
+  RUSTONIG_DYNAMIC_LIBONIG=1 cargo build --frozen --release
 }
 
 check() {
   cd zola-$pkgver
-  cargo test --frozen
+  RUSTONIG_DYNAMIC_LIBONIG=1 cargo test --frozen
 }
 
 package() {

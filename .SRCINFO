@@ -7,6 +7,7 @@ pkgbase = zola
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
+	depends = oniguruma
 	source = zola-0.22.1.tar.gz::https://github.com/getzola/zola/archive/v0.22.1.tar.gz
 	sha256sums = 0f59479e05bce79e8d5860dc7e807ea818986094469ed8bf0bb46588ade95982
 
