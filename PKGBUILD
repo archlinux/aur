@@ -21,6 +21,7 @@ depends=(
   'e2fsprogs'
 )
 makedepends=(
+  'git'
   'help2man'
   'imagemagick'
   'pkgconf'
