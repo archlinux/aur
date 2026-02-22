@@ -1,0 +1,3 @@
+[perl-file-dircompare]
+source = "cpan"
+cpan = "File-DirCompare"

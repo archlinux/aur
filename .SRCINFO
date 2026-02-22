@@ -1,16 +1,18 @@
 pkgbase = perl-file-dircompare
-	pkgdesc = Perl module to compare two directories using
+	pkgdesc = Perl module to compare two directories using callbacks
 	pkgver = 0.7
-	pkgrel = 1
-	url = https://metacpan.org/release/File-DirCompare
+	pkgrel = 2
+	url = https://metacpan.org/dist/File-DirCompare
 	arch = any
-	license = PerlArtistic
-	license = GPL
-	depends = perl>=0
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker
+	depends = perl
+	depends = perl-carp
+	depends = perl-pathtools
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/G/GA/GAVINC/File-DirCompare-0.7.tar.gz
-	md5sums = 1b83e9653811d036cc0f97584e0aff9e
-	sha512sums = f929296b580aed630c1fa9ce177e835fc1110ec06c9fa3994f66e6dde4a7f253e80237dcafbfda1268bcb4e6abbca6147cc2e5a1317b1a1a3009086033463bc8
+	source = https://cpan.metacpan.org/authors/id/G/GA/GAVINC/File-DirCompare-0.7.tar.gz
+	sha256sums = b60e4d5dabc630fcfdcdf6f31fdcb6d277d3fd5375f02852eb4b51795a0b105b
 
 pkgname = perl-file-dircompare
-

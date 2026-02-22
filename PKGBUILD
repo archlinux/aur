@@ -1,49 +1,53 @@
-# Contributor: Anonymous
-# Generator  : CPANPLUS::Dist::Arch 1.32
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: Daniel Maurice Davis <daniel.maurice.davis@gmail.com>
 
+_dist='File-DirCompare'
 pkgname='perl-file-dircompare'
-pkgver='0.7'
-pkgrel='1'
-pkgdesc="Perl module to compare two directories using"
+pkgver=0.7
+pkgrel=2
+pkgdesc='Perl module to compare two directories using callbacks'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+url="https://metacpan.org/dist/$_dist"
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl'
+    'perl-carp'
+    'perl-pathtools'
+)
+makedepends=('perl-extutils-makemaker')
+checkdepends=(
+    'perl-pathtools'
+    'perl-test-simple'
+)
 options=('!emptydirs')
-depends=('perl>=0')
-makedepends=()
-url='https://metacpan.org/release/File-DirCompare'
-source=('http://search.cpan.org/CPAN/authors/id/G/GA/GAVINC/File-DirCompare-0.7.tar.gz')
-md5sums=('1b83e9653811d036cc0f97584e0aff9e')
-sha512sums=('f929296b580aed630c1fa9ce177e835fc1110ec06c9fa3994f66e6dde4a7f253e80237dcafbfda1268bcb4e6abbca6147cc2e5a1317b1a1a3009086033463bc8')
-_distdir="File-DirCompare-0.7"
+source=("https://cpan.metacpan.org/authors/id/G/GA/GAVINC/$_dist-$pkgver.tar.gz")
+sha256sums=('b60e4d5dabc630fcfdcdf6f31fdcb6d277d3fd5375f02852eb4b51795a0b105b')
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd $_dist-$pkgver
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd $_dist-$pkgver
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
-}
+package()
+{
+    cd $_dist-$pkgver
 
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+}
