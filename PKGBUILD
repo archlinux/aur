@@ -2,8 +2,8 @@
 # This file is based released package by Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=gofarsi-live-bin
-_pkgver=2026.02.21-200602-872bd6543
-pkgver=2026.02.21_200602_872bd6543
+_pkgver=2026.02.22-071121-683c119a6
+pkgver=2026.02.22_071121_683c119a6
 pkgrel=1
 pkgdesc="Free Persian Go programming language book (Live version)"
 arch=('x86_64' 'aarch64' 'i686' 'pentium4' 'armv6h')
