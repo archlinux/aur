@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>
 
 pkgname=pdeath
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Run a command that is killed when its parent exits"
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ license=('custom:ISC')
 depends=()
 makedepends=()
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(3dae3078a17b65a9a0b18f2170abe722697894513fc885ec9846c9abf0313302)
+sha256sums=(b79d068ead0261d211f1a009cad617182d0755319675b0f82bdb9c32558f0772)
 
 build() {
   cd "$srcdir/$pkgname"
