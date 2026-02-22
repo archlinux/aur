@@ -1,6 +1,6 @@
 pkgbase = docan-unstable
 	pkgdesc = AI chat app with Liquid Glass UI (unstable build from GitHub)
-	pkgver = 4.0.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://openlyst.ink
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = docan-unstable
 	provides = docan
 	conflicts = docan
 	options = !strip
-	source = docan-unstable-4.0.0.zip::https://github.com/openlyst/builds/releases/download/build-1/docan-4.0.0-2026-02-22-linux-x64.zip
+	source = docan-unstable-3.0.0.zip::https://github.com/openlyst/builds/releases/download/build-4/docan-3.0.0-2026-02-22-linux-x64.zip
 	sha256sums = SKIP
 
 pkgname = docan-unstable
