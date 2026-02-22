@@ -1,0 +1,42 @@
+pkgbase = jdk21-zulu-prime-bin
+	pkgdesc = Azul Platform Prime Stream Build of OpenJDK 21. TCK compliant, free for development.
+	pkgver = 26.01.0.0_11
+	pkgrel = 1
+	url = https://www.azul.com/downloads/#prime
+	install = jdk21-zulu-prime-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = custom:Azul Platform Prime Stream License Agreement
+	depends = java-environment-common
+	depends = java-runtime-common
+	depends = ca-certificates-utils
+	depends = libxi
+	depends = libxext
+	depends = libxrender
+	depends = libx11
+	depends = libxtst
+	depends = alsa-lib
+	provides = java-runtime=21
+	provides = java-environment=21
+	provides = java-runtime-headless=21
+	options = !strip
+	source = freedesktop-java.desktop
+	source = freedesktop-jconsole.desktop
+	source = freedesktop-jshell.desktop
+	source = java-icon16.png
+	source = java-icon24.png
+	source = java-icon32.png
+	source = java-icon48.png
+	sha256sums = 4d9f525c31827f7663512628ff5098175dcdb979898b2e3d57dddcd0f9c368c1
+	sha256sums = 988f37f75f82409c606b12fec09150142f7cbc24b6144dabd2ca412e8b0c5b4e
+	sha256sums = 05946042edaface4218ee96ca13cd52a64f85e8bd5e8e394bbec6e7dc00b2571
+	sha256sums = fc8a191aa0c78850194758c77937966cc5bd0fbd2b604188b466571ebcdae570
+	sha256sums = c9079bc3676873b39967861c24036074bf6d224442994b4c4ce79e888602fcd5
+	sha256sums = 8b2491d0b5cbc67075dcae4d29c8a92b9ab813d9eca05a2f16ee3b3efb970e65
+	sha256sums = e15912c341217081f40f73a89203c765e501470ef3a01099c1995139214ff4d6
+	source_x86_64 = https://cdn.azul.com/zing-zvm/ZVM26.01.0.0/zing26.01.0.0-11-jdk21.0.9.0.101-linux_x64.tar.gz
+	sha256sums_x86_64 = b0d835077d4b5cf2c3951280cb68e2d7bff1de7ddf637d7f6ff57a277b1d2bf7
+	source_aarch64 = https://cdn.azul.com/zing-zvm/ZVM26.01.0.0/zing26.01.0.0-11-jdk21.0.9.0.101-linux_aarch64.tar.gz
+	sha256sums_aarch64 = 0fc556dce8449e350173376e8151c48d46c717e7e31328ddfbea6df812c97867
+
+pkgname = jdk21-zulu-prime-bin

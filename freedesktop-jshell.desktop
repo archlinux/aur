@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Azul Platform Prime Java 21 Shell
+Comment=Azul Platform Prime Java 21 Shell
+Keywords=java;shell;zulu;prime
+Exec=/usr/lib/jvm/java-21-zulu-prime/bin/jshell
+Terminal=true
+Type=Application
+Icon=java21-zulu-prime
+Categories=Application;System;

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Azul Platform Prime Java 21 Console
+Name[fi]=Azul Platform Prime Java 21 - konsoli
+Comment=Azul Platform Prime Java 21 Monitoring & Management Console
+Comment[fi]=Azul Platform Prime Java 21 - valvonta- ja hallintakonsoli
+Keywords=java;console;monitoring;prime;zulu
+Exec=/usr/lib/jvm/java-21-zulu-prime/bin/jconsole
+Terminal=false
+Type=Application
+Icon=java21-zulu-prime
+Categories=Application;System;
