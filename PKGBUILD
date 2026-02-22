@@ -1,6 +1,6 @@
-# Maintainer: Necromortis <necromortis@protonmail.com>
+# Maintainer: Necromortis <necromortis@protonmail.com> (automated by openclaw)
 pkgname=vultisig
-pkgver=1.0.51
+pkgver=1.0.52
 pkgrel=1
 pkgdesc="Vultisig Linux Application"
 arch=('x86_64')
@@ -10,15 +10,15 @@ depends=('webkit2gtk')
 options=(!strip)
 source=("$pkgname-v$pkgver.AppImage::https://github.com/vultisig/vultisig-windows/releases/download/v$pkgver/$pkgname-v$pkgver.AppImage")
 noextract=("$pkgname-v$pkgver.AppImage")
-sha256sums=('951ec74ac47b26059ba71a8b76d7679312c8edeb40d43f1fbe71a483a41f8b7b')
+sha256sums=('5513e5ef3efee2b9f0aee530821207844f0025c0e040e121554eabc9771128d2')
 
 prepare() {
-	chmod +x "$pkgname-v$pkgver.AppImage"
-	"./$pkgname-v$pkgver.AppImage" --appimage-extract
+    chmod +x "$pkgname-v$pkgver.AppImage"
+    "./$pkgname-v$pkgver.AppImage" --appimage-extract
 }
 
 package() {
-	# Install the AppImage
+    # Install the AppImage
     install -Dm755 "$pkgname-v$pkgver.AppImage" "${pkgdir}/opt/vultisig/vultisig.AppImage"
 
     # Create launcher script
