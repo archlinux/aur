@@ -27,6 +27,7 @@ depends=(
     'lib32-libtheora'
     'lib32-libvorbis'
     'lib32-libwebp'
+    'lib32-libwslay' # AUR
     'lib32-libxcursor'
     'lib32-libxi'
     'lib32-libxinerama'
@@ -99,7 +100,7 @@ build() {
         builtin_rvo2_2d=yes
         builtin_rvo2_3d=yes
         builtin_squish=no
-        builtin_wslay=yes # lib32-libwslay isn't available.
+        builtin_wslay=no
         builtin_xatlas=yes
         builtin_zlib=no
         builtin_zstd=no

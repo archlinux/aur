@@ -20,6 +20,7 @@ pkgbase = godot32
 	depends = lib32-libtheora
 	depends = lib32-libvorbis
 	depends = lib32-libwebp
+	depends = lib32-libwslay
 	depends = lib32-libxcursor
 	depends = lib32-libxi
 	depends = lib32-libxinerama
