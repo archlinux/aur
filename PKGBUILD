@@ -26,6 +26,8 @@ prepare() {
     mkdir -p "$srcdir/electron-cache"
     mkdir -p "$srcdir/go-build"
     mkdir -p "$srcdir/go/pkg/mod"
+    mkdir -p "$srcdir/bun-cache"
+    mkdir -p "$srcdir/bun-install"
 
     # Set Go Environment explicitly
     export GOPATH="$srcdir/go"
@@ -50,6 +52,8 @@ build() {
     export GOPATH="$srcdir/go"
     export GOCACHE="$srcdir/go-build"
     export GOMODCACHE="$srcdir/go/pkg/mod"
+    export BUN_CACHE="$srcdir/bun-cache"
+    export BUN_INSTALL="$srcdir/bun-install"
     
     bun install
     bun run build
