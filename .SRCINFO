@@ -1,0 +1,13 @@
+pkgbase = ingitdb-bin                                     
+        pkgdesc = Placeholder
+        pkgver = 0.0.0
+        pkgrel = 1
+        url = https://ingitdb.com
+        arch = x86_64
+        arch = aarch64
+        license = MIT
+        depends =
+
+pkgname = ingitdb-bin
+        pkgdesc = Placeholder
+        url = https://ingitdb.com
