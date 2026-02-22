@@ -2,12 +2,12 @@
 
 pkgname=calibre-bin
 pkgver=9.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Official binary version Calibre"
 arch=(x86_64)
 url="https://download.calibre-ebook.com"
 license=(GPL3)
-depends=(libglvnd)
+depends=(libglvnd fontconfig libxkbcommon nss alsa-lib)
 makedepends=(python-sphinx)
 optdepends=()
 conflicts=(calibre calibre-git)

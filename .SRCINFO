@@ -1,12 +1,16 @@
 pkgbase = calibre-bin
 	pkgdesc = Official binary version Calibre
 	pkgver = 9.3.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://download.calibre-ebook.com
 	arch = x86_64
 	license = GPL3
 	makedepends = python-sphinx
 	depends = libglvnd
+	depends = fontconfig
+	depends = libxkbcommon
+	depends = nss
+	depends = alsa-lib
 	conflicts = calibre
 	conflicts = calibre-git
 	options = !strip
