@@ -1,0 +1,20 @@
+pkgbase = lore-bin
+	pkgdesc = A terminal pager with search, filter, and selection.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/robinovitch61/lore
+	license = MIT
+	depends = glibc
+	conflicts = lore
+	provides = lore
+	arch = aarch64
+	source_aarch64 = https://github.com/robinovitch61/lore/releases/download/v0.1.1/lore_0.1.1_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 25cffb8da1a8aafc55138a425e7c681cadcabe08a976a1bd10e2b7e1de0df9b0
+	arch = i686
+	source_i686 = https://github.com/robinovitch61/lore/releases/download/v0.1.1/lore_0.1.1_Linux_i386.tar.gz
+	sha256sums_i686 = fe7121b212117db114432e9f933154fa2aaf11f9d7c078476238ce3f7ba46838
+	arch = x86_64
+	source_x86_64 = https://github.com/robinovitch61/lore/releases/download/v0.1.1/lore_0.1.1_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = d2c2dd4b916bc634aa5530b80fdd0a76822cfe78fc48a6e56dfd3ed848f9a43f
+	
+pkgname = lore-bin
