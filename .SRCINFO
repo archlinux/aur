@@ -1,12 +1,12 @@
 pkgbase = exec-as
 	pkgdesc = A command that lets you start another command with any argv[0]
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://codeberg.org/maandree/exec-as
 	arch = i686
 	arch = x86_64
 	license = custom:ISC
-	source = exec-as-1.2.2.tar.gz::https://codeberg.org/maandree/exec-as/archive/1.2.2.tar.gz
-	sha256sums = 5371437630fff6c86ccea081b2d26107748cfeebceb67c8b0be5276e3887abfb
+	source = exec-as-1.2.3.tar.gz::https://codeberg.org/maandree/exec-as/archive/1.2.3.tar.gz
+	sha256sums = 3813e2975216e3c332d69e6d9ff118efbf65eb3cabc87ea50cf33079540c5d44
 
 pkgname = exec-as
