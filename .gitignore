@@ -1,4 +1,5 @@
-*.xz
-src
-pkg
-BeamMP-Server
+/BeamMP-Server/
+/pkg/
+/src/
+*.tar.zst
+*.tar.xz

@@ -1,0 +1,14 @@
+[Unit]
+Description=Server for the multiplayer mod BeamMP for BeamNG.drive
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=beammp
+Group=beammp
+ExecStart=/usr/bin/BeamMP-Server
+WorkingDirectory=/var/lib/beammp-server
+
+[Install]
+WantedBy=multi-user.target
