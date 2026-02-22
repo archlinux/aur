@@ -2,8 +2,8 @@
 
 pkgname='linux-firmware-gaokun3'
 _tag=200.0.10.0
-pkgver=2.10.0
-pkgrel=4
+pkgver=2.10.1
+pkgrel=1
 pkgdesc='Firmware files for HUAWEI MateBook E Go (sc8280xp)'
 license=('custom')
 arch=('any')
@@ -78,4 +78,7 @@ package() {
         # || : fix ath11k copy
         install -Dm644 linux-firmware/${item} -t "${pkgdir}/${_fw_dir}/$(dirname ${item})" || :
     done
+
+    # fix link
+    ln -s 'hw2.0' "${pkgdir}/${_fw_dir}/ath11k/WCN6855/hw2.1"
 }
