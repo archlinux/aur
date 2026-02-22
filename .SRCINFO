@@ -1,16 +1,17 @@
 pkgbase = perl-graph-easy
 	pkgdesc = Convert or render graphs (as ASCII, HTML, SVG or via Graphviz)
 	pkgver = 0.76
-	pkgrel = 1
-	url = http://search.mcpan.org/dist/Graph-Easy
+	pkgrel = 2
+	url = https://metacpan.org/dist/Graph-Easy
 	arch = any
-	license = PerlArtistic
-	license = GPL
-	depends = perl
+	license = custom
+	makedepends = perl-module-build>=0.36
+	makedepends = perl-test-simple
+	depends = perl-graph-easy-as_svg>=0.23
+	depends = perl-scalar-list-utils
+	depends = perl>=5.8.2
 	options = !emptydirs
-	source = http://search.mcpan.org/CPAN/authors/id/S/SH/SHLOMIF/Graph-Easy-0.76.tar.gz
-	md5sums = 031064db5f254a02a462464832ff845c
-	sha512sums = c5f93252a047ccb0c02347f9f138217c1d52b10ba67db100de7d57a716b3da8d564ecbddedd795420eccc6fe4733bd9b3e64d1fda7d203b144c6112d6bfbe6d0
+	source = https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/Graph-Easy-0.76.tar.gz
+	sha256sums = d4a2c10aebef663b598ea37f3aa3e3b752acf1fbbb961232c3dbe1155008d1fa
 
 pkgname = perl-graph-easy
-
