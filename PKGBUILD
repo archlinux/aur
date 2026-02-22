@@ -1,6 +1,6 @@
 # Maintainer: Crstian <me@crstian.me>
 pkgname=aceplay
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc="Modern CLI to play Ace Stream links - auto-starts acestream-engine, supports mpv/vlc"
 arch=('x86_64')
@@ -25,5 +25,5 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
     install -Dm755 aceplay "$pkgdir/usr/bin/aceplay"
-    install -Dm644 "$srcdir/aceplay.desktop" "$pkgdir/usr/share/applications/aceplay.desktop"
+    install -Dm644 aceplay.desktop "$pkgdir/usr/share/applications/aceplay.desktop"
 }
