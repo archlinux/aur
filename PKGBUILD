@@ -1,7 +1,7 @@
 # Maintainer: metamuffin <metamuffin@disroot.org>
 
 pkgname=jellything-git
-pkgver=r633.5ccadd8
+pkgver=r997.823c0c6
 pkgrel=1
 pkgdesc="Jellything media streaming server"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -23,6 +23,10 @@ sha256sums=("SKIP"
             "SKIP"
             "SKIP")
 
+rust_chost() {
+	sed -e "s/-pc-linux/-unknown-linux/" -e "s/armv7l-/armv7-/" <<< "$CHOST"
+}
+
 pkgver() {
     cd "jellything"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -31,13 +35,14 @@ prepare() {
     cd "jellything"
     git submodule init
     git submodule update
-    cargo +nightly fetch --locked --target "$CHOST"
+    cargo fetch --locked --target "$(rust_chost)"
 }
 build() {
     cd "jellything"
-    cargo +nightly build --frozen --release --target "$CHOST"
-    cargo +nightly build --frozen --release --bin generate_completions
-    ./target/release/generate_completions completions
+    cargo build --frozen --release --target "$(rust_chost)" -p jellytool
+    cargo build --frozen --release --target "$(rust_chost)" -p jellything
+    cargo build --frozen -p jellytool --bin generate_completions
+    ./target/debug/generate_completions completions
     mdbook build doc
 }
 check() {
@@ -45,8 +50,8 @@ check() {
     cargo test --release
 }
 package() {
-    install -Dm755 jellything/target/$CHOST/release/jellything "$pkgdir/usr/bin/jellything"
-    install -Dm755 jellything/target/$CHOST/release/jellytool "$pkgdir/usr/bin/jellytool"
+    install -Dm755 jellything/target/"$(rust_chost)"/release/jellything "$pkgdir/usr/bin/jellything"
+    install -Dm755 jellything/target/"$(rust_chost)"/release/jellytool "$pkgdir/usr/bin/jellytool"
     install -Dm644 jellything/completions/jellytool.fish "$pkgdir/usr/share/fish/completions/jellytool.fish"
     install -Dm644 jellything/completions/jellytool.bash "$pkgdir/usr/share/bash-completion/completions/jellytool"
     install -Dm644 jellything/completions/_jellytool "$pkgdir/usr/share/zsh/site-functions/_jellytool"
