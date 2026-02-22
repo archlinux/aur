@@ -1,7 +1,7 @@
 pkgbase = openvpn-mbedtls
 	pkgdesc = An easy-to-use, robust and highly configurable VPN (Virtual Private Network), linked against the mbedtls library for crypto support.
 	pkgver = 2.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openvpn.net/index.php/open-source.html
 	install = openvpn.install
 	arch = x86_64
@@ -12,18 +12,24 @@ pkgbase = openvpn-mbedtls
 	makedepends = systemd
 	makedepends = cmocka
 	makedepends = python-docutils
-	depends = lzo
+	depends = libcap-ng
+	depends = libcap-ng.so
+	depends = libnl
+	depends = libnl-genl-3.so
+	depends = libnl-3.so
 	depends = lz4
-	depends = iproute2
+	depends = lzo
+	depends = liblzo2.so
 	depends = systemd-libs
+	depends = libsystemd.so
 	depends = mbedtls
 	optdepends = easy-rsa: easy CA and certificate handling
 	optdepends = pam: authenticate via PAM
 	provides = openvpn=2.7.0
 	conflicts = openvpn
 	source = git+https://github.com/OpenVPN/openvpn.git#tag=v2.7.0?signed
-	source = sysusers.conf
-	source = tmpfiles.conf
+	source = openvpn.sysusers
+	source = openvpn.tmpfiles
 	validpgpkeys = F554A3687412CFFEBDEFE0A312F5F7B42F2B01E7
 	validpgpkeys = B62E6A2B4E56570B7BDC6BE01D829EFECA562812
 	sha256sums = 19585f964378642a9c4f2d8f678dddc601e66138ef01c969ea85e8cda47d8434

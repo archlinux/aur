@@ -5,11 +5,16 @@ pkgname=openvpn-mbedtls
 _pkgname=openvpn
 crypto_library=mbedtls
 pkgver=2.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy-to-use, robust and highly configurable VPN (Virtual Private Network), linked against the ${crypto_library} library for crypto support."
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://openvpn.net/index.php/open-source.html'
-depends=('lzo' 'lz4' 'iproute2' 'systemd-libs' "${crypto_library}")
+depends=('libcap-ng' 'libcap-ng.so'
+         'libnl' 'libnl-genl-3.so' 'libnl-3.so'
+         'lz4'
+         'lzo' 'liblzo2.so'
+         'systemd-libs' 'libsystemd.so'
+         "${crypto_library}")
 optdepends=('easy-rsa: easy CA and certificate handling'
             'pam: authenticate via PAM')
 makedepends=('git' 'systemd' 'cmocka' 'python-docutils')
@@ -20,8 +25,8 @@ conflicts=("${_pkgname}")
 provides=("${_pkgname}=${pkgver}")
 license=('custom')
 source=("git+https://github.com/OpenVPN/openvpn.git#tag=v${pkgver}?signed"
-        'sysusers.conf'
-        'tmpfiles.conf')
+        'openvpn.sysusers'
+        'openvpn.tmpfiles')
 sha256sums=('19585f964378642a9c4f2d8f678dddc601e66138ef01c969ea85e8cda47d8434'
             '15669f82ac8b412eb3840ba9b39de20ca9b04bf082516c229577a5cb4e1a9610'
             'b1436f953a4f1be7083711d11928a9924993f940ff56ff92d288d6100df673fc')
@@ -40,8 +45,10 @@ build() {
     --prefix=/usr \
     --sbindir=/usr/bin \
     --with-crypto-library=${crypto_library} \
+    --enable-dco \
     --enable-plugins \
-    --enable-systemd
+    --enable-systemd \
+    --enable-x509-alt-username
   make
 }
 
@@ -58,8 +65,8 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   # Install sysusers and tmpfiles files
-  install -D -m0644 ../sysusers.conf "${pkgdir}"/usr/lib/sysusers.d/openvpn.conf
-  install -D -m0644 ../tmpfiles.conf "${pkgdir}"/usr/lib/tmpfiles.d/openvpn.conf
+  install -D -m0644 ../openvpn.sysusers "${pkgdir}"/usr/lib/sysusers.d/openvpn.conf
+  install -D -m0644 ../openvpn.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/openvpn.conf
 
   # Install license
   install -d -m0755 "${pkgdir}"/usr/share/licenses/openvpn/

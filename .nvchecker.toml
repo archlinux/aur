@@ -1,0 +1,5 @@
+[openvpn]
+source = "git"
+git = "https://github.com/OpenVPN/openvpn.git"
+prefix = "v"
+exclude_regex = ".*(alpha|beta|pre|rc).*"
