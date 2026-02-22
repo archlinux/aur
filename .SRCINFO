@@ -1,8 +1,8 @@
 pkgbase = xlibre-video-ati-bin
 	pkgdesc = XLibre Official Easy Install Drop in Replacement fork of X.Org ati video driver (binary release)
-	pkgver = 22.0.0.3
-	pkgrel = 1
-	url = https://github.com/X11Libre
+	pkgver = 22.0.0.4
+	pkgrel = 2
+	url = https://x11libre.net/repo/arch_based/x86_64
 	arch = x86_64
 	groups = xlibre-drivers
 	license = MIT
@@ -16,9 +16,9 @@ pkgbase = xlibre-video-ati-bin
 	conflicts = xlibre-video-ati
 	conflicts = X-ABI-VIDEODRV_VERSION<28
 	conflicts = X-ABI-VIDEODRV_VERSION>=29
-	noextract = xlibre-xf86-video-ati-22.0.0.3-1-x86_64.pkg.tar.zst
+	noextract = xlibre-xf86-video-ati-22.0.0.4-2-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/xlibre-xf86-video-ati-22.0.0.3-1-x86_64.pkg.tar.zst
-	sha256sums = 963251cd18dd581c29da5308a63b7ecbbdfcb7f2caeba69c2f2b24a63a14c784
+	source = https://x11libre.net/repo/arch_based/x86_64/xlibre-video-ati-22.0.0.4-2-x86_64.pkg.tar.zst
+	sha256sums = c94a752f164e6657b6a020c3ac9004ddfa1f9a6cdbaa5dccb53a9ce52cd5550f
 
 pkgname = xlibre-video-ati-bin
