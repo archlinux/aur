@@ -1,14 +1,17 @@
 pkgbase = perl-perl-critic-policy-variables-prohibitlooponhash
 	pkgdesc = Don't write loops on hashes, only on keys and values of hashes
 	pkgver = 0.009
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/dist/Perl-Critic-Policy-Variables-ProhibitLoopOnHash
 	arch = any
 	license = MIT
+	checkdepends = perl-extutils-makemaker
 	checkdepends = perl-pathtools
 	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker
 	depends = perl
 	depends = perl-carp
+	depends = perl-parent
 	depends = perl-perl-critic>=1.126
 	depends = perl-scalar-list-utils>=1.33
 	options = !emptydirs

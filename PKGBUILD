@@ -3,7 +3,7 @@
 _dist='Perl-Critic-Policy-Variables-ProhibitLoopOnHash'
 pkgname='perl-perl-critic-policy-variables-prohibitlooponhash'
 pkgver=0.009
-pkgrel=1
+pkgrel=2
 pkgdesc="Don't write loops on hashes, only on keys and values of hashes"
 arch=('any')
 url="https://metacpan.org/dist/$_dist"
@@ -11,10 +11,13 @@ license=('MIT')
 depends=(
     'perl'
     'perl-carp'
+    'perl-parent'
     'perl-perl-critic>=1.126'
     'perl-scalar-list-utils>=1.33'
 )
+makedepends=('perl-extutils-makemaker')
 checkdepends=(
+    'perl-extutils-makemaker'
     'perl-pathtools'
     'perl-test-simple'
 )
