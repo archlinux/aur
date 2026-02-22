@@ -1,7 +1,7 @@
 pkgbase = accomplish-ai-bin
 	pkgdesc = Open source AI desktop agent that automates file management, document creation, and browser tasks
 	pkgver = 0.3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/varshithm7x/accomplish
 	arch = x86_64
 	license = MIT
