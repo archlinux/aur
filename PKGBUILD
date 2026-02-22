@@ -44,6 +44,8 @@ build() {
 	cd "$srcdir/${_pkgname}"
 	export GRAALVM_HOME="$srcdir/${_graalvm_version}"
 	export JAVA_HOME="${GRAALVM_HOME}"
+	export NATIVE_IMAGE_OPTIONS="-march=compatibility"
+	#export NATIVE_IMAGE_OPTIONS="-march=native"
 	/usr/bin/gradle clean nativeCompile -Dorg.gradle.java.home="${JAVA_HOME}"
 }
 
