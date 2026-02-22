@@ -1,6 +1,6 @@
 pkgbase = agcp-bin
 	pkgdesc = Lightweight Rust proxy translating Anthropic Claude API to Google Cloud Code API
-	pkgver = 1.2.2
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/skyline69/agcp
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = agcp-bin
 	license = MIT
 	provides = agcp
 	conflicts = agcp
-	source = LICENSE-1.2.2::https://github.com/skyline69/agcp/raw/v1.2.2/LICENSE
+	source = LICENSE-1.3.0::https://github.com/skyline69/agcp/raw/v1.3.0/LICENSE
 	sha256sums = 6eaffa349d21c1c802daacce02659de6810f4cd06ab3af840815719112eba49e
-	source_x86_64 = https://github.com/skyline69/agcp/releases/download/v1.2.2/agcp-v1.2.2-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 6131ac72874fb8957e0f2d44e3ff012884e70d61be396b94909a90bd7d23f16c
-	source_aarch64 = https://github.com/skyline69/agcp/releases/download/v1.2.2/agcp-v1.2.2-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = b596bc5bbc7006e0c0d044cae1e6ae0444c60959cc7550f87588aad9b3e0250e
+	source_x86_64 = https://github.com/skyline69/agcp/releases/download/v1.3.0/agcp-v1.3.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 61cc723e077f5920f1db1cf9dcda873f285cdf133a01e02de357f3e7200679c6
+	source_aarch64 = https://github.com/skyline69/agcp/releases/download/v1.3.0/agcp-v1.3.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 7fb9179f6334bdc30f187424e26d6432feb1004cc52a8b97fc9f5eb198f66881
 
 pkgname = agcp-bin
