@@ -91,6 +91,7 @@ build() {
     export CARGO_HOME="$srcdir/.cargo-tauri-cef"
     export PATH="$srcdir/.cargo-tauri-cef/bin:$PATH"
     export CEF_PATH="$srcdir/cef"
+    export CFLAGS+=" -ffat-lto-objects"
     mkdir -p "$CEF_PATH"
 
     # Remove the lockfile so Cargo re-resolves against the patched git crates
