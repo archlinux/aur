@@ -1,6 +1,6 @@
 pkgbase = libgammamm
 	pkgdesc = Display server abstraction layer for gamma ramps and C++
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://codeberg.org/maandree/libgammamm
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = libgammamm
 	depends = libgamma>=0.7.4
 	depends = glibc
 	depends = gcc-libs
-	source = libgammamm-1.0.4.tar.gz::https://codeberg.org/maandree/libgammamm/archive/1.0.4.tar.gz
-	sha256sums = ad3a5c96865d97b2f800eab7237e722fd13b6db00a1dcb8f2043d9f9dc317775
+	source = libgammamm-1.0.5.tar.gz::https://codeberg.org/maandree/libgammamm/archive/1.0.5.tar.gz
+	sha256sums = 1e07b452b1926bc17819cd8faf73e3fe3ad34a6702392339f79cb83da2cb9ce6
 
 pkgname = libgammamm
