@@ -13,6 +13,7 @@ pkgdesc="A free EDA software to develop printed circuit boards"
 arch=('x86_64' 'i686')
 url="https://librepcb.org/"
 license=('GPL-3.0-or-later')
+options=(!lto)
 depends=(
   'glu'
   'hicolor-icon-theme'
