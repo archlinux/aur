@@ -1,0 +1,12 @@
+pkgbase = drawio-live-bin
+	pkgdesc = Diagram drawing application built on web technology (Live version)
+	pkgver = 29.3.6
+	pkgrel = 1
+	url = https://github.com/jgraph/drawio
+	arch = any
+	license = Apache
+	options = !strip
+	source = drawio-29.3.6.war::https://github.com/jgraph/drawio/releases/download/v29.3.6/draw.war
+	sha256sums = 0a00e7a70902ea4b8bb1b7e6c46b05fff1825d4362b5f7817e1649e8cd61952b
+
+pkgname = drawio-live-bin
