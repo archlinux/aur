@@ -17,7 +17,7 @@ source=(
   enable-opera-gx-stable-default-ffmpeg.install
 )
 install=enable-opera-gx-stable-default-ffmpeg.install
-sha512sums=('SKIP'
+sha512sums=('4547f909a430b3bcc08838ce5f34a01519e336d0c2a0fb6d4d3811afe6aa983d7d16bc40c0a340cd04944ccc8f774e487ad7b0282ebc0fe5808f070d3148a0b0'
             '7b48bbaba2f664412946e05127198d97f815217a0116b2b8e0d6be70c9e2d9e59eb8df3b30c67f45c0f876636f0d3ffb03d51643c0388e8783a3a976c8a7e9ec'
             '75888b4e99f2eb3e0c233f9331b800cb7e39d29a0bde5ea632efefb2a138bff4d2a5b276b1d21b215688b2a2774b24c217e6c4063e2698d1e8bd315e4417e0bd')
 
