@@ -1,13 +1,13 @@
 # Maintainer: alister (major) <alister@kamikishi.net>
 pkgname=gopherbook
-pkgver=1.3.000
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Web-based comic book library manager for CBZ/CBT files"
 arch=('x86_64')
 url="https://codeberg.org/riomoo/gopherbook"
 license=('PIL')
 depends=('glibc')
-makedepends=('go>=1.25.2' 'git')
+makedepends=('go>=1.26.0')
 install=gopherbook.install
 
 options=('!debug' '!strip')
@@ -21,7 +21,7 @@ source=("$pkgname::git+$url#branch=main"
 # 'SKIP' for the git repo and local files where you don't want to manage hashes
 sha256sums=('SKIP'
             '98f3a7f4851504e92d9a2c94fc2295f6fc640199d91d6e8a5ac4ec5c22800962'
-            '49f7059e97849be55063dfb7fbba39a04580f7371a95b2339bc63bfdf93875e7'
+            'e589883e8a717181f2ec6421ae2e494115c610e50e625b3cc28270ad91d54354'
             '07c888c0b7a66feddd1b151d5313b39b3f3a50555ae06a7495ca37458e404cd5')
 
 build() {
@@ -34,7 +34,7 @@ build() {
     go mod download
 
     go build -a \
-      -ldflags="-s -w -linkmode external -X main.GOMEMLIMIT=512MiB -X runtime.defaultGOGC=50" \
+      -ldflags="-s -w -linkmode external -X runtime.defaultGOGC=50" \
       -trimpath \
       -o gopherbook \
       ./app/gopherbook
