@@ -1,7 +1,7 @@
 # Maintainer: Hans Binderup <hbinderup94@gmail.com>
 
 pkgname=aliasx
-pkgver=0.1.9
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Alias extended - task, alias and build handles'
 url='https://github.com/hansbinderup/aliasx'
@@ -10,7 +10,7 @@ makedepends=('cargo')
 depends=('glibc')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=("https://github.com/hansbinderup/aliasx/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('ef58aef7288889c2ceab5a0d9a94b72931151a8f2a1b3514ea2bc86bfc40403d')
+sha256sums=('f1bf0b721437ea3ba3fe999564c00957f6049a3ddfdd71aa09cfd7073d77c374')
 
 build() {
     export RUSTUP_TOOLCHAIN=stable
