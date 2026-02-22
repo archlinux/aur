@@ -1,13 +1,11 @@
 pkgbase = goose-bin
-	pkgdesc = Goose is a database migration tool. Manage your database schema by creating incremental SQL changes or Go functions.
+	pkgdesc = A database migration tool. Supports SQL migrations and Go functions.
 	pkgver = 3.27.0
 	pkgrel = 1
 	url = https://github.com/pressly/goose
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	depends = glibc
-	depends = gcc-libs
 	provides = goose
 	conflicts = goose
 	source = README-3.27.0.md::https://raw.githubusercontent.com/pressly/goose/v3.27.0/README.md

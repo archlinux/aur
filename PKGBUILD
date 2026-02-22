@@ -4,7 +4,7 @@
 _pkgauthor=pressly
 _pkgname=goose
 pkgname=${_pkgname}-bin
-pkgdesc="Goose is a database migration tool. Manage your database schema by creating incremental SQL changes or Go functions."
+pkgdesc="A database migration tool. Supports SQL migrations and Go functions."
 
 pkgver=3.27.0
 pkgrel=1
@@ -20,7 +20,6 @@ license=('MIT')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-depends=('glibc' 'gcc-libs')
 
 source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
