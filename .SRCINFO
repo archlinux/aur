@@ -1,14 +1,14 @@
 pkgbase = papi
 	pkgdesc = Performance Application Programming Interface
 	pkgver = 7.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://icl.cs.utk.edu/papi
 	arch = x86_64
 	arch = i686
 	arch = pentium4
 	arch = armv7h
 	arch = aarch64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = bash
 	depends = glibc
 	depends = gcc-fortran

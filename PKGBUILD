@@ -6,11 +6,11 @@
 
 pkgname=papi
 pkgver=7.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Performance Application Programming Interface"
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="http://icl.cs.utk.edu/${pkgname}"
-license=('BSD')
+license=('BSD-3-Clause')
 options=('staticlibs')
 depends=('glibc' 'gcc-fortran')
 optdepends=('python')
@@ -43,7 +43,7 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}/src"
 
-  export CFLAGS="-fPIC ${CFLAGS}"
+  export CFLAGS="-fPIC -std=gnu17 ${CFLAGS}"
   ./configure \
     --prefix=/usr \
     --with-static-lib=yes \
