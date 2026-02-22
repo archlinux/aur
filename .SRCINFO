@@ -1,0 +1,21 @@
+pkgbase = boomer-wayland-git
+	pkgdesc = A zooming tool for Linux - Native Wayland version
+	pkgver = r294.93d553b
+	pkgrel = 1
+	url = https://github.com/cxinu/zoomer
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = nim
+	makedepends = nimble
+	makedepends = wayland-protocols
+	depends = wayland
+	depends = mesa
+	depends = grim
+	provides = boomer
+	conflicts = boomer
+	source = boomer-wayland-git::git+https://github.com/cxinu/zoomer.git
+	sha256sums = SKIP
+
+pkgname = boomer-wayland-git
