@@ -1,0 +1,27 @@
+pkgbase = solar2d-git
+	pkgdesc = Solar2D (formerly Corona SDK) cross-platform game engine
+	pkgver = 3728.r0.ab736b71
+	pkgrel = 1
+	url = https://github.com/coronalabs/corona
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = glu
+	depends = zlib
+	depends = openal
+	depends = freetype2
+	depends = libpng
+	depends = libjpeg
+	depends = openssl-1.1
+	depends = curl
+	depends = sdl2
+	depends = java-runtime
+	provides = Solar2D
+	conflicts = Solar2D
+	options = !lto
+	options = !buildflags
+	source = git+https://github.com/coronalabs/corona.git#branch=master
+	sha256sums = SKIP
+
+pkgname = solar2d-git
