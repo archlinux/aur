@@ -1,12 +1,12 @@
 pkgbase = jdk17-zulu-prime-bin
 	pkgdesc = Azul Platform Prime Stream Build of OpenJDK 17. TCK compliant, free for development.
-	pkgver = 24.01.0.0_4
+	pkgver = 26.01.0.0_11
 	pkgrel = 1
 	url = https://www.azul.com/downloads/#prime
 	install = jdk17-zulu-prime-bin.install
 	arch = x86_64
 	arch = aarch64
-	license = unknown
+	license = custom:Azul Platform Prime Stream License Agreement
 	depends = java-environment-common
 	depends = java-runtime-common
 	depends = ca-certificates-utils
@@ -18,9 +18,25 @@ pkgbase = jdk17-zulu-prime-bin
 	depends = alsa-lib
 	provides = java-runtime=17
 	provides = java-environment=17
-	source_x86_64 = https://cdn.azul.com/zing-zvm/ZVM24.01.0.0/zing24.01.0.0-4-jdk17.0.10-linux_x64.tar.gz
-	sha256sums_x86_64 = af875e10c6ebdc4bcfe5917df0d00f887e4f095339167ebbfa07d49b8c9f709e
-	source_aarch64 = https://cdn.azul.com/zing-zvm/ZVM24.01.0.0/zing24.01.0.0-4-jdk17.0.10-linux_aarch64.tar.gz
-	sha256sums_aarch64 = 3633a54a229de7dfcda688a29258e9204c43321d3c931015ce8f96d7e1db1678
+	provides = java-runtime-headless=17
+	options = !strip
+	source = freedesktop-java.desktop
+	source = freedesktop-jconsole.desktop
+	source = freedesktop-jshell.desktop
+	source = java-icon16.png
+	source = java-icon24.png
+	source = java-icon32.png
+	source = java-icon48.png
+	sha256sums = d40da1d3f3efadd8b30fd4ab0d5c9efe5fdda53a781f90e9280b5423f15038f5
+	sha256sums = 24ad8300bb7dcbfe44b216c2942fcf562fc501529514b3459045a2bcb6adbf11
+	sha256sums = 0b6500f236598930d12aa32ff8a539398869fece69319d4dd34ac5bf54ebb3db
+	sha256sums = fc8a191aa0c78850194758c77937966cc5bd0fbd2b604188b466571ebcdae570
+	sha256sums = c9079bc3676873b39967861c24036074bf6d224442994b4c4ce79e888602fcd5
+	sha256sums = 8b2491d0b5cbc67075dcae4d29c8a92b9ab813d9eca05a2f16ee3b3efb970e65
+	sha256sums = e15912c341217081f40f73a89203c765e501470ef3a01099c1995139214ff4d6
+	source_x86_64 = https://cdn.azul.com/zing-zvm/ZVM26.01.0.0/zing26.01.0.0-11-jdk17.0.17.0.101-linux_x64.tar.gz
+	sha256sums_x86_64 = e34d1949c1d2144152b2f4cd3c47ee63de2f0c4a050d12ac2ee6083d4ccaf018
+	source_aarch64 = https://cdn.azul.com/zing-zvm/ZVM26.01.0.0/zing26.01.0.0-11-jdk17.0.17.0.101-linux_aarch64.tar.gz
+	sha256sums_aarch64 = fa030a57d535342817965cead8ba2d117770c1c817823fb49c351a6eaee00fbf
 
 pkgname = jdk17-zulu-prime-bin

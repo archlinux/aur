@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Azul Platform Prime Java 17 Runtime
+Name[fi]=Azul Platform Prime Java 17 - ajonaikainen ympäristö
+Comment=Azul Platform Prime Java 17 Runtime
+Comment[fi]=Azul Platform Prime Java 17 - ajonaikainen ympäristö
+Keywords=java;runtime;zulu;prime
+Exec=/usr/lib/jvm/java-17-zulu-prime/bin/java -jar
+Terminal=false
+Type=Application
+Icon=java17-zulu-prime
+MimeType=application/x-java-archive;application/java-archive;application/x-jar;
+NoDisplay=true

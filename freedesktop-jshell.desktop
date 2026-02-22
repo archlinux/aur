@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=OpenJDK Java 17 Shell
+Comment=OpenJDK Java 17 Shell
+Keywords=java;shell;zulu;prime
+Exec=/usr/lib/jvm/java-17-zulu-prime/bin/jshell
+Terminal=true
+Type=Application
+Icon=java17-zulu-prime
+Categories=Application;System;

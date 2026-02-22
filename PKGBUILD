@@ -1,11 +1,11 @@
 # Maintainer: Deleted User <deleted-user@example.com>
 
 _java=17
-_jdk=${_java}.0.10
-_jdkname="java-${_java}-zulu-prime"
-_pkgver_major="24"
+_jdk=${_java}.0.17.0.101
+_jdkname="java${_java}-zulu-prime"
+_pkgver_major="26"
 _pkgver_minor="01.0.0"
-_pkgver_build="4"
+_pkgver_build="11"
 
 pkgname="jdk${_java}-zulu-prime-bin"
 pkgver="${_pkgver_major}.${_pkgver_minor}_${_pkgver_build}"
@@ -16,7 +16,7 @@ arch=(
   'aarch64'
 )
 url="https://www.azul.com/downloads/#prime"
-license=('unknown')
+license=('custom:Azul Platform Prime Stream License Agreement')
 depends=(
   'java-environment-common'
   'java-runtime-common'
@@ -28,19 +28,39 @@ depends=(
   'libxtst'
   'alsa-lib'
 )
+options=('!strip')
 provides=(
   "java-runtime=${_java}"
   "java-environment=${_java}"
+  "java-runtime-headless=${_java}"
 )
 install="$pkgname.install"
+source=(
+  freedesktop-java.desktop
+  freedesktop-jconsole.desktop
+  freedesktop-jshell.desktop
+  java-icon16.png
+  java-icon24.png
+  java-icon32.png
+  java-icon48.png
+
+)
+sha256sums=(
+  'd40da1d3f3efadd8b30fd4ab0d5c9efe5fdda53a781f90e9280b5423f15038f5'
+  '24ad8300bb7dcbfe44b216c2942fcf562fc501529514b3459045a2bcb6adbf11'
+  '0b6500f236598930d12aa32ff8a539398869fece69319d4dd34ac5bf54ebb3db'
+  'fc8a191aa0c78850194758c77937966cc5bd0fbd2b604188b466571ebcdae570'
+  'c9079bc3676873b39967861c24036074bf6d224442994b4c4ce79e888602fcd5'
+  '8b2491d0b5cbc67075dcae4d29c8a92b9ab813d9eca05a2f16ee3b3efb970e65'
+  'e15912c341217081f40f73a89203c765e501470ef3a01099c1995139214ff4d6'
+
+)
 source_x86_64=("https://cdn.azul.com/zing-zvm/ZVM${_pkgver_major}.${_pkgver_minor}/zing${pkgver//_/-}-jdk${_jdk}-linux_x64.tar.gz")
 source_aarch64=("https://cdn.azul.com/zing-zvm/ZVM${_pkgver_major}.${_pkgver_minor}/zing${pkgver//_/-}-jdk${_jdk}-linux_aarch64.tar.gz")
-sha256sums_x86_64=('af875e10c6ebdc4bcfe5917df0d00f887e4f095339167ebbfa07d49b8c9f709e')
-sha256sums_aarch64=('3633a54a229de7dfcda688a29258e9204c43321d3c931015ce8f96d7e1db1678')
+sha256sums_x86_64=('e34d1949c1d2144152b2f4cd3c47ee63de2f0c4a050d12ac2ee6083d4ccaf018')
+sha256sums_aarch64=('fa030a57d535342817965cead8ba2d117770c1c817823fb49c351a6eaee00fbf')
 
-_jvmdir="/usr/lib/jvm/${_jdkname}"
-
-BUILDENV+=('!check')
+_jvmdir=/usr/lib/jvm/java-${_java}-zulu-prime
 
 package() {
   case "${CARCH}" in
@@ -81,4 +101,18 @@ package() {
   # Link JKS keystore from ca-certificates-utils
   rm -f "${pkgdir}/${_jvmdir}/lib/security/cacerts"
   ln -sf /etc/ssl/certs/java/cacerts "${pkgdir}/${_jvmdir}/lib/security/cacerts"
+
+  # Icons
+  for s in 16 24 32 48; do
+    install -Dm 644 \
+      "${srcdir}/java-icon${s}.png" \
+      "${pkgdir}/usr/share/icons/hicolor/${s}x${s}/apps/${_jdkname}.png"
+  done
+  
+  # Desktop files
+  for f in jconsole java jshell; do
+    install -Dm 644 \
+      "${srcdir}/freedesktop-${f}.desktop" \
+      "${pkgdir}/usr/share/applications/${f}-${_jdkname}.desktop"
+  done
 }
