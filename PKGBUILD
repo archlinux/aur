@@ -3,7 +3,7 @@
 _dist='Unicode-CheckUTF8'
 pkgname='perl-unicode-checkutf8'
 pkgver=1.03
-pkgrel=1
+pkgrel=2
 pkgdesc='checks if scalar is valid UTF-8'
 arch=('any')
 url="https://metacpan.org/dist/$_dist"
@@ -22,7 +22,7 @@ source=(
 )
 sha256sums=(
     '97f84daf033eb9b49cd8fe31db221fef035a5c2ee1d757f3122c88cf9762414c'
-    'SKIP'
+    '15f522253458f367808fbafae5096f879e2b589c49cd0bc481847367a6f633b3'
 )
 
 build()
