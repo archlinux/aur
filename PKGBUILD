@@ -1,7 +1,7 @@
 # Maintainer: AntiApple4life <antiapple at antiapple.net>
 _pkgname=spout2pw
 pkgname=${_pkgname}-bin
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Spout2 to PipeWire bridge"
@@ -15,7 +15,7 @@ conflicts=("${_pkgname}")
 options=(!strip)
 install=instructions.install
 source=("https://github.com/hoshinolina/spout2pw/releases/download/${pkgver}/spout2pw-${pkgver}-bin.tar.gz")
-sha256sums=('4503a093cc6f96431f8ba8568027057f889b4aed79453e7f25800b1987f24e0d')
+sha256sums=('c3457915ddb572910f577b053b8865ce80c48531d389004f9378810660ab8029')
 
 package() {
 	mkdir -p $pkgdir/opt/${_pkgname}
