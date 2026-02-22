@@ -2,7 +2,7 @@
 
 _pkgname=crossdirstat
 pkgname=${_pkgname}-bin
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Free open-source cross-platform file & directory statistics"
 arch=('x86_64')
@@ -19,9 +19,9 @@ options=(!strip)
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.pacman")
-sha256sums=('9ffb84335663022d32f9e84c6452994eda4823a502a690f8b0bc360a92a16974'
-            '9fef6ed440edf791a1a0273af702e64805c86d762bec523f33552d6a35e60317')
-sha256sums_x86_64=('24020b81bda4baa0eee5af2b251b3263cbd9ce2a02b961fb2fb8b96818a5b6ad')
+sha256sums=('09af59efad3c9931c83b1eba5045beb2d4de0693787b2dc59cd13686c06fcb2e'
+            'ae80001123f55ad492ab414089b9adb71d91d4b7735d51332b3d9a285ed62501')
+sha256sums_x86_64=('0c0d26e81a33cb3e95f6078be366aae65e40190d42b65113de41bad6ad11a257')
 
 package() {
   cd "$srcdir"
