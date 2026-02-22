@@ -1,0 +1,19 @@
+pkgbase = perl-unicode-checkutf8
+	pkgdesc = checks if scalar is valid UTF-8
+	pkgver = 1.03
+	pkgrel = 1
+	url = https://metacpan.org/dist/Unicode-CheckUTF8
+	arch = any
+	license = custom
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker
+	depends = perl
+	depends = perl-base
+	depends = perl-xsloader
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/B/BR/BRADFITZ/Unicode-CheckUTF8-1.03.tar.gz
+	source = UPSTREAM_LICENSE
+	sha256sums = 97f84daf033eb9b49cd8fe31db221fef035a5c2ee1d757f3122c88cf9762414c
+	sha256sums = SKIP
+
+pkgname = perl-unicode-checkutf8
