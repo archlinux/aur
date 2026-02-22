@@ -1,8 +1,8 @@
 pkgbase = xlibre-input-elographics-bin
 	pkgdesc = XLibre Official Easy Install Drop in Replacement fork of X.Org Elographics TouchScreen input driver (binary release)
-	pkgver = 1.4.4.1
-	pkgrel = 2
-	url = https://github.com/X11Libre
+	pkgver = 1.4.4.2
+	pkgrel = 1.2
+	url = https://x11libre.net/repo/arch_based/x86_64
 	arch = x86_64
 	groups = xlibre-drivers
 	license = MIT
@@ -11,9 +11,9 @@ pkgbase = xlibre-input-elographics-bin
 	provides = xlibre-input-elographics
 	conflicts = xf86-input-elographics
 	conflicts = xlibre-input-elographics
-	noextract = xlibre-xf86-input-elographics-1.4.4.1-2-x86_64.pkg.tar.zst
+	noextract = xlibre-xf86-input-elographics-1.4.4.2-1.2-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/xlibre-xf86-input-elographics-1.4.4.1-2-x86_64.pkg.tar.zst
-	sha256sums = 9fa2525cfe620dbae6fb57d918f73794b6e42f0c86ed5186ce9455a38ed5517d
+	source = https://x11libre.net/repo/arch_based/x86_64/xlibre-input-elographics-1.4.4.2-1.2-x86_64.pkg.tar.zst
+	sha256sums = 8996da3d95d97d4ad25ad200e7d908b8fe55d49aaaa8bf550abb6dbb0f121a8e
 
 pkgname = xlibre-input-elographics-bin
