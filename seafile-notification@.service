@@ -1,6 +1,6 @@
 [Unit]
 Description=Seafile Notification Server.
-After=network.target
+After=mysql.service
 
 [Service]
 Type=simple
