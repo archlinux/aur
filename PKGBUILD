@@ -1,11 +1,11 @@
 pkgname='slskd-bin'
 pkgver=0.24.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern client-server application for the Soulseek file-sharing network.'
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/slskd/slskd/'
 license=('AGPL3')
-options=("!debug")
+options=("!debug" "!strip")
 depends=(dotnet-runtime)
 
 source_x86_64=("https://github.com/slskd/slskd/releases/download/${pkgver}/slskd-${pkgver}-linux-x64.zip")

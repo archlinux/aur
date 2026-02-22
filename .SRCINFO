@@ -1,7 +1,7 @@
 pkgbase = slskd-bin
 	pkgdesc = A modern client-server application for the Soulseek file-sharing network.
 	pkgver = 0.24.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/slskd/slskd/
 	arch = x86_64
 	arch = aarch64
@@ -9,6 +9,7 @@ pkgbase = slskd-bin
 	license = AGPL3
 	depends = dotnet-runtime
 	options = !debug
+	options = !strip
 	source = slskd.service
 	source = slskd.sysusers
 	source = slskd.tmpfiles
