@@ -1,0 +1,27 @@
+pkgbase = voidrice-git
+	pkgdesc = Luke Smith's dotfile scripts from ~/.local/bin
+	pkgver = r1
+	pkgrel = 1
+	url = https://github.com/LukeSmithxyz/voidrice
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = bash
+	optdepends = dmenu: dmenu-based scripts
+	optdepends = libnotify: desktop notifications
+	optdepends = xdotool: X11 window/input automation
+	optdepends = maim: screenshot scripts
+	optdepends = ffmpeg: screen recording and audio processing
+	optdepends = mpv: video/media scripts
+	optdepends = newsboat: RSS feed scripts
+	optdepends = transmission-cli: torrent scripts
+	optdepends = tor: torwrap anonymization script
+	optdepends = pass: password manager scripts
+	optdepends = oathtool: OTP script
+	optdepends = lf: lfub file manager script
+	optdepends = xorg-xrandr: display selection script
+	optdepends = xwallpaper: background setter script
+	source = voidrice-git::git+https://github.com/LukeSmithxyz/voidrice.git
+	sha256sums = SKIP
+
+pkgname = voidrice-git
