@@ -12,7 +12,7 @@ optdepends=()
 provides=('opentorrent')
 conflicts=('opentorrent')
 options=('!strip')
-source=("opentorrent-unstable-${pkgver}.zip::https://github.com/openlyst/builds/releases/download/build-1/opentorrent-2.0.0-2026-02-22-linux-x64.zip")
+source=("opentorrent-unstable-${pkgver}.zip::https://github.com/openlyst/builds/releases/download/build-4/opentorrent-2.0.0-2026-02-22-linux-x64.zip")
 sha256sums=('SKIP')
 
 package() {
