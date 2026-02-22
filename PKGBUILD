@@ -4,7 +4,7 @@
 
 pkgname='monochrome'
 pkgver=2.2.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Lossless music streaming"
 arch=('x86_64')
 url=https://github.com/monochrome-music/monochrome
@@ -13,7 +13,7 @@ provides=("$pkgname")
 conflicts=("$pkgname")
 source_x86_64=(
   "$pkgname-$pkgver.zip::https://downloads.samidy.com/out_delivery/monochrome-linux.zip"
-  "icon.png::https://raw.githubusercontent.com/SamidyFR/monochrome/refs/heads/main/public/assets/96.png"
+  "icon.png::https://raw.githubusercontent.com/monochrome-music/monochrome/refs/heads/main/public/assets/96.png"
 )
 sha256sums_x86_64=("SKIP" "SKIP")
 
