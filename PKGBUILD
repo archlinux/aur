@@ -1,10 +1,12 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: ordoban <dirk.langer@vvovgonik.de>
+# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Contributor: Caleb Cushing <xenoterracide@gmail.com>
 
 _dist='Data-Dump-Streamer'
 pkgname='perl-data-dump-streamer'
-pkgver='2.42'
-pkgrel='2'
+pkgver=2.42
+pkgrel=3
 pkgdesc='Accurately serialize a data structure as Perl code'
 arch=('any')
 url="https://metacpan.org/dist/$_dist"
