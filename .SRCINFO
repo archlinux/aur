@@ -1,6 +1,6 @@
 pkgbase = openclaw-git
 	pkgdesc = Personal AI assistant that runs on your own devices
-	pkgver = 2026.2.19.r132.gd94d21f9b0
+	pkgver = 2026.2.21.r668.g07527e22ce
 	pkgrel = 1
 	url = https://github.com/openclaw/openclaw
 	install = openclaw.install
@@ -28,7 +28,7 @@ pkgbase = openclaw-git
 	sha256sums = 28568550c4674efc8b90a9b4ea5cf9dc024770275c089499a5cc5d7064d1bba8
 	sha256sums = 44b23035089628327dbb05b1aa7a6daf09f21b82c0172ca59ed4576d3aa7b9a5
 	sha256sums = 34fa95679d51f4d5be120e98714f8b580689e57bef6eb031dcf35c0b26948e7d
-	sha256sums = 47bb9126a6d6e5324bf33fa9d571909ca5988008f25f04ff112ccb98b495cfc2
+	sha256sums = 2451286e68f648bacea47e82a76c087c5f63a03ee853202967ce2f7641e88dd4
 	sha256sums = 83ed419ab471740c4cfe3e866126f4297796a0bda391ede6803345897659f400
 	sha256sums = 72cf00f138984381e747bafe04d853d4f8dc3b6e2fa92f58e0739e881eda2799
 	sha256sums = 817f2a15928521a5e3b9206ee227cbe0b699932fe8f54eaa6a4290c59608dff2

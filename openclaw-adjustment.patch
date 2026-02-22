@@ -1,6 +1,6 @@
---- package.json.orig	2026-02-21 04:02:56.143843656 +0100
-+++ package.json	2026-02-21 04:02:56.149843656 +0100
-@@ -51,11 +51,11 @@
+--- package.json.orig	2026-02-22 13:55:09.528328022 +0100
++++ package.json	2026-02-22 13:55:09.534328023 +0100
+@@ -51,20 +51,20 @@
      "android:install": "cd apps/android && ./gradlew :app:installDebug",
      "android:run": "cd apps/android && ./gradlew :app:installDebug && adb shell am start -n ai.openclaw.android/.MainActivity",
      "android:test": "cd apps/android && ./gradlew :app:testDebugUnitTest",
@@ -13,18 +13,35 @@
 +    "check": "bun run format:check && bun run tsgo && bun run lint",
 +    "check:docs": "bun run format:docs:check && bun run lint:docs && bun run docs:check-links",
      "check:loc": "node --import tsx scripts/check-ts-max-loc.ts --max 500",
+-    "deadcode:ci": "pnpm deadcode:report:ci:knip && pnpm deadcode:report:ci:ts-prune && pnpm deadcode:report:ci:ts-unused",
+-    "deadcode:knip": "pnpm dlx knip --no-progress",
+-    "deadcode:report": "pnpm deadcode:knip; pnpm deadcode:ts-prune; pnpm deadcode:ts-unused",
+-    "deadcode:report:ci:knip": "mkdir -p .artifacts/deadcode && pnpm deadcode:knip > .artifacts/deadcode/knip.txt 2>&1 || true",
+-    "deadcode:report:ci:ts-prune": "mkdir -p .artifacts/deadcode && pnpm deadcode:ts-prune > .artifacts/deadcode/ts-prune.txt 2>&1 || true",
+-    "deadcode:report:ci:ts-unused": "mkdir -p .artifacts/deadcode && pnpm deadcode:ts-unused > .artifacts/deadcode/ts-unused-exports.txt 2>&1 || true",
+-    "deadcode:ts-prune": "pnpm dlx ts-prune src extensions scripts",
+-    "deadcode:ts-unused": "pnpm dlx ts-unused-exports tsconfig.json --ignoreTestFiles --exitWithCount",
++    "deadcode:ci": "bun run deadcode:report:ci:knip && bun run deadcode:report:ci:ts-prune && bun run deadcode:report:ci:ts-unused",
++    "deadcode:knip": "bun run dlx knip --no-progress",
++    "deadcode:report": "bun run deadcode:knip; bun run deadcode:ts-prune; bun run deadcode:ts-unused",
++    "deadcode:report:ci:knip": "mkdir -p .artifacts/deadcode && bun run deadcode:knip > .artifacts/deadcode/knip.txt 2>&1 || true",
++    "deadcode:report:ci:ts-prune": "mkdir -p .artifacts/deadcode && bun run deadcode:ts-prune > .artifacts/deadcode/ts-prune.txt 2>&1 || true",
++    "deadcode:report:ci:ts-unused": "mkdir -p .artifacts/deadcode && bun run deadcode:ts-unused > .artifacts/deadcode/ts-unused-exports.txt 2>&1 || true",
++    "deadcode:ts-prune": "bun run dlx ts-prune src extensions scripts",
++    "deadcode:ts-unused": "bun run dlx ts-unused-exports tsconfig.json --ignoreTestFiles --exitWithCount",
      "dev": "node scripts/run-node.mjs",
      "docs:bin": "node scripts/build-docs-list.mjs",
-@@ -63,7 +63,7 @@
-     "docs:dev": "cd docs && mint dev",
-     "docs:list": "node scripts/docs-list.js",
+     "docs:check-links": "node scripts/docs-link-audit.mjs",
+@@ -73,7 +73,7 @@
+     "docs:spellcheck": "bash scripts/docs-spellcheck.sh",
+     "docs:spellcheck:fix": "bash scripts/docs-spellcheck.sh --write",
      "format": "oxfmt --write",
 -    "format:all": "pnpm format && pnpm format:swift",
 +    "format:all": "bun run format && bun run format:swift",
      "format:check": "oxfmt --check",
      "format:diff": "oxfmt --write && git --no-pager diff",
      "format:docs": "git ls-files 'docs/**/*.md' 'docs/**/*.mdx' 'README.md' | xargs oxfmt --write",
-@@ -78,10 +78,10 @@
+@@ -88,10 +88,10 @@
      "ios:open": "bash -lc './scripts/ios-configure-signing.sh && cd apps/ios && xcodegen generate && open OpenClaw.xcodeproj'",
      "ios:run": "bash -lc './scripts/ios-configure-signing.sh && cd apps/ios && xcodegen generate && xcodebuild -project OpenClaw.xcodeproj -scheme OpenClaw -destination \"${IOS_DEST:-platform=iOS Simulator,name=iPhone 17}\" -configuration Debug build && xcrun simctl boot \"${IOS_SIM:-iPhone 17}\" || true && xcrun simctl launch booted ai.openclaw.ios'",
      "lint": "oxlint --type-aware",
@@ -39,7 +56,7 @@
      "lint:swift": "swiftlint lint --config .swiftlint.yml && (cd apps/ios && swiftlint lint --config .swiftlint.yml)",
      "mac:open": "open dist/OpenClaw.app",
      "mac:package": "bash scripts/package-mac-app.sh",
-@@ -90,17 +90,17 @@
+@@ -100,17 +100,17 @@
      "openclaw": "node scripts/run-node.mjs",
      "openclaw:rpc": "node scripts/run-node.mjs agent --mode rpc --json",
      "plugins:sync": "node --import tsx scripts/sync-plugin-versions.ts",
@@ -61,7 +78,7 @@
      "test:docker:cleanup": "bash scripts/test-cleanup-docker.sh",
      "test:docker:doctor-switch": "bash scripts/e2e/doctor-install-switch-docker.sh",
      "test:docker:gateway-network": "bash scripts/e2e/gateway-network-docker.sh",
-@@ -118,7 +118,7 @@
+@@ -128,7 +128,7 @@
      "test:install:smoke": "bash scripts/test-install-sh-docker.sh",
      "test:live": "OPENCLAW_LIVE_TEST=1 CLAWDBOT_LIVE_TEST=1 vitest run --config vitest.live.config.ts",
      "test:macmini": "OPENCLAW_TEST_VM_FORKS=0 OPENCLAW_TEST_PROFILE=serial node scripts/test-parallel.mjs",
@@ -70,23 +87,23 @@
      "test:voicecall:closedloop": "vitest run extensions/voice-call/src/manager.test.ts extensions/voice-call/src/media-stream.test.ts src/plugins/voice-call.plugin.test.ts --maxWorkers=1",
      "test:watch": "vitest",
      "tui": "node scripts/run-node.mjs tui",
-@@ -132,7 +132,6 @@
-     "@aws-sdk/client-bedrock": "^3.993.0",
+@@ -142,7 +142,6 @@
+     "@aws-sdk/client-bedrock": "^3.995.0",
      "@buape/carbon": "0.0.0-beta-20260216184201",
      "@clack/prompts": "^1.0.1",
--    "@discordjs/opus": "^0.9.0",
+-    "@discordjs/opus": "^0.10.0",
      "@discordjs/voice": "^0.19.0",
      "@grammyjs/runner": "^2.0.3",
      "@grammyjs/transformer-throttler": "^1.2.1",
-@@ -198,6 +197,7 @@
-     "@typescript/native-preview": "7.0.0-dev.20260219.1",
+@@ -203,6 +202,7 @@
+     "@typescript/native-preview": "7.0.0-dev.20260221.1",
      "@vitest/coverage-v8": "^4.0.18",
      "lit": "^3.3.2",
 +    "node-gyp": "^12.2.0",
-     "ollama": "^0.6.3",
-     "oxfmt": "0.33.0",
-     "oxlint": "^1.48.0",
-@@ -215,7 +215,7 @@
+     "oxfmt": "0.34.0",
+     "oxlint": "^1.49.0",
+     "oxlint-tsgolint": "^0.14.2",
+@@ -219,7 +219,7 @@
    "engines": {
      "node": ">=22.12.0"
    },
@@ -95,19 +112,19 @@
    "pnpm": {
      "minimumReleaseAge": 2880,
      "overrides": {
---- scripts/bundle-a2ui.sh.orig	2026-02-21 04:02:56.150843656 +0100
-+++ scripts/bundle-a2ui.sh	2026-02-21 04:02:56.151843657 +0100
+--- scripts/bundle-a2ui.sh.orig	2026-02-22 13:55:09.535328023 +0100
++++ scripts/bundle-a2ui.sh	2026-02-22 13:55:09.536328023 +0100
 @@ -85,7 +85,7 @@
    fi
  fi
  
 -pnpm -s exec tsc -p "$A2UI_RENDERER_DIR/tsconfig.json"
 +bun run tsc -p "$A2UI_RENDERER_DIR/tsconfig.json"
- rolldown -c "$A2UI_APP_DIR/rolldown.config.mjs"
- 
- echo "$current_hash" > "$HASH_FILE"
---- scripts/ui.js.orig	2026-02-21 04:02:56.152843657 +0100
-+++ scripts/ui.js	2026-02-21 04:02:56.154843657 +0100
+ if command -v rolldown >/dev/null 2>&1; then
+   rolldown -c "$A2UI_APP_DIR/rolldown.config.mjs"
+ else
+--- scripts/ui.js.orig	2026-02-22 13:55:09.536328023 +0100
++++ scripts/ui.js	2026-02-22 13:55:09.539328023 +0100
 @@ -46,6 +46,10 @@
  }
  
@@ -128,19 +145,8 @@
      process.exit(1);
    }
  
---- src/discord/voice/manager.ts.orig	2026-02-21 04:02:56.155843657 +0100
-+++ src/discord/voice/manager.ts	2026-02-21 04:02:56.156843657 +0100
-@@ -155,7 +155,7 @@
-     logger.warn(`discord voice: opusscript init failed: ${formatErrorMessage(err)}`);
-   }
-   try {
--    const { OpusEncoder } = require("@discordjs/opus") as typeof import("@discordjs/opus");
-+    const { OpusEncoder } = require("@discordjs/opus") as any;
-     const decoder = new OpusEncoder(SAMPLE_RATE, CHANNELS);
-     return { decoder, name: "@discordjs/opus" };
-   } catch (err) {
---- src/agents/skills-install.ts.orig	2026-02-21 04:02:56.157843657 +0100
-+++ src/agents/skills-install.ts	2026-02-21 04:02:56.164843658 +0100
+--- src/agents/skills-install.ts.orig	2026-02-22 13:55:09.542328024 +0100
++++ src/agents/skills-install.ts	2026-02-22 13:55:09.549328025 +0100
 @@ -4,7 +4,7 @@
  import { resolveBrewExecutable } from "../infra/brew.js";
  import { runCommandWithTimeout, type CommandOptions } from "../process/exec.js";
@@ -207,8 +213,8 @@
 +
 +  return withWarnings(await executeInstallCommand({ argv, timeoutMs, env, cwd }), warnings);
  }
---- src/plugins/discovery.ts.orig	2026-02-21 04:02:56.165843658 +0100
-+++ src/plugins/discovery.ts	2026-02-21 04:02:56.167843659 +0100
+--- src/plugins/discovery.ts.orig	2026-02-22 13:55:09.550328025 +0100
++++ src/plugins/discovery.ts	2026-02-22 13:55:09.552328025 +0100
 @@ -589,6 +589,15 @@
      seen,
    });
@@ -297,8 +303,8 @@
 +    });
 +  }
 +}
---- src/plugins/install.ts.orig	2026-02-21 04:02:56.168843659 +0100
-+++ src/plugins/install.ts	2026-02-21 04:02:56.170843659 +0100
+--- src/plugins/install.ts.orig	2026-02-22 13:55:09.553328025 +0100
++++ src/plugins/install.ts	2026-02-22 13:55:09.555328025 +0100
 @@ -24,6 +24,7 @@
  import { validateRegistryNpmSpec } from "../infra/npm-registry-spec.js";
  import { extensionUsesSkippedScannerPath, isPathInside } from "../security/scan-paths.js";
