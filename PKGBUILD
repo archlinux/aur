@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'python-pyqt6' 'python-pyte' 'python-paramiko' 'python-pysnmp' 'python-standard-telnetlib' 'qt6-serialport' 'picocom' 'sudo')
 makedepends=('imagemagick')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/benjamimgois/omnicom/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('0854ee54178a72fb29fd33a9d2e35b4c68b208a4f74246192ac832f41f7f5d29')
+sha256sums=('bbad562ed0731888a807926f3d14b0a3205e36ca26d1eeba14777624aa67f5b0')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -26,9 +26,9 @@ package() {
         magick assets/omnicom.png -resize ${size}x${size} "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/omnicom.png"
     done
 
-    # Install UI icons (sidebar and misc)
-    for icon in arrow_down.svg TFTP.svg serial-port-white.svg ssh_icon.svg ipscan.svg snmp.svg; do
-        install -Dm644 "assets/icons/${icon}" "${pkgdir}/usr/share/omnicom/icons/${icon}"
+    # Install UI icons (sidebar and misc) — instala todos os SVGs da pasta
+    for icon in assets/icons/*.svg; do
+        install -Dm644 "${icon}" "${pkgdir}/usr/share/omnicom/icons/$(basename ${icon})"
     done
 
     # Install vendor icons
