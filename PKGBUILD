@@ -18,7 +18,7 @@ pkgver() {
 }
 
 package() {
-		cmake -S $_pkgname -Bbuild \
+		cmake -S $_pkgname -Bbuild -Wno-dev \
 				-DCMAKE_BUILD_TYPE=Release
 		DESTDIR="$pkgdir" cmake --install ./build --prefix=/usr
 }
