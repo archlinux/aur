@@ -1,6 +1,6 @@
 pkgbase = karakeep-cli
 	pkgdesc = Command Line Interface (CLI) for Karakeep
-	pkgver = 0.30.0
+	pkgver = 0.31.0
 	pkgrel = 1
 	url = https://www.npmjs.com/package/@karakeep/cli
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = karakeep-cli
 	depends = nodejs
 	provides = hoarder-cli
 	replaces = hoarder-cli
-	noextract = karakeep-cli-0.30.0.tgz
-	source = karakeep-cli-0.30.0.tgz::https://registry.npmjs.org/@karakeep/cli/-/cli-0.30.0.tgz
-	sha256sums = c262313c828f8f7676b440d2183478567c31e9712f71b547717267747ce859a4
+	noextract = karakeep-cli-0.31.0.tgz
+	source = karakeep-cli-0.31.0.tgz::https://registry.npmjs.org/@karakeep/cli/-/cli-0.31.0.tgz
+	sha256sums = 179b0ef9d3abd5452388406038d69266d824b32f9ee3f874513fabde1d696efd
 
 pkgname = karakeep-cli
