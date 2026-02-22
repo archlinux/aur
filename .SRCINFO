@@ -1,0 +1,18 @@
+pkgbase = epson-inkjet-printer-m105
+	pkgdesc = Epson M105/M100/M200 inkjet printer driver (official Epson package)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://download.ebz.epson.net/
+	arch = x86_64
+	license = custom
+	depends = cups
+	depends = ghostscript
+	depends = cups-filters
+	provides = epson-inkjet-printer-201215w
+	conflicts = epson-inkjet-printer-201215w
+	options = !strip
+	options = !debug
+	source = epson-inkjet-printer-201215w_1.0.1-1_amd64.deb
+	sha256sums = f764f04e580024bba9a5ce04e685e23d4911cb05a3f99762d35ff4d7507ee5c3
+
+pkgname = epson-inkjet-printer-m105
