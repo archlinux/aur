@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWUK).se>
 
 pkgname=auto-auto-complete
-pkgver=7.2.2
+pkgver=7.2.3
 pkgrel=1
 pkgdesc='Autogenerate shell auto-completion scripts'
 arch=('any')
@@ -10,7 +10,7 @@ license=('custom:ISC')
 depends=('python3')
 makedepends=('python3')
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/$pkgver.tar.gz)
-sha256sums=(30b025beccc4a255129ad8dbc8825961cb52060e140f55577bdc8979244761da)
+sha256sums=(8b32792fe56d8ee21903b16061bc51554cb6068bd54ab0b16105d1b9a300d352)
 
 
 build() {
