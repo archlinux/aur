@@ -11,7 +11,7 @@ depends=('wxwidgets-gtk3' 'openssl' 'fontconfig' 'curl')
 makedepends=('cmake')
 install=${pkgname}.install
 source=(https://files.dxsolutions.org/$pkgname-$pkgver.tar.gz)
-md5sums=('91f3d786816676edcc9282acfa3ae332')
+md5sums=('e5680d9ea5583e3f832a9438e9e2d7b5')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
