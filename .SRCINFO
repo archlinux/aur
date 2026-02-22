@@ -1,0 +1,18 @@
+pkgbase = linuxtask-git
+	pkgdesc = Minimalist high-performance macro recorder for Linux (Hyprland/Wayland)
+	pkgver = 2.0.r1.g01c3206
+	pkgrel = 1
+	url = https://github.com/JADRT22/LinuxTask
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-evdev
+	depends = python-customtkinter
+	depends = hyprland
+	provides = linuxtask
+	conflicts = linuxtask
+	source = git+https://github.com/JADRT22/LinuxTask.git
+	sha256sums = SKIP
+
+pkgname = linuxtask-git
