@@ -1,6 +1,6 @@
 pkgbase = garlmap-bin
 	pkgdesc = Garlmap is the Gapless Almighty Rule-based Logical MPV Audio Player
-	pkgver = 2.5.0
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://github.com/Jelmerro/garlmap
 	arch = x86_64
@@ -32,11 +32,11 @@ pkgbase = garlmap-bin
 	provides = garlmap
 	conflicts = garlmap
 	options = !strip
-	source = LICENSE-2.5.0::https://raw.githubusercontent.com/Jelmerro/garlmap/2.5.0/LICENSE
-	source = README-2.5.0.md::https://raw.githubusercontent.com/Jelmerro/garlmap/2.5.0/README.md
+	source = LICENSE-2.6.0::https://raw.githubusercontent.com/Jelmerro/garlmap/2.6.0/LICENSE
+	source = README-2.6.0.md::https://raw.githubusercontent.com/Jelmerro/garlmap/2.6.0/README.md
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 	sha256sums = 0547289ad25f3abfd1003069685cb4ccbfb693459dad4d3a898b7050541eb16d
-	source_x86_64 = https://github.com/Jelmerro/garlmap/releases/download/2.5.0/garlmap-2.5.0.pacman
-	sha256sums_x86_64 = 98db995695fbe0a275652a92601e02f94777d6ef8d80534365d8e579661438d3
+	source_x86_64 = https://github.com/Jelmerro/garlmap/releases/download/2.6.0/garlmap-2.6.0.pacman
+	sha256sums_x86_64 = 88c196755870c70c0e0c498f201a9437980cd0612c59bd25f73789789b17dfaa
 
 pkgname = garlmap-bin

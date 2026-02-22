@@ -2,7 +2,7 @@
 
 _pkgname=garlmap
 pkgname=${_pkgname}-bin
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Garlmap is the Gapless Almighty Rule-based Logical MPV Audio Player"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.pacman")
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '0547289ad25f3abfd1003069685cb4ccbfb693459dad4d3a898b7050541eb16d')
-sha256sums_x86_64=('98db995695fbe0a275652a92601e02f94777d6ef8d80534365d8e579661438d3')
+sha256sums_x86_64=('88c196755870c70c0e0c498f201a9437980cd0612c59bd25f73789789b17dfaa')
 
 package() {
   cd "$srcdir"
