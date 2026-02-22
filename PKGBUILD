@@ -21,7 +21,7 @@ source=("fix_libGLEW.patch"
         "${_urlraw}/LICENSE"
         "${_urlraw}/README.md")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-Linux.tar.gz")
-sha256sums=('29acdd8fef38338e4360f3bbeb8fe8c523912d9eca2baa3d789dea25a2ee9d0d'
+sha256sums=('33a47c42acc8f830ae13840271d69c755646208207b0b0962cdce3f6158ed035'
             'c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271'
             '8e15fcb6123dacc19ddcfa249e7b10d600e09624b9106821b3bd2f4dd7afb7ba')
 sha256sums_x86_64=('7742669577b33659e1f0647892c5f7ceb7a47ea63b53fe028a685e30f7ad3f6d')
