@@ -1,0 +1,3 @@
+[perl-crypt-idea]
+source = "cpan"
+cpan = "Crypt-IDEA"
