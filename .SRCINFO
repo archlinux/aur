@@ -1,11 +1,11 @@
 pkgbase = mongoclock
 	pkgdesc = Just a humongous clock for the terminal
-	pkgver = 3.1.5
+	pkgver = 3.1.6
 	pkgrel = 1
 	url = https://codeberg.org/maandree/mongoclock
 	arch = any
 	license = custom:ISC
-	source = mongoclock-3.1.5.tar.gz::https://codeberg.org/maandree/mongoclock/archive/3.1.5.tar.gz
-	sha256sums = 777d59f3453f9282c35bcfa124da6b3c3860ac5cbcc613258bc6485bfaf063d2
+	source = mongoclock-3.1.6.tar.gz::https://codeberg.org/maandree/mongoclock/archive/3.1.6.tar.gz
+	sha256sums = f9b5c40aa69f2f2875e43b427c4cc5bcb1917960d9492fc49e7f7527d5bfddbd
 
 pkgname = mongoclock
