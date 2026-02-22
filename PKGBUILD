@@ -72,21 +72,9 @@ source=("$_deb::https://github.com/lutris/lutris/releases/download/v${pkgver}/${
 
 sha256sums=('SKIP')
 
-prepare() {
-  bsdtar -xf "${srcdir}/${_deb}"
-
-  if [ -f "data.tar.zst" ]; then
-    _datatar="data.tar.zst"
-  elif [ -f "data.tar.xz" ]; then
-    _datatar="data.tar.xz"
-  else
-    _datatar="data.tar.gz"
-  fi
-
-  bsdtar -xf "${_datatar}" -C "${pkgdir}/"
-}
-
 package() {
+  bsdtar -xf "${srcdir}/${_deb}" -C "${srcdir}"
+
   if [ -f "${srcdir}/data.tar.zst" ]; then
     bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}/"
   elif [ -f "${srcdir}/data.tar.xz" ]; then
