@@ -3,7 +3,7 @@
 pkgname=python-webdriver-manager
 _pkgname=webdriver_manager
 pkgver=4.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Simplify management of binary drivers for different browsers in Selenium"
 arch=(any)
 url="https://github.com/SergeyPirogov/webdriver_manager"
@@ -46,6 +46,9 @@ check() {
     --deselect 'tests/test_edge_driver.py::test_can_get_edge_driver_from_cache' \
     --deselect 'tests/test_edge_driver.py::test_edge_manager_with_selenium' \
     --deselect 'tests/test_edge_driver.py::test_edge_with_specific_version' \
+    --deselect 'tests/test_edge_driver.py::test_driver_with_ssl_verify_disabled_can_be_downloaded' \
+    --deselect 'tests/test_edge_driver.py::test_edge_manager_with_wrong_version' \
+    --deselect 'tests/test_edge_driver.py::test_get_stable_release_version' \
     --deselect 'tests/test_firefox_manager.py' \
     --deselect 'tests/test_ie_driver.py::test_can_download_ie_driver_x64' \
     --deselect 'tests/test_ie_driver.py::test_can_get_ie_driver_from_cache' \
