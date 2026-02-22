@@ -1,7 +1,7 @@
 # Maintainer: Marko Zajc <marko at zajc period tel>
 
 pkgname=nginx-mod-shapow
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 
 _modname="${pkgname#nginx-mod-}"
@@ -13,7 +13,7 @@ url="https://git.zajc.tel/shapow.git/about"
 license=('AGPL-3.0-only')
 
 source=(https://files.zajc.tel/public/builds/$_modname/$pkgver/$_modname-$pkgver.tar.xz)
-sha256sums=('254014a367e953cbe455395c783be3f8a5c514f90c7a2a7d2bf0c794d025502b')
+sha256sums=('0572da3d6f81bf03c1a698667d78907c38b026c36fc1b1855d938a6b508628d8')
 backup=('etc/nginx/modules.d/19-shapow.conf')
 
 prepare() {
