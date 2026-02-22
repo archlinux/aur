@@ -1,6 +1,6 @@
 # Maintainer: Rejzi-dich <rejzidich@gmail.com>
 pkgname=rushfetch
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="BLAZING fast system information tool written in BLAZING fast Rust with customizable themes and languages"
 arch=('x86_64' 'i686' 'aarch64')

@@ -1,4 +1,11 @@
 post_install() {
+    # Copy config to user directory if it doesn't exist
+    if [ ! -f "$HOME/.config/rushfetch/config.toml" ]; then
+        mkdir -p "$HOME/.config/rushfetch"
+        cp /etc/rushfetch/config.toml "$HOME/.config/rushfetch/config.toml"
+        echo "✓ Configuration copied to ~/.config/rushfetch/config.toml"
+    fi
+
     cat << 'EOF'
 
 ╔════════════════════════════════════════════════════════════════╗
@@ -6,12 +13,7 @@ post_install() {
 ╚════════════════════════════════════════════════════════════════╝
 
 Default configuration file location: /etc/rushfetch/config.toml
-
-TO CUSTOMIZE, COMRADE, DO THIS:
-    mkdir -p ~/.config/rushfetch
-    cp /etc/rushfetch/config.toml ~/.config/rushfetch/
-
-Then edit: ~/.config/rushfetch/config.toml
+Your personal configuration: ~/.config/rushfetch/config.toml
 
 FEATURES OF GLORIOUS RUSHFETCH:
   ☭ Multiple languages (english/russian)
@@ -41,6 +43,11 @@ post_upgrade() {
 
 Check /etc/rushfetch/config.toml for new features!
 Your personal config at ~/.config/rushfetch/config.toml is safe.
+
+to update the config to the current one, just run:
+    cp /etc/rushfetch/config.toml ~/.config/rushfetch/
+
+but this will erase your previous config
 
 CONTINUE THE REVOLUTION!
 

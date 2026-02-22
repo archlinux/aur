@@ -1,6 +1,6 @@
 pkgbase = rushfetch
 	pkgdesc = BLAZING fast system information tool written in BLAZING fast Rust with customizable themes and languages
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/Rejzi-dich/rushfetch
 	install = rushfetch.install
