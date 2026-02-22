@@ -1,0 +1,3 @@
+[perl-math-gmp]
+source = "cpan"
+cpan = "Math-GMP"

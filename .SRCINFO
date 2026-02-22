@@ -1,0 +1,24 @@
+pkgbase = perl-math-gmp
+	pkgdesc = High speed arbitrary size integer math
+	pkgver = 2.25
+	pkgrel = 1
+	url = https://metacpan.org/dist/Math-GMP
+	arch = any
+	license = LGPL-2.0-or-later
+	checkdepends = perl-data-dumper
+	checkdepends = perl-file-temp
+	checkdepends = perl-io
+	checkdepends = perl-pathtools
+	checkdepends = perl-scalar-list-utils
+	checkdepends = perl-test-simple
+	makedepends = perl-alien-gmp>=1.08
+	makedepends = perl-extutils-makemaker
+	depends = perl-autoloader
+	depends = perl-carp
+	depends = perl-exporter
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/Math-GMP-2.25.tar.gz
+	sha256sums = 382b71e54762f639e9a42a9b06934151987ba57d11bb70d35e3bec88d50450ce
+
+pkgname = perl-math-gmp
