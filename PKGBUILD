@@ -3,11 +3,11 @@
 _pkgname=xlibre-server-devel
 _orgpkgname=xlibre-xserver-devel
 pkgname=$_pkgname-bin
-pkgver=25.0.0.12
+pkgver=25.0.0.20
 pkgrel=1
 pkgdesc="XLibre Official Easy Install Drop in Replacement fork of X.Org development files (binary release)"
 arch=(x86_64)
-url="https://github.com/X11Libre/xserver"
+url=https://x11libre.net/repo/arch_based/x86_64
 license=('LicenseRef-Adobe-Display-PostScript'
          'BSD-3-Clause'
          'LicenseRef-DEC-3-Clause'
@@ -25,7 +25,7 @@ license=('LicenseRef-Adobe-Display-PostScript'
          'X11-distribute-modifications-variant')
 groups=('xlibre')
 options=(!strip)
-source=("https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/${_orgpkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
+source=(https://x11libre.net/repo/arch_based/x86_64/xlibre-xserver-devel-25.0.0.20-1-x86_64.pkg.tar.zst)
 noextract=("${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 depends=('xorgproto' 'mesa' 'libpciaccess' 'pixman'
          # not technically required but almost every Xorg pkg needs it to build
@@ -33,7 +33,7 @@ depends=('xorgproto' 'mesa' 'libpciaccess' 'pixman'
 provides=($_pkgname 'xorg-server-devel' 'xlibre-server-devel')
 conflicts=($_pkgname 'xorg-server-devel' 'xlibre-server-devel')
 
-sha256sums=('eb9066850aa92600473ea45e39b6e925ce7df73061f562ebfba3c7e2cb3ed529')
+sha256sums=('8e14b35a5ecb33f041b3be49ab2e818a5ee083a64a1a8d8f5a4bc1e4de6f7016')
 
 package() {
   tar -xf "${_orgpkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" -C "${pkgdir}" usr

@@ -1,8 +1,8 @@
 pkgbase = xlibre-server-devel-bin
 	pkgdesc = XLibre Official Easy Install Drop in Replacement fork of X.Org development files (binary release)
-	pkgver = 25.0.0.12
+	pkgver = 25.0.0.20
 	pkgrel = 1
-	url = https://github.com/X11Libre/xserver
+	url = https://x11libre.net/repo/arch_based/x86_64
 	arch = x86_64
 	groups = xlibre
 	license = LicenseRef-Adobe-Display-PostScript
@@ -31,9 +31,9 @@ pkgbase = xlibre-server-devel-bin
 	conflicts = xlibre-server-devel
 	conflicts = xorg-server-devel
 	conflicts = xlibre-server-devel
-	noextract = xlibre-server-devel-25.0.0.12-1-x86_64.pkg.tar.zst
+	noextract = xlibre-server-devel-25.0.0.20-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/xlibre-xserver-devel-25.0.0.12-1-x86_64.pkg.tar.zst
-	sha256sums = eb9066850aa92600473ea45e39b6e925ce7df73061f562ebfba3c7e2cb3ed529
+	source = https://x11libre.net/repo/arch_based/x86_64/xlibre-xserver-devel-25.0.0.20-1-x86_64.pkg.tar.zst
+	sha256sums = 8e14b35a5ecb33f041b3be49ab2e818a5ee083a64a1a8d8f5a4bc1e4de6f7016
 
 pkgname = xlibre-server-devel-bin
