@@ -1,48 +1,67 @@
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: ordoban <dirk.langer@vvovgonik.de>
-# Generator  : CPANPLUS::Dist::Arch 1.32
 
+_dist='Data-Dump-Streamer'
 pkgname='perl-data-dump-streamer'
 pkgver='2.42'
-pkgrel='1'
-pkgdesc="Accurately serialize a data structure as Perl code."
-arch=('i686' 'x86_64')
-license=('PerlArtistic' 'GPL')
+pkgrel='2'
+pkgdesc='Accurately serialize a data structure as Perl code'
+arch=('any')
+url="https://metacpan.org/dist/$_dist"
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl-algorithm-diff'
+    'perl-b-utils'
+    'perl-cpanel-json-xs'
+    'perl-data-dumper'
+    'perl-exporter'
+    'perl-io'
+    'perl-io-compress'
+    'perl-mime-base64'
+    'perl-padwalker>=0.99'
+    'perl-text-abbrev'
+    'perl-text-balanced'
+)
+makedepends=(
+    'perl-base'
+    'perl-carp'
+    'perl-data-dumper'
+    'perl-extutils-cbuilder'
+    'perl-extutils-depends'
+    'perl-module-build'
+    'perl-test-simple'
+    'perl-text-abbrev'
+    'perl>=5.6.0'
+)
 options=('!emptydirs')
-depends=('perl' 'perl-b-utils>=0')
-makedepends=('perl-module-build')
-url='https://metacpan.org/release/Data-Dump-Streamer'
-source=("https://cpan.metacpan.org/authors/id/Y/YV/YVES/Data-Dump-Streamer-$pkgver.tar.gz")
-md5sums=('e10e06a372a259e16eec791e82cbee60')
-sha512sums=('481cc12f8111d83bc97695226531c7eb4ebdbb16ac540de90d8a0c8b1f30cd3dbc62f5def737b9eb08e6c1294fb290d9f347dd90869a7a7278d71ce436787f7d')
-_distdir="Data-Dump-Streamer-$pkgver"
+source=("https://cpan.metacpan.org/authors/id/Y/YV/YVES/$_dist-$pkgver.tar.gz")
+sha256sums=('47f6e51fb45ce7be561e01481add0c2e1c0cd85df4b9e212f3923cd3064d1cad')
 
-build() {
-  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                      \
-         PERL_AUTOINSTALL=--skipdeps                            \
-         PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-         PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-         MODULEBUILDRC=/dev/null
+build()
+{
+    cd $_dist-$pkgver
 
-  cd "$srcdir/$_distdir"
-   /usr/bin/perl Build.PL
-   /usr/bin/perl Build
+    unset PERL_MB_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
+
+    /usr/bin/perl Build.PL --create_packlist=0
+    ./Build
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  export PERL_MM_USE_DEFAULT=1 PERL5LIB="."
-  /usr/bin/perl Build test
+check()
+{
+    cd $_dist-$pkgver
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    ./Build test
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  /usr/bin/perl Build install
+package()
+{
+    cd $_dist-$pkgver
 
-  find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    ./Build install --installdirs=vendor --destdir="$pkgdir"
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
