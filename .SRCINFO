@@ -1,8 +1,8 @@
 pkgbase = xlibre-video-nouveau-bin
 	pkgdesc = XLibre Official Easy Install Drop in Replacement fork of X.Org nouveau video driver (binary release)
-	pkgver = 1.0.18.3
+	pkgver = 1.0.18.4
 	pkgrel = 1
-	url = https://github.com/X11Libre
+	url = https://x11libre.net/repo/arch_based/x86_64
 	arch = x86_64
 	groups = xlibre-drivers
 	license = MIT
@@ -16,9 +16,9 @@ pkgbase = xlibre-video-nouveau-bin
 	conflicts = xorg-server<21.1.1
 	conflicts = X-ABI-VIDEODRV_VERSION<28
 	conflicts = X-ABI-VIDEODRV_VERSION>=29
-	noextract = xlibre-xf86-video-nouveau-1.0.18.3-1-x86_64.pkg.tar.zst
+	noextract = xlibre-xf86-video-nouveau-1.0.18.4-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/xlibre-xf86-video-nouveau-1.0.18.3-1-x86_64.pkg.tar.zst
-	sha256sums = 63202332fc6c380bf1ef5a48fb1ac0fccbfab8b29a9562b7d969808aa9b0e7c4
+	source = https://x11libre.net/repo/arch_based/x86_64/xlibre-video-nouveau-1.0.18.4-1-x86_64.pkg.tar.zst
+	sha256sums = f01d7cb736dbfa58979d4a1b9ac83b8f369a1411db14cc650304bdd85584d3f2
 
 pkgname = xlibre-video-nouveau-bin
