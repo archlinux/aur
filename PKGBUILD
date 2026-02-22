@@ -4,7 +4,7 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname=seahub
-pkgver=13.0.15
+pkgver=13.0.18
 pkgrel=1
 pkgdesc='The web frontend for seafile server'
 arch=('any')
@@ -57,7 +57,7 @@ source=(
     'fix_cache_provider.diff'
 )
 sha256sums=(
-    '4de1d76df87eb35342533645c0bb7713b2435a026fad67c44d5af11f2e7c7e56'
+    '790358c52cb44eb30ac28fec5b57badae7ba40aa93232f1b3137119c73258e3e'
     'ba48ce265a8f411184ab92e8d914d2a02e06f19156333d6058eb3fcf861d780a'
     'c80abc71a12d86c6e42f860a69acfc079f1542a9e21f1b93692ce3313130b21c'
     '9ef2e5753f031ff6c5e2e1c7fd7399a01cbde795a3d01fac4749fa372ca1f689'
