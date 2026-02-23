@@ -1,12 +1,12 @@
 pkgbase = koca
 	pkgdesc = A modern, universal, and system-native package manager
-	pkgver = 0.1.1
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/koca-build/koca
 	arch = any
 	license = FSL
 	makedepends = cargo
-	source = koca-0.1.1.tar.gz::https://github.com/koca-build/koca/archive/refs/tags/v0.1.1.tar.gz
+	source = koca-0.1.6.tar.gz::https://github.com/koca-build/koca/archive/refs/tags/v0.1.6.tar.gz
 	sha256sums = SKIP
 
 pkgname = koca

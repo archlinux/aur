@@ -1,6 +1,6 @@
 # Maintainer: Hunter Wittenborn <hunter@hunterwittenborn.com>
 pkgname=koca
-pkgver=0.1.1
+pkgver=0.1.6
 pkgrel=1
 pkgdesc=' A modern, universal, and system-native package manager'
 arch=('any')
