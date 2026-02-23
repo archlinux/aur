@@ -1,0 +1,15 @@
+pkgbase = shackle
+	pkgdesc = A modular, cyberpunk-inspired shell framework (Stable Release)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeberg.org/graygraygray/shackle
+	arch = any
+	license = GPL3
+	depends = quickshell
+	depends = qt6-wayland
+	provides = shackle
+	conflicts = shackle-git
+	source = https://codeberg.org/graygraygray/shackle/archive/main.tar.gz
+	sha256sums = SKIP
+
+pkgname = shackle
