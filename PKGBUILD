@@ -1,6 +1,6 @@
 # Maintainer: skint007 <archlinux.repose742@passmail.net>
 pkgname=yay-sys-tray-git
-pkgver=0.3.0.2
+pkgver=0.3.0.3
 pkgrel=1
 pkgdesc="Arch Linux system tray update checker using yay"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=(python python-pyqt6 pacman-contrib yay)
 optdepends=('tailscale: remote server update checking via Tailscale'
             'openssh: SSH access for remote server update checks')
-makedepends=(git python-build python-installer python-wheel)
+makedepends=(git python-build python-installer python-setuptools python-wheel)
 provides=('yay-sys-tray')
 conflicts=('yay-sys-tray')
 install=yay-sys-tray-git.install
