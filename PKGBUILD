@@ -4,11 +4,10 @@ pkgver=0.1.0
 pkgrel=1
 pkgdesc="Daemon for starting kodi from remote control apps like KORE, Kodi Remote, or Yatse"
 arch=('any')
-depends=('kodi')
+depends=('kodi' 'python')
 optdepends=('kodi-standalone-service: launching standalone modes')
 url="https://codeberg.org/aidavdw/kodi-remote-start-daemon"
 license=('GPL-3.0-or-later')
-depends=('python')
 source=(
     "$pkgname::https://codeberg.org/aidavdw/kodi-remote-start-daemon/archive/v0.1.0.tar.gz"
     "kodi-remote-start-daemon@.service"
