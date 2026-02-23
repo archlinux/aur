@@ -13,6 +13,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Options on description menu
 - Show interface on properties list
 
+## [2.13.3] - 2026-02-22
+
+### Added
+
+- Display list of Automounts
+
+### Fixed
+
+- Save unit files with privilege elevation on a Flatpack build [Issue 38](https://github.com/plrigaux/sysd-manager/issues/38)
+
 ## [2.13.2] - 2026-02-20
 
 ### Added
