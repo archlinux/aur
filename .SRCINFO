@@ -1,6 +1,6 @@
 pkgbase = python-tetra
 	pkgdesc = Full stack component framework for Django using Alpine.js
-	pkgver = 0.6.10
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://tetraframework.com/
 	arch = any
@@ -14,9 +14,10 @@ pkgbase = python-tetra
 	depends = python-django
 	depends = python-dateutil
 	depends = python-sourcetypes
+	depends = python-pydantic
 	optdepends = python-django-channels: reactive components
 	optdepends = python-daphne: reactive components
-	source = https://files.pythonhosted.org/packages/source/t/tetra/tetra-0.6.10.tar.gz
-	sha256sums = 6a00b25cff4eb1aa10ea4363ab9348c3391ef96f836f552d65253702b3760b63
+	source = https://files.pythonhosted.org/packages/source/t/tetra/tetra-0.9.1.tar.gz
+	sha256sums = 46e33e864568e11b38fa9df6e8669cc1f5ee9372785a31467520d784779a06df
 
 pkgname = python-tetra
