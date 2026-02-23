@@ -1,0 +1,17 @@
+pkgbase = smartcrop-cli
+	pkgdesc = Command line interface for the smartcrop library to provide content aware image cropping
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://github.com/jwagner/smartcrop-cli
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	depends = imagemagick
+	optdepends = opencv: Face detection support
+	source = smartcrop-cli-2.0.3.tar.gz::https://github.com/jwagner/smartcrop-cli/archive/2.0.3.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/jwagner/smartcrop-cli/master/LICENSE
+	sha256sums = 6b62aed4d339068dfbefa47c865beca6ca4aa79670b88bdebb863fe9ef94ae96
+	sha256sums = 01951c4f7d8e7ce92540c4f575a2aec39738b39d25a06a96059d82ed83fb594e
+
+pkgname = smartcrop-cli

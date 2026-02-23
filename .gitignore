@@ -1,0 +1,25 @@
+# Build artifacts
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.pkg.tar.gz
+
+# Source tarballs
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.zip
+
+# Build directories
+pkg/
+src/
+
+# makepkg metadata (build-time only)
+.BUILDINFO
+.PKGINFO
+.MTREE
+.INSTALL
+
+# Temporary files
+*.log
+*~
+*.swp
