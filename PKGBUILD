@@ -1,6 +1,6 @@
 # Maintainer: bananasjim <bananasjim1@gmail.com>
 pkgname=rdc-cli
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Unix-friendly CLI for RenderDoc .rdc captures"
 arch=('x86_64')
@@ -20,6 +20,7 @@ makedepends=(
   'python-build'
   'python-installer'
   'python-setuptools'
+  'python-setuptools-scm'
   'python-wheel'
   'cmake'
   'ninja'
@@ -35,7 +36,7 @@ source=(
   "git+https://github.com/baldurk/renderdoc.git#tag=v1.41"
   "renderdoc-swig::https://github.com/baldurk/swig/archive/renderdoc-modified-7.zip"
 )
-sha256sums=('1a6f6e4a991804259928d734ea3f6021d8636f016888469933f3bd44dc457eb7'
+sha256sums=('2b527c61e26ed08e36accd3922b05902bb62df012dbc77b41123c0615d7d8d41'
             'SKIP'
             '9d7e5013ada6c42ec95ab167a34db52c1cc8c09b89c8e9373631b1f10596c648')
 
