@@ -2,7 +2,7 @@
 
 pkgname=walrs
 pkgver=1.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate colorscheme from image"
 arch=('x86_64' 'aarch64')
 url="https://pi66.xyz/tools/walrs"
