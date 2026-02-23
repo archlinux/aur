@@ -3,7 +3,7 @@
 pkgname=arch-upgrader
 
 # Version
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 
 # Generic
@@ -19,7 +19,7 @@ conflicts=('arch-upgrader-git')
 
 # Download
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Dracape/${pkgname}/archive/refs/tags/${pkgver}.zip")
-b2sums=('ed788d94fc0abb1ca9e614cd701a55fb090c071debc657fc3f43fb76a90c9f66d629f03552ad85214285b1325563bc7f94ccc4ff2fa055b99a61c15679407015')
+b2sums=('0df386a86e2a13cd037bf0b2d24411ace392e0b973e686d29bc547243077b23409e14b0928323a9b9ada07ac27829d439fb28838e032acaef4202d865c8fd1e1')
 
 
 package() { "$pkgname-$pkgver"/install.fish --vendor --repository="$pkgname-$pkgver" --rootdir=${pkgdir}; }
