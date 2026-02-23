@@ -1,14 +1,14 @@
 pkgbase = irpf2024
-	pkgdesc = Brazilian physical person income tax (IRPF) program (version 2024)
+	pkgdesc = Brazilian physical person income tax (IRPF) program (2024 version)
 	pkgver = 2024.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/dirpf
 	arch = any
 	license = LicenseRef-Custom
 	makedepends = icoutils
-	depends = sh
-	depends = java-runtime=11
 	depends = hicolor-icon-theme
+	depends = java-runtime=11
+	depends = sh
 	optdepends = gvfs: for importing pre-filled data from a gov.br account
 	source = https://downloadirpf.receita.fazenda.gov.br/irpf/2024/irpf/arquivos/IRPF2024-1.8.zip
 	source = irpf.desktop

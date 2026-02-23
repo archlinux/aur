@@ -2,14 +2,19 @@
 
 pkgname=irpf2024
 pkgver=2024.1.8
-pkgrel=1
-pkgdesc='Brazilian physical person income tax (IRPF) program (version 2024)'
+pkgrel=2
+pkgdesc='Brazilian physical person income tax (IRPF) program (2024 version)'
 arch=('any')
 url='https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/dirpf'
 license=('LicenseRef-Custom')
-depends=('sh' 'java-runtime=11' 'hicolor-icon-theme')
-optdepends=('gvfs: for importing pre-filled data from a gov.br account')
-makedepends=('icoutils')
+depends=(
+    'hicolor-icon-theme'
+    'java-runtime=11'
+    'sh')
+optdepends=(
+    'gvfs: for importing pre-filled data from a gov.br account')
+makedepends=(
+    'icoutils')
 source=("https://downloadirpf.receita.fazenda.gov.br/irpf/${pkgver%%.*}/irpf/arquivos/IRPF${pkgver%%.*}-${pkgver#*.}.zip"
         'irpf.desktop'
         'irpf.sh'
@@ -26,13 +31,13 @@ prepare() {
 
 package() {
     install -D -m755 irpf.sh "${pkgdir}/usr/bin/${pkgname}"
-    install -D -m644 irpf.desktop "${pkgdir}/usr/share/applications/irpf2024.desktop"
+    install -D -m644 irpf.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 "IRPF${pkgver%%.*}"/{irpf,pgd-updater}.jar -t "${pkgdir}/usr/share/java/${pkgname}"
     install -D -m644 "IRPF${pkgver%%.*}/Leia-me.htm" -t "${pkgdir}/usr/share/doc/${pkgname}"
     cp -dr --no-preserve='ownership' "IRPF${pkgver%%.*}/help" "${pkgdir}/usr/share/doc/${pkgname}"
     cp -dr --no-preserve='ownership' "IRPF${pkgver%%.*}/"lib{,-modulos} "${pkgdir}/usr/share/java/${pkgname}"
-    ln -s "../../doc/${pkgname}/help" "${pkgdir}/usr/share/java/${pkgname}/help"
+    ln -sr "${pkgdir}/usr/share/doc/${pkgname}/help" "${pkgdir}/usr/share/java/${pkgname}/help"
     
     local _file
     local _res
