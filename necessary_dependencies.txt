@@ -167,6 +167,7 @@ Module: aiohttp
     open_webui/routers/openai.py
     open_webui/routers/pipelines.py
     open_webui/routers/tools.py
+    open_webui/utils/anthropic.py
     open_webui/utils/code_interpreter.py
     open_webui/utils/images/comfyui.py
     open_webui/utils/misc.py
@@ -211,6 +212,7 @@ Module: requests
     open_webui/retrieval/web/tavily.py
     open_webui/retrieval/web/yacy.py
     open_webui/retrieval/web/yandex.py
+    open_webui/retrieval/web/ydc.py
     open_webui/routers/audio.py
     open_webui/routers/images.py
     open_webui/routers/ollama.py
@@ -535,6 +537,7 @@ Module: open_webui.models.users
     open_webui/tools/builtin.py
     open_webui/utils/access_control.py
     open_webui/utils/actions.py
+    open_webui/utils/anthropic.py
     open_webui/utils/audit.py
     open_webui/utils/auth.py
     open_webui/utils/chat.py
@@ -586,6 +589,7 @@ Module: open_webui.config
     open_webui/routers/channels.py
     open_webui/routers/chats.py
     open_webui/routers/configs.py
+    open_webui/routers/files.py
     open_webui/routers/folders.py
     open_webui/routers/functions.py
     open_webui/routers/groups.py
@@ -647,6 +651,7 @@ Module: open_webui.env
     open_webui/socket/utils.py
     open_webui/tasks.py
     open_webui/utils/actions.py
+    open_webui/utils/anthropic.py
     open_webui/utils/audit.py
     open_webui/utils/auth.py
     open_webui/utils/chat.py
@@ -819,6 +824,10 @@ Module: open_webui.utils.access_control
     open_webui/utils/auth.py
     open_webui/utils/models.py
     open_webui/utils/tools.py
+Module: open_webui.utils.anthropic
+  Imported in:
+    open_webui/main.py
+    open_webui/routers/openai.py
 Module: open_webui.utils.telemetry.setup
   Imported in:
     open_webui/main.py
@@ -1027,6 +1036,18 @@ Module: open_webui.models.groups
     open_webui/utils/models.py
     open_webui/utils/oauth.py
     open_webui/utils/tools.py
+Module: open_webui.models.memories
+  Imported in:
+    open_webui/routers/memories.py
+    open_webui/tools/builtin.py
+Module: open_webui.retrieval.vector.factory
+  Imported in:
+    open_webui/retrieval/utils.py
+    open_webui/routers/files.py
+    open_webui/routers/knowledge.py
+    open_webui/routers/memories.py
+    open_webui/routers/retrieval.py
+    open_webui/tools/builtin.py
 Module: open_webui.utils.sanitize
   Imported in:
     open_webui/tools/builtin.py
@@ -1085,14 +1106,6 @@ Module: open_webui.routers.files
 Module: open_webui.routers.knowledge
   Imported in:
     open_webui/tools/builtin.py
-Module: open_webui.retrieval.vector.factory
-  Imported in:
-    open_webui/retrieval/utils.py
-    open_webui/routers/files.py
-    open_webui/routers/knowledge.py
-    open_webui/routers/memories.py
-    open_webui/routers/retrieval.py
-    open_webui/tools/builtin.py
 Module: open_webui.models.skills
   Imported in:
     open_webui/routers/skills.py
@@ -1149,6 +1162,21 @@ Module: mcp.shared.auth
 Module: authlib.oauth2.rfc6749.errors
   Imported in:
     open_webui/utils/oauth.py
+Module: open_webui.utils.headers
+  Imported in:
+    open_webui/retrieval/loaders/external_document.py
+    open_webui/retrieval/models/external.py
+    open_webui/retrieval/utils.py
+    open_webui/retrieval/web/external.py
+    open_webui/retrieval/web/perplexity_search.py
+    open_webui/retrieval/web/yandex.py
+    open_webui/routers/audio.py
+    open_webui/routers/images.py
+    open_webui/routers/ollama.py
+    open_webui/routers/openai.py
+    open_webui/utils/anthropic.py
+    open_webui/utils/middleware.py
+    open_webui/utils/tools.py
 Module: open_webui.storage.provider
   Imported in:
     open_webui/routers/files.py
@@ -1175,20 +1203,6 @@ Module: open_webui.models.tools
   Imported in:
     open_webui/routers/tools.py
     open_webui/utils/plugin.py
-    open_webui/utils/tools.py
-Module: open_webui.utils.headers
-  Imported in:
-    open_webui/retrieval/loaders/external_document.py
-    open_webui/retrieval/models/external.py
-    open_webui/retrieval/utils.py
-    open_webui/retrieval/web/external.py
-    open_webui/retrieval/web/perplexity_search.py
-    open_webui/retrieval/web/yandex.py
-    open_webui/routers/audio.py
-    open_webui/routers/images.py
-    open_webui/routers/ollama.py
-    open_webui/routers/openai.py
-    open_webui/utils/middleware.py
     open_webui/utils/tools.py
 Module: open_webui.tools.builtin
   Imported in:
@@ -1399,9 +1413,6 @@ Module: mcp.client.streamable_http
 Module: httpx
   Imported in:
     open_webui/utils/mcp/client.py
-Module: mcp.shared._httpx_utils
-  Imported in:
-    open_webui/utils/mcp/client.py
 Module: socketio
   Imported in:
     open_webui/socket/main.py
@@ -1489,13 +1500,11 @@ Module: test.util.abstract_integration_test
   Imported in:
     open_webui/test/apps/webui/routers/test_auths.py
     open_webui/test/apps/webui/routers/test_models.py
-    open_webui/test/apps/webui/routers/test_prompts.py
     open_webui/test/apps/webui/routers/test_users.py
 Module: test.util.mock_user
   Imported in:
     open_webui/test/apps/webui/routers/test_auths.py
     open_webui/test/apps/webui/routers/test_models.py
-    open_webui/test/apps/webui/routers/test_prompts.py
     open_webui/test/apps/webui/routers/test_users.py
 Module: peewee
   Imported in:
@@ -1626,9 +1635,6 @@ Module: open_webui.utils.pdf_generator
 Module: open_webui.routers.audio
   Imported in:
     open_webui/routers/files.py
-Module: open_webui.models.memories
-  Imported in:
-    open_webui/routers/memories.py
 Module: open_webui.utils.rate_limit
   Imported in:
     open_webui/routers/auths.py
@@ -1696,6 +1702,7 @@ Module: open_webui.retrieval.web.main
     open_webui/retrieval/web/tavily.py
     open_webui/retrieval/web/yacy.py
     open_webui/retrieval/web/yandex.py
+    open_webui/retrieval/web/ydc.py
     open_webui/routers/retrieval.py
 Module: open_webui.retrieval.web.ollama
   Imported in:
@@ -1770,6 +1777,9 @@ Module: open_webui.retrieval.web.external
   Imported in:
     open_webui/routers/retrieval.py
 Module: open_webui.retrieval.web.yandex
+  Imported in:
+    open_webui/routers/retrieval.py
+Module: open_webui.retrieval.web.ydc
   Imported in:
     open_webui/routers/retrieval.py
 Module: open_webui.retrieval.vector.utils
