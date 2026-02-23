@@ -9,6 +9,6 @@ pkgbase = linkora-bin
 	depends = xdg-utils
 	options = !debug
 	source = https://github.com/LinkoraApp/Linkora/releases/download/release-v0.16.0/linkora_1.0.14-1_amd64.deb
-	sha256sums = 975faeb8f12a22227497d8f73ad8ad45e18817c403125c2d90eda6ac134272a0
+	sha256sums = 20d953c2e92bf47a0c4618a00ab8c0d4dc9fbeba8cf753af37ff1c6a3bdb6840
 
 pkgname = linkora-bin

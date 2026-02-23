@@ -11,7 +11,7 @@ depends=('xdg-utils')
 options=('!debug')
 install=linkora.install
 source=("https://github.com/LinkoraApp/Linkora/releases/download/release-v${pkgver}/linkora_${_desktopver}_amd64.deb")
-sha256sums=('975faeb8f12a22227497d8f73ad8ad45e18817c403125c2d90eda6ac134272a0')
+sha256sums=('20d953c2e92bf47a0c4618a00ab8c0d4dc9fbeba8cf753af37ff1c6a3bdb6840')
 
 package() {
     bsdtar -xf data.tar.zst -C ${pkgdir}
