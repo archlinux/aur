@@ -2,9 +2,10 @@
 #_gitbranch="master"
 # Maintainer: tuxnix <tuxnix@gmx.com>
 
-pkgname="mpvcut"
+_name="mpvcut"
 pkgver=0.5
 pkgrel=1
+pkgname="$_name"
 pkgdesc='A lua script mpv becomes a video cutter'
 url='https://codeberg.org/tuxnix/mpvcut'
 arch=('any')
@@ -15,7 +16,7 @@ source=('git+https://codeberg.org/tuxnix/mpvcut')
 sha512sums=('SKIP')
 
 package() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$_name"
     install -Dm644 mpvcut.lua "$pkgdir/usr/share/mpv/scripts/mpvcut/mpvcut.lua"
     install -Dm644 mpvcut.conf "$pkgdir/usr/share/mpv/script-opts/mpvcut.conf"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
