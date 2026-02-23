@@ -2,13 +2,9 @@
 # Contributor: Michael Riegert <michael at eowyn net>
 # Contributor: Danilo Kuehn <dk at nogo-software dot de>
 
-## links
-# https://nextcloud.com/
-# https://github.com/nextcloud/desktop
-
 _pkgname="nextcloud-client"
 pkgname="$_pkgname-git"
-pkgver=3.16.4.r439.gd2712e8
+pkgver=6.2.0.r1983.gd41be4b
 pkgrel=1
 pkgdesc="Nextcloud desktop client"
 url="https://github.com/nextcloud/desktop"
@@ -17,6 +13,7 @@ arch=('i686' 'x86_64')
 
 depends=(
   'karchive'
+  'kdsingleapplication'
   'kguiaddons'
   'libcloudproviders'
   'libp11'

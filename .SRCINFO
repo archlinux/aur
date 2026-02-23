@@ -1,6 +1,6 @@
 pkgbase = nextcloud-client-git
 	pkgdesc = Nextcloud desktop client
-	pkgver = 3.16.4.r439.gd2712e8
+	pkgver = 6.2.0.r1983.gd41be4b
 	pkgrel = 1
 	url = https://github.com/nextcloud/desktop
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = nextcloud-client-git
 	makedepends = ninja
 	makedepends = qt6-tools
 	depends = karchive
+	depends = kdsingleapplication
 	depends = kguiaddons
 	depends = libcloudproviders
 	depends = libp11
