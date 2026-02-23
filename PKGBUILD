@@ -6,13 +6,22 @@ pkgdesc="A set of programs to help organize a judo tournament"
 arch=('x86_64')
 url="https://www.judoshiai.org"
 license=('custom')
-depends=('gtk3' 'sqlite' 'glib2' 'libpng' 'libjpeg')
-source=("https://sourceforge.net/projects/judoshiai/files/Linux-x86_64/${pkgname}_${pkgver}-1_amd64.deb/download")
+depends=('gtk3' 'sqlite' 'glib2' 'libpng' 'libjpeg' 'libxml2')
+makedepends=('binutils')  # für ar
+source=("judoshiai-latest.deb::https://sourceforge.net/projects/judoshiai/files/latest/download")
 sha256sums=('SKIP')
+
+pkgver() {
+    # Versionsnummer aus der .deb-Datei auslesen
+    ar p "${srcdir}/judoshiai-latest.deb" control.tar.* 2>/dev/null | \
+        tar -xO ./control 2>/dev/null | \
+        grep '^Version:' | \
+        sed 's/Version: //;s/-[0-9]*$//'
+}
 
 prepare() {
     cd "${srcdir}"
-    ar x "download"
+    ar x "judoshiai-latest.deb"
     data_archive=$(ls data.tar.* 2>/dev/null | head -n1)
     tar -xf "${data_archive}"
 }

@@ -5,12 +5,14 @@ pkgbase = judoshiai
 	url = https://www.judoshiai.org
 	arch = x86_64
 	license = custom
+	makedepends = binutils
 	depends = gtk3
 	depends = sqlite
 	depends = glib2
 	depends = libpng
 	depends = libjpeg
-	source = https://sourceforge.net/projects/judoshiai/files/Linux-x86_64/judoshiai_4.4-1_amd64.deb/download
+	depends = libxml2
+	source = judoshiai-latest.deb::https://sourceforge.net/projects/judoshiai/files/latest/download
 	sha256sums = SKIP
 
 pkgname = judoshiai
