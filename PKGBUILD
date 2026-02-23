@@ -2,8 +2,8 @@
 
 pkgbase=libar2
 pkgname=($pkgbase $pkgbase-doc $pkgbase-musl)
-pkgver=1.2.2
-pkgrel=2
+pkgver=1.2.3
+pkgrel=1
 _pkgdesc="Library for the Argon2-family of hashing functions"
 pkgdesc="${_pkgdesc}"
 arch=(i686 x86_64)
@@ -14,7 +14,7 @@ checkdepends=(glibc musl 'libblake>=3.0' 'libblake-musl>=3.0')
 _compiler=gcc
 makedepends=(glibc musl 'libblake>=3.0' 'libblake-musl>=3.0' ${_compiler})
 source=($pkgbase-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(edb6cbce2ec35454b43658a33bbe256e9a46bad5c425f522de56042c1b67f9f5)
+sha256sums=(2426b8dd9db8923eeb2025b711e922a3f4c2a86f58436199a7d76637b52a40cc)
 
 build() {
   cd -- "$srcdir"
