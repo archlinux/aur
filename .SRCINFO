@@ -1,0 +1,16 @@
+pkgbase = shackle-git
+	pkgdesc = a hyprland rice but not yet
+	pkgver = r0.0.0
+	pkgrel = 0
+	url = https://codeberg.org/graygraygray/shackle
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = quickshell
+	depends = qt6-wayland
+	provides = shackle
+	conflicts = shackle
+	source = git+https://codeberg.org/graygraygray/shackle.git
+	md5sums = SKIP
+
+pkgname = shackle-git
