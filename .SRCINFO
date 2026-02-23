@@ -1,6 +1,6 @@
 pkgbase = uefi-manager
 	pkgdesc = A graphical tool for managing UEFI boot entries
-	pkgver = 26.01
+	pkgver = 26.02
 	pkgrel = 1
 	url = https://mxlinux.org
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = uefi-manager
 	depends = polkit
 	provides = uefi-manager
 	conflicts = uefi-manager
-	source = https://github.com/MX-Linux/uefi-manager/archive/refs/tags/26.01.tar.gz
-	sha256sums = f35f9a18888384eb22b1a80e030109e8b088607882e28eaab23f8422fcd3fac5
+	source = https://github.com/MX-Linux/uefi-manager/archive/refs/tags/26.02.tar.gz
+	sha256sums = 999fe8f4ee214d8550e5343d5e31eed87cb3215f3b6edaa6e167c9608d2e5ef5
 
 pkgname = uefi-manager
