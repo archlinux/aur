@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=thiefmd
 _app_id="com.github.kmwallio.$pkgname"
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="The markdown editor worth stealing. Inspired by Ulysses, based on code from Quilter"
 arch=('x86_64' 'aarch64')
@@ -28,7 +28,6 @@ makedepends=(
   'vala'
 )
 source=("git+https://github.com/kmwallio/ThiefMD.git#tag=v$pkgver"
-        'git+https://github.com/flathub/shared-modules.git'
         'git+https://github.com/ThiefMD/libwritegood-vala.git'
         'git+https://github.com/TwiRp/ultheme-vala.git'
         'git+https://github.com/ThiefMD/writeas-vala.git'
@@ -39,8 +38,7 @@ source=("git+https://github.com/kmwallio/ThiefMD.git#tag=v$pkgver"
         'git+https://github.com/ThiefMD/medium-vala.git'
         'git+https://github.com/ThiefMD/forem-vala.git'
         'git+https://github.com/TwiRp/hashnode-vala.git')
-sha256sums=('4b059fb27b0908ceee6195f1b7c779171e1a74d11a99ffa7bf9a1dbcdfcecb79'
-            'SKIP'
+sha256sums=('a8ab52226683fddec0b40079680767dfcbab0574521d285bf908376f10cb9d88'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -54,8 +52,17 @@ sha256sums=('4b059fb27b0908ceee6195f1b7c779171e1a74d11a99ffa7bf9a1dbcdfcecb79'
 
 prepare() {
   cd ThiefMD
-  git submodule init
-  git config submodule.flatpak/shared-modules.url "$srcdir/shared-modules"
+  git submodule init \
+    src/writegood \
+    src/ultheme \
+    src/writeas \
+    src/ghost \
+    data/language-specs \
+    src/wordpress \
+    src/bibtex \
+    src/medium \
+    src/forem \
+    src/hashnode
   git config submodule.src/writegood.url "$srcdir/libwritegood-vala"
   git config submodule.src/ultheme.url "$srcdir/ultheme-vala"
   git config submodule.src/writeas.url "$srcdir/writeas-vala"
@@ -67,9 +74,6 @@ prepare() {
   git config submodule.src/forem.url "$srcdir/forem-vala"
   git config submodule.src/hashnode.url "$srcdir/hashnode-vala"
   git -c protocol.file.allow=always submodule update
-
-  # Markdown3 compatibility layer
-  git cherry-pick -n 3752395ad6cf0dee4fc819adce03b8556c585f54
 }
 
 build() {
