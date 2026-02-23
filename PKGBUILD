@@ -2,7 +2,7 @@
 # Contributor: Jef Roosens
 
 pkgname='cinny-desktop'
-pkgver='4.10.3'
+pkgver='4.10.5'
 pkgrel='1'
 pkgdesc='Matrix client focusing primarily on a simple, elegant and secure interface.'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gst-plugins-good' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libvips' 'o
 makedepends=('nodejs' 'npm' 'rust')
 options=('!debug')
 source=("${pkgname}-${pkgver}.zip::https://github.com/cinnyapp/${pkgname}/releases/download/v${pkgver}/${pkgname}-v${pkgver}.zip")
-b2sums=('86262968832d79a69046d75744612bf183a44b09a9af9d46788fc20db462871b316d5687a8ed4e46296426874eeae1c95d46b0b3a14c768fe374f53a38119e2d')
+b2sums=('a6048d8cc7de0bf10c0af6033991a701d5ed51f6b7862de142793e80bf92cd5c6641503da2446f4cec59ed43fd4160d001394c77afcf2b973c3075813d3f9aad')
 
 build() {
     cd "${pkgname}"
