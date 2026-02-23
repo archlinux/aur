@@ -2,15 +2,15 @@
 # Contributor: The-EDev <farook@the-e-dev.com>
 
 pkgname=crow
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="A Fast and Easy to use C++ microframework for the web"
 arch=(any)
 url="https://crowcpp.org"
 license=('BSD-3-Clause')
 makedepends=('asio' 'cmake')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/CrowCpp/Crow/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a485c2d27d98b85655f4b8b5628aeab847bae10a41b89b07a8fb7aae52c0298f')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/CrowCpp/Crow/archive/v${pkgver}.tar.gz")
+sha256sums=('1aa4d487d7a1dd092d997f612608750aa5f5c5b618b4fe561dd8d249696fba79')
 
 build() {
     cmake -B build -S "${pkgname^}-${pkgver}" \
