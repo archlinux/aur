@@ -1,0 +1,20 @@
+[Unit]
+Description=DropDeck (Quickshell panel) for user %i
+Documentation=https://github.com/maria-rcks/dropdeck
+After=graphical.target
+Wants=graphical.target
+
+[Service]
+Type=simple
+User=%i
+# Optional per-user environment overrides:
+#   /etc/dropdeck/<user>.env (e.g. WAYLAND_DISPLAY, DBUS_SESSION_BUS_ADDRESS)
+EnvironmentFile=-/etc/dropdeck/%i.env
+ExecStart=/usr/bin/dropdeck
+Restart=on-failure
+RestartSec=3
+StartLimitIntervalSec=60
+StartLimitBurst=10
+
+[Install]
+WantedBy=graphical.target

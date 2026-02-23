@@ -1,0 +1,16 @@
+[Unit]
+Description=DropDeck (Quickshell panel)
+Documentation=https://github.com/maria-rcks/dropdeck
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/dropdeck
+Restart=on-failure
+RestartSec=3
+StartLimitIntervalSec=60
+StartLimitBurst=10
+
+[Install]
+WantedBy=default.target
