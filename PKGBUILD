@@ -69,6 +69,14 @@ validpgpkeys=(
 prepare() {
 	cd "$srcdir/$_pkgname-$_ver"
 
+	# Files created by the patches
+	rm -f \
+		include/internal/unicode.h \
+		test/recipes/70-test_npn.t \
+		test/recipes/80-test_pkcs12_data/bad{1,2,3}.p12 \
+		util/perl/TLSProxy/NextProto.pm \
+		;
+
 	# set ca dir to /etc/ssl by default
 	patch -p0 -i "$srcdir/ca-dir.patch"
 
