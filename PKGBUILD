@@ -1,6 +1,6 @@
 # Maintainer: Wuxxin <wuxxin@gmail.com>
 pkgname=openclaw-git
-pkgver=2026.2.21.r1019.g4adfe80027
+pkgver=2026.2.22.r94.gddc67aa4ef
 pkgrel=1
 pkgdesc="Personal AI assistant that runs on your own devices"
 arch=('x86_64')
@@ -18,8 +18,10 @@ source=(
     'openclaw-bwrap-install-as-systemd-user-service'
     'openclaw-patch.sh'
     'openclaw.install'
+    'openclaw-commit-382fe80'
     'README.md'
 )
+
 install=openclaw.install
 sha256sums=('SKIP'
             '28568550c4674efc8b90a9b4ea5cf9dc024770275c089499a5cc5d7064d1bba8'
@@ -27,6 +29,7 @@ sha256sums=('SKIP'
             '34fa95679d51f4d5be120e98714f8b580689e57bef6eb031dcf35c0b26948e7d'
             '39760292f1346a7afcf778da947abb1d4ccf7ebea784e14772f5fe84a346c6f5'
             '72cf00f138984381e747bafe04d853d4f8dc3b6e2fa92f58e0739e881eda2799'
+            'cdaf01acb58af62348c6f669f8b77675f66428a8ae41b4b4e371739492fb05c6'
             '817f2a15928521a5e3b9206ee227cbe0b699932fe8f54eaa6a4290c59608dff2')
 
 options=('!strip' '!debug')
@@ -39,9 +42,12 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/openclaw"
-    # Use the patch script
     bash "$srcdir/openclaw-patch.sh" --patch
-
+    if test "$OPENCLAW_REVERT_382fe80" != ""; then
+        echo "reverse patching 382fe80"
+        gzip -d < "$srcdir/openclaw-commit-382fe80" > $srcdir/openclaw-commit-382fe80.patch
+        patch -R -p1 < "$srcdir/openclaw-commit-382fe80.patch"
+    fi
     # Sharp needs node-gyp resolvable in node_modules when building from source
     bun add -d node-gyp
     bun install
