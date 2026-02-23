@@ -1,0 +1,15 @@
+pkgbase = arch-upgrader
+	pkgdesc = Update Arch: pacman & flatpak, rank mirrors, send notification on update and failure
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/Dracape/arch-upgrader
+	arch = any
+	license = MIT
+	makedepends = fish
+	depends = fish
+	depends = rate-mirrors
+	conflicts = arch-upgrader-git
+	source = arch-upgrader-1.0.1.tar.gz::https://github.com/Dracape/arch-upgrader/archive/refs/tags/1.0.1.zip
+	b2sums = ed788d94fc0abb1ca9e614cd701a55fb090c071debc657fc3f43fb76a90c9f66d629f03552ad85214285b1325563bc7f94ccc4ff2fa055b99a61c15679407015
+
+pkgname = arch-upgrader

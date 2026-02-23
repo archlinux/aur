@@ -1,0 +1,4 @@
+/pkg
+/src
+/arch-update-*-any.pkg.tar.zst
+/arch-update-*.tar.gz
