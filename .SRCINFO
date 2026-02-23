@@ -1,15 +1,16 @@
 pkgbase = deskify-bin
 	pkgdesc = Turn websites into Linux desktop apps (prebuilt binary package)
-	pkgver = 0.1.0_alpha.7
+	pkgver = 0.1.0.alpha.8
 	pkgrel = 1
 	url = https://github.com/spalencsar/deskify
 	arch = x86_64
 	license = MIT
 	depends = glibc
+	optdepends = chromium: for --backend chromium
 	provides = deskify
 	conflicts = deskify
-	source = deskify::https://github.com/spalencsar/deskify/releases/download/v0.1.0-alpha.7/deskify-linux-x86_64
-	source = LICENSE::https://raw.githubusercontent.com/spalencsar/deskify/v0.1.0-alpha.7/LICENSE
+	source = deskify::https://github.com/spalencsar/deskify/releases/download/v0.1.0-alpha.8/deskify-linux-x86_64
+	source = LICENSE::https://raw.githubusercontent.com/spalencsar/deskify/v0.1.0-alpha.8/LICENSE
 	sha256sums = 7ab62ff193c2666983c72844c13f368a0ecc1fcd6da40fe95f544c9999e05f30
 	sha256sums = d4e53458cd2dd461f234186497b6d9b21566c477737a4d31fa6f018ef610486f
 
