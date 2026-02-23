@@ -1,16 +1,16 @@
 # Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>
 
 pkgname=pylibcoopgamma
-pkgver=1.1.3.2
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Cooperative gamma Python 3 library"
 arch=(i686 x86_64)
 url="https://codeberg.org/maandree/pylibcoopgamma"
-license=('ISC')
+license=('custom:ISC')
 depends=('python>=3.4' libcoopgamma)
 makedepends=('python>=3.4' libcoopgamma cython)
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha512sums=(55612e83efbcd00749a87217810d8ea4e228784804c3bc39199e1ecda1ecf964a5f1ced30d027370111e0c01e78c9e5f8d6659e970dbba895d4dbab7d31f8815)
+sha256sums=(4e9efba315f6a0fb3ef9f89171e77fc5fef4561a1f725f1d67ff7d12fcb8caf8)
 
 
 build() {
