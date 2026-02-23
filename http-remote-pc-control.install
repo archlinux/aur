@@ -3,7 +3,7 @@ post_install() {
   echo "  systemctl --user enable --now http-remote-pc-control.service"
   echo
   echo "Certificates will be generated on first start (requires openssl) and stored in:"
-  echo "  ~/.local/share/http-remote-pc-control/certs"
+  echo "  ~/.config/http-remote-pc-control/certs"
   echo
   echo "Documentation: https://github.com/akoidan/http-remote-pc-control"
 }
