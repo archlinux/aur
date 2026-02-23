@@ -1,27 +1,29 @@
-# Maintainer: Lauri Niskanen <ape@ape3000.com>
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: Lauri Niskanen <ape@ape3000.com>
 
-pkgname=maskprocessor
+pkgname='maskprocessor'
 pkgver=0.73
-pkgrel=1
-pkgdesc="High-Performance word generator with a per-position configureable charset"
+pkgrel=2
+pkgdesc='High-Performance word generator with a per-position configurable charset'
 arch=('i686' 'x86_64')
-url="https://github.com/jsteube/maskprocessor"
+url='https://github.com/jsteube/maskprocessor'
 license=('MIT')
-depends=()
-makedepends=()
-source=("https://github.com/jsteube/${pkgname}/archive/v${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/hashcat/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('ad2b2945b896d9221eedebac9999a44043e2add3aea6aa1dae2ad1fd9eff5bc4')
 
-build() { 
-	cd "${srcdir}/${pkgname}-${pkgver}/src"
-	make
+build()
+{
+    cd "$pkgname-$pkgver/src"
+    make
 }
 
-package() {
-	cd "${srcdir}/${pkgname}-${pkgver}/src"
+package()
+{
+    cd "$pkgname-$pkgver"
 
-	[ ${CARCH} == "x86_64" ] && ARCHID=64 || ARCHID=32
+    [[ $CARCH = 'x86_64' ]] && ARCHID=64 || ARCHID=32
 
-	install -d "${pkgdir}/usr/bin"
-	install -Dm755 "mp${ARCHID}.bin" "${pkgdir}/usr/bin/mp"
+    install -d "$pkgdir/usr/bin"
+    install -Dm755 "src/mp$ARCHID.bin" "$pkgdir/usr/bin"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
