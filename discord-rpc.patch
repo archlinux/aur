@@ -1,0 +1,43 @@
+diff --git a/application.cpp b/application.cpp
+index 1a9b61cd..e08d516a 100644
+--- a/application.cpp
++++ b/application.cpp
+@@ -29,7 +29,6 @@ http://mozilla.org/MPL/2.0/.
+ #include "Timer.h"
+ #include "dictionary.h"
+ #include "version_info.h"
+-#include "ref/discord-rpc/include/discord_rpc.h"
+ #include <chrono>
+ #include "translation.h"
+ 
+@@ -197,7 +196,7 @@ int eu07_application::run_crashgui()
+ 	}
+ 	return -1;
+ }
+-#ifdef WITH_DISCORD_RPC
++#if WITH_DISCORD_RPC
+ void eu07_application::DiscordRPCService()
+ {
+ 	// initialize discord-rpc
+@@ -399,7 +398,7 @@ int eu07_application::init(int Argc, char *Argv[])
+ 	}
+ 
+ 
+-	#ifdef WITH_DISCORD_RPC
++	#if WITH_DISCORD_RPC
+ 	// Run DiscordRPC service
+ 	std::thread sDiscordRPC(&eu07_application::DiscordRPCService, this);
+ 	Global.threads.emplace("DiscordRPC", std::move(sDiscordRPC));
+diff --git a/application.h b/application.h
+index 07a3b90f..08a4a03c 100644
+--- a/application.h
++++ b/application.h
+@@ -38,7 +38,7 @@ public:
+         run();
+     // issues request for a worker thread to perform specified task. returns: true if task was scheduled
+ 
+-    #ifdef WITH_DISCORD_RPC
++    #if WITH_DISCORD_RPC
+     void DiscordRPCService(); // discord rich presence service function (runs as separate thread)
+     #endif
+     bool
