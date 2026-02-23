@@ -2,17 +2,15 @@
 
 pkgname=fsel-git
 pkgver=2.0.0.r0.g160ae55
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast TUI app launcher and fuzzy finder for GNU/Linux and *BSD (git version)"
 arch=('x86_64')
 url="https://github.com/Mjoyufull/fsel"
 license=('BSD-2-Clause')
 depends=()
 makedepends=('cargo' 'git')
-optdepends=(
-    'chafa: image previews in clipboard mode'
-    'cclip: clipboard history'
-)
+optdepends=('cclip: clipboard history')
+
 provides=('fsel')
 conflicts=('fsel')
 source=("$pkgname::git+https://github.com/Mjoyufull/fsel.git")
