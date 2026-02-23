@@ -3,10 +3,10 @@
 
 _java_ver=8
 _jdkname="zing-${_java_ver}"
-_zing_build="25.10.0.0"
-_zing_weirdnumber="4"
+_zing_build="26.01.0.0"
+_zing_weirdnumber="11"
 pkgname="${_jdkname}-bin"
-pkgver="${_java_ver}.0.471"
+pkgver="${_java_ver}.0.481"
 pkgrel=4
 pkgdesc='Azul Platform Prime is a modern, TCK-compliant Java platform based on OpenJDK.'
 arch=('aarch64' 'x86_64')
@@ -36,8 +36,8 @@ source=("${pkgname}.install")
 #https://cdn.azul.com/zing-zvm/${_zulu_build}/zing${_zulu_build}-3-jdk${pkgver}-linux_x64.tar.gz
 #https://cdn.azul.com/zing-zvm/ZVM23.12.0.0/zing23.12.0.0-4-jdk8.0.392-linux_x64.tar.gz
 sha256sums=('1762188053ca0c6413cfeb4fba26a5075072726fe230e54e1a18a1793abe5b84')
-sha256sums_aarch64=('1d9a5d81eb1f887c2b78e3e0388286408e5dc9d6addbf2e21db49157300d1b24')
-sha256sums_x86_64=('eb85bddb00240080e69b1cb5953d591080c32e50200c366d2e484dbdaa6f6e57')
+sha256sums_aarch64=('ef65d08006e385f18d25f5a02d135c31dd0be8c753020f9105f8918cb7c1bb60')
+sha256sums_x86_64=('6ed866a7d23240f015385402845fdd97e19a27fd1f005d51220bbc33d3403b0f')
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
 # Upstream config files that should go to etc and get backup
