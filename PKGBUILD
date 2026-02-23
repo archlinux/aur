@@ -3,7 +3,7 @@
 
 pkgname='maskprocessor'
 pkgver=0.73
-pkgrel=2
+pkgrel=3
 pkgdesc='High-Performance word generator with a per-position configurable charset'
 arch=('i686' 'x86_64')
 url='https://github.com/jsteube/maskprocessor'
@@ -24,6 +24,6 @@ package()
     [[ $CARCH = 'x86_64' ]] && ARCHID=64 || ARCHID=32
 
     install -d "$pkgdir/usr/bin"
-    install -Dm755 "src/mp$ARCHID.bin" "$pkgdir/usr/bin"
+    install -Dm755 "src/mp$ARCHID.bin" "$pkgdir/usr/bin/mp"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
