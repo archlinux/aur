@@ -8,7 +8,7 @@ license=('custom')
 provides=('taskforge')
 conflicts=('taskforge')
 source=("https://github.com/gentij/taskforge/releases/download/v0.1.0/taskforge_linux_amd64.tar.gz")
-sha256sums=('29ec4e634659949e6cdc8dffd38354499eb7489203c7990fc51ac79dc6df134c')
+sha256sums=('899a277ca42411498207afe1667afa087d8de6ce716c4a93f6c85e0aead423b3')
 
 package() {
   install -Dm755 "${srcdir}/taskforge" "${pkgdir}/usr/bin/taskforge"
