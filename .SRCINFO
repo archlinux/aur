@@ -1,6 +1,6 @@
 pkgbase = zing-21-bin
 	pkgdesc = Azul Platform Prime Stream Build (Formerly Zing) is a modern, TCK-compliant Java platform based on OpenJDK, free for development.
-	pkgver = 21.0.8.0.101
+	pkgver = 21.0.9.0.101
 	pkgrel = 3
 	url = https://docs.azul.com/prime/prime-quick-start-tar
 	install = zing-21-bin.install
@@ -12,19 +12,19 @@ pkgbase = zing-21-bin
 	depends = ca-certificates-utils
 	provides = java-runtime-headless=21
 	provides = java-runtime-headless-openjdk=21
-	provides = jre21-openjdk-headless=21.0.8.0.101
+	provides = jre21-openjdk-headless=21.0.9.0.101
 	provides = java-runtime=21
 	provides = java-runtime-openjdk=21
-	provides = jre21-openjdk=21.0.8.0.101
+	provides = jre21-openjdk=21.0.9.0.101
 	provides = java-environment=21
 	provides = java-environment-openjdk=21
-	provides = jdk21-openjdk=21.0.8.0.101
-	provides = jdk-openjdk=21.0.8.0.101
+	provides = jdk21-openjdk=21.0.9.0.101
+	provides = jdk-openjdk=21.0.9.0.101
 	source = zing-21-bin.install
 	sha256sums = 0aaa7a63bbe17cbb5afc36dd57212204a2ea597212b88e9b1e4c0583a21720e4
-	source_x86_64 = https://cdn.azul.com/zing-zvm/ZVM25.10.0.0/zing25.10.0.0-4-jdk21.0.8.0.101-linux_x64.tar.gz
-	sha256sums_x86_64 = 42ad9e466de52616d2962fd9b19acfd5ff70a2a2307064c8ff3cac62bdf5969d
-	source_aarch64 = https://cdn.azul.com/zing-zvm/ZVM25.10.0.0/zing25.10.0.0-4-jdk21.0.8.0.101-linux_aarch64.tar.gz
-	sha256sums_aarch64 = 899f46726fb06b087ec60e689ad4bc2f47c4ccece6f8562d1f2de6f140481100
+	source_x86_64 = https://cdn.azul.com/zing-zvm/ZVM26.01.0.0/zing26.01.0.0-11-jdk21.0.9.0.101-linux_x64.tar.gz
+	sha256sums_x86_64 = b0d835077d4b5cf2c3951280cb68e2d7bff1de7ddf637d7f6ff57a277b1d2bf7
+	source_aarch64 = https://cdn.azul.com/zing-zvm/ZVM26.01.0.0/zing26.01.0.0-11-jdk21.0.9.0.101-linux_aarch64.tar.gz
+	sha256sums_aarch64 = 0fc556dce8449e350173376e8151c48d46c717e7e31328ddfbea6df812c97867
 
 pkgname = zing-21-bin
