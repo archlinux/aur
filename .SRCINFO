@@ -1,6 +1,6 @@
 pkgbase = linux-cachyos-bore-native
 	pkgdesc = Linux BORE + Cachy Sauce scheduler Kernel by CachyOS with other patches and improvements
-	pkgver = 6.19.0
+	pkgver = 6.19.3
 	pkgrel = 1
 	url = https://github.com/CachyOS/linux-cachyos
 	arch = x86_64
@@ -68,7 +68,7 @@ pkgname = linux-cachyos-bore-native-headers
 pkgname = linux-cachyos-bore-native-nvidia-open
 	pkgdesc = nvidia open modules of 590.48.01 driver for the linux-cachyos-bore-native kernel
 	license = MIT AND GPL-2.0-only
-	depends = linux-cachyos-bore-native=6.19.0-1
+	depends = linux-cachyos-bore-native=6.19.3-1
 	depends = nvidia-utils=590.48.01
 	depends = libglvnd
 	provides = NVIDIA-MODULE

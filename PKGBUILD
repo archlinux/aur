@@ -145,7 +145,7 @@ fi
 
 pkgbase="linux-$_pkgsuffix-native"
 _major=6.19
-_minor=0
+_minor=3
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
