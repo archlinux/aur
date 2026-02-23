@@ -4,6 +4,7 @@ pkgbase = logserver
 	pkgrel = 1
 	url = https://codeberg.org/potatocrunchcereal/logserver
 	arch = any
+	license = GPL-3.0-or-later
 	makedepends = cmake
 	makedepends = txt2man
 	depends = zlib

@@ -4,6 +4,7 @@ pkgname=logserver
 pkgver=1.13.6
 pkgrel=1
 pkgdesc="Advanced pager designed for rapid navigation of large logs."
+license=('GPL-3.0-or-later')
 arch=('any')
 url="https://codeberg.org/potatocrunchcereal/logserver"
 depends=('zlib' 'ncurses' 'catch2')
