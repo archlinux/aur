@@ -1,31 +1,34 @@
 # Maintainer: Lyra Vhess <auxilliary.email@protonmail.com>
 pkgname=vsrvrt-git
 _pkgname=vs-rvrt
-pkgver=1.1.1.r0.8d94249
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Vapoursynth plugin for RVRT (Recurrent Video Restoration Transformer) video restoration"
 arch=('x86_64')
 url="https://github.com/Lyra-Vhess/vs-rvrt"
 license=('CC-BY-NC-4.0')
 depends=(
-    'python'
-    'python-einops'
+    'python-pytorch-cuda'
     'python-torchvision'
     'python-numpy'
     'python-requests'
     'python-tqdm'
-    'vapoursynth'
+    'python-einops'
     'python-packaging'
+    'vapoursynth'
+)
+makedepends=(
+    'git'
+    'python-installer'
+    'python-wheel'
 )
 optdepends=(
-    'cuda: For GPU acceleration'
-    'ffmpeg: For video encoding/decoding'
+    'ffmpeg: for video encoding/decoding'
 )
-makedepends=('git' 'python-pip')
 provides=('vsrvrt')
 conflicts=('vsrvrt')
 source=("git+https://github.com/Lyra-Vhess/vs-rvrt.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
@@ -34,17 +37,25 @@ pkgver() {
 
 build() {
     cd "$_pkgname"
-    rm -f vsrvrt-*.whl
-    _pyver=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
-    pip download --no-cache-dir --no-deps --only-binary=:all: --python-version "${_pyver}" --implementation cp --abi none --platform "manylinux2014_x86_64" vsrvrt || {
-        echo "ERROR: Pre-built wheel not found on PyPI for Python ${_pyver}"
+
+    local _pyver=$(python -c "import sys; print(f'cp{sys.version_info.major}{sys.version_info.minor}')")
+
+    pip download --no-cache-dir --no-deps --only-binary=:all: \
+        --python-version "$_pyver" --implementation cp --abi none \
+        --platform manylinux2014_x86_64 vsrvrt
+
+    local _wheel=$(ls vsrvrt-*.whl 2>/dev/null | head -1)
+    if [[ -z "$_wheel" ]]; then
+        error "Pre-built wheel not found on PyPI for Python ${_pyver}"
         return 1
-    }
+    fi
 }
 
 package() {
     cd "$_pkgname"
-    pip install --no-cache-dir --root="$pkgdir" --ignore-installed --no-deps vsrvrt-*.whl
+
+    python -m installer --destdir="$pkgdir" vsrvrt-*.whl
+
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
