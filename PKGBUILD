@@ -1,6 +1,6 @@
 # Maintainer: Clément Foucher <cfoucher-pkg at outlook dot fr>
 pkgname=geteduroam
-pkgver=0.13
+pkgver=0.14
 pkgrel=1
 pkgdesc="Configure your Eduroam Wifi connection"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('go>=1.18'
              'make'
             )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/$pkgname/linux-app/archive/$pkgver.tar.gz")
-sha256sums=('ae173882d9da2e5b2d1a95d03646f82a74695b4bc1167ac7b7ed40494865a6eb')
+sha256sums=('efe2732a9c7ac85e4c60b67993b1efcc6cc90183e0b537703fbb1337b9fcb6fb')
 build() {
         mv "$srcdir/linux-app-$pkgver" "$srcdir/$pkgname-$pkgver"
         cd "$srcdir/$pkgname-$pkgver"
