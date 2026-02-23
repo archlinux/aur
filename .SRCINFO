@@ -1,6 +1,6 @@
 pkgbase = releng-tool
 	pkgdesc = A tool to create packages for select runtime environments (e.g. embedded targets)
-	pkgver = 2.7.0
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://releng.io/
 	arch = any
@@ -40,11 +40,12 @@ pkgbase = releng-tool
 	optdepends = rust: support for Cargo package management
 	optdepends = scons: support for building SCons-dependent packages
 	optdepends = subversion: support for Subversion checkouts
+	optdepends = waf: support for building waf-dependent packages
 	optdepends = zsh-completions: shell completion for zsh
-	source = https://github.com/releng-tool/releng-tool/releases/download/v2.7/releng_tool-2.7.0.tar.gz
-	source = https://github.com/releng-tool/releng-tool/releases/download/v2.7/releng_tool-2.7.0.tar.gz.asc
+	source = https://github.com/releng-tool/releng-tool/releases/download/v2.8/releng_tool-2.8.0.tar.gz
+	source = https://github.com/releng-tool/releng-tool/releases/download/v2.8/releng_tool-2.8.0.tar.gz.asc
 	validpgpkeys = D04A27BA9305DBBD354E653902D3C27B922CCC13
-	sha512sums = c6c66c243c703ae9b9219d4ecba597828e94fbd5deb33e7144471fd42b6ab05cbb41dcf24181af5fdf702a97f99d3a6be070e884b0d9339ac971f7cda8c6e663
-	sha512sums = 484a6e7ef6eb6c82d18b4832e9e35c6ea223e920c6a7963fad50b92824603d480bdcca5ff87602341f7041027f93b86a8b405f4fd353670415355f4c1901f90d
+	sha512sums = 4957fdd2aaf7ab542df31f7267e983527a00fdbe095cc0f3277d9fe8c131d109b4d560ec6649b114390cf9d3d802bc5a13ca997bab7e0fd69b1e4d5da49b0340
+	sha512sums = 6521968f1112e24eb708cfc62ba10d733169ea5bf222183e18e5a4e7d65c5ff38bf060ae1e403a363078a1b6a79cef73fba45f308eea5289cae33fc03eda3e05
 
 pkgname = releng-tool
