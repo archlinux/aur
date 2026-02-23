@@ -1,0 +1,23 @@
+pkgbase = animeshelf
+	pkgdesc = Local-first anime ranking and tier-list management app.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mengdehong/AnimeShelf
+	arch = x86_64
+	license = custom
+	makedepends = clang
+	makedepends = cmake
+	makedepends = flutter
+	makedepends = git
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = gtk3
+	options = !strip
+	source = animeshelf::git+https://github.com/mengdehong/AnimeShelf.git#tag=v0.1.0
+	source = animeshelf.desktop
+	source = animeshelf.jpg
+	sha256sums = SKIP
+	sha256sums = 5340512162bb77e4fe7f953bad1f54f2865196d065904115ad7018da652781a7
+	sha256sums = 496c5139a8b80176240cf48f34048d3c9602278762584349d2ac45bfa96e48e7
+
+pkgname = animeshelf

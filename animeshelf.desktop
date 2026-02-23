@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=AnimeShelf
+Comment=Local-first anime ranking and tier-list management app
+Exec=animeshelf
+Icon=/usr/share/pixmaps/animeshelf.jpg
+Terminal=false
+Categories=Utility;Entertainment;
+Keywords=anime;tier;ranking;bangumi;
+StartupNotify=true
