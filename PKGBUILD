@@ -14,7 +14,7 @@ backup=(
 )
 source=("$pkgname::git+$url"
         "$pkgname.install")
-sha256sums=('SKIP')
+sha256sums=('SKIP' '420b484254f4f743db0adf1214c29fb9647e2fe2a8b4862bbbc64a16d0e744e5')
 install="${pkgname}.install"
 
 pkgver() {

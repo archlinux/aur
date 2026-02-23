@@ -12,5 +12,6 @@ pkgbase = remountd
 	source = remountd::git+https://github.com/CarloWood/remountd.git
 	source = remountd.install
 	sha256sums = SKIP
+	sha256sums = 420b484254f4f743db0adf1214c29fb9647e2fe2a8b4862bbbc64a16d0e744e5
 
 pkgname = remountd
