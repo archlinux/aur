@@ -2,7 +2,7 @@
 # Contributor: Yanli <mail@yanli.one>
 
 pkgname=replicate-cog-bin
-pkgver=0.16.11
+pkgver=0.16.12
 pkgrel=1
 epoch=2
 pkgdesc='Containers for machine learning'
@@ -13,8 +13,8 @@ depends=('docker')
 conflicts=('cocogitto' 'cog' 'python-cogapp')
 source_x86_64=("$pkgname-$pkgver-x86_64.bin::${url}/releases/download/v${pkgver}/cog_Linux_x86_64")
 source_aarch64=("$pkgname-$pkgver-aarch64.bin::${url}/releases/download/v${pkgver}/cog_Linux_arm64")
-sha256sums_x86_64=('7a76f9ad283751c763a926aeb6dafb9ddf984c1c3056281a5fc738fccda93677')
-sha256sums_aarch64=('eb6806302886a4a09fc15af97b867a0d09b9af6156f324f4c91af048bbc3b075')
+sha256sums_x86_64=('4c399480d84602d840fce1f78dbfe065f4274d2d36a64633e2dad3bb93df6a9b')
+sha256sums_aarch64=('eddf8671a397eb1bd0d675be4ede66432bed5e638ebdad182d5d97a6dfbdb2de')
 
 package() {
   install -Dm755 "$pkgname-$pkgver-$CARCH.bin" "$pkgdir/usr/bin/cog"
