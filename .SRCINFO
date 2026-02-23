@@ -1,0 +1,19 @@
+pkgbase = gnome-backup
+	pkgdesc = Backup and restore GNOME settings and shell extensions
+	pkgver = 0.1.0
+	pkgrel = 3
+	arch = x86_64
+	license = GPL3
+	makedepends = bash
+	makedepends = cargo
+	makedepends = git
+	makedepends = make
+	makedepends = perl
+	depends = dconf
+	options = !debug
+	options = !lto
+	source = https://codeberg.org/mipi/gnome-backup/archive/0.1.0.tar.gz
+	validpgpkeys = 11ECD6695134183B3E7AF1C2223AAA374A1D59CE
+	sha256sums = ec82348c57af9d9085e1cabc031b40446baef1db7ef93ff423d066c80a1d834a
+
+pkgname = gnome-backup
