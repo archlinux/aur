@@ -1,7 +1,7 @@
 # Maintainer: Carlo Wood <carlo@alinoe.com>
 
 pkgname=remountd-git
-pkgver=r46.df12868
+pkgver=r47.c930ff2
 pkgrel=1
 pkgdesc="Daemon to remount preconfigured mount points ro/rw; from an unprivileged client."
 arch=('x86_64')
@@ -20,6 +20,11 @@ install="${pkgname}.install"
 pkgver() {
   cd "$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare() {
+  cd "$pkgname"
+  git submodule update --init --recursive
 }
 
 build() {
