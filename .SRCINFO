@@ -1,27 +1,17 @@
-pkgbase = planarally-bin
-	pkgdesc = PlanarAlly v2026.1.2
-	pkgver = 2026.1.2
-	pkgrel = 4
-	url = https://www.planarally.io
-	arch = x86_64
-	license = MIT
-	makedepends = npm
-	depends = python-aiohttp
-	depends = python-bcrypt
-	depends = python-cryptography
-	depends = python-email-validator
-	depends = python-jinja
-	depends = python-peewee
-	depends = python-pillow
-	depends = python-pydantic
-	depends = python-rtoml
-	depends = python-socketio
-	depends = python-typing_extensions
-	depends = python-watchdog
-	depends = nodejs
-	depends = npm
-	depends = git
-	source = https://github.com/Kruptein/PlanarAlly/archive/refs/tags/v2026.1.2.tar.gz
-	sha256sums = bc73bfc68b8e5bdfe1c5d8ab7165a8171ab48c7a7ece34aede7827a501e00e80
+run this: yay -S planarally-bin
+cd /usr/lib/planarally/server && git init
+pip install redmail --break-system-packages --user
+planarally
 
-pkgname = planarally-bin
+Reinitialized existing Git repository in /usr/lib/planarally/server/.git/
+Requirement already satisfied: redmail in /home/armin/.local/lib/python3.14/site-packages (0.6.0)
+Requirement already satisfied: jinja2 in /usr/lib/python3.14/site-packages (from redmail) (3.1.6)
+Requirement already satisfied: MarkupSafe>=2.0 in /usr/lib/python3.14/site-packages (from jinja2->redmail) (3.0.2)
+
+2026-02-23 11:14:34,676 - WARNING -  RUNNING IN NON SSL CONTEXT  (planarserver.py:79)
+======== Starting Webserver on http://0.0.0.0:8000/ ========
+
+(Press CTRL+C to quit)
+
+ Shutting down, this can take a couple of seconds...
+
