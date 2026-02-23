@@ -1,7 +1,7 @@
 # Maintainer: futpib <futpib@gmail.com>
 
 _pkgname=iroh
-pkgbase="${_pkgname}-git"
+pkgbase="${_pkgname}-relay-git"
 pkgname=("${_pkgname}-relay-git" "${_pkgname}-dns-server-git")
 pkgver=0.96.1.r16.gb11e707cc8
 pkgrel=1

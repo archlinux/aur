@@ -1,4 +1,4 @@
-pkgbase = iroh-git
+pkgbase = iroh-relay-git
 	pkgdesc = p2p QUIC connections dialed by public key
 	pkgver = 0.96.1.r16.gb11e707cc8
 	pkgrel = 1
