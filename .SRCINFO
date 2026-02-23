@@ -1,15 +1,11 @@
 pkgbase = planarally-bin
-	pkgdesc = PlanarAlly v2026.1.2 - tabletop companion for virtual tabletops
+	pkgdesc = PlanarAlly v2026.1.2
 	pkgver = 2026.1.2
-	pkgrel = 2
+	pkgrel = 4
 	url = https://www.planarally.io
 	arch = x86_64
 	license = MIT
 	makedepends = npm
-	depends = nodejs
-	depends = npm
-	depends = git
-	depends = python
 	depends = python-aiohttp
 	depends = python-bcrypt
 	depends = python-cryptography
@@ -22,6 +18,9 @@ pkgbase = planarally-bin
 	depends = python-socketio
 	depends = python-typing_extensions
 	depends = python-watchdog
+	depends = nodejs
+	depends = npm
+	depends = git
 	source = https://github.com/Kruptein/PlanarAlly/archive/refs/tags/v2026.1.2.tar.gz
 	sha256sums = bc73bfc68b8e5bdfe1c5d8ab7165a8171ab48c7a7ece34aede7827a501e00e80
 
