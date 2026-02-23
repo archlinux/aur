@@ -1,12 +1,12 @@
 pkgbase = mod_python
 	pkgdesc = An Apache module that embeds the Python interpreter within the server
 	pkgver = 3.5.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.modpython.org/
 	install = mod_python.install
 	arch = i686
 	arch = x86_64
-	license = APACHE
+	license = Apache-2.0
 	makedepends = python-setuptools
 	depends = apache
 	depends = python

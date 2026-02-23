@@ -4,11 +4,11 @@
 _hash=a638e01b7eb50d0cf127ac14c3e1b64347ee682e
 pkgname=mod_python
 pkgver=3.5.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="An Apache module that embeds the Python interpreter within the server"
 arch=('i686' 'x86_64')
 url="https://www.modpython.org/"
-license=('APACHE')
+license=('Apache-2.0')
 depends=('apache' 'python')
 makedepends=('python-setuptools')
 conflicts=('mod_python2-legacy' 'mod_python2')
