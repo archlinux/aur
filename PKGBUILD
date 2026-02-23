@@ -2,7 +2,7 @@
 pkgname=pawlette
 conflicts=('pawlette-git')
 provides=('pawlette-git')
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="😺 Utility for changing themes in the meowrch (stable)"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python')
 makedepends=('python-uv' 'python-virtualenv' 'git')
 options=('!debug')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6218c006d16a7f2b5a48ec9a504300dfe75218dd7e6c11d5d7d3046a6b59c1ae')
+sha256sums=('5deb3f56f7e37c79cf3a3f32ee2a47c74b9b088a1f81da1efc29674642c4b98d')
 
 package() {
   cd "$srcdir/pawlette-$pkgver"
