@@ -9,20 +9,19 @@ optdepends=('kodi-standalone-service: launching standalone modes')
 url="https://codeberg.org/aidavdw/kodi-remote-start-daemon"
 license=('GPL-3.0-or-later')
 depends=('python')
-makedepends=('git')
 source=(
-    "$pkgname::git+https://codeberg.org/aidavdw/kodi-remote-start-daemon.git"
+    "$pkgname::https://codeberg.org/aidavdw/kodi-remote-start-daemon/archive/v0.1.0.tar.gz"
     "kodi-remote-start-daemon@.service"
     "kodi-remote-start-daemon-standalone-gbm@.service"
     "kodi-remote-start-daemon-standalone-wayland@.service"
     "kodi-remote-start-daemon-standalone-x11@.service"
 )
-#TODO: add checksums
-sha256sums=('SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP')
+
+sha256sums=('ae7d3aec5a1f507392fa4b708f513dab58dd692270dcb76a2f8241cd63955242'
+    'ab41a0b83d920817a4d3589706e27c75835b782472016bed64d6f38a80f9505a'
+    '06960724390b6c2c7b76406e42b03b38fa902ef97b54340ec1926f4fc3b4c982'
+    'ce0f681562a9ae13342a1b85bfb0be6d5f1da870fea2c3835126eb5ce8608963'
+    'ebc4e398ebe57c369f9598f9c0690211064542a178894220cd87384601306b00')
 
 pkgver() {
     cat "$srcdir/$pkgname/pyproject.toml" | grep version | cut -d "\"" -f2
