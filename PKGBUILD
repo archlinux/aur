@@ -12,7 +12,7 @@ optdepends=()
 provides=('finar')
 conflicts=('finar')
 options=('!strip')
-source=("finar-unstable-${pkgver}.zip::https://github.com/openlyst/builds/releases/download/build-4/finar-1.1.0-2026-02-22-linux-x64.zip")
+source=("finar-unstable-${pkgver}.zip::https://github.com/openlyst/builds/releases/download/build-11/finar-1.1.0-2026-02-23-linux-x64.zip")
 sha256sums=('SKIP')
 
 package() {
