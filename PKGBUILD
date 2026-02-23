@@ -3,7 +3,7 @@
 pkgname=arch-upgrader
 
 # Version
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 
 # Generic
@@ -19,7 +19,7 @@ conflicts=('arch-upgrader-git')
 
 # Download
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Dracape/${pkgname}/archive/refs/tags/${pkgver}.zip")
-b2sums=('6da64bb79dbe525178859f743a97ee908e491a482eb01cef251f09de43f326c634a5dc1172c2bac0233e08fd8a4e221cdadce54320cd6de7f682481ac0245ca5')
+b2sums=('143207b3781552457e203ef91a115c20d0c2a00f90888a6531dc026dfe0eabd731bec2322e7ddfcad52fa3cbc101a25cbb65b5716029b5fb0ff775bb78717a2d')
 install=systemd-reload.install
 
 
