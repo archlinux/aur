@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=R2WinBUGS
-_pkgver=2.1-23
+_pkgver=2.1-24
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ optdepends=(
   r-brugs
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e546492a4760bd75403bda75bd92225d')
-b2sums=('311af5eb090819ef622a813b0c14cf6d56d8476d80a1b68d7e6ea5ae4adac515780ad249df48c2ba5d6b3698267950813426c4abc1b9f3e06d0f71e9b8c56bf6')
+md5sums=('5071d688bed14c0f5dc4d844b02aae23')
+b2sums=('8702c71739e4235cc6ad47fcc3dc5ac61b55f2ad3243744195ab905831a97e3b20b4059c47305b0a4cf56987397e5da53566457fa6ef06527b6bb5b68bab96b1')
 
 build() {
   mkdir build
