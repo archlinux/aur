@@ -15,6 +15,7 @@ makedepends=('git')
 source=('git+https://codeberg.org/tuxnix/mpvcut')
 sha512sums=('SKIP')
 
+
 package() {
     cd "$srcdir/$_name"
     install -Dm644 mpvcut.lua "$pkgdir/usr/share/mpv/scripts/mpvcut/mpvcut.lua"
