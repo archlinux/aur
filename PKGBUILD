@@ -7,7 +7,7 @@ url='https://github.com/knowlen/rovibe'
 license=(WTFPL)
 depends=(bash git)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/knowlen/rovibe/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c0c6af306c2edef6c86a6fb5e936170e76534e3fede42d3ac4a2db917b0dc14a')
+sha256sums=('fbbdca50a406f43771acedd45b7b2102925cd09174be0ca92bcd04c4f8cd7b51')
 install=rovibe.install
 
 package() {
