@@ -1,7 +1,7 @@
 # Maintainer: Enmanuel Moreira <enmanuelmoreira@gmail.com>
 
 pkgname=colima-bin
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Container runtimes on macOS (and Linux) with minimal setup."
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=("https://raw.githubusercontent.com/abiosoft/${pkgname%-bin}/v${pkgver}/L
         "https://github.com/abiosoft/${pkgname%-bin}/releases/download/v${pkgver}/${pkgname%-bin}-Linux-x86_64")
 
 sha256sums=('e5ce0844732e29a77f349cc332fcb6ab75617393f9e565ac6509c7b681d95eea'
-            '4300e1e6ce8d4ee354a321d70ff281007eca7f6e56f5e1941bbd73394f8dc193')
+            '71293b94c725e26b35dcd00dfbc4713436237e76d99e768f5b14cebc4e7bfe8e')
 
 package() {
   cd "${srcdir}"
