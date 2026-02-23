@@ -1,4 +1,4 @@
-pkgname=syncovery
+pkgname=syncovery-bin
 pkgver=11.12.13
 pkgrel=2
 pkgdesc="Syncovery File Synchronization Tool"
