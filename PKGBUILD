@@ -2,14 +2,19 @@
 
 pkgname=irpf2023
 pkgver=2023.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Brazilian physical person income tax (IRPF) program (2023 version)'
 arch=('any')
 url='https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/dirpf'
 license=('LicenseRef-Custom')
-depends=('sh' 'java-runtime=11' 'hicolor-icon-theme')
-optdepends=('gvfs: for importing pre-filled data from a gov.br account')
-makedepends=('icoutils')
+depends=(
+    'hicolor-icon-theme'
+    'java-runtime=11'
+    'sh')
+optdepends=(
+    'gvfs: for importing pre-filled data from a gov.br account')
+makedepends=(
+    'icoutils')
 source=("https://downloadirpf.receita.fazenda.gov.br/irpf/${pkgver%%.*}/irpf/arquivos/IRPF${pkgver%%.*}-${pkgver#*.}.zip"
         'irpf.desktop'
         'irpf.sh'
@@ -32,7 +37,7 @@ package() {
     install -D -m644 "IRPF${pkgver%%.*}/Leia-me.htm" -t "${pkgdir}/usr/share/doc/${pkgname}"
     cp -dr --no-preserve='ownership' "IRPF${pkgver%%.*}/help" "${pkgdir}/usr/share/doc/${pkgname}"
     cp -dr --no-preserve='ownership' "IRPF${pkgver%%.*}/"lib{,-modulos} "${pkgdir}/usr/share/java/${pkgname}"
-    ln -s "../../doc/${pkgname}/help" "${pkgdir}/usr/share/java/${pkgname}/help"
+    ln -sr "${pkgdir}/usr/share/doc/${pkgname}/help" "${pkgdir}/usr/share/java/${pkgname}/help"
     
     local _file
     local _res
