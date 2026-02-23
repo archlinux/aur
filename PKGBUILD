@@ -1,7 +1,7 @@
 # Maintainer: nelle the@nelle.observer
 
 pkgname=packwitch-manager-bin
-pkgver=0.1e
+pkgver=0.1f
 pkgrel=1
 pkgdesc="minecraft modpack management tool"
 arch=('x86_64')
