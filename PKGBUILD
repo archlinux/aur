@@ -2,13 +2,17 @@
 
 pkgname=lcar2024
 pkgver=2024.1.1
-pkgrel=1
-pkgdesc='Brazilian physical person income tax (IRPF) auxiliary program for getting rural activity results'
+pkgrel=2
+pkgdesc='Brazilian physical person income tax (IRPF) auxiliary program for getting rural activity results (2024 version)'
 arch=('any')
 url='https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/lcar'
 license=('LicenseRef-Custom')
-depends=('sh' 'java-runtime' 'hicolor-icon-theme')
-makedepends=('icoutils')
+depends=(
+    'hicolor-icon-theme'
+    'java-runtime'
+    'sh')
+makedepends=(
+    'icoutils')
 source=("https://downloadirpf.receita.fazenda.gov.br/irpf/${pkgver%%.*}/ar/AR${pkgver%%.*}v${pkgver#*.}.zip"
         'lcar.desktop'
         'lcar.sh'
@@ -23,14 +27,14 @@ prepare() {
 }
 
 package() {
-    install -D -m755 lcar.sh "${pkgdir}/usr/bin/lcar2024"
-    install -D -m644 lcar.desktop "${pkgdir}/usr/share/applications/lcar2024.desktop"
+    install -D -m755 lcar.sh "${pkgdir}/usr/bin/${pkgname}"
+    install -D -m644 lcar.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 "AR${pkgver%%.*}"/{PgdAtividadeRural,pgd-updater}.jar -t "${pkgdir}/usr/share/java/${pkgname}"
     install -D -m644 "AR${pkgver%%.*}/Leia_me.htm" -t "${pkgdir}/usr/share/doc/${pkgname}"
     cp -dr --no-preserve='ownership' "AR${pkgver%%.*}/help" "${pkgdir}/usr/share/doc/${pkgname}"
     cp -dr --no-preserve='ownership' "AR${pkgver%%.*}/lib" "${pkgdir}/usr/share/java/${pkgname}"
-    ln -s "../../doc/${pkgname}/help" "${pkgdir}/usr/share/java/${pkgname}/help"
+    ln -sr "${pkgdir}/usr/share/doc/${pkgname}/help" "${pkgdir}/usr/share/java/${pkgname}/help"
     
     local _file
     local _res
