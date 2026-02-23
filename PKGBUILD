@@ -1,6 +1,6 @@
 # Maintainer: bananasjim <bananasjim1@gmail.com>
 pkgname=rdc-cli-git
-pkgver=0.2.0.r82.g368b28d
+pkgver=0.1.0.r0.g0000000
 pkgrel=1
 pkgdesc="Unix-friendly CLI for RenderDoc .rdc captures"
 arch=('x86_64')
@@ -20,6 +20,7 @@ makedepends=(
   'python-build'
   'python-installer'
   'python-setuptools'
+  'python-setuptools-scm'
   'python-wheel'
   'cmake'
   'ninja'

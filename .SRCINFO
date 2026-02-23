@@ -1,6 +1,6 @@
 pkgbase = rdc-cli-git
 	pkgdesc = Unix-friendly CLI for RenderDoc .rdc captures
-	pkgver = 0.2.0.r82.g368b28d
+	pkgver = 0.1.0.r0.g0000000
 	pkgrel = 1
 	url = https://github.com/BANANASJIM/rdc-cli
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = rdc-cli-git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	makedepends = cmake
 	makedepends = ninja
