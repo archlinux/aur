@@ -6,6 +6,7 @@ Default Config Path: /etc/tori/
 Default Data Path: /var/lib/tori/
 Default User & Group: tori:tori
 
+$ sudo usermod -aG tori $USER
 $ sudo systemctl start tori.service
 -----------------------------------------------------------------------------
 
