@@ -5,11 +5,11 @@ pkgver=1.1.7
 pkgrel=1
 pkgdesc="Generate colorscheme from image"
 arch=('x86_64' 'aarch64')
-url="https://pixelll.is-a.dev/tools/walrs"
+url="https://pi66.xyz/tools/walrs"
 license=('GPL3')
 depends=('gcc-libs')
-source=("https://pixelll.is-a.dev/static/walrs/walrs-${pkgver}.tar.gz")
-sha256sums=('SKIP')
+source=("https://pi66.xyz/files/walrs-${pkgver}.tar.gz")
+sha256sums=('9233610064149952fc34ae7b4bad023ec38472f22cc1344dd2a14121cd611631')
 
 package() {
     cd "$srcdir/walrs"
