@@ -19,7 +19,7 @@ source=("git+https://github.com/andrew-ld/lutris-gamepad-ui"
 sha256sums=('SKIP'
             '61cf30e80ec121eb5264348eae77cccff4a534a7c35fe88a1782879b1e3643a7'
             '7f21e37b1eb918ebd191b23de176e568e7b73e7ac82ddf89668e35908588238e'
-            'a9656794d79c9a24e2d4a28c515087e49f7f2d12bee3b675543dd341e8e46ef5')
+            '9bbde389dcd202502c1ac224a1833be2bab83e095873327afa36cd8afd2ac566')
 
 pkgver() {
     cd "$_pkgname"

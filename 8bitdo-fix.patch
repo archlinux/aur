@@ -1,20 +1,3 @@
-diff --git a/package.json b/package.json
-index b765861..4d86959 100644
---- a/package.json
-+++ b/package.json
-@@ -14,9 +14,9 @@
-   "scripts": {
-     "dev": "vite",
-     "start": "IS_DEV=1 concurrently \"npm run dev\" \"npm run electron:dev\"",
--    "start:prod": "npm run build:vite && electron37 electron.cjs",
--    "start:prod-wayland": "npm run build:vite && electron37 electron.cjs --ozone-platform=wayland",
--    "start:prod-steamdeck": "npm run build:vite && gamescope -W 1280 -w 1280 -H 800 -h 800 -- electron37 electron.cjs",
-+    "start:prod": "npm run build:vite && electron electron.cjs",
-+    "start:prod-wayland": "npm run build:vite && electron electron.cjs --ozone-platform=wayland",
-+    "start:prod-steamdeck": "npm run build:vite && gamescope -W 1280 -w 1280 -H 800 -h 800 -- electron electron.cjs",
-     "build": "vite build && npm run electron:build",
-     "build:vite": "vite build",
-     "preview": "vite preview",
 diff --git a/src_frontend/contexts/InputContext.jsx b/src_frontend/contexts/InputContext.jsx
 index f01df1c..6e2fdda 100644
 --- a/src_frontend/contexts/InputContext.jsx
@@ -43,12 +26,12 @@ index f01df1c..6e2fdda 100644
  
 +const applyDpadAxes = (gp, buttons) => {
 +  if (gp.axes[6] !== undefined) {
-+    if (gp.axes[6] <= -0.5) buttons[14] = true; // LEFT
-+    if (gp.axes[6] >= 0.5) buttons[15] = true;  // RIGHT
++    buttons[14] = gp.axes[6] <= -0.5; // LEFT
++    buttons[15] = gp.axes[6] >= 0.5;  // RIGHT
 +  }
 +  if (gp.axes[7] !== undefined) {
-+    if (gp.axes[7] <= -0.5) buttons[12] = true; // UP
-+    if (gp.axes[7] >= 0.5) buttons[13] = true;  // DOWN
++    buttons[12] = gp.axes[7] <= -0.5; // UP
++    buttons[13] = gp.axes[7] >= 0.5;  // DOWN
 +  }
 +};
 +
