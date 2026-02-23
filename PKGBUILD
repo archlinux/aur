@@ -1,7 +1,7 @@
 # Maintainer: Robert Olejnik <robert [/.at./] teonite.com>
 pkgname=defguard-client
 pkgsrc=defguard-client
-pkgver=1.6.5
+pkgver=1.6.6
 pkgrel=6
 pkgdesc="Defguard VPN Multi-Factor Authentication Desktop Client"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom')
 depends=('desktop-file-utils' 'gtk3' 'hicolor-icon-theme' 'libayatana-appindicator'  'libsoup'  'pango'  'webkit2gtk-4.1' 'systemd-resolvconf')
 source_x86_64=(https://github.com/DefGuard/client/releases/download/v${pkgver}/defguard-client_${pkgver}_amd64.deb)
 # Update to actual SHA sum of package
-sha256sums_x86_64=('eefd2e1e2efaee7a0c532a6889e8ba7c8fc556c9bc799bf35c8bbebb9c517f28')
+sha256sums_x86_64=('85dc91dc411791e9b6bf8692b8a2bded46f7aa1ceed42b8124b145566146314a')
 install=defguard-client.install
 
 package() {
