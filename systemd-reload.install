@@ -1,0 +1,20 @@
+universal-systemd-reload() {
+	systemctl daemon-reload
+	for user in $(users | cut --delimiter=' ' --fields='1-' --output-delimiter='
+' | sort | uniq); do
+		systemctl --machine=${user}@.host --user daemon-reload
+	done
+}
+
+
+post_install() {
+	universal-systemd-reload
+}
+
+post_upgrade() {
+	universal-systemd-reload
+}
+
+post_remove() {
+	universal-systemd-reload
+}
