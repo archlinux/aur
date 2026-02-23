@@ -1,7 +1,7 @@
 # Maintainer: Benoit Brummer (Trougnouf) <trougnouf@gmail.com>
 pkgname=cfait-git
 _pkgname=cfait
-pkgver=rolling.r0.g686a847
+pkgver=612.b286040.rolling
 pkgrel=1
 pkgdesc="Powerful, fast and elegant task / TODO manager. (GUI & TUI, CalDAV & local, git version)"
 arch=('x86_64')
@@ -18,8 +18,15 @@ provides=('cfait-tui' 'cfait-gui' "$_pkgname")
 
 pkgver() {
   cd "$_pkgname"
-  # Creates a version string like: 0.1.5.r1.g0e4952c
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  # Get the commit hash and count
+  local commit_hash=$(git rev-parse --short HEAD)
+  local commit_count=$(git rev-list --count HEAD)
+  # Get the latest tag (if any)
+  local latest_tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "rolling")
+
+  # Format: <commit_count>.<commit_hash>.<tag>
+  # If no tag, use "rolling" as the tag
+  echo "$commit_count.$commit_hash.${latest_tag#v}"
 }
 
 build() {
