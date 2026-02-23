@@ -1,12 +1,12 @@
 # Maintainer: ticnoo <ticnoomail@gmail.com>
 pkgname=expressvpn-waybar-bin
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Waybar custom module to monitor and toggle ExpressVPN"
 arch=('x86_64')
 url="https://github.com/ticnoo/expressvpn-waybar"
 license=('MIT')
-depends=('expressvpn')
+depends=('expressvpn>=5.0.0')
 provides=('expressvpn-waybar')
 conflicts=('expressvpn-waybar')
 source=("expressvpn-waybar-${pkgver}::https://github.com/ticnoo/expressvpn-waybar/releases/download/${pkgver}/expressvpn-waybar")
