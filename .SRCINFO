@@ -1,27 +1,18 @@
-pkgbase = libtorch-cxx11abi
-	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration (with CXX11 ABI)
-	pkgver = 2.6.0
+pkgbase = libtorch-cpu
+	pkgdesc = PyTorch but C++ as an isolated folder
+	pkgver = 2.10.0
 	pkgrel = 1
-	url = https://pytorch.org
+	url = https://docs.pytorch.org/cppdocs/installing.html
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	depends = pybind11
-	options = !strip
+	provides = libtorch=2.10.0
+	conflicts = libtorch
+	replaces = libtorch-cxx11abi-cpu
 	options = !debug
-	options = libtool
-	options = staticlibs
+	source = https://download.pytorch.org/libtorch/cpu/libtorch-shared-with-deps-2.10.0%2Bcpu.zip
+	source = https://github.com/pytorch/pytorch/raw/refs/tags/v2.10.0/LICENSE
+	sha256sums = c5bf8efda9224a2d971b19d1ef6cf3ba6fee8ab53e69c49427db003d1d300496
+	sha256sums = bd018feef8825e88181c84eb7e3aa4eafb8f08a20d9fd6ef948569610c4a3e43
 
-pkgname = libtorch-cxx11abi-cuda
-	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration (with CXX11 ABI) (with CUDA support)
-	depends = pybind11
-	provides = libtorch-cxx11abi-cuda
-
-pkgname = libtorch-cxx11abi-rocm
-	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration (with CXX11 ABI) (with ROCM support)
-	depends = pybind11
-	provides = libtorch-cxx11abi-rocm
-
-pkgname = libtorch-cxx11abi-cpu
-	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration (with CXX11 ABI) (CPU only)
-	depends = pybind11
-	provides = libtorch-cxx11abi-cpu
+pkgname = libtorch-cpu

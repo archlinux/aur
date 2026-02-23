@@ -1,63 +1,29 @@
-# Maintainer: Zhirui Dai <daizhirui at hotmail dot com>
-
-_pkgname=libtorch
-pkgbase=libtorch-cxx11abi
-pkgname=(
-    libtorch-cxx11abi-cuda
-    libtorch-cxx11abi-rocm
-    libtorch-cxx11abi-cpu
-)
-
-pkgver="2.6.0"
-_cuda_version="cu126"
-_rocm_version="rocm6.2.4"
+# Maintainer: Aaron Liu
+# Contributor: Zhirui Dai <daizhirui at hotmail dot com>
+pkgname=libtorch-cpu
+pkgver="2.10.0"
 pkgrel=1
-_pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration (with CXX11 ABI)"
-pkgdesc="${_pkgdesc}"
+pkgdesc="PyTorch but C++ as an isolated folder"
 arch=('x86_64')
-url="https://pytorch.org"
-license=('BSD')
+url='https://docs.pytorch.org/cppdocs/installing.html'
+license=('BSD-3-Clause')
 depends=(pybind11)
 makedepends=()
-source=()
-sha256sums=()
-options=('!strip' '!debug' 'libtool' 'staticlibs')
+replaces=(libtorch-cxx11abi-cpu)
+provides=("libtorch=${pkgver}")
+conflicts=(libtorch)
+source=("https://download.pytorch.org/libtorch/cpu/libtorch-shared-with-deps-${pkgver}%2Bcpu.zip"
+	"https://github.com/pytorch/pytorch/raw/refs/tags/v$pkgver/LICENSE")
+sha256sums=('c5bf8efda9224a2d971b19d1ef6cf3ba6fee8ab53e69c49427db003d1d300496'
+            'bd018feef8825e88181c84eb7e3aa4eafb8f08a20d9fd6ef948569610c4a3e43')
+options=('!debug')
 
-package_libtorch-cxx11abi-cuda() {
-    pkgdesc="${_pkgdesc} (with CUDA support)"
-    provides=("libtorch-cxx11abi-cuda")
-    depends=(pybind11)
-    cd ${srcdir}
-    wget https://download.pytorch.org/libtorch/${_cuda_version}/libtorch-cxx11-abi-shared-with-deps-${pkgver}%2B${_cuda_version}.zip -O ${_pkgname}-${pkgver}-cuda.zip
-    install -vdm755 "${pkgdir}/opt"
-    cd ${pkgdir}/opt
-    bsdtar -xv -f "${srcdir}/${_pkgname}-${pkgver}-cuda.zip"
-    rm -rf ${_pkgname}/include/pybind11
-    mv ${_pkgname} ${_pkgname}-cuda
+prepare() {
+	rm -r libtorch/include/pybind11
 }
 
-package_libtorch-cxx11abi-rocm() {
-    pkgdesc="${_pkgdesc} (with ROCM support)"
-    provides=("libtorch-cxx11abi-rocm")
-    depends=(pybind11)
-    cd ${srcdir}
-    wget https://download.pytorch.org/libtorch/${_rocm_version}/libtorch-cxx11-abi-shared-with-deps-${pkgver}%2B${_rocm_version}.zip -O ${_pkgname}-${pkgver}-rocm.zip
-    install -vdm755 "${pkgdir}/opt"
-    cd ${pkgdir}/opt
-    bsdtar -xv -f "${srcdir}/${_pkgname}-${pkgver}-rocm.zip"
-    rm -rf ${_pkgname}/include/pybind11
-    mv ${_pkgname} ${_pkgname}-rocm
-}
-
-package_libtorch-cxx11abi-cpu() {
-    pkgdesc="${_pkgdesc} (CPU only)"
-    provides=("libtorch-cxx11abi-cpu")
-    depends=(pybind11)
-    cd ${srcdir}
-    wget https://download.pytorch.org/libtorch/cpu/libtorch-cxx11-abi-shared-with-deps-${pkgver}%2Bcpu.zip -O ${_pkgname}-${pkgver}-cpu.zip
-    install -vdm755 "${pkgdir}/opt"
-    cd ${pkgdir}/opt
-    bsdtar -xv -f "${srcdir}/${_pkgname}-${pkgver}-cpu.zip"
-    rm -rf ${_pkgname}/include/pybind11
-    mv ${_pkgname} ${_pkgname}-cpu
+package() {
+    install -dm755 "${pkgdir}/opt"
+    mv libtorch "${pkgdir}/opt/libtorch"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/libtorch/LICENSE"
 }
