@@ -1,10 +1,10 @@
 # Maintainer: Kimiblock Moe
 pkgname=netsock
 epoch=1
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 epoch=
-pkgdesc="Per-app firewall"
+pkgdesc="Per-app firewall for the Portable sandbox"
 arch=('x86_64' 'aarch64' 'loongarch64')
 url="https://github.com/Kimiblock/netsock"
 license=(GPL-3.0-or-later)
@@ -27,7 +27,7 @@ checkdepends=()
 
 source=(source::git+https://github.com/Kimiblock/netsock.git#tag=${pkgver})
 
-md5sums=('SKIP')
+md5sums=('9f7febc73783054b1bd05f4cbf548ffe')
 
 function prepare() {
 	cd source
@@ -55,4 +55,5 @@ function package() {
 	cd "${srcdir}/source"
 	install -vDm755 top.kimiblock.netsock "${pkgdir}/usr/bin/netsock"
 	install -vDm644 netsock.service -t "${pkgdir}/usr/lib/systemd/system"
+	install -vDm644 netsock.socket -t "${pkgdir}/usr/lib/systemd/system"
 }
