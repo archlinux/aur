@@ -1,7 +1,7 @@
 # Maintainer: Soapton <soapton@planarally.local>
 pkgname=planarally-bin
 pkgver=2026.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="PlanarAlly v${pkgver} - tabletop companion for virtual tabletops"
 arch=('x86_64')
 url='https://www.planarally.io'
