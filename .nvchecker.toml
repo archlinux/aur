@@ -1,0 +1,4 @@
+[gnome-tuner-glts]
+source = "git"
+git = "https://altlinux.space/alt-gnome/TunerGLTS.git"
+prefix = "v"
