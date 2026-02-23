@@ -1,13 +1,13 @@
 # Maintainer: celenity <celenity@celenity.dev>
 pkgname=phoenix-flatpak
-pkgver=202602161
+pkgver=202602231
 pkgrel=1
 pkgdesc="Phoenix is a suite of configurations & advanced modifications for Mozilla Firefox, designed to put the user first - with a focus on privacy, security, freedom, & usability."
 arch=(any)
 license=('GPL-3.0-or-later')
 url="https://phoenix.celenity.dev"
-source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Phoenix/-/raw/f668d431a8fe461f04f572b6e95865528b5e00a1/archives/phoenix-flatpak.zip")
-sha512sums=('fe256e772457e0efba8ccfb6b0646050ce374939743fb0df37476caa91fdc6c18651fa2c4f5231332f4000939be6454b0ce17af5c7ff909be73985e12c11958f')
+source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Phoenix/-/raw/4514418a570603f7ae0670ad1f42371345ffff45/archives/phoenix-flatpak.zip")
+sha512sums=('4ec30a46430969d1f475c6b5da62c927421ea015ba01697dce1bca0364036b17d4042d03408f961fbe915b8d93c43b06617c0803b31b6bb3546290cd420c1dcf')
 makedepends=('unzip')
 
 pkgver() {
