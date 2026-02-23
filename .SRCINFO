@@ -1,0 +1,16 @@
+pkgbase = remountd
+	pkgdesc = Daemon to remount preconfigured mount points ro/rw; from an unprivileged client.
+	pkgver = r82.e5bb0d7
+	pkgrel = 1
+	url = https://github.com/CarloWood/remountd.git
+	install = remountd.install
+	arch = x86_64
+	license = MIT
+	depends = systemd-libs
+	options = !debug
+	backup = etc/remountd/config.yaml
+	source = remountd::git+https://github.com/CarloWood/remountd.git
+	source = remountd.install
+	sha256sums = SKIP
+
+pkgname = remountd
