@@ -1,0 +1,15 @@
+pkgbase = maskprocessor-git
+	pkgdesc = High-Performance word generator with a per-position configurable charset
+	pkgver = 0.73.r22.g9c33ab2
+	pkgrel = 1
+	url = https://github.com/hashcat/maskprocessor
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	provides = maskprocessor=0.73.r22.g9c33ab2
+	conflicts = maskprocessor
+	source = git+https://github.com/hashcat/maskprocessor
+	sha256sums = SKIP
+
+pkgname = maskprocessor-git
