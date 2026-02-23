@@ -1,0 +1,33 @@
+pkgbase = rdc-cli
+	pkgdesc = Unix-friendly CLI for RenderDoc .rdc captures
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/BANANASJIM/rdc-cli
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pcre
+	depends = python
+	depends = python-click
+	depends = python-pillow
+	depends = python-numpy
+	depends = libx11
+	depends = libxcb
+	depends = xcb-util-keysyms
+	optdepends = python-rich: colored output support
+	provides = rdc-cli
+	conflicts = rdc-cli-git
+	source = rdc-cli-0.3.0.tar.gz::https://github.com/BANANASJIM/rdc-cli/archive/refs/tags/v0.3.0.tar.gz
+	source = git+https://github.com/baldurk/renderdoc.git#tag=v1.41
+	source = renderdoc-swig::https://github.com/baldurk/swig/archive/renderdoc-modified-7.zip
+	sha256sums = 01d6c7445af3aad0a044862f8ac7f47ff6818af6d2e9f7ae377b96f167f944e7
+	sha256sums = SKIP
+	sha256sums = 9d7e5013ada6c42ec95ab167a34db52c1cc8c09b89c8e9373631b1f10596c648
+
+pkgname = rdc-cli
