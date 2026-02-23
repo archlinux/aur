@@ -12,6 +12,7 @@ pkgbase = judoshiai
 	depends = libpng
 	depends = libjpeg
 	depends = libxml2
+	depends = lua54
 	source = judoshiai-latest.deb::https://sourceforge.net/projects/judoshiai/files/latest/download
 	sha256sums = SKIP
 
