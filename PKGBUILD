@@ -2,7 +2,7 @@
 
 pkgname=python-tibber
 _name=pyTibber
-pkgver=0.35.0
+pkgver=0.36.0
 pkgrel=1
 pkgdesc='Python3 library for Tibber'
 arch=(any)
@@ -19,7 +19,7 @@ makedepends=(
     python-setuptools
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('644d92aa00a1802069ff239af8c3a91dbe8697e92a77b227ad82e52f1652649f')
+sha256sums=('89176db79a9b92ebf8586c73d6d124c75ff2eb01a219056d9c7fe10c9fd039ec')
 
 build() {
     cd "$_name-$pkgver"
