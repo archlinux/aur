@@ -3,7 +3,7 @@
 replaces=('pepper')
 pkgname=crown
 pkgver=0.61.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A complete and cross-platform game engine designed for flexibility, performance, and fast-iterations."
 arch=(x86_64)
 url="https://www.crownengine.org"
@@ -25,15 +25,15 @@ options=('!strip')
 
 package() {
     install -d "$pkgdir"/opt
-    cp -r $pkgname-$pkgver $pkgdir/opt/$pkgname
+    cp -r $pkgname-$pkgver-linux-x64 $pkgdir/opt/$pkgname
 
     # Launcher.
     install -D -m755 crown.sh "${pkgdir}/usr/bin/crown"
 
     # License.
-    install -D -m644 $pkgname-$pkgver/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 $pkgname-$pkgver-linux-x64/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     # .desktop and icons.
-    install -D -m644 $pkgname-$pkgver/org.crownengine.Crown.desktop "${pkgdir}/usr/share/applications/org.crownengine.Crown.desktop"
-    install -D -m644 $pkgname-$pkgver/org.crownengine.Crown.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/org.crownengine.Crown.svg"
+    install -D -m644 $pkgname-$pkgver-linux-x64/org.crownengine.Crown.desktop "${pkgdir}/usr/share/applications/org.crownengine.Crown.desktop"
+    install -D -m644 $pkgname-$pkgver-linux-x64/org.crownengine.Crown.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/org.crownengine.Crown.svg"
 }
