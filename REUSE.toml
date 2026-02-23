@@ -21,6 +21,7 @@ path = [
     "*.desktop",
     "*.hook",
     "fetch-chromium-release",
+    "enable-widevine-arm64.patch",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"

@@ -5,10 +5,10 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=145.0.7632.109
+pkgver=145.0.7632.116
 pkgrel=1
 _launcher_ver=8
-_manual_clone=0
+_manual_clone=1
 _system_clang=1
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('x86_64')
@@ -36,7 +36,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         increase-fortify-level.patch
         enable-widevine-arm64.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('4b9460a4c852b824dbd3c6de00948fe97b760e89ac56c62b5e28f8581a5c1690'
+sha256sums=('2e2f36e3cd1ebc4ad57fd310774a5e5e9db77883d5f9374fedeaabd3c103b819'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e'
             '4fc040a0656a0a524dd8ad090cd129fc5b6cb21adcc66be82080165789e8c13e'
@@ -168,6 +168,11 @@ prepare() {
 
   ./build/linux/unbundle/replace_gn_files.py \
     --system-libraries "${!_system_libs[@]}"
+
+  # Generate missing header
+  python3 build/util/lastchange.py -m DAWN_COMMIT_HASH \
+    -s third_party/dawn --revision gpu/webgpu/DAWN_VERSION \
+    --header gpu/webgpu/dawn_commit_hash.h
 }
 
 build() {
