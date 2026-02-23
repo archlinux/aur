@@ -12,10 +12,10 @@ provides=('Slacko')
 conflicts=('Slacko')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/m96-chan/Slacko/releases/download/v${pkgver}/Slacko_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('887501ed47d74aff5f0faee6263c8074335d2b8d3b6e1ce3340f76d2d4073c5a')
+sha256sums_aarch64=('f994c29cffa227c6e8b84747ba363b3420546174b2292d7de881a9ae4a86484e')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/m96-chan/Slacko/releases/download/v${pkgver}/Slacko_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('d86845e88bfb7c2bfee4a379efeded8611d9160e4a03a82f22e4f9176d15bd26')
+sha256sums_x86_64=('94490c88429fdf6a8295842e33430723007e96e1f256db25733532c6d188e533')
 
 package() {
   install -Dm755 slacko "${pkgdir}/usr/bin/slacko"
