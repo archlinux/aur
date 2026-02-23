@@ -1,14 +1,14 @@
 pkgbase = golangci-lint-langserver-bin
 	pkgdesc = golangci-lint language server
-	pkgver = 0.0.11
-	pkgrel = 3
+	pkgver = 0.0.12
+	pkgrel = 1
 	url = https://github.com/nametake/golangci-lint-langserver
 	arch = x86_64
 	license = MIT
 	provides = golangci-lint-langserver
 	conflicts = golangci-lint-langserver
 	options = !strip
-	source = golangci-lint-langserver-bin-0.0.11.tar.gz::https://github.com/nametake/golangci-lint-langserver/releases/download/v0.0.11/golangci-lint-langserver_linux_x86_64.tar.gz
-	sha256sums = b4efa95267c29ca4d08e0a977e90e7c6a8a606bafe1dcedfd5e48e952536b331
+	source = golangci-lint-langserver-bin-0.0.12.tar.gz::https://github.com/nametake/golangci-lint-langserver/releases/download/v0.0.12/golangci-lint-langserver_linux_x86_64.tar.gz
+	sha256sums = 7c4a200f34af3de4188a792ba676994ce5fdb181dd4731e10cd3cc501e722b28
 
 pkgname = golangci-lint-langserver-bin
