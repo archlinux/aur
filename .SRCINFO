@@ -1,0 +1,14 @@
+pkgbase = crql-anina
+	pkgdesc = Free VST3 and CLAP spectral resonance suppression by CRQL
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://crql.works/anina
+	arch = x86_64
+	groups = pro-audio
+	groups = vst3-plugins
+	groups = clap-plugins
+	license = custom:proprietary
+	source = crql-anina-1.0.0.zip::https://api.crql.works/download/anina/linux/latest
+	sha256sums = e26ac77da4682868d48427c2bd27c303f54101be3edf49115e7c5af0f1c48360
+
+pkgname = crql-anina
