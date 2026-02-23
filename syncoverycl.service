@@ -1,0 +1,14 @@
+[Unit]
+Description=Syncovery Scheduler Service
+Documentation=https://www.syncovery.com/download/linux/
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/lib/Syncovery/SyncoveryCL start
+Restart=always
+RestartSec=5
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target

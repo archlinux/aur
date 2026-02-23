@@ -1,0 +1,15 @@
+pkgbase = syncovery
+	pkgdesc = Syncovery File Synchronization Tool
+	pkgver = 11.12.13
+	pkgrel = 2
+	url = https://www.syncovery.com
+	arch = x86_64
+	license = custom
+	makedepends = curl
+	makedepends = libarchive
+	depends = glibc
+	depends = gcc-libs
+	source = syncoverycl.service
+	sha256sums = SKIP
+
+pkgname = syncovery
