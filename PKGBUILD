@@ -1,5 +1,5 @@
 pkgname=sound_themer
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="A program to play sounds from a selected sound theme."
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('wireplumber' 'sound-theme-freedesktop')
 makedepends=('cargo' 'git')
 install=sound_themer.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8066f8b18f5b3925901ee6898537ece596d5c2814c77a2a16be44fb053057123')
+sha256sums=('174685d7927d5347c99b3cb43e0bdc7d45482fd4e1628e4724bb13c779907878')
 
 build() {
 	cd "$pkgname-$pkgver"
