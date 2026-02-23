@@ -1,6 +1,6 @@
 # Maintainer: Dylan Marcano <nxusdev@protonmail.com>
 pkgname=goxe-bin
-pkgver=1.3.6
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Is a log reduction tool that normalizes, filters, and aggregates repeated messages to reduce noise and storage."
 arch=('x86_64' 'aarch64')
