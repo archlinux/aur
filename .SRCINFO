@@ -1,6 +1,6 @@
 pkgbase = safe-discover
 	pkgdesc = Kirigami-based package management GUI for Arch Linux (pacman, AUR, Flatpak, fwupd)
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/kinncj/Safe-Discover
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = safe-discover
 	optdepends = flatpak: Flatpak application support
 	optdepends = fwupd: Firmware update support
 	optdepends = konsole: Terminal execution mode for AUR builds
-	source = safe-discover-0.2.0.tar.gz::https://github.com/kinncj/Safe-Discover/archive/refs/tags/v0.2.0.tar.gz
+	source = safe-discover-0.2.1.tar.gz::https://github.com/kinncj/Safe-Discover/archive/refs/tags/v0.2.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = safe-discover
