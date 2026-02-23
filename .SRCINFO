@@ -1,14 +1,14 @@
 pkgbase = oniux
 	pkgdesc = Isolate applications over Tor using Linux namespaces
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.torproject.org/tpo/core/oniux
 	arch = x86_64
 	license = MIT OR Apache-2.0
 	makedepends = cargo
 	makedepends = git
-	depends = gcc-libs
 	depends = glibc
+	depends = libgcc
 	options = !lto
 	source = git+https://gitlab.torproject.org/tpo/core/oniux.git#tag=v0.8.1?signed
 	validpgpkeys = 772628464C6E8F56DBB5ACEC4CBE96203A1A78A7
