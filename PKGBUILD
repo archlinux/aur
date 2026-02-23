@@ -37,14 +37,5 @@ EOL
   install -Dm755 planarally "$pkgdir/usr/bin/planarally"
 }
 sha256sums=('bc73bfc68b8e5bdfe1c5d8ab7165a8171ab48c7a7ece34aede7827a501e00e80')
-echo "run this: yay -S planarally-bin
-cd /usr/lib/planarally/server && git init
-pip install redmail --break-system-packages --user
-planarally
-"
-run this: yay -S planarally-bin
-cd /usr/lib/planarally/server && git init
-pip install redmail --break-system-packages --user
-planarally
 
 sha256sums=('bc73bfc68b8e5bdfe1c5d8ab7165a8171ab48c7a7ece34aede7827a501e00e80')
