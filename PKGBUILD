@@ -2,7 +2,7 @@
 # Maintainer: ingitdb <hello@ingitdb.com>
 
 pkgname='ingitdb-bin'
-pkgver=0.18.8
+pkgver=0.21.0
 pkgrel=1
 pkgdesc='ingitdb – a CLI for a developer-grade, schema-validated, AI-native database whose storage engine is a Git repository.'
 url='https://ingitdb.com'
@@ -12,10 +12,10 @@ provides=('ingitdb')
 conflicts=('ingitdb')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ingitdb/ingitdb-cli/releases/download/v${pkgver}/ingitdb_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('7650c29a3a0b64980ff5e264c5c9769751cfcd82f7e95a89b5d71eded0bc85a4')
+sha256sums_aarch64=('701da3288146467da3027f1f8f0bbfdc130e6f803cbf7a66426cd822591a0d3a')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ingitdb/ingitdb-cli/releases/download/v${pkgver}/ingitdb_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('696bd87ac15013fca2227c0fce7534b070c79215459256c886a2665f52e521ae')
+sha256sums_x86_64=('55826dd5cacd2ee5f7942e3fb0b585f0697c33df12d880b1ab0225c6672c1375')
 
 package() {
   install -Dm755 "./ingitdb" "${pkgdir}/usr/bin/ingitdb"
