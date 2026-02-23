@@ -6,6 +6,7 @@ pkgbase = planarally-bin
 	arch = x86_64
 	license = MIT
 	makedepends = npm
+	makedepends = python-virtualvenv
 	depends = python-aiohttp
 	depends = python-bcrypt
 	depends = python-cryptography

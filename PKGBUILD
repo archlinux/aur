@@ -14,29 +14,23 @@ depends=(
   'nodejs' 'npm' 'git'
 )
 
-makedepends=('npm')
+makedepends=('npm' 'python-virtualvenv')
 
 source=("https://github.com/Kruptein/PlanarAlly/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('bc73bfc68b8e5bdfe1c5d8ab7165a8171ab48c7a7ece34aede7827a501e00e80')
 
 package() {
-  cd PlanarAlly-${pkgver}
+  cd "$srcdir/PlanarAlly-$pkgver"
   
+  install -Dm755 planarally.py "$pkgdir/usr/lib/planarally/server"
   install -dm755 "$pkgdir/usr/lib/planarally/server"
   cp -r server/* "$pkgdir/usr/lib/planarally/server/"
-  
+  cd "$pkgdir/usr/lib/planarally/server"
   install -dm755 "$pkgdir/usr/lib/planarally/server"/{static/assets,static/fonts,config,templates}
   
-  curl -sL "https://raw.githubusercontent.com/Kruptein/PlanarAlly/v${pkgver}/server/templates/index.html" | \
-  install -m644 /dev/stdin "$pkgdir/usr/lib/planarally/server/templates/index.html"
-  
-  cat > planarally << 'EOL'
-#!/bin/bash
-cd /usr/lib/planarally/server && python planarally.py "\$@"
-EOL
-  install -Dm755 planarally "$pkgdir/usr/bin/planarally"
-}
-sha256sums=('bc73bfc68b8e5bdfe1c5d8ab7165a8171ab48c7a7ece34aede7827a501e00e80')
+  python -m venv venv
+  source venv/bin/activate
+  pip install -r requirements.txt
 
-sha256sums=('bc73bfc68b8e5bdfe1c5d8ab7165a8171ab48c7a7ece34aede7827a501e00e80')
-sha256sums=('bc73bfc68b8e5bdfe1c5d8ab7165a8171ab48c7a7ece34aede7827a501e00e80')
+  chmod +x "$pkgdir/usr/bin/planarally"
+}
