@@ -10,7 +10,7 @@ license=('LGPL')
 depends=('cairo' 'dconf' 'fontconfig' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gnome-desktop-4' 'graphene' 'gtk4' 'libadwaita' 'libx11' 'nautilus' 'xdg-desktop-portal' 'xdg-desktop-portal-gtk')
 makedepends=('git' 'meson' 'glib2-devel')
 conflicts=('xdg-desktop-portal-gnome')
-source=("git+$url")
+source=("git+$url#tag=$pkgver")
 sha256sums=('SKIP')
 
 build() {
@@ -21,5 +21,5 @@ build() {
 
 package() {
 	cd "$srcdir/xdg-desktop-portal-adw"
-	sudo meson install -C build
+	meson install -C build --destdir "$pkgdir"
 }

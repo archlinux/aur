@@ -24,7 +24,7 @@ pkgbase = xdg-desktop-portal-adw
 	depends = xdg-desktop-portal
 	depends = xdg-desktop-portal-gtk
 	conflicts = xdg-desktop-portal-gnome
-	source = git+https://github.com/PrincParshia/xdg-desktop-portal-adw
+	source = git+https://github.com/PrincParshia/xdg-desktop-portal-adw#tag=1.0.2
 	sha256sums = SKIP
 
 pkgname = xdg-desktop-portal-adw
