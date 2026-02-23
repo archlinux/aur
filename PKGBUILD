@@ -2,10 +2,10 @@
 
 pkgname=walrs-git
 pkgver=1.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate colorscheme from image"
 arch=('x86_64' 'aarch64')
-url="https://pixelll.is-a.dev/tools/walrs"
+url="https://pi66.xyz/tools/walrs"
 license=('GPL3')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo' 'git' 'make')
