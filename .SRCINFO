@@ -1,5 +1,5 @@
 pkgbase = bin-cpuflags-x86-git
-	pkgdesc = A small CLI tool to detect CPU flags (instruction sets) of X86 binaries
+	pkgdesc = A small CLI tool to detect CPU flags (instruction sets) of X86 binaries (git)
 	pkgver = 1.0.8.r0.g4c2a7c5
 	pkgrel = 1
 	url = https://github.com/HanabishiRecca/bin-cpuflags-x86
