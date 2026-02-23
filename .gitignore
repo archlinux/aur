@@ -1,4 +1,4 @@
 /pkg
 /src
-/arch-update-*-any.pkg.tar.zst
-/arch-update-*.tar.gz
+/arch-upgrader-*-any.pkg.tar.zst
+/arch-upgrader-*.tar.gz
