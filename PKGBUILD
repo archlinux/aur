@@ -1,8 +1,8 @@
 # Maintainer: Ben 'silentnoodle' Lönnqvist <silentnoodle at cock dot li>
 pkgname=planarally-bin
-pkgver=2022.2.2
+pkgver=2026.1.2
 pkgrel=1
-pkgdesc='A companion tool for when you travel into the planes.'
+pkgdesc="PlanarAlly v${pkgver} - companion tool for when you travel into the planes."
 arch=('x86_64')
 url='https://www.planarally.io'
 license=('MIT')
@@ -21,28 +21,28 @@ depends=(
   'python-typing_extensions'
 )
 makedepends=('npm')
-
-makedepends=()
-source=("https://github.com/Kruptein/PlanarAlly/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz" planarally.service planarally.sysusers planarally.tmpfiles)
-
-sha256sums=('a0995afcd8a07ddf3fc88efff42162470d0c288595e63566eb064502eb5bbc3d'
-            'f3b1af046393e61b4fd56f80a7e6cc7f468681df798da1539da8db1560d7eb90'
-            '1e3912e31bf07de8311b6558562929b6aa8fad514e9b7c3addce495886813d2d'
-            '2e06a0ed7b220a1ffedc5d836bfba824785180841a7b121def0a52cf91f0d535')
+source=("https://github.com/Kruptein/PlanarAlly/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('SKIP')
 
 prepare() {
-  cd "$srcdir/server"
-  #sed -i '1s;^;#!/usr/bin/env python3\n;' planarserver.py
+  cd PlanarAlly-${pkgver}
 }
 
 package() {
-  install -dm655 "$pkgdir/usr/bin"
-  install -dm655 "$pkgdir/opt/planarally"
-  install -Dm 644 planarally.service -t "$pkgdir/usr/lib/systemd/system/"
-  install -Dm 644 planarally.sysusers "$pkgdir/usr/lib/sysusers.d/planarally.conf"
-  install -Dm 644 planarally.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/planarally.conf"
-  cp -dr --no-preserve='ownership' server "$pkgdir/opt/planarally/"
-  #chown -R planarally:planarally "$pkgdir/opt/planarally"
-  ln -s "/opt/planarally/server/planarserver.py" "$pkgdir/usr/bin/planarally"
+  cd PlanarAlly-${pkgver}
+  
+  # Install server files
+  install -dm755 "$pkgdir/usr/lib/planarally"
+  cp -r server client "$pkgdir/usr/lib/planarally/"
+  
+  # Main executable symlink (pick the entrypoint)
+  install -dm755 "$pkgdir/usr/bin"
+  ln -s /usr/lib/planarally/server/planarserver.py "$pkgdir/usr/bin/planarally"
+  
+  # License
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  
+  # Config example
+  install -Dm644 server/config.json.example "$pkgdir/usr/share/planarally/config.json.example" 2>/dev/null || true
 }
-
+sha256sums=('bc73bfc68b8e5bdfe1c5d8ab7165a8171ab48c7a7ece34aede7827a501e00e80')
