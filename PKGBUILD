@@ -3,7 +3,7 @@
 pkgname=arch-upgrader-git
 
 # Version
-pkgver=1.0.0.r0.g9c3aca4
+pkgver=1.0.2.r0.gc0c05b5
 pkgrel=1
 
 # Generic
