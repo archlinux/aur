@@ -22,4 +22,4 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Dracape/${pkgname}/arch
 b2sums=('0df386a86e2a13cd037bf0b2d24411ace392e0b973e686d29bc547243077b23409e14b0928323a9b9ada07ac27829d439fb28838e032acaef4202d865c8fd1e1')
 
 
-package() { "$pkgname-$pkgver"/install.fish --vendor --repository="$pkgname-$pkgver" --rootdir=${pkgdir}; }
+package() { "$pkgname-$pkgver"/install.fish --repository="$pkgname-$pkgver" --rootdir=${pkgdir}; }
