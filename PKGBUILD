@@ -9,8 +9,8 @@ license=('MIT')
 depends=('glibc')
 source_x86_64=("$pkgname-$pkgver-x86_64::$url/releases/download/v$pkgver/$pkgname-linux-amd64")
 source_aarch64=("$pkgname-$pkgver-aarch64::$url/releases/download/v$pkgver/$pkgname-linux-arm64")
-sha256sums_x86_64=('d34c8bb447341e30b7d77922795460ae0cbfee449ea7f6e2dd300241eea689a6')
-sha256sums_aarch64=('7d96df0385d4d7265a5f51d6073c5f8091c63847188607cf84f1ba29d4e02bd6')
+sha256sums_x86_64=('08a023e2b3425761ed9a1334bd84b322cc80c51d2bc2ea3624da5511803ca62f')
+sha256sums_aarch64=('a9856e63501a14d02a0b913ab333f2ea50218cd1700007d04be814ec8def7b4b')
 
 package() {
   install -Dm755 "$srcdir/$pkgname-$pkgver-$CARCH" "$pkgdir/usr/bin/$pkgname"
