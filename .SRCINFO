@@ -1,0 +1,20 @@
+pkgbase = lib32-romcheckfail-bin
+	pkgdesc = Carefully place a dozen arcade classics in a large mixing bowl. Add a dash of awesomesauce, cover the bowl, and allow the ingredients to ferment over three weeks. Uncover in a well ventilated area, then mash until loud and glitchy. Serve over the internet.
+	pkgver = 1.0
+	pkgrel = 2
+	arch = x86_64
+	license = custom:romcheckfail_eula
+	makedepends = libarchive
+	depends = lib32-sdl_mixer
+	depends = lib32-sdl=1.2.15
+	depends = lib32-libogg
+	depends = lib32-libvorbis
+	provides = romcheckfail
+	options = !debug
+	options = !strip
+	source = RomCheckFail.sh::https://web.archive.org/web/20210128143934if_/https://games.lastchancemedia.com/farbs/RomCheckFail.sh
+	source = RomCheckFail.desktop
+	sha256sums = ae2b94bde8941728cc670890ccfc6dc2fd6ee6b41a9e05fffb0dd6eec5b09e85
+	sha256sums = SKIP
+
+pkgname = lib32-romcheckfail-bin

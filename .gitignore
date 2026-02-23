@@ -1,0 +1,4 @@
+RomCheckFail.sh
+*.zst
+pkg
+src

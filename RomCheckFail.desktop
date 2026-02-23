@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=ROM CHECK FAIL
+Comment=Carefully place a dozen arcade classics in a large mixing bowl. Add a dash of awesomesauce, cover the bowl, and allow the ingredients to ferment over three weeks. Uncover in a well ventilated area, then mash until loud and glitchy. Serve over the internet.
+Path=/opt/romcheckfail
+Exec=/opt/romcheckfail/bin/RomCheckFail
+Icon=RomCheckFail
+Terminal=false
+Categories=Games;
