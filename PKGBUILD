@@ -3,9 +3,10 @@ provides=('romcheckfail')
 arch=('x86_64')
 pkgdesc='A swirling glitch-soup of classic videogames, reforming every 10 seconds into a new playable mass. Won the TIGSource VGNG competition and some very nice press.'
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 license=('custom:romcheckfail_eula')
 depends=('lib32-sdl_mixer' 'lib32-sdl=1.2.15' 'lib32-libogg' 'lib32-libvorbis')
+optdepends=('lib32-libpulse: PulseAudio output from game')
 makedepends=('libarchive')
 source=(
     "RomCheckFail.sh::https://web.archive.org/web/20210128143934if_/https://games.lastchancemedia.com/farbs/RomCheckFail.sh"

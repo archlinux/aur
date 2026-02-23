@@ -1,7 +1,7 @@
 pkgbase = lib32-romcheckfail-bin
 	pkgdesc = A swirling glitch-soup of classic videogames, reforming every 10 seconds into a new playable mass. Won the TIGSource VGNG competition and some very nice press.
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	arch = x86_64
 	license = custom:romcheckfail_eula
 	makedepends = libarchive
@@ -9,6 +9,7 @@ pkgbase = lib32-romcheckfail-bin
 	depends = lib32-sdl=1.2.15
 	depends = lib32-libogg
 	depends = lib32-libvorbis
+	optdepends = lib32-libpulse: PulseAudio output from game
 	provides = romcheckfail
 	options = !debug
 	options = !strip
