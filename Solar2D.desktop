@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Solar2D Simulator
+Comment=Solar2D Game Engine (Terminal Mode)
+Exec=solar2d
+Icon=solar2d
+Terminal=true
+Categories=Development;GameDevelopment;
