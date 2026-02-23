@@ -2,8 +2,8 @@
 
 pkgname=foondot
 pkgver=0.10.2
-pkgrel=1
-pkgdesc="A very simple dotfile sync utility written i Go."
+pkgrel=2
+pkgdesc="A very simple dotfile sync utility written in Go."
 url="https://github.com/foonly/${pkgname}"
 license=("GPL-2.0-or-later")
 arch=("x86_64")
