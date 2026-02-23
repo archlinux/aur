@@ -1,6 +1,6 @@
 pkgbase = limabean-harvest
 	pkgdesc = Beancount importer with transaction pairing across accounts
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/tesujimath/limabean-harvest
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = limabean-harvest
 	depends = java-runtime
 	depends = gcc-libs
 	depends = glibc
-	source = https://github.com/tesujimath/limabean-harvest/archive/0.2.2/limabean-harvest-0.2.2.tar.gz
-	sha256sums = 249203bac30a6228cc7e68442e575228d30ce8664a85d0137560b852a2b409b5
+	source = https://github.com/tesujimath/limabean-harvest/archive/0.2.3/limabean-harvest-0.2.3.tar.gz
+	sha256sums = 0b36afa10f3c6c895c482e94311e5426699732615394e68e0f3bb3f7a1b943fd
 
 pkgname = limabean-harvest

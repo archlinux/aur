@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=limabean-harvest
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='Beancount importer with transaction pairing across accounts '
 arch=(x86_64 i686)
@@ -15,7 +15,7 @@ makedepends=(cargo
              git)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('249203bac30a6228cc7e68442e575228d30ce8664a85d0137560b852a2b409b5')
+sha256sums=('0b36afa10f3c6c895c482e94311e5426699732615394e68e0f3bb3f7a1b943fd')
 
 prepare() {
 	cd "$_archive"
