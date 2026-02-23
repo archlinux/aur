@@ -1,0 +1,16 @@
+pkgbase = slacko-bin
+	pkgdesc = A lightweight, keyboard-driven TUI client for Slack
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/m96-chan/Slacko
+	license = MIT
+	conflicts = Slacko
+	provides = Slacko
+	arch = aarch64
+	source_aarch64 = https://github.com/m96-chan/Slacko/releases/download/v0.1.0/Slacko_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 5df6a7bd98aa19a89a5ed5ee510007e0ee8f38b931a016ad984d29e3e0c98cea
+	arch = x86_64
+	source_x86_64 = https://github.com/m96-chan/Slacko/releases/download/v0.1.0/Slacko_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 7ff0298fa87e5fd16692e6a9be0e3ad2bcf6303d797e97ec57c1edd34ec9bd3e
+	
+pkgname = slacko-bin
