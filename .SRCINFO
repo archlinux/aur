@@ -1,0 +1,14 @@
+pkgbase = plymouth-theme-nyancat
+	pkgdesc = Plymouth Theme for Nyancat
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/OmegaRogue/Nyan-Plymouth
+	install = plymouth-theme-nyancat.install
+	arch = any
+	license = All rights reserved
+	makedepends = git
+	depends = plymouth
+	source = git+https://github.com/OmegaRogue/Nyan-Plymouth.git
+	md5sums = SKIP
+
+pkgname = plymouth-theme-nyancat
