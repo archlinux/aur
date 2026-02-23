@@ -1,8 +1,8 @@
 pkgname=chibi-cli-git
 _pkgname=chibi-cli
-pkgver=1.2.0.59.g83dcec7
+pkgver=1.2.0.60.g977b4b0
 pkgrel=1
-pkgdesc="Chibi for AniList - A lightweight anime & manga tracker CLI app powered by AniList."
+pkgdesc="Chibi for AniList - A lightweight anime & manga tracker CLI app powered by AniList (Upstream GIT)."
 arch=('x86_64')
 url="https://chibi-cli.pages.dev/"
 git_url="https://github.com/CosmicPredator/chibi-cli"
