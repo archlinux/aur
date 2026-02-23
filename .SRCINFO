@@ -1,0 +1,20 @@
+pkgbase = nanoclaw-git
+	pkgdesc = AI-Native personal assistant for WhatsApp/Telegram with container isolation
+	pkgver = r181.226b520
+	pkgrel = 1
+	url = https://github.com/gavrielc/nanoclaw
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = nodejs>=20
+	depends = claude-code
+	depends = docker
+	depends = git
+	provides = nanoclaw
+	conflicts = nanoclaw
+	source = git+https://github.com/gavrielc/nanoclaw.git
+	source = nanoclaw.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = nanoclaw-git
