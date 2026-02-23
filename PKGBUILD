@@ -2,7 +2,7 @@
 
 pkgbase="matlab-gcc-meta"
 pkgver=R2025b
-pkgrel=2
+pkgrel=3
 pkgdesc="A high-level language for numerical computation and visualization"
 arch=(
   'any'
@@ -133,6 +133,7 @@ package_${_pkgname}() {
 
   install -vd \"\${pkgdir}/usr/bin\"
   ln -vsf 'gcc-${_gcc}' \"\${pkgdir}/usr/bin/gcc-matlab-${_release}\"
+  ln -vsf 'g++-${_gcc}' \"\${pkgdir}/usr/bin/g++-matlab-${_release}\"
 }"
   done
 done
