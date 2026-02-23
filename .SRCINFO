@@ -1,6 +1,6 @@
 pkgbase = goxe
 	pkgdesc = Is a log reduction tool that normalizes, filters, and aggregates repeated messages to reduce noise and storage.
-	pkgver = 1.3.6
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/DumbNoxx/Goxe
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = goxe
 	license = Apache-2.0
 	makedepends = go
 	options = !debug
-	source = goxe-1.3.6.tar.gz::https://github.com/DumbNoxx/Goxe/archive/v1.3.6.tar.gz
-	sha256sums = b5185b4d8f450e6279a8fe22cf05fc076675b3d8ceada1034217ee154c21acab
+	source = goxe-1.4.0.tar.gz::https://github.com/DumbNoxx/Goxe/archive/v1.4.0.tar.gz
+	sha256sums = ff3d57e1daf1b2920d22ce9990fbf08042aae2d7231a54ada160daf115d8e45f
 
 pkgname = goxe

@@ -1,6 +1,6 @@
 # Maintainer: Dylan Marcano <nxusdev@protonmail.com>
 pkgname=goxe
-pkgver=1.3.6
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Is a log reduction tool that normalizes, filters, and aggregates repeated messages to reduce noise and storage."
 arch=('x86_64' 'aarch64')
@@ -23,4 +23,4 @@ package() {
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
-sha256sums=('b5185b4d8f450e6279a8fe22cf05fc076675b3d8ceada1034217ee154c21acab')
+sha256sums=('ff3d57e1daf1b2920d22ce9990fbf08042aae2d7231a54ada160daf115d8e45f')
