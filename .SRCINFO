@@ -1,0 +1,15 @@
+pkgbase = python-cpmpy
+	pkgdesc = Constraint Programming and Modeling in Python
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://cpmpy.readthedocs.io/en/latest/
+	arch = any
+	license = GPL
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = python-cpmpy-0.10.0.tar.gz::https://github.com/CPMpy/cpmpy//archive/v0.10.0.tar.gz
+	sha256sums = 84e18ce7e9cdf045dd84332f79721f41e767aaf8e482ce9280f7cf3a60e388ab
+
+pkgname = python-cpmpy
