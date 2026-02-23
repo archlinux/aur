@@ -1,7 +1,7 @@
 # Maintainer: Sam Whited <sam@samwhited.com>
 
 pkgname="python-accesskit"
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="AccessKit bindings for Python."
 arch=('any')
@@ -10,10 +10,14 @@ license=('Apache-2.0' 'MIT')
 depends=(
     'python')
 makedepends=(
+  'python-build'
+  'python-installer'
+  'python-maturin'
+  'python-wheel'
   'rust'
-  'python-maturin')
+)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AccessKit/accesskit-python/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('f76cf837396079081511ee61e6c637ed12bee3b72ff395ddc0e2b7a46fc9d4d1')
+sha256sums=('e63ad215af14b1db445ca2a73029d1bb711172f707253587c35753b89d53e950')
 
 build() {
   cd accesskit-python-$pkgver
