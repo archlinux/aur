@@ -1,19 +1,17 @@
 # Maintainer: futpib <futpib@gmail.com>
 
-_pkgname=choomd
-pkgname="${_pkgname}-git"
-pkgver=1.0.0.r0.gbd01a50
+_pkgname=iroh
+pkgbase="${_pkgname}-git"
+pkgname=("${_pkgname}-relay-git" "${_pkgname}-dns-server-git")
+pkgver=0.96.1.r16.gb11e707cc8
 pkgrel=1
-pkgdesc="Adjust process OOM-killer scores based on process names and other attributes"
-arch=('x86_64')
-url="https://github.com/futpib/choomd"
-license=('GPL3')
-depends=()
-backup=('etc/choomd.toml')
-makedepends=('rust' 'cargo' 'git')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-source=('git+https://github.com/futpib/choomd.git')
+pkgdesc="p2p QUIC connections dialed by public key"
+arch=('x86_64' 'aarch64')
+url="https://github.com/n0-computer/iroh"
+license=('MIT OR Apache-2.0')
+makedepends=('rust' 'cargo' 'git' 'clang')
+options=(!lto)
+source=("git+https://github.com/n0-computer/iroh.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -23,24 +21,38 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   cd "${srcdir}/${_pkgname}"
   export RUSTUP_TOOLCHAIN=stable
-  cargo build --frozen --release
+  export CARGO_TARGET_DIR=target
+  cargo build --release -p iroh-relay --features server
+  cargo build --release -p iroh-dns-server
 }
 
-check() {
+package_iroh-relay-git() {
+  pkgdesc="Iroh's relay server"
+  depends=('gcc-libs')
+  provides=('iroh-relay')
+  conflicts=('iroh-relay')
+
   cd "${srcdir}/${_pkgname}"
-  export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen
+  install -Dm755 -t "${pkgdir}/usr/bin/" "target/release/iroh-relay"
+  install -Dm644 LICENSE-MIT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
+  install -Dm644 LICENSE-APACHE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-APACHE"
 }
 
-package() {
+package_iroh-dns-server-git() {
+  pkgdesc="A pkarr relay and DNS server"
+  depends=('gcc-libs')
+  provides=('iroh-dns-server')
+  conflicts=('iroh-dns-server')
+
   cd "${srcdir}/${_pkgname}"
-  install -Dm755 -t "${pkgdir}/usr/bin/" "target/release/${_pkgname}"
-  install -Dm644 -t "${pkgdir}/usr/lib/systemd/system/" "etc/choomd.service"
-  install -Dm644 -t "${pkgdir}/etc" "etc/choomd.toml"
+  install -Dm755 -t "${pkgdir}/usr/bin/" "target/release/iroh-dns-server"
+  install -Dm644 LICENSE-MIT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
+  install -Dm644 LICENSE-APACHE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-APACHE"
 }
