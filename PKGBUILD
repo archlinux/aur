@@ -1,7 +1,7 @@
 # Maintainer: gucio321
 pkgname=excel2tex
-pkgver=3.3.0
-pkgrel=6
+pkgver=3.3.1
+pkgrel=1
 pkgdesc="Convert MS Excel/LibreOffice Calc table to LaTex."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://github.com/gucio321/excel2tex"
