@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2148,SC2154,SC2164
 
 pkgname=marimo
-pkgver=0.20.1
+pkgver=0.20.2
 pkgrel=1
 pkgdesc="A reactive Python notebook that's reproducible, git-friendly, and deployable as scripts or apps"
 arch=(any)
@@ -12,12 +12,8 @@ license=('Apache-2.0')
 options=(!debug)
 
 makedepends=(
-    'python-build'
     'python-installer'
-    'python-wheel'
-
-    # Pending uv_build>0.10.x support
-    # 'python-uv-build'
+    'uv'
 )
 
 depends=(
@@ -66,17 +62,11 @@ optdepends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-$pkgver.tar.gz")
-sha256sums=('7c1131057c62b75612939cbcc3fe6c97ce17a56204296369ca9a8ab85824c20e')
+sha256sums=('cdab009b65d58d571640ab8bb2ede68ab3b755c8f99f06b934a23f3b8aba3f34')
 
 build() {
     cd $pkgname-$pkgver
-    # python -m build --wheel --no-isolation
-
-    # Pending uv_build>0.10.x support
-    rm -rf build_venv
-    python -m venv --system-site-packages build_venv
-    build_venv/bin/python -m pip install 'uv-build==0.9.30'
-    build_venv/bin/python -m build --wheel --no-isolation
+    uv build --wheel --clear --cache-dir build_cache -o dist
 }
 
 package() {
