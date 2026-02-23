@@ -1,7 +1,7 @@
 # Maintainer: tippfehlr <tippfehlr@tippfehlr.dev>
 
 pkgname='aw-watcher-media-player'
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Watcher of system's currently playing media for ActivityWatch"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(Unlicense)
 depends=(activitywatch dbus openssl)
 makedepends=(git cargo)
 source=("git+$url#tag=v$pkgver")
-sha512sums=('6091cb80435aca17b1fa05582afe877a3d49480a8d195f866a33c6d64167777db8c503483fcc27aa15e5e649101ae480b02c42f170c6b6189aca27dd392e56ce')
+sha512sums=('3d81076bb85e63a2ab88ca534dfe742cc1af22d39e192bee7ec082244a51fdc59be09a98a3568e4a084cc0c11a7e75bad3443f596576ba20c91d302724c633fb')
 
 prepare() {
 	cd $pkgname
