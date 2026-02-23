@@ -1,6 +1,6 @@
 # Maintainer: Misiix9 <admin@misiix.dev>
 pkgname=vanta-bin
-pkgver=1.13.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc="A hyper-fast, scriptable application launcher and command palette for Wayland (Spotlight alternative)"
 arch=('x86_64')
@@ -9,8 +9,8 @@ license=('MIT')
 depends=('webkit2gtk' 'gtk3' 'libayatana-appindicator')
 provides=('vanta')
 conflicts=('vanta')
-source=("vanta_${pkgver}_amd64.deb::https://github.com/Misiix9/Vanta/releases/download/v${pkgver}/vanta_${pkgver}_amd64.deb")
-sha256sums=('15c65d70f786fc1a0774d3f08c755c34641db891fcfba0dbfd922d8c6f1a9a9b')
+source=("vanta_${pkgver}_amd64.deb::https://github.com/Misiix9/Vanta/releases/download/v${pkgver}/Vanta_${pkgver}_amd64.deb")
+sha256sums=('7303b6254e770140722023d9f18b91b29aa8f6907e8fc9a43045d4e7d676a659')
 
 package() {
     find "${srcdir}" -maxdepth 1 -name "data.tar.*" -exec tar -xf {} -C "${pkgdir}" \;
