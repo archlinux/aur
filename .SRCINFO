@@ -8,6 +8,6 @@ pkgbase = taskforge-bin
 	provides = taskforge
 	conflicts = taskforge
 	source = https://github.com/gentij/taskforge/releases/download/v0.1.0/taskforge_linux_amd64.tar.gz
-	sha256sums = edea57a86a19dc2a043171a6766bae99be543a989199bd45df9bca44d38766cb
+	sha256sums = 29ec4e634659949e6cdc8dffd38354499eb7489203c7990fc51ac79dc6df134c
 
 pkgname = taskforge-bin
