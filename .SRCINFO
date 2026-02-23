@@ -1,11 +1,11 @@
 pkgbase = libcontacts
 	pkgdesc = A library for handling a simple, flexible contact list
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://codeberg.org/maandree/libcontacts
 	arch = x86_64
 	license = custom:ISC
-	source = libcontacts-1.0.1.tar.gz::https://codeberg.org/maandree/libcontacts/archive/1.0.1.tar.gz
-	sha256sums = 44949f6b8e89176fb9a7c6910f0e6cb4aa8d00d8da03b6d172f78d9c86ed8a50
+	source = libcontacts-1.0.2.tar.gz::https://codeberg.org/maandree/libcontacts/archive/1.0.2.tar.gz
+	sha256sums = 8ef10a499181fd72fce726a3011fb8ea7cfca2816f0084299e0c30dcf6cdd5ca
 
 pkgname = libcontacts

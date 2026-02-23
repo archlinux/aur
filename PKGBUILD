@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>
 
 pkgname=libcontacts
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A library for handling a simple, flexible contact list"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=()
 checkdepends=()
 makedepends=()
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(44949f6b8e89176fb9a7c6910f0e6cb4aa8d00d8da03b6d172f78d9c86ed8a50)
+sha256sums=(8ef10a499181fd72fce726a3011fb8ea7cfca2816f0084299e0c30dcf6cdd5ca)
 
 build() {
   cd "$srcdir/$pkgname"
