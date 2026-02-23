@@ -2,93 +2,85 @@
 # Contributor: skydrome <skydrome at@at proton mail dot com>
 # Contributor: Thynix
 
-# NOTICE: The original Freenet from 1999-2023 is renamed to Hyphanet 
+# NOTICE: The original Freenet from 1999-2023 was renamed to Hyphanet 
 # https://www.hyphanet.org/freenet-renamed-to-hyphanet.html
 
 pkgname=hyphanet
-pkgver=0.7.5.1505
+pkgver=0.7.5.1506
 pkgrel=1
-pkgdesc='A peer-to-peer network for censorship-resistant and privacy-respecting publishing and communication, a.k.a Freenet from 1999-2023. This is NOT Locutus.'
+pkgdesc='A peer-to-peer network for censorship-resistant and privacy-respecting publishing and communication, a.k.a The Original Freenet since 1999. This is NOT Locutus.'
 arch=('x86_64' 'aarch64')
 url='https://www.hyphanet.org/'
 license=('GPL-2.0-or-later')
 depends=(
   'java-runtime>=11'
-  'java-service-wrapper'
   'nss'
 )
 makedepends=(
   'git'
   'java-environment>=11'
-  'zip'
 )
-replaces=('freenet')
-backup=('opt/hyphanet/wrapper.config')
-install='hyphanet.install'
 source=(
   "git+https://github.com/hyphanet/fred.git?signed#tag=build0${pkgver##*.}"
-  "git+https://github.com/hyphanet/seedrefs.git"
-  hyphanet.{sh,ini.dist,service,tmpfiles}
-  'wrapper.config'
+  'https://raw.githubusercontent.com/hyphanet/java_installer/refs/heads/next/bin/seednodes.fref'
+  freenet.{hook,ini,rules,service,sysusers,tmpfiles}
+  'java.security'
+  'nss.cfg'
 )
+install=hyphanet.install
 
 # https://www.hyphanet.org/assets/keyring.gpg
 validpgpkeys=('B30C3D91069F81ECFEFED0B1B41A6047FD6C57F9')
 
-b2sums=('d8c08d1606f516bfa5c238889fd9d0aea2681874ad38c2441e378ead85275dbc13a14f807a44da7135771dcf6f5645b9d42c55508f1252e8448b925ef81517c7'
-        'SKIP'
-        '3af19432973a458dc1bfb7dc024d12d9fbaeeb910a066146d9a4acedfb5da7a2c15fb78d4b770330c17b23c1f9b99cdb5a64762d9a77a60b272a53fe01ffeb60'
-        '497767d33e5f73439b5830f907fb17f64e53b21f849917c011951569127ee14dda60a18ff9264beee24af388ebbafaf4f307834c687b944fcce043d9729874a5'
-        '59a94140471b0283eaf676a6c70d1eecc3b4170c7493da3d1838efb120e295039c14f99ac823207bdd636a4e12997126e8608ba14083faf422768b7b3b473f0a'
-        'd901c84a02dc3ec6ebbabe58ceec7103e4cb11502b2efbaa2b19b53666501ab68569a9c89cb56722e63ba703776f488ade64d1c93ebfcb24af20d78f800853ff'
-        '9783593600612cfdf588903f39f41bceddce989c8320bad23d2a9a5d19d67160eaf84b76b557089c154537f2629311f864cc69f6a97aca2c595e86f3d7971725')
-
-
-prepare() {
-  cd fred
-
-  # create seednodes file for bootstrapping
-  rm -f seednodes.fref
-  for node in "$srcdir"/seedrefs/0* ;do
-    printf "%s\n\n" "$(<"$node")" >>seednodes.fref
-  done
-}
+b2sums=('78993090e6b80593fc8bfa40ef8fe153b145cb824cc664693fe32be89ebc6604f5b86b8262aad26cd6bb9c5a35d4b74e4ff2b216df07cb33f62637ded3bfe003'
+        '43426e241442310e5c9ba0abddb56081eddce1db26ac3e6c55baa6f49cc264d0692bdd0d4deba8a0dd8ded24936979e310143a58b9b99576f8a39d049dcfb547'
+        '61776e06447cc41a1d95aff7727819775ac4e54fe311dc9d5bd065bf5a7e17fdb326aa5c1de2161d9c32d77f46d74eba0436e0142ca9638b8928fb80d6af5282'
+        'c8229814001a042482dfee13e93c48cf59303a762dd91b8df15b54f8ed41c72f0f3dc390f1bf4e473b4498cb3b3b57b2fd911c8238bc23919a84d34f74135e34'
+        'c6b70019596072c4c856b252f3454e0e91c36bd8c3c78521ccb4f7fb98e2258fba48dd1752a8e5a31d935977b0fbb1015a9a36d76dccf1046ad691bb21439cbf'
+        'dc3ff52d12de24071569870364af9945530f66faf7c3de9e2e7329b9b248e939c3334513ba8a0bb028bb2ca6f7e7c43a54359a3b6932eaad13825bd514958411'
+        'fa985966cd067b13b64885da4524b306f81760542f188b3041ecb791222a5c20578ed490af8cc8a6ddfd992554b4767279e6406ace2c8332442deb12d1a18b82'
+        'b77f345bc508929614601f36d7b6d5785b69d8db90ef739258e6c4f33fcabc6e2efe617acc85f7e156f0db022af1e4e4632a8d7e2e7602b6afdf74bb44761f72'
+        'f5483a341dc105e5d214547999538ac3311159ccef702f1daa3fef0a70f304b399bf1d4d1ab0ef9fe8846f84c389a19a00bd92f11778b02b212b19101dce9323'
+        '50d6db9e51bc720453dd9ae31c5d4f02f1b50aeb121d64ee3f128845ba3951091e64266b7be69afa1f4727b9e43222a4a4aba3a47a86d873f1ddcd25d6a94c52')
 
 build() {
   cd fred
-
-  export GRADLE_USER_HOME="$SRCDEST/.gradle"
+  export GRADLE_USER_HOME="$srcdir/fred/.gradle"
   export GRADLE_OPTS="-Dorg.gradle.internal.launcher.welcomeMessageEnabled=false"
-  ./gradlew --no-build-cache --no-daemon copyRuntimeLibs
+  ./gradlew --no-build-cache --no-daemon jar copyRuntimeLibs
 }
 
 package() {
-  cd fred
+  ################
+  # 1. COPY FILES
+  ################
 
-  # create folder structure
-  install -dm755 "$pkgdir/usr/bin"
-  install -dm750 "$pkgdir/opt/$pkgname"
-  install -dm700 "$pkgdir/opt/$pkgname/tmp"
-  install -dm750 "$pkgdir/opt/$pkgname/"{downloads,lib,conf,noderef,plugins,user}
-  install -dm750 "$pkgdir/opt/$pkgname/"{plugins/data,user/{data,certs}}
+  install -Dm644 -t "$pkgdir/usr/share/java/freenet"    "$srcdir/fred/build/output/"*.jar
+  install -Dm644    "$srcdir/fred/LICENSE"              "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname"    "$srcdir/fred/"{AUTHORS,CONTRIBUTING.md,NEWS.md,README.md,SECURITY.md}
 
-  # install hyphanet
-  install -m755  "$srcdir/hyphanet.sh"                      "$pkgdir/usr/bin/$pkgname"
-  install -m640  "$srcdir/wrapper.config"                   "$pkgdir/opt/$pkgname"
-  install -m640  "$srcdir/hyphanet.ini.dist"                "$pkgdir/opt/$pkgname/conf"
-  install -m640  "$srcdir/fred/seednodes.fref"              "$pkgdir/opt/$pkgname/noderef"
-  install -m640  "$srcdir/fred/build/output/"*.jar          "$pkgdir/opt/$pkgname/lib"
+  # These files can be sourced to create another Freenet instance, like how AUR/hyphanet-userspace will do in the future
+  install -Dm644 -t "$pkgdir/usr/share/freenet"         "$srcdir/"{freenet.ini,java.security,nss.cfg,seednodes.fref}
 
-  # delete bundled wrapper
-  zip -qd "$pkgdir/opt/$pkgname/lib/freenet-ext-29.jar" "org/tanukisoftware/*"
+  # Initialize Freenet system instance
+  install -Dm644 -t "$pkgdir/var/lib/freenet"           "$srcdir/"{java.security,nss.cfg,seednodes.fref}
+  # Note: /etc/freenet/freenet.ini will be installed via tmpfiles.d to ensure its presence and permission
 
-  # systemd
-  install -Dm644 "$srcdir/hyphanet.tmpfiles"    "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
-  install -Dm644 "$srcdir/hyphanet.service"     "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+  ############################
+  # 2. INTEGRATE WITH SYSTEMD
+  ############################
 
-  # license
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644    "$srcdir/freenet.service"           "$pkgdir/usr/lib/systemd/system/freenet.service"
+  install -Dm644    "$srcdir/freenet.sysusers"          "$pkgdir/usr/lib/sysusers.d/freenet.conf"
+  install -Dm644    "$srcdir/freenet.tmpfiles"          "$pkgdir/usr/lib/tmpfiles.d/freenet.conf"
+  install -Dm644    "$srcdir/freenet.hook"              "$pkgdir/usr/share/libalpm/hooks/freenet.hook"
 
-  # docs
-  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" "$srcdir/fred/"{AUTHORS,CONTRIBUTING.md,NEWS.md,README.md,SECURITY.md}
+  ############################
+  # 3. TWEAKS
+  ############################
+
+  # Ananicy rule to allow Freenet to have NICE=10 as base
+  install -Dm644    "$srcdir/freenet.rules"             "$pkgdir/etc/ananicy.d/00-default/services/freenet.rules"
+  # Ananicy rule for CachyOS services reside at /etc/ananicy.d/00-default/Services/
+  install -Dm644    "$srcdir/freenet.rules"             "$pkgdir/etc/ananicy.d/00-default/Services/freenet.rules"
 }

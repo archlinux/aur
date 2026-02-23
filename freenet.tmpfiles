@@ -1,0 +1,4 @@
+#Type Path                     Mode User    Group   Age Argument
+d     /etc/freenet             0755 freenet freenet -   -
+z     /etc/freenet/freenet.ini 0644 freenet freenet -   -
+C     /etc/freenet/freenet.ini 0644 freenet freenet -   /usr/share/freenet/freenet.ini

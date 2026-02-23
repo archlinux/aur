@@ -1,29 +1,81 @@
+# This file is part of AUR/hyphanet
+# https://aur.archlinux.org/packages/hyphanet
+#
+# Copyright Arch Linux Contributors
+#
+# Permission to use, copy, modify, and/or distribute this software for
+# any purpose with or without fee is hereby granted.
+#
+# THE SOFTWARE IS PROVIDED “AS IS” AND THE AUTHOR DISCLAIMS ALL
+# WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES
+# OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE
+# FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY
+# DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN
+# AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT
+# OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+print_instructions(){
+  cat << EOF
+################################################################################
+                 !!! IMPORTANT INSTRUCTIONS, READ CAREFULLY !!!
+################################################################################
+##
+##  AUR/hyphanet uses SystemD as a service daemon manager.
+##
+##  To run Hyphanet automatically during startup, do the following:
+##
+##       sudo systemctl enable --now freenet
+##
+##  Freenet Web Interface: http://127.0.0.1:8888
+##  Freenet Configuration: /etc/freenet/freenet.ini
+##    Freenet Directories: /var/lib/freenet/
+##     Freenet Base Files: /usr/share/freenet/
+##           Freenet Jars: /usr/share/java/freenet/
+##                   Logs: /var/log/freenet/
+##
+##  Hyphanet will be slow during first startup while it discovers the network.
+##  You may see 'Data Not Found' or 'Route Not Found' errors, this is normal.
+##
+##  For best performance Hyphanet should be run 24/7 as much as possible.
+##
+################################################################################
+EOF
+}
+
+
+
 post_install() {
-    getent passwd hyphanet &>/dev/null || {
-        echo -n "==> Creating hyphanet system user... "
-        useradd --system \
-                --user-group \
-                --home /opt/hyphanet \
-                hyphanet &&
-        echo "ok" || echo "fail"
-    }
-    cp -v /opt/hyphanet/conf/hyphanet.ini{.dist,}
-    chown -R hyphanet:hyphanet /opt/hyphanet
-    echo "==> Hyphanet will be slow during first startup while it discovers the network."
-    echo "==> You may see 'Data Not Found' or 'Route Not Found' errors, this is normal."
-    echo "==> For best performance Hyphanet should be run 24/7 as much as possible."
-    echo "==> Your node's configuration WebUI is located at http://127.0.0.1:8888/ "
+  print_instructions
 }
 
 post_upgrade() {
-    chown -R hyphanet:hyphanet /opt/hyphanet
+  print_instructions
 }
 
-pre_remove() {
-    getent passwd hyphanet &>/dev/null && {
-        echo -n "==> Removing hyphanet system user... "
-        userdel hyphanet &&
-        echo "ok" || echo "fail"
-    }
-    echo "==> Delete /opt/hyphanet if you wish to completely remove everything"
+post_remove() {
+  cat << EOF
+################################################################################
+                 !!! IMPORTANT INSTRUCTIONS, READ CAREFULLY !!!
+################################################################################
+##
+##  Pacman REMOVED the following:
+##
+##           Freenet Jars: (DELETED) /usr/share/java/freenet/
+##     Freenet Base Files: (DELETED) /usr/share/freenet/
+##                       : (DELETED) /var/lib/freenet/java.security
+##                       : (DELETED) /var/lib/freenet/nss.cfg
+##                       : (DELETED) /var/lib/freenet/seednodes.fref
+##
+##  The following REMAINS in the system:
+##
+##  Freenet Configuration: (PRESENT) /etc/freenet/freenet.ini
+##    Freenet Directories: (PRESENT) /var/lib/freenet/
+##                   Logs: (PRESENT) /var/log/freenet/
+##
+##  You may safely delete these to completely remove Freenet from this system.
+##
+##  Create backups of files and directories that are valuable before deleting.
+##
+################################################################################
+EOF
 }

@@ -1,0 +1,42 @@
+[Unit]
+Description=The Free Network Project daemon
+After=network.target time-sync.target
+
+[Service]
+Type=exec
+User=freenet
+Group=freenet
+SyslogIdentifier=freenet
+
+WorkingDirectory=/var/lib/freenet
+RuntimeDirectory=freenet
+StateDirectory=freenet
+LogsDirectory=freenet
+ConfigurationDirectory=freenet
+PrivateTmp=yes
+
+Nice=10
+LimitNICE=+10
+ExecStartPre=/usr/bin/systemd-tmpfiles --create /usr/lib/tmpfiles.d/freenet.conf
+ExecStart=/usr/lib/jvm/default/bin/java -classpath "/usr/share/java/freenet/*" -Djava.io.tmpdir=/tmp/ -Djava.security.properties=./java.security -XX:+ExitOnOutOfMemoryError -Dnetworkaddress.cache.ttl=0 -Dnetworkaddress.cache.negative.ttl=0 -Djava.net.preferIPv4Stack=false --illegal-access=permit --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED -Djna.nosys=false -Dfreenet.jce.use.NSS=true -Xss512k -Xms60m -Xmx1536m freenet.node.NodeStarter /etc/freenet/freenet.ini
+Restart=on-failure
+SuccessExitStatus=0 143
+# See NodeStarter.java: WrapperManager.signalStarting(500000);
+TimeoutStartSec=500
+# See NodeStarter.java: WrapperManager.signalStopping(120000);
+TimeoutStopSec=120 
+
+ProtectSystem=strict
+ProtectHome=yes
+ProtectClock=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+RestrictRealtime=yes
+PrivateDevices=yes
+LockPersonality=yes
+RestrictNamespaces=yes
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,5 @@
+# https://github.com/nefelim4ag/Ananicy/blob/master/ananicy.d/00-default/services/freenet.rules
+
+{"name":"java", "cmdlines":["freenet.node.NodeStarter"], "type":"service,CPU_U,IO_L"}
+
+# NOTE: freenet is not supposed to be reniced
