@@ -1,0 +1,15 @@
+pkgbase = fcitx5-theme-dracula-git
+	pkgdesc = Dracula theme for Fcitx5
+	pkgver = r5.a267e6f
+	pkgrel = 2
+	url = https://github.com/drbbr/fcitx5-dracula-theme
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = fcitx5
+	provides = fcitx5-theme-dracula
+	conflicts = fcitx5-theme-dracula
+	source = git+https://github.com/drbbr/fcitx5-dracula-theme.git
+	sha256sums = SKIP
+
+pkgname = fcitx5-theme-dracula-git
