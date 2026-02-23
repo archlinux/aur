@@ -1,0 +1,4 @@
+[goenv]
+source = "github"
+github = "go-nv/goenv"
+use_latest_release = true
