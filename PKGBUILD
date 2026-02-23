@@ -1,6 +1,6 @@
 pkgname=planarally-bin
 pkgver=2026.1.2
-pkgrel=7
+pkgrel=15
 pkgdesc="PlanarAlly v${pkgver}"
 arch=('x86_64')
 url='https://www.planarally.io'
