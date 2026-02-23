@@ -1,11 +1,11 @@
 # Maintainer: Insidious Fiddler <aur[at]codycody31[dot]dev>
 pkgname=hister
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Web history on steroids - blazing fast, content-based search for visited websites"
 arch=('x86_64' 'aarch64')
 url="https://github.com/asciimoo/hister"
-license=('AGPL-3.0-only')
+license=('AGPL-3.0-or-later')
 depends=('sqlite')
 makedepends=('go')
 install=hister.install

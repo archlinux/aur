@@ -1,12 +1,12 @@
 pkgbase = hister
 	pkgdesc = Web history on steroids - blazing fast, content-based search for visited websites
 	pkgver = 0.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/asciimoo/hister
 	install = hister.install
 	arch = x86_64
 	arch = aarch64
-	license = AGPL-3.0-only
+	license = AGPL-3.0-or-later
 	makedepends = go
 	depends = sqlite
 	options = !lto
