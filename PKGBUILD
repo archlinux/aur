@@ -1,7 +1,7 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 
 pkgname=arch-remaster
-pkgver=26.02
+pkgver=26.02.1
 pkgrel=1
 pkgdesc="Tools for remastering Arch Linux live systems and updating live USB GRUB configs"
 arch=('any')
@@ -11,8 +11,8 @@ depends=('bash' 'coreutils' 'util-linux' 'grep' 'sed')
 optdepends=(
     'squashfs-tools: for live-remaster'
 )
-source=("https://github.com/AdrianTM/arch-remaster/archive/refs/tags/26.02.tar.gz")
-sha256sums=('1f2a15524bfb6c3335887bac0cb17e22003ed8aa4a932a1e6939d033b8d28921')
+source=("https://github.com/AdrianTM/arch-remaster/archive/refs/tags/26.02.1.tar.gz")
+sha256sums=('5e1e729b48332b694f432888847a55ed4ade76bbb54fab3ea7ceaee777c0b587')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
