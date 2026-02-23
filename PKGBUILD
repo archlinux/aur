@@ -8,7 +8,7 @@ arch=('any')
 url=https://github.com/ascoderu/xtarfile
 license=('Apache-2.0')
 depends=('python-zstandard' 'python-lz4')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ascoderu/xtarfile/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('a01270336caaae2c91b4e73d6bdaae2b40dcbd3308d917baa6e8fa8dbcc7a99a')
 
@@ -19,7 +19,7 @@ prepare() {
 
 build() {
   cd xtarfile-$pkgver
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -29,5 +29,5 @@ check() {
 
 package() {
   cd xtarfile-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
