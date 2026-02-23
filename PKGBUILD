@@ -3,7 +3,7 @@
 pkgname=snpeff
 _pkgname=SnpEff
 _pkg2=SnpSift
-pkgver=5.4b
+pkgver=5.4c
 _pkgver2=5.4b
 pkgrel=1
 pkgdesc="Genetic variant annotation and effect prediction toolbox. doi:10.4161/fly.19695"
@@ -19,7 +19,7 @@ source=("$_pkgname-$pkgver.tar.gz::https://github.com/pcingola/SnpEff/archive/re
         "snpSift.sh"
         "snpEff.sh"
        )
-sha512sums=('9162507c2ea8a0e06ac2ff7c8b18627321f21a9de3f136ab9060674e2eacaadf5ff1f3502546408fc9d5dcda89eda26fbbd9f4dc709f7d3bec5bccc359ed751a'
+sha512sums=('01b2958af4e48da7939b33b6936dd2339461c0452a5a68abe09b45f33452910bd812b0274db4d2dc0057f32d6e441b72d2d6bf0817af2131091099c94d72695b'
             '93edac1813220045330d571576f17554d31323db59af8fc23012f18cd015be20c533014e4cb9748b5349ab0941db58443c6730164dd4b35eb5602fbd9168daa6'
             'eb802167761ea7de0b7fdb60b0cc9440d40ea21fe6ed164dc900452e224d71039a8e187e1b7a6499b91338580378c33aa678a23b81f3e27f0f939a4cd3ef6a0c'
             '9819376173c372cec8ae3f28d1b3857a1b63690bf16213e6f26ebd5d29150616c8f8a3d0ecf8d9ba24c34e24f28ab56edecf8c9cee3c578ae673da7c65c48f0d'
