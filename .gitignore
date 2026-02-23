@@ -1,0 +1,8 @@
+jocalsend-*.tar.gz
+jocalsend-*.pkg.tar.*
+src/
+pkg/
+vendor/
+target/
+.cargo/
+jocalsend-debug-*.pkg.tar.*

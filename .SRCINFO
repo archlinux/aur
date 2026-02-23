@@ -1,0 +1,20 @@
+pkgbase = jocalsend
+	pkgdesc = A TUI for LocalSend
+	pkgver = 1.6.18033988
+	pkgrel = 1
+	url = https://git.kittencollective.com/nebkor/joecalsend
+	arch = x86_64
+	license = custom
+	makedepends = cargo
+	makedepends = rust
+	makedepends = cmake
+	makedepends = perl
+	makedepends = go
+	depends = gcc-libs
+	provides = jocalsend
+	conflicts = jocalsend
+	options = !lto
+	source = jocalsend-1.6.18033988.tar.gz::https://crates.io/api/v1/crates/jocalsend/1.6.18033988/download
+	sha256sums = d967acd99a7b266bdec05ec8e2a8cc1f79ebbd425cb43efc0ca2f20a7f6096d6
+
+pkgname = jocalsend
