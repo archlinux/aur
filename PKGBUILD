@@ -1,7 +1,7 @@
 # Maintainer: Jian Wei Cheong <aur at jianwei dot anonaddy dot com>
 
 pkgname=bibiman
-pkgver=0.19.3
+pkgver=0.19.4
 pkgrel=1
 pkgdesc='A TUI for fast and simple interacting with your BibLaTeX database.'
 url='https://codeberg.org/lukeflo/bibiman'
@@ -12,7 +12,7 @@ conflicts=('bibiman-bin' 'bibiman-git')
 arch=('x86_64')
 options=(!debug !lto)
 source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/lukeflo/bibiman/archive/v$pkgver.tar.gz")
-b2sums=('9fa493345260688b202b4333a364d17f93315be5ae8a1756d2006bdf76b7248106a589eb6b9249f7eea6fa2e210e17504e47e928bd58b5ee29c34777ac9e8df0')
+b2sums=('3b16ddbe0e4f58c7d9b4ce53b00035d855cdb5aeed6c86dc4c31826b6392227be51d055313d5174ae863c0e70cb727741e22ff92604686d32ca67ea1367d6849')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
@@ -27,11 +27,11 @@ build() {
     cargo build --frozen --release --all-features
 }
 
-# check() {
-#     export RUSTUP_TOOLCHAIN=stable
-#     cd $pkgname
-#     cargo test --frozen --all-features
-# }
+check() {
+    export RUSTUP_TOOLCHAIN=stable
+    cd $pkgname
+    cargo test --frozen --all-features
+}
 
 package() {
     cd $pkgname
