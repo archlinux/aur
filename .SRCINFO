@@ -1,7 +1,7 @@
 pkgbase = manjaro-hyprland-settings
 	pkgdesc = Manjaro Linux Hyprland settings
 	pkgver = 20260223
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lisuml/manjaro-hyprland-settings
 	install = manjaro-hyprland-settings.install
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = manjaro-hyprland-settings
 
 pkgname = manjaro-hyprland-settings
 	depends = beautyline
+	depends = breeze-cursors5
 	depends = brightnessctl
 	depends = cliphist
 	depends = emote

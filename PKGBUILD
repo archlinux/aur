@@ -3,7 +3,7 @@
 pkgname=manjaro-hyprland-settings
 pkgver="20260223"
 _commit='7b0fa2c1e3a7510f6c25c4af079b79beb78ea341'
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/lisuml/${pkgname}"
 license=('GPL')
@@ -23,6 +23,7 @@ package() {
 
   depends=(
     'beautyline'
+    'breeze-cursors5'
     'brightnessctl'
     'cliphist'
     'emote'
