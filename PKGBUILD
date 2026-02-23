@@ -1,8 +1,8 @@
 # Maintainer: Mathis Paquet <mathispaquet362@gmail.com>
 pkgname=linkora-bin
-pkgver=0.15.1
-_desktopver=1.0.13-1
-pkgrel=2
+pkgver=0.16.0
+_desktopver=1.0.14-1
+pkgrel=3
 pkgdesc="Link organizer for Android and desktop with self-hosted sync"
 arch=(x86_64)
 url="https://github.com/LinkoraApp/Linkora"
