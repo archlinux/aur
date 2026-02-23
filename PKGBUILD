@@ -1,6 +1,6 @@
 # Maintainer: FrogSnot
 pkgname=hardbore
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="High-performance file manager for Linux"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('AGPL-3.0-only')
 depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'librsvg' 'sqlite' 'dbus')
 makedepends=('npm' 'rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('fb41ac5a2403440038b4ff8854760e757faa5ca0d08505635f5d3e6af6bb9b7e')
+sha256sums=('8d57c4199707ec6334b617aeff308c27d0c4851afb5ea036e95214dd75cadef2')
 
 build() {
     cd "$srcdir/HardBore-$pkgver"
