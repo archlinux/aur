@@ -2,7 +2,7 @@
 
 _pkgname=klassy
 pkgname=klassy-bin
-pkgver=6.5.2
+pkgver=6.5.3
 pkgrel=1
 pkgdesc="Highly customizable binary Window Decoration, Application Style and Global Theme plugin for recent versions of the KDE Plasma desktop."
 arch=(x86_64)
