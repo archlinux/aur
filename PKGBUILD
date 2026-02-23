@@ -1,7 +1,7 @@
 pkgname=rovibe
 pkgver=0.1.1
 pkgrel=1
-pkgdesc='Lightweight CLI for ephemeral, sandboxed AI coding agents'
+pkgdesc='OS-level identity and permission isolation for AI coding agents'
 arch=(any)
 url='https://github.com/knowlen/rovibe'
 license=(MIT)
