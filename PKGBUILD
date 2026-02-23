@@ -1,6 +1,6 @@
 # Maintainer: Madeline Mewmews <maddie at mewmews dot gay>
 # Contributor: Sam Guymer <sam at guymer dot me>
-_java_vercode=451
+_java_vercode=481
 _java_ver=8
 _jdkname="java-${_java_ver}-jdk-perf"
 pkgname="jdk8-perf"
@@ -30,10 +30,8 @@ install="$pkgname.install"
 source_aarch64=("local://jdk-8u${_java_vercode}-perf-linux-aarch64.tar.gz")
 source_x86_64=("local://jdk-8u${_java_vercode}-perf-linux-x64.tar.gz")
 source=("${pkgname}.install")
-#https://cdn.azul.com/zing-zvm/${_zulu_build}/zing${_zulu_build}-3-jdk${pkgver}-linux_x64.tar.gz
-#https://cdn.azul.com/zing-zvm/ZVM23.03.0.0/zing23.03.0.0-3-jdk8.0.362-linux_x64.tar.gz
-sha256sums_aarch64=('bd26407ac6aad39829389c5da632b05c75403e79efae090657fd0e10bdc7281c')
-sha256sums_x86_64=('6be533fce84dd0f5519270b9e3a0e8b2b189abde8a29b911e8553a323a916f8a')
+sha256sums_aarch64=('10d865b147182d03a43b392d6a41a24a9e78857cde7a2b3698cf7cedf23a1eaf')
+sha256sums_x86_64=('a468e4e0d91796b02fef67c9e0d998379a027ea88daeb7cf76e9b7b30cc50e37')
 sha256sums=('08d898aa1f737aea0a16d14735d381904fcb4912cbd0b88f427243117899eb49')
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
