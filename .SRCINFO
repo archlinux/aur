@@ -1,4 +1,4 @@
-pkgbase = syncovery
+pkgbase = syncovery-bin
 	pkgdesc = Syncovery File Synchronization Tool
 	pkgver = 11.12.13
 	pkgrel = 2
@@ -9,7 +9,9 @@ pkgbase = syncovery
 	makedepends = libarchive
 	depends = glibc
 	depends = gcc-libs
+	provides = syncovery
+	conflicts = syncovery
 	source = syncoverycl.service
 	sha256sums = SKIP
 
-pkgname = syncovery
+pkgname = syncovery-bin

@@ -7,6 +7,8 @@ url="https://www.syncovery.com"
 license=('custom')
 depends=('glibc' 'gcc-libs')
 makedepends=('curl' 'libarchive')
+provides=('syncovery')
+conflicts=('syncovery')
 
 source=("syncoverycl.service")
 sha256sums=('SKIP')
