@@ -1,0 +1,17 @@
+pkgbase = clipman-clipboard
+	pkgdesc = A clipboard history manager for GNOME on Wayland
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/MohammedEl-sayedAhmed/clipman
+	arch = any
+	license = Apache-2.0
+	depends = python>=3.10
+	depends = python-gobject
+	depends = python-dbus
+	depends = gtk3
+	depends = wl-clipboard
+	depends = gnome-shell
+	source = clipman-1.0.0.tar.gz::https://github.com/MohammedEl-sayedAhmed/clipman/archive/v1.0.0.tar.gz
+	sha256sums = 63042629bdc6404174ce11645f3470432a7dcb9a1395c6ef5f6706cf29e14538
+
+pkgname = clipman-clipboard
