@@ -1,7 +1,7 @@
 pkgname=lib32-romcheckfail-bin
 provides=('romcheckfail')
 arch=('x86_64')
-pkgdesc='Carefully place a dozen arcade classics in a large mixing bowl. Add a dash of awesomesauce, cover the bowl, and allow the ingredients to ferment over three weeks. Uncover in a well ventilated area, then mash until loud and glitchy. Serve over the internet.'
+pkgdesc='A swirling glitch-soup of classic videogames, reforming every 10 seconds into a new playable mass. Won the TIGSource VGNG competition and some very nice press.'
 pkgver=1.0
 pkgrel=2
 license=('custom:romcheckfail_eula')
