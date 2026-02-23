@@ -1,6 +1,6 @@
 pkgname=hyprspaces
 pkgver=1.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Paired workspace plugin and setup scripts for Hyprland"
 arch=('x86_64')
 url='https://github.com/jtaw5649/hyprspaces'
