@@ -3,13 +3,15 @@
 _reponame=bin-cpuflags-x86
 pkgname=${_reponame}-git
 pkgver=1.0.8.r0.g4c2a7c5
-pkgrel=1
+pkgrel=2
 pkgdesc='A small CLI tool to detect CPU flags (instruction sets) of X86 binaries (git)'
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/HanabishiRecca/${_reponame}"
 license=('MIT')
 depends=('glibc' 'libgcc')
 makedepends=('cargo' 'git')
+provides=("${_reponame}")
+conflicts=("${_reponame}")
 source=("git+${url}.git")
 b2sums=('SKIP')
 
