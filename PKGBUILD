@@ -1,7 +1,7 @@
 # Maintainer: Pinak Dhabu <thepinak503@duck.com>
 pkgname=echomind
 pkgver=0.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="AI-powered CLI tool with multiple provider support, streaming, and interactive mode"
 arch=('x86_64' 'aarch64')
 url="https://github.com/thepinak503/echomind"
@@ -68,12 +68,6 @@ build() {
   
   # Build with all features enabled
   cargo build --release --all-features --target "$_target"
-  
-  # Generate shell completions
-  mkdir -p completions
-  ./target/$_target/release/echomind --generate-completion bash > completions/echomind.bash
-  ./target/$_target/release/echomind --generate-completion zsh > completions/_echomind
-  ./target/$_target/release/echomind --generate-completion fish > completions/echomind.fish
 }
 
 check() {
@@ -96,6 +90,7 @@ check() {
 
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
+  export CARGO_TARGET_DIR="$srcdir/target"
   
   # Determine target triple
   if [ "$CARCH" = "x86_64" ]; then
@@ -107,7 +102,7 @@ package() {
   fi
   
   # Install binary
-  install -Dm755 target/$_target/release/echomind "$pkgdir/usr/bin/echomind"
+  install -Dm755 "$CARGO_TARGET_DIR/$_target/release/echomind" "$pkgdir/usr/bin/echomind"
   
   # Install documentation (use docs/ directory for actual files)
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
@@ -123,9 +118,4 @@ package() {
   
   # Install license
   install -Dm644 docs/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  
-  # Install shell completions
-  install -Dm644 completions/echomind.bash "$pkgdir/usr/share/bash-completion/completions/echomind"
-  install -Dm644 completions/_echomind "$pkgdir/usr/share/zsh/site-functions/_echomind"
-  install -Dm644 completions/echomind.fish "$pkgdir/usr/share/fish/vendor_completions.d/echomind.fish"
 }
