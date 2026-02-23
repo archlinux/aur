@@ -1,8 +1,8 @@
 # Maintainer: Wayne Heaney <wayne@xronlinux.com>
 _pkgbase=breezy-desktop
 pkgname="${_pkgbase}"-kwin-git
-pkgver=2.8.4
-pkgrel=2
+pkgver=2.8.7
+pkgrel=1
 pkgdesc="Breezy KWin - XR desktop"
 arch=('x86_64' 'aarch64')
 url="https://github.com/wheaney/breezy-desktop"
@@ -38,7 +38,7 @@ depends=(
     'python'
     'xr-driver-git'
 )
-source=("git+${url}#commit=e52b7f5bb0d932d2d65891588f022d1dc4775117")
+source=("git+${url}#commit=ce7a5c378dadcfdb55661a7d6724ba55687b915a")
 md5sums=(SKIP)
 
 pkgver() {
