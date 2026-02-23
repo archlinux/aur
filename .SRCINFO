@@ -1,6 +1,6 @@
 pkgbase = netsock-git
-	pkgdesc = Per-app firewall
-	pkgver = 932c886d
+	pkgdesc = Per-app firewall for the Portable sandbox
+	pkgver = 0.2.r0.g1407c03d
 	pkgrel = 1
 	url = https://github.com/Kimiblock/netsock
 	arch = x86_64
