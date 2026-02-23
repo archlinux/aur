@@ -1,7 +1,7 @@
 pkgbase = gnome-tuner
 	pkgdesc = Extensible control center for GNOME
 	pkgver = 0.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://altlinux.space/alt-gnome/tuner
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -15,6 +15,8 @@ pkgbase = gnome-tuner
 	depends = libgee
 	depends = libpeas-2
 	optdepends = gnome-tuner-gdm: GNOME Display Manager settings
+	optdepends = gnome-tuner-glts: GNOME Legacy Theme Switcher config settings
+	optdepends = gnome-tuner-os-info: System information and diagnostics
 	optdepends = gnome-tuner-panel: Panel mode switcher
 	optdepends = gnome-tuner-tweaks: Extra GNOME settings
 	provides = libtuner-1.so
