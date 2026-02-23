@@ -1,6 +1,6 @@
 pkgname=aur-check-updates
 pkgver=1.1.9
-pkgrel=2
+pkgrel=3
 pkgdesc="A very basic CLI app for checking updates from AUR"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/HanabishiRecca/${pkgname}"
@@ -28,5 +28,6 @@ check() {
 }
 
 package() {
-    install -Dm0755 "release/${pkgname}" -t "${pkgdir}/usr/bin"
+    install -Dm755 "release/${pkgname}" -t "${pkgdir}/usr/bin"
+    install -Dm644 "${_snapshot}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
