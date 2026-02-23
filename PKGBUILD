@@ -1,6 +1,6 @@
 # Maintainer: unicxrn
 pkgname=xerahs-git
-pkgver=r1323.9deedf9
+pkgver=r1601.ff89ec7b
 pkgrel=1
 pkgdesc="Cross-platform screen capture and file sharing tool (ShareX port) built with Avalonia UI"
 arch=('x86_64')
@@ -54,7 +54,7 @@ build() {
     export DOTNET_CLI_TELEMETRY_OPTOUT=1
     export DOTNET_NOLOGO=1
 
-    dotnet publish src/XerahS.App/XerahS.App.csproj \
+    dotnet publish src/desktop/app/XerahS.App/XerahS.App.csproj \
         -c Release \
         -r linux-x64 \
         --self-contained false \
@@ -79,7 +79,7 @@ package() {
     install -Dm644 "$srcdir/xerahs.desktop" "$pkgdir/usr/share/applications/xerahs.desktop"
 
     # Install icon
-    install -Dm644 "$srcdir/xerahs/src/XerahS.UI/Assets/Logo.png" \
+    install -Dm644 "$srcdir/xerahs/src/desktop/app/XerahS.UI/Assets/Logo.png" \
         "$pkgdir/usr/share/icons/hicolor/256x256/apps/xerahs.png"
 
     # Install license
