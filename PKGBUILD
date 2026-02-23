@@ -2,7 +2,7 @@
 pkgname=vsrvrt-git
 _pkgname=vs-rvrt
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Vapoursynth plugin for RVRT (Recurrent Video Restoration Transformer) video restoration"
 arch=('x86_64')
 url="https://github.com/Lyra-Vhess/vs-rvrt"
@@ -38,7 +38,7 @@ pkgver() {
 build() {
     cd "$_pkgname"
 
-    local _pyver=$(python -c "import sys; print(f'cp{sys.version_info.major}{sys.version_info.minor}')")
+    local _pyver=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
 
     pip download --no-cache-dir --no-deps --only-binary=:all: \
         --python-version "$_pyver" --implementation cp --abi none \
