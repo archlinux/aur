@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=dealve
-pkgver=1.0.1
-pkgrel=3
+pkgver=1.0.2
+pkgrel=1
 pkgdesc='Delve into game deals from your terminal'
 arch=('x86_64' 'aarch64')
 url='https://github.com/kurama/dealve-tui'
@@ -9,11 +9,8 @@ license=('MIT' 'APACHE')
 makedepends=('cargo')
 provides=('dealve')
 conflicts=('dealve-git' 'dealve-bin')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-    "$pkgname-$pkgver.tar.gz.asc")
-sha256sums=('8e1ad8d8e9f6de41ac166f23411766adb2b7cb178e3ed724ba1a9794ec5e0902'
-            'SKIP')
-validpgpkeys=('EF4B4CB5DFB8822216A473B1597AB12E66262898')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('b7361e77437307ba967eba74afbdb771712160e5980b5f6d5dfb2deb624f2ad7')
 
 prepare() {
     cd "dealve-tui-$pkgver"
