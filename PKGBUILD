@@ -1,6 +1,6 @@
 pkgname=planarally-bin
 pkgver=2026.1.2
-pkgrel=15
+pkgrel=18
 pkgdesc="PlanarAlly v${pkgver}"
 arch=('x86_64')
 url='https://www.planarally.io'
@@ -41,20 +41,26 @@ package() {
   find "$pkgdir/usr/lib/planarally" -type d -exec chmod 755 {} +
   find "$pkgdir/usr/lib/planarally" -type f -exec chmod 644 {} +
 
-  # PERFECT LAUNCHER - creates dirs at runtime
+  # Guys I got the jackpot
+  install -dm777 "$pkgdir/usr/lib/planarally/server/static/assets"
+  install -dm777 "$pkgdir/usr/lib/planarally/server/static/temp"
+  install -dm777 "$pkgdir/usr/lib/planarally/server/data"
+  install -dm777 "$pkgdir/usr/lib/planarally/server/config"
+
+  # Simple launcher - no mkdir needed (dirs pre-created)
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/planarally" << 'EOF'
 #!/bin/bash
 cd /usr/lib/planarally/server
 source venv/bin/activate
-mkdir -p static/assets static/temp data config
-chmod 755 static/assets static/temp data config
 exec python planarally.py "$@"
 EOF
 
-  # Add favicon with safety check
+  # Favicon with safety check
   [[ -f "$srcdir/PlanarAlly-$pkgver/favicon.ico" ]] && \
-    install -Dm644 "$srcdir/PlanarAlly-$pkgver/favicon.ico" "$pkgdir/usr/share/icons/hicolor/64x64/apps/planarally.png"
+    install -Dm644 "$srcdir/PlanarAlly-$pkgver/favicon.ico" \
+      "$pkgdir/usr/share/icons/hicolor/64x64/apps/planarally.png"
 
+  # Desktop entry
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/planarally.desktop" << 'EOF'
 [Desktop Entry]
 Name=PlanarAlly
