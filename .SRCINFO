@@ -1,0 +1,17 @@
+pkgbase = micro-top-git
+	pkgdesc = A tiny cross-platform system monitor written in Rust
+	pkgver = r3.feff24d
+	pkgrel = 1
+	url = https://github.com/KotanUA/Micro-top
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = micro-top
+	conflicts = micro-top
+	source = git+https://github.com/KotanUA/Micro-top.git
+	sha256sums = SKIP
+
+pkgname = micro-top-git
