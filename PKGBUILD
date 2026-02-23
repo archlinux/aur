@@ -9,7 +9,7 @@
 
 pkgname=logisim-evolution-bin
 _name=logisim-evolution
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc='An educational tool for designing and simulating digital logic circuits (binary version)'
 provides=('logisim-evolution')
@@ -23,7 +23,7 @@ source=("${_name}-${pkgver}.jar::${url}/releases/download/v${pkgver}/logisim-evo
     'logisim-evolution.desktop'
     'logisim-evolution.sh'
     'logisim-evolution.xml')
-sha256sums=('699f957a41d52c0b4fcbc2899a15a9182e91c1906e8b7d6534208004387161f4'
+sha256sums=('fe6386a3217a591bcc311a4eda49e1f43a389b499dd3d0f6f40f344fc85f2577'
             'c374a6cf85c020014b1c446c0a871842d98a283a14338662a2230e4110a6765e'
             'd5975cc0025905ab8a8a451ce4362ba876bed88008d3a5b2c0a7f664a85da1ba'
             '7d071777cfeb56d2ff957d8e63d2eb45157ff00f8c1c6943db4d5fee774d94fc')
