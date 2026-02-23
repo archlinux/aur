@@ -7,7 +7,7 @@ pkgbase = walrs
 	arch = aarch64
 	license = GPL3
 	depends = gcc-libs
-	source = https://pi66.xyz/files/alrs-1.1.7.tar.gz
+	source = https://pi66.xyz/files/walrs-1.1.7.tar.gz
 	sha256sums = 9233610064149952fc34ae7b4bad023ec38472f22cc1344dd2a14121cd611631
 
 pkgname = walrs
