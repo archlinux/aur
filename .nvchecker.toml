@@ -1,0 +1,4 @@
+[gnome-tuner-os-info]
+source = "git"
+git = "https://altlinux.space/alt-gnome/TunerOSInfo.git"
+prefix = "v"

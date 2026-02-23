@@ -1,0 +1,18 @@
+pkgbase = gnome-tuner-os-info
+	pkgdesc = System information and diagnostics for Tuner
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://altlinux.space/alt-gnome/TunerOSInfo
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = blueprint-compiler
+	makedepends = git
+	makedepends = gnome-tuner
+	makedepends = meson
+	depends = gtk4
+	depends = libadwaita
+	depends = python-gobject
+	source = git+https://altlinux.space/alt-gnome/TunerOSInfo.git#tag=v0.1.1
+	sha256sums = 3cda4db2632f36e4dffeb951517a4e0eab77abd0f6a14e6023fdf65b63246e4e
+
+pkgname = gnome-tuner-os-info
