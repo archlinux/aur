@@ -3,6 +3,7 @@
 pkgbase=omnissa-horizon-client
 pkgname=(
   'omnissa-horizon-client'
+  'omnissa-horizon-client-next'
   'omnissa-horizon-file-association'
   'omnissa-horizon-html5mmr'
   'omnissa-horizon-integrated-printing'
@@ -13,7 +14,7 @@ pkgver=2512
 _build1=8.17.0
 _build2=20187591429
 _cart="CART26FQ4_LIN_${pkgver}_TARBALL"
-pkgrel=4
+pkgrel=5
 pkgdesc='Omnissa Horizon Client - connect to Omnissa Horizon virtual desktop'
 arch=('x86_64')
 makedepends=('resvg' 'oxipng')
@@ -38,9 +39,14 @@ prepare() {
 build() {
 	cd "${srcdir}/Omnissa-Horizon-Client-Linux-${pkgver}-${_build1}-${_build2}/x64/"
 
-	# remove 'horizon-client-next', at least for now...
-	rm --recursive --force \
-		"Omnissa-Horizon-Client-${pkgver}-${_build1}-${_build2}.x64/usr/"{'bin/horizon-client-next','lib/omnissa/horizon/bin/horizon-client-next-bundle/','share/applications/horizon-client-next.desktop'}
+	# split off 'horizon-client-next'...
+	mkdir -p 'Omnissa-Horizon-Client-Next/usr/'{'bin','lib/omnissa/horizon/bin','share/applications'}
+	mv "Omnissa-Horizon-Client-${pkgver}-${_build1}-${_build2}.x64/usr/bin/horizon-client-next" \
+		'Omnissa-Horizon-Client-Next/usr/bin/'
+	mv "Omnissa-Horizon-Client-${pkgver}-${_build1}-${_build2}.x64/usr/lib/omnissa/horizon/bin/horizon-client-next-bundle/" \
+		'Omnissa-Horizon-Client-Next/usr/lib/omnissa/horizon/bin/'
+	mv "Omnissa-Horizon-Client-${pkgver}-${_build1}-${_build2}.x64/usr/share/applications/horizon-client-next.desktop" \
+		'Omnissa-Horizon-Client-Next/usr/share/applications/'
 
 	# remove duplicate libraries...
 	rm --force \
@@ -98,6 +104,7 @@ package_omnissa-horizon-client() {
 	optdepends=('alsa-lib: audio support via alsa'
 	            'freerdp: RDP remote desktop connections'
 	            'libpulse: audio support via pulse sound server'
+	            'omnissa-horizon-client-next: tech preview'
 	            'omnissa-horizon-html5mmr: HTML5 MultiMedia Redirection'
 	            'omnissa-horizon-integrated-printing: integrated printing'
 	            'omnissa-horizon-scanner-client: scanner client'
@@ -129,6 +136,15 @@ package_omnissa-horizon-client() {
 		install -D -m0644 "${srcdir}/icons/horizon-client-${SIZE}.png" \
 			"${pkgdir}/usr/share/icons/hicolor/${SIZE}x${SIZE}/apps/horizon-client.png"
 	done
+}
+
+package_omnissa-horizon-client-next() {
+	pkgdesc='Omnissa Horizon Client - connect to Omnissa Horizon virtual desktop - tech preview'
+	depends=('omnissa-horizon-client')
+
+	cd "${srcdir}/Omnissa-Horizon-Client-Linux-${pkgver}-${_build1}-${_build2}/x64/"
+
+	cp -a 'Omnissa-Horizon-Client-Next/usr/' "${pkgdir}/"
 }
 
 package_omnissa-horizon-file-association() {
