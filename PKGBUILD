@@ -21,8 +21,8 @@ depends=("ffmpeg"
 	 "fuse2")
 
 _source_main() {
-  _appimage="$_pkgname.AppImage"
-  source=("https://github.com/azahar-emu/azahar/releases/download/$pkgver/$_pkgname.AppImage")
+  _appimage="$_pkgname"_"$pkgver.AppImage"
+  source=($_appimage::"https://github.com/azahar-emu/azahar/releases/download/$pkgver/$_pkgname.AppImage")
   sha256sums=('1e49a0164bf19990bf4447bc285f23997b923189f36edd7cfebfd318ef5edaf3')
 }
 
@@ -40,7 +40,7 @@ build() {
 
 package() {
   # appimage
-  install -Dm755 "$_pkgname.AppImage" "$pkgdir/usr/bin/azahar"
+  install -Dm755 "$_appimage" "$pkgdir/usr/bin/azahar"
 
   # icon
   install -Dm644 "$_pkgname.svg" -t "$pkgdir/usr/share/pixmaps/"

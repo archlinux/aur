@@ -14,7 +14,7 @@ pkgbase = azahar-appimage
 	conflicts = azahar-git
 	conflicts = azahar-appimage-wayland
 	options = !strip
-	source = https://github.com/azahar-emu/azahar/releases/download/2124.3/azahar.AppImage
+	source = azahar_2124.3.AppImage::https://github.com/azahar-emu/azahar/releases/download/2124.3/azahar.AppImage
 	sha256sums = 1e49a0164bf19990bf4447bc285f23997b923189f36edd7cfebfd318ef5edaf3
 
 pkgname = azahar-appimage
