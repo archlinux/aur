@@ -6,7 +6,7 @@
 _pkgname="emsdk"
 pkgname="$_pkgname"
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The Emscripten SDK'
 url="https://github.com/emscripten-core/emsdk"
 license=('MIT')
@@ -22,7 +22,7 @@ _pkgext="tar.gz"
 source=(
   "$_pkgsrc.$_pkgext"::"https://github.com/emscripten-core/emsdk/archive/${pkgver}.$_pkgext"
 )
-sha256sums=('SKIP')
+sha256sums=('171b822a7928c2edf780885b2a0829d5de4ee8af7dbbdfb9475dea674f9d346a')
 
 package() {
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/emsdk" <<END
