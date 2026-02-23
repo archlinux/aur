@@ -1,0 +1,35 @@
+pkgbase = portable-unstable
+	pkgdesc = Fast, private, efficient sandbox for Linux desktop. Unstable beta versions.
+	pkgver = 13.3
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/Kraftland/portable
+	arch = x86_64
+	arch = aarch64
+	arch = loongarch64
+	license = GPL-3.0-or-later
+	makedepends = libarchive
+	makedepends = git
+	makedepends = go
+	depends = libnotify
+	depends = pipewire
+	depends = coreutils
+	depends = zenity
+	depends = xdg-dbus-proxy
+	depends = bubblewrap
+	depends = util-linux
+	depends = glibc
+	depends = dbus
+	depends = bash
+	depends = xdg-desktop-portal-impl
+	depends = grep
+	depends = systemd-libs
+	optdepends = at-spi2-core: accessibility
+	optdepends = orca: screen reader
+	optdepends = netsock: Per-app firewall
+	provides = portable
+	options = !debug
+	source = portable::git+https://github.com/Kraftland/portable.git#tag=13.3
+	md5sums = 99b5a6c1c4420c4abcf507b76487c071
+
+pkgname = portable-unstable
