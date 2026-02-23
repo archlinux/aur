@@ -24,10 +24,16 @@ sha256sums=('bc73bfc68b8e5bdfe1c5d8ab7165a8171ab48c7a7ece34aede7827a501e00e80')
 package() {
   cd "$srcdir/PlanarAlly-$pkgver"
 
-  install -dm755 "$pkgdir/usr/lib/planarally/server"
-  install -dm755 "$pkgdir/usr/lib/planarally/server"/{config,data,static,static/{assets,temp},src,src/config}
+  # OFFICIAL CLIENT BUILD (1m15s - creates server/templates/ + server/static/vite/)
+  cd client
+  npm ci
+  npm run build
 
-  cp -r server/* "$pkgdir/usr/lib/planarally/server/"
+  # Copy fully-built server
+  cd ..
+  install -dm755 "$pkgdir/usr/lib/planarally/server"
+  cp -a server/. "$pkgdir/usr/lib/planarally/server/"
+
   cd "$pkgdir/usr/lib/planarally/server"
   rm -rf .git
 
@@ -39,19 +45,21 @@ package() {
   find "$pkgdir/usr/lib/planarally" -type d -exec chmod 755 {} +
   find "$pkgdir/usr/lib/planarally" -type f -exec chmod 644 {} +
 
+  # Your working launcher
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/planarally" << 'EOF'
 #!/bin/bash
-DATA_DIR="\${XDG_DATA_HOME:-\$HOME/.local/share}/planarally"
-CONFIG_DIR="\${XDG_CONFIG_HOME:-\$HOME/.config}/planarally"
-mkdir -p "\$DATA_DIR" "\$CONFIG_DIR" "\$DATA_DIR"/{temp,save_backups}
-export PLANARALLY_DATA_DIR="\$DATA_DIR"
-export PLANARALLY_CONFIG_DIR="\$CONFIG_DIR"
+DATA_DIR="${XDG_DATA_HOME:-\$HOME/.local/share}/planarally"
+CONFIG_DIR="${XDG_CONFIG_HOME:-\$HOME/.config}/planarally"
+mkdir -p "$DATA_DIR" "$CONFIG_DIR" "$DATA_DIR"/{temp,save_backups}
+export PLANARALLY_DATA_DIR="$DATA_DIR"
+export PLANARALLY_CONFIG_DIR="$CONFIG_DIR"
 cd /usr/lib/planarally/server
 source venv/bin/activate
-exec python planarally.py "\$@"
+exec python planarally.py "$@"
 EOF
 
-  install -Dm644 server/favicon.ico "$pkgdir/usr/share/icons/hicolor/64x64/apps/planarally.png"
+  # Desktop entry + icon
+  install -Dm644 favicon.ico "$pkgdir/usr/share/icons/hicolor/64x64/apps/planarally.png"
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/planarally.desktop" << 'EOF'
 [Desktop Entry]
 Name=PlanarAlly
