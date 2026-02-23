@@ -1,0 +1,4 @@
+[maskprocessor]
+source = "git"
+git = "https://github.com/hashcat/maskprocessor.git"
+prefix = "v"
