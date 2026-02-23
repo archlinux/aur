@@ -1,7 +1,7 @@
 pkgbase = planarally-bin
 	pkgdesc = PlanarAlly v2026.1.2
 	pkgver = 2026.1.2
-	pkgrel = 4
+	pkgrel = 7
 	url = https://www.planarally.io
 	arch = x86_64
 	license = MIT
