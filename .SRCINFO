@@ -1,0 +1,22 @@
+pkgbase = excalidraw-svg-editor
+	pkgdesc = Use Excalidraw to edit SVG files on your desktop (meant mainly for handwriting embedding in typst)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/NullSeile/excalidraw-svg-editor
+	arch = x86_64
+	license = MIT
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk-4.1
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://github.com/NullSeile/excalidraw-svg-editor/releases/download/v0.1.0/Excalidraw.SVG.Editor_0.1.0_amd64.deb
+	sha256sums_x86_64 = 6c4bd3c401d4fe1ad44f199ca66b802a2c797b1d50d7e950c796899906afd105
+
+pkgname = excalidraw-svg-editor
