@@ -1,0 +1,18 @@
+post_install() {
+  mkdir -p /opt/agents/bin
+  groupadd -f agents
+}
+
+post_upgrade() {
+  mkdir -p /opt/agents/bin
+  groupadd -f agents
+}
+
+pre_remove() {
+  local members
+  members=$(getent group agents 2>/dev/null | cut -d: -f4)
+  if [[ -n "$members" ]]; then
+    echo "WARNING: agents group still has members: $members"
+    echo "Remove agent users before uninstalling (rovibe delete agent <user>)."
+  fi
+}

@@ -1,0 +1,14 @@
+pkgbase = rovibe
+	pkgdesc = OS-level isolated agent identities for AI coding agents
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/knowlen/rovibe
+	install = rovibe.install
+	arch = any
+	license = MIT
+	depends = bash
+	depends = git
+	source = rovibe-0.1.1.tar.gz::https://github.com/knowlen/rovibe/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = c0c6af306c2edef6c86a6fb5e936170e76534e3fede42d3ac4a2db917b0dc14a
+
+pkgname = rovibe
