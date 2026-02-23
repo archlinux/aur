@@ -1,8 +1,8 @@
 pkgbase = actdiag
-	pkgdesc = Generate activity-diagram image files from spec-text files.
+	pkgdesc = Generate activity-diagram images from spec-text files
 	pkgver = 3.1.0
-	pkgrel = 2
-	url = http://blockdiag.com/en/actdiag
+	pkgrel = 3
+	url = https://github.com/arenevier/actdiag
 	arch = any
 	license = Apache-2.0
 	checkdepends = python-docutils
@@ -18,7 +18,7 @@ pkgbase = actdiag
 	depends = python-funcparserlib
 	optdepends = python-reportlab: for PDF export
 	optdepends = python-docutils: for RST parser
-	source = actdiag-3.1.0.tar.gz::https://github.com/arenevier/actdiag/archive/v3.1.0.tar.gz
+	source = https://github.com/arenevier/actdiag/archive/refs/tags/v3.1.0.tar.gz
 	sha512sums = 95b82dee00bd09c40b80857fa477b83bed9d20ab59af7b69ea5b75ba08d5fca73d5323b0e6feecd01e81cb7edd96eef90ec9dce85d97778af42df7d617a16e35
 
 pkgname = actdiag
