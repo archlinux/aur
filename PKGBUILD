@@ -3,7 +3,7 @@
 _pkgauthor=boyter
 _pkgname=cs
 pkgname=${_pkgname}-bin
-pkgdesc="codespelunker - CLI code search tool that understands code structure and ranks results by relevance. No indexing required"
+pkgdesc="codespelunker - CLI code search tool that understands code structure and ranks results by relevance, with no indexing required"
 
 pkgver=3.0.0
 pkgrel=1
