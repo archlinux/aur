@@ -1,6 +1,6 @@
 # Maintainer: skint007 <archlinux.repose742@passmail.net>
 pkgname=yay-sys-tray-git
-pkgver=0.3.0.1
+pkgver=0.3.0.2
 pkgrel=1
 pkgdesc="Arch Linux system tray update checker using yay"
 arch=('any')
@@ -17,7 +17,11 @@ source=("git+https://github.com/skint007/yay-sys-tray.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd yay-sys-tray
+    # Fall back to the stamped pkgver= if source hasn't been fetched yet
+    # (e.g. when makepkg --printsrcinfo is run by CI before cloning)
+    local src="${srcdir}/yay-sys-tray"
+    [ -d "$src" ] || { echo "$pkgver"; return; }
+    cd "$src"
     git describe --tags --long --abbrev=7 2>/dev/null \
         | sed 's/^v//;s/-0-g[0-9a-f]*$//;s/-\([0-9]*\)-g\([0-9a-f]*\)$/.\1.\2/' \
         || printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
