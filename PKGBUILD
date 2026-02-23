@@ -23,8 +23,8 @@ source_aarch64=(
 # source+=("LICENSE::https://qoder.com/product-service")
 source+=("LICENSE")
 
-sha256sums_x86_64=('6db49a8ad86687dbe6dd6c772780552ca1ca23541494f75ca59f53e52f8b0fe1')
-sha256sums_aarch64=('2de57a3f30bdf38b71e5d775c0bb53ff6a1c596cae87bd197c3936c57651b8a2')
+sha256sums_x86_64=('d46c2473c189249f9957dd38064e2580b91c437cd96cef318368d4eec5d08ede')
+sha256sums_aarch64=('f2bf01e3459d57922ea510fb7e4b45f76951a1503495eac51f3962074e49533a')
 sha256sums=('5ef99067ca0a66509132e88eb4cf5b7f164174552fa0e3657c6278104811b021')
 
 package() {
