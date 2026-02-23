@@ -4,13 +4,13 @@
 # Contributor: Marcin Kulik <m@kulik.com>
 
 pkgname=asciinema-git
-pkgver=3.1.0.r0.gdabc40c
+pkgver=3.1.0.r15.gac5274c
 pkgrel=1
 pkgdesc="Record and share your terminal sessions"
 arch=('x86_64')
 url="https://github.com/asciinema/asciinema"
 license=('GPL-3.0-only')
-depends=('gcc-libs' 'glibc')
+depends=('libgcc' 'glibc')
 makedepends=('git' 'cargo')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
