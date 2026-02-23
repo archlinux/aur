@@ -1,0 +1,14 @@
+pkgbase = crql-locd
+	pkgdesc = Phase-Locked distortion for MEGA crunchiness by CRQL
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://crql.works/locd
+	arch = x86_64
+	groups = pro-audio
+	groups = vst3-plugins
+	groups = clap-plugins
+	license = custom:proprietary
+	source = crql-locd-1.0.6.zip::https://api.crql.works/download/locd/linux/latest
+	sha256sums = 9cee0b4594e077d804a2b76cc23788dc2e2ed8b7efff19780a96aad3e8a7fcc6
+
+pkgname = crql-locd
