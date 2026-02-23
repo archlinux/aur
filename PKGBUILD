@@ -1,6 +1,6 @@
 pkgname=planarally-bin
 pkgver=2026.1.2
-pkgrel=18
+pkgrel=19
 pkgdesc="PlanarAlly v${pkgver}"
 arch=('x86_64')
 url='https://www.planarally.io'
@@ -50,6 +50,9 @@ package() {
   # Simple launcher - no mkdir needed (dirs pre-created)
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/planarally" << 'EOF'
 #!/bin/bash
+# Kill any existing instances
+pkill -f planarally.py 2>/dev/null || true
+
 cd /usr/lib/planarally/server
 source venv/bin/activate
 exec python planarally.py "$@"
