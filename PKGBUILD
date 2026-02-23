@@ -1,6 +1,6 @@
 # Maintainer: lemonxah <lemonxah@github>
 pkgname=osc-chatbox
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="VRChat OSC Chatbox companion for Linux"
 arch=('x86_64')
