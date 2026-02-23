@@ -12,7 +12,7 @@ arch=("x86_64")
 provides=("sniplias")
 conflicts=("sniplias")
 source=("https://github.com/otomay/sniplias/releases/download/v$pkgver/sniplias-$pkgver-x86_64.tar.gz")
-sha256sums=("62c01f681709355bf232d9a1dd2348f702dc00443a74e9201f859746c4fbe659")
+sha256sums=("37d52ba88b1b810a4a10ecbd2542eeacf643d5e0157919a0fdfe4439eb4a3a8c")
 
 package() {
     install -Dm755 sniplias -t "$pkgdir/usr/bin"
