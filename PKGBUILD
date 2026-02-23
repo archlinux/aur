@@ -1,7 +1,7 @@
 # Maintainer: link2xt <link2xt@testrun.org>
 _name=pyoprf
 pkgname=python-$_name
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc="Python bindings for the liboprf library"
 arch=(any)
@@ -10,7 +10,7 @@ license=('LGPL-3.0-or-later')
 depends=(liboprf python-pyserial-asyncio)
 makedepends=(python-build python-installer python-wheel python-setuptools)
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz)
-b2sums=('22916713c559020c51094c854d0d49e60c7061b80a8ba1f870119556d39648021f7333c7bb1dea33d36608fef60636098bf246e1f0d7638f682af150bfbaf615')
+b2sums=('6f9420255ec6b729d3a362833aa7601373022ff5bef6ddee97793e4f999543a518887e3468a2e148c10ed9eb000bb1ed15e83ace6619f2ff6525ea99030d8dae')
 
 build() {
     cd $_name-$pkgver
