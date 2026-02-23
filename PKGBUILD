@@ -1,8 +1,8 @@
 # Maintainer: Kimiblock Moe
 pkgname=portable-git
 epoch=1
-pkgver=13.1.r45.g4c7f5bea
-pkgrel=2
+pkgver=14.0.alpha.6.r2.g398b7376
+pkgrel=1
 epoch=
 pkgdesc="Portable Sandboxing framework"
 arch=('x86_64' 'aarch64' 'loongarch64')
@@ -32,6 +32,7 @@ depends=(
 optdepends=(
 	'at-spi2-core: accessibility'
 	'orca: screen reader'
+	'netsock: Per-app firewall'
 )
 
 makedepends+=(
