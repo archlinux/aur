@@ -2,8 +2,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=proxmark3-iceman-git
-pkgver=4.20469.r164.g0e95c62
-pkgrel=1
+pkgver=4.20728.r390.g8936f99
+pkgrel=4
 pkgdesc='RRG / Iceman repo - Proxmark3 RDV4.0 and other Proxmark3 platforms.'
 arch=('x86_64')
 url='https://github.com/RfidResearchGroup/proxmark3'
@@ -16,9 +16,11 @@ _pydeps=(
 depends=(
   'bash'
   'bzip2'
-  'gcc-libs'
   'glibc'
   'readline'
+  'libgcc'
+  'libstdc++'
+  'lua'
   'lz4'
   'jansson'
   'perl'
