@@ -2,7 +2,7 @@
 
 pkgbase="matlab-gcc-meta"
 pkgver=R2025b
-pkgrel=3
+pkgrel=4
 pkgdesc="A high-level language for numerical computation and visualization"
 arch=(
   'any'
@@ -128,8 +128,8 @@ package_${_pkgname}() {
     'gcc${_gcc//.}'
   )
 
-  $( (( _flag )) && echo "provides=(matlab-${_release,,}-gcc=${_gcc})" )
-  $( (( _flag )) && echo "conflicts=(matlab-${_release,,}-gcc)" )
+  $( (( _flag )) && echo "provides=(matlab-${_release,,}-gcc-meta=${_gcc})" )
+  $( (( _flag )) && echo "conflicts=(matlab-${_release,,}-gcc-meta)" )
 
   install -vd \"\${pkgdir}/usr/bin\"
   ln -vsf 'gcc-${_gcc}' \"\${pkgdir}/usr/bin/gcc-matlab-${_release}\"

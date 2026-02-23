@@ -1,7 +1,7 @@
 pkgbase = matlab-gcc-meta
 	pkgdesc = A high-level language for numerical computation and visualization
 	pkgver = R2025b
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.mathworks.com/support/requirements/supported-compilers-linux.html
 	arch = any
 	license = 0BSD
@@ -17,98 +17,98 @@ pkgname = matlab-r2015a-gcc-meta
 pkgname = matlab-r2024b-gcc8-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2024b, GCC8, meta)
 	depends = gcc8
-	provides = matlab-r2024b-gcc=8
-	conflicts = matlab-r2024b-gcc
+	provides = matlab-r2024b-gcc-meta=8
+	conflicts = matlab-r2024b-gcc-meta
 
 pkgname = matlab-r2024b-gcc9-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2024b, GCC9, meta)
 	depends = gcc9
-	provides = matlab-r2024b-gcc=9
-	conflicts = matlab-r2024b-gcc
+	provides = matlab-r2024b-gcc-meta=9
+	conflicts = matlab-r2024b-gcc-meta
 
 pkgname = matlab-r2024b-gcc10-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2024b, GCC10, meta)
 	depends = gcc10
-	provides = matlab-r2024b-gcc=10
-	conflicts = matlab-r2024b-gcc
+	provides = matlab-r2024b-gcc-meta=10
+	conflicts = matlab-r2024b-gcc-meta
 
 pkgname = matlab-r2024b-gcc11-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2024b, GCC11, meta)
 	depends = gcc11
-	provides = matlab-r2024b-gcc=11
-	conflicts = matlab-r2024b-gcc
+	provides = matlab-r2024b-gcc-meta=11
+	conflicts = matlab-r2024b-gcc-meta
 
 pkgname = matlab-r2024b-gcc12-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2024b, GCC12, meta)
 	depends = gcc12
-	provides = matlab-r2024b-gcc=12
-	conflicts = matlab-r2024b-gcc
+	provides = matlab-r2024b-gcc-meta=12
+	conflicts = matlab-r2024b-gcc-meta
 
 pkgname = matlab-r2024a-gcc8-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2024a, GCC8, meta)
 	depends = gcc8
-	provides = matlab-r2024a-gcc=8
-	conflicts = matlab-r2024a-gcc
+	provides = matlab-r2024a-gcc-meta=8
+	conflicts = matlab-r2024a-gcc-meta
 
 pkgname = matlab-r2024a-gcc9-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2024a, GCC9, meta)
 	depends = gcc9
-	provides = matlab-r2024a-gcc=9
-	conflicts = matlab-r2024a-gcc
+	provides = matlab-r2024a-gcc-meta=9
+	conflicts = matlab-r2024a-gcc-meta
 
 pkgname = matlab-r2024a-gcc10-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2024a, GCC10, meta)
 	depends = gcc10
-	provides = matlab-r2024a-gcc=10
-	conflicts = matlab-r2024a-gcc
+	provides = matlab-r2024a-gcc-meta=10
+	conflicts = matlab-r2024a-gcc-meta
 
 pkgname = matlab-r2024a-gcc11-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2024a, GCC11, meta)
 	depends = gcc11
-	provides = matlab-r2024a-gcc=11
-	conflicts = matlab-r2024a-gcc
+	provides = matlab-r2024a-gcc-meta=11
+	conflicts = matlab-r2024a-gcc-meta
 
 pkgname = matlab-r2024a-gcc12-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2024a, GCC12, meta)
 	depends = gcc12
-	provides = matlab-r2024a-gcc=12
-	conflicts = matlab-r2024a-gcc
+	provides = matlab-r2024a-gcc-meta=12
+	conflicts = matlab-r2024a-gcc-meta
 
 pkgname = matlab-r2021a-gcc7-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2021a, GCC7, meta)
 	depends = gcc7
-	provides = matlab-r2021a-gcc=7
-	conflicts = matlab-r2021a-gcc
+	provides = matlab-r2021a-gcc-meta=7
+	conflicts = matlab-r2021a-gcc-meta
 
 pkgname = matlab-r2021a-gcc8-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2021a, GCC8, meta)
 	depends = gcc8
-	provides = matlab-r2021a-gcc=8
-	conflicts = matlab-r2021a-gcc
+	provides = matlab-r2021a-gcc-meta=8
+	conflicts = matlab-r2021a-gcc-meta
 
 pkgname = matlab-r2021a-gcc9-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2021a, GCC9, meta)
 	depends = gcc9
-	provides = matlab-r2021a-gcc=9
-	conflicts = matlab-r2021a-gcc
+	provides = matlab-r2021a-gcc-meta=9
+	conflicts = matlab-r2021a-gcc-meta
 
 pkgname = matlab-r2021b-gcc7-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2021b, GCC7, meta)
 	depends = gcc7
-	provides = matlab-r2021b-gcc=7
-	conflicts = matlab-r2021b-gcc
+	provides = matlab-r2021b-gcc-meta=7
+	conflicts = matlab-r2021b-gcc-meta
 
 pkgname = matlab-r2021b-gcc8-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2021b, GCC8, meta)
 	depends = gcc8
-	provides = matlab-r2021b-gcc=8
-	conflicts = matlab-r2021b-gcc
+	provides = matlab-r2021b-gcc-meta=8
+	conflicts = matlab-r2021b-gcc-meta
 
 pkgname = matlab-r2021b-gcc9-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2021b, GCC9, meta)
 	depends = gcc9
-	provides = matlab-r2021b-gcc=9
-	conflicts = matlab-r2021b-gcc
+	provides = matlab-r2021b-gcc-meta=9
+	conflicts = matlab-r2021b-gcc-meta
 
 pkgname = matlab-r2010b-gcc-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2010b, GCC4.3, meta)
@@ -125,50 +125,50 @@ pkgname = matlab-r2013b-gcc-meta
 pkgname = matlab-r2022a-gcc7-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2022a, GCC7, meta)
 	depends = gcc7
-	provides = matlab-r2022a-gcc=7
-	conflicts = matlab-r2022a-gcc
+	provides = matlab-r2022a-gcc-meta=7
+	conflicts = matlab-r2022a-gcc-meta
 
 pkgname = matlab-r2022a-gcc8-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2022a, GCC8, meta)
 	depends = gcc8
-	provides = matlab-r2022a-gcc=8
-	conflicts = matlab-r2022a-gcc
+	provides = matlab-r2022a-gcc-meta=8
+	conflicts = matlab-r2022a-gcc-meta
 
 pkgname = matlab-r2022a-gcc9-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2022a, GCC9, meta)
 	depends = gcc9
-	provides = matlab-r2022a-gcc=9
-	conflicts = matlab-r2022a-gcc
+	provides = matlab-r2022a-gcc-meta=9
+	conflicts = matlab-r2022a-gcc-meta
 
 pkgname = matlab-r2022a-gcc10-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2022a, GCC10, meta)
 	depends = gcc10
-	provides = matlab-r2022a-gcc=10
-	conflicts = matlab-r2022a-gcc
+	provides = matlab-r2022a-gcc-meta=10
+	conflicts = matlab-r2022a-gcc-meta
 
 pkgname = matlab-r2022b-gcc7-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2022b, GCC7, meta)
 	depends = gcc7
-	provides = matlab-r2022b-gcc=7
-	conflicts = matlab-r2022b-gcc
+	provides = matlab-r2022b-gcc-meta=7
+	conflicts = matlab-r2022b-gcc-meta
 
 pkgname = matlab-r2022b-gcc8-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2022b, GCC8, meta)
 	depends = gcc8
-	provides = matlab-r2022b-gcc=8
-	conflicts = matlab-r2022b-gcc
+	provides = matlab-r2022b-gcc-meta=8
+	conflicts = matlab-r2022b-gcc-meta
 
 pkgname = matlab-r2022b-gcc9-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2022b, GCC9, meta)
 	depends = gcc9
-	provides = matlab-r2022b-gcc=9
-	conflicts = matlab-r2022b-gcc
+	provides = matlab-r2022b-gcc-meta=9
+	conflicts = matlab-r2022b-gcc-meta
 
 pkgname = matlab-r2022b-gcc10-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2022b, GCC10, meta)
 	depends = gcc10
-	provides = matlab-r2022b-gcc=10
-	conflicts = matlab-r2022b-gcc
+	provides = matlab-r2022b-gcc-meta=10
+	conflicts = matlab-r2022b-gcc-meta
 
 pkgname = matlab-r2018a-gcc-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2018a, GCC6, meta)
@@ -197,74 +197,74 @@ pkgname = matlab-r2014b-gcc-meta
 pkgname = matlab-r2025a-gcc8-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2025a, GCC8, meta)
 	depends = gcc8
-	provides = matlab-r2025a-gcc=8
-	conflicts = matlab-r2025a-gcc
+	provides = matlab-r2025a-gcc-meta=8
+	conflicts = matlab-r2025a-gcc-meta
 
 pkgname = matlab-r2025a-gcc9-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2025a, GCC9, meta)
 	depends = gcc9
-	provides = matlab-r2025a-gcc=9
-	conflicts = matlab-r2025a-gcc
+	provides = matlab-r2025a-gcc-meta=9
+	conflicts = matlab-r2025a-gcc-meta
 
 pkgname = matlab-r2025a-gcc10-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2025a, GCC10, meta)
 	depends = gcc10
-	provides = matlab-r2025a-gcc=10
-	conflicts = matlab-r2025a-gcc
+	provides = matlab-r2025a-gcc-meta=10
+	conflicts = matlab-r2025a-gcc-meta
 
 pkgname = matlab-r2025a-gcc11-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2025a, GCC11, meta)
 	depends = gcc11
-	provides = matlab-r2025a-gcc=11
-	conflicts = matlab-r2025a-gcc
+	provides = matlab-r2025a-gcc-meta=11
+	conflicts = matlab-r2025a-gcc-meta
 
 pkgname = matlab-r2025a-gcc12-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2025a, GCC12, meta)
 	depends = gcc12
-	provides = matlab-r2025a-gcc=12
-	conflicts = matlab-r2025a-gcc
+	provides = matlab-r2025a-gcc-meta=12
+	conflicts = matlab-r2025a-gcc-meta
 
 pkgname = matlab-r2025a-gcc13-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2025a, GCC13, meta)
 	depends = gcc13
-	provides = matlab-r2025a-gcc=13
-	conflicts = matlab-r2025a-gcc
+	provides = matlab-r2025a-gcc-meta=13
+	conflicts = matlab-r2025a-gcc-meta
 
 pkgname = matlab-r2025b-gcc8-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2025b, GCC8, meta)
 	depends = gcc8
-	provides = matlab-r2025b-gcc=8
-	conflicts = matlab-r2025b-gcc
+	provides = matlab-r2025b-gcc-meta=8
+	conflicts = matlab-r2025b-gcc-meta
 
 pkgname = matlab-r2025b-gcc9-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2025b, GCC9, meta)
 	depends = gcc9
-	provides = matlab-r2025b-gcc=9
-	conflicts = matlab-r2025b-gcc
+	provides = matlab-r2025b-gcc-meta=9
+	conflicts = matlab-r2025b-gcc-meta
 
 pkgname = matlab-r2025b-gcc10-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2025b, GCC10, meta)
 	depends = gcc10
-	provides = matlab-r2025b-gcc=10
-	conflicts = matlab-r2025b-gcc
+	provides = matlab-r2025b-gcc-meta=10
+	conflicts = matlab-r2025b-gcc-meta
 
 pkgname = matlab-r2025b-gcc11-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2025b, GCC11, meta)
 	depends = gcc11
-	provides = matlab-r2025b-gcc=11
-	conflicts = matlab-r2025b-gcc
+	provides = matlab-r2025b-gcc-meta=11
+	conflicts = matlab-r2025b-gcc-meta
 
 pkgname = matlab-r2025b-gcc12-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2025b, GCC12, meta)
 	depends = gcc12
-	provides = matlab-r2025b-gcc=12
-	conflicts = matlab-r2025b-gcc
+	provides = matlab-r2025b-gcc-meta=12
+	conflicts = matlab-r2025b-gcc-meta
 
 pkgname = matlab-r2025b-gcc13-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2025b, GCC13, meta)
 	depends = gcc13
-	provides = matlab-r2025b-gcc=13
-	conflicts = matlab-r2025b-gcc
+	provides = matlab-r2025b-gcc-meta=13
+	conflicts = matlab-r2025b-gcc-meta
 
 pkgname = matlab-r2011b-gcc-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2011b, GCC4.3, meta)
@@ -277,20 +277,20 @@ pkgname = matlab-r2011a-gcc-meta
 pkgname = matlab-r2020b-gcc7-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2020b, GCC7, meta)
 	depends = gcc7
-	provides = matlab-r2020b-gcc=7
-	conflicts = matlab-r2020b-gcc
+	provides = matlab-r2020b-gcc-meta=7
+	conflicts = matlab-r2020b-gcc-meta
 
 pkgname = matlab-r2020b-gcc8-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2020b, GCC8, meta)
 	depends = gcc8
-	provides = matlab-r2020b-gcc=8
-	conflicts = matlab-r2020b-gcc
+	provides = matlab-r2020b-gcc-meta=8
+	conflicts = matlab-r2020b-gcc-meta
 
 pkgname = matlab-r2020b-gcc9-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2020b, GCC9, meta)
 	depends = gcc9
-	provides = matlab-r2020b-gcc=9
-	conflicts = matlab-r2020b-gcc
+	provides = matlab-r2020b-gcc-meta=9
+	conflicts = matlab-r2020b-gcc-meta
 
 pkgname = matlab-r2020a-gcc-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2020a, GCC6, meta)
@@ -323,50 +323,50 @@ pkgname = matlab-r2012a-gcc-meta
 pkgname = matlab-r2023b-gcc8-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2023b, GCC8, meta)
 	depends = gcc8
-	provides = matlab-r2023b-gcc=8
-	conflicts = matlab-r2023b-gcc
+	provides = matlab-r2023b-gcc-meta=8
+	conflicts = matlab-r2023b-gcc-meta
 
 pkgname = matlab-r2023b-gcc9-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2023b, GCC9, meta)
 	depends = gcc9
-	provides = matlab-r2023b-gcc=9
-	conflicts = matlab-r2023b-gcc
+	provides = matlab-r2023b-gcc-meta=9
+	conflicts = matlab-r2023b-gcc-meta
 
 pkgname = matlab-r2023b-gcc10-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2023b, GCC10, meta)
 	depends = gcc10
-	provides = matlab-r2023b-gcc=10
-	conflicts = matlab-r2023b-gcc
+	provides = matlab-r2023b-gcc-meta=10
+	conflicts = matlab-r2023b-gcc-meta
 
 pkgname = matlab-r2023b-gcc11-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2023b, GCC11, meta)
 	depends = gcc11
-	provides = matlab-r2023b-gcc=11
-	conflicts = matlab-r2023b-gcc
+	provides = matlab-r2023b-gcc-meta=11
+	conflicts = matlab-r2023b-gcc-meta
 
 pkgname = matlab-r2023a-gcc7-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2023a, GCC7, meta)
 	depends = gcc7
-	provides = matlab-r2023a-gcc=7
-	conflicts = matlab-r2023a-gcc
+	provides = matlab-r2023a-gcc-meta=7
+	conflicts = matlab-r2023a-gcc-meta
 
 pkgname = matlab-r2023a-gcc8-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2023a, GCC8, meta)
 	depends = gcc8
-	provides = matlab-r2023a-gcc=8
-	conflicts = matlab-r2023a-gcc
+	provides = matlab-r2023a-gcc-meta=8
+	conflicts = matlab-r2023a-gcc-meta
 
 pkgname = matlab-r2023a-gcc9-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2023a, GCC9, meta)
 	depends = gcc9
-	provides = matlab-r2023a-gcc=9
-	conflicts = matlab-r2023a-gcc
+	provides = matlab-r2023a-gcc-meta=9
+	conflicts = matlab-r2023a-gcc-meta
 
 pkgname = matlab-r2023a-gcc10-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2023a, GCC10, meta)
 	depends = gcc10
-	provides = matlab-r2023a-gcc=10
-	conflicts = matlab-r2023a-gcc
+	provides = matlab-r2023a-gcc-meta=10
+	conflicts = matlab-r2023a-gcc-meta
 
 pkgname = matlab-r2024b-gcc-fortran-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2024b, GCC10 Fortran, meta)
