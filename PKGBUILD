@@ -1,7 +1,7 @@
 # Maintainer: Damglador <damglador@gmail.com>
 
 pkgname=zerotier-qt
-pkgver=0.9
+pkgver=1.0
 pkgrel=1
 pkgdesc="A Qt front-end for ZeroTier"
 arch=('any')
@@ -20,7 +20,7 @@ package() {
   install -Dm644 assets/zerotier-qt.desktop \
     "${pkgdir}/usr/share/applications/zerotier-qt.desktop"
   install -Dm644 assets/zerotier-qt.svg \
-    "${pkgdir}/usr/share/icons/zerotier-qt.svg"
+    "${pkgdir}/usr/share/icons/hicolor/scalable/apps/zerotier-qt.svg"
   install -Dm644 assets/zerotier-central-new.png \
     "${pkgdir}/usr/share/pixmaps/zerotier-central-new.png"
   install -Dm644 assets/zerotier-central-old.png \

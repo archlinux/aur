@@ -1,6 +1,6 @@
 pkgbase = zerotier-qt
 	pkgdesc = A Qt front-end for ZeroTier
-	pkgver = 0.9
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/Damglador/zerotier-qt
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = zerotier-qt
 	depends = python
 	depends = pyside6
 	depends = zerotier-one
-	source = zerotier-qt::git+https://github.com/Damglador/zerotier-qt#tag=0.9
+	source = zerotier-qt::git+https://github.com/Damglador/zerotier-qt#tag=1.0
 	sha256sums = SKIP
 
 pkgname = zerotier-qt
