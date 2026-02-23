@@ -3,7 +3,7 @@
 
 pkgname=s3tui
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple S3 CLI client for file transfers and more"
 arch=('x86_64')
 url="https://github.com/softberries/s3tui"
@@ -24,17 +24,17 @@ build() {
 	cd "$pkgname-$pkgver"
 
 	export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
+	export CARGO_TARGET_DIR=target
 	export CARGO_PROFILE_RELEASE_LTO=false
 
-    cargo build --frozen --release --all-features
+	cargo build --frozen --release --all-features
 }
 
 check() {
 	cd "$pkgname-$pkgver"
 
 	export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features
+	cargo test --frozen --all-features
 }
 
 package() {
