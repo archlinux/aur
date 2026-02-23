@@ -32,7 +32,7 @@ sha256sums=('a0995afcd8a07ddf3fc88efff42162470d0c288595e63566eb064502eb5bbc3d'
 
 prepare() {
   cd "$srcdir/server"
-  sed -i '1s;^;#!/usr/bin/env python3\n;' planarserver.py
+  #sed -i '1s;^;#!/usr/bin/env python3\n;' planarserver.py
 }
 
 package() {
@@ -42,7 +42,7 @@ package() {
   install -Dm 644 planarally.sysusers "$pkgdir/usr/lib/sysusers.d/planarally.conf"
   install -Dm 644 planarally.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/planarally.conf"
   cp -dr --no-preserve='ownership' server "$pkgdir/opt/planarally/"
-  chown -R planarally:planarally "$pkgdir/opt/planarally"
+  #chown -R planarally:planarally "$pkgdir/opt/planarally"
   ln -s "/opt/planarally/server/planarserver.py" "$pkgdir/usr/bin/planarally"
 }
 
