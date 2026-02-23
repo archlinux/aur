@@ -7,7 +7,7 @@ arch=('x86_64' 'aarch64')
 url="https://qoder.com/cli"
 license=('LicenseRef-Qoder-Product-Service')
 options=('!strip' '!debug')
-provides=('qoder-cli')
+provides=('qoderclibin')
 conflicts=('qoder-cli')
 
 # Binary tarballs from manifest
@@ -20,7 +20,8 @@ source_aarch64=(
 )
 
 # We include a local LICENSE file (downloaded from https://qoder.com/product-service)
-source+=("LICENSE::https://qoder.com/product-service")
+# source+=("LICENSE::https://qoder.com/product-service")
+source+=("LICENSE")
 
 sha256sums_x86_64=('6db49a8ad86687dbe6dd6c772780552ca1ca23541494f75ca59f53e52f8b0fe1')
 sha256sums_aarch64=('2de57a3f30bdf38b71e5d775c0bb53ff6a1c596cae87bd197c3936c57651b8a2')
