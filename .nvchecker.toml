@@ -1,0 +1,3 @@
+[lua-rs]
+source = "git"
+git = "https://github.com/CppCXY/lua-rs.git"
