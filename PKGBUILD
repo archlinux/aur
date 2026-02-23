@@ -1,5 +1,4 @@
-# Maintainer: Your Name <your.email@example.com>
-
+# Maintainer: Keithsel <keithsel@disroot.org>
 pkgname=nmtui-go
 pkgver=0.2.5
 pkgrel=1
