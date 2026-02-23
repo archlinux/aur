@@ -1,7 +1,7 @@
 pkgbase = bin-cpuflags-x86
 	pkgdesc = A small CLI tool to detect CPU flags (instruction sets) of X86 binaries
 	pkgver = 1.0.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/HanabishiRecca/bin-cpuflags-x86
 	arch = x86_64
 	arch = i686
