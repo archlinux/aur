@@ -1,7 +1,7 @@
 _pkgname=kwin6-bismuth-decoration
 pkgname=${_pkgname}-git
 pkgver=r7.c2ba04d
-pkgrel=2
+pkgrel=3
 pkgdesc='Bismuth window decoration for Plasma 6'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/HanabishiRecca/${_pkgname}"
@@ -42,4 +42,5 @@ build() {
 
 package() {
     DESTDIR="${pkgdir}" cmake --install 'build'
+    install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
