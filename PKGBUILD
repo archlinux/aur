@@ -2,7 +2,7 @@
 
 pkgname=astrojs-ts-plugin
 _pkgname=${pkgname#astrojs-}
-pkgver=1.10.5
+pkgver=1.10.6
 pkgrel=1
 pkgdesc="TypeScript plugin adding support for .astro imports in .ts files"
 url="https://github.com/withastro/language-tools/tree/main/packages/ts-plugin#readme"
@@ -12,7 +12,7 @@ depends=("nodejs")
 makedepends=("npm")
 source=("https://registry.npmjs.org/@astrojs/${_pkgname}/-/${_pkgname}-${pkgver}.tgz")
 noextract=("${_pkgname}-${pkgver}.tgz")
-sha256sums=('a5945496ed0ef51635a70ab521046375365f85febeb8130ce5a9f44ee99990e7')
+sha256sums=('0c53c704e8aa1d9d3aa1cb45e9458dc5ce91eea25f998c55435a5e5495d0c1ab')
 
 prepare() {
   tar xf "${_pkgname}-${pkgver}.tgz"
