@@ -6,7 +6,7 @@
 _pkgname="ultimate-doom-builder"
 pkgname="$_pkgname-git"
 pkgver=3.0.0.4298.ad1ddaf
-pkgrel=1
+pkgrel=2
 pkgdesc="A level editor for Doom-engine games"
 url="https://github.com/UltimateDoomBuilder/UltimateDoomBuilder"
 license=('GPL-3.0-or-later')
@@ -50,6 +50,7 @@ pkgver() {
 build() {
   cd "$_pkgsrc"
   msbuild /nologo /verbosity:minimal -p:Configuration=Release BuilderMono.sln
+  make native
 }
 
 package() {
