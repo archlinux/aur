@@ -1,5 +1,5 @@
 pkgbase = emailbook-rs-bin
-	pkgdesc = A minimalistic email address book that integrates with aerc
+	pkgdesc = A minimalistic email address book with aerc integration
 	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/aik2mlj/emailbook-rs
