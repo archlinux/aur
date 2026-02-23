@@ -5,6 +5,7 @@ pkgdesc="Syncovery File Synchronization Tool"
 arch=('x86_64')
 url="https://www.syncovery.com"
 license=('custom')
+install=syncovery-bin.install
 depends=('glibc' 'gcc-libs')
 makedepends=('curl' 'libarchive')
 provides=('syncovery')

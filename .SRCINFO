@@ -3,6 +3,7 @@ pkgbase = syncovery-bin
 	pkgver = 11.12.13
 	pkgrel = 2
 	url = https://www.syncovery.com
+	install = syncovery-bin.install
 	arch = x86_64
 	license = custom
 	makedepends = curl

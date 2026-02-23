@@ -1,0 +1,20 @@
+post_install() {
+  echo ""
+  echo "Syncovery has been installed."
+  echo ""
+  echo "To start the scheduler service:"
+  echo "  sudo systemctl enable --now syncoverycl.service"
+  echo ""
+  echo "Then open your browser to:"
+  echo "  http://127.0.0.1:8999 or http://localhost:8999"
+  echo "If it isn't accesible check your firewall"
+  echo ""
+}
+
+post_upgrade() {
+  echo ""
+  echo "Syncovery has been upgraded."
+  echo "If the service was running, consider restarting it:"
+  echo "  sudo systemctl restart syncoverycl.service"
+  echo ""
+}
