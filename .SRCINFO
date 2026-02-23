@@ -1,7 +1,7 @@
 pkgbase = prismlauncher-offline-bin
 	pkgdesc = Prism Launcher fork with offline account support enabled
-	pkgver = 10.0.2
-	pkgrel = 3
+	pkgver = 10.0.5
+	pkgrel = 1
 	url = https://github.com/Diegiwg/PrismLauncher-Cracked
 	arch = x86_64
 	arch = aarch64
@@ -32,9 +32,9 @@ pkgbase = prismlauncher-offline-bin
 	conflicts = prismlauncher
 	conflicts = prismlauncher-offline
 	options = !strip
-	source_x86_64 = prism-portable.tar.gz::https://github.com/Diegiwg/PrismLauncher-Cracked/releases/download/10.0.2/PrismLauncher-Linux-Qt6-Portable-10.0.2.tar.gz
-	sha256sums_x86_64 = SKIP
-	source_aarch64 = prism-portable.tar.gz::https://github.com/Diegiwg/PrismLauncher-Cracked/releases/download/10.0.2/PrismLauncher-Linux-aarch64-Qt6-Portable-10.0.2.tar.gz
-	sha256sums_aarch64 = SKIP
+	source_x86_64 = prism-portable.tar.gz::https://github.com/Diegiwg/PrismLauncher-Cracked/releases/download/10.0.5/PrismLauncher-Linux-Qt6-Portable-10.0.5.tar.gz
+	sha256sums_x86_64 = 3fdc9063f51711033c3fa1b8a8b67a1b1123689fc274652eb7b2c6763d51132d
+	source_aarch64 = prism-portable.tar.gz::https://github.com/Diegiwg/PrismLauncher-Cracked/releases/download/10.0.5/PrismLauncher-Linux-aarch64-Qt6-Portable-10.0.5.tar.gz
+	sha256sums_aarch64 = 3fdc9063f51711033c3fa1b8a8b67a1b1123689fc274652eb7b2c6763d51132d
 
 pkgname = prismlauncher-offline-bin
