@@ -1,0 +1,20 @@
+[Unit]
+Description=Iroh DNS server (pkarr relay)
+Documentation=https://github.com/n0-computer/iroh
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=iroh-dns-server
+Group=iroh-dns-server
+ExecStart=/usr/bin/iroh-dns-server --config /etc/iroh-dns-server.toml
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+StateDirectory=iroh-dns-server
+Environment=IROH_DNS_DATA_DIR=/var/lib/iroh-dns-server
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
