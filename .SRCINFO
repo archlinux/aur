@@ -1,0 +1,19 @@
+pkgbase = rofi-webapps-manager
+	pkgdesc = A rofi-based web app manager for Chromium-based browsers
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/MHashir09/Rofi-WebApps-Manager
+	install = webapp-manager.install
+	arch = any
+	license = MIT
+	depends = curl
+	depends = dunst
+	depends = bash
+	depends = rofi-wayland
+	optdepends = rofi: X11 alternative to rofi-wayland
+	source = rofi-webapps-manager-0.1.0.tar.gz::https://github.com/MHashir09/Rofi-WebApps-Manager/archive/v0.1.0.tar.gz
+	source = webapp-manager.install
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = rofi-webapps-manager
