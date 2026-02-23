@@ -1,0 +1,4 @@
+[mtkclient]
+source = "git"
+git = "https://github.com/bkerler/mtkclient.git"
+prefix = "v"

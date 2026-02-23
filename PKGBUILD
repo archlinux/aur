@@ -1,12 +1,12 @@
 # Maintainer:
 # Contributor: Ben Westover <kwestover.kw@gmail.com>
 
-: ${_commit:=094113b8d328187a2dc0e0712dc12d4f5677d9af}
+: ${_commit:=62b4a0aad505fd314b6842b4518ed9e0f21b35b9}
 
 _pkgname="mtkclient"
 pkgname="$_pkgname"
-pkgver=2.1.2
-pkgrel=2
+pkgver=2.1.3
+pkgrel=1
 pkgdesc="Unofficial MTK reverse engineering and flash tool"
 url="https://github.com/bkerler/mtkclient"
 license=('GPL-3.0-only')
