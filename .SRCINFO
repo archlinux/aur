@@ -1,13 +1,13 @@
 pkgbase = taskforge-bin
-  pkgdesc = Taskforge CLI (prebuilt binary)
-  pkgver = 0.0.0
-  pkgrel = 1
-  url = https://github.com/gentij/taskforge
-  arch = x86_64
-  license = custom
-  provides = taskforge
-  conflicts = taskforge
-  source = taskforge::https://github.com/gentij/taskforge/releases/download/v0.0.0/taskforge_linux_amd64
-  sha256sums = SKIP
+	pkgdesc = Taskforge CLI (prebuilt binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/gentij/taskforge
+	arch = x86_64
+	license = custom
+	provides = taskforge
+	conflicts = taskforge
+	source = https://github.com/gentij/taskforge/releases/download/v0.1.0/taskforge_linux_amd64.tar.gz
+	sha256sums = edea57a86a19dc2a043171a6766bae99be543a989199bd45df9bca44d38766cb
 
 pkgname = taskforge-bin
