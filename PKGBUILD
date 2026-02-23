@@ -21,8 +21,8 @@ depends=("ffmpeg"
 	 "fuse2")
 
 _source_main() {
-  _appimage="$_pkgname-wayland.AppImage"
-  source=("https://github.com/azahar-emu/azahar/releases/download/$pkgver/$_pkgname-wayland.AppImage")
+  _appimage="$_pkgname-wayland"_"$pkgver.AppImage"
+  source=($_appimage::"https://github.com/azahar-emu/azahar/releases/download/$pkgver/$_pkgname-wayland.AppImage")
   sha256sums=('9a9384578fd1a4301fde8f8ddfb925a9a24eb91f236278109e044d608c2d439d')
 }
 
@@ -40,7 +40,7 @@ build() {
 
 package() {
   # appimage
-  install -Dm755 "$_pkgname-wayland.AppImage" "$pkgdir/usr/bin/azahar"
+  install -Dm755 "$_appimage" "$pkgdir/usr/bin/azahar"
 
   # icon
   install -Dm644 "$_pkgname.svg" -t "$pkgdir/usr/share/pixmaps/"
