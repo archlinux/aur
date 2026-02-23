@@ -1,0 +1,14 @@
+[Unit]
+Description=DFSORT File Auto-Sorter
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/dfsort --daemon
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target
