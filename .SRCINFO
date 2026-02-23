@@ -1,6 +1,6 @@
 pkgbase = himitsu-ssh
 	pkgdesc = Himitsu integration for SSH
-	pkgver = 0.4
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://git.sr.ht/~sircmpwn/himitsu-ssh
 	install = himitsu-ssh.install
@@ -10,9 +10,9 @@ pkgbase = himitsu-ssh
 	makedepends = hare-ssh
 	makedepends = scdoc
 	depends = himitsu
-	source = himitsu-ssh-0.4.tar.gz::https://git.sr.ht/~sircmpwn/himitsu-ssh/archive/0.4.tar.gz
+	source = himitsu-ssh-0.10.0.tar.gz::https://git.sr.ht/~sircmpwn/himitsu-ssh/archive/0.10.0.tar.gz
 	source = hissh-agent.service
-	sha256sums = 57ba2368561afbffe63bfae1b9e531b1a72ba6673a6df1d69b02c67d206e72ff
+	sha256sums = 9c787d5f185876e3442ddd22338f769b2f24cca33525d9278ee6d70327e18a58
 	sha256sums = cff7c70946d9d06f06588e3a3b8c833eb67204a7c936f3f77ee3c8b18974a2ff
 
 pkgname = himitsu-ssh
