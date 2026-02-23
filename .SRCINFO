@@ -1,0 +1,13 @@
+pkgbase = optomizer
+	pkgdesc = Optomizer Java application
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/AlphaWolf6940/Optomizer
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = jdk-openjdk
+	source = git+https://github.com/AlphaWolf6940/Optomizer.git
+	sha256sums = SKIP
+
+pkgname = optomizer
