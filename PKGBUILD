@@ -2,17 +2,17 @@
 
 pkgname=ciyue
 _srcname=Ciyue
-pkgver=1.21.0
+pkgver=1.22.1
 pkgrel=1
 pkgdesc="A simple mdict dictionary with Android/Windows/Linux support"
 url="https://mumulhl.eu.org/${_srcname}"
 license=('MIT')
 arch=('x86_64')
-depends=('gtk3' 'gstreamer' 'gst-plugins-base' 'libkeybinder3' 'libayatana-appindicator')
+depends=('gtk3' 'gstreamer' 'gst-plugins-base' 'libkeybinder3' 'libayatana-appindicator' 'wpewebkit')
 makedepends=('clang' 'cmake' 'ninja' 'fvm' 'patchelf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mumu-lhl/${_srcname}/archive/refs/tags/v${pkgver}.tar.gz"
 	"${pkgname}.desktop")
-sha256sums=('861444561ddcc29dae2eb8c283e9801367afb62599b34a68b9c0b745cead8f17'
+sha256sums=('4c9a8b9660705494abb4ef8a4b3506e520f4c99d9807606d560142b8df549c0b'
             '5a6214e368452ed4be188b7e74395f7f0e34f3101d109b7e814d6ac0a291b1cc')
 
 prepare() {
