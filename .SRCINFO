@@ -8,7 +8,6 @@ pkgbase = smartcrop-cli
 	makedepends = npm
 	depends = nodejs
 	depends = imagemagick
-	optdepends = opencv: Face detection support
 	source = smartcrop-cli-2.0.3.tar.gz::https://github.com/jwagner/smartcrop-cli/archive/2.0.3.tar.gz
 	source = LICENSE::https://raw.githubusercontent.com/jwagner/smartcrop-cli/master/LICENSE
 	sha256sums = 6b62aed4d339068dfbefa47c865beca6ca4aa79670b88bdebb863fe9ef94ae96
