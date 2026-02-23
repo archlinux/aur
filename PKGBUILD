@@ -1,5 +1,5 @@
 # Maintainer: Archisman Panigrahi <apandada1@gmail.com>
-pkgname=typhoon-git
+pkgname=typhoon-gtk3
 _pkgname=typhoon
 pkgver=v1.6.0
 pkgrel=1

@@ -1,4 +1,4 @@
-pkgbase = typhoon-git
+pkgbase = typhoon-gtk3
 	pkgdesc = Older, gtk3 version of Typhoon: A stylish weather app based on Stormcloud
 	pkgver = v1.6.0
 	pkgrel = 1
@@ -20,4 +20,4 @@ pkgbase = typhoon-git
 	source = git+https://github.com/archisman-panigrahi/typhoon#branch=gtk3
 	sha256sums = SKIP
 
-pkgname = typhoon-git
+pkgname = typhoon-gtk3
