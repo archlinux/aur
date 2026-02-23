@@ -1,6 +1,6 @@
 # Maintainer: Kasui92 <me@lucapattocchio.dev>
 pkgname=lancher
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="A minimal, local project-template manager written in Go"
 arch=('x86_64' 'aarch64')
@@ -9,10 +9,9 @@ license=('MIT')
 depends=('glibc')
 source_x86_64=("$pkgname-$pkgver-x86_64::$url/releases/download/v$pkgver/$pkgname-linux-amd64")
 source_aarch64=("$pkgname-$pkgver-aarch64::$url/releases/download/v$pkgver/$pkgname-linux-arm64")
-sha256sums_x86_64=('4597e147d75a7477d9a25b1c5f1fbffe7d4a7937c2006552b8d68ca02a700ebe')
-sha256sums_aarch64=('b9b4be7e77abe0718250691fdacac5e1609df4a2ac309d9eb7c52077ce144672')
+sha256sums_x86_64=('d34c8bb447341e30b7d77922795460ae0cbfee449ea7f6e2dd300241eea689a6')
+sha256sums_aarch64=('7d96df0385d4d7265a5f51d6073c5f8091c63847188607cf84f1ba29d4e02bd6')
 
 package() {
-  # install the binary
   install -Dm755 "$srcdir/$pkgname-$pkgver-$CARCH" "$pkgdir/usr/bin/$pkgname"
 }
