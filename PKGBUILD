@@ -8,6 +8,7 @@ license=('MIT')
 depends=('glibc' 'waybar')
 provides=('waybar-hyprspaces-fork')
 conflicts=('waybar-hyprspaces-fork')
+options=('!debug')
 _release_tag="hyprspaces-v${pkgver}"
 _asset="waybar-hyprspaces-fork-x86_64.tar.zst"
 source=("${url}/releases/download/${_release_tag}/${_asset}")
