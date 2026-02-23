@@ -1,15 +1,15 @@
 pkgbase = lancher
 	pkgdesc = A minimal, local project-template manager written in Go
-	pkgver = 0.2.8
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/lancher-dev/lancher
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	depends = glibc
-	source_x86_64 = lancher-0.2.8-x86_64::https://github.com/lancher-dev/lancher/releases/download/v0.2.8/lancher-linux-amd64
-	sha256sums_x86_64 = 08a023e2b3425761ed9a1334bd84b322cc80c51d2bc2ea3624da5511803ca62f
-	source_aarch64 = lancher-0.2.8-aarch64::https://github.com/lancher-dev/lancher/releases/download/v0.2.8/lancher-linux-arm64
-	sha256sums_aarch64 = a9856e63501a14d02a0b913ab333f2ea50218cd1700007d04be814ec8def7b4b
+	source_x86_64 = lancher-0.3.0-x86_64::https://github.com/lancher-dev/lancher/releases/download/v0.3.0/lancher-linux-amd64
+	sha256sums_x86_64 = ecc484d2be79c354500be9fc337bf3e31f3cf398b9f5cae3bba3787336d4c0bb
+	source_aarch64 = lancher-0.3.0-aarch64::https://github.com/lancher-dev/lancher/releases/download/v0.3.0/lancher-linux-arm64
+	sha256sums_aarch64 = f934991e963cc8a61c5aa0be15401ba12e2865fb588abbb9138d7e5826e2b79f
 
 pkgname = lancher
