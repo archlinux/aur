@@ -1,16 +1,16 @@
 # Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>
 
 pkgname=unstickpixels
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Screen loop to try to unstick stuck dots"
 arch=(i686 x86_64)
 url="https://codeberg.org/maandree/unstickpixels"
 license=('custom:ISC')
 depends=(libgamma)
-makedepends=(libgamma)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=(ca79009a66e26d8044ac6c19f717f436a7be31abb097123fdf98c1a77876d738)
+makedepends=('libgamma>=0.7.4')
+source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
+sha256sums=(657e94753235201ae23929882c84d63a3a5c17cbecf14933d485aabc17e2bd4b)
 
 build() {
   cd "$srcdir/$pkgname"

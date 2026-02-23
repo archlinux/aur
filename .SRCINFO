@@ -1,14 +1,14 @@
 pkgbase = unstickpixels
 	pkgdesc = Screen loop to try to unstick stuck dots
-	pkgver = 3.0.1
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://codeberg.org/maandree/unstickpixels
 	arch = i686
 	arch = x86_64
 	license = custom:ISC
-	makedepends = libgamma
+	makedepends = libgamma>=0.7.4
 	depends = libgamma
-	source = unstickpixels-3.0.1.tar.gz::https://codeberg.org/maandree/unstickpixels/archive/3.0.1.tar.gz
-	sha256sums = ca79009a66e26d8044ac6c19f717f436a7be31abb097123fdf98c1a77876d738
+	source = unstickpixels-3.0.2.tar.gz::https://codeberg.org/maandree/unstickpixels/archive/3.0.2.tar.gz
+	sha256sums = 657e94753235201ae23929882c84d63a3a5c17cbecf14933d485aabc17e2bd4b
 
 pkgname = unstickpixels
