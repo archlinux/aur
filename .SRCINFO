@@ -1,0 +1,14 @@
+pkgbase = s3tui
+	pkgdesc = Simple S3 CLI client for file transfers and more
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/softberries/s3tui
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	options = !lto
+	source = s3tui-0.4.2.tar.gz::https://github.com/softberries/s3tui/archive/v0.4.2.tar.gz
+	sha256sums = 6910f9819e4af278d58c8dea12d35054987f30b3bc5c7a735b6d3127b60ba1cd
+
+pkgname = s3tui
