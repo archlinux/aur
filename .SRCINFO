@@ -1,0 +1,14 @@
+pkgbase = expressvpn-waybar-bin
+	pkgdesc = A Waybar custom module to monitor and toggle ExpressVPN
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/ticnoo/expressvpn-waybar
+	arch = x86_64
+	license = MIT
+	depends = expressvpn
+	provides = expressvpn-waybar
+	conflicts = expressvpn-waybar
+	source = expressvpn-waybar-0.1::https://github.com/ticnoo/expressvpn-waybar/releases/download/0.1/expressvpn-waybar
+	sha256sums = 99440573225d1e48448464e1f655dd572eb0d23fe3f5d143e98031e31edaa041
+
+pkgname = expressvpn-waybar-bin
