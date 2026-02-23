@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Termy
+GenericName=Terminal Emulator
+Comment=Minimal GPUI-powered terminal
+Exec=termy
+Icon=termy
+Terminal=false
+Type=Application
+Categories=System;TerminalEmulator;
+Keywords=shell;prompt;command;commandline;cmd;
