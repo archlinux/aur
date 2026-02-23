@@ -1,0 +1,6 @@
+# remountd.install
+
+# This function runs after the package is successfully installed for the first time.
+post_install() {
+  /usr/share/remountd/post-install.sh
+}

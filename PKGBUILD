@@ -1,0 +1,34 @@
+# Maintainer: Carlo Wood <carlo@alinoe.com>
+
+pkgname=remountd
+pkgver=r82.e5bb0d7
+pkgrel=1
+pkgdesc="Daemon to remount preconfigured mount points ro/rw; from an unprivileged client."
+arch=('x86_64')
+options=(!debug)
+url="https://github.com/CarloWood/remountd.git"
+license=('MIT')
+depends=('systemd-libs')
+backup=(
+  'etc/remountd/config.yaml'
+)
+source=("$pkgname::git+$url"
+        "$pkgname.install")
+sha256sums=('SKIP')
+install="${pkgname}.install"
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+build() {
+  cmake -B build -S "$pkgname-$pkgver" \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}
