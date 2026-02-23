@@ -7,6 +7,7 @@ url='https://github.com/jtaw5649/hyprspaces'
 license=('MIT')
 depends=('bash' 'hyprland' 'python')
 makedepends=('cmake' 'pkgconf')
+options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 

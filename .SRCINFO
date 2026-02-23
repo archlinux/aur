@@ -10,6 +10,7 @@ pkgbase = hyprspaces
 	depends = bash
 	depends = hyprland
 	depends = python
+	options = !debug
 	source = hyprspaces-1.1.7.tar.gz::https://github.com/jtaw5649/hyprspaces/archive/refs/tags/v1.1.7.tar.gz
 	sha256sums = SKIP
 
