@@ -3,12 +3,12 @@
 
 pkgname=python-fastcore
 _pkgname=fastcore
-pkgver=1.12.11
+pkgver=1.12.16
 pkgrel=1
 pkgdesc='Python supercharged for the fastai library'
 arch=('any')
 url='https://github.com/fastai/fastcore'
-license=('Apache')
+license=('Apache-2.0')
 depends=(
   python
   python-matplotlib
@@ -21,7 +21,7 @@ makedepends=(
   python-setuptools
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/fastai/fastcore/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('61a4377df8e296ea43f663e9e3fb5bdb46d3ab11cc08587ae6dcee6b52f4b62a03ae2b16f756cc24749d816dd1057a9fe91c7091cb8c0cfb7319eb8e95b2de0d')
+sha512sums=('39582999f9430eaa6ab45830a1e9737772de388d1f1cd2bdfc326dcada0e585a3b7d209398a1e9dac94af6a7c5f605fe655e6f1f6b10ff294057b6529a8a4112')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
