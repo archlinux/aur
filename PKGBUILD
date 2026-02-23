@@ -1,6 +1,8 @@
+# Maintainer: Qoqnus master <mahisokhary@gmail.com>
+
 pkgname=python-duckduckgo-search
-_name=duckduckgo_search
-pkgver=8.0.0
+_name=ddgs
+pkgver=9.10.0
 pkgrel=1
 pkgdesc='Search for words, documents, images, news, maps and text translation using the DuckDuckGo.com search engine.'
 arch=('any')
@@ -8,8 +10,9 @@ url=https://github.com/deedy5/duckduckgo_search
 license=('MIT')
 depends=('python-click' 'python-primp' 'python-lxml' 'python-h2')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('2a8e22092156e11d3c9195e1ce100fa0bce181d23d6f84b89228190498887736')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
+sha256sums=('d9381ff75bdf1ad6691d3d1dc2be12be190d1d32ecd24f1002c492143c52c34f')
+provides=('ddgs')
 
 build() {
 	cd $_name-$pkgver
