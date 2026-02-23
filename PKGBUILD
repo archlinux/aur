@@ -1,6 +1,6 @@
 # Maintainer: Yoann Laissus <yoann.laissus@gmail.com>
 pkgname=wireview-linux
-pkgver=1.0.2
+pkgver=1.0.2.1
 pkgrel=1
 pkgdesc="Unofficial Linux port of the Thermal Grizzly WireView Pro II desktop application"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
   "git+$url.git#tag=v$pkgver"
   "$pkgname.desktop"
 )
-sha256sums=('3f81ea5e9a9f5038039b4c6be28e86d373e75b6869c9c62a35688689bca1666b'
+sha256sums=('260e3117df6b3df0b19a1718e10821f46c8dea49ac3fe67106b9874fec9dc7d7'
             'f9336a2a0dc5f6b959ef2ae83d228f68d269f4a84d9651b318d669888d73f646')
 
 build() {
