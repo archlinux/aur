@@ -1,6 +1,6 @@
 pkgname=otadump
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Extract partitions from Android OTA files'
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/crazystylus/${pkgname}"
@@ -14,7 +14,7 @@ sha256sums=('0546b131bf1514e7ba527edff9f4c03018cdffba04898282ac9a531750aaf403')
 
 prepare() {
     cd "${_snapshot}"
-    sed -i 's/"static"//' 'Cargo.toml'
+    sed -i 'Cargo.toml' -e 's/"static"//'
     cargo fetch --locked --target host-tuple
 }
 
@@ -30,4 +30,5 @@ check() {
 
 package() {
     install -Dm755 "release/${pkgname}" -t "${pkgdir}/usr/bin"
+    install -Dm644 "${_snapshot}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
