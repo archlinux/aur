@@ -1,0 +1,5 @@
+[cs-bin]
+source = "github"
+github = "boyter/cs"
+use_latest_release = true
+prefix = "v"
