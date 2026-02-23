@@ -1,15 +1,7 @@
-*~
-pkg/
-src/
-steel
-*.gz
-*.bz2
-*.xz
-*.lzo
-*.xz4
-*.tgz
-*.tbz
-*.txz
-*.tar
-*.jar
-*.zip
+# ignore everything
+*
+
+# except for
+!.gitignore
+!PKGBUILD
+!.SRCINFO
