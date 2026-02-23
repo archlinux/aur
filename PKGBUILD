@@ -4,7 +4,7 @@ _name=gb-io
 _module=gb_io
 _minpy=37
 pkgname=python-${_name}
-pkgver=0.3.8
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A Python interface to gb-io, a fast GenBank parser and serializer written in Rust."
 url="https://github.com/althonos/gb-io.py"
@@ -13,7 +13,7 @@ license=("MIT")
 depends=('python')
 makedepends=('python-maturin' 'python-build' 'python-installer' 'cargo')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_module-$pkgver.tar.gz")
-sha256sums=(546a051c8a6b482436176d04f220fa99e6521d52a66cfc2ab17903f531862518)
+sha256sums=(29ecc93467964cd8dd5303756d282ed20f895938c8997aa45e97314c782bcfcd)
 
 prepare() {
     cargo fetch --manifest-path "${srcdir}/${_module}-${pkgver}/Cargo.toml" --target "$CARCH-unknown-linux-gnu"
