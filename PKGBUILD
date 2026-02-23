@@ -35,7 +35,7 @@ source=(
   "git+https://github.com/baldurk/renderdoc.git#tag=v1.41"
   "renderdoc-swig::https://github.com/baldurk/swig/archive/renderdoc-modified-7.zip"
 )
-sha256sums=('3f5fc45205f63eba15764e36938e5656b82712b06e3b004fc63983d2c49b42a5'
+sha256sums=('1a6f6e4a991804259928d734ea3f6021d8636f016888469933f3bd44dc457eb7'
             'SKIP'
             '9d7e5013ada6c42ec95ab167a34db52c1cc8c09b89c8e9373631b1f10596c648')
 
