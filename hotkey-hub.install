@@ -1,6 +1,6 @@
 post_install() {
   echo "Please address the documentation first at https://github.com/akoidan/hotkey-hub"
-  echo "Put configs and certs into ~/.local/share/hotkey-hub/configs and .local/share/hotkey-hub/certs"
+  echo "Put configs and certs into ~/.config/hotkey-hub/config.jsonc and ~/.config/hotkey-hub/certs"
   echo "Edit /usr/lib/systemd/user/hotkey-hub.service for customization"
   echo "start the service with systemctl --user enable --now hotkey-hub.service"
 }

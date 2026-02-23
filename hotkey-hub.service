@@ -5,9 +5,9 @@ After=graphical-session.target
 [Service]
 Type=simple
 ExecStart=/usr/bin/hotkey-hub \
-  --cert-dir=%h/.local/share/hotkey-hub/certs \
-  --variables-file=%h/.local/share/hotkey-hub/configs/variables.jsonc \
-  --config-file=%h/.local/share/hotkey-hub/configs/config.jsonc \
+  --cert-dir=%h/.config/hotkey-hub/certs \
+  --variables-file=%h/.config/hotkey-hub/variables.jsonc \
+  --config-file=%h/.config/hotkey-hub/config.jsonc \
   --api-server
 Restart=on-failure
 RestartSec=2
