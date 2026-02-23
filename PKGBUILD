@@ -1,34 +1,37 @@
 # Maintainer: a821 <a821 mail de>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Dan McGee <dan@archlinux.org>
 
 pkgbase=postgresql-git
-pkgname=('postgresql-libs-git' 'postgresql-docs-git' 'postgresql-git')
-pkgver=18.beta1.r132.gc37be39a74b
+pkgname=('postgresql-git' 'postgresql-libs-git' 'postgresql-docs-git')
+pkgver=18.beta1.r2020.g2f2c9d83637
 pkgrel=1
-pkgdesc='Sophisticated object-relational DBMS (Git version)'
+pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
 arch=('x86_64')
 license=('PostgreSQL')
 depends=(
   'bash'
-  'gcc-libs'
   'glibc'
-  'icu'
-  'krb5'
+  'icu' 'libicui18n.so' 'libicuuc.so'
+  'krb5' 'libgssapi_krb5.so'
+  'libgcc' 'libgcc_s.so'
   'libldap'
-  'libxml2'
+  'libstdc++' 'libstdc++.so'
+  'liburing' 'liburing.so'
+  'libxml2' 'libxml2.so'
   'libxslt'
   'llvm-libs'
-  'lz4'
-  'openssl'
-  'pam'
-  'readline'
-  'systemd-libs'
+  'lz4' 'liblz4.so'
+  'numactl' 'libnuma.so'
+  'openssl' 'libcrypto.so' 'libssl.so'
+  'pam' 'libpam.so'
+  'systemd-libs' 'libsystemd.so'
   'util-linux-libs'
-  'zlib'
-  'zstd'
+  'zlib' 'libz.so'
+  'zstd' 'libzstd.so'
 )
 makedepends=(
   'clang'
@@ -39,6 +42,7 @@ makedepends=(
   'perl'
   'perl-ipc-run'
   'python'
+  'readline'
   'systemd'
   'tcl'
   'util-linux'
@@ -58,7 +62,7 @@ sha512sums=('SKIP'
             '1e6183ab0eb812b3ef687ac2c26ce78f7cb30540f606d20023669ac00ba04075487fb72e4dc89cc05dab0269ff6aca98fc1167cc75669c225b88b592482fbf67'
             '9ab4da01337ffbab8faec0e220aaa2a642dbfeccf7232ef2645bdc2177a953f17ee3cc14a4d8f8ebd064e1dae8b3dba6029adbffb8afaabea383963213941ba8'
             '751f245d213006451d744f1313b29cecd01132bbe0f5b69a7eb522c290db79664d6223422b1adcbcaa6bedfde8f1ca6f59a37ec3a5c53503fde2bcd9bbb900a0'
-            '07ff44ce5d64b7d1e992a1829d44b00f8e04577b31686e9a4e9f32f249facc00b5415187e19f78dd3207b751adc852dc4fa2f4ab71f6de9167c28a131be60011'
+            'cad03ac77cf4fe74d4390ca14ca68dbad8d7534c68480e4e61926aa7a1d505c5d0a9d8c75e7f54862d833c21721db7b2eda6d4a29d136ccf3a93b34263eb8d3a'
             'c809e1d6307e0686f9e063adc582bcc0bba865f26610be4d8e65ee1b4ddc7908aab6696cd511ccbc54c3ba5963b4640a60e2e5d3e1859239cdb4f3fbaafd8cb2'
             '819faa16edb45a01500c3f5d307528648fffe6d22ba4734b8c1951a2a9491962188413f24e754c922830acef0635720ca355459b65142cd4acb29df08d9c222e')
 
@@ -74,7 +78,6 @@ prepare() {
 }
 
 build() {
-  cd postgresql
   local configure_options=(
     --prefix=/usr
     --mandir=/usr/share/man
@@ -95,105 +98,46 @@ build() {
     --with-ldap
     --with-llvm
     --with-libxslt
+    --with-libcurl
+    --with-libnuma
+    --with-liburing
     --with-lz4
     --with-zstd
     --disable-rpath
     --enable-nls
     --enable-tap-tests
-    --enable-thread-safety
   )
 
-  # Fix static libs
+  # use fat LTO objects for static libraries
   CFLAGS+=" -ffat-lto-objects"
+  CXXFLAGS+=" -ffat-lto-objects"
 
-  ./configure "${configure_options[@]}"
+  mkdir -p build ; cd build
+  ../postgresql/configure "${configure_options[@]}"
   make world
-}
-
-_postgres_check() {
-  make "${1}" || (find . -name regression.diffs | \
-    while read -r line; do
-      echo "make ${1} failure: ${line}"
-      cat "${line}"
-    done; exit 1)
 }
 
 check() {
   export LANG=C LC_ALL=C
-  cd postgresql
-  _postgres_check check
-  _postgres_check check-world
+  if ! make -C build check-world; then
+     find . -name regression.diffs | while read -r line; do
+        echo "make check-world failure: ${line}"
+        cat -- "${line}" || :
+     done
+  fi
 }
 
-package_postgresql-libs-git() {
-  pkgdesc="Libraries for use with PostgreSQL"
-  depends=(
-    'glibc'
-    'krb5'
-    'libldap'
-    'lz4'
-    'openssl'
-    'readline'
-    'zlib'
-    'zstd'
-  )
-  provides=('postgresql-libs' 'libpq.so' 'libecpg.so' 'libecpg_compat.so' 'libpgtypes.so')
-  conflicts=('postgresql-libs')
-
-  cd postgresql
-
-  # install license
-  install -Dm 644 COPYRIGHT -t "${pkgdir}/usr/share/licenses/${pkgname}"
-
-  # install libs and non-server binaries
-  for dir in src/interfaces src/bin/pg_config src/bin/pg_dump src/bin/psql src/bin/scripts; do
-    make -C ${dir} DESTDIR="${pkgdir}" install
+_pick() {
+  local p="$1" f d; shift
+  for f; do
+    d="${srcdir}/${p}/${f#${pkgdir}/}"
+    mkdir -p "$(dirname "${d}")"
+    mv "${f}" "${d}"
+    rmdir -p --ignore-fail-on-non-empty "$(dirname "${f}")"
   done
-
-  for util in pg_config pg_dump pg_dumpall pg_restore psql \
-      clusterdb createdb createuser dropdb dropuser pg_isready reindexdb vacuumdb; do
-    install -Dm 644 doc/src/sgml/man1/${util}.1 "${pkgdir}"/usr/share/man/man1/${util}.1
-  done
-
-  cd src/include
-
-  install -d "${pkgdir}"/usr/include/{libpq,postgresql/internal/libpq}
-
-  # these headers are needed by the public headers of the interfaces
-  install -m 644 pg_config.h "${pkgdir}/usr/include"
-  install -m 644 pg_config_os.h "${pkgdir}/usr/include"
-  install -m 644 postgres_ext.h "${pkgdir}/usr/include"
-  install -m 644 libpq/libpq-fs.h "${pkgdir}/usr/include/libpq"
-  install -m 644 pg_config_manual.h "${pkgdir}/usr/include"
-
-  # these headers are needed by the not-so-public headers of the interfaces
-  install -m 644 c.h "${pkgdir}/usr/include/postgresql/internal"
-  install -m 644 port.h "${pkgdir}/usr/include/postgresql/internal"
-  install -m 644 postgres_fe.h "${pkgdir}/usr/include/postgresql/internal"
-  install -m 644 libpq/pqcomm.h "${pkgdir}/usr/include/postgresql/internal/libpq"
-}
-
-package_postgresql-docs-git() {
-  pkgdesc="HTML documentation for PostgreSQL"
-  depends=()
-  provides=('postgresql-docs')
-  conflicts=('postgresql-docs')
-  options+=('docs')
-
-  cd postgresql
-
-  install -Dm 644 COPYRIGHT -t "${pkgdir}/usr/share/licenses/${pkgname}"
-
-  make -C doc/src/sgml DESTDIR="${pkgdir}" install-html
-  chown -R root:root "${pkgdir}/usr/share/doc/postgresql/html"
-
-  # clean up
-  rmdir "${pkgdir}"/usr/share/man/man{1,3,7}
-  rmdir "${pkgdir}"/usr/share/man
 }
 
 package_postgresql-git() {
-  pkgdesc='Sophisticated object-relational DBMS'
   backup=('etc/pam.d/postgresql' 'etc/logrotate.d/postgresql')
   depends+=('postgresql-libs-git')
   optdepends=('python: for PL/Python 3 support'
@@ -206,25 +150,35 @@ package_postgresql-git() {
 
   install=postgresql.install
 
-  cd postgresql
+  make -C build DESTDIR="${pkgdir}" install-world
 
-  # install
-  make DESTDIR="${pkgdir}" install
-  make -C contrib DESTDIR="${pkgdir}" install
-  make -C doc/src/sgml DESTDIR="${pkgdir}" install-man
+  pushd "$pkgdir"
+  _pick libs usr/bin/pg_{config,dump,dumpall,isready,restore}
+  _pick libs usr/bin/{cluster,reindex,vacuum}db
+  _pick libs usr/bin/{create,drop}{db,user}
+  _pick libs usr/bin/{ecpg,psql,vacuumlo}
 
-  # we don't want these, they are in the -libs package
-  for dir in src/interfaces src/bin/pg_config src/bin/pg_dump src/bin/psql src/bin/scripts; do
-    make -C ${dir} DESTDIR="${pkgdir}" uninstall
-  done
-  for util in pg_config pg_dump pg_dumpall pg_restore psql \
-      clusterdb createdb createuser dropdb dropuser pg_isready reindexdb vacuumdb; do
-    rm "${pkgdir}"/usr/share/man/man1/${util}.1
-  done
+  _pick libs usr/include/{ecpg,libpq,pg,postgres_,sql}*
+  _pick libs usr/include/postgresql/internal
 
-  install -Dm 644 COPYRIGHT -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  _pick libs usr/lib/lib*
+  _pick libs usr/lib/pkgconfig
 
-  cd "${srcdir}"
+  _pick libs usr/share/locale/*/LC_MESSAGES/{ecpg,libpq,pgscripts,psql}*
+  _pick libs usr/share/locale/*/LC_MESSAGES/pg_{config,dump}-*
+
+  _pick libs usr/share/man/man1/pg_{config,dump,dumpall,isready,restore}.1
+  _pick libs usr/share/man/man1/{cluster,reindex,vacuum}db.1
+  _pick libs usr/share/man/man1/{create,drop}{db,user}.1
+  _pick libs usr/share/man/man1/{ecpg,psql,vacuumlo}.1
+
+  _pick libs usr/share/postgresql/{pg_service.conf,psqlrc}.sample
+
+  _pick docs usr/share/doc
+  popd
+
+  install -Dm 644 postgresql/COPYRIGHT -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
   install -Dm 755 postgresql-check-db-dir -t "${pkgdir}/usr/bin"
 
   install -Dm 644 postgresql.pam "${pkgdir}/etc/pam.d/postgresql"
@@ -233,12 +187,39 @@ package_postgresql-git() {
   install -Dm 644 postgresql.service -t "${pkgdir}/usr/lib/systemd/system"
   install -Dm 644 postgresql.sysusers "${pkgdir}/usr/lib/sysusers.d/postgresql.conf"
   install -Dm 644 postgresql.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/postgresql.conf"
+}
 
-  # clean up unneeded installed items
-  rm -rf "${pkgdir}/usr/include/postgresql/internal"
-  rm -rf "${pkgdir}/usr/include/libpq"
-  find "${pkgdir}/usr/include" -maxdepth 1 -type f -execdir rm {} +
-  rmdir "${pkgdir}/usr/share/doc/postgresql/html"
+package_postgresql-libs-git() {
+  pkgdesc=" - client binaries and libraries"
+  depends=(
+    curl libcurl.so
+    glibc
+    krb5 libgssapi_krb5.so
+    libldap
+    lz4 liblz4.so
+    openssl libcrypto.so libssl.so
+    readline libreadline.so
+    zlib libz.so
+    zstd libzstd.so
+  )
+  provides=('postgresql-libs' 'libpq.so' 'libecpg.so' 'libecpg_compat.so' 'libpgtypes.so')
+  conflicts=('postgresql-libs')
+
+  mv libs/* "${pkgdir}"
+
+  install -Dm 644 postgresql/COPYRIGHT -t "${pkgdir}/usr/share/licenses/${pkgname}"
+}
+
+package_postgresql-docs-git() {
+  pkgdesc="- HTML documentation"
+  depends=()
+  provides=('postgresql-docs')
+  conflicts=('postgresql-docs')
+  arch=(any)
+
+  mv docs/* "${pkgdir}"
+
+  install -Dm 644 postgresql/COPYRIGHT -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
