@@ -1,4 +1,4 @@
-# Maintainer: Jonas Witschel <diabonas@archlinux.org>
+# Maintainer: Robert Box <robertbox514@gmail.com>
 # Contributor: Alad Wenter <alad@mailbox.org>
 # Contributor: Uffe Jakobsen <uffe@uffe.org>
 
