@@ -1,6 +1,6 @@
 pkgbase = modoboa
 	pkgdesc = Mail hosting made simple
-	pkgver = 2.6.5
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://modoboa.org/
 	arch = any
@@ -18,10 +18,10 @@ pkgbase = modoboa
 	makedepends = python-bcrypt
 	makedepends = python-asgiref
 	makedepends = python-chardet
-	makedepends = python-django-reversion>=5.0
+	makedepends = python-django-reversion>=6.1
 	makedepends = python-django-rest-framework>=3.13
 	makedepends = python-dnspython
-	makedepends = python-redis
+	makedepends = python-redis>=7.1
 	makedepends = python-passlib
 	makedepends = python-uritemplate
 	makedepends = python-feedparser
@@ -30,7 +30,7 @@ pkgbase = modoboa
 	makedepends = python-django-xforwardedfor-middleware
 	makedepends = python-django-filter
 	makedepends = python-greenlet
-	makedepends = python-gevent
+	makedepends = python-fido2>=2.1
 	makedepends = python-qrcode
 	makedepends = python-progressbar
 	makedepends = python-dateutil
@@ -50,7 +50,7 @@ pkgbase = modoboa
 	depends = python-requests
 	depends = python-pycryptodome
 	depends = python-chardet
-	depends = python-django-reversion>=5.0
+	depends = python-django-reversion>=6.1
 	depends = python-passlib
 	depends = python-django-xforwardedfor-middleware
 	depends = python-sievelib
@@ -59,7 +59,7 @@ pkgbase = modoboa
 	optdepends = postgresql
 	optdepends = sqlite
 	optdepends = python-mysql-connector
-	optdepends = python-django-otp
+	optdepends = python-django-otp>=1.7
 	optdepends = python-psycopg2
 	optdepends = gunicorn
 	optdepends = python-vex
@@ -67,7 +67,7 @@ pkgbase = modoboa
 	optdepends = python-factory-boy
 	provides = modoboa
 	conflicts = modoboa-git
-	source = https://files.pythonhosted.org/packages/source/m/modoboa/modoboa-2.6.5.tar.gz
-	sha512sums = 9cdbb6684c9de633fd05204a28011039b1847648f6a86de9c97d3a5f8e379367cef4a17f8be5fa3077aec88def0530ad82899b9248877d04462ea86ce900c069
+	source = https://files.pythonhosted.org/packages/source/m/modoboa/modoboa-2.7.0.tar.gz
+	sha512sums = 188b9deba813d67d6c4ed18a3c62c9eb184a677fdcb29c0afdd90554a5b933f90283b079afc1902058697b365a24809ea6aa43e893e4fd89b7f303fda3fea5e7
 
 pkgname = modoboa
