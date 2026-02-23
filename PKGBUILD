@@ -1,10 +1,10 @@
-# Contributor: Luis Sarmiento < Luis.Sarmiento-ala-nuclear.lu.se >
+# Contributor: Luis Sarmiento < Luis.Sarmiento_Pico-ala-fysik.lu.se >
 #
 #
 pkgname=go4
 _Pkgname=Go4
 pkgver=6.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Object-oriented system (GSI Object Oriented On-line Off-line system) based on ROOT'
 arch=('x86_64')
 makedepends=('cmake')
@@ -40,6 +40,17 @@ prepare() {
   # /usr/macros -->   /usr/share/{pkg}/macros
   # /usr/python -->   /usr/share/{pkg}/python
   #
+
+  # New in Feb/2026
+  sed -i '107 s/target_link_libraries(${libname} ${ARG_LIBRARIES})/target_link_libraries(${libname} PUBLIC ${ARG_LIBRARIES})/' ${srcdir}/go4-${pkgver}/cmake/modules/Go4Macros.cmake
+  sed -i '1 i\#include "TMath.h"' ${srcdir}/go4-${pkgver}/Go4StatusBase/TGo4Picture.cxx
+  sed -i '1 i\#include "TMath.h"' ${srcdir}/go4-${pkgver}/Go4ConditionsBase/TGo4MarkerPainter.cxx
+  sed -i '1 i\#include "TMath.h"' ${srcdir}/go4-${pkgver}/Go4ConditionsBase/TGo4PolyCondView.cxx
+  sed -i '1 i\#include "TMath.h"' ${srcdir}/go4-${pkgver}/Go4ConditionsBase/TGo4WinCondView.cxx
+  sed -i '1 i\#include "TMath.h"' ${srcdir}/go4-${pkgver}/Go4Fit/TGo4FitComponent.cxx
+  sed -i '1 i\#include "TMath.h"' ${srcdir}/go4-${pkgver}/Go4Fit/TGo4FitModel.cxx
+  sed -i '1 i\#include "TMath.h"' ${srcdir}/go4-${pkgver}/Go4ExampleMesh/TMeshB12AnlProc.cxx
+  sed -i '1 i\#include "TMath.h"' ${srcdir}/go4-${pkgver}/qt4/Go4FitGUI/TGo4FitGuiArrow.cpp
 
 }
 
