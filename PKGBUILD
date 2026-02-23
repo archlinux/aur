@@ -1,4 +1,4 @@
-# Maintainer: Siddhant Kumar Singh
+# Maintainer: https://github.com/Geralt-Of-Rivia-Witcher/
 
 pkgname=tbreakout-bin
 pkgver=0.1.6
