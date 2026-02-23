@@ -1,6 +1,6 @@
 # Maintainer: Kinn Coelho Juliao <kinncj@protonmail.com>
 pkgname=safe-discover
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Kirigami-based package management GUI for Arch Linux (pacman, AUR, Flatpak, fwupd)'
 arch=('x86_64' 'aarch64')
