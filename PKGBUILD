@@ -2,9 +2,9 @@
 
 _pkgname="gpu-screen-recorder"
 pkgname="$_pkgname-git"
-pkgver=5.6.3.r0.g53e879b
-pkgrel=1
-pkgdesc="A shadowplay-like screen recorder"
+pkgver=5.12.4.r2.g0555cfd
+pkgrel=2
+pkgdesc="A shadowplay-like screen recorder for Linux. The fastest screen recorder for Linux"
 arch=('x86_64')
 url="https://git.dec05eba.com/gpu-screen-recorder"
 license=('GPL-3.0-only')
@@ -13,7 +13,8 @@ depends=(
   'ffmpeg'
   'libcap'
   'libdrm'
-  'libglvnd'
+  'libglvnd'      # dlopen
+  'libjpeg-turbo' # dlopen
   'libpipewire'
   'libpulse'
   'libva'
