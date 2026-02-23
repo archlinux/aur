@@ -1,0 +1,18 @@
+pkgbase = chibi-cli-git
+	pkgdesc = Chibi for AniList - A lightweight anime & manga tracker CLI app powered by AniList.
+	pkgver = 1.2.0.42.gb7b9f7c
+	pkgrel = 1
+	url = https://chibi-cli.pages.dev/
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = go>=1.25
+	depends = glibc
+	provides = chibi
+	conflicts = chibi
+	conflicts = chibi-cli-bin
+	options = !debug
+	source = git+https://github.com/CosmicPredator/chibi-cli.git
+	sha256sums = SKIP
+
+pkgname = chibi-cli-git

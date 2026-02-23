@@ -1,0 +1,21 @@
+# Created by https://www.toptal.com/developers/gitignore/api/archlinuxpackages
+# Edit at https://www.toptal.com/developers/gitignore?templates=archlinuxpackages
+
+### ArchLinuxPackages ###
+*.tar
+*.tar.*
+*.jar
+*.exe
+*.msi
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+*.deb
+
+pkg/
+src/
+
+chibi-cli
+# End of https://www.toptal.com/developers/gitignore/api/archlinuxpackages
