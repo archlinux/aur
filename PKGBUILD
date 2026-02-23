@@ -87,7 +87,7 @@
 # "thin: uses multiple threads, faster and uses less memory, may have a lower runtime performance than Full."
 # "thin-dist: Similar to thin, but uses a distributed model rather than in-process: https://discourse.llvm.org/t/rfc-distributed-thinlto-build-for-kernel/85934"
 # "none: disable LTO
-: "${_use_llvm_lto:=full}"
+: "${_use_llvm_lto:=thin}"
 
 # Use suffix -lto only when requested by the user
 # Enabled by default.
@@ -155,7 +155,7 @@ _stable=${_major}.${_minor}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux BORE + Cachy Sauce scheduler Kernel by CachyOS with other patches and improvements'
-pkgrel=1
+pkgrel=2
 _kernver="$pkgver-$pkgrel"
 _kernuname="${pkgver}-${_pkgsuffix}"
 arch=('x86_64')
