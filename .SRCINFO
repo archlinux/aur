@@ -1,6 +1,6 @@
 pkgbase = dasel
 	pkgdesc = Select, put and delete data from JSON, TOML, XML, YAML, HCL, and INI files with a single command-line tool
-	pkgver = 3.2.2
+	pkgver = 3.2.3
 	pkgrel = 1
 	url = https://github.com/TomWright/dasel
 	arch = aarch64
@@ -12,8 +12,8 @@ pkgbase = dasel
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = dasel-3.2.2.tar.gz::https://github.com/TomWright/dasel/archive/v3.2.2.tar.gz
-	sha256sums = 4711deb92e3b6daf65453244559cb6e718041b5673f76d5dfa2aa4584e38e5c6
-	b2sums = e0c7358361b089d781271943a3895520eaee60f3f7854b096ff4af9f71237e055c96702a1f4c50341d0bde20c8325dfc00a739ee244ea9c4a5f355203ee5622f
+	source = dasel-3.2.3.tar.gz::https://github.com/TomWright/dasel/archive/v3.2.3.tar.gz
+	sha256sums = 45351c07993e6c472eaa1231f30b61e927b1295f34063e4228d8dd7ff75ce538
+	b2sums = 33e227b000e2c74ae4634941ae8c6e0b8b16e7cd38dfcd8c81d1de246799846947957a5cffe11876fb77d57e2b17ac74733d76dfae7a6d8106251c9a188d4969
 
 pkgname = dasel
