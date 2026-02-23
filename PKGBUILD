@@ -13,30 +13,26 @@ depends=(
   'python-socketio' 'python-typing_extensions' 'python-watchdog'
   'nodejs' 'npm' 'git'
 )
-
 makedepends=('npm' 'nodejs' 'python-virtualenv' 'base-devel' 'python-pip')
-
 
 source=("https://github.com/Kruptein/PlanarAlly/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('bc73bfc68b8e5bdfe1c5d8ab7165a8171ab48c7a7ece34aede7827a501e00e80')
 
-
 package() {
   cd "$srcdir/PlanarAlly-$pkgver"
 
-  # OFFICIAL CLIENT BUILD (1m15s - creates server/templates/ + server/static/vite/)
   cd client
   npm ci
   npm run build
-
-  # Copy fully-built server
   cd ..
+
   install -dm755 "$pkgdir/usr/lib/planarally/server"
   cp -a server/. "$pkgdir/usr/lib/planarally/server/"
 
   cd "$pkgdir/usr/lib/planarally/server"
   rm -rf .git
 
+  export LANG=en_US.UTF-8
   python -m venv venv
   source venv/bin/activate
   pip install --upgrade pip
@@ -45,21 +41,20 @@ package() {
   find "$pkgdir/usr/lib/planarally" -type d -exec chmod 755 {} +
   find "$pkgdir/usr/lib/planarally" -type f -exec chmod 644 {} +
 
-  # Your working launcher
+  # PERFECT LAUNCHER - creates dirs at runtime
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/planarally" << 'EOF'
 #!/bin/bash
-DATA_DIR="${XDG_DATA_HOME:-\$HOME/.local/share}/planarally"
-CONFIG_DIR="${XDG_CONFIG_HOME:-\$HOME/.config}/planarally"
-mkdir -p "$DATA_DIR" "$CONFIG_DIR" "$DATA_DIR"/{temp,save_backups}
-export PLANARALLY_DATA_DIR="$DATA_DIR"
-export PLANARALLY_CONFIG_DIR="$CONFIG_DIR"
 cd /usr/lib/planarally/server
 source venv/bin/activate
+mkdir -p static/assets static/temp data config
+chmod 755 static/assets static/temp data config
 exec python planarally.py "$@"
 EOF
 
-  # Desktop entry + icon
-  install -Dm644 favicon.ico "$pkgdir/usr/share/icons/hicolor/64x64/apps/planarally.png"
+  # Add favicon with safety check
+  [[ -f "$srcdir/PlanarAlly-$pkgver/favicon.ico" ]] && \
+    install -Dm644 "$srcdir/PlanarAlly-$pkgver/favicon.ico" "$pkgdir/usr/share/icons/hicolor/64x64/apps/planarally.png"
+
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/planarally.desktop" << 'EOF'
 [Desktop Entry]
 Name=PlanarAlly
