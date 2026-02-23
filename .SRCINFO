@@ -1,0 +1,22 @@
+pkgbase = kodi-remote-start-daemon
+	pkgdesc = Daemon for starting kodi from remote control apps like KORE, Kodi Remote, or Yatse
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeberg.org/aidavdw/kodi-remote-start-daemon
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = python
+	optdepends = kodi-standalone-service: launching standalone modes
+	source = kodi-remote-start-daemon::git+https://codeberg.org/aidavdw/kodi-remote-start-daemon.git
+	source = kodi-remote-start-daemon@.service
+	source = kodi-remote-start-daemon-standalone-gbm@.service
+	source = kodi-remote-start-daemon-standalone-wayland@.service
+	source = kodi-remote-start-daemon-standalone-x11@.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = kodi-remote-start-daemon

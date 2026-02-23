@@ -1,0 +1,14 @@
+[Unit]
+Description=Daemon for starting the kodi-gbm standalone service from remote control apps like KORE, Kodi Remote, or Yatse (Port %i)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/bin/kodi-remote-start-daemon %i kodi-gbm.service
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
