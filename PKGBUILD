@@ -4,7 +4,7 @@
 
 pkgname=charcoal-dict-bin
 pkgver=0.3.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A command line dictionary"
 url="https://github.com/LighghtEeloo/charcoal"
 license=("MIT")
