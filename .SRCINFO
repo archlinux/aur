@@ -10,7 +10,6 @@ pkgbase = haste-client-git
 	makedepends = git
 	makedepends = make
 	provides = haste
-	conflicts = haste-client
 	conflicts = haste-client-bin
 	source = haste-client::git+https://github.com/zneix/haste-client.git
 	sha256sums = SKIP
