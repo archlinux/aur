@@ -1,20 +1,20 @@
 pkgbase = ps3-disc-dumper
 	pkgdesc = A handy utility to make decrypted PS3 disc dumps
-	pkgver = 4.4.1
+	pkgver = 4.4.2
 	pkgrel = 1
 	url = https://github.com/13xforever/ps3-disc-dumper
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = MIT
-	makedepends = dotnet-sdk-9.0
+	makedepends = dotnet-sdk-10.0
 	makedepends = gendesk
-	depends = dotnet-runtime-9.0
+	depends = dotnet-runtime-10.0
 	depends = xdg-utils
 	options = !strip
 	options = !debug
 	options = staticlibs
-	source = ps3-disc-dumper-4.4.1.tar.gz::https://github.com/13xforever/ps3-disc-dumper/archive/refs/tags/v4.4.1.tar.gz
+	source = ps3-disc-dumper-4.4.2.tar.gz::https://github.com/13xforever/ps3-disc-dumper/archive/refs/tags/v4.4.2.tar.gz
 	b2sums = 88b72bb7c4596f04f229b6f5934ae8e1bc94ebbe8d434fcdc3ce51be684ad6b533c6e2f6002461257b49a848db92bf127b10b31e679f976a543791f8c8d35436
 
 pkgname = ps3-disc-dumper
