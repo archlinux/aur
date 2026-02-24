@@ -1,6 +1,6 @@
 pkgbase = octrafic
 	pkgdesc = AI-powered CLI tool for API testing and exploration
-	pkgver = 0.4.0
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/octrafic/octrafic-cli
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = octrafic
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = octrafic-0.4.0.tar.gz::https://github.com/octrafic/octrafic-cli/archive/v0.4.0.tar.gz
-	sha256sums = 3bf1247dcdf0dd5a6395581eb4fa051c8d64b9c9a2321669d4bf60c64b678733
+	source = octrafic-0.4.3.tar.gz::https://github.com/octrafic/octrafic-cli/archive/v0.4.3.tar.gz
+	sha256sums = f80643c1eb0997118eaabe63c0cf9f7788409dc4db84923211de5ae130f9ec76
 
 pkgname = octrafic
