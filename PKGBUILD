@@ -3,7 +3,7 @@
 _pkgauthor=cdgriffith
 _pkgname=FastFlix
 pkgname=${_pkgname,,}-bin
-pkgver=6.1.0
+pkgver=6.1.1
 pkgrel=1
 pkgdesc="Simple and friendly GUI for encoding videos"
 arch=('x86_64')
@@ -29,7 +29,7 @@ source_x86_64=("${url}/releases/download/${pkgver}/${_pkgname}_${pkgver}_ubuntu-
 sha256sums=('cbcb6f228b858a69a860aa6a3283f0f4293e1246485566d20f60a93030f1f847'
             'e1965afa168b3629954ecb9e71ea581304af26ed6570be82b8bbc73778dc25e4'
             'ec9dbf695018bd84490fb27b39d1cc04d5339b91863595e78306164ec5688880')
-sha256sums_x86_64=('1b49996315d10519b9805364e0900dc40849265f2ee2182f4a860b5861890159')
+sha256sums_x86_64=('bda222b6ed677cfd93400cc37a66cad516a05627e17856538d4e22ea2e1bf1a3')
 
 
 build() {
