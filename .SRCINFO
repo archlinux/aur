@@ -1,0 +1,24 @@
+pkgbase = ohrrpgce-svn
+	pkgdesc = A role playing game creation engine (svn wip)
+	pkgver = wip.r14248
+	pkgrel = 1
+	url = http://rpg.hamsterrepublic.com/ohrrpgce/Main_Page
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	makedepends = freebasic
+	makedepends = scons
+	depends = sdl2_mixer
+	depends = openeuphoria
+	depends = libxpm
+	depends = libxrandr
+	depends = ncurses
+	depends = xterm
+	depends = libxinerama
+	provides = ohrrpgce
+	conflicts = ohrrpgce
+	source = ohrrpgce-wip::svn+https://rpg.hamsterrepublic.com/source/wip
+	md5sums = SKIP
+
+pkgname = ohrrpgce-svn
