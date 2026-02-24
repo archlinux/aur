@@ -1,7 +1,7 @@
 pkgbase = wshawk
 	pkgdesc = Enterprise-grade WebSocket security scanner & Web Penetration Testing Toolkit
 	pkgver = 3.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/noobforanonymous/wshawk
 	arch = x86_64
 	arch = aarch64
