@@ -8,9 +8,9 @@ pkgbase = nclaw-bin
 	provides = nclaw
 	arch = aarch64
 	source_aarch64 = https://github.com/nickalie/nclaw/releases/download/v${pkgver}/nclaw_${pkgver}_linux_arm64.tar.gz
-	sha256sums_aarch64 = 61176b9e4739be9d46774c506c65ec46cf61887ce8d35baaf03548c22d8b8f26
+	sha256sums_aarch64 = 95fd29080fd3193fe2ddfff831a0385e26a7f0d7b731df4faf8589795ea55103
 	arch = x86_64
 	source_x86_64 = https://github.com/nickalie/nclaw/releases/download/v${pkgver}/nclaw_${pkgver}_linux_amd64.tar.gz
-	sha256sums_x86_64 = c7be08d78fbc7dbeb9b44390cb5eb9019cd001569402bcf6299c49db910fdf60
+	sha256sums_x86_64 = 8dc59abedec3e2d623c3af2cd8d8772053c210670d35ac7e39a5d70abf36cfbd
 	
 pkgname = nclaw-bin
