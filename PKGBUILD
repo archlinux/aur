@@ -12,13 +12,13 @@ options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alper-han/CrossMacro/archive/v0.9.8-pre.1.tar.gz"
         "crossmacro.sysusers"
         "crossmacro-modules.conf")
-sha256sums=('ef45f27963b5bbb113137c000953c0f453a87142b64c672e92f1ad3a899c5cd7'
+sha256sums=('2b1e06bfe2f74337ffd6130aac934bfdef69e57b88cdbb17cf3fb39e7ab36a81'
             'SKIP'
             'SKIP')  # sysusers and modules config checksums (local files)
 install=crossmacro.install
 
 build() {
-    cd "CrossMacro-${pkgver}"
+    cd "CrossMacro-0.9.8-pre.1"
     
     export DOTNET_SKIP_WORKLOAD_INTEGRITY_CHECK=1
     dotnet restore -r linux-x64
@@ -44,7 +44,7 @@ build() {
 }
 
 package() {
-    cd "CrossMacro-${pkgver}"
+    cd "CrossMacro-0.9.8-pre.1"
     
     # Install UI files
     install -dm755 "$pkgdir/usr/lib/$pkgname"

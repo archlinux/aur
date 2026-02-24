@@ -24,7 +24,7 @@ pkgbase = crossmacro
 	source = crossmacro-0.9.8.pre.1.tar.gz::https://github.com/alper-han/CrossMacro/archive/v0.9.8-pre.1.tar.gz
 	source = crossmacro.sysusers
 	source = crossmacro-modules.conf
-	sha256sums = ef45f27963b5bbb113137c000953c0f453a87142b64c672e92f1ad3a899c5cd7
+	sha256sums = 2b1e06bfe2f74337ffd6130aac934bfdef69e57b88cdbb17cf3fb39e7ab36a81
 	sha256sums = SKIP
 	sha256sums = SKIP
 
