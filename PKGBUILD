@@ -10,7 +10,7 @@ pkgname=(
 )
 provides=('gnome-shell')
 conflicts=('gnome-shell')
-options=(!debug)
+options=('!debug')
 pkgver=49.4
 pkgrel=2
 epoch=1
