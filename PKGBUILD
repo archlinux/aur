@@ -2,7 +2,7 @@
 # Maintainer:  Radu Potop <radu at wooptoo dot com>
 
 pkgname=amber-search-git
-pkgver=0.6.0.58.gc875
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A code search and replace tool written in Rust. Inspired by ack, ag, and grep."
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ url="https://github.com/dalance/amber"
 license=('MIT')
 provides=("amber-search")
 depends=("gcc-libs")
-makedepends=('cargo' 'git')
+makedepends=('cargo' 'git' 'sed')
 conflicts=("amber-search")
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
