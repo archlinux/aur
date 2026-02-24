@@ -2,7 +2,7 @@ pkgbase = arch-upgrader-git
 	pkgdesc = Update Arch: pacman & flatpak, rank mirrors, send notification on update and failure
 	pkgver = 1.1.0.r1.g737dfec
 	pkgrel = 1
-	url = https://github.com/Dracape/arch-upgrader
+	url = https://github.com/Drazape/arch-upgrader
 	arch = any
 	license = MIT
 	makedepends = fish
@@ -12,7 +12,7 @@ pkgbase = arch-upgrader-git
 	depends = gnome-console
 	provides = arch-upgrader=1.1.0.r1.g737dfec
 	conflicts = arch-upgrader
-	source = arch-upgrader-git::git+https://github.com/Dracape/arch-upgrader.git
+	source = arch-upgrader-git::git+https://github.com/Drazape/arch-upgrader.git
 	b2sums = SKIP
 
 pkgname = arch-upgrader-git

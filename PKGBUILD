@@ -1,4 +1,4 @@
-# Maintainer: Dracape <Dracape at outlook dot com>
+# Maintainer: Drazape <Drazape at outlook dot com>
 
 pkgname=arch-upgrader-git
 
@@ -9,7 +9,7 @@ pkgver=1.1.0.r1.g737dfec
 # Generic
 pkgdesc='Update Arch: pacman & flatpak, rank mirrors, send notification on update and failure'
 arch=(any)
-url='https://github.com/Dracape/arch-upgrader'
+url='https://github.com/Drazape/arch-upgrader'
 license=('MIT')
 
 # Dependencies
@@ -19,7 +19,7 @@ conflicts=('arch-upgrader')
 provides=("arch-upgrader=${pkgver}")
 
 # Download
-source=("${pkgname}::git+https://github.com/Dracape/arch-upgrader.git")
+source=("${pkgname}::git+https://github.com/Drazape/arch-upgrader.git")
 b2sums=('SKIP')
 
 # Functions
