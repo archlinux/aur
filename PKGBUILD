@@ -1,6 +1,6 @@
 # Maintainer: Ermenegildo Fiorito <gildo.fiorito@gmail.com>
 pkgname=accentd
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Press-and-hold accent character popup for Linux (macOS-style)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gtk4' 'gtk4-layer-shell')
 makedepends=('cargo' 'pkgconf')
 install=accentd.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('dd15600c73bb23e4f129d6893be6eaa566f93be5f7a8cdb6de411105cd4dcf72')
+sha256sums=('30f68294988fad180d0129ee444f15851ade4d9d553f64aae379bbfcca2b632f')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
