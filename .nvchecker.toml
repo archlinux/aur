@@ -1,0 +1,5 @@
+[toney-bin]
+source = "github"
+github = "SourcewareLab/Toney"
+use_latest_release = true
+prefix = "v"

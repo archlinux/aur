@@ -3,7 +3,7 @@
 _pkgauthor=SourcewareLab
 _pkgname=Toney
 pkgname=${_pkgname,,}-bin
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Fast, lightweight, terminal-based note-taking app for the modern developer."
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ conflicts=("${_pkgname,,}")
 
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname,,}_${pkgver}_linux_${_barch[0]}.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname,,}_${pkgver}_linux_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('e303f3b0ceb2aa1f2d1775d82d2b4ced55be1e3e7a1053c551931964903035bd')
-sha256sums_aarch64=('ee9e965050b445638d1f7a961727c0f825de6e81b20b54401823507cf928ee5c')
+sha256sums_x86_64=('755ac113827e314d262f9cf174da27f63f1ce549815c3d3a22252bee6120c2a7')
+sha256sums_aarch64=('ef719c8bb5edd62b1f9f0990f22c2d5984662e97ccd7dc112b0ab4194d0160d9')
 
 
 
