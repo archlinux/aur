@@ -2,7 +2,7 @@
 
 pkgname=calibre-bin
 pkgver=9.3.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Official binary version Calibre"
 arch=(x86_64)
 url="https://download.calibre-ebook.com"
@@ -87,6 +87,7 @@ app.build()
 BUILDEOF
 
     QT_QPA_PLATFORM=offscreen \
+    CALIBRE_CONFIG_DIRECTORY=$(mktemp -d) \
     CALIBRE_OVERRIDE_LANG=en \
     ALL_USER_MANUAL_LANGUAGES=en \
     CALIBRE_BUILD_MAN_PAGES=1 \

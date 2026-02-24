@@ -1,7 +1,7 @@
 pkgbase = calibre-bin
 	pkgdesc = Official binary version Calibre
 	pkgver = 9.3.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://download.calibre-ebook.com
 	arch = x86_64
 	license = GPL3
