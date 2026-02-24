@@ -1,6 +1,6 @@
-pkgbase = python-aw-core
-	pkgdesc = Core library for ActivityWatch
-	pkgver = 0.5.17
+pkgbase = python-aw-client
+	pkgdesc = Client library for ActivityWatch in Python
+	pkgver = 0.5.15
 	pkgrel = 1
 	url = https://github.com/ActivityWatch/aw-core
 	arch = any
@@ -9,7 +9,8 @@ pkgbase = python-aw-core
 	makedepends = python-installer
 	makedepends = git
 	makedepends = poetry
-	source = aw-core::git+https://github.com/ActivityWatch/aw-core
+	provides = aw-client
+	source = aw-client::git+https://github.com/ActivityWatch/aw-client
 	sha256sums = SKIP
 
-pkgname = python-aw-core
+pkgname = python-aw-client

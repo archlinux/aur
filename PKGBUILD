@@ -1,16 +1,16 @@
 # Maintainer: nathan marchiori <nathan.marchiori@gmail.com>
-pkgname="python-aw-core"
+pkgname="python-aw-client"
 _name=${pkgname#python-}
-pkgver=0.5.17
+pkgver=0.5.15
 pkgrel=1
-pkgdesc="Core library for ActivityWatch"
+pkgdesc="Client library for ActivityWatch in Python"
 arch=("any")
 url="https://github.com/ActivityWatch/aw-core"
 license=('MPL-2.0')
 depends=()
 makedepends=(python-build python-installer git poetry)
-provides=()
-source=("$_name::git+https://github.com/ActivityWatch/aw-core")
+provides=(aw-client)
+source=("$_name::git+https://github.com/ActivityWatch/aw-client")
 sha256sums=("SKIP")
 
 pkgver() {
