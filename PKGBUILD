@@ -1,4 +1,5 @@
 # Maintainer: Tiziano Bacocco <tizbac2@gmail.com>
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: cleanrock (AT gmail DOT com)
 # Contributor: Erdbeerkaese (erdbeerkaese AT gawab DOT com)
 # Contributor: DuGi <dugi@irc.pl>
