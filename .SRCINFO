@@ -1,16 +1,16 @@
 pkgbase = nclaw-bin
-	pkgdesc = Telegram bot wrapping Claude Code CLI
-	pkgver = 0.0.1
+	pkgdesc = Lightweight, container-first AI assistant powered by Claude Code, accessible through Telegram
+	pkgver = 0.8.7
 	pkgrel = 1
 	url = https://github.com/nickalie/nclaw
-	arch = x86_64
-	arch = aarch64
 	license = MIT
-	provides = nclaw
 	conflicts = nclaw
-	source_x86_64 = https://github.com/nickalie/nclaw/releases/download/v0.0.1/nclaw_0.0.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://github.com/nickalie/nclaw/releases/download/v0.0.1/nclaw_0.0.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = SKIP
-
+	provides = nclaw
+	arch = aarch64
+	source_aarch64 = https://github.com/nickalie/nclaw/releases/download/v${pkgver}/nclaw_${pkgver}_linux_arm64.tar.gz
+	sha256sums_aarch64 = e3b66c0373b5b578bc967ab005256e22889624ac4617a0fa5d5df1b2813306d1
+	arch = x86_64
+	source_x86_64 = https://github.com/nickalie/nclaw/releases/download/v${pkgver}/nclaw_${pkgver}_linux_amd64.tar.gz
+	sha256sums_x86_64 = b244c07ab6e054e6e021462f7128c4ab7fc9f6840568829fbbe39003b7b28b22
+	
 pkgname = nclaw-bin
