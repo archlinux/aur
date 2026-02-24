@@ -3,8 +3,8 @@
 pkgname=arch-upgrader-git
 
 # Version
-pkgver=1.1.0.r0.gbf08ba8
-pkgrel=2
+pkgrel=1
+pkgver=1.1.0.r1.g737dfec
 
 # Generic
 pkgdesc='Update Arch: pacman & flatpak, rank mirrors, send notification on update and failure'
