@@ -1,0 +1,14 @@
+diff --git i/src/brickd/bcm2835.c w/src/brickd/bcm2835.c
+index 5ffd918..5e9e6a6 100644
+--- i/src/brickd/bcm2835.c
++++ w/src/brickd/bcm2835.c
+@@ -20,9 +20,6 @@
+ // S.Peacock: modified bcm2835_i2c_write() to add a fail safe timer.
+ */
+ 
+-// Needed to compile with gcc -std=c99, as reported by John Blaiklock.
+-#define _POSIX_C_SOURCE 200809L
+-
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <errno.h>

@@ -11,10 +11,16 @@ url="http://www.tinkerforge.com/"
 license=("GPL2")
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 depends=('libusb' 'libgpiod')
-source=(https://download.tinkerforge.com/apt/debian/pool/main/t/tinkerforge-${pkgname}/tinkerforge-${pkgname}_${_pkgver}.tar.xz brickd.install)
+source=(https://download.tinkerforge.com/apt/debian/pool/main/t/tinkerforge-${pkgname}/tinkerforge-${pkgname}_${_pkgver}.tar.xz
+        brickd.install
+        undef_posix_c_source.diff)
 sha256sums=('14ba73f6f2fe1d6820999bbb925dcef7701bedc2e7ce0cd92f58f72229a8293b'
-            'c70f47a66e5c538e255bfd93111fe1a4ea15894db9c377ed133f8a0351403589')
+            'c70f47a66e5c538e255bfd93111fe1a4ea15894db9c377ed133f8a0351403589'
+            'e7faf282e04043676e3cb096c1db8d530ca2291115f210a8321d9228d34b8ff7')
 install='brickd.install'
+prepare() {
+  patch -d $srcdir/tinkerforge-$pkgname-$_pkgver/brickd -Np3 -i ../../undef_posix_c_source.diff
+}
 build() {
   cd $srcdir/tinkerforge-$pkgname-$_pkgver/brickd
   make -j$(nproc)
