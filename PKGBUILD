@@ -9,7 +9,7 @@ license=('GPL')
 depends=('hyprland' 'xdg-terminal-exec' 'polkit')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('7a68cbf068d41da175f6c5bcc5d8115939ebf103f45aaef39b4faa9fefc7d842')
+sha256sums=('bb172d2a753d70d731d981aef209a730f055f4c5805edef48b20f36f287cd2d7')
 
 build() {
   cd "$pkgname-$pkgver"
