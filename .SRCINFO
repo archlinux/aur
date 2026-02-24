@@ -1,5 +1,6 @@
 pkgbase = conquest-git
-	pkgver = 0.1
+	pkgdesc = Conquest is a feature-rich and malleable command & control/post-exploitation framework developed in Nim.
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/jakobfriedl/conquest.git
 	arch = any
@@ -19,7 +20,10 @@ pkgbase = conquest-git
 	depends = libxcursor
 	depends = libxi
 	depends = gtk2
+	backup = etc/conquest/default.toml
 	source = git+https://github.com/jakobfriedl/conquest#branch=smb
+	source = conquest.service
+	sha1sums = SKIP
 	sha1sums = SKIP
 
 pkgname = conquest-git
