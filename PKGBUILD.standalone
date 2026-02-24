@@ -1,5 +1,5 @@
 pkgname=zig-git
-pkgver=0.16.0.r2488.gd1e01e94311c
+pkgver=0.16.0.r2653.g784e89fd4b08
 pkgrel=1
 pkgdesc='Zig programming language (static standalone toolchain)'
 arch=('aarch64' 'x86_64')
@@ -10,11 +10,11 @@ provides=("zig=${pkgver%%.r*}")
 depends=(glibc libxml2)
 makedepends=(cmake gcc git glibc libxml2 ninja python)
 options=(!debug !lto strip)
-source=("git+https://github.com/zlib-ng/zlib-ng#tag=2.3.2"
+source=("git+https://github.com/zlib-ng/zlib-ng#tag=2.3.3"
         "git+https://github.com/facebook/zstd.git#tag=v1.5.7"
         "git+https://github.com/llvm/llvm-project.git#tag=llvmorg-21.1.8"
         "git+https://codeberg.org/ziglang/zig.git#branch=master")
-sha256sums=('92fed158513bb54d0843fffdb161105f8e360bf45d80a2a53a87e911b29fd076'
+sha256sums=('aa625dc5ecdeb0ea6c12d76518dd10a55e865499c5a0fced68f52cb751542041'
             'e43521ef6e50b3c0f42612f6147c2f74c1c3af18e1c2d56fb91b8ddcb590c699'
             'b934e649489009c743469b375258ef91c034dab2aebb1f7d372ff2434cb808ff'
             'SKIP')
@@ -98,14 +98,17 @@ build() {
   msg2 "# Building static Zig... #"
   msg2 "##########################"
 
+  CFLAGS="${CFLAGS/-Wp,-D_FORTIFY_SOURCE=3/}"
+  CXXFLAGS="${CXXFLAGS/-Wp,-D_FORTIFY_SOURCE=3/}"
+
   $LLVM_CONFIG --link-static --libs --system-libs
   cmake -S ${srcdir}/zig -B build-zig -G Ninja \
     -DCMAKE_BUILD_TYPE=MinSizeRel \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_PREFIX_PATH="${DEPS_PREFIX}" \
     -DCMAKE_IGNORE_PATH="/usr/lib/llvm;/usr/lib/cmake/llvm" \
-    -DLLVM_ENABLE_ZLIB=FORCE_ON \
-    -DLLVM_ENABLE_ZSTD=FORCE_ON \
+    -DZIG_STATIC_ZLIB=ON \
+    -DZIG_STATIC_ZSTD=ON \
     -DZIG_STATIC_LLVM=ON \
     -DZIG_USE_LLVM_CONFIG=ON \
     -DLLVM_CONFIG_EXE="${LLVM_CONFIG}" \

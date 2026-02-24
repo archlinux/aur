@@ -1,5 +1,5 @@
 pkgname=zig-git
-pkgver=0.16.0.r2488.gd1e01e94311c
+pkgver=0.16.0.r2653.g784e89fd4b08
 pkgrel=1
 pkgdesc='General-purpose programming language and toolchain'
 arch=('aarch64' 'x86_64')
@@ -24,6 +24,9 @@ pkgver() {
 }
 
 build() {
+  CFLAGS="${CFLAGS/-Wp,-D_FORTIFY_SOURCE=3/}"
+  CXXFLAGS="${CXXFLAGS/-Wp,-D_FORTIFY_SOURCE=3/}"
+
   cmake -S zig -B build -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=MinSizeRel \
