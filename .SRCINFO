@@ -1,6 +1,6 @@
 pkgbase = kwin-x11
 	pkgdesc = An easy to use, but flexible, X Window Manager
-	pkgver = 6.6.0
+	pkgver = 6.6.1
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
@@ -65,14 +65,14 @@ pkgbase = kwin-x11
 	depends = xcb-util-cursor
 	depends = xcb-util-keysyms
 	depends = xcb-util-wm
-	source = https://download.kde.org/stable/plasma/6.6.0/kwin-x11-6.6.0.tar.xz
-	source = https://download.kde.org/stable/plasma/6.6.0/kwin-x11-6.6.0.tar.xz.sig
+	source = https://download.kde.org/stable/plasma/6.6.1/kwin-x11-6.6.1.tar.xz
+	source = https://download.kde.org/stable/plasma/6.6.1/kwin-x11-6.6.1.tar.xz.sig
 	validpgpkeys = E0A3EB202F8E57528E13E72FD7574483BB57B18D
 	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
 	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
 	validpgpkeys = 90A968ACA84537CC27B99EAF2C8DF587A6D4AAC1
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
-	sha256sums = 93c3aa581c2f16d9bfe6847d15721f7ca66b83c7e101dff450696e11c865c866
+	sha256sums = 3304d33277f20db1daee4a90d7afe95d1301c1036f8d048a75c62611c3e01d72
 	sha256sums = SKIP
 
 pkgname = kwin-x11

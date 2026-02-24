@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwin-x11
-pkgver=6.6.0
+pkgver=6.6.1
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='An easy to use, but flexible, X Window Manager'
@@ -71,7 +71,7 @@ makedepends=(extra-cmake-modules
              wayland-protocols)
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('93c3aa581c2f16d9bfe6847d15721f7ca66b83c7e101dff450696e11c865c866'
+sha256sums=('3304d33277f20db1daee4a90d7afe95d1301c1036f8d048a75c62611c3e01d72'
             'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
