@@ -10,7 +10,7 @@ depends=()
 source=(
   "try-rs-v${pkgver}-linux-x86_64.tar.gz::https://github.com/tassiovirginio/try-rs/releases/download/v${pkgver}/try-rs-v${pkgver}-linux-x86_64.tar.gz"
 )
-sha256sums=('bdf67328d7829d0f897e993e9260743bd83107682b4df2adbc3f528cb6cd10af')
+sha256sums=('96cb783634443985b44ea6b435e69600715cb6d962bdf43dc90d76b6064735d9')
 
 
 package() {
