@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-rounded-blur
 	pkgdesc = GNOME Shell patched with rounded blur mask (ref. https://github.com/aunetx/blur-my-shell/issues/594#issuecomment-3317236854)
 	pkgver = 49.4
-	pkgrel = 3
+	pkgrel = 2
 	epoch = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-shell
 	arch = x86_64
