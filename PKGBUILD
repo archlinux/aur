@@ -7,6 +7,7 @@ url="https://github.com/Rve27/RvKernel-Linux"
 license=('GPL-2.0-only')
 depends=('coreutils' 'kmod' 'initramfs')
 optdepends=(
+  'linux-rvkernel-bore-headers-clang'
   'wireless-regdb: to set the correct wireless channels of your country'
   'linux-firmware: firmware images needed for some devices'
   'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig'
