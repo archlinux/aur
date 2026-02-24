@@ -103,4 +103,13 @@ package() {
 
   install -Dm644 ladybird/LICENSE -t "${pkgdir}/opt/ladybird/usr/share/licenses/${pkgname}/"
   install -Dm644 "${pkgdir}/opt/ladybird/${RELATIVE_DESKTOP_FILE_PATH}" "${pkgdir}/${RELATIVE_DESKTOP_FILE_PATH}"
+
+  # Links
+  mkdir -p "${pkgdir}/usr/bin" "${pkgdir}/usr/share/licenses" "${pkgdir}/usr/share/metainfo" "${pkgdir}/usr/share/icons/hicolor/scalable/apps" "${pkgdir}/usr/share/icons/hicolor/128x128/apps" "${pkgdir}/usr/share/icons/hicolor/48x48/apps"
+  ln -s /opt/ladybird/usr/bin/Ladybird "${pkgdir}/usr/bin/Ladybird"
+  ln -s /opt/ladybird/usr/share/licenses/ladybird-git "${pkgdir}/usr/share/licenses/ladybird-git"
+  ln -s /opt/ladybird/usr/share/metainfo/org.ladybird.Ladybird.metainfo.xml "${pkgdir}/usr/share/metainfo/org.ladybird.Ladybird.metainfo.xml"
+  ln -s /opt/ladybird/usr/share/icons/hicolor/scalable/apps/org.ladybird.Ladybird.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/org.ladybird.Ladybird.svg"
+  ln -s /opt/ladybird/usr/share/Lagom/icons/128x128/app-browser.png "${pkgdir}/usr/share/icons/hicolor/128x128/apps/org.ladybird.Ladybird.png"
+  ln -s /opt/ladybird/usr/share/Lagom/icons/48x48/app-browser.png "${pkgdir}/usr/share/icons/hicolor/48x48/apps/org.ladybird.Ladybird.png"
 }
