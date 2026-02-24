@@ -1,16 +1,21 @@
 pkgbase = splayer-bin
-	pkgdesc = A minimalist music player.(Prebuilt version.Use system-wide electron)一个简约的在线音乐播放器，支持网易云音乐账号登录，逐字歌词，下载歌曲，展示评论区，音乐云盘及歌单管理
-	pkgver = 2.0.9
-	pkgrel = 2
-	url = https://github.com/imsyy/SPlayer
+	pkgdesc = 🎵 A cross-platform music player with Jellyfin / Navidrome / Emby media server support, word-by-word lyrics, desktop & taskbar lyrics, cloud music drive, local library management, audio spectrum visualization and mobile-friendly UI.(Prebuilt version.Use system-wide electron)简约的跨平台音乐播放器，支持逐字歌词、桌面歌词、任务栏歌词、云盘音乐、本地音乐管理及流媒体播放
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = http://splayer.imsyy.top
+	arch = aarch64
 	arch = x86_64
-	license = GPL-3.0-only
-	depends = electron28
-	provides = splayer=2.0.9
+	license = AGPL-3.0-only
+	makedepends = asar
+	depends = electron38
+	depends = libvips
+	provides = splayer=3.0.0
 	conflicts = splayer
-	source = splayer-2.0.9.rpm::https://github.com/imsyy/SPlayer/releases/download/v2.0.9/splayer-2.0.9.x86_64.rpm
 	source = splayer.sh
-	sha256sums = db221f52251b34301db364e6bcebb5fc95269f153f39a45f56bc5f5f6b4d298f
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	source_aarch64 = splayer-3.0.0-aarch64.rpm::https://github.com/imsyy/SPlayer/releases/download/v3.0.0/splayer-3.0.0-aarch64.rpm
+	sha256sums_aarch64 = e64b723057bfca831891014e5867b86e69ac3b381b1680dc01b51307d5daa954
+	source_x86_64 = splayer-3.0.0-x86_64.rpm::https://github.com/imsyy/SPlayer/releases/download/v3.0.0/splayer-3.0.0-x86_64.rpm
+	sha256sums_x86_64 = e1cae6d3706875911117609aceb2905a32fd1d4c0d567853f143230facea916f
 
 pkgname = splayer-bin
