@@ -5,12 +5,6 @@ pkgbase = linux-rvkernel-bore-clang
 	url = https://github.com/Rve27/RvKernel-Linux
 	arch = x86_64
 	license = GPL-2.0-only
-	noextract = linux-rvkernel-bore-lto-6.19.3-1-x86_64.pkg.tar.zst
-	source = https://github.com/Rve27/RvKernel-Linux/releases/download/6.19.3/linux-rvkernel-bore-lto-6.19.3-1-x86_64.pkg.tar.zst
-	sha256sums = 6144618892ed082fecc592ef75df6497e8bde894f9fb6362fcf5f41699593d2d
-
-pkgname = linux-rvkernel-bore-clang
-	pkgdesc = RvKernel Linux kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -25,3 +19,8 @@ pkgname = linux-rvkernel-bore-clang
 	provides = NTSYNC-MODULE
 	provides = VHBA-MODULE
 	provides = ADIOS-MODULE
+	noextract = linux-rvkernel-bore-lto-6.19.3-1-x86_64.pkg.tar.zst
+	source = https://github.com/Rve27/RvKernel-Linux/releases/download/6.19.3/linux-rvkernel-bore-lto-6.19.3-1-x86_64.pkg.tar.zst
+	sha256sums = 6144618892ed082fecc592ef75df6497e8bde894f9fb6362fcf5f41699593d2d
+
+pkgname = linux-rvkernel-bore-clang
