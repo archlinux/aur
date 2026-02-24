@@ -3,7 +3,7 @@
 
 pkgname=plotjuggler
 pkgver='3.15.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="The Time Series Visualization Tool that you deserve. Without ROS dependencies."
 arch=('x86_64')
 url="https://github.com/facontidavide/PlotJuggler"
@@ -23,25 +23,24 @@ depends=(
     'qt5-x11extras'
     'zeromq'
 )
-
 makedepends=(
     'cmake'
     'clang'
 )
-
 source=(
     "${pkgname}-${pkgver}.tar.gz"::"https://github.com/facontidavide/PlotJuggler/archive/${pkgver}.tar.gz"
 )
+sha256sums=('0570a06975079c4ade46f77894091bf9b7d2ecd09c01669c5fc6394d135d24b2')
 
 build() {
     cd "PlotJuggler-${pkgver}"
-    cmake -S . -B build -DCMAKE_INSTALL_PREFIX="/usr"
-    make -C build
+    cmake -S . -B build \
+        -DCMAKE_INSTALL_PREFIX="/usr" \
+        -DCMAKE_CXX_FLAGS="$CXXFLAGS -ffat-lto-objects"
+    cmake --build build
 }
 
 package() {
-    cd "PlotJuggler-${pkgver}/build"
-    make DESTDIR="${pkgdir}" install
+    cd "PlotJuggler-${pkgver}"
+    DESTDIR="${pkgdir}" cmake --install build
 }
-
-sha256sums=('0570a06975079c4ade46f77894091bf9b7d2ecd09c01669c5fc6394d135d24b2')
