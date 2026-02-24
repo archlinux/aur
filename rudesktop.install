@@ -37,6 +37,10 @@ post_install() {
         #    systemctl --user start rudesktop-user || true
     done
 
+    cp -f /usr/share/applications/rudesktop.desktop /usr/share/applications/rudesktop_wayland.desktop
+    sed -i 's/Exec=rudesktop/Exec=env -u WAYLAND_DISPLAY XDG_SESSION_TYPE=x11 GDK_BACKEND=x11 rudesktop/' /usr/share/applications/rudesktop_wayland.desktop
+    sed -i 's/Name=RuDesktop/Name=RuDesktop (Wayland)/' /usr/share/applications/rudesktop_wayland.desktop
+
     xdg-mime default rudesktop.desktop x-scheme-handler/rudesktop || true
 }
 
@@ -71,5 +75,6 @@ post_remove() {
     rm -f /usr/lib/systemd/user/rudesktop-user.service
     rm -rf /usr/share/rudesktop-client
     rm -f /usr/share/applications/rudesktop.desktop
+    rm -f /usr/share/applications/rudesktop_wayland.desktop
     update-desktop-database || true
 }

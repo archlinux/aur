@@ -3,7 +3,7 @@
 
 pkgname=rudesktop
 pkgver=2.9.1069
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 pkgdesc="Ru-Desktop client for home use"
 url="https://rudesktop.ru/downloads/"
@@ -16,9 +16,6 @@ source=("https://storage.rudesktop.ru/download/rudesktop-2.9.1069-x86_64.pkg.tar
 
 package() {
   cd "${srcdir}"
-  cp usr/share/applications/rudesktop.desktop usr/share/applications/rudesktop_wayland.desktop
-  sed -i 's/Exec=rudesktop/Exec=env -u WAYLAND_DISPLAY XDG_SESSION_TYPE=x11 GDK_BACKEND=x11 rudesktop/' usr/share/applications/rudesktop_wayland.desktop
-  sed -i 's/Name=RuDesktop/Name=RuDesktop (Wayland)/' usr/share/applications/rudesktop_wayland.desktop
   install -Dm 755 -d "${pkgdir}"/usr/share/rudesktop-client
   cp -r usr/share/rudesktop-client "${pkgdir}"/usr/share/
   cp -r usr/share/applications "${pkgdir}"/usr/share/
