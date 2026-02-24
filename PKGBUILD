@@ -1,7 +1,7 @@
 # Maintainer: Victor RH <blitzkriegfc@gmail.com>
 
 pkgname=perimeter81-rpm
-pkgver=10.0.4.947
+pkgver=10.0.5.962
 pkgrel=1
 pkgdesc='Perimeter81 VPN agent application (RPM-based build)'
 arch=('x86_64')
@@ -56,7 +56,7 @@ package() {
     ln -s /opt/Perimeter81/artifacts/daemon-creator \
         "${pkgdir}/usr/bin/p81-helper-daemon-creator"
 }
-sha256sums=('b59596a48d2185d88cb96e0495e91cce4f8895448fd1b645257957ab89557084'
+sha256sums=('2f141dd7e13eb89012a483cddb50d72e52a555b8184fd15a7bdee564e4a29139'
             '4c3e3e4a1aad73b42ab809aabb716ac6a425cd0b51357b926a139dcde7264453'
             '0eacb755870ce09037d2dc2d128398a68fc0e33d70428e0a45b11e3d5679d13e'
             'bcfd35efaf12d069e4595b28c7c3f8ed72569bfb4edc5b36e014bb2badb3ff41'
