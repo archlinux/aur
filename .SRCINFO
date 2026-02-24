@@ -1,7 +1,7 @@
 pkgbase = pinact-bin
 	pkgdesc = CLI to edit GitHub Workflow and Composite action files and pin versions of Actions and Reusable Workflows.
 	pkgver = 3.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/suzuki-shunsuke/pinact
 	arch = x86_64
 	arch = aarch64

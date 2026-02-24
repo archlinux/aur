@@ -2,7 +2,7 @@
 
 pkgname=pinact-bin
 pkgver=3.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc='CLI to edit GitHub Workflow and Composite action files and pin versions of Actions and Reusable Workflows.'
 arch=('x86_64' 'aarch64')
 url=https://github.com/suzuki-shunsuke/pinact
@@ -20,7 +20,7 @@ sha256sums_aarch64=('34a957423002662c6289782b571660beda6a37449a76d763c8ad8b1b9a5
 
 package() {
   install -Dm755 ${pkgname%-bin} "${pkgdir}/usr/bin/${pkgname%-bin}"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-bin}/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname%-bin}/README.md"
 }
 
