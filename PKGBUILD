@@ -10,7 +10,7 @@ url="https://rudesktop.ru/downloads/"
 license=('Commercial')
 install=${pkgname}.install
 depends=(sudo ca-certificates python lshw smartmontools pyalpm cron gtk3 libxcb alsa-lib libxfixes libsystemd python-evdev python-six python-pynput python-xlib libpulse)
-sha256sums=('6859b03c522effb9549587aafe0c10d157667f8299b9978d99cc6e7f3c6e97ee')
+sha256sums=('e2af024ec34f31ec566a309a84050cc9ed550e65e3aeb07a8f0021dba2386393')
 options=(!debug)
 source=("https://storage.rudesktop.ru/download/rudesktop-2.9.1069-x86_64.pkg.tar.zst")
 
