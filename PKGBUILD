@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=beakerlib
-pkgver=1.33
+pkgver=1.33.1
 pkgrel=1
 pkgdesc="Shell-level integration testing library, providing convenience functions which simplify writing, running and analysis of integration and blackbox tests."
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL-2.0-only')
 depends=('perl')
 makedepends=()
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('bd77518403ee5ed6c9040d5aa9f6f4f1ed924ce39451c5dfb0bd9214909d8524')
+sha256sums=('a18cecff44e3f1a2982dd2810e712cea2ebdb9f7dad6e7fd11026ca8d340e284')
 
 _srcdir="${pkgname}-${pkgver}"
 
