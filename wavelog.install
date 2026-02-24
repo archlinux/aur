@@ -12,30 +12,17 @@ team; users must resolve any issues on their own should they arise.
 For Docker installation instructions, please refer to the official guide:
 https://github.com/wavelog/wavelog/wiki/Installation
 
-==> Wavelog Installation Notes
-==> ============================
-1. DATABASE SETUP
-   Create Wavelog database and users in MySQL/MariaDB
-2. WEB SERVER CONFIGURATION
-   Examples:
-   /var/lib/wavelog/config/apache.example.conf
-   /var/lib/wavelog/config/nginx.example.conf
-3. PHP EXTENSIONS
-   REQUIRED extensions:
-   Edit /etc/php/php.ini and uncomment:
-     extension=mysqli
-     extension=gd
-     extension=zip
-   OPTIONAL caching extensions (for better performance):
-   $ sudo nano /etc/php/conf.d/igbinary.ini  # Uncomment: extension=igbinary.so
-   $ sudo nano /etc/php/conf.d/redis.ini     # Uncomment: extension=redis
-   $ sudo nano /etc/php/conf.d/apcu.ini      # Uncomment: extension=apcu.so
-   Restart web server after enabling extensions:
-   $ sudo systemctl restart httpd      # Apache
-   $ sudo systemctl restart php-fpm    # Nginx
-5. WEB-BASED INSTALLATION
-   Open your browser and navigate to: http://localhost/wavelog
-   Follow the Wavelog installer.
+==> Installation Instructions
+==> ==========================
+For detailed installation and configuration instructions, please see:
+/usr/share/doc/wavelog/README.md
+
+Quick start:
+1. Set up database (MySQL/MariaDB)
+2. Configure web server (Apache/Nginx)
+3. Enable required PHP extensions (mysqli, gd)
+4. Visit http://localhost/wavelog to complete installation
+
 EOF
 }
 
