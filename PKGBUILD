@@ -1,7 +1,7 @@
 # Maintainer: bbj <benigno at duck dot com>
 pkgname=k3k
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Kubernetes in Kubernetes - CLI tool for creating and managing K3s clusters within Kubernetes'
 arch=('x86_64' 'aarch64')
 url='https://github.com/rancher/k3k'
@@ -25,6 +25,7 @@ package() {
     cd "${pkgname}-${pkgver}"
     install -Dm755 k3kcli "${pkgdir}/usr/bin/k3kcli"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
     # dummy kubeconfig for completion generation (k3kcli requires valid config)
     local _kubeconfig="${srcdir}/.kubeconfig"
