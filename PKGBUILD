@@ -1,7 +1,7 @@
 # Maintainer: Carlo Wood <carlo@alinoe.com>
 
 pkgname=remountd-git
-pkgver=r48.01cf243
+pkgver=r49.f88e522
 pkgrel=1
 pkgdesc="Daemon to remount preconfigured mount points ro/rw; from an unprivileged client."
 arch=('x86_64')
