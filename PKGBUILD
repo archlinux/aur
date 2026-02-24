@@ -3,11 +3,11 @@
 _pkgname=camper
 pkgname="$_pkgname-git"
 pkgver=r10.g702e619
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimalistic Bandcamp music player client for Linux, built with Rust, GTK4/libadwaita, and GStreamer."
 arch=('x86_64' 'aarch64')
 url="https://github.com/knoopx/camper"
-license=('custom:NONE')
+license=('MIT')
 depends=('gst-plugins-base' 'gst-plugins-bad' 'gst-plugins-good' 'gst-plugin-gtk4' 'gtk4' 'libadwaita' 'webkitgtk-6.0')
 makedepends=('cargo' 'git')
 provides=("${_pkgname}")
