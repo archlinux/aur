@@ -1,0 +1,5 @@
+[gito-bin]
+source = "github"
+github = "AlvaroHoux/gito"
+use_latest_release = true
+prefix = "v"
