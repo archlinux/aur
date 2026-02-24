@@ -1,7 +1,7 @@
 pkgbase = noctalia-qs
 	pkgdesc = Custom fork of Quickshell powering Noctalia Shell
 	pkgver = 0.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/noctalia-dev/noctalia-qs
 	arch = x86_64
 	arch = aarch64
@@ -29,6 +29,7 @@ pkgbase = noctalia-qs
 	depends = qt6-wayland
 	depends = wayland
 	depends = polkit
+	provides = quickshell
 	conflicts = quickshell
 	conflicts = quickshell-git
 	options = !debug
