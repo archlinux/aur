@@ -3,7 +3,7 @@
 
 pkgname=sublime-merge
 pkgver=2123
-pkgrel=1
+pkgrel=2
 pkgdesc='Meet a new Git Client, from the makers of Sublime Text'
 arch=('x86_64')
 url='https://www.sublimemerge.com'
