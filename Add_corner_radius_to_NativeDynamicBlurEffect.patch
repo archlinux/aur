@@ -341,7 +341,7 @@ diff --git a/src/components/applications.js b/src/components/applications.js
 +        if (!meta_window.blur_pipeline?.effect)
 +            return;
 +
-+        const is_maximized = meta_window.maximized_horizontally && meta_window.maximized_vertically;
++        const is_maximized = meta_window.maximized_horizontally || meta_window.maximized_vertically;
 +        const is_fullscreen = meta_window.fullscreen;
 +
 +        if (is_maximized || is_fullscreen) {
