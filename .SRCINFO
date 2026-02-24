@@ -1,0 +1,16 @@
+pkgbase = md365-bin
+	pkgdesc = AI-native CLI for Microsoft 365 - calendars, contacts, and mail as Markdown
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/lcorneliussen/md365
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = md365
+	conflicts = md365
+	source_x86_64 = https://github.com/lcorneliussen/md365/releases/download/v0.1.0/md365_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 77d6950f6e736acae24901300c405d105f94232fa6fa5ab2b66d60d7f1ec814d
+	source_aarch64 = https://github.com/lcorneliussen/md365/releases/download/v0.1.0/md365_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 26af2bc18b269779f285802f2ffabd79a470a94466aac7444f942f85be4f69b1
+
+pkgname = md365-bin
