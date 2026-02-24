@@ -1,7 +1,7 @@
 # Maintainer: Raphael Nestler (rnestler) <raphael.nestler@gmail.com>
 
 pkgname=nctl
-pkgver=1.14.0
+pkgver=1.14.1
 pkgrel=1
 pkgdesc="A CLI tool to interact with Nine API resources."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache')
 makedepends=('go')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ninech/nctl/archive/v${pkgver}.tar.gz")
-sha256sums=('8496fba9e6bf5eda9e974f3799ca8c3945bf679e015aa5ba9fec14c923a08f31')
+sha256sums=('742f95cd04cb1e045324c136d685d52a7bc09d58bbd70d1ae837527cab6513af')
 
 prepare() {
   cd "$pkgname-$pkgver"
