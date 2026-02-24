@@ -1,1 +1,1 @@
-u tori - "Tori monitoring agent" /var/lib/tori /bin/bash
+u tori - "Tori monitoring agent" /var/lib/tori /usr/bin/nologin

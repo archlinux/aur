@@ -1,12 +1,15 @@
 post_install() {
+  chown tori:tori /etc/tori/config.toml
   echo "
-Welcome to the tori!
+Welcome to tori!
 -----------------------------------------------------------------------------
 Default Config Path: /etc/tori/
 Default Data Path: /var/lib/tori/
 Default User & Group: tori:tori
 
-$ sudo usermod -aG tori $USER
+$ sudo usermod -aG docker tori
+$ sudo usermod -aG tori \$USER
+$ newgrp tori  # activate group without logging out
 $ sudo systemctl start tori.service
 -----------------------------------------------------------------------------
 
@@ -14,12 +17,19 @@ More: https://github.com/thobiasn/tori-cli
 "
 }
 
+post_upgrade() {
+  chown tori:tori /etc/tori/config.toml
+  chmod 600 /etc/tori/config.toml
+}
+
 post_remove() {
-  echo "You need to remove database and config by yourself.
+  echo "
+To fully remove tori, clean up the following:
 -----------------------------------------------------------------------------
-Default Config Path: /etc/tori/
-Default Data Path: /var/lib/tori/
-Default User & Group: tori:tori
+$ sudo gpasswd -d \$USER tori
+$ sudo userdel tori
+$ sudo groupdel tori
+$ sudo rm -rf /etc/tori /var/lib/tori
 -----------------------------------------------------------------------------
 "
 }
