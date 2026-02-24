@@ -28,7 +28,8 @@ build() {
 check() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features
+    export CARGO_TARGET_DIR=target
+    cargo test --frozen --release --all-features
 }
 
 package() {
