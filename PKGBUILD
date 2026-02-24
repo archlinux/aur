@@ -10,7 +10,7 @@ depends=('gtk4' 'gtk4-layer-shell')
 makedepends=('cargo' 'pkgconf')
 install=accentd.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('30f68294988fad180d0129ee444f15851ade4d9d553f64aae379bbfcca2b632f')
+sha256sums=('993dd8b2d2cb475174d1d9b6d1ba9aee4ec434a37a89642eb85fee39af9ce191')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
