@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=rustconn
 _app_id=io.github.totoshko88.RustConn
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Modern connection manager for Linux with GTK4/Wayland-native interface."
 arch=('x86_64')
@@ -37,6 +37,7 @@ optdepends=(
   'libsecret: Fallback password storage method'
   'mc: SFTP via Midnight Commander FISH VFS'
   'oci-cli: OCI CLI'
+  'pass: Password storage method option'
   'passbolt-cli: Password storage method option'
   'picocom: Serial terminal client'
   'realvnc-vnc-viewer: VNC client option'
@@ -48,7 +49,7 @@ optdepends=(
   'virt-viewer: SPICE client option'
 )
 source=("RustConn-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('90753a39aa65a0aeb480b290bac3ca00212e6a82e867ab0c19e3853001f34448')
+sha256sums=('12fd621a1629b1368160e4fc8ac2fd00f3fc26aa647f48cf9a2a57a727899bbe')
 
 prepare() {
   cd "RustConn-$pkgver"
