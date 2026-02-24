@@ -2,7 +2,7 @@
 
 pkgname=privatebin-cli-bin
 pkgver=2.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A powerful CLI for creating and managing PrivateBin pastes with ease - binary package'
 arch=(x86_64 aarch64)
 url='https://github.com/gearnode/privatebin'
@@ -18,7 +18,7 @@ sha256sums_aarch64=('7e87149da80b8d9ea9f6757b661126c36e86cb38c7a11aa1917dd23e199
 
 package() {
   install -Dm755 ${pkgname%%-*} "$pkgdir/usr/bin/${pkgname%%-*}"
-  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname%%-*}/LICENSE"
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname%-bin}/LICENSE"
   install -Dm644 man/privatebin.1 -t "${pkgdir}"/usr/share/man/man1/
   install -Dm644 man/privatebin-create.1 -t "${pkgdir}"/usr/share/man/man1/
   install -Dm644 man/privatebin-show.1 -t "${pkgdir}"/usr/share/man/man1/
