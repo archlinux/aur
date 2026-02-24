@@ -1,9 +1,9 @@
-# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer: MojArch
 
-_sdk=9.0
+_sdk=10.0
 _Name="Ps3DiscDumper"
 pkgname="ps3-disc-dumper"
-pkgver=4.4.1
+pkgver=4.4.2
 pkgrel=1
 pkgdesc="A handy utility to make decrypted PS3 disc dumps"
 arch=('aarch64' 'armv7h' 'x86_64')
