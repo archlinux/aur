@@ -1,0 +1,13 @@
+[Unit]
+Description=iroh-ssh server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/iroh-ssh server --persist
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
