@@ -1,7 +1,7 @@
 pkgbase = c47
 	pkgdesc = Emulator for the C47 pocket calculator
-	pkgver = 00.109.03.00b1
-	pkgrel = 5
+	pkgver = 00.109.03.00b2.p2
+	pkgrel = 1
 	url = https://47calc.com
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -22,8 +22,8 @@ pkgbase = c47
 	depends = libpulse
 	depends = glib2
 	depends = gmp
-	source = https://gitlab.com/rpncalculators/c43/-/archive/00.109.03.00b1/c43-00.109.03.00b1.tar.gz
-	sha256sums = 72d4b6906ab49b3236698f8a88e86f30f946d4ea1e78c87ff7e95682ad6883e2
+	source = https://gitlab.com/rpncalculators/c43/-/archive/00.109.03.00b2.p2/c43-00.109.03.00b2.p2.tar.gz
+	sha256sums = 3ee56c5e8039ffef8f1abe5d8c9525a4b8e06e6dc805646e94ae36d3769b38f7
 
 pkgname = c47
 
