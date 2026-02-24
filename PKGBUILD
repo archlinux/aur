@@ -1,6 +1,6 @@
 pkgname=random-pics-bin
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Fast desktop local image viewer for gesture drawing practice"
 arch=('x86_64')
 url="https://github.com/YukiYuziriha/random-pics"
@@ -13,7 +13,7 @@ source=(
   "https://github.com/YukiYuziriha/random-pics/releases/download/v${pkgver}/${_deb}"
 )
 sha256sums=(
-  'c983d59019586f6e42a278e4127c30ffd990c31af8a453a0331aa631b0bef0c0'
+  '22bf30653af75d1a4707c10aeac03c2fb55a32a1ea3b4040dbebe77771924169'
 )
 
 package() {
