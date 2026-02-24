@@ -1,0 +1,20 @@
+pkgbase = frank-sherlock-bin
+	pkgdesc = Local-only, AI-powered image cataloging and search system
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/akitaonrails/FrankSherlock
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = webkit2gtk-4.1
+	depends = hicolor-icon-theme
+	depends = fuse2
+	optdepends = ollama: required for AI image classification
+	provides = frank-sherlock
+	conflicts = frank-sherlock
+	noextract = frank-sherlock-bin-0.5.0.AppImage
+	options = !strip
+	options = !debug
+	source = frank-sherlock-bin-0.5.0.AppImage::https://github.com/akitaonrails/FrankSherlock/releases/download/v0.5.0/frank_sherlock_0.5.0_amd64.AppImage
+	sha256sums = SKIP
+
+pkgname = frank-sherlock-bin
