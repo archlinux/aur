@@ -1,5 +1,5 @@
 pkgbase = linux-rvkernel-bore-headers-clang
-	pkgdesc = Headers and scripts for building modules for the Linux RvKernel BORE Clang
+	pkgdesc = Headers and scripts for building modules for the linux-rvkernel-bore-clang kernel
 	pkgver = 6.19.3
 	pkgrel = 1
 	url = https://github.com/Rve27/RvKernel-Linux

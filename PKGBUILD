@@ -1,7 +1,7 @@
 pkgname=linux-rvkernel-bore-headers-clang
 pkgver=6.19.3
 pkgrel=1
-pkgdesc="Headers and scripts for building modules for the Linux RvKernel BORE Clang"
+pkgdesc="Headers and scripts for building modules for the linux-rvkernel-bore-clang kernel"
 arch=('x86_64')
 url="https://github.com/Rve27/RvKernel-Linux"
 license=('GPL-2.0-only')
