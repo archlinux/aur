@@ -3,7 +3,7 @@
 _appname=code
 _pkgname="visual-studio-${_appname}"
 pkgname="${_pkgname}-electron-bin"
-pkgver=1.109.2
+pkgver=1.109.5
 _electronversion=39
 pkgrel=1
 pkgdesc="Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications.(Prebuilt and System-wide Electron edition)"
@@ -45,14 +45,14 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_dlurl}/${_appname}-${pkgver}-1770755841.el8.aarch64.rpm")
-source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${_dlurl}/${_appname}-${pkgver}-1770755835.el8.armv7hl.rpm")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_dlurl}/${_appname}-${pkgver}-1770755856.el8.x86_64.rpm")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_dlurl}/${_appname}-${pkgver}-1771531699.el8.aarch64.rpm")
+source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${_dlurl}/${_appname}-${pkgver}-1771531684.el8.armv7hl.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_dlurl}/${_appname}-${pkgver}-1771531703.el8.x86_64.rpm")
 sha256sums=('dc5406ddd35ed5e3be39fe0a5a460f061aff3d296dc70124fd3eface8444c947'
             'c418b7c5c17b3771f53541b46ed1eff461de5871e2c7c177546e2577d480594f')
-sha256sums_aarch64=('b8cc8ad495c30b9f796ea6b9842060219f2a66e474041ea2dae99684beb7dfed')
-sha256sums_armv7h=('893bfc0a85099d0293e807fcbffcbd5c8124d9cf0d11211a5c2fb2828f9967b2')
-sha256sums_x86_64=('ca1cd9a644459dba20430da52f1ea5741489921d07168f15383e9c93845c872b')
+sha256sums_aarch64=('2e007b2d6052011d360985b51e961d69f4597168f60e880e1a64c79a8b7417b3')
+sha256sums_armv7h=('27535eb1bedaf491c41dcf28ec97ea2b79629b2275d9b158e026d05e757e9143')
+sha256sums_x86_64=('d45835c69089397659440e25bd37cb28af67910354a0de6959b77cc3fcaf6510')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/usr/share/${_appname}/${_appname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
@@ -73,6 +73,16 @@ prepare() {
         s/Icon=vs${_appname}/Icon=${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/"{"${_appname}-url-handler.desktop","${_appname}.desktop"}
     ln -sf "/usr/bin/rg" "${srcdir}/usr/share/${_appname}/resources/app/node_modules/@vscode/ripgrep/bin/rg"
+    case "${CARCH}" in
+        aarch64)
+            find "${srcdir}/usr/share/${_appname}/resources/app/node_modules/@anthropic-ai/sandbox-runtime" \
+                -type d -name "x64" -exec rm -rf {} +
+            ;;
+        x86_64)
+            find "${srcdir}/usr/share/${_appname}/resources/app/node_modules/@anthropic-ai/sandbox-runtime" \
+                -type d -name "arm64" -exec rm -rf {} +
+            ;;
+    esac
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
