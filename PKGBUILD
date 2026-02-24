@@ -3,7 +3,7 @@
 _pkgname=kworkflow
 _lpkg="${_pkgname,,}"
 pkgname="${_pkgname}-git"
-pkgver=0.9.r0.g8358ca2e
+pkgver=0.10.r0.g2d8a04bb
 pkgrel=1
 pkgdesc='CLI tool for kernel development'
 arch=('any')
