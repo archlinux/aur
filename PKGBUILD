@@ -5,7 +5,7 @@
 
 pkgname=factorio-space-age
 pkgver=2.0.73 # renovate: datasource=custom.factorio depName=stable.expansion
-pkgrel=1
+pkgrel=2
 pkgdesc="A 2D game about building and maintaining factories (stable branch w/ Space Age expansion)."
 arch=('x86_64')
 url="http://www.factorio.com/"
@@ -94,8 +94,22 @@ _find_pkgpath_from_input() {
 
   [[ ! -t 0 || -n "$FACTORIO_LOGIN" ]] && return
 
+  # Check for token in player-data.json
+  local token_file="$HOME/.factorio/player-data.json"
+  if [[ -r $token_file ]]; then
+    local username=$(jq -r '."service-username" | strings' "$token_file") || username=
+    local token=$(jq -r '."service-token" | strings' "$token_file") || token=
+
+    if [[ -n $username && -n $token ]]; then
+      msg "Using token from $token_file"
+      return
+    else
+      warning "Token file $token_file is corrupted"
+    fi
+  fi
+
   while [[ ! -f "${pkgpath}/${_gamepkg}" ]]; do
-    read -rp "Please provide the path to the directory containing ${_gamepkg} or leave blank to download it using your Factorio credentials: " pkgpath
+    read -rp "Please provide the path to the directory containing ${_gamepkg} or leave blank to try again using your Factorio credentials: " pkgpath
     [[ -z $pkgpath ]] && break
 
     # perform tilde expansion
