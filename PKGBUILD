@@ -2,22 +2,18 @@
 
 pkgname=tdns-git
 _pkgname=tdns
-pkgver=v0.5.6.r0.8e835b5
+pkgver=v0.5.6.r2.5ad87cf
 pkgrel=1
 
 pkgdesc="A powerful, lightweight CLI to manage Technitium DNS server via HTTP API endpoint"
 arch=('x86_64')
 url='https://github.com/mbevc1/tdns'
 license=('MPL-2.0')
-makedepends=('make' 'coreutils' 'go' 'upx')
+makedepends=('go' 'upx')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=(
-    "git+$url"
-)
-sha256sums=(
-    'SKIP'
-)
+source=("git+$url")
+sha256sums=('SKIP')
 
 pkgver() {
   git -C "${_pkgname}" describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
