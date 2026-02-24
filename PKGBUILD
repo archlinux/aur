@@ -1,6 +1,6 @@
 # Maintainer: Ianis Vasilev <ianis@ivasilev.net>
 pkgname=dpsprep
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1.314
 pkgdesc='A DjVu to PDF converter with a focus on small output size and the ability to preserve document outlines and text layers'
 url='https://github.com/kcroker/dpsprep'
@@ -13,7 +13,7 @@ depends=(python python-djvulibre-python
          python-fpdf2 python-pdfrw)
 optdepends=('ocrmypdf: Optional OCR and advanced PDF optimization')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2499d5ab1bfa17d252a4e75e131f83f3a40f7aa0c08c687a5558588d5bbea2d0')
+sha256sums=('429afc1216231aeb42cc052d7ce4eca7c3377ec4809bb1bfbda2ff9fb893a1b7')
 
 _fullsrcdir() {
     echo "$srcdir/$pkgname-$pkgver"
