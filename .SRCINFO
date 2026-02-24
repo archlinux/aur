@@ -1,0 +1,13 @@
+pkgbase = daemonwayans
+	pkgdesc = A lightweight daemon that monitors AUR uptime
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ChristineLily/daemonwayans
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	source = git+https://github.com/ChristineLily/daemonwayans.git
+	sha256sums = SKIP
+
+pkgname = daemonwayans
