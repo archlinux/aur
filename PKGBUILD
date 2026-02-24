@@ -1,27 +1,11 @@
 pkgname=linux-rvkernel-bore-headers-clang
-pkgbase=linux-rvkernel-bore-headers-clang
 pkgver=6.19.3
 pkgrel=1
 pkgdesc="Headers and scripts for building modules for the Linux RvKernel BORE Clang"
 arch=('x86_64')
 url="https://github.com/Rve27/RvKernel-Linux"
 license=('GPL-2.0-only')
-depends=('coreutils' 'kmod' 'initramfs')
-optdepends=(
-  'wireless-regdb: to set the correct wireless channels of your country'
-  'linux-firmware: firmware images needed for some devices'
-  'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig'
-  'scx-scheds: to use sched-ext schedulers'
-)
-provides=(
-  VIRTUALBOX-GUEST-MODULES
-  WIREGUARD-MODULE
-  KSMBD-MODULE
-  V4L2LOOPBACK-MODULE
-  NTSYNC-MODULE
-  VHBA-MODULE
-  ADIOS-MODULE
-)
+depends=('pahole' 'linux-rvkernel-bore-clang')
 source=(
   "https://github.com/Rve27/RvKernel-Linux/releases/download/${pkgver}/linux-rvkernel-bore-lto-headers-${pkgver}-${pkgrel}-${arch[0]}.pkg.tar.zst"
 )
