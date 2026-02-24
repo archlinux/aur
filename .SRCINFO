@@ -1,21 +1,20 @@
 pkgbase = deadbolt-bin
 	pkgdesc = Dead-simple file encryption for any OS.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.0.2
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/alichtman/deadbolt
 	arch = x86_64
 	license = MIT
 	makedepends = asar
-	makedepends = fuse2
 	depends = electron31
-	provides = deadbolt=2.0.2
+	provides = deadbolt=2.1.0
 	conflicts = deadbolt
 	conflicts = deadboltplusplus
-	source = deadbolt-2.0.2.AppImage::https://github.com/alichtman/deadbolt/releases/download/v2.0.2/Deadbolt-2.0.2.x86_64.AppImage
-	source = LICENSE-2.0.2::https://raw.githubusercontent.com/alichtman/deadbolt/v2.0.2/LICENSE
+	source = deadbolt-2.1.0-x86_64.AppImage::https://github.com/alichtman/deadbolt/releases/download/v2.1.0/Deadbolt-2.1.0.x86_64.AppImage
+	source = LICENSE-2.1.0::https://raw.githubusercontent.com/alichtman/deadbolt/v2.1.0/LICENSE
 	source = deadbolt.sh
-	sha256sums = 60adf1ab07970f6c434e0e51614253873c602f471ccb4a254985b1f13863a509
+	sha256sums = 761f64ba277c5ba16bb05aa9fb4a73e958d7cb0eb11c9aba72c721c2a5332010
 	sha256sums = b6f8e4a32cbd0221c7a41052b9e4b06e1a2216741b41d1951b9163445907cb3b
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = deadbolt-bin
