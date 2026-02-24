@@ -1,6 +1,6 @@
 # Maintainer: Necromortis <necromortis@protonmail.com> (automated by openclaw)
 pkgname=vultisig
-pkgver=1.0.52
+pkgver=1.0.53
 pkgrel=1
 pkgdesc="Vultisig Linux Application"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('webkit2gtk')
 options=(!strip)
 source=("$pkgname-v$pkgver.AppImage::https://github.com/vultisig/vultisig-windows/releases/download/v$pkgver/$pkgname-v$pkgver.AppImage")
 noextract=("$pkgname-v$pkgver.AppImage")
-sha256sums=('5513e5ef3efee2b9f0aee530821207844f0025c0e040e121554eabc9771128d2')
+sha256sums=('17afcc1abe0687d354910e8bf6711152104995ab27f0348217a806beb25471d1')
 
 prepare() {
     chmod +x "$pkgname-v$pkgver.AppImage"
