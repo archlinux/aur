@@ -1,6 +1,6 @@
 pkgname=struct-cli
 _shortPkgname=struct
-pkgver="0.4.2"
+pkgver="0.5.4"
 pkgrel=1
 pkgdesc="struct - a smarter tree command"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 conflicts=(struct-cli-git struct-bin)
 makedepends=(cargo)
 source=("struct-${pkgver}.tar.gz::https://github.com/caffienerd/struct-cli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('656d24667976b80f508500ed311dd6e88f822676fb4cdbe2a58f46f98e556bf8')
+sha256sums=('d47ff59cc1fc1464dc67b2787e16b8bfcdbb0bdce4a027f40155a93f705c5284')
 options=('!lto')
 
 prepare() {
