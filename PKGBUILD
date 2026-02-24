@@ -1,7 +1,7 @@
 # Maintainer Bjoern Franke <bjo+aur@schafweide.org>
 pkgname=openvox-agent-bin
 _pkgname=openvox-agent
-pkgver=8.24.2
+pkgver=8.25.0
 pkgrel=1
 pkgdesc="Agent of the OpenVox Automation Framework"
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=('!debug')
 conflicts=("puppet")
 backup=("etc/puppetlabs/")
 
-source_x86_64=("https://apt.voxpupuli.org/pool/openvox8/o/openvox-agent/${_pkgname}_${pkgver}-1+debian12_amd64.deb")
+source_x86_64=("https://apt.voxpupuli.org/pool/openvox8/o/openvox-agent/${_pkgname}_${pkgver}-1+debian13_amd64.deb")
 
 prepare() {
     mkdir -p data
@@ -24,4 +24,4 @@ package() {
     cp -a  ${srcdir}/data/etc ${pkgdir}/
     install -Dm 644 "${srcdir}/data/lib/systemd/system/puppet.service" "${pkgdir}/usr/lib/systemd/system/puppet.service"
 }
-md5sums_x86_64=('f70f3777c460899ab4119769bea378d8')
+md5sums_x86_64=('050ac19b4368cb4cb539efaaac8711df')
