@@ -13,6 +13,7 @@ pkgver=3.0
 pkgrel=1
 arch=('any')
 url='https://git.sr.ht/~lioploum/offpunk'
+install="$pkgname.install"
 license=('AGPL-3.0-or-later')
 depends=(
   'file'
