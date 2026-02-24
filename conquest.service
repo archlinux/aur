@@ -1,0 +1,14 @@
+[Unit]
+Description=Conquest C2 Server
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/share/conquest/bin/server -p /etc/conquest/default.toml
+Restart=always
+RestartSec=5s
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
