@@ -1,5 +1,5 @@
-# Maintainer: Tiago "marmis" de Paula <tiagodepalves@gmail.com>
-# Contributor: Tiago "marmis" de Paula <tiagodepalves@gmail.com>
+# Maintainer: marmis <tiagodepalves@gmail.com>
+# Contributor: "marmis" Tiago de Paula <tiagodepalves@gmail.com>
 
 pkgname=perl-string-license
 pkgver=0.0.11
