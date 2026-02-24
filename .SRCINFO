@@ -1,8 +1,8 @@
 pkgbase = codex-app-electron-port-bin
 	pkgdesc = Unofficial Electron-port repackaging of Codex desktop app from macOS DMG
 	pkgver = 2026.02.25
-	pkgrel = 1
-	url = https://openai.com/
+	pkgrel = 2
+	url = https://github.com/Tomakin/codex-app-electron-port-bin
 	install = codex-app-electron-port-bin.install
 	arch = x86_64
 	license = custom
