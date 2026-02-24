@@ -1,5 +1,5 @@
 # Maintainer: Joshua Ellis <josh@jpellis.me>
-# Contributor: Tiago "marmis" de Paula <tiagodepalves@gmail.com>
+# Contributor: "marmis" Tiago de Paula <tiagodepalves@gmail.com>
 # Contributor: Anish Tondwalkar <anish@tjhsst.edu>
 # Contributor: Ghost91 <m_graeb11@cs.uni-kl.de>
 # Contributor: Michael Pusterhofer <pusterhofer at student dot tugraz dot at>
