@@ -3,7 +3,7 @@
 
 _name=niripy
 pkgname=python-$_name
-pkgver=0.2.5
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="Python bindings for Niri."
 arch=(any)
@@ -13,7 +13,7 @@ depends=(python python-pydantic)
 makedepends=(python-build python-installer)
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4e512a4f4eaa5d6c9332d86bbb02c03591bc91c8fe2f0d22a39d1f28cf488769')
+sha256sums=('04ef61feb25f5cc224fb2564e5f1030d910581a759b7d9115b82e68e6452167b')
 
 build() {
   # Extracted dirname is only niripy (not python-niripy)
