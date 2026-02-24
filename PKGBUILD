@@ -13,14 +13,14 @@ provides=('lbk-launcher')
 conflicts=('lbk-launcher')
 options=(!strip !debug)
 source=(
-    "LBK-Launcher-linux.AppImage::https://github.com/Vadko/littlebit-launcher/releases/download/v${pkgver}/LBK-Launcher-linux.AppImage"
+    "LBK-Launcher-linux.AppImage::https://github.com/Vadko/lbk-launcher/releases/download/v${pkgver}/LBK-Launcher-linux.AppImage"
     "lbk-launcher.sh"
     "lbk-launcher.desktop"
-    "icon-32.png::https://raw.githubusercontent.com/Vadko/littlebit-launcher/master/aur/icons/icon-32.png"
-    "icon-48.png::https://raw.githubusercontent.com/Vadko/littlebit-launcher/master/aur/icons/icon-48.png"
-    "icon-64.png::https://raw.githubusercontent.com/Vadko/littlebit-launcher/master/aur/icons/icon-64.png"
-    "icon-128.png::https://raw.githubusercontent.com/Vadko/littlebit-launcher/master/aur/icons/icon-128.png"
-    "icon-256.png::https://raw.githubusercontent.com/Vadko/littlebit-launcher/master/aur/icons/icon-256.png"
+    "icon-32.png::https://raw.githubusercontent.com/Vadko/lbk-launcher/master/aur/icons/icon-32.png"
+    "icon-48.png::https://raw.githubusercontent.com/Vadko/lbk-launcher/master/aur/icons/icon-48.png"
+    "icon-64.png::https://raw.githubusercontent.com/Vadko/lbk-launcher/master/aur/icons/icon-64.png"
+    "icon-128.png::https://raw.githubusercontent.com/Vadko/lbk-launcher/master/aur/icons/icon-128.png"
+    "icon-256.png::https://raw.githubusercontent.com/Vadko/lbk-launcher/master/aur/icons/icon-256.png"
 )
 sha256sums=(
     'SKIP'
