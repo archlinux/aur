@@ -4,7 +4,7 @@
 # Contributor: Ícar N. S. <icar.nin@protonmail.com>
 
 pkgname=crawley
-pkgver=1.7.16
+pkgver=1.7.17
 pkgrel=2
 pkgdesc="Simple web scraper"
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=(crawley)
 conflicts=("crawley-bin" "crawley-git")
 makedepends=(go binutils)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('5c5b447463d2fccd4d918060aca50770957f45ca04b643e074382a240d79687912171ecbde9144f59fa200750b3b51af22f97cddfb708e130668d8c923859511')
+sha512sums=('58067742346589943cf0a52755290f30b14bc20498781357ae5294ebd455754e0d778a80f381f2f6ed483136d0784390d87ccd401dd3901220254fa0e54863dd')
 
 prepare() {
   cd ${pkgname}-${pkgver}
