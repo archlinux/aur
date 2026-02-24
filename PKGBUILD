@@ -6,6 +6,7 @@ pkgdesc="A WiFi/Bluetooth manager for Wayland with glassmorphism UI"
 arch=('x86_64')
 url="https://github.com/LifeOfATitan/orbit"
 license=('MIT')
+options=(!debug)
 install=orbit.install
 depends=(
     'gtk4'

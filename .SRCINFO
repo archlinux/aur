@@ -12,6 +12,7 @@ pkgbase = orbit-wifi
 	depends = gtk4-layer-shell
 	depends = networkmanager
 	depends = bluez
+	options = !debug
 	source = orbit-wifi-0.1.2.tar.gz::https://github.com/LifeOfATitan/orbit/archive/v0.1.2.tar.gz
 	source = orbit.service
 	sha256sums = 461a5286f98da7bd51633dac176607970c6f29b4dab65dfee9f875b98fa90cfe
