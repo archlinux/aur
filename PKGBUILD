@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 pkgname=xdgctl-git
 pkgdesc='TUI for managing XDG default applications'
-pkgver=r15.f7654de
+pkgver=r19.9797f48
 pkgrel=1
 url=https://github.com/mitjafelicijan/xdgctl
 _rawurl="${url/github.com/raw.githubusercontent.com}/refs/heads/master"
@@ -31,5 +31,5 @@ build () {
 package () {
   cd "$pkgname"
   install -Dm755 xdgctl "$pkgdir/usr/bin/xdgctl"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
