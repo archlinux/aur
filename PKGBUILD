@@ -1,7 +1,7 @@
 # Maintainer: badcast <lmecomposer@gmail.com> or <support@imister.kz>
 # Contributor: Artem Izmaylov <support@aimp.ru>
 
-_pkver=(6.00 3035)
+_pkver=(6.00 3044)
 pkgname=aimp
 pkgver=${_pkver[0]}.${_pkver[1]}
 pkgrel=1
@@ -15,7 +15,7 @@ depends=('hicolor-icon-theme' 'gtk3' 'gdk-pixbuf2' 'cairo' 'pango' 'sqlite' 'lib
 source=(
    "https://imister.kz/linux/aimp-nightly-x86_64.pkg.tar.zst"
 )
-sha256sums=('fcef1329df67c05d0a92d5200465b0054c97fec7d794478600d7127347ae565b')
+sha256sums=('27ab1db453905e25b9de7c9760d31db43f1ef1746b7f8b2c0ee15f4c9011d722')
 
 package(){
    rm -fr "${srcdir}/usr/share/lintian"
