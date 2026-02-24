@@ -2,7 +2,7 @@
 
 pkgname=python-weaviate-client
 _pkg=weaviate_client
-pkgver=4.19.4
+pkgver=4.20.0
 pkgrel=1
 pkgdesc='A python native client for easy interaction with a Weaviate instance.'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-httpx' 'python-validators' 'python-authlib' 'python-py
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'python-setuptools-scm')
 optdepends=('weaviate-bin')
 source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/${_pkg}/${_pkg}-${pkgver}.tar.gz")
-b2sums=('639ba28c260b4abb7815f752ca84cef7ae9271d90456579359fa379a13ab19662cf15c63c281ccf445c51598ab975483e9745b00f323df33e008c296d449fda2')
+b2sums=('2f8382f7db0568bc1360ff2f9d6dbc76af842e7a6846a1a4850f4a63091326ec0061d084db1fa880d7b4f0840262c2ceeee2a45e902b2bf17630bf738c8ca255')
 
 build() {
 	cd "$_pkg-$pkgver"
