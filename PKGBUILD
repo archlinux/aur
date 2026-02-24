@@ -23,12 +23,12 @@ makedepends_i686=('nasm')
 makedepends_x86_64=('yasm')
 install='p7zip-gui.install'
 source=("https://downloads.sourceforge.net/project/p7zip/p7zip/${pkgver}/p7zip_${pkgver}_src_all.tar.bz2"
-        "${pkgname}-Fix-g++-warning.patch::https://src.fedoraproject.org/rpms/p7zip/raw/rawhide/f/14-Fix-g++-warning.patch"
+        "${pkgname}-Fix-g++-warning.patch::https://src.fedoraproject.org/rpms/p7zip/raw/f34/f/14-Fix-g++-warning.patch"
         'https://raw.githubusercontent.com/archlinux/svntogit-packages/a82b67f5d36f374afd154e7648bb13ec38a3c497/trunk/CVE-2016-9296.patch'
         'https://raw.githubusercontent.com/archlinux/svntogit-packages/a82b67f5d36f374afd154e7648bb13ec38a3c497/trunk/CVE-2017-17969.patch'
         'https://raw.githubusercontent.com/archlinux/svntogit-packages/a82b67f5d36f374afd154e7648bb13ec38a3c497/trunk/CVE-2018-5996.patch'
         'https://raw.githubusercontent.com/archlinux/svntogit-packages/a82b67f5d36f374afd154e7648bb13ec38a3c497/trunk/CVE-2018-10115.patch'
-        "${pkgname}-gcc10-conversion.patch::https://src.fedoraproject.org/rpms/p7zip/raw/rawhide/f/gcc10-conversion.patch"
+        "${pkgname}-gcc10-conversion.patch::https://src.fedoraproject.org/rpms/p7zip/raw/f34/f/gcc10-conversion.patch"
         "${pkgname}-Implement-exit-P7ZIP-Desktop-from-file-menu.patch"
         '7zFM.desktop')
 sha256sums=('5eb20ac0e2944f6cb9c2d51dd6c4518941c185347d4089ea89087ffdd6e2341f'
