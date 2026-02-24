@@ -1,0 +1,16 @@
+pkgbase = charcoal-dict-bin
+	pkgdesc = A command line dictionary
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/LighghtEeloo/charcoal
+	arch = x86_64
+	license = MIT
+	depends = openssl
+	depends = alsa-lib
+	optdepends = didyoumean
+	provides = charcoal-dict
+	conflicts = charcoal-dict
+	source = https://github.com/LighghtEeloo/charcoal/releases/download/v0.3.2/charcoal-dict-0.3.2-x86_64.tar.gz
+	sha256sums = 706cc8c23a15f945a1caf359d0ae5aed904fb4ac1262c59d340392d363b43e00
+
+pkgname = charcoal-dict-bin
