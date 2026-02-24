@@ -13,9 +13,9 @@ _ffsrcver=140.8.0
 _ffbuild=2
 _l10n_commit=c857bb7d5e043b8bd8658e1fafa54a4baa9d3f0e
 _moz_build_id=20260106170501
-_lwrelver=101
+_lwrelver=102
 pkgver="${_ffsrcver}.${_lwrelver}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Firefox fork (LibreWolf-base) with increased customizability and security"
 url="https://codeberg.org/konform-browser/source"
 if [[ "$_ffbuild" == "0" ]]; then
@@ -142,13 +142,15 @@ source=(
   "firefox-l10n-${_l10n_commit}.tar.gz"::"https://github.com/mozilla-l10n/firefox-l10n/archive/$_l10n_commit.tar.gz"
   "${__pkgname}.desktop"
   "default192x192.png"
+  "0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch"
 )
-sha256sums=('46ad1b2bf757c13042e758288ff3040355e86ea29383faa6c0a0a532d3643317'
+sha256sums=('0b4ab0f1eee81d9cf3e1e29d904734f9b93fd97b4a36df7e8bb0ad2f668605a9'
             '57a7f339ef68273f6597d8074a841fa053f63a21d1f609ab0074a26c063282e6'
             'SKIP'
             'b006db2a8fc22f95d7ca3f90cd210b3504faf8f72d7bd9a48c1d4874a08d2516'
             '68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4'
-            'b86ddfc0cec482f7900f296857cdd0f1b736ff5037e0a86712b258ae0092924b')
+            'b86ddfc0cec482f7900f296857cdd0f1b736ff5037e0a86712b258ae0092924b'
+            '157976ec4be8d723cd6240988b310bc8e1779b2272a258d886bc08389ceba852')
 
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
@@ -280,8 +282,9 @@ fi
   # reduce chance of builds failung during linking due to running out of memory
   export LDFLAGS+=" -Wl,--no-keep-memory"
 
-  # upstream Arch fixes
-  #
+  # Fix build with glibc 2.43
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1999625
+  patch -Np1 -i ../../0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
 }
 
 
