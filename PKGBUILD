@@ -12,7 +12,8 @@ depends=(glibc libgcc)
 makedepends=(cargo git)
 options=(!lto)
 source=("git+$url.git#tag=v$pkgver?signed")
-validpgpkeys=('772628464C6E8F56DBB5ACEC4CBE96203A1A78A7') # Clara Engler <cve@cve.cx>
+validpgpkeys=('772628464C6E8F56DBB5ACEC4CBE96203A1A78A7'  # Clara Engler <cve@cve.cx>
+              '1C1BC007A9F607AA8152C040BEA7B180B1491921') # Alexander Færøy <ahf@0x90.dk>
 b2sums=('99116de8715d0ff0d84a2ccd3a0f13e63140378264d13844241e19f976c9dcc9fa97189bead63285329fe1c3f8e6d359d34b386e9aeae8ac250e84bcb17d00ee')
 
 prepare() {
