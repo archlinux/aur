@@ -1,8 +1,8 @@
 # Maintainer: LitiaEeloo <litiaeeloo@gmail.com>
 
 pkgname=charcoal
-pkgver=0.2.8
-pkgrel=2
+pkgver=0.3.2
+pkgrel=1
 pkgdesc="Charcoal, a command line dictionary"
 arch=('x86_64')
 reponame=charcoal
@@ -37,4 +37,4 @@ package() {
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
-sha256sums=('4ea009996496350dc8e17255fbaa676b20bcaf8ea251dd9379c018f5b0dd3a1a')
+sha256sums=('9ffe0029efa4a88c44564602f838e26f89de4c1401287e1a34ac0f8ef8efd9e7')
