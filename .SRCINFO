@@ -1,0 +1,15 @@
+pkgbase = python-aw-core
+	pkgdesc = Core library for ActivityWatch
+	pkgver = 0.5.17
+	pkgrel = 1
+	url = https://github.com/ActivityWatch/aw-core
+	arch = any
+	license = MPL-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = git
+	makedepends = poetry
+	source = aw-core::git+https://github.com/ActivityWatch/aw-core
+	sha256sums = SKIP
+
+pkgname = python-aw-core
