@@ -51,7 +51,7 @@ sha256sums=(
 
 
 #ENABLE_RUST=YES # Uncomment to build rust components
-if [ -n "${ENABLE_RUST:-NO}" ]; then
+if [ "${ENABLE_RUST:-NO}" = "YES" ]; then
   makedepends+=(cargo)
 fi
 

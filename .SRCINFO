@@ -16,7 +16,6 @@ pkgbase = ladybird-git
 	makedepends = tar
 	makedepends = unzip
 	makedepends = zip
-	makedepends = cargo
 	depends = curl
 	depends = fast_float
 	depends = ffmpeg
