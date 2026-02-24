@@ -1,41 +1,53 @@
 # Maintainer: Javad <ja7ad@live.com>
 
+pkgname=hiddify-live-bin
 _pkgname=hiddify
-pkgname=${_pkgname}-live-bin
 pkgver=4.0.4
 pkgrel=1
-pkgdesc="Multi-platform auto-proxy client, supporting Sing-box, X-ray, TUIC, Hysteria, Reality, Trojan, SSH etc. It’s an open-source, secure and ad-free"
-arch=('x86_64')
-url='https://github.com/hiddify/hiddify-app'
-license=('GPL3')
-
-depends=('hicolor-icon-theme' 'libayatana-appindicator' 'at-spi2-core' 'fontconfig' 'pango' 'gtk3' 'glibc' 'gcc-libs' 'ayatana-ido' 'gdk-pixbuf2' 'libayatana-indicator' 'libdbusmenu-glib' 'cairo' 'harfbuzz' 'glib2' 'libepoxy')
-optdepends=('gnome-shell-extension-appindicator: for system tray icon if you are using Gnome')
-
+pkgdesc="Multi-platform auto-proxy client, supporting Sing-box, X-ray, TUIC, Hysteria, Reality, Trojan, SSH etc (Live version)."
+arch=(x86_64)
+url='https://hiddify.com/'
+license=('CC-BY-NC-SA-4.0')
+depends=('hicolor-icon-theme'
+'libayatana-appindicator'
+'at-spi2-core'
+'fontconfig'
+'pango'
+'gtk3'
+'glibc'
+'gcc-libs'
+'ayatana-ido'
+'gdk-pixbuf2'
+'libayatana-indicator'
+'libdbusmenu-glib'
+'cairo'
+'harfbuzz'
+'glib2'
+'libepoxy'
+)
+optdepends=(
+    'gnome-shell-extension-appindicator: for system tray icon if you are using Gnome'
+)
 provides=('hiddify')
-conflicts=("${_pkgname}" "${_pkgname}-git" "${_pkgname}-appimage" "hiddify-next" "hiddify-next-bin")
-source=("${_pkgname}-${pkgver}.deb::https://github.com/hiddify/hiddify-app/releases/download/v${pkgver}/Hiddify-Debian-x64.deb")
-sha256sums=('42cf176c4cf48a27dd85138c5c892c324c707d56f0e721d5dae5dbccd659620a')
-_install_path="/opt/${_pkgname}"
+conflicts=(${_pkgname} ${_pkgname}-git ${_pkgname}-appimage)
+source=(
+    "$_pkgname-$pkgver.deb::https://github.com/hiddify/hiddify-next/releases/download/v${pkgver}/Hiddify-Debian-x64.deb"
+)
+sha256sums=('SKIP')
 
 prepare() {
     cd "${srcdir}"
-    tar -xf data.tar.*
+    tar --zstd -xf data.tar.zst
     sed -i '/Version/d' "${srcdir}/usr/share/applications/hiddify.desktop"
 }
 
-
-
 package() {
-    cd "${srcdir}/usr/share/hiddify"
-    find . -type f -exec install -Dm 755 {} "$pkgdir/$_install_path"/{} \;
-
-    cd "${srcdir}/usr/share/icons"
+    cd ${srcdir}/usr/share/hiddify
+    find . -type f -exec install -Dm 755 {} "$pkgdir/opt/$_pkgname"/{} \;
+    cd ${srcdir}/usr/share/icons
     find . -type f -exec install -Dm 644 {} "$pkgdir/usr/share/icons"/{} \;
-
-    cd "${srcdir}/usr/share/applications"
+    cd ${srcdir}/usr/share/applications
     find . -type f -exec install -Dm 644 {} "$pkgdir/usr/share/applications"/{} \;
-
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/${_pkgname}/hiddify" "${pkgdir}/usr/bin/hiddify"
 }
