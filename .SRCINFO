@@ -1,8 +1,8 @@
 pkgbase = splayer-git
 	pkgdesc = A minimalist music player.(Use system-wide electron) 一个简约的音乐播放器，支持逐字歌词，下载歌曲，展示评论区，音乐云盘及歌单管理，音乐频谱，移动端基础适配 | 网易云音乐.
-	pkgver = 3.0.0.beta.9.r0.ga00c0b4
+	pkgver = 3.0.0.nightly.r34.g4dd8c53
 	pkgrel = 1
-	url = https://github.com/imsyy/SPlayer
+	url = http://splayer.imsyy.top
 	arch = any
 	license = AGPL-3.0-only
 	makedepends = npm
@@ -12,10 +12,10 @@ pkgbase = splayer-git
 	makedepends = curl
 	makedepends = pnpm
 	makedepends = jq
-	makedepends = rust
+	makedepends = rustup
 	depends = electron38
 	depends = libvips
-	provides = splayer=3.0.0.beta.9
+	provides = splayer=3.0.0.nightly
 	conflicts = splayer
 	source = splayer.git::git+https://github.com/imsyy/SPlayer.git
 	source = splayer.sh

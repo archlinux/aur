@@ -1,13 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=splayer-git
 _pkgname=SPlayer
-pkgver=3.0.0.beta.9.r0.ga00c0b4
+pkgver=3.0.0.nightly.r34.g4dd8c53
 _electronversion=38
 _nodeversion=22
 pkgrel=1
 pkgdesc="A minimalist music player.(Use system-wide electron) 一个简约的音乐播放器，支持逐字歌词，下载歌曲，展示评论区，音乐云盘及歌单管理，音乐频谱，移动端基础适配 | 网易云音乐."
 arch=('any')
-url="https://github.com/imsyy/SPlayer"
+url="http://splayer.imsyy.top"
+_ghurl="https://github.com/imsyy/SPlayer"
 license=("AGPL-3.0-only")
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
@@ -23,10 +24,10 @@ makedepends=(
     'curl'
     'pnpm'
     'jq'
-    'rust'
+    'rustup'
 )
 source=(
-    "${pkgname//-/.}::git+${url}.git"
+    "${pkgname//-/.}::git+${_ghurl}.git"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
@@ -66,6 +67,7 @@ prepare() {
         --exec="${pkgname%-git} %U"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export CARGO_HOME="${srcdir}/.cargo"
     HOME="${srcdir}/.electron-gyp"
     {
         echo -e '\n'
@@ -86,6 +88,8 @@ prepare() {
         echo 'electron_mirror=https://cdn.npmmirror.com/binaries/electron/'
         echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
         } >> .npmrc
+        export RUSTUP_DIST_SERVER="https://rsproxy.cn"
+        export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
     fi
     _ensure_local_nvm
     if [ ! -f .env ]; then
@@ -93,6 +97,7 @@ prepare() {
     else
         echo ".env file already exists. Skipping the copy step."
     fi
+    rustup default stable
     find electron -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
     pnpm remove --save-dev @electron-toolkit/utils
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
@@ -110,7 +115,13 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname//-/.}/dist/linux-"*/resources/{app.asar.unpacked,native} "${pkgdir}/usr/lib/${pkgname%-git}"
+    if find "${srcdir}/${pkgname//-/.}/dist/linux-"*"/resources" -mindepth 1 -maxdepth 1 -type d | read; then
+        for subdir in "${srcdir}/${pkgname//-/.}/dist/linux-"*"/resources/"*; do
+            if [ -d "${subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${subdir}" "${pkgdir}/usr/lib/${pkgname%-git}"
+            fi
+        done
+    fi
     _icon_sizes=(16x16 32x32 96x96 192x192 256x256 512x512)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname//-/.}/public/icons/favicon-${_icons}.png" \
