@@ -8,7 +8,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/noobforanonymous/wshawk"
 license=('ISC')
 depends=('python' 'python-aiohttp' 'python-websockets' 'python-socketio' 'python-fastapi' 'python-cryptography' 'python-dnspython' 'python-whois' 'python-yaml' 'uvicorn' 'nodejs' 'electron')
-makedepends=('git' 'npm' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-pyinstaller')
+makedepends=('git' 'npm' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'pyinstaller')
 provides=('wshawk-desktop')
 conflicts=('wshawk-git' 'wshawk-bin')
 source=("git+https://github.com/noobforanonymous/wshawk.git#tag=v$pkgver")
