@@ -1,7 +1,7 @@
 # Maintainer: Marcin Mikołajczak <me@m4sk.in>
 pkgname=splatmoji-git
 _pkgname=splatmoji
-pkgver=r7.dc850cd
+pkgver=r92.b8d14b4
 pkgrel=1
 pkgdesc="Quickly look up and input emoji and/or emoticons/kaomoji on your GNU/Linux desktop via pop-up menu."
 arch=('any')
@@ -28,8 +28,8 @@ package() {
 
     mkdir -p "$pkgdir"/usr/bin/
     mkdir -p "$pkgdir/usr/share/$_pkgname"
-    
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     cp -a --no-preserve=ownership * "$pkgdir/usr/share/$_pkgname"
 
