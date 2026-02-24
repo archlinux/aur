@@ -1,7 +1,7 @@
 pkgbase = maskprocessor-git
 	pkgdesc = High-Performance word generator with a per-position configurable charset
 	pkgver = 0.73.r22.g9c33ab2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hashcat/maskprocessor
 	arch = i686
 	arch = x86_64
