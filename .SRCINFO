@@ -1,7 +1,7 @@
 pkgbase = perl-perl-critic-community
 	pkgdesc = Community-inspired Perl::Critic policies
-	pkgver = 1.04
-	pkgrel = 2
+	pkgver = 1.0.4
+	pkgrel = 3
 	url = https://metacpan.org/dist/Perl-Critic-Community
 	arch = any
 	license = Artistic-2.0

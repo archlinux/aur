@@ -1,3 +1,4 @@
 [perl-perl-critic-community]
 source = "cpan"
 cpan = "Perl-Critic-Community"
+prefix = "v"

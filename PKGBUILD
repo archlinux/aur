@@ -1,13 +1,13 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
 
-_dist='Perl-Critic-Community'
-_pkgver='v1.0.4'
-pkgname='perl-perl-critic-community'
-pkgver=1.04
-pkgrel=2
+_dist=Perl-Critic-Community
+_pkgver=v1.0.4
+pkgname=perl-${_dist,,}
+pkgver=${_pkgver#v}
+pkgrel=3
 pkgdesc='Community-inspired Perl::Critic policies'
 arch=('any')
-url="https://metacpan.org/dist/$_dist"
+url=https://metacpan.org/dist/$_dist
 license=('Artistic-2.0')
 depends=(
     'perl-carp'
@@ -33,7 +33,7 @@ sha256sums=('3b31624ea0cf4392b8f4397a529515248814a2166697f1a453d58ab6f112d209')
 
 build()
 {
-    cd $_dist-$_pkgver
+    cd "$_dist-$_pkgver"
 
     unset PERL_MB_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
 
@@ -43,7 +43,7 @@ build()
 
 check()
 {
-    cd $_dist-$_pkgver
+    cd "$_dist-$_pkgver"
 
     unset PERL5LIB PERL_LOCAL_LIB_ROOT
 
@@ -52,7 +52,7 @@ check()
 
 package()
 {
-    cd $_dist-$_pkgver
+    cd "$_dist-$_pkgver"
 
     unset PERL5LIB PERL_LOCAL_LIB_ROOT
 
