@@ -1,0 +1,26 @@
+pkgbase = blockdeletee-bin
+	pkgdesc = Voice-controlled Minecraft block deletion via RCON + Vosk (TUI/Qt) - prebuilt binary
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/amethyst-bin/BlockDeletee
+	install = blockdeletee-bin.install
+	arch = x86_64
+	license = custom
+	depends = glibc
+	depends = gcc-libs
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = alsa-lib
+	depends = vosk-api
+	optdepends = pipewire: audio stack
+	optdepends = pulseaudio: audio stack
+	provides = blockdeletee
+	conflicts = blockdeletee
+	options = !debug
+	options = !strip
+	source = BlockDeletee-linux-x64-v1.0.0.zip::https://github.com/amethyst-bin/BlockDeletee/releases/download/v1.0.0/BlockDeletee-linux-x64-v1.0.0.zip
+	source = blockdeletee-launcher.sh
+	sha256sums = 04f21d91ac32d9aecfe8c8fbade912032f7b8673b34c77c11dfd9d12711f89cd
+	sha256sums = SKIP
+
+pkgname = blockdeletee-bin

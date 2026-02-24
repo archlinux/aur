@@ -1,0 +1,17 @@
+post_install() {
+  cat <<'EOF'
+==> BlockDeletee installed.
+==> First run will create:
+==>   ~/.config/blockdeletee/config.json
+==> Edit it and set:
+==>   - minecraft.rcon_host
+==>   - minecraft.rcon_password
+==>   - microphone.player_name
+==> Assets are installed to:
+==>   /opt/blockdeletee
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
