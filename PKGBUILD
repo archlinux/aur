@@ -37,6 +37,5 @@ check() {
 
 package() {
     install -Dm755 "release/${_reponame}" -t "${pkgdir}/usr/bin"
-    cd "${_reponame}"
-    install -Dm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${_reponame}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
