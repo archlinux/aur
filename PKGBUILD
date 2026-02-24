@@ -1,6 +1,6 @@
 # Maintainer: Rgallaispou <rgallaispou@gmail.com>
 pkgname=aarch64-esr-decoder-git
-pkgver=r330.dd9cc37b53d5
+pkgver=r378.18ed82f
 pkgrel=1
 pkgdesc='A small utility for decoding aarch64 ESR register values.'
 arch=('x86_64')
