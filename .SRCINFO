@@ -1,6 +1,6 @@
 pkgbase = libfprint-cs9711-git
 	pkgdesc = libfprint with proprietary FPC match on host device CS9711Fingprint driver
-	pkgver = 1.94.10+27.r1865.20260212.e5abe653
+	pkgver = 1.94.10+28.r1866.20260224.51e989f8
 	pkgrel = 1
 	url = https://fprint.freedesktop.org/
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = libfprint-cs9711-git
 	depends = libgusb
 	depends = openssl
 	depends = pixman
-	provides = libfprint=1.94.10+27.r1865.20260212.e5abe653
+	provides = libfprint=1.94.10+28.r1866.20260224.51e989f8
 	provides = libfprint-2.so
 	provides = libfprint-cs9711
 	conflicts = libfprint>=1.1
@@ -44,6 +44,7 @@ pkgbase = libfprint-cs9711-git
 	source = 0003-Fix-SIGSEGV-init-crash-when-CS9711-device-returns-un.patch
 	source = 0004-Changes-derived-from-RE-Windows-driver.patch
 	source = 0005-Update-libfprint-drivers-cs9711-cs9711.c.patch
+	source = 0006-Fix-introspection-failures.patch
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = e037a114b21c328c80012a296424612b0a656574995fbc293e7c3144fbdc5f7dd53a40b9eecf03e3406eaac1620c3bdf8c291e6a932f776b138c593fe7dff2b2
@@ -56,5 +57,6 @@ pkgbase = libfprint-cs9711-git
 	b2sums = 6981c468517709d29cc9ff9d7d64c21cf13c7b83926563c449175596d16f80a4318c7c58938892e1d9bf2a566efe29dcd39b655447e85ca7df1e2b4085152053
 	b2sums = 18568cfd3a6e567b7ae55addcce1ee86ef0e44bc724eeb349724fca579e7819bea8d36ee1acf0ca3c2e16d885fa8a3018691b5e0767e0b6441b57527da5d7d21
 	b2sums = a324ccd7b7993ad0ceddd9326b4ece98d922f98c9943c3333bfc04afb12d43efc1834224ccf872301061dedfddb0e463b2c0d60f75e2313596e8c17b75218434
+	b2sums = 3608860a561e0edf8242f6d6b8cd0a81dc521fe630ba92281dbed5b0a134f27b1a8c6fd7597a94242ee45f4a3ecd7066e7b2b8139aa1916b924dcc793f239dce
 
 pkgname = libfprint-cs9711-git
