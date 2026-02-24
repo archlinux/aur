@@ -3,19 +3,20 @@
 
 pkgname=evtx
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform parser for Windows XML EventLog Format"
 arch=('x86_64')
 url="https://github.com/omerbenamram/evtx"
 license=('MIT' 'Apache-2.0')
-depends=('gcc-libs' 'glibc')
+depends=('glibc' 'libgcc')
 makedepends=('cargo')
-changelog=CHANGELOG.md
-options=('!lto')
-source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
+options=('!debug')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('ff852ba0d469acc77630db41f0d3c76bbc4fce01e037b07770da3b9a9472d73b')
 
 prepare() {
+  export RUSTUP_TOOLCHAIN=stable
+
   cd "$pkgname-$pkgver"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
@@ -23,15 +24,18 @@ prepare() {
 build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+
   cd "$pkgname-$pkgver"
-  ## must be --locked because not all dependencies are downloaded at this point
-  cargo build --locked --release --all-features
+  cargo build --frozen --release
 }
 
 check() {
   export RUSTUP_TOOLCHAIN=stable
+
   cd "$pkgname-$pkgver"
-  cargo test --frozen --all-features || echo ':: Warning: tests failed'
+  # skipping template_research since those tests depend on files hosted on
+  # git-lfs and are not included in the tar ball
+  cargo test --frozen -- --skip wevt_templates_research
 }
 
 package() {
