@@ -8,16 +8,9 @@ pkgname=(
   gnome-shell-rounded-blur
   gnome-shell-rounded-blur-docs
 )
-provides=(
-  'gnome-shell'
-  'gnome-shell-debug'
-  'gnome-shell-docs'
-)
-conflicts=(
-  'gnome-shell'
-  'gnome-shell-debug'
-  'gnome-shell-docs'
-)
+provides=('gnome-shell')
+conflicts=('gnome-shell')
+options=(!debug)
 pkgver=49.4
 pkgrel=2
 epoch=1
