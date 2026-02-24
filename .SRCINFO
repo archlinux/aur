@@ -1,17 +1,17 @@
 pkgbase = awsaml-bin
 	pkgdesc = An application for providing automatically rotated temporary AWS credentials.(Prebuilt version.Use system-wide electron)
-	pkgver = 4.0.0
+	pkgver = 4.5.0
 	pkgrel = 1
 	url = https://github.com/rapid7/awsaml
 	arch = x86_64
 	license = MIT
 	depends = electron31
 	conflicts = awsaml
-	source = awsaml-4.0.0.deb::https://github.com/rapid7/awsaml/releases/download/v4.0.0/awsaml_4.0.0_amd64.deb
-	source = LICENSE-4.0.0.md::https://raw.githubusercontent.com/rapid7/awsaml/v4.0.0/LICENSE.md
+	source = awsaml-4.5.0.deb::https://github.com/rapid7/awsaml/releases/download/v4.5.0/awsaml_4.5.0_amd64.deb
+	source = LICENSE-4.5.0.md::https://raw.githubusercontent.com/rapid7/awsaml/v4.5.0/LICENSE.md
 	source = awsaml.sh
-	sha256sums = fa4efa6af03ce0ef718751af85a7e0812dc1c34845a1880554b1179739d32e90
+	sha256sums = 85f2ebb3f164e7dc5228f6953e30cd5081bc06a7b6ec1f822c654c77e4e2bab7
 	sha256sums = db684cabe2f8e2118d953f6ecee9054018a1b7a7632c1d4a63d83371709f1b1f
-	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = awsaml-bin
