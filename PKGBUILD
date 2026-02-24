@@ -1,5 +1,5 @@
 pkgname=soon
-pkgver=0.1.6
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="🤖 Predict your next shell command based on history — like shell autocomplete, but MORE stupid"
 arch=('x86_64')
@@ -12,7 +12,7 @@ sha256sums=('SKIP')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    cargo build --release --locked
+    cargo build --release
 }
 
 package() {
