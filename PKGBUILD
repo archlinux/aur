@@ -25,6 +25,7 @@ source=(
   "${pkgname}.LICENSE"
 )
 noextract=('Codex.dmg')
+# Intentionally SKIP for Codex.dmg to track the latest DMG at the fixed upstream URL.
 sha256sums=(
   'SKIP'
   '17d9de91630379ca668fcfc97768fd3e24196b5e80f5ea1c5652c7f65d6919b4'

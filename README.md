@@ -18,6 +18,17 @@ Bu klasör, Codex desktop uygulamasını macOS DMG üzerinden çıkarıp Arch Li
 - Upstream uygulama iç dizin yapısı değişirse `PKGBUILD` ve launcher scripti güncellenmelidir.
 - Native rebuild helper, `/opt` altını güncellemek için gerektiğinde `sudo` kullanır.
 
+## `sha256sums=('SKIP')` Neden Bilinçli Tercih?
+
+Bu pakette upstream `Codex.dmg` checksum'u bilinçli olarak `SKIP` bırakılmıştır. Amaç, sabit upstream URL'deki en güncel DMG dosyasını çekebilmektir.
+
+Tradeoff:
+
+- Artı: Hızlı değişen upstream binary için bakım yükü azalır
+- Eksi: Build deterministikliği düşer ve DMG bütünlüğü paket build aşamasında doğrulanmaz
+
+Upstream sürümleme yapısı daha stabil hale gelirse (veya versiyonlu URL sağlanırsa), checksum sabitlemek daha doğru olacaktır.
+
 ## Yerel Test
 
 ```bash
