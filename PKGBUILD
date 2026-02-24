@@ -4,16 +4,16 @@
 
 pkgname=audacity-3.1-wxgtk2
 pkgver=3.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Free, open source multi-track audio editor and recorder (installed to /opt)"
 arch=('x86_64')
 url="https://audacityteam.org"
 license=('GPL-3.0-or-later')
 groups=('pro-audio')
-depends=('libmad' 'libid3tag' 'gtk2' 'glib2' 'soundtouch' 'ffmpeg' 'vamp-plugin-sdk'
-'portsmf' 'portmidi' 'twolame' 'suil' 'lilv' 'lv2' 'serd' 'sord' 'sratom' 'python'
-'flac' 'libvorbis' 'libogg' 'vamp-plugin-sdk' 'portaudio' 'libsoxr' 'libsndfile' 'lame'
-'expat' 'alsa-lib' 'jack' 'util-linux' 'util-linux-libs' 'curl' 'zlib')
+depends=('alsa-lib' 'curl' 'expat' 'ffmpeg4.4' 'flac' 'glib2' 'gtk2' 'jack' 'lame' 'libid3tag'
+         'libmad' 'libogg' 'libsndfile' 'libsoxr' 'libvorbis' 'lilv' 'lv2' 'portaudio' 'portmidi'
+         'portsmf' 'python' 'serd' 'sord' 'soundtouch' 'sratom' 'suil' 'twolame' 'util-linux'
+         'util-linux-libs' 'vamp-plugin-sdk' 'zlib')
 makedepends=('cmake' 'gcc12' 'gcc12-libs' 'autoconf' 'automake' 'libtool' 'conan1')
 source=("https://github.com/audacity/audacity/archive/Audacity-${pkgver}.tar.gz")
 sha256sums=('07aed333a20b8df381d5c0a167840883fff8ef65f5e5f71e654c0925d6c60de8')
@@ -75,7 +75,8 @@ package() {
   install -Dm644 ${pkgdir}/opt/audacity-wxgtk2/share/man/man1/audacity.1 ${pkgdir}/usr/share/man/man1/audacity-wxgtk2.1
 
   for res in 16 22 24 32 48; do
-    install -Dm644 ${pkgdir}/opt/audacity-wxgtk2/share/icons/hicolor/${res}x${res}/audacity.png ${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/audacity-wxgtk2.png
+    install -Dm644 ${pkgdir}/opt/audacity-wxgtk2/share/icons/hicolor/${res}x${res}/audacity.png \
+      ${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/audacity-wxgtk2.png
   done
 
   sed -i -e 's|\${0%/\*}|/opt/audacity-wxgtk2|g' \
