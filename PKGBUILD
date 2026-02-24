@@ -20,9 +20,11 @@ prepare() {
 }
 
 build() {
+  cd blur-my-shell
   make build
 }
 
 package() {
+  cd blur-my-shell
   make install
 }
