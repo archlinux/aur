@@ -1,0 +1,46 @@
+From 02b285c9703c38d308fbe47a3c566ef1e7f883ca Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Adam=20S=C5=82abo=C5=84?= <asaillen@protonmail.com>
+Date: Mon, 16 Feb 2026 23:56:18 +0100
+Subject: [PATCH] Fix introspection failures
+
+---
+ libfprint/fp-image.c | 4 ++--
+ libfprint/fp-image.h | 7 ++++++-
+ 2 files changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/libfprint/fp-image.c b/libfprint/fp-image.c
+index e1e63a38..b63b8917 100644
+--- a/libfprint/fp-image.c
++++ b/libfprint/fp-image.c
+@@ -526,9 +526,9 @@ fp_image_get_minutiae (FpImage *self)
+  * not be modified or freed. You need to first extract keypoints and
+  * descriptors using fp_image_extract_sigfm_info().
+  *
+- * Returns: (transfer none) (element-type SigfmImgInfo): The detected minutiae
++ * Returns: The detected minutiae
+  */
+-SigfmImgInfo *
++void *
+ fp_image_get_sigfm_info (FpImage * self)
+ {
+   return self->sigfm_info;
+diff --git a/libfprint/fp-image.h b/libfprint/fp-image.h
+index 738b59cb..d30b24f1 100644
+--- a/libfprint/fp-image.h
++++ b/libfprint/fp-image.h
+@@ -58,9 +58,14 @@ void           fp_minutia_get_coords (FpMinutia *min,
+                                       gint      *x,
+                                       gint      *y);
+ 
+-SigfmImgInfo *   fp_image_get_sigfm_info (FpImage * self);
++void *   fp_image_get_sigfm_info (FpImage * self);
+ void           fp_image_extract_sigfm_info (FpImage           * self,
+                                             GCancellable      * cancellable,
+                                             GAsyncReadyCallback callback,
+                                             gpointer            user_data);
++
++gboolean      fp_image_extract_sigfm_info_finish (FpImage      *self,
++                                               GAsyncResult *result,
++                                               GError      **error);
++
+ G_END_DECLS

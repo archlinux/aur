@@ -58,6 +58,7 @@ source=("git+https://gitlab.freedesktop.org/libfprint/libfprint.git"
         # Patches from https://github.com/deftdawg/libfprint-CS9711
         '0004-Changes-derived-from-RE-Windows-driver.patch'
         '0005-Update-libfprint-drivers-cs9711-cs9711.c.patch'
+        '0006-Fix-introspection-failures.patch'
 )
 b2sums=('SKIP'
         'SKIP'
@@ -71,6 +72,7 @@ b2sums=('SKIP'
         '6981c468517709d29cc9ff9d7d64c21cf13c7b83926563c449175596d16f80a4318c7c58938892e1d9bf2a566efe29dcd39b655447e85ca7df1e2b4085152053'
         '18568cfd3a6e567b7ae55addcce1ee86ef0e44bc724eeb349724fca579e7819bea8d36ee1acf0ca3c2e16d885fa8a3018691b5e0767e0b6441b57527da5d7d21'
         'a324ccd7b7993ad0ceddd9326b4ece98d922f98c9943c3333bfc04afb12d43efc1834224ccf872301061dedfddb0e463b2c0d60f75e2313596e8c17b75218434'
+        '3608860a561e0edf8242f6d6b8cd0a81dc521fe630ba92281dbed5b0a134f27b1a8c6fd7597a94242ee45f4a3ecd7066e7b2b8139aa1916b924dcc793f239dce'
 )
 
 pkgver() {
