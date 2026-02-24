@@ -9,7 +9,7 @@ pkgbase = nacrypt
 	depends = libsodium
 	depends = libseccomp
 	depends = libcap
-	source = nacrypt-1.2.2.tar.gz::https://github.com/basicallygit/nacrypt/archive/1.2.2.tar.gz
-	sha256sums = 9ad410e49ccd11e64cfa2cc0b36bd9b69d8b7823c3937f6b8593071fd5c3dd0a
+	source = nacrypt-1.2.3.tar.gz::https://github.com/basicallygit/nacrypt/archive/1.2.3.tar.gz
+	sha256sums = 94cf5cdd631527608b24c08e40a7a9f98be4521e6650c28194b3a4ab1c029981
 
 pkgname = nacrypt
