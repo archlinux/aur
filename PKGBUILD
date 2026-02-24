@@ -11,11 +11,14 @@ depends=(
     'ncurses'
     'libpulse'
     'rtl-sdr'
+    'soapysdr'
     'codec2'
+    'curl'
 )
 makedepends=(
     'git'
     'cmake'
+    'help2man'
 )
 provides=('dsd-neo')
 conflicts=('dsd-neo')
