@@ -10,7 +10,7 @@ conflicts=('orangcalc')
 options=('!strip')
 
 source=(
-    "orangcalc.bin"
+    "https://github.com/Orang-Studio/OrangCalc/releases/download/3.0/orangcalc.bin"
     "orangcalc.desktop"
     "orange.png"
     "LICENSE"
