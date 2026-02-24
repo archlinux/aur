@@ -1,0 +1,14 @@
+pkgbase = vim-ollama
+	pkgdesc = This plugin adds Copilot-like code completion support to Vim
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/gergap/vim-ollama
+	arch = any
+	groups = vim-plugins
+	license = GPL-3.0-only
+	depends = vim
+	options = !emptydirs
+	source = git+https://github.com/gergap/vim-ollama#tag=V1.2.0
+	sha256sums = SKIP
+
+pkgname = vim-ollama
