@@ -71,15 +71,15 @@ function updateBuildScriptForSubModule {
 
             # shellcheck disable=SC2181,SC2320
             if [[ $? != 0 ]]; then
-                echo "Failed to update '$buildScriptFile'. The file has not been modified."
+                echo "Failed to update '$buildScriptFile'. No modification was made."
             else
-                echo "The source of submodules in '$buildScriptFile' have been updated! Please update checksums, then do makepkg again."
+                echo "The source array of submodules in '$buildScriptFile' has been updated! Please update the checksums too, then do makepkg again."
             fi && exit 2
         else
             echo "No update for Submodules, continue..." && exit 0
         fi
     else
-        echo "Failed to update '$buildScriptFile'. The file is not exist." && exit 1
+        echo "Failed to update '$1'. This file does not exist." && exit 1
     fi
 }
 
