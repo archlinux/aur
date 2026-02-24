@@ -3,7 +3,7 @@
 pkgname=scribus-unstable
 _pkgname=scribus
 pkgver=1.7.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A desktop publishing program - Unstable branch 1.7.x"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
@@ -49,12 +49,19 @@ makedepends=(cmake qt6-tools boost)
 optdepends=()
 conflicts=('scribus')
 provides=('scribus')
-source=("https://sourceforge.net/projects/scribus/files/scribus-devel/${pkgver}/${_pkgname}-${pkgver}.tar.xz"{,.asc})
+source=("https://sourceforge.net/projects/scribus/files/scribus-devel/${pkgver}/${_pkgname}-${pkgver}.tar.xz"{,.asc}
+		"28bd3be104c06b9d4532affe150f7b74fe5b3e59.patch")
 sha256sums=('9d8e11cc6bac2cd96c5539efbd719222ff7f70e1c185972880d9fb3051e138d0'
-            'SKIP')
+            'SKIP'
+            '2ae78ed1702ae2b04bb4b8fec645513b0c61f28ec563a0a0d0c03519931a7b51')
 validpgpkeys=(5086B8D68E70FDDF4C40045AEF7B95E7F60166DA  # Peter Linnell <plinnell@scribus.net>
               757F5E9B13DD648887AD50092D47C099E782504E  # The Scribus Team (www.scribus.net) <the_scribus_team@scribus.net>
               6558BE84D27273A438A151198BEA48118AEBEE64) # Craig Bradney <cbradney@zipworld.com.au>
+
+prepare() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  patch -p1 < "${srcdir}/28bd3be104c06b9d4532affe150f7b74fe5b3e59.patch"
+}
 
 build() {
 

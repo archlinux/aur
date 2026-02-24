@@ -1,7 +1,7 @@
 pkgbase = scribus-unstable
 	pkgdesc = A desktop publishing program - Unstable branch 1.7.x
 	pkgver = 1.7.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.scribus.net
 	arch = i686
 	arch = x86_64
@@ -50,10 +50,12 @@ pkgbase = scribus-unstable
 	conflicts = scribus
 	source = https://sourceforge.net/projects/scribus/files/scribus-devel/1.7.2/scribus-1.7.2.tar.xz
 	source = https://sourceforge.net/projects/scribus/files/scribus-devel/1.7.2/scribus-1.7.2.tar.xz.asc
+	source = 28bd3be104c06b9d4532affe150f7b74fe5b3e59.patch
 	validpgpkeys = 5086B8D68E70FDDF4C40045AEF7B95E7F60166DA
 	validpgpkeys = 757F5E9B13DD648887AD50092D47C099E782504E
 	validpgpkeys = 6558BE84D27273A438A151198BEA48118AEBEE64
 	sha256sums = 9d8e11cc6bac2cd96c5539efbd719222ff7f70e1c185972880d9fb3051e138d0
 	sha256sums = SKIP
+	sha256sums = 2ae78ed1702ae2b04bb4b8fec645513b0c61f28ec563a0a0d0c03519931a7b51
 
 pkgname = scribus-unstable
