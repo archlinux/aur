@@ -22,7 +22,7 @@ pkgbase = nolio-bin
 	source = nolio-bin-0.5.0.tar.gz::https://github.com/Grey-007/nolio/releases/download/v0.5.0/nolio-v0.5.0-linux-x86_64.tar.gz
 	source = nolio.desktop
 	source = nolio.png
-	sha256sums = 67436e764139919467547299a05d1d30bc8e49adaa562cd9f5c149c5b51f631d
+	sha256sums = 6f8eeae7423627e12b72248505bb7f843208cd743d33a37126b96c2c18c82ad3
 	sha256sums = SKIP
 	sha256sums = SKIP
 
