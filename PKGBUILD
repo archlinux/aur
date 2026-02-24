@@ -3,7 +3,7 @@
 # Implementation to AUR from aaddrick/claude-desktop-debian github repository
 
 pkgname=claude-desktop-appimage
-pkgver=1.3.12+claude1.1.4088
+pkgver=1.3.13+claude1.1.4088
 pkgrel=1
 pkgdesc="Claude Desktop for Linux - AppImage version from aaddrick/claude-desktop-debian"
 arch=('x86_64')
@@ -15,13 +15,13 @@ provides=('claude-desktop')
 conflicts=('claude-desktop')
 
 # AppImage source
-_appimage_name="claude-desktop-1.1.4088-1.3.12-amd64.AppImage"
+_appimage_name="claude-desktop-1.1.4088-1.3.13-amd64.AppImage"
 source=("https://github.com/aaddrick/claude-desktop-debian/releases/download/v${pkgver}/${_appimage_name}"
         "claude-desktop.desktop")
 noextract=("${_appimage_name}")
 
 # File checksums
-sha256sums=('c01925541cc05ca7db8ecac5fb5706cc6213e3c3113d1fc1e25395aba72d7d0b'
+sha256sums=('0883dcb246af13837d5d64730536be4d16b43ba4b5327acd2c046a35bcc40875'
             'ab0469e2e127050193ca556f87af8914d93bbde8f31d673a2f279aedbc944f3d')
 
 prepare() {
