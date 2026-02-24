@@ -3,20 +3,20 @@
 
 pkgname=prog-express-beta
 _pkgname=prog-express
-pkgver=3.8.9
+pkgver=3.9.3
 pkgrel=1
 pkgdesc="Prog-Express is a control software for the Batronix USB programming devices to program FLASH/PROM/EPROM/EEPROM chips. Playground for upcoming betas."
 arch=('i686' 'x86_64')
 url="https://www.batronix.com/"
 license=('LicenseRef-Freeware')
-depends=('xz' 'libarchive' 'mono' 'mono-basic' 'libusb' 'sqlite' 'libgdiplus' 'gtk-sharp-2')
+depends=('xz' 'libarchive' 'mono' 'mono-basic' 'libusb' 'sqlite' 'libgdiplus' 'gtk-sharp-2' 'lib32-glibc')
 conflicts=('prog-express')
 
-source_i686=(${url}/exe/Batronix/Prog-Express/deb/${_pkgname}-${pkgver}-${pkgrel}.i386.deb)
+#source_i686=(${url}/exe/Batronix/Prog-Express/deb/${_pkgname}-${pkgver}-${pkgrel}.i386.deb)
 source_x86_64=(${url}/exe/Batronix/Prog-Express/deb/${_pkgname}-${pkgver}-${pkgrel}.amd64.deb)
 
-sha256sums_i686=('72bb235845d828a48f1cc62054b8b18269cf5e012b724335862d2604f69ec2e2')
-sha256sums_x86_64=('65eb70c96df77ab0e01b484572bdb204df6e2c471760f883e9073064bb87aa72')
+#sha256sums_i686=('72bb235845d828a48f1cc62054b8b18269cf5e012b724335862d2604f69ec2e2')
+sha256sums_x86_64=('18ad9b50b88207746898ad5d36f9a50a49813f40822aceae6bb5061d92fe3985')
 
 package()
 {
