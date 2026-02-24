@@ -17,8 +17,8 @@ conflicts=('qbz')
 options=('!strip')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/vicrodh/qbz/releases/download/v${pkgver}/qbz_${pkgver}_amd64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/vicrodh/qbz/releases/download/v${pkgver}/qbz_${pkgver}_aarch64.tar.gz")
-sha256sums_x86_64=('689e2fbcd88cde43cb74ff6ef6d48060eb7416525c116884c1dd0bba0694efe7')
-sha256sums_aarch64=('c8eb4679b0ddbe128727865dd3db9a61137418c30534cf52b9db115cc27c8bdb')
+sha256sums_x86_64=('a86069ce43e8886418e2aaaefc71ffaa6f4f24677d4624b8f7e972e2842a58cd')
+sha256sums_aarch64=('b6d146501bf840f794ceec73b99c3c992e5715424e772a414d77ed906409a475')
 
 package() {
     if [ "$CARCH" = "x86_64" ]; then
