@@ -2,75 +2,36 @@
 pkgname=wshawk
 _pkgname=wshawk
 pkgver=3.0.1
-pkgrel=2
-pkgdesc="Enterprise-grade WebSocket security scanner & Web Penetration Testing Toolkit"
-arch=('x86_64' 'aarch64')
+pkgrel=1
+pkgdesc="Enterprise-grade WebSocket security scanner & Web Penetration Testing Toolkit (Binary Release)"
+arch=('x86_64')
 url="https://github.com/noobforanonymous/wshawk"
 license=('ISC')
-depends=('python' 'python-aiohttp' 'python-websockets' 'python-socketio' 'python-fastapi' 'python-cryptography' 'python-dnspython' 'python-whois' 'python-yaml' 'uvicorn' 'nodejs' 'electron')
-makedepends=('git' 'npm' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+# Note: The binary release from GitHub already includes its own node_modules/electron
+# but still requires system libraries like nss, alsa, etc.
+depends=('nss' 'alsa-lib' 'gtk3' 'libxss')
 provides=('wshawk-desktop')
-conflicts=('wshawk-git' 'wshawk-bin')
-source=("git+https://github.com/noobforanonymous/wshawk.git#tag=v$pkgver")
-sha256sums=('SKIP')
-
-
-build() {
-  cd "$_pkgname"
-
-  # 1. Create a temporary venv to run PyInstaller (skips broken system compilers)
-  echo "[*] Setting up build environment..."
-  python -m venv build-env
-  ./build-env/bin/pip install --upgrade pip
-  ./build-env/bin/pip install pyinstaller build setuptools wheel
-
-  # 2. Build the Python package wheel
-  echo "[*] Building Python wheel..."
-  ./build-env/bin/python -m build --wheel --no-isolation
-
-  # 3. Build the Python bridge binary using PyInstaller
-  echo "[*] Compiling Python Bridge Sidecar..."
-  PYTHONPATH=. ./build-env/bin/pyinstaller wshawk-bridge.spec --noconfirm
-
-  # 4. Build the Desktop App Frontend
-  cd desktop
-  echo "[*] Installing Node dependencies..."
-  npm install
-}
+conflicts=('wshawk-git')
+source=("${pkgname}-${pkgver}.pacman::https://github.com/noobforanonymous/wshawk/releases/download/v${pkgver}/wshawk-${pkgver}.pacman")
+sha256sums=('71e2779332842c7900e00c4c7ea16f772473d451118716a96c75e85a6caf748c')
 
 package() {
-  cd "$_pkgname"
-
-  # 1. Install Python Library/CLI
-  python -m installer --destdir="$pkgdir" dist/*.whl 2>/dev/null || python setup.py install --root="$pkgdir" --optimize=1
-
-  # 2. Install Desktop App Assets
-  install -dm755 "$pkgdir/usr/lib/$_pkgname-desktop"
-  # Copy necessary files for the Electron app
-  cp -r desktop/* "$pkgdir/usr/lib/$_pkgname-desktop/"
+  # The .pacman file is a compressed archive containing the folder structure
+  # We extract it and move it to the package directory
   
-  # 3. Install the Compiled Bridge Binary (Sidecar)
-  # WSHawk looks for it in desktop/bin/
-  install -dm755 "$pkgdir/usr/lib/$_pkgname-desktop/bin"
-  install -m755 "dist/wshawk-bridge" "$pkgdir/usr/lib/$_pkgname-desktop/bin/wshawk-bridge"
-
-  # 4. Create Launcher Script
-  install -dm755 "$pkgdir/usr/bin"
-  printf "#!/bin/sh\nelectron /usr/lib/$_pkgname-desktop \"\$@\"\n" > "$pkgdir/usr/bin/wshawk-desktop"
-  chmod +x "$pkgdir/usr/bin/wshawk-desktop"
-
-  # 5. Icons & Desktop Entry
-  install -Dm644 "desktop/src/assets/logo.jpg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/wshawk.png"
+  msg2 "Extracting and installing binary assets..."
   
-  install -dm755 "$pkgdir/usr/share/applications"
-  cat <<EOF > "$pkgdir/usr/share/applications/wshawk.desktop"
-[Desktop Entry]
-Name=WSHawk
-Exec=wshawk-desktop
-Icon=wshawk
-Type=Application
-Categories=Development;Security;
-Terminal=false
-Comment=Enterprise WebSocket & Web Penetration Testing Toolkit
-EOF
+  # Copy the /usr folder from the archive (contains bin, lib, and share)
+  if [ -d usr ]; then
+    cp -rp usr "$pkgdir/"
+  fi
+
+  # Copy the /opt folder if present (some versions of electron-builder use /opt)
+  if [ -d opt ]; then
+    cp -rp opt "$pkgdir/"
+  fi
+  
+  # Ensure the sidecar has execute permissions
+  # WSHawk usually puts it in /usr/lib/wshawk/bin/ or similar
+  find "$pkgdir" -name "wshawk-bridge" -exec chmod +x {} +
 }
