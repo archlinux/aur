@@ -19,8 +19,8 @@ _minorver=0
 _securityver=1
 _updatever=0
 # pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
-pkgver=25.0.1.0.r9512.g6516ff1
-pkgrel=2
+pkgver=25.0.1.0.r9557.g0bf2bd4
+pkgrel=1
 # _git_tag=jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}
 _git_tag=jdk-${_majorver}+${_updatever}
 arch=('x86_64')
@@ -52,7 +52,7 @@ makedepends=(
   pandoc
   unzip
   zip
-  llibxkbcommon
+  libxkbcommon
   wayland
   wayland-protocols
 )
