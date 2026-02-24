@@ -1,6 +1,6 @@
 pkgbase = rapidraw
 	pkgdesc = GPU-accelerated RAW image editor
-	pkgver = 1.4.12
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/CyberTimon/RapidRAW
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = rapidraw
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	options = !lto
-	source = rapidraw-1.4.12.tar.gz::https://github.com/CyberTimon/RapidRAW/archive/refs/tags/v1.4.12.tar.gz
-	source = rapidraw-rawler-ee064a7.tar.gz::https://github.com/CyberTimon/RapidRAW-DngLab/archive/ee064a744fdc9013c7b6a6ed3bd8276bb05fb7d7.tar.gz
-	sha256sums = c9ebe64a069e1ef26342f207435e3547d56de6229ea6fcb2c98e3f0b5bf2a6a3
-	sha256sums = 0f39095b809de28001a5660b923b854dfee364cdc34cab249117ca3c1b8087cd
+	source = rapidraw-1.5.0.tar.gz::https://github.com/CyberTimon/RapidRAW/archive/refs/tags/v1.5.0.tar.gz
+	source = rapidraw-rawler-718400a.tar.gz::https://github.com/CyberTimon/RapidRAW-DngLab/archive/718400a1d84b53c7f12765094d2e4b75f64ca975.tar.gz
+	sha256sums = 48f4d19ff1ec7f4fb1383ba76f5fdcc8894e3a02a376ff25d5bb273a4e6b4d57
+	sha256sums = 354318d3c1bbdf64b0d2e0f8afaefc304895937656f0d8b76b2e103e2a46dc93
 
 pkgname = rapidraw

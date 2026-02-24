@@ -5,12 +5,12 @@
 : ${RUSTUP_TOOLCHAIN:=stable}
 export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 
-: ${_commit_rawler:=ee064a744fdc9013c7b6a6ed3bd8276bb05fb7d7}
+: ${_commit_rawler:=718400a1d84b53c7f12765094d2e4b75f64ca975}
 
 _pkgname="rapidraw"
 pkgname="$_pkgname"
 pkgdesc="GPU-accelerated RAW image editor"
-pkgver=1.4.12
+pkgver=1.5.0
 pkgrel=1
 url="https://github.com/CyberTimon/RapidRAW"
 license=('AGPL-3.0-only')
@@ -36,8 +36,8 @@ source=(
   "$_pkgname-rawler-${_commit_rawler::7}.$_pkgext"::"https://github.com/CyberTimon/RapidRAW-DngLab/archive/${_commit_rawler}.$_pkgext"
 )
 sha256sums=(
-  'c9ebe64a069e1ef26342f207435e3547d56de6229ea6fcb2c98e3f0b5bf2a6a3'
-  '0f39095b809de28001a5660b923b854dfee364cdc34cab249117ca3c1b8087cd'
+  '48f4d19ff1ec7f4fb1383ba76f5fdcc8894e3a02a376ff25d5bb273a4e6b4d57'
+  '354318d3c1bbdf64b0d2e0f8afaefc304895937656f0d8b76b2e103e2a46dc93'
 )
 
 prepare() {
@@ -49,8 +49,9 @@ prepare() {
 }
 
 build() {
+  local _nproc=$(nproc)
   export CARGO_PROFILE_RELEASE_LTO=false
-  export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=$((n > 16 ? n : 16))
+  export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=$((_nproc > 16 ? _nproc : 16))
 
   cd "$_pkgsrc"
   npm install
