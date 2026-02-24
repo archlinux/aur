@@ -1,6 +1,6 @@
 # Maintainer: Naho <naho@users.noreply.github.com>
 pkgname=flux-downloader-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A modern, fast YouTube downloader built with Tauri"
 arch=('x86_64')
