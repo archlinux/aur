@@ -1,7 +1,7 @@
 pkgbase=gcc-snapshot
 pkgname=({gcc,gcc-ada,gcc-ga68,gcc-gcobol,gcc-d,gcc-fortran,gcc-go,gcc-m2,gcc-objc,gcc-rust,gcc-libs,libasan,libatomic,libga68,libgcc,libgccjit,libgcobol,libgfortran,libgm2,libgnat,libgo,libgomp,libgphobos,libitm,liblsan,libobjc,libquadmath,libstdc++,libtsan,libubsan,libvtv,lib32-gcc-libs,lto-dump}-snapshot)
-pkgver=16.0.0.snapshot20260215
-_pkgver=16-20260215
+pkgver=16.0.0.snapshot20260222
+_pkgver=16-20260222
 _majorver=${_pkgver//-*}
 _snapshot=${_pkgver#*-}
 _realver=${pkgver//.s*}
@@ -31,7 +31,7 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               343C2FF0FBEE5EC2EDBEF399F3599FF828C67298  # Niels Möller <nisse@lysator.liu.se>
               A534BE3F83E241D918280AEB5831D11A0D4DB02A  # vincent@vinc17.net
               AD17A21EF8AED8F1CC02DBD9F7D5C9BF765C61E3) # Andres Enge <andreas.enge@inria.fr>
-sha256sums=('45e9c3877866713330db5c6869b9c475714db147ff0fb815da2b546d4b9e771a'
+sha256sums=('717a9d8c00fc31cc5bf5020adb0f1e2a73967c746e0d921cbddbe12bf15ae30b'
             'SKIP'
             'a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898'
             'SKIP'
@@ -128,7 +128,7 @@ build() {
 }
 
 package_gcc-snapshot() {
-  pkgdesc="C and C++ front-ends shipped by GCC (snapshot)"
+  pkgdesc="GNU Compiler Collection - C and C++ front-ends (snapshot)"
   depends=("libgcc-snapshot=${pkgver}-${pkgrel}" "libstdc++-snapshot=${pkgver}-${pkgrel}" "glibc>=2.40" zstd)
   optdepends=("lib32-gcc-libs-snapshot: for generating code for 32-bit ABI")
   provides=(${pkgname}-multilib gcc-multilib gcc)
@@ -217,7 +217,7 @@ package_gcc-snapshot() {
 }
 
 package_gcc-ada-snapshot() {
-  pkgdesc="Ada front-end for GCC (snapshot)"
+  pkgdesc="GNU Compiler Collection - Ada front-end (snapshot)"
   depends=("gcc-snapshot=${pkgver}-${pkgrel}" "libgnat-snapshot=${pkgver}-${pkgrel}" "glibc>=2.40")
   provides=(${pkgname}-multilib gcc-ada-multilib gcc-ada)
   replaces=(${pkgname}-multilib gcc-ada-multilib gcc-ada)
@@ -243,7 +243,7 @@ package_gcc-ada-snapshot() {
 }
 
 package_gcc-d-snapshot() {
-  pkgdesc="D front-end for GCC (snapshot)"
+  pkgdesc="GNU Compiler Collection - D front-end (snapshot)"
   depends=("gcc-snapshot=${pkgver}-${pkgrel}" "libgphobos-snapshot=${pkgver}-${pkgrel}" "glibc>=2.40")
   provides=(${pkgname}-multilib gcc-d-multilib gcc-d gdc)
   replaces=(${pkgname}-multilib gcc-d-multilib gcc-d gdc)
@@ -265,7 +265,7 @@ package_gcc-d-snapshot() {
 }
 
 package_gcc-fortran-snapshot() {
-  pkgdesc="Fortran front-end for GCC (snapshot)"
+  pkgdesc="GNU Compiler Collection - Fortran front-end (snapshot)"
   depends=("gcc-snapshot=${pkgver}-${pkgrel}" "libgfortran-snapshot=${pkgver}-${pkgrel}" "glibc>=2.40")
   provides=(${pkgname}-multilib gcc-fortran-multilib gcc-fortran)
   replaces=(${pkgname}-multilib gcc-fortran-multilib gcc-fortran)
@@ -288,7 +288,7 @@ package_gcc-fortran-snapshot() {
 }
 
 package_gcc-ga68-snapshot() {
-  pkgdesc="Algol68 front-end for GCC (snapshot)"
+  pkgdesc="GNU Compiler Collection - Algol68 front-end (snapshot)"
   depends=("gcc-snapshot=${pkgver}-${pkgrel}" "libga68-snapshot=${pkgver}-${pkgrel}" "glibc>=2.40")
   provides=(${pkgname}-multilib gcc-ga68-multilib gcc-ga68)
   replaces=(${pkgname}-multilib gcc-ga68-multilib gcc-ga68)
@@ -308,7 +308,7 @@ package_gcc-ga68-snapshot() {
 }
 
 package_gcc-gcobol-snapshot() {
-  pkgdesc="Cobol front-end for GCC (snapshot)"
+  pkgdesc="GNU Compiler Collection - Cobol front-end (snapshot)"
   depends=("gcc-snapshot=${pkgver}-${pkgrel}" "libgcobol-snapshot=${pkgver}-${pkgrel}" "glibc>=2.40")
   provides=(${pkgname}-multilib gcc-gcobol-multilib gcc-gcobol)
   replaces=(${pkgname}-multilab gcc-gcobol-multilib gcc-gcobol)
@@ -328,7 +328,7 @@ package_gcc-gcobol-snapshot() {
 }
 
 package_gcc-go-snapshot() {
-  pkgdesc="Go front-end for GCC (snapshot)"
+  pkgdesc="GNU Compiler Collection - Go front-end (snapshot)"
   depends=("gcc-snapshot=${pkgver}-${pkgrel}" "libgo-snapshot=${pkgver}-${pkgrel}" "glibc>=2.40")
   provides=("go=1.18" ${pkgname}-multilib gcc-go-multilib gcc-go)
   replaces=(${pkgname}-multilib gcc-go-multilib gcc-go)
@@ -352,7 +352,7 @@ package_gcc-go-snapshot() {
 }
 
 package_gcc-m2-snapshot() {
-  pkgdesc="Modula-2 front-end for GCC (snapshot)"
+  pkgdesc="GNU Compiler Collection - Modula-2 front-end (snapshot)"
   depends=("gcc-snapshot=${pkgver}-${pkgrel}" "libgm2-snapshot=${pkgver}-${pkgrel}" "glibc>=2.40")
   provides=(${pkgname}-multilib gcc-m2-multilib gcc-m2)
   replaces=(${pkgname}-multilib gcc-m2-multilib gcc-m2)
@@ -374,7 +374,7 @@ package_gcc-m2-snapshot() {
 }
 
 package_gcc-objc-snapshot() {
-  pkgdesc="Objective-C front-end for GCC (snapshot)"
+  pkgdesc="GNU Compiler Collection - Objective-C front-end (snapshot)"
   depends=("gcc-snapshot=${pkgver}-${pkgrel}" "libobjc-snapshot=${pkgver}-${pkgrel}" "glibc>=2.40")
   provides=(${pkgname}-multilib gcc-objc-multilib gcc-objc)
   replaces=(${pkgname}-multilib gcc-objc-multilib gcc-objc)
@@ -394,7 +394,7 @@ package_gcc-objc-snapshot() {
 }
 
 package_gcc-rust-snapshot() {
-  pkgdesc="Rust front-end for GCC (snapshot)"
+  pkgdesc="GNU Compiler Collection - Rust front-end (snapshot)"
   depends=("gcc-snapshot=${pkgver}-${pkgrel}" "glibc>=2.40")
   provides=(${pkgname}-multilib gcc-rust-multilib gcc-rust)
   replaces=(${pkgname}-multilib gcc-rust-multilib gcc-rust)
@@ -414,7 +414,7 @@ package_gcc-rust-snapshot() {
 }
 
 package_gcc-libs-snapshot() {
-  pkgdesc="Runtime libraries shipped by GCC (snapshot)"
+  pkgdesc="GNU Compiler Collection - GCC runtime libraries (snapshot)"
   depends=("libasan-snapshot=${pkgver}-${pkgrel}" "libatomic-snapshot=${pkgver}-${pkgrel}" "libga68-snapshot=${pkgver}-${pkgrel}" "libgfortran-snapshot=${pkgver}-${pkgrel}" "libgcc-snapshot=${pkgver}-${pkgrel}" "libgnat-snapshot=${pkgver}-${pkgrel}" "libgo-snapshot=${pkgver}-${pkgrel}" "libgomp-snapshot=${pkgver}-${pkgrel}" "libgphobos-snapshot=${pkgver}-${pkgrel}" "libitm-snapshot=${pkgver}-${pkgrel}" "liblsan-snapshot=${pkgver}-${pkgrel}" "libobjc-snapshot=${pkgver}-${pkgrel}" "libquadmath-snapshot=${pkgver}-${pkgrel}" "libstdc++-snapshot=${pkgver}-${pkgrel}" "libtsan-snapshot=${pkgver}-${pkgrel}" "libubsan-snapshot=${pkgver}-${pkgrel}" "libvtv-snapshot=${pkgver}-${pkgrel}" "glibc>=2.40")
   provides=(${pkgname}-multilib gcc-libs-multilib "gcc-libs=${pkgver}-${pkgrel}")
   replaces=(${pkgname}-multilib gcc-libs-multilib gcc-libs)
@@ -423,7 +423,7 @@ package_gcc-libs-snapshot() {
 }
 
 package_libasan-snapshot() {
-  pkgdesc="Address Sanitizer runtime library shipped by GCC (snapshot)"
+  pkgdesc="GNU Compiler Collection - Address Sanitizer runtime libraries (snapshot)"
   depends=("glibc>=2.40")
   provides=(${pkgname}-multilib libasan libasan.so)
   replaces=(${pkgname}-multilib libasan)
@@ -441,7 +441,7 @@ package_libasan-snapshot() {
 }
 
 package_libatomic-snapshot() {
-  pkgdesc="GNU Atomic library shipped by GCC (snapshot)"
+  pkgdesc="GNU Compiler Collection - GNU Atomic runtime libraries (snapshot)"
   depends=("glibc>=2.40")
   provides=(${pkgname}-multilib libatomic libatomic.so)
   replaces=(${pkgname}-multilib libatomic)
@@ -459,7 +459,7 @@ package_libatomic-snapshot() {
 }
 
 package_libga68-snapshot() {
-  pkgdesc="Algol68 runtime libraries shipped by GCC (snapshot)"
+  pkgdesc="GNU Compiler Collection - Algol68 runtime libraries (snapshot)"
   depends=("glibc>=2.40")
   provides=(${pkgname}-multilib libga68 libga68.so)
   replaces=(${pkgname}-multilib libga68)
@@ -477,7 +477,7 @@ package_libga68-snapshot() {
 }
 
 package_libgcc-snapshot() {
-  pkgdesc="Low-level runtime library shipped by GCC (snapshot)"
+  pkgdesc="GNU Compiler Collection - GCC low-level runtime libraries (snapshot)"
   depends=("glibc>=2.40")
   provides=(${pkgname}-multilib libgcc libgcc_s.so libgcc_s_asneeded.so)
   replaces=(${pkgname}-multilib libgcc)
@@ -496,7 +496,7 @@ package_libgcc-snapshot() {
 }
 
 package_libgccjit-snapshot() {
-  pkgdesc="Just-In-Time Compilation with GCC backend (snapshot)"
+  pkgdesc="GNU Compiler Collection - GCC Just-In-Time compilation framework (snapshot)"
   depends=("gcc-snapshot=${pkgver}-${pkgrel}")
   provides=(${pkgname}-multilib libgccjit)
   replaces=(${pkgname}-multilib libgccjit)
@@ -514,7 +514,7 @@ package_libgccjit-snapshot() {
 }
 
 package_libgcobol-snapshot() {
-  pkgdesc="Cobol runtime libraries shipped by GCC (snapshot)"
+  pkgdesc="GNU Compiler Collection - Cobol runtime libraries (snapshot)"
   depends=("glibc>=2.40")
   provides=(${pkgname}-multilib libgcobol libgcobol.so)
   replaces=(${pkgname}-multilib libgcobol)
@@ -532,7 +532,7 @@ package_libgcobol-snapshot() {
 }
 
 package_libgfortran-snapshot() {
-  pkgdesc="Fortran runtime libraries shipped by GCC (snapshot)"
+  pkgdesc="GNU Compiler Collection - Fortran runtime libraries (snapshot)"
   depends=("glibc>=2.40")
   provides=(${pkgname}-multilib libgfortran libgfortran.so)
   replaces=(${pkgname}-multilib libgfortran)
@@ -550,7 +550,7 @@ package_libgfortran-snapshot() {
 }
 
 package_libgm2-snapshot() {
-  pkgdesc="Modula-2 runtime libraries shipped by GCC (snapshot)"
+  pkgdesc="GNU Compiler Collection - Modula-2 runtime libraries (snapshot)"
   depends=("glibc>=2.40")
   provides=(${pkgname}-multilib libgm2 libm2cor.so libm2iso.so libm2log.so libm2min.so libm2pim.so)
   replaces=(${pkgname}-multilib libgm2)
@@ -570,7 +570,7 @@ package_libgm2-snapshot() {
 }
 
 package_libgnat-snapshot() {
-  pkgdesc="Ada runtime libraries shipped by GCC (snapshot)"
+  pkgdesc="GNU Compiler Collection - Ada runtime libraries (snapshot)"
   depends=("glibc>=2.40")
   provides=(${pkgname}-multilib libgnat libgnarl-${_majorver}.so libgnat-${_majorver}.so)
   replaces=(${pkgname}-multilib libgnat)
@@ -595,7 +595,7 @@ package_libgnat-snapshot() {
 }
 
 package_libgo-snapshot() {
-  pkgdesc="Go runtime libraries shipped by GCC (snapshot)"
+  pkgdesc="GNU Compiler Collection - Go runtime libraries (snapshot)"
   depends=("glibc>=2.40")
   provides=(${pkgname}-multilib libgo libgo.so)
   replaces=(${pkgname}-multilib libgo)
@@ -613,7 +613,7 @@ package_libgo-snapshot() {
 }
 
 package_libgomp-snapshot() {
-  pkgdesc="OpenMP and GPU Offload libraries shipped by GCC (snapshot)"
+  pkgdesc="GNU Compiler Collection - OpenMP and GPU Offload runtime libraries (snapshot)"
   depends=("glibc>=2.40")
   provides=(${pkgname}-multilib libgomp libgomp.so)
   replaces=(${pkgname}-multilib libgomp)
@@ -632,7 +632,7 @@ package_libgomp-snapshot() {
 }
 
 package_libgphobos-snapshot() {
-  pkgdesc="D runtime libraries shipped by GCC (snapshot)"
+  pkgdesc="GNU Compiler Collection - D runtime libraries (snapshot)"
   depends=("glibc>=2.40")
   provides=(${pkgname}-multilib libgphobos libgdruntime.so libgphobos.so)
   replaces=(${pkgname}-multilib libgphobos)
@@ -651,7 +651,7 @@ package_libgphobos-snapshot() {
 }
 
 package_libitm-snapshot() {
-  pkgdesc="GNU Transactional Memory library shipped by GCC (snapshot)"
+  pkgdesc="GNU Compiler Collection - GNU Transactional Memory runtime libraries (snapshot)"
   depends=("glibc>=2.40")
   provides=(${pkgname}-multilib libitm libitm.so)
   replaces=(${pkgname}-multilib libitm)
@@ -670,7 +670,7 @@ package_libitm-snapshot() {
 }
 
 package_liblsan-snapshot() {
-  pkgdesc="Leak Sanitizer runtime library shipped by GCC (snapshot)"
+  pkgdesc="GNU Compiler Collection - Leak Sanitizer runtime libraries (snapshot)"
   depends=("glibc>=2.40")
   provides=(${pkgname}-multilib liblsan liblsan.so)
   replaces=(${pkgname}-multilib liblsan)
@@ -688,7 +688,7 @@ package_liblsan-snapshot() {
 }
 
 package_libobjc-snapshot() {
-  pkgdesc="Ojective-C runtime libraries shipped by GCC (snapshot)"
+  pkgdesc="GNU Compiler Collection - Ojective-C runtime libraries (snapshot)"
   depends=("glibc>=2.40")
   provides=(${pkgname}-multilib libobjc libobjc.so)
   replaces=(${pkgname}-multilib libobjc)
@@ -707,7 +707,7 @@ package_libobjc-snapshot() {
 }
 
 package_libquadmath-snapshot() {
-  pkgdesc="GCC Quad-Precision Math Library (snapshot)"
+  pkgdesc="GNU Compiler Collection - GCC Quad-Precision Math runtime libraries (snapshot)"
   depends=("glibc>=2.40")
   provides=(${pkgname}-multilib libquadmath libquadmath.so)
   replaces=(${pkgname}-multilib libquadmath)
@@ -726,7 +726,7 @@ package_libquadmath-snapshot() {
 }
 
 package_libstdc++-snapshot() {
-  pkgdesc="C++ runtime libraries shipped by GCC (snapshot)"
+  pkgdesc="GNU Compiler Collection - C++ runtime libraries (snapshot)"
   depends=("glibc>=2.40")
   provides=(${pkgname}-multilib libstdc++ libstdc++.so)
   replaces=(${pkgname}-multilib libstdc++)
@@ -745,7 +745,7 @@ package_libstdc++-snapshot() {
 }
 
 package_libtsan-snapshot() {
-  pkgdesc="Thread Sanitizer runtime library shipped by GCC (snapshot)"
+  pkgdesc="GNU Compiler Collection - Thread Sanitizer runtime libraries (snapshot)"
   depends=("glibc>=2.40")
   provides=(${pkgname}-multilib libtsan libtsan.so)
   replaces=(${pkgname}-multilib libtsan)
@@ -763,7 +763,7 @@ package_libtsan-snapshot() {
 }
 
 package_libubsan-snapshot() {
-  pkgdesc="Undefined Behavior Sanitizer runtime library shipped by GCC (snapshot)"
+  pkgdesc="GNU Compiler Collection - Undefined Behavior Sanitizer runtime libraries (snapshot)"
   depends=("glibc>=2.40")
   provides=(${pkgname}-multilib libubsan libubsan.so)
   replaces=(${pkgname}-multilib libubsan)
@@ -781,7 +781,7 @@ package_libubsan-snapshot() {
 }
 
 package_libvtv-snapshot() {
-  pkgdesc="Virtual Table Verification library by GCC (snapshot)"
+  pkgdesc="GNU Compiler Collection - Virtual Table Verification runtime libraries (snapshot)"
   depends=("glibc>=2.40")
   provides=(${pkgname}-multilib libvtv)
   replaces=(${pkgname}-multilib libvtv)
@@ -799,7 +799,7 @@ package_libvtv-snapshot() {
 }
 
 package_lib32-gcc-libs-snapshot() {
-  pkgdesc="32-bit runtime libraries shipped by GCC (snapshot)"
+  pkgdesc="GNU Compiler Collection - 32-bit GCC runtime libraries (snapshot)"
   depends=("lib32-glibc>=2.40")
   provides=(${pkgname}-multilib lib32-gcc-libs libasan.so libatomic.so libga68.so libgdruntime.so libgfortran.so libgcc_s.so libgnarl-${_majorver}.so libgnat-${_majorver}.so libgo.so libgomp.so libgphobos.so libitm.so libobjc.so libquadmath.so libstdc++.so libubsan.so)
   replaces=(${pkgname}-multilib lib32-gcc-libs)
@@ -840,7 +840,7 @@ package_lib32-gcc-libs-snapshot() {
 }
 
 package_lto-dump-snapshot() {
-  pkgdesc="Dump link time optimization object files (snapshot)"
+  pkgdesc="GNU Compiler Collection - Dump link time optimization object files tool (snapshot)"
   depends=("gcc-snapshot=${pkgver}-${pkgrel}" libgcc-snapshot)
   provides=(${pkgname}-multilib lto-dump)
   replaces=(${pkgname}-multilib lto-dump)

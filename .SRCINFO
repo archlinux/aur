@@ -1,6 +1,6 @@
 pkgbase = gcc-snapshot
 	pkgdesc = The GNU Compiler Collection (snapshot)
-	pkgver = 16.0.0.snapshot20260215
+	pkgver = 16.0.0.snapshot20260222
 	pkgrel = 1
 	url = https://gcc.gnu.org
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = gcc-snapshot
 	makedepends = zstd
 	options = !emptydirs
 	options = !lto
-	source = https://ftp.fu-berlin.de/unix/languages/gcc/snapshots/16-20260215/gcc-16-20260215.tar.xz
+	source = https://ftp.fu-berlin.de/unix/languages/gcc/snapshots/16-20260222/gcc-16-20260222.tar.xz
 	source = git+https://repo.or.cz/isl.git#branch=maint
 	source = https://gmplib.org/download/gmp/gmp-6.3.0.tar.xz
 	source = https://gmplib.org/download/gmp/gmp-6.3.0.tar.xz.sig
@@ -38,7 +38,7 @@ pkgbase = gcc-snapshot
 	validpgpkeys = 343C2FF0FBEE5EC2EDBEF399F3599FF828C67298
 	validpgpkeys = A534BE3F83E241D918280AEB5831D11A0D4DB02A
 	validpgpkeys = AD17A21EF8AED8F1CC02DBD9F7D5C9BF765C61E3
-	sha256sums = 45e9c3877866713330db5c6869b9c475714db147ff0fb815da2b546d4b9e771a
+	sha256sums = 717a9d8c00fc31cc5bf5020adb0f1e2a73967c746e0d921cbddbe12bf15ae30b
 	sha256sums = SKIP
 	sha256sums = a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898
 	sha256sums = SKIP
@@ -51,9 +51,9 @@ pkgbase = gcc-snapshot
 	sha256sums = 1773f5137f08ac1f48f0f7297e324d5d868d55201c03068670ee4602babdef2f
 
 pkgname = gcc-snapshot
-	pkgdesc = C and C++ front-ends shipped by GCC (snapshot)
-	depends = libgcc-snapshot=16.0.0.snapshot20260215-1
-	depends = libstdc++-snapshot=16.0.0.snapshot20260215-1
+	pkgdesc = GNU Compiler Collection - C and C++ front-ends (snapshot)
+	depends = libgcc-snapshot=16.0.0.snapshot20260222-1
+	depends = libstdc++-snapshot=16.0.0.snapshot20260222-1
 	depends = glibc>=2.40
 	depends = zstd
 	optdepends = lib32-gcc-libs-snapshot: for generating code for 32-bit ABI
@@ -69,9 +69,9 @@ pkgname = gcc-snapshot
 	options = staticlibs
 
 pkgname = gcc-ada-snapshot
-	pkgdesc = Ada front-end for GCC (snapshot)
-	depends = gcc-snapshot=16.0.0.snapshot20260215-1
-	depends = libgnat-snapshot=16.0.0.snapshot20260215-1
+	pkgdesc = GNU Compiler Collection - Ada front-end (snapshot)
+	depends = gcc-snapshot=16.0.0.snapshot20260222-1
+	depends = libgnat-snapshot=16.0.0.snapshot20260222-1
 	depends = glibc>=2.40
 	provides = gcc-ada-snapshot-multilib
 	provides = gcc-ada-multilib
@@ -85,9 +85,9 @@ pkgname = gcc-ada-snapshot
 	options = staticlibs
 
 pkgname = gcc-ga68-snapshot
-	pkgdesc = Algol68 front-end for GCC (snapshot)
-	depends = gcc-snapshot=16.0.0.snapshot20260215-1
-	depends = libga68-snapshot=16.0.0.snapshot20260215-1
+	pkgdesc = GNU Compiler Collection - Algol68 front-end (snapshot)
+	depends = gcc-snapshot=16.0.0.snapshot20260222-1
+	depends = libga68-snapshot=16.0.0.snapshot20260222-1
 	depends = glibc>=2.40
 	provides = gcc-ga68-snapshot-multilib
 	provides = gcc-ga68-multilib
@@ -101,9 +101,9 @@ pkgname = gcc-ga68-snapshot
 	options = staticlibs
 
 pkgname = gcc-gcobol-snapshot
-	pkgdesc = Cobol front-end for GCC (snapshot)
-	depends = gcc-snapshot=16.0.0.snapshot20260215-1
-	depends = libgcobol-snapshot=16.0.0.snapshot20260215-1
+	pkgdesc = GNU Compiler Collection - Cobol front-end (snapshot)
+	depends = gcc-snapshot=16.0.0.snapshot20260222-1
+	depends = libgcobol-snapshot=16.0.0.snapshot20260222-1
 	depends = glibc>=2.40
 	provides = gcc-gcobol-snapshot-multilib
 	provides = gcc-gcobol-multilib
@@ -117,9 +117,9 @@ pkgname = gcc-gcobol-snapshot
 	options = staticlibs
 
 pkgname = gcc-d-snapshot
-	pkgdesc = D front-end for GCC (snapshot)
-	depends = gcc-snapshot=16.0.0.snapshot20260215-1
-	depends = libgphobos-snapshot=16.0.0.snapshot20260215-1
+	pkgdesc = GNU Compiler Collection - D front-end (snapshot)
+	depends = gcc-snapshot=16.0.0.snapshot20260222-1
+	depends = libgphobos-snapshot=16.0.0.snapshot20260222-1
 	depends = glibc>=2.40
 	provides = gcc-d-snapshot-multilib
 	provides = gcc-d-multilib
@@ -136,9 +136,9 @@ pkgname = gcc-d-snapshot
 	options = staticlibs
 
 pkgname = gcc-fortran-snapshot
-	pkgdesc = Fortran front-end for GCC (snapshot)
-	depends = gcc-snapshot=16.0.0.snapshot20260215-1
-	depends = libgfortran-snapshot=16.0.0.snapshot20260215-1
+	pkgdesc = GNU Compiler Collection - Fortran front-end (snapshot)
+	depends = gcc-snapshot=16.0.0.snapshot20260222-1
+	depends = libgfortran-snapshot=16.0.0.snapshot20260222-1
 	depends = glibc>=2.40
 	provides = gcc-fortran-snapshot-multilib
 	provides = gcc-fortran-multilib
@@ -152,9 +152,9 @@ pkgname = gcc-fortran-snapshot
 	options = staticlibs
 
 pkgname = gcc-go-snapshot
-	pkgdesc = Go front-end for GCC (snapshot)
-	depends = gcc-snapshot=16.0.0.snapshot20260215-1
-	depends = libgo-snapshot=16.0.0.snapshot20260215-1
+	pkgdesc = GNU Compiler Collection - Go front-end (snapshot)
+	depends = gcc-snapshot=16.0.0.snapshot20260222-1
+	depends = libgo-snapshot=16.0.0.snapshot20260222-1
 	depends = glibc>=2.40
 	provides = go=1.18
 	provides = gcc-go-snapshot-multilib
@@ -170,9 +170,9 @@ pkgname = gcc-go-snapshot
 	options = staticlibs
 
 pkgname = gcc-m2-snapshot
-	pkgdesc = Modula-2 front-end for GCC (snapshot)
-	depends = gcc-snapshot=16.0.0.snapshot20260215-1
-	depends = libgm2-snapshot=16.0.0.snapshot20260215-1
+	pkgdesc = GNU Compiler Collection - Modula-2 front-end (snapshot)
+	depends = gcc-snapshot=16.0.0.snapshot20260222-1
+	depends = libgm2-snapshot=16.0.0.snapshot20260222-1
 	depends = glibc>=2.40
 	provides = gcc-m2-snapshot-multilib
 	provides = gcc-m2-multilib
@@ -186,9 +186,9 @@ pkgname = gcc-m2-snapshot
 	options = staticlibs
 
 pkgname = gcc-objc-snapshot
-	pkgdesc = Objective-C front-end for GCC (snapshot)
-	depends = gcc-snapshot=16.0.0.snapshot20260215-1
-	depends = libobjc-snapshot=16.0.0.snapshot20260215-1
+	pkgdesc = GNU Compiler Collection - Objective-C front-end (snapshot)
+	depends = gcc-snapshot=16.0.0.snapshot20260222-1
+	depends = libobjc-snapshot=16.0.0.snapshot20260222-1
 	depends = glibc>=2.40
 	provides = gcc-objc-snapshot-multilib
 	provides = gcc-objc-multilib
@@ -202,8 +202,8 @@ pkgname = gcc-objc-snapshot
 	options = staticlibs
 
 pkgname = gcc-rust-snapshot
-	pkgdesc = Rust front-end for GCC (snapshot)
-	depends = gcc-snapshot=16.0.0.snapshot20260215-1
+	pkgdesc = GNU Compiler Collection - Rust front-end (snapshot)
+	depends = gcc-snapshot=16.0.0.snapshot20260222-1
 	depends = glibc>=2.40
 	provides = gcc-rust-snapshot-multilib
 	provides = gcc-rust-multilib
@@ -217,28 +217,28 @@ pkgname = gcc-rust-snapshot
 	options = staticlibs
 
 pkgname = gcc-libs-snapshot
-	pkgdesc = Runtime libraries shipped by GCC (snapshot)
-	depends = libasan-snapshot=16.0.0.snapshot20260215-1
-	depends = libatomic-snapshot=16.0.0.snapshot20260215-1
-	depends = libga68-snapshot=16.0.0.snapshot20260215-1
-	depends = libgfortran-snapshot=16.0.0.snapshot20260215-1
-	depends = libgcc-snapshot=16.0.0.snapshot20260215-1
-	depends = libgnat-snapshot=16.0.0.snapshot20260215-1
-	depends = libgo-snapshot=16.0.0.snapshot20260215-1
-	depends = libgomp-snapshot=16.0.0.snapshot20260215-1
-	depends = libgphobos-snapshot=16.0.0.snapshot20260215-1
-	depends = libitm-snapshot=16.0.0.snapshot20260215-1
-	depends = liblsan-snapshot=16.0.0.snapshot20260215-1
-	depends = libobjc-snapshot=16.0.0.snapshot20260215-1
-	depends = libquadmath-snapshot=16.0.0.snapshot20260215-1
-	depends = libstdc++-snapshot=16.0.0.snapshot20260215-1
-	depends = libtsan-snapshot=16.0.0.snapshot20260215-1
-	depends = libubsan-snapshot=16.0.0.snapshot20260215-1
-	depends = libvtv-snapshot=16.0.0.snapshot20260215-1
+	pkgdesc = GNU Compiler Collection - GCC runtime libraries (snapshot)
+	depends = libasan-snapshot=16.0.0.snapshot20260222-1
+	depends = libatomic-snapshot=16.0.0.snapshot20260222-1
+	depends = libga68-snapshot=16.0.0.snapshot20260222-1
+	depends = libgfortran-snapshot=16.0.0.snapshot20260222-1
+	depends = libgcc-snapshot=16.0.0.snapshot20260222-1
+	depends = libgnat-snapshot=16.0.0.snapshot20260222-1
+	depends = libgo-snapshot=16.0.0.snapshot20260222-1
+	depends = libgomp-snapshot=16.0.0.snapshot20260222-1
+	depends = libgphobos-snapshot=16.0.0.snapshot20260222-1
+	depends = libitm-snapshot=16.0.0.snapshot20260222-1
+	depends = liblsan-snapshot=16.0.0.snapshot20260222-1
+	depends = libobjc-snapshot=16.0.0.snapshot20260222-1
+	depends = libquadmath-snapshot=16.0.0.snapshot20260222-1
+	depends = libstdc++-snapshot=16.0.0.snapshot20260222-1
+	depends = libtsan-snapshot=16.0.0.snapshot20260222-1
+	depends = libubsan-snapshot=16.0.0.snapshot20260222-1
+	depends = libvtv-snapshot=16.0.0.snapshot20260222-1
 	depends = glibc>=2.40
 	provides = gcc-libs-snapshot-multilib
 	provides = gcc-libs-multilib
-	provides = gcc-libs=16.0.0.snapshot20260215-1
+	provides = gcc-libs=16.0.0.snapshot20260222-1
 	conflicts = gcc-libs-multilib
 	conflicts = gcc-libs
 	replaces = gcc-libs-snapshot-multilib
@@ -247,7 +247,7 @@ pkgname = gcc-libs-snapshot
 	options = !emptydirs
 
 pkgname = libasan-snapshot
-	pkgdesc = Address Sanitizer runtime library shipped by GCC (snapshot)
+	pkgdesc = GNU Compiler Collection - Address Sanitizer runtime libraries (snapshot)
 	depends = glibc>=2.40
 	provides = libasan-snapshot-multilib
 	provides = libasan
@@ -258,7 +258,7 @@ pkgname = libasan-snapshot
 	options = !emptydirs
 
 pkgname = libatomic-snapshot
-	pkgdesc = GNU Atomic library shipped by GCC (snapshot)
+	pkgdesc = GNU Compiler Collection - GNU Atomic runtime libraries (snapshot)
 	depends = glibc>=2.40
 	provides = libatomic-snapshot-multilib
 	provides = libatomic
@@ -269,7 +269,7 @@ pkgname = libatomic-snapshot
 	options = !emptydirs
 
 pkgname = libga68-snapshot
-	pkgdesc = Algol68 runtime libraries shipped by GCC (snapshot)
+	pkgdesc = GNU Compiler Collection - Algol68 runtime libraries (snapshot)
 	depends = glibc>=2.40
 	provides = libga68-snapshot-multilib
 	provides = libga68
@@ -280,7 +280,7 @@ pkgname = libga68-snapshot
 	options = !emptydirs
 
 pkgname = libgcc-snapshot
-	pkgdesc = Low-level runtime library shipped by GCC (snapshot)
+	pkgdesc = GNU Compiler Collection - GCC low-level runtime libraries (snapshot)
 	depends = glibc>=2.40
 	provides = libgcc-snapshot-multilib
 	provides = libgcc
@@ -292,8 +292,8 @@ pkgname = libgcc-snapshot
 	options = !emptydirs
 
 pkgname = libgccjit-snapshot
-	pkgdesc = Just-In-Time Compilation with GCC backend (snapshot)
-	depends = gcc-snapshot=16.0.0.snapshot20260215-1
+	pkgdesc = GNU Compiler Collection - GCC Just-In-Time compilation framework (snapshot)
+	depends = gcc-snapshot=16.0.0.snapshot20260222-1
 	provides = libgccjit-snapshot-multilib
 	provides = libgccjit
 	conflicts = libgccjit
@@ -302,7 +302,7 @@ pkgname = libgccjit-snapshot
 	options = !emptydirs
 
 pkgname = libgcobol-snapshot
-	pkgdesc = Cobol runtime libraries shipped by GCC (snapshot)
+	pkgdesc = GNU Compiler Collection - Cobol runtime libraries (snapshot)
 	depends = glibc>=2.40
 	provides = libgcobol-snapshot-multilib
 	provides = libgcobol
@@ -313,7 +313,7 @@ pkgname = libgcobol-snapshot
 	options = !emptydirs
 
 pkgname = libgfortran-snapshot
-	pkgdesc = Fortran runtime libraries shipped by GCC (snapshot)
+	pkgdesc = GNU Compiler Collection - Fortran runtime libraries (snapshot)
 	depends = glibc>=2.40
 	provides = libgfortran-snapshot-multilib
 	provides = libgfortran
@@ -324,7 +324,7 @@ pkgname = libgfortran-snapshot
 	options = !emptydirs
 
 pkgname = libgm2-snapshot
-	pkgdesc = Modula-2 runtime libraries shipped by GCC (snapshot)
+	pkgdesc = GNU Compiler Collection - Modula-2 runtime libraries (snapshot)
 	depends = glibc>=2.40
 	provides = libgm2-snapshot-multilib
 	provides = libgm2
@@ -339,7 +339,7 @@ pkgname = libgm2-snapshot
 	options = !emptydirs
 
 pkgname = libgnat-snapshot
-	pkgdesc = Ada runtime libraries shipped by GCC (snapshot)
+	pkgdesc = GNU Compiler Collection - Ada runtime libraries (snapshot)
 	depends = glibc>=2.40
 	provides = libgnat-snapshot-multilib
 	provides = libgnat
@@ -351,7 +351,7 @@ pkgname = libgnat-snapshot
 	options = !emptydirs
 
 pkgname = libgo-snapshot
-	pkgdesc = Go runtime libraries shipped by GCC (snapshot)
+	pkgdesc = GNU Compiler Collection - Go runtime libraries (snapshot)
 	depends = glibc>=2.40
 	provides = libgo-snapshot-multilib
 	provides = libgo
@@ -362,7 +362,7 @@ pkgname = libgo-snapshot
 	options = !emptydirs
 
 pkgname = libgomp-snapshot
-	pkgdesc = OpenMP and GPU Offload libraries shipped by GCC (snapshot)
+	pkgdesc = GNU Compiler Collection - OpenMP and GPU Offload runtime libraries (snapshot)
 	depends = glibc>=2.40
 	provides = libgomp-snapshot-multilib
 	provides = libgomp
@@ -373,7 +373,7 @@ pkgname = libgomp-snapshot
 	options = !emptydirs
 
 pkgname = libgphobos-snapshot
-	pkgdesc = D runtime libraries shipped by GCC (snapshot)
+	pkgdesc = GNU Compiler Collection - D runtime libraries (snapshot)
 	depends = glibc>=2.40
 	provides = libgphobos-snapshot-multilib
 	provides = libgphobos
@@ -385,7 +385,7 @@ pkgname = libgphobos-snapshot
 	options = !emptydirs
 
 pkgname = libitm-snapshot
-	pkgdesc = GNU Transactional Memory library shipped by GCC (snapshot)
+	pkgdesc = GNU Compiler Collection - GNU Transactional Memory runtime libraries (snapshot)
 	depends = glibc>=2.40
 	provides = libitm-snapshot-multilib
 	provides = libitm
@@ -396,7 +396,7 @@ pkgname = libitm-snapshot
 	options = !emptydirs
 
 pkgname = liblsan-snapshot
-	pkgdesc = Leak Sanitizer runtime library shipped by GCC (snapshot)
+	pkgdesc = GNU Compiler Collection - Leak Sanitizer runtime libraries (snapshot)
 	depends = glibc>=2.40
 	provides = liblsan-snapshot-multilib
 	provides = liblsan
@@ -407,7 +407,7 @@ pkgname = liblsan-snapshot
 	options = !emptydirs
 
 pkgname = libobjc-snapshot
-	pkgdesc = Ojective-C runtime libraries shipped by GCC (snapshot)
+	pkgdesc = GNU Compiler Collection - Ojective-C runtime libraries (snapshot)
 	depends = glibc>=2.40
 	provides = libobjc-snapshot-multilib
 	provides = libobjc
@@ -418,7 +418,7 @@ pkgname = libobjc-snapshot
 	options = !emptydirs
 
 pkgname = libquadmath-snapshot
-	pkgdesc = GCC Quad-Precision Math Library (snapshot)
+	pkgdesc = GNU Compiler Collection - GCC Quad-Precision Math runtime libraries (snapshot)
 	depends = glibc>=2.40
 	provides = libquadmath-snapshot-multilib
 	provides = libquadmath
@@ -429,7 +429,7 @@ pkgname = libquadmath-snapshot
 	options = !emptydirs
 
 pkgname = libstdc++-snapshot
-	pkgdesc = C++ runtime libraries shipped by GCC (snapshot)
+	pkgdesc = GNU Compiler Collection - C++ runtime libraries (snapshot)
 	depends = glibc>=2.40
 	provides = libstdc++-snapshot-multilib
 	provides = libstdc++
@@ -440,7 +440,7 @@ pkgname = libstdc++-snapshot
 	options = !emptydirs
 
 pkgname = libtsan-snapshot
-	pkgdesc = Thread Sanitizer runtime library shipped by GCC (snapshot)
+	pkgdesc = GNU Compiler Collection - Thread Sanitizer runtime libraries (snapshot)
 	depends = glibc>=2.40
 	provides = libtsan-snapshot-multilib
 	provides = libtsan
@@ -451,7 +451,7 @@ pkgname = libtsan-snapshot
 	options = !emptydirs
 
 pkgname = libubsan-snapshot
-	pkgdesc = Undefined Behavior Sanitizer runtime library shipped by GCC (snapshot)
+	pkgdesc = GNU Compiler Collection - Undefined Behavior Sanitizer runtime libraries (snapshot)
 	depends = glibc>=2.40
 	provides = libubsan-snapshot-multilib
 	provides = libubsan
@@ -462,7 +462,7 @@ pkgname = libubsan-snapshot
 	options = !emptydirs
 
 pkgname = libvtv-snapshot
-	pkgdesc = Virtual Table Verification library by GCC (snapshot)
+	pkgdesc = GNU Compiler Collection - Virtual Table Verification runtime libraries (snapshot)
 	depends = glibc>=2.40
 	provides = libvtv-snapshot-multilib
 	provides = libvtv
@@ -472,7 +472,7 @@ pkgname = libvtv-snapshot
 	options = !emptydirs
 
 pkgname = lib32-gcc-libs-snapshot
-	pkgdesc = 32-bit runtime libraries shipped by GCC (snapshot)
+	pkgdesc = GNU Compiler Collection - 32-bit GCC runtime libraries (snapshot)
 	depends = lib32-glibc>=2.40
 	provides = lib32-gcc-libs-snapshot-multilib
 	provides = lib32-gcc-libs
@@ -499,8 +499,8 @@ pkgname = lib32-gcc-libs-snapshot
 	options = !emptydirs
 
 pkgname = lto-dump-snapshot
-	pkgdesc = Dump link time optimization object files (snapshot)
-	depends = gcc-snapshot=16.0.0.snapshot20260215-1
+	pkgdesc = GNU Compiler Collection - Dump link time optimization object files tool (snapshot)
+	depends = gcc-snapshot=16.0.0.snapshot20260222-1
 	depends = libgcc-snapshot
 	provides = lto-dump-snapshot-multilib
 	provides = lto-dump
