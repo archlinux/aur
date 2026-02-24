@@ -2,8 +2,8 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwallet-git
-pkgver=6.17.0_r1599.g9d9266f6
-pkgrel=2
+pkgver=6.24.0_r1684.gde631daf
+pkgrel=1
 pkgdesc='KWallet Framework'
 arch=(x86_64)
 url='https://projects.kde.org/projects/frameworks/kwallet'
@@ -31,7 +31,7 @@ makedepends=(doxygen
 optdepends=('kwalletmanager: Configuration GUI')
 conflicts=(kwallet)
 provides=(kwallet org.freedesktop.secrets)
-source=('git+https://github.com/KDE/kwallet.git')
+source=('git+https://invent.kde.org/frameworks/kwallet.git')
 md5sums=('SKIP')
 
 pkgver() {
