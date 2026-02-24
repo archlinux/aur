@@ -1,12 +1,13 @@
 pkgbase = roc-nightly-bin
 	pkgdesc = A fast, friendly, functional language. Work in progress!
 	pkgver = 2025.09.09.d73ea109
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.roc-lang.org
 	arch = x86_64
 	license = ULP1.0
 	depends = glibc>=2.38
 	depends = binutils>=2.41
+	provides = roc
 	replaces = roc-nightly-bin
 	options = !debug
 	source = https://github.com/roc-lang/roc/releases/download/alpha4-rolling/roc-linux_x86_64-alpha4-rolling.tar.gz
