@@ -1,6 +1,6 @@
 pkgbase = awsaml-git
 	pkgdesc = An application for providing automatically rotated temporary AWS credentials.(Use system-wide electron)
-	pkgver = 3.1.2.r35.gd1d35c8
+	pkgver = 4.5.0.r0.g01b884d
 	pkgrel = 1
 	url = https://github.com/rapid7/awsaml
 	arch = any
@@ -10,12 +10,13 @@ pkgbase = awsaml-git
 	makedepends = git
 	makedepends = curl
 	makedepends = gendesk
+	makedepends = jq
 	depends = electron31
-	provides = awsaml=3.1.2
+	provides = awsaml=4.5.0
 	conflicts = awsaml
 	source = awsaml.git::git+https://github.com/rapid7/awsaml.git
 	source = awsaml.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = awsaml-git
