@@ -3,7 +3,7 @@
 pkgbase=python-pyfive
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A pure python HDF5 reader"
 arch=('any')
@@ -29,7 +29,7 @@ checkdepends=('python-pytest-rerunfailures'
               'python-s3fs') # numpy already in makedepends; requests <- moto
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'Makefile')
-md5sums=('8541d97c082cdabac0c9ce06ceaeaa63'
+md5sums=('f28ab1475e31b3cc23ddc03f404c0536'
          'a6aa4bc42b138d75f938065a0994c3e1')
 
 get_pyinfo() {
