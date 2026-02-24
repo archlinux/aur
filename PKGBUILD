@@ -2,7 +2,7 @@
 
 pkgname=oxicord
 pkgver=0.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Vim-native Discord TUI for terminal enthusiasts'
 arch=(x86_64)
 url='https://github.com/linuxmobile/oxicord'
@@ -15,7 +15,7 @@ options=(!lto)
 source=("git+$url.git#tag=v$pkgver")
 #source=("git+$url.git#tag=v$pkgver?signed")
 #validpgpkeys=('A3C75146365747E3B7D2FF57481EFFCF2C7B8C7B') # Braian A. Diez <bdiez19@gmail.com>
-b2sums=('eefe17661d867a05b45b5fe6be36c04dcd65b6ff589e021036a2e583e9f303de39dcd49a1895c16d21cfd550ef56633dffa63cae3ef4219b3ed262146adcd65a')
+b2sums=('ec8747f83c1392ec1b7617c1c823cd69ef1c0cbb932dc8886f024e4ce8f520e01301f12fc94c0465f132a6d75e2c4241fe7b7b51b5d1221b17f93f435c799340')
 
 prepare() {
     cd oxicord
