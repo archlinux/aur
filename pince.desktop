@@ -3,11 +3,9 @@ Name=PINCE
 Comment=Reverse engineering tool for linux games
 Comment[zh_CN]=用于 Linux 游戏的逆向工程工具
 GenericName=PINCE
-Exec=pkexec /usr/bin/pince
-Icon=pince
+Exec=pince
+Icon=io.github.korcankaraokcu.PINCE
 Type=Application
 Terminal=false
 StartupNotify=false
-# https://github.com/korcankaraokcu/PINCE/issues/313
-StartupWMClass=com/korcankaraokcu/PINCE.github.python3
 Categories=Qt;Utility;Development;

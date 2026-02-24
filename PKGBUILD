@@ -5,34 +5,26 @@
 
 # shellcheck disable=SC1090,SC2207
 pkgname=pince
-pkgver=0.4.5
-pkgrel=2
+pkgver=0.5
+pkgrel=1
 pkgdesc="A Linux reverse engineering tool inspired by Cheat Engine."
 arch=('any')
 url="https://github.com/korcankaraokcu/PINCE"
 license=('GPL-3.0-or-later WITH CC-BY-3.0')
-depends=() # follow upstream, set this later
+depends=('polkit') # follow upstream, set this later
 makedepends=('cmake' 'python-pip' 'qt6-tools' 'lsb-release' 'pkgconf' 'git' 'sed')
 optdepends=(
 	'qt6-wayland: wayland support'
 )
 source=("$pkgname::git+$url.git#tag=v$pkgver"
 		'pince.desktop'
-		'pince.sh'
-		'io.github.korcankaraokcu.PINCE.policy')
+		'pince.sh')
 sha256sums=('381dafd683fdad1b476fb4fbcf96fa91e613540f06ea4071020bc7e60cf1de5a'
             'c3497150719bc7ed20d5a5ad882d7405f5fc2eab127fdc9a17798c9cc1342da7'
             '58bbcddf4ef9415ea14a6b38221ea9d56523aa71d25f97ff8462e135a25ac464'
             '528a66294cbf93e141b392c41b3e972973fe39a79161d0c91c09928b78406c42')
 _installpath='/usr/lib/pince'
 _installsh='install.sh'
-
-prepare() {
-	# Remove ".venv/PINCE" exist check
-	sed -e '/^if \[ ! -d .*.venv.* \]; /,/venv.*activate$/ s/^/# /' \
-		-e 's|[^ ]*python3|python3|' \
-		-i "./$pkgname/PINCE.sh"
-}
 
 build() {
 	cd "$pkgname" || exit 1
@@ -54,8 +46,7 @@ build() {
 
 package() {
 	install -Dm755 pince.sh "$pkgdir/usr/bin/pince"
-	install -Dm644 pince.desktop -t "$pkgdir/usr/share/applications/"
-	install -Dm644 io.github.korcankaraokcu.PINCE.policy -t "$pkgdir/usr/share/polkit-1/actions/"
+	install -Dm644 pince.desktop -t "$pkgdir/usr/share/applications/io.github.korcankaraokcu.PINCE.desktop"
 
 	pushd "$pkgname" || exit 1
 
@@ -103,7 +94,7 @@ package() {
 	# Copy system files
 	install -Dm644 COPYING COPYING.CC-BY -t "$pkgdir"/usr/share/licenses/$pkgname/
 	install -Dm644 README.md AUTHORS THANKS -t "$pkgdir"/usr/share/doc/$pkgname/
-	install -Dm644 media/logo/ozgurozbek/pince_small_transparent.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/pince.png
+	install -Dm644 media/logo/ozgurozbek/pince_small_transparent.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/io.github.korcankaraokcu.PINCE.png
 
 	popd || exit 1
 
