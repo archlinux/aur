@@ -1,0 +1,26 @@
+pkgbase = clipboard-typer
+	pkgdesc = Type clipboard contents keystroke-by-keystroke into the active window
+	pkgver = 0.2.0.2
+	pkgrel = 1
+	url = https://github.com/skint007/key-sender
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-mock
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python>=3.12
+	depends = python-pynput
+	depends = python-pyperclip
+	optdepends = python-pystray: system tray icon support
+	optdepends = python-pillow: system tray icon support
+	optdepends = ydotool: Wayland keystroke backend (recommended for KDE/GNOME)
+	optdepends = wtype: Wayland keystroke backend (requires compositor support)
+	optdepends = xdotool: X11 keystroke backend
+	optdepends = wl-clipboard: clipboard access on Wayland
+	source = clipboard-typer-0.2.0.2.tar.gz::https://github.com/skint007/key-sender/archive/v0.2.0.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = clipboard-typer
