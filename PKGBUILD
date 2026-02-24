@@ -12,7 +12,7 @@ provides=('frank-sherlock')
 conflicts=('frank-sherlock')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/frank_sherlock_${pkgver}_amd64.AppImage")
-sha256sums=('SKIP')
+sha256sums=('319089191e2f3f20c23ba3a147cc6e12bedbbad8b08dbf18a0cee8d3295757e0')
 noextract=("${pkgname}-${pkgver}.AppImage")
 
 prepare() {
@@ -40,14 +40,14 @@ package() {
     for size in 32x32 128x128; do
         icon="${srcdir}/squashfs-root/usr/share/icons/hicolor/${size}/apps/sherlock_app.png"
         if [[ -f "${icon}" ]]; then
-            install -Dm644 "${icon}" \
-                "${pkgdir}/usr/share/icons/hicolor/${size}/apps/frank-sherlock.png"
+  install -Dm644 "${icon}" \
+      "${pkgdir}/usr/share/icons/hicolor/${size}/apps/frank-sherlock.png"
         fi
     done
 
     icon_hidpi="${srcdir}/squashfs-root/usr/share/icons/hicolor/256x256@2/apps/sherlock_app.png"
     if [[ -f "${icon_hidpi}" ]]; then
         install -Dm644 "${icon_hidpi}" \
-            "${pkgdir}/usr/share/icons/hicolor/512x512/apps/frank-sherlock.png"
+  "${pkgdir}/usr/share/icons/hicolor/512x512/apps/frank-sherlock.png"
     fi
 }

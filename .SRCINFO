@@ -15,6 +15,6 @@ pkgbase = frank-sherlock-bin
 	options = !strip
 	options = !debug
 	source = frank-sherlock-bin-0.5.0.AppImage::https://github.com/akitaonrails/FrankSherlock/releases/download/v0.5.0/frank_sherlock_0.5.0_amd64.AppImage
-	sha256sums = SKIP
+	sha256sums = 319089191e2f3f20c23ba3a147cc6e12bedbbad8b08dbf18a0cee8d3295757e0
 
 pkgname = frank-sherlock-bin
