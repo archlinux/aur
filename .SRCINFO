@@ -1,6 +1,6 @@
 pkgbase = sui-testnet-bin
 	pkgdesc = Sui, a next-generation smart contract platform with high throughput, low latency, and an asset-oriented programming model powered by the Move programming language
-	pkgver = 1.65.2
+	pkgver = 1.66.1
 	pkgrel = 1
 	url = https://github.com/MystenLabs/sui
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = sui-testnet-bin
 	license = Apache-2.0
 	provides = sui
 	conflicts = sui
-	source_x86_64 = https://github.com/MystenLabs/sui/releases/download/testnet-v1.65.2/sui-testnet-v1.65.2-ubuntu-x86_64.tgz
-	sha256sums_x86_64 = 899602549086af079a2a8ce746272b773a2d690463f78a098bcdc301fcdda7a5
-	source_aarch64 = https://github.com/MystenLabs/sui/releases/download/testnet-v1.65.2/sui-testnet-v1.65.2-ubuntu-aarch64.tgz
-	sha256sums_aarch64 = 6721a0f06091969d6ce371ffe80ba79e361dc3bf8ce4f963329d204d376f1e9e
+	source_x86_64 = https://github.com/MystenLabs/sui/releases/download/testnet-v1.66.1/sui-testnet-v1.66.1-ubuntu-x86_64.tgz
+	sha256sums_x86_64 = a4a407ae1f345a988f3c3bf11619196600def84fe753df9593ca645df3947f5b
+	source_aarch64 = https://github.com/MystenLabs/sui/releases/download/testnet-v1.66.1/sui-testnet-v1.66.1-ubuntu-aarch64.tgz
+	sha256sums_aarch64 = a4c434a65c6f80f34a535fc850c20ce79d471770501f8961ac5f0308ead19d75
 
 pkgname = sui-testnet-bin
