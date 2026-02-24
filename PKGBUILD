@@ -4,7 +4,7 @@ pkgname=privatebin-cli
 _binname=privatebin
 _bindate=$(date --rfc-3339=date)
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A powerful CLI for creating and managing PrivateBin pastes with ease'
 arch=(x86_64 aarch64)
 url='https://github.com/gearnode/privatebin'
@@ -18,7 +18,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('cf11851f5e76d7b8d2b90dd662eb0a3dd03cd71f10cad01fb2f81ecf23d303b2')
 
 prepare() {
-  cd $_binname-$pkgver
+  cd "$_binname-$pkgver"
   export GOPATH="${srcdir}/go"
   go mod download -modcacherw
 
@@ -48,11 +48,13 @@ build() {
 }
 
 package() {
-  cd $_binname-$pkgver
-  install -Dm755 $_binname "$pkgdir"/usr/bin/$_binname
-  install -Dm644 LICENSE.txt -t "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
-  install -Dm644 privatebin.1 -t "${pkgdir}"/usr/share/man/man1/
-  install -Dm644 privatebin-create.1 -t "${pkgdir}"/usr/share/man/man1/
-  install -Dm644 privatebin-show.1 -t "${pkgdir}"/usr/share/man/man1/
-  install -Dm644 privatebin.conf.5 -t "${pkgdir}"/usr/share/man/man5/
+  cd "$_binname-$pkgver"
+  install -Dm755 "$_binname" "$pkgdir/usr/bin/$_binname"
+  install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
+  install -Dm644 privatebin.1 -t "$pkgdir"/usr/share/man/man1/
+  install -Dm644 privatebin-create.1 -t "$pkgdir"/usr/share/man/man1/
+  install -Dm644 privatebin-show.1 -t "$pkgdir"/usr/share/man/man1/
+  install -Dm644 privatebin.conf.5 -t "$pkgdir"/usr/share/man/man5/
 }
