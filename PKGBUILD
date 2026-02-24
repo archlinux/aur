@@ -16,9 +16,9 @@ provides=('scangearmp2')
 source=("https://gdlp01.c-wss.com/gds/5/0100012415/01/scangearmp2-source-4.80-1.tar.gz" \
 	scangearmp2.desktop libusb.patch bool.patch)
 sha256sums=('3cde65f3f453a869b099f3d105297e922cd2341a2efff83666aeaa5e36488b64'
-            'd9b449d6c78c92f296acef85209b30c7d80b8bac692f135d071730ef0051d64b'
+            '68f2113ba18aae5f41a4f6febf5574fef7e88921d6768d1763db6f84f3fecc29'
             'ea64d40b4537a79a400a217a90b8fcdf9589e93df9710bb6a353bce54149879e'
-			'8e09177af36bf093df224713beba23873e1206ea767a2555e4eadc81ddf05610')
+            '8e09177af36bf093df224713beba23873e1206ea767a2555e4eadc81ddf05610')
 
 [[ "$CARCH" == "x86_64" ]] && _arch="x86_64" || _arch="i686"
 
