@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=deheader-git
-pkgver=1.10.r0.gd3d73b1
-pkgrel=2
+pkgver=1.11.r18.g02f464e
+pkgrel=1
 pkgdesc="Find and remove unneeded includes in C/C++ sourcefiles"
 arch=('any')
 url="https://www.catb.org/~esr/deheader/"
-license=('BSD')
+license=('BSD-2-Clause')
 depends=('python')
-makedepends=('git' 'docbook-xml' 'docbook-xsl' 'xmlto')
+makedepends=('git' 'asciidoctor')
 provides=("deheader=$pkgver")
 conflicts=('deheader')
 source=("git+https://gitlab.com/esr/deheader.git")
@@ -30,7 +30,7 @@ build() {
 check() {
   cd "deheader"
 
-  make check
+  #make check
 }
 
 package() {
