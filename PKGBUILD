@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=taratormusic-bin
 _pkgname=TaratorMusic
-pkgver=1.7.6
+pkgver=1.8.1
 _electronversion=31
 pkgrel=1
 pkgdesc="A music player application with playlist support and Discord integration.(Prebuilt version.Use system-wide electron)"
@@ -24,7 +24,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('cded3756d82b326a9c11a32707bee446cf45d555a8d859c3b2754cfb963bd628'
+sha256sums=('799c614aafefec1612c3e60335c55c47e798f37a831790179fcfcf01d642e533'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
@@ -41,6 +41,9 @@ prepare() {
     if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     fi
+    if [ -d "${srcdir}/squashfs-root" ];then
+        rm -rf "${srcdir}/squashfs-root"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     _get_electron_version
     sed -i -e "
@@ -52,20 +55,24 @@ prepare() {
     ln -sf "/usr/bin/ffprobe" "${srcdir}/squashfs-root/resources/app/node_modules/ffprobe-static/bin/linux/x64/ffprobe"
     ln -sf "/usr/bin/python" "${srcdir}/squashfs-root/resources/app/node_modules/better-sqlite3/build/node_gyp_bins/python3"
     ln -sf "/usr/bin/python" "${srcdir}/squashfs-root/resources/app/node_modules/register-scheme/build/node_gyp_bins/python3"
-    ln -sf "/usr/bin/yt-dlp" "${srcdir}/squashfs-root/resources/app/bin/yt-dlp_linux"
+    ln -sf "/usr/bin/python" "${srcdir}/squashfs-root/resources/app/node_modules/abstract-socket/build/node_gyp_bins/python3"
+    ln -sf "/usr/bin/yt-dlp" "${srcdir}/squashfs-root/resources/bin/yt-dlp_linux"
     rm -rf \
-        "${srcdir}/squashfs-root/resources/app/bin/yt-dlp_macos \
-        "${srcdir}/squashfs-root/resources/app/bin/yt-dlp.exe \
         "${srcdir}/squashfs-root/resources/app/node_modules/ffprobe-static/bin/"{darwin,linux/ia32} \
-        "${srcdir}/squashfs-root/resources/ffmpeg.exe" \
-        "${srcdir}/squashfs-root/resources/app/extra-resources/ffprobe.exe" \
         "${srcdir}/squashfs-root/resources/app/node_modules/bare-fs/prebuilds/"{android-*,darwin-*,ios-*,win32-*,linux-arm64} \
         "${srcdir}/squashfs-root/resources/app/node_modules/bare-os/prebuilds/"{android-*,darwin-*,ios-*,win32-*,linux-arm64}
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    find "${srcdir}/squashfs-root/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
+    if find "${srcdir}/squashfs-root/resources" -mindepth 1 -maxdepth 1 -type d | read; then
+        for _subdir in "${srcdir}/squashfs-root/resources/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
+            fi
+        done
+    fi
     install -Dm644 "${srcdir}/squashfs-root/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
