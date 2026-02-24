@@ -1,7 +1,7 @@
 # Maintainer: Onxy <mihalygyori05@gmail.com>
 pkgname=betterwallpaper-git
-pkgver=0.6.0
-pkgrel=3
+pkgver=0.6.1
+pkgrel=1
 pkgdesc="A modern, high-performance animated wallpaper manager for Linux"
 arch=('x86_64')
 url="https://github.com/Misiix9/BetterWallpaper"
@@ -43,4 +43,10 @@ build() {
 package() {
   cd "$srcdir/BetterWallpaper"
   DESTDIR="$pkgdir" cmake --install build
+  
+  # Install desktop file
+  install -Dm644 betterwallpaper.desktop "$pkgdir/usr/share/applications/betterwallpaper.desktop"
+  
+  # Install systemd service
+  install -Dm644 packaging/betterwallpaper-daemon.service "$pkgdir/usr/lib/systemd/user/betterwallpaper-daemon.service"
 }
