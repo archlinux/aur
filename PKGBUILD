@@ -1,5 +1,6 @@
 # Maintainer: marmis <tiagodepalves@gmail.com>
-# Contributor: marmis <tiagodepalves@gmail.com>
+# Contributor: "marmis" Tiago de Paula <tiagodepalves@gmail.com>
+
 pkgname=vscode-xdg-patch-hook
 pkgdesc='Pacman hooks that patch VSCode files for improved XDG experience (#15741, #214741)'
 # https://github.com/microsoft/vscode/issues/15741
