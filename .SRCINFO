@@ -1,7 +1,7 @@
 pkgbase = ffsend-bin
 	pkgdesc = Easily and securely share files from the command line. A Send client.
 	pkgver = 0.2.77
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/timvisee/ffsend
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -15,10 +15,12 @@ pkgbase = ffsend-bin
 	source = ffsend-v0.2.77.zsh::https://gitlab.com/timvisee/ffsend/raw/v0.2.77/contrib/completions/_ffsend
 	source = ffsend-v0.2.77.fish::https://gitlab.com/timvisee/ffsend/raw/v0.2.77/contrib/completions/ffsend.fish
 	source = LICENSE-v0.2.77::https://gitlab.com/timvisee/ffsend/raw/v0.2.77/LICENSE
+	source = README.md-v0.2.77::https://gitlab.com/timvisee/ffsend/raw/v0.2.77/README.md
 	sha256sums = ebd14a67c46e7d744ce84677f057d9dc07abc884eaa8f70d68a9e59d27357313
 	sha256sums = 6d07b7c7cf241016687a486512ef0e0894e2dec2c2aa502f8646be230f33ab79
 	sha256sums = 61ea481838b331827c223be9559079540e5ec8a3f6a2bc18214af03c3da8f725
 	sha256sums = 10a0905fbc1d5e1ce8bba4f49879975fe7de9dbddfbe63f2ab42d78d9bbe9d04
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	sha256sums = 2f04414ce3cff01b46f6940a37459f85eeade9669f9dd36d8e4844c63a67de27
 
 pkgname = ffsend-bin
