@@ -1,0 +1,5 @@
+pkg/
+remountd-git/
+src/
+remountd-git-*-x86_64.pkg.tar.zst
+remountd-git-*-x86_64.pkg.tar.zst.sig
