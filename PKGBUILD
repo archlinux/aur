@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=vcfR
-_pkgver=1.15.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.15.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='Manipulate and Visualize VCF Data'
 arch=('x86_64')
@@ -34,7 +34,7 @@ optdepends=(
   r-tidyr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('df17e48b961d96f2a78a1a15037df674f57d0445f2669e401543d8082f0b49fa')
+sha256sums=('8688fc96836f3127211f886715713808b385b458b3c8f7eb1d49521da2b8663e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
