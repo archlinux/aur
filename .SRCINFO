@@ -1,0 +1,15 @@
+pkgbase = k3k
+	pkgdesc = Kubernetes in Kubernetes - CLI tool for creating and managing K3s clusters within Kubernetes
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/rancher/k3k
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	provides = k3k
+	conflicts = k3k-bin
+	source = k3k-1.0.2.tar.gz::https://github.com/rancher/k3k/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = 22e0018d7c2525c3e70f7e5fc070b6f7861d61d8f20a04928f3876447e169ef9
+
+pkgname = k3k
