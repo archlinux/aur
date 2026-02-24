@@ -13,6 +13,6 @@ pkgbase = ascii-tool
 	depends = pyside6
 	depends = python-pillow
 	source = https://files.pythonhosted.org/packages/source/a/ascii-tool/ascii_tool-0.1.9.tar.gz
-	sha256sums = SKIP
+	sha256sums = 1d164cde57911e9f00e997b7da520b96a5834e169141ec65b0f266cc20713911
 
 pkgname = ascii-tool
