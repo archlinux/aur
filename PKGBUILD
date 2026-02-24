@@ -18,7 +18,7 @@ b2sums=('b07ffecfa3fa04ca5ac2391883cd11d304b836cf60f5a9e538363f40cc5bd85c35f7f38
 validpgpkeys=('EBC733B78AAB352DC773BF857FE2FA12CF6E38F2')
 
 package() {
-  cd sublime_merge
+  cd sublime_merge-x64-tar
   install -dm755 "${pkgdir}"/usr/bin
 
   # Install binaries
@@ -44,6 +44,6 @@ package() {
   done
 
   # install desktop file and license
-  install -Dm644 -t "${pkgdir}"/usr/share/applications/ "${srcdir}"/sublime_merge/sublime_merge.desktop
+  install -Dm644 -t "${pkgdir}"/usr/share/applications/ "${srcdir}"/sublime_merge-x64-tar/sublime_merge.desktop
   install -Dm644 -t "${pkgdir}"/usr/share/licenses/${pkgname}/ "${srcdir}"/LICENSE
 }
