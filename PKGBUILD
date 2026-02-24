@@ -17,6 +17,6 @@ sha512sums=('SKIP')
 package() {
     cd "$srcdir/$pkgname"
     install -Dm644 main.lua "$pkgdir/usr/share/mpv/scripts/mpvcut/main.lua"
-    install -Dm644 mpvcut.config "$pkgdir/usr/share/mpv/scripts/mpvcut/mpvcut.config"
+    install -Dm644 config.lua "$pkgdir/usr/share/mpv/scripts/mpvcut/config.lua"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
