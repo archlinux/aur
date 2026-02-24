@@ -1,7 +1,7 @@
 pkgbase = bibletime-git
 	pkgdesc = A Bible study application based on the Sword library and Qt toolkit.
-	pkgver = 3.1.0.r32
-	pkgrel = 2
+	pkgver = 3.2.0.r11
+	pkgrel = 1
 	epoch = 2
 	url = https://bibletime.info/
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = bibletime-git
 	makedepends = qt6-tools>=6.7
 	makedepends = pkgconf
 	depends = sword>=1.8.1
-	depends = clucene>=2.0
+	depends = clucene>=2.3.3.4
 	depends = qt6-webengine>=6.7
 	depends = qt6-svg>=6.7
 	provides = bibletime
