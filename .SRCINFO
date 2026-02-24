@@ -63,6 +63,7 @@ pkgbase = gnome-shell-rounded-blur
 	depends = webkitgtk-6.0
 	provides = gnome-shell
 	conflicts = gnome-shell
+	conflicts = gnome-shell-debug
 	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#tag=49.4
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git#commit=664eba4c054ecc4a140f0ef01ae9297422b71fdc
 	source = git+https://github.com/ptomato/jasmine-gjs.git#commit=856465dddbd92e82e574891e1ebc79e17d7b708a
