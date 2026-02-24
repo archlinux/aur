@@ -1,0 +1,32 @@
+post_install() {
+    echo ":: Reloading udev rules..."
+    udevadm control --reload-rules 2>/dev/null || true
+
+    echo ""
+    echo ":: To enable accentd:"
+    echo "   sudo systemctl enable --now accentd"
+    echo "   systemctl --user enable --now accentd-popup"
+    echo ""
+    echo ":: Your user must be in the 'input' group:"
+    echo "   sudo usermod -aG input \$USER"
+    echo "   (log out and back in)"
+    echo ""
+    echo ":: Set your locale:"
+    echo "   accentctl set-locale it   # it, es, fr, de, pt"
+}
+
+post_upgrade() {
+    echo ":: Reloading udev rules..."
+    udevadm control --reload-rules 2>/dev/null || true
+
+    echo ":: Restarting accentd..."
+    systemctl restart accentd 2>/dev/null || true
+    echo ":: Restart accentd-popup manually:"
+    echo "   systemctl --user restart accentd-popup"
+}
+
+pre_remove() {
+    echo ":: Stopping accentd services..."
+    systemctl --user disable --now accentd-popup 2>/dev/null || true
+    systemctl disable --now accentd 2>/dev/null || true
+}
