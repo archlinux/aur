@@ -2,7 +2,7 @@
 # Maintainer: m96-chan
 
 pkgname='slacko-bin'
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A lightweight, keyboard-driven TUI client for Slack'
 url='https://github.com/m96-chan/Slacko'
@@ -12,10 +12,10 @@ provides=('Slacko')
 conflicts=('Slacko')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/m96-chan/Slacko/releases/download/v${pkgver}/Slacko_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('18a9d260650d4dfd50662be241cda0b6a3e42b35019144f3d4eebe19bad7499a')
+sha256sums_aarch64=('60a3e2066eabe6a95e6d739c9a87d5830a5b5fbc8db010238068e6763c6bdd1c')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/m96-chan/Slacko/releases/download/v${pkgver}/Slacko_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('f978e4311cd1a51e408f04f37aea44d34a5fb3dcec12db90ce36094ca0219215')
+sha256sums_x86_64=('06238e1086c1ffb1ee795328236129e23eb6115f896445daa9a2158a51c05274')
 
 package() {
   install -Dm755 slacko "${pkgdir}/usr/bin/slacko"
