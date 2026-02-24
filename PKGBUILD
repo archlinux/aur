@@ -30,7 +30,7 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$_pkgname" || exit
-    patch -Np1 < "$srcdir/2.patch" #|| true
+    patch -Np1 < "$srcdir/2.patch" || true
     export CARGO_HOME="$srcdir/CARGO_HOME"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
@@ -44,7 +44,7 @@ check() {
 }
 
 build() {
-    cd "$srcdir/$_pkgname" || exitd
+    cd "$srcdir/$_pkgname" || exit
     export CARGO_HOME="$srcdir/CARGO_HOME"
     export RUSTUP_TOOLCHAIN=stable
     cargo build --release
