@@ -1,7 +1,7 @@
-# Maintainer: Kamil Ksen <kamyilksen@gmail.com>
+# Maintainer: Kamil <kamil@kamil.dev>
 
 pkgname=work-tuimer
-pkgver=0.3.1
+pkgver=0.3.6
 pkgrel=1
 pkgdesc='Simple, keyboard-driven TUI for time-tracking'
 url='https://github.com/Kamyil/work-tuimer'
@@ -10,7 +10,7 @@ makedepends=('cargo' 'rust')
 depends=('gcc-libs' 'glibc')
 arch=('x86_64' 'aarch64')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Kamyil/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('119997875229341be2551a58be15a7c68c45f4400be833a5a021ec1589c916a2877cad76345c240474cb68d241f86ae33d5a33cee6fad9dc1102e0490c83648c')
+b2sums=('SKIP')  # Will be filled after first test build
 
 prepare() {
     cd "$pkgname-$pkgver"
