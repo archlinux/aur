@@ -1,3 +1,11 @@
+## 0.0.416 - 2026-02-24
+
+- Expand `--help` content with descriptions, examples, and sorted flags
+- Block third-party MCP servers when the Copilot MCP policy does not allow them
+- Streaming response size counter updates continuously during tool calls and reasoning, and resets between requests
+- Status line automatically switches to a two-line layout on narrow terminals, keeping CWD, branch, and model info readable at any terminal width
+- Undo operations now always require confirmation
+
 ## 0.0.415 - 2026-02-23
 
 - Skill files saved with a UTF-8 BOM (common on Windows editors) now load correctly instead of failing with a frontmatter parse error
