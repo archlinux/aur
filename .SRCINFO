@@ -1,6 +1,6 @@
 pkgbase = httpcode
 	pkgdesc = Tool to lookup HTTP codes
-	pkgver = v1.0.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/augustus-7613/httpcode
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = httpcode
 	makedepends = gcc
 	makedepends = make
 	options = !debug
-	source = https://github.com/augustus-7613/httpcode/archive/refs/tags/v1.0.0.tar.gz
+	source = https://github.com/augustus-7613/httpcode/archive/refs/tags/1.0.0.tar.gz
 	sha256sums = f39bafdc8cd3258208b1feb6ff8d13953addf767b95e985f9a9caaa143dcbd67
 
 pkgname = httpcode
