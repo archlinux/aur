@@ -1,7 +1,7 @@
 # Maintainer: Arnau Abella <arnau.abella@monadplus.pro>
 
 pkgname=elgato-keylight
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="An Elgato Key Light Controller GUI"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs' 'pango' 'cairo' 'glib2' 'glibc' 'openssl' 'avahi' 'gtk3' 'gdk-pixbuf2' 'xdotool' 'libappindicator-gtk3')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('093d54aabc9cf793573b5887d16a48d4f1b748c19eaa63770f340c764227dce8e291e97c34c0e6ce959b1e100afbfbb9f4999aba9f0d14427cb5667cf04aa0e3')
+sha512sums=('0329a89484764eb0b15fa227a36bda6f9168fd1734c0d05e03ff78429b63e98ffa9af7cba5d6c5bd56631fa20fbd35f7cc428faae2a624bcd267afc1bb1ebd55')
 
 prepare() {
   cd "$pkgname-$pkgver" || exit 1

@@ -4,7 +4,12 @@ AUR package for [elgato-keylight](https://github.com/monadplus/elgato-keylight)
 
 ## Pacman packaging
 
-First, install `devtools`. And, then run `$ pkgctl build` on the root. This will try building your package in a [clean chroot](https://wiki.archlinux.org/title/DeveloperWiki:Building_in_a_clean_chroot). Finally, update `.SRCINFO` `$ makepkg --printsrcinfo > .SRCINF`
+- Install `pacman -S devtools`
+- `$ pkgctl build` on this repo: will try building your package in a [clean chroot](https://wiki.archlinux.org/title/DeveloperWiki:Building_in_a_clean_chroot)
+  - To update checksum: `makepkg -g`
+- Update `.SRCINFO`: `$ makepkg --printsrcinfo > .SRCINFO`
+
+### Verify & format
 
 - You can verify your `PKGBUILD` with:
   - `$ namcap PKGBUILD`
@@ -17,3 +22,9 @@ First, install `devtools`. And, then run `$ pkgctl build` on the root. This will
 ```bash
 cp update_srcinfo.sh .git/hooks/pre-commit
 ```
+
+## Push changes
+
+See <https://wiki.archlinux.org/title/AUR_submission_guidelines#Authentication>
+
+- `$ git remote add aur ssh://aur@aur.archlinux.org/elgato-keylight.git`
