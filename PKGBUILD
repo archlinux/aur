@@ -2,7 +2,7 @@
 
 _basename=OpenCSD
 pkgname=libopencsd
-pkgver=v1.6.1.r0.g78141e2
+pkgver=v1.8.0.r0.g97f02f9
 pkgrel=1
 pkgdesc="A library to decode ARM Coresight traces"
 arch=('any')
