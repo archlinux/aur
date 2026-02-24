@@ -9,12 +9,49 @@ license=("MIT")
 url="https://github.com/Askannz/optimus-manager"
 
 epoch=4
-pkgver=0
+pkgver=813.python3.14.3
 pkgrel=1
 arch=("any")
 
 source=("git+${url}.git")
 sha1sums=("SKIP")
+
+
+SoftwareVersion () {
+	cd "${srcdir}/optimus-manager"
+	local Commits; Commits="$(git rev-list --count HEAD)"
+
+	if [[ -n "${Commits}" ]]; then
+		if [[ "${Commits}" -le 1 ]]; then
+			echo 0
+		else
+			echo "${Commits}"
+		fi
+	fi
+}
+
+
+PythonVersion="$(
+	pacman --sync --print-format "%v" python |
+	cut --delimiter='-' --fields=1
+)"
+
+
+pkgver () {
+	local SoftwareVersion; SoftwareVersion="$(SoftwareVersion)"
+
+	if [[ -z "${SoftwareVersion}" ]]; then
+		echo "Failed to retrieve: SoftwareVersion" >&2
+		false
+	elif [[ -z "${PythonVersion}" ]]; then
+		echo "Failed to retrieve: PythonVersion" >&2
+		false
+	else
+		printf "%s.python%s" \
+			"${SoftwareVersion}" \
+			"${PythonVersion}"
+	fi
+}
 
 
 conflicts=(
@@ -29,7 +66,7 @@ conflicts=(
 
 
 provides=(
-	"optimus-manager=${pkgver}"
+	"optimus-manager=${epoch}:${pkgver}"
 )
 
 
@@ -46,7 +83,7 @@ depends=(
 	"dbus-python"
 	"glxinfo"
 	"NVIDIA-MODULE"
-	"python"
+	"python=${PythonVersion}"
 	"xorg-xrandr"
 )
 
@@ -72,44 +109,6 @@ backup=(
 	'etc/optimus-manager/xsetup-hybrid.sh'
 	'var/lib/optimus-manager/persistent/startup_mode'
 )
-
-
-SoftwareVersion () {
-	cd "${srcdir}/optimus-manager"
-	local Commits; Commits="$(git rev-list --count HEAD)"
-
-	if [[ -n "${Commits}" ]]; then
-		if [[ "${Commits}" -le 1 ]]; then
-			echo 0
-		else
-			echo "${Commits}"
-		fi
-	fi
-}
-
-
-PythonVersion () {
-	pacman --sync --print-format "%v" python |
-	cut --delimiter='.' --fields=1,2
-}
-
-
-pkgver () {
-	local SoftwareVersion; SoftwareVersion="$(SoftwareVersion)"
-	local PythonVersion; PythonVersion="$(PythonVersion)"
-
-	if [[ -z "${SoftwareVersion}" ]]; then
-		echo "Failed to retrieve: SoftwareVersion" >&2
-		false
-	elif [[ -z "${PythonVersion}" ]]; then
-		echo "Failed to retrieve: PythonVersion" >&2
-		false
-	else
-		printf "%s.python%s" \
-			"${SoftwareVersion}" \
-			"${PythonVersion}"
-	fi
-}
 
 
 prepare () {

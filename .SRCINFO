@@ -1,6 +1,6 @@
 pkgbase = optimus-manager-git
 	pkgdesc = Allows using Nvidia Optimus laptop graphics
-	pkgver = 0
+	pkgver = 813.python3.14.3
 	pkgrel = 1
 	epoch = 4
 	url = https://github.com/Askannz/optimus-manager
@@ -15,12 +15,12 @@ pkgbase = optimus-manager-git
 	depends = dbus-python
 	depends = glxinfo
 	depends = NVIDIA-MODULE
-	depends = python
+	depends = python=3.14.3
 	depends = xorg-xrandr
 	optdepends = gdm-prime: needed if your login screen is gdm
 	optdepends = bbswitch: alternatively switches GPUs by using standard Optimus ACPI calls
 	optdepends = acpi_call: alternatively switches GPUs by brute forcing ACPI calls
-	provides = optimus-manager=0
+	provides = optimus-manager=4:813.python3.14.3
 	conflicts = bumblebee
 	conflicts = envycontrol
 	conflicts = nvidia-exec
