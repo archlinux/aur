@@ -2,7 +2,7 @@
 
 _pkgname=kftui
 pkgname=$_pkgname-bin
-pkgver=0.27.26 # renovate: datasource=github-releases depName=hcavarsan/kftray
+pkgver=0.27.27 # renovate: datasource=github-releases depName=hcavarsan/kftray
 pkgrel=1
 pkgdesc="🦀 ⚡ kubectl port forward manager, with support for UDP and proxy connections through k8s clusters"
 url="https://github.com/hcavarsan/kftray"
@@ -14,8 +14,8 @@ source_aarch64=(
   "$_pkgname-$pkgver-aarch64::$url/releases/download/v$pkgver/${_pkgname}_linux_arm64"
 )
 arch=('x86_64' 'aarch64')
-sha512sums_x86_64=('d6e6b68e43ae1602ad8cbcd6a81cd748a0866fecd62fefdbbecfcf40b71b35a60c6a337fbdd70fbfe1903f274c885c89e91fa964ad4d24882737fcf348c63633')
-sha512sums_aarch64=('5fd4bb6995e92f71fb65a5d4da584b8da54edb531f5d8a8b55056b8f8545da2758e784d524a6bad4f75b37c6556410d9ec5e1848957e403238c51bb0c39f1bab')
+sha512sums_x86_64=('83f362f22d821d83c2eb1ed51f7bfc4975e6b4976e807ef0384544debcb73337135627635762e3b24dca6a321ca58e78723df16b12b53cfb71133d66c85fb780')
+sha512sums_aarch64=('c98a3be772ff18917f5f41c2eddbe1ba5a0e3eddc6a2aa8f83a9fb0a819c692b07e6b2b46eebd3440385724b334f1c8d80744bb4c02b7b64105d86fe78a2ad8f')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "${_pkgname}-git")
 
