@@ -1,0 +1,28 @@
+pkgbase = libfprint-ft9201
+	pkgdesc = Proprietary driver for FocalTech FT9201, FT9349 and HOLTEK fingerprint readers
+	pkgver = 1.94.4_20250219
+	pkgrel = 1
+	url = https://github.com/ryenyuku/libfprint-ft9201
+	arch = x86_64
+	groups = fprint
+	license = unknown
+	makedepends = tar
+        makedepends = patchelf
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = libgudev
+	depends = libgusb
+	depends = openssl
+	depends = pixman
+	depends = nss
+	optdepends = fprintd: D-Bus service to access fingerprint readers
+	provides = libfprint-2.so
+	provides = libfprint=1.94.4
+	conflicts = libfprint
+	source = https://github.com/ryenyuku/libfprint-ft9201/releases/download/1.94.4_20250219/libfprint-2-2_1.94.4+tod1-0ubuntu1.22.04.2_amd64_20250219.deb
+        source = libgusb.so.2::https://github.com/ryenyuku/libfprint-ft9201/releases/download/1.94.4_20250219/libgusb.so.2
+	sha256sums = fe8c5ebb685718075e1fc04f10378c001e149b80c283d2891318a50e0588401a
+        sha256sums = 04af98a8a9c2528966c93cea3c3fd5c1b67b002a65a2e875e70e025d28419da6
+
+pkgname = libfprint-ft9201
