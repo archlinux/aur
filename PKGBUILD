@@ -1,10 +1,12 @@
 # Maintainer: neycrol <330578697@qq.com>
 pkgname=bcachefs-kernel-dkms-git
 _pkgname=bcachefs-kernel
-pkgver=20260202160435.r1.gd00615b
+pkgver=r1385308.357e37e
 pkgrel=1
-pkgdesc="Bcachefs kernel module (DKMS) built directly from upstream kernel tree (fs/bcachefs), preserving directory structure"
-arch=('x86_64')
+# Required because earlier releases used timestamp-based pkgver values.
+epoch=1
+pkgdesc="Bcachefs DKMS module from upstream bcachefs kernel sources"
+arch=('any')
 url="https://github.com/koverstreet/bcachefs"
 license=('GPL-2.0-only')
 depends=('dkms')
@@ -13,122 +15,75 @@ optdepends=(
     'bcachefs-tools: userspace utilities for bcachefs filesystem'
     'clang: required when building against clang-built kernels'
 )
-# 兼容性声明：防止与其他 bcachefs 驱动包冲突
-provides=('bcachefs-dkms' 'bcachefs-dkms-git')
-conflicts=('bcachefs-dkms' 'bcachefs-dkms-git' 'bcachefs-git' 'bcachefs-source-git')
+# Compatibility: this package replaces alternative bcachefs DKMS/source providers.
+provides=("bcachefs-dkms=${pkgver}")
+conflicts=('bcachefs-dkms' 'bcachefs-git' 'bcachefs-source-git')
 source=(
+    "${_pkgname}::git+https://github.com/koverstreet/bcachefs.git#branch=master"
     "dkms.conf.in"
     "Makefile.dkms"
 )
-sha256sums=('b57dd60f10e457258b894badc561f9a43339ae7491aebf3a98e56ef74934dfa0'
+sha256sums=('SKIP'
+            'b57dd60f10e457258b894badc561f9a43339ae7491aebf3a98e56ef74934dfa0'
             'a37fa1baaf8825631ceff9410b3be78e06d19833814586cd3140b4af9c2f8d14')
 
-_ensure_sparse_repo() {
-    local _kernel_repo="https://github.com/koverstreet/bcachefs.git"
-    local _repo_dir="$srcdir/$_pkgname"
-
-    if [ ! -d "$_repo_dir/.git" ]; then
-        msg2 "Initializing sparse checkout..."
-        mkdir -p "$_repo_dir"
-        cd "$_repo_dir"
-        git init --initial-branch=master
-        git remote add origin "$_kernel_repo"
-        git config core.sparseCheckout true
-    else
-        cd "$_repo_dir"
-        git remote set-url origin "$_kernel_repo"
-    fi
-
-    cat > .git/info/sparse-checkout <<EOF
-fs/bcachefs/
-include/trace/events/bcachefs.h
-EOF
-
-    git config http.postBuffer 524288000
-    git config remote.origin.promisor true
-    git config extensions.partialClone origin
-    git config core.partialCloneFilter blob:none
-}
-
 pkgver() {
-    _ensure_sparse_repo
+    cd "$srcdir/$_pkgname"
 
-    local ref="origin/master"
-    if ! git -c http.version=HTTP/1.1 fetch --quiet --depth=1 --filter=blob:none origin master; then
-        ref="HEAD"
-    fi
-
-    # Timestamp keeps monotonic updates even with shallow history.
-    printf "%s.r%s.g%s" \
-        "$(git show -s --format=%cd --date=format:%Y%m%d%H%M%S "$ref")" \
-        "$(git rev-list --count "$ref")" \
-        "$(git rev-parse --short "$ref")"
+    # Arch VCS guideline-compatible, deterministic, and network-free.
+    printf "r%s.%s" \
+        "$(git rev-list --count HEAD)" \
+        "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
     local _repo_dir="$srcdir/$_pkgname"
-    _ensure_sparse_repo
 
-    # --- 1. 拉取代码 ---
-    msg2 "Fetching latest kernel source..."
-
-    local _success=0
-    for _i in {1..5}; do
-        if git -c http.version=HTTP/1.1 fetch --depth=1 --filter=blob:none origin master; then
-            _success=1
-            break
-        fi
-        msg2 "Fetch failed (Attempt $_i/5). Retrying in 10 seconds..."
-        sleep 10
-    done
-
-    if [ $_success -eq 0 ]; then
-        error "Failed to download kernel source after 5 attempts."
-        return 1
-    fi
-
-    git reset --hard origin/master
-
-    # --- 2. 准备构建环境 ---
-    # 这里只清理 build 目录，不清理源码目录
+    # Sources come from makepkg source() stage; no network access here.
     rm -rf "$srcdir/build"
     install -dm755 "$srcdir/build"
 
     install -dm755 "$srcdir/build/fs"
-    cp -r "$_repo_dir/fs/bcachefs" "$srcdir/build/fs/"
+    cp -a "$_repo_dir/fs/bcachefs" "$srcdir/build/fs/"
 
-    if [ -d "$_repo_dir/include" ]; then
-        cp -r "$_repo_dir/include" "$srcdir/build/"
-    fi
+    cp -a "$_repo_dir/include" "$srcdir/build/"
 
     install -m644 "$srcdir/dkms.conf.in" "$srcdir/build/dkms.conf"
     install -m644 "$srcdir/Makefile.dkms" "$srcdir/build/Makefile"
+    sed -i "s|@PKGVER@|${pkgver}|g" "$srcdir/build/dkms.conf"
 
-    # --- FIX: Generate module-version.c (Standalone DKMS Mode) ---
-    # Since we extract fs/bcachefs directly from kernel tree, we lack the
-    # build system logic to generate this file. We create it manually here.
-    msg2 "Generating module-version.c..."
-    cat > "$srcdir/build/fs/bcachefs/module-version.c" <<EOF
+    # Generate module-version.c required by standalone DKMS builds unless
+    # upstream already provides it.
+    local _module_version="$srcdir/build/fs/bcachefs/module-version.c"
+    if [ -e "$_module_version" ]; then
+        warning "Upstream already provides module-version.c; keeping upstream file."
+    else
+        msg2 "Generating module-version.c..."
+        cat > "$_module_version" <<EOF
 // Generated by PKGBUILD for standalone DKMS build
 #include <linux/module.h>
 MODULE_VERSION("${pkgver}");
 EOF
+    fi
 
     if [ -f "$srcdir/build/fs/bcachefs/Makefile" ]; then
         msg2 "Renaming upstream Makefile to Kbuild..."
         mv "$srcdir/build/fs/bcachefs/Makefile" "$srcdir/build/fs/bcachefs/Kbuild"
+    elif [ -f "$srcdir/build/fs/bcachefs/Kbuild" ]; then
+        msg2 "Using upstream Kbuild as-is..."
+    else
+        error "Neither Makefile nor Kbuild found in fs/bcachefs."
+        return 1
     fi
 }
 
 package() {
-    # 动态写入版本号到 dkms.conf
-    # 先在 build 目录改好，再复制
-    sed -i "s/@PKGVER@/${pkgver}/g" "$srcdir/build/dkms.conf"
-
-    # 安装到 /usr/src/bcachefs-<version>
+    # Install DKMS source tree under /usr/src/bcachefs-<version>.
     local install_dir="$pkgdir/usr/src/bcachefs-${pkgver}"
     install -dm755 "$install_dir"
-    
-    # 整体复制 (保留了 fs/bcachefs 结构)
-    cp -r "$srcdir/build/"* "$install_dir/"
+
+    cp -a "$srcdir/build/fs" "$install_dir/"
+    cp -a "$srcdir/build/include" "$install_dir/"
+    install -m644 "$srcdir/build/dkms.conf" "$install_dir/dkms.conf"
+    install -m644 "$srcdir/build/Makefile" "$install_dir/Makefile"
 }
