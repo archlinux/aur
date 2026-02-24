@@ -4,13 +4,13 @@
 
 pkgname=charcoal-dict-bin
 pkgver=0.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A command line dictionary"
 url="https://github.com/LighghtEeloo/charcoal"
 license=("MIT")
 arch=("x86_64")
-provides=("charcoal-dict")
-conflicts=("charcoal-dict")
+provides=("charcoal-dict" "charcoal")
+conflicts=("charcoal-dict" "charcoal")
 depends=("openssl" "alsa-lib")
 optdepends=("didyoumean")
 source=("https://github.com/LighghtEeloo/charcoal/releases/download/v$pkgver/charcoal-dict-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
