@@ -29,7 +29,7 @@ optdepends=(
 )
 source=(git+"${url}".git#tag=v"${pkgver}"?signed)
 validpgpkeys=(3E09F5908333DD83DBDCE7375680CA389D365A88) #Mike Fährmann
-sha512sums=('311eb080d3d59494047502932e6939396e5861fe5960f7b160276f57a60694e7ac38258384ca93998282eff24873011701af3291cb49786617377d4bbbb20014')
+sha512sums=('890bcdba0e29f5dfab42e4558a6854fbc9ff6f7a8d25cbf3b4ffb46817c82852812f2c5dae3afa5f58d5c81aaad792f6d470843b7410dbd1883bc14595707999')
 
 prepare() {
     # Clean out old wheels etc.
