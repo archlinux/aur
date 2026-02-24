@@ -4,7 +4,7 @@
 
 pkgbase=mcpelauncher-linux
 pkgname=('mcpelauncher-linux' 'lib32-mcpelauncher-linux')
-pkgver=1.6.4
+pkgver=1.6.5
 pkgrel=1
 pkgdesc="Minecraft: Pocket Edition launcher for Linux"
 arch=('x86_64')
@@ -50,10 +50,9 @@ source=(
   # Temporary override of 'git+https://android.googlesource.com/platform/system/core'
   # git clone --mirror timed out on archlinux while it still works on ubuntu 22.04, the history has been truncated due to large files
   'git+https://github.com/minecraft-linux/android_core'
-  'linker.patch::https://github.com/minecraft-linux/mcpelauncher-linker/commit/1ac3ea6c1cf4f73a84d73f0bff510fba94a7d0f2.diff'
 )
 
-sha256sums=('4494e292c71a7d7ef205064a65579de885e5795d200706d290d3f092df0f07bc'
+sha256sums=('7c24b81639efa3c1043f416678d896b83abc977a07c24648288bcf0de464a50e'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -84,8 +83,7 @@ sha256sums=('4494e292c71a7d7ef205064a65579de885e5795d200706d290d3f092df0f07bc'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            '0eebd8870186ac61678efa348a3dec47a4163168a0980c45e0919bfa842e5181')
+            'SKIP')
 
 prepare() {
   git -C mcpelauncher-manifest submodule init
@@ -123,8 +121,6 @@ prepare() {
   git -C mcpelauncher-manifest/mcpelauncher-linker config submodule.bionic.url "$srcdir/android_bionic"
   git -C mcpelauncher-manifest/mcpelauncher-linker config submodule.core.url "$srcdir/android_core"
   git -C mcpelauncher-manifest/mcpelauncher-linker -c protocol.file.allow=always submodule update
-  cd "$srcdir/${pkgname%-*}-manifest/${pkgname%-*}-linker"
-  patch -Np1 < "$srcdir/linker.patch"
 }
 
 build() {
