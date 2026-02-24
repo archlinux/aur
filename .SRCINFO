@@ -1,7 +1,7 @@
 pkgbase = sql-tap-bin
 	pkgdesc = Watch SQL traffic in real-time with a TUI
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mickamy/sql-tap
 	arch = x86_64
 	arch = aarch64
