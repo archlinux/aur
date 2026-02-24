@@ -1,22 +1,22 @@
 # Maintainer: Ianis Vasilev <ianis@ivasilev.net>
 pkgname=dpsprep
-pkgver=2.3.1
-pkgrel=2.314
+pkgver=2.4.0
+pkgrel=1.314
 pkgdesc='A DjVu to PDF converter with a focus on small output size and the ability to preserve document outlines and text layers'
 url='https://github.com/kcroker/dpsprep'
 arch=('any')
 license=('GPL-3.0-only')
 checkdepends=(python ruff mypy python-types-pillow python-types-fpdf2 python-pytest python-pytest-image-diff)
-makedepends=(git python-build python-installer python-wheel python-poetry)
+makedepends=(git python-uv-build python-build python-installer python-wheel)
 depends=(python python-djvulibre-python
          python-click python-loguru python-pillow
          python-fpdf2 python-pdfrw)
 optdepends=('ocrmypdf: Optional OCR and advanced PDF optimization')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('452ead31b26410c244623be174d368a823e0385fda208e38a81b515a506ed512')
+sha256sums=('2499d5ab1bfa17d252a4e75e131f83f3a40f7aa0c08c687a5558588d5bbea2d0')
 
 _fullsrcdir() {
-  echo "$srcdir/$pkgname-$pkgver"
+    echo "$srcdir/$pkgname-$pkgver"
 }
 
 check() {
@@ -34,7 +34,6 @@ build() {
 package() {
     cd "$(_fullsrcdir)"
     python -m installer --destdir="$pkgdir" dist/*$pkgver*.whl
-    install -D -m755 bin/dpsprep "$pkgdir/usr/bin/dpsprep"
     install -D -m644 dpsprep.1 "$pkgdir/usr/share/man/man1/dpsprep.1"
     install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
