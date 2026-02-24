@@ -1,0 +1,5 @@
+[gitopolis-bin]
+source = "github"
+github = "timabell/gitopolis"
+use_latest_release = true
+prefix = "v"

@@ -1,0 +1,17 @@
+pkgbase = gitopolis-bin
+	pkgdesc = CLI tool to manage multiple git repositories; run commands, clone, and organize repos with tags
+	pkgver = 1.13.0
+	pkgrel = 1
+	url = https://github.com/timabell/gitopolis
+	arch = x86_64
+	license = AGPL-3.0-only
+	provides = gitopolis
+	conflicts = gitopolis
+	source = README-1.13.0.md::https://raw.githubusercontent.com/timabell/gitopolis/v1.13.0/README.md
+	source = LICENSE-1.13.0::https://raw.githubusercontent.com/timabell/gitopolis/v1.13.0/LICENSE
+	sha256sums = 30dbfe94e0181949a43aee9e44c85ed26cd1b4410127040b74481cc2e23d93fd
+	sha256sums = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
+	source_x86_64 = gitopolis-x86_64-1.13.0.tgz::https://github.com/timabell/gitopolis/releases/download/v1.13.0/gitopolis-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 0df7a90d88bd0844477a3e34bb350b1d344c01bb3864a04dc81a304ce9bb66ae
+
+pkgname = gitopolis-bin
