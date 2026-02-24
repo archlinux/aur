@@ -1,7 +1,7 @@
 pkgbase = excel2tex
 	pkgdesc = Convert MS Excel/LibreOffice Calc table to LaTex.
 	pkgver = 3.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gucio321/excel2tex
 	arch = i686
 	arch = pentium4
@@ -16,6 +16,6 @@ pkgbase = excel2tex
 	depends = libx11
 	options = !lto
 	source = excel2tex-3.3.1.tar.gz::https://github.com/gucio321/excel2tex/archive/v3.3.1.tar.gz
-	sha256sums = d8e9155c0d971cd4f74af577df139537d554ccb42748f13a3872e05eab783b2a
+	sha256sums = 31dffcc9fecdbb335971b4ab754f906cc55af48646a9787bc577490ee8f4a516
 
 pkgname = excel2tex
