@@ -1,7 +1,7 @@
 # Maintainer: Carlo Wood <carlo@alinoe.com>
 
 pkgname=remountd-git
-pkgver=r47.c930ff2
+pkgver=r48.01cf243
 pkgrel=1
 pkgdesc="Daemon to remount preconfigured mount points ro/rw; from an unprivileged client."
 arch=('x86_64')
@@ -28,9 +28,12 @@ prepare() {
 }
 
 build() {
+  # Need to set DCMAKE_INSTALL_SBINDIR to bin to avoid 'remountd-git: /usr/sbin exists in filesystem (owned by filesystem)'.
+  # On Arch /usr/sbin is a symlink to /usr/bin.
   cmake -B build -S "$pkgname" \
     -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_SBINDIR=bin
   cmake --build build
 }
 

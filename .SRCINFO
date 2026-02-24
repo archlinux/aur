@@ -1,6 +1,6 @@
 pkgbase = remountd-git
 	pkgdesc = Daemon to remount preconfigured mount points ro/rw; from an unprivileged client.
-	pkgver = r47.c930ff2
+	pkgver = r48.01cf243
 	pkgrel = 1
 	url = https://github.com/CarloWood/remountd.git
 	install = remountd-git.install
