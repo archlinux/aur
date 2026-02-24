@@ -1,17 +1,18 @@
 pkgbase = certbot-dns-desec
 	pkgdesc = desec.io DNS Authenticator plugin for Certbot
-	pkgver = 1.2.1
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/desec-io/certbot-dns-desec
 	arch = any
 	license = Apache
-	makedepends = git
 	makedepends = python-build
-	makedepends = python-wheel
 	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = certbot
+	depends = python-dnspython
 	depends = python-requests
-	source = git+https://github.com/desec-io/certbot-dns-desec.git#tag=v1.2.1
-	b2sums = SKIP
+	source = certbot_dns_desec-1.3.2.tar.gz::https://github.com/desec-io/certbot-dns-desec/archive/refs/tags/v1.3.2.tar.gz
+	sha256sums = c1b32fa0837cac662f1fcf310a82ea68fef86cf1988f174daec1791fe2abe241
 
 pkgname = certbot-dns-desec
