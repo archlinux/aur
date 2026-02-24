@@ -1,6 +1,6 @@
 # Maintainer: Kain Huang <iblader@gmail.com>
 pkgname=netbeans-bin
-pkgver=28
+pkgver=29
 pkgrel=1
 pkgdesc='IDE for Java, HTML5, PHP, Groovy, C and C++'
 arch=('any')
@@ -15,7 +15,7 @@ depends=('ttf-font' 'which' 'java-environment>=17')
 optdepends=('php: for developing programs in php'
             'groovy: for developing programs in groovy')
 #sha512sums from ("https://downloads.apache.org/netbeans/netbeans/${pkgver}/netbeans-${pkgver}-bin.zip.sha512")
-sha512sums=('d0dd5c6f2dc795b9b4b5f469cde87b9665054369dcdf2fcc687cedfb358386de744fdae207404b2565ffb2136077ca2a988a1b52f69738a7d3b28400a8f4a3b0'
+sha512sums=('62d953d4b7a9ecdfe4db8b51120ad371f9046936af4b24d2ac880b680a5b11cd9475cf899f13d3027986451497cd7f9b5d89620c438d02da7809c38b5332ae83'
 'e963494757f34512523bababdf72e7b7eb32d5f1034d5c1589d7a3aedb707de96a6e2e38dadd05c002cac76860957df1a98d3bda80913eaf26bb52502a0e5e13')
 
 build(){
