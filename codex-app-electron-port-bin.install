@@ -1,0 +1,32 @@
+post_install() {
+  cat <<'EOF'
+==> codex-app-electron-port-bin installed.
+
+This is an unofficial Electron-port repackaging from the macOS DMG.
+Upstream layout or internals may change and require PKGBUILD updates.
+
+Required after install:
+  1. Install native rebuild prerequisites (if not already installed)
+       sudo pacman -S --needed base-devel python nodejs pnpm sudo
+
+  2. Install Codex CLI (optional, but recommended for app integration)
+       pnpm setup
+       pnpm add -g @openai/codex
+
+  3. Rebuild native modules for your installed Electron version
+       codex-app-electron-port-bin-rebuild-native
+
+     Note: the helper may prompt for your sudo password to update files in /opt.
+     Note: if pnpm blocks build scripts, run `pnpm approve-builds` and retry.
+
+  4. Launch the app
+       codex-app-electron-port-bin
+
+If Electron is updated later, rerun:
+  codex-app-electron-port-bin-rebuild-native
+EOF
+}
+
+post_upgrade() {
+  post_install
+}

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Codex (Electron Port)
+Comment=Unofficial Codex desktop app Electron port
+Exec=codex-app-electron-port-bin
+Icon=utilities-terminal
+Terminal=false
+Type=Application
+Categories=Development;
+StartupNotify=true
+

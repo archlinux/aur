@@ -1,0 +1,9 @@
+This package is an unofficial AUR repackaging helper for the Codex desktop app.
+
+It downloads the upstream DMG from:
+https://persistent.oaistatic.com/codex-app-prod/Codex.dmg
+
+The Codex application, its assets, and trademarks belong to their respective owners.
+Review upstream terms/license before redistribution or publication.
+
+This AUR packaging metadata (PKGBUILD, scripts, desktop file) is provided without warranty.
