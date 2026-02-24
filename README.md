@@ -1,46 +1,89 @@
 # `codex-app-electron-port-bin`
 
-Bu klasör, Codex desktop uygulamasını macOS DMG üzerinden çıkarıp Arch Linux'ta sistem `electron` ile çalıştırmayı hedefleyen **AUR paketi dosyalarını** içerir.
+Unofficial AUR packaging files for running the Codex desktop app on Arch Linux using the system `electron` package (by extracting the macOS DMG and rebuilding required native modules).
 
-## İçerik
+## What This Repo Is
 
-- `PKGBUILD`: DMG indirir, `app.asar` çıkarır ve dosyaları `/opt` altına kurar
-- `codex-app-electron-port-bin`: Uygulama launcher scripti
-- `codex-app-electron-port-bin-rebuild-native`: `better-sqlite3` ve `node-pty` için native rebuild helper
-- `codex-app-electron-port-bin.desktop`: Menü kısayolu
-- `codex-app-electron-port-bin.install`: Kurulum sonrası yönlendirme mesajı
+This repository contains the files used for the AUR package:
 
-## Önemli Notlar
+- `PKGBUILD`
+- `.SRCINFO`
+- launcher script
+- native module rebuild helper
+- desktop entry
+- install message hook
 
-- Bu paket taslağı **resmi değildir**.
-- İlk kurulumdan sonra native modüller rebuild edilmeden uygulama çalışmayabilir.
-- DMG (`Codex.dmg`) checksum'u upstream dosya değişebildiği için taslakta `SKIP` bırakıldı. Yayınlamadan önce sabit checksum ile güncellemeniz önerilir.
-- Upstream uygulama iç dizin yapısı değişirse `PKGBUILD` ve launcher scripti güncellenmelidir.
-- Native rebuild helper, `/opt` altını güncellemek için gerektiğinde `sudo` kullanır.
+AUR package page:
 
-## `sha256sums=('SKIP')` Neden Bilinçli Tercih?
+- https://aur.archlinux.org/packages/codex-app-electron-port-bin
 
-Bu pakette upstream `Codex.dmg` checksum'u bilinçli olarak `SKIP` bırakılmıştır. Amaç, sabit upstream URL'deki en güncel DMG dosyasını çekebilmektir.
+## What This Package Does
+
+- Downloads upstream `Codex.dmg`
+- Extracts `app.asar` from the macOS app bundle
+- Installs extracted app files under `/opt/codex-app-electron-port-bin`
+- Launches the app with system `electron`
+- Provides a helper script to rebuild native modules (`better-sqlite3`, `node-pty`) for the installed Electron version
+
+## Important Notes
+
+- This package is **unofficial** and not affiliated with OpenAI.
+- First launch may fail until native modules are rebuilt.
+- If your system `electron` version changes, rerun the rebuild helper.
+- If upstream DMG layout changes, `PKGBUILD`/launcher may need updates.
+- The DMG checksum is currently `SKIP` (recommended to pin a checksum in future updates).
+
+## Why `sha256sums=('SKIP')` Is Intentional
+
+This package intentionally leaves the upstream `Codex.dmg` checksum as `SKIP` so builds fetch the latest DMG available at the fixed upstream URL.
 
 Tradeoff:
 
-- Artı: Hızlı değişen upstream binary için bakım yükü azalır
-- Eksi: Build deterministikliği düşer ve DMG bütünlüğü paket build aşamasında doğrulanmaz
+- Pro: lower maintenance for a fast-moving upstream binary
+- Con: builds are less deterministic and do not verify DMG integrity at package build time
 
-Upstream sürümleme yapısı daha stabil hale gelirse (veya versiyonlu URL sağlanırsa), checksum sabitlemek daha doğru olacaktır.
+If upstream release cadence stabilizes (or a versioned download URL becomes available), pinning a checksum would be preferable.
 
-## Yerel Test
+## Install (AUR User Flow)
+
+After installing the package from AUR, run:
 
 ```bash
-cd /path/to/codex-app-electron-port-bin
+sudo pacman -S --needed base-devel python nodejs pnpm sudo
+pnpm setup
+pnpm add -g @openai/codex
+codex-app-electron-port-bin-rebuild-native
+codex-app-electron-port-bin
+```
+
+Notes:
+
+- `codex-app-electron-port-bin-rebuild-native` may prompt for your `sudo` password to update files under `/opt`.
+- If `pnpm` blocks build scripts, run `pnpm approve-builds` and retry.
+- Codex CLI install is recommended for app integration.
+
+## Local Development / Testing
+
+```bash
+git clone https://github.com/Tomakin/codex-app-electron-port-bin.git
+cd codex-app-electron-port-bin
 makepkg -si
 codex-app-electron-port-bin-rebuild-native
 codex-app-electron-port-bin
 ```
 
-## AUR Yayın Öncesi Önerilen Kontroller
+## Maintenance Notes
 
-- Temiz chroot veya temiz Arch kurulumunda `makepkg -si` testi
-- `codex-app-electron-port-bin-rebuild-native` testi (sudo + pnpm approve-builds akışı)
-- DMG için sabit checksum girme (mümkünse)
-- Upstream lisans / kullanım koşullarını doğrulama
+- Update `pkgver`/`pkgrel` when packaging changes
+- Regenerate `.SRCINFO` after `PKGBUILD` changes:
+
+```bash
+makepkg --printsrcinfo > .SRCINFO
+```
+
+- Validate on a clean Arch install/chroot before publishing updates
+
+## License / Ownership
+
+- Codex app binaries/assets/trademarks belong to their respective owners
+- This repo only provides unofficial packaging metadata and helper scripts
