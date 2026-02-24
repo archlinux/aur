@@ -1,4 +1,5 @@
 # Maintainer: marmis <tiagodepalves@gmail.com>
+# Contributor: "marmis" Tiago de Paula <tiagodepalves@gmail.com>
 # Contributor: gee
 # Contributor: yochananmarqos
 # Contributor: bpierre
@@ -15,7 +16,10 @@ arch=('x86_64')
 url='https://github.com/Redemp/vkBasalt'
 license=('Zlib')
 _depends=('glibc' 'gcc-libs' 'libx11')
-makedepends=('git' 'glslang' 'meson' 'ninja' 'spirv-headers' 'vulkan-headers')
+makedepends=(
+  'git' 'glslang' 'meson' 'ninja' 'spirv-headers' 'vulkan-headers'
+  "${_depends[@]}" "${_depends[@]/#/lib32-}"
+)
 optdepends=('reshade-shaders-git: collection of shaders to use with vkBasalt')
 source=("${pkgbase}-${pkgver//_/-}::git+${url}.git")
 b2sums=('SKIP')
