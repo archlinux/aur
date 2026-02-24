@@ -3,9 +3,9 @@
 pkgbase="linux-pf"
 _suffix=""
 pkgname=(${pkgbase}${_suffix} ${pkgbase}-headers${_suffix})
-_rev=54eed6ecd6fb609f6f59c6ba4310c1b48dccd5df
-pkgver=6.19.pf1
-pkgrel=2
+_rev=9bbda1d89d7fedc8e2c9a6ece1addb9a75bd92b7
+pkgver=6.19.pf2
+pkgrel=1
 pkgdesc="pf-kernel"
 arch=(x86_64)
 url=https://pfkernel.natalenko.name
@@ -15,7 +15,7 @@ options=(!debug !strip)
 source=(https://codeberg.org/pf-kernel/linux/archive/${_rev}.tar.gz
 		config)
 b2sums=(SKIP
-		'e1f25b08d7b338f9f3b7bfa6893374c8ca07594e763d08e2455cbca033db52a58b77e490185c7987749ea9bebe580fd05443f391d43ba7e6228249d13372a671')
+		'b81c55c7df09efe78c8add388e4c296bc9d091b037e2e53ef3574611b9fe59c72c1614ac8a361397d672b2c95084cb8d27152bcdcb56d108544ad5d251ccec9d')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=${pkgbase}
@@ -51,7 +51,8 @@ build() {
 _package() {
 	pkgdesc="The ${pkgdesc} and modules"
 	depends=(coreutils initramfs kmod)
-	optdepends=('ksmbd-tools: userspace tools for the ksmbd kernel SMB server'
+	optdepends=('linux-pf-headers: headers and scripts for building modules'
+				'ksmbd-tools: userspace tools for the ksmbd kernel SMB server'
 				'linux-firmware: firmware images needed for some devices'
 				'scx-scheds: to use sched-ext schedulers'
 				'wireless-regdb: to set the correct wireless channels of your country')
@@ -93,11 +94,13 @@ _package-headers() {
 	cp -t "${builddir}" -a scripts
 	ln -srt "${builddir}" "${builddir}"/scripts/gdb/vmlinux-gdb.py
 
-	# required when STACK_VALIDATION is enabled
-	install -Dt "${builddir}"/tools/objtool tools/objtool/objtool
+	if [[ $(scripts/config -s CONFIG_HAVE_STACK_VALIDATION) = y ]]; then
+		install -Dt "${builddir}"/tools/objtool tools/objtool/objtool
+	fi
 
-	# required when DEBUG_INFO_BTF_MODULES is enabled
-	install -Dt "${builddir}"/tools/bpf/resolve_btfids tools/bpf/resolve_btfids/resolve_btfids
+	if [[ $(scripts/config -s CONFIG_DEBUG_INFO_BTF_MODULES) = y ]]; then
+		install -Dt "${builddir}"/tools/bpf/resolve_btfids tools/bpf/resolve_btfids/resolve_btfids
+	fi
 
 	echo "Installing headers..."
 	cp -t "${builddir}" -a include
@@ -122,8 +125,10 @@ _package-headers() {
 	find . -name 'Kconfig*' -exec install -Dm644 {} "${builddir}/{}" \;
 
 	echo "Installing Rust files..."
-	install -Dt "${builddir}"/rust -m644 rust/*.rmeta
-	install -Dt "${builddir}"/rust rust/*.so
+	if [[ $(scripts/config -s CONFIG_RUST) = y ]]; then
+		install -Dt "${builddir}"/rust -m644 rust/*.rmeta
+		install -Dt "${builddir}"/rust rust/*.so
+	fi
 
 	echo "Installing unstripped VDSO..."
 	make INSTALL_MOD_PATH="${pkgdir}"/usr vdso_install \
