@@ -2,7 +2,7 @@
 : ${aur_llamacpp_build_universal:=false}
 pkgname=llama.cpp-cuda-git
 _pkgname="${pkgname%-cuda-git}"
-pkgver=b7876.r4.1025fd2c09
+pkgver=b8140
 pkgrel=1
 _build_number=0
 _commit_id=
@@ -21,6 +21,7 @@ makedepends=(
   cmake
   git
   openssl
+  cudnn
 )
 optdepends=(
 'python-numpy: needed for convert_hf_to_gguf.py'
@@ -74,10 +75,12 @@ build() {
     -DGGML_ALL_WARNINGS_3RD_PARTY=OFF
     -DGGML_BUILD_EXAMPLES=OFF
     -DGGML_BUILD_TESTS=OFF
+    -DGGML_OPENMP=ON
     -DGGML_LTO=ON
     -DGGML_RPC=ON
     -DGGML_CUDA=ON
     -DGGML_CUDA_FA_ALL_QUANTS=ON
+    -DGGML_CUDNN=ON
     -DLLAMA_BUILD_SERVER=ON
     -DLLAMA_BUILD_NUMBER="${_build_number}"
     -DLLAMA_BUILD_COMMIT="${_commit_id}"
