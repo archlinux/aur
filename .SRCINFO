@@ -1,6 +1,6 @@
 pkgbase = vanta-bin
 	pkgdesc = A hyper-fast, scriptable application launcher and command palette for Wayland (Spotlight alternative)
-	pkgver = 1.14.1
+	pkgver = 1.15.0
 	pkgrel = 1
 	url = https://github.com/Misiix9/vanta
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = vanta-bin
 	depends = libayatana-appindicator
 	provides = vanta
 	conflicts = vanta
-	source = vanta_1.14.1_amd64.deb::https://github.com/Misiix9/Vanta/releases/download/v1.14.1/Vanta_1.14.1_amd64.deb
-	sha256sums = 7dfcde1d63b7ad6dba8f0ba7415ebce876e8efdb08e2379d9c92e9fa9c7fafd0
+	source = vanta_1.15.0_amd64.deb::https://github.com/Misiix9/Vanta/releases/download/v1.15.0/Vanta_1.15.0_amd64.deb
+	sha256sums = 65de0f7d09672a357f90aa8a0759875373231e0983960273519c830079ea3cb9
 
 pkgname = vanta-bin
