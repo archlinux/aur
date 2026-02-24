@@ -1,0 +1,27 @@
+pkgbase = camper-git
+	pkgdesc = A minimalistic Bandcamp music player client for Linux, built with Rust, GTK4/libadwaita, and GStreamer.
+	pkgver = r10.g702e619
+	pkgrel = 1
+	url = https://github.com/knoopx/camper
+	arch = x86_64
+	arch = aarch64
+	license = custom:NONE
+	makedepends = cargo
+	makedepends = git
+	depends = gst-plugins-base
+	depends = gst-plugins-bad
+	depends = gst-plugins-good
+	depends = gst-plugin-gtk4
+	depends = gtk4
+	depends = libadwaita
+	depends = webkitgtk-6.0
+	provides = camper
+	conflicts = camper
+	conflicts = camper-git
+	conflicts = camper-bin
+	source = git+https://github.com/knoopx/camper.git
+	source = https://patch-diff.githubusercontent.com/raw/knoopx/camper/pull/2.patch
+	sha256sums = SKIP
+	sha256sums = cec51c22c3c19739a1044229e1bc17b966189b5632003d967e90f888e94c424f
+
+pkgname = camper-git
