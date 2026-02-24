@@ -14,7 +14,7 @@ makedepends=("dotnet-sdk-${_sdk}" 'gendesk')
 options=('!strip' '!debug' 'staticlibs')
 _pkgsrc="${url##*/}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('88b72bb7c4596f04f229b6f5934ae8e1bc94ebbe8d434fcdc3ce51be684ad6b533c6e2f6002461257b49a848db92bf127b10b31e679f976a543791f8c8d35436')
+b2sums=('994a9692d7f24e3cd567a48670fec6252ae645fa02b381402409e32b37442e5ec40b21c0007ccbef3532722870a618ae59704e3e7d33df5e93c759d5803c2c0a')
 
 if   [ "${CARCH}" = 'x86_64'  ]; then _msarch=x64;
 elif [ "${CARCH}" = 'armv7h'  ]; then _msarch=arm;
