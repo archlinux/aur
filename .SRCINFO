@@ -1,0 +1,34 @@
+pkgbase = wshawk
+	pkgdesc = Enterprise-grade WebSocket security scanner & Web Penetration Testing Toolkit
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://github.com/noobforanonymous/wshawk
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	makedepends = git
+	makedepends = npm
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-pyinstaller
+	depends = python
+	depends = python-aiohttp
+	depends = python-websockets
+	depends = python-socketio
+	depends = python-fastapi
+	depends = python-cryptography
+	depends = python-dnspython
+	depends = python-whois
+	depends = python-yaml
+	depends = uvicorn
+	depends = nodejs
+	depends = electron
+	provides = wshawk-desktop
+	conflicts = wshawk-git
+	conflicts = wshawk-bin
+	source = git+https://github.com/noobforanonymous/wshawk.git#tag=v3.0.1
+	sha256sums = SKIP
+
+pkgname = wshawk
