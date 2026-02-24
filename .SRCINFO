@@ -1,0 +1,16 @@
+pkgbase = gnome-desktop-fixer
+	pkgdesc = Automatically fixes Steam game desktop entries on GNOME desktop environments
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/PeppoDev/gnome_desktop_fixer
+	install = gnome-desktop-fixer.install
+	arch = x86_64
+	license = LicenseRef-unknown
+	makedepends = cargo
+	depends = libgcc
+	source = gnome_desktop_fixer-0.2.0.tar.gz::https://github.com/PeppoDev/gnome_desktop_fixer/archive/refs/tags/v0.2.0.tar.gz
+	source = gnome-desktop-fixer.service
+	sha256sums = 7c99c0e59ead101b7d56045c805b115ef77812e09ae76c1732f23590b19ad1a9
+	sha256sums = f0bb796fd1528d999d77456cec017b80c87149c89d781fe712324c518e08852f
+
+pkgname = gnome-desktop-fixer

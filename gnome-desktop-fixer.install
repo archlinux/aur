@@ -1,0 +1,6 @@
+post_install() {
+  echo ""
+  echo "Enable the service to monitor for new desktop files:"
+  echo "systemctl --user enable --now gnome-desktop-fixer.service"
+  echo ""
+}

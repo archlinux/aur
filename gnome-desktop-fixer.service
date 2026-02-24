@@ -1,0 +1,11 @@
+[Unit]
+Description=GNOME Desktop Entry Fixer service
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+ExecStart=/usr/bin/gnome-desktop-fixer --watch
+
+[Install]
+WantedBy=multi-user.target
