@@ -16,11 +16,11 @@ makedepends=('gcc' 'make' 'pkg-config' 'git')
 backup=('etc/coolercontrol/plugins/coolerdash/config.json')
 install=coolerdash.install
 _commit=28e67504400841b8eed6587b364cb565c320773a
-source=("git+https://github.com/damachine/coolerdash.git#commit=${_commit}")
+source=("coolerdash-git::git+https://github.com/damachine/coolerdash.git#commit=${_commit}")
 sha256sums=('SKIP') # SKIP for git repo source builds
 
 pkgver() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}"/"${pkgname}"
     # Fetch latest tags in git repo
     git fetch --tags
     git describe --tags --long --match "v*" | sed -E 's/^v//; s/-([0-9]+)-g/\.r\1.g/; s/-/./g'
@@ -28,7 +28,7 @@ pkgver() {
 
 build() {
     # Build inside the checked-out repository
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}"/"${pkgname}"
 
     # Remove all previous tarball builds
     rm -f "${pkgname}"-*.pkg.tar.*
@@ -44,7 +44,7 @@ build() {
 
 check() {
     # Check in the checked-out repository
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}"/"${pkgname}"
 
     # Verify that the binary was created successfully
     if [[ -f bin/coolerdash ]]; then
