@@ -4,7 +4,7 @@
 # Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
 pkgname=litellm
-pkgver=1.81.14
+pkgver=1.81.15
 pkgrel=1
 pkgdesc='Library to easily interface with LLM API providers.'
 arch=(any)
@@ -53,7 +53,7 @@ optdepends=('gunicorn: proxy'
             'python-google-cloud-aiplatform: google')
 provides=("python-$pkgname")
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('445efb92ae359e8f40ee984753c5ae752535eb18a2aeef00d3089922de5676b7')
+sha256sums=('a8a6277a53280762051c5818ebc76dd5f036368b9426c6f21795ae7f1ac6ebdc')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
