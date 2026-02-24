@@ -1,17 +1,24 @@
 # Maintainer: PairUX Team <hello@pairux.com>
 pkgname=pairux-bin
-pkgver=0.5.46
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Collaborative screen sharing with remote control"
 arch=('x86_64')
 url="https://pairux.com"
 license=('MIT')
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'fuse2')
+optdepends=(
+  'xdg-desktop-portal: Wayland portal-based remote control support'
+  'xdg-desktop-portal-kde: KDE Plasma Wayland portal backend'
+  'xdg-desktop-portal-gnome: GNOME Wayland portal backend'
+  'xdg-desktop-portal-wlr: wlroots-based Wayland portal backend'
+  'ydotool: Wayland fallback input injection backend (requires ydotoold)'
+)
 provides=('pairux')
 conflicts=('pairux' 'pairux-git')
 options=('!strip')
 source=("PairUX-${pkgver}.AppImage::https://github.com/profullstack/pairux.com/releases/download/v${pkgver}/PairUX-${pkgver}-x86_64.AppImage")
-sha256sums=('630e3938dda0bfcd786bfa7e438f1fa18de2c06cff65f69f333731cf1e64342f')
+sha256sums=('63c2325da77b75c5735e49b3bcdb22239ec340af21f92b125ff177249af1a6e7')
 
 package() {
     cd "$srcdir"
