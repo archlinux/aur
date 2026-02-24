@@ -4,7 +4,7 @@
 
 pkgname=charcoal-dict-bin
 pkgver=0.3.2
-pkgrel=5
+pkgrel=6
 pkgdesc="A command line dictionary"
 url="https://github.com/LighghtEeloo/charcoal"
 license=("MIT")
@@ -13,7 +13,7 @@ provides=("charcoal-dict" "charcoal")
 conflicts=("charcoal-dict" "charcoal")
 depends=("openssl" "alsa-lib")
 optdepends=("didyoumean")
-source=("https://github.com/LighghtEeloo/charcoal/releases/download/v$pkgver/charcoal-dict-$pkgver-x86_64-unknown-linux-gnu.tar.xz")
+source=("https://github.com/LighghtEeloo/charcoal/releases/download/v$pkgver/charcoal-dict-x86_64-unknown-linux-gnu.tar.xz")
 sha256sums=("714d253255780674b81f0214851b71d75f1fecff660bc220ba69e2ae7be69649")
 
 package() {
