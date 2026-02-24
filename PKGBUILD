@@ -5,9 +5,9 @@
 
 _pkgname='mdviewer'
 pkgname="${_pkgname}-git"
-pkgdesc='Rendered display of markdown on terminal (latest git commit)'
+pkgdesc='Rendered display of markdown on terminal (development version)'
 pkgver=0.1.1.r53.gb935eea
-pkgrel=2
+pkgrel=3
 url='https://github.com/noborus/mdviewer'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 license=('MIT')  # SPDX-License-Identifier: MIT
