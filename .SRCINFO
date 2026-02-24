@@ -1,0 +1,18 @@
+pkgbase = primer3-py
+	pkgdesc = Python-abstracted API for the popular Primer3 library. The intention is to provide a simple and reliable interface for automated oligo analysis and design.
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/primer3-org/primer3
+	arch = any
+	license = SPDX
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-construct
+	depends = cython
+	source = https://files.pythonhosted.org/packages/source/p/primer3_py/primer3_py-2.3.0.tar.gz
+	md5sums = 5f8bbc52d2981e6df47f7db0be7866fc
+
+pkgname = primer3-py
