@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vidbee-bin
 _pkgname=VidBee
-pkgver=1.2.4
+pkgver=1.3.0
 _electronversion=38
 pkgrel=1
 pkgdesc="Download videos from almost any website worldwide.(Prebuilt version.Use system-wide electron)"
@@ -29,7 +29,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/nexmoe/VidBee/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('6d91b6a44ec170ea8e4c6e36ad1bf342c07677b55561054119053d5f3de93202'
+sha256sums=('4ca055f6993a8495da5bbfb8e453ad3747e6f4fbd15752a7f5f53de29c2839cd'
             '5cde322cd1fd10c409c8597eed127a08baa6c73b9430312de1aeb05f1dbb4953'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
@@ -49,18 +49,26 @@ prepare() {
     sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked/out" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
-    ln -sf "/usr/bin/ffmpeg" "${srcdir}/app.asar.unpacked/resources/ffmpeg_linux"
+    ln -sf "/usr/bin/ffmpeg" "${srcdir}/app.asar.unpacked/resources/ffmpeg/ffmpeg"
+    ln -sf "/usr/bin/ffprobe" "${srcdir}/app.asar.unpacked/resources/ffmpeg/ffprobe"
     ln -sf "/usr/bin/yt-dlp" "${srcdir}/app.asar.unpacked/resources/yt-dlp_linux"
     ln -sf "/usr/bin/deno" "${srcdir}/app.asar.unpacked/resources/deno"
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
-    ln -sf "/usr/bin/ffmpeg" "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/resources/ffmpeg_linux"
+    ln -sf "/usr/bin/ffmpeg" "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/resources/ffmpeg/ffmpeg"
+    ln -sf "/usr/bin/ffprobe" "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/resources/ffmpeg/ffprobe"
     ln -sf "/usr/bin/yt-dlp" "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/resources/yt-dlp_linux"
     ln -sf "/usr/bin/deno" "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/resources/deno"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    if find "${srcdir}/opt/${_pkgname}/resources" -mindepth 1 -maxdepth 1 -type d | read; then
+        for subdir in "${srcdir}/opt/${_pkgname}/resources/"*; do
+            if [ -d "${subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
+            fi
+        done
+    fi
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/512x512/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
