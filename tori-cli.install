@@ -1,5 +1,4 @@
 post_install() {
-  chown tori:tori /etc/tori/config.toml
   echo "
 Welcome to tori!
 -----------------------------------------------------------------------------
@@ -15,11 +14,6 @@ $ sudo systemctl start tori.service
 
 More: https://github.com/thobiasn/tori-cli
 "
-}
-
-post_upgrade() {
-  chown tori:tori /etc/tori/config.toml
-  chmod 600 /etc/tori/config.toml
 }
 
 post_remove() {

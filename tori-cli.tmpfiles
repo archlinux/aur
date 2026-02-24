@@ -1,2 +1,3 @@
 d /var/lib/tori/ 0750 tori tori -
 d /run/tori/ 0750 tori tori -
+z /etc/tori/config.toml 0600 tori tori -
