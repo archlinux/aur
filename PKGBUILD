@@ -1,8 +1,8 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor:
 pkgname=gocognit
-pkgver=1.2.0
-pkgrel=3
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="Calculates cognitive complexities of functions (and methods) in Go source code. (Golang cognitive complexity)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/uudashr/gocognit"
