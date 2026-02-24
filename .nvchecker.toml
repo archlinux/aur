@@ -1,0 +1,5 @@
+[termflix-bin]
+source = "github"
+github = "paulrobello/termflix"
+use_latest_release = true
+prefix = "v"
