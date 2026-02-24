@@ -1,6 +1,6 @@
 # Maintainer: Lian <yichengxin7@gmail.com>
 pkgname=lianwalld-bin
-pkgver=5.1.6
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="LianWall Daemon - wallpaper engine based on swww and mpvpaper"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=(
 provides=('lianwalld')
 conflicts=('lianwalld')
 source=("https://github.com/Yueosa/lianwall/releases/download/v${pkgver}/lianwalld_${pkgver}_linux_x86_64")
-sha256sums=('1d2d562ef99de607df8b628222d53f32843daaff2ec2113fefdb13a06c489729')
+sha256sums=('2728fe5a87417a3b0c3bfad5dbc13898e23804a79840c54d62da87f539af2f28')
 
 package() {
     install -Dm755 "lianwalld_${pkgver}_linux_x86_64" "$pkgdir/usr/bin/lianwalld"
