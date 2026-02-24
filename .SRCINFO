@@ -1,0 +1,18 @@
+pkgbase = ascii-tool
+	pkgdesc = A CLI and GUI tool to convert images to ASCII art
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/lukaseepydev/ascii-tool/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-rich
+	depends = pyside6
+	depends = python-pillow
+	source = https://files.pythonhosted.org/packages/source/a/ascii-tool/ascii_tool-0.1.9.tar.gz
+	sha256sums = SKIP
+
+pkgname = ascii-tool
