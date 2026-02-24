@@ -2,7 +2,7 @@
 # Maintainer: Igor de Beijer <71566757+idebeijer@users.noreply.github.com>
 
 pkgname='kubert-bin'
-pkgver=0.6.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='A kubectx and kubens alternative with context isolation, multi-cluster execution and more.'
 url='https://github.com/idebeijer/kubert'
@@ -11,18 +11,18 @@ license=('MIT')
 provides=('kubert')
 conflicts=('kubert')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/idebeijer/kubert/releases/download/v0.6.0/kubert_0.6.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('d3364684a7cfbe3f66d37d734fb1b495c5407f0214bb8c0bf931b7f7776e09c8')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/idebeijer/kubert/releases/download/v${pkgver}/kubert_${pkgver}_linux_arm64.tar.gz")
+sha256sums_aarch64=('44b62525bf7df83578ab784cd8a8e4291bd6787c45b8b526e03fce8063d84a58')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/idebeijer/kubert/releases/download/v0.6.0/kubert_0.6.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('1b57b326281fa8fd9b2c18d854edca61f8918a0a411424c75604cc3315b17c14')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/idebeijer/kubert/releases/download/v${pkgver}/kubert_${pkgver}_linux_amd64.tar.gz")
+sha256sums_x86_64=('5cbff5e910482c8d4a589ed3ad52ee7631cea6ad3244124649c1bf9fa6ba8b06')
 
 package() {
   # bin
   install -Dm755 "kubert" "${pkgdir}/usr/bin/kubert"
 
   # license
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/kubert/LICENSE"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # completions
   mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
