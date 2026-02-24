@@ -1,6 +1,7 @@
 # Maintainer: Javad <ja7ad@live.com>
 
 pkgname=gemini-cli-live-bin
+_pkgname=gemini-cli
 pkgver=0.29.7
 pkgrel=1
 epoch=1
@@ -28,12 +29,12 @@ source=("git+$url.git#tag=v$pkgver")
 b2sums=('SKIP')
 
 prepare() {
-  cd $pkgname
+  cd $_pkgname
   npm clean-install --ignore-scripts
 }
 
 build() {
-  cd $pkgname
+  cd $_pkgname
   npm run bundle
   local bundled=$(jq '.dependencies + .optionalDependencies | keys' package.json)
   npm pkg set --json bundledDependencies="$bundled"
@@ -41,7 +42,7 @@ build() {
 }
 
 check() {
-  cd $pkgname
+  cd $_pkgname
   npm run build
   npm test -- \
     --exclude='**/BuiltinCommandLoader.test.ts' \
@@ -50,9 +51,9 @@ check() {
 }
 
 package() {
-  cd $pkgname
+  cd $_pkgname
   npm install --global --offline --prefix "$pkgdir/usr" \
-    google-$pkgname-$pkgver.tgz
-  install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
-  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+    google-$_pkgname-$pkgver.tgz
+  install -vDm644 -t "$pkgdir/usr/share/doc/$_pkgname" README.md
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$_pkgname" LICENSE
 }
