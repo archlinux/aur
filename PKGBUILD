@@ -1,4 +1,6 @@
-# Maintainer: éclairevoyant
+# Maintainer: marmis <tiagodepalves@gmail.com>
+# Contributor: "marmis" Tiago de Paula <tiagodepalves@gmail.com>
+# Contributor: éclairevoyant
 # Contributor: Jakob Nixdorf <flocke at shadowice dot org>
 
 pkgname=perl-struct-dumb
