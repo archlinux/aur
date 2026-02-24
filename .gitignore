@@ -1,5 +1,7 @@
 *
 !PKGBUILD
+!0001-allow-not-publishing-single-file.diff
+!0002-set-content-root-path-to-app-directory.diff
 !.gitignore
 !.SRCINFO
 !.nvchecker.toml

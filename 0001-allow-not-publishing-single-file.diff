@@ -1,0 +1,13 @@
+diff --git a/LocalizationManager.csproj b/LocalizationManager.csproj
+index 789b5ac..d2e9111 100644
+--- a/LocalizationManager.csproj
++++ b/LocalizationManager.csproj
+@@ -18,7 +18,7 @@
+     <Copyright>Copyright © 2025 Nikolaos Protopapas</Copyright>
+ 
+     <!-- Publishing Configuration -->
+-    <PublishSingleFile>true</PublishSingleFile>
++    <PublishSingleFile Condition="'$(PublishSingleFile)' == ''">true</PublishSingleFile>
+     <PublishTrimmed>false</PublishTrimmed>
+     <SelfContained>true</SelfContained>
+   </PropertyGroup>

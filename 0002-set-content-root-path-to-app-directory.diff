@@ -1,0 +1,17 @@
+diff --git a/Commands/WebCommand.cs b/Commands/WebCommand.cs
+index 0f59458..669bdd6 100644
+--- a/Commands/WebCommand.cs
++++ b/Commands/WebCommand.cs
+@@ -135,7 +135,11 @@ public class WebCommand : Command<WebCommand.Settings>
+         AnsiConsole.WriteLine();
+ 
+         // Start Kestrel server with API
+-        var builder = Microsoft.AspNetCore.Builder.WebApplication.CreateBuilder();
++        var webApplicationOptions = new WebApplicationOptions()
++        {
++            ContentRootPath = AppContext.BaseDirectory
++        };
++        var builder = Microsoft.AspNetCore.Builder.WebApplication.CreateBuilder(webApplicationOptions);
+ 
+         // Add services
+         builder.Services.AddControllers();
