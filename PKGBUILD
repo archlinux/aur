@@ -30,9 +30,9 @@ package() {
   # --- CREATE TERMINAL COMMANDS ---
   install -dm755 "$pkgdir/usr/bin"
   
-  # Create symlink for wshawk-desktop
-  if [ -f "$pkgdir/opt/WSHawk/wshawk" ]; then
-    ln -sf /opt/WSHawk/wshawk "$pkgdir/usr/bin/wshawk-desktop"
-    ln -sf /opt/WSHawk/wshawk "$pkgdir/usr/bin/wshawk"
-  fi
+  # Create symlink for wshawk-desktop and wshawk
+  ln -sf /opt/WSHawk/wshawk "$pkgdir/usr/bin/wshawk-desktop"
+  ln -sf /opt/WSHawk/wshawk "$pkgdir/usr/bin/wshawk"
+  
+  msg2 "Terminal symlinks created successfully."
 }
