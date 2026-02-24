@@ -8,13 +8,13 @@
 
 pkgname=rust-bindgen-git
 _pkgname=bindgen
-pkgver=0.71.1.r7.g59a43e10
+pkgver=0.71.1.r136.gb7b501fe
 pkgrel=1
 pkgdesc="Automatically generates Rust FFI bindings to C (and some C++) libraries"
 arch=('x86_64')
 url="https://github.com/rust-lang-nursery/rust-bindgen"
 license=('BSD-3-Clause')
-depends=('gcc-libs' 'clang')
+depends=('glibc' 'libgcc' 'clang')
 makedepends=('cargo' 'git')
 provides=('rust-bindgen')
 conflicts=('rust-bindgen')
