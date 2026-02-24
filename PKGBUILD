@@ -2,8 +2,8 @@
 # https://github.com/stiermid/aur-pkgbuilds
 
 pkgname=s3tui
-pkgver=0.4.2
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="Simple S3 CLI client for file transfers and more"
 arch=('x86_64')
 url="https://github.com/softberries/s3tui"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6910f9819e4af278d58c8dea12d35054987f30b3bc5c7a735b6d3127b60ba1cd')
+sha256sums=('b865c93ba2910785c56748a815a1f4cfcf1f0bba9d2dac4b3b855589f1421020')
 options=(!lto)
 
 prepare() {
