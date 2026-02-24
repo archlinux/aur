@@ -1,0 +1,15 @@
+pkgbase = vix
+	pkgdesc = vix - vi-like editor based on Plan 9's structural regular expressions
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/lvitals/vix
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	depends = lua
+	depends = libtermkey
+	depends = ncurses
+	source = vix-0.1.0.tar.gz::https://github.com/lvitals/vix/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 7eb2dc49769c181c793a624a0b06545cbbe66cfad1cbbc439ef3371db544b107
+
+pkgname = vix
