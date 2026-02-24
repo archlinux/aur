@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=LBK Launcher
+Comment=Інсталятор українізаторів відеоігор
+Exec=/usr/bin/lbk-launcher %U
+Icon=lbk-launcher
+Terminal=false
+Type=Application
+Categories=Utility;Game;
+MimeType=x-scheme-handler/lbk;
+StartupNotify=true
+StartupWMClass=lbk-launcher
