@@ -2,8 +2,8 @@
 # Contributor: Honghao Li <im@rasphino.cn>
 
 pkgname=sublime-merge
-pkgver=2121
-pkgrel=2
+pkgver=2123
+pkgrel=1
 pkgdesc='Meet a new Git Client, from the makers of Sublime Text'
 arch=('x86_64')
 url='https://www.sublimemerge.com'
@@ -12,7 +12,7 @@ depends=('gtk3')
 source=("https://download.sublimetext.com/sublime_merge_build_${pkgver}_x64.tar.xz"
         "https://download.sublimetext.com/sublime_merge_build_${pkgver}_x64.tar.xz.asc"
         LICENSE)
-b2sums=('4934bae443500e234b293017b5ed3ac607875728dd94e56595147015c225195e582da11e4f77b7e1492d12bca9adabd1248f0b8bf6feee4761fbc16558938e13'
+b2sums=('b07ffecfa3fa04ca5ac2391883cd11d304b836cf60f5a9e538363f40cc5bd85c35f7f38a560b27a2f10de18b293f68dfefb1d830508545a5b644cdb3585df193'
         'SKIP'
         'e17f9223fc423b385d20f78fd54bf8bdc0722134cb89e1a12f9105a4d130e9ae12f81997904b52ce6d6db45810d23db53c8f90c8a9bc1ac0ae4a8532d1097396')
 validpgpkeys=('EBC733B78AAB352DC773BF857FE2FA12CF6E38F2')
