@@ -1,7 +1,7 @@
 # Contributor: CountMurphy <spartan1086@gmail.com>
 pkgname=booklore
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Self hosted ebook reader"
 arch=('x86_64')
 url="https://booklore.org/"
@@ -42,6 +42,7 @@ build() {
     cd ../booklore-api
     sed -i 's|/app/data|/var/lib/booklore/app/data|' src/main/resources/application.yaml
     sed -i 's|/bookdrop|/var/lib/booklore/bookdrop|' src/main/resources/application.yaml
+    sed -i 's|development|'$pkgver'|' src/main/resources/application.yaml
     sed -i 's|6060|'$_PORT'|' src/main/resources/application.yaml
     ./gradlew build 
     
