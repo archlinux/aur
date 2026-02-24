@@ -1,6 +1,6 @@
 # Maintainer: MojArch
 pkgname=opera-developer
-pkgver=129.0.5812.0
+pkgver=129.0.5818.0
 pkgrel=1
 pkgdesc='Fast, secure, easy-to-use web browser
  Opera is a fast, secure, and user-friendly web browser.
@@ -44,7 +44,7 @@ source=(
 )
 # dynamic Integrity checks
 sha256sums=(
-    "3d8275df05f0df32baa8bbee51a796b46d7817a5f59ae1473f09be26d2ce9c6d"
+    "0245644436660110316a5772f0ef6fe54b98094c37ce8de1b3a88d72fa56d76d"
     "508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5"
     "99fc0d2822edd14e234d451995db47148125e4580221a292598959421d131231"
 )
