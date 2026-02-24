@@ -1,0 +1,17 @@
+pkgbase = yasos-git
+	pkgdesc = Compiler for the Yasos programming language (git version)
+	pkgver = 20260224
+	pkgrel = 1
+	url = https://github.com/DameChocolateYa/yasos
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	depends = llvm
+	provides = yasos
+	conflicts = yasos
+	source = git+https://github.com/DameChocolateYa/yasos.git
+	sha256sums = SKIP
+
+pkgname = yasos-git
