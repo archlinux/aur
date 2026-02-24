@@ -1,6 +1,6 @@
 pkgbase = lua-rs
 	pkgdesc = A Lua 5.5 interpreter written in pure Rust
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/CppCXY/lua-rs
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = lua-rs
 	depends = gcc-libs
 	depends = libgcc_s.so
 	depends = glibc
-	source = https://github.com/CppCXY/lua-rs/archive/0.8.0/lua-rs-0.8.0.tar.gz
-	sha256sums = de1e69304d2871156ced3a15eda691c7c2e680c4a48223facd36bebbbda2006f
+	source = https://github.com/CppCXY/lua-rs/archive/0.9.0/lua-rs-0.9.0.tar.gz
+	sha256sums = b2d7b2f1fb9e4fa27c34a111d2ebdf95bde1ceec477b440f96b7db87bcf57eb3
 
 pkgname = lua-rs

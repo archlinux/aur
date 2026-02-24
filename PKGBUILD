@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=lua-rs
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='A Lua 5.5 interpreter written in pure Rust'
 arch=(x86_64 i686)
@@ -12,7 +12,7 @@ depends=(gcc-libs libgcc_s.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('de1e69304d2871156ced3a15eda691c7c2e680c4a48223facd36bebbbda2006f')
+sha256sums=('b2d7b2f1fb9e4fa27c34a111d2ebdf95bde1ceec477b440f96b7db87bcf57eb3')
 
 prepare() {
 	cd "$_archive"
