@@ -1,7 +1,7 @@
 pkgbase = perl-datetime-format-rfc3339
 	pkgdesc = Parse and format RFC3339 datetime strings
 	pkgver = 1.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/dist/DateTime-Format-RFC3339
 	arch = any
 	license = CC0-1.0
