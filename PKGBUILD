@@ -1,8 +1,8 @@
 # Maintainer: ZilloweZ <zillowez@gmail.com>
 
 pkgname='zoi-bin'
-_tag='Prod-Release-1.1.1'
-pkgver=1.1.1
+_tag='Prod-Release-1.5.0'
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Universal Package Manager & Environment Setup Tool (pre-compiled binary)"
 arch=('x86_64' 'aarch64')
@@ -19,15 +19,15 @@ optdepends=(
 )
 _license_url='http://gitlab.com/Zillowe/Zillwen/Zusty/Zoi/-/raw/main/LICENSE'
 
-source_x86_64=("${pkgname%-bin}-linux-amd64.tar.zst::$url/-/releases/$_tag/downloads/${pkgname%-bin}-linux-amd64.tar.zst"
+source_x86_64=("${pkgname%-bin}-linux-amd64.tar.zst::$url/-/releases/Prod-Release-$pkgver/downloads/${pkgname%-bin}-linux-amd64.tar.zst"
               "LICENSE::$_license_url")
-source_aarch64=("${pkgname%-bin}-linux-arm64.tar.zst::$url/-/releases/$_tag/downloads/${pkgname%-bin}-linux-arm64.tar.zst"
+source_aarch64=("${pkgname%-bin}-linux-arm64.tar.zst::$url/-/releases/Prod-Release-$pkgver/downloads/${pkgname%-bin}-linux-arm64.tar.zst"
                "LICENSE::$_license_url")
 
-sha512sums_x86_64=('0f1b9c9a4aa914edaf9c554faac838b0c99e90e053fe691ba14a5247f4ab930c806bef3746ee28b53e75e81cf844e6eff40c552749abdad35d9b5ce1afdf4fbc'
-                   '79caa3cd361a8875ce9c8c3ecc8c5ac085088b5fde880a3de45def41800d85ad5c6679c589a263e8e3eac2497188d13e26e534d20d2dcdfd665bbd7ead79d3a4')
-sha512sums_aarch64=('6e46a84b2b8523dbdc79c0a28bcfc81b1716faa01d01801095c49fedcc8061ffbba2e016829c7b869ac169928002d83e9b946f1175750e561dd8c7297e95a571'
-                    '79caa3cd361a8875ce9c8c3ecc8c5ac085088b5fde880a3de45def41800d85ad5c6679c589a263e8e3eac2497188d13e26e534d20d2dcdfd665bbd7ead79d3a4')
+sha512sums_x86_64=('5295290dd9b793b639a06336c8fd983a58d442e56a8bf229cad2b3a5c0355cae096b8a818b1d88de80faf792abdf95cb2d9de70ae2a7cfdbf192d0641e41b42d'
+                   'e2cca3fc757382874694b00e85372aa114ef6f6196d767ba445b4499f170ef6589e3aab60d41615bdc1a74596a1f0f6b148a934b19b69e639de1fddf6dd2b2ea')
+sha512sums_aarch64=('17006853bbf163eac346e31c7d014e86b568d345a15c4a7d25b78707823cd253f50934995ca5262051db8d07647948531240b63dbb5113ae488c63b02dbdeecb'
+                    'e2cca3fc757382874694b00e85372aa114ef6f6196d767ba445b4499f170ef6589e3aab60d41615bdc1a74596a1f0f6b148a934b19b69e639de1fddf6dd2b2ea')
 
 package() {
   install -Dm755 "${srcdir}/${pkgname%-bin}" "$pkgdir/usr/bin/${pkgname%-bin}"
