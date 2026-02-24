@@ -8,7 +8,7 @@ url="https://github.com/augustus-7613/httpcode"
 license=('GPL3')
 makedepends=('glibc' 'gcc' 'make')
 source=("$url/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('f39bafdc8cd3258208b1feb6ff8d13953addf767b95e985f9a9caaa143dcbd67')
+sha256sums=('19e273960f2eb86c297b8ae5209c91a80c95093933c99d5c79a5cb42340c410d')
 options=('!debug')
 
 build() {
