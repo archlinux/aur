@@ -1,9 +1,9 @@
 # Maintainer: Christopher Schnick <crschnick@xpipe.io>
 
-_fullver="21.4-6"
+_fullver="21.4-7"
 pkgname="xpipe-ptb"
 pkgver="21.4"
-pkgrel="6"
+pkgrel="7"
 epoch=1
 pkgdesc="XPipe Public Test Build releases"
 arch=('x86_64' 'aarch64')
@@ -41,15 +41,15 @@ source_x86_64=("${pkgname}-${_fullver}-x86_64.tar.gz::https://github.com/xpipe-i
 source_aarch64=("${pkgname}-${_fullver}-arm64.tar.gz::https://github.com/xpipe-io/${pkgname}/releases/download/${_fullver}/xpipe-portable-linux-arm64.tar.gz")
 noextract=()
 sha256sums=("F7E26C2EBA1EC2AF909357475D3C3C6C55D1CF9E2BD7129276B89306298FBF9F" "82EA59DBA089294E07E517DB0245068A32A7BD35C32CA01695579ACEED4FD76D" "0DE9BE4A26539490D0B2799649134F916ED0AD9652B1852FACC900BB963A60B5" "3DBAE16D777F7AD7761252B1F429278333A1117A70632F4025DE713E5B0A86C8" "ADFFF3878F4AC1857A7004F46715FD746BF8DACE2536F0DDCAAEECF441ABD235" "1687E388806A782CA790C3C87D94E51B4513E96AB77CBD1217A0A6D94D4C0E74" "BCD42E2497807AE0069A4CCCAFEDC5B993EB24EB844C9BF0AE26ABABCEEAE348")
-sha256sums_x86_64=("113d346d12ed3f5edf5e78c98ce9c46ca681ea30ea1ff927f076408b610de56c")
-sha256sums_aarch64=("113d346d12ed3f5edf5e78c98ce9c46ca681ea30ea1ff927f076408b610de56c")
+sha256sums_x86_64=("0bc13229c41f574c84b397423edac17756ecb175bb90b5e8eec5ad7118891eed")
+sha256sums_aarch64=("0bc13229c41f574c84b397423edac17756ecb175bb90b5e8eec5ad7118891eed")
 
 package() {
 	install -dm0755 "$pkgdir/opt"
 	cp -a "$srcdir/xpipe-${_fullver}" "$pkgdir/opt/$pkgname"
 	install -Dm0644 -t "$pkgdir/usr/share/applications/" "$srcdir/${pkgname}.desktop"
 
-    for logoFile in "$srcdir/*.png"; do
+    for logoFile in $srcdir/*.png; do
         res=$(basename "$logoFile" ".png" | cut -d "_" -f 2)
         install -d "$pkgdir/usr/share/icons/hicolor/$res/apps"
         cp -a "$logoFile" "$pkgdir/usr/share/icons/hicolor/$res/apps/${pkgname}.png"
