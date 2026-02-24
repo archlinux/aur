@@ -1,6 +1,7 @@
 *~
 .*
 coolerdash/
+coolerdash-git/
 *.pkg.tar.zst
 !PKGBUILD
 !.SRCINFO
