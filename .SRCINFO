@@ -1,13 +1,13 @@
 pkgbase = sniplias-bin
 	pkgdesc = A beautiful TUI for managing shell aliases and command snippets
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/otomay/sniplias
 	arch = x86_64
 	license = MIT
 	provides = sniplias
 	conflicts = sniplias
-	source = https://github.com/otomay/sniplias/releases/download/v0.3.2/sniplias-0.3.2-x86_64.tar.gz
-	sha256sums = efd6b997e85b3ed7e694b79e11c115373277284c39e0b8320b0b8a01c1c9ca97
+	source = sniplias-linux-x86_64::https://github.com/otomay/sniplias/releases/download/v0.3.3/sniplias-linux-x86_64
+	sha256sums = fe6ac1b76f7c5959dafe0c9885124c299402f10e70d13f37c94b8b86d97c6f79
 
 pkgname = sniplias-bin
