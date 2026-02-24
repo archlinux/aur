@@ -1,0 +1,5 @@
+[mcdu-bin]
+source = "github"
+github = "mikalv/mcdu"
+use_latest_release = true
+prefix = "v"
