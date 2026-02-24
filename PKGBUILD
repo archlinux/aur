@@ -2,7 +2,7 @@
 
 _pkgauthor=goplus
 pkgname=ixgo
-pkgver=0.62.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="The Go/XGo Interpreter"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ replaces=('igop')
 makedepends=('go')
 
 source=("${pkgname}-${pkgver}.tgz::https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7891eea3c81c0460b7cd48a76f615ad7340b3e94c3b4d9f2a5899f8cb7f161d4')
+sha256sums=('148909525e26d9fcdcfba83f21cebb128f86ba3c74ccd9c9e0ed38dd5af64d32')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
@@ -41,7 +41,7 @@ build() {
 package() {
 	cd ${srcdir}/${pkgname}-${pkgver} || exit 1
 
-	install -Dm755 "${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
