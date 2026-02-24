@@ -1,6 +1,17 @@
 post_install() {
     cat <<EOF
 
+==> IMPORTANT NOTICE
+==> ==================
+Please be aware that the Wavelog team officially recommends installing via
+Docker rather than performing a direct system installation.
+
+This AUR package is community-maintained and is not supported by the official
+team; users must resolve any issues on their own should they arise.
+
+For Docker installation instructions, please refer to the official guide:
+https://github.com/wavelog/wavelog/wiki/Installation
+
 ==> Wavelog Installation Notes
 ==> ============================
 1. DATABASE SETUP
