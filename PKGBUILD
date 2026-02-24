@@ -1,6 +1,6 @@
 # Maintainer: augustus-7613 <augustus7613.mail@pm.me>
 pkgname=httpcode
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Tool to lookup HTTP codes"
 arch=('x86_64')
