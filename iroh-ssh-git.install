@@ -1,0 +1,14 @@
+post_install() {
+  echo ":: To start the iroh-ssh server as a user service:"
+  echo "     systemctl --user enable --now iroh-ssh-server"
+  echo ":: Then get your endpoint ID with:"
+  echo "     iroh-ssh info"
+  echo ":: To configure extra arguments (e.g. relay URLs), create:"
+  echo "     ~/.config/iroh-ssh/environment"
+  echo "   with contents like:"
+  echo "     IROH_SSH_EXTRA_ARGS=--extra-relay-url https://my-relay.example.com"
+}
+
+post_upgrade() {
+  post_install
+}

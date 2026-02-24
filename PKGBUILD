@@ -13,6 +13,7 @@ makedepends=('rust' 'cargo' 'git')
 options=(!lto)
 provides=('iroh-ssh')
 conflicts=('iroh-ssh')
+install="${pkgname}.install"
 source=("git+https://github.com/futpib/iroh-ssh.git"
         'iroh-ssh-server.service')
 sha256sums=('SKIP'

@@ -1,4 +1,5 @@
 /iroh/
+/iroh-ssh/
 /pkg/
 /src/
 /*.tar.*
