@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>FiTui=fitui
 pkgname=fitui
-pkgver=0.1.5
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Terminal-based personal finance tracker'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ provides=('fitui')
 conflicts=('fitui-git' 'fitui-bin')
 options=(!lto)
 source=("FiTui-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8ffa45b28eb3853996c09227734d04703bf29543a66508fb4b0fa93ce2c8e33b')
+sha256sums=('2ddddceccfd06e1de4ce65f3b3a3609ce07b5a5e261df2c268df989cb8373362')
 
 prepare() {
     cd "FiTui-$pkgver"
