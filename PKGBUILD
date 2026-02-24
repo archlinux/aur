@@ -7,8 +7,9 @@ pkgdesc="Manjaro variation of Adw GTK theme"
 arch=(x86_64)
 url="https://github.com/PrincParshia/adw-maia-gtk-theme"
 license=('LGPL')
+depends=('gtk4' 'libadwaita')
 makedepends=('git')
-source=("git+$url")
+source=("git+$url#tag=$pkgver")
 sha256sums=('SKIP')
 
 package() {

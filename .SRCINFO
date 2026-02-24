@@ -6,7 +6,9 @@ pkgbase = adw-maia-gtk-theme
 	arch = x86_64
 	license = LGPL
 	makedepends = git
-	source = git+https://github.com/PrincParshia/adw-maia-gtk-theme
+	depends = gtk4
+	depends = libadwaita
+	source = git+https://github.com/PrincParshia/adw-maia-gtk-theme#tag=6.4
 	sha256sums = SKIP
 
 pkgname = adw-maia-gtk-theme
