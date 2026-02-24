@@ -1,21 +1,21 @@
+# shellcheck shell=bash
 # -*- sh -*-
 
 # Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 _pkgname='mdviewer'
 pkgname="${_pkgname}-git"
-pkgver=0.1.1.r23.gffd5000
-pkgrel=2
 pkgdesc='Rendered display of markdown on terminal (latest git commit)'
-arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
+pkgver=0.1.1.r53.gb935eea
+pkgrel=2
 url='https://github.com/noborus/mdviewer'
+arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 license=('MIT')  # SPDX-License-Identifier: MIT
 provides=("$_pkgname")
 conflicts=("${provides[@]}")
-depends=('glibc')
 makedepends=('git' 'go')
+depends=('glibc')
 source=("git+$url.git")
-options=('lto')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -27,6 +27,7 @@ pkgver() {
 prepare() {
   cd "$_pkgname"
 
+  git clean -dfx
   mkdir -p build
   go mod tidy
 }
@@ -37,17 +38,14 @@ build() {
   _pkgver=$(git describe --tags --abbrev=0 --always)
   _pkgrev=$(git rev-parse --verify --short HEAD)
 
-  # RFC-0023
-  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  #
-  # ld(1) says: “Supported for i386 and x86-64.”
   case "Z${CARCH:-unknown}" in
-    'Zx86_64' | 'Zi386' )
-      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
+    'Zx86_64' | 'Zaarch64' )
+      export LDFLAGS="$LDFLAGS -Wl,-z,shstk"
     ;;
     * ) : pass ;;
   esac
 
+  export CGO_ENABLED=1
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_CPPFLAGS="$CPPFLAGS"
@@ -64,15 +62,20 @@ build() {
 check() {
   cd "$_pkgname"
 
-  go test ./...
+  : go test ./...
+  "build/$_pkgname" --version
 }
 
 package() {
   cd "$_pkgname"
 
-  install -vDm0755 "build/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-  install -vDm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -vDm0644 LICENSE  "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm0755 "build/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+
+  for _dir in doc licenses; do
+    cd "$pkgdir/usr/share/$_dir" && ln -srf "$pkgname" "$_pkgname"
+  done
 }
 
 # eof

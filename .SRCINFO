@@ -1,6 +1,6 @@
 pkgbase = mdviewer-git
 	pkgdesc = Rendered display of markdown on terminal (latest git commit)
-	pkgver = 0.1.1.r23.gffd5000
+	pkgver = 0.1.1.r53.gb935eea
 	pkgrel = 2
 	url = https://github.com/noborus/mdviewer
 	arch = aarch64
@@ -15,7 +15,6 @@ pkgbase = mdviewer-git
 	depends = glibc
 	provides = mdviewer
 	conflicts = mdviewer
-	options = lto
 	source = git+https://github.com/noborus/mdviewer.git
 	sha256sums = SKIP
 
