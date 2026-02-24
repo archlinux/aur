@@ -4,7 +4,7 @@
 
 pkgname=charcoal-dict-bin
 pkgver=0.3.2
-pkgrel=6
+pkgrel=7
 pkgdesc="A command line dictionary"
 url="https://github.com/LighghtEeloo/charcoal"
 license=("MIT")
@@ -17,6 +17,6 @@ source=("https://github.com/LighghtEeloo/charcoal/releases/download/v$pkgver/cha
 sha256sums=("714d253255780674b81f0214851b71d75f1fecff660bc220ba69e2ae7be69649")
 
 package() {
-    install -Dm755 charcoal -t "$pkgdir/usr/bin"
+    install -Dm755 charcoal-dict -t "$pkgdir/usr/bin/charcoal"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

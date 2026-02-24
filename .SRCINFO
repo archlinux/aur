@@ -1,7 +1,7 @@
 pkgbase = charcoal-dict-bin
 	pkgdesc = A command line dictionary
 	pkgver = 0.3.2
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/LighghtEeloo/charcoal
 	arch = x86_64
 	license = MIT
