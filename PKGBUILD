@@ -4,7 +4,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r74110.488fd52039a
+pkgver=r75467.3a5a6b741df
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -49,6 +49,12 @@ sha256sums=(
   'SKIP'
 )
 
+
+#ENABLE_RUST=YES # Uncomment to build rust components
+if [ -n "${ENABLE_RUST:-NO}" ]; then
+  makedepends+=(cargo)
+fi
+
 pkgver() {
   cd ladybird
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -62,6 +68,7 @@ build() {
   cmake \
     -B build \
     -S ladybird \
+    -DENABLE_RUST="${ENABLE_RUST}" \
     -DBUILD_SHARED_LIBS=OFF \
     -DLADYBIRD_CACHE_DIR=Build/caches \
     -DCMAKE_BUILD_TYPE=Release \
