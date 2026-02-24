@@ -1,0 +1,15 @@
+pkgbase = surrealmcp
+	pkgdesc = The official MCP server for SurrealDB
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/surrealdb/surrealmcp
+	arch = x86_64
+	arch = aarch64
+	license = custom:BSL
+	makedepends = cargo
+	depends = rocksdb
+	options = !lto
+	source = surrealmcp-0.4.0.tar.gz::https://github.com/surrealdb/surrealmcp/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 8a051fc107b02114767a6762fb7dda92e0c16da7ba1b30bab405e2f6c3af594b
+
+pkgname = surrealmcp
