@@ -18,15 +18,21 @@ sha256sums=('SKIP')
 build() {
   cd "$_pkgname"
 
-  # 1. Build the Python package wheel
+  # 1. Create a temporary venv to run PyInstaller (skips broken system compilers)
+  echo "[*] Setting up build environment..."
+  python -m venv build-env
+  ./build-env/bin/pip install --upgrade pip
+  ./build-env/bin/pip install pyinstaller build setuptools wheel
+
+  # 2. Build the Python package wheel
   echo "[*] Building Python wheel..."
-  python -m build --wheel --no-isolation
+  ./build-env/bin/python -m build --wheel --no-isolation
 
-  # 2. Build the Python bridge binary using PyInstaller
+  # 3. Build the Python bridge binary using PyInstaller
   echo "[*] Compiling Python Bridge Sidecar..."
-  PYTHONPATH=. pyinstaller wshawk-bridge.spec --noconfirm
+  PYTHONPATH=. ./build-env/bin/pyinstaller wshawk-bridge.spec --noconfirm
 
-  # 3. Build the Desktop App Frontend
+  # 4. Build the Desktop App Frontend
   cd desktop
   echo "[*] Installing Node dependencies..."
   npm install
